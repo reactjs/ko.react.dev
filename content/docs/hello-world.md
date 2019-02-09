@@ -15,7 +15,7 @@ ReactDOM.render(
 );
 ```
 
-위 코드는 페이지에 "Hello, world!"라고 말하는 제목을 보여줍니다.
+위 코드는 페이지에 "Hello, world!"라는 제목을 보여줍니다.
 
 [CodePen에서 실행하기](codepen://hello-world)
 
