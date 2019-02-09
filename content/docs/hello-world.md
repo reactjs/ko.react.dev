@@ -6,7 +6,7 @@ prev: cdn-links.html
 next: introducing-jsx.html
 ---
 
-The smallest React example looks like this:
+가장 단순한 리액트 예제는 다음과 같이 생겼습니다:
 
 ```js
 ReactDOM.render(
@@ -15,36 +15,36 @@ ReactDOM.render(
 );
 ```
 
-It displays a heading saying "Hello, world!" on the page.
+위 코드는 페이지에 "Hello, world!"라고 말하는 제목을 보여줍니다.
 
-[](codepen://hello-world)
+[CodePen에서 실행하기](codepen://hello-world)
 
-Click the link above to open an online editor. Feel free to make some changes, and see how they affect the output. Most pages in this guide will have editable examples like this one.
+온라인 에디터로 열어보려면 상단의 링크를 클릭하세요. 코드를 자유롭게 수정하고, 결과가 어떻게 변하는지 관찰해보세요. 이 안내서의 거의 모든 페이지에서는 이런 형태로 수정 가능한 예제를 함께 제공합니다.
 
 
-## How to Read This Guide {#how-to-read-this-guide}
+## 이 안내서를 읽는 방법 {#how-to-read-this-guide}
 
-In this guide, we will examine the building blocks of React apps: elements and components. Once you master them, you can create complex apps from small reusable pieces.
+이 안내서에서, 우리는 요소와 컴포넌트라고 불리는 React 앱의 구성 블록들에 대해 살펴볼 것입니다. 이들을 마스터하고 나면, 재사용 가능한 조각들로부터 복잡한 앱을 만들 수도 있습니다.
 
->Tip
+>팁
 >
->This guide is designed for people who prefer **learning concepts step by step**. If you prefer to learn by doing, check out our [practical tutorial](/tutorial/tutorial.html). You might find this guide and the tutorial complementary to each other.
+>이 안내서는 **학습 개념들을 단계적으로** 배우길 원하는 사람들을 대상으로 합니다. 실습을 통해 배우길 원한다면, [실전 튜토리얼](/tutorial/tutorial.html)를 확인하세요. 이 안내서와 실전 튜토리얼은 서로에게 상호보완적인 내용을 담고 있습니다.
 
-This is the first chapter in a step-by-step guide about main React concepts. You can find a list of all its chapters in the navigation sidebar. If you're reading this from a mobile device, you can access the navigation by pressing the button in the bottom right corner of your screen.
+이 페이지는 React 주요 개념에 대한 단계별 안내서의 첫번째 챕터입니다. 네비게이션 사이드바에서 모든 챕터의 목록을 확인할 수 있습니다. 모바일 기기에서 읽고 있다면, 화면 우측 하단 끝에 있는 버튼을 클릭하여 네비게이션에 접근할 수 있습니다.
 
-Every chapter in this guide builds on the knowledge introduced in earlier chapters. **You can learn most of React by reading the “Main Concepts” guide chapters in the order they appear in the sidebar.** For example, [“Introducing JSX”](/docs/introducing-jsx.html) is the next chapter after this one.
+이 안내서의 모든 챕터는 이전 챕터의 내용을 토대로 작성되었습니다. **사이드바에 보이는 순서대로 "주요 개념" 안내서의 챕터들을 읽으면 React의 거의 모든 내용을 익힐 수 있습니다.** [“JSX 소개”](/docs/introducing-jsx.html)가 바로 이 다음 챕터입니다.
 
-## Knowledge Level Assumptions {#knowledge-level-assumptions}
+## 지식 수준 가정 {#knowledge-level-assumptions}
 
-React is a JavaScript library, and so we'll assume you have a basic understanding of the JavaScript language. **If you don't feel very confident, we recommend [going through a JavaScript tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) to check your knowledge level** and enable you to follow along this guide without getting lost. It might take you between 30 minutes and an hour, but as a result you won't have to feel like you're learning both React and JavaScript at the same time.
+React는 JavaScript 라이브러리이며, 따라서 JavaScript 언어에 대한 기본적 이해를 필요로 합니다. **아직 자신이 없다면, [JavaScript 튜토리얼 살펴보기](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)를 통해 자신의 지식 수준을 확인해보길 권장드리며** 이를 통해 길을 잃지 않고 이 안내서를 잘 따라올 수 있게 될 것입니다. 30분에서 1시간 가량 소요되지만, 결과적으로 더 이상 React와 JavaScript를 동시에 배운다는 느낌을 받지 않을 수 있습니다.
 
->Note
+>주목
 >
->This guide occasionally uses some of the newer JavaScript syntax in the examples. If you haven't worked with JavaScript in the last few years, [these three points](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) should get you most of the way.
+>이 가이드에서는 가끔 최신 JavaScript 문법을 예제에 사용합니다. 지난 몇 년간 JavaScript로 작업하지 않았다면, [이 3가지 사항](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c)을 통해 대부분의 것을 얻을 수 있습니다.
 
 
-## Let's Get Started! {#lets-get-started}
+## 시작해봅시다! {#lts-get-started}
 
-Keep scrolling down, and you'll find the link to the [next chapter of this guide](/docs/introducing-jsx.html) right before the website footer.
+아래로 계속 스크롤하면, 푸터 바로 앞에서 [다음 챕터](/docs/introducing-jsx.html)로 연결된 링크를 찾을 수 있습니다.
 
 
