@@ -200,7 +200,7 @@ React.createFactory(type)
 
 주어진 타입의 React 요소를 만들어내는 함수를 반환합니다. [`React.createElement()`](#createElement)와 마찬가지로 type 인자는 태그 이름 문자열(`'div'` 또는 `'span'` 등), [React 컴포넌트](/docs/components-and-props.html) 타입, 또는 [React Fragment](#reactfragment) 타입 중 하나가 올 수 있습니다.
 
-이 헬퍼 함수는 기존에는 사용되었으나 이제는 사용하지 않으며, 대신 JSX 문법을 사용하거나 `React.createElement()`를 직접 사용합니다.
+이 헬퍼 함수는 레거시 기능으로 간주되며, 대신하여 JSX 문법을 사용하거나 `React.createElement()`를 직접 사용해야 합니다.
 
 JSX를 사용할 경우 `React.createFactory()`를 직접 호출하는 일은 거의 없습니다. 자세한 정보는 [JSX 없이 React 사용하기](/docs/react-without-jsx.html) 문서에서 확인할 수 있습니다.
 
