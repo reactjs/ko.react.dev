@@ -6,11 +6,11 @@ category: Reference
 permalink: docs/react-dom.html
 ---
 
-If you load React from a `<script>` tag, these top-level APIs are available on the `ReactDOM` global. If you use ES6 with npm, you can write `import ReactDOM from 'react-dom'`. If you use ES5 with npm, you can write `var ReactDOM = require('react-dom')`.
+만약 당신이 React를 `<script>` 태그로 로드한다면, `ReactDOM` 글로벌 영역에서 상위 레벨 API들을 이용할 수 있습니다. 만약 npm과 ES6를 사용한다면, 당신은 `import ReactDOM from 'react-dom'`로 쓸 수 있습니다. npm과 ES5의 경우에는 `var ReactDOM = require('react-dom')`로 쓸 수 있습니다.
 
-## Overview {#overview}
+## 개요 {#overview}
 
-The `react-dom` package provides DOM-specific methods that can be used at the top level of your app and as an escape hatch to get outside of the React model if you need to. Most of your components should not need to use this module.
+`react-dom` 패키지는 당신의 앱 최상위 레벨에서 사용할 수 있는 DOM에 특화된 메소드들, 그리고 필요한 경우 React 모델 외부로 나갈 수 있는 탈출구를 제공합니다. 대다수의 컴포넌트들은 이 모듈을 사용할 필요가 없습니다.
 
 - [`render()`](#render)
 - [`hydrate()`](#hydrate)
@@ -18,17 +18,17 @@ The `react-dom` package provides DOM-specific methods that can be used at the to
 - [`findDOMNode()`](#finddomnode)
 - [`createPortal()`](#createportal)
 
-### Browser Support {#browser-support}
+### 브라우저 지원 {#browser-support}
 
-React supports all popular browsers, including Internet Explorer 9 and above, although [some polyfills are required](/docs/javascript-environment-requirements.html) for older browsers such as IE 9 and IE 10.
+React는 Internet Explorer 9과 그 이후 버전을 포함한 모든 주요 브라우저들을 지원합니다. 그러나 IE 9과 IE 10과 같은 구형 브라우저는 [polyfill이 필요합니다](/docs/javascript-environment-requirements.html).
 
-> Note
+> 주의
 >
-> We don't support older browsers that don't support ES5 methods, but you may find that your apps do work in older browsers if polyfills such as [es5-shim and es5-sham](https://github.com/es-shims/es5-shim) are included in the page. You're on your own if you choose to take this path.
+> 우리는 ES5 메소드를 사용할 수 없는 구형 브라우저를 지원하지 않지만, 만약 어플리케이션의 페이지에 [es5-shim과 es5-sham](https://github.com/es-shims/es5-shim)과 같은 polyfill을 포함시킨다면 당신의 앱이 구형 브라우저에서도 동작한다는 것을 알 수 있을 것입니다. 이 방식을 선택한다면 당신은 스스로 해결해 나갈 것입니다.
 
 * * *
 
-## Reference {#reference}
+## 레퍼런스 {#reference}
 
 ### `render()` {#render}
 
@@ -36,11 +36,11 @@ React supports all popular browsers, including Internet Explorer 9 and above, al
 ReactDOM.render(element, container[, callback])
 ```
 
-Render a React element into the DOM in the supplied `container` and return a [reference](/docs/more-about-refs.html) to the component (or returns `null` for [stateless components](/docs/components-and-props.html#functional-and-class-components)).
+React 엘리먼트를 DOM의 제공된 `컨테이너` 내부에 렌더링하고 [레퍼런스](/docs/more-about-refs.html)를 컴포넌트로 반환합니다 ([상태가 없는 컴포넌트](/docs/components-and-props.html#functional-and-class-components)의 경우 `null`을 반환합니다).
 
-If the React element was previously rendered into `container`, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element.
+만약 React 엘리먼트가 이전에 `컨테이너` 내부에 렌더링 되었다면, 해당 구문은 업데이트를 수행하며 최신의 React 엘리먼트를 반영하는 데에 필요한 DOM만 변경합니다.
 
-If the optional callback is provided, it will be executed after the component is rendered or updated.
+만약 선택적인 콜백이 제공된다면, 컴포넌트의 렌더링 또는 업데이트 이후에 실행됩니다.
 
 > Note:
 >
