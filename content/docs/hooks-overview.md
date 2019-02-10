@@ -24,7 +24,7 @@ Hook은 [하위 호환성](/docs/hooks-intro.html#no-breaking-changes)을 가지
 import React, { useState } from 'react';
 
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // "count"라는 새 상태 변수를 선언합니다
   const [count, setCount] = useState(0);
 
   return (
@@ -48,7 +48,7 @@ function Example() {
 
 ```js
 function ExampleWithManyStates() {
-  // Declare multiple state variables!
+  // 상태 변수를 여러 개 선언했습니다!
   const [age, setAge] = useState(42);
   const [fruit, setFruit] = useState('banana');
   const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
@@ -82,9 +82,9 @@ import React, { useState, useEffect } from 'react';
 function Example() {
   const [count, setCount] = useState(0);
 
-  // Similar to componentDidMount and componentDidUpdate:
+  // componentDidMount, componentDidUpdate와 비슷합니다
   useEffect(() => {
-    // Update the document title using the browser API
+    // 브라우저 API를 이용해 문서의 타이틀을 업데이트합니다
     document.title = `You clicked ${count} times`;
   });
 
