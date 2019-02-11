@@ -91,7 +91,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 ✅ 허용:
 
 ```md
-React 엘리먼트는 [불변객체](https://ko.wikipedia.org/wiki/%EB%B6%88%EB%B3%80%EA%B0%9D%EC%B2%B4)입니다.
+React 엘리먼트는 [불변객체](https://ko.wikipedia.org/wiki/불변객체)입니다.
 ```
 
 외부 링크를 대체할 만한 자국어 자료가 없다면 (Stack Overflow, YouTube 비디오 등) 영어 링크를 사용해주세요.
