@@ -77,7 +77,7 @@ ReactDOM.그리다(요소, 문서.아이디로부터_엘리먼트_가져오기('
 
 ## 외부 링크
 
-외부 링크가 [MDN]이나 [Wikepedia]같은 참고 문헌의 문서에 연결되어 있고 해당 문서가 자국어로 잘 번역되어 있다면 번역 문서를 링크하는 것도 고려해보세요.
+외부 링크가 [MDN]이나 [Wikipedia]같은 참고 문헌의 문서에 연결되어 있고 해당 문서가 자국어로 잘 번역되어 있다면 번역 문서를 링크하는 것도 고려해보세요.
 
 [MDN]: https://developer.mozilla.org/en-US/
 [Wikipedia]: https://en.wikipedia.org/wiki/Main_Page
