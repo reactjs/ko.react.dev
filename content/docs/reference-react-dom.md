@@ -42,17 +42,15 @@ React 엘리먼트를 DOM의 제공된 `컨테이너` 내부에 렌더링하고 
 
 만약 선택적인 콜백이 제공된다면, 컴포넌트의 렌더링 또는 업데이트 이후에 실행됩니다.
 
-> Note:
+> 주의
 >
-> `ReactDOM.render()` controls the contents of the container node you pass in. Any existing DOM elements inside are replaced when first called. Later calls use React’s DOM diffing algorithm for efficient updates.
+> `ReactDOM.render()`는 당신이 전달한 컨테이너 노드의 컨텐츠를 제어합니다. 이 구문을 처음 호출할 때 기존의 DOM 엘리먼트를 교체하며, 이후의 호출은 React의 DOM diffing 알고리즘을 사용하여 보다 효율적으로 업데이트 합니다.
 >
-> `ReactDOM.render()` does not modify the container node (only modifies the children of the container). It may be possible to insert a component to an existing DOM node without overwriting the existing children.
+> `ReactDOM.render()`는 컨테이너 노드를 수정하지 않고 컨테이너의 하위 노드들만 수정합니다. 그렇기 때문에 자식 노드를 덮어쓸 필요 없이 기존의 DOM 노드에 컴포넌트를 추가할 수 있습니다.
 >
-> `ReactDOM.render()` currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy
-> and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a
-> [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) to the root element.
+> `ReactDOM.render()`는 현재 `ReactComponent` 루트 인스턴스에 대한 레퍼런스를 반환합니다. 그러나 이 반환값을 사용하는 것은 레거시이며 React 신규 버전이 컴포넌트를 비동기로 렌더링 하는 경우가 있기 때문에 피해야 합니다. 만약 당신이 `ReactComponent` 인스턴스의 레퍼런스가 필요하다면, 권장하는 해결책은 루트 엘리먼트에 [콜백 레퍼런스](/docs/more-about-refs.html#the-ref-callback-attribute)를 첨부하는 것입니다.
 >
-> Using `ReactDOM.render()` to hydrate a server-rendered container is deprecated and will be removed in React 17. Use [`hydrate()`](#hydrate) instead.
+> 서버에서 렌더링한 컨테이너를 공급하기 위해 `ReactDOM.render()`를 사용하는 것은 deprecated 되었으며 React 17 버전에서 삭제될 예정입니다. [`hydrate()`](#hydrate)를 사용해주세요.
 
 * * *
 
@@ -62,15 +60,15 @@ React 엘리먼트를 DOM의 제공된 `컨테이너` 내부에 렌더링하고 
 ReactDOM.hydrate(element, container[, callback])
 ```
 
-Same as [`render()`](#render), but is used to hydrate a container whose HTML contents were rendered by [`ReactDOMServer`](/docs/react-dom-server.html). React will attempt to attach event listeners to the existing markup.
+[`render()`](#render)와 동일하지만, HTML 컨텐츠가 [`ReactDOMServer`](/docs/react-dom-server.html)로 렌더링된 컨테이너를 공급하기 위해 사용됩니다. React는 기존 마크업에 이벤트 리스너를 연결할 것입니다.
 
-React expects that the rendered content is identical between the server and the client. It can patch up differences in text content, but you should treat mismatches as bugs and fix them. In development mode, React warns about mismatches during hydration. There are no guarantees that attribute differences will be patched up in case of mismatches. This is important for performance reasons because in most apps, mismatches are rare, and so validating all markup would be prohibitively expensive.
+React는 렌더링된 컨텐츠가 서버와 클라이언트 간에 동일할 것으로 예상합니다. React가 텍스트 컨텐츠의 차이를 고칠 수는 있지만 당신은 이러한 불일치를 버그로 취급하여 고쳐야 합니다. 개발 모드에서 React는 공급 중 발생하는 불일치에 대해 경고합니다. 불일치가 발생하는 경우에 속성 차이를 고친다는 보장이 없습니다. 대다수의 앱에서 불일치가 발생하는 경우는 많지 않으며, 발생하는 경우 모든 마크업을 검증하는 것이 매우 큰 비용을 수반하기 때문에 성능상의 이유로 중요한 문제입니다.
 
-If a single element's attribute or text content is unavoidably different between the server and the client (for example, a timestamp), you may silence the warning by adding `suppressHydrationWarning={true}` to the element. It only works one level deep, and is intended to be an escape hatch. Don't overuse it. Unless it's text content, React still won't attempt to patch it up, so it may remain inconsistent until future updates.
+만약 서버와 클라이언트 사이에서 단일 엘리먼트의 속성이나 텍스트가 불가피하게 다르다면 (예를 들어, timestamp와 같은 경우), 당신은 그 엘리먼트에 `suppressHydrationWarning={true}`를 추가하는 것으로 경고를 끌 수 있습니다. 이는 한 단계까지만 작동하며 탈출구로써 의도한 것입니다. 절때 남용하지 마세요. 텍스트가 아니라면 React는 해당 엘리먼트를 고치지 않을 것이며 이후의 업데이트까지 차이나는대로 남아있을 것입니다.
 
-If you intentionally need to render something different on the server and the client, you can do a two-pass rendering. Components that render something different on the client can read a state variable like `this.state.isClient`, which you can set to `true` in `componentDidMount()`. This way the initial render pass will render the same content as the server, avoiding mismatches, but an additional pass will happen synchronously right after hydration. Note that this approach will make your components slower because they have to render twice, so use it with caution.
+만약 당신이 서버와 클라이언트 간의 차이를 의도한다면, 당신은 2 패스 렌더링을 사용할 수 있습니다. 클라이언트에서 다르게 렌더링 되는 컴포넌트는 `componentDidMount()`에서 `true`로 설정할 수 있는 `this.state.isClient`와 같은 상태 변수를 읽을 수 있습니다. 이 방식으로 초기 렌더 패스는 서버와 동일한 컨텐츠를 렌더링하여 불일치를 방지하지만, 공급 직후에 추가 패스가 동기로 발생합니다. 이 방식은 당신의 컴포넌트를 두 번 렌더링하게 만들어 속도를 느리게 할 수 있기 때문에 주의를 기울여야 합니다.
 
-Remember to be mindful of user experience on slow connections. The JavaScript code may load significantly later than the initial HTML render, so if you render something different in the client-only pass, the transition can be jarring. However, if executed well, it may be beneficial to render a "shell" of the application on the server, and only show some of the extra widgets on the client. To learn how to do this without getting the markup mismatch issues, refer to the explanation in the previous paragraph.
+느린 연결에서의 사용자 경험에 유의해야 합니다. JavaScript 코드는 최초 HTML 렌더링보다 매우 늦게 로드될 수 있으며, 만약 당신이 클라이언트 전용 패스에서 다른 무언가를 렌더링한다면 그 전환 과정에서 방해를 받을 수 있습니다. 그러나 정상적으로 실행된다면 서버에 어플리케이션 "shell"을 렌더링하고 클라이언트에서 일부 추가 위젯만 표시하는 것이 효과적일 수 있습니다. 마크업 불일치 문제 없이 이 방식을 사용하길 원한다면 이전 단락의 설명을 참고해주세요.
 
 * * *
 
