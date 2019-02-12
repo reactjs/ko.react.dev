@@ -45,7 +45,7 @@ function WelcomeDialog() {
 }
 ```
 
-**[Try it on CodePen](https://codepen.io/gaearon/pen/ozqNOV?editors=0010)**
+**[CodePen에서 실행하기](https://codepen.io/gaearon/pen/ozqNOV?editors=0010)**
 
 `<FancyBorder>` JSX 태그 안에 있는 것들이 `FancyBorder` 컴포넌트의 `children` prop으로 전달됩니다. `FancyBorder`는 `{props.children}`을 `<div>` 안에 렌더링하므로 전달된 엘리먼트들이 최종 출력됩니다.
 
@@ -78,7 +78,7 @@ function App() {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/gwZOJp?editors=0010)
+[**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/gwZOJp?editors=0010)
 
 `<Contacts />`와 `<Chat />`같은 React 엘리먼트는 단지 객체이기 때문에 다른 데이터처럼 prop으로 전달할 수 있습니다. 이러한 접근은 다른 라이브러리의 "슬롯 (slots)"과 비슷해보이지만 React에서 prop으로 전달할 수 있는 것에는 제한이 없습니다.
 
@@ -111,7 +111,7 @@ function WelcomeDialog() {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/kkEaOZ?editors=0010)
+[**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/kkEaOZ?editors=0010)
 
 합성은 클래스로 정의된 컴포넌트에서도 동일하게 적용됩니다.
 
@@ -161,7 +161,7 @@ class SignUpDialog extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/gwZbYa?editors=0010)
+[**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/gwZbYa?editors=0010)
 
 ## 그렇다면 상속은? {#so-what-about-inheritance}
 
