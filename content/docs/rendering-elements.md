@@ -44,8 +44,7 @@ React 엘리먼트를 루트 DOM 노드에 렌더링하려면, 둘 다 `ReactDOM
 
 ## 렌더링 된 엘리먼트 업데이트하기 {#updating-the-rendered-element}
 
-React 엘리먼트는 [변경 불가(immutable)](https://en.wikipedia.org/wiki/Immutable_object)합니다. 엘리먼트를 생성한 이후에는 해당 엘리먼트의 자식이나 속성을 변경할 수 없습니다. 엘리먼트는 영화에서 
-하나의 프레임과 같이 특정 시점의 UI를 보여줍니다.
+React 엘리먼트는 [변경 불가(immutable)](https://en.wikipedia.org/wiki/Immutable_object)합니다. 엘리먼트를 생성한 이후에는 해당 엘리먼트의 자식이나 속성을 변경할 수 없습니다. 엘리먼트는 영화에서 하나의 프레임과 같이 특정 시점의 UI를 보여줍니다.
 
 지금까지 소개한 내용을 바탕으로 하면, UI를 업데이트하는 유일한 방법은 새로운 엘리먼트를 생성하고 이를 `ReactDOM.render()`로 전달하는 것입니다.
 
