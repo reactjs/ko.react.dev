@@ -148,7 +148,7 @@ ReactDOM.render(
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
 
-자바스크립트에서 `true && expression`은 항상 `expression`으로 평가되고, `false && expression`은 항상 `false`로 평가됩니다.
+Javascript에서 `true && expression`은 항상 `expression`으로 평가되고, `false && expression`은 항상 `false`로 평가됩니다.
 
 따라서 `&&`뒤의 엘리먼트는 조건이 `true`일때 출력이 됩니다. 만약 조건이 `false`라면, React는 무시하고 지나칠 것입니다.
 
@@ -186,7 +186,7 @@ render() {
 }
 ```
 
-자바스크립트에서처럼, 당신이나 당신의 팀이 가독성이 좋다고 생각하는 스타일을 선택하면 됩니다. 또한 조건들이 너무 복잡하다면 [컴포넌트를 분리](/docs/components-and-props.html#extracting-components)하기 좋을 때 일 수 도 있다는 것을 기억하세요.
+Javascript처럼, 당신이나 당신의 팀이 가독성이 좋다고 생각하는 방식을 선택하면 됩니다. 또한 조건들이 너무 복잡하다면 [컴포넌트를 분리](/docs/components-and-props.html#extracting-components)하기 좋을 때 일 수 도 있다는 것을 기억하세요.
 
 ### 컴포넌트가 렌더링 하는 것을 막기 {#preventing-component-from-rendering}
 
