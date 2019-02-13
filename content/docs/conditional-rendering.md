@@ -24,8 +24,7 @@ function GuestGreeting(props) {
 }
 ```
 
-We'll create a `Greeting` component that displays either of these components depending on whether a user is logged in:
-사용자의 로그인 상태에 맞게 이들 컴포넌트를 보여주는 `Greeting`컴포넌트를 만듭니다:
+이제 사용자의 로그인 상태에 맞게 위 컴포넌트 중 하나를 보여주는 `Greeting` 컴포넌트를 만듭니다:
 
 ```javascript{3-7,11,12}
 function Greeting(props) {
@@ -43,7 +42,7 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
+[**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
 
 이 예제는 `isLoggedIn` prop에 따라서 다른 인사를 렌더링 합니다.
 
@@ -117,7 +116,7 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
+[**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
 
 변수를 선언하고 `if`를 사용해서 조건부로 렌더링 하는 것은 좋은 방법이지만, 종종 더 짧은 구문을 사용하고 싶을 때가 있을 수 있습니다. 이 조건들을 JSX 안에서 inline으로 처리할 방법 몇 가지를 아래에서 소개하겠습니다.
 
@@ -147,7 +146,7 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
+[**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
 
 자바스크립트에서 `true && expression`은 항상 `expression`으로 평가되고, `false && expression`은 항상 `false`로 평가됩니다.
 
@@ -157,7 +156,7 @@ ReactDOM.render(
 
 엘리먼트를 조건부로 렌더링하는 다른 방법은 조건부 연산자인 [`condition ? true: false`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)를 사용하는 것입니다.
 
-아래의 예제에서는 짧은 구문을 조건부로 렌더할 것입니다.
+아래의 예제에서는 짧은 구문을 조건부로 렌더링할 것입니다.
 
 ```javascript{5}
 render() {
@@ -191,9 +190,9 @@ render() {
 
 ### 컴포넌트가 렌더링 하는 것을 막기 {#preventing-component-from-rendering}
 
-가끔 다른 컴포넌트에 의해 렌더될 때 컴포넌트 자체를 숨기고 싶을 때가 있을 수 있습니다. 이때는 렌더링 결과를 출력하는 대신 `null`을 리턴하면 해결할 수 있습니다.
+가끔 다른 컴포넌트에 의해 렌더될 때 컴포넌트 자체를 숨기고 싶을 때가 있을 수 있습니다. 이때는 렌더링 결과를 출력하는 대신 `null`을 반환하면 해결할 수 있습니다.
 
-아래의 예제에서는 `<WarningBanner />`가 `warn` prop의 값에 의해서 렌더됩니다. 만약 prop이 `false`라면 컴포넌트는 렌더링하지 않게 됩니다:
+아래의 예제에서는 `<WarningBanner />`가 `warn` prop의 값에 의해서 렌더링됩니다. 만약 prop이 `false`라면 컴포넌트는 렌더링하지 않게 됩니다:
 
 ```javascript{2-4,29}
 function WarningBanner(props) {
@@ -239,6 +238,6 @@ ReactDOM.render(
 );
 ```
 
-[**CodePen 에서 실행해보기**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
+[**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
 
-컴포넌트의 생명주기 메소드들이 호출되는 것은 `render`가 `null`을 리턴하는 것에 영향을 받지 않습니다. 그 예로 `comonentDidUpdate`는 계속해서 호출되게 됩니다.
+컴포넌트의 생명주기 메소드들이 호출되는 것은 `render`가 `null`을 반환하는 것에 영향을 받지 않습니다. 그 예로 `comonentDidUpdate`는 계속해서 호출되게 됩니다.
