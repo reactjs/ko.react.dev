@@ -6,7 +6,7 @@ prev: cdn-links.html
 next: introducing-jsx.html
 ---
 
-가장 단순한 React 예제는 다음과 같이 생겼습니다.
+가장 단순한 React 예시는 다음과 같이 생겼습니다.
 
 ```js
 ReactDOM.render(
@@ -19,7 +19,7 @@ ReactDOM.render(
 
 [CodePen에서 실행하기](codepen://hello-world)
 
-온라인 에디터로 열어보려면 상단의 링크를 클릭하세요. 코드를 자유롭게 수정하고, 결과가 어떻게 변하는지 관찰해보세요. 이 안내서의 거의 모든 페이지에서는 이런 형태로 수정 가능한 예제를 함께 제공합니다.
+온라인 에디터로 열어보려면 상단의 링크를 클릭하세요. 코드를 자유롭게 수정하고, 결과가 어떻게 변하는지 관찰해보세요. 이 안내서의 거의 모든 페이지에서는 이런 형태로 수정 가능한 예시를 함께 제공합니다.
 
 
 ## 이 안내서를 읽는 방법 {#how-to-read-this-guide}
@@ -40,7 +40,7 @@ React는 JavaScript 라이브러리이며, 따라서 JavaScript 언어에 대한
 
 >주의
 >
->이 가이드에서는 가끔 최신 JavaScript 문법을 예제에 사용합니다. 지난 몇 년간 JavaScript로 작업하지 않았다면, [이 3가지 사항](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c)을 통해 대부분의 것을 얻을 수 있습니다.
+>이 가이드에서는 가끔 최신 JavaScript 문법을 예시에 사용합니다. 지난 몇 년간 JavaScript로 작업하지 않았다면, [이 3가지 사항](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c)을 통해 대부분의 것을 얻을 수 있습니다.
 
 
 ## 시작해봅시다! {#lets-get-started}
