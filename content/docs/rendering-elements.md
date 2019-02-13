@@ -40,7 +40,7 @@ React 엘리먼트를 루트 DOM 노드에 렌더링하려면, 둘 다 `ReactDOM
 
 [**CodePen에서 실행하기**](codepen://rendering-elements/render-an-element)
 
-위 코드를 실행하면 화면에 "Hello, World"가 보일 겁니다.
+위 코드를 실행하면 화면에 "Hello, world"가 보일 겁니다.
 
 ## 렌더링 된 엘리먼트 업데이트하기 {#updating-the-rendered-element}
 
@@ -58,7 +58,7 @@ React 엘리먼트는 [변경 불가(immutable)](https://en.wikipedia.org/wiki/I
 
 >**노트**
 >
->실제로, 대부분의 React 앱은 `ReactDOM.render()`를 한 번만 호출합니다. 다음 장에서는 이와 같은 코드가 [유상태 컴포넌트(stateful components)](/docs/state-and-lifecycle.html)에 어떻게 캡슐화되는지 설명합니다.
+>실제로, 대부분의 React 앱은 `ReactDOM.render()`를 한 번만 호출합니다. 다음 장에서는 이와 같은 코드가 [유상태 컴포넌트](/docs/state-and-lifecycle.html)에 어떻게 캡슐화되는지 설명합니다.
 >
 >각 주제가 서로 연관이 있기 때문에 건너뛰지 않는 것을 추천합니다.
 
