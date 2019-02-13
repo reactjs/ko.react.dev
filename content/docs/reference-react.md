@@ -49,7 +49,7 @@ UI의 형태를 설명하는 데에 [JSX를 사용할 것](/docs/introducing-jsx
 
 ### Fragments {#fragments}
 
-또한 `React`는 래퍼 없이 복수 요소를 렌더링할 수 있는 컴포넌트를 제공합니다:
+또한 `React`는 래퍼 없이 복수 요소를 렌더링할 수 있는 컴포넌트를 제공합니다.
 
 - [`React.Fragment`](#reactfragment)
 
@@ -58,18 +58,16 @@ UI의 형태를 설명하는 데에 [JSX를 사용할 것](/docs/introducing-jsx
 - [`React.createRef`](#reactcreateref)
 - [`React.forwardRef`](#reactforwardref)
 
-### Suspense
+### Suspense {#suspense}
 
 Suspense를 사용하면 컴포넌트가 렌더링 전에 "기다립니다". 현재 Suspense는 단 하나의 사용례만 지원합니다: [`React.lazy`를 사용하여 컴포넌트를 동적으로 불러오기](/docs/code-splitting.html#reactlazy). 나중에는 데이터 불러오기와 같은 사용례를 지원할 계획입니다.
 
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
 
-## Hooks {#hooks}
-
 ### Hooks {#hooks}
 
-*Hooks*는 React 16.8에 새로 추가되었습니다. Hooks를 사용하면 클래스를 사용하지 않아도 상태와 React 기능들을 사용할 수 있도록 해줍니다. Hooks만을 다루는 문서와 API 문서가 존재합니다:
+*Hooks*는 React 16.8에 새로 추가되었습니다. Hooks를 사용하면 클래스를 사용하지 않아도 상태와 React 기능들을 사용할 수 있도록 해줍니다. Hooks만을 다루는 [문서](https://reactjs.org/docs/hooks-intro.html)와 API 문서가 존재합니다:
 
 - [기본적인 Hooks](/docs/hooks-reference.html#basic-hooks)
   - [`useState`](/docs/hooks-reference.html#usestate)
@@ -106,9 +104,9 @@ class Greeting extends React.Component {
 
 ### `React.PureComponent` {#reactpurecomponent}
 
-`React.PureComponent`는 [`React.Component`](#reactcomponent)와 유사합니다. [`React.Component`](#reactcomponent)은 [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate)를 구현하지 않지만, `React.PureComponent`는 props와 상태의 얕은 비교를 통하여 구현한다는 차이점만이 존재합니다.
+`React.PureComponent`는 [`React.Component`](#reactcomponent)와 유사합니다. [`React.Component`](#reactcomponent)는 [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate)를 구현하지 않지만, `React.PureComponent`는 props와 상태의 얕은 비교를 통하여 구현한다는 차이점만이 존재합니다.
 
-당신이 만든 React 컴포넌트의 `render()` 함수가 동일한 props와 상태에 대하여 동일한 결과를 렌더링한다면, `React.PureComponent`를 사용하여 경우에 따라 성능 향상을 누릴 수 있습니다.
+React 컴포넌트의 `render()` 함수가 동일한 props와 상태에 대하여 동일한 결과를 렌더링한다면, `React.PureComponent`를 사용하여 경우에 따라 성능 향상을 누릴 수 있습니다.
 
 > 주의
 >
@@ -331,7 +329,7 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 > **주의**
 >
-> 동적 `import`와 함께 `React.lazy`를 사용하려면 JS 환경이 프러미스(Promise)를 지원해야 합니다. IE11 이하에서는 폴리필(Polyfill)이 필요합니다.
+> 동적 `import`와 함께 `React.lazy`를 사용하려면 JS 환경이 프라미스(Promise)를 지원해야 합니다. IE11 이하에서는 폴리필(Polyfill)이 필요합니다.
 
 ### `React.Suspense` {#reactsuspense}
 
