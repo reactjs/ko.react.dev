@@ -34,7 +34,7 @@ ReactDOM.render(
 
 이 안내서의 모든 장들은 이전 장의 내용을 토대로 작성되었습니다. **사이드바에 보이는 순서대로 "주요 개념" 안내서의 장들을 읽으면 React의 거의 모든 내용을 익힐 수 있습니다.** [“JSX 소개”](/docs/introducing-jsx.html)가 바로 이 다음 장입니다.
 
-## 지식 수준 가정 {#knowledge-level-assumptions}
+## 지식수준 가정 {#knowledge-level-assumptions}
 
 React는 JavaScript 라이브러리이며, 따라서 JavaScript 언어에 대한 기본적인 이해가 필요합니다. **아직 자신이 없다면, [JavaScript 튜토리얼 살펴보기](https://developer.mozilla.org/ko/docs/A_re-introduction_to_JavaScript)를 통해 자신의 지식수준을 확인해보길 권장드리며** 이를 통해 길을 잃지 않고 이 안내서를 잘 따라올 수 있게 될 것입니다. 30분에서 1시간 가량 소요되지만, 결과적으로 더 이상 React와 JavaScript를 동시에 배운다는 느낌을 받지 않을 수 있습니다.
 
