@@ -46,7 +46,7 @@ ReactDOM.render(
 
 이 예제는 `isLoggedIn` prop에 따라서 다른 인사를 렌더링 합니다.
 
-### 엘리먼트 변수들 #{element-variables}
+### 엘리먼트 변수들 {#element-variables}
 
 엘리먼트들을 저장하기 위해 변수를 사용할 수 있습니다. 이렇게 하면 다른 출력은 상관 없이 컴포넌트의 일부를 조건부로 렌더링 할 수 있습니다.
 
