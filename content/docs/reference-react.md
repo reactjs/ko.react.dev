@@ -26,7 +26,7 @@ React 컴포넌트를 사용하면 UI를 독립적이고 재사용할 수 있는
 
 ES6 Class를 사용하지 않는다면, `create-react-class` 모듈을 대신 사용해도 됩니다. 자세한 정보는 [ES6 없이 React를 사용하기](/docs/react-without-es6.html) 문서에서 확인할 수 있습니다.
 
-React 컴포넌트를 정의할 때 래핑될 수 있는 함수의 형태로 할 수도 있습니다:
+React 컴포넌트를 정의할 때 래핑될 수 있는 함수의 형태로 할 수도 있습니다.
 
 - [`React.memo`](#reactmemo)
 
@@ -41,7 +41,7 @@ UI의 형태를 설명하는 데에 [JSX를 사용할 것](/docs/introducing-jsx
 
 ### 요소 변환하기 {#transforming-elements}
 
-`React`는 요소를 조작하는 API들을 제공합니다:
+`React`는 요소를 조작하는 API들을 제공합니다.
 
 - [`cloneElement()`](#cloneelement)
 - [`isValidElement()`](#isvalidelement)
@@ -60,14 +60,14 @@ UI의 형태를 설명하는 데에 [JSX를 사용할 것](/docs/introducing-jsx
 
 ### Suspense {#suspense}
 
-Suspense를 사용하면 컴포넌트가 렌더링 전에 "기다립니다". 현재 Suspense는 단 하나의 사용례만 지원합니다: [`React.lazy`를 사용하여 컴포넌트를 동적으로 불러오기](/docs/code-splitting.html#reactlazy). 나중에는 데이터 불러오기와 같은 사용례를 지원할 계획입니다.
+Suspense를 사용하면 컴포넌트가 렌더링 전에 "기다립니다". 현재 Suspense는 단 하나의 사용례 [`React.lazy`를 사용하여 컴포넌트를 동적으로 불러오기](/docs/code-splitting.html#reactlazy)만 지원합니다. 나중에는 데이터 불러오기와 같은 사용례를 지원할 계획입니다.
 
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
 
 ### Hooks {#hooks}
 
-*Hooks*는 React 16.8에 새로 추가되었습니다. Hooks를 사용하면 클래스를 사용하지 않아도 상태와 React 기능들을 사용할 수 있도록 해줍니다. Hooks만을 다루는 [문서](https://reactjs.org/docs/hooks-intro.html)와 API 문서가 존재합니다:
+*Hooks*는 React 16.8에 새로 추가되었습니다. Hooks를 사용하면 클래스를 사용하지 않아도 상태와 React 기능들을 사용할 수 있도록 해줍니다. Hooks만을 다루는 [문서](https://reactjs.org/docs/hooks-intro.html)와 API 문서가 존재합니다.
 
 - [기본적인 Hooks](/docs/hooks-reference.html#basic-hooks)
   - [`useState`](/docs/hooks-reference.html#usestate)
@@ -88,7 +88,7 @@ Suspense를 사용하면 컴포넌트가 렌더링 전에 "기다립니다". 현
 
 ### `React.Component` {#reactcomponent}
 
-`React.Component`는 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)를 사용하여 React 요소를 정의할 때에 기초가 되는 클래스입니다:
+`React.Component`는 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)를 사용하여 React 요소를 정의할 때에 기초가 되는 클래스입니다.
 
 ```javascript
 class Greeting extends React.Component {
@@ -274,7 +274,7 @@ React.Children.toArray(children)
 
 ### `React.Fragment` {#reactfragment}
 
-`React.Fragment` 컴포넌트를 사용하면 `render()` 메서드 안에서 추가적인 DOM 요소를 생성하지 않아도 복수 요소를 반환할 수 있습니다:
+`React.Fragment` 컴포넌트를 사용하면 `render()` 메서드 안에서 추가적인 DOM 요소를 생성하지 않아도 복수 요소를 반환할 수 있습니다.
 
 ```javascript
 render() {
@@ -298,7 +298,7 @@ render() {
 
 `React.forwardRef`는 creates a React component that forwards the ref attribute it receives to another component below in the tree.
 
-`React.forwardRef`는 전달받은 `ref` 특성을 하부 트리 내의 다른 컴포넌트로 전달하는 React 컴포넌트를 생성합니다. 이 기법은 잘 사용되지 않지만, 아래의 두 시나리오에서는 특히 유용합니다:
+`React.forwardRef`는 전달받은 `ref` 특성을 하부 트리 내의 다른 컴포넌트로 전달하는 React 컴포넌트를 생성합니다. 이 기법은 잘 사용되지 않지만, 아래의 두 시나리오에서는 특히 유용합니다.
 
 * [DOM 요소로 ref 전달하기](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
 * [고차 컴포넌트로 ref 전달하기](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
@@ -333,7 +333,7 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 ### `React.Suspense` {#reactsuspense}
 
-`React.Suspense`를 사용하면 트리 상에 아직 렌더링이 준비되지 않은 컴포넌트가 있을 때 로딩 지시기(Loading indicator)를 나타낼 수 있습니다. 현재로서는 지연시켜서 불러오는 컴포넌트가 `<React.Suspense>`의 유일한 사용례입니다:
+`React.Suspense`를 사용하면 트리 상에 아직 렌더링이 준비되지 않은 컴포넌트가 있을 때 로딩 지시기(Loading indicator)를 나타낼 수 있습니다. 현재로서는 지연시켜서 불러오는 컴포넌트가 `<React.Suspense>`의 유일한 사용례입니다.
 
 ```js
 // 이 컴포넌트는 동적으로 불러옵니다
