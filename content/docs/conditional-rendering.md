@@ -8,9 +8,9 @@ redirect_from:
   - "tips/false-in-jsx.html"
 ---
 
-리액트에서는 원하는 동작을 캡슐화하는 별개의 컴포넌트를 만들 수 있습니다. 그러면 애플리케이션의 상태에 따라서 컴포넌트 중 몇 개만을 렌더링 할 수 있습니다.
+React에서는 원하는 동작을 캡슐화하는 별개의 컴포넌트를 만들 수 있습니다. 그러면 애플리케이션의 상태에 따라서 컴포넌트 중 몇 개만을 렌더링할 수 있습니다..
 
-리액트에서 조건부 렌더링은 자바스크립트에서의 조건 처리와 같게 동작합니다. [`if`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/if...else) 나 [`조건부 연산자`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 와 같은 자바스크립트 연산자를 현재 상태를 나타내는 요소들를 만드는 데에 사용하세요. 그러면 리액트는 현재 상태에 맞게 UI를 업데이트합니다.
+React에서 조건부 렌더링은 자바스크립트에서의 조건 처리와 같게 동작합니다. [`if`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/if...else) 나 [`조건부 연산자`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 와 같은 자바스크립트 연산자를 현재 상태를 나타내는 요소들를 만드는 데에 사용하세요. 그러면 React는 현재 상태에 맞게 UI를 업데이트합니다.
 
 아래 두 컴포넌트가 있다고 가정해 봅시다:
 
@@ -150,7 +150,7 @@ ReactDOM.render(
 
 자바스크립트에서 `true && expression`은 항상 `expression`으로 평가되고, `false && expression`은 항상 `false`로 평가됩니다.
 
-따라서 `&&`뒤의 엘리먼트는 조건이 `true`일때 출력이 됩니다. 만약 조건이 `false`라면, 리액트는 무시하고 지나칠 것입니다.
+따라서 `&&`뒤의 엘리먼트는 조건이 `true`일때 출력이 됩니다. 만약 조건이 `false`라면, React는 무시하고 지나칠 것입니다.
 
 ### 조건부 연산자로 If-Else구문 inline화 하기{#inline-if-else-with-conditional-operator}
 
