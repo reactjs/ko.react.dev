@@ -47,9 +47,9 @@ ReactDOM.render(
 
 이 예제는 `isLoggedIn` prop에 따라서 다른 인사를 렌더링 합니다.
 
-### 앨리먼트 변수들 #{element-variables}
+### 엘리먼트 변수들 #{element-variables}
 
-앨리먼트들을 저장하기 위해 변수를 사용할 수 있습니다. 이렇게 하면 다른 출력은 상관 없이 컴포넌트의 일부를 조건부로 렌더링 할 수 있습니다.
+엘리먼트들을 저장하기 위해 변수를 사용할 수 있습니다. 이렇게 하면 다른 출력은 상관 없이 컴포넌트의 일부를 조건부로 렌더링 할 수 있습니다.
 
 로그아웃과 로그인 버튼을 나타내는 두 컴포넌트가 있다고 가정해 보세요:
 
@@ -123,7 +123,7 @@ ReactDOM.render(
 
 ### 논리 && 연산자로 If를 inline화 하기 {#inline-if-with-logical--operator}
 
-JSX안에는 중괄호를 이용해서 [표현식을 포함](/docs/introducing-jsx.html#embedding-expressions-in-jsx) 할 수 있습니다. 이 방법은 자바스크립트의 논리 `&&` 연산자를 포함합니다. 이 연산자를 사용하면 쉽게 앨리먼트를 조건부로 포함할 수 있습니다:
+JSX안에는 중괄호를 이용해서 [표현식을 포함](/docs/introducing-jsx.html#embedding-expressions-in-jsx) 할 수 있습니다. 이 방법은 자바스크립트의 논리 `&&` 연산자를 포함합니다. 이 연산자를 사용하면 쉽게 엘리먼트를 조건부로 포함할 수 있습니다:
 
 ```js{6-10}
 function Mailbox(props) {
@@ -151,11 +151,11 @@ ReactDOM.render(
 
 자바스크립트에서 `true && expression`은 항상 `expression`으로 평가되고, `false && expression`은 항상 `false`로 평가됩니다.
 
-따라서 `&&`뒤의 앨리먼트는 조건이 `true`일때 출력이 됩니다. 만약 조건이 `false`라면, 리액트는 무시하고 지나칠 것입니다.
+따라서 `&&`뒤의 엘리먼트는 조건이 `true`일때 출력이 됩니다. 만약 조건이 `false`라면, 리액트는 무시하고 지나칠 것입니다.
 
 ### 조건부 연산자로 If-Else구문 inline화 하기{#inline-if-else-with-conditional-operator}
 
-앨리먼트를 조건부로 렌더링하는 다른 방법은 조건부 연산자인 [`condition ? true: false`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)를 사용하는 것입니다.
+엘리먼트를 조건부로 렌더링하는 다른 방법은 조건부 연산자인 [`condition ? true: false`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)를 사용하는 것입니다.
 
 아래의 예제에서는 짧은 구문을 조건부로 렌더할 것입니다.
 
