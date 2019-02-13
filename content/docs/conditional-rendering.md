@@ -8,7 +8,7 @@ redirect_from:
   - "tips/false-in-jsx.html"
 ---
 
-리액트에서는 원하는 동작을 캡슐화하는 별개의 컴포넌트를 만들 수 있습니다. 그러면 애플리케이션의 상태에 따라서 컴포넌트 중 몇개만을 렌더링 할 수 있습니다.
+리액트에서는 원하는 동작을 캡슐화하는 별개의 컴포넌트를 만들 수 있습니다. 그러면 애플리케이션의 상태에 따라서 컴포넌트 중 몇 개만을 렌더링 할 수 있습니다.
 
 리액트에서 조건부 렌더링은 자바스크립트에서의 조건 처리와 같게 동작합니다. [`if`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/if...else) 나 [`조건부 연산자`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 와 같은 자바스크립트 연산자를 현재 상태를 나타내는 요소들를 만드는 데에 사용하세요. 그러면 리액트는 현재 상태에 맞게 UI를 업데이트합니다.
 
