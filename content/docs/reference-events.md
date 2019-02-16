@@ -6,7 +6,7 @@ layout: docs
 category: Reference
 ---
 
-이 참조는 리액트의 이벤트 시스템 일부를 구성하는 `합성이벤트` 래퍼를 설명합니다. 더 많은 정보는 [이벤트 처리](/docs/handling-events.html) 문서를 보세요.
+이 문서는 리액트의 이벤트 시스템 일부를 구성하는 `합성이벤트` 래퍼를 설명합니다. 더 많은 정보는 [이벤트 처리하기](/docs/handling-events.html) 문서를 보세요.
 
 ## 개요 {#overview}
 
@@ -159,7 +159,7 @@ number which
 onFocus onBlur
 ```
 
-포커스 이벤트는 form 요소 뿐만이 아니라 모든 React DOM 요소에 작동합니다.
+포커스 이벤트는 form 엘리먼트 뿐만이 아니라 모든 React DOM 엘리먼트에 작동합니다.
 
 속성
 
@@ -191,7 +191,7 @@ onDragLeave onDragOver onDragStart onDrop onMouseDown onMouseEnter onMouseLeave
 onMouseMove onMouseOut onMouseOver onMouseUp
 ```
 
-`onMouseEnter` 및 `onMouseLeave` 이벤트는 일반적인 버블링 대신 떠나는 요소에서 들어가는 요소로 전파되고 캡처 단계가 없습니다.
+`onMouseEnter` 및 `onMouseLeave` 이벤트는 일반적인 버블링 대신 떠나는 엘리먼트에서 들어가는 엘리먼트로 전파되고 캡처 단계가 없습니다.
 
 속성
 
@@ -223,7 +223,7 @@ onPointerDown onPointerMove onPointerUp onPointerCancel onGotPointerCapture
 onLostPointerCapture onPointerEnter onPointerLeave onPointerOver onPointerOut
 ```
 
-`onPointerEnter` 및 `onPointerLeave` 이벤트는 일반적인 버블링 대신 떠나는 요소에서 들어가는 요소로 전파되고 캡처 단계가 없습니다.
+`onPointerEnter` 및 `onPointerLeave` 이벤트는 일반적인 버블링 대신 떠나는 엘리먼트에서 들어가는 엘리먼트로 전파되고 캡처 단계가 없습니다.
 
 속성
 
@@ -244,7 +244,7 @@ boolean isPrimary
 
 크로스 브라우저 지원에 대한 메모
 
-포인터 이벤트는 아직 모든 브라우저에서 지원되지 않습니다. (이 문서를 작성할 땐 Chrome, Firefox, Edge 및 Internet Explorer가 지원함.) 표준 폴리필은 `react-dom` 번들을 무겁게 만들기 때문에 React가 직접 브라우저 호환성을 위해 폴리필을 제공하진 않습니다.
+포인터 이벤트는 아직 모든 브라우저에서 지원되지 않습니다(이 문서를 작성하는 시점엔 Chrome, Firefox, Edge 및 Internet Explorer가 지원합니다). 표준 폴리필은 `react-dom` 번들을 무겁게 만들기 때문에 React가 직접 브라우저 호환성을 위해 폴리필을 제공하진 않습니다.
 
 어플리케이션이 포인터 이벤트를 의존한다면 직접 서드 파티 포인터 폴리필을 추가하세요.
 
