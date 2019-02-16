@@ -53,7 +53,7 @@ function onClick(event) {
   // 동작하지 않습니다. this.state.clickEvent 은 null만 가지게 될 것입니다.
   this.setState({clickEvent: event});
 
-  // 이벤트 프로퍼티를 추출할 수 있습니다.
+  // 이벤트 속성을 추출할 수 있습니다.
   this.setState({eventType: event.type});
 }
 ```
@@ -147,11 +147,11 @@ boolean shiftKey
 number which
 ```
 
-키 프로퍼티는 [DOM 3단계 이벤트 명세](https://www.w3.org/TR/uievents-key/#named-key-attribute-values)에 있는 어떤 값이든 가질 수 있습니다.
+`key` 프로퍼티는 [DOM 3단계 이벤트 명세](https://www.w3.org/TR/uievents-key/#named-key-attribute-values)에 있는 어떤 값이든 가질 수 있습니다.
 
 * * *
 
-### 초점 이벤트 {#focus-events}
+### 포커스 이벤트 {#focus-events}
 
 이벤트 이름
 
@@ -159,7 +159,7 @@ number which
 onFocus onBlur
 ```
 
-초점 이벤트들은 form 요소 뿐만이 아니라 모든 React DOM 요소에 작동합니다.
+포커스 이벤트들은 form 요소 뿐만이 아니라 모든 React DOM 요소에 작동합니다.
 
 속성
 
