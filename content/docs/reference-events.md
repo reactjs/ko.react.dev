@@ -12,7 +12,7 @@ category: Reference
 
 이벤트 핸들러는 브라우저의 통합 브라우저 이벤트 래퍼 `합성이벤트` 객체를 전달받습니다. `stopPropagation()` 와 `preventDefault()`를 포함해서 인터페이스는 브라우저의 원시 이벤트와 같지만 모든 브라우저에서 동일하게 동작합니다.
 
-만약 브라우저의 기본 이벤트가 필요하다면 `nativeEvent` 어트리뷰트로 참조하세요. 모든 `합성이벤트` 객체는 다음 어트리뷰트들을 가집니다.
+브라우저의 기본 이벤트가 필요하다면 `nativeEvent` 어트리뷰트로 참조하세요. 모든 `합성이벤트` 객체는 다음 어트리뷰트들을 가집니다.
 
 ```javascript
 boolean bubbles
@@ -197,7 +197,7 @@ onMouseMove onMouseOut onMouseOver onMouseUp
 
 ```javascript
 boolean altKey
-number button 
+number button
 number buttons
 number clientX
 number clientY
@@ -244,7 +244,7 @@ boolean isPrimary
 
 크로스 브라우저 지원에 대한 메모
 
-포인터 이벤트는 아직 모든 브라우저에서 지원되지 않습니다. (이 문서를 작성할 땐 Chrome, Firefox, Edge 및 Internet Explorer가 지원함.) 표준 폴리필은 `react-dom`의 번들을 무겁게 만들기 때문에 React가 직접 브라우저 호환성을 위해 폴리필을 제공하진 않습니다.
+포인터 이벤트는 아직 모든 브라우저에서 지원되지 않습니다. (이 문서를 작성할 땐 Chrome, Firefox, Edge 및 Internet Explorer가 지원함.) 표준 폴리필은 `react-dom` 번들을 무겁게 만들기 때문에 React가 직접 브라우저 호환성을 위해 폴리필을 제공하진 않습니다.
 
 어플리케이션이 포인터 이벤트를 의존한다면 직접 서드 파티 포인터 폴리필을 추가하세요.
 
