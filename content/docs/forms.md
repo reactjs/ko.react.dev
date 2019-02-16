@@ -29,7 +29,7 @@ HTML에서 `<input>`, `<textarea>`, `<select>`와 같은 폼 엘리먼트는 일
 
 우리는 React state를 "신뢰 가능한 단일 소스 (single source of truth)"로 만들어 두 요소를 결합할 수 있습니다. 그런 다음 한 폼을 렌더링하는 React 컴포넌트는 다음 사용자 입력시 그 폼에서 발생하는 일을 제어합니다. 이러한 방식으로 React에 의해 값이 제어되는 입력 폼 엘리먼트를 "제어되는 컴포넌트 (controlled component)"라고 합니다.
 
-예를 들어, 만약 이전 예제가 전송될 때 이름을 기록하길 원한다면 폼을 제어되는 컴포넌트 (controlled component)로 작성할 수 있습니다:
+예를 들어, 만약 이전 예제가 전송될 때 이름을 기록하길 원한다면 폼을 제어되는 컴포넌트 (controlled component)로 작성할 수 있습니다.
 
 ```javascript{4,10-12,24}
 class NameForm extends React.Component {
@@ -68,7 +68,7 @@ class NameForm extends React.Component {
 
 `value` 어트리뷰트는 폼 엘리먼트에 설정되므로 표시되는 값은 항상 `this.state.value`가 되고 React state는 신뢰 가능한 단일소스 (single source of truth)가 됩니다. React state를 업데이트하기 위해 모든 키스트로크에서 `handleChange`가 동작하기 때문에 사용자가 입력할 때 보여지는 값이 업데이트됩니다.
 
-제어되는 컴포넌트로 모든 state 변이에는 연관된 핸들러 기능이 있습니다. 이것을 통해 사용자 입력을 수정하거나 유효성을 검사하는 것이 간단해집니다. 예를 들어, 이름이 모두 대문자로 쓰여지게 하고 싶다면 `handleChange`를 다음과 같이 사용할 수 있습니다:   
+제어되는 컴포넌트로 모든 state 변이에는 연관된 핸들러 기능이 있습니다. 이것을 통해 사용자 입력을 수정하거나 유효성을 검사하는 것이 간단해집니다. 예를 들어, 이름이 모두 대문자로 쓰여지게 하고 싶다면 `handleChange`를 다음과 같이 사용할 수 있습니다.   
 
 ```javascript{2}
 handleChange(event) {
@@ -78,7 +78,7 @@ handleChange(event) {
 
 ## textarea 태그 {#the-textarea-tag}
 
-HTML에서 `<textarea>` 엘리먼트는 텍스트를 자식으로 정의합니다:
+HTML에서 `<textarea>` 엘리먼트는 텍스트를 자식으로 정의합니다.
 
 ```html
 <textarea>
@@ -86,7 +86,7 @@ HTML에서 `<textarea>` 엘리먼트는 텍스트를 자식으로 정의합니�
 </textarea>
 ```
 
-React에서 `<textarea>`는 `value` 어트리뷰트는 대신 사용합니다. 이렇게하면 `<textarea>`를 사용하는 폼은 한 줄 입력을 사용하는 폼과 유사하게 작성할 수 있습니다:  
+React에서 `<textarea>`는 `value` 어트리뷰트는 대신 사용합니다. 이렇게하면 `<textarea>`를 사용하는 폼은 한 줄 입력을 사용하는 폼과 유사하게 작성할 수 있습니다.  
 
 ```javascript{4-6,12-14,26}
 class EssayForm extends React.Component {
@@ -127,7 +127,7 @@ class EssayForm extends React.Component {
 
 ## select 태그 {#the-select-tag}
 
-HTML에서 `<select>`는 드롭 다운 목록을 만듭니다. 예를 들어, 이 HTML은 과일 드롭 다운 목록을 만듭니다: 
+HTML에서 `<select>`는 드롭 다운 목록을 만듭니다. 예를 들어, 이 HTML은 과일 드롭 다운 목록을 만듭니다. 
 
 ```html
 <select>
@@ -138,7 +138,7 @@ HTML에서 `<select>`는 드롭 다운 목록을 만듭니다. 예를 들어, �
 </select>
 ```
 
-`selected` 옵션이 있으므로 Coconut 옵션이 초기값이 된다. React에서는 `selected` 어트리뷰트를 사용하는 대신 최상단 `select`태그에 `value` 어트리뷰트를 사용합니다. 한 곳에서 업데이트만 하면되기 때문에 제어되는 컴포넌트에서 사용하기 더 편합니다. 예를 들어: 
+`selected` 옵션이 있으므로 Coconut 옵션이 초기값이 됩니다. React에서는 `selected` 어트리뷰트를 사용하는 대신 최상단 `select`태그에 `value` 어트리뷰트를 사용합니다. 한 곳에서 업데이트만 하면되기 때문에 제어되는 컴포넌트에서 사용하기 더 편합니다. 예를 들어: 
 
 ```javascript{4,10-12,24}
 class FlavorForm extends React.Component {
@@ -264,7 +264,7 @@ this.setState({
 });
 ```
 
-ES5 코드는 아래와 같습니다:
+ES5 코드는 아래와 같습니다.
 
 ```js{2}
 var partialState = {};
