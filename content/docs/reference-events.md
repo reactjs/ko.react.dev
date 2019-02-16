@@ -10,9 +10,9 @@ category: Reference
 
 ## 개요 {#overview}
 
-이벤트 핸들러는 브라우저의 통합 브라우저 이벤트 래퍼 `합성이벤트` 객체를 전달받습니다. `stopPropagation()` 와 `preventDefault()`를 포함해서 인터페이스는 브라우저의 원시 이벤트와 같지만 모든 브라우저에서 동일하게 동작합니다.
+이벤트 핸들러는 브라우저의 통합 브라우저 이벤트 래퍼 `합성이벤트` 객체를 전달받습니다. `stopPropagation()` 와 `preventDefault()`를 포함해서 인터페이스는 브라우저의 고유 이벤트와 같지만 모든 브라우저에서 동일하게 동작합니다.
 
-브라우저의 기본 이벤트가 필요하다면 `nativeEvent` 어트리뷰트로 참조하세요. 모든 `합성이벤트` 객체는 다음 어트리뷰트들을 가집니다.
+브라우저의 기본 이벤트가 필요하다면 `nativeEvent` 어트리뷰트로 참조하세요. 모든 `합성이벤트` 객체는 다음 어트리뷰트를 가집니다.
 
 ```javascript
 boolean bubbles
@@ -66,7 +66,7 @@ function onClick(event) {
 
 React는 이벤트들을 다른 브라우저에서도 같은 속성을 가지도록 표준화합니다.
 
-다음 이벤트 핸들러들은 이벤트 버블링 단계에서 호출됩니다. 캡처 단계에서 이벤트 핸들러를 등록하기 위해서는 이벤트 이름에 `Capture`를 덧붙이세요. 예를 들어 `onClick` 대신 `onClickCapture`를 사용해서 캡처 단계에서 클릭 이벤트 핸들러를 사용할 수 있습니다.
+다음 이벤트 핸들러는 이벤트 버블링 단계에서 호출됩니다. 캡처 단계에 이벤트 핸들러를 등록하기 위해서는 이벤트 이름에 `Capture`를 덧붙이세요. 예를 들어 `onClick` 대신 `onClickCapture`를 사용해서 캡처 단계에서 클릭 이벤트 핸들러를 사용할 수 있습니다.
 
 - [Clipboard Events](#clipboard-events)
 - [Composition Events](#composition-events)
@@ -147,7 +147,7 @@ boolean shiftKey
 number which
 ```
 
-`key` 프로퍼티는 [DOM 3단계 이벤트 명세](https://www.w3.org/TR/uievents-key/#named-key-attribute-values)에 있는 어떤 값이든 가질 수 있습니다.
+`key` 속성은 [DOM 레벨 3 이벤트 명세](https://www.w3.org/TR/uievents-key/#named-key-attribute-values)에 있는 어떤 값이든 가질 수 있습니다.
 
 * * *
 
@@ -159,7 +159,7 @@ number which
 onFocus onBlur
 ```
 
-포커스 이벤트들은 form 요소 뿐만이 아니라 모든 React DOM 요소에 작동합니다.
+포커스 이벤트는 form 요소 뿐만이 아니라 모든 React DOM 요소에 작동합니다.
 
 속성
 
