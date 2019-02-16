@@ -68,22 +68,22 @@ React는 이벤트들을 다른 브라우저에서도 같은 속성을 가지도
 
 다음 이벤트 핸들러는 이벤트 버블링 단계에서 호출됩니다. 캡처 단계에 이벤트 핸들러를 등록하기 위해서는 이벤트 이름에 `Capture`를 덧붙이세요. 예를 들어 `onClick` 대신 `onClickCapture`를 사용해서 캡처 단계에서 클릭 이벤트 핸들러를 사용할 수 있습니다.
 
-- [Clipboard Events](#clipboard-events)
-- [Composition Events](#composition-events)
-- [Keyboard Events](#keyboard-events)
-- [Focus Events](#focus-events)
-- [Form Events](#form-events)
-- [Mouse Events](#mouse-events)
-- [Pointer Events](#pointer-events)
-- [Selection Events](#selection-events)
-- [Touch Events](#touch-events)
-- [UI Events](#ui-events)
-- [Wheel Events](#wheel-events)
-- [Media Events](#media-events)
-- [Image Events](#image-events)
-- [Animation Events](#animation-events)
-- [Transition Events](#transition-events)
-- [Other Events](#other-events)
+- [클립보드 이벤트](#clipboard-events)
+- [합성 이벤트](#composition-events)
+- [키보드 이벤트](#keyboard-events)
+- [포커스 이벤트](#focus-events)
+- [Form 이벤트](#form-events)
+- [마우스 이벤트](#mouse-events)
+- [포인터 이벤트](#pointer-events)
+- [선택 이벤트](#selection-events)
+- [터치 이벤트](#touch-events)
+- [UI 이벤트](#ui-events)
+- [휠 이벤트](#wheel-events)
+- [미디어 이벤트](#media-events)
+- [이미지 이벤트](#image-events)
+- [애니메이션 이벤트](#animation-events)
+- [트랜지션 이벤트](#transition-events)
+- [기타 이벤트](#other-events)
 
 * * *
 
