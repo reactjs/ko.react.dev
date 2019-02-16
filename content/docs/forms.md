@@ -68,7 +68,7 @@ class NameForm extends React.Component {
 
 `value` 어트리뷰트는 폼 엘리먼트에 설정되므로 표시되는 값은 항상 `this.state.value`가 되고 React state는 신뢰 가능한 단일소스 (single source of truth)가 됩니다. React state를 업데이트하기 위해 모든 키스트로크에서 `handleChange`가 동작하기 때문에 사용자가 입력할 때 보여지는 값이 업데이트됩니다.
 
-제어되는 컴포넌트로 모든 state 변이에는 연관된 핸들러 기능이 있습니다. 이것을 통해 사용자 입력을 수정하거나 유효성을 검사하는 것이 간단해집니다. 예를들어, 이름이 모두 대문자로 쓰여지게 하고 싶다 `handleChange`를 다음과 같이 사용할 수 있습니다:   
+제어되는 컴포넌트로 모든 state 변이에는 연관된 핸들러 기능이 있습니다. 이것을 통해 사용자 입력을 수정하거나 유효성을 검사하는 것이 간단해집니다. 예를 들어, 이름이 모두 대문자로 쓰여지게 하고 싶다면 `handleChange`를 다음과 같이 사용할 수 있습니다:   
 
 ```javascript{2}
 handleChange(event) {
