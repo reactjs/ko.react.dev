@@ -9,13 +9,13 @@ permalink: docs/glossary.html
 
 ## 싱글 페이지 애플리케이션 {#single-page-application}
 
-싱글 페이지 애플리케이션(Single-page application, SPA)은 하나의 HTML 페이지와 애플리케이션 실행에 필요한 JavaScript와 CSS 같은 모든 자산을 로드하는 응용프로그램입니다. 페이지 또는 후속 페이지의 상호작용은 서버로부터 새로운 페이지를 불러오지 않으므로 페이지가 다시 로드되지 않습니다.
+싱글 페이지 애플리케이션(Single-page application, SPA)은 하나의 HTML 페이지와 애플리케이션 실행에 필요한 JavaScript와 CSS 같은 모든 자산을 로드하는 애플리케이션입니다. 페이지 또는 후속 페이지의 상호작용은 서버로부터 새로운 페이지를 불러오지 않으므로 페이지가 다시 로드되지 않습니다.
 
 React를 사용하여 싱글 페이지 애플리케이션을 만들 수 있지만, 필수 사항은 아닙니다. 기존 웹사이트 일부분의 상호작용을 개선하기 위하여 React를 사용할 수 있습니다. React로 작성된 코드는 PHP와 같은 서버에 의해 렌더된 마크업 또는 다른 클라이언트사이드 라이브러리와 함께 문제없이 공존할 수 있습니다. 사실, Facebook에서는 위와 같은 방식으로 React를 사용하고 있습니다.
 
-## ES6, ES2015, ES2016, 등등 {#es6-es2015-es2016-etc}
+## ES6, ES2015, ES2016 등 {#es6-es2015-es2016-etc}
 
-이 약어들은 모두 ECMAScript 언어 사양의 최신 버전을 나타내며, JavaScript는 이를 구현한 것입니다. ES6 버전(ES2015로도 알려져 있습니다)에는 화살표 함수(arrow function), 클래스(class), 템플릿 리터럴(template literal), `let` 과 `const` 구문과 같이 이전 버전에 많은 추가사항이 포함되어 있습니다. 특정 버전에 대한 자세한 내용은 [여기](https://en.wikipedia.org/wiki/ECMAScript#Versions)에서 확인할 수 있습니다.
+이 약어들은 모두 ECMAScript 언어 명세의 최신 버전을 나타내며, JavaScript는 이를 구현한 것입니다. ES6 버전(ES2015로도 알려져 있습니다)에는 이전 버전에 없던 화살표 함수(arrow function), 클래스(class), 템플릿 리터럴(template literal), `let` 과 `const` 구문과 같은 많은 추가 사항이 포함되어 있습니다. 특정 버전에 대한 자세한 내용은 [여기](https://en.wikipedia.org/wiki/ECMAScript#Versions)에서 확인할 수 있습니다.
 
 ## 컴파일러 {#compilers}
 
@@ -23,7 +23,7 @@ JavaScript 컴파일러(Compiler)는 JavaScript 코드를 변환하고 다른 �
 
 ## 번들러 {#bundlers}
 
-번들러(Bundler)는 JavaScript와 CSS 코드를 별도의 모듈(종종 수백 개)로 작성하고, 브라우저에 최적화된 여러 개의 파일로 결합합니다. React 애플리케이션에서 널리 사용되는 번들러에는 [Webpack](https://webpack.js.org/)과 [Browserify](http://browserify.org/)가 있습니다.
+번들러(Bundler)는 분리된 JavaScript와 CSS 모듈 코드를 브라우저에 최적화된 여러 개의 파일로 결합합니다. React 애플리케이션에서 널리 사용되는 번들러에는 [Webpack](https://webpack.js.org/)과 [Browserify](http://browserify.org/)가 있습니다.
 
 ## 패키지 관리자 {#package-managers}
 
@@ -35,9 +35,9 @@ CDN은 Content Delivery Network의 약자입니다. CDN은 전 세계의 서버 
 
 ## JSX {#jsx}
 
-JSX는 JavaScript의 확장 문법입니다. JSX는 템플릿 언어와 비슷해 보이지만, JavaScript의 강력한 기능들을 모두 사용할 수 있습니다. JSX는 `React.createElement()`의 호출을 통해 "React 엘리먼트"(React element)라고 일반 JavaScript 객체로 컴파일됩니다. JSX에 대한 기본 소개는 [여기](/docs/introducing-jsx.html)에서 확인할 수 있으며 JSX에 대한 자세한 튜토리얼은 [여기](/docs/jsx-in-depth.html)에서 확인할 수 있습니다.
+JSX는 JavaScript의 확장 문법입니다. JSX는 템플릿 언어와 비슷해 보이지만, JavaScript의 강력한 기능들을 모두 사용할 수 있습니다. JSX는 `React.createElement()`의 호출을 통해 일반 JavaScript 객체인 "React 엘리먼트"(React element)로 컴파일됩니다. JSX에 대한 기본 소개는 [여기](/docs/introducing-jsx.html)에서 확인할 수 있으며 JSX에 대한 자세한 튜토리얼은 [여기](/docs/jsx-in-depth.html)에서 확인할 수 있습니다.
 
-React DOM은 HTML 속성(attribute) 이름 대신 캐멀케이스(camelCase)를 네이밍 컨벤션으로 사용합니다. 예를 들어, JSX에서 `tabindex`는 `tabIndex`로 작성합니다. `class` 속성은 JavaScript의 예약어이므로 `className`으로 작성합니다.
+React DOM은 HTML 어트리뷰트(attribute) 이름 대신 캐멀케이스(camelCase)를 네이밍 컨벤션으로 사용합니다. 예를 들어, JSX에서 `tabindex`는 `tabIndex`로 작성합니다. `class` 어트리뷰트는 JavaScript의 예약어이므로 `className`으로 작성합니다.
 
 ```js
 const name = 'Clementine';
@@ -49,7 +49,7 @@ ReactDOM.render(
 
 ## [엘리먼트](/docs/rendering-elements.html) {#elements}
 
-React 엘리먼트(React Element)는 React 애플리캐이션을 구성하는 블록입니다. 엘리먼트는 "컴포넌트(Component)"라는 널리 알려진 개념과 혼동되기 쉽습니다. 엘리먼트는 화면에 보여지는 것들을 기술하며, React 엘리먼트는 변경되지 않습니다.
+React 엘리먼트(React Element)는 React 애플리캐이션을 구성하는 블록입니다. 엘리먼트는 "컴포넌트(Component)"라는 널리 알려진 개념과 혼동되기 쉽습니다. 엘리먼트는 화면에 보이는 것들을 기술하며, React 엘리먼트는 변경되지 않습니다.
 
 ```js
 const element = <h1>Hello, world</h1>;
@@ -67,7 +67,7 @@ function Welcome(props) {
 }
 ```
 
-또한, 컴포넌트는 ES6 클래스로 작성할 수 있습니다.
+컴포넌트는 ES6 클래스로도 작성할 수 있습니다.
 
 ```js
 class Welcome extends React.Component {
@@ -77,7 +77,7 @@ class Welcome extends React.Component {
 }
 ```
 
-컴포넌트는 각각의 목적에 맞게 분류되어 다른 컴포넌트 내에서 사용할 수 있습니다. 컴포넌트는 다른 컴포넌트, 배열, 문자열 그리고 숫자를 반환할 수 있습니다. 화면을 구성하는 데 자주 사용되는 UI(Button, Panel, Avatar), 혹은 복잡한 UI(App, FeedStory, Comment) 컴포넌트는 재사용 가능한 컴포넌트가 될 수 있습니다. 컴포넌트의 이름은 항상 대문자로 시작해야 합니다 (`<Wrapper/>` **(o)** `<wrapper/>` **(x)**). 컴포넌트 렌더링에 대한 자세한 내용은 [이 문서](/docs/components-and-props.html#rendering-a-component)를 참고하세요.
+컴포넌트는 기능별로 나눌 수 있으며 다른 컴포넌트 안에서 사용할 수 있습니다. 컴포넌트는 다른 컴포넌트, 배열, 문자열 그리고 숫자를 반환할 수 있습니다. 화면을 구성하는 데 자주 사용되는 UI(Button, Panel, Avatar), 혹은 복잡한 UI(App, FeedStory, Comment) 컴포넌트는 재사용 가능한 컴포넌트가 될 수 있습니다. 컴포넌트의 이름은 항상 대문자로 시작해야 합니다 (`<Wrapper/>` **(o)** `<wrapper/>` **(x)**). 컴포넌트 렌더링에 대한 자세한 내용은 [이 문서](/docs/components-and-props.html#rendering-a-component)를 참고하세요.
 
 ### [`props`](/docs/components-and-props.html) {#props}
 
@@ -90,7 +90,7 @@ class Welcome extends React.Component {
 props.number = 42;
 ```
 
-사용자 입력 또는 네트워크 응답으로 어떤 값을 수정해야 하는 경우 `state`를 사용하세요.
+사용자의 입력 또는 네트워크 응답에 반응하여 어떤 값을 수정해야 한다면 `state`를 사용하세요.
 
 ### `props.children` {#propschildren}
 
@@ -150,7 +150,7 @@ Key는 같은 배열에 포함된 다른 요소 사이에서만 고윳값을 가
 
 ## [Ref](/docs/refs-and-the-dom.html) {#refs}
 
-React는 컴포넌트에 접근할 수 있는 특수한 속성을 지원합니다. `ref` 속성은 [`React.createRef()` 함수](/docs/react-api.html#reactcreateref), 콜백 함수, 혹은 문자열(레거시 API에서)로 생성할 수 있습니다. `ref` 속성이 콜백 함수인 경우, 함수는 기본 DOM 엘리먼트나 클래스 인스턴스를 인자로 받습니다. 이를 통해 컴포넌트 인스턴스나 DOM 엘리먼트에 직접 접근할 수 있습니다.
+React는 컴포넌트에 접근할 수 있는 특수한 어트리뷰트를 지원합니다. `ref` 어트리뷰트 [`React.createRef()` 함수](/docs/react-api.html#reactcreateref), 콜백 함수, 혹은 문자열(레거시 API에서)로 생성할 수 있습니다. ref 어트리뷰트가 콜백 함수인 경우, 함수는 DOM 엘리먼트나 클래스 인스턴스를 인자로 받습니다. 이를 통해 컴포넌트 인스턴스나 DOM 엘리먼트에 직접 접근할 수 있습니다.
 
 Ref를 가능한 한 적게 사용하세요. 만약 앱에서 Ref를 사용하여 "작동되는 부분"이 많다면 [하향식 데이터 흐름](/docs/lifting-state-up.html)을 사용하는 것이 더 좋습니다.
 
