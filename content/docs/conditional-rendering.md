@@ -8,11 +8,11 @@ redirect_from:
   - "tips/false-in-jsx.html"
 ---
 
-React에서는 원하는 동작을 캡슐화하는 별개의 컴포넌트를 만들 수 있습니다. 그러면 애플리케이션의 상태에 따라서 컴포넌트 중 몇 개만을 렌더링할 수 있습니다..
+React에서는 원하는 동작을 캡슐화하는 컴포넌트를 만들 수 있습니다. 그럼으로서 애플리케이션의 상태에 따라서 컴포넌트 중 몇 개만을 렌더링할 수 있습니다.
 
-React에서 조건부 렌더링은 자바스크립트에서의 조건 처리와 같게 동작합니다. [`if`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/if...else) 나 [`조건부 연산자`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 와 같은 자바스크립트 연산자를 현재 상태를 나타내는 요소들를 만드는 데에 사용하세요. 그러면 React는 현재 상태에 맞게 UI를 업데이트합니다.
+React에서 조건부 렌더링은 JavaScript에서의 조건 처리와 같이 동작합니다. [`if`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/if...else) 나 [`조건부 연산자`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 와 같은 JavaScript 연산자를 현재 상태를 나타내는 요소들를 만드는 데에 사용하세요. 그러면 React는 현재 상태에 맞게 UI를 업데이트할 것입니다.
 
-아래 두 컴포넌트가 있다고 가정해 봅시다:
+아래 두 컴포넌트가 있다고 가정해 봅시다.
 
 ```js
 function UserGreeting(props) {
@@ -24,7 +24,7 @@ function GuestGreeting(props) {
 }
 ```
 
-이제 사용자의 로그인 상태에 맞게 위 컴포넌트 중 하나를 보여주는 `Greeting` 컴포넌트를 만듭니다:
+이제 사용자의 로그인 상태에 맞게 위 컴포넌트 중 하나를 보여주는 `Greeting` 컴포넌트를 만듭니다,
 
 ```javascript{3-7,11,12}
 function Greeting(props) {
@@ -50,7 +50,7 @@ ReactDOM.render(
 
 엘리먼트들을 저장하기 위해 변수를 사용할 수 있습니다. 이렇게 하면 다른 출력은 상관 없이 컴포넌트의 일부를 조건부로 렌더링 할 수 있습니다.
 
-로그아웃과 로그인 버튼을 나타내는 두 컴포넌트가 있다고 가정해 보세요:
+로그아웃과 로그인 버튼을 나타내는 두 컴포넌트가 있다고 가정해 보세요.
 
 ```js
 function LoginButton(props) {
@@ -70,9 +70,9 @@ function LogoutButton(props) {
 }
 ```
 
-이하의 예제에서는, `LoginControl`라는 [유상태 컴포넌트](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) 를 만들 것입니다.
+아래의 예제에서는 `LoginControl`라는 [유상태 컴포넌트](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) 를 만들 것입니다.
 
-이 컴포넌트는 현재 상태에 맞게 `<LoginButton />`이나 `<LogoutButton />`을 렌더링합니다. 또한 이전 예제에서의 `<Greeting />`도 함께 렌더링합니다:
+이 컴포넌트는 현재 상태에 맞게 `<LoginButton />`이나 `<LogoutButton />`을 렌더링합니다. 또한 이전 예제에서의 `<Greeting />`도 함께 렌더링합니다.
 
 ```javascript{20-25,29,30}
 class LoginControl extends React.Component {
@@ -122,7 +122,7 @@ ReactDOM.render(
 
 ### 논리 && 연산자로 If를 inline화 하기 {#inline-if-with-logical--operator}
 
-JSX안에는 중괄호를 이용해서 [표현식을 포함](/docs/introducing-jsx.html#embedding-expressions-in-jsx) 할 수 있습니다. 이 방법은 자바스크립트의 논리 `&&` 연산자를 포함합니다. 이 연산자를 사용하면 쉽게 엘리먼트를 조건부로 포함할 수 있습니다:
+JSX안에는 중괄호를 이용해서 [표현식을 포함](/docs/introducing-jsx.html#embedding-expressions-in-jsx) 할 수 있습니다. 이 안에는 JavaScript의 논리 연산자 `&&` 역시 사용할 수 있습니다. 이 연산자를 사용하면 쉽게 엘리먼트를 조건부로 넣을 수 있습니다.
 
 ```js{6-10}
 function Mailbox(props) {
@@ -148,9 +148,9 @@ ReactDOM.render(
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
 
-Javascript에서 `true && expression`은 항상 `expression`으로 평가되고, `false && expression`은 항상 `false`로 평가됩니다.
+JavaScript에서 `true && expression`은 항상 `expression`으로 평가되고 `false && expression`은 항상 `false`로 평가됩니다.
 
-따라서 `&&`뒤의 엘리먼트는 조건이 `true`일때 출력이 됩니다. 만약 조건이 `false`라면, React는 무시하고 지나칠 것입니다.
+따라서 `&&`뒤의 엘리먼트는 조건이 `true`일때 출력이 됩니다. 만약 조건이 `false`라면 React는 무시할 것입니다.
 
 ### 조건부 연산자로 If-Else구문 inline화 하기{#inline-if-else-with-conditional-operator}
 
@@ -186,13 +186,13 @@ render() {
 }
 ```
 
-Javascript처럼, 당신이나 당신의 팀이 가독성이 좋다고 생각하는 방식을 선택하면 됩니다. 또한 조건들이 너무 복잡하다면 [컴포넌트를 분리](/docs/components-and-props.html#extracting-components)하기 좋을 때 일 수 도 있다는 것을 기억하세요.
+JavaScript와 마찬가지로 가독성이 좋다고 생각하는 방식을 선택하면 됩니다. 또한 조건들이 너무 복잡하다면 [컴포넌트를 분리](/docs/components-and-props.html#extracting-components)하기 좋을 때 일 수 도 있다는 것을 기억하세요.
 
 ### 컴포넌트가 렌더링 하는 것을 막기 {#preventing-component-from-rendering}
 
 가끔 다른 컴포넌트에 의해 렌더될 때 컴포넌트 자체를 숨기고 싶을 때가 있을 수 있습니다. 이때는 렌더링 결과를 출력하는 대신 `null`을 반환하면 해결할 수 있습니다.
 
-아래의 예제에서는 `<WarningBanner />`가 `warn` prop의 값에 의해서 렌더링됩니다. 만약 prop이 `false`라면 컴포넌트는 렌더링하지 않게 됩니다:
+아래의 예제에서는 `<WarningBanner />`가 `warn` prop의 값에 의해서 렌더링됩니다. 만약 prop이 `false`라면 컴포넌트는 렌더링하지 않게 됩니다.
 
 ```javascript{2-4,29}
 function WarningBanner(props) {
@@ -240,4 +240,4 @@ ReactDOM.render(
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
 
-컴포넌트의 생명주기 메소드들이 호출되는 것은 `render`가 `null`을 반환하는 것에 영향을 받지 않습니다. 그 예로 `comonentDidUpdate`는 계속해서 호출되게 됩니다.
+`render`가 `null`을 반환하는 것은 컴포넌트의 생명주기 메소드 호출에 영향을 주지 않습니다. 그 예로 `componentDidUpdate`는 계속해서 호출되게 됩니다.
