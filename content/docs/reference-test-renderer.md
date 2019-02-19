@@ -17,7 +17,7 @@ const TestRenderer = require('react-test-renderer'); // npm에서 ES5를 사용�
 
 이 패키지는 DOM 혹은 네이티브 모바일 환경의 제약 없이, React 컴포넌트를 순수한 JavaScript 객체로 렌더링하는데 사용할 수 있는 React 렌더러를 제공합니다.
 
-기본적으로, 이 패키지를 사용하면 브라우저나 [jsdom](https://github.com/tmpvar/jsdom) 없이, React DOM 또는 React Native 컴포넌트에 의해 렌더링된 플랫폼 뷰 계층의 스냅샷을 쉽게 뜰 수 있도록 도와줍니다.
+기본적으로, 이 패키지를 사용하면 브라우저나 [jsdom](https://github.com/tmpvar/jsdom) 없이, React DOM 또는 React Native 컴포넌트에 의해 렌더링 된 플랫폼 뷰 계층의 스냅샷을 쉽게 뜰 수 있도록 도와줍니다.
 
 예시:
 
@@ -102,7 +102,7 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 TestRenderer.create(element, options);
 ```
 
-전달된 React 엘리먼트의 `TestRenderer`  인스턴스를 생성합니다. 실제 DOM을 사용하지 않지만, 컴포넌트 트리 전체를 메모리 상에 렌더링하기 때문에 원하는 값을 가지고 있는지 검증할 수 있습니다. 반환된 인스턴스는 다음과 같은 함수와 속성을 가지고 있습니다.
+전달된 React 엘리먼트의 `TestRenderer`  인스턴스를 생성합니다. 실제 DOM을 사용하지 않지만, 컴포넌트 트리 전체를 메모리상에 렌더링하기 때문에 원하는 값을 가졌는지 검증할 수 있습니다. 반환된 인스턴스는 다음과 같은 함수와 속성을 가지고 있습니다.
 
 ### `testRenderer.toJSON()` {#testrenderertojson}
 
@@ -118,7 +118,7 @@ testRenderer.toJSON()
 testRenderer.toTree()
 ```
 
-렌더된 트리를 나타내는 객체를 반환합니다. `toJSON()`와 달리 더욱 자세한 정보가 담겨있으며, 사용자가 작성한 컴포넌트 역시 나타납니다. 이 함수는 당신이 검증을 위해 당신만의 고유한 라이브러리를 테스트 렌더러 위에 사용하지 않는 한 필요하지 않을 것입니다.
+렌더된 트리를 나타내는 객체를 반환합니다. `toJSON()`과 달리 더욱 자세한 정보가 담겨있으며, 사용자가 작성한 컴포넌트 역시 나타납니다. 이 함수는 당신이 검증을 위해 당신만의 고유한 라이브러리를 테스트 렌더러 위에 사용하지 않는 한 필요하지 않을 것입니다.
 
 ### `testRenderer.update()` {#testrendererupdate}
 
@@ -126,7 +126,7 @@ testRenderer.toTree()
 testRenderer.update(element)
 ```
 
-메모리 내의 트리를 새로운 최상위 요소로 다시 렌더링합니다. 최상위 요소에서의 React 업데이트를 시뮬레이션 할 수 있습니다. 만약, 새로운 엘리먼트가 이전 엘리먼트와 같은 타입과 키(key)를 가지고 있다면 트리를 업데이트합니다. 그렇지 않다면, 새로운 트리를 새로 마운팅합니다.
+메모리 내의 트리를 새로운 최상위 요소로 다시 렌더링합니다. 최상위 요소에서의 React 업데이트를 시뮬레이션할 수 있습니다. 만약, 새로운 엘리먼트가 이전 엘리먼트와 같은 타입과 키(key)를 가지고 있다면 트리를 업데이트합니다. 그렇지 않다면, 새로운 트리를 새로 마운팅합니다.
 
 ### `testRenderer.unmount()` {#testrendererunmount}
 
