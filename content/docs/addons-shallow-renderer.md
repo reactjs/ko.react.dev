@@ -1,6 +1,6 @@
 ---
 id: shallow-renderer
-title: Shallow Renderer
+title: 얕은 렌더링
 permalink: docs/shallow-renderer.html
 layout: docs
 category: Reference
