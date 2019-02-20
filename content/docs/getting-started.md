@@ -24,7 +24,7 @@ redirect_from:
 
 ---
 
-- [React 사용하기](#try-react)
+- [React 시도해보기](#try-react)
 - [React 배우기](#learn-react)
 - [지속적으로 정보 얻기](#staying-informed)
 - [문서 업데이트](#versioned-documentation)
@@ -81,7 +81,7 @@ React 문서는 JavaScript 프로그래밍이 익숙하다고 가정합니다. �
 
 ### 실용적인 자습서 {#practical-tutorial}
 
-**직접 구현해보면서 학습하는 것**을 원하시면, [실용적인 자습서](/tutorial/tutorial.html)을 살펴보세요. 본 자습서에서는 React로 tic-tac-toe 게임을 만들어 봅니다. 게임을 만드는 것이 아니기 때문에 건너뛰고 싶은 마음이 들지도 모릅니다. 하지만 기회를 주세요. 자습서에서 학습하는 기술은 *대부분의* React 앱을 구축하는 데 있어 기본이며, 이를 완전히 익히면 훨씬 더 깊은 이해할 수 있습니다.
+**직접 구현해보면서 학습하는 것**을 원하시면, [실용적인 자습서](/tutorial/tutorial.html)을 살펴보세요. 본 자습서에서는 React로 tic-tac-toe 게임을 만들어 봅니다. 게임을 만드는 것이 아니기 때문에 건너뛰고 싶은 마음이 들지도 모릅니다. 하지만 조금만 기다려 보세요. 자습서에서 학습하는 기술은 *대부분의* React 앱을 구축하는 데 있어 기본이며, 이를 완전히 익히면 훨씬 더 깊은 이해할 수 있습니다.
 
 
 ### 단계별 가이드 {#step-by-step-guide}
@@ -90,7 +90,7 @@ React 문서는 JavaScript 프로그래밍이 익숙하다고 가정합니다. �
 
 ### React에 대해 생각해 보기 {#thinking-in-react}
 
-React를 마지막으로 "클릭"하는 순간 많은 React 사용자는 [React에 대해 생각해보기](/docs/thinking-in-react.html)를 읽는 것을 신용합니다. 이것은 아마 가장 오래된 React 설명서지만 여전히 유용합니다.
+많은 React 사용자는 [React에 대해 생각해보기](/docs/thinking-in-react.html)를 읽는 것을 신용합니다. 이것은 아마 가장 오래된 React 문서이지만 여전히 유용합니다.
 
 ### 권장 과정 {#recommended-courses}
 
