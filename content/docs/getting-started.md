@@ -1,6 +1,6 @@
 ---
 id: getting-started
-title: Getting Started
+title: 시작하기
 permalink: docs/getting-started.html
 next: add-react-to-a-website.html
 redirect_from:
@@ -18,109 +18,104 @@ redirect_from:
   - "docs/environments.html"
 ---
 
-This page is an overview of the React documentation and related resources.
+이 페이지는 React 문서와 연관된 리소스의 개요입니다.
 
-**React** is a JavaScript library for building user interfaces. Learn what React is all about on [our homepage](/) or [in the tutorial](/tutorial/tutorial.html).
+**React** 는 사용자 인터페이스를 만들기 위한 JavaScript 라이브러리입니다. [홈페이지](/)나  [튜토리얼](/tutorial/tutorial.html)에서 React에 대한 모든 것을 알아보세요.
 
 ---
 
-- [Try React](#try-react)
-- [Learn React](#learn-react)
-- [Staying Informed](#staying-informed)
-- [Versioned Documentation](#versioned-documentation)
-- [Something Missing?](#something-missing)
+- [React 사용하기](#try-react)
+- [React 배우기](#learn-react)
+- [지속적으로 정보 얻기](#staying-informed)
+- [문서 업데이트](#versioned-documentation)
+- [누락된 항목이 있다면?](#something-missing)
 
-## Try React {#try-react}
+## React 사용하기 {#try-react}
 
-React has been designed from the start for gradual adoption, and **you can use as little or as much React as you need.** Whether you want to get a taste of React, add some interactivity to a simple HTML page, or start a complex React-powered app, the links in this section will help you get started.
+React는 처음부터 점진적인 채택을 위해 설계되었으며 **필요한 만큼 React를 사용할 수 있습니다.** React를 맛보기로 해보거나, 간단한 HTML 페이지에 약간의 쌍방향성을 추가하거나, 복잡한 React 기반의 앱을 시작하고자 하는 경우, 이 섹션의 링크를 통해 시작할 수 있습니다.
 
-### Online Playgrounds {#online-playgrounds}
+### 온라인 플레이그라운드 {#online-playgrounds}
+React를 가지고 노는 데에 관심이 있다면, 온라인 코드 플라이그라운드를 사용할 수 있습니다. [CodePen](codepen://hello-world) 이나 [CodeSandbox](https://codesandbox.io/s/new)에서 Hello World 템플릿을 사용해 보세요.
 
-If you're interested in playing around with React, you can use an online code playground. Try a Hello World template on [CodePen](codepen://hello-world) or [CodeSandbox](https://codesandbox.io/s/new).
+가지고 있는 텍스트 에디터를 사용하려면, [이 HTML 파일을 다운로드](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)하고 편집한 다음 브라우저의 로컬 파일 시스템에서 열 수도 있습니다. 런타임 코드 변환이 느리므로 간단한 데모에만 이 코드를 사용하는 것이 좋습니다.
 
-If you prefer to use your own text editor, you can also [download this HTML file](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html), edit it, and open it from the local filesystem in your browser. It does a slow runtime code transformation, so we'd only recommend using this for simple demos.
+### 웹사이트에 React를 추가하기 {#add-react-to-a-website}
+[1분 안에 HTML 페이지에 React를 추가할 수 있습니다.](/docs/add-react-to-a-website.html) 그리고 점차적으로 React의 비중을 늘리거나 몇 개의 동적 위젯에 포함할 수 있습니다.
 
-### Add React to a Website {#add-react-to-a-website}
+### 새 React 앱 만들기 {#create-a-new-react-app}
+React 프로젝트를 시작할 때는 [스크립트 태그를 사용한 간단한 HTML 페이지](/docs/create-a-new-react-app.html)가 여전히 최선의 선택일 수 있습니다. 설치하는 데 1분밖에 걸리지 않습니다!
 
-You can [add React to an HTML page in one minute](/docs/add-react-to-a-website.html). You can then either gradually expand its presence, or keep it contained to a few dynamic widgets.
+애플리케이션이 커지면 보다 통합된 설정을 고려하는 것이 좋습니다. 대규모 애플리케이션에 권장되는 [여러 개의 JavaScript 툴체인](/docs/create-a-new-react-app.html)이 있습니다. 각 구성 요소는 많은 설정 없이 작동할 수 있고 풍부한 React 에코시스템을 최대한 활용할 수 있습니다.
 
-### Create a New React App {#create-a-new-react-app}
+## React 배우기 {#learn-react}
 
-When starting a React project, [a simple HTML page with script tags](/docs/add-react-to-a-website.html) might still be the best option. It only takes a minute to set up!
+사람들은 다양한 배경과 다른 학습 스타일을 가지고 React에 입문합니다. 보다 이론적인 접근 방식을 선호하든 실용적인 접근 방식을 선호하든 이 섹션은 도움이 되기를 바랍니다.
 
-As your application grows, you might want to consider a more integrated setup. There are [several JavaScript toolchains](/docs/create-a-new-react-app.html) we recommend for larger applications. Each of them can work with little to no configuration and lets you take full advantage of the rich React ecosystem.
+* **직접 구현해보면서 학습하는 것**을 원하시는 경우, [실용적인 튜토리얼](/tutorial/tutorial.html)부터 시작하세요.
+* **개념을 차근차근 익히며 학습하는 것**을 원하시는 경우, [주요 개념 가이드](/docs/hello-world.html)부터 시작하세요.
 
-## Learn React {#learn-react}
+다른 낯선 기술과 마찬가지로 React는 학습 곡선을 가지고 있습니다. 연습과 약간의 인내심을 가지고, React에 대한 요령을 익힐 것입니다.
 
-People come to React from different backgrounds and with different learning styles. Whether you prefer a more theoretical or a practical approach, we hope you'll find this section helpful.
+### 첫번째 예제 {#first-examples}
 
-* If you prefer to **learn by doing**, start with our [practical tutorial](/tutorial/tutorial.html).
-* If you prefer to **learn concepts step by step**, start with our [guide to main concepts](/docs/hello-world.html).
+[React 홈페이지](/)에는 실시간 편집기가 있는 몇 가지 React 예제가 있습니다. React에 대해 전혀 모르더라도 코드를 변경하면서 그것이 결과에 어떤 영향을 미치는지 보실  수 있습니다.
 
-Like any unfamiliar technology, React does have a learning curve. With practice and some patience, you *will* get the hang of it.
+### 입문자를 위한 React {#react-for-beginners}
 
-### First Examples {#first-examples}
+React 문서가 편한 속도보다 더 빠른 속도로 진행된다고 생각되면 [Tania Rascia가 쓴 React 개요](https://www.taniarascia.com/getting-started-with-react/)를 확인해 주세요. 가장 중요한 React 개념을 자세하고 입문자가 익히기 쉽게 소개합니다. 그 다음 이 문서를 다시 봐주세요!
 
-The [React homepage](/) contains a few small React examples with a live editor. Even if you don't know anything about React yet, try changing their code and see how it affects the result.
+### 디자이너를 위한 React {#react-for-designers}
 
-### React for Beginners {#react-for-beginners}
+디자인을 위해서 왔다면 [이 리소스](http://reactfordesigners.com/)가 시작하기 좋습니다.
 
-If you feel that the React documentation goes at a faster pace than you're comfortable with, check out [this overview of React by Tania Rascia](https://www.taniarascia.com/getting-started-with-react/). It introduces the most important React concepts in a detailed, beginner-friendly way. Once you're done, give the documentation another try!
+### JavaScript 리소스 {#javascript-resources}
 
-### React for Designers {#react-for-designers}
+React 문서는 JavaScript 프로그래밍이 익숙하다고 가정합니다. 전문가일 필요는 없지만, React와 JavaScript를 동시에 배우기는 어렵습니다.
 
-If you're coming from a design background, [these resources](http://reactfordesigners.com/) are a great place to get started.
+지식 수준을 확인하려면 [이 JavaScript 개요](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)를 읽어보는 것을 추천합니다. 30분에서 1시간 정도 걸리겠지만 React를 익히는 데에 더 자신감이 생길 것입니다.
 
-### JavaScript Resources {#javascript-resources}
-
-The React documentation assumes some familiarity with programming in the JavaScript language. You don't have to be an expert, but it's harder to learn both React and JavaScript at the same time.
-
-We recommend going through [this JavaScript overview](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) to check your knowledge level. It will take you between 30 minutes and an hour but you will feel more confident learning React.
-
->Tip
+> 팁
 >
->Whenever you get confused by something in JavaScript, [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [javascript.info](http://javascript.info/) are great websites to check. There are also [community support forums](/community/support.html) where you can ask for help.
+>JavaScript 내용이 혼동될 때마다, [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)과 [javascript.info](http://javascript.info/)는 참고하기 좋은 웹사이트입니다. 또한, 문의를 할 수 있는 [커뮤니티 지원 포럼](/community/support.html)도 있습니다. 
 
-### Practical Tutorial {#practical-tutorial}
 
-If you prefer to **learn by doing,** check out our [practical tutorial](/tutorial/tutorial.html). In this tutorial, we build a tic-tac-toe game in React. You might be tempted to skip it because you're not building games -- but give it a chance. The techniques you'll learn in the tutorial are fundamental to building *any* React apps, and mastering it will give you a much deeper understanding.
+### 실용적인 튜토리얼 {#practical-tutorial}
 
-### Step-by-Step Guide {#step-by-step-guide}
+**직접 구현해보면서 학습하는 것**을 원하시면, [실용적인 튜토리얼](/tutorial/tutorial.html)을 살펴보세요. 본 튜토리얼에서는 React로 tic-tac-toe 게임을 만들어 봅니다. 게임을 만드는 것이 아니기 때문에 건너뛰고 싶은 마음이 들지도 모릅니다. 하지만 기회를 주세요. 튜토리얼에서 학습하는 기술은 *대부분의* React 앱을 구축하는 데 있어 기본이며, 이를 완전히 익히면 훨씬 더 깊은 이해할 수 있습니다.
 
-If you prefer to **learn concepts step by step,** our [guide to main concepts](/docs/hello-world.html) is the best place to start. Every next chapter in it builds on the knowledge introduced in the previous chapters so you won't miss anything as you go along.
 
-### Thinking in React {#thinking-in-react}
+### 단계별 가이드 {#step-by-step-guide}
 
-Many React users credit reading [Thinking in React](/docs/thinking-in-react.html) as the moment React finally "clicked" for them. It's probably the oldest React walkthrough but it's still just as relevant.
+**개념을 단계별로 배우려면** [주요 개념 가이드](/docs/hello-world.html)를 시작하는 것이 가장 좋습니다. 모든 다음 장은 앞 장에 소개된 지식을 바탕으로 하기 때문에 이를 따라갈 때 어떤 것도 놓치지 않습니다.
 
-### Recommended Courses {#recommended-courses}
+### React에 대해 생각해 보기 {#thinking-in-react}
 
-Sometimes people find third-party books and video courses more helpful than the official documentation. We maintain [a list of commonly recommended resources](/community/courses.html), some of which are free.
+React를 마지막으로 "클릭"하는 순간 많은 React 사용자는 [React에 대해 생각해보기](/docs/thinking-in-react.html)를 읽는 것을 신용합니다. 이것은 아마 가장 오래된 React 설명서지만 여전히 의미가 있습니다.
+
+### 권장 과정 {#recommended-courses}
+
+사람들은 때때로 공식 문서보다 타사 책과 비디오 강좌가 더 도움이 된다고 생각합니다. 우리는 [일반적으로 권장되는 리소스 목록](/커뮤니티/코트.html)을 유지하며, 이 중 일부는 무료입니다.
 
 ### Advanced Concepts {#advanced-concepts}
 
-Once you're comfortable with the [main concepts](#main-concepts) and played with React a little bit, you might be interested in more advanced topics. This section will introduce you to the powerful, but less commonly used React features like [context](/docs/context.html) and [refs](/docs/refs-and-the-dom.html).
+[주요 개념](#main-concepts)에 익숙해지고 React를 조금 더 많이 다루게 되면 보다 고급 주제에 관심이 있을 수 있습니다. 이 섹션에서는 [context](/docs/context.html) 및 [refs](/docs/refs-and-dom.html)와 같이 강력하지만 일반적으로 사용되지 않는 React 기능을 소개합니다.
 
-### API Reference {#api-reference}
+### API 참조 {#api-reference}
 
-This documentation section is useful when you want to learn more details about a particular React API. For example, [`React.Component` API reference](/docs/react-component.html) can provide you with details on how `setState()` works, and what different lifecycle methods are useful for.
+이 문서 섹션은 특정 React API에 대한 자세한 내용을 알아보려는 경우에 유용합니다. 예를 들어, [`React.Component` API 참조](/docs/react-component.html)는 `setState()`가 어떻게 작동하는지와 다른 생명주기 메소드가 유용한 지에 대한 세부 정보를 제공합니다.
 
-### Glossary and FAQ {#glossary-and-faq}
+### 용어 사전과 FAQ {#glossary-and-faq}
 
-The [glossary](/docs/glossary.html) contains an overview of the most common terms you'll see in the React documentation. There is also a FAQ section dedicated to short questions and answers about common topics, including [making AJAX requests](/docs/faq-ajax.html), [component state](/docs/faq-state.html), and [file structure](/docs/faq-structure.html).
+[용어 사전](/docs/glossary.html)에는 React 문서에 나타나는 가장 일반적인 용어의 개요가 포함되어 있습니다. 또한 [AJAX 요청 만들기](/docs/faq-ajax.html), [컴포넌트 상태](/docs/faq-state.html), [파일 구조](/docs/faq-structure.html) 등 일반적인 주제에 대한 짧은 질문과 답변을 전문으로 하는 FAQ 섹션도 있습니다.
 
 ## Staying Informed {#staying-informed}
+[React 블로그](/blog/)는 React 팀의 업데이트에 대한 공식 소스입니다. 릴리즈 노트 또는 사용 자제 공지를 포함한 중요한 내용이 먼저 게시됩니다.
 
-The [React blog](/blog/) is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted there first.
+모든 React 릴리즈가 자체 블로그 게시물을 사용할 만한 것은 아니지만 [릴리즈](https://github.com/facebook/react) 페이지와 React의 'CHANGELOG.md' 파일에서 모든 릴리스에 대한 자세한 변경 기록을 확인할 수 있습니다.
 
-You can also follow the [@reactjs account](https://twitter.com/reactjs) on Twitter, but you won't miss anything essential if you only read the blog.
 
-Not every React release deserves its own blog post, but you can find a detailed changelog for every release [in the `CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/master/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react) page.
+## 문서 업데이트 {#versioned-documentation}
+이 문서는 항상 안정된 최신 버전의 React를 반영합니다. React 16 이후 문서의 이전 버전을 [별도의 페이지](/versions)에서 찾을 수 있습니다. 이전 버전의 문서는 릴리즈 시점에 스냅샷으로 작성되며 지속적으로 업데이트되지 않는다는 점에 유의하세요.
 
-## Versioned Documentation {#versioned-documentation}
-
-This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation [on a separate page](/versions). Note that documentation for past versions is snapshotted at the time of the release, and isn't being continuously updated.
-
-## Something Missing? {#something-missing}
-
-If something is missing in the documentation or if you found some part confusing, please [file an issue for the documentation repository](https://github.com/reactjs/reactjs.org/issues/new) with your suggestions for improvement, or tweet at the [@reactjs account](https://twitter.com/reactjs). We love hearing from you!
+## 누락된 항목이 있다면? {#something-missing}
+이 문서에서 빠진 부분이나 혼동되는 부분을 찾으시면, 개선을 위한 제안과 함께 [ 문서의 레퍼지토리](https://github.com/reactjs/reactjs.org/issues/new)에 이슈를 올려주시거나, [@reactjs account](https://twitter.com/reactjs)에 tweet 해주세요. 저희는 당신의 소식을 좋아합니다!
