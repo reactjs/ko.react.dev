@@ -34,4 +34,4 @@ CDN을 통해 React를 사용한다면, [`crossorigin`](https://developer.mozill
 
 ![Access-Control-Allow-Origin: *](../images/docs/cdn-cors-header.png)
 
-이를 통해 React 16 버전과 이후에서 더 쉽게 [에러 처리](/blog/2017/07/26/error-handling-in-react-16.html)를 할 수 있습니다.
+이를 통해 React 16 버전과 다음 버전에서 더 쉽게 [에러 처리](/blog/2017/07/26/error-handling-in-react-16.html)를 할 수 있습니다.
