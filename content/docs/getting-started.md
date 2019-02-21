@@ -20,7 +20,7 @@ redirect_from:
 
 이 페이지는 React 문서와 연관된 리소스의 개요입니다.
 
-**React** 는 사용자 인터페이스를 만들기 위한 JavaScript 라이브러리입니다. [홈페이지](/)나  [자습서](/tutorial/tutorial.html)에서 React에 대한 모든 것을 알아보세요.
+**React**는 사용자 인터페이스를 만들기 위한 JavaScript 라이브러리입니다. [홈페이지](/)나 [자습서](/tutorial/tutorial.html)에서 React에 대한 모든 것을 알아보세요.
 
 ---
 
@@ -28,21 +28,24 @@ redirect_from:
 - [React 배우기](#learn-react)
 - [지속적으로 정보 얻기](#staying-informed)
 - [문서 버전](#versioned-documentation)
-- [누락된 항목이 있다면?](#something-missing)
+- [빠진 항목이 있다면?](#something-missing)
 
 ## React 시도해보기 {#try-react}
 
 React는 처음부터 점진적인 채택을 위해 설계되었으며 **필요한 만큼 React를 사용할 수 있습니다.** React를 맛보기로 해보거나 간단한 HTML 페이지에 약간의 쌍방향성을 추가하거나 복잡한 React 기반의 앱을 시작하고자 하는 경우, 이 섹션의 링크를 통해 시작할 수 있습니다.
 
 ### 온라인 플레이그라운드 {#online-playgrounds}
+
 React를 가지고 노는 데에 관심이 있다면, 온라인 코드 플레이그라운드를 사용할 수 있습니다. [CodePen](codepen://hello-world) 이나 [CodeSandbox](https://codesandbox.io/s/new)에서 Hello World 템플릿을 사용해 보세요.
 
 가지고 있는 텍스트 에디터를 사용하려면, [이 HTML 파일을 다운로드](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)하고 편집한 다음 브라우저의 로컬 파일 시스템에서 열 수도 있습니다. 런타임 코드 변환이 느리므로 간단한 데모에만 이 코드를 사용하는 것이 좋습니다.
 
 ### 웹사이트에 React를 추가하기 {#add-react-to-a-website}
-[1분 안에 HTML 페이지에 React를 추가할 수 있습니다.](/docs/add-react-to-a-website.html) 그리고 점차적으로 React의 비중을 늘리거나 몇 개의 동적 위젯에 포함할 수 있습니다.
+
+[1분 안에 HTML 페이지에 React를 추가할 수 있습니다.](/docs/add-react-to-a-website.html) 그리고 조금씩 React의 비중을 늘리거나 몇 개의 동적 위젯에 포함할 수 있습니다.
 
 ### 새 React 앱 만들기 {#create-a-new-react-app}
+
 React 프로젝트를 시작할 때는 [스크립트 태그를 사용한 간단한 HTML 페이지](/docs/create-a-new-react-app.html)가 여전히 최선의 선택일 수 있습니다. 설치하는 데 1분밖에 걸리지 않습니다!
 
 애플리케이션이 커지면 보다 통합된 설정을 고려하는 것이 좋습니다. 대규모 애플리케이션에 권장되는 [여러 개의 JavaScript 툴체인](/docs/create-a-new-react-app.html)이 있습니다. 각 구성 요소는 많은 설정 없이 작동할 수 있고 풍부한 React 에코시스템을 최대한 활용할 수 있습니다.
@@ -62,7 +65,7 @@ React 프로젝트를 시작할 때는 [스크립트 태그를 사용한 간단�
 
 ### 입문자를 위한 React {#react-for-beginners}
 
-React 문서가 편한 속도보다 더 빠른 속도로 진행된다고 생각되면 [Tania Rascia가 쓴 React 개요](https://www.taniarascia.com/getting-started-with-react/)를 확인해 주세요. 가장 중요한 React 개념을 자세하고 입문자가 익히기 쉽게 소개합니다. 그 다음에 이 문서를 다시 봐주세요!
+React 문서가 편한 속도보다 더 빠른 속도로 진행된다고 생각되면 [Tania Rascia가 쓴 React 개요](https://www.taniarascia.com/getting-started-with-react/)를 확인해 주세요. 가장 중요한 React 개념을 자세하고 입문자가 익히기 쉽게 소개합니다. 그다음에 이 문서를 다시 봐주세요!
 
 ### 디자이너를 위한 React {#react-for-designers}
 
@@ -119,6 +122,6 @@ React 문서는 JavaScript 프로그래밍이 익숙하다고 가정합니다. �
 
 이 문서는 항상 안정된 최신 버전의 React를 반영합니다. React 16 이후 문서의 이전 버전을 [별도의 페이지](/versions)에서 찾을 수 있습니다. 이전 버전의 문서는 릴리즈 시점에 스냅샷으로 작성되며 지속적으로 업데이트되지 않는다는 점에 유의하세요.
 
-## 누락된 항목이 있다면? {#something-missing}
+## 빠진 항목이 있다면? {#something-missing}
 
 이 문서에서 빠진 부분이나 혼동되는 부분을 발견하시면, 개선을 위한 제안과 함께 [ 문서의 레퍼지토리](https://github.com/reactjs/reactjs.org/issues/new)에 이슈를 올려주시거나, [@reactjs account](https://twitter.com/reactjs)에 tweet 해주세요. 저희는 당신의 소식을 좋아합니다!
