@@ -117,7 +117,6 @@ React 문서는 JavaScript 프로그래밍이 익숙하다고 가정합니다. �
 
 모든 React 릴리즈가 자체 블로그 게시물을 사용할 만한 것은 아니지만 [릴리즈](https://github.com/facebook/react) 페이지와 React의 'CHANGELOG.md' 파일에서 모든 릴리즈에 대한 자세한 변경 기록을 확인할 수 있습니다.
 
-
 ## 문서 버전 {#versioned-documentation}
 
 이 문서는 항상 안정된 최신 버전의 React를 반영합니다. React 16 이후 문서의 이전 버전을 [별도의 페이지](/versions)에서 찾을 수 있습니다. 이전 버전의 문서는 릴리즈 시점에 스냅샷으로 작성되며 지속적으로 업데이트되지 않는다는 점에 유의하세요.
