@@ -94,7 +94,7 @@ ReactDOM.render(
 >이 규칙에 대한 자세한 내용은 [여기](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized)에서 확인할 수 있습니다.
 
 
-## 컴포넌트 구성 {#composing-components}
+## 컴포넌트 합성 {#composing-components}
 
 컴포넌트는 자신의 출력에 다른 컴포넌트를 참조할 수 있습니다. 이는 모든 세부 단계에서 동일한 추상 컴포넌트를 사용할 수 있음을 의미합니다. React 앱에서는 버튼, 폼, 다이얼로그, 화면 등의 모든 것들이 흔히 컴포넌트로 표현됩니다.
 
