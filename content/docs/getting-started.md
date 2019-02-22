@@ -61,7 +61,7 @@ React 프로젝트를 시작할 때는 [스크립트 태그를 사용한 간단�
 
 ### 첫 번째 예제 {#first-examples}
 
-[React 홈페이지](/)에는 실시간 편집기가 있는 몇 가지 React 예제가 있습니다. React에 대해 전혀 모르더라도 코드를 변경하면서 그것이 결과에 어떤 영향을 미치는지 보실  수 있습니다.
+[React 홈페이지](/)에는 실시간 편집기가 있는 몇 가지 React 예제가 있습니다. React에 대해 전혀 모르더라도 코드를 변경하면서 그것이 결과에 어떤 영향을 미치는지 보실 수 있습니다.
 
 ### 입문자를 위한 React {#react-for-beginners}
 
@@ -123,4 +123,4 @@ React 문서는 JavaScript 프로그래밍이 익숙하다고 가정합니다. �
 
 ## 빠진 항목이 있다면? {#something-missing}
 
-이 문서에서 빠진 부분이나 혼동되는 부분을 발견하시면, 개선을 위한 제안과 함께 [ 문서의 레퍼지토리](https://github.com/reactjs/reactjs.org/issues/new)에 이슈를 올려주시거나, [@reactjs 계정](https://twitter.com/reactjs)에 tweet 해주세요. 저희는 당신의 소식을 좋아합니다!
+이 문서에서 빠진 부분이나 혼동되는 부분을 발견하시면, 개선을 위한 제안과 함께 [문서의 레퍼지토리](https://github.com/reactjs/reactjs.org/issues/new)에 이슈를 올려주시거나, [@reactjs 계정](https://twitter.com/reactjs)에 tweet 해주세요. 저희는 당신의 소식을 좋아합니다!
