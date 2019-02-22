@@ -30,7 +30,7 @@ function Welcome(props) {
 }
 ```
 
-이 함수는 데이터를 가진 하나의 "Props" (Props는 속성을 나타내는 데이터입니다) 객체 인자를 받은 후 React 엘리먼트를 반환하므로 유효한 React 컴포넌트입니다. 이러한 컴포넌트는 JavaScript 함수이기 때문에 말 그대로 "함수 컴포넌트"라고 호칭합니다.
+이 함수는 데이터를 가진 하나의 "props" (props는 속성을 나타내는 데이터입니다) 객체 인자를 받은 후 React 엘리먼트를 반환하므로 유효한 React 컴포넌트입니다. 이러한 컴포넌트는 JavaScript 함수이기 때문에 말 그대로 "함수 컴포넌트"라고 호칭합니다.
 
 또한 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)를 사용하여 컴포넌트를 정의할 수 있습니다.
 
@@ -60,7 +60,7 @@ React 엘리먼트는 사용자 정의 컴포넌트로도 나타낼 수 있습�
 const element = <Welcome name="Sara" />;
 ```
 
-React가 사용자 정의 컴포넌트로 작성한 엘리먼트를 발견하면 JSX 어트리뷰트를 해당 컴포넌트에 단일 객체로 전달합니다. 이 객체를 "Props"라고 합니다.
+React가 사용자 정의 컴포넌트로 작성한 엘리먼트를 발견하면 JSX 어트리뷰트를 해당 컴포넌트에 단일 객체로 전달합니다. 이 객체를 "props"라고 합니다.
 
 다음은 페이지에 "Hello, Sara"를 렌더링하는 예시입니다.
 
@@ -237,7 +237,7 @@ function Comment(props) {
 
 처음에는 컴포넌트를 추출하는 작업이 지루해 보일 수 있습니다. 하지만 재사용 가능한 컴포넌트를 만들어 놓는 것은 더 큰 앱에서 작업할 때 두각을 나타냅니다. UI 일부가 여러 번 사용되거나 (`Button`, `Panel`, `Avatar`), UI 일부가 자체적으로 복잡한 (`App`, `FeedStory`, `Comment`) 경우에는 재사용 가능한 컴포넌트로 만드는 것이 좋습니다.
 
-## Props는 읽기 전용입니다.  {#props-are-read-only}
+## props는 읽기 전용입니다.  {#props-are-read-only}
 
 함수 컴포넌트나 클래스 컴포넌트 모두 컴포넌트의 자체 props를 수정해서는 안 됩니다. 다음 `sum` 함수를 살펴봅시다.
 
