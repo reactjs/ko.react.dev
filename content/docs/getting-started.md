@@ -81,11 +81,9 @@ React 문서는 JavaScript 프로그래밍이 익숙하다고 가정합니다. �
 >
 >JavaScript 내용이 혼동될 때마다, [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)과 [javascript.info](http://javascript.info/)는 참고하기 좋은 웹사이트입니다. 또한, 문의를 할 수 있는 [커뮤니티 지원 포럼](/community/support.html)도 있습니다. 
 
-
 ### 실용적인 자습서 {#practical-tutorial}
 
 **직접 구현해보면서 학습하는 것**을 원하시면, [실용적인 자습서](/tutorial/tutorial.html)을 살펴보세요. 본 자습서에서는 React로 tic-tac-toe 게임을 만들어 봅니다. 게임을 만드는 것이 아니기 때문에 건너뛰고 싶은 마음이 들지도 모릅니다. 하지만 조금만 기다려 보세요. 자습서에서 학습하는 기술은 *대부분의* React 앱을 구축하는 데 있어 기본이며, 이를 완전히 익히면 훨씬 더 깊은 이해할 수 있습니다.
-
 
 ### 단계별 가이드 {#step-by-step-guide}
 
@@ -115,6 +113,8 @@ React 문서는 JavaScript 프로그래밍이 익숙하다고 가정합니다. �
 
 [React 블로그](/blog/)는 React 팀의 업데이트에 대한 공식 소스입니다. 릴리즈 노트 또는 사용 자제 공지를 포함한 중요한 내용이 먼저 게시됩니다.
 
+트위터의 [@reactjs 계정](https://twitter.com/reactjs)을 팔로우할 수도 있지만, 블로그만 읽어도 필수적인 것은 놓치지 않을 수 있습니다.
+
 모든 React 릴리즈가 자체 블로그 게시물을 사용할 만한 것은 아니지만 [릴리즈](https://github.com/facebook/react) 페이지와 React의 'CHANGELOG.md' 파일에서 모든 릴리즈에 대한 자세한 변경 기록을 확인할 수 있습니다.
 
 
@@ -124,4 +124,4 @@ React 문서는 JavaScript 프로그래밍이 익숙하다고 가정합니다. �
 
 ## 빠진 항목이 있다면? {#something-missing}
 
-이 문서에서 빠진 부분이나 혼동되는 부분을 발견하시면, 개선을 위한 제안과 함께 [ 문서의 레퍼지토리](https://github.com/reactjs/reactjs.org/issues/new)에 이슈를 올려주시거나, [@reactjs account](https://twitter.com/reactjs)에 tweet 해주세요. 저희는 당신의 소식을 좋아합니다!
+이 문서에서 빠진 부분이나 혼동되는 부분을 발견하시면, 개선을 위한 제안과 함께 [ 문서의 레퍼지토리](https://github.com/reactjs/reactjs.org/issues/new)에 이슈를 올려주시거나, [@reactjs 계정](https://twitter.com/reactjs)에 tweet 해주세요. 저희는 당신의 소식을 좋아합니다!
