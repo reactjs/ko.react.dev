@@ -20,7 +20,7 @@ next: state-and-lifecycle.html
 
 개념적으로 컴포넌트는 JavaScript 함수와 유사합니다. "props"라고 하는 임의의 입력을 받은 후, 화면에 어떻게 표시되는지를 기술하는 React 엘리먼트를 반환합니다.
 
-## 함수 및 클래스 컴포넌트 {#function-and-class-components}
+## 함수 컴포넌트와 클래스 컴포넌트 {#function-and-class-components}
 
 컴포넌트를 정의하는 가장 간단한 방법은 JavaScript 함수를 작성하는 것입니다.
 
