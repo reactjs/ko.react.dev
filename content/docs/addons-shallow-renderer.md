@@ -30,7 +30,7 @@ function MyComponent() {
 }
 ```
 
-다음과 같이 검증 할 수 있습니다.
+다음과 같이 검증할 수 있습니다.
 
 ```javascript
 import ShallowRenderer from 'react-test-renderer/shallow';
