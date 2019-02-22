@@ -44,7 +44,7 @@ class Welcome extends React.Component {
 
 React의 관점에서 볼 때 위 두 가지 유형의 컴포넌트는 동일합니다.
 
-class는 몇 가지 추가 기능이 있으며 이에 대해서는 [다음 장](/docs/state-and-lifecycle.html)에서 설명합니다. 그때 까지는 간결성을 위해 함수 컴포넌트를 사용하겠습니다.
+class는 몇 가지 추가 기능이 있으며 이에 대해서는 [다음 장](/docs/state-and-lifecycle.html)에서 설명합니다. 그때까지는 간결성을 위해 함수 컴포넌트를 사용하겠습니다.
 
 ## 컴포넌트 렌더링 {#rendering-a-component}
 
