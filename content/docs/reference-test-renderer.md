@@ -40,7 +40,7 @@ console.log(testRenderer.toJSON());
 //   children: [ 'Facebook' ] }
 ```
 
-Jest의 스냅샷 테스트 기능으로 JSON 트리의 복사본을 파일로 자동 저장하여 테스트 내에서 변경되지 않았는지 확인할 수 있습니다. [자세히 알아보기](http://facebook.github.io/jest/blog/2016/07/27/jest-14.html)
+Jest의 스냅샷 테스트 기능으로 JSON 트리의 복사본을 파일로 자동 저장하여 테스트 내에서 변경되지 않았는지 확인할 수 있습니다. [자세히 알아보기](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html)
 
 또한, 결과물을 순회하며 특정 노드를 찾아 원하는 값을 가지고 있는지 검증하는 데 사용할 수 있습니다.
 
@@ -112,7 +112,7 @@ TestRenderer.create(element, options);
 testRenderer.toJSON()
 ```
 
-렌더된 트리를 나타내는 객체를 반환합니다. 이 트리는 같은 플랫폼 고유의 노드(예: <div>, <View>)와, 그러한 노드의 속성만을 가지고 있습니다. 사용자가 작성한 컴포넌트는 나타나지 않습니다. 이 함수는 [스냅샷 테스팅](http://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest) 시 유용하게 사용할 수 있습니다.
+렌더된 트리를 나타내는 객체를 반환합니다. 이 트리는 같은 플랫폼 고유의 노드(예: <div>, <View>)와, 그러한 노드의 속성만을 가지고 있습니다. 사용자가 작성한 컴포넌트는 나타나지 않습니다. 이 함수는 [스냅샷 테스팅](https://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest) 시 유용하게 사용할 수 있습니다.
 
 ### `testRenderer.toTree()` {#testrenderertotree}
 
