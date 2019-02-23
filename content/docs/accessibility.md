@@ -19,8 +19,8 @@ React는 접근성을 갖춘 웹사이트를 만들 수 있도록 모든 지원�
 아래 WCAG 체크리스트들은 그 개요들을 나타냅니다.
 
 - [Wuhcag의 WCAG 체크리스트](https://www.wuhcag.com/wcag-checklist/)
-- [WebAIM의 WCAG 체크리스트](http://webaim.org/standards/wcag/checklist)
-- [The A11Y Project의 체크리스트](http://a11yproject.com/checklist.html)
+- [WebAIM의 WCAG 체크리스트](https://webaim.org/standards/wcag/checklist)
+- [The A11Y Project의 체크리스트](https://a11yproject.com/checklist.html)
 
 ### WAI-ARIA {#wai-aria}
 
@@ -112,7 +112,7 @@ function ListItem({ item }) {
 아래는 방법들이 담긴 자료입니다.
 
 - [W3C에서 제공하는 엘리먼트 라벨링 방법](https://www.w3.org/WAI/tutorials/forms/labels/)
-- [WebAIM에서 제공하는 엘리먼트 라벨링 방법](http://webaim.org/techniques/forms/controls)
+- [WebAIM에서 제공하는 엘리먼트 라벨링 방법](https://webaim.org/techniques/forms/controls)
 - [The Paciello Group이 설명한 접근 가능한 이름들](https://www.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
 
 이와 같은 표준 HTML에 대한 예시들이 React에 바로 사용될 수 있으나, `for` 속성 만은 JSX에서 `htmlFor`로 사용하는 것에 주의하시기 바랍니다.
@@ -127,13 +127,13 @@ function ListItem({ item }) {
 오류 상황은 모든 사용자가 알 수 있어야 합니다. 아래 링크는 스크린 리더에 오류 문구를 노출하는 방법을 설명합니다.
 
 - [The W3C demonstrates user notifications](https://www.w3.org/WAI/tutorials/forms/notifications/)
-- [WebAIM looks at form validation](http://webaim.org/techniques/formvalidation/)
+- [WebAIM looks at form validation](https://webaim.org/techniques/formvalidation/)
 
 ## 포커스 컨트롤 {#focus-control}
 
 모든 웹 어플리케이션은 키보드만 사용하여 모든 동작을 할 수 있어야 합니다.
 
-- [WebAIM이 말하는 키보드 접근성](http://webaim.org/techniques/keyboard/)
+- [WebAIM이 말하는 키보드 접근성](https://webaim.org/techniques/keyboard/)
 
 ### 키보드 포커스와 포커스 윤곽선 {#keyboard-focus-and-focus-outline}
 
@@ -149,13 +149,13 @@ function ListItem({ item }) {
 
 Skiplinks 또는 Skip Navigation Link들은 키보드 사용자가 페이지와 상호작용할 때만 표시되는 숨겨진 탐색 링크입니다. 내부의 페이지 앵커와 약간의 스타일링으로 매우 쉽게 구현할 수 있습니다.
 
-- [WebAIM - Skip Navigation Links](http://webaim.org/techniques/skipnav/)
+- [WebAIM - Skip Navigation Links](https://webaim.org/techniques/skipnav/)
 
 또한, 보조과학기술에 의해 사용자들이 이러한 섹션으로 빠르게 이동할 수 있도록,  `<main>`과 `<aside>` 같이 대표성을 띄는 랜드마크 엘리먼트와 역할들을 사용해 페이지 영역을 나누어야 합니다.
 
 이러한 엘리먼트들을 사용해 접근성을 높이는 방법은 아래 글을 참고해주시기 바랍니다.
 
-- [접근 가능한 랜드마크(Accessible Landmarks)](http://www.scottohara.me/blog/2018/03/03/landmarks.html)
+- [접근 가능한 랜드마크(Accessible Landmarks)](https://www.scottohara.me/blog/2018/03/03/landmarks.html)
 
 ### 프로그래밍적으로 포커스 관리하기 {#programmatically-managing-focus}
 
@@ -371,7 +371,7 @@ class BlurExample extends React.Component {
 각각의 위젯 타입은 명확한 디자인 패턴이 있으며, 사용자와 사용자 에이전트 모두 특정 방향으로 기능하는 것이 요구됩니다.
 
 - [WAI-ARIA Authoring Practices - 디자인 패턴과 위젯](https://www.w3.org/TR/wai-aria-practices/#aria_ex)
-- [Heydon Pickering - ARIA 예시](http://heydonworks.com/practical_aria_examples/)
+- [Heydon Pickering - ARIA 예시](https://heydonworks.com/practical_aria_examples/)
 - [포괄적 컴포넌트](https://inclusive-components.design/)
 
 ## 기타 고려사항 {#other-points-for-consideration}
@@ -380,7 +380,7 @@ class BlurExample extends React.Component {
 
 스크린 리더 소프트웨어들이 올바른 음성을 선택할 수 있도록, 페이지 텍스트에 인간 언어(human language)를 나타내야 합니다.
 
-- [WebAIM - 문서 언어](http://webaim.org/techniques/screenreader/#language)
+- [WebAIM - 문서 언어](https://webaim.org/techniques/screenreader/#language)
 
 ### 문서 제목 설정 {#setting-the-document-title}
 
@@ -396,15 +396,15 @@ React에서는 [React Document Title 컴포넌트](https://github.com/gaearon/re
 
 - [WCAG - 색 대비 요건 이해하기](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
 - [색 대비에 대한 모든 것과 이를 다시 생각해야 하는 이유](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
-- [The A11Y Project - 색 채도란](http://a11yproject.com/posts/what-is-color-contrast/)
+- [The A11Y Project - 색 채도란](https://a11yproject.com/posts/what-is-color-contrast/)
 
-웹사이트의 모든 항목에 대해 적절한 색 조합을 일일이 계산하는 것은 지루할 수 있습니다. [Colorable을 사용해 접근 가능한 모든 색 조합표를 계산](http://jxnblk.com/colorable/)할 수 있습니다.
+웹사이트의 모든 항목에 대해 적절한 색 조합을 일일이 계산하는 것은 지루할 수 있습니다. [Colorable을 사용해 접근 가능한 모든 색 조합표를 계산](https://jxnblk.com/colorable/)할 수 있습니다.
 
 아래에 언급된 aXe와 WAVE 도구 모두 색 대비에 대한 테스트가 포함되어 있어, 색 대비에 대한 오류를 알려줍니다.
 
 색 대비에 대한 테스트 기능을 확장할 경우, 아래 도구를 사용할 수 있습니다.
 
-- [WebAIM - 색 채도 검사기](http://webaim.org/resources/contrastchecker/)
+- [WebAIM - 색 채도 검사기](https://webaim.org/resources/contrastchecker/)
 - [The Paciello Group - 색 채도 분석기](https://www.paciellogroup.com/resources/contrastanalyser/)
 
 ## 개발 및 테스트 도구 {#development-and-testing-tools}
@@ -451,7 +451,7 @@ Deque Systems에서는 자동으로 어플리케이션의 종단간(end-to-end) 
 
 #### WebAIM WAVE {#webaim-wave}
 
-[Web Accessibility Evaluation Tool](http://wave.webaim.org/extension/)은 또다른 브라우저 확장 기능입니다.
+[Web Accessibility Evaluation Tool](https://wave.webaim.org/extension/)은 또다른 브라우저 확장 기능입니다.
 
 #### 접근성 검사기와 접근성 트리 {#accessibility-inspectors-and-the-accessibility-tree}
 
@@ -477,7 +477,7 @@ Deque Systems에서는 자동으로 어플리케이션의 종단간(end-to-end) 
 
 NVDA를 효과적으로 사용하는 방법은 아래를 참조해주시기 바랍니다.
 
-- [WebAIM - NVDA를 사용한 웹 접근성 측정](http://webaim.org/articles/nvda/)
+- [WebAIM - NVDA를 사용한 웹 접근성 측정](https://webaim.org/articles/nvda/)
 - [Deque -NVDA 키보드 단축키](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts)
 
 #### Safari의 VoiceOver {#voiceover-in-safari}
@@ -486,26 +486,26 @@ VoiceOver는 애플 기기에 통합된 스크린 리더입니다.
 
 VoiceOver를 활성화 및 사용하는 방법은 아래를 참조해주시기 바랍니다.
 
-- [WebAIM - VoiceOver를 사용한 웹 접근성 측정](http://webaim.org/articles/voiceover/)
+- [WebAIM - VoiceOver를 사용한 웹 접근성 측정](https://webaim.org/articles/voiceover/)
 - [Deque - OS X용 VoiceOver 키보드 단축키](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
 - [Deque - iOS용 VoiceOver 단축키](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts)
 
 #### Internet Explorer의 JAWS {#jaws-in-internet-explorer}
 
-[Job Access With Speech](http://www.freedomscientific.com/Products/Blindness/JAWS)(별칭: JAWS)는 윈도우에서 주로 쓰이는 스크린 리더입니다.
+[Job Access With Speech](https://www.freedomscientific.com/Products/software/JAWS/)(별칭: JAWS)는 윈도우에서 주로 쓰이는 스크린 리더입니다.
 
 JAWS를 효과적으로 사용하는 방법은 아래를 참조해주시기 바랍니다.
 
-- [WebAIM - JAWS를 사용한 웹 접근성 측정](http://webaim.org/articles/jaws/)
+- [WebAIM - JAWS를 사용한 웹 접근성 측정](https://webaim.org/articles/jaws/)
 - [Deque - JAWS 키보드 단축키](https://dequeuniversity.com/screenreaders/jaws-keyboard-shortcuts)
 
 ### 기타 스크린 리더 {#other-screen-readers}
 
 #### Google Chrome의 ChromeVox {#chromevox-in-google-chrome}
 
-[ChromeVox](http://www.chromevox.com/)는 Chromebook에 통합된 스크린 리더이며 Google Chrome의 [확장기능](https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en)으로 사용할 수 있습니다.
+[ChromeVox](https://www.chromevox.com/)는 Chromebook에 통합된 스크린 리더이며 Google Chrome의 [확장기능](https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en)으로 사용할 수 있습니다.
 
 ChromeVox를 효과적으로 사용하는 방법은 아래를 참조해주시기 바랍니다.
 
 - [Google Chromebook 도움말 - 내장 스크린 리더 사용법](https://support.google.com/chromebook/answer/7031755?hl=en)
-- [ChromeVox Classic 키보드 단축키](http://www.chromevox.com/keyboard_shortcuts.html)
+- [ChromeVox Classic 키보드 단축키](https://www.chromevox.com/keyboard_shortcuts.html)
