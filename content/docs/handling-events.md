@@ -91,7 +91,7 @@ ReactDOM.render(
 );
 ```
 
-[**CodePen에서 실행하기**](http://codepen.io/gaearon/pen/xEmzGg?editors=0010)
+[**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/xEmzGg?editors=0010)
 
 JSX 콜백 안에서 `this`의 의미에 대해 주의해야 합니다. JavaScript에서 클래스 메서드는 기본적으로 [바인딩](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)되어 있지 않습니다. `this.handleClick`을 바인딩하지 않고 `onClick`에 전달하였다면, 함수가 실제 호출될 때 `this`는 `undefined`가 됩니다.
 
