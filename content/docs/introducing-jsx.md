@@ -70,7 +70,7 @@ ReactDOM.render(
 
 [CodePen 에서 시험해 보기](codepen://introducing-jsx)
 
-가독성을 좋게 하기 위해 JSX를 여러 줄로 나눴습니다. 필수는 아니지만, 이 작업을 수행할 때 [자동 세미콜론 삽입](http://stackoverflow.com/q/2846283)을 피하고자 괄호로 묶는 것을 권장합니다.
+가독성을 좋게 하기 위해 JSX를 여러 줄로 나눴습니다. 필수는 아니지만, 이 작업을 수행할 때 [자동 세미콜론 삽입](https://stackoverflow.com/q/2846283)을 피하고자 괄호로 묶는 것을 권장합니다.
 
 ### JSX 또한 표현식이다 {#jsx-is-an-expression-too}
 
@@ -138,7 +138,7 @@ const title = response.potentiallyMaliciousInput;
 const element = <h1>{title}</h1>;
 ```
 
-기본적으로 React DOM은 JSX에 삽입된 모든 값을 렌더링하기 전에 [이스케이프](http://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) 하므로, 응용프로그램에서 명백히 작성되지 않은 내용은 주입되지 않습니다. 모든 항목은 렌더링 되기 전에 문자열로 변환됩니다. 이런 특성으로 인해 [XSS (cross-site-scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting) 공격을 방지할 수 있습니다.
+기본적으로 React DOM은 JSX에 삽입된 모든 값을 렌더링하기 전에 [이스케이프](https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) 하므로, 응용프로그램에서 명백히 작성되지 않은 내용은 주입되지 않습니다. 모든 항목은 렌더링 되기 전에 문자열로 변환됩니다. 이런 특성으로 인해 [XSS (cross-site-scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting) 공격을 방지할 수 있습니다.
 
 ### JSX 객체 표현 {#jsx-represents-objects}
 
@@ -181,4 +181,4 @@ const element = {
 
 >**팁:**
 >
-> ES6 및 JSX 코드가 올바르게 표시되도록 편집기에 ["Babel" 언어 설정](http://babeljs.io/docs/editors)을 사용하는 것을 권장합니다. 현재 웨사이트에서는 호환이 가능한 [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) 컬러 스키마를 사용하고 있습니다.
+> ES6 및 JSX 코드가 올바르게 표시되도록 편집기에 ["Babel" 언어 설정](https://babeljs.io/docs/editors)을 사용하는 것을 권장합니다. 현재 웨사이트에서는 호환이 가능한 [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) 컬러 스키마를 사용하고 있습니다.
