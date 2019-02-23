@@ -71,7 +71,7 @@ class Counter extends React.Component {
 }
 ```
 
- `createReactClass()`를 사용할 때마다 초기 state를 반환하는 `getInitialState` 메서드를 제공해야만 합니다.
+ `createReactClass()`를 사용할 때마다 초기 스테이트를 반환하는 `getInitialState` 메서드를 제공해야만 합니다.
 
 ```javascript
 var Counter = createReactClass({
@@ -132,7 +132,7 @@ var SayHello = createReactClass({
 });
 ```
 
-이는 ES6의 클래스를 사용할 때 이벤트 핸들러를 만들기 위해 더 많은 boilerplate code가 필요하게 된다는 것을 의미합니다. 하지만 클래스를 사용하는 것이 규모가 큰 애플리케이션에서 조금 더 좋은 성능을 보입니다.
+이는 ES6의 클래스를 사용해 이벤트 처리기를 만드는 경우에는 다른 방법으로 처리할 때 보다 불필요하게 반복되는 코드가 많아진다는 뜻입니다. 하지만 큰 규모의 애플리케이션에서는 클래스를 사용하는 경우에 성능이 조금 더 좋아집니다.  
 
 
 boilerplate code가 정 쓰기 싫다면, **실험적인** [클래스 프로퍼티](https://babeljs.io/docs/plugins/transform-class-properties/) 문법을 Babel을 통해 사용할 수도 있습니다:
@@ -171,7 +171,7 @@ class SayHello extends React.Component {
 
 ## Mixins {#mixins}
 
->**주목:**
+>**주의**
 >
 >ES6는 처음부터 mixin에 대한 어떠한 지원도 없었습니다. 따라서, 리액트에서 ES6 클래스를 사용하고자 하는 경우에도 mixin에 대한 별도의 지원은 없습니다.
 >
@@ -182,9 +182,9 @@ class SayHello extends React.Component {
 >본 문단은 참고목적으로만 보시길 바랍니다.
 
 가끔은 전혀 다른 컴포넌트들이 어느 정도 유사한 기능을 공유할 수도 있습니다. 간혹 발생하는 이러한 경우를 [cross-cutting concerns](https://en.wikipedia.org/wiki/Cross-cutting_concern)라고 부릅니다. 
-이 문제에 대한 대처법으로서 `createReactClass`를 통해 레거시 코드인 `mixins`을 사용할 수 있습니다.
+이 문제에 대한 대처법으로서 `createReactClass`를 통해 더 이상 쓰이지 않는 코드인 `mixins`을 사용할 수 있습니다.
 
-mixin을 사용하는 흔한 예로는 시간 간격을 두고 반복적으로 스스로 내용을 갱신하는 컴포넌트를 만들고자 할 경우가 있습니다. 이는 `setInterval()`을 사용하면 간단하게 만들 수 있지만, 메모리를 절약하기 위해서 컴포넌트를 더 이상 사용하지 않을 때 이를 취소하는 것이 중요합니다. 리액트는 [생애주기 메서드](/docs/react-component.html#the-component-lifecycle)를 제공합니다. 생애주기 메서드는 컴포넌트가 생성되거나 파괴되기 직전에 이를 알려주는 역할을 합니다. 생애주기 메서드를 이용하는 간단한 mixin을 만들어 보겠습니다. 이 mixin은 컴포넌트가 파괴될 때 스스로 삭제되는 `setInterval()` 함수 기능을 제공해 줍니다.
+mixin을 사용하는 흔한 예로는 시간 간격을 두고 반복적으로 스스로 내용을 갱신하는 컴포넌트를 만들고자 할 경우가 있습니다. 이는 `setInterval()`을 사용하면 간단하게 만들 수 있지만, 메모리를 절약하기 위해서 컴포넌트를 더 이상 사용하지 않을 때 이를 취소하는 것이 중요합니다. 리액트는 [생명주기 함수](/docs/react-component.html#the-component-lifecycle)를 제공합니다. 생명주기 함수는 컴포넌트가 생성되거나 파괴되기 직전에 이를 알려주는 역할을 합니다. 생명주기 함수를 이용하는 간단한 mixin을 만들어 보겠습니다. 이 mixin은 컴포넌트가 파괴될 때 스스로 삭제되는 `setInterval()` 함수 기능을 제공해 줍니다.
 
 
 ```javascript
@@ -228,4 +228,4 @@ ReactDOM.render(
 );
 ```
 
-하나의 컴포넌트가 여러 개의 mixin을 사용하고 그것들이 같은 생명주기 메서드를 정의한다면, (예를 들자면, 그 mixin들이 컴포넌트가 파괴될 때 어떠한 없애는 기능을 수행하고자 하는 경우가 있습니다) 모든 생명주기 메서드가 호출되는 것이 보장됩니다. mixin에서 정의된 메서드들은 mixin이 나열된 순서대로 구동되며 그 뒤에 컴포넌트에서 메서드가 호출됩니다.
+하나의 컴포넌트가 여러 개의 mixin을 사용하고 그것들이 같은 생명주기 메서드를 정의한다면, (예를 들자면, 그 mixin들이 컴포넌트가 파괴될 때 어떠한 없애는 기능을 수행하고자 하는 경우가 있습니다) 모든 생명주기함수가 호출되는 것이 보장됩니다. mixin에서 정의된 메서드들은 mixin이 나열된 순서대로 구동되며 그 뒤에 컴포넌트에서 메서드가 호출됩니다.
