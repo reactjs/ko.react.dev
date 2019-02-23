@@ -17,11 +17,11 @@ var ReactTestUtils = require('react-dom/test-utils'); // npm과 ES5
 
 `ReactTestUtils`는 여러분이 선택한 테스팅 프레임워크에서 테스트를 쉽게 진행할 수 있도록 해 줍니다. Facebook에서는 [Jest](https://facebook.github.io/jest/)를 이용해 더욱 쉽게 JavaScript 테스트를 하고 있습니다. Jest 웹사이트의 [React 자습서](http://facebook.github.io/jest/docs/en/tutorial-react.html#content) 문서를 통해 Jest를 시작하는 방법에 대해서 알아보세요.
 
-> 주목
+> 주의
 >
 > Facebook에서는 [`react-testing-library`](https://git.io/react-testing-library) 사용을 권장합니다. 이 라이브러리는 사용자가 컴포넌트를 사용하는 것처럼 테스트를 작성할 수 있도록 설계되었습니다.
 >
-> 대안으로는 Airbnb에서 출시한 테스팅 도구인 [Enzyme](http://airbnb.io/enzyme/)이 있습니다. Enzyme은 React 컴포넌트의 출력을 쉽게 진단하고 조작하고 탐색할 수 있게 해줍니다.
+> 대안으로는 Airbnb에서 출시한 테스팅 도구인 [Enzyme](http://airbnb.io/enzyme/)이 있습니다. Enzyme은 React 컴포넌트의 출력을 쉽게 검증하고 조작하고 탐색할 수 있게 해줍니다.
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
@@ -40,13 +40,13 @@ var ReactTestUtils = require('react-dom/test-utils'); // npm과 ES5
  - [`renderIntoDocument()`](#renderintodocument)
  - [`Simulate`](#simulate)
 
-## Reference {#reference}
+## 참조사항 {#reference}
 
 ### `act()` {#act}
 
 컴포넌트의 진단을 준비하기 위해서는 컴포넌트를 렌더링하고 갱신해주는 코드를 `act()`를 호출한 것의 안에 넣어줘야 합니다. 이를 통해 React를 브라우저 내에서 동작하는 것과 비슷한 환경에서 테스트할 수 있습니다.
 
->주목
+>주의
 >
 >`react-test-renderer`를 사용한다면, 똑같이 작동하는 `act` export가 제공됩니다.
 
@@ -123,7 +123,7 @@ it('can render and update a counter', () => {
 });
 ```
 
-DOM 이벤트를 붙이는 것은 DOM 컨테이너가 `document` 오브젝트에 추가되었을 때에만 가능하다는 것을 기억하십시오. boilerplate code를 줄이기 위해서 [`react-testing-library`](https://github.com/kentcdodds/react-testing-library)와 같은 것들을 사용할 수 있습니다.
+DOM 이벤트를 붙이는 것은 DOM 컨테이너가 `document` 오브젝트에 추가되었을 때에만 가능하다는 것을 기억하십시오. 불필요하게 반복 되는 코드를 줄이기 위해서 [`react-testing-library`](https://github.com/kentcdodds/react-testing-library)와 같은 것들을 사용할 수 있습니다.
 
 * * *
 
@@ -136,10 +136,10 @@ mockComponent(
 )
 ```
 
-복제된 컴포넌트 모듈을 이 메서드에 넘겨 유용한 메서드들을 붙여 증강해 더미 리액트 컴포넌트로 사용할 수 있습니다. 보통의 경우처럼 렌더링 하지 않고 그 대신 컴포넌트는 간단하게 `<div>` 태그가 됩니다. `mockTagName`값을 넘겨준다면 `<div>`대신 다른 태그로 만들어 줄 수 있습니다.
+모의 컴포넌트 모듈을 이 메서드에 넘겨 유용한 메서드들을 붙여 증강해 더미 리액트 컴포넌트로 사용할 수 있습니다. 보통의 경우처럼 렌더링 하지 않고 그 대신 컴포넌트는 간단하게 `<div>` 태그가 됩니다. `mockTagName`값을 넘겨준다면 `<div>`대신 다른 태그로 만들어 줄 수 있습니다.
 
 
-> 주목:
+> 주의
 >
 > `mockComponent()`는 더이상 쓰이지 않는 API입니다. 저희는 [얕은 복사](/docs/shallow-renderer.html) 혹은 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock)을 사용하는 것을 추천합니다.
 
@@ -305,7 +305,7 @@ const domContainer = document.createElement('div');
 ReactDOM.render(element, domContainer);
 ```
 
-> 주목:
+> 주의
 >
 > `window`와 `window.document`와 `window.document.createElement`는 `React`를 **import하기 전에도** 전역적으로 사용할 수 있습니다. 만약 그렇지 않다면 React는 DOM에 접근할 수 없다고 간주할 것이며 `setState`와 같은 메서드들이 작동하지 않을 것 입니다.
 
@@ -345,7 +345,7 @@ ReactTestUtils.Simulate.change(node);
 ReactTestUtils.Simulate.keyDown(node, {key: "Enter", keyCode: 13, which: 13});
 ```
 
-> 주목:
+> 주의
 >
 > 컴포넌트 내에서 사용하고 있는 keyCode, which와 같은 이벤트 프로퍼티는 별도로 제공해주어야 합니다. React에서는 이러한 이벤트 프로퍼티를 자동으로 만들어 주지 않습니다.
 
