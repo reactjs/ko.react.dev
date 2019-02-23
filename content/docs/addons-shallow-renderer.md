@@ -51,7 +51,7 @@ expect(result.props.children).toEqual([
 
 > 노트:
 >
-> 우리는 또한 Enzyme의 [Shallow Rendering API](http://airbnb.io/enzyme/docs/api/shallow.html)을 확인해 볼 것을 권장합니다. 같은 기능에 대해 더 높은 수준의 API를 제공합니다.
+> 우리는 또한 Enzyme의 [Shallow Rendering API](https://airbnb.io/enzyme/docs/api/shallow.html)을 확인해 볼 것을 권장합니다. 같은 기능에 대해 더 높은 수준의 API를 제공합니다.
 
 ## 참조 {#reference}
 
