@@ -1,6 +1,6 @@
 ---
 id: tutorial
-title: "Tutorial: Intro to React"
+title: "자습서: React 시작하기"
 layout: tutorial
 sectionid: tutorial
 permalink: tutorial/tutorial.html
@@ -12,42 +12,42 @@ redirect_from:
   - "docs/tutorial-zh-CN.html"
 ---
 
-This tutorial doesn't assume any existing React knowledge.
+이 자습서는 React에 대한 어떤 지식도 가정하지 않습니다.
 
-## Before We Start the Tutorial {#before-we-start-the-tutorial}
+## 자습서를 시작하기 전에 {#before-we-start-the-tutorial}
 
-We will build a small game during this tutorial. **You might be tempted to skip it because you're not building games -- but give it a chance.** The techniques you'll learn in the tutorial are fundamental to building any React apps, and mastering it will give you a deep understanding of React.
+우리는 자습서에서 작은 게임을 만들 것입니다. **게임을 만드고 싶지 않기 때문에 자습서를 건너뛰고 싶을 수 있습니다 -- 그래도 기회를 주세요.** 자습서에서 배우는 기술은 React 앱을 만드는 데 있어 기본이며 그것을 마스터하면 React에 대해 깊이 이해할 수 있습니다.
 
->Tip
+> 팁
 >
->This tutorial is designed for people who prefer to **learn by doing**. If you prefer learning concepts from the ground up, check out our [step-by-step guide](/docs/hello-world.html). You might find this tutorial and the guide complementary to each other.
+> 자습서는 **실습을 통해 배우기**를 선호하는 사람들에 맞춰 설계 되었습니다. 기초부터 개념을 학습하길 선호한다면 [단계별 가이드](/docs/hello-world.html)를 확인해보세요. 자습서와 단계별 가이드는 상호 보완적입니다.
 
-The tutorial is divided into several sections:
+자습서는 아래와 같이 몇 가지 구역으로 나뉩니다.
 
-* [Setup for the Tutorial](#setup-for-the-tutorial) will give you **a starting point** to follow the tutorial.
-* [Overview](#overview) will teach you **the fundamentals** of React: components, props, and state.
-* [Completing the Game](#completing-the-game) will teach you **the most common techniques** in React development.
-* [Adding Time Travel](#adding-time-travel) will give you **a deeper insight** into the unique strengths of React.
+* [자습서 설정](#setup-for-the-tutorial)은 자습서를 따를 수 있는 **시작점**을 안내합니다.
+* [개요](#overview)는 React의 **기본**(components, props, state)을 알려줍니다.
+* [게임 완성하기](#completing-the-game)는 React 개발에서 사용하는 **가장 일반적인 기술**을 가르쳐 줄 것입니다.
+* [시간여행 추가하기](#adding-time-travel)는 React의 고유한 강점에 대한 **깊은 통찰력**을 줄 것입니다.
 
-You don't have to complete all of the sections at once to get the value out of this tutorial. Try to get as far as you can -- even if it's one or two sections.
+자습서를 익히기 위해 모든 부분을 한 번에 완료할 필요는 없습니다. 한 두 구역이라도 가능한 한 많이 시도 해보세요.
 
-It's fine to copy and paste code as you're following along the tutorial, but we recommend to type it by hand. This will help you develop a muscle memory and a stronger understanding.
+이 자습서를 따라하기 위해 코드를 복사하여 붙여넣는 것도 괜찮지만 직접 코드를 따라 적기를 추천합니다. 이 방식은 몸으로 기억하는 것과 더 강한 이해에 도움을 줄 것입니다.
 
-### What Are We Building? {#what-are-we-building}
+### 무엇을 구현하나요? {#what-are-we-building}
 
-In this tutorial, we'll show how to build an interactive tic-tac-toe game with React.
+우리는 React로 대화형 틱택토 게임을 만드는 방법을 알려드릴 것입니다.
 
-You can see what we'll be building here: **[Final Result](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**. If the code doesn't make sense to you, or if you are unfamiliar with the code's syntax, don't worry! The goal of this tutorial is to help you understand React and its syntax.
+최종 결과물은 **[이 페이지](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**에서 확인할 수 있습니다. 코드가 이해가 되지 않거나 코드의 문법에 익숙하지 않더라도 걱정마세요! 자습서의 목적은 React와 React 문법에 대한 이해를 돕는 것입니다.
 
-We recommend that you check out the tic-tac-toe game before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and is updated as the game progresses.
+자습서를 진행하기 전에 틱택토 게임을 체험해보길 추천합니다. 주목할만한 특징 중 하나는 게임판 오른쪽에 번호가 매겨진 목록이 있다는 것입니다. 목록은 게임에서 일어난 모든 이동의 기록을 보여주며 게임을 진행하면 업데이트 됩니다.
 
-You can close the tic-tac-toe game once you're familiar with it. We'll be starting from a simpler template in this tutorial. Our next step is to set you up so that you can start building the game.
+틱택토 게임에 익숙해졌다면 종료해도 괜찮습니다. 우리는 자습서의 간단한 템플릿에서 시작할 것입니다. 다음 단계에서는 게임 구현을 시작하기 위한 설정을 다룹니다.
 
-### Prerequisites {#prerequisites}
+### 사전 준비 {#prerequisites}
 
-We'll assume that you have some familiarity with HTML and JavaScript, but you should be able to follow along even if you're coming from a different programming language. We'll also assume that you're familiar with programming concepts like functions, objects, arrays, and to a lesser extent, classes.
+당신이 HTML과 JavaScript에 어느정도 익숙하다고 가정하지만 다른 프로그래밍 언어를 사용하더라도 자습서를 따라갈 수 있습니다. 또한 함수, 객체, 배열, 가능하다면 클래스 같은 프로그래밍 개념에 익숙하다고 가정합니다.
 
-If you need to review JavaScript, we recommend reading [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript). Note that we're also using some features from ES6 -- a recent version of JavaScript. In this tutorial, we're using [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), and [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) statements. You can use the [Babel REPL](babel://es5-syntax-example) to check what ES6 code compiles to.
+JavaScript를 다시 보고싶다면 [이 가이드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)를 추천합니다. JavaScript의 최신 버전인 ES6의 몇 가지 기능을 사용한다는 사실에 주목해주세요. 자습서에서는 [화살표 함수](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [클래스](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)를 사용합니다. [Babel REPL](babel://es5-syntax-example)을 사용하여 ES6 코드가 어떻게 컴파일되는지 확인할 수 있습니다.
 
 ## Setup for the Tutorial {#setup-for-the-tutorial}
 

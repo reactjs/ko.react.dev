@@ -1,16 +1,16 @@
-- title: Tutorial
+- title: 자습서
   items:
     - id: before-we-start-the-tutorial
-      title: Before We Start the Tutorial
+      title: 자습서를 시작하기 전에
       href: /tutorial/tutorial.html#before-we-start-the-tutorial
       forceInternal: true
       subitems:
         - id: what-are-we-building
-          title: What Are We Building?
+          title: 무엇을 구현하나요?
           href: /tutorial/tutorial.html#what-are-we-building
           forceInternal: true
         - id: prerequisites
-          title: Prerequisites
+          title: 사전 준비
           href: /tutorial/tutorial.html#prerequisites
           forceInternal: true
     - id: setup-for-the-tutorial
