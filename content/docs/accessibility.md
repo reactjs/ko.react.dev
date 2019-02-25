@@ -6,7 +6,7 @@ permalink: docs/accessibility.html
 
 ## 접근성이 필요한 이유 {#why-accessibility}
 
-웹 접근성(별칭: [**a11y**](https://en.wiktionary.org/wiki/a11y))는 모두가 사용할 수 있도록 웹사이트를 디자인, 개발하는 것을 의미합니다. 보조과학기술(assistive technology)들이 웹페이지들을 해석할 수 있도록 접근성을 갖추는 것이 반드시 필요합니다.
+웹 접근성(별칭: [**a11y**](https://en.wiktionary.org/wiki/a11y))는 모두가 사용할 수 있도록 웹사이트를 디자인, 개발하는 것을 의미합니다. 보조과학기술(assistive technology)들이 웹페이지들을 해석할 수 있도록 접근성을 갖추는 것이 필요합니다.
 
 React는 접근성을 갖춘 웹사이트를 만들 수 있도록 모든 지원을 하고 있으며, 대부분은 표준 HTML 기술이 사용됩니다.
 
@@ -26,7 +26,7 @@ React는 접근성을 갖춘 웹사이트를 만들 수 있도록 모든 지원�
 
 [Web Accessibility Initiative - Accessible Rich Internet Applications](https://www.w3.org/WAI/intro/aria) 문서에는 접근성을 갖춘 JavaScript 위젯들을 만드는 데 필요한 기술들이 담겨있습니다.
 
-참고로, JSX에서는 모든 `aria-*` HTML 속성들을 지원하고 있습니다. React에서 대부분의 DOM 속성과 속성에 대한 값들이 camelCase로 지원되는 반면, `aria-*`와 같은 속성들은 일반적인 HTML과 마찬가지로 hypen-case(혹은 kebab-case, lisp-case 등)로 작성해야합니다.
+참고로, JSX에서는 모든 `aria-*` HTML 속성들을 지원하고 있습니다. React에서 대부분의 DOM 속성과 속성에 대한 값들이 camelCase로 지원되는 반면, `aria-*`와 같은 속성들은 일반적인 HTML과 마찬가지로 hypen-case(혹은 kebab-case, lisp-case 등)로 작성해야 합니다.
 
 ```javascript{3,4}
 <input
@@ -40,7 +40,7 @@ React는 접근성을 갖춘 웹사이트를 만들 수 있도록 모든 지원�
 ```
 
 ## 시맨틱 HTML {#semantic-html}
-시맨틱 HTML은 웹 어플리케이션에 있어 접근성의 기초입니다. 웹사이트에서 정보에 대한 뜻을 부각시켜주는 HTML 엘리먼트들을 사용한다면, 대부분의 접근성이 갖춰집니다.
+시맨틱 HTML은 웹 애플리케이션에 있어 접근성의 기초입니다. 웹사이트에서 정보에 대한 뜻을 부각해주는 HTML 엘리먼트들을 사용한다면, 대부분의 접근성이 갖춰집니다.
 
 - [참고: MDN HTML 엘리먼트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 
@@ -89,7 +89,7 @@ function Glossary(props) {
 }
 ```
 
-만약, Fragment 태그에 어떤 속성도 필요하지 않고, 사용하고 있는 도구에서 지원한다면, 아래와 같이 [짧게 줄여쓸](/docs/fragments.html#short-syntax) 수 있습니다.
+만약, Fragment 태그에 어떤 속성도 필요하지 않고, 사용하고 있는 도구에서 지원한다면, 아래와 같이 [짧게 줄여 쓸 수](/docs/fragments.html#short-syntax) 있습니다.
 
 ```javascript{3,6}
 function ListItem({ item }) {
@@ -131,7 +131,7 @@ function ListItem({ item }) {
 
 ## 포커스 컨트롤 {#focus-control}
 
-모든 웹 어플리케이션은 키보드만 사용하여 모든 동작을 할 수 있어야 합니다.
+모든 웹 애플리케이션은 키보드만 사용하여 모든 동작을 할 수 있어야 합니다.
 
 - [WebAIM이 말하는 키보드 접근성](https://webaim.org/techniques/keyboard/)
 
@@ -145,23 +145,23 @@ function ListItem({ item }) {
 
 ### 원하는 콘텐츠로 건너뛸 수 있는 방법 {#mechanisms-to-skip-to-desired-content}
 
-어플리케이션은 사용자들의 키보드 탐색을 돕고 탐색 속도를 높일 수 있도록, 이전에 탐색한 영역을 건너뛸 수 있는 방법을 제공해야합니다.
+애플리케이션은 사용자들의 키보드 탐색을 돕고 탐색 속도를 높일 수 있도록, 이전에 탐색한 영역을 건너뛸 방법을 제공해야 합니다.
 
 Skiplinks 또는 Skip Navigation Link들은 키보드 사용자가 페이지와 상호작용할 때만 표시되는 숨겨진 탐색 링크입니다. 내부의 페이지 앵커와 약간의 스타일링으로 매우 쉽게 구현할 수 있습니다.
 
 - [WebAIM - Skip Navigation Links](https://webaim.org/techniques/skipnav/)
 
-또한, 보조과학기술에 의해 사용자들이 이러한 섹션으로 빠르게 이동할 수 있도록,  `<main>`과 `<aside>` 같이 대표성을 띄는 랜드마크 엘리먼트와 역할들을 사용해 페이지 영역을 나누어야 합니다.
+또한, 보조과학기술에 의해 사용자들이 이러한 섹션으로 빠르게 이동할 수 있도록,  `<main>`과 `<aside>` 같이 대표성을 띠는 랜드마크 엘리먼트와 역할들을 사용해 페이지 영역을 나누어야 합니다.
 
-이러한 엘리먼트들을 사용해 접근성을 높이는 방법은 아래 글을 참고해주시기 바랍니다.
+이러한 엘리먼트들을 사용해 접근성을 높이는 방법은 아래의 글을 참고해주시기 바랍니다.
 
 - [접근 가능한 랜드마크(Accessible Landmarks)](https://www.scottohara.me/blog/2018/03/03/landmarks.html)
 
 ### 프로그래밍적으로 포커스 관리하기 {#programmatically-managing-focus}
 
-React 어플리케이션들은 런타임 동안 지속적으로 HTML DOM을 변경하기 때문에, 가끔씩 키보드 포커스를 잃거나 예상치 못한 엘리먼트에 포커스를 맞추곤 합니다. 이를 수정하기 위해, 프로그래밍적으로 키보드 포커스를 올바른 방향으로 변경해주어야 합니다. 예를 들어, 모달이 닫힌 후에는 모달을 열었던 버튼으로 키보드 포커스를 다시 맞춰주어야 합니다.
+React 애플리케이션들은 런타임 동안 지속해서 HTML DOM을 변경하기 때문에, 가끔 키보드 포커스를 잃거나 예상치 못한 엘리먼트에 포커스를 맞추곤 합니다. 이를 수정하기 위해, 프로그래밍적으로 키보드 포커스를 올바른 방향으로 변경해주어야 합니다. 예를 들어, 모달이 닫힌 후에는 모달을 열었던 버튼으로 키보드 포커스를 다시 맞춰주어야 합니다.
 
-MDN Web Docs에서 [키보드로 탐색이 가능한 JavaScript 위젯](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets)을 만드는 방법에 대해 설명한 글이 있습니다.
+MDN Web Docs에서 [키보드로 탐색이 가능한 JavaScript 위젯](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets)을 만드는 방법에 관해 설명한 글이 있습니다.
 
 React에서 포커스를 설정하기 위해,  [DOM 엘리먼트에 ref를 지정](/docs/refs-and-the-dom.html)할 수 있습니다.
 
@@ -230,13 +230,13 @@ this.inputElement.current.focus();
 
 >주의:
 >
->키보드 포커스는 매우 중요한 접근성 기능이지만, 동시에 매우 조심해서 사용해야 하는 기능이기도 합니다. 사용자가 어플리케이션을 어떻게 사용하길 원하는지 예측하지 말고 키보드 포커스 흐름이 흐트러졌을 때 이를 고치기 위한 방법으로 사용하기 바랍니다.
+>키보드 포커스는 매우 중요한 접근성 기능이지만, 동시에 매우 조심해서 사용해야 하는 기능이기도 합니다. 사용자가 애플리케이션을 어떻게 사용하길 원하는지 예측하지 말고 키보드 포커스 흐름이 흐트러졌을 때 이를 고치려는 방법으로 사용하기 바랍니다.
 
 ## 마우스와 포인터 이벤트 {#mouse-and-pointer-events}
 
-마우스 혹은 포인터 이벤트로 노출된 모든 기능들을 키보드만으로 사용할 수 있도록 보장해야 합니다. 포인터 장치만 고려할 경우, 키보드 사용자들이 어플리케이션을 사용하지 못하는 경우가 많습니다.
+마우스 혹은 포인터 이벤트로 노출된 모든 기능을 키보드만으로 사용할 수 있도록 보장해야 합니다. 포인터 장치만 고려할 경우, 키보드 사용자들이 애플리케이션을 사용하지 못하는 경우가 많습니다.
 
-아래는 클릭 이벤트로 인해 접근성이 떨어지게 되는 예시입니다. 열려진 팝오버의 바깥을 클릭해 팝오버를 닫을 수 있는 ‘외부 클릭 패턴(outside click pattern)’입니다.
+아래는 클릭 이벤트로 인해 접근성이 떨어지게 되는 예시입니다. 열린 팝오버의 바깥을 클릭해 팝오버를 닫을 수 있는 ‘외부 클릭 패턴(outside click pattern)’입니다.
 
 <img src="../images/docs/outerclick-with-mouse.gif" alt="A toggle button opening a popover list implemented with the click outside pattern and operated with a mouse showing that the close action works." />
 
@@ -291,11 +291,11 @@ constructor(props) {
 }
 ```
 
-이는 포인터 장치 사용자들에게는 괜찮으나, 키보드 사용자들에게는 기능적으로 문제가 생깁니다. 다음 엘리먼트로 탭을 이동할 때 `window` 객체가 `click` 이벤트를 받을 수 없기 때문입니다. 이로 인해, 기능이 가려져 사용자들이 어플리케이션을 제대로 사용할 수 없게 됩니다.
+이는 포인터 장치 사용자들에게는 괜찮으나, 키보드 사용자들에게는 기능적으로 문제가 생깁니다. 다음 엘리먼트로 탭을 이동할 때 `window` 객체가 `click` 이벤트를 받을 수 없기 때문입니다. 이로 인해, 기능이 가려져 사용자들이 애플리케이션을 제대로 사용할 수 없게 됩니다.
 
 <img src="../images/docs/outerclick-with-keyboard.gif" alt="A toggle button opening a popover list implemented with the click outside pattern and operated with the keyboard showing the popover not being closed on blur and it obscuring other screen elements." />
 
-`onBlur`와 `onFocus` 같은 적절한 이벤트 핸들러를 사용하여 동일한 기능을 제공할 수 있습니다.
+`onBlur`와 `onFocus` 같은 적절한 이벤트 핸들러를 사용하여 같은 기능을 제공할 수 있습니다.
 
 ```javascript{19-29,31-34,37,40-41}
 class BlurExample extends React.Component {
@@ -360,13 +360,13 @@ class BlurExample extends React.Component {
 
 <img src="../images/docs/blur-popover-close.gif" alt="A popover list correctly closing for both mouse and keyboard users." />
 
-이것은 포인터와 마우스 이벤트에만 의존해 키보드 사용자의 사용성을 해치는 많은 예시들 중 하나입니다. 항상 키보드로 테스팅하면 바로 문제가 되는 영역을 확인하고, 키보드 핸들러를 추가하여 수정할 수 있을 것입니다.
+이것은 포인터와 마우스 이벤트에만 의존해 키보드 사용자의 사용성을 해치는 많은 예시 중 하나입니다. 항상 키보드로 테스트하면 바로 문제가 되는 영역을 확인하고, 키보드 핸들러를 추가하여 수정할 수 있을 것입니다.
 
 ## 더욱 복잡한 위젯 {#more-complex-widgets}
 
-복잡한 사용자 경험으로 접근성이 떨어져서는 안됩니다. 접근성을 쉽게 지원하는 방법은 가능한 한 HTML에 맞게 코딩하는 것이며, 복잡한 위젯 역시 접근 가능하도록 코딩할 수 있습니다.
+복잡한 사용자 경험으로 접근성이 떨어져서는 안 됩니다. 접근성을 쉽게 지원하는 방법은 가능한 한 HTML에 맞게 코딩하는 것이며, 복잡한 위젯 역시 접근할 수 있도록 코딩할 수 있습니다.
 
-여기서는 [ARIA 역할](https://www.w3.org/TR/wai-aria/#roles)과 [ARIA 상태 및 속성](https://www.w3.org/TR/wai-aria/#states_and_properties)에 대한 지식이 필요합니다. 이들은 JSX에서 모두 지원되는 HTML 속성으로 채워진 도구 상자로, 이를 통해 완전히 접근 가능하고 기능이 우수한 React 컴포넌트를 구성할 수 있습니다.
+여기서는 [ARIA 역할](https://www.w3.org/TR/wai-aria/#roles)과 [ARIA 상태 및 속성](https://www.w3.org/TR/wai-aria/#states_and_properties)에 대한 지식이 필요합니다. 이들은 JSX에서 모두 지원되는 HTML 속성으로 채워진 도구 상자로, 이를 통해 완전히 접근할 수 있고 기능이 우수한 React 컴포넌트를 구성할 수 있습니다.
 
 각각의 위젯 타입은 명확한 디자인 패턴이 있으며, 사용자와 사용자 에이전트 모두 특정 방향으로 기능하는 것이 요구됩니다.
 
@@ -392,13 +392,13 @@ React에서는 [React Document Title 컴포넌트](https://github.com/gaearon/re
 
 ### 색 대비 {#color-contrast}
 
-읽을 수 있는 모든 글들에 충분한 색 대비를 주어, 저시력 사용자들이 최대한 읽을 수 있도록 해야합니다.
+읽을 수 있는 모든 글에 충분한 색 대비를 주어, 저시력 사용자들이 최대한 읽을 수 있도록 해야 합니다.
 
 - [WCAG - 색 대비 요건 이해하기](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
 - [색 대비에 대한 모든 것과 이를 다시 생각해야 하는 이유](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
 - [The A11Y Project - 색 채도란](https://a11yproject.com/posts/what-is-color-contrast/)
 
-웹사이트의 모든 항목에 대해 적절한 색 조합을 일일이 계산하는 것은 지루할 수 있습니다. [Colorable을 사용해 접근 가능한 모든 색 조합표를 계산](https://jxnblk.com/colorable/)할 수 있습니다.
+웹사이트의 모든 항목에 대해 적절한 색 조합을 일일이 계산하는 것은 지루할 수 있습니다. [Colorable을 사용해 접근 가능한 모든 색 조합 표를 계산](https://jxnblk.com/colorable/)할 수 있습니다.
 
 아래에 언급된 aXe와 WAVE 도구 모두 색 대비에 대한 테스트가 포함되어 있어, 색 대비에 대한 오류를 알려줍니다.
 
@@ -409,7 +409,7 @@ React에서는 [React Document Title 컴포넌트](https://github.com/gaearon/re
 
 ## 개발 및 테스트 도구 {#development-and-testing-tools}
 
-접근 가능한 웹 어플리케이션을 만들 수 있도록 도와주는 여러 도구들이 있습니다.
+접근 가능한 웹 애플리케이션을 만들 수 있도록 도와주는 여러 도구가 있습니다.
 
 ### 키보드 {#the-keyboard}
 
@@ -426,9 +426,9 @@ React에서는 [React Document Title 컴포넌트](https://github.com/gaearon/re
 
 #### eslint-plugin-jsx-a11y {#eslint-plugin-jsx-a11y}
 
-ESLint 플러그인인 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)는 JSX 내의 접근성 문제에 대해 즉각적인 AST 린팅 피드백을 제공합니다. 많은 IDE들이 코드 분석과 소스 코드 창에 이런 결과를 통합할 수 있도록 해줍니다.
+ESLint 플러그인인 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)는 JSX 내의 접근성 문제에 대해 즉각적인 AST 린팅 피드백을 제공합니다. 많은 IDE가 코드 분석과 소스 코드 창에 이런 결과를 통합할 수 있도록 해줍니다.
 
-[크리에이트 리액트 앱](https://github.com/facebookincubator/create-react-app)에서는 해당 플러그인의 일부 규칙들이 활성화되어 있습니다. 더 많은 접근성 기능을 활성화하려면, 프로젝트 최상위에 아래와 같이  `.eslintrc` 파일을 생성합니다.
+[Create React App](https://github.com/facebookincubator/create-react-app)에서는 해당 플러그인의 일부 규칙들이 활성화되어 있습니다. 더 많은 접근성 기능을 활성화하려면, 프로젝트 최상위에 아래와 같이  `.eslintrc` 파일을 생성합니다.
 
   ```json
   {
@@ -439,11 +439,11 @@ ESLint 플러그인인 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslin
 
 ### 브라우저에서 접근성 테스트하기 {#testing-accessibility-in-the-browser}
 
-브라우저에서 접근성 검수를 받을 수 있는 여러 도구들이 있습니다. 여기서 소개하는 것들은 HTML의 기술적인 접근성 만을 테스트하기 때문에, 다른 도구들과 함께 사용하는 것을 권장합니다.
+브라우저에서 접근성 검수를 받을 수 있는 여러 도구가 있습니다. 여기서 소개하는 것들은 HTML의 기술적인 접근성만을 테스트하기 때문에, 다른 도구들과 함께 사용하는 것을 권장합니다.
 
 #### aXe와 aXe-core, react-axe {#axe-axe-core-and-react-axe}
 
-Deque Systems에서는 자동으로 어플리케이션의 종단간(end-to-end) 접근성을 테스트하는 [aXe-core](https://github.com/dequelabs/axe-core)를 제공합니다. 이 모듈은 Selenium과의 연동이 포함되어있습니다.
+Deque Systems에서는 자동으로 애플리케이션의 종단 간(end-to-end) 접근성을 테스트하는 [aXe-core](https://github.com/dequelabs/axe-core)를 제공합니다. 이 모듈은 Selenium과의 연동이 포함되어있습니다.
 
 [The Accessibility Engine](https://www.deque.com/products/axe/)(별칭: aXe)은 aXe-core 기반의, 접근성 검사를 위한 브라우저 확장기능입니다.
 
@@ -451,7 +451,7 @@ Deque Systems에서는 자동으로 어플리케이션의 종단간(end-to-end) 
 
 #### WebAIM WAVE {#webaim-wave}
 
-[Web Accessibility Evaluation Tool](https://wave.webaim.org/extension/)은 또다른 브라우저 확장 기능입니다.
+[Web Accessibility Evaluation Tool](https://wave.webaim.org/extension/)은 또 다른 브라우저 확장 기능입니다.
 
 #### 접근성 검사기와 접근성 트리 {#accessibility-inspectors-and-the-accessibility-tree}
 
@@ -467,7 +467,7 @@ Deque Systems에서는 자동으로 어플리케이션의 종단간(end-to-end) 
 
 접근성 테스트의 일환으로 스크린 리더를 사용한 테스트 역시 진행되어야 합니다.
 
-브라우저와 스크린 리더 조합에 주의해주시기 바랍니다. 선택한 스크린 리더에 가장 적합한 브라우저에서 어플리케이션을 테스트하기 바랍니다.
+브라우저와 스크린 리더 조합에 주의해주시기 바랍니다. 선택한 스크린 리더에 가장 적합한 브라우저에서 애플리케이션을 테스트하기 바랍니다.
 
 ### 일반적으로 사용되는 스크린 리더 {#commonly-used-screen-readers}
 
