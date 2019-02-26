@@ -410,7 +410,7 @@ Because `this.props` and `this.state` may be updated asynchronously, you should 
 `this.props`와 `this.state`가 비동기적으로 업데이트될 수 있기 때문에 다음 state를 계산할 때 해당 값에 의존해서는 안 됩니다.
 
 For example, this code may fail to update the counter:
-예를 들어 다음 코드는 카운터 업데이트에 실패할 수 있습니다. 
+예를 들어, 다음 코드는 카운터 업데이트에 실패할 수 있습니다. 
 
 ```js
 // Wrong
