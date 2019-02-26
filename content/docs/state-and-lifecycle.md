@@ -152,8 +152,8 @@ class Clock extends React.Component {
 }
 ```
 
-2) Add a [클래스 constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor) that assigns the initial `this.state`:
-2) 초기 `this.state`를 지정하는 [class constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)를 추가합니다.
+2) Add a [class constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor) that assigns the initial `this.state`:
+2) 초기 `this.state`를 지정하는 [클래스 constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)를 추가합니다.
 
 ```js{4}
 class Clock extends React.Component {
@@ -304,6 +304,7 @@ We will tear down the timer in the `componentWillUnmount()` lifecycle method:
 
 Finally, we will implement a method called `tick()` that the `Clock` component will run every second.
 마지막으로 `Clock` 컴포넌트가 매초 작동하도록 하는 `tick()`이라는 메서드를 구현해 보겠습니다.
+
 It will use `this.setState()` to schedule updates to the component local state:
 이것은 컴포넌트 로컬 state를 업데이트하기 위해 `this.setState()`를 사용합니다.
 
