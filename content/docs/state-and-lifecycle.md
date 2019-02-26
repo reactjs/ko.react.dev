@@ -32,8 +32,7 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
-[**Try it on CodePen**](http://codepen.io/gaearon/pen/gwoJZk?editors=0010)
-[**CodePen에서 시도해 보기**](http://codepen.io/gaearon/pen/gwoJZk?editors=0010)
+[**CodePen에서 시도해보기**](https://codepen.io/gaearon/pen/gwoJZk?editors=0010)
 
 In this section, we will learn how to make the `Clock` component truly reusable and encapsulated. It will set up its own timer and update itself every second.
 이 섹션에서는 `Clock` 컴포넌트를 완전히 재사용하고 캡슐화하는 방법을 배울 것입니다. 이 컴포넌트는 스스로 타이머를 설정할 것이고 매초 스스로 업데이트할 것입니다.
@@ -61,8 +60,7 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
-[**Try it on CodePen**](http://codepen.io/gaearon/pen/dpdoYR?editors=0010)
-[**CodePen에서 시도해 보기**](http://codepen.io/gaearon/pen/dpdoYR?editors=0010)
+[**CodePen에서 시도해보기**](https://codepen.io/gaearon/pen/dpdoYR?editors=0010)
 
 However, it misses a crucial requirement: the fact that the `Clock` sets up a timer and updates the UI every second should be an implementation detail of the `Clock`.
 그러나 여기에는 중요한 요건이 누락되어 있습니다. `Clock`이 타이머를 설정하고 매초 UI를 업데이트하는 것이 `Clock`의 구현 세부사항이 되어야 합니다.
@@ -121,8 +119,7 @@ class Clock extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](http://codepen.io/gaearon/pen/zKRGpo?editors=0010)
-[**CodePen에서 시도해 보기**](http://codepen.io/gaearon/pen/zKRGpo?editors=0010)
+[**CodePen에서 시도해보기**](https://codepen.io/gaearon/pen/zKRGpo?editors=0010)
 
 `Clock` is now defined as a class rather than a function.
 `Clock`은 이제 함수가 아닌 클래스로 정의됩니다.
@@ -225,8 +222,7 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](http://codepen.io/gaearon/pen/KgQpJd?editors=0010)
-[**CodePen에서 시도해 보기**](http://codepen.io/gaearon/pen/KgQpJd?editors=0010)
+[**CodePen에서 시도해보기**](https://codepen.io/gaearon/pen/KgQpJd?editors=0010)
 
 Next, we'll make the `Clock` set up its own timer and update itself every second.
 다음으로 `Clock`이 스스로 타이머를 설정하고 매초 스스로 업데이트하도록 만들어 보겠습니다.
@@ -348,8 +344,7 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](http://codepen.io/gaearon/pen/amqdNA?editors=0010)
-[**CodePen에서 시도해 보기**](http://codepen.io/gaearon/pen/amqdNA?editors=0010)
+[**CodePen에서 시도해보기**](https://codepen.io/gaearon/pen/amqdNA?editors=0010)
 
 Now the clock ticks every second.
 이제 시계는 매초 째깍거립니다.
@@ -514,8 +509,7 @@ function FormattedDate(props) {
 }
 ```
 
-[**Try it on CodePen**](http://codepen.io/gaearon/pen/zKRqNB?editors=0010)
-[**CodePen에서 시도해 보기**](http://codepen.io/gaearon/pen/zKRqNB?editors=0010)
+[**CodePen에서 시도해보기**](https://codepen.io/gaearon/pen/zKRqNB?editors=0010)
 
 This is commonly called a "top-down" or "unidirectional" data flow. Any state is always owned by some specific component, and any data or UI derived from that state can only affect components "below" them in the tree.
 일반적으로 이를 "하향식(top-down)" 또는 "단방향식" 데이터 흐름이라고 합니다. 모든 state는 항상 특정한 컴포넌트가 소유하고 있으며 그 state로부터 파생된 UI 또는 데이터는 오직 트리구조에서 자신의 "아래"에 있는 컴포넌트에만 영향을 미칩니다. 
@@ -543,8 +537,7 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](http://codepen.io/gaearon/pen/vXdGmd?editors=0010)
-[**CodePen에서 시도해 보기**](http://codepen.io/gaearon/pen/vXdGmd?editors=0010)
+[**CodePen에서 시도해보기**](https://codepen.io/gaearon/pen/vXdGmd?editors=0010)
 
 Each `Clock` sets up its own timer and updates independently.
 각 `Clock`은 자신만의 타이머를 설정하고 독립적으로 업데이트를 합니다.
