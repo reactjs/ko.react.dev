@@ -65,7 +65,7 @@ React 프로젝트를 시작한다면 [스크립트 태그를 사용한 간단�
 
 ### 입문자를 위한 React {#react-for-beginners}
 
-React 문서가 어렵게 느껴진다면, [Tania Rascia가 쓴 React 개요](https://www.taniarascia.com/getting-started-with-react/)를 먼저 보고 오시는 것이 좋습니다. 그것은 가장 중요한 React 개념들을 자세하고 입문자도 쉽게 이해할 수 있도록 소개합니다. 그다음에 이 문서를 다시 봐주세요!
+React 문서가 어렵게 느껴진다면, [Tania Rascia가 쓴 React 개요](https://www.taniarascia.com/getting-started-with-react/)를 먼저 보고 오시는 것이 좋습니다. 위 글은 가장 중요한 React 개념들을 자세하고 입문자도 쉽게 이해할 수 있도록 소개합니다. 그다음에 이 문서를 다시 봐주세요!
 
 ### 디자이너를 위한 React {#react-for-designers}
 
@@ -75,7 +75,7 @@ React 문서가 어렵게 느껴진다면, [Tania Rascia가 쓴 React 개요](ht
 
 React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 쓰여져 있습니다. 전문가일 필요는 없지만, React와 JavaScript를 동시에 배우기는 어렵습니다.
 
-[이 JavaScript 개요](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)를 읽고 Javascript 수준을 확인하는 것을 권장합니다. 30분에서 1시간 정도 걸리겠지만 React를 익히는 데에 더 자신감이 생길 것입니다.
+[이 JavaScript 개요](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)를 읽고 여러분의 Javascript 수준을 확인하는 것을 권장합니다. 30분에서 1시간 정도 걸리겠지만 React를 익히는 데에 더 자신감이 생길 것입니다.
 
 >팁
 >
@@ -83,15 +83,15 @@ React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 �
 
 ### 실용적인 자습서 {#practical-tutorial}
 
-**직접 구현해보면서 학습하는 것**을 원하시면, [실용적인 자습서](/tutorial/tutorial.html)을 살펴보세요. 본 자습서에서는 React로 tic-tac-toe 게임을 만들어 봅니다. 게임을 만드는 것이 아니기 때문에 건너뛰고 싶은 마음이 들지도 모릅니다. 하지만 조금만 기다려 보세요. 자습서에서 학습하는 기술은 *대부분의* React 앱을 구축하는 데 있어 기본이며, 이를 완전히 익히면 훨씬 더 깊은 이해할 수 있습니다.
+**직접 구현해보면서 학습하는 것**을 원하시면, [실용적인 자습서](/tutorial/tutorial.html)을 살펴보세요. 본 자습서에서는 React로 tic-tac-toe 게임을 만들어 봅니다. 게임 제작에는 관심이 없어서 이 자습서를 건너뛰고 싶은 마음이 들지도 모릅니다. 하지만 조금만 기다려 보세요. 자습서에서 학습하는 기술은 *대부분의* React 앱을 구축하는 데 있어 기본이며, 이를 완전히 익히면 훨씬 더 깊은 이해할 수 있습니다.
 
 ### 단계별 가이드 {#step-by-step-guide}
 
-**개념을 단계별로 배우려면** [주요 개념 가이드](/docs/hello-world.html)를 시작하는 것이 가장 좋습니다. 모든 다음 장은 앞 장에 소개된 지식을 바탕으로 하기 때문에 이를 따라갈 때 어떤 것도 놓치지 않습니다.
+**개념을 단계별로 배우려면** [주요 개념 가이드](/docs/hello-world.html)를 시작하는 것이 가장 좋습니다. 모든 다음 장은 앞 장에 소개된 지식을 바탕으로 하기 때문에, 천천히 따라가기만 한다면 개념을 놓치지 않고 습득할 수 있습니다. 
 
 ### React에 대해 생각해 보기 {#thinking-in-react}
 
-많은 React 사용자는 [React에 대해 생각해보기](/docs/thinking-in-react.html)를 읽는 것을 신용합니다. 이것은 아마 가장 오래된 React 문서이지만 여전히 유용합니다.
+많은 React 사용자는 [React에 대해 생각해보기](/docs/thinking-in-react.html)를 읽는 것을 React를 마지막으로 이해하는 것으로 생각합니다. 이것은 아마 가장 오래된 React 문서이지만 여전히 유용합니다.
 
 ### 권장 과정 {#recommended-courses}
 
@@ -99,11 +99,11 @@ React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 �
 
 ### 고급 개념 {#advanced-concepts}
 
-[주요 개념](#main-concepts)에 익숙해지고 React를 조금 더 많이 다루게 되면 보다 고급 주제에 관심이 있을 수 있습니다. 이 섹션에서는 [context](/docs/context.html) 및 [refs](/docs/refs-and-dom.html)와 같이 강력하지만 일반적으로 사용되지 않는 React 기능을 소개합니다.
+[주요 개념](#main-concepts)에 익숙해지고 React를 더 많이 다루게 되면 보다 고급 주제에 관심을 가지게 될 것입니다. 이 섹션에서는 [context](/docs/context.html) 및 [refs](/docs/refs-and-dom.html)와 같이 강력하지만 일반적으로 사용되지는 않는 React 기능을 소개합니다.
 
 ### API 참조 {#api-reference}
 
-이 문서 섹션은 특정 React API에 대한 자세한 내용을 알아보려는 경우에 유용합니다. 예를 들어, [`React.Component` API 참조](/docs/react-component.html)는 `setState()`가 어떻게 작동하는지와 다른 생명주기 메소드가 유용한 지에 대한 세부 정보를 제공합니다.
+이 문서 섹션은 특정 React API를 자세히 알아보고 싶을 때 유용합니다. 예를 들어, [`React.Component` API 참조](/docs/react-component.html)에서는 `setState()`의 작동 방식과 각 상황에 알맞는 생명주기 메서드를 알 수 있습니다.
 
 ### 용어 사전과 FAQ {#glossary-and-faq}
 
@@ -113,13 +113,13 @@ React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 �
 
 [React 블로그](/blog/)는 React 팀의 업데이트에 대한 공식 소스입니다. 릴리즈 노트 또는 사용 자제 공지를 포함한 중요한 내용이 먼저 게시됩니다.
 
-트위터의 [@reactjs 계정](https://twitter.com/reactjs)을 팔로우할 수도 있지만, 블로그만 읽어도 필수적인 것은 놓치지 않을 수 있습니다.
+트위터의 [@reactjs 계정](https://twitter.com/reactjs)을 팔로우할 수도 있지만, 블로그만 읽어도 꼭 알아야 하는 정보는 놓치지 않을 수 있습니다.
 
 모든 React 릴리즈가 자체 블로그 게시물을 사용할 만한 것은 아니지만 [릴리즈](https://github.com/facebook/react) 페이지와 React의 'CHANGELOG.md' 파일에서 모든 릴리즈에 대한 자세한 변경 기록을 확인할 수 있습니다.
 
 ## 버전 관리된 문서 {#versioned-documentation}
 
-이 문서는 항상 안정된 최신 버전의 React를 반영합니다. React 16 이후 문서의 이전 버전을 [별도의 페이지](/versions)에서 찾을 수 있습니다. 이전 버전의 문서는 릴리즈 시점에 스냅샷으로 작성되며 지속적으로 업데이트되지 않는다는 점에 유의하세요.
+이 문서는 항상 안정된 최신 버전의 React를 반영합니다. React 16부터는 이전 버전의 문서를 [별도의 페이지](/versions)에서 찾을 수 있습니다. 이전 버전의 문서는 릴리즈 시점에 스냅샷으로 작성되며 지속적으로 업데이트되지 않는다는 점에 유의하세요.
 
 ## 빠진 항목이 있다면? {#something-missing}
 
