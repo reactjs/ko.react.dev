@@ -6,7 +6,7 @@ permalink: docs/accessibility.html
 
 ## 접근성이 필요한 이유 {#why-accessibility}
 
-웹 접근성(별칭: [**a11y**](https://en.wiktionary.org/wiki/a11y))는 모두가 사용할 수 있도록 웹사이트를 디자인, 개발하는 것을 의미합니다. 보조과학기술(assistive technology)들이 웹페이지들을 해석할 수 있도록 접근성을 갖추는 것이 필요합니다.
+웹 접근성(별칭: [**a11y**](https://en.wiktionary.org/wiki/a11y))은 모두가 사용할 수 있도록 웹사이트를 디자인, 개발하는 것을 의미합니다. 보조과학기술(assistive technology)들이 웹페이지들을 해석할 수 있도록 접근성을 갖추는 것이 필요합니다.
 
 React는 접근성을 갖춘 웹사이트를 만들 수 있도록 모든 지원을 하고 있으며, 대부분은 표준 HTML 기술이 사용됩니다.
 
@@ -14,9 +14,9 @@ React는 접근성을 갖춘 웹사이트를 만들 수 있도록 모든 지원�
 
 ### WCAG {#wcag}
 
-[Web Content Accessibility Guidelines](https://www.w3.org/WAI/intro/wcag)는 접근성을 갖춘 웹사이트를 만드는 데 필요한 지침들을 제공합니다.
+[Web Content Accessibility Guidelines](https://www.w3.org/WAI/intro/wcag)는 접근성을 갖춘 웹사이트를 만드는 데 필요한 지침을 제공합니다.
 
-아래 WCAG 체크리스트들은 그 개요들을 나타냅니다.
+아래 WCAG 체크리스트는 그 개요들을 나타냅니다.
 
 - [Wuhcag의 WCAG 체크리스트](https://www.wuhcag.com/wcag-checklist/)
 - [WebAIM의 WCAG 체크리스트](https://webaim.org/standards/wcag/checklist)
@@ -163,9 +163,9 @@ React 애플리케이션들은 런타임 동안 지속해서 HTML DOM을 변경�
 
 MDN Web Docs에서 [키보드로 탐색이 가능한 JavaScript 위젯](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets)을 만드는 방법에 관해 설명한 글이 있습니다.
 
-React에서 포커스를 설정하기 위해,  [DOM 엘리먼트에 ref를 지정](/docs/refs-and-the-dom.html)할 수 있습니다.
+React에서 포커스를 지정하려면,  [DOM 엘리먼트에 ref를 사용](/docs/refs-and-the-dom.html)할 수 있습니다.
 
-사용을 위해서, 먼저 JSX 컴포넌트 클래스 안에서 엘리먼트에 ref를 생성합니다.
+이를 사용해 JSX 컴포넌트 클래스 안에서 엘리먼트에 대한 ref를 먼저 생성합니다.
 
 ```javascript{4-5,8-9,13}
 class CustomTextInput extends React.Component {
