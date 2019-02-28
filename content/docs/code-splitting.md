@@ -92,7 +92,7 @@ Webpack 구문을 통과하게 되면 앱은 자동으로 Code-splitting 하게 
 만약 스스로 Webpack을 구성하고자 한다면 Webpack의 
 [guide on code splitting](https://webpack.js.org/guides/code-splitting/)를 참조 하세요. Webpack 설정은 [다음](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269) 과 같습니다.
 
-[Babel](http://babeljs.io/)을 사용할 때는 바벨이 동적으로 import를 할 수 있지만 변환하지는 않도록 해야 합니다. 이를 위해서는 [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import)를 사용 하세요.
+[Babel](https://babeljs.io/)을 사용할 때는 바벨이 동적으로 import를 할 수 있지만 변환하지는 않도록 해야 합니다. 이를 위해서는 [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import)를 사용 하세요.
 
 ## `React.lazy` {#reactlazy}
 
