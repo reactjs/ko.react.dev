@@ -51,4 +51,24 @@ const terms = [
     expressions: [/써드파티/],
     message: 'third party는 서드파티가 올바른 표현입니다',
   },
+  {
+    value: '예시',
+    expressions: [/예제/],
+    message: 'example은 예시로 표현합니다.',
+  },
+  {
+    value: '애플리케이션',
+    expressions: [/응용프로그램/, /어플리케이션/],
+    message: 'application은 애플리케이션으로 표현합니다.',
+  },
+  {
+    value: '함수 컴포넌트',
+    expressions: [/함수형 컴포넌트/],
+    message: 'function(al) component는 함수 컴포넌트로 표현합니다.',
+  },
+  {
+    value: '생명주기',
+    expressions: [/라이프사이클/],
+    message: 'life cycle은 생명주기로 표현합니다.',
+  },
 ].map(term => ({...term, expressions: g(term.expressions)}));
