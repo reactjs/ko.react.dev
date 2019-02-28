@@ -19,12 +19,12 @@ redirect_from:
 
 ### 컴포넌트 {#components}
 
-React 컴포넌트를 사용하면 UI를 독립적이고 재사용할 수 있는 부분으로 나누고 각 부분을 분리하여 생각할 수 있습니다. React 컴포넌트은 `React.Component` 또는 `React.PureComponent`로 세부적으로 나누어 정의할 수 있습니다.
+React 컴포넌트를 사용하면 UI를 독립적이고 재사용할 수 있는 부분으로 나누고 각 부분을 분리하여 생각할 수 있습니다. React 컴포넌트는 `React.Component` 또는 `React.PureComponent`로 세부적으로 나누어 정의할 수 있습니다.
 
 - [`React.Component`](#reactcomponent)
 - [`React.PureComponent`](#reactpurecomponent)
 
-ES6 `class`를 사용하지 않는다면, `create-react-class` 모듈을 대신 사용해도 됩니다. 자세한 정보는 [ES6 없이 React를 사용하기](/docs/react-without-es6.html) 문서에서 확인할 수 있습니다.
+ES6 class를 사용하지 않는다면, `create-react-class` 모듈을 대신 사용해도 됩니다. 자세한 정보는 [ES6 없이 React를 사용하기](/docs/react-without-es6.html) 문서에서 확인할 수 있습니다.
 
 React 컴포넌트를 정의할 때 래핑될 수 있는 함수의 형태로 할 수도 있습니다.
 
@@ -60,14 +60,14 @@ UI의 형태를 설명하는 데에 [JSX를 사용할 것](/docs/introducing-jsx
 
 ### Suspense {#suspense}
 
-Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이 먼저 이루어지도록 "대기합니다". 현재 Suspense는 단 하나의 사용례 [`React.lazy`를 사용하여 컴포넌트를 동적으로 불러오기](/docs/code-splitting.html#reactlazy)만 지원합니다. 나중에는 데이터 불러오기와 같은 사용 사례를 지원할 계획입니다.
+Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이 먼저 이루어지도록 "대기합니다". 현재 Suspense는 단 하나의 사용 사례 [`React.lazy`를 사용하여 컴포넌트를 동적으로 불러오기](/docs/code-splitting.html#reactlazy)만 지원합니다. 나중에는 데이터 불러오기와 같은 사용 사례를 지원할 계획입니다.
 
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
 
 ### Hooks {#hooks}
 
-*Hooks*는 React 16.8에 새로 추가되었습니다. Hooks를 사용하면 `class`를 사용하지 않아도 state와 React 기능들을 사용할 수 있도록 해줍니다. Hooks만을 다루는 [문서](/docs/hooks-intro.html)와 API 문서가 존재합니다.
+*Hooks*는 React 16.8에 새로 추가되었습니다. Hooks를 사용하면 class를 사용하지 않아도 state와 React 기능들을 사용할 수 있도록 해줍니다. Hooks만을 다루는 [문서](/docs/hooks-intro.html)와 API 문서가 존재합니다.
 
 - [기본적인 Hooks](/docs/hooks-reference.html#basic-hooks)
   - [`useState`](/docs/hooks-reference.html#usestate)
@@ -88,7 +88,7 @@ Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이
 
 ### `React.Component` {#reactcomponent}
 
-`React.Component`는 [ES6 `class`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)를 사용하여 React 컴포넌트를 정의할 때에 기초가 되는 `class`입니다.
+`React.Component`는 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)를 사용하여 React 컴포넌트를 정의할 때에 기초가 되는 class입니다.
 
 ```javascript
 class Greeting extends React.Component {
@@ -98,7 +98,7 @@ class Greeting extends React.Component {
 }
 ```
 
-`React.Component` 기초 `class`와 관련된 메서드와 속성 목록은 [React.Component API Reference](/docs/react-component.html)에서 확인할 수 있습니다.
+`React.Component` 기초 class와 관련된 메서드와 속성 목록은 [React.Component API Reference](/docs/react-component.html)에서 확인할 수 있습니다.
 
 * * *
 
@@ -124,7 +124,7 @@ const MyComponent = React.memo(function MyComponent(props) {
 });
 ```
 
-`React.memo`는 [고차 컴포넌트(Higher Order Component)](/docs/higher-order-components.html)입니다. [`React.PureComponent`](#reactpurecomponent)와 비슷하지만 `class`가 아니라 함수 컴포넌트라는 점이 다릅니다.
+`React.memo`는 [고차 컴포넌트(Higher Order Component)](/docs/higher-order-components.html)입니다. [`React.PureComponent`](#reactpurecomponent)와 비슷하지만 class가 아니라 함수 컴포넌트라는 점이 다릅니다.
 
 당신의 함수형 컴포넌트가 동일한 props로 동일한 결과를 렌더링해낸다면, `React.memo`를 호출하고 결과를 메모이징(Memoizing)하도록 래핑하여 경우에 따라 성능 향상을 누릴 수 있습니다. 즉, React는 컴포넌트를 렌더링하지 않고 마지막으로 렌더링된 결과를 재사용합니다.
 
@@ -146,7 +146,7 @@ export default React.memo(MyComponent, areEqual);
 
 > 주의
 >
-> 클래스 컴포넌트의 [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate) 메서드와 달리, `areEqual` 함수는 props들이 서로 같으면 `true`를 반환하고, props들이 서로 다르면 `false`를 반환합니다. 이것은 `shouldComponentUpdate`와 정반대의 동작입니다.
+> class 컴포넌트의 [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate) 메서드와 달리, `areEqual` 함수는 props들이 서로 같으면 `true`를 반환하고, props들이 서로 다르면 `false`를 반환합니다. 이것은 `shouldComponentUpdate`와 정반대의 동작입니다.
 
 * * *
 
@@ -268,7 +268,7 @@ React.Children.toArray(children)
 
 > 주의
 >
-> `React.Children.toArray()`는 `children`을 평평하게 만들 때, 중첩된 배열들의 의미를 보존하기 위하여 `key`를 변경합니다. 즉, `toArray`는 반환되는 배열에 `key` 값을 덧붙여서 각 엘리먼트가 갖는 `key`가 평평해진 배열 내에서만 유효한 범위를 형성하도록 해줍니다.
+> `React.Children.toArray()`는 `children`을 평평하게(Flatten) 만들 때, 중첩된 배열들의 의미를 보존하기 위하여 `key`를 변경합니다. 즉, `toArray`는 반환되는 배열에 `key` 값을 덧붙여서 각 엘리먼트가 갖는 `key`가 평평해진 배열 내에서만 유효한 범위를 형성하도록 해줍니다.
 
 * * *
 
