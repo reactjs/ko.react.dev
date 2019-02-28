@@ -42,14 +42,16 @@ const g = args => args.map(arg => new RegExp(arg, 'g'));
  */
 const terms = [
   {
+    // http://www.korean.go.kr/front/onlineQna/onlineQnaView.do?mn_id=61&qna_seq=11976
     value: '메서드',
     expressions: [/메소드/, /메쏘드/],
     message: 'method는 메서드가 올바른 표현입니다',
   },
   {
-    value: '서드파티',
-    expressions: [/써드파티/],
-    message: 'third party는 서드파티가 올바른 표현입니다',
+    // https://opendict.korean.go.kr/dictionary/view?sense_no=1251028
+    value: '서드 파티',
+    expressions: [/서드파티/, /써드파티/, /써드 파티/],
+    message: 'third party는 서드 파티가 올바른 표현입니다',
   },
   {
     value: '예시',

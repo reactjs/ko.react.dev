@@ -6,7 +6,7 @@ const tester = new TextLintTester();
 tester.run('terminology', rule, {
   valid: [
     '메서드',
-    '서드파티',
+    '서드 파티',
     '예시',
     '애플리케이션',
     '함수 컴포넌트',
@@ -18,8 +18,8 @@ tester.run('terminology', rule, {
       errors: [{index: 14}, {index: 19}, {index: 24}],
     },
     {
-      text: '써드파티',
-      errors: [{index: 0}],
+      text: '서드파티와 써드파티와 써드 파티',
+      errors: [{index: 0}, {index: 6}, {index: 12}],
     },
     {
       text: '예제',
