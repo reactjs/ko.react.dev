@@ -112,7 +112,7 @@ TestRenderer.create(element, options);
 testRenderer.toJSON()
 ```
 
-렌더된 트리를 나타내는 객체를 반환합니다. 이 트리는 같은 플랫폼 고유의 노드(예: <div>, <View>)와, 그러한 노드의 속성만을 가지고 있습니다. 사용자가 작성한 컴포넌트는 나타나지 않습니다. 이 함수는 [스냅샷 테스팅](https://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest) 시 유용하게 사용할 수 있습니다.
+렌더링 된 트리를 나타내는 객체를 반환합니다. 이 트리는 같은 플랫폼 고유의 노드(예: <div>, <View>)와, 그러한 노드의 속성만을 가지고 있습니다. 사용자가 작성한 컴포넌트는 나타나지 않습니다. 이 함수는 [스냅샷 테스팅](https://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest) 시 유용하게 사용할 수 있습니다.
 
 ### `testRenderer.toTree()` {#testrenderertotree}
 
@@ -120,7 +120,7 @@ testRenderer.toJSON()
 testRenderer.toTree()
 ```
 
-렌더된 트리를 나타내는 객체를 반환합니다. `toJSON()`에서 반환되는 값과 달리 더욱 자세한 정보가 반환되며, 반환 값에는 사용자가 작성한 컴포넌트 역시 포함되어있습니다. 테스트 렌더러 위에 별도의 검증(assertion) 라이브러리를 만드는 것이 아니라면 이 함수는 필요하지 않을 것입니다.
+렌더링 된 트리를 나타내는 객체를 반환합니다. `toJSON()`에서 반환되는 값과 달리 더욱 자세한 정보가 반환되며, 반환 값에는 사용자가 작성한 컴포넌트 역시 포함되어있습니다. 테스트 렌더러 위에 별도의 검증(assertion) 라이브러리를 만드는 것이 아니라면 이 함수는 필요하지 않을 것입니다.
 
 ### `testRenderer.update()` {#testrendererupdate}
 
