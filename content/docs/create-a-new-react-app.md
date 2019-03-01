@@ -1,43 +1,59 @@
 ---
 id: create-a-new-react-app
 title: Create a New React App
+title: 새로운 리액트 앱 만들기
 permalink: docs/create-a-new-react-app.html
 redirect_from:
   - "docs/add-react-to-a-new-app.html"
-prev: add-react-to-a-website.html
-next: cdn-links.html
+@@ -9,38 +9,55 @@ next: cdn-links.html
 ---
 
 Use an integrated toolchain for the best user and developer experience.
+통합된 툴체인을 사용하여 최고의 유저와 개발자
 
 This page describes a few popular React toolchains which help with tasks like:
+본 페이지는 밑에있는 일들을 하기위해 도움을줄수있는 몇가지 인기있는 툴체인을 소개합니다
 
 * Scaling to many files and components.
+* 
 * Using third-party libraries from npm.
+* 제 3자 npm 라이브러리 사용
 * Detecting common mistakes early.
+* 일반적인 초기실수를 탐지
 * Live-editing CSS and JS in development.
+* CSS및 JS를 개발중에 수정
 * Optimizing the output for production.
+* 결과물 최적화
 
 The toolchains recommended on this page **don't require configuration to get started**.
+본 페이지의 추천하는 툴체인 **시작하기위해 구성할 필요없음**
 
 ## You Might Not Need a Toolchain {#you-might-not-need-a-toolchain}
+## 툴체인이 필요하지 않을수있다 {#you-might-not-need-a-toolchain}
 
 If you don't experience the problems described above or don't feel comfortable using JavaScript tools yet, consider [adding React as a plain `<script>` tag on an HTML page](/docs/add-react-to-a-website.html), optionally [with JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx).
 
 This is also **the easiest way to integrate React into an existing website.** You can always add a larger toolchain if you find it helpful!
 
 ## Recommended Toolchains {#recommended-toolchains}
+## 툴체인 추천
 
 The React team primarily recommends these solutions:
+리엑트 팀이 추천하는 해결책
 
 - If you're **learning React** or **creating a new [single-page](/docs/glossary.html#single-page-application) app,** use [Create React App](#create-react-app).
+- **리액트를 배우고있다** 혹은 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application) 앱**  
 - If you're building a **server-rendered website with Node.js,** try [Next.js](#nextjs).
+- **서버 랜더링 Node.js 웹사이트를 만들고있다** [Next.js](#nextjs). 
 - If you're building a **static content-oriented website,** try [Gatsby](#gatsby).
+- 
 - If you're building a **component library** or **integrating with an existing codebase**, try [More Flexible Toolchains](#more-flexible-toolchains).
 
 ### Create React App {#create-react-app}
+### 리엑트 앱 만들기
 
 [Create React App](https://github.com/facebookincubator/create-react-app) is a comfortable environment for **learning React**, and is the best way to start building **a new [single-page](/docs/glossary.html#single-page-application) application** in React.
+[리엑트 앱 만들기](https://github.com/facebookincubator/create-react-app)는 **리엑트 배우기**에 간편한 환경입니다, 그리고 시작하기에 최고의 방법은 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application)** 입니다.
 
 It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production. You’ll need to have Node >= 6 and npm >= 5.2 on your machine. To create a project, run:
 
