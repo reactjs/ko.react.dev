@@ -44,7 +44,7 @@ function render() {
 
 ## JSX를 사용하지 않는 동적 컴포넌트 {#dynamic-components-without-jsx}
 
-동적인 소스에서 클래스 컴포넌트를 가져오는 경우라면 팩토리를 만들지 않아도 됩니다. 대신 컴포넌트를 인라인으로 만들면 됩니다.
+동적인 소스에서 클래스 컴포넌트를 가져오는 경우라면 팩토리를 만들지 않아도 됩니다. 대신 엘리먼트를 인라인으로 만들면 됩니다.
 
 ```javascript
 var React = require('react');
