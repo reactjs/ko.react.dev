@@ -76,7 +76,7 @@ ReactDOM.render(
 );
 ```
 
-[CodePen에서 시험해 보기 ](codepen://components-and-props/rendering-a-component)
+[CodePen에서 시험해보기](codepen://components-and-props/rendering-a-component)
 
 이 예시에서는 다음과 같은 일들이 일어납니다.
 
@@ -87,7 +87,7 @@ ReactDOM.render(
 
 
 
->**Note: 컴포넌트의 이름은 항상 대문자로 시작합니다.**
+>**주의: 컴포넌트의 이름은 항상 대문자로 시작합니다.**
 >
 >React는 소문자로 시작하는 컴포넌트를 DOM 태그로 처리합니다. 예를 들어 `<div />`는 HTML div 태그를 나타내지만, `<Welcome />`은 컴포넌트를 나타내며 범위 안에 `Welcome`이 있어야 합니다.
 >
@@ -121,7 +121,7 @@ ReactDOM.render(
 );
 ```
 
-[CodePen에서 시험해 보기](codepen://components-and-props/composing-components)
+[CodePen에서 시험해보기](codepen://components-and-props/composing-components)
 
 일반적으로 새 React 앱은 최상위에 단일 `App` 컴포넌트를 가지고 있습니다. 하지만 기존 앱에 React를 통합하는 경우에는 `Button`과 같은 작은 컴포넌트부터 시작해서 뷰 계층의 상단으로 올라가면서 점진적으로 작업해야 할 수 있습니다.
 
@@ -155,7 +155,7 @@ function Comment(props) {
 }
 ```
 
-[CodePen에서 시험해 보기](codepen://components-and-props/extracting-components)
+[CodePen에서 시험해보기](codepen://components-and-props/extracting-components)
 
 이 컴포넌트는 `author`(객체), `text`(문자열) 및 `date`(날짜)를 props로 받은 후 소셜 미디어 웹 사이트의 코멘트를 나타냅니다.
 
@@ -234,7 +234,7 @@ function Comment(props) {
 }
 ```
 
-[CodePen에서 시험해 보기](codepen://components-and-props/extracting-components-continued)
+[CodePen에서 시험해보기](codepen://components-and-props/extracting-components-continued)
 
 처음에는 컴포넌트를 추출하는 작업이 지루해 보일 수 있습니다. 하지만 재사용 가능한 컴포넌트를 만들어 놓는 것은 더 큰 앱에서 작업할 때 두각을 나타냅니다. UI 일부가 여러 번 사용되거나 (`Button`, `Panel`, `Avatar`), UI 일부가 자체적으로 복잡한 (`App`, `FeedStory`, `Comment`) 경우에는 재사용 가능한 컴포넌트로 만드는 것이 좋습니다.
 
@@ -250,7 +250,7 @@ function sum(a, b) {
 
 이런 함수들은 [순수 함수](https://en.wikipedia.org/wiki/Pure_function)라고 호칭합니다. 입력값을 바꾸려 하지 않고 항상 동일한 입력값에 대해 동일한 결과를 반환하기 때문입니다.
 
-반면에 다음 함수는 자신의 입력값을 변경하기 때문에 비순수 함수입니다.
+반면에 다음 함수는 자신의 입력값을 변경하기 때문에 순수 함수가 아닙니다.
 
 ```js
 function withdraw(account, amount) {
