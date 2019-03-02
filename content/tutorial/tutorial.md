@@ -49,62 +49,62 @@ redirect_from:
 
 JavaScript를 다시 보고싶다면 [이 가이드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)를 추천합니다. JavaScript의 최신 버전인 ES6의 몇 가지 기능을 사용한다는 사실에 주목해주세요. 자습서에서는 [화살표 함수](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [클래스](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)를 사용합니다. [Babel REPL](babel://es5-syntax-example)을 사용하여 ES6 코드가 어떻게 컴파일되는지 확인할 수 있습니다.
 
-## Setup for the Tutorial {#setup-for-the-tutorial}
+## 자습서 설정 {#setup-for-the-tutorial}
 
-There are two ways to complete this tutorial: you can either write the code in your browser, or you can set up a local development environment on your computer.
+자습서를 완성하는 방법에는 두 가지가 있습니다. 브라우저에서 코드를 작성해도 되고 컴퓨터에 로컬 개발 환경을 설정해도 됩니다.
 
-### Setup Option 1: Write Code in the Browser {#setup-option-1-write-code-in-the-browser}
+### 설정 옵션 1: 브라우저에 코드 작성하기 {#setup-option-1-write-code-in-the-browser}
 
-This is the quickest way to get started!
+이 옵션은 가장 빠르게 시작하는 방식입니다!
 
-First, open this **[Starter Code](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)** in a new tab. The new tab should display an empty tic-tac-toe game board and React code. We will be editing the React code in this tutorial.
+먼저 새 탭에서 **[시작 코드](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**를 열어주세요. 새 탭은 비어있는 틱택토 게임판과 React 코드를 보여줄 것입니다. 우리는 자습서에서 React 코드를 편집할 것입니다.
 
-You can now skip the second setup option, and go to the [Overview](#overview) section to get an overview of React.
+이제 두 번째 설정 옵션을 건너뛰고 [개요](#overview) 단락으로 넘어가서 React에 대한 개요를 확인해주세요.
 
-### Setup Option 2: Local Development Environment {#setup-option-2-local-development-environment}
+### 설정 옵션 2: 로컬 개발 환경 {#setup-option-2-local-development-environment}
 
-This is completely optional and not required for this tutorial!
+이 방식은 완전히 선택사항이며 이 자습서에 반드시 필요한 것은 아닙니다!
 
 <br>
 
 <details>
 
-<summary><b>Optional: Instructions for following along locally using your preferred text editor</b></summary>
+<summary><b>선택 사항: 선호하는 텍스트 편집기를 사용하기 위한 지침</b></summary>
 
-This setup requires more work but allows you to complete the tutorial using an editor of your choice. Here are the steps to follow:
+이 설정은 더 많은 작업을 요구하지만 당신이 선택한 편집기를 사용하여 자습서를 완성할 수 있게 합니다. 아래의 단계를 따라주세요.
 
-1. Make sure you have a recent version of [Node.js](https://nodejs.org/en/) installed.
-2. Follow the [installation instructions for Create React App](/docs/create-a-new-react-app.html#create-react-app) to make a new project.
+1. 최신 버전의 [Node.js](https://nodejs.org/en/)가 설치되어 있는지 확인해주세요.
+2. [Create React App 설치 지침](/docs/create-a-new-react-app.html#create-react-app)을 따라 새로운 프로젝트를 생성해주세요.
 
 ```bash
 npx create-react-app my-app
 ```
 
-3. Delete all files in the `src/` folder of the new project 
+3. 새로운 프로젝트의 `src/` 폴더에 있는 모든 파일을 삭제해주세요.
 
-> Note:
+> 주의
 >
->**Don't delete the entire `src` folder, just the original source files inside it.** We'll replace the default source files with examples for this project in the next step.
+> **`src` 폴더 전체가 아니라 폴더 내부의 기존 소스 파일들만 삭제 해주세요.** 다음 단계에서 기본 소스 파일을 이 프로젝트의 예제로 바꿀 것입니다.
 
 ```bash
 cd my-app
 cd src
 
-# If you're using a Mac or Linux:
+# Mac 또는 Linux 사용자의 경우
 rm -f *
 
-# Or, if you're on Windows:
+# Windows 사용자
 del *
 
-# Then, switch back to the project folder
+# 다시 프로젝트 폴더로 돌아가세요.
 cd ..
 ```
 
-4. Add a file named `index.css` in the `src/` folder with [this CSS code](https://codepen.io/gaearon/pen/oWWQNa?editors=0100).
+4. `src/` 폴더에 `index.css`라는 파일을 생성하고 [이 CSS 코드](https://codepen.io/gaearon/pen/oWWQNa?editors=0100)를 추가해주세요.
 
-5. Add a file named `index.js` in the `src/` folder with [this JS code](https://codepen.io/gaearon/pen/oWWQNa?editors=0010).
+5. `src/` 폴더에 `index.js`라는 파일을 생성하고 [이 JS 코드](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)를 추가해주세요.
 
-6. Add these three lines to the top of `index.js` in the `src/` folder:
+6. 위에서 생성한 `index.js`의 상단에 아래 세 줄을 추가해주세요.
 
 ```js
 import React from 'react';
@@ -112,15 +112,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 ```
 
-Now if you run `npm start` in the project folder and open `http://localhost:3000` in the browser, you should see an empty tic-tac-toe field.
+이제 프로젝트 폴더에서 `npm start` 명령어를 실행하고 브라우저에서 `http://localhost:3000`를 열면 비어있는 틱택토 필드를 확인할 수 있습니다.
 
-We recommend following [these instructions](https://babeljs.io/docs/editors/) to configure syntax highlighting for your editor.
+에디터에서 구문 강조 표시를 설정하기 위해 [이 지침](https://babeljs.io/docs/editors/)을 따르길 권장합니다.
 
 </details>
 
-### Help, I'm Stuck! {#help-im-stuck}
+### 도와주세요, 막히는 부분이 있어요! {#help-im-stuck}
 
-If you get stuck, check out the [community support resources](/community/support.html). In particular, [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n) is a great way to get help quickly. If you don't receive an answer, or if you remain stuck, please file an issue, and we'll help you out.
+막히는 부분이 생겼다면 [커뮤니티에서 지원하는 자료](/community/support.html)를 확인해보세요. 특히 [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n)은 빠르게 도움을 받을 수 있는 좋은 방법입니다. 원하는 답을 얻지 못하거나 계속 막힌 상태라면 이슈를 제출해주세요. 우리가 도와드리겠습니다.
 
 ## Overview {#overview}
 

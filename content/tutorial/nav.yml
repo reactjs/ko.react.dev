@@ -14,20 +14,20 @@
           href: /tutorial/tutorial.html#prerequisites
           forceInternal: true
     - id: setup-for-the-tutorial
-      title: Setup for the Tutorial
+      title: 자습서 설정
       href: /tutorial/tutorial.html#setup-for-the-tutorial
       forceInternal: true
       subitems:
         - id: setup-option-1-write-code-in-the-browser
-          title: "Option 1: Write Code in the Browser"
+          title: "옵션 1: 브라우저에 코드 작성하기"
           href: /tutorial/tutorial.html#setup-option-1-write-code-in-the-browser
           forceInternal: true
         - id: setup-option-2-local-development-environment
-          title: "Option 2: Local Development Environment"
+          title: "옵션 2: 로컬 개발 환경"
           href: /tutorial/tutorial.html#setup-option-2-local-development-environment
           forceInternal: true
         - id: help-im-stuck
-          title: Help, I'm Stuck!
+          title: 도와주세요, 막히는 부분이 있어요!
           href: /tutorial/tutorial.html#help-im-stuck
           forceInternal: true
     - id: overview
