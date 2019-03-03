@@ -15,7 +15,7 @@ React를 사용하여 싱글 페이지 애플리케이션을 만들 수 있지�
 
 ## ES6, ES2015, ES2016 등 {#es6-es2015-es2016-etc}
 
-이 약어들은 모두 ECMAScript 언어 명세의 최신 버전을 나타내며, JavaScript는 이를 구현한 것입니다. ES6 버전(ES2015로도 알려져 있습니다)에는 이전 버전에 없던 화살표 함수(arrow function), 클래스(class), 템플릿 리터럴(template literal), `let` 과 `const` 구문과 같은 많은 추가 사항이 포함되어 있습니다. 특정 버전에 대한 자세한 내용은 [여기](https://en.wikipedia.org/wiki/ECMAScript#Versions)에서 확인할 수 있습니다.
+이 약어들은 모두 ECMAScript 언어 명세의 최신 버전을 나타내며, JavaScript는 이를 구현한 것입니다. ES6 버전(ES2015로도 알려져 있습니다)에는 이전 버전에 없던 화살표 함수(arrow function), class, 템플릿 리터럴(template literal), `let` 과 `const` 구문과 같은 많은 추가 사항이 포함되어 있습니다. 특정 버전에 대한 자세한 내용은 [여기](https://en.wikipedia.org/wiki/ECMAScript#Versions)에서 확인할 수 있습니다.
 
 ## 컴파일러 {#compilers}
 
@@ -67,7 +67,7 @@ function Welcome(props) {
 }
 ```
 
-컴포넌트는 ES6 클래스로도 작성할 수 있습니다.
+컴포넌트는 ES6 class로도 작성할 수 있습니다.
 
 ```js
 class Welcome extends React.Component {
@@ -108,7 +108,7 @@ function Welcome(props) {
 }
 ```
 
-클래스로 정의된 컴포넌트에서는 `this.props.children`을 사용합니다.
+Class로 정의된 컴포넌트에서는 `this.props.children`을 사용합니다.
 
 ```js
 class Welcome extends React.Component {
@@ -122,13 +122,13 @@ class Welcome extends React.Component {
 
 컴포넌트와 관련된 일부 데이터가 시간에 따라 변경될 경우 `state`가 필요합니다. 예를 들어, `Checkbox` 컴포넌트는 `isChecked` state가 필요할 수 있으며, `NewsFeed` 컴포넌트는 `fetchedPosts`를 컴포넌트의 state를 통해 계속 주시하려고 할 수 있습니다.
 
-`state`와 `props`의 가장 중요한 차이점은 `props`는 부모 컴포넌트로부터 전달받지만, `state`는 컴포넌트에서 관리된다는 것입니다. 컴포넌트는 `props`를 변경할 수 없지만, `state`는 변경할 수 있습니다. `this.setState()`를 호출하면 컴포넌트에서 `state`를 변경할 수 있습니다. 또한, 클래스로 정의된 컴포넌트만 `state`를 가질 수 있습니다.
+`state`와 `props`의 가장 중요한 차이점은 `props`는 부모 컴포넌트로부터 전달받지만, `state`는 컴포넌트에서 관리된다는 것입니다. 컴포넌트는 `props`를 변경할 수 없지만, `state`는 변경할 수 있습니다. `this.setState()`를 호출하면 컴포넌트에서 `state`를 변경할 수 있습니다. 또한, class로 정의된 컴포넌트만 `state`를 가질 수 있습니다.
 
 데이터가 변경되는 각 특정한 부분에 대해, 해당 상태(state)를 "소유"하는 컴포넌트는 하나만 존재해야 합니다. 서로 다른 두 컴포넌트의 상태를 동기화하려고 하지 마십시오. 대신, 공통 상태를 두 컴포넌트의 공통 조상으로 [끌어올리고](/docs/lifting-state-up.html) 해당 데이터를 두 컴포넌트에 props로 전달하세요.
 
-## [생명주기 함수](/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class) {#lifecycle-methods}
+## [생명주기 메서드](/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class) {#lifecycle-methods}
 
-생명주기 함수(Lifecycle method)는 컴포넌트의 각각의 단계에서 실행되는 커스텀 기능입니다. 컴포넌트가 만들어지고 DOM에 삽입될 때([mounting](/docs/react-component.html#mounting)), 컴포넌트가 업데이트될 때 및 컴포넌트가 DOM에서 마운트 해제될 때(unmounted) 혹은 제거될 때 사용할 수 있는 기능을 제공합니다.
+생명주기 메서드(Lifecycle method)는 컴포넌트의 각각의 단계에서 실행되는 커스텀 기능입니다. 컴포넌트가 만들어지고 DOM에 삽입될 때([mounting](/docs/react-component.html#mounting)), 컴포넌트가 업데이트될 때 및 컴포넌트가 DOM에서 마운트 해제될 때(unmounted) 혹은 제거될 때 사용할 수 있는 기능을 제공합니다.
 
  ## [제어 컴포넌트](/docs/forms.html#controlled-components) vs. [비제어 컴포넌트](/docs/uncontrolled-components.html)
 
@@ -142,7 +142,7 @@ React에 의해 입력값이 제어되는 엘리먼트를 *제어 컴포넌트(c
 
 ## [Key](/docs/lists-and-keys.html) {#keys}
 
-"Key"는 엘리먼트의 배열을 만들 때 포함해야 하는 특별한 문자열입니다. key는 React가 어떤 항목을 변경, 추가 혹은 삭제할지 식별하는 것을 돕습니다. 엘리먼트들을 안정적으로 식별할 수 있도록 배열 내의 엘리먼트에 key를 제공해야 합니다.
+"key"는 엘리먼트의 배열을 만들 때 포함해야 하는 특별한 문자열입니다. key는 React가 어떤 항목을 변경, 추가 혹은 삭제할지 식별하는 것을 돕습니다. 엘리먼트들을 안정적으로 식별할 수 있도록 배열 내의 엘리먼트에 key를 제공해야 합니다.
 
 Key는 같은 배열에 포함된 다른 요소 사이에서만 고윳값을 가지면 됩니다. 전체 애플리케이션 또는 단일 컴포넌트 전체에서 고윳값을 가질 필요는 없습니다.
 
@@ -150,7 +150,7 @@ Key는 같은 배열에 포함된 다른 요소 사이에서만 고윳값을 가
 
 ## [Ref](/docs/refs-and-the-dom.html) {#refs}
 
-React는 컴포넌트에 접근할 수 있는 특수한 어트리뷰트를 지원합니다. `ref` 어트리뷰트 [`React.createRef()` 함수](/docs/react-api.html#reactcreateref), 콜백 함수, 혹은 문자열(레거시 API에서)로 생성할 수 있습니다. ref 어트리뷰트가 콜백 함수인 경우, 함수는 DOM 엘리먼트나 클래스 인스턴스를 인자로 받습니다. 이를 통해 컴포넌트 인스턴스나 DOM 엘리먼트에 직접 접근할 수 있습니다.
+React는 컴포넌트에 접근할 수 있는 특수한 어트리뷰트를 지원합니다. `ref` 어트리뷰트 [`React.createRef()` 함수](/docs/react-api.html#reactcreateref), 콜백 함수, 혹은 문자열(레거시 API에서)로 생성할 수 있습니다. ref 어트리뷰트가 콜백 함수인 경우, 함수는 DOM 엘리먼트나 class 인스턴스를 인자로 받습니다. 이를 통해 컴포넌트 인스턴스나 DOM 엘리먼트에 직접 접근할 수 있습니다.
 
 Ref를 가능한 한 적게 사용하세요. 만약 앱에서 Ref를 사용하여 "작동되는 부분"이 많다면 [하향식 데이터 흐름](/docs/lifting-state-up.html)을 사용하는 것이 더 좋습니다.
 
