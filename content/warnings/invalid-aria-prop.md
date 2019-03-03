@@ -4,8 +4,8 @@ layout: single
 permalink: warnings/invalid-aria-prop.html
 ---
 
-웹 접근성 이니셔티브(WAI) 접근 가능한 리치 인터넷 애플리케이션(Rich Internet Application)의 [사양](https://www.w3.org/TR/wai-aria-1.1/#states_and_properties)에 없는 aria-* 프로퍼티로 DOM 요소를 렌더링하려고하면 invalid-aria-prop 경고가 발생합니다.
+웹 접근성 이니셔티브(WAI) 접근 가능한 리치 인터넷 애플리케이션(Rich Internet Application)의 [명세](https://www.w3.org/TR/wai-aria-1.1/#states_and_properties)에 없는 aria-* 프로퍼티로 DOM 요소를 렌더링하려고하면 invalid-aria-prop 경고가 발생합니다.
 
 1. 유효한 프로퍼티를 사용한다고 생각되면 철자를 확인하십시오. `aria-labelledby`와 `aria-activedescendant`의 철자를 틀리는 경우가 종종 있습니다.
 
-2. React가 아직 작성된 속성을 인식하지 못합니다. 이것은 React의 다음 버전에서 수정될 가능성이 있습니다. 하지만 React는 현재 알 수 없는 모든 속성을 제거하므로 렌더링 되지 않습니다.
+2. React는 알 수 없는 속성을 아직 인식하지 못합니다. 이것은 React의 다음 버전에서 수정될 가능성이 있습니다. 하지만 React는 현재 알 수 없는 모든 속성을 제거하므로 렌더링 되지 않습니다.
