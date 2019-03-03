@@ -16,7 +16,7 @@ function render() {
 
 ## JSX {#jsx}
 
-이렇게 직접 React 컴포넌트를 호출할 수 없습니다. [대신 JSX를 사용](/docs/jsx-in-depth.html) 할 수 있습니다.
+이렇게 직접 React 컴포넌트를 호출할 수 없습니다. [대신 JSX를 사용 할 수 있습니다.](/docs/jsx-in-depth.html)
 
 ```javascript
 var React = require('react');
@@ -56,4 +56,4 @@ function render(MyComponent) {
 
 ## 더 알아보기 {#in-depth}
 
-[이렇게 변경된 이유에 대해 더 자세히 알아보십시오.](https://gist.github.com/sebmarkbage/d7bce729f38730399d28)
+[이렇게 변경된 이유에 대해 더 자세히 알아보세요.](https://gist.github.com/sebmarkbage/d7bce729f38730399d28)
