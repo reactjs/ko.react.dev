@@ -22,9 +22,9 @@ class HelloMessage extends React.Component {
 
 > 주의
 >
-> 웹 컴포넌트는 종종 강제성을 띠는 API를 열어놓고 있습니다. 예를 들어, `video`라는 웹 컴포넌트는 `play()`나 `pause()`라는 함수를 열어놓고 있을 것입니다. 이러한 웹 컴포넌트의 강제성을 띠는 API에 접근하기 위해서, DOM 노드에 직접 ref를 지정하는 것이 필요할 수 있습니다. 만약 서드파티 웹 컴포넌트를 사용 중이라면, 가장 좋은 해결방법은 웹 컴포넌트의 래퍼로서 동작하는 React 컴포넌트를 작성하는 것입니다.
+> 웹 컴포넌트는 종종 강제성을 띠는 API를 열어놓고 있습니다. 예를 들어, `video`라는 웹 컴포넌트는 `play()`나 `pause()`라는 함수를 열어놓고 있을 것입니다. 이러한 웹 컴포넌트의 강제성을 띠는 API에 접근하기 위해서, DOM 노드에 직접 ref를 지정하는 것이 필요할 수 있습니다. 서드 파티 웹 컴포넌트를 사용 중이라면, 가장 좋은 해결방법은 웹 컴포넌트의 래퍼로서 동작하는 React 컴포넌트를 작성하는 것입니다.
 >
-> 웹 컴포넌트에서 나온 이벤트들은 React 렌더 트리에 올바르게 전파되지 않을 수 있습니다. 이에 대응하기 위해서는, 이벤트에 대해 React 컴포넌트 내에 핸들러를 만들 필요가 있습니다.
+> 웹 컴포넌트에서 나온 이벤트들은 React 렌더링 트리에 올바르게 전파되지 않을 수 있습니다. 이를 해결하기 위해 이벤트를 다루기 위한 핸들러를 React 컴포넌트 내에 각각 만들어야합니다.
 
 많은 사람이 공통으로 착각하는 부분 중 하나로, 웹 컴포넌트는 “className”이 아닌 “class”를 사용합니다.
 
@@ -57,4 +57,4 @@ customElements.define('x-search', XSearch);
 
 >주의
 >
->Babel로 클래스를 변환하면 이 코드가 작동하지 않을 것입니다. [해당 문제]((https://github.com/w3c/webcomponents/issues/587))를 참조해주시기 바랍니다. 이 문제를 해결하려면 웹 컴포넌트를 불러오기 전에 [custom-elements-es5-adapter](https://github.com/webcomponents/webcomponentsjs#custom-elements-es5-adapterjs)를 추가하기 바랍니다.
+>Babel로 클래스를 변환하면 이 코드가 작동하지 않을 것입니다. [해당 문제](https://github.com/w3c/webcomponents/issues/587)를 참조해주시기 바랍니다. 이 문제를 해결하려면 웹 컴포넌트를 불러오기 전에 [custom-elements-es5-adapter](https://github.com/webcomponents/webcomponentsjs#custom-elements-es5-adapterjs)를 추가하기 바랍니다.
