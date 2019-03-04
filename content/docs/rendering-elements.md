@@ -38,7 +38,7 @@ React 엘리먼트를 루트 DOM 노드에 렌더링하려면 둘 다 `ReactDOM.
 
 `embed:rendering-elements/render-an-element.js`
 
-[**CodePen에서 실행하기**](codepen://rendering-elements/render-an-element)
+[CodePen에서 실행하기](codepen://rendering-elements/render-an-element)
 
 위 코드를 실행하면 화면에 "Hello, world"가 보일 겁니다.
 
@@ -52,7 +52,7 @@ React 엘리먼트는 [불변객체](https://ko.wikipedia.org/wiki/%EB%B6%88%EB%
 
 `embed:rendering-elements/update-rendered-element.js`
 
-[**CodePen에서 실행하기**](codepen://rendering-elements/update-rendered-element)
+[CodePen에서 실행하기](codepen://rendering-elements/update-rendered-element)
 
 위 함수는 [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) 콜백을 이용해 초마다 `ReactDOM.render()`를 호출합니다.
 
