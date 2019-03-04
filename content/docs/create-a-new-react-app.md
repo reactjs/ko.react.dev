@@ -15,7 +15,7 @@ This page describes a few popular React toolchains which help with tasks like:
 본 페이지는 밑에있는 일들을 하기위해 도움을줄수있는 몇가지 인기있는 툴체인을 소개합니다
 
 * Scaling to many files and components.
-* 
+* 많은 파일과 컴포넨트 스케일링
 * Using third-party libraries from npm.
 * 제 3자 npm 라이브러리 사용
 * Detecting common mistakes early.
@@ -36,7 +36,7 @@ If you don't experience the problems described above or don't feel comfortable u
 This is also **the easiest way to integrate React into an existing website.** You can always add a larger toolchain if you find it helpful!
 
 ## Recommended Toolchains {#recommended-toolchains}
-## 툴체인 추천
+## 툴체인 추천 {#recommended-toolchains}
 
 The React team primarily recommends these solutions:
 리엑트 팀이 추천하는 해결책
@@ -106,15 +106,20 @@ The following toolchains offer more flexiblity and choice. We recommend them to 
 - **[Razzle](https://github.com/jaredpalmer/razzle)** is a server-rendering framework that doesn't require any configuration, but offers more flexibility than Next.js.
 
 ## Creating a Toolchain from Scratch {#creating-a-toolchain-from-scratch}
+## 툴체인을 집적 만들기 {#creating-a-toolchain-from-scratch}
 
 A JavaScript build toolchain typically consists of:
+자바스크립트 툴체인은 주로:
 
 * A **package manager**, such as [Yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/). It lets you take advantage of a vast ecosystem of third-party packages, and easily install or update them.
+* [Yarn](https://yarnpkg.com/) 혹은 [npm](https://www.npmjs.com/)같은 패키지 매니저는 제 3자 패키지의 방대한 생태계를 활용할 수 있게 하며, 쉽게 설치하고 업데이트 할 수 있게 합니다.
 
 * A **bundler**, such as [webpack](https://webpack.js.org/) or [Parcel](https://parceljs.org/). It lets you write modular code and bundle it together into small packages to optimize load time.
+* [webpack](https://webpack.js.org/] 아니면 [Parcel](https://parceljs.org/)같은 **번들러**는 코드를 모듈방식으로 작성할 수 있게 하고 이를 작은 패키지로 묶어서 로딩 시간을 최적화 할 수 있습니다.
 
 * A **compiler** such as [Babel](https://babeljs.io/). It lets you write modern JavaScript code that still works in older browsers.
-
+* [Babel](https://babeljs.io/) 같은 **컴파일러**는 최신 자바스크립트코드를 오래된 브라우저에도 실행되게 도와줍니다
 If you prefer to set up your own JavaScript toolchain from scratch, [check out this guide](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658) that re-creates some of the Create React App functionality.
-
+자기 자신이 만들은 자바스크립트 툴체인을 원하신다면, [이 가이드를 보세요](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658)
 Don't forget to ensure your custom toolchain [is correctly set up for production](/docs/optimizing-performance.html#use-the-production-build).
+커스텀 툴체인이 제대로 설정되있는지 [잊지 마세요](/docs/optimizing-performance.html#use-the-production-build).
