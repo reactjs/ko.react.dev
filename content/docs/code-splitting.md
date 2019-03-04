@@ -1,16 +1,16 @@
 ---
 id: code-splitting
-title: 코드 스플리팅
+title: Code Splitting
 permalink: docs/code-splitting.html
 ---
 
 ## 번들링 {#bundling}
 
-대부분 리액트 앱들은 [Webpack](https://webpack.js.org/) 이나 [Browserify](http://browserify.org/) 같은 툴을 사용하여 여러 파일을 하나로 병합한 "번들 된" 파일을 웹 페이지에 포함하여 한 번에 전체 앱을 로드 할 수 있습니다. 
+대부분 React 앱들은 [Webpack](https://webpack.js.org/) 이나 [Browserify](http://browserify.org/) 같은 툴을 사용하여 여러 파일을 하나로 병합한 "번들 된" 파일을 웹 페이지에 포함하여 한 번에 전체 앱을 로드 할 수 있습니다. 
 
 #### 예시 {#example}
 
-**App:**
+**App**
 
 ```js
 // app.js
@@ -26,7 +26,7 @@ export function add(a, b) {
 }
 ```
 
-**Bundle:**
+**Bundle**
 
 ```js
 function add(a, b) {
@@ -36,17 +36,17 @@ function add(a, b) {
 console.log(add(16, 26)); // 42
 ```
 
-> 주의:
+> 주의
 >
 > 실제 번들은 위 예시와는 많이 다르게 보일 겁니다.
 
-만약 [Create React App](https://github.com/facebookincubator/create-react-app)이나 [Next.js](https://github.com/zeit/next.js/), [Gatsby](https://www.gatsbyjs.org/) 혹은 비슷한 툴을 사용한다면 여러분이 설치한 앱에서 Webpack을 같이 설치했을 겁니다.
+[Create React App](https://github.com/facebookincubator/create-react-app)이나 [Next.js](https://github.com/zeit/next.js/), [Gatsby](https://www.gatsbyjs.org/) 혹은 비슷한 툴을 사용한다면 여러분이 설치한 앱에서 Webpack을 같이 설치했을 겁니다.
 
 이런 툴을 사용하지 않는다면 여러분이 스스로 번들링을 설정해야 합니다. 그런 경우, Webpack의 
 [설치하기](https://webpack.js.org/guides/installation/) 문서와
 [시작하기](https://webpack.js.org/guides/getting-started/) 문서를 참조해 주세요.
 
-## 코드 스플리팅 {#code-splitting}
+## Code Splitting {#code-splitting}
 
 번들링은 훌륭하지만 여러분의 앱이 커지면 번들도 커집니다. 특히 큰 규모의 서드파티 라이브러리을 추가할 때 실수로 앱이 커져서 로드 시간이 길어지는 것을 방지하기 위해 코드를 주의 깊게 살펴야 합니다.
 
@@ -59,9 +59,9 @@ Code-splitting 은 여러분의 앱을 "lazy-load" 하게 도와주는데 이는
 
 ## `import()` {#import}
 
- 앱에 코드 스플리팅을 도입하는 가장 좋은 방법은 동적 `import()` 문법을  사용하는 방법입니다.
+ 앱에 Code Splitting을 도입하는 가장 좋은 방법은 동적 `import()` 문법을  사용하는 방법입니다.
 
-**Before:**
+**Before**
 
 ```js
 import { add } from './math';
@@ -69,7 +69,7 @@ import { add } from './math';
 console.log(add(16, 26));
 ```
 
-**After:**
+**After**
 
 ```js
 import("./math").then(math => {
@@ -77,30 +77,30 @@ import("./math").then(math => {
 });
 ```
 
-> 주의:
+> 주의
 >
 > 동적 `import()` 문법은 아직 ECMAScript (JavaScript)의 표준 문법이 아니라
 > [프로포절](https://github.com/tc39/proposal-dynamic-import)입니다.
 > 동적 `import()`은 가까운 미래에 표준에 추가 될 것으로 보입니다.
 
-Webpack이 이 구문을 만나게 되면 앱은 자동으로 코드 스플리팅 하게 됩니다. 
+Webpack이 이 구문을 만나게 되면 앱은 자동으로 Code Splitting 하게 됩니다. 
 만약 크리에이트 리액트 앱을 사용하고 있다면 이미 Webpack이 구성이 되어 있기 때문에 즉시 [사용](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#code-splitting) 할 수 있습니다.
 [Next.js](https://github.com/zeit/next.js/#dynamic-import) 역시 지원 합니다.
 
 만약 스스로 Webpack을 구성하고자 한다면 Webpack의 
-[코드 스플리팅 가이드](https://webpack.js.org/guides/code-splitting/)를 참조 하세요. Webpack 설정은 [가이드](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269)에 있습니다.
+[Code Splitting 가이드](https://webpack.js.org/guides/code-splitting/)를 참조 하세요. Webpack 설정은 [가이드](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269)에 있습니다.
 
 [Babel](http://babeljs.io/)을 사용할 때는 Babel이 동적 import를 할 수 있지만 변환하지는 않도록 합니다. 이를 위해 [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import)를 사용 하세요.
 
 ## `React.lazy` {#reactlazy}
 
-> 주의:
+> 주의
 >
-> `React.lazy` 와 Suspense 는 아직 서버 사이드 렌더링 을 사용 할 수 없습니다. 만약 server rendered 된 앱에서 코드 스플리팅 을  사용하고자 한다면 [Loadable Components](https://github.com/smooth-code/loadable-components) 를 추천 합니다. 이것은 [server-side rendering 와 번들 스플리팅 가이드](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md) 입니다.
+> `React.lazy` 와 Suspense 는 아직 서버 사이드 렌더링 을 사용 할 수 없습니다. 만약 server rendered 된 앱에서 Code Splitting 을  사용하고자 한다면 [Loadable Components](https://github.com/smooth-code/loadable-components) 를 추천 합니다. 이것은 [server-side rendering 와 번들 스플리팅 가이드](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md) 입니다.
 
 `React.lazy` 함수를 사용하면 dynamic import를 사용해서 컴포넌트를 렌더링 할 수 있습니다.
 
-**Before:**
+**Before**
 
 ```js
 import OtherComponent from './OtherComponent';
@@ -114,7 +114,7 @@ function MyComponent() {
 }
 ```
 
-**After:**
+**After**
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
@@ -173,7 +173,7 @@ function MyComponent() {
 ```
 
 ### Error boundaries {#error-boundaries}
-네트워크 장애 같은 이유로 다른 모듈이 로드에 실패한 경우 에러를 발생시킬 수 있습니다. 이때 [Error Boundaries](/docs/error-boundaries.html)를 이용하여 사용자의 경험과 복구 관리를 핸들링할 수 있습니다.
+네트워크 장애 같은 이유로 다른 모듈이 로드에 실패한 경우 에러를 발생시킬 수 있습니다. 이때 [Error Boundaries](/docs/error-boundaries.html)를 이용하여 사용자의 경험과 복구 관리를 처리할 수 있습니다.
 Error Boundary를 만들고 lazy 컴포넌트를 감싸면 네트워크 장애가 발생했을 때 에러를 표시할 수 있습니다.
 
 ```js
@@ -197,14 +197,13 @@ const MyComponent = () => (
 
 ## Route-based code splitting {#route-based-code-splitting}
 
-앱에서 코드 스플리팅을 도입할 위치를 결정하는 것은 조금 까다롭습니다. 
+앱에서 Code Splitting을 도입할 위치를 결정하는 것은 조금 까다롭습니다. 
 여러분은 번들을 균등하게 분배할 곳을 찾고 사용자의 경험을 헤치지 않기를 원합니다.
 
-이를 시작하기 좋은 장소는 routes입니다.  웹 페이지 로드 시간은 페이지 전환에 어느정도 발생하며 대부분 페이지를 한번에 렌더링하기 때문에
+이를 시작하기 좋은 장소는 경로 입니다. 웹 페이지 로드 시간은 페이지 전환에 어느정도 발생하며 대부분 페이지를 한번에 렌더링하기 때문에
 사용자가 페이지를 렌더링하는 동안 다른 요소와 상호작용하지 않습니다.
 
-이번 예제에서는 [React Router](https://reacttraining.com/react-router/) 같은 라이브러리를 
-사용하는 앱에서  `React.lazy` 를 적용하는 예제입니다.
+`React.lazy`를 [React Router](https://reacttraining.com/react-router/) 라이브러리를 사용해서 애플리케이션에 경로 기반 Code Splitting을 설정하는 예시입니다.
 
 ```js
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -227,7 +226,7 @@ const App = () => (
 
 ## Named Exports {#named-exports}
 
-`React.lazy` 는 현재 default exports만 지원 합니다. 만약 named exports를 사용하고자 한다면 default로 이름을 재정의한 중간 모듈을 생성 할 수 있습니다. 이렇게 하면 treeshaking이 계속 동작하고 사용하지 않는 컴포넌트는 가져오지 않습니다.
+`React.lazy` 는 현재 default exports만 지원 합니다. named exports를 사용하고자 한다면 default로 이름을 재정의한 중간 모듈을 생성 할 수 있습니다. 이렇게 하면 treeshaking이 계속 동작하고 사용하지 않는 컴포넌트는 가져오지 않습니다.
 
 ```js
 // ManyComponents.js
