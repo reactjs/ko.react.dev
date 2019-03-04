@@ -1,10 +1,11 @@
 ---
 id: create-a-new-react-app
-title: 새로운 리액트 앱 만들기
+title: 새로운 Reach 앱 만들기
 permalink: docs/create-a-new-react-app.html
 redirect_from:
   - "docs/add-react-to-a-new-app.html"
-@@ -9,38 +9,55 @@ next: cdn-links.html
+prev: add-react-to-a-website.html
+next: cdn-links.html
 ---
 
 통합된 툴체인을 사용하여 최고의 사용자와 개발자 경험
