@@ -1,6 +1,6 @@
 ---
 id: hooks-rules
-title: Rules of Hooks
+title: Hook의 규칙
 permalink: docs/hooks-rules.html
 next: hooks-custom.html
 prev: hooks-effect.html
@@ -12,7 +12,7 @@ Hook은 JavaScript 함수입니다. 하지만 Hook을 사용할 때는 두 가�
 
 ### 최상위(at the Top Level)에서만 Hook을 호출해야 합니다 {#only-call-hooks-at-the-top-level}
 
-**반복문, 조건문 혹은 중첩된 함수 내에서 Hook을 호출하지 마세요.** 대신 항상 React 함수의 최상위(at the top level)에서 Hook을 호출해야 합니다. 이 규칙을 따르면 컴포넌트가 렌더링 될 때마다 항상 동일한 순서로 Hook이 호출되는 것이 보장됩니다. 이러한 점은 React가  useState 와 useEffect 가 여러 번 호출되는 중에도 Hook의 상태를 올바르게 유지할 수 있도록 해줍니다. (이 점이 궁금하다면 [아래](#explanation)에서 자세히 설명합니다.)
+**반복문, 조건문 혹은 중첩된 함수 내에서 Hook을 호출하지 마세요.** 대신 항상 React 함수의 최상위(at the top level)에서 Hook을 호출해야 합니다. 이 규칙을 따르면 컴포넌트가 렌더링 될 때마다 항상 동일한 순서로 Hook이 호출되는 것이 보장됩니다. 이러한 점은 React가  `useState` 와 `useEffect` 가 여러 번 호출되는 중에도 Hook의 상태를 올바르게 유지할 수 있도록 해줍니다. (이 점이 궁금하다면 [아래](#explanation)에서 자세히 설명해 드리겠습니다.)
 
 ### 오직 React 함수내에서 Hook을 호출해야 합니다 {#only-call-hooks-from-react-functions}
 
@@ -108,7 +108,7 @@ Hook의 호출 순서가 렌더링 간에 동일하다면 React는 지역적인 
   }
 ```
 
- `name !== ''` 조건은 첫 번째 렌더링에서 `true` 기 때문에  Hook은 동작합니다. 하지만 사용자가 그 다음 렌더링에서 폼을 초기화하면서 조건을 false 로 만들 겁니다. 렌더링간에 Hook을 건너뛰기 때문에  Hook 호출 순서는 달라지게 됩니다. 
+ `name !== ''` 조건은 첫 번째 렌더링에서 `true` 기 때문에  Hook은 동작합니다. 하지만 사용자가 그 다음 렌더링에서 폼을 초기화하면서 조건을 `false` 로 만들 겁니다. 렌더링간에 Hook을 건너뛰기 때문에  Hook 호출 순서는 달라지게 됩니다. 
 
 ```js
 useState('Mary')           // 1. 이름 state 변수를 읽습니다. (인자는 무시됩니다)
