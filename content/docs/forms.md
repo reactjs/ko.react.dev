@@ -29,7 +29,7 @@ HTML에서 `<input>`, `<textarea>`, `<select>`와 같은 폼 엘리먼트는 일
 
 우리는 React state를 "신뢰 가능한 단일 출처 (single source of truth)"로 만들어 두 요소를 결합할 수 있습니다. 그러면 폼을 렌더링하는 React 컴포넌트는 폼에 발생하는 사용자 입력값을 제어합니다. 이러한 방식으로 React에 의해 값이 제어되는 입력 폼 엘리먼트를 "제어 컴포넌트 (controlled component)"라고 합니다.
 
-예를 들어, 이전 예제가 전송될 때 이름을 기록하길 원한다면 폼을 제어 컴포넌트 (controlled component)로 작성할 수 있습니다.
+예를 들어, 이전 예시가 전송될 때 이름을 기록하길 원한다면 폼을 제어 컴포넌트 (controlled component)로 작성할 수 있습니다.
 
 ```javascript{4,10-12,24}
 class NameForm extends React.Component {
