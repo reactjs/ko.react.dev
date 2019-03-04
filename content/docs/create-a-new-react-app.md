@@ -56,6 +56,7 @@ The React team primarily recommends these solutions:
 [리엑트 앱 만들기](https://github.com/facebookincubator/create-react-app)는 **리엑트 배우기**에 간편한 환경입니다, 그리고 시작하기에 최고의 방법은 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application)** 입니다.
 
 It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production. You’ll need to have Node >= 6 and npm >= 5.2 on your machine. To create a project, run:
+개발 환경을 설정하고, 최신 자바스크립트를 사용하게 해주며, 좋은 개발 경험과 앱 최적화를 해줍니다. 노드 6혹은 상위 버전 및 npm 5.2혹은 상위 버전이 필요하며 새로운 프로젝트를 만들기 위해서는:
 
 ```bash
 npx create-react-app my-app
@@ -67,9 +68,18 @@ npm start
 >
 >`npx` on the first line is not a typo -- it's a [package runner tool that comes with npm 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
 
+>노트
+>
+>첫번째 줄의 'npx' 실수가아니며 [npm 5.2+ 버전의 패키지 실행 툴입니다](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
+
 Create React App doesn't handle backend logic or databases; it just creates a frontend build pipeline, so you can use it with any backend you want. Under the hood, it uses [Babel](https://babeljs.io/) and [webpack](https://webpack.js.org/), but you don't need to know anything about them.
 
+
 When you're ready to deploy to production, running `npm run build` will create an optimized build of your app in the `build` folder. You can learn more about Create React App [from its README](https://github.com/facebookincubator/create-react-app#create-react-app-) and the [User Guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents).
+
+새로운 리액트앱 생성은 백앤드 로직이나 데이터베이스를 제어할 수 없습니다. C로운 리액트앱 생성은 프론트앤드 빌드 파이프라인만 생성하기 때문에 백앤드를 원하는 대로 사용할 수 있습니다. 새로운 리액트앱은 Babel이나 webpack같은 빌드 도구를 사용하나, 설정 없이도 동작합니다.
+
+프로덕션을 배포할 준비가 되었을 때, npm run build 를 실행하면 build 폴더 안에 제작한 앱의 최적화된 빌드를 생성합니다. [README](https://github.com/facebookincubator/create-react-app#create-react-app-)나 [유저 가이드](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents)에서 더 자세한 사항을 볼 수 있습니다.
 
 ### Next.js {#nextjs}
 
