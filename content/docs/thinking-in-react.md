@@ -1,6 +1,6 @@
 ---
 id: thinking-in-react
-title: 리액트스럽게 생각하기
+title: 리액트로 생각하기
 permalink: docs/thinking-in-react.html
 redirect_from:
   - 'blog/2013/11/05/thinking-in-react.html'
@@ -8,22 +8,17 @@ redirect_from:
 prev: composition-vs-inheritance.html
 ---
 
-우리 생각엔 리액트는 자바스크립트로 크고 빠른 웹 앱을 만드는데에 최고의 방법입니다. 우리는 페이스북과 인스타그램을 리액트로 잘 확장해왔습니다.
-React is, in our opinion, the premier way to build big, fast Web apps with JavaScript. It has scaled very well for us at Facebook and Instagram.
+React는 Javascript로 크고 빠른 웹 앱을 만드는데 최고의 방법이라고 생각합니다. 우리는 페이스북과 인스타그램도 리액트로 잘 확장해왔습니다.
 
-리액트의 훌륭한 부분 중 하나는 앱을 만들 때 어떻게 생각하게 만드는지 입니다. 이 문서에서는 리액트를 사용하여 검색가능한 상품 데이터 테이블을 만드는 과정을 통해 설명할 것입니다.
-One of the many great parts of React is how it makes you think about apps as you build them. In this document, we'll walk you through the thought process of building a searchable product data table using React.
+React의 가장 중요한 부분 중 하나는 앱을 만들 때 앱을 어떻게 생각하게 만드는지 입니다. 이 문서에서는 React를 사용하여 검색할 수 있는 상품 데이터 테이블을 만드는 과정을 보여줄 것입니다.
 
-## Mock으로 시작하기 {#start-with-a-mock}
-## Start With A Mock {#start-with-a-mock}
+## 하나의 시안으로 시작하기 {#start-with-a-mock}
 
 우리가 이미 JSON API와 디자이너에게서 받은 시안이 있다고 상상해봅시다. 그 시안은 다음과 같습니다.
-Imagine that we already have a JSON API and a mock from our designer. The mock looks like this:
 
 ![Mockup](../images/blog/thinking-in-react-mock.png)
 
 우리의 JSON API는 아래와 같이 생긴 데이터를 반환합니다.
-Our JSON API returns some data that looks like this:
 
 ```
 [
@@ -36,28 +31,27 @@ Our JSON API returns some data that looks like this:
 ];
 ```
 
-## Step 1: UI를 컴포넌트 계층구조로 만들자 {#step-1-break-the-ui-into-a-component-hierarchy}
-## Step 1: Break The UI Into A Component Hierarchy {#step-1-break-the-ui-into-a-component-hierarchy}
+## Step 1: UI를 하나의 컴포넌트 계층구조로 만들자 {#step-1-break-the-ui-into-a-component-hierarchy}
 
-The first thing you'll want to do is to draw boxes around every component (and subcomponent) in the mock and give them all names. If you're working with a designer, they may have already done this, so go talk to them! Their Photoshop layer names may end up being the names of your React components!
+첫번째로 해야할 일은 모든 컴포넌트마다 감싸는 박스를 그리고 각자에게 이름을 주는 것입니다. 만약 디자이너와 일하고 있다면 이미 해놨을 수도 있으니 물어보세요! 포토샵 레이어 이름이 컴포넌트 이름이 될 수 있습니다.
 
-But how do you know what should be its own component? Just use the same techniques for deciding if you should create a new function or object. One such technique is the [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), that is, a component should ideally only do one thing. If it ends up growing, it should be decomposed into smaller subcomponents.
+그러나 어떤 것이 하나의 컴포넌트가 될 수 있는지를 어떻게 알 수 있을까요? 새로운 함수 혹은 객체를 만들지 말지를 결정할 때 이용하는 기술을 똑같이 사용해보세요. 그러한 기술 중 하나가 바로 [단일 책임 원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99) 입니다. 즉, 컴포넌트 하나는 이상적으로 한 가지 일만 수행해야합니다. 만약 컴포넌트가 커진다면 작은 하위 컴포넌트들로 해체되어야 합니다.  
 
-Since you're often displaying a JSON data model to a user, you'll find that if your model was built correctly, your UI (and therefore your component structure) will map nicely. That's because UI and data models tend to adhere to the same *information architecture*, which means the work of separating your UI into components is often trivial. Just break it up into components that represent exactly one piece of your data model.
+JSON 데이터 모델을 자주 사용자에게 보여주기 때문에 모델이 올바르게 작성되었다면 UI(컴포넌트 구조)와 잘 매핑될 것입니다. UI와 데이터 모델은 같은 정보 아키텍쳐를 준수하는 경향이 있기 때문에 UI를 컴포넌트로 분리하는 작업은 종종 사소한 작업입니다. 정확히 하나의 데이터 모델을 나타내는 컴포넌트들로 분해하세요.
 
 ![Component diagram](../images/blog/thinking-in-react-components.png)
 
-You'll see here that we have five components in our simple app. We've italicized the data each component represents.
+이 간단한 앱에는 다섯개의 컴포넌트가 있습니다. 아래에 각 컴포넌트가 나타내는 데이터를 이태리체로 표시했습니다.
 
-  1. **`FilterableProductTable` (orange):** contains the entirety of the example
-  2. **`SearchBar` (blue):** receives all *user input*
-  3. **`ProductTable` (green):** displays and filters the *data collection* based on *user input*
-  4. **`ProductCategoryRow` (turquoise):** displays a heading for each *category*
-  5. **`ProductRow` (red):** displays a row for each *product*
+  1. **`FilterableProductTable` (오렌지색):** 이 예시의 전체를 포함
+  2. **`SearchBar` (파란색):** 모든 *사용자 입력* 을 받음
+  3. **`ProductTable` (초록색):** *사용자 입력* 에 기반한 *데이터 collection* 을 필터링해서 보여줌
+  4. **`ProductCategoryRow` (옥색):** 각 *카테고리* 이름을 보여줌
+  5. **`ProductRow` (빨간색):** 각 *상품*을 행 단위로 보여줌
 
-If you look at `ProductTable`, you'll see that the table header (containing the "Name" and "Price" labels) isn't its own component. This is a matter of preference, and there's an argument to be made either way. For this example, we left it as part of `ProductTable` because it is part of rendering the *data collection* which is `ProductTable`'s responsibility. However, if this header grows to be complex (i.e. if we were to add affordances for sorting), it would certainly make sense to make this its own `ProductTableHeader` component.
+`ProductTable`를 보면 테이블 헤더("Name"과 "Price" 라벨을 포함하는)가 하나의 컴포넌트가 아닌 것을 볼 수 있습니다. 자신의 취향 따라 다른 방법을 사용해도 좋습니다. 이 예제에서는 `ProductTable`의 단일 책임인 *데이터 collection* 을 렌더링 하는 부분으로 봤기 때문에 이렇게 표현했습니다. 그러나 만약 이 헤더가 더 복잡해진다면(예를 들어 정렬을 위한 부분을 추가하는 것), `ProductTableHeader` 컴포넌트를 만드는 것이 합리적일 것입니다.
 
-Now that we've identified the components in our mock, let's arrange them into a hierarchy. This is easy. Components that appear within another component in the mock should appear as a child in the hierarchy:
+시안을 컴포넌트화 시켰으니 이제 하나의 계층구조로 정리해봅시다. 쉬운 작업입니다. 시안에서 컴포넌트 안에 있는 컴포넌트들을 자식으로 만들어주면 됩니다.
 
   * `FilterableProductTable`
     * `SearchBar`
