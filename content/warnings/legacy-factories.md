@@ -4,7 +4,7 @@ layout: single
 permalink: warnings/legacy-factories.html
 ---
 
-아마도 코드가 일반 함수 호출로 컴포넌트를 호출하기 때문에 이 경고를 보게 된 것입니다. 아래의 코드는 현재 사용되지 않습니다.
+아마도 코드에서 일반 함수처럼 컴포넌트를 호출했기 때문에 이 경고를 보게 된 것입니다. 아래의 코드는 현재 사용되지 않습니다.
 
 ```javascript
 var MyComponent = require('MyComponent');
