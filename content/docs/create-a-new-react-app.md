@@ -20,24 +20,24 @@ next: cdn-links.html
 
 이 페이지의 추천하는 툴체인 **시작하기 위해 구성할 필요 없음**
 
-## 툴체인이 필요하지 않을 수 있다 {#you-might-not-need-a-toolchain}
+## 툴체인이 필요하지 않을 수 있다. {#you-might-not-need-a-toolchain}
 
 위에 같은 문제가 없으면 혹은 자바스크립트 도구를 잘 사용하지 못할 거 같다는 생각이면, [React를 플레인 HTML 태그로 추가하기](/docs/add-react-to-a-website.html)를 보세요, 아니면 [JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx)를 보세요.
 
-이 방법이 **제일 쉽게 React를 이미 만들어진 웹사이트에 추가하는 방법입니다** 그리고 언제나 도움이 될 것 같으면 더 큰 툴체인을 추가할 수가 있습니다.
+이 방법이 **제일 쉽게 React를 이미 만들어진 웹사이트에 추가하는 방법입니다**. 그리고 언제나 도움이 될 것 같으면 더 큰 툴체인을 추가할 수가 있습니다.
 
 ## 툴체인 추천 {#recommended-toolchains}
 
 React 팀이 추천하는 해결책:
 
-- **React을 배우고있다** 혹은 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application) 앱**.
-- **서버 랜더링 Node.js 웹사이트를 만들고있다** [Next.js](#nextjs). 
-- **고정적인 콘텐츠 지향적 웹사이트를 만들고있다**면 [Gatsby](#gatsby).
-- **컴포넌트 라이브러리** 혹은 **이미 있는 코드 베이스와 통합을 한다**면 [융통성있는 툴체인](#more-flexible-toolchains).
+- **React를 배우고 있다** 혹은 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application) 앱**.
+- **서버 렌더링 Node.js 웹사이트를 만들고 있다면** [Next.js](#nextjs). 
+- **고정적인 콘텐츠 지향적 웹사이트를 만들고 있다면** [Gatsby](#gatsby).
+- **컴포넌트 라이브러리** 혹은 **이미 있는 코드 베이스와 통합을 한다**면 [융통성 있는 툴체인](#more-flexible-toolchains).
 
 ### Create React App {#create-react-app}
 
-[Create React App](https://github.com/facebookincubator/create-react-app)는 **리엑트 배우기**에 간편한 환경입니다, 그리고 시작하기에 최고의 방법은 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application)** 입니다.
+[Create React App](https://github.com/facebookincubator/create-react-app)는 **React 배우기**에 간편한 환경입니다, 그리고 시작하기에 최고의 방법은 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application)** 입니다.
 
 개발 환경을 설정하고, 최신 자바스크립트를 사용하게 해주며, 좋은 개발 경험과 앱 최적화를 해줍니다. 노드 6 혹은 상위 버전 및 npm 5.2 혹은 상위 버전이 필요하며 새로운 프로젝트를 만들기 위해서는:
 
@@ -49,22 +49,22 @@ npm start
 
 >
 >
->첫번째 줄의 'npx' 실수가아니며 [npm 5.2+ 버전의 패키지 실행 도구입니다](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
+>첫 번째 줄의 'npx' 실수가아니며 [npm 5.2+ 버전의 패키지 실행 도구입니다](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
 
-Create React App 은 백 앤드 로직이나 데이터베이스를 제어할 수 없습니다. Create React App 은 프런트 앤드 빌드 파이프라인만 생성하기 때문에 백앤드를 원하는 대로 사용할 수 있습니다. Create React App는 Babel이나 webpack같은 build 도구를 사용하나, 설정 없이도 동작합니다.
+Create React App 은 백 앤드 로직이나 데이터베이스를 제어할 수 없습니다. Create React App 은 프런트 앤드 빌드 파이프라인만 생성하기 때문에 백 앤드를 원하는 대로 사용할 수 있습니다. Create React App는 Babel이나 webpack같은 build 도구를 사용하나, 설정 없이도 동작합니다.
 
-프로덕션을 배포할 준비가 되었을 때, npm run build 를 실행하면 build 폴더 안에 제작한 앱의 최적화된 Build를 생성합니다. [README](https://github.com/facebookincubator/create-react-app#create-react-app-)나 [사용자 가이드](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents)에서 더 자세한 사항을 볼 수 있습니다.
+프로덕션을 배포할 준비가 되었을 때, npm run build 를 실행하면 build 폴더 안에 제작한 앱의 최적화된 Build를 생성합니다. [README](https://github.com/facebookincubator/create-react-app#create-react-app-) 나 [사용자 가이드](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents)에서 더 자세한 사항을 볼 수 있습니다.
 
 ### Next.js {#nextjs}
 
-[Next.js](https://nextjs.org/)는 인기 있는 경량의 프레임워크로 React로 만들어진 **고정적 및 서버 렌더링 애플리케이션** 입니다. 기본적으로 **스타일링 및 라우팅 해결책** 을 가지고 있으며, Node.js를 서버 환경으로 사용하고 있다고 생각합니다.
+[Next.js](https://nextjs.org/)는 인기 있는 경량의 프레임워크로 React로 만들어진 **고정적 및 서버 렌더링 애플리케이션**입니다. 기본적으로 **스타일링 및 라우팅 해결책** 을 가지고 있으며, Node.js를 서버 환경으로 사용하고 있다고 생각합니다.
 
 Next.js를 [정식 가이드]https://nextjs.org/learn/)를 보면서 배워보세요.
 
 
 ### Gatsby {#gatsby}
 
-[Gatsby](https://www.gatsbyjs.org/)는 **고정적인 웹사이트를**를 React로 만들기에는 최고의 방법입니다. React 컴포넌트를 사용하게 해주지만 미리 렌더링 된 HTML과 CSS를 사용하여 제일 빠르게 로드됩니다.
+[Gatsby](https://www.gatsbyjs.org/)는 **고정적인 웹사이트를** React로 만들기에는 최고의 방법입니다. React 컴포넌트를 사용하게 해주지만 미리 렌더링 된 HTML과 CSS를 사용하여 제일 빠르게 로드됩니다.
 
 Gatsby를 [정식 가이드](https://www.gatsbyjs.org/docs/)와 [스타터 키트](https://www.gatsbyjs.org/docs/gatsby-starters/)를 보면서 배워보세요
 
@@ -72,11 +72,11 @@ Gatsby를 [정식 가이드](https://www.gatsbyjs.org/docs/)와 [스타터 키�
 
 밑에 있는 툴체인은 조금 더 많은 선택과 다르기 쉬운 옵션입니다. 숙련된 사용자들에게 추천합니다:
 
-- **[Neutrino](https://neutrinojs.org/)** 는 [webpack](https://webpack.js.org/)의 장점과 React의 심플함과 미리 설정된 [앱](https://neutrinojs.org/packages/react/)과 [컴포난트](https://neutrinojs.org/packages/react-components/)를 연합한것입니다.
+- **[Neutrino](https://neutrinojs.org/)** 는 [webpack](https://webpack.js.org/)의 장점과 React의 단순함과 미리 설정된 [앱](https://neutrinojs.org/packages/react/)과 [컴포넌트](https://neutrinojs.org/packages/react-components/)를 연합한것입니다.
  
 - **[nwb](https://github.com/insin/nwb)** 는 React 컴포넌트를 npm을 사용하여 출판하기에 아주 좋습니다. [새로운 리액트 앱](https://github.com/insin/nwb/blob/master/docs/guides/ReactApps.md#developing-react-apps-with-nwb)을 만들기에도 적절합니다.
 
-- **[Parcel](https://parceljs.org/)** 은 [React과 같이 사용가능하고](https://parceljs.org/recipes.html#react) 빠르고 구성필요 없는 웹 애플리케이션 bundle입니다.
+- **[Parcel](https://parceljs.org/)** 은 [React과 같이 사용 가능하고](https://parceljs.org/recipes.html#react) 빠르고 구성필요 없는 웹 애플리케이션 bundle입니다.
 
 - **[Razzle](https://github.com/jaredpalmer/razzle)** 은 서버 렌더링 프레임워크며 구성이 필요 없지만, Next.js보다 다루기 쉽습니다.
 
@@ -86,10 +86,10 @@ Gatsby를 [정식 가이드](https://www.gatsbyjs.org/docs/)와 [스타터 키�
 
 * [Yarn](https://yarnpkg.com/) 혹은 [npm](https://www.npmjs.com/)같은 package 매니저는 제삼자 패키지의 방대한 생태계를 활용할 수 있게 하며, 쉽게 설치하고 업데이트할 수 있게 합니다.
 
-* [webpack](https://webpack.js.org/] 아니면 [Parcel](https://parceljs.org/)같은 **bundler**는 코드를 모듈방식으로 작성할 수 있게 하고 이를 작은 package로 묶어서 로딩 시간을 최적화 할 수 있습니다.
+* [webpack](https://webpack.js.org/] 아니면 [Parcel](https://parceljs.org/) 같은 **bundler**는 코드를 모듈방식으로 작성할 수 있게 하고 이를 작은 package로 묶어서 로딩 시간을 최적화 할 수 있습니다.
 
 * [Babel](https://babeljs.io/) 같은 **컴파일러**는 최신 자바스크립트 코드를 오래된 브라우저에도 실행되게 도와줍니다.
 
-자기 자신이 만들은 자바스크립트 툴체인을 원하신다면, [이 가이드를 보세요](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658).
+자기 자신이 만든 자바스크립트 툴체인을 원하신다면, [이 가이드를 보세요](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658).
 
 커스텀 툴체인이 제대로 설정되있는지 [잊지 마세요](/docs/optimizing-performance.html#use-the-production-build).
