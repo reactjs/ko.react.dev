@@ -1,6 +1,6 @@
 ---
 id: thinking-in-react
-title: Thinking in React
+title: 리액트스럽게 생각하기
 permalink: docs/thinking-in-react.html
 redirect_from:
   - 'blog/2013/11/05/thinking-in-react.html'
@@ -8,16 +8,21 @@ redirect_from:
 prev: composition-vs-inheritance.html
 ---
 
+우리 생각엔 리액트는 자바스크립트로 크고 빠른 웹 앱을 만드는데에 최고의 방법입니다. 우리는 페이스북과 인스타그램을 리액트로 잘 확장해왔습니다.
 React is, in our opinion, the premier way to build big, fast Web apps with JavaScript. It has scaled very well for us at Facebook and Instagram.
 
+리액트의 훌륭한 부분 중 하나는 앱을 만들 때 어떻게 생각하게 만드는지 입니다. 이 문서에서는 리액트를 사용하여 검색가능한 상품 데이터 테이블을 만드는 과정을 통해 설명할 것입니다.
 One of the many great parts of React is how it makes you think about apps as you build them. In this document, we'll walk you through the thought process of building a searchable product data table using React.
 
+## Mock으로 시작하기 {#start-with-a-mock}
 ## Start With A Mock {#start-with-a-mock}
 
+우리가 이미 JSON API와 디자이너에게서 받은 시안이 있다고 상상해봅시다. 그 시안은 다음과 같습니다.
 Imagine that we already have a JSON API and a mock from our designer. The mock looks like this:
 
 ![Mockup](../images/blog/thinking-in-react-mock.png)
 
+우리의 JSON API는 아래와 같이 생긴 데이터를 반환합니다.
 Our JSON API returns some data that looks like this:
 
 ```
@@ -31,6 +36,7 @@ Our JSON API returns some data that looks like this:
 ];
 ```
 
+## Step 1: UI를 컴포넌트 계층구조로 만들자 {#step-1-break-the-ui-into-a-component-hierarchy}
 ## Step 1: Break The UI Into A Component Hierarchy {#step-1-break-the-ui-into-a-component-hierarchy}
 
 The first thing you'll want to do is to draw boxes around every component (and subcomponent) in the mock and give them all names. If you're working with a designer, they may have already done this, so go talk to them! Their Photoshop layer names may end up being the names of your React components!
