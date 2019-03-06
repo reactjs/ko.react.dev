@@ -96,7 +96,7 @@ Create React App을 사용하고 있다면 이미 Webpack이 구성이 되어 �
 
 > 주의
 >
-> `React.lazy`와 Suspense는 아직 서버 사이드 렌더링을 할 수 없습니다. 서버에서 렌더링 된 앱에서 코드 분할을 한다면 [Loadable Components](https://github.com/smooth-code/loadable-components)를 추천합니다. 이는 [서버 사이드 렌더링과 번들 스플리팅에 대한 좋은 가이드](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md)입니다.
+> `React.lazy`와 Suspense는 아직 서버 사이드 렌더링을 할 수 없습니다. 서버에서 렌더링 된 앱에서 코드 분할을 하기 원한다면 [Loadable Components](https://github.com/smooth-code/loadable-components)를 추천합니다. 이는 [서버 사이드 렌더링과 번들 스플리팅에 대한 좋은 가이드](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md)입니다.
 
 `React.lazy` 함수를 사용하면 동적 import를 사용해서 컴포넌트를 렌더링 할 수 있습니다.
 
@@ -196,7 +196,7 @@ const MyComponent = () => (
 
 ## Route-based code splitting {#route-based-code-splitting}
 
-앱에 코드 분할을 도입할 위치를 결정하는 것은 조금 까다롭습니다.
+앱에 코드 분할을 어느 곳에 도입할지 결정하는 것은 조금 까다롭습니다.
 여러분은 사용자의 경험을 헤치지 않으면서 번들을 균등하게 분배할 곳을 찾고자 합니다.
 
 이를 시작하기 좋은 장소는 경로(routes)입니다. 웹 페이지를 불러오는 시간은 페이지 전환에 어느 정도 발생하며 대부분 페이지를 한번에 렌더링하기 때문에
@@ -225,7 +225,7 @@ const App = () => (
 
 ## Named Exports {#named-exports}
 
-`React.lazy` 는 현재 default exports만 지원합니다. named exports를 사용하고자 한다면 default로 이름을 재정의한 중간 모듈을 생성할 수 있습니다. 이렇게 하면 treeshaking이 계속 동작하고 사용하지 않는 컴포넌트는 가져오지 않습니다.
+`React.lazy`는 현재 default exports만 지원합니다. named exports를 사용하고자 한다면 default로 이름을 재정의한 중간 모듈을 생성할 수 있습니다. 이렇게 하면 treeshaking이 계속 동작하고 사용하지 않는 컴포넌트는 가져오지 않습니다.
 
 ```js
 // ManyComponents.js
