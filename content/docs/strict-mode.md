@@ -13,7 +13,7 @@ permalink: docs/strict-mode.html
 애플리케이션 내 어디서든지 아래와 같이 strict 모드를 활성화할 수 있습니다.
 `embed:strict-mode/enabling-strict-mode.js`
 
-위의 예시에서,  `Header`와 `Footer`컴포넌트는 Strict 모드 검사가 이루어지지 않습니다. 하지만, `ComponentOne`과 `ComponentTwo`는 각각의 자식까지 검사가 이루어집니다.
+위의 예시에서,  `Header`와 `Footer` 컴포넌트는 Strict 모드 검사가 이루어지지 않습니다. 하지만, `ComponentOne`과 `ComponentTwo`는 각각의 자식까지 검사가 이루어집니다.
 
 ``StrictMode`는 아래와 같은 부분에서 도움이 됩니다.
 
@@ -44,7 +44,7 @@ React 16.3에서는 여러 단점 없이 문자열 ref의 편리함을 제공하
 
 이제는 객체 ref가 문자열 ref를 교체하는 용도로 널리 더해졌기 때문에, Strict 모드는 문자열 ref의 사용에 대해 경고합니다.
 
-> **주의:**
+> **주의**
 >
 > 콜백 ref는 새로운 `createRef` API와 별개로 지속해서 지원될 예정입니다.
 >
@@ -56,7 +56,7 @@ React 16.3에서는 여러 단점 없이 문자열 ref의 편리함을 제공하
 
 이전의 React에서 주어진 클래스 인스턴스를 바탕으로 트리를 탐색해 DOM 노드를 찾을 수 있는 `findDOMNode`를 지원하였습니다. [DOM 노드에 바로 ref를 지정](/docs/refs-and-the-dom.html#creating-refs)할 수 있기 때문에 보통은 필요하지 않습니다.
 
-``findDOMNode`는 클래스 컴포넌트에서도 사용할 수 있었지만, 부모가 특정 자식이 렌더되는 것을 요구하는 상황이 허용되어, 추상화 레벨이 무너지게 되었습니다. 이로 인해 부모가 자식의 DOM 노드에까지 닿을 가능성이 있어 컴포넌트의 세세한 구현을 변경할 수 없게 되어 리팩토링이 어려워지는 상황을 만들고 말았습니다. `findDOMNode`는 항상 첫 번째 자식을 반환하지만, Fragment와 함께 사용할 경우 컴포넌트에서 여러 DOM 노드를 렌더하게 됩니다.  `findDOMNode`는 일회성, 읽기 전용 API 입니다. 물어보았을 때만 값을 반환합니다. 만약 자식 컴포넌트가 다른 노드를 렌더할 경우, 변경 사항에 대응할 방법이 없습니다. 그러므로, `findDOMNode`는 항상 변하지 않는, 단일 DOM 노드를 반환하는 컴포넌트에서만 정상적으로 작동해왔습니다.
+``findDOMNode`는 클래스 컴포넌트에서도 사용할 수 있었지만, 부모가 특정 자식이 렌더되는 것을 요구하는 상황이 허용되어, 추상화 레벨이 무너지게 되었습니다. 이로 인해 부모가 자식의 DOM 노드에까지 닿을 가능성이 있어 컴포넌트의 세세한 구현을 변경할 수 없게 되어 리팩토링이 어려워지는 상황을 만들고 말았습니다. `findDOMNode`는 항상 첫 번째 자식을 반환하지만, Fragment와 함께 사용할 경우 컴포넌트에서 여러 DOM 노드를 렌더하게 됩니다.  `findDOMNode`는 일회성, 읽기 전용 API입니다. 물어보았을 때만 값을 반환합니다. 만약 자식 컴포넌트가 다른 노드를 렌더할 경우, 변경 사항에 대응할 방법이 없습니다. 그러므로, `findDOMNode`는 항상 변하지 않는, 단일 DOM 노드를 반환하는 컴포넌트에서만 정상적으로 작동해왔습니다.
 
 [ref를 넘겨주는 방식](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)을 사용해 커스텀 컴포넌트에 ref를 넘겨 DOM까지 닿게 하는 것으로, 이를 분명하게 만들 수 있습니다.
 
@@ -74,7 +74,7 @@ class MyComponent extends React.Component {
 }
 ```
 
-> 주의:
+> 주의
 >
 > 노드가 레이아웃 바깥의 요소가 되는 것을 막고자 한다면, CSS에서 [`display: contents`](https://developer.mozilla.org/en-US/docs/Web/CSS/display#display_contents) 속성을 사용할 수 있습니다.
 
@@ -82,7 +82,7 @@ class MyComponent extends React.Component {
 
 개념적으로 React는 두 단계로 동작합니다.
 * **렌더** 단계는 무엇에 변경이 필요한지(예: DOM) 결정하는 단계입니다. 이 과정에서 React는 `render`를 호출하여 이전 렌더와 결과값을 비교합니다.
-* **커밋** 단계는 React가 변경 사항을 반영하는 단계입니다(React DOM의 경우, React가 DOM을 추가 / 변경 / 제거하는 단계). 이 단계에서 React는 `componentDidMount`나 `componentDidUpdate`와 같은 생명주기 함수를 호출합니다.
+* **커밋** 단계는 React가 변경 사항을 반영하는 단계입니다(React DOM의 경우, React가 DOM을 추가 / 변경 / 제거하는 단계). 이 단계에서 React는 `componentDidMount` 나 `componentDidUpdate` 와 같은 생명주기 함수를 호출합니다.
 
 커밋 단계는 일반적으로 매우 빠르지만, 렌더링은 느릴 수 있습니다. 이로 인해, 다가오는 비동기 모드(아직 기본적으로는 비활성화됨)는 렌더링 작업을 나누고, 작업을 중지했다 재개하는 방식으로 브라우저가 멈추는 것을 피합니다. 즉, React는 커밋하기 전에 렌더 단계의 생명주기 함수를 여러 번 호출하거나 아예 커밋을 하지 않을 수도(에러 혹은 우선순위에 따른 작업 중단) 있습니다.
 
