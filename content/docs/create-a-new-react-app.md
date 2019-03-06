@@ -30,7 +30,7 @@ next: cdn-links.html
 
 React 팀이 추천하는 해결책
 
-- **React를 배우고 있다** 혹은 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application) 앱**.
+- **React를 배우고 있다** 아니면 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application) 앱**을 만들고 싶다.
 - **서버 렌더링 Node.js 웹사이트를 만들고 있다면** [Next.js](#nextjs). 
 - **고정적인 콘텐츠 지향적 웹사이트를 만들고 있다면** [Gatsby](#gatsby).
 - **컴포넌트 라이브러리** 혹은 **이미 있는 코드 베이스와 통합을 한다**면 [융통성 있는 툴체인](#more-flexible-toolchains).
