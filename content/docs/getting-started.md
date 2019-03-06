@@ -123,4 +123,4 @@ React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 �
 
 ## 빠진 항목이 있다면? {#something-missing}
 
-이 문서에서 빠진 부분이나 혼동되는 부분을 발견하시면, 개선을 위한 제안과 함께 [문서의 레퍼지토리](https://github.com/reactjs/reactjs.org/issues/new)에 이슈를 올려주시거나, [@reactjs 계정](https://twitter.com/reactjs)에 tweet 해주세요. 저희는 당신의 소식을 좋아합니다!
+이 문서에서 빠진 부분이나 혼동되는 부분을 발견하시면, 개선을 위한 제안과 함께 [문서의 레퍼지토리](https://github.com/reactjs/reactjs.org/issues/new)에 이슈를 올려주시거나, [@reactjs 계정](https://twitter.com/reactjs)에 tweet 해주세요. 여러분의 참여를 기다립니다!
