@@ -28,7 +28,7 @@ next: cdn-links.html
 
 ## 툴체인 추천 {#recommended-toolchains}
 
-React 팀이 추천하는 해결책:
+React 팀이 추천하는 해결책
 
 - **React를 배우고 있다** 혹은 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application) 앱**.
 - **서버 렌더링 Node.js 웹사이트를 만들고 있다면** [Next.js](#nextjs). 
@@ -39,7 +39,7 @@ React 팀이 추천하는 해결책:
 
 [Create React App](https://github.com/facebookincubator/create-react-app)는 **React 배우기**에 간편한 환경입니다, 그리고 시작하기에 최고의 방법은 **새로운 [싱글 페이지 ](/docs/glossary.html#single-page-application)** 입니다.
 
-개발 환경을 설정하고, 최신 자바스크립트를 사용하게 해주며, 좋은 개발 경험과 앱 최적화를 해줍니다. 노드 6 혹은 상위 버전 및 npm 5.2 혹은 상위 버전이 필요하며 새로운 프로젝트를 만들기 위해서는:
+개발 환경을 설정하고, 최신 자바스크립트를 사용하게 해주며, 좋은 개발 경험과 앱 최적화를 해줍니다. 노드 6 혹은 상위 버전 및 npm 5.2 혹은 상위 버전이 필요하며 새로운 프로젝트를 만들기 위해서는
 
 ```bash
 npx create-react-app my-app
@@ -49,7 +49,7 @@ npm start
 
 >Note
 >
->첫 번째 줄의 'npx' 실수가아니며 [npm 5.2+ 버전의 패키지 실행 도구입니다](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
+>첫 번째 줄의 'npx' 실수가 아니며 [npm 5.2+ 버전의 패키지 실행 도구입니다](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
 
 Create React App 은 백 앤드 로직이나 데이터베이스를 제어할 수 없습니다. Create React App 은 프런트 앤드 빌드 파이프라인만 생성하기 때문에 백 앤드를 원하는 대로 사용할 수 있습니다. Create React App는 Babel이나 webpack같은 build 도구를 사용하나, 설정 없이도 동작합니다.
 
@@ -70,7 +70,7 @@ Gatsby를 [정식 가이드](https://www.gatsbyjs.org/docs/)와 [스타터 키�
 
 ### 더 유연한 툴체인 툴체인 {#more-flexible-toolchains}
 
-밑에 있는 툴체인은 조금 더 많은 선택과 다르기 쉬운 옵션입니다. 숙련된 사용자들에게 추천합니다:
+밑에 있는 툴체인은 조금 더 많은 선택과 다르기 쉬운 옵션입니다. 숙련된 사용자들에게 추천합니다
 
 - **[Neutrino](https://neutrinojs.org/)**는 [webpack](https://webpack.js.org/)의 장점과 React의 단순함과 미리 설정된 [앱](https://neutrinojs.org/packages/react/)과 [컴포넌트](https://neutrinojs.org/packages/react-components/)를 연합한 것입니다.
  
@@ -82,7 +82,7 @@ Gatsby를 [정식 가이드](https://www.gatsbyjs.org/docs/)와 [스타터 키�
 
 ## 툴체인을 직접 만들기 {#creating-a-toolchain-from-scratch}
 
-자바스크립트 build 툴체인은 주로:
+자바스크립트 build 툴체인은 주로
 
 * [Yarn](https://yarnpkg.com/) 혹은 [npm](https://www.npmjs.com/)같은 package 매니저는 제삼자 패키지의 방대한 생태계를 활용할 수 있게 하며, 쉽게 설치하고 업데이트할 수 있게 합니다.
 
