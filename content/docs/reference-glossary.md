@@ -130,7 +130,7 @@ class Welcome extends React.Component {
 
 생명주기 메서드(Lifecycle method)는 컴포넌트의 각각의 단계에서 실행되는 커스텀 기능입니다. 컴포넌트가 만들어지고 DOM에 삽입될 때([mounting](/docs/react-component.html#mounting)), 컴포넌트가 업데이트될 때 및 컴포넌트가 DOM에서 마운트 해제될 때(unmounted) 혹은 제거될 때 사용할 수 있는 기능을 제공합니다.
 
- ## [제어 컴포넌트](/docs/forms.html#controlled-components) vs. [비제어 컴포넌트](/docs/uncontrolled-components.html)
+ ## [제어 컴포넌트](/docs/forms.html#controlled-components) vs. [비제어 컴포넌트](/docs/uncontrolled-components.html)
 
 React는 두 가지 방식으로 form 입력을 처리합니다.
 
