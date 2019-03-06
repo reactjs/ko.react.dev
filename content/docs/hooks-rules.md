@@ -6,13 +6,14 @@ next: hooks-custom.html
 prev: hooks-effect.html
 ---
 
-*Hooks*은 React 16.8에 새로 추가된 기능입니다. Hook은 class를 작성하지 않고도 state와 다른 React의 기능들을 사용할 수 있도록 해줍니다.
+*Hook*은 React 16.8에 새로 추가된 기능입니다. Hook은 class를 작성하지 않고도 state와 다른 React의 기능들을 사용할 수 있도록 해줍니다.
 
 Hook은 JavaScript 함수입니다. 하지만 Hook을 사용할 때는 두 가지 규칙을 준수해야 합니다. 우리는 이러한 규칙들을 자동으로 강제하기 위한 [linter 플러그인](https://www.npmjs.com/package/eslint-plugin-react-hooks)을 제공하고 있습니다.
 
 ### 최상위(at the Top Level)에서만 Hook을 호출해야 합니다 {#only-call-hooks-at-the-top-level}
 
-**반복문, 조건문 혹은 중첩된 함수 내에서 Hook을 호출하지 마세요.** 대신 항상 React 함수의 최상위(at the top level)에서 Hook을 호출해야 합니다. 이 규칙을 따르면 컴포넌트가 렌더링 될 때마다 항상 동일한 순서로 Hook이 호출되는 것이 보장됩니다. 이러한 점은 React가  `useState` 와 `useEffect` 가 여러 번 호출되는 중에도 Hook의 상태를 올바르게 유지할 수 있도록 해줍니다. (이 점이 궁금하다면 [아래](#explanation)에서 자세히 설명해 드리겠습니다.)
+**반복문, 조건문 혹은 중첩된 함수 내에서 Hook을 호출하지 마세요.** 대신 항상 React 함수의 최상위(at the top level)에서 Hook을 호출해야 합니다. 이 규칙을 따르면 컴포넌트가 렌더링 될 때마다 항상 동일한 순서로 Hook이 호출되는 것이 보장됩니다. 이러한 점은 React가  `useState` 와 `useEffect` 가 여러 번 호출되는 중에도 Hook의 상태를 올바르게 유지할 수 있도록 해줍니다. 이 점에 대해서 궁금하다면 [아래](#explanation)에서 자세히 설명해 드리겠습니다.
+
 
 ### 오직 React 함수 내에서 Hook을 호출해야 합니다 {#only-call-hooks-from-react-functions}
 
@@ -100,7 +101,7 @@ useEffect(updateTitle)     // 4. 제목을 최신화하기 위한 effect가 대�
 Hook의 호출 순서가 렌더링 간에 동일하다면 React는 지역적인 state를 각 Hook에 연동시킬 수 있습니다. 하지만 만약에 Hook을 조건문 안에서(예를 들어 `persistForm` effect) 호출한다면 어떤 일이 일어날까요?
 
 ```js
-  // 🔴 조건문에 Hook을 사용함으로서 첫 번째 규칙을 깼습니다
+  // 🔴 조건문에 Hook을 사용함으로써 첫 번째 규칙을 깼습니다
   if (name !== '') {
     useEffect(function persistForm() {
       localStorage.setItem('formData', name);
@@ -108,7 +109,7 @@ Hook의 호출 순서가 렌더링 간에 동일하다면 React는 지역적인 
   }
 ```
 
- `name !== ''` 조건은 첫 번째 렌더링에서 `true` 기 때문에  Hook은 동작합니다. 하지만 사용자가 그 다음 렌더링에서 폼을 초기화하면서 조건을 `false` 로 만들 겁니다. 렌더링간에 Hook을 건너뛰기 때문에  Hook 호출 순서는 달라지게 됩니다. 
+ `name !== ''` 조건은 첫 번째 렌더링에서 `true` 기 때문에 Hook은 동작합니다. 하지만 사용자가 그다음 렌더링에서 폼을 초기화하면서 조건을 `false`로 만들 겁니다. 렌더링 간에 Hook을 건너뛰기 때문에  Hook 호출 순서는 달라지게 됩니다. 
 
 ```js
 useState('Mary')           // 1. 이름 state 변수를 읽습니다. (인자는 무시됩니다)
@@ -117,7 +118,7 @@ useState('Poppins')        // 🔴 2 (3이었던). 성 state 변수를 읽는 �
 useEffect(updateTitle)     // 🔴 3 (4였던). 제목을 최신화하기 위한 effect가 대체되는 데 실패했습니다.
 ```
 
-React는 두번째 `useState` Hook 호출에 대해 무엇을 반환할지 몰랐습니다. React는 이전 렌더링 때처럼 컴포넌트내에서 두번째 Hook 호출이 `persistForm` effect와 일치할 것이라 예상했지만 그렇지 않았습니다. 그 시점부터 건너뛴 Hook 다음에 호출되는 Hook이 순서가 하나씩 밀리면서 버그를 발생시키게 됩니다. 
+React는 두번째 `useState` Hook 호출에 대해 무엇을 반환할지 몰랐습니다. React는 이전 렌더링 때처럼 컴포넌트 내에서 두번째 Hook 호출이 `persistForm` effect와 일치할 것이라 예상했지만 그렇지 않았습니다. 그 시점부터 건너뛴 Hook 다음에 호출되는 Hook이 순서가 하나씩 밀리면서 버그를 발생시키게 됩니다. 
 
 **이것이 컴포넌트 최상위(the top of level)에서 Hook이 호출되어야만 하는 이유입니다.** 만약에 조건부로 effect를 실행하기를 원한다면, 조건문을 Hook *내부에* 넣을 수 있습니다.
 
