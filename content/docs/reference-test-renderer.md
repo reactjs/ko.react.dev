@@ -21,7 +21,7 @@ const TestRenderer = require('react-test-renderer'); // npm에서 ES5를 사용�
 
 
 
-예시:
+예시
 
 ```javascript
 import TestRenderer from 'react-test-renderer';
@@ -112,7 +112,7 @@ TestRenderer.create(element, options);
 testRenderer.toJSON()
 ```
 
-렌더링 된 트리를 나타내는 객체를 반환합니다. 이 트리는 같은 플랫폼 고유의 노드(예: <div>, <View>)와, 그러한 노드의 속성만을 가지고 있습니다. 사용자가 작성한 컴포넌트는 나타나지 않습니다. 이 함수는 [스냅샷 테스팅](https://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest) 시 유용하게 사용할 수 있습니다.
+렌더링 된 트리를 나타내는 객체를 반환합니다. 이 트리는 같은 플랫폼 고유의 노드(예: `<div>`, `<View>`)와, 그러한 노드의 속성만을 가지고 있습니다. 사용자가 작성한 컴포넌트는 나타나지 않습니다. 이 함수는 [스냅샷 테스팅](https://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest) 시 유용하게 사용할 수 있습니다.
 
 ### `testRenderer.toTree()` {#testrenderertotree}
 
@@ -128,7 +128,7 @@ testRenderer.toTree()
 testRenderer.update(element)
 ```
 
-메모리 내의 트리를 새로운 최상위 엘리먼트로 다시 렌더링합니다. 이 함수를 사용해 최상위 엘리먼트에서의 React 업데이트를 시뮬레이션할 수 있습니다. 만약, 새로운 엘리먼트가 이전 엘리먼트와 같은 타입과 키(key)를 가지고 있다면 트리를 업데이트합니다. 그렇지 않다면, 새로운 트리를 새로 마운트합니다.
+메모리 내의 트리를 새로운 최상위 엘리먼트로 다시 렌더링합니다. 이 함수를 사용해 최상위 엘리먼트에서의 React 업데이트를 시뮬레이션할 수 있습니다. 새로운 엘리먼트가 이전 엘리먼트와 같은 타입과 키(key)를 가지고 있다면 트리를 업데이트합니다. 그렇지 않다면, 새로운 트리를 새로 마운트합니다.
 
 ### `testRenderer.unmount()` {#testrendererunmount}
 
@@ -144,7 +144,7 @@ testRenderer.unmount()
 testRenderer.getInstance()
 ```
 
-최상위 엘리먼트에 대응하는 인스턴스가 존재하면 값을 반환합니다. 만약 최상위 엘리먼트가 함수 컴포넌트일 경우, 함수 컴포넌트에는 인스턴스가 없기 때문에 작동하지 않습니다.
+최상위 엘리먼트에 대응하는 인스턴스가 존재하면 값을 반환합니다. 최상위 엘리먼트가 함수 컴포넌트일 경우, 함수 컴포넌트에는 인스턴스가 없기 때문에 작동하지 않습니다.
 
 ### `testRenderer.root` {#testrendererroot}
 
@@ -152,7 +152,7 @@ testRenderer.getInstance()
 testRenderer.root
 ```
 
-트리 내에서 특정 노드를 검증할 때 유용한 최상위 ‘테스트 인스턴스’ 객체를 반환합니다. 이것을 사용하여 더욱 깊이 있는 다른 ‘테스트 인스턴스’를  찾을 수 있습니다.
+트리 내에서 특정 노드를 검증할 때 유용한 최상위 "테스트 인스턴스" 객체를 반환합니다. 이것을 사용하여 더욱 깊이 있는 다른 "테스트 인스턴스"를 찾을 수 있습니다.
 
 ### `testInstance.find()` {#testinstancefind}
 
@@ -160,7 +160,7 @@ testRenderer.root
 testInstance.find(test)
 ```
 
-`test(testInstance)`에 대해 `true`를 반환하는 단 하나의 자식 테스트 인스턴스를 찾아 반환합니다. 만약, 해당되는 인스턴스가 하나가 아니라면 오류를 반환합니다.
+`test(testInstance)`에 대해 `true`를 반환하는 단 하나의 자식 테스트 인스턴스를 찾아 반환합니다. 해당되는 인스턴스가 하나가 아니라면 오류를 반환합니다.
 
 ### `testInstance.findByType()` {#testinstancefindbytype}
 
@@ -168,7 +168,7 @@ testInstance.find(test)
 testInstance.findByType(type)
 ```
 
-주어진 타입(type)에 해당하는 단 하나의 자식 테스트 인스턴스를 찾아 반환합니다. 만약, 해당되는 인스턴스가 하나가 아니라면 오류를 반환합니다.
+주어진 타입(type)에 해당하는 단 하나의 자식 테스트 인스턴스를 찾아 반환합니다. 해당되는 인스턴스가 하나가 아니라면 오류를 반환합니다.
 
 ### `testInstance.findByProps()` {#testinstancefindbyprops}
 
@@ -176,7 +176,7 @@ testInstance.findByType(type)
 testInstance.findByProps(props)
 ```
 
-주어진 `props` 들에 해당하는 단 하나의 자식 테스트 인스턴스를 찾아 반환합니다. 만약, 해당되는 인스턴스가 하나가 아니라면 오류를 반환합니다.
+주어진 `props` 들에 해당하는 단 하나의 자식 테스트 인스턴스를 찾아 반환합니다. 해당되는 인스턴스가 하나가 아니라면 오류를 반환합니다.
 
 ### `testInstance.findAll()` {#testinstancefindall}
 
@@ -224,7 +224,7 @@ testInstance.type
 testInstance.props
 ```
 
-이 테스트 인스턴스에 해당하는 컴포넌트의 props들입니다. 예를 들어, `<Button size=“smaill” />` 컴포넌트는 `{size: ‘small’}` 이라는 props들을 가지고 있습니다.
+이 테스트 인스턴스에 해당하는 컴포넌트의 props들입니다. 예를 들어, `<Button size="small" />` 컴포넌트는 `{size: 'small'}` 이라는 props들을 가지고 있습니다.
 
 ### `testInstance.parent` {#testinstanceparent}
 
