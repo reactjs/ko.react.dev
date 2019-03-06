@@ -1,6 +1,6 @@
 ---
 id: create-a-new-react-app
-title: 새로운 Reach 앱 만들기
+title: 새로운 React 앱 만들기
 permalink: docs/create-a-new-react-app.html
 redirect_from:
   - "docs/add-react-to-a-new-app.html"
