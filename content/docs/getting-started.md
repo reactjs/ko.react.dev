@@ -59,9 +59,9 @@ React 프로젝트를 시작한다면 [스크립트 태그를 사용한 간단�
 
 다른 낯선 기술과 마찬가지로 React는 러닝 커브(learning curve)가 있습니다. 약간의 인내심을 가지고 연습하면, React에 대한 요령을 익힐 수 있습니다.
 
-### 첫 번째 예제 {#first-examples}
+### 첫 번째 예시 {#first-examples}
 
-[React 홈페이지](/)에는 라이브 편집기와 함께 제공되는 몇 가지 React 예제가 있습니다. React에 대해 전혀 모르더라도 코드를 변경하면서 그것이 결과에 어떤 영향을 미치는지 보실 수 있습니다.
+[React 홈페이지](/)에는 라이브 편집기와 함께 제공되는 몇 가지 React 예시가 있습니다. React에 대해 전혀 모르더라도 코드를 변경하면서 그것이 결과에 어떤 영향을 미치는지 보실 수 있습니다.
 
 ### 입문자를 위한 React {#react-for-beginners}
 
@@ -75,11 +75,11 @@ React 문서가 어렵게 느껴진다면, [Tania Rascia가 쓴 React 개요](ht
 
 React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 쓰여져 있습니다. 전문가일 필요는 없지만, React와 JavaScript를 동시에 배우기는 어렵습니다.
 
-[이 JavaScript 개요](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)를 읽고 여러분의 Javascript 수준을 확인하는 것을 권장합니다. 30분에서 1시간 정도 걸리겠지만 React를 익히는 데에 더 자신감이 생길 것입니다.
+[이 JavaScript 개요](https://developer.mozilla.org/ko/docs/A_re-introduction_to_JavaScript)를 읽고 여러분의 Javascript 수준을 확인하는 것을 권장합니다. 30분에서 1시간 정도 걸리겠지만 React를 익히는 데에 더 자신감이 생길 것입니다.
 
 >팁
 >
->JavaScript 내용이 혼동될 때마다, [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)과 [javascript.info](https://javascript.info/)는 참고하기 좋은 웹사이트입니다. 또한, 문의를 할 수 있는 [커뮤니티 지원 포럼](/community/support.html)도 있습니다. 
+>JavaScript 내용이 혼동될 때마다, [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript)과 [javascript.info](https://javascript.info/)는 참고하기 좋은 웹사이트입니다. 또한, 문의를 할 수 있는 [커뮤니티 지원 포럼](/community/support.html)도 있습니다.
 
 ### 실용적인 자습서 {#practical-tutorial}
 
@@ -87,7 +87,7 @@ React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 �
 
 ### 단계별 가이드 {#step-by-step-guide}
 
-**개념을 단계별로 배우려면** [주요 개념 가이드](/docs/hello-world.html)를 시작하는 것이 가장 좋습니다. 모든 다음 장은 앞 장에 소개된 지식을 바탕으로 하기 때문에, 천천히 따라가기만 한다면 개념을 놓치지 않고 습득할 수 있습니다. 
+**개념을 단계별로 배우려면** [주요 개념 가이드](/docs/hello-world.html)를 시작하는 것이 가장 좋습니다. 모든 다음 장은 앞 장에 소개된 지식을 바탕으로 하기 때문에, 천천히 따라가기만 한다면 개념을 놓치지 않고 습득할 수 있습니다.
 
 ### React에 대해 생각해 보기 {#thinking-in-react}
 
@@ -115,7 +115,7 @@ React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 �
 
 트위터의 [@reactjs 계정](https://twitter.com/reactjs)을 팔로우할 수도 있지만, 블로그만 읽어도 꼭 알아야 하는 정보는 놓치지 않을 수 있습니다.
 
-모든 React 릴리즈가 자체 블로그 게시물을 사용할 만한 것은 아니지만 [릴리즈](https://github.com/facebook/react) 페이지와 React의 'CHANGELOG.md' 파일에서 모든 릴리즈에 대한 자세한 변경 기록을 확인할 수 있습니다.
+모든 React 릴리즈가 자체 블로그 게시물을 사용할 만한 것은 아니지만 [릴리즈](https://github.com/facebook/react) 페이지와 React의 `CHANGELOG.md` 파일에서 모든 릴리즈에 대한 자세한 변경 기록을 확인할 수 있습니다.
 
 ## 버전 관리된 문서 {#versioned-documentation}
 
