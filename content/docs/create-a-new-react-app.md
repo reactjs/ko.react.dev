@@ -78,7 +78,7 @@ Gatsby를 [정식 가이드](https://www.gatsbyjs.org/docs/)와 [스타터 키�
 
 - **[Parcel](https://parceljs.org/)은** [React와 함께 사용할 수 있고](https://parceljs.org/recipes.html#react) 빠르고 구성필요 없는 웹 애플리케이션 bundle입니다.
 
-- **[Razzle](https://github.com/jaredpalmer/razzle)** 서버 렌더링 프레임워크며 구성이 필요 없지만, Next.js보다 다루기 쉽습니다.
+- **[Razzle](https://github.com/jaredpalmer/razzle)은** 서버 렌더링 프레임워크며 구성이 필요 없지만, Next.js보다 다루기 쉽습니다.
 
 ## 툴체인을 직접 만들기 {#creating-a-toolchain-from-scratch}
 
