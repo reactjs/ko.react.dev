@@ -37,7 +37,7 @@ React 팀이 추천하는 해결책
 
 ### Create React App {#create-react-app}
 
-[Create React App](https://github.com/facebookincubator/create-react-app)는 **React 배우기**에 간편한 환경입니다, 그리고 시작하기에 최고의 방법은 **새로운 [싱글 페이지 ](/docs/glossary.html#single-page-application)** 입니다.
+[Create React App](https://github.com/facebookincubator/create-react-app)는 **React 배우기**에 간편한 환경입니다, 그리고 시작하기에 최고의 방법은 **새로운 [싱글 페이지 애플리케이션](/docs/glossary.html#single-page-application)** 입니다.
 
 개발 환경을 설정하고, 최신 자바스크립트를 사용하게 해주며, 좋은 개발 경험과 앱 최적화를 해줍니다. 노드 6 혹은 상위 버전 및 npm 5.2 혹은 상위 버전이 필요하며 새로운 프로젝트를 만들기 위해서는
 
@@ -59,7 +59,7 @@ Create React App 은 백 앤드 로직이나 데이터베이스를 제어할 수
 
 [Next.js](https://nextjs.org/)는 인기 있는 경량의 프레임워크로 React로 만들어진 **고정적 및 서버 렌더링 애플리케이션**입니다. 기본적으로 **스타일링 및 라우팅 해결책**을 가지고 있으며, Node.js를 서버 환경으로 사용하고 있다고 생각합니다.
 
-Next.js를 [정식 가이드]https://nextjs.org/learn/)를 보면서 배워보세요.
+Next.js를 [정식 가이드](https://nextjs.org/learn/)를 보면서 배워보세요.
 
 
 ### Gatsby {#gatsby}
@@ -86,7 +86,7 @@ Gatsby를 [정식 가이드](https://www.gatsbyjs.org/docs/)와 [스타터 키�
 
 * [Yarn](https://yarnpkg.com/) 혹은 [npm](https://www.npmjs.com/)같은 package 매니저는 제삼자 패키지의 방대한 생태계를 활용할 수 있게 하며, 쉽게 설치하고 업데이트할 수 있게 합니다.
 
-* [webpack](https://webpack.js.org/] 아니면 [Parcel](https://parceljs.org/) 같은 **bundler**는 코드를 모듈방식으로 작성할 수 있게 하고 이를 작은 package로 묶어서 로딩 시간을 최적화할 수 있습니다.
+* [webpack](https://webpack.js.org/) 아니면 [Parcel](https://parceljs.org/) 같은 **bundler**는 코드를 모듈방식으로 작성할 수 있게 하고 이를 작은 package로 묶어서 로딩 시간을 최적화할 수 있습니다.
 
 * [Babel](https://babeljs.io/) 같은 **컴파일러**는 최신 자바스크립트 코드를 오래된 브라우저에도 실행되게 도와줍니다.
 
