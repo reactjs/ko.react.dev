@@ -84,7 +84,7 @@ import("./math").then(math => {
 > 동적 `import()`은 가까운 미래에 표준에 추가 될 것으로 보입니다.
 
 Webpack이 이 구문을 만나게 되면 앱의 코드를 분할합니다. 
-Create React App을 사용하고 있다면 이미 Webpack이 구성이 되어 있기 때문에 즉시 [사용](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#code-splitting)할 수 있습니다.
+Create React App을 사용하고 있다면 이미 Webpack이 구성이 되어 있기 때문에 즉시 [사용](https://facebook.github.io/create-react-app/docs/code-splitting)할 수 있습니다.
 [Next.js](https://github.com/zeit/next.js/#dynamic-import) 역시 지원합니다.
 
 스스로 Webpack을 구성하고자 한다면 Webpack의 
