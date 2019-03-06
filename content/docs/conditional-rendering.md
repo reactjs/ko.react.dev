@@ -44,11 +44,11 @@ ReactDOM.render(
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
 
-이 예제는 `isLoggedIn` prop에 따라서 다른 인사를 렌더링 합니다.
+이 예시는 `isLoggedIn` prop에 따라서 다른 인사말을 렌더링 합니다.
 
 ### 엘리먼트 변수 {#element-variables}
 
-엘리먼트를 저장하기 위해 변수를 사용할 수 있습니다. 이렇게 하면 다른 출력은 상관 없이 컴포넌트의 일부를 조건부로 렌더링 할 수 있습니다.
+엘리먼트를 저장하기 위해 변수를 사용할 수 있습니다. 출력의 다른 부분은 변하지 않은 채로 컴포넌트의 일부를 조건부로 렌더링 할 수 있습니다.
 
 로그아웃과 로그인 버튼을 나타내는 두 컴포넌트가 있다고 가정해 보세요.
 
@@ -70,9 +70,9 @@ function LogoutButton(props) {
 }
 ```
 
-아래의 예제에서는 `LoginControl`이라는 [유상태 컴포넌트](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) 를 만들 것입니다.
+아래의 예시에서는 `LoginControl`이라는 [유상태 컴포넌트](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) 를 만들 것입니다.
 
-이 컴포넌트는 현재 상태에 맞게 `<LoginButton />`이나 `<LogoutButton />`을 렌더링합니다. 또한 이전 예제에서의 `<Greeting />`도 함께 렌더링합니다.
+이 컴포넌트는 현재 상태에 맞게 `<LoginButton />`이나 `<LogoutButton />`을 렌더링합니다. 또한 이전 예시에서의 `<Greeting />`도 함께 렌더링합니다.
 
 ```javascript{20-25,29,30}
 class LoginControl extends React.Component {
@@ -150,13 +150,13 @@ ReactDOM.render(
 
 JavaScript에서 `true && expression`은 항상 `expression`으로 평가되고 `false && expression`은 항상 `false`로 평가됩니다.
 
-따라서 `&&`뒤의 엘리먼트는 조건이 `true`일때 출력이 됩니다. 조건이 `false`라면 React는 무시할 것입니다.
+따라서 `&&` 뒤의 엘리먼트는 조건이 `true`일때 출력이 됩니다. 조건이 `false`라면 React는 무시합니다.
 
 ### 조건부 연산자로 If-Else구문 inline화 하기{#inline-if-else-with-conditional-operator}
 
 엘리먼트를 조건부로 렌더링하는 다른 방법은 조건부 연산자인 [`condition ? true: false`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)를 사용하는 것입니다.
 
-아래의 예제에서는 짧은 구문을 조건부로 렌더링할 것입니다.
+아래의 예시에서는 짧은 구문을 조건부로 렌더링합니다.
 
 ```javascript{5}
 render() {
@@ -186,13 +186,13 @@ render() {
 }
 ```
 
-JavaScript와 마찬가지로, 가독성이 좋다고 생각하는 방식을 선택하면 됩니다. 또한 조건이 너무 복잡하다면 [컴포넌트를 분리](/docs/components-and-props.html#extracting-components)하기 좋을 때 일 수 도 있다는 것을 기억하세요.
+JavaScript와 마찬가지로, 가독성이 좋다고 생각하는 방식을 선택하면 됩니다. 또한 조건이 너무 복잡하다면 [컴포넌트를 분리](/docs/components-and-props.html#extracting-components)하기 좋을 때 일 수도 있다는 것을 기억하세요.
 
-### 컴포넌트가 렌더링 하는 것을 막기 {#preventing-component-from-rendering}
+### 컴포넌트가 렌더링하는 것을 막기 {#preventing-component-from-rendering}
 
-가끔 다른 컴포넌트에 의해 렌더될 때 컴포넌트 자체를 숨기고 싶을 때가 있을 수 있습니다. 이때는 렌더링 결과를 출력하는 대신 `null`을 반환하면 해결할 수 있습니다.
+가끔 다른 컴포넌트에 의해 렌더링될 때 컴포넌트 자체를 숨기고 싶을 때가 있을 수 있습니다. 이때는 렌더링 결과를 출력하는 대신 `null`을 반환하면 해결할 수 있습니다.
 
-아래의 예제에서는 `<WarningBanner />`가 `warn` prop의 값에 의해서 렌더링됩니다. prop이 `false`라면 컴포넌트는 렌더링하지 않게 됩니다.
+아래의 예시에서는 `<WarningBanner />`가 `warn` prop의 값에 의해서 렌더링됩니다. prop이 `false`라면 컴포넌트는 렌더링하지 않게 됩니다.
 
 ```javascript{2-4,29}
 function WarningBanner(props) {
@@ -240,4 +240,4 @@ ReactDOM.render(
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
 
-`render`가 `null`을 반환하는 것은 컴포넌트의 생명주기 메소드 호출에 영향을 주지 않습니다. 그 예로 `componentDidUpdate`는 계속해서 호출되게 됩니다.
+컴포넌트의 `render` 메서드로부터 `null`을 반환하는 것은 생명주기 메서드 호출에 영향을 주지 않습니다. 그 예로 `componentDidUpdate`는 계속해서 호출되게 됩니다.
