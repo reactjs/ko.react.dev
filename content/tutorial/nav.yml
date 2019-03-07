@@ -1,33 +1,33 @@
-- title: 자습서
+- title: Tutorial
   items:
     - id: before-we-start-the-tutorial
-      title: 자습서를 시작하기 전에
+      title: Before We Start the Tutorial
       href: /tutorial/tutorial.html#before-we-start-the-tutorial
       forceInternal: true
       subitems:
         - id: what-are-we-building
-          title: 무엇을 구현하나요?
+          title: What Are We Building?
           href: /tutorial/tutorial.html#what-are-we-building
           forceInternal: true
         - id: prerequisites
-          title: 사전 준비
+          title: Prerequisites
           href: /tutorial/tutorial.html#prerequisites
           forceInternal: true
     - id: setup-for-the-tutorial
-      title: 자습서 설정
+      title: Setup for the Tutorial
       href: /tutorial/tutorial.html#setup-for-the-tutorial
       forceInternal: true
       subitems:
         - id: setup-option-1-write-code-in-the-browser
-          title: "옵션 1: 브라우저에 코드 작성하기"
+          title: "Option 1: Write Code in the Browser"
           href: /tutorial/tutorial.html#setup-option-1-write-code-in-the-browser
           forceInternal: true
         - id: setup-option-2-local-development-environment
-          title: "옵션 2: 로컬 개발 환경"
+          title: "Option 2: Local Development Environment"
           href: /tutorial/tutorial.html#setup-option-2-local-development-environment
           forceInternal: true
         - id: help-im-stuck
-          title: 도와주세요, 막히는 부분이 있어요!
+          title: Help, I'm Stuck!
           href: /tutorial/tutorial.html#help-im-stuck
           forceInternal: true
     - id: overview
