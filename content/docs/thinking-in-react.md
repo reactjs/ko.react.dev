@@ -31,7 +31,7 @@ React의 가장 중요한 부분 중 하나는 앱을 만들 때 앱을 어떻�
 ];
 ```
 
-## Step 1: UI를 하나의 컴포넌트 계층구조로 만들자 {#step-1-break-the-ui-into-a-component-hierarchy}
+## 1단계: UI를 하나의 컴포넌트 계층구조로 만들자 {#step-1-break-the-ui-into-a-component-hierarchy}
 
 첫 번째로 해야할 일은 모든 컴포넌트마다 박스를 그리고 각자에게 이름을 주는 것입니다. 만약 디자이너와 일하고 있다면 이미 해놨을 수도 있으니 물어보세요! 포토샵 레이어 이름이 컴포넌트 이름이 될 수 있습니다.
 
@@ -59,9 +59,9 @@ JSON 데이터 모델을 자주 사용자에게 보여줘야하기 때문에 모
       * `ProductCategoryRow`
       * `ProductRow`
 
-## Step 2: React로 정적인 앱 만들기 {#step-2-build-a-static-version-in-react}
+## 2단계: React로 정적인 앱 만들기 {#step-2-build-a-static-version-in-react}
 
-<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/BwWzwm">Thinking In React: Step 2</a> on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen"><a href="https://codepen.io">CodePen에서</a><a href="https://codepen.io/gaearon/pen/BwWzwm">리액트로 생각하기: 2단계</a>코드를 확인하세요.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 드디어 컴포넌트 계층구조가 생겼으니 이제 앱으로 만들 시간입니다. 가장 쉬운 방법은 데이터를 가져와 UI를 그리지만 상호 작용은 없는 버전을 만드는 것 입니다. 이런 정적인 버전을 만드는 것은 단순히 많은 타이핑만을 필요로 하지만 상호 작용을 추가하는 것은 타이핑이 아닌 많은 생각을 필요로하기 때문에 이 두 과정을 떼어놓는게 좋습니다. 그 이유를 살펴보겠습니다.
