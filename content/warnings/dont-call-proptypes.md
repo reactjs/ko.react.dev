@@ -57,7 +57,7 @@ Button.propTypes = {
 
 여기서 `ThirdPartyPropTypes.deprecated`는 `PropTypes.bool`을 호출하는 래퍼입니다. 이 패턴 자체는 괜찮지만 React가 PropTypes를 직접 호출한다고 생각하기 때문에 거짓 긍정을 유발합니다. 다음 섹션에서는 `ThirdPartyPropTypes`와 같은 것을 구현한 라이브러리에서 이 문제를 수정하는 방법을 설명하겠습니다.
 
-### 서드파티 PropTypes의 거짓 긍정 수정 {#fixing-the-false-positive-in-third-party-proptypes}
+### 서드파티 PropTypes의 거짓 긍정(false positive) 수정 {#fixing-the-false-positive-in-third-party-proptypes}
 
 서드파티 PropTypes 라이브러리 개발자이고 사용자가 기존 React PropTypes를 래핑하도록 허용했다면 라이브러리에서 이 경고가 표시될 수 있습니다. 이것은 React에서 수동으로 PropTypes 호출하는 것을 탐지하기 위해 [전달](https://github.com/facebook/react/pull/7132)하는 "비밀" 마지막 인자를 알 수 없기 때문에 발생합니다.
 
@@ -79,7 +79,7 @@ export default function deprecated(propType, explanation) {
 }
 ```
 
-잘못된 긍정(false positive)을 수정하려면 **모든** 인자를 래핑 된 PropTypes에 전달해야 합니다. ES6의 `...rest`를 사용하면 쉽게 해결할 수 있습니다.
+거짓 긍정을 수정하려면 **모든** 인자를 래핑 된 PropTypes에 전달해야 합니다. ES6의 `...rest`를 사용하면 쉽게 해결할 수 있습니다.
 
 ```javascript
 export default function deprecated(propType, explanation) {
