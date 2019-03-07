@@ -61,7 +61,7 @@ JSON 데이터 모델을 자주 사용자에게 보여줘야하기 때문에 모
 
 ## 2단계: React로 정적인 앱 만들기 {#step-2-build-a-static-version-in-react}
 
-<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen"><a href="https://codepen.io">CodePen에서</a><a href="https://codepen.io/gaearon/pen/BwWzwm">리액트로 생각하기: 2단계</a>코드를 확인하세요.</p>
+<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen"><a href="https://codepen.io">CodePen</a>에서 <a href="https://codepen.io/gaearon/pen/BwWzwm">리액트로 생각하기: 2단계 코드</a>를 확인하세요.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 드디어 컴포넌트 계층구조가 생겼으니 이제 앱으로 만들 시간입니다. 가장 쉬운 방법은 데이터를 가져와 UI를 그리지만 상호 작용은 없는 버전을 만드는 것 입니다. 이런 정적인 버전을 만드는 것은 단순히 많은 타이핑만을 필요로 하지만 상호 작용을 추가하는 것은 타이핑이 아닌 많은 생각을 필요로하기 때문에 이 두 과정을 떼어놓는게 좋습니다. 그 이유를 살펴보겠습니다.
