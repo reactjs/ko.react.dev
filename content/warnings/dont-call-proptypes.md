@@ -6,7 +6,7 @@ permalink: warnings/dont-call-proptypes.html
 
 > 주의
 >
-> `React.PropTypes`는 React v15.5 버전 이후로 별도의 패키지로 옮겨졌습니다. [`prop-types` 라이브러리를 대신](https://www.npmjs.com/package/prop-types) 사용하십시오.
+> `React.PropTypes`는 React v15.5 버전 이후로 별도의 패키지로 옮겨졌습니다. [`prop-types` 라이브러리를 대신](https://www.npmjs.com/package/prop-types) 사용하세요.
 >
 >이 변경을 자동화 해주는 [codemod 스크립트](/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes)를 제공하고 있습니다.
 
@@ -24,7 +24,7 @@ Button.propTypes = {
 
 변경된 것은 없습니다.
 
-### 직접 PropTypes를 호출하지 마십시오 {#dont-call-proptypes-directly}
+### 직접 PropTypes를 호출하지 마세요 {#dont-call-proptypes-directly}
 
 React 컴포넌트가 아닌 다른 곳에서 PropTypes를 사용하는 것은 더 이상 지원되지 않습니다.
 
@@ -44,7 +44,7 @@ PropTypes를 이런 식으로 사용하고 있다면 PropTypes를 포크(fork)�
 
 ### 직접 PropTypes를 호출하지 않아도 경고 메시지가 표시될 때 {#if-you-dont-call-proptypes-directly-but-still-get-the-warning}
 
-경고에 표시된 스택 추적을 검사해보십시오. PropTypes를 직접 호출한 컴포넌트를 찾을 수 있을 것입니다. 대부분 문제는 React의 PropTypes를 래핑하는 서드파티(third-party) PropTypes로 인해 발생합니다. 예를 들면 다음과 같습니다.
+경고에 표시된 스택 추적을 검사해보세요. PropTypes를 직접 호출한 컴포넌트를 찾을 수 있을 것입니다. 대부분 문제는 React의 PropTypes를 래핑하는 서드파티(third-party) PropTypes로 인해 발생합니다. 예를 들면 다음과 같습니다.
 
 ```js
 Button.propTypes = {
@@ -61,7 +61,7 @@ Button.propTypes = {
 
 서드파티 PropTypes 라이브러리 개발자이고 사용자가 기존 React PropTypes를 래핑하도록 허용했다면 라이브러리에서 이 경고가 표시될 수 있습니다. 이것은 React에서 수동으로 PropTypes 호출하는 것을 탐지하기 위해 [전달](https://github.com/facebook/react/pull/7132)하는 "비밀" 마지막 인자를 알 수 없기 때문에 발생합니다.
 
-수정 방법은 다음과 같습니다. [react-bootstrap/react-prop-types](https://github.com/react-bootstrap/react-prop-types/blob/0d1cd3a49a93e513325e3258b28a82ce7d38e690/src/deprecated.js)의 'deprecated'를 예시로 사용하겠습니다. 현재 구현은 `props`, `propName` 및 `componentName` 인자만을 전달합니다.
+수정 방법은 다음과 같습니다. [react-bootstrap/react-prop-types](https://github.com/react-bootstrap/react-prop-types/blob/0d1cd3a49a93e513325e3258b28a82ce7d38e690/src/deprecated.js)의 `deprecated`를 예시로 사용하겠습니다. 현재 구현은 `props`, `propName` 및 `componentName` 인자만을 전달합니다.
 
 ```javascript
 export default function deprecated(propType, explanation) {
