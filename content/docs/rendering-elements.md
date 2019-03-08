@@ -1,6 +1,6 @@
 ---
 id: rendering-elements
-title: Rendering Elements
+title: 엘리먼트 렌더링
 permalink: docs/rendering-elements.html
 redirect_from:
   - "docs/displaying-data.html"
@@ -8,68 +8,68 @@ prev: introducing-jsx.html
 next: components-and-props.html
 ---
 
-Elements are the smallest building blocks of React apps.
+엘리먼트는 React 앱의 가장 작은 단위입니다.
 
-An element describes what you want to see on the screen:
+엘리먼트는 화면에 표시할 내용을 기술합니다.
 
 ```js
 const element = <h1>Hello, world</h1>;
 ```
 
-Unlike browser DOM elements, React elements are plain objects, and are cheap to create. React DOM takes care of updating the DOM to match the React elements.
+브라우저 DOM 엘리먼트와 달리 React 엘리먼트는 일반 객체이며(plain object) 쉽게 생성할 수 있습니다. React DOM은 React 엘리먼트와 일치하도록 DOM을 업데이트합니다.
 
->**Note:**
+>**주의**
 >
->One might confuse elements with a more widely known concept of "components". We will introduce components in the [next section](/docs/components-and-props.html). Elements are what components are "made of", and we encourage you to read this section before jumping ahead.
+>더 널리 알려진 개념인 "컴포넌트"와 엘리먼트를 혼동할 수 있습니다. [다음 장](/docs/components-and-props.html)에서 컴포넌트에 대해 소개할 예정입니다. 엘리먼트는 컴포넌트의 "구성 요소"이므로 이번 장을 읽고 나서 다음 장으로 넘어갈 것을 권합니다. 
 
-## Rendering an Element into the DOM {#rendering-an-element-into-the-dom}
+## DOM에 엘리먼트 렌더링하기 {#rendering-an-element-into-the-dom}
 
-Let's say there is a `<div>` somewhere in your HTML file:
+HTML 파일 어딘가에 `<div>`가 있다고 가정해 봅시다.
 
 ```html
 <div id="root"></div>
 ```
 
-We call this a "root" DOM node because everything inside it will be managed by React DOM.
+이 안에 들어가는 모든 엘리먼트를 React DOM에서 관리하기 때문에 이것을 "루트(root)" DOM 노드라고 부릅니다.
 
-Applications built with just React usually have a single root DOM node. If you are integrating React into an existing app, you may have as many isolated root DOM nodes as you like.
+React로 구현된 애플리케이션은 일반적으로 하나의 루트 DOM 노드가 있습니다. React를 기존 앱에 통합하려는 경우 원하는 만큼 많은 수의 독립된 루트 DOM 노드가 있을 수 있습니다.
 
-To render a React element into a root DOM node, pass both to `ReactDOM.render()`:
+React 엘리먼트를 루트 DOM 노드에 렌더링하려면 둘 다 `ReactDOM.render()`로 전달하면 됩니다.
 
 `embed:rendering-elements/render-an-element.js`
 
-[](codepen://rendering-elements/render-an-element)
+**[CodePen에서 실행하기](codepen://rendering-elements/render-an-element)**
 
-It displays "Hello, world" on the page.
+위 코드를 실행하면 화면에 "Hello, world"가 보일 겁니다.
 
-## Updating the Rendered Element {#updating-the-rendered-element}
+## 렌더링 된 엘리먼트 업데이트하기 {#updating-the-rendered-element}
 
-React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object). Once you create an element, you can't change its children or attributes. An element is like a single frame in a movie: it represents the UI at a certain point in time.
+React 엘리먼트는 [불변객체](https://ko.wikipedia.org/wiki/%EB%B6%88%EB%B3%80%EA%B0%9D%EC%B2%B4)입니다. 엘리먼트를 생성한 이후에는 해당 엘리먼트의 자식이나 속성을 변경할 수 없습니다. 엘리먼트는 영화에서 하나의 프레임과 같이 특정 시점의 UI를 보여줍니다.
 
-With our knowledge so far, the only way to update the UI is to create a new element, and pass it to `ReactDOM.render()`.
+지금까지 소개한 내용을 바탕으로 하면 UI를 업데이트하는 유일한 방법은 새로운 엘리먼트를 생성하고 이를 `ReactDOM.render()`로 전달하는 것입니다.
 
-Consider this ticking clock example:
+예시로 똑딱거리는 시계를 살펴보겠습니다.
 
 `embed:rendering-elements/update-rendered-element.js`
 
-[](codepen://rendering-elements/update-rendered-element)
+**[CodePen에서 실행하기](codepen://rendering-elements/update-rendered-element)**
 
-It calls `ReactDOM.render()` every second from a [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback.
+위 함수는 [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) 콜백을 이용해 초마다 `ReactDOM.render()`를 호출합니다.
 
->**Note:**
+>**주의**
 >
->In practice, most React apps only call `ReactDOM.render()` once. In the next sections we will learn how such code gets encapsulated into [stateful components](/docs/state-and-lifecycle.html).
+>실제로 대부분의 React 앱은 `ReactDOM.render()`를 한 번만 호출합니다. 다음 장에서는 이와 같은 코드가 [유상태 컴포넌트](/docs/state-and-lifecycle.html)에 어떻게 캡슐화되는지 설명합니다.
 >
->We recommend that you don't skip topics because they build on each other.
+>각 주제가 서로 연관이 있기 때문에 건너뛰지 않는 것을 추천합니다.
 
-## React Only Updates What's Necessary {#react-only-updates-whats-necessary}
+## 변경된 부분만 업데이트하기{#react-only-updates-whats-necessary}
 
-React DOM compares the element and its children to the previous one, and only applies the DOM updates necessary to bring the DOM to the desired state.
+React DOM은 해당 엘리먼트와 그 자식 엘리먼트를 이전의 엘리먼트와 비교하고 DOM을 원하는 상태로 만드는데 필요한 경우에만 DOM을 업데이트합니다.
 
-You can verify by inspecting the [last example](codepen://rendering-elements/update-rendered-element) with the browser tools:
+개발자 도구를 이용해 [마지막 예시](codepen://rendering-elements/update-rendered-element)를 살펴보면 이를 확인할 수 있습니다.
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 
-Even though we create an element describing the whole UI tree on every tick, only the text node whose contents has changed gets updated by React DOM.
+매초 전체 UI를 다시 그리도록 엘리먼트를 만들었지만 React DOM은 내용이 변경된 텍스트 노드만 업데이트했습니다.
 
-In our experience, thinking about how the UI should look at any given moment rather than how to change it over time eliminates a whole class of bugs.
+경험에 비추어 볼 때 특정 시점에 UI가 어떻게 보일지 고민하는 이런 접근법은 시간의 변화에 따라 UI가 어떻게 변화할지 고민하는 것보다 더 많은 수의 버그를 없앨 수 있습니다.
