@@ -31,7 +31,7 @@ React의 가장 중요한 부분 중 하나는 앱을 만들 때 앱을 어떻�
 ];
 ```
 
-## 1단계: UI를 하나의 컴포넌트 계층구조로 만들자 {#step-1-break-the-ui-into-a-component-hierarchy}
+## 1단계: UI를 하나의 컴포넌트 계층구조로 만들 {#step-1-break-the-ui-into-a-component-hierarchy}
 
 첫 번째로 해야할 일은 모든 컴포넌트마다 박스를 그리고 각자에게 이름을 주는 것입니다. 만약 디자이너와 일하고 있다면 이미 해놨을 수도 있으니 물어보세요! 포토샵 레이어 이름이 컴포넌트 이름이 될 수 있습니다.
 
@@ -78,31 +78,32 @@ JSON 데이터 모델을 자주 사용자에게 보여줘야하기 때문에 모
 
 리액트에는 두 유형의 데이터 모델이 있습니다: props와 state. 이 둘의 차이점을 이해하는 것은 매우 중요합니다. 만약 차이점을 명확하게 모르신다면 이 [React 공식 문서](/docs/interactivity-and-dynamic-uis.html)를 살펴보세요.
 
-## Step 3: Identify The Minimal (but complete) Representation Of UI State {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
+## 3단계: UI의 state를 최소한으로(하지만 완전한게) 구별하기 {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
 
-To make your UI interactive, you need to be able to trigger changes to your underlying data model. React makes this easy with **state**.
+UI가 상호작용을 할 수 있기 위해서는 주어진 데이터 모델에 변화를 줄 수 있어야 합니다. React는 이를 **state**로 쉽게 구현할 수 있습니다.
 
-To build your app correctly, you first need to think of the minimal set of mutable state that your app needs. The key here is [DRY: *Don't Repeat Yourself*](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). Figure out the absolute minimal representation of the state your application needs and compute everything else you need on-demand. For example, if you're building a TODO list, just keep an array of the TODO items around; don't keep a separate state variable for the count. Instead, when you want to render the TODO count, simply take the length of the TODO items array.
+앱을 올바르게 구현하기 위해 먼저 앱에 필요한 최소한의 변경 가능한 state에 대해 생각해 봐야합니다. 여기서 핵심은 [DRY: *Don't Repeat Yourself*](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)입니다. 앱이 필요로 하는 상태를 꼭 최소한으로 표현하고 필요한 것들을 계산하세요. 예를 들어 TODO 리스트를 만들 때 TODO 항목들을 배열로 가지면서 그 갯수는 따로 state 변수로 가지고 있지 마세요. TODO 항목들의 갯수를 렌더링 하고 싶으면 배열의 길이를 가지고 하면됩니다.
 
-Think of all of the pieces of data in our example application. We have:
+이제 우리 예제의 데이터들을 생각해 보세요. 우리는 다음과 같은 데이터를 가지고 있습니다:
 
-  * The original list of products
-  * The search text the user has entered
-  * The value of the checkbox
-  * The filtered list of products
+* 원래의 상품 목록
+* 사용자가 입력한 검색어
+* 체크박스의 체크 유무
+* 필터링 된 상품 목록
 
-Let's go through each one and figure out which one is state. Simply ask three questions about each piece of data:
 
-  1. Is it passed in from a parent via props? If so, it probably isn't state.
-  2. Does it remain unchanged over time? If so, it probably isn't state.
-  3. Can you compute it based on any other state or props in your component? If so, it isn't state.
+각각을 살펴보고 어떤 것이 state 인지 알아봅시다. 각 데이터에 대해 세 가지의 질문만 하면됩니다.
 
-The original list of products is passed in as props, so that's not state. The search text and the checkbox seem to be state since they change over time and can't be computed from anything. And finally, the filtered list of products isn't state because it can be computed by combining the original list of products with the search text and value of the checkbox.
+  1. 부모 컴포넌트로부터 props로 전달됩니까? 그렇다면 아마도 state가 아닙니다.
+  2. 시간이 지나도 변하지 않습니까? 그렇다면 아마도 state가 아닙니다.
+  3. 컴포넌트의 다른 state나 props를 기반으로 계산될 수 있습니까? 그렇다면 state가 아닙니다.
 
-So finally, our state is:
+원래의 상품 목록을 props로 전달되므로 state가 아닙니다. 검색어와 체크박스는 변할 수 있고 다른 어떤 것으로부터 계산이 되지 않기 때문에 state인 것 같습니다. 마지막으로 필터링 된 상품 목록은 원래의 상품 목록과 검색어, 체크박스에 의해 계산될 수 있으므로 state가 아닙니다.
 
-  * The search text the user has entered
-  * The value of the checkbox
+결론적으로 state는 다음과 같습니다.
+
+  * 사용자가 입력한 검색어
+  * 체크박스의 체크 유무
 
 ## Step 4: Identify Where Your State Should Live {#step-4-identify-where-your-state-should-live}
 
