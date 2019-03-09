@@ -61,7 +61,7 @@ JSON 데이터 모델을 자주 사용자에게 보여줘야하기 때문에 모
 
 ## 2단계: React로 정적인 앱 만들기 {#step-2-build-a-static-version-in-react}
 
-<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen"><a href="https://codepen.io">CodePen</a>에서 <a href="https://codepen.io/gaearon/pen/BwWzwm">리액트로 생각하기: 2단계 코드</a>를 확인하세요.</p>
+<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen"><a href="https://codepen.io">CodePen</a>에서 <a href="https://codepen.io/gaearon/pen/BwWzwm">리액트로 생각하기: 2단계 </a>코드를 확인하세요.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 드디어 컴포넌트 계층구조가 생겼으니 이제 앱으로 만들 시간입니다. 가장 쉬운 방법은 데이터를 가져와 UI를 그리지만 상호 작용은 없는 버전을 만드는 것 입니다. 이런 정적인 버전을 만드는 것은 단순히 많은 타이핑만을 필요로 하지만 상호 작용을 추가하는 것은 타이핑이 아닌 많은 생각을 필요로하기 때문에 이 두 과정을 떼어놓는게 좋습니다. 그 이유를 살펴보겠습니다.
@@ -105,29 +105,44 @@ UI가 상호작용을 할 수 있기 위해서는 주어진 데이터 모델에 
   * 사용자가 입력한 검색어
   * 체크박스의 체크 유무
 
+## 4단계: State가 어디에 있어야 하는지 알아보기 {#step-4-identify-where-your-state-should-live}
 ## Step 4: Identify Where Your State Should Live {#step-4-identify-where-your-state-should-live}
 
+<p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen"><a href="https://codepen.io">CodePen</a>에서 <a href="https://codepen.io/gaearon/pen/qPrNQZ">리액트로 생각하기: 4단계</a>코드를 확인하세요.</p>
 <p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/qPrNQZ">Thinking In React: Step 4</a> on <a href="https://codepen.io">CodePen</a>.</p>
 
+이제 우리는 앱의 최소한의 state가 무엇인지 알았습니다. 다음은 어떤 컴포넌트가 이 state를 변경하거나 *소유*해야 하는지 알아야 합니다. 
 OK, so we've identified what the minimal set of app state is. Next, we need to identify which component mutates, or *owns*, this state.
 
+기억해야 할 것: React는 컴포넌트 계층구조에서 단방향 데이터 흐름에 관한 모든 것입니다. 어떤 컴포넌트가 어떤 state를 소유해야 하는지는 명확하지 않을수도 있습니다. **이는 React를 처음 접하는 사람에겐 종종 가장 이해하기 어려운 부분입니다.** 그러니 다음 단계들을 따라해보세요. 
 Remember: React is all about one-way data flow down the component hierarchy. It may not be immediately clear which component should own what state. **This is often the most challenging part for newcomers to understand,** so follow these steps to figure it out:
 
+앱의 각 state마다:
 For each piece of state in your application:
 
+  * 해당 state를 기반으로 무언가를 렌더링 하는 모든 컴포넌트를 찾으세요.
+  * 공통의 소유자 컴포넌트(위에서 찾았던 모든 컴포넌트들의 상위에 있는 컴포넌트) 하나를 찾으세요.
+  * 공통의 소유자 컴포넌트 혹은 다른 상위 컴포넌트가 그 state를 소유해야 합니다.
+  * 해당 state를 소유할 만한 컴포넌트가 무엇인지 못찾겠다면 단순히 그 state를 가질 새로운 컴포넌트를 만들고 공통의 소유자 컴포넌트 상위 어딘가에 추가하세요.
   * Identify every component that renders something based on that state.
   * Find a common owner component (a single component above all the components that need the state in the hierarchy).
   * Either the common owner or another component higher up in the hierarchy should own the state.
   * If you can't find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component.
 
+이제 이 과정을 우리의 앱에 적용시켜봅시다:
 Let's run through this strategy for our application:
 
+  * `ProductTable`은 state를 기반으로 상품 목록을 필터링 해야하고 `SearchBar`는 검색어와 체크박스 state를 그려야합니다.
+  * 공통의 소유자 컴포넌트는 `FilterableProductTable`이 됩니다.
+  * 따라서 검색어와 체크박스 state는 `FilterableProductTable`에 있는 것이 개념적으로 말이 됩니다.
   * `ProductTable` needs to filter the product list based on state and `SearchBar` needs to display the search text and checked state.
   * The common owner component is `FilterableProductTable`.
   * It conceptually makes sense for the filter text and checked value to live in `FilterableProductTable`
 
+좋습니다, 우리의 state는 `FilterableProductTable`에 있게 됐습니다. 먼저 앱의 초기 state를 반영하기 위해 `this.state = {filterText: '', inStockOnly: false}`를 `FilterableProductTable`의 `constructor`에 추가합니다. 그리고 `filterText`와 `inStockOnly`를 `ProductTable`과 `SearchBar`에 prop으로 전달합니다. 마지막으로 이 props를 `ProductTable`에 있는 행들을 필터링 하는데 사용하고 `SearchBar`에 form 요소들의 값으로 설정하세요.
 Cool, so we've decided that our state lives in `FilterableProductTable`. First, add an instance property `this.state = {filterText: '', inStockOnly: false}` to `FilterableProductTable`'s `constructor` to reflect the initial state of your application. Then, pass `filterText` and `inStockOnly` to `ProductTable` and `SearchBar` as a prop. Finally, use these props to filter the rows in `ProductTable` and set the values of the form fields in `SearchBar`.
 
+당신은 어떻게 우리의 앱이 동작할 것인지 알면서 시작할 수 있습니다: `filterText`를 `"ball"`로 설정하고 앱을 새로고침 해보세요 데이터 테이블이 잘 업데이트 되는 걸 볼 수 있습니다.
 You can start seeing how your application will behave: set `filterText` to `"ball"` and refresh your app. You'll see that the data table is updated correctly.
 
 ## Step 5: Add Inverse Data Flow {#step-5-add-inverse-data-flow}
