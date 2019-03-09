@@ -118,11 +118,11 @@ ReactDOM.render(
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
 
-변수를 선언하고 `if`를 사용해서 조건부로 렌더링 하는 것은 좋은 방법이지만 더 짧은 구문을 사용하고 싶을 때가 있을 수 있습니다. 여러 조건을 JSX 안에서 inline으로 처리할 방법 몇 가지를 아래에서 소개하겠습니다.
+변수를 선언하고 `if`를 사용해서 조건부로 렌더링 하는 것은 좋은 방법이지만 더 짧은 구문을 사용하고 싶을 때가 있을 수 있습니다. 여러 조건을 JSX 안에서 인라인(inline)으로 처리할 방법 몇 가지를 아래에서 소개하겠습니다.
 
-### 논리 && 연산자로 If를 inline 하기 {#inline-if-with-logical--operator}
+### 논리 && 연산자로 If를 인라인으로 표현하기{#inline-if-with-logical--operator}
 
-JSX안에는 중괄호를 이용해서 [표현식을 포함](/docs/introducing-jsx.html#embedding-expressions-in-jsx) 할 수 있습니다. 그 안에 JavaScript의 논리 연산자 `&&`를 사용하면 쉽게 엘리먼트를 조건부로 넣을 수 있습니다.
+JSX 안에는 중괄호를 이용해서 [표현식을 포함](/docs/introducing-jsx.html#embedding-expressions-in-jsx) 할 수 있습니다. 그 안에 JavaScript의 논리 연산자 `&&`를 사용하면 쉽게 엘리먼트를 조건부로 넣을 수 있습니다.
 
 ```js{6-10}
 function Mailbox(props) {
@@ -152,7 +152,7 @@ JavaScript에서 `true && expression`은 항상 `expression`으로 평가되고 
 
 따라서 `&&` 뒤의 엘리먼트는 조건이 `true`일때 출력이 됩니다. 조건이 `false`라면 React는 무시합니다.
 
-### 조건부 연산자로 If-Else구문 inline화 하기{#inline-if-else-with-conditional-operator}
+### 조건부 연산자로 If-Else구문 인라인으로 표현하기{#inline-if-else-with-conditional-operator}
 
 엘리먼트를 조건부로 렌더링하는 다른 방법은 조건부 연산자인 [`condition ? true: false`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)를 사용하는 것입니다.
 
