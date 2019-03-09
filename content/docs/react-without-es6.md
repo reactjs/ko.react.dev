@@ -1,10 +1,10 @@
 ---
 id: react-without-es6
-title: ES6 없이 사용하는 리액트
+title: ES6 없이 사용하는 React
 permalink: docs/react-without-es6.html
 ---
 
-보통 리액트 컴포넌트를 정의할 때 JavaScript의 클래스만을 사용한다면 이와 같을 겁니다.
+보통 리액트 컴포넌트를 정의할 때 JavaScript의 class를 사용한다면 이와 같을 겁니다.
 
 ```javascript
 class Greeting extends React.Component {
@@ -26,11 +26,11 @@ var Greeting = createReactClass({
 });
 ```
 
-ES6 클래스의 API는 몇몇 차이점을 제외하고는 `createReactClass()`와 유사합니다.
+ES6 class의 API는 몇몇 차이점을 제외하고는 `createReactClass()`와 비슷합니다.
 
 ## Props 기본값 선언 {#declaring-default-props}
 
-함수와 ES6의 클래스를 통해 `defaultProps`을 컴포넌트 그 자체의 속성으로서 정의할 수 있습니다.
+함수와 ES6의 class를 통해 `defaultProps`을 컴포넌트 그 자체의 속성으로서 정의할 수 있습니다.
 
 ```javascript
 class Greeting extends React.Component {
@@ -59,7 +59,7 @@ var Greeting = createReactClass({
 
 ## 초기 State 정의 {#setting-the-initial-state}
 
-ES6의 클래스에서, 생성자 내에서 `this.state`에 값을 할당함으로써 초기 state를 정의할 수 있습니다.
+ES6 class의 생성자에서 `this.state`에 값을 할당하면 state의 초기값을 정의할 수 있습니다.
 
 ```javascript
 class Counter extends React.Component {
@@ -84,7 +84,7 @@ var Counter = createReactClass({
 
 ## 자동 바인딩 {#autobinding}
 
-ES6 클래스로서 선언된 React 컴포넌트에서 메서드는 일반적인 ES6 클래스일 때와 비슷합니다. 즉, `this`를 인스턴스에 자동으로 바인딩하지 않습니다. 따라서 이 경우에는 생성자에서 별도로 `.bind(this)`를 사용해 주어야 합니다.
+ES6 class로서 선언된 React 컴포넌트에서 메서드는 일반적인 ES6 class일 때와 비슷합니다. 즉, `this`를 인스턴스에 자동으로 바인딩하지 않습니다. 따라서 이 경우에는 생성자에서 별도로 `.bind(this)`를 사용해 주어야 합니다.
 
 ```javascript
 class SayHello extends React.Component {
@@ -110,7 +110,7 @@ class SayHello extends React.Component {
 }
 ```
 
-반면에 `createReactClass()`를 사용한다면, 알아서 모든 메서드를 바인딩하기 때문에 위의 과정이 반드시 필요하지는 않습니다.
+반면에 `createReactClass()`를 사용한다면, 알아서 모든 메서드를 바인딩하기 때문에 위의 과정이 필요하지는 않습니다.
 
 ```javascript
 var SayHello = createReactClass({
@@ -132,10 +132,10 @@ var SayHello = createReactClass({
 });
 ```
 
-이는 ES6의 클래스를 사용해 이벤트 처리기를 만드는 경우에는 다른 방법으로 처리할 때 보다 불필요하게 반복되는 코드가 많아진다는 뜻입니다. 하지만 큰 규모의 애플리케이션에서는 클래스를 사용하는 경우에 성능이 조금 더 좋아집니다.  
+이는 ES6의 class를 사용해 이벤트 처리기를 만드는 경우에는 다른 방법으로 처리할 때 보다 불필요하게 반복되는 코드가 많아진다는 뜻입니다. 하지만 큰 규모의 애플리케이션에서는 class를 사용하는 경우에 성능이 조금 더 좋아집니다.  
 
 
-boilerplate code가 정 쓰기 싫다면, **실험적인** [클래스 프로퍼티](https://babeljs.io/docs/plugins/transform-class-properties/) 문법을 Babel을 통해 사용할 수도 있습니다:
+boilerplate code가 정 쓰기 싫다면, **실험적인** [class 프로퍼티](https://babeljs.io/docs/plugins/transform-class-properties/) 문법을 Babel을 통해 사용할 수도 있습니다:
 
 
 ```javascript
@@ -173,18 +173,18 @@ class SayHello extends React.Component {
 
 >**주의**
 >
->ES6는 처음부터 mixin에 대한 어떠한 지원도 없었습니다. 따라서, 리액트에서 ES6 클래스를 사용하고자 하는 경우에도 mixin에 대한 별도의 지원은 없습니다.
+>ES6에서는 처음부터 mixin에 대한 어떠한 지원도 없었습니다. 따라서, React에서 ES6 class를 사용하고자 하는 경우에도 mixin에 대한 별도의 지원은 없습니다.
 >
 >
 >**또한 저희 팀은 mixin을 사용한 Codebase에서 수 많은 문제점들을 발견했습니다. 이에 따라 저희는 [새로 작성하는 코드에서는 mixin을 사용하지 않는 것을 추천드립니다.](/blog/2016/07/13/mixins-considered-harmful.html)**
 
 >
->본 문단은 참고목적으로만 보시길 바랍니다.
+>해당 글은 참고목적으로만 보시길 바랍니다.
 
-가끔은 전혀 다른 컴포넌트들이 어느 정도 유사한 기능을 공유할 수도 있습니다. 간혹 발생하는 이러한 경우를 [cross-cutting concerns](https://en.wikipedia.org/wiki/Cross-cutting_concern)라고 부릅니다. 
+가끔은 전혀 다른 컴포넌트들이 어느 정도 유사한 기능을 공유할 수도 있습니다. 간혹 발생하는 이러한 경우를 번역과 링크에 관한 [횡단 관심사](https://en.wikipedia.org/wiki/Cross-cutting_concern)라고 부릅니다. 
 이 문제에 대한 대처법으로서 `createReactClass`를 통해 더 이상 쓰이지 않는 코드인 `mixins`을 사용할 수 있습니다.
 
-mixin을 사용하는 흔한 예로는 시간 간격을 두고 반복적으로 스스로 내용을 갱신하는 컴포넌트를 만들고자 할 경우가 있습니다. 이는 `setInterval()`을 사용하면 간단하게 만들 수 있지만, 메모리를 절약하기 위해서 컴포넌트를 더 이상 사용하지 않을 때 이를 취소하는 것이 중요합니다. 리액트는 [생명주기 함수](/docs/react-component.html#the-component-lifecycle)를 제공합니다. 생명주기 함수는 컴포넌트가 생성되거나 파괴되기 직전에 이를 알려주는 역할을 합니다. 생명주기 함수를 이용하는 간단한 mixin을 만들어 보겠습니다. 이 mixin은 컴포넌트가 파괴될 때 스스로 삭제되는 `setInterval()` 함수 기능을 제공해 줍니다.
+mixin을 사용하는 흔한 예로는 시간 간격을 두고 반복적으로 스스로 내용을 갱신하는 컴포넌트를 만들고자 할 경우가 있습니다. 이는 `setInterval()`을 사용하면 간단하게 만들 수 있지만, 메모리를 절약하기 위해서 컴포넌트를 더 이상 사용하지 않을 때 이를 취소하는 것이 중요합니다. 리액트는 [생명주기 메서드](/docs/react-component.html#the-component-lifecycle)를 제공합니다. 생명주기 메서드는 컴포넌트가 생성되거나 파괴되기 직전에 이를 알려주는 역할을 합니다. 생명주기 메서드를 이용하는 간단한 mixin을 만들어 보겠습니다. 이 mixin은 컴포넌트가 파괴될 때 자동으로 정리되는 `setInterval()` 함수 기능을 제공해 줍니다.
 
 
 ```javascript
@@ -228,4 +228,4 @@ ReactDOM.render(
 );
 ```
 
-하나의 컴포넌트가 여러 개의 mixin을 사용하고 그것들이 같은 생명주기 메서드를 정의한다면, (예를 들자면, 그 mixin들이 컴포넌트가 파괴될 때 어떠한 없애는 기능을 수행하고자 하는 경우가 있습니다) 모든 생명주기함수가 호출되는 것이 보장됩니다. mixin에서 정의된 메서드들은 mixin이 나열된 순서대로 구동되며 그 뒤에 컴포넌트에서 메서드가 호출됩니다.
+하나의 컴포넌트가 같은 생명주기 메서드를 정의한 여러 mixin을 사용한다고 생각해봅시다. 예를 든다면, mixin들이 컴포넌트가 파괴될 때 어떠한 정리 동작을 하려고 할 수도 있습니다. 이 때는 모든 생명주기 메서드의 호출이 보장됩니다. mixin에서 정의된 메서드들은 mixin이 나열된 순서대로 작동되며 그 뒤에 컴포넌트에서 메서드가 호출됩니다.
