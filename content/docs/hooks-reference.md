@@ -10,7 +10,7 @@ next: hooks-faq.html
 
 This page describes the APIs for the built-in Hooks in React.
 
-If you're new to Hooks, you might want to check out [the overview](/docs/hooks-overview.html) first. You may also find useful information in the [frequently asked questions](/docs/hooks-faq.html) section.
+If you're new to Hooks, you might want to check out [Hook 개요](/docs/hooks-overview.html) first. You may also find useful information in the [frequently asked questions](/docs/hooks-faq.html) section.
 
 - [Basic Hooks](#basic-hooks)
   - [`useState`](#usestate)
