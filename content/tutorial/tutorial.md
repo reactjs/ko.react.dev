@@ -192,11 +192,11 @@ Square 컴포넌트는 `<button>`을 렌더링하고 Board는 사각형 9개를 
 
 ### Props를 통해 데이터 전달하기 {#passing-data-through-props}
 
-To get our feet wet, let's try passing some data from our Board component to our Square component.
+본격적으로 시작하기 위해 Board 컴포넌트에서 Square 컴포넌트로 데이터를 전달해 봅시다.
 
-We strongly recommend typing code by hand as you're working through the tutorial and not using copy/paste. This will help you develop muscle memory and a stronger understanding.
+자습서를 따를 때 복사/붙여넣기가 아니라 손으로 직접 코드를 작성하길 추천합니다. 이렇게 하면 코드를 몸으로 기억하고 이해력을 더 높일 수 있습니다.
 
-In Board's `renderSquare` method, change the code to pass a prop called `value` to the Square:
+Square에 `value`라는 prop을 전달하기 위해 Board의 `renderSquare` 함수 코드를 수정해주세요.
 
 ```js{3}
 class Board extends React.Component {
@@ -205,7 +205,7 @@ class Board extends React.Component {
   }
 ```
 
-Change Square's `render` method to show that value by replacing `{/* TODO */}` with `{this.props.value}`:
+값을 보여주기 위해 Square의 `render` 함수에서 `{/* TODO */}`를 `{this.props.value}`로 수정해주세요.
 
 ```js{5}
 class Square extends React.Component {
@@ -219,22 +219,22 @@ class Square extends React.Component {
 }
 ```
 
-Before:
+변경 전:
 
 ![React Devtools](../images/tutorial/tictac-empty.png)
 
-After: You should see a number in each square in the rendered output.
+변경 후: 렌더링된 결과에서 각 사각형에 숫자가 표시됩니다.
 
 ![React Devtools](../images/tutorial/tictac-numbers.png)
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/aWWQOG?editors=0010)**
+**[지금까지의 전체 코드 확인하기](https://codepen.io/gaearon/pen/aWWQOG?editors=0010)**
 
-Congratulations! You've just "passed a prop" from a parent Board component to a child Square component. Passing props is how information flows in React apps, from parents to children.
+축하합니다! 부모 Board 컴포넌트에서 자식 Square 컴포넌트로 "prop을 전달"하였습니다. props 전달하기는 React 앱에서 부모에서 자식으로 정보가 어떻게 흘러가는지 알려줍니다.
 
 ### 대화형 컴포넌트 만들기 {#making-an-interactive-component}
 
-Let's fill the Square component with an "X" when we click it.
-First, change the button tag that is returned from the Square component's `render()` function to this:
+Square 컴포넌트를 클릭하면 "X"가 체크되도록 만들어봅시다.
+먼저 Square 컴포넌트의 `render()` 함수에서 반환하는 버튼 태그를 아래와 같이 변경해주세요.
 
 ```javascript{4}
 class Square extends React.Component {
@@ -248,11 +248,11 @@ class Square extends React.Component {
 }
 ```
 
-If you click on a Square now, you should see an alert in your browser.
+Square를 클릭하면 브라우저에서 경고 창이 뜨는 것을 확인할 수 있습니다.
 
->Note
+> 주의
 >
->To save typing and avoid the [confusing behavior of `this`](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/), we will use the [arrow function syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) for event handlers here and further below:
+> 타이핑 횟수를 줄이고 [`this`의 혼란스러운 동작](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/)을 피하기 위해 아래부터는 이벤트 핸들러에 [화살표 함수](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)를 사용하겠습니다.
 >
 >```javascript{4}
 >class Square extends React.Component {
@@ -266,13 +266,13 @@ If you click on a Square now, you should see an alert in your browser.
 >}
 >```
 >
->Notice how with `onClick={() => alert('click')}`, we're passing *a function* as the `onClick` prop. React will only call this function after a click. Forgetting `() =>` and writing `onClick={alert('click')}` is a common mistake, and would fire the alert every time the component re-renders.
+> `onClick={() => alert('click')}`이 어떻게 동작하는지 살펴보면 `onClick` prop으로 *함수*를 전달하고 있습니다. React는 클릭했을 때에만 이 함수를 호출할 것입니다. `() =>`을 잊어버리고 `onClick={alert('click')}`이라고 작성하는 것은 흔히 발생하는 실수이며 컴포넌트가 다시 렌더링할 때 마다 경고 창을 띄울 것입니다.
 
-As a next step, we want the Square component to "remember" that it got clicked, and fill it with an "X" mark. To "remember" things, components use **state**.
+다음 단계로 Square 컴포넌트를 클릭한 것을 "기억하게" 만들어 "X" 표시를 채워 넣으려고 합니다. 무언가를 "기억하기"위해 component는 **state**를 사용합니다.
 
-React components can have state by setting `this.state` in their constructors. `this.state` should be considered as private to a React component that it's defined in. Let's store the current value of the Square in `this.state`, and change it when the Square is clicked.
+React 컴포넌트는 생성자에 `this.state`를 설정하는 것으로 state를 가질 수 있습니다. `this.state`는 정의된 React 컴포넌트에 대해 비공개로 간주해야 합니다. 이제 Square의 현재 값을 `this.state`에 저장하고 Square를 클릭하는 경우 변경하겠습니다.
 
-First, we'll add a constructor to the class to initialize the state:
+우선 클래스에 생성자를 추가하여 state를 초기화합니다.
 
 ```javascript{2-7}
 class Square extends React.Component {
@@ -293,17 +293,17 @@ class Square extends React.Component {
 }
 ```
 
->Note
+> 주의
 >
->In [JavaScript classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), you need to always call `super` when defining the constructor of a subclass. All React component classes that have a `constructor` should start it with a `super(props)` call.
+> [JavaScript 클래스](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)에서 하위 클래스의 생성자를 정의할 때 항상 `super`를 호출해야합니다. 모든 React 컴포넌트 클래스는 `생성자`를 가질 때 `super(props)` 호출 구문부터 작성해야 합니다.
 
-Now we'll change the Square's `render` method to display the current state's value when clicked:
+이제 Square를 클릭할 때 현재 state 값을 표시하기 위해 `render` 함수를 변경할 것입니다.
 
-* Replace `this.props.value` with `this.state.value` inside the `<button>` tag.
-* Replace the `onClick={...}` event handler with `onClick={() => this.setState({value: 'X'})}`.
-* Put the `className` and `onClick` props on separate lines for better readability.
+* `<button>` 태그 안 `this.props.value`를 `this.state.value`로 변경해주세요.
+* `onClick={...}` 이벤트 핸들러를 `onClick={() => this.setState({value: 'X'})}`로 변경해주세요.
+* 가독성을 높이기 위해 `className`과 `onClick` props를 별도의 줄에 넣어주세요.
 
-After these changes, the `<button>` tag that is returned by the Square's `render` method looks like this:
+이와 같은 변경 후에 Square의 `render` 함수에서 반환하는 `<button>` 태그는 아래의 형태와 같습니다.
 
 ```javascript{12-13,15}
 class Square extends React.Component {
@@ -327,11 +327,11 @@ class Square extends React.Component {
 }
 ```
 
-By calling `this.setState` from an `onClick` handler in the Square's `render` method, we tell React to re-render that Square whenever its `<button>` is clicked. After the update, the Square's `this.state.value` will be `'X'`, so we'll see the `X` on the game board. If you click on any Square, an `X` should show up.
+Square의 `render` 함수 내부에서 `onClick` 핸들러를 통해 `this.setState`를 호출하는 것으로 React에게 `<button>`을 클릭할 때 Square가 다시 렌더링해야 한다고 알릴 수 있습니다. 업데이트 이후에 Square의 `this.state.value`는 `'X'`가 되어 게임 판에서 `X`가 나타나는 것을 확인할 수 있습니다. 어떤 Square를 클릭하던 `X`가 나타날 것입니다.
 
-When you call `setState` in a component, React automatically updates the child components inside of it too.
+컴포넌트에서 `setState`를 호출하면 React는 자동으로 컴포넌트 내부의 자식 컴포넌트 역시 업데이트합니다.
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/VbbVLg?editors=0010)**
+**[지금까지의 전체 코드 확인하기](https://codepen.io/gaearon/pen/VbbVLg?editors=0010)**
 
 ### 개발자 도구 {#developer-tools}
 
