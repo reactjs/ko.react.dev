@@ -14,27 +14,33 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
-React implements a browser-independent DOM system for performance and cross-browser compatibility. We took the opportunity to clean up a few rough edges in browser DOM implementations.
+React는 성능 및 브라우저 간 호환성을 위해 브라우저에 독립적인 DOM 시스템을 구현합니다. 
+우리는 브라우저 DOM 구현에서 몇 가지 어려운 부분을 정리할 기회를 가졌습니다.
 
-In React, all DOM properties and attributes (including event handlers) should be camelCased. For example, the HTML attribute `tabindex` corresponds to the attribute `tabIndex` in React. The exception is `aria-*` and `data-*` attributes, which should be lowercased. For example, you can keep `aria-label` as `aria-label`.
+React에서 모든 특성 및 속성(이벤트 핸들러 포함)은 캐멀 케이스를 사용합니다. 
+예를 들어 HTML 속성인 `tabindex`는 React의 `tabIndex`으로 표현합니다. 예외는 `aria-*` 및 `data-*` 속성인데, 
+이는 소문자로 표현합니다. 예를 들어, `aria-label`을 `aria-label`로 그대로 유지됩니다.
 
 ## Differences In Attributes {#differences-in-attributes}
 
-There are a number of attributes that work differently between React and HTML:
+React와 HTML 사이에는 다르게 작동하는 여러가지 속성들이 있습니다:
 
 ### checked {#checked}
 
-The `checked` attribute is supported by `<input>` components of type `checkbox` or `radio`. You can use it to set whether the component is checked. This is useful for building controlled components. `defaultChecked` is the uncontrolled equivalent, which sets whether the component is checked when it is first mounted.
+`checked` 속성은 `checkbox` 또는 `radio` 타입의 `<input>` 컴포넌트에 의해 지원됩니다. 
+이 속성을 사용하여 구성 요소의 선택 여부를 설정할 수 있습니다. 이는 제어 컴포넌트를 빌드하는 데 유용합니다. `defaultChecked`는 구성 요소가 처음 마운트 될 때 체크여부를 확인하며 제어되지 않는 속성입니다.
 
 ### className {#classname}
 
-To specify a CSS class, use the `className` attribute. This applies to all regular DOM and SVG elements like `<div>`, `<a>`, and others.
+CSS class를 사용하려면 `className` 속성을 사용하십시오. 
+이는 `<div>`, `<a>`등과 같은 모든 정규 DOM 및 SVG 요소에 적용됩니다.
 
-If you use React with Web Components (which is uncommon), use the `class` attribute instead.
+웹 구성 요소로 React with Web Components (which is uncommon)를 사용하는 경우 `class` 속성을 사용하십시오.
 
 ### dangerouslySetInnerHTML {#dangerouslysetinnerhtml}
 
-`dangerouslySetInnerHTML` is React's replacement for using `innerHTML` in the browser DOM. In general, setting HTML from code is risky because it's easy to inadvertently expose your users to a [cross-site scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) attack. So, you can set HTML directly from React, but you have to type out `dangerouslySetInnerHTML` and pass an object with a `__html` key, to remind yourself that it's dangerous. For example:
+`dangerouslySetInnerHTML`은 브라우저 DOM에서 `innerHTML`을 사용하기 위한 React의 대체물입니다. 
+일반적으로 코드에서 HTML을 설정하는 것은 [cross-site scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) 공격에 쉽게 노출될 수 있기 때문에 위험합니다. 따라서 React에서 직접 HTML을 설정할 수는 있지만, 위험하다는 것을 상기시키기 위해 `dangerouslySetInnerHTML`을 작성하고 `__html` 키로 객체를 전달해야합니다. 아래는 예시입니다:
 
 ```js
 function createMarkup() {
@@ -48,23 +54,26 @@ function MyComponent() {
 
 ### htmlFor {#htmlfor}
 
-Since `for` is a reserved word in JavaScript, React elements use `htmlFor` instead.
+`for`는 JavaScript에서 예약어이므로 React에서는 해당 요소를 `htmlFor`를 사용합니다.
 
 ### onChange {#onchange}
 
-The `onChange` event behaves as you would expect it to: whenever a form field is changed, this event is fired. We intentionally do not use the existing browser behavior because `onChange` is a misnomer for its behavior and React relies on this event to handle user input in real time.
+필드가 변경될때 실행되는 이벤트입니다. 일반적으로 알고있는 onChanage이벤트를 사용하지않습니다.
+왜냐하면 `onChange`는 해당 이벤트에 대한 잘못된 명칭이며 React는 사용자입력에 의한 실시간 처리 이벤트를 제공합니다.  
 
 ### selected {#selected}
 
-The `selected` attribute is supported by `<option>` components. You can use it to set whether the component is selected. This is useful for building controlled components.
+`selected` 속성은 `<option>`구성 요소에 의해 지원됩니다. 이 컴포넌트를 사용하여 구성 요소의 선택 여부를 설정할 수 있습니다. 이는 제어 컴포넌트를 빌드하는 데 유용합니다.
 
 ### style {#style}
 
 >Note
 >
->Some examples in the documentation use `style` for convenience, but **using the `style` attribute as the primary means of styling elements is generally not recommended.** In most cases, [`className`](#classname) should be used to reference classes defined in an external CSS stylesheet. `style` is most often used in React applications to add dynamically-computed styles at render time. See also [FAQ: Styling and CSS](/docs/faq-styling.html).
+>문서의 일부 예제는 편의상 style을 사용하지만, **style 속성을 스타일링의 주요 수단으로 사용하는 것은 일반적으로 권장되지 않습니다**. 대부분의 경우 [`className`](#classname) 외부 CSS stylesheet에 정의 된 class를 참조하는 데 사용해야 합니다. `style`을 동적 어플리케이션 계산 된 스타일을 추가하기 가장 자주 사용됩니다. 참조 [FAQ: Styling and CSS](/docs/faq-styling.html).
 
-The `style` attribute accepts a JavaScript object with camelCased properties rather than a CSS string. This is consistent with the DOM `style` JavaScript property, is more efficient, and prevents XSS security holes. For example:
+`style` 속성은 CSS 문자열 대신 캐멀 케이스 속성을 가진 JavaScript 객체로 받아들입니다. 
+이는 DOM 스타일의 JavaScript 속성과 일치하며 더 효율적입니다 그리고  XSS 보안 허점을 방지합니다. 
+아래는 예시입니다:
 
 ```js
 const divStyle = {
@@ -77,7 +86,7 @@ function HelloWorldComponent() {
 }
 ```
 
-Note that styles are not autoprefixed. To support older browsers, you need to supply corresponding style properties:
+스타일에는 autoprefixer가 붙지 않습니다. 구형 브라우저를 지원하려면 해당 스타일 속성을 제공해야합니다.
 
 ```js
 const divStyle = {
@@ -90,9 +99,9 @@ function ComponentWithTransition() {
 }
 ```
 
-Style keys are camelCased in order to be consistent with accessing the properties on DOM nodes from JS (e.g. `node.style.backgroundImage`). Vendor prefixes [other than `ms`](http://www.andismith.com/blog/2012/02/modernizr-prefixed/) should begin with a capital letter. This is why `WebkitTransition` has an uppercase "W".
+스타일 키는 JS에서 DOM 노드의 속성에 액세스하는 것과 일관되게하기 위해 캐멜 케이스를 사용합니다. (예 :`node.style.backgroundImage`). 공급 업체 [other than `ms`](http://www.andismith.com/blog/2012/02/modernizr-prefixed/)를 구본하여 대문자로 시작해야 합니다. 이것이 바로 `WebkitTransition`이 대문자 "W"를 갖는 이유입니다.
 
-React will automatically append a "px" suffix to certain numeric inline style properties. If you want to use units other than "px", specify the value as a string with the desired unit. For example:
+React는 특정 속성에서는 "px" 단위를 자동으로 추가합니다. "px" 이외의 원하는 단위를 사용하려면 문자열로 값을 직접 입력해야 합니다. 아래는 예시입니다:
 
 ```js
 // Result style: '10px'
@@ -106,27 +115,27 @@ React will automatically append a "px" suffix to certain numeric inline style pr
 </div>
 ```
 
-Not all style properties are converted to pixel strings though. Certain ones remain unitless (eg `zoom`, `order`, `flex`). A complete list of unitless properties can be seen [here](https://github.com/facebook/react/blob/4131af3e4bf52f3a003537ec95a1655147c81270/src/renderers/dom/shared/CSSProperty.js#L15-L59).
+모든 스타일 속성이 픽셀 문자열로 변환되는 것은 아닙니다. 어떤 속성들은 단위가 없습니다 (예 :`zoom`,`order`,`flex`). 단위 속성의 전체 목록을 확입하십시오. [here](https://github.com/facebook/react/blob/4131af3e4bf52f3a003537ec95a1655147c81270/src/renderers/dom/shared/CSSProperty.js#L15-L59).
 
 ### suppressContentEditableWarning {#suppresscontenteditablewarning}
 
-Normally, there is a warning when an element with children is also marked as `contentEditable`, because it won't work. This attribute suppresses that warning. Don't use this unless you are building a library like [Draft.js](https://facebook.github.io/draft-js/) that manages `contentEditable` manually.
+일반적으로, 자식이 있는 요소도 `contentEditable`로 표시 될 때 작동하지 않으므로 경고가 표시됩니다. 이 속성은 경고를 표시하지 않습니다. `contentEditable`을 수동으로 관리하는 [Draft.js](https://facebook.github.io/draft-js/)와 같은 라이브러리를 빌드하지 않는 한이 옵션을 사용하지 마십시오.
 
 ### suppressHydrationWarning {#suppresshydrationwarning}
 
-If you use server-side React rendering, normally there is a warning when the server and the client render different content. However, in some rare cases, it is very hard or impossible to guarantee an exact match. For example, timestamps are expected to differ on the server and on the client.
+서버 사이드 렌더링을 사용하는 경우, 일반적으로 서버와 클라이언트가 다른 내용을 렌더링 되었을 경우 경고가 표시됩니다. 그러나 드물기는 하지만 정확한 일치를 보장하는 것은 매우 어렵거나 불가능합니다. 예를 들어 타임 스탬프 같은 경우 서버와 클라이언트에서는 다를 것으로 예상됩니다.
 
-If you set `suppressHydrationWarning` to `true`, React will not warn you about mismatches in the attributes and the content of that element. It only works one level deep, and is intended to be used as an escape hatch. Don't overuse it. You can read more about hydration in the [`ReactDOM.hydrate()` documentation](/docs/react-dom.html#hydrate).
+`suppressHydrationWarning`을 `true`로 설정하면, React는 속성과 그 요소의 내용의 불일치에 대해 경고하지 않습니다. 한 단계 깊숙이 작동하며 탈출구로 사용하도록되어 있습니다. 그것을 남용하지 마십시오. 수화에 대한 자세한 내용은 [`ReactDOM.hydrate()` documentation](/docs/react-dom.html#hydrate)를 참조하십시오.
 
 ### value {#value}
 
-The `value` attribute is supported by `<input>` and `<textarea>` components. You can use it to set the value of the component. This is useful for building controlled components. `defaultValue` is the uncontrolled equivalent, which sets the value of the component when it is first mounted.
+`value` 속성은 `<input>`과 `<textarea>' 컴포넌트에 의해 지원됩니다. 이 매개 변수를 사용하여 구성 요소의 값을 설정할 수 있습니다. 이는 제어 컴포넌트 구성 요소를 빌드하는 데 유용합니다. `defaultValue`는 제어되지 않는 동등한 것으로, 최초 마운트 될 때 컴포넌트의 값을 설정합니다.
 
 ## All Supported HTML Attributes {#all-supported-html-attributes}
 
-As of React 16, any standard [or custom](/blog/2017/09/08/dom-attributes-in-react-16.html) DOM attributes are fully supported.
+React 16부터는 모든 표준 [또는 사용자 정의](/blog/2017/09/08/dom-attributes-in-react-16.html) DOM 속성이 완벽하게 지원됩니다.
 
-React has always provided a JavaScript-centric API to the DOM. Since React components often take both custom and DOM-related props, React uses the `camelCase` convention just like the DOM APIs:
+React는 항상 자바스크립트 중심 API를 DOM에 제공했습니다. React 컴포넌트는 종종 커스텀과 DOM 관련 props를 모두 사용하기 때문에 React 캐멀 케이스는 DOM API와 마찬가지로 규칙을 사용한다 .
 
 ```js
 <div tabIndex="-1" />      // Just like node.tabIndex DOM API
@@ -134,9 +143,9 @@ React has always provided a JavaScript-centric API to the DOM. Since React compo
 <input readOnly={true} />  // Just like node.readOnly DOM API
 ```
 
-These props work similarly to the corresponding HTML attributes, with the exception of the special cases documented above.
+이러한 props는 위에 설명 된 특별한 경우를 제외하고는 해당 HTML 속성과 유사하게 작동합니다.
 
-Some of the DOM attributes supported by React include:
+React가 지원하는 DOM 속성 중 일부는 다음과 같습니다.
 
 ```
 accept acceptCharset accessKey action allowFullScreen alt async autoComplete
@@ -154,7 +163,7 @@ sizes span spellCheck src srcDoc srcLang srcSet start step style summary
 tabIndex target title type useMap value width wmode wrap
 ```
 
-Similarly, all SVG attributes are fully supported:
+마찬가지로 모든 SVG 속성이 완벽하게 지원됩니다.
 
 ```
 accentHeight accumulate additive alignmentBaseline allowReorder alphabetic
@@ -193,4 +202,4 @@ xlinkHref xlinkRole xlinkShow xlinkTitle xlinkType xmlns xmlnsXlink xmlBase
 xmlLang xmlSpace y y1 y2 yChannelSelector z zoomAndPan
 ```
 
-You may also use custom attributes as long as they're fully lowercase.
+완전 소문자 인 한 사용자 정의 속성을 사용할 수도 있습니다.
