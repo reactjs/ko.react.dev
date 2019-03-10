@@ -163,7 +163,7 @@ sizes span spellCheck src srcDoc srcLang srcSet start step style summary
 tabIndex target title type useMap value width wmode wrap
 ```
 
-마찬가지로 모든 SVG 속성이 완벽하게 지원됩니다.
+마찬가지로, 모든 SVG 특성이 완벽하게 지원됩니다.
 
 ```
 accentHeight accumulate additive alignmentBaseline allowReorder alphabetic
@@ -202,4 +202,4 @@ xlinkHref xlinkRole xlinkShow xlinkTitle xlinkType xmlns xmlnsXlink xmlBase
 xmlLang xmlSpace y y1 y2 yChannelSelector z zoomAndPan
 ```
 
-완전 소문자 인 한 사용자 정의 속성을 사용할 수도 있습니다.
+또한 완전히 소문자인 경우 사용자 지정 특성을 사용할 수도 있습니다.
