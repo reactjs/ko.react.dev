@@ -39,7 +39,7 @@ class NameForm extends React.Component {
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/WooRWa?editors=0010)
 
-비제어 컴포넌트는 DOM에 신뢰 가능한 출처를 유지하기 때문에 비제어 컴포넌트를 사용할 때 React와 non-React 코드를 통합하는 것이 쉬울 수 있습니다. 빠르고 더러운걸 원한다면 코드가 약간 적을 수도 있습니다. 그렇지 않으면 일반적으로 제어된 컴포넌트를 사용해야 합니다.  
+비제어 컴포넌트는 DOM에 신뢰 가능한 출처를 유지하기 때문에 비제어 컴포넌트를 사용할 때 React와 non-React 코드를 통합하는 것이 쉬울 수 있습니다. 빠르고 더러운걸 원한다면 코드가 약간 적을 수도 있습니다. 그렇지 않으면 일반적으로 제어된 컴포넌트를 사용해야 합니다.
 
 특정 상황에서 사용해야 하는 컴포넌트의 타입이 명확하지 않은 경우, [제어된 입력과 비제어 입력에 대한 기사](http://goshakkk.name/controlled-vs-uncontrolled-inputs-react/)가 도움이 될 것입니다.
 
@@ -81,3 +81,4 @@ React에서 `<input type="file" />`은 프로그래밍 방식이 아닌 사용�
 `embed:uncontrolled-components/input-type-file.js`
 
 [CodePen에서 실행하기](codepen://uncontrolled-components/input-type-file)
+
