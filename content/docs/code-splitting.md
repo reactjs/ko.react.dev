@@ -102,13 +102,13 @@ import("./math").then(math => {
 
 When Webpack comes across this syntax, it automatically starts code-splitting
 your app. If you're using Create React App, this is already configured for you
-and you can [start using it](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#code-splitting) immediately. It's also supported
+and you can [start using it](https://facebook.github.io/create-react-app/docs/code-splitting) immediately. It's also supported
 out of the box in [Next.js](https://github.com/zeit/next.js/#dynamic-import).
 
 If you're setting up Webpack yourself, you'll probably want to read Webpack's
 [guide on code splitting](https://webpack.js.org/guides/code-splitting/). Your Webpack config should look vaguely [like this](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269).
 
-When using [Babel](http://babeljs.io/), you'll need to make sure that Babel can
+When using [Babel](https://babeljs.io/), you'll need to make sure that Babel can
 parse the dynamic import syntax but is not transforming it. For that you will need [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import).
 
 ## `React.lazy` {#reactlazy}
