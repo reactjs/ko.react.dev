@@ -335,20 +335,20 @@ Square의 `render` 함수 내부에서 `onClick` 핸들러를 통해 `this.setSt
 
 ### 개발자 도구 {#developer-tools}
 
-The React Devtools extension for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) lets you inspect a React component tree with your browser's developer tools.
+[Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)과 [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)의 React Devtools 확장 프로그램을 사용하면 브라우저 개발자 도구에서 React 컴포넌트 트리를 검사할 수 있습니다.
 
 <img src="../images/tutorial/devtools.png" alt="React Devtools" style="max-width: 100%">
 
-The React DevTools let you check the props and the state of your React components.
+React DevTools를 통해 React 컴포넌트의 props와 state도 확인할 수 있습니다.
 
-After installing React DevTools, you can right-click on any element on the page, click "Inspect" to open the developer tools, and the React tab will appear as the last tab to the right.
+React DevTools를 설치한 후에 페이지의 모든 엘리먼트에 오른쪽 클릭을 하고 "요소 검사"를 클릭하여 개발자 도구를 열면 탭의 오른쪽 끝에 React 탭을 확인하실 수 있습니다.
 
-**However, note there are a few extra steps to get it working with CodePen:**
+**그러나 CodePen에서 도구를 사용하기 위해선 몇 가지 단계가 추가로 필요합니다.**
 
-1. Log in or register and confirm your email (required to prevent spam).
-2. Click the "Fork" button.
-3. Click "Change View" and then choose "Debug mode".
-4. In the new tab that opens, the devtools should now have a React tab.
+1. 로그인하세요. 또는 가입 후 이메일을 확인해주세요 (스팸 방지를 위해 필요).
+2. "Fork" 버튼을 클릭하세요.
+3. "Change View"를 클릭하여 "Debug mode"를 선택해주세요.
+4. 새 탭이 열리면 개발자 도구에서 React 탭을 확인해주세요.
 
 ## Completing the Game {#completing-the-game}
 
