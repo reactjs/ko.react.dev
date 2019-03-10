@@ -13,7 +13,7 @@ import ReactTestUtils from 'react-dom/test-utils'; // ES6
 var ReactTestUtils = require('react-dom/test-utils'); // npm과 ES5
 ```
 
-## 총괄 {#overview}
+## 개요 {#overview}
 
 `ReactTestUtils`는 여러분이 선택한 테스팅 프레임워크에서 테스트를 쉽게 진행할 수 있도록 해 줍니다. Facebook에서는 [Jest](https://facebook.github.io/jest/)를 이용해 더욱 쉽게 JavaScript 테스트를 하고 있습니다. Jest 웹사이트의 [React 자습서](https://jestjs.io/docs/tutorial-react) 문서를 통해 Jest를 시작하는 방법에 대해서 알아보세요.
 
@@ -123,7 +123,7 @@ it('can render and update a counter', () => {
 });
 ```
 
-DOM 이벤트를 붙이는 것은 DOM 컨테이너가 `document` 오브젝트에 추가되었을 때에만 가능하다는 것을 기억하십시오. 불필요하게 반복 되는 코드를 줄이기 위해서 [`react-testing-library`](https://github.com/kentcdodds/react-testing-library)와 같은 것들을 사용할 수 있습니다.
+DOM 이벤트를 붙이는 것은 DOM 컨테이너가 `document` 객체에 추가되었을 때에만 가능하다는 것을 기억하십시오. 불필요하게 반복 되는 코드를 줄이기 위해서 [`react-testing-library`](https://github.com/kentcdodds/react-testing-library)와 같은 것들을 사용할 수 있습니다.
 
 * * *
 
@@ -236,7 +236,7 @@ findRenderedDOMComponentWithClass(
 )
 ```
 
-[`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass)와 기능이 유사하나 결과값이 하나라고 가정하고 그 결과값만을 반환합니다. 두개 이상의 결과값이 있다면 예외를 반환합니다. 
+[`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass)와 기능이 유사하나 결과값이 하나라고 가정하고 그 결과값만을 반환합니다. 두 개 이상의 결과값이 있다면 예외를 반환합니다.
 
 * * *
 
@@ -249,7 +249,7 @@ scryRenderedDOMComponentsWithTag(
 )
 ```
 
-렌더링 된 트리 내에서 조건 `tagName`에 만족하는 tag명을 가진 DOM 컴포넌트의 DOM 엘리먼트를 모두 검색합니다. 
+렌더링 된 트리 내에서 조건 `tagName`에 만족하는 tag명을 가진 DOM 컴포넌트의 DOM 엘리먼트를 모두 검색합니다.
 
 * * *
 
@@ -262,7 +262,7 @@ findRenderedDOMComponentWithTag(
 )
 ```
 
-[`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag)와 기능이 유사하나 결과값이 하나라고 가정하고 그 결과값만을 반환합니다. 두개 이상의 결과값이 있다면 예외를 뱉습니다. 
+[`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag)와 기능이 유사하나 결과값이 하나라고 가정하고 그 결과값만을 반환합니다. 두 개 이상의 결과값이 있다면 예외를 뱉습니다.
 
 * * *
 
@@ -288,7 +288,7 @@ findRenderedComponentWithType(
 )
 ```
 
-[`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype)와 기능이 유사하나 결과값이 하나라고 가정하고 그 결과값만을 반환합니다. 두개 이상의 결과값이 있다면 예외를 뱉습니다. 
+[`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype)와 기능이 유사하나 결과값이 하나라고 가정하고 그 결과값만을 반환합니다. 두 개 이상의 결과값이 있다면 예외를 뱉습니다.
 
 ***
 
@@ -313,7 +313,7 @@ ReactDOM.render(element, domContainer);
 
 ## 다른 테스팅 도구들 {#other-utilities}
 
-### `시뮬레이팅` {#simulate}
+### `Simulate` {#simulate}
 
 ```javascript
 Simulate.{eventName}(
@@ -324,7 +324,7 @@ Simulate.{eventName}(
 
 이벤트 데이터인 `eventData`를 옵션으로 준 DOM 노드에 붙이는 이벤트를 시뮬레이팅합니다.
 
-`Simulate`는 [every event that React understands](/docs/events.html#supported-events)를 위한 메서드를 가집니다.
+`Simulate`는 [React가 이해하는 모든 이벤트](/docs/events.html#supported-events)를 위한 메서드를 가집니다.
 
 
 **엘리먼트 클릭**
