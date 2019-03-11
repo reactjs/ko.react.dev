@@ -1,6 +1,6 @@
 ---
 id: shallow-renderer
-title: 얕은 렌더링
+title: 얕은 렌더러
 permalink: docs/shallow-renderer.html
 layout: docs
 category: Reference
@@ -49,17 +49,17 @@ expect(result.props.children).toEqual([
 
 얕은 테스팅은 현재 몇 가지 제한 사항이 있습니다. 다시 말해 refs를 지원하지 않습니다.
 
-> 노트:
+> 주의
 >
-> 우리는 또한 Enzyme의 [Shallow Rendering API](https://airbnb.io/enzyme/docs/api/shallow.html)을 확인해 볼 것을 권장합니다. 같은 기능에 대해 더 높은 수준의 API를 제공합니다.
+> 우리는 또한 Enzyme의 [Shallow Rendering API](https://airbnb.io/enzyme/docs/api/shallow.html)를 확인해 볼 것을 권장합니다. 같은 기능에 대해 더 높은 수준의 API를 제공합니다.
 
 ## 참조 {#reference}
 
 ### `shallowRenderer.render()` {#shallowrendererrender}
 
-shallowRenderer는 테스트 중인 컴포넌트를 렌더링하는 "장소(place)"로써 생각할 수 있습니다. 그리고 이것으로부터 컴포넌트의 출력을 추출할 수 있습니다.
+shallowRenderer는 테스트 중인 컴포넌트를 렌더링하는 "장소(place)"로 생각할 수 있으며 이것으로부터 컴포넌트의 출력을 추출할 수 있습니다.
 
-`shallowRenderer.render()`는 [`ReactDOM.render()`](/docs/react-dom.html#render)과 비슷하지만 DOM을 요구하지 않으며 오직 한 단계 깊이만을 렌더링합니다. 이것은 컴포넌트의 자식들이 어떻게 구현되었는지와 독립적으로 테스트를 할 수 있다는 의미합니다.
+`shallowRenderer.render()`는 [`ReactDOM.render()`](/docs/react-dom.html#render)와 비슷하지만 DOM을 요구하지 않으며 오직 한 단계 깊이만을 렌더링합니다. 이것은 컴포넌트의 자식들이 어떻게 구현되었는지 신경 쓰지 않고 독립적으로 테스트할 수 있음을 의미합니다.
 
 ### `shallowRenderer.getRenderOutput()` {#shallowrenderergetrenderoutput}
 
