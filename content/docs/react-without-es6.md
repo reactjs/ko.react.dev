@@ -71,7 +71,7 @@ class Counter extends React.Component {
 }
 ```
 
- `createReactClass()`를 사용할 때마다 초기 스테이트를 반환하는 `getInitialState` 메서드를 제공해야만 합니다.
+ `createReactClass()`를 사용할 때마다 초기 state를 반환하는 `getInitialState` 메서드를 제공해야만 합니다.
 
 ```javascript
 var Counter = createReactClass({
@@ -132,10 +132,10 @@ var SayHello = createReactClass({
 });
 ```
 
-이는 ES6의 class를 사용해 이벤트 처리기를 만드는 경우에는 다른 방법으로 처리할 때 보다 불필요하게 반복되는 코드가 많아진다는 뜻입니다. 하지만 큰 규모의 애플리케이션에서는 class를 사용하는 경우에 성능이 조금 더 좋아집니다.  
+이는 ES6의 class를 사용해 이벤트 핸들러를 만드는 경우에는 다른 방법으로 처리할 때 보다 반복되는 코드가 많아진다는 뜻입니다. 하지만 큰 규모의 애플리케이션에서는 class를 사용하는 경우에 성능이 조금 더 좋아집니다.
 
 
-boilerplate code가 정 쓰기 싫다면, **실험적인** [class 프로퍼티](https://babeljs.io/docs/plugins/transform-class-properties/) 문법을 Babel을 통해 사용할 수도 있습니다:
+보일러플레이트 코드를 정 쓰기 싫다면, **실험적인** [Class Properties](https://babeljs.io/docs/plugins/transform-class-properties/) 문법을 Babel을 통해 사용할 수도 있습니다.
 
 
 ```javascript
@@ -145,7 +145,7 @@ class SayHello extends React.Component {
     this.state = {message: 'Hello!'};
   }
   // 경고: 이 문법은 실험적입니다!
-  // 화살표 함수를 통해 메서드를 바인딩합니다:
+  // 화살표 함수를 통해 메서드를 바인딩합니다.
   handleClick = () => {
     alert(this.state.message);
   }
@@ -163,7 +163,7 @@ class SayHello extends React.Component {
 위 코드에서 쓰인 문법은 **실험적인** 상태이므로 그 내용이 변할 수 있거나, JavaScript에 반영되지 않을 수 있습니다.
 
 
-안전한 길을 원한다면 몇 가지 선택지가 있습니다:
+안전한 길을 원한다면 몇 가지 선택지가 있습니다.
 
 * 생성자에서 메서드들을 바인딩합니다.
 * `onClick={(e) => this.handleClick(e)}`와 같이 화살표 함수를 사용합니다.
@@ -181,7 +181,7 @@ class SayHello extends React.Component {
 >
 >해당 글은 참고목적으로만 보시길 바랍니다.
 
-가끔은 전혀 다른 컴포넌트들이 어느 정도 유사한 기능을 공유할 수도 있습니다. 간혹 발생하는 이러한 경우를 번역과 링크에 관한 [횡단 관심사](https://en.wikipedia.org/wiki/Cross-cutting_concern)라고 부릅니다. 
+가끔은 전혀 다른 컴포넌트들이 어느 정도 유사한 기능을 공유할 수도 있습니다. 간혹 발생하는 이러한 경우를 번역과 링크에 관한 [횡단 관심사](https://ko.wikipedia.org/wiki/횡단_관심사)라고 부릅니다.
 이 문제에 대한 대처법으로서 `createReactClass`를 통해 더 이상 쓰이지 않는 코드인 `mixins`을 사용할 수 있습니다.
 
 mixin을 사용하는 흔한 예로는 시간 간격을 두고 반복적으로 스스로 내용을 갱신하는 컴포넌트를 만들고자 할 경우가 있습니다. 이는 `setInterval()`을 사용하면 간단하게 만들 수 있지만, 메모리를 절약하기 위해서 컴포넌트를 더 이상 사용하지 않을 때 이를 취소하는 것이 중요합니다. 리액트는 [생명주기 메서드](/docs/react-component.html#the-component-lifecycle)를 제공합니다. 생명주기 메서드는 컴포넌트가 생성되거나 파괴되기 직전에 이를 알려주는 역할을 합니다. 생명주기 메서드를 이용하는 간단한 mixin을 만들어 보겠습니다. 이 mixin은 컴포넌트가 파괴될 때 자동으로 정리되는 `setInterval()` 함수 기능을 제공해 줍니다.
