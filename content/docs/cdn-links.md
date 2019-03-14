@@ -13,7 +13,7 @@ React와 ReactDOM 모두 CDN을 통해 사용할 수 있습니다.
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 ```
 
-위의 코드는 개발용으로 적합하며 배포용 버전에는 적합하지 않습니다. React의 최적화된 배포용 버전은 아래와 같이 제공되고 있습니다.
+위의 코드는 개발용으로 적합하며 배포용 버전에는 적합하지 않습니다. React의 용량 및 성능 최적화된 배포용 버전은 아래와 같이 제공되고 있습니다.
 
 ```html
 <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
@@ -30,7 +30,7 @@ CDN을 통해 React를 사용한다면, [`crossorigin`](https://developer.mozill
 <script crossorigin src="..."></script>
 ```
 
-또한 사용 중인 CDN이 `Access-Control-Allow-Origin: *` HTTP 해더 설정을 사용하는지 확인하는 것을 권장합니다.
+또한 사용 중인 CDN이 `Access-Control-Allow-Origin: *` HTTP 헤더 설정을 사용하는지 확인하는 것이 좋습니다.
 
 ![Access-Control-Allow-Origin: *](../images/docs/cdn-cors-header.png)
 
