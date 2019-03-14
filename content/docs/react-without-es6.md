@@ -30,7 +30,7 @@ ES6 class의 API는 몇몇 차이점을 제외하고는 `createReactClass()`와 
 
 ## Props 기본값 선언 {#declaring-default-props}
 
-함수와 ES6의 class를 통해 `defaultProps`을 컴포넌트 그 자체의 속성으로서 정의할 수 있습니다.
+함수와 ES6의 class를 통해 `defaultProps`를 컴포넌트 그 자체의 속성으로서 정의할 수 있습니다.
 
 ```javascript
 class Greeting extends React.Component {
@@ -42,7 +42,7 @@ Greeting.defaultProps = {
 };
 ```
 
-`createReactClass()`를 사용한다면, 인자로 넘겨지는 오브젝트 내에서 `getDefaultProps()`를 함수로 정의해야 합니다.
+`createReactClass()`를 사용한다면, 인자로 넘겨지는 객체 내에서 `getDefaultProps()`를 함수로 정의해야 합니다.
 
 ```javascript
 var Greeting = createReactClass({
