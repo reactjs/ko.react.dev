@@ -6,7 +6,7 @@ permalink: docs/uncontrolled-components.html
 
 대부분 경우에 폼을 구현하는데 [제어 컴포넌트](/docs/forms.html)를 사용하는 것이 좋습니다. 제어 컴포넌트에서 폼 데이터는 React 컴포넌트에 의해 다루어집니다. 대안인 비제어 컴포넌트는 DOM 자체에 의해 폼 데이터가 다루어집니다.
 
-모든 state를 업데이트하기 위해 이벤트 처리를 하는 대신 비제어 컴포넌트를 쓰기위해서는 [레퍼런스를 사용](/docs/refs-and-the-dom.html)하여 DOM으로부터 값을 가져올 수 있습니다.
+모든 state를 업데이트하기 위해 이벤트 처리를 하는 대신 비제어 컴포넌트를 쓰기 위해서는 [레퍼런스를 사용](/docs/refs-and-the-dom.html)하여 DOM으로부터 값을 가져올 수 있습니다.
 
 예를 들어 아래 코드는 비제어 컴포넌트에 단일 이름을 허용합니다.
 
@@ -39,13 +39,13 @@ class NameForm extends React.Component {
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/WooRWa?editors=0010)
 
-비제어 컴포넌트는 DOM에 신뢰 가능한 출처를 유지하기 때문에 비제어 컴포넌트를 사용할 때 React와 non-React 코드를 통합하는 것이 쉬울 수 있습니다. 빠르고 더러운걸 원한다면 코드가 약간 적을 수도 있습니다. 그렇지 않으면 일반적으로 제어된 컴포넌트를 사용해야 합니다.
+비제어 컴포넌트는 DOM에 신뢰 가능한 출처를 유지하기 때문에 비제어 컴포넌트를 사용할 때 React와 non-React 코드를 통합하는 것이 쉬울 수 있습니다. 빠르고 더러운 걸 원한다면 코드가 약간 적을 수도 있습니다. 그렇지 않으면 일반적으로 제어된 컴포넌트를 사용해야 합니다.
 
 특정 상황에서 사용해야 하는 컴포넌트의 타입이 명확하지 않은 경우, [제어된 입력과 비제어 입력에 대한 기사](https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/)가 도움이 될 것입니다.
 
 ### 기본 값 {#default-values}
 
-React 렌더링 생명주기에서 폼 엘리먼트의 `value` 어트리뷰트는 DOM의 value를 대체합니다. 비제어 컴포넌트를 사용하면 React 초기 값을 지정하지만 그 이후의 업데이트는 제어하지 않는 것이 좋습니다. 이러한 경우에 `value` 어트리뷰트 대신 `defaultValue`를 지정할 수 있습니다.
+React 렌더링 생명주기에서 폼 엘리먼트의 `value` 어트리뷰트는 DOM의 value를 대체합니다. 비제어 컴포넌트를 사용하면 React 초깃값을 지정하지만, 그 이후의 업데이트는 제어하지 않는 것이 좋습니다. 이러한 경우에 `value` 어트리뷰트 대신 `defaultValue`를 지정할 수 있습니다.
 
 ```javascript{7}
 render() {
@@ -76,9 +76,8 @@ HTML에서 `<input type="file">`은 사용자가 장치 저장소에서 하나 �
 
 React에서 `<input type="file" />`은 프로그래밍 방식이 아닌 사용자가 값을 설정할 수 있기때문에 항상 비제어 컴포넌트입니다.
 
-파일 API를 사용하여 파일과 상호작용해야 합니다. 아래 예제는 제출 핸들러의 파일에 접근하기 위해 [DOM node의 레퍼런스](/docs/refs-and-the-dom.html)를 만드는 방법을 보여주고 있습니다.
+파일 API를 사용하여 파일과 상호작용해야 합니다. 아래 예시는 제출 핸들러의 파일에 접근하기 위해 [DOM node의 레퍼런스](/docs/refs-and-the-dom.html)를 만드는 방법을 보여주고 있습니다.
 
 `embed:uncontrolled-components/input-type-file.js`
 
 [CodePen에서 실행하기](codepen://uncontrolled-components/input-type-file)
-
