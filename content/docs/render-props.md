@@ -4,7 +4,7 @@ title: Render Props
 permalink: docs/render-props.html
 ---
 
-["render prop"](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce) 용어는 React 컴포넌트 간에 코드를 공유하기 위해 함수 props를 이용한 간단한 테크닉입니다.
+["render prop"](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)란, React 컴포넌트 간에 코드를 공유하기 위해 함수 props를 이용하는 간단한 테크닉입니다.
 
 render props 패턴으로 구현된 컴포넌트는 자체적으로 렌더링 로직을 구현하는 대신, react 엘리먼트 요소를 반환하고 이를 호출하는 함수를 사용합니다.
 
@@ -52,7 +52,7 @@ class MouseTracker extends React.Component {
 
 스크린 주위로 마우스 커서를 움직이면, 컴포넌트가 마우스의 (x, y) 좌표를 `<p>`에 나타냅니다.
 
-여기서 질문입니다: 다른 컴포넌트에서 이 행위를 재사용하려면 어떻게 해야 할까요? 즉, 다른 컴포넌에서 커서 위치에 대해 알아야 할 경우, 해당 행위를 쉽게 공유할 수 있도록 캡슐화할 수 있습니까?
+여기서 질문입니다: 다른 컴포넌트에서 이 행위를 재사용하려면 어떻게 해야 할까요? 즉, 다른 컴포넌에서 커서(cursor) 위치에 대해 알아야 할 경우, 쉽게 공유할 수 있도록 캡슐화할 수 있습니까?
 
 React에서 컴포넌트는 코드 재사용의 기본 단위이므로, 우리가 필요로 하는 마우스 커서 트래킹 행위를 `<Mouse>` 컴포넌트로 캡슐화하여 어디서든 사용할 수 있게 리팩토링해 보겠습니다.
 
@@ -95,7 +95,7 @@ class MouseTracker extends React.Component {
 }
 ```
 
-이제 `<Mouse>` 컨포넌트는 mousemove 이벤트를 감지하고 마우스 커서의 `(x, y)`위치를 저장하는 행위를 캡슐화했습니다. 그러나 아직 완벽하게 재사용할 수 있는 건 아닙니다.
+이제 `<Mouse>` 컨포넌트는 마우스 움직임 이벤트를 감지하고, 마우스 커서의 `(x, y)`위치를 저장하는 행위를 캡슐화했습니다. 그러나 아직 완벽하게 재사용할 수 있는 건 아닙니다.
 
 예를 들어, 마우스 주위에 고양이 그림을 보여주는 `<Cat>` 컴포넌트를 생각해 보겠습니다. 우리는 `<Cat mouse={{x, y}}>` prop을 통해 Cat 컴포넌트에 마우스 좌표를 전달해주고 화면에 어떤 위치에 이미지를 보여줄지 알려 주고자 합니다.
 
@@ -155,7 +155,7 @@ class MouseTracker extends React.Component {
 
 이러한 접근 방법은 특정 사례에서는 적용할 수 있지만, 우리가 원하는 행위의 캡슐화(마우스 트랙킹)라는 목표는 달성하지 못했습니다. 이제 우리는 다른 사용 예제에서도 언제든지 마우스 위치를 추적할 수 있는 새로운 component(`<MouseWithCat>`과 근본적으로 다른)를 만들어야 합니다.
 
-여기에 render prop를 사용할 수 있습니다. `<Mouse>` 컴포넌트 안에 `<Cat>` 컴포넌트를 하드 코딩(hard-coding)해서 결과물을 바꾸는 대신에, `<Mouse>`에게 동적으로 렌더링할 수 있도록 해주는 함수형 prop을 제공할 수 있습니다. — 이것이 render prop의 개념입니다.
+여기에 render prop를 사용할 수 있습니다. `<Mouse>` 컴포넌트 안에 `<Cat>` 컴포넌트를 하드 코딩(hard-coding)해서 결과물을 바꾸는 대신에, `<Mouse>`에게 동적으로 렌더링할 수 있도록 해주는 함수 prop을 제공하는 것입니다. — 이것이 render prop의 개념입니다.
 
 ```js
 class Cat extends React.Component {
@@ -271,7 +271,7 @@ Mouse.propTypes = {
 
 ### React.PureComponent에서 render props pattern을 사용할 땐 주의해주세요. {#be-careful-when-using-render-props-with-reactpurecomponent}
 
-render props 패턴을 사용하면 [`React.PureComponent`](/docs/react-api.html#reactpurecomponent)를 사용할 때 발생하는 이점이 사라질 수 있습니다. 얕은 prop 비교는 새로운 prop에 대해 항상 `false`를 반환합니다. 이 경우 render마다 render prop으로 넘어온 값을 항상 새로 생성합니다.
+render props 패턴을 사용하면 [`React.PureComponent`](/docs/react-api.html#reactpurecomponent)를 사용할 때 발생하는 이점이 사라질 수 있습니다. 얕은 prop 비교는 새로운 prop에 대해 항상 `false`를 반환합니다. 이 경우 `render`마다 render prop으로 넘어온 값을 항상 새로 생성합니다.
 
 위에서 사용했던 `<Mouse>` 컴포넌트를 이용해서 예를 들어보겠습니다. mouse에 `React.Component` 대신에 `React.PureComponent`를 사용하면 다음과 같은 코드가 됩니다.
 
