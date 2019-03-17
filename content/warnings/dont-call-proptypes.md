@@ -4,17 +4,17 @@ layout: single
 permalink: warnings/dont-call-proptypes.html
 ---
 
-> Note:
+> 주의
 >
-> `React.PropTypes` has moved into a different package since React v15.5. Please use [the `prop-types` library instead](https://www.npmjs.com/package/prop-types).
+> `React.PropTypes`는 React v15.5 버전 이후로 별도의 패키지로 옮겨졌습니다. [`prop-types` 라이브러리를 대신](https://www.npmjs.com/package/prop-types) 사용하세요.
 >
->We provide [a codemod script](/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes) to automate the conversion.
+>이 변경을 자동화 해주는 [codemod 스크립트](/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes)를 제공하고 있습니다.
 
-In a future major release of React, the code that implements PropType validation functions will be stripped in production. Once this happens, any code that calls these functions manually (that isn't stripped in production) will throw an error.
+다음 React 주요(major) 릴리스에서는 PropType 유효성 검사 함수를 구현하는 코드는 프로덕션 환경에서 제거됩니다. 프로덕션에서 이런 코드가 제거되지 않았다면 모든 코드에서 오류가 발생할 것입니다.
 
-### Declaring PropTypes is still fine {#declaring-proptypes-is-still-fine}
+### PropTypes를 선언하는 것은 여전히 유효합니다 {#declaring-proptypes-is-still-fine}
 
-The normal usage of PropTypes is still supported:
+PropTypes의 일반적인 사용은 여전히 지원됩니다.
 
 ```javascript
 Button.propTypes = {
@@ -22,11 +22,11 @@ Button.propTypes = {
 };
 ```
 
-Nothing changes here.
+변경된 것은 없습니다.
 
-### Don’t call PropTypes directly {#dont-call-proptypes-directly}
+### 직접 PropTypes를 호출하지 마세요 {#dont-call-proptypes-directly}
 
-Using PropTypes in any other way than annotating React components with them is no longer supported:
+React 컴포넌트가 아닌 다른 곳에서 PropTypes를 사용하는 것은 더 이상 지원되지 않습니다.
 
 ```javascript
 var apiShape = PropTypes.shape({
@@ -34,17 +34,17 @@ var apiShape = PropTypes.shape({
   statusCode: PropTypes.number.isRequired
 }).isRequired;
 
-// Not supported!
+// 지원 안됨!
 var error = apiShape(json, 'response');
 ```
 
-If you depend on using PropTypes like this, we encourage you to use or create a fork of PropTypes (such as [these](https://github.com/aackerman/PropTypes) [two](https://github.com/developit/proptypes) packages).
+PropTypes를 이런 식으로 사용하고 있다면 PropTypes를 포크(fork)하거나 [이런](https://github.com/aackerman/PropTypes) [두 개](https://github.com/developit/proptypes)의 패키지를 사용하는 것을 권장합니다.
 
-If you don't fix the warning, this code will crash in production with React 16.
+이런 경고를 수정하지 않으면 프로덕션 환경에서 React 16과 충돌이 생길 것입니다.
 
-### If you don't call PropTypes directly but still get the warning {#if-you-dont-call-proptypes-directly-but-still-get-the-warning}
+### 직접 PropTypes를 호출하지 않아도 경고 메시지가 표시될 때 {#if-you-dont-call-proptypes-directly-but-still-get-the-warning}
 
-Inspect the stack trace produced by the warning. You will find the component definition responsible for the PropTypes direct call. Most likely, the issue is due to third-party PropTypes that wrap React’s PropTypes, for example:
+경고에 표시된 스택 추적을 검사해보세요. PropTypes를 직접 호출한 컴포넌트를 찾을 수 있을 것입니다. 대부분 문제는 React의 PropTypes를 래핑하는 서드파티(third-party) PropTypes로 인해 발생합니다. 예를 들면 다음과 같습니다.
 
 ```js
 Button.propTypes = {
@@ -55,13 +55,13 @@ Button.propTypes = {
 }
 ```
 
-In this case, `ThirdPartyPropTypes.deprecated` is a wrapper calling `PropTypes.bool`. This pattern by itself is fine, but triggers a false positive because React thinks you are calling PropTypes directly. The next section explains how to fix this problem for a library implementing something like `ThirdPartyPropTypes`. If it's not a library you wrote, you can file an issue against it.
+여기서 `ThirdPartyPropTypes.deprecated`는 `PropTypes.bool`을 호출하는 래퍼입니다. 이 패턴 자체는 괜찮지만 React가 PropTypes를 직접 호출한다고 생각하기 때문에 거짓 긍정을 유발합니다. 다음 섹션에서는 `ThirdPartyPropTypes`와 같은 것을 구현한 라이브러리에서 이 문제를 수정하는 방법을 설명하겠습니다.
 
-### Fixing the false positive in third party PropTypes {#fixing-the-false-positive-in-third-party-proptypes}
+### 서드파티 PropTypes의 거짓 긍정(false positive) 수정 {#fixing-the-false-positive-in-third-party-proptypes}
 
-If you are an author of a third party PropTypes library and you let consumers wrap existing React PropTypes, they might start seeing this warning coming from your library. This happens because React doesn't see a "secret" last argument that [it passes](https://github.com/facebook/react/pull/7132) to detect manual PropTypes calls.
+서드파티 PropTypes 라이브러리 개발자이고 사용자가 기존 React PropTypes를 래핑하도록 허용했다면 라이브러리에서 이 경고가 표시될 수 있습니다. 이것은 React에서 수동으로 PropTypes 호출하는 것을 탐지하기 위해 [전달](https://github.com/facebook/react/pull/7132)하는 "비밀" 마지막 인자를 알 수 없기 때문에 발생합니다.
 
-Here is how to fix it. We will use `deprecated` from [react-bootstrap/react-prop-types](https://github.com/react-bootstrap/react-prop-types/blob/0d1cd3a49a93e513325e3258b28a82ce7d38e690/src/deprecated.js) as an example. The current implementation only passes down the `props`, `propName`, and `componentName` arguments:
+수정 방법은 다음과 같습니다. [react-bootstrap/react-prop-types](https://github.com/react-bootstrap/react-prop-types/blob/0d1cd3a49a93e513325e3258b28a82ce7d38e690/src/deprecated.js)의 `deprecated`를 예시로 사용하겠습니다. 현재 구현은 `props`, `propName` 및 `componentName` 인자만을 전달합니다.
 
 ```javascript
 export default function deprecated(propType, explanation) {
@@ -79,11 +79,11 @@ export default function deprecated(propType, explanation) {
 }
 ```
 
-In order to fix the false positive, make sure you pass **all** arguments down to the wrapped PropType. This is easy to do with the ES6 `...rest` notation:
+거짓 긍정을 수정하려면 **모든** 인자를 래핑 된 PropTypes에 전달해야 합니다. ES6의 `...rest`를 사용하면 쉽게 해결할 수 있습니다.
 
 ```javascript
 export default function deprecated(propType, explanation) {
-  return function validate(props, propName, componentName, ...rest) { // Note ...rest here
+  return function validate(props, propName, componentName, ...rest) { // 이곳에 ...rest를 추가하는 것을 잊지 마세요.
     if (props[propName] != null) {
       const message = `"${propName}" property of "${componentName}" has been deprecated.\n${explanation}`;
       if (!warned[message]) {
@@ -92,9 +92,9 @@ export default function deprecated(propType, explanation) {
       }
     }
 
-    return propType(props, propName, componentName, ...rest); // and here
+    return propType(props, propName, componentName, ...rest); // 그리고 여기에도
   };
 }
 ```
 
-This will silence the warning.
+이렇게 하면 경고가 사라집니다.
