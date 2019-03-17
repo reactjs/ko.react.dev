@@ -350,21 +350,21 @@ React DevTools를 설치한 후에 페이지의 모든 엘리먼트에 오른쪽
 3. "Change View"를 클릭하여 "Debug mode"를 선택해주세요.
 4. 새 탭이 열리면 개발자 도구에서 React 탭을 확인해주세요.
 
-## Completing the Game {#completing-the-game}
+## 게임 완성하기 {#completing-the-game}
 
-We now have the basic building blocks for our tic-tac-toe game. To have a complete game, we now need to alternate placing "X"s and "O"s on the board, and we need a way to determine a winner.
+이제 틱택토 게임을 위한 기본 구성 요소를 가지고 있습니다. 완전한 게임을 위해 게임판의 "X"와 "O"를 번갈아 표시할 필요가 있으며 승자를 결정하는 방법이 필요합니다.
 
-### Lifting State Up {#lifting-state-up}
+### State 끌어올리기 {#lifting-state-up}
 
-Currently, each Square component maintains the game's state. To check for a winner, we'll maintain the value of each of the 9 squares in one location.
+현재 게임의 state를 각각의 Square 컴포넌트에서 유지하고 있습니다. 승자를 확인하기 위해 9개 사각형의 값을 한 곳에 유지할 것입니다.
 
-We may think that Board should just ask each Square for the Square's state. Although this approach is possible in React, we discourage it because the code becomes difficult to understand, susceptible to bugs, and hard to refactor. Instead, the best approach is to store the game's state in the parent Board component instead of in each Square. The Board component can tell each Square what to display by passing a prop, [just like we did when we passed a number to each Square](#passing-data-through-props).
+Board가 각 Square에 Square의 state를 요청해야한다고 생각할 수도 있습니다. 그리고 React에서 이런 접근이 가능하기는 하지만 이 방식은 코드를 이해하기 어렵게 만들고 버그에 취약하며 리팩토링이 어렵기 때문에 추천하지 않습니다. 각 Square가 아닌 부모 Board 컴포넌트에 게임의 상태를 저장하는 것이 가장 좋은 방법입니다. [각 Square에 숫자를 넘겨주었을 때와 같이](#passing-data-through-props) Board 컴포넌트는 각 Square에게 prop을 전달하는 것으로 무엇을 표시할 지 알려줍니다.
 
-**To collect data from multiple children, or to have two child components communicate with each other, you need to declare the shared state in their parent component instead. The parent component can pass the state back down to the children by using props; this keeps the child components in sync with each other and with the parent component.**
+**여러개의 자식으로부터 데이터를 모으거나 두 개의 자식 컴포넌트들이 서로 통신하게 하려면 부모 컴포넌트에 공유 state를 정의해야 합니다. 부모 컴포넌트는 props를 사용하여 자식 컴포넌트에 state를 다시 전달할 수 있습니다. 이것은 자식 컴포넌트들이 서로 또는 부모 컴포넌트와 동기화 하도록 만듭니다.**
 
-Lifting state into a parent component is common when React components are refactored -- let's take this opportunity to try it out.
+state를 부모 컴포넌트로 끌어올리는 것은 React 컴포넌트를 리팩토링할 때 흔히 사용합니다. 이번 기회에 시험해 보겠습니다.
 
-Add a constructor to the Board and set the Board's initial state to contain an array of 9 nulls corresponding to the 9 squares:
+Board에 생성자를 추가하고 9개의 사각형에 해당하는 9개의 null 배열을 초기 state로 설정해주세요.
 
 ```javascript{2-7}
 class Board extends React.Component {
@@ -380,7 +380,7 @@ class Board extends React.Component {
   }
 ```
 
-When we fill the board in later, the `this.state.squares` array will look something like this:
+나중에 board를 채우면 `this.state.squares` 배열은 아래와 같은 보일 것입니다.
 
 ```javascript
 [
@@ -390,7 +390,7 @@ When we fill the board in later, the `this.state.squares` array will look someth
 ]
 ```
 
-The Board's `renderSquare` method currently looks like this:
+Board의 `renderSquare` 함수는 현재 아래와 같은 형태입니다.
 
 ```javascript
   renderSquare(i) {
@@ -398,9 +398,9 @@ The Board's `renderSquare` method currently looks like this:
   }
 ```
 
-In the beginning, we [passed the `value` prop down](#passing-data-through-props) from the Board to show numbers from 0 to 8 in every Square. In a different previous step, we replaced the numbers with an "X" mark [determined by Square's own state](#making-an-interactive-component). This is why Square currently ignores the `value` prop passed to it by the Board.
+처음에는 모든 Square에서 0 부터 8까지 숫자를 보여주기 위해 Board에서 [`value` prop을 자식으로 전달했습니다](#passing-data-through-props). 또 다른 이전 단계에서는 숫자를 [Square의 자체 state에 따라](#making-an-interactive-component) "X" 표시로 바꾸었습니다. 그렇기 때문에 현재 Square는 Board에서 전달한 `value` prop을 무시하고 있습니다.
 
-We will now use the prop passing mechanism again. We will modify the Board to instruct each individual Square about its current value (`'X'`, `'O'`, or `null`). We have already defined the `squares` array in the Board's constructor, and we will modify the Board's `renderSquare` method to read from it:
+이제 prop을 전달하는 방법을 다시 사용할 것입니다. 각 Square에게 현재 값(`'X'`, `'O'`, 또는 `null`)을 표현하도록 Board를 수정할 것입니다. Board의 생성자에서 `squares` 배열을 이미 선언했으며 `renderSquare` 함수를 아래와 같이 수정할 것입니다.
 
 ```javascript{2}
   renderSquare(i) {
@@ -408,7 +408,7 @@ We will now use the prop passing mechanism again. We will modify the Board to in
   }
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/gWWQPY?editors=0010)**
+**[지금까지의 전체 코드 확인하기](https://codepen.io/gaearon/pen/gWWQPY?editors=0010)**
 
 Each Square will now receive a `value` prop that will either be `'X'`, `'O'`, or `null` for empty squares.
 
