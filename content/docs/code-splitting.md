@@ -199,10 +199,10 @@ const MyComponent = () => (
 앱에 코드 분할을 어느 곳에 도입할지 결정하는 것은 조금 까다롭습니다.
 여러분은 사용자의 경험을 헤치지 않으면서 번들을 균등하게 분배할 곳을 찾고자 합니다.
 
-이를 시작하기 좋은 장소는 경로(routes)입니다. 웹 페이지를 불러오는 시간은 페이지 전환에 어느 정도 발생하며 대부분 페이지를 한번에 렌더링하기 때문에
+이를 시작하기 좋은 장소는 라우트입니다. 웹 페이지를 불러오는 시간은 페이지 전환에 어느 정도 발생하며 대부분 페이지를 한번에 렌더링하기 때문에
 사용자가 페이지를 렌더링하는 동안 다른 요소와 상호작용하지 않습니다.
 
-`React.lazy`를 [React Router](https://reacttraining.com/react-router/) 라이브러리를 사용해서 애플리케이션에 경로 기반 코드 분할을 설정하는 예시입니다.
+`React.lazy`를 [React Router](https://reacttraining.com/react-router/) 라이브러리를 사용해서 애플리케이션에 라우트 기반 코드 분할을 설정하는 예시입니다.
 
 ```js
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
