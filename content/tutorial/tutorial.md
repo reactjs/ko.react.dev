@@ -410,11 +410,11 @@ Board의 `renderSquare` 함수는 현재 아래와 같은 형태입니다.
 
 **[지금까지의 전체 코드 확인하기](https://codepen.io/gaearon/pen/gWWQPY?editors=0010)**
 
-Each Square will now receive a `value` prop that will either be `'X'`, `'O'`, or `null` for empty squares.
+Square는 이제 빈 사각형에 `'X'`, `'O'`, 또는 `null`인 `value` prop을 받습니다.
 
-Next, we need to change what happens when a Square is clicked. The Board component now maintains which squares are filled. We need to create a way for the Square to update the Board's state. Since state is considered to be private to a component that defines it, we cannot update the Board's state directly from Square.
+다음으로 Square를 클릭할 때 발생하는 변화가 필요합니다. Board 컴포넌트는 어떤 사각형이 채워졌는지를 여부를 관리하므로 Square가 Board를 변경할 방법이 필요합니다. 컴포넌트는 자신이 정의한 state에만 접근할 수 있으므로 Square에서 Board의 state를 직접 변경할 수 없습니다.
 
-Instead, we'll pass down a function from the Board to the Square, and we'll have Square call that function when a square is clicked. We'll change the `renderSquare` method in Board to:
+대신에 Board에서 Square로 함수를 전달하고 Square는 사각형을 클릭할 때 함수를 호출할 것입니다. 이제 Board의 `renderSquare` 함수를 아래와 같이 변경해주세요.
 
 ```javascript{5}
   renderSquare(i) {
@@ -427,17 +427,17 @@ Instead, we'll pass down a function from the Board to the Square, and we'll have
   }
 ```
 
->Note
+> 주의
 >
->We split the returned element into multiple lines for readability, and added parentheses so that JavaScript doesn't insert a semicolon after `return` and break our code.
+> 반환되는 엘리먼트를 여러 줄로 나누어 가독성을 확보하였고 괄호를 추가하여 JavaScript가 `return` 뒤에 세미콜론을 삽입하지 않아도 코드가 깨지지 않습니다.
 
-Now we're passing down two props from Board to Square: `value` and `onClick`. The `onClick` prop is a function that Square can call when clicked. We'll make the following changes to Square:
+이제 Board에서 Square로 `value`와 `onClick` 두 개의 props를 전달하였습니다. `onClick` prop은 Square를 클릭하면 호출되는 함수입니다. Square를 아래와 같이 변경해주세요.
 
-* Replace `this.state.value` with `this.props.value` in Square's `render` method
-* Replace `this.setState()` with `this.props.onClick()` in Square's `render` method
-* Delete the `constructor` from Square because Square no longer keeps track of the game's state
+* Square의 `render` 함수 내부의 `this.state.value`를 `this.props.value`로 바꾸어주세요.
+* Square의 `render` 함수 내부의 `this.setState()`를 `this.props.onClick()`로 바꾸어주세요.
+* Square는 게임의 상태를 유지할 필요가 없기 때문에 `constructor`를 지워주세요.
 
-After these changes, the Square component looks like this:
+이렇게 바꾼 후에 Square는 아래와 같은 모습이 됩니다.
 
 ```javascript{1,2,6,8}
 class Square extends React.Component {
@@ -454,19 +454,19 @@ class Square extends React.Component {
 }
 ```
 
-When a Square is clicked, the `onClick` function provided by the Board is called. Here's a review of how this is achieved:
+Square를 클릭하면 Board에서 넘겨받은 `onClick` 함수가 호출됩니다. 이 때 일어나는 일을 정리해보겠습니다.
 
-1. The `onClick` prop on the built-in DOM `<button>` component tells React to set up a click event listener.
-2. When the button is clicked, React will call the `onClick` event handler that is defined in Square's `render()` method.
-3. This event handler calls `this.props.onClick()`. The Square's `onClick` prop was specified by the Board.
-4. Since the Board passed `onClick={() => this.handleClick(i)}` to Square, the Square calls `this.handleClick(i)` when clicked.
-5. We have not defined the `handleClick()` method yet, so our code crashes. If you click a square now, you should see a red error screen saying something like "this.handleClick is not a function".
+1. 내장된 DOM `<button>` 컴포넌트에 있는 `onClick` prop은 React에게 클릭 이벤트 리스너를 설정하라고 알려줍니다.
+2. 버튼을 클릭하면 React는 Square의 `render()` 함수에 정의된 `onClick` 이벤트 핸들러를 호출합니다.
+3. 이벤트 핸들러는 `this.props.onClick()`를 호출합니다. Square의 `onClick` prop은 Board에서 정의되었습니다.
+4. Board에서 Square로 `onClick={() => this.handleClick(i)}`를 전달했기 때문에 Square를 클릭하면 `this.handleClick(i)`를 호출합니다.
+5. 아직 `handleClick()`를 정의하지 않았기 때문에 코드가 깨질 것입니다. 지금은 사각형을 클릭하면 "this.handleClick is not a function"과 같은 내용을 표시하는 붉은 에러 화면을 보게됩니다.
 
->Note
+> 주의
 >
->The DOM `<button>` element's `onClick` attribute has a special meaning to React because it is a built-in component. For custom components like Square, the naming is up to you. We could give any name to the Square's `onClick` prop or Board's `handleClick` method, and the code would work the same. In React, it's conventional to use `on[Event]` names for props which represent events and `handle[Event]` for the methods which handle the events.
+> DOM `<button>` 엘리먼트의 `onClick` 어트리뷰트는 내장된 컴포넌트라는 점에서 React에게 특별한 의미가 있습니다. Square같은 사용자 정의 컴포넌트의 경우 이름 지정은 자유롭습니다. Square의 `onClick` prop이나 Board의 `handleClick` 함수에는 어떤 이름도 붙일 수 있으며 코드는 동일하게 작동합니다. React에서 이벤트를 나타내는 prop에는 `on[Event]`, 이벤트를 처리하는 함수에는 `handle[Event]`를 사용하는 것이 일반적입니다.
 
-When we try to click a Square, we should get an error because we haven't defined `handleClick` yet. We'll now add `handleClick` to the Board class:
+`handleClick`을 아직 정의하지 않았기 때문에 Square를 클릭하려고 할 때 에러가 발생합니다. 이제 Board 클래스에 `handleClick`을 추가하겠습니다.
 
 ```javascript{9-13}
 class Board extends React.Component {
@@ -519,55 +519,57 @@ class Board extends React.Component {
 }
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/ybbQJX?editors=0010)**
+**[지금까지의 전체 코드 확인하기](https://codepen.io/gaearon/pen/ybbQJX?editors=0010)**
 
-After these changes, we're again able to click on the Squares to fill them, the same as we had before. However, now the state is stored in the Board component instead of the individual Square components. When the Board's state changes, the Square components re-render automatically. Keeping the state of all squares in the Board component will allow it to determine the winner in the future.
+이제 이전과 마찬가지로 Square를 클릭하여 사각형을 채울 수 있습니다. 그러나 이제는 state가 각 Square 컴포넌트 대신에 Board 컴포넌트에 저장됩니다. Board의 상태가 변화할 때 Square 컴포넌트는 자동으로 다시 렌더링합니다. Board 컴포넌트의 모든 사각형의 상태를 유지하는 것으로 이후에 승자를 결정하는 것이 가능합니다.
 
-Since the Square components no longer maintain state, the Square components receive values from the Board component and inform the Board component when they're clicked. In React terms, the Square components are now **controlled components**. The Board has full control over them.
+Square 컴포넌트가 더 이상 state를 유지하지 않기 때문에 Square 컴포넌트는 Board 컴포넌트에서 값을 받아 클릭됳 때 Board 컴포넌트로 정보를 전달합니다. React 용어로 Square 컴포넌트는 이제 **제어되는 컴포넌트**입니다. Board는 이들을 완전히 제어합니다.
 
-Note how in `handleClick`, we call `.slice()` to create a copy of the `squares` array to modify instead of modifying the existing array. We will explain why we create a copy of the `squares` array in the next section.
+`handleClick`에서는 `.slice()`를 호출하는 것으로 기존 배열을 수정하지 않고 `squares` 배열의 복사본을 생성하여 수정하는 것에 주의해주세요. 왜 `squares` 배열의 사본을 생성하였는지 다음 단락에서 설명하겠습니다.
 
-### Why Immutability Is Important {#why-immutability-is-important}
+### 왜 불변성이 중요할까요 {#why-immutability-is-important}
 
-In the previous code example, we suggested that you use the `.slice()` operator to create a copy of the `squares` array to modify instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
+이전 코드 예제에서 기존 배열을 수정하는 것이 아니라 `.slice()` 연산자를 사용하여 `square` 배열의 사본 만들기를 추천했습니다. 지금부터 불변성이 무엇인지와 왜 불변성이 중요한 지 알아보겠습니다.
 
-There are generally two approaches to changing data. The first approach is to *mutate* the data by directly changing the data's values. The second approach is to replace the data with a new copy which has the desired changes.
+일반적으로 데이터 변경에는 두 가지 방법이 있습니다. 첫번째는 데이터의 값을 직접 *변경*하는 것입니다. 두번째는 원하는 변경값을 가진 새로운 사본으로 데이터를 교체하는 것입니다.
 
-#### Data Change with Mutation {#data-change-with-mutation}
+#### 객체 변경을 통해 데이터 수정하기 {#data-change-with-mutation}
+
 ```javascript
 var player = {score: 1, name: 'Jeff'};
 player.score = 2;
-// Now player is {score: 2, name: 'Jeff'}
+// 이제 player는 {score: 2, name: 'Jeff'} 입니다.
 ```
 
-#### Data Change without Mutation {#data-change-without-mutation}
+#### 객체 변경 없이 데이터 수정하기 {#data-change-without-mutation}
+
 ```javascript
 var player = {score: 1, name: 'Jeff'};
 
 var newPlayer = Object.assign({}, player, {score: 2});
-// Now player is unchanged, but newPlayer is {score: 2, name: 'Jeff'}
+// 이제 player는 변하지 않았지만 newPlayer는 {score: 2, name: 'Jeff'} 입니다.
 
-// Or if you are using object spread syntax proposal, you can write:
+// 만약 객체 spread 구문을 사용한다면 이렇게 쓸 수 있습니다.
 // var newPlayer = {...player, score: 2};
 ```
 
-The end result is the same but by not mutating (or changing the underlying data) directly, we gain several benefits described below.
+최종 결과는 동일하기만 직접적인 객체 변경이나 기본 데이터의 변경을 하지 않는다면 아래에 기술된 몇 가지 이점을 얻을 수 있습니다.
 
-#### Complex Features Become Simple {#complex-features-become-simple}
+#### 복잡한 특징들이 단순해짐 {#complex-features-become-simple}
 
-Immutability makes complex features much easier to implement. Later in this tutorial, we will implement a "time travel" feature that allows us to review the tic-tac-toe game's history and "jump back" to previous moves. This functionality isn't specific to games -- an ability to undo and redo certain actions is a common requirement in applications. Avoiding direct data mutation lets us keep previous versions of the game's history intact, and reuse them later.
+불변성은 복잡한 특징들을 구현하기 쉽게 만듭니다. 자습서에서는 "시간 여행" 기능을 구현하여 틱택토 게임의 이력을 확인하고 이전 동작으로 "되돌아갈 수 있습니다". 이 기능은 게임에만 국한되지 않습니다. 특정 행동을 취소하고 다시 실행하는 기능은 어플리케이션에서 일반적인 요구사항 입니다. 직접적인 데이터 변이를 피하는 것은 이전 버전의 게임 이력을 유지하고 나중에 재사용할 수 있게 만듭니다.
 
-#### Detecting Changes {#detecting-changes}
+#### 변화를 감지함 {#detecting-changes}
 
-Detecting changes in mutable objects is difficult because they are modified directly. This detection requires the mutable object to be compared to previous copies of itself and the entire object tree to be traversed.
+객체가 직접적으로 수정되기 때문에 복제가 가능한 객체에서 변화를 감지하는 것은 어렵습니다. 감지는 복제가 가능한 객체를 이전 사본과 비교하고 전체 객체 트리를 돌아야 합니다. 
 
-Detecting changes in immutable objects is considerably easier. If the immutable object that is being referenced is different than the previous one, then the object has changed.
+불변 객체에서 변화를 감지하는 것은 상당히 쉽습니다. 참조하고 있는 불변 객체가 이전 객체와 다르다면 객체는 변한 것입니다.
 
-#### Determining When to Re-Render in React {#determining-when-to-re-render-in-react}
+#### React를 다시 렌더링하는 시기 결정함 {#determining-when-to-re-render-in-react}
 
-The main benefit of immutability is that it helps you build _pure components_ in React. Immutable data can easily determine if changes have been made which helps to determine when a component requires re-rendering.
+불변성의 가장 큰 장점은 React에서 _순수 컴포넌트_를 만드는 데 도움을 준다는 것입니다. 변하지 않는 데이터는 변경이 이루어졌는지 쉽게 판단할 수 있으며 이를 바탕으로 컴포넌트가 다시 렌더링할지를 결정할 수 있습니다.
 
-You can learn more about `shouldComponentUpdate()` and how you can build *pure components* by reading [Optimizing Performance](/docs/optimizing-performance.html#examples).
+`shouldComponentUpdate()`와 *순수 컴포넌트*를 작성하는 법에 대해 더 알아보고 싶다면 [성능 최적화하기](/docs/optimizing-performance.html#examples)를 보세요.
 
 ### Function Components {#function-components}
 
