@@ -18,29 +18,29 @@ React는 성능 및 브라우저 간 호환성을 위해 브라우저에 독립�
 우리는 브라우저 DOM 구현에서 몇 가지 어려운 부분을 정리할 기회를 가졌습니다.
 
 React에서 모든 특성 및 속성(이벤트 핸들러 포함)은 캐멀 케이스를 사용합니다. 
-예를 들어 HTML 속성인 `tabindex`는 React의 `tabIndex`으로 표현합니다. 예외는 `aria-*` 및 `data-*` 속성인데, 
+예를 들어 HTML 속성인 `tabindex`는 React의 `tabIndex`으로 표현합니다. 예외는 `aria-*` 및 `data-*` 속성입니다.
 이는 소문자로 표현합니다. 예를 들어, `aria-label`을 `aria-label`로 그대로 유지됩니다.
 
 ## Differences In Attributes {#differences-in-attributes}
 
-React와 HTML 사이에는 다르게 작동하는 여러 가지 속성들이 있습니다:
+React와 HTML 사이에는 다르게 작동하는 여러 가지 속성들이 있습니다.
 
 ### checked {#checked}
 
 `checked` 속성은 `checkbox` 또는 `radio` 타입의 `<input>` 컴포넌트에 의해 지원됩니다. 
-이 속성을 사용하여 구성 요소의 선택 여부를 설정할 수 있습니다. 이는 제어 컴포넌트를 빌드하는 데 유용합니다. `defaultChecked`는 구성 요소가 처음 마운트 될 때 체크여부를 확인하며 제어되지 않는 속성입니다.
+이 속성을 사용하여 구성 요소의 선택 여부를 설정할 수 있습니다. 이는 제어 컴포넌트를 빌드하는 데 유용합니다. `defaultChecked`는 구성 요소가 처음 마운트 될 때 체크 여부를 확인하며 제어되지 않는 속성입니다.
 
 ### className {#classname}
 
 CSS class를 사용하려면 `className` 속성을 사용하십시오. 
-이는 `<div>`, `<a>`등과 같은 모든 정규 DOM 및 SVG 요소에 적용됩니다.
+이는 `<div>`, `<a>` 등과 같은 모든 정규 DOM 및 SVG 요소에 적용됩니다.
 
-웹 구성 요소로 React with Web Components (which is uncommon)를 사용하는 경우 `class` 속성을 사용하십시오.
+웹 구성 요소로 React with Web Components (which is uncommon)을 사용하는 경우 `class` 속성을 사용하십시오.
 
 ### dangerouslySetInnerHTML {#dangerouslysetinnerhtml}
 
 `dangerouslySetInnerHTML`은 브라우저 DOM에서 `innerHTML`을 사용하기 위한 React의 대체물입니다. 
-일반적으로 코드에서 HTML을 설정하는 것은 [cross-site scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) 공격에 쉽게 노출될 수 있기 때문에 위험합니다. 따라서 React에서 직접 HTML을 설정할 수는 있지만, 위험하다는 것을 상기시키기 위해 `dangerouslySetInnerHTML`을 작성하고 `__html` 키로 객체를 전달해야합니다. 아래는 예시입니다:
+일반적으로 코드에서 HTML을 설정하는 것은 [cross-site scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) 공격에 쉽게 노출될 수 있기 때문에 위험합니다. 따라서 React에서 직접 HTML을 설정할 수는 있지만, 위험하다는 것을 상기시키기 위해 `dangerouslySetInnerHTML`을 작성하고 `__html` 키로 객체를 전달해야 합니다. 아래는 예시입니다:
 
 ```js
 function createMarkup() {
