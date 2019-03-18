@@ -4,9 +4,9 @@ title: 비제어 컴포넌트
 permalink: docs/uncontrolled-components.html
 ---
 
-대부분 경우에 폼을 구현하는데 [제어 컴포넌트](/docs/forms.html)를 사용하는 것이 좋습니다. 제어 컴포넌트에서 폼 데이터는 React 컴포넌트에 의해 다루어집니다. 대안인 비제어 컴포넌트는 DOM 자체에 의해 폼 데이터가 다루어집니다.
+대부분 경우에 폼을 구현하는데 [제어 컴포넌트](/docs/forms.html)를 사용하는 것이 좋습니다. 제어 컴포넌트에서 폼 데이터는 React 컴포넌트에서 다루어집니다. 대안인 비제어 컴포넌트는 DOM 자체에서 폼 데이터가 다루어집니다.
 
-모든 state를 업데이트하기 위해 이벤트 처리를 하는 대신 비제어 컴포넌트를 쓰기 위해서는 [레퍼런스를 사용](/docs/refs-and-the-dom.html)하여 DOM으로부터 값을 가져올 수 있습니다.
+모든 state 업데이트에 대한 이벤트 처리기를 작성하는 대신 비제어 컴포넌트를 만들려면 [ref를 사용](/docs/refs-and-the-dom.html)하여 DOM에서 폼 값을 가져올 수 있습니다.
 
 예를 들어 아래 코드는 비제어 컴포넌트에 단일 이름을 허용합니다.
 
@@ -39,9 +39,9 @@ class NameForm extends React.Component {
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/WooRWa?editors=0010)
 
-비제어 컴포넌트는 DOM에 신뢰 가능한 출처를 유지하기 때문에 비제어 컴포넌트를 사용할 때 React와 non-React 코드를 통합하는 것이 쉬울 수 있습니다. 빠르고 더러운 걸 원한다면 코드가 약간 적을 수도 있습니다. 그렇지 않으면 일반적으로 제어된 컴포넌트를 사용해야 합니다.
+비제어 컴포넌트는 DOM에 신뢰 가능한 출처를 유지하므로 비제어 컴포넌트를 사용할 때 React와 non-React 코드를 통합하는 것이 쉬울 수 있습니다. 빠르고 간편한 걸 원한다면 코드가 약간 적을 수도 있습니다. 그렇지 않으면 일반적으로 제어된 컴포넌트를 사용해야 합니다.
 
-특정 상황에서 사용해야 하는 컴포넌트의 타입이 명확하지 않은 경우, [제어된 입력과 비제어 입력에 대한 기사](https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/)가 도움이 될 것입니다.
+특정 상황에서 사용해야 하는 컴포넌트의 타입이 명확하지 않은 경우, [제어 입력과 비제어 입력에 대한 글](https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/)이 도움이 될 것입니다.
 
 ### 기본 값 {#default-values}
 
@@ -74,9 +74,9 @@ HTML에서 `<input type="file">`은 사용자가 장치 저장소에서 하나 �
 <input type="file" />
 ```
 
-React에서 `<input type="file" />`은 프로그래밍 방식이 아닌 사용자가 값을 설정할 수 있기때문에 항상 비제어 컴포넌트입니다.
+React에서 `<input type="file" />`은 프로그래밍적으로 값을 설정 할 수 없고 사용자만이 값을 설정할 수 있기때문에 항상 비제어 컴포넌트입니다.
 
-파일 API를 사용하여 파일과 상호작용해야 합니다. 아래 예시는 제출 핸들러의 파일에 접근하기 위해 [DOM node의 레퍼런스](/docs/refs-and-the-dom.html)를 만드는 방법을 보여주고 있습니다.
+파일 API를 사용하여 파일과 상호작용해야 합니다. 아래 예시에서는 제출 핸들러에서 파일에 접근하기 위해서 [DOM 노드의 ref](/docs/refs-and-the-dom.html)를 만드는 방법을 보여주고 있습니다.
 
 `embed:uncontrolled-components/input-type-file.js`
 
