@@ -23,7 +23,7 @@ React에서 모든 특성 및 속성(이벤트 핸들러 포함)은 캐멀 케�
 
 ## Differences In Attributes {#differences-in-attributes}
 
-React와 HTML 사이에는 다르게 작동하는 여러가지 속성들이 있습니다:
+React와 HTML 사이에는 다르게 작동하는 여러 가지 속성들이 있습니다:
 
 ### checked {#checked}
 
