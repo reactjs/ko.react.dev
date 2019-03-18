@@ -565,19 +565,19 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 불변 객체에서 변화를 감지하는 것은 상당히 쉽습니다. 참조하고 있는 불변 객체가 이전 객체와 다르다면 객체는 변한 것입니다.
 
-#### React를 다시 렌더링하는 시기 결정함 {#determining-when-to-re-render-in-react}
+#### React에서 다시 렌더링하는 시기를 결정함 {#determining-when-to-re-render-in-react}
 
 불변성의 가장 큰 장점은 React에서 _순수 컴포넌트_를 만드는 데 도움을 준다는 것입니다. 변하지 않는 데이터는 변경이 이루어졌는지 쉽게 판단할 수 있으며 이를 바탕으로 컴포넌트가 다시 렌더링할지를 결정할 수 있습니다.
 
 `shouldComponentUpdate()`와 *순수 컴포넌트*를 작성하는 법에 대해 더 알아보고 싶다면 [성능 최적화하기](/docs/optimizing-performance.html#examples)를 보세요.
 
-### Function Components {#function-components}
+### 함수 컴포넌트 {#function-components}
 
-We'll now change the Square to be a **function component**.
+이제 Square를 **함수 컴포넌트**로 바꿔보겠습니다.
 
-In React, **function components** are a simpler way to write components that only contain a `render` method and don't have their own state. Instead of defining a class which extends `React.Component`, we can write a function that takes `props` as input and returns what should be rendered. Function components are less tedious to write than classes, and many components can be expressed this way.
+React에서 **함수 컴포넌트**는 더 간단하게 컴포넌트를 작성하는 방법이며 state 없이 `render` 함수만을 가집니다. `React.Component`를 확장하는 클래스를 정의하는 대신 `props`를 입력받아서 렌더링할 대상을 반환하는 함수를 작성할 수 있습니다. 함수 컴포넌트는 클래스로 작성하는 것 보다 빠르게 작성할 수 있으며 많은 컴포넌트들이 함수 컴포넌트로 표현할 수 있습니다.
 
-Replace the Square class with this function:
+Square 클래스를 아래의 함수로 바꿔보세요.
 
 ```javascript
 function Square(props) {
@@ -589,19 +589,19 @@ function Square(props) {
 }
 ```
 
-We have changed `this.props` to `props` both times it appears.
+모든 `this.props`를 `props`로 변경하였습니다.
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/QvvJOv?editors=0010)**
+**[지금까지의 전체 코드 확인하기](https://codepen.io/gaearon/pen/QvvJOv?editors=0010)**
 
->Note
+> 주의
 >
->When we modified the Square to be a function component, we also changed `onClick={() => this.props.onClick()}` to a shorter `onClick={props.onClick}` (note the lack of parentheses on *both* sides).
+> Square를 함수 컴포넌트로 수정했을 때 `onClick={() => this.props.onClick()}`을 `onClick={props.onClick}`로 간결하게 작성했습니다. *양쪽* 모두 괄호가 사라진 것에 주목해주세요.
 
-### Taking Turns {#taking-turns}
+### 차례 넘기기 {#taking-turns}
 
-We now need to fix an obvious defect in our tic-tac-toe game: the "O"s cannot be marked on the board.
+우리의 틱택토 게임이 가진 큰 문제점을 고칠 시간입니다. 게임판에서 "O"가 표시되지 않는 점이죠.
 
-We'll set the first move to be "X" by default. We can set this default by modifying the initial state in our Board constructor:
+첫번째 차례를 "X"로 시작하겠습니다. Board 생성자의 초기 state를 수정하는 것으로 기본 값을 설정할 수 있습니다.
 
 ```javascript{6}
 class Board extends React.Component {
@@ -614,7 +614,7 @@ class Board extends React.Component {
   }
 ```
 
-Each time a player moves, `xIsNext` (a boolean) will be flipped to determine which player goes next and the game's state will be saved. We'll update the Board's `handleClick` function to flip the value of `xIsNext`:
+플레이어가 수를 둘 때 마다 `xIsNext` (boolean 값)이 뒤집혀 다음 플레이어가 누군지 결정하고 게임의 state가 저장될 것입니다. Board의 `handleClick` 함수를 수정하여 `xIsNext` 값을 뒤집겠습니다.
 
 ```javascript{3,6}
   handleClick(i) {
@@ -627,19 +627,19 @@ Each time a player moves, `xIsNext` (a boolean) will be flipped to determine whi
   }
 ```
 
-With this change, "X"s and "O"s can take turns. Try it!
+이제 "X"와 "O"는 번갈아 나타납니다. 한 번 시도해보세요!
 
-Let's also change the "status" text in Board's `render` so that it displays which player has the next turn:
+Board의 `render` 안에 있는 "status" 텍스트도 바꿔서 어느 플레이어가 다음 차례인지 알려주겠습니다.
 
 ```javascript{2}
   render() {
     const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
-      // the rest has not changed
+      // 나머지는 그대로입니다.
 ```
 
-After applying these changes, you should have this Board component:
+변경사항을 적용하면 Board 컴포넌트는 다음과 같습니다.
 
 ```javascript{6,11-16,29}
 class Board extends React.Component {
@@ -696,11 +696,11 @@ class Board extends React.Component {
 }
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/KmmrBy?editors=0010)**
+**[지금까지의 전체 코드 확인하기](https://codepen.io/gaearon/pen/KmmrBy?editors=0010)**
 
-### Declaring a Winner {#declaring-a-winner}
+### 승자 결정하기 {#declaring-a-winner}
 
-Now that we show which player's turn is next, we should also show when the game is won and there are no more turns to make. Copy this helper function and paste it at the end of the file:
+이제 어떤 선수가 다음 차례인지 알려주었으니 승부가 나는 때와 더 이상 둘 곳이 없을 때를 알려주어야 합니다. 다음의 도우미 함수를 복사하여 파일 최하단에 붙여넣으세요.
 
 ```javascript
 function calculateWinner(squares) {
@@ -724,9 +724,9 @@ function calculateWinner(squares) {
 }
 ```
 
-Given an array of 9 squares, this function will check for a winner and return `'X'`, `'O'`, or `null` as appropriate.
+9개의 사각형의 배열을 가지고 함수는 승자를 확인하여 적절한 값으로 `'X'`, `'O'`, 또는 `null`을 반환합니다.
 
-We will call `calculateWinner(squares)` in the Board's `render` function to check if a player has won. If a player has won, we can display text such as "Winner: X" or "Winner: O". We'll replace the `status` declaration in Board's `render` function with this code:
+어떤 플레이어가 우승했는지 확인하기 위해 Board의 `render` 함수에서 `calculateWinner(squares)`를 호출할 것입니다. 한 플레이어가 이긴다면 "Winner: X" 또는 "Winner: X" 같은 텍스트를 표시할 수 있습니다. Board의 `render` 함수에서 선언한 `status`를 아래 코드로 바꿔주세요.
 
 ```javascript{2-8}
   render() {
@@ -739,10 +739,10 @@ We will call `calculateWinner(squares)` in the Board's `render` function to chec
     }
 
     return (
-      // the rest has not changed
+      // 나머지는 그대로입니다.
 ```
 
-We can now change the Board's `handleClick` function to return early by ignoring a click if someone has won the game or if a Square is already filled:
+누군가가 승리하거나 Square가 이미 채워졌다면 Board의 `handleClick` 함수가 클릭을 무시하도록 변경하겠습니다.
 
 ```javascript{3-5}
   handleClick(i) {
@@ -758,9 +758,9 @@ We can now change the Board's `handleClick` function to return early by ignoring
   }
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/LyyXgK?editors=0010)**
+**[지금까지의 전체 코드 확인하기](https://codepen.io/gaearon/pen/LyyXgK?editors=0010)**
 
-Congratulations! You now have a working tic-tac-toe game. And you've just learned the basics of React too. So *you're* probably the real winner here.
+축하합니다! 이제 제대로 동작하는 틱택토 게임을 만들었습니다. 그리고 React의 기본도 배웠습니다. 여기서 진정한 승자는 *여러분*인 것 같네요.
 
 ## Adding Time Travel {#adding-time-travel}
 
