@@ -129,7 +129,7 @@ React는 특정 속성에서는 "px" 단위를 자동으로 추가합니다. "px
 
 ### value {#value}
 
-`value` 속성은 `<input>`과 `<textarea>' 컴포넌트에 의해 지원됩니다. 이 매개 변수를 사용하여 구성 요소의 값을 설정할 수 있습니다. 이는 제어 컴포넌트 구성 요소를 빌드하는 데 유용합니다. `defaultValue`는 제어되지 않는 동등한 것으로, 최초 마운트 될 때 컴포넌트의 값을 설정합니다.
+`value` 속성은 `<input>`과 `<textarea>` 컴포넌트에 의해 지원됩니다. 이 매개 변수를 사용하여 구성 요소의 값을 설정할 수 있습니다. 이는 제어 컴포넌트 구성 요소를 빌드하는 데 유용합니다. `defaultValue`는 제어되지 않는 동등한 것으로, 최초 마운트 될 때 컴포넌트의 값을 설정합니다.
 
 ## All Supported HTML Attributes {#all-supported-html-attributes}
 
