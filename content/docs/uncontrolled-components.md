@@ -3,9 +3,9 @@ id: uncontrolled-components
 title: 제어되지 않은 컴포넌트
 permalink: docs/uncontrolled-components.html
 ---
-폼(Form)을 구현하기 위해서 대부분의 경우에 [제어된 컴포넌트(controlled components)](/docs/forms.html)를 사용할 것을 권장합니다. 제어된 컴포넌트에서 폼 정보는 리액트 컴포넌트에 의해 제어됩니다. 이에 대한 대안으로 제어되지 않은 컴포넌트(uncontrolled components)를 사용할 수 있으며, 이 경우 DOM 스스로에 의하여 폼 정보가 처리됩니다. 
+폼(Form)을 구현하기 위해서 대부분의 경우에 [제어된 컴포넌트(controlled components)](/docs/forms.html)를 사용할 것을 권장합니다. 제어된 컴포넌트에서 폼 데이터는 리액트 컴포넌트에 의해 제어됩니다. 이에 대한 대안으로 제어되지 않은 컴포넌트(uncontrolled components)를 사용할 수 있으며, 이 경우 DOM 스스로에 의하여 폼 데이터가 처리됩니다. 
 
-제어되지 않은 컴포넌트를 작성하면 매 상태 변화에 대한 이벤트 핸들러를 작성하는 대신에 [ref](/docs/refs-and-the-dom.html)를 활용함으로써 DOM에서 폼에 대한 값을 가져올 수 있습니다.
+제어되지 않은 컴포넌트를 작성하면 매 스테이트 변화에 대한 이벤트 핸들러를 작성하는 대신에 [ref](/docs/refs-and-the-dom.html)를 활용함으로써 DOM에서 폼에 대한 값을 가져올 수 있습니다.
 
 예를 들어, 아래 코드는 제어되지 않은 컴포넌트로부터 한 개의 이름을 받아옵니다. 
 
@@ -44,7 +44,7 @@ class NameForm extends React.Component {
 
 ### 기본 값 {#default-values}
 
-리액트의 랜더링 수명 주기(rendering lifecycle) 동안에 DOM에 있는 값은 폼 요소 중 하나인 `value` 속성에 의해 덮어 쓰일 것입니다. 하지만 제어되지 않은 컴포넌트를 사용하면서 때로는 리액트가 초깃값을 설정해 주면서도 이어질 갱신에 대해서는 제어하지 않은 채로 놔두길 원할 수 도 있습니다. 이를 해결하기 위해서 `value` 대신에 `defaultValue` 속성을 명시해줄 수 있습니다. 
+리액트의 랜더링 생명주기(rendering lifecycle) 동안에 DOM에 있는 값은 폼 엘리먼트들 중 하나인 `value` 어트리뷰트에 의해 덮어 쓰일 것입니다. 하지만 제어되지 않은 컴포넌트를 사용하면서 때로는 리액트가 초깃값을 설정해 주면서도 이어질 갱신에 대해서는 제어하지 않은 채로 놔두길 원할 수 도 있습니다. 이를 해결하기 위해서 `value` 대신에 `defaultValue` 어트리뷰트을 명시해줄 수 있습니다. 
 
 ```javascript{7}
 render() {
