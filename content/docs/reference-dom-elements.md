@@ -99,7 +99,7 @@ function ComponentWithTransition() {
 }
 ```
 
-스타일 키는 JS에서 DOM 노드의 속성에 액세스하는 것과 일관되게하기 위해 캐멜 케이스를 사용합니다. (예 :`node.style.backgroundImage`). 공급 업체 [other than `ms`](https://www.andismith.com/blog/2012/02/modernizr-prefixed/)를 구본하여 대문자로 시작해야 합니다. 이것이 바로 `WebkitTransition`이 대문자 "W"를 갖는 이유입니다.
+스타일 키는 JS에서 DOM 노드의 속성에 액세스하는 것과 일관되게하기 위해 캐멜 케이스를 사용합니다. (예 :`node.style.backgroundImage`). 공급 업체 [`ms` 이외](https://www.andismith.com/blog/2012/02/modernizr-prefixed/) 구분하여 대문자로 시작해야 합니다. 이것이 바로 `WebkitTransition`이 대문자 "W"를 갖는 이유입니다.
 
 React는 특정 속성에서는 "px" 단위를 자동으로 추가합니다. "px" 이외의 원하는 단위를 사용하려면 문자열로 값을 직접 입력해야 합니다. 아래는 예시입니다:
 
