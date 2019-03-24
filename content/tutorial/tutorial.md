@@ -762,21 +762,21 @@ function calculateWinner(squares) {
 
 축하합니다! 이제 제대로 동작하는 틱택토 게임을 만들었습니다. 그리고 React의 기본도 배웠습니다. 여기서 진정한 승자는 *여러분*인 것 같네요.
 
-## Adding Time Travel {#adding-time-travel}
+## 시간 여행 추가하기 {#adding-time-travel}
 
-As a final exercise, let's make it possible to "go back in time" to the previous moves in the game.
+마지막 연습으로 경기에서 이전 차례로 "시간을 되돌리기"를 만들겠습니다.
 
-### Storing a History of Moves {#storing-a-history-of-moves}
+### 동작에 대한 기록 저장하기 {#storing-a-history-of-moves}
 
-If we mutated the `squares` array, implementing time travel would be very difficult.
+`squares` 배열을 직접 변경했다면 시간 여행을 구현하기 어려웠을 것입니다.
 
-However, we used `slice()` to create a new copy of the `squares` array after every move, and [treated it as immutable](#why-immutability-is-important). This will allow us to store every past version of the `squares` array, and navigate between the turns that have already happened.
+하지만 `slice()`를 사용해서 매 동작 이후에 `squares` 배열의 새로운 복사본을 만들었고 [이를 불변 객체로 취급했습니다](#why-immutability-is-important). 이를 통해 과거의 `squares` 배열의 모든 버전을 저장하고 이미 지나간 차례를 탐색할 수 있습니다.
 
-We'll store the past `squares` arrays in another array called `history`. The `history` array represents all board states, from the first to the last move, and has a shape like this:
+과거의 `squares` 배열들을 `history`라는 다른 배열에 저장할 것입니다. `history` 배열은 첫 동작부터 마지막 동작까지 모든 게임판의 상태를 표현하고 아래와 같은 형태입니다.
 
 ```javascript
 history = [
-  // Before first move
+  // 첫 동작이 발생하기 전
   {
     squares: [
       null, null, null,
@@ -784,7 +784,7 @@ history = [
       null, null, null,
     ]
   },
-  // After first move
+  // 첫 동작이 발생한 이후
   {
     squares: [
       null, null, null,
@@ -792,7 +792,7 @@ history = [
       null, null, null,
     ]
   },
-  // After second move
+  // 두번째 동작이 발생한 이후
   {
     squares: [
       null, null, null,
@@ -804,7 +804,7 @@ history = [
 ]
 ```
 
-Now we need to decide which component should own the `history` state.
+이제 어떤 컴포넌트가 `history` state를 가지고 있을 지 결정해야 합니다.
 
 ### Lifting State Up, Again {#lifting-state-up-again}
 
