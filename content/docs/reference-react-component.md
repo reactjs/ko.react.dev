@@ -19,7 +19,7 @@ redirect_from:
 
 ## 개요 {#overview}
 
-React를 사용할 때는 컴포넌트를 class 또는 함수로 정의할 수 있습니다. class로 정의된 컴포넌트는 아래에 자세히 설명하고 있듯 보다 많은 기능들을 제공합니다. React 컴포넌트 class를 정의하려면 `React.Component`를 상속받아야 합니다.
+React를 사용할 때는 컴포넌트를 class 또는 함수로 정의할 수 있습니다. class로 정의된 컴포넌트는 아래에 자세히 설명하고 있듯 보다 많은 기능을 제공합니다. React 컴포넌트 class를 정의하려면 `React.Component`를 상속받아야 합니다.
 
 ```js
 class Welcome extends React.Component {
@@ -119,13 +119,13 @@ render()
 
 `render()` 메서드는 클래스 컴포넌트에서 유일하게 필요한 메서드입니다.
 
-이 메서드가 호출되면 `this.props`와 `this.state`의 값을 활용하여 아래의 것들 중 하나를 반환해야 합니다.
+이 메서드가 호출되면 `this.props`와 `this.state`의 값을 활용하여 아래의 것 중 하나를 반환해야 합니다.
 
-- **React 요쇼.** 보통 [JSX](/docs/introducing-jsx.html)를 사용하여 생성됩니다. 예를 들어, `<div />`와 `<MyComponent />`는 React가 DOM 노드 또는 사용자가 정의한 컴포넌트를 만들도록 지시하는 React 엘리먼트입니다.
+- **React 요소.** 보통 [JSX](/docs/introducing-jsx.html)를 사용하여 생성됩니다. 예를 들어, `<div />`와 `<MyComponent />`는 React가 DOM 노드 또는 사용자가 정의한 컴포넌트를 만들도록 지시하는 React 엘리먼트입니다.
 - **배열과 Fragments.** `render()`를 통하여 여러 개의 엘리먼트를 반환합니다. 자세한 정보는 [Fragments](/docs/fragments.html) 문서를 통하여 확인할 수 있습니다.
 - **Portals.** 별도의 DOM 하위 트리에 자식 엘리먼트를 렌더링합니다. 자세한 정보는 [Portals](/docs/portals.html)에서 확인할 수 있습니다.
 - **문자열과 숫자.** 이 값들은 DOM 상에 텍스트 노드로서 렌더링됩니다.
-- **Boolean 또는 null.** 아무 것도 렌더링하지 않습니다. (대부분의 경우 `return test && <Child />` 패턴을 지원하는 데에 사용되며, 여기서 `test`는 boolean 값입니다.)
+- **Boolean 또는 null.** 아무것도 렌더링하지 않습니다. (대부분의 경우 `return test && <Child />` 패턴을 지원하는 데에 사용되며, 여기서 `test`는 boolean 값입니다.)
 
 `render()` 함수는 순수해야 합니다. 즉, 컴포넌트의 state를 변경하지 않고, 호출될 때마다 동일한 결과를 반환해야 하며, 브라우저와 직접적으로 상호작용을 하지 않습니다.
 
@@ -181,7 +181,7 @@ constructor(props) {
 >
 > 이것은 불필요한 작업이며(`this.props.color`를 직접 사용하면 됩니다), 버그를 발생시킵니다(`color` props의 값이 변하더라도 state에 반영되지 않습니다).
 >
-> **props의 갱신을 의도적으로 무시해야 할 때에만 이와 같은 패턴을 사용하기 바랍니다.** 이 경우, 해당 props의 이름을 `initialColor` 또는 `defaultColor` 등으로 변경하는 편이 자연스럽습니다. 그러면 이후 필요에 따라 컴포넌트가 [`key`를 변경](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key)하여 초기 state를 재설정하도록 강제할 수 있습니다.
+> **props의 갱신을 의도적으로 무시해야 할 때만 이와 같은 패턴을 사용하기 바랍니다.** 이 경우, 해당 props의 이름을 `initialColor` 또는 `defaultColor` 등으로 변경하는 편이 자연스럽습니다. 그러면 이후 필요에 따라 컴포넌트가 [`key`를 변경](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key)하여 초기 state를 재설정하도록 강제할 수 있습니다.
 >
 > props의 값에 의존하는 state가 필요할 때 어떻게 해야 하는지에 대하여 알고 싶다면, 우리가 작성한 [state로부터 값을 가져오지 않는 법에 대한 블로그 글](/blog/2018/06/07/you-probably-dont-need-derived-state.html)을 읽어보세요.
 
@@ -193,7 +193,7 @@ constructor(props) {
 componentDidMount()
 ```
 
-`componentDidMount()`는 컴포넌트가 마운트된 직후, 즉 트리에 삽입된 직후에 호출됩니다. DOM 노드를 필요로 하는 초기화 작업은 이 메서드에서 이루어지면 됩니다. 외부에서 데이터를 불러와야 한다면, 네트워크 요청을 보내기 적절한 위치입니다.
+`componentDidMount()`는 컴포넌트가 마운트된 직후, 즉 트리에 삽입된 직후에 호출됩니다. DOM 노드가 있어야 하는 초기화 작업은 이 메서드에서 이루어지면 됩니다. 외부에서 데이터를 불러와야 한다면, 네트워크 요청을 보내기 적절한 위치입니다.
 
 이 메서드는 데이터 구독을 설정하기 좋은 위치입니다. 데이터 구독이 이루어졌다면, `componentWillUnmount()`에서 구독 해제 작업을 반드시 수행하기 바랍니다.
 
@@ -262,7 +262,7 @@ shouldComponentUpdate(nextProps, nextState)
 
 `shouldComponentUpdate()` 내에서 깊은 동일성 검사를 수행하거나 `JSON.stringify()`를 사용하는 것을 권하지 않습니다. 아주 비효율적이며 성능을 떨어트릴 수 있습니다.
 
-현재, `shouldComponentUpdate()`가 `false`를 반환할 경우 [`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate), [`render()`](#render), 그리고 [`componentDidUpdate()`](#componentdidupdate)는 호출되지 않도록 되어있습니다. 나중에는 `shouldComponentUpdate()`를 엄격한 지시자가 아닌 힌트로서 다루게 될 것이고, `false`의 반환을 반환하더라도 컴포넌트가 계속해서 다시 렌더링을 수행할 것입니다.
+현재, `shouldComponentUpdate()`가 `false`를 반환할 경우 [`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate), [`render()`](#render), 그리고 [`componentDidUpdate()`](#componentdidupdate)는 호출되지 않습니다. 나중에는 `shouldComponentUpdate()`를 엄격한 지시자가 아닌 힌트로서 다루게 될 것이고, `false`의 반환을 반환하더라도 컴포넌트가 계속해서 다시 렌더링을 수행할 것입니다.
 
 * * *
 
@@ -312,7 +312,7 @@ getSnapshotBeforeUpdate(prevProps, prevState)
 
 ### 오류 경계 {#error-boundaries}
 
-[오류 경계(Error boundary)](/docs/error-boundaries.html)는 자식 컴포넌트 트리 내의 자바스크립트 오류를 감지하고, 해당 오류를 기록하며, 충돌이 발생한 컴포넌트 트리를 대신하여 대체 UI를 표시하는 React 컴포넌트입니다. Error boundary의 하위 트리에 존재하는 렌더링 과정, 생명주기 메서드, 모든 생성자들에 대하여 오류를 감지해냅니다.
+[오류 경계(Error boundary)](/docs/error-boundaries.html)는 자식 컴포넌트 트리 내의 자바스크립트 오류를 감지하고, 해당 오류를 기록하며, 충돌이 발생한 컴포넌트 트리를 대신하여 대체 UI를 표시하는 React 컴포넌트입니다. Error boundary의 하위 트리에 존재하는 렌더링 과정, 생명주기 메서드, 모든 생성자에 대하여 오류를 감지해냅니다.
 
 클래스 컴포넌트에 `static getDerivedStateFromError()` 또는 `componentDidCatch()`를 정의할 경우 해당 컴포넌트는 Error boundary가 됩니다. 두 생명주기 내에서 state를 갱신하게 되면 하위 트리 내의 처리되지 않은 자바스크립트 오류를 발생시키고, 대체 UI를 표시합니다.
 
@@ -329,7 +329,7 @@ getSnapshotBeforeUpdate(prevProps, prevState)
 static getDerivedStateFromError(error)
 ```
 
-이 생명주기 메서드는 하위의 자손 컴포넌트에서 오류가 발생했을 때에 호출됩니다.
+이 생명주기 메서드는 하위의 자손 컴포넌트에서 오류가 발생했을 때 호출됩니다.
 이 메서드는 매개변수로 오류를 전달받고, 갱신된 state 값을 반드시 반환해야 합니다.
 
 ```js{7-10,13-16}
@@ -457,7 +457,7 @@ UNSAFE_componentWillReceiveProps(nextProps)
 
 `UNSAFE_componentWillReceiveProps()`는 마운트된 컴포넌트가 새로운 props를 전달받기 전에 호출됩니다. props 변화에 대응하여 state를 갱신해야 한다면(예를 들어, state를 재설정하기), `this.props`와 `nextProps`를 비교하고 이 메서드 내에서 `this.setState()`를 사용하여 state를 바꾸면 됩니다.
 
-부모 컴포넌트가 해당 컴포넌트가 다시 렌더링하게 만든 경우, props가 변화하지 않았더라도 이 메서드가 호출된다는 점에 주의하세요. 변화가 발생했을 때에만 메서드를 실행시키려면 반드시 props의 현재값과 다음값을 비교해야 합니다.
+부모 컴포넌트가 해당 컴포넌트가 다시 렌더링하게 만든 경우, props가 변화하지 않았더라도 이 메서드가 호출된다는 점에 주의하세요. 변화가 발생했을 때만 메서드를 실행시키려면 반드시 props의 현재값과 다음값을 비교해야 합니다.
 
 React는 [마운팅 단계](#mounting)에서는 `UNSAFE_componentWillReceiveProps()`를 호출하지 않으며, 초기 props를 가지지 않습니다. 이 메서드가 호출되는 경우는 컴포넌트의 props가 변화했을 때입니다. `this.setState()`를 호출하면, 대부분의 경우 `UNSAFE_componentWillReceiveProps()`를 발생시키지 않습니다.
 
