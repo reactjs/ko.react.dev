@@ -61,7 +61,6 @@ Create React App 은 백 앤드 로직이나 데이터베이스를 제어할 수
 
 Next.js를 [정식 가이드](https://nextjs.org/learn/)를 보면서 배워보세요.
 
-
 ### Gatsby {#gatsby}
 
 [Gatsby](https://www.gatsbyjs.org/)는 **정적 웹사이트를** React로 만들기에는 최고의 방법입니다. React 컴포넌트를 사용하게 해주지만 미리 렌더링 된 HTML과 CSS를 사용하여 제일 빠르게 로드됩니다.
