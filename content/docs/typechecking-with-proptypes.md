@@ -12,7 +12,7 @@ redirect_from:
 >
 > 우리는 변환을 자동화하기 위하여 [codemod 스크립트를](/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactproptypes) 제공하고 있습니다. 
 
-당신의 앱이 발전됨에 따라 타입 확인을 통하면 많은 버그를(bug) 잡을 수 있습니다. 특정 애플리케이션에서는 전체 애플리케이션의 타입 확인을 위하여 [Flow](https://flow.org/) 나 [TypeScript](https://www.typescriptlang.org/) 같은 JavaScript의 확장자(Extensions)를 사용할 수 있습니다. 당신이 이러한 확장자들을 사용하지 않더라도 React는 내장된 타입 확인 기능들을 가지고 있습니다. 컴포넌트를 위하여 props에 타입 확인을 실행하기 위해서는 다음과 같이 특별한 프로퍼티인 `propTypes`를 할당할 수 있습니다.
+당신의 앱이 발전됨에 따라 타입 확인을 통하면 많은 버그를(bug) 잡을 수 있습니다. 특정 애플리케이션에서는 전체 애플리케이션의 타입 확인을 위하여 [Flow](https://flow.org/) 또는 [TypeScript](https://www.typescriptlang.org/) 같은 JavaScript의 확장자(Extensions)를 사용할 수 있습니다. 당신이 이러한 확장자들을 사용하지 않더라도 React는 내장된 타입 확인 기능들을 가지고 있습니다. 컴포넌트를 위하여 props에 타입 확인을 실행하기 위해서는 다음과 같이 특별한 프로퍼티인 `propTypes`를 할당할 수 있습니다.
 
 ```javascript
 import PropTypes from 'prop-types';
@@ -30,7 +30,7 @@ Greeting.propTypes = {
 };
 ```
 
-`PropTypes`는 당신이 받은 데이터의 유효성을 검증하기 위해서 다양한 유효성 검사기(Validator)를 내보냅니다. 아래 예시에서는 `PropTypes.string`을 사용하게 될 것입니다. prop에 유효하지 않은 값이 전달 되었을 때, 경고문이 JavaScript 콘솔을 통해 보일 것입니다. `propTypes`는 성능상의 이유로 개발 모드(Development mode) 에서만 확인될 것입니다. 
+`PropTypes`는 전달받은 데이터의 유효성을 검증하기 위해서 다양한 유효성 검사기(Validator)를 내보냅니다. 아래 예시에서는 `PropTypes.string`을 사용하게 될 것입니다. prop에 유효하지 않은 값이 전달 되었을 때, 경고문이 JavaScript 콘솔을 통해 보일 것입니다. `propTypes`는 성능상의 이유로 개발 모드(Development mode) 에서만 확인될 것입니다. 
 
 ### PropTypes {#proptypes}
 
