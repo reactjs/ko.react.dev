@@ -14,7 +14,7 @@ category: FAQ
 
 AJAX 호출을 통한 데이터는 생명주기 메서드 중 [`componentDidMount`](/docs/react-component.html#mounting) 안에 추가되어야 합니다. 이는 데이터를 받아 올 때 `setState`를 통하여 컴포넌트를 업데이트하기 위함입니다.
 
-### 예시: 로컬 스테이트(state)를 설정하기 위해 AJAX 결과 사용하기 {#example-using-ajax-results-to-set-local-state}
+### 예시: 로컬 state를 설정하기 위해 AJAX 결과 사용하기 {#example-using-ajax-results-to-set-local-state}
 
 아래 컴포넌트는 로컬 컴포넌트의 state를 채우기 위하여 `componentDidMount` 안에서 어떻게 AJAX 호출을 만드는지 보여 줍니다.
 
