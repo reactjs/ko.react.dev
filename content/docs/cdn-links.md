@@ -1,37 +1,37 @@
 ---
 id: cdn-links
-title: CDN Links
+title: CDN 링크
 permalink: docs/cdn-links.html
 prev: create-a-new-react-app.html
 next: hello-world.html
 ---
 
-Both React and ReactDOM are available over a CDN.
+React와 ReactDOM 모두 CDN을 통해 사용할 수 있습니다.
 
 ```html
 <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 ```
 
-The versions above are only meant for development, and are not suitable for production. Minified and optimized production versions of React are available at:
+위의 코드는 개발용으로 적합하며 배포용 버전에는 적합하지 않습니다. React의 용량 및 성능 최적화된 배포용 버전은 아래와 같이 제공되고 있습니다.
 
 ```html
 <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 ```
 
-To load a specific version of `react` and `react-dom`, replace `16` with the version number.
+`react`와 `react-dom`의 특정 버전을 로딩하려면 `16`을 사용하고자 하는 버전 넘버로 대체하면 됩니다.
 
-### Why the `crossorigin` Attribute? {#why-the-crossorigin-attribute}
+### `crossorigin` 속성이 필요한 이유 {#why-the-crossorigin-attribute}
 
-If you serve React from a CDN, we recommend to keep the [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) attribute set:
+CDN을 통해 React를 사용한다면, [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) 어트리뷰트(attribute)와 함께 사용하는 것을 권장합니다.
 
 ```html
 <script crossorigin src="..."></script>
 ```
 
-We also recommend to verify that the CDN you are using sets the `Access-Control-Allow-Origin: *` HTTP header:
+또한 사용 중인 CDN이 `Access-Control-Allow-Origin: *` HTTP 헤더 설정을 사용하는지 확인하는 것이 좋습니다.
 
 ![Access-Control-Allow-Origin: *](../images/docs/cdn-cors-header.png)
 
-This enables a better [error handling experience](/blog/2017/07/26/error-handling-in-react-16.html) in React 16 and later.
+이를 통해 React 16 버전과 다음 버전에서 더 쉽게 [에러 처리](/blog/2017/07/26/error-handling-in-react-16.html)를 할 수 있습니다.
