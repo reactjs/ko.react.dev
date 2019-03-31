@@ -14,19 +14,19 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
-React는 성능 및 브라우저 간 호환성을 위해 브라우저에 독립적인 DOM 시스템을 구현합니다. React에서는 브라우저 DOM 구현에서 몇 가지 어려운 부분을
-정리할수가 있었습니다.
+React는 성능 및 브라우저 간 호환성을 위해 브라우저의 독립적인 DOM 시스템을 구현합니다. React에서는 브라우저의 DOM 구현에서 몇 가지 어려운 부분을
+정리할 수가 있었습니다.
 
 React에서 모든 프로퍼티 및 어트리뷰트(이벤트 핸들러 포함)은 캐멀 케이스를 사용합니다. 
-예를 들어 HTML 속성인 `tabindex`는 React의 `tabIndex`으로 표현합니다. 예외는 `aria-*` 및 `data-*` 속성입니다. 이는 소문자로 표현합니다. 예를 들어, `aria-label`을 `aria-label`로 그대로 유지됩니다.
+예를 들어 HTML 속성인 `tabindex`는 React의 `tabIndex`으로 표현합니다. 예 외는 `aria-*` 및 `data-*` 속성입니다. 이는 소문자로 표현합니다. 예를 들어, `aria-label`은 `aria-label`로 동일하게 유지됩니다.
 
 ## 어트리뷰트의 차이 {#differences-in-attributes}
 
-React와 HTML 사이에는 다르게 작동하는 여러 가지 어트리뷰트들이 있습니다.
+React와 HTML 사이에는 다르게 작동하는 여러가지의 어트리뷰트들이 있습니다.
 
 ### checked {#checked}
 
-`checked` 속성은 `checkbox` 또는 `radio` 타입의 `<input>` 컴포넌트에 의해 지원됩니다. 
+`checked`속성은 `checkbox` 또는 `radio` 타입의 `<input>` 컴포넌트에 의해 지원됩니다. 
 이 속성을 사용하여 구성 요소의 선택 여부를 설정할 수 있습니다. 이는 제어 컴포넌트를 빌드하는 데 유용합니다. `defaultChecked`는 구성 요소가 처음 마운트 될 때 체크 여부를 확인하며 제어되지 않는 속성입니다.
 
 ### className {#classname}
@@ -53,25 +53,25 @@ function MyComponent() {
 
 ### htmlFor {#htmlfor}
 
-`for`는 JavaScript에서 예약어이므로 React에서는 해당 요소를 `htmlFor`를 사용합니다.
+`for`는 JavaScript에서 예약어이므로 React에서는 해당 요소를 `htmlFor`로 대체하여 사용합니다.
 
 ### onChange {#onchange}
 
 필드가 변경될때 실행되는 이벤트입니다. 일반적으로 알고있는 onChanage이벤트를 사용하지않습니다.
-왜냐하면 `onChange`는 해당 이벤트에 대한 잘못된 명칭이며 React는 사용자입력에 의한 실시간 처리 이벤트를 제공합니다.  
+왜냐하면 `onChange`는 해당 이벤트에 대한 잘못된 명칭이며 React는 사용자 입력에 의한 실시간으로 처리하는 이벤트를 제공합니다.  
 
 ### selected {#selected}
 
-`selected` 속성은 `<option>`구성 요소에 의해 지원됩니다. 이 컴포넌트를 사용하여 구성 요소의 선택 여부를 설정할 수 있습니다. 이는 제어 컴포넌트를 빌드하는 데 유용합니다.
+`selected` 속성은 `<option>`구성 요소에 의해 지원됩니다. 이 컴포넌트를 사용하여 구성 요소의 선택 여부를 설정할 수 있습니다. 이는 제어 컴포넌트를 빌드하는데 유용합니다.
 
 ### style {#style}
 
 >Note
 >
->문서의 일부 예제는 편의상 style을 사용하지만, **style 속성을 스타일링의 주요 수단으로 사용하는 것은 일반적으로 권장되지 않습니다**. 대부분의 경우 [`className`](#classname) 외부 CSS stylesheet에 정의 된 class를 참조하는 데 사용해야 합니다. `style`을 동적 어플리케이션 계산 된 스타일을 추가하기 가장 자주 사용됩니다. 참조 [FAQ: Styling and CSS](/docs/faq-styling.html).
+>문서의 일부 예제는 편의상 style을 사용하지만, **style 속성을 스타일링의 주요 수단으로 사용하는 것은 일반적으로 권장되지 않습니다**. 대부분의 경우 [`className`](#classname) 외부 CSS stylesheet에 정의 된 class를 참조하는데 사용해야 합니다. `style`을 동적 어플리케이션 계산된 스타일을 추가하는데에 가장 자주 사용됩니다. 참조 [FAQ: Styling and CSS](/docs/faq-styling.html).
 
 `style` 속성은 CSS 문자열 대신 캐멀 케이스 속성을 가진 JavaScript 객체로 받아들입니다. 
-이는 DOM 스타일의 JavaScript 속성과 일치하며 더 효율적입니다 그리고  XSS 보안 허점을 방지합니다. 
+이 속성은 DOM 스타일의 JavaScript 속성과 일치하며 더 효율적입니다 그리고  XSS 보안 허점을 방지합니다. 
 아래는 예시입니다:
 
 ```js
@@ -85,7 +85,7 @@ function HelloWorldComponent() {
 }
 ```
 
-스타일에는 autoprefixer가 붙지 않습니다. 구형 브라우저를 지원하려면 해당 스타일 속성을 제공해야합니다.
+스타일에는 autoprefixer가 붙지 않습니다. 구형 브라우저에서 사용하려면 해당 스타일 속성을 입력해야 합니다.
 
 ```js
 const divStyle = {
@@ -98,7 +98,7 @@ function ComponentWithTransition() {
 }
 ```
 
-스타일 키는 JS에서 DOM 노드의 속성에 액세스하는 것과 일관되게하기 위해 캐멜 케이스를 사용합니다. (예 :`node.style.backgroundImage`). 공급 업체 [`ms` 이외](https://www.andismith.com/blog/2012/02/modernizr-prefixed/) 구분하여 대문자로 시작해야 합니다. 이것이 바로 `WebkitTransition`이 대문자 "W"를 갖는 이유입니다.
+스타일 키는 JS에서 DOM 노드의 속성에 액세스하는 것과 일관되게 유지하기 위해 캐멜 케이스를 사용합니다. (예 :`node.style.backgroundImage`). 공급 업체 [`ms` 이외](https://www.andismith.com/blog/2012/02/modernizr-prefixed/) 구분하여 대문자로 시작해야 합니다. 이것이 바로 `WebkitTransition`이 대문자 "W"를 갖는 이유입니다.
 
 React는 특정 속성에서는 "px" 단위를 자동으로 추가합니다. "px" 이외의 원하는 단위를 사용하려면 문자열로 값을 직접 입력해야 합니다. 아래는 예시입니다:
 
@@ -118,13 +118,13 @@ React는 특정 속성에서는 "px" 단위를 자동으로 추가합니다. "px
 
 ### suppressContentEditableWarning {#suppresscontenteditablewarning}
 
-일반적으로, 자식이 있는 요소도 `contentEditable`로 표시 될 때 작동하지 않으므로 경고가 표시됩니다. 이 속성은 경고를 표시하지 않습니다. `contentEditable`을 수동으로 관리하는 [Draft.js](https://facebook.github.io/draft-js/)와 같은 라이브러리를 빌드하지 않는 한이 옵션을 사용하지 마십시오.
+일반적으로, 자식이 있는 요소도 `contentEditable`로 표시 될 때 작동하지 않으므로 경고가 표시됩니다. 이 속성은 경고를 표시하지 않습니다. `contentEditable`을 수동으로 관리하는 [Draft.js](https://facebook.github.io/draft-js/)와 같은 라이브러리를 빌드하지 않는 한이 옵션으로 사용하지 마십시오.
 
 ### suppressHydrationWarning {#suppresshydrationwarning}
 
 서버 사이드 렌더링을 사용하는 경우, 일반적으로 서버와 클라이언트가 다른 내용을 렌더링 되었을 경우 경고가 표시됩니다. 그러나 드물기는 하지만 정확한 일치를 보장하는 것은 매우 어렵거나 불가능합니다. 예를 들어 타임 스탬프 같은 경우 서버와 클라이언트에서는 다를 것으로 예상됩니다.
 
-`suppressHydrationWarning`을 `true`로 설정하면, React는 속성과 그 요소의 내용의 불일치에 대해 경고하지 않습니다. 한 단계 깊숙이 작동하며 탈출구로 사용하도록되어 있습니다. 그것을 남용하지 마십시오. 수화에 대한 자세한 내용은 [`ReactDOM.hydrate()` documentation](/docs/react-dom.html#hydrate)를 참조하십시오.
+`suppressHydrationWarning`을 `true`로 설정하면, React는 속성과 그 요소의 내용의 불일치에 대해 경고하지 않습니다. 한 단계 깊숙이 작동하며 탈출구로 사용하도록 되어 있습니다. 그것을 남용하지 마십시오. 상호작용에 대한 자세한 내용은 [`ReactDOM.hydrate()` documentation](/docs/react-dom.html#hydrate)를 참조하십시오.
 
 ### value {#value}
 
