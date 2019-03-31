@@ -806,13 +806,13 @@ history = [
 
 이제 어떤 컴포넌트가 `history` state를 가지고 있을 지 결정해야 합니다.
 
-### Lifting State Up, Again {#lifting-state-up-again}
+### 다시 State 끌어올리기 {#lifting-state-up-again}
 
-We'll want the top-level Game component to display a list of past moves. It will need access to the `history` to do that, so we will place the `history` state in the top-level Game component.
+이전 동작에 대한 리스트를 보여주려면 최상위 단계의 Game 컴포넌트가 필요합니다. `history`를 이용해야하기 때문에 최상위 단계 Game 컴포넌트에 `history` state를 두겠습니다.
 
-Placing the `history` state into the Game component lets us remove the `squares` state from its child Board component. Just like we ["lifted state up"](#lifting-state-up) from the Square component into the Board component, we are now lifting it up from the Board into the top-level Game component. This gives the Game component full control over the Board's data, and lets it instruct the Board to render previous turns from the `history`.
+`history` state를 Game 컴포넌트에 두었기 때문에 자식 Board 컴포넌트에서 `squares` state를 더 이상 사용하지 않아도 됩니다. Square 컴포넌트에서 Board 컴포넌트로 ["state를 끌어올렸던 것"](#lifting-state-up) 처럼 이번에는 Board에서 최상위 단계 Game 컴포넌트로 state를 끌어올렸습니다. 이를 통해 Game 컴포넌트는 Board의 데이터를 완벽히 제어할 수 있으며 `history`에 저장된 과거의 차례를 Board가 렌더링 할 수 있게 만듭니다.
 
-First, we'll set up the initial state for the Game component within its constructor:
+우선 Game 컴포넌트의 생성자 안에 초기 state를 설정해주세요.
 
 ```javascript{2-10}
 class Game extends React.Component {
@@ -842,13 +842,13 @@ class Game extends React.Component {
 }
 ```
 
-Next, we'll have the Board component receive `squares` and `onClick` props from the Game component. Since we now have a single click handler in Board for many Squares, we'll need to pass the location of each Square into the `onClick` handler to indicate which Square was clicked. Here are the required steps to transform the Board component:
+다음으로 Game 컴포넌트에서 Board 컴포넌트로 `squares`와 `onClick` props를 전달하겠습니다. Board에서 여러 개의 Square에 쓰일 단일 클릭 핸들러를 가졌기 때문에 각 Square의 위치를 `onClick` 핸들러에게 넘겨주어 어떤 Square를 클릭했는지 표시할 것입니다. Board 컴포넌트를 변경하는 순서는 아래와 같습니다.
 
-* Delete the `constructor` in Board.
-* Replace `this.state.squares[i]` with `this.props.squares[i]` in Board's `renderSquare`.
-* Replace `this.handleClick(i)` with `this.props.onClick(i)` in Board's `renderSquare`.
+* `constructor`를 Board에서 제거해주세요.
+* Board의 `renderSquare` 안의 `this.state.squares[i]`를 `this.props.squares[i]`로 바꿔주세요.
+* Board의 `renderSquare` 안의 `this.handleClick(i)`로 `this.props.onClick(i)`로 바꿔주세요.
 
-The Board component now looks like this:
+이제 Board 컴포넌트는 아래와 같은 형태입니다.
 
 ```javascript{17,18}
 class Board extends React.Component {
@@ -906,7 +906,7 @@ class Board extends React.Component {
 }
 ```
 
-We'll update the Game component's `render` function to use the most recent history entry to determine and display the game's status:
+Game 컴포넌트의 `render` 함수를 가장 최근 기록을 사용하도록 업데이트 하여 게임의 상태를 확인하고 표시하겠습니다.
 
 ```javascript{2-11,16-19,22}
   render() {
@@ -938,7 +938,7 @@ We'll update the Game component's `render` function to use the most recent histo
   }
 ```
 
-Since the Game component is now rendering the game's status, we can remove the corresponding code from the Board's `render` method. After refactoring, the Board's `render` function looks like this:
+Game 컴포넌트가 게임의 상태를 렌더링하기 때문에 Board의 `render` 함수에서 중복되는 코드를 제거할 수 있습니다. 리펙토링 이후에 Board의 `render` 함수는 아래와 같습니다.
 
 ```js{1-4}
   render() {
@@ -964,7 +964,7 @@ Since the Game component is now rendering the game's status, we can remove the c
   }
 ```
 
-Finally, we need to move the `handleClick` method from the Board component to the Game component. We also need to modify `handleClick` because the Game component's state is structured differently. Within the Game's `handleClick` method, we concatenate new history entries onto `history`.
+마지막으로 `handleClick` 함수를 Board에서 Game 컴포넌트로 이동하겠습니다. 또한 Game 컴포넌트의 state가 다르게 구성되어있기 때문에 `handleClick`을 수정해야 합니다. Game의 `handleClick` 함수에서 새로운 기록 목록을 `history`로 연결하겠습니다.
 
 ```javascript{2-4,10-12}
   handleClick(i) {
@@ -984,13 +984,13 @@ Finally, we need to move the `handleClick` method from the Board component to th
   }
 ```
 
->Note
+> 주의
 >
->Unlike the array `push()` method you might be more familiar with, the `concat()` method doesn't mutate the original array, so we prefer it.
+> 배열 `push()` 함수와 같이 더 익숙한 방식과 달리 `concat()` 함수는 기존 배열을 복제하지 않기 때문에 이를 더 권장합니다.
 
-At this point, the Board component only needs the `renderSquare` and `render` methods. The game's state and the `handleClick` method should be in the Game component.
+현재 시점에서 Board 컴포넌트는 `renderSquare`와 `render` 함수만을 필요로 합니다. 게임의 상태와 `handleClick` 함수는 Game 컴포넌트가 가지고 있어야 합니다.
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/EmmOqJ?editors=0010)**
+**[지금까지의 전체 코드 확인하기](https://codepen.io/gaearon/pen/EmmOqJ?editors=0010)**
 
 ### Showing the Past Moves {#showing-the-past-moves}
 
