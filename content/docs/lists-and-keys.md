@@ -6,7 +6,7 @@ prev: conditional-rendering.html
 next: forms.html
 ---
 
-먼저, Javascript에서 리스트를 어떻게 변환하는지 살펴봅시다.
+먼저 Javascript에서 리스트를 어떻게 변환하는지 살펴봅시다.
 
 아래 코드에서 [`map()`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map)함수를 이용하여 `numbers` 배열의 값을 두배로 만든 후 `map()`에서 반환하는 새 배열을 `doubled` 변수에 할당하고 로그를 확인합니다.
 
@@ -24,7 +24,7 @@ React에서 배열을 [엘리먼트](/docs/rendering-elements.html) 리스트로
 
 엘리먼트 모음을 만들고 중괄호 `{}`를 이용하여 [JSX에 포함](/docs/introducing-jsx.html#embedding-expressions-in-jsx) 시킬 수 있습니다.
 
-아래에서 Javascript [`map()`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 함수를 사용하여 `numbers` 배열을 반복 실행합니다. 각 항목에 대해 `<li>` 엘리먼트를 반환하고, 엘리먼트 배열의 결과를 `listItems`에 저장합니다.
+아래에서 Javascript [`map()`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 함수를 사용하여 `numbers` 배열을 반복 실행합니다. 각 항목에 대해 `<li>` 엘리먼트를 반환하고 엘리먼트 배열의 결과를 `listItems`에 저장합니다.
 
 ```javascript{2-4}
 const numbers = [1, 2, 3, 4, 5];
@@ -118,7 +118,7 @@ const todoItems = todos.map((todo) =>
 );
 ```
 
-렌더링 된 항목에 대한 안정적인 ID가 없다면, 최후의 수단으로 항목의 인덱스를 key로 사용할 수 있습니다.
+렌더링 한 항목에 대한 안정적인 ID가 없다면 최후의 수단으로 항목의 인덱스를 key로 사용할 수 있습니다.
 
 ```js{2,3}
 const todoItems = todos.map((todo, index) =>
@@ -137,7 +137,7 @@ const todoItems = todos.map((todo, index) =>
 
 키는 주변 배열의 context에서만 의미가 있습니다.
 
-예를 들어, `ListItem` 컴포넌트를 [추출](/docs/components-and-props.html#extracting-components) 한 경우, `ListItem` 안에 있는 `<li>` 엘리먼트가 아니라 배열의 `<ListItem />` 엘리먼트가 key를 가져야 합니다.
+예를 들어 `ListItem` 컴포넌트를 [추출](/docs/components-and-props.html#extracting-components) 한 경우 `ListItem` 안에 있는 `<li>` 엘리먼트가 아니라 배열의 `<ListItem />` 엘리먼트가 key를 가져야 합니다.
 
 **예시: 잘못된 Key 사용법**
 
@@ -207,7 +207,7 @@ ReactDOM.render(
 
 ### Key는 주변 항목 중에서만 고유한 값이어야 한다. {#keys-must-only-be-unique-among-siblings}
 
-Key는 배열 안에서 주변 항목에 대해 고유해야 하고, 전체 범위에서 고유할 필요는 없습니다. 두 개의 다른 배열을 만들 때 동일한 key를 사용할 수 있습니다.
+Key는 배열 안에서 주변 항목에 대해 고유해야 하고 전체 범위에서 고유할 필요는 없습니다. 두 개의 다른 배열을 만들 때 동일한 key를 사용할 수 있습니다.
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
@@ -247,7 +247,7 @@ ReactDOM.render(
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
 
-React에서 key는 힌트를 제공하지만, 컴포넌트로 전달하지는 않습니다. 컴포넌트에서 key와 동일한 값이 필요하면 다른 이름의 prop으로 명시적으로 전달합니다.
+React에서 key는 힌트를 제공하지만 컴포넌트로 전달하지는 않습니다. 컴포넌트에서 key와 동일한 값이 필요하면 다른 이름의 prop으로 명시적으로 전달합니다.
 
 ```js{3,4}
 const content = posts.map((post) =>
@@ -297,4 +297,4 @@ function NumberList(props) {
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
-이 방식을 사용하면 코드가 더 깔끔해 지지만, 이 방식을 남발하는 것은 좋지 않습니다. Javascript와 마찬가지로, 가독성을 위해 변수로 추출해야 할지 아니면 인라인으로 넣을지는 개발자가 직접 판단해야 합니다. `map()` 함수가 너무 중첩되어있다면, [컴포넌트로 추출](/docs/components-and-props.html#extracting-components) 하는 것이 좋습니다.
+이 방식을 사용하면 코드가 더 깔끔해 지지만, 이 방식을 남발하는 것은 좋지 않습니다. Javascript와 마찬가지로 가독성을 위해 변수로 추출해야 할지 아니면 인라인으로 넣을지는 개발자가 직접 판단해야 합니다. `map()` 함수가 너무 중첩된다면 [컴포넌트로 추출](/docs/components-and-props.html#extracting-components) 하는 것이 좋습니다.
