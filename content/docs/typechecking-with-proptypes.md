@@ -8,7 +8,7 @@ redirect_from:
 
 > 주의
 >
-> `React.PropTypes`는 React v15.5부터 다른 패키지로 이동하였습니다. 대신 [ `prop-types` 라이브러리를](https://www.npmjs.com/package/prop-types) 사용하시길 바랍니다.
+> `React.PropTypes`는 React v15.5부터 다른 패키지로 이동하였습니다. 대신 [`prop-types` 라이브러리를](https://www.npmjs.com/package/prop-types) 사용하시길 바랍니다.
 >
 > 우리는 변환을 자동화하기 위하여 [codemod 스크립트를](/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactproptypes) 제공하고 있습니다. 
 
