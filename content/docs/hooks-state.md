@@ -130,9 +130,9 @@ function Example() {
   const [count, setCount] = useState(0);
 ```
 
-**`useState`를 호출하는 것은 무엇을 하는 걸까요?** "state 변수"를 선언할 수 있습니다. 위에 선언한 변수는 `count`라고 부르지만 `banana`처럼 아무 이름으로 지어도 됩니다. `useState`는 클래스 컴포넌트의 `this.state`가 제공하는 기능과 똑같습니다. 일반적으로 일반 변수는 함수가 끝날 때 사라지지만, state 변수는 React에의해 사라지지 않습니다.
+**`useState`를 호출하는 것은 무엇을 하는 걸까요?** "state 변수"를 선언할 수 있습니다. 위에 선언한 변수는 `count`라고 부르지만 `banana`처럼 아무 이름으로 지어도 됩니다. `useState`는 클래스 컴포넌트의 `this.state`가 제공하는 기능과 똑같습니다. 일반적으로 일반 변수는 함수가 끝날 때 사라지지만, state 변수는 React에 의해 사라지지 않습니다.
 
-**`useState`의 인자로 무엇을 넘겨주어야 할까요?** `useState()`Hook의 인자로 넘겨주는 값은 state의 초기 값입니다. 함수 컴포넌트의 State는 클래스와 달리 객체를 가질 수 없고, 숫자 타입과 문자 타입을 가질 수 있습니다. 위의 예시는 사용자가 버튼을 얼마나 많이 클릭했는지 알기를 원하므로 `0`을 해당 state의 초기 값으로 선언했습니다.(만약 2개의 다른 변수를 저장하기를 원한다면 `useState()`를 두 번 호출해야 합니다.)
+**`useState`의 인자로 무엇을 넘겨주어야 할까요?** `useState()`Hook의 인자로 넘겨주는 값은 state의 초기 값입니다. 함수 컴포넌트의 state는 클래스와 달리 객체를 가질 수 없고, 숫자 타입과 문자 타입을 가질 수 있습니다. 위의 예시는 사용자가 버튼을 얼마나 많이 클릭했는지 알기를 원하므로 `0`을 해당 state의 초기 값으로 선언했습니다. (2개의 다른 변수를 저장하기를 원한다면 `useState()`를 두 번 호출해야 합니다.)
 
 **`useState`는 무엇을 반환할까요?** state 변수, 해당 변수를 갱신할 수 있는 함수 이 두 가지 쌍을 반환합니다. 이것이 바로 `const [count, setCount] = useState()`라고 쓰는 이유입니다. 클래스 컴포넌트의 `this.state.count`와 `this.setState`와 유사합니다. 만약 이러한 문법에 익숙하지 않다면 [현재 페이지의 끝](/docs/hooks-state.html#tip-what-do-square-brackets-mean)에서 살펴볼게요.
 
@@ -150,9 +150,9 @@ function Example() {
 
 >주의
 >
->왜 `createState`가 아닌, `useState`로 이름을 지었을까?
+>왜 `createState`가 아닌, `useState`로 이름을 지었을까요?
 >
->컴포넌트가 렌더링할 때 오직 한 번만 생성되기 때문에 "Create"라는 이름은 꽤 정확하지 않을 수 있습니다. 컴포넌트가 다음 렌더링을 하는 동안 `useState`는 현재 state를 줍니다. Hook 이름이 항상 `use`로 시작하는 이유도 있습니다. [Hook의 규칙들](/docs/hooks-rules.html)에서 나중에 살펴보도록 할게요.
+>컴포넌트가 렌더링할 때 오직 한 번만 생성되기 때문에 "Create"라는 이름은 꽤 정확하지 않을 수 있습니다. 컴포넌트가 다음 렌더링을 하는 동안 `useState`는 현재 state를 줍니다. Hook 이름이 항상 `use`로 시작하는 이유도 있습니다. [Hook의 규칙](/docs/hooks-rules.html)에서 나중에 살펴보도록 할게요.
 
 ## state 가져오기 {#reading-state}
 
@@ -213,11 +213,11 @@ function Example() {
 
 * **첫 번째 줄:** `useState` Hook을 React에서 가져옵니다.
 * **네 번째 줄:** `useState` Hook을 이용하면 state 변수와 해당 state를 갱신할 수 있는 함수가 만들어집니다. 또한, `useState`의 인자의 값으로 `0`을 넘겨주면 `count` 값을 0으로 초기화할 수 있습니다.
-* **Line 9:** 사용자가 버튼 클릭을 하면 `setConut` 함수를 호출하여 state 변수를 갱신합니다. React는 새로운 `count` 변수를 `Example` 컴포넌트에 넘기며 해당 컴포넌트를 리렌더링합니다.
+* **아홉 번째 줄:** 사용자가 버튼 클릭을 하면 `setConut` 함수를 호출하여 state 변수를 갱신합니다. React는 새로운 `count` 변수를 `Example` 컴포넌트에 넘기며 해당 컴포넌트를 리렌더링합니다.
 
 많은 것들이 있기 때문에 처음에는 다소 어려울 수 있습니다. 설명이 이해가 잘 안 된다면, 위의 코드를 천천히 다시 읽어보세요. 클래스 컴포넌트에서 사용하던 state 동작 방식을 잊고, 새로운 눈으로 위의 코드를 보면 분명히 이해가 갈 것입니다.
 
-대괄호가 의미하는 것은 무엇일까요? {#tip-what-do-square-brackets-mean}
+### 팁: 대괄호가 의미하는 것은 무엇일까요? {#tip-what-do-square-brackets-mean}
 
 대괄호를 이용하여 state 변수를 선언하는 것을 보셨을 겁니다.
 
@@ -231,7 +231,7 @@ function Example() {
   const [fruit, setFruit] = useState('banana');
 ```
 
-위 자바스크립트 문법은 ["배열 구조 분해"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring)라고 하고, `fruit`과 `setFruit`, 총 2개의 값을 만들고 있습니다. 즉, `useState`를 사용하면 `fruit`이라는 첫 번째 값과 `setFruit`라는 두 번째 값을 반환합니다. 아래의 코드와 같은 효과를 낼 수 있습니다.
+위 자바스크립트 문법은 ["배열 구조 분해"](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#배열_구조_분해)라고 하고, `fruit`과 `setFruit`, 총 2개의 값을 만들고 있습니다. 즉, `useState`를 사용하면 `fruit`이라는 첫 번째 값과 `setFruit`라는 두 번째 값을 반환합니다. 아래의 코드와 같은 효과를 낼 수 있습니다.
 
 ```js
   var fruitStateVariable = useState('banana'); // 두 개의 아이템이 있는 쌍을 반환
@@ -268,7 +268,7 @@ function ExampleWithManyStates() {
 
 여러 개의 state 변수를 **사용하지 않아도 됩니다.** state 변수는 객체와 배열을 잘 가지고 있을 수 있으므로 서로 연관있는 데이터를 묶을 수 있습니다. 하지만 클래스 컴포넌트의 `this.setState`와 달리 state를 갱신하는 것은 병합하는 것이 아니라 *대체*하는 것입니다.
 
-독립적인 state 변수를 나눌 수 있는 많은 방법을 제공하고 있습니다 [자주 묻는 질문](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables).
+독립적인 state 변수 분할에 대한 추가적인 권장 사항을 자주 묻는 질문에서 볼 수 있습니다. [자주 묻는 질문](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables).
 
 ## 다음 단계 {#next-steps}
 
