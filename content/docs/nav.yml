@@ -116,7 +116,7 @@
       - id: hooks-effect
         title: Using the Effect Hook
       - id: hooks-rules
-        title: Rules of Hooks
+        title: Hook의 규칙
       - id: hooks-custom
         title: Building Your Own Hooks
       - id: hooks-reference
