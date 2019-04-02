@@ -52,7 +52,7 @@ class MouseTracker extends React.Component {
 
 스크린 주위로 마우스 커서를 움직이면, 컴포넌트가 마우스의 (x, y) 좌표를 `<p>`에 나타냅니다.
 
-여기서 질문입니다: 다른 컴포넌트에서 이 행위를 재사용하려면 어떻게 해야 할까요? 즉, 다른 컴포넌에서 커서(cursor) 위치에 대해 알아야 할 경우, 쉽게 공유할 수 있도록 캡슐화할 수 있습니까?
+여기서 질문입니다: 다른 컴포넌트에서 이 행위를 재사용하려면 어떻게 해야 할까요? 즉, 다른 컴포넌트에서 커서(cursor) 위치에 대해 알아야 할 경우, 쉽게 공유할 수 있도록 캡슐화할 수 있습니까?
 
 React에서 컴포넌트는 코드 재사용의 기본 단위이므로, 우리가 필요로 하는 마우스 커서 트래킹 행위를 `<Mouse>` 컴포넌트로 캡슐화하여 어디서든 사용할 수 있게 리팩토링해 보겠습니다.
 
@@ -95,11 +95,11 @@ class MouseTracker extends React.Component {
 }
 ```
 
-이제 `<Mouse>` 컨포넌트는 마우스 움직임 이벤트를 감지하고, 마우스 커서의 `(x, y)`위치를 저장하는 행위를 캡슐화했습니다. 그러나 아직 완벽하게 재사용할 수 있는 건 아닙니다.
+이제 `<Mouse>` 컴포넌트는 마우스 움직임 이벤트를 감지하고, 마우스 커서의 `(x, y)`위치를 저장하는 행위를 캡슐화했습니다. 그러나 아직 완벽하게 재사용할 수 있는 건 아닙니다.
 
 예를 들어, 마우스 주위에 고양이 그림을 보여주는 `<Cat>` 컴포넌트를 생각해 보겠습니다. 우리는 `<Cat mouse={{x, y}}>` prop을 통해 Cat 컴포넌트에 마우스 좌표를 전달해주고 화면에 어떤 위치에 이미지를 보여줄지 알려 주고자 합니다.
 
-첫 번째 방법으로는, 다음과 같이 `<Mouse>` 컴포넌트의 *render 메서드안에* `<Cat>` 컨포넌트를 넣어 렌더링하는 방법이 있습니다:
+첫 번째 방법으로는, 다음과 같이 `<Mouse>` 컴포넌트의 *render 메서드안에* `<Cat>` 컴포넌트를 넣어 렌더링하는 방법이 있습니다:
 
 ```js
 class Cat extends React.Component {
@@ -131,7 +131,7 @@ class MouseWithCat extends React.Component {
       
         {/*
           여기서 <p>를 <Cat>으로 바꿀 수 있습니다. ... 그러나 이 경우
-          Mouse 컴포넌트를 사용할 때 마다 뱔도의 <MouseWithSomethingElse>
+          Mouse 컴포넌트를 사용할 때 마다 별도의 <MouseWithSomethingElse>
           컴포넌트를 만들어야 합니다, 그러므로 <MouseWithCat>는
           아직 정말로 재사용이 가능한게 아닙니다.
         */}
@@ -235,7 +235,7 @@ function withMouse(Component) {
 
 따라서 render props를 사용하면 두 가지 패턴 모두 사용이 가능합니다.
 
-## `rener` 의외의 Props 사용법 {#using-props-other-than-render}
+## `rener` 이외의 Props 사용법 {#using-props-other-than-render}
 
 여기서 중요하게 기억해야 할 것은, “render props pattern”으로 불리는 이유로 *꼭 prop name으로 `render`를 사용할 필요는 없습니다.* 사실, [*어떤* 함수형 prop이든 render prop이 될 수 있습니다.](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)
 
@@ -301,7 +301,7 @@ class MouseTracker extends React.Component {
 
 이 예제에서 `<MouseTracker>`가 render 될때마다, `<Mouse render>`의 prop으로 넘어가는 함수가 계속 새로 생성됩니다. 따라서 `React.PureComponent`를 상속받은 `<Mouse>` 컴포넌트 효과가 사라지게 됩니다.
 
-이 문제를 해결하기 위해서, 다음과 같이 인스턴스 메서를 사용해서 prop을 정의합니다:
+이 문제를 해결하기 위해서, 다음과 같이 인스턴스 메서드를 사용해서 prop을 정의합니다:
 
 ```js
 class MouseTracker extends React.Component {
