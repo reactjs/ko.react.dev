@@ -44,7 +44,7 @@
     - id: context
       title: Context
     - id: error-boundaries
-      title: 에러 경계
+      title: Error Boundary
     - id: forwarding-refs
       title: Ref 전달하기
     - id: fragments
