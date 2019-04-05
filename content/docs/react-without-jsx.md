@@ -10,7 +10,7 @@ React를 사용할 때 JSX는 필수가 아닙니다. 빌드 환경에서 컴파
 
 예를 들어 다음의 JSX로 작성된 코드는
 
-```JavaScript
+```js
 class Hello extends React.Component {
   render() {
     return <div>Hello {this.props.toWhat}</div>;
@@ -25,7 +25,7 @@ ReactDOM.render(
 
 아래처럼 JSX를 사용하지 않은 코드로 컴파일될 수 있습니다.
 
-```JavaScript
+```js
 class Hello extends React.Component {
   render() {
     return React.createElement('div', null, `Hello ${this.props.toWhat}`);
@@ -44,7 +44,7 @@ JSX가 JavaScript로 변환되는 예시를 더 보고 싶다면 [the online Bab
 
 `React.createElement`를 너무 많이 입력하는 것이 피곤하다면 짧은 변수에 할당하는 방법이 있습니다.
 
-```JavaScript
+```js
 const e = React.createElement;
 
 ReactDOM.render(
