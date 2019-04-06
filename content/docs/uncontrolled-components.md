@@ -1,14 +1,14 @@
 ---
 id: uncontrolled-components
-title: Uncontrolled Components
+title: 비제어 컴포넌트
 permalink: docs/uncontrolled-components.html
 ---
 
-In most cases, we recommend using [controlled components](/docs/forms.html) to implement forms. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
+대부분 경우에 폼을 구현하는데 [제어 컴포넌트](/docs/forms.html)를 사용하는 것이 좋습니다. 제어 컴포넌트에서 폼 데이터는 React 컴포넌트에서 다루어집니다. 대안인 비제어 컴포넌트는 DOM 자체에서 폼 데이터가 다루어집니다.
 
-To write an uncontrolled component, instead of writing an event handler for every state update, you can [use a ref](/docs/refs-and-the-dom.html) to get form values from the DOM.
+모든 state 업데이트에 대한 이벤트 핸들러를 작성하는 대신 비제어 컴포넌트를 만들려면 [ref를 사용](/docs/refs-and-the-dom.html)하여 DOM에서 폼 값을 가져올 수 있습니다.
 
-For example, this code accepts a single name in an uncontrolled component:
+예를 들어 아래 코드는 비제어 컴포넌트에 단일 이름을 허용합니다.
 
 ```javascript{5,9,18}
 class NameForm extends React.Component {
@@ -37,15 +37,15 @@ class NameForm extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/WooRWa?editors=0010)
+[**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/WooRWa?editors=0010)
 
-Since an uncontrolled component keeps the source of truth in the DOM, it is sometimes easier to integrate React and non-React code when using uncontrolled components. It can also be slightly less code if you want to be quick and dirty. Otherwise, you should usually use controlled components.
+비제어 컴포넌트는 DOM에 신뢰 가능한 출처를 유지하므로 비제어 컴포넌트를 사용할 때 React와 non-React 코드를 통합하는 것이 쉬울 수 있습니다. 빠르고 간편하게 적은 코드를 작성할 수 있지만, 그 외에는 일반적으로 제어된 컴포넌트를 사용해야 합니다.
 
-If it's still not clear which type of component you should use for a particular situation, you might find [this article on controlled versus uncontrolled inputs](http://goshakkk.name/controlled-vs-uncontrolled-inputs-react/) to be helpful.
+특정 상황에서 사용해야 하는 컴포넌트의 타입이 명확하지 않은 경우, [제어 입력과 비제어 입력에 대한 글](https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/)이 도움이 될 것입니다.
 
-### Default Values {#default-values}
+### 기본 값 {#default-values}
 
-In the React rendering lifecycle, the `value` attribute on form elements will override the value in the DOM. With an uncontrolled component, you often want React to specify the initial value, but leave subsequent updates uncontrolled. To handle this case, you can specify a `defaultValue` attribute instead of `value`.
+React 렌더링 생명주기에서 폼 엘리먼트의 `value` 어트리뷰트는 DOM의 value를 대체합니다. 비제어 컴포넌트를 사용하면 React 초깃값을 지정하지만, 그 이후의 업데이트는 제어하지 않는 것이 좋습니다. 이러한 경우에 `value` 어트리뷰트 대신 `defaultValue`를 지정할 수 있습니다.
 
 ```javascript{7}
 render() {
@@ -64,21 +64,20 @@ render() {
 }
 ```
 
-Likewise, `<input type="checkbox">` and `<input type="radio">` support `defaultChecked`, and `<select>` and `<textarea>` supports `defaultValue`.
+또한 `<input type="checkbox">`와 `<input type="radio">`는 `defaultChecked`를 지원하고 `<select>`와 `<textarea>`는 `defaultValue`를 지원합니다.
 
-## The file input Tag {#the-file-input-tag}
+## 파일 입력 태그 {#the-file-input-tag}
 
-In HTML, an `<input type="file">` lets the user choose one or more files from their device storage to be uploaded to a server or manipulated by JavaScript via the [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications).
+HTML에서 `<input type="file">`은 사용자가 장치 저장소에서 하나 이상의 파일을 선택하여 서버에 업로드하거나 [파일 API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications)를 사용하여 JavaScript로 조작할 수 있습니다.
 
 ```html
 <input type="file" />
 ```
 
-In React, an `<input type="file" />` is always an uncontrolled component because its value can only be set by a user, and not programmatically.
+React에서 `<input type="file" />`은 프로그래밍적으로 값을 설정 할 수 없고 사용자만이 값을 설정할 수 있기때문에 항상 비제어 컴포넌트입니다.
 
-You should use the File API to interact with the files. The following example shows how to create a [ref to the DOM node](/docs/refs-and-the-dom.html) to access file(s) in a submit handler:
+파일 API를 사용하여 파일과 상호작용해야 합니다. 아래 예시에서는 제출 핸들러에서 파일에 접근하기 위해서 [DOM 노드의 ref](/docs/refs-and-the-dom.html)를 만드는 방법을 보여주고 있습니다.
 
 `embed:uncontrolled-components/input-type-file.js`
 
-[](codepen://uncontrolled-components/input-type-file)
-
+**[CodePen에서 실행하기](codepen://uncontrolled-components/input-type-file)**

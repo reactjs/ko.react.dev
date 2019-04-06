@@ -59,6 +59,7 @@
 
 만약 `reactjs.org` 번역에 흥미가 있다면, [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/)에서 현재 번역이 얼마나 진행되었는지 확인해주세요.
 
+
 만약 번역하려는 언어가 아직 진행되지 않았다면, 해당 언어에 대해 새롭게 만들 수 있습니다. [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#translating-reactjsorg)를 참고해주세요.
 
 ## 문제 해결하기
@@ -67,4 +68,3 @@
 
 ## 저작권
 위 내용에 대한 저작권은 [reactjs.org](https://reactjs.org/)가 가지고 있으며, [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md)에서 볼 수 있는 CC-BY-4.0 라이센스를 따릅니다.
-
