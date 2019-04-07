@@ -26,7 +26,7 @@
 
 ### 가이드라인
 
-이 문서는 목적이 다른 여러 섹션으로 나뉘게 됩니다. 만약 문장을 추가할 계획이라면, 적절한 섹션에 대한 [가이드라인](https://github.com/reactjs/reactjs.org/blob/master/CONTRIBUTING.md#guidelines-for-text)을 숙지하는 것이 도움이 될 것입니다.
+이 문서는 목적이 다른 여러 섹션으로 나뉘게 됩니다. 문장을 추가할 계획이라면, 적절한 섹션에 대한 [가이드라인](https://github.com/reactjs/reactjs.org/blob/master/CONTRIBUTING.md#guidelines-for-text)을 숙지하는 것이 도움이 될 것입니다.
 
 ### 브랜치(branch) 만들기
 
@@ -40,7 +40,7 @@
 1. 파일을 저장하고 브라우저에서 확인합니다.
     1.`src`안에 있는 React 컴포넌트가 수정될 경우 hot-reload가 적용됩니다.
     1. `content`안에 있는 마크다운 파일이 수정될 경우 hot-reload가 적용됩니다.
-    1. 만약 플러그인을 사용하는 경우, `.cache` 디렉토리를 제거한 후 서버를 재시작해야 합니다.
+    1. 플러그인을 사용하는 경우, `.cache` 디렉토리를 제거한 후 서버를 재시작해야 합니다.
 
 ### 수정사항 체크하기
 
@@ -57,10 +57,10 @@
 
 ## 변역
 
-만약 `reactjs.org` 번역에 흥미가 있다면, [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/)에서 현재 번역이 얼마나 진행되었는지 확인해주세요.
+`reactjs.org` 번역에 흥미가 있다면, [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/)에서 현재 번역이 얼마나 진행되었는지 확인해주세요.
 
 
-만약 번역하려는 언어가 아직 진행되지 않았다면, 해당 언어에 대해 새롭게 만들 수 있습니다. [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#translating-reactjsorg)를 참고해주세요.
+번역하려는 언어가 아직 진행되지 않았다면, 해당 언어에 대해 새롭게 만들 수 있습니다. [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#translating-reactjsorg)를 참고해주세요.
 
 ## 문제 해결하기
 
