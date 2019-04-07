@@ -1,85 +1,85 @@
-- title: Installation
+- title: 설치
   items:
     - id: getting-started
-      title: Getting Started
+      title: 시작하기
     - id: add-react-to-a-website
-      title: Add React to a Website
+      title: 웹 사이트에 React 추가하기
     - id: create-a-new-react-app
-      title: Create a New React App
+      title: 새로운 React 앱 만들기
     - id: cdn-links
-      title: CDN Links
-- title: Main Concepts
+      title: CDN 링크
+- title: 주요 개념
   isOrdered: true
   items:
     - id: hello-world
       title: Hello World
     - id: introducing-jsx
-      title: Introducing JSX
+      title: JSX 소개
     - id: rendering-elements
-      title: Rendering Elements
+      title: 엘리먼트 렌더링
     - id: components-and-props
-      title: Components and Props
+      title: Component와 Props
     - id: state-and-lifecycle
-      title: State and Lifecycle
+      title: State와 생명주기
     - id: handling-events
-      title: Handling Events
+      title: 이벤트 처리하기
     - id: conditional-rendering
-      title: Conditional Rendering
+      title: 조건부 렌더링
     - id: lists-and-keys
-      title: Lists and Keys
+      title: 리스트와 Key
     - id: forms
-      title: Forms
+      title: 폼
     - id: lifting-state-up
-      title: Lifting State Up
+      title: State 올리기
     - id: composition-vs-inheritance
-      title: Composition vs Inheritance
+      title: 합성 vs 상속
     - id: thinking-in-react
-      title: Thinking In React
-- title: Advanced Guides
+      title: React로 생각하기
+- title: 고급 안내서
   items:
     - id: accessibility
-      title: Accessibility
+      title: 접근성
     - id: code-splitting
-      title: Code-Splitting
+      title: 코드 분할
     - id: context
       title: Context
     - id: error-boundaries
-      title: Error Boundaries
+      title: Error Boundary
     - id: forwarding-refs
-      title: Forwarding Refs
+      title: Ref 전달하기
     - id: fragments
-      title: Fragments
+      title: Fragment
     - id: higher-order-components
-      title: Higher-Order Components
+      title: 고차 컴포넌트
     - id: integrating-with-other-libraries
-      title: Integrating with Other Libraries
+      title: 다른 라이브러리와 통합하기
     - id: jsx-in-depth
-      title: JSX In Depth
+      title: JSX 이해하기
     - id: optimizing-performance
-      title: Optimizing Performance
+      title: 성능 최적화
     - id: portals
-      title: Portals
+      title: Portal
     - id: react-without-es6
-      title: React Without ES6
+      title: ES6 없이 사용하는 React
     - id: react-without-jsx
-      title: React Without JSX
+      title: JSX 없이 사용하는 React
     - id: reconciliation
-      title: Reconciliation
+      title: 재조정 (Reconciliation)
     - id: refs-and-the-dom
-      title: Refs and the DOM
+      title: Ref와 DOM
     - id: render-props
       title: Render Props
     - id: static-type-checking
-      title: Static Type Checking
+      title: 정적 타입 검사
     - id: strict-mode
       title: Strict Mode
     - id: typechecking-with-proptypes
-      title: Typechecking With PropTypes
+      title: PropTypes를 사용한 타입 검사
     - id: uncontrolled-components
-      title: Uncontrolled Components
+      title: 비제어 컴포넌트
     - id: web-components
-      title: Web Components
-- title: API Reference
+      title: 웹 컴포넌트
+- title: API 참고서
   items:
     - id: react-api
       title: React
@@ -91,63 +91,63 @@
     - id: react-dom-server
       title: ReactDOMServer
     - id: dom-elements
-      title: DOM Elements
+      title: DOM 엘리먼트
     - id: events
-      title: SyntheticEvent
+      title: 합성 이벤트
     - id: test-utils
-      title: Test Utilities
+      title: 테스트 유틸리티
     - id: shallow-renderer
-      title: Shallow Renderer
+      title: 얕은 렌더러
     - id: test-renderer
-      title: Test Renderer
+      title: 테스트 렌더러
     - id: javascript-environment-requirements
-      title: JS Environment Requirements
+      title: JS 환경 요구사항
     - id: glossary
-      title: Glossary
-- title: Hooks (New)
+      title: React 기술 용어 모음
+- title: Hook (New)
   isOrdered: true
   items:
       - id: hooks-intro
-        title: Introducing Hooks
+        title: Hook 소개
       - id: hooks-overview
         title: Hook 개요
       - id: hooks-state
-        title: Using the State Hook
+        title: State Hook 사용하기
       - id: hooks-effect
-        title: Using the Effect Hook
+        title: Effect Hook 사용하기
       - id: hooks-rules
-        title: Hook의 규칙
+        title: Hook 규칙
       - id: hooks-custom
-        title: Building Your Own Hooks
+        title: 자신만의 Hook 만들기
       - id: hooks-reference
-        title: Hooks API Reference
+        title: Hook API 참고서
       - id: hooks-faq
-        title: Hooks FAQ
-- title: Contributing
+        title: Hook 자주 묻는 질문
+- title: 기여
   items:
   - id: how-to-contribute
-    title: How to Contribute
+    title: 기여하는 방법
   - id: codebase-overview
-    title: Codebase Overview
+    title: 코드 구조 개요
   - id: implementation-notes
-    title: Implementation Notes
+    title: 구현 참고사항
   - id: design-principles
-    title: Design Principles
-- title: FAQ
+    title: 설계 원칙
+- title: 자주 묻는 질문
   items:
     - id: faq-ajax
-      title: AJAX and APIs
+      title: AJAX와 API
     - id: faq-build
-      title: Babel, JSX, and Build Steps
+      title: Babel, JSX와 Build 과정
     - id: faq-functions
-      title: Passing Functions to Components
+      title: 컴포넌트에 함수 전달하기
     - id: faq-state
-      title: Component State
+      title: 컴포넌트 State
     - id: faq-styling
-      title: Styling and CSS
+      title: 스타일링과 CSS
     - id: faq-structure
-      title: File Structure
+      title: 파일 구조
     - id: faq-versioning
-      title: Versioning Policy
+      title: 버전 정책
     - id: faq-internals
-      title: Virtual DOM and Internals
+      title: 가상 DOM과 구현 세부사항
