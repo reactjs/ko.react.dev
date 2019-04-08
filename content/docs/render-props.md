@@ -16,13 +16,13 @@ render props 패턴으로 구현된 컴포넌트는 자체적으로 렌더링 �
 
 render props를 사용하는 라이브러리는 [React Router](https://reacttraining.com/react-router/web/api/Route/Route-render-methods)와 [Downshift](https://github.com/paypal/downshift)가 있습니다.
 
-이 문서에서는 왜 render props가 왜 유용하고, 어떻게 여러분의 프로젝트에 적용할 수 있을지에 관해 이야기 하겠습니다.
+이 문서에서는 render props가 왜 유용하고, 어떻게 여러분의 프로젝트에 적용할 수 있을지에 관해 이야기 하겠습니다.
 
 ## 횡단 관심사(Cross-Cutting Concerns)를 위한 render props 사용법 {#use-render-props-for-cross-cutting-concerns}
 
 컴포넌트는 React에서 코드의 재사용성을 위해 사용하는 주요 단위입니다. 하지만 컴포넌트에서 캡슐화된 상태나 동작을 같은 상태를 가진 다른 컴포넌트와 공유하는 방법이 항상 명확하지는 않습니다.
 
-예를 들면, 아래 컴포넌트는 웹 애플리케이션에서 마우스 위치를 추적하는 로직을 가지고 있습니다:
+예를 들면, 아래 컴포넌트는 웹 애플리케이션에서 마우스 위치를 추적하는 로직입니다:
 
 ```js
 class MouseTracker extends React.Component {
@@ -153,7 +153,7 @@ class MouseTracker extends React.Component {
 }
 ```
 
-이러한 접근 방법은 특정 사례에서는 적용할 수 있지만, 우리가 원하는 행위의 캡슐화(마우스 트랙킹)라는 목표는 달성하지 못했습니다. 이제 우리는 다른 사용 예제에서도 언제든지 마우스 위치를 추적할 수 있는 새로운 component(`<MouseWithCat>`과 근본적으로 다른)를 만들어야 합니다.
+이러한 접근 방법은 특정 사례에서는 적용할 수 있지만, 우리가 원하는 행위의 캡슐화(마우스 트래킹)라는 목표는 달성하지 못했습니다. 이제 우리는 다른 사용 예제에서도 언제든지 마우스 위치를 추적할 수 있는 새로운 component(`<MouseWithCat>`과 근본적으로 다른)를 만들어야 합니다.
 
 여기에 render prop를 사용할 수 있습니다. `<Mouse>` 컴포넌트 안에 `<Cat>` 컴포넌트를 하드 코딩(hard-coding)해서 결과물을 바꾸는 대신에, `<Mouse>`에게 동적으로 렌더링할 수 있도록 해주는 함수 prop을 제공하는 것입니다. — 이것이 render prop의 개념입니다.
 
@@ -235,7 +235,7 @@ function withMouse(Component) {
 
 따라서 render props를 사용하면 두 가지 패턴 모두 사용이 가능합니다.
 
-## `rener` 이외의 Props 사용법 {#using-props-other-than-render}
+## `render` 이외의 Props 사용법 {#using-props-other-than-render}
 
 여기서 중요하게 기억해야 할 것은, “render props pattern”으로 불리는 이유로 *꼭 prop name으로 `render`를 사용할 필요는 없습니다.* 사실, [*어떤* 함수형 prop이든 render prop이 될 수 있습니다.](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)
 
@@ -247,7 +247,7 @@ function withMouse(Component) {
 )}/>
 ```
 
-실제로 JSX element의 “속성”목록에 하위 속성 이름(예를들면 render)을 지정할 필요는 없습니다. 대신에, element *안에* 직접 꽂아넣을 수 있습니다!
+실제로 JSX element의 “어트리뷰트”목록에 하위 어트리뷰트 이름(예를들면 render)을 지정할 필요는 없습니다. 대신에, element *안에* 직접 꽂아넣을 수 있습니다!
 
 ```js
 <Mouse>
