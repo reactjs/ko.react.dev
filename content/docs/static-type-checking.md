@@ -6,11 +6,11 @@ prev: typechecking-with-proptypes.html
 next: refs-and-the-dom.html
 ---
 
-Flow, TypeScript와 같은 정적 타입 체커들은 코드를 실행하기 전에 몇몇 타입 문제를 확인합니다. 또한 자동완성과 같은 기능을 추가하여 개발자의 작업 흐름을 개선하기도 합니다. 이러한 이유로 큰 코드 베이스에서는 `PropTypes`를 사용하는 대신 Flow 혹은 TypeScript를 사용하는 것을 추천해 드립니다.
+[Flow](https://flow.org/), [TypeScript](https://www.typescriptlang.org/)와 같은 정적 타입 체커들은 코드 실행 전에 특정한 타입 문제를 찾아냅니다. 또한 자동완성과 같은 기능을 추가하여 개발자의 작업 흐름을 개선하기도 합니다. 이러한 이유로 큰 코드 베이스에서는 `PropTypes`를 사용하는 대신 Flow 혹은 TypeScript를 사용하는 것을 추천해 드립니다.
 
 ## Flow {#flow}
 
-[Flow](https://flow.org/)는 JavaScript 코드를 위한 정적 타입 체커입니다. 페이스북에서 개발했으며, 흔히 React와 함께 사용합니다. 특별한 타입 문법을 사용하여 변수, 함수 및 React 컴포넌트에 주석을 달 수 있고, 에러를 조기에 발견할 수 있습니다. 기초적인 부분을 더 알아보고 싶다면 [introduction to Flow](https://flow.org/en/docs/getting-started/) 에서 확인할 수 있습니다.
+[Flow](https://flow.org/)는 JavaScript 코드를 위한 정적 타입 체커입니다. 페이스북에서 개발했으며, 보통 React와 함께 사용합니다. 특별한 타입 문법을 사용하여 변수, 함수 및 React 컴포넌트에 주석을 달 수 있고, 에러를 조기에 발견할 수 있습니다. 기초적인 부분을 더 알아보고 싶다면 [introduction to Flow](https://flow.org/en/docs/getting-started/) 에서 확인할 수 있습니다.
 
 Flow를 사용하기 위해서는 아래 요구 사항을 만족 해야 합니다.
 
@@ -69,7 +69,7 @@ npm run flow init
 
 ### 컴파일된 코드에서 Flow 문법 제거하기 {#stripping-flow-syntax-from-the-compiled-code}
 
-Flow는 코드 주석을 위한 특별한 문법과 함께 JavaScript 언어를 확장합니다. 하지만 브라우저는 이 문법을 알아차리지 못하기 때문에 컴파일된 JavaScript Bundle을 브라우저에 보내기만 하고 끝내서는 안됩니다.
+Flow는 코드 주석을 위한 특별한 문법과 함께 JavaScript 언어를 확장합니다. 하지만 브라우저는 이 문법을 알아차리지 못하기 때문에 컴파일된 JavaScript 번들을 브라우저에 보내기만 하고 끝내서는 안됩니다.
 
 이 작업을 수행하기 위한 방법은 JavaScript를 컴파일하는 데 사용하는 도구에 따라 달라집니다.
 
@@ -79,11 +79,11 @@ Flow는 코드 주석을 위한 특별한 문법과 함께 JavaScript 언어를 
 
 #### Babel {#babel}
 
-> Note:
+> 주의:
 >
 > 아래 설명은 Create React App 사용자들을 위한 것이 아닙니다. Create React App이 Babel을 사용하기는 하지만, 이미 Flow를 이해하도록 설정되어 있습니다. Create React App을 사용하지 않은 분들만 이 단계를 따라와 주세요.
 
-직접 Babel 설정을 하려고 하신다면 Flow를 위해 특별한 프리셋을 설치해야합니다.
+직접 Babel 설정을 한다면 Flow를 위해 특별한 프리셋을 설치해야합니다.
 
 [Yarn](https://yarnpkg.com/)을 사용한다면
 
@@ -97,7 +97,7 @@ yarn add --dev babel-preset-flow
 npm install --save-dev babel-preset-flow
 ```
 
-설치가 됐다면, `flow` 프리셋을 [Babel configuration](https://babeljs.io/docs/usage/babelrc/)에 추가해줍니다. 예를 들어 Babel을 `.babelrc` 파일을 통해 설정하려고 하신다면, 다음과 같이 설정할 수 있습니다.
+설치가 됐다면, `flow` 프리셋을 [Babel configuration](https://babeljs.io/docs/usage/babelrc/)에 추가합니다. 예를 들어 Babel을 `.babelrc` 파일에서 설정한다면, 다음과 같이 할 수 있습니다.
 
 ```js{3}
 {
@@ -110,7 +110,7 @@ npm install --save-dev babel-preset-flow
 
 이 부분은 코드에 Flow 문법을 사용할 수 있도록 도와줍니다.
 
-> Note:
+> 주의:
 >
 > Flow는 `react` 프리셋을 필수적으로 요구하지는 않지만 자주 함께 사용합니다. Flow 자체가 JSX 구문을 이해할 수 있습니다.
 
@@ -120,7 +120,7 @@ Create React App과 Babel을 사용하지 않는다면 [flow-remove-types](https
 
 ### Flow 실행하기 {#running-flow}
 
-위의 설명을 잘 따라왔다면, Flow를 당장 사용할 수 있습니다.
+위의 설명을 잘 따라왔다면, Flow를 바로 사용할 수 있습니다.
 
 ```bash
 yarn flow
@@ -132,7 +132,7 @@ npm을 사용한다면
 npm run flow
 ```
 
-다음 가은 메세지가 보여야 합니다.
+다음 같은 메세지가 보여야 합니다.
 
 ```
 No errors!
@@ -149,7 +149,7 @@ No errors!
 
 대체적으로 위 주석은 파일 최상단에 둡니다. 프로젝트의 몇몇 파일에 주석을 추가하고 `yarn flow` 나 `npm run flow` 명령어를 실행하여 Flow가 어떤 문제를 찾아냈는지 확인해보세요.
 
-주석에 상관없이 모든 파일들을 체크하는 _[옵션]_(https://flow.org/en/docs/config/options/#toc-all-boolean)도 있습니다. 이미 존재하는 프로젝트에 적용하는 것은 어렵겠지만 모든 타입을 체크하고자 하는 새로운 프로젝트에는 적합합니다.
+주석에 상관없이 모든 파일들을 체크하는 [옵션](https://flow.org/en/docs/config/options/#toc-all-boolean)도 있습니다. 이미 존재하는 프로젝트에 적용하는 것은 어렵겠지만 모든 타입을 체크하고자 하는 새로운 프로젝트에는 적합합니다.
 
 이제 모든 준비를 마쳤습니다! Flow에 대해 더 알아보고 싶으시다면 다음 리소스들를 확인해보세요.
 
@@ -183,7 +183,7 @@ npx create-react-app my-app --typescript
 
 또한 **이미 존재하는 Create React App 프로젝트**에도 추가할 수 있습니다. [이 문서](https://facebook.github.io/create-react-app/docs/adding-typescript)에서 확인해보세요.
 
-> Note:
+> 주의:
 >
 > Create React App을 사용한다면, **이 페이지의 남은 부분을 넘기셔도 좋습니다.** 아래는 Create React App을 사용하지 않는 사용자들을 위한 설명입니다.
 
@@ -218,7 +218,7 @@ npm install --save-dev typescript
 
 ### TypeScript 컴파일러 설정하기 {#configuring-the-typescript-compiler}
 
-컴파일러는 무엇을 해야할지 설정해주지 않는다면 아무 도움도 주지 않습니다. TypeScript는 `rsconfig.json`이라는 특별한 파일에 설정을 정의해줘야합니다. 이 파일을 생성하려면 아래의 명령어를 입력해야합니다.
+컴파일러는 무엇을 해야할지 설정해주지 않는다면 아무 도움도 주지 않습니다. TypeScript는 `tsconfig.json`이라는 특별한 파일에 설정을 해야 합니다. 이 파일을 생성하려면 아래의 명령어를 입력해야합니다.
 
 [Yarn](https://yarnpkg.com/)을 사용한다면
 
@@ -264,7 +264,7 @@ npx tsc --init
 
 좋습니다! 이제 빌드 스크립트를 실행하면 컴파일러가 생성된 JavaScript를 `build` 폴더에 위치시킬 것입니다. [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json)는 시작하기에 좋은 규칙들을 정의한 `tsconfig.json`파일을 제공합니다.
 
-일반적으로 생성된 JavaScript 코드를 소스 관리에 두고싶어하지 않습니다. 때문에 `build` 폴더를 `.gitignore` 파일에 추가하도록 합니다.
+일반적으로 생성된 JavaScript 코드를 소스 관리에 두고 싶어 하지 않습니다. 때문에 `build` 폴더를 `.gitignore` 파일에 추가하도록 합니다.
 
 ### 파일 확장자 {#file-extensions}
 
@@ -290,7 +290,7 @@ npm run build
 
 ### 타입 정의 {#type-definitions}
 
-다른 패키지의 오류와 힌트를 출력하기 위해 컴파일러는 선언 파일에 의존합니다. 선언 파일은 라이브러리에 대한 모든 타입 정보를 제공합니다. 프로젝트의 npm에 라이브러리에 대한 선언파일이 있다면 해당하는 자바스크립트 라이브러리를 사용할 수 있습니다.
+다른 패키지의 오류와 힌트를 출력하기 위해 컴파일러는 선언 파일에 의존합니다. 선언 파일은 라이브러리에 대한 모든 타입 정보를 제공합니다. 프로젝트의 npm에 라이브러리에 대한 선언파일이 있다면 해당하는 Javascript 라이브러리를 사용할 수 있습니다.
 
 라이브러리에 대한 선언을 가져올 수 있는 방법은 두가지가 있습니다.
 
