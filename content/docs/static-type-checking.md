@@ -163,7 +163,6 @@ No errors!
 [TypeScript](https://www.typescriptlang.org/)는 Microsoft가 개발한 프로그래밍 언어입니다. JavaScript의 타입 슈퍼셋이며 자체 컴파일러를 가지고 있습니다. 타입 언어이기 때문에 빌드 에러와 버그를 잡을 수 있으며, 이는 앱이 실행되기 훨씬 전입니다. TypeScript를 React와 함께 사용하는 방법에 대해 더 알아보고 싶다면 [여기](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter)에 들어가보세요.
 
 TypeScript를 사용하기 위해서는 아래 요구 사항을 만족해야합니다.
-
 * 프로젝트 의존성에 TypeScript를 추가합니다.
 * TypeScript 컴파일러 옵션을 설정합니다.
 * 올바른 파일 확장을 사용합니다.
@@ -187,8 +186,8 @@ npx create-react-app my-app --typescript
 >
 >Create React App을 사용한다면, **이 페이지의 남은 부분을 넘기셔도 좋습니다.** 아래는 Create React App을 사용하지 않는 사용자들을 위한 설명입니다.
 
-### 프로젝트에 TypeScript 추가하기 {#adding-typescript-to-a-project}
 
+### 프로젝트에 TypeScript 추가하기 {#adding-typescript-to-a-project}
 터미널에 다음 명령어를 입력하는 것으로 시작합니다.
 
 [Yarn](https://yarnpkg.com/)을 사용한다면
@@ -217,7 +216,6 @@ npm install --save-dev typescript
 ```
 
 ### TypeScript 컴파일러 설정하기 {#configuring-the-typescript-compiler}
-
 컴파일러는 무엇을 해야할지 설정해주지 않는다면 아무 도움도 주지 않습니다. TypeScript는 `tsconfig.json`이라는 특별한 파일에 설정을 해야 합니다. 이 파일을 생성하려면 아래의 명령어를 입력해야합니다.
 
 [Yarn](https://yarnpkg.com/)을 사용한다면
@@ -237,7 +235,6 @@ npx tsc --init
 많은 옵션 중에서 `rootDir`와 `outDir`를 살펴보려고 합니다. 실제로 컴파일러는 TypeScript파일을 통해 JavaScript 파일을 생성합니다. 여기서 소스 파일과 생성된 파일간의 혼동을 야기할 수 있습니다.
 
 이를 해결하기 위해 두 단계를 거칩니다.
-
 * 우선 프로젝트 구조를 아래와 같이 정리합니다. 모든 소스코드는 `src` 디렉토리에 위치시킬 것입니다.
 
 ```
@@ -267,7 +264,6 @@ npx tsc --init
 일반적으로 생성된 JavaScript 코드를 소스 관리에 두고 싶어 하지 않습니다. 때문에 `build` 폴더를 `.gitignore` 파일에 추가하도록 합니다.
 
 ### 파일 확장자 {#file-extensions}
-
 React에서는 대부분 컴포넌트를 `.js` 파일에 작성합니다. TypeScript에는 두가지 확장자가 있습니다.
 
 `.ts`는 TypeScript 파일 확장자 기본값입니다. 반면에 `.tsx`는 `JSX` 문법이 포함된 코드를 위한 특별한 확장자입니다.
@@ -288,8 +284,8 @@ npm run build
 
 터미널에 아무런 출력이 없다면 컴파일이 성공적으로 완료됨을 의미합니다.
 
-### 타입 정의 {#type-definitions}
 
+### 타입 정의 {#type-definitions}
 다른 패키지의 오류와 힌트를 출력하기 위해 컴파일러는 선언 파일에 의존합니다. 선언 파일은 라이브러리에 대한 모든 타입 정보를 제공합니다. 프로젝트의 npm에 라이브러리에 대한 선언파일이 있다면 해당하는 Javascript 라이브러리를 사용할 수 있습니다.
 
 라이브러리에 대한 선언을 가져올 수 있는 방법은 두가지가 있습니다.
@@ -306,7 +302,8 @@ yarn add --dev @types/react
 npm i --save-dev @types/react
 ```
 
-__Local Declarations__ 때때로 사용하고 싶은 패키지가 타입 선언 파일을 번들하지도 않고 DefinitelyTyped에서 제공하지도 않을 수 있습니다. 이러한 경우 로컬 타입 선언 파일을 가질 수 있습니다. 이 방법을 사용하려면 `declarations.d.ts` 파일을 sourse 디렉토리의 루트에 생성합니다. 간단한 선언은 다음과 같이 할 수 있습니다.
+__Local Declarations__
+때때로 사용하고 싶은 패키지가 타입 선언 파일을 번들하지도 않고 DefinitelyTyped에서 제공하지도 않을 수 있습니다. 이러한 경우 로컬 타입 선언 파일을 가질 수 있습니다. 이 방법을 사용하려면 `declarations.d.ts` 파일을 sourse 디렉토리의 루트에 생성합니다. 간단한 선언은 다음과 같이 할 수 있습니다.
 
 ```typescript
 declare module 'querystring' {
@@ -331,8 +328,7 @@ Reason은 Facebook이 개발했고, 메신저 같은 몇몇 제품에 사용되�
 
 [Kotlin](https://kotlinlang.org/)은 JetBrains이 개발한 정적 타입 언어입니다. Kotlin의 타깃 플랫폼은 JVM, Android, LLVM, JavaScript입니다.
 
-JetBrains은 React 커뮤니티를 위해 [React bindings](https://github.com/JetBrains/kotlin-wrappers)나 [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app)와 같은 몇몇 도구를 개발, 유지하고 있습니다.
-Create React Kotlin App은 별다른 빌드 설정 없이 Kotlin으로 React 앱을 개발할 수 있고록 도와줍니다.
+JetBrains은 React 커뮤니티를 위해 [React bindings](https://github.com/JetBrains/kotlin-wrappers)나 [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app)와 같은 몇몇 도구를 개발, 유지하고 있습니다. Create React Kotlin App은 별다른 빌드 설정 없이 Kotlin으로 React 앱을 개발할 수 있고록 도와줍니다.
 
 ## 다른 언어들 {#other-languages}
 
