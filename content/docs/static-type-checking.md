@@ -79,9 +79,9 @@ Flow는 코드 주석을 위한 특별한 문법과 함께 JavaScript 언어를 
 
 #### Babel {#babel}
 
-> 주의
+>주의
 >
-> 아래 설명은 Create React App 사용자들을 위한 것이 아닙니다. Create React App이 Babel을 사용하기는 하지만, 이미 Flow를 이해하도록 설정되어 있습니다. Create React App을 사용하지 않은 분들만 이 단계를 따라와 주세요.
+>아래 설명은 Create React App 사용자들을 위한 것이 아닙니다. Create React App이 Babel을 사용하기는 하지만, 이미 Flow를 이해하도록 설정되어 있습니다. Create React App을 사용하지 않은 분들만 이 단계를 따라와 주세요.
 
 직접 Babel 설정을 한다면 Flow를 위해 특별한 프리셋을 설치해야합니다.
 
@@ -110,9 +110,9 @@ npm install --save-dev babel-preset-flow
 
 이 부분은 코드에 Flow 문법을 사용할 수 있도록 도와줍니다.
 
-> 주의
+>주의
 >
-> Flow는 `react` 프리셋을 필수적으로 요구하지는 않지만 자주 함께 사용합니다. Flow 자체가 JSX 구문을 이해할 수 있습니다.
+>Flow는 `react` 프리셋을 필수적으로 요구하지는 않지만 자주 함께 사용합니다. Flow 자체가 JSX 구문을 이해할 수 있습니다.
 
 #### 다른 빌드 설정들 {#other-build-setups}
 
@@ -183,9 +183,9 @@ npx create-react-app my-app --typescript
 
 또한 **이미 존재하는 Create React App 프로젝트**에도 추가할 수 있습니다. [이 문서](https://facebook.github.io/create-react-app/docs/adding-typescript)에서 확인해보세요.
 
-> 주의
+>주의
 >
-> Create React App을 사용한다면, **이 페이지의 남은 부분을 넘기셔도 좋습니다.** 아래는 Create React App을 사용하지 않는 사용자들을 위한 설명입니다.
+>Create React App을 사용한다면, **이 페이지의 남은 부분을 넘기셔도 좋습니다.** 아래는 Create React App을 사용하지 않는 사용자들을 위한 설명입니다.
 
 ### 프로젝트에 TypeScript 추가하기 {#adding-typescript-to-a-project}
 
@@ -294,9 +294,9 @@ npm run build
 
 라이브러리에 대한 선언을 가져올 수 있는 방법은 두가지가 있습니다.
 
-**Bundled** - 라이브러리가 자신의 선언 파일을 번들합니다. 이 후 해야할 일은 그저 라이브러리를 다운받고 올바르게 사용하는 것 밖에 할 일이 없기 때문에 사용자에게 좋습니다. 라이브러리가 번들된 타입을 가지고있는지 확인하려면 프로젝트 내에 `index.d.ts` 파일이 존재하는지 찾아보세요. 어떤 라이브러리는 `package.json` 파일의 `typings` 혹은 `types` 필드 아래에 정의되어 있습니다.
+__Bundled__ - 라이브러리가 자신의 선언 파일을 번들합니다. 이 후 해야할 일은 그저 라이브러리를 다운받고 올바르게 사용하는 것 밖에 할 일이 없기 때문에 사용자에게 좋습니다. 라이브러리가 번들된 타입을 가지고있는지 확인하려면 프로젝트 내에 `index.d.ts` 파일이 존재하는지 찾아보세요. 어떤 라이브러리는 `package.json` 파일의 `typings` 혹은 `types` 필드 아래에 정의되어 있습니다.
 
-**[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)** - DefinitelyTyped는 선언 파일을 번들하지 않은 라이브러리를 위한 거대 저장소입니다. 이 저장소의 선언은 Microsoft와 오픈소스 기여자들에 의해 관리되는 크라우드 소스입니다. 예를 들어 React는 자체 선언 파일을 번들하지 않습니다. 대신 DefinitelyTyped를 통해 다운받을 수 있습니다. 다음 명령어를 터미널에 입력해주세요.
+__[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)__ - DefinitelyTyped는 선언 파일을 번들하지 않은 라이브러리를 위한 거대 저장소입니다. 이 저장소의 선언은 Microsoft와 오픈소스 기여자들에 의해 관리되는 크라우드 소스입니다. 예를 들어 React는 자체 선언 파일을 번들하지 않습니다. 대신 DefinitelyTyped를 통해 다운받을 수 있습니다. 다음 명령어를 터미널에 입력해주세요.
 
 ```bash
 # yarn
@@ -306,7 +306,7 @@ yarn add --dev @types/react
 npm i --save-dev @types/react
 ```
 
-**Local Declarations** 때때로 사용하고 싶은 패키지가 타입 선언 파일을 번들하지도 않고 DefinitelyTyped에서 제공하지도 않을 수 있습니다. 이러한 경우 로컬 타입 선언 파일을 가질 수 있습니다. 이 방법을 사용하려면 `declarations.d.ts` 파일을 sourse 디렉토리의 루트에 생성합니다. 간단한 선언은 다음과 같이 할 수 있습니다.
+__Local Declarations__ 때때로 사용하고 싶은 패키지가 타입 선언 파일을 번들하지도 않고 DefinitelyTyped에서 제공하지도 않을 수 있습니다. 이러한 경우 로컬 타입 선언 파일을 가질 수 있습니다. 이 방법을 사용하려면 `declarations.d.ts` 파일을 sourse 디렉토리의 루트에 생성합니다. 간단한 선언은 다음과 같이 할 수 있습니다.
 
 ```typescript
 declare module 'querystring' {
