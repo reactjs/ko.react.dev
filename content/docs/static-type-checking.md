@@ -14,9 +14,9 @@ next: refs-and-the-dom.html
 
 Flow를 사용하기 위해서는 아래 요구 사항을 만족 해야 합니다.
 
-- Flow를 프로젝트 의존성에 추가합니다.
-- 컴파일된 코드에서 Flow 문법이 제거되었는지 확인합니다.
-- 타입 주석을 추가하고, 타입을 체크하기 위해 Flow를 실행합니다.
+* Flow를 프로젝트 의존성에 추가합니다.
+* 컴파일된 코드에서 Flow 문법이 제거되었는지 확인합니다.
+* 타입 주석을 추가하고, 타입을 체크하기 위해 Flow를 실행합니다.
 
 이 단계들에 대해 아래에서 자세히 설명해드리겠습니다.
 
@@ -42,12 +42,12 @@ npm install --save-dev flow-bin
 
 ```js{4}
 {
- // ...
- "scripts": {
- "flow": "flow",
- // ...
- },
- // ...
+  // ...
+  "scripts": {
+    "flow": "flow",
+    // ...
+  },
+  // ...
 }
 ```
 
@@ -79,7 +79,7 @@ Flow는 코드 주석을 위한 특별한 문법과 함께 JavaScript 언어를 
 
 #### Babel {#babel}
 
-> 주의:
+> 주의
 >
 > 아래 설명은 Create React App 사용자들을 위한 것이 아닙니다. Create React App이 Babel을 사용하기는 하지만, 이미 Flow를 이해하도록 설정되어 있습니다. Create React App을 사용하지 않은 분들만 이 단계를 따라와 주세요.
 
@@ -101,16 +101,16 @@ npm install --save-dev babel-preset-flow
 
 ```js{3}
 {
- "presets": [
- "flow",
- "react"
- ]
+  "presets": [
+    "flow",
+    "react"
+  ]
 }
 ```
 
 이 부분은 코드에 Flow 문법을 사용할 수 있도록 도와줍니다.
 
-> 주의:
+> 주의
 >
 > Flow는 `react` 프리셋을 필수적으로 요구하지는 않지만 자주 함께 사용합니다. Flow 자체가 JSX 구문을 이해할 수 있습니다.
 
@@ -153,10 +153,10 @@ No errors!
 
 이제 모든 준비를 마쳤습니다! Flow에 대해 더 알아보고 싶으시다면 다음 리소스들를 확인해보세요.
 
-- [Flow Documentation: Type Annotations](https://flow.org/en/docs/types/)
-- [Flow Documentation: Editors](https://flow.org/en/docs/editors/)
-- [Flow Documentation: React](https://flow.org/en/docs/react/)
-- [Linting in Flow](https://medium.com/flow-type/linting-in-flow-7709d7a7e969)
+* [Flow Documentation: Type Annotations](https://flow.org/en/docs/types/)
+* [Flow Documentation: Editors](https://flow.org/en/docs/editors/)
+* [Flow Documentation: React](https://flow.org/en/docs/react/)
+* [Linting in Flow](https://medium.com/flow-type/linting-in-flow-7709d7a7e969)
 
 ## TypeScript {#typescript}
 
@@ -164,10 +164,10 @@ No errors!
 
 TypeScript를 사용하기 위해서는 아래 요구 사항을 만족해야합니다.
 
-- 프로젝트 의존성에 TypeScript를 추가합니다.
-- TypeScript 컴파일러 옵션을 설정합니다.
-- 올바른 파일 확장을 사용합니다.
-- 사용하는 라이브러리의 정의를 추가합니다.
+* 프로젝트 의존성에 TypeScript를 추가합니다.
+* TypeScript 컴파일러 옵션을 설정합니다.
+* 올바른 파일 확장을 사용합니다.
+* 사용하는 라이브러리의 정의를 추가합니다.
 
 좀 더 자세히 알아보겠습니다.
 
@@ -183,7 +183,7 @@ npx create-react-app my-app --typescript
 
 또한 **이미 존재하는 Create React App 프로젝트**에도 추가할 수 있습니다. [이 문서](https://facebook.github.io/create-react-app/docs/adding-typescript)에서 확인해보세요.
 
-> 주의:
+> 주의
 >
 > Create React App을 사용한다면, **이 페이지의 남은 부분을 넘기셔도 좋습니다.** 아래는 Create React App을 사용하지 않는 사용자들을 위한 설명입니다.
 
@@ -207,12 +207,12 @@ npm install --save-dev typescript
 
 ```js{4}
 {
- // ...
- "scripts": {
- "build": "tsc",
- // ...
- },
- // ...
+  // ...
+  "scripts": {
+    "build": "tsc",
+    // ...
+  },
+  // ...
 }
 ```
 
@@ -238,7 +238,7 @@ npx tsc --init
 
 이를 해결하기 위해 두 단계를 거칩니다.
 
-- 우선 프로젝트 구조를 아래와 같이 정리합니다. 모든 소스코드는 `src` 디렉토리에 위치시킬 것입니다.
+* 우선 프로젝트 구조를 아래와 같이 정리합니다. 모든 소스코드는 `src` 디렉토리에 위치시킬 것입니다.
 
 ```
 ├── package.json
@@ -247,18 +247,18 @@ npx tsc --init
 └── tsconfig.json
 ```
 
-- 그 다음, 소스코드가 어디 있는지, 캄파일을 통해 생성된 코드를 어디에 위치시켜야 하는지 컴파일러에 서술합니다.
+* 그 다음, 소스코드가 어디 있는지, 캄파일을 통해 생성된 코드를 어디에 위치시켜야 하는지 컴파일러에 서술합니다.
 
 ```js{6,7}
 // tsconfig.json
 
 {
- "compilerOptions": {
- // ...
- "rootDir": "src",
- "outDir": "build"
- // ...
- },
+  "compilerOptions": {
+    // ...
+    "rootDir": "src",
+    "outDir": "build"
+    // ...
+  },
 }
 ```
 
@@ -294,7 +294,7 @@ npm run build
 
 라이브러리에 대한 선언을 가져올 수 있는 방법은 두가지가 있습니다.
 
-**Bundled** - 라이브러리가 자신의 선언 파일을 번들합니다. 이 후 해야할 일은 그저 라이브러리를 다운받고 올바르게 사용하는 것 밖에 할 일이 없기 때문에 사용자에게 좋습니다. 라이브러리가 번들된 타입을 가지고있는지 확인하려면 프로젝트 내에 `index.d.ts` 파일이 존재하는지 찾아보세요. 몇몇 라이브러리는 `typings` 혹은 `types` 아래에 있는 `package.json` 파일에 정의합니다.
+**Bundled** - 라이브러리가 자신의 선언 파일을 번들합니다. 이 후 해야할 일은 그저 라이브러리를 다운받고 올바르게 사용하는 것 밖에 할 일이 없기 때문에 사용자에게 좋습니다. 라이브러리가 번들된 타입을 가지고있는지 확인하려면 프로젝트 내에 `index.d.ts` 파일이 존재하는지 찾아보세요. 어떤 라이브러리는 `package.json` 파일의 `typings` 혹은 `types` 필드 아래에 정의되어 있습니다.
 
 **[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)** - DefinitelyTyped는 선언 파일을 번들하지 않은 라이브러리를 위한 거대 저장소입니다. 이 저장소의 선언은 Microsoft와 오픈소스 기여자들에 의해 관리되는 크라우드 소스입니다. 예를 들어 React는 자체 선언 파일을 번들하지 않습니다. 대신 DefinitelyTyped를 통해 다운받을 수 있습니다. 다음 명령어를 터미널에 입력해주세요.
 
@@ -306,11 +306,10 @@ yarn add --dev @types/react
 npm i --save-dev @types/react
 ```
 
-**Local Declarations**
-때때로 사용하고 싶은 패키지가 선언 파일을 번들하지 않거나 DefinitelyTyped에서 사용할 수 없을 수 있습니다. 이러한 경우 로컬 선언 파일을 가질 수 있습니다. 이 방법을 사용하려면 `declarations.d.ts` 파일을 sourse 디렉토리의 루트 경로에 생성합니다. 간단한 선언은 다음과 같이 할 수 있습니다.
+**Local Declarations** 때때로 사용하고 싶은 패키지가 타입 선언 파일을 번들하지도 않고 DefinitelyTyped에서 제공하지도 않을 수 있습니다. 이러한 경우 로컬 타입 선언 파일을 가질 수 있습니다. 이 방법을 사용하려면 `declarations.d.ts` 파일을 sourse 디렉토리의 루트에 생성합니다. 간단한 선언은 다음과 같이 할 수 있습니다.
 
 ```typescript
-declare module "querystring" {
+declare module 'querystring' {
   export function stringify(val: object): string;
   export function parse(val: string): object;
 }
@@ -318,13 +317,13 @@ declare module "querystring" {
 
 이제 코드를 작성할 준비를 마쳤습니다! TypeScript에 대해 좀 더 알아보고 싶다면 다음 리소스들을 확인해보세요.
 
-- [TypeScript Documentation: Basic Types](https://www.typescriptlang.org/docs/handbook/basic-types.html)
-- [TypeScript Documentation: Migrating from Javascript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
-- [TypeScript Documentation: React and Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
+* [TypeScript Documentation: Basic Types](https://www.typescriptlang.org/docs/handbook/basic-types.html)
+* [TypeScript Documentation: Migrating from Javascript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
+* [TypeScript Documentation: React and Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
 
 ## Reason {#reason}
 
-[Reason](https://reasonml.github.io/)은 새로운 언어가 아닙니다. battle-tested 언어인 [OCaml](https://ocaml.org/)을 기반으로한 새로운 문법이자 툴체인입니다. Reason은 JavaScript 개발자들을 위해 익숙한 문법을 OCaml을 통해 제공하며, NPM/Yarn 워크플로우를 제공합니다.
+[Reason](https://reasonml.github.io/)은 새로운 언어가 아닙니다. [OCaml](https://ocaml.org/)을 기반으로한 새로운 문법이자 툴체인입니다. Reason은 JavaScript 개발자들을 위해 익숙한 문법을 OCaml을 통해 제공하며, 익숙한 NPM/Yarn을 그대로 사용 할 수 있습니다.
 
 Reason은 Facebook이 개발했고, 메신저 같은 몇몇 제품에 사용되고 있습니다. 아직은 다소 실험적이지만, Facebook과 [활발한 커뮤니티](https://reasonml.github.io/docs/en/community.html)에 의해 유지되는 [React 전용 바인딩](https://reasonml.github.io/reason-react/)이 있습니다.
 
@@ -332,8 +331,8 @@ Reason은 Facebook이 개발했고, 메신저 같은 몇몇 제품에 사용되�
 
 [Kotlin](https://kotlinlang.org/)은 JetBrains이 개발한 정적 타입 언어입니다. Kotlin의 타깃 플랫폼은 JVM, Android, LLVM, JavaScript입니다.
 
-JetBrains은 React 커뮤니티를 위해 [React bindings](https://github.com/JetBrains/kotlin-wrappers)나 [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app)와 같은 몇몇 툴들을 개발, 유지하고 있습니다.
-Create React Kotlin App는 별다른 빌드 설정 없이 Kotlin으로 React 앱을 개발할 수 있고록 도와줍니다.
+JetBrains은 React 커뮤니티를 위해 [React bindings](https://github.com/JetBrains/kotlin-wrappers)나 [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app)와 같은 몇몇 도구를 개발, 유지하고 있습니다.
+Create React Kotlin App은 별다른 빌드 설정 없이 Kotlin으로 React 앱을 개발할 수 있고록 도와줍니다.
 
 ## 다른 언어들 {#other-languages}
 
