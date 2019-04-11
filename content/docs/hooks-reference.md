@@ -10,7 +10,7 @@ next: hooks-faq.html
 
 이 페이지는 React에 내장된 Hook API를 설명합니다.
 
-혹 Hook이 생소하다면 [Hook 개요](/docs/hooks-overview.html)를 먼저 읽어 보기 바랍니다. 혹은 [frequently asked questions](/docs/hooks-faq.html)에서 유용한 정보를 찾을 수도 있습니다.
+Hook이 생소하다면 [Hook 개요](/docs/hooks-overview.html)를 먼저 읽어 보기 바랍니다. 혹은 [frequently asked questions](/docs/hooks-faq.html)에서 유용한 정보를 찾을 수도 있습니다.
 
 - [기본 Hook](#basic-hooks)
   - [`useState`](#usestate)
@@ -49,7 +49,7 @@ setState(newState);
 >
 >React는 `setState` 함수 동일성이 안정적이고 재렌더링 시에도 변경되지 않을 것이라는 것을 보장합니다. 이것이 `useEffect`나 `useCallback` 의존성 목록에 이 함수를 포함하지 않아도 무방한 이유입니다.
 
-#### 함수 갱신 {#functional-updates}
+#### 함수적 갱신 {#functional-updates}
 
 이전 state를 사용해서 새로운 state를 계산하는 경우 함수를 `setState` 로 전달할 수 있습니다. 그 함수는 이전 값을 받아 갱신된 값을 반환할 것입니다. 여기에 `setState`의 양쪽 형태를 사용한 카운터 컴포넌트의 예가 있습니다.  
 
