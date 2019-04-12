@@ -71,7 +71,7 @@ function Counter({initialCount}) {
 
 > 주의
 >
-> 클래스 컴포넌트의 `setState` 메서드와는 다르게, `useState`는 갱신 오브젝트(update objects)를 자동으로 머지하지는 않습니다. 함수 업데이터 폼을 확산 구문 개체와 결합함으로써 이 동작을 복제할 수 있습니다.
+> 클래스 컴포넌트의 `setState` 메서드와는 다르게, `useState`는 갱신 객체(update objects)를 자동으로 합치지는 않습니다. 함수 업데이터 폼을 객체 전개 연산자와 결합함으로써 이 동작을 복제할 수 있습니다.
 >
 > ```js
 > setState(prevState => {
@@ -80,11 +80,11 @@ function Counter({initialCount}) {
 > });
 > ```
 >
-> 다른 방법으로는 `useReducer`가 있는데 이는 다수 개의 하위 값들을 포함한 state 객체를 관리하는 데에 조금 더 적합합니다.
+> 다른 방법으로는 `useReducer`가 있는데 이는 여러개의 하윗값들을 포함한 state 객체를 관리하는 데에 더 적합합니다.
 
 #### state 초기화의 지연 {#lazy-initial-state}
 
-`initialState` 인자는 초기 렌더링 시에 사용하는 state입니다. 그 이후의 렌더링 시에는 이 값은 무시됩니다. 만약 초기 state가 고비용 계산의 결과라면, 초기 렌더링 시에만 수행하게 될 함수를 대신 제공하게 될 것입니다.
+`initialState` 인자는 초기 렌더링 시에 사용하는 state입니다. 그 이후의 렌더링 시에는 이 값은 무시됩니다. 만약 초기 state가 고비용 계산의 결과라면, 초기 렌더링 시에만 실행될 함수를 대신 제공할 수 있습니다.
 
 ```js
 const [state, setState] = useState(() => {
@@ -95,7 +95,7 @@ const [state, setState] = useState(() => {
 
 #### state 갱신의 회피 {#bailing-out-of-a-state-update}
 
-State Hook을 현재의 state와 동일한 값으로 갱신하는 경우 React는 자식을 렌더링한다거나 무엇을 실행하는 것을 회피하고 그 처리를 종료합니다. (React는 [`Object.is` 비교 알고리즘](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description)을 사용합니다.)
+State Hook을 현재의 state와 동일한 값으로 갱신하는 경우 React는 자식을 렌더링 한다거나 무엇을 실행하는 것을 회피하고 그 처리를 종료합니다. (React는 [`Object.is` 비교 알고리즘](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description)을 사용합니다.)
 
 실행을 회피하기 전에 React에서 특정 컴포넌트를 다시 렌더링하는 것이 여전히 필요할 수도 있다는 것에 주의하세요. React가 불필요하게 트리에 그 이상으로 「더 깊게」는 관여하지 않을 것이므로 크게 신경 쓰지 않으셔도 됩니다만, 만약 렌더링 시에 고비용의 계산을 하고 있다면 `useMemo`를 사용하여 그것들을 최적화할 수 있습니다.
 
@@ -105,7 +105,7 @@ State Hook을 현재의 state와 동일한 값으로 갱신하는 경우 React�
 useEffect(didUpdate);
 ```
 
-영향을 미칠 가능성이 있는 명령형 코드가 포함된 함수를 수락합니다.
+명령형 또는 어떤 효과를 발생하는 함수를 인자로 받습니다.
 
 DOM의 변형, 데이터의 구독, 타이머, 로깅 또는 다른 부작용(side effects)은 (React의 _렌더링 단계에_ 따르면) 함수 컴포넌트의 본문 안에서는 허용되지 않습니다. 만약 이를 수행한다면 그것은 매우 혼란스러운 버그 및 UI의 불일치를 야기하게 될 것입니다.
 
