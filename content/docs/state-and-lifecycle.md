@@ -8,9 +8,10 @@ prev: components-and-props.html
 next: handling-events.html
 ---
 
-This page introduces the concept of state and lifecycle in a React component. You can find a [detailed component API reference here](/docs/react-component.html).
+ 
+이 페이지는 React 컴포넌트의 스테이트와 라이프 사이클 개념에 대해서 설명합니다. [더 자세한 컴포넌트 API 레퍼런스는 여기](/docs/react-component.html).
 
-Consider the ticking clock example from [one of the previous sections](/docs/rendering-elements.html#updating-the-rendered-element). In [Rendering Elements](/docs/rendering-elements.html#rendering-an-element-into-the-dom), we have only learned one way to update the UI. We call `ReactDOM.render()` to change the rendered output:
+이전 세션에 나왓던 똑딱이는 시계를 살펴봅시다. [똑딱이는 시계 세션](/docs/rendering-elements.html#updating-the-rendered-element). [엘리먼트 렌더링](/docs/rendering-elements.html#rendering-an-element-into-the-dom) 에서 배운 것과 같이, UI를 업데이트 하는 한가지 방법을 알아봣습니다.`ReactDOM.render()`를 호출하여 렌더되는 출력을 바꿀 수 잇습니다.
 
 ```js{8-11}
 function tick() {
@@ -29,11 +30,11 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/gwoJZk?editors=0010)
+[**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/gwoJZk?editors=0010)
 
-In this section, we will learn how to make the `Clock` component truly reusable and encapsulated. It will set up its own timer and update itself every second.
+이 섹션에서는 캡슐화되고 재사용 할 수 잇는 `시계` 컴포넌트를 만드는 법에 대해서 알아 볼 것 입니다. 이 시계는 스스로 타이머를 설정하고 매 초 시간을 업데이트 할 것 입니다.
 
-We can start by encapsulating how the clock looks:
+우선 시계의 외형을 캡슐화 하는 것에서 시작할 수 잇습니다.
 
 ```js{3-6,12}
 function Clock(props) {
@@ -55,11 +56,11 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/dpdoYR?editors=0010)
+[**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/dpdoYR?editors=0010)
 
-However, it misses a crucial requirement: the fact that the `Clock` sets up a timer and updates the UI every second should be an implementation detail of the `Clock`.
+그러나 한가지 필수적인 요구사항이 누락되엇습니다: `시계`가 타이머를 설정하고 UI를 매 초 업데이트하는 것이 `시계`의 구현 세부사항이라는 점 입니다.
 
-Ideally we want to write this once and have the `Clock` update itself:
+이상적으로 우리는 `시계`를 한번만 작성하고 그것이 자동으로 업데이트 하기를 원합니다.
 
 ```js{2}
 ReactDOM.render(
@@ -67,10 +68,9 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+이것을 구현하기 위해서 우리는 `시계`에 "스테이트"를 추가해야 합니다.
 
-To implement this, we need to add "state" to the `Clock` component.
-
-State is similar to props, but it is private and fully controlled by the component.
+스테이트는 "props"와 유사하지만 컴포넌트 전용이며 스테이트의 관리는 전적으로 컴포넌트 내에서만 가능합니다.
 
 We [mentioned before](/docs/components-and-props.html#functional-and-class-components) that components defined as classes have some additional features. Local state is exactly that: a feature available only to classes.
 

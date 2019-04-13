@@ -1,6 +1,6 @@
 ---
-id: jsx-in-depth
-title: JSX In Depth
+id: JSX 더 자세히
+title: JSX 더 자세히
 permalink: docs/jsx-in-depth.html
 redirect_from:
   - "docs/jsx-spread.html"
@@ -12,8 +12,7 @@ redirect_from:
   - "docs/jsx-in-depth-zh-CN.html"
   - "docs/jsx-in-depth-ko-KR.html"
 ---
-
-Fundamentally, JSX just provides syntactic sugar for the `React.createElement(component, props, ...children)` function. The JSX code:
+근본적으로, JSX는 `React.createElement(component, props, ...children)` 함수에 대한 문법적 설탕을 제공할 뿐입니다. 다음 JSX 코드는:
 
 ```js
 <MyButton color="blue" shadowSize={2}>
@@ -21,7 +20,7 @@ Fundamentally, JSX just provides syntactic sugar for the `React.createElement(co
 </MyButton>
 ```
 
-compiles into:
+아래와 같이 컴파일됩니다.
 
 ```js
 React.createElement(
@@ -30,14 +29,13 @@ React.createElement(
   'Click Me'
 )
 ```
-
-You can also use the self-closing form of the tag if there are no children. So:
+자식 컴포넌트가 없다면 아래와 같이 자기 자신을 닫는 형태의 태그를 쓸 수 있습니다.
 
 ```js
 <div className="sidebar" />
 ```
 
-compiles into:
+위의 코드는 아래와 같이 컴파일 됩니다.
 
 ```js
 React.createElement(
@@ -46,20 +44,23 @@ React.createElement(
   null
 )
 ```
+특정 JSX가 어떻게 JavaScript로 변환되는지 시험해보고 싶다면 [온라인 babel 컴파일러](babel://jsx-simple-example)를 사용해보세요.
 
 If you want to test out how some specific JSX is converted into JavaScript, you can try out [the online Babel compiler](babel://jsx-simple-example).
 
-## Specifying The React Element Type {#specifying-the-react-element-type}
+## React Element의 타입 지정하기 {#specifying-the-react-element-type}
 
-The first part of a JSX tag determines the type of the React element.
+JSX 태그의 첫 부분은 React element의 타입을 결정합니다.
 
-Capitalized types indicate that the JSX tag is referring to a React component. These tags get compiled into a direct reference to the named variable, so if you use the JSX `<Foo />` expression, `Foo` must be in scope.
+대문자로 시작하는 JSX 태그는 React component를 지정합니다. 이 태그들은 같은 이름을 가진 변수들을 직접 참조합니다. 만약 `<Foo />`와 같은 JSX 표현을 쓰려고 한다면 Foo가 반드시 스코프 내에 존재해야 합니다.
 
-### React Must Be in Scope {#react-must-be-in-scope}
 
-Since JSX compiles into calls to `React.createElement`, the `React` library must also always be in scope from your JSX code.
+### React가 스코프 내에 존재해야 합니다 {#react-must-be-in-scope}
 
-For example, both of the imports are necessary in this code, even though `React` and `CustomButton` are not directly referenced from JavaScript:
+JSX는 `React.createElement`를 호출하는 코드로 컴파일 되기 때문에 `React` 라이브러리 역시 JSX 코드와 같은 스코프 내에 존재해야만 합니다.
+
+<!-- original was ==> For example, both of the imports are necessary in this code, even though `React` and `CustomButton` are not directly referenced from JavaScript // added in reference to JSX tag as it was difficult to refer to its usage without mentioning, please check if appropriate.-->
+아래의 예시를 통해 보면, `React`와 `CustomButton`는 JavaScript 코드에선 직접적으로 사용되진 않지만 JSX 태그로 사용하기 위해 꼭 import 해야합니다.
 
 ```js{1,2,5}
 import React from 'react';
@@ -70,12 +71,11 @@ function WarningButton() {
   return <CustomButton color="red" />;
 }
 ```
+만약 JavaScript 번들러를 사용하지 않고 `<script>` 태그를 통해 React를 불러왓다면 `React`는 전역 변수로서 존재하기 때문에 별도로 불러올 필요가 없습니다.
 
-If you don't use a JavaScript bundler and loaded React from a `<script>` tag, it is already in scope as the `React` global.
+### JSX 타입을 위한 점 표기법 사용 {#using-dot-notation-for-jsx-type}
 
-### Using Dot Notation for JSX Type {#using-dot-notation-for-jsx-type}
-
-You can also refer to a React component using dot-notation from within JSX. This is convenient if you have a single module that exports many React components. For example, if `MyComponents.DatePicker` is a component, you can use it directly from JSX with:
+JSX 내에서도 점 표기법을 사용하여 React component를 참조할 수 있습니다. 이 방법은 하나의 모듈에서 복수의 React component들을 export 하는 경우에 편리하게 사용할 수 있습니다. 예를 들어, 만약 `MyComponents.DatePicker`이 component 하면, 아래와 같은 방법으로 직접 사용할 수 있습니다.
 
 ```js{10}
 import React from 'react';
@@ -90,14 +90,13 @@ function BlueDatePicker() {
   return <MyComponents.DatePicker color="blue" />;
 }
 ```
+### 사용자 정의 Component는 반드시 대문자로 시작해야합니다 {#user-defined-components-must-be-capitalized}
 
-### User-Defined Components Must Be Capitalized {#user-defined-components-must-be-capitalized}
+Element가 소문자로 시작하는 경우에는 `<div>` 나 `<span>` 같은 내장 컴포넌트라는 것을 뜻하며 `'div'` 나 `'span'` 같은 문자열 형태로 `React.createElement`에 전달됩니다. `<Foo />`와 같이 대문자로 시작하는 타입들은 `React.createElement(Foo)`의 형태로 컴파일 되며 JavaScript 파일 내에 사용자가 정의했거나 import 한 component를 가리킵니다.
 
-When an element type starts with a lowercase letter, it refers to a built-in component like `<div>` or `<span>` and results in a string `'div'` or `'span'` passed to `React.createElement`. Types that start with a capital letter like `<Foo />` compile to `React.createElement(Foo)` and correspond to a component defined or imported in your JavaScript file.
+Component의 이름은 대문자로 시작하는 것을 추천합니다. 만약 소문자로 시작하는 component를 사용해야 한다면, 대문자로 시작하는 변수에 할당한 뒤 JSX에서 이 변수를 사용하세요.
 
-We recommend naming components with a capital letter. If you do have a component that starts with a lowercase letter, assign it to a capitalized variable before using it in JSX.
-
-For example, this code will not run as expected:
+예를 들어 아래의 코드는 예상대로 실행되지 않을 것 입니다.
 
 ```js{3,4,10,11}
 import React from 'react';
@@ -114,7 +113,7 @@ function HelloWorld() {
 }
 ```
 
-To fix this, we will rename `hello` to `Hello` and use `<Hello />` when referring to it:
+이를 고치기 위해 우리는 `hello` 를 `Hello`로 바꾸고 이를 참조할 때 `<Hello />`를 사용할 것 입니다. 
 
 ```js{3,4,10,11}
 import React from 'react';
@@ -131,9 +130,9 @@ function HelloWorld() {
 }
 ```
 
-### Choosing the Type at Runtime {#choosing-the-type-at-runtime}
+### 실행 중에 타입 선택하기 {#choosing-the-type-at-runtime}
 
-You cannot use a general expression as the React element type. If you do want to use a general expression to indicate the type of the element, just assign it to a capitalized variable first. This often comes up when you want to render a different component based on a prop:
+React element 타입에 일반적인 표현식은 사용할 수 없습니다. 만약 element 타입을 지정할 때 일반적인 표현식을 사용하고자 한다면 대문자로 시작하는 변수에 배정한 후 사용할 수 있습니다. 예를 들어 아래와 같이 prop에 따라 다른 component를 render 해야하는 경우들이 종종 있습니다.
 
 ```js{10,11}
 import React from 'react';
@@ -168,13 +167,13 @@ function Story(props) {
 }
 ```
 
-## Props in JSX {#props-in-jsx}
+## JSX 안에서의 prop 사용 {#props-in-jsx}
 
-There are several different ways to specify props in JSX.
+JSX 안에서 prop을 사용하는 방법은 여러가지가 있습니다.
 
 ### JavaScript Expressions as Props {#javascript-expressions-as-props}
 
-You can pass any JavaScript expression as a prop, by surrounding it with `{}`. For example, in this JSX:
+아래의 예시와 같이 JavaScript 표현을 `{}` 안에 넣음으로 JSX 안에서 prop으로 사용할 수 있습니다. 
 
 ```js
 <MyComponent foo={1 + 2 + 3 + 4} />
