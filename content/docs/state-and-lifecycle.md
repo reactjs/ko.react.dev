@@ -72,6 +72,7 @@ ReactDOM.render(
 
 State는 props와 유사하지만, 비공개이며 컴포넌트에 의해 완전히 제어됩니다.
 
+
 ## 함수형에서 클래스로 변환하기 {#converting-a-function-to-a-class}
 
 다섯 단계로 `Clock`과 같은 함수형 컴포넌트를 클래스로 변환할 수 있습니다. 

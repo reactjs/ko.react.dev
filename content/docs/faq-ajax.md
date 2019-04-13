@@ -1,24 +1,24 @@
 ---
 id: faq-ajax
-title: AJAX and APIs
+title: AJAX 와 APIs
 permalink: docs/faq-ajax.html
 layout: docs
 category: FAQ
 ---
 
-### How can I make an AJAX call? {#how-can-i-make-an-ajax-call}
+### 어떻게 AJAX 호출을 할 수 있을까요? {#how-can-i-make-an-ajax-call}
 
-You can use any AJAX library you like with React. Some popular ones are [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), and the browser built-in [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+당신이 선호하는 AJAX 라이브러리를 React와 함께 사용할 수 있습니다. 유명한 라이브러리로는 [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), 그리고 브라우저에 내장된 [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) 등이 있습니다.
 
-### Where in the component lifecycle should I make an AJAX call? {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
+### 컴포넌트의 생명주기 중 어디에서 AJAX 호출을 할 수 있나요? {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
 
-You should populate data with AJAX calls in the [`componentDidMount`](/docs/react-component.html#mounting) lifecycle method. This is so you can use `setState` to update your component when the data is retrieved.
+AJAX 호출을 통한 데이터는 생명주기 메서드 중 [`componentDidMount`](/docs/react-component.html#mounting) 안에 추가되어야 합니다. 이는 데이터를 받아 올 때 `setState`를 통하여 컴포넌트를 업데이트하기 위함입니다.
 
-### Example: Using AJAX results to set local state {#example-using-ajax-results-to-set-local-state}
+### 예시: 로컬 state를 설정하기 위해 AJAX 결과 사용하기 {#example-using-ajax-results-to-set-local-state}
 
-The component below demonstrates how to make an AJAX call in `componentDidMount` to populate local component state. 
+아래 컴포넌트는 로컬 컴포넌트의 state를 채우기 위하여 `componentDidMount` 안에서 어떻게 AJAX 호출을 만드는지 보여 줍니다.
 
-The example API returns a JSON object like this:
+API 예시는 다음과 같은 JSON 객체를 반환합니다.
 
 ```
 {
@@ -50,9 +50,9 @@ class MyComponent extends React.Component {
             items: result.items
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+        // 주의: 컴포넌트의 실제 버그에서 발생하는 예외사항들을 넘기지 않도록 
+        // 에러를 catch() 블록(block)에서 처리하기보다는 
+        // 이 부분에서 처리하는 것이 중요합니다.
         (error) => {
           this.setState({
             isLoaded: true,
