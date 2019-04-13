@@ -149,7 +149,7 @@ function Story(props) {
 }
 ```
 
-To fix this, we will assign the type to a capitalized variable first:
+이를 고치기 위해 우선 타입을 대문자로 시작하는 변수에 지정합니다.
 
 ```js{10-12}
 import React from 'react';
@@ -178,10 +178,9 @@ JSX 안에서 prop을 사용하는 방법은 여러가지가 있습니다.
 ```js
 <MyComponent foo={1 + 2 + 3 + 4} />
 ```
+`MyComponent`의 `props.foo`의 값은 `1 + 2 + 3 + 4`의 표현식이 계산되기 때문에 `10`입니다.
 
-For `MyComponent`, the value of `props.foo` will be `10` because the expression `1 + 2 + 3 + 4` gets evaluated.
-
-`if` statements and `for` loops are not expressions in JavaScript, so they can't be used in JSX directly. Instead, you can put these in the surrounding code. For example:
+`if` 구문과 `for` 루프는 JavaScript 표현식이 아니기 때문에 JSX 안에서 그대로 사용할 수 없습니다. 하지만 아래의 예시와 같이 JSX 바깥에 배정된 표현을 사용할 수 있습니다.
 
 ```js{3-7}
 function NumberDescriber(props) {
@@ -195,11 +194,11 @@ function NumberDescriber(props) {
 }
 ```
 
-You can learn more about [conditional rendering](/docs/conditional-rendering.html) and [loops](/docs/lists-and-keys.html) in the corresponding sections.
+더 자세한 [조건부 렌더링](/docs/conditional-rendering.html) 과 [루프](/docs/lists-and-keys.html) 관련 문서를 참고해주세요.
 
-### String Literals {#string-literals}
+### 문자열 리터럴 {#string-literals}
 
-You can pass a string literal as a prop. These two JSX expressions are equivalent:
+문자열 리터럴은 prop으로 넘겨 줄 수 있습니다. 아래의 두 JSX 표현은 동일한 표현입니다.
 
 ```js
 <MyComponent message="hello world" />
@@ -207,7 +206,7 @@ You can pass a string literal as a prop. These two JSX expressions are equivalen
 <MyComponent message={'hello world'} />
 ```
 
-When you pass a string literal, its value is HTML-unescaped. So these two JSX expressions are equivalent:
+문자열 리터럴을 넘겨줄 때, 그 값은 HTML 이스케이핑이 풀립니다. 따라서 아래의 두 JSX 표현은 동일한 표현입니다.
 
 ```js
 <MyComponent message="&lt;3" />
@@ -217,21 +216,21 @@ When you pass a string literal, its value is HTML-unescaped. So these two JSX ex
 
 This behavior is usually not relevant. It's only mentioned here for completeness.
 
-### Props Default to "True" {#props-default-to-true}
+### Props의 기본값은 "True" {#props-default-to-true}
 
-If you pass no value for a prop, it defaults to `true`. These two JSX expressions are equivalent:
+Prop에 어떤 값도 넘기지 않을 경우, 기본값은 `true`입니다. 아래의 두 JSX 표현은 동일한 표현입니다.
 
 ```js
 <MyTextBox autocomplete />
 
 <MyTextBox autocomplete={true} />
 ```
+일반적으로 위의 예시와 같은 방식으로 사용하지 않는 것을 권장하는데 이는 
+일반적으로 위의 예시와 같은 방식으로 사용하지 않는 것을 권장하는데 이는 [ES6 object shorthand](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015) 와 헷갈릴 수 있기 때문입니다. `{foo}` 는 `{foo: true}` 가 아닌 `{foo: foo}`와 동일합니다. 이는 HTML 동작 방식과 일치하기 위해 남겨두었습니다.
 
-In general, we don't recommend using this because it can be confused with the [ES6 object shorthand](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015) `{foo}` which is short for `{foo: foo}` rather than `{foo: true}`. This behavior is just there so that it matches the behavior of HTML.
+### 속성 펼치기 {#spread-attributes}
 
-### Spread Attributes {#spread-attributes}
-
-If you already have `props` as an object, and you want to pass it in JSX, you can use `...` as a "spread" operator to pass the whole props object. These two components are equivalent:
+`props`에 해당하는 객체를 이미 가지고 있다면,`...`를 "펼치기" 연산자로 사용해 전체 객체를 그대로 넘겨줄 수 있습니다. 아래의 두 component는 동일합니다.
 
 ```js{7}
 function App1() {
@@ -244,7 +243,7 @@ function App2() {
 }
 ```
 
-You can also pick specific props that your component will consume while passing all other props using the spread operator.
+Component가 사용하게 될 특정 prop을 선택하고 나머지 prop은 펼치기 연산자를 통해 넘길 수 있습니다.
 
 ```js{2}
 const Button = props => {
@@ -264,10 +263,10 @@ const App = () => {
 };
 ```
 
-In the example above, the `kind` prop is safely consumed and *is not* passed on to the `<button>` element in the DOM.
-All other props are passed via the `...other` object making this component really flexible. You can see that it passes an `onClick` and `children` props.
+위의 예시의 `kind` prop은 소비되고 DOM의 `button` element에 넘겨지지 *않습니다.*
+다른 모든 prop은 `...other` 객체를 통해서 넘겨지며 이 컴포넌트를 유연하게 만들어줍니다. `onClick`과 `children` prop으로 넘겨지는 것을 볼 수 있습니다.
 
-Spread attributes can be useful but they also make it easy to pass unnecessary props to components that don't care about them or to pass invalid HTML attributes to the DOM. We recommend using this syntax sparingly.  
+펼치기 연사자는 유용하지만 불필요한 prop을 컴포넌트에 넘기거나 유효하지 않은 HTML 속성들을 DOM에 넘기기도 합니다. 꼭 필요할 때만 사용하는 것을 권장합니다.
 
 ## Children in JSX {#children-in-jsx}
 
