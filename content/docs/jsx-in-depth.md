@@ -224,7 +224,7 @@ Prop에 어떤 값도 넘기지 않을 경우, 기본값은 `true`입니다. 아
 <MyTextBox autocomplete={true} />
 ```
 일반적으로 위의 예시와 같은 방식으로 사용하지 않는 것을 권장하는데 이는 
-일반적으로 위의 예시와 같은 방식으로 사용하지 않는 것을 권장하는데 이는 [ES6 object shorthand](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015) 와 헷갈릴 수 있기 때문입니다. `{foo}` 는 `{foo: true}` 가 아닌 `{foo: foo}`와 동일합니다. 이는 HTML 동작 방식과 일치하기 위해 남겨두었습니다.
+일반적으로 위의 예시와 같은 방식으로 사용하지 않는 것을 권장하는데 이는 [ES6 object shorthand](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer) 와 헷갈릴 수 있기 때문입니다. `{foo}` 는 `{foo: true}` 가 아닌 `{foo: foo}`와 동일합니다. 이는 HTML 동작 방식과 일치하기 위해 남겨두었습니다.
 
 ### 속성 펼치기 {#spread-attributes}
 
@@ -428,7 +428,7 @@ function ListOfTenThings() {
 </div>
 ```
 
-한가지 주의해야 할 점은 `0`과 같은 ["falsy" 값들](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)은 React가 렌더한다는 점입니다. 예를 들어, 아래의 예시는 `props.messages`가 빈 배열일 때 예상과는 다르게 0을 출력하게 됩니다.
+한가지 주의해야 할 점은 `0`과 같은 ["falsy" 값들](https://developer.mozilla.org/ko/docs/Glossary/Falsy)은 React가 렌더한다는 점입니다. 예를 들어, 아래의 예시는 `props.messages`가 빈 배열일 때 예상과는 다르게 0을 출력하게 됩니다.
 
 ```js{2}
 <div>
@@ -448,7 +448,7 @@ function ListOfTenThings() {
 </div>
 ```
 
-반대로 `false`, `true`, `null` 또는 `undefined`와 같은 값들을 출력하고 싶다면 먼저 [문자열로 전환](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#String_conversion) 해야합니다.
+반대로 `false`, `true`, `null` 또는 `undefined`와 같은 값들을 출력하고 싶다면 먼저 [문자열로 전환](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String#String_conversion) 해야합니다.
 
 ```js{2}
 <div>
