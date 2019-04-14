@@ -12,7 +12,7 @@ redirect_from:
   - "docs/jsx-in-depth-zh-CN.html"
   - "docs/jsx-in-depth-ko-KR.html"
 ---
-근본적으로, JSX는 `React.createElement(component, props, ...children)` 함수에 대한 문법적 설탕을 제공할 뿐입니다. 다음 JSX 코드는:
+근본적으로, JSX는 `React.createElement(component, props, ...children)` 함수에 대한 문법적 설탕을 제공할 뿐입니다.
 
 ```js
 <MyButton color="blue" shadowSize={2}>
@@ -20,7 +20,7 @@ redirect_from:
 </MyButton>
 ```
 
-아래와 같이 컴파일됩니다.
+위의 코드는 아래와 같이 컴파일됩니다.
 
 ```js
 React.createElement(
@@ -59,7 +59,6 @@ JSX 태그의 첫 부분은 React element의 타입을 결정합니다.
 
 JSX는 `React.createElement`를 호출하는 코드로 컴파일 되기 때문에 `React` 라이브러리 역시 JSX 코드와 같은 스코프 내에 존재해야만 합니다.
 
-<!-- original was ==> For example, both of the imports are necessary in this code, even though `React` and `CustomButton` are not directly referenced from JavaScript // added in reference to JSX tag as it was difficult to refer to its usage without mentioning, please check if appropriate.-->
 아래의 예시를 통해 보면, `React`와 `CustomButton`는 JavaScript 코드에선 직접적으로 사용되진 않지만 JSX 태그로 사용하기 위해 꼭 import 해야합니다.
 
 ```js{1,2,5}
@@ -140,7 +139,7 @@ import { PhotoStory, VideoStory } from './stories';
 
 const components = {
   photo: PhotoStory,
-  video: VideoStory
+  video: VideoStory 
 };
 
 function Story(props) {
@@ -214,7 +213,7 @@ function NumberDescriber(props) {
 <MyComponent message={'<3'} />
 ```
 
-This behavior is usually not relevant. It's only mentioned here for completeness.
+이 동작은 보통 신경쓰지 않아도 되지만, 문서의 완전성을 위해서 언급해둡니다.
 
 ### Props의 기본값은 "True" {#props-default-to-true}
 
@@ -268,25 +267,25 @@ const App = () => {
 
 펼치기 연사자는 유용하지만 불필요한 prop을 컴포넌트에 넘기거나 유효하지 않은 HTML 속성들을 DOM에 넘기기도 합니다. 꼭 필요할 때만 사용하는 것을 권장합니다.
 
-## Children in JSX {#children-in-jsx}
+## JSX에서 자식 다루기 {#children-in-jsx}
 
-In JSX expressions that contain both an opening tag and a closing tag, the content between those tags is passed as a special prop: `props.children`. There are several different ways to pass children:
+여는 태그와 닫는 태그가 있는 JSX 표현에서 두 태그 사이의 내용은 `props.children`라는 특수한 prop으로 넘겨집니다. 자식을 넘기는 방법은 여러가지가 있습니다.
 
-### String Literals {#string-literals-1}
+### 문자열 리터럴 {#string-literals-1}
 
-You can put a string between the opening and closing tags and `props.children` will just be that string. This is useful for many of the built-in HTML elements. For example:
+여는 태그와 닫는 태그 사이에 문자열 리터럴을 넣을 수 있고 이 떄 `props.children`은 그 문자열이 됩니다. 이는 아래의 예시와 같이 많은 HTML 내장 element에 유용합니다.
 
 ```js
 <MyComponent>Hello world!</MyComponent>
 ```
 
-This is valid JSX, and `props.children` in `MyComponent` will simply be the string `"Hello world!"`. HTML is unescaped, so you can generally write JSX just like you would write HTML in this way:
+이는 유효한 JSX 입니다. 여기서 `MyComponent`의 `props.children`는 `"Hello world!"`입니다. HTML은 이스케이핑이 풀리게 되며, 일반적으로 아래와 같이 HTML을 쓰는 방식으로 JSX를 쓸 수 있습니다.
 
 ```html
 <div>This is valid HTML &amp; JSX at the same time.</div>
 ```
 
-JSX removes whitespace at the beginning and ending of a line. It also removes blank lines. New lines adjacent to tags are removed; new lines that occur in the middle of string literals are condensed into a single space. So these all render to the same thing:
+JSX는 각줄의 처음과 끝에 있는 공백을 제거합니다. 빈 줄 역시 제거합니다. 태그에 붙어있는 개행도 제거되며 문자열 리터럴 중간에 있는 개행은 한 개의 공백으로 대체됩니다. 따라서 아래의 예시들은 전부 똑같이 렌더됩니다.
 
 ```js
 <div>Hello World</div>
@@ -306,9 +305,9 @@ JSX removes whitespace at the beginning and ending of a line. It also removes bl
 </div>
 ```
 
-### JSX Children {#jsx-children}
+### JSX를 자식으로 사용하기 {#jsx-children}
 
-You can provide more JSX elements as the children. This is useful for displaying nested components:
+JSX element를 자식으로 넘겨 줄 수 있습니다. 이는 중첩된 컴포넌트를 보여줄 때 유용합니다.
 
 ```js
 <MyContainer>
@@ -317,7 +316,7 @@ You can provide more JSX elements as the children. This is useful for displaying
 </MyContainer>
 ```
 
-You can mix together different types of children, so you can use string literals together with JSX children. This is another way in which JSX is like HTML, so that this is both valid JSX and valid HTML:
+다양한 타입의 자식들을 섞어서 사용할 수 있습니다. 그래서 문자열 리터럴을 JSX 자식과 함께 사용할 수 있습니다. 이는 JSX를 HTML과 같은 방식으로 구동되는 점 중 하나입니다. 아래의 예시는 JSX와 HTML 모두에서 유효합니다.
 
 ```html
 <div>
@@ -329,7 +328,7 @@ You can mix together different types of children, so you can use string literals
 </div>
 ```
 
-A React component can also return an array of elements:
+React 컴포넌트는 element로 이루어진 배열을 반환할 수 있습니다.
 
 ```js
 render() {
@@ -343,9 +342,9 @@ render() {
 }
 ```
 
-### JavaScript Expressions as Children {#javascript-expressions-as-children}
+### JavaScript 표현식을 자식으로 사용하기 {#javascript-expressions-as-children}
 
-You can pass any JavaScript expression as children, by enclosing it within `{}`. For example, these expressions are equivalent:
+`{}`에 둘러쌈으로써 어느 JavaScript 표현식도 자식으로 넘길 수 있습니다. 아래의 예시들은 동일한 표현입니다.
 
 ```js
 <MyComponent>foo</MyComponent>
@@ -353,7 +352,7 @@ You can pass any JavaScript expression as children, by enclosing it within `{}`.
 <MyComponent>{'foo'}</MyComponent>
 ```
 
-This is often useful for rendering a list of JSX expressions of arbitrary length. For example, this renders an HTML list:
+이는 임의의 길이를 가진 JSX 표현식의 배열을 랜더링 할 때 종종 유용하게 사용됩니다. 아래의 예시는 HTML 배열로 랜더됩니다.
 
 ```js{2,9}
 function Item(props) {
@@ -370,7 +369,7 @@ function TodoList() {
 }
 ```
 
-JavaScript expressions can be mixed with other types of children. This is often useful in lieu of string templates:
+JavaScript 표현식은 다른 타입의 자식과 같이 쓸 수 있습니다. 이는 문자열 탬플릿을 대신해서 종종 유용합니다.
 
 ```js{2}
 function Hello(props) {
@@ -378,9 +377,9 @@ function Hello(props) {
 }
 ```
 
-### Functions as Children {#functions-as-children}
+### 함수를 자식으로 사용하기 {#functions-as-children}
 
-Normally, JavaScript expressions inserted in JSX will evaluate to a string, a React element, or a list of those things. However, `props.children` works just like any other prop in that it can pass any sort of data, not just the sorts that React knows how to render. For example, if you have a custom component, you could have it take a callback as `props.children`:
+보통 JSX에 삽입된 JavaScript 표현식은 문자열, React element 혹은 이들의 배열로 환산됩니다. 하지만 `props.children`은 다른 prop들과 마찬가지로 React가 렌더 할 수 있는 데이터의 형태 뿐만 아니라 어떤 형태의 데이터도 넘겨질 수 있습니다. 아래의 예시와 같이 직접 만든 컴포넌트가 있다면 `props.children`을 통해서 콜백을 넘겨받을 수 있습니다.
 
 ```js{4,13}
 // Calls the children callback numTimes to produce a repeated component
@@ -401,11 +400,11 @@ function ListOfTenThings() {
 }
 ```
 
-Children passed to a custom component can be anything, as long as that component transforms them into something React can understand before rendering. This usage is not common, but it works if you want to stretch what JSX is capable of.
+직접 만든 컴포넌트에 넘겨지는 자식들은 렌더되기 전에 React가 이해할 수 있는 형태로 변환된다면 어떤 것이든 넘겨질 수 있습니다. 이런 사용법은 일반적이지 않지만 JSX의 기능의 확장성을 확인하고 싶다면 사용할 수 있습니다.
 
-### Booleans, Null, and Undefined Are Ignored {#booleans-null-and-undefined-are-ignored}
+### 진리값, null, undefined는 무시됩니다. {#booleans-null-and-undefined-are-ignored}
 
-`false`, `null`, `undefined`, and `true` are valid children. They simply don't render. These JSX expressions will all render to the same thing:
+`false`, `null`, `undefined`와 `true`는 유효한 자식입니다. 그저 렌더링되지 않을 뿐입니다. 아래의 JSX 표현식들은 동일하게 렌더됩니다.
 
 ```js
 <div />
@@ -421,7 +420,7 @@ Children passed to a custom component can be anything, as long as that component
 <div>{true}</div>
 ```
 
-This can be useful to conditionally render React elements. This JSX only renders a `<Header />` if `showHeader` is `true`:
+이는 React element들을 조건하에 렌더할 떄 유용합니다. 아래의 JSX는 `showHeader`가 `true`일 때 동일하게 `<Header />`를 렌더하게 됩니다.
 
 ```js{2}
 <div>
@@ -430,7 +429,7 @@ This can be useful to conditionally render React elements. This JSX only renders
 </div>
 ```
 
-One caveat is that some ["falsy" values](https://developer.mozilla.org/en-US/docs/Glossary/Falsy), such as the `0` number, are still rendered by React. For example, this code will not behave as you might expect because `0` will be printed when `props.messages` is an empty array:
+한가지 주의해야 할 점은 `0`과 같은 ["falsy" 값들](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)은 React가 렌더한다는 점입니다. 예를 들어, 아래의 예시는 `props.messages`가 빈 배열일 때 예상과는 다르게 0을 출력하게 됩니다.
 
 ```js{2}
 <div>
@@ -440,7 +439,7 @@ One caveat is that some ["falsy" values](https://developer.mozilla.org/en-US/doc
 </div>
 ```
 
-To fix this, make sure that the expression before `&&` is always boolean:
+이를 고치려면 `&&` 앞의 표현식이 언제나 진리값이 되도록 해야합니다.
 
 ```js{2}
 <div>
@@ -450,7 +449,7 @@ To fix this, make sure that the expression before `&&` is always boolean:
 </div>
 ```
 
-Conversely, if you want a value like `false`, `true`, `null`, or `undefined` to appear in the output, you have to [convert it to a string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#String_conversion) first:
+반대로 `false`, `true`, `null` 또는 `undefined`와 같은 값들을 출력하고 싶다면 먼저 [문자열로 전환](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#String_conversion) 해야합니다.
 
 ```js{2}
 <div>
