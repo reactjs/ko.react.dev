@@ -46,7 +46,6 @@ React.createElement(
 ```
 특정 JSX가 어떻게 JavaScript로 변환되는지 시험해보고 싶다면 [온라인 babel 컴파일러](babel://jsx-simple-example)를 사용해보세요.
 
-If you want to test out how some specific JSX is converted into JavaScript, you can try out [the online Babel compiler](babel://jsx-simple-example).
 
 ## React Element의 타입 지정하기 {#specifying-the-react-element-type}
 
