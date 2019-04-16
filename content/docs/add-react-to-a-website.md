@@ -73,7 +73,7 @@ HTML page가 있는 곳에  `like_button.js` 파일을 생성합니다
 
 >팁
 >
->이 코드는 React 컴포넌트를 `LikeButton`이라고 정의합니다. 아직 이해하지 못하더라도 걱정 마세요 -- 나중에 [자습서 시작하기](/tutorial/tutorial.html)와 [중요 컨셉 안내](/docs/hello-world.html) 코스에서  React의 기본 요소를 다룰 것입니다. 지금은 화면에 그대로 따라하기만 하세요
+>이 코드는 React 컴포넌트를 `LikeButton`이라고 정의합니다. 아직 이해하지 못하더라도 걱정 마세요 -- 나중에 [자습서 시작하기](/tutorial/tutorial.html)와 [주요 개념 안내](/docs/hello-world.html) 코스에서  React의 기본 요소를 다룰 것입니다. 지금은 화면에 그대로 따라하기만 하세요
 
 **[the starter code](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** 다음에 `like_button.js`의 아랫부분에 두줄을 추가해주세요 
 
@@ -147,7 +147,7 @@ return (
 );
 ```
 
-이 두 코드는 완전히 동일합니다. JSX는 [완벽히 선택적](/docs/react-without-jsx.html)이지만 대부분의 사람은 UI code를 쓰는데 React와 다른 라이브러리 모두에서 도움이 된다는 걸 알게 되었습니다.
+이 두 코드는 완전히 동일합니다. JSX는 [분명히 옵션](/docs/react-without-jsx.html)이지만 대부분의 사람은 UI code를 쓰는데 React와 다른 라이브러리 모두에서 도움이 된다는 걸 알게 되었습니다.
 
 당신은 [이 온라인 컨버터](https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=)에서 JSX를 사용하고 실행할 수 있습니다.
 
