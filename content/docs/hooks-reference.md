@@ -107,13 +107,13 @@ useEffect(didUpdate);
 
 명령형 또는 어떤 효과를 발생하는 함수를 인자로 받습니다.
 
-DOM의 변형, 데이터의 구독, 타이머, 로깅 또는 다른 부작용(side effects)은 (React의 _렌더링 단계에_ 따르면) 함수 컴포넌트의 본문 안에서는 허용되지 않습니다. 만약 이를 수행한다면 그것은 매우 혼란스러운 버그 및 UI의 불일치를 야기하게 될 것입니다.
+변형, 구독, 타이머, 로깅 또는 다른 부작용(side effects)은 (React의 _렌더링 단계에_ 따르면) 함수 컴포넌트의 본문 안에서는 허용되지 않습니다. 만약 이를 수행한다면 그것은 매우 혼란스러운 버그 및 UI의 불일치를 야기하게 될 것입니다.
 
-대신에 `useEffect`를 사용하십시오. `useEffect`에 전달된 함수는 스크린에 렌더링이 완료된 후에 수행되게 될 것입니다. React의 순수한 함수적인 세계에서 명령적인 세계로의 탈출 해치(escape hatch)로 생각하십시오.
+대신에 `useEffect`를 사용하세요. `useEffect`에 전달된 함수는 화면에 렌더링이 완료된 후에 수행되게 될 것입니다. React의 순수한 함수적인 세계에서 명령적인 세계로의 탈출구로 생각하세요.
 
-기본적으로 동작은 모든 렌더링이 완료된 후에 수행됩니다만, [어떤 값이 변경되었을 때는](#conditionally-firing-an-effect) 그 동작을 직접 수행시킬 수도 있습니다. 
+기본적으로 동작은 모든 렌더링이 완료된 후에 수행됩니다만, [어떤 값이 변경되었을 때만](#conditionally-firing-an-effect) 실행되게 할 수도 있습니다. 
 
-#### 동작의 정화 {#cleaning-up-an-effect}
+#### effect 정리 {#cleaning-up-an-effect}
 
 effect는 종종 컴포넌트가 화면에서 제거될 때 정리(clean-up)해야 하는 리소스를 만듭니다. 가령 데이터 구독이나 타이머 ID와 같은 것입니다. 이것을 수행하기 위해서 `useEffect`로 전달된 함수는 정화(clean-up) 함수를 반환할 수 있습니다. 예를 들어 데이터 구독을 생성하는 경우는 아래와 같습니다. 
 
@@ -143,7 +143,7 @@ effect의 기본 동작은 모든 렌더링을 완료한 후 effect 를 발생�
 
 그렇지만 앞의 이런 것은 어떤 경우에는 과잉일 지도 모릅니다. 예를 들면 앞 섹션에서의 데이터 구독의 예와 같은 것입니다. `source` props가 변경될 때에만 필요한 것이라면 매번 갱신할 때마다 새로운 데이터 구독을 생성할 필요는 없습니다.
 
-이것을 수행하기 위해서는 `useEffect`에 두 번째 인자를 전달하십시오. 이 인자는 effect가 종속되어 있는 값의 배열입니다. 이를 적용한 예는 아래와 같습니다.
+이것을 수행하기 위해서는 `useEffect`에 두 번째 인자를 전달하세요. 이 인자는 effect가 종속되어 있는 값의 배열입니다. 이를 적용한 예는 아래와 같습니다.
 
 ```js
 useEffect(
@@ -161,11 +161,11 @@ useEffect(
 
 >주의
 >
->이 최적화를 사용하는 경우, 값의 배열이 **시간이 지남에 따라 변경되고 effect에 사용되는 컴포넌트 범위의 모든 값들(예를 들어, props와 state와 같은 값들)을** 포함하고 있는지 확인하십시오. 그렇지 않다면 여러분의 코드는 이전 렌더링에서 설정된 오래된 값을 참조하게 될 것입니다. [how to deal with functions](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)와 [array values change too often](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 할 때 무엇을 할 것인지에 대해서 조금 더 알아봅시다.
+>이 최적화를 사용하는 경우, 값의 배열이 **시간이 지남에 따라 변경되고 effect에 사용되는 컴포넌트 범위의 모든 값들(예를 들어, props와 state와 같은 값들)을** 포함하고 있는지 확인하세요. 그렇지 않다면 여러분의 코드는 이전 렌더링에서 설정된 오래된 값을 참조하게 될 것입니다. [how to deal with functions](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)와 [array values change too often](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 할 때 무엇을 할 것인지에 대해서 조금 더 알아봅시다.
 >
 >만약 effect를 수행하고 (mount를 하거나 unmount 할 때) 그것을 한 번만 제거하고 싶다면 두 번째 인자로 빈 배열(`[]`)을 전달할 수 있습니다. 이를 통해 effect는 React에게 props나 state에서 가져온 *어떤* 값에도 의존하지 않으므로, 다시 실행할 필요가 전혀 없다는 것을 알려주게 됩니다. 이것을 특별한 경우로 간주하지는 않고, 의존성 값의 배열이 항상 어떻게 동작하는지 직접적으로 보여주는 것뿐입니다.
 >
->만약 빈 배열(`[]`)을 전달한다면 effect 안에 있는 props와 state는 항상 초깃값을 가지게 될 것입니다. 두 번째 인자로써 `[]`을 전달하는 것이 친숙한 `componentDidMount`와 `componentWillUnmount`에 의한 개념과 비슷하게 느껴지겠지만, effect가 너무 자주 재 렌더링 되는 것을 피하기 위한 보통 [더 나은](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [해결책](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)이 있습니다. 또한 브라우저가 모두 그려질 때까지 React는 `useEffect`의 수행을 지연하기 때문에 다른 부작업의 수행이 문제가 되지는 않는다는 것을 잊지 마십시오.
+>만약 빈 배열(`[]`)을 전달한다면 effect 안에 있는 props와 state는 항상 초깃값을 가지게 될 것입니다. 두 번째 인자로써 `[]`을 전달하는 것이 친숙한 `componentDidMount`와 `componentWillUnmount`에 의한 개념과 비슷하게 느껴지겠지만, effect가 너무 자주 재 렌더링 되는 것을 피하기 위한 보통 [더 나은](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [해결책](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)이 있습니다. 또한 브라우저가 모두 그려질 때까지 React는 `useEffect`의 수행을 지연하기 때문에 다른 부작업의 수행이 문제가 되지는 않는다는 것을 잊지 마세요.
 >
 >
 >[`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 패키지의 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 규칙을 사용하기를 권장합니다. 그것은 의존성이 바르지 않게 정의되었다면 그에 대해 경고하고 수정하도록 알려줍니다.
@@ -182,7 +182,7 @@ context 객체(`React.createContext`에서 반환된 값)을 받아 그 context�
 
 컴포넌트에서 가장 가까운 `<MyContext.Provider>`가 갱신되면 이 Hook은 그 `MyContext` 공급자(provider)에게 전달된 가장 최신의 context `value`를 사용하여 렌더러를 트리거 합니다.
 
-`useContext`로 전달한 인자는 *context 객체 그 자체*이어야 함을 잊지 마십시오.
+`useContext`로 전달한 인자는 *context 객체 그 자체*이어야 함을 잊지 마세요.
 
  * **맞는 사용:** `useContext(MyContext)`
  * **틀린 사용:** `useContext(MyContext.Consumer)`
@@ -244,7 +244,7 @@ function Counter({initialState}) {
 
 #### 초기 state의 구체화 {#specifying-the-initial-state}
 
-`useReducer` state의 초기화에는 두 가지 방법이 있습니다. 유스케이스에 따라서 한 가지를 선택하십시오. 가장 간단한 방법은 초기 state를 두 번째 인자로 전달하는 것입니다.
+`useReducer` state의 초기화에는 두 가지 방법이 있습니다. 유스케이스에 따라서 한 가지를 선택하세요. 가장 간단한 방법은 초기 state를 두 번째 인자로 전달하는 것입니다.
 
 ```js{3}
   const [state, dispatch] = useReducer(
@@ -316,7 +316,7 @@ const memoizedCallback = useCallback(
 
 [메모화된](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98) 콜백을 반환합니다.
 
-인라인 콜백과 그것의 의존성 값의 배열을 전달하십시오. `useCallback`은 콜백의 메모화된 버전을 반환할 것입니다. 그 메모화된 버전은 콜백의 의존성이 변경되었을 때에만 변경됩니다. 이것은, 불필요한 렌더링을 방지하기 위해 (예로 `shouldComponentUpdate`를 사용하여) 참조의 동일성에 의존적인 최적화된 자식 컴포넌트에 콜백을 전달할 때 유용합니다.
+인라인 콜백과 그것의 의존성 값의 배열을 전달하세요. `useCallback`은 콜백의 메모화된 버전을 반환할 것입니다. 그 메모화된 버전은 콜백의 의존성이 변경되었을 때에만 변경됩니다. 이것은, 불필요한 렌더링을 방지하기 위해 (예로 `shouldComponentUpdate`를 사용하여) 참조의 동일성에 의존적인 최적화된 자식 컴포넌트에 콜백을 전달할 때 유용합니다.
 
 `useCallback(fn, deps)`은 `useMemo(() => fn, deps)`와 같습니다.
 
@@ -334,13 +334,13 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 
 [메모화된](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98n) 값을 반환합니다.
 
-"생성(create)" 함수와 그것의 의존성 값의 배열을 전달하십시오. `useMemo`는 의존성이 변경되었을 때에만 메모화된 값만 다시 계산 할 것입니다. 이 최적화는 모든 렌더링 시의 고비용 계산을 방지하게 해 줍니다.
+"생성(create)" 함수와 그것의 의존성 값의 배열을 전달하세요. `useMemo`는 의존성이 변경되었을 때에만 메모화된 값만 다시 계산 할 것입니다. 이 최적화는 모든 렌더링 시의 고비용 계산을 방지하게 해 줍니다.
 
-`useMemo`로 전달된 함수는 렌더링 중에 실행된다는 것을 기억하십시오. 통상적으로 렌더링 중에는 하지 않는 것을 이 함수 내에서 하지 마십시오. 예를 들어, 사이드 이펙트(side effects)는 `useEffect`에서 하는 일이지 `useMemo`에서 하는 일이 아닙니다.
+`useMemo`로 전달된 함수는 렌더링 중에 실행된다는 것을 기억하세요. 통상적으로 렌더링 중에는 하지 않는 것을 이 함수 내에서 하지 마세요. 예를 들어, 사이드 이펙트(side effects)는 `useEffect`에서 하는 일이지 `useMemo`에서 하는 일이 아닙니다.
 
 배열이 없는 경우 매 렌더링 때마다 새 값을 계산하게 될 것입니다.
 
-**`useMemo`는 성능 최적화를 위해 사용할 수는 있지만 의미상으로 보장이 있다고 생각하지는 마십시오.** 가까운 미래에 React에서는, 이전 메모화된 값들의 일부를 "잊어버리고" 다음 렌더링 시에 그것들을 재계산하는 방향을 택할지도 모르겠습니다. 예를 들면, 오프스크린 컴포넌트의 메모리를 해제하는 등이 있을 수 있습니다. `useMemo`를 사용하지 않고도 동작할 수 있도록 코드를 작성하고 그것을 추가하여 성능을 최적화하십시오.
+**`useMemo`는 성능 최적화를 위해 사용할 수는 있지만 의미상으로 보장이 있다고 생각하지는 마세요.** 가까운 미래에 React에서는, 이전 메모화된 값들의 일부를 "잊어버리고" 다음 렌더링 시에 그것들을 재계산하는 방향을 택할지도 모르겠습니다. 예를 들면, 오프스크린 컴포넌트의 메모리를 해제하는 등이 있을 수 있습니다. `useMemo`를 사용하지 않고도 동작할 수 있도록 코드를 작성하고 그것을 추가하여 성능을 최적화하세요.
 
 > 주의
 >
@@ -382,7 +382,7 @@ function TextInputWithFocusButton() {
 
 이것은 `useRef()`가 순수 자바스크립트 객체를 생성하기 때문입니다. `useRef()`와 `{current: ...}` 객체 자체를 생성하는 것의 유일한 차이점이라면 `useRef`는 매번 렌더링을 할 때 동일한 ref 객체를 제공한다는 것입니다.
 
-`useRef`는 내용이 변경될 때 그것을 알려주지는 *않는다*는 것을 유념하십시오. `.current` 프로퍼티를 변형하는 것이 재렌더링을 발생시키지는 않습니다. 만약 React가 DOM 노드에 ref를 attach하거나 detach할 때 어떤 코드를 실행하고 싶다면 대신 [콜백 ref](/docs/hooks-faq.html#how-can-i-measure-a-dom-node)를 사용하십시오.
+`useRef`는 내용이 변경될 때 그것을 알려주지는 *않는다*는 것을 유념하세요. `.current` 프로퍼티를 변형하는 것이 재렌더링을 발생시키지는 않습니다. 만약 React가 DOM 노드에 ref를 attach하거나 detach할 때 어떤 코드를 실행하고 싶다면 대신 [콜백 ref](/docs/hooks-faq.html#how-can-i-measure-a-dom-node)를 사용하세요.
 
 
 ### `useImperativeHandle` {#useimperativehandle}
@@ -391,7 +391,7 @@ function TextInputWithFocusButton() {
 useImperativeHandle(ref, createHandle, [deps])
 ```
 
-`useImperativeHandle`은 `ref`를 사용할 때 부모 컴포넌트에 노출되는 인스턴스 값을 사용자화(customizes)합니다. 항상 그렇듯이, 대부분의 경우 ref를 사용한 명령형 코드는 피해야 합니다. `useImperativeHandle`는 `forwardRef`와 더불어 사용하십시오.
+`useImperativeHandle`은 `ref`를 사용할 때 부모 컴포넌트에 노출되는 인스턴스 값을 사용자화(customizes)합니다. 항상 그렇듯이, 대부분의 경우 ref를 사용한 명령형 코드는 피해야 합니다. `useImperativeHandle`는 `forwardRef`와 더불어 사용하세요.
 
 ```js
 function FancyInput(props, ref) {
@@ -412,15 +412,15 @@ FancyInput = forwardRef(FancyInput);
 
 이 함수의 시그니처는 `useEffect`와 동일하긴 한데, 모든 DOM 변경 후에 동기적으로 발생합니다. 이것은 DOM에서 레이아웃을 읽고 동기적으로 재 렌더링하는 경우에 사용하세요. `useLayoutEffect`의 내부에 예정된 갱신은 브라우저가 화면을 그리기 이전 시점에 동기적으로 수행될 것입니다.
 
-화면 갱신 차단의 방지가 가능할 때 표준 `useEffect`를 먼저 사용하십시오.
+화면 갱신 차단의 방지가 가능할 때 표준 `useEffect`를 먼저 사용하세요.
 
 >팁
 >
 >클래스 컴포넌트에서 코드를 변환하는 경우에 `useLayoutEffect`는 `componentDidMount`나 `componentDidUpdate`와 동일한 단계를 실행하게 된다는 것에 주의하기 바랍니다. 그렇기는 하지만, **먼저 `useEffect`를 사용해 보고** 문제가 있다면 그다음으로 `useLayoutEffect`를 사용해 보기를 권합니다.
 >
->서버 렌더링을 사용하는 경우라면 자바스크립트가 모두 다운로드될 때까지는 `useLayoutEffect`와 `useEffect` *어느 것도* 실행되지 않는다는 것을 명심해야 합니다. 이것이 서버에서 렌더링 되는 컴포넌트에서 `useLayoutEffect`가 사용되는 경우에 대해 React가 경고하는 이유입니다. 이를 수정하기 위해서는 (최초 렌더링 시에 필요하지 않다면) 로직을 `useEffect`로 이동한다거나 (`useLayoutEffect`가 수행될 때까지 HTML이 깨져 보이는 경우는) 클라이언트 렌더링이 완료될 때까지 컴포넌트 노출을 지연하도록 하십시오.
+>서버 렌더링을 사용하는 경우라면 자바스크립트가 모두 다운로드될 때까지는 `useLayoutEffect`와 `useEffect` *어느 것도* 실행되지 않는다는 것을 명심해야 합니다. 이것이 서버에서 렌더링 되는 컴포넌트에서 `useLayoutEffect`가 사용되는 경우에 대해 React가 경고하는 이유입니다. 이를 수정하기 위해서는 (최초 렌더링 시에 필요하지 않다면) 로직을 `useEffect`로 이동한다거나 (`useLayoutEffect`가 수행될 때까지 HTML이 깨져 보이는 경우는) 클라이언트 렌더링이 완료될 때까지 컴포넌트 노출을 지연하도록 하세요.
 >
->서버에서 렌더링된 HTML에서 레이아웃 effect가 필요한 컴포넌트를 배제하고 싶다면, `showChild && <Child />`를 사용하여 조건적으로 렌더링 하고 `useEffect(() => { setShowChild(true); }, [])`를 사용하여 노출을 지연시키십시오. 이런 방법으로 자바스크립트 코드가 주입되기 전에 깨져 보일 수 있는 UI는 표현되지 않게 됩니다.
+>서버에서 렌더링된 HTML에서 레이아웃 effect가 필요한 컴포넌트를 배제하고 싶다면, `showChild && <Child />`를 사용하여 조건적으로 렌더링 하고 `useEffect(() => { setShowChild(true); }, [])`를 사용하여 노출을 지연시키세요. 이런 방법으로 자바스크립트 코드가 주입되기 전에 깨져 보일 수 있는 UI는 표현되지 않게 됩니다.
 
 ### `useDebugValue` {#usedebugvalue}
 
