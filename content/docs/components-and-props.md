@@ -16,13 +16,13 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
-Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. This page provides an introduction to the idea of components. You can find a [detailed component API reference here](/docs/react-component.html).
+컴포넌트를 통해 UI를 재사용 가능한 개별적인 여러 조각으로 나누고, 각 조각을 개별적으로 살펴볼 수 있습니다. 이 페이지에서는 컴포넌트의 개념을 소개합니다. [자세한 컴포넌트 API 레퍼런스는 여기](/docs/react-component.html)에서 확인할 수 있습니다.
 
-Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
+개념적으로 컴포넌트는 JavaScript 함수와 유사합니다. "props"라고 하는 임의의 입력을 받은 후, 화면에 어떻게 표시되는지를 기술하는 React 엘리먼트를 반환합니다.
 
-## Function and Class Components {#function-and-class-components}
+## 함수 컴포넌트와 클래스 컴포넌트 {#function-and-class-components}
 
-The simplest way to define a component is to write a JavaScript function:
+컴포넌트를 정의하는 가장 간단한 방법은 JavaScript 함수를 작성하는 것입니다.
 
 ```js
 function Welcome(props) {
@@ -30,9 +30,9 @@ function Welcome(props) {
 }
 ```
 
-This function is a valid React component because it accepts a single "props" (which stands for properties) object argument with data and returns a React element. We call such components "function components" because they are literally JavaScript functions.
+이 함수는 데이터를 가진 하나의 "props" (props는 속성을 나타내는 데이터입니다) 객체 인자를 받은 후 React 엘리먼트를 반환하므로 유효한 React 컴포넌트입니다. 이러한 컴포넌트는 JavaScript 함수이기 때문에 말 그대로 "함수 컴포넌트"라고 호칭합니다.
 
-You can also use an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) to define a component:
+또한 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)를 사용하여 컴포넌트를 정의할 수 있습니다.
 
 ```js
 class Welcome extends React.Component {
@@ -42,27 +42,27 @@ class Welcome extends React.Component {
 }
 ```
 
-The above two components are equivalent from React's point of view.
+React의 관점에서 볼 때 위 두 가지 유형의 컴포넌트는 동일합니다.
 
-Classes have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html). Until then, we will use function components for their conciseness.
+class는 몇 가지 추가 기능이 있으며 이에 대해서는 [다음 장](/docs/state-and-lifecycle.html)에서 설명합니다. 그때까지는 간결성을 위해 함수 컴포넌트를 사용하겠습니다.
 
-## Rendering a Component {#rendering-a-component}
+## 컴포넌트 렌더링 {#rendering-a-component}
 
-Previously, we only encountered React elements that represent DOM tags:
+이전까지는 React 엘리먼트를 DOM 태그로 나타냈습니다.  
 
 ```js
 const element = <div />;
 ```
 
-However, elements can also represent user-defined components:
+React 엘리먼트는 사용자 정의 컴포넌트로도 나타낼 수 있습니다.
 
 ```js
 const element = <Welcome name="Sara" />;
 ```
 
-When React sees an element representing a user-defined component, it passes JSX attributes to this component as a single object. We call this object "props".
+React가 사용자 정의 컴포넌트로 작성한 엘리먼트를 발견하면 JSX 어트리뷰트를 해당 컴포넌트에 단일 객체로 전달합니다. 이 객체를 "props"라고 합니다.
 
-For example, this code renders "Hello, Sara" on the page:
+다음은 페이지에 "Hello, Sara"를 렌더링하는 예시입니다.
 
 ```js{1,5}
 function Welcome(props) {
@@ -76,26 +76,29 @@ ReactDOM.render(
 );
 ```
 
-[](codepen://components-and-props/rendering-a-component)
+[CodePen에서 시험해보기](codepen://components-and-props/rendering-a-component)
 
-Let's recap what happens in this example:
+이 예시에서는 다음과 같은 일들이 일어납니다.
 
-1. We call `ReactDOM.render()` with the `<Welcome name="Sara" />` element.
-2. React calls the `Welcome` component with `{name: 'Sara'}` as the props.
-3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
-4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
+1. `<Welcome name="Sara" />` 엘리먼트로 `ReactDOM.render()`를 호출합니다.
+2. React는 `{name: 'Sara'}`를 props로 하여 `Welcome` 컴포넌트를 호출합니다.
+3. `Welcome` 컴포넌트는 결과적으로  `<h1>Hello, Sara</h1>` 엘리먼트를 반환합니다.
+4. React DOM은 `<h1>Hello, Sara</h1>` 엘리먼트와 일치하도록 DOM을 효율적으로 업데이트합니다.
 
->**Note:** Always start component names with a capital letter.
+
+
+>**주의: 컴포넌트의 이름은 항상 대문자로 시작합니다.**
 >
->React treats components starting with lowercase letters as DOM tags. For example, `<div />` represents an HTML div tag, but `<Welcome />` represents a component and requires `Welcome` to be in scope.
+>React는 소문자로 시작하는 컴포넌트를 DOM 태그로 처리합니다. 예를 들어 `<div />`는 HTML div 태그를 나타내지만, `<Welcome />`은 컴포넌트를 나타내며 범위 안에 `Welcome`이 있어야 합니다.
 >
->To learn more about the reasoning behind this convention, please read [JSX In Depth](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized).
+>이 규칙에 대한 자세한 내용은 [여기](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized)에서 확인할 수 있습니다.
 
-## Composing Components {#composing-components}
 
-Components can refer to other components in their output. This lets us use the same component abstraction for any level of detail. A button, a form, a dialog, a screen: in React apps, all those are commonly expressed as components.
+## 컴포넌트 합성 {#composing-components}
 
-For example, we can create an `App` component that renders `Welcome` many times:
+컴포넌트는 자신의 출력에 다른 컴포넌트를 참조할 수 있습니다. 이는 모든 세부 단계에서 동일한 추상 컴포넌트를 사용할 수 있음을 의미합니다. React 앱에서는 버튼, 폼, 다이얼로그, 화면 등의 모든 것들이 흔히 컴포넌트로 표현됩니다.
+
+예를 들어 `Welcome`을 여러 번 렌더링하는 `App` 컴포넌트를 만들 수 있습니다.
 
 ```js{8-10}
 function Welcome(props) {
@@ -118,15 +121,15 @@ ReactDOM.render(
 );
 ```
 
-[](codepen://components-and-props/composing-components)
+[CodePen에서 시험해보기](codepen://components-and-props/composing-components)
 
-Typically, new React apps have a single `App` component at the very top. However, if you integrate React into an existing app, you might start bottom-up with a small component like `Button` and gradually work your way to the top of the view hierarchy.
+일반적으로 새 React 앱은 최상위에 단일 `App` 컴포넌트를 가지고 있습니다. 하지만 기존 앱에 React를 통합하는 경우에는 `Button`과 같은 작은 컴포넌트부터 시작해서 뷰 계층의 상단으로 올라가면서 점진적으로 작업해야 할 수 있습니다.
 
-## Extracting Components {#extracting-components}
+## 컴포넌트 추출 {#extracting-components}
 
-Don't be afraid to split components into smaller components.
+컴포넌트를 여러 개의 작은 컴포넌트로 나누는 것을 두려워하지 마세요.
 
-For example, consider this `Comment` component:
+다음 `Comment` 컴포넌트를 살펴봅시다.
 
 ```js
 function Comment(props) {
@@ -152,13 +155,13 @@ function Comment(props) {
 }
 ```
 
-[](codepen://components-and-props/extracting-components)
+[CodePen에서 시험해보기](codepen://components-and-props/extracting-components)
 
-It accepts `author` (an object), `text` (a string), and `date` (a date) as props, and describes a comment on a social media website.
+이 컴포넌트는 `author`(객체), `text`(문자열) 및 `date`(날짜)를 props로 받은 후 소셜 미디어 웹 사이트의 코멘트를 나타냅니다.
 
-This component can be tricky to change because of all the nesting, and it is also hard to reuse individual parts of it. Let's extract a few components from it.
+이 컴포넌트는 구성요소들이 모두 중첩 구조로 이루어져 있어서 변경하기 어려울 수 있으며, 각 구성요소를 개별적으로 재사용하기도 힘듭니다. 이 컴포넌트에서 몇 가지 컴포넌트를 추출하겠습니다.
 
-First, we will extract `Avatar`:
+먼저 `Avatar`를 추출하겠습니다.
 
 ```js{3-6}
 function Avatar(props) {
@@ -171,11 +174,11 @@ function Avatar(props) {
 }
 ```
 
-The `Avatar` doesn't need to know that it is being rendered inside a `Comment`. This is why we have given its prop a more generic name: `user` rather than `author`.
+`Avatar` 는 자신이 `Comment` 내에서 렌더링 된다는 것을 알 필요가 없습니다. 따라서 props의 이름을 `author`에서 더욱 일반화된 `user`로 변경하였습니다. 
 
-We recommend naming props from the component's own point of view rather than the context in which it is being used.
+props의 이름은 사용될 context가 아닌 컴포넌트 자체의 관점에서 짓는 것을 권장합니다.
 
-We can now simplify `Comment` a tiny bit:
+이제 `Comment` 가 살짝 단순해졌습니다. 
 
 ```js{5}
 function Comment(props) {
@@ -198,7 +201,7 @@ function Comment(props) {
 }
 ```
 
-Next, we will extract a `UserInfo` component that renders an `Avatar` next to the user's name:
+다음으로 `Avatar` 옆에 사용자의 이름을 렌더링하는 `UserInfo` 컴포넌트를 추출하겠습니다.
 
 ```js{3-8}
 function UserInfo(props) {
@@ -213,7 +216,7 @@ function UserInfo(props) {
 }
 ```
 
-This lets us simplify `Comment` even further:
+`Comment` 가 더욱 단순해졌습니다.
 
 ```js{4}
 function Comment(props) {
@@ -231,13 +234,13 @@ function Comment(props) {
 }
 ```
 
-[](codepen://components-and-props/extracting-components-continued)
+[CodePen에서 시험해보기](codepen://components-and-props/extracting-components-continued)
 
-Extracting components might seem like grunt work at first, but having a palette of reusable components pays off in larger apps. A good rule of thumb is that if a part of your UI is used several times (`Button`, `Panel`, `Avatar`), or is complex enough on its own (`App`, `FeedStory`, `Comment`), it is a good candidate to be a reusable component.
+처음에는 컴포넌트를 추출하는 작업이 지루해 보일 수 있습니다. 하지만 재사용 가능한 컴포넌트를 만들어 놓는 것은 더 큰 앱에서 작업할 때 두각을 나타냅니다. UI 일부가 여러 번 사용되거나 (`Button`, `Panel`, `Avatar`), UI 일부가 자체적으로 복잡한 (`App`, `FeedStory`, `Comment`) 경우에는 재사용 가능한 컴포넌트로 만드는 것이 좋습니다.
 
-## Props are Read-Only {#props-are-read-only}
+## props는 읽기 전용입니다.  {#props-are-read-only}
 
-Whether you declare a component [as a function or a class](#function-and-class-components), it must never modify its own props. Consider this `sum` function:
+함수 컴포넌트나 클래스 컴포넌트 모두 컴포넌트의 자체 props를 수정해서는 안 됩니다. 다음 `sum` 함수를 살펴봅시다.
 
 ```js
 function sum(a, b) {
@@ -245,9 +248,9 @@ function sum(a, b) {
 }
 ```
 
-Such functions are called ["pure"](https://en.wikipedia.org/wiki/Pure_function) because they do not attempt to change their inputs, and always return the same result for the same inputs.
+이런 함수들은 [순수 함수](https://en.wikipedia.org/wiki/Pure_function)라고 호칭합니다. 입력값을 바꾸려 하지 않고 항상 동일한 입력값에 대해 동일한 결과를 반환하기 때문입니다.
 
-In contrast, this function is impure because it changes its own input:
+반면에 다음 함수는 자신의 입력값을 변경하기 때문에 순수 함수가 아닙니다.
 
 ```js
 function withdraw(account, amount) {
@@ -255,8 +258,8 @@ function withdraw(account, amount) {
 }
 ```
 
-React is pretty flexible but it has a single strict rule:
+React는 매우 유연하지만 한 가지 엄격한 규칙이 있습니다.
 
-**All React components must act like pure functions with respect to their props.**
+**모든 React 컴포넌트는 자신의 props를 다룰 때 반드시 순수 함수처럼 동작해야 합니다.**
 
-Of course, application UIs are dynamic and change over time. In the [next section](/docs/state-and-lifecycle.html), we will introduce a new concept of "state". State allows React components to change their output over time in response to user actions, network responses, and anything else, without violating this rule.
+물론 애플리케이션 UI는 동적이며 시간에 따라 변합니다. [다음 장](/docs/state-and-lifecycle.html)에서는 "state"라는 새로운 개념을 소개합니다. React 컴포넌트는 state를 통해 위 규칙을 위반하지 않고 사용자 액션, 네트워크 응답 및 다른 요소에 대한 응답으로 시간에 따라 자신의 출력값을 변경할 수 있습니다.

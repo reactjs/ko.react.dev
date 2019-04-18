@@ -87,7 +87,7 @@ To solve these problems, **Hooks let you use more of React's features without cl
 
 >Examples
 >
->[Hooks at a Glance](/docs/hooks-overview.html) is a good place to start learning Hooks.
+>[Hook 개요](/docs/hooks-overview.html) is a good place to start learning Hooks.
 
 ## Gradual Adoption Strategy {#gradual-adoption-strategy}
 
