@@ -356,7 +356,6 @@ this.setState({
 
 이를 수정하기 위해 객체보다는 함수를 인자로 사용하는 다른 형태의 `setState()`를 사용합니다. 그 함수는 이전 state를 첫 번째 인자로 받아들일 것이고, 업데이트가 적용된 시점의 props를 두 번째 인자로 받아들일 것입니다.
 
-
 ```js
 // Correct
 this.setState((state, props) => ({
@@ -365,7 +364,6 @@ this.setState((state, props) => ({
 ```
 
 위에서는 [화살표 함수](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)를 사용했지만, 일반적인 함수에서도 정상적으로 작동합니다.
-
 
 ```js
 // Correct
