@@ -1,6 +1,6 @@
 ---
 id: thinking-in-react
-title: React처럼 사고하기
+title: React로 사고하기
 permalink: docs/thinking-in-react.html
 redirect_from:
   - 'blog/2013/11/05/thinking-in-react.html'
@@ -8,9 +8,9 @@ redirect_from:
 prev: composition-vs-inheritance.html
 ---
 
-React 는 JavaScript로 규모가 크고 빠른 웹 애플리케이션을 만드는 가장 좋은 방법입니다. React는 Facebook과 Instagram을 통해 확장성을 입증했습니다.
+React는 JavaScript로 규모가 크고 빠른 웹 애플리케이션을 만드는 가장 좋은 방법입니다. React는 Facebook과 Instagram을 통해 확장성을 입증했습니다.
 
-React의 가장 멋진 점 중 하나는 앱을 설계하는 방식입니다. 이 문서를 통해 리액트로 상품들을 검색할 수 있는 데이터 테이블을 만드는 과정을 함께 생각해 봅시다.
+React의 가장 멋진 점 중 하나는 앱을 설계하는 방식입니다. 이 문서를 통해 React로 상품들을 검색할 수 있는 데이터 테이블을 만드는 과정을 함께 생각해 봅시다.
 
 ## 목업으로 시작하기 {#start-with-a-mock}
 
@@ -33,11 +33,11 @@ JSON API는 아래와 같은 데이터를 반환합니다.
 
 ## 1단계: UI를 컴포넌트 계층 구조로 나누기 {#step-1-break-the-ui-into-a-component-hierarchy} 
 
-우리가 할 첫 번째 일은 모든 컴포넌트(와 하위 컴포넌트)의 주변에 박스를 그리고 그 각각에 이름을 붙이는 것입니다. 만약 디자이너와 함께 일한다면, 이것들을 이미 정해두었을 수 있으니 한번 대화해보세요! 디자이너의 Photoshop 레이어 이름이 React 컴포넌트의 이름이 될 수 있습니다.
+우리가 할 첫 번째 일은 모든 컴포넌트(와 하위 컴포넌트)의 주변에 박스를 그리고 그 각각에 이름을 붙이는 것입니다. 디자이너와 함께 일한다면, 이것들을 이미 정해두었을 수 있으니 한번 대화해보세요! 디자이너의 Photoshop 레이어 이름이 React 컴포넌트의 이름이 될 수 있습니다.
 
-하지만 어떤 것이 컴포넌트가 되어야 할지 어떻게 알 수 있을까요? 우리가 새로운 함수나 객체를 만들 때처럼 만드시면 됩니다. 한 가지 테크닉은 [단일 책임 원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99)입니다. 이는 하나의 컴포넌트는 한 가지 일을 하는게 이상적이라는 원칙입니다. 만약 하나의 컴포넌트가 커지게 된다면 이는 보다 작은 하위 컴포넌트로 분리되어야 합니다.
+하지만 어떤 것이 컴포넌트가 되어야 할지 어떻게 알 수 있을까요? 우리가 새로운 함수나 객체를 만들 때처럼 만드시면 됩니다. 한 가지 테크닉은 [단일 책임 원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99)입니다. 이는 하나의 컴포넌트는 한 가지 일을 하는게 이상적이라는 원칙입니다. 하나의 컴포넌트가 커지게 된다면 이는 보다 작은 하위 컴포넌트로 분리되어야 합니다.
 
- 주로 JSON 데이터를 유저에게 보여주기 때문에, 만약 데이터 모델이 적절하게 만들어졌다면, UI(컴포넌트 구조)가 잘 매핑될 것입니다. 이는 UI와 데이터 모델이 같은 *인포메이션 아키텍처(information architecture)*로 잘 연결되기 때문입니다. 이 말은 UI를 컴포넌트로 세분화 시키기가 쉽다는 의미이기도 합니다. 각 컴포넌트가 데이터 모델의 한 조각을 나타내도록 분리하면 됩니다. 
+ 주로 JSON 데이터를 유저에게 보여주기 때문에, 데이터 모델이 적절하게 만들어졌다면, UI(컴포넌트 구조)가 잘 연결될 것입니다. 이는 UI와 데이터 모델이 같은 *인포메이션 아키텍처(information architecture)*로 잘 연결되기 때문입니다. 이 말은 UI를 컴포넌트로 세분화 시키기가 쉽다는 의미이기도 합니다. 각 컴포넌트가 데이터 모델의 한 조각을 나타내도록 분리하면 됩니다. 
 
 ![Component diagram](../images/blog/thinking-in-react-components.png)
 
@@ -61,28 +61,28 @@ JSON API는 아래와 같은 데이터를 반환합니다.
 
 ## 2단계: React로 정적인 버전 만들기 {#step-2-build-a-static-version-in-react}
 
-<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-versi기n="2" class="codepen"><a href="https://codepen.io">CodePen</a>에서<a href="https://codepen.io/gaearon/pen/BwWzwm">Thinking In React: Step 2</a>를 살펴보세요.</p>
+<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen"><a href="https://codepen.io">CodePen</a>에서 <a href="https://codepen.io/gaearon/pen/BwWzwm">Thinking In React: Step 2</a>를 살펴보세요.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 이제 컴포넌트 계층구조가 만들어졌으니 앱을 실제로 구현해볼 시간입니다. 가장 쉬운 방법은 데이터 모델을 가지고 UI를 렌더링은 되지만 아무 동작도 없는 버전을 만들어보는 것입니다. 이처럼 과정을 나누는 것이 좋은데 정적 버전을 만드는 것은 생각은 적게 필요하지만 타이핑은 많이 필요로 하고, 상호작용을 만드는 것은 생각은 많이 해야 하지만 타이핑은 적게 필요로 하기 때문입니다. 나중에 보다 자세히 살펴봅시다.
 
-데이터 모델을 렌더링하는 앱의 정적 버전을 만들기 위해 다른 컴포넌트를 재사용하는 컴포넌트를 만들고 props 를 이용해 데이터를 전달해줍시다. props는 부모가 자식에게 데이터를 넘겨줄 때 사용할 수 있는 방법입니다. 만약 state 에 대해 알고 있다면 정적 버전을 만들기 위해 **state를 사용하지 마세요**. state는 오직 상호작용을 위해, 즉 시간이 지남에 따라 데이터가 바뀌는 것에 사용합니다. 우리는 앱의 정적 버전을 만들고 있기 때문에 지금은 필요하지 않습니다.
+데이터 모델을 렌더링하는 앱의 정적 버전을 만들기 위해 다른 컴포넌트를 재사용하는 컴포넌트를 만들고 props 를 이용해 데이터를 전달해줍시다. props는 부모가 자식에게 데이터를 넘겨줄 때 사용할 수 있는 방법입니다. 정적 버전을 만들기 위해 **state를 사용하지 마세요**. state는 오직 상호작용을 위해, 즉 시간이 지남에 따라 데이터가 바뀌는 것에 사용합니다. 우리는 앱의 정적 버전을 만들고 있기 때문에 지금은 필요하지 않습니다.
 
 앱을 만들 때 하향식(top-down)이나 상향식(bottom-up)으로 만들 수 있습니다. 다시 말해 계층 구조의 상층부에 있는 컴포넌트 (즉 `FilterableProductTable`부터 시작하는 것)부터 만들거나 하층부에 있는 컴포넌트 (`ProductRow`) 부터 만들 수도 있습니다. 간단한 예시에서는 보통 하향식으로 만드는 게 쉽지만 프로젝트가 커지면 상향식으로 만들고 테스트를 작성하면서 개발하기가 더 쉽습니다.
 
 이 단계가 끝나면 데이터 렌더링을 위해 만들어진 재사용 가능한 컴포넌트들의 라이브러리를 가지게 됩니다. 현재는 앱의 정적 버전이기 때문에 컴포넌트는 `render()` 메서드만 가지고 있을 것입니다. 계층구조의 최상단 컴포넌트 (`FilterableProductTable`)는 prop으로 데이터 모델을 받습니다. 데이터 모델이 변경되면  `ReactDOM.render()`를 다시 호출하서 UI가 업데이트 됩니다. 지금 단계서 어떻게 UI가 업데이트되는지 확인하는 일은 어렵지 않은데 지금은 크게 복잡한 부분이 없기 때문입니다. React의 **단방향 데이터 흐름(one-way data flow)** (또는 *단방향 바인딩(one-way binding*))는 모든 것을 모듈화 하고 빠르게 만들어줍니다.
 
-이 단계를 실행하는데 어려움이 있다면 [공식 리액트 문서](/docs/)를 참고하세요.
+이 단계를 실행하는데 어려움이 있다면 [공식 React 문서](/docs/)를 참고하세요.
 
 ### 짧은 소개: Props vs State {#a-brief-interlude-props-vs-state}
 
-React 에는 두가지 데이터 “모델”인 props와 state가 있습니다. 이 둘 사이의 차이점을 이해하는 것이 중요합니다. 만약 차이점이 제대로 기억나지 않는다면 [공식 리액트 문서](/docs/interactivity-and-dynamic-uis.html)를 살펴보세요.
+React 에는 두가지 데이터 “모델”인 props와 state가 있습니다. 이 둘 사이의 차이점을 이해하는 것이 중요합니다. 차이점이 제대로 기억나지 않는다면 [공식 React 문서](/docs/interactivity-and-dynamic-uis.html)를 살펴보세요.
 
 ## 3단계: UI state에 대한 최소한의 (하지만 완전한) 표현 찾아내기 {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
 
 UI를 상호작용하게 만들려면 기반 데이터 모델을 변경할 수 있는 방법이 있어야 합니다. React의 **state**는 이를 쉽게 만들어 줍니다.
 
-애플리케이션을 올바르게 만들기 위해서는 애플리케이션에서 필요로 하는 변경 가능한 state의 최소 집합을 생각해보아야 합니다. 여기서 핵심은 [중복배제](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)원칙입니다. 애플리케이션이 필요로 하는 가장 최소한의 state를 찾고 이를 통해 나머지 모든 것들이 필요에 따라 그때그때 계산되도록 만드세요. 예를 들어 TODO 리스트를 만든다고 하면, TODO 아이템을 저장하는 배열만 유지하고 TODO 아이템의 개수를 표현하는 state를 별도로 만들지 마세요. 만약 TODO 갯수를 렌더링해야한다면 TODO 아이템 배열의 길이를 가져오면 됩니다.
+애플리케이션을 올바르게 만들기 위해서는 애플리케이션에서 필요로 하는 변경 가능한 state의 최소 집합을 생각해보아야 합니다. 여기서 핵심은 [중복배제](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)원칙입니다. 애플리케이션이 필요로 하는 가장 최소한의 state를 찾고 이를 통해 나머지 모든 것들이 필요에 따라 그때그때 계산되도록 만드세요. 예를 들어 TODO 리스트를 만든다고 하면, TODO 아이템을 저장하는 배열만 유지하고 TODO 아이템의 개수를 표현하는 state를 별도로 만들지 마세요. TODO 갯수를 렌더링해야한다면 TODO 아이템 배열의 길이를 가져오면 됩니다.
 
 예시 애플리케이션 내 데이터들을 생각해봅시다. 우리는 현재,
 
@@ -115,7 +115,7 @@ UI를 상호작용하게 만들려면 기반 데이터 모델을 변경할 수 �
 애플리케이션이 가지는 각각의 state에 대해서
 
   * state를 기반으로 렌더링하는 모든 컴포넌트를 찾으세요.
-  * 공통 소유 컴포넌트 (common owner component)를 찾으세요. (계층 구조 내에서 특정 state가 있어야 하는 모든 컴포넌트들의 위에 있는 하나의 컴포넌트).
+  * 공통 소유 컴포넌트 (common owner component)를 찾으세요. (계층 구조 내에서 특정 state가 있어야 하는 모든 컴포넌트들의 상위에 있는 하나의 컴포넌트).
   * 공통  혹은 더 상위에 있는 컴포넌트가 state를 가져야 합니다.
   * state를 소유할 적절한 컴포넌트를 찾지 못하였다면, 단순히 state를 소유하는 컴포넌트를 하나 만들어서 공통 오너 컴포넌트의 상위 계층에 추가하세요.
 
