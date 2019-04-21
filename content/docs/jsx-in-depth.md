@@ -51,7 +51,7 @@ React.createElement(
 
 JSX 태그의 첫 부분은 React element의 타입을 결정합니다.
 
-대문자로 시작하는 JSX 태그는 React component를 지정합니다. 이 태그들은 같은 이름을 가진 변수들을 직접 참조합니다. 만약 `<Foo />`와 같은 JSX 표현을 쓰려고 한다면 Foo가 반드시 스코프 내에 존재해야 합니다.
+대문자로 시작하는 JSX 태그는 React 컴포넌트를 지정합니다. 이 태그들은 같은 이름을 가진 변수들을 직접 참조합니다. 만약 `<Foo />`와 같은 JSX 표현을 쓰려고 한다면 Foo가 반드시 스코프 내에 존재해야 합니다.
 
 
 ### React가 스코프 내에 존재해야 합니다 {#react-must-be-in-scope}
@@ -73,7 +73,7 @@ function WarningButton() {
 
 ### JSX 타입을 위한 점 표기법 사용 {#using-dot-notation-for-jsx-type}
 
-JSX 내에서도 점 표기법을 사용하여 React component를 참조할 수 있습니다. 이 방법은 하나의 모듈에서 복수의 React component들을 export 하는 경우에 편리하게 사용할 수 있습니다. 예를 들어, 만약 `MyComponents.DatePicker`이 component 하면, 아래와 같은 방법으로 직접 사용할 수 있습니다.
+JSX 내에서도 점 표기법을 사용하여 React 컴포넌트를 참조할 수 있습니다. 이 방법은 하나의 모듈에서 복수의 React 컴포넌트들을 export 하는 경우에 편리하게 사용할 수 있습니다. 예를 들어, 만약 `MyComponents.DatePicker`가 컴포넌트라면, 아래와 같은 방법으로 직접 사용할 수 있습니다.
 
 ```js{10}
 import React from 'react';
