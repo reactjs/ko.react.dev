@@ -72,8 +72,6 @@ ReactDOM.render(
 
 스테이트는 "props"와 유사하지만 컴포넌트 전용이며 스테이트의 관리는 전적으로 컴포넌트 내에서만 가능합니다.
 
-We [mentioned before](/docs/components-and-props.html#functional-and-class-components) that components defined as classes have some additional features. Local state is exactly that: a feature available only to classes.
-
 ## Converting a Function to a Class {#converting-a-function-to-a-class}
 
 You can convert a function component like `Clock` to a class in five steps:
