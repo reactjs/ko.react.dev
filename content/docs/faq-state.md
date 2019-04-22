@@ -8,7 +8,7 @@ category: FAQ
 
 ### `setState`는 어떤 일을 하나요? {#what-does-setstate-do}
 
-`setState()`는 컴포넌트의 `state` 객체에 대한 업데이트를 실행합니다. state가 변경되면, 컴포넌트는 다시 렌더링됩니다.
+`setState()`는 컴포넌트의 `state` 객체에 대한 업데이트를 실행합니다. state가 변경되면, 컴포넌트는 리렌더링됩니다.
 
 ### `state`와 `props`의 차이점은 무엇인가요? {#what-is-the-difference-between-state-and-props}
 
@@ -37,10 +37,10 @@ handleSomething() {
   this.incrementCount();
   this.incrementCount();
   this.incrementCount();
-  // React가 컴포넌트를 다시 렌더링할 때 `this.state.count`는 3이 될 것 같은 예상과 달리 1이 됩니다.
+  // React가 컴포넌트를 리렌더링할 때 `this.state.count`는 3이 될 것 같은 예상과 달리 1이 됩니다.
 
   // 이것은 `incrementCount()` 함수가 `this.state.count`에서 값을 읽어 오는데
-  // React는 컴포넌트가 다시 렌더링 될 때까지 `this.state.count`를 갱신하지 않기 때문입니다.
+  // React는 컴포넌트가 리렌더링될 때까지 `this.state.count`를 갱신하지 않기 때문입니다.
   // 그러므로 `incrementCount()`는 매번 `this.state.count`의 값을 0으로 읽은 뒤에 이 값을 1로 설정합니다.
 
   // 이 문제의 해결 방법은 아래에 설명되어 있습니다.
@@ -72,7 +72,7 @@ handleSomething() {
   this.incrementCount();
 
   // 지금 `this.state.count` 값을 읽어 보면 이 값은 여전히 0일 것입니다.
-  // 하지만 React가 컴포넌트를 다시 렌더링하게 되면 이 값은 3이 됩니다.
+  // 하지만 React가 컴포넌트를 리렌더링하게 되면 이 값은 3이 됩니다.
 }
 ```
 
@@ -88,9 +88,9 @@ handleSomething() {
 
 ### 왜 React는 `this.state` 를 동기적으로 업데이트하지 않나요? {#why-doesnt-react-update-thisstate-synchronously}
 
-이전 장에서 설명했듯이 모든 컴포넌트가 자신의 이벤트 핸들러에서 `setState()`를 호출할 때까지 React는 다시 렌더링을 하지 않고 내부적으로 "기다리고 있습니다". 이를 통해 불필요한 렌더링을 방지하면서 성능을 향상합니다.
+이전 장에서 설명했듯이 모든 컴포넌트가 자신의 이벤트 핸들러에서 `setState()`를 호출할 때까지 React는 리렌더링을 하지 않고 내부적으로 "기다리고 있습니다". 이를 통해 불필요한 렌더링을 방지하면서 성능을 향상합니다.
 
-그러나 왜 React는 다시 렌더링을 하는 것 대신 즉시 `this.state`를 업데이트하지 않는지 여전히 궁금해하실 수도 있습니다.
+그러나 왜 React는 리렌더링을 하는 것 대신 즉시 `this.state`를 업데이트하지 않는지 여전히 궁금해하실 수도 있습니다.
 
 여기에는 두 가지 중요한 이유가 존재합니다.
 
