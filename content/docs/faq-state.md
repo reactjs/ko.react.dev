@@ -8,7 +8,7 @@ category: FAQ
 
 ### `setState`는 어떤 일을 하나요? {#what-does-setstate-do}
 
-`setState()`는 컴포넌트의 `state` 객체에 대한 업데이트를 예약합니다. state가 변경되면, 컴포넌트는 다시 렌더링됩니다.
+`setState()`는 컴포넌트의 `state` 객체에 대한 업데이트를 실행합니다. state가 변경되면, 컴포넌트는 다시 렌더링됩니다.
 
 ### `state`와 `props`의 차이점은 무엇인가요? {#what-is-the-difference-between-state-and-props}
 
