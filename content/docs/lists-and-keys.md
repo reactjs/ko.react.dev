@@ -6,9 +6,9 @@ prev: conditional-rendering.html
 next: forms.html
 ---
 
-먼저 Javascript에서 리스트를 어떻게 변환하는지 살펴봅시다.
+먼저 JavaScript에서 리스트를 어떻게 변환하는지 살펴봅시다.
 
-아래 코드에서 [`map()`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map)함수를 이용하여 `numbers` 배열의 값을 두배로 만든 후 `map()`에서 반환하는 새 배열을 `doubled` 변수에 할당하고 로그를 확인합니다.
+아래는 [`map()`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map)함수를 이용하여 `numbers` 배열의 값을 두배로 만든 후 `map()`에서 반환하는 새 배열을 `doubled` 변수에 할당하고 로그를 확인하는 코드입니다.
 
 ```javascript{2}
 const numbers = [1, 2, 3, 4, 5];
@@ -16,7 +16,7 @@ const doubled = numbers.map((number) => number * 2);
 console.log(doubled);
 ```
 
-이 코드는 콘솔에 `[2, 4, 6, 8, 10]`을 표시합니다.
+이 코드는 콘솔에 `[2, 4, 6, 8, 10]`을 출력합니다.
 
 React에서 배열을 [엘리먼트](/docs/rendering-elements.html) 리스트로 만드는 방식은 이와 거의 동일 합니다.
 
@@ -24,7 +24,7 @@ React에서 배열을 [엘리먼트](/docs/rendering-elements.html) 리스트로
 
 엘리먼트 모음을 만들고 중괄호 `{}`를 이용하여 [JSX에 포함](/docs/introducing-jsx.html#embedding-expressions-in-jsx) 시킬 수 있습니다.
 
-아래에서 Javascript [`map()`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 함수를 사용하여 `numbers` 배열을 반복 실행합니다. 각 항목에 대해 `<li>` 엘리먼트를 반환하고 엘리먼트 배열의 결과를 `listItems`에 저장합니다.
+아래의 JavaScript [`map()`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 함수를 사용하여 `numbers` 배열을 반복 실행합니다. 각 항목에 대해 `<li>` 엘리먼트를 반환하고 엘리먼트 배열의 결과를 `listItems`에 저장합니다.
 
 ```javascript{2-4}
 const numbers = [1, 2, 3, 4, 5];
@@ -129,9 +129,9 @@ const todoItems = todos.map((todo, index) =>
 );
 ```
 
-항목의 순서가 바뀔 수 있는 경우 key에 인덱스를 사용하는 것은 권장하지 않습니다. 이로 인해 성능이 저하되거나 컴포넌트의 state와 관련된 문제가 발생할 수 있습니다. Robin Pokorny's가 작성한 아티클인 [인덱스를 key로 사용할 경우 부정적인 영향에 대한 상세 설명](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318)을 참고하시길 바랍니다. 만약 리스트 항목에 명시적으로 key를 지정하지 않으면 React는 기본적으로 인덱스를 key로 사용합니다.
+항목의 순서가 바뀔 수 있는 경우 key에 인덱스를 사용하는 것은 권장하지 않습니다. 이로 인해 성능이 저하되거나 컴포넌트의 state와 관련된 문제가 발생할 수 있습니다. Robin Pokorny's가 작성한 글인 [인덱스를 key로 사용할 경우 부정적인 영향에 대한 상세 설명](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318)을 참고하시길 바랍니다. 만약 리스트 항목에 명시적으로 key를 지정하지 않으면 React는 기본적으로 인덱스를 key로 사용합니다.
 
-더 자세히 알고 싶다면 [왜 key가 필요한가에 대한 더 깊은 설명](/docs/reconciliation.html#recursing-on-children)을 읽어보세요.
+더 자세히 알고 싶다면 [왜 key가 필요한가에 대한 더 자세한 설명](/docs/reconciliation.html#recursing-on-children)을 읽어보세요.
 
 ### Key로 컴포넌트 추출하기 {#extracting-components-with-keys}
 
@@ -205,9 +205,9 @@ ReactDOM.render(
 
 경험상 `map()` 함수 내부에 있는 엘리먼트에 key를 넣어 주는 게 좋습니다.
 
-### Key는 주변 항목 중에서만 고유한 값이어야 한다. {#keys-must-only-be-unique-among-siblings}
+### Key는 형제 사이에서만 고유한 값이어야 한다. {#keys-must-only-be-unique-among-siblings}
 
-Key는 배열 안에서 주변 항목에 대해 고유해야 하고 전체 범위에서 고유할 필요는 없습니다. 두 개의 다른 배열을 만들 때 동일한 key를 사용할 수 있습니다.
+Key는 배열 안에서 형제 사이에서 고유해야 하고 전체 범위에서 고유할 필요는 없습니다. 두 개의 다른 배열을 만들 때 동일한 key를 사용할 수 있습니다.
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
@@ -297,4 +297,4 @@ function NumberList(props) {
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
-이 방식을 사용하면 코드가 더 깔끔해 지지만, 이 방식을 남발하는 것은 좋지 않습니다. Javascript와 마찬가지로 가독성을 위해 변수로 추출해야 할지 아니면 인라인으로 넣을지는 개발자가 직접 판단해야 합니다. `map()` 함수가 너무 중첩된다면 [컴포넌트로 추출](/docs/components-and-props.html#extracting-components) 하는 것이 좋습니다.
+이 방식을 사용하면 코드가 더 깔끔해 지지만, 이 방식을 남발하는 것은 좋지 않습니다. JavaScript와 마찬가지로 가독성을 위해 변수로 추출해야 할지 아니면 인라인으로 넣을지는 개발자가 직접 판단해야 합니다. `map()` 함수가 너무 중첩된다면 [컴포넌트로 추출](/docs/components-and-props.html#extracting-components) 하는 것이 좋습니다.
