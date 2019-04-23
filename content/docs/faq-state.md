@@ -12,7 +12,7 @@ category: FAQ
 
 ### `state`와 `props`의 차이점은 무엇인가요? {#what-is-the-difference-between-state-and-props}
 
-[`props`](/docs/components-and-props.html) ("properties"의 줄임말) 와 [`state`](/docs/state-and-lifecycle.html) 는 일반 JavaScript 객체입니다. 두 객체 모두 렌더링 출력에 영향을 주는 정보를 갖고 있는데, 한 가지 중요한 방식에서 차이가 있습니다. `props`는 (함수 매개변수처럼) 컴포넌트*에* 전달되는 반면 `state`는 (함수 내에 선언된 변수처럼) 컴포넌트 *안에서* 관리됩니다.
+[`props`](/docs/components-and-props.html) ("properties"의 줄임말) 와 [`state`](/docs/state-and-lifecycle.html) 는 일반 JavaScript 객체입니다. 두 객체 모두 렌더링 결과물에 영향을 주는 정보를 갖고 있는데, 한 가지 중요한 방식에서 차이가 있습니다. `props`는 (함수 매개변수처럼) 컴포넌트*에* 전달되는 반면 `state`는 (함수 내에 선언된 변수처럼) 컴포넌트 *안에서* 관리됩니다.
 
 언제 `props`와 `state`를 사용하는지 더 알고 싶다면 아래의 자료를 확인해보세요.
 * [Props vs State](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)
@@ -84,13 +84,13 @@ handleSomething() {
 
 이로 인해 만약 `부모`와 `자식`이 모두 click 이벤트에서 `setState`를 호출한다면 `자식`은 두 번 렌더링되지 않습니다. 대신 React는 브라우저 이벤트가 끝날 시점에 state를 일괄적으로 업데이트합니다. 이는 더 큰 규모의 앱에서 뚜렷한 성능 향상을 만들어냅니다.
 
-이것은 구현 세부사항이므로 전적으로 의존해선 안됩니다. 추후 React는 기본적으로 더 많은 경우에서 일괄적으로 업데이트를 처리할 것입니다.
+이것은 구현 세부사항이므로 전적으로 의존해선 안됩니다. 추후 React는 기본적으로 더 많은 경우에서 일괄적으로 업데이트를 처리할 예정입니다.
 
 ### 왜 React는 `this.state` 를 동기적으로 업데이트하지 않나요? {#why-doesnt-react-update-thisstate-synchronously}
 
-이전 장에서 설명했듯이 모든 컴포넌트가 자신의 이벤트 핸들러에서 `setState()`를 호출할 때까지 React는 리렌더링을 하지 않고 내부적으로 "기다리고 있습니다". 이를 통해 불필요한 렌더링을 방지하면서 성능을 향상합니다.
+이전 장에서 설명했듯이 모든 컴포넌트가 자신의 이벤트 핸들러에서 `setState()`를 호출할 때까지 React는 리렌더링을 하지 않고 내부적으로 "기다리고 있습니다". 이를 통해 불필요한 렌더링을 방지하면서 성능을 향상시킵니다.
 
-그러나 왜 React는 리렌더링 대신 즉시 `this.state`를 업데이트하지 않는지 여전히 궁금해하실 수도 있습니다.
+그러나 왜 React는 리렌더링 대신 즉시 `this.state`를 업데이트하지 않는지 여전히 궁금해 하실 수도 있습니다.
 
 여기에는 두 가지 중요한 이유가 존재합니다.
 
@@ -101,6 +101,6 @@ handleSomething() {
 
 ### Redux 나 MobX 같은 상태('state') 관리 라이브러리를 사용해야 하나요? {#should-i-use-a-state-management-library-like-redux-or-mobx}
 
-[아마도 그렇습니다.](https://redux.js.org/faq/general#when-should-i-use-redux)
+[사용하는게 좋습니다.](https://redux.js.org/faq/general#when-should-i-use-redux)
 
 추가적인 라이브러리를 사용하기 전에 먼저 React에 익숙해지는 게 좋습니다. React만으로도 꽤 복잡한 애플리케이션을 만들 수 있습니다. 
