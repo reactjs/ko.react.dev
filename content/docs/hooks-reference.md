@@ -82,7 +82,7 @@ function Counter({initialCount}) {
 >
 > 다른 방법으로는 `useReducer`가 있는데 이는 여러개의 하윗값들을 포함한 state 객체를 관리하는 데에 더 적합합니다.
 
-#### state 초기화의 지연 {#lazy-initial-state}
+#### 지연 초기 state {#lazy-initial-state}
 
 `initialState` 인자는 초기 렌더링 시에 사용하는 state입니다. 그 이후의 렌더링 시에는 이 값은 무시됩니다. 만약 초기 state가 고비용 계산의 결과라면, 초기 렌더링 시에만 실행될 함수를 대신 제공할 수 있습니다.
 
@@ -93,7 +93,7 @@ const [state, setState] = useState(() => {
 });
 ```
 
-#### state 갱신의 회피 {#bailing-out-of-a-state-update}
+#### state 갱신의 취소 {#bailing-out-of-a-state-update}
 
 State Hook을 현재의 state와 동일한 값으로 갱신하는 경우 React는 자식을 렌더링 한다거나 무엇을 실행하는 것을 회피하고 그 처리를 종료합니다. (React는 [`Object.is` 비교 알고리즘](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description)을 사용합니다.)
 
@@ -105,7 +105,7 @@ State Hook을 현재의 state와 동일한 값으로 갱신하는 경우 React�
 useEffect(didUpdate);
 ```
 
-명령형 또는 어떤 효과를 발생하는 함수를 인자로 받습니다.
+명령형 또는 어떤 effect를 발생하는 함수를 인자로 받습니다.
 
 변형, 구독, 타이머, 로깅 또는 다른 부작용(side effects)은 (React의 _렌더링 단계에_ 따르면) 함수 컴포넌트의 본문 안에서는 허용되지 않습니다. 만약 이를 수행한다면 그것은 매우 혼란스러운 버그 및 UI의 불일치를 야기하게 될 것입니다.
 
@@ -115,7 +115,7 @@ useEffect(didUpdate);
 
 #### effect 정리 {#cleaning-up-an-effect}
 
-effect는 종종 컴포넌트가 화면에서 제거될 때 정리(clean-up)해야 하는 리소스를 만듭니다. 가령 데이터 구독이나 타이머 ID와 같은 것입니다. 이것을 수행하기 위해서 `useEffect`로 전달된 함수는 정화(clean-up) 함수를 반환할 수 있습니다. 예를 들어 데이터 구독을 생성하는 경우는 아래와 같습니다. 
+effect는 종종 컴포넌트가 화면에서 제거될 때 정리해야 하는 리소스를 만듭니다. 가령 구독이나 타이머 ID와 같은 것입니다. 이것을 수행하기 위해서 `useEffect`로 전달된 함수는 정리(clean-up) 함수를 반환할 수 있습니다. 예를 들어 구독을 생성하는 경우는 아래와 같습니다.
 
 ```js
 useEffect(() => {
@@ -127,21 +127,21 @@ useEffect(() => {
 });
 ```
 
-정화(clean-up) 함수는 메모리 누수 방지를 위해 UI에서 컴포넌트를 제거하기 전에 수행됩니다. 더불어, 만약 컴포넌트가 (그냥 일반적으로 수행하는 것처럼) 여러 번 렌더링된다면 **다음 effect가 수행되기 전에 이전 effect는 정화됩니다**. 위의 예에서, 매 갱신마다 새로운 데이터 구독이 생성된다고 볼 수 있습니다. 갱신마다 불필요한 수행이 발생하는 것을 회피하기 위해서는 다음 절을 참고하세요. 
+정리 함수는 메모리 누수 방지를 위해 UI에서 컴포넌트를 제거하기 전에 수행됩니다. 더불어, 만약 컴포넌트가 (그냥 일반적으로 수행하는 것처럼) 여러 번 렌더링 된다면 **다음 effect가 수행되기 전에 이전 effect는 정리됩니다**. 위의 예에서, 매 갱신마다 새로운 구독이 생성된다고 볼 수 있습니다. 갱신마다 불필요한 수행이 발생하는 것을 회피하기 위해서는 다음 절을 참고하세요. 
 
-#### effect의 타이밍 {#timing-of-effects}
+#### effect 타이밍 {#timing-of-effects}
 
-`componentDidMount`와 `componentDidUpdate`와는 다르게, `useEffect`로 전달된 함수는 지연 이벤트 동안에 레이아웃 배치와 그리기를 완료한 **후** 발생합니다. 이것은 데이터 구독이나 이벤트 핸들러를 설정하는 것과 같은 다수의 공통적인 부작용에 적합합니다. 왜냐면 대부분의 작업이 브라우저에서 화면을 업데이트하는 것을 차단해서는 안 되기 때문입니다.
+`componentDidMount`와 `componentDidUpdate`와는 다르게, `useEffect`로 전달된 함수는 지연 이벤트 동안에 레이아웃 배치와 그리기를 완료한 **후** 발생합니다. 이것은 구독이나 이벤트 핸들러를 설정하는 것과 같은 다수의 공통적인 부작용에 적합합니다. 왜냐면 대부분의 작업이 브라우저에서 화면을 업데이트하는 것을 차단해서는 안 되기 때문입니다.
 
-그렇지만, 모든 effect가 지연될 수는 없습니다. 예를 들어 사용자에게 노출되는 DOM 변형은 사용자가 노출된 내용의 불일치를 경험하지 않도록 다음 화면을 다 그리기 이전에 동기화가 되어야 합니다. (그 구분이란 개념적으로는 수동적 이벤트 리스너와 능동적 이벤트 리스너의 차이와 유사합니다) 이런 종류의 effect를 위해 React는 [`useLayoutEffect`](#uselayouteffect)라는 추가적인 Hook을 제공합니다. 그것은 `useEffect`와 동일한 시그니처를 가지고 있고 그것이 수행될 때에만 차이가 납니다.
+그렇지만, 모든 effect가 지연될 수는 없습니다. 예를 들어 사용자에게 노출되는 DOM 변경은 사용자가 노출된 내용의 불일치를 경험하지 않도록 다음 화면을 다 그리기 이전에 동기화 되어야 합니다. (그 구분이란 개념적으로는 수동적 이벤트 리스너와 능동적 이벤트 리스너의 차이와 유사합니다) 이런 종류의 effect를 위해 React는 [`useLayoutEffect`](#uselayouteffect)라는 추가적인 Hook을 제공합니다. 그것은 `useEffect`와 동일한 시그니처를 가지고 있고 그것이 수행될 때에만 차이가 납니다.
 
 `useEffect`는 브라우저 화면이 다 그려질 때까지 지연됩니다만, 다음 어떤 새로운 렌더링이 발생하기 이전에 발생하는 것도 보장합니다. React는 새로운 갱신을 시작하기 전에 이전 렌더링을 항상 완료하게 됩니다. 
 
 #### 조건부 effect 발생 {#conditionally-firing-an-effect}
 
-effect의 기본 동작은 모든 렌더링을 완료한 후 effect 를 발생하는 것입니다. 이와 같은 방법으로 만약 의존성 중 하나가 변경된다면 effect는 항상 재생성됩니다.
+effect의 기본 동작은 모든 렌더링을 완료한 후 effect를 발생하는 것입니다. 이와 같은 방법으로 만약 의존성 중 하나가 변경된다면 effect는 항상 재생성됩니다.
 
-그렇지만 앞의 이런 것은 어떤 경우에는 과잉일 지도 모릅니다. 예를 들면 앞 섹션에서의 데이터 구독의 예와 같은 것입니다. `source` props가 변경될 때에만 필요한 것이라면 매번 갱신할 때마다 새로운 데이터 구독을 생성할 필요는 없습니다.
+그러나 이것은 이전 섹션의 구독 예제와 같이 일부 경우에는 과도한 작업일 수 있습니다. `source` props가 변경될 때에만 필요한 것이라면 매번 갱신할 때마다 새로운 구독을 생성할 필요는 없습니다.
 
 이것을 수행하기 위해서는 `useEffect`에 두 번째 인자를 전달하세요. 이 인자는 effect가 종속되어 있는 값의 배열입니다. 이를 적용한 예는 아래와 같습니다.
 
@@ -157,20 +157,20 @@ useEffect(
 );
 ```
 
-자 이제, `props.source`가 변경될 때에만 데이터 구독이 재생성될 것입니다.
+자 이제, `props.source`가 변경될 때에만 구독이 재생성될 것입니다.
 
 >주의
 >
->이 최적화를 사용하는 경우, 값의 배열이 **시간이 지남에 따라 변경되고 effect에 사용되는 컴포넌트 범위의 모든 값들(예를 들어, props와 state와 같은 값들)을** 포함하고 있는지 확인하세요. 그렇지 않다면 여러분의 코드는 이전 렌더링에서 설정된 오래된 값을 참조하게 될 것입니다. [how to deal with functions](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)와 [array values change too often](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 할 때 무엇을 할 것인지에 대해서 조금 더 알아봅시다.
+>이 최적화를 사용하는 경우, 값의 배열이 **시간이 지남에 따라 변경되고 effect에 사용되는 컴포넌트 범위의 모든 값들(예를 들어, props와 state와 같은 값들)을** 포함하고 있는지 확인하세요. 그렇지 않다면 여러분의 코드는 이전 렌더링에서 설정된 오래된 값을 참조하게 될 것입니다. [how to deal with functions](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)와 [array values change too often](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 할 때 무엇을 할 것인지에 대해서 조금 더 알아보세요.
 >
->만약 effect를 수행하고 (mount를 하거나 unmount 할 때) 그것을 한 번만 제거하고 싶다면 두 번째 인자로 빈 배열(`[]`)을 전달할 수 있습니다. 이를 통해 effect는 React에게 props나 state에서 가져온 *어떤* 값에도 의존하지 않으므로, 다시 실행할 필요가 전혀 없다는 것을 알려주게 됩니다. 이것을 특별한 경우로 간주하지는 않고, 의존성 값의 배열이 항상 어떻게 동작하는지 직접적으로 보여주는 것뿐입니다.
+>만약 effect를 수행하고 (mount를 하거나 unmount 할 때) 그것을 한 번만 실행하고 싶다면 두 번째 인자로 빈 배열(`[]`)을 전달할 수 있습니다. 이를 통해 effect는 React에게 props나 state에서 가져온 *어떤* 값에도 의존하지 않으므로, 다시 실행할 필요가 전혀 없다는 것을 알려주게 됩니다. 이것을 특별한 경우로 간주하지는 않고, 의존성 값의 배열이 항상 어떻게 동작하는지 직접적으로 보여주는 것뿐입니다.
 >
->만약 빈 배열(`[]`)을 전달한다면 effect 안에 있는 props와 state는 항상 초깃값을 가지게 될 것입니다. 두 번째 인자로써 `[]`을 전달하는 것이 친숙한 `componentDidMount`와 `componentWillUnmount`에 의한 개념과 비슷하게 느껴지겠지만, effect가 너무 자주 리렌더링 되는 것을 피하기 위한 보통 [더 나은](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [해결책](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)이 있습니다. 또한 브라우저가 모두 그려질 때까지 React는 `useEffect`의 수행을 지연하기 때문에 다른 부작업의 수행이 문제가 되지는 않는다는 것을 잊지 마세요.
+>만약 빈 배열(`[]`)을 전달한다면 effect 안에 있는 props와 state는 항상 초깃값을 가지게 될 것입니다. 두 번째 인자로써 `[]`을 전달하는 것이 친숙한 `componentDidMount`와 `componentWillUnmount`에 의한 개념과 비슷하게 느껴지겠지만, effect가 너무 자주 리렌더링 되는 것을 피하기 위한 보통 [더 나은](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [해결책](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)이 있습니다. 또한 브라우저가 모두 그려질 때까지 React는 `useEffect`의 수행을 지연하기 때문에 다른 작업의 수행이 문제가 되지는 않는다는 것을 잊지 마세요.
 >
 >
 >[`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 패키지의 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 규칙을 사용하기를 권장합니다. 그것은 의존성이 바르지 않게 정의되었다면 그에 대해 경고하고 수정하도록 알려줍니다.
 
-의존성 값의 배열은 effect 함수의 인자로 전달되지는 않습니다. 그렇지만 개념적으로는, 이 기법은 effect 함수가 무엇일지를 표현하는 방법입니다. effect 함수 안에서 참조되는 모든 값은 의존성 값의 배열에 드러나야 합니다. 가까운 미래에 충분하게 진보한 컴파일러가 이 배열을 자동적으로 생성할 수 있을 것입니다.
+의존성 값의 배열은 effect 함수의 인자로 전달되지는 않습니다. 그렇지만 개념적으로는, 이 기법은 effect 함수가 무엇일지를 표현하는 방법입니다. effect 함수 안에서 참조되는 모든 값은 의존성 값의 배열에 드러나야 합니다. 나중에는 충분히 발전된 컴파일러가 이 배열을 자동적으로 생성할 수 있을 것입니다.
 
 ### `useContext` {#usecontext}
 
@@ -180,7 +180,7 @@ const value = useContext(MyContext);
 
 context 객체(`React.createContext`에서 반환된 값)을 받아 그 context의 현재 값을 반환합니다. context의 현재 값은 트리 안에서 이 Hook을 호출하는 컴포넌트에 가장 가까이에 있는 `<MyContext.Provider>`의 `value` prop에 의해 결정됩니다.
 
-컴포넌트에서 가장 가까운 `<MyContext.Provider>`가 갱신되면 이 Hook은 그 `MyContext` 공급자(provider)에게 전달된 가장 최신의 context `value`를 사용하여 렌더러를 트리거 합니다.
+컴포넌트에서 가장 가까운 `<MyContext.Provider>`가 갱신되면 이 Hook은 그 `MyContext` provider에게 전달된 가장 최신의 context `value`를 사용하여 렌더러를 트리거 합니다.
 
 `useContext`로 전달한 인자는 *context 객체 그 자체*이어야 함을 잊지 마세요.
 
@@ -188,11 +188,11 @@ context 객체(`React.createContext`에서 반환된 값)을 받아 그 context�
  * **틀린 사용:** `useContext(MyContext.Consumer)`
  * **틀린 사용:** `useContext(MyContext.Provider)`
 
-`useContext`를 호출한 컴포넌트는 context 값이 변경되면 항상 리렌더링 될 것입니다. 만약 컴포넌트를 리렌더링 하는 것에 비용이 많이 든다면, [메모화를 사용하여 최적화할 수 있습니다.](https://github.com/facebook/react/issues/15156#issuecomment-474590693)
+`useContext`를 호출한 컴포넌트는 context 값이 변경되면 항상 리렌더링 될 것입니다. 만약 컴포넌트를 리렌더링 하는 것에 비용이 많이 든다면, [메모이제이션을 사용하여 최적화할 수 있습니다.](https://github.com/facebook/react/issues/15156#issuecomment-474590693)
 
 >팁
 >
->만약 여러분이 Hook에 앞서 context API에 친숙하다면 `useContext(MyContext)`는 클래스에서의 `static contextType = MyContext` 또는 `<MyContext.Consumer>`와 같다고 보면 됩니다.
+>만약 여러분이 Hook 보다 context API에 친숙하다면 `useContext(MyContext)`는 클래스에서의 `static contextType = MyContext` 또는 `<MyContext.Consumer>`와 같다고 보면 됩니다.
 >
 >`useContext(MyContext)`는 context를 *읽고* context의 변경을 구독하는 것만 가능합니다. context의 값을 설정하기 위해서는 여전히 트리의 윗 계층에서의 `<MyContext.Provider>`가 필요합니다.
 
@@ -314,15 +314,15 @@ const memoizedCallback = useCallback(
 );
 ```
 
-[메모화된](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98) 콜백을 반환합니다.
+[메모이제이션된](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98) 콜백을 반환합니다.
 
-인라인 콜백과 그것의 의존성 값의 배열을 전달하세요. `useCallback`은 콜백의 메모화된 버전을 반환할 것입니다. 그 메모화된 버전은 콜백의 의존성이 변경되었을 때에만 변경됩니다. 이것은, 불필요한 렌더링을 방지하기 위해 (예로 `shouldComponentUpdate`를 사용하여) 참조의 동일성에 의존적인 최적화된 자식 컴포넌트에 콜백을 전달할 때 유용합니다.
+인라인 콜백과 그것의 의존성 값의 배열을 전달하세요. `useCallback`은 콜백의 메모이제이션된 버전을 반환할 것입니다. 그 메모이제이션된 버전은 콜백의 의존성이 변경되었을 때에만 변경됩니다. 이것은, 불필요한 렌더링을 방지하기 위해 (예로 `shouldComponentUpdate`를 사용하여) 참조의 동일성에 의존적인 최적화된 자식 컴포넌트에 콜백을 전달할 때 유용합니다.
 
 `useCallback(fn, deps)`은 `useMemo(() => fn, deps)`와 같습니다.
 
 > 주의
 >
-> 의존성 값의 배열이 콜백에 인자로 전달되지는 않습니다. 그렇지만 개념적으로는, 이 기법은 콜백 함수가 무엇일지를 표현하는 방법입니다. 콜백 안에서 참조되는 모든 값은 의존성 값의 배열에 나타나야 합니다. 가까운 미래에 충분하게 진보한 컴파일러가 이 배열을 자동적으로 생성할 수 있을 것입니다.
+> 의존성 값의 배열이 콜백에 인자로 전달되지는 않습니다. 그렇지만 개념적으로는, 이 기법은 콜백 함수가 무엇일지를 표현하는 방법입니다. 콜백 안에서 참조되는 모든 값은 의존성 값의 배열에 나타나야 합니다. 나중에는 충분히 발전된 컴파일러가 이 배열을 자동적으로 생성할 수 있을 것입니다.
 >
 > [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 패키지의 일부로써 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 규칙을 사용하기를 권장합니다. 그것은 의존성이 바르지 않게 정의되었다면 그에 대해 경고하고 수정하도록 알려줍니다.
 
@@ -332,19 +332,19 @@ const memoizedCallback = useCallback(
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
-[메모화된](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98n) 값을 반환합니다.
+[메모이제이션된](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98n) 값을 반환합니다.
 
-"생성(create)" 함수와 그것의 의존성 값의 배열을 전달하세요. `useMemo`는 의존성이 변경되었을 때에만 메모화된 값만 다시 계산 할 것입니다. 이 최적화는 모든 렌더링 시의 고비용 계산을 방지하게 해 줍니다.
+"생성(create)" 함수와 그것의 의존성 값의 배열을 전달하세요. `useMemo`는 의존성이 변경되었을 때에만 메모이제이션된 값만 다시 계산 할 것입니다. 이 최적화는 모든 렌더링 시의 고비용 계산을 방지하게 해 줍니다.
 
 `useMemo`로 전달된 함수는 렌더링 중에 실행된다는 것을 기억하세요. 통상적으로 렌더링 중에는 하지 않는 것을 이 함수 내에서 하지 마세요. 예를 들어, 사이드 이펙트(side effects)는 `useEffect`에서 하는 일이지 `useMemo`에서 하는 일이 아닙니다.
 
 배열이 없는 경우 매 렌더링 때마다 새 값을 계산하게 될 것입니다.
 
-**`useMemo`는 성능 최적화를 위해 사용할 수는 있지만 의미상으로 보장이 있다고 생각하지는 마세요.** 가까운 미래에 React에서는, 이전 메모화된 값들의 일부를 "잊어버리고" 다음 렌더링 시에 그것들을 재계산하는 방향을 택할지도 모르겠습니다. 예를 들면, 오프스크린 컴포넌트의 메모리를 해제하는 등이 있을 수 있습니다. `useMemo`를 사용하지 않고도 동작할 수 있도록 코드를 작성하고 그것을 추가하여 성능을 최적화하세요.
+**`useMemo`는 성능 최적화를 위해 사용할 수는 있지만 의미상으로 보장이 있다고 생각하지는 마세요.** 가까운 미래에 React에서는, 이전 메모이제이션된 값들의 일부를 "잊어버리고" 다음 렌더링 시에 그것들을 재계산하는 방향을 택할지도 모르겠습니다. 예를 들면, 오프스크린 컴포넌트의 메모리를 해제하는 등이 있을 수 있습니다. `useMemo`를 사용하지 않고도 동작할 수 있도록 코드를 작성하고 그것을 추가하여 성능을 최적화하세요.
 
 > 주의
 >
-> 의존성 값의 배열은 함수에 인자로 전달되지는 않습니다. 그렇지만 개념적으로는, 이 기법은 함수가 무엇일지를 표현하는 방법입니다. 함수 안에서 참조되는 모든 값은 의존성 값의 배열에 나타나야 합니다. 가까운 미래에 충분하게 진보한 컴파일러가 이 배열을 자동으로 생성할 수 있을 것입니다.
+> 의존성 값의 배열은 함수에 인자로 전달되지는 않습니다. 그렇지만 개념적으로는, 이 기법은 함수가 무엇일지를 표현하는 방법입니다. 함수 안에서 참조되는 모든 값은 의존성 값의 배열에 나타나야 합니다. 나중에는 충분히 발전된 컴파일러가 이 배열을 자동으로 생성할 수 있을 것입니다.
 >
 > [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 패키지의 일부로써 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 규칙을 사용하기를 권장합니다. 그것은 의존성이 바르지 않게 정의되었다면 그에 대해 경고하고 수정하도록 알려줍니다.
 
@@ -430,7 +430,7 @@ useDebugValue(value)
 
 `useDebugValue`는 React 개발자도구에서 사용자 Hook 레이블을 표시하는 데에 사용할 수 있습니다.
 
-예를 들어, ["Building Your Own Hooks"](/docs/hooks-custom.html)에 설명하고 있는 `useFriendStatus` 사용자 Hook에 대해서 생각해 봅시다.
+예를 들어, ["나만의 Hook 만들기"](/docs/hooks-custom.html)에 설명하고 있는 `useFriendStatus` 사용자 Hook에 대해서 생각해 봅시다.
 
 ```js{6-8}
 function useFriendStatus(friendID) {
@@ -448,13 +448,13 @@ function useFriendStatus(friendID) {
 
 > 팁
 >
-> 모든 사용자 Hook에 디버그 값을 추가하기를 권하지는 않습니다. 이것은 사용자 Hook가 공유된 라이브러리의 일부일 때 가장 유용합니다.
+> 모든 사용자 Hook에 디버그 값을 추가하기를 권하지는 않습니다. 이것은 사용자 Hook이 공유된 라이브러리의 일부일 때 가장 유용합니다.
 
 #### 디버그 값 포맷팅 지연하기 {#defer-formatting-debug-values}
 
 경우에 따라 디스플레이 값을 포맷팅하는 것이 고비용의 연산일 수 있습니다. 또한, 사실상 Hook이 감지되지 않는다면 불필요하기도 합니다.
 
-이런 이유로 `useDebugValue`는 옵션 두 번째 파라미터로 포맷팅 함수를 수용합니다. 이 함수는 Hook가 감지되었을 때만 호출됩니다. 이것은 파라미터로써 디버그 값을 전달받아 포맷된 노출값을 반환해야 합니다.
+이런 이유로 `useDebugValue`는 옵션 두 번째 파라미터로 포맷팅 함수를 전달할 수도 있습니다. 이 함수는 Hook가 감지되었을 때만 호출됩니다. 이것은 파라미터로써 디버그 값을 전달받아 포맷된 노출값을 반환해야 합니다.
 
 예를 들어 사용자 Hook은 다음의 포맷 형식을 사용해서 `toDateString` 함수를 불필요하게 호출하는 것을 방지할 수 있습니다.
 
