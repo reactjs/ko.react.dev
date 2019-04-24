@@ -73,11 +73,11 @@ ReactDOM.render(
 State는 props와 유사하지만, 비공개이며 컴포넌트에 의해 완전히 제어됩니다.
 
 
-## 함수형에서 클래스로 변환하기 {#converting-a-function-to-a-class}
+## 함수에서 클래스로 변환하기 {#converting-a-function-to-a-class}
 
-다섯 단계로 `Clock`과 같은 함수형 컴포넌트를 클래스로 변환할 수 있습니다. 
+다섯 단계로 `Clock`과 같은 함수 컴포넌트를 클래스로 변환할 수 있습니다. 
 
-1. `React.Component`를 확장하는 동일한 이름의 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)를 생성합니다.
+1. `React.Component`를 확장하는 동일한 이름의 [ES6 class](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes)를 생성합니다.
 
 2. `render()`라고 불리는 빈 메서드를 추가합니다.
 
@@ -125,7 +125,7 @@ class Clock extends React.Component {
 }
 ```
 
-2) 초기 `this.state`를 지정하는 [클래스 constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)를 추가합니다.
+2) 초기 `this.state`를 지정하는 [class constructor](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes#Constructor_(%EC%83%9D%EC%84%B1%EC%9E%90))를 추가합니다.
 
 ```js{4}
 class Clock extends React.Component {
@@ -198,11 +198,11 @@ ReactDOM.render(
 
 ## 생명주기 메서드를 클래스에 추가하기 {#adding-lifecycle-methods-to-a-class}
 
-많은 컴포넌트가 있는 응용프로그램에서 컴포넌트가 삭제될 때 해당 컴포넌트가 사용 중이던 리소스를 확보하는 것이 중요합니다.
+많은 컴포넌트가 있는 애플리케이션에서 컴포넌트가 삭제될 때 해당 컴포넌트가 사용 중이던 리소스를 확보하는 것이 중요합니다.
 
 `Clock`이 처음 DOM에 렌더링 될 때마다 [타이머를 설정](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)하려고 합니다. 이것은 React에서 "마운팅"이라고 합니다.
 
-또한 `Clock`에 의해 생산된 DOM이 삭제될 때마다 [타이머를 해제](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval)하려고 합니다.
+또한 `Clock`에 의해 생성된 DOM이 삭제될 때마다 [타이머를 해제](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval)하려고 합니다.
 
 컴포넌트 클래스에서 특별한 메서드를 선언하여 컴포넌트가 마운트되거나 언마운트 될 때 일부 코드를 작동할 수 있습니다.
 
@@ -232,9 +232,9 @@ class Clock extends React.Component {
 }
 ```
 
-이러한 메서드들은 "생명주기 매서드"라고 불립니다.
+이러한 메서드들은 "생명주기 메서드"라고 불립니다.
 
-`componentDidMount()` 메서드는 컴포넌트 출력물이 DOM에 렌더링 된 후에 실행됩니다. 이 장소가 타이머를 설정하기에 가장 좋아 보입니다.
+`componentDidMount()` 메서드는 컴포넌트 출력물이 DOM에 렌더링 된 후에 실행됩니다. 이 장소가 타이머를 설정하기에 좋은 장소입니다.
 
 ```js{2-5}
   componentDidMount() {
@@ -245,9 +245,9 @@ class Clock extends React.Component {
   }
 ```
 
-`this`에서 어떻게 타이머 ID를 제대로 저장하는지 유의하십시오.
+`this`에서 어떻게 타이머 ID를 제대로 저장하는지 주의해주세요.
 
-`this.props`가 React에 의해 스스로 설정되고 `this.state`가 특수한 의미가 있지만, (타이머 ID)와 같이 데이터 흐름 안에 포함되지 않는 어떤 항목을 보관할 필요가 있다면 자유롭게 클래스에 수동으로 부가적인 필드를 추가해도 됩니다.
+`this.props`가 React에 의해 스스로 설정되고 `this.state`가 특수한 의미가 있지만, 타이머 ID와 같이 데이터 흐름 안에 포함되지 않는 어떤 항목을 보관할 필요가 있다면 자유롭게 클래스에 수동으로 부가적인 필드를 추가해도 됩니다.
 
 `componentWillUnmount()` 생명주기 메서드 안에 있는 타이머를 분해해 보겠습니다.
 
@@ -305,15 +305,15 @@ ReactDOM.render(
 
 이제 시계는 매초 째깍거립니다.
 
-현재 어떤 상황이고 매서드가 어떻게 호출되는지 순서대로 빠르게 요약해 보겠습니다.
+현재 어떤 상황이고 메서드가 어떻게 호출되는지 순서대로 빠르게 요약해 보겠습니다.
 
 1) `<Clock />`가 `ReactDOM.render()`로 전달되었을 때 React는 `Clock` 컴포넌트의 constructor를 호출합니다. `Clock`이 현재 시각을 표시해야 하기 때문에 현재 시각이 포함된 객체로 `this.state`를 초기화합니다. 나중에 이 state를 업데이트할 것입니다.
 
-2) React는 `Clock` 컴포넌트의 `render()` 메서드를 호출합니다. 이를 통해 React는 화면에 표시되어야 할 내용을 알게 됩니다. 그다음 React는 `Clock`의 렌더링 출력값을 일치시키기 위해 DOM을 업데이트합니다.
+2) React는 `Clock` 컴포넌트의 `render()` 메서드를 호출합니다. 이를 통해 React는 화면에 표시되어야 할 내용을 알게 됩니다. 그 다음 React는 `Clock`의 렌더링 출력값을 일치시키기 위해 DOM을 업데이트합니다.
 
 3) `Clock` 출력값이 DOM에 삽입되면, React는 `componentDidMount()` 생명주기 메서드를 호출합니다. 그 안에서 `Clock` 컴포넌트는 매초 컴포넌트의 `tick()` 메서드를 호출하기 위한 타이머를 설정하도록 브라우저에 요청합니다. 
 
-4) 매초 브라우저가 `tick()` 메서드를 호출합니다. 그 안에서 `Clock` 컴포넌트는 `setState()`와 현재 시각을 포함하는 객체를 호출하면서 UI 업데이트를 진행합니다. `setState()` 호출 덕분에 React는 state가 변경된 것을 인지하고 화면에 표시될 내용을 알아내기 위해 `render()` 메서드를 다시 호출합니다.
+4) 매초 브라우저가 `tick()` 메서드를 호출합니다. 그 안에서 `Clock` 컴포넌트는 `setState()`에 현재 시각을 포함하는 객체를 호출하면서 UI 업데이트를 진행합니다. `setState()` 호출 덕분에 React는 state가 변경된 것을 인지하고 화면에 표시될 내용을 알아내기 위해 `render()` 메서드를 다시 호출합니다. 이 때 `render()` 메서드 안의 `this.state.date`가 달라지고 렌더링 출력값은 업데이트된 시각을 포함합니다. React는 이에 따라 DOM을 업데이트합니다.
 
 5) `Clock` 컴포넌트가 DOM으로부터 한 번이라도 삭제된 적이 있다면 React는 타이머를 멈추기 위해 `componentWillUnmount()` 생명주기 메서드를 호출합니다.
 
@@ -321,7 +321,7 @@ ReactDOM.render(
 
 `setState()`에 대해서 알아야 할 세 가지가 있습니다.
 
-### 직접 State를 수정하지 마십시오 {#do-not-modify-state-directly}
+### 직접 State를 수정하지 마세요 {#do-not-modify-state-directly}
 
 예를 들어, 이 코드는 컴포넌트를 다시 렌더링하지 않습니다.
 
@@ -363,7 +363,7 @@ this.setState((state, props) => ({
 }));
 ```
 
-위에서는 [화살표 함수](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)를 사용했지만, 일반적인 함수에서도 정상적으로 작동합니다.
+위에서는 [화살표 함수](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/%EC%95%A0%EB%A1%9C%EC%9A%B0_%ED%8E%91%EC%85%98)를 사용했지만, 일반적인 함수에서도 정상적으로 작동합니다.
 
 ```js
 // Correct
@@ -408,11 +408,11 @@ this.setState(function(state, props) {
   }
 ```
 
-T병합은 얕게 이루어지기 때문에 `this.setState({comments})`는 `this.state.posts`에 영향을 주진 않지만 `this.state.comments`는 완전히 대체됩니다. 
+병합은 얕게 이루어지기 때문에 `this.setState({comments})`는 `this.state.posts`에 영향을 주진 않지만 `this.state.comments`는 완전히 대체됩니다. 
 
-## 데이터 흐름은 아래로 {#the-data-flows-down}
+## 데이터는 아래로 흐릅니다 {#the-data-flows-down}
 
-부모 컴포넌트나 자식 컴포넌트 모두 특정 컴포넌트가 유상태인지 또는 무상태인지 알 수 없고, 그들이 함수형이나 클래스로 정의되었는지에 대해서 관심을 가질 필요가 없습니다.
+부모 컴포넌트나 자식 컴포넌트 모두 특정 컴포넌트가 유상태인지 또는 무상태인지 알 수 없고, 그들이 함수이나 클래스로 정의되었는지에 대해서 관심을 가질 필요가 없습니다.
 
 이 때문에 state는 종종 로컬 또는 캡슐화라고 불립니다. state가 소유하고 설정한 컴포넌트 이외에는 어떠한 컴포넌트에도 접근할 수 없습니다.
 
@@ -440,9 +440,9 @@ function FormattedDate(props) {
 
 일반적으로 이를 "하향식(top-down)" 또는 "단방향식" 데이터 흐름이라고 합니다. 모든 state는 항상 특정한 컴포넌트가 소유하고 있으며 그 state로부터 파생된 UI 또는 데이터는 오직 트리구조에서 자신의 "아래"에 있는 컴포넌트에만 영향을 미칩니다. 
 
-트리구조가 prop들의 폭포라고 상상하면 각 컴포넌트의 state는 임의의 점에서 만나지만 동시에 아래로 흐르는 부가적인 수원이라고 할 수 있습니다.
+트리구조가 props들의 폭포라고 상상하면 각 컴포넌트의 state는 임의의 점에서 만나지만 동시에 아래로 흐르는 부가적인 수원(water source)이라고 할 수 있습니다.
 
-모든 컴포넌트가 완전히 독립적이라는 것을 보여주기 위해 `App`와 렌더링하는 세 개의 `<Clock>`을 만들었습니다.
+모든 컴포넌트가 완전히 독립적이라는 것을 보여주기 위해 `App` 렌더링하는 세 개의 `<Clock>`을 만들었습니다.
 
 ```js{4-6}
 function App() {
