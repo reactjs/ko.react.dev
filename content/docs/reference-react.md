@@ -196,7 +196,11 @@ React.cloneElement(
 React.createFactory(type)
 ```
 
+<<<<<<< HEAD
 주어진 타입의 React 엘리먼트를 만들어내는 함수를 반환합니다. [`React.createElement()`](#createElement)와 마찬가지로 type 인자는 태그 이름 문자열(`'div'` 또는 `'span'` 등), [React 컴포넌트](/docs/components-and-props.html) 타입, 또는 [React Fragment](#reactfragment) 타입 중 하나가 올 수 있습니다.
+=======
+Return a function that produces React elements of a given type. Like [`React.createElement()`](#createelement), the type argument can be either a tag name string (such as `'div'` or `'span'`), a [React component](/docs/components-and-props.html) type (a class or a function), or a [React fragment](#reactfragment) type.
+>>>>>>> 6bc6e7b1411d4befc3ecfbe45b898ca474116020
 
 이 헬퍼 함수는 레거시 기능으로 간주되며, 대신 JSX 문법을 사용하거나 `React.createElement()`를 직접 사용하는 것이 좋습니다.
 
