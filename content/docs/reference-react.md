@@ -126,7 +126,7 @@ const MyComponent = React.memo(function MyComponent(props) {
 
 `React.memo`는 [고차 컴포넌트(Higher Order Component)](/docs/higher-order-components.html)입니다. [`React.PureComponent`](#reactpurecomponent)와 비슷하지만 class가 아니라 함수 컴포넌트라는 점이 다릅니다.
 
-당신의 함수형 컴포넌트가 동일한 props로 동일한 결과를 렌더링해낸다면, `React.memo`를 호출하고 결과를 메모이징(Memoizing)하도록 래핑하여 경우에 따라 성능 향상을 누릴 수 있습니다. 즉, React는 컴포넌트를 렌더링하지 않고 마지막으로 렌더링된 결과를 재사용합니다.
+당신의 함수 컴포넌트가 동일한 props로 동일한 결과를 렌더링해낸다면, `React.memo`를 호출하고 결과를 메모이징(Memoizing)하도록 래핑하여 경우에 따라 성능 향상을 누릴 수 있습니다. 즉, React는 컴포넌트를 렌더링하지 않고 마지막으로 렌더링된 결과를 재사용합니다.
 
 props가 갖는 복잡한 객체에 대하여 얕은 비교만을 수행하는 것이 기본 동작입니다. 다른 비교 동작을 원한다면, 두 번째 인자로 별도의 비교 함수를 제공하면 됩니다.
 
@@ -196,11 +196,7 @@ React.cloneElement(
 React.createFactory(type)
 ```
 
-<<<<<<< HEAD
-주어진 타입의 React 엘리먼트를 만들어내는 함수를 반환합니다. [`React.createElement()`](#createElement)와 마찬가지로 type 인자는 태그 이름 문자열(`'div'` 또는 `'span'` 등), [React 컴포넌트](/docs/components-and-props.html) 타입, 또는 [React Fragment](#reactfragment) 타입 중 하나가 올 수 있습니다.
-=======
-Return a function that produces React elements of a given type. Like [`React.createElement()`](#createelement), the type argument can be either a tag name string (such as `'div'` or `'span'`), a [React component](/docs/components-and-props.html) type (a class or a function), or a [React fragment](#reactfragment) type.
->>>>>>> 6bc6e7b1411d4befc3ecfbe45b898ca474116020
+주어진 타입의 React 엘리먼트를 만들어내는 함수를 반환합니다. [`React.createElement()`](#createelement)와 마찬가지로 type 인자는 태그 이름 문자열(`'div'` 또는 `'span'` 등), [React 컴포넌트](/docs/components-and-props.html) 타입, 또는 [React Fragment](#reactfragment) 타입 중 하나가 올 수 있습니다.
 
 이 헬퍼 함수는 레거시 기능으로 간주되며, 대신 JSX 문법을 사용하거나 `React.createElement()`를 직접 사용하는 것이 좋습니다.
 
