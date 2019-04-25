@@ -53,7 +53,7 @@ npm start
 
 Create React App 은 백 앤드 로직이나 데이터베이스를 제어할 수 없습니다. Create React App 은 프런트 앤드 빌드 파이프라인만 생성하기 때문에 백 앤드를 원하는 대로 사용할 수 있습니다. Create React App는 Babel이나 webpack같은 build 도구를 사용하나, 설정 없이도 동작합니다.
 
-프로덕션을 배포할 준비가 되었을 때, npm run build 를 실행하면 build 폴더 안에 제작한 앱의 최적화된 Build를 생성합니다. [README](https://github.com/facebookincubator/create-react-app#create-react-app-) 나 [사용자 가이드](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents)에서 더 자세한 사항을 볼 수 있습니다.
+프로덕션을 배포할 준비가 되었을 때, npm run build 를 실행하면 build 폴더 안에 제작한 앱의 최적화된 Build를 생성합니다. [README](https://github.com/facebookincubator/create-react-app#create-react-app-) 나 [사용자 가이드](https://facebook.github.io/create-react-app/)에서 더 자세한 사항을 볼 수 있습니다.
 
 ### Next.js {#nextjs}
 
