@@ -122,7 +122,7 @@ class Welcome extends React.Component {
 
 컴포넌트와 관련된 일부 데이터가 시간에 따라 변경될 경우 `state`가 필요합니다. 예를 들어, `Checkbox` 컴포넌트는 `isChecked` state가 필요할 수 있으며, `NewsFeed` 컴포넌트는 `fetchedPosts`를 컴포넌트의 state를 통해 계속 주시하려고 할 수 있습니다.
 
-`state`와 `props`의 가장 중요한 차이점은 `props`는 부모 컴포넌트로부터 전달받지만, `state`는 컴포넌트에서 관리된다는 것입니다. 컴포넌트는 `props`를 변경할 수 없지만, `state`는 변경할 수 있습니다. `this.setState()`를 호출하면 컴포넌트에서 `state`를 변경할 수 있습니다. 또한, class로 정의된 컴포넌트만 `state`를 가질 수 있습니다.
+`state`와 `props`의 가장 중요한 차이점은 `props`는 부모 컴포넌트로부터 전달받지만, `state`는 컴포넌트에서 관리된다는 것입니다. 컴포넌트는 `props`를 변경할 수 없지만, `state`는 변경할 수 있습니다.
 
 데이터가 변경되는 각 특정한 부분에 대해, 해당 상태(state)를 "소유"하는 컴포넌트는 하나만 존재해야 합니다. 서로 다른 두 컴포넌트의 상태를 동기화하려고 하지 마십시오. 대신, 공통 상태를 두 컴포넌트의 공통 조상으로 [끌어올리고](/docs/lifting-state-up.html) 해당 데이터를 두 컴포넌트에 props로 전달하세요.
 
@@ -130,7 +130,7 @@ class Welcome extends React.Component {
 
 생명주기 메서드(Lifecycle method)는 컴포넌트의 각각의 단계에서 실행되는 커스텀 기능입니다. 컴포넌트가 만들어지고 DOM에 삽입될 때([mounting](/docs/react-component.html#mounting)), 컴포넌트가 업데이트될 때 및 컴포넌트가 DOM에서 마운트 해제될 때(unmounted) 혹은 제거될 때 사용할 수 있는 기능을 제공합니다.
 
- ## [제어 컴포넌트](/docs/forms.html#controlled-components) vs. [비제어 컴포넌트](/docs/uncontrolled-components.html)
+ ## [제어 컴포넌트](/docs/forms.html#controlled-components) vs. [비제어 컴포넌트](/docs/uncontrolled-components.html)
 
 React는 두 가지 방식으로 form 입력을 처리합니다.
 

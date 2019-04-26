@@ -89,6 +89,11 @@ const fonts = {
     lineHeight: '65px',
     fontWeight: 700,
 
+    [media.lessThan('small')]: {
+      overflowWrap: 'break-word',
+      wordBreak: 'break-word',
+    },
+
     [media.lessThan('medium')]: {
       fontSize: 40,
       lineHeight: '45px',
@@ -399,6 +404,10 @@ const sharedStyles = {
         '&:nth-of-type(2)': {
           marginTop: 0,
         },
+      },
+
+      '& .gatsby-highlight': {
+        marginLeft: 0,
       },
     },
 
