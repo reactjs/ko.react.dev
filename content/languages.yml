@@ -30,7 +30,7 @@
 - name: Greek
   translated_name: Ελληνικά
   code: el
-  status: 0
+  status: 1
 - name: Spanish
   translated_name: Español
   code: es
@@ -66,7 +66,7 @@
 - name: Italian
   translated_name: Italiano
   code: it
-  status: 1
+  status: 2
 - name: Japanese
   translated_name: 日本語
   code: ja
@@ -78,6 +78,10 @@
 - name: Central Khmer
   translated_name: ភាសាខ្មែរ
   code: km
+  status: 0
+- name: Kannada
+  translated_name: ಕನ್ನಡ
+  code: kn
   status: 0
 - name: Korean
   translated_name: 한국어
@@ -146,11 +150,11 @@
 - name: Turkish
   translated_name: Türkçe
   code: tr
-  status: 1
+  status: 2
 - name: Ukrainian
   translated_name: Українська
   code: uk
-  status: 1
+  status: 2
 - name: Urdu
   translated_name: اردو
   code: ur
@@ -170,4 +174,4 @@
 - name: Traditional Chinese
   translated_name: 繁體中文
   code: zh-hant
-  status: 0
+  status: 1

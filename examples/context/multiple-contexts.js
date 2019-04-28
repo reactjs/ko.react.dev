@@ -1,7 +1,7 @@
-// Theme context, default to light theme
+// 기본값이 light인  ThemeContext
 const ThemeContext = React.createContext('light');
 
-// Signed-in user context
+// 로그인한 유저 정보를 담는 UserContext
 const UserContext = React.createContext({
   name: 'Guest',
 });
@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     const {signedInUser, theme} = this.props;
 
-    // App component that provides initial context values
+    // context 초기값을 제공하는 App 컴포넌트
     // highlight-range{2-3,5-6}
     return (
       <ThemeContext.Provider value={theme}>
@@ -31,7 +31,7 @@ function Layout() {
   );
 }
 
-// A component may consume multiple contexts
+// 여러 context의 값을 받는 컴포넌트
 function Content() {
   // highlight-range{2-10}
   return (
