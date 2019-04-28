@@ -1,6 +1,6 @@
 ---
 id: faq-functions
-title: Passing Functions to Components
+title: 컴포넌트에 함수를 전달하기
 permalink: docs/faq-functions.html
 layout: docs
 category: FAQ
