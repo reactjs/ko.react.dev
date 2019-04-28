@@ -14,7 +14,7 @@ category: FAQ
 <button onClick={this.handleClick}>
 ```
 
-핸들러 안에서 상위 컴포넌트에 접근할 필요가 있으면, 컴포넌트 인스턴스에 함수를 바인딩해 주어야 합니다.
+핸들러 안에서 상위 컴포넌트에 접근할 필요가 있으면 컴포넌트 인스턴스에 함수를 바인딩해 주어야 합니다.
 
 ### 컴포넌트 인스턴스로 함수를 바인딩하는 방법 {#how-do-i-bind-a-function-to-a-component-instance}
 
@@ -66,7 +66,7 @@ class Foo extends Component {
 
 >**주의:**
 >
->`Function.prototype.bind`를 render 메소드에서 사용하면 컴포넌트가 렌더링할 때마다 새로운 함수를 생성하기 때문에, 성능에 영향을 줄 수 있습니다.
+>`Function.prototype.bind`를 render 메소드에서 사용하면 컴포넌트가 렌더링할 때마다 새로운 함수를 생성하기 때문에 성능에 영향을 줄 수 있습니다.
 
 #### render 메소드 안에서 화살표 함수 사용(arrow function) {#arrow-function-in-render}
 
@@ -89,7 +89,7 @@ class Foo extends Component {
 
 이 방법은 대체로 사용해도 괜찮고, 콜백 함수로 매개변수를 전달해 주는 가장 쉬운 방법입니다.
 
-만약에 성능 문제가 있다면, 반드시 최적화를 해야 합니다.
+성능 문제가 있다면 반드시 최적화를 해야 합니다.
 
 ### 바인딩을 하는 이유 {#why-is-binding-necessary-at-all}
 
@@ -112,7 +112,7 @@ method();
 
 ### 컴포넌트가 렌더링할 때마다 함수가 호출되는 이유 {#why-is-my-function-being-called-every-time-the-component-renders}
 
-컴포넌트로 함수를 전달할 때, _호출하지 않는지_ 확인합니다.
+컴포넌트로 함수를 전달할 때 _호출하지 않는지_ 확인합니다.
 
 ```jsx
 render() {
@@ -121,7 +121,7 @@ render() {
 }
 ```
 
-위와 같은 방식이 아니라, 괄호 없이 _함수 그 자체를 전달해야 합니다._
+위와 같은 방식이 아니라 괄호 없이 _함수 그 자체를 전달해야 합니다._
 
 ```jsx
 render() {
@@ -132,7 +132,7 @@ render() {
 
 ### 이벤트 핸들러나 콜백에 매개변수를 전달하는 방법 {#how-do-i-pass-a-parameter-to-an-event-handler-or-callback}
 
-이벤드 핸들러에 화살표 함수를 사용하여 감싼 다음에, 매개변수를 넘겨주면 됩니다.
+이벤드 핸들러에 화살표 함수를 사용하여 감싼 다음에 매개변수를 넘겨주면 됩니다.
 
 ```jsx
 <button onClick={() => this.handleClick(id)} />
@@ -180,7 +180,7 @@ class Alphabet extends React.Component {
 
 #### 예시: data-attributes를 사용해서 매개변수 전달하기 {#example-passing-params-using-data-attributes}
 
-다른 방법으로, 이벤트 핸들러에 필요한 데이터를 저장하기 위해 DOM API를 사용할 수 있습니다. 이 방법은 아주 많은 요소를 최적화하거나, React.PureComponent equality checks에 의존하는 렌더링 트리를 사용할 때 고려해 볼 만합니다.
+다른 방법으로 이벤트 핸들러에 필요한 데이터를 저장하기 위해 DOM API를 사용할 수 있습니다. 이 방법은 아주 많은 요소를 최적화하거나 React.PureComponent equality checks에 의존하는 렌더링 트리를 사용할 때 고려해 볼 만합니다.
 
 ```jsx
 const A = 65 // ASCII character code
@@ -220,7 +220,7 @@ class Alphabet extends React.Component {
 
 ### 함수가 너무 빨리 또는 너무 많이 호출되는 것을 막는 방법 {#how-can-i-prevent-a-function-from-being-called-too-quickly-or-too-many-times-in-a-row}
 
- `onClick` 또는 `onScroll`과 같은 이벤트 핸들러를 사용하고 있을 때, 콜백이 너무 빠르게 호출되지 않도록 콜백이 실행되는 속도를 제어할 수 있습니다. 다음의 함수들을 사용하면 됩니다.
+`onClick` 또는 `onScroll`과 같은 이벤트 핸들러를 사용하고 있을 때 콜백이 너무 빠르게 호출되지 않도록 콜백이 실행되는 속도를 제어할 수 있습니다. 다음의 함수들을 사용하면 됩니다.
 
 - **스로틀링**: 시간 기반 빈도에 따른 변경 샘플링 (예시 [`_.throttle`](https://lodash.com/docs#throttle))
 - **디바운싱**: 비활성 주기 이후에 변경 적용 (예시 [`_.debounce`](https://lodash.com/docs#debounce))
@@ -304,7 +304,7 @@ class Searchbox extends React.Component {
 
 #### `requestAnimationFrame` 스로틀링 {#requestanimationframe-throttling}
 
-[`requestAnimationFrame`](https://developer.mozilla.org/ko/docs/Web/API/window/requestAnimationFrame)은 렌더링 성능을 위해 브라우저에서 최적화된 시간에 함수가 실행되도록 함수를 큐잉하는 방법입니다. `requestAnimationFrame`의 큐로 들어간 함수는 다음 프레임에서 실행됩니다. 브라우저는 1초당 60프레임(60 fpt)을 보장하기 위해 열심히 일합니다. 하지만 만약에 브라우저가 이를 하지 못할때 저절로 프레임을 *제한*합니다. 예를 들면, 한 기기가 30fps만 처리할 수 있다면, 1초 동안 30프레임만 얻을 수 있습니다. 스로틀링을 위해 `requestAnimationFrame`을 사용하면 1초에 60번 이상 업데이트하는 것을 막을 수 있습니다. 1초당 100번 업데이트하도록 브라우저에 일을 만들어 주어도, 유저는 이를 확인할 수 없습니다.
+[`requestAnimationFrame`](https://developer.mozilla.org/ko/docs/Web/API/window/requestAnimationFrame)은 렌더링 성능을 위해 브라우저에서 최적화된 시간에 함수가 실행되도록 함수를 큐잉하는 방법입니다. `requestAnimationFrame`의 큐로 들어간 함수는 다음 프레임에서 실행됩니다. 브라우저는 1초당 60프레임(60 fpt)을 보장하기 위해 열심히 일합니다. 하지만 만약에 브라우저가 이를 하지 못할때 저절로 프레임을 *제한*합니다. 예를 들면 한 기기가 30fps만 처리할 수 있다면 1초 동안 30프레임만 얻을 수 있습니다. 스로틀링을 위해 `requestAnimationFrame`을 사용하면 1초에 60번 이상 업데이트하는 것을 막을 수 있습니다. 1초당 100번 업데이트하도록 브라우저에 일을 만들어 주어도, 유저는 이를 확인할 수 없습니다.
 
 >**주의:**
 >
@@ -326,8 +326,8 @@ class ScrollListener extends React.Component {
   }
 
   handleScroll(e) {
-    // 스크롤 이벤트를 받게 되면, 업데이트를 일정에 추가합니다.
-    // 한 프레임 안에 많은 업데이트를 받으면, 오직 마지막 값만 게재합니다.
+    // 스크롤 이벤트를 받게 되면 업데이트를 일정에 추가합니다.
+    // 한 프레임 안에 많은 업데이트를 받으면 오직 마지막 값만 게재합니다.
     this.scheduleUpdate({ x: e.clientX, y: e.clientY });
   }
 
@@ -351,5 +351,5 @@ class ScrollListener extends React.Component {
 
 #### 속도 제한 테스트 방법 {#testing-your-rate-limiting}
 
-속도 제한 코드가 잘 작동하는지 테스트할 때, 빨리 감기 기능을 사용하는 것이 좋습니다. [`jest`](https://facebook.github.io/jest/)를 사용한다면 [`mock timers`](https://facebook.github.io/jest/docs/en/timer-mocks.html)를 빨리 감기 도구로 사용할 수 있습니다. `requestAnimationFrame` 스로틀링을 사용한다면, 애니메이션 프레임의 틱을 제어하기 위한 툴로
+속도 제한 코드가 잘 작동하는지 테스트할 때, 빨리 감기 기능을 사용하는 것이 좋습니다. [`jest`](https://facebook.github.io/jest/)를 사용한다면 [`mock timers`](https://facebook.github.io/jest/docs/en/timer-mocks.html)를 빨리 감기 도구로 사용할 수 있습니다. `requestAnimationFrame` 스로틀링을 사용한다면 애니메이션 프레임의 틱을 제어하기 위한 툴로
 [`raf-stub`](https://github.com/alexreardon/raf-stub)를 보면 좋습니다.
