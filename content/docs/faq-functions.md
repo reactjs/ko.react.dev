@@ -1,6 +1,6 @@
 ---
 id: faq-functions
-title: 컴포넌트에 함수를 전달하기
+title: 컴포넌트에 함수 전달하기
 permalink: docs/faq-functions.html
 layout: docs
 category: FAQ
@@ -87,7 +87,7 @@ class Foo extends Component
 
 ### render 메소드 안에서 화살표 함수를 사용해도 괜찮을까? {#is-it-ok-to-use-arrow-functions-in-render-methods}
 
-대체로 사용해도 괜찮고, 콜백 함수로 매개변수를 전달해 주는 것이 가장 쉬운 방법입니다.
+이 방법은 대체로 사용해도 괜찮고, 콜백 함수로 매개변수를 전달해 주는 가장 쉬운 방법입니다.
 
 만약에 성능 문제가 있다면, 반드시 최적화를 해야 합니다.
 
@@ -106,13 +106,13 @@ method();
 
 바인딩 메소드는 두 번째 코드 조각이 첫 번째 코드조각과 같은 방식으로 작동하도록 만들어 줍니다.
 
-일반적으로 React에서 다른 컴포넌트에 메소드를 **전달**해 줄 때만 바인딩해 주면 됩니다. 예를 들어 `<button onClick={this.handleClick}>`는 `this.handleClick`을 전달하여 바인딩합니다. 그렇지만 `render` 메소드나 생명주기 메소드는 다른 컴포넌트들로 전달하지 않기 때문에 바인딩할 필요가 없습니다.
+일반적으로 React에서 다른 컴포넌트에 메소드를 **전달**해 줄 때만 바인딩해 주면 됩니다. 예를 들어 `<button onClick={this.handleClick}>`는 `this.handleClick`을 전달하여 바인딩합니다. 그렇지만 `render` 메소드나 생명주기 메소드는 다른 컴포넌트로 전달하지 않기 때문에 바인딩할 필요가 없습니다.
 
 [Yehuda Katz의 글](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/)에서 바인딩이 무엇인지, Javascript에서 어떻게 함수가 작동하는지에 대해 상세히 알 수 있습니다.
 
 ### 컴포넌트가 렌더링할 때마다 함수가 호출되는 이유 {#why-is-my-function-being-called-every-time-the-component-renders}
 
-컴포넌트로 함수를 전달할 때, 호출하지 않는지 확인합니다.
+컴포넌트로 함수를 전달할 때, _호출하지 않는지_ 확인합니다.
 
 ```jsx
 render() {
@@ -121,7 +121,7 @@ render() {
 }
 ```
 
-위와 같은 방식이 아니라, 괄호 없이 함수 그 자체를 전달해야 합니다.
+위와 같은 방식이 아니라, 괄호 없이 _함수 그 자체를 전달해야 합니다._
 
 ```jsx
 render() {
@@ -224,7 +224,7 @@ class Alphabet extends React.Component {
 
 - **스로틀링**: 시간 기반 빈도에 따른 변경 샘플링 (예시 [`_.throttle`](https://lodash.com/docs#throttle))
 - **디바운싱**: 비활성 주기 이후에 변경 적용 (예시 [`_.debounce`](https://lodash.com/docs#debounce))
-- **`requestAnimationFrame` 스로틀링**:    [`requestAnimationFrame`](https://developer.mozilla.org/ko/docs/Web/API/window/requestAnimationFrame) (예시 [`raf-schd`](https://github.com/alexreardon/raf-schd))을 기반으로 한 변경 샘플링
+- **`requestAnimationFrame` 스로틀링**: [`requestAnimationFrame`](https://developer.mozilla.org/ko/docs/Web/API/window/requestAnimationFrame) (예시 [`raf-schd`](https://github.com/alexreardon/raf-schd))을 기반으로 한 변경 샘플링
 
 `throttle`과 `debounce` 함수를 비교하고 싶으면 [시각화](http://demo.nimius.net/debounce_throttle/)를 확인하면 됩니다.
 
@@ -262,7 +262,7 @@ class LoadMoreButton extends React.Component {
 
 #### 디바운스 {#debounce}
 
-디바운싱은 함수가 마지막으로 불린 후 특정 시간까지 실행되지 않도록 해줍니다. 빠르게 디스패치 하는 이벤트(예시 스크롤, 키보드 이벤트)의 응답으로 어떤 비싼 계산을 수행해야 할 때 사용하면 좋습니다.
+디바운싱은 함수가 마지막으로 불린 후 특정 시간까지 실행되지 않도록 해줍니다. 빠르게 디스패치 하는 이벤트(예시 스크롤, 키보드 이벤트)의 응답으로 어떤 비싼 계산을 수행해야 할 때 사용하면 좋습니다. 아래의 예시는 250밀리초 이내의 텍스트 입력을 디바운싱했습니다.
 
 ```jsx
 import debounce from 'lodash.debounce';
@@ -304,7 +304,7 @@ class Searchbox extends React.Component {
 
 #### `requestAnimationFrame` 스로틀링 {#requestanimationframe-throttling}
 
-[`requestAnimationFrame`](https://developer.mozilla.org/ko/docs/Web/API/window/requestAnimationFrame)은 렌더링 성능을 위해 브라우저에서 최적화된 시간에 함수가 실행되도록 함수를 큐잉하는 쉬운 방법입니다. `requestAnimationFrame`의 큐로 들어간 함수는 다음 프레임에서 실행됩니다. 브라우저는 1초당 60프레임(60 fpt)을 보장하기 위해 열심히 일합니다. 하지만, 만약에 브라우저가 이를 하지 못할때, 저절로 프레임을 *제한*합니다. 예를 들면, 한 기기가 30fps만 처리할 수 있다면, 1초 동안 30프레임만 얻을 수 있습니다. 스로틀링을 위해 `requestAnimationFrame`을 사용하면 1초에 60번 이상 업데이트하는 것을 막을 수 있습니다. 1초당 100번 업데이트하도록 브라우저에 일을 만들어 주어도, 유저는 이를 확인할 수 없습니다.
+[`requestAnimationFrame`](https://developer.mozilla.org/ko/docs/Web/API/window/requestAnimationFrame)은 렌더링 성능을 위해 브라우저에서 최적화된 시간에 함수가 실행되도록 함수를 큐잉하는 방법입니다. `requestAnimationFrame`의 큐로 들어간 함수는 다음 프레임에서 실행됩니다. 브라우저는 1초당 60프레임(60 fpt)을 보장하기 위해 열심히 일합니다. 하지만 만약에 브라우저가 이를 하지 못할때 저절로 프레임을 *제한*합니다. 예를 들면, 한 기기가 30fps만 처리할 수 있다면, 1초 동안 30프레임만 얻을 수 있습니다. 스로틀링을 위해 `requestAnimationFrame`을 사용하면 1초에 60번 이상 업데이트하는 것을 막을 수 있습니다. 1초당 100번 업데이트하도록 브라우저에 일을 만들어 주어도, 유저는 이를 확인할 수 없습니다.
 
 >**주의:**
 >
@@ -319,14 +319,14 @@ class ScrollListener extends React.Component {
 
     this.handleScroll = this.handleScroll.bind(this);
 
-    // 스케쥴 업데이트 함수를 만듭니다.
+    // 업데이트 일정을 정하는 함수를 만듭니다.
     this.scheduleUpdate = rafSchedule(
       point => this.props.onScroll(point)
     );
   }
 
-  handleScroll(e) {
-    // 스크롤 이벤트를 받게 되면, 업데이트를 스케줄에 추가합니다.
+  handleScroll(e) 줄
+    // 스크롤 이벤트를 받게 되면, 업데이트를 일정에 추가합니다.
     // 한 프레임 안에 많은 업데이트를 받으면, 오직 마지막 값만 게재합니다.
     this.scheduleUpdate({ x: e.clientX, y: e.clientY });
   }
