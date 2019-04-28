@@ -31,13 +31,9 @@ redirect_from:
 
 자습서를 익히기 위해 모든 부분을 한 번에 완료할 필요는 없습니다. 한 두 구역이라도 가능한 한 많이 시도 해보세요.
 
-<<<<<<< HEAD
 이 자습서를 따라하기 위해 코드를 복사하여 붙여넣는 것도 괜찮지만 직접 코드를 따라 적기를 추천합니다. 이 방식은 몸으로 기억하는 것과 더 강한 이해에 도움을 줄 것입니다.
 
 ### 무엇을 구현하나요? {#what-are-we-building}
-=======
-### What Are We Building? {#what-are-we-building}
->>>>>>> 9a20ea51911e5ddc095b23306a9f367cd5df0856
 
 우리는 React로 대화형 틱택토 게임을 만드는 방법을 알려드릴 것입니다.
 
@@ -1094,11 +1090,11 @@ React에서 `key`는 심화 기능인 `ref`와 동일하게 특별하고 미리 
 
 키는 전역에서 고유할 필요는 없으며 컴포넌트와 관련 아이템 사이에서는 고유한 값을 가져야 합니다.
 
-### Implementing Time Travel {#implementing-time-travel}
+### 시간 여행 구현하기 {#implementing-time-travel}
 
-In the tic-tac-toe game's history, each past move has a unique ID associated with it: it's the sequential number of the move. The moves are never re-ordered, deleted, or inserted in the middle, so it's safe to use the move index as a key.
+틱택토 게임의 기록에서 과거의 이동 정보는 이동의 순차적인 숫자를 고유한 ID로 가졌습니다. 이동은 순서가 바뀌거나 삭제되거나 중간에 삽입될 수 없기 때문에 이동의 인덱스를 키로 사용해도 안전합니다.
 
-In the Game component's `render` method, we can add the key as `<li key={move}>` and React's warning about keys should disappear:
+Game 컴포넌트의 `render` 함수 안에서 `<li key={move}>`로 키를 추가하면 React의 키에 대한 경고가 사라질 것입니다.
 
 ```js{6}
     const moves = history.map((step, move) => {
@@ -1113,11 +1109,11 @@ In the Game component's `render` method, we can add the key as `<li key={move}>`
     });
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/PmmXRE?editors=0010)**
+**[지금까지의 전체 코드 확인하기](https://codepen.io/gaearon/pen/PmmXRE?editors=0010)**
 
-Clicking any of the list item's buttons throws an error because the `jumpTo` method is undefined. Before we implement `jumpTo`, we'll add `stepNumber` to the Game component's state to indicate which step we're currently viewing.
+`jumpTo` 함수가 정의되어있지 않기 때문에 리스트 아이템의 버튼을 클릭하면 에러가 발생합니다. `jumpTo`를 구현하기 전에 Game 컴포넌트의 state에 `stepNumber`를 추가하여 현재 진행중인 단계를 표시하겠습니다.
 
-First, add `stepNumber: 0` to the initial state in Game's `constructor`:
+먼저 Game의 `constructor` 초기 state로 `stepNumber: 0`를 추가해주세요.
 
 ```js{8}
 class Game extends React.Component {
@@ -1133,11 +1129,11 @@ class Game extends React.Component {
   }
 ```
 
-Next, we'll define the `jumpTo` method in Game to update that `stepNumber`. We also set `xIsNext` to true if the number that we're changing `stepNumber` to is even:
+다음으로 Game의 `stepNumber`를 업데이트하기 위해 `jumpTo`를 정의해주세요. 또한 `stepNumber`가 짝수일 때 마다 `xIsNext`를 true로 설정하겠습니다.
 
 ```javascript{5-10}
   handleClick(i) {
-    // this method has not changed
+    // 이 함수는 변하지 않습니다.
   }
 
   jumpTo(step) {
@@ -1148,15 +1144,15 @@ Next, we'll define the `jumpTo` method in Game to update that `stepNumber`. We a
   }
 
   render() {
-    // this method has not changed
+    // 이 함수는 변하지 않습니다.
   }
 ```
 
-We will now make a few changes to the Game's `handleClick` method which fires when you click on a square.
+이제 사각형을 클릭할 때 마다 실행되는 Game의 `handleClick` 함수에 몇 가지 변화를 줄 것입니다.
 
-The `stepNumber` state we've added reflects the move displayed to the user now. After we make a new move, we need to update `stepNumber` by adding `stepNumber: history.length` as part of the `this.setState` argument. This ensures we don't get stuck showing the same move after a new one has been made.
+`stepNumber` state는 현재 사용자에게 표시되는 이동을 반영합니다. 새로운 이동을 만든 후에 `this.setState`의 인자로 `stepNumber: history.length`를 추가하여 `stepNumber`를 업데이트 해아합니다. 이를 통해 새로운 이동이 생성된 후에 이동이 그대로 남아있는 것을 방지합니다.
 
-We will also replace reading `this.state.history` with `this.state.history.slice(0, this.state.stepNumber + 1)`. This ensures that if we "go back in time" and then make a new move from that point, we throw away all the "future" history that would now become incorrect.
+또한 `this.state.history`를 `this.state.history.slice(0, this.state.stepNumber + 1)`로 교체할 것입니다. 그 결과로 "시간을 거슬러 올라가고" 그 시점에서 새로운 이동을 발생한다면 이제는 맞지 않게 된 모든 "미래"의 기록을 날려버립니다.
 
 ```javascript{2,13}
   handleClick(i) {
@@ -1177,7 +1173,7 @@ We will also replace reading `this.state.history` with `this.state.history.slice
   }
 ```
 
-Finally, we will modify the Game component's `render` method from always rendering the last move to rendering the currently selected move according to `stepNumber`:
+마지막으로 Game 컴포넌트의 `render` 함수를 수정하여 항상 마지막 이동을 렌더링하는 대신 `stepNumber`에 맞는 현재 선택된 이동을 렌더링할 것입니다.
 
 ```javascript{3}
   render() {
@@ -1188,30 +1184,30 @@ Finally, we will modify the Game component's `render` method from always renderi
     // the rest has not changed
 ```
 
-If we click on any step in the game's history, the tic-tac-toe board should immediately update to show what the board looked like after that step occurred.
+게임의 기록에서 어떤 차례를 선택한다면 틱택토 게임판을 즉시 업데이트해서 그 단계가 발생한 직후의 게임판을 보여주어야 합니다.
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**
+**[지금까지의 전체 코드 확인하기](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**
 
-### Wrapping Up {#wrapping-up}
+### 마무리 {#wrapping-up}
 
-Congratulations! You've created a tic-tac-toe game that:
+축하합니다! 당신은 아래 기능을 가진 틱택토 게임을 만들었습니다.
 
-* Lets you play tic-tac-toe,
-* Indicates when a player has won the game,
-* Stores a game's history as a game progresses,
-* Allows players to review a game's history and see previous versions of a game's board.
+* 틱택토를 할 수 있게 해주고,
+* 게임에서 승리했을 때를 알려주며,
+* 게임이 진행됨에 따라 게임 기록을 저장하고,
+* 플레이어가 게임 기록을 확인하고 게임판의 이전 버전을 볼 수 있도록 허용합니다.
 
-Nice work! We hope you now feel like you have a decent grasp on how React works.
+수고하셨습니다! 이제 React가 어떻게 동작하는지 이해하셨길 바랍니다.
 
-Check out the final result here: **[Final Result](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
+최종 결과는 여기서 확인해주세요: **[최종 결과](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
 
-If you have extra time or want to practice your new React skills, here are some ideas for improvements that you could make to the tic-tac-toe game which are listed in order of increasing difficulty:
+시간이 더 있거나 새로운 React 기술을 연습하고 싶은 경우 다음과 같이 난이도를 높일 수 있는 틱택토 게임 개선 아이디어를 구현해보세요.
 
-1. Display the location for each move in the format (col, row) in the move history list.
-2. Bold the currently selected item in the move list.
-3. Rewrite Board to use two loops to make the squares instead of hardcoding them.
-4. Add a toggle button that lets you sort the moves in either ascending or descending order.
-5. When someone wins, highlight the three squares that caused the win.
-6. When no one wins, display a message about the result being a draw.
+1. 이동 기록 목록에서 특정 형식(행, 열)으로 각 이동의 위치를 표시해주세요.
+2. 이동 목록에서 현재 선택된 아이템을 굵게 표시해주세요.
+3. 사각형들을 만들 때 하드코딩 대신에 두 개의 반복문을 사용하도록 Board를 다시 작성해주세요.
+4. 오름차순이나 내림차순으로 이동을 정렬하도록 토글 버튼을 추가해주세요.
+5. 승자가 정해지면 승부의 원인이 된 세 개의 사각형을 강조해주세요.
+6. 승자가 없는 경우 무승부라는 메시지를 표시해주세요.
 
-Throughout this tutorial, we touched on React concepts including elements, components, props, and state. For a more detailed explanation of each of these topics, check out [the rest of the documentation](/docs/hello-world.html). To learn more about defining components, check out the [`React.Component` API reference](/docs/react-component.html).
+자습서를 통해 엘리먼트, 컴포넌트, props, state를 포함한 React의 개념을 다루었습니다. 각 항목에 대한 자세한 설명은 [문서의 다른 부분](/docs/hello-world.html)을 참조하시길 바랍니다. 컴포넌트의 정의에 대한 자세한 내용은 [`React.Component` API 참조](/docs/react-component.html)를 확인해주세요.
