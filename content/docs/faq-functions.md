@@ -55,7 +55,7 @@ class Foo extends Component {
 
 ```jsx
 class Foo extends Component {
-  handleClick()
+  handleClick() {
     console.log('Click happened');
   }
   render() {
@@ -71,7 +71,7 @@ class Foo extends Component {
 #### render 메소드 안에서 화살표 함수 사용(arrow function) {#arrow-function-in-render}
 
 ```jsx
-class Foo extends Component
+class Foo extends Component {
   handleClick() {
     console.log('Click happened');
   }
@@ -325,7 +325,7 @@ class ScrollListener extends React.Component {
     );
   }
 
-  handleScroll(e) 줄
+  handleScroll(e) {
     // 스크롤 이벤트를 받게 되면, 업데이트를 일정에 추가합니다.
     // 한 프레임 안에 많은 업데이트를 받으면, 오직 마지막 값만 게재합니다.
     this.scheduleUpdate({ x: e.clientX, y: e.clientY });
