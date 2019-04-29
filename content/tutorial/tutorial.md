@@ -16,11 +16,11 @@ redirect_from:
 
 ## 자습서를 시작하기 전에 {#before-we-start-the-tutorial}
 
-우리는 자습서에서 작은 게임을 만들 것입니다. **게임을 만드고 싶지 않기 때문에 자습서를 건너뛰고 싶을 수 있습니다 -- 그래도 기회를 주세요.** 자습서에서 배우는 기술은 React 앱을 만드는 데 있어 기본이며 그것을 마스터하면 React에 대해 깊이 이해할 수 있습니다.
+우리는 자습서에서 작은 게임을 만들 것입니다. **게임을 만들고 싶지 않기 때문에 자습서를 건너뛰고 싶을 수 있습니다 -- 그래도 기회를 주세요.** 자습서에서 배우는 기술은 React 앱을 만드는 데 있어 기본이며 그것을 마스터하면 React에 대해 깊이 이해할 수 있습니다.
 
 > 팁
 >
-> 자습서는 **실습을 통해 배우기**를 선호하는 사람들에 맞춰 설계 되었습니다. 기초부터 개념을 학습하길 선호한다면 [단계별 가이드](/docs/hello-world.html)를 확인해보세요. 자습서와 단계별 가이드는 상호 보완적입니다.
+> 자습서는 **실습으로 배우기**를 선호하는 사람들에 맞춰 설계되었습니다. 기초부터 개념을 학습하길 선호한다면 [단계별 가이드](/docs/hello-world.html)를 확인해보세요. 자습서와 단계별 가이드는 상호 보완적입니다.
 
 자습서는 아래와 같이 몇 가지 구역으로 나뉩니다.
 
@@ -29,9 +29,9 @@ redirect_from:
 * [게임 완성하기](#completing-the-game)는 React 개발에서 사용하는 **가장 일반적인 기술**을 가르쳐 줄 것입니다.
 * [시간여행 추가하기](#adding-time-travel)는 React의 고유한 강점에 대한 **깊은 통찰력**을 줄 것입니다.
 
-자습서를 익히기 위해 모든 부분을 한 번에 완료할 필요는 없습니다. 한 두 구역이라도 가능한 한 많이 시도 해보세요.
+자습서를 익히기 위해 모든 부분을 한 번에 완료할 필요는 없습니다. 한두 구역이라도 가능한 한 많이 시도해 보세요.
 
-이 자습서를 따라하기 위해 코드를 복사하여 붙여넣는 것도 괜찮지만 직접 코드를 따라 적기를 추천합니다. 이 방식은 몸으로 기억하는 것과 더 강한 이해에 도움을 줄 것입니다.
+이 자습서를 따라 하기 위해 코드를 복사하여 붙여넣는 것도 괜찮지만 직접 코드를 따라 적기를 추천합니다. 이 방식은 몸으로 기억하는 것과 더 강한 이해에 도움을 줄 것입니다.
 
 ### 무엇을 구현하나요? {#what-are-we-building}
 
@@ -45,9 +45,9 @@ redirect_from:
 
 ### 사전 준비 {#prerequisites}
 
-당신이 HTML과 JavaScript에 어느정도 익숙하다고 가정하지만 다른 프로그래밍 언어를 사용하더라도 자습서를 따라갈 수 있습니다. 또한 함수, 객체, 배열, 가능하다면 클래스 같은 프로그래밍 개념에 익숙하다고 가정합니다.
+당신이 HTML과 JavaScript에 어느 정도 익숙하다고 가정하지만 다른 프로그래밍 언어를 사용하더라도 자습서를 따라갈 수 있습니다. 또한 함수, 객체, 배열, 가능하다면 클래스 같은 프로그래밍 개념에 익숙하다고 가정합니다.
 
-JavaScript를 다시 보고싶다면 [이 가이드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)를 추천합니다. JavaScript의 최신 버전인 ES6의 몇 가지 기능을 사용한다는 사실에 주목해주세요. 자습서에서는 [화살표 함수](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [클래스](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)를 사용합니다. [Babel REPL](babel://es5-syntax-example)을 사용하여 ES6 코드가 어떻게 컴파일되는지 확인할 수 있습니다.
+JavaScript를 다시 보고 싶다면 [이 가이드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)를 추천합니다. JavaScript의 최신 버전인 ES6의 몇 가지 기능을 사용한다는 사실에 주목해주세요. 자습서에서는 [화살표 함수](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [클래스](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)를 사용합니다. [Babel REPL](babel://es5-syntax-example)을 사용하여 ES6 코드가 어떻게 컴파일되는지 확인할 수 있습니다.
 
 ## 자습서 설정 {#setup-for-the-tutorial}
 
@@ -63,7 +63,7 @@ JavaScript를 다시 보고싶다면 [이 가이드](https://developer.mozilla.o
 
 ### 설정 옵션 2: 로컬 개발 환경 {#setup-option-2-local-development-environment}
 
-이 방식은 완전히 선택사항이며 이 자습서에 반드시 필요한 것은 아닙니다!
+이 방식은 완전히 선택사항이며 이 자습서에 필요한 것은 아닙니다!
 
 <br>
 
@@ -71,7 +71,7 @@ JavaScript를 다시 보고싶다면 [이 가이드](https://developer.mozilla.o
 
 <summary><b>선택 사항: 선호하는 텍스트 편집기를 사용하기 위한 지침</b></summary>
 
-이 설정은 더 많은 작업을 요구하지만 당신이 선택한 편집기를 사용하여 자습서를 완성할 수 있게 합니다. 아래의 단계를 따라주세요.
+이 설정은 더 많은 작업을 요구하지만, 당신이 선택한 편집기를 사용하여 자습서를 완성할 수 있게 합니다. 아래의 단계를 따라주세요.
 
 1. 최신 버전의 [Node.js](https://nodejs.org/en/)가 설치되어 있는지 확인해주세요.
 2. [Create React App 설치 지침](/docs/create-a-new-react-app.html#create-react-app)을 따라 새로운 프로젝트를 생성해주세요.
@@ -80,11 +80,11 @@ JavaScript를 다시 보고싶다면 [이 가이드](https://developer.mozilla.o
 npx create-react-app my-app
 ```
 
-3. 새로운 프로젝트의 `src/` 폴더에 있는 모든 파일을 삭제해주세요.
+3. 새로운 프로젝트의 `src/` 폴더에 있는 모든 파일을 삭제해 주세요.
 
 > 주의
 >
-> **`src` 폴더 전체가 아니라 폴더 내부의 기존 소스 파일들만 삭제 해주세요.** 다음 단계에서 기본 소스 파일을 이 프로젝트의 예제로 바꿀 것입니다.
+> **`src` 폴더 전체가 아니라 폴더 내부의 기존 소스 파일들만 삭제해 주세요.** 다음 단계에서 기본 소스 파일을 이 프로젝트의 예제로 바꿀 것입니다.
 
 ```bash
 cd my-app
@@ -992,9 +992,9 @@ Game 컴포넌트가 게임의 상태를 렌더링하기 때문에 Board의 `ren
 
 틱택토 게임의 이동 정보를 기록하고 있기 때문에 이제 플레이어에게 과거의 이동을 목록으로 표시할 수 있습니다.
 
-앞에서 React 엘리먼트는 어플리케이션에 전달할 수 있는 클래스형 자바스크립트 객체라는 것을 배웠습니다. React 엘리먼트 배열을 사용하면 여러 아이템을 렌더링할 수 있습니다. 
+앞에서 React 엘리먼트는 어플리케이션에 전달할 수 있는 클래스형 JavaScript 객체라는 것을 배웠습니다. React 엘리먼트 배열을 사용하면 여러 아이템을 렌더링할 수 있습니다.
 
-자바스크립트에서 배열은 데이터를 다른 데이터와 함께 매핑할 때 사용하는 [`map()` 함수](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)를 가지고 있습니다. 이 함수는 아래와 같이 사용할 수 있습니다.
+JavaScript에서 배열은 데이터를 다른 데이터와 함께 매핑할 때 사용하는 [`map()` 함수](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)를 가지고 있습니다. 이 함수는 아래와 같이 사용할 수 있습니다.
 
 ```js
 const numbers = [1, 2, 3];
