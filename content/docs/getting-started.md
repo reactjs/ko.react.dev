@@ -115,7 +115,7 @@ React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 �
 
 트위터의 [@reactjs 계정](https://twitter.com/reactjs)을 팔로우할 수도 있지만, 블로그만 읽어도 꼭 알아야 하는 정보는 놓치지 않을 수 있습니다.
 
-모든 React 릴리즈가 자체 블로그 게시물을 사용할 만한 것은 아니지만 [릴리즈](https://github.com/facebook/react) 페이지와 React의 `CHANGELOG.md` 파일에서 모든 릴리즈에 대한 자세한 변경 기록을 확인할 수 있습니다.
+모든 React 릴리즈가 자체 블로그 게시물을 사용할 만한 것은 아니지만 [릴리즈](https://github.com/facebook/react/releases) 페이지와 React의 [`CHANGELOG.md` 파일](https://github.com/facebook/react/blob/master/CHANGELOG.md)에서 모든 릴리즈에 대한 자세한 변경 기록을 확인할 수 있습니다.
 
 ## 버전 관리된 문서 {#versioned-documentation}
 
