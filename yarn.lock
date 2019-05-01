@@ -11288,7 +11288,6 @@ relay-runtime@1.5.0:
     babel-runtime "^6.23.0"
     fbjs "^0.8.14"
 
-<<<<<<< HEAD
 remark-frontmatter@^1.2.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/remark-frontmatter/-/remark-frontmatter-1.3.1.tgz#bc28c0c913fa0b9dd26f17304bc47b856b2ea2de"
@@ -11296,7 +11295,7 @@ remark-frontmatter@^1.2.0:
   dependencies:
     fault "^1.0.1"
     xtend "^4.0.1"
-=======
+
 remark-parse@^1.1.0:
   version "1.1.0"
   resolved "http://registry.npmjs.org/remark-parse/-/remark-parse-1.1.0.tgz#c3ca10f9a8da04615c28f09aa4e304510526ec21"
@@ -11310,7 +11309,6 @@ remark-parse@^1.1.0:
     unherit "^1.0.4"
     unist-util-remove-position "^1.0.0"
     vfile-location "^2.0.0"
->>>>>>> b8b3db7acbba117addeea8a7fb86957eb046d7ce
 
 remark-parse@^5.0.0:
   version "5.0.0"
@@ -13231,9 +13229,6 @@ unicode-property-aliases-ecmascript@^1.0.4:
   resolved "https://registry.yarnpkg.com/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-1.0.4.tgz#5a533f31b4317ea76f17d807fa0d116546111dd0"
   integrity sha512-2WSLa6OdYd2ng8oqiGIWnJqyFArvhn+5vgx5GTxMbUYjCYKUcuKS62YLFF0R/BDGlB1yzXjQOLtPAfHsgirEpg==
 
-<<<<<<< HEAD
-unified@^6.0.0, unified@^6.1.5, unified@^6.1.6:
-=======
 unified@^4.1.1:
   version "4.2.1"
   resolved "http://registry.npmjs.org/unified/-/unified-4.2.1.tgz#76ff43aa8da430f6e7e4a55c84ebac2ad2cfcd2e"
@@ -13245,8 +13240,7 @@ unified@^4.1.1:
     trough "^1.0.0"
     vfile "^1.0.0"
 
-unified@^6.0.0, unified@^6.1.5:
->>>>>>> b8b3db7acbba117addeea8a7fb86957eb046d7ce
+unified@^6.0.0, unified@^6.1.5, unified@^6.1.6:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/unified/-/unified-6.2.0.tgz#7fbd630f719126d67d40c644b7e3f617035f6dba"
   integrity sha512-1k+KPhlVtqmG99RaTbAv/usu85fcSRu3wY8X+vnsEhIxNP5VbVIDiXnLqyKIG+UMdyTg0ZX9EI6k2AfjJkHPtA==
