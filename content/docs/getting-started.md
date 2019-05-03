@@ -99,7 +99,11 @@ React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 �
 
 ### 고급 개념 {#advanced-concepts}
 
+<<<<<<< HEAD
 [주요 개념](#main-concepts)에 익숙해지고 React를 더 많이 다루게 되면 보다 고급 주제에 관심을 가지게 될 것입니다. 이 섹션에서는 [context](/docs/context.html) 및 [refs](/docs/refs-and-dom.html)와 같이 강력하지만 일반적으로 사용되지는 않는 React 기능을 소개합니다.
+=======
+Once you're comfortable with the [main concepts](/docs/hello-world.html) and played with React a little bit, you might be interested in more advanced topics. This section will introduce you to the powerful, but less commonly used React features like [context](/docs/context.html) and [refs](/docs/refs-and-the-dom.html).
+>>>>>>> b1691780aa3178d39694264863210d34ad5a5f81
 
 ### API 참조 {#api-reference}
 
