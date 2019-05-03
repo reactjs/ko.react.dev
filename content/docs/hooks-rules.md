@@ -28,7 +28,7 @@ Hook은 JavaScript 함수입니다. 하지만 Hook을 사용할 때는 두 가�
 우리는 이 두 가지 규칙을 강제하는 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks)  라는 ESLint 플러그인을 출시했습니다. 이 플러그인을 프로젝트에 추가할 수 있습니다.
 
 ```bash
-npm install eslint-plugin-react-hooks
+npm install eslint-plugin-react-hooks --save-dev
 ```
 
 ```js
