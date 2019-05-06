@@ -128,7 +128,7 @@ import './index.css';
 
 ### React가 무엇인가요? {#what-is-react}
 
-React는 사용자 인터페이스를 구축하기 위한 선언적이고 효율적이며 유연한 JavaScript 라이브러리 입니다. "컴포넌트"라고 불리는 작고 고립된 코드의 파편을 이용하여 복잡한 UI를 구성하도록 돕습니다.
+React는 사용자 인터페이스를 구축하기 위한 선언적이고 효율적이며 유연한 JavaScript 라이브러리입니다. "컴포넌트"라고 불리는 작고 고립된 코드의 파편을 이용하여 복잡한 UI를 구성하도록 돕습니다.
 
 React는 몇 가지 종류의 컴포넌트를 가지지만 우리는 `React.Component`의 하위 클래스를 사용해보겠습니다.
 
@@ -155,7 +155,7 @@ XML과 유사한 재밌는 태그를 사용할 것입니다. 우리는 컴포넌
 
 여기에서 ShoppingList는 **React 컴포넌트 클래스** 또는 **React 컴포넌트 타입**입니다. 개별 컴포넌트는 `props`라는 매개변수를 받아오고 `render` 함수를 통해 표시할 뷰 계층 구조를 반환합니다.
 
-`render`함수는 화면에서 보고자 하는 *내용*을 반환합니다. React는 설명을 전달받고 결과를 표시합니다. 특히 `render`는 렌더링할 내용을 경량화한 **React 엘리먼트**를 반환합니다. 다수의 React 개발자는 "JSX"라는 특수한 문법을 사용하여 React의 구조를 보다 쉽게 작성합니다. `<div />` 구문은 빌드하는 시점에서 `React.createElement('div')`로 변환됩니다. 위에서 본 예제는 아래와 같이 변화합니다.
+`render` 함수는 화면에서 보고자 하는 *내용*을 반환합니다. React는 설명을 전달받고 결과를 표시합니다. 특히 `render`는 렌더링할 내용을 경량화한 **React 엘리먼트**를 반환합니다. 다수의 React 개발자는 "JSX"라는 특수한 문법을 사용하여 React의 구조를 보다 쉽게 작성합니다. `<div />` 구문은 빌드하는 시점에서 `React.createElement('div')`로 변환됩니다. 위에서 본 예제는 아래와 같이 변화합니다.
 
 ```javascript
 return React.createElement('div', {className: 'shopping-list'},
@@ -184,7 +184,7 @@ JSX는 JavaScript의 강력한 기능을 가지고 있습니다. JSX 내부의 �
 * Board
 * Game
 
-Square 컴포넌트는 `<button>`을 렌더링하고 Board는 사각형 9개를 렌더링합니다. Game 컴포넌트는 게임 판을 렌더링하며 나중에 수정할 자리 표시자 값을 가지고 있습니다. 지금은 사용자와 상호작용하는 컴포넌트가 없습니다.
+Square 컴포넌트는 `<button>`을 렌더링하고 Board는 사각형 9개를 렌더링합니다. Game 컴포넌트는 게임판을 렌더링하며 나중에 수정할 자리 표시자 값을 가지고 있습니다. 지금은 사용자와 상호작용하는 컴포넌트가 없습니다.
 
 ### Props를 통해 데이터 전달하기 {#passing-data-through-props}
 
@@ -219,7 +219,7 @@ class Square extends React.Component {
 
 ![React Devtools](../images/tutorial/tictac-empty.png)
 
-변경 후: 렌더링된 결과에서 각 사각형에 숫자가 표시됩니다.
+변경 후: 렌더링 된 결과에서 각 사각형에 숫자가 표시됩니다.
 
 ![React Devtools](../images/tutorial/tictac-numbers.png)
 
@@ -262,7 +262,7 @@ Square를 클릭하면 브라우저에서 경고 창이 뜨는 것을 확인할 
 >}
 >```
 >
-> `onClick={() => alert('click')}`이 어떻게 동작하는지 살펴보면 `onClick` prop으로 *함수*를 전달하고 있습니다. React는 클릭했을 때에만 이 함수를 호출할 것입니다. `() =>`을 잊어버리고 `onClick={alert('click')}`이라고 작성하는 것은 흔히 발생하는 실수이며 컴포넌트가 다시 렌더링할 때 마다 경고 창을 띄울 것입니다.
+> `onClick={() => alert('click')}`이 어떻게 동작하는지 살펴보면 `onClick` prop으로 *함수*를 전달하고 있습니다. React는 클릭했을 때에만 이 함수를 호출할 것입니다. `() =>`을 잊어버리고 `onClick={alert('click')}`이라고 작성하는 것은 흔히 발생하는 실수이며 컴포넌트가 다시 렌더링할 때마다 경고 창을 띄울 것입니다.
 
 다음 단계로 Square 컴포넌트를 클릭한 것을 "기억하게" 만들어 "X" 표시를 채워 넣으려고 합니다. 무언가를 "기억하기"위해 component는 **state**를 사용합니다.
 
@@ -354,7 +354,7 @@ React DevTools를 설치한 후에 페이지의 모든 엘리먼트에 오른쪽
 
 현재 게임의 state를 각각의 Square 컴포넌트에서 유지하고 있습니다. 승자를 확인하기 위해 9개 사각형의 값을 한 곳에 유지할 것입니다.
 
-Board가 각 Square에 Square의 state를 요청해야한다고 생각할 수도 있습니다. 그리고 React에서 이런 접근이 가능하기는 하지만 이 방식은 코드를 이해하기 어렵게 만들고 버그에 취약하며 리팩토링이 어렵기 때문에 추천하지 않습니다. 각 Square가 아닌 부모 Board 컴포넌트에 게임의 상태를 저장하는 것이 가장 좋은 방법입니다. [각 Square에 숫자를 넘겨주었을 때와 같이](#passing-data-through-props) Board 컴포넌트는 각 Square에게 prop을 전달하는 것으로 무엇을 표시할 지 알려줍니다.
+Board가 각 Square에 Square의 state를 요청해야 한다고 생각할 수도 있습니다. 그리고 React에서 이런 접근이 가능하기는 하지만 이 방식은 코드를 이해하기 어렵게 만들고 버그에 취약하며 리팩토링이 어렵기 때문에 추천하지 않습니다. 각 Square가 아닌 부모 Board 컴포넌트에 게임의 상태를 저장하는 것이 가장 좋은 방법입니다. [각 Square에 숫자를 넘겨주었을 때와 같이](#passing-data-through-props) Board 컴포넌트는 각 Square에게 prop을 전달하는 것으로 무엇을 표시할 지 알려줍니다.
 
 **여러개의 자식으로부터 데이터를 모으거나 두 개의 자식 컴포넌트들이 서로 통신하게 하려면 부모 컴포넌트에 공유 state를 정의해야 합니다. 부모 컴포넌트는 props를 사용하여 자식 컴포넌트에 state를 다시 전달할 수 있습니다. 이것은 자식 컴포넌트들이 서로 또는 부모 컴포넌트와 동기화 하도록 만듭니다.**
 
@@ -394,7 +394,7 @@ Board의 `renderSquare` 함수는 현재 아래와 같은 형태입니다.
   }
 ```
 
-처음에는 모든 Square에서 0 부터 8까지 숫자를 보여주기 위해 Board에서 [`value` prop을 자식으로 전달했습니다](#passing-data-through-props). 또 다른 이전 단계에서는 숫자를 [Square의 자체 state에 따라](#making-an-interactive-component) "X" 표시로 바꾸었습니다. 그렇기 때문에 현재 Square는 Board에서 전달한 `value` prop을 무시하고 있습니다.
+처음에는 모든 Square에서 0부터 8까지 숫자를 보여주기 위해 Board에서 [`value` prop을 자식으로 전달했습니다](#passing-data-through-props). 또 다른 이전 단계에서는 숫자를 [Square의 자체 state에 따라](#making-an-interactive-component) "X" 표시로 바꾸었습니다. 그렇기 때문에 현재 Square는 Board에서 전달한 `value` prop을 무시하고 있습니다.
 
 이제 prop을 전달하는 방법을 다시 사용할 것입니다. 각 Square에게 현재 값(`'X'`, `'O'`, 또는 `null`)을 표현하도록 Board를 수정할 것입니다. Board의 생성자에서 `squares` 배열을 이미 선언했으며 `renderSquare` 함수를 아래와 같이 수정할 것입니다.
 
@@ -430,7 +430,7 @@ Square는 이제 빈 사각형에 `'X'`, `'O'`, 또는 `null`인 `value` prop을
 이제 Board에서 Square로 `value`와 `onClick` 두 개의 props를 전달하였습니다. `onClick` prop은 Square를 클릭하면 호출되는 함수입니다. Square를 아래와 같이 변경해주세요.
 
 * Square의 `render` 함수 내부의 `this.state.value`를 `this.props.value`로 바꾸어주세요.
-* Square의 `render` 함수 내부의 `this.setState()`를 `this.props.onClick()`로 바꾸어주세요.
+* Square의 `render` 함수 내부의 `this.setState()`를 `this.props.onClick()`으로 바꾸어주세요.
 * Square는 게임의 상태를 유지할 필요가 없기 때문에 `constructor`를 지워주세요.
 
 이렇게 바꾼 후에 Square는 아래와 같은 모습이 됩니다.
@@ -525,16 +525,16 @@ Square 컴포넌트가 더 이상 state를 유지하지 않기 때문에 Square 
 
 ### 왜 불변성이 중요할까요 {#why-immutability-is-important}
 
-이전 코드 예제에서 기존 배열을 수정하는 것이 아니라 `.slice()` 연산자를 사용하여 `square` 배열의 사본 만들기를 추천했습니다. 지금부터 불변성이 무엇인지와 왜 불변성이 중요한 지 알아보겠습니다.
+이전 코드 예제에서 기존 배열을 수정하는 것이 아니라 `.slice()` 연산자를 사용하여 `square` 배열의 사본 만들기를 추천했습니다. 지금부터 불변성이 무엇인지와 왜 불변성이 중요한지 알아보겠습니다.
 
-일반적으로 데이터 변경에는 두 가지 방법이 있습니다. 첫번째는 데이터의 값을 직접 *변경*하는 것입니다. 두번째는 원하는 변경값을 가진 새로운 사본으로 데이터를 교체하는 것입니다.
+일반적으로 데이터 변경에는 두 가지 방법이 있습니다. 첫 번째는 데이터의 값을 직접 *변경*하는 것입니다. 두 번째는 원하는 변경 값을 가진 새로운 사본으로 데이터를 교체하는 것입니다.
 
 #### 객체 변경을 통해 데이터 수정하기 {#data-change-with-mutation}
 
 ```javascript
 var player = {score: 1, name: 'Jeff'};
 player.score = 2;
-// 이제 player는 {score: 2, name: 'Jeff'} 입니다.
+// 이제 player는 {score: 2, name: 'Jeff'}입니다.
 ```
 
 #### 객체 변경 없이 데이터 수정하기 {#data-change-without-mutation}
@@ -543,7 +543,7 @@ player.score = 2;
 var player = {score: 1, name: 'Jeff'};
 
 var newPlayer = Object.assign({}, player, {score: 2});
-// 이제 player는 변하지 않았지만 newPlayer는 {score: 2, name: 'Jeff'} 입니다.
+// 이제 player는 변하지 않았지만 newPlayer는 {score: 2, name: 'Jeff'}입니다.
 
 // 만약 객체 spread 구문을 사용한다면 이렇게 쓸 수 있습니다.
 // var newPlayer = {...player, score: 2};
@@ -571,7 +571,7 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 이제 Square를 **함수 컴포넌트**로 바꿔보겠습니다.
 
-React에서 **함수 컴포넌트**는 더 간단하게 컴포넌트를 작성하는 방법이며 state 없이 `render` 함수만을 가집니다. `React.Component`를 확장하는 클래스를 정의하는 대신 `props`를 입력받아서 렌더링할 대상을 반환하는 함수를 작성할 수 있습니다. 함수 컴포넌트는 클래스로 작성하는 것 보다 빠르게 작성할 수 있으며 많은 컴포넌트들이 함수 컴포넌트로 표현할 수 있습니다.
+React에서 **함수 컴포넌트**는 더 간단하게 컴포넌트를 작성하는 방법이며 state 없이 `render` 함수만을 가집니다. `React.Component`를 확장하는 클래스를 정의하는 대신 `props`를 입력받아서 렌더링할 대상을 반환하는 함수를 작성할 수 있습니다. 함수 컴포넌트는 클래스로 작성하는 것보다 빠르게 작성할 수 있으며 많은 컴포넌트를 함수 컴포넌트로 표현할 수 있습니다.
 
 Square 클래스를 아래의 함수로 바꿔보세요.
 
@@ -597,7 +597,7 @@ function Square(props) {
 
 우리의 틱택토 게임이 가진 큰 문제점을 고칠 시간입니다. 게임판에서 "O"가 표시되지 않는 점이죠.
 
-첫번째 차례를 "X"로 시작하겠습니다. Board 생성자의 초기 state를 수정하는 것으로 기본 값을 설정할 수 있습니다.
+첫 번째 차례를 "X"로 시작하겠습니다. Board 생성자의 초기 state를 수정하는 것으로 기본값을 설정할 수 있습니다.
 
 ```javascript{6}
 class Board extends React.Component {
@@ -610,7 +610,7 @@ class Board extends React.Component {
   }
 ```
 
-플레이어가 수를 둘 때 마다 `xIsNext` (boolean 값)이 뒤집혀 다음 플레이어가 누군지 결정하고 게임의 state가 저장될 것입니다. Board의 `handleClick` 함수를 수정하여 `xIsNext` 값을 뒤집겠습니다.
+플레이어가 수를 둘 때마다 `xIsNext` (boolean 값)이 뒤집혀 다음 플레이어가 누군지 결정하고 게임의 state가 저장될 것입니다. Board의 `handleClick` 함수를 수정하여 `xIsNext` 값을 뒤집겠습니다.
 
 ```javascript{3,6}
   handleClick(i) {
@@ -788,7 +788,7 @@ history = [
       null, null, null,
     ]
   },
-  // 두번째 동작이 발생한 이후
+  // 두 번째 동작이 발생한 이후
   {
     squares: [
       null, null, null,
@@ -842,7 +842,7 @@ class Game extends React.Component {
 
 * `constructor`를 Board에서 제거해주세요.
 * Board의 `renderSquare` 안의 `this.state.squares[i]`를 `this.props.squares[i]`로 바꿔주세요.
-* Board의 `renderSquare` 안의 `this.handleClick(i)`로 `this.props.onClick(i)`로 바꿔주세요.
+* Board의 `renderSquare` 안의 `this.handleClick(i)`을 `this.props.onClick(i)`으로 바꿔주세요.
 
 이제 Board 컴포넌트는 아래와 같은 형태입니다.
 
@@ -902,7 +902,7 @@ class Board extends React.Component {
 }
 ```
 
-Game 컴포넌트의 `render` 함수를 가장 최근 기록을 사용하도록 업데이트 하여 게임의 상태를 확인하고 표시하겠습니다.
+Game 컴포넌트의 `render` 함수를 가장 최근 기록을 사용하도록 업데이트하여 게임의 상태를 확인하고 표시하겠습니다.
 
 ```javascript{2-11,16-19,22}
   render() {
@@ -992,7 +992,7 @@ Game 컴포넌트가 게임의 상태를 렌더링하기 때문에 Board의 `ren
 
 틱택토 게임의 이동 정보를 기록하고 있기 때문에 이제 플레이어에게 과거의 이동을 목록으로 표시할 수 있습니다.
 
-앞에서 React 엘리먼트는 어플리케이션에 전달할 수 있는 클래스형 JavaScript 객체라는 것을 배웠습니다. React 엘리먼트 배열을 사용하면 여러 아이템을 렌더링할 수 있습니다.
+앞에서 React 엘리먼트는 애플리케이션에 전달할 수 있는 클래스형 JavaScript 객체라는 것을 배웠습니다. React 엘리먼트 배열을 사용하면 여러 아이템을 렌더링할 수 있습니다.
 
 JavaScript에서 배열은 데이터를 다른 데이터와 함께 매핑할 때 사용하는 [`map()` 함수](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)를 가지고 있습니다. 이 함수는 아래와 같이 사용할 수 있습니다.
 
@@ -1074,7 +1074,7 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 <li>Alexa: 5 tasks left</li>
 ```
 
-사람의 눈에는 task 갯수가 업데이트 되었을 뿐만 아니라 Alexa와 Ben의 순서가 바뀌고 Claudia가 두 사람 사이에 추가되었다고 생각할 것입니다. 그러나 React는 컴퓨터 프로그램이며 사람이 의도한 바가 무엇인지 알지 못합니다. 그렇기 때문에 리스트 아이템에 *key* prop을 지정하여 각 아이템이 다른 아이템들과 다르다는 것을 알려주어야 합니다. 키를 지정하는 한 가지 방법은 `alexa`, `ben`, `claudia` 문자를 사용하는 것입니다. 만약 데이터베이스에서 데이터를 불러와서 표시한다면 Alexa, Ben, Claudia의 데이터베이스 ID가 키로 사용될 수 있습니다.
+사람의 눈에는 task 개수가 업데이트되었을 뿐만 아니라 Alexa와 Ben의 순서가 바뀌고 Claudia가 두 사람 사이에 추가되었다고 생각할 것입니다. 그러나 React는 컴퓨터 프로그램이며 사람이 의도한 바가 무엇인지 알지 못합니다. 그렇기 때문에 리스트 아이템에 *key* prop을 지정하여 각 아이템이 다른 아이템들과 다르다는 것을 알려주어야 합니다. 키를 지정하는 한 가지 방법은 `alexa`, `ben`, `claudia` 문자를 사용하는 것입니다. 만약 데이터베이스에서 데이터를 불러와서 표시한다면 Alexa, Ben, Claudia의 데이터베이스 ID가 키로 사용될 수 있습니다.
 
 ```html
 <li key={user.id}>{user.name}: {user.taskCount} tasks left</li>
@@ -1082,7 +1082,7 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 목록을 다시 렌더링하면 React는 각 리스트 아이템의 키를 가져가며 이전 리스트 아이템에서 일치하는 키를 탐색합니다. 현재 리스트에서 이전에 존재하지 않는 키를 가지고 있다면 React는 새로운 컴포넌트를 생성합니다. 현재 리스트가 이전 리스트에 존재했던 키를 가지고 있지 않다면 React는 그 키를 가진 컴포넌트를 제거합니다. 만약 두 키가 일치한다면 해당 구성요소는 이동합니다. 키는 각 컴포넌트를 구별할 수 있도록 하여 React에게 다시 렌더링할 때 state를 유지할 수 있게 합니다. 만약 컴포넌트의 키가 변한다면 컴포넌트는 제거되고 새로운 state와 함께 다시 생성됩니다.
 
-React에서 `key`는 심화 기능인 `ref`와 동일하게 특별하고 미리 지정된 prop입니다. 엘리먼트가 생성되면 React는 `key` 속성을 추출하여 반환되는 엘리먼트에 직접 키를 저장합니다. `key`가 `props`에 속하는 것 처럼 보이지만 `this.props.key`로 참조할 수 없습니다. React는 자동으로 `key`를 어떤 컴포넌트를 업데이트 할 지 판단하는 데에 사용합니다. 컴포넌트는 `key`를 조회할 수 없습니다.
+React에서 `key`는 심화 기능인 `ref`와 동일하게 특별하고 미리 지정된 prop입니다. 엘리먼트가 생성되면 React는 `key` 속성을 추출하여 반환되는 엘리먼트에 직접 키를 저장합니다. `key`가 `props`에 속하는 것처럼 보이지만 `this.props.key`로 참조할 수 없습니다. React는 자동으로 `key`를 어떤 컴포넌트를 업데이트 할 지 판단하는 데에 사용합니다. 컴포넌트는 `key`를 조회할 수 없습니다.
 
 **동적인 리스트를 만들 때마다 적절한 키를 할당할 것을 강력하게 추천합니다.** 적절한 키가 없는 경우 데이터 재구성을 고려해 볼 수 있습니다.
 
@@ -1111,9 +1111,9 @@ Game 컴포넌트의 `render` 함수 안에서 `<li key={move}>`로 키를 추�
 
 **[지금까지의 전체 코드 확인하기](https://codepen.io/gaearon/pen/PmmXRE?editors=0010)**
 
-`jumpTo` 함수가 정의되어있지 않기 때문에 리스트 아이템의 버튼을 클릭하면 에러가 발생합니다. `jumpTo`를 구현하기 전에 Game 컴포넌트의 state에 `stepNumber`를 추가하여 현재 진행중인 단계를 표시하겠습니다.
+`jumpTo` 함수가 정의되어있지 않기 때문에 리스트 아이템의 버튼을 클릭하면 에러가 발생합니다. `jumpTo`를 구현하기 전에 Game 컴포넌트의 state에 `stepNumber`를 추가하여 현재 진행 중인 단계를 표시하겠습니다.
 
-먼저 Game의 `constructor` 초기 state로 `stepNumber: 0`를 추가해주세요.
+먼저 Game의 `constructor` 초기 state로 `stepNumber: 0`을 추가해주세요.
 
 ```js{8}
 class Game extends React.Component {
