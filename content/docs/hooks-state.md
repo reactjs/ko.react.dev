@@ -8,7 +8,7 @@ prev: hooks-overview.html
 
 *Hook*은 React 16.8버전에 새로 추가되었습니다. Hook은 클래스 컴포넌트를 작성하지 않아도 state와 같은 특징들을 사용할 수 있습니다.
 
-[이전 페이지](/docs/hooks-intro.html)에서 아래의 예시를 통해 Hook을 소개했습니다.
+[Hook 소개](/docs/hooks-intro.html)에서 아래 예시를 통해 Hook과 친해졌습니다.
 
 ```js{4-5}
 import React, { useState } from 'react';
