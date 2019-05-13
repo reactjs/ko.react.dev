@@ -19,7 +19,7 @@ redirect_from:
 
 ### 컴포넌트 {#components}
 
-React 컴포넌트를 사용하면 UI를 독립적이고 재사용할 수 있는 부분으로 나누고 각 부분을 분리하여 생각할 수 있습니다. React 컴포넌트는 `React.Component` 또는 `React.PureComponent`로 세부적으로 나누어 정의할 수 있습니다.
+React 컴포넌트를 사용하면 UI를 독립적이고 재사용할 수 있는 부분으로 나누고 각 부분을 분리하여 생각할 수 있습니다. React 컴포넌트는 `React.Component` 또는 `React.PureComponent`로 세부적으로 나누어 정의할 수 있습니다.
 
 - [`React.Component`](#reactcomponent)
 - [`React.PureComponent`](#reactpurecomponent)
