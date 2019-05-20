@@ -11,8 +11,8 @@ React 16 버전은 컬렉션 자료형인 [Map](https://developer.mozilla.org/e
 다음은 오래된 브라우저 지원을 위해 core-js 폴리필을 적용한 환경에서 React 16 버전을 사용하는 예시입니다.
 
 ```js
-import 'core-js/es6/map';
-import 'core-js/es6/set';
+import 'core-js/es/map';
+import 'core-js/es/set';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
