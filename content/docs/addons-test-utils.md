@@ -1,6 +1,6 @@
 ---
 id: test-utils
-title: Test Utilities
+title: 테스팅 도구
 permalink: docs/test-utils.html
 layout: docs
 category: Reference
@@ -10,18 +10,18 @@ category: Reference
 
 ```javascript
 import ReactTestUtils from 'react-dom/test-utils'; // ES6
-var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
+var ReactTestUtils = require('react-dom/test-utils'); // npm과 ES5
 ```
 
-## Overview {#overview}
+## 개요 {#overview}
 
-`ReactTestUtils` makes it easy to test React components in the testing framework of your choice. At Facebook we use [Jest](https://facebook.github.io/jest/) for painless JavaScript testing. Learn how to get started with Jest through the Jest website's [React Tutorial](http://facebook.github.io/jest/docs/en/tutorial-react.html#content).
+`ReactTestUtils`는 여러분이 선택한 테스팅 프레임워크에서 테스트를 쉽게 진행할 수 있도록 해 줍니다. Facebook에서는 [Jest](https://facebook.github.io/jest/)를 이용해 더욱 쉽게 JavaScript 테스트를 하고 있습니다. Jest 웹사이트의 [React 자습서](https://jestjs.io/docs/tutorial-react) 문서를 통해 Jest를 시작하는 방법에 대해서 알아보세요.
 
-> Note:
+> 주의
 >
-> We recommend using [`react-testing-library`](https://git.io/react-testing-library) which is designed to enable and encourage writing tests that use your components as the end users do.
+> Facebook에서는 [`react-testing-library`](https://git.io/react-testing-library) 사용을 권장합니다. 이 라이브러리는 사용자가 컴포넌트를 사용하는 것처럼 테스트를 작성할 수 있도록 설계되었습니다.
 >
-> Alternatively, Airbnb has released a testing utility called [Enzyme](http://airbnb.io/enzyme/), which makes it easy to assert, manipulate, and traverse your React Components' output.
+> 대안으로는 Airbnb에서 출시한 테스팅 도구인 [Enzyme](https://airbnb.io/enzyme/)이 있습니다. Enzyme은 React 컴포넌트의 출력을 쉽게 검증하고 조작하고 탐색할 수 있게 해줍니다.
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
@@ -40,20 +40,21 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
  - [`renderIntoDocument()`](#renderintodocument)
  - [`Simulate`](#simulate)
 
-## Reference {#reference}
+## 참조사항 {#reference}
 
 ### `act()` {#act}
 
-To prepare a component for assertions, wrap the code rendering it and performing updates inside an `act()` call. This makes your test run closer to how React works in the browser.
+컴포넌트의 진단을 준비하기 위해서는 컴포넌트를 렌더링하고 갱신해주는 코드를 `act()`를 호출한 것의 안에 넣어줘야 합니다. 이를 통해 React를 브라우저 내에서 동작하는 것과 비슷한 환경에서 테스트할 수 있습니다.
 
->Note
+>주의
 >
->If you use `react-test-renderer`, it also provides an `act` export that behaves the same way.
+>`react-test-renderer`를 사용한다면, 똑같이 작동하는 `act` export가 제공됩니다.
 
-For example, let's say we have this `Counter` component:
+예를 들어, 다음과 같은 `Counter` 컴포넌트가 있다고 해봅시다.
+
 
 ```js
-class App extends React.Component {
+class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {count: 0};
@@ -83,7 +84,7 @@ class App extends React.Component {
 }
 ```
 
-Here is how we can test it:
+이런 방식으로 테스트 할 수 있습니다.
 
 ```js{3,20-22,29-31}
 import React from 'react';
@@ -104,7 +105,7 @@ afterEach(() => {
 });
 
 it('can render and update a counter', () => {
-  // Test first render and componentDidMount
+  // 첫 render와 componentDidMount를 테스트
   act(() => {
     ReactDOM.render(<Counter />, container);
   });
@@ -113,7 +114,7 @@ it('can render and update a counter', () => {
   expect(label.textContent).toBe('You clicked 0 times');
   expect(document.title).toBe('You clicked 0 times');
 
-  // Test second render and componentDidUpdate
+  // 두 번째 render와 componentDidUpdate를 테스트
   act(() => {
     button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
   });
@@ -122,7 +123,7 @@ it('can render and update a counter', () => {
 });
 ```
 
-Don't forget that dispatching DOM events only works when the DOM container is added to the `document`. You can use a helper like [`react-testing-library`](https://github.com/kentcdodds/react-testing-library) to reduce the boilerplate code.
+DOM 이벤트를 붙이는 것은 DOM 컨테이너가 `document` 객체에 추가되었을 때에만 가능하다는 것을 기억하십시오. 불필요하게 반복 되는 코드를 줄이기 위해서 [`react-testing-library`](https://github.com/kentcdodds/react-testing-library)와 같은 것들을 사용할 수 있습니다.
 
 * * *
 
@@ -135,11 +136,12 @@ mockComponent(
 )
 ```
 
-Pass a mocked component module to this method to augment it with useful methods that allow it to be used as a dummy React component. Instead of rendering as usual, the component will become a simple `<div>` (or other tag if `mockTagName` is provided) containing any provided children.
+모의 컴포넌트 모듈을 이 메서드에 넘겨 유용한 메서드들을 붙여 증강해 더미 리액트 컴포넌트로 사용할 수 있습니다. 보통의 경우처럼 렌더링 하지 않고 그 대신 컴포넌트는 간단하게 `<div>` 태그가 됩니다. `mockTagName`값을 넘겨준다면 `<div>`대신 다른 태그로 만들어 줄 수 있습니다.
 
-> Note:
+
+> 주의
 >
-> `mockComponent()` is a legacy API. We recommend using [shallow rendering](/docs/shallow-renderer.html) or [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) instead.
+> `mockComponent()`는 더이상 쓰이지 않는 API입니다. 저희는 [얕은 복사](/docs/shallow-renderer.html) 혹은 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock)을 사용하는 것을 추천합니다.
 
 * * *
 
@@ -149,7 +151,7 @@ Pass a mocked component module to this method to augment it with useful methods 
 isElement(element)
 ```
 
-Returns `true` if `element` is any React element.
+`element`가 React의 element라면 `true`를 반환합니다.
 
 * * *
 
@@ -162,7 +164,7 @@ isElementOfType(
 )
 ```
 
-Returns `true` if `element` is a React element whose type is of a React `componentClass`.
+`element`가 `componentClass` 타입의 React element라면 `true`를 반환합니다.
 
 * * *
 
@@ -172,7 +174,7 @@ Returns `true` if `element` is a React element whose type is of a React `compone
 isDOMComponent(instance)
 ```
 
-Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
+`instance`가 `<div>`나 `<span>`같은 DOM 컴포넌트라면 `true`를 반환합니다.
 
 * * *
 
@@ -182,7 +184,7 @@ Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
 isCompositeComponent(instance)
 ```
 
-Returns `true` if `instance` is a user-defined component, such as a class or a function.
+`instance`가 클래스나 함수 같이 사용자가 정의한 컴포넌트라면 `true`를 반환합니다.
 
 * * *
 
@@ -195,7 +197,7 @@ isCompositeComponentWithType(
 )
 ```
 
-Returns `true` if `instance` is a component whose type is of a React `componentClass`.
+`instance`가 `componentClass` 타입을 가진 컴포넌트라면 `true`를 반환합니다.
 
 * * *
 
@@ -208,7 +210,7 @@ findAllInRenderedTree(
 )
 ```
 
-Traverse all components in `tree` and accumulate all components where `test(component)` is `true`. This is not that useful on its own, but it's used as a primitive for other test utils.
+`tree`의 모든 컴포넌트를 탐색하여 `test(component)`가 `true`일 때 모든 컴포넌트를 축적합니다. 이 함수는 그 자체만으로는 유용하지 않지만, 다른 테스트 도구의 기반이 됩니다.
 
 * * *
 
@@ -221,7 +223,7 @@ scryRenderedDOMComponentsWithClass(
 )
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the class name matching `className`.
+렌더링 된 트리에서 조건 `className`에 만족하는 class명을 가지고 있는 DOM 컴포넌트의 DOM 엘리먼트를 모두 검색합니다.
 
 * * *
 
@@ -234,7 +236,7 @@ findRenderedDOMComponentWithClass(
 )
 ```
 
-Like [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+[`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass)와 기능이 유사하나 결과값이 하나라고 가정하고 그 결과값만을 반환합니다. 두 개 이상의 결과값이 있다면 예외를 반환합니다.
 
 * * *
 
@@ -247,7 +249,7 @@ scryRenderedDOMComponentsWithTag(
 )
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the tag name matching `tagName`.
+렌더링 된 트리 내에서 조건 `tagName`에 만족하는 tag명을 가진 DOM 컴포넌트의 DOM 엘리먼트를 모두 검색합니다.
 
 * * *
 
@@ -260,7 +262,7 @@ findRenderedDOMComponentWithTag(
 )
 ```
 
-Like [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+[`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag)와 기능이 유사하나 결과값이 하나라고 가정하고 그 결과값만을 반환합니다. 두 개 이상의 결과값이 있다면 예외를 뱉습니다.
 
 * * *
 
@@ -273,7 +275,7 @@ scryRenderedComponentsWithType(
 )
 ```
 
-Finds all instances of components with type equal to `componentClass`.
+`componentClass` 타입을 가진 모든 인스턴스를 검색합니다.
 
 * * *
 
@@ -286,7 +288,7 @@ findRenderedComponentWithType(
 )
 ```
 
-Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) but expects there to be one result and returns that one result, or throws exception if there is any other number of matches besides one.
+[`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype)와 기능이 유사하나 결과값이 하나라고 가정하고 그 결과값만을 반환합니다. 두 개 이상의 결과값이 있다면 예외를 뱉습니다.
 
 ***
 
@@ -296,20 +298,20 @@ Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) bu
 renderIntoDocument(element)
 ```
 
-Render a React element into a detached DOM node in the document. **This function requires a DOM.** It is effectively equivalent to:
+React 엘리먼트를 document내의 떨어져 있는 DOM 노드에 렌더링합니다. **이 함수를 쓰려면 DOM이 필요합니다.** 이 함수는 다음 코드와 같은 기능을 합니다.
 
 ```js
 const domContainer = document.createElement('div');
 ReactDOM.render(element, domContainer);
 ```
 
-> Note:
+> 주의
 >
-> You will need to have `window`, `window.document` and `window.document.createElement` globally available **before** you import `React`. Otherwise React will think it can't access the DOM and methods like `setState` won't work.
+> `window`, `window.document`와 `window.document.createElement`는 `React`를 **가져와서 사용하기 전에도** 전역적으로 사용할 수 있습니다. 만약 그렇지 않다면 React는 DOM에 접근할 수 없다고 간주할 것이며 `setState`와 같은 메서드들이 작동하지 않을 것 입니다.
 
 * * *
 
-## Other Utilities {#other-utilities}
+## 다른 테스팅 도구들 {#other-utilities}
 
 ### `Simulate` {#simulate}
 
@@ -320,11 +322,12 @@ Simulate.{eventName}(
 )
 ```
 
-Simulate an event dispatch on a DOM node with optional `eventData` event data.
+이벤트 데이터인 `eventData`를 옵션으로 준 DOM 노드에 붙이는 이벤트를 시뮬레이팅합니다.
 
-`Simulate` has a method for [every event that React understands](/docs/events.html#supported-events).
+`Simulate`는 [React가 이해하는 모든 이벤트](/docs/events.html#supported-events)를 위한 메서드를 가집니다.
 
-**Clicking an element**
+
+**엘리먼트 클릭**
 
 ```javascript
 // <button ref={(node) => this.button = node}>...</button>
@@ -332,7 +335,7 @@ const node = this.button;
 ReactTestUtils.Simulate.click(node);
 ```
 
-**Changing the value of an input field and then pressing ENTER.**
+**입력 필드의 값을 바꾼 뒤 ENTER키 누르기**
 
 ```javascript
 // <input ref={(node) => this.textInput = node} />
@@ -342,8 +345,9 @@ ReactTestUtils.Simulate.change(node);
 ReactTestUtils.Simulate.keyDown(node, {key: "Enter", keyCode: 13, which: 13});
 ```
 
-> Note
+> 주의
 >
-> You will have to provide any event property that you're using in your component (e.g. keyCode, which, etc...) as React is not creating any of these for you.
+> 컴포넌트 내에서 사용하고 있는 keyCode, which와 같은 이벤트 프로퍼티는 별도로 제공해주어야 합니다. React에서는 이러한 이벤트 프로퍼티를 자동으로 만들어 주지 않습니다.
+
 
 * * *
