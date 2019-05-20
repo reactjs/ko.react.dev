@@ -10,9 +10,9 @@ next: create-a-new-react-app.html
 
 React는 필요한 만큼만 사용하면 됩니다. 적게든 많게든 말이죠.
 
-React는 처음부터 점진적인 도입을 가정하여 설계되었습니다. **그래서 React는 필요한 만큼만 사용하면 됩니다.** 아마 기존 페이지에 "상호작용"이라는 조미료를 첨가하기만 하고 싶을 수도 있습니다. 이럴 때 React 컴포넌트를 쓰면 좋습니다.
+React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다. **그래서 React는 필요한 만큼만 사용하면 됩니다.** 아마 기존 페이지에 "상호작용"이라는 조미료를 첨가하기만 하고 싶을 수도 있습니다. 이럴 때 React 컴포넌트를 쓰면 좋습니다.
 
-오늘날 웹사이트의 대부분은 싱글 페이지가 아니고 그래야 할 필요도 없습니다. **빌드 도구도 없이 몇 줄의 코드만으로** 웹사이트의 작은 부분에 먼저 React를 도입해보세요. React의 비중을 천천히 늘릴 수도 있고 아니면 동적인 위젯을 몇 개 추가하는 것으로 끝낼 수도 있습니다.
+오늘날 웹사이트의 대부분은 싱글 페이지가 아니고 그래야 할 필요도 없습니다. **빌드 도구 없이 몇 줄의 코드만으로** 웹사이트의 작은 부분에 먼저 React를 도입해보세요. React의 비중을 천천히 늘릴 수도 있고 아니면 동적인 위젯을 몇 개 추가하는 것으로 끝낼 수도 있습니다.
 
 ---
 
@@ -25,7 +25,7 @@ React는 처음부터 점진적인 도입을 가정하여 설계되었습니다.
 
 복잡한 도구를 쓰거나 뭔가를 따로 설치해야 할 필요도 없습니다. **약간의 시간과 함께 인터넷만 연결 되어 있다면 이 문서에서 다루는 것을 모두 해볼 수 있습니다.**
 
-Optional: [예제의 전체 소스코드 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
+선택사항: [예제의 전체 소스코드 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
 
 ### 1단계: HTML 파일에 DOM 컨테이너 설치 {#step-1-add-a-dom-container-to-the-html}
 
@@ -53,7 +53,7 @@ Optional: [예제의 전체 소스코드 다운로드 (2KB로 압축됨)](https:
   <!-- ... 다른 HTML ... -->
 
   <!-- React를 실행. -->
-  <!-- 참고: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+  <!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
   <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 
@@ -86,9 +86,9 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 이 두줄의 코드는 첫 단계에서 HTML 페이지에 추가했던 `<div>` 태그를 찾아주고 그 안에 "좋아요" 버튼이라는 React 컴포넌트를 추가해줍니다.
 
-### 이제 다 됐어! {#thats-it}
+### 다 끝났습니다! {#thats-it}
 
-다음 단계는 없습니다. **당신은 방금 웹사이트에 처음으로 React 컴포넌트를 설치했습니다.**
+다음 단계는 없습니다. **당신은 방금 웹사이트에 처음으로 React 컴포넌트를 추가했습니다.**
 
 다음 차례들에 React를 기존 프로젝트에 결합하는데 도움이 될만한 정보들이 더 있습니다.
 
@@ -96,7 +96,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 **[예제 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
 
-### 팁: 컴포넌트의 재사용 {#tip-reuse-a-component}
+### 팁: 컴포넌트 재사용 {#tip-reuse-a-component}
 
 보통은 하나의 웹페이지에 여러 React 컴포넌트를 설치하게 됩니다. 다음 예제는 "좋아요" 버튼 3개를 만들고 그 컴포넌트들에 데이터를 넘겨주는 코드입니다.
 
@@ -104,7 +104,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 [예제 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
 
->참고
+>주의
 >
 >이 방법은 대개 페이지에서 React로 만들어진 부분들이 서로 격리 되어있을 때 유용합니다. React 코드 내에서는 [컴포넌트 합성](/docs/components-and-props.html#composing-components)을 사용하는 편이 더 쉽습니다.
 
@@ -112,7 +112,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 프로덕션을 위해 웹사이트를 배포하기 전에 JavaScript 파일을 압축하지 않는다면 웹사이트를 사용할 때 눈에 띄는 성능 저하가 일어날 겁니다.
 
-어플리케이션 스크립트를 이미 압축했을 경우 배포된 HTML 파일이 `production.min.js`로 끝나는 React 파일을 확실히 실행하기만 하면 **사이트는 프로덕션 준비가 완료된 겁니다.**
+애플리케이션 스크립트를 이미 압축했을 경우 배포된 HTML 파일이 `production.min.js`로 끝나는 React 파일을 확실히 실행하기만 하면 **사이트는 프로덕션 준비가 완료된 겁니다.**
 
 ```js
 <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
@@ -161,7 +161,7 @@ return (
 
 이제 어떤 `<script>` 태그에서든 `type="text/babel"`성질을 추가하면 JSX를 사용할 수 있습니다. 이 [JSX를 사용한 예제 HTML 파일](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)로 여러 가지 작업들을 해보세요.
 
-이런 식의 접근 방법은 공부 목적이나 간단한 데모 사이트를 만들기 위함이라면 괜찮습니다. 그러나, 이 방법은 사이트를 느리게 만들고 **생산 모드와는 맞지 않습니다.** 한 단계 앞으로 나아갈 준비가 되었다면 새로 추가한 `<script>` 태그와 `type="text/babel"` 속성을 제거해보세요. 다음 차례에서는 `<script>` 태그를 자동으로 변환시켜줄 JSX 전처리기를 만들 겁니다.
+이런 식의 접근 방법은 공부 목적이나 간단한 데모 사이트를 만들기 위함이라면 괜찮습니다. 그러나, 이 방법은 사이트를 느리게 만들고 **프로덕션에서는 맞지 않습니다.** 한 단계 앞으로 나아갈 준비가 되었다면 새로 추가한 `<script>` 태그와 `type="text/babel"` 어트리뷰트를 제거해보세요. 다음 차례에서는 `<script>` 태그를 자동으로 변환시켜줄 JSX 전처리기를 만들 겁니다.
 
 ### 프로젝트에 JSX 추가하기 {#add-jsx-to-a-project}
 
@@ -174,7 +174,7 @@ JSX를 프로젝트에 추가하는 데에는 복잡한 번들러나 개발 서�
 
 >팁
 >
->**JSX 전처리기를 설치할 때 npm은 여기서만 쓰면 됩니다.**  다른 단계에서는 npm이 쓰일 일이 없습니다. React와 어플리케이션 코드는 둘다 똑같이 `<script>` 태그로 유지할 수 있습니다.
+>**JSX 전처리기를 설치할 때 npm은 여기서만 쓰면 됩니다.**  다른 단계에서는 npm이 쓰일 일이 없습니다. React와 애플리케이션 코드는 둘다 똑같이 `<script>` 태그로 유지할 수 있습니다.
 
 축하합니다! 당신은 프로젝트에 **프로덕션 준비가 된 JSX 설정**을 끝마쳤습니다.
 
@@ -187,9 +187,9 @@ JSX를 프로젝트에 추가하는 데에는 복잡한 번들러나 개발 서�
 npx babel --watch src --out-dir . --presets react-app/prod 
 ```
 
->참고
+>주의
 >
->`npx`는 오타가 아닙니다. -- [npm 5.2버전 이상에 동봉되는 패키지 실행 도구](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)입니다.
+>`npx`는 오타가 아닙니다. -- [npm 5.2버전 이상에 내장된 패키지 실행 도구](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)입니다.
 >
 >"`babel` 패키지 설치가 잘못 수행되었습니다."라는 에러 메시지를 보았다면, [그 전 단계들](#add-jsx-to-a-project)에서 몇 가지 놓쳤을 수도 있습니다. 동일한 폴더에서 이를 실행하고 다시 시도해보세요.
 
