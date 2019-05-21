@@ -303,4 +303,4 @@ There is a [video with a deep code dive into it](https://www.youtube.com/watch?v
 ### 다음 읽을거리는? {#what-next}
 
 Read the [next section](/docs/implementation-notes.html) to learn about the pre-React 16 implementation of reconciler in more detail. We haven't documented the internals of the new reconciler yet.
-[다음 섹션]을 읽고 재조정자에 대한 pre-React 16 구현에 대해 더 자세하게 배워보세요. 새로운 재조정자에 대한 내부적인 설명은 아직 작성되지 않았습니다.
+[다음 섹션](/docs/implementation-notes.html)을 읽고 재조정자에 대한 pre-React 16 구현에 대해 더 자세하게 배워보세요. 새로운 재조정자에 대한 내부적인 설명은 아직 작성되지 않았습니다.
