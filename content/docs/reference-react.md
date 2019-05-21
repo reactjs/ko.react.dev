@@ -19,7 +19,7 @@ redirect_from:
 
 ### 컴포넌트 {#components}
 
-React 컴포넌트를 사용하면 UI를 독립적이고 재사용할 수 있는 부분으로 나누고 각 부분을 분리하여 생각할 수 있습니다. React 컴포넌트는 `React.Component` 또는 `React.PureComponent`로 세부적으로 나누어 정의할 수 있습니다.
+React 컴포넌트를 사용하면 UI를 독립적이고 재사용할 수 있는 부분으로 나누고 각 부분을 분리하여 생각할 수 있습니다. React 컴포넌트는 `React.Component` 또는 `React.PureComponent`로 세부적으로 나누어 정의할 수 있습니다.
 
 - [`React.Component`](#reactcomponent)
 - [`React.PureComponent`](#reactpurecomponent)
@@ -126,7 +126,7 @@ const MyComponent = React.memo(function MyComponent(props) {
 
 `React.memo`는 [고차 컴포넌트(Higher Order Component)](/docs/higher-order-components.html)입니다. [`React.PureComponent`](#reactpurecomponent)와 비슷하지만 class가 아니라 함수 컴포넌트라는 점이 다릅니다.
 
-당신의 함수형 컴포넌트가 동일한 props로 동일한 결과를 렌더링해낸다면, `React.memo`를 호출하고 결과를 메모이징(Memoizing)하도록 래핑하여 경우에 따라 성능 향상을 누릴 수 있습니다. 즉, React는 컴포넌트를 렌더링하지 않고 마지막으로 렌더링된 결과를 재사용합니다.
+당신의 함수 컴포넌트가 동일한 props로 동일한 결과를 렌더링해낸다면, `React.memo`를 호출하고 결과를 메모이징(Memoizing)하도록 래핑하여 경우에 따라 성능 향상을 누릴 수 있습니다. 즉, React는 컴포넌트를 렌더링하지 않고 마지막으로 렌더링된 결과를 재사용합니다.
 
 props가 갖는 복잡한 객체에 대하여 얕은 비교만을 수행하는 것이 기본 동작입니다. 다른 비교 동작을 원한다면, 두 번째 인자로 별도의 비교 함수를 제공하면 됩니다.
 
@@ -196,7 +196,7 @@ React.cloneElement(
 React.createFactory(type)
 ```
 
-주어진 타입의 React 엘리먼트를 만들어내는 함수를 반환합니다. [`React.createElement()`](#createElement)와 마찬가지로 type 인자는 태그 이름 문자열(`'div'` 또는 `'span'` 등), [React 컴포넌트](/docs/components-and-props.html) 타입, 또는 [React Fragment](#reactfragment) 타입 중 하나가 올 수 있습니다.
+주어진 타입의 React 엘리먼트를 만들어내는 함수를 반환합니다. [`React.createElement()`](#createelement)와 마찬가지로 type 인자는 태그 이름 문자열(`'div'` 또는 `'span'` 등), [React 컴포넌트](/docs/components-and-props.html) 타입, 또는 [React Fragment](#reactfragment) 타입 중 하나가 올 수 있습니다.
 
 이 헬퍼 함수는 레거시 기능으로 간주되며, 대신 JSX 문법을 사용하거나 `React.createElement()`를 직접 사용하는 것이 좋습니다.
 
