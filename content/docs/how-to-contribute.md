@@ -1,6 +1,6 @@
 ---
 id: how-to-contribute
-title: 기여하는 방법
+title: how-to-contribute
 layout: contributing
 permalink: docs/how-to-contribute.html
 next: codebase-overview.html
@@ -22,7 +22,7 @@ React에 대한 개발 작업은 모든 [GitHub](https://github.com/facebook/rea
 
 ### branch의 구성 {#branch-organization}
 
-우리는 [`master` 브랜치]를 모든 테스트가 통하는 최상의 상태로 유지하기 위해 노력하고 있습니다. 그러나 빠른 개발로 인해 여러분의 응용 프로그램과 호환이 되지 않을 수도 있고 API를 변경할 수도 있습니다. 따라서 [최신 안정 버전 React](/downloads.html)를 사용하는 것이 좋습니다.
+우리는 [`master` 브랜치]를 모든 테스트가 통하는 최상의 상태로 유지하기 위해 노력하고 있습니다. 그러나 빠른 개발로 인해 응용 프로그램과 호환이 되지 않을 수도 있고 API를 변경할 수도 있습니다. 따라서 [최신 안정 버전 React](/downloads.html)를 사용하는 것이 좋습니다.
 
 풀 리퀘스트를 보낼 경우 `master` 브랜치와 대조해 주세요. 우리는 메이저 버전의 안정판 branch를 별도로 관리하고 있지만 풀 리퀘스트를 직접 접수하고 있지 않습니다. 대신, master에서 최신의 안정된 메이저 버전을 선별합니다.
 
@@ -60,7 +60,7 @@ Facebook은 보안 버그의 안전한 공개를 위한 [포상금 제도](https
 
 ### 변경 제안 {#proposing-a-change}
 
-만약 여러분이 공용 API를 변경하거나 개인적으로 변경하려는 경우 [문제 제기](https://github.com/facebook/react/issues/new)를 권장합니다. 여러분이 수정하려는 노력을 기울이기 전에 제안에 대한 협의를 볼 수 있도록 해줍니다. 이슈 제기는 버그 해결과 관련한 수정을 받진 않지만, 버그 추적을 하고 싶은 경우에 도움이 됩니다.
+공용 API를 변경하거나 개인적으로 변경하려는 경우 [문제 제기](https://github.com/facebook/react/issues/new)를 권장합니다. 수정하려는 노력을 기울이기 전에 제안에 대한 협의를 볼 수 있도록 해줍니다. 이슈 제기는 버그 해결과 관련한 수정을 받진 않지만, 버그 추적을 하고 싶은 경우에 도움이 됩니다.
 
 버그를 수정할 경우, 즉시 풀 리퀘스트를 요청해도 되지만 문제 해결에 대한 자세한 이슈를 제출하는 것이 좋습니다. 이슈를 제출하면 해당 수정 사항이 반영되지 않지만, 문제를 추적하는 경우에 유용합니다.
 
@@ -70,7 +70,7 @@ Facebook은 보안 버그의 안전한 공개를 위한 [포상금 제도](https
 
 **[GitHub에서 오픈 소스 프로젝트에 기여하는 방법](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
 
-여러분이 처음 발을 디딜 때 기여 과정에 익숙해질 수 있도록 비교적 영향력이 적은 버그를 포함하는 **[good first issues](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")** 목록은 기여 입문에 최적입니다.
+처음 발을 디딜 때 기여 과정에 익숙해질 수 있도록 비교적 영향력이 적은 버그를 포함하는 **[good first issues](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")** 목록은 기여 입문에 최적입니다.
 
 이슈를 해결하려는 경우, 다른 누군가 이미 수정 작업을 진행 중 일 수도 있으므로 코멘트 스레드를 꼭 확인해 주세요. 현재 아무도 작업하고 있지 않은 경우 다른 사람이 실수로 중복 작업을 하지 않도록 작업할 예정임을 나타내는 코멘트를 남겨주세요. 
 
@@ -88,7 +88,7 @@ Facebook은 보안 버그의 안전한 공개를 위한 [포상금 제도](https
 
 3. 버그를 수정했거나 테스트가 필요한 코드를 추가했다면 테스트를 추가해 주세요.
 
-4. 테스트들이 통과하는 것을 확인해 주세요(`yarn test`). Tip : `yarn test --watch TestName` 명령은 개발 시에 도움이 됩니다.
+4. 테스트가 통과하는 것을 확인해 주세요(`yarn test`). Tip : `yarn test --watch TestName` 명령은 개발 시에 도움이 됩니다.
 
 5. `yarn test-prod` 명령을 실제 환경에서 테스트하기 위해 실행합니다. 이는 `yarn test`와 동일한 옵션을 지원합니다.
 
@@ -104,7 +104,7 @@ Facebook은 보안 버그의 안전한 공개를 위한 [포상금 제도](https
 
 ### Contributor License Agreement (CLA) {#contributor-license-agreement-cla}
 
-여러분의 풀 리퀘스트를 받기 위해 CLA를 제출하세요. 한 번만 하면 되기 때문에 다른 Facebook 오픈 소스 프로젝트에서 이미 완료했다면 이 과정은 필요하지 않습니다. 처음 풀 리퀘스트를 제출한다면 CLA를 완료했음을 알려주세요. 그러면 우리는 GitHub의 사용자 이름을 확인하여 이에 대한 점검을 시행합니다.
+풀 리퀘스트를 받기 위해 CLA를 제출하세요. 한 번만 하면 되기 때문에 다른 Facebook 오픈 소스 프로젝트에서 이미 완료했다면 이 과정은 필요하지 않습니다. 처음 풀 리퀘스트를 제출한다면 CLA를 완료했음을 알려주세요. 그러면 우리는 GitHub의 사용자 이름을 확인하여 이에 대한 점검을 시행합니다.
 
 **[여기서 CLA를 완료하세요.](https://code.facebook.com/cla)**
 
@@ -122,7 +122,7 @@ React 레파지토리를 복사한 후 yarn 명령을 사용하면 다음과 같
 
 * `yarn lint` 코드 스타일을 체크합니다.
 
-* `yarn linc` 는 `yarn lint`와 비슷하지만, 여러분의 브랜치에서 변경된 파일만 검사하기 때문에 더 빠릅니다.
+* `yarn linc` 는 `yarn lint`와 비슷하지만, 브랜치에서 변경된 파일만 검사하기 때문에 더 빠릅니다.
 
 * `yarn test` 는 모든 테스트를 실행합니다.
 
@@ -146,7 +146,7 @@ React 레파지토리를 복사한 후 yarn 명령을 사용하면 다음과 같
 
 변경을 시도하는 가장 쉬운 방법은  `yarn build react/index,react-dom/index --type=UMD` 를 실행하고 `fixtures/packaging/babel-standalone/dev.html`을 여세요. 이 파일은 `build` 폴더의 `react.development.js`를 이미 사용하고 있으므로 변경 사항을 확인할 수 있습니다.
 
-여러분이 기존 React 프로젝트에서 변경한 내용을 확인하고자 한다면 `build/dist/react.development.js`, `build/dist/react-dom.development.js` 또는 다른 빌드 파일을 여러분의 애플리케이션에 복사하여 안정판 대신 사용할 수 있습니다. 만약 npm판의 React를 사용하고 있는 경우, 종속성에서 `react`와 `react-dom`을 삭제하고 `yarn link`를 사용하여 로컬 `build` 폴더를 가리키게 하세요.
+기존 React 프로젝트에서 변경한 내용을 확인하고자 한다면 `build/dist/react.development.js`, `build/dist/react-dom.development.js` 또는 다른 빌드 파일을 애플리케이션에 복사하여 안정판 대신 사용할 수 있습니다. 만약 npm판의 React를 사용하고 있는 경우, 종속성에서 `react`와 `react-dom`을 삭제하고 `yarn link`를 사용하여 로컬 `build` 폴더를 가리키게 하세요.
 
 ```sh
 cd ~/path_to_your_react_clone/build/node_modules/react
@@ -159,19 +159,19 @@ yarn link react react-dom
 
 React 폴더에서 `yarn build`를 실행할 때마다 업데이트된 버전이 프로젝트 `node_modules` 에 나타납니다. 그런 다음 프로젝트를 재빌드하여 변경할 수 있습니다.
 
-다만, 풀 리퀘스트에 여러분의 새로운 기능에 대한 유닛 테스트가 포함되어야 합니다. 이렇게 하면 이후에 여러분의 코드를 어기지 않도록 보장할 수 있습니다.
+다만, 풀 리퀘스트에 새로운 기능에 대한 유닛 테스트가 포함되어야 합니다. 이렇게 하면 이후에 여러분의 코드를 어기지 않도록 보장할 수 있습니다.
 
 ### 스타일 가이드 {#style-guide}
 
 [Prettier](https://prettier.io/) 라고 불리는 자동 코드 포맷터를 사용합니다. `yarn prettier` 명령 코드를 변경한 후 실행하세요.
 
-그러면 우리의 linter는 여러분의 코드에 존재할 수 있는 문제를 잡아냅니다. 단순히 작성한 코드의 스타일을 체크하고 싶을 땐 `yarn linc`를 사용하세요.
+그러면 linter는 코드에 존재할 수 있는 문제를 잡아냅니다. 단순히 작성한 코드의 스타일을 체크하고 싶을 땐 `yarn linc`를 사용하세요.
 
 그러나, 아직 linter에서도 체크할 수 없는 스타일이 존재합니다. 모르는 것이 있다면 [Airbnb's Style Guide](https://github.com/airbnb/javascript)에서 적절한 방법을 안내해 줄 것입니다.
 
 ### 소개 영상 {#introductory-video}
 
-React에 기여하는 방법에 대한 소개를 제공하는 [이 짧은 영상](https://www.youtube.com/watch?v=wUpPsEcGsg8) (26분) 은 여러분이 관심을 갖고 볼만 합니다.
+React에 기여하는 방법에 대한 소개를 제공하는 [이 짧은 영상](https://www.youtube.com/watch?v=wUpPsEcGsg8) (26분) 은 관심을 갖고 볼만 합니다.
 
 #### 영상 하이라이트: {#video-highlights}
 - [4:12](https://youtu.be/wUpPsEcGsg8?t=4m12s) - 로컬에서 React 시험 및 빌드
