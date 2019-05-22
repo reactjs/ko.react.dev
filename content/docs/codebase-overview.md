@@ -195,49 +195,32 @@ React 돔과 React 네이티브 같은 매우 다른 경우를 포함하여, 렌
 
 재조정자는 현재로서는 어떠한 public API도 존재하지 않기 때문에 개별적인 패키지로서 존재하지 않습니다. 대신 React 돔과 React 네이티브 같은 렌더러에 개별적으로 사용됩니다.
 
-### Stack Reconciler {#stack-reconciler}
 ### 스택 재조정자 {#stack-reconciler}
 
-The "stack" reconciler is the implementation powering React 15 and earlier. We have since stopped using it, but it is documented in detail in the [next section](/docs/implementation-notes.html).
-'스택' 재조정자는 React 15 이하 버전에서 구현되었습니다. 현재에는 이를 사용하지 않지만, [다음 섹션](/docs/implementation-notes.html)에서 자세한 사항이 기록되어 있습니다.
+'스택' 재조정자는 React 15 이하에서 구현되었습니다. 현재는 더 이상 지원하지 않지만, [다음 섹션](/docs/implementation-notes.html)에서 자세한 사항을 살펴볼 수 있습니다.
 
-### Fiber Reconciler {#fiber-reconciler}
-### Fiber 재조정자 {#fiber-reconciler}
+### 파이버 재조정자 {#fiber-reconciler}
 
-The "fiber" reconciler is a new effort aiming to resolve the problems inherent in the stack reconciler and fix a few long-standing issues. It has been the default reconciler since React 16.
-'fiber' 재조정자는 스택 재조정자에서의 상속에 대한 문제를 해결하고 오래된 몇 가지의 오류를 고치는 데에 중점을 둔 새로운 결과입니다. 해당 재조정자는 React 16 버전부터 기본적으로 사용되기 시작했습니다.
+'파이버' 재조정자는 스택 재조정자에서 발생한 문제를 해결하고 몇 가지 오래된 오류를 고치는 데에 중점을 두기 위해 고안되었습니다. 해당 재조정자는 React 16부터 기본적으로 사용됩니다.
 
-Its main goals are:
 해당 재조정자의 목표는 다음과 같습니다.
 
-* Ability to split interruptible work in chunks.
-* Ability to prioritize, rebase and reuse work in progress.
-* Ability to yield back and forth between parents and children to support layout in React.
-* Ability to return multiple elements from `render()`.
-* Better support for error boundaries.
-* 중단 불가능한 작업을 청크로 분할하는 기능.
-* 진행 중인 작업의 우선 순위 지정, 재배치 및 재사용 기능
-* React의 레이아웃을 지원하기 위해 부모와 자식 간에 양보를 할 수 있는 기능
-* `render()`로 부터의 다중 요소 반환 기능
-* 오류 경계에 대한 지원 강화.
+* 중단 불가능한 작업을 청크로 분할하는 기능
+* 진행 중인 작업의 우선 순위 지정, 재배치 및 재사용에 관한 기능
+* React의 레이아웃을 지원하기 위한 계층별 배치 순서 처리 기능
+* `render()` 함수로부터의 다중 요소 반환 기능
+* 에러 경계에 대한 향상된 지원
 
-You can read more about React Fiber Architecture [here](https://github.com/acdlite/react-fiber-architecture) and [here](https://medium.com/react-in-depth/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react-e1c04700ef6e). While it has shipped with React 16, the async features are not enabled by default yet.
-React Fiber 구조에 대해 [여기](https://github.com/acdlite/react-fiber-architecture)와 [여기](https://medium.com/react-in-depth/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react-e1c04700ef6e)를 통해 더 자세히 확인할 수 있습니다. React 16과 함께 제공되는 한편, 비동기 기능은 아직 기본적으로 활성화되지 않습니다.
+React 파이버 구조에 대해 [여기](https://github.com/acdlite/react-fiber-architecture)와 [여기](https://medium.com/react-in-depth/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react-e1c04700ef6e)를 통해 더 자세히 확인할 수 있습니다. 파이버 재조정자는 React 16과 함께 제공되지만, 비동기 기능은 아직 기본적으로 활성화되지 않습니다.
 
-Its source code is located in [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler).
-해당 소스코드는 [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler)에 위치하고 있습니다.
+해당 소스 코드는 [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler)에서 확인할 수 있습니다.
 
-### Event System {#event-system}
 ### 이벤트 시스템 {#event-system}
 
-React implements a synthetic event system which is agnostic of the renderers and works both with React DOM and React Native. Its source code is located in [`packages/events`](https://github.com/facebook/react/tree/master/packages/events).
-React에는 렌더러 비종속적인 복합 이벤트 시스템이 구현되어 있으며 React 돔과 React 네이티브에서 동시에 작동합니다. 해당 코드는 [`packages/events`](https://github.com/facebook/react/tree/master/packages/events)에 존재합니다.
+React에는 React 돔과 React 네이티브에서 동시에 작동하는 렌더러의 애그노스틱인 복합 이벤트 시스템이 구현되어 있습니다. 해당 코드는 [`packages/events`](https://github.com/facebook/react/tree/master/packages/events)에서 확인할 수 있습니다.
 
-There is a [video with a deep code dive into it](https://www.youtube.com/watch?v=dRo_egw7tBc) (66 mins).
-해당 코드를 사용하는 [영상](https://www.youtube.com/watch?v=dRo_egw7tBc)(66분)을 참고하십시오.
+해당 코드에 대한 상세한 설명은 다음의 [영상](https://www.youtube.com/watch?v=dRo_egw7tBc) (66분)을 참고하십시오.
 
-### What Next? {#what-next}
-### 다음 읽을거리는? {#what-next}
+### 다음 내용은? {#what-next}
 
-Read the [next section](/docs/implementation-notes.html) to learn about the pre-React 16 implementation of reconciler in more detail. We haven't documented the internals of the new reconciler yet.
-[다음 섹션](/docs/implementation-notes.html)을 읽고 재조정자에 대한 pre-React 16 구현에 대해 더 자세하게 배워보세요. 새로운 재조정자에 대한 내부적인 설명은 아직 작성되지 않았습니다.
+[다음 섹션](/docs/implementation-notes.html)을 읽고 재조정자에 대한 pre-React 16 구현에 대해 더 자세하게 배워보세요. 새로운 재조정자에 대한 설명은 아직 작성되지 않았습니다.
