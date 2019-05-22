@@ -15,7 +15,7 @@ redirect_from:
   - "tips/use-react-with-other-libraries.html"
 ---
 
-이 문서에서는 React 컴포넌트 class를 다루는 API들을 자세히 소개합니다. 이 문서를 읽는 당신이 [컴포넌트와 props](/docs/components-and-props.html), [state와 생명주기](/docs/state-and-lifecycle.html) 등과 같은 기초적인 React의 개념들에 익숙하다고 가정하고 있습니다. 만약 그렇지 않다면, 먼저 읽으시길 바랍니다.
+이 문서에서는 React 컴포넌트 class를 다루는 API들을 자세히 소개합니다. 이 문서를 읽는 당신이 [컴포넌트와 props](/docs/components-and-props.html), [state와 생명주기](/docs/state-and-lifecycle.html) 등과 같은 기초적인 React의 개념들에 익숙하다고 가정하고 있습니다. 그렇지 않다면, 먼저 읽으시길 바랍니다.
 
 ## 개요 {#overview}
 
@@ -35,7 +35,7 @@ class Welcome extends React.Component {
 
 > 주의
 >
-> React를 사용할 때 반드시 ES6 class 문법을 사용하지 않아도 됩니다. 그 대신 `create-react-class` 모듈 또는 이와 유사한 별도의 추상화를 사용해도 됩니다. 자세한 정보는 [ES6 없이 React 사용하기](/docs/react-without-es6.html) 문서에서 확인할 수 있습니다.
+> React를 사용할 때 반드시 ES6 class 문법을 사용하지 않아도 됩니다. 그 대신 `create-react-class` 모듈 또는 이와 유사한 별도의 추상화를 사용해도 됩니다. 자세한 정보는 [ES6 없이 사용하는 React](/docs/react-without-es6.html) 문서에서 확인할 수 있습니다.
 
 ### 컴포넌트 생명주기 {#the-component-lifecycle}
 
@@ -56,7 +56,7 @@ class Welcome extends React.Component {
 >
 >- [`UNSAFE_componentWillMount()`](#unsafe_componentwillmount)
 
-#### 갱신 {#updating}
+#### 업데이트 {#updating}
 
 props 또는 state가 변경되면 갱신이 발생합니다. 아래 메서드들은 컴포넌트가 다시 렌더링될 때 순서대로 호출됩니다.
 
@@ -73,7 +73,7 @@ props 또는 state가 변경되면 갱신이 발생합니다. 아래 메서드�
 >- [`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate)
 >- [`UNSAFE_componentWillReceiveProps()`](#unsafe_componentwillreceiveprops)
 
-#### 언마운트 {#unmounting}
+#### 마운트 해제 {#unmounting}
 
 아래 메서드는 컴포넌트가 DOM 상에서 제거될 때에 호출됩니다.
 
@@ -105,7 +105,7 @@ props 또는 state가 변경되면 갱신이 발생합니다. 아래 메서드�
 
 * * *
 
-## Reference {#reference}
+## 참고서 {#reference}
 
 ### 자주 사용되는 생명주기 메서드 {#commonly-used-lifecycle-methods}
 
@@ -117,13 +117,13 @@ props 또는 state가 변경되면 갱신이 발생합니다. 아래 메서드�
 render()
 ```
 
-`render()` 메서드는 클래스 컴포넌트에서 유일하게 필요한 메서드입니다.
+`render()` 메서드는 클래스 컴포넌트에서 반드시 구현돼야하는 유일한 메서드입니다.
 
 이 메서드가 호출되면 `this.props`와 `this.state`의 값을 활용하여 아래의 것 중 하나를 반환해야 합니다.
 
-- **React 요소.** 보통 [JSX](/docs/introducing-jsx.html)를 사용하여 생성됩니다. 예를 들어, `<div />`와 `<MyComponent />`는 React가 DOM 노드 또는 사용자가 정의한 컴포넌트를 만들도록 지시하는 React 엘리먼트입니다.
-- **배열과 Fragments.** `render()`를 통하여 여러 개의 엘리먼트를 반환합니다. 자세한 정보는 [Fragments](/docs/fragments.html) 문서를 통하여 확인할 수 있습니다.
-- **Portals.** 별도의 DOM 하위 트리에 자식 엘리먼트를 렌더링합니다. 자세한 정보는 [Portals](/docs/portals.html)에서 확인할 수 있습니다.
+- **React 에리먼트.** 보통 [JSX](/docs/introducing-jsx.html)를 사용하여 생성됩니다. 예를 들어, `<div />`와 `<MyComponent />`는 React가 DOM 노드 또는 사용자가 정의한 컴포넌트를 만들도록 지시하는 React 엘리먼트입니다.
+- **배열과 Fragment.** `render()`를 통하여 여러 개의 엘리먼트를 반환합니다. 자세한 정보는 [Fragments](/docs/fragments.html) 문서를 통하여 확인할 수 있습니다.
+- **Portal.** 별도의 DOM 하위 트리에 자식 엘리먼트를 렌더링합니다. 자세한 정보는 [Portals](/docs/portals.html)에서 확인할 수 있습니다.
 - **문자열과 숫자.** 이 값들은 DOM 상에 텍스트 노드로서 렌더링됩니다.
 - **Boolean 또는 null.** 아무것도 렌더링하지 않습니다. (대부분의 경우 `return test && <Child />` 패턴을 지원하는 데에 사용되며, 여기서 `test`는 boolean 값입니다.)
 
@@ -152,7 +152,7 @@ React에서 생성자는 보통 아래의 두 가지 목적을 위하여 사용�
 * `this.state`에 객체를 할당하여 [지역 state](/docs/state-and-lifecycle.html)를 초기화
 * 인스턴스에 [이벤트 처리](/docs/handling-events.html) 메서드를 바인딩
 
-`constructor()` 내부에서 `setState()`를 호출하면 안 됩니다. 컴포넌트에 지역 state가 필요하다면 생성자 내에서 `this.state`에 초기 state 값을 할당하면 됩니다.
+`constructor()` 내부에서 **`setState()`를 호출하면 안 됩니다.** 컴포넌트에 지역 state가 필요하다면 생성자 내에서 `this.state`에 초기 state 값을 할당하면 됩니다.
 
 ```js
 constructor(props) {
@@ -220,7 +220,7 @@ componentDidUpdate(prevProps) {
 }
 ```
 
-`componentDidUpdate()`에서 **`setState()`를 즉시 호출할 수도 있지만,** 위의 예시처럼 **조건문으로 감싸지** 않으면 무한 반복이 발생할 수 있다는 점에 주의하세요. 또한 추가적인 렌더링을 유발하여, 비록 사용자는 눈치채지 못할지라도 컴포넌트 성능에 영향을 미칠 수 있습니다. 상위에서 내려온 prop을 그대로 state에 저장하는 것은 좋지 않으며, 그 대신 Prop을 직접 사용하는 것이 좋습니다. 이와 관련된 자세한 정보는 [props를 state에 복사하는 것이 버그를 유발하는 이유](/blog/2018/06/07/you-probably-dont-need-derived-state.html)에서 확인할 수 있습니다.
+`componentDidUpdate()`에서 **`setState()`를 즉시 호출할 수도 있지만,** 위의 예시처럼 **조건문으로 감싸지** 않으면 무한 반복이 발생할 수 있다는 점에 주의하세요. 또한 추가적인 렌더링을 유발하여, 비록 사용자는 눈치채지 못할지라도 컴포넌트 성능에 영향을 미칠 수 있습니다. 상위에서 내려온 prop을 그대로 state에 저장하는 것은 좋지 않으며, 그 대신 prop을 직접 사용하는 것이 좋습니다. 이와 관련된 자세한 정보는 [props를 state에 복사하는 것이 버그를 유발하는 이유](/blog/2018/06/07/you-probably-dont-need-derived-state.html)에서 확인할 수 있습니다.
 
 컴포넌트에서 `getSnapshotBeforeUpdate()`를 구현한다면, 해당 메서드가 반환하는 값은 `componentDidUpdate()`에 세 번째 "snapshot" 인자로 넘겨집니다. 반환값이 없다면 해당 인자는 undefined를 가집니다.
 
@@ -236,15 +236,15 @@ componentDidUpdate(prevProps) {
 componentWillUnmount()
 ```
 
-`componentWillUnmount()`는 컴포넌트가 언마운트되어 제거되기 직전에 호출됩니다. 이 메서드 내에서 타이머 제거, 네트워크 요청 취소, `componentDidMount()` 내에서 생성된 구독 해제 등 필요한 모든 정리 작업을 수행하세요.
+`componentWillUnmount()`는 컴포넌트가 마운트 해제되어 제거되기 직전에 호출됩니다. 이 메서드 내에서 타이머 제거, 네트워크 요청 취소, `componentDidMount()` 내에서 생성된 구독 해제 등 필요한 모든 정리 작업을 수행하세요.
 
-이제 컴포넌트는 다시 렌더링되지 않으므로, `componentWillUnmount()` 내에서 **`setState()`를 호출하면 안 됩니다.** 컴포넌트 인스턴스가 언마운트되고 나면, 절대로 다시 마운트되지 않습니다.
+이제 컴포넌트는 다시 렌더링되지 않으므로, `componentWillUnmount()` 내에서 **`setState()`를 호출하면 안 됩니다.** 컴포넌트 인스턴스가 마운트 해제되고 나면, 절대로 다시 마운트되지 않습니다.
 
 * * *
 
 ### 잘 사용하지 않는 생명주기 메서드 {#rarely-used-lifecycle-methods}
 
-이 섹션에서 다루는 메서드들은 잘 사용되지 않습니다. 유용하게 사용되는 경우가 아주 가끔 있지만, 대부분의 컴포넌트에서는 필요하지 않습니다. 대부분의 메서드들은 [이 생명주기 도표](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)의 최상단에 위치하는 "잘 사용하지 않는 생명주기" 체크박스를 클릭하면 확인할 수 있습니다.
+이 섹션에서 다루는 메서드들은 잘 사용되지 않습니다. 유용하게 사용되는 경우가 아주 가끔 있지만, 대부분의 컴포넌트에서는 필요하지 않습니다. 대부분의 메서드들은 [이 생명주기 도표](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)의 최상단에 위치하는 "덜 일반적인 라이프 사이클 표시" 체크박스를 클릭하면 확인할 수 있습니다.
 
 ### `shouldComponentUpdate()` {#shouldcomponentupdate}
 
@@ -306,13 +306,13 @@ getSnapshotBeforeUpdate(prevProps, prevState)
 
 `embed:react-component-reference/get-snapshot-before-update.js`
 
-위의 예시에서는 `getSnapshotBeforeUpdate`의 `scrollHeight` 프로퍼티 값을 아는 것이 중요한데, `render`와 같은 "렌더링" 단계의 생명주기와 `getSnapshotBeforeUpdate`와 `componentDidUpdate`와 같은 "반영" 단계의 생명주기 간에 지연 시간이 발생할 수 있기 때문입니다.
+위의 예시에서는 `getSnapshotBeforeUpdate`의 `scrollHeight` 프로퍼티 값을 아는 것이 중요한데, `render`와 같은 "렌더링" 단계의 생명주기와 `getSnapshotBeforeUpdate`와 `componentDidUpdate`와 같은 "커밋" 단계의 생명주기 간에 지연 시간이 발생할 수 있기 때문입니다.
 
 * * *
 
-### 오류 경계 {#error-boundaries}
+### Error Boundary {#error-boundaries}
 
-[오류 경계(Error boundary)](/docs/error-boundaries.html)는 자식 컴포넌트 트리 내의 자바스크립트 오류를 감지하고, 해당 오류를 기록하며, 충돌이 발생한 컴포넌트 트리를 대신하여 대체 UI를 표시하는 React 컴포넌트입니다. Error boundary의 하위 트리에 존재하는 렌더링 과정, 생명주기 메서드, 모든 생성자에 대하여 오류를 감지해냅니다.
+[Error boundary](/docs/error-boundaries.html)는 자식 컴포넌트 트리 내의 자바스크립트 오류를 감지하고, 해당 오류를 기록하며, 충돌이 발생한 컴포넌트 트리를 대신하여 대체 UI를 표시하는 React 컴포넌트입니다. Error boundary의 하위 트리에 존재하는 렌더링 과정, 생명주기 메서드, 모든 생성자에 대하여 오류를 감지해냅니다.
 
 클래스 컴포넌트에 `static getDerivedStateFromError()` 또는 `componentDidCatch()`를 정의할 경우 해당 컴포넌트는 Error boundary가 됩니다. 두 생명주기 내에서 state를 갱신하게 되면 하위 트리 내의 처리되지 않은 자바스크립트 오류를 발생시키고, 대체 UI를 표시합니다.
 
@@ -322,7 +322,7 @@ getSnapshotBeforeUpdate(prevProps, prevState)
 
 > 주의
 >
-> 오류 경계는 트리 내에서 자신보다 **하위에** 존재하는 컴포넌트에 대한 오류만을 감지해냅니다. 즉, 오류 경계는 자기 자신에 대한 오류를 감지할 수 없습니다.
+> Error boundary는 트리 내에서 자신보다 **하위에** 존재하는 컴포넌트에 대한 오류만을 감지해냅니다. 즉, Error boundary는 자기 자신에 대한 오류를 감지할 수 없습니다.
 
 ### `static getDerivedStateFromError()` {#static-getderivedstatefromerror}
 ```javascript
@@ -372,7 +372,7 @@ componentDidCatch(error, info)
 1. `error` - 발생한 오류
 2. `info` - [어떤 컴포넌트가 오류를 발생시켰는지에 대한 정보](/docs/error-boundaries.html#component-stack-traces)를 포함한 `componentStack` 키를 갖고 있는 객체
 
-`componentDidCatch()`는 "commit" 단계에서 호출되므로, 부수 효과를 발생시켜도 됩니다. 아래와 같이 오류 로그 기록 등을 위하여 사용하면 됩니다.
+`componentDidCatch()`는 "커밋" 단계에서 호출되므로, 부수 효과를 발생시켜도 됩니다. 아래와 같이 오류 로그 기록 등을 위하여 사용하면 됩니다.
 
 ```js{12-19}
 class ErrorBoundary extends React.Component {
@@ -459,7 +459,7 @@ UNSAFE_componentWillReceiveProps(nextProps)
 
 부모 컴포넌트가 해당 컴포넌트가 다시 렌더링하게 만든 경우, props가 변화하지 않았더라도 이 메서드가 호출된다는 점에 주의하세요. 변화가 발생했을 때만 메서드를 실행시키려면 반드시 props의 현재값과 다음값을 비교해야 합니다.
 
-React는 [마운팅 단계](#mounting)에서는 `UNSAFE_componentWillReceiveProps()`를 호출하지 않으며, 초기 props를 가지지 않습니다. 이 메서드가 호출되는 경우는 컴포넌트의 props가 변화했을 때입니다. `this.setState()`를 호출하면, 대부분의 경우 `UNSAFE_componentWillReceiveProps()`를 발생시키지 않습니다.
+React는 [마운팅할 때](#mounting)에서는 `UNSAFE_componentWillReceiveProps()`를 호출하지 않으며, 초기 props를 가지지 않습니다. 이 메서드가 호출되는 경우는 컴포넌트의 props가 변화했을 때입니다. `this.setState()`를 호출하면, 대부분의 경우 `UNSAFE_componentWillReceiveProps()`를 발생시키지 않습니다.
 
 * * *
 
