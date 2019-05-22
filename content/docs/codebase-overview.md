@@ -122,7 +122,7 @@ ReactRef.detachRefs = function(
 
 ### 동적 참조 {#dynamic-injection}
 
-React의 몇 가지 모듈은 동적 참조를 사용합니다. 동적 참조는 항상 명시적이지만 코드에 대한 이해를 방해하기도 합니다. 동적 참조를 사용하는 주된 이유는 React가 돔을 대상으로만 지원했기 때문입니다. React 네이티브는 React 프로젝트에서 시작되었기 때문에 몇 가지 동작을 구현하기 위해 동적 참조를 필요로 했습니다.
+React의 몇 가지 모듈은 동적 참조를 사용합니다. 동적 참조는 항상 명시적이지만 코드에 대한 이해를 방해하기도 합니다. 동적 참조를 사용하는 주된 이유는 React가 DOM을 대상으로만 지원했기 때문입니다. React 네이티브는 React 프로젝트에서 시작되었기 때문에 몇 가지 동작을 구현하기 위해 동적 참조를 필요로 했습니다.
 
 다음과 같은 동적 의존성을 가진 모듈을 확인할 수 있습니다.
 
@@ -165,19 +165,19 @@ React의 '코어'는 모든 [최상위 `React` API](/docs/top-level-api.html#rea
 * `React.Component`
 * `React.Children`
 
-**React 코어는 컴포넌트를 정의하는 데에 필요한 API만 포함하고 있습니다.** React 코어는 [재조정](/docs/reconciliation.html) 알고리즘과 플랫폼 전용 코드를 포함하고 있지 않습니다. 해당 코어는 React 돔과 React 네이티브의 컴포넌트에서 동시에 사용됩니다.
+**React 코어는 컴포넌트를 정의하는 데에 필요한 API만 포함하고 있습니다.** React 코어는 [재조정](/docs/reconciliation.html) 알고리즘과 플랫폼 전용 코드를 포함하고 있지 않습니다. 해당 코어는 React DOM과 React 네이티브의 컴포넌트에서 동시에 사용됩니다.
 
 React 코어의 소스 코드는 [`packages/react`](https://github.com/facebook/react/tree/master/packages/react)에 위치하고 있습니다. 해당 코드는 npm에서 [`react`](https://www.npmjs.com/package/react) 패키지로 받을 수 있습니다. 관련된 스탠드얼론 브라우저 빌드는 `react.js`이며, 전역에서 `React` 키워드를 통해 접근할 수 있습니다.
 
 ### 렌더러 {#renderers}
 
-React는 원래 돔을 대상으로 하여 개발됐지만, 이후 [React 네이티브](https://facebook.github.io/react-native/)를 통해 네이티브 플랫폼 또한 지원하게 되었습니다. 본 문단은 React 내부의 '렌더러'에 대해 간략히 소개합니다.
+React는 원래 DOM을 대상으로 하여 개발됐지만, 이후 [React 네이티브](https://facebook.github.io/react-native/)를 통해 네이티브 플랫폼 또한 지원하게 되었습니다. 본 문단은 React 내부의 '렌더러'에 대해 간략히 소개합니다.
 
 **렌더러는 React 트리의 플랫폼 종속적인 변환 방법을 관리합니다.**
 
 렌더러는 [`packages/`](https://github.com/facebook/react/tree/master/packages/) 폴더 안에 다음과 같이 존재합니다.
 
-* [React DOM Renderer](https://github.com/facebook/react/tree/master/packages/react-dom)는 React 컴포넌트를 돔으로 렌더링합니다. 해당 렌더러는 [최상위 레벨 `ReactDOM` API](/docs/react-dom.html)에 구현되어 있으며 npm에서 [`react-dom`](https://www.npmjs.com/package/react-dom) 패키지로 받을 수 있습니다. 또한 스탠드얼론 브라우저에서 `react-dom.js`를 통해 전역 `ReactDOM` 키워드로 접근할 수 있습니다.
+* [React DOM Renderer](https://github.com/facebook/react/tree/master/packages/react-dom)는 React 컴포넌트를 DOM으로 렌더링합니다. 해당 렌더러는 [최상위 레벨 `ReactDOM` API](/docs/react-dom.html)에 구현되어 있으며 npm에서 [`react-dom`](https://www.npmjs.com/package/react-dom) 패키지로 받을 수 있습니다. 또한 스탠드얼론 브라우저에서 `react-dom.js`를 통해 전역 `ReactDOM` 키워드로 접근할 수 있습니다.
 * [React Native Renderer](https://github.com/facebook/react/tree/master/packages/react-native-renderer)는 React 컴포넌트를 네이티브 뷰로 렌더링합니다. 해당 렌더러는 React 네이티브 내부에서 사용됩니다.
 * [React Test Renderer](https://github.com/facebook/react/tree/master/packages/react-test-renderer)는 React 컴포넌트를 JSON 형식으로 렌더링합니다. 해당 렌더러는 [Jest](https://facebook.github.io/jest)의 [Snapshot 테스트](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html)에 사용되며, npm에서 [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) 패키지로 받을 수 있습니다.
 
@@ -189,11 +189,11 @@ React는 원래 돔을 대상으로 하여 개발됐지만, 이후 [React 네이
 
 ### 재조정자 {#reconcilers}
 
-React 돔과 React 네이티브 같은 매우 다른 경우를 포함하여, 렌더러들은 상당 부분 동작 방식을 서로 공유해야 합니다. 특히 [재조정](/docs/reconciliation.html) 알고리즘의 경우는 더욱 그렇습니다. 이를 통해 렌더링, 사용자 정의 컴포넌트, 상태, 생명주기 메소드, 레퍼런스가 플랫폼에 상관없이 일관적으로 작동해야 합니다.
+React DOM과 React 네이티브 같은 매우 다른 경우를 포함하여, 렌더러들은 상당 부분 동작 방식을 서로 공유해야 합니다. 특히 [재조정](/docs/reconciliation.html) 알고리즘의 경우는 더욱 그렇습니다. 이를 통해 렌더링, 사용자 정의 컴포넌트, 상태, 생명주기 메소드, 레퍼런스가 플랫폼에 상관없이 일관적으로 작동해야 합니다.
 
 이를 해결하기 위해 서로 다른 렌더러들은 몇 가지의 코드를 공유하며, 해당 부분을 '재조정자'라고 부릅니다. `setState()`와 같은 함수가 수정되어야 할 때, 재조정자는 트리에 있는 컴포넌트의 `render()` 함수를 호출한 후 마운트나 업데이트, 혹은 마운트해제를 실시합니다.
 
-재조정자는 현재로서는 어떠한 public API도 존재하지 않기 때문에 개별적인 패키지로서 존재하지 않습니다. 대신 React 돔과 React 네이티브 같은 렌더러에 개별적으로 사용됩니다.
+재조정자는 현재로서는 어떠한 public API도 존재하지 않기 때문에 개별적인 패키지로서 존재하지 않습니다. 대신 React DOM과 React 네이티브 같은 렌더러에 개별적으로 사용됩니다.
 
 ### 스택 재조정자 {#stack-reconciler}
 
@@ -217,7 +217,7 @@ React 파이버 구조에 대해 [여기](https://github.com/acdlite/react-fiber
 
 ### 이벤트 시스템 {#event-system}
 
-React에는 React 돔과 React 네이티브에서 동시에 작동하는 렌더러의 애그노스틱인 복합 이벤트 시스템이 구현되어 있습니다. 해당 코드는 [`packages/events`](https://github.com/facebook/react/tree/master/packages/events)에서 확인할 수 있습니다.
+React에는 React DOM과 React 네이티브에서 동시에 작동하는 렌더러의 애그노스틱인 복합 이벤트 시스템이 구현되어 있습니다. 해당 코드는 [`packages/events`](https://github.com/facebook/react/tree/master/packages/events)에서 확인할 수 있습니다.
 
 해당 코드에 대한 상세한 설명은 다음의 [영상](https://www.youtube.com/watch?v=dRo_egw7tBc) (66분)을 참고하십시오.
 
