@@ -165,7 +165,7 @@ constructor(props) {
 
 생성자는 `this.state`를 직접 할당할 수 있는 유일한 곳입니다. 그 외의 메서드에서는 `this.setState()`를 사용해야 합니다.
 
-생성자 내에서는 부수 효과(side-effect)를 발생시키거나 구독 작업(subscription)을 수행하면 안 됩니다. 해당 경우에는 `componentDidMount()`를 대신 사용하세요.
+생성자 내에서는 부수 효과를 발생시키거나 구독 작업(subscription)을 수행하면 안 됩니다. 해당 경우에는 `componentDidMount()`를 대신 사용하세요.
 
 > 주의
 >
@@ -181,7 +181,7 @@ constructor(props) {
 >
 > 이것은 불필요한 작업이며(`this.props.color`를 직접 사용하면 됩니다), 버그를 발생시킵니다(`color` props의 값이 변하더라도 state에 반영되지 않습니다).
 >
-> **props의 갱신을 의도적으로 무시해야 할 때만 이와 같은 패턴을 사용하기 바랍니다.** 이 경우, 해당 props의 이름을 `initialColor` 또는 `defaultColor` 등으로 변경하는 편이 자연스럽습니다. 그러면 이후 필요에 따라 컴포넌트가 [`key`를 변경](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key)하여 초기 state를 재설정하도록 강제할 수 있습니다.
+> **props의 갱신을 의도적으로 무시해야 할 때만 이와 같은 패턴을 사용하기 바랍니다.** 이 경우, 해당 props의 이름을 `initialColor` 또는 `defaultColor` 등으로 변경하는 편이 자연스럽습니다. 그러면 이후 필요에 따라 컴포넌트가 [`key`를 변경](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key)하여 초기 state를 "재설정"하도록 강제할 수 있습니다.
 >
 > props의 값에 의존하는 state가 필요할 때 어떻게 해야 하는지에 대하여 알고 싶다면, 우리가 작성한 [state로부터 값을 가져오지 않는 법에 대한 블로그 글](/blog/2018/06/07/you-probably-dont-need-derived-state.html)을 읽어보세요.
 
@@ -278,7 +278,7 @@ static getDerivedStateFromProps(props, state)
 
 state를 끌어오면 코드가 장황해지고, 이로 인하여 컴포넌트를 이해하기 어려워집니다. [보다 간단한 다른 대안들에 익숙해지는 것을 권장합니다.](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
 
-* props 변화에 대응한 **부수 효과(Side Effect)를 발생**시켜야 한다면 (예를 들어, 데이터 가져오기 또는 애니메이션), [`componentDidUpdate`](#componentdidupdate) 생명주기를 대신해서 사용하세요.
+* props 변화에 대응한 **부수 효과를 발생**시켜야 한다면 (예를 들어, 데이터 가져오기 또는 애니메이션), [`componentDidUpdate`](#componentdidupdate) 생명주기를 대신해서 사용하세요.
 
 * **props가 변화했을 때에만 일부 데이터를 다시 계산** 하고 싶다면, [Memoization Helper](/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization)를 대신해서 사용하세요.
 
@@ -429,7 +429,7 @@ UNSAFE_componentWillMount()
 
 `UNSAFE_componentWillMount()`는 마운트가 발생하기 전에 호출됩니다. `render()`가 실행되기 전에 호출되므로, 이 메서드 내에서 `setState()`를 동기적으로 호출하더라도 추가적인 렌더링이 발생하지 않습니다. state를 초기화하는 경우라면, 보통은 `constructor()`를 사용하는 것이 좋습니다.
 
-이 메서드 내에서 부수 효과(side-effect)를 발생시키거나 구독 작업(subscription)을 수행하면 안 됩니다. 해당 경우에는 `componentDidMount()`를 대신 사용하세요.
+이 메서드 내에서 부수 효과를 발생시키거나 구독 작업(subscription)을 수행하면 안 됩니다. 해당 경우에는 `componentDidMount()`를 대신 사용하세요.
 
 이 메서드는 서버 렌더링에서 호출되는 유일한 생명주기 메서드입니다.
 
@@ -449,7 +449,7 @@ UNSAFE_componentWillReceiveProps(nextProps)
 >
 > 이 생명주기 메서드를 사용하면 버그를 만들거나, 일관성을 해칠 수 있습니다.
 >
-> * props 변화에 대응한 **부수 효과(Side Effect)를 발생**시켜야 한다면 (예를 들어, 데이터 가져오기 또는 애니메이션), [`componentDidUpdate`](#componentdidupdate) 생명주기를 대신해서 사용하세요.
+> * props 변화에 대응한 **부수 효과를 발생**시켜야 한다면 (예를 들어, 데이터 가져오기 또는 애니메이션), [`componentDidUpdate`](#componentdidupdate) 생명주기를 대신해서 사용하세요.
 > * **props가 변화할 때에 일부 데이터를 다시 계산**하기 위하여 `componentWillReceiveProps`를 사용하였다면, [Memoization Helper](/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization)를 대신해서 사용하세요.
 > * **props가 변화할 때에 일부 state를 재설정**하기 위하여 `componentWillReceiveProps`를 사용하였다면, [완전 제어 컴포넌트](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component) 또는 [`key`를 사용하는 완전 비제어 컴포넌트](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key)로 만들어서 사용하세요.
 >
