@@ -9,43 +9,29 @@ redirect_from:
   - "contributing/codebase-overview.html"
 ---
 
-This section will give you an overview of the React codebase organization, its conventions, and the implementation.
-이 섹션은 React 코드베이스 구조와 관습 그리고 구현에 대한 개요를 설명하고 있습니다.
+이 섹션은 React 코드베이스 구조와 관례, 그리고 구현에 대한 개요를 설명하고 있습니다.
 
-If you want to [contribute to React](/docs/how-to-contribute.html) we hope that this guide will help you feel more comfortable making changes.
-[React에 기여](/docs/how-to-contribute.html)하는 데에 있어서 이 문서를 통해 수월하게 프로젝트를 수정할 수 있기를 바랍니다.
+[React에 기여](/docs/how-to-contribute.html)하고자 한다면, 이 문서를 참고하여 프로젝트를 수정하길 바랍니다.
 
-We don't necessarily recommend any of these conventions in React apps. Many of them exist for historical reasons and might change with time.
-React 앱을 개발하는데 있어서 아래와 같은 관습들을 반드시 추천하지는 않습니다. 대부분의 관습들이 이전에 많이 사용 되었으며 차차 수정 될 것입니다.
+React 앱을 개발하는데 있어서 후술할 관례들의 사용을 반드시 추천하지는 않습니다. 대부분의 관례들은 이전에 많이 사용된 것들이며, 차차 수정될 것입니다.
 
-### External Dependencies {#external-dependencies}
-### 외부 의존성{#external-dependencies}
+### 외부 의존성 {#external-dependencies}
 
-React has almost no external dependencies. Usually, a `require()` points to a file in React's own codebase. However, there are a few relatively rare exceptions.
-React는 외부 의존성을 거의 갖지 않습니다. `require()` 함수는 통상적으로 React 내부의 파일을 참조합니다. 하지만 몇 가지의 다음과 같은 예외가 존재합니다.
+React는 외부 의존성을 거의 가지고 있지 않습니다. `require()` 함수는 통상적으로 React 내부의 파일을 참조합니다. 하지만 몇 가지 다음과 같은 예외가 존재합니다.
 
-The [fbjs repository](https://github.com/facebook/fbjs) exists because React shares some small utilities with libraries like [Relay](https://github.com/facebook/relay), and we keep them in sync. We don't depend on equivalent small modules in the Node ecosystem because we want Facebook engineers to be able to make changes to them whenever necessary. None of the utilities inside fbjs are considered to be public API, and they are only intended for use by Facebook projects such as React.
-[Replay](https://github.com/facebook/relay)와 같은 라이브러리를 포함하여 몇 가지 유틸리티를 사용하기 위해, React는 [fbjs](https://github.com/facebook/fbjs)에 대한 의존성을 갖고 있으며 동기화하고 있습니다. React는 페이스북 개발자들이 필요할 때마다 수정할 수 있도록 Node와 같이 작은 모듈에 의존적이지 않게 구성했습니다. fbjs의 어떤 유틸리티도 public API로 고려하지 않았으며, 오직 React와 같은 Facebook 프로젝트에서만 사용됩니다.
+[Replay](https://github.com/facebook/relay) 라이브러리 같은 몇 가지 유틸리티를 사용하기 위해, React는 [fbjs](https://github.com/facebook/fbjs)에 대한 의존성을 가지고 있습니다. 대신 React는 Node 환경에서 작은 모듈에 비의존적입니다. 이를 통해 페이스북 개발자들은 필요할 때마다 React를 수정할 수 있습니다. fbjs의 어떤 유틸리티도 public API로 개발되지 않았으며, 오직 React와 같은 페이스북 프로젝트에서만 사용됩니다.
 
-### Top-Level Folders {#top-level-folders}
 ### 최상위 폴더 {#top-level-folders}
 
-After cloning the [React repository](https://github.com/facebook/react), you will see a few top-level folders in it:
-[React 저장소](https://github.com/facebook/react)를 클론하게 되면, 다음과 같은 몇개의 최상위 폴더를 볼 수 있습니다.
+[React 저장소](https://github.com/facebook/react)를 클론하게 되면, 다음과 같은 몇 개의 최상위 폴더를 볼 수 있습니다.
 
-* [`packages`](https://github.com/facebook/react/tree/master/packages) contains metadata (such as `package.json`) and the source code (`src` subdirectory) for all packages in the React repository. **If your change is related to the code, the `src` subdirectory of each package is where you'll spend most of your time.**
-* [`fixtures`](https://github.com/facebook/react/tree/master/fixtures) contains a few small React test applications for contributors.
-* `build` is the build output of React. It is not in the repository but it will appear in your React clone after you [build it](/docs/how-to-contribute.html#development-workflow) for the first time.
-
-* [`packages`](https://github.com/facebook/react/tree/master/packages) 폴더는 React 저장소에 있는 모든 패키지들에 대해 `package.json`과 같은 메타데이터와 `src` 폴더를 포함하고 있습니다. **코드와 관련된 부분을 수정하고자 한다면, 각 패키지의 `src`폴더에 변경 할 점이 가장 많습니다.
-* [`fixtures`](https://github.com/facebook/react/tree/master/fixtures)에는 기여자들을 위한 몇가지의 React 테스트 어플리케이션이 존재합니다.
+* [`packages`](https://github.com/facebook/react/tree/master/packages) 폴더는 React 저장소에 있는 모든 패키지들에 대해 `package.json`과 같은 메타데이터와 `src` 폴더를 포함하고 있습니다. **만약 변경하고자 하는 부분이 코드와 관련되어 있다면, `src` 폴더에 대부분을 할애하게 될 것입니다.**
+* [`fixtures`](https://github.com/facebook/react/tree/master/fixtures)에는 기여자들을 위한 몇 가지 React 테스트 애플리케이션이 존재합니다.
 * `build` 폴더에는 React의 빌드 결과가 생성됩니다. 저장소에는 존재하지 않지만, React를 클론하고 처음 [빌드](/docs/how-to-contribute.html#development-workflow)할 시 생성됩니다.
 
-The documentation is hosted [in a separate repository from React](https://github.com/reactjs/reactjs.org).
 설명 문서는 React로부터 [분리된 저장소](https://github.com/reactjs/reactjs.org)에 존재합니다.
 
-There are a few other top-level folders but they are mostly used for the tooling and you likely won't ever encounter them when contributing.
-위에서 언급한거와 다른 최상위 폴더가 존재하지만 대부분 기여하는데 있어서 사용되지 않을 것입니다.
+위에서 언급한 것 외에 별도의 최상위 폴더가 존재하지만, 대부분 기여하는데 있어서 사용되지 않을 것입니다.
 
 ### Colocated Tests {#colocated-tests}
 ### 병치된 테스트 {#colocated-tests}
