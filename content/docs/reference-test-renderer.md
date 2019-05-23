@@ -1,25 +1,27 @@
 ---
 id: test-renderer
-title: Test Renderer
+title: 테스트 렌더러
 permalink: docs/test-renderer.html
 layout: docs
 category: Reference
 ---
 
-**Importing**
+**불러오기**
 
 ```javascript
 import TestRenderer from 'react-test-renderer'; // ES6
-const TestRenderer = require('react-test-renderer'); // ES5 with npm
+const TestRenderer = require('react-test-renderer'); // npm에서 ES5를 사용하는 경우
 ```
 
-## Overview {#overview}
+## 개요 {#overview}
 
-This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
+이 패키지는 DOM 혹은 네이티브 모바일 환경의 제약 없이, React 컴포넌트를 순수한 JavaScript 객체로 렌더링하는데 사용할 수 있는 React 렌더러를 제공합니다.
 
-Essentially, this package makes it easy to grab a snapshot of the platform view hierarchy (similar to a DOM tree) rendered by a React DOM or React Native component without using a browser or [jsdom](https://github.com/tmpvar/jsdom).
+기본적으로, 이 패키지를 사용하면 브라우저나 [jsdom](https://github.com/tmpvar/jsdom) 없이 React DOM 또는 React Native 컴포넌트에 의해 렌더링된 플랫폼 뷰 계층의 스냅샷을 쉽게 찍을 수 있도록 도와줍니다.
 
-Example:
+
+
+예시
 
 ```javascript
 import TestRenderer from 'react-test-renderer';
@@ -38,9 +40,9 @@ console.log(testRenderer.toJSON());
 //   children: [ 'Facebook' ] }
 ```
 
-You can use Jest's snapshot testing feature to automatically save a copy of the JSON tree to a file and check in your tests that it hasn't changed: [Learn more about it](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html).
+Jest의 스냅샷 테스트 기능으로 JSON 트리의 복사본을 파일로 자동 저장하여 테스트 내에서 변경되지 않았는지 확인할 수 있습니다. [자세히 알아보기](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html)
 
-You can also traverse the output to find specific nodes and make assertions about them.
+또한, 결과물을 순회하며 특정 노드를 찾아 원하는 값을 가지고 있는지 검증하는 데 사용할 수 있습니다.
 
 ```javascript
 import TestRenderer from 'react-test-renderer';
@@ -94,7 +96,7 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 * [`testInstance.parent`](#testinstanceparent)
 * [`testInstance.children`](#testinstancechildren)
 
-## Reference {#reference}
+## 참조 {#reference}
 
 ### `TestRenderer.create()` {#testrenderercreate}
 
@@ -102,7 +104,7 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 TestRenderer.create(element, options);
 ```
 
-Create a `TestRenderer` instance with the passed React element. It doesn't use the real DOM, but it still fully renders the component tree into memory so you can make assertions about it. The returned instance has the following methods and properties.
+전달된 React 엘리먼트로 `TestRenderer`  인스턴스를 생성합니다. 실제 DOM을 사용하지 않지만, 컴포넌트 트리 전체를 메모리상에 렌더링하기 때문에 원하는 값을 가졌는지 검증할 수 있습니다. 반환된 인스턴스는 다음과 같은 함수와 속성을 가지고 있습니다.
 
 ### `testRenderer.toJSON()` {#testrenderertojson}
 
@@ -110,7 +112,7 @@ Create a `TestRenderer` instance with the passed React element. It doesn't use t
 testRenderer.toJSON()
 ```
 
-Return an object representing the rendered tree. This tree only contains the platform-specific nodes like `<div>` or `<View>` and their props, but doesn't contain any user-written components. This is handy for [snapshot testing](https://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest).
+렌더링 된 트리를 나타내는 객체를 반환합니다. 이 트리는 같은 플랫폼 고유의 노드(예: `<div>`, `<View>`)와, 그러한 노드의 속성만을 가지고 있습니다. 사용자가 작성한 컴포넌트는 나타나지 않습니다. 이 함수는 [스냅샷 테스팅](https://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest) 시 유용하게 사용할 수 있습니다.
 
 ### `testRenderer.toTree()` {#testrenderertotree}
 
@@ -118,7 +120,7 @@ Return an object representing the rendered tree. This tree only contains the pla
 testRenderer.toTree()
 ```
 
-Return an object representing the rendered tree. Unlike `toJSON()`, the representation is more detailed than the one provided by `toJSON()`, and includes the user-written components. You probably don't need this method unless you're writing your own assertion library on top of the test renderer.
+렌더링 된 트리를 나타내는 객체를 반환합니다. `toJSON()`에서 반환되는 값과 달리 더욱 자세한 정보가 반환되며, 반환 값에는 사용자가 작성한 컴포넌트 역시 포함되어있습니다. 테스트 렌더러 위에 별도의 검증(assertion) 라이브러리를 만드는 것이 아니라면 이 함수는 필요하지 않을 것입니다.
 
 ### `testRenderer.update()` {#testrendererupdate}
 
@@ -126,7 +128,7 @@ Return an object representing the rendered tree. Unlike `toJSON()`, the represen
 testRenderer.update(element)
 ```
 
-Re-render the in-memory tree with a new root element. This simulates a React update at the root. If the new element has the same type and key as the previous element, the tree will be updated; otherwise, it will re-mount a new tree.
+메모리 내의 트리를 새로운 최상위 엘리먼트로 다시 렌더링합니다. 이 함수를 사용해 최상위 엘리먼트에서의 React 업데이트를 시뮬레이션할 수 있습니다. 새로운 엘리먼트가 이전 엘리먼트와 같은 타입과 키(key)를 가지고 있다면 트리를 업데이트합니다. 그렇지 않다면, 새로운 트리를 새로 마운트합니다.
 
 ### `testRenderer.unmount()` {#testrendererunmount}
 
@@ -134,7 +136,7 @@ Re-render the in-memory tree with a new root element. This simulates a React upd
 testRenderer.unmount()
 ```
 
-Unmount the in-memory tree, triggering the appropriate lifecycle events.
+메모리 내의 트리를 마운트 해제하고 적절한 생명주기 이벤트를 발생시킵니다.
 
 ### `testRenderer.getInstance()` {#testrenderergetinstance}
 
@@ -142,7 +144,7 @@ Unmount the in-memory tree, triggering the appropriate lifecycle events.
 testRenderer.getInstance()
 ```
 
-Return the instance corresponding to the root element, if available. This will not work if the root element is a function component because they don't have instances.
+최상위 엘리먼트에 대응하는 인스턴스가 존재하면 값을 반환합니다. 최상위 엘리먼트가 함수 컴포넌트일 경우, 함수 컴포넌트에는 인스턴스가 없기 때문에 작동하지 않습니다.
 
 ### `testRenderer.root` {#testrendererroot}
 
@@ -150,7 +152,7 @@ Return the instance corresponding to the root element, if available. This will n
 testRenderer.root
 ```
 
-Returns the root "test instance" object that is useful for making assertions about specific nodes in the tree. You can use it to find other "test instances" deeper below.
+트리 내에서 특정 노드를 검증할 때 유용한 최상위 "테스트 인스턴스" 객체를 반환합니다. 이것을 사용하여 더욱 깊이 있는 다른 "테스트 인스턴스"를 찾을 수 있습니다.
 
 ### `testInstance.find()` {#testinstancefind}
 
@@ -158,7 +160,7 @@ Returns the root "test instance" object that is useful for making assertions abo
 testInstance.find(test)
 ```
 
-Find a single descendant test instance for which `test(testInstance)` returns `true`. If `test(testInstance)` does not return `true` for exactly one test instance, it will throw an error.
+`test(testInstance)`에 대해 `true`를 반환하는 단 하나의 자식 테스트 인스턴스를 찾아 반환합니다. 해당되는 인스턴스가 하나가 아니라면 오류를 반환합니다.
 
 ### `testInstance.findByType()` {#testinstancefindbytype}
 
@@ -166,7 +168,7 @@ Find a single descendant test instance for which `test(testInstance)` returns `t
 testInstance.findByType(type)
 ```
 
-Find a single descendant test instance with the provided `type`. If there is not exactly one test instance with the provided `type`, it will throw an error.
+주어진 타입(type)에 해당하는 단 하나의 자식 테스트 인스턴스를 찾아 반환합니다. 해당되는 인스턴스가 하나가 아니라면 오류를 반환합니다.
 
 ### `testInstance.findByProps()` {#testinstancefindbyprops}
 
@@ -174,7 +176,7 @@ Find a single descendant test instance with the provided `type`. If there is not
 testInstance.findByProps(props)
 ```
 
-Find a single descendant test instance with the provided `props`. If there is not exactly one test instance with the provided `props`, it will throw an error.
+주어진 `props` 들에 해당하는 단 하나의 자식 테스트 인스턴스를 찾아 반환합니다. 해당되는 인스턴스가 하나가 아니라면 오류를 반환합니다.
 
 ### `testInstance.findAll()` {#testinstancefindall}
 
@@ -182,7 +184,7 @@ Find a single descendant test instance with the provided `props`. If there is no
 testInstance.findAll(test)
 ```
 
-Find all descendant test instances for which `test(testInstance)` returns `true`.
+`test(testInstance)`에 대해 `true`를 반환하는 모든 자식 테스트 인스턴스들을 찾아 반환합니다.
 
 ### `testInstance.findAllByType()` {#testinstancefindallbytype}
 
@@ -190,7 +192,7 @@ Find all descendant test instances for which `test(testInstance)` returns `true`
 testInstance.findAllByType(type)
 ```
 
-Find all descendant test instances with the provided `type`.
+주어진 타입(type)에 해당하는 모든 자식 테스트 인스턴스들을 찾아 반환합니다.
 
 ### `testInstance.findAllByProps()` {#testinstancefindallbyprops}
 
@@ -198,7 +200,7 @@ Find all descendant test instances with the provided `type`.
 testInstance.findAllByProps(props)
 ```
 
-Find all descendant test instances with the provided `props`.
+주어진 `props` 들에 해당하는 모든 자식 테스트 인스턴스들을 찾아 반환합니다.
 
 ### `testInstance.instance` {#testinstanceinstance}
 
@@ -206,7 +208,7 @@ Find all descendant test instances with the provided `props`.
 testInstance.instance
 ```
 
-The component instance corresponding to this test instance. It is only available for class components, as function components don't have instances. It matches the `this` value inside the given component.
+이 테스트 인스턴스에 해당하는 컴포넌트 인스턴스입니다. 함수 컴포넌트에는 인스턴스가 없기 때문에 클래스 컴포넌트에서만 사용할 수 있습니다. 주어진 컴포넌트 내부의 `this`와 같습니다.
 
 ### `testInstance.type` {#testinstancetype}
 
@@ -214,7 +216,7 @@ The component instance corresponding to this test instance. It is only available
 testInstance.type
 ```
 
-The component type corresponding to this test instance. For example, a `<Button />` component has a type of `Button`.
+이 테스트 인스턴스에 해당하는 컴포넌트의 타입입니다. 예를 들어, `<Button />` 컴포넌트의 타입은 `Button` 입니다.
 
 ### `testInstance.props` {#testinstanceprops}
 
@@ -222,7 +224,7 @@ The component type corresponding to this test instance. For example, a `<Button 
 testInstance.props
 ```
 
-The props corresponding to this test instance. For example, a `<Button size="small" />` component has `{size: 'small'}` as props.
+이 테스트 인스턴스에 해당하는 컴포넌트의 props들입니다. 예를 들어, `<Button size="small" />` 컴포넌트는 `{size: 'small'}` 이라는 props들을 가지고 있습니다.
 
 ### `testInstance.parent` {#testinstanceparent}
 
@@ -230,7 +232,7 @@ The props corresponding to this test instance. For example, a `<Button size="sma
 testInstance.parent
 ```
 
-The parent test instance of this test instance.
+이 테스트 인스턴스의 부모입니다.
 
 ### `testInstance.children` {#testinstancechildren}
 
@@ -238,13 +240,11 @@ The parent test instance of this test instance.
 testInstance.children
 ```
 
-The children test instances of this test instance.
+이 테스트 인스턴스의 자식들입니다.
 
 ## Ideas {#ideas}
 
-You can pass `createNodeMock` function to `TestRenderer.create` as the option, which allows for custom mock refs.
-`createNodeMock` accepts the current element and should return a mock ref object.
-This is useful when you test a component that relies on refs.
+커스텀 모의 ref를 만들어주는 `createNodeMock` 함수를 `TestRenderer.create`에 추가로 넘길 수 있습니다. `createNodeMock`은 현재의 엘리먼트를 받아 모의 ref 객체를 반환할 것입니다. 이것은 ref에 의존하는 컴포넌트를 테스트할 때 유용합니다.
 
 ```javascript
 import TestRenderer from 'react-test-renderer';
@@ -268,7 +268,7 @@ TestRenderer.create(
   {
     createNodeMock: (element) => {
       if (element.type === 'input') {
-        // mock a focus function
+        // 모의 focus 함수 생성
         return {
           focus: () => {
             focused = true;

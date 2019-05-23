@@ -1,23 +1,23 @@
 ---
 id: shallow-renderer
-title: Shallow Renderer
+title: 얕은 렌더러
 permalink: docs/shallow-renderer.html
 layout: docs
 category: Reference
 ---
 
-**Importing**
+**불러오기**
 
 ```javascript
 import ShallowRenderer from 'react-test-renderer/shallow'; // ES6
-var ShallowRenderer = require('react-test-renderer/shallow'); // ES5 with npm
+var ShallowRenderer = require('react-test-renderer/shallow'); // npm에서 ES5를 사용하는 경우
 ```
 
-## Overview {#overview}
+## 개요 {#overview}
 
-When writing unit tests for React, shallow rendering can be helpful. Shallow rendering lets you render a component "one level deep" and assert facts about what its render method returns, without worrying about the behavior of child components, which are not instantiated or rendered. This does not require a DOM.
+React를 위한 유닛 테스트를 작성할 때 얕은 렌더링이 유용할 수 있습니다. 얕은 렌더링은 컴포넌트를 "한 단계 깊이"로 렌더링할 수 있으며 인스턴스화 또는 렌더링 되지 않는 자식 컴포넌트의 동작에 대해 걱정 없이 렌더링 메소드가 무엇을 반환하는지에 대해 검증할 수 있습니다. 이 작업은 DOM이 필요하지 않습니다.
 
-For example, if you have the following component:
+예를 들어 다음 컴포넌트가 있는 경우
 
 ```javascript
 function MyComponent() {
@@ -30,7 +30,7 @@ function MyComponent() {
 }
 ```
 
-Then you can assert:
+다음과 같이 검증할 수 있습니다.
 
 ```javascript
 import ShallowRenderer from 'react-test-renderer/shallow';
@@ -47,22 +47,22 @@ expect(result.props.children).toEqual([
 ]);
 ```
 
-Shallow testing currently has some limitations, namely not supporting refs.
+얕은 테스팅은 현재 몇 가지 제한 사항이 있습니다. 다시 말해 refs를 지원하지 않습니다.
 
-> Note:
+> 주의
 >
-> We also recommend checking out Enzyme's [Shallow Rendering API](https://airbnb.io/enzyme/docs/api/shallow.html). It provides a nicer higher-level API over the same functionality.
+> 우리는 또한 Enzyme의 [Shallow Rendering API](https://airbnb.io/enzyme/docs/api/shallow.html)를 확인해 볼 것을 권장합니다. 같은 기능에 대해 더 높은 수준의 API를 제공합니다.
 
-## Reference {#reference}
+## 참조 {#reference}
 
 ### `shallowRenderer.render()` {#shallowrendererrender}
 
-You can think of the shallowRenderer as a "place" to render the component you're testing, and from which you can extract the component's output.
+shallowRenderer는 테스트 중인 컴포넌트를 렌더링하는 "장소(place)"로 생각할 수 있으며 이것으로부터 컴포넌트의 출력을 추출할 수 있습니다.
 
-`shallowRenderer.render()` is similar to [`ReactDOM.render()`](/docs/react-dom.html#render) but it doesn't require DOM and only renders a single level deep. This means you can test components isolated from how their children are implemented.
+`shallowRenderer.render()`는 [`ReactDOM.render()`](/docs/react-dom.html#render)와 비슷하지만 DOM을 요구하지 않으며 오직 한 단계 깊이만을 렌더링합니다. 이것은 컴포넌트의 자식들이 어떻게 구현되었는지 신경 쓰지 않고 독립적으로 테스트할 수 있음을 의미합니다.
 
 ### `shallowRenderer.getRenderOutput()` {#shallowrenderergetrenderoutput}
 
-After `shallowRenderer.render()` has been called, you can use `shallowRenderer.getRenderOutput()` to get the shallowly rendered output.
+`shallowRenderer.render()`가 호출된 후 `shallowRenderer.getRenderOutput()`을 사용하여 얕게 렌더링 된 출력을 얻을 수 있습니다.
 
-You can then begin to assert facts about the output.
+그러면 출력에 대해 검증을 시작할 수 있습니다.

@@ -9,7 +9,7 @@
 module.exports = {
   siteMetadata: {
     title: 'React: A JavaScript library for building user interfaces',
-    siteUrl: 'https://reactjs.org',
+    siteUrl: 'https://ko.reactjs.org',
     rssFeedTitle: 'React',
     rssFeedDescription: 'A JavaScript library for building user interfaces',
   },
@@ -55,6 +55,7 @@ module.exports = {
               maxWidth: 840,
             },
           },
+          'gatsby-remark-external-links',
           'gatsby-remark-header-custom-ids',
           {
             resolve: 'gatsby-remark-code-repls',

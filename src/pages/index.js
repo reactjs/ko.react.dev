@@ -15,7 +15,7 @@ import TitleAndMetaTags from 'components/TitleAndMetaTags';
 import Layout from 'components/Layout';
 import {colors, media, sharedStyles} from 'theme';
 import loadScript from 'utils/loadScript';
-import createOgUrl from 'utils/createOgUrl';
+import createCanonicalUrl from 'utils/createCanonicalUrl';
 import {babelURL} from 'site-constants';
 import logoWhiteSvg from 'icons/logo-white.svg';
 
@@ -50,8 +50,8 @@ class Home extends Component {
     return (
       <Layout location={location}>
         <TitleAndMetaTags
-          title="React &ndash; A JavaScript library for building user interfaces"
-          ogUrl={createOgUrl('index.html')}
+          title="React &ndash; 사용자 인터페이스를 만들기 위한 JavaScript 라이브러리"
+          canonicalUrl={createCanonicalUrl('/')}
         />
         <div css={{width: '100%'}}>
           <header
@@ -62,7 +62,7 @@ class Home extends Component {
             <div
               css={{
                 paddingTop: 45,
-                paddingBottom: 20,
+                paddingBottom: 10,
 
                 [media.greaterThan('small')]: {
                   paddingTop: 60,
@@ -133,12 +133,15 @@ class Home extends Component {
                         fontSize: 30,
                       },
                     }}>
-                    A JavaScript library for building user interfaces
+                    사용자 인터페이스를 만들기 위한 JavaScript 라이브러리
                   </p>
                   <Flex
                     valign="center"
+                    halign="center"
                     css={{
                       paddingTop: 40,
+                      flexWrap: 'wrap',
+                      justifyContent: 'center',
 
                       [media.greaterThan('xlarge')]: {
                         paddingTop: 65,
@@ -148,12 +151,12 @@ class Home extends Component {
                       <ButtonLink
                         to="/docs/getting-started.html"
                         type="primary">
-                        Get Started
+                        시작하기
                       </ButtonLink>
                     </CtaItem>
                     <CtaItem>
                       <ButtonLink to="/tutorial/tutorial.html" type="secondary">
-                        Take the Tutorial
+                        자습서 읽어보기
                       </ButtonLink>
                     </CtaItem>
                   </Flex>
@@ -279,18 +282,24 @@ class Home extends Component {
               background: colors.dark,
               color: colors.white,
               paddingTop: 45,
-              paddingBottom: 45,
+              paddingBottom: 25,
             }}>
             <Container>
-              <Flex valign="center">
+              <Flex
+                valign="center"
+                halign="center"
+                css={{
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                }}>
                 <CtaItem>
                   <ButtonLink to="/docs/getting-started.html" type="primary">
-                    Get Started
+                    시작하기
                   </ButtonLink>
                 </CtaItem>
                 <CtaItem>
                   <ButtonLink to="/tutorial/tutorial.html" type="secondary">
-                    Take the Tutorial
+                    자습서 읽어보기
                   </ButtonLink>
                 </CtaItem>
               </Flex>
@@ -312,8 +321,6 @@ Home.propTypes = {
 const CtaItem = ({children, primary = false}) => (
   <div
     css={{
-      width: '50%',
-
       [media.between('small', 'large')]: {
         paddingLeft: 20,
       },
@@ -324,12 +331,21 @@ const CtaItem = ({children, primary = false}) => (
 
       '&:first-child': {
         textAlign: 'right',
-        paddingRight: 15,
+        paddingRight: 7,
+        paddingLeft: 7,
+        [media.lessThan('small')]: {
+          marginBottom: 10,
+        },
       },
 
       '&:nth-child(2)': {
+        paddingRight: 7,
+        paddingLeft: 7,
         [media.greaterThan('small')]: {
           paddingLeft: 15,
+        },
+        [media.lessThan('small')]: {
+          marginBottom: 10,
         },
       },
     }}>
