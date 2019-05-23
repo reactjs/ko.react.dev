@@ -16,7 +16,7 @@ React는 접근성을 갖춘 웹사이트를 만들 수 있도록 모든 지원�
 
 [Web Content Accessibility Guidelines](https://www.w3.org/WAI/intro/wcag)는 접근성을 갖춘 웹사이트를 만드는 데 필요한 지침을 제공합니다.
 
-아래 WCAG 체크리스트는 그 개요들을 나타냅니다.
+아래 WCAG 체크리스트를 통해 간략하게 살펴볼 수 있습니다.
 
 - [Wuhcag의 WCAG 체크리스트](https://www.wuhcag.com/wcag-checklist/)
 - [WebAIM의 WCAG 체크리스트](https://webaim.org/standards/wcag/checklist)
@@ -24,9 +24,9 @@ React는 접근성을 갖춘 웹사이트를 만들 수 있도록 모든 지원�
 
 ### WAI-ARIA {#wai-aria}
 
-[Web Accessibility Initiative - Accessible Rich Internet Applications](https://www.w3.org/WAI/intro/aria) 문서에는 접근성을 갖춘 JavaScript 위젯들을 만드는 데 필요한 기술들이 담겨있습니다.
+[Web Accessibility Initiative - Accessible Rich Internet Applications](https://www.w3.org/WAI/intro/aria) 문서에는 접근성을 갖춘 JavaScript 위젯을 만드는 데 필요한 기술들이 담겨있습니다.
 
-참고로, JSX에서는 모든 `aria-*` HTML 속성들을 지원하고 있습니다. React에서 대부분의 DOM 속성과 속성에 대한 값들이 camelCase로 지원되는 반면, `aria-*`와 같은 속성들은 일반적인 HTML과 마찬가지로 hypen-case(혹은 kebab-case, lisp-case 등)로 작성해야 합니다.
+참고로, JSX에서는 모든 `aria-*` HTML 어트리뷰트를 지원하고 있습니다. React에서 대부분의 DOM 프로퍼티와 어트리뷰트에 대한 값이 캐멀 케이스로 지원되는 반면, `aria-*`와 같은 어트리뷰트는 일반적인 HTML과 마찬가지로 hypen-case(혹은 kebab-case, lisp-case 등)로 작성해야 합니다.
 
 ```javascript{3,4}
 <input
@@ -40,11 +40,11 @@ React는 접근성을 갖춘 웹사이트를 만들 수 있도록 모든 지원�
 ```
 
 ## 시맨틱 HTML {#semantic-html}
-시맨틱 HTML은 웹 애플리케이션에 있어 접근성의 기초입니다. 웹사이트에서 정보에 대한 뜻을 부각해주는 HTML 엘리먼트들을 사용한다면, 대부분의 접근성이 갖춰집니다.
+시맨틱 HTML은 웹 애플리케이션에 있어 접근성의 기초입니다. 정보의 의미가 강조되는 HTML 엘리먼트를 웹 사이트에서 사용하면 자연스럽게 접근성이 갖추어지곤 합니다.
 
-- [참고: MDN HTML 엘리먼트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+- [MDN HTML 엘리먼트 참고](https://developer.mozilla.org/ko/docs/Web/HTML/Element)
 
-가끔 React로 구성한 코드가 돌아가게 만들기 위해 `<div>`와 같은 엘리먼트를 사용해 HTML의 의미를 깨트리곤 합니다. 특히, 목록(`<ol>`, `<ul>`, `<dl>`)과 HTML `<table>`을 사용할 때 문제가 두드러집니다. 이 경우에는, [React Fragment](/docs/fragments.html)를 사용하여 여러 엘리먼트들을 하나로 묶어주는 것을 권장합니다.
+가끔 React로 구성한 코드가 돌아가게 만들기 위해 `<div>`와 같은 엘리먼트를 사용해 HTML의 의미를 깨트리곤 합니다. 특히, 목록(`<ol>`, `<ul>`, `<dl>`)과 HTML `<table>`을 사용할 때 문제가 두드러집니다. 이 경우에는, [React Fragment](/docs/fragments.html)를 사용하여 여러 엘리먼트를 하나로 묶어주는 것을 권장합니다.
 
 예시는 아래와 같습니다.
 
@@ -104,12 +104,12 @@ function ListItem({ item }) {
 
 더 자세한 내용은 [Fragment](/docs/fragments.html) 문서를 참고해주시기 바랍니다.
 
-## 접근 가능한 폼 {#accessible-forms}
+## 접근성 있는 폼 {#accessible-forms}
 
 ### 라벨링 {#labeling}
-`<input>`과 `<textarea>` 같은 모든 HTML 폼 컨트롤들은 구분할 수 있는 라벨이 필요합니다. 스크린 리더를 사용하는 사용자들을 위해 자세한 설명이 담긴 라벨을 제공해야 합니다.
+`<input>`과 `<textarea>` 같은 모든 HTML 폼 컨트롤은 구분할 수 있는 라벨이 필요합니다. 스크린 리더를 사용하는 사용자를 위해 자세한 설명이 담긴 라벨을 제공해야 합니다.
 
-아래는 방법들이 담긴 자료입니다.
+다음은 라벨을 제공하는 방법에 관한 자료입니다.
 
 - [W3C에서 제공하는 엘리먼트 라벨링 방법](https://www.w3.org/WAI/tutorials/forms/labels/)
 - [WebAIM에서 제공하는 엘리먼트 라벨링 방법](https://webaim.org/techniques/forms/controls)
@@ -455,9 +455,9 @@ Deque Systems에서는 자동으로 애플리케이션의 종단 간(end-to-end)
 
 #### 접근성 검사기와 접근성 트리 {#accessibility-inspectors-and-the-accessibility-tree}
 
-[접근성 트리](https://www.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/)는 스크린 리더와 같이 보조과학기술들에 노출되어야 하는 DOM 엘리먼트에 접근 가능한 객체가 담긴 DOM 트리의 하위 집합입니다.
+[접근성 트리](https://www.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/)는 스크린 리더와 같은 보조과학기술에 노출되어야 하는 DOM 엘리먼트에 접근 가능한 객체가 담긴 DOM 트리의 하위 집합입니다.
 
-일부 브라우저들에서는 접근성 트리 안의 각 엘리먼트들의 접근성 정보를 손쉽게 확인할 수 있습니다.
+일부 브라우저에서는 접근성 트리 안의 각 엘리먼트의 접근성 정보를 손쉽게 확인할 수 있습니다.
 
 - [Firefox에서 접근성 검사기를 사용하는 방법](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
 - [Chrome에서 접근성 검사기를 활성화하는 방법](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
