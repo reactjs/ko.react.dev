@@ -121,7 +121,7 @@ render()
 
 이 메서드가 호출되면 `this.props`와 `this.state`의 값을 활용하여 아래의 것 중 하나를 반환해야 합니다.
 
-- **React 에리먼트.** 보통 [JSX](/docs/introducing-jsx.html)를 사용하여 생성됩니다. 예를 들어, `<div />`와 `<MyComponent />`는 React가 DOM 노드 또는 사용자가 정의한 컴포넌트를 만들도록 지시하는 React 엘리먼트입니다.
+- **React 엘리먼트.** 보통 [JSX](/docs/introducing-jsx.html)를 사용하여 생성됩니다. 예를 들어, `<div />`와 `<MyComponent />`는 React가 DOM 노드 또는 사용자가 정의한 컴포넌트를 만들도록 지시하는 React 엘리먼트입니다.
 - **배열과 Fragment.** `render()`를 통하여 여러 개의 엘리먼트를 반환합니다. 자세한 정보는 [Fragments](/docs/fragments.html) 문서를 통하여 확인할 수 있습니다.
 - **Portal.** 별도의 DOM 하위 트리에 자식 엘리먼트를 렌더링합니다. 자세한 정보는 [Portals](/docs/portals.html)에서 확인할 수 있습니다.
 - **문자열과 숫자.** 이 값들은 DOM 상에 텍스트 노드로서 렌더링됩니다.
