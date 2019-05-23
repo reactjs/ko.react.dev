@@ -78,7 +78,7 @@ function Glossary(props) {
   return (
     <dl>
       {props.items.map(item => (
-        // 항목을 매핑할 때 Fragment는 반드시 `key` prop을 가져야 합니다.
+        // 항목을 매핑할 때 Fragment는 반드시 `key` 프로퍼티가 있어야 합니다.
         <Fragment key={item.id}>
           <dt>{item.term}</dt>
           <dd>{item.description}</dd>
@@ -89,7 +89,7 @@ function Glossary(props) {
 }
 ```
 
-만약, Fragment 태그에 어떤 속성도 필요하지 않고, 사용하고 있는 도구에서 지원한다면, 아래와 같이 [짧게 줄여 쓸 수](/docs/fragments.html#short-syntax) 있습니다.
+만약, Fragment 태그에 어떤 props도 필요하지 않고, 사용하고 있는 도구에서 지원한다면, 아래와 같이 [짧게 줄여 쓸 수](/docs/fragments.html#short-syntax) 있습니다.
 
 ```javascript{3,6}
 function ListItem({ item }) {
@@ -115,7 +115,7 @@ function ListItem({ item }) {
 - [WebAIM에서 제공하는 엘리먼트 라벨링 방법](https://webaim.org/techniques/forms/controls)
 - [The Paciello Group이 설명한 접근 가능한 이름들](https://www.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
 
-이와 같은 표준 HTML에 대한 예시들이 React에 바로 사용될 수 있으나, `for` 속성 만은 JSX에서 `htmlFor`로 사용하는 것에 주의하시기 바랍니다.
+이와 같은 표준 HTML에 대한 예시들이 React에 바로 사용될 수 있으나, `for` 어트리뷰트 만은 JSX에서 `htmlFor`로 사용하는 것에 주의하시기 바랍니다.
 
 ```javascript{1}
 <label htmlFor="namedInput">Name:</label>
@@ -137,7 +137,7 @@ function ListItem({ item }) {
 
 ### 키보드 포커스와 포커스 윤곽선 {#keyboard-focus-and-focus-outline}
 
-키보드 포커스는 키보드 입력을 받아들일 수 있는 DOM 내의 현재 요소를 나타냅니다. 아래 이미지와 비슷하게 포커스 윤곽선이 표시됩니다.
+키보드 포커스는 키보드 입력을 받아들일 수 있는 DOM 내의 현재 엘리먼트를 나타냅니다. 아래 이미지와 비슷하게 포커스 윤곽선이 표시됩니다.
 
 <img src="../images/docs/keyboard-focus.png" alt="Blue keyboard focus outline around a selected link." />
 
@@ -197,7 +197,7 @@ class CustomTextInput extends React.Component {
  }
  ```
 
-가끔씩 부모 컴포넌트가 자식 컴포넌트 내의 엘리먼트에 포커스를 잡아야 할 때가 있습니다. 이때는 자식 컴포넌트에 특별한 prop을 주어 [DOM ref를 부모 컴포넌트로 노출](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)하는 방식으로 부모의 ref를 자식의 DOM 노드에 넘겨줄 수 있습니다.
+가끔씩 부모 컴포넌트가 자식 컴포넌트 내의 엘리먼트에 포커스를 잡아야 할 때가 있습니다. 이때는 자식 컴포넌트에 특별한 프로퍼티를 주어 [DOM ref를 부모 컴포넌트로 노출](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)하는 방식으로 부모의 ref를 자식의 DOM 노드에 넘겨줄 수 있습니다.
 
 ```javascript{4,12,16}
 function CustomTextInput(props) {
@@ -224,11 +224,11 @@ class Parent extends React.Component {
 this.inputElement.current.focus();
 ```
 
-고차함수 컴포넌트(Higher Order Component)를 사용하여 컴포넌트를 확장할 때는 감싸진 컴포넌트에 React에서 제공하는 `forwardRef` 함수를 사용하여 [ref를 넘겨줄 수 있습니다](/docs/forwarding-refs.html). 만약, 서드파티 고차함수 컴포넌트에서 ref를 넘겨줄 수 없다면, 위와 같은 패턴을 여전히 차선책으로 사용할 수 있습니다.
+고차 컴포넌트(Higher Order Component)를 사용하여 컴포넌트를 확장할 때는 감싸진 컴포넌트에 React에서 제공하는 `forwardRef` 함수를 사용하여 [ref를 넘겨줄 수 있습니다](/docs/forwarding-refs.html). 만약, 서드파티 고차 컴포넌트에서 ref를 넘겨줄 수 없다면, 위와 같은 패턴을 여전히 차선책으로 사용할 수 있습니다.
 
-매우 좋은 포커스 관리 예시로  [react-aria-modal](https://github.com/davidtheclark/react-aria-modal)을 들 수 있습니다. 완전히 접근 가능한 모달 창에 대한 드문 예시입니다. 첫 포커스를 취소 버튼에 맞출 뿐 만 아니라(키보드 사용자가 실수로 확인 동작을 일으키지 않도록 막아줌), 키보드 포커스를 모달 안으로 한정해주며, 모달이 닫힐 때 모달을 열게 했던 엘리먼트에 포커스를 잡아줍니다.
+매우 좋은 포커스 관리 예시로 [react-aria-modal](https://github.com/davidtheclark/react-aria-modal)을 들 수 있습니다. 완전히 접근 가능한 모달 창에 대한 드문 예시입니다. 첫 포커스를 취소 버튼에 맞출 뿐 만 아니라(키보드 사용자가 실수로 확인 동작을 일으키지 않도록 막아줌), 키보드 포커스를 모달 안으로 한정해주며, 모달이 닫힐 때 모달을 열게 했던 엘리먼트에 포커스를 잡아줍니다.
 
->주의:
+>주의
 >
 >키보드 포커스는 매우 중요한 접근성 기능이지만, 동시에 매우 조심해서 사용해야 하는 기능이기도 합니다. 사용자가 애플리케이션을 어떻게 사용하길 원하는지 예측하지 말고 키보드 포커스 흐름이 흐트러졌을 때 이를 고치려는 방법으로 사용하기 바랍니다.
 
@@ -356,17 +356,17 @@ class BlurExample extends React.Component {
 }
 ```
 
-이 코드는 포인터 장치 사용자와 키보드 사용자 모두에게 기능을 제공합니다. 동시에 스크린 리더 사용자들을 지원하기 위해 `aria-*` prop을 더했습니다. 단순함을 위해 `방향키`로 조작하는 기능은 구현하지 않았습니다.
+이 코드는 포인터 장치 사용자와 키보드 사용자 모두에게 기능을 제공합니다. 동시에 스크린 리더 사용자들을 지원하기 위해 `aria-*` props를 추가했습니다. 단순함을 위해 `방향키`로 조작하는 기능은 구현하지 않았습니다.
 
 <img src="../images/docs/blur-popover-close.gif" alt="A popover list correctly closing for both mouse and keyboard users." />
 
-이것은 포인터와 마우스 이벤트에만 의존해 키보드 사용자의 사용성을 해치는 많은 예시 중 하나입니다. 항상 키보드로 테스트하면 바로 문제가 되는 영역을 확인하고, 키보드 핸들러를 추가하여 수정할 수 있을 것입니다.
+이것은 포인터와 마우스 이벤트에만 의존해 키보드 사용자의 사용성을 해치는 많은 예시 중 하나입니다. 항상 키보드로 테스트하면 바로 문제가 되는 영역을 확인하고, 키보드 핸들러를 추가하여 수정할 수 있습니다.
 
 ## 더욱 복잡한 위젯 {#more-complex-widgets}
 
-복잡한 사용자 경험으로 접근성이 떨어져서는 안 됩니다. 접근성을 쉽게 지원하는 방법은 가능한 한 HTML에 맞게 코딩하는 것이며, 복잡한 위젯 역시 접근할 수 있도록 코딩할 수 있습니다.
+복잡한 사용자 경험으로 접근성이 떨어져서는 안 됩니다. 접근성을 쉽게 지원하는 방법은 가능한 한 HTML에 맞게 코딩하는 것이며, 복잡한 위젯 역시 접근성있게 코딩할 수 있습니다.
 
-여기서는 [ARIA 역할](https://www.w3.org/TR/wai-aria/#roles)과 [ARIA 상태 및 속성](https://www.w3.org/TR/wai-aria/#states_and_properties)에 대한 지식이 필요합니다. 이들은 JSX에서 모두 지원되는 HTML 속성으로 채워진 도구 상자로, 이를 통해 완전히 접근할 수 있고 기능이 우수한 React 컴포넌트를 구성할 수 있습니다.
+여기서는 [ARIA 역할](https://www.w3.org/TR/wai-aria/#roles)과 [ARIA 상태 및 프로퍼티](https://www.w3.org/TR/wai-aria/#states_and_properties)에 대한 지식이 필요합니다. 이들은 JSX에서 모두 지원되는 HTML 어트리뷰트로 채워진 도구 상자로, 이를 통해 완전히 접근성 있고 기능이 우수한 React 컴포넌트를 구성할 수 있습니다.
 
 각각의 위젯 타입은 명확한 디자인 패턴이 있으며, 사용자와 사용자 에이전트 모두 특정 방향으로 기능하는 것이 요구됩니다.
 
@@ -416,13 +416,13 @@ React에서는 [React Document Title 컴포넌트](https://github.com/gaearon/re
 가장 쉬우면서도 가장 중요한 검사 중 하나는 웹사이트 전체가 키보드만으로도 사용될 수 있는지 테스트하는 것입니다. 방법은 아래와 같습니다.
 
 1. 마우스의 연결을 해제하세요.
-1. `Tab`과 `Shift+Tab`을 사용해 이동하세요.
-1. `Enter`를 사용해 엘리먼트를 활성화하세요.
-1. 메뉴와 드롭다운과 같은 일부 엘리먼트들은, 필요하다면 키보드 방향키를 사용해 조작합니다.
+2. `Tab`과 `Shift+Tab`을 사용해 이동하세요.
+3. `Enter`를 사용해 엘리먼트를 활성화하세요.
+4. 메뉴와 드롭다운과 같은 일부 엘리먼트는 필요하다면 키보드 방향키를 사용해 조작합니다.
 
 ### 개발 보조 도구 {#development-assistance}
 
-일부 접근성 기능들은 JSX 코드에서 바로 확인할 수 있습니다. 종종 ARIA 역할, 상태 및 prop들에 대한 인텔리센스(intellisense) 검사 기능이 JSX를 인식하는 IDE에 미리 제공되는 경우가 있습니다. 아래와 같은 도구 역시 사용할 수 있습니다.
+일부 접근성 기능들은 JSX 코드에서 바로 확인할 수 있습니다. 종종 ARIA 역할, 상태 및 프로퍼티에 대한 인텔리센스(intellisense) 검사 기능이 JSX를 인식하는 IDE에 미리 제공되는 경우가 있습니다. 아래와 같은 도구 역시 사용할 수 있습니다.
 
 #### eslint-plugin-jsx-a11y {#eslint-plugin-jsx-a11y}
 
@@ -445,7 +445,7 @@ ESLint 플러그인인 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslin
 
 Deque Systems에서는 자동으로 애플리케이션의 종단 간(end-to-end) 접근성을 테스트하는 [aXe-core](https://github.com/dequelabs/axe-core)를 제공합니다. 이 모듈은 Selenium과의 연동이 포함되어있습니다.
 
-[The Accessibility Engine](https://www.deque.com/products/axe/)(별칭: aXe)은 aXe-core 기반의, 접근성 검사를 위한 브라우저 확장기능입니다.
+[The Accessibility Engine](https://www.deque.com/products/axe/) 또는 aXe는 aXe-core 기반의, 접근성 검사를 위한 브라우저 확장기능입니다.
 
 또는, [react-axe](https://github.com/dylanb/react-axe) 모듈을 사용해 개발 혹은 디버깅 중에 이러한 접근성 문제를 콘솔에 바로 띄울 수 있습니다.
 
@@ -492,7 +492,7 @@ VoiceOver를 활성화 및 사용하는 방법은 아래를 참조해주시기 �
 
 #### Internet Explorer의 JAWS {#jaws-in-internet-explorer}
 
-[Job Access With Speech](https://www.freedomscientific.com/Products/software/JAWS/)(별칭: JAWS)는 윈도우에서 주로 쓰이는 스크린 리더입니다.
+[Job Access With Speech](https://www.freedomscientific.com/Products/software/JAWS/) 또는 JAWS는 윈도우에서 주로 쓰이는 스크린 리더입니다.
 
 JAWS를 효과적으로 사용하는 방법은 아래를 참조해주시기 바랍니다.
 
