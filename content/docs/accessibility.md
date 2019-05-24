@@ -1,32 +1,32 @@
 ---
 id: accessibility
-title: Accessibility
+title: 접근성
 permalink: docs/accessibility.html
 ---
 
-## Why Accessibility? {#why-accessibility}
+## 접근성이 필요한 이유 {#why-accessibility}
 
-Web accessibility (also referred to as [**a11y**](https://en.wiktionary.org/wiki/a11y)) is the design and creation of websites that can be used by everyone. Accessibility support is necessary to allow assistive technology to interpret web pages.
+웹 접근성(별칭: [**a11y**](https://en.wiktionary.org/wiki/a11y))은 모두가 사용할 수 있도록 웹사이트를 디자인, 개발하는 것을 의미합니다. 보조과학기술(assistive technology)들이 웹페이지들을 해석할 수 있도록 접근성을 갖추는 것이 필요합니다.
 
-React fully supports building accessible websites, often by using standard HTML techniques.
+React는 접근성을 갖춘 웹사이트를 만들 수 있도록 모든 지원을 하고 있으며, 대부분은 표준 HTML 기술이 사용됩니다.
 
-## Standards and Guidelines {#standards-and-guidelines}
+## 표준 및 지침 {#standards-and-guidelines}
 
 ### WCAG {#wcag}
 
-The [Web Content Accessibility Guidelines](https://www.w3.org/WAI/intro/wcag) provides guidelines for creating accessible web sites.
+[Web Content Accessibility Guidelines](https://www.w3.org/WAI/intro/wcag)는 접근성을 갖춘 웹사이트를 만드는 데 필요한 지침을 제공합니다.
 
-The following WCAG checklists provide an overview:
+아래 WCAG 체크리스트를 통해 간략하게 살펴볼 수 있습니다.
 
-- [WCAG checklist from Wuhcag](https://www.wuhcag.com/wcag-checklist/)
-- [WCAG checklist from WebAIM](https://webaim.org/standards/wcag/checklist)
-- [Checklist from The A11Y Project](https://a11yproject.com/checklist.html)
+- [Wuhcag의 WCAG 체크리스트](https://www.wuhcag.com/wcag-checklist/)
+- [WebAIM의 WCAG 체크리스트](https://webaim.org/standards/wcag/checklist)
+- [The A11Y Project의 체크리스트](https://a11yproject.com/checklist.html)
 
 ### WAI-ARIA {#wai-aria}
 
-The [Web Accessibility Initiative - Accessible Rich Internet Applications](https://www.w3.org/WAI/intro/aria) document contains techniques for building fully accessible JavaScript widgets.
+[Web Accessibility Initiative - Accessible Rich Internet Applications](https://www.w3.org/WAI/intro/aria) 문서에는 접근성을 갖춘 JavaScript 위젯을 만드는 데 필요한 기술들이 담겨있습니다.
 
-Note that all `aria-*` HTML attributes are fully supported in JSX. Whereas most DOM properties and attributes in React are camelCased, these attributes should be hyphen-cased (also known as kebab-case, lisp-case, etc) as they are in plain HTML:
+참고로, JSX에서는 모든 `aria-*` HTML 어트리뷰트를 지원하고 있습니다. React에서 대부분의 DOM 프로퍼티와 어트리뷰트에 대한 값이 캐멀 케이스로 지원되는 반면, `aria-*`와 같은 어트리뷰트는 일반적인 HTML과 마찬가지로 hypen-case(혹은 kebab-case, lisp-case 등)로 작성해야 합니다.
 
 ```javascript{3,4}
 <input
@@ -39,16 +39,14 @@ Note that all `aria-*` HTML attributes are fully supported in JSX. Whereas most 
 />
 ```
 
-## Semantic HTML {#semantic-html}
-Semantic HTML is the foundation of accessibility in a web application. Using the various HTML elements to reinforce the meaning of information
-in our websites will often give us accessibility for free.
+## 시맨틱 HTML {#semantic-html}
+시맨틱 HTML은 웹 애플리케이션에 있어 접근성의 기초입니다. 정보의 의미가 강조되는 HTML 엘리먼트를 웹 사이트에서 사용하면 자연스럽게 접근성이 갖추어지곤 합니다.
 
-- [MDN HTML elements reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+- [MDN HTML 엘리먼트 참고](https://developer.mozilla.org/ko/docs/Web/HTML/Element)
 
-Sometimes we break HTML semantics when we add `<div>` elements to our JSX to make our React code work, especially when working with lists (`<ol>`, `<ul>` and `<dl>`) and the HTML `<table>`.
-In these cases we should rather use [React Fragments](/docs/fragments.html) to group together multiple elements.
+가끔 React로 구성한 코드가 돌아가게 만들기 위해 `<div>`와 같은 엘리먼트를 사용해 HTML의 의미를 깨트리곤 합니다. 특히, 목록(`<ol>`, `<ul>`, `<dl>`)과 HTML `<table>`을 사용할 때 문제가 두드러집니다. 이 경우에는, [React Fragment](/docs/fragments.html)를 사용하여 여러 엘리먼트를 하나로 묶어주는 것을 권장합니다.
 
-For example,
+예시는 아래와 같습니다.
 
 ```javascript{1,5,8}
 import React, { Fragment } from 'react';
@@ -73,14 +71,14 @@ function Glossary(props) {
 }
 ```
 
-You can map a collection of items to an array of fragments as you would any other type of element as well:
+다른 엘리먼트와 마찬가지로, Fragment는 배열의 각 항목을 매핑할 때에도 사용할 수 있습니다.
 
 ```javascript{6,9}
 function Glossary(props) {
   return (
     <dl>
       {props.items.map(item => (
-        // Fragments should also have a `key` prop when mapping collections
+        // 항목을 매핑할 때 Fragment는 반드시 `key` 프로퍼티가 있어야 합니다.
         <Fragment key={item.id}>
           <dt>{item.term}</dt>
           <dd>{item.description}</dd>
@@ -91,7 +89,7 @@ function Glossary(props) {
 }
 ```
 
-When you don't need any props on the Fragment tag you can use the [short syntax](/docs/fragments.html#short-syntax), if your tooling supports it:
+만약, Fragment 태그에 어떤 props도 필요하지 않고, 사용하고 있는 도구에서 지원한다면, 아래와 같이 [짧게 줄여 쓸 수](/docs/fragments.html#short-syntax) 있습니다.
 
 ```javascript{3,6}
 function ListItem({ item }) {
@@ -104,83 +102,81 @@ function ListItem({ item }) {
 }
 ```
 
-For more info, see [the Fragments documentation](/docs/fragments.html).
+더 자세한 내용은 [Fragment](/docs/fragments.html) 문서를 참고해주시기 바랍니다.
 
-## Accessible Forms {#accessible-forms}
+## 접근성 있는 폼 {#accessible-forms}
 
-### Labeling {#labeling}
-Every HTML form control, such as `<input>` and `<textarea>`, needs to be labeled accessibly. We need to provide descriptive labels that are also exposed to screen readers.
+### 라벨링 {#labeling}
+`<input>`과 `<textarea>` 같은 모든 HTML 폼 컨트롤은 구분할 수 있는 라벨이 필요합니다. 스크린 리더를 사용하는 사용자를 위해 자세한 설명이 담긴 라벨을 제공해야 합니다.
 
-The following resources show us how to do this:
+다음은 라벨을 제공하는 방법에 관한 자료입니다.
 
-- [The W3C shows us how to label elements](https://www.w3.org/WAI/tutorials/forms/labels/)
-- [WebAIM shows us how to label elements](https://webaim.org/techniques/forms/controls)
-- [The Paciello Group explains accessible names](https://www.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
+- [W3C에서 제공하는 엘리먼트 라벨링 방법](https://www.w3.org/WAI/tutorials/forms/labels/)
+- [WebAIM에서 제공하는 엘리먼트 라벨링 방법](https://webaim.org/techniques/forms/controls)
+- [The Paciello Group이 설명한 접근 가능한 이름들](https://www.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
 
-Although these standard HTML practices can be directly used in React, note that the `for` attribute is written as `htmlFor` in JSX:
+이와 같은 표준 HTML에 대한 예시들이 React에 바로 사용될 수 있으나, `for` 어트리뷰트 만은 JSX에서 `htmlFor`로 사용하는 것에 주의하시기 바랍니다.
 
 ```javascript{1}
 <label htmlFor="namedInput">Name:</label>
 <input id="namedInput" type="text" name="name"/>
 ```
 
-### Notifying the user of errors {#notifying-the-user-of-errors}
+### 사용자들에게 오류 안내하기 {#notifying-the-user-of-errors}
 
-Error situations need to be understood by all users. The following link shows us how to expose error texts to screen readers as well:
+오류 상황은 모든 사용자가 알 수 있어야 합니다. 아래 링크는 스크린 리더에 오류 문구를 노출하는 방법을 설명합니다.
 
 - [The W3C demonstrates user notifications](https://www.w3.org/WAI/tutorials/forms/notifications/)
 - [WebAIM looks at form validation](https://webaim.org/techniques/formvalidation/)
 
-## Focus Control {#focus-control}
+## 포커스 컨트롤 {#focus-control}
 
-Ensure that your web application can be fully operated with the keyboard only:
+모든 웹 애플리케이션은 키보드만 사용하여 모든 동작을 할 수 있어야 합니다.
 
-- [WebAIM talks about keyboard accessibility](https://webaim.org/techniques/keyboard/)
+- [WebAIM이 말하는 키보드 접근성](https://webaim.org/techniques/keyboard/)
 
-### Keyboard focus and focus outline {#keyboard-focus-and-focus-outline}
+### 키보드 포커스와 포커스 윤곽선 {#keyboard-focus-and-focus-outline}
 
-Keyboard focus refers to the current element in the DOM that is selected to accept input from the keyboard. We see it everywhere as a focus outline similar to that shown in the following image:
+키보드 포커스는 키보드 입력을 받아들일 수 있는 DOM 내의 현재 엘리먼트를 나타냅니다. 아래 이미지와 비슷하게 포커스 윤곽선이 표시됩니다.
 
 <img src="../images/docs/keyboard-focus.png" alt="Blue keyboard focus outline around a selected link." />
 
-Only ever use CSS that removes this outline, for example by setting `outline: 0`, if you are replacing it with another focus outline implementation.
+위와 같은 윤곽선을 다른 포커스 윤곽선으로 교체할 때만 `outline: 0`과 같은 윤곽선을 제거하는 CSS를 사용합니다.
 
-### Mechanisms to skip to desired content {#mechanisms-to-skip-to-desired-content}
+### 원하는 콘텐츠로 건너뛸 수 있는 방법 {#mechanisms-to-skip-to-desired-content}
 
-Provide a mechanism to allow users to skip past navigation sections in your application as this assists and speeds up keyboard navigation.
+애플리케이션은 사용자들의 키보드 탐색을 돕고 탐색 속도를 높일 수 있도록, 이전에 탐색한 영역을 건너뛸 방법을 제공해야 합니다.
 
-Skiplinks or Skip Navigation Links are hidden navigation links that only become visible when keyboard users interact with the page. They are very easy to implement with
-internal page anchors and some styling:
+Skiplinks 또는 Skip Navigation Link들은 키보드 사용자가 페이지와 상호작용할 때만 표시되는 숨겨진 탐색 링크입니다. 내부의 페이지 앵커와 약간의 스타일링으로 매우 쉽게 구현할 수 있습니다.
 
 - [WebAIM - Skip Navigation Links](https://webaim.org/techniques/skipnav/)
 
-Also use landmark elements and roles, such as `<main>` and `<aside>`, to demarcate page regions as assistive technology allow the user to quickly navigate to these sections.
+또한, 보조과학기술에 의해 사용자들이 이러한 섹션으로 빠르게 이동할 수 있도록,  `<main>`과 `<aside>` 같이 대표성을 띠는 랜드마크 엘리먼트와 역할들을 사용해 페이지 영역을 나누어야 합니다.
 
-Read more about the use of these elements to enhance accessibility here:
+이러한 엘리먼트들을 사용해 접근성을 높이는 방법은 아래의 글을 참고해주시기 바랍니다.
 
-- [Accessible Landmarks](https://www.scottohara.me/blog/2018/03/03/landmarks.html)
+- [접근 가능한 랜드마크(Accessible Landmarks)](https://www.scottohara.me/blog/2018/03/03/landmarks.html)
 
-### Programmatically managing focus {#programmatically-managing-focus}
+### 프로그래밍적으로 포커스 관리하기 {#programmatically-managing-focus}
 
-Our React applications continuously modify the HTML DOM during runtime, sometimes leading to keyboard focus being lost or set to an unexpected element. In order to repair this,
-we need to programmatically nudge the keyboard focus in the right direction. For example, by resetting keyboard focus to a button that opened a modal window after that modal window is closed.
+React 애플리케이션들은 런타임 동안 지속해서 HTML DOM을 변경하기 때문에, 가끔 키보드 포커스를 잃거나 예상치 못한 엘리먼트에 포커스를 맞추곤 합니다. 이를 수정하기 위해, 프로그래밍적으로 키보드 포커스를 올바른 방향으로 변경해주어야 합니다. 예를 들어, 모달이 닫힌 후에는 모달을 열었던 버튼으로 키보드 포커스를 다시 맞춰주어야 합니다.
 
-MDN Web Docs takes a look at this and describes how we can build [keyboard-navigable JavaScript widgets](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets).
+MDN Web Docs에서 [키보드로 탐색이 가능한 JavaScript 위젯](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets)을 만드는 방법에 관해 설명한 글이 있습니다.
 
-To set focus in React, we can use [Refs to DOM elements](/docs/refs-and-the-dom.html).
+React에서 포커스를 지정하려면,  [DOM 엘리먼트에 ref를 사용](/docs/refs-and-the-dom.html)할 수 있습니다.
 
-Using this, we first create a ref to an element in the JSX of a component class:
+이를 사용해 JSX 컴포넌트 클래스 안에서 엘리먼트에 대한 ref를 먼저 생성합니다.
 
 ```javascript{4-5,8-9,13}
 class CustomTextInput extends React.Component {
   constructor(props) {
     super(props);
-    // Create a ref to store the textInput DOM element
+    // DOM 엘리먼트를 저장할 textInput이라는 ref을 생성합니다.
     this.textInput = React.createRef();
   }
   render() {
-  // Use the `ref` callback to store a reference to the text input DOM
-  // element in an instance field (for example, this.textInput).
+  // `ref` 콜백으로 텍스트 input DOM을 저장합니다.
+  // 인스턴스 필드의 엘리먼트 (예를 들어, this.textInput)
     return (
       <input
         type="text"
@@ -191,18 +187,17 @@ class CustomTextInput extends React.Component {
 }
 ```
 
-Then we can focus it elsewhere in our component when needed:
+그 후에, 컴포넌트 내에서 필요할 때마다 포커스를 지정할 수 있습니다.
 
  ```javascript
  focus() {
-   // Explicitly focus the text input using the raw DOM API
-   // Note: we're accessing "current" to get the DOM node
+   // DOM API를 사용해 텍스트 input에 정확히 포커스를 맞춥니다.
+   // 주의: ‘현재’의 DOM 노드에 접근하고 있습니다.
    this.textInput.current.focus();
  }
  ```
 
-Sometimes a parent component needs to set focus to an element in a child component. We can do this by [exposing DOM refs to parent components](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)
-through a special prop on the child component that forwards the parent's ref to the child's DOM node.
+가끔씩 부모 컴포넌트가 자식 컴포넌트 내의 엘리먼트에 포커스를 잡아야 할 때가 있습니다. 이때는 자식 컴포넌트에 특별한 프로퍼티를 주어 [DOM ref를 부모 컴포넌트로 노출](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)하는 방식으로 부모의 ref를 자식의 DOM 노드에 넘겨줄 수 있습니다.
 
 ```javascript{4,12,16}
 function CustomTextInput(props) {
@@ -225,32 +220,27 @@ class Parent extends React.Component {
   }
 }
 
-// Now you can set focus when required.
+// 이제 필요할 때마다 포커스를 잡을 수 있습니다.
 this.inputElement.current.focus();
 ```
 
-When using a HOC to extend components, it is recommended to [forward the ref](/docs/forwarding-refs.html) to the wrapped component using the `forwardRef` function of React. If a third party HOC
-does not implement ref forwarding, the above pattern can still be used as a fallback.
+고차 컴포넌트(Higher Order Component)를 사용하여 컴포넌트를 확장할 때는 감싸진 컴포넌트에 React에서 제공하는 `forwardRef` 함수를 사용하여 [ref를 넘겨줄 수 있습니다](/docs/forwarding-refs.html). 만약, 서드파티 고차 컴포넌트에서 ref를 넘겨줄 수 없다면, 위와 같은 패턴을 여전히 차선책으로 사용할 수 있습니다.
 
-A great focus management example is the [react-aria-modal](https://github.com/davidtheclark/react-aria-modal). This is a relatively rare example of a fully accessible modal window. Not only does it set initial focus on
-the cancel button (preventing the keyboard user from accidentally activating the success action) and trap keyboard focus inside the modal, it also resets focus back to the element that
-initially triggered the modal.
+매우 좋은 포커스 관리 예시로 [react-aria-modal](https://github.com/davidtheclark/react-aria-modal)을 들 수 있습니다. 완전히 접근 가능한 모달 창에 대한 드문 예시입니다. 첫 포커스를 취소 버튼에 맞출 뿐 만 아니라(키보드 사용자가 실수로 확인 동작을 일으키지 않도록 막아줌), 키보드 포커스를 모달 안으로 한정해주며, 모달이 닫힐 때 모달을 열게 했던 엘리먼트에 포커스를 잡아줍니다.
 
->Note:
+>주의
 >
->While this is a very important accessibility feature, it is also a technique that should be used judiciously. Use it to repair the keyboard focus flow when it is disturbed, not to try and anticipate how
->users want to use applications.
+>키보드 포커스는 매우 중요한 접근성 기능이지만, 동시에 매우 조심해서 사용해야 하는 기능이기도 합니다. 사용자가 애플리케이션을 어떻게 사용하길 원하는지 예측하지 말고 키보드 포커스 흐름이 흐트러졌을 때 이를 고치려는 방법으로 사용하기 바랍니다.
 
-## Mouse and pointer events {#mouse-and-pointer-events}
+## 마우스와 포인터 이벤트 {#mouse-and-pointer-events}
 
-Ensure that all functionality exposed through a mouse or pointer event can also be accessed using the keyboard alone. Depending only on the pointer device will lead to many cases where
-keyboard users cannot use your application.
+마우스 혹은 포인터 이벤트로 노출된 모든 기능을 키보드만으로 사용할 수 있도록 보장해야 합니다. 포인터 장치만 고려할 경우, 키보드 사용자들이 애플리케이션을 사용하지 못하는 경우가 많습니다.
 
-To illustrate this, let's look at a prolific example of broken accessibility caused by click events. This is the outside click pattern, where a user can disable an opened popover by clicking outside the element.
+아래는 클릭 이벤트로 인해 접근성이 떨어지게 되는 예시입니다. 열린 팝오버의 바깥을 클릭해 팝오버를 닫을 수 있는 ‘외부 클릭 패턴(outside click pattern)’입니다.
 
 <img src="../images/docs/outerclick-with-mouse.gif" alt="A toggle button opening a popover list implemented with the click outside pattern and operated with a mouse showing that the close action works." />
 
-This is typically implemented by attaching a `click` event to the `window` object that closes the popover:
+일반적으로 팝오버를 닫는 `click` 이벤트를 `window` 객체에 붙여 구현합니다.
 
 ```javascript{12-14,26-30}
 class OuterClickExample extends React.Component {
@@ -301,14 +291,13 @@ constructor(props) {
 }
 ```
 
-This may work fine for users with pointer devices, such as a mouse, but operating this with the keyboard alone leads to broken functionality when tabbing to the next element
-as the `window` object never receives a `click` event. This can lead to obscured functionality which blocks users from using your application.
+이는 포인터 장치 사용자들에게는 괜찮으나, 키보드 사용자들에게는 기능적으로 문제가 생깁니다. 다음 엘리먼트로 탭을 이동할 때 `window` 객체가 `click` 이벤트를 받을 수 없기 때문입니다. 이로 인해, 기능이 가려져 사용자들이 애플리케이션을 제대로 사용할 수 없게 됩니다.
 
 <img src="../images/docs/outerclick-with-keyboard.gif" alt="A toggle button opening a popover list implemented with the click outside pattern and operated with the keyboard showing the popover not being closed on blur and it obscuring other screen elements." />
 
-The same functionality can be achieved by using an appropriate event handlers instead, such as `onBlur` and `onFocus`:
+`onBlur`와 `onFocus` 같은 적절한 이벤트 핸들러를 사용하여 같은 기능을 제공할 수 있습니다.
 
-```javascript{19-29,31-34,37-38,40-41}
+```javascript{19-29,31-34,37,40-41}
 class BlurExample extends React.Component {
   constructor(props) {
     super(props);
@@ -327,10 +316,10 @@ class BlurExample extends React.Component {
     }));
   }
 
-  // We close the popover on the next tick by using setTimeout.
-  // This is necessary because we need to first check if
-  // another child of the element has received focus as
-  // the blur event fires prior to the new focus event.
+  // setTimeout을 사용해 다음 순간에 팝오버를 닫습니다.
+  // 엘리먼트의 다른 자식에 포커스가 맞춰져있는지 확인하기 위해 필요합니다.
+  // 새로운 포커스 이벤트가 발생하기 전에
+  // 블러(blur) 이벤트가 발생해야 하기 때문입니다.
   onBlurHandler() {
     this.timeOutId = setTimeout(() => {
       this.setState({
@@ -339,14 +328,13 @@ class BlurExample extends React.Component {
     });
   }
 
-  // If a child receives focus, do not close the popover.
+  // 만약 자식이 포커스를 받으면, 팝오버를 닫지 않습니다.
   onFocusHandler() {
     clearTimeout(this.timeOutId);
   }
 
   render() {
-    // React assists us by bubbling the blur and
-    // focus events to the parent.
+    // React는 블러와 포커스 이벤트를 부모에 버블링해줍니다.
     return (
       <div onBlur={this.onBlurHandler}
            onFocus={this.onFocusHandler}>
@@ -368,86 +356,79 @@ class BlurExample extends React.Component {
 }
 ```
 
-This code exposes the functionality to both pointer device and keyboard users. Also note the added `aria-*` props to support screen-reader users. For simplicity's sake
-the keyboard events to enable `arrow key` interaction of the popover options have not been implemented.
+이 코드는 포인터 장치 사용자와 키보드 사용자 모두에게 기능을 제공합니다. 동시에 스크린 리더 사용자들을 지원하기 위해 `aria-*` props를 추가했습니다. 단순함을 위해 `방향키`로 조작하는 기능은 구현하지 않았습니다.
 
 <img src="../images/docs/blur-popover-close.gif" alt="A popover list correctly closing for both mouse and keyboard users." />
 
-This is one example of many cases where depending on only pointer and mouse events will break functionality for keyboard users. Always testing with the keyboard will immediately
-highlight the problem areas which can then be fixed by using keyboard aware event handlers.
+이것은 포인터와 마우스 이벤트에만 의존해 키보드 사용자의 사용성을 해치는 많은 예시 중 하나입니다. 항상 키보드로 테스트하면 바로 문제가 되는 영역을 확인하고, 키보드 핸들러를 추가하여 수정할 수 있습니다.
 
-## More Complex Widgets {#more-complex-widgets}
+## 더욱 복잡한 위젯 {#more-complex-widgets}
 
-A more complex user experience should not mean a less accessible one. Whereas accessibility is most easily achieved by coding as close to HTML as possible,
-even the most complex widget can be coded accessibly.
+복잡한 사용자 경험으로 접근성이 떨어져서는 안 됩니다. 접근성을 쉽게 지원하는 방법은 가능한 한 HTML에 맞게 코딩하는 것이며, 복잡한 위젯 역시 접근성있게 코딩할 수 있습니다.
 
-Here we require knowledge of [ARIA Roles](https://www.w3.org/TR/wai-aria/#roles) as well as [ARIA States and Properties](https://www.w3.org/TR/wai-aria/#states_and_properties).
-These are toolboxes filled with HTML attributes that are fully supported in JSX and enable us to construct fully accessible, highly functional React components.
+여기서는 [ARIA 역할](https://www.w3.org/TR/wai-aria/#roles)과 [ARIA 상태 및 프로퍼티](https://www.w3.org/TR/wai-aria/#states_and_properties)에 대한 지식이 필요합니다. 이들은 JSX에서 모두 지원되는 HTML 어트리뷰트로 채워진 도구 상자로, 이를 통해 완전히 접근성 있고 기능이 우수한 React 컴포넌트를 구성할 수 있습니다.
 
-Each type of widget has a specific design pattern and is expected to function in a certain way by users and user agents alike:
+각각의 위젯 타입은 명확한 디자인 패턴이 있으며, 사용자와 사용자 에이전트 모두 특정 방향으로 기능하는 것이 요구됩니다.
 
-- [WAI-ARIA Authoring Practices - Design Patterns and Widgets](https://www.w3.org/TR/wai-aria-practices/#aria_ex)
-- [Heydon Pickering - ARIA Examples](https://heydonworks.com/practical_aria_examples/)
-- [Inclusive Components](https://inclusive-components.design/)
+- [WAI-ARIA Authoring Practices - 디자인 패턴과 위젯](https://www.w3.org/TR/wai-aria-practices/#aria_ex)
+- [Heydon Pickering - ARIA 예시](https://heydonworks.com/practical_aria_examples/)
+- [포괄적 컴포넌트](https://inclusive-components.design/)
 
-## Other Points for Consideration {#other-points-for-consideration}
+## 기타 고려사항 {#other-points-for-consideration}
 
-### Setting the language {#setting-the-language}
+### 언어 설정 {#setting-the-language}
 
-Indicate the human language of page texts as screen reader software uses this to select the correct voice settings:
+스크린 리더 소프트웨어들이 올바른 음성을 선택할 수 있도록, 페이지 텍스트에 인간 언어(human language)를 나타내야 합니다.
 
-- [WebAIM - Document Language](https://webaim.org/techniques/screenreader/#language)
+- [WebAIM - 문서 언어](https://webaim.org/techniques/screenreader/#language)
 
-### Setting the document title {#setting-the-document-title}
+### 문서 제목 설정 {#setting-the-document-title}
 
-Set the document `<title>` to correctly describe the current page content as this ensures that the user remains aware of the current page context:
+문서의 `<title>`이 현재 페이지에 대한 올바른 설명을 담아야 합니다. 이를 통해 사용자들이 현재 페이지의 맥락을 놓치지 않도록 할 수 있습니다.
 
-- [WCAG - Understanding the Document Title Requirement](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-title.html)
+- [WCAG - 문서 제목 요건 이해하기](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-title.html)
 
-We can set this in React using the [React Document Title Component](https://github.com/gaearon/react-document-title).
+React에서는 [React Document Title 컴포넌트](https://github.com/gaearon/react-document-title)를 사용해 설정할 수 있습니다.
 
-### Color contrast {#color-contrast}
+### 색 대비 {#color-contrast}
 
-Ensure that all readable text on your website has sufficient color contrast to remain maximally readable by users with low vision:
+읽을 수 있는 모든 글에 충분한 색 대비를 주어, 저시력 사용자들이 최대한 읽을 수 있도록 해야 합니다.
 
-- [WCAG - Understanding the Color Contrast Requirement](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
-- [Everything About Color Contrast And Why You Should Rethink It](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
-- [A11yProject - What is Color Contrast](https://a11yproject.com/posts/what-is-color-contrast/)
+- [WCAG - 색 대비 요건 이해하기](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
+- [색 대비에 대한 모든 것과 이를 다시 생각해야 하는 이유](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
+- [The A11Y Project - 색 채도란](https://a11yproject.com/posts/what-is-color-contrast/)
 
-It can be tedious to manually calculate the proper color combinations for all cases in your website so instead, you can [calculate an entire accessible color palette with Colorable](https://jxnblk.com/colorable/).
+웹사이트의 모든 항목에 대해 적절한 색 조합을 일일이 계산하는 것은 지루할 수 있습니다. [Colorable을 사용해 접근 가능한 모든 색 조합 표를 계산](https://jxnblk.com/colorable/)할 수 있습니다.
 
-Both the aXe and WAVE tools mentioned below also include color contrast tests and will report on contrast errors.
+아래에 언급된 aXe와 WAVE 도구 모두 색 대비에 대한 테스트가 포함되어 있어, 색 대비에 대한 오류를 알려줍니다.
 
-If you want to extend your contrast testing abilities you can use these tools:
+색 대비에 대한 테스트 기능을 확장할 경우, 아래 도구를 사용할 수 있습니다.
 
-- [WebAIM - Color Contrast Checker](https://webaim.org/resources/contrastchecker/)
-- [The Paciello Group - Color Contrast Analyzer](https://www.paciellogroup.com/resources/contrastanalyser/)
+- [WebAIM - 색 채도 검사기](https://webaim.org/resources/contrastchecker/)
+- [The Paciello Group - 색 채도 분석기](https://www.paciellogroup.com/resources/contrastanalyser/)
 
-## Development and Testing Tools {#development-and-testing-tools}
+## 개발 및 테스트 도구 {#development-and-testing-tools}
 
-There are a number of tools we can use to assist in the creation of accessible web applications.
+접근 가능한 웹 애플리케이션을 만들 수 있도록 도와주는 여러 도구가 있습니다.
 
-### The keyboard {#the-keyboard}
+### 키보드 {#the-keyboard}
 
-By far the easiest and also one of the most important checks is to test if your entire website can be reached and used with the keyboard alone. Do this by:
+가장 쉬우면서도 가장 중요한 검사 중 하나는 웹사이트 전체가 키보드만으로도 사용될 수 있는지 테스트하는 것입니다. 방법은 아래와 같습니다.
 
-1. Plugging out your mouse.
-1. Using `Tab` and `Shift+Tab` to browse.
-1. Using `Enter` to activate elements.
-1. Where required, using your keyboard arrow keys to interact with some elements, such as menus and dropdowns.
+1. 마우스의 연결을 해제하세요.
+2. `Tab`과 `Shift+Tab`을 사용해 이동하세요.
+3. `Enter`를 사용해 엘리먼트를 활성화하세요.
+4. 메뉴와 드롭다운과 같은 일부 엘리먼트는 필요하다면 키보드 방향키를 사용해 조작합니다.
 
-### Development assistance {#development-assistance}
+### 개발 보조 도구 {#development-assistance}
 
-We can check some accessibility features directly in our JSX code. Often intellisense checks are already provided in JSX aware IDE's for the ARIA roles, states and properties. We also
-have access to the following tool:
+일부 접근성 기능들은 JSX 코드에서 바로 확인할 수 있습니다. 종종 ARIA 역할, 상태 및 프로퍼티에 대한 인텔리센스(intellisense) 검사 기능이 JSX를 인식하는 IDE에 미리 제공되는 경우가 있습니다. 아래와 같은 도구 역시 사용할 수 있습니다.
 
 #### eslint-plugin-jsx-a11y {#eslint-plugin-jsx-a11y}
 
-The [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) plugin for ESLint provides AST linting feedback regarding accessibility issues in your JSX. Many
-IDE's allow you to integrate these findings directly into code analysis and source code windows.
+ESLint 플러그인인 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)는 JSX 내의 접근성 문제에 대해 즉각적인 AST 린팅 피드백을 제공합니다. 많은 IDE가 코드 분석과 소스 코드 창에 이런 결과를 통합할 수 있도록 해줍니다.
 
-[Create React App](https://github.com/facebookincubator/create-react-app) has this plugin with a subset of rules activated. If you want to enable even more accessibility rules,
-you can create an `.eslintrc` file in the root of your project with this content:
+[Create React App](https://github.com/facebookincubator/create-react-app)에서는 해당 플러그인의 일부 규칙들이 활성화되어 있습니다. 더 많은 접근성 기능을 활성화하려면, 프로젝트 최상위에 아래와 같이  `.eslintrc` 파일을 생성합니다.
 
   ```json
   {
@@ -456,77 +437,75 @@ you can create an `.eslintrc` file in the root of your project with this content
   }
   ```
 
-### Testing accessibility in the browser {#testing-accessibility-in-the-browser}
+### 브라우저에서 접근성 테스트하기 {#testing-accessibility-in-the-browser}
 
-A number of tools exist that can run accessibility audits on web pages in your browser. Please use them in combination with other accessibility checks mentioned here as they can only
-test the technical accessibility of your HTML.
+브라우저에서 접근성 검수를 받을 수 있는 여러 도구가 있습니다. 여기서 소개하는 것들은 HTML의 기술적인 접근성만을 테스트하기 때문에, 다른 도구들과 함께 사용하는 것을 권장합니다.
 
-#### aXe, aXe-core and react-axe {#axe-axe-core-and-react-axe}
+#### aXe와 aXe-core, react-axe {#axe-axe-core-and-react-axe}
 
-Deque Systems offers [aXe-core](https://github.com/dequelabs/axe-core) for automated and end-to-end accessibility tests of your applications. This module includes integrations for Selenium.
+Deque Systems에서는 자동으로 애플리케이션의 종단 간(end-to-end) 접근성을 테스트하는 [aXe-core](https://github.com/dequelabs/axe-core)를 제공합니다. 이 모듈은 Selenium과의 연동이 포함되어있습니다.
 
-[The Accessibility Engine](https://www.deque.com/products/axe/) or aXe, is an accessibility inspector browser extension built on `aXe-core`.
+[The Accessibility Engine](https://www.deque.com/products/axe/) 또는 aXe는 aXe-core 기반의, 접근성 검사를 위한 브라우저 확장기능입니다.
 
-You can also use the [react-axe](https://github.com/dylanb/react-axe) module to report these accessibility findings directly to the console while developing and debugging.
+또는, [react-axe](https://github.com/dylanb/react-axe) 모듈을 사용해 개발 혹은 디버깅 중에 이러한 접근성 문제를 콘솔에 바로 띄울 수 있습니다.
 
 #### WebAIM WAVE {#webaim-wave}
 
-The [Web Accessibility Evaluation Tool](https://wave.webaim.org/extension/) is another accessibility browser extension.
+[Web Accessibility Evaluation Tool](https://wave.webaim.org/extension/)은 또 다른 브라우저 확장 기능입니다.
 
-#### Accessibility inspectors and the Accessibility Tree {#accessibility-inspectors-and-the-accessibility-tree}
+#### 접근성 검사기와 접근성 트리 {#accessibility-inspectors-and-the-accessibility-tree}
 
-[The Accessibility Tree](https://www.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/) is a subset of the DOM tree that contains accessible objects for every DOM element that should be exposed
-to assistive technology, such as screen readers.
+[접근성 트리](https://www.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/)는 스크린 리더와 같은 보조과학기술에 노출되어야 하는 DOM 엘리먼트에 접근 가능한 객체가 담긴 DOM 트리의 하위 집합입니다.
 
-In some browsers we can easily view the accessibility information for each element in the accessibility tree:
+일부 브라우저에서는 접근성 트리 안의 각 엘리먼트의 접근성 정보를 손쉽게 확인할 수 있습니다.
 
-- [Using the Accessibility Inspector in Firefox](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
-- [Activate the Accessibility Inspector in Chrome](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
-- [Using the Accessibility Inspector in OS X Safari](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
+- [Firefox에서 접근성 검사기를 사용하는 방법](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
+- [Chrome에서 접근성 검사기를 활성화하는 방법](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
+- [OS X Safari에서 접근성 검사기를 사용하는 방법](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
 
-### Screen readers {#screen-readers}
+### 스크린 리더 {#screen-readers}
 
-Testing with a screen reader should form part of your accessibility tests.
+접근성 테스트의 일환으로 스크린 리더를 사용한 테스트 역시 진행되어야 합니다.
 
-Please note that browser / screen reader combinations matter. It is recommended that you test your application in the browser best suited to your screen reader of choice.
+브라우저와 스크린 리더 조합에 주의해주시기 바랍니다. 선택한 스크린 리더에 가장 적합한 브라우저에서 애플리케이션을 테스트하기 바랍니다.
 
-### Commonly Used Screen Readers {#commonly-used-screen-readers}
+### 일반적으로 사용되는 스크린 리더 {#commonly-used-screen-readers}
 
-#### NVDA in Firefox {#nvda-in-firefox}
+#### Firefox의 NVDA {#nvda-in-firefox}
 
-[NonVisual Desktop Access](https://www.nvaccess.org/) or NVDA is an open source Windows screen reader that is widely used.
+[NonVisual Desktop Access](https://www.nvaccess.org/)(별칭: NVDA)는 널리 사용되는 오픈소스 윈도우 스크린 리더입니다.
 
-Refer to the following guides on how to best use NVDA:
+NVDA를 효과적으로 사용하는 방법은 아래를 참조해주시기 바랍니다.
 
-- [WebAIM - Using NVDA to Evaluate Web Accessibility](https://webaim.org/articles/nvda/)
-- [Deque - NVDA Keyboard Shortcuts](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts)
+- [WebAIM - NVDA를 사용한 웹 접근성 측정](https://webaim.org/articles/nvda/)
+- [Deque -NVDA 키보드 단축키](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts)
 
-#### VoiceOver in Safari {#voiceover-in-safari}
+#### Safari의 VoiceOver {#voiceover-in-safari}
 
-VoiceOver is an integrated screen reader on Apple devices.
+VoiceOver는 애플 기기에 통합된 스크린 리더입니다.
 
-Refer to the following guides on how activate and use VoiceOver:
+VoiceOver를 활성화 및 사용하는 방법은 아래를 참조해주시기 바랍니다.
 
-- [WebAIM - Using VoiceOver to Evaluate Web Accessibility](https://webaim.org/articles/voiceover/)
-- [Deque - VoiceOver for OS X Keyboard Shortcuts](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
-- [Deque - VoiceOver for iOS Shortcuts](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts)
+- [WebAIM - VoiceOver를 사용한 웹 접근성 측정](https://webaim.org/articles/voiceover/)
+- [Deque - OS X용 VoiceOver 키보드 단축키](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
+- [Deque - iOS용 VoiceOver 단축키](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts)
 
-#### JAWS in Internet Explorer {#jaws-in-internet-explorer}
+#### Internet Explorer의 JAWS {#jaws-in-internet-explorer}
 
-[Job Access With Speech](https://www.freedomscientific.com/Products/software/JAWS/) or JAWS, is a prolifically used screen reader on Windows.
+[Job Access With Speech](https://www.freedomscientific.com/Products/software/JAWS/) 또는 JAWS는 윈도우에서 주로 쓰이는 스크린 리더입니다.
 
-Refer to the following guides on how to best use JAWS:
+JAWS를 효과적으로 사용하는 방법은 아래를 참조해주시기 바랍니다.
 
-- [WebAIM - Using JAWS to Evaluate Web Accessibility](https://webaim.org/articles/jaws/)
-- [Deque - JAWS Keyboard Shortcuts](https://dequeuniversity.com/screenreaders/jaws-keyboard-shortcuts)
+- [WebAIM - JAWS를 사용한 웹 접근성 측정](https://webaim.org/articles/jaws/)
+- [Deque - JAWS 키보드 단축키](https://dequeuniversity.com/screenreaders/jaws-keyboard-shortcuts)
 
-### Other Screen Readers {#other-screen-readers}
+### 기타 스크린 리더 {#other-screen-readers}
 
-#### ChromeVox in Google Chrome {#chromevox-in-google-chrome}
+#### Google Chrome의 ChromeVox {#chromevox-in-google-chrome}
 
-[ChromeVox](https://www.chromevox.com/) is an integrated screen reader on Chromebooks and is available [as an extension](https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en) for Google Chrome.
+[ChromeVox](https://www.chromevox.com/)는 Chromebook에 통합된 스크린 리더이며 Google Chrome의 [확장기능](https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en)으로 사용할 수 있습니다.
 
-Refer to the following guides on how best to use ChromeVox:
+ChromeVox를 효과적으로 사용하는 방법은 아래를 참조해주시기 바랍니다.
 
-- [Google Chromebook Help - Use the Built-in Screen Reader](https://support.google.com/chromebook/answer/7031755?hl=en)
-- [ChromeVox Classic Keyboard Shortcuts Reference](https://www.chromevox.com/keyboard_shortcuts.html)
+- [Google Chromebook 도움말 - 내장 스크린 리더 사용법](https://support.google.com/chromebook/answer/7031755?hl=en)
+- [ChromeVox Classic 키보드 단축키](https://www.chromevox.com/keyboard_shortcuts.html)
