@@ -10,36 +10,36 @@ next: cdn-links.html
 
 최고의 사용자와 개발자 경험을 위해 통합된 툴체인을 사용하세요.
 
-이 페이지는 밑에 있는 일을 하기 위해 도움을 줄 수 있는 몇 가지 인기 있는 툴체인을 소개합니다.
+이 페이지에서는 도움이 되는 몇 가지 인기 있는 React 툴체인을 소개합니다.
 
 * 많은 파일과 컴포넌트 스케일링
 * 서드파티 npm 라이브러리 사용
-* 일반적인 초기실수를 탐지
-* CSS 및 JS를 개발 중에 수정
-* 결과물 최적화
+* 일반적인 실수를 조기에 발견
+* CSS와 JS를 실시간으로 편집
+* 프로덕션 코드 최적화
 
-이 페이지의 추천하는 툴체인 **시작하기 위해 구성할 필요 없음**
+이 페이지에서 추천하는 툴체인은 **시작하는데, 별도의 환경설정이 필요 없습니다.**
 
-## 툴체인이 필요하지 않을 수 있다. {#you-might-not-need-a-toolchain}
+## 툴체인이 필요하지 않을 수 있습니다. {#you-might-not-need-a-toolchain}
 
-위에 같은 문제가 없으면 혹은 Javascript 도구를 잘 사용하지 못할 거 같다는 생각이면, [React를 플레인 HTML 태그로 추가하기](/docs/add-react-to-a-website.html)를 보세요, 아니면 [JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx)를 보세요.
+위에서 설명한 문제를 경험하지 못했거나 아직 Javascript 도구를 사용하는 것이 편하지 않다면, [React를 HTML 페이지에서 일반적인 <script> 태그에 추가](/docs/add-react-to-a-website.html)하거나 [JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx)를 고려하세요.
 
 이 방법이 **제일 쉽게 React를 이미 만들어진 웹사이트에 추가하는 방법입니다**. 그리고 언제나 도움이 될 것 같으면 더 많은 툴체인을 추가할 수가 있습니다.
 
-## 툴체인 추천 {#recommended-toolchains}
+## 추천 툴체인 {#recommended-toolchains}
 
-React 팀이 추천하는 해결책은 아래와 같습니다
+React 팀의 추천 방법은 아래와 같습니다
 
-- **React를 배우고 있거나** 아니면 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application) 앱**을 만들고 싶다.
-- **서버 렌더링 Node.js 웹사이트를 만들고 있다면** [Next.js](#nextjs). 
-- **고정적인 콘텐츠 지향적 웹사이트를 만들고 있다면** [Gatsby](#gatsby).
-- **컴포넌트 라이브러리** 혹은 **이미 있는 코드 베이스와 통합을 한다**면 [융통성 있는 툴체인](#more-flexible-toolchains).
+- **React를 배우고 있거나** 아니면 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application) 앱**을 만들고 싶다면 Create React App](#create-react-app).
+- **서버 렌더링 Node.js 웹사이트를 만들고 있다면** [Next.js](#nextjs)을 시도해보세요.. 
+- **고정적인 콘텐츠 지향적 웹사이트를 만들고 있다면** [Gatsby](#gatsby)를 시도해보세요..
+- **컴포넌트 라이브러리** 혹은 **이미 있는 코드 베이스에 통합을 한다**면 [더 유연한 툴체인](#more-flexible-toolchains).
 
 ### Create React App {#create-react-app}
 
-[Create React App](https://github.com/facebookincubator/create-react-app)는 **React 배우기**에 간편한 환경입니다, 그리고 시작하기에 최고의 방법은 **새로운 [싱글 페이지 애플리케이션](/docs/glossary.html#single-page-application)** 입니다.
+[Create React App](https://github.com/facebookincubator/create-react-app)은 **React 배우기**에 간편한 환경입니다. 그리고 시작하기에 최고의 방법은 **새로운 [싱글 페이지 애플리케이션](/docs/glossary.html#single-page-application)** 입니다.
 
-개발 환경을 설정하고, 최신 JavaScript를 사용하게 해주며, 좋은 개발 경험과 앱 최적화를 해줍니다. 노드 6 혹은 상위 버전 및 npm 5.2 혹은 상위 버전이 필요하며 새로운 프로젝트를 만들기 위해서는
+이것은 개발 환경을 설정하고, 최신 JavaScript를 사용하게 해주며, 좋은 개발 경험과 프로덕션 앱 최적화를 해줍니다. Node 6 혹은 상위 버전 및 npm 5.2 혹은 상위 버전이 필요합니다. 새로운 프로젝트를 만들기 위해 아래의 명령어를 실행합니다.
 
 ```bash
 npx create-react-app my-app
@@ -49,7 +49,7 @@ npm start
 
 >주의
 >
->첫 번째 줄의 'npx' 실수가 아니며 [npm 5.2+ 버전의 패키지 실행 도구입니다](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
+>첫 번째 줄의 'npx'는 실수가 아니며 [npm 5.2+ 버전의 패키지 실행 도구입니다](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
 
 Create React App 은 백 앤드 로직이나 데이터베이스를 제어할 수 없습니다. Create React App 은 프런트 앤드 빌드 파이프라인만 생성하기 때문에 백 앤드를 원하는 대로 사용할 수 있습니다. Create React App는 Babel이나 webpack같은 build 도구를 사용하나, 설정 없이도 동작합니다.
 
