@@ -30,7 +30,7 @@ redirect_from:
 
 ### 재귀적인 과정으로써의 마운트 {#mounting-as-a-recursive-process}
 
-여러분들이 컴포넌트를 처음 마운트할 때를 고려해 봅시다.
+여러분들이 컴포넌트를 처음 마운트할 때를 고려해 보겠습니다.
 
 ```js
 ReactDOM.render(<App />, rootEl);
