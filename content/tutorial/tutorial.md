@@ -24,7 +24,7 @@ redirect_from:
 
 자습서는 아래와 같이 몇 가지 부분으로 나뉘어 있습니다.
 
-* [자습서 설정](#setup-for-the-tutorial)은 자습서를 따를 수 있는 **시작점**을 안내합니다.
+* [자습서 환경설정](#setup-for-the-tutorial)은 자습서를 따를 수 있는 **시작점**을 안내합니다.
 * [개요](#overview)에서는 React의 **기본**(components, props, state)에 대해서 알아봅니다.
 * [게임 완성하기](#completing-the-game)는 React 개발에서 사용하는 **가장 일반적인 테크닉**을 가르쳐 줄 것입니다.
 * [시간여행 추가하기](#adding-time-travel)는 React의 고유한 강점에 대한 **깊은 통찰력**을 줄 것입니다.
@@ -49,7 +49,7 @@ redirect_from:
 
 JavaScript를 다시 보고 싶다면 [이 가이드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)를 추천합니다. JavaScript의 최신 버전인 ES6의 몇 가지 기능을 사용한다는 사실에 주목해주세요. 자습서에서는 [화살표 함수](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [클래스](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)를 사용합니다. [Babel REPL](babel://es5-syntax-example)을 사용하여 ES6 코드가 어떻게 컴파일되는지 확인할 수 있습니다.
 
-## 자습서 설정 {#setup-for-the-tutorial}
+## 자습서 환경설정 {#setup-for-the-tutorial}
 
 자습서를 완성하는 방법에는 두 가지가 있습니다. 브라우저에서 코드를 작성해도 되고 컴퓨터에 로컬 개발 환경을 설정해도 됩니다.
 
@@ -84,7 +84,7 @@ npx create-react-app my-app
 
 > 주의
 >
-> **`src` 폴더 전체가 아니라 폴더 내부의 기존 소스 파일들만 삭제해 주세요.** 다음 단계에서 기본 소스 파일을 이 프로젝트의 예제로 바꿀 것입니다.
+> **`src` 폴더 전체가 아니라 폴더 내부의 기존 소스 파일들만 삭제해 주세요.** 다음 단계에서 기본 소스 파일을 이 프로젝트의 예시로 바꿀 것입니다.
 
 ```bash
 cd my-app
@@ -155,7 +155,7 @@ XML과 유사한 재밌는 태그를 사용할 것입니다. 우리는 컴포넌
 
 여기에서 ShoppingList는 **React 컴포넌트 클래스** 또는 **React 컴포넌트 타입**입니다. 개별 컴포넌트는 `props`라는 매개변수를 받아오고 `render` 함수를 통해 표시할 뷰 계층 구조를 반환합니다.
 
-`render` 함수는 화면에서 보고자 하는 *내용*을 반환합니다. React는 설명을 전달받고 결과를 표시합니다. 특히 `render`는 렌더링할 내용을 경량화한 **React 엘리먼트**를 반환합니다. 다수의 React 개발자는 "JSX"라는 특수한 문법을 사용하여 React의 구조를 보다 쉽게 작성합니다. `<div />` 구문은 빌드하는 시점에서 `React.createElement('div')`로 변환됩니다. 위에서 본 예제는 아래와 같이 변화합니다.
+`render` 함수는 화면에서 보고자 하는 *내용*을 반환합니다. React는 설명을 전달받고 결과를 표시합니다. 특히 `render`는 렌더링할 내용을 경량화한 **React 엘리먼트**를 반환합니다. 다수의 React 개발자는 "JSX"라는 특수한 문법을 사용하여 React의 구조를 보다 쉽게 작성합니다. `<div />` 구문은 빌드하는 시점에서 `React.createElement('div')`로 변환됩니다. 위에서 본 예시는 아래와 같이 변화합니다.
 
 ```javascript
 return React.createElement('div', {className: 'shopping-list'},
@@ -215,11 +215,11 @@ class Square extends React.Component {
 }
 ```
 
-변경 전:
+변경 전에는
 
 ![React Devtools](../images/tutorial/tictac-empty.png)
 
-변경 후: 렌더링 된 결과에서 각 사각형에 숫자가 표시됩니다.
+변경 후에는 렌더링 된 결과에서 각 사각형에 숫자가 표시됩니다.
 
 ![React Devtools](../images/tutorial/tictac-numbers.png)
 
@@ -525,7 +525,7 @@ Square 컴포넌트가 더 이상 state를 유지하지 않기 때문에 Square 
 
 ### 왜 불변성이 중요할까요 {#why-immutability-is-important}
 
-이전 코드 예제에서 기존 배열을 수정하는 것이 아니라 `.slice()` 연산자를 사용하여 `squares` 배열의 사본 만들기를 추천했습니다. 지금부터 불변성이 무엇인지와 왜 불변성이 중요한지 알아보겠습니다.
+이전 코드 예시에서 기존 배열을 수정하는 것이 아니라 `.slice()` 연산자를 사용하여 `squares` 배열의 사본 만들기를 추천했습니다. 지금부터 불변성이 무엇인지와 왜 불변성이 중요한지 알아보겠습니다.
 
 일반적으로 데이터 변경에는 두 가지 방법이 있습니다. 첫 번째는 데이터의 값을 직접 *변경*하는 것입니다. 두 번째는 원하는 변경 값을 가진 새로운 사본으로 데이터를 교체하는 것입니다.
 
@@ -553,7 +553,7 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 #### 복잡한 특징들이 단순해짐 {#complex-features-become-simple}
 
-불변성은 복잡한 특징들을 구현하기 쉽게 만듭니다. 자습서에서는 "시간 여행" 기능을 구현하여 틱택토 게임의 이력을 확인하고 이전 동작으로 "되돌아갈 수 있습니다". 이 기능은 게임에만 국한되지 않습니다. 특정 행동을 취소하고 다시 실행하는 기능은 어플리케이션에서 일반적인 요구사항 입니다. 직접적인 데이터 변이를 피하는 것은 이전 버전의 게임 이력을 유지하고 나중에 재사용할 수 있게 만듭니다.
+불변성은 복잡한 특징들을 구현하기 쉽게 만듭니다. 자습서에서는 "시간 여행" 기능을 구현하여 틱택토 게임의 이력을 확인하고 이전 동작으로 "되돌아갈 수 있습니다". 이 기능은 게임에만 국한되지 않습니다. 특정 행동을 취소하고 다시 실행하는 기능은 애플리케이션에서 일반적인 요구사항 입니다. 직접적인 데이터 변이를 피하는 것은 이전 버전의 게임 이력을 유지하고 나중에 재사용할 수 있게 만듭니다.
 
 #### 변화를 감지함 {#detecting-changes}
 
