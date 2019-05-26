@@ -43,11 +43,11 @@ console.log(<App />);
 // { type: App, props: {} }
 ```
 
-컨사일러가 `App`이 클래스인지 함수인지를 확인할 것입니다.
+컨사일러가 `App`이 class인지 함수인지를 확인할 것입니다.
 
-`App`이 함수이면, 컨사일러는 랜더링 요소들을 가져오기 위해 `App(props)`를 부를것 입니다.
+`App`이 함수이면, 컨사일러는 랜더링 엘리먼트들을 가져오기 위해 `App(props)`를 부를것 입니다.
 
-`App`이 클래스면, 컨사일러는 `App`을 `new App(props)`로 인스턴스화 하고, `componentWillMount()` 라이프사이클 메서드를 호출한 후, `render()` 메서드를 호출하여 랜더링 엘리먼트를 가져오게 할 것입니다.
+`App`이 class면, 컨사일러는 `App`을 `new App(props)`로 인스턴스화 하고, `componentWillMount()` lifecycle 메서드를 호출한 후, `render()` 메서드를 호출하여 랜더링 엘리먼트를 가져오게 할 것입니다.
 
 어느 경우든, 컨사일러는 "render to"라는 `App`의 엘리먼트를 알게 될 것입니다.
 
@@ -112,7 +112,7 @@ rootEl.appendChild(node);
 위의 예에서 몇가지 핵심 아이디어를 요약해 봅시다.
 
 * 리액트 엘리먼트는 구성 엘리먼트의 타입(예: `App`)과 props를 나타내는 일반 객체입니다.
-* 사용자 정의된 컴포넌트(예: `App`)은 클래스이거나 함수일 수 있지만 모두 랜더링되는 엘리먼트입니다.
+* 사용자 정의된 컴포넌트(예: `App`)은 class이거나 함수일 수 있지만 모두 랜더링되는 엘리먼트입니다.
 * "마운팅"은 최상위 리액트 엘리먼트로부터 주어진 DOM과 네이티브 트리를 만드는 재귀적인 과정이다.(예: `<App />`)
 
 ### 호스트 엘리먼트 마운팅 {#mounting-host-elements}
@@ -246,11 +246,11 @@ ReactDOM.render(<App />, rootEl);
 
 그러나, 위의 구현은 처음 트리를 어떻게 마운트 하는지만 알고 있습니다. 모든 `publicInstance`와 어떤 DOM `node`가 각 컴포넌트에 상응하는지와 같은 필수 정보를 담고 있지 않기 때문에 업데이트를 수행할 수 없습니다.
 
-스택  reconciler의 코드베이스가 `mount()` 기능을 하나의 방법으로 만들고 클래스에 배치하여 위와 같은 문제를 해결합니다. 이러한 접근에는 단점도 있는데, 현재 우리는 [ongoing rewrite of the reconciler](/docs/codebase-overview.html#fiber-reconciler) 한 것에 대해 반대 방향으로 진행하고 있습니다. 그렇지만, 이것이 현재 작동하는 방식 중 하나입니다.
+스택  reconciler의 코드베이스가 `mount()` 기능을 하나의 방법으로 만들고 class에 배치하여 위와 같은 문제를 해결합니다. 이러한 접근에는 단점도 있는데, 현재 우리는 [ongoing rewrite of the reconciler](/docs/codebase-overview.html#fiber-reconciler) 한 것에 대해 반대 방향으로 진행하고 있습니다. 그렇지만, 이것이 현재 작동하는 방식 중 하나입니다.
 
-`mountHost`와 `mountComposite` 함수를 분리하는 것 대신에, 우리는 `DOMComponent`와 `CompositeComponent` 의 두 가지 클래스를 생성합니다.
+`mountHost`와 `mountComposite` 함수를 분리하는 것 대신에, 우리는 `DOMComponent`와 `CompositeComponent` 의 두 가지 class를 생성합니다.
 
-두 클래스 모두 `element`에 접근할 수 있는 생성자 뿐만 아니라 설치된 노드를 반환해주는`mount()` 메서드를 가지고 있습니다. 우리는 Top-level `mount()` 메서드를 올바른 클래스로 인스턴스화 하는 팩토리로 교체합니다.
+두 class 모두 `element`에 접근할 수 있는 생성자 뿐만 아니라 설치된 노드를 반환해주는`mount()` 메서드를 가지고 있습니다. 우리는 Top-level `mount()` 함수를 올바른 class로 인스턴스화 하는 팩토리로 교체합니다.
 
 ```js
 function instantiateComponent(element) {
@@ -320,13 +320,13 @@ class CompositeComponent {
 
 이는 이전 `mountComposite()` 구현과 크게 다르지 않지만,`this.currentElement`, `this.renderedComponent`, `this.publicInstance` 와 같이 업데이트에 사용할 수 있도록 정보를 저장할 수 있습니다.
 
-`CompositeComponent`의 인스턴스가 사용자공급 정의되는 `element.type`의 인스턴스와 다르다는 것을 알아차려야 합니다. `CompositeComponent`는 우리의  reconciler 의 세부 구현 내용이고, 사용자에게는 노출되지 않습니다. 사용자 정의된 클래스는 우리가 `element.type`로부터 읽어들이는 것 중 하나이고, `CompositeComponent`가 이에 대한 인스턴스를 생성합니다. 
+`CompositeComponent`의 인스턴스가 사용자공급 정의되는 `element.type`의 인스턴스와 다르다는 것을 알아차려야 합니다. `CompositeComponent`는 우리의  reconciler 의 세부 구현 내용이고, 사용자에게는 노출되지 않습니다. 사용자 정의된 class는 우리가 `element.type`로부터 읽어들이는 것 중 하나이고, `CompositeComponent`가 이에 대한 인스턴스를 생성합니다. 
 
 혼동을 막기 위해, 우리는 `CompositeComponent`와 `DOMComponent`의 인스턴스를 "인터벌 인스턴스" 로 부릅니다. 그들이 존재하기 때문에 우리가 몇 가지 오래 지속되는 데이터를 그들과 연관시킬 수 있습니다. 오직 랜더러와  reconciler 가 그들의 존재성을 알고 있습니다.
 
-반면, 우리는 사용자 정의된 클래스의 인스턴스를 "퍼블릭 인스턴스"라고 부릅니다. 퍼블릭 인스턴스는 `render()`안에 있는 `this`로 보이는 것과 여러분의 컴포넌트의 다른 메서드이기도 합니다.
+반면, 우리는 사용자 정의된 class의 인스턴스를 "퍼블릭 인스턴스"라고 부릅니다. 퍼블릭 인스턴스는 `render()`안에 있는 `this`로 보이는 것과 여러분의 컴포넌트의 다른 메서드이기도 합니다.
 
-`DOMComponent` 클래스의  `mount()` 메서드로 리팩터링된 `mountHost()` 메서드 또한 비슷하게 보입니다.
+`DOMComponent` class의  `mount()` 메서드로 리팩터링된 `mountHost()` 메서드 또한 비슷하게 보입니다.
 
 ```js
 class DOMComponent {
@@ -380,7 +380,7 @@ class DOMComponent {
 `mountHost()`로 리팩터링한 후의 주요 차이점은 `this.node`와 내부 DOM 컴포넌트 인스턴스와 연결된 `this.renderedChildren`을 유지한다는 것입니다. 향후 non-destructive 업데이트 적용에도 활용할 예정입니다.
 
 
-결과적으로, 복합 또는 호스트인 각 내부 인스턴스는 이제 자식 내부 인스턴스를 가리킵니다. 이를 시각화하기 위해 함수 `<App>` 컴포넌트가 `<Button>` 클래스 컴포넌트를 렌더링하고 `Button` 클래스가 `<div>`를 렌더링하는 경우 내부 인스턴스 트리는 다음과 같이 보일 것입니다.
+결과적으로, 복합 또는 호스트인 각 내부 인스턴스는 이제 자식 내부 인스턴스를 가리킵니다. 이를 시각화하기 위해 함수 `<App>` 컴포넌트가 `<Button>` class 컴포넌트를 렌더링하고 `Button` class가 `<div>`를 렌더링하는 경우 내부 인스턴스 트리는 다음과 같이 보일 것입니다.
 
 ```js
 [object CompositeComponent] {
@@ -403,7 +403,7 @@ DOM에서는 `<div>`만 보일 것입니다. 그러나 내부 인스턴스 트�
 복합적인 내부 인스턴스를 저장해야 합니다.
 
 * 현재 엘리먼트
-* 만약 엘리먼트 타입이 클래스면 public 인스턴스입니다
+* 만약 엘리먼트 타입이 class면 public 인스턴스입니다
 * 단일은 내부 인스턴스를 렌더링 합니다.  `DOMComponent` 또는 `CompositeComponent`가 될 수 있습니다
 
 호스트 내부 인스턴스를 저장해야 합니다.
@@ -438,7 +438,7 @@ mountTree(<App />, rootEl);
 
 ### 마운트 해제 {#unmounting}
 
-이제 우리는 그들의 자식들과 DOM 노드를 유지하는 내부 인스턴스를 가지고 있으므로, 우리는 마운트 해제를 구현할 수 있습니다. 복합 컴포넌트의 경우, 마운트를 해제한 것이 라이프사이클 메소드를 재귀호출합니다.
+이제 우리는 그들의 자식들과 DOM 노드를 유지하는 내부 인스턴스를 가지고 있으므로, 우리는 마운트 해제를 구현할 수 있습니다. 복합 컴포넌트의 경우, 마운트를 해제한 것이 lifecycle 메소드를 재귀호출합니다.
 
 ```js
 class CompositeComponent {
@@ -518,7 +518,7 @@ function mountTree(element, containerNode) {
 }
 ```
 
-이제 `mountTree()`를 반복적으로 실행하거나 `unmountTree()`를 실행하면 오래된 트리가 제거되고 컴포넌트에서 `componentWillUnmount()` 라이프사이클 메소드가 실행됩니다.
+이제 `mountTree()`를 반복적으로 실행하거나 `unmountTree()`를 실행하면 오래된 트리가 제거되고 컴포넌트에서 `componentWillUnmount()` lifecycle 메소드가 실행됩니다.
 
 ### 업데이트 {#updating}
 
@@ -558,7 +558,7 @@ class DOMComponent {
 
 ### 복합 컴포넌트의 업데이트 {#updating-composite-components}
 
-복합 컴포넌트가 새로운 엘리먼트를 수신하면 `componentWillUpdate()` 라이프사이클 메소드를 실행합니다.
+복합 컴포넌트가 새로운 엘리먼트를 수신하면 `componentWillUpdate()` lifecycle 메소드를 실행합니다.
 
 그런 다음 새로운 props와 함께 컴포넌트를 다시 렌더링 하고, 다음 렌더링 된 엘리먼트를 얻습니다.
 
@@ -648,7 +648,7 @@ class CompositeComponent {
 
 엘리먼트를 받는 대신 컴포넌트를 다시 마운트하는 또 다른 조건이 있는데, 이때 엘리먼트의 `key`가 변경된 것 입니다. 이미 복잡한 튜토리얼에 더 복잡성을 더하기 때문에 이 문서에서는  `key` handling에 대해 논의하지 않습니다..
 
-플랫폼별 노드를 찾아 업데이트하는 동안 교체할 수 있도록 내부 인스턴스 계약에 `getHostNode()`라는 메소드를 추가해야 한다는 점에 유의합니다. 이러한 구현은 두 클래스 모두에 대해 직접적입니다.
+플랫폼별 노드를 찾아 업데이트하는 동안 교체할 수 있도록 내부 인스턴스 계약에 `getHostNode()`라는 메소드를 추가해야 한다는 점에 유의합니다. 이러한 구현은 두 class 모두에 대해 직접적입니다.
 
 ```js
 class CompositeComponent {
@@ -862,26 +862,26 @@ These are the basics of how React works internally.
 
 *  reconciler는 또한 엘리먼트에서 `key`를 읽고, 이를 사용하여 배열의 엘리먼트와 일치하는 내부 인스턴스를 설정합니다. 실제 리액트 구현의 많은 복잡성은 그것과 관련이 있습니다
 
-* 복합 및 호스트 내부 인스턴스 클래스 외에도 "text" 및 "empty" 컴포넌트에 대한 클래스도 있습니다. 텍스트 노드와 `null` 렌더링하여 얻는 "empty slots"을 나타냅니다.
+* 복합 및 호스트 내부 인스턴스 class 외에도 "text" 및 "empty" 컴포넌트에 대한 class도 있습니다. 텍스트 노드와 `null` 렌더링하여 얻는 "empty slots"을 나타냅니다.
 
-* Renderers는 [injection](/docs/codebase-overview.html#dynamic-injection)을 사용하여  reconciler에게 호스트 내부 클래스를 전달합니다. 예를 들어, 리액트 DOM은  reconciler에게 호스트 내부 인스턴스 구현으로 `ReactDOMComponent`를 사용하도록 지시합니다.
+* Renderers는 [injection](/docs/codebase-overview.html#dynamic-injection)을 사용하여  reconciler에게 호스트 내부 class를 전달합니다. 예를 들어, 리액트 DOM은  reconciler에게 호스트 내부 인스턴스 구현으로 `ReactDOMComponent`를 사용하도록 지시합니다.
 
-* 자식 목록을 업데이트하는 논리는 React DOM과 React Native에서 호스트 내부 인스턴스 클래스 구현에 사용되는 `ReactMultiChild`라는 mixin으로 추출됩니다.
+* 자식 목록을 업데이트하는 논리는 React DOM과 React Native에서 호스트 내부 인스턴스 class 구현에 사용되는 `ReactMultiChild`라는 mixin으로 추출됩니다.
 
 * reconciler는 복합 컴포넌트의 `setState()`에 대한 지원도 구현한다. 이벤트 핸들러 내부의 여러 업데이트가 단일 업데이트로 일괄 처리됩니다.
 
 * reconciler 는 또한 복합 컴포넌트 및 호스트 노드에 ref를 연결 및 분리하는 작업을 수행 합니다.
 
-* `componentDidMount()` 및 `componentDidUpdate()`와 같이 DOM이 준비된 후 호출되는 라이프사이클 메소드는 "callback queues"로 수집되어 단일 배치로 실행됩니다.
+* `componentDidMount()` 및 `componentDidUpdate()`와 같이 DOM이 준비된 후 호출되는 lifecycle 메소드는 "callback queues"로 수집되어 단일 배치로 실행됩니다.
 
-* React는 현재 업데이트에 대한 정보를 "트랜잭션"이라고 하는 내부 객체에 넣습니다. 트랜잭션은 보류 중인 라이프사이클 메소드의 대기열, 경고에 대한 현재 DOM 및 특정 업데이트에 "global"인 다른 모든 것을 추적하는 데 유용합니다. 또한 트랜잭션는 업데이트 후 리액트가 "cleans everything up"하도록 보장합니다. 예를 들어 리액트 DOM에서 제공하는 트랜잭션 클래스는 업데이트 후 입력 선택을 복원합니다. 
+* React는 현재 업데이트에 대한 정보를 "트랜잭션"이라고 하는 내부 객체에 넣습니다. 트랜잭션은 보류 중인 lifecycle 메소드의 대기열, 경고에 대한 현재 DOM 및 특정 업데이트에 "global"인 다른 모든 것을 추적하는 데 유용합니다. 또한 트랜잭션는 업데이트 후 리액트가 "cleans everything up"하도록 보장합니다. 예를 들어 리액트 DOM에서 제공하는 트랜잭션 class는 업데이트 후 입력 선택을 복원합니다. 
 
 ### 코드에 대해 알아보기 {#jumping-into-the-code}
 
 * [`ReactMount`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/dom/client/ReactMount.js)는 이 자습서에서 `mountTree()` 및 `unmountTree()`와 같은 코드가 사용되는 곳입니다. 그것은 최상위 컴포넌츠의 마운트과 마운트 해제을 관리합니다. [`ReactNativeMount`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/native/ReactNativeMount.js) 는 리액트 네이티브 아날로그입니다. 
-* [`ReactDOMComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/dom/shared/ReactDOMComponent.js)는 본 자습서의 `DOMComponent`와 동등합니다. React DOM 렌더러에 대한 호스트 컴포넌트 클래스를 구현합니다. [`ReactNativeBaseComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/native/ReactNativeBaseComponent.js)는 React Native 아날로그 입니다. 
+* [`ReactDOMComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/dom/shared/ReactDOMComponent.js)는 본 자습서의 `DOMComponent`와 동등합니다. React DOM 렌더러에 대한 호스트 컴포넌트 class를 구현합니다. [`ReactNativeBaseComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/native/ReactNativeBaseComponent.js)는 React Native 아날로그 입니다. 
 * [`ReactCompositeComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactCompositeComponent.js)는 본 자습서의 `CompositeComponent`와 동등한 것입니다. 사용자 정의 컴포넌트 호출 및 상태 유지 관리 작업을 처리합니다. 
-* [`instantiateReactComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/instantiateReactComponent.js)에는 엘리먼트에 대해 구성할 올바른 내부 인스턴스 클래스를 선택하는 스위치가 포함되어 있습니다. 이 튜토리얼에서는 `instantiateComponent()`와 같습니다. 
+* [`instantiateReactComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/instantiateReactComponent.js)에는 엘리먼트에 대해 구성할 올바른 내부 인스턴스 class를 선택하는 스위치가 포함되어 있습니다. 이 튜토리얼에서는 `instantiateComponent()`와 같습니다. 
 
 * [`ReactReconciler`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactReconciler.js)는 `mountComponent()`, `receiveComponent()`및 `unmountComponent()` 메소드가 있는 wrapper입니다. 그것은 내부 인스턴스에 대한 기본 구현을 부르지만, 또한 모든 내부 인스턴스 구현에 의해 공유되는 그들 주변의 일부 코드를 포함합니다. 
 
