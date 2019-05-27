@@ -415,17 +415,10 @@ React에서는 [React Document Title 컴포넌트](https://github.com/gaearon/re
 
 가장 쉬우면서도 가장 중요한 검사 중 하나는 웹사이트 전체가 키보드만으로도 사용될 수 있는지 테스트하는 것입니다. 방법은 아래와 같습니다.
 
-<<<<<<< HEAD
 1. 마우스의 연결을 해제하세요.
 2. `Tab`과 `Shift+Tab`을 사용해 이동하세요.
 3. `Enter`를 사용해 엘리먼트를 활성화하세요.
 4. 메뉴와 드롭다운과 같은 일부 엘리먼트는 필요하다면 키보드 방향키를 사용해 조작합니다.
-=======
-1. Disconnecting your mouse.
-1. Using `Tab` and `Shift+Tab` to browse.
-1. Using `Enter` to activate elements.
-1. Where required, using your keyboard arrow keys to interact with some elements, such as menus and dropdowns.
->>>>>>> 23b242edc4c7eeee5798953ba205e36cc71016b8
 
 ### 개발 보조 도구 {#development-assistance}
 
