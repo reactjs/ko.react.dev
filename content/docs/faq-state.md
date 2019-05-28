@@ -101,6 +101,6 @@ handleSomething() {
 
 ### Redux 나 MobX 같은 상태('state') 관리 라이브러리를 사용해야 하나요? {#should-i-use-a-state-management-library-like-redux-or-mobx}
 
-[사용하는게 좋습니다.](https://redux.js.org/faq/general#when-should-i-use-redux)
+[아마 필요할 수도 있습니다.](https://redux.js.org/faq/general#when-should-i-use-redux)
 
 추가적인 라이브러리를 사용하기 전에 먼저 React에 익숙해지는 게 좋습니다. React만으로도 꽤 복잡한 애플리케이션을 만들 수 있습니다. 
