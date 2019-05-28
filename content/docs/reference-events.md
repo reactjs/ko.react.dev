@@ -1,18 +1,18 @@
 ---
 id: events
-title: SyntheticEvent
+title: 합성 이벤트(SyntheticEvent)
 permalink: docs/events.html
 layout: docs
 category: Reference
 ---
 
-This reference guide documents the `SyntheticEvent` wrapper that forms part of React's Event System. See the [Handling Events](/docs/handling-events.html) guide to learn more.
+이 문서는 React의 이벤트 시스템 일부를 구성하는 `SyntheticEvent` 래퍼를 설명합니다. 더 많은 정보는 [이벤트 처리하기](/docs/handling-events.html) 문서를 보세요.
 
-## Overview {#overview}
+## 개요 {#overview}
 
-Your event handlers will be passed instances of `SyntheticEvent`, a cross-browser wrapper around the browser's native event. It has the same interface as the browser's native event, including `stopPropagation()` and `preventDefault()`, except the events work identically across all browsers.
+이벤트 핸들러는 모든 브라우저에서 이벤트를 동일하게 처리하기 위한 이벤트 래퍼 `SyntheticEvent` 객체를 전달받습니다. `stopPropagation()` 와 `preventDefault()`를 포함해서 인터페이스는 브라우저의 고유 이벤트와 같지만 모든 브라우저에서 동일하게 동작합니다.
 
-If you find that you need the underlying browser event for some reason, simply use the `nativeEvent` attribute to get it. Every `SyntheticEvent` object has the following attributes:
+브라우저의 고유 이벤트가 필요하다면 `nativeEvent` 어트리뷰트를 참조하세요. 모든 `합성 이벤트` 객체는 다음 어트리뷰트를 가집니다.
 
 ```javascript
 boolean bubbles
@@ -31,15 +31,13 @@ number timeStamp
 string type
 ```
 
-> Note:
+> 주의
 >
-> As of v0.14, returning `false` from an event handler will no longer stop event propagation. Instead, `e.stopPropagation()` or `e.preventDefault()` should be triggered manually, as appropriate.
+> 0.14 버전부터 이벤트 핸들러가 `false`를 반환하더라도 이벤트 전파를 멈추지 않습니다. 대신 `e.stopPropagation()` 또는 `e.preventDefault()`를 필요할 때 호출하세요.
 
-### Event Pooling {#event-pooling}
+### 이벤트 풀링 {#event-pooling}
 
-The `SyntheticEvent` is pooled. This means that the `SyntheticEvent` object will be reused and all properties will be nullified after the event callback has been invoked.
-This is for performance reasons.
-As such, you cannot access the event in an asynchronous way.
+`SyntheticEvent`는 [풀링](https://en.wikipedia.org/wiki/Pool_(computer_science))됩니다. 성능상의 이유로 `SyntheticEvent` 객체는 재사용되고 모든 속성은 이벤트 핸들러가 호출된 다음 초기화됩니다. 따라서 비동기적으로 이벤트 객체에 접근할 수 없습니다.
 
 ```javascript
 function onClick(event) {
@@ -52,54 +50,54 @@ function onClick(event) {
     console.log(eventType); // => "click"
   }, 0);
 
-  // Won't work. this.state.clickEvent will only contain null values.
+  // 동작하지 않습니다. this.state.clickEvent 은 null만 가지게 될 것입니다.
   this.setState({clickEvent: event});
 
-  // You can still export event properties.
+  // 이벤트 속성을 추출할 수 있습니다.
   this.setState({eventType: event.type});
 }
 ```
 
-> Note:
+> 주의
 >
-> If you want to access the event properties in an asynchronous way, you should call `event.persist()` on the event, which will remove the synthetic event from the pool and allow references to the event to be retained by user code.
+> 비동기적으로 이벤트 속성을 참조하고 싶다면 이벤트 객체의 `event.persist()` 를 호출하세요. 합성 이벤트 풀에서 제거되고 사용자의 코드에서 참조가 가능해집니다.
 
-## Supported Events {#supported-events}
+## 지원하는 이벤트 {#supported-events}
 
-React normalizes events so that they have consistent properties across different browsers.
+React는 이벤트들을 다른 브라우저에서도 같은 속성을 가지도록 표준화합니다.
 
-The event handlers below are triggered by an event in the bubbling phase. To register an event handler for the capture phase, append `Capture` to the event name; for example, instead of using `onClick`, you would use `onClickCapture` to handle the click event in the capture phase.
+다음 이벤트 핸들러는 이벤트 버블링 단계에서 호출됩니다. 캡처 단계에 이벤트 핸들러를 등록하기 위해서는 이벤트 이름에 `Capture`를 덧붙이세요. 예를 들어 `onClick` 대신 `onClickCapture`를 사용해서 캡처 단계에서 클릭 이벤트 핸들러를 사용할 수 있습니다.
 
-- [Clipboard Events](#clipboard-events)
-- [Composition Events](#composition-events)
-- [Keyboard Events](#keyboard-events)
-- [Focus Events](#focus-events)
-- [Form Events](#form-events)
-- [Mouse Events](#mouse-events)
-- [Pointer Events](#pointer-events)
-- [Selection Events](#selection-events)
-- [Touch Events](#touch-events)
-- [UI Events](#ui-events)
-- [Wheel Events](#wheel-events)
-- [Media Events](#media-events)
-- [Image Events](#image-events)
-- [Animation Events](#animation-events)
-- [Transition Events](#transition-events)
-- [Other Events](#other-events)
+- [Clipboard 이벤트](#clipboard-events)
+- [Composition 이벤트](#composition-events)
+- [Keyboard 이벤트](#keyboard-events)
+- [Focus 이벤트](#focus-events)
+- [Form 이벤트](#form-events)
+- [Mouse 이벤트](#mouse-events)
+- [Pointer 이벤트](#pointer-events)
+- [Selection 이벤트](#selection-events)
+- [Touch 이벤트](#touch-events)
+- [UI 이벤트](#ui-events)
+- [Wheel 이벤트](#wheel-events)
+- [Media 이벤트](#media-events)
+- [Image 이벤트](#image-events)
+- [Animation 이벤트](#animation-events)
+- [Transition 이벤트](#transition-events)
+- [기타 이벤트](#other-events)
 
 * * *
 
-## Reference {#reference}
+## 참조 {#reference}
 
-### Clipboard Events {#clipboard-events}
+### Clipboard 이벤트 {#clipboard-events}
 
-Event names:
+이벤트 이름
 
 ```
 onCopy onCut onPaste
 ```
 
-Properties:
+속성
 
 ```javascript
 DOMDataTransfer clipboardData
@@ -107,15 +105,15 @@ DOMDataTransfer clipboardData
 
 * * *
 
-### Composition Events {#composition-events}
+### Composition 이벤트 {#composition-events}
 
-Event names:
+이벤트 이름
 
 ```
 onCompositionEnd onCompositionStart onCompositionUpdate
 ```
 
-Properties:
+속성
 
 ```javascript
 string data
@@ -124,15 +122,15 @@ string data
 
 * * *
 
-### Keyboard Events {#keyboard-events}
+### Keyboard 이벤트 {#keyboard-events}
 
-Event names:
+이벤트 이름
 
 ```
 onKeyDown onKeyPress onKeyUp
 ```
 
-Properties:
+속성
 
 ```javascript
 boolean altKey
@@ -149,21 +147,21 @@ boolean shiftKey
 number which
 ```
 
-The `key` property can take any of the values documented in the [DOM Level 3 Events spec](https://www.w3.org/TR/uievents-key/#named-key-attribute-values).
+`key` 속성은 [DOM 레벨 3 이벤트 명세](https://www.w3.org/TR/uievents-key/#named-key-attribute-values)에 있는 어떤 값이든 가질 수 있습니다.
 
 * * *
 
-### Focus Events {#focus-events}
+### Focus 이벤트 {#focus-events}
 
-Event names:
+이벤트 이름
 
 ```
 onFocus onBlur
 ```
 
-These focus events work on all elements in the React DOM, not just form elements.
+포커스 이벤트는 form 엘리먼트 뿐만이 아니라 모든 React DOM 엘리먼트에 작동합니다.
 
-Properties:
+속성
 
 ```javascript
 DOMEventTarget relatedTarget
@@ -171,21 +169,21 @@ DOMEventTarget relatedTarget
 
 * * *
 
-### Form Events {#form-events}
+### Form 이벤트 {#form-events}
 
-Event names:
+이벤트 이름
 
 ```
 onChange onInput onInvalid onSubmit
 ```
 
-For more information about the onChange event, see [Forms](/docs/forms.html).
+onChange 이벤트에 대한 더 자세한 정보는 [폼 문서](/docs/forms.html)를 참조하세요.
 
 * * *
 
-### Mouse Events {#mouse-events}
+### Mouse 이벤트 {#mouse-events}
 
-Event names:
+이벤트 이름
 
 ```
 onClick onContextMenu onDoubleClick onDrag onDragEnd onDragEnter onDragExit
@@ -193,9 +191,9 @@ onDragLeave onDragOver onDragStart onDrop onMouseDown onMouseEnter onMouseLeave
 onMouseMove onMouseOut onMouseOver onMouseUp
 ```
 
-The `onMouseEnter` and `onMouseLeave` events propagate from the element being left to the one being entered instead of ordinary bubbling and do not have a capture phase.
+`onMouseEnter` 및 `onMouseLeave` 이벤트는 일반적인 버블링 대신 마우스가 떠나는 엘리먼트에서 들어가는 엘리먼트로 전파되고 캡처 단계가 없습니다.
 
-Properties:
+속성
 
 ```javascript
 boolean altKey
@@ -216,20 +214,20 @@ boolean shiftKey
 
 * * *
 
-### Pointer Events {#pointer-events}
+### Pointer 이벤트 {#pointer-events}
 
-Event names:
+이벤트 이름
 
 ```
 onPointerDown onPointerMove onPointerUp onPointerCancel onGotPointerCapture
 onLostPointerCapture onPointerEnter onPointerLeave onPointerOver onPointerOut
 ```
 
-The `onPointerEnter` and `onPointerLeave` events propagate from the element being left to the one being entered instead of ordinary bubbling and do not have a capture phase.
+`onPointerEnter` 및 `onPointerLeave` 이벤트는 일반적인 버블링 대신 포인터가 떠나는 엘리먼트에서 들어가는 엘리먼트로 전파되고 캡처 단계가 없습니다.
 
-Properties:
+속성
 
-As defined in the [W3 spec](https://www.w3.org/TR/pointerevents/), pointer events extend [Mouse Events](#mouse-events) with the following properties:
+[W3 명세](https://www.w3.org/TR/pointerevents/)에 정의된 대로 포인터 이벤트는 [마우스 이벤트](#mouse-events)와 다음 속성을 포함해 확장합니다.
 
 ```javascript
 number pointerId
@@ -244,17 +242,17 @@ string pointerType
 boolean isPrimary
 ```
 
-A note on cross-browser support:
+크로스 브라우저 지원 주의사항
 
-Pointer events are not yet supported in every browser (at the time of writing this article, supported browsers include: Chrome, Firefox, Edge, and Internet Explorer). React deliberately does not polyfill support for other browsers because a standard-conform polyfill would significantly increase the bundle size of `react-dom`.
+포인터 이벤트는 아직 모든 브라우저에서 지원되지 않습니다(이 문서를 작성하는 시점엔 Chrome, Firefox, Edge 및 Internet Explorer가 지원합니다). 표준 폴리필은 `react-dom` 번들을 무겁게 만들기 때문에 React가 직접 브라우저 호환성을 위해 폴리필을 제공하진 않습니다.
 
-If your application requires pointer events, we recommend adding a third party pointer event polyfill.
+애플리케이션이 포인터 이벤트를 의존한다면 직접 서드 파티 포인터 폴리필을 추가하세요.
 
 * * *
 
-### Selection Events {#selection-events}
+### Selection 이벤트 {#selection-events}
 
-Event names:
+이벤트 이름
 
 ```
 onSelect
@@ -262,15 +260,15 @@ onSelect
 
 * * *
 
-### Touch Events {#touch-events}
+### Touch 이벤트 {#touch-events}
 
-Event names:
+이벤트 이름
 
 ```
 onTouchCancel onTouchEnd onTouchMove onTouchStart
 ```
 
-Properties:
+속성
 
 ```javascript
 boolean altKey
@@ -285,15 +283,15 @@ DOMTouchList touches
 
 * * *
 
-### UI Events {#ui-events}
+### UI 이벤트 {#ui-events}
 
-Event names:
+이벤트 이름
 
 ```
 onScroll
 ```
 
-Properties:
+속성
 
 ```javascript
 number detail
@@ -302,15 +300,15 @@ DOMAbstractView view
 
 * * *
 
-### Wheel Events {#wheel-events}
+### Wheel 이벤트 {#wheel-events}
 
-Event names:
+이벤트 이름
 
 ```
 onWheel
 ```
 
-Properties:
+속성
 
 ```javascript
 number deltaMode
@@ -321,9 +319,9 @@ number deltaZ
 
 * * *
 
-### Media Events {#media-events}
+### Media 이벤트 {#media-events}
 
-Event names:
+이벤트 이름
 
 ```
 onAbort onCanPlay onCanPlayThrough onDurationChange onEmptied onEncrypted
@@ -334,9 +332,9 @@ onTimeUpdate onVolumeChange onWaiting
 
 * * *
 
-### Image Events {#image-events}
+### Image 이벤트 {#image-events}
 
-Event names:
+이벤트 이름
 
 ```
 onLoad onError
@@ -344,15 +342,15 @@ onLoad onError
 
 * * *
 
-### Animation Events {#animation-events}
+### Animation 이벤트 {#animation-events}
 
-Event names:
+이벤트 이름
 
 ```
 onAnimationStart onAnimationEnd onAnimationIteration
 ```
 
-Properties:
+속성
 
 ```javascript
 string animationName
@@ -362,15 +360,15 @@ float elapsedTime
 
 * * *
 
-### Transition Events {#transition-events}
+### Transition 이벤트 {#transition-events}
 
-Event names:
+이벤트 이름
 
 ```
 onTransitionEnd
 ```
 
-Properties:
+속성
 
 ```javascript
 string propertyName
@@ -380,9 +378,9 @@ float elapsedTime
 
 * * *
 
-### Other Events {#other-events}
+### 기타 이벤트 {#other-events}
 
-Event names:
+이벤트 이름
 
 ```
 onToggle

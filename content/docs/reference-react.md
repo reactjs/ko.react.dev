@@ -1,6 +1,6 @@
 ---
 id: react-api
-title: React Top-Level API
+title: React 최상위 API
 layout: docs
 category: Reference
 permalink: docs/react-api.html
@@ -13,35 +13,35 @@ redirect_from:
   - "docs/top-level-api-zh-CN.html"
 ---
 
-`React` is the entry point to the React library. If you load React from a `<script>` tag, these top-level APIs are available on the `React` global. If you use ES6 with npm, you can write `import React from 'react'`. If you use ES5 with npm, you can write `var React = require('react')`.
+`React`는 React 라이브러리의 진입점입니다. `<script>` 태그를 사용하여 React를 불러오게 되면 전역 객체 `React`를 통하여 최상위 API를 사용할 수 있습니다. npm에서 ES6를 사용하는 경우, `import React from 'react'`를 작성하면 됩니다. npm에서 ES5를 사용하는 경우, `var React = require('react')`를 작성하면 됩니다.
 
-## Overview {#overview}
+## 개요 {#overview}
 
-### Components {#components}
+### 컴포넌트 {#components}
 
-React components let you split the UI into independent, reusable pieces, and think about each piece in isolation. React components can be defined by subclassing `React.Component` or `React.PureComponent`.
+React 컴포넌트를 사용하면 UI를 독립적이고 재사용할 수 있는 부분으로 나누고 각 부분을 분리하여 생각할 수 있습니다. React 컴포넌트는 `React.Component` 또는 `React.PureComponent`로 세부적으로 나누어 정의할 수 있습니다.
 
- - [`React.Component`](#reactcomponent)
- - [`React.PureComponent`](#reactpurecomponent)
+- [`React.Component`](#reactcomponent)
+- [`React.PureComponent`](#reactpurecomponent)
 
-If you don't use ES6 classes, you may use the `create-react-class` module instead. See [Using React without ES6](/docs/react-without-es6.html) for more information.
+ES6 class를 사용하지 않는다면, `create-react-class` 모듈을 대신 사용해도 됩니다. 자세한 정보는 [ES6 없이 React를 사용하기](/docs/react-without-es6.html) 문서에서 확인할 수 있습니다.
 
-React components can also be defined as functions which can be wrapped:
+React 컴포넌트를 정의할 때 래핑될 수 있는 함수의 형태로 할 수도 있습니다.
 
 - [`React.memo`](#reactmemo)
 
-### Creating React Elements {#creating-react-elements}
+### React 엘리먼트 생성하기 {#creating-react-elements}
 
-We recommend [using JSX](/docs/introducing-jsx.html) to describe what your UI should look like. Each JSX element is just syntactic sugar for calling [`React.createElement()`](#createelement). You will not typically invoke the following methods directly if you are using JSX.
+UI의 형태를 설명하는 데에 [JSX를 사용할 것](/docs/introducing-jsx.html)을 권장합니다. 각 JSX 엘리먼트는 단지 [`React.createElement()`](#createelement)를 호출하는 편리한 문법에 불과합니다. JSX를 사용할 경우 아래의 메서드들을 직접 호출하는 일은 거의 없습니다.
 
 - [`createElement()`](#createelement)
 - [`createFactory()`](#createfactory)
 
-See [Using React without JSX](/docs/react-without-jsx.html) for more information.
+자세한 정보는 [JSX 없이 React 사용하기](/docs/react-without-jsx.html) 문서에서 확인할 수 있습니다.
 
-### Transforming Elements {#transforming-elements}
+### 엘리먼트 변환하기 {#transforming-elements}
 
-`React` provides several APIs for manipulating elements:
+`React`는 엘리먼트를 조작하는 API들을 제공합니다.
 
 - [`cloneElement()`](#cloneelement)
 - [`isValidElement()`](#isvalidelement)
@@ -49,7 +49,7 @@ See [Using React without JSX](/docs/react-without-jsx.html) for more information
 
 ### Fragments {#fragments}
 
-`React` also provides a component for rendering multiple elements without a wrapper.
+또한 `React`는 래퍼 없이 여러 엘리먼트를 렌더링할 수 있는 컴포넌트를 제공합니다.
 
 - [`React.Fragment`](#reactfragment)
 
@@ -60,20 +60,20 @@ See [Using React without JSX](/docs/react-without-jsx.html) for more information
 
 ### Suspense {#suspense}
 
-Suspense lets components "wait" for something before rendering. Today, Suspense only supports one use case: [loading components dynamically with `React.lazy`](/docs/code-splitting.html#reactlazy). In the future, it will support other use cases like data fetching.
+Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이 먼저 이루어지도록 "대기합니다". 현재 Suspense는 단 하나의 사용 사례 [`React.lazy`를 사용하여 컴포넌트를 동적으로 불러오기](/docs/code-splitting.html#reactlazy)만 지원합니다. 나중에는 데이터 불러오기와 같은 사용 사례를 지원할 계획입니다.
 
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
 
 ### Hooks {#hooks}
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class. Hooks have a [dedicated docs section](/docs/hooks-intro.html) and a separate API reference:
+*Hooks*는 React 16.8에 새로 추가되었습니다. Hooks를 사용하면 class를 사용하지 않아도 state와 React 기능들을 사용할 수 있도록 해줍니다. Hooks만을 다루는 [문서](/docs/hooks-intro.html)와 API 문서가 존재합니다.
 
-- [Basic Hooks](/docs/hooks-reference.html#basic-hooks)
+- [기본적인 Hooks](/docs/hooks-reference.html#basic-hooks)
   - [`useState`](/docs/hooks-reference.html#usestate)
   - [`useEffect`](/docs/hooks-reference.html#useeffect)
   - [`useContext`](/docs/hooks-reference.html#usecontext)
-- [Additional Hooks](/docs/hooks-reference.html#additional-hooks)
+- [추가적인 Hooks](/docs/hooks-reference.html#additional-hooks)
   - [`useReducer`](/docs/hooks-reference.html#usereducer)
   - [`useCallback`](/docs/hooks-reference.html#usecallback)
   - [`useMemo`](/docs/hooks-reference.html#usememo)
@@ -88,7 +88,7 @@ Suspense lets components "wait" for something before rendering. Today, Suspense 
 
 ### `React.Component` {#reactcomponent}
 
-`React.Component` is the base class for React components when they are defined using [ES6 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes):
+`React.Component`는 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)를 사용하여 React 컴포넌트를 정의할 때에 기초가 되는 class입니다.
 
 ```javascript
 class Greeting extends React.Component {
@@ -98,21 +98,21 @@ class Greeting extends React.Component {
 }
 ```
 
-See the [React.Component API Reference](/docs/react-component.html) for a list of methods and properties related to the base `React.Component` class.
+`React.Component` 기초 class와 관련된 메서드와 속성 목록은 [React.Component API Reference](/docs/react-component.html)에서 확인할 수 있습니다.
 
 * * *
 
 ### `React.PureComponent` {#reactpurecomponent}
 
-`React.PureComponent` is similar to [`React.Component`](#reactcomponent). The difference between them is that [`React.Component`](#reactcomponent) doesn't implement [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), but `React.PureComponent` implements it with a shallow prop and state comparison. 
+`React.PureComponent`는 [`React.Component`](#reactcomponent)와 비슷합니다. [`React.Component`](#reactcomponent)는 [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate)를 구현하지 않지만, `React.PureComponent`는 props와 state를 이용한 얕은 비교를 구현한다는 차이점만이 존재합니다.
 
-If your React component's `render()` function renders the same result given the same props and state, you can use `React.PureComponent` for a performance boost in some cases.
+React 컴포넌트의 `render()` 함수가 동일한 props와 state에 대하여 동일한 결과를 렌더링한다면, `React.PureComponent`를 사용하여 경우에 따라 성능 향상을 누릴 수 있습니다.
 
-> Note
+> 주의
 >
-> `React.PureComponent`'s `shouldComponentUpdate()` only shallowly compares the objects. If these contain complex data structures, it may produce false-negatives for deeper differences. Only extend `PureComponent` when you expect to have simple props and state, or use [`forceUpdate()`](/docs/react-component.html#forceupdate) when you know deep data structures have changed. Or, consider using [immutable objects](https://facebook.github.io/immutable-js/) to facilitate fast comparisons of nested data.
+> `React.PureComponent`의 `shouldComponentUpdate()`는 컴포넌트에 대하여 얕은 비교만을 수행합니다. 따라서 컴포넌트에 복잡한 자료 구조가 포함되어있다면, 깊은 차이가 존재함에도 불구하고 차이가 없다고 판단하는 잘못된 결과를 만들어낼 수 있습니다. props와 state의 구조가 간단할 것으로 예상될 때에만 `PureComponent`를 상속하고, 깊은 자료 구조의 변화가 있다면 [`forceUpdate()`](/docs/react-component.html#forceupdate)를 사용하세요. 또는 중첩된 데이터들을 빠르게 비교할 수 있도록 하려면 [불변 객체](https://facebook.github.io/immutable-js/)의 사용을 검토해보세요.
 >
-> Furthermore, `React.PureComponent`'s `shouldComponentUpdate()` skips prop updates for the whole component subtree. Make sure all the children components are also "pure".
+> 더 나아가 `React.PureComponent`의 `shouldComponentUpdate()`는 컴포넌트의 하위 트리에 대한 props 갱신 작업을 수행하지 않습니다. 자식 컴포넌트들이 "순수"한지 꼭 확인하기 바랍니다.
 
 * * *
 
@@ -120,35 +120,33 @@ If your React component's `render()` function renders the same result given the 
 
 ```javascript
 const MyComponent = React.memo(function MyComponent(props) {
-  /* render using props */
+  /* props를 사용하여 렌더링 */
 });
 ```
 
-`React.memo` is a [higher order component](/docs/higher-order-components.html). It's similar to [`React.PureComponent`](#reactpurecomponent) but for function components instead of classes.
+`React.memo`는 [고차 컴포넌트(Higher Order Component)](/docs/higher-order-components.html)입니다. [`React.PureComponent`](#reactpurecomponent)와 비슷하지만 class가 아니라 함수 컴포넌트라는 점이 다릅니다.
 
-If your function component renders the same result given the same props, you can wrap it in a call to `React.memo` for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
+당신의 함수 컴포넌트가 동일한 props로 동일한 결과를 렌더링해낸다면, `React.memo`를 호출하고 결과를 메모이징(Memoizing)하도록 래핑하여 경우에 따라 성능 향상을 누릴 수 있습니다. 즉, React는 컴포넌트를 렌더링하지 않고 마지막으로 렌더링된 결과를 재사용합니다.
 
-By default it will only shallowly compare complex objects in the props object. If you want control over the comparison, you can also provide a custom comparison function as the second argument.
+props가 갖는 복잡한 객체에 대하여 얕은 비교만을 수행하는 것이 기본 동작입니다. 다른 비교 동작을 원한다면, 두 번째 인자로 별도의 비교 함수를 제공하면 됩니다.
 
 ```javascript
 function MyComponent(props) {
-  /* render using props */
+  /* props를 사용하여 렌더링 */
 }
 function areEqual(prevProps, nextProps) {
   /*
-  return true if passing nextProps to render would return
-  the same result as passing prevProps to render,
-  otherwise return false
+  nextProp가 prevProps와 동일한 값을 가지면 true를 반환하고, 그렇지 않다면 false를 반환
   */
 }
 export default React.memo(MyComponent, areEqual);
 ```
 
-This method only exists as a **[performance optimization](/docs/optimizing-performance.html).** Do not rely on it to "prevent" a render, as this can lead to bugs.
+이 메서드는 오직 **[성능 최적화](/docs/optimizing-performance.html)**를 위하여 사용됩니다. 렌더링을 "방지"하기 위하여 사용하지 마세요. 버그를 만들 수 있습니다.
 
-> Note
+> 주의
 >
-> Unlike the [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate) method on class components, the `areEqual` function returns `true` if the props are equal and `false` if the props are not equal. This is the inverse from `shouldComponentUpdate`.
+> class 컴포넌트의 [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate) 메서드와 달리, `areEqual` 함수는 props들이 서로 같으면 `true`를 반환하고, props들이 서로 다르면 `false`를 반환합니다. 이것은 `shouldComponentUpdate`와 정반대의 동작입니다.
 
 * * *
 
@@ -162,9 +160,9 @@ React.createElement(
 )
 ```
 
-Create and return a new [React element](/docs/rendering-elements.html) of the given type. The type argument can be either a tag name string (such as `'div'` or `'span'`), a [React component](/docs/components-and-props.html) type (a class or a function), or a [React fragment](#reactfragment) type.
+인자로 주어지는 타입에 따라 새로운 [React 엘리먼트](/docs/rendering-elements.html)를 생성하여 반환합니다. type 인자로는 태그 이름 문자열(`'div'` 또는 `'span'` 등), [React 컴포넌트](/docs/components-and-props.html) 타입, 또는 [React Fragment](#reactfragment) 타입 중 하나가 올 수 있습니다.
 
-Code written with [JSX](/docs/introducing-jsx.html) will be converted to use `React.createElement()`. You will not typically invoke `React.createElement()` directly if you are using JSX. See [React Without JSX](/docs/react-without-jsx.html) to learn more.
+JSX로 작성된 코드는 `React.createElement()`를 사용하는 형태로 변환됩니다. JSX를 사용할 경우 `React.createElement()`를 직접 호출하는 일은 거의 없습니다. 자세한 정보는 [JSX 없이 React 사용하기](/docs/react-without-jsx.html) 문서에서 확인할 수 있습니다.
 
 * * *
 
@@ -178,17 +176,17 @@ React.cloneElement(
 )
 ```
 
-Clone and return a new React element using `element` as the starting point. The resulting element will have the original element's props with the new props merged in shallowly. New children will replace existing children. `key` and `ref` from the original element will be preserved.
+`element`를 기준으로 새로운 React 엘리먼트를 복사하고 반환합니다. 새로운 엘리먼트에는 원본 엘리먼트가 가졌던 props가 새로운 props와 얕게 합쳐진 뒤 주어집니다. 새로운 자식들은 기존의 자식들을 대체합니다. 원본 엘리먼트의 `key`와 `ref`는 그대로 유지됩니다.
 
-`React.cloneElement()` is almost equivalent to:
+`React.cloneElement()`는 아래의 구문과 거의 동등합니다.
 
 ```js
 <element.type {...element.props} {...props}>{children}</element.type>
 ```
 
-However, it also preserves `ref`s. This means that if you get a child with a `ref` on it, you won't accidentally steal it from your ancestor. You will get the same `ref` attached to your new element.
+그렇지만 `ref`들이 유지된다는 점이 다릅니다. 즉 조상이 가지고 있을 `ref`를 사용하여 자식 엘리먼트에 접근하는 것이 허용됩니다. 새로운 엘리먼트에 덧붙여지는 것과 동일한 `ref`를 얻을 수 있습니다.
 
-This API was introduced as a replacement of the deprecated `React.addons.cloneWithProps()`.
+이 API는 더 이상 사용되지 않는 `React.addons.cloneWithProps()`를 대체합니다.
 
 * * *
 
@@ -198,11 +196,11 @@ This API was introduced as a replacement of the deprecated `React.addons.cloneWi
 React.createFactory(type)
 ```
 
-Return a function that produces React elements of a given type. Like [`React.createElement()`](#createElement), the type argument can be either a tag name string (such as `'div'` or `'span'`), a [React component](/docs/components-and-props.html) type (a class or a function), or a [React fragment](#reactfragment) type.
+주어진 타입의 React 엘리먼트를 만들어내는 함수를 반환합니다. [`React.createElement()`](#createelement)와 마찬가지로 type 인자는 태그 이름 문자열(`'div'` 또는 `'span'` 등), [React 컴포넌트](/docs/components-and-props.html) 타입, 또는 [React Fragment](#reactfragment) 타입 중 하나가 올 수 있습니다.
 
-This helper is considered legacy, and we encourage you to either use JSX or use `React.createElement()` directly instead.
+이 헬퍼 함수는 레거시 기능으로 간주되며, 대신 JSX 문법을 사용하거나 `React.createElement()`를 직접 사용하는 것이 좋습니다.
 
-You will not typically invoke `React.createFactory()` directly if you are using JSX. See [React Without JSX](/docs/react-without-jsx.html) to learn more.
+JSX를 사용할 경우 `React.createFactory()`를 직접 호출하는 일은 거의 없습니다. 자세한 정보는 [JSX 없이 React 사용하기](/docs/react-without-jsx.html) 문서에서 확인할 수 있습니다.
 
 * * *
 
@@ -212,13 +210,13 @@ You will not typically invoke `React.createFactory()` directly if you are using 
 React.isValidElement(object)
 ```
 
-Verifies the object is a React element. Returns `true` or `false`.
+객체가 React 엘리먼트인지 확인합니다. `true` 또는 `false`를 반환합니다.
 
 * * *
 
 ### `React.Children` {#reactchildren}
 
-`React.Children` provides utilities for dealing with the `this.props.children` opaque data structure.
+`React.Children`는 불투명(Opaque) 자료 구조인 `this.props.children`를 다루는 유틸리티 함수들을 제공합니다.
 
 #### `React.Children.map` {#reactchildrenmap}
 
@@ -226,11 +224,11 @@ Verifies the object is a React element. Returns `true` or `false`.
 React.Children.map(children, function[(thisArg)])
 ```
 
-Invokes a function on every immediate child contained within `children` with `this` set to `thisArg`. If `children` is an array it will be traversed and the function will be called for each child in the array. If children is `null` or `undefined`, this method will return `null` or `undefined` rather than an array.
+`children`에 포함된 각 자식에 대하여 `this`를 `thisArg`의 값으로 설정한 함수를 호출합니다. `children`이 배열일 경우, 이 배열의 각 자식에 대하여 함수가 호출됩니다. `children`이 `null` 또는 `undefined`일 경우, 이 메서드는 배열이 아니라 `null` 또는 `undefined`를 반환합니다.
 
-> Note
+> 주의
 >
-> If `children` is a `Fragment` it will be treated as a single child and not traversed.
+> `children`이 `Fragment`일 경우, `children`은 단일 자식으로 취급되어 순회하지 않습니다.
 
 #### `React.Children.forEach` {#reactchildrenforeach}
 
@@ -238,7 +236,7 @@ Invokes a function on every immediate child contained within `children` with `th
 React.Children.forEach(children, function[(thisArg)])
 ```
 
-Like [`React.Children.map()`](#reactchildrenmap) but does not return an array.
+[`React.Children.map()`](#reactchildrenmap)와 비슷하지만, 배열을 반환하지 않습니다.
 
 #### `React.Children.count` {#reactchildrencount}
 
@@ -246,7 +244,7 @@ Like [`React.Children.map()`](#reactchildrenmap) but does not return an array.
 React.Children.count(children)
 ```
 
-Returns the total number of components in `children`, equal to the number of times that a callback passed to `map` or `forEach` would be invoked.
+`children`에 포함된 컴포넌트의 개수를 반환합니다. `map` 또는 `forEach`로 전달된 콜백이 호출된 횟수와 동일한 값입니다.
 
 #### `React.Children.only` {#reactchildrenonly}
 
@@ -254,11 +252,11 @@ Returns the total number of components in `children`, equal to the number of tim
 React.Children.only(children)
 ```
 
-Verifies that `children` has only one child (a React element) and returns it. Otherwise this method throws an error.
+`children`이 단 하나의 자식(React 엘리먼트)를 갖는지 확인하고 해당 자식 엘리먼트를 반환합니다. 그렇지 않을 경우 오류를 발생시킵니다.
 
-> Note:
+> 주의
 >
->`React.Children.only()` does not accept the return value of [`React.Children.map()`](#reactchildrenmap) because it is an array rather than a React element.
+> `React.Children.only()`는 [`React.Children.map()`](#reactchildrenmap)의 반환값을 허용하지 않는데, 왜냐하면 반환값이 React 엘리먼트가 아니라 배열이기 때문입니다.
 
 #### `React.Children.toArray` {#reactchildrentoarray}
 
@@ -266,17 +264,17 @@ Verifies that `children` has only one child (a React element) and returns it. Ot
 React.Children.toArray(children)
 ```
 
-Returns the `children` opaque data structure as a flat array with keys assigned to each child. Useful if you want to manipulate collections of children in your render methods, especially if you want to reorder or slice `this.props.children` before passing it down.
+각 자식에 `key`가 할당된 배열을 `children` 불투명(opaque) 자료 구조로 반환합니다. `render()` 메서드에서 `children`의 집합을 다루고 싶을 때, 특히 `this.props.children`을 하부로 전달하기 전에 다시 정렬하거나 일부만 잘라내고 싶을 때에 유용합니다.
 
-> Note:
+> 주의
 >
-> `React.Children.toArray()` changes keys to preserve the semantics of nested arrays when flattening lists of children. That is, `toArray` prefixes each key in the returned array so that each element's key is scoped to the input array containing it.
+> `React.Children.toArray()`는 `children`을 평평하게(Flatten) 만들 때, 중첩된 배열들의 의미를 보존하기 위하여 `key`를 변경합니다. 즉, `toArray`는 반환되는 배열에 `key` 값을 덧붙여서 각 엘리먼트가 갖는 `key`가 평평해진 배열 내에서만 유효한 범위를 형성하도록 해줍니다.
 
 * * *
 
 ### `React.Fragment` {#reactfragment}
 
-The `React.Fragment` component lets you return multiple elements in a `render()` method without creating an additional DOM element:
+`React.Fragment` 컴포넌트를 사용하면 `render()` 메서드 안에서 추가적인 DOM 엘리먼트를 생성하지 않아도 여러 엘리먼트를 반환할 수 있습니다.
 
 ```javascript
 render() {
@@ -289,54 +287,54 @@ render() {
 }
 ```
 
-You can also use it with the shorthand `<></>` syntax. For more information, see [React v16.2.0: Improved Support for Fragments](/blog/2017/11/28/react-v16.2.0-fragment-support.html).
-
+축약형인 `<></>` 문법으로도 동일하게 사용할 수 있습니다. 자세한 정보는 [React v16.2.0: Fragment에 대한 향상된 지원](/blog/2017/11/28/react-v16.2.0-fragment-support.html)에서 확인할 수 있습니다.
 
 ### `React.createRef` {#reactcreateref}
 
-`React.createRef` creates a [ref](/docs/refs-and-the-dom.html) that can be attached to React elements via the ref attribute.
+`React.createRef`는 React 엘리먼트에 `ref` 어트리뷰트로 붙일 수 있는 [ref](/docs/refs-and-the-dom.html)를 생성합니다.
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 ### `React.forwardRef` {#reactforwardref}
 
-`React.forwardRef` creates a React component that forwards the [ref](/docs/refs-and-the-dom.html) attribute it receives to another component below in the tree. This technique is not very common but is particularly useful in two scenarios:
+`React.forwardRef`는 전달받은 [`ref`](/docs/refs-and-the-dom.html) 어트리뷰트를 하부 트리 내의 다른 컴포넌트로 전달하는 React 컴포넌트를 생성합니다. 이 기법은 잘 사용되지 않지만, 아래의 두 시나리오에서는 특히 유용합니다.
 
-* [Forwarding refs to DOM components](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
-* [Forwarding refs in higher-order-components](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
+* [DOM 엘리먼트로 ref 전달하기](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
+* [고차 컴포넌트(Higher Order Component)로 ref 전달하기](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
 
-`React.forwardRef` accepts a rendering function as an argument. React will call this function with `props` and `ref` as two arguments. This function should return a React node.
+`React.forwardRef`는 렌더링에 사용될 함수를 인자로 받을 수 있습니다. React는 이 함수를 두 개 인자 `props`와 `ref`를 사용하여 호출하고, 이 함수는 React 노드를 반환합니다.
 
 `embed:reference-react-forward-ref.js`
 
-In the above example, React passes a `ref` given to `<FancyButton ref={ref}>` element as a second argument to the rendering function inside the `React.forwardRef` call. This rendering function passes the `ref` to the `<button ref={ref}>` element.
+위의 예시에서 React는 `<FancyButton ref={ref}>` 엘리먼트에 주어진 `ref`를 `React.forwardRef` 호출시 렌더링 함수에 2번째 인자로 전달합니다. 이 렌더링 함수는 `ref`를 `<button ref={ref}>` 엘리먼트에 전달합니다.
 
-As a result, after React attaches the ref, `ref.current` will point directly to the `<button>` DOM element instance.
+따라서 React가 해당 ref를 붙이고 난 뒤, `ref.current`는 `<button>` DOM 엘리먼트 인스턴스를 직접 가리키게 됩니다.
 
-For more information, see [forwarding refs](/docs/forwarding-refs.html).
+자세한 정보는 [ref 전달하기](/docs/forwarding-refs.html)에서 확인할 수 있습니다.
 
 ### `React.lazy` {#reactlazy}
 
-`React.lazy()` lets you define a component that is loaded dynamically. This helps reduce the bundle size to delay loading components that aren't used during the initial render.
+`React.lazy()`를 사용하면 동적으로 불러오는 컴포넌트를 정의할 수 있습니다. 그러면 번들의 크기를 줄이고, 초기 렌더링에서 사용되지 않는 컴포넌트를 불러오는 작업을 지연시킬 수 있습니다.
 
-You can learn how to use it from our [code splitting documentation](/docs/code-splitting.html#reactlazy). You might also want to check out [this article](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d) explaining how to use it in more detail.
+사용 방법은 [Code Splitting](/docs/code-splitting.html#reactlazy) 문서에서 익힐 수 있습니다. 또한 사용 방법을 자세히 다룬 [이 글](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d)을 읽어보는 것도 좋습니다.
 
 ```js
-// This component is loaded dynamically
+// 이 컴포넌트는 동적으로 불러옵니다
 const SomeComponent = React.lazy(() => import('./SomeComponent'));
 ```
 
-Note that rendering `lazy` components requires that there's a `<React.Suspense>` component higher in the rendering tree. This is how you specify a loading indicator.
+`lazy`한 컴포넌트를 렌더링하려면 렌더링 트리 상위에 `<React.Suspense>` 컴포넌트가 존재해야 한다는 점에 유의하세요. 이를 활용하여 로딩 지시기(Loading indicator)를 나타낼 수 있습니다.
 
-> **Note**
+
+> **주의**
 >
-> Using `React.lazy`with dynamic import requires Promises to be available in the JS environment. This requires a polyfill on IE11 and below.
+> 동적 `import`와 함께 `React.lazy`를 사용하려면 JS 환경이 프라미스(Promise)를 지원해야 합니다. IE11 이하에서는 폴리필(Polyfill)이 필요합니다.
 
 ### `React.Suspense` {#reactsuspense}
 
-`React.Suspense` let you specify the loading indicator in case some components in the tree below it are not yet ready to render. Today, lazy loading components is the **only** use case supported by `<React.Suspense>`:
+`React.Suspense`를 사용하면 트리 상에 아직 렌더링이 준비되지 않은 컴포넌트가 있을 때 로딩 지시기(Loading indicator)를 나타낼 수 있습니다. 현재로서는 지연시켜서 불러오는 컴포넌트가 `<React.Suspense>`의 **유일한** 사용 사례입니다.
 
 ```js
-// This component is loaded dynamically
+// 이 컴포넌트는 동적으로 불러옵니다
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
 function MyComponent() {
@@ -351,10 +349,10 @@ function MyComponent() {
 }
 ```
 
-It is documented in our [code splitting guide](/docs/code-splitting.html#reactlazy). Note that `lazy` components can be deep inside the `Suspense` tree -- it doesn't have to wrap every one of them. The best practice is to place `<Suspense>` where you want to see a loading indicator, but to use `lazy()` wherever you want to do code splitting.
+관련된 내용을 [Code Splitting 가이드](/docs/code-splitting.html#reactlazy) 문서에서 설명하고 있습니다. `lazy`한 컴포넌트는 `Suspense` 트리 내의 깊숙한 곳에 위치할 수 있다는 점에 유의하세요. 즉, `Suspense`가 모든 컴포넌트를 감쌀 필요는 없다는 것입니다. 가장 좋은 사용법은 로딩 지시기를 보여주고 싶은 지점에 `<Suspense>`를 작성하는 것이지만, Code Splitting을 하고자 하는 지점 어디서든지 `lazy()`를 써야 할 것입니다.
 
-While this is not supported today, in the future we plan to let `Suspense` handle more scenarios such as data fetching. You can read about this in [our roadmap](/blog/2018/11/27/react-16-roadmap.html).
+현재 지원되고 있지는 않지만, 나중에는 `Suspense`가 데이터 불러오기 등의 시나리오를 지원하도록 할 계획입니다. 이와 관련된 내용은 [로드맵](/blog/2018/11/27/react-16-roadmap.html) 문서에서 확인할 수 있습니다.
 
->Note:
+> 주의
 >
->`React.lazy()` and `<React.Suspense>` are not yet supported by `ReactDOMServer`. This is a known limitation that will be resolved in the future.
+>`React.lazy()`와 `<React.Suspense>`는 아직 `ReactDOMServer`에서 지원하지 않습니다. 이 제한 사항은 나중에 해결될 것입니다.

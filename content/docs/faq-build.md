@@ -1,32 +1,32 @@
 ---
 id: faq-build
-title: Babel, JSX, and Build Steps
+title: Babel, JSX, 그리고 빌드 과정들 
 permalink: docs/faq-build.html
 layout: docs
 category: FAQ
 ---
 
-### Do I need to use JSX with React? {#do-i-need-to-use-jsx-with-react}
+### React에 JSX를 꼭 사용해야 하나요? {#do-i-need-to-use-jsx-with-react}
 
-No! Check out ["React Without JSX"](/docs/react-without-jsx.html) to learn more.
+아니요! 더 자세한 내용을 위해 ["JSX 없이 React 사용하기"](/docs/react-without-jsx.html) 를 확인해 주세요.
 
-### Do I need to use ES6 (+) with React? {#do-i-need-to-use-es6--with-react}
+### React에 ES6 (+)를 꼭 사용해야 하나요? {#do-i-need-to-use-es6--with-react}
 
-No! Check out ["React Without ES6"](/docs/react-without-es6.html) to learn more.
+아니요! 더 자세한 내용을 위해 ["ES6 없이 React 사용하기"](/docs/react-without-es6.html) 를 확인해 주세요.
 
-### How can I write comments in JSX? {#how-can-i-write-comments-in-jsx}
+### JSX에서 어떻게 주석을 달 수 있나요? {#how-can-i-write-comments-in-jsx}
 
 ```jsx
 <div>
-  {/* Comment goes here */}
+  {/* 주석은 여기에 */}
   Hello, {name}!
 </div>
 ```
 
 ```jsx
 <div>
-  {/* It also works 
-  for multi-line comments. */}
+  {/* 여러 줄의 
+  주석도 가능합니다. */}
   Hello, {name}! 
 </div>
 ```

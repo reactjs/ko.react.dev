@@ -4,19 +4,19 @@ layout: single
 permalink: warnings/legacy-factories.html
 ---
 
-You probably came here because your code is calling your component as a plain function call. This is now deprecated:
+아마도 코드에서 일반 함수처럼 컴포넌트를 호출했기 때문에 이 경고를 보게 된 것입니다. 아래의 코드는 현재 사용되지 않습니다.
 
 ```javascript
 var MyComponent = require('MyComponent');
 
 function render() {
-  return MyComponent({ foo: 'bar' });  // WARNING
+  return MyComponent({ foo: 'bar' });  // 경고
 }
 ```
 
 ## JSX {#jsx}
 
-React components can no longer be called directly like this. Instead [you can use JSX](/docs/jsx-in-depth.html).
+이렇게 직접 React 컴포넌트를 호출할 수 없습니다. [대신 JSX를 사용 할 수 있습니다.](/docs/jsx-in-depth.html)
 
 ```javascript
 var React = require('react');
@@ -27,9 +27,9 @@ function render() {
 }
 ```
 
-## Without JSX {#without-jsx}
+## JSX를 사용하지 않는다면 {#without-jsx}
 
-If you don't want to, or can't use JSX, then you'll need to wrap your component in a factory before calling it:
+JSX를 사용하고 싶지 않거나 사용할 수 없다면 컴포넌트를 호출하기 전에 팩토리에서 컴포넌트를 래핑해야합니다.
 
 ```javascript
 var React = require('react');
@@ -40,11 +40,11 @@ function render() {
 }
 ```
 
-This is an easy upgrade path if you have a lot of existing function calls.
+기존에 이런 함수 호출이 많다면 이렇게 하는 것이 쉽게 코드를 업그레이드할 수 있는 방법입니다.
 
-## Dynamic components without JSX {#dynamic-components-without-jsx}
+## JSX를 사용하지 않는 동적 컴포넌트 {#dynamic-components-without-jsx}
 
-If you get a component class from a dynamic source, then it might be unnecessary to create a factory that you immediately invoke. Instead you can just create your element inline:
+동적인 소스에서 클래스 컴포넌트를 가져오는 경우라면 팩토리를 만들지 않아도 됩니다. 대신 엘리먼트를 인라인으로 만들면 됩니다.
 
 ```javascript
 var React = require('react');
@@ -54,6 +54,6 @@ function render(MyComponent) {
 }
 ```
 
-## In Depth {#in-depth}
+## 더 알아보기 {#in-depth}
 
-[Read more about WHY we're making this change.](https://gist.github.com/sebmarkbage/d7bce729f38730399d28)
+[이렇게 변경된 이유에 대해 더 자세히 알아보세요.](https://gist.github.com/sebmarkbage/d7bce729f38730399d28)

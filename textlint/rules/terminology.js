@@ -42,13 +42,35 @@ const g = args => args.map(arg => new RegExp(arg, 'g'));
  */
 const terms = [
   {
+    // http://www.korean.go.kr/front/onlineQna/onlineQnaView.do?mn_id=61&qna_seq=11976
     value: '메서드',
     expressions: [/메소드/, /메쏘드/],
     message: 'method는 메서드가 올바른 표현입니다',
   },
   {
-    value: '서드파티',
-    expressions: [/써드파티/],
-    message: 'third party는 서드파티가 올바른 표현입니다',
+    // https://opendict.korean.go.kr/dictionary/view?sense_no=1251028
+    value: '서드 파티',
+    expressions: [/서드파티/, /써드파티/, /써드 파티/],
+    message: 'third party는 서드 파티가 올바른 표현입니다',
+  },
+  {
+    value: '예시',
+    expressions: [/예제/],
+    message: 'example은 예시로 표현합니다.',
+  },
+  {
+    value: '애플리케이션',
+    expressions: [/응용프로그램/, /어플리케이션/],
+    message: 'application은 애플리케이션으로 표현합니다.',
+  },
+  {
+    value: '함수 컴포넌트',
+    expressions: [/함수형 컴포넌트/],
+    message: 'function(al) component는 함수 컴포넌트로 표현합니다.',
+  },
+  {
+    value: '생명주기',
+    expressions: [/라이프사이클/],
+    message: 'life cycle은 생명주기로 표현합니다.',
   },
 ].map(term => ({...term, expressions: g(term.expressions)}));

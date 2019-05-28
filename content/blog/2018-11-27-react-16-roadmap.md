@@ -87,7 +87,7 @@ function Example() {
 }
 ```
 
-Hooks [introduction](/docs/hooks-intro.html) and [overview](/docs/hooks-overview.html) are good places to start. Watch [these talks](https://www.youtube.com/watch?v=V-QO-KO90iQ) for a video introduction and a deep dive. The [FAQ](/docs/hooks-faq.html) should answer most of your further questions. To learn more about the motivation behind Hooks, you can read [this article](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889). Some of the rationale for the API design of Hooks is explained in [this RFC thread reply](https://github.com/reactjs/rfcs/pull/68#issuecomment-439314884).
+Hooks [introduction](/docs/hooks-intro.html) and [Hook 개요](/docs/hooks-overview.html) are good places to start. Watch [these talks](https://www.youtube.com/watch?v=V-QO-KO90iQ) for a video introduction and a deep dive. The [FAQ](/docs/hooks-faq.html) should answer most of your further questions. To learn more about the motivation behind Hooks, you can read [this article](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889). Some of the rationale for the API design of Hooks is explained in [this RFC thread reply](https://github.com/reactjs/rfcs/pull/68#issuecomment-439314884).
 
 We have been dogfooding Hooks at Facebook since September. We don't expect major bugs in the implementation. Hooks are only available in the 16.7 alpha versions of React. Some of their API is expected to change in the final version (see the end of [this comment](https://github.com/reactjs/rfcs/pull/68#issuecomment-439314884) for details). It is possible that the minor release with Hooks might not be React 16.7.
 
