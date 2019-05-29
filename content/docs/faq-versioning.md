@@ -6,43 +6,43 @@ layout: docs
 category: FAQ
 ---
 
-React follows [semantic versioning (semver)](https://semver.org/) principles.
+React는 [시맨틱 버전 관리(semver)](https://semver.org/) 원칙을 따릅니다. 
 
-That means that with a version number **x.y.z**:
+즉, 버전 번호는 **x.y.z**가 됩니다.
 
-* When releasing **breaking changes**, we make a **major release** by changing the **x** number (ex: 15.6.2 to 16.0.0).
-* When releasing **new features**, we make a **minor release** by changing the **y** number (ex: 15.6.2 to 15.7.0).
-* When releasing **bug fixes**, we make a **patch release** by changing the **z** number (ex: 15.6.2 to 15.6.3).
+* **대단위의 큰 변화**가 있을 때는 **x** 번호를 바꾸고 **메이저 릴리즈(major release)** 를 합니다.  (예를 들어, 15.6.2에서 16.0.0)
+* **새로운 기능**을 출시할 때는 **y** 번호를 바꾸고 **마이너 릴리즈(minor release)** 를 합니다. (예를 들어, 15.6.2에서 15.7.0)
+* **버그를 수정**할 때는 **z** 번호를 바꾸고 **패치 릴리즈(patch release)** 를 합니다. (예를 들어, 15.6.2에서 15.6.3)
 
-Major releases can also contain new features, and any release can include bug fixes.
+주요 릴리즈는 새 기능을 포함할 수도 있고 모든 릴리즈는 버그 수정을 포함할 수도 있습니다.
 
-### Breaking Changes {#breaking-changes}
+### 대단위의 큰 변화 {#breaking-changes}
 
-Breaking changes are inconvenient for everyone, so we try to minimize the number of major releases – for example, React 15 was released in April 2016 and React 16 was released in September 2017; React 17 isn't expected until 2019.
+대단위의 큰 변화는 모든 사람에게 불편할 수 있습니다. 그래서 우리는 주요 릴리즈(major releases)는 최소화하도록 노력합니다. 예를 들어, React 15는 2016년 4월에 릴리즈되었고 React 16은 2017년 9월에 릴리즈되었습니다. 그리고 React 17은 2019년까지는 릴리즈되지 않을 것입니다.
 
-Instead, we release new features in minor versions. That means that minor releases are often more interesting and compelling than majors, despite their unassuming name.
+대신 마이너 릴리즈(minor versions)로 새 기능을 출시합니다. 마이너 릴리즈(minor releases)는 허세 없는 그 이름에도 불구하고, 종종 메이저(major)보다 조금 더 흥미롭고 주목할 만합니다.
 
-### Commitment to Stability {#commitment-to-stability}
+### 안정성을 위한 노력 {#commitment-to-stability}
 
-As we change React over time, we try to minimize the effort required to take advantage of new features. When possible, we'll keep an older API working, even if that means putting it in a separate package. For example, [mixins have been discouraged for years](/blog/2016/07/13/mixins-considered-harmful.html) but they're supported to this day [via create-react-class](/docs/react-without-es6.html#mixins) and many codebases continue to use them in stable, legacy code.
+React가 서서히 변화하는 가운데 우리는 새 기능을 도입하기 위해 필요한 노력은 최소화하고 있습니다. 분리된 패키지에 넣게 되더라도 가능한 한 우리는 오래된 API가 계속 동작하도록 유지할 것입니다. 예를 들어 [믹스인(mixins)은 수년 동안 그 기세가 꺾여오고 있습니다만](/blog/2016/07/13/mixins-considered-harmful.html), [create-react-class](/docs/react-without-es6.html#mixins)를 통해서 오늘날까지 지원되고 있고, 많은 코드 베이스가 안정된 레거시 코드에서 계속 사용되고 있습니다. 
 
-Over a million developers use React, collectively maintaining millions of components. The Facebook codebase alone has over 50,000 React components. That means we need to make it as easy as possible to upgrade to new versions of React; if we make large changes without a migration path, people will be stuck on old versions. We test these upgrade paths on Facebook itself – if our team of less than 10 people can update 50,000+ components alone, we hope the upgrade will be manageable for anyone using React. In many cases, we write [automated scripts](https://github.com/reactjs/react-codemod) to upgrade component syntax, which we then include in the open-source release for everyone to use.
+백만 이상의 개발자가 React를 사용하고 있고 React에는 통틀어 수백만개의 컴포넌트가 유지되고 있습니다. 페이스북 코드 베이스만 고려해 봐도 5만 이상의 React 컴포넌트가 있습니다. 이것은 React의 새 버전으로의 업그레이드를 가능한 한 쉽게 할 필요가 있음을 의미합니다. 만약 마이그레이션 수단(a migration path)도 없이 대단위의 큰 변화가 발생한다면 개발자들은 구버전에 갇히게 될 것입니다. 우리는 이 업그레이드 방법을 페이스북 자체에 테스트하고 있습니다. 열 명도 되지 않는 우리 팀이 단독적으로 5만 개 이상의 컴포넌트를 업데이트할 수 있다면 React를 사용하는 모든 개발자에게는 관리가 쉬운 업그레이드가 될 것이라고 바라봅니다. 대부분의 경우, 컴포넌트 구문을 업그레이드하기 위한 [자동화 스크립트](https://github.com/reactjs/react-codemod)를 작성해서 오픈소스 릴리즈에 포함하여 누구나 사용할 수 있도록 하고 있습니다.
 
-### Gradual Upgrades via Warnings {#gradual-upgrades-via-warnings}
+### 경고를 통한 점진적인 업그레이드 {#gradual-upgrades-via-warnings}
 
-Development builds of React include many helpful warnings. Whenever possible, we add warnings in preparation for future breaking changes. That way, if your app has no warnings on the latest release, it will be compatible with the next major release. This allows you to upgrade your apps one component at a time.
+React 개발 빌드는 상당수의 유용한 경고를 포함합니다. 가능한 한 우리는 미래의 큰 변화에 대비하여 경고를 추가합니다. 최신 릴리즈에서 여러분의 앱이 경고를 표시하지 않았다면 다음 메이저 릴리즈(major release)와의 호환성이 있는 것일 것입니다. 그 덕분으로 여러분은 앱을 한 번에 하나의 컴포넌트씩 업그레이드할 수 있습니다.
 
-Development warnings won't affect the runtime behavior of your app. That way, you can feel confident that your app will behave the same way between the development and production builds -- the only differences are that the production build won't log the warnings and that it is more efficient. (If you ever notice otherwise, please file an issue.)
+개발 경고는 앱의 런타임 수행에 영향을 주지는 않습니다. 다만, 그로 인해 앱의 개발 빌드와 프로덕션 빌드(production builds)가 동일한 방식으로 동작할 것이라는 확신을 갖게 됩니다. 개발 빌드와의 유일한 차이점이라면 프로젝트 빌드(production builds)는 경고를 로깅 하지 않는다는 것, 그리고 조금 더 효율적이라는 것입니다. (만약 다른 점이 발견된다면 이슈를 제기해 주십시오.)
+ 
+### 무엇을 대단위의 큰 변화로 볼 것인가? {#what-counts-as-a-breaking-change}
 
-### What Counts as a Breaking Change? {#what-counts-as-a-breaking-change}
+보통 우리는 다음의 변경에는 메이저(major) 버전 번호를 *붙이지 않습니다*.  
 
-In general, we *don't* bump the major version number for changes to:
+* **개발 시의 경고**. 프로덕션 빌드의 동작에는 영향을 미치지 않기 때문에 새 경고의 추가나 기존 경고의 수정은 주요 버전 사이에서 이행합니다. 이것으로 차기의 대단위 변경을 확실하게 경고할 수 있습니다. 
+* **`unstable_`로 시작하는 API**. 아직 신뢰할 수 있지는 않은 API를 사용한 실험적인 기능들에 제공합니다. `unstable_` 접두어를 사용한 버전을 릴리즈함으로써 개발주기를 조금 더 빠르게 하고 안정적인 API를 조금 더 빠르게 만들 수 있습니다.
+* **React의 알파 버전과 카나리아(canary) 버전**. 새 기능의 이른 테스트를 위한 방법으로 React의 알파 버전을 제공합니다. 그러나 동시에, 알파 기간에 습득한 것을 바탕으로 변경을 자유롭게 할 수 있는 유연함도 필요합니다. 만약 알파 버전을 사용하고 있다면 안정 버전이 출시되기 전에는 API가 얼마든지 변경될 수 있다는 것에 주의하십시오.
+* **문서화되지 않은 API와 내부 데이터 구조**. `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED`라든지 `__reactInternalInstance$uk43rzhitjg`와 같은 내부 프로퍼티에 접근한다면 보증은 되지 않습니다. 자기 책임입니다.
 
-* **Development warnings.** Since these don't affect production behavior, we may add new warnings or modify existing warnings in between major versions. In fact, this is what allows us to reliably warn about upcoming breaking changes.
-* **APIs starting with `unstable_`.** These are provided as experimental features whose APIs we are not yet confident in. By releasing these with an `unstable_` prefix, we can iterate faster and get to a stable API sooner.
-* **Alpha and canary versions of React.** We provide alpha versions of React as a way to test new features early, but we need the flexibility to make changes based on what we learn in the alpha period. If you use these versions, note that APIs may change before the stable release.
-* **Undocumented APIs and internal data structures.** If you access internal property names like `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` or `__reactInternalInstance$uk43rzhitjg`, there is no warranty.  You are on your own.
+여러분들이 두통을 유발하지 않도록 이 정책은 실용적으로 구성되어 있습니다. 만약 이 모든 변경에 대해 메이저 버전을 변경한다면 결국 더 많은 메이저 버전을 출시하게 될 것이고, 궁극적으로는 커뮤니티에 더 많은 버전닝 고통을 안기게 될 것입니다. 이것은 또한, 우리가 바라는 만큼 빠르게 React 향상을 진전시킬 수 없다는 것을 의미하기도 합니다. 
 
-This policy is designed to be pragmatic: certainly, we don't want to cause headaches for you. If we bumped the major version for all of these changes, we would end up releasing more major versions and ultimately causing more versioning pain for the community. It would also mean that we can't make progress in improving React as fast as we'd like.
-
-That said, if we expect that a change on this list will cause broad problems in the community, we will still do our best to provide a gradual migration path.
+그런데도 위의 목록과 같은 변경이 커뮤니티에서 광범위한 문제를 야기하게 된다면 점진적인 마이그레이션 수단(migration path)을 제공할 수 있도록 우리는 최선을 다할 것입니다.
