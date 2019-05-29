@@ -24,7 +24,7 @@ function BoilingVerdict(props) {
 }
 ```
 
-그다음으로 `Calculator`라는 컴포넌트를 만들어보겠습니다. 이 컴포넌트는 온도를 입력할 수 있는 `<input>`을 렌더링하고 그 값을 `this.state.temperature`에 저장합니다.
+그 다음으로 `Calculator`라는 컴포넌트를 만들어보겠습니다. 이 컴포넌트는 온도를 입력할 수 있는 `<input>`을 렌더링하고 그 값을 `this.state.temperature`에 저장합니다.
 
 또한 현재 입력값에 대한 `BoilingVerdict` 컴포넌트를 렌더링합니다.
 
@@ -60,7 +60,7 @@ class Calculator extends React.Component {
 
 ## 두 번째 Input 추가하기 {#adding-a-second-input}
 
-새 요구사항으로써 섭씨 입력 필드 뿐만 아니라 화씨 입력 필드를 추가하고 두 필드 간에 동기화 상태를 유지하도록 해보겠습니다.
+새 요구사항으로써 섭씨 입력 필드뿐만 아니라 화씨 입력 필드를 추가하고 두 필드 간에 동기화 상태를 유지하도록 해보겠습니다.
 
 `Calculator`에서 `TemperatureInput` 컴포넌트를 빼내는 작업부터 시작해봅시다. 또한 `"c"` 또는 `"f"`의 값을 가질 수 있는 `scale` prop를 추가할 것입니다.
 
@@ -114,7 +114,7 @@ class Calculator extends React.Component {
 
 이제 두 개의 입력 필드를 갖게 되었습니다. 그러나 둘 중 하나에 온도를 입력하더라도 다른 하나는 갱신되지 않는 문제가 있습니다. 이것은 두 입력 필드 간에 동기화 상태를 유지하고자 했던 원래 요구사항과는 맞지 않습니다.
 
-또한 `Calculator`에서 `VoilingVerdict`도 역시 보여줄 수 없는 상황입니다. 현재 입력된 온도 정보가 `TemperatureInput` 안에 숨겨져있으므로 `Calculator`는 그 값을 알 수 없기 때문입니다.
+또한 `Calculator`에서 `VoilingVerdict`도 역시 보여줄 수 없는 상황입니다. 현재 입력된 온도 정보가 `TemperatureInput` 안에 숨겨져 있으므로 `Calculator`는 그 값을 알 수 없기 때문입니다.
 
 ## 변환 함수 작성하기 {#writing-conversion-functions}
 
@@ -166,18 +166,18 @@ class TemperatureInput extends React.Component {
 
   render() {
     const temperature = this.state.temperature;
-    // ...  
+    // ...
 ```
 
 그러나 우리는 두 입력값이 서로의 것과 동기화된 상태로 있길 원합니다. 섭씨온도 입력값을 변경할 경우 화씨온도 입력값 역시 변환된 온도를 반영할 수 있어야 하며, 그 반대의 경우에도 마찬가지여야 합니다.
 
 React에서 state를 공유하는 일은 그 값을 필요로 하는 컴포넌트 간의 가장 가까운 공통 조상으로 state를 끌어올림으로써 이뤄낼 수 있습니다. 이렇게 하는 방법을 "state 끌어올리기"라고 부릅니다. 이제 `TemperatureInput`이 개별적으로 가지고 있던 지역 state를 지우는 대신 `Calculator`로 그 값을 옮겨놓을 것입니다.
 
-`Calculator`가 공유될 state를 소유하고 있으면 이 컴포넌트는 두 입력 필드의 현재 온도에 대한 "진리의 원천(source of turth)"이 됩니다. 이를 통해 두 입력 필드가 서로 간에 일관된 값을 유지하도록 만들 수 있습니다. 두 `TemperatureInput` 컴포넌트의 props가 같은 부모인 `Calculator`로부터 전달되기 때문에 두 입력 필드는 항상 동기화된 상태를 유지할 수 있게 됩니다.
+`Calculator`가 공유될 state를 소유하고 있으면 이 컴포넌트는 두 입력 필드의 현재 온도에 대한 "진리의 원천(source of truth)"이 됩니다. 이를 통해 두 입력 필드가 서로 간에 일관된 값을 유지하도록 만들 수 있습니다. 두 `TemperatureInput` 컴포넌트의 props가 같은 부모인 `Calculator`로부터 전달되기 때문에, 두 입력 필드는 항상 동기화된 상태를 유지할 수 있게 됩니다.
 
 어떻게 동작하는지 차근차근 살펴봅시다.
 
-우선, `TemperatureInput` 컴포넌트에서 `this.state.temperature`를 `this.props.temperature`로 대체할 것입니다. 지금은 `this.props.temperature`가 이미 존재한다고 가정해봅시다. 나중에는 이 값을 `Calculator`로부터 건네야 할 것입니다. 
+우선, `TemperatureInput` 컴포넌트에서 `this.state.temperature`를 `this.props.temperature`로 대체할 것입니다. 지금은 `this.props.temperature`가 이미 존재한다고 가정해봅시다. 나중에는 이 값을 `Calculator`로부터 건네야 할 것입니다.
 
 ```js{3}
   render() {
@@ -199,11 +199,11 @@ React에서는 보통 이 문제를 컴포넌트를 "제어" 가능하게 만드
     // ...
 ```
 
->주의:
+>주의
 >
 >사용자 정의 컴포넌트에서 `temperature`와 `onTemperatureChange` prop의 이름이 특별한 의미를 갖진 않습니다. 일관된 컨벤션으로 `value`와 `onChange`을 사용할 수도 있으며, 여러분이 원하는 그 어떤 이름이든지 사용할 수 있습니다.
 
-`onTemperatureChange` prop는 부모 컴포넌트인 `Calculator`로부터 `temperature` prop와 함께 제공될 것입니다. 이를 이용해 자신의 지역 state를 수정해서 변경사항을 처리하므로, 변경된 새 값을 전달받은 두 입력 필드는 모두 리렌더링될 것입니다. `Calcuator`의 새로운 구현체는 조금 뒤에 살펴보겠습니다.
+`onTemperatureChange` prop는 부모 컴포넌트인 `Calculator`로부터 `temperature` prop와 함께 제공될 것입니다. 이를 이용해 자신의 지역 state를 수정해서 변경사항을 처리하므로, 변경된 새 값을 전달받은 두 입력 필드는 모두 리렌더링될 것입니다. `Calculator`의 새로운 구현체는 조금 뒤에 살펴보겠습니다.
 
 `Calculator`의 변경사항을 들여다보기 전에 `TemperatureInput` 컴포넌트에 대한 변경사항부터 요약해보겠습니다. 이 컴포넌트의 지역 state를 제거했으며 `this.state.temperature` 대신에 `this.props.temperature`를 읽어오도록 변경했습니다. state를 변경하고 싶을 경우 `this.setState()` 대신에 `Calculator`로부터 건네받은 `this.props.onTemperatureChange()`를 호출하도록 만들었습니다.
 
@@ -305,7 +305,7 @@ class Calculator extends React.Component {
 
 입력값을 변경할 때 일어나는 일들을 정리해보겠습니다.
 
-* React는 DOM `<input>`의 `onChange`에 지정된 함수를 호출합니다. 위 예제의 경우 `TemperatureInput`의 `handleChange` 메서드에 해당합니다.
+* React는 DOM `<input>`의 `onChange`에 지정된 함수를 호출합니다. 위 예시의 경우 `TemperatureInput`의 `handleChange` 메서드에 해당합니다.
 * `TemperatureInput` 컴포넌트의 `handleChange` 메서드는 새로 입력된 값과 함께 `this.props.onTemperatureChange()`를 호출합니다. `onTemperatureChange`를 포함한 이 컴포넌트의 props는 부모 컴포넌트인 `Calculator`로부터 제공받은 것입니다.
 * 이전 렌더링 단계에서, `Calculator`는 섭씨 `TemperatureInput`의 `onTemperatureChange`를 `Calculator`의 `handleCelsiusChange` 메서드로, 화씨 `TemperatureInput`의 `onTemperatureChange`를 `Calculator`의 `handleFahrenheitChange` 메서드로 지정해놓았습니다. 따라서 우리가 둘 중에 어떤 입력 필드를 수정하느냐에 따라서 `Calculator`의 두 메서드 중 하나가 호출됩니다.
 * 이들 메서드는 내부적으로 `Calculator` 컴포넌트가 새 입력값, 그리고 현재 수정한 입력 필드의 입력 단위와 함께 `this.setState()`를 호출하게 함으로써 React에게 자신을 다시 렌더링하도록 요청합니다.
@@ -320,9 +320,9 @@ class Calculator extends React.Component {
 
 React 애플리케이션 안에서 변경이 일어나는 데이터에 대해서는 "진리의 원천(source of truth)"을 하나만 두어야 합니다. 보통의 경우, state는 렌더링에 그 값을 필요로 하는 컴포넌트에 먼저 추가됩니다. 그러고 나서 다른 컴포넌트도 역시 그 값을 필요로 하게 되면 그 값을 그들의 가장 가까운 공통 조상으로 끌어올리면 됩니다. 다른 컴포넌트 간에 존재하는 state를 동기화시키려고 노력하는 대신 [하향식 데이터 흐름](/docs/state-and-lifecycle.html#the-data-flows-down)에 기대는 걸 추천합니다.
 
-state를 끌어올리는 작업은 양방향 바인딩 접근 방식보다 더 많은 "보일러플레이트" 코드를 유발하지만 버그를 찾고 격리시키기 더 쉽게 만든다는 장점이 있습니다. 어떤 state든 간에 특정 컴포넌트 안에서 존재하기 마련이고 그 컴포넌트가 자신의 state를 스스로 변경할 수 있으므로 버그가 존재할 수 있는 범위가 크게 줄어듭니다. 또한 사용자의 입력을 거부하거나 변형하는 자체 로직을 구현할 수도 있습니다.
+state를 끌어올리는 작업은 양방향 바인딩 접근 방식보다 더 많은 "보일러플레이트" 코드를 유발하지만 버그를 찾고 격리하기 더 쉽게 만든다는 장점이 있습니다. 어떤 state든 간에 특정 컴포넌트 안에서 존재하기 마련이고 그 컴포넌트가 자신의 state를 스스로 변경할 수 있으므로 버그가 존재할 수 있는 범위가 크게 줄어듭니다. 또한 사용자의 입력을 거부하거나 변형하는 자체 로직을 구현할 수도 있습니다.
 
-어떤 값이 props 또는 state로부터 계산될 수 있다면, 아마도 그 값을 state에 두어서는 안 될 것입니다. 예를 들어 `celsiusValue`와 `fahrenheitValue`를 둘 다 저장하는 대신, 단지 최근에 변경된 `temperature`와 `scale`만 저장하면 됩니다. 다른 입력 필드의 값은 항상 그 값들에 기반해서 `render()` 메서드 안에서 계산될 수 있습니다. 이를 통해 사용자 입력값의 정밀도를 유지한 채 다른 필드의 입력값에 반올림을 지우거나 적용할 수 있게 됩니다.
+어떤 값이 props 또는 state로부터 계산될 수 있다면, 아마도 그 값을 state에 두어서는 안 됩니다. 예를 들어 `celsiusValue`와 `fahrenheitValue`를 둘 다 저장하는 대신, 단지 최근에 변경된 `temperature`와 `scale`만 저장하면 됩니다. 다른 입력 필드의 값은 항상 그 값들에 기반해서 `render()` 메서드 안에서 계산될 수 있습니다. 이를 통해 사용자 입력값의 정밀도를 유지한 채 다른 필드의 입력값에 반올림을 지우거나 적용할 수 있게 됩니다.
 
 UI에서 무언가 잘못된 부분이 있을 경우, [React Developer Tools](https://github.com/facebook/react-devtools)를 이용하여 props를 검사하고 state를 갱신할 책임이 있는 컴포넌트를 찾을 때까지 트리를 따라 탐색해보세요. 이렇게 함으로써 소스 코드에서 버그를 추적할 수 있습니다.
 
