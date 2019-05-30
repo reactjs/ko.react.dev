@@ -4,13 +4,13 @@ title: Portals
 permalink: docs/portals.html
 ---
 
-portal은 부모 컴포넌트의 DOM 계층 구조 바깥에 있는 DOM 노드로 자식을 렌더링하는 최고의 방법을 제공합니다.
+Portal은 부모 컴포넌트의 DOM 계층 구조 바깥에 있는 DOM 노드로 자식을 렌더링하는 최고의 방법을 제공합니다.
 
 ```js
 ReactDOM.createPortal(child, container)
 ```
 
-첫 번째 인자(`child`)는 엘리먼트, 문자열, 혹은 fragment와 같은 어떤 종류이든 [렌더링할 수 있는 React 자식](/docs/react-component.html#render) 입니다. 두 번째 인자(`container`)는 DOM 엘리먼트입니다.
+첫 번째 인자(`child`)는 엘리먼트, 문자열, 혹은 fragment와 같은 어떤 종류이든 [렌더링할 수 있는 React 자식](/docs/react-component.html#render)입니다. 두 번째 인자(`container`)는 DOM 엘리먼트입니다.
 
 ## 사용법 {#usage}
 
@@ -50,7 +50,7 @@ portal의 전형적인 유스케이스는 부모 컴포넌트에 `overflow: hidd
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/yzMaBd)
 
-## portal을 통한 이벤트 버블링 {#event-bubbling-through-portals}
+## Portal을 통한 이벤트 버블링 {#event-bubbling-through-portals}
 
 portal이 DOM 트리의 어디에도 존재할 수 있다 하더라도 모든 다른 면에서 일반적인 React 자식처럼 동작합니다. context와 같은 기능은 자식이 portal이든지 아니든지 상관없이 정확하게 같게 동작합니다. 이는 *DOM 트리*에서의 위치에 상관없이 portal은 여전히 *React 트리*에 존재하기 때문입니다.
 
