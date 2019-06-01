@@ -71,7 +71,7 @@ JavaScript를 다시 보고 싶다면 [이 가이드](https://developer.mozilla.
 
 <summary><b>선택 사항: 선호하는 텍스트 편집기를 사용하기 위한 지침</b></summary>
 
-이 설정은 더 많은 작업을 요구하지만, 당신이 선택한 편집기를 사용하여 자습서를 완성할 수 있게 합니다. 아래의 단계를 따라주세요.
+이 설정에서는 더 많은 작업이 필요하지만, 당신이 선호하는 편집기를 사용하여 자습서를 완성할 수 있습니다. 아래의 단계를 따라주세요.
 
 1. 최신 버전의 [Node.js](https://nodejs.org/en/)가 설치되어 있는지 확인해주세요.
 2. [Create React App 설치 지침](/docs/create-a-new-react-app.html#create-react-app)을 따라 새로운 프로젝트를 생성해주세요.
@@ -192,7 +192,7 @@ Square 컴포넌트는 `<button>`을 렌더링하고 Board는 사각형 9개를 
 
 자습서를 따를 때 복사/붙여넣기가 아니라 손으로 직접 코드를 작성하길 추천합니다. 이렇게 하면 코드를 몸으로 기억하고 이해력을 더 높일 수 있습니다.
 
-Square에 `value`라는 prop을 전달하기 위해 Board의 `renderSquare` 함수 코드를 수정해주세요.
+Square에 `value` prop을 전달하기 위해 Board의 `renderSquare` 함수 코드를 수정해주세요.
 
 ```js{3}
 class Board extends React.Component {
@@ -201,7 +201,7 @@ class Board extends React.Component {
   }
 ```
 
-값을 보여주기 위해 Square의 `render` 함수에서 `{/* TODO */}`를 `{this.props.value}`로 수정해주세요.
+값을 표시하기 위해 Square의 `render` 함수에서 `{/* TODO */}`를 `{this.props.value}`로 수정해주세요.
 
 ```js{5}
 class Square extends React.Component {
@@ -225,7 +225,7 @@ class Square extends React.Component {
 
 **[지금까지의 전체 코드 확인하기](https://codepen.io/gaearon/pen/aWWQOG?editors=0010)**
 
-축하합니다! 부모 Board 컴포넌트에서 자식 Square 컴포넌트로 "prop을 전달"하였습니다. props 전달하기는 React 앱에서 부모에서 자식으로 정보가 어떻게 흘러가는지 알려줍니다.
+축하합니다! 부모 Board 컴포넌트에서 자식 Square 컴포넌트로 "prop을 전달"했습니다. props 전달하기는 React 앱에서 부모에서 자식으로 정보가 어떻게 흘러가는지 알려줍니다.
 
 ### 대화형 컴포넌트 만들기 {#making-an-interactive-component}
 
@@ -262,7 +262,7 @@ Square를 클릭하면 브라우저에서 경고 창이 뜨는 것을 확인할 
 >}
 >```
 >
-> `onClick={() => alert('click')}`이 어떻게 동작하는지 살펴보면 `onClick` prop으로 *함수*를 전달하고 있습니다. React는 클릭했을 때에만 이 함수를 호출할 것입니다. `() =>`을 잊어버리고 `onClick={alert('click')}`이라고 작성하는 것은 흔히 발생하는 실수이며 컴포넌트가 다시 렌더링할 때마다 경고 창을 띄울 것입니다.
+> `onClick={() => alert('click')}`이 어떻게 동작하는지 살펴보면 `onClick` prop으로 *함수*를 전달하고 있습니다. React는 클릭했을 때에만 이 함수를 호출할 것입니다. `() =>`을 잊어버리고 `onClick={alert('click')}`이라고 작성하는 것은 자주 발생하는 실수이며 컴포넌트가 다시 렌더링할 때마다 경고 창을 띄울 것입니다.
 
 다음 단계로 Square 컴포넌트를 클릭한 것을 "기억하게" 만들어 "X" 표시를 채워 넣으려고 합니다. 무언가를 "기억하기"위해 component는 **state**를 사용합니다.
 
@@ -551,7 +551,7 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 최종 결과는 동일하기만 직접적인 객체 변경이나 기본 데이터의 변경을 하지 않는다면 아래에 기술된 몇 가지 이점을 얻을 수 있습니다.
 
-#### 복잡한 특징들이 단순해짐 {#complex-features-become-simple}
+#### 복잡한 특징들을 단순하게 만듦 {#complex-features-become-simple}
 
 불변성은 복잡한 특징들을 구현하기 쉽게 만듭니다. 자습서에서는 "시간 여행" 기능을 구현하여 틱택토 게임의 이력을 확인하고 이전 동작으로 "되돌아갈 수 있습니다". 이 기능은 게임에만 국한되지 않습니다. 특정 행동을 취소하고 다시 실행하는 기능은 애플리케이션에서 일반적인 요구사항 입니다. 직접적인 데이터 변이를 피하는 것은 이전 버전의 게임 이력을 유지하고 나중에 재사용할 수 있게 만듭니다.
 
@@ -722,7 +722,7 @@ function calculateWinner(squares) {
 
 9개의 사각형의 배열을 가지고 함수는 승자를 확인하여 적절한 값으로 `'X'`, `'O'`, 또는 `null`을 반환합니다.
 
-어떤 플레이어가 우승했는지 확인하기 위해 Board의 `render` 함수에서 `calculateWinner(squares)`를 호출할 것입니다. 한 플레이어가 이긴다면 "Winner: X" 또는 "Winner: X" 같은 텍스트를 표시할 수 있습니다. Board의 `render` 함수에서 선언한 `status`를 아래 코드로 바꿔주세요.
+어떤 플레이어가 우승했는지 확인하기 위해 Board의 `render` 함수에서 `calculateWinner(squares)`를 호출할 것입니다. 한 플레이어가 이긴다면 "Winner: X" 또는 "Winner: O" 같은 문구를 표시할 수 있습니다. Board의 `render` 함수에서 선언한 `status`를 아래 코드로 바꿔주세요.
 
 ```javascript{2-8}
   render() {
