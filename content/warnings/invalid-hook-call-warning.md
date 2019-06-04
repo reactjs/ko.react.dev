@@ -13,7 +13,7 @@ permalink: warnings/invalid-hook-call-warning.html
 다음 세 가지 일반적인 이유로 이 오류 메시지를 보게 됩니다.
 
 1. React와 React DOM의 **버전이 일치하지 않을 수 있습니다.**
-2. **[Hooks 규칙](/docs/hooks-rules.html)을 위반했을 수 있습니다.**
+2. **[Hooks 규칙](/content/docs/hooks-rules.md)을 위반했을 수 있습니다.**
 3. 같은 앱에 **React가 한 개 이상**있을 수 있습니다.
 
 각각의 경우를 살펴보겠습니다.
@@ -28,9 +28,9 @@ Hooks를 아직 지원하지 않는`react-dom`(<16.8.0) 또는`react-native` (<0
 React에서 **함수 컴포넌트를 렌더링하는 동안**에만 Hooks를 호출할 수 있습니다.
 
 * ✅ 함수 컴포넌트 본문의 최상위 레벨에서 호출하세요.
-* ✅ [사용자 정의 Hook](/docs/hooks-custom.html) 본체의 최상위 레벨에서 호출하세요.
+* ✅ [사용자 정의 Hook](/content/docs/hooks-custom.md) 본체의 최상위 레벨에서 호출하세요.
 
-**이에 대한 자세한 내용은 [Hooks 규칙](/docs/hooks-rules.html)에서 알아보세요.**
+**이에 대한 자세한 내용은 [Hooks 규칙](/content/docs/hooks-rules.md)에서 알아보세요.**
 
 ```js{2-3,8-9}
 function Counter() {
@@ -85,7 +85,7 @@ class Bad3 extends React.Component {
 
 >주의
 >
->[사용자 정의 Hooks](/docs/hooks-custom.html)는 다른 Hooks를 호출*할 수도* 있습니다 (이것이 사용자 정의 Hooks의 목적입니다). 사용자 정의 Hooks도 함수 컴포넌트가 렌더링되는 동안에만 호출되도록 되어있기 때문에 문제없이 동작합니다.
+>[사용자 정의 Hooks](/content/docs/hooks-custom.md)는 다른 Hooks를 호출*할 수도* 있습니다 (이것이 사용자 정의 Hooks의 목적입니다). 사용자 정의 Hooks도 함수 컴포넌트가 렌더링되는 동안에만 호출되도록 되어있기 때문에 문제없이 동작합니다.
 
 ## React 중복 {#duplicate-react}
 
