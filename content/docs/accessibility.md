@@ -295,11 +295,7 @@ class OuterClickExample extends React.Component {
 
 <img src="../images/docs/outerclick-with-keyboard.gif" alt="A toggle button opening a popover list implemented with the click outside pattern and operated with the keyboard showing the popover not being closed on blur and it obscuring other screen elements." />
 
-<<<<<<< HEAD
 `onBlur`와 `onFocus` 같은 적절한 이벤트 핸들러를 사용하여 같은 기능을 제공할 수 있습니다.
-=======
-The same functionality can be achieved by using appropriate event handlers instead, such as `onBlur` and `onFocus`:
->>>>>>> c93286c071bca17ecba91cd130908fe2e33a4766
 
 ```javascript{19-29,31-34,37,40-41}
 class BlurExample extends React.Component {
