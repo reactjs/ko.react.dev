@@ -49,11 +49,7 @@
 
 ### Push 하기
 
-<<<<<<< HEAD
-1. `git add -A && git commit -m "My message"` (`My message` 부분을 `Fixed header logo on Android` 같은 커밋 메시지로 교체)를 실행하여 변경한 파일들을 commit 해주세요.
-=======
-1. `git add -A && git commit -m "My message"` (replacing `My message` with a commit message, such as `Fix header logo on Android`) to stage and commit your changes
->>>>>>> 957f0b3a4067a9ba46d1ffda898658925ffa0549
+1. `git add -A && git commit -m "My message"` (`My message` 부분을 `Fix header logo on Android` 같은 커밋 메시지로 교체)를 실행하여 변경한 파일들을 commit 해주세요.
 1. `git push my-fork-name the-name-of-my-branch`
 1. [reactjs.org repo](https://github.com/reactjs/reactjs.org)에서 최근에 푸시된 브랜치를 볼 수 있습니다.
 1. Github 지침을 따라주세요.
