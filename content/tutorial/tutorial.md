@@ -16,7 +16,7 @@ redirect_from:
 
 ## 자습서를 시작하기 전에 {#before-we-start-the-tutorial}
 
-우리는 이 자습서에서 작은 게임을 만들 것입니다. **게임을 만들고 싶지 않아서 자습서를 건너뛰고 싶을 수 있습니다. 그래도 한번 해보세요!** 자습서를 통해 React 앱을 만드는 기본적인 사항들을 배웁니다. 이것을 마스터하면 React를 더 깊게 이해할 수 있습니다.
+우리는 이 자습서에서 작은 게임을 만들겁니다. **게임을 만들고 싶지 않아서 자습서를 건너뛰고 싶을 수 있습니다. 그래도 한번 해보세요!** 자습서를 통해 React 앱을 만드는 기본적인 사항들을 배웁니다. 이것을 마스터하면 React를 더 깊게 이해할 수 있습니다.
 
 > 팁
 >
@@ -33,7 +33,7 @@ redirect_from:
 
 이 자습서를 따라 하기 위해 코드를 복사하여 붙여넣는 것도 괜찮지만 직접 코드를 따라 적기를 추천합니다. 이 방식은 몸으로 기억하는 것과 더 강한 이해에 도움을 줄 것입니다.
 
-### 무엇을 구현하나요? {#what-are-we-building}
+### 무엇을 만들게 될까요? {#what-are-we-building}
 
 우리는 React로 대화형 틱택토 게임을 만드는 방법을 알려드릴 것입니다.
 
@@ -43,7 +43,7 @@ redirect_from:
 
 틱택토 게임에 익숙해졌다면 종료해도 괜찮습니다. 우리는 자습서의 간단한 템플릿에서 시작할 것입니다. 다음 단계에서는 게임 구현을 시작하기 위한 설정을 다룹니다.
 
-### 사전 준비 {#prerequisites}
+### 필요한 선수 지식 {#prerequisites}
 
 당신이 HTML과 JavaScript에 어느 정도 익숙하다고 가정하지만 다른 프로그래밍 언어를 사용하더라도 자습서를 따라갈 수 있습니다. 또한 함수, 객체, 배열, 가능하다면 클래스 같은 프로그래밍 개념에 익숙하다고 가정합니다.
 
@@ -53,15 +53,15 @@ JavaScript를 다시 보고 싶다면 [이 가이드]( https://developer.mozilla
 
 자습서를 완성하는 방법에는 두 가지가 있습니다. 브라우저에서 코드를 작성해도 되고 컴퓨터에 로컬 개발 환경을 설정해도 됩니다.
 
-### 설정 옵션 1: 브라우저에 코드 작성하기 {#setup-option-1-write-code-in-the-browser}
+### 선택 1: 브라우저에 코드 작성하기 {#setup-option-1-write-code-in-the-browser}
 
 이 옵션은 가장 빠르게 시작하는 방식입니다!
 
-먼저 새 탭에서 **[시작 코드](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**를 열어주세요. 새 탭은 비어있는 틱택토 게임판과 React 코드를 보여줄 것입니다. 우리는 자습서에서 React 코드를 편집할 것입니다.
+먼저 새 탭에서 **[초기 코드](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**를 열어주세요. 새 탭은 비어있는 틱택토 게임판과 React 코드를 보여줄 것입니다. 우리는 자습서에서 React 코드를 편집할 것입니다.
 
 이제 두 번째 설정 옵션을 건너뛰고 [개요](#overview) 단락으로 넘어가서 React에 대한 개요를 확인해주세요.
 
-### 설정 옵션 2: 로컬 개발 환경 {#setup-option-2-local-development-environment}
+### 선택 2: 자신의 컴퓨터에서 코드 작성하기 {#setup-option-2-local-development-environment}
 
 이 방식은 완전히 선택사항이며 이 자습서에 필요한 것은 아닙니다!
 
@@ -118,7 +118,7 @@ import './index.css';
 
 </details>
 
-### 도와주세요, 막히는 부분이 있어요! {#help-im-stuck}
+### 도움이 필요할 때! {#help-im-stuck}
 
 막히는 부분이 생겼다면 [커뮤니티에서 지원하는 자료](/community/support.html)를 확인해보세요. 특히 [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n)은 빠르게 도움을 받을 수 있는 좋은 방법입니다. 원하는 답을 얻지 못하거나 계속 막힌 상태라면 이슈를 제출해주세요. 우리가 도와드리겠습니다.
 
@@ -126,7 +126,7 @@ import './index.css';
 
 이제 설정을 완료했으니 React의 개요를 살펴보겠습니다!
 
-### React가 무엇인가요? {#what-is-react}
+### React란 무엇인가요? {#what-is-react}
 
 React는 사용자 인터페이스를 구축하기 위한 선언적이고 효율적이며 유연한 JavaScript 라이브러리입니다. "컴포넌트"라고 불리는 작고 고립된 코드의 파편을 이용하여 복잡한 UI를 구성하도록 돕습니다.
 
@@ -172,11 +172,11 @@ JSX는 JavaScript의 강력한 기능을 가지고 있습니다. JSX 내부의 �
 
 `ShoppingList` 컴포넌트는 `<div />`와 `<li />` 같은 내각 DOM 컴포넌트만을 렌더링하지만 컴포넌트를 조합하여 커스텀 React 컴포넌트를 렌더링하는 것도 가능합니다. 예를 들어 `<ShoppingList />`를 작성하여 모든 쇼핑 목록을 참조할 수 있습니다. React 컴포넌트는 캡슐화되어 독립적으로 동작할 수 있습니다. 이러한 이유로 단순한 컴포넌트를 사용하여 복잡한 UI를 구현할 수 있습니다.
 
-## 시작 코드 살펴보기 {#inspecting-the-starter-code}
+## 초기 코드 살펴보기 {#inspecting-the-starter-code}
 
-**브라우저에서** 자습서 작성을 하는 경우 새 탭에서 **[시작 코드](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**를 열어주세요. **로컬 환경에서** 진행하는 경우 프로젝트 폴더에서 `src/index.js`를 열어주세요(이 파일은 [설정](#setup-option-2-local-development-environment)에서 다룬 적이 있습니다).
+**브라우저에서** 자습서 작성을 하는 경우 새 탭에서 **[초기 코드](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**를 열어주세요. **로컬 환경에서** 진행하는 경우 프로젝트 폴더에서 `src/index.js`를 열어주세요(이 파일은 [설정](#setup-option-2-local-development-environment)에서 다룬 적이 있습니다).
 
-시작 코드는 제작할 틱택토의 기본 틀입니다. CSS 스타일은 제공되기 때문에 React를 배우는 것과 게임을 프로그래밍하는 데에만 집중하면 됩니다.
+초기 코드는 제작할 틱택토의 기본 틀입니다. CSS 스타일은 제공되기 때문에 React를 배우는 것과 게임을 프로그래밍하는 데에만 집중하면 됩니다.
 
 코드를 살펴보면 세 가지 React 컴포넌트를 확인할 수 있습니다.
 
@@ -227,7 +227,7 @@ class Square extends React.Component {
 
 축하합니다! 부모 Board 컴포넌트에서 자식 Square 컴포넌트로 "prop을 전달"했습니다. props 전달하기는 React 앱에서 부모에서 자식으로 정보가 어떻게 흘러가는지 알려줍니다.
 
-### 대화형 컴포넌트 만들기 {#making-an-interactive-component}
+### 사용자와 상호작용하는 컴포넌트 만들기 {#making-an-interactive-component}
 
 Square 컴포넌트를 클릭하면 "X"가 체크되도록 만들어봅시다.
 먼저 Square 컴포넌트의 `render()` 함수에서 반환하는 버튼 태그를 아래와 같이 변경해주세요.
@@ -523,7 +523,7 @@ Square 컴포넌트가 더 이상 state를 유지하지 않기 때문에 Square 
 
 `handleClick`에서는 `.slice()`를 호출하는 것으로 기존 배열을 수정하지 않고 `squares` 배열의 복사본을 생성하여 수정하는 것에 주의해주세요. 왜 `squares` 배열의 사본을 생성하였는지 다음 단락에서 설명하겠습니다.
 
-### 왜 불변성이 중요할까요 {#why-immutability-is-important}
+### 불변성이 왜 중요할까요? {#why-immutability-is-important}
 
 이전 코드 예시에서 기존 배열을 수정하는 것이 아니라 `.slice()` 연산자를 사용하여 `squares` 배열의 사본 만들기를 추천했습니다. 지금부터 불변성이 무엇인지와 왜 불변성이 중요한지 알아보겠습니다.
 
@@ -557,7 +557,7 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 #### 변화를 감지함 {#detecting-changes}
 
-객체가 직접적으로 수정되기 때문에 복제가 가능한 객체에서 변화를 감지하는 것은 어렵습니다. 감지는 복제가 가능한 객체를 이전 사본과 비교하고 전체 객체 트리를 돌아야 합니다. 
+객체가 직접적으로 수정되기 때문에 복제가 가능한 객체에서 변화를 감지하는 것은 어렵습니다. 감지는 복제가 가능한 객체를 이전 사본과 비교하고 전체 객체 트리를 돌아야 합니다.
 
 불변 객체에서 변화를 감지하는 것은 상당히 쉽습니다. 참조하고 있는 불변 객체가 이전 객체와 다르다면 객체는 변한 것입니다.
 
@@ -593,7 +593,7 @@ function Square(props) {
 >
 > Square를 함수 컴포넌트로 수정했을 때 `onClick={() => this.props.onClick()}`을 `onClick={props.onClick}`로 간결하게 작성했습니다. *양쪽* 모두 괄호가 사라진 것에 주목해주세요.
 
-### 차례 넘기기 {#taking-turns}
+### 순서 만들기 {#taking-turns}
 
 우리의 틱택토 게임이 가진 큰 문제점을 고칠 시간입니다. 게임판에서 "O"가 표시되지 않는 점이죠.
 
@@ -1055,7 +1055,7 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 위의 경고가 무엇을 의미하는지 얘기해봅시다.
 
-### 키 선택하기 {#picking-a-key}
+### Key 선택하기 {#picking-a-key}
 
 리스트를 렌더링할 때 React는 렌더링하는 리스트 아이템에 대한 정보를 저장합니다. 리스트를 업데이트 할 때 React는 무엇이 변했는 지 결정해야 합니다. 리스트의 아이템들은 추가, 제거, 재배열, 업데이트 될 수 있습니다.
 
