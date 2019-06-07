@@ -31,7 +31,7 @@ React와 HTML 사이에는 다르게 작동하는 여러가지의 어트리뷰�
 
 CSS class를 사용하려면 `className` 어트리뷰트를 사용하세요. 이는 `<div>`, `<a>` 등과 같은 모든 일반적인 DOM 및 SVG 엘리먼트에 적용됩니다.
 
-웹 컴포넌트 React with Web Components (which is uncommon)을 사용하는 경우 `class` 어트리뷰트를 사용하세요.
+일반적이진 않지만, React를 웹 컴포넌트에 사용하는 경우 `class` 어트리뷰트를 사용하세요.
 
 ### dangerouslySetInnerHTML {#dangerouslysetinnerhtml}
 
