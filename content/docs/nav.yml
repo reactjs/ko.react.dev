@@ -30,7 +30,7 @@
     - id: forms
       title: 폼
     - id: lifting-state-up
-      title: State 올리기
+      title: State 끌어올리기
     - id: composition-vs-inheritance
       title: 합성 vs 상속
     - id: thinking-in-react
