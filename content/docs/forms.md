@@ -123,7 +123,7 @@ class EssayForm extends React.Component {
 }
 ```
 
-`this.state.value`를 생성자에서 초기화하므로 textare는 일부 텍스트를 가진채 시작되는 점을 주의해주세요.
+`this.state.value`를 생성자에서 초기화하므로 textarea는 일부 텍스트를 가진채 시작되는 점을 주의해주세요.
 
 ## select 태그 {#the-select-tag}
 
