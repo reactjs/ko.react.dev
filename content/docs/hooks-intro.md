@@ -33,7 +33,7 @@ function Example() {
 
 ## 소개 영상 {#video-introduction}
 
-React Conf 2018에서 Sophie Alpert와 Dan Abramov는 Hook를 소개했었습니다. 이어서 Ryan Florence가 Hook를 사용하여 어떻게 어플리케이션을 리팩토링 할 것인지 보여주었습니다. 아래 영상에서 확인해보세요.
+React Conf 2018에서 Sophie Alpert와 Dan Abramov는 Hook를 소개했었습니다. 이어서 Ryan Florence가 Hook를 사용하여 어떻게 애플리케이션을 리팩토링 할 것인지 보여주었습니다. 아래 영상에서 확인해보세요.
 <br>
 
 <iframe width="650" height="366" src="//www.youtube.com/embed/dpw9EHDh2bM" frameborder="0" allowfullscreen></iframe>
@@ -58,7 +58,7 @@ Hook는 5년 동안 우리가 React에서 수만 개의 컴포넌트들을 유�
 
 ### 컴포넌트 사이에서 상태와 관련된 로직을 재사용하기 어렵습니다. {#ts-hard-to-reuse-stateful-logic-between-components}
 
-React는 컴포넌트에 재사용 가능한 행동을 붙이는 방법을 제공하지 않습니다. (예를 들어, 스토어에 컴포넌트를 연결하는 것) 만약 이전부터 React를 사용해왔다면, 이것을 해결하기 위해 [render porps](/docs/render-props.html) 그리고 [고차 컴포넌트]((/docs/higher-order-components.html))와 같은 패턴에 익숙할 것입니다. 그러나 이런 패턴을 사용할 때 컴포넌트를 재구성해야 하며 코드를 추적하기 어렵게 만듭니다. React 개발자 도구에서 전형적인 React 애플리케이션을 본다면, providers, consumers, 고차 컴포넌트, render props 그리고 다른 추상화에 대한 레이어로 둘러 싸인 "래퍼 지옥(wrapper hell)"을 볼 가능성이 높습니다. [개발자 도구에서 걸러낼 수 있지만](https://github.com/facebook/react-devtools/pull/503), 요점은 더 깊은 문제입니다. React는 상태 관련 로직을 공유하기 위해 좀 더 좋은 기초 요소가 필요합니다.
+React는 컴포넌트에 재사용 가능한 행동을 붙이는 방법을 제공하지 않습니다. (예를 들어, 스토어에 컴포넌트를 연결하는 것) 만약 이전부터 React를 사용해왔다면, 이것을 해결하기 위해 [render props](/docs/render-props.html) 그리고 [고차 컴포넌트]((/docs/higher-order-components.html))와 같은 패턴에 익숙할 것입니다. 그러나 이런 패턴을 사용할 때 컴포넌트를 재구성해야 하며 코드를 추적하기 어렵게 만듭니다. React 개발자 도구에서 전형적인 React 애플리케이션을 본다면, providers, consumers, 고차 컴포넌트, render props 그리고 다른 추상화에 대한 레이어로 둘러 싸인 "래퍼 지옥(wrapper hell)"을 볼 가능성이 높습니다. [개발자 도구에서 걸러낼 수 있지만](https://github.com/facebook/react-devtools/pull/503), 요점은 더 깊은 문제입니다. React는 상태 관련 로직을 공유하기 위해 좀 더 좋은 기초 요소가 필요합니다.
 
 Hook를 사용하면 컴포넌트로부터 상태 관련 로직을 추상화할 수 있습니다. 이것은 독립적인 테스트와 재사용이 가능합니다. **Hook는 계층 변화 없이 상태 관련 로직을 재사용할 수 있도록 도와줍니다.** 이것은 많은 컴포넌트들 혹은 커뮤니티 사이에서 Hook를 공유하기 쉬워집니다.
 
@@ -66,11 +66,11 @@ Hook를 사용하면 컴포넌트로부터 상태 관련 로직을 추상화할 
 
 ### 복잡한 컴포넌트들은 이해하기 어렵습니다. {#complex-components-become-hard-to-understand}
 
-우리는 때론 간단하게 시작했지만 유지하기 힘든 상태 관련 로직들과 사이드 이펙트가 있는 컴포넌트들을 유지해야합니다. 각 라이프사이클 메서드는 자주 관련 없는 로직이 섞여 있습니다. 예를 들어, 컴포넌트들은 `componentDidMount` 그리고 `componentDidUpdate`로 데이터를 가져오는 것을 수행할 수도 있습니다. 그러나, 같은 `componentDidMount` 메서드라도 이벤트 리스너를 설정하는 것과 같은 관계없는 일부 로직이 포함될 수도 있으며, `componentWillUnmount`에서 cleanup을 수행하기도 합니다. 함께 변경되는 상호 관련 코드는 분리되지만 완벽하게 연관 없는 코드들은 단일 메소드로 결합합니다. 이로 인해 버그와 무결성을 너무나 쉽게 발생합니다.
+우리는 때론 간단하게 시작했지만 유지하기 힘든 상태 관련 로직들과 사이드 이펙트가 있는 컴포넌트들을 유지해야합니다. 각 생명주기 메서드는 자주 관련 없는 로직이 섞여 있습니다. 예를 들어, 컴포넌트들은 `componentDidMount` 그리고 `componentDidUpdate`로 데이터를 가져오는 것을 수행할 수도 있습니다. 그러나, 같은 `componentDidMount` 메서드라도 이벤트 리스너를 설정하는 것과 같은 관계없는 일부 로직이 포함될 수도 있으며, `componentWillUnmount`에서 cleanup을 수행하기도 합니다. 함께 변경되는 상호 관련 코드는 분리되지만 완벽하게 연관 없는 코드들은 단일 메서드로 결합합니다. 이로 인해 버그와 무결성을 너무나 쉽게 발생합니다.
 
 위와 같은 사례 안에서 상태 관련 로직이 모든 공간에 있기 때문에 이러한 컴포넌트들을 작게 만드는 것은 불가능합니다. 또한 테스트하기도 어렵습니다. 이것은 많은 사람이 React를 별도의 상태 관리 라이브러리와 함께 결합해서 사용하는 이유 중 하나입니다. 그러나, 상태 관리 라이브러리는 종종 너무 많은 추상화를 하고, 다른 파일들 사이에서 건너뛰기를 요구하며 컴포넌트 재사용을 더욱 어렵게 만듭니다.
 
-이것을 해결하기 위해, 라이프사이클 메서드를 기반으로 쪼개는 데 초점을 맞추기 보다는, **Hook를 통해 로직에 기반을 둔 작은 함수로 컴포넌트를 나눌 수 있습니다. (구독 설정 및 데이터를 불러오는 것과 같은 로직)** 조금 더 예측 가능하도록 하기 위해 리듀서를 활용해 컴포넌트의 지역 상태 값을 관리하도록 할 수 있습니다.
+이것을 해결하기 위해, 생명주기 메서드를 기반으로 쪼개는 데 초점을 맞추기 보다는, **Hook를 통해 로직에 기반을 둔 작은 함수로 컴포넌트를 나눌 수 있습니다. (구독 설정 및 데이터를 불러오는 것과 같은 로직)** 조금 더 예측 가능하도록 하기 위해 리듀서를 활용해 컴포넌트의 지역 상태 값을 관리하도록 할 수 있습니다.
 
 나중에[Effect Hook](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns)에서 더 알아볼 것입니다.
 
