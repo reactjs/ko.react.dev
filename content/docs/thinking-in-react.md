@@ -37,11 +37,7 @@ JSON API는 아래와 같은 데이터를 반환합니다.
 
 하지만 어떤 것이 컴포넌트가 되어야 할지 어떻게 알 수 있을까요? 우리가 새로운 함수나 객체를 만들 때처럼 만드시면 됩니다. 한 가지 테크닉은 [단일 책임 원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99)입니다. 이는 하나의 컴포넌트는 한 가지 일을 하는게 이상적이라는 원칙입니다. 하나의 컴포넌트가 커지게 된다면 이는 보다 작은 하위 컴포넌트로 분리되어야 합니다.
 
-<<<<<<< HEAD
  주로 JSON 데이터를 유저에게 보여주기 때문에, 데이터 모델이 적절하게 만들어졌다면, UI(컴포넌트 구조)가 잘 연결될 것입니다. 이는 UI와 데이터 모델이 같은 *인포메이션 아키텍처(information architecture)*로 잘 연결되기 때문입니다. 이 말은 UI를 컴포넌트로 세분화 시키기가 쉽다는 의미이기도 합니다. 각 컴포넌트가 데이터 모델의 한 조각을 나타내도록 분리하면 됩니다.
-=======
-Since you're often displaying a JSON data model to a user, you'll find that if your model was built correctly, your UI (and therefore your component structure) will map nicely. That's because UI and data models tend to adhere to the same *information architecture*. Separate your UI into components, where each component matches one piece of your data model.
->>>>>>> cb5a61cdbfa5e72646cfb954056c6a4fde490a8c
 
 ![Component diagram](../images/blog/thinking-in-react-components.png)
 
