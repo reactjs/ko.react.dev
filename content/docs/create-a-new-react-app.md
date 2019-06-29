@@ -22,7 +22,7 @@ next: cdn-links.html
 
 ## 툴체인이 필요하지 않을 수 있습니다. {#you-might-not-need-a-toolchain}
 
-위에서 설명한 문제를 경험하지 못했거나 아직 Javascript 도구를 사용하는 것이 편하지 않다면, [React를 HTML 페이지에서 일반적인 <script> 태그에 추가](/docs/add-react-to-a-website.html)하거나 [JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx)를 고려하세요.
+위에서 설명한 문제를 경험하지 못했거나 아직 Javascript 도구를 사용하는 것이 편하지 않다면, [React를 HTML 페이지에서 일반적인 `<script>` 태그에 추가](/docs/add-react-to-a-website.html)하거나 [JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx)를 고려하세요.
 
 이 방법이 **제일 쉽게 React를 이미 만들어진 웹사이트에 추가하는 방법입니다**. 그리고 언제나 도움이 될 것 같으면 더 많은 툴체인을 추가할 수가 있습니다.
 
