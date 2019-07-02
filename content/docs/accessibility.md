@@ -244,7 +244,7 @@ this.inputElement.current.focus();
 
 ```javascript{12-14,26-30}
 class OuterClickExample extends React.Component {
-constructor(props) {
+  constructor(props) {
     super(props);
 
     this.state = { isOpen: false };
@@ -278,13 +278,13 @@ constructor(props) {
     return (
       <div ref={this.toggleContainer}>
         <button onClick={this.onClickHandler}>Select an option</button>
-        {this.state.isOpen ? (
+        {this.state.isOpen && (
           <ul>
             <li>Option 1</li>
             <li>Option 2</li>
             <li>Option 3</li>
           </ul>
-        ) : null}
+        )}
       </div>
     );
   }
@@ -343,13 +343,13 @@ class BlurExample extends React.Component {
                 aria-expanded={this.state.isOpen}>
           Select an option
         </button>
-        {this.state.isOpen ? (
+        {this.state.isOpen && (
           <ul>
             <li>Option 1</li>
             <li>Option 2</li>
             <li>Option 3</li>
           </ul>
-        ) : null}
+        )}
       </div>
     );
   }
