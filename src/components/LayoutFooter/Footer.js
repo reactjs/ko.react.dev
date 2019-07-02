@@ -129,7 +129,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
             <MetaTitle onDark={true}>더보기</MetaTitle>
-            <FooterLink to="/tutorial/tutorial.html">튜토리얼</FooterLink>
+            <FooterLink to="/tutorial/tutorial.html">자습서</FooterLink>
             <FooterLink to="/blog/">블로그</FooterLink>
             <FooterLink to="/acknowledgements.html">감사의 글</FooterLink>
             <ExternalFooterLink
