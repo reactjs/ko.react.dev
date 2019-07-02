@@ -16,13 +16,9 @@ render() {
     </React.Fragment>
   );
 }
-```    
+```
 
-<<<<<<< HEAD
-이를 선언하는 새로운 [단축 문법](#short-syntax)이 있습니다. 하지만 아직 모든 인기 있는 도구에서 전부 지원하지는 않습니다.
-=======
-There is also a new [short syntax](#short-syntax) for declaring them.
->>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
+이를 선언하는 새로운 [단축 문법](#short-syntax)이 있습니다.
 
 ## 동기 {#motivation}
 
@@ -117,13 +113,7 @@ class Columns extends React.Component {
 
 `key` 또는 어트리뷰트를 지원하지 않는다는 것을 빼고 다른 엘리먼트처럼 `<></>`을 사용할 수 있습니다.
 
-<<<<<<< HEAD
-주의: **[아직 많은 도구에서 이 단축 문법이 지원이 안 되기 때문에](/blog/2017/11/28/react-v16.2.0-fragment-support.html#support-for-fragment-syntax)** 그전까지는 명시적으로 `<React.Fragmemt>`를 사용해야 하는 것에 주의해야 합니다.
-
 ### key가 있는 Fragments {#keyed-fragments}
-=======
-### Keyed Fragments {#keyed-fragments}
->>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
 
 Fragments에 `key`가 있다면 `<React.Fragment>` 문법으로 명시적으로 선언해야 합니다. 예를 들어 정의 목록을 만들기 위해 컬렉션을 fragments 배열로 매핑하는 사용 사례입니다.
 
