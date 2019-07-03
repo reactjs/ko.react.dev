@@ -610,7 +610,7 @@ function ProductPage({ productId }) {
 
 This also allows you to handle out-of-order responses with a local variable inside the effect:
 
-```js{2,6,8}
+```js{2,6,10}
   useEffect(() => {
     let ignore = false;
     async function fetchProduct() {
@@ -618,6 +618,8 @@ This also allows you to handle out-of-order responses with a local variable insi
       const json = await response.json();
       if (!ignore) setProduct(json);
     }
+    
+    fetchProduct();
     return () => { ignore = true };
   }, [productId]);
 ```
@@ -656,7 +658,7 @@ Note that in the above example we **need** to keep the function in the dependenc
 
 ### What can I do if my effect dependencies change too often? {#what-can-i-do-if-my-effect-dependencies-change-too-often}
 
-Sometimes, your effect may be using reading state that changes too often. You might be tempted to omit that state from a list of dependencies, but that usually leads to bugs:
+Sometimes, your effect may be using state that changes too often. You might be tempted to omit that state from a list of dependencies, but that usually leads to bugs:
 
 ```js{6,9}
 function Counter() {
