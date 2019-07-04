@@ -16,11 +16,7 @@ redirect_from:
 
 ## 자습서를 시작하기 전에 {#before-we-start-the-tutorial}
 
-<<<<<<< HEAD
 우리는 이 자습서에서 작은 게임을 만들겁니다. **게임을 만들고 싶지 않아서 자습서를 건너뛰고 싶을 수 있습니다. 그래도 한번 해보세요!** 자습서를 통해 React 앱을 만드는 기본적인 사항들을 배웁니다. 이것을 마스터하면 React를 더 깊게 이해할 수 있습니다.
-=======
-We will build a small game during this tutorial. **You might be tempted to skip it because you're not building games -- but give it a chance.** The techniques you'll learn in the tutorial are fundamental to building any React app, and mastering it will give you a deep understanding of React.
->>>>>>> ed9d73105a93239f94d84c619e84ae8adec43483
 
 > 팁
 >
