@@ -61,16 +61,16 @@ prev: hooks-reference.html
 
 ### 어떤 버전의 React가 Hook을 포함합니까? {#which-versions-of-react-include-hooks}
 
-Starting with 16.8.0, React includes a stable implementation of React Hooks for.
+16.8.0부터 React에는 React Hook의 안정적인 구현이 포함됩니다.
 
 * React DOM
 * React DOM Server
-* React Test Renderer
-* React Shallow Renderer
+* React 테스트 렌더러
+* React 얕은 렌더러
 
-Note that **to enable Hooks, all React packages need to be 16.8.0 or higher**. Hooks won't work if you forget to update, for example, React DOM.
+**Hook을 사용하려면 모든 React 패키지가 16.8.0 이상이어야합니다**. 업데이트하는 것을 (예: React DOM) 잊어버리면 Hook이 작동하지 않습니다.
 
-React Native will fully support Hooks in its next stable release.
+React Native는 다음 안정 릴리즈에서 Hook을 완벽하게 지원합니다.
 
 ### 모든 Class 컴포넌트를 다시 작성해야 합니까? {#do-i-need-to-rewrite-all-my-class-components}
 
