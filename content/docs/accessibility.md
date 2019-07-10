@@ -459,9 +459,15 @@ Deque Systems에서는 자동으로 애플리케이션의 종단 간(end-to-end)
 
 일부 브라우저에서는 접근성 트리 안의 각 엘리먼트의 접근성 정보를 손쉽게 확인할 수 있습니다.
 
+<<<<<<< HEAD
 - [Firefox에서 접근성 검사기를 사용하는 방법](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
 - [Chrome에서 접근성 검사기를 활성화하는 방법](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
 - [OS X Safari에서 접근성 검사기를 사용하는 방법](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
+=======
+- [Using the Accessibility Inspector in Firefox](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
+- [Using the Accessibility Inspector in Chrome](https://developers.google.com/web/tools/chrome-devtools/accessibility/reference#pane)
+- [Using the Accessibility Inspector in OS X Safari](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
+>>>>>>> e1abbdecfd1a5a804bd38852e88373f54ddde014
 
 ### 스크린 리더 {#screen-readers}
 
