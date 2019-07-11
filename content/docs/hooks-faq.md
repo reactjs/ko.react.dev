@@ -74,11 +74,11 @@ React Native는 다음 안정 릴리즈에서 Hook을 완벽하게 지원합니�
 
 ### 모든 Class 컴포넌트를 다시 작성해야 합니까? {#do-i-need-to-rewrite-all-my-class-components}
 
-No. There are [no plans](/docs/hooks-intro.html#gradual-adoption-strategy) to remove classes from React -- we all need to keep shipping products and can't afford rewrites. We recommend trying Hooks in new code.
+아닙니다. React에서 Class를 삭제할 [계획은 없습니다](/docs/hooks-intro.html#gradual-adoption-strategy). 우리는 제품을 출시할 때마다 재작성을 할 여유가 없습니다. 새 코드에서 Hook을 사용하는 것이 좋습니다.
 
 ### Class로 하지 못하는 것 중에 Hook으로 가능한 것이 무엇인가요? {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
 
-Hooks offer a powerful and expressive new way to reuse functionality between components. ["Building Your Own Hooks"](/docs/hooks-custom.html) provides a glimpse of what's possible. [This article](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) by a React core team member dives deeper into the new capabilities unlocked by Hooks.
+Hook은 컴포넌트 간에 기능을 재사용할 수 있는 강력하고 표현적인 새로운 방법을 제공합니다. ["자신만의 Hook 만들기"](/docs/hooks-custom.html)는 가능한 것을 엿볼 수 있게 해줍니다. React 핵심 팀 구성원이 작성한 [이 기사](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889)에서는 Hook이 제공할 새로운 기능에 대해 자세히 설명합니다.
 
 ### React 지식은 얼마나 관련이 있습니까? {#how-much-of-my-react-knowledge-stays-relevant}
 
