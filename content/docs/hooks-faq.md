@@ -82,9 +82,9 @@ Hook은 컴포넌트 간에 기능을 재사용할 수 있는 강력하고 표�
 
 ### React 지식은 얼마나 관련이 있습니까? {#how-much-of-my-react-knowledge-stays-relevant}
 
-Hooks are a more direct way to use the React features you already know -- such as state, lifecycle, context, and refs. They don't fundamentally change how React works, and your knowledge of components, props, and top-down data flow is just as relevant.
+Hook은 state, 생명주기, context 및 ref와 같은 이미 알고 있는 React 기능을 사용하는 보다 직접적인 방법입니다. React가 어떻게 작동하는지 근본적으로 바꿀 수 없으며 컴포넌트, props 및 하향식 데이터 흐름에 대한 지식도 마찬가지로 중요합니다.
 
-Hooks do have a learning curve of their own. If there's something missing in this documentation, [raise an issue](https://github.com/reactjs/reactjs.org/issues/new) and we'll try to help.
+Hook에는 독자적인 학습 곡선이 있습니다. 이 문서에 누락된 것이 있으면 [문제를 제기](https://github.com/reactjs/reactjs.org/issues/new)하면 도움을 제공해 드리겠습니다.
 
 ### Hook이나 Class 또는 두 가지를 모두 사용해야 합니까? {#should-i-use-hooks-classes-or-a-mix-of-both}
 
