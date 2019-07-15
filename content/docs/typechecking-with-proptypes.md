@@ -57,8 +57,16 @@ MyComponent.propTypes = {
   // React 엘리먼트.
   optionalElement: PropTypes.element,
 
+<<<<<<< HEAD
   // prop가 클래스의 인스턴스임을 선언할 수 있습니다. 
   // 이 경우 JS's instanceof 연산자를 사용합니다. 
+=======
+  // A React element type (ie. MyComponent).
+  optionalElementType: PropTypes.elementType,
+  
+  // You can also declare that a prop is an instance of a class. This uses
+  // JS's instanceof operator.
+>>>>>>> a0911655e08da904d0d6abac731c150e83551ff4
   optionalMessage: PropTypes.instanceOf(Message),
 
   // 열거형(enum)으로 처리하여 prop가 특정 값들로 제한되도록 할 수 있습니다. 
