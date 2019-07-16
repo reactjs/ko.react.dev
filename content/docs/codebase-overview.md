@@ -33,9 +33,9 @@ React는 외부 의존성을 거의 가지고 있지 않습니다. `require()` �
 
 위에서 언급한 것 외에 별도의 최상위 폴더가 존재하지만, 대부분 기여하는데 있어서 사용되지 않을 것입니다.
 
-### 병치된 테스트 {#colocated-tests}
+### Colocated 테스트 {#colocated-tests}
 
-해당 프로젝트에는 유닛 테스트를 위한 상위 디렉토리가 존재하지 않습니다. 대신 소스 코드와 함께 `__tests__` 디렉토리 내부에 테스트 코드를 병치했습니다.
+해당 프로젝트에는 유닛 테스트를 위한 상위 디렉토리가 존재하지 않습니다. 대신 소스 코드와 함께 `__tests__` 디렉토리 내부에 테스트 코드를 함께 넣어뒀습니다.
 
 예를 들어, [`setInnerHTML.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/setInnerHTML.js)에 대한 테스트 코드는 [`__tests__/setInnerHTML-test.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/__tests__/setInnerHTML-test.js)에 존재합니다.
 
@@ -102,7 +102,7 @@ if (__DEV__) {
 }
 ```
 
-### 플로우 {#flow}
+### Flow {#flow}
 
 React는 최근 [Flow](https://flow.org/) 검사를 도입하기 시작했습니다. 라이센스 주석에 `@flow` 표시가 포함된 파일은 자료형 검사를 받게 됩니다.
 
@@ -120,9 +120,9 @@ ReactRef.detachRefs = function(
 가능하면 새로 작성하는 코드에 Flow 검사 형식을 포함해 주길 바랍니다.
 `yarn flow` 명령어를 통해 Flow에 대한 형식 검사를 직접 수행해 볼 수 있습니다.
 
-### 동적 참조 {#dynamic-injection}
+### 동적 주입 {#dynamic-injection}
 
-React의 몇 가지 모듈은 동적 참조를 사용합니다. 동적 참조는 항상 명시적이지만 코드에 대한 이해를 방해하기도 합니다. 동적 참조를 사용하는 주된 이유는 React가 DOM을 대상으로만 지원했기 때문입니다. React 네이티브는 React 프로젝트에서 시작되었기 때문에 몇 가지 동작을 구현하기 위해 동적 참조를 필요로 했습니다.
+React의 몇 가지 모듈은 동적 주입을 사용합니다. 동적 주입은 항상 명시적이지만 코드에 대한 이해를 방해하기도 합니다. 동적 주입을 사용하는 주된 이유는 React가 DOM을 대상으로만 지원했기 때문입니다. React 네이티브는 React 프로젝트에서 시작되었기 때문에 몇 가지 동작을 구현하기 위해 동적 주입을 필요로 했습니다.
 
 다음과 같은 동적 의존성을 가진 모듈을 확인할 수 있습니다.
 
@@ -149,9 +149,9 @@ var ReactHostComponent = {
 module.exports = ReactHostComponent;
 ```
 
-`injection` 필드는 특별하게 관리되지 않습니다. 다만 관례적으로 해당 필드는 런타임 시에 (플랫폼 관련 요소와 같은) 몇 가지 종속성을 참조하고자 할 때 사용됩니다.
+`injection` 필드는 특별하게 관리되지 않습니다. 다만 관례적으로 해당 필드는 런타임 시에 (플랫폼 관련 요소와 같은) 몇 가지 종속성을 주입하고자 할 때 사용됩니다.
 
-React 코드베이스에는 다수의 동적 참조 부분이 존재합니다. React는 향후 동적 참조에 관련된 매커니즘을 제거하고, 빌드 시에 정적으로 병합하는 방식을 사용할 것입니다.
+React 코드베이스에는 다수의 동적 주입 부분이 존재합니다. React는 향후 동적 주입에 관련된 매커니즘을 제거하고, 빌드 시에 정적으로 병합하는 방식을 사용할 것입니다.
 
 ### 다양한 패키지 {#multiple-packages}
 
