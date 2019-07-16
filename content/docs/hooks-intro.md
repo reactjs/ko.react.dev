@@ -33,7 +33,7 @@ function Example() {
 
 ## 소개 영상 {#video-introduction}
 
-React Conf 2018에서 Sophie Alpert와 Dan Abramov는 Hook를 소개했었습니다. 이어서 Ryan Florence가 Hook를 사용하여 어떻게 어플리케이션을 리팩토링 할 것인지 보여주었습니다. 아래 영상에서 확인해보세요.
+React Conf 2018에서 Sophie Alpert와 Dan Abramov는 Hook를 소개했었습니다. 이어서 Ryan Florence가 Hook를 사용하여 어떻게 애플리케이션을 리팩토링 할 것인지 보여주었습니다. 아래 영상에서 확인해보세요.
 <br>
 
 <iframe width="650" height="366" src="//www.youtube.com/embed/dpw9EHDh2bM" frameborder="0" allowfullscreen></iframe>
@@ -58,7 +58,7 @@ Hook는 5년 동안 우리가 React에서 수만 개의 컴포넌트들을 유�
 
 ### 컴포넌트 사이에서 상태와 관련된 로직을 재사용하기 어렵습니다. {#ts-hard-to-reuse-stateful-logic-between-components}
 
-React는 컴포넌트에 재사용 가능한 행동을 붙이는 방법을 제공하지 않습니다. (예를 들어, 스토어에 컴포넌트를 연결하는 것) 만약 이전부터 React를 사용해왔다면, 이것을 해결하기 위해 [render porps](/docs/render-props.html) 그리고 [고차 컴포넌트]((/docs/higher-order-components.html))와 같은 패턴에 익숙할 것입니다. 그러나 이런 패턴을 사용할 때 컴포넌트를 재구성해야 하며 코드를 추적하기 어렵게 만듭니다. React 개발자 도구에서 전형적인 React 애플리케이션을 본다면, providers, consumers, 고차 컴포넌트, render props 그리고 다른 추상화에 대한 레이어로 둘러 싸인 "래퍼 지옥(wrapper hell)"을 볼 가능성이 높습니다. [개발자 도구에서 걸러낼 수 있지만](https://github.com/facebook/react-devtools/pull/503), 요점은 더 깊은 문제입니다. React는 상태 관련 로직을 공유하기 위해 좀 더 좋은 기초 요소가 필요합니다.
+React는 컴포넌트에 재사용 가능한 행동을 붙이는 방법을 제공하지 않습니다. (예를 들어, 스토어에 컴포넌트를 연결하는 것) 만약 이전부터 React를 사용해왔다면, 이것을 해결하기 위해 [render props](/docs/render-props.html) 그리고 [고차 컴포넌트]((/docs/higher-order-components.html))와 같은 패턴에 익숙할 것입니다. 그러나 이런 패턴을 사용할 때 컴포넌트를 재구성해야 하며 코드를 추적하기 어렵게 만듭니다. React 개발자 도구에서 전형적인 React 애플리케이션을 본다면, providers, consumers, 고차 컴포넌트, render props 그리고 다른 추상화에 대한 레이어로 둘러 싸인 "래퍼 지옥(wrapper hell)"을 볼 가능성이 높습니다. [개발자 도구에서 걸러낼 수 있지만](https://github.com/facebook/react-devtools/pull/503), 요점은 더 깊은 문제입니다. React는 상태 관련 로직을 공유하기 위해 좀 더 좋은 기초 요소가 필요합니다.
 
 Hook를 사용하면 컴포넌트로부터 상태 관련 로직을 추상화할 수 있습니다. 이것은 독립적인 테스트와 재사용이 가능합니다. **Hook는 계층 변화 없이 상태 관련 로직을 재사용할 수 있도록 도와줍니다.** 이것은 많은 컴포넌트들 혹은 커뮤니티 사이에서 Hook를 공유하기 쉬워집니다.
 
@@ -66,11 +66,11 @@ Hook를 사용하면 컴포넌트로부터 상태 관련 로직을 추상화할 
 
 ### 복잡한 컴포넌트들은 이해하기 어렵습니다. {#complex-components-become-hard-to-understand}
 
-우리는 때론 간단하게 시작했지만 유지하기 힘든 상태 관련 로직들과 사이드 이펙트가 있는 컴포넌트들을 유지해야합니다. 각 라이프사이클 메서드는 자주 관련 없는 로직이 섞여 있습니다. 예를 들어, 컴포넌트들은 `componentDidMount` 그리고 `componentDidUpdate`로 데이터를 가져오는 것을 수행할 수도 있습니다. 그러나, 같은 `componentDidMount` 메서드라도 이벤트 리스너를 설정하는 것과 같은 관계없는 일부 로직이 포함될 수도 있으며, `componentWillUnmount`에서 cleanup을 수행하기도 합니다. 함께 변경되는 상호 관련 코드는 분리되지만 완벽하게 연관 없는 코드들은 단일 메소드로 결합합니다. 이로 인해 버그와 무결성을 너무나 쉽게 발생합니다.
+우리는 때론 간단하게 시작했지만 유지하기 힘든 상태 관련 로직들과 사이드 이펙트가 있는 컴포넌트들을 유지해야합니다. 각 생명주기 메서드는 자주 관련 없는 로직이 섞여 있습니다. 예를 들어, 컴포넌트들은 `componentDidMount` 그리고 `componentDidUpdate`로 데이터를 가져오는 것을 수행할 수도 있습니다. 그러나, 같은 `componentDidMount` 메서드라도 이벤트 리스너를 설정하는 것과 같은 관계없는 일부 로직이 포함될 수도 있으며, `componentWillUnmount`에서 cleanup을 수행하기도 합니다. 함께 변경되는 상호 관련 코드는 분리되지만 완벽하게 연관 없는 코드들은 단일 메서드로 결합합니다. 이로 인해 버그와 무결성을 너무나 쉽게 발생합니다.
 
 위와 같은 사례 안에서 상태 관련 로직이 모든 공간에 있기 때문에 이러한 컴포넌트들을 작게 만드는 것은 불가능합니다. 또한 테스트하기도 어렵습니다. 이것은 많은 사람이 React를 별도의 상태 관리 라이브러리와 함께 결합해서 사용하는 이유 중 하나입니다. 그러나, 상태 관리 라이브러리는 종종 너무 많은 추상화를 하고, 다른 파일들 사이에서 건너뛰기를 요구하며 컴포넌트 재사용을 더욱 어렵게 만듭니다.
 
-이것을 해결하기 위해, 라이프사이클 메서드를 기반으로 쪼개는 데 초점을 맞추기 보다는, **Hook를 통해 로직에 기반을 둔 작은 함수로 컴포넌트를 나눌 수 있습니다. (구독 설정 및 데이터를 불러오는 것과 같은 로직)** 조금 더 예측 가능하도록 하기 위해 리듀서를 활용해 컴포넌트의 지역 상태 값을 관리하도록 할 수 있습니다.
+이것을 해결하기 위해, 생명주기 메서드를 기반으로 쪼개는 데 초점을 맞추기 보다는, **Hook를 통해 로직에 기반을 둔 작은 함수로 컴포넌트를 나눌 수 있습니다. (구독 설정 및 데이터를 불러오는 것과 같은 로직)** 조금 더 예측 가능하도록 하기 위해 리듀서를 활용해 컴포넌트의 지역 상태 값을 관리하도록 할 수 있습니다.
 
 나중에[Effect Hook](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns)에서 더 알아볼 것입니다.
 
@@ -78,7 +78,7 @@ Hook를 사용하면 컴포넌트로부터 상태 관련 로직을 추상화할 
 
 Class가 코드의 재사용성과 코드 구성을 좀 더 어렵게 만들 뿐만 아니라, React를 배우는데 큰 진입장벽이라는 것을 알게 되었습니다. Javascript에서 어떻게 `this`가 작동하는지 알아야만 했고, 대부분의 다른 언어와는 다르게 작동합니다. 이벤트 핸들러가 등록되는 방법을 기억해야만 합니다. 불안정한 [문법 제안들](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/)이 없다면, 코드는 매우 장황해집니다. 사람들은 props, state, 그리고 top-down 데이터 흐름을 완벽하게 이해할 수 있지만, 여전히 Class는 쉽지 않습니다. React 안에서의 함수와 Class 컴포넌트들을 구별하고 각 요소를 언제 사용하는지는 숙련된 React 개발자 사이에서도 의견이 일치하지 않습니다.
 
-게다가, React는 5년 동안 지속하여 왔으며, 우리는 5년 뒤에도 이 관련성이 유지되기를 원합니다. 특별하게 템플릿에 제한을 두지 않는다면, [Svelte](https://svelte.technology/), [Angular](https://angular.io/), [Glimmer](https://glimmerjs.com/), [사전 컴파일 컴포넌트](https://en.wikipedia.org/wiki/Ahead-of-time_compilation)는 잠재적인 능력을 가지고 있습니다. 최근 [Prepack](https://prepack.io/)를 사용한 [컴포넌트 folding](https://github.com/facebook/react/issues/7323)에 대해서 실험해왔고, 긍정적인 결과를 보았습니다. 그러나, Class 컴포넌트가 이러한 최적화를 더 느린 경로로 되돌리는 의도하지 않은 패턴을 장려할 수 있다는 것을 발견했다. Class는 최근 사용되는 도구에도 많은 문제를 일으킵니다. 예를 들어 Class는 잘 축소되지 않고, 핫 리로딩을 깨지기 쉽고 신뢰할 수 없게 만듭니다. 우리는 코드가 최적화 가능한 경로에서 유지될 가능성이 더 높은 API를 제공하고 싶습니다.
+게다가, React는 5년 동안 지속하여 왔으며, 우리는 5년 뒤에도 이 관련성이 유지되기를 원합니다. 특별하게 템플릿에 제한을 두지 않는다면, [Svelte](https://svelte.dev/), [Angular](https://angular.io/), [Glimmer](https://glimmerjs.com/), [사전 컴파일 컴포넌트](https://en.wikipedia.org/wiki/Ahead-of-time_compilation)는 잠재적인 능력을 가지고 있습니다. 최근 [Prepack](https://prepack.io/)를 사용한 [컴포넌트 folding](https://github.com/facebook/react/issues/7323)에 대해서 실험해왔고, 긍정적인 결과를 보았습니다. 그러나, Class 컴포넌트가 이러한 최적화를 더 느린 경로로 되돌리는 의도하지 않은 패턴을 장려할 수 있다는 것을 발견했다. Class는 최근 사용되는 도구에도 많은 문제를 일으킵니다. 예를 들어 Class는 잘 축소되지 않고, 핫 리로딩을 깨지기 쉽고 신뢰할 수 없게 만듭니다. 우리는 코드가 최적화 가능한 경로에서 유지될 가능성이 더 높은 API를 제공하고 싶습니다.
 
 이러한 문제를 해결하기 위해, **Hook는 Class없이 React 기능들을 사용하는 방법을 알려줍니다.** 개념적으로 React 컴포넌트는 항상 함수에 더 가깝습니다. Hook는 React의 정신을 희생하지 않고 함수를 받아들입니다. Hook는 명령형 코드로 해결책을 찾을 수 있게 해주며 복잡한 함수형 또는 반응형 프로그래밍 기술을 배우도록 요구하지 않습니다.
 

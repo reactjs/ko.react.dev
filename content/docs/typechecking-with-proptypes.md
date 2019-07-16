@@ -82,6 +82,12 @@ MyComponent.propTypes = {
     color: PropTypes.string,
     fontSize: PropTypes.number
   }),
+  
+  // An object with warnings on extra properties
+  optionalObjectWithStrictShape: PropTypes.exact({
+    name: PropTypes.string,
+    quantity: PropTypes.number
+  }),   
 
   // 위에 있는 것 모두 `isRequired`와 연결하여 prop가 제공되지 않았을 때
   // 경고가 보이도록 할 수 있습니다. 
