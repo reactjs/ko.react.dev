@@ -245,7 +245,7 @@ class Clock extends React.Component {
   }
 ```
 
-`this`에서 어떻게 타이머 ID를 제대로 저장하는지 주의해주세요.
+`this` (`this.timerID`)에서 어떻게 타이머 ID를 제대로 저장하는지 주의해주세요.
 
 `this.props`가 React에 의해 스스로 설정되고 `this.state`가 특수한 의미가 있지만, 타이머 ID와 같이 데이터 흐름 안에 포함되지 않는 어떤 항목을 보관할 필요가 있다면 자유롭게 클래스에 수동으로 부가적인 필드를 추가해도 됩니다.
 

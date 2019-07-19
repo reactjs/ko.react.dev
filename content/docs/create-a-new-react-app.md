@@ -22,7 +22,7 @@ next: cdn-links.html
 
 ## 툴체인이 필요하지 않을 수 있습니다. {#you-might-not-need-a-toolchain}
 
-위에서 설명한 문제를 경험하지 못했거나 아직 Javascript 도구를 사용하는 것이 편하지 않다면, [React를 HTML 페이지에서 일반적인 <script> 태그에 추가](/docs/add-react-to-a-website.html)하거나 [JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx)를 고려하세요.
+위에서 설명한 문제를 경험하지 못했거나 아직 Javascript 도구를 사용하는 것이 편하지 않다면, [React를 HTML 페이지에서 일반적인 `<script>` 태그에 추가](/docs/add-react-to-a-website.html)하거나 [JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx)를 고려하세요.
 
 이 방법이 **제일 쉽게 React를 이미 만들어진 웹사이트에 추가하는 방법입니다**. 그리고 언제나 도움이 될 것 같으면 더 많은 툴체인을 추가할 수가 있습니다.
 
@@ -39,7 +39,7 @@ React 팀의 추천 방법은 아래와 같습니다
 
 [Create React App](https://github.com/facebookincubator/create-react-app)은 **React 배우기**에 간편한 환경입니다. 그리고 시작하기에 최고의 방법은 **새로운 [싱글 페이지 애플리케이션](/docs/glossary.html#single-page-application)** 입니다.
 
-이것은 개발 환경을 설정하고, 최신 JavaScript를 사용하게 해주며, 좋은 개발 경험과 프로덕션 앱 최적화를 해줍니다. Node 6 혹은 상위 버전 및 npm 5.2 혹은 상위 버전이 필요합니다. 새로운 프로젝트를 만들기 위해 아래의 명령어를 실행합니다.
+이것은 개발 환경을 설정하고, 최신 JavaScript를 사용하게 해주며, 좋은 개발 경험과 프로덕션 앱 최적화를 해줍니다. Node 8.10 혹은 상위 버전 및 npm 5.6 혹은 상위 버전이 필요합니다. 새로운 프로젝트를 만들기 위해 아래의 명령어를 실행합니다.
 
 ```bash
 npx create-react-app my-app
