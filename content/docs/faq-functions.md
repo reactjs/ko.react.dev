@@ -83,7 +83,7 @@ class Foo extends Component {
 
 >**주의**
 >
-> render 메소드 안에서 화살표 함수를 사용하면 컴포넌트가 렌더링할 때마다 새로운 함수를 만들기 때문에 성능에 영향을 줄 수 있습니다.
+> render 메소드 안에서 화살표 함수를 사용하면 컴포넌트가 렌더링할 때마다 새로운 함수를 만들기 때문에 엄격한 비교에 의해 최적화가 깨질 수 있습니다.
 
 ### render 메소드 안에서 화살표 함수를 사용해도 괜찮을까요? {#is-it-ok-to-use-arrow-functions-in-render-methods}
 

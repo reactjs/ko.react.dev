@@ -52,7 +52,7 @@
           href: /tutorial/tutorial.html#making-an-interactive-component
           forceInternal: true
         - id: developer-tools
-          title: 개발 도구
+          title: 개발자 도구
           href: /tutorial/tutorial.html#developer-tools
           forceInternal: true
     - id: completing-the-game
@@ -61,7 +61,7 @@
       forceInternal: true
       subitems:
         - id: lifting-state-up
-          title: State 올리기
+          title: State 끌어올리기
           href: /tutorial/tutorial.html#lifting-state-up
           forceInternal: true
         - id: why-immutability-is-important
@@ -77,7 +77,7 @@
           href: /tutorial/tutorial.html#taking-turns
           forceInternal: true
         - id: declaring-a-winner
-          title: 승자 선언하기
+          title: 승자 결정하기
           href: /tutorial/tutorial.html#declaring-a-winner
           forceInternal: true
     - id: adding-time-travel
@@ -86,15 +86,15 @@
       forceInternal: true
       subitems:
         - id: storing-a-history-of-moves
-          title: 움직임에 대한 히스토리 저장하기
+          title: 동작에 대한 기록 저장하기
           href: /tutorial/tutorial.html#storing-a-history-of-moves
           forceInternal: true
         - id: lifting-state-up-again
-          title: 한 번 더, State 올리기
+          title: 다시 State 끌어올리기
           href: /tutorial/tutorial.html#lifting-state-up-again
           forceInternal: true
         - id: showing-the-past-moves
-          title: 과거의 움직임 보여주기
+          title: 과거의 이동 표시하기
           href: /tutorial/tutorial.html#showing-the-past-moves
           forceInternal: true
         - id: picking-a-key
