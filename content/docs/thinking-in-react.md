@@ -76,7 +76,11 @@ JSON API는 아래와 같은 데이터를 반환합니다.
 
 ### 짧은 소개: Props vs State {#a-brief-interlude-props-vs-state}
 
+<<<<<<< HEAD
 React 에는 두가지 데이터 “모델”인 props와 state가 있습니다. 이 둘 사이의 차이점을 이해하는 것이 중요합니다. 차이점이 제대로 기억나지 않는다면 [공식 React 문서](/docs/interactivity-and-dynamic-uis.html)를 살펴보세요.
+=======
+There are two types of "model" data in React: props and state. It's important to understand the distinction between the two; skim [the official React docs](/docs/state-and-lifecycle.html) if you aren't sure what the difference is. See also [FAQ: What is the difference between state and props?](/docs/faq-state.html#what-is-the-difference-between-state-and-props)
+>>>>>>> eef56ffdcfa995e3478f85cd9d02f4be01f65b79
 
 ## 3단계: UI state에 대한 최소한의 (하지만 완전한) 표현 찾아내기 {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
 
