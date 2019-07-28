@@ -30,7 +30,7 @@ next: cdn-links.html
 
 React 팀의 추천 방법은 아래와 같습니다
 
-- **React를 배우고 있거나** 아니면 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application) 앱**을 만들고 싶다면 Create React App](#create-react-app).
+- **React를 배우고 있거나** 아니면 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application) 앱**을 만들고 싶다면 [Create React App](#create-react-app).
 - **서버 렌더링 Node.js 웹사이트를 만들고 있다면** [Next.js](#nextjs)을 시도해보세요.. 
 - **고정적인 콘텐츠 지향적 웹사이트를 만들고 있다면** [Gatsby](#gatsby)를 시도해보세요..
 - **컴포넌트 라이브러리** 혹은 **이미 있는 코드 베이스에 통합을 한다**면 [더 유연한 툴체인](#more-flexible-toolchains).
