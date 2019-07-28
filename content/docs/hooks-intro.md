@@ -51,7 +51,7 @@ React Conf 2018에서 Sophie Alpert와 Dan Abramov는 Hook를 소개했었습니
 **Hook는 알고 있는 React 컨셉을 대체하지 않습니다.**
 대신에, Hook는 props, state, context, refs, 그리고 lifecycle와 같은 React 개념에 좀 더 직관적인 API를 제공합니다. 또한 Hook는 이 개념들을 엮기 위해 새로운 강력한 방법을 제공합니다.
 
-**단지 Hook에 대해 배우길 원한다면, [다음 페이지](/docs/hooks-overview.html)로 바로 이동해도 됩니다.** 또한 왜 우리가 Hook를 추가했는지, 그리고 어떻게 애플리케이션을 다시 작성할 필요 없이 어떻게 Hook를 이용하는지 알고 싶다면 이 페이지를 계속 읽을 수 있습니다.
+**단지 Hook에 대해 배우길 원한다면, [다음 페이지](/docs/hooks-overview.html)로 바로 이동해도 됩니다.** 또한 왜 우리가 Hook를 추가했는지, 그리고 어떻게 애플리케이션을 다시 작성할 필요 없이 어떻게 Hook를 이용하는지 알고 싶다면 이 페이지를 계속 읽을 필요가 있습니다.
 
 ## 동기 {#motivation}
 Hook는 5년 동안 우리가 React에서 수만 개의 컴포넌트들을 유지하고 작성하는데 만났던 표면상 연결되지 않은 넓고 다양한 문제들을 해결했습니다. React를 배우는 중이든, 매일 사용하든, 심지어 비슷한 컴포넌트 모델과 함께 다른 라이브러리를 선호하든지 간에, 이러한 문제 중 일부를 인식할 수도 있습니다.
@@ -78,7 +78,7 @@ Hook를 사용하면 컴포넌트로부터 상태 관련 로직을 추상화할 
 
 Class가 코드의 재사용성과 코드 구성을 좀 더 어렵게 만들 뿐만 아니라, React를 배우는데 큰 진입장벽이라는 것을 알게 되었습니다. Javascript에서 어떻게 `this`가 작동하는지 알아야만 했고, 대부분의 다른 언어와는 다르게 작동합니다. 이벤트 핸들러가 등록되는 방법을 기억해야만 합니다. 불안정한 [문법 제안들](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/)이 없다면, 코드는 매우 장황해집니다. 사람들은 props, state, 그리고 top-down 데이터 흐름을 완벽하게 이해할 수 있지만, 여전히 Class는 쉽지 않습니다. React 안에서의 함수와 Class 컴포넌트들을 구별하고 각 요소를 언제 사용하는지는 숙련된 React 개발자 사이에서도 의견이 일치하지 않습니다.
 
-게다가, React는 5년 동안 지속하여 왔으며, 우리는 5년 뒤에도 이 관련성이 유지되기를 원합니다. 특별하게 템플릿에 제한을 두지 않는다면, [Svelte](https://svelte.dev/), [Angular](https://angular.io/), [Glimmer](https://glimmerjs.com/), [사전 컴파일 컴포넌트](https://en.wikipedia.org/wiki/Ahead-of-time_compilation)는 잠재적인 능력을 가지고 있습니다. 최근 [Prepack](https://prepack.io/)를 사용한 [컴포넌트 folding](https://github.com/facebook/react/issues/7323)에 대해서 실험해왔고, 긍정적인 결과를 보았습니다. 그러나, Class 컴포넌트가 이러한 최적화를 더 느린 경로로 되돌리는 의도하지 않은 패턴을 장려할 수 있다는 것을 발견했다. Class는 최근 사용되는 도구에도 많은 문제를 일으킵니다. 예를 들어 Class는 잘 축소되지 않고, 핫 리로딩을 깨지기 쉽고 신뢰할 수 없게 만듭니다. 우리는 코드가 최적화 가능한 경로에서 유지될 가능성이 더 높은 API를 제공하고 싶습니다.
+게다가, React는 5년 동안 지속하여 왔으며, 우리는 5년 뒤에도 이 관련성이 유지되기를 원합니다. 특별하게 템플릿에 제한을 두지 않는다면, [Svelte](https://svelte.dev/), [Angular](https://angular.io/), [Glimmer](https://glimmerjs.com/), [사전 컴파일 컴포넌트](https://en.wikipedia.org/wiki/Ahead-of-time_compilation)는 잠재적인 능력을 가지고 있습니다. 최근 [Prepack](https://prepack.io/)를 사용한 [컴포넌트 folding](https://github.com/facebook/react/issues/7323)에 대해서 실험해왔고, 긍정적인 결과를 보았습니다. 그러나, Class 컴포넌트가 이러한 최적화를 더 느린 경로로 되돌리는 의도하지 않은 패턴을 장려할 수 있다는 것을 발견했습니다. Class는 최근 사용되는 도구에도 많은 문제를 일으킵니다. 예를 들어 Class는 잘 축소되지 않고, 핫 리로딩을 깨지기 쉽고 신뢰할 수 없게 만듭니다. 우리는 코드가 최적화 가능한 경로에서 유지될 가능성이 더 높은 API를 제공하고 싶습니다.
 
 이러한 문제를 해결하기 위해, **Hook는 Class없이 React 기능들을 사용하는 방법을 알려줍니다.** 개념적으로 React 컴포넌트는 항상 함수에 더 가깝습니다. Hook는 React의 정신을 희생하지 않고 함수를 받아들입니다. Hook는 명령형 코드로 해결책을 찾을 수 있게 해주며 복잡한 함수형 또는 반응형 프로그래밍 기술을 배우도록 요구하지 않습니다.
 
