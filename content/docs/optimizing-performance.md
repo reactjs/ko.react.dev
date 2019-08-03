@@ -6,7 +6,7 @@ redirect_from:
   - "docs/advanced-performance.html"
 ---
 
-내부적으로 React는 UI를 최신화하기 위해 비용이 많이 드는 DOM 작업의 수를 최소화하기 위해 몇 가지 기발한 방법을 활용한다. 많은 애플리케이션에서 React를 사용하면 성능을 특별히 최적화하기 위해 많은 작업을 수행하지 않고도 빠른 사용자 인터페이스로 이어질 수 있습니다. 그럼에도 불구하고 React 애플리케이션의 속도를 높일 수 있는 몇 가지 방법이 있습니다.
+내부적으로 React는 UI를 최신화하기 위해 비용이 많이 드는 DOM 작업의 수를 최소화하기 위해 몇 가지 기발한 방법을 활용합니다. 많은 애플리케이션에서 React를 사용하면 성능을 특별히 최적화하기 위해 많은 작업을 수행하지 않고도 빠른 사용자 인터페이스로 이어질 수 있습니다. 그럼에도 불구하고 React 애플리케이션의 속도를 높일 수 있는 몇 가지 방법이 있습니다.
 
 ## 프로덕션 빌드를 활용하세요 {#use-the-production-build}
 
@@ -34,9 +34,9 @@ React 앱에서 성능 문제를 겪고 있거나 벤치마크하고 있는 경�
 npm run build
 ```
 
-명령어를 실행하면 프로젝트의 `build/`폴더에 애플리케이션의 프로덕션 빌드파일이 만들어집니다. 
+명령어를 실행하면 프로젝트의 `build/` 폴더에 애플리케이션의 프로덕션 빌드파일이 만들어집니다.
 
-프로덕션 환경에 배포하기 전에만 필요하다는 것을 기억하세요. 정상적인 개발 환경에선 `upm start`를 이용하세요.
+프로덕션 환경에 배포하기 전에만 필요하다는 것을 기억하세요. 정상적인 개발 환경에선 `npm start`를 이용하세요.
 
 ### 단일 파일 빌드 {#single-file-builds}
 
@@ -61,7 +61,7 @@ npm install --save-dev uglify-js-brunch
 yarn add --dev uglify-js-brunch
 ```
 
-다음 프로덕션 빌드를 생성하기 위해 `build` 명령어에 `-p` 플래그를 추가합니다. 
+다음 프로덕션 빌드를 생성하기 위해 `build` 명령어에 `-p` 플래그를 추가합니다.
 
 ```
 brunch build -p
@@ -75,16 +75,16 @@ brunch build -p
 
 ```
 # npm을 사용하는 경우
-npm install --save-dev envify uglify-js uglifyify 
+npm install --save-dev envify uglify-js uglifyify
 
 # Yarn을 사용하는 경우
-yarn add --dev envify uglify-js uglifyify 
+yarn add --dev envify uglify-js uglifyify
 ```
 
-프로덕션 빌드를 만들려면, 다음 변환 **(순서 문제)**을 추가하세요.
+프로덕션 빌드를 만들려면, 다음 변환을 추가하세요. **(순서는 중요합니다.)**
 
 *  [`envify`](https://github.com/hughsk/envify) 변환은 올바른 빌드 환경이 설정되도록 합니다. 또한 전역 (`-g`)으로 변환시킵니다.
-* [`uglifyify`](https://github.com/hughsk/uglifyify) 변환은 개발에서만 사용하는 package를 제거합니다. 또한 전역(`-g`)으로 변환시킵니다. 
+* [`uglifyify`](https://github.com/hughsk/uglifyify) 변환은 개발에서만 사용하는 package를 제거합니다. 또한 전역(`-g`)으로 변환시킵니다.
 * 마지막으로 최종 bundle은 mangling을 위해 [`uglify-js`](https://github.com/mishoo/UglifyJS2)로 연결됩니다. ([원리](https://github.com/hughsk/uglifyify#motivationusage))
 
 예시를 확인하세요.
@@ -109,10 +109,10 @@ browserify ./index.js \
 
 ```
 # npm을 사용하는 경우
-npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
+npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify
 
 # Yarn을 사용하는 경우
-yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
+yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify
 ```
 
 프로덕션 빌드를 만들려면, 다음 플러그인을 추가하세요. **(순서는 중요합니다.)**
@@ -155,7 +155,7 @@ new webpack.optimize.UglifyJsPlugin()
 
 이 부분에 대해 더 알고 싶다면 [webpack 문서](https://webpack.js.org/guides/production/)를 참고하세요.
 
-Production 빌드에서만 필요한 작업이라는 점을 기억하세요. React의 유용한 경고를 숨기고 빌드를 훨씬 느리게 만들기 때문에 `UglifyJsPlugin` 이나`DefinePlugin`을 개발 중에 `'production'`값으로 적용하지 마세요.
+production 빌드에서만 필요한 작업이라는 점을 기억하세요. React의 유용한 경고를 숨기고 빌드를 훨씬 느리게 만들기 때문에 `UglifyJsPlugin` 이나`DefinePlugin`을 개발 중에 `'production'`값으로 적용하지 마세요.
 
 ## Chrome Performance 탭으로 컴포넌트 프로파일링 {#profiling-components-with-the-chrome-performance-tab}
 
@@ -183,7 +183,7 @@ Chrome에서 이 작업을 하려면
 
 현재는 Chrome, Edge 그리고 IE만이 이 기능을 지원하는 브라우저지만 [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API)가 표준으로 사용되기 때문에 더 많은 브라우저가 지원을 추가할 것으로 예상됩니다.
 
-##Profiler DevTools Profiler로 컴포넌트 프로파일링 {#profiling-components-with-the-devtools-profiler}
+## Profiler DevTools Profiler로 컴포넌트 프로파일링 {#profiling-components-with-the-devtools-profiler}
 
 `react-dom` 16.5+와  `react-native` 0.57+는 React DevTools Profiler를 사용하여 개발 모드에서 향상된 프로파일링 기능을 제공합니다.
 Profiler에 대한 내용은 블로그 포스트 ["Introducing the React Profiler"](/blog/2018/09/10/introducing-the-react-profiler.html)에서 확인할 수 있습니다.
@@ -195,7 +195,7 @@ Profiler에 대한 영상도 [YouTube](https://www.youtube.com/watch?v=nySib7ipZ
 - [Firefox Browser Extension](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
 - [Standalone Node Package](https://www.npmjs.com/package/react-devtools)
 
-> Note
+> 주의
 >
 > `react-dom`의 프로덕션 프로파일링 bundle은 `react-dom/profiling`으로 이용할 수 있습니다.
 > bundle을 사용하는 법에 대한 자세한 내용은 [fb.me/react-profiling](https://fb.me/react-profiling)에서 확인하세요.
@@ -228,9 +228,9 @@ React DevTools를 활용해 가상 DOM이 리렌더링되는 현상을 시각화
 
 <center><img src="../images/blog/highlight-updates-example.gif" style="max-width:100%; margin-top:20px;" alt="React DevTools Highlight Updates example" /></center>
 
-두 번째 할 일을 입력하면 모든 key 입력 시 첫 번째 할 일이 화면에서 깜박입니다. 이 현상은 React에 의해 input과 함께 리렌더링 된다는 것을 의미합니다. 이런 현상을 때론 "wasted" 렌더라고 부릅니다. 첫 번째 할 일의 내용이 변경되지 않았기 때문에 불필요한 렌더링이라는 것을 우리는 알지만 React는 모릅니다.
+두 번째 할 일을 입력하면 모든 key 입력 시 첫 번째 할 일이 화면에서 깜박입니다. 이 현상은 React에 의해 input과 함께 다시 렌더링 된다는 것을 의미합니다. 이런 현상을 때론 "wasted" 렌더라고 부릅니다. 첫 번째 할 일의 내용이 변경되지 않았기 때문에 불필요한 렌더링이라는 것을 우리는 알지만 React는 모릅니다.
 
-React가 변경된 DOM 노드만 업데이트하더라도 리렌더링에는 여전히 다소 시간이 걸립니다. 대부분의 경우 문제가 되지 않지만 속도 저하가 눈에 띄는 경우 리렌더링이 시작되기 전에 실행되는 생명주기 함수 `shouldComponentUpdate`로 이 기능을 무시함으로써 속도를 높일 수 있습니다. 이 함수의 기본 implementation은 `true`를 반환하고 React는 업데이트를 진행합니다.
+React가 변경된 DOM 노드만 업데이트하더라도 리렌더링에는 여전히 다소 시간이 걸립니다. 대부분의 경우 문제가 되지 않지만 속도 저하가 눈에 띄는 경우 다시 렌더링이 시작되기 전에 실행되는 생명주기 함수 `shouldComponentUpdate`로 이 기능을 무시함으로써 속도를 높일 수 있습니다. 이 함수의 기본 implementation은 `true`를 반환하고 React는 업데이트를 진행합니다.
 
 ```javascript
 shouldComponentUpdate(nextProps, nextState) {
@@ -248,7 +248,7 @@ shouldComponentUpdate(nextProps, nextState) {
 
 <figure><img src="../images/docs/should-component-update.png" style="max-width:100%" /></figure>
 
-`shouldComponentUpdate`는 C2에 뿌리를 둔 하위트리에서 `false`를 반환했기 때문에 React는 C2를 렌더링하려고 시도하지 않았으므로 C4 및 C5에서  `shouldComponentUpdate`를 호출할 필요가 없었습니다. 
+`shouldComponentUpdate`는 C2에 뿌리를 둔 하위트리에서 `false`를 반환했기 때문에 React는 C2를 렌더링하려고 시도하지 않았으므로 C4 및 C5에서  `shouldComponentUpdate`를 호출할 필요가 없었습니다.
 
 C1과 C3의 경우 `shouldComponentUpdate`가 `true`를 반환했으므로 React가 트리의 가장 하위에 가서 확인해야 했습니다. C6의 경우 `shouldComponentUpdate`는 `true`를 반환했고 렌더링 된 엘리먼트는 동일하지 않기 때문에 React는 DOM을 업데이트해야 했습니다.
 
@@ -312,7 +312,7 @@ class CounterButton extends React.PureComponent {
 
 대부분의 경우 `shouldComponentUpdate`를 쓰는 대신 `React.PureComponent`를 사용할 수 있습니다. 얕은 비교만 수행하기 때문에 얕은 비교로는 지나칠 수 있는 방식으로 state나 props가 변화한다면 사용할 수 없습니다.
 
-이런 부분은 복잡한 데이터 구조인 경우 문제가 될 수 있습니다. 예를 들어 `listOfWords`라는 컴포넌트가 쉼표로 구분된 단어 목록을 렌더링하고 단어를 목록에 추가할 수 있는 버튼을 클릭하도록 해주는 상위의 `WordAdder` 컴포넌트를 사용한다고 가정을 해보겠습니다. 이 코드는 정상적으로 **작동하지 않습니다.** 
+이런 부분은 복잡한 데이터 구조인 경우 문제가 될 수 있습니다. 예를 들어 `listOfWords`라는 컴포넌트가 쉼표로 구분된 단어 목록을 렌더링하고 단어를 목록에 추가할 수 있는 버튼을 클릭하도록 해주는 상위의 `WordAdder` 컴포넌트를 사용한다고 가정을 해보겠습니다. 이 코드는 정상적으로 **작동하지 않습니다.**
 
 ```javascript
 class ListOfWords extends React.PureComponent {
@@ -380,7 +380,7 @@ function updateColorMap(colormap) {
 }
 ```
 
-객체 원본을 변경시키지 않고 작성하려면 [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)메서드를 사용하세요.
+객체 원본을 변경시키지 않고 작성하려면 [Object.assign](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)메서드를 사용하세요.
 
 ```js
 function updateColorMap(colormap) {
@@ -405,8 +405,8 @@ Create React App을 사용하고 있다면 `Object.assign`과 object spread 문�
 [Immutable.js](https://github.com/facebook/immutable-js)는 이 문제를 해결할 수 있는 또 다른 방법입니다. 구조적 공유(Structural sharing)를 통해 작동되는 지속성과 불변성을 지닌 컬렉션을 제공합니다.
 
 * *불변성*: 일단 생성되면 컬렉션은 다른 시점에서 변경될 수 없습니다.
-* *지속성*: 새로운 컬렉션은 이전 컬렉션과 set과 같은 변화로부터 생성될 수 있습니다. 기존의 컬렉션은 새 컬렉션이 작성된 후에도 유효합니다.
-* *구조적 공유(Structural Sharing)*: 가능한 한 원본의 컬렉션과 동일한 구조를 사용해서 새 컬력센이 만들어지므로 복사를 최소화해서 성능을 향상시킵니다.
+* *지속성*: 새로운 컬렉션은 이전 컬렉션과 set과 같은 변화로부터 생성될 수 있습니다. 기존의 컬렉션은 새 컬렉션이 만들어지고 나서도 유효합니다.
+* *구조적 공유(Structural Sharing)*: 가능한 한 원본의 컬렉션과 동일한 구조를 사용해서 새 컬렉션이 만들어지므로 복사를 최소화해서 성능을 향상시킵니다.
 
 불변성은 변화를 추적하는 비용을 적게 만듭니다. 변경은 항상 새로운 객체를 생성하므로 객체에 대한 참조가 변경되었는지 여부만 확인하면 됩니다. 예를 들어 일반적인 JavaScript 코드에서는 아래와 같습니다.
 
