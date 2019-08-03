@@ -51,14 +51,14 @@ React 및 React DOM의 프로덕션 준비 버전을 단일 파일로 제공합�
 
 ### Brunch {#brunch}
 
-가장 효율적인 Brunch 프로덕션 빌드를 위해 [`uglify-js-brunch`](https://github.com/brunch/uglify-js-brunch)를 설치하세요.
+가장 효율적인 Brunch 프로덕션 빌드를 위해 [`terser-brunch`](https://github.com/brunch/terser-brunch)를 설치하세요.
 
 ```
 # npm을 사용한다면
-npm install --save-dev uglify-js-brunch
+npm install --save-dev terser-brunch
 
 # Yarn을 사용한다면
-yarn add --dev uglify-js-brunch
+yarn add --dev terser-brunch
 ```
 
 다음 프로덕션 빌드를 생성하기 위해 `build` 명령어에 `-p` 플래그를 추가합니다.
@@ -75,17 +75,17 @@ brunch build -p
 
 ```
 # npm을 사용하는 경우
-npm install --save-dev envify uglify-js uglifyify
+npm install --save-dev envify terser uglifyify 
 
 # Yarn을 사용하는 경우
-yarn add --dev envify uglify-js uglifyify
+yarn add --dev envify terser uglifyify
 ```
 
 프로덕션 빌드를 만들려면, 다음 변환을 추가하세요. **(순서는 중요합니다.)**
 
-*  [`envify`](https://github.com/hughsk/envify) 변환은 올바른 빌드 환경이 설정되도록 합니다. 또한 전역 (`-g`)으로 변환시킵니다.
+* [`envify`](https://github.com/hughsk/envify) 변환은 올바른 빌드 환경이 설정되도록 합니다. 또한 전역 (`-g`)으로 변환시킵니다.
 * [`uglifyify`](https://github.com/hughsk/uglifyify) 변환은 개발에서만 사용하는 package를 제거합니다. 또한 전역(`-g`)으로 변환시킵니다.
-* 마지막으로 최종 bundle은 mangling을 위해 [`uglify-js`](https://github.com/mishoo/UglifyJS2)로 연결됩니다. ([원리](https://github.com/hughsk/uglifyify#motivationusage))
+* 마지막으로 최종 bundle은 mangling을 위해 [`terser`](https://github.com/terser-js/terser)로 연결됩니다. ([원리](https://github.com/hughsk/uglifyify#motivationusage))
 
 예시를 확인하세요.
 
@@ -93,13 +93,8 @@ yarn add --dev envify uglify-js uglifyify
 browserify ./index.js \
   -g [ envify --NODE_ENV production ] \
   -g uglifyify \
-  | uglifyjs --compress --mangle > ./bundle.js
+  | terser --compress --mangle > ./bundle.js
 ```
-
->**주의**
->
->package 이름은 `uglify-js`지만 제공하는 binary는 `uglifyjs`라고 불립니다.<br>
->오타가 아닙니다.
 
 프로덕션 빌드에서만 필요한 작업이라는 점을 기억하세요. 이러한 플러그인은 React의 유용한 경고를 숨기고 빌드를 훨씬 느리게 만들기 때문에 개발 중에는 적용하지 마세요.
 
@@ -107,19 +102,19 @@ browserify ./index.js \
 
 가장 효율적인 Rollup 프로덕션 빌드를 위해 몇 가지 플러그인을 설치하세요.
 
-```
+```bash
 # npm을 사용하는 경우
-npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify
+npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
 
 # Yarn을 사용하는 경우
-yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify
+yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
 ```
 
 프로덕션 빌드를 만들려면, 다음 플러그인을 추가하세요. **(순서는 중요합니다.)**
 
 *  [`replace`](https://github.com/rollup/rollup-plugin-replace) 플러그인은 올바른 빌드 환경이 설정되도록 해줍니다.
 *  [`commonjs`](https://github.com/rollup/rollup-plugin-commonjs) 플러그인은 CommonJS를 지원하도록 해줍니다.
-*  [`uglify`](https://github.com/TrySound/rollup-plugin-uglify) 플러그인은 최종 bundle을 압축하고 mangle 해줍니다.
+*  [`terser`](https://github.com/TrySound/rollup-plugin-terser) 플러그인은 최종 bundle을 압축하고 mangle 해줍니다.
 
 ```js
 plugins: [
@@ -128,14 +123,14 @@ plugins: [
     'process.env.NODE_ENV': JSON.stringify('production')
   }),
   require('rollup-plugin-commonjs')(),
-  require('rollup-plugin-uglify')(),
+  require('rollup-plugin-terser')(),
   // ...
 ]
 ```
 
 전체적인 설정 예시는 [gist](https://gist.github.com/Rich-Harris/cb14f4bc0670c47d00d191565be36bf0)를 참고하세요.
 
-프로덕션 빌드에서만 필요한 작업이라는 점을 기억하세요. React의 유용한 경고를 숨기고 빌드를 훨씬 느리게 만들기 때문에 `uglify` 플러그인이나 `replace` 플러그인을 개발 중에  `'production'` 값으로 적용하지 마세요.
+프로덕션 빌드에서만 필요한 작업이라는 점을 기억하세요. React의 유용한 경고를 숨기고 빌드를 훨씬 느리게 만들기 때문에 `terser` 플러그인이나 `replace` 플러그인을 개발 중에  `'production'` 값으로 적용하지 마세요.
 
 ### webpack {#webpack}
 
@@ -144,18 +139,22 @@ plugins: [
 >Create React App을 사용한다면 [위 설명](#create-react-app)을 참고하세요.<br>
 >이 부분은 webpack을 직접 구성할 경우에만 해당합니다.
 
-가장 효율적인 webpack 프로덕션 빌드를 위해선 빌드 구성에 다음 플러그인을 포함해주세요.
+Webpack v4 이상에서는 프로덕션 모드에서 기본적으로 코드를 축소합니다.
 
 ```js
-new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify('production')
-}),
-new webpack.optimize.UglifyJsPlugin()
+const TerserPlugin = require('terser-webpack-plugin');
+
+module.exports = {
+  mode: 'production'
+  optimization: {
+    minimizer: [new TerserPlugin({ /* additional options here */ })],
+  },
+};
 ```
 
 이 부분에 대해 더 알고 싶다면 [webpack 문서](https://webpack.js.org/guides/production/)를 참고하세요.
 
-production 빌드에서만 필요한 작업이라는 점을 기억하세요. React의 유용한 경고를 숨기고 빌드를 훨씬 느리게 만들기 때문에 `UglifyJsPlugin` 이나`DefinePlugin`을 개발 중에 `'production'`값으로 적용하지 마세요.
+production 빌드에서만 필요한 작업이라는 점을 기억하세요. React의 유용한 경고를 숨기고 빌드를 훨씬 느리게 만들기 때문에 `TerserPlugin`을 개발 중에 적용하지 마세요.
 
 ## Chrome Performance 탭으로 컴포넌트 프로파일링 {#profiling-components-with-the-chrome-performance-tab}
 
