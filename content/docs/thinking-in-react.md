@@ -49,11 +49,7 @@ JSON API는 아래와 같은 데이터를 반환합니다.
   4. **`ProductCategoryRow`(하늘색)**: 각 *카테고리(category)*의 헤더를 보여줍니다.
   5. **`ProductRow`(빨강색)**: 각각의 *제품(product)*에 해당하는 행을 보여줍니다.
 
-<<<<<<< HEAD
 `ProductTable`을 보면 “Name” 과 “Price” 레이블을 포함한 테이블 헤더만을 가진 컴포넌트는 없습니다. 이 같은 경우, 데이터를 위한 독립된 컴포넌트를 생성할지 생성하지 않을지는 선택입니다. 이 예시에서는 `ProductTable`의 책임인 *데이터 컬렉션(data collection)*이 렌더링의 일부이기 때문에 `ProductTable`을 남겨두었습니다. 그러나 이 헤더가 복잡해지면 (즉 정렬을 위한 기능을 추가하는 등) `ProductTableHeader`컴포넌트를 만드는 것이 더 합리적일 것입니다.
-=======
-If you look at `ProductTable`, you'll see that the table header (containing the "Name" and "Price" labels) isn't its own component. This is a matter of preference, and there's an argument to be made either way. For this example, we left it as part of `ProductTable` because it is part of rendering the *data collection* which is `ProductTable`'s responsibility. However, if this header grows to be complex (e.g., if we were to add affordances for sorting), it would certainly make sense to make this its own `ProductTableHeader` component.
->>>>>>> 986381c56879983269c52863d9c205c7a7ba0174
 
 이제 목업에서 컴포넌트를 확인하였으므로 이를 계층 구조로 나열해봅시다. 모형의 다른 컴포넌트 내부에 나타나는 컴포넌트는 계층 구조의 자식으로 나타냅니다.
 
