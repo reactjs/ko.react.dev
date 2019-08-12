@@ -88,9 +88,9 @@ Hook에는 독자적인 학습 곡선이 있습니다. 이 문서에 누락된 �
 
 ### Hook이나 Class 또는 두 가지를 모두 사용해야 합니까? {#should-i-use-hooks-classes-or-a-mix-of-both}
 
-When you're ready, we'd encourage you to start trying Hooks in new components you write. Make sure everyone on your team is on board with using them and familiar with this documentation. We don't recommend rewriting your existing classes to Hooks unless you planned to rewrite them anyway (e.g. to fix bugs).
+준비가 되면 작성하는 새 컴포넌트에서 Hook을 시도해 보는 것이 좋습니다. 팀의 모든 구성원이 사용하고 이 문서에 익숙해 지도록 하십시오. 일부러 다시 작성하지 않는 이상 (예: 버그 수정) 기존 Class를 Hook으로 고쳐 쓰는 것은 추천하지 않습니다.
 
-You can't use Hooks *inside* of a class component, but you can definitely mix classes and function components with Hooks in a single tree. Whether a component is a class or a function that uses Hooks is an implementation detail of that component. In the longer term, we expect Hooks to be the primary way people write React components.
+Class 컴포넌트 *내부에서* Hook을 사용할 수는 없지만, Class와 함수 컴포넌트를 단일 트리에서 Hook과 섞어서 사용할 수 있습니다. 컴포넌트가 Class인지 Hook을 사용하는 함수인지 여부는 해당 컴포넌트의 구현 세부 사항입니다. 장기적으로 우리는 Hook이 사람들이 React 컴포넌트를 작성하는 주요 방법이 될 것으로 기대합니다.
 
 ### Hook이 Class의 모든 사용 사례를 커버합니까? {#do-hooks-cover-all-use-cases-for-classes}
 
