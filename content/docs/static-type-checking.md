@@ -88,13 +88,13 @@ Flow는 코드 주석을 위한 특별한 문법과 함께 JavaScript 언어를 
 [Yarn](https://yarnpkg.com/)을 사용한다면
 
 ```bash
-yarn add --dev babel-preset-flow
+yarn add --dev @babel/preset-flow
 ```
 
 [npm](https://www.npmjs.com/)을 사용한다면
 
 ```bash
-npm install --save-dev babel-preset-flow
+npm install --save-dev @babel/preset-flow
 ```
 
 설치가 됐다면, `flow` 프리셋을 [Babel configuration](https://babeljs.io/docs/usage/babelrc/)에 추가합니다. 예를 들어 Babel을 `.babelrc` 파일에서 설정한다면, 다음과 같이 할 수 있습니다.
@@ -102,7 +102,7 @@ npm install --save-dev babel-preset-flow
 ```js{3}
 {
   "presets": [
-    "flow",
+    "@babel/preset-flow",
     "react"
   ]
 }
