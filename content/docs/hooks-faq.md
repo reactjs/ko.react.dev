@@ -94,9 +94,9 @@ Class 컴포넌트 *내부에서* Hook을 사용할 수는 없지만, Class와 �
 
 ### Hook이 Class의 모든 사용 사례를 커버합니까? {#do-hooks-cover-all-use-cases-for-classes}
 
-Our goal is for Hooks to cover all use cases for classes as soon as possible. There are no Hook equivalents to the uncommon `getSnapshotBeforeUpdate` and `componentDidCatch` lifecycles yet, but we plan to add them soon.
+우리의 목표는 Hook이 Class의 모든 사용 사례를 가능한 한 빨리 다루는 것입니다. 드문 `getSnapshotBeforeUpdate` 및 `componentDidCatch` 생명주기에 해당하는 Hook은 아직 없지만, 곧 추가할 계획입니다.
 
-It is an early time for Hooks, and some third-party libraries might not be compatible with Hooks at the moment.
+Hook의 초기 시간이며 일부 타사 라이브러리는 현재 Hook과 호환되지 않을 수 있습니다.
 
 ### Hook이 render props 및 고차 컴포넌트를 대체합니까? {#do-hooks-replace-render-props-and-higher-order-components}
 
