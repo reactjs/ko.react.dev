@@ -94,13 +94,13 @@ Class 컴포넌트 *내부에서* Hook을 사용할 수는 없지만, Class와 �
 
 ### Hook이 Class의 모든 사용 사례를 커버합니까? {#do-hooks-cover-all-use-cases-for-classes}
 
-우리의 목표는 Hook이 Class의 모든 사용 사례를 가능한 한 빨리 다루는 것입니다. 드문 `getSnapshotBeforeUpdate` 및 `componentDidCatch` 생명주기에 해당하는 Hook은 아직 없지만, 곧 추가할 계획입니다.
+우리의 목표는 Hook이 Class의 모든 사용 사례를 가능한 한 빨리 커버하게 하는 것입니다. 드문 `getSnapshotBeforeUpdate` 및 `componentDidCatch` 생명주기에 해당하는 Hook은 아직 없지만, 곧 추가할 계획입니다.
 
-Hook의 초기 시간이며 일부 타사 라이브러리는 현재 Hook과 호환되지 않을 수 있습니다.
+Hook의 초기 단계이며 일부 타사 라이브러리는 현재 Hook과 호환되지 않을 수 있습니다.
 
 ### Hook이 render props 및 고차 컴포넌트를 대체합니까? {#do-hooks-replace-render-props-and-higher-order-components}
 
-Often, render props and higher-order components render only a single child. We think Hooks are a simpler way to serve this use case. There is still a place for both patterns (for example, a virtual scroller component might have a `renderItem` prop, or a visual container component might have its own DOM structure). But in most cases, Hooks will be sufficient and can help reduce nesting in your tree.
+종종 render props와 고차 컴포넌트는 하나의 자식만 렌더링합니다. 우리는 Hook이 이 사용 사례를 처리하는 더 간단한 방법이라고 생각합니다. 여전히 두 패턴 모두를 쓸 수 있습니다. (예를 들어, 가상 스크롤러 컴포넌트에는 `renderItem` props가 있거나 시각적 컨테이너 컴포넌트에는 자체 DOM 구조가 있을 수 있습니다) 그러나 대부분의 경우 Hook은 충분하며 코드 트리의 중첩을 줄이는 데 도움이 될 수 있습니다.
 
 ### Redux `connect()`와 React Router와 같은 인기 있는 API에 대해 Hook은 무엇을 의미합니까? {#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router}
 
