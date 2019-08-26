@@ -27,14 +27,11 @@ function Example() {
 `useState`라는 새로운 함수는 우리가 "Hook"에서 처음 배우게 될 함수입니다. 이 예시는 단지 맛보기에 불과합니다. 아직 이해가 되지 않아도 걱정하지 마세요!
 
 **당신은 [다음 페이지](/docs/hooks-overview.html)에서 Hook에 대해 배울 수 있습니다.** 이 페이지에서는 왜 우리가 Hook를 React에 추가했는지, 그리고 어떻게 Hook가 당신의 애플리케이션을 작성하는 데 도움을 주는지 설명할 것입니다.
->노트
+
+>주의
 >
-<<<<<<< HEAD
->React 16.8.0은 Hook를 지원하는 첫 번째 배포입니다. 업그레이드 할 때 React DOM을 포함한 모든 패키지를 업데이트 하는 것을 잊지 마세요. React-Native는 다음번 안정된 배포부터 지원할 것입니다.
-=======
->React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM.
->React Native supports Hooks since [the 0.59 release of React Native](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059).
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
+>React 16.8.0은 Hook를 지원하는 첫 번째 배포입니다. 업그레이드 할 때 React DOM을 포함한 모든 패키지를 업데이트 하는 것을 잊지 마세요.
+>React Native는 [v0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059)부터 Hook을 지원합니다.
 
 ## 소개 영상 {#video-introduction}
 
