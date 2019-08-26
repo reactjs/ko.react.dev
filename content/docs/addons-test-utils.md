@@ -123,13 +123,9 @@ it('can render and update a counter', () => {
 });
 ```
 
-<<<<<<< HEAD
-DOM 이벤트를 붙이는 것은 DOM 컨테이너가 `document` 객체에 추가되었을 때에만 가능하다는 것을 기억하십시오. 불필요하게 반복 되는 코드를 줄이기 위해서 [`react-testing-library`](https://github.com/kentcdodds/react-testing-library)와 같은 것들을 사용할 수 있습니다.
-=======
-- Don't forget that dispatching DOM events only works when the DOM container is added to the `document`. You can use a library like [React Testing Library](https://testing-library.com/react) to reduce the boilerplate code.
+- DOM 이벤트 발행은 DOM 컨테이너가 `document` 객체에 추가되었을 때만 작동한다는 점을 잊지마세요. 불필요하게 반복 되는 코드를 줄이기 위해서 [`react-testing-library`](https://testing-library.com/react)와 같은 라이브러리를 사용할 수 있습니다.
 
-- The [`recipes`](/docs/testing-recipes.html) document contains more details on how `act()` behaves, with examples and usage.
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
+- [테스트 방법](/docs/testing-recipes.html) 문서에 `act()`의 동작 방식에 대한 자세한 내용이 예시와 사용법과 함께 포함되어 있습니다.
 
 * * *
 
@@ -147,11 +143,7 @@ mockComponent(
 
 > 주의
 >
-<<<<<<< HEAD
-> `mockComponent()`는 더이상 쓰이지 않는 API입니다. 저희는 [얕은 복사](/docs/shallow-renderer.html) 혹은 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock)을 사용하는 것을 추천합니다.
-=======
-> `mockComponent()` is a legacy API. We recommend using [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) instead.
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
+> `mockComponent()`는 더 이상 쓰이지 않는 API입니다. [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 사용을 추천합니다.
 
 * * *
 
