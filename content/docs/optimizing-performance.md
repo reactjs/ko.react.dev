@@ -381,40 +381,4 @@ function updateColorMap(colormap) {
 
 Create React App을 사용하고 있다면 `Object.assign`과 object spread 문법은 기본적으로 활용 가능합니다.
 
-<<<<<<< HEAD
-## 불변의 데이터 구조 사용 {#using-immutable-data-structures}
-
-[Immutable.js](https://github.com/facebook/immutable-js)는 이 문제를 해결할 수 있는 또 다른 방법입니다. 구조적 공유(Structural sharing)를 통해 작동되는 지속성과 불변성을 지닌 컬렉션을 제공합니다.
-
-* *불변성*: 일단 생성되면 컬렉션은 다른 시점에서 변경될 수 없습니다.
-* *지속성*: 새로운 컬렉션은 이전 컬렉션과 set과 같은 변화로부터 생성될 수 있습니다. 기존의 컬렉션은 새 컬렉션이 만들어지고 나서도 유효합니다.
-* *구조적 공유(Structural Sharing)*: 가능한 한 원본의 컬렉션과 동일한 구조를 사용해서 새 컬렉션이 만들어지므로 복사를 최소화해서 성능을 향상시킵니다.
-
-불변성은 변화를 추적하는 비용을 적게 만듭니다. 변경은 항상 새로운 객체를 생성하므로 객체에 대한 참조가 변경되었는지 여부만 확인하면 됩니다. 예를 들어 일반적인 JavaScript 코드에서는 아래와 같습니다.
-
-```javascript
-const x = { foo: 'bar' };
-const y = x;
-y.foo = 'baz';
-x === y; // true
-```
-
-`y`는 수정되었지만 `x`와 동일한 객체에 대한 참조이기 때문에 `true`를 반환합니다. immutable.js로 비슷한 코드를 작성할 수 있습니다.
-
-```javascript
-const SomeRecord = Immutable.Record({ foo: null });
-const x = new SomeRecord({ foo: 'bar' });
-const y = x.set('foo', 'baz');
-const z = x.set('foo', 'bar');
-x === y; // false
-x === z; // true
-```
-
-이 경우에는 `x`를 변경할 때 새로운 참조가 반환되기 때문에 `y`에 저장된 새로운 값이 저장된 원래 값과 다른지 확인하기 위해 참조가 동일한지 여부를 판단하는 확인하는 코드`(x===y)`를 사용할 수 있습니다.
-
-불변성을 가지는 데이터를 사용할 수 있도록 하는 두 개의 라이브러리는 [seamless-immutable](https://github.com/rtfeldman/seamless-immutable)와 [immutability-helper](https://github.com/kolodny/immutability-helper)입니다.
-
-불변성을 가지는 데이터 구조는 객체의 변경을 추적하는 적은 비용의 방법을 제공합니다. 이는 `shouldComponentUpdate`를 적용하는데 필요한 모든 것입니다. 이 방법은 좋은 성능 향상을 제공할 수 있습니다.
-=======
-When you deal with deeply nested objects, updating them in an immutable way can feel convoluted. If you run into this problem, check out [Immer](https://github.com/mweststrate/immer) or [immutability-helper](https://github.com/kolodny/immutability-helper). These libraries let you write highly readable code without losing the benefits of immutability.
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
+깊게 중첩된 객체를 처리할 때 불변성을 지키는 방식으로 객체를 업데이트하면 복잡하다고 느낄 수 있습니다. 이런 문제를 마주했다면 [Immer](https://github.com/mweststrate/immer) 혹은 [immutability-helper](https://github.com/kolodny/immutability-helper)를 살펴보세요. 불변성이 가져다주는 이득을 잃지 않고 조금 더 가독성 있는 코드를 작성할 수 있게 해줄겁니다.
