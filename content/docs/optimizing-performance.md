@@ -75,7 +75,7 @@ brunch build -p
 
 ```
 # npm을 사용하는 경우
-npm install --save-dev envify terser uglifyify 
+npm install --save-dev envify terser uglifyify
 
 # Yarn을 사용하는 경우
 yarn add --dev envify terser uglifyify
@@ -211,29 +211,7 @@ React는 렌더링 된 UI의 internal representation을 빌드하고 유지 관�
 
 컴포넌트의 prop이나 state가 변경되면 React는 새로 반환된 엘리먼트를 이전에 렌더링된 엘리먼트와 비교해서 실제 DOM 업데이트가 필요한지 여부를 결정합니다. 같지 않을 경우 React는 DOM을 업데이트합니다.
 
-<<<<<<< HEAD
-React DevTools를 활용해 가상 DOM이 리렌더링되는 현상을 시각화할 수 있습니다.
-
-- [Chrome Browser Extension](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-- [Firefox Browser Extension](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
-- [Standalone Node Package](https://www.npmjs.com/package/react-devtools)
-
-개발자 콘솔의 **React** 탭에서 **Highlight Updates** 옵션을 선택하세요.
-
-<center><img src="../images/blog/devtools-highlight-updates.png" style="max-width:100%; margin-top:10px;" alt="How to enable highlight updates" /></center>
-
-페이지와 상호 작용하면서 리렌더링된 컴포넌트 주변 색 테두리가 순간적으로 나타나는 것을 볼 수 있습니다. 이렇게 하면 불필요한 리렌더링을 발견할 수 있습니다. 해당 React DevTools의 기능은 [Ben Edelstein](https://blog.logrocket.com/@edelstein)의 [블로그 포스트](https://blog.logrocket.com/make-react-fast-again-part-3-highlighting-component-updates-6119e45e6833)에서 확인할 수 있습니다.
-
-아래 예시를 살펴보세요.
-
-<center><img src="../images/blog/highlight-updates-example.gif" style="max-width:100%; margin-top:20px;" alt="React DevTools Highlight Updates example" /></center>
-
-두 번째 할 일을 입력하면 모든 key 입력 시 첫 번째 할 일이 화면에서 깜박입니다. 이 현상은 React에 의해 input과 함께 다시 렌더링 된다는 것을 의미합니다. 이런 현상을 때론 "wasted" 렌더라고 부릅니다. 첫 번째 할 일의 내용이 변경되지 않았기 때문에 불필요한 렌더링이라는 것을 우리는 알지만 React는 모릅니다.
-
 React가 변경된 DOM 노드만 업데이트하더라도 리렌더링에는 여전히 다소 시간이 걸립니다. 대부분의 경우 문제가 되지 않지만 속도 저하가 눈에 띄는 경우 다시 렌더링이 시작되기 전에 실행되는 생명주기 함수 `shouldComponentUpdate`로 이 기능을 무시함으로써 속도를 높일 수 있습니다. 이 함수의 기본 implementation은 `true`를 반환하고 React는 업데이트를 진행합니다.
-=======
-Even though React only updates the changed DOM nodes, re-rendering still takes some time. In many cases it's not a problem, but if the slowdown is noticeable, you can speed all of this up by overriding the lifecycle function `shouldComponentUpdate`, which is triggered before the re-rendering process starts. The default implementation of this function returns `true`, leaving React to perform the update:
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 
 ```javascript
 shouldComponentUpdate(nextProps, nextState) {
