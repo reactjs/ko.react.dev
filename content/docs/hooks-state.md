@@ -120,9 +120,7 @@ class Example extends React.Component {
   }
 ```
 
-<!-- textlint-disable -->
-함수 컴포넌트는 `this`를 가질 수 없기 때문에 `this.state`를 할당하거나 읽을 수 없습니다. 대신, `useState` Hook을 직접 컴포넌트에 호출합니다:
-<!-- textlint-enable -->
+함수 컴포넌트는 `this`를 가질 수 없기 때문에 `this.state`를 할당하거나 읽을 수 없습니다. 대신, `useState` Hook을 직접 컴포넌트에 호출합니다.
 
 ```js{4,5}
 import React, { useState } from 'react';
@@ -213,11 +211,9 @@ function Example() {
 14:  }
 ```
 
-<!-- textlint-disable -->
 * **첫 번째 줄:** `useState` Hook을 React에서 가져옵니다.
 * **네 번째 줄:** `useState` Hook을 이용하면 state 변수와 해당 state를 갱신할 수 있는 함수가 만들어집니다. 또한, `useState`의 인자의 값으로 `0`을 넘겨주면 `count` 값을 0으로 초기화할 수 있습니다.
 * **아홉 번째 줄:** 사용자가 버튼 클릭을 하면 `setConut` 함수를 호출하여 state 변수를 갱신합니다. React는 새로운 `count` 변수를 `Example` 컴포넌트에 넘기며 해당 컴포넌트를 리렌더링합니다.
-<!-- textlint-enable -->
 
 많은 것들이 있기 때문에 처음에는 다소 어려울 수 있습니다. 설명이 이해가 잘 안 된다면, 위의 코드를 천천히 다시 읽어보세요. 클래스 컴포넌트에서 사용하던 state 동작 방식을 잊고, 새로운 눈으로 위의 코드를 보면 분명히 이해가 갈 것입니다.
 
