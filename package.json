@@ -87,12 +87,9 @@
     "prettier": "yarn format:source && yarn format:examples",
     "prettier:diff": "yarn nit:source && yarn nit:examples",
     "reset": "rimraf ./.cache",
-<<<<<<< HEAD
+    "start": "yarn dev",
     "test:textlint": "mocha textlint/tests/**/*.spec.js",
     "test:textlint-cli": "textlint --rulesdir textlint/rules textlint/fixtures/*.md --format stylish"
-=======
-    "start": "yarn dev"
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
   },
   "devDependencies": {
     "@babel/preset-flow": "^7.0.0",
