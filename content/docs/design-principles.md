@@ -1,4 +1,4 @@
----
+1---
 id: design-principles
 title: Design Principles
 layout: contributing
@@ -112,7 +112,7 @@ props가 바르지 않다면 인스펙터로 거슬러 올라가며 트리를 �
 
 현재의 props와 state의 형태로 어떤 UI를 생성한 데이터까지 추적할 수 있는 이 능력은 React에는 매우 중요합니다. state가 Closure와 연결자(combinator)에 갇혀 있지 않고 React에 직접적으로 이용할 수 있는 것은 명확한 설계 목표입니다.
 
-UI는 동적이지만, props와 state의 동기적인 `render()` 함수는 디버깅 작업이 단순한 추측에서 지루하지만 유한한 과정으로 바꾼다고 믿습니다. 복잡한 애니메이션과 같은 몇 가지의 유스케이스가 보다 어렵게 되겠지만, 우리는 React에서 이 제한점을 고수했으면 합니다.
+UI는 동적이지만, props와 state의 동기적인 `render()` 함수는 디버깅 작업을 단순한 추측에서 지루하지만 유한한 과정으로 바꿀 수 있다고 믿습니다. 복잡한 애니메이션과 같은 몇 가지의 유스케이스가 보다 어렵게 되겠지만, 우리는 React에서 이 제한점을 고수했으면 합니다.
 
 ### 설정 {#configuration}
 
@@ -150,7 +150,7 @@ Facebook과 같이 거대한 코드베이스에서 특정한 API의 사용을 �
 
 우리의 코드베이스에서는, JSX는 React 엘리먼트 트리를 다루는 툴에 대한 명확한 힌트를 제공합니다. 이로 인해 [hoisting constant elements](https://babeljs.io/docs/en/babel-plugin-transform-react-constant-elements/)와 안전한 lint 및 codemod 내부 컴포넌트 사용과 같은 빌드 시의 최적화를 추가하거나 JSX 소스 위치를 경고에 포함시킬 수 있습니다.
 
-### 개밥 먹기 {#dogfooding}
+### 독푸딩 {#dogfooding}
 
 우리는 커뮤니티에서 제기한 문제를 해결하려고 최선을 다하고 있습니다. 그러나 우리는 사람들이 "또한" Facebook 내부적으로 겪고 있는 이슈를 우선시할 수 도 있습니다. 반 직관적으로 우리는 이것이 커뮤니티가 React에 내기할 수 있는 주요한 이유라고 생각합니다.
 
