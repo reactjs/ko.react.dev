@@ -75,7 +75,7 @@ brunch build -p
 
 ```
 # npm을 사용하는 경우
-npm install --save-dev envify terser uglifyify 
+npm install --save-dev envify terser uglifyify
 
 # Yarn을 사용하는 경우
 yarn add --dev envify terser uglifyify
@@ -210,24 +210,6 @@ Profiler에 대한 영상도 [YouTube](https://www.youtube.com/watch?v=nySib7ipZ
 React는 렌더링 된 UI의 internal representation을 빌드하고 유지 관리합니다. 여기에는 컴포넌트에서 반환되는 React 엘리먼트가 포함됩니다. representation은 React가 JavaScript 객체에서의 작업보다 느릴 수 있기 때문에 필요에 따라 DOM 노드를 만들고 기존 노드에 접근하지 못하도록 합니다. 때론 "virtual DOM"이라고 불리기도 하지만, React Native에서 같은 방식으로 동작합니다.
 
 컴포넌트의 prop이나 state가 변경되면 React는 새로 반환된 엘리먼트를 이전에 렌더링된 엘리먼트와 비교해서 실제 DOM 업데이트가 필요한지 여부를 결정합니다. 같지 않을 경우 React는 DOM을 업데이트합니다.
-
-React DevTools를 활용해 가상 DOM이 리렌더링되는 현상을 시각화할 수 있습니다.
-
-- [Chrome Browser Extension](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-- [Firefox Browser Extension](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
-- [Standalone Node Package](https://www.npmjs.com/package/react-devtools)
-
-개발자 콘솔의 **React** 탭에서 **Highlight Updates** 옵션을 선택하세요.
-
-<center><img src="../images/blog/devtools-highlight-updates.png" style="max-width:100%; margin-top:10px;" alt="How to enable highlight updates" /></center>
-
-페이지와 상호 작용하면서 리렌더링된 컴포넌트 주변 색 테두리가 순간적으로 나타나는 것을 볼 수 있습니다. 이렇게 하면 불필요한 리렌더링을 발견할 수 있습니다. 해당 React DevTools의 기능은 [Ben Edelstein](https://blog.logrocket.com/@edelstein)의 [블로그 포스트](https://blog.logrocket.com/make-react-fast-again-part-3-highlighting-component-updates-6119e45e6833)에서 확인할 수 있습니다.
-
-아래 예시를 살펴보세요.
-
-<center><img src="../images/blog/highlight-updates-example.gif" style="max-width:100%; margin-top:20px;" alt="React DevTools Highlight Updates example" /></center>
-
-두 번째 할 일을 입력하면 모든 key 입력 시 첫 번째 할 일이 화면에서 깜박입니다. 이 현상은 React에 의해 input과 함께 다시 렌더링 된다는 것을 의미합니다. 이런 현상을 때론 "wasted" 렌더라고 부릅니다. 첫 번째 할 일의 내용이 변경되지 않았기 때문에 불필요한 렌더링이라는 것을 우리는 알지만 React는 모릅니다.
 
 React가 변경된 DOM 노드만 업데이트하더라도 리렌더링에는 여전히 다소 시간이 걸립니다. 대부분의 경우 문제가 되지 않지만 속도 저하가 눈에 띄는 경우 다시 렌더링이 시작되기 전에 실행되는 생명주기 함수 `shouldComponentUpdate`로 이 기능을 무시함으로써 속도를 높일 수 있습니다. 이 함수의 기본 implementation은 `true`를 반환하고 React는 업데이트를 진행합니다.
 
@@ -399,36 +381,4 @@ function updateColorMap(colormap) {
 
 Create React App을 사용하고 있다면 `Object.assign`과 object spread 문법은 기본적으로 활용 가능합니다.
 
-## 불변의 데이터 구조 사용 {#using-immutable-data-structures}
-
-[Immutable.js](https://github.com/facebook/immutable-js)는 이 문제를 해결할 수 있는 또 다른 방법입니다. 구조적 공유(Structural sharing)를 통해 작동되는 지속성과 불변성을 지닌 컬렉션을 제공합니다.
-
-* *불변성*: 일단 생성되면 컬렉션은 다른 시점에서 변경될 수 없습니다.
-* *지속성*: 새로운 컬렉션은 이전 컬렉션과 set과 같은 변화로부터 생성될 수 있습니다. 기존의 컬렉션은 새 컬렉션이 만들어지고 나서도 유효합니다.
-* *구조적 공유(Structural Sharing)*: 가능한 한 원본의 컬렉션과 동일한 구조를 사용해서 새 컬렉션이 만들어지므로 복사를 최소화해서 성능을 향상시킵니다.
-
-불변성은 변화를 추적하는 비용을 적게 만듭니다. 변경은 항상 새로운 객체를 생성하므로 객체에 대한 참조가 변경되었는지 여부만 확인하면 됩니다. 예를 들어 일반적인 JavaScript 코드에서는 아래와 같습니다.
-
-```javascript
-const x = { foo: 'bar' };
-const y = x;
-y.foo = 'baz';
-x === y; // true
-```
-
-`y`는 수정되었지만 `x`와 동일한 객체에 대한 참조이기 때문에 `true`를 반환합니다. immutable.js로 비슷한 코드를 작성할 수 있습니다.
-
-```javascript
-const SomeRecord = Immutable.Record({ foo: null });
-const x = new SomeRecord({ foo: 'bar' });
-const y = x.set('foo', 'baz');
-const z = x.set('foo', 'bar');
-x === y; // false
-x === z; // true
-```
-
-이 경우에는 `x`를 변경할 때 새로운 참조가 반환되기 때문에 `y`에 저장된 새로운 값이 저장된 원래 값과 다른지 확인하기 위해 참조가 동일한지 여부를 판단하는 확인하는 코드`(x===y)`를 사용할 수 있습니다.
-
-불변성을 가지는 데이터를 사용할 수 있도록 하는 두 개의 라이브러리는 [seamless-immutable](https://github.com/rtfeldman/seamless-immutable)와 [immutability-helper](https://github.com/kolodny/immutability-helper)입니다.
-
-불변성을 가지는 데이터 구조는 객체의 변경을 추적하는 적은 비용의 방법을 제공합니다. 이는 `shouldComponentUpdate`를 적용하는데 필요한 모든 것입니다. 이 방법은 좋은 성능 향상을 제공할 수 있습니다.
+깊게 중첩된 객체를 처리할 때 불변성을 지키는 방식으로 객체를 업데이트하면 복잡하다고 느낄 수 있습니다. 이런 문제를 마주했다면 [Immer](https://github.com/mweststrate/immer) 혹은 [immutability-helper](https://github.com/kolodny/immutability-helper)를 살펴보세요. 불변성이 가져다주는 이득을 잃지 않고 조금 더 가독성 있는 코드를 작성할 수 있게 해줄겁니다.

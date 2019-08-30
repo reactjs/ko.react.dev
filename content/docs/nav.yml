@@ -59,6 +59,8 @@
       title: 성능 최적화
     - id: portals
       title: Portal
+    - id: profiler
+      title: Profiler
     - id: react-without-es6
       title: ES6 없이 사용하는 React
     - id: react-without-jsx
@@ -123,6 +125,14 @@
         title: Hook API 참고서
       - id: hooks-faq
         title: Hook 자주 묻는 질문
+- title: Testing
+  items:
+    - id: testing
+      title: Testing Overview
+    - id: testing-recipes
+      title: Testing Recipes
+    - id: testing-environments
+      title: Testing Environments
 - title: 기여
   items:
   - id: how-to-contribute

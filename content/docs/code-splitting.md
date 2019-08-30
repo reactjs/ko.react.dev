@@ -6,7 +6,7 @@ permalink: docs/code-splitting.html
 
 ## 번들링 {#bundling}
 
-대부분 React 앱들은 [Webpack](https://webpack.js.org/) 이나 [Browserify](http://browserify.org/) 같은 툴을 사용하여 여러 파일을 하나로 병합한 "번들 된" 파일을 웹 페이지에 포함하여 한 번에 전체 앱을 로드 할 수 있습니다. 
+대부분 React 앱들은 [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/) 또는 [Browserify](http://browserify.org/) 같은 툴을 사용하여 여러 파일을 하나로 병합한 "번들 된" 파일을 웹 페이지에 포함하여 한 번에 전체 앱을 로드 할 수 있습니다.
 
 #### 예시 {#example}
 
