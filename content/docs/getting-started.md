@@ -119,7 +119,11 @@ React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 �
 
 ## 버전 관리된 문서 {#versioned-documentation}
 
+<<<<<<< HEAD
 이 문서는 항상 안정된 최신 버전의 React를 반영합니다. React 16부터는 이전 버전의 문서를 [별도의 페이지](/versions)에서 찾을 수 있습니다. 이전 버전의 문서는 릴리즈 시점에 스냅샷으로 작성되며 지속적으로 업데이트되지 않는다는 점에 유의하세요.
+=======
+This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation on a [separate page](/versions). Note that documentation for past versions is snapshotted at the time of the release, and isn't being continuously updated.
+>>>>>>> 941f54180ef5e652221f54ef6d1f6f2e9e063597
 
 ## 빠진 항목이 있다면? {#something-missing}
 

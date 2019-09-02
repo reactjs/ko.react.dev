@@ -14,7 +14,11 @@ render props 패턴으로 구현된 컴포넌트는 자체적으로 렌더링 �
 )}/>
 ```
 
+<<<<<<< HEAD
 render props를 사용하는 라이브러리는 [React Router](https://reacttraining.com/react-router/web/api/Route/Route-render-methods)와 [Downshift](https://github.com/paypal/downshift)가 있습니다.
+=======
+Libraries that use render props include [React Router](https://reacttraining.com/react-router/web/api/Route/render-func), [Downshift](https://github.com/paypal/downshift) and [Formik](https://github.com/jaredpalmer/formik).
+>>>>>>> 941f54180ef5e652221f54ef6d1f6f2e9e063597
 
 이 문서에서는 render props가 왜 유용하고, 어떻게 여러분의 프로젝트에 적용할 수 있을지에 관해 이야기 하겠습니다.
 
