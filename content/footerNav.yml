@@ -1,24 +1,24 @@
 community:
-  title: Community
+  title: 커뮤니티
 
 docs:
-  title: Docs
+  title: 문서
 
 more:
-  title: More
+  title: 더보기
   items:
-    - title: Tutorial
+    - title: 자습서
       to: /tutorial/tutorial.html
-    - title: Blog
+    - title: 블로그
       to: /blog
-    - title: Acknowledgements
+    - title: 감사의 글
       to: /acknowledgements.html
     - title: React Native
       to: https://facebook.github.io/react-native/
       external: true
 
 channels:
-  title: Channels
+  title: 채널
   items:
     - title: Github
       to: https://github.com/facebook/react
