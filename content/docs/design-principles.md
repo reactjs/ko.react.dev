@@ -1,4 +1,4 @@
-1---
+---
 id: design-principles
 title: Design Principles
 layout: contributing
