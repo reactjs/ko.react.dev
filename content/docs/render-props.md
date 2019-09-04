@@ -14,7 +14,7 @@ render props 패턴으로 구현된 컴포넌트는 자체적으로 렌더링 �
 )}/>
 ```
 
-render props를 사용하는 라이브러리는 [React Router](https://reacttraining.com/react-router/web/api/Route/Route-render-methods)와 [Downshift](https://github.com/paypal/downshift)가 있습니다.
+render props를 사용하는 라이브러리는 [React Router](https://reacttraining.com/react-router/web/api/Route/Route-render-methods), [Downshift](https://github.com/paypal/downshift), [Formik](https://github.com/jaredpalmer/formik)이 있습니다.
 
 이 문서에서는 render props가 왜 유용하고, 어떻게 여러분의 프로젝트에 적용할 수 있을지에 관해 이야기 하겠습니다.
 
