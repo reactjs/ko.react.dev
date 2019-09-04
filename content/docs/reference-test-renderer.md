@@ -151,11 +151,7 @@ testRenderer.toJSON()
 testRenderer.toTree()
 ```
 
-<<<<<<< HEAD
-렌더링 된 트리를 나타내는 객체를 반환합니다. `toJSON()`에서 반환되는 값과 달리 더욱 자세한 정보가 반환되며, 반환 값에는 사용자가 작성한 컴포넌트 역시 포함되어있습니다. 테스트 렌더러 위에 별도의 검증(assertion) 라이브러리를 만드는 것이 아니라면 이 함수는 필요하지 않을 것입니다.
-=======
-Return an object representing the rendered tree. The representation is more detailed than the one provided by `toJSON()`, and includes the user-written components. You probably don't need this method unless you're writing your own assertion library on top of the test renderer.
->>>>>>> 941f54180ef5e652221f54ef6d1f6f2e9e063597
+렌더링 된 트리를 나타내는 객체를 반환합니다. `toJSON()`에서 반환되는 값보다 더욱 자세한 정보가 반환되며, 반환 값에는 사용자가 작성한 컴포넌트 역시 포함되어있습니다. 테스트 렌더러 위에 별도의 검증(assertion) 라이브러리를 만드는 것이 아니라면 이 함수는 필요하지 않을 것입니다.
 
 ### `testRenderer.update()` {#testrendererupdate}
 
