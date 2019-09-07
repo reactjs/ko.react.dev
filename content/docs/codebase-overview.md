@@ -13,13 +13,13 @@ redirect_from:
 
 [React에 기여](/docs/how-to-contribute.html)하고자 한다면, 이 문서를 참고하여 프로젝트를 수정하길 바랍니다.
 
-React 앱을 개발하는데 있어서 후술할 관례들의 사용을 반드시 추천하지는 않습니다. 대부분의 관례들은 이전에 많이 사용된 것들이며, 차차 수정될 것입니다.
+React 앱을 개발하는데 있어서 아래 관례들의 사용을 반드시 추천하지는 않습니다. 대부분의 관례들은 이전에 많이 사용된 것들이며, 차차 수정될 것입니다.
 
 ### 외부 의존성 {#external-dependencies}
 
 React는 외부 의존성을 거의 가지고 있지 않습니다. `require()` 함수는 통상적으로 React 내부의 파일을 참조합니다. 하지만 몇 가지 다음과 같은 예외가 존재합니다.
 
-[Replay](https://github.com/facebook/relay) 라이브러리 같은 몇 가지 유틸리티를 사용하기 위해, React는 [fbjs](https://github.com/facebook/fbjs)에 대한 의존성을 가지고 있습니다. 대신 React는 Node 환경에서 작은 모듈에 비의존적입니다. 이를 통해 페이스북 개발자들은 필요할 때마다 React를 수정할 수 있습니다. fbjs의 어떤 유틸리티도 public API로 개발되지 않았으며, 오직 React와 같은 페이스북 프로젝트에서만 사용됩니다.
+[Relay](https://github.com/facebook/relay) 라이브러리 같은 몇 가지 유틸리티를 사용하기 위해, React는 [fbjs](https://github.com/facebook/fbjs)에 대한 의존성을 가지고 있습니다. 대신 React는 Node 환경에서 작은 모듈에 의존하지 않습니다. 이를 통해 페이스북 개발자들은 필요할 때마다 React를 수정할 수 있습니다. fbjs의 어떤 유틸리티도 public API로 개발되지 않았으며, 오직 React와 같은 페이스북 프로젝트에서만 사용됩니다.
 
 ### 최상위 폴더 {#top-level-folders}
 
@@ -217,9 +217,9 @@ React 파이버 구조에 대해 [여기](https://github.com/acdlite/react-fiber
 
 ### 이벤트 시스템 {#event-system}
 
-React에는 React DOM과 React 네이티브에서 동시에 작동하는 렌더러의 애그노스틱인 복합 이벤트 시스템이 구현되어 있습니다. 해당 코드는 [`packages/events`](https://github.com/facebook/react/tree/master/packages/events)에서 확인할 수 있습니다.
+React는 렌더러와 무관하며 React DOM 및 React Native와 함께 작동하는 합성 이벤트 시스템을 구현합니다. 해당 코드는 [`packages/events`](https://github.com/facebook/react/tree/master/packages/events)에서 확인할 수 있습니다.
 
-해당 코드에 대한 상세한 설명은 다음의 [영상](https://www.youtube.com/watch?v=dRo_egw7tBc) (66분)을 참고하십시오.
+해당 코드에 대한 상세한 설명은 다음의 [영상](https://www.youtube.com/watch?v=dRo_egw7tBc) (66분)을 참고하세요.
 
 ### 다음 내용은? {#what-next}
 
