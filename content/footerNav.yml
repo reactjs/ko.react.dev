@@ -20,7 +20,7 @@ more:
 channels:
   title: 채널
   items:
-    - title: Github
+    - title: GitHub
       to: https://github.com/facebook/react
       external: true
     - title: Stack Overflow
