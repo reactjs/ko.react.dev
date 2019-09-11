@@ -337,7 +337,7 @@ Square의 `render` 함수 내부에서 `onClick` 핸들러를 통해 `this.setSt
 
 React DevTools를 통해 React 컴포넌트의 props와 state도 확인할 수 있습니다.
 
-React DevTools를 설치한 후에 페이지의 모든 엘리먼트에 오른쪽 클릭을 하고 "요소 검사"를 클릭하여 개발자 도구를 열면 탭의 오른쪽 끝에 React 탭("⚛️ Components"와 "⚛️ Profiler")을 확인하실 수 있습니다. 컴포넌트 트리를 검사하고 싶다면 "⚛️ Components"을 사용해주세요.
+React DevTools를 설치한 후에 페이지의 모든 엘리먼트에 오른쪽 클릭을 하고 "요소 검사"를 클릭하여 개발자 도구를 열면 탭의 오른쪽 끝에 React 탭("⚛️ Components"와 "⚛️ Profiler")을 확인하실 수 있습니다. 컴포넌트 트리를 검사하고 싶다면 "⚛️ Components"를 사용해주세요.
 
 **그러나 CodePen에서 도구를 사용하기 위해선 몇 가지 단계가 추가로 필요합니다.**
 
