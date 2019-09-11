@@ -145,7 +145,7 @@ Webpack v4 이상에서는 프로덕션 모드에서 기본적으로 코드를 �
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  mode: 'production'
+  mode: 'production',
   optimization: {
     minimizer: [new TerserPlugin({ /* additional options here */ })],
   },
