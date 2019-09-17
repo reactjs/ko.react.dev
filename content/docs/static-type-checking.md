@@ -2,8 +2,6 @@
 id: static-type-checking
 title: Static Type Checking
 permalink: docs/static-type-checking.html
-prev: typechecking-with-proptypes.html
-next: refs-and-the-dom.html
 ---
 
 [Flow](https://flow.org/), [TypeScript](https://www.typescriptlang.org/)와 같은 정적 타입 체커들은 코드 실행 전에 특정한 타입 문제를 찾아냅니다. 또한 자동완성과 같은 기능을 추가하여 개발자의 작업 흐름을 개선하기도 합니다. 이러한 이유로 큰 코드 베이스에서는 `PropTypes`를 사용하는 대신 Flow 혹은 TypeScript를 사용하는 것을 추천해 드립니다.
