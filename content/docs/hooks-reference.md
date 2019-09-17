@@ -165,11 +165,7 @@ useEffect(
 >
 >만약 effect를 수행하고 (mount를 하거나 unmount 할 때) 그것을 한 번만 실행하고 싶다면 두 번째 인자로 빈 배열(`[]`)을 전달할 수 있습니다. 이를 통해 effect는 React에게 props나 state에서 가져온 *어떤* 값에도 의존하지 않으므로, 다시 실행할 필요가 전혀 없다는 것을 알려주게 됩니다. 이것을 특별한 경우로 간주하지는 않고, 의존성 값의 배열이 항상 어떻게 동작하는지 직접적으로 보여주는 것뿐입니다.
 >
-<<<<<<< HEAD
 >만약 빈 배열(`[]`)을 전달한다면 effect 안에 있는 props와 state는 항상 초깃값을 가지게 될 것입니다. 두 번째 인자로써 `[]`을 전달하는 것이 친숙한 `componentDidMount`와 `componentWillUnmount`에 의한 개념과 비슷하게 느껴지겠지만, effect가 너무 자주 리렌더링 되는 것을 피하기 위한 보통 [더 나은](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [해결책](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)이 있습니다. 또한 브라우저가 모두 그려질 때까지 React는 `useEffect`의 수행을 지연하기 때문에 다른 작업의 수행이 문제가 되지는 않는다는 것을 잊지 마세요.
-=======
->If you pass an empty array (`[]`), the props and state inside the effect will always have their initial values. While passing `[]` as the second argument is closer to the familiar `componentDidMount` and `componentWillUnmount` mental model, there are usually [better](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [solutions](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) to avoid re-running effects too often. Also, don't forget that React defers running `useEffect` until after the browser has painted, so doing extra work is less of a problem.
->>>>>>> 6dcb963479953586f462ce31fddf35158c0598a0
 >
 >
 >[`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 패키지의 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 규칙을 사용하기를 권장합니다. 그것은 의존성이 바르지 않게 정의되었다면 그에 대해 경고하고 수정하도록 알려줍니다.
