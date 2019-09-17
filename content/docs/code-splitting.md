@@ -111,22 +111,11 @@ import OtherComponent from './OtherComponent';
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 ```
-`MyComponent`가 렌더링 될 때 `OtherComponent`를 포함한 번들을 자동으로 불러옵니다.
+`MyComponent`가 처음 렌더링 될 때 `OtherComponent`를 포함한 번들을 자동으로 불러옵니다.
 
-<<<<<<< HEAD
-`React.lazy`는 동적 `import()`를 호출하는 함수를 인자로 가집니다. 이 함수는 React 컴포넌트를 
-포함하며 `default` export를 가진 모듈로 결정되는 `Promise`로 반환해야 합니다.  
+`React.lazy`는 동적 `import()`를 호출하는 함수를 인자로 가집니다. 이 함수는 React 컴포넌트를 포함하며 `default` export를 가진 모듈로 결정되는 `Promise`로 반환해야 합니다.
 
-### Suspense {#suspense}
-
-`MyComponent`를 렌더링할 때 `OtherComponent`를 포함하는 모듈이 아직 로드되지 않았다면, 로드를 기다리는 동안 로딩처럼 예비 컨텐츠를 보여줘야 합니다. 이는 `Suspense` 컴포넌트를 사용하여 처리할 수 있습니다. 
-=======
-This will automatically load the bundle containing the `OtherComponent` when this component is first rendered.
-
-`React.lazy` takes a function that must call a dynamic `import()`. This must return a `Promise` which resolves to a module with a `default` export containing a React component.
-
-The lazy component should then be rendered inside a `Suspense` component, which allows us to show some fallback content (such as a loading indicator) while we're waiting for the lazy component to load.
->>>>>>> 6dcb963479953586f462ce31fddf35158c0598a0
+lazy 컴포넌트는 `Suspense` 컴포넌트 하위에서 렌더링되어야 하며, `Suspense`는 lazy 컴포넌트가 로드되길 기다리는 동안 로딩 화면과 같은 예비 컨텐츠를 보여줄 수 있게 해줍니다.
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
