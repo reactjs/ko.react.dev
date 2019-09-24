@@ -31,7 +31,7 @@ class Welcome extends React.Component {
 
 [`render()`](#render)는 `React.Component`의 하위 class에서 *반드시* 정의해야 하는 메서드입니다. 그 외에 이 문서에서 설명하는 메서드들은 선택 사항입니다.
 
-**컴포넌트 클래스를 직접 만들어서 사용하지 마세요.** React 컴포넌트를 사용할 때에는 [상속보다 조합을 주로 사용합니다](/docs/composition-vs-inheritance.html).
+**컴포넌트 클래스를 직접 만들어서 사용하지 마세요.** React 컴포넌트를 사용할 때에는 [상속보다 합성을 주로 사용합니다](/docs/composition-vs-inheritance.html).
 
 > 주의
 >

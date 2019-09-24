@@ -120,7 +120,7 @@ class Example extends React.Component {
   }
 ```
 
-함수 컴포넌트는 `this`를 가질 수 없기 때문에 `this.state`를 할당하거나 읽을 수 없습니다. 대신, `useState` Hook을 직접 컴포넌트에 호출합니다:
+함수 컴포넌트는 `this`를 가질 수 없기 때문에 `this.state`를 할당하거나 읽을 수 없습니다. 대신, `useState` Hook을 직접 컴포넌트에 호출합니다.
 
 ```js{4,5}
 import React, { useState } from 'react';
@@ -132,7 +132,7 @@ function Example() {
 
 **`useState`를 호출하는 것은 무엇을 하는 걸까요?** "state 변수"를 선언할 수 있습니다. 위에 선언한 변수는 `count`라고 부르지만 `banana`처럼 아무 이름으로 지어도 됩니다. `useState`는 클래스 컴포넌트의 `this.state`가 제공하는 기능과 똑같습니다. 일반적으로 일반 변수는 함수가 끝날 때 사라지지만, state 변수는 React에 의해 사라지지 않습니다.
 
-**`useState`의 인자로 무엇을 넘겨주어야 할까요?** `useState()`Hook의 인자로 넘겨주는 값은 state의 초기 값입니다. 함수 컴포넌트의 state는 클래스와 달리 객체를 가질 수 없고, 숫자 타입과 문자 타입을 가질 수 있습니다. 위의 예시는 사용자가 버튼을 얼마나 많이 클릭했는지 알기를 원하므로 `0`을 해당 state의 초기 값으로 선언했습니다. (2개의 다른 변수를 저장하기를 원한다면 `useState()`를 두 번 호출해야 합니다.)
+**`useState`의 인자로 무엇을 넘겨주어야 할까요?** `useState()`Hook의 인자로 넘겨주는 값은 state의 초기 값입니다. 함수 컴포넌트의 state는 클래스와 달리 객체일 필요는 없고, 숫자 타입과 문자 타입을 가질 수 있습니다. 위의 예시는 사용자가 버튼을 얼마나 많이 클릭했는지 알기를 원하므로 `0`을 해당 state의 초기 값으로 선언했습니다. (2개의 다른 변수를 저장하기를 원한다면 `useState()`를 두 번 호출해야 합니다.)
 
 **`useState`는 무엇을 반환할까요?** state 변수, 해당 변수를 갱신할 수 있는 함수 이 두 가지 쌍을 반환합니다. 이것이 바로 `const [count, setCount] = useState()`라고 쓰는 이유입니다. 클래스 컴포넌트의 `this.state.count`와 `this.setState`와 유사합니다. 만약 이러한 문법에 익숙하지 않다면 [현재 페이지의 끝](/docs/hooks-state.html#tip-what-do-square-brackets-mean)에서 살펴볼게요.
 

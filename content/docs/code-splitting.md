@@ -6,7 +6,7 @@ permalink: docs/code-splitting.html
 
 ## 번들링 {#bundling}
 
-대부분 React 앱들은 [Webpack](https://webpack.js.org/) 이나 [Browserify](http://browserify.org/) 같은 툴을 사용하여 여러 파일을 하나로 병합한 "번들 된" 파일을 웹 페이지에 포함하여 한 번에 전체 앱을 로드 할 수 있습니다. 
+대부분 React 앱들은 [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/) 또는 [Browserify](http://browserify.org/) 같은 툴을 사용하여 여러 파일을 하나로 병합한 "번들 된" 파일을 웹 페이지에 포함하여 한 번에 전체 앱을 로드 할 수 있습니다.
 
 #### 예시 {#example}
 
@@ -104,37 +104,18 @@ Create React App을 사용하고 있다면 이미 Webpack이 구성이 되어 �
 
 ```js
 import OtherComponent from './OtherComponent';
-
-function MyComponent() {
-  return (
-    <div>
-      <OtherComponent />
-    </div>
-  );
-}
 ```
 
 **After**
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
-
-function MyComponent() {
-  return (
-    <div>
-      <OtherComponent />
-    </div>
-  );
-}
 ```
-`MyComponent`가 렌더링 될 때 `OtherComponent`를 포함한 번들을 자동으로 불러옵니다.
+`MyComponent`가 처음 렌더링 될 때 `OtherComponent`를 포함한 번들을 자동으로 불러옵니다.
 
-`React.lazy`는 동적 `import()`를 호출하는 함수를 인자로 가집니다. 이 함수는 React 컴포넌트를 
-포함하며 `default` export를 가진 모듈로 결정되는 `Promise`로 반환해야 합니다.  
+`React.lazy`는 동적 `import()`를 호출하는 함수를 인자로 가집니다. 이 함수는 React 컴포넌트를 포함하며 `default` export를 가진 모듈로 결정되는 `Promise`로 반환해야 합니다.
 
-### Suspense {#suspense}
-
-`MyComponent`를 렌더링할 때 `OtherComponent`를 포함하는 모듈이 아직 로드되지 않았다면, 로드를 기다리는 동안 로딩처럼 예비 컨텐츠를 보여줘야 합니다. 이는 `Suspense` 컴포넌트를 사용하여 처리할 수 있습니다. 
+lazy 컴포넌트는 `Suspense` 컴포넌트 하위에서 렌더링되어야 하며, `Suspense`는 lazy 컴포넌트가 로드되길 기다리는 동안 로딩 화면과 같은 예비 컨텐츠를 보여줄 수 있게 해줍니다.
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
