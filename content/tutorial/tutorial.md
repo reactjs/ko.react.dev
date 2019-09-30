@@ -120,7 +120,11 @@ import './index.css';
 
 ### 도움이 필요할 때! {#help-im-stuck}
 
+<<<<<<< HEAD
 막히는 부분이 생겼다면 [커뮤니티에서 지원하는 자료](/community/support.html)를 확인해보세요. 특히 [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n)은 빠르게 도움을 받을 수 있는 좋은 방법입니다. 원하는 답을 얻지 못하거나 계속 막힌 상태라면 이슈를 제출해주세요. 우리가 도와드리겠습니다.
+=======
+If you get stuck, check out the [community support resources](/community/support.html). In particular, [Reactiflux Chat](https://discord.gg/reactiflux) is a great way to get help quickly. If you don't receive an answer, or if you remain stuck, please file an issue, and we'll help you out.
+>>>>>>> 647b639259919f96e9b667bf41ec16621e1b84dc
 
 ## 개요 {#overview}
 
