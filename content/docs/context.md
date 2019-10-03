@@ -15,6 +15,7 @@ context를 이용하면 단계마다 일일이 props를 넘겨주지 않고도 �
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
+  - [Context.displayName](#contextdisplayname)
 - [예시](#examples)
   - [값이 변하는 context](#dynamic-context)
   - [하위 컴포넌트에서 context 업데이트하기](#updating-context-from-a-nested-component)
@@ -193,6 +194,20 @@ Context.Consumer의 자식은 [함수](/docs/render-props.html#using-props-other
 > 주의
 >
 >함수를 자식으로 받는 패턴에 대해서는 [render props](/docs/render-props.html)을 참조하세요.
+
+### `Context.displayName` {#contextdisplayname}
+
+Context 객체는 `displayName` 문자열 속성을 설정할 수 있습니다. React 개발자 도구는 이 문자열을 사용해서 context를 어떻게 보여줄 지 결정합니다.
+
+예를 들어, 아래 컴포넌트는 개발자 도구에 MyDisplayName로 표시됩니다.
+
+```js{2}
+const MyContext = React.createContext(/* some value */);
+MyContext.displayName = 'MyDisplayName';
+
+<MyContext.Provider> // "MyDisplayName.Provider" in DevTools
+<MyContext.Consumer> // "MyDisplayName.Consumer" in DevTools
+```
 
 ## 예시 {#examples}
 
