@@ -15,22 +15,13 @@ context를 이용하면 단계마다 일일이 props를 넘겨주지 않고도 �
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
-<<<<<<< HEAD
+  - [Context.displayName](#contextdisplayname)
 - [예시](#examples)
   - [값이 변하는 context](#dynamic-context)
   - [하위 컴포넌트에서 context 업데이트하기](#updating-context-from-a-nested-component)
   - [여러 context 구독하기](#consuming-multiple-contexts)
 - [주의사항](#caveats)
 - [예전 API](#legacy-api)
-=======
-  - [Context.displayName](#contextdisplayname)
-- [Examples](#examples)
-  - [Dynamic Context](#dynamic-context)
-  - [Updating Context from a Nested Component](#updating-context-from-a-nested-component)
-  - [Consuming Multiple Contexts](#consuming-multiple-contexts)
-- [Caveats](#caveats)
-- [Legacy API](#legacy-api)
->>>>>>> 647b639259919f96e9b667bf41ec16621e1b84dc
 
 ## 언제 context를 써야 할까 {#when-to-use-context}
 
@@ -204,14 +195,11 @@ Context.Consumer의 자식은 [함수](/docs/render-props.html#using-props-other
 >
 >함수를 자식으로 받는 패턴에 대해서는 [render props](/docs/render-props.html)을 참조하세요.
 
-<<<<<<< HEAD
-## 예시 {#examples}
-=======
 ### `Context.displayName` {#contextdisplayname}
 
-Context object accepts a `displayName` string property. React DevTools uses this string to determine what to display for the context.
+Context 객체는 `displayName` 문자열 속성을 설정할 수 있습니다. React 개발자 도구는 이 문자열을 사용해서 context를 어떻게 보여줄 지 결정합니다.
 
-For example, the following component will appear as MyDisplayName in the DevTools:
+예를 들어, 아래 컴포넌트는 개발자 도구에 MyDisplayName로 표시됩니다.
 
 ```js{2}
 const MyContext = React.createContext(/* some value */);
@@ -221,8 +209,7 @@ MyContext.displayName = 'MyDisplayName';
 <MyContext.Consumer> // "MyDisplayName.Consumer" in DevTools
 ```
 
-## Examples {#examples}
->>>>>>> 647b639259919f96e9b667bf41ec16621e1b84dc
+## 예시 {#examples}
 
 ### 값이 변하는 context {#dynamic-context}
 
