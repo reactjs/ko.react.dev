@@ -17,7 +17,7 @@ ReactDOM.render(
 
 위 코드는 페이지에 "Hello, world!"라는 제목을 보여줍니다.
 
-[CodePen에서 실행하기](codepen://hello-world)
+[CodePen에서 실행하기](codepen://hello-world)
 
 온라인 에디터로 열어보려면 상단의 링크를 클릭하세요. 코드를 자유롭게 수정하고, 결과가 어떻게 변하는지 관찰해보세요. 이 안내서의 거의 모든 페이지에서는 이런 형태로 수정 가능한 예시를 함께 제공합니다.
 

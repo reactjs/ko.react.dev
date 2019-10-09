@@ -120,7 +120,7 @@ import './index.css';
 
 ### 도움이 필요할 때! {#help-im-stuck}
 
-막히는 부분이 생겼다면 [커뮤니티에서 지원하는 자료](/community/support.html)를 확인해보세요. 특히 [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n)은 빠르게 도움을 받을 수 있는 좋은 방법입니다. 원하는 답을 얻지 못하거나 계속 막힌 상태라면 이슈를 제출해주세요. 우리가 도와드리겠습니다.
+막히는 부분이 생겼다면 [커뮤니티에서 지원하는 자료](/community/support.html)를 확인해보세요. 특히 [Reactiflux Chat](https://discord.gg/reactiflux)은 빠르게 도움을 받을 수 있는 좋은 방법입니다. 원하는 답을 얻지 못하거나 계속 막힌 상태라면 이슈를 제출해주세요. 우리가 도와드리겠습니다.
 
 ## 개요 {#overview}
 
@@ -337,7 +337,7 @@ Square의 `render` 함수 내부에서 `onClick` 핸들러를 통해 `this.setSt
 
 React DevTools를 통해 React 컴포넌트의 props와 state도 확인할 수 있습니다.
 
-React DevTools를 설치한 후에 페이지의 모든 엘리먼트에 오른쪽 클릭을 하고 "요소 검사"를 클릭하여 개발자 도구를 열면 탭의 오른쪽 끝에 React 탭을 확인하실 수 있습니다.
+React DevTools를 설치한 후에 페이지의 모든 엘리먼트에 오른쪽 클릭을 하고 "요소 검사"를 클릭하여 개발자 도구를 열면 탭의 오른쪽 끝에 React 탭("⚛️ Components"와 "⚛️ Profiler")을 확인하실 수 있습니다. 컴포넌트 트리를 검사하고 싶다면 "⚛️ Components"를 사용해주세요.
 
 **그러나 CodePen에서 도구를 사용하기 위해선 몇 가지 단계가 추가로 필요합니다.**
 
