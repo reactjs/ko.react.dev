@@ -111,11 +111,7 @@ useEffect(didUpdate);
 
 대신에 `useEffect`를 사용하세요. `useEffect`에 전달된 함수는 화면에 렌더링이 완료된 후에 수행되게 될 것입니다. React의 순수한 함수적인 세계에서 명령적인 세계로의 탈출구로 생각하세요.
 
-<<<<<<< HEAD
 기본적으로 동작은 모든 렌더링이 완료된 후에 수행됩니다만, [어떤 값이 변경되었을 때만](#conditionally-firing-an-effect) 실행되게 할 수도 있습니다.
-=======
-By default, effects run after every completed render, but you can choose to fire them [only when certain values have changed](#conditionally-firing-an-effect).
->>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 
 #### effect 정리 {#cleaning-up-an-effect}
 
