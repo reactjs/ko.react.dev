@@ -51,7 +51,7 @@ console.log(add(16, 26)); // 42
 번들링은 훌륭하지만 여러분의 앱이 커지면 번들도 커집니다. 특히 큰 규모의 서드 파티 라이브러리를 추가할 때 실수로 앱이 커져서 로드 시간이 길어지는 것을 방지하기 위해 코드를 주의 깊게 살펴야 합니다.
 
 번들이 거대해지는 것을 방지하기 위한 좋은 해결방법은 번들을 "나누는" 것입니다.
-[코드 분할](https://webpack.js.org/guides/code-splitting/)은 런타임시 여러 번들을 동적으로 만들고 불러오는 것으로  Webpack 와 Browserify ([factor-bundle](https://github.com/browserify/factor-bundle)) 같은 번들러들이 지원하는 기능입니다.
+코드 분할은 런타임에 여러 번들을 동적으로 만들고 불러오는 것으로 [Webpack](https://webpack.js.org/guides/code-splitting/), [Rollup](https://rollupjs.org/guide/en/#code-splitting)과 Browserify ([factor-bundle](https://github.com/browserify/factor-bundle)) 같은 번들러가 지원하는 기능입니다.
 
 
 코드 분할은 여러분의 앱을 "지연 로딩" 하게 도와주고 앱 사용자에게 획기적인 성능 향상을 하게 합니다.

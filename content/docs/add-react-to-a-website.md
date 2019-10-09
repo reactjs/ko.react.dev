@@ -69,13 +69,13 @@ React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다
 
  `like_button.js` 라는 이름으로 HTML 페이지 옆에 새 파일을 만듭니다. 
 
- 이 **[스타터 코드](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** 를 열고 코드를 방금 만든 파일에 복사해줍니다. 
+ 이 **[스타터 코드](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** 를 열고 코드를 방금 만든 파일에 복사해줍니다.
 
 >팁
 >
 >이 코드는 `LikeButton` 이라는 React 컴포넌트를 정의해줍니다. 지금 당장 이해가 안 되어도 걱정 마세요. React에 대한 개념을 쌓아 나가는 것은 나중에 [자습서](/tutorial/tutorial.html)와 [주요 개념 가이드](/docs/hello-world.html)에서 다룰 겁니다. 그러니 지금 당장은, 컴포넌트를 화면에 띄우는 데 집중해봅시다!
 
-`like_button.js`의 맨 뒷 줄, 그러니까 아까 붙여넣은 **[스타터 코드](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** 뒤에 다음 코드 두 줄을 추가해줍니다.
+`like_button.js`의 맨 뒷 줄, 그러니까 아까 붙여넣은 **[스타터 코드](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** 뒤에 다음 코드 두 줄을 추가해줍니다.
 
 ```js{3,4}
 // ... 복사했던 스타터 코드 ...
@@ -195,7 +195,7 @@ npx babel --watch src --out-dir . --presets react-app/prod
 
 끝날 때 까지 기다릴 필요가 없습니다. 이 명령어는 자동화 된 JSX 감시기를 실행합니다.
 
-**[JSX 스타터 코드](https://cdn.rawgit.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**를 통해 `src/like_button.js`라는 파일을 만들어주면, 감시기가 전처리 되어 브라우저와 호환되는 순수 JavaScript로 구성된 `like_button.js`를 생성합니다. JSX를 포함한 소스 파일을 편집하면 이 과정이 자동으로 다시 실행됩니다.
+**[JSX 스타터 코드](https://gist.github.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**를 통해 `src/like_button.js`라는 파일을 만들어주면, 감시기가 전처리 되어 브라우저와 호환되는 순수 JavaScript로 구성된 `like_button.js`를 생성합니다. JSX를 포함한 소스 파일을 편집하면 이 과정이 자동으로 다시 실행됩니다.
 
 덤으로 이 감시기는 구형 브라우저와의 호환성 문제를 걱정할 필요 없이 클래스와 같은 모던 JavaScript 문법을 쓸 수 있게 해줍니다. 아까 사용했던 도구는 Babel이라고 부릅니다. Babel에 대한 자세한 정보는 [공식 문서](http://babeljs.io/docs/en/babel-cli/)에서 볼 수 있습니다.
 
