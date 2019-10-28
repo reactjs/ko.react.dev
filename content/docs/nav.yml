@@ -7,8 +7,15 @@
     - id: create-a-new-react-app
       title: 새로운 React 앱 만들기
     - id: cdn-links
+<<<<<<< HEAD
       title: CDN 링크
 - title: 주요 개념
+=======
+      title: CDN Links
+    - id: release-channels
+      title: Release Channels
+- title: Main Concepts
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
   isOrdered: true
   items:
     - id: hello-world
@@ -105,6 +112,7 @@
     - id: javascript-environment-requirements
       title: JS 환경 요구사항
     - id: glossary
+<<<<<<< HEAD
       title: React 기술 용어 모음
 - title: Hook (New)
   isOrdered: true
@@ -125,6 +133,28 @@
         title: Hook API 참고서
       - id: hooks-faq
         title: Hook 자주 묻는 질문
+=======
+      title: Glossary
+- title: Hooks
+  isOrdered: true
+  items:
+    - id: hooks-intro
+      title: Introducing Hooks
+    - id: hooks-overview
+      title: Hooks at a Glance
+    - id: hooks-state
+      title: Using the State Hook
+    - id: hooks-effect
+      title: Using the Effect Hook
+    - id: hooks-rules
+      title: Rules of Hooks
+    - id: hooks-custom
+      title: Building Your Own Hooks
+    - id: hooks-reference
+      title: Hooks API Reference
+    - id: hooks-faq
+      title: Hooks FAQ
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
 - title: Testing
   items:
     - id: testing
@@ -133,6 +163,7 @@
       title: Testing Recipes
     - id: testing-environments
       title: Testing Environments
+<<<<<<< HEAD
 - title: 기여
   items:
   - id: how-to-contribute
@@ -144,6 +175,32 @@
   - id: design-principles
     title: 설계 원칙
 - title: 자주 묻는 질문
+=======
+- title: Concurrent Mode (Experimental)
+  isOrdered: true
+  items:
+    - id: concurrent-mode-intro
+      title: Introducing Concurrent Mode
+    - id: concurrent-mode-suspense
+      title: Suspense for Data Fetching
+    - id: concurrent-mode-patterns
+      title: Concurrent UI Patterns
+    - id: concurrent-mode-adoption
+      title: Adopting Concurrent Mode
+    - id: concurrent-mode-reference
+      title: Concurrent Mode API Reference
+- title: Contributing
+  items:
+    - id: how-to-contribute
+      title: How to Contribute
+    - id: codebase-overview
+      title: Codebase Overview
+    - id: implementation-notes
+      title: Implementation Notes
+    - id: design-principles
+      title: Design Principles
+- title: FAQ
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
   items:
     - id: faq-ajax
       title: AJAX와 API
@@ -160,4 +217,8 @@
     - id: faq-versioning
       title: 버전 정책
     - id: faq-internals
+<<<<<<< HEAD
       title: 가상 DOM과 구현 세부사항
+=======
+      title: Virtual DOM and Internals
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc

@@ -331,7 +331,11 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 ### `React.Suspense` {#reactsuspense}
 
+<<<<<<< HEAD
 `React.Suspense`를 사용하면 트리 상에 아직 렌더링이 준비되지 않은 컴포넌트가 있을 때 로딩 지시기(Loading indicator)를 나타낼 수 있습니다. 현재로서는 지연시켜서 불러오는 컴포넌트가 `<React.Suspense>`의 **유일한** 사용 사례입니다.
+=======
+`React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. Today, lazy loading components is the **only** use case supported by `<React.Suspense>`:
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
 
 ```js
 // 이 컴포넌트는 동적으로 불러옵니다

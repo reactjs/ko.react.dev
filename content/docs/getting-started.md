@@ -46,7 +46,11 @@ React를 사용하는데 관심이 있다면, 온라인 코드 편집기를 사�
 
 ### 새 React 앱 만들기 {#create-a-new-react-app}
 
+<<<<<<< HEAD
 React 프로젝트를 시작한다면 [스크립트 태그를 사용한 간단한 HTML 페이지](/docs/create-a-new-react-app.html)를 만드는 것이 최고의 방법일 것입니다. 설치하는 데 1분밖에 걸리지 않습니다!
+=======
+When starting a React project, a [simple HTML page with script tags](/docs/add-react-to-a-website.html) might still be the best option. It only takes a minute to set up!
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
 
 그러나 애플리케이션이 커진다면 보다 통합된 설정을 고려하는 것이 좋습니다. 대규모 애플리케이션에 권장되는 [여러 개의 JavaScript 툴체인들](/docs/create-a-new-react-app.html)이 있습니다. 각 툴체인은 많은 설정 없이 작동할 수 있고 풍부한 React 에코시스템을 최대한 활용할 수 있습니다.
 
@@ -115,7 +119,11 @@ React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 �
 
 트위터의 [@reactjs 계정](https://twitter.com/reactjs)을 팔로우할 수도 있지만, 블로그만 읽어도 꼭 알아야 하는 정보는 놓치지 않을 수 있습니다.
 
+<<<<<<< HEAD
 모든 React 릴리즈가 자체 블로그 게시물을 사용할 만한 것은 아니지만 [릴리즈](https://github.com/facebook/react/releases) 페이지와 React의 [`CHANGELOG.md` 파일](https://github.com/facebook/react/blob/master/CHANGELOG.md)에서 모든 릴리즈에 대한 자세한 변경 기록을 확인할 수 있습니다.
+=======
+Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/master/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react/releases) page.
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
 
 ## 버전 관리된 문서 {#versioned-documentation}
 
