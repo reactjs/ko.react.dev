@@ -196,6 +196,49 @@ context 객체(`React.createContext`에서 반환된 값)을 받아 그 context�
 >
 >`useContext(MyContext)`는 context를 *읽고* context의 변경을 구독하는 것만 가능합니다. context의 값을 설정하기 위해서는 여전히 트리의 윗 계층에서의 `<MyContext.Provider>`가 필요합니다.
 
+**useContext를 Context.Provider와 같이 사용해주세요**
+```js{31-36}
+const themes = {
+  light: {
+    foreground: "#000000",
+    background: "#eeeeee"
+  },
+  dark: {
+    foreground: "#ffffff",
+    background: "#222222"
+  }
+};
+
+const ThemeContext = React.createContext(themes.light);
+
+function App() {
+  return (
+    <ThemeContext.Provider value={themes.dark}>
+      <Toolbar />
+    </ThemeContext.Provider>
+  );
+}
+
+function Toolbar(props) {
+  return (
+    <div>
+      <ThemedButton />
+    </div>
+  );
+}
+
+function ThemedButton() {
+  const theme = useContext(ThemeContext);
+
+  return (
+    <button style={{ background: theme.background, color: theme.foreground }}>
+      I am styled by theme context!
+    </button>
+  );
+}
+```
+해당 예시는 [Context 고급 안내서](/docs/context.html)에서 사용했던 예시가 hook으로 수정되었으며 안내서에서 Context를 언제, 어떻게 사용하는지 자세히 알 수 있습니다.
+
 ## 추가 Hook {#additional-hooks}
 
 다음의 Hook는 이전 섹션에서의 기본 Hook의 변경이거나 특정한 경우에만 필요한 것입니다. 익히는 것에 너무 압박받지는 마세요.
