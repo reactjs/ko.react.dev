@@ -128,7 +128,7 @@
 - title: Testing
   items:
     - id: testing
-      title: Testing Overview
+      title: 테스팅 개요
     - id: testing-recipes
       title: Testing Recipes
     - id: testing-environments
