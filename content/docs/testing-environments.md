@@ -8,11 +8,14 @@ prev: testing-recipes.html
 <!-- This document is intended for folks who are comfortable with JavaScript, and have probably written tests with it. It acts as a reference for the differences in testing environments for React components, and how those differences affect the tests that they write. This document also assumes a slant towards web-based react-dom components, but has notes for other renderers. -->
 
 This document goes through the factors that can affect your environment and recommendations for some scenarios.
+
 이 문서는 환경에 영향을 줄 수 있는 요소와 일부 시나리오에 대한 권장 사항을 살펴본다.
 
 ### Test runners {#test-runners}
 
 Test runners like [Jest](https://jestjs.io/), [mocha](https://mochajs.org/), [ava](https://github.com/avajs/ava) let you write test suites as regular JavaScript, and run them as part of your development process. Additionally, test suites are run as part of continuous integration.
+
+Jest, Mocha, ava와 같은 테스트 러너는 테스트 스위트를 일반 자바 스크립트로 작성하고, 개발 프로세스의 일부로 실행할 수 있도록 한다. 추가적으로, 테스트 스위트는 지속적 통합의 일부로 실행된다. 
 
 - Jest is widely compatible with React projects, supporting features like mocked [modules](#mocking-modules) and [timers](#mocking-timers), and [`jsdom`](#mocking-a-rendering-surface) support. **If you use Create React App, [Jest is already included out of the box](https://facebook.github.io/create-react-app/docs/running-tests) with useful defaults.**
 - Libraries like [mocha](https://mochajs.org/#running-mocha-in-the-browser) work well in real browser environments, and could help for tests that explicitly need it.
