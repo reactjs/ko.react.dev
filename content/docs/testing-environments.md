@@ -8,6 +8,7 @@ prev: testing-recipes.html
 <!-- This document is intended for folks who are comfortable with JavaScript, and have probably written tests with it. It acts as a reference for the differences in testing environments for React components, and how those differences affect the tests that they write. This document also assumes a slant towards web-based react-dom components, but has notes for other renderers. -->
 
 This document goes through the factors that can affect your environment and recommendations for some scenarios.
+이 문서는 환경에 영향을 줄 수 있는 요소와 일부 시나리오에 대한 권장 사항을 살펴본다.
 
 ### Test runners {#test-runners}
 
