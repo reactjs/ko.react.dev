@@ -18,14 +18,34 @@ Test runners like [Jest](https://jestjs.io/), [mocha](https://mochajs.org/), [av
 Jest, Mocha, ava와 같은 테스트 러너는 테스트 스위트를 일반 자바 스크립트로 작성하고, 개발 프로세스의 일부로 실행할 수 있도록 한다. 추가적으로, 테스트 스위트는 지속적 통합의 일부로 실행된다. 
 
 - Jest is widely compatible with React projects, supporting features like mocked [modules](#mocking-modules) and [timers](#mocking-timers), and [`jsdom`](#mocking-a-rendering-surface) support. **If you use Create React App, [Jest is already included out of the box](https://facebook.github.io/create-react-app/docs/running-tests) with useful defaults.**
+
+Jest는 모의 모듈 및 타이머, 그리고 jsdom 지원 등의 특징을 지원하는 리액트 프로젝트와 광범위하게 호환된다.
+
 - Libraries like [mocha](https://mochajs.org/#running-mocha-in-the-browser) work well in real browser environments, and could help for tests that explicitly need it.
+
+mocha같은 라이브러리들은 실제 브라우저 환경에서 작동되며, 이는 분명히 필요한 테스트에 도움이 될 수 있다.
+
 - End-to-end tests are used for testing longer flows across multiple pages, and require a [different setup](#end-to-end-tests-aka-e2e-tests).
+
+엔드 투 엔드 테스트는 여러 페이지에 걸친 긴 흐름을 테스트하기 위해 사용되며, 다른 설정이 필요하다.
 
 ### Mocking a rendering surface {#mocking-a-rendering-surface}
 
 Tests often run in an environment without access to a real rendering surface like a browser. For these environments, we recommend simulating a browser with [`jsdom`](https://github.com/jsdom/jsdom), a lightweight browser implementation that runs inside Node.js.
 
-In most cases, jsdom behaves like a regular browser would, but doesn't have features like [layout and navigation](https://github.com/jsdom/jsdom#unimplemented-parts-of-the-web-platform). This is still useful for most web-based component tests, since it runs quicker than having to start up a browser for each test. It also runs in the same process as your tests, so you can write code to examine and assert on the rendered DOM.
+테스트는 종종 브라우저와 같은 실제 렌더링 표면에 접근하지 않은 환경에서도 진행된다. 이런 환경에서는, Node.js 내에서 실행되는 가벼운 브라우저인 jsdom을 사용하여 브라우저를 시뮬레이션하는 것을 권장한다.
+
+In most cases, jsdom behaves like a regular browser would, but doesn't have features like [layout and navigation](https://github.com/jsdom/jsdom#unimplemented-parts-of-the-web-platform).
+
+대체로, jsdom은 일반 브라우저처럼 동작하지만 레이아웃이나 탐색과 같은 기능은 가지고 있지 않다.
+
+This is still useful for most web-based component tests, since it runs quicker than having to start up a browser for each test.
+
+이는 여전히 대부분의 웹 기반 구성 요소 테스트에 유용하다. 왜냐하면 테스트를 위해 브라우저를 시작하는 것보다 빨리 실행되기 때문이다.
+
+It also runs in the same process as your tests, so you can write code to examine and assert on the rendered DOM.
+
+또한 테스트와 동일한 프로세스에서 실행되므로, 렌더링된 DOM을 검토하고 확신할 코드를 작성할 수 있다.
 
 Just like in a real browser, jsdom lets us model user interactions; tests can dispatch events on DOM nodes, and then observe and assert on the side effects of these actions [<small>(example)</small>](/docs/testing-recipes.html#events).
 
