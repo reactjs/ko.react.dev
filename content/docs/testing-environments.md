@@ -41,7 +41,7 @@ In most cases, jsdom behaves like a regular browser would, but doesn't have feat
 
 This is still useful for most web-based component tests, since it runs quicker than having to start up a browser for each test.
 
-이는 여전히 대부분의 웹 기반 구성 요소 테스트에 유용하다. 왜냐하면 테스트를 위해 브라우저를 시작하는 것보다 빨리 실행되기 때문이다.
+이는 여전히 대부분의 웹 기반 컴포넌트 테스트에 유용하다. 왜냐하면 테스트를 위해 브라우저를 시작하는 것보다 빨리 실행되기 때문이다.
 
 It also runs in the same process as your tests, so you can write code to examine and assert on the rendered DOM.
 
@@ -49,17 +49,31 @@ It also runs in the same process as your tests, so you can write code to examine
 
 Just like in a real browser, jsdom lets us model user interactions; tests can dispatch events on DOM nodes, and then observe and assert on the side effects of these actions [<small>(example)</small>](/docs/testing-recipes.html#events).
 
+실제 브라우저와 마찬가지로, jsdom은 사용자 상호작용을 모델링할 수 있도록 한다. 테스트는 DOM 노드에서 이벤트를 발송한 다음 이러한 동작의 부작용을 관찰하고 주장할 수 있다.(예시)
+
 A large portion of UI tests can be written with the above setup: using Jest as a test runner, rendered to jsdom, with user interactions specified as sequences of browser events, powered by the `act()` helper [<small>(example)</small>](/docs/testing-recipes.html). For example, a lot of React's own tests are written with this combination.
+
+UI 테스트의 많은 부분은 위의 설정으로 작성할 수 있다. jsdom에게 렌더링하는 테스트 러너로서, 브라우저 이벤트 시퀀스로 지정된 사용자 상호작용과 함께Jest를 사용하는 것은 act() 도우미에 의해 작동된다.(예시) 예를 들어, 많은 리액트 자체 테스트는 이런 조합으로 작성된다. 
 
 If you're writing a library that tests mostly browser-specific behavior, and requires native browser behavior like layout or real inputs, you could use a framework like [mocha.](https://mochajs.org/)
 
+만약 대부분의 브라우저별 동작을 테스트하고 레이아웃이나 실제 입력과 같은 네이티브 브라우저 동작을 요구하는 라이브러리를 작성하는 경우 mocha와 같은 프레임 워크를 사용할 수 있다.
+
 In an environment where you _can't_ simulate a DOM (e.g. testing React Native components on Node.js), you could use [event simulation helpers](https://reactjs.org/docs/test-utils.html#simulate) to simulate interactions with elements. Alternately, you could use the `fireEvent` helper from [`@testing-library/react-native`](https://testing-library.com/docs/native-testing-library).
+
+DOM을 시뮬레이션할 수 없는 환경에서 (예를 들면, Node.js리에서의 리액트 네이티브 컴포넌트 테스트), 엘리먼트와의 상호작용을 시뮬레이션하기 위해 event simulation helpers 를 사용할 수 있다. 
 
 Frameworks like [Cypress](https://www.cypress.io/), [puppeteer](https://github.com/GoogleChrome/puppeteer) and [webdriver](https://www.seleniumhq.org/projects/webdriver/) are useful for running [end-to-end tests](#end-to-end-tests-aka-e2e-tests).
 
+Cypress, puppeteer, webdriver 같은 프레임워크들은 end-to-end 테스트를 진행하기에 유용하다.
+
 ### Mocking functions {#mocking-functions}
 
-When writing tests, we'd like to mock out the parts of our code that don't have equivalents inside our testing environment (e.g. checking `navigator.onLine` status inside Node.js). Tests could also spy on some functions, and observe how other parts of the test interact with them. It is then useful to be able to selectively mock these functions with test-friendly versions.
+### 모의 함수
+
+When writing tests, we'd like to mock out the parts of our code that don't have equivalents inside our testing environment (e.g. checking `navigator.onLine` status inside Node.js). Tests could also spy on some functions, and observe how other parts of the test interact with them. It is then useful to be able to selectively mock these functions with test-friendly versions. 
+
+테스트를 작성할 때, 우리는 테스트 환경 내부에서 동등성이 없는 우리의 코드 중 일부를 목아웃하고 싶다(예를 들어, navigator.online상태를 Node.js 내부에서 확인하는 것처럼). 테스트는 또한 일부 함수를 감시할 수 있으며 테스트의 다른 부분이 함수들과 어떻게 상호작용하는지를 관찰할 수 있다. 이는 이러한 함수들을 선택적으로 시험 친화적인 버전으로 모의할 수 있다는 점에서 유용하다. 
 
 This is especially useful for data fetching. It is usually preferable to use "fake" data for tests to avoid the slowness and flakiness due to fetching from real API endpoints [<small>(example)</small>](/docs/testing-recipes.html#data-fetching). This helps make the tests predictable. Libraries like [Jest](https://jestjs.io/) and [sinon](https://sinonjs.org/), among others, support mocked functions. For end-to-end tests, mocking network can be more difficult, but you might also want to test the real API endpoints in them anyway.
 
