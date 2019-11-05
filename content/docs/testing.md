@@ -16,7 +16,7 @@ React 컴포넌트를 테스트할 수 있는 몇 가지 방법이 있는데 크
 
 이 문서 섹션은 아주 기본 테스팅 전략에 초점을 맞추고 있습니다. 풀 엔드투엔드 테스트는 중요한 워크플로의 퇴행을 방지하기 위해 매우 유용하지만 이러한 테스트들은 특정한 React 컴포넌트와 관련되어 있지 않습니다. 그리고 이들은 이 세션의 범위를 벗어납니다.    
 
-### 트레이드오프 {#tradeoffs} ? 상호교환
+### 트레이드오프 {#tradeoffs}
 
 
 테스팅 도구를 선택할 때 몇 가지 트레이드오프를 생각하는 것은 의미 있는 일입니다.
@@ -26,15 +26,15 @@ React 컴포넌트를 테스트할 수 있는 몇 가지 방법이 있는데 크
 
 각각의 팀과 제품에 따라 다른 답이 적용될 수 있습니다.
 
-### 추천 방법 {#tools}
+### 추천 도구 {#tools}
 
 **[Jest](https://facebook.github.io/jest/)**는 JavaScript 테스트 러너입니다. DOM에 접근하게 하는 [`jsdom`](/docs/testing-environments.html#mocking-a-rendering-surface)을 통해서 jsdom은 단지 어떻게 브라우저가 작동하는지에 대한 대략적 개요입니다. 하지만 이는 종종 React 컴포넌트를 테스팅 하기에 충분합니다. Jest는 mocking [modules](/docs/testing-environments.html#mocking-modules)과 [timers](/docs/testing-environments.html#mocking-timers) 같은 파워풀한 특징과 결합되어 훌륭한 반복속도를 제공합니다. 그래서 더 많은 코드 제어를 가집니다.
 
 **[React Testing Library](https://testing-library.com/react)**는 실행 디테일을 가지지 않는 React 컴포넌트를 테스트하게 하는 도구 모음입니다. 이러한 접근은 리팩 토링을 수월하게 하며 접근성에 대한 가장 좋은 연습을 가능하게 합니다. 자식 컴포넌트를 가지지 않는 컴포넌트에 대한 얕은 렌더링 방법을 제공하지 않더라도 Jest와 같은 테스트 러너는 [mocking](/docs/testing-recipes.html#mocking-modules)에 의해 위를 가능하게 합니다.  
 
-### 더 보기 {#learn-more}
+### 더 학습하기 {#learn-more}
 
-두 개의 페이지로 나누어 저 있습니다.
+두 개의 페이지로 나뉘어 있습니다.
 
 - [Recipes](/docs/testing-recipes.html): React 컴포넌트에 대한 테스트를 작성할 때 흔한 패턴
 - [Environments](/docs/testing-environments.html): React 컴포넌트에 대한 테스팅 환경을 설정할 때 고려해야 할 것
