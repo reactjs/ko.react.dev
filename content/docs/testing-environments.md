@@ -11,7 +11,7 @@ This document goes through the factors that can affect your environment and reco
 
 이 문서는 환경에 영향을 줄 수 있는 요소와 일부 시나리오에 대한 권장 사항을 살펴본다.
 
-### Test runners {#test-runners}
+### Tests {#test-runners}
 
 Test runners like [Jest](https://jestjs.io/), [mocha](https://mochajs.org/), [ava](https://github.com/avajs/ava) let you write test suites as regular JavaScript, and run them as part of your development process. Additionally, test suites are run as part of continuous integration.
 
@@ -77,15 +77,27 @@ When writing tests, we'd like to mock out the parts of our code that don't have 
 
 This is especially useful for data fetching. It is usually preferable to use "fake" data for tests to avoid the slowness and flakiness due to fetching from real API endpoints [<small>(example)</small>](/docs/testing-recipes.html#data-fetching). This helps make the tests predictable. Libraries like [Jest](https://jestjs.io/) and [sinon](https://sinonjs.org/), among others, support mocked functions. For end-to-end tests, mocking network can be more difficult, but you might also want to test the real API endpoints in them anyway.
 
+모의함수는 특히 데이터 패칭에 유용하다. 실제 API 종단점으로부터 발생하는 느려짐과 손상을 방지하기 위해 테스트에 "가짜"데이터를 사용하는 것이 바람직하다. 이는 테스트를 예측 가능하게 만들어준다. Jest와 sinon과 같은 라이브러리들은 모의 함수들을 지원한다. 엔드 투 엔드 테스트의 경우, 모의 네트워크가 더 어려울 수 있지만, 그것들의 실제 API 엔드포인트를 테스트하기를 원할 수도 있다.
+
 ### Mocking modules {#mocking-modules}
+
+### 모의 모듈
 
 Some components have dependencies for modules that may not work well in test environments, or aren't essential to our tests. It can be useful to selectively mock these modules out with suitable replacements [<small>(example)</small>](/docs/testing-recipes.html#mocking-modules).
 
+일부 컴포넌트는 테스트 환경에서 잘 작동하지 않거나 테스트에 필수적이지 않은 모듈에 대한 의존성을 가지고 있다. 적절한 교체를 통해 이러한 모듈을 선택적으로 모의하는 것이 유용할 수 있다.
+
 On Node.js, runners like Jest [support mocking modules](https://jestjs.io/docs/en/manual-mocks). You could also use libraries like [`mock-require`](https://www.npmjs.com/package/mock-require).
+
+Node.js에서 Jest같은 러너는 모의 모듈을 지원한다. 또한 mock-require 라이브러리도 사용할 수 있다.   
 
 ### Mocking timers {#mocking-timers}
 
+### 모의 타이머
+
 Components might be using time-based functions like `setTimeout`, `setInterval`, or `Date.now`. In testing environments, it can be helpful to mock these functions out with replacements that let you manually "advance" time. This is great for making sure your tests run fast! Tests that are dependent on timers would still resolve in order, but quicker [<small>(example)</small>](/docs/testing-recipes.html#timers). Most frameworks, including [Jest](https://jestjs.io/docs/en/timer-mocks), [sinon](https://sinonjs.org/releases/v7.3.2/fake-timers/) and [lolex](https://github.com/sinonjs/lolex), let you mock timers in your tests.
+
+컴포넌트는 setTimeout, setInterval, Data.now와 같은 시간을 기반으로한 함수를 사용할 수 있다. 테스트 환경에서, 이러한 함수들을 수동으로 발전할 수 있는 대체품으로 모의하는 것이 유용할 수 있다. 
 
 Sometimes, you may not want to mock timers. For example, maybe you're testing an animation, or interacting with an endpoint that's sensitive to timing (like an API rate limiter). Libraries with timer mocks let you enable and disable them on a per test/suite basis, so you can explicitly choose how these tests would run.
 
