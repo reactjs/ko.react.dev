@@ -1,89 +1,89 @@
----
+﻿---
 id: concurrent-mode-intro
-title: Introducing Concurrent Mode (Experimental)
+title: 동시모드 소개(실험적)
 permalink: docs/concurrent-mode-intro.html
 next: concurrent-mode-suspense.html
 ---
 
 >Caution:
 >
->This page describes **experimental features that are [not yet available](/docs/concurrent-mode-adoption.html) in a stable release**. Don't rely on experimental builds of React in production apps. These features may change significantly and without a warning before they become a part of React.
+>이 페이지는 안정된 릴리즈에서는 아직 사용할 수 없는 실험적인 특징을 설명합니다 프로덕션 앱에 있는 리액트의 실험적 빌드에 의존하지 마십시오 이 특징들은 리액트의 일부가 되기전에 경고도 없이 크게 바꿀 수도 있습니다
 >
->This documentation is aimed at early adopters and people who are curious. If you're new to React, don't worry about these features -- you don't need to learn them right now.
+>이 문서는 얼리어답터들과 호기심 있는 사람들을 위해 제작된 문서입니다 리액트에 처음 접해본다면 이러한 특징들을 걱정하지 않아도 됩니다 그 특징들을 바로 배울 필요는 없습니다
+ 
+이 페이지는 동시모드의 개요를 제시합니다 더 실용적인 설명을 위해서는 다음 섹션들을 참고하십시오
 
-This page provides a theoretical overview of Concurrent Mode. **For a more practical introduction, you might want to check out the next sections:**
+* [데이터를 가져오기 위한 서스펜스](/docs/concurrent-mode-suspense.html) 리액트 컴포넌트에서 데이터를 가져오기에 대한 새로운 메커니즘을 설명합니다
+* [동시 UI 패턴](/docs/concurrent-mode-patterns.html) 동시모드와 서스펜스로 만들어진 UI 패턴들을 보여줍니다
+* [동시모드 채택](/docs/concurrent-mode-adoption.html) 프로젝트에서 동시모드를 어떻게 사용할 수 있는지를 설명합니다
+* [동시모드 API 참조](/docs/concurrent-mode-reference.html) 실험적 빌드에서 사용 가능한 새 API들을 문서화합니다
 
-* [Suspense for Data Fetching](/docs/concurrent-mode-suspense.html) describes a new mechanism for fetching data in React components.
-* [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html) shows some UI patterns made possible by Concurrent Mode and Suspense.
-* [Adopting Concurrent Mode](/docs/concurrent-mode-adoption.html) explains how you can try Concurrent Mode in your project.
-* [Concurrent Mode API Reference](/docs/concurrent-mode-reference.html) documents the new APIs available in experimental builds.
+## 동시 모드란? {#what-is-concurrent-mode}
 
-## What Is Concurrent Mode? {#what-is-concurrent-mode}
+동시모드는 리액트앱이 빠른 반응속도와 사용자의 장치 기능 및 네트워크 속도에 맞추도록 돕는 새로운 특성들의 집합체입니다
 
-Concurrent Mode is a set of new features that help React apps stay responsive and gracefully adjust to the user's device capabilities and network speed.
+이러한 특성들은 여전히 실험적이고 수정되어야 합니다 아직 안정된 리액트 릴리즈에 일부는 아니지만, 실험적 빌드 내에서 그 특성들을 시도해볼 수 있습니다
 
-These features are still experimental and are subject to change. They are not yet a part of a stable React release, but you can try them in an experimental build.
+## 차단 vs 인터럽트 렌더링 {#blocking-vs-interruptible-rendering}
 
-## Blocking vs Interruptible Rendering {#blocking-vs-interruptible-rendering}
+** 동시모드를 설명하기 위해서 버전 제어를 비유해서 설명할 것입니다 팀에서 일하고 있다면 Git과 같은 버전 제어 시스템을 사용하며 브랜치로 작업할 것 입니다 브랜치가 준비된다면 다른 사람들이 가져올 수 있도록 작업을 마스터 브랜치로 병합 할 수 있습니다
 
-**To explain Concurrent Mode, we'll use version control as a metaphor.** If you work on a team, you probably use a version control system like Git and work on branches. When a branch is ready, you can merge your work into master so that other people can pull it.
+버전 제어가 있기 전에는, 개발 작업의 흐름이 매우 달랐습니다 브랜치라는 개념이 없어서 몇몇의 파일을 수정하려면 작업이 끝나기 전까지 다른 파일들은 건드리지않고 모든 사람들에게 말해야만 작업할 수 있었습니다 심지어는 다른 사람과 동시에 일을 시작할 수도 없었습니다 즉,  문자그대로  이러한 제한사항들에 의해 차단되었습니다
 
-Before version control existed, the development workflow was very different. There was no concept of branches. If you wanted to edit some files, you had to tell everyone not to touch those files until you've finished your work. You couldn't even start working on them concurrently with that person — you were literally *blocked* by them.
+이는 리액트를 포함한 UI 라이브러리들이 어떻게 오늘날 작용하는 지를 보여줍니다 (새로운 DOM 노드 생성 및 컴포넌트 내에 있는 코드 실행하는 것을 포함해서) 업데이트 렌더링을 시작하면 이 일은 방해받지 않습니다 이러한 접근을 "렌더링 차단"이라고 합니다
 
-This illustrates how UI libraries, including React, typically work today. Once they start rendering an update, including creating new DOM nodes and running the code inside components, they can't interrupt this work. We'll call this approach "blocking rendering".
+동시모드에서는, 렌더링을 인터럽트는 가능하지만 차단되지 않습니다 이는 사용자의 경험을 증가시켜주며 또한 이전에 사용할 수 없었던 특성들을 사용할 수 있도록 풀어줍니다 다음[https://reactjs.org/docs/concurrent-mode-suspense.html] 챕터[https://reactjs.org/docs/concurrent-mode-patterns.html]에서 구체적인 예시를 보기 전에, 새로운 특성들의 높은 수준의 개요를 살펴보려고 합니다.
 
-In Concurrent Mode, rendering is not blocking. It is interruptible. This improves the user experience. It also unlocks new features that weren't possible before. Before we look at concrete examples in the [next](/docs/concurrent-mode-suspense.html) [chapters](/docs/concurrent-mode-patterns.html), we'll do a high-level overview of new features.
 
-### Interruptible Rendering {#interruptible-rendering}
+###인터럽트 가능한 렌더링 {#interruptible-rendering}
 
-Consider a filterable product list. Have you ever typed into a list filter and felt that it stutters on every key press? Some of the work to update the product list might be unavoidable, such as creating new DOM nodes or the browser performing layout. However, *when* and *how* we perform that work plays a big role.
+필터링 가능한 제품 목록을 생각해보십시오 목록 필터에 입력한 후 모든 키를 누를 때마다 버벅거림을 느낀 적이 있습니까? 제품 목록을 업데이트하는 몇몇 작업은 불가피 할 수 있습니다 (예를 들어, 새로운 DOM 노드를 만들거나 레이아웃을 수행하는 브라우저를 만드는 작업) 그러면, 비중이 있는 그 작업을 언제 어떻게 수행할까요?
 
-A common way to work around the stutter is to "debounce" the input. When debouncing, we only update the list *after* the user stops typing. However, it can be frustrating that the UI doesn't update while we're typing. As an alternative, we could "throttle" the input, and update the list with a certain maximum frequency. But then on lower-powered devices we'd still end up with stutter. Both debouncing and throttling create a suboptimal user experience.
+버벅거림을 해결하는 한 가지 방법은 입력을 디바운싱해주는 것입니다 디바운싱하면, 사용자는 타이핑을 멈추고 그 목록을 업데이트합니다. 하지만, 타이핑하고 있을 때 UI가 업데이트하지 않는 사실이 실망스러울 수 있습니다 이에 대한 대안으로, 입력을 조절하고 그 목록을 특정 최대 빈도수 안에서 업데이트할 수 있습니다. 그러나 저전력 장치에서는 여전히 버벅거릴 것 입니다 디 바운싱 및 쓰로틀링은 최적이 아닌 사용자 환경을 만듭니다.
 
-The reason for the stutter is simple: once rendering begins, it can't be interrupted. So the browser can't update the text input right after the key press. No matter how good a UI library (such as React) might look on a benchmark, if it uses blocking rendering, a certain amount of work in your components will always cause stutter. And, often, there is no easy fix.
+**동시모드는 인터럽트 가능한 렌더링을 만들어서 근본적인 제한 사항을 수정합니다. 이는 사용자가 다른 키를 누를 때, 리액트는 브라우저에 텍스트 입력을 업데이트 하는 것을 차단할 필요가 없음을 의미합니다 대신에, 리액트는 브라우저가 입력 업데이트와 메모리 내에 있는 업데이트 목록을 계속 렌더링할 수 있도록 합니다 렌더링이 끝날 때 리액트가 DOM을 업데이트하고 변경 사항들이 화면에 반영됩니다.
 
-**Concurrent Mode fixes this fundamental limitation by making rendering interruptible.** This means when the user presses another key, React doesn't need to block the browser from updating the text input. Instead, it can let the browser paint an update to the input, and then continue rendering the updated list *in memory*. When the rendering is finished, React updates the DOM, and changes are reflected on the screen.
+개념상으로, 리액트가 지점별 모든 업데이트를 준비하는 것으로 생각할 수 있습니다 브랜치 내에서 작업을 중지하거나 브랜치 사이에서 전환이 자유로운 것처럼, 동시모드 내에 리액트는 더 중요한 일을 위해 진행 중인 업데이트를 중단하고 이전 작업으로 돌아갈 수도 있습니다 또한 이 기술은 비디오 게임에서 이중 버퍼링을 떠오르게 합니다.
 
-Conceptually, you can think of this as React preparing every update "on a branch". Just like you can abandon work in branches or switch between them, React in Concurrent Mode can interrupt an ongoing update to do something more important, and then come back to what it was doing earlier. This technique might also remind you of [double buffering](https://wiki.osdev.org/Double_Buffering) in video games.
+동시모드 기술은 UI에서 디바운싱과 스로틀링의 필요성을 줄입니다 렌더링은 중단이 가능하기 때문에 버벅거림을 피하고자 일부러 작업을 지연시킬 필요가 없습니다 리액트가 렌더링을 즉시 시작할 수 있지만 앱이 즉각적으로 반응하도록 요구될 때는  작업이 중단될 수도 있습니다.
+ 
 
-Concurrent Mode techniques reduce the need for debouncing and throttling in UI. Because rendering is interruptible, React doesn't need to artificially *delay* work to avoid stutter. It can start rendering right away, but interrupt this work when needed to keep the app responsive.
+### 의도적인 로딩 시퀀스 {#intentional-loading-sequences}
 
-### Intentional Loading Sequences {#intentional-loading-sequences}
+우리는 동시모드는 브랜치에서 React 작업과 같다고 전에 말했습니다. 브랜치는 단기적인 수정을 할 때뿐만 아니라 장기적인 기능에도 유용합니다. 가끔 기능에 대해 작업을 할 수도 있습니다. 하지만 마스터로 병합할 수 있는 적합한 상태가 되기까지는 몇 주가 걸릴 수 있습니다. 버전 관리 비유의 측면은 렌더링에도 적용됩니다.
 
-We've said before that Concurrent Mode is like React working "on a branch". Branches are useful not only for short-term fixes, but also for long-running features. Sometimes you might work on a feature, but it could take weeks before it's in a "good enough state" to merge into master. This side of our version control metaphor applies to rendering too.
+한번 앱에서 두 화면 사이를 탐색한다고 가정해보겠습니다. 때로는 새 화면에서 사용자에게 좋은 로딩 상태를 보여주기 위해 충분한 코드와 데이터를 불러오지 못 할 수 있습니다. 빈 화면이나 큰 스피너로 전환하는 것은 어려운 경험이 될 수 있습니다. 하지만 필요한 코드와 데이터를 가져오는 데 너무 오래 걸리지 않는 것 또한 일반적입니다. React가 기존 화면에서 조금 더 오래 머물 수 있고 새 화면을 보여주기 전에 안 좋은 로딩 상태를 건너뛸 수 있게 해준다면 더 좋지 않겠습니까?**
 
-Imagine we're navigating between two screens in an app. Sometimes, we might not have enough code and data loaded to show a "good enough" loading state to the user on the new screen. Transitioning to an empty screen or a large spinner can be a jarring experience. However, it's also common that the necessary code and data doesn't take too long to fetch. **Wouldn't it be nicer if React could stay on the old screen for a little longer, and "skip" the "bad loading state" before showing the new screen?**
+오늘날 이것이 가능하긴 하지만 조정하기는 어려울 수 있습니다. 동시모드에서는 이 기능이 내장되어 있습니다. React는 먼저 메모리에서 새로운 화면을 준비하기 시작하는데 또는 우리의 비유처럼 다른 브랜치에서 시작합니다. 따라서 React는 더 많은 콘텐츠를 불러올 수 있도록 DOM을 업데이트하기 전에 기다릴 수 있습니다. 동시모드에서 React에 인라인 표시기와 함께 완전히 상호작용하여 이전 화면을 계속 표시하도록 지시할 수 있습니다. 그리고 새로운 화면이 준비되면 React는 우리를 그곳으로 데려갈 수 있습니다.
 
-While this is possible today, it can be difficult to orchestrate. In Concurrent Mode, this feature is built-in. React starts preparing the new screen in memory first — or, as our metaphor goes, "on a different branch". So React can wait before updating the DOM so that more content can load. In Concurrent Mode, we can tell React to keep showing the old screen, fully interactive, with an inline loading indicator. And when the new screen is ready, React can take us to it.
+### 동시성 {#concurrency}
 
-### Concurrency {#concurrency}
+위의 두 가지 예를 살펴보고 동시모드가 어떻게 통합되는지 살펴보겠습니다. 동시모드에서 React는 여러 팀 구성원이 독립적으로 작업할 수 있도록 하는 브랜치처럼 여러 상태 업데이트를 동시에 수행 할 수 있습니다. 
 
-Let's recap the two examples above and see how Concurrent Mode unifies them. **In Concurrent Mode, React can work on several state updates *concurrently*** — just like branches let different team members work independently:
+* CPU 바운드 업데이트(예: DOM 노드 만들기 및 컴포넌트 코드 실행)의 경우 동시성은 더욱 긴급한 업데이트가 이미 시작된 렌더링을 중단 할 수 있음을 의미합니다. 
+* 바운드 업데이트(예: 네트워크에서 코드나 데이터를 가져오는 것)의 경우 동시성은 모든 데이터가 도착하기 전에 React가 메모리에서 렌더링을 시작할 수 있으며 빈 로딩 상태가 표시되는 것을 건너뛰는 것을 의미합니다.
 
-* For CPU-bound updates (such as creating DOM nodes and running component code), concurrency means that a more urgent update can "interrupt" rendering that has already started.
-* For IO-bound updates (such as fetching code or data from the network), concurrency means that React can start rendering in memory even before all the data arrives, and skip showing jarring empty loading states.
+중요한 것은 React를 사용하는 방식이 똑같다는 것입니다. 컴포넌트, 소품 및 상태와 같은 개념은 근본적으로 동일한 방식으로 작동합니다. 화면을 업데이트하려면 상태를 설정합니다. 
 
-Importantly, the way you *use* React is the same. Concepts like components, props, and state fundamentally work the same way. When you want to update the screen, you set the state.
+React는 휴리스틱을 사용하여 업데이트의 급함의 정도를 결정하고, 사용자가 모든 상호작용에 대해 원하는 사용자의 경험을 얻을 수 있도록 몇 줄의 코드를 조정하도록 합니다. 
 
-React uses a heuristic to decide how "urgent" an update is, and lets you adjust it with a few lines of code so that you can achieve the desired user experience for every interaction.
+## 연구를 생산에 투입 {#putting-research-into-production}
 
-## Putting Research into Production {#putting-research-into-production}
+**Concurrent Mode 기능에 대한 공통 주제들이 있습니다. 이것의 목표는 사람-컴퓨터 간 상호작용에 대한 조사를 실제 UI에 통합시키는 것을 돕는 것입니다.
 
-There is a common theme around Concurrent Mode features. **Its mission is to help integrate the findings from the Human-Computer Interaction research into real UIs.**
+예를 들어, 조사에 따르면 화면 간 전환에서 중간 로딩 상태를 너무 많이 배치하는 것은 전환 자체를 더 *느리게* 느끼게 만든다고 합니다. 이것이 Concurrent Mode에서 고정된 "스케줄"에 새로운 로드 상태를 표시하여 부조화가 발생하는 것 또는 불필요하게 많이 업데이트되는 것을 피하고자 하는 이유입니다.
 
-For example, research shows that displaying too many intermediate loading states when transitioning between screens makes a transition feel *slower*. This is why Concurrent Mode shows new loading states on a fixed "schedule" to avoid jarring and too frequent updates.
+마찬가지로 조사 결과에 따르면, 호버나 텍스트 입력 같은 상호 작용은 아주 짧은 시간 안에 처리되어야 하지만, 클릭이나 페이지 전환은 지루한 느낌 없이 조금 더 오래 기다릴 수 있습니다. Concurrent Mode 내부적으로 사용하는 다른 "우선순위"는 사람들의 인식에 대한 조사에서의 상호 작용에 대한 부분과 대략 일치합니다.
 
-Similarly, we know from research that interactions like hover and text input need to be handled within a very short period of time, while clicks and page transitions can wait a little longer without feeling laggy. The different "priorities" that Concurrent Mode uses internally roughly correspond to the interaction categories in the human perception research.
+UX(사용자 경험)에 중점을 둔 팀은 가끔 이러한 비슷한 문제들을 일회성 솔루션으로 해결하곤 합니다. 그러나, 그런 솔루션들은 오래 지속되기가 어렵고, 유지하기도 어렵습니다. Concurrent Mode에선, UI 조사 결과를 추상화시키고, 그것을 사용할 관용적인 방법을 제공하는 것입니다. UI 라이브러리로서 React는, 이것을 하기 위한 배치가 잘 되어 있습니다.
+ 
+## 다음 단계 {#next-steps}
 
-Teams with a strong focus on user experience sometimes solve similar problems with one-off solutions. However, those solutions rarely survive for a long time, as they're hard to maintain. With Concurrent Mode, our goal is to bake the UI research findings into the abstraction itself, and provide idiomatic ways to use them. As a UI library, React is well-positioned to do that.
+**이제 Concurrent Mode에 대해 모두 알게 되었습니다!
 
-## Next Steps {#next-steps}
+**다음 페이지에서는 특정 주제에 대한 자세한 내용을 배웁니다:
 
-Now you know what Concurrent Mode is all about!
-
-On the next pages, you'll learn more details about specific topics:
-
-* [Suspense for Data Fetching](/docs/concurrent-mode-suspense.html) describes a new mechanism for fetching data in React components.
-* [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html) shows some UI patterns made possible by Concurrent Mode and Suspense.
-* [Adopting Concurrent Mode](/docs/concurrent-mode-adoption.html) explains how you can try Concurrent Mode in your project.
-* [Concurrent Mode API Reference](/docs/concurrent-mode-reference.html) documents the new APIs available in experimental builds.
+* [데이터를 가져오기 위한 서스펜스](/docs/concurrent-mode-suspense.html) 리액트 컴포넌트에서 데이터를 가져오기에 대한 새로운 메커니즘을 설명합니다
+* [동시 UI 패턴](/docs/concurrent-mode-patterns.html) 동시모드와 서스펜스로 만들어진 UI 패턴들을 보여줍니다
+* [동시모드 채택](/docs/concurrent-mode-adoption.html) 프로젝트에서 동시모드를 어떻게 사용할 수 있는지를 설명합니다
+* [동시모드 API 참조](/docs/concurrent-mode-reference.html) 실험적 빌드에서 사용 가능한 새 API들을 문서화합니다
