@@ -1,32 +1,32 @@
 ---
 id: higher-order-components
-title: Higher-Order Components
+title: 고차 컴포넌트
 permalink: docs/higher-order-components.html
 ---
 
-A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API, per se. They are a pattern that emerges from React's compositional nature.
+고차 컴포넌트(HOC, Higher Order Component)는 React에서 컴포넌트 로직을 재사용하기 위한 고급 기술입니다. HOC는 React API의 일부분이 아니라 React의 React 컴포넌트의 성격으로부터 자연스럽게 등장한 패턴입니다.
 
-Concretely, **a higher-order component is a function that takes a component and returns a new component.**
+구체적으로 고차 컴포넌트는 **컴포넌트를 받아 새로운 컴포넌트를 반환하는 함수입니다.**
 
 ```js
 const EnhancedComponent = higherOrderComponent(WrappedComponent);
 ```
 
-Whereas a component transforms props into UI, a higher-order component transforms a component into another component.
+컴포넌트가 UI를 props로 변환하는 반면에 고차 컴포넌트는 컴포넌트를 다른 컴포넌트로 변환합니다.
 
-HOCs are common in third-party React libraries, such as Redux's [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) and Relay's [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html).
+고차 컴포넌트는 Redux의 [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) 나 Relay의 [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html) 같은 React 서드파티 라이브러리에서 자주 사용됩니다.
 
-In this document, we'll discuss why higher-order components are useful, and how to write your own.
+이 문서에서 고차 컴포넌트가 왜 유용한 지 이야기하고 어떻게 작성하는 지 설명합니다.
 
-## Use HOCs For Cross-Cutting Concerns {#use-hocs-for-cross-cutting-concerns}
+## 크로스 커팅 문제(Cross-Cutting Concerns)에 고차 컴포넌트 사용하기 {#use-hocs-for-cross-cutting-concerns}
 
-> **Note**
+> **주의**
 >
-> We previously recommended mixins as a way to handle cross-cutting concerns. We've since realized that mixins create more trouble than they are worth. [Read more](/blog/2016/07/13/mixins-considered-harmful.html) about why we've moved away from mixins and how you can transition your existing components.
+> 이전에는 크로스 커팅 문제를 제어하기 위해 mixin 사용을 권장했습니다. 하지만 mixin의 사용으로 얻는 이점보다 더 많은 문제를 일으킨다는 것을 알게되었습니다. 우리가 mixin을 더 이상 권장하지않는 이유와 기존 컴포넌트를 어떻게 변환하는 지에 대해서 [이 글](/blog/2016/07/13/mixins-considered-harmful.html)을 읽어보세요.
 
-Components are the primary unit of code reuse in React. However, you'll find that some patterns aren't a straightforward fit for traditional components.
+컴포넌트는 React에서 코드 재사용의 기본 단위입니다. 그러나 일부 패턴에서 컴포넌트의 재사용은 잘 어울리지 않을 수 있습니다.
 
-For example, say you have a `CommentList` component that subscribes to an external data source to render a list of comments:
+외부로부터 데이터를 구독하여 댓글 목록을 렌더링하는 `CommentList` 컴포넌트로 예를 들겠습니다.
 
 ```js
 class CommentList extends React.Component {
@@ -34,23 +34,23 @@ class CommentList extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      // "DataSource" is some global data source
+      // "DataSource" 는 글로벌 데이터 소스로 정의되어 있습니다.
       comments: DataSource.getComments()
     };
   }
 
   componentDidMount() {
-    // Subscribe to changes
+    // 변화감지를 위해 리스너를 추가합니다.
     DataSource.addChangeListener(this.handleChange);
   }
 
   componentWillUnmount() {
-    // Clean up listener
+    // 리스너를 제거합니다.
     DataSource.removeChangeListener(this.handleChange);
   }
 
   handleChange() {
-    // Update component state whenever the data source changes
+    // 데이터 소스가 변경될때 마다 comments를 업데이트합니다.
     this.setState({
       comments: DataSource.getComments()
     });
@@ -68,7 +68,7 @@ class CommentList extends React.Component {
 }
 ```
 
-Later, you write a component for subscribing to a single blog post, which follows a similar pattern:
+그리고 블로그 포스트를 구독하기 위해 위와 비슷한 패턴으로 컴포넌트를 작성합니다.
 
 ```js
 class BlogPost extends React.Component {
@@ -100,15 +100,15 @@ class BlogPost extends React.Component {
 }
 ```
 
-`CommentList` and `BlogPost` aren't identical — they call different methods on `DataSource`, and they render different output. But much of their implementation is the same:
+`CommentList` 와 `BlogPost` 컴포넌트는 동일하지 않습니다. 두 컴포넌트는 `DataSource` 에서 서로 다른 메서드를 호출하며 다른 렌더링 결과를 보여줍니다. 하지만 대부분의 구현체는 동일합니다.
 
-- On mount, add a change listener to `DataSource`.
-- Inside the listener, call `setState` whenever the data source changes.
-- On unmount, remove the change listener.
+- 컴포넌트가 마운트되면, change 리스너를 `DataSource` 에 추가합니다.
+- 리스너 안에서, 데이터 소스가 변경되면 `setState` 를 호출합니다.
+- 컴포넌트가 unmount되면 change 리스너를 제거합니다.
 
-You can imagine that in a large app, this same pattern of subscribing to `DataSource` and calling `setState` will occur over and over again. We want an abstraction that allows us to define this logic in a single place and share it across many components. This is where higher-order components excel.
+규모가 큰 어플리케이션에서 `DataSource` 를 구독하고 `setState` 를 호출하는 동일한 패턴이 반복적으로 발생한다면, 이 로직을 한 곳에서 정의하고 많은 컴포넌트에서 로직을 공유할 수 있게하는 추상화가 필요하게됩니다. 이 경우에 고차 컴포넌트를 사용하면 좋습니다.
 
-We can write a function that creates components, like `CommentList` and `BlogPost`, that subscribe to `DataSource`. The function will accept as one of its arguments a child component that receives the subscribed data as a prop. Let's call the function `withSubscription`:
+`DataSource` 를 구독하는 `CommentList` 나 `BlogPost` 같은 컴포넌트를 생성하는 함수를 작성할 수 있습니다. 데이터를 prop으로 구독하여 전달받는 자식 컴포넌트를 파라미터 중 하나로 받는 함수를 만듭니다. 이 함수를 `withSubscription` 라고 합시다.
 
 ```js
 const CommentListWithSubscription = withSubscription(
@@ -122,14 +122,14 @@ const BlogPostWithSubscription = withSubscription(
 );
 ```
 
-The first parameter is the wrapped component. The second parameter retrieves the data we're interested in, given a `DataSource` and the current props.
+첫번째 파라미터는 래핑된 컴포넌트입니다. 두번째 파라미터에는 `DataSource`와 현재 props를 가지고 컴포넌트에서 관심있는 데이터를 검색합니다.
 
-When `CommentListWithSubscription` and `BlogPostWithSubscription` are rendered, `CommentList` and `BlogPost` will be passed a `data` prop with the most current data retrieved from `DataSource`:
+`CommentListWithSubscription` 과 `BlogPostWithSubscription` 가 렌더링될 때 `CommentList` 와 `BlogPost` 는 `DataSource` 에서 가장 최근에 검색된 데이터를 `data` prop으로 전달합니다.
 
 ```js
-// This function takes a component...
+// 이 함수는 컴포넌트를 매개변수로 받고...
 function withSubscription(WrappedComponent, selectData) {
-  // ...and returns another component...
+  // ...다른 컴포넌트를 반환하는데...
   return class extends React.Component {
     constructor(props) {
       super(props);
@@ -140,7 +140,7 @@ function withSubscription(WrappedComponent, selectData) {
     }
 
     componentDidMount() {
-      // ... that takes care of the subscription...
+      // ... 구독을 담당하고...
       DataSource.addChangeListener(this.handleChange);
     }
 
@@ -155,25 +155,26 @@ function withSubscription(WrappedComponent, selectData) {
     }
 
     render() {
-      // ... and renders the wrapped component with the fresh data!
-      // Notice that we pass through any additional props
+      // ... 래핑된 컴포넌트를 새로운 데이터로 랜더링 합니다!
+      // 컴포넌트에 추가로 props를 내려주는 것에 주목하세요.
       return <WrappedComponent data={this.state.data} {...this.props} />;
     }
   };
 }
 ```
 
-Note that a HOC doesn't modify the input component, nor does it use inheritance to copy its behavior. Rather, a HOC *composes* the original component by *wrapping* it in a container component. A HOC is a pure function with zero side-effects.
+고차 컴포넌트는 입력된 컴포넌트를 수정하지 않으며 상속을 사용하여 동작을 복사하지도 않습니다. 오히려 고차 컴포넌트는 원래 컴포넌트를 컨테이너 컴포넌트에 *래핑하여* *조정합니다*. 고차 컴포넌트는 사이드 이펙트가 전혀 없는 순수 함수입니다.
 
-And that's it! The wrapped component receives all the props of the container, along with a new prop, `data`, which it uses to render its output. The HOC isn't concerned with how or why the data is used, and the wrapped component isn't concerned with where the data came from.
+이게 전부입니다. 래핑된 컴포넌트는 출력물을 렌더링하는 데 사용되는 `data`, 새로운 prop을 포함한 컨테이너의 모든 props를 전달받습니다. 고차 컴포넌트는 데이터가 사용되는 이유 및 방법과 연관이 없으며 래핑된 컴포넌트는 데이터가 어디서부터 왔는지와 관련 없습니다.
 
-Because `withSubscription` is a normal function, you can add as many or as few arguments as you like. For example, you may want to make the name of the `data` prop configurable, to further isolate the HOC from the wrapped component. Or you could accept an argument that configures `shouldComponentUpdate`, or one that configures the data source. These are all possible because the HOC has full control over how the component is defined.
+`withSubscription` 는 일반 함수이기때문에 원하는 갯수의 인수를 추가할 수 있습니다. 예를 들어 래핑된 컴포넌트로부터 고차 컴포넌트를 더 격리시키기 위해 `data` prop 이름을 설정 가능하게 만들 수 있습니다. 혹은 `shouldComponentUpdate` 설정을 위한 인수를 받게 하거나 데이터 소스를 설정하는 인수를 받게할 수도 있습니다. 고차 컴포넌트가 컴포넌트 정의 방법을 완전히 제어할 수 있기 때문에 이런 작업들이 모두 가능합니다.
 
-Like components, the contract between `withSubscription` and the wrapped component is entirely props-based. This makes it easy to swap one HOC for a different one, as long as they provide the same props to the wrapped component. This may be useful if you change data-fetching libraries, for example.
+컴포넌트와 마찬가지로 withSubscription 과 래핑된 컴포넌트 간 맺음(contract)은 완전히 props 기반입니다. 이렇게하면 래핑된 컴포넌트에 동일한 props를 제공한다면 다른 고차 컴포넌트를 쉽게 교차할 수 있습니다. 예를 들어 데이터를 가져오는 라이브러리를 변경하는 경우 유용하게 사용할 수 있습니다.
 
-## Don't Mutate the Original Component. Use Composition. {#dont-mutate-the-original-component-use-composition}
+## 원본 컴포넌트를 변환하지마세요. Composition을 사용하세요.
+. {#dont-mutate-the-original-component-use-composition}
 
-Resist the temptation to modify a component's prototype (or otherwise mutate it) inside a HOC.
+고차 컴포넌트 내부에서 컴포넌트의 프로토타입을 수정(또는 변형)하지 않도록 합니다.
 
 ```js
 function logProps(InputComponent) {
@@ -186,11 +187,11 @@ function logProps(InputComponent) {
   return InputComponent;
 }
 
-// EnhancedComponent will log whenever props are received
+// EnhancedComponent 는 props를 받을때 마다 log를 남깁니다.
 const EnhancedComponent = logProps(InputComponent);
 ```
 
-There are a few problems with this. One is that the input component cannot be reused separately from the enhanced component. More crucially, if you apply another HOC to `EnhancedComponent` that *also* mutates `componentWillReceiveProps`, the first HOC's functionality will be overridden! This HOC also won't work with function components, which do not have lifecycle methods.
+여기에는 몇가지 문제점이 있습니다. 하나는 입력 컴포넌트를 개선된 컴포넌트와 별도로 재사용할 수 없다는 것입니다. 더 중요한 것은 `EnhancedComponent에` 또 다른 고차 컴포넌트를 적용하여 `componentWillReceiveProps` *또한* 변형시키면 첫번째 고차 컴포넌트의 기능이 오버라이드됩니다. 이 고차 컴포넌트는 라이프사이클 메서드가 없는 함수 컴포넌트에서는 동작하지않습니다.
 
 Mutating HOCs are a leaky abstraction—the consumer must know how they are implemented in order to avoid conflicts with other HOCs.
 
@@ -211,15 +212,15 @@ function logProps(WrappedComponent) {
 }
 ```
 
-This HOC has the same functionality as the mutating version while avoiding the potential for clashes. It works equally well with class and function components. And because it's a pure function, it's composable with other HOCs, or even with itself.
+위 고차 컴포넌트는 충돌 가능성을 피하면서 변형 버전과 동일하게 작동합니다. 이 방법은 클래스 컴포넌트와 함수형 컴포넌트에서도 동일하게 작동합니다. 그리고 순수한 함수이기 때문에 다른 고차 컴포넌트와 같이 구성하거나 심지어 자체적으로 구성할 수 있습니다.
 
-You may have noticed similarities between HOCs and a pattern called **container components**. Container components are part of a strategy of separating responsibility between high-level and low-level concerns. Containers manage things like subscriptions and state, and pass props to components that handle things like rendering UI. HOCs use containers as part of their implementation. You can think of HOCs as parameterized container component definitions.
+고차 컴포넌트와 컨테이너 컴포넌트 라 불리는 패턴이 유사함을 느꼈을 수 있습니다. 컨테이너 컴포넌트는 high-level과 low-level의 관심사를 분리하는 전략의 일부입니다. 컨테이너는 구독 및 state 같은 것을 관리하고 UI 렌더링같은 것을 처리하는 컴포넌트에 props를 전달합니다. 고차 컴포넌트는 컨테이너를 그 구현체 중 일부에 사용하고있습니다. 고차 컴포넌트는 파라미터화된 컨테이너 컴포넌트 정의로 생각할 수 있습니다.
 
-## Convention: Pass Unrelated Props Through to the Wrapped Component {#convention-pass-unrelated-props-through-to-the-wrapped-component}
+## 컨벤션: 래핑된 컴포넌트를 통해 관련없는 Props 전달하기 {#convention-pass-unrelated-props-through-to-the-wrapped-component}
 
-HOCs add features to a component. They shouldn't drastically alter its contract. It's expected that the component returned from a HOC has a similar interface to the wrapped component.
+고차 컴포넌트는 컴포넌트에 기능을 추가합니다. 고차 컴포넌트는 맺음(contract)을 과감하게 변경해서는 안됩니다. 고차 컴포넌트는 반환된 컴포넌트에서는 래핑된 컴포넌트와 비슷한 인터페이스가 있어야합니다.
 
-HOCs should pass through props that are unrelated to its specific concern. Most HOCs contain a render method that looks something like this:
+고차 컴포넌트는 특정 관심사과 관련이 없는 props를 통해야합니다. 대부분의 고차 컴포넌트에는 다음과 같은 렌더링 메서드가 포함되어있습니다.
 
 ```js
 render() {
@@ -241,41 +242,41 @@ render() {
 }
 ```
 
-This convention helps ensure that HOCs are as flexible and reusable as possible.
+이 컨벤션은 고차 컴포넌트의 유연성과 재사용성을 확인하는데 도움이 됩니다.
 
-## Convention: Maximizing Composability {#convention-maximizing-composability}
+## 컨벤션: 합성 가능성(Composability) 최대화하기 {#convention-maximizing-composability}
 
-Not all HOCs look the same. Sometimes they accept only a single argument, the wrapped component:
+고차 컴포넌트는 여러가지 방법으로 작성할 수 있습니다. 때때로 단일 인수로 래핑된 컴포넌트만 받을 때도 있습니다.
 
 ```js
 const NavbarWithRouter = withRouter(Navbar);
 ```
 
-Usually, HOCs accept additional arguments. In this example from Relay, a config object is used to specify a component's data dependencies:
+일반적으로 고차 컴포넌트는 추가 인수를 허용합니다. Relay 예제에서 config 객체는 컴포넌트의 데이터 의존성을 지정하기 위해 사용합니다.
 
 ```js
 const CommentWithRelay = Relay.createContainer(Comment, config);
 ```
 
-The most common signature for HOCs looks like this:
+고차 컴포넌트에 대한 가장 일반적인 사용은 다음과 같습니다.
 
 ```js
 // React Redux's `connect`
 const ConnectedComment = connect(commentSelector, commentActions)(CommentList);
 ```
 
-*What?!* If you break it apart, it's easier to see what's going on.
+*주목!* 위 코드를 분해해보면 어떤 동작을 하는지 쉽게 알 수 있습니다.
 
 ```js
-// connect is a function that returns another function
+// connect 다른 함수를 반환하는 함수 입니다.
 const enhance = connect(commentListSelector, commentListActions);
-// The returned function is a HOC, which returns a component that is connected
-// to the Redux store
+// 반환된 함수는 Redux store에 연결된 컴포넌트를 반환하하는
+// 고차 함수 캄포넌트 입니다.
 const ConnectedComment = enhance(CommentList);
 ```
-In other words, `connect` is a higher-order function that returns a higher-order component!
+다르게 말하면 `connect` 는 고차 컴포넌트를 반환하는 고차 함수입니다.
 
-This form may seem confusing or unnecessary, but it has a useful property. Single-argument HOCs like the one returned by the `connect` function have the signature `Component => Component`. Functions whose output type is the same as its input type are really easy to compose together.
+이 형태는 혼란스럽거나 불필요하게 보일 수 있지만 매우 유용한 속성입니다. `connect` 함수에 의해 반환된 것과 같은 단일 인수 고차 컴포넌트는 `Component => Component` 특징을 가지고 있습니다. 출력 타입이 입력 타입과 동일한 함수는 정말 쉽게 조합할 수 있습니다.
 
 ```js
 // Instead of doing this...
@@ -314,27 +315,27 @@ function getDisplayName(WrappedComponent) {
 ```
 
 
-## Caveats {#caveats}
+## 주의사항 {#caveats}
 
-Higher-order components come with a few caveats that aren't immediately obvious if you're new to React.
+고차 컴포넌트에는 React가 처음이라면 알아차리기 어려운 몇가지 주의사항이 있습니다.
 
-### Don't Use HOCs Inside the render Method {#dont-use-hocs-inside-the-render-method}
+### render 메서드 안에서 고차 컴포넌트를 사용하지마세요 {#dont-use-hocs-inside-the-render-method}
 
-React's diffing algorithm (called reconciliation) uses component identity to determine whether it should update the existing subtree or throw it away and mount a new one. If the component returned from `render` is identical (`===`) to the component from the previous render, React recursively updates the subtree by diffing it with the new one. If they're not equal, the previous subtree is unmounted completely.
+재조정(reconciliation)으로 알려진 React의 비교 알고리즘은 컴포넌트의 개별성(identity)를 가지고 기존 서브트리를 업데이트 해야하는지 아니면 버리고 새로운 노드를 마운트 해야할지 결정합니다. `render`에서 반환된 컴포넌트가 이전에 렌더링된 컴포넌트와 동일하다면(`===`) React가 새로운 서브트리와 비교하여 재귀적으로 서브트리를 업데이트합니다. 만약 동일하지 않다면 이전 서브트리는 완전히 마운트 해제됩니다.
 
-Normally, you shouldn't need to think about this. But it matters for HOCs because it means you can't apply a HOC to a component within the render method of a component:
+일반적으로 위 내용에 대해 생각할 필요 없습니다. 하지만 컴포넌트의 렌더 메소드 안에서 고차 컴포넌트를 사용할 수 없기 때문에 고차 컴포넌트를 사용할때는 위 내용을 짚고 넘어가야합니다.
 
 ```js
 render() {
-  // A new version of EnhancedComponent is created on every render
+  // render가 호출될 때마다 새로운 버전의 EnhancedComponent가 생성됩니다.
   // EnhancedComponent1 !== EnhancedComponent2
   const EnhancedComponent = enhance(MyComponent);
-  // That causes the entire subtree to unmount/remount each time!
+  // 때문에 매번 전체 subtree가 unmount/remount 됩니다!
   return <EnhancedComponent />;
 }
 ```
 
-The problem here isn't just about performance — remounting a component causes the state of that component and all of its children to be lost.
+여기서 성능상의 문제 뿐만 아니라 컴포넌트가 다시 마운트 되면서 컴포넌트의 state와 컴포넌트의 하위 항목들이 손실됩니다.
 
 Instead, apply HOCs outside the component definition so that the resulting component is created only once. Then, its identity will be consistent across renders. This is usually what you want, anyway.
 
