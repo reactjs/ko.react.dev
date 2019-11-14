@@ -10,7 +10,7 @@ next: concurrent-mode-reference.html
 >
 >이 페이지는 **안정된 배포판에서 아직 제공되지 않는 실험적인 기능들**에 대해 설명합니다. 프로덕션용 앱에선 React 실험 배포판을 사용하지 마세요. 이러한 기능들은 React의 일부가 되기 전에 아무 예고 없이 상당히 변경될 수 있습니다.
 >
->이 문서는 얼리 어답터와 궁금해하시는 분을 대상으로 합니다. React를 처음 쓰신다면 이 기능들에 대해 신경 쓰지 마세요. 당장 익히실 필요는 없습니다.
+>이 문서는 얼리 어답터와 궁금해하시는 분을 대상으로 합니다. React를 처음 쓰신다면 이 기능들에 대해 신경 쓰지 마세요. 당장 익힐 필요는 없습니다.
 
 - [설치하기](#installation)
   - [실험 배포판은 누구를 위한 것일까?](#who-is-this-experimental-release-for)
@@ -83,15 +83,15 @@ Concurrent 모드에서는 "unsafe"라고 [기존에 표시된](https://reactjs.
 
 정리하면,
 
-* **레거시 모드** `ReactDOM.render(<App />, rootNode)`. 현재 React 앱들이 사용하고 있는 모드입니다. 아직 가까운 미래에 레거시 모드를 없앨 계획은 없지만, 신규 기능들을 사용할 수는 없을 겁니다.
+* **Legacy 모드** `ReactDOM.render(<App />, rootNode)`. 현재 React 앱들이 사용하고 있는 모드입니다. 아직 가까운 미래에 Legacy 모드를 없앨 계획은 없지만, 신규 기능들을 사용할 수는 없을 겁니다.
 * **Blocking 모드** `ReactDOM.createBlockingRoot(rootNode).render(<App />)`. 현재 실험 중인 상태입니다. Concurrent 모드의 일부 기능을 제공할 수 있는 첫 번째 마이그레이션 단계입니다.
-* **Concurrent 모드** `ReactDOM.createRoot(rootNode).render(<App />)`. 현재 실험 중인 상태입니다. 안정된 후엔 디폴트 React 모드로 만들 예정입니다. 이 모드에선 *모든* 신규 기능을 사용할 수 있습니다.
+* **Concurrent 모드** `ReactDOM.createRoot(rootNode).render(<App />)`. 현재 실험 중인 상태입니다. 안정된 후엔 React 기본 모드로 만들 예정입니다. 이 모드에선 *모든* 신규 기능을 사용할 수 있습니다.
 
 ### 왜 여러 모드가 필요할까? {#why-so-many-modes}
 
 저희는 호환되지 않는 큰 변화를 가져오거나 React가 침체하도록 나두는 것보다 [점진적인 마이그레이션 전략](/docs/faq-versioning.html#commitment-to-stability)을 제공하는 게 낫다고 생각합니다.
 
-현재 레거시 모드를 사용하는 대부분의 앱이 Concurrent 모드까지는 아니더라도 적어도 Blocking 모드로는 마이그레이션이 가능할 것이라 생각합니다. 단기적으로 이러한 파편화는 모든 모드를 지원하고자 하는 라이브러리엔 귀찮을 수 있습니다. 하지만 점진적으로 레거시 모드에서 벗어나는 것이 [레이아웃을 읽을 때의 혼란스러운 Suspense 동작](https://github.com/facebook/react/issues/14536)과 [일관된 배칭 보장의 부족](https://github.com/facebook/react/issues/15080)과 같이, 현재 React 생태계의 주요 라이브러리들이 겪고 있는 문제들을 해결해 줄 수 있습니다. 시맨틱 변화 없이 레거시 모드에서 수정될 수 없는 버그이지만 Blocking이나 Concurrent 모드에선 존재하지 않는 경우가 여럿 있습니다.
+현재 Legacy 모드를 사용하는 대부분의 앱이 Concurrent 모드까지는 아니더라도 적어도 Blocking 모드로는 마이그레이션이 가능할 것이라 생각합니다. 단기적으로 이러한 파편화는 모든 모드를 지원하고자 하는 라이브러리엔 귀찮을 수 있습니다. 하지만 점진적으로 Legacy 모드에서 벗어나는 것이 [레이아웃을 읽을 때의 혼란스러운 Suspense 동작](https://github.com/facebook/react/issues/14536)과 [일관된 배칭 보장의 부족](https://github.com/facebook/react/issues/15080)과 같이, 현재 React 생태계의 주요 라이브러리들이 겪고 있는 문제들을 해결해 줄 수 있습니다. 시맨틱 변화 없이 Legacy 모드에서 수정될 수 없는 버그이지만 Blocking이나 Concurrent 모드에선 존재하지 않는 경우가 여럿 있습니다.
 
 Blocking 모드를 Concurrent 모드의 "우아한 성능 저하" 버전이라고 생각할 수 있습니다. **장기적으로는 모두 수렴되어서 여러 모드에 대해 생각할 필요가 없어질 겁니다.** 하지만 지금의 여러 모드는 마이그레이션을 위한 중요한 전략입니다. 사람들이 스스로 마이그레이션 할 가치가 있는지 판단할 수 있고, 각자의 상황에 맞춰 업그레이드 할 수 있습니다.
 
@@ -105,7 +105,7 @@ Blocking 모드를 Concurrent 모드의 "우아한 성능 저하" 버전이라�
 
 <div id="feature-table">
 
-|   |레거시 모드  |Blocking 모드  |Concurrent 모드  |
+|   |Legacy 모드  |Blocking 모드  |Concurrent 모드  |
 |---  |---  |---  |---  |
 |문자열 Refs  |✅  |🚫**  |🚫**  |
 |레거시 Context |✅  |🚫**  |🚫**  |
@@ -125,7 +125,7 @@ Blocking 모드를 Concurrent 모드의 "우아한 성능 저하" 버전이라�
 
 </div>
 
-\*: 레거시 모드도 React가 관리하는 이벤트의 자동 배칭 기능을 가지고 있지만, 하나의 브라우저 태스크에 국한됩니다. 비 React 이벤트는 `unstable_batchedUpdates`를 사용해야만 합니다. Blocking 모드와 Concurrent 모드에서는 모든 `setState`가 디폴트로 배치됩니다.
+\*: Legacy 모드도 React가 관리하는 이벤트의 자동 배칭 기능을 가지고 있지만, 하나의 브라우저 태스크에 국한됩니다. 비 React 이벤트는 `unstable_batchedUpdates`를 사용해야만 합니다. Blocking 모드와 Concurrent 모드에서는 모든 `setState`가 디폴트로 배치됩니다.
 
 \*\*: 개발 환경에서 경고가 표시됩니다.
 
