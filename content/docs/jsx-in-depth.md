@@ -12,6 +12,7 @@ redirect_from:
   - "docs/jsx-in-depth-zh-CN.html"
   - "docs/jsx-in-depth-ko-KR.html"
 ---
+
 근본적으로, JSX는 `React.createElement(component, props, ...children)` 함수에 대한 문법적 설탕을 제공할 뿐입니다.
 
 ```js
@@ -29,6 +30,7 @@ React.createElement(
   'Click Me'
 )
 ```
+
 자식 컴포넌트가 없다면 아래와 같이 자기 자신을 닫는 형태의 태그를 쓸 수 있습니다.
 
 ```js
@@ -44,6 +46,7 @@ React.createElement(
   null
 )
 ```
+
 특정 JSX가 어떻게 JavaScript로 변환되는지 시험해보고 싶다면 [온라인 babel 컴파일러](babel://jsx-simple-example)를 사용해보세요.
 
 
@@ -69,6 +72,7 @@ function WarningButton() {
   return <CustomButton color="red" />;
 }
 ```
+
 만약 JavaScript 번들러를 사용하지 않고 `<script>` 태그를 통해 React를 불러왓다면 `React`는 전역 변수로서 존재하기 때문에 별도로 불러올 필요가 없습니다.
 
 ### JSX 타입을 위한 점 표기법 사용 {#using-dot-notation-for-jsx-type}
@@ -88,6 +92,7 @@ function BlueDatePicker() {
   return <MyComponents.DatePicker color="blue" />;
 }
 ```
+
 ### 사용자 정의 컴포넌트는 반드시 대문자로 시작해야합니다 {#user-defined-components-must-be-capitalized}
 
 Element가 소문자로 시작하는 경우에는 `<div>` 나 `<span>` 같은 내장 컴포넌트라는 것을 뜻하며 `'div'` 나 `'span'` 같은 문자열 형태로 `React.createElement`에 전달됩니다. `<Foo />`와 같이 대문자로 시작하는 타입들은 `React.createElement(Foo)`의 형태로 컴파일 되며 JavaScript 파일 내에 사용자가 정의했거나 import 한 컴포넌트를 가리킵니다.
@@ -99,14 +104,14 @@ Element가 소문자로 시작하는 경우에는 `<div>` 나 `<span>` 같은 �
 ```js{3,4,10,11}
 import React from 'react';
 
-//잘못된 사용법입니다! 아래는 컴포넌트이므로 대문자화 해야 합니다.
+// 잘못된 사용법입니다! 아래는 컴포넌트이므로 대문자화 해야 합니다.
 function hello(props) {
-  //올바른 사용법입니다! 아래의 <div> 사용법은 유효한 HTML 태그이기 때문에 유효합니다.
+  // 올바른 사용법입니다! 아래의 <div> 사용법은 유효한 HTML 태그이기 때문에 유효합니다.
   return <div>Hello {props.toWhat}</div>;
 }
 
 function HelloWorld() {
-  //잘못된 사용법입니다! React는 <hello />가 대문자가 아니기 때문에 HTML 태그로 인식하게 됩니다.
+  // 잘못된 사용법입니다! React는 <hello />가 대문자가 아니기 때문에 HTML 태그로 인식하게 됩니다.
   return <hello toWhat="World" />;
 }
 ```
@@ -116,14 +121,14 @@ function HelloWorld() {
 ```js{3,4,10,11}
 import React from 'react';
 
-//올바른 사용법입니다. 아래는 컴포넌트이므로 대문자화 해야 합니다.
+// 올바른 사용법입니다. 아래는 컴포넌트이므로 대문자화 해야 합니다.
 function Hello(props) {
-    //올바른 사용법입니다! 아래의 <div> 사용법은 유효한 HTML 태그이기 때문에 유효합니다.
+    // 올바른 사용법입니다! 아래의 <div> 사용법은 유효한 HTML 태그이기 때문에 유효합니다.
   return <div>Hello {props.toWhat}</div>;
 }
 
 function HelloWorld() {
-  //올바른 사용법입니다! React는 <Hello />가 대문자화 되엇기에 컴포넌트로 인식합니다.
+  // 올바른 사용법입니다! React는 <Hello />가 대문자화 되엇기에 컴포넌트로 인식합니다.
   return <Hello toWhat="World" />;
 }
 ```
@@ -142,7 +147,7 @@ const components = {
 };
 
 function Story(props) {
-  //잘못된 사용법입니다! JSX 타입은 표현식으로 사용할 수 없습니다.
+  // 잘못된 사용법입니다! JSX 타입은 표현식으로 사용할 수 없습니다.
   return <components[props.storyType] story={props.story} />;
 }
 ```
@@ -159,7 +164,7 @@ const components = {
 };
 
 function Story(props) {
-  //올바른 사용법입니다! 대문자화된 변수는 JSX 타입으로 사용할 수 있습니다.
+  // 올바른 사용법입니다! 대문자화된 변수는 JSX 타입으로 사용할 수 있습니다.
   const SpecificStory = components[props.storyType];
   return <SpecificStory story={props.story} />;
 }
@@ -331,7 +336,7 @@ React 컴포넌트는 element로 이루어진 배열을 반환할 수 있습니�
 
 ```js
 render() {
-  //리스트 아이템들을 추가 요소에 둘러쌀 필요 없습니다!
+  // 리스트 아이템들을 추가 요소에 둘러쌀 필요 없습니다!
   return [
     // key 지정을 잊지 마세요 :)
     <li key="A">First item</li>,
@@ -343,7 +348,7 @@ render() {
 
 ### JavaScript 표현식을 자식으로 사용하기 {#javascript-expressions-as-children}
 
-`{}`에 둘러쌈으로써 어느 JavaScript 표현식도 자식으로 넘길 수 있습니다. 아래의 예시들은 동일한 표현입니다.
+`{}`에 감쌈으로써 JavaScript 표현식도 자식으로 넘길 수 있습니다. 아래의 예시들은 동일한 표현입니다.
 
 ```js
 <MyComponent>foo</MyComponent>
@@ -381,7 +386,7 @@ function Hello(props) {
 보통 JSX에 삽입된 JavaScript 표현식은 문자열, React element 혹은 이들의 배열로 환산됩니다. 하지만 `props.children`은 다른 prop들과 마찬가지로 React가 렌더 할 수 있는 데이터의 형태뿐만 아니라 어떤 형태의 데이터도 넘겨질 수 있습니다. 아래의 예시와 같이 직접 만든 컴포넌트가 있다면 `props.children`을 통해서 콜백을 넘겨받을 수 있습니다.
 
 ```js{4,13}
-//자식 콜백인 numTimes를 호출하여 반복되는 컴포넌트를 생성합니다.
+// 자식 콜백인 numTimes를 호출하여 반복되는 컴포넌트를 생성합니다.
 function Repeat(props) {
   let items = [];
   for (let i = 0; i < props.numTimes; i++) {
@@ -401,7 +406,7 @@ function ListOfTenThings() {
 
 직접 만든 컴포넌트에 넘겨지는 자식들은 렌더되기 전에 React가 이해할 수 있는 형태로 변환된다면 어떤 것이든 넘겨질 수 있습니다. 이런 사용법은 일반적이지 않지만, JSX의 기능의 확장성을 확인하고 싶다면 사용할 수 있습니다.
 
-### 진리값, null, undefined는 무시됩니다. {#booleans-null-and-undefined-are-ignored}
+### boolean, null, undefined는 무시됩니다. {#booleans-null-and-undefined-are-ignored}
 
 `false`, `null`, `undefined`와 `true`는 유효한 자식입니다. 그저 렌더링 되지 않을 뿐입니다. 아래의 JSX 표현식들은 동일하게 렌더됩니다.
 
@@ -428,7 +433,7 @@ function ListOfTenThings() {
 </div>
 ```
 
-한가지 주의해야 할 점은 `0`과 같은 ["falsy" 값들](https://developer.mozilla.org/ko/docs/Glossary/Falsy)은 React가  렌더한다는 점입니다. 예를 들어, 아래의 예시는 `props.messages`가 빈 배열일 때 예상과는 다르게 0을 출력하게 됩니다.
+한가지 주의해야 할 점은 `0`과 같은 ["falsy" 값들](https://developer.mozilla.org/ko/docs/Glossary/Falsy)은 React가 렌더한다는 점입니다. 예를 들어, 아래의 예시는 `props.messages`가 빈 배열일 때 예상과는 다르게 0을 출력하게 됩니다.
 
 ```js{2}
 <div>
