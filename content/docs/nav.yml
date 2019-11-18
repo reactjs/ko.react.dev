@@ -127,27 +127,27 @@
       title: Hook API 참고서
     - id: hooks-faq
       title: Hook 자주 묻는 질문
-- title: Testing
+- title: 테스팅
   items:
     - id: testing
       title: 테스팅 개요
     - id: testing-recipes
-      title: Testing Recipes
+      title: 테스팅 방안
     - id: testing-environments
-      title: Testing Environments
-- title: Concurrent Mode (Experimental)
+      title: 테스팅 환경
+- title: Concurrent 모드(실험적)
   isOrdered: true
   items:
     - id: concurrent-mode-intro
-      title: Introducing Concurrent Mode
+      title: Concurrent 모드 소개
     - id: concurrent-mode-suspense
-      title: Suspense for Data Fetching
+      title: 데이터를 가져오기 위한 Suspense 
     - id: concurrent-mode-patterns
-      title: Concurrent UI Patterns
+      title: Concurrent UI 패턴
     - id: concurrent-mode-adoption
-      title: Adopting Concurrent Mode
+      title: Concurrent 모드 도입
     - id: concurrent-mode-reference
-      title: Concurrent Mode API Reference
+      title: Concurrent 모드 API 참조
 - title: 기여
   items:
     - id: how-to-contribute
