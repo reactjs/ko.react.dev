@@ -4,7 +4,7 @@ title: 다른 라이브러리와 통합하기
 permalink: docs/integrating-with-other-libraries.html
 ---
 
-React는 어떤 웹 애플리케이션 안에서 사용할 수 있습니다. 다른 애플리케이션에 포함될 수 있으며 약간의 노력으로 React 안에 다른 애플리케이션 포함할 수 있습니다. 이 가이드는 [jQuery](https://jquery.com/)와 [Backbone](https://backbonejs.org/)의 통합에 중점을 맞추어 일반적인 몇 가지 사용 사례를 살펴봅니다. 동일한 아이디어로 기존 코드와 컴포넌트를 통합하는 데도 적용할 수 있습니다.
+React는 어떤 웹 애플리케이션에서든 사용할 수 있습니다. 다른 애플리케이션에 포함될 수 있으며 약간의 노력으로 React 안에 다른 애플리케이션 포함할 수 있습니다. 이 가이드는 [jQuery](https://jquery.com/)와 [Backbone](https://backbonejs.org/)의 통합에 중점을 맞추어 일반적인 몇 가지 사용 사례를 살펴봅니다. 동일한 아이디어로 기존 코드와 컴포넌트를 통합하는 데도 적용할 수 있습니다.
 
 ## DOM 조작 플러그인과 통합하기 {#integrating-with-dom-manipulation-plugins}
 
@@ -18,9 +18,9 @@ React를 DOM에 영향을 미치는 다른 방법과 결합하는 것이 불가�
 
 이를 설명하기 위해 일반적인 jQuery 플러그인을 위한 래퍼에 대해 간략하게 알아보겠습니다.
 
-루트 DOM 요소에 [ref](/docs/refs-and-the-dom.html)를 부착합니다. `componentDidMount` 내부에서 jQuery 플러그인에 전달하기 위해 참조를 합니다.
+최상위 DOM 엘리먼트에 [ref](/docs/refs-and-the-dom.html)를 붙입니다. `componentDidMount` 내부에서 jQuery 플러그인에 전달하기 위해 최상위 DOM 엘리먼트에 대한 참조를 얻습니다.
 
-마운팅 후 React가 DOM에 건드리는 것을 방지하기 위해 `render()` 메서드에서 빈 `<div />`를 반환합니다. 해당 `<div />` 요소는 그 어떤 프로퍼티 또는 자식을 가지지 않습니다. 그래야 React가 업데이트할 이유가 없습니다. jQuery 플러그인이 DOM의 일부를 다룰수 있게 자유롭게 관리할 수 있습니다.
+마운팅 후 React가 DOM에 건드리는 것을 방지하기 위해 `render()` 메서드에서 빈 `<div />`를 반환합니다. 해당 `<div />` 요소는 프로퍼티나 자식을 가지지 않기 때문에 React가 업데이트할 이유가 없습니다. jQuery 플러그인이 DOM의 일부를 다룰수 있게 자유롭게 관리할 수 있습니다.
 
 ```js{3,4,8,12}
 class SomePlugin extends React.Component {
@@ -39,11 +39,11 @@ class SomePlugin extends React.Component {
 }
 ```
 
-`componentDidMout`, `componentWillUnmount` 두 가지의 [생명주기 메서드](/docs/react-component.html#the-component-lifecycle)를 정의했다는 것을 주의합니다. 많은 jQuery 플러그인은 DOM에 이벤트 리스너를 등록하므로 `componentWillUnmount` 안에서 해제하는 것이 중요합니다. 플러그인이 클린업을 위한 메서드를 제공하지 않는다면 자체적으로 해당 메서드를 제공해야 합니다. 메모리 누수를 방지하기 위해 플러그인이 등록한 모든 이벤트 리스너를 제거해야 하는 것을 잊어서는 안 됩니다.
+`componentDidMount`, `componentWillUnmount` 두 가지의 [생명주기 메서드](/docs/react-component.html#the-component-lifecycle)를 정의했다는 것을 주의합니다. 많은 jQuery 플러그인은 DOM에 이벤트 리스너를 등록하므로 `componentWillUnmount` 안에서 해제하는 것이 중요합니다. 플러그인이 해제를 위한 메서드를 제공하지 않는다면 자체적으로 해당 메서드를 제공해야 합니다. 메모리 누수를 방지하기 위해 플러그인이 등록한 모든 이벤트 리스너를 제거해야 하는 것을 잊어서는 안 됩니다.
 
 ### jQuery Chosen 플러그인과 통합하기 {#integrating-with-jquery-chosen-plugin}
 
-이러한 컨셉의 더 구체적인 예시를 위해 `<select>` input을 다루는 플러그인 [Chosen](https://harvesthq.github.io/chosen/)에 대한 간단한 래퍼를 작성해 보겠습니다.
+이러한 컨셉의 더 구체적인 예시를 위해 `<select>` 입력을 다루는 플러그인 [Chosen](https://harvesthq.github.io/chosen/)에 대한 간단한 래퍼를 작성해 보겠습니다.
 
 >**주의**
 >
@@ -85,8 +85,7 @@ class Chosen extends React.Component {
 }
 ```
 
-별도의 `<div>`로 `<select>`를 어떻게 감쌌는지 주의하세요. Chosen이 전달한 `<select>` 노드 바로 다음에 다른 DOM 요소를 추가하기 때문에 필요합니다.
-React에 관한, `<div>`는 항상 단일 자식만 가집니다. React 업데이트가 Chosen이 추가한 DOM 노드와 충돌하지 않게 하는 방법입니다. React 흐름 외부에서 DOM을 수정하는 경우 React가 해당 DOM 노드를 건드릴 이유가 없는지 확인해야 합니다.
+별도의 `<div>`로 `<select>`를 어떻게 감쌌는지 주의하세요. Chosen이 전달한 `<select>` 노드 바로 다음에 다른 DOM 요소를 추가하기 때문에 필요합니다. 하지만 React가 관여하는 한, `<div>`는 항상 단일 자식만 가집니다. React 업데이트가 Chosen이 추가한 DOM 노드와 충돌하지 않게 하는 방법입니다. React 흐름 외부에서 DOM을 수정하는 경우 React가 해당 DOM 노드를 건드릴 이유가 없는지 확인해야 합니다.
 
 다음으로 생명주기 메서드를 구현해 보겠습니다. `componentDidMount`에서 `<select>` 노드의 ref를 사용하여 Chosen을 초기화합니다. 그리고 `componentWillUnmount`에서 이를 해제해야 합니다.
 
@@ -109,7 +108,7 @@ React는 `this.el` 필드에 특별한 의미를 부여하지 않습니다. 이�
 <select className="Chosen-select" ref={el => this.el = el}>
 ```
 
-컴포넌트를 렌더링하기에 충분하지만, 값이 변경될 때마다 알림을 받고 하겠습니다. 이를 위해 Chosen이 관리하는 `<select>`에서 jQuery change 이벤트를 구독합니다.
+컴포넌트를 렌더링하기에 충분하지만, 값이 변경될 때마다 알림을 받기를 원합니다. 이를 위해 Chosen이 관리하는 `<select>`에서 jQuery change 이벤트를 구독합니다.
 
 Chosen에 `this.props.onChange`를 바로 전달하지 않습니다. 왜냐하면 컴포넌트의 props가 여러 번 변경될 수 있으며 이벤트 핸들러를 포함하고 있기 때문입니다. 그 대신에 `this.props.onChange`를 호출하는 `handleChange()` 메서드를 선언하고 jQuery `change` 이벤트로 구독합니다.
 
@@ -136,7 +135,7 @@ handleChange(e) {
 
 마지막으로 해야 할 남은 한 가지 있습니다. React에서 prop는 여러 번 바꿀 수 있습니다. 예를 들어 부모 컴포넌트의 state가 변경되면 <Chosen> 컴포넌트가 다른 자식을 가질 수 있습니다. 통합을 사용하는 위치에서는 prop이 업데이트할 때 마다 수동으로 DOM을 업데이트해야 합니다. 더 이상 React가 DOM을 관리하지 않습니다.
 
-Chosen 문서에서 따르면 jQuery `trigger()` API를 사용하여 원본 DOM 엘리먼트에 변경 사항에 대해 알 수 있습니다. React가 `<select>`안에 `this.props.children`을 업데이트하지만 Chosen에게 자식 목록의 변경에 알려주는 `componentDidUpdate()` 생명주기 메서드도 추가합니다.
+Chosen 문서에서 따르면 jQuery `trigger()` API를 사용하여 원본 DOM 엘리먼트의 변경 사항에 대해 알 수 있습니다. React가 `<select>`안에 `this.props.children`을 업데이트하지만 Chosen에게 자식 목록의 변경에 알려주는 `componentDidUpdate()` 생명주기 메서드도 추가합니다.
 
 ```js{2,3}
 componentDidUpdate(prevProps) {
@@ -254,7 +253,7 @@ ReactDOM.render(
 
 ### Backbone 뷰 안에 React 포함하기 {#embedding-react-in-a-backbone-view}
 
-[Backbone](https://backbonejs.org/) 뷰는 일반적으로 HTML 문자열 또는 문자열로 제공되는 템플릿 함수를 사용하여 DOM 요소를 위한 콘텐츠를 생성합니다. 이 프로세스 또한 React 컴포넌트 렌더링으로 대체할 수 있습니다.
+[Backbone](https://backbonejs.org/) 뷰는 일반적으로 HTML 문자열 또는 문자열로 제공되는 템플릿 함수를 사용하여 DOM 엘리먼트를 위한 콘텐츠를 생성합니다. 이 프로세스 또한 React 컴포넌트 렌더링으로 대체할 수 있습니다.
 
 아래에서 `ParagraphView`라는 Backbone 뷰를 생성합니다. Backbone (`this.el`)이 제공하는 DOM 요소에 React `<Paragraph>` 컴포넌트를 렌더링하기 위해 Backbone의 `render()` 함수를 오버라이드합니다. 여기서도 [`ReactDOM.render()`](/docs/react-dom.html#render) 사용하고 있습니다.
 
@@ -278,7 +277,7 @@ const ParagraphView = Backbone.View.extend({
 
 [**CodePen에서 사용해보세요**](https://codepen.io/gaearon/pen/gWgOYL?editors=0010)
 
-`remove`메서드 안에서 `ReactDOM.unmountComponentAtNode()` 호출하여 분리가 됐을 때 React가 컴포넌트 트리와 관련된 이벤트 핸들러와 다른 리소스를 등록 해지하는 것이 중요합니다.
+`remove` 메서드 안에서 `ReactDOM.unmountComponentAtNode()` 호출하여 분리가 됐을 때 React가 컴포넌트 트리와 관련된 이벤트 핸들러와 다른 리소스를 등록 해지하는 것이 중요합니다.
 
 React 트리안에서 컴포넌트가 사라질 때 자동으로 클린업이 실행되지만, 전체 트리를 수동으로 제거하기 때문에 이 메서드를 반드시 호출해야 합니다.
 
