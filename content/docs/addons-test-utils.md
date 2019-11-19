@@ -19,7 +19,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // npm과 ES5
 
 > 주의
 >
-> Facebook에서는 [`react-testing-library`](https://git.io/react-testing-library) 사용을 권장합니다. 이 라이브러리는 사용자가 컴포넌트를 사용하는 것처럼 테스트를 작성할 수 있도록 설계되었습니다.
+> Facebook에서는 [React Testing Library](https://testing-library.com/react) 사용을 권장합니다. 이 라이브러리는 사용자가 컴포넌트를 사용하는 것처럼 테스트를 작성할 수 있도록 설계되었습니다.
 >
 > 대안으로는 Airbnb에서 출시한 테스팅 도구인 [Enzyme](https://airbnb.io/enzyme/)이 있습니다. Enzyme은 React 컴포넌트의 출력을 쉽게 검증하고 조작하고 탐색할 수 있게 해줍니다.
 
@@ -123,7 +123,9 @@ it('can render and update a counter', () => {
 });
 ```
 
-DOM 이벤트를 붙이는 것은 DOM 컨테이너가 `document` 객체에 추가되었을 때에만 가능하다는 것을 기억하십시오. 불필요하게 반복 되는 코드를 줄이기 위해서 [`react-testing-library`](https://github.com/kentcdodds/react-testing-library)와 같은 것들을 사용할 수 있습니다.
+- DOM 이벤트 발행은 DOM 컨테이너가 `document` 객체에 추가되었을 때만 작동한다는 점을 잊지마세요. 불필요하게 반복 되는 코드를 줄이기 위해서 [`react-testing-library`](https://testing-library.com/react)와 같은 라이브러리를 사용할 수 있습니다.
+
+- [테스트 방법](/docs/testing-recipes.html) 문서에 `act()`의 동작 방식에 대한 자세한 내용이 예시와 사용법과 함께 포함되어 있습니다.
 
 * * *
 
@@ -141,7 +143,7 @@ mockComponent(
 
 > 주의
 >
-> `mockComponent()`는 더이상 쓰이지 않는 API입니다. 저희는 [얕은 복사](/docs/shallow-renderer.html) 혹은 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock)을 사용하는 것을 추천합니다.
+> `mockComponent()`는 더 이상 쓰이지 않는 API입니다. [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 사용을 추천합니다.
 
 * * *
 

@@ -1,38 +1,38 @@
 ---
 id: hooks-rules
-title: Rules of Hooks
+title: Hook의 규칙
 permalink: docs/hooks-rules.html
 next: hooks-custom.html
 prev: hooks-effect.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*Hook*은 React 16.8에 새로 추가된 기능입니다. Hook은 class를 작성하지 않고도 state와 다른 React의 기능들을 사용할 수 있도록 해줍니다.
 
-Hooks are JavaScript functions, but you need to follow two rules when using them. We provide a [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) to enforce these rules automatically:
+Hook은 JavaScript 함수입니다. 하지만 Hook을 사용할 때는 두 가지 규칙을 준수해야 합니다. 우리는 이러한 규칙들을 자동으로 강제하기 위한 [linter 플러그인](https://www.npmjs.com/package/eslint-plugin-react-hooks)을 제공하고 있습니다.
 
-### Only Call Hooks at the Top Level {#only-call-hooks-at-the-top-level}
+### 최상위(at the Top Level)에서만 Hook을 호출해야 합니다 {#only-call-hooks-at-the-top-level}
 
-**Don't call Hooks inside loops, conditions, or nested functions.** Instead, always use Hooks at the top level of your React function. By following this rule, you ensure that Hooks are called in the same order each time a component renders. That's what allows React to correctly preserve the state of Hooks between multiple `useState` and `useEffect` calls. (If you're curious, we'll explain this in depth [below](#explanation).)
+**반복문, 조건문 혹은 중첩된 함수 내에서 Hook을 호출하지 마세요.** 대신 항상 React 함수의 최상위(at the top level)에서 Hook을 호출해야 합니다. 이 규칙을 따르면 컴포넌트가 렌더링 될 때마다 항상 동일한 순서로 Hook이 호출되는 것이 보장됩니다. 이러한 점은 React가  `useState` 와 `useEffect` 가 여러 번 호출되는 중에도 Hook의 상태를 올바르게 유지할 수 있도록 해줍니다. 이 점에 대해서 궁금하다면 [아래](#explanation)에서 자세히 설명해 드리겠습니다.
 
-### Only Call Hooks from React Functions {#only-call-hooks-from-react-functions}
+### 오직 React 함수 내에서 Hook을 호출해야 합니다 {#only-call-hooks-from-react-functions}
 
-**Don't call Hooks from regular JavaScript functions.** Instead, you can:
+**Hook을 일반적인 JavaScript 함수에서 호출하지 마세요.** 대신 아래와 같이 호출할 수 있습니다.
 
-* ✅ Call Hooks from React function components.
-* ✅ Call Hooks from custom Hooks (we'll learn about them [on the next page](/docs/hooks-custom.html)).
+* ✅ React 함수 컴포넌트에서 Hook을 호출하세요.
+* ✅ Custom Hook에서 Hook을 호출하세요. ([다음 페이지](/docs/hooks-custom.html)에서 이 부분을 살펴볼 예정입니다)
 
-By following this rule, you ensure that all stateful logic in a component is clearly visible from its source code.
+이 규칙을 지키면 컴포넌트의 모든 상태 관련 로직을 소스코드에서 명확하게 보이도록 할 수 있습니다.
 
-## ESLint Plugin {#eslint-plugin}
+## ESLint 플러그인 {#eslint-plugin}
 
-We released an ESLint plugin called [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) that enforces these two rules. You can add this plugin to your project if you'd like to try it:
+우리는 이 두 가지 규칙을 강제하는 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks)  라는 ESLint 플러그인을 출시했습니다. 이 플러그인을 프로젝트에 추가할 수 있습니다.
 
 ```bash
-npm install eslint-plugin-react-hooks
+npm install eslint-plugin-react-hooks --save-dev
 ```
 
 ```js
-// Your ESLint configuration
+// ESLint 설정 파일
 {
   "plugins": [
     // ...
@@ -46,28 +46,28 @@ npm install eslint-plugin-react-hooks
 }
 ```
 
-In the future, we intend to include this plugin by default into Create React App and similar toolkits.
+앞으로는 Create React App이나 다른 비슷한 개발 도구에 기본적으로 이 플러그인을 포함할 예정입니다.
 
-**You can skip to the next page explaining how to write [your own Hooks](/docs/hooks-custom.html) now.** On this page, we'll continue by explaining the reasoning behind these rules.
+**어떻게 [나만의 Hook](/docs/hooks-custom.html)을 작성할 수 있는지 설명하는 다음 장으로 지금 넘어가도 좋습니다.** 이번 장에서는 계속해서 이러한 규칙들의 논리적 근거에 대해 설명할 예정입니다.
 
-## Explanation {#explanation}
+## 설명 {#explanation}
 
-As we [learned earlier](/docs/hooks-state.html#tip-using-multiple-state-variables), we can use multiple State or Effect Hooks in a single component:
+[이전에 배웠듯이](/docs/hooks-state.html#tip-using-multiple-state-variables) 한 컴포넌트에서 State나 Effect Hook을 여러 개 사용할 수도 있습니다.
 
 ```js
 function Form() {
-  // 1. Use the name state variable
+  // 1. name이라는 state 변수를 사용하세요.
   const [name, setName] = useState('Mary');
 
-  // 2. Use an effect for persisting the form
+  // 2. Effect를 사용해 폼 데이터를 저장하세요.
   useEffect(function persistForm() {
     localStorage.setItem('formData', name);
   });
 
-  // 3. Use the surname state variable
+  // 3. surname이라는 state 변수를 사용하세요.
   const [surname, setSurname] = useState('Poppins');
 
-  // 4. Use an effect for updating the title
+  // 4. Effect를 사용해서 제목을 업데이트합니다.
   useEffect(function updateTitle() {
     document.title = name + ' ' + surname;
   });
@@ -76,32 +76,32 @@ function Form() {
 }
 ```
 
-So how does React know which state corresponds to which `useState` call? The answer is that **React relies on the order in which Hooks are called**. Our example works because the order of the Hook calls is the same on every render:
+그렇다면 React는 어떻게 특정 state가 어떤 `useState` 호출에 해당하는지 알 수 있을까요? **정답은 React가 Hook이 호출되는 순서에 의존한다는 것입니다.** 모든 렌더링에서 Hook의 호출 순서는 같기 때문에 예시가 올바르게 동작할 수 있습니다.
 
 ```js
 // ------------
-// First render
+// 첫 번째 렌더링
 // ------------
-useState('Mary')           // 1. Initialize the name state variable with 'Mary'
-useEffect(persistForm)     // 2. Add an effect for persisting the form
-useState('Poppins')        // 3. Initialize the surname state variable with 'Poppins'
-useEffect(updateTitle)     // 4. Add an effect for updating the title
+useState('Mary')           // 1. 'Mary'라는 name state 변수를 선언합니다.
+useEffect(persistForm)     // 2. 폼 데이터를 저장하기 위한 effect를 추가합니다.
+useState('Poppins')        // 3. 'Poppins'라는 surname state 변수를 선언합니다.
+useEffect(updateTitle)     // 4. 제목을 업데이트하기 위한 effect를 추가합니다.
 
 // -------------
-// Second render
+// 두 번째 렌더링
 // -------------
-useState('Mary')           // 1. Read the name state variable (argument is ignored)
-useEffect(persistForm)     // 2. Replace the effect for persisting the form
-useState('Poppins')        // 3. Read the surname state variable (argument is ignored)
-useEffect(updateTitle)     // 4. Replace the effect for updating the title
+useState('Mary')           // 1. name state 변수를 읽습니다.(인자는 무시됩니다)
+useEffect(persistForm)     // 2. 폼 데이터를 저장하기 위한 effect가 대체됩니다.
+useState('Poppins')        // 3. surname state 변수를 읽습니다.(인자는 무시됩니다)
+useEffect(updateTitle)     // 4. 제목을 업데이트하기 위한 effect가 대체됩니다.
 
 // ...
 ```
 
-As long as the order of the Hook calls is the same between renders, React can associate some local state with each of them. But what happens if we put a Hook call (for example, the `persistForm` effect) inside a condition?
+Hook의 호출 순서가 렌더링 간에 동일하다면 React는 지역적인 state를 각 Hook에 연동시킬 수 있습니다. 하지만 만약에 Hook을 조건문 안에서(예를 들어 `persistForm` effect) 호출한다면 어떤 일이 일어날까요?
 
 ```js
-  // 🔴 We're breaking the first rule by using a Hook in a condition
+  // 🔴 조건문에 Hook을 사용함으로써 첫 번째 규칙을 깼습니다
   if (name !== '') {
     useEffect(function persistForm() {
       localStorage.setItem('formData', name);
@@ -109,30 +109,30 @@ As long as the order of the Hook calls is the same between renders, React can as
   }
 ```
 
-The `name !== ''` condition is `true` on the first render, so we run this Hook. However, on the next render the user might clear the form, making the condition `false`. Now that we skip this Hook during rendering, the order of the Hook calls becomes different:
+ `name !== ''` 조건은 첫 번째 렌더링에서 `true` 기 때문에 Hook은 동작합니다. 하지만 사용자가 그다음 렌더링에서 폼을 초기화하면서 조건을 `false`로 만들 겁니다. 렌더링 간에 Hook을 건너뛰기 때문에  Hook 호출 순서는 달라지게 됩니다. 
 
 ```js
-useState('Mary')           // 1. Read the name state variable (argument is ignored)
-// useEffect(persistForm)  // 🔴 This Hook was skipped!
-useState('Poppins')        // 🔴 2 (but was 3). Fail to read the surname state variable
-useEffect(updateTitle)     // 🔴 3 (but was 4). Fail to replace the effect
+useState('Mary')           // 1. name state 변수를 읽습니다. (인자는 무시됩니다)
+// useEffect(persistForm)  // 🔴 Hook을 건너뛰었습니다!
+useState('Poppins')        // 🔴 2 (3이었던). surname state 변수를 읽는 데 실패했습니다.
+useEffect(updateTitle)     // 🔴 3 (4였던). 제목을 업데이트하기 위한 effect가 대체되는 데 실패했습니다.
 ```
 
-React wouldn't know what to return for the second `useState` Hook call. React expected that the second Hook call in this component corresponds to the `persistForm` effect, just like during the previous render, but it doesn't anymore. From that point, every next Hook call after the one we skipped would also shift by one, leading to bugs.
+React는 두 번째 `useState` Hook 호출에 대해 무엇을 반환할지 몰랐습니다. React는 이전 렌더링 때처럼 컴포넌트 내에서 두 번째 Hook 호출이 `persistForm` effect와 일치할 것이라 예상했지만 그렇지 않았습니다. 그 시점부터 건너뛴 Hook 다음에 호출되는 Hook이 순서가 하나씩 밀리면서 버그를 발생시키게 됩니다. 
 
-**This is why Hooks must be called on the top level of our components.** If we want to run an effect conditionally, we can put that condition *inside* our Hook:
+**이것이 컴포넌트 최상위(the top of level)에서 Hook이 호출되어야만 하는 이유입니다.** 만약에 조건부로 effect를 실행하기를 원한다면, 조건문을 Hook *내부에* 넣을 수 있습니다.
 
 ```js
   useEffect(function persistForm() {
-    // 👍 We're not breaking the first rule anymore
+    // 👍 더 이상 첫 번째 규칙을 어기지 않습니다
     if (name !== '') {
       localStorage.setItem('formData', name);
     }
   });
 ```
 
-**Note that you don't need to worry about this problem if you use the [provided lint rule](https://www.npmjs.com/package/eslint-plugin-react-hooks).** But now you also know *why* Hooks work this way, and which issues the rule is preventing.
+**[제공된 lint 규칙](https://www.npmjs.com/package/eslint-plugin-react-hooks)을 활용한다면 이 문제에 대해 걱정할 필요는 없습니다.** 그러나 이제 당신은 왜 Hook이 이런 식으로 동작하는지 그리고 이 규칙이 어떤 문제를 방지하는지 알고 있습니다.
 
-## Next Steps {#next-steps}
+## 다음 단계 {#next-steps}
 
-Finally, we're ready to learn about [writing your own Hooks](/docs/hooks-custom.html)! Custom Hooks let you combine Hooks provided by React into your own abstractions, and reuse common stateful logic between different components.
+마침내 [Custom Hook](/docs/hooks-custom.html)을 작성하는 법을 배울 준비가 되었습니다! Custom Hook은 React에서 제공하는 Hook을 당신의 추상화된 로직으로 사용할 수 있도록 결합해주고 다른 컴포넌트 사이에서 공통의 상태 관련 로직을 재사용 할 수 있도록 해줍니다. 

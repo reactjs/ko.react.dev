@@ -1,106 +1,106 @@
 ---
 id: faq-state
-title: Component State
+title: 컴포넌트 State
 permalink: docs/faq-state.html
 layout: docs
 category: FAQ
 ---
 
-### What does `setState` do? {#what-does-setstate-do}
+### `setState`는 어떤 일을 하나요? {#what-does-setstate-do}
 
-`setState()` schedules an update to a component's `state` object. When state changes, the component responds by re-rendering.
+`setState()`는 컴포넌트의 `state` 객체에 대한 업데이트를 실행합니다. state가 변경되면, 컴포넌트는 리렌더링됩니다.
 
-### What is the difference between `state` and `props`? {#what-is-the-difference-between-state-and-props}
+### `state`와 `props`의 차이점은 무엇인가요? {#what-is-the-difference-between-state-and-props}
 
-[`props`](/docs/components-and-props.html) (short for "properties") and [`state`](/docs/state-and-lifecycle.html) are both plain JavaScript objects. While both hold information that influences the output of render, they are different in one important way: `props` get passed *to* the component (similar to function parameters) whereas `state` is managed *within* the component (similar to variables declared within a function).
+[`props`](/docs/components-and-props.html) ("properties"의 줄임말) 와 [`state`](/docs/state-and-lifecycle.html) 는 일반 JavaScript 객체입니다. 두 객체 모두 렌더링 결과물에 영향을 주는 정보를 갖고 있는데, 한 가지 중요한 방식에서 차이가 있습니다. `props`는 (함수 매개변수처럼) 컴포넌트*에* 전달되는 반면 `state`는 (함수 내에 선언된 변수처럼) 컴포넌트 *안에서* 관리됩니다.
 
-Here are some good resources for further reading on when to use `props` vs `state`:
+언제 `props`와 `state`를 사용하는지 더 알고 싶다면 아래의 자료를 확인해보세요.
 * [Props vs State](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)
 * [ReactJS: Props vs. State](https://lucybain.com/blog/2016/react-state-vs-pros/)
 
-### Why is `setState` giving me the wrong value? {#why-is-setstate-giving-me-the-wrong-value}
+### 왜 `setState`가 잘못된 값을 주는 걸까요? {#why-is-setstate-giving-me-the-wrong-value}
 
-In React, both `this.props` and `this.state` represent the *rendered* values, i.e. what's currently on the screen.
+React에서 `this.props`와 `this.state`는 모두 *렌더링된* 값을 나타냅니다. 다시 말해 현재 화면에 보이는 것을 말합니다.
 
-Calls to `setState` are asynchronous - don't rely on `this.state` to reflect the new value immediately after calling `setState`. Pass an updater function instead of an object if you need to compute values based on the current state (see below for details).
+`setState` 호출은 비동기적으로 이뤄집니다. 따라서 `setState` 호출 직후 새로운 값이 `this.state` 에 반영될 거라고 믿어서는 안 됩니다. 만약 이전 state 값을 기준으로 값을 계산해야 한다면 객체 대신 updater 함수를 전달하세요. (자세한 내용은 아래를 확인하세요.)
 
-Example of code that will *not* behave as expected:
+예시 코드는 예상대로 동작하지 *않을 것*입니다.
 
 ```jsx
 incrementCount() {
-  // Note: this will *not* work as intended.
+  // 주의: 이 코드는 예상대로 동작하지 *않을 것*입니다.
   this.setState({count: this.state.count + 1});
 }
 
 handleSomething() {
-  // Let's say `this.state.count` starts at 0.
+  // `this.state.count`가 0에서 시작한다고 해봅시다.
   this.incrementCount();
   this.incrementCount();
   this.incrementCount();
-  // When React re-renders the component, `this.state.count` will be 1, but you expected 3.
+  // React가 컴포넌트를 리렌더링할 때 `this.state.count`는 3이 될 것 같은 예상과 달리 1이 됩니다.
 
-  // This is because `incrementCount()` function above reads from `this.state.count`,
-  // but React doesn't update `this.state.count` until the component is re-rendered.
-  // So `incrementCount()` ends up reading `this.state.count` as 0 every time, and sets it to 1.
+  // 이것은 `incrementCount()` 함수가 `this.state.count`에서 값을 읽어 오는데
+  // React는 컴포넌트가 리렌더링될 때까지 `this.state.count`를 갱신하지 않기 때문입니다.
+  // 그러므로 `incrementCount()`는 매번 `this.state.count`의 값을 0으로 읽은 뒤에 이 값을 1로 설정합니다.
 
-  // The fix is described below!
+  // 이 문제의 해결 방법은 아래에 설명되어 있습니다.
 }
 ```
 
-See below for how to fix this problem.
+이 문제를 어떻게 해결하는지 알아봅시다.
 
-### How do I update state with values that depend on the current state? {#how-do-i-update-state-with-values-that-depend-on-the-current-state}
+### 어떻게 하면 이전 state 값을 기준으로 state 값을 업데이트할 수 있나요? {#how-do-i-update-state-with-values-that-depend-on-the-current-state}
 
-Pass a function instead of an object to `setState` to ensure the call always uses the most updated version of state (see below). 
+항상 `setState` 가 가장 최신의 state 값을 사용하도록 보장하기 위해서는 `setState` 에 객체 대신 함수를 전달하세요. (아래를 참조하세요.)
 
-### What is the difference between passing an object or a function in `setState`? {#what-is-the-difference-between-passing-an-object-or-a-function-in-setstate}
+### `setState`에 객체를 전달하는 것과 함수를 전달하는 것은 어떤 차이가 있나요? {#what-is-the-difference-between-passing-an-object-or-a-function-in-setstate}
 
-Passing an update function allows you to access the current state value inside the updater. Since `setState` calls are batched, this lets you chain updates and ensure they build on top of each other instead of conflicting:
+updater 함수를 전달하면 updater 함수 안에서 이전 state 값에 접근할 수 있습니다. `setState` 호출은 일괄적으로 처리되기 때문에 여러 업데이트 사항이 충돌 없이 차례대로 반영되도록 합니다.
 
 ```jsx
 incrementCount() {
   this.setState((state) => {
-    // Important: read `state` instead of `this.state` when updating.
+    // 중요: 값을 업데이트할 때 `this.state` 대신 `state` 값을 읽어옵니다.
     return {count: state.count + 1}
   });
 }
 
 handleSomething() {
-  // Let's say `this.state.count` starts at 0.
+  // `this.state.count`가 0에서 시작한다고 해봅시다.
   this.incrementCount();
   this.incrementCount();
   this.incrementCount();
 
-  // If you read `this.state.count` now, it would still be 0.
-  // But when React re-renders the component, it will be 3.
+  // 지금 `this.state.count` 값을 읽어 보면 이 값은 여전히 0일 것입니다.
+  // 하지만 React가 컴포넌트를 리렌더링하게 되면 이 값은 3이 됩니다.
 }
 ```
 
-[Learn more about setState](/docs/react-component.html#setstate)
+[setState에 대해 더 알아보기](/docs/react-component.html#setstate)
 
-### When is `setState` asynchronous? {#when-is-setstate-asynchronous}
+### 언제 `setState` 가 비동기적인가요? {#when-is-setstate-asynchronous}
 
-Currently, `setState` is asynchronous inside event handlers.
+현재 `setState` 는 이벤트 핸들러 내에서 비동기적입니다. 
 
-This ensures, for example, that if both `Parent` and `Child` call `setState` during a click event, `Child` isn't re-rendered twice. Instead, React "flushes" the state updates at the end of the browser event. This results in significant performance improvements in larger apps.
+이로 인해 만약 `부모`와 `자식`이 모두 click 이벤트에서 `setState`를 호출한다면 `자식`은 두 번 렌더링되지 않습니다. 대신 React는 브라우저 이벤트가 끝날 시점에 state를 일괄적으로 업데이트합니다. 이는 더 큰 규모의 앱에서 뚜렷한 성능 향상을 만들어냅니다.
 
-This is an implementation detail so avoid relying on it directly. In the future versions, React will batch updates by default in more cases.
+이것은 구현 세부사항이므로 전적으로 의존해선 안됩니다. 추후 React는 기본적으로 더 많은 경우에서 일괄적으로 업데이트를 처리할 예정입니다.
 
-### Why doesn't React update `this.state` synchronously? {#why-doesnt-react-update-thisstate-synchronously}
+### 왜 React는 `this.state` 를 동기적으로 업데이트하지 않나요? {#why-doesnt-react-update-thisstate-synchronously}
 
-As explained in the previous section, React intentionally "waits" until all components call `setState()` in their event handlers before starting to re-render. This boosts performance by avoiding unnecessary re-renders.
+이전 절에서 설명했듯이 모든 컴포넌트가 자신의 이벤트 핸들러에서 `setState()`를 호출할 때까지 React는 리렌더링을 하지 않고 내부적으로 "기다리고 있습니다". 이를 통해 불필요한 렌더링을 방지하면서 성능을 향상시킵니다.
 
-However, you might still be wondering why React doesn't just update `this.state` immediately without re-rendering.
+그러나 왜 React는 리렌더링 대신 즉시 `this.state`를 업데이트하지 않는지 여전히 궁금해 하실 수도 있습니다.
 
-There are two main reasons:
+여기에는 두 가지 중요한 이유가 존재합니다.
 
-* This would break the consistency between `props` and `state`, causing issues that are very hard to debug.
-* This would make some of the new features we're working on impossible to implement.
+* `props` 와 `state` 사이의 일관성을 해칠 수 있으며 이것은 디버깅하기 매우 힘든 이슈를 일으킬 수 있기 때문입니다.
+* 현재 작업 중인 새로운 기능들을 구현하기 힘들게 만들 수 있기 때문입니다.
 
-This [GitHub comment](https://github.com/facebook/react/issues/11527#issuecomment-360199710) dives deep into the specific examples.
+이 [GitHub 코멘트](https://github.com/facebook/react/issues/11527#issuecomment-360199710)에서 더욱 자세한 예시를 확인할 수 있습니다.
 
-### Should I use a state management library like Redux or MobX? {#should-i-use-a-state-management-library-like-redux-or-mobx}
+### Redux 나 MobX 같은 상태('state') 관리 라이브러리를 사용해야 하나요? {#should-i-use-a-state-management-library-like-redux-or-mobx}
 
-[Maybe.](https://redux.js.org/faq/general#when-should-i-use-redux)
+[아마 필요할 수도 있습니다.](https://redux.js.org/faq/general#when-should-i-use-redux)
 
-It's a good idea to get to know React first, before adding in additional libraries. You can build quite complex applications using only React.
+추가적인 라이브러리를 사용하기 전에 먼저 React에 익숙해지는 게 좋습니다. React만으로도 꽤 복잡한 애플리케이션을 만들 수 있습니다. 
