@@ -135,7 +135,7 @@
       title: 테스팅 방안
     - id: testing-environments
       title: 테스팅 환경
-- title: Concurrent 모드(실험 단계)
+- title: Concurrent 모드 (실험 단계)
   isOrdered: true
   items:
     - id: concurrent-mode-intro
