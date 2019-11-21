@@ -6,11 +6,22 @@ prev: concurrent-mode-patterns.html
 next: concurrent-mode-reference.html
 ---
 
->주의
+<style>
+.scary > blockquote {
+  background-color: rgba(237, 51, 21, 0.2);
+  border-left-color: #ed3315;
+}
+</style>
+
+<div class="scary">
+
+>주의:
 >
 >이 페이지는 **안정된 배포판에서 아직 제공되지 않는 실험적인 기능들**에 대해 설명합니다. 프로덕션용 앱에선 React 실험 배포판을 사용하지 마세요. 이러한 기능들은 React의 일부가 되기 전에 아무 예고 없이 상당히 변경될 수 있습니다.
 >
->이 문서는 얼리 어답터와 궁금해하시는 분을 대상으로 합니다. React를 처음 쓰신다면 이 기능들에 대해 신경 쓰지 마세요. 당장 익힐 필요는 없습니다.
+>이 문서는 얼리 어답터와 궁금해하시는 분을 대상으로 합니다. **React를 처음 쓰신다면 이 기능들에 대해 신경 쓰지 마세요.** 당장 익힐 필요는 없습니다.
+
+</div>
 
 - [설치하기](#installation)
   - [실험 배포판은 누구를 위한 것일까?](#who-is-this-experimental-release-for)
