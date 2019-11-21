@@ -147,7 +147,7 @@
     - id: concurrent-mode-adoption
       title: Concurrent 모드 도입하기
     - id: concurrent-mode-reference
-      title: Concurrent 모드 API 참조
+      title: Concurrent 모드 API 참고서
 - title: 기여
   items:
     - id: how-to-contribute
