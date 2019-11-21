@@ -113,13 +113,13 @@ TestRenderer.create(element, options);
 TestRenderer.act(callback);
 ```
 
-[`react-dom/test-utils`에 `act()`](/docs/test-utils.html#act)와 비슷하게, `TestRenderer.act`는 실행을 위한 컴포넌트들을 준비합니다. `TestRenderer.create` 와 `trestRenderer.update`를 호출을 보호하기 위해 이 버전의 `act()`를 사용하십시오.
+[`react-dom/test-utils`의 `act()`](/docs/test-utils.html#act)와 비슷하게, `TestRenderer.act`는 검증을 위한 컴포넌트들을 준비합니다. `TestRenderer.create` 와 `trestRenderer.update`를 호출을 이 버전의 `act()`를 사용해서 감싸주세요.
 
 ```javascript
 import {create, act} from 'react-test-renderer';
 import App from './app.js'; // The component being tested
 
-// 컴포넌트를 랜더링합니다.
+// 컴포넌트를 렌더링합니다.
 let root;
 act(() => {
   root = create(<App value={1}/>)
@@ -128,7 +128,7 @@ act(() => {
 // root를 검증합니다.
 expect(root.toJSON()).toMatchSnapshot();
 
-// 몇몇의 다른 프로퍼티즈들을 업데이트합니다.
+// 몇몇의 다른 props를 업데이트합니다.
 act(() => {
   root = root.update(<App value={2}/>);
 })
