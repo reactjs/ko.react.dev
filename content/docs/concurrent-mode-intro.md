@@ -15,7 +15,7 @@ next: concurrent-mode-suspense.html
 
 * [데이터를 가져오기 위한 Suspense](/docs/concurrent-mode-suspense.html) React 컴포넌트에서 데이터를 가져오기에 대한 새로운 메커니즘을 설명합니다.
 * [Concurrent UI 패턴](/docs/concurrent-mode-patterns.html) Concurrent 모드와 서스펜스로 만들어진 UI 패턴들을 보여줍니다.
-* [Concurrent 모드 도입하기](/docs/concurrent-mode-adoption.html) 프ㅌ로젝트에서 Concurrent 모드를 어떻게 사용할 수 있는지를 설명합니다.
+* [Concurrent 모드 도입하기](/docs/concurrent-mode-adoption.html) 프로젝트에서 Concurrent 모드를 어떻게 사용할 수 있는지를 설명합니다.
 * [Concurrent 모드 API 참고서](/docs/concurrent-mode-reference.html) 실험적 빌드에서 사용 가능한 새 API들을 문서화합니다.
 
 ## Concurrent 모드란? {#what-is-concurrent-mode}
