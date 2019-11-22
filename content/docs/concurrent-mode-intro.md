@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-intro
-title: Concurrent모드 소개 (실험적)
+title: Concurrent모드 소개 (실험 단계)
 permalink: docs/concurrent-mode-intro.html
 next: concurrent-mode-suspense.html
 ---
@@ -13,10 +13,10 @@ next: concurrent-mode-suspense.html
 
 이 페이지는 Concurrent 모드의 이론적인 개요를 제시합니다 **더 실용적인 설명을 위해서는 다음 섹션들을 참고하세요**
 
-* [데이터를 가져오기 위한 서스펜스](/docs/concurrent-mode-suspense.html) React 컴포넌트에서 데이터를 가져오기에 대한 새로운 메커니즘을 설명합니다.
+* [데이터를 가져오기 위한 Suspense](/docs/concurrent-mode-suspense.html) React 컴포넌트에서 데이터를 가져오기에 대한 새로운 메커니즘을 설명합니다.
 * [Concurrent UI 패턴](/docs/concurrent-mode-patterns.html) Concurrent 모드와 서스펜스로 만들어진 UI 패턴들을 보여줍니다.
-* [Concurrent 모드 채택](/docs/concurrent-mode-adoption.html) 프로젝트에서 Concurrent 모드를 어떻게 사용할 수 있는지를 설명합니다.
-* [Concurrent 모드 API reference](/docs/concurrent-mode-reference.html) 실험적 빌드에서 사용 가능한 새 API들을 문서화합니다.
+* [Concurrent 모드 도입하기](/docs/concurrent-mode-adoption.html) 프로젝트에서 Concurrent 모드를 어떻게 사용할 수 있는지를 설명합니다.
+* [Concurrent 모드 API 참고서](/docs/concurrent-mode-reference.html) 실험적 빌드에서 사용 가능한 새 API들을 문서화합니다.
 
 ## Concurrent 모드란? {#what-is-concurrent-mode}
 
@@ -70,7 +70,7 @@ React는 휴리스틱을 사용하여 업데이트의 급함 정도를 결정하
 
 ## 생산에 연구를 투입  {#putting-research-into-production}
 
-Concurrent Mode 기능에 대한 공통 주제들이 있습니다. **이것의 목표는 사람-컴퓨터 간 상호작용에 대한 조사를 실제 UI에 통합시키는 것을 돕는 것입니다.**
+Concurrent 모드 기능에 대한 공통 주제들이 있습니다. **이것의 목표는 사람-컴퓨터 간 상호작용에 대한 조사를 실제 UI에 통합시키는 것을 돕는 것입니다.**
 
 예를 들어, 조사에 따르면 화면 간 전환에서 중간 로딩 상태를 너무 많이 배치하는 것은 전환 자체를 더 *느리게* 느끼게 만든다고 합니다. 이것이 Concurrent Mode에서 고정된 "스케줄"에 새로운 로드 상태를 표시하여 부조화가 발생하는 것 또는 불필요하게 많이 업데이트되는 것을 피하고자 하는 이유입니다.
 
@@ -82,7 +82,7 @@ UX(사용자 경험)에 중점을 둔 팀은 가끔 이러한 비슷한 문제�
 
 다음 페이지에서는 특정 주제에 대한 자세한 내용을 배웁니다.
 
-* [데이터를 가져오기 위한 서스펜스](/docs/concurrent-mode-suspense.html) 리액트 컴포넌트에서 데이터를 가져오기에 대한 새로운 메커니즘을 설명합니다.
+* [데이터를 가져오기 위한 Suspense](/docs/concurrent-mode-suspense.html) 리액트 컴포넌트에서 데이터를 가져오기에 대한 새로운 메커니즘을 설명합니다.
 * [Concurrent UI 패턴](/docs/concurrent-mode-patterns.html) 동시모드와 서스펜스로 만들어진 UI 패턴들을 보여줍니다.
-* [Concurrent모드 채택](/docs/concurrent-mode-adoption.html) 프로젝트에서 동시모드를 어떻게 사용할 수 있는지를 설명합니다.
-* [Concurrent모드 API 참조](/docs/concurrent-mode-reference.html) 실험적 빌드에서 사용 가능한 새 API들을 문서화합니다.
+* [Concurrent모드 도입하기](/docs/concurrent-mode-adoption.html) 프로젝트에서 동시모드를 어떻게 사용할 수 있는지를 설명합니다.
+* [Concurrent모드 API 참고서](/docs/concurrent-mode-reference.html) 실험적 빌드에서 사용 가능한 새 API들을 문서화합니다.
