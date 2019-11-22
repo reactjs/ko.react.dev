@@ -7,15 +7,15 @@ next: concurrent-mode-suspense.html
 
 >주의사항:
 >
->이 페이지는 **안정된 배포판에서는 [아직 사용할 수 없는] 실험적인 기능들**에 관해 설명합니다. 프로덕션용 앱에선 리액트의 실험 배포판을 사용하지 마세요. 이 기능들은 React에 일부가 되기 전에 경고 없이 크게 변경될 수 있습니다.
+>이 페이지는 **안정된 배포판에서는 [아직 사용할 수 없는](/docs/concurrent-mode-adoption.html) 실험적인 기능들**에 관해 설명합니다. 프로덕션용 앱에선 리액트의 실험 배포판을 사용하지 마세요. 이 기능들은 React에 일부가 되기 전에 경고 없이 크게 변경될 수 있습니다.
 >
->이 문서는 얼리어답터들과 궁금해하시는 분들을 위해 제작된 문서입니다. React에 처음 접해본다면 이러한 기능들을 걱정하지 않아도 됩니다. 그 기능들을 바로 배울 필요는 없습니다.
+>이 문서는 얼리어답터들과 새로운 기능을 궁금해하시는 분들을 위해 작성된 문서입니다. React에 처음 접해본다면 이러한 기능들을 걱정하지 않아도 됩니다. 그 기능들을 바로 배울 필요는 없습니다.
 
 이 페이지는 Concurrent 모드의 이론적인 개요를 제시합니다 **더 실용적인 설명을 위해서는 다음 섹션들을 참고하세요**
 
 * [데이터를 가져오기 위한 Suspense](/docs/concurrent-mode-suspense.html) React 컴포넌트에서 데이터를 가져오기에 대한 새로운 메커니즘을 설명합니다.
 * [Concurrent UI 패턴](/docs/concurrent-mode-patterns.html) Concurrent 모드와 서스펜스로 만들어진 UI 패턴들을 보여줍니다.
-* [Concurrent 모드 도입하기](/docs/concurrent-mode-adoption.html) 프로젝트에서 Concurrent 모드를 어떻게 사용할 수 있는지를 설명합니다.
+* [Concurrent 모드 도입하기](/docs/concurrent-mode-adoption.html) 프ㅌ로젝트에서 Concurrent 모드를 어떻게 사용할 수 있는지를 설명합니다.
 * [Concurrent 모드 API 참고서](/docs/concurrent-mode-reference.html) 실험적 빌드에서 사용 가능한 새 API들을 문서화합니다.
 
 ## Concurrent 모드란? {#what-is-concurrent-mode}
