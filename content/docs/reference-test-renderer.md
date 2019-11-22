@@ -113,7 +113,7 @@ TestRenderer.create(element, options);
 TestRenderer.act(callback);
 ```
 
-[`react-dom/test-utils`의 `act()`](/docs/test-utils.html#act)와 비슷하게, `TestRenderer.act`는 검증을 위한 컴포넌트들을 준비합니다. `TestRenderer.create` 와 `trestRenderer.update`를 호출을 이 버전의 `act()`를 사용해서 감싸주세요.
+[`react-dom/test-utils`의 `act()`](/docs/test-utils.html#act)와 비슷하게, `TestRenderer.act`는 검증을 위한 컴포넌트들을 준비합니다. `TestRenderer.create`와 `trestRenderer.update` 호출을 이 버전의 `act()`를 사용해서 감싸주세요.
 
 ```javascript
 import {create, act} from 'react-test-renderer';
