@@ -5,6 +5,15 @@ permalink: docs/concurrent-mode-intro.html
 next: concurrent-mode-suspense.html
 ---
 
+<style>
+.scary > blockquote {
+  background-color: rgba(237, 51, 21, 0.2);
+  border-left-color: #ed3315;
+}
+</style>
+
+<div class="scary">
+
 >주의사항
 >
 >이 페이지는 **안정된 배포판에서는 [아직 사용할 수 없는](/docs/concurrent-mode-adoption.html) 실험적인 기능들**에 관해 설명합니다. 프로덕션용 앱에선 리액트의 실험 배포판을 사용하지 마세요. 이 기능들은 React에 포함되기 전에 경고 없이 크게 변경될 수 있습니다.
