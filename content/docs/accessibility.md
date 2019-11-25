@@ -484,7 +484,11 @@ NVDA를 효과적으로 사용하는 방법은 아래를 참조해주시기 바�
 
 VoiceOver는 애플 기기에 통합된 스크린 리더입니다.
 
+<<<<<<< HEAD
 VoiceOver를 활성화 및 사용하는 방법은 아래를 참조해주시기 바랍니다.
+=======
+Refer to the following guides on how to activate and use VoiceOver:
+>>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
 
 - [WebAIM - VoiceOver를 사용한 웹 접근성 측정](https://webaim.org/articles/voiceover/)
 - [Deque - OS X용 VoiceOver 키보드 단축키](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)

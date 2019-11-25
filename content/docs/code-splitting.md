@@ -77,6 +77,7 @@ import("./math").then(math => {
 });
 ```
 
+<<<<<<< HEAD
 > 주의
 >
 > 동적 `import()` 문법은 아직 ECMAScript (JavaScript)의 표준 문법이 아니라
@@ -86,6 +87,12 @@ import("./math").then(math => {
 Webpack이 이 구문을 만나게 되면 앱의 코드를 분할합니다. 
 Create React App을 사용하고 있다면 이미 Webpack이 구성이 되어 있기 때문에 즉시 [사용](https://facebook.github.io/create-react-app/docs/code-splitting)할 수 있습니다.
 [Next.js](https://github.com/zeit/next.js/#dynamic-import) 역시 지원합니다.
+=======
+When Webpack comes across this syntax, it automatically starts code-splitting
+your app. If you're using Create React App, this is already configured for you
+and you can [start using it](https://facebook.github.io/create-react-app/docs/code-splitting) immediately. It's also supported
+out of the box in [Next.js](https://github.com/zeit/next.js/#dynamic-import).
+>>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
 
 스스로 Webpack을 구성하고자 한다면 Webpack의 
 [코드 분할 가이드](https://webpack.js.org/guides/code-splitting/)를 참조하세요. Webpack 설정은 [가이드](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269)에 있습니다.
