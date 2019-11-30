@@ -78,13 +78,13 @@ ReactDOM.createRoot(
 
 >주의
 >
->`createRoot`와 같은 Concurrent 모드 API는 React의 실험 배포판에만 존재합니다. 
+>`createRoot`와 같은 Concurrent 모드 API는 React의 실험 배포판에만 존재합니다.
 
 Concurrent 모드에서는 "unsafe"라고 [기존에 표시된](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html) 생명주기 메서드가 현재 React 버전에서보다도 더 많은 버그를 야기할 수 있습니다. 앱이 [Strict 모드](https://reactjs.org/docs/strict-mode.html)와 호환되기 전까지 Concurrent 모드를 시도하는 걸 권장하지 않습니다.
 
 ## 무엇을 기대해야 할까? {#what-to-expect}
 
-큰 규모의 앱이거나 많은 수의 서드 파티 패키지에 의존하고 있는 앱이라면 Concurrent 모드를 바로 사용할 수 있을 거라 섣불리 판단하기는 어렵습니다. **예로, Facebook에선 신규 웹사이트에 Concurrent 모드를 사용 중이지만, 기존 웹사이트에는 적용할 계획이 없습니다.** 기존 웹사이트는 안전하지 않은 생명주기 메서드와, 호환되지 않는 서드 파티 라이브러리, 그리고 Concurrent 모드와 잘 동작하지 않는 패턴들을 사용하고 있기 때문이죠.  
+큰 규모의 앱이거나 많은 수의 서드 파티 패키지에 의존하고 있는 앱이라면 Concurrent 모드를 바로 사용할 수 있을 거라 섣불리 판단하기는 어렵습니다. **예로, Facebook에선 신규 웹사이트에 Concurrent 모드를 사용 중이지만, 기존 웹사이트에는 적용할 계획이 없습니다.** 기존 웹사이트는 안전하지 않은 생명주기 메서드와, 호환되지 않는 서드 파티 라이브러리, 그리고 Concurrent 모드와 잘 동작하지 않는 패턴들을 사용하고 있기 때문이죠.
 
 저희 경험에 의하면, 자주 사용되는 React 패턴들을 사용하면서 외부 상태 관리 솔루션에 기대지 않는 코드가 가장 쉽게 Concurrent 모드로 실행됩니다. 수 주 이내로 흔히 발생하는 문제점과 해결방안을 별도로 설명할 계획입니다.
 
@@ -118,25 +118,24 @@ Blocking 모드를 Concurrent 모드의 "우아한 성능 저하" 버전이라�
 
 |   |Legacy 모드  |Blocking 모드  |Concurrent 모드  |
 |---  |---  |---  |---  |
-|문자열 Refs  |✅  |🚫**  |🚫**  |
-|레거시 Context |✅  |🚫**  |🚫**  |
-|findDOMNode  |✅  |🚫**  |🚫**  |
-|Suspense |✅  |✅  |✅  |
-|SuspenseList |🚫  |✅  |✅  |
+|[문자열 Refs](/docs/refs-and-the-dom.html#legacy-api-string-refs)  |✅  |🚫**  |🚫**  |
+|[레거시 Context](/docs/legacy-context.html) |✅  |🚫**  |🚫**  |
+|[findDOMNode](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)  |✅  |🚫**  |🚫**  |
+|[Suspense](/docs/concurrent-mode-suspense.html#what-is-suspense-exactly) |✅  |✅  |✅  |
+|[SuspenseList](/docs/concurrent-mode-patterns.html#suspenselist) |🚫  |✅  |✅  |
 |Suspense SSR + Hydration |🚫  |✅  |✅  |
 |Progressive Hydration  |🚫  |✅  |✅  |
 |Selective Hydration  |🚫  |🚫  |✅  |
 |Cooperative 멀티태스킹 |🚫  |🚫  |✅  |
 |다수의 setState의 자동 배칭     |🚫* |✅  |✅  |
-|우선순위 기반 렌더링 |🚫  |🚫  |✅  |
-|중단 가능한 Pre-렌더링 |🚫  |🚫  |✅  |
-|useTransition  |🚫  |🚫  |✅  |
-|useDeferredValue |🚫  |🚫  |✅  |
-|Suspense Reveal "Train"  |🚫  |🚫  |✅  |
+|[우선순위 기반 렌더링](/docs/concurrent-mode-patterns.html#splitting-high-and-low-priority-state) |🚫  |🚫  |✅  |
+|[중단 가능한 Pre-렌더링](/docs/concurrent-mode-intro.html#interruptible-rendering) |🚫  |🚫  |✅  |
+|[useTransition](/docs/concurrent-mode-patterns.html#transitions)  |🚫  |🚫  |✅  |
+|[useDeferredValue](/docs/concurrent-mode-patterns.html#deferring-a-value) |🚫  |🚫  |✅  |
+|[Suspense Reveal "Train"](/docs/concurrent-mode-patterns.html#suspense-reveal-train)  |🚫  |🚫  |✅  |
 
 </div>
 
 \*: Legacy 모드도 React가 관리하는 이벤트의 자동 배칭 기능을 가지고 있지만, 하나의 브라우저 태스크에 국한됩니다. 비 React 이벤트는 `unstable_batchedUpdates`를 사용해야만 합니다. Blocking 모드와 Concurrent 모드에서는 모든 `setState`가 디폴트로 배치됩니다.
 
 \*\*: 개발 환경에서 경고가 표시됩니다.
-
