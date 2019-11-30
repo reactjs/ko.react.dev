@@ -1,6 +1,6 @@
 ---
-id: JSX 더 자세히
-title: JSX 더 자세히
+id: jsx-in-depth
+title: JSX 이해하기
 permalink: docs/jsx-in-depth.html
 redirect_from:
   - "docs/jsx-spread.html"
@@ -73,7 +73,7 @@ function WarningButton() {
 }
 ```
 
-만약 JavaScript 번들러를 사용하지 않고 `<script>` 태그를 통해 React를 불러왓다면 `React`는 전역 변수로서 존재하기 때문에 별도로 불러올 필요가 없습니다.
+JavaScript 번들러를 사용하지 않고 `<script>` 태그를 통해 React를 불러왔다면 `React`는 전역 변수로 존재하기 때문에 별도로 불러올 필요가 없습니다.
 
 ### JSX 타입을 위한 점 표기법 사용 {#using-dot-notation-for-jsx-type}
 
@@ -116,19 +116,19 @@ function HelloWorld() {
 }
 ```
 
-이를 고치기 위해 우리는 `hello` 를 `Hello`로 바꾸고 이를 참조할 때 `<Hello />`를 사용할 것 입니다. 
+이를 고치기 위해 우리는 `hello` 를 `Hello`로 바꾸고 이를 참조할 때 `<Hello />`를 사용할 것 입니다.
 
 ```js{3,4,10,11}
 import React from 'react';
 
-// 올바른 사용법입니다. 아래는 컴포넌트이므로 대문자화 해야 합니다.
+// 올바른 사용법입니다. 아래는 컴포넌트이므로 대문자로 시작해야 합니다.
 function Hello(props) {
-    // 올바른 사용법입니다! 아래의 <div> 사용법은 유효한 HTML 태그이기 때문에 유효합니다.
+  // 올바른 사용법입니다! 아래의 <div> 사용법은 유효한 HTML 태그이기 때문에 유효합니다.
   return <div>Hello {props.toWhat}</div>;
 }
 
 function HelloWorld() {
-  // 올바른 사용법입니다! React는 <Hello />가 대문자화 되엇기에 컴포넌트로 인식합니다.
+  // 올바른 사용법입니다! React는 <Hello />가 대문자로 시작하기 때문에 컴포넌트로 인식합니다.
   return <Hello toWhat="World" />;
 }
 ```
@@ -143,7 +143,7 @@ import { PhotoStory, VideoStory } from './stories';
 
 const components = {
   photo: PhotoStory,
-  video: VideoStory 
+  video: VideoStory
 };
 
 function Story(props) {
@@ -164,7 +164,7 @@ const components = {
 };
 
 function Story(props) {
-  // 올바른 사용법입니다! 대문자화된 변수는 JSX 타입으로 사용할 수 있습니다.
+  // 올바른 사용법입니다! 대문자로 시작하는 변수는 JSX 타입으로 사용할 수 있습니다.
   const SpecificStory = components[props.storyType];
   return <SpecificStory story={props.story} />;
 }
@@ -172,18 +172,18 @@ function Story(props) {
 
 ## JSX 안에서의 prop 사용 {#props-in-jsx}
 
-JSX 안에서 prop을 사용하는 방법은 여러가지가 있습니다.
+JSX 안에서 prop을 사용하는 방법은 여러 가지가 있습니다.
 
 ### JavaScript Expressions as Props {#javascript-expressions-as-props}
 
-아래의 예시와 같이 JavaScript 표현을 `{}` 안에 넣음으로 JSX 안에서 prop으로 사용할 수 있습니다. 
+아래의 예시와 같이 JavaScript 표현을 `{}` 안에 넣어서 JSX 안에서 prop으로 사용할 수 있습니다.
 
 ```js
 <MyComponent foo={1 + 2 + 3 + 4} />
 ```
 `MyComponent`의 `props.foo`의 값은 `1 + 2 + 3 + 4`의 표현식이 계산되기 때문에 `10`입니다.
 
-`if` 구문과 `for` 루프는 JavaScript 표현식이 아니기 때문에 JSX 안에서 그대로 사용할 수 없습니다. 하지만 아래의 예시와 같이 JSX 바깥에 배정된 표현을 사용할 수 있습니다.
+`if` 구문과 `for` 루프는 JavaScript 표현식이 아니기 때문에 JSX 안에서 그대로 사용할 수 없습니다. 하지만 아래의 예시와 같이 JSX 밖의 주변 코드에서 사용할 수 있습니다.
 
 ```js{3-7}
 function NumberDescriber(props) {
@@ -197,7 +197,7 @@ function NumberDescriber(props) {
 }
 ```
 
-더 자세한 [조건부 렌더링](/docs/conditional-rendering.html) 과 [루프](/docs/lists-and-keys.html) 관련 문서를 참고해주세요.
+더 자세한 [조건부 렌더링](/docs/conditional-rendering.html) 과 [리스트와 Key](/docs/lists-and-keys.html) 관련 문서를 참고해주세요.
 
 ### 문자열 리터럴 {#string-literals}
 
@@ -209,7 +209,7 @@ function NumberDescriber(props) {
 <MyComponent message={'hello world'} />
 ```
 
-문자열 리터럴을 넘겨줄 때, 그 값은 HTML 이스케이핑이 풀립니다. 따라서 아래의 두 JSX 표현은 동일한 표현입니다.
+문자열 리터럴을 넘겨줄 때, 그 값은 HTML 이스케이프 처리가 되지 않습니다. 따라서 아래의 두 JSX 표현은 동일한 표현입니다.
 
 ```js
 <MyComponent message="&lt;3" />
@@ -229,11 +229,11 @@ Prop에 어떤 값도 넘기지 않을 경우, 기본값은 `true`입니다. 아
 <MyTextBox autocomplete={true} />
 ```
 
-일반적으로 위의 예시와 같은 방식으로 사용하지 않는 것을 권장하는데 이는 [ES6 object shorthand](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer) 와 헷갈릴 수 있기 때문입니다. `{foo}` 는 `{foo: true}` 가 아닌 `{foo: foo}`와 동일합니다. 이는 HTML 동작 방식과 일치하기 위해 남겨두었습니다.
+일반적으로 위의 예시와 같은 방식으로 사용하지 않는 것을 권장하는데 이는 [ES6 object shorthand](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer#ECMAScript_2015의_새로운_표기법) 와 헷갈릴 수 있기 때문입니다. `{foo}` 는 `{foo: true}` 가 아닌 `{foo: foo}`와 동일합니다. 이는 HTML 동작 방식과 일치하기 위해 남겨두었습니다.
 
 ### 속성 펼치기 {#spread-attributes}
 
-`props`에 해당하는 객체를 이미 가지고 있다면,`...`를 "펼치기" 연산자로 사용해 전체 객체를 그대로 넘겨줄 수 있습니다. 아래의 두 컴포넌트는 동일합니다.
+`props`에 해당하는 객체를 이미 가지고 있다면,`...`를 "전개" 연산자로 사용해 전체 객체를 그대로 넘겨줄 수 있습니다. 아래의 두 컴포넌트는 동일합니다.
 
 ```js{7}
 function App1() {
@@ -246,7 +246,7 @@ function App2() {
 }
 ```
 
-컴포넌트가 사용하게 될 특정 prop을 선택하고 나머지 prop은 펼치기 연산자를 통해 넘길 수 있습니다.
+컴포넌트가 사용하게 될 특정 prop을 선택하고 나머지 prop은 전개 연산자를 통해 넘길 수 있습니다.
 
 ```js{2}
 const Button = props => {
@@ -269,11 +269,11 @@ const App = () => {
 위의 예시의 `kind` prop은 소비되고 DOM의 `button` element에 넘겨지지 *않습니다.*
 다른 모든 prop은 `...other` 객체를 통해서 넘겨지며 이 컴포넌트를 유연하게 만들어줍니다. `onClick`과 `children` prop으로 넘겨지는 것을 볼 수 있습니다.
 
-펼치기 연산자는 유용하지만 불필요한 prop을 컴포넌트에 넘기거나 유효하지 않은 HTML 속성들을 DOM에 넘기기도 합니다. 꼭 필요할 때만 사용하는 것을 권장합니다.
+전개 연산자는 유용하지만 불필요한 prop을 컴포넌트에 넘기거나 유효하지 않은 HTML 속성들을 DOM에 넘기기도 합니다. 꼭 필요할 때만 사용하는 것을 권장합니다.
 
 ## JSX에서 자식 다루기 {#children-in-jsx}
 
-여는 태그와 닫는 태그가 있는 JSX 표현에서 두 태그 사이의 내용은 `props.children`이라는 특수한 prop으로 넘겨집니다. 자식을 넘기는 방법은 여러가지가 있습니다.
+여는 태그와 닫는 태그가 있는 JSX 표현에서 두 태그 사이의 내용은 `props.children`이라는 특수한 prop으로 넘겨집니다. 자식을 넘기는 방법은 여러 가지가 있습니다.
 
 ### 문자열 리터럴 {#string-literals-1}
 
@@ -283,13 +283,13 @@ const App = () => {
 <MyComponent>Hello world!</MyComponent>
 ```
 
-이는 유효한 JSX입니다. 여기서 `MyComponent`의 `props.children`은 `"Hello world!"`입니다. HTML은 이스케이핑이 풀리게 되며, 일반적으로 아래와 같이 HTML을 쓰는 방식으로 JSX를 쓸 수 있습니다.
+이는 유효한 JSX입니다. 여기서 `MyComponent`의 `props.children`은 `"Hello world!"`입니다. HTML은 이스케이프 처리가 되지 않으며, 일반적으로 아래와 같이 HTML을 쓰는 방식으로 JSX를 쓸 수 있습니다.
 
 ```html
 <div>This is valid HTML &amp; JSX at the same time.</div>
 ```
 
-JSX는 각 줄의 처음과 끝에 있는 공백을 제거합니다. 빈 줄 역시 제거합니다. 태그에 붙어있는 개행도 제거되며 문자열 리터럴 중간에 있는 개행은 한 개의 공백으로 대체됩니다. 따라서 아래의 예시들은 전부 똑같이 렌더됩니다.
+JSX는 각 줄의 처음과 끝에 있는 공백을 제거합니다. 빈 줄 역시 제거합니다. 태그에 붙어있는 개행도 제거되며 문자열 리터럴 중간에 있는 개행은 한 개의 공백으로 대체됩니다. 따라서 아래의 예시들은 전부 똑같이 렌더링됩니다.
 
 ```js
 <div>Hello World</div>
@@ -336,7 +336,7 @@ React 컴포넌트는 element로 이루어진 배열을 반환할 수 있습니�
 
 ```js
 render() {
-  // 리스트 아이템들을 추가 요소에 둘러쌀 필요 없습니다!
+  // 리스트 아이템들을 추가적인 엘리먼트로 둘러쌀 필요 없습니다!
   return [
     // key 지정을 잊지 마세요 :)
     <li key="A">First item</li>,
@@ -348,7 +348,7 @@ render() {
 
 ### JavaScript 표현식을 자식으로 사용하기 {#javascript-expressions-as-children}
 
-`{}`에 감쌈으로써 JavaScript 표현식도 자식으로 넘길 수 있습니다. 아래의 예시들은 동일한 표현입니다.
+`{}`에 감싸서 JavaScript 표현식도 자식으로 넘길 수 있습니다. 아래의 예시들은 동일한 표현입니다.
 
 ```js
 <MyComponent>foo</MyComponent>
@@ -383,7 +383,7 @@ function Hello(props) {
 
 ### 함수를 자식으로 사용하기 {#functions-as-children}
 
-보통 JSX에 삽입된 JavaScript 표현식은 문자열, React element 혹은 이들의 배열로 환산됩니다. 하지만 `props.children`은 다른 prop들과 마찬가지로 React가 렌더 할 수 있는 데이터의 형태뿐만 아니라 어떤 형태의 데이터도 넘겨질 수 있습니다. 아래의 예시와 같이 직접 만든 컴포넌트가 있다면 `props.children`을 통해서 콜백을 넘겨받을 수 있습니다.
+보통 JSX에 삽입된 JavaScript 표현식은 문자열, React element 혹은 이들의 배열로 환산됩니다. 하지만 `props.children`은 다른 prop들과 마찬가지로 React가 렌더링 할 수 있는 데이터의 형태뿐만 아니라 어떤 형태의 데이터도 넘겨질 수 있습니다. 아래의 예시와 같이 직접 만든 컴포넌트가 있다면 `props.children`을 통해서 콜백을 넘겨받을 수 있습니다.
 
 ```js{4,13}
 // 자식 콜백인 numTimes를 호출하여 반복되는 컴포넌트를 생성합니다.
@@ -408,7 +408,7 @@ function ListOfTenThings() {
 
 ### boolean, null, undefined는 무시됩니다. {#booleans-null-and-undefined-are-ignored}
 
-`false`, `null`, `undefined`와 `true`는 유효한 자식입니다. 그저 렌더링 되지 않을 뿐입니다. 아래의 JSX 표현식들은 동일하게 렌더됩니다.
+`false`, `null`, `undefined`와 `true`는 유효한 자식입니다. 그저 렌더링 되지 않을 뿐입니다. 아래의 JSX 표현식들은 동일하게 렌더링됩니다.
 
 ```js
 <div />
@@ -424,7 +424,7 @@ function ListOfTenThings() {
 <div>{true}</div>
 ```
 
-이는 React element들을 조건으로 렌더할 때 유용합니다. 아래의 JSX는 `showHeader`가 `true`일 때 동일하게 `<Header />`를 렌더하게 됩니다.
+이는 React element들을 조건부 렌더링할 때 유용합니다. 아래의 JSX는 `showHeader`가 `true`일 때 동일하게 `<Header />`를 렌더하게 됩니다.
 
 ```js{2}
 <div>
@@ -433,7 +433,7 @@ function ListOfTenThings() {
 </div>
 ```
 
-한가지 주의해야 할 점은 `0`과 같은 ["falsy" 값들](https://developer.mozilla.org/ko/docs/Glossary/Falsy)은 React가 렌더한다는 점입니다. 예를 들어, 아래의 예시는 `props.messages`가 빈 배열일 때 예상과는 다르게 0을 출력하게 됩니다.
+한 가지 주의해야 할 점은 `0`과 같은 ["falsy" 값들](https://developer.mozilla.org/ko/docs/Glossary/Falsy)은 React가 렌더링 한다는 점입니다. 예를 들어, 아래의 예시는 `props.messages`가 빈 배열일 때 예상과는 다르게 0을 출력하게 됩니다.
 
 ```js{2}
 <div>
