@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-adoption
-title: Concurrent 모드 도입하기 (실험적)
+title: Concurrent 모드 도입하기 (실험 단계)
 permalink: docs/concurrent-mode-adoption.html
 prev: concurrent-mode-patterns.html
 next: concurrent-mode-reference.html
@@ -15,7 +15,7 @@ next: concurrent-mode-reference.html
 
 <div class="scary">
 
->주의:
+>주의
 >
 >이 페이지는 **안정된 배포판에서 아직 제공되지 않는 실험적인 기능들**에 대해 설명합니다. 프로덕션용 앱에선 React 실험 배포판을 사용하지 마세요. 이러한 기능들은 React의 일부가 되기 전에 아무 예고 없이 상당히 변경될 수 있습니다.
 >
@@ -24,11 +24,11 @@ next: concurrent-mode-reference.html
 </div>
 
 - [설치하기](#installation)
-  - [실험 배포판은 누구를 위한 것일까?](#who-is-this-experimental-release-for)
+  - [실험 배포판은 누구를 위한 걸까요?](#who-is-this-experimental-release-for)
   - [Concurrent 모드 활성화하기](#enabling-concurrent-mode)
-- [무엇을 기대해야 할까?](#what-to-expect)
+- [무엇을 기대해야 할까요?](#what-to-expect)
   - [마이그레이션 단계: Blocking 모드](#migration-step-blocking-mode)
-  - [왜 여러 모드가 필요할까?](#why-so-many-modes)
+  - [왜 여러 모드가 필요할까요?](#why-so-many-modes)
   - [기능 비교](#feature-comparison)
 
 ## 설치하기 {#installation}
@@ -46,7 +46,7 @@ npm install react@experimental react-dom@experimental
 
 이런 배포판을 개인 프로젝트나 브랜치에서 사용하는 것은 상관없지만, 프로덕션 환경에서 실행하는 것은 권장하지 않습니다. Facebook에서는 프로덕션 환경에서 사용하고 있긴 하지만, 문제가 발생했을 때 버그를 잡을 수 있도록 대기하고 있기 때문에 가능한 일입니다. 경고를 명심하세요!
 
-### 실험 배포판은 누구를 위한 것일까? {#who-is-this-experimental-release-for}
+### 실험 배포판은 누구를 위한 걸까요? {#who-is-this-experimental-release-for}
 
 이 배포판은 얼리 어댑터, 라이브러리 제작자, 궁금해하는 사람들을 주요 대상으로 합니다.
 
@@ -82,7 +82,7 @@ ReactDOM.createRoot(
 
 Concurrent 모드에서는 "unsafe"라고 [기존에 표시된](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html) 생명주기 메서드가 현재 React 버전에서보다도 더 많은 버그를 야기할 수 있습니다. 앱이 [Strict 모드](https://reactjs.org/docs/strict-mode.html)와 호환되기 전까지 Concurrent 모드를 시도하는 걸 권장하지 않습니다.
 
-## 무엇을 기대해야 할까? {#what-to-expect}
+## 무엇을 기대해야 할까요? {#what-to-expect}
 
 큰 규모의 앱이거나 많은 수의 서드 파티 패키지에 의존하고 있는 앱이라면 Concurrent 모드를 바로 사용할 수 있을 거라 섣불리 판단하기는 어렵습니다. **예로, Facebook에선 신규 웹사이트에 Concurrent 모드를 사용 중이지만, 기존 웹사이트에는 적용할 계획이 없습니다.** 기존 웹사이트는 안전하지 않은 생명주기 메서드와, 호환되지 않는 서드 파티 라이브러리, 그리고 Concurrent 모드와 잘 동작하지 않는 패턴들을 사용하고 있기 때문이죠.
 
@@ -98,7 +98,7 @@ Concurrent 모드에서는 "unsafe"라고 [기존에 표시된](https://reactjs.
 * **Blocking 모드** `ReactDOM.createBlockingRoot(rootNode).render(<App />)`. 현재 실험 중인 상태입니다. Concurrent 모드의 일부 기능을 제공할 수 있는 첫 번째 마이그레이션 단계입니다.
 * **Concurrent 모드** `ReactDOM.createRoot(rootNode).render(<App />)`. 현재 실험 중인 상태입니다. 안정된 후엔 React 기본 모드로 만들 예정입니다. 이 모드에선 *모든* 신규 기능을 사용할 수 있습니다.
 
-### 왜 여러 모드가 필요할까? {#why-so-many-modes}
+### 왜 여러 모드가 필요할까요? {#why-so-many-modes}
 
 저희는 호환되지 않는 큰 변화를 가져오거나 React가 침체하도록 나두는 것보다 [점진적인 마이그레이션 전략](/docs/faq-versioning.html#commitment-to-stability)을 제공하는 게 낫다고 생각합니다.
 
