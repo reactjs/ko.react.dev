@@ -449,7 +449,7 @@ function FancyInput(props, ref) {
 FancyInput = forwardRef(FancyInput);
 ```
 
-위의 예제에서 `<FancyInput ref={fancyInputRef} />`를 렌더링한 부모 컴포넌트는 `fancyInputRef.current.focus()`를 호출할 수 있습니다.
+위의 예제에서 `<FancyInput ref={inputRef} />`를 렌더링한 부모 컴포넌트는 `inputRef.current.focus()`를 호출할 수 있습니다.
 
 ### `useLayoutEffect` {#uselayouteffect}
 
