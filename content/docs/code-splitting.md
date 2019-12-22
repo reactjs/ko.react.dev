@@ -90,11 +90,7 @@ Create React App을 사용하고 있다면 이미 Webpack이 구성이 되어 �
 
 > 주의
 >
-<<<<<<< HEAD
-> `React.lazy`와 Suspense는 아직 서버 사이드 렌더링을 할 수 없습니다. 서버에서 렌더링 된 앱에서 코드 분할을 하기 원한다면 [Loadable Components](https://github.com/smooth-code/loadable-components)를 추천합니다. 이는 [서버 사이드 렌더링과 번들 스플리팅에 대한 좋은 가이드](https://www.smooth-code.com/open-source/loadable-components/docs/server-side-rendering/)입니다.
-=======
-> `React.lazy` and Suspense are not yet available for server-side rendering. If you want to do code-splitting in a server rendered app, we recommend [Loadable Components](https://github.com/gregberge/loadable-components). It has a nice [guide for bundle splitting with server-side rendering](https://loadable-components.com/docs/server-side-rendering/).
->>>>>>> 401b97e9591ac573eaf35c7cf57e5f145276d140
+> `React.lazy`와 Suspense는 아직 서버 사이드 렌더링을 할 수 없습니다. 서버에서 렌더링 된 앱에서 코드 분할을 하기 원한다면 [Loadable Components](https://github.com/gregberge/loadable-components)를 추천합니다. 이는 [서버 사이드 렌더링과 번들 스플리팅에 대한 좋은 가이드](https://loadable-components.com/docs/server-side-rendering/)입니다.
 
 `React.lazy` 함수를 사용하면 동적 import를 사용해서 컴포넌트를 렌더링 할 수 있습니다.
 
