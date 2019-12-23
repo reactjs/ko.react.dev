@@ -36,7 +36,11 @@ React는 Internet Explorer 9과 상위 버전을 포함한 모든 주요 브라�
 ReactDOM.render(element, container[, callback])
 ```
 
+<<<<<<< HEAD
 React 엘리먼트를 제공된 `container`의 DOM에 렌더링하고 컴포넌트에 대한 [참조](/docs/more-about-refs.html)를 반환합니다([무상태 컴포넌트](/docs/components-and-props.html#functional-and-class-components)는 `null`을 반환합니다).
+=======
+Render a React element into the DOM in the supplied `container` and return a [reference](/docs/more-about-refs.html) to the component (or returns `null` for [stateless components](/docs/components-and-props.html#function-and-class-components)).
+>>>>>>> 1dd4e325f070ce198aed69fd9cc5467563679e54
 
 React 엘리먼트가 이전에 `container` 내부에 렌더링 되었다면 해당 엘리먼트는 업데이트하고 최신의 React 엘리먼트를 반영하는 데 필요한 DOM만 변경합니다.
 
