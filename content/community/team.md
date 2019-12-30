@@ -103,6 +103,10 @@ React was originally created by [Jordan Walke](https://github.com/jordwalke). To
 * [Alex Krolick](https://github.com/alexkrolick)
 * [Alexey Pyltsyn](https://github.com/lex111)
 * [Brandon Dail](https://github.com/aweary)
+<<<<<<< HEAD
+=======
+* [Caleb Meredith](https://github.com/calebmer)
+>>>>>>> 5b6ad388804aaa5cf5504ccd04329f52960e17ae
 * [Chang Yan](https://github.com/cyan33)
 * [Cheng Lou](https://github.com/chenglou)
 * [Christoph Nakazawa](https://github.com/cpojer)

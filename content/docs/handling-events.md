@@ -56,7 +56,11 @@ function ActionLink() {
 
 여기서 `e`는 합성 이벤트입니다. React는 [W3C 명세](https://www.w3.org/TR/DOM-Level-3-Events/)에 따라 합성 이벤트를 정의하기 때문에 브라우저 호환성에 대해 걱정할 필요가 없습니다. 더 자세한 사항은 [`합성 이벤트`](/docs/events.html)을 참고하시기 바랍니다.
 
+<<<<<<< HEAD
 React를 사용할 때 DOM 엘리먼트가 생성된 후 리스너를 추가하기 위해 `addEventListener`를 호출할 필요가 없습니다. 대신, 엘리먼트가 처음 렌더링될 때 리스너를 제공하면 됩니다.
+=======
+When using React, you generally don't need to call `addEventListener` to add listeners to a DOM element after it is created. Instead, just provide a listener when the element is initially rendered.
+>>>>>>> 5b6ad388804aaa5cf5504ccd04329f52960e17ae
 
 [ES6 클래스](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes)를 사용하여 컴포넌트를 정의할 때, 일반적인 패턴은 이벤트 핸들러를 클래스의 메서드로 만드는 것입니다. 예를 들어, 다음 `Toggle` 컴포넌트는 사용자가 "ON"과 "OFF" 상태를 토글 할 수 있는 버튼을 렌더링합니다.
 
@@ -142,7 +146,11 @@ class LoggingButton extends React.Component {
 
 ## 이벤트 핸들러에 인자 전달하기 {#passing-arguments-to-event-handlers}
 
+<<<<<<< HEAD
 루프 내부에서는 이벤트 핸들러에 추가적인 매개변수를 전달하는 것이 일반적입니다. 예를 들어, `id`가 행의 ID일 경우 다음 코드가 모두 작동합니다.
+=======
+Inside a loop, it is common to want to pass an extra parameter to an event handler. For example, if `id` is the row ID, either of the following would work:
+>>>>>>> 5b6ad388804aaa5cf5504ccd04329f52960e17ae
 
 ```js
 <button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>

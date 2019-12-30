@@ -217,7 +217,11 @@ React 파이버 구조에 대해 [여기](https://github.com/acdlite/react-fiber
 
 ### 이벤트 시스템 {#event-system}
 
+<<<<<<< HEAD
 React는 렌더러와 무관하며 React DOM 및 React Native와 함께 작동하는 합성 이벤트 시스템을 구현합니다. 해당 코드는 [`packages/legacy-events`](https://github.com/facebook/react/tree/master/packages/legacy-events)에서 확인할 수 있습니다.
+=======
+React implements a synthetic event system which is agnostic of the renderers and works both with React DOM and React Native. Its source code is located in [`packages/legacy-events`](https://github.com/facebook/react/tree/master/packages/legacy-events).
+>>>>>>> 5b6ad388804aaa5cf5504ccd04329f52960e17ae
 
 해당 코드에 대한 상세한 설명은 다음의 [영상](https://www.youtube.com/watch?v=dRo_egw7tBc) (66분)을 참고하세요.
 
