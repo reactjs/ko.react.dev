@@ -106,7 +106,11 @@ function Page(props) {
 
 이 패턴을 사용하면 자식 컴포넌트와 직속 부모를 분리(decouple)하는 문제는 대개 해결할 수 있습니다. 더 나아가 [render props](/docs/render-props.html)를 이용하면 렌더링 되기 전부터 자식 컴포넌트가 부모 컴포넌트와 소통하게 할 수 있습니다.
 
+<<<<<<< HEAD
 하지만 같은 데이터를 트리 안 여러 레벨이 있는 많은 컴포넌트에 주어야 할 때도 있습니다. 이런 데이터 값이 변할 때마다 모든 하위 컴포넌트에게 널리 "방송"하는 것이 context입니다. 흔히 예시로 드는 선호 로케일, 테마, 데이터 캐시 등을 관리하는 데 있어서는 일반적으로 context를 사용하는 게 가장 편리합니다.
+=======
+However, sometimes the same data needs to be accessible by many components in the tree, and at different nesting levels. Context lets you "broadcast" such data, and changes to it, to all components below. Common examples where using context might be simpler than the alternatives include managing the current locale, theme, or a data cache.
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 ## API {#api}
 
@@ -130,6 +134,7 @@ Context 오브젝트에 포함된 React 컴포넌트인 Provider는 context를 �
 
 Provider 는 `value` prop를 받아서 이 값을 하위에 있는 컴포넌트에게 전달합니다. 값을 전달받을 수 있는 컴포넌트의 수에 제한은 없습니다. Provider 하위에 또 다른 Provider를 배치하는 것도 가능하며, 이 경우 하위 Provider의 값이 우선시됩니다.
 
+<<<<<<< HEAD
 Provider 하위에서 context를 구독하는 모든 컴포넌트는 Provider의 `value` prop가 바뀔 때마다 다시 렌더링 됩니다. 이러한 전파는 `shouldComponentUpdate`의 영향을 받지 않기 때문에 중간에 있는 컴포넌트가 업데이트를 중지한다고 해도 트리 끝에 있는 컴포넌트까지 전달됩니다.
 
 context 값의 바뀌었는지 여부는 [`Object.is`](//developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is#설명)와 동일한 알고리즘을 사용해 이전 값과 새로운 값을 비교해 측정됩니다.
@@ -137,6 +142,15 @@ context 값의 바뀌었는지 여부는 [`Object.is`](//developer.mozilla.org/k
 > 주의
 >
 > 위와 같은 방식으로 변화를 측정하기 때문에 객체를 `value`로 보내는 경우 다소 문제가 생길 수 있습니다. [주의사항](#caveats)을 참조하세요.
+=======
+All consumers that are descendants of a Provider will re-render whenever the Provider's `value` prop changes. The propagation from Provider to its descendant consumers (including [`.contextType`](#classcontexttype) and [`useContext`](/docs/hooks-reference.html#usecontext)) is not subject to the `shouldComponentUpdate` method, so the consumer is updated even when an ancestor component skips an update.
+
+Changes are determined by comparing the new and old values using the same algorithm as [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).
+
+> Note
+>
+> The way changes are determined can cause some issues when passing objects as `value`: see [Caveats](#caveats).
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 ### `Class.contextType` {#classcontexttype}
 
@@ -191,9 +205,15 @@ context 변화를 구독하는 React 컴포넌트입니다. [함수 컴포넌트
 
 Context.Consumer의 자식은 [함수](/docs/render-props.html#using-props-other-than-render)여야합니다. 이 함수는 context의 현재값을 받고 React 노드를 반환합니다. 이 함수가 받는 `value` 매개변수 값은 해당 context의 Provider 중 상위 트리에서 가장 가까운 Provider의 `value` prop과 동일합니다. 상위에 Provider가 없다면 `value` 매개변수 값은 `createContext()`에 보냈던 `defaultValue`와 동일할 것입니다.
 
+<<<<<<< HEAD
 > 주의
 >
 >함수를 자식으로 받는 패턴에 대해서는 [render props](/docs/render-props.html)을 참조하세요.
+=======
+> Note
+>
+> For more information about the 'function as a child' pattern, see [render props](/docs/render-props.html).
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 ### `Context.displayName` {#contextdisplayname}
 
@@ -239,7 +259,11 @@ theme 값이 변하는 좀 더 복잡한 예시입니다.
 
 ### 여러 context 구독하기 {#consuming-multiple-contexts}
 
+<<<<<<< HEAD
 각 context마다 Consumer를 개별 노드로 만들게 설계되어있는데, 이것은 context 변화로 인해 다시 렌더링하는 과정을 빠르게 유지하기 위함입니다.
+=======
+To keep context re-rendering fast, React needs to make each context consumer a separate node in the tree.
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 `embed:context/multiple-contexts.js`
 
@@ -258,6 +282,13 @@ theme 값이 변하는 좀 더 복잡한 예시입니다.
 
 ## 예전 API {#legacy-api}
 
+<<<<<<< HEAD
 > 주의
 >
 > 이전 버전의 React에 실험적인 단계의 context API가 존재한 적이 있습니다. 예전 API는 모든 16.x 버전에서 지원될 예정이지만 새로운 API로 옮길 것을 권장합니다. 다음 메이저 배포에서 예전 API는 삭제될 것입니다. 예전 API 문서는 [여기](/docs/legacy-context.html)에 있습니다.
+=======
+> Note
+>
+> React previously shipped with an experimental context API. The old API will be supported in all 16.x releases, but applications using it should migrate to the new version. The legacy API will be removed in a future major React version. Read the [legacy context docs here](/docs/legacy-context.html).
+
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4

@@ -69,7 +69,13 @@ function Counter({initialCount}) {
 
 "+"와 "-" 버튼은 함수 형식을 사용하고 있습니다. 이것은 갱신된 값이 갱신되기 이전의 값을 바탕으로 계산되기 때문입니다. 반면, "Reset" 버튼은 카운트를 항상 0으로 설정하기 때문에 일반적인 형식을 사용합니다.
 
+<<<<<<< HEAD
 > 주의
+=======
+If your update function returns the exact same value, the subsequent rerender will be skipped completely.
+
+> Note
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 >
 > 클래스 컴포넌트의 `setState` 메서드와는 다르게, `useState`는 갱신 객체(update objects)를 자동으로 합치지는 않습니다. 함수 업데이터 폼을 객체 전개 연산자와 결합함으로써 이 동작을 복제할 수 있습니다.
 >
@@ -180,7 +186,11 @@ const value = useContext(MyContext);
 
 context 객체(`React.createContext`에서 반환된 값)을 받아 그 context의 현재 값을 반환합니다. context의 현재 값은 트리 안에서 이 Hook을 호출하는 컴포넌트에 가장 가까이에 있는 `<MyContext.Provider>`의 `value` prop에 의해 결정됩니다.
 
+<<<<<<< HEAD
 컴포넌트에서 가장 가까운 `<MyContext.Provider>`가 갱신되면 이 Hook은 그 `MyContext` provider에게 전달된 가장 최신의 context `value`를 사용하여 렌더러를 트리거 합니다.
+=======
+When the nearest `<MyContext.Provider>` above the component updates, this Hook will trigger a rerender with the latest context `value` passed to that `MyContext` provider. Even if an ancestor uses [`React.memo`](/docs/react-api.html#reactmemo) or [`shouldComponentUpdate`](/docs/react-component.html#shouldcomponentupdate), a rerender will still happen starting at the component itself using `useContext`.
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 `useContext`로 전달한 인자는 *context 객체 그 자체*이어야 함을 잊지 마세요.
 
