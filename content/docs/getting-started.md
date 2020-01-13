@@ -48,11 +48,7 @@ React를 사용하는데 관심이 있다면, 온라인 코드 편집기를 사�
 
 React 프로젝트를 시작한다면 [스크립트 태그를 사용한 간단한 HTML 페이지](/docs/create-a-new-react-app.html)를 만드는 것이 최고의 방법일 것입니다. 설치하는 데 1분밖에 걸리지 않습니다!
 
-<<<<<<< HEAD
-그러나 애플리케이션이 커진다면 보다 통합된 설정을 고려하는 것이 좋습니다. 대규모 애플리케이션에 권장되는 [여러 개의 JavaScript 툴체인들](/docs/create-a-new-react-app.html)이 있습니다. 각 툴체인은 많은 설정 없이 작동할 수 있고 풍부한 React 에코시스템을 최대한 활용할 수 있습니다.
-=======
-As your application grows, you might want to consider a more integrated setup. There are several JavaScript toolchains we recommend for larger applications. Each of them can work with little to no configuration and lets you take full advantage of the rich React ecosystem. [Learn how.](/docs/create-a-new-react-app.html)
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
+그러나 애플리케이션이 커진다면 보다 통합된 설정을 고려하는 것이 좋습니다. 대규모 애플리케이션에 권장되는 여러 개의 JavaScript 툴체인들이 있습니다. 각 툴체인은 많은 설정 없이 작동할 수 있고 풍부한 React 에코시스템을 최대한 활용할 수 있습니다. [어떻게 하는지 배워보세요.](/docs/create-a-new-react-app.html)
 
 ## React 배우기 {#learn-react}
 
