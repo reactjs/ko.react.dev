@@ -181,8 +181,4 @@ const element = {
 
 >**팁**
 >
-<<<<<<< HEAD
-> ES6 및 JSX 코드가 올바르게 표시되도록 편집기에 ["Babel" 언어 설정](https://babeljs.io/docs/editors)을 사용하는 것을 권장합니다. 현재 웹 사이트에서는 호환이 가능한 [Oceanic Next](https://github.com/voronianski/oceanic-next-color-scheme) 컬러 스키마를 사용하고 있습니다.
-=======
->We recommend using the ["Babel" language definition](https://babeljs.io/docs/editors) for your editor of choice so that both ES6 and JSX code is properly highlighted.
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
+> ES6 및 JSX 코드가 올바르게 표시되도록 편집기에 ["Babel" 언어 설정](https://babeljs.io/docs/editors)을 사용하는 것을 권장합니다.
