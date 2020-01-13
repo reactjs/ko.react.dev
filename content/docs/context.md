@@ -15,6 +15,7 @@ context를 이용하면 단계마다 일일이 props를 넘겨주지 않고도 �
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
+  - [Context.displayName](#contextdisplayname)
 - [예시](#examples)
   - [값이 변하는 context](#dynamic-context)
   - [하위 컴포넌트에서 context 업데이트하기](#updating-context-from-a-nested-component)
@@ -117,7 +118,7 @@ const MyContext = React.createContext(defaultValue);
 
 Context 객체를 만듭니다. Context 객체를 구독하고 있는 컴포넌트를 렌더링할 때 React는 트리 상위에서 가장 가까이 있는 짝이 맞는 `Provider`로부터 현재값을 읽습니다.
 
-`defaultValue` 매개변수는 트리 안에서 적절한 Provider를 **찾지 못햇을 때에만** 쓰이는 값입니다. 컴포넌트를 독립적으로 테스트할 때 유용한 값입니다. Provider를 통해 `undefined`을 값으로 보낸다고 해도 구독 컴포넌트들이 `defaultValue` 를 읽지는 않는다는 점에 유의하세요.
+`defaultValue` 매개변수는 트리 안에서 적절한 Provider를 **찾지 못했을 때만** 쓰이는 값입니다. 컴포넌트를 독립적으로 테스트할 때 유용한 값입니다. Provider를 통해 `undefined`을 값으로 보낸다고 해도 구독 컴포넌트들이 `defaultValue` 를 읽지는 않는다는 점에 유의하세요.
 
 ### `Context.Provider` {#contextprovider}
 
@@ -193,6 +194,20 @@ Context.Consumer의 자식은 [함수](/docs/render-props.html#using-props-other
 > 주의
 >
 >함수를 자식으로 받는 패턴에 대해서는 [render props](/docs/render-props.html)을 참조하세요.
+
+### `Context.displayName` {#contextdisplayname}
+
+Context 객체는 `displayName` 문자열 속성을 설정할 수 있습니다. React 개발자 도구는 이 문자열을 사용해서 context를 어떻게 보여줄 지 결정합니다.
+
+예를 들어, 아래 컴포넌트는 개발자 도구에 MyDisplayName로 표시됩니다.
+
+```js{2}
+const MyContext = React.createContext(/* some value */);
+MyContext.displayName = 'MyDisplayName';
+
+<MyContext.Provider> // "MyDisplayName.Provider" in DevTools
+<MyContext.Consumer> // "MyDisplayName.Consumer" in DevTools
+```
 
 ## 예시 {#examples}
 

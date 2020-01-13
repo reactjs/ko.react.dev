@@ -16,9 +16,9 @@ render() {
     </React.Fragment>
   );
 }
-```    
+```
 
-이를 선언하는 새로운 [단축 문법](#short-syntax)이 있습니다. 하지만 아직 모든 인기 있는 도구에서 전부 지원하지는 않습니다.
+이를 선언하는 새로운 [단축 문법](#short-syntax)이 있습니다.
 
 ## 동기 {#motivation}
 
@@ -112,8 +112,6 @@ class Columns extends React.Component {
 ```
 
 `key` 또는 어트리뷰트를 지원하지 않는다는 것을 빼고 다른 엘리먼트처럼 `<></>`을 사용할 수 있습니다.
-
-주의: **[아직 많은 도구에서 이 단축 문법이 지원이 안 되기 때문에](/blog/2017/11/28/react-v16.2.0-fragment-support.html#support-for-fragment-syntax)** 그전까지는 명시적으로 `<React.Fragmemt>`를 사용해야 하는 것에 주의해야 합니다.
 
 ### key가 있는 Fragments {#keyed-fragments}
 

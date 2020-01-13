@@ -278,13 +278,13 @@ class OuterClickExample extends React.Component {
     return (
       <div ref={this.toggleContainer}>
         <button onClick={this.onClickHandler}>Select an option</button>
-        {this.state.isOpen ? (
+        {this.state.isOpen && (
           <ul>
             <li>Option 1</li>
             <li>Option 2</li>
             <li>Option 3</li>
           </ul>
-        ) : null}
+        )}
       </div>
     );
   }
@@ -343,13 +343,13 @@ class BlurExample extends React.Component {
                 aria-expanded={this.state.isOpen}>
           Select an option
         </button>
-        {this.state.isOpen ? (
+        {this.state.isOpen && (
           <ul>
             <li>Option 1</li>
             <li>Option 2</li>
             <li>Option 3</li>
           </ul>
-        ) : null}
+        )}
       </div>
     );
   }
@@ -460,7 +460,7 @@ Deque Systems에서는 자동으로 애플리케이션의 종단 간(end-to-end)
 일부 브라우저에서는 접근성 트리 안의 각 엘리먼트의 접근성 정보를 손쉽게 확인할 수 있습니다.
 
 - [Firefox에서 접근성 검사기를 사용하는 방법](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
-- [Chrome에서 접근성 검사기를 활성화하는 방법](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
+- [Chrome에서 접근성 검사기를 사용하는 방법](https://developers.google.com/web/tools/chrome-devtools/accessibility/reference#pane)
 - [OS X Safari에서 접근성 검사기를 사용하는 방법](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
 
 ### 스크린 리더 {#screen-readers}
