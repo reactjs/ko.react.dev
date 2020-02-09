@@ -8,7 +8,7 @@ prev: hooks-state.html
 
 *Hooks*는 React 16.8버전에 새로 추가되었습니다. Hook은 클래스 컴포넌트를 작성하지 않아도 state와 같은 특징들을 사용할 수 있습니다.
 
-*Effect Hook*을 사용하면 함수 컴포넌트에서 부작용(side effect)을 수행할 수 있습니다.
+*Effect Hook*을 사용하면 함수 컴포넌트에서 side effect를 수행할 수 있습니다.
 
 ```js{1,6-10}
 import React, { useState, useEffect } from 'react';
@@ -35,23 +35,23 @@ function Example() {
 
 위의 코드는 [이전 페이지의 카운터 예시](/docs/hooks-state.html)를 바탕으로 하지만, 문서의 타이틀을 클릭 횟수가 포함된 문장으로 표현할 수 있도록 새로운 기능을 더했습니다.
 
-데이터 가져오기, 구독(subscription) 설정하기, 수동으로 리액트 컴포넌트의 DOM을 수정하는 것까지 이 모든 것이 부작용(side effect)입니다. 이런 기능들(operations)을 부작용(혹은 effect)이라 부르는 것은 익숙하지 않을 수도 있지만, 아마도 이전에 만들었던 컴포넌트에서 위의 기능들을 구현해보았을 것입니다.
+데이터 가져오기, 구독(subscription) 설정하기, 수동으로 리액트 컴포넌트의 DOM을 수정하는 것까지 이 모든 것이 side effects입니다. 이런 기능들(operations)을 side effect(혹은 effect)라 부르는 것이 익숙하지 않을 수도 있지만, 아마도 이전에 만들었던 컴포넌트에서 위의 기능들을 구현해보았을 것입니다.
 
 >팁
 >
 >리액트의 class 생명주기 메서드에 친숙하다면, `useEffect` Hook을 `componentDidMount`와 `componentDidUpdate`, `componentWillUnmount`가 합쳐진 것으로 생각해도 좋습니다.
 
-리액트 컴포넌트에는 일반적으로 두 종류의 부작용(side effect)이 있습니다. 정리(clean-up)가 필요한 것과 그렇지 않은 것. 이 둘을 어떻게 구분해야 할지 자세하게 알아봅시다.
+리액트 컴포넌트에는 일반적으로 두 종류의 side effects가 있습니다. 정리(clean-up)가 필요한 것과 그렇지 않은 것. 이 둘을 어떻게 구분해야 할지 자세하게 알아봅시다.
 
 ## 정리(Clean-up)를 이용하지 않는 Effects {#effects-without-cleanup}
 
-**리액트가 DOM을 업데이트한 뒤 추가로 코드를 실행해야 하는 경우가 있습니다.** 네트워크 리퀘스트, DOM 수동 조작, 로깅 등은 정리(clean-up)가 필요 없는 경우들입니다. 이러한 예들은 실행 이후 신경 쓸 것이 없기 때문입니다. class와 hook이 이러한 부작용(side effect)을 어떻게 다르게 구현하는지 비교해봅시다.
+**리액트가 DOM을 업데이트한 뒤 추가로 코드를 실행해야 하는 경우가 있습니다.** 네트워크 리퀘스트, DOM 수동 조작, 로깅 등은 정리(clean-up)가 필요 없는 경우들입니다. 이러한 예들은 실행 이후 신경 쓸 것이 없기 때문입니다. class와 hook이 이러한 side effects를 어떻게 다르게 구현하는지 비교해봅시다.
 
 ### Class를 사용하는 예시 {#example-using-classes}
 
-리액트의 class 컴포넌트에서 `render` 메서드 그 자체는 부작용(side effect)을 발생시키지 않습니다. 이때는 아직 이른 시기로서 이러한 effect를 수행하는 것은 리액트가 DOM을 업데이트하고 난 *이후*입니다.
+리액트의 class 컴포넌트에서 `render` 메서드 그 자체는 side effect를 발생시키지 않습니다. 이때는 아직 이른 시기로서 이러한 effect를 수행하는 것은 리액트가 DOM을 업데이트하고 난 *이후*입니다.
 
-리액트 class에서 부작용(side effect)을 `componentDidMount`와 `componentDidUpdate`에 두는 것이 바로 이 때문입니다. 예시로 돌아와서 리액트가 DOM을 바꾸고 난 뒤 문서 타이틀을 업데이트하는 리액트 counter 클래스 컴포넌트를 봅시다.
+리액트 class에서 side effect를 `componentDidMount`와 `componentDidUpdate`에 두는 것이 바로 이 때문입니다. 예시로 돌아와서 리액트가 DOM을 바꾸고 난 뒤 문서 타이틀을 업데이트하는 리액트 counter 클래스 컴포넌트를 봅시다.
 
 ```js{9-15}
 class Example extends React.Component {
@@ -85,13 +85,13 @@ class Example extends React.Component {
 
 위 코드에서 **class 안의 두 개의 생명주기 메서드에 같은 코드가 중복되는 것에 주의합시다**
 
-이는 컴포넌트가 이제 막 마운트된 단계인지 아니면 업데이트되는 것인지에 상관없이 같은 부작용(side effect)을 수행해야 하기 때문입니다. 개념적으로 렌더링 이후에는 항상 같은 코드가 수행되기를 바라는 것이죠. 하지만 리액트 클래스 컴포넌트는 그러한 메서드를 가지고 있지 않습니다. 함수를 별개의 메서드로 뽑아낸다고 해도 여전히 두 장소에서 함수를 불러내야 합니다.
+이는 컴포넌트가 이제 막 마운트된 단계인지 아니면 업데이트되는 것인지에 상관없이 같은 side effect를 수행해야 하기 때문입니다. 개념적으로 렌더링 이후에는 항상 같은 코드가 수행되기를 바라는 것이죠. 하지만 리액트 클래스 컴포넌트는 그러한 메서드를 가지고 있지 않습니다. 함수를 별개의 메서드로 뽑아낸다고 해도 여전히 두 장소에서 함수를 불러내야 합니다.
 
-이제 `useEffect` Hook에서 같은 기능을 어떻게 구현하는지 봅시다.
+이제 `useEffect` Hook에서 같은 기능을 어떻게 구현하는지 보겠습니다.
 
 ### Hook을 이용하는 예시 {#example-using-hooks}
 
-아래의 코드는 위에서 이미 보았던 것이지만 이번엔 좀 더 자세히 들여다봅시다.
+아래의 코드는 위에서 이미 보았던 것이지만 이번에는 좀 더 자세히 살펴보겠습니다.
 
 ```js{1,6-8}
 import React, { useState, useEffect } from 'react';
@@ -114,11 +114,11 @@ function Example() {
 }
 ```
 
-**`useEffect`가 하는 일은 무엇인가요?** useEffect Hook을 이용하여 우리는 리액트에게 컴포넌트가 렌더링 이후에 어떤 일을 수행해야하는 지를 말합니다. 리액트는 우리가 넘긴 함수를 기억했다가(이 함수를 ‘effect’라고 부릅니다) DOM 업데이트를 수행한 이후에 불러낼 것입니다. 우리는 이 effect를 통해 문서 타이틀을 지정하지만 이 외에도 데이터를 가져오거나 다른 명령형(imperative) API를 불러내는 일도 할 수 있습니다. 
+**`useEffect`가 하는 일은 무엇일까요?** useEffect Hook을 이용하여 우리는 리액트에게 컴포넌트가 렌더링 이후에 어떤 일을 수행해야하는 지를 말합니다. 리액트는 우리가 넘긴 함수를 기억했다가(이 함수를 ‘effect’라고 부릅니다) DOM 업데이트를 수행한 이후에 불러낼 것입니다. 우리는 이 effect를 통해 문서 타이틀을 지정하지만 이 외에도 데이터를 가져오거나 다른 명령형(imperative) API를 불러내는 일도 할 수 있습니다. 
 
-**`useEffect`를 컴포넌트 안에서 불러내는 이유는 무엇인가요?** `useEffect`를 컴포넌트 내부에 둠으로써 effect를 통해 `count` state 변수(또는 그 어떤 prop에도)에 접근할 수 있게 됩니다. 함수 범위 안에 존재하기 때문에 특별한 API 없이도 값을 얻을 수 있는 것입니다. Hook은 자바스크립트의 클로저를 이용하여 리액트에 한정된 API를 고안하는 것보다 자바스크립트가 이미 가지고 있는 방법을 이용하여 문제를 해결합니다.
+**`useEffect`를 컴포넌트 안에서 불러내는 이유는 무엇일까요?** `useEffect`를 컴포넌트 내부에 둠으로써 effect를 통해 `count` state 변수(또는 그 어떤 prop에도)에 접근할 수 있게 됩니다. 함수 범위 안에 존재하기 때문에 특별한 API 없이도 값을 얻을 수 있는 것입니다. Hook은 자바스크립트의 클로저를 이용하여 리액트에 한정된 API를 고안하는 것보다 자바스크립트가 이미 가지고 있는 방법을 이용하여 문제를 해결합니다.
 
-**`useEffect`는 렌더링 이후에 매번 수행되는 건가요?** 네, 기본적으로 첫번째 렌더링*과* 이후의 모든 업데이트에서 수행됩니다.(나중에 [effect를 필요에 맞게 수정하는 방법](#tip-optimizing-performance-by-skipping-effects)에 대해 다룰 것입니다.) 마운팅과 업데이트라는 방식으로 생각하는 대신 effect를 렌더링 이후에 발생하는 것으로 생각하는 것이 더 쉬울 것입니다. 리액트는 effect가 수행되는 시점에 이미 DOM이 업데이트되었음을 보장합니다.
+**`useEffect`는 렌더링 이후에 매번 수행되는 걸까요?** 네, 기본적으로 첫번째 렌더링*과* 이후의 모든 업데이트에서 수행됩니다.(나중에 [effect를 필요에 맞게 수정하는 방법](#tip-optimizing-performance-by-skipping-effects)에 대해 다룰 것입니다.) 마운팅과 업데이트라는 방식으로 생각하는 대신 effect를 렌더링 이후에 발생하는 것으로 생각하는 것이 더 쉬울 것입니다. 리액트는 effect가 수행되는 시점에 이미 DOM이 업데이트되었음을 보장합니다.
 
 ### 상세한 설명 {#detailed-explanation}
 
@@ -140,15 +140,15 @@ function Example() {
 
 >팁
 >
->`componentDidMount`나 `componentDidUpdate`와는 달리 `useEffect`에서 사용되는 effect는 브라우저에서 화면이 업데이트되는 것을 방해하지 않습니다. 애플리케이션이 좀 더 반응형으로 보일 수 있게 하는 부분입니다. 대부분의 effect는 동기적 실행이 필요없습니다. 동기적 실행이 필요한 드문 경우들(레이아웃의 계산과 같은)은 `useEffect`과 동일한 [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) Hook을 사용하면 됩니다.
+>`componentDidMount` 혹은 `componentDidUpdate`와는 달리 `useEffect`에서 사용되는 effect는 브라우저가 화면을 업데이트되는 것을 차단하지 않습니다. 이를 통해 애플리케이션의 반응성을 향상시켜줍니다. 대부분의 effect들은 동기적으로 실행될 필요가 없습니다. 흔하지는 않지만 (레이아웃의 측정과 같은) 동기적 실행이 필요한 경우에는 `useEffect`와 동일한 API를 사용하는 [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect)라는 별도의 Hook이 존재합니다.
 
 ## 정리(clean-up)를 이용하는 Effects {#effects-with-cleanup}
 
-위에서 정리(clean-up)가 필요하지 않은 부작용(side effect)을 보았지만 정리(clean-up)가 필요한 effect도 있습니다. 외부 데이터에 **구독(subscription)을 설정해야하는 경우**를 생각해봅시다. 이런 경우에 메모리 누수가 발생하지 않도록 정리(clean-up)하는 것은 매우 중요합니다. class와 Hook을 사용하는 두 경우를 비교해봅시다.
+위에서 정리(clean-up)가 필요하지 않은 side effect를 보았지만 정리(clean-up)가 필요한 effect도 있습니다. 외부 데이터에 **구독(subscription)을 설정해야하는 경우**를 생각해보겠습니다. 이런 경우에 메모리 누수가 발생하지 않도록 정리(clean-up)하는 것은 매우 중요합니다. class와 Hook을 사용하는 두 경우를 비교해보겠습니다.
 
 ### Class를 사용하는 예시 {#example-using-classes-1}
 
-리액트 class에서는 흔히 `componentDidMount`에 구독(subscription)을 설정한 뒤 `componentWillUnmount`에서 이를 정리(clean-up)합니다. 친구의 온라인 상태를 구독할 수 있는 ChatAPI 모듈의 예를 들어봅시다. 다음은 class를 이용하여 상태를 구독(subscribe)하고 보여주는 코드입니다.
+리액트 class에서는 흔히 `componentDidMount`에 구독(subscription)을 설정한 뒤 `componentWillUnmount`에서 이를 정리(clean-up)합니다. 친구의 온라인 상태를 구독할 수 있는 ChatAPI 모듈의 예를 들어보겠습니다. 다음은 class를 이용하여 상태를 구독(subscribe)하고 보여주는 코드입니다.
 
 ```js{8-26}
 class FriendStatus extends React.Component {
@@ -234,7 +234,7 @@ function FriendStatus(props) {
 
 ## 요약 {#recap}
 
-`useEffect`가 컴포넌트의 렌더링 이후에 다양한 부작용(side effect)을 표현할 수 있음을 위에서 배웠습니다. effect에 정리(clean-up)가 필요한 경우에는 함수를 반환합니다.
+`useEffect`가 컴포넌트의 렌더링 이후에 다양한 side effects를 표현할 수 있음을 위에서 배웠습니다. effect에 정리(clean-up)가 필요한 경우에는 함수를 반환합니다.
 
 ```js
   useEffect(() => {
@@ -269,9 +269,9 @@ function FriendStatus(props) {
 
 이제 숙련된 리액트 사용자들이라면 보다 궁금해 할 `useEffect`에 대해 좀 더 깊이 알아 볼 것입니다. 이 부분은 지금 바로 읽어야하는 것은 아니며, 언제라도 effect hook의 자세한 이해가 필요할 때 돌아와서 읽어도 좋습니다.
 
-### 팁: 관심사를 구분하려고 한다면 Multiple Effect를 사용하라{#tip-use-multiple-effects-to-separate-concerns}
+### 팁: 관심사를 구분하려고 한다면 Multiple Effect를 사용합니다{#tip-use-multiple-effects-to-separate-concerns}
 
-Hook이 [탄생된 동기](/docs/hooks-intro.html#complex-components-become-hard-to-understand)가 된 문제 중에 하나가 생명주기 class 메서드가 관련이 없는 로직들은 모아놓고, 관련이 있는 로직들은 여러개의 메서드에 나누어 놓는 경우가 자주 있다는 것입니다. 이전의 예시에서도 보았던 카운터와 친구의 상태 지표 로직이 결합된 컴포넌트를 봅시다.
+Hook이 [탄생된 동기](/docs/hooks-intro.html#complex-components-become-hard-to-understand)가 된 문제 중에 하나가 생명주기 class 메서드가 관련이 없는 로직들은 모아놓고, 관련이 있는 로직들은 여러개의 메서드에 나누어 놓는 경우가 자주 있다는 것입니다. 이전의 예시에서도 보았던 카운터와 친구의 상태 지표 로직이 결합된 컴포넌트를 보겠습니다.
 
 ```js
 class FriendStatusWithCounter extends React.Component {
@@ -371,12 +371,12 @@ class에 익숙하다면 왜 effect 정리(clean-up)가 마운트 해제되는 �
   }
 
   componentDidUpdate(prevProps) {
-    // 이전 friend.id에서 구독을 해지한다.
+    // 이전 friend.id에서 구독을 해지합니다.
     ChatAPI.unsubscribeFromFriendStatus(
       prevProps.friend.id,
       this.handleStatusChange
     );
-    // 다음 friend.id를 구독한다
+    // 다음 friend.id를 구독합니다.
     ChatAPI.subscribeToFriendStatus(
       this.props.friend.id,
       this.handleStatusChange
@@ -431,7 +431,7 @@ ChatAPI.unsubscribeFromFriendStatus(300, handleStatusChange); // 마지막 effec
 
 ### 팁: Effect를 건너뛰어 성능 최적화하기 {#tip-optimizing-performance-by-skipping-effects}
 
-모든 렌더링 이후에 effect를 정리(clean-up)하거나 적용하는 것이 때때로 퍼포먼스 이슈(성능저하)를 발생시키는 경우도 있습니다. 클래스 컴포넌트의 경우에는 `componentDidUpdate`에서 `prevProps`나 `prevState`와의 비교를 통해 이러한 문제를 해결할 수 있습니다.
+모든 렌더링 이후에 effect를 정리(clean-up)하거나 적용하는 것이 때때로 성능저하를 발생시키는 경우도 있습니다. 클래스 컴포넌트의 경우에는 `componentDidUpdate`에서 `prevProps`나 `prevState`와의 비교를 통해 이러한 문제를 해결할 수 있습니다.
 
 ```js
 componentDidUpdate(prevProps, prevState) {
@@ -468,19 +468,19 @@ useEffect(() => {
 }, [props.friend.id]); // props.friend.id가 바뀔 때에만 재구독합니다.
 ```
 
-두번째 인수는 장차 build-time 변환에 의해 자동으로 더해질 수도 있습니다.
+두 번째 인자는 빌드 시 변환에 의해 자동으로 추가될 수도 있습니다.
 
 >주의
 >
->이 최적화 방법을 사용한다면 배열이 **컴포넌트 범위 내에서 바뀌는 값들과 effect에 의해 사용되는 값들을 모두 포함하는 것**을 잊지 말아주세요. 그렇지 않으면 현재 값이 아닌 이전의 렌더링 때의 값을 참고하게 됩니다. 이에 대해서는 [함수를 다루는 방법](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)과 [의존성 값 배열이 자주 바뀔 때는 어떻게 해야하는가](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)에서 더 자세히 알아볼 수 있습니다.
+>이 최적화 방법을 사용한다면 배열이 **컴포넌트 범위 내에서 바뀌는 값들과 effect에 의해 사용되는 값들을 모두 포함하는 것**을 기억해주세요. 그렇지 않으면 현재 값이 아닌 이전의 렌더링 때의 값을 참고하게 됩니다. 이에 대해서는 [함수를 다루는 방법](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)과 [의존성 배열이 자주 바뀔 때는 어떻게 해야하는가](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)에서 더 자세히 알아볼 수 있습니다.
 >
->effect를 실행시키고 이를 정리(clean-up)하는 과정을 (마운트와 마운트 해제 시에)딱 한번씩만 실행시키고 싶다면, 빈 배열(`[]`)을 두번째 인수로 넘기면 됩니다. 이렇게 함으로써 리액트로 하여금 여러분의 effect가 prop이나 state의 *그 어떤* 값에도 의존하지 않으며 따라서 재실행되어야할 필요가 없음을 알게 하는 것입니다. 이는 의존성 값 배열의 작동 방법을 그대로 따라서 사용하는 것일 뿐이며 특별한 방법인 것은 아닙니다.
+>effect를 실행시키고 이를 정리(clean-up)하는 과정을 (마운트와 마운트 해제 시에)딱 한번씩만 실행시키고 싶다면, 빈 배열(`[]`)을 두번째 인수로 넘기면 됩니다. 이렇게 함으로써 리액트로 하여금 여러분의 effect가 prop이나 state의 *그 어떤* 값에도 의존하지 않으며 따라서 재실행되어야할 필요가 없음을 알게 하는 것입니다. 이는 의존성 배열의 작동 방법을 그대로 따라서 사용하는 것일 뿐이며 특별한 방법인 것은 아닙니다.
 >
 >빈 배열(`[]`)을 넘기게 되면, effect 안의 prop과 state는 초기값을 유지하게 됩니다. 빈 배열(`[]`)을 두번째 인수로 넘기는 것이 기존에 사용하던 `componentDidMount`와 `componentWillUnmount` 모델에 더 가깝지만, effect의 잦은 재실행을 피할 수 있는 [더 나은](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [해결방법](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)이 있습니다. 또한 리액트는 브라우저가 다 그려질 때까지 `useEffect`의 실행을 지연시키기 떄문에 추가적인 작업을 더하는 것이 큰 문제가 되지는 않습니다.
 >
 >[`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 규칙을 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 패키지에 포함시키는 것을 추천합니다. 이 패키지는 의존성이 바르지 않게 지정되었을 때 경고하고 수정하도록 알려줍니다.
 
-## 다음 순서 {#next-steps}
+## 다음 단계 {#next-steps}
 
 여기까지 오느라 수고가 많으셨습니다. 긴 글이지만 끝까지 읽으면서 많은 궁금증이 해결되었기를 바랍니다. 지금까지 배운 State Hook과 Effect Hook을 결합하면 *많은 것*을 할 수 있습니다. class를 이용하는 대부분의 경우를 구현할 수 있습니다. 구현이 되지 않는 경우에는 [additional Hooks](/docs/hooks-reference.html)이 도움이 될 것입니다.
 
