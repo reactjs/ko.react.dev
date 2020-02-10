@@ -161,7 +161,11 @@ class Parent extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 함수 컴포넌트에 `ref`를 사용할 수 있도록 하려면, [`forwardRef`](https://reactjs.org/docs/forwarding-refs.html) (높은 확률로 [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)와 함께)를 사용하거나 클래스 컴포넌트로 변경할 수 있습니다.
+=======
+If you want to allow people to take a `ref` to your function component, you can use [`forwardRef`](/docs/forwarding-refs.html) (possibly in conjunction with [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)), or you can convert the component to a class.
+>>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 다만, DOM 엘리먼트나 클래스 컴포넌트의 인스턴스에 접근하기 위해 **`ref` 어트리뷰트를 함수 컴포넌트에서 사용하는 것**은 됩니다.
 
