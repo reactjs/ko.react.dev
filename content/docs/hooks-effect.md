@@ -114,7 +114,7 @@ function Example() {
 }
 ```
 
-**`useEffect`가 하는 일은 무엇일까요?** useEffect Hook을 이용하여 우리는 리액트에게 컴포넌트가 렌더링 이후에 어떤 일을 수행해야하는 지를 말합니다. 리액트는 우리가 넘긴 함수를 기억했다가(이 함수를 ‘effect’라고 부릅니다) DOM 업데이트를 수행한 이후에 불러낼 것입니다. 우리는 이 effect를 통해 문서 타이틀을 지정하지만 이 외에도 데이터를 가져오거나 다른 명령형(imperative) API를 불러내는 일도 할 수 있습니다. 
+**`useEffect`가 하는 일은 무엇일까요?** useEffect Hook을 이용하여 우리는 리액트에게 컴포넌트가 렌더링 이후에 어떤 일을 수행해야하는 지를 말합니다. 리액트는 우리가 넘긴 함수를 기억했다가(이 함수를 ‘effect’라고 부릅니다) DOM 업데이트를 수행한 이후에 불러낼 것입니다. 위의 경우에는 effect를 통해 문서 타이틀을 지정하지만, 이 외에도 데이터를 가져오거나 다른 명령형(imperative) API를 불러내는 일도 할 수 있습니다. 
 
 **`useEffect`를 컴포넌트 안에서 불러내는 이유는 무엇일까요?** `useEffect`를 컴포넌트 내부에 둠으로써 effect를 통해 `count` state 변수(또는 그 어떤 prop에도)에 접근할 수 있게 됩니다. 함수 범위 안에 존재하기 때문에 특별한 API 없이도 값을 얻을 수 있는 것입니다. Hook은 자바스크립트의 클로저를 이용하여 리액트에 한정된 API를 고안하는 것보다 자바스크립트가 이미 가지고 있는 방법을 이용하여 문제를 해결합니다.
 
@@ -134,17 +134,17 @@ function Example() {
 }
 ```
 
-`count` state 변수를 선언한 뒤 리액트에게 effect를 사용함을 말하고 있습니다. `useEffect` Hook에 함수를 전달하고 있는데 이 함수가 바로 effect입니다. 이 effect 내부에서 `document.title`이라는 브라우저 API를 이용하여 문서 타이틀을 지정합니다. 같은 함수 내부에 있기 때문에 최신의 `count`를 바로 얻을 수 있습니다. 컴포넌트를 렌더링할 때 리액트는 우리가 이용한 effect를 기억하였다가 DOM을 업데이트한 이후에 실행합니다. 이는 맨 첫번째 렌더링은 물론 그 이후의 모든 렌더링에 똑같이 적용됩니다. 
+`count` state 변수를 선언한 뒤 리액트에게 effect를 사용함을 말하고 있습니다. `useEffect` Hook에 함수를 전달하고 있는데 이 함수가 바로 effect입니다. 이 effect 내부에서 `document.title`이라는 브라우저 API를 이용하여 문서 타이틀을 지정합니다. 같은 함수 내부에 있기 때문에 최신의 `count`를 바로 얻을 수 있습니다. 컴포넌트를 렌더링할 때 리액트는 우리가 이용한 effect를 기억하였다가 DOM을 업데이트한 이후에 실행합니다. 이는 맨 첫 번째 렌더링은 물론 그 이후의 모든 렌더링에 똑같이 적용됩니다. 
 
-숙련된 자바스크립트 개발자라면 `useEffect`에 전달된 함수가 모든 렌더링에서 다르다는 것을 알아챘을 지도 모릅니다. 이는 의도된 것으로서, `count` 값이 제대로 업데이트 되는지에 대한 걱정 없이 effect 내부에서 그 값을 읽을 수 있게 하는 부분이기도 합니다. 리렌더링하는 때마다 모두 이전과 _다른_ effect로 교체하여 전달합니다. 이 점이 렌더링의 결과의 한 부분이 되게 만드는 점인데, 각각의 effect는 특정한 렌더링에 속합니다. [이 페이지의 뒷부분](#explanation-why-effects-run-on-each-update)에서 이것이 왜 유용한지에 대해서 더 자세히 다룰 것입니다.
+숙련된 자바스크립트 개발자라면 `useEffect`에 전달된 함수가 모든 렌더링에서 다르다는 것을 알아챘을지도 모릅니다. 이는 의도된 것으로서, `count` 값이 제대로 업데이트 되는지에 대한 걱정 없이 effect 내부에서 그 값을 읽을 수 있게 하는 부분이기도 합니다. 리렌더링하는 때마다 모두 이전과 _다른_ effect로 교체하여 전달합니다. 이 점이 렌더링의 결과의 한 부분이 되게 만드는 점인데, 각각의 effect는 특정한 렌더링에 속합니다. [이 페이지의 뒷부분](#explanation-why-effects-run-on-each-update)에서 이것이 왜 유용한지에 대해서 더 자세히 다룰 것입니다.
 
 >팁
 >
->`componentDidMount` 혹은 `componentDidUpdate`와는 달리 `useEffect`에서 사용되는 effect는 브라우저가 화면을 업데이트되는 것을 차단하지 않습니다. 이를 통해 애플리케이션의 반응성을 향상시켜줍니다. 대부분의 effect들은 동기적으로 실행될 필요가 없습니다. 흔하지는 않지만 (레이아웃의 측정과 같은) 동기적 실행이 필요한 경우에는 `useEffect`와 동일한 API를 사용하는 [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect)라는 별도의 Hook이 존재합니다.
+>`componentDidMount` 혹은 `componentDidUpdate`와는 달리 `useEffect`에서 사용되는 effect는 브라우저가 화면을 업데이트하는 것을 차단하지 않습니다. 이를 통해 애플리케이션의 반응성을 향상해줍니다. 대부분의 effect는 동기적으로 실행될 필요가 없습니다. 흔하지는 않지만 (레이아웃의 측정과 같은) 동기적 실행이 필요한 경우에는 `useEffect`와 동일한 API를 사용하는 [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect)라는 별도의 Hook이 존재합니다.
 
 ## 정리(clean-up)를 이용하는 Effects {#effects-with-cleanup}
 
-위에서 정리(clean-up)가 필요하지 않은 side effect를 보았지만 정리(clean-up)가 필요한 effect도 있습니다. 외부 데이터에 **구독(subscription)을 설정해야하는 경우**를 생각해보겠습니다. 이런 경우에 메모리 누수가 발생하지 않도록 정리(clean-up)하는 것은 매우 중요합니다. class와 Hook을 사용하는 두 경우를 비교해보겠습니다.
+위에서 정리(clean-up)가 필요하지 않은 side effect를 보았지만, 정리(clean-up)가 필요한 effect도 있습니다. 외부 데이터에 **구독(subscription)을 설정해야 하는 경우**를 생각해보겠습니다. 이런 경우에 메모리 누수가 발생하지 않도록 정리(clean-up)하는 것은 매우 중요합니다. class와 Hook을 사용하는 두 경우를 비교해보겠습니다.
 
 ### Class를 사용하는 예시 {#example-using-classes-1}
 
@@ -187,7 +187,7 @@ class FriendStatus extends React.Component {
 }
 ```
 
-`componentDidMount`와 `componentWillUnmount`가 어떻게 대칭을 이루고 있는지를 봅시다. 두개의 메서드 내에 개념상 똑같은 effect에 대한 코드가 있음에도 불구하고 생명주기 메서드는 이를 분리하게 만듭니다.
+`componentDidMount`와 `componentWillUnmount`가 어떻게 대칭을 이루고 있는지를 봅시다. 두 개의 메서드 내에 개념상 똑같은 effect에 대한 코드가 있음에도 불구하고 생명주기 메서드는 이를 분리하게 만듭니다.
 
 >주의
 >
@@ -224,13 +224,13 @@ function FriendStatus(props) {
 }
 ```
 
-**effect에서 함수를 반환하는 이유는 무엇일까요?** 이는 effect를 위한 추가적인 정리(clean-up) 매커니즘입니다. 모든 effect는 정리를 위한 함수를 반환할 수 있습니다. 이 점이 구독(subscription)의 추가와 제거를 위한 로직을 가까이 묶어둘 수 있게 합니다. 구독(subscription)의 추가와 제거가 모두 하나의 effect를 구성하는 것입니다.
+**effect에서 함수를 반환하는 이유는 무엇일까요?** 이는 effect를 위한 추가적인 정리(clean-up) 메커니즘입니다. 모든 effect는 정리를 위한 함수를 반환할 수 있습니다. 이 점이 구독(subscription)의 추가와 제거를 위한 로직을 가까이 묶어둘 수 있게 합니다. 구독(subscription)의 추가와 제거가 모두 하나의 effect를 구성하는 것입니다.
 
-**리액트가 effect를 정리(clean-up)하는 시점은 정확히 언제일까요?** 리액트는 컴포넌트가 마운트 해제되는 때에 정리(clean-up)를 실행합니다. 하지만 위의 예시에서 보았듯이 effect는 한번이 아니라 렌더링이 실행되는 때마다 실행됩니다. 리액트가 다음 차례의 effect를 실행하기 전에 이전의 렌더링에서 파생된 effect 또한 정리하는 이유가 바로 이 때문입니다. 이것이 [버그를 방지하는 데에 어떻게 도움이 되는지](#explanation-why-effects-run-on-each-update) 그리고 [성능 저하 문제가 발생할 경우 effect를 건너뛰는 방법](#tip-optimizing-performance-by-skipping-effects)에 대해서 이 다음으로 논의해봅시다. 
+**리액트가 effect를 정리(clean-up)하는 시점은 정확히 언제일까요?** 리액트는 컴포넌트가 마운트 해제되는 때에 정리(clean-up)를 실행합니다. 하지만 위의 예시에서 보았듯이 effect는 한번이 아니라 렌더링이 실행되는 때마다 실행됩니다. 리액트가 다음 차례의 effect를 실행하기 전에 이전의 렌더링에서 파생된 effect 또한 정리하는 이유가 바로 이 때문입니다. 이것이 [버그를 방지하는 데에 어떻게 도움이 되는지](#explanation-why-effects-run-on-each-update) 그리고 [성능 저하 문제가 발생할 경우 effect를 건너뛰는 방법](#tip-optimizing-performance-by-skipping-effects)에 대해서 이다음으로 논의해봅시다. 
 
 >주의
 >
->effect에서 반드시 유명함수(named function)를 반환해야하는 것은 아닙니다. 목적을 분명히 하기 위해 `정리(clean-up)`라고 부르고있지만 화살표 함수를 반환하거나 다른 이름으로 불러도 무방합니다.
+>effect에서 반드시 유명함수(named function)를 반환해야 하는 것은 아닙니다. 목적을 분명히 하기 위해 `정리(clean-up)`라고 부르고 있지만 화살표 함수를 반환하거나 다른 이름으로 불러도 무방합니다.
 
 ## 요약 {#recap}
 
@@ -267,11 +267,11 @@ function FriendStatus(props) {
 
 ## effect를 이용하는 팁{#tips-for-using-effects}
 
-이제 숙련된 리액트 사용자들이라면 보다 궁금해 할 `useEffect`에 대해 좀 더 깊이 알아 볼 것입니다. 이 부분은 지금 바로 읽어야하는 것은 아니며, 언제라도 effect hook의 자세한 이해가 필요할 때 돌아와서 읽어도 좋습니다.
+이제 숙련된 리액트 사용자들이라면 보다 궁금해할 `useEffect`에 대해 좀 더 깊이 알아보겠습니다. 이 부분은 지금 바로 읽어야 하는 것은 아니며, 언제라도 effect hook의 자세한 이해가 필요할 때 돌아와서 읽어도 좋습니다.
 
 ### 팁: 관심사를 구분하려고 한다면 Multiple Effect를 사용합니다{#tip-use-multiple-effects-to-separate-concerns}
 
-Hook이 [탄생된 동기](/docs/hooks-intro.html#complex-components-become-hard-to-understand)가 된 문제 중에 하나가 생명주기 class 메서드가 관련이 없는 로직들은 모아놓고, 관련이 있는 로직들은 여러개의 메서드에 나누어 놓는 경우가 자주 있다는 것입니다. 이전의 예시에서도 보았던 카운터와 친구의 상태 지표 로직이 결합된 컴포넌트를 보겠습니다.
+Hook이 [탄생한 동기](/docs/hooks-intro.html#complex-components-become-hard-to-understand)가 된 문제 중의 하나가 생명주기 class 메서드가 관련이 없는 로직들은 모아놓고, 관련이 있는 로직들은 여러 개의 메서드에 나누어 놓는 경우가 자주 있다는 것입니다. 이전의 예시에서도 보았던 카운터와 친구의 상태 지표 로직을 결합한 컴포넌트를 보겠습니다.
 
 ```js
 class FriendStatusWithCounter extends React.Component {
@@ -334,7 +334,7 @@ function FriendStatusWithCounter(props) {
 }
 ```
 
-Hook을 이용하면 생명주기 메서드에 따라서가 아니라 **코드가 무엇을 하는 지에 따라** 나눌 수가 있습니다. 리액트는 컴포넌트에 사용된 *모든* effect를 지정된 순서에 맞춰 적용합니다.
+Hook을 이용하면 생명주기 메서드에 따라서가 아니라 **코드가 무엇을 하는지에 따라** 나눌 수가 있습니다. 리액트는 컴포넌트에 사용된 *모든* effect를 지정된 순서에 맞춰 적용합니다.
 
 ### 설명: effect가 업데이트 시마다 실행되는 이유 {#explanation-why-effects-run-on-each-update}
 
@@ -358,7 +358,7 @@ class에 익숙하다면 왜 effect 정리(clean-up)가 마운트 해제되는 �
   }
 ```
 
-**그런데 컴포넌트가 화면에 표시되어있는 동안 `friend` prop이 변한다면** 무슨 일이 일어날까요? 컴포넌트는 다른 친구의 온라인 상태를 계속 표시할 것입니다. 버그인거죠. 또한 마운트 해제가 일어날 동안에는 구독해지 호출이 다른 친구 ID를 사용하여 메모리 누수나 충돌이 발생할 수도 있습니다.
+**그런데 컴포넌트가 화면에 표시되어있는 동안 `friend` prop이 변한다면** 무슨 일이 일어날까요? 컴포넌트는 다른 친구의 온라인 상태를 계속 표시할 것입니다. 버그인 거죠. 또한 마운트 해제가 일어날 동안에는 구독 해지 호출이 다른 친구 ID를 사용하여 메모리 누수나 충돌이 발생할 수도 있습니다.
 
 클래스 컴포넌트에서는 이런 경우들을 다루기 위해 `componentDidUpdate`를 사용합니다.
 
@@ -409,7 +409,7 @@ function FriendStatus(props) {
 
 이 경우에는 버그에 시달리지 않습니다.(달리 바꾼 것도 없는데 말이죠.)
 
-`useEffect`가 *기본적으로* 업데이트를 다루기 때문에 더 이상 업데이트를 위한 특별한 코드는 필요가 없습니다. 다음의 effect를 적용시키 전에 이전의 effect는 정리(clean-up)를 합니다. 구독과 구독 해지 호출을 반복해서 만들어내는 컴포넌트를 통해 이를 가시화해봅시다.
+`useEffect`가 *기본적으로* 업데이트를 다루기 때문에 더는 업데이트를 위한 특별한 코드가 필요 없습니다. 다음의 effect를 적용하기 전에 이전의 effect는 정리(clean-up)합니다. 구독과 구독 해지 호출을 반복해서 만들어내는 컴포넌트를 통해 이를 가시화해봅시다.
 
 ```js
 // { friend: { id: 100 } } state을 사용하여 마운트합니다.
@@ -427,11 +427,11 @@ ChatAPI.subscribeToFriendStatus(300, handleStatusChange);     // 다음 effect�
 ChatAPI.unsubscribeFromFriendStatus(300, handleStatusChange); // 마지막 effect를 정리(clean-up)합니다.
 ```
 
-이러한 방식으로 동작하는 것이 일관성을 유지시켜주며 클래스 컴포넌트에서는 흔히 업데이트 로직을 빼먹으면서 발생할 수 있는 버그를 예방합니다.
+이러한 방식으로 동작하는 것이 일관성을 유지해주며 클래스 컴포넌트에서는 흔히 업데이트 로직을 빼먹으면서 발생할 수 있는 버그를 예방합니다.
 
 ### 팁: Effect를 건너뛰어 성능 최적화하기 {#tip-optimizing-performance-by-skipping-effects}
 
-모든 렌더링 이후에 effect를 정리(clean-up)하거나 적용하는 것이 때때로 성능저하를 발생시키는 경우도 있습니다. 클래스 컴포넌트의 경우에는 `componentDidUpdate`에서 `prevProps`나 `prevState`와의 비교를 통해 이러한 문제를 해결할 수 있습니다.
+모든 렌더링 이후에 effect를 정리(clean-up)하거나 적용하는 것이 때때로 성능 저하를 발생시키는 경우도 있습니다. 클래스 컴포넌트의 경우에는 `componentDidUpdate`에서 `prevProps`나 `prevState`와의 비교를 통해 이러한 문제를 해결할 수 있습니다.
 
 ```js
 componentDidUpdate(prevProps, prevState) {
@@ -441,17 +441,17 @@ componentDidUpdate(prevProps, prevState) {
 }
 ```
 
-이러한 요구조건은 흔하기 때문에 `useEffect` Hook API에 이미 내재되어 있습니다. 특정 값들이 리렌더링 시에 변경되지 않는다면 리액트로 하여금 effect를 *건너뛰도록* 할 수 있습니다. `useEffect`의 선택적 인수인 두번째 인수로 배열을 넘기면 됩니다.
+이러한 요구 조건은 흔하기 때문에 `useEffect` Hook API에 이미 내재하여 있습니다. 특정 값들이 리렌더링 시에 변경되지 않는다면 리액트로 하여금 effect를 *건너뛰도록* 할 수 있습니다. `useEffect`의 선택적 인수인 두 번째 인수로 배열을 넘기면 됩니다.
 
 ```js{3}
 useEffect(() => {
   document.title = `You clicked ${count} times`;
-}, [count]); // count가 바뀔 때에만 effect를 재실행합니다.
+}, [count]); // count가 바뀔 때만 effect를 재실행합니다.
 ```
 
-위의 예시에서 우리는 `[count]`를 두번째 인수로 넘깁니다. 이것이 의미하는 바는 다음과 같습니다. 만약 `count`가 `5`이고 컴포넌트가 리렌더링된 이후에도 여전히 `count`는 변함없이 `5`라면 리액트는 이전 렌더링 시의 값 `[5]`를 그 다음 렌더링 때의 `[5]`와 비교합니다. 배열 내의 모든 값이 같기 때문에(`5 === 5`) 리액트는 effect를 건너뛰게 됩니다. 이런식으로 최적화가 가능합니다.
+위의 예시에서 우리는 `[count]`를 두 번째 인수로 넘깁니다. 이것이 의미하는 바는 다음과 같습니다. 만약 `count`가 `5`이고 컴포넌트가 리렌더링된 이후에도 여전히 `count`는 변함없이 `5`라면 리액트는 이전 렌더링 시의 값 `[5]`를 그다음 렌더링 때의 `[5]`와 비교합니다. 배열 내의 모든 값이 같기 때문에(`5 === 5`) 리액트는 effect를 건너뛰게 됩니다. 이런 식으로 최적화가 가능합니다.
 
-`count`가 `6`으로 업데이트된 뒤에 렌더링을 하면 리액트는 이전에 렌더링된 값 `[5]`를 그 다음 렌더링 시의 `[6]`와 비교합니다. 이 때 `5 !== 6` 이기 때문에 리액트는 effect를 재실행합니다. 배열 내에 여러개의 값이 있다면 그 중의 단 하나만 다를지라도 리액트는 effect를 재실행합니다.
+`count`가 `6`으로 업데이트된 뒤에 렌더링하면 리액트는 이전에 렌더링된 값 `[5]`를 그다음 렌더링 시의 `[6]`와 비교합니다. 이때 `5 !== 6` 이기 때문에 리액트는 effect를 재실행합니다. 배열 내에 여러 개의 값이 있다면 그중의 단 하나만 다를지라도 리액트는 effect를 재실행합니다.
 
 이것은 정리(clean-up)를 사용하는 effect의 경우에도 동일하게 작용합니다.
 
@@ -465,25 +465,25 @@ useEffect(() => {
   return () => {
     ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
   };
-}, [props.friend.id]); // props.friend.id가 바뀔 때에만 재구독합니다.
+}, [props.friend.id]); // props.friend.id가 바뀔 때만 재구독합니다.
 ```
 
 두 번째 인자는 빌드 시 변환에 의해 자동으로 추가될 수도 있습니다.
 
 >주의
 >
->이 최적화 방법을 사용한다면 배열이 **컴포넌트 범위 내에서 바뀌는 값들과 effect에 의해 사용되는 값들을 모두 포함하는 것**을 기억해주세요. 그렇지 않으면 현재 값이 아닌 이전의 렌더링 때의 값을 참고하게 됩니다. 이에 대해서는 [함수를 다루는 방법](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)과 [의존성 배열이 자주 바뀔 때는 어떻게 해야하는가](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)에서 더 자세히 알아볼 수 있습니다.
+>이 최적화 방법을 사용한다면 배열이 **컴포넌트 범위 내에서 바뀌는 값들과 effect에 의해 사용되는 값들을 모두 포함하는 것**을 기억해주세요. 그렇지 않으면 현재 값이 아닌 이전의 렌더링 때의 값을 참고하게 됩니다. 이에 대해서는 [함수를 다루는 방법](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)과 [의존성 배열이 자주 바뀔 때는 어떻게 해야 하는가](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)에서 더 자세히 알아볼 수 있습니다.
 >
->effect를 실행시키고 이를 정리(clean-up)하는 과정을 (마운트와 마운트 해제 시에)딱 한번씩만 실행시키고 싶다면, 빈 배열(`[]`)을 두번째 인수로 넘기면 됩니다. 이렇게 함으로써 리액트로 하여금 여러분의 effect가 prop이나 state의 *그 어떤* 값에도 의존하지 않으며 따라서 재실행되어야할 필요가 없음을 알게 하는 것입니다. 이는 의존성 배열의 작동 방법을 그대로 따라서 사용하는 것일 뿐이며 특별한 방법인 것은 아닙니다.
+>effect를 실행하고 이를 정리(clean-up)하는 과정을 (마운트와 마운트 해제 시에)딱 한 번씩만 실행하고 싶다면, 빈 배열(`[]`)을 두 번째 인수로 넘기면 됩니다. 이렇게 함으로써 리액트로 하여금 여러분의 effect가 prop이나 state의 *그 어떤* 값에도 의존하지 않으며 따라서 재실행되어야 할 필요가 없음을 알게 하는 것입니다. 이는 의존성 배열의 작동 방법을 그대로 따라서 사용하는 것일 뿐이며 특별한 방법인 것은 아닙니다.
 >
->빈 배열(`[]`)을 넘기게 되면, effect 안의 prop과 state는 초기값을 유지하게 됩니다. 빈 배열(`[]`)을 두번째 인수로 넘기는 것이 기존에 사용하던 `componentDidMount`와 `componentWillUnmount` 모델에 더 가깝지만, effect의 잦은 재실행을 피할 수 있는 [더 나은](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [해결방법](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)이 있습니다. 또한 리액트는 브라우저가 다 그려질 때까지 `useEffect`의 실행을 지연시키기 떄문에 추가적인 작업을 더하는 것이 큰 문제가 되지는 않습니다.
+>빈 배열(`[]`)을 넘기게 되면, effect 안의 prop과 state는 초깃값을 유지하게 됩니다. 빈 배열(`[]`)을 두 번째 인수로 넘기는 것이 기존에 사용하던 `componentDidMount`와 `componentWillUnmount` 모델에 더 가깝지만, effect의 잦은 재실행을 피할 수 있는 [더 나은](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [해결방법](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)이 있습니다. 또한 리액트는 브라우저가 다 그려질 때까지 `useEffect`의 실행을 지연하기 때문에 추가적인 작업을 더하는 것이 큰 문제가 되지는 않습니다.
 >
->[`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 규칙을 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 패키지에 포함시키는 것을 추천합니다. 이 패키지는 의존성이 바르지 않게 지정되었을 때 경고하고 수정하도록 알려줍니다.
+>[`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 규칙을 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 패키지에 포함하는 것을 추천합니다. 이 패키지는 의존성이 바르지 않게 지정되었을 때 경고하고 수정하도록 알려줍니다.
 
 ## 다음 단계 {#next-steps}
 
-여기까지 오느라 수고가 많으셨습니다. 긴 글이지만 끝까지 읽으면서 많은 궁금증이 해결되었기를 바랍니다. 지금까지 배운 State Hook과 Effect Hook을 결합하면 *많은 것*을 할 수 있습니다. class를 이용하는 대부분의 경우를 구현할 수 있습니다. 구현이 되지 않는 경우에는 [additional Hooks](/docs/hooks-reference.html)이 도움이 될 것입니다.
+여기까지 오느라 수고가 많으셨습니다. 긴 글이지만 끝까지 읽으면서 많은 궁금증이 해결되었기를 바랍니다. 지금까지 배운 State Hook과 Effect Hook을 결합하면 *많은 것*을 할 수 있습니다. class를 이용하는 대부분의 경우를 구현할 수 있습니다. 구현되지 않는 경우에는 [additional Hooks](/docs/hooks-reference.html)이 도움이 될 것입니다.
 
-우리는 [동기](/docs/hooks-intro.html#motivation)에 서술 되어있는 문제들을 Hook이 어떻게 해결할 수 있는지 알아가고 있습니다. 어떻게 effect의 정리(clean-up)가 `componentDidUpdate`와 `componentWillUnmount`에서의 중복을 피하고, 관련있는 코드들을 한 곳에 모이게 하며 버그를 줄일 수 있게 도와주는지 알아보았습니다. 또한 effect를 그 목적에 따라 어떻게 구분하는지도 보았습니다. 이는 클래스 컴포넌트에서는 할 수 없는 일이었죠.
+우리는 [동기](/docs/hooks-intro.html#motivation)에 서술되어있는 문제들을 Hook이 어떻게 해결할 수 있는지 알아가고 있습니다. 어떻게 effect의 정리(clean-up)가 `componentDidUpdate`와 `componentWillUnmount`에서의 중복을 피하고, 관련 있는 코드들을 한곳에 모이게 하며 버그를 줄일 수 있게 도와주는지 알아보았습니다. 또한 effect를 그 목적에 따라 어떻게 구분하는지도 보았습니다. 이는 클래스 컴포넌트에서는 할 수 없는 일이었죠.
 
-지금 이 시점에서 여러분은 Hook이 어떻게 작동하는 것인지 궁금해하고 있을 것입니다. 어떻게 리액트는 리렌더링 시에 특정한 `useState`의 실행이 어떤 state 변수에 상응하는지 아는 것일까요? 어떻게 리액트는 이전과 그 다음 effect를 매 업데이트 때마다 "매치업하는(일치시키는)" 것일까요? **이에 대해서는 다음 장에서 Hook의 작동에 핵심적인 [Hook의 규칙](/docs/hooks-rules.html)을 통해서 배워볼 것입니다.**
+지금 이 시점에서 여러분은 Hook이 어떻게 작동하는 것인지 궁금해하고 있을 것입니다. 어떻게 리액트는 리렌더링 시에 특정한 `useState`의 실행이 어떤 state 변수에 상응하는지 아는 것일까요? 어떻게 리액트는 이전과 그다음 effect를 업데이트 때마다 "매치업하는(일치하는)" 것일까요? **이에 대해서는 다음 장에서 Hook의 작동에 핵심적인 [Hook의 규칙](/docs/hooks-rules.html)을 통해서 배워볼 것입니다.**
