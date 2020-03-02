@@ -99,9 +99,13 @@
     - id: events
       title: 합성 이벤트
     - id: test-utils
+<<<<<<< HEAD
       title: 테스트 유틸리티
     - id: shallow-renderer
       title: 얕은 렌더러
+=======
+      title: Test Utilities
+>>>>>>> 2ab1ca5007a37ca509863a212293f1c6b26d0afc
     - id: test-renderer
       title: 테스트 렌더러
     - id: javascript-environment-requirements
@@ -175,4 +179,8 @@
     - id: faq-versioning
       title: 버전 정책
     - id: faq-internals
+<<<<<<< HEAD
       title: 가상 DOM과 구현 세부사항
+=======
+      title: Virtual DOM and Internals
+>>>>>>> 2ab1ca5007a37ca509863a212293f1c6b26d0afc

@@ -70,6 +70,10 @@ React DOM은 해당 엘리먼트와 그 자식 엘리먼트를 이전의 엘리�
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 
+<<<<<<< HEAD
 매초 전체 UI를 다시 그리도록 엘리먼트를 만들었지만 React DOM은 내용이 변경된 텍스트 노드만 업데이트했습니다.
+=======
+Even though we create an element describing the whole UI tree on every tick, only the text node whose contents have changed gets updated by React DOM.
+>>>>>>> 2ab1ca5007a37ca509863a212293f1c6b26d0afc
 
 경험에 비추어 볼 때 특정 시점에 UI가 어떻게 보일지 고민하는 이런 접근법은 시간의 변화에 따라 UI가 어떻게 변화할지 고민하는 것보다 더 많은 수의 버그를 없앨 수 있습니다.
