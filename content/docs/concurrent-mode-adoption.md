@@ -80,7 +80,7 @@ ReactDOM.createRoot(
 >
 >`createRoot`와 같은 Concurrent 모드 API는 React의 실험 배포판에만 존재합니다.
 
-Concurrent 모드에서는 "unsafe"라고 [기존에 표시된](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html) 생명주기 메서드가 현재 React 버전에서보다도 더 많은 버그를 야기할 수 있습니다. 앱이 [Strict 모드](https://reactjs.org/docs/strict-mode.html)와 호환되기 전까지 Concurrent 모드를 시도하는 걸 권장하지 않습니다.
+Concurrent 모드에서는 "unsafe"라고 [기존에 표시된](/blog/2018/03/27/update-on-async-rendering.html) 생명주기 메서드가 현재 React 버전에서보다도 더 많은 버그를 야기할 수 있습니다. 앱이 [Strict 모드](/docs/strict-mode.html)와 호환되기 전까지 Concurrent 모드를 시도하는 걸 권장하지 않습니다.
 
 ## 무엇을 기대해야 할까요? {#what-to-expect}
 
