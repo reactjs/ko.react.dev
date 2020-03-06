@@ -140,7 +140,7 @@ class CustomTextInput extends React.Component {
 
 #### Ref와 함수 컴포넌트 {#refs-and-function-components}
 
-- **함수 컴포넌트는 인스턴스가 없기 때문에 함수 컴포넌트에 ref 어트리뷰트를 사용할 수 없습니다**.
+- 함수 컴포넌트는 인스턴스가 없기 때문에 **함수 컴포넌트에 ref 어트리뷰트를 사용할 수 없습니다**.
 
 ```javascript{1,8,13}
 function MyFunctionComponent() {
@@ -161,7 +161,7 @@ class Parent extends React.Component {
 }
 ```
 
-만약 ref가 필요하시다면, 생명주기 메서드나 state가 필요한 경우처럼 함수 컴포넌트를 클래스 컴포넌트로 변환시켜야 합니다.
+함수 컴포넌트에 `ref`를 사용할 수 있도록 하려면, [`forwardRef`](/docs/forwarding-refs.html) (높은 확률로 [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)와 함께)를 사용하거나 클래스 컴포넌트로 변경할 수 있습니다.
 
 다만, DOM 엘리먼트나 클래스 컴포넌트의 인스턴스에 접근하기 위해 **`ref` 어트리뷰트를 함수 컴포넌트에서 사용하는 것**은 됩니다.
 

@@ -130,7 +130,7 @@ Context 오브젝트에 포함된 React 컴포넌트인 Provider는 context를 �
 
 Provider 는 `value` prop를 받아서 이 값을 하위에 있는 컴포넌트에게 전달합니다. 값을 전달받을 수 있는 컴포넌트의 수에 제한은 없습니다. Provider 하위에 또 다른 Provider를 배치하는 것도 가능하며, 이 경우 하위 Provider의 값이 우선시됩니다.
 
-Provider 하위에서 context를 구독하는 모든 컴포넌트는 Provider의 `value` prop가 바뀔 때마다 다시 렌더링 됩니다. 이러한 전파는 `shouldComponentUpdate`의 영향을 받지 않기 때문에 중간에 있는 컴포넌트가 업데이트를 중지한다고 해도 트리 끝에 있는 컴포넌트까지 전달됩니다.
+Provider 하위에서 context를 구독하는 모든 컴포넌트는 Provider의 `value` prop가 바뀔 때마다 다시 렌더링 됩니다. Provider로부터 하위 consumer([`.contextType`](#classcontexttype)와 [`useContext`](/docs/hooks-reference.html#usecontext)을 포함한)로의 전파는 `shouldComponentUpdate` 메서드가 적용되지 않으므로, 상위 컴포넌트가 업데이트를 건너 뛰더라도 consumer가 업데이트됩니다.
 
 context 값의 바뀌었는지 여부는 [`Object.is`](//developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is#설명)와 동일한 알고리즘을 사용해 이전 값과 새로운 값을 비교해 측정됩니다.
 
@@ -193,7 +193,7 @@ Context.Consumer의 자식은 [함수](/docs/render-props.html#using-props-other
 
 > 주의
 >
->함수를 자식으로 받는 패턴에 대해서는 [render props](/docs/render-props.html)을 참조하세요.
+> 함수를 자식으로 받는 패턴에 대해서는 [render props](/docs/render-props.html)을 참조하세요.
 
 ### `Context.displayName` {#contextdisplayname}
 

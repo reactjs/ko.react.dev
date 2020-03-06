@@ -88,9 +88,9 @@ class MyComponent extends React.Component {
 
 렌더링 단계 생명주기 메서드는 클래스 컴포넌트의 메서드를 포함해 다음과 같습니다.
 * `constructor`
-* `componentWillMount`
-* `componentWillReceiveProps`
-* `componentWillUpdate`
+* `componentWillMount` (or `UNSAFE_componentWillMount`)
+* `componentWillReceiveProps` (or `UNSAFE_componentWillReceiveProps`)
+* `componentWillUpdate` (or `UNSAFE_componentWillUpdate`)
 * `getDerivedStateFromProps`
 * `shouldComponentUpdate`
 * `render`
