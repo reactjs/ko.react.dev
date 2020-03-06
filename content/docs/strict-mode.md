@@ -33,7 +33,7 @@ Strict 모드가 활성화되면, React는 안전하지 않은 생명주기 메�
 
 ![](../images/blog/strict-mode-unsafe-lifecycles-warning.png)
 
-Strict 모드에 의해 발견된 문제들을 해결한다면, 향후 릴리즈되는 React에서 비동기 렌더링의 이점을 얻을 수 있을 것입니다.
+Strict 모드에 의해 발견된 문제들을 해결한다면, 향후 릴리즈되는 React에서 concurrent 렌더링의 이점을 얻을 수 있을 것입니다.
 
 ### 레거시 문자열 ref 사용에 대한 경고 {#warning-about-legacy-string-ref-api-usage}
 
@@ -84,7 +84,7 @@ class MyComponent extends React.Component {
 * **렌더링** 단계는 특정 환경(예를 들어, DOM과 같이)에 어떤 변화가 필요한 지 결정하는 단계입니다. 이 과정에서 React는 `render`를 호출하여 이전 렌더와 결과값을 비교합니다.
 * **커밋** 단계는 React가 변경 사항을 반영하는 단계입니다(React DOM의 경우 React가 DOM 노드를 추가, 변경 및 제거하는 단계를 말합니다). 이 단계에서 React는 `componentDidMount` 나 `componentDidUpdate` 와 같은 생명주기 메서드를 호출합니다.
 
-커밋 단계는 일반적으로 매우 빠르지만, 렌더링 단계는 느릴 수 있습니다. 이로 인해, 곧 추가될 비동기 모드(아직 기본적으로는 비활성화됨)는 렌더링 작업을 더 작은 단위로 나누고, 작업을 중지했다 재개하는 방식으로 브라우저가 멈추는 것을 피합니다. 즉, React는 커밋하기 전에 렌더링 단계의 생명주기 메서드를 여러 번 호출하거나 아예 커밋을 하지 않을 수도(에러 혹은 우선순위에 따른 작업 중단) 있습니다.
+커밋 단계는 일반적으로 매우 빠르지만, 렌더링 단계는 느릴 수 있습니다. 이로 인해, 곧 추가될 concurrent 모드(아직 기본적으로는 비활성화됨)는 렌더링 작업을 더 작은 단위로 나누고, 작업을 중지했다 재개하는 방식으로 브라우저가 멈추는 것을 피합니다. 즉, React는 커밋하기 전에 렌더링 단계의 생명주기 메서드를 여러 번 호출하거나 아예 커밋을 하지 않을 수도(에러 혹은 우선순위에 따른 작업 중단) 있습니다.
 
 렌더링 단계 생명주기 메서드는 클래스 컴포넌트의 메서드를 포함해 다음과 같습니다.
 * `constructor`
@@ -122,4 +122,4 @@ Strict 모드가 자동으로 부작용을 찾아주는 것은 불가능합니�
 
 ![](../images/blog/warn-legacy-context-in-strict-mode.png)
 
-[새로운 context API 문서](/docs/context.html)를 참조하여 새로운 버전으로 마이그레이션하시길 바랍니다. 
+[새로운 context API 문서](/docs/context.html)를 참조하여 새로운 버전으로 마이그레이션하시길 바랍니다.
