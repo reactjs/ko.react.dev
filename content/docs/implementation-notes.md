@@ -1,6 +1,6 @@
 ---
 id: implementation-notes
-title: Implementation Notes
+title: 구현 참고사항
 layout: contributing
 permalink: docs/implementation-notes.html
 prev: codebase-overview.html
@@ -9,10 +9,9 @@ redirect_from:
   - "contributing/implementation-notes.html"
 ---
 
-이 부분은  [stack reconciler](/docs/codebase-overview.html#stack-reconciler)에 대한 구현 참고사항입니다.
+이 부분은 [스택 재조정자(reconciler)](/docs/codebase-overview.html#stack-reconciler)에 대한 구현 참고사항입니다.
 
-이는 매우 기술적이고 공개된 React API뿐만 아니라 어떻게 코어, 렌더러, 재조정자(reconciler)로 나누어지는지에 대해 깊은 이해가 필요합니다. 아직 React 코드 베이스에 친숙하지 않다면,
-먼저 [the codebase overview](/docs/codebase-overview.html)를 읽기를 바랍니다.
+이는 매우 기술적이고 공개된 React API뿐만 아니라 어떻게 코어, 렌더러, 재조정자로 나누어지는지에 대해 깊은 이해가 필요합니다. 아직 React 코드 베이스에 친숙하지 않다면, 먼저 [the codebase overview](/docs/codebase-overview.html)를 읽기를 바랍니다.
 
 이는 [React 컴포넌트와 인스턴스 그리고 엘리먼트 사이의 차이점](/blog/2015/12/18/react-components-elements-and-instances.html)을 이해한다고 가정합니다.
 
@@ -21,8 +20,8 @@ redirect_from:
 ### 비디오: React 처음부터 만들기 {#video-building-react-from-scratch}
 
 [Paul O'Shannessy](https://twitter.com/zpao)는 이 문서에 크게 영감을 주었던 [building React from scratch](https://www.youtube.com/watch?v=_MAD4Oly9yg)에 대해 이야기 하였습니다.
-이 문서와 그의 말은 모두 현실 코드베이스의 단순화했기 때문에 여러분은 
-두 가지 모두 친숙해 짐으로써 더 깊은 이해를 가질 것입니다.
+
+이 문서와 그의 말은 모두 현실 코드베이스의 단순화했기 때문에 여러분은 두 가지 모두 친숙해 짐으로써 더 깊은 이해를 가질 것입니다.
 
 ### 개요 {#overview}
 
@@ -47,7 +46,7 @@ console.log(<App />);
 
 `App`이 함수라면, 재조정자는 렌더링 엘리먼트를 가져오기 위해 `App(props)`를 호출합니다.
 
-`App`이 class면, 컨사일러는 `App`을 `new App(props)`로 인스턴스화 하고, `componentWillMount()` 생명주기 메서드를 호출한 후, `render()` 메서드를 호출하여 랜더링 엘리먼트를 가져오게 할 것입니다.
+`App`이 class면, 재조정자는 `App`을 `new App(props)`로 인스턴스화 하고, `componentWillMount()` 생명주기 메서드를 호출한 후, `render()` 메서드를 호출하여 랜더링 엘리먼트를 가져오게 할 것입니다.
 
 어느 경우든, 재조정자는 `App`이 렌더링 되는 엘리먼트를 학습하게 됩니다.
 
@@ -104,10 +103,9 @@ var node = mount(<App />);
 rootEl.appendChild(node);
 ```
 
->**Note:**
+>**주의**
 >
->이는 의사코드입니다. 실제 구현과 비슷하지 않습니다. 우리가 이 과정을
-언제 멈출 지 결정을 한 적이 없기 때문에 스택 오버플로우 또한 야기할 수 있습니다.
+>이는 의사코드입니다. 실제 구현과 비슷하지 않습니다. 우리가 이 과정을 언제 멈출 지 결정을 한 적이 없기 때문에 스택 오버플로우 또한 야기할 수 있습니다.
 
 위의 예에서 몇가지 핵심 아이디어를 요약해 봅시다.
 
@@ -136,7 +134,7 @@ console.log(<div />);
 
 자식에 의해 만들어진 DOM 노드는 부모 DOM 노드로 추가되며, 재귀적으로 전체 DOM 구조가 조립됩니다.
 
->**Note:**
+>**주의**
 >
 재조정자 자체는 DOM에 연결되어 있지 않습니다. 마운트의 정확한 결과(소스 코드에서 "mount image"로 불리는)는 렌더러에 의존하고, DOM 노드(React DOM), 문자열(React DOM Server) 또는 네이티브 뷰어(React Native)를 나타내는 숫자가 될 수도 있습니다.
 
@@ -246,7 +244,7 @@ ReactDOM.render(<App />, rootEl);
 
 그러나, 위의 구현은 초기 트리를 어떻게 마운트 하는지만 알고 있습니다. 모든 `publicInstance`와 어떤 DOM `node`가 각 컴포넌트에 대응되는지와 같은 필수 정보를 담고 있지 않기 때문에 업데이트를 할 수 없습니다.
 
-스택  재조정자의 코드베이스가 `mount()` 함수를 메서드로 만들고 class에 배치하여 위와 같은 문제를 해결합니다. 이러한 접근에는 여러 단점이 있고, 현재 우리는 [재조정자를 다시 작성하고 있으며](/docs/codebase-overview.html#fiber-reconciler) 스택 재조정자와는 다른 반대 방향으로 나아가고 있습니다. 그렇지만, 스택 재조정자가 지금 작동하는 방식입니다.
+스택 재조정자의 코드베이스가 `mount()` 함수를 메서드로 만들고 class에 배치하여 위와 같은 문제를 해결합니다. 이러한 접근에는 여러 단점이 있고, 현재 우리는 [재조정자를 다시 작성하고 있으며](/docs/codebase-overview.html#fiber-reconciler) 스택 재조정자와는 다른 반대 방향으로 나아가고 있습니다. 그렇지만, 스택 재조정자가 지금 작동하는 방식입니다.
 
 `mountHost`와 `mountComposite` 함수를 분리하는 것 대신에, 우리는 `DOMComponent`와 `CompositeComponent` 의 두 가지 class를 생성합니다.
 
@@ -261,7 +259,7 @@ function instantiateComponent(element) {
   } else if (typeof type === 'string') {
     // Platform-specific components
     return new DOMComponent(element);
-  }  
+  }
 }
 ```
 
@@ -320,7 +318,7 @@ class CompositeComponent {
 
 이는 이전 `mountComposite()` 구현과 크게 다르지 않지만,`this.currentElement`, `this.renderedComponent`, `this.publicInstance` 와 같이 업데이트에 사용할 수 있도록 정보를 저장할 수 있습니다.
 
-`CompositeComponent`의 인스턴스가 사용자가 제공하는 `element.type`의 인스턴스와 다르다는 것을 주의해주세요. `CompositeComponent`는 재조정자의 세부 구현 내용이고, 사용자에게는 노출되지 않습니다. 사용자 정의된 class는 `element.type`로부터 얻고, `CompositeComponent`가 이에 대한 인스턴스를 생성합니다. 
+`CompositeComponent`의 인스턴스가 사용자가 제공하는 `element.type`의 인스턴스와 다르다는 것을 주의해주세요. `CompositeComponent`는 재조정자의 세부 구현 내용이고, 사용자에게는 노출되지 않습니다. 사용자 정의된 class는 `element.type`로부터 얻고, `CompositeComponent`가 이에 대한 인스턴스를 생성합니다.
 
 혼동을 막기 위해, `CompositeComponent`와 `DOMComponent`의 인스턴스를 "내부 인스턴스"라 부릅니다. 이를 통해 몇 가지 오래 지속되는 데이터를 내부 인스턴스와 연결시킬 수 있습니다. 오직 렌더러와 재조정자만 내부 인스턴스를 알 수 있습니다.
 
@@ -438,7 +436,7 @@ mountTree(<App />, rootEl);
 
 ### 마운트 해제 {#unmounting}
 
-이제 자식들과 DOM 노드를 유지하는 내부 인스턴스를 가지고 있으므로, 마운트 해제를 구현할 수 있습니다. 복합 컴포넌트의 경우, 마운트 해제가 생명주기 메소드를 재귀적으로 호출합니다.
+이제 자식들과 DOM 노드를 유지하는 내부 인스턴스를 가지고 있으므로, 마운트 해제를 구현할 수 있습니다. 복합 컴포넌트의 경우, 마운트 해제가 생명주기 메서드를 재귀적으로 호출합니다.
 
 ```js
 class CompositeComponent {
@@ -532,7 +530,7 @@ mountTree(<App />, rootEl);
 mountTree(<App />, rootEl);
 ```
 
-내부 인스턴스 계약을 메서드 하나를 추가해서 확장할 것입니다. `mount()`와 `unmount()`외에도 , `DOMComponent` `CompositeComponent` 모두 `receive(nextElement)`라고 불리는 새로운 메소드를 구현합니다.
+내부 인스턴스 계약을 메서드 하나를 추가해서 확장할 것입니다. `mount()`와 `unmount()`외에도 , `DOMComponent` `CompositeComponent` 모두 `receive(nextElement)`라고 불리는 새로운 메서드를 구현합니다.
 
 ```js
 class CompositeComponent {
@@ -666,7 +664,7 @@ class DOMComponent {
 
   getHostNode() {
     return this.node;
-  }  
+  }
 }
 ```
 
@@ -682,7 +680,7 @@ class DOMComponent {
     var node = this.node;
     var prevElement = this.currentElement;
     var prevProps = prevElement.props;
-    var nextProps = nextElement.props;    
+    var nextProps = nextElement.props;
     this.currentElement = nextElement;
 
     // Remove old attributes.
@@ -879,15 +877,15 @@ These are the basics of how React works internally.
 ### 코드에 대해 알아보기 {#jumping-into-the-code}
 
 * [`ReactMount`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/dom/client/ReactMount.js)는 이 자습서에서 `mountTree()` 및 `unmountTree()`와 같은 코드가 사용되는 곳입니다. 최상위 컴포넌츠의 마운트과 마운트 해제을 관리합니다. [`ReactNativeMount`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/native/ReactNativeMount.js) 는 React Native 아날로그입니다.
-* [`ReactDOMComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/dom/shared/ReactDOMComponent.js)는 본 자습서의 `DOMComponent`와 동등합니다. React DOM 렌더러에 대한 호스트 컴포넌트 class를 구현합니다. [`ReactNativeBaseComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/native/ReactNativeBaseComponent.js)는 React Native 아날로그 입니다. 
-* [`ReactCompositeComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactCompositeComponent.js)는 본 자습서의 `CompositeComponent`와 동등한 것입니다. 사용자 정의 컴포넌트 호출 및 상태 유지 관리 작업을 처리합니다. 
+* [`ReactDOMComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/dom/shared/ReactDOMComponent.js)는 본 자습서의 `DOMComponent`와 동등합니다. React DOM 렌더러에 대한 호스트 컴포넌트 class를 구현합니다. [`ReactNativeBaseComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/native/ReactNativeBaseComponent.js)는 React Native 아날로그 입니다.
+* [`ReactCompositeComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactCompositeComponent.js)는 본 자습서의 `CompositeComponent`와 동등한 것입니다. 사용자 정의 컴포넌트 호출 및 상태 유지 관리 작업을 처리합니다.
 * [`instantiateReactComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/instantiateReactComponent.js)에는 엘리먼트에 대해 구성할 올바른 내부 인스턴스 class를 선택하는 스위치가 포함되어 있습니다. 이 자습서에서는 `instantiateComponent()`와 같습니다.
 
 * [`ReactReconciler`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactReconciler.js)는 `mountComponent()`, `receiveComponent()`및 `unmountComponent()` 메서드가 있는 wrapper입니다. 내부 인스턴스에 대한 기본 구현을 호출하지만, 또한 모든 내부 인스턴스 구현에 의해 공유되는 그들 주변의 일부 코드를 포함합니다.
 
 * [`ReactChildReconciler`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactChildReconciler.js)는 자식의 엘리먼트 `key`에 따라 자식을 마운트, 업데이트 및 마운트 해제하는 코드를 구현합니다.
 
-* [`ReactMultiChild`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactMultiChild.js)는 자식 삽입, 삭제 및 렌더러와 독립적으로 이동하기 위한 작업 대기열 처리를 구현합니다. 
+* [`ReactMultiChild`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactMultiChild.js)는 자식 삽입, 삭제 및 렌더러와 독립적으로 이동하기 위한 작업 대기열 처리를 구현합니다.
 
 * 레거시를 위해 react codebase에 `mount()`, `receive()` 및 `unmount()`를 실제로 각각 `mountComponent()`, `receiveComponent()`, `unmountComponent()`라고 불러지지만, 엘리먼트를 받습니다.
 
