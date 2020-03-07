@@ -9,16 +9,16 @@ redirect_from:
   - "contributing/implementation-notes.html"
 ---
 
-이 부분은  [stack reconciler](/docs/codebase-overview.html#stack-reconciler)에 대한 구현 노트들의 모음입니다.
+이 부분은  [stack reconciler](/docs/codebase-overview.html#stack-reconciler)에 대한 구현 참고사항입니다.
 
-이는 매우 기술적이고 리액트 퍼블릭 API 뿐만아니라 어떻게 코어, 랜더러, 리콘사일러로 나누어지는지에 대해 깊은 이해가 수반됩니다. 아직 리액트 코드베이스에 친숙하지 않다면,
+이는 매우 기술적이고 공개된 React API뿐만 아니라 어떻게 코어, 렌더러, 재조정자(reconciler)로 나누어지는지에 대해 깊은 이해가 필요합니다. 아직 React 코드 베이스에 친숙하지 않다면,
 먼저 [the codebase overview](/docs/codebase-overview.html)를 읽기를 바랍니다.
 
-이는 [differences between React components, their instances, and elements](/blog/2015/12/18/react-components-elements-and-instances.html)을 이해하는 것을 수반합니다.
+이는 [React 컴포넌트와 인스턴스 그리고 엘리먼트 사이의 차이점](/blog/2015/12/18/react-components-elements-and-instances.html)을 이해한다고 가정합니다.
 
-스택 리콘사일러는 리액트 15보다 일찍 사용되었습니다. 이는[src/renderers/shared/stack/reconciler](https://github.com/facebook/react/tree/15-stable/src/renderers/shared/stack/reconciler)에 위치해 있습니다.
+스택 재조정자는 React 15와 그 이전 버전에 사용되었습니다. 이는[src/renderers/shared/stack/reconciler](https://github.com/facebook/react/tree/15-stable/src/renderers/shared/stack/reconciler)에 위치해 있습니다.
 
-### 비디오 : 스크래치로부터 리액트를 설계  {#video-building-react-from-scratch}
+### 비디오: React 처음부터 만들기 {#video-building-react-from-scratch}
 
 [Paul O'Shannessy](https://twitter.com/zpao)는 이 문서에 크게 영감을 주었던 [building React from scratch](https://www.youtube.com/watch?v=_MAD4Oly9yg)에 대해 이야기 하였습니다.
 이 문서와 그의 말은 모두 현실 코드베이스의 단순화했기 때문에 여러분은 
@@ -26,7 +26,7 @@ redirect_from:
 
 ### 개요 {#overview}
 
- reconciler는 공공 API를 가지지 않습니다. 리액트 DOM과 리액트 네이티브와 같은 [Renderers](/docs/codebase-overview.html#stack-renderers)는 사용자가 쓴, 리액트 컴포넌트에 따른 사용자 인터페이스를 효율적으로 업데이트를 하기 위해서 사용합니다.
+ 재조정자는 공개된 API를 가지지 않습니다. React DOM과 React Native와 같은 [렌더러](/docs/codebase-overview.html#stack-renderers)는 사용자가 쓴, React 컴포넌트에 따른 사용자 인터페이스를 효율적으로 업데이트를 하기 위해서 사용합니다.
 
 ### 재귀적인 과정으로써의 마운트 {#mounting-as-a-recursive-process}
 
@@ -36,24 +36,24 @@ redirect_from:
 ReactDOM.render(<App />, rootEl);
 ```
 
-리액트 DOM은 컨사일러를 통해 `<App />`를 통과하게 할 것입니다. `<App />`은 리액트 엘리먼트이며, 랜더링 할 것을 설명해 놓은 것임을 기억합시다. 이것을 평범한 개체로 생각해도 좋습니다.
+React DOM은 재조정자를 통해 `<App />`를 통과하게 할 것입니다. `<App />`은 React 엘리먼트이며, 렌더링 할 것을 설명해 놓은 것임을 기억합시다. 이것을 평범한 객체로 생각해도 좋습니다.
 
 ```js
 console.log(<App />);
 // { type: App, props: {} }
 ```
 
-컨사일러가 `App`이 class인지 함수인지를 확인할 것입니다.
+재조정자가 `App`이 class인지 함수인지 확인합니다.
 
-`App`이 함수이면, 컨사일러는 랜더링 엘리먼트들을 가져오기 위해 `App(props)`를 부를것 입니다.
+`App`이 함수라면, 재조정자는 렌더링 엘리먼트를 가져오기 위해 `App(props)`를 호출합니다.
 
-`App`이 class면, 컨사일러는 `App`을 `new App(props)`로 인스턴스화 하고, `componentWillMount()` lifecycle 메서드를 호출한 후, `render()` 메서드를 호출하여 랜더링 엘리먼트를 가져오게 할 것입니다.
+`App`이 class면, 컨사일러는 `App`을 `new App(props)`로 인스턴스화 하고, `componentWillMount()` 생명주기 메서드를 호출한 후, `render()` 메서드를 호출하여 랜더링 엘리먼트를 가져오게 할 것입니다.
 
-어느 경우든, 컨사일러는 "render to"라는 `App`의 엘리먼트를 알게 될 것입니다.
+어느 경우든, 재조정자는 `App`이 렌더링 되는 엘리먼트를 학습하게 됩니다.
 
-이러한 과정은 재귀적입니다. `App`은 `<Greeting />`으로 랜더링 될 것이고, `Greeting`은 Button 등으로 랜더링 될 것입니다. 컨사일러는 각 컴포넌트들이 어떻게 랜더링 되는지에 대해 알 때, 사용자 정의 컴포넌트를 통해 재귀적으로 "drill down"할 것입니다.
+이러한 과정은 재귀적입니다. `App`은 `<Greeting />`으로 렌더링 될 수도 있고, `Greeting`은 `<Button />` 또는 다른 곳으로 렌더링 될 수 있습니다. 재조정자는 각 컴포넌트가 무엇을 렌더링하는지 학습할 때 사용자가 정의한 컴포넌트를 재귀적으로 조사합니다.
 
-여러분들은 슈도코드로 작성된 이 과정을 생각해봅시다.
+여러분들은 의사코드로 작성된 이 과정을 생각해봅시다.
 
 ```js
 function isClass(type) {
@@ -106,20 +106,20 @@ rootEl.appendChild(node);
 
 >**Note:**
 >
->이는 슈도코드입니다. 이는 실제 구현에서와는 비슷하지 않습니다.  우리가 이 과정을
+>이는 의사코드입니다. 실제 구현과 비슷하지 않습니다. 우리가 이 과정을
 언제 멈출 지 결정을 한 적이 없기 때문에 스택 오버플로우 또한 야기할 수 있습니다.
 
 위의 예에서 몇가지 핵심 아이디어를 요약해 봅시다.
 
-* 리액트 엘리먼트는 구성 엘리먼트의 타입(예: `App`)과 props를 나타내는 일반 객체입니다.
-* 사용자 정의된 컴포넌트(예: `App`)은 class이거나 함수일 수 있지만 모두 랜더링되는 엘리먼트입니다.
-* "마운팅"은 최상위 리액트 엘리먼트로부터 주어진 DOM과 네이티브 트리를 만드는 재귀적인 과정이다.(예: `<App />`)
+* React 엘리먼트는 컴포넌트 타입(예: `App`)과 props를 나타내는 일반 객체입니다.
+* 사용자 정의된 컴포넌트(예: `App`)은 class이거나 함수일 수 있지만 모두 엘리먼트로 렌더링됩니다.
+* "마운팅"은 최상위 React 엘리먼트(예: `<App />`)로부터 DOM 또는 네이티브 트리를 만드는 재귀적인 과정입니다.
 
 ### 호스트 엘리먼트 마운팅 {#mounting-host-elements}
 
-이 과정은 우리가 스크린에 무언가를 랜더링하지 않는다면 무의미해집니다.
+이 과정은 우리가 스크린에 무언가를 렌더링하지 않는다면 무의미해집니다.
 
-사용자 정의된("composite") 컴포넌트 외에도, 리액트 엘리먼트는 플랫폼 특유의("host") 컴포넌트를 나타낼 수 있습니다.예를 들어, `Button`은 랜더링된 메서드에서 `<div />`를 리턴할 수 있습니다.
+사용자 정의된("composite") 컴포넌트 외에도, React 엘리먼트는 플랫폼 특유의("host") 컴포넌트를 나타낼 수 있습니다. 예를 들어, `Button`은 렌더링된 메서드에서 `<div />`를 리턴할 수 있습니다.
 
 엘리먼트의 `type`이 문자열인 경우, 우리는 호스트 엘리먼트로 처리합니다.
 
@@ -130,15 +130,15 @@ console.log(<div />);
 
 이 곳에는 호스트 엘리먼트와 관련된 사용자 정의된 코드가 없습니다.
 
-컨사일러가 호스트 엘리먼트를 만나게 되면, 랜더러가 호스트 엘리먼트를 마운트할 수 있도록 관리합니다. 예를 들어,리액트 DOM은 DOM 노드를 생성할 것입니다.
+재조정자가 호스트 엘리먼트를 만나게 되면, 렌더러가 호스트 엘리먼트를 마운트할 수 있도록 관리합니다. 예를 들어, React DOM은 DOM 노드를 생성할 것입니다.
 
-호스트 엘리먼트가 자식을 가지고 있으면,  reconciler가 위와 같은 알고리즘에따라 재귀적으로 그들을 설치합니다. 이는 자식이 호스트(like `<div><hr /></div>`)인지 컴포싯(like `<div><Button /></div>`)인지 아니면 둘 다인지는 상관이 없습니다.
+호스트 엘리먼트가 자식을 가지고 있으면,  reconciler가 위와 동일한 알고리즘에 따라 재귀적으로 자식을 마운트합니다. 이는 자식이 호스트(like `<div><hr /></div>`)인지 사용자 정의(like `<div><Button /></div>`) 되었는지는 상관이 없습니다.
 
-자식에 의해 제공되는 DOM 노드는 상위 DOM 노드로 추가될 것이고, 완성된 DOM 구조는 모아질 것입니다.
+자식에 의해 만들어진 DOM 노드는 부모 DOM 노드로 추가되며, 재귀적으로 전체 DOM 구조가 조립됩니다.
 
 >**Note:**
 >
-컨사일러는 본질적으로 DOM에 얽매이지 않습니다. 마운트된 것에 대한 정확한 결과(소스코드에 있는 "mount image"로 불리는 것과 같은)는 랜더러에 의존하고, DOM 노드(리액트 DOM), 문자열(리액트 DOM 서버) 또는 네이티브 뷰어(리액트 네이티브)를 나타내는 숫자가 될 수도 있습니다.
+재조정자 자체는 DOM에 연결되어 있지 않습니다. 마운트의 정확한 결과(소스 코드에서 "mount image"로 불리는)는 렌더러에 의존하고, DOM 노드(React DOM), 문자열(React DOM Server) 또는 네이티브 뷰어(React Native)를 나타내는 숫자가 될 수도 있습니다.
 
 호스트 엘리먼트를 다루기 위해 코드를 확장하는 경우, 다음과 같이 보일 수 있습니다.
 
@@ -231,7 +231,7 @@ var node = mount(<App />);
 rootEl.appendChild(node);
 ```
 
-이는 효과가 있지만 컨사일러가 실제로 구현되는 방식과는 아직 거리가 멉니다.
+이는 동작하지만 실제로 재조정자가 구현되는 방식과는 거리가 멉니다.
 누락된 핵심 요소는 업데이트를 지원하는 것입니다.
 
 ### 인터벌 인스턴스의 소개 {#introducing-internal-instances}
