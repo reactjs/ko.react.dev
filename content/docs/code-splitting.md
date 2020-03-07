@@ -77,13 +77,7 @@ import("./math").then(math => {
 });
 ```
 
-> 주의
->
-> 동적 `import()` 문법은 아직 ECMAScript (JavaScript)의 표준 문법이 아니라
-> [제안](https://github.com/tc39/proposal-dynamic-import)입니다.  
-> 동적 `import()`은 가까운 미래에 표준에 추가될 것으로 보입니다.
-
-Webpack이 이 구문을 만나게 되면 앱의 코드를 분할합니다. 
+Webpack이 이 구문을 만나게 되면 앱의 코드를 분할합니다.
 Create React App을 사용하고 있다면 이미 Webpack이 구성이 되어 있기 때문에 즉시 [사용](https://facebook.github.io/create-react-app/docs/code-splitting)할 수 있습니다.
 [Next.js](https://github.com/zeit/next.js/#dynamic-import) 역시 지원합니다.
 
@@ -96,7 +90,7 @@ Create React App을 사용하고 있다면 이미 Webpack이 구성이 되어 �
 
 > 주의
 >
-> `React.lazy`와 Suspense는 아직 서버 사이드 렌더링을 할 수 없습니다. 서버에서 렌더링 된 앱에서 코드 분할을 하기 원한다면 [Loadable Components](https://github.com/smooth-code/loadable-components)를 추천합니다. 이는 [서버 사이드 렌더링과 번들 스플리팅에 대한 좋은 가이드](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md)입니다.
+> `React.lazy`와 Suspense는 아직 서버 사이드 렌더링을 할 수 없습니다. 서버에서 렌더링 된 앱에서 코드 분할을 하기 원한다면 [Loadable Components](https://github.com/gregberge/loadable-components)를 추천합니다. 이는 [서버 사이드 렌더링과 번들 스플리팅에 대한 좋은 가이드](https://loadable-components.com/docs/server-side-rendering/)입니다.
 
 `React.lazy` 함수를 사용하면 동적 import를 사용해서 컴포넌트를 렌더링 할 수 있습니다.
 

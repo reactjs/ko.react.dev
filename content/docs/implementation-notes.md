@@ -25,7 +25,7 @@ redirect_from:
 
 ### 개요 {#overview}
 
- 재조정자는 공개된 API를 가지지 않습니다. React DOM과 React Native와 같은 [렌더러](/docs/codebase-overview.html#stack-renderers)는 사용자가 쓴, React 컴포넌트에 따른 사용자 인터페이스를 효율적으로 업데이트를 하기 위해서 사용합니다.
+재조정자는 공개된 API를 가지지 않습니다. React DOM과 React Native와 같은 [렌더러](/docs/codebase-overview.html#renderers)는 사용자가 쓴, React 컴포넌트에 따른 사용자 인터페이스를 효율적으로 업데이트를 하기 위해서 사용합니다.
 
 ### 재귀적인 과정으로써의 마운트 {#mounting-as-a-recursive-process}
 
