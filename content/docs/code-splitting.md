@@ -112,6 +112,8 @@ const OtherComponent = React.lazy(() => import('./OtherComponent'));
 lazy 컴포넌트는 `Suspense` 컴포넌트 하위에서 렌더링되어야 하며, `Suspense`는 lazy 컴포넌트가 로드되길 기다리는 동안 로딩 화면과 같은 예비 컨텐츠를 보여줄 수 있게 해줍니다.
 
 ```js
+import React, { Suspense } from 'react';
+
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
 function MyComponent() {
@@ -129,6 +131,8 @@ function MyComponent() {
 
 
 ```js
+import React, { Suspense } from 'react';
+
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 const AnotherComponent = React.lazy(() => import('./AnotherComponent'));
 
@@ -151,7 +155,9 @@ function MyComponent() {
 Error Boundary를 만들고 lazy 컴포넌트를 감싸면 네트워크 장애가 발생했을 때 에러를 표시할 수 있습니다.
 
 ```js
+import React, { Suspense } from 'react';
 import MyErrorBoundary from './MyErrorBoundary';
+
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 const AnotherComponent = React.lazy(() => import('./AnotherComponent'));
 
@@ -180,8 +186,8 @@ const MyComponent = () => (
 `React.lazy`를 [React Router](https://reacttraining.com/react-router/) 라이브러리를 사용해서 애플리케이션에 라우트 기반 코드 분할을 설정하는 예시입니다.
 
 ```js
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const Home = lazy(() => import('./routes/Home'));
 const About = lazy(() => import('./routes/About'));

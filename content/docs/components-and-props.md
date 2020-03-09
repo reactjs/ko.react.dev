@@ -44,7 +44,11 @@ class Welcome extends React.Component {
 
 React의 관점에서 볼 때 위 두 가지 유형의 컴포넌트는 동일합니다.
 
+<<<<<<< HEAD
 class는 몇 가지 추가 기능이 있으며 이에 대해서는 [다음 장](/docs/state-and-lifecycle.html)에서 설명합니다. 그때까지는 간결성을 위해 함수 컴포넌트를 사용하겠습니다.
+=======
+Function and Class components both have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html).
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 ## 컴포넌트 렌더링 {#rendering-a-component}
 
@@ -60,7 +64,11 @@ React 엘리먼트는 사용자 정의 컴포넌트로도 나타낼 수 있습�
 const element = <Welcome name="Sara" />;
 ```
 
+<<<<<<< HEAD
 React가 사용자 정의 컴포넌트로 작성한 엘리먼트를 발견하면 JSX 어트리뷰트를 해당 컴포넌트에 단일 객체로 전달합니다. 이 객체를 "props"라고 합니다.
+=======
+When React sees an element representing a user-defined component, it passes JSX attributes and children to this component as a single object. We call this object "props".
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 다음은 페이지에 "Hello, Sara"를 렌더링하는 예시입니다.
 

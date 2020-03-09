@@ -54,7 +54,11 @@ npm install react@experimental react-dom@experimental
 
 ### Concurrent 모드 활성화하기 {#enabling-concurrent-mode}
 
+<<<<<<< HEAD
 보통, React에 기능이 추가될 땐 즉시 사용 가능합니다. Fragments, Context, Hooks 등이 그러한 예죠. 기존 코드를 전혀 수정하지 않고도 새 코드에서 사용할 수 있습니다.
+=======
+Normally, when we add features to React, you can start using them immediately. Fragments, Context, and even Hooks are examples of such features. You can use them in new code without making any changes to the existing code.
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 Concurrent 모드는 다릅니다. React가 동작하는 방식에 시맨틱 한 차이가 생겼죠. 이런 차이 없이는, [신기능들](/docs/concurrent-mode-patterns.html)은 가능하지 않았을 겁니다. 따라서, 개별적으로 독립 배포되지 않고 하나의 새로운 "모드"로 그룹화 되었습니다.
 

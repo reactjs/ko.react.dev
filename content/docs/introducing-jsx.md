@@ -177,7 +177,11 @@ const element = {
 
 이러한 객체를 "React 엘리먼트"라고 하며, 이를 화면에 표시하려는 항목에 대한 설명이라고 생각할 수 있습니다. React는 이러한 객체를 읽은 후 DOM을 구성하고 최신으로 유지하는 데 이러한 객체를 사용합니다.
 
+<<<<<<< HEAD
 다음 섹션에서는 DOM에 React 엘리먼트를 렌더링하는 방법에 대해 살펴보겠습니다.
+=======
+We will explore rendering React elements to the DOM in the [next section](/docs/rendering-elements.html).
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 >**팁**
 >
