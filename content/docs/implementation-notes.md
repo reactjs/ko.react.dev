@@ -1,6 +1,6 @@
 ---
 id: implementation-notes
-title: Implementation Notes
+title: 구현 참고사항
 layout: contributing
 permalink: docs/implementation-notes.html
 prev: codebase-overview.html
@@ -9,50 +9,50 @@ redirect_from:
   - "contributing/implementation-notes.html"
 ---
 
-This section is a collection of implementation notes for the [stack reconciler](/docs/codebase-overview.html#stack-reconciler).
+이 부분은 [스택 재조정자(reconciler)](/docs/codebase-overview.html#stack-reconciler)에 대한 구현 참고사항입니다.
 
-It is very technical and assumes a strong understanding of React public API as well as how it's divided into core, renderers, and the reconciler. If you're not very familiar with the React codebase, read [the codebase overview](/docs/codebase-overview.html) first.
+이는 매우 기술적이고 공개된 React API뿐만 아니라 어떻게 코어, 렌더러, 재조정자로 나누어지는지에 대해 깊은 이해가 필요합니다. 아직 React 코드 베이스에 친숙하지 않다면, 먼저 [the codebase overview](/docs/codebase-overview.html)를 읽기를 바랍니다.
 
-It also assumes an understanding of the [differences between React components, their instances, and elements](/blog/2015/12/18/react-components-elements-and-instances.html).
+이는 [React 컴포넌트와 인스턴스 그리고 엘리먼트 사이의 차이점](/blog/2015/12/18/react-components-elements-and-instances.html)을 이해한다고 가정합니다.
 
-The stack reconciler was used in React 15 and earlier. It is located at [src/renderers/shared/stack/reconciler](https://github.com/facebook/react/tree/15-stable/src/renderers/shared/stack/reconciler).
+스택 재조정자는 React 15와 그 이전 버전에 사용되었습니다. 이는[src/renderers/shared/stack/reconciler](https://github.com/facebook/react/tree/15-stable/src/renderers/shared/stack/reconciler)에 위치해 있습니다.
 
-### Video: Building React from Scratch {#video-building-react-from-scratch}
+### 비디오: React 처음부터 만들기 {#video-building-react-from-scratch}
 
-[Paul O'Shannessy](https://twitter.com/zpao) gave a talk about [building React from scratch](https://www.youtube.com/watch?v=_MAD4Oly9yg) that largely inspired this document.
+[Paul O'Shannessy](https://twitter.com/zpao)는 이 문서에 크게 영감을 주었던 [building React from scratch](https://www.youtube.com/watch?v=_MAD4Oly9yg)에 대해 이야기 하였습니다.
 
-Both this document and his talk are simplifications of the real codebase so you might get a better understanding by getting familiar with both of them.
+이 문서와 그의 말은 모두 현실 코드베이스의 단순화했기 때문에 여러분은 두 가지 모두 친숙해 짐으로써 더 깊은 이해를 가질 것입니다.
 
-### Overview {#overview}
+### 개요 {#overview}
 
-The reconciler itself doesn't have a public API. [Renderers](/docs/codebase-overview.html#renderers) like React DOM and React Native use it to efficiently update the user interface according to the React components written by the user.
+재조정자는 공개된 API를 가지지 않습니다. React DOM과 React Native와 같은 [렌더러](/docs/codebase-overview.html#renderers)는 사용자가 쓴, React 컴포넌트에 따른 사용자 인터페이스를 효율적으로 업데이트를 하기 위해서 사용합니다.
 
-### Mounting as a Recursive Process {#mounting-as-a-recursive-process}
+### 재귀적인 과정으로써의 마운트 {#mounting-as-a-recursive-process}
 
-Let's consider the first time you mount a component:
+여러분들이 컴포넌트를 처음 마운트할 때를 고려해 보겠습니다.
 
 ```js
 ReactDOM.render(<App />, rootEl);
 ```
 
-React DOM will pass `<App />` along to the reconciler. Remember that `<App />` is a React element, that is, a description of *what* to render. You can think about it as a plain object:
+React DOM은 재조정자를 통해 `<App />`를 통과하게 할 것입니다. `<App />`은 React 엘리먼트이며, 렌더링 할 것을 설명해 놓은 것임을 기억합시다. 이것을 평범한 객체로 생각해도 좋습니다.
 
 ```js
 console.log(<App />);
 // { type: App, props: {} }
 ```
 
-The reconciler will check if `App` is a class or a function.
+재조정자가 `App`이 class인지 함수인지 확인합니다.
 
-If `App` is a function, the reconciler will call `App(props)` to get the rendered element.
+`App`이 함수라면, 재조정자는 렌더링 엘리먼트를 가져오기 위해 `App(props)`를 호출합니다.
 
-If `App` is a class, the reconciler will instantiate an `App` with `new App(props)`, call the `componentWillMount()` lifecycle method, and then will call the `render()` method to get the rendered element.
+`App`이 class면, 재조정자는 `App`을 `new App(props)`로 인스턴스화 하고, `componentWillMount()` 생명주기 메서드를 호출한 후, `render()` 메서드를 호출하여 랜더링 엘리먼트를 가져오게 할 것입니다.
 
-Either way, the reconciler will learn the element `App` "rendered to".
+어느 경우든, 재조정자는 `App`이 렌더링 되는 엘리먼트를 학습하게 됩니다.
 
-This process is recursive. `App` may render to a `<Greeting />`, `Greeting` may render to a `<Button />`, and so on. The reconciler will "drill down" through user-defined components recursively as it learns what each component renders to.
+이러한 과정은 재귀적입니다. `App`은 `<Greeting />`으로 렌더링 될 수도 있고, `Greeting`은 `<Button />` 또는 다른 곳으로 렌더링 될 수 있습니다. 재조정자는 각 컴포넌트가 무엇을 렌더링하는지 학습할 때 사용자가 정의한 컴포넌트를 재귀적으로 조사합니다.
 
-You can imagine this process as a pseudocode:
+여러분들은 의사코드로 작성된 이 과정을 생각해봅시다.
 
 ```js
 function isClass(type) {
@@ -103,42 +103,42 @@ var node = mount(<App />);
 rootEl.appendChild(node);
 ```
 
->**Note:**
+>**주의**
 >
->This really *is* a pseudo-code. It isn't similar to the real implementation. It will also cause a stack overflow because we haven't discussed when to stop the recursion.
+>이는 의사코드입니다. 실제 구현과 비슷하지 않습니다. 우리가 이 과정을 언제 멈출 지 결정을 한 적이 없기 때문에 스택 오버플로우 또한 야기할 수 있습니다.
 
-Let's recap a few key ideas in the example above:
+위의 예에서 몇가지 핵심 아이디어를 요약해 봅시다.
 
-* React elements are plain objects representing the component type (e.g. `App`) and the props.
-* User-defined components (e.g. `App`) can be classes or functions but they all "render to" elements.
-* "Mounting" is a recursive process that creates a DOM or Native tree given the top-level React element (e.g. `<App />`).
+* React 엘리먼트는 컴포넌트 타입(예: `App`)과 props를 나타내는 일반 객체입니다.
+* 사용자 정의된 컴포넌트(예: `App`)은 class이거나 함수일 수 있지만 모두 엘리먼트로 렌더링됩니다.
+* "마운팅"은 최상위 React 엘리먼트(예: `<App />`)로부터 DOM 또는 네이티브 트리를 만드는 재귀적인 과정입니다.
 
-### Mounting Host Elements {#mounting-host-elements}
+### 호스트 엘리먼트 마운팅 {#mounting-host-elements}
 
-This process would be useless if we didn't render something to the screen as a result.
+이 과정은 우리가 스크린에 무언가를 렌더링하지 않는다면 무의미해집니다.
 
-In addition to user-defined ("composite") components, React elements may also represent platform-specific ("host") components. For example, `Button` might return a `<div />` from its render method.
+사용자 정의된("composite") 컴포넌트 외에도, React 엘리먼트는 플랫폼 특유의("host") 컴포넌트를 나타낼 수 있습니다. 예를 들어, `Button`은 렌더링된 메서드에서 `<div />`를 리턴할 수 있습니다.
 
-If element's `type` property is a string, we are dealing with a host element:
+엘리먼트의 `type`이 문자열인 경우, 우리는 호스트 엘리먼트로 처리합니다.
 
 ```js
 console.log(<div />);
 // { type: 'div', props: {} }
 ```
 
-There is no user-defined code associated with host elements.
+이 곳에는 호스트 엘리먼트와 관련된 사용자 정의된 코드가 없습니다.
 
-When the reconciler encounters a host element, it lets the renderer take care of mounting it. For example, React DOM would create a DOM node.
+재조정자가 호스트 엘리먼트를 만나게 되면, 렌더러가 호스트 엘리먼트를 마운트할 수 있도록 관리합니다. 예를 들어, React DOM은 DOM 노드를 생성할 것입니다.
 
-If the host element has children, the reconciler recursively mounts them following the same algorithm as above. It doesn't matter whether children are host (like `<div><hr /></div>`), composite (like `<div><Button /></div>`), or both.
+호스트 엘리먼트가 자식을 가지고 있으면,  reconciler가 위와 동일한 알고리즘에 따라 재귀적으로 자식을 마운트합니다. 이는 자식이 호스트(like `<div><hr /></div>`)인지 사용자 정의(like `<div><Button /></div>`) 되었는지는 상관이 없습니다.
 
-The DOM nodes produced by the child components will be appended to the parent DOM node, and recursively, the complete DOM structure will be assembled.
+자식에 의해 만들어진 DOM 노드는 부모 DOM 노드로 추가되며, 재귀적으로 전체 DOM 구조가 조립됩니다.
 
->**Note:**
+>**주의**
 >
->The reconciler itself is not tied to the DOM. The exact result of mounting (sometimes called "mount image" in the source code) depends on the renderer, and can be a DOM node (React DOM), a string (React DOM Server), or a number representing a native view (React Native).
+재조정자 자체는 DOM에 연결되어 있지 않습니다. 마운트의 정확한 결과(소스 코드에서 "mount image"로 불리는)는 렌더러에 의존하고, DOM 노드(React DOM), 문자열(React DOM Server) 또는 네이티브 뷰어(React Native)를 나타내는 숫자가 될 수도 있습니다.
 
-If we were to extend the code to handle host elements, it would look like this:
+호스트 엘리먼트를 다루기 위해 코드를 확장하는 경우, 다음과 같이 보일 수 있습니다.
 
 ```js
 function isClass(type) {
@@ -229,11 +229,12 @@ var node = mount(<App />);
 rootEl.appendChild(node);
 ```
 
-This is working but still far from how the reconciler is really implemented. The key missing ingredient is support for updates.
+이는 동작하지만 실제로 재조정자가 구현되는 방식과는 거리가 멉니다.
+누락된 핵심 요소는 업데이트에 대한 지원입니다.
 
-### Introducing Internal Instances {#introducing-internal-instances}
+### 내부 인스턴스의 소개 {#introducing-internal-instances}
 
-The key feature of React is that you can re-render everything, and it won't recreate the DOM or reset the state:
+React의 가장 큰 특징은 모든 것을 다시 렌더링할 수 있고, DOM을 다시 생성하거나 상태를 초기화시키지 않아도 된다는 점입니다.
 
 ```js
 ReactDOM.render(<App />, rootEl);
@@ -241,13 +242,13 @@ ReactDOM.render(<App />, rootEl);
 ReactDOM.render(<App />, rootEl);
 ```
 
-However, our implementation above only knows how to mount the initial tree. It can't perform updates on it because it doesn't store all the necessary information, such as all the `publicInstance`s, or which DOM `node`s correspond to which components.
+그러나, 위의 구현은 초기 트리를 어떻게 마운트 하는지만 알고 있습니다. 모든 `publicInstance`와 어떤 DOM `node`가 각 컴포넌트에 대응되는지와 같은 필수 정보를 담고 있지 않기 때문에 업데이트를 할 수 없습니다.
 
-The stack reconciler codebase solves this by making the `mount()` function a method and putting it on a class. There are drawbacks to this approach, and we are going in the opposite direction in the [ongoing rewrite of the reconciler](/docs/codebase-overview.html#fiber-reconciler). Nevertheless this is how it works now.
+스택 재조정자의 코드베이스가 `mount()` 함수를 메서드로 만들고 class에 배치하여 위와 같은 문제를 해결합니다. 이러한 접근에는 여러 단점이 있고, 현재 우리는 [재조정자를 다시 작성하고 있으며](/docs/codebase-overview.html#fiber-reconciler) 스택 재조정자와는 다른 반대 방향으로 나아가고 있습니다. 그렇지만, 스택 재조정자가 지금 작동하는 방식입니다.
 
-Instead of separate `mountHost` and `mountComposite` functions, we will create two classes: `DOMComponent` and `CompositeComponent`.
+`mountHost`와 `mountComposite` 함수를 분리하는 것 대신에, 우리는 `DOMComponent`와 `CompositeComponent` 의 두 가지 class를 생성합니다.
 
-Both classes have a constructor accepting the `element`, as well as a `mount()` method returning the mounted node. We will replace a top-level `mount()` function with a factory that instantiates the correct class:
+두 class 모두 `element`를 받아들이는 생성자 뿐만 아니라 마운트된 노드를 반환해주는 `mount()` 메서드를 가지고 있습니다. 최상위 `mount()` 함수를 올바른 class로 인스턴스화 하는 팩토리로 대체합니다.
 
 ```js
 function instantiateComponent(element) {
@@ -258,11 +259,11 @@ function instantiateComponent(element) {
   } else if (typeof type === 'string') {
     // Platform-specific components
     return new DOMComponent(element);
-  }  
+  }
 }
 ```
 
-First, let's consider the implementation of `CompositeComponent`:
+먼저, `CompositeComponent`을 구현한 것을 봅시다.
 
 ```js
 class CompositeComponent {
@@ -315,15 +316,15 @@ class CompositeComponent {
 }
 ```
 
-This is not much different from our previous `mountComposite()` implementation, but now we can save some information, such as `this.currentElement`, `this.renderedComponent`, and `this.publicInstance`, for use during updates.
+이는 이전 `mountComposite()` 구현과 크게 다르지 않지만,`this.currentElement`, `this.renderedComponent`, `this.publicInstance` 와 같이 업데이트에 사용할 수 있도록 정보를 저장할 수 있습니다.
 
-Note that an instance of `CompositeComponent` is not the same thing as an instance of the user-supplied `element.type`. `CompositeComponent` is an implementation detail of our reconciler, and is never exposed to the user. The user-defined class is the one we read from `element.type`, and `CompositeComponent` creates an instance of it.
+`CompositeComponent`의 인스턴스가 사용자가 제공하는 `element.type`의 인스턴스와 다르다는 것을 주의해주세요. `CompositeComponent`는 재조정자의 세부 구현 내용이고, 사용자에게는 노출되지 않습니다. 사용자 정의된 class는 `element.type`로부터 얻고, `CompositeComponent`가 이에 대한 인스턴스를 생성합니다.
 
-To avoid the confusion, we will call instances of `CompositeComponent` and `DOMComponent` "internal instances". They exist so we can associate some long-lived data with them. Only the renderer and the reconciler are aware that they exist.
+혼동을 막기 위해, `CompositeComponent`와 `DOMComponent`의 인스턴스를 "내부 인스턴스"라 부릅니다. 이를 통해 몇 가지 오래 지속되는 데이터를 내부 인스턴스와 연결시킬 수 있습니다. 오직 렌더러와 재조정자만 내부 인스턴스를 알 수 있습니다.
 
-In contrast, we call an instance of the user-defined class a "public instance". The public instance is what you see as `this` in the `render()` and other methods of your custom components.
+반면, 사용자 정의된 class의 인스턴스를 "공개된 인스턴스(public instance)"라고 부릅니다. 공개된 인스턴스는 `render()`와 사용자가 직접 작성한 여러 메서드에서 `this`로 표시됩니다.
 
-The `mountHost()` function, refactored to be a `mount()` method on `DOMComponent` class, also looks familiar:
+`DOMComponent` class의  `mount()` 메서드로 리팩터링된 `mountHost()` 메서드 또한 비슷하게 보입니다.
 
 ```js
 class DOMComponent {
@@ -374,9 +375,10 @@ class DOMComponent {
 }
 ```
 
-The main difference after refactoring from `mountHost()` is that we now keep `this.node` and `this.renderedChildren` associated with the internal DOM component instance. We will also use them for applying non-destructive updates in the future.
+`mountHost()`로 리팩터링한 후의 주요 차이점은 `this.node`와 내부 DOM 컴포넌트 인스턴스와 연결된 `this.renderedChildren`을 유지한다는 것입니다. 향후 non-destructive 업데이트 적용에도 활용할 예정입니다.
 
-As a result, each internal instance, composite or host, now points to its child internal instances. To help visualize this, if a function `<App>` component renders a `<Button>` class component, and `Button` class renders a `<div>`, the internal instance tree would look like this:
+
+결과적으로, 복합 또는 호스트인 각 내부 인스턴스는 이제 자식 내부 인스턴스를 가리킵니다. 이를 시각화하기 위해 함수 `<App>` 컴포넌트가 `<Button>` class 컴포넌트를 렌더링하고 `Button` class가 `<div>`를 렌더링하는 경우 내부 인스턴스 트리는 다음과 같이 보일 것입니다.
 
 ```js
 [object CompositeComponent] {
@@ -394,25 +396,25 @@ As a result, each internal instance, composite or host, now points to its child 
 }
 ```
 
-In the DOM you would only see the `<div>`. However the internal instance tree contains both composite and host internal instances.
+DOM에서는 `<div>`만 보일 것입니다. 그러나 내부 인스턴스 트리에는 복합적인 것과 호스트 내부 인스턴스가 모두 포함되어 있습니다.
 
-The composite internal instances need to store:
+복합 내부 인스턴스는 다음을 저장해야 합니다.
 
-* The current element.
-* The public instance if element type is a class.
-* The single rendered internal instance. It can be either a `DOMComponent` or a `CompositeComponent`.
+* 현재 엘리먼트
+* 엘리먼트 타입이 클래스라면 public 인스턴스
+* 단일 렌더링된 내부 인스턴스. `DOMComponent` 또는 `CompositeComponent`가 될 수 있습니다.
 
-The host internal instances need to store:
+호스트 내부 인스턴스는 다음을 저장해야 합니다.
 
-* The current element.
-* The DOM node.
-* All the child internal instances. Each of them can be either a `DOMComponent` or a `CompositeComponent`.
+* 현재 엘리먼트
+* DOM 노드
+* 모든 자식 내부 인스턴스. 각 인스턴스는 `DOMComponent` 또는 `CompositeComponent`일 수 있습니다.
 
-If you're struggling to imagine how an internal instance tree is structured in more complex applications, [React DevTools](https://github.com/facebook/react-devtools) can give you a close approximation, as it highlights host instances with grey, and composite instances with purple:
+더 복잡한 애플리케이션에서 내부 인스턴스 트리가 어떻게 구성되는지 상상하기 어려울 경우, [React DevTools](https://github.com/facebook/react-devtools)는 호스트 인스턴스를 회색 그리고 복합 인스턴스를 보라색으로 강조하므로 가까운 근사치를 줄 수 있습니다.
 
  <img src="../images/docs/implementation-notes-tree.png" width="500" style="max-width: 100%" alt="React DevTools tree" />
 
-To complete this refactoring, we will introduce a function that mounts a complete tree into a container node, just like `ReactDOM.render()`. It returns a public instance, also like `ReactDOM.render()`:
+리팩토링을 완료하기 위해, `ReactDOM.render()`와 같이 전체 트리를 컨테이너 노드에 마운트하는 기능을 도입할 것입니다. 또한 `ReactDOM.render()`와 같은 공개 인스턴스를 리턴합니다.
 
 ```js
 function mountTree(element, containerNode) {
@@ -432,9 +434,9 @@ var rootEl = document.getElementById('root');
 mountTree(<App />, rootEl);
 ```
 
-### Unmounting {#unmounting}
+### 마운트 해제 {#unmounting}
 
-Now that we have internal instances that hold onto their children and the DOM nodes, we can implement unmounting. For a composite component, unmounting calls a lifecycle method and recurses.
+이제 자식들과 DOM 노드를 유지하는 내부 인스턴스를 가지고 있으므로, 마운트 해제를 구현할 수 있습니다. 복합 컴포넌트의 경우, 마운트 해제가 생명주기 메서드를 재귀적으로 호출합니다.
 
 ```js
 class CompositeComponent {
@@ -457,7 +459,7 @@ class CompositeComponent {
 }
 ```
 
-For `DOMComponent`, unmounting tells each child to unmount:
+`DOMComponent`의 경우 마운트 해제는 각 자식에게 마운트 해제를 지시합니다.
 
 ```js
 class DOMComponent {
@@ -472,9 +474,9 @@ class DOMComponent {
 }
 ```
 
-In practice, unmounting DOM components also removes the event listeners and clears some caches, but we will skip those details.
+실제로 DOM 컴포넌트를 마운트 해제하면 이벤트 리스너가 제거되고 캐시가 일부 지워지지만 이러한 자세한 내용은 넘어가겠습니다.
 
-We can now add a new top-level function called `unmountTree(containerNode)` that is similar to `ReactDOM.unmountComponentAtNode()`:
+이제 `ReactDOM.unmountComponentAtNode()`와 유사한 `unmountTree(containerNode)`라는 새로운 최상위 함수를 추가할 수 있습니다.
 
 ```js
 function unmountTree(containerNode) {
@@ -489,7 +491,7 @@ function unmountTree(containerNode) {
 }
 ```
 
-In order for this to work, we need to read an internal root instance from a DOM node. We will modify `mountTree()` to add the `_internalInstance` property to the root DOM node. We will also teach `mountTree()` to destroy any existing tree so it can be called multiple times:
+이것이 작동하려면 DOM 노드에서 내부 루트 인스턴스를 읽어야 합니다. `_internalInstance` 속성을 루트 DOM 노드에 추가하도록 `mountTree()`를 수정합니다. 또한 `mountTree()`를 가르쳐 기존 트리를 여러 번 파괴할 수 있도록 할 것입니다.
 
 ```js
 function mountTree(element, containerNode) {
@@ -514,11 +516,11 @@ function mountTree(element, containerNode) {
 }
 ```
 
-Now, running `unmountTree()`, or running `mountTree()` repeatedly, removes the old tree and runs the `componentWillUnmount()` lifecycle method on components.
+이제 `mountTree()` 또는 `unmountTree()`를 반복적으로 실행하면 오래된 트리가 제거되고 컴포넌트에서 `componentWillUnmount()` 생명주기 메서드가 실행됩니다.
 
-### Updating {#updating}
+### 업데이트 {#updating}
 
-In the previous section, we implemented unmounting. However React wouldn't be very useful if each prop change unmounted and mounted the whole tree. The goal of the reconciler is to reuse existing instances where possible to preserve the DOM and the state:
+이전 섹션에서, 마운트 해제를 구현했습니다. 그러나 각각의 prop 변화가 전체 트리를 마운트 해제하고 마운트한다면 React는 그다지 유용하지 않을 것입니다. 조정자의 목표는 DOM과 상태를 보전하기 위해 가능한 경우 기존 인스턴스를 재사용 하는 것입니다.
 
 ```js
 var rootEl = document.getElementById('root');
@@ -528,7 +530,7 @@ mountTree(<App />, rootEl);
 mountTree(<App />, rootEl);
 ```
 
-We will extend our internal instance contract with one more method. In addition to `mount()` and `unmount()`, both `DOMComponent` and `CompositeComponent` will implement a new method called `receive(nextElement)`:
+내부 인스턴스 계약을 메서드 하나를 추가해서 확장할 것입니다. `mount()`와 `unmount()`외에도 , `DOMComponent` `CompositeComponent` 모두 `receive(nextElement)`라고 불리는 새로운 메서드를 구현합니다.
 
 ```js
 class CompositeComponent {
@@ -548,15 +550,15 @@ class DOMComponent {
 }
 ```
 
-Its job is to do whatever is necessary to bring the component (and any of its children) up to date with the description provided by the `nextElement`.
+`nextElement`에 의해 제공된 설명을 통해 컴포넌트(또한 어떠한 자식)를 최신 상태로 만들기 위해 필요한 모든 것을 하는게 이 메서드의 일입니다.
 
-This is the part that is often described as "virtual DOM diffing" although what really happens is that we walk the internal tree recursively and let each internal instance receive an update.
+실제로 일어나는 일은 내부 트리를 반복적으로 순회하고 각 내부 인스턴스가 업데이트를 받도록 하는 것이지만, 이 부분은 종종 "가상 DOM 비교"로 설명됩니다.
 
-### Updating Composite Components {#updating-composite-components}
+### 복합 컴포넌트의 업데이트 {#updating-composite-components}
 
-When a composite component receives a new element, we run the `componentWillUpdate()` lifecycle method.
+복합 컴포넌트가 새로운 엘리먼트를 받으면 `componentWillUpdate()` 생명주기 메서드를 실행합니다.
 
-Then we re-render the component with the new props, and get the next rendered element:
+그런 다음 새로운 props와 함께 컴포넌트를 다시 렌더링 하고, 다음 렌더링 된 엘리먼트를 얻습니다.
 
 ```js
 class CompositeComponent {
@@ -594,9 +596,9 @@ class CompositeComponent {
     // ...
 ```
 
-Next, we can look at the rendered element's `type`. If the `type` has not changed since the last render, the component below can also be updated in place.
+그 다음, 렌더링된 엘리먼트의 `type`을 살펴 볼 수 있습니다. 마지막 렌더링 이후 `type`이 변경되지 않았다면 아래 컴포넌트도 업데이트할 수 있습니다.
 
-For example, if it returned `<Button color="red" />` the first time, and `<Button color="blue" />` the second time, we can just tell the corresponding internal instance to `receive()` the next element:
+예를 들어, 처음에 `<Button color="red" />`를 반환하고 두 번째로  `<Button color="blue" />`를 반환했다면, 대응되는 내부 인스턴스에게 다음 엘리먼트를 `receive()`하라고 말해줄 수 있습니다.
 
 ```js
     // ...
@@ -611,9 +613,9 @@ For example, if it returned `<Button color="red" />` the first time, and `<Butto
     // ...
 ```
 
-However, if the next rendered element has a different `type` than the previously rendered element, we can't update the internal instance. A `<button>` can't "become" an `<input>`.
+그러나, 다음 렌더링된 엘리먼트가 이전에 렌더링된 엘리먼트와 다른 `type`을 가지고 있다면, 우리는 내부 인스턴스를 업데이트할 수 없습니다.  `<button>`은  `<input>`이 될 수 없습니다.
 
-Instead, we have to unmount the existing internal instance and mount the new one corresponding to the rendered element type. For example, this is what happens when a component that previously rendered a `<button />` renders an `<input />`:
+대신에, 기존 내부 인스턴스를 마운트 해제 하고 렌더링된 엘리먼트 타입에 해당하는 새 인스턴스를 마운트 해야 합니다. 예를 들어 이전에 `<button />`을 렌더링한 컴포넌트가 `<input />`을 렌더링할 때 다음과 같이 됩니다.
 
 ```js
     // ...
@@ -640,11 +642,11 @@ Instead, we have to unmount the existing internal instance and mount the new one
 }
 ```
 
-To sum this up, when a composite component receives a new element, it may either delegate the update to its rendered internal instance, or unmount it and mount a new one in its place.
+이를 요약하면 복합 컴포넌트가 새로운 엘리먼트를 수신할 때, 해당 컴포넌트는 렌더링된 내부 인스턴스에 업데이트를 넘기거나, 마운트 해제 하여 그 위치에 컴포넌트를 마운트 할 수 있습니다.
 
-There is another condition under which a component will re-mount rather than receive an element, and that is when the element's `key` has changed. We don't discuss `key` handling in this document because it adds more complexity to an already complex tutorial.
+엘리먼트를 받는 대신 컴포넌트를 다시 마운트하는 또 다른 조건이 있는데, 엘리먼트의 `key`가 변경될 때입니다. 이미 복잡한 자습서를 더 복잡하게 만들기 때문에 이 문서에서 `key` 처리에 대해서는 논의하지 않습니다.
 
-Note that we needed to add a method called `getHostNode()` to the internal instance contract so that it's possible to locate the platform-specific node and replace it during the update. Its implementation is straightforward for both classes:
+특정 플랫폼 관련 노드를 찾아 업데이트하는 동안 교체할 수 있도록 내부 인스턴스 계약에 `getHostNode()`라는 메서드를 추가해야 한다는 점을 주의해주세요. 구현은 두 클래스 모두에서 간단합니다.
 
 ```js
 class CompositeComponent {
@@ -662,13 +664,13 @@ class DOMComponent {
 
   getHostNode() {
     return this.node;
-  }  
+  }
 }
 ```
 
-### Updating Host Components {#updating-host-components}
+### 호스트 컴포넌트 업데이트 {#updating-host-components}
 
-Host component implementations, such as `DOMComponent`, update differently. When they receive an element, they need to update the underlying platform-specific view. In case of React DOM, this means updating the DOM attributes:
+`DOMComponent`와 같은 호스트 컴포넌트 구현은 다르게 업데이트 됩니다. 엘리먼트를 수신할 때 특정 플랫폼 관련 뷰를 업데이트해야 합니다. React DOM의 경우 DOM 특성을 업데이트 하는 것을 의미합니다.
 
 ```js
 class DOMComponent {
@@ -678,7 +680,7 @@ class DOMComponent {
     var node = this.node;
     var prevElement = this.currentElement;
     var prevProps = prevElement.props;
-    var nextProps = nextElement.props;    
+    var nextProps = nextElement.props;
     this.currentElement = nextElement;
 
     // Remove old attributes.
@@ -697,11 +699,11 @@ class DOMComponent {
     // ...
 ```
 
-Then, host components need to update their children. Unlike composite components, they might contain more than a single child.
+그리고 나서 호스트 컴포넌트는 자식들을 업데이트 할 필요가 있습니다. 복합 컴포넌트와 다르게 둘 이상의 자식이 포함될 수 있습니다.
 
-In this simplified example, we use an array of internal instances and iterate over it, either updating or replacing the internal instances depending on whether the received `type` matches their previous `type`. The real reconciler also takes element's `key` in the account and track moves in addition to insertions and deletions, but we will omit this logic.
+단순화된 예시에서 내부 인스턴스 배열을 사용하며, 수신된 `type`과 이전 `type`의 일치 여부에 따라 내부 인스턴스를 업데이트하거나 교체하는 방식으로 순회합니다. 실제 재조정자는 삽입과 삭제 외에 엘리먼트의 `key`를 가진 뒤 변경 여부를 추적하지만 여기서는 관련 코드를 생략했습니다.
 
-We collect DOM operations on children in a list so we can execute them in batch:
+리스트에서 자식에 대한 DOM 연산을 수집하여 일괄적으로 실행할 수 있도록 합니다.
 
 ```js
     // ...
@@ -785,7 +787,7 @@ We collect DOM operations on children in a list so we can execute them in batch:
     // ...
 ```
 
-As the last step, we execute the DOM operations. Again, the real reconciler code is more complex because it also handles moves:
+마지막 단계로, DOM 연산을 실행합니다. 또한, 실제 재조정자 코드는 이동도 처리하기 때문에 매우 복잡합니다.
 
 ```js
     // ...
@@ -809,11 +811,11 @@ As the last step, we execute the DOM operations. Again, the real reconciler code
 }
 ```
 
-And that is it for updating host components.
+그리고 그것은 호스트 컴포넌트를 업데이트하기 위한 것입니다.
 
-### Top-Level Updates {#top-level-updates}
+### 최상위 업데이트 {#top-level-updates}
 
-Now that both `CompositeComponent` and `DOMComponent` implement the `receive(nextElement)` method, we can change the top-level `mountTree()` function to use it when the element `type` is the same as it was the last time:
+이제 `CompositeComponent`와 `DOMComponent` 모두 `receive(nextElement)` 메서드를 구현하므로 엘리먼트 `type`이 이전과 같을 때 사용하도록 최상위 `mountTree()` 함수를 변경할 수 있습니다.
 
 ```js
 function mountTree(element, containerNode) {
@@ -838,7 +840,7 @@ function mountTree(element, containerNode) {
 }
 ```
 
-Now calling `mountTree()` two times with the same type isn't destructive:
+이제 동일한 타입으로 `mountTree()`를 두 번 호출해도 파괴적이지 않습니다.
 
 ```js
 var rootEl = document.getElementById('root');
@@ -850,49 +852,49 @@ mountTree(<App />, rootEl);
 
 These are the basics of how React works internally.
 
-### What We Left Out {#what-we-left-out}
+### 우리가 놓치고 간 것들 {#what-we-left-out}
 
-This document is simplified compared to the real codebase. There are a few important aspects we didn't address:
+이 문서는 실제 코드베이스에 비해 단순합니다. 우리가 다루지 않은 몇 가지 중요한 측면들이 있습니다.
 
-* Components can render `null`, and the reconciler can handle "empty slots" in arrays and rendered output.
+* 컴포넌트는 `null`을 렌더링할 수 있으며, 재조정자는 배열 및 렌더링된 출력에서 "빈 슬롯"을 처리할 수 있습니다.
 
-* The reconciler also reads `key` from the elements, and uses it to establish which internal instance corresponds to which element in an array. A bulk of complexity in the actual React implementation is related to that.
+* 재조정자는 또한 엘리먼트에서 `key`를 읽고, 이를 사용하여 배열의 엘리먼트와 일치하는 내부 인스턴스를 설정합니다. 실제 React 구현의 많은 복잡성은 이와 관련이 있습니다.
 
-* In addition to composite and host internal instance classes, there are also classes for "text" and "empty" components. They represent text nodes and the "empty slots" you get by rendering `null`.
+* 복합 및 호스트 내부 인스턴스 class 외에도 "text" 및 "empty" 컴포넌트에 대한 class도 있습니다. 텍스트 노드와 `null`을 렌더링해서 얻는 "empty slots"을 나타냅니다.
 
-* Renderers use [injection](/docs/codebase-overview.html#dynamic-injection) to pass the host internal class to the reconciler. For example, React DOM tells the reconciler to use `ReactDOMComponent` as the host internal instance implementation.
+* 렌더러는 [주입](/docs/codebase-overview.html#dynamic-injection)을 사용하여 재조정자에게 호스트 내부 class를 전달합니다. 예를 들어, React DOM은 재조정자에게 호스트 내부 인스턴스 구현으로 `ReactDOMComponent`를 사용하도록 지시합니다.
 
-* The logic for updating the list of children is extracted into a mixin called `ReactMultiChild` which is used by the host internal instance class implementations both in React DOM and React Native.
+* 자식 목록을 업데이트하는 논리는 React DOM과 React Native에서 호스트 내부 인스턴스 class 구현에 사용되는 `ReactMultiChild`라는 mixin으로 추출됩니다.
 
-* The reconciler also implements support for `setState()` in composite components. Multiple updates inside event handlers get batched into a single update.
+* 재조정자는 복합 컴포넌트의 `setState()`에 대한 지원도 구현합니다. 이벤트 핸들러 내부의 여러 업데이트가 단일 업데이트로 일괄 처리됩니다.
 
-* The reconciler also takes care of attaching and detaching refs to composite components and host nodes.
+* 재조정자는 또한 복합 컴포넌트 및 호스트 노드에 ref를 연결 및 분리하는 작업을 수행합니다.
 
-* Lifecycle methods that are called after the DOM is ready, such as `componentDidMount()` and `componentDidUpdate()`, get collected into "callback queues" and are executed in a single batch.
+* `componentDidMount()` 및 `componentDidUpdate()`와 같이 DOM이 준비된 후 호출되는 생명주기 메서드는 "콜백 큐"로 수집되어 단일 배치로 실행됩니다.
 
-* React puts information about the current update into an internal object called "transaction". Transactions are useful for keeping track of the queue of pending lifecycle methods, the current DOM nesting for the warnings, and anything else that is "global" to a specific update. Transactions also ensure React "cleans everything up" after updates. For example, the transaction class provided by React DOM restores the input selection after any update.
+* React는 현재 업데이트에 대한 정보를 "트랜잭션"이라고 하는 내부 객체에 넣습니다. 트랜잭션은 보류 중인 생명주기 메서드 대기열의 추적, 현재 DOM 중첩에 대한 경고 및 특정 업데이트에 "전역적인" 다른 모든 것을 추적하는 데 유용합니다. 또한 트랜잭션는 업데이트 후 React가 모든 것을 정리하도록 보장합니다. 예를 들어 React DOM에서 제공하는 트랜잭션 class는 업데이트 후 입력 선택을 복원합니다.
 
-### Jumping into the Code {#jumping-into-the-code}
+### 코드에 대해 알아보기 {#jumping-into-the-code}
 
-* [`ReactMount`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/dom/client/ReactMount.js) is where the code like `mountTree()` and `unmountTree()` from this tutorial lives. It takes care of mounting and unmounting top-level components. [`ReactNativeMount`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/native/ReactNativeMount.js) is its React Native analog.
-* [`ReactDOMComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/dom/shared/ReactDOMComponent.js) is the equivalent of `DOMComponent` in this tutorial. It implements the host component class for React DOM renderer. [`ReactNativeBaseComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/native/ReactNativeBaseComponent.js) is its React Native analog.
-* [`ReactCompositeComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactCompositeComponent.js) is the equivalent of `CompositeComponent` in this tutorial. It handles calling user-defined components and maintaining their state.
-* [`instantiateReactComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/instantiateReactComponent.js) contains the switch that picks the right internal instance class to construct for an element. It is equivalent to `instantiateComponent()` in this tutorial.
+* [`ReactMount`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/dom/client/ReactMount.js)는 이 자습서에서 `mountTree()` 및 `unmountTree()`와 같은 코드가 사용되는 곳입니다. 최상위 컴포넌츠의 마운트과 마운트 해제을 관리합니다. [`ReactNativeMount`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/native/ReactNativeMount.js) 는 React Native 아날로그입니다.
+* [`ReactDOMComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/dom/shared/ReactDOMComponent.js)는 본 자습서의 `DOMComponent`와 동등합니다. React DOM 렌더러에 대한 호스트 컴포넌트 class를 구현합니다. [`ReactNativeBaseComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/native/ReactNativeBaseComponent.js)는 React Native 아날로그 입니다.
+* [`ReactCompositeComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactCompositeComponent.js)는 본 자습서의 `CompositeComponent`와 동등한 것입니다. 사용자 정의 컴포넌트 호출 및 상태 유지 관리 작업을 처리합니다.
+* [`instantiateReactComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/instantiateReactComponent.js)에는 엘리먼트에 대해 구성할 올바른 내부 인스턴스 class를 선택하는 스위치가 포함되어 있습니다. 이 자습서에서는 `instantiateComponent()`와 같습니다.
 
-* [`ReactReconciler`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactReconciler.js) is a wrapper with `mountComponent()`, `receiveComponent()`, and `unmountComponent()` methods. It calls the underlying implementations on the internal instances, but also includes some code around them that is shared by all internal instance implementations.
+* [`ReactReconciler`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactReconciler.js)는 `mountComponent()`, `receiveComponent()`및 `unmountComponent()` 메서드가 있는 wrapper입니다. 내부 인스턴스에 대한 기본 구현을 호출하지만, 또한 모든 내부 인스턴스 구현에 의해 공유되는 그들 주변의 일부 코드를 포함합니다.
 
-* [`ReactChildReconciler`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactChildReconciler.js) implements the logic for mounting, updating, and unmounting children according to the `key` of their elements.
+* [`ReactChildReconciler`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactChildReconciler.js)는 자식의 엘리먼트 `key`에 따라 자식을 마운트, 업데이트 및 마운트 해제하는 코드를 구현합니다.
 
-* [`ReactMultiChild`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactMultiChild.js) implements processing the operation queue for child insertions, deletions, and moves independently of the renderer.
+* [`ReactMultiChild`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactMultiChild.js)는 자식 삽입, 삭제 및 렌더러와 독립적으로 이동하기 위한 작업 대기열 처리를 구현합니다.
 
-* `mount()`, `receive()`, and `unmount()` are really called `mountComponent()`, `receiveComponent()`, and `unmountComponent()` in React codebase for legacy reasons, but they receive elements.
+* 레거시를 위해 react codebase에 `mount()`, `receive()` 및 `unmount()`를 실제로 각각 `mountComponent()`, `receiveComponent()`, `unmountComponent()`라고 불러지지만, 엘리먼트를 받습니다.
 
-* Properties on the internal instances start with an underscore, e.g. `_currentElement`. They are considered to be read-only public fields throughout the codebase.
+* 내부 인스턴스의 속성은 `_currentElement`와 같이 밑줄로 시작합니다. 코드베이스 전체에 걸쳐 읽기 전용 퍼블릭 필드로 간주됩니다.
 
-### Future Directions {#future-directions}
+### 미래의 방향 {#future-directions}
 
-Stack reconciler has inherent limitations such as being synchronous and unable to interrupt the work or split it in chunks. There is a work in progress on the [new Fiber reconciler](/docs/codebase-overview.html#fiber-reconciler) with a [completely different architecture](https://github.com/acdlite/react-fiber-architecture). In the future, we intend to replace stack reconciler with it, but at the moment it is far from feature parity.
+스택 재조정자는 작업을 중단하거나 청크로 분할할 수 없는 것과 같은 타고난 한계가 있습니다. [완전히 다른 아키텍처](https://github.com/acdlite/react-fiber-architecture)를 가진 [새로운 Fiber 재조정자](/docs/codebase-overview.html#fiber-reconciler)에 대한 작업이 진행 중입니다. 향후, 스택 재조정자를 이것으로 대체하려고 하지만, 현재는 피쳐 패리티와는 거리가 멉니다.
 
-### Next Steps {#next-steps}
+### 다음 단계 {#next-steps}
 
-Read the [next section](/docs/design-principles.html) to learn about the guiding principles we use for React development.
+[다음 섹션](/docs/design-principles.html)을 읽고 React 개발에 사용하는 설계 원칙에 대해 알아봅시다.
