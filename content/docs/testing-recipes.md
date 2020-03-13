@@ -396,14 +396,14 @@ it("changes value when clicked", () => {
 
   // 버튼 엘리먼트에 클릭 이벤트를 트리거 하세요.
   const button = document.querySelector("[data-testid=toggle]");
-  expect(button.innerHTML).toBe("Turn off");
+  expect(button.innerHTML).toBe("Turn on");
 
   act(() => {
     button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
   });
 
   expect(onChange).toHaveBeenCalledTimes(1);
-  expect(button.innerHTML).toBe("Turn on");
+  expect(button.innerHTML).toBe("Turn off");
 
   act(() => {
     for (let i = 0; i < 5; i++) {
