@@ -36,19 +36,11 @@
 
 ### 수정하기
 
-<<<<<<< HEAD
-1. "개발 서버 실행하기" 부분을 따릅니다.
+1. ["개발 서버 실행하기"](#개발-서버-실행하기) 부분을 따릅니다.
 1. 파일을 저장하고 브라우저에서 확인합니다.
     1.`src`안에 있는 React 컴포넌트가 수정될 경우 hot-reload가 적용됩니다.
     1. `content`안에 있는 마크다운 파일이 수정될 경우 hot-reload가 적용됩니다.
     1. 플러그인을 사용하는 경우, `.cache` 디렉토리를 제거한 후 서버를 재시작해야 합니다.
-=======
-1. Follow the ["Running locally"](#running-locally) instructions
-1. Save the files and check in the browser
-  1. Changes to React components in `src` will hot-reload
-  1. Changes to markdown files in `content` will hot-reload
-  1. If working with plugins, you may need to remove the `.cache` directory and restart the server
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 ### 수정사항 체크하기
 
