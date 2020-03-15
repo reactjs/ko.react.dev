@@ -69,7 +69,7 @@ function Counter({initialCount}) {
 
 "+"와 "-" 버튼은 함수 형식을 사용하고 있습니다. 이것은 갱신된 값이 갱신되기 이전의 값을 바탕으로 계산되기 때문입니다. 반면, "Reset" 버튼은 카운트를 항상 0으로 설정하기 때문에 일반적인 형식을 사용합니다.
 
-업데이트 함수가 정확히 동일한 값을 반환한다면 바로 뒤에 일어날 리렌더링은 완전히 건너뛰게 됩니다.
+업데이트 함수가 현재 상태와 정확히 동일한 값을 반환한다면 바로 뒤에 일어날 리렌더링은 완전히 건너뛰게 됩니다.
 
 > 주의
 >
@@ -436,7 +436,7 @@ function TextInputWithFocusButton() {
 useImperativeHandle(ref, createHandle, [deps])
 ```
 
-`useImperativeHandle`은 `ref`를 사용할 때 부모 컴포넌트에 노출되는 인스턴스 값을 사용자화(customizes)합니다. 항상 그렇듯이, 대부분의 경우 ref를 사용한 명령형 코드는 피해야 합니다. `useImperativeHandle`는 `forwardRef`와 더불어 사용하세요.
+`useImperativeHandle`은 `ref`를 사용할 때 부모 컴포넌트에 노출되는 인스턴스 값을 사용자화(customizes)합니다. 항상 그렇듯이, 대부분의 경우 ref를 사용한 명령형 코드는 피해야 합니다. `useImperativeHandle`는 [`forwardRef`](/docs/react-api.html#reactforwardref)와 더불어 사용하세요.
 
 ```js
 function FancyInput(props, ref) {
