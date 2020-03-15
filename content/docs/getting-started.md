@@ -36,11 +36,7 @@ React는 처음부터 점진적으로 적용할 수 있도록 설계되었으며
 
 ### 온라인 플레이그라운드 {#online-playgrounds}
 
-<<<<<<< HEAD
-React를 사용하는데 관심이 있다면, 온라인 코드 편집기를 사용할 수 있습니다. [CodePen](codepen://hello-world) 이나 [CodeSandbox](https://codesandbox.io/s/new) 혹은 [Glitch](https://glitch.com/edit/#!/remix/starter-react-template)에서 Hello World 템플릿을 사용해 보세요.
-=======
-If you're interested in playing around with React, you can use an online code playground. Try a Hello World template on [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new), [Glitch](https://glitch.com/edit/#!/remix/starter-react-template), or [Stackblitz](https://stackblitz.com/fork/react).
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+React를 사용하는데 관심이 있다면, 온라인 코드 편집기를 사용할 수 있습니다. [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new), [Glitch](https://glitch.com/edit/#!/remix/starter-react-template) 또는 [Stackblitz](https://stackblitz.com/fork/react)에서 Hello World 템플릿을 사용해 보세요.
 
 여러분이 사용하고 있는 코드 편집기를 사용하길 원한다면, [이 HTML 파일을 다운로드](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)하고 편집한 다음 브라우저의 로컬 파일 시스템에서 열 수도 있습니다. 런타임 코드 변환이 느리므로 간단한 데모에만 이 코드를 사용하는 것이 좋습니다.
 
@@ -87,11 +83,7 @@ React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 �
 
 ### 실용적인 자습서 {#practical-tutorial}
 
-<<<<<<< HEAD
 **직접 구현해보면서 학습하는 것**을 원하시면, [실용적인 자습서](/tutorial/tutorial.html)을 살펴보세요. 본 자습서에서는 React로 tic-tac-toe 게임을 만들어 봅니다. 게임 제작에는 관심이 없어서 이 자습서를 건너뛰고 싶은 마음이 들지도 모릅니다. 하지만 조금만 기다려 보세요. 자습서에서 학습하는 기술은 *대부분의* React 앱을 구축하는 데 있어 기본이며, 이를 완전히 익히면 훨씬 더 깊은 이해할 수 있습니다.
-=======
-If you prefer to **learn by doing,** check out our [practical tutorial](/tutorial/tutorial.html). In this tutorial, we build a tic-tac-toe game in React. You might be tempted to skip it because you're not into building games -- but give it a chance. The techniques you'll learn in the tutorial are fundamental to building *any* React apps, and mastering it will give you a much deeper understanding.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 ### 단계별 가이드 {#step-by-step-guide}
 
