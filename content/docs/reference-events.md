@@ -61,7 +61,6 @@ function onClick(event) {
 
 > 주의
 >
-<<<<<<< HEAD
 > 비동기적으로 이벤트 속성을 참조하고 싶다면 이벤트 객체의 `event.persist()` 를 호출하세요. 합성 이벤트 풀에서 제거되고 사용자의 코드에서 참조가 가능해집니다.
 
 ## 지원하는 이벤트 {#supported-events}
@@ -75,6 +74,7 @@ React는 이벤트들을 다른 브라우저에서도 같은 속성을 가지도
 - [Keyboard 이벤트](#keyboard-events)
 - [Focus 이벤트](#focus-events)
 - [Form 이벤트](#form-events)
+- [Generic 이벤트](#generic-events)
 - [Mouse 이벤트](#mouse-events)
 - [Pointer 이벤트](#pointer-events)
 - [Selection 이벤트](#selection-events)
@@ -86,33 +86,6 @@ React는 이벤트들을 다른 브라우저에서도 같은 속성을 가지도
 - [Animation 이벤트](#animation-events)
 - [Transition 이벤트](#transition-events)
 - [기타 이벤트](#other-events)
-=======
-> If you want to access the event properties in an asynchronous way, you should call `event.persist()` on the event, which will remove the synthetic event from the pool and allow references to the event to be retained by user code.
-
-## Supported Events {#supported-events}
-
-React normalizes events so that they have consistent properties across different browsers.
-
-The event handlers below are triggered by an event in the bubbling phase. To register an event handler for the capture phase, append `Capture` to the event name; for example, instead of using `onClick`, you would use `onClickCapture` to handle the click event in the capture phase.
-
-- [Clipboard Events](#clipboard-events)
-- [Composition Events](#composition-events)
-- [Keyboard Events](#keyboard-events)
-- [Focus Events](#focus-events)
-- [Form Events](#form-events)
-- [Generic Events](#generic-events)
-- [Mouse Events](#mouse-events)
-- [Pointer Events](#pointer-events)
-- [Selection Events](#selection-events)
-- [Touch Events](#touch-events)
-- [UI Events](#ui-events)
-- [Wheel Events](#wheel-events)
-- [Media Events](#media-events)
-- [Image Events](#image-events)
-- [Animation Events](#animation-events)
-- [Transition Events](#transition-events)
-- [Other Events](#other-events)
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 * * *
 
@@ -203,19 +176,16 @@ DOMEventTarget relatedTarget
 이벤트 이름
 
 ```
-onChange onInput onInvalid onReset onSubmit 
+onChange onInput onInvalid onReset onSubmit
 ```
 
 onChange 이벤트에 대한 더 자세한 정보는 [폼 문서](/docs/forms.html)를 참조하세요.
 
 * * *
 
-<<<<<<< HEAD
-### Mouse 이벤트 {#mouse-events}
-=======
-### Generic Events {#generic-events}
+### Generic 이벤트 {#generic-events}
 
-Event names:
+이벤트 이름
 
 ```
 onError onLoad
@@ -223,8 +193,7 @@ onError onLoad
 
 * * *
 
-### Mouse Events {#mouse-events}
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+### Mouse 이벤트 {#mouse-events}
 
 이벤트 이름
 
