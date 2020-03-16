@@ -18,9 +18,16 @@ class App extends React.Component {
   }
 }
 
+<<<<<<< HEAD
 // highlight-next-line
 // 이젠 중간에 있는 컴포넌트가 일일이 테마를 넘겨줄 필요가 없습니다.
 function Toolbar(props) {
+=======
+// highlight-range{1,2}
+// A component in the middle doesn't have to
+// pass the theme down explicitly anymore.
+function Toolbar() {
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
   return (
     <div>
       <ThemedButton />
