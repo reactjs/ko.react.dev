@@ -27,7 +27,7 @@ Hook은 JavaScript 함수입니다. 하지만 Hook을 사용할 때는 두 가�
 
 우리는 이 두 가지 규칙을 강제하는 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks)  라는 ESLint 플러그인을 출시했습니다. 이 플러그인을 프로젝트에 추가할 수 있습니다.
 
-This plugin is included by default in [Create React App](/docs/create-a-new-react-app.html#create-react-app).
+이 플러그인은 [Create React App](/docs/create-a-new-react-app.html#create-react-app)에 기본적으로 포함되어 있습니다.
 
 ```bash
 npm install eslint-plugin-react-hooks --save-dev
@@ -48,13 +48,7 @@ npm install eslint-plugin-react-hooks --save-dev
 }
 ```
 
-<<<<<<< HEAD
-이 플러그인은 [Create React App](/docs/create-a-new-react-app.html#create-react-app)에 기본적으로 포함되어 있습니다.
-
 **어떻게 [나만의 Hook](/docs/hooks-custom.html)을 작성할 수 있는지 설명하는 다음 장으로 지금 넘어가도 좋습니다.** 이번 장에서는 계속해서 이러한 규칙들의 논리적 근거에 대해 설명할 예정입니다.
-=======
-**You can skip to the next page explaining how to write [your own Hooks](/docs/hooks-custom.html) now.** On this page, we'll continue by explaining the reasoning behind these rules.
->>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 ## 설명 {#explanation}
 
