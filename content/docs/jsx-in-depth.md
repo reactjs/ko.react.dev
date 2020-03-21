@@ -227,7 +227,7 @@ Prop에 어떤 값도 넘기지 않을 경우, 기본값은 `true`입니다. 아
 <MyTextBox autocomplete={true} />
 ```
 
-일반적으로 위의 예시와 같은 방식으로 사용하지 않는 것을 권장하는데 이는 [ES6 object shorthand](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer#ECMAScript_2015의_새로운_표기법) 와 헷갈릴 수 있기 때문입니다. `{foo}` 는 `{foo: true}` 가 아닌 `{foo: foo}`와 동일합니다. 이는 HTML 동작 방식과 일치하기 위해 남겨두었습니다.
+일반적으로 prop에 대한 값을 전달하지 않는 것을 권장하지 않는데 이는 [ES6 object shorthand](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer#ECMAScript_2015의_새로운_표기법) 와 헷갈릴 수 있기 때문입니다. `{foo}` 는 `{foo: true}` 가 아닌 `{foo: foo}`와 동일합니다. 이는 HTML 동작 방식과 일치하기 위해 남겨두었습니다.
 
 ### 속성 펼치기 {#spread-attributes}
 

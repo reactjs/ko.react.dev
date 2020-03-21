@@ -31,7 +31,7 @@ function Example() {
 >주의
 >
 >React 16.8.0은 Hook를 지원하는 첫 번째 배포입니다. 업그레이드 할 때 React DOM을 포함한 모든 패키지를 업데이트 하는 것을 잊지 마세요.
->React Native는 [v0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059)부터 Hook을 지원합니다.
+>React Native는 [v0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059)부터 Hook을 지원합니다.
 
 ## 소개 영상 {#video-introduction}
 

@@ -71,7 +71,7 @@ Starting with 16.8.0, React includes a stable implementation of React Hooks for:
 
 Note that **to enable Hooks, all React packages need to be 16.8.0 or higher**. Hooks won't work if you forget to update, for example, React DOM.
 
-[React Native 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059) and above support Hooks.
+[React Native 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) and above support Hooks.
 
 ### Do I need to rewrite all my class components? {#do-i-need-to-rewrite-all-my-class-components}
 
@@ -589,7 +589,7 @@ function ProductPage({ productId }) {
   const [product, setProduct] = useState(null);
 
   async function fetchProduct() {
-    const response = await fetch('http://myapi/product' + productId); // Uses productId prop
+    const response = await fetch('http://myapi/product/' + productId); // Uses productId prop
     const json = await response.json();
     setProduct(json);
   }
@@ -610,7 +610,7 @@ function ProductPage({ productId }) {
   useEffect(() => {
     // By moving this function inside the effect, we can clearly see the values it uses.
     async function fetchProduct() {
-      const response = await fetch('http://myapi/product' + productId);
+      const response = await fetch('http://myapi/product/' + productId);
       const json = await response.json();
       setProduct(json);
     }

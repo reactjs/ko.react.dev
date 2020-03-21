@@ -15,12 +15,6 @@ redirect_from:
 
 React 앱을 개발하는데 있어서 아래 관례들의 사용을 반드시 추천하지는 않습니다. 대부분의 관례들은 이전에 많이 사용된 것들이며, 차차 수정될 것입니다.
 
-### 외부 의존성 {#external-dependencies}
-
-React는 외부 의존성을 거의 가지고 있지 않습니다. `require()` 함수는 통상적으로 React 내부의 파일을 참조합니다. 하지만 몇 가지 다음과 같은 예외가 존재합니다.
-
-[Relay](https://github.com/facebook/relay) 라이브러리 같은 몇 가지 유틸리티를 사용하기 위해, React는 [fbjs](https://github.com/facebook/fbjs)에 대한 의존성을 가지고 있습니다. 대신 React는 Node 환경에서 작은 모듈에 의존하지 않습니다. 이를 통해 페이스북 개발자들은 필요할 때마다 React를 수정할 수 있습니다. fbjs의 어떤 유틸리티도 public API로 개발되지 않았으며, 오직 React와 같은 페이스북 프로젝트에서만 사용됩니다.
-
 ### 최상위 폴더 {#top-level-folders}
 
 [React 저장소](https://github.com/facebook/react)를 클론하게 되면, 다음과 같은 몇 개의 최상위 폴더를 볼 수 있습니다.
@@ -171,7 +165,7 @@ React 코어의 소스 코드는 [`packages/react`](https://github.com/facebook/
 
 ### 렌더러 {#renderers}
 
-React는 원래 DOM을 대상으로 하여 개발됐지만, 이후 [React 네이티브](https://facebook.github.io/react-native/)를 통해 네이티브 플랫폼 또한 지원하게 되었습니다. 본 문단은 React 내부의 '렌더러'에 대해 간략히 소개합니다.
+React는 원래 DOM을 대상으로 하여 개발됐지만, 이후 [React 네이티브](https://reactnative.dev/)를 통해 네이티브 플랫폼 또한 지원하게 되었습니다. 본 문단은 React 내부의 '렌더러'에 대해 간략히 소개합니다.
 
 **렌더러는 React 트리의 플랫폼 종속적인 변환 방법을 관리합니다.**
 
