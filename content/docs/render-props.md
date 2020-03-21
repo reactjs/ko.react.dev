@@ -127,13 +127,8 @@ class MouseWithCat extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}> 
-      
-=======
       <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
->>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
         {/*
           여기서 <p>를 <Cat>으로 바꿀 수 있습니다. ... 그러나 이 경우
           Mouse 컴포넌트를 사용할 때 마다 별도의 <MouseWithSomethingElse>
@@ -188,13 +183,8 @@ class Mouse extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
-   
-=======
       <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
->>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
         {/*
           <Mouse>가 무엇을 렌더링하는지에 대해 명확히 코드로 표기하는 대신,
           `render` prop을 사용하여 무엇을 렌더링할지 동적으로 결정할 수 있습니다.
