@@ -167,16 +167,10 @@ class Parent extends React.Component {
 
 ```javascript{2,3,6,13}
 function CustomTextInput(props) {
-<<<<<<< HEAD
   // textInput은 ref 어트리뷰트를 통해 전달되기 위해서
   // 이곳에서 정의되어야만 합니다.
   const textInput = useRef(null);
 
-=======
-  // textInput must be declared here so the ref can refer to it
-  const textInput = useRef(null);
-  
->>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
   function handleClick() {
     textInput.current.focus();
   }
