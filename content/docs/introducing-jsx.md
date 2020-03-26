@@ -177,8 +177,8 @@ const element = {
 
 이러한 객체를 "React 엘리먼트"라고 하며, 이를 화면에 표시하려는 항목에 대한 설명이라고 생각할 수 있습니다. React는 이러한 객체를 읽은 후 DOM을 구성하고 최신으로 유지하는 데 이러한 객체를 사용합니다.
 
-다음 섹션에서는 DOM에 React 엘리먼트를 렌더링하는 방법에 대해 살펴보겠습니다.
+[다음 섹션](/docs/rendering-elements.html)에서는 DOM에 React 엘리먼트를 렌더링하는 방법에 대해 살펴보겠습니다.
 
 >**팁**
 >
-> ES6 및 JSX 코드가 올바르게 표시되도록 편집기에 ["Babel" 언어 설정](https://babeljs.io/docs/editors)을 사용하는 것을 권장합니다. 현재 웹 사이트에서는 호환이 가능한 [Oceanic Next](https://github.com/voronianski/oceanic-next-color-scheme) 컬러 스키마를 사용하고 있습니다.
+> ES6 및 JSX 코드가 올바르게 표시되도록 편집기에 ["Babel" 언어 설정](https://babeljs.io/docs/editors)을 사용하는 것을 권장합니다.

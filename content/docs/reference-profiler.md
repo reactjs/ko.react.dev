@@ -7,11 +7,11 @@ permalink: docs/profiler.html
 ---
 
 The `Profiler` measures how often a React application renders and what the "cost" of rendering is.
-Its purpose is to help identify parts of an application that are slow and may benefit from [optimizations such as memoization](https://reactjs.org/docs/hooks-faq.html#how-to-memoize-calculations).
+Its purpose is to help identify parts of an application that are slow and may benefit from [optimizations such as memoization](/docs/hooks-faq.html#how-to-memoize-calculations).
 
 > Note:
 >
-> Profiling adds some additional overhead, so **it is disabled in [the production build](https://reactjs.org/docs/optimizing-performance.html#use-the-production-build)**.
+> Profiling adds some additional overhead, so **it is disabled in [the production build](/docs/optimizing-performance.html#use-the-production-build)**.
 >
 > To opt into production profiling, React provides a special production build with profiling enabled.
 > Read more about how to use this build at [fb.me/react-profiling](https://fb.me/react-profiling)
@@ -110,7 +110,7 @@ Timestamp when React began rendering the current update.
 Timestamp when React committed the current update.
 This value is shared between all profilers in a commit, enabling them to be grouped if desirable.
 * **`interactions: Set`** -
-Set of ["interactions"](https://fb.me/react-interaction-tracing) that were being traced the update was scheduled (e.g. when `render` or `setState` were called).
+Set of ["interactions"](https://fb.me/react-interaction-tracing) that were being traced when the update was scheduled (e.g. when `render` or `setState` were called).
 
 > Note
 >

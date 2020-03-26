@@ -130,7 +130,7 @@ expect(root.toJSON()).toMatchSnapshot();
 
 // 몇몇의 다른 props를 업데이트합니다.
 act(() => {
-  root = root.update(<App value={2}/>);
+  root.update(<App value={2}/>);
 })
 
 // root를 검증합니다.

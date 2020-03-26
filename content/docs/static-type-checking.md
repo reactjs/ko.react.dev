@@ -175,7 +175,7 @@ Create React App 은 타입스크립트를 별도의 설정 없이 사용할 수
 다음 명령어를 실행하면 TypeScript를 지원하는 **새로운 프로젝트**를 생성할 수 있습니다.
 
 ```bash
-npx create-react-app my-app --typescript
+npx create-react-app my-app --template typescript
 ```
 
 또한 **이미 존재하는 Create React App 프로젝트**에도 추가할 수 있습니다. [이 문서](https://facebook.github.io/create-react-app/docs/adding-typescript)에서 확인해보세요.
