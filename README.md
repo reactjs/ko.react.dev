@@ -7,17 +7,10 @@
 ### 사전 준비
 
 1. Git
-<<<<<<< HEAD
-1. Node: 8.4.0 이상으로 시작하는 모든 8.x 버전
+1. Node: 12.0.0 이상으로 시작하는 모든 12.x 버전
 1. Yarn: [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/) 참고
 1. 포크한 개인 저장소
 1. 로컬에 클론(Clone) 한 [reactjs.org repo](https://github.com/reactjs/reactjs.org) 개인 저장소
-=======
-1. Node: any 12.x version starting with v12.0.0 or greater
-1. Yarn: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
-1. A fork of the repo (for any contributions)
-1. A clone of the [reactjs.org repo](https://github.com/reactjs/reactjs.org) on your local machine
->>>>>>> 7e4f503d86bee08b88eed77a6c9d06077863a27c
 
 ### 설치
 
