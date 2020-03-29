@@ -2,8 +2,6 @@
 id: static-type-checking
 title: Static Type Checking
 permalink: docs/static-type-checking.html
-prev: typechecking-with-proptypes.html
-next: refs-and-the-dom.html
 ---
 
 [Flow](https://flow.org/), [TypeScript](https://www.typescriptlang.org/)와 같은 정적 타입 체커들은 코드 실행 전에 특정한 타입 문제를 찾아냅니다. 또한 자동완성과 같은 기능을 추가하여 개발자의 작업 흐름을 개선하기도 합니다. 이러한 이유로 큰 코드 베이스에서는 `PropTypes`를 사용하는 대신 Flow 혹은 TypeScript를 사용하는 것을 추천해 드립니다.
@@ -88,13 +86,13 @@ Flow는 코드 주석을 위한 특별한 문법과 함께 JavaScript 언어를 
 [Yarn](https://yarnpkg.com/)을 사용한다면
 
 ```bash
-yarn add --dev babel-preset-flow
+yarn add --dev @babel/preset-flow
 ```
 
 [npm](https://www.npmjs.com/)을 사용한다면
 
 ```bash
-npm install --save-dev babel-preset-flow
+npm install --save-dev @babel/preset-flow
 ```
 
 설치가 됐다면, `flow` 프리셋을 [Babel configuration](https://babeljs.io/docs/usage/babelrc/)에 추가합니다. 예를 들어 Babel을 `.babelrc` 파일에서 설정한다면, 다음과 같이 할 수 있습니다.
@@ -102,7 +100,7 @@ npm install --save-dev babel-preset-flow
 ```js{3}
 {
   "presets": [
-    "flow",
+    "@babel/preset-flow",
     "react"
   ]
 }
@@ -177,7 +175,7 @@ Create React App 은 타입스크립트를 별도의 설정 없이 사용할 수
 다음 명령어를 실행하면 TypeScript를 지원하는 **새로운 프로젝트**를 생성할 수 있습니다.
 
 ```bash
-npx create-react-app my-app --typescript
+npx create-react-app my-app --template typescript
 ```
 
 또한 **이미 존재하는 Create React App 프로젝트**에도 추가할 수 있습니다. [이 문서](https://facebook.github.io/create-react-app/docs/adding-typescript)에서 확인해보세요.

@@ -36,7 +36,7 @@ const [state, setState] = useState(initialState);
 상태 유지 값과 그 값을 갱신하는 함수를 반환합니다.
 
 최초로 렌더링을 하는 동안, 반환된 state(`state`)는 첫 번째 전달된 인자(`initialState`)의 값과 같습니다.
-  
+
 `setState` 함수는 state를 갱신할 때 사용합니다. 새 state 값을 받아 컴포넌트 리렌더링을 큐에 등록합니다.
 
 ```js
@@ -51,7 +51,7 @@ setState(newState);
 
 #### 함수적 갱신 {#functional-updates}
 
-이전 state를 사용해서 새로운 state를 계산하는 경우 함수를 `setState` 로 전달할 수 있습니다. 그 함수는 이전 값을 받아 갱신된 값을 반환할 것입니다. 여기에 `setState`의 양쪽 형태를 사용한 카운터 컴포넌트의 예가 있습니다.  
+이전 state를 사용해서 새로운 state를 계산하는 경우 함수를 `setState` 로 전달할 수 있습니다. 그 함수는 이전 값을 받아 갱신된 값을 반환할 것입니다. 여기에 `setState`의 양쪽 형태를 사용한 카운터 컴포넌트의 예가 있습니다.
 
 ```js
 function Counter({initialCount}) {
@@ -60,14 +60,16 @@ function Counter({initialCount}) {
     <>
       Count: {count}
       <button onClick={() => setCount(initialCount)}>Reset</button>
-      <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
       <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
+      <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
     </>
   );
 }
 ```
 
 "+"와 "-" 버튼은 함수 형식을 사용하고 있습니다. 이것은 갱신된 값이 갱신되기 이전의 값을 바탕으로 계산되기 때문입니다. 반면, "Reset" 버튼은 카운트를 항상 0으로 설정하기 때문에 일반적인 형식을 사용합니다.
+
+업데이트 함수가 현재 상태와 정확히 동일한 값을 반환한다면 바로 뒤에 일어날 리렌더링은 완전히 건너뛰게 됩니다.
 
 > 주의
 >
@@ -111,7 +113,7 @@ useEffect(didUpdate);
 
 대신에 `useEffect`를 사용하세요. `useEffect`에 전달된 함수는 화면에 렌더링이 완료된 후에 수행되게 될 것입니다. React의 순수한 함수적인 세계에서 명령적인 세계로의 탈출구로 생각하세요.
 
-기본적으로 동작은 모든 렌더링이 완료된 후에 수행됩니다만, [어떤 값이 변경되었을 때만](#conditionally-firing-an-effect) 실행되게 할 수도 있습니다. 
+기본적으로 동작은 모든 렌더링이 완료된 후에 수행됩니다만, [어떤 값이 변경되었을 때만](#conditionally-firing-an-effect) 실행되게 할 수도 있습니다.
 
 #### effect 정리 {#cleaning-up-an-effect}
 
@@ -127,7 +129,7 @@ useEffect(() => {
 });
 ```
 
-정리 함수는 메모리 누수 방지를 위해 UI에서 컴포넌트를 제거하기 전에 수행됩니다. 더불어, 만약 컴포넌트가 (그냥 일반적으로 수행하는 것처럼) 여러 번 렌더링 된다면 **다음 effect가 수행되기 전에 이전 effect는 정리됩니다**. 위의 예에서, 매 갱신마다 새로운 구독이 생성된다고 볼 수 있습니다. 갱신마다 불필요한 수행이 발생하는 것을 회피하기 위해서는 다음 절을 참고하세요. 
+정리 함수는 메모리 누수 방지를 위해 UI에서 컴포넌트를 제거하기 전에 수행됩니다. 더불어, 만약 컴포넌트가 (그냥 일반적으로 수행하는 것처럼) 여러 번 렌더링 된다면 **다음 effect가 수행되기 전에 이전 effect는 정리됩니다**. 위의 예에서, 매 갱신마다 새로운 구독이 생성된다고 볼 수 있습니다. 갱신마다 불필요한 수행이 발생하는 것을 회피하기 위해서는 다음 절을 참고하세요.
 
 #### effect 타이밍 {#timing-of-effects}
 
@@ -135,7 +137,7 @@ useEffect(() => {
 
 그렇지만, 모든 effect가 지연될 수는 없습니다. 예를 들어 사용자에게 노출되는 DOM 변경은 사용자가 노출된 내용의 불일치를 경험하지 않도록 다음 화면을 다 그리기 이전에 동기화 되어야 합니다. (그 구분이란 개념적으로는 수동적 이벤트 리스너와 능동적 이벤트 리스너의 차이와 유사합니다) 이런 종류의 effect를 위해 React는 [`useLayoutEffect`](#uselayouteffect)라는 추가적인 Hook을 제공합니다. 그것은 `useEffect`와 동일한 시그니처를 가지고 있고 그것이 수행될 때에만 차이가 납니다.
 
-`useEffect`는 브라우저 화면이 다 그려질 때까지 지연됩니다만, 다음 어떤 새로운 렌더링이 발생하기 이전에 발생하는 것도 보장합니다. React는 새로운 갱신을 시작하기 전에 이전 렌더링을 항상 완료하게 됩니다. 
+`useEffect`는 브라우저 화면이 다 그려질 때까지 지연됩니다만, 다음 어떤 새로운 렌더링이 발생하기 이전에 발생하는 것도 보장합니다. React는 새로운 갱신을 시작하기 전에 이전 렌더링을 항상 완료하게 됩니다.
 
 #### 조건부 effect 발생 {#conditionally-firing-an-effect}
 
@@ -180,7 +182,7 @@ const value = useContext(MyContext);
 
 context 객체(`React.createContext`에서 반환된 값)을 받아 그 context의 현재 값을 반환합니다. context의 현재 값은 트리 안에서 이 Hook을 호출하는 컴포넌트에 가장 가까이에 있는 `<MyContext.Provider>`의 `value` prop에 의해 결정됩니다.
 
-컴포넌트에서 가장 가까운 `<MyContext.Provider>`가 갱신되면 이 Hook은 그 `MyContext` provider에게 전달된 가장 최신의 context `value`를 사용하여 렌더러를 트리거 합니다.
+컴포넌트에서 가장 가까운 `<MyContext.Provider>`가 갱신되면 이 Hook은 그 `MyContext` provider에게 전달된 가장 최신의 context `value`를 사용하여 렌더러를 트리거 합니다. 상위 컴포넌트에서 [`React.memo`](/docs/react-api.html#reactmemo) 또는 [`shouldComponentUpdate`](/docs/react-component.html#shouldcomponentupdate)를 사용하더라도 `useContext`를 사용하고 있는 컴포넌트 자체에서부터 다시 렌더링됩니다.
 
 `useContext`로 전달한 인자는 *context 객체 그 자체*이어야 함을 잊지 마세요.
 
@@ -195,6 +197,49 @@ context 객체(`React.createContext`에서 반환된 값)을 받아 그 context�
 >만약 여러분이 Hook 보다 context API에 친숙하다면 `useContext(MyContext)`는 클래스에서의 `static contextType = MyContext` 또는 `<MyContext.Consumer>`와 같다고 보면 됩니다.
 >
 >`useContext(MyContext)`는 context를 *읽고* context의 변경을 구독하는 것만 가능합니다. context의 값을 설정하기 위해서는 여전히 트리의 윗 계층에서의 `<MyContext.Provider>`가 필요합니다.
+
+**useContext를 Context.Provider와 같이 사용해주세요**
+```js{31-36}
+const themes = {
+  light: {
+    foreground: "#000000",
+    background: "#eeeeee"
+  },
+  dark: {
+    foreground: "#ffffff",
+    background: "#222222"
+  }
+};
+
+const ThemeContext = React.createContext(themes.light);
+
+function App() {
+  return (
+    <ThemeContext.Provider value={themes.dark}>
+      <Toolbar />
+    </ThemeContext.Provider>
+  );
+}
+
+function Toolbar(props) {
+  return (
+    <div>
+      <ThemedButton />
+    </div>
+  );
+}
+
+function ThemedButton() {
+  const theme = useContext(ThemeContext);
+
+  return (
+    <button style={{ background: theme.background, color: theme.foreground }}>
+      I am styled by theme context!
+    </button>
+  );
+}
+```
+해당 예시는 [Context 고급 안내서](/docs/context.html)에서 사용했던 예시가 hook으로 수정되었으며 안내서에서 Context를 언제, 어떻게 사용하는지 자세히 알 수 있습니다.
 
 ## 추가 Hook {#additional-hooks}
 
@@ -231,8 +276,8 @@ function Counter() {
   return (
     <>
       Count: {state.count}
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
       <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
     </>
   );
 }
@@ -261,7 +306,7 @@ function Counter() {
 
 초기 state를 조금 지연해서 생성할 수도 있습니다. 이를 위해서는 `init` 함수를 세 번째 인자로 전달합니다. 초기 state는 `init(initialArg)`에 설정될 것입니다.
 
-이것은 reducer 외부에서 초기 state를 계산하는 로직을 추출할 수 있도록 합니다. 또한, 어떤 행동에 대한 대응으로 나중에 state를 재설정하는 데에도 유용합니다. 
+이것은 reducer 외부에서 초기 state를 계산하는 로직을 추출할 수 있도록 합니다. 또한, 어떤 행동에 대한 대응으로 나중에 state를 재설정하는 데에도 유용합니다.
 
 ```js{1-3,11-12,19,24}
 function init(initialCount) {
@@ -290,8 +335,8 @@ function Counter({initialCount}) {
         onClick={() => dispatch({type: 'reset', payload: initialCount})}>
         Reset
       </button>
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
       <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
     </>
   );
 }
@@ -391,7 +436,7 @@ function TextInputWithFocusButton() {
 useImperativeHandle(ref, createHandle, [deps])
 ```
 
-`useImperativeHandle`은 `ref`를 사용할 때 부모 컴포넌트에 노출되는 인스턴스 값을 사용자화(customizes)합니다. 항상 그렇듯이, 대부분의 경우 ref를 사용한 명령형 코드는 피해야 합니다. `useImperativeHandle`는 `forwardRef`와 더불어 사용하세요.
+`useImperativeHandle`은 `ref`를 사용할 때 부모 컴포넌트에 노출되는 인스턴스 값을 사용자화(customizes)합니다. 항상 그렇듯이, 대부분의 경우 ref를 사용한 명령형 코드는 피해야 합니다. `useImperativeHandle`는 [`forwardRef`](/docs/react-api.html#reactforwardref)와 더불어 사용하세요.
 
 ```js
 function FancyInput(props, ref) {
@@ -406,8 +451,8 @@ function FancyInput(props, ref) {
 FancyInput = forwardRef(FancyInput);
 ```
 
-위의 예제에서 `<FancyInput ref={fancyInputRef} />`를 렌더링한 부모 컴포넌트는 `fancyInputRef.current.focus()`를 호출할 수 있습니다.
- 
+위의 예제에서 `<FancyInput ref={inputRef} />`를 렌더링한 부모 컴포넌트는 `inputRef.current.focus()`를 호출할 수 있습니다.
+
 ### `useLayoutEffect` {#uselayouteffect}
 
 이 함수의 시그니처는 `useEffect`와 동일하긴 한데, 모든 DOM 변경 후에 동기적으로 발생합니다. 이것은 DOM에서 레이아웃을 읽고 동기적으로 리렌더링하는 경우에 사용하세요. `useLayoutEffect`의 내부에 예정된 갱신은 브라우저가 화면을 그리기 이전 시점에 동기적으로 수행될 것입니다.

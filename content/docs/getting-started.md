@@ -36,7 +36,7 @@ React는 처음부터 점진적으로 적용할 수 있도록 설계되었으며
 
 ### 온라인 플레이그라운드 {#online-playgrounds}
 
-React를 사용하는데 관심이 있다면, 온라인 코드 편집기를 사용할 수 있습니다. [CodePen](codepen://hello-world) 이나 [CodeSandbox](https://codesandbox.io/s/new) 혹은 [Glitch](https://glitch.com/edit/#!/remix/starter-react-template)에서 Hello World 템플릿을 사용해 보세요.
+React를 사용하는데 관심이 있다면, 온라인 코드 편집기를 사용할 수 있습니다. [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new), [Glitch](https://glitch.com/edit/#!/remix/starter-react-template) 또는 [Stackblitz](https://stackblitz.com/fork/react)에서 Hello World 템플릿을 사용해 보세요.
 
 여러분이 사용하고 있는 코드 편집기를 사용하길 원한다면, [이 HTML 파일을 다운로드](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)하고 편집한 다음 브라우저의 로컬 파일 시스템에서 열 수도 있습니다. 런타임 코드 변환이 느리므로 간단한 데모에만 이 코드를 사용하는 것이 좋습니다.
 
@@ -48,7 +48,7 @@ React를 사용하는데 관심이 있다면, 온라인 코드 편집기를 사�
 
 React 프로젝트를 시작한다면 [스크립트 태그를 사용한 간단한 HTML 페이지](/docs/create-a-new-react-app.html)를 만드는 것이 최고의 방법일 것입니다. 설치하는 데 1분밖에 걸리지 않습니다!
 
-그러나 애플리케이션이 커진다면 보다 통합된 설정을 고려하는 것이 좋습니다. 대규모 애플리케이션에 권장되는 [여러 개의 JavaScript 툴체인들](/docs/create-a-new-react-app.html)이 있습니다. 각 툴체인은 많은 설정 없이 작동할 수 있고 풍부한 React 에코시스템을 최대한 활용할 수 있습니다.
+그러나 애플리케이션이 커진다면 보다 통합된 설정을 고려하는 것이 좋습니다. 대규모 애플리케이션에 권장되는 여러 개의 JavaScript 툴체인들이 있습니다. 각 툴체인은 많은 설정 없이 작동할 수 있고 풍부한 React 에코시스템을 최대한 활용할 수 있습니다. [어떻게 하는지 배워보세요.](/docs/create-a-new-react-app.html)
 
 ## React 배우기 {#learn-react}
 

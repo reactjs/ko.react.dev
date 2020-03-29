@@ -244,7 +244,7 @@ this.inputElement.current.focus();
 
 ```javascript{12-14,26-30}
 class OuterClickExample extends React.Component {
-constructor(props) {
+  constructor(props) {
     super(props);
 
     this.state = { isOpen: false };
@@ -278,13 +278,13 @@ constructor(props) {
     return (
       <div ref={this.toggleContainer}>
         <button onClick={this.onClickHandler}>Select an option</button>
-        {this.state.isOpen ? (
+        {this.state.isOpen && (
           <ul>
             <li>Option 1</li>
             <li>Option 2</li>
             <li>Option 3</li>
           </ul>
-        ) : null}
+        )}
       </div>
     );
   }
@@ -343,13 +343,13 @@ class BlurExample extends React.Component {
                 aria-expanded={this.state.isOpen}>
           Select an option
         </button>
-        {this.state.isOpen ? (
+        {this.state.isOpen && (
           <ul>
             <li>Option 1</li>
             <li>Option 2</li>
             <li>Option 3</li>
           </ul>
-        ) : null}
+        )}
       </div>
     );
   }
@@ -371,7 +371,7 @@ class BlurExample extends React.Component {
 각각의 위젯 타입은 명확한 디자인 패턴이 있으며, 사용자와 사용자 에이전트 모두 특정 방향으로 기능하는 것이 요구됩니다.
 
 - [WAI-ARIA Authoring Practices - 디자인 패턴과 위젯](https://www.w3.org/TR/wai-aria-practices/#aria_ex)
-- [Heydon Pickering - ARIA 예시](https://heydonworks.com/practical_aria_examples/)
+- [Heydon Pickering - ARIA 예시](https://heydonworks.com/article/practical-aria-examples/)
 - [포괄적 컴포넌트](https://inclusive-components.design/)
 
 ## 기타 고려사항 {#other-points-for-consideration}
@@ -460,7 +460,7 @@ Deque Systems에서는 자동으로 애플리케이션의 종단 간(end-to-end)
 일부 브라우저에서는 접근성 트리 안의 각 엘리먼트의 접근성 정보를 손쉽게 확인할 수 있습니다.
 
 - [Firefox에서 접근성 검사기를 사용하는 방법](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
-- [Chrome에서 접근성 검사기를 활성화하는 방법](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
+- [Chrome에서 접근성 검사기를 사용하는 방법](https://developers.google.com/web/tools/chrome-devtools/accessibility/reference#pane)
 - [OS X Safari에서 접근성 검사기를 사용하는 방법](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
 
 ### 스크린 리더 {#screen-readers}

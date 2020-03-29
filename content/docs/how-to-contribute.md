@@ -11,13 +11,20 @@ redirect_from:
 
 React는 페이스북의 첫 번째 오픈소스 프로젝트 중 하나로 매우 활발히 개발하고 있어 [facebook.com] (https://www.facebook.com)의 모든 사람에게 코드를 발송하는 데도 사용하고 있습니다. 우리는 이 프로젝트에 최대한 쉽고 간편하게 기여할 수 있도록 노력하고 있으나 아직 부족한 상태입니다. 이 문서를 읽고 프로젝트 기여의 절차를 알고 궁금증에 대한 의문이 해결되길 바랍니다.
 
+<<<<<<< HEAD
 
 ### [행동 수칙](https://code.facebook.com/codeofconduct) {#code-of-conduct}
+=======
+### [Code of Conduct](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) {#code-of-conduct}
+
+Facebook has adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it. Please read [the full text](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+>>>>>>> upstream/master
 
 Facebook을 채용하는 프로젝트 참가자에게 기대하는 행동 수칙이 있습니다. [전문](https://code.facebook.com/codeofconduct)을 읽어보시면 참가자는 어떤 행동을 취하면 좋은지 또, 어떤 행동이 허용되지 않는지 이해할 수 있습니다.
 
 ### 오픈-개발 {#open-development}
 
+<<<<<<< HEAD
 React에 대한 개발 작업은 모든 [GitHub](https://github.com/facebook/react)에서 이루어집니다. 코어 팀 구성원과 외부 기여자가 모두 같은 검토 과정을 통해 풀 리퀘스트를 보냅니다.
 
 ### branch의 구성 {#branch-organization}
@@ -31,6 +38,27 @@ React에 대한 개발 작업은 모든 [GitHub](https://github.com/facebook/rea
 React는 [시멘틱 버전 관리의 원칙](https://semver.org/)을 따릅니다. 버그 수정용 패치 버전, 새로운 기능을 위한 마이너 버전 및 중요한 변경 사항을 위한 메이저 버전을 출시합니다. 우리가 변경 사항을 반영할 때 사용자가 변경에 대해 미리 알고 코드를 이행하기 위해 마이너 버전에서 비추천 경고합니다.
 
 우리는 모든 풀 리퀘스트에 레이블을 지정합니다. 레이블은 변경되는 내용이 [패치](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-patch), [마이너](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-minor), [메이저](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-major) 버전 중에 해당하는지에 따라 달라집니다. 몇 주 단위 패치 버전, 몇 개월 단위 마이너 버전, 그리고 일 년에 1~2회 메이저 버전을 출시합니다.
+=======
+### Semantic Versioning {#semantic-versioning}
+
+React follows [semantic versioning](https://semver.org/). We release patch versions for critical bugfixes, minor versions for new features or non-essential changes, and major versions for any breaking changes. When we make breaking changes, we also introduce deprecation warnings in a minor version so that our users learn about the upcoming changes and migrate their code in advance. Learn more about our commitment to stability and incremental migration in [our versioning policy](/docs/faq-versioning.html).
+
+Every significant change is documented in the [changelog file](https://github.com/facebook/react/blob/master/CHANGELOG.md).
+
+### Branch Organization {#branch-organization}
+
+Submit all changes directly to the [`master branch`](https://github.com/facebook/react/tree/master). We don't use separate branches for development or for upcoming releases. We do our best to keep `master` in good shape, with all tests passing.
+
+Code that lands in `master` must be compatible with the latest stable release. It may contain additional features, but no breaking changes. We should be able to release a new minor version from the tip of `master` at any time.
+
+### Feature Flags {#feature-flags}
+
+To keep the `master` branch in a releasable state, breaking changes and experimental features must be gated behind a feature flag.
+
+Feature flags are defined in [`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/master/packages/shared/ReactFeatureFlags.js). Some builds of React may enable different sets of feature flags; for example, the React Native build may be configured differently than React DOM. These flags are found in [`packages/shared/forks`](https://github.com/facebook/react/tree/master/packages/shared/forks). Feature flags are statically typed by Flow, so you can run `yarn flow` to confirm that you've updated all the necessary files.
+
+React's build system will strip out disabled feature branches before publishing. A continuous integration job runs on every commit to check for changes in bundle size. You can use the change in size as a signal that a feature was gated correctly.
+>>>>>>> upstream/master
 
 중요한 변경은 모두 [changelog file](https://github.com/facebook/react/blob/master/CHANGELOG.md)에 문서화되어 있습니다.
 
@@ -54,7 +82,7 @@ Facebook은 보안 버그의 안전한 공개를 위한 [포상금 제도](https
 ### 연락 방법 {#how-to-get-in-touch}
 
 * IRC: [#reactjs on freenode](https://webchat.freenode.net/?channels=reactjs)
-* Discussion forum: [discuss.reactjs.org](https://discuss.reactjs.org/)
+* [Discussion forums](/community/support.html#popular-discussion-forums)
 
 또, React에 대한 도움이 필요한 경우 [Discord 채팅 플랫폼](https://www.reactiflux.com/)에서 React 사용자 커뮤니티를 이용하면 됩니다.
 
@@ -114,7 +142,14 @@ Facebook은 보안 버그의 안전한 공개를 위한 [포상금 제도](https
 
 * `gcc`가 설치되어 있거나 필요한 경우 컴파일러를 쉽게 설치할 수 있습니다. 일부는 컴파일 단계가 필요할 수도 있으며 OS X에서는 Xcode 커맨드 라인 툴이 도움이 됩니다. Ubuntu에서는 `apt-get install build-essential` 명령으로 필요한 패키지를 설치할 수 있습니다. 다른 Linux 배포판에서도 비슷한 명령으로 작업할 수 있습니다. Windows에서는 몇 가지 추가 단계가 필요할 수 있으므로 자세한 내용은 [`node-gyp` installation instructions](https://github.com/nodejs/node-gyp#installation)를 참조해 주세요.
 
+<<<<<<< HEAD
 * Git 사용에 익숙해야 합니다.
+=======
+* You have [Node](https://nodejs.org) installed at v8.0.0+ and [Yarn](https://yarnpkg.com/en/) at v1.2.0+.
+* You have [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) installed.
+* You have `gcc` installed or are comfortable installing a compiler if needed. Some of our dependencies may require a compilation step. On OS X, the Xcode Command Line Tools will cover this. On Ubuntu, `apt-get install build-essential` will install the required packages. Similar commands should work on other Linux distros. Windows will require some additional steps, see the [`node-gyp` installation instructions](https://github.com/nodejs/node-gyp#installation) for details.
+* You are familiar with Git.
+>>>>>>> upstream/master
 
 ### 개발 워크플로우 {#development-workflow}
 
@@ -128,6 +163,7 @@ React 레파지토리를 복사한 후 yarn 명령을 사용하면 다음과 같
 
 * `yarn test --watch` 대화형 테스트 감시자를 실행합니다.
 
+<<<<<<< HEAD
 * `yarn test <pattern>` 은 일치하는 파일 이름으로 테스트를 실행합니다.
 
 * `yarn test-prod` 는 실제 환경에서 테스트를 실행합니다. `yarn test`와 같은 옵션을 지원합니다.
@@ -147,13 +183,22 @@ React 레파지토리를 복사한 후 yarn 명령을 사용하면 다음과 같
 변경을 시도하는 가장 쉬운 방법은  `yarn build react/index,react-dom/index --type=UMD` 를 실행하고 `fixtures/packaging/babel-standalone/dev.html`을 여세요. 이 파일은 `build` 폴더의 `react.development.js`를 이미 사용하고 있으므로 변경 사항을 확인할 수 있습니다.
 
 기존 React 프로젝트에서 변경한 내용을 확인하고자 한다면 `build/dist/react.development.js`, `build/dist/react-dom.development.js` 또는 다른 빌드 파일을 애플리케이션에 복사하여 안정판 대신 사용할 수 있습니다. 만약 npm판의 React를 사용하고 있는 경우, 종속성에서 `react`와 `react-dom`을 삭제하고 `yarn link`를 사용하여 로컬 `build` 폴더를 가리키게 하세요.
+=======
+If you want to try your changes in your existing React project, you may copy `build/dist/react.development.js`, `build/dist/react-dom.development.js`, or any other build products into your app and use them instead of the stable version. 
+
+If your project uses React from npm, you may delete `react` and `react-dom` in its dependencies and use `yarn link` to point them to your local `build` folder. Note that **instead of `--type=UMD` you'll want to pass `--type=NODE` when building**. You'll also need to build the `scheduler` package:
+>>>>>>> upstream/master
 
 ```sh
-cd ~/path_to_your_react_clone/build/node_modules/react
+cd ~/path_to_your_react_clone/
+yarn build react/index,react-dom/index,scheduler --type=NODE
+
+cd build/node_modules/react
 yarn link
-cd ~/path_to_your_react_clone/build/node_modules/react-dom
+cd build/node_modules/react-dom
 yarn link
-cd /path/to/your/project
+
+cd ~/path/to/your/project
 yarn link react react-dom
 ```
 
@@ -167,7 +212,13 @@ React 폴더에서 `yarn build`를 실행할 때마다 업데이트된 버전이
 
 그러면 linter는 코드에 존재할 수 있는 문제를 잡아냅니다. 단순히 작성한 코드의 스타일을 체크하고 싶을 땐 `yarn linc`를 사용하세요.
 
+<<<<<<< HEAD
 그러나, 아직 linter에서도 체크할 수 없는 스타일이 존재합니다. 모르는 것이 있다면 [Airbnb's Style Guide](https://github.com/airbnb/javascript)에서 적절한 방법을 안내해 줄 것입니다.
+=======
+If some package is still missing (e.g. maybe you use `react-dom/server` in your project), you can always do a full build with `yarn build`. Note that running `yarn build` without options takes a long time.
+
+We still require that your pull request contains unit tests for any new functionality. This way we can ensure that we don't break your code in the future.
+>>>>>>> upstream/master
 
 ### 소개 영상 {#introductory-video}
 
@@ -178,6 +229,7 @@ React에 기여하는 방법에 대한 소개를 제공하는 [이 짧은 영상
 
 - [6:07](https://youtu.be/wUpPsEcGsg8?t=6m7s) - 풀 리퀘스트 생성 및 전송
 
+<<<<<<< HEAD
 - [8:25](https://youtu.be/wUpPsEcGsg8?t=8m25s) - 코드 정리
 
 - [14:43](https://youtu.be/wUpPsEcGsg8?t=14m43s) - React npm 레지스트리
@@ -186,6 +238,8 @@ React에 기여하는 방법에 대한 소개를 제공하는 [이 짧은 영상
 
 처음 React에 기여하는 것에 대해 보다 실제적인 개요를 보려면 [이 재미있는 ReactNYC 대화](https://www.youtube.com/watch?v=GWCcZ6fnpn4) 에 들어가 보세요.
 
+=======
+>>>>>>> upstream/master
 ### Request for Comments (RFC) {#request-for-comments-rfc}
 
 버그 수정이나 문서 개선을 포함한 많은 변경 사항은 GitHub 풀 리퀘스트의 워크플로우를 통해 구현 및 검토할 수 있습니다. 

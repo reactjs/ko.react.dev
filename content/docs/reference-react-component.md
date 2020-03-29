@@ -31,7 +31,7 @@ class Welcome extends React.Component {
 
 [`render()`](#render)는 `React.Component`의 하위 class에서 *반드시* 정의해야 하는 메서드입니다. 그 외에 이 문서에서 설명하는 메서드들은 선택 사항입니다.
 
-**컴포넌트 클래스를 직접 만들어서 사용하지 마세요.** React 컴포넌트를 사용할 때에는 [상속보다 조합을 주로 사용합니다](/docs/composition-vs-inheritance.html).
+**컴포넌트 클래스를 직접 만들어서 사용하지 마세요.** React 컴포넌트를 사용할 때에는 [상속보다 합성을 주로 사용합니다](/docs/composition-vs-inheritance.html).
 
 > 주의
 >
@@ -494,7 +494,7 @@ UNSAFE_componentWillUpdate(nextProps, nextState)
 ### `setState()` {#setstate}
 
 ```javascript
-setState(updater[, callback])
+setState(updater, [callback])
 ```
 
 `setState()`는 컴포넌트 state의 변경 사항을 대기열에 집어넣고, React에게 해당 컴포넌트와 그 자식들이 갱신된 state를 사용하여 다시 렌더링되어야 한다고 알립니다. 이 메서드는 이벤트 핸들러와 서버 응답 등에 따라 UI를 갱신할 때에 가장 많이 사용하는 메서드입니다.

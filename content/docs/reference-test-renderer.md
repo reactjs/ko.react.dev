@@ -40,7 +40,7 @@ console.log(testRenderer.toJSON());
 //   children: [ 'Facebook' ] }
 ```
 
-Jest의 스냅샷 테스트 기능으로 JSON 트리의 복사본을 파일로 자동 저장하여 테스트 내에서 변경되지 않았는지 확인할 수 있습니다. [자세히 알아보기](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html)
+Jest의 스냅샷 테스트 기능으로 JSON 트리의 복사본을 파일로 자동 저장하여 테스트 내에서 변경되지 않았는지 확인할 수 있습니다. [자세히 알아보기](https://jestjs.io/docs/en/snapshot-testing)
 
 또한, 결과물을 순회하며 특정 노드를 찾아 원하는 값을 가지고 있는지 검증하는 데 사용할 수 있습니다.
 
@@ -72,6 +72,7 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 ### TestRenderer {#testrenderer}
 
 * [`TestRenderer.create()`](#testrenderercreate)
+* [`TestRenderer.act()`](#testrendereract)
 
 ### TestRenderer instance {#testrenderer-instance}
 
@@ -104,7 +105,37 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 TestRenderer.create(element, options);
 ```
 
-전달된 React 엘리먼트로 `TestRenderer`  인스턴스를 생성합니다. 실제 DOM을 사용하지 않지만, 컴포넌트 트리 전체를 메모리상에 렌더링하기 때문에 원하는 값을 가졌는지 검증할 수 있습니다. 반환된 인스턴스는 다음과 같은 함수와 속성을 가지고 있습니다.
+전달된 React 엘리먼트로 `TestRenderer`  인스턴스를 생성합니다. 실제 DOM을 사용하지 않지만, 컴포넌트 트리 전체를 메모리상에 렌더링하기 때문에 원하는 값을 가졌는지 검증할 수 있습니다. 반환된 인스턴스는 [다음과 같은 함수와 속성을 가지고 있습니다.](#testrenderer-instance)
+
+### `TestRenderer.act()` {#testrendereract}
+
+```javascript
+TestRenderer.act(callback);
+```
+
+[`react-dom/test-utils`의 `act()`](/docs/test-utils.html#act)와 비슷하게, `TestRenderer.act`는 검증을 위한 컴포넌트들을 준비합니다. `TestRenderer.create`와 `trestRenderer.update`의 호출을 이 버전의 `act()`를 사용해서 감싸주세요.
+
+```javascript
+import {create, act} from 'react-test-renderer';
+import App from './app.js'; // The component being tested
+
+// 컴포넌트를 렌더링합니다.
+let root;
+act(() => {
+  root = create(<App value={1}/>)
+});
+
+// root를 검증합니다.
+expect(root.toJSON()).toMatchSnapshot();
+
+// 몇몇의 다른 props를 업데이트합니다.
+act(() => {
+  root.update(<App value={2}/>);
+})
+
+// root를 검증합니다.
+expect(root.toJSON()).toMatchSnapshot();
+```
 
 ### `testRenderer.toJSON()` {#testrenderertojson}
 
@@ -120,7 +151,7 @@ testRenderer.toJSON()
 testRenderer.toTree()
 ```
 
-렌더링 된 트리를 나타내는 객체를 반환합니다. `toJSON()`에서 반환되는 값과 달리 더욱 자세한 정보가 반환되며, 반환 값에는 사용자가 작성한 컴포넌트 역시 포함되어있습니다. 테스트 렌더러 위에 별도의 검증(assertion) 라이브러리를 만드는 것이 아니라면 이 함수는 필요하지 않을 것입니다.
+렌더링 된 트리를 나타내는 객체를 반환합니다. `toJSON()`에서 반환되는 값보다 더욱 자세한 정보가 반환되며, 반환 값에는 사용자가 작성한 컴포넌트 역시 포함되어있습니다. 테스트 렌더러 위에 별도의 검증(assertion) 라이브러리를 만드는 것이 아니라면 이 함수는 필요하지 않을 것입니다.
 
 ### `testRenderer.update()` {#testrendererupdate}
 
