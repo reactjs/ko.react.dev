@@ -98,6 +98,7 @@ class MyComponent extends React.Component {
 
 위의 메서드들은 여러 번 호출될 수 있기 때문에, 부작용을 포함하지 않는 것이 중요합니다. 이 규칙을 무시할 경우, 메모리 누수 혹은 잘못된 애플리케이션 상태 등 다양한 문제를 일으킬 가능성이 있습니다. 불행히도, 보통 이러한 문제들은 [예측한 대로 동작하지 않기 때문](https://ko.wikipedia.org/wiki/%EA%B2%B0%EC%A0%95%EB%A1%A0%EC%A0%81_%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98)에 발견하는 것이 어려울 수 있습니다.
 
+<<<<<<< HEAD
 Strict 모드가 자동으로 부작용을 찾아주는 것은 불가능합니다. 하지만, 조금 더 예측할 수 있게끔 만들어서 문제가 되는 부분을 발견할 수 있게 도와줍니다. 이는 아래의 함수를 의도적으로 이중으로 호출하여 찾을 수 있습니다.
 
 * 클래스 컴포넌트의 `constructor` 메서드
@@ -105,6 +106,15 @@ Strict 모드가 자동으로 부작용을 찾아주는 것은 불가능합니�
 * `setState` 업데이트 메서드 (첫 번째 인자)
 * static `getDerivedStateFromProps` 생명주기 메서드
 * `shouldComponentUpdate` 메서드
+=======
+Strict mode can't automatically detect side effects for you, but it can help you spot them by making them a little more deterministic. This is done by intentionally double-invoking the following functions:
+
+* Class component `constructor`, `render`, and `shouldComponent` methods
+* Class component static `getDerivedStateFromProps` method
+* Function component bodies
+* State updater functions (the first argument to `setState`)
+* Functions passed to `useState`, `useMemo`, or `useReducer`
+>>>>>>> 9e5a358cb24a665fc48615ae224f26a4f2191b32
 
 > 주의
 >
