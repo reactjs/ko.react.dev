@@ -101,20 +101,11 @@ class MyComponent extends React.Component {
 <<<<<<< HEAD
 Strict 모드가 자동으로 부작용을 찾아주는 것은 불가능합니다. 하지만, 조금 더 예측할 수 있게끔 만들어서 문제가 되는 부분을 발견할 수 있게 도와줍니다. 이는 아래의 함수를 의도적으로 이중으로 호출하여 찾을 수 있습니다.
 
-* 클래스 컴포넌트의 `constructor` 메서드
-* `render` 메서드
-* `setState` 업데이트 메서드 (첫 번째 인자)
-* static `getDerivedStateFromProps` 생명주기 메서드
-* `shouldComponentUpdate` 메서드
-=======
-Strict mode can't automatically detect side effects for you, but it can help you spot them by making them a little more deterministic. This is done by intentionally double-invoking the following functions:
-
-* Class component `constructor`, `render`, and `shouldComponent` methods
-* Class component static `getDerivedStateFromProps` method
-* Function component bodies
-* State updater functions (the first argument to `setState`)
-* Functions passed to `useState`, `useMemo`, or `useReducer`
->>>>>>> 9e5a358cb24a665fc48615ae224f26a4f2191b32
+* 클래스 컴포넌트의 `constructor`, `render` 그리고 `shouldComponentUpdate` 메서드
+* 클래스 컴포넌트의 `getDerivedStateFromProps` static 메서드
+* 함수 컴포넌트 바디
+* State updater 함수 (`setState`의 첫 번째 인자)
+* `useState`, `useMemo` 그리고 `useReducer`에 전달되는 함수
 
 > 주의
 >
