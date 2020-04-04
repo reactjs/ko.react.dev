@@ -77,18 +77,9 @@ import("./math").then(math => {
 });
 ```
 
-<<<<<<< HEAD
 Webpack이 이 구문을 만나게 되면 앱의 코드를 분할합니다.
 Create React App을 사용하고 있다면 이미 Webpack이 구성이 되어 있기 때문에 즉시 [사용](https://facebook.github.io/create-react-app/docs/code-splitting)할 수 있습니다.
-[Next.js](https://github.com/zeit/next.js/#dynamic-import) 역시 지원합니다.
-=======
-When Webpack comes across this syntax, it automatically starts code-splitting
-your app. If you're using Create React App, this is already configured for you
-and you can [start using it](https://facebook.github.io/create-react-app/docs/code-splitting) immediately. It's also supported
-out of the box in [Next.js](https://nextjs.org/docs/advanced-features/dynamic-import).
->>>>>>> 9e5a358cb24a665fc48615ae224f26a4f2191b32
-
-스스로 Webpack을 구성하고자 한다면 Webpack의 
+[Next.js](https://nextjs.org/docs/advanced-features/dynamic-import) 역시 지원합니다.
 [코드 분할 가이드](https://webpack.js.org/guides/code-splitting/)를 참조하세요. Webpack 설정은 [가이드](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269)에 있습니다.
 
 [Babel](http://babeljs.io/)을 사용할 때는 Babel이 동적 import를 인식할 수 있지만 변환하지는 않도록 합니다. 이를 위해 [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import)를 사용하세요.
