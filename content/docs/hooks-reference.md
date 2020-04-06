@@ -300,7 +300,7 @@ function Counter() {
 
 >주의
 >
->React에서는 Recuder의 인자로써 `state = initialState`와 같은 초기값을 나타내는, Redux에서는 보편화된 관습을 사용하지 않습니다. 때때로 초기값은 props에 의존할 필요가 있어 Hook 호출에서 지정되기도 합니다. 만약 초기값을 나타내는 것이 정말 필요하다면 `useReducer(reducer, undefined, reducer)`를 호출하는 방법으로 Redux를 모방할 수는 있겠지만, 이 방법을 권장하지는 않습니다.
+>React에서는 Reducer의 인자로써 `state = initialState`와 같은 초기값을 나타내는, Redux에서는 보편화된 관습을 사용하지 않습니다. 때때로 초기값은 props에 의존할 필요가 있어 Hook 호출에서 지정되기도 합니다. 만약 초기값을 나타내는 것이 정말 필요하다면 `useReducer(reducer, undefined, reducer)`를 호출하는 방법으로 Redux를 모방할 수는 있겠지만, 이 방법을 권장하지는 않습니다.
 
 #### 초기화 지연 {#lazy-initialization}
 
