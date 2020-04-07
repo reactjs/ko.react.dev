@@ -126,7 +126,7 @@ UI는 동적이지만, props와 state의 동기적인 `render()` 함수는 디�
 
 ### DOM을 넘어서 {#beyond-the-dom}
 
-우리는 더 적은 버그의 컴포넌트를 작성하여 구성할 수 있다는 면에서 React의 가치를 봅니다. DOM은 React에서 근본적 렌더링 대상이지만, [React Native](https://facebook.github.io/react-native/)는 Facebook과 커뮤니티에서 모두 중요합니다.
+우리는 더 적은 버그의 컴포넌트를 작성하여 구성할 수 있다는 면에서 React의 가치를 봅니다. DOM은 React에서 근본적 렌더링 대상이지만, [React Native](https://reactnative.dev/)는 Facebook과 커뮤니티에서 모두 중요합니다.
 
 렌더러에 구속받지 않음은 React의 중요한 설계상의 제한점입니다. 그것은 내부 표현에 약간의 오버헤드를 더하게 됩니다. 반면, 코어의 개선은 모든 플랫폼에 통용됩니다.
 

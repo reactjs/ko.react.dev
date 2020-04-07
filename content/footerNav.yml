@@ -14,7 +14,7 @@ more:
     - title: 감사의 글
       to: /acknowledgements.html
     - title: React Native
-      to: https://facebook.github.io/react-native/
+      to: https://reactnative.dev/
       external: true
 
 channels:

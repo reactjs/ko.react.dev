@@ -126,7 +126,7 @@ The `useTransition` hook returns two values in an array.
 **If some state update causes a component to suspend, that state update should be wrapped in a transition.**
 
 ```js
-const SUSPENSE_CONFIG = {timeoutMs: 2000 };
+const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 
 function App() {
   const [resource, setResource] = useState(initialResource);
@@ -199,7 +199,7 @@ function App() {
  }
 ```
 
-This allows us to start showing the new text for the `input` immediately, which allows the webpage to feel responsive. Meanwhile, `MySlowList` "lag behind" for up to 2 seconds according to the `timeoutMs` before updating, allowing it to render with the current text in the background.
+This allows us to start showing the new text for the `input` immediately, which allows the webpage to feel responsive. Meanwhile, `MySlowList` "lags behind" for up to 2 seconds according to the `timeoutMs` before updating, allowing it to render with the current text in the background.
 
 **For an in-depth look at deferring values, you can read [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html#deferring-a-value).**
 
