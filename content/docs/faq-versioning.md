@@ -18,6 +18,8 @@ React는 [유의적 버전 (semver)](https://semver.org/) 원칙을 따릅니다
 
 부 버전을 변경시킨 배포가 가장 보편적인 배포 형태입니다.
 
+해당 버전 정책은 Next 또는 Experimental 채널의 prerelease 빌드에는 적용되지 않습니다. [prerelease에 대해 여기서 알아보세요.](docs/release-channels.html)
+
 ### 호환성이 유지되지 않는 변경 {#breaking-changes}
 
 호환성이 유지되지 않는 변경은 모든 사람에게 불편할 수 있습니다. 그래서 주 버전 배포는 최소화하도록 노력합니다. 예를 들어, React 15는 2016년 4월에 배포되었고 React 16은 2017년 9월에 배포되었습니다. 그리고 React 17은 2020년에 가능할 수도 있습니다.
