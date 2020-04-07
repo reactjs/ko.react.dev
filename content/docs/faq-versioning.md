@@ -10,15 +10,31 @@ React는 [시맨틱 버전 관리(semver)](https://semver.org/) 원칙을 따릅
 
 즉, 버전 번호는 **x.y.z**가 됩니다.
 
+<<<<<<< HEAD
 * **크리티컬(critical) 버그를 수정**할 때는 **z** 번호를 바꾸고 **패치 릴리즈(patch release)** 를 합니다. (예를 들어, 15.6.2에서 15.6.3)
 * **새로운 기능**을 출시하거나 **크리티컬하지 않은(non-critical) 버그를 수정**할 때는 **y** 번호를 바꾸고 **마이너 릴리즈(minor release)** 를 합니다. (예를 들어, 15.6.2에서 15.7.0)
 * **대단위의 큰 변화**가 있을 때는 **x** 번호를 바꾸고 **메이저 릴리즈(major release)** 를 합니다.  (예를 들어, 15.6.2에서 16.0.0)
+=======
+* When releasing **critical bug fixes**, we make a **patch release** by changing the **z** number (ex: 15.6.2 to 15.6.3).
+* When releasing **new features** or **non-critical fixes**, we make a **minor release** by changing the **y** number (ex: 15.6.2 to 15.7.0).
+* When releasing **breaking changes**, we make a **major release** by changing the **x** number (ex: 15.6.2 to 16.0.0).
+>>>>>>> master
 
 주요 릴리즈는 새 기능을 포함할 수도 있고 모든 릴리즈는 버그 수정을 포함할 수도 있습니다.
 
+<<<<<<< HEAD
 마이너 릴리즈가 가장 보편적인 릴리즈 타입입니다.
 
 > 이 버전 관리 정책은 다음 또는 실험 채널의 시험판 빌드에는 적용되지 않습니다. [시험판에 대해서 더 알아보려면 여기를 보세요.](/docs/release-channels.html)
+=======
+Minor releases are the most common type of release.
+
+> This versioning policy does not apply to prerelease builds in the Next or Experimental channels. [Learn more about prereleases.](/docs/release-channels.html)
+
+### Breaking Changes {#breaking-changes}
+
+Breaking changes are inconvenient for everyone, so we try to minimize the number of major releases – for example, React 15 was released in April 2016 and React 16 was released in September 2017; React 17 isn't expected until sometime in 2020.
+>>>>>>> master
 
 ### 대단위의 큰 변화 {#breaking-changes}
 
@@ -47,6 +63,7 @@ React 개발 빌드는 상당수의 유용한 경고를 포함합니다. 가능�
 * **React의 알파 버전과 카나리아(canary) 버전**. 새 기능의 이른 테스트를 위한 방법으로 React의 알파 버전을 제공합니다. 그러나 동시에, 알파 기간에 습득한 것을 바탕으로 변경을 자유롭게 할 수 있는 유연함도 필요합니다. 만약 알파 버전을 사용하고 있다면 안정 버전이 출시되기 전에는 API가 얼마든지 변경될 수 있다는 것에 주의하십시오.
 * **문서화되지 않은 API와 내부 데이터 구조**. `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED`라든지 `__reactInternalInstance$uk43rzhitjg`와 같은 내부 프로퍼티에 접근한다면 보증은 되지 않습니다. 자기 책임입니다.
 
+<<<<<<< HEAD
 여러분들이 두통을 유발하지 않도록 이 정책은 실용적으로 구성되어 있습니다. 만약 이 모든 변경에 대해 메이저 버전을 변경한다면 결국 더 많은 메이저 버전을 출시하게 될 것이고, 궁극적으로는 커뮤니티에 더 많은 버전닝 고통을 안기게 될 것입니다. 이것은 또한, 우리가 바라는 만큼 빠르게 React 향상을 진전시킬 수 없다는 것을 의미하기도 합니다. 
 
 그런데도 위의 목록과 같은 변경이 커뮤니티에서 광범위한 문제를 야기하게 된다면 점진적인 마이그레이션 수단(migration path)을 제공할 수 있도록 우리는 최선을 다할 것입니다.
@@ -64,3 +81,20 @@ React 개발 빌드는 상당수의 유용한 경고를 포함합니다. 가능�
 이런 이유로 우리는 가장 크리티컬한 버그와 보안 취약점에 대해서만 패치 릴리즈를 고수합니다.
  
 내부 리팩터, 구현 세부사항 변경, 성능 개성 또는 사소한 버그 수정과 같은 필수적이지 않은 변경이 포함된 릴리즈인 경우 새로운 기능이 없을 때라도 마이너 버전에 맞설 것입니다.
+=======
+That said, if we expect that a change on this list will cause broad problems in the community, we will still do our best to provide a gradual migration path.
+
+### If a Minor Release Includes No New Features, Why Isn't It a Patch? {#minors-versus-patches}
+
+It's possible that a minor release will not include new features. [This is allowed by semver](https://semver.org/#spec-item-7), which states **"[a minor version] MAY be incremented if substantial new functionality or improvements are introduced within the private code. It MAY include patch level changes."**
+
+However, it does raise the question of why these releases aren't versioned as patches instead.
+
+The answer is that any change to React (or other software) carries some risk of breaking in unexpected ways. Imagine a scenario where a patch release that fixes one bug accidentally introduces a different bug. This would not only be disruptive to developers, but also harm their confidence in future patch releases. It's especially regrettable if the original fix is for a bug that is rarely encountered in practice.
+
+We have a pretty good track record for keeping React releases free of bugs, but patch releases have an even higher bar for reliability because most developers assume they can be adopted without adverse consequences.
+
+For these reasons, we reserve patch releases only for the most critical bugs and security vulnerabilities.
+
+If a release includes non-essential changes — such as internal refactors, changes to implementation details, performance improvements, or minor bugfixes — we will bump the minor version even when there are no new features.
+>>>>>>> master
