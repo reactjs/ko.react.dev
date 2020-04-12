@@ -26,6 +26,7 @@ void preventDefault()
 boolean isDefaultPrevented()
 void stopPropagation()
 boolean isPropagationStopped()
+void persist()
 DOMEventTarget target
 number timeStamp
 string type
@@ -73,6 +74,7 @@ React는 이벤트들을 다른 브라우저에서도 같은 속성을 가지도
 - [Keyboard 이벤트](#keyboard-events)
 - [Focus 이벤트](#focus-events)
 - [Form 이벤트](#form-events)
+- [Generic 이벤트](#generic-events)
 - [Mouse 이벤트](#mouse-events)
 - [Pointer 이벤트](#pointer-events)
 - [Selection 이벤트](#selection-events)
@@ -174,10 +176,20 @@ DOMEventTarget relatedTarget
 이벤트 이름
 
 ```
-onChange onInput onInvalid onSubmit
+onChange onInput onInvalid onReset onSubmit
 ```
 
 onChange 이벤트에 대한 더 자세한 정보는 [폼 문서](/docs/forms.html)를 참조하세요.
+
+* * *
+
+### Generic 이벤트 {#generic-events}
+
+이벤트 이름
+
+```
+onError onLoad
+```
 
 * * *
 
