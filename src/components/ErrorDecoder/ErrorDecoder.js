@@ -69,7 +69,7 @@ function ErrorResult(props: {|code: ?string, msg: string|}) {
   if (!code) {
     return (
       <p>
-        에러가 발생한 경우 해당 에러에 대한 페이지로 링크와 전체 에러 메세지를 보여드립니다.
+        에러가 발생한 경우 해당 에러에 대한 페이지로의 링크를 받게 되고 전체 에러 메시지를 보여드립니다.
       </p>
     );
   }
