@@ -14,11 +14,7 @@ React 컴포넌트를 테스트할 수 있는 몇 가지 방법이 있는데 크
 * **컴포넌트 트리 렌더링** : 간략화된 테스팅 환경 및 출력값이 확실한 경우.
 * **완성된 앱에서의 테스트** : 현실적 브라우저 환경("엔드 투 엔드" 테스트라고 알려져 있습니다.)
 
-<<<<<<< HEAD
-이 문서 섹션은 아주 기본 테스팅 전략에 초점을 맞추고 있습니다. 풀 엔드투엔드 테스트는 중요한 워크플로의 퇴행을 방지하기 위해 매우 유용하지만 이러한 테스트들은 특정한 React 컴포넌트와 관련되어 있지 않습니다. 그리고 이들은 이 세션의 범위를 벗어납니다.    
-=======
-This documentation section focuses on testing strategies for the first case. While full end-to-end tests can be very useful to prevent regressions to important workflows, such tests are not concerned with React components in particular, and are out of the scope of this section.
->>>>>>> b3c7f041586b71b31f556403426fcd7cab342535
+이 문서 섹션은 아주 기본 테스팅 전략에 초점을 맞추고 있습니다. 풀 엔드투엔드 테스트는 중요한 워크플로의 퇴행을 방지하기 위해 매우 유용하지만 이러한 테스트들은 특정한 React 컴포넌트와 관련되어 있지 않습니다. 그리고 이들은 이 세션의 범위를 벗어납니다.
 
 ### 트레이드오프 {#tradeoffs}
 
