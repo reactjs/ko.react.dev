@@ -117,21 +117,13 @@ Suspense는 위의 문제에 대한 기존의 접근 방식과는 상당히 다�
 
 ### Suspense로 가능한 것 {#what-suspense-lets-you-do}
 
-<<<<<<< HEAD
-So what's the point of Suspense? There are a few ways we can answer this:
-=======
 그렇다면 Suspense는 왜 사용하는 것일까요? 이에 대한 몇 가지 답이 있습니다.
->>>>>>> initial draft of translation
 
 * **데이터 불러오기 라이브러리들이 React와 깊게 결합할 수 있도록 해줍니다.** 데이터 불러오기 라이브러리가 Suspense 지원을 구현한다면, React 컴포넌트에서 이를 사용하는 것이 아주 자연스럽게 느껴질 것입니다.
 
 * **의도적으로 설계된 로딩 상태를 조정할 수 있도록 해줍니다.** Suspense는 데이터가 _어떻게_ 불러져야 하는지를 정하지 않고, 당신이 앱의 시각적인 로딩 단계를 밀접하게 통제할 수 있도록 해줍니다.
 
-<<<<<<< HEAD
-* **It helps you avoid race conditions.** Even with `await`, asynchronous code is often error-prone. Suspense feels more like reading data *synchronously* — as if it were already loaded.
-=======
 * **경쟁 상태(Race Condition)를 피할 수 있도록 돕습니다.** `await`를 사용하더라도 비동기 코드는 종종 오류가 발생하기 쉽습니다. Suspense를 사용하면 데이터를 *동기적으로* 읽어오는 것처럼 느껴지게 해줍니다. 마치 이미 불러오기가 완료된 것처럼 말입니다.
->>>>>>> initial draft of translation
 
 ## 실전에서 Suspense 사용하기 {#using-suspense-in-practice}
 
@@ -243,11 +235,7 @@ function ProfileTimeline() {
 
 만약 사용자 정보 불러오기가 3초 소요된다면, 3초가 지난 뒤에야 비로소 게시글 불러오기를 *시작*할 수 있는 것입니다! 이것이 바로 "워터폴"로, 병렬화될 수 있었으나 의도하지 않게 *순차적으로* 실행되는 현상입니다.
 
-<<<<<<< HEAD
-Waterfalls are common in code that fetches data on render. They're possible to solve, but as the product grows, many people prefer to use a solution that guards against this problem.
-=======
 워터폴은 렌더링 직후 데이터를 불러오는 코드에서 흔히 발생합니다. 이를 고치는 것은 가능하지만, 앱이 거대해짐에 따라 많은 사람들은 이 문제를 방지할 수 있는 해결책을 원할 것입니다.
->>>>>>> initial draft of translation
 
 ### 접근 방식 2: 불러오기 이후 렌더링 (Suspense 미사용) {#approach-2-fetch-then-render-not-using-suspense}
 
@@ -266,11 +254,7 @@ function fetchProfileData() {
 }
 ```
 
-<<<<<<< HEAD
-In this example, `<ProfilePage>` waits for both requests but starts them in parallel:
-=======
 아래의 예시에서는 `<ProfilePage>`가 두 요청을 기다리는데, 두 요청은 동시에 시작됩니다.
->>>>>>> initial draft of translation
 
 ```js{1,2,8-13}
 // 최대한 일찍 불러오기를 발동시킵니다
