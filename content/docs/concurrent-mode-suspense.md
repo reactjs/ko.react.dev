@@ -402,8 +402,6 @@ function ProfileDetails() {
 
 위 예시와 같이 "최상위 수준에서" 불러오기를 수행하는 것은 현실적이지 않다고 반박할 수도 있을 것입니다. 만약 다른 프로필 페이지로 이동한다면 어떻게 할까요? Props에 기반하여 불러오기를 수행해야 할 수도 있습니다. 이에 대한 답은  **그 대신, 이벤트 핸들러에서 불러오기를 시작하는 것**입니다. 아래는 사용자 페이지 간에 전환하는 예시의 간단한 버전입니다.
 
-You might object that fetching "at the top level" like in this example is impractical. What are we going to do if we navigate to another profile's page? We might want to fetch based on props. The answer to this is **we want to start fetching in the event handlers instead**. Here is a simplified example of navigating between user's pages:
-
 ```js{1,2,10,11}
 // 첫번째 불러오기: 최대한 일찍
 const initialResource = fetchProfileData(0);
