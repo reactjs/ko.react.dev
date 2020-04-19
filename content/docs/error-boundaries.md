@@ -4,18 +4,18 @@ title: 에러 경계(Error Boundaries)
 permalink: docs/error-boundaries.html
 ---
 
-과거에는 컴포넌트 내부의 자바스크립트 에러가 React의 내부 상태를 손상시키고 다음 렌더링에서 [암호화](https://github.com/facebook/react/issues/6895) [에러](https://github.com/facebook/react/issues/8579) [방출](https://github.com/facebook/react/issues/4026)을 유발하곤 했습니다. 이러한 에러는 항상 애플리케이션 코드의 이전 단계의 에러로 인해 발생했지만 React는 컴포넌트 내에서 에러를 정상적으로 처리 할 수있는 방법을 제공하지 않아 이를 복구할 수가 없었습니다.
+과거에는 컴포넌트 내부의 자바스크립트 에러가 React의 내부 상태를 훼손하고 다음 렌더링에서 [암호화](https://github.com/facebook/react/issues/6895) [에러](https://github.com/facebook/react/issues/8579) [방출](https://github.com/facebook/react/issues/4026)을 유발하곤 했습니다. 이러한 에러는 항상 애플리케이션 코드의 이전 단계의 에러로 인해 발생했지만, React는 컴포넌트 내에서 에러를 정상적으로 처리할 수 있는 방법을 제공하지 않아 이를 복구할 수가 없었습니다.
 
 
 ## 에러 경계의 소개 {#introducing-error-boundaries}
 
-UI의 일부분에 존재하는 자바스크립트 에러가 전체 애플리케이션을 중단시켜서는 안됩니다. React 사용자들이 겪는 이 문제를 해결하기 위해 React 16에서는 에러 경계(“error boundary”)라는 새로운 개념이 도입되었습니다.
+UI의 일부분에 존재하는 자바스크립트 에러가 전체 애플리케이션을 중단시켜서는 안 됩니다. React 사용자들이 겪는 이 문제를 해결하기 위해 React 16에서는 에러 경계(“error boundary”)라는 새로운 개념이 도입되었습니다.
 
 에러 경계는 **하위 컴포넌트 트리의 어디에서든 자바스크립트 에러를 기록하며 깨진 컴포넌트 트리 대신 폴백 UI를 보여주는** React 컴포넌트입니다. 에러 경계는 렌더링 도중 생명주기 메서드 및 그 아래에 있는 전체 트리에서 에러를 잡아냅니다.
 
 > Note
 >
-> 에러 경계는 다음과 같은 에러는 잡아내지 **않습니다**.
+> 에러 경계는 다음과 같은 에러는 포착하지 **않습니다**.
 >
 > * 이벤트 핸들러 ([더 알아보기](#how-about-event-handlers))
 > * 비동기적 코드 (예: `setTimeout` 혹은 `requestAnimationFrame` 콜백)
@@ -62,7 +62,7 @@ class ErrorBoundary extends React.Component {
 
 에러 경계는 자바스크립트의 `catch {}` 구문과 유사하게 동작하지만 컴포넌트에 적용됩니다. 오직 클래스 컴포넌트만이 에러 경계가 될 수 있습니다. 실제로도 대부분의 경우 에러 경계 컴포넌트를 한 번만 선언하여 애플리케이션 전체에서 활용하려고 할 것입니다.
 
-**에러 경계는 트리 내에서 하위에 존재하는 컴포넌트의 에러만을 포착합니다**. 에러 경계 자체적으로는 에러를 포착할 수 없습니다. 만약 에러 경계가 에러 메시지를 렌더링하는 데에 실패한다면 에러는 그 위의 가장 가까운 에러 경계로 전파될 것입니다. 이 또한 자바스크립트의 catch {} 구문이 동작하는 방식과 유사합니다.
+**에러 경계는 트리 내에서 하위에 존재하는 컴포넌트의 에러만을 포착합니다**. 에러 경계 자체적으로는 에러를 포착할 수 없습니다. 에러 경계가 에러 메시지를 렌더링하는 데에 실패한다면 에러는 그 위의 가장 가까운 에러 경계로 전파될 것입니다. 이 또한 자바스크립트의 catch {} 구문이 동작하는 방식과 유사합니다.
 
 ## 라이브 데모 {#live-demo}
 
@@ -71,7 +71,7 @@ class ErrorBoundary extends React.Component {
 
 ## 에러 경계를 배치할 위치 {#where-to-place-error-boundaries}
 
-에러 경계의 좀 더 세분화된 부분은 개발자에게 달려있습니다. 서버 사이드 프레임워크가 충돌을 해결하는 것처럼 최상위 경로의 컴포넌트를 감싸서 유저에게 “문제가 발생했습니다”라는 메시지를 보여줄 수 있습니다. 또한 에러 경계의 각 위젯들을 에러 경계로 감싸서 애플리케이션의 나머지 부분이 충돌하지 않도록 보호할 수도 있습니다.
+에러 경계의 좀 더 세분화된 부분은 개발자에게 달려있습니다. 서버 사이드 프레임워크가 충돌을 해결하는 것처럼 최상위 경로의 컴포넌트를 감싸서 유저에게 “문제가 발생했습니다”라는 메시지를 보여줄 수 있습니다. 또한 에러 경계의 각 위젯을 에러 경계로 감싸서 애플리케이션의 나머지 부분이 충돌하지 않도록 보호할 수도 있습니다.
 
 
 ## 포착되지 않는 에러에 대한 새로운 동작 {#new-behavior-for-uncaught-errors}
@@ -101,7 +101,7 @@ Create React App을 사용하지 않는 경우에는 수동으로 [이 플러그
 
 > 주의
 >
-> 스택 추적에 표시되는 컴포넌트 이름은 [`Function.name`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name) 속성에 따라 다릅니다. 아직 기본적으로 제공하지 않는 구형 브라우저 혹은 디바이스(예: IE11)를 지원하는 경우 번들 애플리케이션에 [`function.name-polyfill`](https://github.com/JamesMGreene/Function.name)과 같은 `Function.name` 폴리필(Polyfill)을 포함시키는 것을 고려해볼 수 있습니다. 또는 모든 컴포넌트에서[`displayName`](/docs/react-component.html#displayname) 속성을 명시적으로 설정할 수도 있습니다.
+> 스택 추적에 표시되는 컴포넌트 이름은 [`Function.name`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name) 프로퍼티에 따라 다릅니다. 아직 기본적으로 제공하지 않는 구형 브라우저 혹은 디바이스(예: IE11)를 지원하는 경우 번들 애플리케이션에 [`function.name-polyfill`](https://github.com/JamesMGreene/Function.name)과 같은 `Function.name` 폴리필(Polyfill)을 포함시키는 것을 고려해볼 수 있습니다. 또는 모든 컴포넌트에서[`displayName`](/docs/react-component.html#displayname) 프로퍼티를 명시적으로 설정할 수도 있습니다.
 
 
 ## try/catch는 어떤가요? {#how-about-trycatch}
