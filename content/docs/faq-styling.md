@@ -1,14 +1,14 @@
 ---
 id: faq-styling
-title: Styling and CSS
+title: CSS와 스타일링
 permalink: docs/faq-styling.html
 layout: docs
 category: FAQ
 ---
 
-### How do I add CSS classes to components? {#how-do-i-add-css-classes-to-components}
+### 어떻게 CSS classes를 컴포넌트에 추가하나요? {#how-do-i-add-css-classes-to-components}
 
-Pass a string as the `className` prop:
+`className` prop으로서 문자열을 넘깁니다.
 
 ```jsx
 render() {
@@ -16,7 +16,7 @@ render() {
 }
 ```
 
-It is common for CSS classes to depend on the component props or state:
+컴포넌트의 props나 state에 CSS classes가 의존하는 것은 자주 사용되는 방식입니다.
 
 ```jsx
 render() {
@@ -28,24 +28,24 @@ render() {
 }
 ```
 
->Tip
+>팁
 >
->If you often find yourself writing code like this, [classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) package can simplify it.
+>만약 이러한 방식으로 코드를 자주 작성한다면, [classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) package를 통해 이 작업을 간소화할 수 있습니다.
 
-### Can I use inline styles? {#can-i-use-inline-styles}
+### 인라인 스타일을 사용할 수 있나요? {#can-i-use-inline-styles}
 
-Yes, see the docs on styling [here](/docs/dom-elements.html#style).
+네, [여기](/docs/dom-elements.html#style)에서 스타일링에 관한 문서를 참고해 주세요.
 
-### Are inline styles bad? {#are-inline-styles-bad}
+### 인라인 스타일은 좋지 않은 방식인가요? {#are-inline-styles-bad}
 
-CSS classes are generally better for performance than inline styles.
+보통의 경우 CSS classes가 인라인 스타일보다 더 나은 성능을 보입니다.
 
-### What is CSS-in-JS? {#what-is-css-in-js}
+### CSS-in-JS가 무엇인가요? {#what-is-css-in-js}
 
-"CSS-in-JS" refers to a pattern where CSS is composed using JavaScript instead of defined in external files. Read a comparison of CSS-in-JS libraries [here](https://github.com/MicheleBertoli/css-in-js).
+"CSS-in-JS"는 외부의 파일에 CSS를 정의하는 대신에 JavaScript와 결합하는 패턴을 의미합니다. [여기](https://github.com/MicheleBertoli/css-in-js)에서 CSS-in-JS 라이브러리들에 대한 비교를 확인할 수 있습니다.
 
-_Note that this functionality is not a part of React, but provided by third-party libraries._ React does not have an opinion about how styles are defined; if in doubt, a good starting point is to define your styles in a separate `*.css` file as usual and refer to them using [`className`](/docs/dom-elements.html#classname).
+_이러한 기능은 React에 포함된 기능이 아닌, 별도의 라이브러리들로 제공됨을 주의하세요._ React는 어떻게 스타일이 정의되는지에 대한 의견이 없습니다. 의구심이 생긴다면, 평소처럼 별도의 `*.css` 파일에 정의한 뒤 [`className`](/docs/dom-elements.html#classname)을 통해 참조하는 것으로 시작해볼 수 있습니다.
 
-### Can I do animations in React? {#can-i-do-animations-in-react}
+### React에서 애니메이션을 할 수 있나요? {#can-i-do-animations-in-react}
 
-React can be used to power animations. See [React Transition Group](https://reactcommunity.org/react-transition-group/) and [React Motion](https://github.com/chenglou/react-motion) or [React Spring](https://github.com/react-spring/react-spring), for example.
+React는 애니메이션을 표현할 수 있습니다. 이에 대한 예시로 [React Transition Group](https://reactcommunity.org/react-transition-group/) 또는 [React Motion](https://github.com/chenglou/react-motion) 또는 [React Spring](https://github.com/react-spring/react-spring)를 확인해 보세요.
