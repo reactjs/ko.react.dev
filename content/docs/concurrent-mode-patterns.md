@@ -210,9 +210,9 @@ An API like `useTransition` lets you focus on the desired user experience, and n
 
 [Suspense walkthrough](/docs/concurrent-mode-suspense.html)에서 어떤 컴포넌트라도 추가적인 데이터가 필요하지만 준비되지 않았다면 언제든지 '서스펜드' 할 수 있다는 것을 배웠습니다. 중단 상태를 처리하기 위해 `<Suspense>`를 트리의 다른 부분에 전략적으로 배치할 수는 있지만 항상 충분하지는 않습니다.
 
-Let's get back to our [first Suspense demo](https://codesandbox.io/s/frosty-hermann-bztrp) where there was just one profile. Currently, it fetches the data only once. We'll add a "Refresh" button to check for server updates.
+하나의 프로필만 있던 [first Suspense demo](https://codesandbox.io/s/frosty-hermann-bztrp)로 돌아가봅시다. 이 예제는 오직 데이터를 한 번만 페치합니다. 서버 변경사항을 검사하기 위한 "Refresh" 버튼을 추가하겠습니다.
 
-Our first attempt might look like this:
+첫번째 시도는 다음과 같이 생겼습니다.
 
 ```js{6-8,13-15}
 const initialResource = fetchUserAndPosts();
@@ -240,8 +240,10 @@ function ProfilePage() {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/boring-shadow-100tf)**
 
+이 예제에선 페이지가 로드되거나 "Refresh" 버튼을 누를 때 마다 데이터를 패치합니다. `fetchUserAndPosts()`의 반환값을 상태에 저장하여 하위 컴포넌트들이 요청에서 가져온 데이터를 읽을 수 있게 하겠습니다.
 In this example, we start data fetching at the load *and* every time you press "Refresh". We put the result of calling `fetchUserAndPosts()` into state so that components below can start reading the new data from the request we just kicked off.
 
+[이 예제](https://codesandbox.io/s/boring-shadow-100tf)를 보면 "Refresh" 버튼을 누르는 것은 동작합니다.
 We can see in [this example](https://codesandbox.io/s/boring-shadow-100tf) that pressing "Refresh" works. The `<ProfileDetails>` and `<ProfileTimeline>` components receive a new `resource` prop that represents the fresh data, they "suspend" because we don't have a response yet, and we see the fallbacks. When the response loads, we can see the updated posts (our fake API adds them every 3 seconds).
 
 However, the experience feels really jarring. We were browsing a page, but it got replaced by a loading state right as we were interacting with it. It's disorienting. **Just like before, to avoid showing an undesirable loading state, we can wrap the state update in a transition:**
