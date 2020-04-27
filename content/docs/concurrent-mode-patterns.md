@@ -1,16 +1,25 @@
 ---
 id: concurrent-mode-patterns
-title: 컨커런트 UI 패턴 (Experimental)
+title: 컨커런트 UI 패턴 (실험)
 permalink: docs/concurrent-mode-patterns.html
 prev: concurrent-mode-suspense.html
 next: concurrent-mode-adoption.html
 ---
 
+<style>
+.scary > blockquote {
+  background-color: rgba(237, 51, 21, 0.2);
+  border-left-color: #ed3315;
+}
+</style>
+
+<div class="scary">
 >경고
 >
->이 페이지의 내용은 **안정된 배포판에서 [사용할 수 없는](/docs/concurrent-mode-adoption.html) 실험적인 기능**입니다. 프로덕션 애플리케이션에 실험적인 React 빌드를 의존하지 마십시오. 이 기능은 React에 편입되기 전에 경고 없이 크게 변경될 수 있습니다.
+> 이 페이지의 내용은 **안정된 배포판에서 [사용할 수 없는](/docs/concurrent-mode-adoption.html) 실험적인 기능**입니다. 프로덕션 애플리케이션에 실험적인 React 빌드를 의존하지 마십시오. 이 기능은 React에 편입되기 전에 경고 없이 크게 변경될 수 있습니다.
 >
->이 문서는 조기수용자와 관심있는 사람들을 대상으로 작성되었습니다. React 초기 입문자라면 이 기능에 대해 신경쓰지 않아도 괜찮습니다. 이 기능을 지금 당장 배울 필요는 없습니다.
+> 이 문서는 얼리어답터와 호기심넘치는 사람들을 위해 작성되었습니다. **React 초기 입문자라면 이 기능에 대해 신경쓰지 않아도 괜찮습니다.** -- 이 내용을 지금 당장 배울 필요는 없습니다. 데이터 패칭을 위한 튜토리얼을 찾는다면 [이 문서](https://www.robinwieruch.de/react-hooks-fetch-data/)를 대신 읽으세요.
+</div>
 
 일반적으로 상태가 갱신될 때 화면의 즉각적인 변화를 기대합니다. 왜냐하면 애플리케이션이 사용자 입력에 대해 즉각적으로 반응하는 상태를 유지하고 싶기 때문입니다. 하지만 **화면에 나타나는 변화를 지연하고** 싶은 경우도 있습니다.
 
@@ -499,7 +508,7 @@ function ProfileTrivia({ resource }) {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/focused-mountain-uhkzg)**
 
-If you press "Open Profile" now, you can tell something is wrong. It takes whole seven seconds to make the transition now! This is because our trivia API is too slow. Let's say we can't make the API faster. How can we improve the user experience with this constraint?
+If you press "Open Profile" now, you can tell something is wrong. It takes a whole seven seconds to make the transition now! This is because our trivia API is too slow. Let's say we can't make the API faster. How can we improve the user experience with this constraint?
 
 If we don't want to stay in the Pending state for too long, our first instinct might be to set `timeoutMs` in `useTransition` to something smaller, like `3000`. You can try this [here](https://codesandbox.io/s/practical-kowalevski-kpjg4). This lets us escape the prolonged Pending state, but we still don't have anything useful to show!
 
@@ -782,7 +791,7 @@ function ProfileTimeline({ isStale, resource }) {
 
 The tradeoff we're making here is that `<ProfileTimeline>` will be inconsistent with other components and potentially show an older item. Click "Next" a few times, and you'll notice it. But thanks to that, we were able to cut down the transition time from 1000ms to 300ms.
 
-Whether or not it's an appropriate tradeoff depends on the situation. But it's a handy tool, especially when the content doesn't change very visible between items, and the user might not even realize they were looking at a stale version for a second.
+Whether or not it's an appropriate tradeoff depends on the situation. But it's a handy tool, especially when the content doesn't change noticeably between items, and the user might not even realize they were looking at a stale version for a second.
 
 It's worth noting that `useDeferredValue` is not *only* useful for data fetching. It also helps when an expensive component tree causes an interaction (e.g. typing in an input) to be sluggish. Just like we can "defer" a value that takes too long to fetch (and show its old value despite others components updating), we can do this with trees that take too long to render.
 

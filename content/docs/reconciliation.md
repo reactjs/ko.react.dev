@@ -142,7 +142,7 @@ React는 `<li>Duke</li>`와 `<li>Villanova</li>` 종속 트리를 그대로 유�
 
 인덱스를 key로 사용 중 배열이 재배열되면 컴포넌트의 state와 관련된 문제가 발생할 수 있습니다. 컴포넌트 인스턴스는 key를 기반으로 갱신되고 재사용됩니다. 인덱스를 key로 사용하면, 항목의 순서가 바뀌었을 때 key 또한 바뀔 것입니다. 그 결과로, 컴포넌트의 state가 엉망이 되거나 의도하지 않은 방식으로 바뀔 수도 있습니다.
 
-인덱스를 key로 사용하여 문제가 발생하는 Codepen 예시는 [여기](codepen://reconciliation/index-used-as-key)에 있습니다. 그리고 개선한 예시에서는 인덱스를 key로 사용하지 않으면서도 앞에서 다뤘던 재배열, 정렬 그리고 이어서 발생하는 문제들을 어떻게 해결하는지 [여기](codepen://reconciliation/no-index-used-as-key)에서 확인할 수 있습니다
+[인덱스를 key로 사용하여 문제가 발생하는 Codepen 예시는 여기에 있습니다.](codepen://reconciliation/index-used-as-key) 그리고 [개선한 예시에서는 인덱스를 key로 사용하지 않으면서도 앞에서 다뤘던 재배열, 정렬 그리고 이어서 발생하는 문제들을 어떻게 해결하는지 여기에서 확인할 수 있습니다.](codepen://reconciliation/no-index-used-as-key)
 
 ## 고려 사항 {#tradeoffs}
 
