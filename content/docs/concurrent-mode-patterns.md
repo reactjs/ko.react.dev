@@ -623,7 +623,9 @@ With this change, even though we're in the Pending state, we don't display any i
 
 When you design React components, it is usually best to find the "minimal representation" of state. For example, instead of keeping `firstName`, `lastName`, and `fullName` in state, it's usually better keep only `firstName` and `lastName`, and then calculate `fullName` during rendering. This lets us avoid mistakes where we update one state but forget the other state.
 
-However, in Concurrent Mode there are cases where you might *want* to "duplicate" some data in different state variables. Consider this tiny translation app:
+React 컴포넌트를 설계할 때 일반적으로 "최소한 표현" 상태를 찾는 것이 좋습니다. 예를 들어 `firstName`, `lastName`, `fullName`를 전부 상태에 저장해놓기 보다는 `firstName`, `lastName`만 저장해놓고 렌더링 과정에서 `fullName`을 계산하는 것이 낫습니다. 상태를 갱신할 때 실수의 여지를 없애고 다른 상태를 신경쓰지 않아도 되기 때문입니다.
+
+그런데 컨커런트 모드에서는 다른 상태의 변수들에 데이터 '중복'을 원할 수도 있습니다. 다음 작은 앱을 생각해봅시다:
 
 ```js
 const initialQuery = "Hello, world";
@@ -663,9 +665,9 @@ function Translation({ resource }) {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/brave-villani-ypxvf)**
 
-Notice how when you type into the input, the `<Translation>` component suspends, and we see the `<p>Loading...</p>` fallback until we get fresh results. This is not ideal. It would be better if we could see the *previous* translation for a bit while we're fetching the next one.
+인풋에 타이핑하면 `<Transition>` 컴포넌트는 서스펜드되고 데이터가 준비될 때 까지 `<p>Loading...</p>` 폴백이 보입니다. 이상적인 형태는 아닙니다. 다음 번역을 가져오는 동안 **이전**번역을 볼 수 있다면 더 좋을 것입니다.
 
-In fact, if we open the console, we'll see a warning:
+사실 콘솔을 열어보면 다음과 같은 경고가 보일 겁니다:
 
 ```
 Warning: App triggered a user-blocking update that suspended.
@@ -675,7 +677,7 @@ The fix is to split the update into multiple parts: a user-blocking update to pr
 Refer to the documentation for useTransition to learn how to implement this pattern.
 ```
 
-As we mentioned earlier, if some state update causes a component to suspend, that state update should be wrapped in a transition. Let's add `useTransition` to our component:
+앞에서 말했듯이 일부 상태 갱신으로 컴포넌트가 서스펜드되면 해당 상태 갱신은 트랜지션으로 래핑되어야합니다. 컴포넌트에 `useTransition`을 추가해봅시다:
 
 ```js{4-6,10,13}
 function App() {
@@ -700,15 +702,15 @@ function App() {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/zen-keldysh-rifos)**
 
-Try typing into the input now. Something's wrong! The input is updating very slowly.
+인풋에 입력해보세요. 뭔가 잘못됬습니다! 인풋 갱신이 굉장히 느립니다.
 
-We've fixed the first problem (suspending outside of a transition). But now because of the transition, our state doesn't update immediately, and it can't "drive" a controlled input!
+첫번째 문제(트랜지션 바깥에서 서스펜드 되는 것)은 해결했습니다. 하지만 이제 트랜지션 때문에 상태 갱신이 즉각적으로 반영되지 않고 이것은 제어된 인풋을 조작하기엔 부적절합니다!
 
-The answer to this problem **is to split the state in two parts:** a "high priority" part that updates immediately, and a "low priority" part that may wait for a transition.
+위 문제에 대한 해결책은 **상태를 두 파트로 분리하는 것입니다:** 즉각적으로 업데이트 되어야 하는 높은 우선순위 파트와 트랜지션에서 조금 기다려도 되는 낮은 우선순위 파트로요.
 
-In our example, we already have two state variables. The input text is in `query`, and we read the translation from `resource`. We want changes to the `query` state to happen immediately, but changes to the `resource` (i.e. fetching a new translation) should trigger a transition.
+예제에서 우리는 이미 두 상태 변수를 가지고 있습니다. 입력 텍스트는 `query` 그리고 번역 정보를 `resource`에서 읽습니다. `query` 상태는 즉각적으로 반영되어야 하지만 `resource` 변화는 트랜지션을 발생시켜야 합니다. (예를들어 새로운 번역 데이터를 가져오기 같은 동작)
 
-So the correct fix is to put `setQuery` (which doesn't suspend) *outside* the transition, but `setResource` (which will suspend) *inside* of it.
+즉 올바른 수정은 `setQuery`를 트랜지션 바깥에 놓고 `setResource`는 그대로 트랜지션 안에 두는 것입니다.
 
 ```js{4,5}
 function handleChange(e) {
@@ -726,11 +728,11 @@ function handleChange(e) {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/lively-smoke-fdf93)**
 
-With this change, it works as expected. We can type into the input immediately, and the translation later "catches up" to what we have typed.
+이 변경으로 예상대로 작동합니다. 입풋 입력은 즉각 반영되고 번역은 타이핑된 내용을 나중에 따라갑니다.
 
 ### Deferring a Value {#deferring-a-value}
 
-By default, React always renders a consistent UI. Consider code like this:
+기본적으로 React는 항상 일관적인 UI를 렌더링합니다. 다음 코드를 생각해봅시다:
 
 ```js
 <>
@@ -741,9 +743,13 @@ By default, React always renders a consistent UI. Consider code like this:
 
 React guarantees that whenever we look at these components on the screen, they will reflect data from the same `user`. If a different `user` is passed down because of a state update, you would see them changing together. You can't ever record a screen and find a frame where they would show values from different `user`s. (If you ever run into a case like this, file a bug!)
 
-This makes sense in the vast majority of situations. Inconsistent UI is confusing and can mislead users. (For example, it would be terrible if a messenger's Send button and the conversation picker pane "disagreed" about which thread is currently selected.)
+React는 화면에서 이러한 구성 요소를 볼 때마다 동일한 '사용자'의 데이터를 반영합니다. 상태 업데이트로 인해 다른 `user`가 전달되면 함께 변경되는 것을 볼 수 있습니다. 화면을 기록 할 수없고 다른 사용자의 값을 표시 할 프레임을 찾을 수 없습니다. (이와 같은 경우에 버그가 있으면 버그 리포트해주세요!)
 
-However, sometimes it might be helpful to intentionally introduce an inconsistency. We could do it manually by "splitting" the state like above, but React also offers a built-in Hook for this:
+React는 화면에 이런 컴포넌트를 볼 때마다 동일한 `user` 데이터를 반영합니다. 상태 갱신으로 다른 `user`가 전달되면 함께 변경되는걸 볼 수 있습니다. 
+
+대부분의 상황에서 말이 됩니다. 비일관적인 UI는 혼란스럽고 사용자들을 오해하게 만듭니다. (For example, it would be terrible if a messenger's Send button and the conversation picker pane "disagreed" about which thread is currently selected.)
+
+하지만 때때로 의도적인 비일관성을 도입하는게 도움될 때도 있습니다. 위에서 했던 것 처럼 직접 '분할'할 수도 있지만 React는 이를 위해 내장 훅을 제공합니다:
 
 ```js
 import { useDeferredValue } from 'react';
@@ -753,11 +759,11 @@ const deferredValue = useDeferredValue(value, {
 });
 ```
 
-To demonstrate this feature, we'll use [the profile switcher example](https://codesandbox.io/s/musing-ramanujan-bgw2o). Click the "Next" button and notice how it takes 1 second to do a transition.
+위 기능을 보여주기 위해, [프로필 스위치 예제](https://codesandbox.io/s/musing-ramanujan-bgw2o)를 사용합니다. "Next" 버튼을 클릭하고 전환하는데 1초가 걸리는지 확인해보세요.
 
-Let's say that fetching the user details is very fast and only takes 300 milliseconds. Currently, we're waiting a whole second because we need both user details and posts to display a consistent profile page. But what if we want to show the details faster?
+사용자 디테일 정보를 가져오는 작업이 매우 빠르고 300 밀리세컨드 안쪽이라고 가정해봅시다. 현재 일관된 프로필 페이지를 표시하려면 사용자 세부 정보와 게시물이 모두 필요하기 때문에 1초간 기다려야 합니다. 하지만 세부 정보를 더 빨리 표시하려면 어떻게 해야 할까요?
 
-If we're willing to sacrifice consistency, we could **pass potentially stale data to the components that delay our transition**. That's what `useDeferredValue()` lets us do:
+일관성을 희생해서, 우리는 트랜지션을 지연시키는 컴포넌트에 부실한 데이터를 전달할 수 있습니다. 그것이 `useDeferredValue()`가 하는 일입니다:
 
 ```js{2-4,10,11,21}
 function ProfilePage({ resource }) {
