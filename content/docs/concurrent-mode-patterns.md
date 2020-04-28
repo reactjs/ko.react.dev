@@ -35,16 +35,16 @@ next: concurrent-mode-adoption.html
   - [트랜지션은 모든 곳에 있습니다](#transitions-are-everywhere)
   - [디자인 시스템에 트랜지션 구축하기](#baking-transitions-into-the-design-system)
 - [세 단계](#the-three-steps)
-  - [기본: Receded → Skeleton → Complete](#default-receded-skeleton-complete)
-  - [Preferred: Pending → Skeleton → Complete](#preferred-pending-skeleton-complete)
-  - [지연평가 요소를 `<Suspense>`로 감싸기](#wrap-lazy-features-in-suspense)
-  - [Suspense Reveal “Train”](#suspense-reveal-train)
-  - [Delaying a Pending Indicator](#delaying-a-pending-indicator)
-  - [Recap](#recap)
+  - [기본: 후퇴 → 스켈레톤 → 완료](#default-receded-skeleton-complete)
+  - [권장: 보류 → 스켈레톤 → 완료](#preferred-pending-skeleton-complete)
+  - [지연평가 요소를 `<Suspense>`로 래핑하기](#wrap-lazy-features-in-suspense)
+  - [서스펜스 공개 '기차'](#suspense-reveal-train)
+  - [보류 인디케이터 지연하기](#delaying-a-pending-indicator)
+  - [요약](#recap)
 - [기타 패턴](#other-patterns)
-  - [Splitting High and Low Priority State](#splitting-high-and-low-priority-state)
-  - [Deferring a Value](#deferring-a-value)
-  - [SuspenseList](#suspenselist)
+  - [낮은 우선순위 상태와 높은 우선순위 상태 분할하기](#splitting-high-and-low-priority-state)
+  - [값 지연하기](#deferring-a-value)
+  - [서스펜스 목록](#suspenselist)
 - [다음 단계](#next-steps)
 
 ## 트랜지션 {#transitions}
@@ -461,22 +461,22 @@ function ProfilePage() {
 
 이 시나리오 (Receded → Skeleton → Complete)는 가장 기본적인 형태입니다. 하지만 후퇴 상태는 아주 쾌적한 상태는 아닙니다. 왜냐하면 후퇴상태는 기존 정보를 '숨겨버리기' 때문입니다. React가 `useTransition`을 이용하여 다른 시퀀스 (**보류** → 스켈레톤 → 완료)를 선택할 수 있게 하는 이유입니다.
 
-### 선호: 보류 → 스켈레톤 → 완료 {#preferred-pending-skeleton-complete}
+### 권장: 보류 → 스켈레톤 → 완료 {#preferred-pending-skeleton-complete}
 
 `useTransition`할 때 React는 이전 화면에 '잔류'할 수 있게 합니다. 그리고 진행 인디케이터를 보여줍니다. 이걸 **보류**상태라고 부릅니다. 기존 컨텐츠가 사라지지 않고 잔류한 채로 상호작용이 가능하기 때문에 **후퇴** 상태보다 훨씬 좋게 느껴집니다.
 
 차이를 느끼기 위해 두 예제를 비교해보세요:
 
 * 기본: [후퇴 → 스켈레톤 → 완성](https://codesandbox.io/s/prod-grass-g1lh5)
-* **선호: [보류 → 스켈레톤 → 완성](https://codesandbox.io/s/focused-snow-xbkvl)**
+* **권장: [보류 → 스켈레톤 → 완성](https://codesandbox.io/s/focused-snow-xbkvl)**
 
 두 예제의 유일한 차이점은 첫 번째는 일반 `<button>`을 사용하지만 두 번째는 커스텀 `<Button>` 구성 요소를 `useTransition`와 함께 사용한다는 것입니다.
 
-### Wrap Lazy Features in `<Suspense>` {#wrap-lazy-features-in-suspense}
+### 지연평가 요소를 `<Suspense>`로 래핑하기 {#wrap-lazy-features-in-suspense}
 
-Open [this example](https://codesandbox.io/s/nameless-butterfly-fkw5q). When you press a button, you'll see the Pending state for a second before moving on. This transition feels nice and fluid.
+[이 예제](https://codesandbox.io/s/nameless-butterfly-fkw5q)를 열어보세요. 버튼을 누르면 페이지가 전환되기 전에 몇 초간 보류 상태가 보여집니다. 이 트랜지션은 자연스럽고 좋습니다.
 
-We will now add a brand new feature to the profile page -- a list of fun facts about a person:
+완전 새로운 기능을 프로필 페이지에 추가할 것입니다. 한 사람에 대한 재밌는 사실 목록을 말이죠:
 
 ```js{8,13-25}
 function ProfilePage({ resource }) {
@@ -508,11 +508,11 @@ function ProfileTrivia({ resource }) {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/focused-mountain-uhkzg)**
 
-If you press "Open Profile" now, you can tell something is wrong. It takes a whole seven seconds to make the transition now! This is because our trivia API is too slow. Let's say we can't make the API faster. How can we improve the user experience with this constraint?
+이제 "Open Profile"을 누르면 뭔가 잘못됬다는걸 느낄겁니다. 트랜지션을 수행하는데 7초나 걸렸습니다! trivia API가 너무 느리기 때문입니다. API를 좀 더 빠르게 만들 수 없다고 가정해봅시다. 이 제약을 가지고 어떻게 유저 경험을 개선할 수 있을까요?
 
-If we don't want to stay in the Pending state for too long, our first instinct might be to set `timeoutMs` in `useTransition` to something smaller, like `3000`. You can try this [here](https://codesandbox.io/s/practical-kowalevski-kpjg4). This lets us escape the prolonged Pending state, but we still don't have anything useful to show!
+보류 상태에 너무 오랫동안 잔류하고 싶지 않다면, 처음으로 생각나는 직관적인 방법은  `useTransition`의 `timeoutMs` 설정을 `3000`정도로 작게 만드는 것입니다. 이 방법을 [여기](https://codesandbox.io/s/practical-kowalevski-kpjg4)에서 시도해볼 수 있습니다. 너무 긴 보류 상태에서 벗어날 수는 있지만 여전히 유용한 정보를 볼 수는 없습니다!
 
-There is a simpler way to solve this. **Instead of making the transition shorter, we can "disconnect" the slow component from the transition** by wrapping it into `<Suspense>`:
+이 문제를 해결하기 위한 더 간단한 방법이 있습니다. `<Suspense>`를 래핑해서 **트랜지션을 짧게 만드는 것 대신 트랜지션에서 느린 컴포넌트를 제외할 수 있습니다**.
 
 ```js{8,10}
 function ProfilePage({ resource }) {
@@ -532,19 +532,19 @@ function ProfilePage({ resource }) {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/condescending-shape-s6694)**
 
-This reveals an important insight. React always prefers to go to the Skeleton state as soon as possible. Even if we use transitions with long timeouts everywhere, React will not stay in the Pending state for longer than necessary to avoid the Receded state.
+위 예제는 중요한 인사이트를 보여줍니다. React는 항상 가능한 빨리 스켈레톤 상태로 가려고 합니다. 어디에서나 긴 타임 아웃으로 전환을 사용하더라도 React는 후퇴 상태를 피하기 위해 필요 이상으로 보류 상태를 유지하지 않습니다.
 
-**If some feature isn't a vital part of the next screen, wrap it in `<Suspense>` and let it load lazily.** This ensures we can show the rest of the content as soon as possible. Conversely, if a screen is *not worth showing* without some component, such as `<ProfileDetails>` in our example, do *not* wrap it in `<Suspense>`. Then the transitions will "wait" for it to be ready.
+**일부 기능이 중요하지 않다면 `<Suspense>`로 래핑하여 나중에 불러올 수 있게 하세요.** 이렇게하면 가능한 한 빨리 나머지 컨텐츠를 표시 할 수 있습니다. 반대로, 예제에서 `<ProfileDetails>`와 같이 일부 컴포넌트 없이 화면을 표시 할 가치가 없는 경우는 `<Suspense>`로 래핑하지 마세요. 그러면 다음 트랜지션이 준비 될 때까지 "대기"합니다.
 
-### Suspense Reveal "Train" {#suspense-reveal-train}
+### 서스펜스 공개 "기차" {#suspense-reveal-train}
 
-When we're already on the next screen, sometimes the data needed to "unlock" different `<Suspense>` boundaries arrives in quick succession. For example, two different responses might arrive after 1000ms and 1050ms, respectively. If you've already waited for a second, waiting another 50ms is not going to be perceptible. This is why React reveals `<Suspense>` boundaries on a schedule, like a "train" that arrives periodically. This trades a small delay for reducing the layout thrashing and the number of visual changes presented to the user.
+이미 다음 화면에 있을 때 때때로 다른 `<Suspense>` 경계를 '잠금 해제'하는 데 필요한 데이터가 빠르게 연속적으로 도착합니다. 예를 들어, 두 개의 서로 다른 응답이 각각 1000ms와 1050ms 후에 도착할 수 있습니다. 이미 1초 기다렸다면 50ms 더 기다릴 수 없습니다. React가 정기적으로 도착하는 "기차"와 같이 스케줄에 `<Suspense>` 경계를 표시하는 이유입니다. 이것은 레이아웃 쓰레싱 및 사용자에게 보여주는 시각적 변화의 수를 줄이기 위해 약간의 지연을 트레이드오프합니다.
 
-You can see a demo of this [here](https://codesandbox.io/s/admiring-mendeleev-y54mk). The "posts" and "fun facts" responses come within 100ms of each other. But React coalesces them and "reveals" their Suspense boundaries together. 
+[여기에서](https://codesandbox.io/s/admiring-mendeleev-y54mk) 데모를 볼 수 있습니다. "포스트" 및 "재미있는 사실" 응답은 서로 100ms 이내에 있습니다. React는 두 응답을 통합하여 서스펜스 경계를 함께 "공개"합니다.
 
-### Delaying a Pending Indicator {#delaying-a-pending-indicator}
+### 보류 인디케이터 지연하기 {#delaying-a-pending-indicator}
 
-Our `Button` component will immediately show the Pending state indicator on click:
+`Button` 컴포넌트가 클릭되면 즉시 보류 상태 인디케이터를 보여줍니다:
 
 ```js{2,13}
 function Button({ children, onClick }) {
@@ -567,9 +567,9 @@ function Button({ children, onClick }) {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/floral-thunder-iy826)**
 
-This signals to the user that some work is happening. However, if the transition is relatively short (less than 500ms), it might be too distracting and make the transition itself feel *slower*.
+이 신호는 유저에게 뭔가 작업되고 있다고 알려줍니다. 하지만 트랜지션이 상대적으로 짧다면(500ms 이내) 너무 산만해지고 트랜지션 자체가 너무 느리게 느껴질 수 있습니다.
 
-One possible solution to this is to *delay the spinner itself* from displaying:
+이에 한 가지 가능한 해결책은 **스피너 자체가** 표시되지 않도록하는 지연하는 것입니다.
 
 ```css
 .DelayedSpinner {
@@ -603,21 +603,23 @@ return (
 
 With this change, even though we're in the Pending state, we don't display any indication to the user until 500ms has passed. This may not seem like much of an improvement when the API responses are slow. But compare how it feels [before](https://codesandbox.io/s/thirsty-liskov-1ygph) and [after](https://codesandbox.io/s/hardcore-http-s18xr) when the API call is fast. Even though the rest of the code hasn't changed, suppressing a "too fast" loading state improves the perceived performance by not calling attention to the delay.
 
-### Recap {#recap}
+이 변경으로 보류 상태에 있더라도 500ms가 지날 때 까지 사용자에게 인디케이터가 보이지 않습니다. API 응답이 느리면 개선되지 않은 것처럼 보일 수 있습니다. 그러나 API 호출이 빠를 때 [이전 예제](https://codesandbox.io/s/thirsty-liskov-1ygph)과 [다음 예제](https://codesandbox.io/s/hardcore-http-s18xr)를 비교해보세요. 나머지 코드는 변경되지 않았지만 "너무 빠른" 로딩 상태를 억제하고 지연에 주의를 주지 않으면서 성능인식을 개선할 수 있습니다.
 
-The most important things we learned so far are:
+### 요약 {#recap}
 
-* By default, our loading sequence is Receded → Skeleton → Complete.
-* The Receded state doesn't feel very nice because it hides existing content.
-* With `useTransition`, we can opt into showing a Pending state first instead. This will keep us on the previous screen while the next screen is being prepared.
-* If we don't want some component to delay the transition, we can wrap it in its own `<Suspense>` boundary.
-* Instead of doing `useTransition` in every other component, we can build it into our design system.
+지금까지 배운 가장 중요한 것들:
 
-## Other Patterns {#other-patterns}
+* 기본적으로 로딩 순서는 후퇴 → 스켈레톤 → 완료 입니다.
+* 후퇴 상태는 기존 컨텐츠를 숨겨버리기 때문에 좋은 인터페이스는 아닙니다.
+* `useTransition`을 사용하여 보류 상태를 보여줄 수 있습니다. 다음 화면이 준비되는 동안 이전 화면을 계속 보여줍니다.
+* 특정 컴포넌트가 트랜지션을 지연하는걸 원치 않는다면 `<Suspense>` 경계를 래핑하여 회피할 수 있습니다.
+* 매번 `useTransition`을 모든 컴포넌트에서 처리하지 않고 디자인 시스템에 적용해놓을 수 있습니다.
 
-Transitions are probably the most common Concurrent Mode pattern you'll encounter, but there are a few more patterns you might find useful.
+## 기타 패턴들 {#other-patterns}
 
-### Splitting High and Low Priority State {#splitting-high-and-low-priority-state}
+전환은 가장 일반적인 컨커런트모드 패턴이지만 몇 가지 유용한 패턴이 더 있습니다.
+
+### 높은 우선순위 상태와 낮은 우선순위 상태 분할하기 {#splitting-high-and-low-priority-state}
 
 When you design React components, it is usually best to find the "minimal representation" of state. For example, instead of keeping `firstName`, `lastName`, and `fullName` in state, it's usually better keep only `firstName` and `lastName`, and then calculate `fullName` during rendering. This lets us avoid mistakes where we update one state but forget the other state.
 
