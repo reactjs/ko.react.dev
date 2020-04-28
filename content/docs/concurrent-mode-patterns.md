@@ -19,25 +19,25 @@ next: concurrent-mode-adoption.html
 >
 > 이 페이지의 내용은 **안정된 배포판에서 [사용할 수 없는](/docs/concurrent-mode-adoption.html) 실험적인 기능**입니다. 프로덕션 애플리케이션에 실험적인 React 빌드를 의존하지 마십시오. 이 기능은 React에 편입되기 전에 경고 없이 크게 변경될 수 있습니다.
 >
-> 이 문서는 얼리어답터와 호기심넘치는 사람들을 위해 작성되었습니다. **React 초기 입문자라면 이 기능에 대해 신경쓰지 않아도 괜찮습니다.** -- 이 내용을 지금 당장 배울 필요는 없습니다. 데이터 패칭을 위한 튜토리얼을 찾는다면 [이 문서](https://www.robinwieruch.de/react-hooks-fetch-data/)를 대신 읽으세요.
+> 이 문서는 얼리어답터와 호기심넘치는 사람들을 위해 작성되었습니다. **React 초기 입문자라면 이 기능에 신경쓰지 않아도 괜찮습니다.** -- 이 내용을 지금 당장 배울 필요는 없습니다. 데이터 패칭을 위한 튜토리얼을 찾는다면 [이 문서](https://www.robinwieruch.de/react-hooks-fetch-data/)를 보세요.
 
 </div>
 
-일반적으로 상태가 갱신될 때 화면의 즉각적인 변화를 기대합니다. 왜냐하면 애플리케이션이 사용자 입력에 대해 즉각적으로 반응하는 상태를 유지하고 싶기 때문입니다. 하지만 **화면에 나타나는 변화를 지연하고** 싶은 경우도 있습니다.
+일반적으로 상태가 갱신될 때 화면의 즉각적인 변화를 기대합니다. 애플리케이션이 사용자 입력에 반응하는 것을 유지하고 싶기 때문입니다. 하지만 **화면에 나타나는 변화를 지연하고** 싶은 경우도 있습니다.
 
-예를 들어 한 페이지에서 다른 페이지로 전환하고 다음 화면에 필요한 코드나 데이터가 전혀 준비되어 있지 않으면 순간적으로 빈 화면에 로딩중인 모습이 보이고 답답할 수 있습니다. 이전 화면을 좀더 길게 보여주고 싶을 수도 있습니다. React에서 이런 패턴을 구현하기란 역사적으로 어려웠습니다. 컨커런트 모드는 기존 문제를 해결하기 위한 새로운 도구를 제공합니다.
+예를 들어 한 페이지에서 다른 페이지로 전환할 때 다음 화면에 필요한 코드나 데이터가 전혀 준비되어 있지 않으면 순간적으로 빈 화면에 로딩중인 모습이 보이고 답답할 수 있습니다. 이전 화면을 좀더 길게 보여주고 싶을 때도 있습니다. React에서 이런 패턴을 구현하기란 오랫동안 어려웠습니다. 컨커런트 모드는 이 문제를 해결하기 위한 새로운 도구를 제공합니다.
 
 - [트랜지션](#transitions)
-  - [트랜지션 사이에 setState 감싸기](#wrapping-setstate-in-a-transition)
-  - [보류 상태 지시하기](#adding-a-pending-indicator)
+  - [setState를 트랜지션에 래핑하기](#wrapping-setstate-in-a-transition)
+  - [지연 인디케이터 추가하기](#adding-a-pending-indicator)
   - [변화 살펴보기](#reviewing-the-changes)
   - [어디에서 갱신이 발생하나요?](#where-does-the-update-happen)
-  - [트랜지션은 모든 곳에서 발생합니다](#transitions-are-everywhere)
+  - [트랜지션은 모든 곳에 있습니다](#transitions-are-everywhere)
   - [디자인 시스템에 트랜지션 구축하기](#baking-transitions-into-the-design-system)
 - [세 단계](#the-three-steps)
-  - [Default: Receded → Skeleton → Complete](#default-receded-skeleton-complete)
+  - [기본: Receded → Skeleton → Complete](#default-receded-skeleton-complete)
   - [Preferred: Pending → Skeleton → Complete](#preferred-pending-skeleton-complete)
-  - [Wrap Lazy Features in `<Suspense>`](#wrap-lazy-features-in-suspense)
+  - [지연평가 요소를 `<Suspense>`로 감싸기](#wrap-lazy-features-in-suspense)
   - [Suspense Reveal “Train”](#suspense-reveal-train)
   - [Delaying a Pending Indicator](#delaying-a-pending-indicator)
   - [Recap](#recap)
@@ -49,15 +49,15 @@ next: concurrent-mode-adoption.html
 
 ## 트랜지션 {#transitions}
 
-이전 [데이터 패치와 서스펜스](/docs/concurrent-mode-suspense.html) 페이지의 [데모를](https://codesandbox.io/s/infallible-feather-xjtbu) 다시 살펴봅시다.
+이전 [데이터를 가져오기 위한 서스펜스](/docs/concurrent-mode-suspense.html) 페이지의 [데모를](https://codesandbox.io/s/infallible-feather-xjtbu) 다시 살펴봅시다.
 
-프로필을 활성화하기 위해 "Next" 버튼을 누르면 페이지가 즉시 사라지고 페이지 전체가 로딩 상태가 됩니다. "바라지 않는" 로딩 상태라고 할 수 있습니다. **새로운 화면을 위한 컨텐츠를 불러오는 동안 즉각적인 화면 전환을 생략할 수 있다면 좋을 것입니다.**
+프로필을 활성화하기 위해 "Next" 버튼을 누르면 페이지의 데이터가 바로 사라지고 전체 화면에 로딩 화면을 다시 보게 됩니다. '의도치 않은' 로딩 상태라고 할 수 있습니다. **새 화면을 위한 컨텐츠를 불러오는 동안 화면 전환을 생략할 수 있다면 좋을 것입니다.**
 
-React는 이 상황을 해결하기 위해 새로운 `useTransition()` 내장 훅을 제공합니다.
+React는 이 문제를 해결하기 위해 새로운 `useTransition()` 내장 훅을 제공합니다.
 
 세 단계에 걸쳐 사용할 수 있습니다.
 
-먼저 컨커런트 모드를 사용해야 합니다. [컨커런트 모드 채택](/docs/concurrent-mode-adoption.html)에 대해서는 이후 더 많은 이야기를 나눌 것입니다. 지금은 이 기능이 작동하려면 `ReactDOM.render()` 대신 `ReactDOM.createRoot()`를 사용해야 함을 아는 것 정도로 충분합니다.
+먼저 컨커런트 모드를 사용해야 합니다. [컨커런트 모드 채택](/docs/concurrent-mode-adoption.html)에 대해서는 이후 더 많은 이야기를 나눌 것입니다. 지금은 이 기능이 작동하려면 `ReactDOM.render()` 대신 `ReactDOM.createRoot()`를 사용해야 함을 아는 것으로 충분합니다.
 
 ```js
 const rootElement = document.getElementById("root");
@@ -82,16 +82,16 @@ function App() {
   // ...
 ```
 
-**이 코드 자체로는 아무것도 동작하지 않습니다.** 상태를 갱신하기 위해 훅의 반환값을 사용해야 합니다. `useTransition`의 반환값은 두가지입니다.
+**이 코드만으로는 아무것도 실행하지 않습니다.** 상태를 갱신하기 위해 훅의 반환값을 사용해야 합니다. `useTransition`의 반환값은 두가지입니다.
 
-* `startTransition`는 어떤 상태 갱신을 지연하고 싶은지 React에게 알려주는 함수입니다.
-* `isPending`은 지금 트랜지션이 일어나고 있다고 React가 우리에게 알려주는 불리언 값입니다.
+* `startTransition`는 함수입니다. React에 **어떤** 상태변화를 지연하고 싶은지 지정할 수 있습니다.
+* `isPending`는 불리언 값입니다. 트랜지션 진행 유무를 알 수 있습니다.
 
 바로 아래에서 사용하겠습니다.
 
-`useTransition` 훅에 설정 객체를 전달했다는 것을 명심하세요. `timeoutMs` 프로퍼티는 **얼마나 오랫동안 트랜지션이 완료될 때까지 기다릴 것인지** 결정합니다. `{timeoutMs: 3000}` 를 전달한다면 "다음 프로필을 불러오는데 3초보다 오래 걸린다면 로딩 상태를 보여주고 그 전까진 계속 이전 화면을 보여줘도 괜찮아" 라는 의미입니다.
+`useTransition` 훅에 설정 객체를 전달했다는 것을 명심하세요. `timeoutMs` 프로퍼티는 **트랜지션이 완료될 때까지 얼마나 오랫동안 기다릴 것인지** 결정합니다. `{timeoutMs: 3000}` 를 전달한다면 "다음 프로필을 불러오는데 3초보다 오래 걸린다면 로딩 상태를 보여주고 그 전까진 계속 이전 화면을 보여줘도 괜찮아" 라는 의미입니다.
 
-### 트랜지션 사이에 `setState` 감싸기 {#wrapping-setstate-in-a-transition}
+### setState를 트랜지션에 래핑하기 {#wrapping-setstate-in-a-transition}
 
 "Next" 버튼 클릭 이벤트 핸들러는 현재 프로필 상태를 설정합니다.
 
@@ -159,7 +159,7 @@ return (
 
 이제 훨씬 나아보이네요! 버튼을 여러번 누르는 것은 이상하기 때문에 버튼을 클릭하면 비활성화됩니다. 그리고 사용자에게 앱이 멈추지 않았다는 것을 알려주기 위해 "Loading..." 이라고 알려줍니다.
 
-### 변화를 살펴보기 {#reviewing-the-changes}
+### 변화 살펴보기 {#reviewing-the-changes}
 
 [원본 예제](https://codesandbox.io/s/infallible-feather-xjtbu) 이후로 변경된 모든 사항을 살펴보겠습니다.
 
@@ -191,16 +191,17 @@ function App() {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/jovial-lalande-26yep)**
 
-이 전환을 추가하는데 7줄의 코드가 필요했습니다.
+이 전환을 추가하는데 7줄의 코드만 필요했습니다.
 
-* `useTransition` 훅을 가져와 상태를 갱신하는 컴포넌트에서 사용했습니다.
+* `useTransition` 훅을 가져와 컴포넌트의 상태 갱신 부분에 사용했습니다.
 * `{timeoutMs: 3000}` 옵션을 전달하여 최대 3초간 이전 화면을 유지하도록 설정했습니다.
 * React가 상태 갱신을 지연할 수 있도록 상태 갱신 코드를 `startTransition` 함수로 래핑했습니다.
 * `isPending`을 이용하여 사용자에게 작업 상황을 알리고 버튼을 비활성화합니다.
 
-결과적으로 "Next" 버튼을 눌러도 즉각적으로 의도하지 않은 로딩 상태로 전환되지 않고 이전 화면에서 진행 상태를 알려줍니다.
 
-### 어디에서 전환이 이루어지나요? {#where-does-the-update-happen}
+결과적으로 "Next" 버튼을 눌러도 의도하지 않은 로딩 상태로 바로 전환되지 않고 이전 화면에서 진행 상태를 알려줍니다.
+
+### 어디에서 갱신이 발생하나요? {#where-does-the-update-happen}
 
 위 예제를 구현하는 것은 엄청 어렵진 않았습니다. 하지만 어떻게 이게 작동하는지에 대해서 생각하기 시작하면 약간 어지러울 수 있습니다. 상태를 설정했는데 어떻게 그 결과를 바로 볼 수 없는 걸까요? **어디에서** 다음 `<ProfilePage>` 렌더링이 어디에서 일어날까요?
 
@@ -214,14 +215,13 @@ function App() {
 
 물론 두 버전의 트리 렌더링이 **동시에** 일어나진 않습니다. 컴퓨터의 모든 프로그램들이 동시에 실행된다는 것이 허상인 것처럼요. 운영체제는 다른 애플리케이션들을 매우 빠르게 전환합니다. 비슷하게 React도 화면에 보이는 트리 버전과 다음에 노출하기 위해 "준비중"인 버전을 전환할 수 있습니다.
 
-`useTransition` 같은 API를 사용하면 원하는 사용자 경험에 초점을 맞출 수 있고 어떻게 구현했는지에 대한 생각은 하지 않아도 됩니다. 그래도 `startTransition`에 래핑된 전환이 "브랜치"나 "다른 세계"에서 일어난다는 비유는 여전히 도움이 될 수 있습니다.
-An API like `useTransition` lets you focus on the desired user experience, and not think about the mechanics of how it's implemented. Still, it can be a helpful metaphor to imagine that updates wrapped in `startTransition` happen "on a branch" or "in a different world".
+`useTransition` 같은 API를 사용하면 원하는 사용자 경험에 초점을 맞출 수 있고 어떻게 구현했는지에 대한 생각은 하지 않아도 됩니다. `startTransition`에 래핑된 전환이 "브랜치"나 "다른 세계"에서 일어난다는 비유는 이해에 도움이 될 수 있습니다.
 
-### 전환은 모든 곳에 있습니다. {#transitions-are-everywhere}
+### 트랜지션은 모든 곳에 있습니다. {#transitions-are-everywhere}
 
 [Suspense walkthrough](/docs/concurrent-mode-suspense.html)에서 어떤 컴포넌트라도 추가적인 데이터가 필요하지만 준비되지 않았다면 언제든지 '서스펜드' 할 수 있다는 것을 배웠습니다. 중단 상태를 처리하기 위해 `<Suspense>`를 트리의 다른 부분에 전략적으로 배치할 수는 있지만 항상 충분하지는 않습니다.
 
-하나의 프로필만 있던 [first Suspense demo](https://codesandbox.io/s/frosty-hermann-bztrp)로 돌아가봅시다. 이 예제는 오직 데이터를 한 번만 페치합니다. 서버 변경사항을 검사하기 위한 "Refresh" 버튼을 추가하겠습니다.
+하나의 프로필만 있던 [첫번째 서스펜스 데모](https://codesandbox.io/s/frosty-hermann-bztrp)로 돌아가봅시다. 이 예제는 오직 데이터를 한 번만 페치합니다. 서버 변경사항을 검사하기 위한 "Refresh" 버튼을 추가하겠습니다.
 
 첫번째 시도는 다음과 같이 생겼습니다.
 
@@ -252,12 +252,10 @@ function ProfilePage() {
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/boring-shadow-100tf)**
 
 이 예제에선 페이지가 로드되거나 "Refresh" 버튼을 누를 때 마다 데이터를 패치합니다. `fetchUserAndPosts()`의 반환값을 상태에 저장하여 하위 컴포넌트들이 요청에서 가져온 데이터를 읽을 수 있게 하겠습니다.
-In this example, we start data fetching at the load *and* every time you press "Refresh". We put the result of calling `fetchUserAndPosts()` into state so that components below can start reading the new data from the request we just kicked off.
 
-[이 예제](https://codesandbox.io/s/boring-shadow-100tf)를 보면 "Refresh" 버튼을 누르는 것은 동작합니다.
-We can see in [this example](https://codesandbox.io/s/boring-shadow-100tf) that pressing "Refresh" works. The `<ProfileDetails>` and `<ProfileTimeline>` components receive a new `resource` prop that represents the fresh data, they "suspend" because we don't have a response yet, and we see the fallbacks. When the response loads, we can see the updated posts (our fake API adds them every 3 seconds).
+[이 예제](https://codesandbox.io/s/boring-shadow-100tf)를 보면 "Refresh" 버튼을 누르는 것은 동작합니다. `<ProfileDetails>` 와 `<ProfileTimeline>` 컴포넌트들은 새로운 최신 데이터를 표현하는 `resource` 프롭을 전달받습니다. `fetchUserAndPosts` 호출 직후에 아무런 응답을 받지 못했기 때문에 컴포넌트는 바로 '서스펜드' 상태가 되고 화면에는 폴백을 보게 됩니다. 응답을 받은 뒤엔 새롭게 갱신된 포스트를 볼 수 있습니다. (우리의 목 API는 3초 마다 새로운 포스트를 추가합니다.)
 
-However, the experience feels really jarring. We were browsing a page, but it got replaced by a loading state right as we were interacting with it. It's disorienting. **Just like before, to avoid showing an undesirable loading state, we can wrap the state update in a transition:**
+하지만 위 경험은 자연스럽지 않습니다. 우리는 한 페이지를 브라우징 하고 있었는데 버튼을 클릭한 직후에 바로 로딩 상태로 전환되어 사용자를 혼란스럽게 합니다. **이전처럼, 의도치 않은 로딩 상태를 숨기기 위해서 상태 갱신을 트랜지션에 래핑할 수 있습니다:**
 
 ```js{2-5,9-11,21}
 function ProfilePage() {
@@ -292,13 +290,13 @@ function ProfilePage() {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/sleepy-field-mohzb)**
 
-This feels a lot better! Clicking "Refresh" doesn't pull us away from the page we're browsing anymore. We see something is loading "inline", and when the data is ready, it's displayed.
+훨씬 나아 보입니다! "Refresh" 버튼을 클릭해도 우리가 브라우징하고 있는 페이지가 사라지지 않습니다. 우리는 인라인으로 뭔가 로딩되고 있다는 것을 보고 데이터가 준비된 이후에 새로운 데이터가 보여집니다.
 
-### Baking Transitions Into the Design System {#baking-transitions-into-the-design-system}
+### 디자인시스템에 트랜지션 구축하기 {#baking-transitions-into-the-design-system}
 
-We can now see that the need for `useTransition` is *very* common. Pretty much any button click or interaction that can lead to a component suspending needs to be wrapped in `useTransition` to avoid accidentally hiding something the user is interacting with.
+이제 `useTransition`의 필요성이 **매우** 일반적이라는 걸 알 수 있습니다. 사용자가 상호작용하는 대상을 실수로 숨기지 않도록 컴포넌트를 서스펜드 상태로 만들 수 있는 대부분 버튼클릭이나 상호작용은 `useTransition`으로 래핑해야 합니다.
 
-This can lead to a lot of repetitive code across components. This is why **we generally recommend to bake `useTransition` into the *design system* components of your app**. For example, we can extract the transition logic into our own `<Button>` component:
+위 작업은 컴포넌트 사이에 많은 반복적인 코드 생산으로 이어질 수 있습니다. 이것이 **일반적으로 디자인 시스템에 `useTransition` 사용하는 것을 추천하는 이유입니다**. 예를 들어 트랜지션 로직을 커스텀 `<Button>` 컴포넌트로 추출할 수 있습니다.
 
 ```js{7-9,20,24}
 function Button({ children, onClick }) {
@@ -332,7 +330,7 @@ function Button({ children, onClick }) {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/modest-ritchie-iufrh)**
 
-Note that the button doesn't care *what* state we're updating. It's wrapping *any* state updates that happen during its `onClick` handler into a transition. Now that our `<Button>` takes care of setting up the transition, the `<ProfilePage>` component doesn't need to set up its own:
+명심하세요 버튼은 **어떤** 상태를 갱신하던지 관여하지 않습니다. 이것은 onClick 이벤트 핸들러에서 발생하는 모든 상태 갱신을 transition에 포함시킵니다. 이제 `<Button>`이 트랜지션 설정을 대신 해주기 때문에 `<ProfilePage>` 컴포넌트에 트랜지션 설정을 해줄 필요가 없습니다.
 
 ```js{4-6,11-13}
 function ProfilePage() {
@@ -358,35 +356,35 @@ function ProfilePage() {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/modest-ritchie-iufrh)**
 
-When a button gets clicked, it starts a transition and calls `props.onClick()` inside of it -- which triggers `handleRefreshClick` in the `<ProfilePage>` component. We start fetching the fresh data, but it doesn't trigger a fallback because we're inside a transition, and the 10 second timeout specified in the `useTransition` call hasn't passed yet. While a transition is pending, the button displays an inline loading indicator.
+버튼을 클릭하면 전환이 시작되고 그 안에 `props.onClick()` 이 호출되서 `<ProfilePage>` 컴포넌트에서 `handleRefreshClick` 함수가 실행됩니다. 새로운 데이터를 가져 오기 시작하지만 트랜지션 내부라서 폴백이 보여지지 않으며 'useTransition' 호출에 지정된 10초가 지나지 않았습니다. 전환이 보류중인 동안 버튼에 인라인으로 로딩 인디케이터를 봅니다.
 
-We can see now how Concurrent Mode helps us achieve a good user experience without sacrificing isolation and modularity of components. React coordinates the transition.
+이제 컨커런트 모드가 구성 요소의 격리 수준 및 모듈성을 희생하지 않고도 우수한 사용자 경험을 만드는지 배웠습니다. React는 트랜지션을 조정합니다.
 
-## The Three Steps {#the-three-steps}
+## 세 단계 {#the-three-steps}
 
-By now we have discussed all of the different visual states that an update may go through. In this section, we will give them names and talk about the progression between them.
+지금까지 갱신에 진행될 수 있는 다양한 시각적 상태를 살펴보았습니다. 이 섹션에서는 상태 변화 단계에 이름을 부여하고 각 단계별로 어떻게 진행되는지 이야기해보겠습니다.
 
 <br>
 
-<img src="../images/docs/cm-steps-simple.png" alt="Three steps" />
+<img src="../images/docs/cm-steps-simple.png" alt="세 단계" />
 
-At the very end, we have the **Complete** state. That's where we want to eventually get to. It represents the moment when the next screen is fully rendered and isn't loading more data.
+맨 마지막 단계에 **완료** 단계가 있습니다. 최종적으로 우리가 달성하고 싶어하는 상태입니다. 다음 화면을 전부 렌더링하고 더 이상 로딩할 데이터가 없는 순간을 의미합니다.
 
-But before our screen can be Complete, we might need to load some data or code. When we're on the next screen, but some parts of it are still loading, we call that a **Skeleton** state.
+화면이 완료 상태가 되기 전에 특정 데이터나 코드를 불러와야 할 수 있습니다. 다음 화면에 있지만 일부 데이터를 여전히 가져오고 있는 경우 "스켈레톤" 상태라고 말합니다.
 
-Finally, there are two primary ways that lead us to the Skeleton state. We will illustrate the difference between them with a concrete example.
+마지막으로 스켈레톤 상태로 우리를 이끄는 주요한 두 가지 방법이 있습니다. 구체적인 예를 통해 차이점을 설명하겠습니다.
 
-### Default: Receded → Skeleton → Complete {#default-receded-skeleton-complete}
+### 기본: 후퇴 → 스켈레톤 → 완료 {#default-receded-skeleton-complete}
 
-Open [this example](https://codesandbox.io/s/prod-grass-g1lh5) and click "Open Profile". You will see several visual states one by one:
+[이 예제](https://codesandbox.io/s/prod-grass-g1lh5)를 열고 "Open Profile" 버튼을 클릭하세요. 여러 시각적 상태를 단계별로 볼 수 있습니다:
 
-* **Receded**: For a second, you will see the `<h1>Loading the app...</h1>` fallback.
-* **Skeleton:** You will see the `<ProfilePage>` component with `<h2>Loading posts...</h2>` inside.
-* **Complete:** You will see the `<ProfilePage>` component with no fallbacks inside. Everything was fetched.
+* **후퇴:** 잠시동안 `<h1>Loading the app...</h1>` 폴백이 보입니다.
+* **스켈레톤:** `<ProfilePage>` 컴포넌트와 내부의 `<h2>Loading posts...</h2>` 폴백이 보입니다.
+* **완료:** 별도의 내부 폴백 없이 `<ProfilePage>` 가 보입니다. 모든 것이 준비되었습니다.
 
-How do we separate the Receded and the Skeleton states? The difference between them is that the **Receded** state feels like "taking a step back" to the user, while the **Skeleton** state feels like "taking a step forward" in our progress to show more content.
+어떻게 후퇴와 스켈레톤 상태를 구분할 수 있을까요? 차이점은 **후퇴**상태는 '한 단계 뒤로가기' 로 느껴지고, **스켈레톤** 상태는 더 많은 컨텐츠를 보여주기 위해서 '한 단계 앞으로 가기' 에 가까운 느낌입니다.
 
-In this example, we started our journey on the `<HomePage>`:
+이 예제에선 `<HomePage>` 로 여정을 시작합니다:
 
 ```js
 <Suspense fallback={...}>
@@ -395,7 +393,7 @@ In this example, we started our journey on the `<HomePage>`:
 </Suspense>
 ```
 
-After the click, React started rendering the next screen:
+클릭하면 React는 다음 화면을 렌더링하기 시작합니다:
 
 ```js
 <Suspense fallback={...}>
@@ -409,7 +407,7 @@ After the click, React started rendering the next screen:
 </Suspense>
 ```
 
-Both `<ProfileDetails>` and `<ProfileTimeline>` need data to render, so they suspend:
+`<ProfileDetails>` 와 `<ProfileTimeline>` 모두 렌더링에 필요한 데이터를 준비하는 동안 서스펜드됩니다:
 
 ```js{4,6}
 <Suspense fallback={...}>
@@ -423,16 +421,16 @@ Both `<ProfileDetails>` and `<ProfileTimeline>` need data to render, so they sus
 </Suspense>
 ```
 
-When a component suspends, React needs to show the closest fallback. But the closest fallback to `<ProfileDetails>` is at the top level:
+컴포넌트가 서스펜드 되면 React는 가장 가까운 폴백을 표시합니다. `<ProfileDetails>`의 가장 가까운 폴백은 최상위 수준에 있습니다:
 
 ```js{2,3,7}
 <Suspense fallback={
-  // We see this fallback now because of <ProfileDetails>
+  // <ProfileDetails> 가 아직 준비되지 않아서 이 폴백이 보입니다.
   <h1>Loading the app...</h1>
 }>
-  {/* next screen */}
+  {/* 다음 화면 */}
   <ProfilePage>
-    <ProfileDetails /> {/* suspends! */}
+    <ProfileDetails /> {/* 서스펜드됩니다! */}
     <Suspense fallback={...}>
       <ProfileTimeline />
     </Suspense>
@@ -440,39 +438,39 @@ When a component suspends, React needs to show the closest fallback. But the clo
 </Suspense>
 ```
 
-This is why when we click the button, it feels like we've "taken a step back". The `<Suspense>` boundary which was previously showing useful content (`<HomePage />`) had to "recede" to showing the fallback (`<h1>Loading the app...</h1>`). We call that a **Receded** state.
+최상위 수준에서 폴백되기 때문에 버튼을 클릭할 때 "한 단계 뒤로 간 느낌"이 듭니다. 이전에 유용한 컨텐츠를 보여주던 `<Suspense>` 바운더리는 폴백을 보여주기 위해 '후퇴'해야 합니다. 이것을 **후퇴**상태라고 부릅니다.
 
-As we load more data, React will retry rendering, and `<ProfileDetails>` can render successfully. Finally, we're in the **Skeleton** state. We see the new page with missing parts:
+더 많은 데이터를 불러올 수록 React는 렌더링을 다시 시도하고 `<ProfileDetails>`는 성공적으로 렌더링됩니다. 마침내 **스켈레톤** 상태에 돌입했습니다. 몇가지 빠졌지만 새로운 페이지가 보입니다:
 
 ```js{6,7,9}
 <Suspense fallback={...}>
-  {/* next screen */}
+  {/* 다음 화면 */}
   <ProfilePage>
     <ProfileDetails />
     <Suspense fallback={
-      // We see this fallback now because of <ProfileTimeline>
+      // <ProfileTimeline> 가 아직 준비되지 않아서 이 폴백이 보입니다.
       <h2>Loading posts...</h2>
     }>
-      <ProfileTimeline /> {/* suspends! */}
+      <ProfileTimeline /> {/* 서스펜드됩니다! */}
     </Suspense>
   </ProfilePage>
 </Suspense>
 ```
 
-Eventually, they load too, and we get to the **Complete** state.
+마지막으로 부족한 데이터도 준비되어 **완료** 상태가 됩니다.
 
-This scenario (Receded → Skeleton → Complete) is the default one. However, the Receded state is not very pleasant because it "hides" existing information. This is why React lets us opt into a different sequence (**Pending** → Skeleton → Complete) with `useTransition`.
+이 시나리오 (Receded → Skeleton → Complete)는 가장 기본적인 형태입니다. 하지만 후퇴 상태는 아주 쾌적한 상태는 아닙니다. 왜냐하면 후퇴상태는 기존 정보를 '숨겨버리기' 때문입니다. React가 `useTransition`을 이용하여 다른 시퀀스 (**보류** → 스켈레톤 → 완료)를 선택할 수 있게 하는 이유입니다.
 
-### Preferred: Pending → Skeleton → Complete {#preferred-pending-skeleton-complete}
+### 선호: 보류 → 스켈레톤 → 완료 {#preferred-pending-skeleton-complete}
 
-When we `useTransition`, React will let us "stay" on the previous screen -- and show a progress indicator there. We call that a **Pending** state. It feels much better than the Receded state because none of our existing content disappears, and the page stays interactive.
+`useTransition`할 때 React는 이전 화면에 '잔류'할 수 있게 합니다. 그리고 진행 인디케이터를 보여줍니다. 이걸 **보류**상태라고 부릅니다. 기존 컨텐츠가 사라지지 않고 잔류한 채로 상호작용이 가능하기 때문에 **후퇴** 상태보다 훨씬 좋게 느껴집니다.
 
-You can compare these two examples to feel the difference:
+차이를 느끼기 위해 두 예제를 비교해보세요:
 
-* Default: [Receded → Skeleton → Complete](https://codesandbox.io/s/prod-grass-g1lh5)
-* **Preferred: [Pending → Skeleton → Complete](https://codesandbox.io/s/focused-snow-xbkvl)**
+* 기본: [후퇴 → 스켈레톤 → 완성](https://codesandbox.io/s/prod-grass-g1lh5)
+* **선호: [보류 → 스켈레톤 → 완성](https://codesandbox.io/s/focused-snow-xbkvl)**
 
-The only difference between these two examples is that the first uses regular `<button>`s, but the second one uses our custom `<Button>` component with `useTransition`.
+두 예제의 유일한 차이점은 첫 번째는 일반 `<button>`을 사용하지만 두 번째는 커스텀 `<Button>` 구성 요소를 `useTransition`와 함께 사용한다는 것입니다.
 
 ### Wrap Lazy Features in `<Suspense>` {#wrap-lazy-features-in-suspense}
 
