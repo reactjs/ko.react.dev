@@ -44,7 +44,7 @@ next: concurrent-mode-adoption.html
 - [기타 패턴](#other-patterns)
   - [낮은 우선순위 상태와 높은 우선순위 상태 분할하기](#splitting-high-and-low-priority-state)
   - [값 지연하기](#deferring-a-value)
-  - [서스펜스 목록](#suspenselist)
+  - [SuspenseList](#suspenselist)
 - [다음 단계](#next-steps)
 
 ## 트랜지션 {#transitions}
@@ -625,7 +625,7 @@ When you design React components, it is usually best to find the "minimal repres
 
 React 컴포넌트를 설계할 때 일반적으로 "최소한 표현" 상태를 찾는 것이 좋습니다. 예를 들어 `firstName`, `lastName`, `fullName`를 전부 상태에 저장해놓기 보다는 `firstName`, `lastName`만 저장해놓고 렌더링 과정에서 `fullName`을 계산하는 것이 낫습니다. 상태를 갱신할 때 실수의 여지를 없애고 다른 상태를 신경쓰지 않아도 되기 때문입니다.
 
-그런데 컨커런트 모드에서는 다른 상태의 변수들에 데이터 '중복'을 원할 수도 있습니다. 다음 작은 앱을 생각해봅시다:
+그런데 컨커런트 모드에서는 다른 상태의 변수들에 데이터 '중복'을 원할 수도 있습니다. 다음 작은 애플리케이션을 생각해봅시다:
 
 ```js
 const initialQuery = "Hello, world";
@@ -797,13 +797,15 @@ function ProfileTimeline({ isStale, resource }) {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/vigorous-keller-3ed2b)**
 
-The tradeoff we're making here is that `<ProfileTimeline>` will be inconsistent with other components and potentially show an older item. Click "Next" a few times, and you'll notice it. But thanks to that, we were able to cut down the transition time from 1000ms to 300ms.
+이 예제의 트레이드오프는 `<ProfileTimeline>` 이 다른 컴포넌트들과 비일관적으로 오래된 정보를 보여줄 수 있게 된다는 것입니다. "Next" 버튼을 여러번 클릭해보면 알게 될 겁니다. 하지만 다행스럽게도 우리는 트랜지션에 소요되는 시간을 1000ms에서 300ms로 줄였습니다.
 
-Whether or not it's an appropriate tradeoff depends on the situation. But it's a handy tool, especially when the content doesn't change noticeably between items, and the user might not even realize they were looking at a stale version for a second.
+이런 트레이드오프가 적절한지는 상황에 달려 있습니다. 하지만 이것은 매우 편리한 도구입니다. 특히 컨텐츠 사이의 내용이 눈에 띄게 변경되지 경우에요. 사용자는 짧은 시간동안 오래된 내용을 보고 있다는 것도 인지하지 못할 수 있습니다.
 
 It's worth noting that `useDeferredValue` is not *only* useful for data fetching. It also helps when an expensive component tree causes an interaction (e.g. typing in an input) to be sluggish. Just like we can "defer" a value that takes too long to fetch (and show its old value despite others components updating), we can do this with trees that take too long to render.
 
-For example, consider a filterable list like this:
+`useDeferredValue`의 가치는 데이터를 가져오는 것에만 있는게 아닙니다. 무거운 컴포넌트 트리로 상호작용이 느려지는 경우에도 도움이 됩니다. (예를 들어 인풋에 타이핑할 때) 긴 요청을 지연시키는 것 처럼(그리고 다른 컴포넌트가 업데이트 되는 동안 예전 값을 보여주고요) 렌더링에 오랜 시간이 필요한 트리에도 적용할 수 있습니다.
+
+예를 들어 다음과 같은 필터 기능이 포함된 목록을 생각해봅시다:
 
 ```js
 function App() {
@@ -828,9 +830,9 @@ function App() {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/pensive-shirley-wkp46)**
 
-In this example, **every item in `<MySlowList>` has an artificial slowdown -- each of them blocks the thread for a few milliseconds**. We'd never do this in a real app, but this helps us simulate what can happen in a deep component tree with no single obvious place to optimize.
+이 예제에선 **`<MySlowList>`의 모든 아이템은 고의적으로 속도저하를 유도합니다. 각 아이템들은 쓰레드를 몇 밀리세컨드 동안 차단합니다.** 실제 애플리케이션에서는 절대 이렇게 만들진 않겠지만 최적화가 불가능한 깊은 컴포넌트 트리를 시뮬레이션하는 용도로 생각해주세요.
 
-We can see how typing in the input causes stutter. Now let's add `useDeferredValue`:
+인풋에 타이핑하면 어떻게 버벅이는지 볼 수 있습니다. 이제 `useDeferredValue`를 추가해봅시다:
 
 ```js{3-5,18}
 function App() {
@@ -858,17 +860,17 @@ function App() {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/infallible-dewdney-9fkv9)**
 
-Now typing has a lot less stutter -- although we pay for this by showing the results with a lag.
+이제 타이핑해도 덜 버벅이긴 하지만 결과가 지연되어 보여집니다.
 
-How is this different from debouncing? Our example has a fixed artificial delay (3ms for every one of 80 items), so there is always a delay, no matter how fast our computer is. However, the `useDeferredValue` value only "lags behind" if the rendering takes a while. There is no minimal lag imposed by React. With a more realistic workload, you can expect the lag to adjust to the user’s device. On fast machines, the lag would be smaller or non-existent, and on slow machines, it would be more noticeable. In both cases, the app would remain responsive. That’s the advantage of this mechanism over debouncing or throttling, which always impose a minimal delay and can't avoid blocking the thread while rendering.
+디바운싱과 비교하여 뭐가 다를까요? 우리의 예제는 고정된 지연시간(80 항목들에 대해서 3ms)을 가지고, 컴퓨터가 얼마나 빠르던 지연이 발생합니다. 하지만 `useDeferredValue` 값은 렌더링에 시간이 걸리는 경우에만 '지연'됩니다. React로 인해 발생하는 최소 지연은 없습니다. 보다 현실적인 작업량으로 지연이 사용자의 기기에 맞게 조정될 수 있습니다. 빠른 머신에서는 지연이 더 작거나 존재하지 않으며 느린 머신에서는 눈에 띄게 나타납니다. 두 경우 모두, 앱의 반응성이 유지됩니다. 이 메커니즘이 항상 지연을 발생시키며 렌더링 중 쓰레드를 차단하는 스로틀링이나 디바운싱에 비해 가지는 장점입니다.
 
-Even though there is an improvement in responsiveness, this example isn't as compelling yet because Concurrent Mode is missing some crucial optimizations for this use case. Still, it is interesting to see that features like `useDeferredValue` (or `useTransition`) are useful regardless of whether we're waiting for network or for computational work to finish.
+응답성이 향상했더라도 이 예제는 아직 설득력이 부족합니다. 왜냐하면 컨커런트 모드에 이 예제의 주요 최적화를 놓치고 있기 때문입니다. 여전히 'useDeferredValue'(또는 'useTransition`)와 같은 기능이 네트워크를 기다리고 있는지 계산 작업이 완료되는지에 관계없이 유용하다는 점이 흥미롭습니다.
 
 ### SuspenseList {#suspenselist}
 
-`<SuspenseList>` is the last pattern that's related to orchestrating loading states.
+`<SuspenseList>`는 로딩 상태들을 조율하는 것과 관련된 마지막 패턴입니다.
 
-Consider this example:
+다음 예제를 살펴봅시다:
 
 ```js{5-10}
 function ProfilePage({ resource }) {
@@ -888,11 +890,11 @@ function ProfilePage({ resource }) {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/proud-tree-exg5t)**
 
-The API call duration in this example is randomized. If you keep refreshing it, you will notice that sometimes the posts arrive first, and sometimes the "fun facts" arrive first.
+이 예제에서 API 호출 시간은 무작위입니다. 계속 새로고침하다보면 어떨땐 포스트가 먼저 보이고 어떨땐 재밌는 사실들이 먼저 보입니다.
 
-This presents a problem. If the response for fun facts arrives first, we'll see the fun facts below the `<h2>Loading posts...</h2>` fallback for posts. We might start reading them, but then the *posts* response will come back, and shift all the facts down. This is jarring.
+재밌는 사실 응답이 먼저 도착하면 `<h2>Loading posts...</h2>` 포스트 폴백 밑의 재밌는 사실을 보게 됩니다. 재밌는 사실을 읽기 시작하는데 갑자기 포스트 응답도 도착하고 재밌는 사실들은 포스트의 밑으로 밀려납니다. 이건 자연스럽지 않습니다.
 
-One way we could fix it is by putting them both in a single boundary:
+이 문제를 고치는 한가지 방법은 두 컴포넌트 모두 같은 서스펜스 경계에 두는 것입니다:
 
 ```js
 <Suspense fallback={<h2>Loading posts and fun facts...</h2>}>
@@ -903,17 +905,17 @@ One way we could fix it is by putting them both in a single boundary:
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/currying-violet-5jsiy)**
 
-The problem with this is that now we *always* wait for both of them to be fetched. However, if it's the *posts* that came back first, there's no reason to delay showing them. When fun facts load later, they won't shift the layout because they're already below the posts.
+이 방법의 문제는 이제 **항상** 두 데이터를 가져올 때 까지 기다려야 한다는 것입니다. 하지만 만약 포스트가 먼저 도착한다면 둘 다 지연시킬 필요는 없습니다. 재밌는 사실이 나중에 로드되면 포스트 영역이 이미 잡혀 있기 때문에 갑자기 레이아웃이 밀려나지 않습니다.
 
-Other approaches to this, such as composing Promises in a special way, are increasingly difficult to pull off when the loading states are located in different components down the tree.
+Promise를 특정 방법으로 병합하는 것 같은 문제에 다른 접근법은 로딩 상태가 트리 밑의 다른 컴포넌트에 있을 때 점점 어려워집니다.
 
-To solve this, we will import `SuspenseList`:
+이 문제를 해결하기 위해 `SuspenseList`를 가져오겠습니다:
 
 ```js
 import { SuspenseList } from 'react';
 ```
 
-`<SuspenseList>` coordinates the "reveal order" of the closest `<Suspense>` nodes below it:
+`<SuspenseList>`는 하위 트리에 있는 `<Suspense>`의 공개 순서를 조율합니다:
 
 ```js{3,11}
 function ProfilePage({ resource }) {
@@ -933,14 +935,14 @@ function ProfilePage({ resource }) {
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/black-wind-byilt)**
 
-The `revealOrder="forwards"` option means that the closest `<Suspense>` nodes inside this list **will only "reveal" their content in the order they appear in the tree -- even if the data for them arrives in a different order**. `<SuspenseList>` has other interesting modes: try changing `"forwards"` to `"backwards"` or `"together"` and see what happens.
+`revealOrder="forwards"`옵션은 내부 리스트에 인접한 `<Suspense>` 노드들은 **트리에 나타난 순서대로 '나타난다'는 것을 의미합니다. 설령 다른 순서로 데이터가 도착하더라도 말이죠. `<SuspenseList>`는 다른 흥미로운 모드도 있습니다. `"forwards"`를 `"backwards"` 나 `"together"`로 바꿔보고 어떻게 되는지 확인해보세요.
 
-You can control how many loading states are visible at once with the `tail` prop. If we specify `tail="collapsed"`, we'll see *at most one* fallback at the time. You can play with it [here](https://codesandbox.io/s/adoring-almeida-1zzjh).
+얼마나 많은 로딩 상태를 보일 수 있게 할건지 `tail` 프로퍼티를 사용하여 제어할 수 있습니다. `tail="collapsed"`라고 설정하면 마지막 폴백만 보이게 됩니다. [여기](https://codesandbox.io/s/adoring-almeida-1zzjh)에서 사용해 볼 수 있습니다.
 
-Keep in mind that `<SuspenseList>` is composable, like anything in React. For example, you can create a grid by putting several `<SuspenseList>` rows inside a `<SuspenseList>` table.
+`<SuspenseList>`은 React의 다른 요소들처럼 합성가능하다는 점을 상기해두세요. 예를 들어 `<SuspenseList>` 테이블을 담는 여러 `<SusepnseList>` 열을 여러개 가진 그리드를 만들 수도 있습니다.
 
-## Next Steps {#next-steps}
+## 다음 단계 {#next-steps}
 
-Concurrent Mode offers a powerful UI programming model and a set of new composable primitives to help you orchestrate delightful user experiences.
+컨커런트 모드는 강력한 UI 프로그래밍 모델과 좋은 사용자 경험 조직하는데 도움을 주는 기본 기능들을 제공합니다.
 
-It's a result of several years of research and development, but it's not finished. In the section on [adopting Concurrent Mode](/docs/concurrent-mode-adoption.html), we'll describe how you can try it and what you can expect.
+이것은 몇년의 연구와 개발에 걸친 결과물이지만 아직 끝나지 않았습니다. [컨커런트 모드 채택하기](/docs/concurrent-mode-adoption.html) 섹션에서 어떻게 컨커런트 모드를 시작할 수 있고 어떤 것을 기대할 수 있는지 서술하겠습니다.
