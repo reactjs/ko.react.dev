@@ -40,7 +40,7 @@ ReactDOM.render(
 
 JSX가 JavaScript로 변환되는 예시를 더 보고 싶다면 [the online Babel compiler](babel://jsx-simple-example)를 참고하세요.
 
-컴포넌트는 문자열이나 `React.Component`의 하위 클래스 또는 무상태 컴포넌트를 위한 순수 함수로 제공됩니다.
+컴포넌트는 문자열이나 `React.Component`의 하위 클래스 또는 컴포넌트를 위한 일반 함수로 제공됩니다.
 
 `React.createElement`를 너무 많이 입력하는 것이 피곤하다면 짧은 변수에 할당하는 방법이 있습니다.
 
