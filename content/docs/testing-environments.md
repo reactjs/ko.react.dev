@@ -25,17 +25,17 @@ Jest는 모의 [모듈](#mocking-modules) 및 [타이머](#mocking-timers), 그�
 
 실제 브라우저와 마찬가지로, jsdom은 사용자 상호작용을 모델링할 수 있도록 합니다. 테스트는 DOM 노드에서 이벤트를 발송한 다음 이러한 동작의 부작용을 관찰하고 검증할 수 있습니다. [(예시)](/docs/testing-recipes.html#events)
 
-UI 테스트의 많은 부분은 위의 설정으로 작성할 수 있습니다. jsdom에게 렌더링하는 테스트 러너로서, 브라우저 이벤트 시퀀스로 지정된 사용자 상호작용과 함께Jest를 사용하는 것은 act() 도우미에 의해 작동됩니다.[(예시)](https://github.com/reactjs/ko.reactjs.org/blob/master/docs/testing-recipes.html) 예를 들어, 많은 리액트 자체 테스트는 이런 조합으로 작성됩니다.
+UI 테스트의 많은 부분은 위의 설정으로 작성할 수 있습니다. jsdom에게 렌더링하는 테스트 러너로서, 브라우저 이벤트 시퀀스로 지정된 사용자 상호작용과 함께Jest를 사용하는 것은 act() 도우미에 의해 작동됩니다.[(예시)](/docs/testing-recipes.html) 예를 들어, 많은 React 자체 테스트는 이런 조합으로 작성됩니다.
 
 만약 대부분의 브라우저별 동작을 테스트하고 레이아웃이나 실제 입력과 같은 네이티브 브라우저 동작을 요구하는 라이브러리를 작성하는 경우 [mocha](https://mochajs.org/)와 같은 프레임 워크를 사용할 수 있습니다.
 
-DOM을 시뮬레이션*할 수 없는* 환경에서 (예를 들면, Node.js에서 React Native 컴포넌트 테스트), 엘리먼트와의 상호작용을 시뮬레이션하기 위해 [event simulation helpers](https://reactjs.org/docs/test-utils.html#simulate)를 사용할 수 있습니다. 다른 대안으로, [`@testing-library/react-native`](https://testing-library.com/docs/native-testing-library)의 `fireEvent` 헬퍼를 사용할 수 있습니다.
+DOM을 시뮬레이션*할 수 없는* 환경에서 (예를 들면, Node.js에서 React Native 컴포넌트 테스트), 엘리먼트와의 상호작용을 시뮬레이션하기 위해 [event simulation helpers](/docs/test-utils.html#simulate)를 사용할 수 있습니다. 다른 대안으로, [`@testing-library/react-native`](https://testing-library.com/docs/native-testing-library)의 `fireEvent` 헬퍼를 사용할 수 있습니다.
 
 [Cypress](https://www.cypress.io/), [puppeteer](https://github.com/GoogleChrome/puppeteer), [webdriver](https://www.seleniumhq.org/projects/webdriver/) 같은 프레임워크들은 [end-to-end 테스트](#end-to-end-tests-aka-e2e-tests)를 진행하기에 유용합니다.
 
 ### 모의 함수 {#mocking-functions}
 
-테스트를 작성할 때, 우리는 테스트 환경 내부에서 동등성이 없는 우리의 코드 중 일부를 목아웃하고 싶어합니다(예를 들어, navigator.online상태를 Node.js 내부에서 확인하는 것처럼). 테스트는 또한 일부 함수를 감시할 수 있으며 테스트의 다른 부분이 함수들과 어떻게 상호작용하는지를 관찰할 수 있습니다. 이는 이러한 함수들을 선택적으로 시험 친화적인 버전으로 모의할 수 있다는 점에서 유용합니다.
+테스트를 작성할 때, 우리는 테스트 환경 내부에서 동등성이 없는 우리의 코드 중 일부를 목아웃하고 싶어합니다(예를 들어, `navigator.onLine` 상태를 Node.js 내부에서 확인하는 것처럼). 테스트는 또한 일부 함수를 감시할 수 있으며 테스트의 다른 부분이 함수들과 어떻게 상호작용하는지를 관찰할 수 있습니다. 이는 이러한 함수들을 선택적으로 시험 친화적인 버전으로 모의할 수 있다는 점에서 유용합니다.
 
 모의 함수는 특히 데이터를 불러올 때 유용합니다. 실제 API 종단점으로부터 발생하는 느려짐과 손상을 방지하기 위해 테스트에 "가짜"데이터를 사용하는 것이 바람직한 방법입니다 [(예시)](/docs/testing-recipes.html#data-fetching). 이는 테스트를 예측 가능하게 만들어줍니다. [Jest](https://jestjs.io/)와 [sinon](https://sinonjs.org/)과 같은 라이브러리들은 모의 함수들을 지원합니다. 엔드 투 엔드 테스트의 경우 네트워크를 모사하는 것은 어려울 수 있지만, 실제 API 엔드포인트를 테스트하기를 원할 수도 있습니다.
 
