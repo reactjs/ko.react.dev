@@ -600,8 +600,6 @@ return (
 
 **[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/gallant-spence-l6wbk)**
 
-With this change, even though we're in the Pending state, we don't display any indication to the user until 500ms has passed. This may not seem like much of an improvement when the API responses are slow. But compare how it feels [before](https://codesandbox.io/s/thirsty-liskov-1ygph) and [after](https://codesandbox.io/s/hardcore-http-s18xr) when the API call is fast. Even though the rest of the code hasn't changed, suppressing a "too fast" loading state improves the perceived performance by not calling attention to the delay.
-
 이 변경으로 보류 상태에 있더라도 500ms가 지날 때까지 사용자에게 인디케이터가 보이지 않습니다. API 응답이 느리면 개선되지 않은 것처럼 보일 수 있습니다. 그러나 API 호출이 빠를 때 [이전 예제](https://codesandbox.io/s/thirsty-liskov-1ygph)과 [다음 예제](https://codesandbox.io/s/hardcore-http-s18xr)를 비교해보세요. 나머지 코드는 변경되지 않았지만 "너무 빠른" 로딩 상태를 억제하고 지연에 주의를 주지 않으면서 성능인식을 개선할 수 있습니다.
 
 ### 요약 {#recap}
