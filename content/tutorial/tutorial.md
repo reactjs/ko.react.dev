@@ -1049,11 +1049,7 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[지금까지의 전체 코드 확인하기](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
-<<<<<<< HEAD
 틱택토 게임 기록의 각각 이동마다 버튼 `<button>`을 포함하는 리스트 아이템 `<li>`를 생성합니다. 버튼은 `this.jumpTo()` 함수를 호출하는 `onClick` 핸들러를 가지고 있습니다. 아직은 `jumpTo()` 함수를 구현하지 않았습니다. 지금 상태에서 게임의 이동 목록은 아래와 같은 경고를 개발자 도구 콘솔에 표시합니다.
-=======
-For each move in the tic-tac-toe game's history, we create a list item `<li>` which contains a button `<button>`. The button has a `onClick` handler which calls a method called `this.jumpTo()`. We haven't implemented the `jumpTo()` method yet. For now, we should see a list of the moves that have occurred in the game and a warning in the developer tools console that says:
->>>>>>> bc91fe4101420f98454a59ac34c1cf1d4d4f4476
 
 > 경고
 > 배열이나 이터레이터의 자식들은 고유의 "key" prop을 가지고 있어야 합니다. "Game"의 render 함수를 확인해주세요.
