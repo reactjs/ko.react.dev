@@ -31,6 +31,9 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
       [media.size('sidebarFixed')]: {
         paddingTop: 40,
       },
+      '@media print': {
+        display: 'none',
+      },
     }}>
     <Container>
       <div
@@ -119,7 +122,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             },
           }}>
           <a
-            href="https://code.facebook.com/projects/"
+            href="https://opensource.facebook.com/projects/"
             target="_blank"
             rel="noopener">
             <img

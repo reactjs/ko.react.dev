@@ -77,17 +77,9 @@ import("./math").then(math => {
 });
 ```
 
-> 주의
->
-> 동적 `import()` 문법은 아직 ECMAScript (JavaScript)의 표준 문법이 아니라
-> [제안](https://github.com/tc39/proposal-dynamic-import)입니다.  
-> 동적 `import()`은 가까운 미래에 표준에 추가될 것으로 보입니다.
-
-Webpack이 이 구문을 만나게 되면 앱의 코드를 분할합니다. 
+Webpack이 이 구문을 만나게 되면 앱의 코드를 분할합니다.
 Create React App을 사용하고 있다면 이미 Webpack이 구성이 되어 있기 때문에 즉시 [사용](https://facebook.github.io/create-react-app/docs/code-splitting)할 수 있습니다.
-[Next.js](https://github.com/zeit/next.js/#dynamic-import) 역시 지원합니다.
-
-스스로 Webpack을 구성하고자 한다면 Webpack의 
+[Next.js](https://nextjs.org/docs/advanced-features/dynamic-import) 역시 지원합니다.
 [코드 분할 가이드](https://webpack.js.org/guides/code-splitting/)를 참조하세요. Webpack 설정은 [가이드](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269)에 있습니다.
 
 [Babel](http://babeljs.io/)을 사용할 때는 Babel이 동적 import를 인식할 수 있지만 변환하지는 않도록 합니다. 이를 위해 [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import)를 사용하세요.
@@ -96,7 +88,7 @@ Create React App을 사용하고 있다면 이미 Webpack이 구성이 되어 �
 
 > 주의
 >
-> `React.lazy`와 Suspense는 아직 서버 사이드 렌더링을 할 수 없습니다. 서버에서 렌더링 된 앱에서 코드 분할을 하기 원한다면 [Loadable Components](https://github.com/smooth-code/loadable-components)를 추천합니다. 이는 [서버 사이드 렌더링과 번들 스플리팅에 대한 좋은 가이드](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md)입니다.
+> `React.lazy`와 Suspense는 아직 서버 사이드 렌더링을 할 수 없습니다. 서버에서 렌더링 된 앱에서 코드 분할을 하기 원한다면 [Loadable Components](https://github.com/gregberge/loadable-components)를 추천합니다. 이는 [서버 사이드 렌더링과 번들 스플리팅에 대한 좋은 가이드](https://loadable-components.com/docs/server-side-rendering/)입니다.
 
 `React.lazy` 함수를 사용하면 동적 import를 사용해서 컴포넌트를 렌더링 할 수 있습니다.
 
@@ -118,6 +110,8 @@ const OtherComponent = React.lazy(() => import('./OtherComponent'));
 lazy 컴포넌트는 `Suspense` 컴포넌트 하위에서 렌더링되어야 하며, `Suspense`는 lazy 컴포넌트가 로드되길 기다리는 동안 로딩 화면과 같은 예비 컨텐츠를 보여줄 수 있게 해줍니다.
 
 ```js
+import React, { Suspense } from 'react';
+
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
 function MyComponent() {
@@ -135,6 +129,8 @@ function MyComponent() {
 
 
 ```js
+import React, { Suspense } from 'react';
+
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 const AnotherComponent = React.lazy(() => import('./AnotherComponent'));
 
@@ -157,7 +153,9 @@ function MyComponent() {
 Error Boundary를 만들고 lazy 컴포넌트를 감싸면 네트워크 장애가 발생했을 때 에러를 표시할 수 있습니다.
 
 ```js
+import React, { Suspense } from 'react';
 import MyErrorBoundary from './MyErrorBoundary';
+
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 const AnotherComponent = React.lazy(() => import('./AnotherComponent'));
 
@@ -186,8 +184,8 @@ const MyComponent = () => (
 `React.lazy`를 [React Router](https://reacttraining.com/react-router/) 라이브러리를 사용해서 애플리케이션에 라우트 기반 코드 분할을 설정하는 예시입니다.
 
 ```js
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const Home = lazy(() => import('./routes/Home'));
 const About = lazy(() => import('./routes/About'));

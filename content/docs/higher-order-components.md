@@ -178,9 +178,9 @@ function withSubscription(WrappedComponent, selectData) {
 
 ```js
 function logProps(InputComponent) {
-  InputComponent.prototype.componentWillReceiveProps = function(nextProps) {
+  InputComponent.prototype.componentDidUpdate = function(prevProps) {
     console.log('Current props: ', this.props);
-    console.log('Next props: ', nextProps);
+    console.log('Previous props: ', prevProps);
   };
   // The fact that we're returning the original input is a hint that it has
   // been mutated.
@@ -191,7 +191,7 @@ function logProps(InputComponent) {
 const EnhancedComponent = logProps(InputComponent);
 ```
 
-여기에는 몇가지 문제점이 있습니다. 하나는 입력 컴포넌트를 개선된 컴포넌트와 별도로 재사용할 수 없다는 것입니다. 더 중요한 것은 `EnhancedComponent에` 또 다른 고차 컴포넌트를 적용하여 `componentWillReceiveProps` *또한* 변형시키면 첫번째 고차 컴포넌트의 기능이 오버라이드됩니다. 이 고차 컴포넌트는 라이프사이클 메서드가 없는 함수 컴포넌트에서는 동작하지않습니다.
+There are a few problems with this. One is that the input component cannot be reused separately from the enhanced component. More crucially, if you apply another HOC to `EnhancedComponent` that *also* mutates `componentDidUpdate`, the first HOC's functionality will be overridden! This HOC also won't work with function components, which do not have lifecycle methods.
 
 Mutating HOCs are a leaky abstraction—the consumer must know how they are implemented in order to avoid conflicts with other HOCs.
 
@@ -200,9 +200,9 @@ Instead of mutation, HOCs should use composition, by wrapping the input componen
 ```js
 function logProps(WrappedComponent) {
   return class extends React.Component {
-    componentWillReceiveProps(nextProps) {
+    componentDidUpdate(prevProps) {
       console.log('Current props: ', this.props);
-      console.log('Next props: ', nextProps);
+      console.log('Previous props: ', prevProps);
     }
     render() {
       // Wraps the input component in a container, without mutating it. Good!
