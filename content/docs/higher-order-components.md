@@ -169,7 +169,7 @@ function withSubscription(WrappedComponent, selectData) {
 
 `withSubscription` 는 일반 함수이기때문에 원하는 갯수의 인수를 추가할 수 있습니다. 예를 들어 래핑된 컴포넌트로부터 고차 컴포넌트를 더 격리시키기 위해 `data` prop 이름을 설정 가능하게 만들 수 있습니다. 혹은 `shouldComponentUpdate` 설정을 위한 인수를 받게 하거나 데이터 소스를 설정하는 인수를 받게할 수도 있습니다. 고차 컴포넌트가 컴포넌트 정의 방법을 완전히 제어할 수 있기 때문에 이런 작업들이 모두 가능합니다.
 
-컴포넌트와 마찬가지로 withSubscription 과 래핑된 컴포넌트 간 맺음(contract)은 완전히 props 기반입니다. 이렇게하면 래핑된 컴포넌트에 동일한 props를 제공한다면 다른 고차 컴포넌트를 쉽게 교차할 수 있습니다. 예를 들어 데이터를 가져오는 라이브러리를 변경하는 경우 유용하게 사용할 수 있습니다.
+컴포넌트와 마찬가지로 withSubscription 과 래핑된 컴포넌트 간 계약(contract)은 완전히 props 기반입니다. 이렇게하면 래핑된 컴포넌트에 동일한 props를 제공한다면 다른 고차 컴포넌트를 쉽게 교차할 수 있습니다. 예를 들어 데이터를 가져오는 라이브러리를 변경하는 경우 유용하게 사용할 수 있습니다.
 
 ## 원본 컴포넌트를 변환하지마세요. Composition을 사용하세요.
 . {#dont-mutate-the-original-component-use-composition}
