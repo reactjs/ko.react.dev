@@ -3,7 +3,7 @@ id: cdn-links
 title: CDN 링크
 permalink: docs/cdn-links.html
 prev: create-a-new-react-app.html
-next: hello-world.html
+next: release-channels.html
 ---
 
 React와 ReactDOM 모두 CDN을 통해 사용할 수 있습니다.
