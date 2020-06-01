@@ -1198,7 +1198,11 @@ class Game extends React.Component {
 * 게임이 진행됨에 따라 게임 기록을 저장하고,
 * 플레이어가 게임 기록을 확인하고 게임판의 이전 버전을 볼 수 있도록 허용합니다.
 
+<<<<<<< HEAD
 수고하셨습니다! 이제 React가 어떻게 동작하는지 이해하셨길 바랍니다.
+=======
+Nice work! We hope you now feel like you have a decent grasp of how React works.
+>>>>>>> b4b59062e59d56da37274c6de1fa4a134d2d8f49
 
 최종 결과는 여기서 확인해주세요: **[최종 결과](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
 
