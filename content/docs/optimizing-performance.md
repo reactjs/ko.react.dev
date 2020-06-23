@@ -371,11 +371,7 @@ function updateColorMap(colormap) {
 
 `updateColorMap`은 기존 객체를 변경하지않고 새로운 객체를 반환합니다. `Object.assign`은 ES6의 문법이고 폴리필(polyfill)을 필요로합니다.
 
-<<<<<<< HEAD
-객체 또한 변경 없이 손쉽게 업데이트될 수 있도록 [object spread properties](https://github.com/sebmarkbage/ecmascript-rest-spread)를 추가하자는 JavaScript 제안이 있습니다.
-=======
-[Object spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) makes it easier to update objects without mutation as well:
->>>>>>> e548bd7e65086a8206fee46bd9e24b18b68bf045
+객체 또한 변경 없이 손쉽게 업데이트될 수 있도록 [object spread properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)를 추가하자는 JavaScript 제안이 있습니다.
 
 ```js
 function updateColorMap(colormap) {
@@ -383,12 +379,7 @@ function updateColorMap(colormap) {
 }
 ```
 
-<<<<<<< HEAD
+이 기능은 ES2018에 추가되었습니다.
 Create React App을 사용하고 있다면 `Object.assign`과 object spread 문법은 기본적으로 활용 가능합니다.
-=======
-This feature was added to JavaScript in ES2018. 
-
-If you're using Create React App, both `Object.assign` and the object spread syntax are available by default.
->>>>>>> e548bd7e65086a8206fee46bd9e24b18b68bf045
 
 깊게 중첩된 객체를 처리할 때 불변성을 지키는 방식으로 객체를 업데이트하면 복잡하다고 느낄 수 있습니다. 이런 문제를 마주했다면 [Immer](https://github.com/mweststrate/immer) 혹은 [immutability-helper](https://github.com/kolodny/immutability-helper)를 살펴보세요. 불변성이 가져다주는 이득을 잃지 않고 조금 더 가독성 있는 코드를 작성할 수 있게 해줄겁니다.
