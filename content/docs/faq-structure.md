@@ -12,11 +12,7 @@ React는 파일을 어떤 식으로 폴더에 분류할 것인지에 대해서 �
 
 #### 파일의 기능이나 라우트에 의한 분류 {#grouping-by-features-or-routes}
 
-<<<<<<< HEAD
 프로젝트 구조에 대한 일반적인 방법 중 하나는 CSS, JS 그리고 테스트 파일을 기능이나 라우트로 분류된 폴더에 같이 두는 방법입니다.
-=======
-One common way to structure projects is to locate CSS, JS, and tests together inside folders grouped by feature or route.
->>>>>>> e548bd7e65086a8206fee46bd9e24b18b68bf045
 
 ```
 common/
