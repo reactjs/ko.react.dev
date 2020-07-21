@@ -105,29 +105,29 @@ Hook의 초기 단계이며 일부 타사 라이브러리는 현재 Hook과 호�
 
 ### Redux `connect()`와 React Router와 같은 인기 있는 API에 대해 Hook은 무엇을 의미합니까? {#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router}
 
-You can continue to use the exact same APIs as you always have; they'll continue to work.
+여태껏 쓰던 API를 계속 사용할 수 있습니다; 앞으로도 계속 작동할 것 입니다.
 
-React Redux since v7.1.0 [supports Hooks API](https://react-redux.js.org/api/hooks) and exposes hooks like `useDispatch` or `useSelector`.
+v7.1.0부터 React Redux는 [Hook API를 지원하고](https://react-redux.js.org/api/hooks) `useDispatch` 또는 `useSelector`와 같은 Hook을 노출합니다.
 
-React Router [supports hooks](https://reacttraining.com/react-router/web/api/Hooks) since v5.1.
+v5.1 이후 React Router는 [Hook을 지원합니다](https://reacttraining.com/react-router/web/api/Hooks).
 
-Other libraries might support hooks in the future too.
+다른 라이브러리도 나중에 Hook을 지원할 수 있습니다.
 
 ### Hook은 정적 타이핑과 함께 작동합니까? {#do-hooks-work-with-static-typing}
 
-Hooks were designed with static typing in mind. Because they're functions, they are easier to type correctly than patterns like higher-order components. The latest Flow and TypeScript React definitions include support for React Hooks.
+Hook은 정적 타이핑을 염두에 두고 설계되었습니다. 함수이기 때문에 고차 컴포넌트와 같은 패턴보다 타입을 명시하기가 더 쉽습니다. 최신 Flow 및 TypeScript React 정의에는 React Hook 지원이 포함됩니다.
 
-Importantly, custom Hooks give you the power to constrain React API if you'd like to type them more strictly in some way. React gives you the primitives, but you can combine them in different ways than what we provide out of the box.
+중요한 점은, 커스텀 Hook은 더 엄격하게 타이핑하려는 경우 React API를 제한할 수 있는 기능을 제공합니다. React는 기초 요소를 제공하지만, 기본 제공 방식과 다른 방식으로 조합 할 수 있습니다.
 
 ### Hook을 사용하는 컴포넌트 테스트하는 방법? {#how-to-test-components-that-use-hooks}
 
-From React's point of view, a component using Hooks is just a regular component. If your testing solution doesn't rely on React internals, testing components with Hooks shouldn't be different from how you normally test components.
+React의 관점에서 Hook을 사용하는 컴포넌트는 일반적인 컴포넌트입니다. 테스트 솔루션이 React internals에 의존하지 않는 경우 Hook이 있는 컴포넌트 테스트는 일반적으로 컴포넌트를 테스트하는 방법과 다르지 않아야 합니다.
 
->Note
+>주의
 >
->[Testing Recipes](/docs/testing-recipes.html) include many examples that you can copy and paste.
+>[테스팅 방안](/docs/testing-recipes.html)에는 복사하여 붙여넣을 수 있는 많은 예제가 포함되어 있습니다.
 
-For example, let's say we have this counter component:
+예를 들어 여기 이 계수기 컴포넌트가 있다고 가정해 보겠습니다:
 
 ```js
 function Example() {
@@ -146,7 +146,7 @@ function Example() {
 }
 ```
 
-We'll test it using React DOM. To make sure that the behavior matches what happens in the browser, we'll wrap the code rendering and updating it into [`ReactTestUtils.act()`](/docs/test-utils.html#act) calls.
+React DOM을 사용하여 테스트하겠습니다. 브라우저에서 발생하는 상황과 동작이 일치하도록 코드 렌더링을 포장하고 이를 [`ReactTestUtils.act()`](/docs/test-utils.html#act) 호출로 업데이트합니다.
 
 ```js{3,20-22,29-31}
 import React from 'react';
@@ -185,50 +185,50 @@ it('can render and update a counter', () => {
 });
 ```
 
-The calls to `act()` will also flush the effects inside of them.
+`act()` 호출은 그 안의 효과를 플러시합니다.
 
-If you need to test a custom Hook, you can do so by creating a component in your test, and using your Hook from it. Then you can test the component you wrote.
+커스텀 Hook을 테스트해야 하는 경우 테스트에서 컴포넌트를 작성하고 Hook을 사용하여 이를 수행 할 수 있습니다. 그런 다음 작성한 컴포넌트를 테스트 할 수 있습니다.
 
-To reduce the boilerplate, we recommend using [React Testing Library](https://testing-library.com/react) which is designed to encourage writing tests that use your components as the end users do.
+상용구를 줄이려면 [React Testing Library](https://testing-library.com/react)를 사용하는 것이 좋습니다. 이 라이브러리는 최종 사용자와 마찬가지로 컴포넌트를 사용하는 테스트 작성을 장려하도록 설계되었습니다.
 
-For more information, check out [Testing Recipes](/docs/testing-recipes.html).
+자세한 내용은 [테스팅 방안](/docs/testing-recipes.html)을 확인하십시오.
 
 ### [Lint 규칙](https://www.npmjs.com/package/eslint-plugin-react-hooks)은 정확히 무엇을 시행합니까? {#what-exactly-do-the-lint-rules-enforce}
 
-We provide an [ESLint plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) that enforces [rules of Hooks](/docs/hooks-rules.html) to avoid bugs. It assumes that any function starting with "`use`" and a capital letter right after it is a Hook. We recognize this heuristic isn't perfect and there may be some false positives, but without an ecosystem-wide convention there is just no way to make Hooks work well -- and longer names will discourage people from either adopting Hooks or following the convention.
+버그를 피하고자 [Hook 규칙](/docs/hooks-rules.html)을 시행하는 [ESLint 플러그인](https://www.npmjs.com/package/eslint-plugin-react-hooks)을 제공합니다. "`use`"로 시작하는 모든 함수와 Hook 바로 뒤에 대문자가 있다고 가정합니다. 우리는 이 휴리스틱이 완벽하지 않고 오 탐지가 있을 수 있다는 점을 인식하지만, 생태계 전반의 협약이 없으면 훅을 제대로 작동시킬 수 있는 방법이 없습니다 -- 더 긴 이름은 사람들이 Hook을 채택하거나 협약을 따르지 못하게 합니다.
 
-In particular, the rule enforces that.
+특히, 규칙은 이것들을 시행합니다.
 
-* Calls to Hooks are either inside a `PascalCase` function (assumed to be a component) or another `useSomething` function (assumed to be a custom Hook).
-* Hooks are called in the same order on every render.
+* Hook에 대한 호출은 `PascalCase` 함수 (컴포넌트로 가정) 또는 다른 `useSomething` 함수 (커스텀 Hook으로 가정) 내에 있습니다.
+* 모든 렌더링에서 Hook은 동일한 순서로 호출됩니다.
 
-There are a few more heuristics, and they might change over time as we fine-tune the rule to balance finding bugs with avoiding false positives.
+휴리스틱이 몇 가지 더 있으며, 추후 오 탐지를 피해 버그를 찾기 위해 규칙을 미세 조정함에 따라 변경될 수 있습니다.
 
 ## Class에서 Hook으로 {#from-classes-to-hooks}
 
 ### 생명주기 메서드가 Hook에 어떻게 대응합니까? {#how-do-lifecycle-methods-correspond-to-hooks}
 
-* `constructor`: Function components don't need a constructor. You can initialize the state in the [`useState`](/docs/hooks-reference.html#usestate) call. If computing the initial state is expensive, you can pass a function to `useState`.
+* `constructor`: 함수 컴포넌트는 constructor가 필요하지 않습니다. [`useState`](/docs/hooks-reference.html#usestate) 호출에서 state를 초기화 할 수 있습니다. 초기 state를 계산하는 것이 비싸면 `useState`에 함수를 전달할 수 있습니다.
 
-* `getDerivedStateFromProps`: Schedule an update [while rendering](#how-do-i-implement-getderivedstatefromprops) instead.
+* `getDerivedStateFromProps`: [대신 렌더링](#how-do-i-implement-getderivedstatefromprops)하는 동안 업데이트 예약.
 
-* `shouldComponentUpdate`: See `React.memo` [below](#how-do-i-implement-shouldcomponentupdate).
+* `shouldComponentUpdate`: [아래의](#how-do-i-implement-shouldcomponentupdate) `React.memo`를 참조하십시오.
 
-* `render`: This is the function component body itself.
+* `render`: 이것은 함수 컴포넌트 본체 자체입니다.
 
-* `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`: The [`useEffect` Hook](/docs/hooks-reference.html#useeffect) can express all combinations of these (including [less](#can-i-skip-an-effect-on-updates) [common](#can-i-run-an-effect-only-on-updates) cases).
+* `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`: [`useEffect` Hook](/docs/hooks-reference.html#useeffect)은 이들의 모든 조합을 표현할 수 있습니다. ([흔하거나](#can-i-run-an-effect-only-on-updates) [그렇지 않은](#can-i-skip-an-effect-on-updates) 경우 포함).
 
-* `getSnapshotBeforeUpdate`, `componentDidCatch` and `getDerivedStateFromError`: There are no Hook equivalents for these methods yet, but they will be added soon.
+* `getSnapshotBeforeUpdate`, `componentDidCatch` 그리고 `getDerivedStateFromError`: 이러한 메서드에 대한 Hook은 없지만, 곧 추가될 예정입니다.
 
 ### Hook을 사용하여 데이터 가져오기를 수행하려면 어떻게 해야 합니까? {#how-can-i-do-data-fetching-with-hooks}
 
-Here is a [small demo](https://codesandbox.io/s/jvvkoo8pq3) to get you started. To learn more, check out [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) about data fetching with Hooks.
+다음은 시작하기 위한 [짧은 데모](https://codesandbox.io/s/jvvkoo8pq3)입니다. 자세한 내용은 Hook을 사용한 데이터 가져오기를 다룬 [이 기사](https://www.robinwieruch.de/react-hooks-fetch-data/)를 확인하십시오.
 
 ### 인스턴스 변수와 같은 것이 있습니까? {#is-there-something-like-instance-variables}
 
-Yes! The [`useRef()`](/docs/hooks-reference.html#useref) Hook isn't just for DOM refs. The "ref" object is a generic container whose `current` property is mutable and can hold any value, similar to an instance property on a class.
+네! [`useRef()`](/docs/hooks-reference.html#useref) Hook은 DOM ref만을 위한 것이 아닙니다. "ref" 객체는 `현재` 프로퍼티가 변경할 수 있고 어떤 값이든 보유할 수 있는 일반 컨테이너입니다. 이는 class의 인스턴스 프로퍼티와 유사합니다.
 
-You can write to it from inside `useEffect`.
+`useEffect` 내부에서 쓸 수 있습니다.
 
 ```js{2,8}
 function Timer() {
@@ -248,7 +248,7 @@ function Timer() {
 }
 ```
 
-If we just wanted to set an interval, we wouldn't need the ref (`id` could be local to the effect), but it's useful if we want to clear the interval from an event handler.
+인터벌을 설정하고 싶다면 ref가 필요하지 않지만 (`id`는 로컬 effect일 수 있습니다), 이벤트 핸들러에서 인터벌을 지우고 싶을 때 유용합니다.
 
 ```js{3}
   // ...
@@ -258,7 +258,7 @@ If we just wanted to set an interval, we wouldn't need the ref (`id` could be lo
   // ...
 ```
 
-Conceptually, you can think of refs as similar to instance variables in a class. Unless you're doing [lazy initialization](#how-to-create-expensive-objects-lazily), avoid setting refs during rendering -- this can lead to surprising behavior. Instead, typically you want to modify refs in event handlers and effects.
+개념적으로, class의 인스턴스 변수와 ref를 비슷하게 생각할 수 있습니다. [지연 초기화](#how-to-create-expensive-objects-lazily)를 수행하지 않는 한, 렌더링 중에 ref 설정을 피하십시오 -- 이것은 놀라운 상황을 초래할 수 있습니다. 대신, 일반적으로 이벤트 핸들러와 effect에서 ref를 수정하는 것이 좋습니다.
 
 ### 하나 또는 여러 state 변수를 사용해야 합니까? {#should-i-use-one-or-many-state-variables}
 
