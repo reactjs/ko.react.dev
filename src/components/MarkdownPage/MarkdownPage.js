@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
+ * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * @emails react-core
  * @flow
@@ -84,7 +84,10 @@ const MarkdownPage = ({
               <MarkdownHeader title={titlePrefix} />
 
               {(date || hasAuthors) && (
-                <div css={{marginTop: 15}}>
+                <div
+                  css={{
+                    marginTop: 15,
+                  }}>
                   {date}{' '}
                   {hasAuthors && (
                     <span>

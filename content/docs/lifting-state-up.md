@@ -114,7 +114,7 @@ class Calculator extends React.Component {
 
 이제 두 개의 입력 필드를 갖게 되었습니다. 그러나 둘 중 하나에 온도를 입력하더라도 다른 하나는 갱신되지 않는 문제가 있습니다. 이것은 두 입력 필드 간에 동기화 상태를 유지하고자 했던 원래 요구사항과는 맞지 않습니다.
 
-또한 `Calculator`에서 `VoilingVerdict`도 역시 보여줄 수 없는 상황입니다. 현재 입력된 온도 정보가 `TemperatureInput` 안에 숨겨져 있으므로 `Calculator`는 그 값을 알 수 없기 때문입니다.
+또한 `Calculator`에서 `BoilingVerdict`도 역시 보여줄 수 없는 상황입니다. 현재 입력된 온도 정보가 `TemperatureInput` 안에 숨겨져 있으므로 `Calculator`는 그 값을 알 수 없기 때문입니다.
 
 ## 변환 함수 작성하기 {#writing-conversion-functions}
 
