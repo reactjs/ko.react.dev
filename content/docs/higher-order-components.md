@@ -18,7 +18,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 이 문서에서 고차 컴포넌트가 왜 유용한 지 이야기하고 어떻게 작성하는 지 설명합니다.
 
-## 크로스 커팅 문제(Cross-Cutting Concerns)에 고차 컴포넌트 사용하기 {#use-hocs-for-cross-cutting-concerns}
+## 횡단 관심사(Cross-Cutting Concerns)에 고차 컴포넌트 사용하기 {#use-hocs-for-cross-cutting-concerns}
 
 > **주의**
 >
