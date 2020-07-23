@@ -317,7 +317,7 @@ function getDisplayName(WrappedComponent) {
 
 ## 주의사항 {#caveats}
 
-고차 컴포넌트에는 React가 처음이라면 알아차리기 어려운 몇가지 주의사항이 있습니다.
+고차 컴포넌트에는 React가 처음이라면 알아차리기 어려운 몇 가지 주의사항이 있습니다.
 
 ### render 메서드 안에서 고차 컴포넌트를 사용하지 마세요 {#dont-use-hocs-inside-the-render-method}
 
