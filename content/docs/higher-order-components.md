@@ -319,7 +319,7 @@ function getDisplayName(WrappedComponent) {
 
 고차 컴포넌트에는 React가 처음이라면 알아차리기 어려운 몇가지 주의사항이 있습니다.
 
-### render 메서드 안에서 고차 컴포넌트를 사용하지마세요 {#dont-use-hocs-inside-the-render-method}
+### render 메서드 안에서 고차 컴포넌트를 사용하지 마세요 {#dont-use-hocs-inside-the-render-method}
 
 재조정(reconciliation)으로 알려진 React의 비교 알고리즘은 컴포넌트의 개별성(identity)를 가지고 기존 서브트리를 업데이트 해야하는지 아니면 버리고 새로운 노드를 마운트 해야할지 결정합니다. `render`에서 반환된 컴포넌트가 이전에 렌더링된 컴포넌트와 동일하다면(`===`) React가 새로운 서브트리와 비교하여 재귀적으로 서브트리를 업데이트합니다. 만약 동일하지 않다면 이전 서브트리는 완전히 마운트 해제됩니다.
 
