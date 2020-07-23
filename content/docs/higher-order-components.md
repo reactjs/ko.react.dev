@@ -335,7 +335,7 @@ render() {
 }
 ```
 
-여기서 성능상의 문제 뿐만 아니라 컴포넌트가 다시 마운트 되면서 컴포넌트의 state와 컴포넌트의 하위 항목들이 손실됩니다.
+여기서 성능상의 문제뿐만 아니라 컴포넌트가 다시 마운트 되면서 컴포넌트의 state와 컴포넌트의 하위 항목들이 손실됩니다.
 
 Instead, apply HOCs outside the component definition so that the resulting component is created only once. Then, its identity will be consistent across renders. This is usually what you want, anyway.
 
