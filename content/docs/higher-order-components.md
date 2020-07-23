@@ -330,7 +330,7 @@ render() {
   // render가 호출될 때마다 새로운 버전의 EnhancedComponent가 생성됩니다.
   // EnhancedComponent1 !== EnhancedComponent2
   const EnhancedComponent = enhance(MyComponent);
-  // 때문에 매번 전체 subtree가 unmount/remount 됩니다!
+  // 때문에 매번 전체 서브트리가 마운트 해제 후 다시 마운트 됩니다!
   return <EnhancedComponent />;
 }
 ```
