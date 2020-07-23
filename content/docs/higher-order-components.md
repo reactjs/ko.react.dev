@@ -122,7 +122,7 @@ const BlogPostWithSubscription = withSubscription(
 );
 ```
 
-첫번째 파라미터는 래핑된 컴포넌트입니다. 두번째 파라미터에는 `DataSource`와 현재 props를 가지고 컴포넌트에서 관심있는 데이터를 검색합니다.
+첫 번째 파라미터는 래핑된 컴포넌트입니다. 두 번째 파라미터에는 `DataSource`와 현재 props를 가지고 컴포넌트에서 관심 있는 데이터를 검색합니다.
 
 `CommentListWithSubscription` 과 `BlogPostWithSubscription` 가 렌더링될 때 `CommentList` 와 `BlogPost` 는 `DataSource` 에서 가장 최근에 검색된 데이터를 `data` prop으로 전달합니다.
 
