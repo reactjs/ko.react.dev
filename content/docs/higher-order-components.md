@@ -12,7 +12,7 @@ permalink: docs/higher-order-components.html
 const EnhancedComponent = higherOrderComponent(WrappedComponent);
 ```
 
-컴포넌트가 UI를 props로 변환하는 반면에 고차 컴포넌트는 컴포넌트를 다른 컴포넌트로 변환합니다.
+컴포넌트가 props를 UI로 변환하는 반면에 고차 컴포넌트는 컴포넌트를 다른 컴포넌트로 변환합니다.
 
 고차 컴포넌트는 Redux의 [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) 나 Relay의 [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html) 같은 React 서드파티 라이브러리에서 자주 사용됩니다.
 
