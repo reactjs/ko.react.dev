@@ -244,7 +244,7 @@ render() {
 
 이 컨벤션은 고차 컴포넌트의 유연성과 재사용성을 확인하는데 도움이 됩니다.
 
-## 컨벤션: 합성 가능성(Composability) 최대화하기 {#convention-maximizing-composability}
+## 컨벤션: 조합 가능성(Composability) 끌어올리기 {#convention-maximizing-composability}
 
 고차 컴포넌트는 여러 가지 방법으로 작성할 수 있습니다. 때때로 단일 인수로 래핑된 컴포넌트만 받을 때도 있습니다.
 
