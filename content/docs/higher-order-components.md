@@ -100,7 +100,7 @@ class BlogPost extends React.Component {
 }
 ```
 
-`CommentList` 와 `BlogPost` 컴포넌트는 동일하지 않습니다. 두 컴포넌트는 `DataSource` 에서 서로 다른 메서드를 호출하며 다른 렌더링 결과를 보여줍니다. 하지만 대부분의 구현체는 동일합니다.
+`CommentList`와 `BlogPost` 컴포넌트는 동일하지 않습니다. 두 컴포넌트는 `DataSource`에서 서로 다른 메서드를 호출하며 다른 렌더링 결과를 보여줍니다. 하지만 대부분의 구현체는 동일합니다.
 
 - 컴포넌트가 마운트되면, change 리스너를 `DataSource`에 추가합니다.
 - 리스너 안에서, 데이터 소스가 변경되면 `setState`를 호출합니다.
