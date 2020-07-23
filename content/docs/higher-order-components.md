@@ -22,7 +22,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 > **주의**
 >
-> 이전에는 크로스 커팅 문제를 제어하기 위해 mixin 사용을 권장했습니다. 하지만 mixin의 사용으로 얻는 이점보다 더 많은 문제를 일으킨다는 것을 알게되었습니다. 우리가 mixin을 더 이상 권장하지않는 이유와 기존 컴포넌트를 어떻게 변환하는 지에 대해서 [이 글](/blog/2016/07/13/mixins-considered-harmful.html)을 읽어보세요.
+> 이전에는 크로스 커팅 문제를 제어하기 위해 mixin 사용을 권장했습니다. 하지만 mixin의 사용으로 얻는 이점보다 더 많은 문제를 일으킨다는 것을 알게 되었습니다. 우리가 mixin을 더 이상 권장하지 않는 이유와 기존 컴포넌트를 어떻게 변환하는지에 대해서 [이 글](/blog/2016/07/13/mixins-considered-harmful.html)을 읽어보세요.
 
 컴포넌트는 React에서 코드 재사용의 기본 단위입니다. 그러나 일부 패턴에서 컴포넌트의 재사용은 잘 어울리지 않을 수 있습니다.
 
