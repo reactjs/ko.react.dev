@@ -122,11 +122,7 @@ ReactDOM.render(
 
 ### 논리 && 연산자로 If를 인라인으로 표현하기{#inline-if-with-logical--operator}
 
-<<<<<<< HEAD
 JSX 안에는 중괄호를 이용해서 [표현식을 포함](/docs/introducing-jsx.html#embedding-expressions-in-jsx) 할 수 있습니다. 그 안에 JavaScript의 논리 연산자 `&&`를 사용하면 쉽게 엘리먼트를 조건부로 넣을 수 있습니다.
-=======
-You may [embed expressions in JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) by wrapping them in curly braces. This includes the JavaScript logical `&&` operator. It can be handy for conditionally including an element:
->>>>>>> ee75c297574468f888574aae2d9620d64bb5b5a1
 
 ```js{6-10}
 function Mailbox(props) {
