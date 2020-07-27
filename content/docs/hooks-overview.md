@@ -228,7 +228,11 @@ function FriendListItem(props) {
 }
 ```
 
+<<<<<<< HEAD
 각 컴포넌트의 state는 완전히 독립적입니다. Hook은 state 그 자체가 아니라, *상태 관련 로직*을 재사용하는 방법입니다. 실제로 각각의 Hook *호출*은 완전히 독립된 state를 가집니다. 그래서 심지어는 한 컴포넌트 안에서 같은 custom Hook을 두 번 쓸 수도 있습니다.
+=======
+The state of each component is completely independent. Hooks are a way to reuse *stateful logic*, not state itself. In fact, each *call* to a Hook has a completely isolated state -- so you can even use the same custom Hook twice in one component.
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 Custom Hook은 기능이라기보다는 컨벤션(convention)에 가깝습니다. 이름이 "`use`"로 시작하고, 안에서 다른 Hook을 호출한다면 그 함수를 custom Hook이라고 부를 수 있습니다. `useSomething`이라는 네이밍 컨벤션은 linter 플러그인이 Hook을 인식하고 버그를 찾을 수 있게 해줍니다.
 

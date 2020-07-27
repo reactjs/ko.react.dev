@@ -35,6 +35,7 @@ React 앱을 개발하는데 있어서 아래 관례들의 사용을 반드시 �
 
 ### 경고와 불변식 {#warnings-and-invariants}
 
+<<<<<<< HEAD
 React 코드베이스는 경고를 표시하기 위해 다음과 같이 `warning` 모듈을 사용합니다.
 
 ```js
@@ -62,6 +63,13 @@ if (!didWarnAboutMath) {
     'Math is not working today.'
   );
   didWarnAboutMath = true;
+=======
+The React codebase uses `console.error` to display warnings:
+
+```js
+if (__DEV__) {
+  console.error('Something is wrong.');
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 }
 ```
 
@@ -114,6 +122,7 @@ ReactRef.detachRefs = function(
 가능하면 새로 작성하는 코드에 Flow 검사 형식을 포함해 주길 바랍니다.
 `yarn flow` 명령어를 통해 Flow에 대한 형식 검사를 직접 수행해 볼 수 있습니다.
 
+<<<<<<< HEAD
 ### 동적 주입 {#dynamic-injection}
 
 React의 몇 가지 모듈은 동적 주입을 사용합니다. 동적 주입은 항상 명시적이지만 코드에 대한 이해를 방해하기도 합니다. 동적 주입을 사용하는 주된 이유는 React가 DOM을 대상으로만 지원했기 때문입니다. React 네이티브는 React 프로젝트에서 시작되었기 때문에 몇 가지 동작을 구현하기 위해 동적 주입을 필요로 했습니다.
@@ -148,6 +157,9 @@ module.exports = ReactHostComponent;
 React 코드베이스에는 다수의 동적 주입 부분이 존재합니다. React는 향후 동적 주입에 관련된 매커니즘을 제거하고, 빌드 시에 정적으로 병합하는 방식을 사용할 것입니다.
 
 ### 다양한 패키지 {#multiple-packages}
+=======
+### Multiple Packages {#multiple-packages}
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 React는 [monorepo](https://danluu.com/monorepo/)입니다. 해당 저장소는 여러 분리된 패키지를 포함하고 있으며, 각 변경점들은 함께 반영되고 모든 이슈는 한 곳에서 관리됩니다.
 
@@ -211,9 +223,13 @@ React 파이버 구조에 대해 [여기](https://github.com/acdlite/react-fiber
 
 ### 이벤트 시스템 {#event-system}
 
+<<<<<<< HEAD
 React는 렌더러와 무관하며 React DOM 및 React Native와 함께 작동하는 합성 이벤트 시스템을 구현합니다. 해당 코드는 [`packages/legacy-events`](https://github.com/facebook/react/tree/master/packages/legacy-events)에서 확인할 수 있습니다.
 
 해당 코드에 대한 상세한 설명은 다음의 [영상](https://www.youtube.com/watch?v=dRo_egw7tBc) (66분)을 참고하세요.
+=======
+React implements a layer over native events to smooth out cross-browser differences. Its source code is located in [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/master/packages/react-dom/src/events).
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 ### 다음 내용은? {#what-next}
 
