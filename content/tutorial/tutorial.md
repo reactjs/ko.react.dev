@@ -564,11 +564,7 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 #### React에서 다시 렌더링하는 시기를 결정함 {#determining-when-to-re-render-in-react}
 
-<<<<<<< HEAD
 불변성의 가장 큰 장점은 React에서 _순수 컴포넌트_를 만드는 데 도움을 준다는 것입니다. 변하지 않는 데이터는 변경이 이루어졌는지 쉽게 판단할 수 있으며 이를 바탕으로 컴포넌트가 다시 렌더링할지를 결정할 수 있습니다.
-=======
-The main benefit of immutability is that it helps you build _pure components_ in React. Immutable data can easily determine if changes have been made, which helps to determine when a component requires re-rendering.
->>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 `shouldComponentUpdate()`와 *순수 컴포넌트*를 작성하는 법에 대해 더 알아보고 싶다면 [성능 최적화하기](/docs/optimizing-performance.html#examples)를 보세요.
 
