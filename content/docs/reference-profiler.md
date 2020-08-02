@@ -1,27 +1,26 @@
 ---
-id: profiler
-title: Profiler API
+id: 프로파일러
+title: 프로파일러 API
 layout: docs
 category: Reference
 permalink: docs/profiler.html
 ---
 
-The `Profiler` measures how often a React application renders and what the "cost" of rendering is.
-Its purpose is to help identify parts of an application that are slow and may benefit from [optimizations such as memoization](/docs/hooks-faq.html#how-to-memoize-calculations).
+'프로파일러'는 React 어플리케이션의 렌더와 렌더의 "비용"을 계산합니다.
+'프로파일러'의 목적은 [메모이제이션 같은 성능 최적화 방법](/docs/hooks-faq.html#how-to-memoize-calculations)을 활용할 수 있는 어플리케이션의 느린 부분들을 식별해내는 것입니다.
 
-> Note:
+>주의
 >
-> Profiling adds some additional overhead, so **it is disabled in [the production build](/docs/optimizing-performance.html#use-the-production-build)**.
+>프로파일링은 약간의 간접비용이 추가되며 **[프로덕션 빌드](/docs/optimizing-performance.html#use-the-production-build)에서는 비활성화되어 있습니다.**.
 >
-> To opt into production profiling, React provides a special production build with profiling enabled.
-> Read more about how to use this build at [fb.me/react-profiling](https://fb.me/react-profiling)
+>프로덕션에서 프로파일링을 활성화하길 원하신다면 React에서 제공하는 특별 프로덕션 빌드를 통해서 활성화하실 수 있습니다.
+>다음 링크에서 이 특별 빌드에 대해서 더 읽어보실 수 있습니다 [fb.me/react-profiling](https://fb.me/react-profiling)
+## 사용법 {#usage}
 
-## Usage {#usage}
+'프로파일러'는 리액트 트리 내에 어디에나 추가될 수 있으며 트리의 특정 부분의 렌더링 비용을 계산해줍니다.
+이는 두 가지 props를 요구합니다: `id` (문자열) 와 `onRender` 콜백 (함수)이며 React 트리 내 컴포넌트에 업데이트가 "커밋"되면 호출됩니다.
 
-A `Profiler` can be added anywhere in a React tree to measure the cost of rendering that part of the tree.
-It requires two props: an `id` (string) and an `onRender` callback (function) which React calls any time a component within the tree "commits" an update.
-
-For example, to profile a `Navigation` component and its descendants:
+예를 들어, `Navigation` 컴포넌트와 자손 컴포넌트들을 프로파일하기 위해서는
 
 ```js{3}
 render(
@@ -34,7 +33,7 @@ render(
 );
 ```
 
-Multiple `Profiler` components can be used to measure different parts of an application:
+복수의 `프로파일러` 컴포넌트로 어플리케이션의 다른 부분들을 계산할 수 있습니다
 ```js{3,6}
 render(
   <App>
@@ -48,7 +47,7 @@ render(
 );
 ```
 
-`Profiler` components can also be nested to measure different components within the same subtree:
+`프로파일러` 컴포넌트는 하위 트리의 다른 컴포넌트들을 계산하기 위해 중첩해서 사용할 수 있습니다
 ```js{2,6,8}
 render(
   <App>
@@ -66,54 +65,55 @@ render(
 );
 ```
 
-> Note
+>주의사항
 >
-> Although `Profiler` is a light-weight component, it should be used only when necessary; each use adds some CPU and memory overhead to an application.
+>`프로파일러`는 가벼운 컴포넌트이지만 필요할 때만 사용해야합니다; 각 프로파일러는 어플리케이션에 조금의 CPU와 메모리 비용을 추가하게 됩니다.
 
-## `onRender` Callback {#onrender-callback}
+## `onRender` 콜백 {#onrender-callback}
 
-The `Profiler` requires an `onRender` function as a prop.
-React calls this function any time a component within the profiled tree "commits" an update.
-It receives parameters describing what was rendered and how long it took.
+`프로파일러`는 `onRender` 함수를 prop으로 요구합니다.
+React는 프로파일 트리 내의 컴포넌트에 업데이트가 "커밋"될 때마다 이 함수를 호출합니다.
+이 함수는 무엇이 렌더돼엇는지 그리고 얼마나 걸렸는지를 설명하는 입력값을 받게 됩니다
 
 ```js
 function onRenderCallback(
-  id, // the "id" prop of the Profiler tree that has just committed
-  phase, // either "mount" (if the tree just mounted) or "update" (if it re-rendered)
-  actualDuration, // time spent rendering the committed update
-  baseDuration, // estimated time to render the entire subtree without memoization
-  startTime, // when React began rendering this update
-  commitTime, // when React committed this update
-  interactions // the Set of interactions belonging to this update
+  id, // 방금 커밋된 프로파일러 트리의 "id"
+  phase, // "mount" (트리가 방금 마운트가 된 경우) 혹은 "update"(트리가 리렌더된 경우)
+  actualDuration, // 커밋된 업데이트를 렌더링하는데 걸린 시간
+  baseDuration, // 메모이제이션 없이 하위 트리 전체를 렌더하는데 걸리는 예상시간 
+  startTime, // React가 언제 해당 업데이트를 렌더하기 시작했는지
+  commitTime, // React가 해당 업데이트를 언제 커밋했는지
+  interactions // 이 업데이트에 해당하는 상호작용들의 집합
 ) {
-  // Aggregate or log render timings...
+  // 렌더 타이밍을 집합하거나 로그...
 }
 ```
 
-Let's take a closer look at each of the props:
+각 prop에 대해 좀 더 자세히 알아보겠습니다
 
-* **`id: string`** - 
-The `id` prop of the `Profiler` tree that has just committed.
-This can be used to identify which part of the tree was committed if you are using multiple profilers.
+* **`id: 문자열`** - 
+방금 커밋된 `프로파일러`트리의 `id` prop.
+이것은 복수의 프로파일러를 사용하고 있다면 트리의 어느 부분이 커밋되엇는지 식별하는데 사용할 수 있습니다.
 * **`phase: "mount" | "update"`** -
-Identifies whether the tree has just been mounted for the first time or re-rendered due to a change in props, state, or hooks.
-* **`actualDuration: number`** -
-Time spent rendering the `Profiler` and its descendants for the current update.
-This indicates how well the subtree makes use of memoization (e.g. [`React.memo`](/docs/react-api.html#reactmemo), [`useMemo`](/docs/hooks-reference.html#usememo), [`shouldComponentUpdate`](/docs/hooks-faq.html#how-do-i-implement-shouldcomponentupdate)).
-Ideally this value should decrease significantly after the initial mount as many of the descendants will only need to re-render if their specific props change.
-* **`baseDuration: number`** -
-Duration of the most recent `render` time for each individual component within the `Profiler` tree.
-This value estimates a worst-case cost of rendering (e.g. the initial mount or a tree with no memoization).
-* **`startTime: number`** -
-Timestamp when React began rendering the current update.
-* **`commitTime: number`** -
-Timestamp when React committed the current update.
+해당 트리가 방금 마운트된 건지 prop, state 혹은 hooks의 변화로 인하여 리렌더가 된 건지 식별합니다.
+* **`actualDuration: 숫자`** -
+현재 업데이트에 해당하는 `프로파일러`와 자손 컴포넌트들을 렌더하는데 걸린 시간
+이것은 하위 트리가 얼마나 메모이제이션을 잘 활용하고 있는지를 암시합니다 (e.g. [`React.memo`](/docs/react-api.html#reactmemo), [`useMemo`](/docs/hooks-reference.html#usememo), [`shouldComponentUpdate`](/docs/hooks-faq.html#how-do-i-implement-shouldcomponentupdate)).
+이상적으로 대다수의 자손 컴포넌트들은 특정 prop이 변할 경우에만 리렌더가 필요하기 때문에 이 값은 초기 렌더 이후에 상당 부분 감소해야 합니다.
+* **`baseDuration: 숫자`** -
+`프로파일러` 트리 내 개별 컴포넌트들의 가장 최근 `렌더` 시간의 지속기간
+이 값은 렌더링 비용의 최악 케이스를 계산해줍니다(e.g. 초기 마운트 혹은 메모이제이션이 없는 트리)
+* **`startTime: 숫자`** -
+React가 현재 업데이트에 대해 렌더링을 시작한 시간의 타임 스탬프.
+* **`commitTime: 숫자`** -
+React가 현재 업데이트를 커밋한 시간의 타임 스탬프
 This value is shared between all profilers in a commit, enabling them to be grouped if desirable.
+이 값은 모든 프로파일러들이 공유하기 때문에 원한다면 그룹을 지을 수 있습니다.
 * **`interactions: Set`** -
-Set of ["interactions"](https://fb.me/react-interaction-tracing) that were being traced when the update was scheduled (e.g. when `render` or `setState` were called).
+업데이트가 계획되었을 때 추적하고 있던 ["상호작용"](https://fb.me/react-interaction-tracing)의 집합 (e.g. `렌더` 혹은 `setState`가 호출되었을 때).
 
-> Note
+>주의
 >
-> Interactions can be used to identify the cause of an update, although the API for tracing them is still experimental.
+>상호작용을 추적하는 API는 아직 시험단계에 있지만, 상호작용은 업데이트의 원인을 식별하는데 사용할 수 있습니다
 >
-> Learn more about it at [fb.me/react-interaction-tracing](https://fb.me/react-interaction-tracing)
+>다음의 링크에서 더 자세히 알아볼 수 있습니다 [fb.me/react-interaction-tracing](https://fb.me/react-interaction-tracing)

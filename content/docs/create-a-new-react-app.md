@@ -73,6 +73,8 @@ Gatsby를 [정식 가이드](https://www.gatsbyjs.org/docs/)와 [스타터 키�
 
 - **[Neutrino](https://neutrinojs.org/)는**  [webpack](https://webpack.js.org/)의 장점과 React의 단순함과 미리 설정된 [앱](https://neutrinojs.org/packages/react/)과 [컴포넌트](https://neutrinojs.org/packages/react-components/)를 합친 것입니다.
 
+- **[Nx](https://nx.dev/react)**는 풀스택 모노레포 개발을 위한 도구이며, React, Next.js, Express 등을 기본적으로 지원합니다.
+
 - **[Parcel](https://parceljs.org/)은** [React와 함께 사용할 수 있고](https://parceljs.org/recipes.html#react) 빠르고 설정이 필요 없는 웹 애플리케이션 bundler입니다.
 
 - **[Razzle](https://github.com/jaredpalmer/razzle)은** 서버 렌더링 프레임워크며 설정이 필요 없지만, Next.js보다 다루기 쉽습니다.
