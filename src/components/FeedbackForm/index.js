@@ -4,6 +4,6 @@
  * @emails react-core
  */
 
-import Header from './Header';
+import FeedbackForm from './FeedbackForm';
 
-export default Header;
+export default FeedbackForm;
