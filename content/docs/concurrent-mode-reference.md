@@ -5,11 +5,22 @@ permalink: docs/concurrent-mode-reference.html
 prev: concurrent-mode-adoption.html
 ---
 
->주의:
+<style>
+.scary > blockquote {
+  background-color: rgba(237, 51, 21, 0.2);
+  border-left-color: #ed3315;
+}
+</style>
+
+<div class="scary">
+
+>주의
 >
 >이 페이지는 **안정된 배포판에서는 [아직 사용할 수 없는](/docs/concurrent-mode-adoption.html) 실험적인 기능들에 관해 설명합니다. 프로덕션용 앱에선 React의 실험 배포판을 사용하지 마세요. 이 기능들은 React의 일부가 되기 전에 경고 없이 크게 변경될 수 있습니다.
 >
 >이 문서는 얼리어답터들과 궁금해하시는 분들을 위해 제작된 문서입니다. React를 처음 접해본다면 이러한 기능들을 걱정하지 않아도 됩니다. 그 기능들을 바로 배울 필요는 없습니다.
+
+</div>
 
 이 페이지는 React [Concurrent 모드](/docs/concurrent-mode-intro.html)에 대한 API 참고서입니다. 도입부에 대한 가이드를 찾고 있다면, [Concurrent UI 패턴](/docs/concurrent-mode-patterns.html)을 확인해주세요.
 
@@ -63,7 +74,7 @@ Blocking 모드는 Concurrent 모드의 일부만 포함하며 곧바로 마이�
 
 위 예시에서 `ProfileDetails`는 일부 데이터를 가져 오기 위해 비동기 API 호출을 기다리고 있습니다. `ProfileDetails`와 `ProfilePhoto`를 기다리는 동안에 `Loading...` 폴백을 대신 보여줍니다. `<Suspense>`의 모든 자식이 로드될 때까지 폴백을 계속 표시한다는 점에 주의해주세요.
 
-`Suspense`는 두 개의 props를 사용합니다:
+`Suspense`는 두 개의 props를 사용합니다.
 * **fallback**은 로딩 표시기를 받아들입니다. 폴백은 `Suspense` 컴포넌트의 모든 자식이 렌더링을 마치기 전까지 표시됩니다.
 * **unstable_avoidThisFallback**는 boolean을 받아들입니다. 초기 로드할 때 이 경계를 보여주는 걸 건너뛸 지 말 지 React에게 알려줍니다. 향후 배포판에서 이 API는 제거될 수 있습니다.
 
@@ -88,7 +99,7 @@ Blocking 모드는 Concurrent 모드의 일부만 포함하며 곧바로 마이�
 
 여러 컴포넌트가 데이터를 가져올 때 예상하지 못한 순서로 데이터가 도착할 수 있습니다. `SuspenseList`로 이러한 항목을 감싸면, React는 이전 항목을 표시하기 전까지 목록에 있는 항목을 출력하지 않습니다. (이 동작은 수정할 수 있습니다)
 
-`SuspenseList`은 두 개의 props를 사용합니다:
+`SuspenseList`은 두 개의 props를 사용합니다.
 * **revealOrder(forwards, backwards, together)**는 `SuspenseList` 자식이 표시되는 순서를 정의합니다.
  * `together`는 하나씩 표시하지 않고 준비됐을 때 *모두 한번에* 표시합니다.
 * **tail (collapsed, hidden)**은 `SuspenseList`에서 로드되지 않은 항목을 표시하는 방법을 나타냅니다.
@@ -154,7 +165,8 @@ function App() {
 const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 ```
 
-`useTransition`은 `timeoutMS`가 포함된 **선택적인 Suspense Config**를 허용합니다. 이 시간초과(밀리 초 내에 일어나는)는 다음 상태(위의 예제에서 새로운 프로필 페이지)를 표시하기 전에 기다리는 시간을 React에게 알려줍니다.
+`useTransition`은 `timeoutMS`가 포함된 **선택적인 Suspense Config**를 허용합니다. 이 시간초과(밀리 초 내에 일어나는)는 다음 상태(위의 예시에서 새로운 프로필 페이지)를 표시하기 전에 기다리는 시간을 React에게 알려줍니다.
+
 
 **주의: 여러 모듈 간에 Suspense Config를 공유하는 것이 좋습니다.**
 
@@ -178,10 +190,10 @@ function App() {
 
   return (
     <div className="App">
-      {/* Keep passing the current text to the input */}
+      {/* input에 현재 텍스트를 계속 전달합니다. */}
       <input value={text} onChange={handleChange} />
       ...
-      {/* But the list is allowed to "lag behind" when necessary */}
+      {/* 하지만 이 목록은 필요한 경우 "뒤처질" 수 있습니다. */}
       <MySlowList text={deferredText} />
     </div>
   );
