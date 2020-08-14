@@ -16,9 +16,9 @@ prev: concurrent-mode-adoption.html
 
 >주의
 >
->이 페이지는 **안정된 배포판에서는 [아직 사용할 수 없는](/docs/concurrent-mode-adoption.html) 실험적인 기능들에 관해 설명합니다. 프로덕션용 앱에선 React의 실험 배포판을 사용하지 마세요. 이 기능들은 React의 일부가 되기 전에 경고 없이 크게 변경될 수 있습니다.
+>이 페이지는 **안정된 배포판에서는 [아직 사용할 수 없는](/docs/concurrent-mode-adoption.html) 실험적인 기능들에 관해 설명합니다.** 프로덕션용 앱에선 React의 실험 배포판을 사용하지 마세요. 이 기능들은 React의 일부가 되기 전에 경고 없이 크게 변경될 수 있습니다.
 >
->이 문서는 얼리어답터들과 궁금해하시는 분들을 위해 제작된 문서입니다. React를 처음 접해본다면 이러한 기능들을 걱정하지 않아도 됩니다. 그 기능들을 바로 배울 필요는 없습니다.
+>이 문서는 얼리어답터들과 궁금해하시는 분들을 위해 제작된 문서입니다. **React를 처음 접해본다면 이러한 기능들을 걱정하지 않아도 됩니다.** 그 기능들을 바로 배울 필요는 없습니다.
 
 </div>
 
@@ -43,7 +43,7 @@ prev: concurrent-mode-adoption.html
 ReactDOM.createRoot(rootNode).render(<App />);
 ```
 
-`ReactDOM.render( />, rootNode)`을 대체하고 Concurrent 모드를 활성화합니다.
+`ReactDOM.render(<App />, rootNode)`을 대체하고 Concurrent 모드를 활성화합니다.
 
 Concurrent 모드에 대한 더 자세한 설명이 필요하다면, [Concurrent Mode 문서](/docs/concurrent-mode-intro.html)를 참고해주세요.
 
@@ -53,7 +53,7 @@ Concurrent 모드에 대한 더 자세한 설명이 필요하다면, [Concurrent
 ReactDOM.createBlockingRoot(rootNode).render(<App />)
 ```
 
-`ReactDOM.render( />, rootNode)`를 대체하고 [Blocking 모드](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode)를 활성화합니다.
+`ReactDOM.render(<App />, rootNode)`를 대체하고 [Blocking 모드](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode)를 활성화합니다.
 
 Concurrent 모드를 선택하면 React 작동하는 방식에 의미적 변화가 생깁니다. 이는 몇몇 컴포넌트에서 Concurrent 모드를 사용할 수 없다는 걸 의미하며 몇몇 앱은 곧바로 Concurrent 모드로 마이그레이션을 할 수 없습니다.
 
@@ -76,7 +76,7 @@ Blocking 모드는 Concurrent 모드의 일부만 포함하며 곧바로 마이�
 
 `Suspense`는 두 개의 props를 사용합니다.
 * **fallback**은 로딩 표시기를 받아들입니다. 폴백은 `Suspense` 컴포넌트의 모든 자식이 렌더링을 마치기 전까지 표시됩니다.
-* **unstable_avoidThisFallback**는 boolean을 받아들입니다. 초기 로드할 때 이 경계를 보여주는 걸 건너뛸 지 말 지 React에게 알려줍니다. 향후 배포판에서 이 API는 제거될 수 있습니다.
+* **unstable_avoidThisFallback**은 boolean을 받아들입니다. 초기 로드할 때 이 경계를 보여주는 걸 건너뛸 지 말 지 React에게 알려줍니다. 향후 배포판에서 이 API는 제거될 수 있습니다.
 
 ### `<SuspenseList>` {#suspenselist}
 
@@ -101,11 +101,11 @@ Blocking 모드는 Concurrent 모드의 일부만 포함하며 곧바로 마이�
 
 `SuspenseList`은 두 개의 props를 사용합니다.
 * **revealOrder(forwards, backwards, together)**는 `SuspenseList` 자식이 표시되는 순서를 정의합니다.
- * `together`는 하나씩 표시하지 않고 준비됐을 때 *모두 한번에* 표시합니다.
+  * `together`는 하나씩 표시하지 않고 준비됐을 때 *모두 한번에* 표시합니다.
 * **tail (collapsed, hidden)**은 `SuspenseList`에서 로드되지 않은 항목을 표시하는 방법을 나타냅니다.
- * 기본적으로, `SuspenseList`는 목록에 있는 모든 폴백을 표시합니다.
- * `collapsed`는 목록에서 다음 폴백만 표시합니다.
- * `hidden`은 로드되지 않은 항목을 표시하지 않습니다.
+    * 기본적으로, `SuspenseList`는 목록에 있는 모든 폴백을 표시합니다.
+    * `collapsed`는 목록에서 다음 폴백만 표시합니다.
+    * `hidden`은 로드되지 않은 항목을 표시하지 않습니다.
 
 `SuspenseList`는 `SuspenseList` 컴포넌트 아래에 있고 가장 인접한 `Suspense`와 `SuspenseList` 컴포넌트에만 동작한다는 점에 주의해주세요. 한 단계보다 깊은 경계는 검색하지 않지만 여러 `SuspenseList` 컴포넌트를 중첩해 그리드를 형성할 수는 있습니다.
 
