@@ -2,6 +2,8 @@
 id: typechecking-with-proptypes
 title: PropTypes와 함께 하는 타입 확인
 permalink: docs/typechecking-with-proptypes.html
+prev: jsx-in-depth.html
+next: static-type-checking.html
 redirect_from:
   - "docs/react-api.html#typechecking-with-proptypes"
 ---
@@ -30,7 +32,13 @@ Greeting.propTypes = {
 };
 ```
 
+<<<<<<< HEAD
 `PropTypes`는 전달받은 데이터의 유효성을 검증하기 위해서 다양한 유효성 검사기(Validator)를 내보냅니다. 아래 예시에서는 `PropTypes.string`을 사용하게 될 것입니다. prop에 유효하지 않은 값이 전달 되었을 때, 경고문이 JavaScript 콘솔을 통해 보일 것입니다. `propTypes`는 성능상의 이유로 개발 모드(Development mode) 에서만 확인될 것입니다.
+=======
+In this example, we are using a class component, but the same functionality could also be applied to function components, or components created by [`React.memo`](https://reactjs.org/docs/react-api.html#reactmemo) or [`React.forwardRef`](https://reactjs.org/docs/react-api.html#reactforwardref).
+
+`PropTypes` exports a range of validators that can be used to make sure the data you receive is valid. In this example, we're using `PropTypes.string`. When an invalid value is provided for a prop, a warning will be shown in the JavaScript console. For performance reasons, `propTypes` is only checked in development mode.
+>>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
 
 ### PropTypes {#proptypes}
 

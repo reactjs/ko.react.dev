@@ -2,6 +2,8 @@
 id: react-without-es6
 title: ES6 없이 사용하는 React
 permalink: docs/react-without-es6.html
+prev: optimizing-performance.html
+next: react-without-jsx.html
 ---
 
 보통 리액트 컴포넌트를 정의할 때 JavaScript의 class를 사용한다면 이와 같을 겁니다.
