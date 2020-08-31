@@ -2,6 +2,8 @@
 id: error-boundaries
 title: 에러 경계(Error Boundaries)
 permalink: docs/error-boundaries.html
+prev: portals.html
+next: web-components.html
 ---
 
 과거에는 컴포넌트 내부의 자바스크립트 에러가 React의 내부 상태를 훼손하고 다음 렌더링에서 [암호화](https://github.com/facebook/react/issues/6895) [에러](https://github.com/facebook/react/issues/8579) [방출](https://github.com/facebook/react/issues/4026)을 유발하곤 했습니다. 이러한 에러는 항상 애플리케이션 코드의 이전 단계의 에러로 인해 발생했지만, React는 컴포넌트 내에서 에러를 정상적으로 처리할 수 있는 방법을 제공하지 않아 이를 복구할 수가 없었습니다.
@@ -97,7 +99,7 @@ React 16은 애플리케이션이 실수로 에러를 집어삼킨 경우에도 
 
 <img src="../images/docs/error-boundaries-stack-trace-line-numbers.png" style="max-width:100%" alt="에러 경계에 의해 줄 번호와 함께 포착된 에러">
 
-Create React App을 사용하지 않는 경우에는 수동으로 [이 플러그인](https://www.npmjs.com/package/babel-plugin-transform-react-jsx-source)을 Babel 설정을 추가할 수 있습니다. 이 기능은 개발 단계를 위해서만 제작되었으며 **프로덕션 환경에서는 비활성화 해야합니다**.
+Create React App을 사용하지 않는 경우에는 수동으로 [이 플러그인](https://www.npmjs.com/package/@babel/plugin-transform-react-jsx-source)을 Babel 설정을 추가할 수 있습니다. 이 기능은 개발 단계를 위해서만 제작되었으며 **프로덕션 환경에서는 비활성화 해야합니다**.
 
 > 주의
 >
