@@ -2,6 +2,8 @@
 id: accessibility
 title: 접근성
 permalink: docs/accessibility.html
+prev: integrating-with-other-libraries.html
+next: code-splitting.html
 ---
 
 ## 접근성이 필요한 이유 {#why-accessibility}
