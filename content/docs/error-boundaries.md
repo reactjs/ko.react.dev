@@ -99,11 +99,7 @@ React 16은 애플리케이션이 실수로 에러를 집어삼킨 경우에도 
 
 <img src="../images/docs/error-boundaries-stack-trace-line-numbers.png" style="max-width:100%" alt="에러 경계에 의해 줄 번호와 함께 포착된 에러">
 
-<<<<<<< HEAD
-Create React App을 사용하지 않는 경우에는 수동으로 [이 플러그인](https://www.npmjs.com/package/babel-plugin-transform-react-jsx-source)을 Babel 설정을 추가할 수 있습니다. 이 기능은 개발 단계를 위해서만 제작되었으며 **프로덕션 환경에서는 비활성화 해야합니다**.
-=======
-If you don’t use Create React App, you can add [this plugin](https://www.npmjs.com/package/@babel/plugin-transform-react-jsx-source) manually to your Babel configuration. Note that it’s intended only for development and **must be disabled in production**.
->>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
+Create React App을 사용하지 않는 경우에는 수동으로 [이 플러그인](https://www.npmjs.com/package/@babel/plugin-transform-react-jsx-source)을 Babel 설정을 추가할 수 있습니다. 이 기능은 개발 단계를 위해서만 제작되었으며 **프로덕션 환경에서는 비활성화 해야합니다**.
 
 > 주의
 >
