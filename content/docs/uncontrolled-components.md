@@ -2,6 +2,8 @@
 id: uncontrolled-components
 title: 비제어 컴포넌트
 permalink: docs/uncontrolled-components.html
+prev: refs-and-the-dom.html
+next: optimizing-performance.html
 ---
 
 대부분 경우에 폼을 구현하는데 [제어 컴포넌트](/docs/forms.html#controlled-components)를 사용하는 것이 좋습니다. 제어 컴포넌트에서 폼 데이터는 React 컴포넌트에서 다루어집니다. 대안인 비제어 컴포넌트는 DOM 자체에서 폼 데이터가 다루어집니다.

@@ -2,6 +2,8 @@
 id: higher-order-components
 title: 고차 컴포넌트
 permalink: docs/higher-order-components.html
+prev: web-components.html
+next: render-props.html
 ---
 
 고차 컴포넌트(HOC, Higher Order Component)는 React에서 컴포넌트 로직을 재사용하기 위한 고급 기술입니다. HOC는 React API의 일부분이 아니라 React의 조합 가능한 성질로부터 자연스럽게 등장한 패턴입니다.

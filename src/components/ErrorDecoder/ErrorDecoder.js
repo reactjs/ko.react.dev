@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
+ * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * @emails react-core
  * @flow
@@ -69,8 +69,8 @@ function ErrorResult(props: {|code: ?string, msg: string|}) {
   if (!code) {
     return (
       <p>
-        When you encounter an error, you'll receive a link to this page for that
-        specific error and we'll show you the full error text.
+        에러가 발생한 경우 해당 에러에 대한 페이지로의 링크를 받게 되고 전체
+        에러 메시지를 보여드립니다.
       </p>
     );
   }
@@ -78,7 +78,7 @@ function ErrorResult(props: {|code: ?string, msg: string|}) {
   return (
     <div>
       <p>
-        <b>The full text of the error you just encountered is:</b>
+        <b>발생한 에러에 대한 전체 에러 메시지입니다:</b>
       </p>
       <code>
         <b>{urlify(errorMsg)}</b>
