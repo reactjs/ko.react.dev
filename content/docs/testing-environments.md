@@ -29,7 +29,11 @@ UI 테스트의 많은 부분은 위의 설정으로 작성할 수 있습니다.
 
 만약 대부분의 브라우저별 동작을 테스트하고 레이아웃이나 실제 입력과 같은 네이티브 브라우저 동작을 요구하는 라이브러리를 작성하는 경우 [mocha](https://mochajs.org/)와 같은 프레임 워크를 사용할 수 있습니다.
 
+<<<<<<< HEAD
 DOM을 시뮬레이션*할 수 없는* 환경에서 (예를 들면, Node.js에서 React Native 컴포넌트 테스트), 엘리먼트와의 상호작용을 시뮬레이션하기 위해 [이벤트 시뮬레이션 헬퍼](/docs/test-utils.html#simulate)를 사용할 수 있습니다. 다른 대안으로, [`@testing-library/react-native`](https://testing-library.com/docs/native-testing-library)의 `fireEvent` 헬퍼를 사용할 수 있습니다.
+=======
+In an environment where you _can't_ simulate a DOM (e.g. testing React Native components on Node.js), you could use [event simulation helpers](/docs/test-utils.html#simulate) to simulate interactions with elements. Alternately, you could use the `fireEvent` helper from [`@testing-library/react-native`](https://testing-library.com/docs/react-native-testing-library/intro).
+>>>>>>> 657658aa1f19c65e35055ddca4452c98d569552f
 
 [Cypress](https://www.cypress.io/), [puppeteer](https://github.com/GoogleChrome/puppeteer), [webdriver](https://www.seleniumhq.org/projects/webdriver/) 같은 프레임워크들은 [end-to-end 테스트](#end-to-end-tests-aka-e2e-tests)를 진행하기에 유용합니다.
 
