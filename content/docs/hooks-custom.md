@@ -6,7 +6,7 @@ next: hooks-reference.html
 prev: hooks-rules.html
 ---
 
-*Hook*은 React 16.8버전에 새로 추가되었습니다. Hook은 클래스 컴포넌트를 작성하지 않아도 state와 같은 특징들을 사용할 수 있습니다.
+*Hook*은 React 16.8 버전에 새로 추가되었습니다. Hook은 클래스 컴포넌트를 작성하지 않아도 state와 같은 특징들을 사용할 수 있습니다.
 
 자신만의 Hook을 만들면 컴포넌트 로직을 함수로 뽑아내어 재사용할 수 있습니다.
 
@@ -65,7 +65,7 @@ function FriendListItem(props) {
 
 그 대신 이 로직을 `FriendStatus`와 `FriendListItem`에서 공유하도록 하고 싶습니다.
 
-리액트에는 상태 관련 로직을 컴포넌트에서 공유하는 두 가지 전통적인 방법이 있습니다. [render props](/docs/render-props.html)와 [고차 컴포넌트](/docs/higher-order-components.html)가 그것입니다. Hook을 사용하여 트리에 컴포넌트를 더하지 않고 위의 문제를 해결하는 방법을 보도록 하겠습니다.
+React에는 상태 관련 로직을 컴포넌트에서 공유하는 두 가지 전통적인 방법이 있는데 [render props](/docs/render-props.html)와 [고차 컴포넌트](/docs/higher-order-components.html)입니다. Hook을 사용하여 트리에 컴포넌트를 더하지 않고 위의 문제를 해결하는 방법을 보도록 하겠습니다.
 
 ## 사용자 정의 Hook 추출하기 {#extracting-a-custom-hook}
 
@@ -218,7 +218,7 @@ function todosReducer(state, action) {
 }
 ```
 
-reducer는 독립적으로 테스트하기에 편리하며 복잡한 업데이트 로직의 표현이 늘어나는 경우에도 잘 맞습니다. 필요하다면 더 작은 reducer로 나누는 것도 가능합니다. 하지만 리액트 state의 장점을 누리는 것은 선택일 뿐, 이 때문에 또 다른 라이브러리를 설치하고 싶지 않을 수도 있습니다.
+reducer는 독립적으로 테스트하기에 편리하며 복잡한 업데이트 로직의 표현이 늘어나는 경우에도 잘 맞습니다. 필요하다면 더 작은 reducer로 나누는 것도 가능합니다. 하지만 React state의 장점을 누리는 것은 선택일 뿐, 이 때문에 또 다른 라이브러리를 설치하고 싶지 않을 수도 있습니다.
 
 컴포넌트의 *안의* state를 reducer로 관리하는 `useReducer` Hook을 작성한다면 어떨까요? 이 Hook을 간단히 표현하면 다음과 같습니다.
 
@@ -249,4 +249,4 @@ function Todos() {
 }
 ```
 
-복잡한 컴포넌트에서 내에서 state를 reducer로 관리해야 하는 보편적 필요성을 고려하여 리액트에는 `useReducer`가 내장되어 있습니다. 이는 [Hook API 참고서](/docs/hooks-reference.html)에서 다른 내장 Hook과 함께 찾아볼 수 있습니다.
+복잡한 컴포넌트에서 내에서 state를 reducer로 관리해야 하는 보편적 필요성을 고려하여 React에는 `useReducer`가 내장되어 있습니다. 이는 [Hook API 참고서](/docs/hooks-reference.html)에서 다른 내장 Hook과 함께 찾아볼 수 있습니다.
