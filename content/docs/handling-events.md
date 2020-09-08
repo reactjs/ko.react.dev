@@ -54,7 +54,7 @@ function ActionLink() {
 }
 ```
 
-여기서 `e`는 합성 이벤트입니다. React는 [W3C 명세](https://www.w3.org/TR/DOM-Level-3-Events/)에 따라 합성 이벤트를 정의하기 때문에 브라우저 호환성에 대해 걱정할 필요가 없습니다. 더 자세한 사항은 [`합성 이벤트`](/docs/events.html)을 참고하시기 바랍니다.
+여기서 `e`는 합성 이벤트입니다. React는 [W3C 명세](https://www.w3.org/TR/DOM-Level-3-Events/)에 따라 합성 이벤트를 정의하기 때문에 브라우저 호환성에 대해 걱정할 필요가 없습니다. React 이벤트는 브라우저 고유 이벤트와 정확히 동일하게 동작하지는 않습니다. React events do not work exactly the same as native events. 더 자세한 사항은 [`합성 이벤트`](/docs/events.html)을 참고하시기 바랍니다.
 
 React를 사용할 때 DOM 엘리먼트가 생성된 후 리스너를 추가하기 위해 `addEventListener`를 호출할 필요가 없습니다. 대신, 엘리먼트가 처음 렌더링될 때 리스너를 제공하면 됩니다.
 

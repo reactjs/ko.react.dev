@@ -42,7 +42,7 @@ render() {
 
 ### CSS-in-JS가 무엇인가요? {#what-is-css-in-js}
 
-"CSS-in-JS"는 외부의 파일에 CSS를 정의하는 대신에 JavaScript와 결합하는 패턴을 의미합니다. [여기](https://github.com/MicheleBertoli/css-in-js)에서 CSS-in-JS 라이브러리들에 대한 비교를 확인할 수 있습니다.
+"CSS-in-JS"는 외부의 파일에 CSS를 정의하는 대신에 JavaScript와 결합하는 패턴을 의미합니다.
 
 _이러한 기능은 React에 포함된 기능이 아닌, 별도의 라이브러리들로 제공됨을 주의하세요._ React는 어떻게 스타일이 정의되는지에 대한 의견이 없습니다. 의구심이 생긴다면, 평소처럼 별도의 `*.css` 파일에 정의한 뒤 [`className`](/docs/dom-elements.html#classname)을 통해 참조하는 것으로 시작해볼 수 있습니다.
 

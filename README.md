@@ -55,7 +55,7 @@
 1. Github 지침을 따라주세요.
 1. 가능하다면 시각적으로 변화된 부분의 스크린샷을 첨부해주세요. PR을 만들고 다른사람들이 수정사항을 볼 수 있게되면, Netlify가 자동적으로 빌드할 것입니다.
 
-## 변역
+## 번역
 
 `reactjs.org` 번역에 흥미가 있다면, [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/)에서 현재 번역이 얼마나 진행되었는지 확인해주세요.
 
