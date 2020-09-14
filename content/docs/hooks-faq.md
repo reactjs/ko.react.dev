@@ -20,11 +20,11 @@ prev: hooks-reference.html
 
 * **[적용 전략](#adoption-strategy)**
   * [어떤 버전의 React가 Hook을 포함합니까?](#which-versions-of-react-include-hooks)
-  * [모든 Class 컴포넌트를 다시 작성해야 합니까?](#do-i-need-to-rewrite-all-my-class-components)
+  * [모든 class 컴포넌트를 다시 작성해야 합니까?](#do-i-need-to-rewrite-all-my-class-components)
   * [Class로 하지 못하는 것 중에 Hook으로 가능한 것이 무엇인가요?](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
   * [React 지식은 얼마나 관련이 있습니까?](#how-much-of-my-react-knowledge-stays-relevant)
-  * [Hook이나 Class 또는 두 가지를 모두 사용해야 합니까?](#should-i-use-hooks-classes-or-a-mix-of-both)
-  * [Hook이 Class의 모든 사용 사례를 커버합니까?](#do-hooks-cover-all-use-cases-for-classes)
+  * [Hook이나 class 또는 두 가지를 모두 사용해야 합니까?](#should-i-use-hooks-classes-or-a-mix-of-both)
+  * [Hook이 class의 모든 사용 사례를 커버합니까?](#do-hooks-cover-all-use-cases-for-classes)
   * [Hook이 render props 및 고차 컴포넌트를 대체합니까?](#do-hooks-replace-render-props-and-higher-order-components)
   * [Redux connect()와 React Router와 같은 인기 있는 API에 대해 Hook은 무엇을 의미합니까?](#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router)
   * [Hook은 정적 타이핑과 함께 작동합니까?](#do-hooks-work-with-static-typing)
@@ -73,9 +73,9 @@ prev: hooks-reference.html
 
 [React Native 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) and above support Hooks.
 
-### 모든 Class 컴포넌트를 다시 작성해야 합니까? {#do-i-need-to-rewrite-all-my-class-components}
+### 모든 class 컴포넌트를 다시 작성해야 합니까? {#do-i-need-to-rewrite-all-my-class-components}
 
-아닙니다. React에서 Class를 삭제할 [계획은 없습니다](/docs/hooks-intro.html#gradual-adoption-strategy). 우리는 제품을 출시할 때마다 재작성을 할 여유가 없습니다. 새 코드에서 Hook을 사용하는 것이 좋습니다.
+아닙니다. React에서 class를 삭제할 [계획은 없습니다](/docs/hooks-intro.html#gradual-adoption-strategy). 우리는 제품을 출시할 때마다 재작성을 할 여유가 없습니다. 새 코드에서 Hook을 사용하는 것이 좋습니다.
 
 ### Class로 하지 못하는 것 중에 Hook으로 가능한 것이 무엇인가요? {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
 
@@ -87,15 +87,15 @@ Hook은 state, 생명주기, context 및 ref와 같은 이미 알고 있는 Reac
 
 Hook에는 독자적인 학습 곡선이 있습니다. 이 문서에 누락된 것이 있으면 [문제를 제기](https://github.com/reactjs/reactjs.org/issues/new)하면 도움을 제공해 드리겠습니다.
 
-### Hook이나 Class 또는 두 가지를 모두 사용해야 합니까? {#should-i-use-hooks-classes-or-a-mix-of-both}
+### Hook이나 class 또는 두 가지를 모두 사용해야 합니까? {#should-i-use-hooks-classes-or-a-mix-of-both}
 
-준비가 되면 작성하는 새 컴포넌트에서 Hook을 시도해 보는 것이 좋습니다. 팀의 모든 구성원이 사용하고 이 문서에 익숙해 지도록 하십시오. 일부러 다시 작성하지 않는 이상 (예: 버그 수정) 기존 Class를 Hook으로 고쳐 쓰는 것은 추천하지 않습니다.
+준비가 되면 작성하는 새 컴포넌트에서 Hook을 시도해 보는 것이 좋습니다. 팀의 모든 구성원이 사용하고 이 문서에 익숙해 지도록 하십시오. 일부러 다시 작성하지 않는 이상 (예: 버그 수정) 기존 class를 Hook으로 고쳐 쓰는 것은 추천하지 않습니다.
 
-Class 컴포넌트 *내부에서* Hook을 사용할 수는 없지만, Class와 함수 컴포넌트를 단일 트리에서 Hook과 섞어서 사용할 수 있습니다. 컴포넌트가 Class인지 Hook을 사용하는 함수인지 여부는 해당 컴포넌트의 구현 세부 사항입니다. 장기적으로 우리는 Hook이 사람들이 React 컴포넌트를 작성하는 주요 방법이 될 것으로 기대합니다.
+Class 컴포넌트 *내부에서* Hook을 사용할 수는 없지만, class와 함수 컴포넌트를 단일 트리에서 Hook과 섞어서 사용할 수 있습니다. 컴포넌트가 class인지 Hook을 사용하는 함수인지 여부는 해당 컴포넌트의 구현 세부 사항입니다. 장기적으로 우리는 Hook이 사람들이 React 컴포넌트를 작성하는 주요 방법이 될 것으로 기대합니다.
 
-### Hook이 Class의 모든 사용 사례를 커버합니까? {#do-hooks-cover-all-use-cases-for-classes}
+### Hook이 class의 모든 사용 사례를 커버합니까? {#do-hooks-cover-all-use-cases-for-classes}
 
-우리의 목표는 Hook이 Class의 모든 사용 사례를 가능한 한 빨리 커버하게 하는 것입니다. 드문 `getSnapshotBeforeUpdate`, `getDerivedStateFromError` 및 `componentDidCatch` 생명주기에 해당하는 Hook은 아직 없지만, 곧 추가할 계획입니다.
+우리의 목표는 Hook이 class의 모든 사용 사례를 가능한 한 빨리 커버하게 하는 것입니다. 드문 `getSnapshotBeforeUpdate`, `getDerivedStateFromError` 및 `componentDidCatch` 생명주기에 해당하는 Hook은 아직 없지만, 곧 추가할 계획입니다.
 
 Hook의 초기 단계이며 일부 타사 라이브러리는 현재 Hook과 호환되지 않을 수 있습니다.
 
@@ -262,7 +262,7 @@ function Timer() {
 
 ### 하나 또는 여러 state 변수를 사용해야 합니까? {#should-i-use-one-or-many-state-variables}
 
-If you're coming from classes, you might be tempted to always call `useState()` once and put all state into a single object. You can do it if you'd like. Here is an example of a component that follows the mouse movement. We keep its position and size in the local state.
+Class를 배운 후라면, `useState ()`를 한 번만 호출하고 모든 state를 단일 객체에 넣고 싶을 수 있습니다. 원하시면 그렇게 할 수 있습니다. 다음은 마우스 움직임을 따르는 컴포넌트의 예입니다. 포인터의 위치와 크기를 로컬 state에 유지합니다.
 
 ```js
 function Box() {
@@ -271,7 +271,7 @@ function Box() {
 }
 ```
 
-Now let's say we want to write some logic that changes `left` and `top` when the user moves their mouse. Note how we have to merge these fields into the previous state object manually.
+이제 사용자가 마우스를 움직일 때 `left`과 `top`의 포지션을 변경하는 로직을 작성하고 싶다고 가정해 보겠습니다. 이러한 필드를 이전 state 개체에 수동으로 병합하는 방법에 유의하십시오.
 
 ```js{4,5}
   // ...
@@ -287,11 +287,11 @@ Now let's say we want to write some logic that changes `left` and `top` when the
   // ...
 ```
 
-This is because when we update a state variable, we *replace* its value. This is different from `this.setState` in a class, which *merges* the updated fields into the object.
+이는 state 변수를 업데이트할 때 그 값을 *대체*하기 때문입니다. 이것은 업데이트된 필드를 객체에 *병합*하는 class의 `this.setState`와 다릅니다.
 
-If you miss automatic merging, you could write a custom `useLegacyState` Hook that merges object state updates. However, **we recommend to split state into multiple state variables based on which values tend to change together.**
+자동 병합을 놓친 경우 개체 state 업데이트를 병합하는 사용자 지정 `useLegacyState` Hook을 작성할 수 있습니다. 그러나, **함께변경 되는 값에 따라 state를 여러 state 변수로 분할하는 것을 추천합니다.**
 
-For example, we could split our component state into `position` and `size` objects, and always replace the `position` with no need for merging.
+예를 들어 컴포넌트 상태를 `position` 및 `size` 객체로 분할하고 병합할 필요 없이 항상 `position`을 대체 할 수 있습니다.
 
 ```js{2,7}
 function Box() {
@@ -305,7 +305,7 @@ function Box() {
     // ...
 ```
 
-Separating independent state variables also has another benefit. It makes it easy to later extract some related logic into a custom Hook, for example.
+독립된 state 변수를 분리하면 또 다른 이점이 있습니다. 예를 들어 나중에 관련 로직을 사용자 지정 Hook으로 쉽게 추출 할 수 있습니다.
 
 ```js{2,7}
 function Box() {
@@ -323,9 +323,9 @@ function useWindowPosition() {
 }
 ```
 
-Note how we were able to move the `useState` call for the `position` state variable and the related effect into a custom Hook without changing their code. If all state was in a single object, extracting it would be more difficult.
+코드를 변경하지 않고 `position` state 변수에 대한 `useState` 호출과 관련 effect를 사용자 정의 Hook으로 옮길 수 있었던 방법에 유의하십시오. 모든 state가 단일 객체에 있으면 추출하기가 더 어려울 것입니다.
 
-Both putting all state in a single `useState` call, and having a `useState` call per each field can work. Components tend to be most readable when you find a balance between these two extremes, and group related state into a few independent state variables. If the state logic becomes complex, we recommend [managing it with a reducer](/docs/hooks-reference.html#usereducer) or a custom Hook.
+모든 state를 단일 `useState` 호출에 넣고 필드마다 `useState` 호출을 두는 방법도 쓸 수 있습니다. 컴포넌트는 이러한 두 극단 사이의 균형을 찾고 관련 state를 몇 개의 독립 state 변수로 그룹화할 때 가장 읽기 쉬운 경향이 있습니다. State 로직이 복잡해지면 [reducer로 관리](/docs/hooks-reference.html#usereducer), 또는 커스텀 Hook을 사용하는 것이 좋습니다.
 
 ### 업데이트에만 effect를 실행할 수 있습니까? {#can-i-run-an-effect-only-on-updates}
 
