@@ -272,7 +272,11 @@ shouldComponentUpdate(nextProps, nextState)
 static getDerivedStateFromProps(props, state)
 ```
 
+<<<<<<< HEAD
 `getDerivedStateFromProps()`는 최초 마운트 시와 갱신 시 모두에서 `render()` 메서드를 호출하기 직전에 호출됩니다. state를 갱신하기 위한 객체를 반환하거나, `null`을 반환하여 아무 것도 갱신하지 않을 수 있습니다.
+=======
+`getDerivedStateFromProps` is invoked right before calling the render method, both on the initial mount and on subsequent updates. It should return an object to update the state, or `null` to update nothing.
+>>>>>>> 954a16f1d358009505ae881afaefe463dc6388a5
 
 이 메서드는 시간이 흐름에 따라 변하는 props에 state가 의존하는 [아주 드문 사용례](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state)를 위하여 존재합니다. 예를 들어, 무엇을 움직이도록 만들지 결정하기 위하여 이전과 현재의 자식 엘리먼트를 비교하는 `<Transition>`와 같은 컴포넌트를 구현할 때에 편리하게 사용할 수 있습니다.
 
@@ -580,7 +584,11 @@ component.forceUpdate(callback)
 
 ### `defaultProps` {#defaultprops}
 
+<<<<<<< HEAD
 `defaultProps`는 컴포넌트 클래스 자체 내에서 프로퍼티로서 정의될 수 있고, 이를 통하여 해당 class의 기본 props 값을 설정할 수 있습니다. 아래 예시와 같이, null이 아닌 아직 정의되지 않은 props를 다룰 때 사용됩니다.
+=======
+`defaultProps` can be defined as a property on the component class itself, to set the default props for the class. This is used for `undefined` props, but not for `null` props. For example:
+>>>>>>> 954a16f1d358009505ae881afaefe463dc6388a5
 
 ```js
 class CustomButton extends React.Component {
@@ -600,7 +608,11 @@ CustomButton.defaultProps = {
   }
 ```
 
+<<<<<<< HEAD
 `props.color`에 null 값이 제공된다면, 해당 값은 null로 유지됩니다.
+=======
+If `props.color` is set to `null`, it will remain `null`:
+>>>>>>> 954a16f1d358009505ae881afaefe463dc6388a5
 
 ```js
   render() {
