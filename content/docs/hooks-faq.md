@@ -289,7 +289,7 @@ function Box() {
 
 이는 state 변수를 업데이트할 때 그 값을 *대체*하기 때문입니다. 이것은 업데이트된 필드를 객체에 *병합*하는 class의 `this.setState`와 다릅니다.
 
-자동 병합을 놓친 경우 개체 state 업데이트를 병합하는 사용자 지정 `useLegacyState` Hook을 작성할 수 있습니다. 그러나, **함께변경 되는 값에 따라 state를 여러 state 변수로 분할하는 것을 추천합니다.**
+자동 병합을 놓친 경우 개체 state 업데이트를 병합하는 커스텀 `useLegacyState` Hook을 작성할 수 있습니다. 그러나, **함께변경 되는 값에 따라 state를 여러 state 변수로 분할하는 것을 추천합니다.**
 
 예를 들어 컴포넌트 상태를 `position` 및 `size` 객체로 분할하고 병합할 필요 없이 항상 `position`을 대체 할 수 있습니다.
 
@@ -305,7 +305,7 @@ function Box() {
     // ...
 ```
 
-독립된 state 변수를 분리하면 또 다른 이점이 있습니다. 예를 들어 나중에 관련 로직을 사용자 지정 Hook으로 쉽게 추출 할 수 있습니다.
+독립된 state 변수를 분리하면 또 다른 이점이 있습니다. 예를 들어 나중에 관련 로직을 커스텀 Hook으로 쉽게 추출 할 수 있습니다.
 
 ```js{2,7}
 function Box() {
@@ -323,13 +323,13 @@ function useWindowPosition() {
 }
 ```
 
-코드를 변경하지 않고 `position` state 변수에 대한 `useState` 호출과 관련 effect를 사용자 정의 Hook으로 옮길 수 있었던 방법에 유의하십시오. 모든 state가 단일 객체에 있으면 추출하기가 더 어려울 것입니다.
+코드를 변경하지 않고 `position` state 변수에 대한 `useState` 호출과 관련 effect를 커스텀 Hook으로 옮길 수 있었던 방법에 유의하십시오. 모든 state가 단일 객체에 있으면 추출하기가 더 어려울 것입니다.
 
 모든 state를 단일 `useState` 호출에 넣고 필드마다 `useState` 호출을 두는 방법도 쓸 수 있습니다. 컴포넌트는 이러한 두 극단 사이의 균형을 찾고 관련 state를 몇 개의 독립 state 변수로 그룹화할 때 가장 읽기 쉬운 경향이 있습니다. State 로직이 복잡해지면 [reducer로 관리](/docs/hooks-reference.html#usereducer), 또는 커스텀 Hook을 사용하는 것이 좋습니다.
 
 ### 업데이트에만 effect를 실행할 수 있습니까? {#can-i-run-an-effect-only-on-updates}
 
-This is a rare use case. If you need it, you can [use a mutable ref](#is-there-something-like-instance-variables) to manually store a boolean value corresponding to whether you are on the first or a subsequent render, then check that flag in your effect. (If you find yourself doing this often, you could create a custom Hook for it.)
+이것은 드문 사용 사례입니다. 필요한 경우 [변경 가능한 ref를 사용하여](#is-there-something-like-instance-variables) 첫 번째 또는 후속 렌더링에 있는지에 해당하는 부울 값을 수동으로 저장한 다음, 해당 플래그를 확인할 수 있습니다. (이 작업을 자주 수행하는 경우 커스텀 Hook을 만들 수 있습니다.)
 
 ### 이전 props 또는 state를 얻는 방법? {#how-to-get-the-previous-props-or-state}
 
