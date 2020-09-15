@@ -172,11 +172,7 @@ JSX는 JavaScript의 강력한 기능을 가지고 있습니다. JSX 내부의 �
 
 `ShoppingList` 컴포넌트는 `<div />`와 `<li />` 같은 내각 DOM 컴포넌트만을 렌더링하지만 컴포넌트를 조합하여 커스텀 React 컴포넌트를 렌더링하는 것도 가능합니다. 예를 들어 `<ShoppingList />`를 작성하여 모든 쇼핑 목록을 참조할 수 있습니다. React 컴포넌트는 캡슐화되어 독립적으로 동작할 수 있습니다. 이러한 이유로 단순한 컴포넌트를 사용하여 복잡한 UI를 구현할 수 있습니다.
 
-<<<<<<< HEAD
-## 초기 코드 살펴보기 {#inspecting-the-starter-code}
-=======
-### Inspecting the Starter Code {#inspecting-the-starter-code}
->>>>>>> 954a16f1d358009505ae881afaefe463dc6388a5
+### 초기 코드 살펴보기 {#inspecting-the-starter-code}
 
 **브라우저에서** 자습서 작성을 하는 경우 새 탭에서 **[초기 코드](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**를 열어주세요. **로컬 환경에서** 진행하는 경우 프로젝트 폴더에서 `src/index.js`를 열어주세요(이 파일은 [설정](#setup-option-2-local-development-environment)에서 다룬 적이 있습니다).
 
