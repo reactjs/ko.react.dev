@@ -333,7 +333,7 @@ function useWindowPosition() {
 
 ### 이전 props 또는 state를 얻는 방법? {#how-to-get-the-previous-props-or-state}
 
-Currently, you can do it manually [with a ref](#is-there-something-like-instance-variables).
+현재는 수동으로 [ref랑 같이](#is-there-something-like-instance-variables) 사용할 수 있습니다.
 
 ```js{6,8}
 function Counter() {
@@ -349,7 +349,7 @@ function Counter() {
 }
 ```
 
-This might be a bit convoluted but you can extract it into a custom Hook.
+약간 복잡 할 수 있지만, 커스텀 훅으로 추출 할 수 있습니다.
 
 ```js{3,7}
 function Counter() {
@@ -367,7 +367,7 @@ function usePrevious(value) {
 }
 ```
 
-Note how this would work for props, state, or any other calculated value.
+이것이 props, state 또는 기타 계산된 값에 대해 어떻게 작동하는지 확인하십시오.
 
 ```js{5}
 function Counter() {
@@ -378,9 +378,9 @@ function Counter() {
   // ...
 ```
 
-It's possible that in the future React will provide a `usePrevious` Hook out of the box since it's a relatively common use case.
+상대적으로 일반적인 사용 사례이기 때문에 향후 React에서 'usePrevious' Hook을 제공 할 수 있습니다.
 
-See also [the recommended pattern for derived state](#how-do-i-implement-getderivedstatefromprops).
+[파생 상태에 권장되는 패턴](#how-do-i-implement-getderivedstatefromprops)도 참조하세요.
 
 ### 함수 안에 오래된 props나 state가 보이는 이유는 무엇입니까? {#why-am-i-seeing-stale-props-or-state-inside-my-function}
 
