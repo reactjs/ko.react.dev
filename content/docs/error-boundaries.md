@@ -2,8 +2,6 @@
 id: error-boundaries
 title: 에러 경계(Error Boundaries)
 permalink: docs/error-boundaries.html
-prev: portals.html
-next: web-components.html
 ---
 
 과거에는 컴포넌트 내부의 자바스크립트 에러가 React의 내부 상태를 훼손하고 다음 렌더링에서 [암호화](https://github.com/facebook/react/issues/6895) [에러](https://github.com/facebook/react/issues/8579) [방출](https://github.com/facebook/react/issues/4026)을 유발하곤 했습니다. 이러한 에러는 항상 애플리케이션 코드의 이전 단계의 에러로 인해 발생했지만, React는 컴포넌트 내에서 에러를 정상적으로 처리할 수 있는 방법을 제공하지 않아 이를 복구할 수가 없었습니다.
