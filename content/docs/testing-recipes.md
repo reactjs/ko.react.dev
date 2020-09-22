@@ -6,11 +6,11 @@ prev: testing.html
 next: testing-environments.html
 ---
 
-리액트 컴포넌트를 위한 공통 테스트 패턴 입니다.
+리액트 컴포넌트를 위한 공통 테스트 패턴입니다.
 
 > 주의:
 >
-> 이 페이지는 테스트 러너로 [Jest](https://jestjs.io/)를 사용하는 사람을 대상으로 쓰여 있습니다. 만약 다른 테스트 러너를 사용한다면, 아마도 API가 다를 수 있지만, 전체적인 형태는 거의 비슷할 것입니다. 테스트 환경에 대한 셋팅에 대해 더 알고 싶다면 [Testing Environments](/docs/testing-environments.html)를 참고해 주세요.
+> 이 페이지는 테스트 러너로 [Jest](https://jestjs.io/)를 사용하는 사람을 대상으로 쓰여 있습니다. 만약 다른 테스트 러너를 사용한다면, 아마도 API가 다를 수 있지만, 전체적인 형태는 거의 비슷할 것입니다. 테스트 환경에 대한 세팅에 대해 더 알고 싶다면 [Testing Environments](/docs/testing-environments.html)를 참고해 주세요.
 
 이 페이지에서는 함수 컴포넌트를 주로 사용할 것입니다. 하지만, 아래 테스트 전략들은 구현 형태에 의존적이지 않으며 클래스 컴포넌트에서도 잘 작동 합니다.
 
@@ -29,9 +29,9 @@ next: testing-environments.html
 
 ### 설정/해제 {#setup--teardown}
 
-테스트마다 일반적으로 React 트리를 `document`의 DOM 엘리먼트에 렌더링하는데, 이는 DOM 이벤트를 처리 하기 위함 입니다. 테스트가 끝날 때는, 테스트와 관련된 설정 및 값에 대한 정리(clean up)를 하고 `document` 트리에서 마운트 해제를 합니다.
+테스트마다 일반적으로 React 트리를 `document`의 DOM 엘리먼트에 렌더링하는데, 이는 DOM 이벤트를 수신하기 위해 중요합니다. 테스트가 끝날 때는, 테스트와 관련된 설정 및 값에 대해 정리(clean up)를 하고 `document` 트리에서 마운트 해제를 합니다.
 
-이러한 일을 처리 하는 일반적인 방법은 `beforeEach`와 `afterEach`를 사용하는 것입니다. 위 두 함수는 항상 실행되며 테스트의 영향으로 부터 자신 스스로 격리를 합니다.
+이러한 일을 처리하는 일반적인 방법은 `beforeEach`와 `afterEach`를 사용하는 것입니다. 위 두 함수는 항상 실행되며 테스트의 영향으로부터 자신 스스로 격리를 합니다.
 
 ```jsx
 import { unmountComponentAtNode } from "react-dom";
@@ -51,24 +51,24 @@ afterEach(() => {
 });
 ```
 
-다른 패턴을 사용할 수도 있지만, 테스트가 실패하더라도 정리(clean up)를 해야 한다는 것을 기억해야 합니다. 테스트는 취약점이 될 수 있고, 하나의 테스트는 다른 테스트의 동작 방식을 변형시킬 수 있습니다. 이는 디버깅을 어렵게 만듭니다.
+다른 패턴을 사용할 수도 있지만, 테스트가 실패하더라도 정리(clean up)는 해야 합니다. 정리하지 않으면 테스트에 완전히 격리가 되지 않은 '빈틈'이 생기기 되고, 하나의 테스트는 다른 테스트의 동작에 영향을 줄 수 있습니다. 이는 디버깅을 어렵게 만듭니다.
 
 ---
 
 ### `act()` {#act}
 
-UI 테스트, 렌더링과 같은 작업, 유저 이벤트, 데이터 가져오기는 유저 인터페이스와의 상호작용하는 "구성단위"로 간주 됩니다. 리액트는 'act()'라 불리는 함수를 제공하는데, 이 함수는 "구성단위"와 관련된 모든 업데이트가 단언이 실행되기 전에 처리되고 DOM에 적용되도록 돕습니다.
+UI 테스트를 작성할 때, 렌더링과 같은 작업, 유저 이벤트, 데이터 가져오기는 유저 인터페이스와의 상호작용하는 "단위"로 간주 됩니다. 리액트는 'act()'라 불리는 함수를 제공하는데, 이 함수는 "단위"와 관련된 모든 업데이트가 단언이 실행되기 전에 처리되고 DOM에 적용되도록 돕습니다.
 
 ```js
 act(() => {
-  // 렌더링할 컴포넌트
+  // 컴포넌트를 렌더링 한다.
 });
-// 단언들을 추가
+// 단언을 추가
 ```
 
-위의 함수를 통해 프로그램을 사용할 때 실제 사용자가 경험할 수 있는 수준에 근접한 테스트를 실행 할 수 있습니다. 이 예제의 나머지 부분에서는 `act()`를 사용하여 이를 보장합니다.
+위의 함수를 통해 실제 사용자가 프로그램을 사용할 때 겪을 경험에 근접하게 테스트를 실행할 수 있습니다. 이후 예제에서는 `act()`를 사용하여 이를 보장합니다.
 
-`act()`를 직접 사용하다 보면, 코드가 길어질 때가 있습니다. 이를 간결하게 하고 싶을 때는 `act()`로 감싸여 있는 [React Testing Library] (https://testing-library.com/react)와 같은 라이브러리를 사용할 수 있습니다.
+`act()`를 직접 사용하다 보면, 코드가 길어질 때가 있습니다. 이를 간결하게 하고 싶을 때는 `act()`를 감싼 여러 도우미 함수를 제공하는 [React Testing Library] (https://testing-library.com/react)를 사용할 수 있습니다.
 
 > 주의:
 >
@@ -78,7 +78,7 @@ act(() => {
 
 ### 렌더링 {#rendering}
 
-일반적으로 주어진 props에 따라 컴포넌트 렌더링이 제대로 되었는지 테스트하고 싶을 때가 있습니다. 이때, prop을 기반으로 메시지를 렌더링하는 간단한 컴포넌트를 아래와 같이 고려해 보세요. 
+일반적으로 주어진 props에 따라 컴포넌트 렌더링이 제대로 되었는지 테스트하고 싶을 때가 있습니다. 이때, prop을 기반으로 메시지를 렌더링하는 간단한 컴포넌트가 있다고 생각해봅시다.
 
 ```jsx
 // hello.js
@@ -107,7 +107,7 @@ import Hello from "./hello";
 
 let container = null;
 beforeEach(() => {
-  // 렌터링 타켓으로 DOM 엘리먼트를 셋팅 합니다.
+  // 렌터링 대상으로 DOM 엘리먼트를 세팅 합니다.
   container = document.createElement("div");
   document.body.appendChild(container);
 });
@@ -141,7 +141,7 @@ it("renders with or without a name", () => {
 
 ### 데이터 가져오기 {#data-fetching}
 
-모든 테스트에서 리얼 API를 호출하는 대신에 mock 호출로 더미 데이터를 가져올 수 있습니다. "가짜" 데이터를 사용하여 mocking 데이터를 가져오는 것은 백 엔드를 사용할 수 없기 때문에 비정상적인 테스트를 방지하고 더 빠르게 실행할 수 있습니다. 주의: 애플리케이션의 모든 기능이 잘 작동하는지 테스트 할 수 있는 ["end-to-end"](/docs/testing-environments.html#end-to-end-tests-aka-e2e-tests) 프레임 워크를 사용하여 테스트의 일부분을 테스트 할 수 있습니다.
+모든 테스트에서 리얼 API를 호출하는 대신에 모의 호출로 더미 데이터를 가져올 수 있습니다. "가짜" 데이터를 사용하여 모의 데이터를 가져오는 것은 사용할 수 없는 백 엔드때문에 테스트가 쉽게 망가지는 것을 방지하고 테스트 속도를 빠르게 합니다. 주의: 일부 테스트에서는 ["end-to-end"](/docs/testing-environments.html#end-to-end-tests-aka-e2e-tests) 프레임 워크를 사용하여 전체 애플리케이션의 모든 부분이 함께 잘 동작하는지 살펴볼 수 있습니다.
 
 ```jsx
 // user.js
@@ -187,7 +187,7 @@ import User from "./user";
 
 let container = null;
 beforeEach(() => {
-  // 렌터링 타켓으로 DOM 엘리먼트를 셋팅 합니다.
+  // 렌터링 대상으로 DOM 엘리먼트를 세팅 합니다.
   container = document.createElement("div");
   document.body.appendChild(container);
 });
@@ -221,7 +221,7 @@ it("renders user data", async () => {
   expect(container.querySelector("strong").textContent).toBe(fakeUser.age);
   expect(container.textContent).toContain(fakeUser.address);
 
-  // 테스트가 완전히 격리되도록 mock을 제거하세요.
+  // 테스트가 완전히 격리되도록 모의를 제거하세요.
   global.fetch.mockRestore();
 });
 ```
@@ -232,7 +232,7 @@ it("renders user data", async () => {
 
 일부 모듈은 테스트 환경에서 제대로 작동하지 않거나 테스트 자체에 필수적이지 않을 수 있습니다. 이러한 모듈을 더미 모듈로 대체하는 방식으로 mocking 하여 코드에 대한 테스트를 더욱 쉽게 작성할 수 있습니다.
 
-서드파티인 `GoogleMap` 컴포넌트를 내장하는 `Contact` 컴포넌트를 고려해 보세요.
+서드파티인 `GoogleMap` 컴포넌트를 내장하는 `Contact` 컴포넌트를 살펴보세요
 
 ```jsx
 // map.js
@@ -271,7 +271,7 @@ function Contact(props) {
 }
 ```
 
-테스트에서 컴포넌트를 로드하지 않는다면, 더미 컴포넌트에 대한 종속성을 mock 처리하고 테스트를 실행할 수 있습니다.
+테스트에서 컴포넌트를 로드하지 않는다면, 더미 컴포넌트에 대한 종속성을 모의 처리하고 테스트를 실행할 수 있습니다.
 
 ```jsx{10-18}
 // contact.test.js
@@ -295,7 +295,7 @@ jest.mock("./map", () => {
 
 let container = null;
 beforeEach(() => {
-  // 렌터링 타켓으로 DOM 엘리먼트를 셋팅 합니다.
+  // 렌터링 대상으로 DOM 엘리먼트를 세팅 합니다.
   container = document.createElement("div");
   document.body.appendChild(container);
 });
@@ -339,7 +339,7 @@ it("should render contact information", () => {
 
 ### 이벤트 {#events}
 
-DOM 요소에 실제 DOM 이벤트를 전달한 다음 결과에 단언 처리를 하는 것이 좋습니다. `Toggle` 구성 요소를 고려해 보세요.
+DOM 요소에 실제 DOM 이벤트를 전달한 다음 결과에 단언 처리를 하는 것이 좋습니다. `Toggle` 구성 요소를 살펴보세요
 
 ```jsx
 // toggle.js
@@ -375,7 +375,7 @@ import Toggle from "./toggle";
 
 let container = null;
 beforeEach(() => {
-  // 렌터링 타켓으로 DOM 엘리먼트를 셋팅 합니다.
+  // 렌터링 대상으로 DOM 엘리먼트를 세팅 합니다.
   container = document.createElement("div");
   // 이벤트가 제대로 작동하기 위해 container는 반드시 document에 적용되어야 합니다.
   document.body.appendChild(container);
@@ -468,7 +468,7 @@ jest.useFakeTimers();
 
 let container = null;
 beforeEach(() => {
-  // 렌터링 타켓으로 DOM 엘리먼트를 셋팅 합니다.
+  // 렌터링 대상으로 DOM 엘리먼트를 세팅 합니다.
   container = document.createElement("div");
   document.body.appendChild(container);
 });
@@ -559,7 +559,7 @@ import Hello from "./hello";
 
 let container = null;
 beforeEach(() => {
-  // 렌터링 타켓으로 DOM 엘리먼트를 셋팅 합니다.
+  // 렌터링 대상으로 DOM 엘리먼트를 세팅 합니다.
   container = document.createElement("div");
   document.body.appendChild(container);
 });
