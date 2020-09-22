@@ -2,7 +2,6 @@
 id: code-splitting
 title: 코드 분할
 permalink: docs/code-splitting.html
-prev: accessibility.html
 ---
 
 ## 번들링 {#bundling}
