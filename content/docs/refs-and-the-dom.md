@@ -1,13 +1,7 @@
 ---
 id: refs-and-the-dom
-<<<<<<< HEAD
 title: Ref와 DOM
-prev: static-type-checking.html
-next: uncontrolled-components.html
-=======
-title: Refs and the DOM
 permalink: docs/refs-and-the-dom.html
->>>>>>> 1becaff62ae228d909b83ef6d08f48c01660300f
 redirect_from:
   - "docs/working-with-the-browser.html"
   - "docs/more-about-refs.html"
