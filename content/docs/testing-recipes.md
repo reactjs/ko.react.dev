@@ -57,7 +57,7 @@ afterEach(() => {
 
 ### `act()` {#act}
 
-UI 테스트를 작성할 때, 렌더링과 같은 작업, 유저 이벤트, 데이터 가져오기는 유저 인터페이스와의 상호작용하는 "단위"로 간주 됩니다. 리액트는 'act()'라 불리는 함수를 제공하는데, 이 함수는 "단위"와 관련된 모든 업데이트가 단언이 실행되기 전에 처리되고 DOM에 적용되도록 돕습니다.
+UI 테스트를 작성할 때, 렌더링과 같은 작업, 유저 이벤트, 데이터 가져오기는 유저 인터페이스와의 상호작용하는 "단위"로 간주 됩니다. `react-dom/test-utils`는 [`act()`](/docs/test-utils.html#act)라 불리는 함수를 제공하는데, 이 함수는 "단위"와 관련된 모든 업데이트가 단언이 실행되기 전에 처리되고 DOM에 적용되도록 돕습니다.
 
 ```js
 act(() => {
@@ -253,7 +253,7 @@ export default function Map(props) {
 import React from "react";
 import Map from "./map";
 
-function Contact(props) {
+export default function Contact(props) {
   return (
     <div>
       <address>
@@ -463,6 +463,8 @@ export default function Card(props) {
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
+
+import Card from "./card";
 
 jest.useFakeTimers();
 

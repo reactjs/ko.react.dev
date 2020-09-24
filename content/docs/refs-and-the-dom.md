@@ -1,6 +1,7 @@
 ---
 id: refs-and-the-dom
 title: Ref와 DOM
+permalink: docs/refs-and-the-dom.html
 redirect_from:
   - "docs/working-with-the-browser.html"
   - "docs/more-about-refs.html"
@@ -8,7 +9,6 @@ redirect_from:
   - "docs/more-about-refs-zh-CN.html"
   - "tips/expose-component-functions.html"
   - "tips/children-undefined.html"
-permalink: docs/refs-and-the-dom.html
 ---
 
 Ref는 render 메서드에서 생성된 DOM 노드나 React 엘리먼트에 접근하는 방법을 제공합니다.
@@ -169,7 +169,7 @@ class Parent extends React.Component {
 function CustomTextInput(props) {
   // textInput은 ref 어트리뷰트를 통해 전달되기 위해서
   // 이곳에서 정의되어야만 합니다.
-  let textInput = React.createRef();
+  const textInput = useRef(null);
 
   function handleClick() {
     textInput.current.focus();

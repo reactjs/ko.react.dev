@@ -419,12 +419,6 @@ this.setState(function(state, props) {
 컴포넌트는 자신의 state를 자식 컴포넌트에 props로 전달할 수 있습니다.
 
 ```js
-<h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-```
-
-이것 또한 사용자 정의된 컴포넌트에도 적용 가능합니다.
-
-```js
 <FormattedDate date={this.state.date} />
 ```
 

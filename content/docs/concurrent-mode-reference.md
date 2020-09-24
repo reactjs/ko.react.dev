@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-reference
-title: Concurrent Mode API Reference (Experimental)
+title: Concurrent 모드 API 참고서 (실험 단계)
 permalink: docs/concurrent-mode-reference.html
 prev: concurrent-mode-adoption.html
 ---
@@ -14,19 +14,19 @@ prev: concurrent-mode-adoption.html
 
 <div class="scary">
 
->Caution:
+>주의
 >
->This page describes **experimental features that are [not yet available](/docs/concurrent-mode-adoption.html) in a stable release**. Don't rely on experimental builds of React in production apps. These features may change significantly and without a warning before they become a part of React.
+>이 페이지는 **안정된 배포판에서는 [아직 사용할 수 없는](/docs/concurrent-mode-adoption.html) 실험적인 기능들에 관해 설명합니다.** 프로덕션용 앱에선 React의 실험 배포판을 사용하지 마세요. 이 기능들은 React의 일부가 되기 전에 경고 없이 크게 변경될 수 있습니다.
 >
->This documentation is aimed at early adopters and people who are curious. **If you're new to React, don't worry about these features** -- you don't need to learn them right now.
+>이 문서는 얼리어답터들과 궁금해하시는 분들을 위해 제작된 문서입니다. **React를 처음 접해본다면 이러한 기능들을 걱정하지 않아도 됩니다.** 그 기능들을 바로 배울 필요는 없습니다.
 
 </div>
 
-This page is an API reference for the React [Concurrent Mode](/docs/concurrent-mode-intro.html). If you're looking for a guided introduction instead, check out [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html).
+이 페이지는 React [Concurrent 모드](/docs/concurrent-mode-intro.html)에 대한 API 참고서입니다. 도입부에 대한 가이드를 찾고 있다면, [Concurrent UI 패턴](/docs/concurrent-mode-patterns.html)을 확인해주세요.
 
-**Note: This is a Community Preview and not the final stable version. There will likely be future changes to these APIs. Use at your own risk!**
+**주의: 이는 커뮤니티 프리뷰이며 최종적으로 안정된 배포판이 아닙니다. 향후에 이 API는 변경될 수도 있습니다. 본인의 책임하에 사용하세요!**
 
-- [Enabling Concurrent Mode](#concurrent-mode)
+- [Concurrent 모드 활성화](#concurrent-mode)
     - [`createRoot`](#createroot)
     - [`createBlockingRoot`](#createblockingroot)
 - [Suspense](#suspense)
@@ -35,7 +35,7 @@ This page is an API reference for the React [Concurrent Mode](/docs/concurrent-m
     - [`useTransition`](#usetransition)
     - [`useDeferredValue`](#usedeferredvalue)
 
-## Enabling Concurrent Mode {#concurrent-mode}
+## Concurrent 모드 활성화 {#concurrent-mode}
 
 ### `createRoot` {#createroot}
 
@@ -43,9 +43,9 @@ This page is an API reference for the React [Concurrent Mode](/docs/concurrent-m
 ReactDOM.createRoot(rootNode).render(<App />);
 ```
 
-Replaces `ReactDOM.render(<App />, rootNode)` and enables Concurrent Mode.
+`ReactDOM.render(<App />, rootNode)`을 대체하고 Concurrent 모드를 활성화합니다.
 
-For more information on Concurrent Mode, check out the [Concurrent Mode documentation.](/docs/concurrent-mode-intro.html)
+Concurrent 모드에 대한 더 자세한 설명이 필요하다면, [Concurrent Mode 문서](/docs/concurrent-mode-intro.html)를 참고해주세요.
 
 ### `createBlockingRoot` {#createblockingroot}
 
@@ -53,11 +53,11 @@ For more information on Concurrent Mode, check out the [Concurrent Mode document
 ReactDOM.createBlockingRoot(rootNode).render(<App />)
 ```
 
-Replaces `ReactDOM.render(<App />, rootNode)` and enables [Blocking Mode](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode).
+`ReactDOM.render(<App />, rootNode)`를 대체하고 [Blocking 모드](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode)를 활성화합니다.
 
-Opting into Concurrent Mode introduces semantic changes to how React works. This means that you can't use Concurrent Mode in just a few components. Because of this, some apps may not be able to migrate directly to Concurrent Mode. 
+Concurrent 모드를 선택하면 React 작동하는 방식에 의미적 변화가 생깁니다. 이는 몇몇 컴포넌트에서 Concurrent 모드를 사용할 수 없다는 걸 의미하며 몇몇 앱은 곧바로 Concurrent 모드로 마이그레이션을 할 수 없습니다.
 
-Blocking Mode only contains a small subset of Concurrent Mode features and is intended as an intermediary migration step for apps that are unable to migrate directly.
+Blocking 모드는 Concurrent 모드의 일부만 포함하며 곧바로 마이그레이션 할 수 없는 앱의 중간 마이그레이션 단계로 사용됩니다.
 
 ## Suspense API {#suspense}
 
@@ -70,13 +70,13 @@ Blocking Mode only contains a small subset of Concurrent Mode features and is in
 </Suspense>
 ```
 
-`Suspense` lets your components "wait" for something before they can render, showing a fallback while waiting.
+`Suspense`는 컴포넌트가 렌더링되기 전에 무언가를 "기다릴 수 있도록 하며", 기다리는 동안에 폴백을 보여줍니다.
 
-In this example, `ProfileDetails` is waiting for an asynchronous API call to fetch some data. While we wait for `ProfileDetails` and `ProfilePhoto`, we will show the `Loading...` fallback instead. It is important to note that until all children inside `<Suspense>` has loaded, we will continue to show the fallback.
+위 예시에서 `ProfileDetails`는 일부 데이터를 가져 오기 위해 비동기 API 호출을 기다리고 있습니다. `ProfileDetails`와 `ProfilePhoto`를 기다리는 동안에 `Loading...` 폴백을 대신 보여줍니다. `<Suspense>`의 모든 자식이 로드될 때까지 폴백을 계속 표시한다는 점에 주의해주세요.
 
-`Suspense` takes two props:
-* **fallback** takes a loading indicator. The fallback is shown until all of the children of the `Suspense` component have finished rendering.
-* **unstable_avoidThisFallback** takes a boolean. It tells React whether to "skip" revealing this boundary during the initial load. This API will likely be removed in a future release.
+`Suspense`는 두 개의 props를 사용합니다.
+* **fallback**은 로딩 표시기를 받아들입니다. 폴백은 `Suspense` 컴포넌트의 모든 자식이 렌더링을 마치기 전까지 표시됩니다.
+* **unstable_avoidThisFallback**은 boolean을 받아들입니다. 초기 로드할 때 이 경계를 보여주는 걸 건너뛸 지 말 지 React에게 알려줍니다. 향후 배포판에서 이 API는 제거될 수 있습니다.
 
 ### `<SuspenseList>` {#suspenselist}
 
@@ -95,19 +95,19 @@ In this example, `ProfileDetails` is waiting for an asynchronous API call to fet
 </SuspenseList>
 ```
 
-`SuspenseList` helps coordinate many components that can suspend by orchestrating the order in which these components are revealed to the user.
+`SuspenseList`는 컴포넌트가 사용자에게 표시되는 순서를 조정하여 일시 중단 할 수 있는 많은 컴포넌트를 조정하는 데 도움을 줍니다.
 
-When multiple components need to fetch data, this data may arrive in an unpredictable order. However, if you wrap these items in a `SuspenseList`, React will not show an item in the list until previous items have been displayed (this behavior is adjustable).
+여러 컴포넌트가 데이터를 가져올 때 예상하지 못한 순서로 데이터가 도착할 수 있습니다. `SuspenseList`로 이러한 항목을 감싸면, React는 이전 항목을 표시하기 전까지 목록에 있는 항목을 출력하지 않습니다. (이 동작은 수정할 수 있습니다)
 
-`SuspenseList` takes two props:
-* **revealOrder (forwards, backwards, together)** defines the order in which the `SuspenseList` children should be revealed.
-  * `together` reveals *all* of them when they're ready instead of one by one.
-* **tail (collapsed, hidden)** dictates how unloaded items in a `SuspenseList` is shown. 
-    * By default, `SuspenseList` will show all fallbacks in the list.
-    * `collapsed` shows only the next fallback in the list.
-    * `hidden` doesn't show any unloaded items.
+`SuspenseList`은 두 개의 props를 사용합니다.
+* **revealOrder(forwards, backwards, together)**는 `SuspenseList` 자식이 표시되는 순서를 정의합니다.
+  * `together`는 하나씩 표시하지 않고 준비됐을 때 *모두 한번에* 표시합니다.
+* **tail (collapsed, hidden)**은 `SuspenseList`에서 로드되지 않은 항목을 표시하는 방법을 나타냅니다.
+    * 기본적으로, `SuspenseList`는 목록에 있는 모든 폴백을 표시합니다.
+    * `collapsed`는 목록에서 다음 폴백만 표시합니다.
+    * `hidden`은 로드되지 않은 항목을 표시하지 않습니다.
 
-Note that `SuspenseList` only operates on the closest `Suspense` and `SuspenseList` components below it. It does not search for boundaries deeper than one level. However, it is possible to nest multiple `SuspenseList` components in each other to build grids.
+`SuspenseList`는 `SuspenseList` 컴포넌트 아래에 있고 가장 인접한 `Suspense`와 `SuspenseList` 컴포넌트에만 동작한다는 점에 주의해주세요. 한 단계보다 깊은 경계는 검색하지 않지만 여러 `SuspenseList` 컴포넌트를 중첩해 그리드를 형성할 수는 있습니다.
 
 ### `useTransition` {#usetransition}
 
@@ -117,13 +117,13 @@ const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 const [startTransition, isPending] = useTransition(SUSPENSE_CONFIG);
 ```
 
-`useTransition` allows components to avoid undesirable loading states by waiting for content to load before **transitioning to the next screen**. It also allows components to defer slower, data fetching updates until subsequent renders so that more crucial updates can be rendered immediately.
+`useTransition`은 **다음 화면으로 transition**하기 전에 컨텐츠가 로드 될 때까지 대기함으로써 컴포넌트가 바람직하지 않은 로딩 상태를 피할 수 있게 해줍니다. 또한 컴포넌트가 더 중요한 업데이트를 즉시 렌더링 할 수 있도록 후속 렌더링까지 느린 데이터 가져오기를 지연시킬 수 있습니다.
 
-The `useTransition` hook returns two values in an array.
-* `startTransition` is a function that takes a callback. We can use it to tell React which state we want to defer.
-* `isPending` is a boolean. It's React's way of informing us whether we're waiting for the transition to finish.
+`useTransition` hook은 배열에서 두 개의 값을 반환합니다.
+* `startTransition`은 callback을 받는 함수입니다. React에게 지연하고자 하는 상태를 말해주기 위해 이 함수를 사용할 수 있습니다.
+* `isPending`은 boolean입니다. transition이 완료되기를 기다리고 있는지 알려주는 React의 방식입니다.
 
-**If some state update causes a component to suspend, that state update should be wrapped in a transition.**
+**일부 상태 업데이트로 컴포넌트가 중단되면 해당 상태 업데이트는 transition으로 감싸져야 합니다.**
 
 ```js
 const SUSPENSE_CONFIG = { timeoutMs: 2000 };
@@ -153,11 +153,11 @@ function App() {
 }
 ```
 
-In this code, we've wrapped our data fetching with `startTransition`. This allows us to start fetching the profile data right away, while deferring the render of the next profile page and its associated `Spinner` for 2 seconds (the time shown in `timeoutMs`).
+위 코드에서 데이터 조회를 `startTransition`으로 감쌌습니다. 이를 통해 다음 프로필 페이지의 렌더링과 연관된 `Spinner`를 2초동안(`timeoutMS`에 표시된 시간) 지연시키면서 프로필 데이터를 바로 가져올 수 있습니다.
 
-The `isPending` boolean lets React know that our component is transitioning, so we are able to let the user know this by showing some loading text on the previous profile page.
+`isPending` boolean은 React에게 컴포넌트가 transition 중이라는 걸 알리기 때문에, 이전 프로필 페이지에 로딩 텍스트를 표시하여 사용자에게 알려줍니다.
 
-**For an in-depth look at transitions, you can read [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html#transitions).**
+**Transition에 대한 자세한 내용은 [Concurrent UI 패턴](/docs/concurrent-mode-patterns.html#transitions)를 참고해주세요.**
 
 #### useTransition Config {#usetransition-config}
 
@@ -165,9 +165,10 @@ The `isPending` boolean lets React know that our component is transitioning, so 
 const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 ```
 
-`useTransition` accepts an **optional Suspense Config** with a `timeoutMs`. This timeout (in milliseconds) tells React how long to wait before showing the next state (the new Profile Page in the above example).
+`useTransition`은 `timeoutMS`가 포함된 **선택적인 Suspense Config**를 허용합니다. 이 시간초과(밀리 초 내에 일어나는)는 다음 상태(위의 예시에서 새로운 프로필 페이지)를 표시하기 전에 기다리는 시간을 React에게 알려줍니다.
 
-**Note: We recommend that you share Suspense Config between different modules.**
+
+**주의: 여러 모듈 간에 Suspense Config를 공유하는 것이 좋습니다.**
 
 
 ### `useDeferredValue` {#usedeferredvalue}
@@ -176,32 +177,32 @@ const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 const deferredValue = useDeferredValue(value, { timeoutMs: 2000 });
 ```
 
-Returns a deferred version of the value that may "lag behind" it for at most `timeoutMs`.
+최대 `timeoutMS` 동안 "뒤처질 수 있는" 값의 지연된 버전을 반환하세요.
 
-This is commonly used to keep the interface responsive when you have something that renders immediately based on user input and something that needs to wait for a data fetch.
+이는 흔히 사용자 입력을 기반으로 즉시 렌더링하거나 데이터 조회를 기다려야 할 때 인터페이스를 반응적으로 유지하는 데에 사용합니다.
 
-A good example of this is a text input.
+이에 대한 좋은 예시는 텍스트 입력입니다.
 
 ```js
 function App() {
   const [text, setText] = useState("hello");
-  const deferredText = useDeferredValue(text, { timeoutMs: 2000 }); 
+  const deferredText = useDeferredValue(text, { timeoutMs: 2000 });
 
   return (
     <div className="App">
-      {/* Keep passing the current text to the input */}
+      {/* input에 현재 텍스트를 계속 전달합니다. */}
       <input value={text} onChange={handleChange} />
       ...
-      {/* But the list is allowed to "lag behind" when necessary */}
+      {/* 하지만 이 목록은 필요한 경우 "뒤처질" 수 있습니다. */}
       <MySlowList text={deferredText} />
     </div>
   );
  }
 ```
 
-This allows us to start showing the new text for the `input` immediately, which allows the webpage to feel responsive. Meanwhile, `MySlowList` "lag behind" for up to 2 seconds according to the `timeoutMs` before updating, allowing it to render with the current text in the background.
+이를 통해 `input`에 대한 새로운 텍스트를 즉시 표시 할 수 있으므로 웹페이지가 반응적으로 느껴지도록 합니다. 한편, `MySlowList`는 업데이트 전에 `timeoutMS`에 따라 최대 2초 동안 "뒤처져서" 백그라운드에서 현재 텍스트로 렌더링 할 수 있습니다.
 
-**For an in-depth look at deferring values, you can read [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html#deferring-a-value).**
+**값의 지연에 대한 상세한 내용은 [Concurrent UI 패턴](/docs/concurrent-mode-patterns.html#deferring-a-value)을 참고해주세요.**
 
 #### useDeferredValue Config {#usedeferredvalue-config}
 
@@ -209,6 +210,6 @@ This allows us to start showing the new text for the `input` immediately, which 
 const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 ```
 
-`useDeferredValue` accepts an **optional Suspense Config** with a `timeoutMs`. This timeout (in milliseconds) tells React how long the deferred value is allowed to lag behind.
+`useDeferredValue`는 `timeoutMS`가 있는 **선택적인 Suspense Config**를 허용합니다. 이 시간초과(밀리초 내에 일어나는)는 뒤처진 값이 얼마나 지연될 수 있는지 React에게 알립니다.
 
-React will always try to use a shorter lag when network and device allows it.
+React는 네트워크와 장치가 허용할 때 항상 더 짧은 지연을 사용하려고 합니다.

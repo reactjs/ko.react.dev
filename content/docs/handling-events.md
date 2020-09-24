@@ -8,7 +8,7 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
-React 엘리먼트에서 이벤트를 처리하는 방식은 DOM 엘리먼트에서 이벤트를 처리하는 방식과 매우 유사합니다. 몇 가지 문법적인 차이는 다음과 같습니다.
+React 엘리먼트에서 이벤트를 처리하는 방식은 DOM 엘리먼트에서 이벤트를 처리하는 방식과 매우 유사합니다. 몇 가지 문법 차이는 다음과 같습니다.
 
 * React의 이벤트는 소문자 대신 캐멀 케이스(camelCase)를 사용합니다. 
 * JSX를 사용하여 문자열이 아닌 함수로 이벤트 핸들러를 전달합니다.
@@ -54,7 +54,7 @@ function ActionLink() {
 }
 ```
 
-여기서 `e`는 합성 이벤트입니다. React는 [W3C 명세](https://www.w3.org/TR/DOM-Level-3-Events/)에 따라 합성 이벤트를 정의하기 때문에 브라우저 호환성에 대해 걱정할 필요가 없습니다. 더 자세한 사항은 [`합성 이벤트`](/docs/events.html)을 참고하시기 바랍니다.
+여기서 `e`는 합성 이벤트입니다. React는 [W3C 명세](https://www.w3.org/TR/DOM-Level-3-Events/)에 따라 합성 이벤트를 정의하기 때문에 브라우저 호환성에 대해 걱정할 필요가 없습니다. React 이벤트는 브라우저 고유 이벤트와 정확히 동일하게 동작하지는 않습니다.  더 자세한 사항은 [`합성 이벤트`](/docs/events.html)을 참고하시기 바랍니다.
 
 React를 사용할 때 DOM 엘리먼트가 생성된 후 리스너를 추가하기 위해 `addEventListener`를 호출할 필요가 없습니다. 대신, 엘리먼트가 처음 렌더링될 때 리스너를 제공하면 됩니다.
 
@@ -130,7 +130,7 @@ class LoggingButton extends React.Component {
   render() {
     // 이 문법은 `this`가 handleClick 내에서 바인딩되도록 합니다.
     return (
-      <button onClick={(e) => this.handleClick(e)}>
+      <button onClick={() => this.handleClick()}>
         Click me
       </button>
     );

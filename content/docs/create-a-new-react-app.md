@@ -39,7 +39,7 @@ React 팀의 추천 방법은 아래와 같습니다
 
 [Create React App](https://github.com/facebookincubator/create-react-app)은 **React 배우기**에 간편한 환경입니다. 그리고 시작하기에 최고의 방법은 **새로운 [싱글 페이지 애플리케이션](/docs/glossary.html#single-page-application)** 입니다.
 
-이것은 개발 환경을 설정하고, 최신 JavaScript를 사용하게 해주며, 좋은 개발 경험과 프로덕션 앱 최적화를 해줍니다. Node 8.10 혹은 상위 버전 및 npm 5.6 혹은 상위 버전이 필요합니다. 새로운 프로젝트를 만들기 위해 아래의 명령어를 실행합니다.
+이것은 개발 환경을 설정하고, 최신 JavaScript를 사용하게 해주며, 좋은 개발 경험과 프로덕션 앱 최적화를 해줍니다. [Node 8.10 혹은 상위 버전 및 npm 5.6 혹은 상위 버전](https://nodejs.org/en/)이 필요합니다. 새로운 프로젝트를 만들기 위해 아래의 명령어를 실행합니다.
 
 ```bash
 npx create-react-app my-app
@@ -72,6 +72,8 @@ Gatsby를 [정식 가이드](https://www.gatsbyjs.org/docs/)와 [스타터 키�
 밑에 있는 툴체인은 조금 더 많은 선택과 다르기 쉬운 옵션입니다. 숙련된 사용자들에게 추천합니다.
 
 - **[Neutrino](https://neutrinojs.org/)는**  [webpack](https://webpack.js.org/)의 장점과 React의 단순함과 미리 설정된 [앱](https://neutrinojs.org/packages/react/)과 [컴포넌트](https://neutrinojs.org/packages/react-components/)를 합친 것입니다.
+
+- **[Nx](https://nx.dev/react)**는 풀스택 모노레포 개발을 위한 도구이며, React, Next.js, Express 등을 기본적으로 지원합니다.
 
 - **[Parcel](https://parceljs.org/)은** [React와 함께 사용할 수 있고](https://parceljs.org/recipes.html#react) 빠르고 설정이 필요 없는 웹 애플리케이션 bundler입니다.
 
