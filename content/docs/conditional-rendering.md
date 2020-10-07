@@ -152,10 +152,7 @@ JavaScript에서 `true && expression`은 항상 `expression`으로 평가되고 
 
 따라서 `&&` 뒤의 엘리먼트는 조건이 `true`일때 출력이 됩니다. 조건이 `false`라면 React는 무시합니다.
 
-<<<<<<< HEAD
-### 조건부 연산자로 If-Else구문 인라인으로 표현하기{#inline-if-else-with-conditional-operator}
-=======
-Note that returning a falsy expression will still cause the element after `&&` to be skipped but will return the falsy expression. In the example below, `<div>0</div>` will be returned by the render method.
+false로 평가될 수 있는 표현식을 반환하면 `&&` 뒤에 있는 표현식은 건너뛰지만 false로 평가될 수 있는 표현식이 반환된다는 것에 주의해주세요. 아래 예시에서, `<div>0</div>`이 render 메서드에서 반환됩니다.
 
 ```javascript{2,5}
 render() {
@@ -168,8 +165,7 @@ render() {
 }
 ```
 
-### Inline If-Else with Conditional Operator {#inline-if-else-with-conditional-operator}
->>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
+### 조건부 연산자로 If-Else구문 인라인으로 표현하기 {#inline-if-else-with-conditional-operator}
 
 엘리먼트를 조건부로 렌더링하는 다른 방법은 조건부 연산자인 [`condition ? true: false`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)를 사용하는 것입니다.
 
