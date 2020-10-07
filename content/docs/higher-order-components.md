@@ -173,7 +173,7 @@ function withSubscription(WrappedComponent, selectData) {
 
 컴포넌트와 마찬가지로 `withSubscription`과 래핑된 컴포넌트 간 계약(contract)은 완전히 props 기반입니다. 이렇게하면 래핑된 컴포넌트에 동일한 props를 제공한다면 다른 고차 컴포넌트를 쉽게 변경할 수 있습니다. 예를 들어 데이터를 가져오는 라이브러리를 변경하는 경우 유용하게 사용할 수 있습니다.
 
-## 원본 컴포넌트를 변환하지마세요. Composition을 사용하세요.
+## 원본 컴포넌트를 변경하지 마세요. 조합(Composition)하세요.
 . {#dont-mutate-the-original-component-use-composition}
 
 고차 컴포넌트 내부에서 컴포넌트의 프로토타입을 수정(또는 변경)하지 않도록 합니다.
