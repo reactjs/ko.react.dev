@@ -40,7 +40,7 @@ console.log(add(16, 26)); // 42
 >
 > 실제 번들은 위 예시와는 많이 다르게 보일 겁니다.
 
-[Create React App](https://github.com/facebookincubator/create-react-app)이나 [Next.js](https://github.com/zeit/next.js/), [Gatsby](https://www.gatsbyjs.org/) 혹은 비슷한 툴을 사용한다면 여러분이 설치한 앱에서 Webpack을 같이 설치했을 겁니다.
+[Create React App](https://create-react-app.dev/)이나 [Next.js](https://nextjs.org/), [Gatsby](https://www.gatsbyjs.org/) 혹은 비슷한 툴을 사용한다면 여러분이 설치한 앱에서 Webpack을 같이 설치했을 겁니다.
 
 이런 툴을 사용하지 않는다면 여러분이 스스로 번들링을 설정해야 합니다. 이 경우 Webpack의 
 [설치하기](https://webpack.js.org/guides/installation/) 문서와
@@ -78,7 +78,7 @@ import("./math").then(math => {
 ```
 
 Webpack이 이 구문을 만나게 되면 앱의 코드를 분할합니다.
-Create React App을 사용하고 있다면 이미 Webpack이 구성이 되어 있기 때문에 즉시 [사용](https://facebook.github.io/create-react-app/docs/code-splitting)할 수 있습니다.
+Create React App을 사용하고 있다면 이미 Webpack이 구성이 되어 있기 때문에 즉시 [사용](https://create-react-app.dev/docs/code-splitting/)할 수 있습니다.
 [Next.js](https://nextjs.org/docs/advanced-features/dynamic-import) 역시 지원합니다.
 [코드 분할 가이드](https://webpack.js.org/guides/code-splitting/)를 참조하세요. Webpack 설정은 [가이드](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269)에 있습니다.
 
