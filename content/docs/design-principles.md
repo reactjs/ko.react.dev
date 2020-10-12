@@ -92,7 +92,11 @@ React는 완전히 "반응적(reactive)"이고 싶지 않았기 때문에 React�
 
 좋은 개발자 경험을 제공하는 것은 우리에게 중요합니다.
 
+<<<<<<< HEAD
 예를 들어, 우리는 Chrome과 Firefox에서 React 컴포넌트 트리를 살펴볼 수 있는 [React DevTools](https://github.com/facebook/react-devtools)를 유지합니다. 이것은 Facebook 엔지니어와 커뮤니티 모두에게 커다란 생산성 향상을 가져왔다고 들었습니다.
+=======
+For example, we maintain [React DevTools](https://github.com/facebook/react/tree/master/packages/react-devtools) which let you inspect the React component tree in Chrome and Firefox. We have heard that it brings a big productivity boost both to the Facebook engineers and to the community.
+>>>>>>> bd0c9d8c5f5e78e0bd1066b46024ba98f4daac84
 
 또한, 도움이 될 만한 개발자 경고를 제공하기 위해 우리는 더 노력하고 있습니다. 예를 들어, React는 개발 중에 브라우저가 이해할 수 없는 방법으로 태그를 중첩하거나 API에서 일반적인 오타를 작성한 경우 이에 대해 경고합니다. 개발자 경고와 이와 관련된 검사는 React 개발자 버전이 프로덕션 버전보다 조금 더 느린 주요한 이유입니다.
 
