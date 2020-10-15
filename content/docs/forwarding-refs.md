@@ -6,71 +6,76 @@ permalink: docs/forwarding-refs.html
 
 Ref 포워딩은 구셩요소를 통해 자동으로 [ref](/docs/refs-and-the-dom.html)를 자식에게 전달하는 기법이다. 일반적으로 애플리케이셔의 대부분의 구성 요소에는 필요하지 않다. 그러나 일부 구성 요소, 특히 재사용 가능한 구성 요소 라이브러리에서 유용할 수 있다. 가장 일반적인 시나리오는 아래에 설명되어 있다.
 
-## DOM 구성 요소로 Ref 전달하기 {#forwarding-refs-to-dom-components}
 
-`FancyButton` 컴포넌트에서 렌더링 되는 기본 `button` DOM 요소를 생각해보자:
-`embed:forwarding-refs/fancy-button-simple.js`
+## DOM 구성 요소로 참조 전달하기 {# forwarding-refs-to-dom-components}
 
-React components hide their implementation details, including their rendered output. Other components using `FancyButton` **usually will not need to** [obtain a ref](/docs/refs-and-the-dom.html) to the inner `button` DOM element. This is good because it prevents components from relying on each other's DOM structure too much.
+`FancyButton` 구성 요소에서 기본`button` DOM 요소를 생각 해보자 :
+ʻembed : forwarding-refs / fancy-button-simple.js`
 
-Although such encapsulation is desirable for application-level components like `FeedStory` or `Comment`, it can be inconvenient for highly reusable "leaf" components like `FancyButton` or `MyTextInput`. These components tend to be used throughout the application in a similar manner as a regular DOM `button` and `input`, and accessing their DOM nodes may be unavoidable for managing focus, selection, or animations.
+React 구성 요소는 렌더링 된 출력을 포함하여 구현 세부 정보를 숨 깁니다. `FancyButton`을 사용하는 다른 구성 요소는 ** 일반적으로 ** 내부`button` DOM 요소에 대한 [ref 획득] (/ docs / refs-and-the-dom.html) 필요가 없습니다. 이는 구성 요소가 서로의 DOM 구조에 너무 많이 의존하는 것을 방지하기 때문에 좋습니다.
 
-**Ref forwarding is an opt-in feature that lets some components take a `ref` they receive, and pass it further down (in other words, "forward" it) to a child.**
+이러한 캡슐화는`FeedStory` 또는`Comment`와 같은 애플리케이션 수준 구성 요소에 바람직하지만`FancyButton` 또는`MyTextInput`과 같이 재사용 가능성이 높은 "리프"구성 요소에는 불편할 수 있습니다. 이러한 구성 요소는 일반 DOM '버튼'및 '입력'과 유사한 방식으로 애플리케이션 전체에서 사용되는 경향이 있으며, 포커스, 선택 또는 애니메이션을 관리하기 위해 해당 DOM 노드에 액세스하는 것은 불가피 할 수 있습니다.
 
-In the example below, `FancyButton` uses `React.forwardRef` to obtain the `ref` passed to it, and then forward it to the DOM `button` that it renders:
 
-`embed:forwarding-refs/fancy-button-simple-ref.js`
+** 참조 전달은 일부 구성 요소가 수신 한 '참조'를 가져 와서 하위 항목에게 더 아래로 전달 (즉, "전달") 할 수있는 옵트 인 기능입니다. **
 
-This way, components using `FancyButton` can get a ref to the underlying `button` DOM node and access it if necessary—just like if they used a DOM `button` directly.
+아래 예에서`FancyButton`은`React.forwardRef`를 사용하여 전달 된`ref`를 얻은 다음 렌더링하는 DOM`button`으로 전달합니다.
 
-Here is a step-by-step explanation of what happens in the above example:
+ʻembed : forwarding-refs / fancy-button-simple-ref.js`
 
-1. We create a [React ref](/docs/refs-and-the-dom.html) by calling `React.createRef` and assign it to a `ref` variable.
-1. We pass our `ref` down to `<FancyButton ref={ref}>` by specifying it as a JSX attribute.
-1. React passes the `ref` to the `(props, ref) => ...` function inside `forwardRef` as a second argument.
-1. We forward this `ref` argument down to `<button ref={ref}>` by specifying it as a JSX attribute.
-1. When the ref is attached, `ref.current` will point to the `<button>` DOM node.
+이렇게하면 'FancyButton'을 사용하는 구성 요소는 기본 '버튼'DOM 노드에 대한 참조를 가져 와서 필요한 경우 액세스 할 수 있습니다. 마치 DOM '버튼'을 직접 사용한 것처럼 말입니다.
 
->Note
+다음은 위의 예에서 일어나는 일에 대한 단계별 설명입니다.
+
+
+1.`React.createRef`를 호출하여 [React ref] (/ docs / refs-and-the-dom.html)를 생성하고`ref` 변수에 할당합니다.
+1.`ref`를 JSX 속성으로 지정하여`<FancyButton ref = {ref}>`로 전달합니다.
+1. React는`ref`를`forwardRef` 내부의`(props, ref) => ...`함수에 두 번째 인자로 전달합니다.
+1.이`ref` 인수를 JSX 속성으로 지정하여`<button ref = {ref}>`로 전달합니다.
+1. ref가 첨부되면`ref.current`는`<button>`DOM 노드를 가리 킵니다.
+
+> 참고
 >
->The second `ref` argument only exists when you define a component with `React.forwardRef` call. Regular function or class components don't receive the `ref` argument, and ref is not available in props either.
+> 두 번째`ref` 인수는`React.forwardRef` 호출로 구성 요소를 정의 할 때만 존재합니다. 일반 함수 또는 클래스 구성 요소는`ref` 인수를받지 않으며 ref는 props에서도 사용할 수 없습니다.
 >
->Ref forwarding is not limited to DOM components. You can forward refs to class component instances, too.
+> 참조 전달은 DOM 구성 요소로 제한되지 않습니다. 참조를 클래스 구성 요소 인스턴스로 전달할 수도 있습니다.
 
-## Note for component library maintainers {#note-for-component-library-maintainers}
 
-**When you start using `forwardRef` in a component library, you should treat it as a breaking change and release a new major version of your library.** This is because your library likely has an observably different behavior (such as what refs get assigned to, and what types are exported), and this can break apps and other libraries that depend on the old behavior.
+## 컴포넌트 라이브러리 관리자를위한 참고 사항 {# note-for-component-library-maintainers}
 
-Conditionally applying `React.forwardRef` when it exists is also not recommended for the same reasons: it changes how your library behaves and can break your users' apps when they upgrade React itself.
+** 컴포넌트 라이브러리에서`forwardRef`를 사용하기 시작하면이를 브레이킹 체인지로 취급하고 라이브러리의 새로운 메이저 버전을 릴리스해야합니다. ** 이는 라이브러리가 눈에 띄게 다른 동작 (예 : refs)을 가질 가능성이 있기 때문입니다. 할당되고 내보내는 유형) 이전 동작에 의존하는 앱 및 기타 라이브러리가 손상 될 수 있습니다.
 
-## Forwarding refs in higher-order components {#forwarding-refs-in-higher-order-components}
+`React.forwardRef`가 존재할 때 조건부로 적용하는 것도 같은 이유로 권장되지 않습니다. 라이브러리가 동작하는 방식을 변경하고 사용자가 React 자체를 업그레이드 할 때 사용자의 앱을 손상시킬 수 있습니다.
 
-This technique can also be particularly useful with [higher-order components](/docs/higher-order-components.html) (also known as HOCs). Let's start with an example HOC that logs component props to the console:
-`embed:forwarding-refs/log-props-before.js`
 
-The "logProps" HOC passes all `props` through to the component it wraps, so the rendered output will be the same. For example, we can use this HOC to log all props that get passed to our "fancy button" component:
-`embed:forwarding-refs/fancy-button.js`
+## 상위 구성 요소의 전달 참조 {# forwarding-refs-in-higher-order-components}
 
-There is one caveat to the above example: refs will not get passed through. That's because `ref` is not a prop. Like `key`, it's handled differently by React. If you add a ref to a HOC, the ref will refer to the outermost container component, not the wrapped component.
+이 기술은 [고차 구성 요소] (/ docs / higher-order-components.html) (HOC라고도 함)에서도 특히 유용 할 수 있습니다. 구성 요소 소품을 콘솔에 기록하는 예제 HOC부터 시작하겠습니다.
+ʻembed : forwarding-refs / log-props-before.js`
 
-This means that refs intended for our `FancyButton` component will actually be attached to the `LogProps` component:
-`embed:forwarding-refs/fancy-button-ref.js`
+'logProps'HOC는 모든 'props'를 래핑하는 구성 요소로 전달하므로 렌더링 된 출력이 동일합니다. 예를 들어,이 HOC를 사용하여 "fancy button"구성 요소에 전달되는 모든 소품을 기록 할 수 있습니다.
+ʻembed : forwarding-refs / fancy-button.js`
 
-Fortunately, we can explicitly forward refs to the inner `FancyButton` component using the `React.forwardRef` API. `React.forwardRef` accepts a render function that receives `props` and `ref` parameters and returns a React node. For example:
-`embed:forwarding-refs/log-props-after.js`
+위의 예에 대한 한 가지주의 사항이 있습니다. 참조는 통과되지 않습니다. 그것은`ref`가 소품이 아니기 때문입니다. 'key'와 마찬가지로 React에서 다르게 처리됩니다. HOC에 ref를 추가하면 ref는 래핑 된 구성 요소가 아닌 가장 바깥 쪽 컨테이너 구성 요소를 참조합니다.
 
-## Displaying a custom name in DevTools {#displaying-a-custom-name-in-devtools}
+즉,`FancyButton` 구성 요소를위한 참조가 실제로`LogProps` 구성 요소에 첨부됩니다.
+ʻembed : forwarding-refs / fancy-button-ref.js`
 
-`React.forwardRef` accepts a render function. React DevTools uses this function to determine what to display for the ref forwarding component.
+다행히도`React.forwardRef` API를 사용하여 내부`FancyButton` 구성 요소에 대한 참조를 명시 적으로 전달할 수 있습니다. `React.forwardRef`는`props` 및`ref` 매개 변수를 수신하고 React 노드를 반환하는 렌더링 함수를받습니다. 예를 들면 :
+ʻembed : forwarding-refs / log-props-after.js`
 
-For example, the following component will appear as "*ForwardRef*" in the DevTools:
+## DevTools {# displaying-a-custom-name-in-devtools}에 사용자 지정 이름 표시
 
-`embed:forwarding-refs/wrapped-component.js`
+`React.forwardRef`는 렌더링 함수를받습니다. React DevTools는이 함수를 사용하여 참조 전달 구성 요소에 대해 표시 할 내용을 결정합니다.
 
-If you name the render function, DevTools will also include its name (e.g. "*ForwardRef(myFunction)*"):
+예를 들어 다음 구성 요소는 DevTools에서 "* ForwardRef *"로 나타납니다.
 
-`embed:forwarding-refs/wrapped-component-with-function-name.js`
+ʻembed : forwarding-refs / wrapped-component.js`
 
-You can even set the function's `displayName` property to include the component you're wrapping:
+렌더링 함수의 이름을 지정하면 DevTools에 해당 이름도 포함됩니다 (예 : "* ForwardRef (myFunction) *").
 
-`embed:forwarding-refs/customized-display-name.js`
+ʻembed : forwarding-refs / wrapped-component-with-function-name.js`
+
+래핑하는 구성 요소를 포함하도록 함수의`displayName` 속성을 설정할 수도 있습니다.
+
+ʻembed : forwarding-refs / customized-display-name.js`
