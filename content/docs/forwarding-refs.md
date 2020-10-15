@@ -1,14 +1,14 @@
 ---
 id: forwarding-refs
-title: Forwarding Refs
+title: Ref 전달하기
 permalink: docs/forwarding-refs.html
 ---
 
-Ref forwarding is a technique for automatically passing a [ref](/docs/refs-and-the-dom.html) through a component to one of its children. This is typically not necessary for most components in the application. However, it can be useful for some kinds of components, especially in reusable component libraries. The most common scenarios are described below.
+Ref 포워딩은 구셩요소를 통해 자동으로 [ref](/docs/refs-and-the-dom.html)를 자식에게 전달하는 기법이다. 일반적으로 애플리케이셔의 대부분의 구성 요소에는 필요하지 않다. 그러나 일부 구성 요소, 특히 재사용 가능한 구성 요소 라이브러리에서 유용할 수 있다. 가장 일반적인 시나리오는 아래에 설명되어 있다.
 
-## Forwarding refs to DOM components {#forwarding-refs-to-dom-components}
+## DOM 구성 요소로 Ref 전달하기 {#forwarding-refs-to-dom-components}
 
-Consider a `FancyButton` component that renders the native `button` DOM element:
+`FancyButton` 컴포넌트에서 렌더링 되는 기본 `button` DOM 요소를 생각해보자:
 `embed:forwarding-refs/fancy-button-simple.js`
 
 React components hide their implementation details, including their rendered output. Other components using `FancyButton` **usually will not need to** [obtain a ref](/docs/refs-and-the-dom.html) to the inner `button` DOM element. This is good because it prevents components from relying on each other's DOM structure too much.
