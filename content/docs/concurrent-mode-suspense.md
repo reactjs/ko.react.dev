@@ -364,7 +364,7 @@ function ProfileTimeline() {
 1. 이미 `fetchProfileData()` 내에서 요청을 발동시켰습니다. 이 함수는 프라미스가 아니라 특별한 "자원"을 돌려줍니다. 보다 현실적인 예시에서는, Relay와 같은 데이터 라이브러리에서 제공하는 Suspense 통합을 제공할 겁니다.
 2. React는 `<ProfilePage>`의 렌더링을 시도합니다. 자식 컴포넌트로 `<ProfileDetails>`와 `<ProfileTimeline>`을 반환합니다.
 3. React는 `<ProfileDetails>`의 렌더링을 시도합니다. `resource.user.read()`를 호출합니다. 아직 불러온 데이터가 아무 것도 없으므로, 이 컴포넌트는 "정지합니다". React는 이 컴포넌트를 넘기고, 트리 상의 다른 컴포넌트의 렌더링을 시도합니다.
-4. React는 `<ProfileTimeline>`의 렌더링을 시도합니다. `resource.posts.read()`를 호출합니다. 또 한번, 아직 데이터가 없으므로, 이 컴포넌트 또한 "정지합니다". React는 이 컴포넌트도 넘기고, 트리 상의 다른 컴포넌트릐 렌더링을 시도합니다.
+4. React는 `<ProfileTimeline>`의 렌더링을 시도합니다. `resource.posts.read()`를 호출합니다. 또 한번, 아직 데이터가 없으므로, 이 컴포넌트 또한 "정지합니다". React는 이 컴포넌트도 넘기고, 트리 상의 다른 컴포넌트의 렌더링을 시도합니다.
 5. 렌더링을 시도할 컴포넌트가 남아있지 않습니다. `<ProfileDetails>`가 정지된 상태이므로, React는 트리 상에서 `<ProfielDetails>` 위에 존재하는 것 중 가장 가까운 `<Suspense>` Fallback을 찾습니다. 그것은 `<h1>Loading profile...</h1>`입니다. 일단, 지금으로서는 할 일이 다 끝났습니다.
 
 여기에서 `resource` 객체는 아직은 존재하지 않지만, 결국엔 로딩이 이루어질 데이터를 나타냅니다. `read()`를 호출할 경우, 데이터를 얻거나, 또는 컴포넌트가 "정지합니다".
