@@ -105,7 +105,7 @@ Suspense는 데이터 불러오기 라이브러리가 아닙니다. Suspense는 
 
 Suspense는 위의 문제에 대한 기존의 접근 방식과는 상당히 다르기 때문에, 처음 접할 때 종종 오해를 만들어냅니다. 가장 흔한 오해들을 명확히 짚어보겠습니다.
 
- * **Suspense는 데이터 불러오기에 대한 구현이 아닙니다.** 당신이 GraphQL, REST, 또는 그 이외의 특정한 데이터 형식, 라이브러리, 통신 방식, 프로토콜 등
+ * **Suspense는 데이터 불러오기에 대한 구현이 아닙니다.** GraphQL, REST 또는 특정한 데이터 형식, 라이브러리, 전송 또는 프로토콜을 사용한다고 가정하지 않습니다.
 
  * **Suspense는 바로 사용할 수 있는 클라이언트가 아닙니다.** `fetch` 또는 Relay를 Suspense로 "대체"할 수 없습니다. 다만, Suspense로 통합된 라이브러리를 사용할 수는 있습니다(예를 들어, [새로운 Relay API](https://relay.dev/docs/en/experimental/api-reference)와 같은 것이 있습니다).
 
