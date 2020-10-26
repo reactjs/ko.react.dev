@@ -34,6 +34,7 @@ string type
 
 > 주의
 >
+<<<<<<< HEAD
 > 0.14 버전부터 이벤트 핸들러가 `false`를 반환하더라도 이벤트 전파를 멈추지 않습니다. 대신 `e.stopPropagation()` 또는 `e.preventDefault()`를 필요할 때 호출하세요.
 
 ### 이벤트 풀링 {#event-pooling}
@@ -58,9 +59,13 @@ function onClick(event) {
   this.setState({eventType: event.type});
 }
 ```
+=======
+> As of v17, `e.persist()` doesn't do anything because the `SyntheticEvent` is no longer [pooled](/docs/legacy-event-pooling.html).
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
 > 주의
 >
+<<<<<<< HEAD
 > 비동기적으로 이벤트 속성을 참조하고 싶다면 이벤트 객체의 `event.persist()` 를 호출하세요. 합성 이벤트 풀에서 제거되고 사용자의 코드에서 참조가 가능해집니다.
 
 ## 지원하는 이벤트 {#supported-events}
@@ -86,6 +91,33 @@ React는 이벤트들을 다른 브라우저에서도 같은 속성을 가지도
 - [Animation 이벤트](#animation-events)
 - [Transition 이벤트](#transition-events)
 - [기타 이벤트](#other-events)
+=======
+> As of v0.14, returning `false` from an event handler will no longer stop event propagation. Instead, `e.stopPropagation()` or `e.preventDefault()` should be triggered manually, as appropriate.
+
+## Supported Events {#supported-events}
+
+React normalizes events so that they have consistent properties across different browsers.
+
+The event handlers below are triggered by an event in the bubbling phase. To register an event handler for the capture phase, append `Capture` to the event name; for example, instead of using `onClick`, you would use `onClickCapture` to handle the click event in the capture phase.
+
+- [Clipboard Events](#clipboard-events)
+- [Composition Events](#composition-events)
+- [Keyboard Events](#keyboard-events)
+- [Focus Events](#focus-events)
+- [Form Events](#form-events)
+- [Generic Events](#generic-events)
+- [Mouse Events](#mouse-events)
+- [Pointer Events](#pointer-events)
+- [Selection Events](#selection-events)
+- [Touch Events](#touch-events)
+- [UI Events](#ui-events)
+- [Wheel Events](#wheel-events)
+- [Media Events](#media-events)
+- [Image Events](#image-events)
+- [Animation Events](#animation-events)
+- [Transition Events](#transition-events)
+- [Other Events](#other-events)
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
 * * *
 
@@ -165,9 +197,83 @@ onFocus onBlur
 
 속성
 
-```javascript
+```js
 DOMEventTarget relatedTarget
 ```
+
+#### onFocus
+
+The `onFocus` event is called when the element (or some element inside of it) receives focus. For example, it's called when the user clicks on a text input.
+
+```javascript
+function Example() {
+  return (
+    <input
+      onFocus={(e) => {
+        console.log('Focused on input');
+      }}
+      placeholder="onFocus is triggered when you click this input."
+    />
+  )
+}
+```
+
+#### onBlur
+
+The `onBlur` event handler is called when focus has left the element (or left some element inside of it). For example, it's called when the user clicks outside of a focused text input.
+
+```javascript
+function Example() {
+  return (
+    <input
+      onBlur={(e) => {
+        console.log('Triggered because this input lost focus');
+      }}
+      placeholder="onBlur is triggered when you click this input and then you click outside of it."
+    />
+  )
+}
+```
+
+#### Detecting Focus Entering and Leaving
+
+You can use the `currentTarget` and `relatedTarget` to differentiate if the focusing or blurring events originated from _outside_ of the parent element. Here is a demo you can copy and paste that shows how to detect focusing a child, focusing the element itself, and focus entering or leaving the whole subtree.
+
+```javascript
+function Example() {
+  return (
+    <div
+      tabIndex={1}
+      onFocus={(e) => {
+        if (e.currentTarget === e.target) {
+          console.log('focused self');
+        } else {
+          console.log('focused child', e.target);
+        }
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          // Not triggered when swapping focus between children
+          console.log('focus entered self');
+        }
+      }}
+      onBlur={(e) => {
+        if (e.currentTarget === e.target) {
+          console.log('unfocused self');
+        } else {
+          console.log('unfocused child', e.target);
+        }
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          // Not triggered when swapping focus between children
+          console.log('focus left self');
+        }
+      }}
+    >
+      <input id="1" />
+      <input id="2" />
+    </div>
+  );
+}
+```
+
 
 * * *
 
@@ -303,7 +409,15 @@ DOMTouchList touches
 onScroll
 ```
 
+<<<<<<< HEAD
 속성
+=======
+>Note
+>
+>Starting with React 17, the `onScroll` event **does not bubble** in React. This matches the browser behavior and prevents the confusion when a nested scrollable element fires events on a distant parent.
+
+Properties:
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
 ```javascript
 number detail

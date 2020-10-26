@@ -43,8 +43,8 @@ npm run build
 React 및 React DOM의 프로덕션 준비 버전을 단일 파일로 제공합니다.
 
 ```html
-<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
 ```
 
 `.production.min.js`로 끝나는 React 파일만이 프로덕션 환경에 적합합니다.
@@ -74,10 +74,17 @@ brunch build -p
 가장 효율적인 Browserify 프로덕션 빌드를 위해 몇 가지 플러그인을 설치하세요.
 
 ```
+<<<<<<< HEAD
 # npm을 사용하는 경우
 npm install --save-dev envify terser uglifyify
 
 # Yarn을 사용하는 경우
+=======
+# If you use npm
+npm install --save-dev envify terser uglifyify
+
+# If you use Yarn
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 yarn add --dev envify terser uglifyify
 ```
 
@@ -379,7 +386,11 @@ function updateColorMap(colormap) {
 }
 ```
 
+<<<<<<< HEAD
 이 기능은 ES2018에 추가되었습니다.
 Create React App을 사용하고 있다면 `Object.assign`과 object spread 문법은 기본적으로 활용 가능합니다.
+=======
+This feature was added to JavaScript in ES2018.
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
 깊게 중첩된 객체를 처리할 때 불변성을 지키는 방식으로 객체를 업데이트하면 복잡하다고 느낄 수 있습니다. 이런 문제를 마주했다면 [Immer](https://github.com/mweststrate/immer) 혹은 [immutability-helper](https://github.com/kolodny/immutability-helper)를 살펴보세요. 불변성이 가져다주는 이득을 잃지 않고 조금 더 가독성 있는 코드를 작성할 수 있게 해줄겁니다.

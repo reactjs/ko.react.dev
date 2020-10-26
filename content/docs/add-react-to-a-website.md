@@ -52,10 +52,17 @@ React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다
 ```html{5,6,9}
   <!-- ... 다른 HTML ... -->
 
+<<<<<<< HEAD
   <!-- React를 실행. -->
   <!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
   <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+=======
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
   <!-- 만든 React 컴포넌트를 실행. -->
   <script src="like_button.js"></script>
@@ -84,7 +91,11 @@ const domContainer = document.querySelector('#like_button_container');
 ReactDOM.render(e(LikeButton), domContainer);
 ```
 
+<<<<<<< HEAD
 이 두줄의 코드는 첫 단계에서 HTML 페이지에 추가했던 `<div>` 태그를 찾아주고 그 안에 "좋아요" 버튼이라는 React 컴포넌트를 추가해줍니다.
+=======
+These two lines of code find the `<div>` we added to our HTML in the first step, and then display our "Like" button React component inside of it.
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
 ### 다 끝났습니다! {#thats-it}
 
@@ -115,8 +126,8 @@ ReactDOM.render(e(LikeButton), domContainer);
 애플리케이션 스크립트를 이미 압축했을 경우 배포된 HTML 파일이 `production.min.js`로 끝나는 React 파일을 확실히 실행하기만 하면 **사이트는 프로덕션 준비가 완료된 겁니다.**
 
 ```js
-<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 스크립트를 압축하는 절차가 따로 없다면 [이 사이트를 참고해서 설정해보세요.](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3)
@@ -184,7 +195,7 @@ JSX를 프로젝트에 추가하는 데에는 복잡한 번들러나 개발 서�
 `src` 폴더를 만들고 다음 터미널 명령어를 실행하세요.
 
 ```
-npx babel --watch src --out-dir . --presets react-app/prod 
+npx babel --watch src --out-dir . --presets react-app/prod
 ```
 
 >주의
