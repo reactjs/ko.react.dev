@@ -172,7 +172,7 @@ JSX는 JavaScript의 강력한 기능을 가지고 있습니다. JSX 내부의 �
 
 `ShoppingList` 컴포넌트는 `<div />`와 `<li />` 같은 내각 DOM 컴포넌트만을 렌더링하지만 컴포넌트를 조합하여 커스텀 React 컴포넌트를 렌더링하는 것도 가능합니다. 예를 들어 `<ShoppingList />`를 작성하여 모든 쇼핑 목록을 참조할 수 있습니다. React 컴포넌트는 캡슐화되어 독립적으로 동작할 수 있습니다. 이러한 이유로 단순한 컴포넌트를 사용하여 복잡한 UI를 구현할 수 있습니다.
 
-## 초기 코드 살펴보기 {#inspecting-the-starter-code}
+### 초기 코드 살펴보기 {#inspecting-the-starter-code}
 
 **브라우저에서** 자습서 작성을 하는 경우 새 탭에서 **[초기 코드](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**를 열어주세요. **로컬 환경에서** 진행하는 경우 프로젝트 폴더에서 `src/index.js`를 열어주세요(이 파일은 [설정](#setup-option-2-local-development-environment)에서 다룬 적이 있습니다).
 
@@ -550,7 +550,7 @@ var newPlayer = Object.assign({}, player, {score: 2});
 // var newPlayer = {...player, score: 2};
 ```
 
-최종 결과는 동일하기만 직접적인 객체 변경이나 기본 데이터의 변경을 하지 않는다면 아래에 기술된 몇 가지 이점을 얻을 수 있습니다.
+최종 결과는 동일하지만 직접적인 객체 변경이나 기본 데이터의 변경을 하지 않는다면 아래에 기술된 몇 가지 이점을 얻을 수 있습니다.
 
 #### 복잡한 특징들을 단순하게 만듦 {#complex-features-become-simple}
 
@@ -983,7 +983,7 @@ Game 컴포넌트가 게임의 상태를 렌더링하기 때문에 Board의 `ren
 
 > 주의
 >
-> 배열 `push()` 함수와 같이 더 익숙한 방식과 달리 `concat()` 함수는 기존 배열을 복제하지 않기 때문에 이를 더 권장합니다.
+> 배열 `push()` 함수와 같이 더 익숙한 방식과 달리 `concat()` 함수는 기존 배열을 변경하지 않기 때문에 이를 더 권장합니다.
 
 현재 시점에서 Board 컴포넌트는 `renderSquare`와 `render` 함수만을 필요로 합니다. 게임의 상태와 `handleClick` 함수는 Game 컴포넌트가 가지고 있어야 합니다.
 

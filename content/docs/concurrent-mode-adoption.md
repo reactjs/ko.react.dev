@@ -71,7 +71,7 @@ import ReactDOM from 'react-dom';
 //
 // 다음과 같이 작성하여 Concurrent 모드를 선택할 수 있습니다.
 
-ReactDOM.createRoot(
+ReactDOM.unstable_createRoot(
   document.getElementById('root')
 ).render(<App />);
 ```
