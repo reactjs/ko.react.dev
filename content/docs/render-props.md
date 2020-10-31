@@ -2,8 +2,6 @@
 id: render-props
 title: Render Props
 permalink: docs/render-props.html
-prev: higher-order-components.html
-next: integrating-with-other-libraries.html
 ---
 
 ["render prop"](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)란, React 컴포넌트 간에 코드를 공유하기 위해 함수 props를 이용하는 간단한 테크닉입니다.

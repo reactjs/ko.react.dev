@@ -124,9 +124,9 @@ const MyComponent = React.memo(function MyComponent(props) {
 });
 ```
 
-`React.memo`는 [고차 컴포넌트(Higher Order Component)](/docs/higher-order-components.html)입니다. [`React.PureComponent`](#reactpurecomponent)와 비슷하지만 class가 아니라 함수 컴포넌트라는 점이 다릅니다.
+`React.memo`는 [고차 컴포넌트(Higher Order Component)](/docs/higher-order-components.html)입니다.
 
-당신의 함수 컴포넌트가 동일한 props로 동일한 결과를 렌더링해낸다면, `React.memo`를 호출하고 결과를 메모이징(Memoizing)하도록 래핑하여 경우에 따라 성능 향상을 누릴 수 있습니다. 즉, React는 컴포넌트를 렌더링하지 않고 마지막으로 렌더링된 결과를 재사용합니다.
+당신의 컴포넌트가 동일한 props로 동일한 결과를 렌더링해낸다면, `React.memo`를 호출하고 결과를 메모이징(Memoizing)하도록 래핑하여 경우에 따라 성능 향상을 누릴 수 있습니다. 즉, React는 컴포넌트를 렌더링하지 않고 마지막으로 렌더링된 결과를 재사용합니다.
 
 `React.memo` only checks for prop changes. If your function component wrapped in `React.memo` has a [`useState`](/docs/hooks-state.html) or [`useContext`](/docs/hooks-reference.html#usecontext) Hook in its implementation, it will still rerender when state or context change.
 

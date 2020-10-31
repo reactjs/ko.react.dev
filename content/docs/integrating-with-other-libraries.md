@@ -2,8 +2,6 @@
 id: integrating-with-other-libraries
 title: 다른 라이브러리와 통합하기
 permalink: docs/integrating-with-other-libraries.html
-prev: render-props.html
-next: accessibility.html
 ---
 
 React는 어떤 웹 애플리케이션에서든 사용할 수 있습니다. 다른 애플리케이션에 포함될 수 있으며 약간의 노력으로 React 안에 다른 애플리케이션 포함할 수 있습니다. 이 가이드는 [jQuery](https://jquery.com/)와 [Backbone](https://backbonejs.org/)의 통합에 중점을 맞추어 일반적인 몇 가지 사용 사례를 살펴봅니다. 동일한 아이디어로 기존 코드와 컴포넌트를 통합하는 데도 적용할 수 있습니다.

@@ -2,8 +2,6 @@
 id: reconciliation
 title: 재조정 (Reconciliation)
 permalink: docs/reconciliation.html
-prev: react-without-jsx.html
-next: context.html
 ---
 
 React는 선언적 API를 제공하기 때문에 갱신이 될 때마다 매번 무엇이 바뀌었는지를 걱정할 필요가 없습니다. 이는 애플리케이션 작성을 무척 쉽게 만들어주지만, React 내부에서 어떤 일이 일어나고 있는지는 명확히 눈에 보이지 않습니다. 이 글에서는 우리가 React의 “비교 (diffing)” 알고리즘을 만들 때 어떤 선택을 했는지를 소개합니다. 이 비교 알고리즘 덕분에 컴포넌트의 갱신이 예측 가능해지면서도 고성능 앱이라고 불러도 손색없을 만큼 충분히 빠른 앱을 만들 수 있습니다.
@@ -27,7 +25,7 @@ React에 이 알고리즘을 적용한다면, 1000개의 엘리먼트를 그리�
 
 ### 엘리먼트의 타입이 다른 경우 {#elements-of-different-types}
 
-두 루트 엘리먼트의 타입이 다르면, React는 이전 트리를 버리고 완전히 새로운 트리를 구축합니다. `<a>`에서 `<img>`로, `<Article>`에서 `<Comment>`로, 혹은 `<Button>` to `<div>`로 바뀌는 것 모두 트리 전체를 재구축하는 경우입니다.
+두 루트 엘리먼트의 타입이 다르면, React는 이전 트리를 버리고 완전히 새로운 트리를 구축합니다. `<a>`에서 `<img>`로, `<Article>`에서 `<Comment>`로, 혹은 `<Button>`에서 `<div>`로 바뀌는 것 모두 트리 전체를 재구축하는 경우입니다.
 
 트리를 버릴 때 이전 DOM 노드들은 모두 파괴됩니다. 컴포넌트 인스턴스는 `componentWillUnmount()`가 실행됩니다. 새로운 트리가 만들어질 때, 새로운 DOM 노드들이 DOM에 삽입됩니다. 그에 따라 컴포넌트 인스턴스는 `componentWillMount()`가 실행되고 `componentDidMount()`가 이어서 실행됩니다. 이전 트리와 연관된 모든 state는 사라집니다.
 

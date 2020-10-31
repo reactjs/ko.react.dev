@@ -2,7 +2,6 @@
 id: jsx-in-depth
 title: JSX 이해하기
 permalink: docs/jsx-in-depth.html
-next: typechecking-with-proptypes.html
 redirect_from:
   - "docs/jsx-spread.html"
   - "docs/jsx-gotchas.html"

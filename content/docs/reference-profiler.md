@@ -49,7 +49,7 @@ render(
 ```
 
 `Profiler` 컴포넌트는 하위 트리의 다른 컴포넌트들을 계산하기 위해 중첩해서 사용할 수 있습니다
-```js{2,6,8}
+```js{3,5,8}
 render(
   <App>
     <Profiler id="Panel" onRender={callback}>
