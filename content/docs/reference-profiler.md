@@ -108,7 +108,6 @@ function onRenderCallback(
 React가 현재 업데이트에 대해 렌더링을 시작한 시간의 타임 스탬프.
 * **`commitTime: number`** -
 React가 현재 업데이트를 커밋한 시간의 타임 스탬프
-This value is shared between all profilers in a commit, enabling them to be grouped if desirable.
 이 값은 모든 프로파일러들이 공유하기 때문에 원한다면 그룹을 지을 수 있습니다.
 * **`interactions: Set`** -
 업데이트가 계획되었을 때 추적하고 있던 ["상호작용"](https://fb.me/react-interaction-tracing)의 집합 (e.g. `render` 혹은 `setState`가 호출되었을 때).
