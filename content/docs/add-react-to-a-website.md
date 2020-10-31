@@ -47,22 +47,15 @@ React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다
 
 ### 2단계: 스크립트 태그 추가하기 {#step-2-add-the-script-tags}
 
-그 다음, `<script>` 태그 3개를 닫는 태그인 `</body>` 앞에 추가해줍니다. 
+그 다음, `<script>` 태그 3개를 닫는 태그인 `</body>` 앞에 추가해줍니다.
 
 ```html{5,6,9}
   <!-- ... 다른 HTML ... -->
 
-<<<<<<< HEAD
   <!-- React를 실행. -->
   <!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
-  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-=======
-  <!-- Load React. -->
-  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
   <!-- 만든 React 컴포넌트를 실행. -->
   <script src="like_button.js"></script>
@@ -74,7 +67,7 @@ React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다
 
 ### 3단계: React 컴포넌트 만들기 {#step-3-create-a-react-component}
 
- `like_button.js` 라는 이름으로 HTML 페이지 옆에 새 파일을 만듭니다. 
+ `like_button.js` 라는 이름으로 HTML 페이지 옆에 새 파일을 만듭니다.
 
  이 **[스타터 코드](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** 를 열고 코드를 방금 만든 파일에 복사해줍니다.
 
@@ -91,11 +84,7 @@ const domContainer = document.querySelector('#like_button_container');
 ReactDOM.render(e(LikeButton), domContainer);
 ```
 
-<<<<<<< HEAD
 이 두줄의 코드는 첫 단계에서 HTML 페이지에 추가했던 `<div>` 태그를 찾아주고 그 안에 "좋아요" 버튼이라는 React 컴포넌트를 추가해줍니다.
-=======
-These two lines of code find the `<div>` we added to our HTML in the first step, and then display our "Like" button React component inside of it.
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
 ### 다 끝났습니다! {#thats-it}
 
