@@ -181,8 +181,4 @@ const element = {
 
 >**팁**
 >
-<<<<<<< HEAD
-> ES6 및 JSX 코드가 올바르게 표시되도록 편집기에 ["Babel" 언어 설정](https://babeljs.io/docs/editors)을 사용하는 것을 권장합니다.
-=======
->We recommend using the ["Babel" language definition](https://babeljs.io/docs/en/next/editors) for your editor of choice so that both ES6 and JSX code is properly highlighted.
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
+> ES6 및 JSX 코드가 올바르게 표시되도록 편집기에 ["Babel" 언어 설정](https://babeljs.io/docs/en/next/editors)을 사용하는 것을 권장합니다.
