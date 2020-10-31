@@ -6,7 +6,7 @@ category: Reference
 permalink: docs/profiler.html
 ---
 
-`Profiler`는 React 애플리케이션의 렌더와 렌더의 "비용"을 계산합니다.
+`Profiler`는 React 애플리케이션이 렌더링하는 빈도와 렌더링 "비용"을 측정합니다.
 Profiler의 목적은 [메모이제이션 같은 성능 최적화 방법](/docs/hooks-faq.html#how-to-memoize-calculations)을 활용할 수 있는 애플리케이션의 느린 부분들을 식별해내는 것입니다.
 
 >주의
@@ -68,39 +68,39 @@ render(
 
 >주의사항
 >
->`Profiler`는 가벼운 컴포넌트이지만 필요할 때만 사용해야합니다; 각 Profiler는 애플리케이션에 조금의 CPU와 메모리 비용을 추가하게 됩니다.
+>`Profiler`는 가벼운 컴포넌트이지만 필요할 때만 사용해야 합니다. 각 Profiler는 애플리케이션에 조금의 CPU와 메모리 비용을 추가하게 됩니다.
 
 ## `onRender` 콜백 {#onrender-callback}
 
 `Profiler`는 `onRender` 함수를 prop으로 요구합니다.
 React는 프로파일 트리 내의 컴포넌트에 업데이트가 "커밋"될 때마다 이 함수를 호출합니다.
-이 함수는 무엇이 렌더돼엇는지 그리고 얼마나 걸렸는지를 설명하는 입력값을 받게 됩니다
+이 함수는 무엇이 렌더링 되었는지 그리고 얼마나 걸렸는지 설명하는 입력값을 받게 됩니다.
 
 ```js
 function onRenderCallback(
-  id, // 방금 커밋된 프로파일러 트리의 "id"
-  phase, // "mount" (트리가 방금 마운트가 된 경우) 혹은 "update"(트리가 리렌더된 경우)
+  id, // 방금 커밋된 Profiler 트리의 "id"
+  phase, // "mount" (트리가 방금 마운트가 된 경우) 혹은 "update"(트리가 리렌더링된 경우)
   actualDuration, // 커밋된 업데이트를 렌더링하는데 걸린 시간
-  baseDuration, // 메모이제이션 없이 하위 트리 전체를 렌더하는데 걸리는 예상시간 
-  startTime, // React가 언제 해당 업데이트를 렌더하기 시작했는지
+  baseDuration, // 메모이제이션 없이 하위 트리 전체를 렌더링하는데 걸리는 예상시간 
+  startTime, // React가 언제 해당 업데이트를 렌더링하기 시작했는지
   commitTime, // React가 해당 업데이트를 언제 커밋했는지
   interactions // 이 업데이트에 해당하는 상호작용들의 집합
 ) {
-  // 렌더 타이밍을 집합하거나 로그...
+  // 렌더링 타이밍을 집합하거나 로그...
 }
 ```
 
 각 prop에 대해 좀 더 자세히 알아보겠습니다
 
-* **`id: 문자열`** - 
+* **`id: string`** - 
 방금 커밋된 `Profiler` 트리의 `id` prop.
-이것은 복수의 프로파일러를 사용하고 있다면 트리의 어느 부분이 커밋되엇는지 식별하는데 사용할 수 있습니다.
+복수의 프로파일러를 사용하고 있다면 트리의 어느 부분이 커밋되엇는지 식별하는데 사용할 수 있습니다.
 * **`phase: "mount" | "update"`** -
-해당 트리가 방금 마운트된 건지 prop, state 혹은 hooks의 변화로 인하여 리렌더가 된 건지 식별합니다.
+해당 트리가 방금 마운트된 건지 prop, state 혹은 hooks의 변화로 인하여 리렌더링 된 건지 식별합니다.
 * **`actualDuration: number`** -
 현재 업데이트에 해당하는 `Profiler`와 자손 컴포넌트들을 렌더하는데 걸린 시간
 이것은 하위 트리가 얼마나 메모이제이션을 잘 활용하고 있는지를 암시합니다 (e.g. [`React.memo`](/docs/react-api.html#reactmemo), [`useMemo`](/docs/hooks-reference.html#usememo), [`shouldComponentUpdate`](/docs/hooks-faq.html#how-do-i-implement-shouldcomponentupdate)).
-이상적으로 대다수의 자손 컴포넌트들은 특정 prop이 변할 경우에만 리렌더가 필요하기 때문에 이 값은 초기 렌더 이후에 상당 부분 감소해야 합니다.
+이상적으로 대다수의 자손 컴포넌트들은 특정 prop이 변할 경우에만 리렌더링이 필요하기 때문에 이 값은 초기 렌더링 이후에 상당 부분 감소해야 합니다.
 * **`baseDuration: number`** -
 `Profiler` 트리 내 개별 컴포넌트들의 가장 최근 `render` 시간의 지속기간
 이 값은 렌더링 비용의 최악 케이스를 계산해줍니다(e.g. 초기 마운트 혹은 메모이제이션이 없는 트리)
