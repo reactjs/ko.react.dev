@@ -181,4 +181,4 @@ const element = {
 
 >**팁**
 >
-> ES6 및 JSX 코드가 올바르게 표시되도록 편집기에 ["Babel" 언어 설정](https://babeljs.io/docs/editors)을 사용하는 것을 권장합니다.
+> ES6 및 JSX 코드가 올바르게 표시되도록 편집기에 ["Babel" 언어 설정](https://babeljs.io/docs/en/next/editors)을 사용하는 것을 권장합니다.
