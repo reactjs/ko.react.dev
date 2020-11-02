@@ -36,7 +36,11 @@ React는 처음부터 점진적으로 적용할 수 있도록 설계되었으며
 
 ### 온라인 플레이그라운드 {#online-playgrounds}
 
+<<<<<<< HEAD
 React를 사용하는데 관심이 있다면, 온라인 코드 편집기를 사용할 수 있습니다. [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new), [Glitch](https://glitch.com/edit/#!/remix/starter-react-template) 또는 [Stackblitz](https://stackblitz.com/fork/react)에서 Hello World 템플릿을 사용해 보세요.
+=======
+If you're interested in playing around with React, you can use an online code playground. Try a Hello World template on [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new), or [Stackblitz](https://stackblitz.com/fork/react).
+>>>>>>> 30baecf59de28a8cd3c91a2cd878e3822f864061
 
 여러분이 사용하고 있는 코드 편집기를 사용하길 원한다면, [이 HTML 파일을 다운로드](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)하고 편집한 다음 브라우저의 로컬 파일 시스템에서 열 수도 있습니다. 런타임 코드 변환이 느리므로 간단한 데모에만 이 코드를 사용하는 것이 좋습니다.
 
