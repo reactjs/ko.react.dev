@@ -47,15 +47,15 @@ React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다
 
 ### 2단계: 스크립트 태그 추가하기 {#step-2-add-the-script-tags}
 
-그 다음, `<script>` 태그 3개를 닫는 태그인 `</body>` 앞에 추가해줍니다. 
+그 다음, `<script>` 태그 3개를 닫는 태그인 `</body>` 앞에 추가해줍니다.
 
 ```html{5,6,9}
   <!-- ... 다른 HTML ... -->
 
   <!-- React를 실행. -->
   <!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
-  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
 
   <!-- 만든 React 컴포넌트를 실행. -->
   <script src="like_button.js"></script>
@@ -67,7 +67,7 @@ React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다
 
 ### 3단계: React 컴포넌트 만들기 {#step-3-create-a-react-component}
 
- `like_button.js` 라는 이름으로 HTML 페이지 옆에 새 파일을 만듭니다. 
+ `like_button.js` 라는 이름으로 HTML 페이지 옆에 새 파일을 만듭니다.
 
  이 **[스타터 코드](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** 를 열고 코드를 방금 만든 파일에 복사해줍니다.
 
@@ -115,8 +115,8 @@ ReactDOM.render(e(LikeButton), domContainer);
 애플리케이션 스크립트를 이미 압축했을 경우 배포된 HTML 파일이 `production.min.js`로 끝나는 React 파일을 확실히 실행하기만 하면 **사이트는 프로덕션 준비가 완료된 겁니다.**
 
 ```js
-<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 스크립트를 압축하는 절차가 따로 없다면 [이 사이트를 참고해서 설정해보세요.](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3)
@@ -184,7 +184,7 @@ JSX를 프로젝트에 추가하는 데에는 복잡한 번들러나 개발 서�
 `src` 폴더를 만들고 다음 터미널 명령어를 실행하세요.
 
 ```
-npx babel --watch src --out-dir . --presets react-app/prod 
+npx babel --watch src --out-dir . --presets react-app/prod
 ```
 
 >주의
