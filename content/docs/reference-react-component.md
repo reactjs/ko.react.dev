@@ -406,7 +406,17 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 > 주의
+=======
+Production and development builds of React slightly differ in the way `componentDidCatch()` handles errors.
+
+On development, the errors will bubble up to `window`, this means that any `window.onerror` or `window.addEventListener('error', callback)` will intercept the errors that have been caught by `componentDidCatch()`.
+
+On production, instead, the errors will not bubble up, which means any ancestor error handler will only receive errors not explictly caught by `componentDidCatch()`.
+
+> Note
+>>>>>>> 957276e1e92bb48e5bb6b1c17fd0e7a559de0748
 >
 > 오류 이벤트 내에서는 `setState()`의 호출을 통하여 `componentDidCatch()`로 구현된 대체 UI를 렌더링할 수 있습니다. 하지만 이런 방식은 나중 릴리즈에서는 사용할 수 없게 을 것입니다.
 > 대체 UI 렌더링 제어를 하려면 `static getDerivedStateFromError()`를 대신 사용하세요.
