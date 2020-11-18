@@ -34,7 +34,7 @@ string type
 
 > 주의
 >
-> v17부터 `e.persiste()`는 `SyntheticEvent`가 더 이상 [풀링](/docs/legacy-event-pooling.html)되지 않기 때문에 아무런 동작을 하지 않습니다.
+> v17부터 `e.persist()`는 `SyntheticEvent`가 더 이상 [풀링](/docs/legacy-event-pooling.html)되지 않기 때문에 아무런 동작을 하지 않습니다.
 
 > 주의
 >
@@ -218,7 +218,6 @@ function Example() {
   );
 }
 ```
-
 
 * * *
 
