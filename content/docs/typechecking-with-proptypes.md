@@ -98,7 +98,11 @@ MyComponent.propTypes = {
   // 경고가 보이도록 할 수 있습니다.
   requiredFunc: PropTypes.func.isRequired,
 
+<<<<<<< HEAD
   // 모든 데이터 타입이 가능한 값
+=======
+  // A required value of any data type
+>>>>>>> 8f9ef00db1b36ee3e5a0e6072eb601257a6f8ccb
   requiredAny: PropTypes.any.isRequired,
 
   // 사용자 정의 유효성 검사기를 지정할 수도 있습니다.
