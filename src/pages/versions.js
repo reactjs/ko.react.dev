@@ -25,29 +25,28 @@ const Versions = ({location}: Props) => (
     <Container>
       <div css={sharedStyles.articleLayout.container}>
         <div css={sharedStyles.articleLayout.content}>
-          <Header>React Versions</Header>
+          <Header>React 버전</Header>
           <TitleAndMetaTags
             canonicalUrl={`${urlRoot}/versions/`}
             title="React - Versions"
           />
           <div css={sharedStyles.markdown}>
             <p>
-              A complete release history for React is available{' '}
+              React의 전체 릴리스 기록을 {' '}
               <a
                 href="https://github.com/facebook/react/releases"
                 target="_blank"
                 rel="noopener">
-                on GitHub
+                GitHub
               </a>
-              .<br />
-              Documentation for recent releases can also be found below.
+              에서 살펴보세요.<br />
+              최근 릴리스에 대한 문서도 아래에서 찾을 수 있습니다.
             </p>
             <p>
-              See our FAQ for information about{' '}
               <a href="/docs/faq-versioning.html">
-                our versioning policy and commitment to stability
+                버전 관리 정책 및 안정성에 대한 약속
               </a>
-              .
+              에 대한 정보는 FAQ를 참조하세요.
             </p>
             {versions.map(version => (
               <div key={version.title}>
@@ -55,13 +54,13 @@ const Versions = ({location}: Props) => (
                 <ul>
                   <li>
                     <a href={version.changelog} target="_blank" rel="noopener">
-                      Changelog
+                      변경 로그
                     </a>
                   </li>
                   {version.path && (
                     <li>
                       <a href={version.path} rel="nofollow">
-                        Documentation
+                        문서
                       </a>
                     </li>
                   )}
