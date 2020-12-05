@@ -32,7 +32,7 @@ const Versions = ({location}: Props) => (
           />
           <div css={sharedStyles.markdown}>
             <p>
-              React의 전체 릴리스 기록을 {' '}
+              React의 전체 배포 기록을 {' '}
               <a
                 href="https://github.com/facebook/react/releases"
                 target="_blank"
