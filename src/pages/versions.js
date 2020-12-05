@@ -40,7 +40,7 @@ const Versions = ({location}: Props) => (
                 GitHub
               </a>
               에서 살펴보세요.<br />
-              최근 릴리스에 대한 문서도 아래에서 찾을 수 있습니다.
+              최근 배포에 대한 문서도 아래에서 찾을 수 있습니다.
             </p>
             <p>
               <a href="/docs/faq-versioning.html">
