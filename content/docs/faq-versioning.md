@@ -22,7 +22,11 @@ React는 [유의적 버전 (semver)](https://semver.org/) 원칙을 따릅니다
 
 ### 호환성이 유지되지 않는 변경 {#breaking-changes}
 
+<<<<<<< HEAD
 호환성이 유지되지 않는 변경은 모든 사람에게 불편할 수 있습니다. 그래서 주 버전 배포는 최소화하도록 노력합니다. 예를 들어, React 15는 2016년 4월에 배포되었고 React 16은 2017년 9월에 배포되었습니다. 그리고 React 17은 2020년에 가능할 수도 있습니다.
+=======
+Breaking changes are inconvenient for everyone, so we try to minimize the number of major releases – for example, React 15 was released in April 2016 and React 16 was released in September 2017, and React 17 was released in October 2020.
+>>>>>>> 4fc709d0576d0f0f1f8ea8b6bb341a12944b5510
 
 대신 부 버전을 변경시킨 배포로 새 기능을 배포합니다. 부 버전 배포는 겸손한 이름에도 불구하고, 주 버전 배포보다 가끔 더 흥미롭고 주목할 만합니다.
 
