@@ -32,14 +32,15 @@ const Versions = ({location}: Props) => (
           />
           <div css={sharedStyles.markdown}>
             <p>
-              React의 전체 배포 기록을 {' '}
+              React의 전체 배포 기록을{' '}
               <a
                 href="https://github.com/facebook/react/releases"
                 target="_blank"
                 rel="noopener">
                 GitHub
               </a>
-              에서 살펴보세요.<br />
+              에서 살펴보세요.
+              <br />
               최근 배포에 대한 문서도 아래에서 찾을 수 있습니다.
             </p>
             <p>
