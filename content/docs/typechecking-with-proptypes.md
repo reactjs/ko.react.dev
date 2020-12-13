@@ -62,13 +62,8 @@ MyComponent.propTypes = {
   // React 엘리먼트 타입 (ie. MyComponent)
   optionalElementType: PropTypes.elementType,
 
-<<<<<<< HEAD
   // prop가 클래스의 인스턴스임을 선언할 수 있습니다.
-  // 이 경우 JS's instanceof 연산자를 사용합니다.
-=======
-  // You can also declare that a prop is an instance of a class. This uses
-  // JS's instanceof operator.
->>>>>>> 4fc709d0576d0f0f1f8ea8b6bb341a12944b5510
+  // 이 경우 JavaScript의 instanceof 연산자를 사용합니다.
   optionalMessage: PropTypes.instanceOf(Message),
 
   // 열거형(enum)으로 처리하여 prop가 특정 값들로 제한되도록 할 수 있습니다.
@@ -103,11 +98,7 @@ MyComponent.propTypes = {
   // 경고가 보이도록 할 수 있습니다.
   requiredFunc: PropTypes.func.isRequired,
 
-<<<<<<< HEAD
-  // 모든 데이터 타입이 가능한 값
-=======
-  // A required value of any data type
->>>>>>> 4fc709d0576d0f0f1f8ea8b6bb341a12944b5510
+  // 모든 데이터 타입이 가능한 필수값
   requiredAny: PropTypes.any.isRequired,
 
   // 사용자 정의 유효성 검사기를 지정할 수도 있습니다.
@@ -203,16 +194,13 @@ class Greeting extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
 `defaultProps`는 `this.props.name`의 값이 부모 컴포넌트에 의해 명시되지 않았을 때 값을 갖도록 할 것입니다. `propTypes`의 타입 확인은 `defaultProps`에도 적용되게 하기 위하여 `defaultProps`가 처리된 뒤에 일어날 것입니다.
-=======
-The `defaultProps` will be used to ensure that `this.props.name` will have a value if it was not specified by the parent component. The `propTypes` typechecking happens after `defaultProps` are resolved, so typechecking will also apply to the `defaultProps`.
 
 ### Function Components
 
-If you are using function components in your regular development, you may want to make some small changes to allow PropTypes to be proper applied.
+함수 컴포넌트를 사용해서 개발한다면, PropTypes를 적절히 적용할 수 있도록 몇 가지 작은 변경사항을 만들어낼 수도 있습니다.
 
-Let's say you have a component like this:
+아래와 같은 컴포넌트가 있다고 생각해봅시다.
 
 ```javascript
 export default function HelloWorldComponent({ name }) {
@@ -222,7 +210,7 @@ export default function HelloWorldComponent({ name }) {
 }
 ```
 
-To add PropTypes, you may want to declare the component in a separate function before exporting, like this:
+PropTypes를 추가하려면 아래처럼 컴포넌트를 외부에 노출시키기 전에 별도의 함수로 컴포넌트를 선언할 수 있습니다.
 
 ```javascript
 function HelloWorldComponent({ name }) {
@@ -234,7 +222,7 @@ function HelloWorldComponent({ name }) {
 export default HelloWorldComponent
 ```
 
-Then, you can add PropTypes directly to the `HelloWorldComponent`:
+그러면, `HelloWorldComponent`에 직접 PropTypes를 추가할 수 있습니다.
 
 ```javascript
 import PropTypes from 'prop-types'
@@ -251,4 +239,3 @@ HelloWorldComponent.propTypes = {
 
 export default HelloWorldComponent
 ```
->>>>>>> 4fc709d0576d0f0f1f8ea8b6bb341a12944b5510
