@@ -134,7 +134,7 @@ React 16부터는 모든 표준 [또는 사용자 정의](/blog/2017/09/08/dom-a
 React는 항상 JavaScript 중심 API를 DOM에 제공했습니다. React 컴포넌트는 사용자 지정 및 DOM 관련 props 둘 다 받아들이기 때문에, React는 DOM API처럼 camelCase를 사용합니다.
 
 ```js
-<div tabIndex="-1" />      // Just like node.tabIndex DOM API
+<div tabIndex={-1} />      // Just like node.tabIndex DOM API
 <div className="Button" /> // Just like node.className DOM API
 <input readOnly={true} />  // Just like node.readOnly DOM API
 ```
