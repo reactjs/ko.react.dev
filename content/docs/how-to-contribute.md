@@ -123,11 +123,7 @@ React 저장소를 복사한 후 yarn 명령을 사용하면 다음과 같은 �
 * `yarn build` 는 모든 패키지와 함께 `build` 폴더를 만듭니다.
 * `yarn build react/index,react-dom/index --type=UMD`는 React와 ReactDOM의 UMD 빌드를 만듭니다.
 
-<<<<<<< HEAD
 변경 작업이 이상이 없는지 확인하기 위해 `yarn test`(또는 이것과 비슷한 명령)을 통해 확인해주세요. 직접 수정한 React 빌드를 사용해보는 게 도움이 될 수 있습니다.
-=======
-We recommend running `yarn test` (or its variations above) to make sure you don't introduce any regressions as you work on your change. However, it can be handy to try your build of React in a real project.
->>>>>>> 923629258fce174a89231c88c90805d9e5b0278d
 
 우선, `yarn build`를 실행합니다. 이렇게 하면 `build` 폴더에 미리 빌드된 번들 파일이 만들어지고 동시에 `build/packages` 안에 npm 패키지도 준비가 됩니다.
 
