@@ -196,7 +196,7 @@ class Greeting extends React.Component {
 
 `defaultProps`는 `this.props.name`의 값이 부모 컴포넌트에 의해 명시되지 않았을 때 값을 갖도록 할 것입니다. `propTypes`의 타입 확인은 `defaultProps`에도 적용되게 하기 위하여 `defaultProps`가 처리된 뒤에 일어날 것입니다.
 
-### Function Components
+### Function Components {#function-components}
 
 함수 컴포넌트를 사용해서 개발한다면, PropTypes를 적절히 적용할 수 있도록 몇 가지 작은 변경사항을 만들어낼 수도 있습니다.
 
