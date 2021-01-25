@@ -27,7 +27,11 @@ React에 이 알고리즘을 적용한다면, 1000개의 엘리먼트를 그리�
 
 두 루트 엘리먼트의 타입이 다르면, React는 이전 트리를 버리고 완전히 새로운 트리를 구축합니다. `<a>`에서 `<img>`로, `<Article>`에서 `<Comment>`로, 혹은 `<Button>`에서 `<div>`로 바뀌는 것 모두 트리 전체를 재구축하는 경우입니다.
 
+<<<<<<< HEAD
 트리를 버릴 때 이전 DOM 노드들은 모두 파괴됩니다. 컴포넌트 인스턴스는 `componentWillUnmount()`가 실행됩니다. 새로운 트리가 만들어질 때, 새로운 DOM 노드들이 DOM에 삽입됩니다. 그에 따라 컴포넌트 인스턴스는 `componentWillMount()`가 실행되고 `componentDidMount()`가 이어서 실행됩니다. 이전 트리와 연관된 모든 state는 사라집니다.
+=======
+When tearing down a tree, old DOM nodes are destroyed. Component instances receive `componentWillUnmount()`. When building up a new tree, new DOM nodes are inserted into the DOM. Component instances receive `UNSAFE_componentWillMount()` and then `componentDidMount()`. Any state associated with the old tree is lost.
+>>>>>>> ed88a240d9c97822cc2f02074306965a1a4f4ac4
 
 루트 엘리먼트 아래의 모든 컴포넌트도 언마운트되고 그 state도 사라집니다. 예를 들어, 아래와 같은 비교가 일어나면,
 
@@ -43,7 +47,17 @@ React에 이 알고리즘을 적용한다면, 1000개의 엘리먼트를 그리�
 
 이전 `Counter`는 사라지고, 새로 다시 마운트가 될 것입니다.
 
+<<<<<<< HEAD
 ### DOM 엘리먼트의 타입이 같은 경우 {#dom-elements-of-the-same-type}
+=======
+>Note:
+>
+>These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>
+>- `UNSAFE_componentWillMount()`
+
+### DOM Elements Of The Same Type {#dom-elements-of-the-same-type}
+>>>>>>> ed88a240d9c97822cc2f02074306965a1a4f4ac4
 
 같은 타입의 두 React DOM 엘리먼트를 비교할 때, React는 두 엘리먼트의 속성을 확인하여, 동일한 내역은 유지하고 변경된 속성들만 갱신합니다. 예를 들어,
 
@@ -69,11 +83,26 @@ DOM 노드의 처리가 끝나면, React는 이어서 해당 노드의 자식들
 
 ### 같은 타입의 컴포넌트 엘리먼트 {#component-elements-of-the-same-type}
 
+<<<<<<< HEAD
 컴포넌트가 갱신되면 인스턴스는 동일하게 유지되어 렌더링 간 state가 유지됩니다. React는 새로운 엘리먼트의 내용을 반영하기 위해 현재 컴포넌트 인스턴스의 props를 갱신합니다. 이때 해당 인스턴스의 `componentWillReceiveProps()`와 `componentWillUpdate()`를 호출합니다.
+=======
+When a component updates, the instance stays the same, so that state is maintained across renders. React updates the props of the underlying component instance to match the new element, and calls `UNSAFE_componentWillReceiveProps()`, `UNSAFE_componentWillUpdate()` and `componentDidUpdate()` on the underlying instance.
+>>>>>>> ed88a240d9c97822cc2f02074306965a1a4f4ac4
 
 다음으로 `render()` 메소드가 호출되고 비교 알고리즘이 이전 결과와 새로운 결과를 재귀적으로 처리합니다.
 
+<<<<<<< HEAD
 ## 자식에 대한 재귀적 처리 {#recursing-on-children}
+=======
+>Note:
+>
+>These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>
+>- `UNSAFE_componentWillUpdate()`
+>- `UNSAFE_componentWillReceiveProps()`
+
+### Recursing On Children {#recursing-on-children}
+>>>>>>> ed88a240d9c97822cc2f02074306965a1a4f4ac4
 
 DOM 노드의 자식들을 재귀적으로 처리할 때, React는 기본적으로 동시에 두 리스트를 순회하고 차이점이 있으면 변경을 생성합니다.
 
