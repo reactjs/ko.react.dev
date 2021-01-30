@@ -45,7 +45,7 @@ class NameForm extends React.Component {
 
 ### 기본 값 {#default-values}
 
-React 렌더링 생명주기에서 폼 엘리먼트의 `value` 어트리뷰트는 DOM의 value를 대체합니다. 비제어 컴포넌트를 사용하면 React 초깃값을 지정하지만, 그 이후의 업데이트는 제어하지 않는 것이 좋습니다. 이러한 경우에 `value` 어트리뷰트 대신 `defaultValue`를 지정할 수 있습니다.
+React 렌더링 생명주기에서 폼 엘리먼트의 `value` 어트리뷰트는 DOM의 value를 대체합니다. 비제어 컴포넌트를 사용하면 React 초깃값을 지정하지만, 그 이후의 업데이트는 제어하지 않는 것이 좋습니다. 이러한 경우에 `value` 어트리뷰트 대신 `defaultValue`를 지정할 수 있습니다. 컴포넌트가 마운트된 후에 `defaultValue` 어트리뷰트를 변경해도 DOM의 값이 업데이트되지 않습니다.
 
 ```javascript{7}
 render() {
