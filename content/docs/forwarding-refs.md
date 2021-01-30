@@ -4,7 +4,7 @@ title: Forwarding Refs
 permalink: docs/forwarding-refs.html
 ---
 
-ref 전달은 컴포넌트를 통해 자식 중 하나에 [ref](/docs/refs-and-the-dom.html)를 자동으로 전달하는 기법입니다. 이것은 일반적으로 애플리케이션 대부분의 컴포넌트에 필요하지는 않습니다. 그렇지만, 특히 재사용 가능한 컴포넌트 라이브러리와 같은 어떤 컴포넌트에서는 유용할 수 있습니다. 가장 보편적인 시나리오를 아래에 설명하겠습니다.
+ref 전달은 컴포넌트를 통해 자식 중 하나에 [ref](/docs/refs-and-the-dom.html)를 자동으로 전달하는 기법입니다. 일반적으로 애플리케이션 대부분의 컴포넌트에 필요하지는 않습니다. 그렇지만, 특히 재사용 가능한 컴포넌트 라이브러리와 같은 어떤 컴포넌트에서는 유용할 수 있습니다. 가장 보편적인 시나리오를 아래에 설명하겠습니다.
 
 ## DOM 에 refs 전달하기 {#forwarding-refs-to-dom-components}
 
@@ -71,6 +71,6 @@ ref 전달은 컴포넌트를 통해 자식 중 하나에 [ref](/docs/refs-and-t
 
 `embed:forwarding-refs/wrapped-component-with-function-name.js`
 
-래핑하는 컴포넌트를 포함하도록 함수의 `displayName` 속성을 설정할 수도 있습니다.
+감싸고 있는 컴포넌트를 포함하도록 함수의 `displayName` 속성을 설정할 수도 있습니다.
 
 `embed:forwarding-refs/customized-display-name.js`
