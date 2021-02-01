@@ -53,7 +53,15 @@ class Home extends Component {
           title="React &ndash; 사용자 인터페이스를 만들기 위한 JavaScript 라이브러리"
           canonicalUrl={createCanonicalUrl('/')}
         />
-        <div css={{width: '100%'}}>
+        <div
+          css={{
+            width: '100%',
+            marginTop: 'var(--banner-height-normal)',
+
+            [media.lessThan('small')]: {
+              marginTop: 'var(--banner-height-small)',
+            },
+          }}>
           <header
             css={{
               backgroundColor: colors.dark,

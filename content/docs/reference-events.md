@@ -34,34 +34,11 @@ string type
 
 > 주의
 >
-> 0.14 버전부터 이벤트 핸들러가 `false`를 반환하더라도 이벤트 전파를 멈추지 않습니다. 대신 `e.stopPropagation()` 또는 `e.preventDefault()`를 필요할 때 호출하세요.
-
-### 이벤트 풀링 {#event-pooling}
-
-`SyntheticEvent`는 [풀링](https://en.wikipedia.org/wiki/Pool_(computer_science))됩니다. 성능상의 이유로 `SyntheticEvent` 객체는 재사용되고 모든 속성은 이벤트 핸들러가 호출된 다음 초기화됩니다. 따라서 비동기적으로 이벤트 객체에 접근할 수 없습니다.
-
-```javascript
-function onClick(event) {
-  console.log(event); // => nullified object.
-  console.log(event.type); // => "click"
-  const eventType = event.type; // => "click"
-
-  setTimeout(function() {
-    console.log(event.type); // => null
-    console.log(eventType); // => "click"
-  }, 0);
-
-  // 동작하지 않습니다. this.state.clickEvent 은 null만 가지게 될 것입니다.
-  this.setState({clickEvent: event});
-
-  // 이벤트 속성을 추출할 수 있습니다.
-  this.setState({eventType: event.type});
-}
-```
+> v17부터 `e.persist()`는 `SyntheticEvent`가 더 이상 [풀링](/docs/legacy-event-pooling.html)되지 않기 때문에 아무런 동작을 하지 않습니다.
 
 > 주의
 >
-> 비동기적으로 이벤트 속성을 참조하고 싶다면 이벤트 객체의 `event.persist()` 를 호출하세요. 합성 이벤트 풀에서 제거되고 사용자의 코드에서 참조가 가능해집니다.
+> v0.14부터 이벤트 핸들러에서 `false`가 반환되더라도 이벤트 전파가 더 이상 중지되지 않습니다. 대신 `e.stopPropagation()` 또는 `e.preventDefault()`를 적절하게 수동으로 호출해야 합니다.
 
 ## 지원하는 이벤트 {#supported-events}
 
@@ -165,8 +142,81 @@ onFocus onBlur
 
 속성
 
-```javascript
+```js
 DOMEventTarget relatedTarget
+```
+
+#### onFocus {#onfocus}
+
+`onFocus` 이벤트는 엘리먼트 (또는 자식 엘리먼트)가 포커스될 때 호출됩니다. 예를 들어, 유저가 텍스트 인풋을 클릭했을 때 호출됩니다.
+
+```javascript
+function Example() {
+  return (
+    <input
+      onFocus={(e) => {
+        console.log('Focused on input');
+      }}
+      placeholder="onFocus is triggered when you click this input."
+    />
+  )
+}
+```
+
+#### onBlur {#onblur}
+
+`onBlur` 이벤트 핸들러는 엘리먼트 (또는 자식 엘리먼트)에서 포커스가 사라졌을 때 호출됩니다. 예를 들어, 유저가 포커스된 텍스트 인풋의 바깥 영역을 클릭했을 때 호출됩니다.
+
+```javascript
+function Example() {
+  return (
+    <input
+      onBlur={(e) => {
+        console.log('Triggered because this input lost focus');
+      }}
+      placeholder="onBlur is triggered when you click this input and then you click outside of it."
+    />
+  )
+}
+```
+
+#### Detecting Focus Entering and Leaving {#detecting-focus-entering-and-leaving}
+
+부모 엘리먼트 바깥 영역으로부터 발생한 이벤트가 포커스 또는 블러중인지 구분하기 위해 `currentTarget`과 `relatedTarget`을 사용할 수 있습니다. 다음은 복사해서 붙여넣을 수 있는 데모로 자식 엘리먼트 또는 엘리먼트 자체에 포커스 중인지, 전체 하위 트리에 포커스가 되고 있는지 사라지고 있는지 구별할 수 있는 방법을 보여줍니다.
+
+```javascript
+function Example() {
+  return (
+    <div
+      tabIndex={1}
+      onFocus={(e) => {
+        if (e.currentTarget === e.target) {
+          console.log('focused self');
+        } else {
+          console.log('focused child', e.target);
+        }
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          // Not triggered when swapping focus between children
+          console.log('focus entered self');
+        }
+      }}
+      onBlur={(e) => {
+        if (e.currentTarget === e.target) {
+          console.log('unfocused self');
+        } else {
+          console.log('unfocused child', e.target);
+        }
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          // Not triggered when swapping focus between children
+          console.log('focus left self');
+        }
+      }}
+    >
+      <input id="1" />
+      <input id="2" />
+    </div>
+  );
+}
 ```
 
 * * *
@@ -302,6 +352,10 @@ DOMTouchList touches
 ```
 onScroll
 ```
+
+>주의
+>
+>React 17부터 `onScroll` 이벤트는 버블링되지 않습니다. 이는 브라우저 동작과 일치하며 스크롤 가능한 엘리먼트가 중첩된 상황에서 자식 엘리먼트가 멀리 떨어져 있는 부모 엘리먼트에 이벤트를 발생시킬 때 가질 수 있는 혼동을 막습니다.
 
 속성
 

@@ -550,7 +550,7 @@ var newPlayer = Object.assign({}, player, {score: 2});
 // var newPlayer = {...player, score: 2};
 ```
 
-최종 결과는 동일하기만 직접적인 객체 변경이나 기본 데이터의 변경을 하지 않는다면 아래에 기술된 몇 가지 이점을 얻을 수 있습니다.
+최종 결과는 동일하지만 직접적인 객체 변경이나 기본 데이터의 변경을 하지 않는다면 아래에 기술된 몇 가지 이점을 얻을 수 있습니다.
 
 #### 복잡한 특징들을 단순하게 만듦 {#complex-features-become-simple}
 

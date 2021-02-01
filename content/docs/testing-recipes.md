@@ -377,7 +377,6 @@ let container = null;
 beforeEach(() => {
   // 렌터링 대상으로 DOM 엘리먼트를 세팅 합니다.
   container = document.createElement("div");
-  // 이벤트가 제대로 작동하기 위해 container는 반드시 document에 적용되어야 합니다.
   document.body.appendChild(container);
 });
 
@@ -416,7 +415,7 @@ it("changes value when clicked", () => {
 });
 ```
 
-다른 DOM 이벤트와 속성들은 [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)에 기술되어 있습니다. 리액트는 자동으로 이벤트를 document에 위임하기 때문에 리액트 리스너에 도달하기 위해 생성하는 이벤트마다 `{bubbles : true}` 를 전달해야 합니다.
+Different DOM events and their properties are described in [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent). Note that you need to pass `{ bubbles: true }` in each event you create for it to reach the React listener because React automatically delegates events to the root.
 
 > 주의:
 >
