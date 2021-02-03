@@ -406,7 +406,7 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-`componentDidCatch()`가 오류를 처리하는 방식에서 리액트의 프로덕션과 개발 빌드는 약간 다릅니다.
+ 리액트의 `componentDidCatch()`가 오류를 처리하는 방식은 프로덕션과 개발 빌드가 약간 다릅니다.
 
 개발 빌드에서, 오류는 `window`까지 전파됩니다. 이는 `window.onerror`나 `window.addEventListener('error', callback)`는 `componentDidCatch()`가 잡은 오류를 인터셉트할 것이란 의미입니다.
 
