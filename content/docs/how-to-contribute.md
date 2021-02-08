@@ -70,7 +70,11 @@ Public API를 변경하거나 구현을 간단하게 변경하려 할 때 [이�
 
 풀 리퀘스트를 처음 해보시나요? 무료 영상 시리즈를 통해 다음과 같이 기여하는 방법을 배울 수도 있습니다.
 
+<<<<<<< HEAD
 **[GitHub에서 오픈 소스 프로젝트에 기여하는 방법](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
+=======
+**[How to Contribute to an Open Source Project on GitHub](https://app.egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
+>>>>>>> 35179e85933265cb7a4f5d51c10fbe70deba3787
 
 처음 발을 디딜 때 기여 과정에 익숙해질 수 있도록 비교적 영향력이 적은 버그를 포함하는 **[good first issues](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")** 목록은 기여 입문에 최적입니다.
 
@@ -84,6 +88,7 @@ Public API를 변경하거나 구현을 간단하게 변경하려 할 때 [이�
 
 **풀 리퀘스트를 보내기 전에,** 다음 사항을 확인해 주세요.
 
+<<<<<<< HEAD
 1. [저장소](https://github.com/facebook/react)를 포크하고 `master`로부터 새로운 브랜치를 생성합니다.
 2. 저장소 루트에서 `yarn` 명령을 실행합니다.
 3. 버그를 수정했거나 테스트가 필요한 코드를 추가했다면 테스트를 추가해 주세요.
@@ -94,6 +99,18 @@ Public API를 변경하거나 구현을 간단하게 변경하려 할 때 [이�
 8. 코드를 린트하세요 (`yarn lint`). Tip: `yarn linc` 는 변경된 파일만 확인할 수 있습니다.
 9. [Flow](https://flowtype.org/) 타입 검사를 실행하세요. (`yarn flow`).
 10. 아직 CLA에 서명하지 않았다면, 서명을 완료해주세요.
+=======
+1. Fork [the repository](https://github.com/facebook/react) and create your branch from `master`.
+2. Run `yarn` in the repository root.
+3. If you've fixed a bug or added code that should be tested, add tests!
+4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
+5. Run `yarn test --prod` to test in the production environment.
+6. If you need a debugger, run `yarn debug-test --watch TestName`, open `chrome://inspect`, and press "Inspect".
+7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
+8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
+9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
+10. If you haven't already, complete the CLA.
+>>>>>>> 35179e85933265cb7a4f5d51c10fbe70deba3787
 
 ### Contributor License Agreement (CLA) {#contributor-license-agreement-cla}
 
@@ -112,6 +129,7 @@ Public API를 변경하거나 구현을 간단하게 변경하려 할 때 [이�
 
 React 저장소를 복사한 후 yarn 명령을 사용하면 다음과 같은 여러 명령을 실행할 수 있습니다.
 
+<<<<<<< HEAD
 * `yarn lint` 코드 스타일을 점검합니다.
 * `yarn linc` 는 `yarn lint`와 비슷하지만, 브랜치에서 변경된 파일만 검사하기 때문에 더 빠릅니다.
 * `yarn test` 는 모든 테스트를 실행합니다.
@@ -122,6 +140,18 @@ React 저장소를 복사한 후 yarn 명령을 사용하면 다음과 같은 �
 * `yarn flow` 는 [Flow](https://flowtype.org/) 타입검사를 실행합니다.
 * `yarn build` 는 모든 패키지와 함께 `build` 폴더를 만듭니다.
 * `yarn build react/index,react-dom/index --type=UMD`는 React와 ReactDOM의 UMD 빌드를 만듭니다.
+=======
+* `yarn lint` checks the code style.
+* `yarn linc` is like `yarn lint` but faster because it only checks files that differ in your branch.
+* `yarn test` runs the complete test suite.
+* `yarn test --watch` runs an interactive test watcher.
+* `yarn test --prod` runs tests in the production environment.
+* `yarn test <pattern>` runs tests with matching filenames.
+* `yarn debug-test` is just like `yarn test` but with a debugger. Open `chrome://inspect` and press "Inspect".
+* `yarn flow` runs the [Flow](https://flowtype.org/) typechecks.
+* `yarn build` creates a `build` folder with all the packages.
+* `yarn build react/index,react-dom/index --type=UMD` creates UMD builds of just React and ReactDOM.
+>>>>>>> 35179e85933265cb7a4f5d51c10fbe70deba3787
 
 변경 작업이 이상이 없는지 확인하기 위해 `yarn test`(또는 이것과 비슷한 명령)을 통해 확인해주세요. 직접 수정한 React 빌드를 사용해보는 게 도움이 될 수 있습니다.
 
@@ -135,7 +165,7 @@ npm을 통해 React를 사용하고 있다면, 의존성에서 `react`와 `react
 
 ```sh
 cd ~/path_to_your_react_clone/
-yarn build react/index,react-dom/index,scheduler --type=NODE
+yarn build react/index,react/jsx,react-dom/index,scheduler --type=NODE
 
 cd build/node_modules/react
 yarn link
