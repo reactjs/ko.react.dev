@@ -1,22 +1,22 @@
 ---
 id: higher-order-components
-title: Higher-Order Components
+title: 고차 컴포넌트
 permalink: docs/higher-order-components.html
 ---
 
-A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API, per se. They are a pattern that emerges from React's compositional nature.
+고차 컴포넌트(HOC, Higher Order Component)는 컴포넌트 로직을 재사용하기 위한 React의 고급 기술입니다. 고차 컴포넌트(HOC)는 React API의 일부가 아니며, 리액트의 구성적 특성에서 나오는 패턴입니다.
 
-Concretely, **a higher-order component is a function that takes a component and returns a new component.**
+구체적으로, **고차 컴포넌트는 컴포넌트를 가져와 새 컴포넌트를 반환하는 함수입니다.**
 
 ```js
 const EnhancedComponent = higherOrderComponent(WrappedComponent);
 ```
 
-Whereas a component transforms props into UI, a higher-order component transforms a component into another component.
+컴포넌트는 props를 UI로 변환하는 반면에, 고차 컴포넌트는 컴포넌트를 새로운 컴포넌트로 변환합니다.
 
-HOCs are common in third-party React libraries, such as Redux's [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) and Relay's [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html).
+고차 컴포넌트(HOC)는 Redux의 [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect)와 Relay의 [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html)와 같은 서드 파티 리액트 라이브러리에서 흔하게 볼 수 있습니다.
 
-In this document, we'll discuss why higher-order components are useful, and how to write your own.
+이 문서에서는 고차 컴포넌트가 유용한 이유를 보여주고, 직접 작성하는 방법에 대해 알아보겠습니다.
 
 ## Use HOCs For Cross-Cutting Concerns {#use-hocs-for-cross-cutting-concerns}
 
