@@ -58,7 +58,10 @@ function MyComponent() {
 
 ### selected {#selected}
 
-`selected` 어트리뷰트는 `<option>` 컴포넌트를 통해 지원됩니다. 이 컴포넌트를 사용하여 컴포넌트의 선택 여부를 설정할 수 있습니다. 이는 제어 컴포넌트를 만드는 데 유용합니다.
+`<option>`을 선택됐다고 표시하고 싶다면, `<select>`의 `value`에서 해당 option의 값을 대신 참조하세요.
+
+자세한 설명은 ["The select Tag"](/docs/forms.html#the-select-tag)을 확인해주세요.
+
 
 ### style {#style}
 
@@ -122,7 +125,7 @@ React는 특정 숫자 인라인 스타일 프로퍼티는 "px" 접미사를 자
 
 ### value {#value}
 
-`value` 어트리뷰트는 `<input>`과 `<textarea>` 컴포넌트에 의해 지원됩니다. 이를 이용해 컴포넌트의 값을 설정할 수 있습니다. 이는 제어 컴포넌트를 만드는 데 유용합니다. `defaultValue` 비제어 컴포넌트에서 사용되는 동등한 의미를 가지는 어트리뷰트이며, 처음 마운트될 때 컴포넌트의 값을 설정합니다.
+`value` 어트리뷰트는 `<input>`, `<select>`와 `<textarea>` 컴포넌트에 의해 지원됩니다. 이를 이용해 컴포넌트의 값을 설정할 수 있습니다. 이는 제어 컴포넌트를 만드는 데 유용합니다. `defaultValue` 비제어 컴포넌트에서 사용되는 동등한 의미를 가지는 어트리뷰트이며, 처음 마운트될 때 컴포넌트의 값을 설정합니다.
 
 ## 지원되는 모든 HTML 어트리뷰트 {#all-supported-html-attributes}
 
@@ -131,7 +134,7 @@ React 16부터는 모든 표준 [또는 사용자 정의](/blog/2017/09/08/dom-a
 React는 항상 JavaScript 중심 API를 DOM에 제공했습니다. React 컴포넌트는 사용자 지정 및 DOM 관련 props 둘 다 받아들이기 때문에, React는 DOM API처럼 camelCase를 사용합니다.
 
 ```js
-<div tabIndex="-1" />      // Just like node.tabIndex DOM API
+<div tabIndex={-1} />      // Just like node.tabIndex DOM API
 <div className="Button" /> // Just like node.className DOM API
 <input readOnly={true} />  // Just like node.readOnly DOM API
 ```

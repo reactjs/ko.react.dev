@@ -48,7 +48,7 @@ ref 전달은 컴포넌트를 통해 자식 중 하나에 [ref](/docs/refs-and-t
 이 기술은 (HOC로 알려진) [고차원 컴포넌트](/docs/higher-order-components.html)에서 부분적으로 유용할 수 있습니다. 콘솔에 컴포넌트 props를 로깅 하는 HOC 예제로 설명을 시작해 보겠습니다.
 `embed:forwarding-refs/log-props-before.js`
 
-"logProps" HOC는 모든 `props`를 래핑하는 컴포넌트로 전달하므로 렌더링 된 결과가 동일하게 됩니다. 예를 들어, 이 HOC를 사용해서 "fancy button" 컴포넌트로 전달하는 모든 props를 로깅 할 수 있습니다.
+"logProps" HOC는 모든 `props`를 래핑하는 컴포넌트로 전달하므로 렌더링 된 결과가 동일하게 됩니다. 예를 들어, 이 HOC를 사용해서 "fancy button" 컴포넌트로 전달하는 모든 props를 기록 할 수 있습니다.
 `embed:forwarding-refs/fancy-button.js`
 
 위 예제에서 한 가지 주의사항이 있습니다: refs는 전달되지 않는다는 것입니다. 그것은 `ref`는 prop이 아니기 때문입니다. `key`와 마찬가지로 `ref`는 React에서 다르게 처리합니다. 만약 HOC에 ref를 추가하면 ref는 래핑 된 컴포넌트가 아니라 가장 바깥쪽 컨테이너 컴포넌트를 참조합니다.

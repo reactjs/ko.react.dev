@@ -117,6 +117,10 @@ Strict 모드가 자동으로 부작용을 찾아주는 것은 불가능합니�
 
 컴포넌트의 constructor와 같은 메서드를 의도적으로 두 번 호출하면 strict mode가 이와 같은 패턴을 쉽게 찾을 수 있도록 합니다.
 
+> 주의
+>
+> React 17부터 React는 자동으로 `console.log()` 같은 콘솔 메서드를 수정해서 생명주기 함수의 두 번째 호출에서 로그를 찍지 않습니다. 그러나, [회피책을 사용할 수 있다면](https://github.com/facebook/react/issues/20090#issuecomment-715927125) 의도하지 않은 동작이 발생할 수 있습니다.
+
 ### 레거시 context API 검사 {#detecting-legacy-context-api}
 
 레거시 context API는 오류가 발생하기 쉬워 이후 릴리즈에서 삭제될 예정입니다. 모든 16.x 버전에서 여전히 돌아가지만, Strict 모드에서는 아래와 같은 경고 메시지를 노출합니다.

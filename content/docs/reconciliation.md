@@ -25,9 +25,9 @@ React에 이 알고리즘을 적용한다면, 1000개의 엘리먼트를 그리�
 
 ### 엘리먼트의 타입이 다른 경우 {#elements-of-different-types}
 
-두 루트 엘리먼트의 타입이 다르면, React는 이전 트리를 버리고 완전히 새로운 트리를 구축합니다. `<a>`에서 `<img>`로, `<Article>`에서 `<Comment>`로, 혹은 `<Button>` to `<div>`로 바뀌는 것 모두 트리 전체를 재구축하는 경우입니다.
+두 루트 엘리먼트의 타입이 다르면, React는 이전 트리를 버리고 완전히 새로운 트리를 구축합니다. `<a>`에서 `<img>`로, `<Article>`에서 `<Comment>`로, 혹은 `<Button>`에서 `<div>`로 바뀌는 것 모두 트리 전체를 재구축하는 경우입니다.
 
-트리를 버릴 때 이전 DOM 노드들은 모두 파괴됩니다. 컴포넌트 인스턴스는 `componentWillUnmount()`가 실행됩니다. 새로운 트리가 만들어질 때, 새로운 DOM 노드들이 DOM에 삽입됩니다. 그에 따라 컴포넌트 인스턴스는 `componentWillMount()`가 실행되고 `componentDidMount()`가 이어서 실행됩니다. 이전 트리와 연관된 모든 state는 사라집니다.
+트리를 버릴 때 이전 DOM 노드들은 모두 파괴됩니다. 컴포넌트 인스턴스는 `componentWillUnmount()`가 실행됩니다. 새로운 트리가 만들어질 때, 새로운 DOM 노드들이 DOM에 삽입됩니다. 그에 따라 컴포넌트 인스턴스는 `UNSAFE_componentWillMount()`가 실행되고 `componentDidMount()`가 이어서 실행됩니다. 이전 트리와 연관된 모든 state는 사라집니다.
 
 루트 엘리먼트 아래의 모든 컴포넌트도 언마운트되고 그 state도 사라집니다. 예를 들어, 아래와 같은 비교가 일어나면,
 
@@ -42,6 +42,12 @@ React에 이 알고리즘을 적용한다면, 1000개의 엘리먼트를 그리�
 ```
 
 이전 `Counter`는 사라지고, 새로 다시 마운트가 될 것입니다.
+
+>주의
+>
+>아래 메서드들은 레거시이며 새로 작성하는 코드에서는 [피해야 합니다.](/blog/2018/03/27/update-on-async-rendering.html)
+>
+>- `UNSAFE_componentWillMount()`
 
 ### DOM 엘리먼트의 타입이 같은 경우 {#dom-elements-of-the-same-type}
 
@@ -69,9 +75,16 @@ DOM 노드의 처리가 끝나면, React는 이어서 해당 노드의 자식들
 
 ### 같은 타입의 컴포넌트 엘리먼트 {#component-elements-of-the-same-type}
 
-컴포넌트가 갱신되면 인스턴스는 동일하게 유지되어 렌더링 간 state가 유지됩니다. React는 새로운 엘리먼트의 내용을 반영하기 위해 현재 컴포넌트 인스턴스의 props를 갱신합니다. 이때 해당 인스턴스의 `componentWillReceiveProps()`와 `componentWillUpdate()`를 호출합니다.
+컴포넌트가 갱신되면 인스턴스는 동일하게 유지되어 렌더링 간 state가 유지됩니다. React는 새로운 엘리먼트의 내용을 반영하기 위해 현재 컴포넌트 인스턴스의 props를 갱신합니다. 이때 해당 인스턴스의 `UNSAFE_componentWillReceiveProps()`, `UNSAFE_componentWillUpdate()`, `componentDidUpdate`를 호출합니다.
 
-다음으로 `render()` 메소드가 호출되고 비교 알고리즘이 이전 결과와 새로운 결과를 재귀적으로 처리합니다.
+다음으로 `render()` 메서드가 호출되고 비교 알고리즘이 이전 결과와 새로운 결과를 재귀적으로 처리합니다.
+
+>주의
+>
+>아래 메서드들은 레거시이며 새로 작성하는 코드에서는 [피해야 합니다.](/blog/2018/03/27/update-on-async-rendering.html)
+>
+>- `UNSAFE_componentWillUpdate()`
+>- `UNSAFE_componentWillReceiveProps()`
 
 ## 자식에 대한 재귀적 처리 {#recursing-on-children}
 

@@ -8,7 +8,11 @@ permalink: community/meetups.html
 
 Do you have a local React.js meetup? Add it here! (Please keep the list alphabetical)
 
+## Albania {#albania}
+* [Tirana](https://www.meetup.com/React-User-Group-Albania/)
+
 ## Argentina {#argentina}
+* [Buenos Aires](https://www.meetup.com/es/React-en-Buenos-Aires)
 * [Rosario](https://www.meetup.com/es/reactrosario)
 
 ## Australia {#australia}
@@ -40,15 +44,19 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 * [Bolivia](https://www.meetup.com/ReactBolivia/)
 
 ## Canada {#canada}
+* [Halifax, NS](https://www.meetup.com/Halifax-ReactJS-Meetup/)
 * [Montreal, QC - React Native](https://www.meetup.com/fr-FR/React-Native-MTL/)
 * [Vancouver, BC](https://www.meetup.com/ReactJS-Vancouver-Meetup/)
 * [Ottawa, ON](https://www.meetup.com/Ottawa-ReactJS-Meetup/)
+* [Toronto, ON](https://www.meetup.com/Toronto-React-Native/events/)
 
 ## China {#china}
 * [Beijing](https://www.meetup.com/Beijing-ReactJS-Meetup/)
 
 ## Colombia {#colombia}
+* [Bogotá](https://www.meetup.com/meetup-group-iHIeHykY/)
 * [Medellin](https://www.meetup.com/React-Medellin/)
+* [Cali](https://www.meetup.com/reactcali/)
 
 ## Denmark {#denmark}
 * [Aalborg](https://www.meetup.com/Aalborg-React-React-Native-Meetup/)
@@ -73,6 +81,7 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 * [React Berlin](https://www.meetup.com/React-Open-Source/)
 
 ## Greece {#greece}
+* [Athens](https://www.meetup.com/React-To-React-Athens-MeetUp/)
 * [Thessaloniki](https://www.meetup.com/Thessaloniki-ReactJS-Meetup/)
 
 ## Hungary {#hungary}
@@ -95,6 +104,9 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 
 ## Israel {#israel}
 * [Tel Aviv](https://www.meetup.com/ReactJS-Israel/)
+
+## Italy {#italy}
+* [Milan](https://www.meetup.com/React-JS-Milano/)
 
 ## Malaysia {#malaysia}
 * [Kuala Lumpur](https://www.kl-react.com/)
@@ -147,7 +159,7 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 * [Zurich](https://www.meetup.com/Zurich-ReactJS-Meetup/)
 
 ## Turkey {#turkey}
-* [Istanbul](https://www.meetup.com/ReactJS-Istanbul/)
+* [Istanbul](https://kommunity.com/reactjs-istanbul)
 
 ## Ukraine {#ukraine}
 * [Kyiv](https://www.meetup.com/Kyiv-ReactJS-Meetup)
@@ -164,6 +176,7 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 * [Cleveland, OH - ReactJS](https://www.meetup.com/Cleveland-React/)
 * [Columbus, OH - ReactJS](https://www.meetup.com/ReactJS-Columbus-meetup/)
 * [Dallas, TX - ReactJS](https://www.meetup.com/ReactDallas/)
+* [Dallas, TX - [Remote] React JS](https://www.meetup.com/React-JS-Group/)
 * [Detroit, MI - Detroit React User Group](https://www.meetup.com/Detroit-React-User-Group/)
 * [Irvine, CA - ReactJS](https://www.meetup.com/ReactJS-OC/)
 * [Kansas City, MO - ReactJS](https://www.meetup.com/Kansas-City-React-Meetup/)

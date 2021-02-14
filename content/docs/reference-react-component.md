@@ -39,7 +39,7 @@ class Welcome extends React.Component {
 
 ### 컴포넌트 생명주기 {#the-component-lifecycle}
 
-모든 컴포넌트는 여러 종류의 "생명주기 메서드"를 가지며, 이 메서드를 오버라이딩하여 특정 시점에 코드가 실행되도록 설정할 수 있습니다. [이 생명주기 도표](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)를 필요할 때마다 활용하면 좋습니다. 아래 목록에서 자주 사용되는 생명주기 메서드를 **진하게** 표시했습니다. 나머지 것들은 상대적으로 자주 사용되지 않습니다.
+모든 컴포넌트는 여러 종류의 "생명주기 메서드"를 가지며, 이 메서드를 오버라이딩하여 특정 시점에 코드가 실행되도록 설정할 수 있습니다. [이 생명주기 도표](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)를 필요할 때마다 활용하면 좋습니다. 아래 목록에서 자주 사용되는 생명주기 메서드를 **진하게** 표시했습니다. 나머지 것들은 상대적으로 자주 사용되지 않습니다.
 
 #### 마운트 {#mounting}
 
@@ -109,7 +109,7 @@ props 또는 state가 변경되면 갱신이 발생합니다. 아래 메서드�
 
 ### 자주 사용되는 생명주기 메서드 {#commonly-used-lifecycle-methods}
 
-이 섹션에서 다루는 메서드들을 사용하면 React 컴포넌트를 만들 때에 마주치는 대부분의 경우를 해결할 수 있습니다. [이 생명주기 도표](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)를 시각 자료로 활용하면 좋습니다.
+이 섹션에서 다루는 메서드들을 사용하면 React 컴포넌트를 만들 때에 마주치는 대부분의 경우를 해결할 수 있습니다. [이 생명주기 도표](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)를 시각 자료로 활용하면 좋습니다.
 
 ### `render()` {#render}
 
@@ -244,7 +244,7 @@ componentWillUnmount()
 
 ### 잘 사용하지 않는 생명주기 메서드 {#rarely-used-lifecycle-methods}
 
-이 섹션에서 다루는 메서드들은 잘 사용되지 않습니다. 유용하게 사용되는 경우가 아주 가끔 있지만, 대부분의 컴포넌트에서는 필요하지 않습니다. 대부분의 메서드들은 [이 생명주기 도표](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)의 최상단에 위치하는 "덜 일반적인 라이프 사이클 표시" 체크박스를 클릭하면 확인할 수 있습니다.
+이 섹션에서 다루는 메서드들은 잘 사용되지 않습니다. 유용하게 사용되는 경우가 아주 가끔 있지만, 대부분의 컴포넌트에서는 필요하지 않습니다. 대부분의 메서드들은 [이 생명주기 도표](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)의 최상단에 위치하는 "덜 일반적인 라이프 사이클 표시" 체크박스를 클릭하면 확인할 수 있습니다.
 
 ### `shouldComponentUpdate()` {#shouldcomponentupdate}
 
@@ -272,7 +272,7 @@ shouldComponentUpdate(nextProps, nextState)
 static getDerivedStateFromProps(props, state)
 ```
 
-`getDerivedStateFromProps()`는 최초 마운트 시와 갱신 시 모두에서 `render()` 메서드를 호출하기 직전에 호출됩니다. state를 갱신하기 위한 객체를 반환하거나, `null`을 반환하여 아무 것도 갱신하지 않을 수 있습니다.
+`getDerivedStateFromProps`는 최초 마운트 시와 갱신 시 모두에서 `render` 메서드를 호출하기 직전에 호출됩니다. state를 갱신하기 위한 객체를 반환하거나, `null`을 반환하여 아무 것도 갱신하지 않을 수 있습니다.
 
 이 메서드는 시간이 흐름에 따라 변하는 props에 state가 의존하는 [아주 드문 사용례](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state)를 위하여 존재합니다. 예를 들어, 무엇을 움직이도록 만들지 결정하기 위하여 이전과 현재의 자식 엘리먼트를 비교하는 `<Transition>`와 같은 컴포넌트를 구현할 때에 편리하게 사용할 수 있습니다.
 
@@ -406,9 +406,15 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
+ 리액트의 `componentDidCatch()`가 오류를 처리하는 방식은 프로덕션과 개발 빌드가 약간 다릅니다.
+
+개발 빌드에서, 오류는 `window`까지 전파됩니다. 이는 `window.onerror`나 `window.addEventListener('error', callback)`가 `componentDidCatch()`에서 잡은 오류를 인터셉트하는 것을 의미합니다.
+
+그러나 프로덕션 빌드에서 오류는 전파되지 않습니다. 즉 상위 오류 핸들러는 `componentDidCatch()`에 의해 명시적으로 잡히지 않은 오류만 받습니다.
+
 > 주의
 >
-> 오류 이벤트 내에서는 `setState()`의 호출을 통하여 `componentDidCatch()`로 구현된 대체 UI를 렌더링할 수 있습니다. 하지만 이런 방식은 나중 릴리즈에서는 사용할 수 없게 을 것입니다.
+> 오류 이벤트 내에서는 `setState()`의 호출을 통하여 `componentDidCatch()`로 구현된 대체 UI를 렌더링할 수 있습니다. 하지만 이런 방식은 이후의 릴리즈에서는 사용할 수 없게 될 것입니다.
 > 대체 UI 렌더링 제어를 하려면 `static getDerivedStateFromError()`를 대신 사용하세요.
 
 * * *
@@ -580,7 +586,7 @@ component.forceUpdate(callback)
 
 ### `defaultProps` {#defaultprops}
 
-`defaultProps`는 컴포넌트 클래스 자체 내에서 프로퍼티로서 정의될 수 있고, 이를 통하여 해당 class의 기본 props 값을 설정할 수 있습니다. 아래 예시와 같이, null이 아닌 아직 정의되지 않은 props를 다룰 때 사용됩니다.
+`defaultProps`는 컴포넌트 클래스 자체 내에서 프로퍼티로서 정의될 수 있고, 이를 통하여 해당 class의 기본 props 값을 설정할 수 있습니다. 아래 예시와 같이, `null`이 아닌 아직 정의되지 않은 `undefined`인 props를 다룰 때 사용됩니다.
 
 ```js
 class CustomButton extends React.Component {
@@ -600,7 +606,7 @@ CustomButton.defaultProps = {
   }
 ```
 
-`props.color`에 null 값이 제공된다면, 해당 값은 null로 유지됩니다.
+`props.color`에 `null` 값이 제공된다면, 해당 값은 `null`로 유지됩니다.
 
 ```js
   render() {
