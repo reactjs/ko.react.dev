@@ -198,7 +198,11 @@ class Greeting extends React.Component {
 
 ### Function Components {#function-components}
 
+<<<<<<< HEAD
 함수 컴포넌트를 사용해서 개발한다면, PropTypes를 적절히 적용할 수 있도록 몇 가지 작은 변경사항을 만들어낼 수도 있습니다.
+=======
+If you are using function components in your regular development, you may want to make some small changes to allow PropTypes to be properly applied.
+>>>>>>> 888d9eae7a33ec1a48c18f28e82c26d048d885be
 
 아래와 같은 컴포넌트가 있다고 생각해봅시다.
 
