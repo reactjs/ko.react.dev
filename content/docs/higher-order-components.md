@@ -291,7 +291,7 @@ const EnhancedComponent = enhance(WrappedComponent)
 
 `compose` 유틸리티 기능(효용 함수)는 lodash (as [`lodash.flowRight`](https://lodash.com/docs/#flowRight)), [Redux](https://redux.js.org/api/compose), and [Ramda](https://ramdajs.com/docs/#compose)를 포함한 많은 서드파티 라이브러리에서 제공하고 있습니다.
 
-## 컨벤션: 간단한 디버깅을 위한 디스플레이 네임 작성 방법  {#convention-wrap-the-display-name-for-easy-debugging}
+## 컨벤션: 간단한 디버깅을 위한 디스플레이 네임 작성 방법 {#convention-wrap-the-display-name-for-easy-debugging}
 
 다른 구성 요소와 마찬가지로 HOC로 만든 컨테이너 구성 요소도 [React Developer Tools](https://github.com/facebook/react-devtools)에 표시됩니다. 디버깅을 쉽게 하려면 HOC의 결과임을 알리는 디스플레이 네임을 작성합니다.
 
