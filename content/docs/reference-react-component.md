@@ -406,9 +406,15 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
+ 리액트의 `componentDidCatch()`가 오류를 처리하는 방식은 프로덕션과 개발 빌드가 약간 다릅니다.
+
+개발 빌드에서, 오류는 `window`까지 전파됩니다. 이는 `window.onerror`나 `window.addEventListener('error', callback)`가 `componentDidCatch()`에서 잡은 오류를 인터셉트하는 것을 의미합니다.
+
+그러나 프로덕션 빌드에서 오류는 전파되지 않습니다. 즉 상위 오류 핸들러는 `componentDidCatch()`에 의해 명시적으로 잡히지 않은 오류만 받습니다.
+
 > 주의
 >
-> 오류 이벤트 내에서는 `setState()`의 호출을 통하여 `componentDidCatch()`로 구현된 대체 UI를 렌더링할 수 있습니다. 하지만 이런 방식은 나중 릴리즈에서는 사용할 수 없게 을 것입니다.
+> 오류 이벤트 내에서는 `setState()`의 호출을 통하여 `componentDidCatch()`로 구현된 대체 UI를 렌더링할 수 있습니다. 하지만 이런 방식은 이후의 릴리즈에서는 사용할 수 없게 될 것입니다.
 > 대체 UI 렌더링 제어를 하려면 `static getDerivedStateFromError()`를 대신 사용하세요.
 
 * * *
