@@ -164,7 +164,7 @@ function withSubscription(WrappedComponent, selectData) {
 }
 ```
 
-고차 컴포넌트는 입력된 컴포넌트를 수정하지 않으며 상속을 사용하여 동작을 복사하지도 않습니다. 오히러 고차 컴포넌트는 원래 컴포넌트를 컨테이너 컴포넌트로 *포장(Wrapping)*하여 *조합(compose)*합니다. 고차 컴포넌트는 사이드 이펙트가 전혀 없는 순수 함수입니다.
+고차 컴포넌트는 입력된 컴포넌트를 수정하지 않으며 상속을 사용하여 동작을 복사하지도 않습니다. 오히려 고차 컴포넌트는 원본 컴포넌트를 컨테이너 컴포넌트로 *포장(Wrapping)*하여 *조합(compose)*합니다. 고차 컴포넌트는 사이드 이펙트가 전혀 없는 순수 함수입니다.
 
 이게 전부입니다! 래핑된 컴포넌트는 새로운 props, `data`와 함께 컨테이너의 모든 props를 전달받으며, 이 데이터들은 출력을 렌더링하는 데 사용됩니다. 고차 컴포넌트는 데이터가 사용되는 이유 및 방법과 연관이 없으며 래핑된 컴포넌트는 데이터가 어디서부터 왔는지와 관련이 없습니다.
 
@@ -182,7 +182,7 @@ function logProps(InputComponent) {
     console.log('Current props: ', this.props);
     console.log('Previous props: ', prevProps);
   };
-  // 원래의 입력을 반환한다는 것은 이미 변형되었다는 점을 시사합니다.
+  // 원본의 입력을 반환한다는 것은 이미 변형되었다는 점을 시사합니다.
   return InputComponent;
 }
 
@@ -190,9 +190,9 @@ function logProps(InputComponent) {
 const EnhancedComponent = logProps(InputComponent);
 ```
 
-여기엔 몇 가지의 문제가 있습니다. 그 중 하나는 입력된 컴포넌트를 확장된(enhanced) 컴포넌트와 별도로 재사용 할 수 없다는 것입니다. 더 중요한 것은, `componentDidUpdate`를 변형하는 `EnhancedComponent`에 또 다른 HOC를 적용하면 첫 번째 HOC의 기능은 무시됩니다! 이 HOC는 라이프 사이클 메서드가 없는 함수 컴포넌트에서도 작동하지 않습니다.
+여기엔 몇 가지의 문제가 있습니다. 그 중 하나는 입력된 컴포넌트를 확장된(enhanced) 컴포넌트와 별도로 재사용 할 수 없다는 것입니다. 더 중요한 것은, `componentDidUpdate`를 변형하는 `EnhancedComponent`에 또 다른 HOC를 적용하면 첫 번째 HOC의 기능은 무시됩니다! 이 HOC는 생명주기 메서드가 없는 함수 컴포넌트에서도 작동하지 않습니다.
 
-변경(mutation)된 HOC는 누출된 추상화(leaky abstraction)입니다. comsumer는 다른 HOC와의 충돌을 피하기 위하여 어떻게 구현되어있는지 반드시 알아야 합니다.
+변경(mutation)된 HOC는 누출된 추상화(leaky abstraction)입니다. Consumer는 다른 HOC와의 충돌을 피하기 위하여 어떻게 구현되어있는지 반드시 알아야 합니다.
 
 HOC는 변경(mutation)대신에 입력 컴포넌트를 컨테이너 구성요소로 감싸서 조합(composition)을 사용해야 합니다.
 
@@ -241,7 +241,7 @@ render() {
 
 이 컨벤션은 고차 컴포넌트의 유연성과 재사용성을 확인하는데 도움이 됩니다.
 
-## C컨벤션: 조합 가능성(Composability) 끌어올리기 {#convention-maximizing-composability}
+## 컨벤션: 조합 가능성(Composability) 끌어올리기 {#convention-maximizing-composability}
 
 고차 컴포넌트는 여러 가지 방법으로 작성할 수 있습니다. 때때로 단일 인수로 래핑된 컴포넌트만 받을 때도 있습니다.
 
@@ -267,8 +267,8 @@ const ConnectedComment = connect(commentSelector, commentActions)(CommentList);
 ```js
 // connect는 다른 함수를 반환하는 함수 입니다.
 const enhance = connect(commentListSelector, commentListActions);
-// 반환된 함수는 Redux store에 연결된 컴포넌트를 반환하하는
-// 고차 함수 캄포넌트 입니다.
+// 반환된 함수는 Redux store에 연결된 컴포넌트를 반환하는
+// 고차 함수 컴포넌트 입니다.
 const ConnectedComment = enhance(CommentList);
 ```
 다르게 말하면 `connect` 는 고차 컴포넌트를 반환하는 고차 함수입니다.
@@ -337,7 +337,7 @@ render() {
 대신에 컴포넌트의 정의 바깥에 HOC를 적용하여 컴포넌트가 한 번만 생성되도록 합니다. 그러면 해당 component는 여러번 렌더링이 되더라도 일관성을 유지합니다.
 일반적으로 렌더링이 여러번 되어도 바뀌길 원하는 사람은 없을 것이라고 생각합니다.
 
-드문 경우로 HOC를 동적으로 적용해야 할 경우에는 컴포넌트의 라이프 사이클 메서드 또는 생성자 내에 작성 할 수 있습니다.
+드문 경우로 HOC를 동적으로 적용해야 할 경우에는 컴포넌트의 생명주기 메서드 또는 생성자 내에 작성 할 수 있습니다.
 
 ### 정적 메서드는 반드시 따로 복사하세요 {#static-methods-must-be-copied-over}
 
