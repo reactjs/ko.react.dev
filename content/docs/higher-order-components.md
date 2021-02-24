@@ -239,7 +239,7 @@ render() {
 }
 ```
 
-이 컨벤션은 고차 컴포넌트의 유연성과 재사용성을 확인하는데 도움이 됩니다.
+이 컨벤션은 고차 컴포넌트의 유연성과 재사용성을 보장하는데 도움이 됩니다.
 
 ## 컨벤션: 조합 가능성(Composability) 끌어올리기 {#convention-maximizing-composability}
 
