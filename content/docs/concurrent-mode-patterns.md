@@ -193,7 +193,7 @@ function App() {
 
 7줄의 코드만으로 트랜지션을 추가했습니다.
 
-* `useTransition` 훅을 가져와 컴포넌트의 상태 갱신 부분에 사용했습니다.
+* `useTransition` 훅을 가져와 상태를 업데이트하는 컴포넌트에서 사용했습니다.
 * `{timeoutMs: 3000}` 옵션을 전달하여 최대 3초간 이전 화면을 유지하도록 설정했습니다.
 * React가 상태 갱신을 지연할 수 있도록 상태 갱신 코드를 `startTransition` 함수로 래핑했습니다.
 * `isPending`을 이용하여 사용자에게 작업 상황을 알리고 버튼을 비활성화합니다.
@@ -710,7 +710,7 @@ function App() {
 ```js{4,5}
 function handleChange(e) {
   const value = e.target.value;
-  
+
   // Outside the transition (urgent)
   setQuery(value);
 
