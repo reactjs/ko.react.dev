@@ -6,11 +6,7 @@ permalink: docs/context.html
 
 context를 이용하면 단계마다 일일이 props를 넘겨주지 않고도 컴포넌트 트리 전체에 데이터를 제공할 수 있습니다.
 
-<<<<<<< HEAD
 일반적인 React 애플리케이션에서 데이터는 위에서 아래로 (즉, 부모로부터 자식에게) props를 통해 전달되지만, 애플리케이션 안의 여러 컴포넌트들에 전해줘야 하는 props의 경우 (예를 들면 선호 로케일, UI 테마) 이 과정이 번거로울 수 있습니다. context를 이용하면, 트리 단계마다 명시적으로 props를 넘겨주지 않아도 많은 컴포넌트가 이러한 값을 공유하도록 할 수 있습니다.
-=======
-In a typical React application, data is passed top-down (parent to child) via props, but such usage can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
 
 - [언제 context를 써야 할까](#when-to-use-context)
 - [context를 사용하기 전에 고려할 것](#before-you-use-context)
@@ -84,11 +80,7 @@ function Page(props) {
 
 이렇게 바꾸면 `Link`와 `Avatar` 컴포넌트가 `user` 와 `avatarSize` props를 쓴다는 걸 알아야 하는 건 가장 위에 있는 `Page` 뿐입니다.
 
-<<<<<<< HEAD
-이러한 *제어의 역전(inversion of control)* 을 이용하면 넘겨줘야 하는 props의 수는 줄고 최상위 컴포넌트의 제어력은 더 커지기 때문에 더 깔끔한 코드를 쓸 수 있는 경우가 많습니다. 하지만 이 방법이 항상 옳은 것은 아닙니다. 복잡한 로직을 상위로 옮기면 이 상위 컴포넌트들은 더 난해해지기 마련이고 하위 컴포넌트들은 필요 이상으로 유연해져야 합니다.
-=======
-This *inversion of control* can make your code cleaner in many cases by reducing the amount of props you need to pass through your application and giving more control to the root components. Such inversion, however, isn't the right choice in every case; moving more complexity higher in the tree makes those higher-level components more complicated and forces the lower-level components to be more flexible than you may want.
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
+이러한 *제어의 역전(inversion of control)* 을 이용하면 넘겨줘야 하는 props의 수는 줄고 최상위 컴포넌트의 제어력은 더 커지기 때문에 더 깔끔한 코드를 쓸 수 있는 경우가 많습니다. 하지만 이러한 역전이 항상 옳은 것은 아닙니다. 복잡한 로직을 상위로 옮기면 이 상위 컴포넌트들은 더 난해해지기 마련이고 하위 컴포넌트들은 필요 이상으로 유연해져야 합니다.
 
 자식으로 둘 수 있는 컴포넌트의 수에 제한은 없습니다. 여러 컴포넌트, 혹은 여러 개로 구분된 "슬롯"을 넘기는 방법에 대해서는 [여기](/docs/composition-vs-inheritance.html#containment)를 참조하세요.
 
@@ -126,11 +118,7 @@ const MyContext = React.createContext(defaultValue);
 
 Context 객체를 만듭니다. Context 객체를 구독하고 있는 컴포넌트를 렌더링할 때 React는 트리 상위에서 가장 가까이 있는 짝이 맞는 `Provider`로부터 현재값을 읽습니다.
 
-<<<<<<< HEAD
-`defaultValue` 매개변수는 트리 안에서 적절한 Provider를 **찾지 못했을 때만** 쓰이는 값입니다. 컴포넌트를 독립적으로 테스트할 때 유용한 값입니다. Provider를 통해 `undefined`을 값으로 보낸다고 해도 구독 컴포넌트들이 `defaultValue` 를 읽지는 않는다는 점에 유의하세요.
-=======
-The `defaultValue` argument is **only** used when a component does not have a matching Provider above it in the tree. This default value can be helpful for testing components in isolation without wrapping them. Note: passing `undefined` as a Provider value does not cause consuming components to use `defaultValue`.
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
+`defaultValue` 매개변수는 트리 안에서 적절한 Provider를 **찾지 못했을 때만** 쓰이는 값입니다. 이 기본값은 컴포넌트를 독립적으로 테스트할 때 유용한 값입니다. Provider를 통해 `undefined`을 값으로 보낸다고 해도 구독 컴포넌트들이 `defaultValue` 를 읽지는 않는다는 점에 유의하세요.
 
 ### `Context.Provider` {#contextprovider}
 
@@ -173,15 +161,10 @@ class MyClass extends React.Component {
 }
 MyClass.contextType = MyContext;
 ```
-[`React.createContext()`](#reactcreatecontext)로 생성한 Context 객체를 원하는 클래스의 `contextType` 프로퍼티로 지정할 수 있습니다. 그러면 그 클래스 안에서 `this.context`를 이용해 해당 Context의 가장 가까운 Provider를 찾아 그 값을 읽을 수 있게됩니다. 이 값은 render를 포함한 모든 컴포넌트 생명주기 매서드에서 사용할 수 있습니다.
 
-<<<<<<< HEAD
+[`React.createContext()`](#reactcreatecontext)로 생성한 Context 객체를 원하는 클래스의 `contextType` 프로퍼티로 지정할 수 있습니다. 이 프로퍼티를 활용해 클래스 안에서 `this.context`를 이용해 해당 Context의 가장 가까운 Provider를 찾아 그 값을 읽을 수 있게됩니다. 이 값은 render를 포함한 모든 컴포넌트 생명주기 매서드에서 사용할 수 있습니다.
+
 > 주의
-=======
-The `contextType` property on a class can be assigned a Context object created by [`React.createContext()`](#reactcreatecontext). Using this property lets you consume the nearest current value of that Context type using `this.context`. You can reference this in any of the lifecycle methods including the render function.
-
-> Note:
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
 >
 > 이 API를 사용하면 하나의 context만 구독할 수 있습니다. 여러 context를 구독하기 위해서는 [여러 context 구독하기](#consuming-multiple-contexts)를 참조하세요.
 >
@@ -205,11 +188,7 @@ class MyClass extends React.Component {
 </MyContext.Consumer>
 ```
 
-<<<<<<< HEAD
-context 변화를 구독하는 React 컴포넌트입니다. [함수 컴포넌트](/docs/components-and-props.html#function-and-class-components)안에서 context를 읽기 위해서 쓸 수 있습니다.
-=======
-A React component that subscribes to context changes. Using this component lets you subscribe to a context within a [function component](/docs/components-and-props.html#function-and-class-components).
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
+context 변화를 구독하는 React 컴포넌트입니다. 이 컴포넌트를 사용하면 [함수 컴포넌트](/docs/components-and-props.html#function-and-class-components)안에서 context를 구독할 수 있습니다.
 
 Context.Consumer의 자식은 [함수](/docs/render-props.html#using-props-other-than-render)여야합니다. 이 함수는 context의 현재값을 받고 React 노드를 반환합니다. 이 함수가 받는 `value` 매개변수 값은 해당 context의 Provider 중 상위 트리에서 가장 가까운 Provider의 `value` prop과 동일합니다. 상위에 Provider가 없다면 `value` 매개변수 값은 `createContext()`에 보냈던 `defaultValue`와 동일할 것입니다.
 
