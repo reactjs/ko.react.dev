@@ -129,11 +129,7 @@ React 저장소를 복사한 후 yarn 명령을 사용하면 다음과 같은 �
 
 `yarn build react/index,react-dom/index --type=UMD`를 실행하고 `fixtures/packaging/babel-standalone/dev.html`을 실행하는 게 변경을 시도해보는 가장 쉬운 방법입니다. 이 파일은 `build` 폴더의 `react.development.js`를 이미 사용하고 있으므로 변경 사항을 확인할 수 있습니다.
 
-<<<<<<< HEAD
-기존 React 프로젝트에서 변경한 내용을 확인하고자 한다면 `build/dist/react.development.js`, `build/dist/react-dom.development.js` 또는 다른 빌드 파일을 애플리케이션에 복사하여 안정된 버전 대신 사용할 수 있습니다.
-=======
-If you want to try your changes in your existing React project, you may copy `build/node_modules/react/umd/react.development.js`, `build/node_modules/react-dom/umd/react-dom.development.js`, or any other build products into your app and use them instead of the stable version. 
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
+기존 React 프로젝트에서 변경한 내용을 확인하고자 한다면 `build/node_modules/react/umd/react.development.js`, `build/node_modules/react-dom/umd/react-dom.development.js` 또는 다른 빌드 파일을 애플리케이션에 복사하여 안정된 버전 대신 사용할 수 있습니다.
 
 npm을 통해 React를 사용하고 있다면, 의존성에서 `react`와 `react-dom`을 삭제하고 `yarn link`를 사용해서 로컬 `build` 폴더를 가리키게 해주세요. **`빌드할 때 --type=UMD` 대신 `--type=NODE`을 전달해야 한다는 점을 주의해주세요.** 또한 `scheduler` 패키지도 아래처럼 빌드해야 합니다.
 
