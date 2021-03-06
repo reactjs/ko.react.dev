@@ -12,11 +12,7 @@ Hook은 JavaScript 함수입니다. 하지만 Hook을 사용할 때는 두 가�
 
 ### 최상위(at the Top Level)에서만 Hook을 호출해야 합니다 {#only-call-hooks-at-the-top-level}
 
-<<<<<<< HEAD
-**반복문, 조건문 혹은 중첩된 함수 내에서 Hook을 호출하지 마세요.** 대신 항상 React 함수의 최상위(at the top level)에서 Hook을 호출해야 합니다. 이 규칙을 따르면 컴포넌트가 렌더링 될 때마다 항상 동일한 순서로 Hook이 호출되는 것이 보장됩니다. 이러한 점은 React가  `useState` 와 `useEffect` 가 여러 번 호출되는 중에도 Hook의 상태를 올바르게 유지할 수 있도록 해줍니다. 이 점에 대해서 궁금하다면 [아래](#explanation)에서 자세히 설명해 드리겠습니다.
-=======
-**Don't call Hooks inside loops, conditions, or nested functions.** Instead, always use Hooks at the top level of your React function, before any early returns. By following this rule, you ensure that Hooks are called in the same order each time a component renders. That's what allows React to correctly preserve the state of Hooks between multiple `useState` and `useEffect` calls. (If you're curious, we'll explain this in depth [below](#explanation).)
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
+**반복문, 조건문 혹은 중첩된 함수 내에서 Hook을 호출하지 마세요.** 대신 early return이 실행되기 전에 항상 React 함수의 최상위(at the top level)에서 Hook을 호출해야 합니다. 이 규칙을 따르면 컴포넌트가 렌더링 될 때마다 항상 동일한 순서로 Hook이 호출되는 것이 보장됩니다. 이러한 점은 React가  `useState` 와 `useEffect` 가 여러 번 호출되는 중에도 Hook의 상태를 올바르게 유지할 수 있도록 해줍니다. 이 점에 대해서 궁금하다면 [아래](#explanation)에서 자세히 설명해 드리겠습니다.
 
 ### 오직 React 함수 내에서 Hook을 호출해야 합니다 {#only-call-hooks-from-react-functions}
 
@@ -113,7 +109,7 @@ Hook의 호출 순서가 렌더링 간에 동일하다면 React는 지역적인 
   }
 ```
 
- `name !== ''` 조건은 첫 번째 렌더링에서 `true` 기 때문에 Hook은 동작합니다. 하지만 사용자가 그다음 렌더링에서 폼을 초기화하면서 조건을 `false`로 만들 겁니다. 렌더링 간에 Hook을 건너뛰기 때문에  Hook 호출 순서는 달라지게 됩니다. 
+ `name !== ''` 조건은 첫 번째 렌더링에서 `true` 기 때문에 Hook은 동작합니다. 하지만 사용자가 그다음 렌더링에서 폼을 초기화하면서 조건을 `false`로 만들 겁니다. 렌더링 간에 Hook을 건너뛰기 때문에  Hook 호출 순서는 달라지게 됩니다.
 
 ```js
 useState('Mary')           // 1. name state 변수를 읽습니다. (인자는 무시됩니다)
@@ -122,7 +118,7 @@ useState('Poppins')        // 🔴 2 (3이었던). surname state 변수를 읽�
 useEffect(updateTitle)     // 🔴 3 (4였던). 제목을 업데이트하기 위한 effect가 대체되는 데 실패했습니다.
 ```
 
-React는 두 번째 `useState` Hook 호출에 대해 무엇을 반환할지 몰랐습니다. React는 이전 렌더링 때처럼 컴포넌트 내에서 두 번째 Hook 호출이 `persistForm` effect와 일치할 것이라 예상했지만 그렇지 않았습니다. 그 시점부터 건너뛴 Hook 다음에 호출되는 Hook이 순서가 하나씩 밀리면서 버그를 발생시키게 됩니다. 
+React는 두 번째 `useState` Hook 호출에 대해 무엇을 반환할지 몰랐습니다. React는 이전 렌더링 때처럼 컴포넌트 내에서 두 번째 Hook 호출이 `persistForm` effect와 일치할 것이라 예상했지만 그렇지 않았습니다. 그 시점부터 건너뛴 Hook 다음에 호출되는 Hook이 순서가 하나씩 밀리면서 버그를 발생시키게 됩니다.
 
 **이것이 컴포넌트 최상위(the top of level)에서 Hook이 호출되어야만 하는 이유입니다.** 만약에 조건부로 effect를 실행하기를 원한다면, 조건문을 Hook *내부에* 넣을 수 있습니다.
 
@@ -139,4 +135,4 @@ React는 두 번째 `useState` Hook 호출에 대해 무엇을 반환할지 몰�
 
 ## 다음 단계 {#next-steps}
 
-마침내 [Custom Hook](/docs/hooks-custom.html)을 작성하는 법을 배울 준비가 되었습니다! Custom Hook은 React에서 제공하는 Hook을 당신의 추상화된 로직으로 사용할 수 있도록 결합해주고 다른 컴포넌트 사이에서 공통의 상태 관련 로직을 재사용 할 수 있도록 해줍니다. 
+마침내 [Custom Hook](/docs/hooks-custom.html)을 작성하는 법을 배울 준비가 되었습니다! Custom Hook은 React에서 제공하는 Hook을 당신의 추상화된 로직으로 사용할 수 있도록 결합해주고 다른 컴포넌트 사이에서 공통의 상태 관련 로직을 재사용 할 수 있도록 해줍니다.
