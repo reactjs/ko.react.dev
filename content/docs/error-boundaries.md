@@ -47,7 +47,7 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
@@ -71,11 +71,7 @@ class ErrorBoundary extends React.Component {
 
 ## 에러 경계를 배치할 위치 {#where-to-place-error-boundaries}
 
-<<<<<<< HEAD
 에러 경계의 좀 더 세분화된 부분은 개발자에게 달려있습니다. 서버 사이드 프레임워크가 충돌을 해결하는 것처럼 최상위 경로의 컴포넌트를 감싸서 유저에게 “문제가 발생했습니다”라는 메시지를 보여줄 수 있습니다. 또한 에러 경계의 각 위젯을 에러 경계로 감싸서 애플리케이션의 나머지 부분이 충돌하지 않도록 보호할 수도 있습니다.
-=======
-The granularity of error boundaries is up to you. You may wrap top-level route components to display a “Something went wrong” message to the user, just like how server-side frameworks often handle crashes. You may also wrap individual widgets in an error boundary to protect them from crashing the rest of the application.
->>>>>>> df2fbde3b52336229eee550debd692184c427691
 
 
 ## 포착되지 않는 에러에 대한 새로운 동작 {#new-behavior-for-uncaught-errors}
@@ -134,11 +130,7 @@ try {
 
 React는 이벤트 핸들러의 에러를 해결하기 위해서 에러 경계를 필요로 하지 않습니다. render 메서드 및 생명주기 메서드와 달리 이벤트 핸들러는 렌더링 중에 발생하지 않습니다. 따라서 이벤트 핸들러가 에러를 던져도 React는 여전히 화면에 무엇을 표시해야 할 지 알고 있습니다.
 
-<<<<<<< HEAD
 이벤트 핸들러 내에서 에러를 잡아야 하는 경우에 일반 자바스크립트의 `try` / `catch` 구문을 사용하세요.
-=======
-If you need to catch an error inside an event handler, use the regular JavaScript `try` / `catch` statement:
->>>>>>> df2fbde3b52336229eee550debd692184c427691
 
 ```js{9-13,17-20}
 class MyComponent extends React.Component {
