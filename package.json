@@ -46,9 +46,15 @@
     "mdast-util-to-string": "^1.0.5",
     "normalize.css": "^8.0.0",
     "prettier": "^1.7.4",
+<<<<<<< HEAD
     "prismjs": "^1.23.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+=======
+    "prismjs": "^1.15.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+>>>>>>> c970f75a0ac3513f50e7a4989757c50cde0b7396
     "react-helmet": "^5.2.0",
     "react-live": "1.8.0-0",
     "remarkable": "^1.7.1",
@@ -58,7 +64,7 @@
     "unist-util-visit": "^1.1.3"
   },
   "engines": {
-    "node": "12.x.x || 14.x.x",
+    "node": "12.x.x || 14.x.x || 15.x.x",
     "yarn": "^1.3.2"
   },
   "homepage": "https://ko.reactjs.org/",

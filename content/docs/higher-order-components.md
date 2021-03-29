@@ -14,7 +14,11 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 컴포넌트는 props를 UI로 변환하는 반면에, 고차 컴포넌트는 컴포넌트를 새로운 컴포넌트로 변환합니다.
 
+<<<<<<< HEAD
 고차 컴포넌트(HOC)는 Redux의 [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect)와 Relay의 [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html)와 같은 서드 파티 리액트 라이브러리에서 흔하게 볼 수 있습니다.
+=======
+HOCs are common in third-party React libraries, such as Redux's [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) and Relay's [`createFragmentContainer`](https://relay.dev/docs/v10.1.3/fragment-container/#createfragmentcontainer).
+>>>>>>> c970f75a0ac3513f50e7a4989757c50cde0b7396
 
 이 문서에서는 고차 컴포넌트가 유용한 이유를 보여주고, 직접 작성하는 방법에 대해 알아보겠습니다.
 
