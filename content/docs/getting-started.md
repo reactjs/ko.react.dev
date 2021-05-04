@@ -73,7 +73,7 @@ React 문서가 어렵게 느껴진다면, [Tania Rascia가 쓴 React 개요](ht
 
 ### JavaScript 리소스 {#javascript-resources}
 
-React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 쓰여져 있습니다. 전문가일 필요는 없지만, React와 JavaScript를 동시에 배우기는 어렵습니다.
+React 문서는 JavaScript 프로그래밍에 익숙한 사람을 대상으로 쓰여져 있습니다. 전문가일 필요는 없지만, React와 JavaScript를 동시에 배우기는 어렵습니다.
 
 [이 JavaScript 개요](https://developer.mozilla.org/ko/docs/A_re-introduction_to_JavaScript)를 읽고 여러분의 Javascript 수준을 확인하는 것을 권장합니다. 30분에서 1시간 정도 걸리겠지만 React를 익히는 데에 더 자신감이 생길 것입니다.
 
