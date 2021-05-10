@@ -76,6 +76,7 @@ function Counter({initialCount}) {
 > 클래스 컴포넌트의 `setState` 메서드와는 다르게, `useState`는 갱신 객체(update objects)를 자동으로 합치지는 않습니다. 함수 업데이터 폼을 객체 전개 연산자와 결합함으로써 이 동작을 복제할 수 있습니다.
 >
 > ```js
+> const [state, setState] = useState({});
 > setState(prevState => {
 >   // Object.assign would also work
 >   return {...prevState, ...updatedValues};

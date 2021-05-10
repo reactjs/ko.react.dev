@@ -14,7 +14,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 컴포넌트는 props를 UI로 변환하는 반면에, 고차 컴포넌트는 컴포넌트를 새로운 컴포넌트로 변환합니다.
 
-고차 컴포넌트(HOC)는 Redux의 [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect)와 Relay의 [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html)와 같은 서드 파티 리액트 라이브러리에서 흔하게 볼 수 있습니다.
+고차 컴포넌트(HOC)는 Redux의 [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect)와 Relay의 [`createFragmentContainer`](https://relay.dev/docs/v10.1.3/fragment-container/#createfragmentcontainer)와 같은 서드 파티 리액트 라이브러리에서 흔하게 볼 수 있습니다.
 
 이 문서에서는 고차 컴포넌트가 유용한 이유를 보여주고, 직접 작성하는 방법에 대해 알아보겠습니다.
 
@@ -107,7 +107,7 @@ class BlogPost extends React.Component {
 - 컴포넌트가 마운트 해제되면 change 리스너를 제거합니다.
 
 규모가 큰 애플리케이션에서 `DataSource`를 구독하고 `setState` 를 호출하는 동일한 패턴이 반복적으로 발생한다고 가정해봅시다.
-그렇게 된다면 이 로직을 한 곳에서 정의하고 많은 컴포넌트에서 로직을 공유할 수 있게 하는 추상화가 필요하게 됩니다. 
+그렇게 된다면 이 로직을 한 곳에서 정의하고 많은 컴포넌트에서 로직을 공유할 수 있게 하는 추상화가 필요하게 됩니다.
 이러한 경우에 고차 컴포넌트를 사용하면 좋습니다.
 
 `DataSource` 를 구독하는 `CommentList` 나 `BlogPost` 같은 컴포넌트를 생성하는 함수를 작성할 수 있습니다. 구독한 데이터를 prop으로 전달받는 자식 컴포넌트를 파라미터 중 하나로 받는 함수를 만듭니다. 이 함수를 `withSubscription` 라고 합시다.

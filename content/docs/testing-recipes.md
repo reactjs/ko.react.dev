@@ -465,13 +465,12 @@ import { act } from "react-dom/test-utils";
 
 import Card from "./card";
 
-jest.useFakeTimers();
-
 let container = null;
 beforeEach(() => {
   // 렌터링 대상으로 DOM 엘리먼트를 세팅 합니다.
   container = document.createElement("div");
   document.body.appendChild(container);
+  jest.useFakeTimers();
 });
 
 afterEach(() => {
@@ -479,6 +478,7 @@ afterEach(() => {
   unmountComponentAtNode(container);
   container.remove();
   container = null;
+  jest.useRealTimers();
 });
 
 it("should select null after timing out", () => {

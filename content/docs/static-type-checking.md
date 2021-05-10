@@ -284,7 +284,7 @@ npm run build
 
 
 ### 타입 정의 {#type-definitions}
-다른 패키지의 오류와 힌트를 출력하기 위해 컴파일러는 선언 파일에 의존합니다. 선언 파일은 라이브러리에 대한 모든 타입 정보를 제공합니다. 프로젝트의 npm에 라이브러리에 대한 선언파일이 있다면 해당하는 Javascript 라이브러리를 사용할 수 있습니다.
+다른 패키지의 오류와 힌트를 출력하기 위해 컴파일러는 선언 파일에 의존합니다. 선언 파일은 라이브러리에 대한 모든 타입 정보를 제공합니다. 프로젝트의 npm에 라이브러리에 대한 선언파일이 있다면 해당하는 JavaScript 라이브러리를 사용할 수 있습니다.
 
 라이브러리에 대한 선언을 가져올 수 있는 방법은 두가지가 있습니다.
 
@@ -326,7 +326,7 @@ Reason은 Facebook이 개발했고, 메신저 같은 몇몇 제품에 사용되�
 
 [Kotlin](https://kotlinlang.org/)은 JetBrains이 개발한 정적 타입 언어입니다. Kotlin의 타깃 플랫폼은 JVM, Android, LLVM, JavaScript입니다.
 
-JetBrains은 React 커뮤니티를 위해 [React bindings](https://github.com/JetBrains/kotlin-wrappers)나 [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app)와 같은 몇몇 도구를 개발, 유지하고 있습니다. Create React Kotlin App은 별다른 빌드 설정 없이 Kotlin으로 React 앱을 개발할 수 있고록 도와줍니다.
+JetBrains은 React 커뮤니티를 위해 [React bindings](https://github.com/JetBrains/kotlin-wrappers)나 [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app)와 같은 몇몇 도구를 개발, 유지하고 있습니다. Create React Kotlin App은 별다른 빌드 설정 없이 Kotlin으로 React 앱을 개발할 수 있도록 도와줍니다.
 
 ## 다른 언어들 {#other-languages}
 

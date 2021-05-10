@@ -296,7 +296,7 @@ state를 끌어오면 코드가 장황해지고, 이로 인하여 컴포넌트�
 getSnapshotBeforeUpdate(prevProps, prevState)
 ```
 
-`getSnapshotBeforeUpdate()`는 가장 마지막으로 렌더링된 결과가 DOM 등에 반영되었을 때에 호출됩니다. 이 메서드를 사용하면 컴포넌트가 DOM으로부터 스크롤 위치 등과 같은 정보를 이후 변경되기 전에 얻을 수 있습니다. 이 생명주기가 반환하는 값은 `componentDidUpdate()`에 인자로 전달됩니다.
+`getSnapshotBeforeUpdate()`는 가장 마지막으로 렌더링된 결과가 DOM 등에 반영되었을 때에 호출됩니다. 이 메서드를 사용하면 컴포넌트가 DOM으로부터 스크롤 위치 등과 같은 정보를 이후 변경되기 전에 얻을 수 있습니다. 이 생명주기 메서드가 반환하는 값은 `componentDidUpdate()`에 인자로 전달됩니다.
 
 이 메서드에 대한 사용례는 흔하지 않지만, 채팅 화면처럼 스크롤 위치를 따로 처리하는 작업이 필요한 UI 등을 생각해볼 수 있습니다.
 

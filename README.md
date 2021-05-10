@@ -53,7 +53,7 @@
 1. `git push my-fork-name the-name-of-my-branch`
 1. [reactjs.org repo](https://github.com/reactjs/reactjs.org)에서 최근에 푸시된 브랜치를 볼 수 있습니다.
 1. Github 지침을 따라주세요.
-1. 가능하다면 시각적으로 변화된 부분의 스크린샷을 첨부해주세요. PR을 만들고 다른사람들이 수정사항을 볼 수 있게되면, Netlify가 자동적으로 빌드할 것입니다.
+1. 가능하다면 시각적으로 변화된 부분의 스크린샷을 첨부해주세요. PR을 만들고 다른사람들이 수정사항을 볼 수 있게되면, [Netlify](https://www.netlify.com/)가 자동적으로 빌드할 것입니다.
 
 ## 번역
 
