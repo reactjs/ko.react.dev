@@ -42,7 +42,11 @@ console.log(add(16, 26)); // 42
 
 [Create React App](https://create-react-app.dev/)이나 [Next.js](https://nextjs.org/), [Gatsby](https://www.gatsbyjs.org/) 혹은 비슷한 툴을 사용한다면 여러분이 설치한 앱에서 Webpack을 같이 설치했을 겁니다.
 
+<<<<<<< HEAD
 이런 툴을 사용하지 않는다면 여러분이 스스로 번들링을 설정해야 합니다. 이 경우 Webpack의 [설치하기](https://webpack.js.org/guides/installation/) 문서와 [시작하기](https://webpack.js.org/guides/getting-started/) 문서를 참조해 주세요.
+=======
+If you aren't, you'll need to set up bundling yourself. For example, see the [Installation](https://webpack.js.org/guides/installation/) and [Getting Started](https://webpack.js.org/guides/getting-started/) guides on the Webpack docs.
+>>>>>>> 16158f195a86fc2dbb59b3ea5a5c32ce161dccb9
 
 ## 코드 분할 {#code-splitting}
 

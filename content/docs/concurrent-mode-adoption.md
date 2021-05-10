@@ -21,6 +21,10 @@ next: concurrent-mode-reference.html
 >
 >이 문서는 얼리 어답터와 궁금해하시는 분을 대상으로 합니다. **React를 처음 쓰신다면 이 기능들에 대해 신경 쓰지 마세요.** 당장 익힐 필요는 없습니다.
 
+>Caution:
+>
+>All references below to "blocking mode" and `createBlockingRoot` are outdated and should be ignored.
+
 </div>
 
 - [설치하기](#installation)

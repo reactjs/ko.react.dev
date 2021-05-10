@@ -51,9 +51,15 @@
 
 1. `git add -A && git commit -m "My message"` (`My message` 부분을 `Fix header logo on Android` 같은 커밋 메시지로 교체)를 실행하여 변경한 파일들을 commit 해주세요.
 1. `git push my-fork-name the-name-of-my-branch`
+<<<<<<< HEAD
 1. [reactjs.org repo](https://github.com/reactjs/reactjs.org)에서 최근에 푸시된 브랜치를 볼 수 있습니다.
 1. Github 지침을 따라주세요.
 1. 가능하다면 시각적으로 변화된 부분의 스크린샷을 첨부해주세요. PR을 만들고 다른사람들이 수정사항을 볼 수 있게되면, Netlify가 자동적으로 빌드할 것입니다.
+=======
+1. Go to the [reactjs.org repo](https://github.com/reactjs/reactjs.org) and you should see recently pushed branches.
+1. Follow GitHub's instructions.
+1. If possible, include screenshots of visual changes. A [Netlify](https://www.netlify.com/) build will also be automatically created once you make your PR so other people can see your change.
+>>>>>>> 16158f195a86fc2dbb59b3ea5a5c32ce161dccb9
 
 ## 번역
 

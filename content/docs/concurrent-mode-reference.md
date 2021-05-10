@@ -28,7 +28,6 @@ prev: concurrent-mode-adoption.html
 
 - [Concurrent 모드 활성화](#concurrent-mode)
     - [`createRoot`](#createroot)
-    - [`createBlockingRoot`](#createblockingroot)
 - [Suspense](#suspense)
     - [`Suspense`](#suspensecomponent)
     - [`SuspenseList`](#suspenselist)
@@ -47,6 +46,7 @@ ReactDOM.createRoot(rootNode).render(<App />);
 
 Concurrent 모드에 대한 더 자세한 설명이 필요하다면, [Concurrent Mode 문서](/docs/concurrent-mode-intro.html)를 참고해주세요.
 
+<<<<<<< HEAD
 ### `createBlockingRoot` {#createblockingroot}
 
 ```js
@@ -59,6 +59,8 @@ Concurrent 모드를 선택하면 React 작동하는 방식에 의미적 변화�
 
 Blocking 모드는 Concurrent 모드의 일부만 포함하며 곧바로 마이그레이션 할 수 없는 앱의 중간 마이그레이션 단계로 사용됩니다.
 
+=======
+>>>>>>> 16158f195a86fc2dbb59b3ea5a5c32ce161dccb9
 ## Suspense API {#suspense}
 
 ### `Suspense` {#suspensecomponent}

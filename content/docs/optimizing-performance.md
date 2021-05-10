@@ -156,6 +156,7 @@ module.exports = {
 
 production 빌드에서만 필요한 작업이라는 점을 기억하세요. React의 유용한 경고를 숨기고 빌드를 훨씬 느리게 만들기 때문에 `TerserPlugin`을 개발 중에 적용하지 마세요.
 
+<<<<<<< HEAD
 ## Chrome Performance 탭으로 컴포넌트 프로파일링 {#profiling-components-with-the-chrome-performance-tab}
 
 **개발** 모드에서 지원되는 브라우저의 Performance 탭을 사용하여 어떻게 컴포넌트가 마운트, 업데이트, 그리고 마운트 해제되는지 시각화할 수 있습니다. 예를 들면.
@@ -183,6 +184,9 @@ Chrome에서 이 작업을 하려면
 현재는 Chrome, Edge 그리고 IE만이 이 기능을 지원하는 브라우저지만 [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API)가 표준으로 사용되기 때문에 더 많은 브라우저가 지원을 추가할 것으로 예상됩니다.
 
 ## Profiler DevTools Profiler로 컴포넌트 프로파일링 {#profiling-components-with-the-devtools-profiler}
+=======
+## Profiling Components with the DevTools Profiler {#profiling-components-with-the-devtools-profiler}
+>>>>>>> 16158f195a86fc2dbb59b3ea5a5c32ce161dccb9
 
 `react-dom` 16.5+와  `react-native` 0.57+는 React DevTools Profiler를 사용하여 개발 모드에서 향상된 프로파일링 기능을 제공합니다.
 Profiler에 대한 내용은 블로그 포스트 ["Introducing the React Profiler"](/blog/2018/09/10/introducing-the-react-profiler.html)에서 확인할 수 있습니다.
@@ -199,7 +203,16 @@ Profiler에 대한 영상도 [YouTube](https://www.youtube.com/watch?v=nySib7ipZ
 > `react-dom`의 프로덕션 프로파일링 bundle은 `react-dom/profiling`으로 이용할 수 있습니다.
 > bundle을 사용하는 법에 대한 자세한 내용은 [fb.me/react-profiling](https://fb.me/react-profiling)에서 확인하세요.
 
+<<<<<<< HEAD
 ## 긴 목록 가상화하세요 {#virtualize-long-lists}
+=======
+> Note
+>
+> Before React 17, we use the standard [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile components with the chrome performance tab. 
+> For a more detailed walkthrough, check out [this article by Ben Schwarz](https://calibreapp.com/blog/react-performance-profiling-optimization).
+
+## Virtualize Long Lists {#virtualize-long-lists}
+>>>>>>> 16158f195a86fc2dbb59b3ea5a5c32ce161dccb9
 
 애플리케이션에서 긴 목록(수백 또는 수천행)을 렌더링하는 경우 'windowing'이라는 기법을 사용하는 것을 추천합니다. 이 기법은 주어진 시간에 목록의 부분 목록만 렌더링하며 컴포넌트를 다시 렌더링하는 데 걸리는 시간과 생성된 DOM 노드의 수를 크게 줄일 수 있습니다.
 
