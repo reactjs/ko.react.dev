@@ -295,7 +295,11 @@ const EnhancedComponent = enhance(WrappedComponent)
 
 ## 컨벤션: 간단한 디버깅을 위한 디스플레이 네임 작성 방법 {#convention-wrap-the-display-name-for-easy-debugging}
 
+<<<<<<< HEAD
 다른 구성 요소와 마찬가지로 HOC로 만든 컨테이너 구성 요소도 [React Developer Tools](https://github.com/facebook/react-devtools)에 표시됩니다. 디버깅을 쉽게 하려면 HOC의 결과임을 알리는 디스플레이 네임을 작성합니다.
+=======
+The container components created by HOCs show up in the [React Developer Tools](https://github.com/facebook/react/tree/master/packages/react-devtools) like any other component. To ease debugging, choose a display name that communicates that it's the result of a HOC.
+>>>>>>> 68e4efcf93b6e589355f6aa3cbc3f3c811c0ad37
 
 가장 일반적인 방법은 HOC의 이름으로 내부 컴포넌트명을 감싸는 것입니다. 따라서 HOC의 이름이 `withSubscription`이고, HOC 내부의 컴포넌트의 이름이 `CommentList` 인 경우, 디스플레이 네임은 `WithSubscription(CommentList)`을 사용합니다.
 
