@@ -16,9 +16,18 @@ prev: concurrent-mode-adoption.html
 
 >주의
 >
+<<<<<<< HEAD
 >이 페이지는 **안정된 배포판에서는 [아직 사용할 수 없는](/docs/concurrent-mode-adoption.html) 실험적인 기능들에 관해 설명합니다.** 프로덕션용 앱에선 React의 실험 배포판을 사용하지 마세요. 이 기능들은 React의 일부가 되기 전에 경고 없이 크게 변경될 수 있습니다.
 >
 >이 문서는 얼리어답터들과 궁금해하시는 분들을 위해 제작된 문서입니다. **React를 처음 접해본다면 이러한 기능들을 걱정하지 않아도 됩니다.** 그 기능들을 바로 배울 필요는 없습니다.
+=======
+>This page was about experimental features that aren't yet available in a stable release. It was aimed at early adopters and people who are curious.
+>
+>Much of the information on this page is now outdated and exists only for archival purposes. **Please refer to the [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html
+) for the up-to-date information.**
+>
+>Before React 18 is released, we will replace this page with stable documentation.
+>>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 </div>
 
@@ -59,7 +68,11 @@ Concurrent 모드에 대한 더 자세한 설명이 필요하다면, [Concurrent
 
 `Suspense`는 컴포넌트가 렌더링되기 전에 무언가를 "기다릴 수 있도록 하며", 기다리는 동안에 폴백을 보여줍니다.
 
+<<<<<<< HEAD
 위 예시에서 `ProfileDetails`는 일부 데이터를 가져 오기 위해 비동기 API 호출을 기다리고 있습니다. `ProfileDetails`와 `ProfilePhoto`를 기다리는 동안에 `Loading...` 폴백을 대신 보여줍니다. `<Suspense>`의 모든 자식이 로드될 때까지 폴백을 계속 표시한다는 점에 주의해주세요.
+=======
+In this example, `ProfileDetails` is waiting for an asynchronous API call to fetch some data. While we wait for `ProfileDetails` and `ProfilePhoto`, we will show the `Loading...` fallback instead. It is important to note that until all children inside `<Suspense>` have loaded, we will continue to show the fallback.
+>>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 `Suspense`는 두 개의 props를 사용합니다.
 * **fallback**은 로딩 표시기를 받아들입니다. 폴백은 `Suspense` 컴포넌트의 모든 자식이 렌더링을 마치기 전까지 표시됩니다.

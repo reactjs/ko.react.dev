@@ -19,9 +19,17 @@ var ReactTestUtils = require('react-dom/test-utils'); // npm과 ES5
 
 > 주의
 >
+<<<<<<< HEAD
 > Facebook에서는 [React Testing Library](https://testing-library.com/react) 사용을 권장합니다. 이 라이브러리는 사용자가 컴포넌트를 사용하는 것처럼 테스트를 작성할 수 있도록 설계되었습니다.
 >
 > 대안으로는 Airbnb에서 출시한 테스팅 도구인 [Enzyme](https://airbnb.io/enzyme/)이 있습니다. Enzyme은 React 컴포넌트의 출력을 쉽게 검증하고 조작하고 탐색할 수 있게 해줍니다.
+=======
+> We recommend using [React Testing Library](https://testing-library.com/react) which is designed to enable and encourage writing tests that use your components as the end users do.
+> 
+> For React versions <= 16, the [Enzyme](https://airbnb.io/enzyme/) library makes it easy to assert, manipulate, and traverse your React Components' output.
+
+
+>>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)

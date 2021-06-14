@@ -16,9 +16,18 @@ next: concurrent-mode-suspense.html
 
 >주의사항
 >
+<<<<<<< HEAD
 >이 페이지는 **안정된 배포판에서는 [아직 사용할 수 없는](/docs/concurrent-mode-adoption.html) 실험적인 기능들**에 관해 설명합니다. 프로덕션용 앱에선 리액트의 실험 배포판을 사용하지 마세요. 이 기능들은 React에 포함되기 전에 경고 없이 크게 변경될 수 있습니다.
 >
 >이 문서는 얼리어답터들과 새로운 기능을 궁금해하시는 분들을 위해 작성된 문서입니다. **React에 처음 접해본다면 이러한 기능들을 걱정하지 않아도 됩니다**.  그 기능들을 바로 배울 필요는 없습니다. 
+=======
+>This page was about experimental features that aren't yet available in a stable release. It was aimed at early adopters and people who are curious.
+>
+>Much of the information on this page is now outdated and exists only for archival purposes. **Please refer to the [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html
+) for the up-to-date information.**
+>
+>Before React 18 is released, we will replace this page with stable documentation.
+>>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 </div>
 

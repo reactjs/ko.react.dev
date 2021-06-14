@@ -132,6 +132,7 @@
     - id: testing-recipes
       title: 테스팅 방안
     - id: testing-environments
+<<<<<<< HEAD
       title: 테스팅 환경
 - title: Concurrent 모드 (실험 단계)
   isOrdered: true
@@ -147,6 +148,10 @@
     - id: concurrent-mode-reference
       title: Concurrent 모드 API 참고서
 - title: 기여
+=======
+      title: Testing Environments
+- title: Contributing
+>>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
   items:
     - id: how-to-contribute
       title: 기여하는 방법

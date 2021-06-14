@@ -40,7 +40,11 @@ React는 JavaScript 라이브러리이며, 따라서 JavaScript 언어에 대한
 
 >주의
 >
+<<<<<<< HEAD
 >이 가이드에서는 가끔 최신 JavaScript 문법을 예시에 사용합니다. 지난 몇 년간 JavaScript로 작업하지 않았다면, [이 3가지 사항](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c)을 통해 대부분의 것을 얻을 수 있습니다.
+=======
+>This guide occasionally uses some newer JavaScript syntax in the examples. If you haven't worked with JavaScript in the last few years, [these three points](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) should get you most of the way.
+>>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 
 ## 시작해봅시다! {#lets-get-started}

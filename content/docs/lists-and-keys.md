@@ -206,7 +206,11 @@ ReactDOM.render(
 
 ### Key는 형제 사이에서만 고유한 값이어야 한다. {#keys-must-only-be-unique-among-siblings}
 
+<<<<<<< HEAD
 Key는 배열 안에서 형제 사이에서 고유해야 하고 전체 범위에서 고유할 필요는 없습니다. 두 개의 다른 배열을 만들 때 동일한 key를 사용할 수 있습니다.
+=======
+Keys used within arrays should be unique among their siblings. However, they don't need to be globally unique. We can use the same keys when we produce two different arrays:
+>>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
