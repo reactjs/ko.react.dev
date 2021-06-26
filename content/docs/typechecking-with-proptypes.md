@@ -88,7 +88,7 @@ MyComponent.propTypes = {
     fontSize: PropTypes.number
   }),
 
-  // An object with warnings on extra properties
+  // 추가 프로퍼티에 대한 경고가 있는 객체
   optionalObjectWithStrictShape: PropTypes.exact({
     name: PropTypes.string,
     quantity: PropTypes.number
