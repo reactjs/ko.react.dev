@@ -393,7 +393,9 @@ it("changes value when clicked", () => {
     render(<Toggle onChange={onChange} />, container);
   });
 
-  // 버튼 엘리먼트에 클릭 이벤트를 트리거 하세요.
+  // 버튼 엘리먼트를 가져와서 클릭 이벤트를 트리거 하세요.
+  
+  
   const button = document.querySelector("[data-testid=toggle]");
   expect(button.innerHTML).toBe("Turn on");
 
