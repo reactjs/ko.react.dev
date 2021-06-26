@@ -46,5 +46,3 @@ React는 JavaScript 라이브러리이며, 따라서 JavaScript 언어에 대한
 ## 시작해봅시다! {#lets-get-started}
 
 아래로 계속 스크롤하면, 푸터 바로 앞에서 [다음 장](/docs/introducing-jsx.html)으로 연결된 링크를 찾을 수 있습니다.
-
-
