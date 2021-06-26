@@ -61,11 +61,7 @@ Concurrent 모드에 대한 더 자세한 설명이 필요하다면, [Concurrent
 
 `Suspense`는 컴포넌트가 렌더링되기 전에 무언가를 "기다릴 수 있도록 하며", 기다리는 동안에 폴백을 보여줍니다.
 
-<<<<<<< HEAD
 위 예시에서 `ProfileDetails`는 일부 데이터를 가져 오기 위해 비동기 API 호출을 기다리고 있습니다. `ProfileDetails`와 `ProfilePhoto`를 기다리는 동안에 `Loading...` 폴백을 대신 보여줍니다. `<Suspense>`의 모든 자식이 로드될 때까지 폴백을 계속 표시한다는 점에 주의해주세요.
-=======
-In this example, `ProfileDetails` is waiting for an asynchronous API call to fetch some data. While we wait for `ProfileDetails` and `ProfilePhoto`, we will show the `Loading...` fallback instead. It is important to note that until all children inside `<Suspense>` have loaded, we will continue to show the fallback.
->>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 `Suspense`는 두 개의 props를 사용합니다.
 * **fallback**은 로딩 표시기를 받아들입니다. 폴백은 `Suspense` 컴포넌트의 모든 자식이 렌더링을 마치기 전까지 표시됩니다.
