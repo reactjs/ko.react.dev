@@ -1,84 +1,84 @@
 ---
 id: testing-recipes
-title: Testing Recipes
+title: 테스팅 방안
 permalink: docs/testing-recipes.html
 prev: testing.html
 next: testing-environments.html
 ---
 
-Common testing patterns for React components.
+React 컴포넌트를 위한 공통 테스트 패턴입니다.
 
-> Note:
+> 주의:
 >
-> This page assumes you're using [Jest](https://jestjs.io/) as a test runner. If you use a different test runner, you may need to adjust the API, but the overall shape of the solution will likely be the same. Read more details on setting up a testing environment on the [Testing Environments](/docs/testing-environments.html) page.
+> 이 페이지는 테스트 러너로 [Jest](https://jestjs.io/)를 사용한다고 가정합니다. 다른 테스트 러너를 사용한다면, 아마도 API를 조정해야 할 수도 있지만, 전체적인 형태는 거의 비슷할 겁니다. 테스트 환경에 대한 설정에 대해 더 알고 싶다면 [Testing Environments](/docs/testing-environments.html)를 참고해 주세요.
 
-On this page, we will primarily use function components. However, these testing strategies don't depend on implementation details, and work just as well for class components too.
+이 페이지에서는 함수 컴포넌트를 주로 사용합니다. 하지만, 아래 테스트 전략들은 구현 형태에 의존적이지 않으며 클래스 컴포넌트에서도 잘 동작합니다.
 
-- [Setup/Teardown](#setup--teardown)
+- [설정/해제](#setup--teardown)
 - [`act()`](#act)
-- [Rendering](#rendering)
-- [Data Fetching](#data-fetching)
-- [Mocking Modules](#mocking-modules)
-- [Events](#events)
-- [Timers](#timers)
-- [Snapshot Testing](#snapshot-testing)
-- [Multiple Renderers](#multiple-renderers)
-- [Something Missing?](#something-missing)
+- [렌더링](#rendering)
+- [데이터 가져오기](#data-fetching)
+- [모듈 모의하기](#mocking-modules)
+- [이벤트](#events)
+- [타이머](#timers)
+- [스냅샷 테스트](#snapshot-testing)
+- [다수의 렌더러](#multiple-renderers)
+- [뭔가 부족하다면?](#something-missing)
 
 ---
 
-### Setup/Teardown {#setup--teardown}
+### 설정/해제 {#setup--teardown}
 
-For each test, we usually want to render our React tree to a DOM element that's attached to `document`. This is important so that it can receive DOM events. When the test ends, we want to "clean up" and unmount the tree from the `document`.
+테스트마다 일반적으로 React 트리를 `document`의 DOM 엘리먼트에 렌더링하는데, 이는 DOM 이벤트를 수신하기 위해 중요합니다. 테스트가 끝날 때는, 테스트와 관련된 설정 및 값에 대해 정리(clean up)를 하고 `document` 트리에서 마운트 해제합니다.
 
-A common way to do it is to use a pair of `beforeEach` and `afterEach` blocks so that they'll always run and isolate the effects of a test to itself:
+이를 처리하는 일반적인 방법은 `beforeEach`와 `afterEach` 블록 쌍을 사용해서 항상 실행되며 테스트의 영향을 자체적으로 분리하도록 하는 것입니다.
 
 ```jsx
 import { unmountComponentAtNode } from "react-dom";
 
 let container = null;
 beforeEach(() => {
-  // setup a DOM element as a render target
+  // DOM 엘리먼트를 렌더링 대상으로 설정
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // cleanup on exiting
+  // 종료시 정리
   unmountComponentAtNode(container);
   container.remove();
   container = null;
 });
 ```
 
-You may use a different pattern, but keep in mind that we want to execute the cleanup _even if a test fails_. Otherwise, tests can become "leaky", and one test can change the behavior of another test. That makes them difficult to debug.
+다른 패턴을 사용할 수도 있지만, 테스트가 실패하더라도 정리(clean up)는 해야 합니다. 정리하지 않으면 테스트에 완전히 격리가 되지 않은 '빈틈'이 생기기 되고, 하나의 테스트는 다른 테스트의 동작에 영향을 줄 수 있습니다. 이는 디버깅을 어렵게 만듭니다.
 
 ---
 
 ### `act()` {#act}
 
-When writing UI tests, tasks like rendering, user events, or data fetching can be considered as "units" of interaction with a user interface. `react-dom/test-utils` provides a helper called [`act()`](/docs/test-utils.html#act) that makes sure all updates related to these "units" have been processed and applied to the DOM before you make any assertions:
+UI 테스트를 작성할 때, 렌더링과 같은 작업, 유저 이벤트, 데이터 가져오기는 유저 인터페이스와의 상호작용하는 "단위"로 간주 됩니다. `react-dom/test-utils`는 [`act()`](/docs/test-utils.html#act)라 불리는 함수를 제공하는데, 이 함수는 "단위"와 관련된 모든 업데이트가 단언이 실행되기 전에 처리되고 DOM에 적용되도록 돕습니다.
 
 ```js
 act(() => {
-  // render components
+  // 컴포넌트를 렌더링 한다.
 });
-// make assertions
+// 단언을 추가
 ```
 
-This helps make your tests run closer to what real users would experience when using your application. The rest of these examples use `act()` to make these guarantees.
+위의 함수를 통해 실제 사용자가 프로그램을 사용할 때 겪을 경험에 근접하게 테스트를 실행할 수 있습니다. 이후 예제에서는 `act()`를 사용하여 이를 보장합니다.
 
-You might find using `act()` directly a bit too verbose. To avoid some of the boilerplate, you could use a library like [React Testing Library](https://testing-library.com/react), whose helpers are wrapped with `act()`.
+`act()`를 직접 사용하다 보면, 코드가 길어질 때가 있습니다. 이를 간결하게 하고 싶을 때는 `act()`를 감싼 여러 도우미 함수를 제공하는 [React Testing Library] (https://testing-library.com/react)를 사용할 수 있습니다.
 
-> Note:
+> 주의:
 >
-> The name `act` comes from the [Arrange-Act-Assert](http://wiki.c2.com/?ArrangeActAssert) pattern.
+> `act`라는 이름은 [Arrange-Act-Assert](http://wiki.c2.com/?ArrangeActAssert) 패턴에서 유래되었습니다.
 
 ---
 
-### Rendering {#rendering}
+### 렌더링 {#rendering}
 
-Commonly, you might want to test whether a component renders correctly for given props. Consider a simple component that renders a message based on a prop:
+일반적으로 주어진 props에 따라 컴포넌트 렌더링이 제대로 되었는지 테스트하고 싶을 때가 있습니다. 이때, prop을 기반으로 메시지를 렌더링하는 간단한 컴포넌트가 있다고 생각해봅시다.
 
 ```jsx
 // hello.js
@@ -94,7 +94,7 @@ export default function Hello(props) {
 }
 ```
 
-We can write a test for this component:
+위 컴포넌트의 테스트를 아래와 같이 작성할 수 있습니다.
 
 ```jsx{24-27}
 // hello.test.js
@@ -107,13 +107,13 @@ import Hello from "./hello";
 
 let container = null;
 beforeEach(() => {
-  // setup a DOM element as a render target
+  // 렌더링 대상으로 DOM 엘리먼트를 설정합니다.
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // cleanup on exiting
+  // 기존의 테스트 환경을 정리합니다.
   unmountComponentAtNode(container);
   container.remove();
   container = null;
@@ -139,9 +139,9 @@ it("renders with or without a name", () => {
 
 ---
 
-### Data Fetching {#data-fetching}
+### 데이터 가져오기 {#data-fetching}
 
-Instead of calling real APIs in all your tests, you can mock requests with dummy data. Mocking data fetching with "fake" data prevents flaky tests due to an unavailable backend, and makes them run faster. Note: you may still want to run a subset of tests using an ["end-to-end"](/docs/testing-environments.html#end-to-end-tests-aka-e2e-tests) framework that tells whether the whole app is working together.
+모든 테스트에서 실제 API를 호출하는 대신에 요청을 모의해서 더미 데이터를 가져올 수 있습니다. "가짜" 데이터를 사용하여 모의 데이터를 가져오면 사용할 수 없는 백엔드로 인해 테스트가 쉽게 망가지는 것을 방지하고 더 빠르게 실행할 수 있습니다. 주의: 일부 테스트에서는 ["end-to-end"](/docs/testing-environments.html#end-to-end-tests-aka-e2e-tests) 프레임워크를 사용하여 전체 애플리케이션의 모든 부분이 함께 잘 동작하는지 살펴볼 수 있습니다.
 
 ```jsx
 // user.js
@@ -175,7 +175,7 @@ export default function User(props) {
 }
 ```
 
-We can write tests for it:
+위 컴포넌트의 테스트를 아래와 같이 작성할 수 있습니다.
 
 ```jsx{23-33,44-45}
 // user.test.js
@@ -187,13 +187,13 @@ import User from "./user";
 
 let container = null;
 beforeEach(() => {
-  // setup a DOM element as a render target
+  // 렌더링 대상으로 DOM 엘리먼트를 설정합니다.
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // cleanup on exiting
+  // 기존의 테스트 환경을 정리합니다.
   unmountComponentAtNode(container);
   container.remove();
   container = null;
@@ -212,7 +212,7 @@ it("renders user data", async () => {
     })
   );
 
-  // Use the asynchronous version of act to apply resolved promises
+  // resolved promises를 적용하려면 `act()`의 비동기 버전을 사용하세요.
   await act(async () => {
     render(<User id="123" />, container);
   });
@@ -221,18 +221,18 @@ it("renders user data", async () => {
   expect(container.querySelector("strong").textContent).toBe(fakeUser.age);
   expect(container.textContent).toContain(fakeUser.address);
 
-  // remove the mock to ensure tests are completely isolated
+  // 테스트가 완전히 격리되도록 mock을 제거하세요.
   global.fetch.mockRestore();
 });
 ```
 
 ---
 
-### Mocking Modules {#mocking-modules}
+### 모듈 모의하기 {#mocking-modules}
 
-Some modules might not work well inside a testing environment, or may not be as essential to the test itself. Mocking out these modules with dummy replacements can make it easier to write tests for your own code.
+일부 모듈은 테스트 환경에서 제대로 작동하지 않거나 테스트 자체에 필수적이지 않을 수 있습니다. 이러한 모듈을 더미 모듈로 대체하는 방식으로 모의하여 코드에 대한 테스트를 더욱 쉽게 작성할 수 있습니다.
 
-Consider a `Contact` component that embeds a third-party `GoogleMap` component:
+서드파티인 `GoogleMap` 컴포넌트를 내장하는 `Contact` 컴포넌트를 살펴보세요
 
 ```jsx
 // map.js
@@ -271,7 +271,7 @@ export default function Contact(props) {
 }
 ```
 
-If we don't want to load this component in our tests, we can mock out the dependency itself to a dummy component, and run our tests:
+테스트에서 컴포넌트를 로드하지 않는다면, 더미 컴포넌트에 대한 종속성을 모의 처리하고 테스트를 실행할 수 있습니다.
 
 ```jsx{10-18}
 // contact.test.js
@@ -295,13 +295,13 @@ jest.mock("./map", () => {
 
 let container = null;
 beforeEach(() => {
-  // setup a DOM element as a render target
+  // 렌더링 대상으로 DOM 엘리먼트를 설정합니다.
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // cleanup on exiting
+  // 기존의 테스트 환경을 정리합니다.
   unmountComponentAtNode(container);
   container.remove();
   container = null;
@@ -337,9 +337,9 @@ it("should render contact information", () => {
 
 ---
 
-### Events {#events}
+### 이벤트 {#events}
 
-We recommend dispatching real DOM events on DOM elements, and then asserting on the result. Consider a `Toggle` component:
+DOM 요소에 실제 DOM 이벤트를 전달한 다음 결과를 검증하는 게 좋습니다. `Toggle` 컴포넌트를 살펴보세요.
 
 ```jsx
 // toggle.js
@@ -362,7 +362,7 @@ export default function Toggle(props) {
 }
 ```
 
-We could write tests for it:
+위 컴포넌트의 테스트를 아래와 같이 작성할 수 있습니다.
 
 ```jsx{13-14,35,43}
 // toggle.test.js
@@ -375,13 +375,13 @@ import Toggle from "./toggle";
 
 let container = null;
 beforeEach(() => {
-  // setup a DOM element as a render target
+  // 렌더링 대상으로 DOM 엘리먼트를 설정합니다.
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // cleanup on exiting
+  // 기존의 테스트 환경을 정리합니다.
   unmountComponentAtNode(container);
   container.remove();
   container = null;
@@ -393,7 +393,9 @@ it("changes value when clicked", () => {
     render(<Toggle onChange={onChange} />, container);
   });
 
-  // get a hold of the button element, and trigger some clicks on it
+  // 버튼 엘리먼트를 가져와서 클릭 이벤트를 트리거 하세요.
+  
+  
   const button = document.querySelector("[data-testid=toggle]");
   expect(button.innerHTML).toBe("Turn on");
 
@@ -417,15 +419,15 @@ it("changes value when clicked", () => {
 
 Different DOM events and their properties are described in [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent). Note that you need to pass `{ bubbles: true }` in each event you create for it to reach the React listener because React automatically delegates events to the root.
 
-> Note:
+> 주의:
 >
-> React Testing Library offers a [more concise helper](https://testing-library.com/docs/dom-testing-library/api-events) for firing events.
+> React Testing Library는 이벤트를 발생시키기 위한 [더욱 간결한 함수](https://testing-library.com/docs/dom-testing-library/api-events)를 제공합니다. 
 
 ---
 
-### Timers {#timers}
+### 타이머 {#timers}
 
-Your code might use timer-based functions like `setTimeout` to schedule more work in the future. In this example, a multiple choice panel waits for a selection and advances, timing out if a selection isn't made in 5 seconds:
+코드는 `setTimeout` 과 같은 타이머 기반 함수를 사용하여 향후 더 많은 작업을 예약 할 수 있습니다. 이 예시에서 다중 선택 패널은 선택을 기다렸다가 5초 이내에 선택하지 않으면 시간이 초과합니다.
 
 ```jsx
 // card.js
@@ -454,7 +456,7 @@ export default function Card(props) {
 }
 ```
 
-We can write tests for this component by leveraging [Jest's timer mocks](https://jestjs.io/docs/en/timer-mocks), and testing the different states it can be in.
+[Jest's timer mocks](https://jestjs.io/docs/en/timer-mocks)를 활용하고 컴포넌트의 다양한 상태를 테스트하여 테스트 코드를 작성할 수 있습니다.
 
 ```jsx{7,31,37,49,59}
 // card.test.js
@@ -467,14 +469,14 @@ import Card from "./card";
 
 let container = null;
 beforeEach(() => {
-  // setup a DOM element as a render target
+  // 렌더링 대상으로 DOM 엘리먼트를 세팅 합니다.
   container = document.createElement("div");
   document.body.appendChild(container);
   jest.useFakeTimers();
 });
 
 afterEach(() => {
-  // cleanup on exiting
+  // 기존의 테스트 환경을 정리합니다.
   unmountComponentAtNode(container);
   container.remove();
   container = null;
@@ -487,13 +489,13 @@ it("should select null after timing out", () => {
     render(<Card onSelect={onSelect} />, container);
   });
 
-  // move ahead in time by 100ms
+  // 시간을 100ms만큼 앞당긴다.
   act(() => {
     jest.advanceTimersByTime(100);
   });
   expect(onSelect).not.toHaveBeenCalled();
 
-  // and then move ahead by 5 seconds
+  // 그리고 5초만큼 앞당긴다.
   act(() => {
     jest.advanceTimersByTime(5000);
   });
@@ -511,7 +513,7 @@ it("should cleanup on being removed", () => {
   });
   expect(onSelect).not.toHaveBeenCalled();
 
-  // unmount the app
+  // 마운트 해제한다.
   act(() => {
     render(null, container);
   });
@@ -538,15 +540,15 @@ it("should accept selections", () => {
 });
 ```
 
-You can use fake timers only in some tests. Above, we enabled them by calling `jest.useFakeTimers()`. The main advantage they provide is that your test doesn't actually have to wait five seconds to execute, and you also didn't need to make the component code more convoluted just for testing.
+일부 테스트에서만 가짜 타이머를 사용할 수 있습니다. 위에서 `jest.useFakeTimers()`를 호출해서 활성화했습니다. 주요 장점은 테스트가 실제로 5초 동안 실행될 필요가 없으며 테스트를 위해 컴포넌트 코드를 더 복잡하게 만들 필요가 없다는 점입니다.
 
 ---
 
-### Snapshot Testing {#snapshot-testing}
+### 스냅샷 테스트 {#snapshot-testing}
 
-Frameworks like Jest also let you save "snapshots" of data with [`toMatchSnapshot` / `toMatchInlineSnapshot`](https://jestjs.io/docs/en/snapshot-testing). With these, we can "save" the rendered component output and ensure that a change to it has to be explicitly committed as a change to the snapshot.
+Jest와 같은 프레임워크를 사용하면 [`toMatchSnapshot` / `toMatchInlineSnapshot`](https://jestjs.io/docs/en/snapshot-testing)을 사용하여 데이터의 "스냅샷"을 저장할 수 있습니다. 이를 통해 렌더링 된 컴포넌트 출력을 "저장"하고 컴포넌트 출력의 변경이 스냅샷 변경 사항으로 명시적으로 커밋되도록 할 수 있습니다.
 
-In this example, we render a component and format the rendered HTML with the [`pretty`](https://www.npmjs.com/package/pretty) package, before saving it as an inline snapshot:
+이 예시에서는 인라인 스냅샷으로 저장하기 전에 컴포넌트를 렌더링하고 렌더링 된 HTML을 [`pretty`](https://www.npmjs.com/package/pretty) 패키지를 사용해서 포맷을 변환합니다.
 
 ```jsx{29-31}
 // hello.test.js, again
@@ -560,13 +562,13 @@ import Hello from "./hello";
 
 let container = null;
 beforeEach(() => {
-  // setup a DOM element as a render target
+  // 렌더링 대상으로 DOM 엘리먼트를 설정합니다.
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // cleanup on exiting
+  // 기존의 테스트 환경을 정리합니다.
   unmountComponentAtNode(container);
   container.remove();
   container = null;
@@ -579,7 +581,7 @@ it("should render a greeting", () => {
 
   expect(
     pretty(container.innerHTML)
-  ).toMatchInlineSnapshot(); /* ... gets filled automatically by jest ... */
+  ).toMatchInlineSnapshot(); /* ... jest에 의해 자동으로 채워집니다 ... */
 
   act(() => {
     render(<Hello name="Jenny" />, container);
@@ -587,7 +589,7 @@ it("should render a greeting", () => {
 
   expect(
     pretty(container.innerHTML)
-  ).toMatchInlineSnapshot(); /* ... gets filled automatically by jest ... */
+  ).toMatchInlineSnapshot(); /* ... jest에 의해 자동으로 채워집니다 ... */
 
   act(() => {
     render(<Hello name="Margaret" />, container);
@@ -595,17 +597,17 @@ it("should render a greeting", () => {
 
   expect(
     pretty(container.innerHTML)
-  ).toMatchInlineSnapshot(); /* ... gets filled automatically by jest ... */
+  ).toMatchInlineSnapshot(); /* ... jest에 의해 자동으로 채워집니다 ... */
 });
 ```
 
-It's typically better to make more specific assertions than to use snapshots. These kinds of tests include implementation details so they break easily, and teams can get desensitized to snapshot breakages. Selectively [mocking some child components](#mocking-modules) can help reduce the size of snapshots and keep them readable for the code review.
+일반적으로 스냅샷을 사용하는 것보다 더 구체적인 단언을 만드는 것이 좋습니다. 이러한 종류의 테스트에는 구현 세부 정보가 포함되어있어 쉽게 중단 할 수 있으며 팀은 스냅샷 손상에 민감하지 않을 수 있습니다. 선택적으로 [일부 자식 컴포넌트를 모의하면](#mocking-modules) 스냅샷 크기를 줄이고 코드 리뷰를 위한 가독성을 유지할 수 있습니다.
 
 ---
 
-### Multiple Renderers {#multiple-renderers}
+### 다수의 렌더러 {#multiple-renderers}
 
-In rare cases, you may be running a test on a component that uses multiple renderers. For example, you may be running snapshot tests on a component with `react-test-renderer`, that internally uses `ReactDOM.render` inside a child component to render some content. In this scenario, you can wrap updates with `act()`s corresponding to their renderers.
+드문 경우이지만 여러 렌더러를 사용하는 컴포넌트에서 테스트를 실행할 때가 있을 수 있습니다. 예를 들어, 자식 컴포넌트 내에서 `ReactDOM.render`를 내부적으로 사용하여 일부 콘텐츠를 렌더링하는 `react-test-renderer` 가 있는 컴포넌트에서 스냅샷 테스트를 실행할 수 있습니다. 이 시나리오에서는 렌더러에 해당하는 `act()`로 업데이트를 래핑 할 수 있습니다.
 
 ```jsx
 import { act as domAct } from "react-dom/test-utils";
@@ -622,6 +624,6 @@ expect(root).toMatchSnapshot();
 
 ---
 
-### Something Missing? {#something-missing}
+### 뭔가 부족하다면? {#something-missing}
 
-If some common scenario is not covered, please let us know on the [issue tracker](https://github.com/reactjs/reactjs.org/issues) for the documentation website.
+일반적인 시나리오가 다루어지지 않은 경우 [issue tracker](https://github.com/reactjs/reactjs.org/issues)에 알려주세요.
