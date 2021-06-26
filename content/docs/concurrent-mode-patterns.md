@@ -17,18 +17,11 @@ next: concurrent-mode-adoption.html
 
 >경고
 >
-<<<<<<< HEAD
-> 이 페이지의 내용은 **안정된 배포판에서 [사용할 수 없는](/docs/concurrent-mode-adoption.html) 실험적인 기능**입니다. 프로덕션 애플리케이션에 실험적인 React 빌드를 의존하지 마십시오. 이 기능은 React에 편입되기 전에 경고 없이 크게 변경될 수 있습니다.
+>이 페이지는 안정된 배포판에서 아직 제공되지 않는 실험적인 기능에 대해 설명합니다. 얼리 어답터와 궁금해하시는 분을 대상으로 합니다.
 >
-> 이 문서는 얼리어답터와 호기심 넘치는 사람들을 위해 작성되었습니다. **React 초기 입문자라면 이 기능에 신경 쓰지 않아도 괜찮습니다.** -- 이 내용을 지금 당장 배울 필요는 없습니다. 데이터 패칭을 위한 튜토리얼을 찾는다면 [이 문서](https://www.robinwieruch.de/react-hooks-fetch-data/)를 보세요.
-=======
->This page was about experimental features that aren't yet available in a stable release. It was aimed at early adopters and people who are curious.
+>많은 정보는 구식이며 보관을 목적으로만 유지되고 있습니다. 최신화된 정보는 [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html)를 참조해주세요.
 >
->Much of the information on this page is now outdated and exists only for archival purposes. **Please refer to the [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html
-) for the up-to-date information.**
->
->Before React 18 is released, we will replace this page with stable documentation.
->>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
+>React 18이 배포되기 전에 해당 페이지를 안정된 문서로 대체할 예정입니다.
 
 </div>
 

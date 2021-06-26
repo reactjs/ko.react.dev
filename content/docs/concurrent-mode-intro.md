@@ -16,18 +16,11 @@ next: concurrent-mode-suspense.html
 
 >주의사항
 >
-<<<<<<< HEAD
->이 페이지는 **안정된 배포판에서는 [아직 사용할 수 없는](/docs/concurrent-mode-adoption.html) 실험적인 기능들**에 관해 설명합니다. 프로덕션용 앱에선 리액트의 실험 배포판을 사용하지 마세요. 이 기능들은 React에 포함되기 전에 경고 없이 크게 변경될 수 있습니다.
+>이 페이지는 안정된 배포판에서 아직 제공되지 않는 실험적인 기능에 대해 설명합니다. 얼리 어답터와 궁금해하시는 분을 대상으로 합니다.
 >
->이 문서는 얼리어답터들과 새로운 기능을 궁금해하시는 분들을 위해 작성된 문서입니다. **React에 처음 접해본다면 이러한 기능들을 걱정하지 않아도 됩니다**.  그 기능들을 바로 배울 필요는 없습니다. 
-=======
->This page was about experimental features that aren't yet available in a stable release. It was aimed at early adopters and people who are curious.
+>많은 정보는 구식이며 보관을 목적으로만 유지되고 있습니다. 최신화된 정보는 [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html)를 참조해주세요.
 >
->Much of the information on this page is now outdated and exists only for archival purposes. **Please refer to the [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html
-) for the up-to-date information.**
->
->Before React 18 is released, we will replace this page with stable documentation.
->>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
+>React 18이 배포되기 전에 해당 페이지를 안정된 문서로 대체할 예정입니다.
 
 </div>
 
@@ -74,11 +67,11 @@ Concurrent 모드는 "브랜치에서" 하는 React 작업과 같다고 전에 �
 
 한번 앱에서 두 화면 사이를 탐색한다고 가정해보겠습니다. 경우에 따라서, 새 화면에서 사용자에게 "충분히 좋은" 로딩 state를 보여주기 위해 필요한 코드와 데이터를 불러오지 못 할 수 있습니다. 빈 화면이나 큰 스피너로 전환하는 것은 어려운 일이 될 수 있지만 일반적으로 필요한 코드와 데이터를 가져오는 데에 그렇게 많은 시간이 소요되지않습니다. **React가 기존 화면에서 조금 더 오래 유지할 수 있고 새 화면을 보여주기 전에 "안 좋은" 로딩 state를 "건너뛸 수" 있다면 더 좋지 않을까요?**
 
-오늘날 이것이 가능하긴 하지만 조정하기는 어려울 수 있습니다. Concurrent 모드에서는 이 기능이 내장되어 있습니다. React는 먼저 메모리, 비유하자면 "다른 브랜치", 에서 새로운 화면을 준비하기 시작합니다. 그래서 React는 더 많은 콘텐츠를 불러올 수 있도록 DOM을 업데이트하기 전에 기다릴 수 있습니다. Concurrent 모드에서는 React가 인라인 표시기로 완벽하게 상호작용하는 이전 화면을 계속 표시하도록 지시할 수 있습니다. 
+오늘날 이것이 가능하긴 하지만 조정하기는 어려울 수 있습니다. Concurrent 모드에서는 이 기능이 내장되어 있습니다. React는 먼저 메모리, 비유하자면 "다른 브랜치", 에서 새로운 화면을 준비하기 시작합니다. 그래서 React는 더 많은 콘텐츠를 불러올 수 있도록 DOM을 업데이트하기 전에 기다릴 수 있습니다. Concurrent 모드에서는 React가 인라인 표시기로 완벽하게 상호작용하는 이전 화면을 계속 표시하도록 지시할 수 있습니다.
 
 ### 동시성 {#concurrency}
 
-위의 두 가지 예시를 살펴보고 Concurrent 모드가 어떻게 통합되는지 살펴보겠습니다. **Concurrent 모드에서 React는 여러 작업을 *동시에*, 다른 팀원들이 각자 작업을 할 수 있는 브랜치처럼, 진행할 수 있습니다**  
+위의 두 가지 예시를 살펴보고 Concurrent 모드가 어떻게 통합되는지 살펴보겠습니다. **Concurrent 모드에서 React는 여러 작업을 *동시에*, 다른 팀원들이 각자 작업을 할 수 있는 브랜치처럼, 진행할 수 있습니다**
 
 * CPU 바운드 업데이트(예를 들어 DOM 노드 만들기 및 컴포넌트 코드 실행)의 경우 Concurrency는 더욱 긴급한 업데이트가 이미 시작한 렌더링을 "중단" 할 수 있음을 의미합니다.
 * IO 바운드 업데이트(예를 들어 네트워크에서 코드나 데이터를 가져오는 것)의 경우 Concurrency는 모든 데이터가 도달하기 전에 React가 메모리에서 렌더링을 시작할 수 있으며 빈 로딩 state표시를 무시할 수 있음을 의미합니다.
