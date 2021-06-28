@@ -91,7 +91,7 @@ function MyComponent() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
-  // Note: 빈 deps 배열 []은
+  // 주의: 빈 deps 배열 []은
   // 이 useEffect가 componentDidMount()처럼,
   // 한 번 실행됨을 의미합니다.
   useEffect(() => {
