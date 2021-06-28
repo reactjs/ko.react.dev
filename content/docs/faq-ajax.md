@@ -83,7 +83,7 @@ class MyComponent extends React.Component {
 }
 ```
 
-아래 코드는 [Hook](https://reactjs.org/docs/hooks-intro.html)과 같습니다.
+이는 아래처럼 [Hook](https://reactjs.org/docs/hooks-intro.html)으로 작성한 코드와 동일합니다.
 
 ```js
 function MyComponent() {
