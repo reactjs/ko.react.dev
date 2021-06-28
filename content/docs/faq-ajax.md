@@ -92,8 +92,8 @@ function MyComponent() {
   const [items, setItems] = useState([]);
 
   // 주의: 빈 deps 배열 []은
-  // 이 useEffect가 componentDidMount()처럼,
-  // 한 번 실행됨을 의미합니다.
+  // 이 useEffect는 componentDidMount()처럼
+  // 한 번만 실행됩니다.
   useEffect(() => {
     fetch("https://api.example.com/items")
       .then(res => res.json())
