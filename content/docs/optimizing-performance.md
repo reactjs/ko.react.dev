@@ -180,7 +180,11 @@ Profiler에 대한 영상도 [YouTube](https://www.youtube.com/watch?v=nySib7ipZ
 
 ## 긴 목록 가상화하세요 {#virtualize-long-lists}
 
+<<<<<<< HEAD
 애플리케이션에서 긴 목록(수백 또는 수천행)을 렌더링하는 경우 'windowing'이라는 기법을 사용하는 것을 추천합니다. 이 기법은 주어진 시간에 목록의 부분 목록만 렌더링하며 컴포넌트를 다시 렌더링하는 데 걸리는 시간과 생성된 DOM 노드의 수를 크게 줄일 수 있습니다.
+=======
+If your application renders long lists of data (hundreds or thousands of rows), we recommend using a technique known as "windowing". This technique only renders a small subset of your rows at any given time, and can dramatically reduce the time it takes to re-render the components as well as the number of DOM nodes created.
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 [react-window](https://react-window.now.sh/)와 [react-virtualized](https://bvaughn.github.io/react-virtualized/)는 널리 알려진 windowing 라이브러리입니다. 목록, 그리드 및 표 형식 데이터를 표시하기 위한 몇 가지 재사용 가능한 컴포넌트를 제공합니다. 애플리케이션의 특정한 활용 사례에 더 적합한 것을 원한다면 Twitter처럼 자신만의 windowing 컴포넌트를 만들 수 있습니다.
 

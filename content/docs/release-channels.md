@@ -18,7 +18,11 @@ React의 각 배포 채널은 하나의 고유한 사용 경우를 위해 설계
 - [**Next**](#next-channel) 는 React 소스 코드 저장소의 master branch를 추적합니다. 이것을 다음 minor 유의적인 배포를 위한 배포 후보자라고 생각하세요. 이것을 React와 타사 프로젝트 간의 통합 테스트에 사용하십시오.
 - [**Experimental**](#experimental-channel) 는 실험용 API 및 stable 배포에서는 사용할 수 없는 기능이 포함됩니다. 이것은 또한 master branch를 추적하지만, 추가 기능 플래그가 켜져 있습니다. 배포하기 전에 배포가 예정된 기능들을 실험하는데 사용하십시오.
 
+<<<<<<< HEAD
 모든 배포는 npm에 게시되지만 오직 Latest만 [의미론적 버전 관리](/docs/faq-versioning.html)를 사용합니다. Prereleases는 (Next와 Experimental 채널에 있는 것) 내용의 hash로부터 생성된 버전들을 가집니다, 예: Next를 위한 `0.0.0-1022ee0ec`  와 Experimental을 위한 `0.0.0-experimental-1022ee0ec`.
+=======
+All releases are published to npm, but only Latest uses [semantic versioning](/docs/faq-versioning.html). Prereleases (those in the Next and Experimental channels) have versions generated from a hash of their contents and the commit date, e.g. `0.0.0-68053d940-20210623` for Next and `0.0.0-experimental-68053d940-20210623` for Experimental.
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 **사용자용 애플리케이션에 대해 공식적으로 지원되는 배포 채널은 Latest입니다**. Next와 Experimental 배포는 테스트 목적으로만 제공되며 배포 간에 동작이 변경되지 않는다는 보장을 제공하지 않습니다. 그것들은 Latest의 배포에 사용하는 유의적 버전원칙 프로토콜을 따르지 않습니다.
 
@@ -40,7 +44,11 @@ Next 채널은 React 저장소의 master branch를 추적하는 prerelease 채�
 
 **사용자용 어플리케이션에서 prereleases를 사용하지 마십시오.**
 
+<<<<<<< HEAD
 npm에서 Next에서 배포는 `next` tag와 함께 게시됩니다. 버전은 빌드의 내용의 해시로부터 생성됩니다. 예: `0.0.0-1022ee0ec`.
+=======
+Releases in Next are published with the `next` tag on npm. Versions are generated from a hash of the build's contents and the commit date, e.g. `0.0.0-68053d940-20210623`.
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 #### 통합 테스트를 위해 Next 채널을 사용{#using-the-next-channel-for-integration-testing}
 
@@ -76,7 +84,11 @@ Next와 마찬가지로 Experimental 채널은 React 저장소의 master branch�
 
 Experimental 배포는 Next 및 Latest 배포와 크게 다를 수 있습니다. **사용자용 어플리케이션에서는 Experimental 배포를 사용하지 마십시오.** 당신은 Experimental 채널에서 배포 사이에 빈번한 주요 변경사항을 예상해야 합니다.
 
+<<<<<<< HEAD
 Experimental에서 배포는 npm에서 `experimental` tag와 함께 게시됩니다. 버전은 빌드의 내용으로부터 생성됩니다. 예: `0.0.0-experimental-1022ee0ec`.
+=======
+Releases in Experimental are published with the `experimental` tag on npm. Versions are generated from a hash of the build's contents and the commit date, e.g. `0.0.0-experimental-68053d940-20210623`.
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 #### Experimental 배포에는 무엇이 포함됩니까? {#what-goes-into-an-experimental-release}
 
