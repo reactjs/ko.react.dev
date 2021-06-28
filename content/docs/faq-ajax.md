@@ -83,7 +83,7 @@ class MyComponent extends React.Component {
 }
 ```
 
-Here is the equivalent with [Hooks](https://reactjs.org/docs/hooks-intro.html): 
+아래 코드는 [Hook](https://reactjs.org/docs/hooks-intro.html)과 같습니다.
 
 ```js
 function MyComponent() {
@@ -91,9 +91,9 @@ function MyComponent() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
-  // Note: the empty deps array [] means
-  // this useEffect will run once
-  // similar to componentDidMount()
+  // Note: 빈 deps 배열 []은
+  // 이 useEffect가 componentDidMount()처럼,
+  // 한 번 실행됨을 의미합니다.
   useEffect(() => {
     fetch("https://api.example.com/items")
       .then(res => res.json())
@@ -102,9 +102,9 @@ function MyComponent() {
           setIsLoaded(true);
           setItems(result);
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+        // 주의: 컴포넌트의 실제 버그에서 발생하는 예외사항들을 넘기지 않도록 
+        // 에러를 catch() 블록(block)에서 처리하기보다는 
+        // 이 부분에서 처리하는 것이 중요합니다.
         (error) => {
           setIsLoaded(true);
           setError(error);
