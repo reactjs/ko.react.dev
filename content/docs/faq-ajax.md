@@ -102,9 +102,9 @@ function MyComponent() {
           setIsLoaded(true);
           setItems(result);
         },
-        // 주의: 컴포넌트의 실제 버그에서 발생하는 예외사항들을 넘기지 않도록 
-        // 에러를 catch() 블록(block)에서 처리하기보다는 
-        // 이 부분에서 처리하는 것이 중요합니다.
+        // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를
+        // 놓치지 않고 처리하기 위해서는
+        // catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
         (error) => {
           setIsLoaded(true);
           setError(error);
