@@ -25,7 +25,7 @@ API 예시는 다음과 같은 JSON 객체를 반환합니다.
   "items": [
     { "id": 1, "name": "Apples",  "price": "$2" },
     { "id": 2, "name": "Peaches", "price": "$5" }
-  ] 
+  ]
 }
 ```
 
@@ -50,9 +50,9 @@ class MyComponent extends React.Component {
             items: result.items
           });
         },
-        // 주의: 컴포넌트의 실제 버그에서 발생하는 예외사항들을 넘기지 않도록 
-        // 에러를 catch() 블록(block)에서 처리하기보다는 
-        // 이 부분에서 처리하는 것이 중요합니다.
+        // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를
+        // 놓치지 않고 처리하기 위해서는
+        // catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -92,8 +92,8 @@ function MyComponent() {
   const [items, setItems] = useState([]);
 
   // 주의: 빈 deps 배열 []은
-  // 이 useEffect는 componentDidMount()처럼
-  // 한 번만 실행됩니다.
+  // useEffect가 componentDidMount()처럼
+  // 한 번만 실행되는 걸 의미합니다.
   useEffect(() => {
     fetch("https://api.example.com/items")
       .then(res => res.json())
