@@ -22,7 +22,11 @@ React의 핵심 기능은 컴포넌트의 합성입니다. 컴포넌트는 서�
 
 예를 들어, 컴포넌트를 사용하는 쪽을 변경하지 않고 컴포넌트에 어떤 로컬 state를 도입할 수 있어야 합니다. 마찬가지로, 필요한 경우 어떤 컴포넌트에 초기화 및 해체 코드를 추가할 수 있어야 합니다.
 
+<<<<<<< HEAD
 컴포넌트에서 state나 생명주기 메서드를 사용하는 것에 대해 "나쁜 것"은 없습니다. 다른 강력한 기능과 마찬가지로 적당히 사용해야 할 필요가 있지만, 우리는 그것들을 제거할 생각은 없습니다. 오히려 우리는 그것들이 React를 유용하게 만드는 데에 매우 중요한 부분이라고 생각합니다. 장래에 [보다 함수적인 패턴](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State)을 사용 가능하게 할 지도 모르겠습니다만, 로컬 state와 생명주기 메서드는 모두 그 모델의 일부가 될 것입니다.
+=======
+There is nothing "bad" about using state or lifecycle methods in components. Like any powerful feature, they should be used in moderation, but we have no intention to remove them. On the contrary, we think they are integral parts of what makes React useful. We might enable [more functional patterns](https://github.com/reactjs/react-future/tree/main/07%20-%20Returning%20State) in the future, but both local state and lifecycle methods will be a part of that model.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 컴포넌트는 종종 "단순한 함수"로 묘사되지만 우리의 관점에서는 유용한 것 이상의 것이 필요합니다. React에서 컴포넌트는 구성 가능한 모든 동작을 기술합니다. 그리고 여기에는 렌더링, 생명주기와 state가 포함됩니다. [Relay](https://facebook.github.io/relay/)와 같은 어떤 외부 라이브러리는 데이터 의존성을 기술하는 것과 같은 다른 책임을 컴포넌트에 덧붙입니다. 이런 아이디어들은 어떤 형태로 React로 다시 받아들여질 수도 있습니다.
 
@@ -92,7 +96,11 @@ React는 완전히 "반응적(reactive)"이고 싶지 않았기 때문에 React�
 
 좋은 개발자 경험을 제공하는 것은 우리에게 중요합니다.
 
+<<<<<<< HEAD
 예를 들어, 우리는 Chrome과 Firefox에서 React 컴포넌트 트리를 살펴볼 수 있는 [React DevTools](https://github.com/facebook/react/tree/master/packages/react-devtools)를 유지합니다. 이것은 Facebook 엔지니어와 커뮤니티 모두에게 커다란 생산성 향상을 가져왔다고 들었습니다.
+=======
+For example, we maintain [React DevTools](https://github.com/facebook/react/tree/main/packages/react-devtools) which let you inspect the React component tree in Chrome and Firefox. We have heard that it brings a big productivity boost both to the Facebook engineers and to the community.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 또한, 도움이 될 만한 개발자 경고를 제공하기 위해 우리는 더 노력하고 있습니다. 예를 들어, React는 개발 중에 브라우저가 이해할 수 없는 방법으로 태그를 중첩하거나 API에서 일반적인 오타를 작성한 경우 이에 대해 경고합니다. 개발자 경고와 이와 관련된 검사는 React 개발자 버전이 프로덕션 버전보다 조금 더 느린 주요한 이유입니다.
 

@@ -989,6 +989,7 @@ React는 현재 렌더링 컴포넌트를 추적합니다. [Rules of Hook](/docs
 
 Hook은 여러 소스에서 아이디어를 합성합니다.
 
+<<<<<<< HEAD
 * [react-future](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) 저장소에서 기능적 API를 사용한 이전 실험.
 * [Ryan Florence](https://github.com/ryanflorence)의 [Reactions 컴포넌트](https://github.com/reactions/component)를 포함하여 렌더링 props API를 사용한 React 커뮤니티의 실험.
 * 렌더링 props를 위한 편의 문법으로 제안된 [Dominic Gannaway](https://github.com/trueadm)의 [`adopt` 키워드](https://gist.github.com/trueadm/17beb64288e30192f3aa29cad0218067).
@@ -996,5 +997,14 @@ Hook은 여러 소스에서 아이디어를 합성합니다.
 * ReasonReact의 [리듀서 컴포넌트](https://reasonml.github.io/reason-react/docs/en/state-actions-reducer.html).
 * Rx의 [구독](http://reactivex.io/rxjs/class/es6/Subscription.js~Subscription.html).
 * Multicore OCaml의 [대수 효과](https://github.com/ocamllabs/ocaml-effects-tutorial#2-effectful-computations-in-a-pure-setting).
+=======
+* Our old experiments with functional APIs in the [react-future](https://github.com/reactjs/react-future/tree/main/07%20-%20Returning%20State) repository.
+* React community's experiments with render prop APIs, including [Ryan Florence](https://github.com/ryanflorence)'s [Reactions Component](https://github.com/reactions/component).
+* [Dominic Gannaway](https://github.com/trueadm)'s [`adopt` keyword](https://gist.github.com/trueadm/17beb64288e30192f3aa29cad0218067) proposal as a sugar syntax for render props.
+* State variables and state cells in [DisplayScript](http://displayscript.org/introduction.html).
+* [Reducer components](https://reasonml.github.io/reason-react/docs/en/state-actions-reducer.html) in ReasonReact.
+* [Subscriptions](http://reactivex.io/rxjs/class/es6/Subscription.js~Subscription.html) in Rx.
+* [Algebraic effects](https://github.com/ocamllabs/ocaml-effects-tutorial#2-effectful-computations-in-a-pure-setting) in Multicore OCaml.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 [Sebastian Markbåge](https://github.com/sebmarkbage)는 Hook의 원래 디자인을 생각해냈고, 나중에 [Andrew Clark](https://github.com/acdlite), [Sophie Alpert](https://github.com/sophiebits), [Dominic Gannaway](https://github.com/trueadm) 및 React 팀의 다른 구성원에 의해 개선되었습니다.
