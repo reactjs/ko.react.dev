@@ -214,7 +214,7 @@ C1과 C3의 경우 `shouldComponentUpdate`가 `true`를 반환했으므로 React
 
 마지막 흥미로운 경우는 C8입니다. React는 이 컴포넌트를 렌더링 해야 했지만 이전에 렌더링 된 React 엘리먼트와 동일했기 때문에 DOM을 업데이트할 필요가 없었습니다.
 
-React는 C6에 대해 DOM 변경(mutation)을 수행하면 되는데, 이는 불가피했습니다. C8의 경우 렌더링 된 React 엘리먼트를 비교해서 빠져(bail out)나오고 C2의 하위트리와 C7의 경우 `shouldComponentUpdate`를 구제할 때 엘리먼트를 비교할 필요조차 없었고 `render`도 호출되지 않았습니다.
+React는 C6에 대해 DOM 변경(mutation)을 수행하면 되는데, 이는 필연적입니다. C8의 경우 렌더링 된 React 엘리먼트를 비교해서 빠져(bail out)나오고 C2의 하위트리와 C7의 경우 `shouldComponentUpdate`를 구제할 때 엘리먼트를 비교할 필요조차 없었고 `render`도 호출되지 않았습니다.
 
 ## 예시 {#examples}
 
