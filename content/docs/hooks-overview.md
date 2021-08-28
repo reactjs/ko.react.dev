@@ -40,7 +40,7 @@ function Example() {
 
 여기서 `useState`가 바로 *Hook* 입니다(이게 무슨 의미인지는 앞으로 알아보겠습니다). Hook을 호출해 함수 컴포넌트(function component) 안에 state를 추가했습니다. 이 state는 컴포넌트가 다시 렌더링 되어도 그대로 유지될 것입니다. `useState`는 *현재의* state 값과 이 값을 업데이트하는 함수를 쌍으로 제공합니다. 우리는 이 함수를 이벤트 핸들러나 다른 곳에서 호출할 수 있습니다. 이것은 class의 `this.setState`와 거의 유사하지만, 이전 state와 새로운 state를 합치지 않는다는 차이점이 있습니다. (`useState`와 `this.state`를 비교하는 예시가 [Using the State Hook](/docs/hooks-state.html) 문서에 있으니 한번 보세요.)
 
-`useState`는 인자로 초기 state 값을 하나 받습니다. 카운터는 0부터 시작하기 때문에 위 예시에서는 초기값으로 `0`을 넣어준 것입니다. `this.state`와는 달리 `setState` Hook의 state는 객체일 필요가 없습니다. 물론 원한다면 그렇게도 가능하지만요. 이 초기값은 첫 번째 렌더링에만 딱 한번 사용됩니다.
+`useState`는 인자로 초기 state 값을 하나 받습니다. 카운터는 0부터 시작하기 때문에 위 예시에서는 초기값으로 `0`을 넣어준 것입니다. `this.state`와는 달리 `useState` Hook의 state는 객체일 필요가 없습니다. 물론 원한다면 그렇게도 가능하지만요. 이 초기값은 첫 번째 렌더링에만 딱 한번 사용됩니다.
 
 #### 여러 state 변수 선언하기 {#declaring-multiple-state-variables}
 

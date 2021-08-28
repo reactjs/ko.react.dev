@@ -49,7 +49,7 @@ Concurrent모드는 React 앱이 빠른 반응속도를 유지하도록 하고 �
 
 이는 React를 포함한 UI 라이브러리들이 어떻게 오늘날 작용하는지를 설명해줍니다. 업데이트 렌더링(새로운 DOM 노드 생성 및 컴포넌트 내에 있는 코드 실행하는 것을 포함해서)을 시작하면 이 일은 방해받지 않습니다. 이러한 접근을 "렌더링 차단"이라고 합니다.
 
-Concurrent 모드에서는, 렌더링은 차단되지 않으나 인터럽트는 가능합니다. 이는 사용자의 경험을 개선하며 또한 이전에 사용할 수 없었던 기능들을 사용할 수 있도록 만들어줍니다. [다음](https://reactjs.org/docs/concurrent-mode-suspense.html) [챕터](https://reactjs.org/docs/concurrent-mode-patterns.html)에서 구체적인 예시를 살펴보기 전에, 새로운 기능들의 높은 수준의 개요를 해보려고 합니다.
+Concurrent 모드에서는, 렌더링은 차단되지 않으며 인터럽트가 가능해집니다. 이는 사용자의 경험을 개선하며 또한 이전에 사용할 수 없었던 기능들을 사용할 수 있도록 만들어줍니다. [다음](https://reactjs.org/docs/concurrent-mode-suspense.html) [챕터](https://reactjs.org/docs/concurrent-mode-patterns.html)에서 구체적인 예시를 살펴보기 전에, 새로운 기능들의 높은 수준의 개요를 해보려고 합니다.
 
 ###인터럽트 가능한 렌더링 {#interruptible-rendering}
 
