@@ -237,7 +237,7 @@ Square 컴포넌트를 클릭하면 "X"가 체크되도록 만들어봅시다.
 class Square extends React.Component {
   render() {
     return (
-      <button className="square" onClick={function() { alert('click'); }}>
+      <button className="square" onClick={function() { console.log('click'); }}>
         {this.props.value}
       </button>
     );
@@ -245,7 +245,11 @@ class Square extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 Square를 클릭하면 브라우저에서 경고 창이 뜨는 것을 확인할 수 있습니다.
+=======
+If you click on a Square now, you should see 'click' in your browser's devtools console.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 > 주의
 >
@@ -255,7 +259,7 @@ Square를 클릭하면 브라우저에서 경고 창이 뜨는 것을 확인할 
 >class Square extends React.Component {
 >  render() {
 >    return (
->      <button className="square" onClick={() => alert('click')}>
+>      <button className="square" onClick={() => console.log('click')}>
 >        {this.props.value}
 >      </button>
 >    );
@@ -263,7 +267,11 @@ Square를 클릭하면 브라우저에서 경고 창이 뜨는 것을 확인할 
 >}
 >```
 >
+<<<<<<< HEAD
 > `onClick={() => alert('click')}`이 어떻게 동작하는지 살펴보면 `onClick` prop으로 *함수*를 전달하고 있습니다. React는 클릭했을 때에만 이 함수를 호출할 것입니다. `() =>`을 잊어버리고 `onClick={alert('click')}`이라고 작성하는 것은 자주 발생하는 실수이며 컴포넌트가 다시 렌더링할 때마다 경고 창을 띄울 것입니다.
+=======
+>Notice how with `onClick={() => console.log('click')}`, we're passing *a function* as the `onClick` prop. React will only call this function after a click. Forgetting `() =>` and writing `onClick={console.log('click')}` is a common mistake, and would fire every time the component re-renders.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 다음 단계로 Square 컴포넌트를 클릭한 것을 "기억하게" 만들어 "X" 표시를 채워 넣으려고 합니다. 무언가를 "기억하기"위해 component는 **state**를 사용합니다.
 
@@ -282,7 +290,7 @@ class Square extends React.Component {
 
   render() {
     return (
-      <button className="square" onClick={() => alert('click')}>
+      <button className="square" onClick={() => console.log('click')}>
         {this.props.value}
       </button>
     );
