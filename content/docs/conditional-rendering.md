@@ -24,7 +24,7 @@ function GuestGreeting(props) {
 }
 ```
 
-이제 사용자의 로그인 상태에 맞게 위 컴포넌트 중 하나를 보여주는 `Greeting` 컴포넌트를 만듭니다,
+이제 사용자의 로그인 상태에 맞게 위 컴포넌트 중 하나를 보여주는 `Greeting` 컴포넌트를 만듭니다.
 
 ```javascript{3-7,11,12}
 function Greeting(props) {
