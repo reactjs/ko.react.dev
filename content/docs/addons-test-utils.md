@@ -145,7 +145,11 @@ mockComponent(
 
 > 주의
 >
+<<<<<<< HEAD
 > `mockComponent()`는 더 이상 쓰이지 않는 API입니다. [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 사용을 추천합니다.
+=======
+> `mockComponent()` is a legacy API. We recommend using [`jest.mock()`](https://jestjs.io/docs/tutorial-react-native#mock-native-modules-using-jestmock) instead.
+>>>>>>> a88b1e1331126287ccf03f2f4ec25ec38513b911
 
 * * *
 

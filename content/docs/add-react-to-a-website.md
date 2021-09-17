@@ -123,7 +123,11 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 ## 선택사항: JSX로 React 해보기 {#optional-try-react-with-jsx}
 
+<<<<<<< HEAD
 지금까지 다뤘던 예제들은 브라우저가 기본적으로 지원하는 요소들만을 사용했습니다. 때문에 React가 어떤 것을 표시할지 결정 해주는 JavaScript의 함수들을 사용했습니다.
+=======
+In the examples above, we only relied on features that are natively supported by browsers. This is why we used a JavaScript function call to tell React what to display:
+>>>>>>> a88b1e1331126287ccf03f2f4ec25ec38513b911
 
 ```js
 const e = React.createElement;
@@ -159,7 +163,11 @@ return (
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 ```
 
+<<<<<<< HEAD
 이제 어떤 `<script>` 태그에서든 `type="text/babel"`성질을 추가하면 JSX를 사용할 수 있습니다. 이 [JSX를 사용한 예제 HTML 파일](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)로 여러 가지 작업들을 해보세요.
+=======
+Now you can use JSX in any `<script>` tag by adding `type="text/babel"` attribute to it. Here is [an example HTML file with JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html) that you can download and play with.
+>>>>>>> a88b1e1331126287ccf03f2f4ec25ec38513b911
 
 이런 식의 접근 방법은 공부 목적이나 간단한 데모 사이트를 만들기 위함이라면 괜찮습니다. 그러나, 이 방법은 사이트를 느리게 만들고 **프로덕션에서는 맞지 않습니다.** 한 단계 앞으로 나아갈 준비가 되었다면 새로 추가한 `<script>` 태그와 `type="text/babel"` 어트리뷰트를 제거해보세요. 다음 차례에서는 `<script>` 태그를 자동으로 변환시켜줄 JSX 전처리기를 만들 겁니다.
 

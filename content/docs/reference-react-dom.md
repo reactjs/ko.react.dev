@@ -48,7 +48,13 @@ React 엘리먼트가 이전에 `container` 내부에 렌더링 되었다면 해
 >
 > `ReactDOM.render()`는 컨테이너 노드를 수정하지 않고 컨테이너의 하위 노드만 수정합니다. 그렇기 때문에 자식 노드를 덮어쓸 필요 없이 기존의 DOM 노드에 컴포넌트를 추가할 수 있습니다.
 >
+<<<<<<< HEAD
 > `ReactDOM.render()`는 현재 `ReactComponent` 루트(root) 인스턴스에 대한 참조를 반환합니다. 그러나 이 반환 값을 사용하는 것은 레거시이며 React 신규 버전이 컴포넌트를 비동기로 렌더링하는 경우가 있기 때문에 피해야 합니다. `ReactComponent` 인스턴스의 참조가 필요하다면 권장하는 해결책은 루트 엘리먼트에 [콜백 ref](/docs/more-about-refs.html#the-ref-callback-attribute)를 붙이는 것입니다.
+=======
+> `ReactDOM.render()` currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy
+> and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a
+> [callback ref](/docs/refs-and-the-dom.html#callback-refs) to the root element.
+>>>>>>> a88b1e1331126287ccf03f2f4ec25ec38513b911
 >
 > `ReactDOM.render()`를 사용해 서버에서 렌더링한 컨테이너에 이벤트를 보충하는 것은 권장되지 않으며 React 17 버전에서 삭제될 예정입니다. [`hydrate()`](#hydrate)를 사용해주세요.
 

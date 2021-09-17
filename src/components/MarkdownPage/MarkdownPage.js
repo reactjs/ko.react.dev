@@ -132,7 +132,11 @@ const MarkdownPage = ({
                     </span>
                     <a
                       css={sharedStyles.articleLayout.editLink}
+<<<<<<< HEAD
                       href={`https://github.com/reactjs/ko.reactjs.org/tree/master/${markdownRemark.fields.path}`}>
+=======
+                      href={`https://github.com/reactjs/reactjs.org/tree/main/${markdownRemark.fields.path}`}>
+>>>>>>> a88b1e1331126287ccf03f2f4ec25ec38513b911
                       Edit this page
                     </a>
                   </div>
