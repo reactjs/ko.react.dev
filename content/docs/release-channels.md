@@ -14,9 +14,15 @@ React는 버그 신고, 풀 리퀘스트 요청, [RFCs에 제출](https://github
 
 React의 각 배포 채널은 하나의 고유한 사용 경우를 위해 설계되었습니다:
 
+<<<<<<< HEAD
 - [**Latest**](#latest-channel) 는 안정적이고, 유의적인 React 배포입니다. npm에서 React를 설치할 때 얻는 것입니다. 이것은 이미 당신이 사용하고 있는 채널입니다. **모든 사용자용 애플리케이션을 위해서는 이것을 사용하십시오.**
 - [**Next**](#next-channel) 는 React 소스 코드 저장소의 master branch를 추적합니다. 이것을 다음 minor 유의적인 배포를 위한 배포 후보자라고 생각하세요. 이것을 React와 타사 프로젝트 간의 통합 테스트에 사용하십시오.
 - [**Experimental**](#experimental-channel) 는 실험용 API 및 stable 배포에서는 사용할 수 없는 기능이 포함됩니다. 이것은 또한 master branch를 추적하지만, 추가 기능 플래그가 켜져 있습니다. 배포하기 전에 배포가 예정된 기능들을 실험하는데 사용하십시오.
+=======
+- [**Latest**](#latest-channel) is for stable, semver React releases. It's what you get when you install React from npm. This is the channel you're already using today. **Use this for all user-facing React applications.**
+- [**Next**](#next-channel) tracks the main branch of the React source code repository. Think of these as release candidates for the next minor semver release. Use this for integration testing between React and third party projects.
+- [**Experimental**](#experimental-channel) includes experimental APIs and features that aren't available in the stable releases. These also track the main branch, but with additional feature flags turned on. Use this to try out upcoming features before they are released.
+>>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
 
 모든 배포는 npm에 게시되지만 오직 Latest만 [의미론적 버전 관리](/docs/faq-versioning.html)를 사용합니다. Prereleases는 (Next와 Experimental 채널에 있는 것) 내용의 hash와 커밋 날짜로부터 생성된 버전들을 가집니다, 예: Next를 위한 `0.0.0-68053d940-20210623`와 Experimental을 위한 `0.0.0-experimental-68053d940-20210623`.
 
@@ -34,7 +40,11 @@ Latest는 stable React 배포에 사용되는 채널입니다. npm의 `latest` t
 
 ### Next 채널{#next-channel}
 
+<<<<<<< HEAD
 Next 채널은 React 저장소의 master branch를 추적하는 prerelease 채널입니다. 우리는 Latest 채널의 배포 후보로서 Next 채널의 prerelease를 사용합니다. Next 채널을 더 자주 업데이트되는 Latest 채널의 상위 집합으로 생각하면 됩니다.
+=======
+The Next channel is a prerelease channel that tracks the main branch of the React repository. We use prereleases in the Next channel as release candidates for the Latest channel. You can think of Next as a superset of Latest that is updated more frequently.
+>>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
 
 가장 최신 Next 배포와 가장 최신 Latest 배포 사이의 변화 정도는 두 개의 부 유의적 버전 배포사이의 변화 정도와 거의 같습니다. 그러나, **Next 채널은 유의적 버전 원칙을 따르지 않습니다.** 당신은 Next 채널에서 연속적인 배포 사이의 간헐적 주요 변경사항을 예상해야 합니다.
 
@@ -70,7 +80,11 @@ React의 모든 변경사항들은 배포 전에 광범위한 내부 테스트�
 
 ### Experimental 채널 {#experimental-channel}
 
+<<<<<<< HEAD
 Next와 마찬가지로 Experimental 채널은 React 저장소의 master branch를 추적하는 prerelease 채널입니다. Next와 달리, Experimental 배포는 광범위한 배포를 위해 준비되지 않은 추가 기능과 API를 포함합니다.
+=======
+Like Next, the Experimental channel is a prerelease channel that tracks the main branch of the React repository. Unlike Next, Experimental releases include additional features and APIs that are not ready for wider release.
+>>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
 
 일반적으로, Next에 대한 업데이트는 Experimental에 대한 해당 업데이트와 함께 동반됩니다. 그것들은 동일한 소스 수정을 기반으로 하지만 다른 기능 플래그 세트를 사용하여 빌드됩니다.
 
@@ -94,4 +108,8 @@ Experimental 기능은 문서화될 수도 있고 되지 않을 수도 있습니
 
 우리는 새로운 실험을 발표할 준비가 되면 [React blog](/blog)에 게시물을 포스팅할 예정이지만, 모든 실험이 포스팅된다는 말은 아닙니다.
 
+<<<<<<< HEAD
 당신은 언제든지 우리의 public GitHub 저장소에서 전반적인 변경 사항 목록[history](https://github.com/facebook/react/commits/master)를 참조 할 수 있습니다.
+=======
+You can always refer to our public GitHub repository's [history](https://github.com/facebook/react/commits/main) for a comprehensive list of changes.
+>>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce

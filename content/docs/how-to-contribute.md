@@ -11,9 +11,15 @@ redirect_from:
 
 React는 페이스북 최초 오픈소스 프로젝트 중 하나로 매우 활발히 개발하고 있으며 [facebook.com](https://www.facebook.com)의 모든 사용자에게 전달되고 있습니다. 이 프로젝트에 최대한 쉽고 간편하게 기여할 수 있도록 노력하고 있지만, 아직 부족한 상태입니다. 이 문서를 통해 여러분이 프로젝트에 기여하는 절차에 대해 명확하게 인지하고 궁금한 점들을 해결할 수 있기를 바랍니다.
 
+<<<<<<< HEAD
 ### [행동 강령](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) {#code-of-conduct}
 
 Facebook은 [Contributor Covenant](https://www.contributor-covenant.org/)를 행동 강령으로 채택했으며 모든 프로젝트 참여자가 준수하기를 기대합니다. [전문](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md)을 읽고 어떤 행동이 허용되고 허용되지 않는지 이해할 수 있습니다.
+=======
+### [Code of Conduct](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) {#code-of-conduct}
+
+Facebook has adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it. Please read [the full text](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+>>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
 
 ### 오픈소스 {#open-development}
 
@@ -23,10 +29,15 @@ React에 대한 모든 개발 작업은 [GitHub](https://github.com/facebook/rea
 
 React는 [유의적 버전](https://semver.org/lang/ko/)을 따릅니다. 중요한 버그 수정은 수 버전으로, 핵심적이지 않은 변화나 새로운 기능은 부 버전으로 그리고 호환성이 유지되지 않는 변경은 주 버전으로 배포합니다. 호환성이 유지되지 않는 변경을 만들 때, 부 버전에서 사용을 권장하지 않는 주의 메세지를 통해 React를 사용하는 개발자가 다가올 변화를 알아차리고 미리 코드를 변경할 수 있게 합니다. 안정성과 점진적 마이그레이션과 관련된 약속에 대해 [버전 정책](/docs/faq-versioning.html)에서 자세히 알 수 있습니다.
 
+<<<<<<< HEAD
 모든 중요한 변화는 [changelog 파일](https://github.com/facebook/react/blob/master/CHANGELOG.md)에 기록되어 있습니다.
+=======
+Every significant change is documented in the [changelog file](https://github.com/facebook/react/blob/main/CHANGELOG.md).
+>>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
 
 ### 브랜치 구성 {#branch-organization}
 
+<<<<<<< HEAD
 모든 변화는 [`master` 브랜치](https://github.com/facebook/react/tree/master)로 제출해주세요. 개발이나 다가오는 배포를 위해 따로 브랜치를 관리하지는 않습니다.
 
 `master`에 반영된 코드는 가장 최근의 안정된 배포와 반드시 호환돼야 합니다. 추가적인 기능을 포함할 수 있지만, 호환되지 않는 변화는 포함되면 안 됩니다. 언제든 `master`의 가장 최근 커밋으로부터 새로운 부 버전을 배포할 수 있어야 합니다.
@@ -36,6 +47,17 @@ React는 [유의적 버전](https://semver.org/lang/ko/)을 따릅니다. 중요
 `master` 브랜치를 배포 가능한 상태로 유지하기 위해, 호환되지 않는 변화나 실험적인 기능은 feature flag를 통해 활성화 유무를 관리할 수 있어야 합니다.
 
 Feature flag는 [`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/master/packages/shared/ReactFeatureFlags.js)에 정의되어 있습니다. React의 몇 가지 빌드는 서로 다른 feature flag 조합을 가질 수 있습니다. 예를 들어, React Native 빌드는 React DOM과 다르게 구성됩니다. 이러한 flag는 [`packages/shared/forks`](https://github.com/facebook/react/tree/master/packages/shared/forks)에서 찾을 수 있습니다. Feature flag는 Flow에 의해 정적으로 타입 추론되며, `yarn flow`를 통해 필요한 모든 파일을 변경했는지 확인할 수 있습니다.
+=======
+Submit all changes directly to the [`main branch`](https://github.com/facebook/react/tree/main). We don't use separate branches for development or for upcoming releases. We do our best to keep `main` in good shape, with all tests passing.
+
+Code that lands in `main` must be compatible with the latest stable release. It may contain additional features, but no breaking changes. We should be able to release a new minor version from the tip of `main` at any time.
+
+### Feature Flags {#feature-flags}
+
+To keep the `main` branch in a releasable state, breaking changes and experimental features must be gated behind a feature flag.
+
+Feature flags are defined in [`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/main/packages/shared/ReactFeatureFlags.js). Some builds of React may enable different sets of feature flags; for example, the React Native build may be configured differently than React DOM. These flags are found in [`packages/shared/forks`](https://github.com/facebook/react/tree/main/packages/shared/forks). Feature flags are statically typed by Flow, so you can run `yarn flow` to confirm that you've updated all the necessary files.
+>>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
 
 React의 빌드 시스템은 배포하기 전에 비활성화된 기능을 제거합니다. CI의 job에서 모든 커밋에 대해 번들 크기 변화를 점검합니다. 크기 변화를 원하는 기능의 활성화 유무가 올바르게 되었는지 확인하는 신호로써 사용할 수 있습니다.
 
@@ -84,6 +106,7 @@ Public API를 변경하거나 구현을 간단하게 변경하려 할 때 [이�
 
 **풀 리퀘스트를 보내기 전에,** 다음 사항을 확인해 주세요.
 
+<<<<<<< HEAD
 1. [저장소](https://github.com/facebook/react)를 포크하고 `master`로부터 새로운 브랜치를 생성합니다.
 2. 저장소 루트에서 `yarn` 명령을 실행합니다.
 3. 버그를 수정했거나 테스트가 필요한 코드를 추가했다면 테스트를 추가해 주세요.
@@ -94,6 +117,18 @@ Public API를 변경하거나 구현을 간단하게 변경하려 할 때 [이�
 8. 코드를 린트하세요 (`yarn lint`). Tip: `yarn linc` 는 변경된 파일만 확인할 수 있습니다.
 9. [Flow](https://flowtype.org/) 타입 검사를 실행하세요. (`yarn flow`).
 10. 아직 CLA에 서명하지 않았다면, 서명을 완료해주세요.
+=======
+1. Fork [the repository](https://github.com/facebook/react) and create your branch from `main`.
+2. Run `yarn` in the repository root.
+3. If you've fixed a bug or added code that should be tested, add tests!
+4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
+5. Run `yarn test --prod` to test in the production environment.
+6. If you need a debugger, run `yarn debug-test --watch TestName`, open `chrome://inspect`, and press "Inspect".
+7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
+8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
+9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
+10. If you haven't already, complete the CLA.
+>>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
 
 ### Contributor License Agreement (CLA) {#contributor-license-agreement-cla}
 
