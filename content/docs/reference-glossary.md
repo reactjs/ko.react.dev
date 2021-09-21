@@ -124,7 +124,7 @@ class Welcome extends React.Component {
 
 `state`와 `props`의 가장 중요한 차이점은 `props`는 부모 컴포넌트로부터 전달받지만, `state`는 컴포넌트에서 관리된다는 것입니다. 컴포넌트는 `props`를 변경할 수 없지만, `state`는 변경할 수 있습니다.
 
-데이터가 변경되는 각 특정한 부분에 대해, 해당 상태(state)를 "소유"하는 컴포넌트는 하나만 존재해야 합니다. 서로 다른 두 컴포넌트의 상태를 동기화하려고 하지 마십시오. 대신, 공통 상태를 두 컴포넌트의 공통 조상으로 [끌어올리고](/docs/lifting-state-up.html) 해당 데이터를 두 컴포넌트에 props로 전달하세요.
+데이터가 변경되는 각 특정한 부분에 대해, 해당 상태(state)를 "소유"하는 컴포넌트는 하나만 존재해야 합니다. 서로 다른 두 컴포넌트의 상태를 동기화하려고 하지마세요. 대신, 공통 상태를 두 컴포넌트의 공통 조상으로 [끌어올리고](/docs/lifting-state-up.html) 해당 데이터를 두 컴포넌트에 props로 전달하세요.
 
 ## [생명주기 메서드](/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class) {#lifecycle-methods}
 
