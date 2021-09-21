@@ -318,15 +318,9 @@ declare module 'querystring' {
 
 ## ReScript {#rescript}
 
-<<<<<<< HEAD
-[Reason](https://reasonml.github.io/)은 새로운 언어가 아닙니다. [OCaml](https://ocaml.org/)을 기반으로한 새로운 문법이자 툴체인입니다. Reason은 JavaScript 개발자들을 위해 익숙한 문법을 OCaml을 통해 제공하며, 익숙한 NPM/Yarn을 그대로 사용 할 수 있습니다.
+[ReScript](https://rescript-lang.org/)는 JavaScript로 컴파일되는 타입이 있는 언어입니다. 핵심 기능 중 몇 가지는 100% 타입 커버리지가 보장된다는 점과 first-class로 JSX를 지원하며, JS와 TS로 작성된 React 코드베이스와의 통합을 허용하기 위한 [React 전용 바인딩](https://rescript-lang.org/docs/react/latest/introduction)이 있습니다.
 
-Reason은 Facebook이 개발했고, 메신저 같은 몇몇 제품에 사용되고 있습니다. 아직은 다소 실험적이지만, Facebook과 [활발한 커뮤니티](https://reasonml.github.io/docs/en/community.html)에 의해 유지되는 [React 전용 바인딩](https://reasonml.github.io/reason-react/)이 있습니다.
-=======
-[ReScript](https://rescript-lang.org/) is a typed language that compiles to JavaScript. Some of its core features are  guaranteed 100% type coverage, first-class JSX support and [dedicated React bindings](https://rescript-lang.org/docs/react/latest/introduction) to allow integration in existing JS / TS React codebases.
-
-You can find more infos on integrating ReScript in your existing JS / React codebase [here](https://rescript-lang.org/docs/manual/latest/installation#integrate-into-an-existing-js-project).
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+이미 작성된 JS와 React 코드베이스에 ReScript를 통합하는 방법에 대한 더 자세한 정보는 [여기](https://rescript-lang.org/docs/manual/latest/installation#integrate-into-an-existing-js-project)에서 찾을 수 있습니다.
 
 ## Kotlin {#kotlin}
 
