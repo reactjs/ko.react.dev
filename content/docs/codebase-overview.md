@@ -19,15 +19,9 @@ React 앱을 개발하는데 있어서 아래 관례들의 사용을 반드시 �
 
 [React 저장소](https://github.com/facebook/react)를 클론하게 되면, 다음과 같은 몇 개의 최상위 폴더를 볼 수 있습니다.
 
-<<<<<<< HEAD
-* [`packages`](https://github.com/facebook/react/tree/master/packages) 폴더는 React 저장소에 있는 모든 패키지들에 대해 `package.json`과 같은 메타데이터와 `src` 폴더를 포함하고 있습니다. **만약 변경하고자 하는 부분이 코드와 관련되어 있다면, `src` 폴더에 대부분을 할애하게 될 것입니다.**
-* [`fixtures`](https://github.com/facebook/react/tree/master/fixtures)에는 기여자들을 위한 몇 가지 React 테스트 애플리케이션이 존재합니다.
+* [`packages`](https://github.com/facebook/react/tree/main/packages) 폴더는 React 저장소에 있는 모든 패키지들에 대해 `package.json`과 같은 메타데이터와 `src` 폴더를 포함하고 있습니다. **만약 변경하고자 하는 부분이 코드와 관련되어 있다면, `src` 폴더에 대부분을 할애하게 될 것입니다.**
+* [`fixtures`](https://github.com/facebook/react/tree/main/fixtures)에는 기여자들을 위한 몇 가지 React 테스트 애플리케이션이 존재합니다.
 * `build` 폴더에는 React의 빌드 결과가 생성됩니다. 저장소에는 존재하지 않지만, React를 클론하고 처음 [빌드](/docs/how-to-contribute.html#development-workflow)할 시 생성됩니다.
-=======
-* [`packages`](https://github.com/facebook/react/tree/main/packages) contains metadata (such as `package.json`) and the source code (`src` subdirectory) for all packages in the React repository. **If your change is related to the code, the `src` subdirectory of each package is where you'll spend most of your time.**
-* [`fixtures`](https://github.com/facebook/react/tree/main/fixtures) contains a few small React test applications for contributors.
-* `build` is the build output of React. It is not in the repository but it will appear in your React clone after you [build it](/docs/how-to-contribute.html#development-workflow) for the first time.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
 
 설명 문서는 React로부터 [분리된 저장소](https://github.com/reactjs/reactjs.org)에 존재합니다.
 
@@ -104,11 +98,7 @@ React는 [monorepo](https://danluu.com/monorepo/)입니다. 해당 저장소는 
 
 ### React 코어 {#react-core}
 
-<<<<<<< HEAD
-React의 '코어'는 모든 [최상위 `React` API](/docs/top-level-api.html#react)를 포함합니다. 예를 들면 다음과 같습니다.
-=======
-The "core" of React includes all the [top-level `React` APIs](/docs/react-api.html#react), for example:
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+React의 '코어'는 모든 [최상위 `React` API](/docs/react-api.html#react)를 포함합니다. 예를 들면 다음과 같습니다.
 
 * `React.createElement()`
 * `React.Component`
@@ -116,11 +106,7 @@ The "core" of React includes all the [top-level `React` APIs](/docs/react-api.ht
 
 **React 코어는 컴포넌트를 정의하는 데에 필요한 API만 포함하고 있습니다.** React 코어는 [재조정](/docs/reconciliation.html) 알고리즘과 플랫폼 전용 코드를 포함하고 있지 않습니다. 해당 코어는 React DOM과 React 네이티브의 컴포넌트에서 동시에 사용됩니다.
 
-<<<<<<< HEAD
-React 코어의 소스 코드는 [`packages/react`](https://github.com/facebook/react/tree/master/packages/react)에 위치하고 있습니다. 해당 코드는 npm에서 [`react`](https://www.npmjs.com/package/react) 패키지로 받을 수 있습니다. 관련된 스탠드얼론 브라우저 빌드는 `react.js`이며, 전역에서 `React` 키워드를 통해 접근할 수 있습니다.
-=======
-The code for React core is located in [`packages/react`](https://github.com/facebook/react/tree/main/packages/react) in the source tree. It is available on npm as the [`react`](https://www.npmjs.com/package/react) package. The corresponding standalone browser build is called `react.js`, and it exports a global called `React`.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+React 코어의 소스 코드는 [`packages/react`](https://github.com/facebook/react/tree/main/packages/react)에 위치하고 있습니다. 해당 코드는 npm에서 [`react`](https://www.npmjs.com/package/react) 패키지로 받을 수 있습니다. 관련된 스탠드얼론 브라우저 빌드는 `react.js`이며, 전역에서 `React` 키워드를 통해 접근할 수 있습니다.
 
 ### 렌더러 {#renderers}
 
@@ -128,31 +114,17 @@ React는 원래 DOM을 대상으로 하여 개발됐지만, 이후 [React 네이
 
 **렌더러는 React 트리의 플랫폼 종속적인 변환 방법을 관리합니다.**
 
-<<<<<<< HEAD
-렌더러는 [`packages/`](https://github.com/facebook/react/tree/master/packages/) 폴더 안에 다음과 같이 존재합니다.
+렌더러는 [`packages/`](https://github.com/facebook/react/tree/main/packages/) 폴더 안에 다음과 같이 존재합니다.
 
-* [React DOM Renderer](https://github.com/facebook/react/tree/master/packages/react-dom)는 React 컴포넌트를 DOM으로 렌더링합니다. 해당 렌더러는 [최상위 레벨 `ReactDOM` API](/docs/react-dom.html)에 구현되어 있으며 npm에서 [`react-dom`](https://www.npmjs.com/package/react-dom) 패키지로 받을 수 있습니다. 또한 스탠드얼론 브라우저에서 `react-dom.js`를 통해 전역 `ReactDOM` 키워드로 접근할 수 있습니다.
-* [React Native Renderer](https://github.com/facebook/react/tree/master/packages/react-native-renderer)는 React 컴포넌트를 네이티브 뷰로 렌더링합니다. 해당 렌더러는 React 네이티브 내부에서 사용됩니다.
-* [React Test Renderer](https://github.com/facebook/react/tree/master/packages/react-test-renderer)는 React 컴포넌트를 JSON 형식으로 렌더링합니다. 해당 렌더러는 [Jest](https://facebook.github.io/jest)의 [Snapshot 테스트](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html)에 사용되며, npm에서 [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) 패키지로 받을 수 있습니다.
+* [React DOM Renderer](https://github.com/facebook/react/tree/main/packages/react-dom)는 React 컴포넌트를 DOM으로 렌더링합니다. 해당 렌더러는 [최상위 레벨 `ReactDOM` API](/docs/react-dom.html)에 구현되어 있으며 npm에서 [`react-dom`](https://www.npmjs.com/package/react-dom) 패키지로 받을 수 있습니다. 또한 스탠드얼론 브라우저에서 `react-dom.js`를 통해 전역 `ReactDOM` 키워드로 접근할 수 있습니다.
+* [React Native Renderer](https://github.com/facebook/react/tree/main/packages/react-native-renderer)는 React 컴포넌트를 네이티브 뷰로 렌더링합니다. 해당 렌더러는 React 네이티브 내부에서 사용됩니다.
+* [React Test Renderer](https://github.com/facebook/react/tree/main/packages/react-test-renderer)는 React 컴포넌트를 JSON 형식으로 렌더링합니다. 해당 렌더러는 [Jest](https://facebook.github.io/jest)의 [Snapshot 테스트](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html)에 사용되며, npm에서 [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) 패키지로 받을 수 있습니다.
 
-언급한 것 외에 공식적으로 지원하는 렌더러는 [`react-art`](https://github.com/facebook/react/tree/master/packages/react-art)로 유일합니다. [GitHub 저장소](https://github.com/reactjs/react-art)에서 분리되어 있었지만, 현재는 메인 소스 트리로 옮겨졌습니다.
-=======
-Renderers are also located in [`packages/`](https://github.com/facebook/react/tree/main/packages/):
-
-* [React DOM Renderer](https://github.com/facebook/react/tree/main/packages/react-dom) renders React components to the DOM. It implements [top-level `ReactDOM` APIs](/docs/react-dom.html) and is available as [`react-dom`](https://www.npmjs.com/package/react-dom) npm package. It can also be used as standalone browser bundle called `react-dom.js` that exports a `ReactDOM` global.
-* [React Native Renderer](https://github.com/facebook/react/tree/main/packages/react-native-renderer) renders React components to native views. It is used internally by React Native.
-* [React Test Renderer](https://github.com/facebook/react/tree/main/packages/react-test-renderer) renders React components to JSON trees. It is used by the [Snapshot Testing](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) feature of [Jest](https://facebook.github.io/jest) and is available as [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) npm package.
-
-The only other officially supported renderer is [`react-art`](https://github.com/facebook/react/tree/main/packages/react-art). It used to be in a separate [GitHub repository](https://github.com/reactjs/react-art) but we moved it into the main source tree for now.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+언급한 것 외에 공식적으로 지원하는 렌더러는 [`react-art`](https://github.com/facebook/react/tree/main/packages/react-art)로 유일합니다. [GitHub 저장소](https://github.com/reactjs/react-art)에서 분리되어 있었지만, 현재는 메인 소스 트리로 옮겨졌습니다.
 
 >**주의**
 >
-<<<<<<< HEAD
->[`react-native-renderer`](https://github.com/facebook/react/tree/master/packages/react-native-renderer)는 React 네이티브 구현체와 상호작용하는 매우 얇은 레이어입니다. 네이티브 뷰를 관리하는 실제 플랫폼 관련 코드는 [React 네이티브 저장소](https://github.com/facebook/react-native)에 존재합니다.
-=======
->Technically the [`react-native-renderer`](https://github.com/facebook/react/tree/main/packages/react-native-renderer) is a very thin layer that teaches React to interact with React Native implementation. The real platform-specific code managing the native views lives in the [React Native repository](https://github.com/facebook/react-native) together with its components.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+>[`react-native-renderer`](https://github.com/facebook/react/tree/main/packages/react-native-renderer)는 React 네이티브 구현체와 상호작용하는 매우 얇은 레이어입니다. 네이티브 뷰를 관리하는 실제 플랫폼 관련 코드는 [React 네이티브 저장소](https://github.com/facebook/react-native)에 존재합니다.
 
 ### 재조정자 {#reconcilers}
 
@@ -180,19 +152,11 @@ React DOM과 React 네이티브 같은 매우 다른 경우를 포함하여, 렌
 
 React 파이버 구조에 대해 [여기](https://github.com/acdlite/react-fiber-architecture)와 [여기](https://medium.com/react-in-depth/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react-e1c04700ef6e)를 통해 더 자세히 확인할 수 있습니다. 파이버 재조정자는 React 16과 함께 제공되지만, 비동기 기능은 아직 기본적으로 활성화되지 않습니다.
 
-<<<<<<< HEAD
-해당 소스 코드는 [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler)에서 확인할 수 있습니다.
-=======
-Its source code is located in [`packages/react-reconciler`](https://github.com/facebook/react/tree/main/packages/react-reconciler).
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+해당 소스 코드는 [`packages/react-reconciler`](https://github.com/facebook/react/tree/main/packages/react-reconciler)에서 확인할 수 있습니다.
 
 ### 이벤트 시스템 {#event-system}
 
-<<<<<<< HEAD
-React는 네이티브 이벤트 위에 레이어를 구현하여 크로스 브라우저 차이를 제거했습니다. 해당 코드는 [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/master/packages/react-dom/src/events)에서 확인할 수 있습니다.
-=======
-React implements a layer over native events to smooth out cross-browser differences. Its source code is located in [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/main/packages/react-dom/src/events).
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+React는 네이티브 이벤트 위에 레이어를 구현하여 크로스 브라우저 차이를 제거했습니다. 해당 코드는 [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/main/packages/react-dom/src/events)에서 확인할 수 있습니다.
 
 해당 코드에 대한 상세한 설명은 다음의 [영상](https://www.youtube.com/watch?v=dRo_egw7tBc) (66분)을 참고하세요.
 
