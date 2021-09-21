@@ -39,11 +39,7 @@ Concurrent모드는 React 앱이 빠른 반응속도를 유지하도록 하고 �
 
 ## 차단 vs 인터럽트 렌더링 {#blocking-vs-interruptible-rendering}
 
-<<<<<<< HEAD
-**Concurrent 모드를 설명하기 위해서 버전 관리를 예를 들어 설명할 것입니다** 팀에서 일하고 있다면 Git과 같은 버전 관리 시스템을 사용하며 브랜치로 작업할 것입니다. 브랜치가 준비된다면 다른 사람들이 해당 작업을 가져올 수 있도록 작업을 마스터 브랜치로 병합 할 수 있습니다.
-=======
-**To explain Concurrent Mode, we'll use version control as a metaphor.** If you work on a team, you probably use a version control system like Git and work on branches. When a branch is ready, you can merge your work into main so that other people can pull it.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+**Concurrent 모드를 설명하기 위해서 버전 관리를 예를 들어 설명할 것입니다** 팀에서 일하고 있다면 Git과 같은 버전 관리 시스템을 사용하며 브랜치로 작업할 것입니다. 브랜치가 준비된다면 다른 사람들이 해당 작업을 가져올 수 있도록 작업을 main 브랜치로 병합 할 수 있습니다.
 
 버전 관리가 있기 전에는, 개발 작업의 흐름이 지금과는 많이 달랐습니다. 브랜치라는 개념이 없어서 몇몇 파일을 수정하려면 그 파일들을 수정 작업을 완료하기 전까지 작업하면 안 된다고 모든 사람에게 말해야 했습니다. 심지어는 다른 사람과 동시에 일을 시작할 수도 없었습니다 즉, 문자그대로 이러한 제한사항들에 의해 *차단*되었습니다.
 
@@ -67,11 +63,7 @@ Concurrent모드 기술은 UI에서 디바운싱과 스로틀링의 필요성을
 
 ### 의도적인 로딩 시퀀스 {#intentional-loading-sequences}
 
-<<<<<<< HEAD
-Concurrent 모드는 "브랜치에서" 하는 React 작업과 같다고 전에 말했습니다. 브랜치는 단기적인 수정을 할 때뿐만 아니라 장기적인 실행 기능에도 유용합니다. 때로는 기능에 대해 작업을 할 수도 있습니다. 하지만 마스터로 병합할 수 있는 "적합한 state"가 되기까지 몇 주가 걸릴 수 있습니다. 버전 관리의 이러한 측면은 렌더링에도 적용됩니다.
-=======
-We've said before that Concurrent Mode is like React working "on a branch". Branches are useful not only for short-term fixes, but also for long-running features. Sometimes you might work on a feature, but it could take weeks before it's in a "good enough state" to merge into main. This side of our version control metaphor applies to rendering too.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+Concurrent 모드는 "브랜치에서" 하는 React 작업과 같다고 전에 말했습니다. 브랜치는 단기적인 수정을 할 때뿐만 아니라 장기적인 실행 기능에도 유용합니다. 때로는 기능에 대해 작업을 할 수도 있습니다. 하지만 main으로 병합할 수 있는 "적합한 state"가 되기까지 몇 주가 걸릴 수 있습니다. 버전 관리의 이러한 측면은 렌더링에도 적용됩니다.
 
 한번 앱에서 두 화면 사이를 탐색한다고 가정해보겠습니다. 경우에 따라서, 새 화면에서 사용자에게 "충분히 좋은" 로딩 state를 보여주기 위해 필요한 코드와 데이터를 불러오지 못 할 수 있습니다. 빈 화면이나 큰 스피너로 전환하는 것은 어려운 일이 될 수 있지만 일반적으로 필요한 코드와 데이터를 가져오는 데에 그렇게 많은 시간이 소요되지않습니다. **React가 기존 화면에서 조금 더 오래 유지할 수 있고 새 화면을 보여주기 전에 "안 좋은" 로딩 state를 "건너뛸 수" 있다면 더 좋지 않을까요?**
 
