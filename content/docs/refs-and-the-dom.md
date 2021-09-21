@@ -280,7 +280,7 @@ class Parent extends React.Component {
 
 ### 레거시 API: 문자열 ref {#legacy-api-string-refs}
 
-리액트를 이전에 사용해 보셨다면 `ref` 어트리뷰트의 값이 `"textInput"` 처럼 문자열이고, DOM 노드를 `this.refs.textInput`와 같이 접근하는 구식 API를 아시고 계실지도 모릅니다. 문자열 ref는 [몇몇 문제](https://github.com/facebook/react/pull/8333#issuecomment-271648615)를 가지고 있고, 레거시로 여겨지며, **차후 배포에서 삭제될 것으로 예상**되기 때문에 권장되지 않습니다.
+React를 이전에 사용해 보셨다면 `ref` 어트리뷰트의 값이 `"textInput"` 처럼 문자열이고, DOM 노드를 `this.refs.textInput`와 같이 접근하는 구식 API를 아시고 계실지도 모릅니다. 문자열 ref는 [몇몇 문제](https://github.com/facebook/react/pull/8333#issuecomment-271648615)를 가지고 있고, 레거시로 여겨지며, **차후 배포에서 삭제될 것으로 예상**되기 때문에 권장되지 않습니다.
 
 > 주의
 >

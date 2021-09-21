@@ -4,7 +4,7 @@ title: ES6 없이 사용하는 React
 permalink: docs/react-without-es6.html
 ---
 
-보통 리액트 컴포넌트를 정의할 때 JavaScript의 class를 사용한다면 이와 같을 겁니다.
+보통 React 컴포넌트를 정의할 때 JavaScript의 class를 사용한다면 이와 같을 겁니다.
 
 ```javascript
 class Greeting extends React.Component {
@@ -184,7 +184,7 @@ class SayHello extends React.Component {
 가끔은 전혀 다른 컴포넌트들이 어느 정도 유사한 기능을 공유할 수도 있습니다. 간혹 발생하는 이러한 경우를 번역과 링크에 관한 [횡단 관심사](https://ko.wikipedia.org/wiki/횡단_관심사)라고 부릅니다.
 이 문제에 대한 대처법으로서 `createReactClass`를 통해 더 이상 쓰이지 않는 코드인 `mixins`을 사용할 수 있습니다.
 
-mixin을 사용하는 흔한 예로는 시간 간격을 두고 반복적으로 스스로 내용을 갱신하는 컴포넌트를 만들고자 할 경우가 있습니다. 이는 `setInterval()`을 사용하면 간단하게 만들 수 있지만, 메모리를 절약하기 위해서 컴포넌트를 더 이상 사용하지 않을 때 이를 취소하는 것이 중요합니다. 리액트는 [생명주기 메서드](/docs/react-component.html#the-component-lifecycle)를 제공합니다. 생명주기 메서드는 컴포넌트가 생성되거나 파괴되기 직전에 이를 알려주는 역할을 합니다. 생명주기 메서드를 이용하는 간단한 mixin을 만들어 보겠습니다. 이 mixin은 컴포넌트가 파괴될 때 자동으로 정리되는 `setInterval()` 함수 기능을 제공해 줍니다.
+mixin을 사용하는 흔한 예로는 시간 간격을 두고 반복적으로 스스로 내용을 갱신하는 컴포넌트를 만들고자 할 경우가 있습니다. 이는 `setInterval()`을 사용하면 간단하게 만들 수 있지만, 메모리를 절약하기 위해서 컴포넌트를 더 이상 사용하지 않을 때 이를 취소하는 것이 중요합니다. React는 [생명주기 메서드](/docs/react-component.html#the-component-lifecycle)를 제공합니다. 생명주기 메서드는 컴포넌트가 생성되거나 파괴되기 직전에 이를 알려주는 역할을 합니다. 생명주기 메서드를 이용하는 간단한 mixin을 만들어 보겠습니다. 이 mixin은 컴포넌트가 파괴될 때 자동으로 정리되는 `setInterval()` 함수 기능을 제공해 줍니다.
 
 
 ```javascript
