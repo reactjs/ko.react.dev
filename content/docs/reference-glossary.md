@@ -45,7 +45,7 @@ ReactDOM.render(
   <h1 className="hello">My name is {name}!</h1>,
   document.getElementById('root')
 );
-```  
+```
 
 ## [엘리먼트](/docs/rendering-elements.html) {#elements}
 
@@ -152,7 +152,7 @@ Key는 같은 배열에 포함된 다른 요소 사이에서만 고윳값을 가
 
 React는 컴포넌트에 접근할 수 있는 특수한 어트리뷰트를 지원합니다. `ref` 어트리뷰트 [`React.createRef()` 함수](/docs/react-api.html#reactcreateref), 콜백 함수, 혹은 문자열(레거시 API에서)로 생성할 수 있습니다. ref 어트리뷰트가 콜백 함수인 경우, 함수는 DOM 엘리먼트나 class 인스턴스를 인자로 받습니다. 이를 통해 컴포넌트 인스턴스나 DOM 엘리먼트에 직접 접근할 수 있습니다.
 
-Ref를 가능한 한 적게 사용하세요. 만약 앱에서 Ref를 사용하여 "작동되는 부분"이 많다면 [하향식 데이터 흐름](/docs/lifting-state-up.html)을 사용하는 것이 더 좋습니다.
+Ref를 가능한 한 적게 사용하세요. 앱에서 Ref를 사용하여 "작동되는 부분"이 많다면 [하향식 데이터 흐름](/docs/lifting-state-up.html)을 사용하는 것이 더 좋습니다.
 
 ## [이벤트](/docs/handling-events.html) {#events}
 

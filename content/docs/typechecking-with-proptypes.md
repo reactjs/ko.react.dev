@@ -178,7 +178,7 @@ ReactDOM.render(
 );
 ```
 
-만약 당신이 [plugin-proposal-class-properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties/) (이전의 _plugin-transform-class-properties_)와 같은 Babel 변환(transform)을 사용하고 있다면, `defaultProps`를 React 컴포넌트 클래스 내의 정적 프로퍼티로 선언 할 수도 있습니다. 이 문법은 아직 완성되지 않았으므로 브라우저에서 작동하기 위해서는 컴파일링 작업이 필요합니다. 더 자세한 정보를 위해서 [class fields proposal](https://github.com/tc39/proposal-class-fields)를 확인해 주시길 바랍니다.
+당신이 [plugin-proposal-class-properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties/) (이전의 _plugin-transform-class-properties_)와 같은 Babel 변환(transform)을 사용하고 있다면, `defaultProps`를 React 컴포넌트 클래스 내의 정적 프로퍼티로 선언 할 수도 있습니다. 이 문법은 아직 완성되지 않았으므로 브라우저에서 작동하기 위해서는 컴파일링 작업이 필요합니다. 더 자세한 정보를 위해서 [class fields proposal](https://github.com/tc39/proposal-class-fields)를 확인해 주시길 바랍니다.
 
 ```javascript
 class Greeting extends React.Component {

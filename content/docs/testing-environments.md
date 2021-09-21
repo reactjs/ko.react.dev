@@ -27,7 +27,7 @@ prev: testing-recipes.html
 
 UI 테스트의 많은 부분은 위의 설정으로 작성할 수 있습니다. jsdom에게 렌더링하는 테스트 러너로서, 브라우저 이벤트 시퀀스로 지정된 사용자 상호작용과 함께Jest를 사용하는 것은 `act()` 도우미에 의해 작동됩니다.[<small>(예시)</small>](/docs/testing-recipes.html) 예를 들어, 많은 React 자체 테스트는 이런 조합으로 작성됩니다.
 
-만약 대부분의 브라우저별 동작을 테스트하고 레이아웃이나 실제 입력과 같은 네이티브 브라우저 동작을 요구하는 라이브러리를 작성하는 경우 [mocha](https://mochajs.org/)와 같은 프레임 워크를 사용할 수 있습니다.
+대부분의 브라우저별 동작을 테스트하고 레이아웃이나 실제 입력과 같은 네이티브 브라우저 동작을 요구하는 라이브러리를 작성하는 경우 [mocha](https://mochajs.org/)와 같은 프레임 워크를 사용할 수 있습니다.
 
 DOM을 시뮬레이션*할 수 없는* 환경에서 (예를 들면, Node.js에서 React Native 컴포넌트 테스트), 엘리먼트와의 상호작용을 시뮬레이션하기 위해 [이벤트 시뮬레이션 헬퍼](/docs/test-utils.html#simulate)를 사용할 수 있습니다. 다른 대안으로, [`@testing-library/react-native`](https://testing-library.com/docs/react-native-testing-library/intro)의 `fireEvent` 헬퍼를 사용할 수 있습니다.
 

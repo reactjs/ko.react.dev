@@ -215,10 +215,10 @@ class MouseTracker extends React.Component {
 
 이 테크닉은 행위(마우스 트래킹 같은)를 매우 쉽게 공유할 수 있도록 만들어 줍니다. 해당 행위를 적용하려면, `<Mouse>` 를 그리고 현재 (x, y) 커서 위치에 무엇을 그릴지에 대한 정보를 prop을 통해 넘겨주기만 하면 됩니다.
 
-render props에 대해 한가지 흥미로운 점은 대부분의 [higher-order components](/docs/higher-order-components.html)(HOC)에 render props pattern을 이식할 수 있습니다. 예를 들면, 만약에 <Mouse> 컴포넌트보다 withMouse HOC를 더 선호한다면 render prop을 이용해서 다음과 같이 쉽게 HOC를 만들 수 있습니다.
+render props에 대해 한가지 흥미로운 점은 대부분의 [higher-order components](/docs/higher-order-components.html)(HOC)에 render props pattern을 이식할 수 있습니다. 예를 들면, `<Mouse>` 컴포넌트보다 withMouse HOC를 더 선호한다면 render prop을 이용해서 다음과 같이 쉽게 HOC를 만들 수 있습니다.
 
 ```js
-// 만약 어떤 이유 때문에 HOC를 만들기 원한다면, 쉽게 구현할 수 있습니다.
+// 어떤 이유 때문에 HOC를 만들기 원한다면, 쉽게 구현할 수 있습니다.
 // render prop을 이용해서 일반적인 컴포넌트를 만드세요!
 function withMouse(Component) {
   return class extends React.Component {
@@ -322,4 +322,4 @@ class MouseTracker extends React.Component {
 }
 ```
 
-만약 prop을 정적으로 정의할 수 없는 경우에는 `<Mouse>` 컴포넌트는 `React.Component`를 상속받아야 합니다.
+prop을 정적으로 정의할 수 없는 경우에는 `<Mouse>` 컴포넌트는 `React.Component`를 상속받아야 합니다.

@@ -19,7 +19,7 @@ React 앱을 개발하는데 있어서 아래 관례들의 사용을 반드시 �
 
 [React 저장소](https://github.com/facebook/react)를 클론하게 되면, 다음과 같은 몇 개의 최상위 폴더를 볼 수 있습니다.
 
-* [`packages`](https://github.com/facebook/react/tree/main/packages) 폴더는 React 저장소에 있는 모든 패키지들에 대해 `package.json`과 같은 메타데이터와 `src` 폴더를 포함하고 있습니다. **만약 변경하고자 하는 부분이 코드와 관련되어 있다면, `src` 폴더에 대부분을 할애하게 될 것입니다.**
+* [`packages`](https://github.com/facebook/react/tree/main/packages) 폴더는 React 저장소에 있는 모든 패키지들에 대해 `package.json`과 같은 메타데이터와 `src` 폴더를 포함하고 있습니다. **변경하고자 하는 부분이 코드와 관련되어 있다면, `src` 폴더에 대부분을 할애하게 될 것입니다.**
 * [`fixtures`](https://github.com/facebook/react/tree/main/fixtures)에는 기여자들을 위한 몇 가지 React 테스트 애플리케이션이 존재합니다.
 * `build` 폴더에는 React의 빌드 결과가 생성됩니다. 저장소에는 존재하지 않지만, React를 클론하고 처음 [빌드](/docs/how-to-contribute.html#development-workflow)할 시 생성됩니다.
 

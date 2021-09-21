@@ -200,7 +200,7 @@ React 16.3 이후 버전의 React를 사용하신다면 위와 같은 경우에�
 
 React 16.2 이전 버전을 사용하시거나 ref 전달하기보다 더 유연한 방법을 원한다면 [이런 대안을 사용할 수 있습니다.](https://gist.github.com/gaearon/1a018a023347fe1c2476073330cc5509)
 
-가능하다면 DOM 노드를 외부에 공개하는 일을 지양해야 합니다만 DOM 노드를 외부에 공개하는 일은 유용한 해결책이 될 수 있습니다. 또한 이 방법들은 자식 컴포넌트의 코드 수정을 요한다는 점을 기억하세요. 만약 자식 컴포넌트의 코드를 수정할 수 없다면 최후의 방법인 [`findDOMNode()`](/docs/react-dom.html#finddomnode)를 사용하는 방법이 있지만 `findDOMNode()`는 좋지 못한 방법일 뿐더러 [`StrictMode`](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)에서 사용할 수 없습니다.
+가능하다면 DOM 노드를 외부에 공개하는 일을 지양해야 합니다만 DOM 노드를 외부에 공개하는 일은 유용한 해결책이 될 수 있습니다. 또한 이 방법들은 자식 컴포넌트의 코드 수정을 요한다는 점을 기억하세요. 자식 컴포넌트의 코드를 수정할 수 없다면 최후의 방법인 [`findDOMNode()`](/docs/react-dom.html#finddomnode)를 사용하는 방법이 있지만 `findDOMNode()`는 좋지 못한 방법일 뿐더러 [`StrictMode`](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)에서 사용할 수 없습니다.
 
 ### 콜백 ref {#callback-refs}
 

@@ -311,7 +311,7 @@ ReactDOM.render(element, domContainer);
 
 > 주의
 >
-> `window`, `window.document`와 `window.document.createElement`는 `React`를 **가져와서 사용하기 전에도** 전역적으로 사용할 수 있습니다. 만약 그렇지 않다면 React는 DOM에 접근할 수 없다고 간주할 것이며 `setState`와 같은 메서드들이 작동하지 않을 것 입니다.
+> `window`, `window.document`와 `window.document.createElement`는 `React`를 **가져와서 사용하기 전에도** 전역적으로 사용할 수 있습니다. 그렇지 않다면 React는 DOM에 접근할 수 없다고 간주할 것이며 `setState`와 같은 메서드들이 작동하지 않을 것 입니다.
 
 * * *
 

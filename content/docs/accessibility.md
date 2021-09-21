@@ -89,7 +89,7 @@ function Glossary(props) {
 }
 ```
 
-만약, Fragment 태그에 어떤 props도 필요하지 않고, 사용하고 있는 도구에서 지원한다면, 아래와 같이 [짧게 줄여 쓸 수](/docs/fragments.html#short-syntax) 있습니다.
+Fragment 태그에 어떤 props도 필요하지 않고, 사용하고 있는 도구에서 지원한다면, 아래와 같이 [짧게 줄여 쓸 수](/docs/fragments.html#short-syntax) 있습니다.
 
 ```javascript{3,6}
 function ListItem({ item }) {
@@ -224,7 +224,7 @@ class Parent extends React.Component {
 this.inputElement.current.focus();
 ```
 
-고차 컴포넌트([Higher Order Component](/docs/higher-order-components.html))를 사용하여 컴포넌트를 확장할 때는 감싸진 컴포넌트에 React에서 제공하는 `forwardRef` 함수를 사용하여 [ref를 넘겨줄 수 있습니다](/docs/forwarding-refs.html). 만약, 서드파티 고차 컴포넌트에서 ref를 넘겨줄 수 없다면, 위와 같은 패턴을 여전히 차선책으로 사용할 수 있습니다.
+고차 컴포넌트([Higher Order Component](/docs/higher-order-components.html))를 사용하여 컴포넌트를 확장할 때는 감싸진 컴포넌트에 React에서 제공하는 `forwardRef` 함수를 사용하여 [ref를 넘겨줄 수 있습니다](/docs/forwarding-refs.html). 서드파티 고차 컴포넌트에서 ref를 넘겨줄 수 없다면, 위와 같은 패턴을 여전히 차선책으로 사용할 수 있습니다.
 
 매우 좋은 포커스 관리 예시로 [react-aria-modal](https://github.com/davidtheclark/react-aria-modal)을 들 수 있습니다. 완전히 접근 가능한 모달 창에 대한 드문 예시입니다. 첫 포커스를 취소 버튼에 맞출 뿐 만 아니라(키보드 사용자가 실수로 확인 동작을 일으키지 않도록 막아줌), 키보드 포커스를 모달 안으로 한정해주며, 모달이 닫힐 때 모달을 열게 했던 엘리먼트에 포커스를 잡아줍니다.
 
@@ -328,7 +328,7 @@ class BlurExample extends React.Component {
     });
   }
 
-  // 만약 자식이 포커스를 받으면, 팝오버를 닫지 않습니다.
+  // 자식이 포커스를 받으면, 팝오버를 닫지 않습니다.
   onFocusHandler() {
     clearTimeout(this.timeOutId);
   }

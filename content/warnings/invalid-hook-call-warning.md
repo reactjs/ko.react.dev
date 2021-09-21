@@ -7,7 +7,7 @@ permalink: warnings/invalid-hook-call-warning.html
 다음과 같은 오류 메시지가 나왔기 때문에 여기에 있을 것입니다.
 
 > Hooks can only be called inside the body of a function component.
-> 
+>
 > (Hooks는 함수 컴포넌트의 본문 내에서만 호출할 수 있습니다.)
 
 다음 세 가지 일반적인 이유로 이 오류 메시지를 보게 됩니다.
@@ -21,7 +21,7 @@ permalink: warnings/invalid-hook-call-warning.html
 ## React와 React DOM의 버전 불일치 {#mismatching-versions-of-react-and-react-dom}
 
 Hooks를 아직 지원하지 않는`react-dom`(<16.8.0) 또는`react-native` (<0.59)의 버전을 사용 중일 수 있습니다.
-애플리케이션 폴더에서 `npm ls react-dom` 또는 `npm ls react-native`를 실행하여 사용 중인 버전을 확인할 수 있습니다. 만약 한 개보다 많이 나오면 문제가 발생할 수도 있습니다. (아래에서 자세히 설명합니다.)
+애플리케이션 폴더에서 `npm ls react-dom` 또는 `npm ls react-native`를 실행하여 사용 중인 버전을 확인할 수 있습니다. 한 개보다 많이 나오면 문제가 발생할 수도 있습니다. (아래에서 자세히 설명합니다.)
 
 ## Hooks 규칙 위반 {#breaking-the-rules-of-hooks}
 

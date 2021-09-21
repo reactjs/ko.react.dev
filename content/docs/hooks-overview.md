@@ -128,7 +128,7 @@ function FriendStatus(props) {
 }
 ```
 
-이 예시에서 컴포넌트가 unmount될 때 React는 `ChatAPI`에서 구독을 해지할 것입니다. 또한 재 렌더링이 일어나 effect를 재실행하기 전에도 마찬가지로 구독을 해지합니다. (만약 원한다면 `props.friend.id`가 바뀌지 않았을 때 [재구독을 건너뛰도록 설정](/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)할 수 있습니다.)
+이 예시에서 컴포넌트가 unmount될 때 React는 `ChatAPI`에서 구독을 해지할 것입니다. 또한 재 렌더링이 일어나 effect를 재실행하기 전에도 마찬가지로 구독을 해지합니다. (원한다면 `props.friend.id`가 바뀌지 않았을 때 [재구독을 건너뛰도록 설정](/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)할 수 있습니다.)
 
 `useState`와 마찬가지로 컴포넌트 내에서 여러 개의 effect를 사용할 수 있습니다.
 
@@ -264,7 +264,7 @@ function Todos() {
 
 ## 다음 단계 {#next-steps}
 
-휴, 정말 순식간이었죠! 만약 잘 이해가 안 되는 부분이 있거나 좀 더 깊이 공부하고 싶으면 [State Hook](/docs/hooks-state.html)부터 시작해서 다른 문서들을 읽어보시기 바랍니다.
+휴, 정말 순식간이었죠! 잘 이해가 안 되는 부분이 있거나 좀 더 깊이 공부하고 싶으면 [State Hook](/docs/hooks-state.html)부터 시작해서 다른 문서들을 읽어보시기 바랍니다.
 
 또한 [Hooks API reference](/docs/hooks-reference.html)와 [Hooks FAQ](/docs/hooks-faq.html)도 참고하시기 바랍니다.
 
