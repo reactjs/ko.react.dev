@@ -291,7 +291,7 @@ const EnhancedComponent = enhance(WrappedComponent)
 
 (이와 동일한 속성을 통해서 실험단계인 `connect`와 기타 인핸서 스타일의 HOC를 데코레이터로 사용할 수 있습니다.)
 
-`compose` 유틸리티 기능(효용 함수)는 lodash (as [`lodash.flowRight`](https://lodash.com/docs/#flowRight)), [Redux](https://redux.js.org/api/compose), and [Ramda](https://ramdajs.com/docs/#compose)를 포함한 많은 서드파티 라이브러리에서 제공하고 있습니다.
+`compose` 유틸리티 기능(효용 함수)는 lodash (as [`lodash.flowRight`](https://lodash.com/docs/#flowRight)), [Redux](https://redux.js.org/api/compose), and [Ramda](https://ramdajs.com/docs/#compose)를 포함한 많은 서드 파티 라이브러리에서 제공하고 있습니다.
 
 ## 컨벤션: 간단한 디버깅을 위한 디스플레이 네임 작성 방법 {#convention-wrap-the-display-name-for-easy-debugging}
 

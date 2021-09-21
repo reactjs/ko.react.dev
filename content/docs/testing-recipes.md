@@ -232,7 +232,7 @@ it("renders user data", async () => {
 
 일부 모듈은 테스트 환경에서 제대로 작동하지 않거나 테스트 자체에 필수적이지 않을 수 있습니다. 이러한 모듈을 더미 모듈로 대체하는 방식으로 모의하여 코드에 대한 테스트를 더욱 쉽게 작성할 수 있습니다.
 
-서드파티인 `GoogleMap` 컴포넌트를 내장하는 `Contact` 컴포넌트를 살펴보세요
+서드 파티인 `GoogleMap` 컴포넌트를 내장하는 `Contact` 컴포넌트를 살펴보세요
 
 ```jsx
 // map.js
@@ -394,8 +394,8 @@ it("changes value when clicked", () => {
   });
 
   // 버튼 엘리먼트를 가져와서 클릭 이벤트를 트리거 하세요.
-  
-  
+
+
   const button = document.querySelector("[data-testid=toggle]");
   expect(button.innerHTML).toBe("Turn on");
 
@@ -421,7 +421,7 @@ Different DOM events and their properties are described in [MDN](https://develop
 
 > 주의:
 >
-> React Testing Library는 이벤트를 발생시키기 위한 [더욱 간결한 함수](https://testing-library.com/docs/dom-testing-library/api-events)를 제공합니다. 
+> React Testing Library는 이벤트를 발생시키기 위한 [더욱 간결한 함수](https://testing-library.com/docs/dom-testing-library/api-events)를 제공합니다.
 
 ---
 
