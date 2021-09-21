@@ -245,11 +245,7 @@ class Square extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
-Square를 클릭하면 브라우저에서 경고 창이 뜨는 것을 확인할 수 있습니다.
-=======
-If you click on a Square now, you should see 'click' in your browser's devtools console.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+Square를 클릭하면 'click'이 브라우저 개발자 도구의 콘솔에 출력되는 걸 확인할 수 있습니다.
 
 > 주의
 >
@@ -267,11 +263,7 @@ If you click on a Square now, you should see 'click' in your browser's devtools 
 >}
 >```
 >
-<<<<<<< HEAD
-> `onClick={() => alert('click')}`이 어떻게 동작하는지 살펴보면 `onClick` prop으로 *함수*를 전달하고 있습니다. React는 클릭했을 때에만 이 함수를 호출할 것입니다. `() =>`을 잊어버리고 `onClick={alert('click')}`이라고 작성하는 것은 자주 발생하는 실수이며 컴포넌트가 다시 렌더링할 때마다 경고 창을 띄울 것입니다.
-=======
->Notice how with `onClick={() => console.log('click')}`, we're passing *a function* as the `onClick` prop. React will only call this function after a click. Forgetting `() =>` and writing `onClick={console.log('click')}` is a common mistake, and would fire every time the component re-renders.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+> `onClick={() => console.log('click')}`이 어떻게 동작하는지 살펴보면 `onClick` prop으로 *함수*를 전달하고 있습니다. React는 클릭했을 때에만 이 함수를 호출할 것입니다. `() =>`을 잊어버리고 `onClick={console.log('click')}`이라고 작성하는 것은 자주 발생하는 실수이며 컴포넌트가 다시 렌더링할 때마다 경고 창을 띄울 것입니다.
 
 다음 단계로 Square 컴포넌트를 클릭한 것을 "기억하게" 만들어 "X" 표시를 채워 넣으려고 합니다. 무언가를 "기억하기"위해 component는 **state**를 사용합니다.
 
@@ -536,11 +528,7 @@ Square 컴포넌트가 더 이상 state를 유지하지 않기 때문에 Square 
 
 이전 코드 예시에서 기존 배열을 수정하는 것이 아니라 `.slice()` 연산자를 사용하여 `squares` 배열의 사본 만들기를 추천했습니다. 지금부터 불변성이 무엇인지와 왜 불변성이 중요한지 알아보겠습니다.
 
-<<<<<<< HEAD
 일반적으로 데이터 변경에는 두 가지 방법이 있습니다. 첫 번째는 데이터의 값을 직접 *변경*하는 것입니다. 두 번째는 원하는 변경 값을 가진 새로운 사본으로 데이터를 교체하는 것입니다.
-=======
-In the previous code example, we suggested that you create a copy of the `squares` array using the `slice()` method instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
 
 #### 객체 변경을 통해 데이터 수정하기 {#data-change-with-mutation}
 
