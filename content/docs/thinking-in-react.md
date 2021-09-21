@@ -41,11 +41,7 @@ JSON API는 아래와 같은 데이터를 반환합니다.
 
 ![Diagram showing nesting of components](../images/blog/thinking-in-react-components.png)
 
-<<<<<<< HEAD
-다섯개의 컴포넌트로 이루어진 앱을 한번 봅시다. 각각의 컴포넌트에 들어간 데이터는 이탤릭체로 표기했습니다.
-=======
-You'll see here that we have five components in our app. We've italicized the data each component represents. The numbers in the image correspond to the numbers below.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+다섯개의 컴포넌트로 이루어진 앱을 한번 봅시다. 각각의 컴포넌트에 들어간 데이터는 이탤릭체로 표기했습니다. 이미지의 숫자는 아래 숫자에 해당됩니다.
 
   1. **`FilterableProductTable`(노란색)**: 예시 전체를 포괄합니다.
   2. **`SearchBar`(파란색)**: 모든 *유저의 입력(user input)* 을 받습니다.
