@@ -31,7 +31,7 @@ next: cdn-links.html
 React 팀의 추천 방법은 아래와 같습니다
 
 - **React를 배우고 있거나** 아니면 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application) 앱**을 만들고 싶다면 [Create React App](#create-react-app).
-- **서버 렌더링 Node.js 웹사이트를 만들고 있다면** [Next.js](#nextjs)을 시도해보세요.. 
+- **서버 렌더링 Node.js 웹사이트를 만들고 있다면** [Next.js](#nextjs)을 시도해보세요..
 - **고정적인 콘텐츠 지향적 웹사이트를 만들고 있다면** [Gatsby](#gatsby)를 시도해보세요..
 - **컴포넌트 라이브러리** 혹은 **이미 있는 코드 베이스에 통합을 한다**면 [더 유연한 툴체인](#more-flexible-toolchains).
 
@@ -39,11 +39,7 @@ React 팀의 추천 방법은 아래와 같습니다
 
 [Create React App](https://github.com/facebookincubator/create-react-app)은 **React 배우기**에 간편한 환경입니다. 그리고 시작하기에 최고의 방법은 **새로운 [싱글 페이지 애플리케이션](/docs/glossary.html#single-page-application)** 입니다.
 
-<<<<<<< HEAD
-이것은 개발 환경을 설정하고, 최신 JavaScript를 사용하게 해주며, 좋은 개발 경험과 프로덕션 앱 최적화를 해줍니다. [Node 10.16 혹은 상위 버전 및 npm 5.6 혹은 상위 버전](https://nodejs.org/en/)이 필요합니다. 새로운 프로젝트를 만들기 위해 아래의 명령어를 실행합니다.
-=======
-It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production. You’ll need to have [Node >= 14.0.0 and npm >= 5.6](https://nodejs.org/en/) on your machine. To create a project, run:
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+이것은 개발 환경을 설정하고, 최신 JavaScript를 사용하게 해주며, 좋은 개발 경험과 프로덕션 앱 최적화를 해줍니다. [Node 14.0.0 혹은 상위 버전 및 npm 5.6 혹은 상위 버전](https://nodejs.org/en/)이 필요합니다. 새로운 프로젝트를 만들기 위해 아래의 명령어를 실행합니다.
 
 ```bash
 npx create-react-app my-app
