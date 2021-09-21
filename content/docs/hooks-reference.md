@@ -187,9 +187,13 @@ context 객체(`React.createContext`에서 반환된 값)을 받아 그 context�
 
 `useContext`로 전달한 인자는 *context 객체 그 자체*이어야 함을 잊지 마세요.
 
+<!-- textlint-disable -->
+
  * **맞는 사용:** `useContext(MyContext)`
  * **틀린 사용:** `useContext(MyContext.Consumer)`
  * **틀린 사용:** `useContext(MyContext.Provider)`
+
+ <!-- textlint-enable -->
 
 `useContext`를 호출한 컴포넌트는 context 값이 변경되면 항상 리렌더링 될 것입니다. 만약 컴포넌트를 리렌더링 하는 것에 비용이 많이 든다면, [메모이제이션을 사용하여 최적화할 수 있습니다.](https://github.com/facebook/react/issues/15156#issuecomment-474590693)
 

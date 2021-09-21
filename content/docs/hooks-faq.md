@@ -127,7 +127,7 @@ React의 관점에서 Hook을 사용하는 컴포넌트는 일반적인 컴포�
 >
 >[테스팅 방안](/docs/testing-recipes.html)에는 복사하여 붙여넣을 수 있는 많은 예시가 포함되어 있습니다.
 
-예를 들어 여기 이 계수기 컴포넌트가 있다고 가정해 보겠습니다:
+예를 들어 여기 이 계수기 컴포넌트가 있다고 가정해 보겠습니다.
 
 ```js
 function Example() {
@@ -492,7 +492,7 @@ function MeasureExample() {
 
 이 예시에서 콜백 ref는 렌더링 된 `<h1>` 컴포넌트가 모든 리렌더 동안 존재하기 때문에 컴포넌트가 마운트 및 마운트 해제될 때만 호출됩니다. 컴포넌트의 크기가 조정될 때마다 알림을 받으려면 [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) 또는 여기에 빌드된 제삼자 Hook을 사용할 수 있습니다.
 
-원한다면 재사용 가능한 Hook으로 [이 로직을 추출](https://codesandbox.io/s/m5o42082xy) 할 수 있습니다:
+원한다면 재사용 가능한 Hook으로 [이 로직을 추출](https://codesandbox.io/s/m5o42082xy) 할 수 있습니다.
 
 ```js{2}
 function MeasureExample() {

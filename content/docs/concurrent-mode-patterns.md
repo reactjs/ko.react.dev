@@ -256,7 +256,7 @@ function ProfilePage() {
 
 [이 예시](https://codesandbox.io/s/boring-shadow-100tf)를 보면 "Refresh" 버튼을 누르는 것은 동작합니다. `<ProfileDetails>` 와 `<ProfileTimeline>` 컴포넌트들은 새로운 최신 데이터를 표현하는 `resource` 프로퍼티를 전달받습니다. `fetchUserAndPosts` 호출 직후에 아무런 응답을 받지 못했기 때문에 컴포넌트는 바로 '서스펜드' 상태가 되고 화면에는 폴백을 보게 됩니다. 응답을 받은 뒤엔 새롭게 갱신된 포스트를 볼 수 있습니다. (우리의 목 API는 3초 마다 새로운 포스트를 추가합니다.)
 
-하지만 위 경험은 자연스럽지 않습니다. 우리는 한 페이지를 브라우징하고 있었는데 버튼을 클릭한 직후에 바로 로딩 상태로 전환되어 사용자를 혼란스럽게 합니다. **이전처럼, 의도치 않은 로딩 상태를 숨기기 위해서 상태 갱신을 트랜지션에 래핑할 수 있습니다:**
+하지만 위 경험은 자연스럽지 않습니다. 우리는 한 페이지를 브라우징하고 있었는데 버튼을 클릭한 직후에 바로 로딩 상태로 전환되어 사용자를 혼란스럽게 합니다. **이전처럼, 의도치 않은 로딩 상태를 숨기기 위해서 상태 갱신을 트랜지션에 래핑할 수 있습니다.**
 
 ```js{2-5,9-11,21}
 function ProfilePage() {
@@ -377,15 +377,19 @@ function ProfilePage() {
 
 ### 기본: 후퇴 → 스켈레톤 → 완료 {#default-receded-skeleton-complete}
 
-[이 예시](https://codesandbox.io/s/prod-grass-g1lh5)를 열고 "Open Profile" 버튼을 클릭하세요. 여러 시각적 상태를 단계별로 볼 수 있습니다:
+[이 예시](https://codesandbox.io/s/prod-grass-g1lh5)를 열고 "Open Profile" 버튼을 클릭하세요. 여러 시각적 상태를 단계별로 볼 수 있습니다.
+
+<!-- textlint-disable -->
 
 * **후퇴:** 잠깐 `<h1>Loading the app...</h1>` 폴백이 보입니다.
 * **스켈레톤:** `<ProfilePage>` 컴포넌트와 내부의 `<h2>Loading posts...</h2>` 폴백이 보입니다.
 * **완료:** 별도의 내부 폴백 없이 `<ProfilePage>` 가 보입니다. 모든 것이 준비되었습니다.
 
+<!-- textlint-enable -->
+
 어떻게 후퇴와 스켈레톤 상태를 구분할 수 있을까요? 차이점은 **후퇴**상태는 '한 단계 뒤로 가기' 로 느껴지고, **스켈레톤** 상태는 더 많은 콘텐츠를 보여주기 위해서 '한 단계 앞으로 가기' 에 가까운 느낌입니다.
 
-이 예시에선 `<HomePage>` 로 여정을 시작합니다:
+이 예시에선 `<HomePage>` 로 여정을 시작합니다.
 
 ```js
 <Suspense fallback={...}>
@@ -394,7 +398,7 @@ function ProfilePage() {
 </Suspense>
 ```
 
-클릭하면 React는 다음 화면을 렌더링하기 시작합니다:
+클릭하면 React는 다음 화면을 렌더링하기 시작합니다.
 
 ```js
 <Suspense fallback={...}>
@@ -408,7 +412,7 @@ function ProfilePage() {
 </Suspense>
 ```
 
-`<ProfileDetails>` 와 `<ProfileTimeline>` 모두 렌더링에 필요한 데이터를 준비하는 동안 서스펜드됩니다:
+`<ProfileDetails>` 와 `<ProfileTimeline>` 모두 렌더링에 필요한 데이터를 준비하는 동안 서스펜드됩니다.
 
 ```js{4,6}
 <Suspense fallback={...}>
@@ -422,7 +426,7 @@ function ProfilePage() {
 </Suspense>
 ```
 
-컴포넌트가 서스펜드 되면 React는 가장 가까운 폴백을 표시합니다. `<ProfileDetails>`의 가장 가까운 폴백은 최상위 수준에 있습니다:
+컴포넌트가 서스펜드 되면 React는 가장 가까운 폴백을 표시합니다. `<ProfileDetails>`의 가장 가까운 폴백은 최상위 수준에 있습니다.
 
 ```js{2,3,7}
 <Suspense fallback={
@@ -441,7 +445,7 @@ function ProfilePage() {
 
 최상위 수준에서 폴백되기 때문에 버튼을 클릭할 때 "한 단계 뒤로 간 느낌"이 듭니다. 이전에 유용한 콘텐츠를 보여주던 `<Suspense>` 경계는 폴백을 보여주기 위해 '후퇴'해야 합니다. 이것을 **후퇴**상태라고 부릅니다.
 
-더 많은 데이터를 불러올 수록 React는 렌더링을 다시 시도하고 `<ProfileDetails>`는 성공적으로 렌더링됩니다. 마침내 **스켈레톤** 상태에 돌입했습니다. 몇 가지 빠졌지만 새로운 페이지가 보입니다:
+더 많은 데이터를 불러올 수록 React는 렌더링을 다시 시도하고 `<ProfileDetails>`는 성공적으로 렌더링됩니다. 마침내 **스켈레톤** 상태에 돌입했습니다. 몇 가지 빠졌지만 새로운 페이지가 보입니다.
 
 ```js{6,7,9}
 <Suspense fallback={...}>
@@ -466,7 +470,7 @@ function ProfilePage() {
 
 `useTransition`할 때 React는 이전 화면에 '잔류'할 수 있게 합니다. 그리고 진행 인디케이터를 보여줍니다. 이걸 **보류**상태라고 부릅니다. 기존 콘텐츠가 사라지지 않고 잔류한 채로 상호작용이 가능하기 때문에 **후퇴** 상태보다 훨씬 좋게 느껴집니다.
 
-차이를 느끼기 위해 두 예시를 비교해보세요:
+차이를 느끼기 위해 두 예시를 비교해보세요.
 
 * 기본: [후퇴 → 스켈레톤 → 완성](https://codesandbox.io/s/prod-grass-g1lh5)
 * **권장: [보류 → 스켈레톤 → 완성](https://codesandbox.io/s/focused-snow-xbkvl)**
@@ -477,7 +481,7 @@ function ProfilePage() {
 
 [이 예시](https://codesandbox.io/s/nameless-butterfly-fkw5q)를 열어보세요. 버튼을 누르면 페이지가 전환되기 전에 몇 초간 보류 상태가 보입니다. 이 트랜지션은 자연스럽고 좋습니다.
 
-완전 새로운 기능을 프로필 페이지에 추가할 것입니다. 한 사람에 대한 재밌는 사실 목록을 말이죠:
+완전 새로운 기능을 프로필 페이지에 추가할 것입니다. 한 사람에 대한 재밌는 사실 목록을 말이죠.
 
 ```js{8,13-25}
 function ProfilePage({ resource }) {
@@ -545,7 +549,7 @@ function ProfilePage({ resource }) {
 
 ### 보류 인디케이터 지연하기 {#delaying-a-pending-indicator}
 
-`Button` 컴포넌트가 클릭 되면 즉시 보류 상태 인디케이터를 보여줍니다:
+`Button` 컴포넌트가 클릭 되면 즉시 보류 상태 인디케이터를 보여줍니다.
 
 ```js{2,13}
 function Button({ children, onClick }) {
@@ -606,7 +610,7 @@ return (
 
 ### 요약 {#recap}
 
-지금까지 배운 가장 중요한 것들:
+지금까지 배운 가장 중요한 것들
 
 * 기본적으로 로딩 순서는 후퇴 → 스켈레톤 → 완료 입니다.
 * 후퇴 상태는 기존 콘텐츠를 숨겨버리기 때문에 좋은 인터페이스는 아닙니다.
@@ -622,7 +626,7 @@ return (
 
 React 컴포넌트를 설계할 때 일반적으로 "최소한 표현" 상태를 찾는 것이 좋습니다. 예를 들어 `firstName`, `lastName`, `fullName`를 전부 상태에 저장해놓기보다는 `firstName`, `lastName`만 저장해놓고 렌더링 과정에서 `fullName`을 계산하는 것이 낫습니다. 상태를 갱신할 때 실수의 여지를 없애고 다른 상태를 신경쓰지 않아도 되기 때문입니다.
 
-그런데 컨커런트 모드에서는 다른 상태의 변수들에 데이터 '중복'을 원할 수도 있습니다. 다음 작은 애플리케이션을 생각해봅시다:
+그런데 컨커런트 모드에서는 다른 상태의 변수들에 데이터 '중복'을 원할 수도 있습니다. 다음 작은 애플리케이션을 생각해봅시다.
 
 ```js
 const initialQuery = "Hello, world";
@@ -664,7 +668,7 @@ function Translation({ resource }) {
 
 인풋에 타이핑하면 `<Transition>` 컴포넌트는 서스펜드되고 데이터가 준비될 때까지 `<p>Loading...</p>` 폴백이 보입니다. 이상적인 형태는 아닙니다. 다음 번역을 가져오는 동안 **이전**번역을 볼 수 있다면 더 좋을 것입니다.
 
-사실 콘솔을 열어보면 다음과 같은 경고가 보일 겁니다:
+사실 콘솔을 열어보면 다음과 같은 경고가 보일 겁니다.
 
 ```
 Warning: App triggered a user-blocking update that suspended.
@@ -674,7 +678,7 @@ The fix is to split the update into multiple parts: a user-blocking update to pr
 Refer to the documentation for useTransition to learn how to implement this pattern.
 ```
 
-앞에서 말했듯이 일부 상태 갱신으로 컴포넌트가 서스펜드되면 해당 상태 갱신은 트랜지션으로 래핑되어야합니다. 컴포넌트에 `useTransition`을 추가해봅시다:
+앞에서 말했듯이 일부 상태 갱신으로 컴포넌트가 서스펜드되면 해당 상태 갱신은 트랜지션으로 래핑되어야합니다. 컴포넌트에 `useTransition`을 추가해봅시다.
 
 ```js{4-6,10,13}
 function App() {
@@ -703,7 +707,7 @@ function App() {
 
 첫번째 문제(트랜지션 바깥에서 서스펜드 되는 것)은 해결했습니다. 하지만 이제 트랜지션 때문에 상태 갱신이 즉각적으로 반영되지 않고 이것은 제어된 인풋을 조작하기엔 부적절합니다!
 
-위 문제에 대한 해결책은 **상태를 두 파트로 분리하는 것입니다:** 즉각적으로 갱신되어야 하는 높은 우선순위 파트와 트랜지션에서 조금 기다려도 되는 낮은 우선순위 파트로요.
+위 문제에 대한 해결책은 **상태를 두 파트로 분리하는 것입니다.** 즉각적으로 갱신되어야 하는 높은 우선순위 파트와 트랜지션에서 조금 기다려도 되는 낮은 우선순위 파트로요.
 
 예시에서 우리는 이미 두 상태 변수를 가지고 있습니다. 입력 텍스트는 `query` 그리고 번역 정보를 `resource`에서 읽습니다. `query` 상태는 즉각적으로 반영되어야 하지만 `resource` 변화는 트랜지션을 발생시켜야 합니다. (예를 들어 새로운 번역 데이터를 가져오기 같은 동작)
 
@@ -729,7 +733,7 @@ function handleChange(e) {
 
 ### 값 지연하기 {#deferring-a-value}
 
-기본적으로 React는 항상 일관적인 UI를 렌더링합니다. 다음 코드를 생각해봅시다:
+기본적으로 React는 항상 일관적인 UI를 렌더링합니다. 다음 코드를 생각해봅시다.
 
 ```js
 <>
@@ -744,7 +748,7 @@ React는 화면에 이런 컴포넌트를 볼 때마다 동일한 `user` 데이�
 
 대부분의 상황에선 일관적인 UI가 자연스럽습니다. 비일관적인 UI는 혼란스럽고 사용자들을 오해하게 만듭니다. (예를 들어 메신저의 '보내기' 버튼이 현재 선택된 대화 스레드에 메세지를 보내지 않는다고 생각해보세요.)
 
-하지만 때때로 의도적인 비일관성을 도입하는 게 도움 될 때도 있습니다. 위에서 했던 것처럼 직접 '분할'할 수도 있지만, React는 이를 위해 내장 훅을 제공합니다:
+하지만 때때로 의도적인 비일관성을 도입하는 게 도움 될 때도 있습니다. 위에서 했던 것처럼 직접 '분할'할 수도 있지만, React는 이를 위해 내장 훅을 제공합니다.
 
 ```js
 import { useDeferredValue } from 'react';
@@ -758,7 +762,7 @@ const deferredValue = useDeferredValue(value, {
 
 사용자 디테일 정보를 가져오는 작업이 매우 빠르고 300밀리세컨드 안쪽이라고 가정해봅시다. 현재 일관된 프로필 페이지를 표시하려면 사용자 세부 정보와 게시물이 모두 필요하기 때문에 1초간 기다려야 합니다. 하지만 세부 정보를 더 빨리 표시하려면 어떻게 해야 할까요?
 
-일관성을 희생해서, 트랜지션을 지연시키는 컴포넌트에 부실한(오래된) 데이터를 전달할 수 있습니다. 그것이 `useDeferredValue()`가 하는 일입니다:
+일관성을 희생해서, 트랜지션을 지연시키는 컴포넌트에 부실한(오래된) 데이터를 전달할 수 있습니다. 그것이 `useDeferredValue()`가 하는 일입니다.
 
 ```js{2-4,10,11,21}
 function ProfilePage({ resource }) {
@@ -798,7 +802,7 @@ function ProfileTimeline({ isStale, resource }) {
 
 `useDeferredValue`는 데이터를 가져올 때 유용할 뿐만 아니라, 무거운 컴포넌트 트리로 상호작용이 느려지는 경우에도 도움이 됩니다(예를 들어 인풋에 타이핑할 때). 긴 요청을 지연시키는 것처럼(그리고 다른 컴포넌트가 갱신되는 동안 예전 값을 보여주고요) 렌더링에 오랜 시간이 필요한 트리에도 적용할 수 있습니다.
 
-예를 들어 다음과 같은 필터 기능이 포함된 목록을 생각해봅시다:
+예를 들어 다음과 같은 필터 기능이 포함된 목록을 생각해봅시다.
 
 ```js
 function App() {
@@ -825,7 +829,7 @@ function App() {
 
 이 예시에선 **`<MySlowList>`의 모든 아이템은 고의로 속도 저하를 유도합니다. 각 아이템은 스레드를 몇 밀리세컨드 동안 차단합니다.** 실제 애플리케이션에서는 절대 이렇게 만들진 않겠지만 최적화가 불가능한 깊은 컴포넌트 트리를 시뮬레이션하는 용도로 생각해주세요.
 
-인풋에 타이핑하면 어떻게 버벅대는지 볼 수 있습니다. 이제 `useDeferredValue`를 추가해봅시다:
+인풋에 타이핑하면 어떻게 버벅대는지 볼 수 있습니다. 이제 `useDeferredValue`를 추가해봅시다.
 
 ```js{3-5,18}
 function App() {
@@ -863,7 +867,7 @@ function App() {
 
 `<SuspenseList>`는 로딩 상태들을 조율하는 것과 관련된 마지막 패턴입니다.
 
-다음 예시를 살펴봅시다:
+다음 예시를 살펴봅시다.
 
 ```js{5-10}
 function ProfilePage({ resource }) {
@@ -887,7 +891,7 @@ function ProfilePage({ resource }) {
 
 재밌는 사실 응답이 먼저 도착하면 `<h2>Loading posts...</h2>` 포스트 폴백 밑의 재밌는 사실을 보게 됩니다. 재밌는 사실을 읽기 시작하는데 갑자기 포스트 응답도 도착하고 재밌는 사실들은 포스트의 밑으로 밀려납니다. 이건 자연스럽지 않습니다.
 
-이 문제를 고치는 한 가지 방법은 두 컴포넌트 모두 같은 서스펜스 경계에 두는 것입니다:
+이 문제를 고치는 한 가지 방법은 두 컴포넌트 모두 같은 서스펜스 경계에 두는 것입니다.
 
 ```js
 <Suspense fallback={<h2>Loading posts and fun facts...</h2>}>
@@ -902,13 +906,13 @@ function ProfilePage({ resource }) {
 
 Promise를 특정 방법으로 병합하는 것 같은 다른 접근법은 로딩 상태가 트리 밑의 다른 컴포넌트에 있을 때 점점 어려워집니다.
 
-이 문제를 해결하기 위해 `SuspenseList`를 가져오겠습니다:
+이 문제를 해결하기 위해 `SuspenseList`를 가져오겠습니다.
 
 ```js
 import { SuspenseList } from 'react';
 ```
 
-`<SuspenseList>`는 하위 트리에 있는 `<Suspense>`의 공개 순서를 조율합니다:
+`<SuspenseList>`는 하위 트리에 있는 `<Suspense>`의 공개 순서를 조율합니다.
 
 ```js{3,11}
 function ProfilePage({ resource }) {

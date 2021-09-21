@@ -67,7 +67,7 @@ ref 전달은 컴포넌트를 통해 자식 중 하나에 [ref](/docs/refs-and-t
 
 `embed:forwarding-refs/wrapped-component.js`
 
-만약 렌더링 함수를 지정하면 DevTools에 해당 이름도 포함됩니다. (예, "*ForwardRef(myFunction)*"):
+만약 렌더링 함수를 지정하면 DevTools에 해당 이름도 포함됩니다. (예, "*ForwardRef(myFunction)*")
 
 `embed:forwarding-refs/wrapped-component-with-function-name.js`
 

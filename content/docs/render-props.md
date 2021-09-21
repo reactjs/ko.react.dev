@@ -301,7 +301,7 @@ class MouseTracker extends React.Component {
 
 이 예시에서 `<MouseTracker>`가 render 될때마다, `<Mouse render>`의 prop으로 넘어가는 함수가 계속 새로 생성됩니다. 따라서 `React.PureComponent`를 상속받은 `<Mouse>` 컴포넌트 효과가 사라지게 됩니다.
 
-이 문제를 해결하기 위해서, 다음과 같이 인스턴스 메서드를 사용해서 prop을 정의합니다:
+이 문제를 해결하기 위해서, 다음과 같이 인스턴스 메서드를 사용해서 prop을 정의합니다.
 
 ```js
 class MouseTracker extends React.Component {

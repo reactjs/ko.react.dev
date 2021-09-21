@@ -12,7 +12,7 @@ React는 버그 신고, 풀 리퀘스트 요청, [RFCs에 제출](https://github
 
 > 이 문서는 프레임워크, 라이브러리, 개발자 도구에 관해 작업하는 개발자들과 가장 관련이 있습니다. 주로 React를 사용해서 사용자용 애플리케이션을 빌드하는 개발자는 prerelease 채널에 관해서 걱정할 필요가 없습니다.
 
-React의 각 배포 채널은 하나의 고유한 사용 경우를 위해 설계되었습니다:
+React의 각 배포 채널은 하나의 고유한 사용 경우를 위해 설계되었습니다.
 
 - [**Latest**](#latest-channel) 는 안정적이고, 유의적인 React 배포입니다. npm에서 React를 설치할 때 얻는 것입니다. 이것은 이미 당신이 사용하고 있는 채널입니다. **모든 사용자용 애플리케이션을 위해서는 이것을 사용하십시오.**
 - [**Next**](#next-channel) 는 React 소스 코드 저장소의 main branch를 추적합니다. 이것을 다음 minor 유의적인 배포를 위한 배포 후보자라고 생각하세요. 이것을 React와 타사 프로젝트 간의 통합 테스트에 사용하십시오.
@@ -48,16 +48,16 @@ Next 채널은 React와 다른 프로젝트 간 통합 테스트를 지원하기
 
 React의 모든 변경사항들은 배포 전에 광범위한 내부 테스트를 거칩니다. 그러나 React 생태계 전체에서 사용되는 무수히 많은 환경과 구성이 있고 우리가 일일이 이 모든 것에 관해 테스트하는 것은 불가능합니다.
 
-만일 당신이 타사 React 프레임워크, 라이브러리, 개발자 도구 또는 유사 인프라 구조 타입 프로젝트의 작성자라면 가장 최근 변화들에 대한 테스트 suite들을 주기적으로 실행하여 사용자들과 React 커뮤니티에 도움을 줄 수 있습니다. 만일 흥미가 있다면, 이 단계를 따르십시오:
+만일 당신이 타사 React 프레임워크, 라이브러리, 개발자 도구 또는 유사 인프라 구조 타입 프로젝트의 작성자라면 가장 최근 변화들에 대한 테스트 suite들을 주기적으로 실행하여 사용자들과 React 커뮤니티에 도움을 줄 수 있습니다. 만일 흥미가 있다면, 이 단계를 따르십시오.
 
 - 선호하는 지속적 통합 플랫폼을 사용해서 cron job을 설정하세요. Cron jobs는 [CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) 와 [Travis CI](https://docs.travis-ci.com/user/cron-jobs/) 모두에서 지원됩니다.
-- cron job에서, npm의 `next` 태그를 사용해서 당신의 React 패키지를 Next 채널에서 가장 최신 React 배포로 업데이트하십시오. npm cli를 사용해서:
+- cron job에서, npm의 `next` 태그를 사용해서 당신의 React 패키지를 Next 채널에서 가장 최신 React 배포로 업데이트하십시오. npm cli를 사용해서
 
   ```
   npm update react@next react-dom@next
   ```
 
-  또는 yarn을 사용해서:
+  또는 yarn을 사용해서
 
   ```
   yarn upgrade react@next react-dom@next

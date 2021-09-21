@@ -169,8 +169,12 @@ JSX를 프로젝트에 추가하는 데에는 복잡한 번들러나 개발 서�
 
 터미널에서 프로젝트 파일에 접근하고 다음 두 명령어를 붙여넣기 하세요.
 
+<!-- textlint-disable -->
+
 1. **1단계:** `npm init -y` 를 실행하세요. (실패한다면 [여기서 해결할 수 있습니다.](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d))
 2. **2단계:** `npm install babel-cli@6 babel-preset-react-app@3`를 실행하세요.
+
+<!-- textlint-enable -->
 
 >팁
 >
