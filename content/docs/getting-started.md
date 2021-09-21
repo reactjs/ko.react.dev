@@ -38,11 +38,7 @@ React는 처음부터 점진적으로 적용할 수 있도록 설계되었으며
 
 React를 사용하는데 관심이 있다면, 온라인 코드 편집기를 사용할 수 있습니다. [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new) 또는 [Stackblitz](https://stackblitz.com/fork/react)에서 Hello World 템플릿을 사용해 보세요.
 
-<<<<<<< HEAD
-여러분이 사용하고 있는 코드 편집기를 사용하길 원한다면, [이 HTML 파일을 다운로드](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)하고 편집한 다음 브라우저의 로컬 파일 시스템에서 열 수도 있습니다. 런타임 코드 변환이 느리므로 간단한 데모에만 이 코드를 사용하는 것이 좋습니다.
-=======
-If you prefer to use your own text editor, you can also [download this HTML file](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html), edit it, and open it from the local filesystem in your browser. It does a slow runtime code transformation, so we'd only recommend using this for simple demos.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+여러분이 사용하고 있는 코드 편집기를 사용하길 원한다면, [이 HTML 파일을 다운로드](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)하고 편집한 다음 브라우저의 로컬 파일 시스템에서 열 수도 있습니다. 런타임 코드 변환이 느리므로 간단한 데모에만 이 코드를 사용하는 것이 좋습니다.
 
 ### 웹사이트에 React를 추가하기 {#add-react-to-a-website}
 
@@ -119,11 +115,7 @@ React 문서는 JavaScript 프로그래밍에 익숙한 사람을 대상으로 �
 
 트위터의 [@reactjs 계정](https://twitter.com/reactjs)을 팔로우할 수도 있지만, 블로그만 읽어도 꼭 알아야 하는 정보는 놓치지 않을 수 있습니다.
 
-<<<<<<< HEAD
-모든 React 릴리즈가 자체 블로그 게시물을 사용할 만한 것은 아니지만 [릴리즈](https://github.com/facebook/react/releases) 페이지와 React의 [`CHANGELOG.md` 파일](https://github.com/facebook/react/blob/master/CHANGELOG.md)에서 모든 릴리즈에 대한 자세한 변경 기록을 확인할 수 있습니다.
-=======
-Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/main/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react/releases) page.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+모든 React 릴리즈가 자체 블로그 게시물을 사용할 만한 것은 아니지만 [릴리즈](https://github.com/facebook/react/releases) 페이지와 React의 [`CHANGELOG.md` 파일](https://github.com/facebook/react/blob/main/CHANGELOG.md)에서 모든 릴리즈에 대한 자세한 변경 기록을 확인할 수 있습니다.
 
 ## 버전 관리된 문서 {#versioned-documentation}
 
