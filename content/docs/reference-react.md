@@ -178,7 +178,7 @@ React.cloneElement(
 )
 ```
 
-`element`를 기준으로 새로운 React 엘리먼트를 복사하고 반환합니다. `config`는 `key`와 `ref` 그리고 모든 새로운 props를 포함해야 합니다. 새로운 엘리먼트에는 원본 엘리먼트가 가졌던 props가 새로운 props와 얕게 합쳐진 뒤 주어집니다. 새로운 자식들은 기존의 자식들을 대체합니다. `config`에 `key`와 `ref`가 없다면 원본 엘리먼트의 `key`와 `ref`는 그대로 유지됩니다.
+`element`를 기준으로 새로운 React 엘리먼트를 복사하고 반환합니다. `config`는 `key`와 `ref` 그리고 모든 새로운 props를 포함합니다. 새로운 엘리먼트에는 원본 엘리먼트가 가졌던 props가 새로운 props와 얕게 합쳐진 뒤 주어집니다. 새로운 자식들은 기존의 자식들을 대체합니다. `config`에 `key`와 `ref`가 없다면 원본 엘리먼트의 `key`와 `ref`는 그대로 유지됩니다.
 
 `React.cloneElement()`는 아래의 구문과 거의 동등합니다.
 
