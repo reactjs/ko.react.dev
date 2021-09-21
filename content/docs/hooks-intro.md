@@ -91,11 +91,7 @@ React는 지난 5년 동안 널리 사용되어 왔으며, React의 개발진은
 ## 점진적 적용 전략 {#gradual-adoption-strategy}
 >**요약: React로부터 Class를 제거할 계획은 없습니다.**
 
-<<<<<<< HEAD
 우리는 React를 사용하는 개발자들이 프로덕트의 개발에 더 초점을 맞추고 있으며, 변경되는 API의 요소들을 새롭게 공부할 시간이 없다는 걸 알고 있습니다. Hook은 매우 새로운 기술이며, Hook을 배우거나 적용하기 전에 더 많은 예시와 자습서를 기다리는 게 나을 수도 있습니다.
-=======
-**Crucially, Hooks work side-by-side with existing code so you can adopt them gradually.** There is no rush to migrate to Hooks. We recommend avoiding any "big rewrites", especially for existing, complex class components. It takes a bit of a mind shift to start "thinking in Hooks". In our experience, it's best to practice using Hooks in new and non-critical components first, and ensure that everybody on your team feels comfortable with them. After you give Hooks a try, please feel free to [send us feedback](https://github.com/facebook/react/issues/new), positive or negative.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
 
 또한 React에 추가되는 새로운 기능에 대한 기준점이 매우 높다는 것을 알고 있습니다. 궁금해하는 독자들을 위해 동기부여에 대한 구체적인 내용을 담고 있는 [자세한 RFC](https://github.com/reactjs/rfcs/pull/68)를 준비했고 특정 설계 결정 및 관련 선행 기술에 대한 추가적인 관점을 제공합니다.
 
