@@ -743,7 +743,7 @@ function Example(props) {
 
 ```js
 const Button = React.memo((props) => {
-  // 당신의 컴포넌트
+  // 여러분의 컴포넌트
 });
 ```
 

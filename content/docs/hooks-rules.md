@@ -131,8 +131,8 @@ React는 두 번째 `useState` Hook 호출에 대해 무엇을 반환할지 몰�
   });
 ```
 
-**[제공된 lint 규칙](https://www.npmjs.com/package/eslint-plugin-react-hooks)을 활용한다면 이 문제에 대해 걱정할 필요는 없습니다.** 그러나 이제 당신은 왜 Hook이 이런 식으로 동작하는지 그리고 이 규칙이 어떤 문제를 방지하는지 알고 있습니다.
+**[제공된 lint 규칙](https://www.npmjs.com/package/eslint-plugin-react-hooks)을 활용한다면 이 문제에 대해 걱정할 필요는 없습니다.** 그러나 이제 왜 Hook이 이런 식으로 동작하는지 그리고 이 규칙이 어떤 문제를 방지하는지 알고 있습니다.
 
 ## 다음 단계 {#next-steps}
 
-마침내 [Custom Hook](/docs/hooks-custom.html)을 작성하는 법을 배울 준비가 되었습니다! Custom Hook은 React에서 제공하는 Hook을 당신의 추상화된 로직으로 사용할 수 있도록 결합해주고 다른 컴포넌트 사이에서 공통의 상태 관련 로직을 재사용 할 수 있도록 해줍니다.
+마침내 [Custom Hook](/docs/hooks-custom.html)을 작성하는 법을 배울 준비가 되었습니다! Custom Hook은 React에서 제공하는 Hook을 추상화된 로직으로 사용할 수 있도록 결합해주고 다른 컴포넌트 사이에서 공통의 상태 관련 로직을 재사용 할 수 있도록 해줍니다.

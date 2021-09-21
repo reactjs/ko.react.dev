@@ -45,7 +45,7 @@ redirect_from:
 
 ### 필요한 선수 지식 {#prerequisites}
 
-당신이 HTML과 JavaScript에 어느 정도 익숙하다고 가정하지만 다른 프로그래밍 언어를 사용하더라도 자습서를 따라갈 수 있습니다. 또한 함수, 객체, 배열, 가능하다면 클래스 같은 프로그래밍 개념에 익숙하다고 가정합니다.
+HTML과 JavaScript에 어느 정도 익숙하다고 가정하지만 다른 프로그래밍 언어를 사용하더라도 자습서를 따라갈 수 있습니다. 또한 함수, 객체, 배열, 가능하다면 클래스 같은 프로그래밍 개념에 익숙하다고 가정합니다.
 
 JavaScript를 다시 보고 싶다면 [이 가이드]( https://developer.mozilla.org/ko/docs/A_re-introduction_to_JavaScript)를 추천합니다. JavaScript의 최신 버전인 ES6의 몇 가지 기능을 사용한다는 사실에 주목해주세요. 자습서에서는 [화살표 함수](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/애로우_펑션), [클래스](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/let), [`const`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/const)를 사용합니다. [Babel REPL](babel://es5-syntax-example)을 사용하여 ES6 코드가 어떻게 컴파일되는지 확인할 수 있습니다.
 
@@ -71,7 +71,7 @@ JavaScript를 다시 보고 싶다면 [이 가이드]( https://developer.mozilla
 
 <summary><b>선택 사항: 선호하는 텍스트 편집기를 사용하기 위한 지침</b></summary>
 
-이 설정에서는 더 많은 작업이 필요하지만, 당신이 선호하는 편집기를 사용하여 자습서를 완성할 수 있습니다. 아래의 단계를 따라주세요.
+이 설정에서는 더 많은 작업이 필요하지만, 선호하는 편집기를 사용하여 자습서를 완성할 수 있습니다. 아래의 단계를 따라주세요.
 
 1. 최신 버전의 [Node.js](https://nodejs.org/en/)가 설치되어 있는지 확인해주세요.
 2. [Create React App 설치 지침](/docs/create-a-new-react-app.html#create-react-app)을 따라 새로운 프로젝트를 생성해주세요.
@@ -1191,7 +1191,7 @@ class Game extends React.Component {
 
 ### 마무리 {#wrapping-up}
 
-축하합니다! 당신은 아래 기능을 가진 틱택토 게임을 만들었습니다.
+축하합니다! 아래 기능을 가진 틱택토 게임을 만들었습니다.
 
 * 틱택토를 할 수 있게 해주고,
 * 게임에서 승리했을 때를 알려주며,

@@ -15,7 +15,7 @@ redirect_from:
   - "tips/use-react-with-other-libraries.html"
 ---
 
-이 문서에서는 React 컴포넌트 class를 다루는 API들을 자세히 소개합니다. 이 문서를 읽는 당신이 [컴포넌트와 props](/docs/components-and-props.html), [state와 생명주기](/docs/state-and-lifecycle.html) 등과 같은 기초적인 React의 개념들에 익숙하다고 가정하고 있습니다. 그렇지 않다면, 먼저 읽으시길 바랍니다.
+이 문서에서는 React 컴포넌트 class를 다루는 API들을 자세히 소개합니다. 이 문서는 [컴포넌트와 props](/docs/components-and-props.html), [state와 생명주기](/docs/state-and-lifecycle.html) 등과 같은 기초적인 React의 개념들에 익숙하다고 가정하고 있습니다. 그렇지 않다면, 먼저 읽으시길 바랍니다.
 
 ## 개요 {#overview}
 

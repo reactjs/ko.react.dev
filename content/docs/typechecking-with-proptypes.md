@@ -12,7 +12,7 @@ redirect_from:
 >
 > 우리는 변환을 자동화하기 위하여 [codemod 스크립트를](/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactproptypes) 제공하고 있습니다.
 
-당신의 앱이 커짐에 따라 타입 확인을 통하면 많은 버그를(bug) 잡을 수 있습니다. 특정 애플리케이션에서는 전체 애플리케이션의 타입 확인을 위하여 [Flow](https://flow.org/) 또는 [TypeScript](https://www.typescriptlang.org/)와 같은 JavaScript 도구(Extensions)를 사용할 수 있습니다. 당신이 이러한 것들을 사용하지 않더라도 React는 내장된 타입 확인 기능들을 가지고 있습니다. 컴포넌트의 props에 타입 확인을 하려면 다음과 같이 특별한 프로퍼티인 propTypes를 선언할 수 있습니다.
+여러분의 앱이 커짐에 따라 타입 확인을 통하면 많은 버그를(bug) 잡을 수 있습니다. 특정 애플리케이션에서는 전체 애플리케이션의 타입 확인을 위하여 [Flow](https://flow.org/) 또는 [TypeScript](https://www.typescriptlang.org/)와 같은 JavaScript 도구(Extensions)를 사용할 수 있습니다. 이러한 것들을 사용하지 않더라도 React는 내장된 타입 확인 기능들을 가지고 있습니다. 컴포넌트의 props에 타입 확인을 하려면 다음과 같이 특별한 프로퍼티인 propTypes를 선언할 수 있습니다.
 
 ```javascript
 import PropTypes from 'prop-types';
@@ -178,7 +178,7 @@ ReactDOM.render(
 );
 ```
 
-당신이 [plugin-proposal-class-properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties/) (이전의 _plugin-transform-class-properties_)와 같은 Babel 변환(transform)을 사용하고 있다면, `defaultProps`를 React 컴포넌트 클래스 내의 정적 프로퍼티로 선언 할 수도 있습니다. 이 문법은 아직 완성되지 않았으므로 브라우저에서 작동하기 위해서는 컴파일링 작업이 필요합니다. 더 자세한 정보를 위해서 [class fields proposal](https://github.com/tc39/proposal-class-fields)를 확인해 주시길 바랍니다.
+[plugin-proposal-class-properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties/) (이전의 _plugin-transform-class-properties_)와 같은 Babel 변환(transform)을 사용하고 있다면, `defaultProps`를 React 컴포넌트 클래스 내의 정적 프로퍼티로 선언 할 수도 있습니다. 이 문법은 아직 완성되지 않았으므로 브라우저에서 작동하기 위해서는 컴파일링 작업이 필요합니다. 더 자세한 정보를 위해서 [class fields proposal](https://github.com/tc39/proposal-class-fields)를 확인해 주시길 바랍니다.
 
 ```javascript
 class Greeting extends React.Component {
