@@ -178,11 +178,7 @@ React.cloneElement(
 )
 ```
 
-<<<<<<< HEAD
-`element`를 기준으로 새로운 React 엘리먼트를 복사하고 반환합니다. 새로운 엘리먼트에는 원본 엘리먼트가 가졌던 props가 새로운 props와 얕게 합쳐진 뒤 주어집니다. 새로운 자식들은 기존의 자식들을 대체합니다. 원본 엘리먼트의 `key`와 `ref`는 그대로 유지됩니다.
-=======
-Clone and return a new React element using `element` as the starting point. `config` should contain all new props, `key`, or `ref`. The resulting element will have the original element's props with the new props merged in shallowly. New children will replace existing children. `key` and `ref` from the original element will be preserved if no `key` and `ref` present in the `config`.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+`element`를 기준으로 새로운 React 엘리먼트를 복사하고 반환합니다. `config`는 `key`와 `ref` 그리고 모든 새로운 props를 포함해야 합니다. 새로운 엘리먼트에는 원본 엘리먼트가 가졌던 props가 새로운 props와 얕게 합쳐진 뒤 주어집니다. 새로운 자식들은 기존의 자식들을 대체합니다. `config`에 `key`와 `ref`가 없다면 원본 엘리먼트의 `key`와 `ref`는 그대로 유지됩니다.
 
 `React.cloneElement()`는 아래의 구문과 거의 동등합니다.
 
@@ -190,11 +186,7 @@ Clone and return a new React element using `element` as the starting point. `con
 <element.type {...element.props} {...props}>{children}</element.type>
 ```
 
-<<<<<<< HEAD
-그렇지만 `ref`들이 유지된다는 점이 다릅니다. 즉 조상이 가지고 있을 `ref`를 사용하여 자식 엘리먼트에 접근하는 것이 허용됩니다. 새로운 엘리먼트에 덧붙여지는 것과 동일한 `ref`를 얻을 수 있습니다.
-=======
-However, it also preserves `ref`s. This means that if you get a child with a `ref` on it, you won't accidentally steal it from your ancestor. You will get the same `ref` attached to your new element. The new `ref` or `key` will replace old ones if present.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+그렇지만 `ref`들이 유지된다는 점이 다릅니다. 즉 조상이 가지고 있을 `ref`를 사용하여 자식 엘리먼트에 접근하는 것이 허용됩니다. 새로운 엘리먼트에 덧붙여지는 것과 동일한 `ref`를 얻을 수 있습니다. 새로운 `ref` 또는 `key`가 있다면 이전 값을 대체합니다.
 
 이 API는 더 이상 사용되지 않는 `React.addons.cloneWithProps()`를 대체합니다.
 
