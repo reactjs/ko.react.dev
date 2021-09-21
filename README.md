@@ -26,12 +26,12 @@
 
 ### 가이드라인
 
-이 문서는 목적이 다른 여러 섹션으로 나뉘게 됩니다. 문장을 추가할 계획이라면, 적절한 섹션에 대한 [가이드라인](https://github.com/reactjs/reactjs.org/blob/master/CONTRIBUTING.md#guidelines-for-text)을 숙지하는 것이 도움이 될 것입니다.
+이 문서는 목적이 다른 여러 섹션으로 나뉘게 됩니다. 문장을 추가할 계획이라면, 적절한 섹션에 대한 [가이드라인](https://github.com/reactjs/reactjs.org/blob/main/CONTRIBUTING.md#guidelines-for-text)을 숙지하는 것이 도움이 될 것입니다.
 
 ### 브랜치(branch) 만들기
 
-1. `reactjs.org` 로컬 저장소에서 `git checkout master`를 실행합니다.
-1. `git pull origin master`를 실행하여 최신 원본 코드를 보장할 수 있습니다.
+1. `reactjs.org` 로컬 저장소에서 `git checkout main`를 실행합니다.
+1. `git pull origin main`를 실행하여 최신 원본 코드를 보장할 수 있습니다.
 1. `git checkout -b the-name-of-my-branch` (`the-name-of-my-branch` 를 적절한 이름으로 교체)를 실행하여 브랜치를 만듭니다.
 
 ### 수정하기
@@ -57,7 +57,7 @@
 
 ## 번역
 
-`reactjs.org` 번역에 흥미가 있다면, [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/)에서 현재 번역이 얼마나 진행되었는지 확인해주세요.
+`reactjs.org` 번역에 흥미가 있다면, [translations.reactjs.org](https://translations.reactjs.org/)에서 현재 번역이 얼마나 진행되었는지 확인해주세요.
 
 
 번역하려는 언어가 아직 진행되지 않았다면, 해당 언어에 대해 새롭게 만들 수 있습니다. [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#translating-reactjsorg)를 참고해주세요.
@@ -67,4 +67,4 @@
 - `yarn reset` 명령어를 사용하여 로컬 캐시를 초기화합니다.
 
 ## 저작권
-위 내용에 대한 저작권은 [reactjs.org](https://reactjs.org/)가 가지고 있으며, [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md)에서 볼 수 있는 CC-BY-4.0 라이센스를 따릅니다.
+위 내용에 대한 저작권은 [reactjs.org](https://reactjs.org/)가 가지고 있으며, [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/main/LICENSE-DOCS.md)에서 볼 수 있는 CC-BY-4.0 라이센스를 따릅니다.

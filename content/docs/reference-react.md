@@ -173,12 +173,12 @@ JSX로 작성된 코드는 `React.createElement()`를 사용하는 형태로 변
 ```
 React.cloneElement(
   element,
-  [props],
+  [config],
   [...children]
 )
 ```
 
-`element`를 기준으로 새로운 React 엘리먼트를 복사하고 반환합니다. 새로운 엘리먼트에는 원본 엘리먼트가 가졌던 props가 새로운 props와 얕게 합쳐진 뒤 주어집니다. 새로운 자식들은 기존의 자식들을 대체합니다. 원본 엘리먼트의 `key`와 `ref`는 그대로 유지됩니다.
+`element`를 기준으로 새로운 React 엘리먼트를 복사하고 반환합니다. `config`는 `key`와 `ref` 그리고 모든 새로운 props를 포함합니다. 새로운 엘리먼트에는 원본 엘리먼트가 가졌던 props가 새로운 props와 얕게 합쳐진 뒤 주어집니다. 새로운 자식들은 기존의 자식들을 대체합니다. `config`에 `key`와 `ref`가 없다면 원본 엘리먼트의 `key`와 `ref`는 그대로 유지됩니다.
 
 `React.cloneElement()`는 아래의 구문과 거의 동등합니다.
 
@@ -186,7 +186,7 @@ React.cloneElement(
 <element.type {...element.props} {...props}>{children}</element.type>
 ```
 
-그렇지만 `ref`들이 유지된다는 점이 다릅니다. 즉 조상이 가지고 있을 `ref`를 사용하여 자식 엘리먼트에 접근하는 것이 허용됩니다. 새로운 엘리먼트에 덧붙여지는 것과 동일한 `ref`를 얻을 수 있습니다.
+그렇지만 `ref`들이 유지된다는 점이 다릅니다. 즉 조상이 가지고 있을 `ref`를 사용하여 자식 엘리먼트에 접근하는 것이 허용됩니다. 새로운 엘리먼트에 덧붙여지는 것과 동일한 `ref`를 얻을 수 있습니다. 새로운 `ref` 또는 `key`가 있다면 이전 값을 대체합니다.
 
 이 API는 더 이상 사용되지 않는 `React.addons.cloneWithProps()`를 대체합니다.
 

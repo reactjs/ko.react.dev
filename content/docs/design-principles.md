@@ -86,13 +86,13 @@ React는 범용적인 데이터 처리 라이브러리가 아닙니다. 그것�
 
 React의 핵심 목표는 React로 되돌아 가기 전에 수행하는 사용자 코드의 양을 최소화하는 것입니다. 이것은 React가 UI에 대해서 알고 있는 지에 따라 작업을 스케쥴하고 청크로 분할하는 능력을 유지한다는 것을 보증합니다.
 
-React는 완전히 "반응적(reactive)"이고 싶지 않았기 때문에 React는 "Schedule"로 불리웠어야 한다는 팀내 농담이 있습니다. 
+React는 완전히 "반응적(reactive)"이고 싶지 않았기 때문에 React는 "Schedule"로 불리웠어야 한다는 팀내 농담이 있습니다.
 
 ### 개발자 경험 {#developer-experience}
 
 좋은 개발자 경험을 제공하는 것은 우리에게 중요합니다.
 
-예를 들어, 우리는 Chrome과 Firefox에서 React 컴포넌트 트리를 살펴볼 수 있는 [React DevTools](https://github.com/facebook/react/tree/master/packages/react-devtools)를 유지합니다. 이것은 Facebook 엔지니어와 커뮤니티 모두에게 커다란 생산성 향상을 가져왔다고 들었습니다.
+예를 들어, 우리는 Chrome과 Firefox에서 React 컴포넌트 트리를 살펴볼 수 있는 [React DevTools](https://github.com/facebook/react/tree/main/packages/react-devtools)를 유지합니다. 이것은 Facebook 엔지니어와 커뮤니티 모두에게 커다란 생산성 향상을 가져왔다고 들었습니다.
 
 또한, 도움이 될 만한 개발자 경고를 제공하기 위해 우리는 더 노력하고 있습니다. 예를 들어, React는 개발 중에 브라우저가 이해할 수 없는 방법으로 태그를 중첩하거나 API에서 일반적인 오타를 작성한 경우 이에 대해 경고합니다. 개발자 경고와 이와 관련된 검사는 React 개발자 버전이 프로덕션 버전보다 조금 더 느린 주요한 이유입니다.
 

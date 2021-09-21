@@ -270,7 +270,7 @@ this.setState(partialState);
 
 ## 제어되는 Input Null 값 {#controlled-input-null-value}
 
-[제어 컴포넌트](/docs/forms.html#controlled-components)에 value prop을 지정하면 의도하지 않는 한 사용자가 변경할 수 없습니다. `value`를 설정했는데 여전히 수정할 수 있다면 실수로 `value`를 `undefined`나 `null`로 설정했을 수 있습니다.
+[제어 컴포넌트](/docs/forms.html#controlled-components)에 `value` prop을 지정하면 의도하지 않는 한 사용자가 변경할 수 없습니다. `value`를 설정했는데 여전히 수정할 수 있다면 실수로 `value`를 `undefined`나 `null`로 설정했을 수 있습니다.
 
 아래 코드가 이것을 보여줍니다. (첫 번째 입력은 잠겨있지만 잠시 후 입력이 가능해집니다.)
 
