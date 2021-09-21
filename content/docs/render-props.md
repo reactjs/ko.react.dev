@@ -153,7 +153,7 @@ class MouseTracker extends React.Component {
 }
 ```
 
-이러한 접근 방법은 특정 사례에서는 적용할 수 있지만, 우리가 원하는 행위의 캡슐화(마우스 트래킹)라는 목표는 달성하지 못했습니다. 이제 우리는 다른 사용 예제에서도 언제든지 마우스 위치를 추적할 수 있는 새로운 component(`<MouseWithCat>`과 근본적으로 다른)를 만들어야 합니다.
+이러한 접근 방법은 특정 사례에서는 적용할 수 있지만, 우리가 원하는 행위의 캡슐화(마우스 트래킹)라는 목표는 달성하지 못했습니다. 이제 우리는 다른 사용 예시에서도 언제든지 마우스 위치를 추적할 수 있는 새로운 component(`<MouseWithCat>`과 근본적으로 다른)를 만들어야 합니다.
 
 여기에 render prop를 사용할 수 있습니다. `<Mouse>` 컴포넌트 안에 `<Cat>` 컴포넌트를 하드 코딩(hard-coding)해서 결과물을 바꾸는 대신에, `<Mouse>`에게 동적으로 렌더링할 수 있도록 해주는 함수 prop을 제공하는 것입니다. — 이것이 render prop의 개념입니다.
 
@@ -239,7 +239,7 @@ function withMouse(Component) {
 
 여기서 중요하게 기억해야 할 것은, “render props pattern”으로 불리는 이유로 *꼭 prop name으로 `render`를 사용할 필요는 없습니다.* 사실, [*어떤* 함수형 prop이든 render prop이 될 수 있습니다.](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)
 
-위 예제에서는 `render`를 사용했지만, 우리는 `children` prop을 더 쉽게 사용할 수 있습니다.
+위 예시에서는 `render`를 사용했지만, 우리는 `children` prop을 더 쉽게 사용할 수 있습니다.
 
 ```js
 <Mouse children={mouse => (
@@ -299,7 +299,7 @@ class MouseTracker extends React.Component {
 }
 ```
 
-이 예제에서 `<MouseTracker>`가 render 될때마다, `<Mouse render>`의 prop으로 넘어가는 함수가 계속 새로 생성됩니다. 따라서 `React.PureComponent`를 상속받은 `<Mouse>` 컴포넌트 효과가 사라지게 됩니다.
+이 예시에서 `<MouseTracker>`가 render 될때마다, `<Mouse render>`의 prop으로 넘어가는 함수가 계속 새로 생성됩니다. 따라서 `React.PureComponent`를 상속받은 `<Mouse>` 컴포넌트 효과가 사라지게 됩니다.
 
 이 문제를 해결하기 위해서, 다음과 같이 인스턴스 메서드를 사용해서 prop을 정의합니다:
 

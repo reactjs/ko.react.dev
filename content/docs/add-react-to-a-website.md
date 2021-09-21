@@ -25,7 +25,7 @@ React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다
 
 복잡한 도구를 쓰거나 뭔가를 따로 설치해야 할 필요도 없습니다. **약간의 시간과 함께 인터넷만 연결 되어 있다면 이 문서에서 다루는 것을 모두 해볼 수 있습니다.**
 
-선택사항: [예제의 전체 소스코드 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
+선택사항: [예시의 전체 소스코드 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
 
 ### 1단계: HTML 파일에 DOM 컨테이너 설치 {#step-1-add-a-dom-container-to-the-html}
 
@@ -92,17 +92,17 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 다음 차례들에 React를 기존 프로젝트에 결합하는데 도움이 될만한 정보들이 더 있습니다.
 
-**[예제 전체 소스 코드 보기](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
+**[예시 전체 소스 코드 보기](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
 
-**[예제 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
+**[예시 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
 
 ### 팁: 컴포넌트 재사용 {#tip-reuse-a-component}
 
-보통은 하나의 웹페이지에 여러 React 컴포넌트를 설치하게 됩니다. 다음 예제는 "좋아요" 버튼 3개를 만들고 그 컴포넌트들에 데이터를 넘겨주는 코드입니다.
+보통은 하나의 웹페이지에 여러 React 컴포넌트를 설치하게 됩니다. 다음 예시는 "좋아요" 버튼 3개를 만들고 그 컴포넌트들에 데이터를 넘겨주는 코드입니다.
 
-[예제 전체 소스 코드 보기](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
+[예시 전체 소스 코드 보기](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
 
-[예제 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
+[예시 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
 
 >주의
 >
@@ -123,7 +123,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 ## 선택사항: JSX로 React 해보기 {#optional-try-react-with-jsx}
 
-지금까지 다뤘던 예제들은 브라우저가 기본적으로 지원하는 요소들만을 사용했습니다. 때문에 React가 어떤 것을 표시할지 결정 해주는 JavaScript의 함수들을 사용했습니다.
+지금까지 다뤘던 예시들은 브라우저가 기본적으로 지원하는 요소들만을 사용했습니다. 때문에 React가 어떤 것을 표시할지 결정 해주는 JavaScript의 함수들을 사용했습니다.
 
 ```js
 const e = React.createElement;
@@ -159,7 +159,7 @@ return (
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 ```
 
-이제 어떤 `<script>` 태그에서든 `type="text/babel"`성질을 추가하면 JSX를 사용할 수 있습니다. 이 [JSX를 사용한 예제 HTML 파일](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)로 여러 가지 작업들을 해보세요.
+이제 어떤 `<script>` 태그에서든 `type="text/babel"`성질을 추가하면 JSX를 사용할 수 있습니다. 이 [JSX를 사용한 예시 HTML 파일](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)로 여러 가지 작업들을 해보세요.
 
 이런 식의 접근 방법은 공부 목적이나 간단한 데모 사이트를 만들기 위함이라면 괜찮습니다. 그러나, 이 방법은 사이트를 느리게 만들고 **프로덕션에서는 맞지 않습니다.** 한 단계 앞으로 나아갈 준비가 되었다면 새로 추가한 `<script>` 태그와 `type="text/babel"` 어트리뷰트를 제거해보세요. 다음 차례에서는 `<script>` 태그를 자동으로 변환시켜줄 JSX 전처리기를 만들 겁니다.
 

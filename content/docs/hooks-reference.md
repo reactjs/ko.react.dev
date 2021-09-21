@@ -144,7 +144,7 @@ useEffect(() => {
 
 effect의 기본 동작은 모든 렌더링을 완료한 후 effect를 발생하는 것입니다. 이와 같은 방법으로 만약 의존성 중 하나가 변경된다면 effect는 항상 재생성됩니다.
 
-그러나 이것은 이전 섹션의 구독 예제와 같이 일부 경우에는 과도한 작업일 수 있습니다. `source` props가 변경될 때에만 필요한 것이라면 매번 갱신할 때마다 새로운 구독을 생성할 필요는 없습니다.
+그러나 이것은 이전 섹션의 구독 예시와 같이 일부 경우에는 과도한 작업일 수 있습니다. `source` props가 변경될 때에만 필요한 것이라면 매번 갱신할 때마다 새로운 구독을 생성할 필요는 없습니다.
 
 이것을 수행하기 위해서는 `useEffect`에 두 번째 인자를 전달하세요. 이 인자는 effect가 종속되어 있는 값의 배열입니다. 이를 적용한 예는 아래와 같습니다.
 
@@ -256,7 +256,7 @@ const [state, dispatch] = useReducer(reducer, initialArg, init);
 
 다수의 하윗값을 포함하는 복잡한 정적 로직을 만드는 경우나 다음 state가 이전 state에 의존적인 경우에 보통 `useState`보다 `useReducer`를 선호합니다. 또한 `useReducer`는 자세한 업데이트를 트리거 하는 컴포넌트의 성능을 최적화할 수 있게 하는데, 이것은 [콜백 대신 `dispatch`를 전달](/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down) 할 수 있기 때문입니다.
 
-아래는 [`useState`](#usestate) 내용에 있던 카운터 예제인데 reducer를 사용해서 다시 작성한 것입니다.
+아래는 [`useState`](#usestate) 내용에 있던 카운터 예시인데 reducer를 사용해서 다시 작성한 것입니다.
 
 ```js
 const initialState = {count: 0};
@@ -452,7 +452,7 @@ function FancyInput(props, ref) {
 FancyInput = forwardRef(FancyInput);
 ```
 
-위의 예제에서 `<FancyInput ref={inputRef} />`를 렌더링한 부모 컴포넌트는 `inputRef.current.focus()`를 호출할 수 있습니다.
+위의 예시에서 `<FancyInput ref={inputRef} />`를 렌더링한 부모 컴포넌트는 `inputRef.current.focus()`를 호출할 수 있습니다.
 
 ### `useLayoutEffect` {#uselayouteffect}
 

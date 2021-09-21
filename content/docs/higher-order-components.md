@@ -249,7 +249,7 @@ render() {
 const NavbarWithRouter = withRouter(Navbar);
 ```
 
-일반적으로 고차 컴포넌트는 추가 인수를 허용합니다. Relay 예제에서 config 객체는 컴포넌트의 데이터 의존성을 지정하기 위해 사용합니다.
+일반적으로 고차 컴포넌트는 추가 인수를 허용합니다. Relay 예시에서 config 객체는 컴포넌트의 데이터 의존성을 지정하기 위해 사용합니다.
 
 ```js
 const CommentWithRelay = Relay.createContainer(Comment, config);
