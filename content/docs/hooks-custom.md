@@ -145,7 +145,7 @@ function FriendListItem(props) {
 
 **사용자 정의 Hook의 이름은 “`use`”로 시작되어야 하나요?** 네 그렇습니다. 이 관습은 아주 중요합니다. 이를 따르지 않으면 특정한 함수가 그 안에서 Hook을 호출하는지를 알 수 없기 때문에 [Hook 규칙](/docs/hooks-rules.html)의 위반 여부를 자동으로 체크할 수 없습니다.
 
-**같은 Hook을 사용하는 두 개의 컴포넌트는 state를 공유하나요?** 아니요. 사용자 정의 Hook은 *상태 관련 로직*(구독을 설정하고 현재 변숫값을 기억하는 것)을 재사용하는 메커니즘이지만 사용자 Hook을 사용할 때마다 그 안의 state와 effect는 완전히 독립적입니다. 
+**같은 Hook을 사용하는 두 개의 컴포넌트는 state를 공유하나요?** 아니요. 사용자 정의 Hook은 *상태 관련 로직*(구독을 설정하고 현재 변숫값을 기억하는 것)을 재사용하는 메커니즘이지만 사용자 Hook을 사용할 때마다 그 안의 state와 effect는 완전히 독립적입니다.
 
 **사용자 정의 Hook은 어떻게 독립된 state를 얻는 건가요?** 각각의 Hook에 대한 *호출*은 서로 독립된 state를 받습니다. `useFriendStatus`를 직접적으로 호출하기 때문에 React의 관점에서 이 컴포넌트는 `useState`와 `useEffect`를 호출한 것과 다름없습니다. 또한 우리가 [이전에](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns) [배웠듯이](/docs/hooks-state.html#tip-using-multiple-state-variables), 하나의 컴포넌트 안에서 `useState`와 `useEffect`를 여러 번 부를 수 있고 이들은 모두 완전히 독립적입니다.
 
@@ -193,7 +193,7 @@ function ChatRecipientPicker() {
   const isRecipientOnline = useFriendStatus(recipientID);
 ```
 
-이를 통해 *지금 선택되어있는* 친구의 온라인 상태 여부를 알 수 있습니다. 만약 다른 친구를 선택하고 `recipientID` state 변수를 업데이트하면 `useFriendStatus` Hook은 이미 선택되어있는 친구의 구독을 해지하고 새로이 선택된 친구의 상태를 구독할 것입니다.
+이를 통해 *지금 선택되어있는* 친구의 온라인 상태 여부를 알 수 있습니다. 다른 친구를 선택하고 `recipientID` state 변수를 업데이트하면 `useFriendStatus` Hook은 이미 선택되어있는 친구의 구독을 해지하고 새로이 선택된 친구의 상태를 구독할 것입니다.
 
 ## `useYourImagination()` {#useyourimagination}
 

@@ -52,7 +52,7 @@ React.createElement(
 
 JSX 태그의 첫 부분은 React element의 타입을 결정합니다.
 
-대문자로 시작하는 JSX 태그는 React 컴포넌트를 지정합니다. 이 태그들은 같은 이름을 가진 변수들을 직접 참조합니다. 만약 `<Foo />`와 같은 JSX 표현을 쓰려고 한다면 Foo가 반드시 스코프 내에 존재해야 합니다.
+대문자로 시작하는 JSX 태그는 React 컴포넌트를 지정합니다. 이 태그들은 같은 이름을 가진 변수들을 직접 참조합니다. `<Foo />`와 같은 JSX 표현을 쓰려고 한다면 Foo가 반드시 스코프 내에 존재해야 합니다.
 
 
 ### React가 스코프 내에 존재해야 합니다 {#react-must-be-in-scope}
@@ -75,7 +75,7 @@ JavaScript 번들러를 사용하지 않고 `<script>` 태그를 통해 React를
 
 ### JSX 타입을 위한 점 표기법 사용 {#using-dot-notation-for-jsx-type}
 
-JSX 내에서도 점 표기법을 사용하여 React 컴포넌트를 참조할 수 있습니다. 이 방법은 하나의 모듈에서 복수의 React 컴포넌트들을 export 하는 경우에 편리하게 사용할 수 있습니다. 예를 들어, 만약 `MyComponents.DatePicker`가 컴포넌트라면, 아래와 같은 방법으로 직접 사용할 수 있습니다.
+JSX 내에서도 점 표기법을 사용하여 React 컴포넌트를 참조할 수 있습니다. 이 방법은 하나의 모듈에서 복수의 React 컴포넌트들을 export 하는 경우에 편리하게 사용할 수 있습니다. 예를 들어, `MyComponents.DatePicker`가 컴포넌트라면, 아래와 같은 방법으로 직접 사용할 수 있습니다.
 
 ```js{10}
 import React from 'react';
@@ -95,7 +95,7 @@ function BlueDatePicker() {
 
 Element가 소문자로 시작하는 경우에는 `<div>` 나 `<span>` 같은 내장 컴포넌트라는 것을 뜻하며 `'div'` 나 `'span'` 같은 문자열 형태로 `React.createElement`에 전달됩니다. `<Foo />`와 같이 대문자로 시작하는 타입들은 `React.createElement(Foo)`의 형태로 컴파일 되며 JavaScript 파일 내에 사용자가 정의했거나 import 한 컴포넌트를 가리킵니다.
 
-컴포넌트의 이름은 대문자로 시작하는 것을 추천합니다. 만약 소문자로 시작하는 컴포넌트를 사용해야 한다면, 대문자로 시작하는 변수에 할당한 뒤 JSX에서 이 변수를 사용하세요.
+컴포넌트의 이름은 대문자로 시작하는 것을 추천합니다. 소문자로 시작하는 컴포넌트를 사용해야 한다면, 대문자로 시작하는 변수에 할당한 뒤 JSX에서 이 변수를 사용하세요.
 
 예를 들어 아래의 코드는 예상대로 실행되지 않을 것 입니다.
 
@@ -133,7 +133,7 @@ function HelloWorld() {
 
 ### 실행 중에 타입 선택하기 {#choosing-the-type-at-runtime}
 
-React element 타입에 일반적인 표현식은 사용할 수 없습니다. 만약 element 타입을 지정할 때 일반적인 표현식을 사용하고자 한다면 대문자로 시작하는 변수에 배정한 후 사용할 수 있습니다. 예를 들어 아래와 같이 prop에 따라 다른 컴포넌트를 render 해야 하는 경우들이 종종 있습니다.
+React element 타입에 일반적인 표현식은 사용할 수 없습니다. element 타입을 지정할 때 일반적인 표현식을 사용하고자 한다면 대문자로 시작하는 변수에 배정한 후 사용할 수 있습니다. 예를 들어 아래와 같이 prop에 따라 다른 컴포넌트를 render 해야 하는 경우들이 종종 있습니다.
 
 ```js{10,11}
 import React from 'react';

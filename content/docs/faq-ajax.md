@@ -8,7 +8,7 @@ category: FAQ
 
 ### 어떻게 AJAX 호출을 할 수 있을까요? {#how-can-i-make-an-ajax-call}
 
-당신이 선호하는 AJAX 라이브러리를 React와 함께 사용할 수 있습니다. 유명한 라이브러리로는 [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), 그리고 브라우저에 내장된 [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) 등이 있습니다.
+선호하는 AJAX 라이브러리를 React와 함께 사용할 수 있습니다. 유명한 라이브러리로는 [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), 그리고 브라우저에 내장된 [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) 등이 있습니다.
 
 ### 컴포넌트의 생명주기 중 어디에서 AJAX 호출을 할 수 있나요? {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
 

@@ -75,7 +75,7 @@ State는 props와 유사하지만, 비공개이며 컴포넌트에 의해 완전
 
 ## 함수에서 클래스로 변환하기 {#converting-a-function-to-a-class}
 
-다섯 단계로 `Clock`과 같은 함수 컴포넌트를 클래스로 변환할 수 있습니다. 
+다섯 단계로 `Clock`과 같은 함수 컴포넌트를 클래스로 변환할 수 있습니다.
 
 1. `React.Component`를 확장하는 동일한 이름의 [ES6 class](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes)를 생성합니다.
 
@@ -145,7 +145,7 @@ class Clock extends React.Component {
 }
 ```
 
-여기서 어떻게 `props`를 기본 constructor에 전달하는지 유의하십시오.
+여기서 어떻게 `props`를 기본 constructor에 전달하는지 유의해주세요.
 
 ```js{2}
   constructor(props) {
@@ -311,7 +311,7 @@ ReactDOM.render(
 
 2) React는 `Clock` 컴포넌트의 `render()` 메서드를 호출합니다. 이를 통해 React는 화면에 표시되어야 할 내용을 알게 됩니다. 그 다음 React는 `Clock`의 렌더링 출력값을 일치시키기 위해 DOM을 업데이트합니다.
 
-3) `Clock` 출력값이 DOM에 삽입되면, React는 `componentDidMount()` 생명주기 메서드를 호출합니다. 그 안에서 `Clock` 컴포넌트는 매초 컴포넌트의 `tick()` 메서드를 호출하기 위한 타이머를 설정하도록 브라우저에 요청합니다. 
+3) `Clock` 출력값이 DOM에 삽입되면, React는 `componentDidMount()` 생명주기 메서드를 호출합니다. 그 안에서 `Clock` 컴포넌트는 매초 컴포넌트의 `tick()` 메서드를 호출하기 위한 타이머를 설정하도록 브라우저에 요청합니다.
 
 4) 매초 브라우저가 `tick()` 메서드를 호출합니다. 그 안에서 `Clock` 컴포넌트는 `setState()`에 현재 시각을 포함하는 객체를 호출하면서 UI 업데이트를 진행합니다. `setState()` 호출 덕분에 React는 state가 변경된 것을 인지하고 화면에 표시될 내용을 알아내기 위해 `render()` 메서드를 다시 호출합니다. 이 때 `render()` 메서드 안의 `this.state.date`가 달라지고 렌더링 출력값은 업데이트된 시각을 포함합니다. React는 이에 따라 DOM을 업데이트합니다.
 
@@ -345,7 +345,7 @@ React는 성능을 위해 여러 `setState()` 호출을 단일 업데이트로 �
 
 `this.props`와 `this.state`가 비동기적으로 업데이트될 수 있기 때문에 다음 state를 계산할 때 해당 값에 의존해서는 안 됩니다.
 
-예를 들어, 다음 코드는 카운터 업데이트에 실패할 수 있습니다. 
+예를 들어, 다음 코드는 카운터 업데이트에 실패할 수 있습니다.
 
 ```js
 // Wrong
@@ -408,7 +408,7 @@ this.setState(function(state, props) {
   }
 ```
 
-병합은 얕게 이루어지기 때문에 `this.setState({comments})`는 `this.state.posts`에 영향을 주진 않지만 `this.state.comments`는 완전히 대체됩니다. 
+병합은 얕게 이루어지기 때문에 `this.setState({comments})`는 `this.state.posts`에 영향을 주진 않지만 `this.state.comments`는 완전히 대체됩니다.
 
 ## 데이터는 아래로 흐릅니다 {#the-data-flows-down}
 
@@ -432,7 +432,7 @@ function FormattedDate(props) {
 
 [**CodePen에서 시도해보기**](https://codepen.io/gaearon/pen/zKRqNB?editors=0010)
 
-일반적으로 이를 "하향식(top-down)" 또는 "단방향식" 데이터 흐름이라고 합니다. 모든 state는 항상 특정한 컴포넌트가 소유하고 있으며 그 state로부터 파생된 UI 또는 데이터는 오직 트리구조에서 자신의 "아래"에 있는 컴포넌트에만 영향을 미칩니다. 
+일반적으로 이를 "하향식(top-down)" 또는 "단방향식" 데이터 흐름이라고 합니다. 모든 state는 항상 특정한 컴포넌트가 소유하고 있으며 그 state로부터 파생된 UI 또는 데이터는 오직 트리구조에서 자신의 "아래"에 있는 컴포넌트에만 영향을 미칩니다.
 
 트리구조가 props들의 폭포라고 상상하면 각 컴포넌트의 state는 임의의 점에서 만나지만 동시에 아래로 흐르는 부가적인 수원(water source)이라고 할 수 있습니다.
 

@@ -44,9 +44,9 @@ portal의 전형적인 유스케이스는 부모 컴포넌트에 `overflow: hidd
 
 >주의
 >
-> portal을 이용하여 작업할 때 [키보드 포커스 관리](/docs/accessibility.html#programmatically-managing-focus)가 매우 중요하다는 것을 염두에 두십시오.
+> portal을 이용하여 작업할 때 [키보드 포커스 관리](/docs/accessibility.html#programmatically-managing-focus)가 매우 중요하다는 것을 염두에 두세요.
 >
-> 모달 다이얼로그(modal dialogs)의 경우 [WAI-ARIA Modal Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal)에 따라 모든 모달 다이얼로그(modal dialogs)와 상호작용할 수 있는지 확인하십시오.  
+> 모달 다이얼로그(modal dialogs)의 경우 [WAI-ARIA Modal Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal)에 따라 모든 모달 다이얼로그(modal dialogs)와 상호작용할 수 있는지 확인해주세요.
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/yzMaBd)
 
@@ -81,9 +81,9 @@ class Modal extends React.Component {
   componentDidMount() {
     // Portal 엘리먼트는 Modal의 자식이 마운트된 후 DOM 트리에 삽입됩니다.
     // 요컨대, 자식은 어디에도 연결되지 않은 DOM 노드로 마운트됩니다.
-    // 만약 자식 컴포넌트가 마운트될 때 그것을 즉시 DOM 트리에 연결해야만 한다면,
+    // 자식 컴포넌트가 마운트될 때 그것을 즉시 DOM 트리에 연결해야만 한다면,
     // 예를 들어, DOM 노드를 계산한다든지 자식 노드에서 'autoFocus'를 사용한다든지 하는 경우에,
-    // Modal에 state를 추가하고 Modal이 DOM 트리에 삽입되어 있을 때만 자식을 렌더링하십시오.
+    // Modal에 state를 추가하고 Modal이 DOM 트리에 삽입되어 있을 때만 자식을 렌더링해주세요.
     modalRoot.appendChild(this.el);
   }
 

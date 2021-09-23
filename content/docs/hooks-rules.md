@@ -98,7 +98,7 @@ useEffect(updateTitle)     // 4. 제목을 업데이트하기 위한 effect가 �
 // ...
 ```
 
-Hook의 호출 순서가 렌더링 간에 동일하다면 React는 지역적인 state를 각 Hook에 연동시킬 수 있습니다. 하지만 만약에 Hook을 조건문 안에서(예를 들어 `persistForm` effect) 호출한다면 어떤 일이 일어날까요?
+Hook의 호출 순서가 렌더링 간에 동일하다면 React는 지역적인 state를 각 Hook에 연동시킬 수 있습니다. 하지만 Hook을 조건문 안에서(예를 들어 `persistForm` effect) 호출한다면 어떤 일이 일어날까요?
 
 ```js
   // 🔴 조건문에 Hook을 사용함으로써 첫 번째 규칙을 깼습니다
@@ -120,7 +120,7 @@ useEffect(updateTitle)     // 🔴 3 (4였던). 제목을 업데이트하기 위
 
 React는 두 번째 `useState` Hook 호출에 대해 무엇을 반환할지 몰랐습니다. React는 이전 렌더링 때처럼 컴포넌트 내에서 두 번째 Hook 호출이 `persistForm` effect와 일치할 것이라 예상했지만 그렇지 않았습니다. 그 시점부터 건너뛴 Hook 다음에 호출되는 Hook이 순서가 하나씩 밀리면서 버그를 발생시키게 됩니다.
 
-**이것이 컴포넌트 최상위(the top of level)에서 Hook이 호출되어야만 하는 이유입니다.** 만약에 조건부로 effect를 실행하기를 원한다면, 조건문을 Hook *내부에* 넣을 수 있습니다.
+**이것이 컴포넌트 최상위(the top of level)에서 Hook이 호출되어야만 하는 이유입니다.** 조건부로 effect를 실행하기를 원한다면, 조건문을 Hook *내부에* 넣을 수 있습니다.
 
 ```js
   useEffect(function persistForm() {
@@ -131,8 +131,8 @@ React는 두 번째 `useState` Hook 호출에 대해 무엇을 반환할지 몰�
   });
 ```
 
-**[제공된 lint 규칙](https://www.npmjs.com/package/eslint-plugin-react-hooks)을 활용한다면 이 문제에 대해 걱정할 필요는 없습니다.** 그러나 이제 당신은 왜 Hook이 이런 식으로 동작하는지 그리고 이 규칙이 어떤 문제를 방지하는지 알고 있습니다.
+**[제공된 lint 규칙](https://www.npmjs.com/package/eslint-plugin-react-hooks)을 활용한다면 이 문제에 대해 걱정할 필요는 없습니다.** 그러나 이제 왜 Hook이 이런 식으로 동작하는지 그리고 이 규칙이 어떤 문제를 방지하는지 알고 있습니다.
 
 ## 다음 단계 {#next-steps}
 
-마침내 [Custom Hook](/docs/hooks-custom.html)을 작성하는 법을 배울 준비가 되었습니다! Custom Hook은 React에서 제공하는 Hook을 당신의 추상화된 로직으로 사용할 수 있도록 결합해주고 다른 컴포넌트 사이에서 공통의 상태 관련 로직을 재사용 할 수 있도록 해줍니다.
+마침내 [Custom Hook](/docs/hooks-custom.html)을 작성하는 법을 배울 준비가 되었습니다! Custom Hook은 React에서 제공하는 Hook을 추상화된 로직으로 사용할 수 있도록 결합해주고 다른 컴포넌트 사이에서 공통의 상태 관련 로직을 재사용 할 수 있도록 해줍니다.

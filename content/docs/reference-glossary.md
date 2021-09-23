@@ -45,7 +45,7 @@ ReactDOM.render(
   <h1 className="hello">My name is {name}!</h1>,
   document.getElementById('root')
 );
-```  
+```
 
 ## [엘리먼트](/docs/rendering-elements.html) {#elements}
 
@@ -124,7 +124,7 @@ class Welcome extends React.Component {
 
 `state`와 `props`의 가장 중요한 차이점은 `props`는 부모 컴포넌트로부터 전달받지만, `state`는 컴포넌트에서 관리된다는 것입니다. 컴포넌트는 `props`를 변경할 수 없지만, `state`는 변경할 수 있습니다.
 
-데이터가 변경되는 각 특정한 부분에 대해, 해당 상태(state)를 "소유"하는 컴포넌트는 하나만 존재해야 합니다. 서로 다른 두 컴포넌트의 상태를 동기화하려고 하지 마십시오. 대신, 공통 상태를 두 컴포넌트의 공통 조상으로 [끌어올리고](/docs/lifting-state-up.html) 해당 데이터를 두 컴포넌트에 props로 전달하세요.
+데이터가 변경되는 각 특정한 부분에 대해, 해당 상태(state)를 "소유"하는 컴포넌트는 하나만 존재해야 합니다. 서로 다른 두 컴포넌트의 상태를 동기화하려고 하지마세요. 대신, 공통 상태를 두 컴포넌트의 공통 조상으로 [끌어올리고](/docs/lifting-state-up.html) 해당 데이터를 두 컴포넌트에 props로 전달하세요.
 
 ## [생명주기 메서드](/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class) {#lifecycle-methods}
 
@@ -152,7 +152,7 @@ Key는 같은 배열에 포함된 다른 요소 사이에서만 고윳값을 가
 
 React는 컴포넌트에 접근할 수 있는 특수한 어트리뷰트를 지원합니다. `ref` 어트리뷰트 [`React.createRef()` 함수](/docs/react-api.html#reactcreateref), 콜백 함수, 혹은 문자열(레거시 API에서)로 생성할 수 있습니다. ref 어트리뷰트가 콜백 함수인 경우, 함수는 DOM 엘리먼트나 class 인스턴스를 인자로 받습니다. 이를 통해 컴포넌트 인스턴스나 DOM 엘리먼트에 직접 접근할 수 있습니다.
 
-Ref를 가능한 한 적게 사용하세요. 만약 앱에서 Ref를 사용하여 "작동되는 부분"이 많다면 [하향식 데이터 흐름](/docs/lifting-state-up.html)을 사용하는 것이 더 좋습니다.
+Ref를 가능한 한 적게 사용하세요. 앱에서 Ref를 사용하여 "작동되는 부분"이 많다면 [하향식 데이터 흐름](/docs/lifting-state-up.html)을 사용하는 것이 더 좋습니다.
 
 ## [이벤트](/docs/handling-events.html) {#events}
 

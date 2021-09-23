@@ -300,7 +300,7 @@ class Searchbox extends React.Component {
 
 #### `requestAnimationFrame` throttling {#requestanimationframe-throttling}
 
-[`requestAnimationFrame`](https://developer.mozilla.org/ko/docs/Web/API/window/requestAnimationFrame)은 렌더링 성능을 위해 브라우저에서 최적화된 시간에 함수가 실행되도록 함수를 큐잉하는 방법입니다. `requestAnimationFrame`의 큐로 들어간 함수는 다음 프레임에서 실행됩니다. 브라우저는 1초당 60 프레임(60 fps)을 보장하기 위해 열심히 일합니다. 하지만 만약에 브라우저가 이를 하지 못할때 저절로 프레임을 *제한*합니다. 예를 들면 한 기기가 30 fps만 처리할 수 있다면 1초 동안 30 프레임만 얻을 수 있습니다. throttling을 위해 `requestAnimationFrame`을 사용하면 1초에 60번 이상 업데이트하는 것을 막을 수 있습니다. 1초당 100번 업데이트하도록 브라우저에 일을 만들어 주어도, 유저는 이를 확인할 수 없습니다.
+[`requestAnimationFrame`](https://developer.mozilla.org/ko/docs/Web/API/window/requestAnimationFrame)은 렌더링 성능을 위해 브라우저에서 최적화된 시간에 함수가 실행되도록 함수를 큐잉하는 방법입니다. `requestAnimationFrame`의 큐로 들어간 함수는 다음 프레임에서 실행됩니다. 브라우저는 1초당 60 프레임(60 fps)을 보장하기 위해 열심히 일합니다. 하지만 브라우저가 이를 하지 못할때 저절로 프레임을 *제한*합니다. 예를 들면 한 기기가 30 fps만 처리할 수 있다면 1초 동안 30 프레임만 얻을 수 있습니다. throttling을 위해 `requestAnimationFrame`을 사용하면 1초에 60번 이상 업데이트하는 것을 막을 수 있습니다. 1초당 100번 업데이트하도록 브라우저에 일을 만들어 주어도, 유저는 이를 확인할 수 없습니다.
 
 >**주의**
 >

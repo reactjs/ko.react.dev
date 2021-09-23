@@ -134,7 +134,7 @@ function Example() {
 
 **`useState`의 인자로 무엇을 넘겨주어야 할까요?** `useState()`Hook의 인자로 넘겨주는 값은 state의 초기 값입니다. 함수 컴포넌트의 state는 클래스와 달리 객체일 필요는 없고, 숫자 타입과 문자 타입을 가질 수 있습니다. 위의 예시는 사용자가 버튼을 얼마나 많이 클릭했는지 알기를 원하므로 `0`을 해당 state의 초기 값으로 선언했습니다. (2개의 다른 변수를 저장하기를 원한다면 `useState()`를 두 번 호출해야 합니다.)
 
-**`useState`는 무엇을 반환할까요?** state 변수, 해당 변수를 갱신할 수 있는 함수 이 두 가지 쌍을 반환합니다. 이것이 바로 `const [count, setCount] = useState()`라고 쓰는 이유입니다. 클래스 컴포넌트의 `this.state.count`와 `this.setState`와 유사합니다. 만약 이러한 문법에 익숙하지 않다면 [현재 페이지의 끝](/docs/hooks-state.html#tip-what-do-square-brackets-mean)에서 살펴볼게요.
+**`useState`는 무엇을 반환할까요?** state 변수, 해당 변수를 갱신할 수 있는 함수 이 두 가지 쌍을 반환합니다. 이것이 바로 `const [count, setCount] = useState()`라고 쓰는 이유입니다. 클래스 컴포넌트의 `this.state.count`와 `this.setState`와 유사합니다. 이러한 문법에 익숙하지 않다면 [현재 페이지의 끝](/docs/hooks-state.html#tip-what-do-square-brackets-mean)에서 살펴볼게요.
 
 이제 `useState`를 이용하여 많은 것을 만들 수 있습니다.
 
