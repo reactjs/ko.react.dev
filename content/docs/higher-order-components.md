@@ -211,7 +211,7 @@ function logProps(WrappedComponent) {
 }
 ```
 
-위 고차 컴포넌트는 충돌 가능성을 피하면서 프로토타입을 직접 변경하는 버전과 동일하게 작동합니다. 이 방법은 클래스 컴포넌트와 함수형 컴포넌트에서도 동일하게 작동합니다. 그리고 순수한 함수이기 때문에 다른 고차 컴포넌트와 같이 조합하거나 심지어 자체적으로 조합할 수 있습니다.
+위 고차 컴포넌트는 충돌 가능성을 피하면서 프로토타입을 직접 변경하는 버전과 동일하게 작동합니다. 이 방법은 클래스 컴포넌트와 함수 컴포넌트에서도 동일하게 작동합니다. 그리고 순수한 함수이기 때문에 다른 고차 컴포넌트와 같이 조합하거나 심지어 자체적으로 조합할 수 있습니다.
 
 고차 컴포넌트와 컨테이너 컴포넌트라 불리는 패턴이 유사하다고 느낄 수 있습니다. 컨테이너 컴포넌트는 high-level과 low-level 관심사를 분리하는 전략 중 하나입니다. 컨테이너는 구독 및 state 같은 것을 관리하고 UI 렌더링 같은 것을 처리하는 컴포넌트에 props를 전달합니다. 고차 컴포넌트는 컨테이너를 그 구현체 중 일부에 사용하고 있습니다. 고차 컴포넌트는 매개변수화된 컨테이너 컴포넌트 정의로 생각할 수 있습니다.
 
@@ -249,7 +249,7 @@ render() {
 const NavbarWithRouter = withRouter(Navbar);
 ```
 
-일반적으로 고차 컴포넌트는 추가 인수를 허용합니다. Relay 예제에서 config 객체는 컴포넌트의 데이터 의존성을 지정하기 위해 사용합니다.
+일반적으로 고차 컴포넌트는 추가 인수를 허용합니다. Relay 예시에서 config 객체는 컴포넌트의 데이터 의존성을 지정하기 위해 사용합니다.
 
 ```js
 const CommentWithRelay = Relay.createContainer(Comment, config);
@@ -291,7 +291,7 @@ const EnhancedComponent = enhance(WrappedComponent)
 
 (이와 동일한 속성을 통해서 실험단계인 `connect`와 기타 인핸서 스타일의 HOC를 데코레이터로 사용할 수 있습니다.)
 
-`compose` 유틸리티 기능(효용 함수)는 lodash (as [`lodash.flowRight`](https://lodash.com/docs/#flowRight)), [Redux](https://redux.js.org/api/compose), and [Ramda](https://ramdajs.com/docs/#compose)를 포함한 많은 서드파티 라이브러리에서 제공하고 있습니다.
+`compose` 유틸리티 기능(효용 함수)는 lodash (as [`lodash.flowRight`](https://lodash.com/docs/#flowRight)), [Redux](https://redux.js.org/api/compose), and [Ramda](https://ramdajs.com/docs/#compose)를 포함한 많은 서드 파티 라이브러리에서 제공하고 있습니다.
 
 ## 컨벤션: 간단한 디버깅을 위한 디스플레이 네임 작성 방법 {#convention-wrap-the-display-name-for-easy-debugging}
 

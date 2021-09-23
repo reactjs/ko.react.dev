@@ -125,9 +125,9 @@ React의 관점에서 Hook을 사용하는 컴포넌트는 일반적인 컴포�
 
 >주의
 >
->[테스팅 방안](/docs/testing-recipes.html)에는 복사하여 붙여넣을 수 있는 많은 예제가 포함되어 있습니다.
+>[테스팅 방안](/docs/testing-recipes.html)에는 복사하여 붙여넣을 수 있는 많은 예시가 포함되어 있습니다.
 
-예를 들어 여기 이 계수기 컴포넌트가 있다고 가정해 보겠습니다:
+예를 들어 여기 이 계수기 컴포넌트가 있다고 가정해 보겠습니다.
 
 ```js
 function Example() {
@@ -486,13 +486,13 @@ function MeasureExample() {
 }
 ```
 
-이 예제에서는 객체 ref가 현재 ref 값의 변경 사항에 대해 알려주지 않기 때문에 `useRef`를 선택하지 않았습니다. 콜백 ref를 사용하면 [자식 컴포넌트가 나중에 측정된 노드를 표시하더라도](https://codesandbox.io/s/818zzk8m78) (예: 클릭에 대한 응답으로) 여전히 부모 컴포넌트에서 이에 대한 알림을 받고 측정을 업데이트 할 수 있습니다.
+이 예시에서는 객체 ref가 현재 ref 값의 변경 사항에 대해 알려주지 않기 때문에 `useRef`를 선택하지 않았습니다. 콜백 ref를 사용하면 [자식 컴포넌트가 나중에 측정된 노드를 표시하더라도](https://codesandbox.io/s/818zzk8m78) (예: 클릭에 대한 응답으로) 여전히 부모 컴포넌트에서 이에 대한 알림을 받고 측정을 업데이트 할 수 있습니다.
 
 `[]`를 ʻuseCallback`에 종속성 배열로 전달합니다. 이렇게 하면 ref 콜백이 다시 렌더링 간에 변경되지 않음으로 React가 불필요하게 호출하지 않습니다.
 
-이 예제에서 콜백 ref는 렌더링 된 `<h1>` 컴포넌트가 모든 리렌더 동안 존재하기 때문에 컴포넌트가 마운트 및 마운트 해제될 때만 호출됩니다. 컴포넌트의 크기가 조정될 때마다 알림을 받으려면 [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) 또는 여기에 빌드된 제삼자 Hook을 사용할 수 있습니다.
+이 예시에서 콜백 ref는 렌더링 된 `<h1>` 컴포넌트가 모든 리렌더 동안 존재하기 때문에 컴포넌트가 마운트 및 마운트 해제될 때만 호출됩니다. 컴포넌트의 크기가 조정될 때마다 알림을 받으려면 [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) 또는 여기에 빌드된 제삼자 Hook을 사용할 수 있습니다.
 
-원한다면 재사용 가능한 Hook으로 [이 로직을 추출](https://codesandbox.io/s/m5o42082xy) 할 수 있습니다:
+원한다면 재사용 가능한 Hook으로 [이 로직을 추출](https://codesandbox.io/s/m5o42082xy) 할 수 있습니다.
 
 ```js{2}
 function MeasureExample() {
@@ -735,7 +735,7 @@ function Example(props) {
 }
 ```
 
-변형에 의존하면 컴포넌트를 예측하기 어렵기 때문에 더 나은 대안을 찾을 수 없는 경우에만 이 작업을 수행하십시오. 제대로 옮겨지지 않는 특정 패턴이 있는 경우 실행 가능한 예제 코드로 [문제를 제출하면](https://github.com/facebook/react/issues/new) 도움을 드릴 수 있습니다.
+변형에 의존하면 컴포넌트를 예측하기 어렵기 때문에 더 나은 대안을 찾을 수 없는 경우에만 이 작업을 수행하십시오. 제대로 옮겨지지 않는 특정 패턴이 있는 경우 실행 가능한 예시 코드로 [문제를 제출하면](https://github.com/facebook/react/issues/new) 도움을 드릴 수 있습니다.
 
 ### shouldComponentUpdate는 어떻게 구현합니까? {#how-do-i-implement-shouldcomponentupdate}
 

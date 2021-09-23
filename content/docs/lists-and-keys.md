@@ -50,7 +50,7 @@ ReactDOM.render(
 
 일반적으로 [컴포넌트](/docs/components-and-props.html) 안에서 리스트를 렌더링합니다.
 
-이전 예제를 `numbers` 배열을 받아서 순서 없는 엘리먼트 리스트를 출력하는 컴포넌트로 리팩토링할 수 있습니다.
+이전 예시를 `numbers` 배열을 받아서 순서 없는 엘리먼트 리스트를 출력하는 컴포넌트로 리팩토링할 수 있습니다.
 
 ```javascript{3-5,7,13}
 function NumberList(props) {
@@ -257,11 +257,11 @@ const content = posts.map((post) =>
 );
 ```
 
-위 예제에서 `Post` 컴포넌트는 `props.id`를 읽을 수 있지만 `props.key`는 읽을 수 없습니다.
+위 예시에서 `Post` 컴포넌트는 `props.id`를 읽을 수 있지만 `props.key`는 읽을 수 없습니다.
 
 ### JSX에 map() 포함시키기 {#embedding-map-in-jsx}
 
-위 예제에서 별도의 `listItems` 변수를 선언하고 이를 JSX에 포함했습니다.
+위 예시에서 별도의 `listItems` 변수를 선언하고 이를 JSX에 포함했습니다.
 
 ```js{3-6}
 function NumberList(props) {

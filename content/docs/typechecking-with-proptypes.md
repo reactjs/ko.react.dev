@@ -155,7 +155,7 @@ MyComponent.propTypes = {
 
 ### 초기 Prop 값 {#default-prop-values}
 
-`defaultProps` 프로퍼티를 할당함으로써 `props`의 초깃값을 정의할 수 있습니다:
+`defaultProps` 프로퍼티를 할당함으로써 `props`의 초깃값을 정의할 수 있습니다.
 
 ```javascript
 class Greeting extends React.Component {
