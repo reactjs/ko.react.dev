@@ -8,7 +8,7 @@ next: testing-environments.html
 
 React 컴포넌트를 위한 공통 테스트 패턴입니다.
 
-> 주의:
+> 주의
 >
 > 이 페이지는 테스트 러너로 [Jest](https://jestjs.io/)를 사용한다고 가정합니다. 다른 테스트 러너를 사용한다면, 아마도 API를 조정해야 할 수도 있지만, 전체적인 형태는 거의 비슷할 겁니다. 테스트 환경에 대한 설정에 대해 더 알고 싶다면 [Testing Environments](/docs/testing-environments.html)를 참고해 주세요.
 
@@ -66,11 +66,11 @@ act(() => {
 // 단언을 추가
 ```
 
-위의 함수를 통해 실제 사용자가 프로그램을 사용할 때 겪을 경험에 근접하게 테스트를 실행할 수 있습니다. 이후 예제에서는 `act()`를 사용하여 이를 보장합니다.
+위의 함수를 통해 실제 사용자가 프로그램을 사용할 때 겪을 경험에 근접하게 테스트를 실행할 수 있습니다. 이후 예시에서는 `act()`를 사용하여 이를 보장합니다.
 
 `act()`를 직접 사용하다 보면, 코드가 길어질 때가 있습니다. 이를 간결하게 하고 싶을 때는 `act()`를 감싼 여러 도우미 함수를 제공하는 [React Testing Library] (https://testing-library.com/react)를 사용할 수 있습니다.
 
-> 주의:
+> 주의
 >
 > `act`라는 이름은 [Arrange-Act-Assert](http://wiki.c2.com/?ArrangeActAssert) 패턴에서 유래되었습니다.
 
@@ -232,7 +232,7 @@ it("renders user data", async () => {
 
 일부 모듈은 테스트 환경에서 제대로 작동하지 않거나 테스트 자체에 필수적이지 않을 수 있습니다. 이러한 모듈을 더미 모듈로 대체하는 방식으로 모의하여 코드에 대한 테스트를 더욱 쉽게 작성할 수 있습니다.
 
-서드파티인 `GoogleMap` 컴포넌트를 내장하는 `Contact` 컴포넌트를 살펴보세요
+서드 파티인 `GoogleMap` 컴포넌트를 내장하는 `Contact` 컴포넌트를 살펴보세요
 
 ```jsx
 // map.js
@@ -394,8 +394,8 @@ it("changes value when clicked", () => {
   });
 
   // 버튼 엘리먼트를 가져와서 클릭 이벤트를 트리거 하세요.
-  
-  
+
+
   const button = document.querySelector("[data-testid=toggle]");
   expect(button.innerHTML).toBe("Turn on");
 
@@ -419,9 +419,9 @@ it("changes value when clicked", () => {
 
 Different DOM events and their properties are described in [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent). Note that you need to pass `{ bubbles: true }` in each event you create for it to reach the React listener because React automatically delegates events to the root.
 
-> 주의:
+> 주의
 >
-> React Testing Library는 이벤트를 발생시키기 위한 [더욱 간결한 함수](https://testing-library.com/docs/dom-testing-library/api-events)를 제공합니다. 
+> React Testing Library는 이벤트를 발생시키기 위한 [더욱 간결한 함수](https://testing-library.com/docs/dom-testing-library/api-events)를 제공합니다.
 
 ---
 

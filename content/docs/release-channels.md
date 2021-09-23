@@ -10,9 +10,9 @@ next: hello-world.html
 
 React는 버그 신고, 풀 리퀘스트 요청, [RFCs에 제출](https://github.com/reactjs/rfcs)하기 위해서 번성하고 있는 오픈 소스 커뮤니티에 의존한다. 피드백을 장려하기 위해서 우리는 때때로 배포되지 않은 기능을 포함하고 있는 특정 React 빌드를 공유한다.
 
-> 이 문서는 프레임워크, 라이브러리, 개발자 도구에 관해 작업하는 개발자들과 가장 관련이 있습니다. 주로 React를 사용해서 사용자용 어플리케이션을 빌드하는 개발자는 prerelease 채널에 관해서 걱정할 필요가 없습니다.
+> 이 문서는 프레임워크, 라이브러리, 개발자 도구에 관해 작업하는 개발자들과 가장 관련이 있습니다. 주로 React를 사용해서 사용자용 애플리케이션을 빌드하는 개발자는 prerelease 채널에 관해서 걱정할 필요가 없습니다.
 
-React의 각 배포 채널은 하나의 고유한 사용 경우를 위해 설계되었습니다:
+React의 각 배포 채널은 하나의 고유한 사용 경우를 위해 설계되었습니다.
 
 - [**Latest**](#latest-channel) 는 안정적이고, 유의적인 React 배포입니다. npm에서 React를 설치할 때 얻는 것입니다. 이것은 이미 여러분이 사용하고 있는 채널입니다. **모든 사용자용 애플리케이션을 위해서는 이것을 사용해주세요.**
 - [**Next**](#next-channel) 는 React 소스 코드 저장소의 main branch를 추적합니다. 이것을 다음 minor 유의적인 배포를 위한 배포 후보자라고 생각하세요. 이것을 React와 타사 프로젝트 간의 통합 테스트에 사용해주세요.
@@ -38,7 +38,7 @@ Next 채널은 React 저장소의 main branch를 추적하는 prerelease 채널�
 
 가장 최신 Next 배포와 가장 최신 Latest 배포 사이의 변화 정도는 두 개의 부 유의적 버전 배포사이의 변화 정도와 거의 같습니다. 그러나, **Next 채널은 유의적 버전 원칙을 따르지 않습니다.** Next 채널에서 연속적인 배포 사이의 간헐적 주요 변경사항을 예상해야 합니다.
 
-**사용자용 어플리케이션에서 prereleases를 사용하지 마세요.**
+**사용자용 애플리케이션에서 prereleases를 사용하지 마세요.**
 
 npm에서 Next에서 배포는 `next` tag와 함께 게시됩니다. 버전은 빌드의 내용의 해시와 커밋 날짜로부터 생성됩니다. 예: `0.0.0-68053d940-20210623`.
 
@@ -48,16 +48,16 @@ Next 채널은 React와 다른 프로젝트 간 통합 테스트를 지원하기
 
 React의 모든 변경사항들은 배포 전에 광범위한 내부 테스트를 거칩니다. 그러나 React 생태계 전체에서 사용되는 무수히 많은 환경과 구성이 있고 우리가 일일이 이 모든 것에 관해 테스트하는 것은 불가능합니다.
 
-타사 React 프레임워크, 라이브러리, 개발자 도구 또는 유사 인프라 구조 타입 프로젝트의 작성자라면 가장 최근 변화들에 대한 테스트 suite들을 주기적으로 실행하여 사용자들과 React 커뮤니티에 도움을 줄 수 있습니다. 흥미가 있다면, 이 단계를 따르세요:
+타사 React 프레임워크, 라이브러리, 개발자 도구 또는 유사 인프라 구조 타입 프로젝트의 작성자라면 가장 최근 변화들에 대한 테스트 suite들을 주기적으로 실행하여 사용자들과 React 커뮤니티에 도움을 줄 수 있습니다. 흥미가 있다면, 이 단계를 따르세요.
 
 - 선호하는 지속적 통합 플랫폼을 사용해서 cron job을 설정하세요. Cron jobs는 [CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) 와 [Travis CI](https://docs.travis-ci.com/user/cron-jobs/) 모두에서 지원됩니다.
-- cron job에서, npm의 `next` 태그를 사용해서 React 패키지를 Next 채널에서 가장 최신 React 배포로 업데이트해주세요. npm cli를 사용해서:
+- cron job에서, npm의 `next` 태그를 사용해서 React 패키지를 Next 채널에서 가장 최신 React 배포로 업데이트해주세요. npm cli를 사용해서
 
   ```
   npm update react@next react-dom@next
   ```
 
-  또는 yarn을 사용해서:
+  또는 yarn을 사용해서
 
   ```
   yarn upgrade react@next react-dom@next
@@ -74,7 +74,7 @@ Next와 마찬가지로 Experimental 채널은 React 저장소의 main branch를
 
 일반적으로, Next에 대한 업데이트는 Experimental에 대한 해당 업데이트와 함께 동반됩니다. 그것들은 동일한 소스 수정을 기반으로 하지만 다른 기능 플래그 세트를 사용하여 빌드됩니다.
 
-Experimental 배포는 Next 및 Latest 배포와 크게 다를 수 있습니다. **사용자용 어플리케이션에서는 Experimental 배포를 사용하지 마세요.** Experimental 채널에서 배포 사이에 빈번한 주요 변경사항을 예상해야 합니다.
+Experimental 배포는 Next 및 Latest 배포와 크게 다를 수 있습니다. **사용자용 애플리케이션에서는 Experimental 배포를 사용하지 마세요.** Experimental 채널에서 배포 사이에 빈번한 주요 변경사항을 예상해야 합니다.
 
 Experimental에서 배포는 npm에서 `experimental` tag와 함께 게시됩니다. 버전은 빌드의 내용과 커밋 날짜로부터 생성됩니다. 예: `0.0.0-experimental-68053d940-20210623`.
 

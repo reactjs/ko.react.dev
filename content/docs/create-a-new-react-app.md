@@ -13,7 +13,7 @@ next: cdn-links.html
 이 페이지에서는 도움이 되는 몇 가지 인기 있는 React 툴체인을 소개합니다.
 
 * 많은 파일과 컴포넌트 스케일링
-* 서드파티 npm 라이브러리 사용
+* 서드 파티 npm 라이브러리 사용
 * 일반적인 실수를 조기에 발견
 * CSS와 JS를 실시간으로 편집
 * 프로덕션 코드 최적화
@@ -83,7 +83,7 @@ Gatsby를 [정식 가이드](https://www.gatsbyjs.org/docs/)와 [스타터 키�
 
 JavaScript build 툴체인은 주로 아래와 같이 구성되어있습니다
 
-* [Yarn](https://yarnpkg.com/) 혹은 [npm](https://www.npmjs.com/)같은 package 매니저는 서드파티 패키지의 방대한 생태계를 활용할 수 있게 하며, 쉽게 설치하고 업데이트할 수 있게 합니다.
+* [Yarn](https://yarnpkg.com/) 혹은 [npm](https://www.npmjs.com/)같은 package 매니저는 서드 파티 패키지의 방대한 생태계를 활용할 수 있게 하며, 쉽게 설치하고 업데이트할 수 있게 합니다.
 
 * [webpack](https://webpack.js.org/) 아니면 [Parcel](https://parceljs.org/) 같은 **bundler**는 코드를 모듈방식으로 작성할 수 있게 하고 이를 작은 package로 묶어서 로딩 시간을 최적화할 수 있습니다.
 

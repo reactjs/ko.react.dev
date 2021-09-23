@@ -147,7 +147,7 @@ constructor(props)
 
 React 컴포넌트의 생성자는 해당 컴포넌트가 마운트되기 전에 호출됩니다. `React.Component`를 상속한 컴포넌트의 생성자를 구현할 때에는 다른 구문에 앞서 `super(props)`를 호출해야 합니다. 그렇지 않으면 `this.props`가 생성자 내에서 정의되지 않아 버그로 이어질 수 있습니다.
 
-React에서 생성자는 보통 아래의 두 가지 목적을 위하여 사용됩니다:
+React에서 생성자는 보통 아래의 두 가지 목적을 위하여 사용됩니다.
 
 * `this.state`에 객체를 할당하여 [지역 state](/docs/state-and-lifecycle.html)를 초기화
 * 인스턴스에 [이벤트 처리](/docs/handling-events.html) 메서드를 바인딩
