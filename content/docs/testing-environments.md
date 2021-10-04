@@ -55,4 +55,8 @@ Node.js에서 Jest같은 러너는 [모의 모듈을 지원합니다](https://je
 
 엔드 투 엔드 테스트는 더 긴 작업흐름을 테스트하는 데 유용하며, 특히 비즈니스에 중요한 작업흐름(결제 또는 회원가입 같이)을 테스트하는 데 유용합니다. 이러한 경우, 브라우저가 실제 앱 전체를 렌더링하고, 실제 API 종단점에서 데이터를 가져오고, 세션과 쿠키를 사용하며, 다른 링크 사이를 이동하는 방법을 모두 테스트 하기를 원할 것입니다. 또한 DOM 상태뿐만 아니라 백업 데이터(예를 들어, 업데이트가 데이터베이스에 유지되었는지 확인하기 위해)에 대해서도 검증하기를 원할 수 있습니다.
 
+<<<<<<< HEAD
 이러한 시나리오에서는 [Cypress](https://www.cypress.io/)와 같은 프레임워크나 [puppeteer](https://github.com/GoogleChrome/puppeteer) 같은 라이브러리를 사용하여 여러 경로를 탐색하고 브라우저뿐만 아니라 잠재적으로 백엔드에서도 부작용에 대해 주장할 수 있습니다.
+=======
+In this scenario, you would use a framework like [Cypress](https://www.cypress.io/), [Playwright](https://playwright.dev) or a library like [Puppeteer](https://pptr.dev/) so you can navigate between multiple routes and assert on side effects not just in the browser, but potentially on the backend as well.
+>>>>>>> 23d03a854ba21aeea0a03a0bd5185e0def9237d6
