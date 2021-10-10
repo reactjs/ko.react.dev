@@ -447,7 +447,7 @@ Deque Systems에서는 자동으로 애플리케이션의 종단 간(end-to-end)
 
 [The Accessibility Engine](https://www.deque.com/products/axe/) 또는 aXe는 aXe-core 기반의, 접근성 검사를 위한 브라우저 확장기능입니다.
 
-또는, [react-axe](https://github.com/dylanb/react-axe) 모듈을 사용해 개발 혹은 디버깅 중에 이러한 접근성 문제를 콘솔에 바로 띄울 수 있습니다.
+또는, [@axe-core/react](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/react) 모듈을 사용해 개발 혹은 디버깅 중에 이러한 접근성 문제를 콘솔에 바로 띄울 수 있습니다.
 
 #### WebAIM WAVE {#webaim-wave}
 
