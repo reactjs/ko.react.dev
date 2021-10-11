@@ -912,9 +912,13 @@ function DeepChild(props) {
 
 >주의
 >
+<<<<<<< HEAD
 >props의 개별 콜백보다는 [context에서 `dispatch`를 전달](#how-to-avoid-passing-callbacks-down)하는 것이 좋습니다. 아래 접근 방식은 완전성과 탈출구로만 여기에서 언급됩니다.
 >
 >또한 이 패턴은 [동시 모드](/blog/2018/03/27/update-on-async-rendering.html)에서 문제를 일으킬 수 있습니다. 앞으로 더 효율적인 대안을 제공할 계획이지만 현재 가장 안전한 해결책은 값이 변경에 따라 달라지는 경우 항상 콜백을 무효로 하는 것입니다.
+=======
+>We recommend to [pass `dispatch` down in context](#how-to-avoid-passing-callbacks-down) rather than individual callbacks in props. The approach below is only mentioned here for completeness and as an escape hatch.
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 드물게 [`useCallback`](/docs/hooks-reference.html#usecallback)을 사용하여 콜백을 메모해야 할 수도 있지만, 내부 함수 컴포넌트를 너무 자주 다시 만들어야 하므로 메모가 제대로 작동하지 않습니다. 메모하는 함수 컴포넌트가 이벤트 핸들러이고 렌더링 중에 사용되지 않는 경우 [ref를 인스턴스 변수로](#is-there-something-like-instance-variables) 사용하고 마지막으로 커밋 된 값을 수동으로 저장할 수 있습니다.
 
