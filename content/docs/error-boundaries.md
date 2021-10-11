@@ -62,11 +62,7 @@ class ErrorBoundary extends React.Component {
 
 에러 경계는 자바스크립트의 `catch {}` 구문과 유사하게 동작하지만 컴포넌트에 적용됩니다. 오직 클래스 컴포넌트만이 에러 경계가 될 수 있습니다. 실제로도 대부분의 경우 에러 경계 컴포넌트를 한 번만 선언하여 애플리케이션 전체에서 활용하려고 할 것입니다.
 
-<<<<<<< HEAD
-**에러 경계는 트리 내에서 하위에 존재하는 컴포넌트의 에러만을 포착합니다**. 에러 경계 자체적으로는 에러를 포착할 수 없습니다. 에러 경계가 에러 메시지를 렌더링하는 데에 실패한다면 에러는 그 위의 가장 가까운 에러 경계로 전파될 것입니다. 이 또한 자바스크립트의 catch {} 구문이 동작하는 방식과 유사합니다.
-=======
-Note that **error boundaries only catch errors in the components below them in the tree**. An error boundary can’t catch an error within itself. If an error boundary fails trying to render the error message, the error will propagate to the closest error boundary above it. This, too, is similar to how the `catch {}` block works in JavaScript.
->>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
+**에러 경계는 트리 내에서 하위에 존재하는 컴포넌트의 에러만을 포착합니다**. 에러 경계 자체적으로는 에러를 포착할 수 없습니다. 에러 경계가 에러 메시지를 렌더링하는 데에 실패한다면 에러는 그 위의 가장 가까운 에러 경계로 전파될 것입니다. 이 또한 자바스크립트의 `catch {}` 구문이 동작하는 방식과 유사합니다.
 
 ## 라이브 데모 {#live-demo}
 
