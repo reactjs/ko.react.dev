@@ -149,7 +149,7 @@ return (
 
 위 두 코드들은 같은 기능을 수행합니다. **JSX는 [필수가 아닌 선택사항](/docs/react-without-jsx.html)**이지만 사람들은 UI 코드를 짤 때 JSX를 쓰는 것이 더 편리하다고 생각합니다. React와 다른 라이브러리들에서도 말이죠.
 
-[이 온라인 변화기](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3)를 통해서 JSX로 여러 가지 작업을 해볼 수 있습니다.
+[이 온라인 변화기](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.15.7)를 통해서 JSX로 여러 가지 작업을 해볼 수 있습니다.
 
 ### JSX 빠르게 시도해보기 {#quickly-try-jsx}
 
