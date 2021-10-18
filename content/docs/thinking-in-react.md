@@ -72,7 +72,11 @@ JSON API는 아래와 같은 데이터를 반환합니다.
 
 이 단계가 끝나면 데이터 렌더링을 위해 만들어진 재사용 가능한 컴포넌트들의 라이브러리를 가지게 됩니다. 현재는 앱의 정적 버전이기 때문에 컴포넌트는 `render()` 메서드만 가지고 있을 것입니다. 계층구조의 최상단 컴포넌트 (`FilterableProductTable`)는 prop으로 데이터 모델을 받습니다. 데이터 모델이 변경되면  `ReactDOM.render()`를 다시 호출해서 UI가 업데이트 됩니다. UI가 어떻게 업데이트되고 어디에서 변경해야하는지 알 수 있습니다. React의 **단방향 데이터 흐름(one-way data flow)** (또는 *단방향 바인딩(one-way binding*))는 모든 것을 모듈화 하고 빠르게 만들어줍니다.
 
+<<<<<<< HEAD
 이 단계를 실행하는데 어려움이 있다면 [공식 React 문서](/docs/)를 참고하세요.
+=======
+Refer to the [React docs](/docs/getting-started.html) if you need help executing this step.
+>>>>>>> 4133943e718a77f11627888db2f59f6cb7a73403
 
 ### 짧은 소개: Props vs State {#a-brief-interlude-props-vs-state}
 
