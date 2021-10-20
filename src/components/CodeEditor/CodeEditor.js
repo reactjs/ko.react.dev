@@ -66,7 +66,8 @@ class CodeEditor extends Component {
           <br />
           <br />
           광고 차단기가 문제의 원인일 수 있습니다. 광고 차단기를 사용하고 있다면
-          라이브 코드 예제가 잘 동작할 수 있도록 reactjs.org를 화이트 리스트에 추가해주세요.
+          라이브 코드 예제가 잘 동작할 수 있도록 reactjs.org를 화이트 리스트에
+          추가해주세요.
         </span>
       );
     } else if (error != null) {
