@@ -62,12 +62,11 @@ class CodeEditor extends Component {
     if (showBabelErrorMessage) {
       errorMessage = (
         <span>
-          Babel could not be loaded.
+          Babel을 로드할 수 없습니다.
           <br />
           <br />
-          This can be caused by an ad blocker. If you're using one, consider
-          adding reactjs.org to the whitelist so the live code examples will
-          work.
+          광고 차단기가 문제의 원인일 수 있습니다. 광고 차단기를 사용하고 있다면
+          라이브 코드 예제가 잘 동작할 수 있도록 reactjs.org를 화이트 리스트에 추가해주세요.
         </span>
       );
     } else if (error != null) {
@@ -105,7 +104,7 @@ class CodeEditor extends Component {
                 color: colors.white,
               }}>
               <MetaTitle onDark={true}>
-                Live JSX Editor
+                라이브 JSX 에디터
                 <label
                   css={{
                     fontSize: 14,
@@ -175,7 +174,7 @@ class CodeEditor extends Component {
                   cssProps={{
                     color: colors.white,
                   }}>
-                  Error
+                  에러
                 </MetaTitle>
               </div>
               <pre
@@ -206,7 +205,7 @@ class CodeEditor extends Component {
                   padding: '0 10px',
                   backgroundColor: colors.divider,
                 }}>
-                <MetaTitle>Result</MetaTitle>
+                <MetaTitle>결과</MetaTitle>
               </div>
               <div
                 id={containerNodeID}
