@@ -287,9 +287,9 @@ function Box() {
   // ...
 ```
 
-이는 state 변수를 업데이트할 때 그 값을 *대체*하기 때문입니다. 이것은 업데이트된 필드를 객체에 *병합*하는 class의 `this.setState`와 다릅니다.
+이는 state 변수를 업데이트할 때, 그 값을 *대체*하기 때문입니다. 이것은 업데이트된 필드를 객체에 *병합*하는 class의 `this.setState`와 다릅니다.
 
-자동 병합을 놓친 경우 개체 state 업데이트를 병합하는 커스텀 `useLegacyState` Hook을 작성할 수 있습니다. 그러나, **함께변경 되는 값에 따라 state를 여러 state 변수로 분할하는 것을 추천합니다.**
+자동 병합을 놓친 경우, 개체 state 업데이트를 병합하는 커스텀 `useLegacyState` Hook을 작성할 수 있습니다. 그러나, **함께 변경되는 값에 따라 state를 여러 state 변수로 분할하는 것을 추천합니다.**
 
 예를 들어 컴포넌트 state를 `position` 및 `size` 객체로 분할하고 병합할 필요 없이 항상 `position`을 대체 할 수 있습니다.
 
