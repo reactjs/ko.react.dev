@@ -99,7 +99,11 @@ function ProfileTimeline() {
 
 이 데모는 일부분에 불과합니다. 아직 잘 이해가 가지 않아도 걱정하지 마세요. 어떤 식으로 작동하는지 아래에서 더 자세하게 이야기할 겁니다. Suspense는 *메커니즘*에 가까운 것이고, 위 예시에 등장하는 `fetchProfileData()` 또는 `resource.posts.read()`와 같은 특정 API는 여기서 그렇게 중요하지 않다는 것만 유념하시기 바랍니다. 더 궁금하시다면, 각 API의 정의를 [샌드박스 데모](https://codesandbox.io/s/frosty-hermann-bztrp)에서 확인할 수 있습니다.
 
+<<<<<<< HEAD
 Suspense는 데이터 불러오기 라이브러리가 아닙니다. Suspense는 *컴포넌트가 읽어들이고 있는 데이터가 아직 준비되지 않았다*고 React에 알려줄 수 있는, **데이터 불러오기 라이브러리에서 사용할 수 있는 메커니즘**입니다. 이후에 React는 데이터가 준비되기를 기다렸다가 UI를 갱신할 수 있습니다. Facebook에서는 Relay와 Relay가 제공하는 [새로운 Suspense 통합 기능](docs/getting-started/step-by-step-guide/)을 사용하고 있습니다. Apollo와 같은 다른 라이브러리에서도 유사한 통합 기능을 제공할 것으로 기대합니다.
+=======
+Suspense is not a data fetching library. It's a **mechanism for data fetching libraries** to communicate to React that *the data a component is reading is not ready yet*. React can then wait for it to be ready and update the UI. At Facebook, we use Relay and its [new Suspense integration](https://relay.dev/docs/getting-started/step-by-step-guide/). We expect that other libraries like Apollo can provide similar integrations.
+>>>>>>> f2158e36715acc001c8317e20dc4f45f9e2089f3
 
 장기적인 관점으로는, Suspense가 데이터 출처와 상관없이 컴포넌트로부터 비동기 데이터를 읽는 데에 사용되는 주된 방식으로 거듭나길 바라고 있습니다.
 
