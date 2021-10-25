@@ -95,7 +95,7 @@ function getGreeting(user) {
 const element = <div tabIndex="0"></div>;
 ```
 
-중괄호를 사용하여 어트리뷰트에 JavaScript 표현식을 삽입할 수도 있습니다.
+중괄호를 사용하여 속성에 JavaScript 표현식을 삽입할 수도 있습니다.
 
 ```js
 const element = <img src={user.avatarUrl}></img>;
