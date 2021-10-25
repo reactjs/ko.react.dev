@@ -89,23 +89,23 @@ function getGreeting(user) {
 
 ### JSX 속성 정의 {#specifying-attributes-with-jsx}
 
-속성에 따옴표를 이용해 문자열 리터럴을 정의할 수 있습니다.
+어트리뷰트에 따옴표를 이용해 문자열 리터럴을 정의할 수 있습니다.
 
 ```js
 const element = <div tabIndex="0"></div>;
 ```
 
-중괄호를 사용하여 속성에 JavaScript 표현식을 삽입할 수도 있습니다.
+중괄호를 사용하여 어트리뷰트에 JavaScript 표현식을 삽입할 수도 있습니다.
 
 ```js
 const element = <img src={user.avatarUrl}></img>;
 ```
 
-속성에 JavaScript 표현식을 삽입할 때 중괄호 주변에 따옴표를 입력하지 마세요. 따옴표(문자열 값에 사용) 또는 중괄호(표현식에 사용) 중 하나만 사용하고, 동일한 속성에 두 가지를 동시에 사용하면 안 됩니다.
+어트리뷰트에 JavaScript 표현식을 삽입할 때 중괄호 주변에 따옴표를 입력하지 마세요. 따옴표(문자열 값에 사용) 또는 중괄호(표현식에 사용) 중 하나만 사용하고, 동일한 어트리뷰트에 두 가지를 동시에 사용하면 안 됩니다.
 
 >**경고**
 >
->JSX는 HTML보다는 JavaScript에 가깝기 때문에, React DOM은 HTML 속성 이름 대신 `camelCase` 프로퍼티 명명 규칙을 사용합니다.
+>JSX는 HTML보다는 JavaScript에 가깝기 때문에, React DOM은 HTML 어트리뷰트 이름 대신 `camelCase` 프로퍼티 명명 규칙을 사용합니다.
 >
 >예를 들어, JSX에서 `class`는 [`className`](https://developer.mozilla.org/ko/docs/Web/API/Element/className)가 되고 tabindex는 [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex)가 됩니다.
 
