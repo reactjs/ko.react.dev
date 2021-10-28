@@ -89,7 +89,7 @@ function getGreeting(user) {
 
 ### JSX 속성 정의 {#specifying-attributes-with-jsx}
 
-속성에 따옴표를 이용해 문자열 리터럴을 정의할 수 있습니다.
+어트리뷰트에 따옴표를 이용해 문자열 리터럴을 정의할 수 있습니다.
 
 ```js
 const element = <div tabIndex="0"></div>;
