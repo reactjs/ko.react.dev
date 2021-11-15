@@ -150,7 +150,7 @@ ReactDOM.render(
 
 JavaScript에서 `true && expression`은 항상 `expression`으로 평가되고 `false && expression`은 항상 `false`로 평가됩니다.
 
-따라서 `&&` 뒤의 엘리먼트는 조건이 `true`일때 출력이 됩니다. 조건이 `false`라면 React는 무시합니다.
+따라서 `&&` 뒤의 엘리먼트는 조건이 `true`일때 출력이 됩니다. 조건이 `false`라면 React는 무시하고 건너뜁니다.
 
 falsy 표현식을 반환하면 `&&` 뒤에 있는 표현식은 건너뛰지만 falsy 표현식이 반환된다는 것에 주의해주세요. 아래 예시에서, `<div>0</div>`이 render 메서드에서 반환됩니다.
 
