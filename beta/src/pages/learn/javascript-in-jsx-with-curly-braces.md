@@ -4,16 +4,16 @@ title: JavaScript에서의 중괄호가 있는 JSX
 
 <Intro>
 
-JSX를 사용하면 JavaScript 파일에 HTML과 비슷한 마크업을 작성하여 렌더링 논리와 콘텐츠를 같은 곳에 위치할 수 있습니다. 때로는 JavaScript 논리를 추가하거나 해당 마크업 내부의 동적인 프로퍼티를 참조하고 싶을 수 있습니다. 이 상황에서 JSX에서 중괄호를 사용하여 JavaScript를 사용할 수 있습니다.
+JSX를 사용하면 JavaScript 파일에 HTML과 비슷한 마크업을 작성하여 렌더링 논리와 콘텐츠를 같은 곳에 있을 수 있습니다. 때로는 JavaScript 논리를 추가하거나 해당 마크업 내부의 동적인 프로퍼티를 참조하고 싶을 수 있습니다. 이 상황에서 JSX에서 중괄호를 사용하여 JavaScript를 사용할 수 있습니다.
 
 </Intro>
 
 <YouWillLearn>
 
 * 따옴표로 문자열을 전달하는 방법
-* 중괄호가 있는 JSX 내부에서 Javascript의 변수를 참조하는 방법
-* 중괄호가 있는 JSX 내부에서 Javassript의 함수를 호출하는 방법
-* 중괄호가 있는 JSX 내부에서 Javascript의 객체를 사용하는 방법
+* 중괄호가 있는 JSX 안에서 Javascript의 변수를 참조하는 방법
+* 중괄호가 있는 JSX 안에서 Javascript의 함수를 호출하는 방법
+* 중괄호가 있는 JSX 안에서 Javascript의 객체를 사용하는 방법
 
 </YouWillLearn>
 
@@ -43,7 +43,7 @@ export default function Avatar() {
 
 여기에서는 `"https://i.imgur.com/7vQD0fPs.jpg"`와 `"Gregorio Y. Zara"`가 문자열로 전달되고 있습니다.
 
-그러나 `src` 또는 `alt` 텍스트를 동적으로 지정하려면 어떻게 해야 할까요? **`"`와 `"`를 `{`와 `}`로 바꿔 Javascript의 값을 사용할 수 있습니다**.
+그러나 `src` 또는 `alt` 텍스트를 동적으로 지정하려면 어떻게 해야 할까요? **`"`와`"`를 `{`와`}`로 바꿔 Javascript의 값을 사용할 수 있습니다**.
 
 <Sandpack>
 
@@ -67,11 +67,11 @@ export default function Avatar() {
 
 </Sandpack>
 
-이미지를 둥글게 만드는 `"avatar"` CSS 클래스 이름을 지정하는 `className="avatar"`와 `avatar`라는 JavaScript 변수의 값을 읽는 `src={avatar}`의 차이점에 주목해야 합니다. 중괄호를 사용하면 마크업에서 바로 JavaScript를 사용할 수 있기 때문입니다!
+이미지를 둥글게 만드는 `"avatar"` CSS 클래스 이름을 지정하는 `className="avatar"`와 `avatar`라는 JavaScript 변수의 값을 읽는 `src={avatar}`의 차이점에 주목해야 합니다. 중괄호를 사용하면 마크업에서 바로 JavaScript를 사용할 수 있기 때문입니다.
 
-## Using curly braces: A window into the JavaScript world {/*using-curly-braces-a-window-into-the-javascript-world*/}
+## 중괄호 사용하기: Javascript 세계로 가는 창 {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
-JSX is a special way of writing JavaScript. That means it’s possible to use JavaScript inside it—with curly braces `{ }`. The example below first declares a name for the scientist, `name`, then embeds it with curly braces inside the `<h1>`
+JSX는 JavaScript를 작성하는 특별한 방법입니다. 중괄호 `{ }`와 함께 안에서 JavaScript를 사용할 수 있습니다. 아래 예시는 이름 `name`을 선언한 다음 `<h1>` 내부에 중괄호로 포함합니다.
 
 <Sandpack>
 
@@ -86,9 +86,9 @@ export default function TodoList() {
 
 </Sandpack>
 
-Try changing `name`'s value from `'Gregorio Y. Zara'` to `'Hedy Lamarr'`. See how the To Do List title changes?
+`name` 값을 `'Gregorio Y. Zara'`에서 `'Hedy Lamarr'`로 변경해 To Do List 제목이 어떻게 변경되는지 확인해봅시다.
 
-Any JavaScript expression will work between curly braces, including function calls like `formatDate()`
+`formatDate()`와 같은 함수 호출을 포함해 모든 JavaScript 표현식은 중괄호 사이에서 작동합니다.
 
 <Sandpack>
 
