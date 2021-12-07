@@ -161,7 +161,7 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 }>
 ```
 
-JSX에서 `{{` 와 `}}`를 본다면 JSX 중괄호 안의 객체에 불과하다는 것을 알아야 합니다.
+JSX에서 `{{` 와 `}}` 를 본다면 JSX 중괄호 안의 객체에 불과하다는 것을 알아야 합니다.
 
 <Gotcha>
 
@@ -169,9 +169,9 @@ JSX에서 `{{` 와 `}}`를 본다면 JSX 중괄호 안의 객체에 불과하다
 
 </Gotcha>
 
-## More fun with JavaScript objects and curly braces {/*more-fun-with-javascript-objects-and-curly-braces*/}
+## Javascript 객체와 중괄호로 더 재미있게 {/*more-fun-with-javascript-objects-and-curly-braces*/}
 
-You can move several expressions into one object, and reference them in your JSX inside curly braces
+여러 표현식을 하나의 객체로 옮기고 중괄호 안의 JSX에서 참조할 수 있습니다.
 
 <Sandpack>
 
@@ -211,7 +211,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-In this example, the `person` JavaScript object contains a `name` string and a `theme` object
+이 예시에서 `person` 객체는 `name` 문자열과 `theme` 객체를 포함합니다.
 
 ```js
 const person = {
@@ -223,23 +223,23 @@ const person = {
 };
 ```
 
-The component can use these values from `person` like so
+컴포넌트는 `person` 값을 아래와 같이 사용할 수 있습니다.
 
 ```js
 <div style={person.theme}>
   <h1>{person.name}'s Todos</h1>
 ```
 
-JSX is very minimal as a templating language because it lets you organize data and logic using JavaScript.
+JSX는 JavaScript를 사용하여 데이터와 논리를 구성할 수 있어 템플릿 언어로서 매우 작습니다.
 
 <Recap>
 
-Now you know almost everything about JSX
+이제 JSX에 대한 거의 모든 것을 알게 되었습니다.
 
-* JSX attributes inside quotes are passed as strings.
-* Curly braces let you bring JavaScript logic and variables into your markup.
-* They work inside the JSX tag content or immediately after `=` in attributes.
-* `{{` and `}}` is not special syntax: it's a JavaScript object tucked inside JSX curly braces.
+* 따옴표 안의 JSX 어트리뷰트는 문자열로 전달됩니다.
+* 중괄호를 사용하면 JavaScript 논리와 변수를 마크업으로 가져올 수 있습니다.
+* JSX 태그 내부 또는 어트리뷰트의 `=` 뒤에서 작동합니다.
+* `{{` 및 `}}` 는 특별한 문법이 아닙니다. JSX 중괄호 안에 들어 있는 JavaScript 객체입니다.
 
 </Recap>
 
