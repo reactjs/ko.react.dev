@@ -245,9 +245,9 @@ JSX는 JavaScript를 사용하여 데이터와 논리를 구성할 수 있어 �
 
 <Challenges>
 
-### Fix the mistake {/*fix-the-mistake*/}
+### 실수 고치기 {/*fix-the-mistake*/}
 
-This code crashes with an error saying `Objects are not valid as a React child`
+아래 코드는 `Objects are not valid as a React child`라는 오류가 발생합니다.
 
 <Sandpack>
 
@@ -287,15 +287,15 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-Can you find the problem?
+문제를 찾았나요?
 
-<Hint>Look for what's inside the curly braces. Are we putting the right thing there?</Hint>
+<Hint>중괄호 안에 무엇이 있는지 찾아봅시다. 중괄호 안에 올바른 것을 넣고 있나요?</Hint>
 
 <Solution>
 
-This is happening because this example renders *an object itself* into the markup rather than a string: `<h1>{person}'s Todos</h1>` is trying to render the entire `person` object! Including raw objects as text content throws an error because React doesn't know how you want to display them.
+이것은 예시가 *객체 자체*를 문자열이 아닌 마크업으로 렌더링하기 때문에 발생합니다. `<h1>{person}'s Todos</h1>`는 `person` 객체 전체를 렌더링하려고 합니다. 원시 객체를 텍스트 콘텐츠로 포함하면 React가 어떻게 표시할지 모르기 때문에 오류가 발생합니다.
 
-To fix it, replace `<h1>{person}'s Todos</h1>` with `<h1>{person.name}'s Todos</h1>`
+문제를 해결하려면 `<h1>{person}'s Todos</h1>`를 `<h1>{person.name}'s Todos</h1>`로 바꾸어야 합니다.
 
 <Sandpack>
 
