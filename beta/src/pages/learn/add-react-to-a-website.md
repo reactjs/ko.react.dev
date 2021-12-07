@@ -1,22 +1,22 @@
 ---
-title: Add React to a Website
+title: 웹사이트에 React 추가
 ---
 
 <Intro>
 
-React has been designed from the start for gradual adoption, and you can use as little or as much React as you need. Whether you're working with micro-frontends, an existing system, or just giving React a try, you can start adding interactive React components to an HTML page with just a few lines of code—and no build tooling!
+React는 처음부터 점진적인 도입을 위해 설계되었으며, 필요한 만큼 React를 사용할 수 있습니다. 마이크로 프론트 엔드, 기존 시스템 혹은 단순히 React 사용 여부와 관계없이 몇 줄의 코드만으로 HTML 페이지에 인터렉티브한 React 컴포넌트를 추가할 수 있습니다. 빌드 도구 없이 말이죠!
 
 </Intro>
 
-## Add React in one minute {/*add-react-in-one-minute*/}
+## 1분 안에 React 추가 {/*add-react-in-one-minute*/}
 
-You can add a React component to an existing HTML page in under a minute. Try this out with your own website or [an empty HTML file](https://gist.github.com/rachelnabors/7b33305bf33776354797a2e3c1445186/archive/859eac2f7079c9e1f0a6eb818a9684a464064d80.zip)—all you need is an internet connection and a text editor like Notepad (or VSCode—check out our guide on [how to set yours up](/learn/editor-setup/))!
+1분 안에 기존 HTML 페이지에 React 컴포넌트를 추가할 수 있습니다. 자신의 웹 사이트나 [빈 HTML 파일](https://gist.github.com/rachelnabors/7b33305bf33776354797a2e3c1445186/archive/859eac2f7079c9e1f0a6eb818a9684a464064d80.zip)에 시도해 보세요. 인터넷 연결과 메모장(또는 VSCode—[설정 방법](/learn/editor-setup/)에 대한 가이드를 확인하세요.) 같은 텍스트 편집기만 있으면 됩니다. 
 
-### Step 1: Add an element to the HTML {/*step-1-add-an-element-to-the-html*/}
+### Step 1: HTML에 엘리먼트 추가 {/*step-1-add-an-element-to-the-html*/}
 
-In the HTML page you want to edit, add an HTML element like an empty `<div>` tag with a unique `id` to mark the spot where you want to display something with React.
+편집하려는 HTML 페이지에서 빈 `<div>` 태그와 같은 HTML 엘리먼트에 고유 id를 추가하여 React로 무언가 표시하고 싶은 지점을 표시합니다.
 
-You can place a "container" element like this `<div>` anywhere inside the `<body>` tag. React will replace any existing content inside HTML elements, so they are usually empty. You can have as many of these HTML elements on one page as you need.
+`div` 와 같은 "컨테이너" 엘리먼트는 `<body>` 태그 내부의 아무 곳에나 배치할 수 있습니다. React는 HTML 엘리먼트 내의 기존 콘텐츠를 대체하므로 보통 비어 있습니다. 한 페이지에 이러한 HTML 엘리먼트를 필요한 만큼 가질 수 있습니다.
 
 ```html {3}
 <!-- ... existing HTML ... -->
