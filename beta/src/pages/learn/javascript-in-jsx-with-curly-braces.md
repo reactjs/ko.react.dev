@@ -1,25 +1,25 @@
 ---
-title: JavaScript in JSX with Curly Braces
+title: JavaScript에서의 중괄호가 있는 JSX
 ---
 
 <Intro>
 
-JSX lets you write HTML-like markup inside a JavaScript file, keeping rendering logic and content in the same place. Sometimes you will want to add a little JavaScript logic or reference a dynamic property inside that markup. In this situation, you can use curly braces in your JSX to open a window to JavaScript.
+JSX를 사용하면 JavaScript 파일에 HTML과 비슷한 마크업을 작성하여 렌더링 논리와 콘텐츠를 같은 곳에 위치할 수 있습니다. 때로는 JavaScript 논리를 추가하거나 해당 마크업 내부의 동적인 프로퍼티를 참조하고 싶을 수 있습니다. 이 상황에서 JSX에서 중괄호를 사용하여 JavaScript를 사용할 수 있습니다.
 
 </Intro>
 
 <YouWillLearn>
 
-* How to pass strings with quotes
-* How to reference a JavaScript variable inside JSX with curly braces
-* How to call a JavaScript function inside JSX with curly braces
-* How to use a JavaScript object inside JSX with curly braces
+* 따옴표로 문자열을 전달하는 방법
+* 중괄호가 있는 JSX 내부에서 Javascript의 변수를 참조하는 방법
+* 중괄호가 있는 JSX 내부에서 Javassript의 함수를 호출하는 방법
+* 중괄호가 있는 JSX 내부에서 Javascript의 객체를 사용하는 방법
 
 </YouWillLearn>
 
-## Passing strings with quotes {/*passing-strings-with-quotes*/}
+## 따옴표로 문자열 전달하기 {/*passing-strings-with-quotes*/}
 
-When you want to pass a string attribute to JSX, you put it in single or double quotes:
+문자열 어트리뷰트를 JSX에 전달하려면 작은따옴표나 큰따옴표로 묶어야 합니다.
 
 <Sandpack>
 
@@ -41,9 +41,9 @@ export default function Avatar() {
 
 </Sandpack>
 
-Here, `"https://i.imgur.com/7vQD0fPs.jpg"` and `"Gregorio Y. Zara"` are being passed as strings.
+여기에서는 `"https://i.imgur.com/7vQD0fPs.jpg"`와 `"Gregorio Y. Zara"`가 문자열로 전달되고 있습니다.
 
-But what if you want to dynamically specify the `src` or `alt` text? You could **use a value from JavaScript by replacing `"` and `"` with `{` and `}`**:
+그러나 `src` 또는 `alt` 텍스트를 동적으로 지정하려면 어떻게 해야 할까요? **`"`와 `"`를 `{`와 `}`로 바꿔 Javascript의 값을 사용할 수 있습니다**.
 
 <Sandpack>
 
@@ -67,11 +67,11 @@ export default function Avatar() {
 
 </Sandpack>
 
-Notice the difference between `className="avatar"`, which specifies an `"avatar"` CSS class name that makes the image round, and `src={avatar}` that reads the value of the JavaScript variable called `avatar`. That's because curly braces let you work with JavaScript right there in your markup!
+이미지를 둥글게 만드는 `"avatar"` CSS 클래스 이름을 지정하는 `className="avatar"`와 `avatar`라는 JavaScript 변수의 값을 읽는 `src={avatar}`의 차이점에 주목해야 합니다. 중괄호를 사용하면 마크업에서 바로 JavaScript를 사용할 수 있기 때문입니다!
 
 ## Using curly braces: A window into the JavaScript world {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
-JSX is a special way of writing JavaScript. That means it’s possible to use JavaScript inside it—with curly braces `{ }`. The example below first declares a name for the scientist, `name`, then embeds it with curly braces inside the `<h1>`:
+JSX is a special way of writing JavaScript. That means it’s possible to use JavaScript inside it—with curly braces `{ }`. The example below first declares a name for the scientist, `name`, then embeds it with curly braces inside the `<h1>`
 
 <Sandpack>
 
@@ -88,7 +88,7 @@ export default function TodoList() {
 
 Try changing `name`'s value from `'Gregorio Y. Zara'` to `'Hedy Lamarr'`. See how the To Do List title changes?
 
-Any JavaScript expression will work between curly braces, including function calls like `formatDate()`:
+Any JavaScript expression will work between curly braces, including function calls like `formatDate()`
 
 <Sandpack>
 
@@ -113,7 +113,7 @@ export default function TodoList() {
 
 ### Where to use curly braces {/*where-to-use-curly-braces*/}
 
-You can only use curly braces in two ways inside JSX:
+You can only use curly braces in two ways inside JSX
 
 1. **As text** directly inside a JSX tag: `<h1>{name}'s To Do List</h1>` works, but `<{tag}>Gregorio Y. Zara's To Do List</{tag}>`  will not.
 2. **As attributes** immediately following the `=` sign: `src={avatar}` will read the `avatar` variable, but `src="{avatar}"` will pass the string `{avatar}`.
@@ -122,7 +122,7 @@ You can only use curly braces in two ways inside JSX:
 
 In addition to strings, numbers, and other JavaScript expressions, you can even pass objects in JSX. Objects are also denoted with curly braces, like `{ name: "Hedy Lamarr", inventions: 5 }`. Therefore, to pass a JS object in JSX, you must wrap the object in another pair of curly braces: `person={{ name: "Hedy Lamarr", inventions: 5 }}`.
 
-You may see this with inline CSS styles in JSX. React does not require you to use inline styles (CSS classes work great for most cases). But when you need an inline style, you pass an object to the `style` attribute:
+You may see this with inline CSS styles in JSX. React does not require you to use inline styles (CSS classes work great for most cases). But when you need an inline style, you pass an object to the `style` attribute
 
 <Sandpack>
 
@@ -150,7 +150,7 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 
 Try changing the values of `backgroundColor` and `color`.
 
-You can really see the JavaScript object inside the curly braces when you write it like this:
+You can really see the JavaScript object inside the curly braces when you write it like this
 
 ```js {2-5}
 <ul style={
@@ -171,7 +171,7 @@ Inline `style` properties are written in camelCase. For example, HTML `<ul style
 
 ## More fun with JavaScript objects and curly braces {/*more-fun-with-javascript-objects-and-curly-braces*/}
 
-You can move several expressions into one object, and reference them in your JSX inside curly braces:
+You can move several expressions into one object, and reference them in your JSX inside curly braces
 
 <Sandpack>
 
@@ -211,7 +211,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-In this example, the `person` JavaScript object contains a `name` string and a `theme` object:
+In this example, the `person` JavaScript object contains a `name` string and a `theme` object
 
 ```js
 const person = {
@@ -223,7 +223,7 @@ const person = {
 };
 ```
 
-The component can use these values from `person` like so:
+The component can use these values from `person` like so
 
 ```js
 <div style={person.theme}>
@@ -234,7 +234,7 @@ JSX is very minimal as a templating language because it lets you organize data a
 
 <Recap>
 
-Now you know almost everything about JSX:
+Now you know almost everything about JSX
 
 * JSX attributes inside quotes are passed as strings.
 * Curly braces let you bring JavaScript logic and variables into your markup.
@@ -247,7 +247,7 @@ Now you know almost everything about JSX:
 
 ### Fix the mistake {/*fix-the-mistake*/}
 
-This code crashes with an error saying `Objects are not valid as a React child`:
+This code crashes with an error saying `Objects are not valid as a React child`
 
 <Sandpack>
 
@@ -295,7 +295,7 @@ Can you find the problem?
 
 This is happening because this example renders *an object itself* into the markup rather than a string: `<h1>{person}'s Todos</h1>` is trying to render the entire `person` object! Including raw objects as text content throws an error because React doesn't know how you want to display them.
 
-To fix it, replace `<h1>{person}'s Todos</h1>` with `<h1>{person.name}'s Todos</h1>`:
+To fix it, replace `<h1>{person}'s Todos</h1>` with `<h1>{person.name}'s Todos</h1>`
 
 <Sandpack>
 
@@ -381,7 +381,7 @@ body > div > div { padding: 20px; }
 
 <Solution>
 
-Move the image URL into a property called `person.imageUrl` and read it from the `<img>` tag using the curlies:
+Move the image URL into a property called `person.imageUrl` and read it from the `<img>` tag using the curlies
 
 <Sandpack>
 
@@ -525,7 +525,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-You can also move this expression into a separate function like `getImageUrl` below:
+You can also move this expression into a separate function like `getImageUrl` below
 
 <Sandpack>
 
