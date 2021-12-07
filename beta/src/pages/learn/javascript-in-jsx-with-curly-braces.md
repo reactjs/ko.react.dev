@@ -111,18 +111,18 @@ export default function TodoList() {
 
 </Sandpack>
 
-### Where to use curly braces {/*where-to-use-curly-braces*/}
+### 중괄호를 사용하는 곳 {/*where-to-use-curly-braces*/}
 
-You can only use curly braces in two ways inside JSX
+JSX 안에서 중괄호는 두 가지 방법으로만 사용할 수 있습니다.
 
-1. **As text** directly inside a JSX tag: `<h1>{name}'s To Do List</h1>` works, but `<{tag}>Gregorio Y. Zara's To Do List</{tag}>`  will not.
-2. **As attributes** immediately following the `=` sign: `src={avatar}` will read the `avatar` variable, but `src="{avatar}"` will pass the string `{avatar}`.
+1. JSX 태그 안의 **문자**로: `<h1>{name}의 To Do List</h1>`는 작동하지만, `<{tag}>Gregorio Y. Zara의 To Do List</{tag}>` 작동하지 않습니다.
+2. `=` 바로 뒤에 오는 **어트리뷰트**로: `src={avatar}`는 `avatar` 변수를 읽지만 `src="{avatar}"`는 `{avatar}` 문자열을 전달합니다.
 
-## Using "double curlies": CSS and other objects in JSX {/*using-double-curlies-css-and-other-objects-in-jsx*/}
+## "이중 중괄호 사용하기": JSX의 CSS와 다른 객체 {/*using-double-curlies-css-and-other-objects-in-jsx*/}
 
-In addition to strings, numbers, and other JavaScript expressions, you can even pass objects in JSX. Objects are also denoted with curly braces, like `{ name: "Hedy Lamarr", inventions: 5 }`. Therefore, to pass a JS object in JSX, you must wrap the object in another pair of curly braces: `person={{ name: "Hedy Lamarr", inventions: 5 }}`.
+문자열, 숫자 및 기타 JavaScript 표현식 외에도 JSX에 객체를 전달할 수도 있습니다. 객체는 또한 `{ name: "Hedy Lamarr", inventions: 5 }`와 같이 중괄호로 표시됩니다. 따라서 JSX에서 객체를 전달하려면 `person={{ name: "Hedy Lamarr", inventions: 5 }}`와 같이 다른 중괄호 쌍으로 객체를 감싸야 합니다.
 
-You may see this with inline CSS styles in JSX. React does not require you to use inline styles (CSS classes work great for most cases). But when you need an inline style, you pass an object to the `style` attribute
+JSX의 인라인 CSS 스타일에서도 볼 수 있습니다. React는 인라인 스타일을 사용하도록 요구하지 않습니다(CSS 클래스는 대부분 잘 작동합니다). 그러나 인라인 스타일이 필요할 때 `style` 속성에 객체를 전달해야 합니다.
 
 <Sandpack>
 
@@ -148,9 +148,9 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 
 </Sandpack>
 
-Try changing the values of `backgroundColor` and `color`.
+`backgroundColor`와 `color` 값을 변경해 보세요.
 
-You can really see the JavaScript object inside the curly braces when you write it like this
+아래와 같이 작성할 때 중괄호 안에 JavaScript 객체를 볼 수 있습니다.
 
 ```js {2-5}
 <ul style={
@@ -161,11 +161,11 @@ You can really see the JavaScript object inside the curly braces when you write 
 }>
 ```
 
-The next time you see `{{` and `}}` in JSX, know that it's nothing more than an object inside the JSX curlies!
+JSX에서 `{{` 와 `}}`를 본다면 JSX 중괄호 안의 객체에 불과하다는 것을 알아야 합니다.
 
 <Gotcha>
 
-Inline `style` properties are written in camelCase. For example, HTML `<ul style="background-color: black"`> would be written as `<ul style={{ backgroundColor: 'black' }}>`  in your component.
+인라인 스타일 프로퍼티는 캐멀 케이스로 작성됩니다. 예를 들어 HTML에서의 `<ul style="background-color: black">`은 컴포넌트에서 `<ul style={{ backgroundColor: 'black' }}>`로 작성됩니다.
 
 </Gotcha>
 
