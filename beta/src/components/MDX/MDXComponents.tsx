@@ -97,7 +97,7 @@ function LearnMore({
           {path ? (
             <ButtonLink
               className="mt-1"
-              label="Read More"
+              label="더 읽어보기"
               href={path}
               type="primary">
               더 읽어보기
