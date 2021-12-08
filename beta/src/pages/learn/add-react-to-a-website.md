@@ -12,45 +12,45 @@ React는 처음부터 점진적인 도입을 위해 설계되었으며, 필요�
 
 1분 안에 기존 HTML 페이지에 React 컴포넌트를 추가할 수 있습니다. 자신의 웹 사이트나 [빈 HTML 파일](https://gist.github.com/rachelnabors/7b33305bf33776354797a2e3c1445186/archive/859eac2f7079c9e1f0a6eb818a9684a464064d80.zip)에 시도해 보세요. 인터넷 연결과 메모장(또는 VSCode—[설정 방법](/learn/editor-setup/)에 대한 가이드를 확인하세요.) 같은 텍스트 편집기만 있으면 됩니다. 
 
-### Step 1: HTML에 엘리먼트 추가 {/*step-1-add-an-element-to-the-html*/}
+### 1단계: HTML에 엘리먼트 추가 {/*step-1-add-an-element-to-the-html*/}
 
-편집하려는 HTML 페이지에서 빈 `<div>` 태그와 같은 HTML 엘리먼트에 고유 id를 추가하여 React로 무언가 표시하고 싶은 지점을 표시합니다.
+편집하려는 HTML 페이지에서 빈 `<div>` 태그와 같은 HTML 엘리먼트에 고유 id를 추가하여 React로 무언가 표시하고 싶은 지점에 추가합니다.
 
 `div` 와 같은 "컨테이너" 엘리먼트는 `<body>` 태그 내부의 아무 곳에나 배치할 수 있습니다. React는 HTML 엘리먼트 내의 기존 콘텐츠를 대체하므로 보통 비어 있습니다. 한 페이지에 이러한 HTML 엘리먼트를 필요한 만큼 가질 수 있습니다.
 
 ```html {3}
-<!-- ... existing HTML ... -->
+<!-- ... 기존 HTML ... -->
 
 <div id="component-goes-here"></div>
 
-<!-- ... existing HTML ... -->
+<!-- ... 기존 HTML ... -->
 ```
 
-### Step 2: Add the Script Tags {/*step-2-add-the-script-tags*/}
+### 2단계: 스크립트 태그 추가 {/*step-2-add-the-script-tags*/}
 
-In the HTML page, right before the closing `</body>` tag, add three `<script>` tags for the following files:
+HTML 페이지에서 닫는 `</body>` 태그 바로 앞에 다음 파일에 대한 3개의 `<script>` 태그를 추가 합니다.
 
-- [**react.development.js**](https://unpkg.com/react@17/umd/react.development.js) loads the core of React
-- [**react-dom.development.js**](https://unpkg.com/react-dom@17/umd/react-dom.development.js) lets React render HTML elements to the [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model).
-- **like_button.js** is where you'll write your component in step 3!
+- [**react.development.js**](https://unpkg.com/react@17/umd/react.development.js) 는 React의 핵심을 로드합니다.
+- [**react-dom.development.js**](https://unpkg.com/react-dom@17/umd/react-dom.development.js) 로 React는 HTML 엘리먼트를 [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model)에 렌더링할 수 있습니다.
+- **like_button.js** 는 3단계에서 컴포넌트를 작성하는 곳입니다!
 
 <Gotcha>
 
-When deploying, replace "development.js" with "production.min.js".
+배포할 때 "development.js"를 "production.min.js"로 바꾸세요.
 
 </Gotcha>
 
 ```html
-  <!-- end of the page -->
+  <!-- 페이지 끝 -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
   <script src="like_button.js"></script>
 </body>
 ```
 
-### Step 3: Create a React component {/*step-3-create-a-react-component*/}
+### 3단계: React 컴포넌트 만들기 {/*step-3-create-a-react-component*/}
 
-Create a file called **like_button.js** next to your HTML page, add this code snippet, and save the file. This code defines a React component called `LikeButton`. [You can learn more about making components in our guides.](/learn/your-first-component)
+HTML 페이지 옆에 **like_button.js** 파일을 생성하여 다음의 코드를 조각을 넣고 저장합니다. 이 코드는 `LikeButton` 이라는 React 컴포넌트를 정의합니다. [가이드에서 컴포넌트를 만드는 자세한 방법을 알아볼 수 있습니다.](/learn/your-first-component)
 
 ```js
 'use strict';
@@ -72,26 +72,26 @@ function LikeButton() {
 }
 ```
 
-### Step 4: Add your React Component to the page {/*step-4-add-your-react-component-to-the-page*/}
+### 4단계: 페이지에 React 컴포넌트 추가 {/*step-4-add-your-react-component-to-the-page*/}
 
-Lastly, add two lines to the bottom of **like_button.js**. These two lines of code find the `<div>` you added to your HTML in the first step and then display the "Like" button React component inside of it.
+마지막으로 **like_button.js** 하단에 두 줄을 추가합니다. 이 두 줄의 코드는  1단계에서 HTML에 추가한 `<div>`를 찾은 다음 그 안에 React 컴포넌트 "Like" 버튼을 추가합니다.
 
 ```js
 const domContainer = document.getElementById('component-goes-here');
 ReactDOM.render(React.createElement(LikeButton), domContainer);
 ```
 
-**Congratulations! You have just rendered your first React component to your website!**
+**축하합니다! 웹사이트에 첫 번째 React 컴포넌트를 렌더링했습니다!**
 
-- [View the full example source code](https://gist.github.com/rachelnabors/c64b3aeace8a191cf5ea6fb5202e66c9)
-- [Download the full example (2KB zipped)](https://gist.github.com/rachelnabors/c64b3aeace8a191cf5ea6fb5202e66c9/archive/7b41a88cb1027c9b5d8c6aff5212ecd3d0493504.zip)
+- [예제 전체 소스 코드 보기](https://gist.github.com/rachelnabors/c64b3aeace8a191cf5ea6fb5202e66c9)
+- [예제 전체 다운로드 (2KB 압축)](https://gist.github.com/rachelnabors/c64b3aeace8a191cf5ea6fb5202e66c9/archive/7b41a88cb1027c9b5d8c6aff5212ecd3d0493504.zip)
 
-#### You can reuse components! {/*you-can-reuse-components*/}
+#### 컴포넌트를 재사용할 수 있습니다! {/*you-can-reuse-components*/}
 
-You might want to display a React component in multiple places on the same HTML page. This is most useful while React-powered parts of the page are isolated from each other. You can do this by calling `ReactDOM.render()` multiple times with multiple container elements.
+동일한 HTML 페이지 여러 위치에 React 컴포넌트를 추가할 수 있습니다. React기반 페이지가 서로 분리되어 있는 동안 가장 유용합니다. `ReactDOM.render()` 를 여러 번 호출함으로써 여러 개의 컨테이너 엘리먼트를 사용할 수 있습니다.
 
-1. In **index.html**, add an additional container element `<div id="component-goes-here-too"></div>`.
-2. In **like_button.js**, add an additional `ReactDOM.render()` for the new container element:
+1. **index.html**에서 `<div id="component-goes-here-too"></div>` 컨테이너 엘리먼트를 추가합니다.
+2. 새 컨테이너 엘리먼트를 위해 **like_button.js**에서  `ReactDOM.render()` 를 추가합니다.
 
 ```js {6,7,8,9}
 ReactDOM.render(
@@ -105,14 +105,14 @@ ReactDOM.render(
 );
 ```
 
-Check out [an example that displays the "Like" button three times and passes some data to it](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)!
+Check out ["Like" 버튼을 세 번 추가하고 일부 데이터를 전달하는 예시](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)를 확인하세요!
 
-### Step 5: Minify JavaScript for production {/*step-5-minify-javascript-for-production*/}
+### 5단계: 프로덕션용 JavaScript 코드 경량화 {/*step-5-minify-javascript-for-production*/}
 
-Unminified JavaScript can significantly slow down page load times for your users. Before deploying your website to production, it's a good idea to minify its scripts.
+코드 경량화가 되지 않은 JavaScript는 사용자의 페이지 로딩 속도를 늦출 수 있습니다. 웹사이트를 프로덕션에 배포하기 전에 스크립트를 경량화하는 것이 좋습니다.
 
-- **If you don't have a minification step** for your scripts, [here's one way to set it up](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
-- **If you already minify** your application scripts, your site will be production-ready if you ensure that the deployed HTML loads the versions of React ending in `production.min.js` like so:
+- 스크립트에 **코드 경량화 단계가 없는 경우** [한 가지 설정 방법](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3)이 있습니다.
+- 애플리케이션 스크립트를 **이미 코드 경량화를 한 경우** 배포된 HTML이 다음과 같이 `production.min.js`로 끝나는 React 버전을 로드하도록 하면 사이트가 프로덕션 할 준비가 됩니다.
 
 ```html
 <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
