@@ -8,23 +8,23 @@ import {RouteTag} from './Layout/useRouteMeta';
 
 const variantMap = {
   foundation: {
-    name: 'Foundation',
+    name: '기초',
     classes: 'bg-yellow-50 text-white',
   },
   intermediate: {
-    name: 'Intermediate',
+    name: '중급',
     classes: 'bg-purple-40 text-white',
   },
   advanced: {
-    name: 'Advanced',
+    name: '고급',
     classes: 'bg-green-40 text-white',
   },
   experimental: {
-    name: 'Experimental',
+    name: '실험적인',
     classes: 'bg-ui-orange text-white',
   },
   deprecated: {
-    name: 'Deprecated',
+    name: '샤용되지 않는',
     classes: 'bg-red-40 text-white',
   },
 };
