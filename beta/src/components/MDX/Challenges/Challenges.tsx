@@ -117,7 +117,9 @@ export function Challenges({children, isRecipes}: ChallengesProps) {
               'text-3xl mb-2 leading-10 relative',
               isRecipes ? 'text-purple-50 dark:text-purple-30' : 'text-link'
             )}>
-            {isRecipes ? '몇 가지 레시피를 시도해보세요.' : '몇 가지 도전을 시도해보세요.'}
+            {isRecipes
+              ? '몇 가지 레시피를 시도해보세요.'
+              : '몇 가지 도전을 시도해보세요.'}
           </H2>
           {challenges.length > 1 && (
             <Navigation
