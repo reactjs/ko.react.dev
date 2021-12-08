@@ -16,7 +16,7 @@ permalink: docs/cross-origin-errors.html
 
 ### CDN {#cdn}
 
-CDN에서 리액트(혹은 오류를 발생시킬 수 있는 다른 라이브러리)를 로딩할 때, `<script>` 태그에 [`크로스오리진`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) 속성을 추가하세요:
+CDN에서 리액트(혹은 오류를 발생시킬 수 있는 다른 라이브러리)를 로딩할 때, `<script>` 태그에 [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) 어트리뷰트를 추가하세요:
 
 
 ```html
@@ -31,12 +31,12 @@ CDN에서 리액트(혹은 오류를 발생시킬 수 있는 다른 라이브러
 
 #### 소스 맵 {#source-maps}
 
-일부 자바스크립트 번들러는 개발 중에 `eval`문으로 코드를 래핑 되어 있을 수 있습니다. (예를 들어 웹팩은 [`devtool`](https://webpack.js.org/configuration/devtool/)이 "eval"이라는 단어가 포함된 값으로 설정된 경우 이 작업을 수행합니다) 이로 인해 크로스-오리진 오류로 처리될 수 있습니다.
+일부 자바스크립트 번들러는 개발 중에 `eval`문으로 코드로 감싸져 있을 수 있습니다. (예를 들어 웹팩은 [`devtool`](https://webpack.js.org/configuration/devtool/)이 "eval"이라는 단어가 포함된 값으로 설정된 경우 이 작업을 수행합니다) 이로 인해 크로스-오리진 오류로 처리될 수 있습니다.
 
-웹팩을 사용하는 경우, 이러한 문제를 피하기 위해서 개발 시에 `cheap-module-source-map` 설장하는 것을 추천합니다.
+웹팩을 사용하는 경우, 이러한 문제를 피하고자 개발 시에 `cheap-module-source-map` 설정하는 것을 추천합니다.
 
 #### 코드 분할 {#code-splitting}
 
-애플리케이션이 여러 번들로 분할된 경우 JSONP를 사용하여 로드될 수 있습니다. 이로 인해 번들 된 코드가 크로스-오리진 오류로 처리될 수도 있습니다.
+애플리케이션이 여러 번들로 분할된 경우 JSONP를 사용하여 로드될 수 있습니다. 이로 인해 번들링 된 코드가 크로스-오리진 오류로 처리될 수도 있습니다.
 
-이러한 문제를 해결하려면, 개발 시에 [`크로스오리진로딩`](https://webpack.js.org/configuration/output/#output-crossoriginloading) 설정을 사용하여 JSOPN 요청에 대해 생성된 `<script>` 태그에 `크로스오리진` 속성을 추가하세요.
+이러한 문제를 해결하려면, 개발 시에 [`crossOriginLoading`](https://webpack.js.org/configuration/output/#output-crossoriginloading) 설정을 사용하여 JSOPN 요청에 대해 생성된 `<script>` 태그에 `crossorigin` 속성을 추가하세요.
