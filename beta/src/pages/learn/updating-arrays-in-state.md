@@ -1,52 +1,52 @@
 ---
-title: Updating Arrays in State
+title: 배열 State 업데이트
 ---
 
 <Intro>
 
-Arrays are another type of mutable JavaScript objects you can store in state and should treat as immutable. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array.
-
+배열은 state에 저장할 수 있고 변경하지 못하게 처리해야하는 변경 가능한 JavaScript 객체의 다른 유형입니다. 객체와 마찬가지로 state에 저장된 배열을 업데이트 하고 싶을 때, 새 배열을 생성(혹은 기존 배열의 복사본을 생성)한 다음 새 배열을 사용하도록 state를 업데이트해야 합니다.
+	
 </Intro>
 
 <YouWillLearn>
 
-- How to add, remove, or change items in an array in React state
-- How to update an object inside of an array
-- How to make array copying less repetitive with Immer
-
+- React state에서 배열의 항목을 추가, 삭제 또는 변경하는 방법
+- 배열 내부의 객체를 업데이트하는 방법
+- Immer로 배열을 덜 반복해서 복사하는 방법
+	
 </YouWillLearn>
 
-## Updating arrays without mutation {/*updating-arrays-without-mutation*/}
+## 변경하지 않고 배열 업데이트 {/*updating-arrays-without-mutation*/}
 
-In JavaScript, arrays are just another kind of object. [Like with objects](/learn/updating-objects-in-state), **you should treat arrays in React state as read-only**. This means that you shouldn't reassign items inside an array like `arr[0] = 'bird'`, and you also shouldn't use methods that mutate the array, such as `push()` and `pop()`.
+JavaScript에서 배열은 다른 종류의 객체입니다. [객체와 마찬가지로](/learn/updating-objects-in-state) React state에서 배열은 읽기 전용으로 처리해야 합니다. 즉, `arr[0] = 'bird'`처럼 배열 내부의 항목을 재할당하면 안되고 `push()`나 `pop()`같은 함수로 배열을 변경해서는 안됩니다.
 
-Instead, every time you want to update an array, you'll want to pass a *new* array to your state setting function. To do that, you can create a new array from the original array in your state by calling its non-mutating methods like `filter()` and `map()`. Then you can set your state to the resulting new array.
+대신 배열을 업데이트할 때마다 *새* 배열을 state 설정 함수에 전달할 수 있습니다. 그렇게 하려면 원본 배열을 변경시키지 않고 원본 배열로부터 새 배열을 반환하는 `filter()`와 `map()` 같은 함수를 사용하여 state를 설정할 수 있습니다.
 
-Here is a reference table of common array operations. When dealing with arrays inside React state, you will need to avoid the methods in the left column, and instead prefer the methods in the right column:
+다음은 일반적인 배열 연산에 대한 참조 표입니다. React state 내에서 배열을 다룰 땐 왼쪽 열에 있는 함수들의 사용을 피하고, 오른쪽 열에 있는 함수들을 선호해야 합니다.
 
-|         | avoid (mutates the array) | prefer (returns a new array) |
+|         | 비선호 (배열을 변경) | 선호 (새 배열을 반환) |
 |---------|----------------|-------------------|
-| adding    | `push`, `unshift` | `concat`, `[...arr]` spread syntax ([example](#adding-to-an-array))|
-| removing | `pop`, `shift`, `splice` | `filter`, `slice` ([example](#removing-from-an-array))
-|replacing| `splice`, `arr[i] = ...` assignment | `map` ([example](#replacing-items-in-an-array))          |
-|sorting| `reverse`, `sort` | copy the array first ([example](#making-other-changes-to-an-array)) |
+| 추가 | `push`, `unshift` | `concat`, `[...arr]` 전개 연산자 ([example](#adding-to-an-array))|
+| 제거 | `pop`, `shift`, `splice` | `filter`, `slice` ([example](#removing-from-an-array))
+| 교체 | `splice`, `arr[i] = ...` 할당 | `map` ([example](#replacing-items-in-an-array))          |
+| 정렬 | `reverse`, `sort` | 먼저 배열을 복사 ([example](#making-other-changes-to-an-array)) |
 
-Alternatively, you can [use Immer](#write-concise-update-logic-with-immer) which lets you use methods from both columns.
+또는 [Immer](#write-concise-update-logic-with-immer)를 사용하여 두 열의 함수를 모두 사용할 수 있습니다.
 
 <Gotcha>
 
-Unfortunately, [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) and [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) are named similarly but are very different:
-
-* `slice` lets you copy an array or a part of it.
-* `splice` **mutates** the array (to insert or delete items).
-
-In React, you will be using `slice` (no `p`!) a lot more often because you don't want to mutate objects or arrays in state. [Updating Objects](/learn/updating-objects-in-state) explains what mutation is and why it's not recommended for state.
+안타깝게도, [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 그리고 [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 함수는 이름은 비슷하지만 많이 다릅니다.
+	
+* `slice`를 사용하면 배열 자체 또는 그 일부를 복사할 수 있습니다.
+* `splice`는 배열은 **변경**합니다. (항목 추가 또는 제거를 위해서)
+	
+React에서는, state 안의 객체나 배열을 변경하지 않는게 좋기 때문에 `slice` (`p`가 없습니다!)를 훨씬 더 자주 사용할 것입니다. [객체 업데이트](/learn/updating-objects-in-state)는 변경이 무엇이고 state에 권장되지 않는 이유를 설명합니다.
 
 </Gotcha>
 
-### Adding to an array {/*adding-to-an-array*/}
+### 배열에 항목 추가 {/*adding-to-an-array*/}
 
-`push()` will mutate an array, which you don't want:
+`push()`는 배열을 변경시키기 때문에 아래와 같이 사용하지 않는 것이 좋습니다.
 
 <Sandpack>
 
@@ -89,18 +89,18 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-Instead, create a *new* array which contains the existing items *and* a new item at the end. There are multiple ways to do this, but the easiest one is to use the `...` [array spread](a-javascript-refresher#array-spread) syntax:
+대신 기존에 존재하던 항목, *그리고* 새 항목을 포함하는 *새* 배열을 만드세요. 이러한 방법들은 여러 가지가 있지만 가장 쉬운 방법은 `...` [전개 연산자](a-javascript-refresher#array-spread) 문법을 사용하는 것입니다.
 
 ```js
-setArtists( // Replace the state
-  [ // with a new array
-    ...artists, // that contains all the old items
-    { id: nextId++, name: name } // and one new item at the end
+setArtists( // state를 수정
+  [ // 새 배열
+    ...artists, // 기존에 존재하던 항목 포함
+    { id: nextId++, name: name } // 새 항목을 끝에 추가
   ]
 );
 ```
 
-Now it works correctly:
+이제 올바르게 작동합니다.
 
 <Sandpack>
 
@@ -143,20 +143,20 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-The array spread operator also lets you prepend an item by placing it *before* the original `...artists`:
+배열 전개 연산자를 사용하면 항목을 `...artists` *앞*에 배치하여 앞에 추가할 수도 있습니다.
 
 ```js
 setArtists([
   { id: nextId++, name: name },
-  ...artists // Put old items at the end
+  ...artists // 기존 항목들을 끝에 삽입
 ]);
 ```
 
-In this way, spread can do the job of both `push()` by adding to the end of an array and `unshift()` by adding to the beginning of an array. Try it in the sandbox above!
+이런 식으로, 전개 연산자는 배열의 끝에 추가하여 `push()` 하는 것 처럼 처리가 가능하고 배열의 앞에 추가하여 `unshift()` 하는 것과 같은 작업을 할 수 있습니다. 위의 샌드박스에서 사용해보세요!
 
-### Removing from an array {/*removing-from-an-array*/}
+### 배열에서 항목 제거 {/*removing-from-an-array*/}
 
-The easiest way to remove an item from an array is to *filter it out*. In other words, you will produce a new array that will not contain that item. To do this, use the `filter` method, for example:
+배열에서 항목을 제거하는 가장 쉬운 방법은 *필터링*하는 것입니다. 다시 말해서, 해당 항목을 포함하지 않는 새 배열을 제공하는 것입니다. 이렇게 하려면 `filter` 함수를 사용하면 됩니다. 예를 들면 아래와 같습니다.
 
 <Sandpack>
 
@@ -200,7 +200,7 @@ export default function List() {
 
 </Sandpack>
 
-Click the "Delete" button a few times, and look at its click handler.
+"Delete" 버튼을 몇 번 클릭하고, 클릭 이벤트 핸들러를 확인해보세요.
 
 ```js
 setArtists(
@@ -208,7 +208,7 @@ setArtists(
 );
 ```
 
-Here, `artists.filter(s => s.id !== artist.id)` means "create an array that consists of those `artists` whose IDs are different from `artist.id`." In other words, each artist's "Delete" button will filter _that_ artist out of the array, and then request a re-render with the resulting array. Note that `filter` does not modify the original array.
+여기서 `artists.filter(s => s.id !== artist.id)`는 "`artist.id`와 ID가 다른 `artists`로 구성된 배열을 생성한다"는 의미입니다. 즉, 각 artists의 "삭제" 버튼은 해당 artists를 배열에서 필터링한 다음, 반환된 배열로 리렌더링을 요청합니다. `filter`가 원본 배열을 수정하지 않는다는 것에 주의하세요.
 
 ### Transforming an array {/*transforming-an-array*/}
 
