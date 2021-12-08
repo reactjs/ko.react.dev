@@ -117,7 +117,7 @@ export function Challenges({children, isRecipes}: ChallengesProps) {
               'text-3xl mb-2 leading-10 relative',
               isRecipes ? 'text-purple-50 dark:text-purple-30' : 'text-link'
             )}>
-            {isRecipes ? 'Try out some recipes' : 'Try out some challenges'}
+            {isRecipes ? '몇 가지 레시피를 시도해보세요.' : '몇 가지 도전을 시도해보세요.'}
           </H2>
           {challenges.length > 1 && (
             <Navigation
@@ -145,14 +145,14 @@ export function Challenges({children, isRecipes}: ChallengesProps) {
               <div>
                 <Button className="mr-2" onClick={toggleHint} active={showHint}>
                   <IconHint className="mr-1.5" />{' '}
-                  {showHint ? 'Hide hint' : 'Show hint'}
+                  {showHint ? '힌트 숨기기' : '힌트 보기'}
                 </Button>
                 <Button
                   className="mr-2"
                   onClick={toggleSolution}
                   active={showSolution}>
                   <IconSolution className="mr-1.5" />{' '}
-                  {showSolution ? 'Hide solution' : 'Show solution'}
+                  {showSolution ? '해결책 숨기기' : '해결책 보기'}
                 </Button>
               </div>
             ) : (
@@ -162,7 +162,7 @@ export function Challenges({children, isRecipes}: ChallengesProps) {
                   onClick={toggleSolution}
                   active={showSolution}>
                   <IconSolution className="mr-1.5" />{' '}
-                  {showSolution ? 'Hide solution' : 'Show solution'}
+                  {showSolution ? '해결책 숨기기' : '해결책 보기'}
                 </Button>
               )
             )}
@@ -179,7 +179,7 @@ export function Challenges({children, isRecipes}: ChallengesProps) {
                   setShowSolution(false);
                 }}
                 active>
-                Next {isRecipes ? 'Recipe' : 'Challenge'}
+                다음 {isRecipes ? '레시피' : '도전'}
                 <IconArrowSmall
                   displayDirection="right"
                   className="block ml-1.5"
@@ -192,12 +192,12 @@ export function Challenges({children, isRecipes}: ChallengesProps) {
           {showSolution && (
             <div className="mt-6">
               <h3 className="text-2xl font-bold text-primary dark:text-primary-dark">
-                Solution
+                해결책
               </h3>
               {currentChallenge?.solution}
               <div className="flex justify-between items-center mt-4">
                 <Button onClick={() => setShowSolution(false)}>
-                  Close solution
+                  해결책 닫기
                 </Button>
                 {nextChallenge && (
                   <Button
@@ -215,7 +215,7 @@ export function Challenges({children, isRecipes}: ChallengesProps) {
                       }
                     }}
                     active>
-                    Next Challenge
+                    다음 도전
                     <IconArrowSmall
                       displayDirection="right"
                       className="block ml-1.5"
