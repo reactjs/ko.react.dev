@@ -5,7 +5,7 @@ title: 배열 State 업데이트
 <Intro>
 
 배열은 state에 저장할 수 있고 변경하지 못하게 처리해야하는 변경 가능한 JavaScript 객체의 다른 유형입니다. 객체와 마찬가지로 state에 저장된 배열을 업데이트 하고 싶을 때, 새 배열을 생성(혹은 기존 배열의 복사본을 생성)한 다음 새 배열을 사용하도록 state를 업데이트해야 합니다.
-	
+
 </Intro>
 
 <YouWillLearn>
@@ -13,7 +13,7 @@ title: 배열 State 업데이트
 - React state에서 배열의 항목을 추가, 삭제 또는 변경하는 방법
 - 배열 내부의 객체를 업데이트하는 방법
 - Immer로 배열을 덜 반복해서 복사하는 방법
-	
+
 </YouWillLearn>
 
 ## 변경하지 않고 배열 업데이트 {/*updating-arrays-without-mutation*/}
@@ -36,10 +36,10 @@ JavaScript에서 배열은 다른 종류의 객체입니다. [객체와 마찬�
 <Gotcha>
 
 안타깝게도, [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 그리고 [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 함수는 이름은 비슷하지만 많이 다릅니다.
-	
+
 * `slice`를 사용하면 배열 자체 또는 그 일부를 복사할 수 있습니다.
 * `splice`는 배열은 **변경**합니다. (항목 추가 또는 제거를 위해서)
-	
+
 React에서는, state 안의 객체나 배열을 변경하지 않는게 좋기 때문에 `slice` (`p`가 없습니다!)를 훨씬 더 자주 사용할 것입니다. [객체 업데이트](/learn/updating-objects-in-state)는 변경이 무엇이고 state에 권장되지 않는 이유를 설명합니다.
 
 </Gotcha>
@@ -1972,4 +1972,4 @@ With Immer, you can pick the style that feels the most natural for each separate
 
 </Solution>
 
-</Challenges>
+</Challenges> 
