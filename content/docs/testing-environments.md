@@ -27,7 +27,7 @@ prev: testing-recipes.html
 
 UI 테스트의 많은 부분은 위의 설정으로 작성할 수 있습니다. jsdom에게 렌더링하는 테스트 러너로서, 브라우저 이벤트 시퀀스로 지정된 사용자 상호작용과 함께Jest를 사용하는 것은 `act()` 도우미에 의해 작동됩니다.[<small>(예시)</small>](/docs/testing-recipes.html) 예를 들어, 많은 React 자체 테스트는 이런 조합으로 작성됩니다.
 
-만약 대부분의 브라우저별 동작을 테스트하고 레이아웃이나 실제 입력과 같은 네이티브 브라우저 동작을 요구하는 라이브러리를 작성하는 경우 [mocha](https://mochajs.org/)와 같은 프레임 워크를 사용할 수 있습니다.
+대부분의 브라우저별 동작을 테스트하고 레이아웃이나 실제 입력과 같은 네이티브 브라우저 동작을 요구하는 라이브러리를 작성하는 경우 [mocha](https://mochajs.org/)와 같은 프레임 워크를 사용할 수 있습니다.
 
 DOM을 시뮬레이션*할 수 없는* 환경에서 (예를 들면, Node.js에서 React Native 컴포넌트 테스트), 엘리먼트와의 상호작용을 시뮬레이션하기 위해 [이벤트 시뮬레이션 헬퍼](/docs/test-utils.html#simulate)를 사용할 수 있습니다. 다른 대안으로, [`@testing-library/react-native`](https://testing-library.com/docs/react-native-testing-library/intro)의 `fireEvent` 헬퍼를 사용할 수 있습니다.
 
@@ -55,4 +55,4 @@ Node.js에서 Jest같은 러너는 [모의 모듈을 지원합니다](https://je
 
 엔드 투 엔드 테스트는 더 긴 작업흐름을 테스트하는 데 유용하며, 특히 비즈니스에 중요한 작업흐름(결제 또는 회원가입 같이)을 테스트하는 데 유용합니다. 이러한 경우, 브라우저가 실제 앱 전체를 렌더링하고, 실제 API 종단점에서 데이터를 가져오고, 세션과 쿠키를 사용하며, 다른 링크 사이를 이동하는 방법을 모두 테스트 하기를 원할 것입니다. 또한 DOM 상태뿐만 아니라 백업 데이터(예를 들어, 업데이트가 데이터베이스에 유지되었는지 확인하기 위해)에 대해서도 검증하기를 원할 수 있습니다.
 
-이러한 시나리오에서는 [Cypress](https://www.cypress.io/)와 같은 프레임워크나 [puppeteer](https://github.com/GoogleChrome/puppeteer) 같은 라이브러리를 사용하여 여러 경로를 탐색하고 브라우저뿐만 아니라 잠재적으로 백엔드에서도 부작용에 대해 주장할 수 있습니다.
+이러한 시나리오에서는 [Cypress](https://www.cypress.io/), [Playwright](https://playwright.dev)와 같은 프레임워크나 [Puppeteer](https://pptr.dev/) 같은 라이브러리를 사용하여 여러 경로를 탐색하고 브라우저뿐만 아니라 잠재적으로 백엔드에서도 부작용에 대해 주장할 수 있습니다.

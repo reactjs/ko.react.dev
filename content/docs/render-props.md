@@ -54,7 +54,7 @@ class MouseTracker extends React.Component {
 
 여기서 질문입니다. 다른 컴포넌트에서 이 행위를 재사용하려면 어떻게 해야 할까요? 즉, 다른 컴포넌트에서 커서(cursor) 위치에 대해 알아야 할 경우, 쉽게 공유할 수 있도록 캡슐화할 수 있습니까?
 
-React에서 컴포넌트는 코드 재사용의 기본 단위이므로, 우리가 필요로 하는 마우스 커서 트래킹 행위를 `<Mouse>` 컴포넌트로 캡슐화하여 어디서든 사용할 수 있게 리팩토링해 보겠습니다.
+React에서 컴포넌트는 코드 재사용의 기본 단위이므로, 우리가 필요로 하는 마우스 커서 트래킹 행위를 `<Mouse>` 컴포넌트로 캡슐화하여 어디서든 사용할 수 있게 리팩토링 해보겠습니다.
 
 ```js
 // <Mouse> 컴포넌트는 우리가 원하는 행위를 캡슐화 합니다...
@@ -153,7 +153,7 @@ class MouseTracker extends React.Component {
 }
 ```
 
-이러한 접근 방법은 특정 사례에서는 적용할 수 있지만, 우리가 원하는 행위의 캡슐화(마우스 트래킹)라는 목표는 달성하지 못했습니다. 이제 우리는 다른 사용 예제에서도 언제든지 마우스 위치를 추적할 수 있는 새로운 component(`<MouseWithCat>`과 근본적으로 다른)를 만들어야 합니다.
+이러한 접근 방법은 특정 사례에서는 적용할 수 있지만, 우리가 원하는 행위의 캡슐화(마우스 트래킹)라는 목표는 달성하지 못했습니다. 이제 우리는 다른 사용 예시에서도 언제든지 마우스 위치를 추적할 수 있는 새로운 component(`<MouseWithCat>`과 근본적으로 다른)를 만들어야 합니다.
 
 여기에 render prop를 사용할 수 있습니다. `<Mouse>` 컴포넌트 안에 `<Cat>` 컴포넌트를 하드 코딩(hard-coding)해서 결과물을 바꾸는 대신에, `<Mouse>`에게 동적으로 렌더링할 수 있도록 해주는 함수 prop을 제공하는 것입니다. — 이것이 render prop의 개념입니다.
 
@@ -215,10 +215,10 @@ class MouseTracker extends React.Component {
 
 이 테크닉은 행위(마우스 트래킹 같은)를 매우 쉽게 공유할 수 있도록 만들어 줍니다. 해당 행위를 적용하려면, `<Mouse>` 를 그리고 현재 (x, y) 커서 위치에 무엇을 그릴지에 대한 정보를 prop을 통해 넘겨주기만 하면 됩니다.
 
-render props에 대해 한가지 흥미로운 점은 대부분의 [higher-order components](/docs/higher-order-components.html)(HOC)에 render props pattern을 이식할 수 있습니다. 예를 들면, 만약에 <Mouse> 컴포넌트보다 withMouse HOC를 더 선호한다면 render prop을 이용해서 다음과 같이 쉽게 HOC를 만들 수 있습니다.
+render props에 대해 한가지 흥미로운 점은 대부분의 [higher-order components](/docs/higher-order-components.html)(HOC)에 render props pattern을 이식할 수 있습니다. 예를 들면, `<Mouse>` 컴포넌트보다 withMouse HOC를 더 선호한다면 render prop을 이용해서 다음과 같이 쉽게 HOC를 만들 수 있습니다.
 
 ```js
-// 만약 어떤 이유 때문에 HOC를 만들기 원한다면, 쉽게 구현할 수 있습니다.
+// 어떤 이유 때문에 HOC를 만들기 원한다면, 쉽게 구현할 수 있습니다.
 // render prop을 이용해서 일반적인 컴포넌트를 만드세요!
 function withMouse(Component) {
   return class extends React.Component {
@@ -239,7 +239,7 @@ function withMouse(Component) {
 
 여기서 중요하게 기억해야 할 것은, “render props pattern”으로 불리는 이유로 *꼭 prop name으로 `render`를 사용할 필요는 없습니다.* 사실, [*어떤* 함수형 prop이든 render prop이 될 수 있습니다.](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)
 
-위 예제에서는 `render`를 사용했지만, 우리는 `children` prop을 더 쉽게 사용할 수 있습니다.
+위 예시에서는 `render`를 사용했지만, 우리는 `children` prop을 더 쉽게 사용할 수 있습니다.
 
 ```js
 <Mouse children={mouse => (
@@ -299,9 +299,9 @@ class MouseTracker extends React.Component {
 }
 ```
 
-이 예제에서 `<MouseTracker>`가 render 될때마다, `<Mouse render>`의 prop으로 넘어가는 함수가 계속 새로 생성됩니다. 따라서 `React.PureComponent`를 상속받은 `<Mouse>` 컴포넌트 효과가 사라지게 됩니다.
+이 예시에서 `<MouseTracker>`가 render 될때마다, `<Mouse render>`의 prop으로 넘어가는 함수가 계속 새로 생성됩니다. 따라서 `React.PureComponent`를 상속받은 `<Mouse>` 컴포넌트 효과가 사라지게 됩니다.
 
-이 문제를 해결하기 위해서, 다음과 같이 인스턴스 메서드를 사용해서 prop을 정의합니다:
+이 문제를 해결하기 위해서, 다음과 같이 인스턴스 메서드를 사용해서 prop을 정의합니다.
 
 ```js
 class MouseTracker extends React.Component {
@@ -322,4 +322,4 @@ class MouseTracker extends React.Component {
 }
 ```
 
-만약 prop을 정적으로 정의할 수 없는 경우에는 `<Mouse>` 컴포넌트는 `React.Component`를 상속받아야 합니다.
+prop을 정적으로 정의할 수 없는 경우에는 `<Mouse>` 컴포넌트는 `React.Component`를 상속받아야 합니다.

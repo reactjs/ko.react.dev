@@ -15,7 +15,7 @@ redirect_from:
   - "tips/use-react-with-other-libraries.html"
 ---
 
-이 문서에서는 React 컴포넌트 class를 다루는 API들을 자세히 소개합니다. 이 문서를 읽는 당신이 [컴포넌트와 props](/docs/components-and-props.html), [state와 생명주기](/docs/state-and-lifecycle.html) 등과 같은 기초적인 React의 개념들에 익숙하다고 가정하고 있습니다. 그렇지 않다면, 먼저 읽으시길 바랍니다.
+이 문서에서는 React 컴포넌트 class를 다루는 API들을 자세히 소개합니다. 이 문서는 [컴포넌트와 props](/docs/components-and-props.html), [state와 생명주기](/docs/state-and-lifecycle.html) 등과 같은 기초적인 React의 개념들에 익숙하다고 가정하고 있습니다. 그렇지 않다면, 먼저 읽으시길 바랍니다.
 
 ## 개요 {#overview}
 
@@ -147,7 +147,7 @@ constructor(props)
 
 React 컴포넌트의 생성자는 해당 컴포넌트가 마운트되기 전에 호출됩니다. `React.Component`를 상속한 컴포넌트의 생성자를 구현할 때에는 다른 구문에 앞서 `super(props)`를 호출해야 합니다. 그렇지 않으면 `this.props`가 생성자 내에서 정의되지 않아 버그로 이어질 수 있습니다.
 
-React에서 생성자는 보통 아래의 두 가지 목적을 위하여 사용됩니다:
+React에서 생성자는 보통 아래의 두 가지 목적을 위하여 사용됩니다.
 
 * `this.state`에 객체를 할당하여 [지역 state](/docs/state-and-lifecycle.html)를 초기화
 * 인스턴스에 [이벤트 처리](/docs/handling-events.html) 메서드를 바인딩
@@ -296,7 +296,7 @@ state를 끌어오면 코드가 장황해지고, 이로 인하여 컴포넌트�
 getSnapshotBeforeUpdate(prevProps, prevState)
 ```
 
-`getSnapshotBeforeUpdate()`는 가장 마지막으로 렌더링된 결과가 DOM 등에 반영되었을 때에 호출됩니다. 이 메서드를 사용하면 컴포넌트가 DOM으로부터 스크롤 위치 등과 같은 정보를 이후 변경되기 전에 얻을 수 있습니다. 이 생명주기가 반환하는 값은 `componentDidUpdate()`에 인자로 전달됩니다.
+`getSnapshotBeforeUpdate()`는 가장 마지막으로 렌더링된 결과가 DOM 등에 반영되기 전에 호출됩니다. 이 메서드를 사용하면 컴포넌트가 DOM으로부터 스크롤 위치 등과 같은 정보를 이후 변경되기 전에 얻을 수 있습니다. 이 생명주기 메서드가 반환하는 값은 `componentDidUpdate()`에 인자로 전달됩니다.
 
 이 메서드에 대한 사용례는 흔하지 않지만, 채팅 화면처럼 스크롤 위치를 따로 처리하는 작업이 필요한 UI 등을 생각해볼 수 있습니다.
 
@@ -406,7 +406,7 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
- 리액트의 `componentDidCatch()`가 오류를 처리하는 방식은 프로덕션과 개발 빌드가 약간 다릅니다.
+ React의 `componentDidCatch()`가 오류를 처리하는 방식은 프로덕션과 개발 빌드가 약간 다릅니다.
 
 개발 빌드에서, 오류는 `window`까지 전파됩니다. 이는 `window.onerror`나 `window.addEventListener('error', callback)`가 `componentDidCatch()`에서 잡은 오류를 인터셉트하는 것을 의미합니다.
 

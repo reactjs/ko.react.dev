@@ -38,7 +38,7 @@ React는 처음부터 점진적으로 적용할 수 있도록 설계되었으며
 
 React를 사용하는데 관심이 있다면, 온라인 코드 편집기를 사용할 수 있습니다. [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new) 또는 [Stackblitz](https://stackblitz.com/fork/react)에서 Hello World 템플릿을 사용해 보세요.
 
-여러분이 사용하고 있는 코드 편집기를 사용하길 원한다면, [이 HTML 파일을 다운로드](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)하고 편집한 다음 브라우저의 로컬 파일 시스템에서 열 수도 있습니다. 런타임 코드 변환이 느리므로 간단한 데모에만 이 코드를 사용하는 것이 좋습니다.
+여러분이 사용하고 있는 코드 편집기를 사용하길 원한다면, [이 HTML 파일을 다운로드](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)하고 편집한 다음 브라우저의 로컬 파일 시스템에서 열 수도 있습니다. 런타임 코드 변환이 느리므로 간단한 데모에만 이 코드를 사용하는 것이 좋습니다.
 
 ### 웹사이트에 React를 추가하기 {#add-react-to-a-website}
 
@@ -73,9 +73,9 @@ React 문서가 어렵게 느껴진다면, [Tania Rascia가 쓴 React 개요](ht
 
 ### JavaScript 리소스 {#javascript-resources}
 
-React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 쓰여져 있습니다. 전문가일 필요는 없지만, React와 JavaScript를 동시에 배우기는 어렵습니다.
+React 문서는 JavaScript 프로그래밍에 익숙한 사람을 대상으로 쓰여져 있습니다. 전문가일 필요는 없지만, React와 JavaScript를 동시에 배우기는 어렵습니다.
 
-[이 JavaScript 개요](https://developer.mozilla.org/ko/docs/A_re-introduction_to_JavaScript)를 읽고 여러분의 Javascript 수준을 확인하는 것을 권장합니다. 30분에서 1시간 정도 걸리겠지만 React를 익히는 데에 더 자신감이 생길 것입니다.
+[이 JavaScript 개요](https://developer.mozilla.org/ko/docs/A_re-introduction_to_JavaScript)를 읽고 여러분의 JavaScript 수준을 확인하는 것을 권장합니다. 30분에서 1시간 정도 걸리겠지만 React를 익히는 데에 더 자신감이 생길 것입니다.
 
 >팁
 >
@@ -99,7 +99,7 @@ React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 �
 
 ### 고급 개념 {#advanced-concepts}
 
-[주요 개념](/docs/hello-world.html)에 익숙해지고 React를 더 많이 다루게 되면 보다 고급 주제에 관심을 가지게 될 것입니다. 이 섹션에서는 [context](/docs/context.html) 및 [refs](/docs/refs-and-dom.html)와 같이 강력하지만 일반적으로 사용되지는 않는 React 기능을 소개합니다.
+[주요 개념](/docs/hello-world.html)에 익숙해지고 React를 더 많이 다루게 되면 보다 고급 주제에 관심을 가지게 될 것입니다. 이 섹션에서는 [context](/docs/context.html) 및 [refs](/docs/refs-and-the-dom.html)와 같이 강력하지만 일반적으로 사용되지는 않는 React 기능을 소개합니다.
 
 ### API 참조 {#api-reference}
 
@@ -115,7 +115,7 @@ React 문서는 Javascript 프로그래밍에 익숙한 사람을 대상으로 �
 
 트위터의 [@reactjs 계정](https://twitter.com/reactjs)을 팔로우할 수도 있지만, 블로그만 읽어도 꼭 알아야 하는 정보는 놓치지 않을 수 있습니다.
 
-모든 React 릴리즈가 자체 블로그 게시물을 사용할 만한 것은 아니지만 [릴리즈](https://github.com/facebook/react/releases) 페이지와 React의 [`CHANGELOG.md` 파일](https://github.com/facebook/react/blob/master/CHANGELOG.md)에서 모든 릴리즈에 대한 자세한 변경 기록을 확인할 수 있습니다.
+모든 React 릴리즈가 자체 블로그 게시물을 사용할 만한 것은 아니지만 [릴리즈](https://github.com/facebook/react/releases) 페이지와 React의 [`CHANGELOG.md` 파일](https://github.com/facebook/react/blob/main/CHANGELOG.md)에서 모든 릴리즈에 대한 자세한 변경 기록을 확인할 수 있습니다.
 
 ## 버전 관리된 문서 {#versioned-documentation}
 

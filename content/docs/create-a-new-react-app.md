@@ -13,7 +13,7 @@ next: cdn-links.html
 이 페이지에서는 도움이 되는 몇 가지 인기 있는 React 툴체인을 소개합니다.
 
 * 많은 파일과 컴포넌트 스케일링
-* 서드파티 npm 라이브러리 사용
+* 서드 파티 npm 라이브러리 사용
 * 일반적인 실수를 조기에 발견
 * CSS와 JS를 실시간으로 편집
 * 프로덕션 코드 최적화
@@ -22,7 +22,7 @@ next: cdn-links.html
 
 ## 툴체인이 필요하지 않을 수 있습니다. {#you-might-not-need-a-toolchain}
 
-위에서 설명한 문제를 경험하지 못했거나 아직 Javascript 도구를 사용하는 것이 편하지 않다면, [React를 HTML 페이지에서 일반적인 `<script>` 태그에 추가](/docs/add-react-to-a-website.html)하거나 [JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx)를 고려하세요.
+위에서 설명한 문제를 경험하지 못했거나 아직 JavaScript 도구를 사용하는 것이 편하지 않다면, [React를 HTML 페이지에서 일반적인 `<script>` 태그에 추가](/docs/add-react-to-a-website.html)하거나 [JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx)를 고려하세요.
 
 이 방법이 **제일 쉽게 React를 이미 만들어진 웹사이트에 추가하는 방법입니다**. 그리고 언제나 도움이 될 것 같으면 더 많은 툴체인을 추가할 수가 있습니다.
 
@@ -31,7 +31,7 @@ next: cdn-links.html
 React 팀의 추천 방법은 아래와 같습니다
 
 - **React를 배우고 있거나** 아니면 **새로운 [싱글 페이지](/docs/glossary.html#single-page-application) 앱**을 만들고 싶다면 [Create React App](#create-react-app).
-- **서버 렌더링 Node.js 웹사이트를 만들고 있다면** [Next.js](#nextjs)을 시도해보세요.. 
+- **서버 렌더링 Node.js 웹사이트를 만들고 있다면** [Next.js](#nextjs)을 시도해보세요..
 - **고정적인 콘텐츠 지향적 웹사이트를 만들고 있다면** [Gatsby](#gatsby)를 시도해보세요..
 - **컴포넌트 라이브러리** 혹은 **이미 있는 코드 베이스에 통합을 한다**면 [더 유연한 툴체인](#more-flexible-toolchains).
 
@@ -39,7 +39,7 @@ React 팀의 추천 방법은 아래와 같습니다
 
 [Create React App](https://github.com/facebookincubator/create-react-app)은 **React 배우기**에 간편한 환경입니다. 그리고 시작하기에 최고의 방법은 **새로운 [싱글 페이지 애플리케이션](/docs/glossary.html#single-page-application)** 입니다.
 
-이것은 개발 환경을 설정하고, 최신 JavaScript를 사용하게 해주며, 좋은 개발 경험과 프로덕션 앱 최적화를 해줍니다. [Node 8.10 혹은 상위 버전 및 npm 5.6 혹은 상위 버전](https://nodejs.org/en/)이 필요합니다. 새로운 프로젝트를 만들기 위해 아래의 명령어를 실행합니다.
+이것은 개발 환경을 설정하고, 최신 JavaScript를 사용하게 해주며, 좋은 개발 경험과 프로덕션 앱 최적화를 해줍니다. [Node 14.0.0 혹은 상위 버전 및 npm 5.6 혹은 상위 버전](https://nodejs.org/en/)이 필요합니다. 새로운 프로젝트를 만들기 위해 아래의 명령어를 실행합니다.
 
 ```bash
 npx create-react-app my-app
@@ -75,7 +75,7 @@ Gatsby를 [정식 가이드](https://www.gatsbyjs.org/docs/)와 [스타터 키�
 
 - **[Nx](https://nx.dev/react)**는 풀스택 모노레포 개발을 위한 도구이며, React, Next.js, Express 등을 기본적으로 지원합니다.
 
-- **[Parcel](https://parceljs.org/)은** [React와 함께 사용할 수 있고](https://parceljs.org/recipes.html#react) 빠르고 설정이 필요 없는 웹 애플리케이션 bundler입니다.
+- **[Parcel](https://parceljs.org/)은** [React와 함께 사용할 수 있고](https://parceljs.org/recipes/react/) 빠르고 설정이 필요 없는 웹 애플리케이션 bundler입니다.
 
 - **[Razzle](https://github.com/jaredpalmer/razzle)은** 서버 렌더링 프레임워크며 설정이 필요 없지만, Next.js보다 다루기 쉽습니다.
 
@@ -83,7 +83,7 @@ Gatsby를 [정식 가이드](https://www.gatsbyjs.org/docs/)와 [스타터 키�
 
 JavaScript build 툴체인은 주로 아래와 같이 구성되어있습니다
 
-* [Yarn](https://yarnpkg.com/) 혹은 [npm](https://www.npmjs.com/)같은 package 매니저는 서드파티 패키지의 방대한 생태계를 활용할 수 있게 하며, 쉽게 설치하고 업데이트할 수 있게 합니다.
+* [Yarn](https://yarnpkg.com/) 혹은 [npm](https://www.npmjs.com/)같은 package 매니저는 서드 파티 패키지의 방대한 생태계를 활용할 수 있게 하며, 쉽게 설치하고 업데이트할 수 있게 합니다.
 
 * [webpack](https://webpack.js.org/) 아니면 [Parcel](https://parceljs.org/) 같은 **bundler**는 코드를 모듈방식으로 작성할 수 있게 하고 이를 작은 package로 묶어서 로딩 시간을 최적화할 수 있습니다.
 

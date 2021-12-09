@@ -21,11 +21,11 @@ React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다
 
 ## 1분 내로 React 추가하기 {#add-react-in-one-minute}
 
-이 글에서는 기존 페이지에 리액트를 추가하는 법에 대해서 다룹니다. 기존의 웹사이트에서 시도 해보셔도 좋고, 연습삼아 새로운 HTML 파일에서 시도해보셔도 좋습니다.
+이 글에서는 기존 페이지에 React를 추가하는 법에 대해서 다룹니다. 기존의 웹사이트에서 시도 해보셔도 좋고, 연습삼아 새로운 HTML 파일에서 시도해보셔도 좋습니다.
 
 복잡한 도구를 쓰거나 뭔가를 따로 설치해야 할 필요도 없습니다. **약간의 시간과 함께 인터넷만 연결 되어 있다면 이 문서에서 다루는 것을 모두 해볼 수 있습니다.**
 
-선택사항: [예제의 전체 소스코드 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
+선택사항: [예시의 전체 소스코드 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
 
 ### 1단계: HTML 파일에 DOM 컨테이너 설치 {#step-1-add-a-dom-container-to-the-html}
 
@@ -88,21 +88,21 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 ### 다 끝났습니다! {#thats-it}
 
-다음 단계는 없습니다. **당신은 방금 웹사이트에 처음으로 React 컴포넌트를 추가했습니다.**
+다음 단계는 없습니다. **방금 웹사이트에 처음으로 React 컴포넌트를 추가했습니다.**
 
 다음 차례들에 React를 기존 프로젝트에 결합하는데 도움이 될만한 정보들이 더 있습니다.
 
-**[예제 전체 소스 코드 보기](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
+**[예시 전체 소스 코드 보기](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
 
-**[예제 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
+**[예시 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
 
 ### 팁: 컴포넌트 재사용 {#tip-reuse-a-component}
 
-보통은 하나의 웹페이지에 여러 React 컴포넌트를 설치하게 됩니다. 다음 예제는 "좋아요" 버튼 3개를 만들고 그 컴포넌트들에 데이터를 넘겨주는 코드입니다.
+보통은 하나의 웹페이지에 여러 React 컴포넌트를 설치하게 됩니다. 다음 예시는 "좋아요" 버튼 3개를 만들고 그 컴포넌트들에 데이터를 넘겨주는 코드입니다.
 
-[예제 전체 소스 코드 보기](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
+[예시 전체 소스 코드 보기](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
 
-[예제 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
+[예시 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
 
 >주의
 >
@@ -123,7 +123,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 ## 선택사항: JSX로 React 해보기 {#optional-try-react-with-jsx}
 
-지금까지 다뤘던 예제들은 브라우저가 기본적으로 지원하는 요소들만을 사용했습니다. 때문에 React가 어떤 것을 표시할지 결정 해주는 JavaScript의 함수들을 사용했습니다.
+지금까지 다뤘던 예시들은 브라우저가 기본적으로 지원하는 요소들만을 사용했습니다. 때문에 React가 어떤 것을 표시할지 결정 해주는 JavaScript의 함수들을 사용했습니다.
 
 ```js
 const e = React.createElement;
@@ -149,7 +149,7 @@ return (
 
 위 두 코드들은 같은 기능을 수행합니다. **JSX는 [필수가 아닌 선택사항](/docs/react-without-jsx.html)**이지만 사람들은 UI 코드를 짤 때 JSX를 쓰는 것이 더 편리하다고 생각합니다. React와 다른 라이브러리들에서도 말이죠.
 
-[이 온라인 변화기](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3)를 통해서 JSX로 여러 가지 작업을 해볼 수 있습니다.
+[이 온라인 변화기](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.15.7)를 통해서 JSX로 여러 가지 작업을 해볼 수 있습니다.
 
 ### JSX 빠르게 시도해보기 {#quickly-try-jsx}
 
@@ -159,7 +159,7 @@ return (
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 ```
 
-이제 어떤 `<script>` 태그에서든 `type="text/babel"`성질을 추가하면 JSX를 사용할 수 있습니다. 이 [JSX를 사용한 예제 HTML 파일](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)로 여러 가지 작업들을 해보세요.
+이제 어떤 `<script>` 태그에서든 `type="text/babel"`성질을 추가하면 JSX를 사용할 수 있습니다. 이 [JSX를 사용한 예시 HTML 파일](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)로 여러 가지 작업들을 해보세요.
 
 이런 식의 접근 방법은 공부 목적이나 간단한 데모 사이트를 만들기 위함이라면 괜찮습니다. 그러나, 이 방법은 사이트를 느리게 만들고 **프로덕션에서는 맞지 않습니다.** 한 단계 앞으로 나아갈 준비가 되었다면 새로 추가한 `<script>` 태그와 `type="text/babel"` 어트리뷰트를 제거해보세요. 다음 차례에서는 `<script>` 태그를 자동으로 변환시켜줄 JSX 전처리기를 만들 겁니다.
 
@@ -169,14 +169,18 @@ JSX를 프로젝트에 추가하는 데에는 복잡한 번들러나 개발 서�
 
 터미널에서 프로젝트 파일에 접근하고 다음 두 명령어를 붙여넣기 하세요.
 
+<!-- textlint-disable -->
+
 1. **1단계:** `npm init -y` 를 실행하세요. (실패한다면 [여기서 해결할 수 있습니다.](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d))
 2. **2단계:** `npm install babel-cli@6 babel-preset-react-app@3`를 실행하세요.
+
+<!-- textlint-enable -->
 
 >팁
 >
 >**JSX 전처리기를 설치할 때 npm은 여기서만 쓰면 됩니다.**  다른 단계에서는 npm이 쓰일 일이 없습니다. React와 애플리케이션 코드는 둘다 똑같이 `<script>` 태그로 유지할 수 있습니다.
 
-축하합니다! 당신은 프로젝트에 **프로덕션 준비가 된 JSX 설정**을 끝마쳤습니다.
+축하합니다! 프로젝트에 **프로덕션 준비가 된 JSX 설정**을 끝마쳤습니다.
 
 
 ### JSX 전처리기 실행하기 {#run-jsx-preprocessor}
@@ -199,4 +203,4 @@ npx babel --watch src --out-dir . --presets react-app/prod
 
 덤으로 이 감시기는 구형 브라우저와의 호환성 문제를 걱정할 필요 없이 클래스와 같은 모던 JavaScript 문법을 쓸 수 있게 해줍니다. 아까 사용했던 도구는 Babel이라고 부릅니다. Babel에 대한 자세한 정보는 [공식 문서](http://babeljs.io/docs/en/babel-cli/)에서 볼 수 있습니다.
 
-이런 빌드 도구들에 익숙해지고 더 많은 것을 해보고 싶어진다고 느끼기 시작한다면, [다음 문서](/docs/create-a-new-react-app.html) 에서 가장 널리 쓰이고 접근성이 좋은 툴체인들을 소개하고 있으니 확인해보세요. 만약 그렇지 않아도 괜찮다면, 이 스크립트 태그만으로도 충분합니다!
+이런 빌드 도구들에 익숙해지고 더 많은 것을 해보고 싶어진다고 느끼기 시작한다면, [다음 문서](/docs/create-a-new-react-app.html) 에서 가장 널리 쓰이고 접근성이 좋은 툴체인들을 소개하고 있으니 확인해보세요. 그렇지 않아도 괜찮다면, 이 스크립트 태그만으로도 충분합니다!

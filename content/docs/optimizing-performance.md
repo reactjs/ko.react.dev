@@ -156,33 +156,7 @@ module.exports = {
 
 production 빌드에서만 필요한 작업이라는 점을 기억하세요. React의 유용한 경고를 숨기고 빌드를 훨씬 느리게 만들기 때문에 `TerserPlugin`을 개발 중에 적용하지 마세요.
 
-## Chrome Performance 탭으로 컴포넌트 프로파일링 {#profiling-components-with-the-chrome-performance-tab}
-
-**개발** 모드에서 지원되는 브라우저의 Performance 탭을 사용하여 어떻게 컴포넌트가 마운트, 업데이트, 그리고 마운트 해제되는지 시각화할 수 있습니다. 예를 들면.
-
-<center><img src="../images/blog/react-perf-chrome-timeline.png" style="max-width:100%" alt="React components in Chrome timeline" /></center>
-
-Chrome에서 이 작업을 하려면
-
-1. 일시적으로 **특히 React 개발 도구를 포함해 모든 Chrome 확장 프로그램을 비활성화하세요.** 결과가 크게 왜곡될 수 있습니다!
-
-2. 개발 모드에서 애플리케이션을 실행 중인지 확인하세요.
-
-3. Chrome 개발 도구의 **[Performance](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)** 탭을 열고 **Record**버튼을 클릭하세요.
-
-4. 프로파일링할 작업을 진행하세요. 20초 이상 기록하지 마세요. 그렇지 않으면 Chrome이 멈출 수 있습니다.
-
-5. 기록을 멈추세요.
-
-6. React 이벤트는 **User Timing** 라벨로 그룹화됩니다.
-
-더 자세한 사례를 보려면 [Ben Schwarz의 글](https://calibreapp.com/blog/react-performance-profiling-optimization)을 확인하세요.
-
-**수치는 상대적이어서 프로덕션 상태에서는 컴포넌트가 더 빠르게 렌더링 될 수 있다는 사실**을 기억하세요. 그래도 관계없는 UI가 실수에 의해 업데이트되는 현상과 UI 업데이트의 깊이와 빈도를 깨닫는 데 도움을 줄 것입니다.
-
-현재는 Chrome, Edge 그리고 IE만이 이 기능을 지원하는 브라우저지만 [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API)가 표준으로 사용되기 때문에 더 많은 브라우저가 지원을 추가할 것으로 예상됩니다.
-
-## Profiler DevTools Profiler로 컴포넌트 프로파일링 {#profiling-components-with-the-devtools-profiler}
+## DevTools Profiler로 컴포넌트 프로파일링 {#profiling-components-with-the-devtools-profiler}
 
 `react-dom` 16.5+와  `react-native` 0.57+는 React DevTools Profiler를 사용하여 개발 모드에서 향상된 프로파일링 기능을 제공합니다.
 Profiler에 대한 내용은 블로그 포스트 ["Introducing the React Profiler"](/blog/2018/09/10/introducing-the-react-profiler.html)에서 확인할 수 있습니다.
@@ -198,6 +172,11 @@ Profiler에 대한 영상도 [YouTube](https://www.youtube.com/watch?v=nySib7ipZ
 >
 > `react-dom`의 프로덕션 프로파일링 bundle은 `react-dom/profiling`으로 이용할 수 있습니다.
 > bundle을 사용하는 법에 대한 자세한 내용은 [fb.me/react-profiling](https://fb.me/react-profiling)에서 확인하세요.
+
+> 주의
+>
+> React 17 이전에는 크롬 퍼포먼스 탭으로 컴포넌트를 프로파일링 하기 위해 [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) 표준을 사용했습니다.
+> 자세한 내용은 [Ben Schwarz이 작성한 글](https://calibreapp.com/blog/react-performance-profiling-optimization)을 참조해주세요.
 
 ## 긴 목록 가상화하세요 {#virtualize-long-lists}
 
@@ -235,7 +214,7 @@ C1과 C3의 경우 `shouldComponentUpdate`가 `true`를 반환했으므로 React
 
 마지막 흥미로운 경우는 C8입니다. React는 이 컴포넌트를 렌더링 해야 했지만 이전에 렌더링 된 React 엘리먼트와 동일했기 때문에 DOM을 업데이트할 필요가 없었습니다.
 
-React는 C6에 대해 DOM 변경(mutation)을 수행하면 되는데, 이는 불가피했습니다. C8의 경우 렌더링 된 React 엘리먼트를 비교해서 빠져(bail out)나오고 C2의 하위트리와 C7의 경우 `shouldComponentUpdate`를 구제할 때 엘리먼트를 비교할 필요조차 없었고 `render`도 호출되지 않았습니다.
+React는 C6에 대해 DOM 변경(mutation)을 수행하면 되는데, 이는 필연적입니다. C8의 경우 렌더링 된 React 엘리먼트를 비교해서 빠져(bail out)나오고 C2의 하위트리와 C7의 경우 `shouldComponentUpdate`를 구제할 때 엘리먼트를 비교할 필요조차 없었고 `render`도 호출되지 않았습니다.
 
 ## 예시 {#examples}
 

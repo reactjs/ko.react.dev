@@ -16,9 +16,11 @@ prev: concurrent-mode-adoption.html
 
 >주의
 >
->이 페이지는 **안정된 배포판에서는 [아직 사용할 수 없는](/docs/concurrent-mode-adoption.html) 실험적인 기능들에 관해 설명합니다.** 프로덕션용 앱에선 React의 실험 배포판을 사용하지 마세요. 이 기능들은 React의 일부가 되기 전에 경고 없이 크게 변경될 수 있습니다.
+>이 페이지는 안정된 배포판에서 아직 제공되지 않는 실험적인 기능에 대해 설명합니다. 얼리 어답터와 궁금해하시는 분을 대상으로 합니다.
 >
->이 문서는 얼리어답터들과 궁금해하시는 분들을 위해 제작된 문서입니다. **React를 처음 접해본다면 이러한 기능들을 걱정하지 않아도 됩니다.** 그 기능들을 바로 배울 필요는 없습니다.
+>많은 정보는 구식이며 보관을 목적으로만 유지되고 있습니다. 최신화된 정보는 [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html)를 참조해주세요.
+>
+>React 18이 배포되기 전에 해당 페이지를 안정된 문서로 대체할 예정입니다.
 
 </div>
 
@@ -28,7 +30,6 @@ prev: concurrent-mode-adoption.html
 
 - [Concurrent 모드 활성화](#concurrent-mode)
     - [`createRoot`](#createroot)
-    - [`createBlockingRoot`](#createblockingroot)
 - [Suspense](#suspense)
     - [`Suspense`](#suspensecomponent)
     - [`SuspenseList`](#suspenselist)
@@ -46,18 +47,6 @@ ReactDOM.createRoot(rootNode).render(<App />);
 `ReactDOM.render(<App />, rootNode)`을 대체하고 Concurrent 모드를 활성화합니다.
 
 Concurrent 모드에 대한 더 자세한 설명이 필요하다면, [Concurrent Mode 문서](/docs/concurrent-mode-intro.html)를 참고해주세요.
-
-### `createBlockingRoot` {#createblockingroot}
-
-```js
-ReactDOM.createBlockingRoot(rootNode).render(<App />)
-```
-
-`ReactDOM.render(<App />, rootNode)`를 대체하고 [Blocking 모드](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode)를 활성화합니다.
-
-Concurrent 모드를 선택하면 React 작동하는 방식에 의미적 변화가 생깁니다. 이는 몇몇 컴포넌트에서 Concurrent 모드를 사용할 수 없다는 걸 의미하며 몇몇 앱은 곧바로 Concurrent 모드로 마이그레이션을 할 수 없습니다.
-
-Blocking 모드는 Concurrent 모드의 일부만 포함하며 곧바로 마이그레이션 할 수 없는 앱의 중간 마이그레이션 단계로 사용됩니다.
 
 ## Suspense API {#suspense}
 

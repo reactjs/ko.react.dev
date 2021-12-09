@@ -8,7 +8,7 @@ category: FAQ
 
 ### 어떻게 AJAX 호출을 할 수 있을까요? {#how-can-i-make-an-ajax-call}
 
-당신이 선호하는 AJAX 라이브러리를 React와 함께 사용할 수 있습니다. 유명한 라이브러리로는 [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), 그리고 브라우저에 내장된 [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) 등이 있습니다.
+선호하는 AJAX 라이브러리를 React와 함께 사용할 수 있습니다. 유명한 라이브러리로는 [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), 그리고 브라우저에 내장된 [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) 등이 있습니다.
 
 ### 컴포넌트의 생명주기 중 어디에서 AJAX 호출을 할 수 있나요? {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
 
@@ -25,7 +25,7 @@ API 예시는 다음과 같은 JSON 객체를 반환합니다.
   "items": [
     { "id": 1, "name": "Apples",  "price": "$2" },
     { "id": 2, "name": "Peaches", "price": "$5" }
-  ] 
+  ]
 }
 ```
 
@@ -50,9 +50,9 @@ class MyComponent extends React.Component {
             items: result.items
           });
         },
-        // 주의: 컴포넌트의 실제 버그에서 발생하는 예외사항들을 넘기지 않도록 
-        // 에러를 catch() 블록(block)에서 처리하기보다는 
-        // 이 부분에서 처리하는 것이 중요합니다.
+        // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를
+        // 놓치지 않고 처리하기 위해서는
+        // catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -83,7 +83,7 @@ class MyComponent extends React.Component {
 }
 ```
 
-Here is the equivalent with [Hooks](https://reactjs.org/docs/hooks-intro.html): 
+이는 아래처럼 [Hook](https://reactjs.org/docs/hooks-intro.html)으로 작성한 코드와 동일합니다.
 
 ```js
 function MyComponent() {
@@ -91,9 +91,9 @@ function MyComponent() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
-  // Note: the empty deps array [] means
-  // this useEffect will run once
-  // similar to componentDidMount()
+  // 주의: 빈 deps 배열 []은
+  // useEffect가 componentDidMount()처럼
+  // 한 번만 실행되는 걸 의미합니다.
   useEffect(() => {
     fetch("https://api.example.com/items")
       .then(res => res.json())
@@ -102,9 +102,9 @@ function MyComponent() {
           setIsLoaded(true);
           setItems(result);
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+        // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를
+        // 놓치지 않고 처리하기 위해서는
+        // catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
         (error) => {
           setIsLoaded(true);
           setError(error);

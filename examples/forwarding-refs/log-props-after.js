@@ -15,7 +15,7 @@ function logProps(Component) {
     }
   }
 
-  // React.forwardRef에서 제공하는 두 번째 파라미터 "ref"에 주의하십시오.
+  // React.forwardRef에서 제공하는 두 번째 파라미터 "ref"에 주의해주세요.
   // 가령 "forwardedRef"같은 일반 prop으로 LogProps에 전달할 수 있습니다.
   // 그 다음 Component에 연결할 수 있습니다.
   // highlight-range{1-3}

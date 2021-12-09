@@ -284,7 +284,7 @@ npm run build
 
 
 ### 타입 정의 {#type-definitions}
-다른 패키지의 오류와 힌트를 출력하기 위해 컴파일러는 선언 파일에 의존합니다. 선언 파일은 라이브러리에 대한 모든 타입 정보를 제공합니다. 프로젝트의 npm에 라이브러리에 대한 선언파일이 있다면 해당하는 Javascript 라이브러리를 사용할 수 있습니다.
+다른 패키지의 오류와 힌트를 출력하기 위해 컴파일러는 선언 파일에 의존합니다. 선언 파일은 라이브러리에 대한 모든 타입 정보를 제공합니다. 프로젝트의 npm에 라이브러리에 대한 선언파일이 있다면 해당하는 JavaScript 라이브러리를 사용할 수 있습니다.
 
 라이브러리에 대한 선언을 가져올 수 있는 방법은 두가지가 있습니다.
 
@@ -312,21 +312,21 @@ declare module 'querystring' {
 
 이제 코드를 작성할 준비를 마쳤습니다! TypeScript에 대해 좀 더 알아보고 싶다면 다음 리소스들을 확인해보세요.
 
-* [TypeScript Documentation: Basic Types](https://www.typescriptlang.org/docs/handbook/basic-types.html)
-* [TypeScript Documentation: Migrating from Javascript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
+* [TypeScript Documentation: Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
+* [TypeScript Documentation: Migrating from JavaScript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
 * [TypeScript Documentation: React and Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
 
-## Reason {#reason}
+## ReScript {#rescript}
 
-[Reason](https://reasonml.github.io/)은 새로운 언어가 아닙니다. [OCaml](https://ocaml.org/)을 기반으로한 새로운 문법이자 툴체인입니다. Reason은 JavaScript 개발자들을 위해 익숙한 문법을 OCaml을 통해 제공하며, 익숙한 NPM/Yarn을 그대로 사용 할 수 있습니다.
+[ReScript](https://rescript-lang.org/)는 JavaScript로 컴파일되는 타입이 있는 언어입니다. 핵심 기능 중 몇 가지는 100% 타입 커버리지가 보장된다는 점과 first-class로 JSX를 지원하며, JS와 TS로 작성된 React 코드베이스와의 통합을 허용하기 위한 [React 전용 바인딩](https://rescript-lang.org/docs/react/latest/introduction)이 있습니다.
 
-Reason은 Facebook이 개발했고, 메신저 같은 몇몇 제품에 사용되고 있습니다. 아직은 다소 실험적이지만, Facebook과 [활발한 커뮤니티](https://reasonml.github.io/docs/en/community.html)에 의해 유지되는 [React 전용 바인딩](https://reasonml.github.io/reason-react/)이 있습니다.
+이미 작성된 JS와 React 코드베이스에 ReScript를 통합하는 방법에 대한 더 자세한 정보는 [여기](https://rescript-lang.org/docs/manual/latest/installation#integrate-into-an-existing-js-project)에서 찾을 수 있습니다.
 
 ## Kotlin {#kotlin}
 
 [Kotlin](https://kotlinlang.org/)은 JetBrains이 개발한 정적 타입 언어입니다. Kotlin의 타깃 플랫폼은 JVM, Android, LLVM, JavaScript입니다.
 
-JetBrains은 React 커뮤니티를 위해 [React bindings](https://github.com/JetBrains/kotlin-wrappers)나 [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app)와 같은 몇몇 도구를 개발, 유지하고 있습니다. Create React Kotlin App은 별다른 빌드 설정 없이 Kotlin으로 React 앱을 개발할 수 있고록 도와줍니다.
+JetBrains은 React 커뮤니티를 위해 [React bindings](https://github.com/JetBrains/kotlin-wrappers)나 [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app)와 같은 몇몇 도구를 개발, 유지하고 있습니다. Create React Kotlin App은 별다른 빌드 설정 없이 Kotlin으로 React 앱을 개발할 수 있도록 도와줍니다.
 
 ## 다른 언어들 {#other-languages}
 

@@ -51,7 +51,7 @@ class Foo extends Component {
 }
 ```
 
-#### render 메소드 안에서 바인딩하기 {#bind-in-render}
+#### render 메서드 안에서 바인딩하기 {#bind-in-render}
 
 ```jsx
 class Foo extends Component {
@@ -66,9 +66,9 @@ class Foo extends Component {
 
 >**주의**
 >
->`Function.prototype.bind`를 render 메소드에서 사용하면 컴포넌트가 렌더링할 때마다 새로운 함수를 생성하기 때문에 성능에 영향을 줄 수 있습니다.
+>`Function.prototype.bind`를 render 메서드에서 사용하면 컴포넌트가 렌더링할 때마다 새로운 함수를 생성하기 때문에 성능에 영향을 줄 수 있습니다.
 
-#### render 메소드 안에서 화살표 함수 사용 {#arrow-function-in-render}
+#### render 메서드 안에서 화살표 함수 사용 {#arrow-function-in-render}
 
 ```jsx
 class Foo extends Component {
@@ -83,9 +83,9 @@ class Foo extends Component {
 
 >**주의**
 >
-> render 메소드 안에서 화살표 함수를 사용하면 컴포넌트가 렌더링할 때마다 새로운 함수를 만들기 때문에 엄격한 비교에 의해 최적화가 깨질 수 있습니다.
+> render 메서드 안에서 화살표 함수를 사용하면 컴포넌트가 렌더링할 때마다 새로운 함수를 만들기 때문에 엄격한 비교에 의해 최적화가 깨질 수 있습니다.
 
-### render 메소드 안에서 화살표 함수를 사용해도 괜찮을까요? {#is-it-ok-to-use-arrow-functions-in-render-methods}
+### render 메서드 안에서 화살표 함수를 사용해도 괜찮을까요? {#is-it-ok-to-use-arrow-functions-in-render-methods}
 
 이 방법은 대체로 사용해도 괜찮고, 콜백 함수로 매개변수를 전달해 주는 가장 쉬운 방법입니다.
 
@@ -104,9 +104,9 @@ var method = obj.method;
 method();
 ```
 
-바인딩 메소드는 두 번째 코드 조각이 첫 번째 코드조각과 같은 방식으로 작동하도록 만들어 줍니다.
+바인딩 메서드는 두 번째 코드 조각이 첫 번째 코드조각과 같은 방식으로 작동하도록 만들어 줍니다.
 
-일반적으로 React에서 다른 컴포넌트에 메소드를 **전달**해 줄 때만 바인딩해 주면 됩니다. 예를 들어 `<button onClick={this.handleClick}>`는 `this.handleClick`을 전달하여 바인딩합니다. 그렇지만 `render` 메소드나 생명주기 메소드는 다른 컴포넌트로 전달하지 않기 때문에 바인딩할 필요가 없습니다.
+일반적으로 React에서 다른 컴포넌트에 메서드를 **전달**해 줄 때만 바인딩해 주면 됩니다. 예를 들어 `<button onClick={this.handleClick}>`는 `this.handleClick`을 전달하여 바인딩합니다. 그렇지만 `render` 메서드나 생명주기 메서드는 다른 컴포넌트로 전달하지 않기 때문에 바인딩할 필요가 없습니다.
 
 [Yehuda Katz의 글](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/)에서 바인딩이 무엇인지, JavaScript에서 어떻게 함수가 작동하는지에 대해 상세히 알 수 있습니다.
 
@@ -229,7 +229,7 @@ class Alphabet extends React.Component {
 
 > 주의
 >
-> `_.debounce`, `_.throttle`, `raf-schd`는 지연되는 콜백을 취소하는 메소드 `cancel`을 제공합니다. `componentWillUnmount`에서 이 함수를 사용하거나 또는 지연된 함수 내에서 컴포넌트가 마운트가 되어있음을 확인해야 합니다.
+> `_.debounce`, `_.throttle`, `raf-schd`는 지연되는 콜백을 취소하는 메서드 `cancel`을 제공합니다. `componentWillUnmount`에서 이 함수를 사용하거나 또는 지연된 함수 내에서 컴포넌트가 마운트가 되어있음을 확인해야 합니다.
 
 #### Throttle {#throttle}
 
@@ -300,7 +300,7 @@ class Searchbox extends React.Component {
 
 #### `requestAnimationFrame` throttling {#requestanimationframe-throttling}
 
-[`requestAnimationFrame`](https://developer.mozilla.org/ko/docs/Web/API/window/requestAnimationFrame)은 렌더링 성능을 위해 브라우저에서 최적화된 시간에 함수가 실행되도록 함수를 큐잉하는 방법입니다. `requestAnimationFrame`의 큐로 들어간 함수는 다음 프레임에서 실행됩니다. 브라우저는 1초당 60 프레임(60 fps)을 보장하기 위해 열심히 일합니다. 하지만 만약에 브라우저가 이를 하지 못할때 저절로 프레임을 *제한*합니다. 예를 들면 한 기기가 30 fps만 처리할 수 있다면 1초 동안 30 프레임만 얻을 수 있습니다. throttling을 위해 `requestAnimationFrame`을 사용하면 1초에 60번 이상 업데이트하는 것을 막을 수 있습니다. 1초당 100번 업데이트하도록 브라우저에 일을 만들어 주어도, 유저는 이를 확인할 수 없습니다.
+[`requestAnimationFrame`](https://developer.mozilla.org/ko/docs/Web/API/window/requestAnimationFrame)은 렌더링 성능을 위해 브라우저에서 최적화된 시간에 함수가 실행되도록 함수를 큐잉하는 방법입니다. `requestAnimationFrame`의 큐로 들어간 함수는 다음 프레임에서 실행됩니다. 브라우저는 1초당 60 프레임(60 fps)을 보장하기 위해 열심히 일합니다. 하지만 브라우저가 이를 하지 못할때 저절로 프레임을 *제한*합니다. 예를 들면 한 기기가 30 fps만 처리할 수 있다면 1초 동안 30 프레임만 얻을 수 있습니다. throttling을 위해 `requestAnimationFrame`을 사용하면 1초에 60번 이상 업데이트하는 것을 막을 수 있습니다. 1초당 100번 업데이트하도록 브라우저에 일을 만들어 주어도, 유저는 이를 확인할 수 없습니다.
 
 >**주의**
 >

@@ -89,7 +89,7 @@ Hook에는 독자적인 학습 곡선이 있습니다. 이 문서에 누락된 �
 
 ### Hook이나 class 또는 두 가지를 모두 사용해야 합니까? {#should-i-use-hooks-classes-or-a-mix-of-both}
 
-준비가 되면 작성하는 새 컴포넌트에서 Hook을 시도해 보는 것이 좋습니다. 팀의 모든 구성원이 사용하고 이 문서에 익숙해 지도록 하십시오. 일부러 다시 작성하지 않는 이상 (예: 버그 수정) 기존 class를 Hook으로 고쳐 쓰는 것은 추천하지 않습니다.
+준비가 되면 작성하는 새 컴포넌트에서 Hook을 시도해 보는 것이 좋습니다. 팀의 모든 구성원이 사용하고 이 문서에 익숙한지 확인해주세요. 일부러 다시 작성하지 않는 이상 (예: 버그 수정) 기존 class를 Hook으로 고쳐 쓰는 것은 추천하지 않습니다.
 
 Class 컴포넌트 *내부에서* Hook을 사용할 수는 없지만, class와 함수 컴포넌트를 단일 트리에서 Hook과 섞어서 사용할 수 있습니다. 컴포넌트가 class인지 Hook을 사용하는 함수 컴포넌트인지 여부는 해당 컴포넌트의 구현 세부 사항입니다. 장기적으로 우리는 Hook이 사람들이 React 컴포넌트를 작성하는 주요 방법이 될 것으로 기대합니다.
 
@@ -125,9 +125,9 @@ React의 관점에서 Hook을 사용하는 컴포넌트는 일반적인 컴포�
 
 >주의
 >
->[테스팅 방안](/docs/testing-recipes.html)에는 복사하여 붙여넣을 수 있는 많은 예제가 포함되어 있습니다.
+>[테스팅 방안](/docs/testing-recipes.html)에는 복사하여 붙여넣을 수 있는 많은 예시가 포함되어 있습니다.
 
-예를 들어 여기 이 계수기 컴포넌트가 있다고 가정해 보겠습니다:
+예를 들어 여기 이 계수기 컴포넌트가 있다고 가정해 보겠습니다.
 
 ```js
 function Example() {
@@ -191,7 +191,7 @@ it('can render and update a counter', () => {
 
 상용구를 줄이려면 [React Testing Library](https://testing-library.com/react)를 사용하는 것이 좋습니다. 이 라이브러리는 최종 사용자와 마찬가지로 컴포넌트를 사용하는 테스트 작성을 장려하도록 설계되었습니다.
 
-자세한 내용은 [테스팅 방안](/docs/testing-recipes.html)을 확인하십시오.
+자세한 내용은 [테스팅 방안](/docs/testing-recipes.html)을 확인해주세요.
 
 ### [Lint 규칙](https://www.npmjs.com/package/eslint-plugin-react-hooks)은 정확히 무엇을 시행합니까? {#what-exactly-do-the-lint-rules-enforce}
 
@@ -212,7 +212,7 @@ it('can render and update a counter', () => {
 
 * `getDerivedStateFromProps`: [대신 렌더링](#how-do-i-implement-getderivedstatefromprops)하는 동안 업데이트 예약.
 
-* `shouldComponentUpdate`: [아래의](#how-do-i-implement-shouldcomponentupdate) `React.memo`를 참조하십시오.
+* `shouldComponentUpdate`: [아래의](#how-do-i-implement-shouldcomponentupdate) `React.memo`를 참조해주세요.
 
 * `render`: 이것은 함수 컴포넌트 본체 자체입니다.
 
@@ -222,7 +222,7 @@ it('can render and update a counter', () => {
 
 ### Hook을 사용하여 데이터 가져오기를 수행하려면 어떻게 해야 합니까? {#how-can-i-do-data-fetching-with-hooks}
 
-다음은 시작하기 위한 [짧은 데모](https://codesandbox.io/s/jvvkoo8pq3)입니다. 자세한 내용은 Hook을 사용한 데이터 가져오기를 다룬 [이 기사](https://www.robinwieruch.de/react-hooks-fetch-data/)를 확인하십시오.
+다음은 시작하기 위한 [짧은 데모](https://codesandbox.io/s/jvvkoo8pq3)입니다. 자세한 내용은 Hook을 사용한 데이터 가져오기를 다룬 [이 기사](https://www.robinwieruch.de/react-hooks-fetch-data/)를 확인해주세요.
 
 ### 인스턴스 변수와 같은 것이 있습니까? {#is-there-something-like-instance-variables}
 
@@ -258,7 +258,7 @@ function Timer() {
   // ...
 ```
 
-개념적으로, class의 인스턴스 변수와 ref를 비슷하게 생각할 수 있습니다. [지연 초기화](#how-to-create-expensive-objects-lazily)를 수행하지 않는 한, 렌더링 중에 ref 설정을 피하십시오 -- 이것은 놀라운 상황을 초래할 수 있습니다. 대신, 일반적으로 이벤트 처리와 effect에서 ref를 수정하는 것이 좋습니다.
+개념적으로, class의 인스턴스 변수와 ref를 비슷하게 생각할 수 있습니다. [지연 초기화](#how-to-create-expensive-objects-lazily)를 수행하지 않는 한, 렌더링 중에 ref 설정을 피해주세요. -- 이것은 놀라운 상황을 초래할 수 있습니다. 대신, 일반적으로 이벤트 처리와 effect에서 ref를 수정하는 것이 좋습니다.
 
 ### 하나 또는 여러 state 변수를 사용해야 합니까? {#should-i-use-one-or-many-state-variables}
 
@@ -271,7 +271,7 @@ function Box() {
 }
 ```
 
-이제 사용자가 마우스를 움직일 때 `left`과 `top`의 포지션을 변경하는 로직을 작성하고 싶다고 가정해 보겠습니다. 이러한 필드를 이전 state 개체에 수동으로 병합하는 방법에 유의하십시오.
+이제 사용자가 마우스를 움직일 때 `left`과 `top`의 포지션을 변경하는 로직을 작성하고 싶다고 가정해 보겠습니다. 이러한 필드를 이전 state 개체에 수동으로 병합하는 방법에 유의해주세요.
 
 ```js{4,5}
   // ...
@@ -289,7 +289,7 @@ function Box() {
 
 이는 state 변수를 업데이트할 때 그 값을 *대체*하기 때문입니다. 이것은 업데이트된 필드를 객체에 *병합*하는 class의 `this.setState`와 다릅니다.
 
-자동 병합을 놓친 경우 개체 state 업데이트를 병합하는 커스텀 `useLegacyState` Hook을 작성할 수 있습니다. 그러나, **함께변경 되는 값에 따라 state를 여러 state 변수로 분할하는 것을 추천합니다.**
+자동 병합을 놓친 경우 개체 state 업데이트를 병합하는 커스텀 `useLegacyState` Hook을 작성할 수 있습니다. 그러나, **함께 변경되는 값에 따라 state를 여러 state 변수로 분할하는 것을 추천합니다.**
 
 예를 들어 컴포넌트 state를 `position` 및 `size` 객체로 분할하고 병합할 필요 없이 항상 `position`을 대체 할 수 있습니다.
 
@@ -323,7 +323,7 @@ function useWindowPosition() {
 }
 ```
 
-코드를 변경하지 않고 `position` state 변수에 대한 `useState` 호출과 관련 effect를 커스텀 Hook으로 옮길 수 있었던 방법에 유의하십시오. 모든 state가 단일 객체에 있으면 추출하기가 더 어려울 것입니다.
+코드를 변경하지 않고 `position` state 변수에 대한 `useState` 호출과 관련 effect를 커스텀 Hook으로 옮길 수 있었던 방법에 유의해주세요. 모든 state가 단일 객체에 있으면 추출하기가 더 어려울 것입니다.
 
 모든 state를 단일 `useState` 호출에 넣고 필드마다 `useState` 호출을 두는 방법도 쓸 수 있습니다. 컴포넌트는 이러한 두 극단 사이의 균형을 찾고 관련 state를 몇 개의 독립 state 변수로 그룹화할 때 가장 읽기 쉬운 경향이 있습니다. State 로직이 복잡해지면 [리듀서로 관리](/docs/hooks-reference.html#usereducer), 또는 커스텀 Hook을 사용하는 것이 좋습니다.
 
@@ -367,7 +367,7 @@ function usePrevious(value) {
 }
 ```
 
-이것이 props, state 또는 기타 계산된 값에 대해 어떻게 작동하는지 확인하십시오.
+이것이 props, state 또는 기타 계산된 값에 대해 어떻게 작동하는지 확인해주세요.
 
 ```js{5}
 function Counter() {
@@ -384,7 +384,7 @@ function Counter() {
 
 ### 함수 컴포넌트 안에 오래된 props나 state가 보이는 이유는 무엇입니까? {#why-am-i-seeing-stale-props-or-state-inside-my-function}
 
-이벤트 처리 및 effect를 포함한 컴포넌트 내부의 모든 함수 컴포넌트는 생성된 렌더링에서 props와 state를 "확인"합니다. 예를 들어 이와 같은 코드를 고려해보십시오.
+이벤트 처리 및 effect를 포함한 컴포넌트 내부의 모든 함수 컴포넌트는 생성된 렌더링에서 props와 state를 "확인"합니다. 예를 들어 이와 같은 코드를 고려해주세요.
 
 ```js
 function Example() {
@@ -457,7 +457,7 @@ function ScrollView({row}) {
   }
 ```
 
-가능하면 이 패턴을 피하십시오.
+가능하면 이 패턴을 피해주세요.
 
 ### 함수 컴포넌트에 ref를 만들 수 있습니까? {#can-i-make-a-ref-to-a-function-component}
 
@@ -486,13 +486,13 @@ function MeasureExample() {
 }
 ```
 
-이 예제에서는 객체 ref가 현재 ref 값의 변경 사항에 대해 알려주지 않기 때문에 `useRef`를 선택하지 않았습니다. 콜백 ref를 사용하면 [자식 컴포넌트가 나중에 측정된 노드를 표시하더라도](https://codesandbox.io/s/818zzk8m78) (예: 클릭에 대한 응답으로) 여전히 부모 컴포넌트에서 이에 대한 알림을 받고 측정을 업데이트 할 수 있습니다.
+이 예시에서는 객체 ref가 현재 ref 값의 변경 사항에 대해 알려주지 않기 때문에 `useRef`를 선택하지 않았습니다. 콜백 ref를 사용하면 [자식 컴포넌트가 나중에 측정된 노드를 표시하더라도](https://codesandbox.io/s/818zzk8m78) (예: 클릭에 대한 응답으로) 여전히 부모 컴포넌트에서 이에 대한 알림을 받고 측정을 업데이트 할 수 있습니다.
 
 `[]`를 ʻuseCallback`에 종속성 배열로 전달합니다. 이렇게 하면 ref 콜백이 다시 렌더링 간에 변경되지 않음으로 React가 불필요하게 호출하지 않습니다.
 
-이 예제에서 콜백 ref는 렌더링 된 `<h1>` 컴포넌트가 모든 리렌더 동안 존재하기 때문에 컴포넌트가 마운트 및 마운트 해제될 때만 호출됩니다. 컴포넌트의 크기가 조정될 때마다 알림을 받으려면 [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) 또는 여기에 빌드된 제삼자 Hook을 사용할 수 있습니다.
+이 예시에서 콜백 ref는 렌더링 된 `<h1>` 컴포넌트가 모든 리렌더 동안 존재하기 때문에 컴포넌트가 마운트 및 마운트 해제될 때만 호출됩니다. 컴포넌트의 크기가 조정될 때마다 알림을 받으려면 [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) 또는 여기에 빌드된 제삼자 Hook을 사용할 수 있습니다.
 
-원한다면 재사용 가능한 Hook으로 [이 로직을 추출](https://codesandbox.io/s/m5o42082xy) 할 수 있습니다:
+원한다면 재사용 가능한 Hook으로 [이 로직을 추출](https://codesandbox.io/s/m5o42082xy) 할 수 있습니다.
 
 ```js{2}
 function MeasureExample() {
@@ -526,7 +526,7 @@ function useClientRect() {
 
 ### 업데이트 시 effect를 건너뛸 수 있습니까? {#can-i-skip-an-effect-on-updates}
 
-예. [조건부 effect 실행](/docs/hooks-reference.html#conditionally-firing-an-effect)을 참조하십시오. 업데이트 처리를 잊어 버리면 종종 [버그가 발생](/docs/hooks-effect.html#explanation-why-effects-run-on-each-update)하므로 이것은 기본 세팅이 아닙니다.
+예. [조건부 effect 실행](/docs/hooks-reference.html#conditionally-firing-an-effect)을 참조해주세요. 업데이트 처리를 잊어 버리면 종종 [버그가 발생](/docs/hooks-effect.html#explanation-why-effects-run-on-each-update)하므로 이것은 기본 세팅이 아닙니다.
 
 ### 종속성 목록에서 함수 컴포넌트를 생략하는 것이 안전합니까? {#is-it-safe-to-omit-functions-from-the-list-of-dependencies}
 
@@ -639,7 +639,7 @@ Effect 내부로 함수 컴포넌트를 옮겼으므로 종속성 목록에 있�
 
 >팁
 >
->이 [짧은 데모](https://codesandbox.io/s/jvvkoo8pq3)와 [이 기사](https://www.robinwieruch.de/react-hooks-fetch-data/)를 확인하여 Hook을 사용한 데이터 가져오기에 대해 자세히 알아보십시오.
+>이 [짧은 데모](https://codesandbox.io/s/jvvkoo8pq3)와 [이 기사](https://www.robinwieruch.de/react-hooks-fetch-data/)를 확인해 Hook을 사용한 데이터 가져오기에 대해 자세히 알아보세요.
 
 **어떤 이유로 effect 내에서 함수 컴포넌트를 이동할 수 _없는_ 경우 몇 가지 옵션이 더 있습니다.**
 
@@ -711,13 +711,13 @@ function Counter() {
 
 이제 `setInterval` 콜백이 1초에 한 번 실행되지만 `setCount`에 대한 내부 호출이 `count`에 최신 값을 사용할 수 있습니다. (여기서는 콜백에서 `c`라고 함).
 
-더 복잡한 경우 (예: 한 state가 다른 state에 의존하는 경우) [`useReducer` Hook](/docs/hooks-reference.html#usereducer)을 사용하여 state 업데이트 로직을 effect 외부로 이동해보십시오. [이 문서](https://adamrackis.dev/state-and-use-reducer/)에서는 이를 수행하는 방법에 대한 예를 제공합니다. **`useReducer`의 `dispatch` 함수 컴포넌트의 정체성은 항상 안정적입니다** — 리듀서 함수 컴포넌트가 컴포넌트 내부에서 선언되고 해당 props를 읽는 경우에도 마찬가지입니다.
+더 복잡한 경우 (예: 한 state가 다른 state에 의존하는 경우) [`useReducer` Hook](/docs/hooks-reference.html#usereducer)을 사용하여 state 업데이트 로직을 effect 외부로 이동해보세요. [이 문서](https://adamrackis.dev/state-and-use-reducer/)에서는 이를 수행하는 방법에 대한 예를 제공합니다. **`useReducer`의 `dispatch` 함수 컴포넌트의 정체성은 항상 안정적입니다** — 리듀서 함수 컴포넌트가 컴포넌트 내부에서 선언되고 해당 props를 읽는 경우에도 마찬가지입니다.
 
 마지막 수단으로, class에서 `this`와 같은 것을 원한다면 [ref를 사용](/docs/hooks-faq.html#is-there-something-like-instance-variables)하여 가변 변수를 보유 할 수 있습니다. 그런 다음 그것을 쓰고 읽을 수 있습니다. 예를 들면.
 
 ```js{2-6,10-11,16}
 function Example(props) {
-  // 최신 props를 ref에 보관하십시오.
+  // 최신 props를 ref에 보관해주세요.
   const latestProps = useRef(props);
   useEffect(() => {
     latestProps.current = props;
@@ -735,7 +735,7 @@ function Example(props) {
 }
 ```
 
-변형에 의존하면 컴포넌트를 예측하기 어렵기 때문에 더 나은 대안을 찾을 수 없는 경우에만 이 작업을 수행하십시오. 제대로 옮겨지지 않는 특정 패턴이 있는 경우 실행 가능한 예제 코드로 [문제를 제출하면](https://github.com/facebook/react/issues/new) 도움을 드릴 수 있습니다.
+변형에 의존하면 컴포넌트를 예측하기 어렵기 때문에 더 나은 대안을 찾을 수 없는 경우에만 이 작업을 수행해주세요. 제대로 옮겨지지 않는 특정 패턴이 있는 경우 실행 가능한 예시 코드로 [문제를 제출하면](https://github.com/facebook/react/issues/new) 도움을 드릴 수 있습니다.
 
 ### shouldComponentUpdate는 어떻게 구현합니까? {#how-do-i-implement-shouldcomponentupdate}
 
@@ -743,7 +743,7 @@ function Example(props) {
 
 ```js
 const Button = React.memo((props) => {
-  // 당신의 컴포넌트
+  // 여러분의 컴포넌트
 });
 ```
 
@@ -761,9 +761,9 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 
 이 코드는 `computeExpensiveValue(a, b)`를 호출합니다. 그러나 종속성 `[a, b]`가 마지막 값 이후로 변경되지 않은 경우 `useMemo`는 두 번째 호출을 건너뛰고 반환된 마지막 값을 재사용합니다.
 
-`useMemo`에 전달된 함수는 렌더링 중에 실행됩니다. 렌더링하는 동안 일반적으로 하지 않는 작업은 하지 마십시오. 예를 들어 부작용은 `useMemo`가 아니라 `useEffect`에 속합니다.
+`useMemo`에 전달된 함수는 렌더링 중에 실행됩니다. 렌더링하는 동안 일반적으로 하지 않는 작업은 하지마세요. 예를 들어 부작용은 `useMemo`가 아니라 `useEffect`에 속합니다.
 
-**의미론적 보장이 아닌 성능 최적화로 `useMemo`를 사용할 수 있습니다.** 미래에 React는 이전에 메모한 일부 값을 "잊고" 다음 렌더링에서 다시 계산하도록 선택할 수 있습니다. 오프 스크린 컴포넌트를 위한 메모리를 확보합니다. `useMemo` 없이도 계속 작동하도록 코드를 작성한 다음 추가하여 성능을 최적화하십시오. (값을 다시 계산해서는 안 되는 드문 경우의 경우, ref를 [느리게 초기화](#how-to-create-expensive-objects-lazily) 할 수 있습니다.)
+**의미론적 보장이 아닌 성능 최적화로 `useMemo`를 사용할 수 있습니다.** 미래에 React는 이전에 메모한 일부 값을 "잊고" 다음 렌더링에서 다시 계산하도록 선택할 수 있습니다. 오프 스크린 컴포넌트를 위한 메모리를 확보합니다. `useMemo` 없이도 계속 작동하도록 코드를 작성한 다음 추가하여 성능을 최적화해주세요. (값을 다시 계산해서는 안 되는 드문 경우의 경우, ref를 [느리게 초기화](#how-to-create-expensive-objects-lazily) 할 수 있습니다.)
 
 편리하게도 `useMemo`를 사용하면 자녀의 값 비싼 다시 렌더링을 건너뛸 수 있습니다.
 
@@ -834,7 +834,7 @@ function Image(props) {
     return ref.current;
   }
 
-  // 필요할 때 getObserver()를 호출하십시오
+  // 필요할 때 getObserver()를 호출해주세요
   // ...
 }
 ```
@@ -845,7 +845,7 @@ function Image(props) {
 
 아니요. 최신 브라우저에서 class와 비교해 클로저의 원시적 성능은 극단적인 시나리오를 제외하고는 크게 다르지 않습니다.
 
-또한 Hook 디자인이 몇 가지 면에서 더 효율적이라는 것을 고려하십시오.
+또한 Hook 디자인이 몇 가지 면에서 더 효율적이라는 것을 고려해주세요.
 
 * Hook은 class 인스턴스를 만들고 생성자에서 이벤트 핸들러를 바인딩하는 비용과 같이 class에 필요한 많은 오버헤드를 방지합니다.
 
@@ -906,15 +906,13 @@ function DeepChild(props) {
 
 이것은 유지 보수 관점에서 더 편리하고 (콜백을 계속 전달할 필요가 없음) 콜백 문제를 모두 방지합니다. 이처럼 `dispatch`를 전달하는 것이 심층 업데이트에 권장되는 패턴입니다.
 
-애플리케이션 state를 props (더욱 명백한) 또는 context로 (매우 심층적인 업데이트에 더 편리함) 전달할지 여부를 선택할 수 있습니다. context를 사용하여 state를 전달하는 경우에도 두 가지 context 유형을 사용하십시오. `dispatch` context는 변경되지 않음으로 이를 읽는 컴포넌트는 애플리케이션 state가 필요하지 않은 한 다시 렌더링할 필요가 없습니다.
+애플리케이션 state를 props (더욱 명백한) 또는 context로 (매우 심층적인 업데이트에 더 편리함) 전달할지 여부를 선택할 수 있습니다. context를 사용하여 state를 전달하는 경우에도 두 가지 context 유형을 사용해주세요. `dispatch` context는 변경되지 않음으로 이를 읽는 컴포넌트는 애플리케이션 state가 필요하지 않은 한 다시 렌더링할 필요가 없습니다.
 
 ### useCallback에서 자주 변경되는 값을 읽는 방법? {#how-to-read-an-often-changing-value-from-usecallback}
 
 >주의
 >
 >props의 개별 콜백보다는 [context에서 `dispatch`를 전달](#how-to-avoid-passing-callbacks-down)하는 것이 좋습니다. 아래 접근 방식은 완전성과 탈출구로만 여기에서 언급됩니다.
->
->또한 이 패턴은 [동시 모드](/blog/2018/03/27/update-on-async-rendering.html)에서 문제를 일으킬 수 있습니다. 앞으로 더 효율적인 대안을 제공할 계획이지만 현재 가장 안전한 해결책은 값이 변경에 따라 달라지는 경우 항상 콜백을 무효로 하는 것입니다.
 
 드물게 [`useCallback`](/docs/hooks-reference.html#usecallback)을 사용하여 콜백을 메모해야 할 수도 있지만, 내부 함수 컴포넌트를 너무 자주 다시 만들어야 하므로 메모가 제대로 작동하지 않습니다. 메모하는 함수 컴포넌트가 이벤트 핸들러이고 렌더링 중에 사용되지 않는 경우 [ref를 인스턴스 변수로](#is-there-something-like-instance-variables) 사용하고 마지막으로 커밋 된 값을 수동으로 저장할 수 있습니다.
 
@@ -930,7 +928,7 @@ function Form() {
   const handleSubmit = useCallback(() => {
     const currentText = textRef.current; // ref에서 읽기
     alert(currentText);
-  }, [textRef]); // [text]처럼 handleSubmit을 다시 만들지 마십시오
+  }, [textRef]); // [text]처럼 handleSubmit을 다시 만들지 마세요
 
   return (
     <>

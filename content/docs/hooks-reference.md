@@ -76,6 +76,7 @@ function Counter({initialCount}) {
 > 클래스 컴포넌트의 `setState` 메서드와는 다르게, `useState`는 갱신 객체(update objects)를 자동으로 합치지는 않습니다. 함수 업데이터 폼을 객체 전개 연산자와 결합함으로써 이 동작을 복제할 수 있습니다.
 >
 > ```js
+> const [state, setState] = useState({});
 > setState(prevState => {
 >   // Object.assign would also work
 >   return {...prevState, ...updatedValues};
@@ -86,7 +87,7 @@ function Counter({initialCount}) {
 
 #### 지연 초기 state {#lazy-initial-state}
 
-`initialState` 인자는 초기 렌더링 시에 사용하는 state입니다. 그 이후의 렌더링 시에는 이 값은 무시됩니다. 만약 초기 state가 고비용 계산의 결과라면, 초기 렌더링 시에만 실행될 함수를 대신 제공할 수 있습니다.
+`initialState` 인자는 초기 렌더링 시에 사용하는 state입니다. 그 이후의 렌더링 시에는 이 값은 무시됩니다. 초기 state가 고비용 계산의 결과라면, 초기 렌더링 시에만 실행될 함수를 대신 제공할 수 있습니다.
 
 ```js
 const [state, setState] = useState(() => {
@@ -99,7 +100,7 @@ const [state, setState] = useState(() => {
 
 State Hook을 현재의 state와 동일한 값으로 갱신하는 경우 React는 자식을 렌더링 한다거나 무엇을 실행하는 것을 회피하고 그 처리를 종료합니다. (React는 [`Object.is` 비교 알고리즘](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description)을 사용합니다.)
 
-실행을 회피하기 전에 React에서 특정 컴포넌트를 다시 렌더링하는 것이 여전히 필요할 수도 있다는 것에 주의하세요. React가 불필요하게 트리에 그 이상으로 「더 깊게」는 관여하지 않을 것이므로 크게 신경 쓰지 않으셔도 됩니다만, 만약 렌더링 시에 고비용의 계산을 하고 있다면 `useMemo`를 사용하여 그것들을 최적화할 수 있습니다.
+실행을 회피하기 전에 React에서 특정 컴포넌트를 다시 렌더링하는 것이 여전히 필요할 수도 있다는 것에 주의하세요. React가 불필요하게 트리에 그 이상으로 「더 깊게」는 관여하지 않을 것이므로 크게 신경 쓰지 않으셔도 됩니다만, 렌더링 시에 고비용의 계산을 하고 있다면 `useMemo`를 사용하여 그것들을 최적화할 수 있습니다.
 
 ### `useEffect` {#useeffect}
 
@@ -109,7 +110,7 @@ useEffect(didUpdate);
 
 명령형 또는 어떤 effect를 발생하는 함수를 인자로 받습니다.
 
-변형, 구독, 타이머, 로깅 또는 다른 부작용(side effects)은 (React의 _렌더링 단계에_ 따르면) 함수 컴포넌트의 본문 안에서는 허용되지 않습니다. 만약 이를 수행한다면 그것은 매우 혼란스러운 버그 및 UI의 불일치를 야기하게 될 것입니다.
+변형, 구독, 타이머, 로깅 또는 다른 부작용(side effects)은 (React의 _렌더링 단계에_ 따르면) 함수 컴포넌트의 본문 안에서는 허용되지 않습니다. 이를 수행한다면 그것은 매우 혼란스러운 버그 및 UI의 불일치를 야기하게 될 것입니다.
 
 대신에 `useEffect`를 사용하세요. `useEffect`에 전달된 함수는 화면에 렌더링이 완료된 후에 수행되게 될 것입니다. React의 순수한 함수적인 세계에서 명령적인 세계로의 탈출구로 생각하세요.
 
@@ -129,7 +130,7 @@ useEffect(() => {
 });
 ```
 
-정리 함수는 메모리 누수 방지를 위해 UI에서 컴포넌트를 제거하기 전에 수행됩니다. 더불어, 만약 컴포넌트가 (그냥 일반적으로 수행하는 것처럼) 여러 번 렌더링 된다면 **다음 effect가 수행되기 전에 이전 effect는 정리됩니다**. 위의 예에서, 매 갱신마다 새로운 구독이 생성된다고 볼 수 있습니다. 갱신마다 불필요한 수행이 발생하는 것을 회피하기 위해서는 다음 절을 참고하세요.
+정리 함수는 메모리 누수 방지를 위해 UI에서 컴포넌트를 제거하기 전에 수행됩니다. 더불어, 컴포넌트가 (그냥 일반적으로 수행하는 것처럼) 여러 번 렌더링 된다면 **다음 effect가 수행되기 전에 이전 effect는 정리됩니다**. 위의 예에서, 매 갱신마다 새로운 구독이 생성된다고 볼 수 있습니다. 갱신마다 불필요한 수행이 발생하는 것을 회피하기 위해서는 다음 절을 참고하세요.
 
 #### effect 타이밍 {#timing-of-effects}
 
@@ -141,9 +142,9 @@ useEffect(() => {
 
 #### 조건부 effect 발생 {#conditionally-firing-an-effect}
 
-effect의 기본 동작은 모든 렌더링을 완료한 후 effect를 발생하는 것입니다. 이와 같은 방법으로 만약 의존성 중 하나가 변경된다면 effect는 항상 재생성됩니다.
+effect의 기본 동작은 모든 렌더링을 완료한 후 effect를 발생하는 것입니다. 이와 같은 방법으로 의존성 중 하나가 변경된다면 effect는 항상 재생성됩니다.
 
-그러나 이것은 이전 섹션의 구독 예제와 같이 일부 경우에는 과도한 작업일 수 있습니다. `source` props가 변경될 때에만 필요한 것이라면 매번 갱신할 때마다 새로운 구독을 생성할 필요는 없습니다.
+그러나 이것은 이전 섹션의 구독 예시와 같이 일부 경우에는 과도한 작업일 수 있습니다. `source` props가 변경될 때에만 필요한 것이라면 매번 갱신할 때마다 새로운 구독을 생성할 필요는 없습니다.
 
 이것을 수행하기 위해서는 `useEffect`에 두 번째 인자를 전달하세요. 이 인자는 effect가 종속되어 있는 값의 배열입니다. 이를 적용한 예는 아래와 같습니다.
 
@@ -165,9 +166,9 @@ useEffect(
 >
 >이 최적화를 사용하는 경우, 값의 배열이 **시간이 지남에 따라 변경되고 effect에 사용되는 컴포넌트 범위의 모든 값들(예를 들어, props와 state와 같은 값들)을** 포함하고 있는지 확인하세요. 그렇지 않다면 여러분의 코드는 이전 렌더링에서 설정된 오래된 값을 참조하게 될 것입니다. [how to deal with functions](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)와 [array values change too often](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 할 때 무엇을 할 것인지에 대해서 조금 더 알아보세요.
 >
->만약 effect를 수행하고 (mount를 하거나 unmount 할 때) 그것을 한 번만 실행하고 싶다면 두 번째 인자로 빈 배열(`[]`)을 전달할 수 있습니다. 이를 통해 effect는 React에게 props나 state에서 가져온 *어떤* 값에도 의존하지 않으므로, 다시 실행할 필요가 전혀 없다는 것을 알려주게 됩니다. 이것을 특별한 경우로 간주하지는 않고, 의존성 값의 배열이 항상 어떻게 동작하는지 직접적으로 보여주는 것뿐입니다.
+>effect를 수행하고 (mount를 하거나 unmount 할 때) 그것을 한 번만 실행하고 싶다면 두 번째 인자로 빈 배열(`[]`)을 전달할 수 있습니다. 이를 통해 effect는 React에게 props나 state에서 가져온 *어떤* 값에도 의존하지 않으므로, 다시 실행할 필요가 전혀 없다는 것을 알려주게 됩니다. 이것을 특별한 경우로 간주하지는 않고, 의존성 값의 배열이 항상 어떻게 동작하는지 직접적으로 보여주는 것뿐입니다.
 >
->만약 빈 배열(`[]`)을 전달한다면 effect 안에 있는 props와 state는 항상 초깃값을 가지게 될 것입니다. 두 번째 인자로써 `[]`을 전달하는 것이 친숙한 `componentDidMount`와 `componentWillUnmount`에 의한 개념과 비슷하게 느껴지겠지만, effect가 너무 자주 리렌더링 되는 것을 피하기 위한 보통 [더 나은](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [해결책](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)이 있습니다. 또한 브라우저가 모두 그려질 때까지 React는 `useEffect`의 수행을 지연하기 때문에 다른 작업의 수행이 문제가 되지는 않는다는 것을 잊지 마세요.
+>빈 배열(`[]`)을 전달한다면 effect 안에 있는 props와 state는 항상 초깃값을 가지게 될 것입니다. 두 번째 인자로써 `[]`을 전달하는 것이 친숙한 `componentDidMount`와 `componentWillUnmount`에 의한 개념과 비슷하게 느껴지겠지만, effect가 너무 자주 리렌더링 되는 것을 피하기 위한 보통 [더 나은](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [해결책](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)이 있습니다. 또한 브라우저가 모두 그려질 때까지 React는 `useEffect`의 수행을 지연하기 때문에 다른 작업의 수행이 문제가 되지는 않는다는 것을 잊지 마세요.
 >
 >
 >[`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 패키지의 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 규칙을 사용하기를 권장합니다. 그것은 의존성이 바르지 않게 정의되었다면 그에 대해 경고하고 수정하도록 알려줍니다.
@@ -186,15 +187,17 @@ context 객체(`React.createContext`에서 반환된 값)을 받아 그 context�
 
 `useContext`로 전달한 인자는 *context 객체 그 자체*이어야 함을 잊지 마세요.
 
+<!-- textlint-disable -->
+
  * **맞는 사용:** `useContext(MyContext)`
  * **틀린 사용:** `useContext(MyContext.Consumer)`
  * **틀린 사용:** `useContext(MyContext.Provider)`
 
-`useContext`를 호출한 컴포넌트는 context 값이 변경되면 항상 리렌더링 될 것입니다. 만약 컴포넌트를 리렌더링 하는 것에 비용이 많이 든다면, [메모이제이션을 사용하여 최적화할 수 있습니다.](https://github.com/facebook/react/issues/15156#issuecomment-474590693)
+`useContext`를 호출한 컴포넌트는 context 값이 변경되면 항상 리렌더링 될 것입니다. 컴포넌트를 리렌더링 하는 것에 비용이 많이 든다면, [메모이제이션을 사용하여 최적화할 수 있습니다.](https://github.com/facebook/react/issues/15156#issuecomment-474590693)
 
 >팁
 >
->만약 여러분이 Hook 보다 context API에 친숙하다면 `useContext(MyContext)`는 클래스에서의 `static contextType = MyContext` 또는 `<MyContext.Consumer>`와 같다고 보면 됩니다.
+>여러분이 Hook 보다 context API에 친숙하다면 `useContext(MyContext)`는 클래스에서의 `static contextType = MyContext` 또는 `<MyContext.Consumer>`와 같다고 보면 됩니다.
 >
 >`useContext(MyContext)`는 context를 *읽고* context의 변경을 구독하는 것만 가능합니다. context의 값을 설정하기 위해서는 여전히 트리의 윗 계층에서의 `<MyContext.Provider>`가 필요합니다.
 
@@ -251,11 +254,11 @@ function ThemedButton() {
 const [state, dispatch] = useReducer(reducer, initialArg, init);
 ```
 
-[`useState`](#usestate)의 대체 함수입니다. `(state, action) => newState`의 형태로 reducer를 받고 `dispatch` 메서드와 짝의 형태로 현재 state를 반환합니다. (만약 Redux 에 익숙하다면 이것이 어떻게 동작하는지 여러분은 이미 알고 있을 것입니다.)
+[`useState`](#usestate)의 대체 함수입니다. `(state, action) => newState`의 형태로 reducer를 받고 `dispatch` 메서드와 짝의 형태로 현재 state를 반환합니다. (Redux에 익숙하다면 이것이 어떻게 동작하는지 여러분은 이미 알고 있을 것입니다.)
 
 다수의 하윗값을 포함하는 복잡한 정적 로직을 만드는 경우나 다음 state가 이전 state에 의존적인 경우에 보통 `useState`보다 `useReducer`를 선호합니다. 또한 `useReducer`는 자세한 업데이트를 트리거 하는 컴포넌트의 성능을 최적화할 수 있게 하는데, 이것은 [콜백 대신 `dispatch`를 전달](/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down) 할 수 있기 때문입니다.
 
-아래는 [`useState`](#usestate) 내용에 있던 카운터 예제인데 reducer를 사용해서 다시 작성한 것입니다.
+아래는 [`useState`](#usestate) 내용에 있던 카운터 예시인데 reducer를 사용해서 다시 작성한 것입니다.
 
 ```js
 const initialState = {count: 0};
@@ -300,7 +303,7 @@ function Counter() {
 
 >주의
 >
->React에서는 Reducer의 인자로써 `state = initialState`와 같은 초기값을 나타내는, Redux에서는 보편화된 관습을 사용하지 않습니다. 때때로 초기값은 props에 의존할 필요가 있어 Hook 호출에서 지정되기도 합니다. 만약 초기값을 나타내는 것이 정말 필요하다면 `useReducer(reducer, undefined, reducer)`를 호출하는 방법으로 Redux를 모방할 수는 있겠지만, 이 방법을 권장하지는 않습니다.
+>React에서는 Reducer의 인자로써 `state = initialState`와 같은 초기값을 나타내는, Redux에서는 보편화된 관습을 사용하지 않습니다. 때때로 초기값은 props에 의존할 필요가 있어 Hook 호출에서 지정되기도 합니다. 초기값을 나타내는 것이 정말 필요하다면 `useReducer(reducer, undefined, reducer)`를 호출하는 방법으로 Redux를 모방할 수는 있겠지만, 이 방법을 권장하지는 않습니다.
 
 #### 초기화 지연 {#lazy-initialization}
 
@@ -346,7 +349,7 @@ function Counter({initialCount}) {
 
 Reducer Hook에서 현재 state와 같은 값을 반환하는 경우 React는 자식을 리렌더링하거나 effect를 발생하지 않고 이것들을 회피할 것입니다. (React는 [`Object.is` 비교 알고리즘](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description)을 사용합니다.)
 
-실행을 회피하기 전에 React에서 특정 컴포넌트를 다시 렌더링하는 것이 여전히 필요할 수도 있다는 것에 주의하세요. React가 불필요하게 트리에 그 이상으로 「더 깊게」 까지는 가지 않을 것이므로 크게 신경 쓰지 않으셔도 됩니다. 만약 렌더링 시에 고비용의 계산을 하고 있다면 `useMemo`를 사용하여 그것들을 최적화할 수 있습니다.
+실행을 회피하기 전에 React에서 특정 컴포넌트를 다시 렌더링하는 것이 여전히 필요할 수도 있다는 것에 주의하세요. React가 불필요하게 트리에 그 이상으로 「더 깊게」 까지는 가지 않을 것이므로 크게 신경 쓰지 않으셔도 됩니다. 렌더링 시에 고비용의 계산을 하고 있다면 `useMemo`를 사용하여 그것들을 최적화할 수 있습니다.
 
 ### `useCallback` {#usecallback}
 
@@ -421,13 +424,13 @@ function TextInputWithFocusButton() {
 
 본질적으로 `useRef`는 `.current` 프로퍼티에 변경 가능한 값을 담고 있는 "상자"와 같습니다.
 
-아마도 여러분은 [DOM에 접근](/docs/refs-and-the-dom.html)하는 방법으로 refs에 친숙할 지도 모르겠습니다. 만약 `<div ref={myRef} />`를 사용하여 React로 ref 객체를 전달한다면, React는 모드가 변경될 때마다 변경된 DOM 노드에 그것의 `.current` 프로퍼티를 설정할 것입니다.
+아마도 여러분은 [DOM에 접근](/docs/refs-and-the-dom.html)하는 방법으로 refs에 친숙할 지도 모르겠습니다. `<div ref={myRef} />`를 사용하여 React로 ref 객체를 전달한다면, React는 모드가 변경될 때마다 변경된 DOM 노드에 그것의 `.current` 프로퍼티를 설정할 것입니다.
 
 그렇지만, `ref` 속성보다 `useRef()`가 더 유용합니다. 이 기능은 클래스에서 인스턴스 필드를 사용하는 방법과 유사한 [어떤 가변값을 유지하는 데에 편리합니다](/docs/hooks-faq.html#is-there-something-like-instance-variables).
 
 이것은 `useRef()`가 순수 자바스크립트 객체를 생성하기 때문입니다. `useRef()`와 `{current: ...}` 객체 자체를 생성하는 것의 유일한 차이점이라면 `useRef`는 매번 렌더링을 할 때 동일한 ref 객체를 제공한다는 것입니다.
 
-`useRef`는 내용이 변경될 때 그것을 알려주지는 *않는다*는 것을 유념하세요. `.current` 프로퍼티를 변형하는 것이 리렌더링을 발생시키지는 않습니다. 만약 React가 DOM 노드에 ref를 attach하거나 detach할 때 어떤 코드를 실행하고 싶다면 대신 [콜백 ref](/docs/hooks-faq.html#how-can-i-measure-a-dom-node)를 사용하세요.
+`useRef`는 내용이 변경될 때 그것을 알려주지는 *않는다*는 것을 유념하세요. `.current` 프로퍼티를 변형하는 것이 리렌더링을 발생시키지는 않습니다. React가 DOM 노드에 ref를 attach하거나 detach할 때 어떤 코드를 실행하고 싶다면 대신 [콜백 ref](/docs/hooks-faq.html#how-can-i-measure-a-dom-node)를 사용하세요.
 
 
 ### `useImperativeHandle` {#useimperativehandle}
@@ -451,7 +454,7 @@ function FancyInput(props, ref) {
 FancyInput = forwardRef(FancyInput);
 ```
 
-위의 예제에서 `<FancyInput ref={inputRef} />`를 렌더링한 부모 컴포넌트는 `inputRef.current.focus()`를 호출할 수 있습니다.
+위의 예시에서 `<FancyInput ref={inputRef} />`를 렌더링한 부모 컴포넌트는 `inputRef.current.focus()`를 호출할 수 있습니다.
 
 ### `useLayoutEffect` {#uselayouteffect}
 

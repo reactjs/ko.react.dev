@@ -40,7 +40,7 @@ function Example() {
 
 여기서 `useState`가 바로 *Hook* 입니다(이게 무슨 의미인지는 앞으로 알아보겠습니다). Hook을 호출해 함수 컴포넌트(function component) 안에 state를 추가했습니다. 이 state는 컴포넌트가 다시 렌더링 되어도 그대로 유지될 것입니다. `useState`는 *현재의* state 값과 이 값을 업데이트하는 함수를 쌍으로 제공합니다. 우리는 이 함수를 이벤트 핸들러나 다른 곳에서 호출할 수 있습니다. 이것은 class의 `this.setState`와 거의 유사하지만, 이전 state와 새로운 state를 합치지 않는다는 차이점이 있습니다. (`useState`와 `this.state`를 비교하는 예시가 [Using the State Hook](/docs/hooks-state.html) 문서에 있으니 한번 보세요.)
 
-`useState`는 인자로 초기 state 값을 하나 받습니다. 카운터는 0부터 시작하기 때문에 위 예시에서는 초기값으로 `0`을 넣어준 것입니다. `this.state`와는 달리 `setState` Hook의 state는 객체일 필요가 없습니다. 물론 원한다면 그렇게도 가능하지만요. 이 초기값은 첫 번째 렌더링에만 딱 한번 사용됩니다.
+`useState`는 인자로 초기 state 값을 하나 받습니다. 카운터는 0부터 시작하기 때문에 위 예시에서는 초기값으로 `0`을 넣어준 것입니다. `this.state`와는 달리 `useState` Hook의 state는 객체일 필요가 없습니다. 물론 원한다면 그렇게도 가능하지만요. 이 초기값은 첫 번째 렌더링에만 딱 한번 사용됩니다.
 
 #### 여러 state 변수 선언하기 {#declaring-multiple-state-variables}
 
@@ -128,7 +128,7 @@ function FriendStatus(props) {
 }
 ```
 
-이 예시에서 컴포넌트가 unmount될 때 React는 `ChatAPI`에서 구독을 해지할 것입니다. 또한 재 렌더링이 일어나 effect를 재실행하기 전에도 마찬가지로 구독을 해지합니다. (만약 원한다면 `props.friend.id`가 바뀌지 않았을 때 [재구독을 건너뛰도록 설정](/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)할 수 있습니다.)
+이 예시에서 컴포넌트가 unmount될 때 React는 `ChatAPI`에서 구독을 해지할 것입니다. 또한 재 렌더링이 일어나 effect를 재실행하기 전에도 마찬가지로 구독을 해지합니다. (원한다면 `props.friend.id`가 바뀌지 않았을 때 [재구독을 건너뛰도록 설정](/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)할 수 있습니다.)
 
 `useState`와 마찬가지로 컴포넌트 내에서 여러 개의 effect를 사용할 수 있습니다.
 
@@ -264,7 +264,7 @@ function Todos() {
 
 ## 다음 단계 {#next-steps}
 
-휴, 정말 순식간이었죠! 만약 잘 이해가 안 되는 부분이 있거나 좀 더 깊이 공부하고 싶으면 [State Hook](/docs/hooks-state.html)부터 시작해서 다른 문서들을 읽어보시기 바랍니다.
+휴, 정말 순식간이었죠! 잘 이해가 안 되는 부분이 있거나 좀 더 깊이 공부하고 싶으면 [State Hook](/docs/hooks-state.html)부터 시작해서 다른 문서들을 읽어보시기 바랍니다.
 
 또한 [Hooks API reference](/docs/hooks-reference.html)와 [Hooks FAQ](/docs/hooks-faq.html)도 참고하시기 바랍니다.
 

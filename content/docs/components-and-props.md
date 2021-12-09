@@ -1,6 +1,6 @@
 ---
 id: components-and-props
-title: Components and Props
+title: Components와 Props
 permalink: docs/components-and-props.html
 redirect_from:
   - "docs/reusable-components.html"
@@ -49,7 +49,7 @@ class는 몇 가지 추가 기능이 있으며 이에 대해서는 [다음 장](
 
 ## 컴포넌트 렌더링 {#rendering-a-component}
 
-이전까지는 React 엘리먼트를 DOM 태그로 나타냈습니다.  
+이전까지는 DOM 태그만을 사용해 React 엘리먼트를 나타냈습니다.
 
 ```js
 const element = <div />;
