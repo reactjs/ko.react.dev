@@ -27,7 +27,7 @@ CDN에서 리액트(혹은 오류를 발생시킬 수 있는 다른 라이브러
 
 ![Access-Control-Allow-Origin: *](../images/docs/cdn-cors-header.png)
 
-### 웹팩 {#webpack}
+### Webpack {#webpack}
 
 #### 소스 맵 {#source-maps}
 
