@@ -24,7 +24,7 @@ const variantMap = {
     classes: 'bg-ui-orange text-white',
   },
   deprecated: {
-    name: '샤용되지 않는',
+    name: '사용되지 않는',
     classes: 'bg-red-40 text-white',
   },
 };
