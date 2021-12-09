@@ -4,7 +4,7 @@ title: 새로운 React 프로젝트 시작하기
 
 <Intro>
 
-React를 배우길 원하거나 프로젝트에 도입을 고민하고 있다면, [스크립트 태그가 있는 HTML 페이지에 리액트 추가](/learn/add-react-to-a-website)에서 신속히 시작할 수 있습니다. 프로젝트에 수많은 컴포넌트와 파일들이 필요하다면 아래의 옵션을 고려해보세요!
+React를 배우길 원하거나 프로젝트에 도입을 고민하고 있다면, [스크립트 태그가 있는 HTML 페이지에 리액트 추가](/learn/add-react-to-a-website)에서 신속히 시작할 수 있습니다. 프로젝트에 수많은 컴포넌트와 파일들이 필요하다면 아래의 선택지를 고려해보세요!
 
 </Intro>
 
@@ -24,7 +24,7 @@ Create React App은 React 전용으로 구성된 유연한 툴체인입니다. �
 
 - 여러 파일 및 컴포넌트로 확장할 수 있습니다.
 - npm을 통한 서드 파티 라이브러리 이용이 가능합니다.
-- 실수를 조기 발견합니다.
+- 실수를 조기에 발견합니다.
 - 개발환경에서 JS, CSS의 실시간 편집을 지원합니다.
 - 프로덕션 결과물을 최적화합니다.
 
@@ -45,11 +45,11 @@ npm start
 
 </TerminalBlock>
 
-자세한 내용은 [공식 가이드](https://create-react-app.docs/시작하기)를 참조하세요.
+자세한 내용은 [공식 가이드](https://create-react-app.docs/getting-started)를 참조하세요.
 
-> Create React App은 데이터베이스나 백 엔드 로직을 다루지 않습니다. 단지 프론트 엔드 빌드 파이프라인을 생성할 뿐입니다. 즉 원하는 백 엔드와 함께 사용할 수 있습니다. 그러나 라우팅, 서버 사이드 로직 등의 기능에 대해 더 찾고 있다면 계속 읽어주세요!
+> Create React App은 데이터베이스나 백엔드 로직을 다루지 않습니다. 단지 프론트엔드 빌드 파이프라인을 생성할 뿐입니다. 즉 원하는 백엔드와 함께 사용할 수 있습니다. 그러나 라우팅, 서버 사이드 로직 등의 기능에 대해 더 찾고 있다면 계속 읽어주세요!
 
-### 다른 옵션 {/_other-options_/}
+### 다른 선택지 {/_other-options_/}
 
 Create React App은 React를 시작하기에 좋지만, 더 가벼운 툴체인을 원한다면 다음과 같은 인기 툴체인 중 하나를 사용해 볼 수 있습니다.
 
@@ -59,14 +59,14 @@ Create React App은 React를 시작하기에 좋지만, 더 가벼운 툴체인�
 
 ## React와 프레임워크로 빌드하기 {/_building-with-react-and-a-framework_/}
 
-더 큰 규모의 프로덕션 단계의 프로젝트를 시작하려면 [Next.js](https://nextjs.org/)를 참조하세요. Next.js는 React로 빌드된 정적 및 서버 렌더링 애플리케이션을 위한 경량 프레임워크입니다. 라우팅, 스타일링 및 서버사이드 렌더링과 같은 기능이 사전 패키지로 제공되어 프로젝트를 신속하게 실행할 수 있습니다.
+더 큰 규모의 프로덕션 단계의 프로젝트를 시작하려면 [Next.js](https://nextjs.org/)를 참조하세요. Next.js는 React로 빌드된 정적 및 서버 사이드 렌더링 애플리케이션을 위한 경량 프레임워크입니다. 라우팅, 스타일링 및 서버 사이드 렌더링과 같은 기능이 사전 패키지로 제공되어 프로젝트를 신속하게 실행할 수 있습니다.
 
 [Next.js 공식 가이드](https://nextjs.org/docs/getting-started)와 함께 빌드를 시작하세요
 
-### 또 다른 옵션 {/_other-options-1_/}
+### 또 다른 선택지 {/_other-options-1_/}
 
 - [Gatsby](https://www.gatsbyjs.org/)를 이용하여 React와 GraphQL로 정적 웹사이트를 생성할 수 있습니다.
-- [Razzle](https://razzlejs.org/)은 어떤 설정도 요구하지 않는, Next.js보다 유연한 서버 렌더링 프레임워크입니다.
+- [Razzle](https://razzlejs.org/)은 어떤 설정도 요구하지 않는, Next.js보다 유연한 서버 사이드 렌더링 프레임워크입니다.
 
 ## 툴체인 커스텀 {/_custom-toolchains_/}
 
