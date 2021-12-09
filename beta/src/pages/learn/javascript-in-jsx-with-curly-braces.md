@@ -4,16 +4,16 @@ title: JavaScript에서 중괄호가 있는 JSX
 
 <Intro>
 
-JSX를 사용하면 JavaScript 파일에 HTML과 비슷한 마크업을 작성하여 렌더링 로직과 콘텐츠를 같은 곳에 놓을 수 있습니다. 때로는 JavaScript 논리를 추가하거나 해당 마크업 내부의 동적인 프로퍼티를 참조하고 싶을 수 있습니다. 이 상황에서 JSX에서 중괄호를 사용하여 JavaScript를 사용할 수 있습니다.
+JSX를 사용하면 JavaScript 파일에 HTML과 비슷한 마크업을 작성하여 렌더링 로직과 콘텐츠를 같은 곳에 놓을 수 있습니다. 때로는 JavaScript 논리를 추가하거나 해당 마크업 내부의 동적인 프로퍼티를 참조하고 싶을 수 있습니다. 이 상황에서는 JSX에서 중괄호를 사용하여 JavaScript를 사용할 수 있습니다.
 
 </Intro>
 
 <YouWillLearn>
 
 * 따옴표로 문자열을 전달하는 방법
-* 중괄호가 있는 JSX 안에서 Javascript의 변수를 참조하는 방법
-* 중괄호가 있는 JSX 안에서 Javascript의 함수를 호출하는 방법
-* 중괄호가 있는 JSX 안에서 Javascript의 객체를 사용하는 방법
+* 중괄호가 있는 JSX 안에서 Javascript 변수를 참조하는 방법
+* 중괄호가 있는 JSX 안에서 Javascript 함수를 호출하는 방법
+* 중괄호가 있는 JSX 안에서 Javascript 객체를 사용하는 방법
 
 </YouWillLearn>
 
@@ -69,9 +69,9 @@ export default function Avatar() {
 
 이미지를 둥글게 만드는 `"avatar"` CSS 클래스 이름을 지정하는 `className="avatar"`와 `avatar`라는 JavaScript 변수의 값을 읽는 `src={avatar}`의 차이점에 주목해야 합니다. 중괄호를 사용하면 마크업에서 바로 JavaScript를 사용할 수 있기 때문입니다.
 
-## 중괄호 사용하기: Javascript 세계로 가는 창 {/*using-curly-braces-a-window-into-the-javascript-world*/}
+## 중괄호 사용하기: Javascript 세계로 연결하는 창 {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
-JSX는 JavaScript를 작성하는 특별한 방법입니다. 중괄호 `{ }`와 함께 안에서 JavaScript를 사용할 수 있습니다. 아래 예시는 이름 `name`을 선언한 다음 `<h1>` 내부에 중괄호로 포함합니다.
+JSX는 JavaScript를 작성하는 특별한 방법입니다. 중괄호 `{ }` 사이에서 JavaScript를 사용할 수 있습니다. 아래 예시는 이름 `name`을 선언한 다음 `<h1>` 내부에 중괄호로 포함합니다.
 
 <Sandpack>
 
@@ -115,12 +115,12 @@ export default function TodoList() {
 
 JSX 안에서 중괄호는 두 가지 방법으로만 사용할 수 있습니다.
 
-1. JSX 태그 안의 **문자**로: `<h1>{name}의 To Do List</h1>`는 작동하지만, `<{tag}>Gregorio Y. Zara의 To Do List</{tag}>` 작동하지 않습니다.
-2. `=` 바로 뒤에 오는 **어트리뷰트**로: `src={avatar}`는 `avatar` 변수를 읽지만 `src="{avatar}"`는 `{avatar}` 문자열을 전달합니다.
+1. JSX 태그 안의 **문자**: `<h1>{name}'s To Do List</h1>`는 작동하지만, `<{tag}>Gregorio Y. Zara's To Do List</{tag}>` 작동하지 않습니다.
+2. `=` 바로 뒤에 오는 **어트리뷰트**: `src={avatar}`는 `avatar` 변수를 읽지만 `src="{avatar}"`는 `{avatar}` 문자열을 전달합니다.
 
 ## "이중 중괄호 사용하기": JSX의 CSS와 다른 객체 {/*using-double-curlies-css-and-other-objects-in-jsx*/}
 
-문자열, 숫자 및 기타 JavaScript 표현식 외에도 JSX에 객체를 전달할 수도 있습니다. 객체는 또한 `{ name: "Hedy Lamarr", inventions: 5 }`처럼 중괄호로 표시됩니다. 따라서 JSX에서 객체를 전달하려면 `person={{ name: "Hedy Lamarr", inventions: 5 }}`와 같이 다른 중괄호 쌍으로 객체를 감싸야 합니다.
+문자열, 숫자 및 기타 JavaScript 표현식 외에도 JSX에 객체를 전달할 수도 있습니다. 또한 객체는 `{ name: "Hedy Lamarr", inventions: 5 }`처럼 중괄호로 표시됩니다. 따라서 JSX에서 객체를 전달하려면 `person={{ name: "Hedy Lamarr", inventions: 5 }}`와 같이 다른 중괄호 쌍으로 객체를 감싸야 합니다.
 
 JSX의 인라인 CSS 스타일에서도 볼 수 있습니다. React는 인라인 스타일을 사용하도록 요구하지 않습니다(CSS 클래스는 대부분 잘 작동합니다). 그러나 인라인 스타일이 필요할 때 `style` 속성에 객체를 전달해야 합니다.
 
@@ -230,7 +230,7 @@ const person = {
   <h1>{person.name}'s Todos</h1>
 ```
 
-JSX는 JavaScript를 사용하여 데이터와 논리를 구성할 수 있어 템플릿 언어로서 매우 작습니다.
+JSX는 JavaScript를 사용하여 데이터와 논리를 구성할 수 있는 매우 작은 템플릿 언어입니다.
 
 <Recap>
 
@@ -480,9 +480,9 @@ body > div > div { padding: 20px; }
 
 `src={baseUrl + person.imageId + person.imageSize + '.jpg'}`같이 작성할 수 있습니다.
 
-1. `{` 는 Javascript 표현식을 엽니다.
+1. `{` 는 JavaScript 표현식을 엽니다.
 2. `baseUrl + person.imageId + person.imageSize + '.jpg'` 는 올바른 URL 문자열을 생성합니다.
-3. `}` 는 Javascript 표현식을 닫습니다.
+3. `}` 는 JavaScript 표현식을 닫습니다.
 
 <Sandpack>
 
