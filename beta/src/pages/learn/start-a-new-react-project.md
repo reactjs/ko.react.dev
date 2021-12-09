@@ -47,7 +47,7 @@ npm start
 
 자세한 내용은 [공식 가이드](https://create-react-app.docs/시작하기)를 참조하세요.
 
-> Create React App은 데이터베이스나 백 엔드 로직을 다루지 않습니다. 단지 프론트 엔드 빌드 파이프라인을 생성할 뿐입니다. 즉 원하는 백 엔드와 함께 사용할 수 있습니다. 그러나 라우팅, 서버사이드 로직 등의 기능에 대해 더 찾고 있다면 계속 읽어주세요!
+> Create React App은 데이터베이스나 백 엔드 로직을 다루지 않습니다. 단지 프론트 엔드 빌드 파이프라인을 생성할 뿐입니다. 즉 원하는 백 엔드와 함께 사용할 수 있습니다. 그러나 라우팅, 서버 사이드 로직 등의 기능에 대해 더 찾고 있다면 계속 읽어주세요!
 
 ### 다른 옵션 {/_other-options_/}
 
@@ -73,9 +73,9 @@ Create React App은 React를 시작하기에 좋지만, 더 가벼운 툴체인�
 직접 툴체인을 생성 및 설정하고 싶다면, 자바스크립트 빌드 툴체인의 구성을 고려하세요.
 
 - [Yarn](https://yarnpkg.com/)과 [npm](https://www.npmjs.com/))같은 **패키지 매니저**를 사용하여 서드 파티 패키지를 설치, 업데이트 및 관리할 수 있습니다.
-- [Webpack](https://webpack.js.org/), [Snowpack](https://www.snowpack.dev/), [Parcel](https://parceljs.org/)과 같은 **번들러**를 사용하면 모듈식 코드를 작성하고 이를 작은 패키지로 함께 번들링하여 로드 시간을 최적화할 수 있습니다
+- [Webpack](https://webpack.js.org/), [Snowpack](https://www.snowpack.dev/), [Parcel](https://parceljs.org/)과 같은 **번들러**를 사용하면 모듈식 코드를 작성하고 이를 작은 패키지로 함께 번들링 하여 로드 시간을 최적화할 수 있습니다
 - [Babel](https://babeljs.io/)과 같은 **컴파일러**는 이전 브라우저에서도 최신 자바스크립트 코드를 작동시킵니다.
 
 대규모 프로젝트에서는 단일 리포지토리에서 여러 패키지를 관리하는 툴이 필요할 수도 있습니다. [Nx](https://nx.dev/react)가 이러한 툴의 예입니다.
 
-자바스크립트 툴체인을 처음부터 만들어보고 싶다면, [Create React App 기능을 다시 만드는 가이드](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658)를 확인해보세요.
+자바스크립트 툴체인을 처음부터 만들어보고 싶다면, [Create React App 만들어보기](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658)를 확인해보세요.
