@@ -31,7 +31,7 @@ title: 에디터 셋업
 
 ### 포맷팅 {/*formatting*/}
 
-다른 개발자들과 협업할 때 가장 피하고 싶은 것은 [탭 vs 공백](https://www.google.com/search?q=tabs+vs+spaces)에 대한 논쟁일 것이다. 다행히 [Prettier](https://prettier.io/)를 사용하면 개발자가 직접 지정해놓은 규칙들에 부합하도록 코드의 형식을 깔끔하게 정리할 수 있습니다. Prettier를 실행하면 모든 탭들은 공백으로 전환될 뿐만 아니라 들여쓰기, 따옴표 형식과 같은 요소들이 전부 설정에 부합하도록 수정될 것입니다. 파일을 저장할 때마다 Prettier가 자동 실행되어 이러한 작업들을 수행해주는 것이 가장 이상적인 셋업입니다. 다음과 같은 단계를 통해 [VC Code의 Prettier 익스텐션](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)을 설치할 수 있습니다.
+다른 개발자들과 협업할 때 가장 피하고 싶은 것은 [탭 vs 공백](https://www.google.com/search?q=tabs+vs+spaces)에 대한 논쟁일 것입니다. 다행히 [Prettier](https://prettier.io/)를 사용하면 직접 지정해놓은 규칙들에 부합하도록 코드의 형식을 깔끔하게 정리할 수 있습니다. Prettier를 실행하면 모든 탭들은 공백으로 전환될 뿐만 아니라 들여쓰기, 따옴표 형식과 같은 요소들이 전부 설정에 부합하도록 수정될 것입니다. 파일을 저장할 때마다 Prettier가 자동 실행되어 이러한 작업들을 수행해주는 것이 가장 이상적인 설정입니다. 다음과 같은 단계를 통해 [VS Code의 Prettier 익스텐션](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)을 설치할 수 있습니다.
 
 1. VS Code 실행하기
 2. 퀵오픈 사용하기 (`CTRL/CMD + P` 누르기)
