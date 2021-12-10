@@ -1,22 +1,22 @@
 ---
-title: 웹사이트에 React 추가
+title: 웹사이트에 React 추가하기
 ---
 
 <Intro>
 
-React는 처음부터 점진적인 도입을 위해 설계되었으며, 필요한 만큼 React를 사용할 수 있습니다. 마이크로 프론트 엔드, 기존 시스템 혹은 단순히 React 사용 여부와 관계없이 몇 줄의 코드만으로 HTML 페이지에 인터렉티브한 React 컴포넌트를 추가할 수 있습니다. 빌드 도구 없이 말이죠!
+React는 처음부터 점진적인 도입을 위해 설계되었으며, 필요한 만큼 React를 사용할 수 있습니다. 마이크로 프론트엔드, 기존 시스템 혹은 단순히 React 사용 여부와 관계없이 몇 줄의 코드만으로 HTML 페이지에 인터렉티브한 React 컴포넌트를 추가할 수 있습니다. 빌드 도구 없이 말이죠!
 
 </Intro>
 
-## 1분 안에 React 추가 {/*add-react-in-one-minute*/}
+## 1분 안에 React 추가하기 {/*add-react-in-one-minute*/}
 
-1분 안에 기존 HTML 페이지에 React 컴포넌트를 추가할 수 있습니다. 자신의 웹 사이트나 [빈 HTML 파일](https://gist.github.com/rachelnabors/7b33305bf33776354797a2e3c1445186/archive/859eac2f7079c9e1f0a6eb818a9684a464064d80.zip)에 시도해 보세요. 인터넷 연결과 메모장(또는 VSCode—[설정 방법](/learn/editor-setup/)에 대한 가이드를 확인하세요.) 같은 텍스트 편집기만 있으면 됩니다. 
+1분 안에 기존 HTML 페이지에 React 컴포넌트를 추가할 수 있습니다. 자신의 웹 사이트나 [빈 HTML 파일](https://gist.github.com/rachelnabors/7b33305bf33776354797a2e3c1445186/archive/859eac2f7079c9e1f0a6eb818a9684a464064d80.zip)에 시도해 보세요. 인터넷 연결과 메모장(또는 VSCode—[설정 방법](/learn/editor-setup/)에 대한 가이드를 확인하세요.) 같은 텍스트 편집기만 있으면 됩니다! 
 
-### 1단계: HTML에 엘리먼트 추가 {/*step-1-add-an-element-to-the-html*/}
+### 1단계: HTML에 엘리먼트 추가하기 {/*step-1-add-an-element-to-the-html*/}
 
-편집하려는 HTML 페이지에서 빈 `<div>` 태그와 같은 HTML 엘리먼트에 고유 id를 추가하여 React로 무언가 표시하고 싶은 곳에 추가합니다.
+편집하려는 HTML 페이지에서 빈 `<div>` 태그와 같은 HTML 엘리먼트에 고유 `id`를 추가하여 React로 무언가 표시하고 싶은 곳에 추가합니다.
 
-`div` 와 같은 "컨테이너" 엘리먼트는 `<body>` 태그 내부의 아무 곳에나 배치할 수 있습니다. React는 HTML 엘리먼트 내의 기존 콘텐츠를 대체하므로 보통 비어 있습니다. 한 페이지에 이러한 HTML 엘리먼트를 필요한 만큼 가질 수 있습니다.
+`<div>` 와 같은 "컨테이너" 엘리먼트는 `<body>` 태그 내부의 아무 곳에나 배치할 수 있습니다. React는 HTML 엘리먼트 내의 기존 콘텐츠를 대체하므로 보통 비어 있습니다. 한 페이지에 이러한 HTML 엘리먼트를 필요한 만큼 가질 수 있습니다.
 
 ```html {3}
 <!-- ... 기존 HTML ... -->
@@ -26,7 +26,7 @@ React는 처음부터 점진적인 도입을 위해 설계되었으며, 필요�
 <!-- ... 기존 HTML ... -->
 ```
 
-### 2단계: 스크립트 태그 추가 {/*step-2-add-the-script-tags*/}
+### 2단계: 스크립트 태그 추가하기 {/*step-2-add-the-script-tags*/}
 
 HTML 페이지에서 닫는 `</body>` 태그 바로 앞에 다음 파일에 대한 3개의 `<script>` 태그를 추가 합니다.
 
@@ -72,7 +72,7 @@ function LikeButton() {
 }
 ```
 
-### 4단계: 페이지에 React 컴포넌트 추가 {/*step-4-add-your-react-component-to-the-page*/}
+### 4단계: 페이지에 React 컴포넌트 추가하기 {/*step-4-add-your-react-component-to-the-page*/}
 
 마지막으로 **like_button.js** 하단에 두 줄을 추가합니다. 이 두 줄의 코드는  1단계에서 HTML에 추가한 `<div>`를 찾은 다음 그 안에 React 컴포넌트 "Like" 버튼을 추가합니다.
 
@@ -105,9 +105,9 @@ ReactDOM.render(
 );
 ```
 
-Check out ["Like" 버튼을 세 번 추가하고 일부 데이터를 전달하는 예시](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)를 확인하세요!
+Check out ["Like" 버튼을 세 번 추가하고 일부 데이터를 전달하는 예제](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)를 확인하세요!
 
-### 5단계: 프로덕션용 JavaScript 코드 경량화 {/*step-5-minify-javascript-for-production*/}
+### 5단계: 프로덕션용 JavaScript 코드 경량화하기 {/*step-5-minify-javascript-for-production*/}
 
 코드 경량화가 되지 않은 JavaScript는 사용자의 페이지 로딩 속도를 늦출 수 있습니다. 웹사이트를 프로덕션에 배포하기 전에 스크립트를 경량화하는 것이 좋습니다.
 
@@ -210,10 +210,10 @@ JSX 전처리기를 설치하려면 npm만 있으면 됩니다. 다른 용도로
 JSX가 포함된 파일을 저장할 때마다 변환이 다시 실행되어 JSX 파일을 새로운 일반 자바스크립트 파일로 변환하도록 JSX를 전처리할 수 있습니다.
 
 1. **src** 폴더를 생성합니다.
-2. 터미널에서 다음 명령어를 실행합니다. `npx babel --watch src --out-dir . --presets react-app/prod ` (완료될 때까지 기다리지 마세요! 이 명령어는 JSX를 위한 자동화된 감시자를 작동시킵니다.)
+2. 터미널에서 다음 명령어를 실행합니다. `npx babel --watch src --out-dir . --presets react-app/prod ` (완료될 때까지 기다리지 마세요! 이 명령어는 JSX를 위한 자동화된 watcher를 작동시킵니다.)
 3. JSX로 통합된 **like_button.js** 를 새 **src** 폴더로 이동합니다. (또는 [JSX 시작 코드](https://gist.githubusercontent.com/rachelnabors/ffbc9a0e33665a58d4cfdd1676f05453/raw/652003ff54d2dab8a1a1e5cb3bb1e28ff207c1a6/like_button.js)를 포함하는 **like_button.js**를 생성합니다.)
 
-이 감시자는 브라우저에 적합한 일반 자바스크립트 코드로 사전처리된 **like_button.js** 를 생성합니다.
+이 watcher는 브라우저에 적합한 일반 자바스크립트 코드로 사전처리된 **like_button.js** 를 생성합니다.
 
 <Gotcha>
 
