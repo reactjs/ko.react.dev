@@ -24,7 +24,7 @@ title: 에디터 셋업
 
 ### 린팅 {/*linting*/}
 
-코드 린터는 코드를 작성하는 동안 실시간으로 문제를 찾아줌으로써 빠른 문제해결이 가능하도록 도와준다. [ESLint](https://eslint.org/)는 많이 사용되고 JavaScript를 위한 오픈소스 린터입니다.
+코드 린터는 코드를 작성하는 동안 실시간으로 문제를 찾아줌으로써 빠른 문제해결이 가능하도록 도와줍니다. [ESLint](https://eslint.org/)는 많이 사용되고 JavaScript를 위한 오픈소스 린터입니다.
 
 * [React를 위한 추천 설정과 함께 ESLint 설치하기](https://www.npmjs.com/package/eslint-config-react-app) (사전에 [Node](https://nodejs.org/ko/download/current/)가 설치되어있어야 합니다)
 * [VS Code의 ESLint를 공식 익스텐션과 통합하기](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
