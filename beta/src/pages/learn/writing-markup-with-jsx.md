@@ -1,10 +1,14 @@
 ---
 title: Writing Markup with JSX
+
+title: JSX로 마크업 작성하기
 ---
 
 <Intro>
 
 JSX is a syntax extension for JavaScript that lets you write HTML-like markup inside a JavaScript file. Although there are other ways to write components, most React developers prefer the conciseness of JSX, and most codebases use it.
+
+JSX는 JavaScript를 확장한 문법으로, JavaScript 파일을 HTML과 비슷하게 마크업을 작성할 수 있도록 해줍니다. 컴포넌트를 작성하는 다른 방법도 있지만, 대부분의 React 개발자는 JSX의 간결함을 선호하며, 대부분의 코드베이스에서도 JSX를 사용합니다.
 
 </Intro>
 
@@ -14,25 +18,44 @@ JSX is a syntax extension for JavaScript that lets you write HTML-like markup in
 * How JSX is different from HTML
 * How to display information with JSX
 
+* React에서 마크업과 렌더링 로직을 같이 사용하는 이유
+* JSX와 HTML의 차이점
+* JSX로 정보를 보여주는 방법
+
 </YouWillLearn>
 
 ## JSX: Putting markup into JavaScript {/*jsx-putting-markup-into-javascript*/}
 
+## JSX: JavaScript에 마크업 넣기 {/*jsx-putting-markup-into-javascript*/}
+
 The Web has been built on HTML, CSS, and JavaScript. For many years, web developers kept content in HTML, design in CSS, and logic in JavaScript—often in separate files! Content was marked up inside HTML while the page's logic lived separately in JavaScript:
+
+Web은 HTML, CSS, JavaScript를 기반으로 만들어져왔습니다. 수년 동안 웹 개발자는 HTML로 내용을, CSS로 디자인을, JavaScript로 로직을 작성해왔습니다. 보통은 HTML, CSS, JavaScript을 분리된 파일로 관리합니다! 페이지의 로직은 JavaScript 안에서 분리되어 동작하는 동안, HTML 안에서는 내용이 마크업 되었습니다.
 
 ![HTML and JavaScript living in separate files](/images/docs/illustrations/i_html_js.svg)
 
+![분리된 파일로 이루어진 HTML과 JavaScript](/images/docs/illustrations/i_html_js.svg)
+
 But as the Web became more interactive, logic increasingly determined content. JavaScript was in charge of the HTML! This is why **in React, rendering logic and markup live together in the same place—components!**
 
+그러나 Web은 상호작용하는 작업이 점점 많아지면서, 로직에서 내용을 결정하는 일이 많아졌습니다. JavaScript가 HTML을 담당했습니다! 이것이 바로 **React에서 렌더링 로직과 마크업이 같은 곳에 함께 있게 된 이유입니다. 즉, 컴포넌트에서 말이죠!**
+
 ![JavaScript functions sprinkled with markup](/images/docs/illustrations/i_jsx.svg)
+![마크업을 뿌려주는 JavaScript 함수](/images/docs/illustrations/i_jsx.svg)
 
 Keeping a button's rendering logic and markup together ensures that they stay in sync with each other on every edit. Conversely, details that are unrelated, such as the button's markup and a sidebar's markup, are isolated from each other, making it safer to change either of them on their own.
 
+버튼의 렌더링 로직과 버튼의 마크업이 함께 있으면, 매번 변화가 생길 때마다 서로 조화를 이룰 수 있습니다. 반대로, 버튼의 마크업과 사이드바의 마크업처럼 서로 관련이 없는 항목끼리는 각각 자체적으로 변경하는 편이 더 안전하기 때문에 서로 분리되도록 합니다.
+
 Each React component is a JavaScript function that may contain some markup that React renders into the browser. React components use a syntax extension called JSX to represent that markup. JSX looks a lot like HTML, but it is a bit stricter and can display dynamic information. The best way to understand this is to convert some HTML markup to JSX markup.
+
+각각의 React 컴포넌트는 React를 통해 브라우저에 마크업을 렌더링할 수 있는 JavaScript 함수입니다. React 컴포넌트는 JSX라는 확장된 문법을 사용하여 마크업을 나타냅니다. JSX는 HTML과 매우 비슷하지만, 조금 더 엄격하고 동적인 정보를 표시할 수 있습니다. JSX를 이해하는 가장 좋은 방법은 HTML 마크업을 JSX 마크업으로 변환해보는 것입니다.
 
 <Note>
 
 [JSX and React are two separate things](/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) you _can_ use independently of each other.
+
+[JSX와 React는 서로 다른 개념](/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform)입니다. 서로 독립적이게 사용이 _가능합니다._
 
 </Note>
 
