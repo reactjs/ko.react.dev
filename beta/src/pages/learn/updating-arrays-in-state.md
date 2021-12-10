@@ -18,7 +18,7 @@ title: 배열 State 업데이트
 
 ## 변경하지 않고 배열 업데이트 {/*updating-arrays-without-mutation*/}
 
-JavaScript에서 배열은 다른 종류의 객체입니다. [객체와 마찬가지로](/learn/updating-objects-in-state) React state에서 배열은 읽기 전용으로 처리해야 합니다. 즉, `arr[0] = 'bird'`처럼 배열 내부의 항목을 재할당하면 안되고 `push()`나 `pop()`같은 함수로 배열을 변경해서는 안됩니다.
+JavaScript에서 배열은 다른 종류의 객체입니다. [객체와 마찬가지로](/learn/updating-objects-in-state) React state에서 배열은 읽기 전용으로 처리해야 합니다. 즉 `arr[0] = 'bird'`처럼 배열 내부의 항목을 재할당하면 안되고 `push()`나 `pop()`같은 함수로 배열을 변경해서는 안됩니다.
 
 대신 배열을 업데이트할 때마다 *새* 배열을 state 설정 함수에 전달할 수 있습니다. 그렇게 하려면 원본 배열을 변경시키지 않고 원본 배열로부터 새 배열을 반환하는 `filter()`와 `map()` 같은 함수를 사용하여 state를 설정할 수 있습니다.
 
@@ -26,10 +26,10 @@ JavaScript에서 배열은 다른 종류의 객체입니다. [객체와 마찬�
 
 |         | 비선호 (배열을 변경) | 선호 (새 배열을 반환) |
 |---------|----------------|-------------------|
-| 추가 | `push`, `unshift` | `concat`, `[...arr]` 전개 연산자 ([example](#adding-to-an-array))|
-| 제거 | `pop`, `shift`, `splice` | `filter`, `slice` ([example](#removing-from-an-array))
-| 교체 | `splice`, `arr[i] = ...` 할당 | `map` ([example](#replacing-items-in-an-array))          |
-| 정렬 | `reverse`, `sort` | 먼저 배열을 복사 ([example](#making-other-changes-to-an-array)) |
+| 추가 | `push`, `unshift` | `concat`, `[...arr]` 전개 연산자 ([예시](#adding-to-an-array))|
+| 제거 | `pop`, `shift`, `splice` | `filter`, `slice` ([예시](#removing-from-an-array))
+| 교체 | `splice`, `arr[i] = ...` 할당 | `map` ([예시](#replacing-items-in-an-array))          |
+| 정렬 | `reverse`, `sort` | 먼저 배열을 복사 ([예시](#making-other-changes-to-an-array)) |
 
 또는 [Immer](#write-concise-update-logic-with-immer)를 사용하여 두 열의 함수를 모두 사용할 수 있습니다.
 
@@ -156,7 +156,7 @@ setArtists([
 
 ### 배열에서 항목 제거 {/*removing-from-an-array*/}
 
-배열에서 항목을 제거하는 가장 쉬운 방법은 *필터링*하는 것입니다. 다시 말해서, 해당 항목을 포함하지 않는 새 배열을 제공하는 것입니다. 이렇게 하려면 `filter` 함수를 사용하면 됩니다. 예를 들면 아래와 같습니다.
+배열에서 항목을 제거하는 가장 쉬운 방법은 *필터링*하는 것입니다. 다시 말해서 해당 항목을 포함하지 않는 새 배열을 제공하는 것입니다. 이렇게 하려면 `filter` 함수를 사용하면 됩니다. 예를 들면 아래와 같습니다.
 
 <Sandpack>
 
@@ -208,7 +208,7 @@ setArtists(
 );
 ```
 
-여기서 `artists.filter(s => s.id !== artist.id)`는 "`artist.id`와 ID가 다른 `artists`로 구성된 배열을 생성한다"는 의미입니다. 즉, 각 artists의 "삭제" 버튼은 해당 artists를 배열에서 필터링한 다음, 반환된 배열로 리렌더링을 요청합니다. `filter`가 원본 배열을 수정하지 않는다는 것에 주의하세요.
+여기서 `artists.filter(s => s.id !== artist.id)`는 "`artist.id`와 ID가 다른 `artists`로 구성된 배열을 생성한다"는 의미입니다. 즉 각 artists의 "삭제" 버튼은 해당 artists를 배열에서 필터링한 다음, 반환된 배열로 리렌더링을 요청합니다. `filter`가 원본 배열을 수정하지 않는다는 것에 주의하세요.
 
 ### 배열 변환 {/*transforming-an-array*/}
 
@@ -398,11 +398,11 @@ button { margin-left: 5px; }
 
 ### 배열에 대한 기타 변경 사항 {/*making-other-changes-to-an-array*/}
 
-전개 연산자와 `map()`이나 `filter()` 같은 비-변경 함수들로만으로는 할 수 없는 일이 몇 가지 있습니다. 예를 들어, 배열을 뒤집거나 정렬하고 싶은 경우가 있습니다. JavaScript의 `reverse()` 및 `sort()` 함수는 원본 배열을 변경시키므로 직접 사용할 수 없습니다.
+전개 연산자와 `map()`이나 `filter()` 같은 비-변경 함수들로만으로는 할 수 없는 일이 몇 가지 있습니다. 예를 들어 배열을 뒤집거나 정렬하고 싶은 경우가 있습니다. JavaScript의 `reverse()` 및 `sort()` 함수는 원본 배열을 변경시키므로 직접 사용할 수 없습니다.
 
 **그러나 먼저 배열을 복사한 다음 변경할 수 있습니다.**
 
-예를 들어서,
+예를 들어서 아래와 같습니다.
 
 <Sandpack>
 
@@ -454,15 +454,15 @@ setList(nextList);
 
 `nextList`와 `list`는 서로 다른 배열이지만, **`nextList[0]`과 `list[0]`은 동일한 객체를 가리킵니다**. 따라서 `nextList[0].seen`을 변경하면 `list[0].seen`도 변경됩니다. 이것은 피해야 하는 상태 변경입니다. [중첩된 JavaScript 객체 업데이트](docs/updating-objects-in-state#updating-a-nested-object)와 유사한 방식으로 이 문제를 해결할 수 있습니다.--변경하려는 개별 항목을 변경하는 대신 복사하면 됩니다. 방법은 다음과 같습니다.
 
-## Updating objects inside arrays {/*updating-objects-inside-arrays*/}
+## 배열 내부의 객체 업데이트 {/*updating-objects-inside-arrays*/}
 
-Objects are not _really_ located "inside" arrays. They might appear to be "inside" in code, but each object in an array is a separate value, to which the array "points". This is why you need to be careful when changing nested fields like `list[0]`. Another person's artwork list may point to the same element of the array!
+객체는 _실제로_ 배열 "내부"의 위치하지 않습니다. 코드에서 "내부"로 나타낼 수 있지만 배열의 각 객체는 배열이 "가리키는" 별도의 값입니다. 이것이 `list[0]`처럼 중첩된 필드를 변경하는 것에 주의해야 하는 이유입니다. 다른 사람의 artwork 리스트가 배열의 동일한 엘리먼트를 가리킬 수 있습니다!
 
 <!-- TODOODLE -->
 
-**When updating nested state, you need to create copies from the point where you want to update, and all the way up to the top level.** Let's see how this works.
+**중첩된 state를 업데이트 할 때, 업데이트하려는 지점부터 최상위 레벨까지의 복사본을 만들어야 합니다.** 어떻게 작동하는지 살펴봅시다.
 
-In this example, two separate artwork lists have the same initial state. They are supposed to be isolated, but because of a mutation, their state is accidentally shared, and checking a box in one list affects the other list:
+이 예시에서 두 개의 개별 artwork 리스트들은 초기 상태가 서로 같습니다. 두 리스트는 분리되어야 하지만 변경으로 인해 두 리스트의 state가 실수로 공유되고 한 리스트의 체크박스를 선택하면 다른 리스트에 영향을 끼칩니다.
 
 <Sandpack>
 
@@ -542,34 +542,34 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-The problem is in code like this:
+문제는 아래와 같은 코드에 있습니다.
 
 ```js
 const myNextList = [...myList];
 const artwork = myNextList.find(a => a.id === artworkId);
-artwork.seen = nextSeen; // Problem: mutates an existing item
+artwork.seen = nextSeen; // 문제: 기존 항목을 변경시킴
 setMyList(myNextList);
 ```
 
-Although the `myNextList` array itself is new, the *items themselves* are the same as in the original `myList` array. So changing `artwork.seen` changes the *original* artwork item. That artwork item is also in `yourArtworks`, which causes the bug. Bugs like this can be difficult to think about, but thankfully they disappear if you avoid mutating state.
+`myNextList` 배열 자체는 새 배열이지만, *항목 자체*는 `myList` 원본 배열과 동일합니다. 따라서 `artwork.seen`을 변경하면 *원본* artwork 항목이 변경됩니다. 해당 artwork 항목은 `yourArtWorks`에도 존재하므로 버그가 발생합니다. 이런 버그는 생각하기 어려울 수 있지만 다행히도 상태 변경을 피하면 해결할 수 있습니다.
 
-**You can use `map` to substitute an old item with its updated version without mutation.**
+**`map`을 사용하면 이전 항목의 변경 없이 업데이트된 버전으로 대체할 수 있습니다.**
 
 ```js
 setMyList(myList.map(artwork => {
   if (artwork.id === artworkId) {
-    // Create a *new* object with changes
+    // 변경된 *새* 객체 만들기
     return { ...artwork, seen: nextSeen };
   } else {
-    // No changes
+    // 변화 없음
     return artwork;
   }
 });
 ```
 
-Here, `...` is the object spread syntax used to [create a copy of an object](/learn/updating-objects-in-state#copying-objects-with-the-spread-syntax).
+여기서 `...`는 [객체의 복사본 생성](/learn/updating-objects-in-state#copying-objects-with-the-spread-syntax)에 사용되는 객체 전개 연산자 문법입니다.
 
-With this approach, none of the existing state items are being mutated, and the bug is fixed:
+이 접근 방식을 사용하면, 기존 state의 항목이 변경되지 않고 버그가 수정됩니다.
 
 <Sandpack>
 
@@ -592,10 +592,10 @@ export default function BucketList() {
   function handleToggleMyList(artworkId, nextSeen) {
     setMyList(myList.map(artwork => {
       if (artwork.id === artworkId) {
-        // Create a *new* object with changes
+        // 변경된 *새* 객체 만들기
         return { ...artwork, seen: nextSeen };
       } else {
-        // No changes
+        // 변화 없음
         return artwork;
       }
     }));
@@ -604,10 +604,10 @@ export default function BucketList() {
   function handleToggleYourList(artworkId, nextSeen) {
     setYourList(yourList.map(artwork => {
       if (artwork.id === artworkId) {
-        // Create a *new* object with changes
+        // 변경된 *새* 객체 만들기
         return { ...artwork, seen: nextSeen };
       } else {
-        // No changes
+        // 변화 없음
         return artwork;
       }
     }));
@@ -655,16 +655,16 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-In general, **you should only mutate objects that you have just created.** If you were inserting a *new* artwork, you could mutate it, but if you're dealing with something that's already in state, you need to make a copy.
+일반적으로 **방금 생성한 객체만 변경해야 합니다.** *새* artwork를 삽입하는 경우 변경이 가능하지만, 이미 state에 존재하는 것을 처리하려면 복사본이 필요합니다.
 
-### Write concise update logic with Immer {/*write-concise-update-logic-with-immer*/}
+### Immer로 간결한 업데이트 로직 작성 {/*write-concise-update-logic-with-immer*/}
 
-Updating nested arrays without mutation can get a little bit repetitive. [Just as with objects](/learn/updating-objects-in-state#write-concise-update-logic-with-immer):
+변경 없이 중첩된 배열을 업데이트하는 것은 [객체와 마찬가지로](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) 약간 반복적일 수 있습니다.
 
-- Generally, you shouldn't need to update state more than a couple of levels deep. If your state objects are very deep, you might want to [restructure them differently](/learn/choosing-the-state-structure#avoid-deeply-nested-state) so that they are flat.
-- If you don't want to change your state structure, you might prefer to use [Immer](https://github.com/immerjs/use-immer), which lets you write using the convenient but mutating syntax and takes care of producing the copies for you.
+- 일반적으로 깊은 레벨까지의 state를 업데이트 할 필요는 없습니다. state 객체가 매우 깊다면 [다르게 재구성](/learn/choosing-the-state-structure#avoid-deeply-nested-state)하여 평평하게 만들 수 있습니다.
+- state 구조를 변경하고 싶지 않다면 [Immer](https://github.com/immerjs/use-immer) 사용을 선호할 수 있습니다. 손쉽게 변경 문법을 사용하여 작성할 수 있고 복사본을 처리할 수 있습니다.
 
-Here is the Art Bucket List example rewritten with Immer:
+다음은 Immer로 다시 작성한 Art Bucket List 예시입니다.
 
 <Sandpack>
 
@@ -765,7 +765,7 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-Note how with Immer, **mutation like `artwork.seen = nextSeen` is now okay:**
+Immer에서는 **`artwork.seen = nextSeen`과 같이 변경해도 괜찮습니다.**
 
 ```js
 updateMyTodos(draft => {
@@ -774,9 +774,9 @@ updateMyTodos(draft => {
 });
 ```
 
-This is because you're not mutating the _original_ state, but you're mutating a special `draft` object provided by Immer. Similarly, you can apply mutating methods like `push()` and `pop()` to the content of the `draft`.
+이는 _원본_ state를 변경하는 것이 아니라, Immer에서 제공하는 특수 `draft` 객체를 변경하기 때문입니다. 마찬가지로 `push()`와 `pop()`같은 변경 함수들도 `draft`의 컨텐츠에 적용할 수 있습니다.
 
-Behind the scenes, Immer always constructs the next state from scratch according to the changes that you've done to the `draft`. This keeps your event handlers very concise without ever mutating state.
+내부적으로 Immer는 항상 `draft`에서 수행한 변경 사항에 따라 처음부터 다음 state를 구성합니다. 이렇게 하면 state를 변경하지 않고도 이벤트 핸들러를 매우 간결하게 유지할 수 있습니다.
 
 <Recap>
 
@@ -786,15 +786,21 @@ Behind the scenes, Immer always constructs the next state from scratch according
 - You can use `filter()` and `map()` to create new arrays with filtered or transformed items.
 - You can use Immer to keep your code concise.
 
+- 배열을 state로 만들 수 있지만 변경하면 안됩니다.
+- 배열을 변경하는 대신 배열의 *새* 버전을 만들고 state를 업데이트 해야합니다.
+- `[...arr, newItem]` 배열 전개 연산자를 사용하여 새 항목으로 배열을 생성할 수 있습니다.
+- `filter()`와 `map()`을 사용하여 필터링된 항목들이나 변환된 항목들을 가진 배열을 만들 수 있습니다.
+- Immer를 사용하여 코드 간결성을 유지할 수 있습니다.
+
 </Recap>
 
 
 
 <Challenges>
 
-### Update an item in the shopping cart {/*update-an-item-in-the-shopping-cart*/}
+### 장바구니의 항목 업데이트 {/*update-an-item-in-the-shopping-cart*/}
 
-Fill in the `handleIncreaseClick` logic so that pressing "+" increases the corresponding number:
+"+" 버튼을 누르면 해당 숫자가 증가하도록 로직을 작성해보세요.
 
 <Sandpack>
 
@@ -852,7 +858,7 @@ button { margin: 5px; }
 
 <Solution>
 
-You can use the `map` function to create a new array, and then use the `...` object spread syntax to create a copy of the changed object for the new array:
+`map` 함수를 사용하여 새 배열을 생성하고 `...` 객체 전개 연산자를 사용하여 새 배열에 넣을 변경된 객체의 복사본을 만들 수 있습니다.
 
 <Sandpack>
 
@@ -919,9 +925,9 @@ button { margin: 5px; }
 
 </Solution>
 
-### Remove an item from the shopping cart {/*remove-an-item-from-the-shopping-cart*/}
+### 장바구니에서 항목 제거 {/*remove-an-item-from-the-shopping-cart*/}
 
-This shopping cart has a working "+" button, but the "–" button doesn't do anything. You need to add an event handler to it so that pressing it decreases the `count` of the corresponding product. If you press "–" when the count is 1, the product should automatically get removed from the cart. Make sure it never shows 0.
+이 장바구니에는 작동하는 "+" 버튼이 있지만 "-" 버튼은 아무 기능도 하지 않습니다. 이벤트 핸들러를 추가해야 해당 product의 `count`가 감소합니다. count가 1일 때 "-"를 누르면 product가 장바구니에서 자동으로 제거됩니다. 0이 표시되지 않아야합니다.
 
 <Sandpack>
 
@@ -991,7 +997,7 @@ button { margin: 5px; }
 
 <Solution>
 
-You can first use `map` to produce a new array, and then `filter` to remove products with a `count` set to `0`:
+먼저 `map`을 사용하여 새 배열을 만들고 `filter`로 `count`가 `0`인 products를 제거할 수 있습니다.
 
 <Sandpack>
 
