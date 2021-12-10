@@ -210,11 +210,11 @@ setArtists(
 
 여기서 `artists.filter(s => s.id !== artist.id)`는 "`artist.id`와 ID가 다른 `artists`로 구성된 배열을 생성한다"는 의미입니다. 즉, 각 artists의 "삭제" 버튼은 해당 artists를 배열에서 필터링한 다음, 반환된 배열로 리렌더링을 요청합니다. `filter`가 원본 배열을 수정하지 않는다는 것에 주의하세요.
 
-### Transforming an array {/*transforming-an-array*/}
+### 배열 변환 {/*transforming-an-array*/}
 
-If you want to change some or all items of the array, you can use `map()` to create a **new** array. The function you will pass to `map` can decide what to do with each item, based on its data or its index (or both).
+배열의 일부 혹은 전체를 변경하려면 `map()`을 사용해 **새** 배열을 만들면 됩니다. `map`에 전달하는 함수는 데이터나 인덱스(또는 둘 다)를 기반으로 각 항목을 어떻게 처리할지 결정할 수 있습니다.
 
-In this example, an array holds coordinates of two circles and a square. When you press the button, it moves only the circles down by 100 pixels. It does this by producing a new array of data using `map()`:
+이 예시에서 배열은 두 개의 원과 정사각형 하나의 좌표를 가지고 있습니다. 버튼을 누르면 원들은 50픽셀 아래로 이동합니다. `map()`으로 새 데이터 배열을 생성하여 이를 처리합니다.
 
 <Sandpack>
 
@@ -235,17 +235,17 @@ export default function ShapeEditor() {
   function handleClick() {
     const nextShapes = shapes.map(shape => {
       if (shape.type === 'square') {
-        // No change
+        // 변화 없음
         return shape;
       } else {
-        // Return a new circle 50px below
+        // 50px 아래로 이동한 새로운 원 반환
         return {
           ...shape,
           y: shape.y + 50,
         };
       }
     });
-    // Re-render with the new array
+    // 새로운 배열로 리렌더링
     setShapes(nextShapes);
   }
 
@@ -278,11 +278,11 @@ body { height: 300px; }
 
 </Sandpack>
 
-### Replacing items in an array {/*replacing-items-in-an-array*/}
+### 배열 안의 항목 교체 {/*replacing-items-in-an-array*/}
 
-It is particularly common to want to replace one or more items in an array. Assignments like `arr[0] = 'bird'` are mutating the original array, so instead you'll want to use `map` for this as well.
+배열에서 하나 이상의 항목을 교체하는 것은 특히 흔한 경우입니다. `arr[0] = 'bird'`와 같이 할당하는 것은 원본 배열을 변경시키므로 `map`을 사용해야 합니다.
 
-To replace an item, create a new array with `map`. Inside your `map` call, you will receive the item index as the second argument. Use it to decide whether to return the original item (the first argument) or something else:
+항목을 교체하려면 `map`을 이용해서 새로운 배열을 만드세요. `map`을 호출할 때 두 번째 인수로 항목의 인덱스를 받을 수 있습니다. 인덱스는 원래 항목(첫 번째 인수)을 반환할지 다른 항목을 반환할지를 결정할 때 사용합니다.
 
 <Sandpack>
 
@@ -301,10 +301,10 @@ export default function CounterList() {
   function handleIncrementClick(index) {
     const nextCounters = counters.map((c, i) => {
       if (i === index) {
-        // Increment the clicked counter
+        // 클릭된 counter 증가
         return c + 1;
       } else {
-        // The rest haven't changed
+        // 변경되지 않은 나머지
         return c;
       }
     });
@@ -332,11 +332,11 @@ button { margin: 5px; }
 
 </Sandpack>
 
-### Inserting into an array {/*inserting-into-an-array*/}
+### 배열에 항목 삽입 {/*inserting-into-an-array*/}
 
-Sometimes, you may want to insert an item at a particular position that's neither at the beginning nor at the end. To do this, you can use the `...` array spread operator together with the `slice()` method. The `slice()` method lets you cut a "slice" of the array. To insert an item, you will create an array that spreads the slice _before_ the insertion point, then the new item, and then the rest of the original array.
+때로는, 시작도 끝도 아닌 위치에 항목을 삽입하고 싶을 때가 있습니다. 이렇게 하려면, `...` 전개 연산자와 `slice()` 함수를 같이 사용하면 됩니다. `slice()` 함수를 사용하면 배열의 "일부분"을 자를 수 있습니다. 항목을 삽입하려면 삽입 지점 _앞에_ 자른 배열을 전개하고 새 항목을 전개한 다음 원본 배열의 나머지 부분을 전개하는 배열을 만듭니다.
 
-In this example, the Insert button always inserts at the index `1`:
+이 예시에서 삽입 버튼은 항상 인덱스 `1`에 삽입합니다.
 
 <Sandpack>
 
@@ -357,13 +357,13 @@ export default function List() {
   );
 
   function handleClick() {
-    const insertAt = 1; // Could be any index
+    const insertAt = 1; // 모든 인덱스가 될 수 있음
     const nextArtists = [
-      // Items before the insertion point:
+      // 삽입 지점 이전 항목
       ...artists.slice(0, insertAt),
-      // New item:
+      // 새 항목
       { id: nextId++, name: name },
-      // Items after the insertion point:
+      // 삽입 지점 이후 항목
       ...artists.slice(insertAt)
     ];
     setArtists(nextArtists);
@@ -396,13 +396,13 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-### Making other changes to an array {/*making-other-changes-to-an-array*/}
+### 배열에 대한 기타 변경 사항 {/*making-other-changes-to-an-array*/}
 
-There are some things you can't do with the spread operator and non-mutating methods like `map()` and `filter()` alone. For example, you may want to reverse or sort an array. The JavaScript `reverse()` and `sort()` methods are mutating the original array, so you can't use them directly.
+전개 연산자와 `map()`이나 `filter()` 같은 비-변경 함수들로만으로는 할 수 없는 일이 몇 가지 있습니다. 예를 들어, 배열을 뒤집거나 정렬하고 싶은 경우가 있습니다. JavaScript의 `reverse()` 및 `sort()` 함수는 원본 배열을 변경시키므로 직접 사용할 수 없습니다.
 
-**However, you can copy the array first, and then make changes to it.**
+**그러나 먼저 배열을 복사한 다음 변경할 수 있습니다.**
 
-For example:
+예를 들어서,
 
 <Sandpack>
 
@@ -442,17 +442,17 @@ export default function List() {
 
 </Sandpack>
 
-Here, you use the `[...list]` spread operator to create a copy of the original array first. Now that you have a copy, you can use mutating methods like `nextList.reverse()` or `nextList.sort()`, or even assign individual items with `nextList[0] = "something"`.
+먼저 `[...list]` 전개 연산자를 사용하여 원본 배열의 복사본을 만듭니다. 이제 복사본이 있으므로 `nextList.reverse()`나 `nextList.sort()`와 같은 변경 함수를 사용하거나 `nextList[0] = "something"`과 같이 개별 항목을 할당할 수도 있습니다.
 
-However, **even if you copy an array, you can't mutate existing items _inside_ of it directly**. This is because copying is shallow--the new array will contain the same items as the original one. So if you modify an object inside the copied array, you are mutating the existing state. For example, code like this is a problem.
+그러나, **배열을 복사하더라도 배열 _내부_ 에 기존 항목을 직접 변경해서는 안됩니다**. 얕은 복사이기 때문입니다.--복사한 새 배열에는 원본 배열의과 동일한 항목이 포함됩니다. 따라서 복사된 배열 내부의 객체를 수정하면 기존 상태가 변경됩니다. 예를 들어 아래와 같은 코드가 문제입니다.
 
 ```js
 const nextList = [...list];
-nextList[0].seen = true; // Problem: mutates list[0]
+nextList[0].seen = true; // 문제: list[0]을 변경
 setList(nextList);
 ```
 
-Although `nextList` and `list` are two different arrays, **`nextList[0]` and `list[0]` point to the same object**. So by changing `nextList[0].seen`, you are also changing `list[0].seen`. This is a state mutation, which you should avoid! You can solve this issue in a similar way to [updating nested JavaScript objects](docs/updating-objects-in-state#updating-a-nested-object)--by copying individual items you want to change instead of mutating them. Here's how.
+`nextList`와 `list`는 서로 다른 배열이지만, **`nextList[0]`과 `list[0]`은 동일한 객체를 가리킵니다**. 따라서 `nextList[0].seen`을 변경하면 `list[0].seen`도 변경됩니다. 이것은 피해야 하는 상태 변경입니다. [중첩된 JavaScript 객체 업데이트](docs/updating-objects-in-state#updating-a-nested-object)와 유사한 방식으로 이 문제를 해결할 수 있습니다.--변경하려는 개별 항목을 변경하는 대신 복사하면 됩니다. 방법은 다음과 같습니다.
 
 ## Updating objects inside arrays {/*updating-objects-inside-arrays*/}
 
