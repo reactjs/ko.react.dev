@@ -15,7 +15,7 @@ title: 에디터 셋업
 그 외에도 React 커뮤니티에서는 다음과 같은 에디터들이 흔히 사용됩니다.
 
 * [WebStorm](https://www.jetbrains.com/ko-kr/webstorm/)—JavaScript에 특화되어 만들어진 통합 개발 환경입니다.
-* [Sublime Text](https://www.sublimetext.com/)—JSX와 TypeScript 지원, 문법 강조, 자동완성 기능이 내장됨. 
+* [Sublime Text](https://www.sublimetext.com/)—JSX와 TypeScript 지원, 문법 강조, 자동완성 기능이 내장된 에디터입니다. 
 * [Vim](https://www.vim.org/)—개발환경 설정의 변경 및 추가가 용이하며, 모든 종류의 텍스트 작업에 효율적인 텍스트 에디터입니다. 대부분의 UNIX 시스템과 Apple OS X에서 "vi"로 포함되어 있습니다.
 
 ## 에디터 기능 추천 {/*recommended-text-editor-features*/}
