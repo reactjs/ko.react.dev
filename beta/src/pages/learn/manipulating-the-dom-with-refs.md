@@ -884,7 +884,7 @@ export default function CatFriends() {
               <img
                 className={
                   index === i ?
-                    'active' 
+                    'active' :
                     ''
                 }
                 src={cat.imageUrl}
@@ -994,7 +994,7 @@ export default function CatFriends() {
             <li
               key={cat.id}
               ref={index === i ?
-                selectedRef 
+                selectedRef :
                 null
               }
             >
