@@ -1,52 +1,52 @@
 ---
-title: 'Manipulating the DOM with Refs'
+title: 'Ref로 DOM 조작하기'
 ---
 
 <Intro>
 
-Because React handles updating the [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) to match your render output, your components won't often need to manipulate the DOM. However, sometimes you might need access to the DOM elements managed by React--for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a [ref](/learn/referencing-values-with-refs#refs-and-the-dom) to the DOM node.
+React는 렌더링 결과물에 맞춰 [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) 변경을 처리하기 때문에 컴포넌트에서 자주 DOM을 조작해야 할 필요는 없습니다. 하지만 가끔 특정 노드에 포커스를 옮기거나, 스크롤 위치를 옮기거나, 위치와 크기를 측정하기 위해서 React가 관리하는 DOM 요소에 접근해야 할 때가 있습니다. React는 이런 작업을 수행하는 내장 방법을 제공하지 않기 때문에 DOM 노드에 접근하기 위한 [ref](/learn/referencing-values-with-refs#refs-and-the-dom)가 필요할 것입니다.
 
 </Intro>
 
 <YouWillLearn>
 
-- How to access a DOM node managed by React with the `ref` attribute
-- How the `ref` JSX attribute relates to the `useRef` Hook
-- How to access another component's DOM node
-- In which cases it's safe to modify the DOM managed by React
+- `ref` 속성으로 React가 관리하는 DOM 노드에 접근하는 법
+- `ref` JSX 속성과 `useRef` 훅의 관련성
+- 다른 컴포넌트의 DOM 노드에 접근하는 법
+- React가 관리하는 DOM을 수정해도 안전한 경우
 
 </YouWillLearn>
 
-## Getting a ref to the node {/*getting-a-ref-to-the-node*/}
+## 노드 ref 가져오기 {/*getting-a-ref-to-the-node*/}
 
-To access a DOM node managed by React, first, import the `useRef` Hook:
+React가 관리하는 DOM 노드에 접근하기 위해 `useRef` Hook을 가져옵니다.
 
 ```js
 import { useRef } from 'react';
 ```
 
-Then, use it to declare a ref inside your component:
+컴포넌트 안에서 ref를 선언하기 위해 방금 가져온 Hook을 사용합니다.
 
 ```js
 const myRef = useRef(null);
 ```
 
-Finally, pass it to the DOM node as the `ref` attribute:
+마지막으로 이전에 선언한 ref를 DOM 노드에 ref 속성으로 전달합니다.
 
 ```js
 <div ref={myRef}>
 ```
 
-The `useRef` Hook returns an object with a single property called `current`. Initially, `myRef.current` will be `null`. When React creates a DOM node for this `<div>`, React will put a reference to this node into `myRef.current`. You can then access this DOM node from your [event handlers](/learn/responding-to-events) and use the built-in [browser APIs](https://developer.mozilla.org/docs/Web/API/Element) defined on it.
+`useRef` Hook은 `current`라는 단일 속성을 가진 객체를 반환합니다. 초기에는 'myRef.current'가 'null'이 됩니다. React가 이 `<div>`에 대한 DOM 노드를 생성할 때, React는 이 노드에 대한 참조를 `myRef.current`에 넣습니다. 그리고 이 DOM 노드를 [이벤트 핸들러](/learn/responding-to-events)에서 접근하거나 노드에 정의된 내장 [브라우저 API](https://developer.mozilla.org/docs/Web/API/Element)를 사용할 수 있습니다.
 
 ```js
-// You can use any browser APIs, for example:
+// 예를 들어 이렇게 브라우저 API를 사용할 수 있습니다
 myRef.current.scrollIntoView();
 ```
 
-### Example: Focusing a text input {/*example-focusing-a-text-input*/}
+### 예시: 텍스트 입력에 포커스 이동하기 {/*example-focusing-a-text-input*/}
 
-In this example, clicking the button will focus the input:
+이 예시에서, 버튼을 클릭하면 input 요소로 포커스를 이동합니다.
 
 <Sandpack>
 
@@ -73,18 +73,18 @@ export default function Form() {
 
 </Sandpack>
 
-To implement this:
+위 예시를 구현하기 위해서
 
-1. Declare `inputRef` with the `useRef` Hook.
-2. Pass it as `<input ref={inputRef}>`. This tells React to **put this `<input>`'s DOM node into `inputRef.current`.**
-3. In the `handleClick` function, read the input DOM node from `inputRef.current` and call [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) on it with `inputRef.current.focus()`.
-4. Pass the `handleClick` event handler to `<button>` with `onClick`.
+1. `useRef` Hook을 사용하여 `inputRef`를 선언합니다.
+2. 선언한 `inputRef`를 `<input ref={inputRef}>`로 전달합니다. 이 행위는 **React에게 이 `<input>`의 DOM 노드를 `inputRef.current`에 넣어줘** 라고 하는 것입니다.
+3. `handleClick` 함수에서 `inputRef.current`에서 input DOM 노드를 읽고 `inputRef.current.focus()`로 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)를 호출합니다.
+4. `<button>`과 `onClick`으로 `handleClick` 이벤트 핸들러를 전달합니다.
 
-While DOM manipulation is the most common use case for refs, the `useRef` Hook can be used for storing other things outside React, like timer IDs. Similarly to state, refs remain between renders. You can even think of refs as state variables that don't trigger re-renders when you set them! You can learn more about refs in [Referencing Values with Refs](/learn/referencing-values-with-refs).
+DOM 조작이 ref를 사용하는 가장 일반적인 사용처지만, `useRef` Hook은 setTimeout Timer ID 같은 React 외부 요소를 저장하는 용도로도 사용할 수 있습니다. 상태(state)와 비슷하게 ref는 렌더링 사이에도 유지됩니다. ref를 설정하더라도 컴포넌트의 렌더링을 다시 유발하지 않는 상태 변수로 생각해도 괜찮습니다! [Ref와 값 참조](/learn/referencing-values-with-refs)에서 ref에 대해 자세히 배울 수 있습니다.
 
-### Example: Scrolling to an element {/*example-scrolling-to-an-element*/}
+### 예시: 한 요소로 스크롤을 이동하기 {/*example-scrolling-to-an-element*/}
 
-You can have more than a single ref in a component. In this example, there is a carousel of three images and three buttons to center them in the view port by calling the browser [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) method the corresponding DOM node:
+한 컴포넌트에서 하나 이상의 ref를 가질 수 있습니다. 이 예시에서는, 상응하는 이미지 DOM 노드로 화면 중앙 정렬하기 위해 [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) 메서드를 호출하는 버튼 세 개와 이미지 세 개가 있는 캐로셀이 있습니다.
 
 <Sandpack>
 
@@ -191,25 +191,25 @@ li {
 
 </Sandpack>
 
-<DeepDive title="How to manage a list of refs using a ref callback">
+<DeepDive title="ref 콜백을 사용하여 ref 리스트 관리하기">
 
-In the above examples, there is a predefined number of refs. However, sometimes you might need a ref to each item in the list, and you don't know how many you will have. Something like this **wouldn't work**:
+위 예시에서는 미리 정의된 숫자의 ref가 있었습니다. 하지만 때때로 목록의 아이템마다 ref가 필요할 수도 있고, 얼마나 많은 ref가 필요할지 예측할 수 없는 경우도 있습니다. 그럴 때 아래 코드는 **작동하지 않습니다**.
 
 ```js
 <ul>
   {items.map((item) => {
-    // Doesn't work!
+    // 작동하지 않습니다!
     const ref = useRef(null);
     return <li ref={ref} />;
   })}
 </ul>
 ```
 
-This is because **Hooks must only be called at the top-level of your component.** You can't call `useRef` in a loop, in a condition, or inside a `map()` call.
+왜냐하면 **Hook은 컴포넌트의 최상단에서만 호출되어야 하기 때문입니다**. `useRef`를 반복문, 조건문 혹은 `map()` 안쪽에서 호출할 수 없습니다.
 
-Instead, the solution is to **pass a function to the `ref` attribute**. This is called a "ref callback". React will call your ref callback with the DOM node when it's time to set the ref, and with `null` when it's time to clear it. This lets you maintain your own array or a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), and access any ref by its index or some kind of ID.
+**`ref` 속성에 함수를 넘기는 것**이 해결책입니다. React는 ref를 주입할 때 DOM node와 함께 ref 콜백을 호출합니다. 그리고 청소해야 할 때(clear 혹은 unmount)는 null과 함께 호출합니다. 이를 응용하여 배열 혹은 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)으로 관리하고 어떤 배열의 순서나 특정할 수 있는 식별자를 이용하여 어떤 ref에도 접근할 수 있습니다.
 
-This example shows how you can use this approach to scroll to an arbitrary node in a long list:
+아래 예시는 긴 목록에서 특정 노드에 스크롤하기 위해 앞에서 말한 접근법을 사용합니다.
 
 <Sandpack>
 
@@ -231,7 +231,7 @@ export default function CatFriends() {
 
   function getMap() {
     if (!itemsRef.current) {
-      // Initialize the Map on first usage.
+      // Map을 사용하기 위해 처음에 초기화합니다.
       itemsRef.current = new Map();
     }
     return itemsRef.current;
@@ -314,7 +314,7 @@ li {
 
 </Sandpack>
 
-In this example, `itemsRef` doesn't hold a single DOM node. Instead, it holds a [Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map) from item ID to a DOM node. ([Refs can hold any values!](/learn/referencing-values-with-refs)) The `ref` callback on every list item takes care to update the Map:
+이 예시에서 `itemsRef`는 DOM 노드 하나를 가지고 있지 않습니다. 대신에 식별자와 DOM 노드 키맵으로 연결된 [Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)을 가지고 있습니다. ([Ref는 아무 값이나 가질 수 있습니다!](/learn/referencing-values-with-refs)) 모든 리스트 아이템에 있는 `ref` 콜백은 Map 변경을 처리합니다.
 
 ```js
 <li
@@ -322,25 +322,25 @@ In this example, `itemsRef` doesn't hold a single DOM node. Instead, it holds a 
   ref={node => {
     const map = getMap();
     if (node) {
-      // Add to the Map
+      // Map에 노드를 추가합니다
       map.set(cat.id, node);
     } else {
-      // Remove from the Map
+      // Map에서 노드를 제거합니다
       map.delete(cat.id);
     }
   }}
 >
 ```
 
-This lets you read individual DOM nodes from the Map later.
+위 방법으로 이후 Map에서 개별적인 DOM 노드를 읽을 수 있습니다.
 
 </DeepDive>
 
-## Accessing another component's DOM nodes {/*accessing-another-components-dom-nodes*/}
+## 다른 컴포넌트의 DOM 노드 접근하기 {/*accessing-another-components-dom-nodes*/}
 
 When you put a ref on a built-in component that outputs a browser element like `<input />`, React will set that ref's `current` property to the corresponding DOM node (such as the actual `<input />` in the browser).
 
-However, if you try to put a ref on **your own** component, like `<MyInput />`, by default you will get `null`. Here is an example demonstrating it. Notice how clicking the button **does not** focus the input:
+However, if you try to put a ref on **your own** component, like `<MyInput />`, by default you will get `null`. Here is an example demonstrating it. Notice how clicking the button **does not** focus the input
 
 <Sandpack>
 
@@ -371,13 +371,13 @@ export default function MyForm() {
 
 </Sandpack>
 
-Clicking the button will print an error message to the console:
+Clicking the button will print an error message to the console
 
 > Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
 
 This happens because by default React does not let a component access the DOM nodes of other components. Not even for its own children! This is intentional. Refs are an escape hatch that should be used sparingly. Manually manipulating _another_ component's DOM nodes makes your code even more fragile.
 
-Instead, components that _want_ to expose their DOM nodes have to **opt in** to that behavior. A component can specify that it "forwards" its ref to one of its children. Here's how `MyInput` can use the `forwardRef` API:
+Instead, components that _want_ to expose their DOM nodes have to **opt in** to that behavior. A component can specify that it "forwards" its ref to one of its children. Here's how `MyInput` can use the `forwardRef` API
 
 ```js
 const MyInput = forwardRef((props, ref) => {
@@ -385,13 +385,13 @@ const MyInput = forwardRef((props, ref) => {
 });
 ```
 
-This is how it works:
+This is how it works
 
 1. `<MyInput ref={inputRef} />` tells React to put the corresponding DOM node into `inputRef.current`. However, it's up to the `MyInput` component to opt into that--by default, it doesn't.
 2. The `MyInput` component is declared using `forwardRef`. **This opts it into receiving the `inputRef` from above as the second `ref` argument** which is declared after `props`.
 3. `MyInput` itself passes the `ref` it received to the `<input>` inside of it.
 
-Now clicking the button to focus the input works:
+Now clicking the button to focus the input works
 
 <Sandpack>
 
@@ -426,7 +426,7 @@ In design systems, it is a common pattern for low-level components like buttons,
 
 <DeepDive title="Exposing a subset of the API with an imperative handle">
 
-In the above example, `MyInput` exposes the original DOM input element. This lets the parent component call `focus()` on it. However, this also lets the parent component do something else--for example, change its CSS styles. In uncommon cases, you may want to restrict the exposed functionality. You can do that with `useImperativeHandle`:
+In the above example, `MyInput` exposes the original DOM input element. This lets the parent component call `focus()` on it. However, this also lets the parent component do something else--for example, change its CSS styles. In uncommon cases, you may want to restrict the exposed functionality. You can do that with `useImperativeHandle`
 
 <Sandpack>
 
@@ -474,7 +474,7 @@ Here, `realInputRef` inside `MyInput` holds the actual input DOM node. However, 
 
 ## When React attaches the refs {/*when-react-attaches-the-refs*/}
 
-In React, every update is split in [two phases](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom):
+In React, every update is split in [two phases](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom)
 
 * During **render,** React calls your components to figure out what should be on the screen.
 * During **commit,** React applies changes to the DOM.
@@ -487,7 +487,7 @@ React sets `ref.current` during the commit. Before updating the DOM, React sets 
 
 <DeepDive title="Flushing state updates synchronously with flushSync">
 
-Consider code like this, which adds a new todo and scrolls the screen down to the last child of the list. Notice how, for some reason, it always scrolls to the todo that was *just before* the last added one:
+Consider code like this, which adds a new todo and scrolls the screen down to the last child of the list. Notice how, for some reason, it always scrolls to the todo that was *just before* the last added one
 
 <Sandpack>
 
@@ -541,7 +541,7 @@ for (let i = 0; i < 20; i++) {
 
 </Sandpack>
 
-The issue is with these two lines:
+The issue is with these two lines
 
 ```js
 setTodos([ ...todos, newTodo]);
@@ -550,7 +550,7 @@ listRef.current.lastChild.scrollIntoView();
 
 In React, [state updates are queued](/learn/queueing-a-series-of-state-updates). Usually, this is what you want. However, here it causes a problem because `setTodos` does not immediately update the DOM. So the time you scroll the list to its last element, the todo has not yet been added. This is why scrolling always "lags behind" by one item.
 
-To fix this issue, you can force React to update ("flush") the DOM synchronously. To do this, import `flushSync` from `react-dom` and **wrap the state update** into a `flushSync` call:
+To fix this issue, you can force React to update ("flush") the DOM synchronously. To do this, import `flushSync` from `react-dom` and **wrap the state update** into a `flushSync` call
 
 ```js
 flushSync(() => {
@@ -559,7 +559,7 @@ flushSync(() => {
 listRef.current.lastChild.scrollIntoView();
 ```
 
-This will instruct React to update the DOM synchronously right after the code wrapped in `flushSync` executes. As a result, the last todo will already be in the DOM by the time you try to scroll to it:
+This will instruct React to update the DOM synchronously right after the code wrapped in `flushSync` executes. As a result, the last todo will already be in the DOM by the time you try to scroll to it
 
 <Sandpack>
 
@@ -626,7 +626,7 @@ If you stick to non-destructive actions like focusing and scrolling, you shouldn
 
 To illustrate this problem, this example includes a welcome message and two buttons. The first button toggles its presence using [conditional rendering](/learn/conditional-rendering) and [state](/learn/state-a-components-memory), as you would usually do in React. The second button uses the [`remove()` DOM API](https://developer.mozilla.org/en-US/docs/Web/API/Element/remove) to forcefully remove it from the DOM outside of React's control.
 
-Try pressing "Toggle with setState" a few times. The message should disappear and appear again. Then press "Remove from the DOM". This will forcefully remove it. Finally, press "Toggle with setState":
+Try pressing "Toggle with setState" a few times. The message should disappear and appear again. Then press "Remove from the DOM". This will forcefully remove it. Finally, press "Toggle with setState"
 
 <Sandpack>
 
@@ -804,7 +804,7 @@ button { display: block; margin-bottom: 10px; }
 
 <Solution>
 
-Add a ref to the input, and call `focus()` on the DOM node to focus it:
+Add a ref to the input, and call `focus()` on the DOM node to focus it
 
 <Sandpack>
 
@@ -841,7 +841,7 @@ button { display: block; margin-bottom: 10px; }
 
 ### Scrolling an image carousel {/*scrolling-an-image-carousel*/}
 
-This image carousel has a "Next" button that switches the active image. Make the gallery scroll horizontally to the active image on click. You will want to call [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) on the DOM node of the active image:
+This image carousel has a "Next" button that switches the active image. Make the gallery scroll horizontally to the active image on click. You will want to call [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) on the DOM node of the active image
 
 ```js
 node.scrollIntoView({
@@ -884,7 +884,7 @@ export default function CatFriends() {
               <img
                 className={
                   index === i ?
-                    'active' :
+                    'active' 
                     ''
                 }
                 src={cat.imageUrl}
@@ -948,7 +948,7 @@ img {
 
 <Solution>
 
-You can declare a `selectedRef`, and then pass it conditionally only to the current image:
+You can declare a `selectedRef`, and then pass it conditionally only to the current image
 
 ```js
 <li ref={index === i ? selectedRef : null}>
@@ -994,7 +994,7 @@ export default function CatFriends() {
             <li
               key={cat.id}
               ref={index === i ?
-                selectedRef :
+                selectedRef 
                 null
               }
             >
