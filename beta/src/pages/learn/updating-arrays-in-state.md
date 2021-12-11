@@ -1086,9 +1086,9 @@ button { margin: 5px; }
 
 </Solution>
 
-### Fix the mutations using non-mutative methods {/*fix-the-mutations-using-non-mutative-methods*/}
+### 비변경 함수를 사용하여 변경 수정 {/*fix-the-mutations-using-non-mutative-methods*/}
 
-In this example, all of the event handlers in `App.js` use mutation. As a result, editing and deleting todos doesn't work. Rewrite `handleAddTodo`, `handleChangeTodo`, and `handleDeleteTodo` to use the non-mutative methods:
+이 예시에서 `App.js`의 모든 이벤트 핸들러는 변경을 사용합니다. 결과적으로 todos를 편집하거나 삭제하는 기능이 동작하지 않습니다. 비변경 함수를 사용하도록 `handleAddTodo`, `handleChangeTodo` 그리고 `handleDeleteTodo`를 다시 작성해보세요.
 
 <Sandpack>
 
@@ -1251,7 +1251,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-In `handleAddTodo`, you can use the array spread syntax. In `handleChangeTodo`, you can create a new array with `map`. In `handleDeleteTodo`, you can create a new array with `filter`. Now the list works correctly:
+`handleAddTodo`는 배열 전개 연산자를 사용할 수 있습니다. `handleChanageTodo`는 `map`을 사용하여 새 배열을 만들 수 있으며 `handleDeleteTodo`는 `filter`를 사용해 새 배열을 만들 수 있습니다. 이제 리스트가 올바르게 작동합니다.
 
 <Sandpack>
 
@@ -1419,9 +1419,9 @@ ul, li { margin: 0; padding: 0; }
 </Solution>
 
 
-### Fix the mutations using Immer {/*fix-the-mutations-using-immer*/}
+### Immer를 사용해서 변경 수정 {/*fix-the-mutations-using-immer*/}
 
-This is the same example as in the previous challenge. This time, fix the mutations by using Immer. For your convenience, `useImmer` is already imported, so you need to change the `todos` state variable to use it.
+이 예시는 이전 예시와 동일한 예시입니다. 이번에는 Immer를 사용하여 변경을 수정합니다. 편의를 위해 `useImmer`는 이미 import되어 있으므로 `todos` state 변수를 사용하도록 수정해야 합니다.
 
 <Sandpack>
 
@@ -1603,7 +1603,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-With Immer, you can write code in the mutative fashion, as long as you're only mutating parts of the `draft` that Immer gives you. Here, all mutations are performed on the `draft` so the code works:
+Immer가 제공하는 `draft`의 일부만 변경하기만 하면 Immer를 사용하여 변경 방식으로 코드를 작성할 수 있습니다. 여기에서 모든 변경은 `draft`에서 수행되므로 코드가 잘 작동합니다.
 
 <Sandpack>
 
@@ -1789,9 +1789,9 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-You can also mix and match the mutative and non-mutative approaches with Immer.
+또한 Immer를 사용하여 변경 및 비변경 접근 방식을 섞어서 사용할 수 있습니다.
 
-For example, in this version `handleAddTodo` is implemented by mutating the Immer `draft`, while `handleChangeTodo` and `handleDeleteTodo` use the non-mutative `map` and `filter` methods:
+예를 들어 이 버전에서 `handleAddTodo`는 Immer의 `draft`를 변경하여 구현되는 반면에 `handleChangeTodo`와 `handleDeleteTodo`는 비변경 함수인 `map`과 `filter` 함수를 사용합니다.
 
 <Sandpack>
 
@@ -1974,7 +1974,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-With Immer, you can pick the style that feels the most natural for each separate case.
+Immer를 사용하면 각각의 다른 케이스에서 가장 자연스러운 방식을 선택할 수 있습니다.
 
 </Solution>
 
