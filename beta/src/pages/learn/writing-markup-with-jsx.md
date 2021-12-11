@@ -18,7 +18,7 @@ JSX는 JavaScript를 확장한 문법으로, JavaScript 파일을 HTML과 비슷
 
 ## JSX: JavaScript에 마크업 넣기 {/*jsx-putting-markup-into-javascript*/}
 
-Web은 HTML, CSS, JavaScript를 기반으로 만들어져왔습니다. 수년 동안 웹 개발자는 HTML로 내용을, CSS로 디자인을, JavaScript로 로직을 작성해왔습니다. 보통은 HTML, CSS, JavaScript을 분리된 파일로 관리합니다! 페이지의 로직은 JavaScript 안에서 분리되어 동작하는 동안, HTML 안에서는 내용이 마크업 되었습니다.
+Web은 HTML, CSS, JavaScript를 기반으로 만들어져왔습니다. 수년 동안 웹 개발자는 HTML로 내용을, CSS로 디자인을, JavaScript로 로직을 작성해왔습니다. 보통은 HTML, CSS, JavaScript를 분리된 파일로 관리합니다! 페이지의 로직은 JavaScript 안에서 분리되어 동작하는 동안, HTML 안에서는 내용이 마크업 되었습니다.
 
 ![분리된 파일로 이루어진 HTML과 JavaScript](/images/docs/illustrations/i_html_js.svg)
 
@@ -32,7 +32,7 @@ Web은 HTML, CSS, JavaScript를 기반으로 만들어져왔습니다. 수년 �
 
 <Note>
 
-[JSX와 React는 서로 다른 개념](/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform)입니다. 서로 독립적이게 사용이 _가능합니다._
+[JSX와 React는 서로 다른 개념](/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) 입니다. 서로 독립적이게 사용이 _가능합니다._
 
 </Note>
 
@@ -145,13 +145,13 @@ img { height: 90px }
 
 <DeepDive title="왜 여러 JSX 태그를 하나로 감싸야 할까요?">
 
-JSX는 HTML처럼 보이지만 내부적으로는 일반 JavaScript 객체로 변환합니다. 하나의 배열로 감싸지 않은 하나의 함수에서는 두 개의 객체를 반환(리턴)할 수 없습니다. 따라서 또다른 태그나 fragment로 감싸지 않으면 두 개의 JSX 태그를 반환할 수 없습니다.
+JSX는 HTML처럼 보이지만 내부적으로는 일반 JavaScript 객체로 변환합니다. 하나의 배열로 감싸지 않은 하나의 함수에서는 두 개의 객체를 반환(리턴)할 수 없습니다. 따라서 또  다른 태그나 fragment로 감싸지 않으면 두 개의 JSX 태그를 반환할 수 없습니다.
 
 </DeepDive>
 
 ### 2. 모든 태그는 닫아주기 {/*2-close-all-the-tags*/}
 
-JSX에서는 태그를 명시적으로 닫아야 합니다. `<img>`처럼 자동으로 닫아주는 태그는 반드시 `<img />` 형태로 작성해야하며, `<li>oranges`와 같은 래핑 태그도 `<li>oranges</li>` 형태로 작성해야 합니다.
+JSX에서는 태그를 명시적으로 닫아야 합니다. `<img>`처럼 자동으로 닫아주는 태그는 반드시 `<img />` 형태로 작성해야 하며, `<li>oranges`와 같은 래핑 태그도 `<li>oranges</li>` 형태로 작성해야 합니다.
 
 다음과 같이 Hedy Lamarr의 이미지와 리스트의 항목들을 닫아줍니다.
 
@@ -174,7 +174,7 @@ JSX에서는 태그를 명시적으로 닫아야 합니다. `<img>`처럼 자동
 
 JSX는 JavaScript로 바뀌고 JSX에서 작성된 어트리뷰트는 JavaScript 객체의 키가 됩니다. 컴포넌트에서는 종종 어트리뷰트를 변수로 읽고 싶은 경우가 있습니다. 그러나 JavaScript는 변수명에 제한이 있습니다. 예를 들면, 변수명에 대시를 포함하거나 `class`처럼 예약어를 사용할 수 없습니다.
 
-이것이 바로 React에서 HTML과 SVG의 어트리뷰트 대부분이 캐멀 케이스로 작성되는 이유입니다. 예를 들면, `stroke-width` 대신 `strokeWidth`으로 사용합니다. `class`는 예약어이기 때문에, React에서는 [DOM의 프로퍼티에 대응한](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) 이름을 따서 `className`으로 대신 작성합니다.
+이것이 바로 React에서 HTML과 SVG의 어트리뷰트 대부분이 캐멀 케이스로 작성되는 이유입니다. 예를 들면, `stroke-width` 대신 `strokeWidth`로 사용합니다. `class`는 예약어이기 때문에, React에서는 [DOM의 프로퍼티에 대응한](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) 이름을 따서 `className`으로 대신 작성합니다.
 
 ```js {4}
 <img 
@@ -188,7 +188,7 @@ JSX는 JavaScript로 바뀌고 JSX에서 작성된 어트리뷰트는 JavaScript
 
 <Gotcha>
 
-역사적인 이유로, [`aria-*`](https://developer.mozilla.org/docs/Web/Accessibility/ARIA)와 [`data-*`](https://developer.mozilla.org/docs/Learn/HTML/Howto/Use_data_attributes)의 어트리뷰트는 HTML에서와 동일하게 대시를 사용하여 작성합니다.
+역사적 이유로, [`aria-*`](https://developer.mozilla.org/docs/Web/Accessibility/ARIA)와 [`data-*`](https://developer.mozilla.org/docs/Learn/HTML/Howto/Use_data_attributes)의 어트리뷰트는 HTML에서와 동일하게 대시를 사용하여 작성합니다.
 
 </Gotcha>
 
@@ -242,7 +242,7 @@ img { height: 90px }
 
 ### 일부 HTML을 JSX로 변환해보기 {/*convert-some-html-to-jsx*/}
 
-다음은 컴포넌트에 HTML을 붙여 넣었지만 올바른 JSX가 아닙니다. 수정해보세요.
+다음은 컴포넌트에 HTML을 붙여넣었지만 올바른 JSX가 아닙니다. 수정해보세요.
 
 <Sandpack>
 
