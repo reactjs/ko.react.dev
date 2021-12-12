@@ -286,7 +286,7 @@ reducer 함수는 state에 대한 로직을 넣는 곳 입니다. 이 함수는 
 
 ```js
 function yourReducer(state, action) {
-  // React가 설정하게될 다음 state 값을 반환.
+  // React가 설정하게될 다음 state 값을 반환합니다.
 }
 ```
 
