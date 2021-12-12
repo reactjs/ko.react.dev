@@ -92,10 +92,10 @@ button { margin-left: 5px; }
 대신 기존에 존재하던 항목, *그리고* 새 항목을 포함하는 *새* 배열을 만드세요. 이러한 방법들은 여러 가지가 있지만 가장 쉬운 방법은 `...` [전개 연산자](a-javascript-refresher#array-spread) 문법을 사용하는 것입니다.
 
 ```js
-setArtists( // state를 수정
-  [ // 새 배열
-    ...artists, // 기존에 존재하던 항목 포함
-    { id: nextId++, name: name } // 새 항목을 끝에 추가
+setArtists( // state를 변경합니다.
+  [ // 새 배열을 할당하고,
+    ...artists, // 기존 배열의 항목을 추가합니다.
+    { id: nextId++, name: name } // 그리고 새 항목을 끝에 추가합니다.
   ]
 );
 ```
@@ -148,7 +148,7 @@ button { margin-left: 5px; }
 ```js
 setArtists([
   { id: nextId++, name: name },
-  ...artists // 기존 항목들을 끝에 삽입
+  ...artists // 기존 항목들을 끝에 삽입합니다.
 ]);
 ```
 
@@ -235,17 +235,17 @@ export default function ShapeEditor() {
   function handleClick() {
     const nextShapes = shapes.map(shape => {
       if (shape.type === 'square') {
-        // 변화 없음
+        // 변경시키지 않고 반환합니다.
         return shape;
       } else {
-        // 50px 아래로 이동한 새로운 원 반환
+        // 50px 아래로 이동한 새로운 원을 반환합니다.
         return {
           ...shape,
           y: shape.y + 50,
         };
       }
     });
-    // 새로운 배열로 리렌더링
+    // 새로운 배열로 리렌더링합니다.
     setShapes(nextShapes);
   }
 
@@ -301,10 +301,10 @@ export default function CounterList() {
   function handleIncrementClick(index) {
     const nextCounters = counters.map((c, i) => {
       if (i === index) {
-        // 클릭된 counter 증가
+        // 클릭된 counter를 증가시킵니다.
         return c + 1;
       } else {
-        // 변경되지 않은 나머지
+        // 변경되지 않은 나머지를 반환합니다.
         return c;
       }
     });
@@ -357,7 +357,7 @@ export default function List() {
   );
 
   function handleClick() {
-    const insertAt = 1; // 모든 인덱스가 될 수 있음
+    const insertAt = 1; // 모든 인덱스가 될 수 있습니다.
     const nextArtists = [
       // 삽입 지점 이전 항목
       ...artists.slice(0, insertAt),
@@ -448,7 +448,7 @@ export default function List() {
 
 ```js
 const nextList = [...list];
-nextList[0].seen = true; // 문제: list[0]을 변경
+nextList[0].seen = true; // 문제: list[0]을 변경시킵니다.
 setList(nextList);
 ```
 
@@ -547,7 +547,7 @@ function ItemList({ artworks, onToggle }) {
 ```js
 const myNextList = [...myList];
 const artwork = myNextList.find(a => a.id === artworkId);
-artwork.seen = nextSeen; // 문제: 기존 항목을 변경시킴
+artwork.seen = nextSeen; // 문제: 기존 항목을 변경시킵니다.
 setMyList(myNextList);
 ```
 
@@ -558,10 +558,10 @@ setMyList(myNextList);
 ```js
 setMyList(myList.map(artwork => {
   if (artwork.id === artworkId) {
-    // 변경된 *새* 객체 만들기
+    // 변경된 *새* 객체를 만들어 반환합니다.
     return { ...artwork, seen: nextSeen };
   } else {
-    // 변화 없음
+    // 변경시키지 않고 반환합니다.
     return artwork;
   }
 });
@@ -592,10 +592,10 @@ export default function BucketList() {
   function handleToggleMyList(artworkId, nextSeen) {
     setMyList(myList.map(artwork => {
       if (artwork.id === artworkId) {
-        // 변경된 *새* 객체 만들기
+        // 변경된 *새* 객체를 만들어 반환합니다.
         return { ...artwork, seen: nextSeen };
       } else {
-        // 변화 없음
+        // 변경시키지 않고 반환합니다.
         return artwork;
       }
     }));
@@ -604,10 +604,10 @@ export default function BucketList() {
   function handleToggleYourList(artworkId, nextSeen) {
     setYourList(yourList.map(artwork => {
       if (artwork.id === artworkId) {
-        // 변경된 *새* 객체 만들기
+        // 변경된 *새* 객체를 만들어 반환합니다.
         return { ...artwork, seen: nextSeen };
       } else {
-        // 변화 없음
+        // 변경시키지 않고 반환합니다.
         return artwork;
       }
     }));
@@ -779,12 +779,6 @@ updateMyTodos(draft => {
 내부적으로 Immer는 항상 `draft`에서 수행한 변경 사항에 따라 처음부터 다음 state를 구성합니다. 이렇게 하면 state를 변경하지 않고도 이벤트 핸들러를 매우 간결하게 유지할 수 있습니다.
 
 <Recap>
-
-- You can put arrays into state, but you can't change them.
-- Instead of mutating an array, create a *new* version of it, and update the state to it.
-- You can use the `[...arr, newItem]` array spread syntax to create arrays with new items.
-- You can use `filter()` and `map()` to create new arrays with filtered or transformed items.
-- You can use Immer to keep your code concise.
 
 - 배열을 state로 만들 수 있지만 변경하면 안됩니다.
 - 배열을 변경하는 대신 배열의 *새* 버전을 만들고 state를 업데이트 해야합니다.
