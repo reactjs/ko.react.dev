@@ -283,12 +283,13 @@ function FilterableProductTable({ products }) {
 
 ```js
 <div>
-  <SearchBar filterText={filterText} inStockOnly={inStockOnly} />
-  <ProductTable
+  <SearchBar 
+    filterText={filterText} 
+    inStockOnly={inStockOnly} />
+  <ProductTable 
     products={products}
     filterText={filterText}
-    inStockOnly={inStockOnly}
-  />
+    inStockOnly={inStockOnly} />
 </div>
 ```
 
@@ -356,14 +357,13 @@ function ProductTable({ products, filterText, inStockOnly }) {
       rows.push(
         <ProductCategoryRow
           category={product.category}
-          key={product.category}
-        />
+          key={product.category} />
       );
     }
     rows.push(
-      <ProductCategoryRow
-        category={product.category}
-        key={product.category} />
+      <ProductRow
+        product={product}
+        key={product.name} />
     );
     lastCategory = product.category;
   });
