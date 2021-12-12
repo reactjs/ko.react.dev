@@ -338,9 +338,9 @@ li {
 
 ## 다른 컴포넌트의 DOM 노드 접근하기 {/*accessing-another-components-dom-nodes*/}
 
-When you put a ref on a built-in component that outputs a browser element like `<input />`, React will set that ref's `current` property to the corresponding DOM node (such as the actual `<input />` in the browser).
+`<input />`같은 브라우저 요소를 출력하는 내장 컴포넌트에 ref를 주입할 때 React는 ref의 `current` 프로퍼티를 그에 해당하는 DOM 노드(브라우저의 실제 `<input />` 같은)로 설정합니다.
 
-However, if you try to put a ref on **your own** component, like `<MyInput />`, by default you will get `null`. Here is an example demonstrating it. Notice how clicking the button **does not** focus the input
+하지만 `<MyInput />` 같은 **직접 만든** 컴포넌트에 ref를 주입할 때는 `null`이 기본적으로 주어집니다. 여기 예시가 있습니다. 버튼을 클릭할 때 인풋 요소에 포커스 **되지 않는것을** 주목하세요.
 
 <Sandpack>
 
@@ -371,13 +371,13 @@ export default function MyForm() {
 
 </Sandpack>
 
-Clicking the button will print an error message to the console
+버튼을 클릭하면 콘솔에 에러메세지가 출력될 것입니다.
 
 > Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
 
-This happens because by default React does not let a component access the DOM nodes of other components. Not even for its own children! This is intentional. Refs are an escape hatch that should be used sparingly. Manually manipulating _another_ component's DOM nodes makes your code even more fragile.
+React는 기본적으로 다른 컴포넌트의 DOM 노드에 접근하는 것을 허용하지 않습니다. 컴포넌트의 자식도 예외는 아닙니다! 이것은 의도적인 설계입니다. Ref는 신중하게 혹은 자제해서 사용해야 하는 탈출구입니다. 직접 다른 컴포넌트의 DOM 노드를 조작하는 것은 코드가 쉽게 깨지게 만듭니다.
 
-Instead, components that _want_ to expose their DOM nodes have to **opt in** to that behavior. A component can specify that it "forwards" its ref to one of its children. Here's how `MyInput` can use the `forwardRef` API
+대신 특정 컴포넌트에서 소유한 DOM 노드를 선택적으로 노출시킬 수 있습니다. 컴포넌트는 자식 중 하나를 "전달"하도록 지정할 수 있습니다. 여기 `MyInput`이 어떻게 `forwardRef` API를 사용할 수 있는지 살펴보세요.
 
 ```js
 const MyInput = forwardRef((props, ref) => {
@@ -385,13 +385,13 @@ const MyInput = forwardRef((props, ref) => {
 });
 ```
 
-This is how it works
+작동하는 원리는 다음과 같습니다.
 
-1. `<MyInput ref={inputRef} />` tells React to put the corresponding DOM node into `inputRef.current`. However, it's up to the `MyInput` component to opt into that--by default, it doesn't.
-2. The `MyInput` component is declared using `forwardRef`. **This opts it into receiving the `inputRef` from above as the second `ref` argument** which is declared after `props`.
-3. `MyInput` itself passes the `ref` it received to the `<input>` inside of it.
+1. `<MyInput ref={inputRef} />`으로 React가 대응되는 DOM 노드를 `inputRef.current`에 대입하도록 설정합니다. 하지만 이것은 전적으로 `MyInput` 컴포넌트의 선택에 달려 있습니다, 기본적으로는 이렇게 동작하지 않습니다.
+2. `MyInput` 컴포넌트는 `forwardRef`를 통해 선언되었습니다. 이것은 `props` 다음에 선언된 **두 번째 `ref` 인수로 위에서 `inputRef`를 수신하도록 선택합니다.**
+3. `MyInput`은 자체적으로 수신받은 `ref`를 컴포넌트 내부의 `<input>`으로 전달합니다.
 
-Now clicking the button to focus the input works
+이제 버튼을 클릭하면 입력요소로 포커스가 잘 이동합니다.
 
 <Sandpack>
 
@@ -422,11 +422,11 @@ export default function Form() {
 
 </Sandpack>
 
-In design systems, it is a common pattern for low-level components like buttons, inputs, and so on, to forward their refs to their DOM nodes. On the other hand, high-level components like forms, lists, or page sections usually won't expose their DOM nodes to avoid accidental dependencies on the DOM structure.
+이 패턴은 디자인시스템에서 버튼, 입력요소 등 저수준 컴포넌트에서 DOM 노드를 전달하기 위해 매우 흔하게 사용됩니다. 한편으로는 폼, 목록 혹은 페이지 섹션 등 고수준 컴포넌트에서는 의도하지 않은 DOM 구조 의존성 문제를 피하고자 일반적으로 DOM 노드를 노출하지 않습니다.
 
-<DeepDive title="Exposing a subset of the API with an imperative handle">
+<DeepDive title="명령형 처리방식으로 하위 API 노출하기">
 
-In the above example, `MyInput` exposes the original DOM input element. This lets the parent component call `focus()` on it. However, this also lets the parent component do something else--for example, change its CSS styles. In uncommon cases, you may want to restrict the exposed functionality. You can do that with `useImperativeHandle`
+위 예시에서 `MyInput` 컴포넌트는 DOM 입력 요소를 그대로 노출했습니다. 그리고 부모 컴포넌트에서 DOM 노드의 `focus()`를 호출할 수 있게 되었습니다. 하지만 이로 인해 부모 컴포넌트에서 DOM 노드의 CSS 스타일을 직접 변경하는 등의 예상 못 한 작업을 할 수 있습니다. 몇몇 상황에서는 제한적인 기능만 노출하고 싶을 수 있습니다. `useImperativeHandle`을 사용하여 그렇게 할 수 있습니다.
 
 <Sandpack>
 
@@ -468,7 +468,7 @@ export default function Form() {
 
 </Sandpack>
 
-Here, `realInputRef` inside `MyInput` holds the actual input DOM node. However, `useImperativeHandle` instructs React to provide your own special object as the value of a ref to the parent component. So `inputRef.current` inside the `Form` component will only have the `focus` method. In this case, the ref "handle" is not the DOM node, but the custom object you create inside `useImperativeHandle` call.
+여기 `MyInput` 안쪽 `realInputRef`은 실제 DOM 노드를 가지고 있습니다. 하지만 `useImperativeHandle`로 React가 ref를 참조하는 부모 컴포넌트에 직접 구성한 객체를 전달하도록 지시합니다. 따라서 `Form` 컴포넌트 안쪽의 `inputRef.current`은 `foucs` 메서드만 가지고 있습니다. 이 경우, ref는 DOM 노드가 아니라 `useImperativeHandle` 호출에서 직접 구성한 객체가 됩니다.
 
 </DeepDive>
 
