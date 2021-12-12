@@ -10,8 +10,8 @@ React는 렌더링 결과물에 맞춰 [DOM](https://developer.mozilla.org/docs/
 
 <YouWillLearn>
 
-- `ref` 속성으로 React가 관리하는 DOM 노드에 접근하는 법
-- `ref` JSX 속성과 `useRef` 훅의 관련성
+- `ref` 어트리뷰트로 React가 관리하는 DOM 노드에 접근하는 법
+- `ref` JSX 어트리뷰트와 `useRef` 훅의 관련성
 - 다른 컴포넌트의 DOM 노드에 접근하는 법
 - React가 관리하는 DOM을 수정해도 안전한 경우
 
@@ -31,7 +31,7 @@ import { useRef } from 'react';
 const myRef = useRef(null);
 ```
 
-마지막으로 이전에 선언한 ref를 DOM 노드에 ref 속성으로 전달합니다.
+마지막으로 이전에 선언한 ref를 DOM 노드에 ref 어트리뷰트로 전달합니다.
 
 ```js
 <div ref={myRef}>
@@ -207,7 +207,7 @@ li {
 
 왜냐하면 **Hook은 컴포넌트의 최상단에서만 호출되어야 하기 때문입니다**. `useRef`를 반복문, 조건문 혹은 `map()` 안쪽에서 호출할 수 없습니다.
 
-**`ref` 속성에 함수를 넘기는 것**이 해결책입니다. React는 ref를 주입할 때 DOM node와 함께 ref 콜백을 호출합니다. 그리고 청소해야 할 때(clear 혹은 unmount)는 null과 함께 호출합니다. 이를 응용하여 배열 혹은 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)으로 관리하고 어떤 배열의 순서나 특정할 수 있는 식별자를 이용하여 어떤 ref에도 접근할 수 있습니다.
+**`ref` 어트리뷰트에 함수를 넘기는 것**이 해결책입니다. React는 ref를 주입할 때 DOM node와 함께 ref 콜백을 호출합니다. 그리고 청소해야 할 때(clear 혹은 unmount)는 null과 함께 호출합니다. 이를 응용하여 배열 혹은 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)으로 관리하고 어떤 배열의 순서나 특정할 수 있는 식별자를 이용하여 어떤 ref에도 접근할 수 있습니다.
 
 아래 예시는 긴 목록에서 특정 노드에 스크롤하기 위해 앞에서 말한 접근법을 사용합니다.
 
