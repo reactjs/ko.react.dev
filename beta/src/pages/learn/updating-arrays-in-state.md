@@ -1,5 +1,5 @@
 ---
-title: 배열 State 업데이트
+title: 배열 State 업데이트하기
 ---
 
 <Intro>
@@ -16,7 +16,7 @@ title: 배열 State 업데이트
 
 </YouWillLearn>
 
-## 변경하지 않고 배열 업데이트 {/*updating-arrays-without-mutation*/}
+## 변경하지 않고 배열 업데이트하기 {/*updating-arrays-without-mutation*/}
 
 JavaScript에서 배열은 다른 종류의 객체입니다. [객체와 마찬가지로](/learn/updating-objects-in-state) React state에서 배열은 읽기 전용으로 처리해야 합니다. 즉 `arr[0] = 'bird'`처럼 배열 내부의 항목을 재할당하면 안되고 `push()`나 `pop()`같은 함수로 배열을 변경해서는 안됩니다.
 
@@ -44,7 +44,7 @@ React에서는, state 안의 객체나 배열을 변경하지 않는게 좋기 �
 
 </Gotcha>
 
-### 배열에 항목 추가 {/*adding-to-an-array*/}
+### 배열에 항목 추가하기 {/*adding-to-an-array*/}
 
 `push()`는 배열을 변경시키기 때문에 아래와 같이 사용하지 않는 것이 좋습니다.
 
@@ -154,7 +154,7 @@ setArtists([
 
 이런 식으로, 전개 연산자는 배열의 끝에 추가하여 `push()` 하는 것 처럼 처리가 가능하고 배열의 앞에 추가하여 `unshift()` 하는 것과 같은 작업을 할 수 있습니다. 위의 샌드박스에서 사용해보세요!
 
-### 배열에서 항목 제거 {/*removing-from-an-array*/}
+### 배열에서 항목 제거하기 {/*removing-from-an-array*/}
 
 배열에서 항목을 제거하는 가장 쉬운 방법은 *필터링*하는 것입니다. 다시 말해서 해당 항목을 포함하지 않는 새 배열을 제공하는 것입니다. 이렇게 하려면 `filter` 함수를 사용하면 됩니다. 예를 들면 아래와 같습니다.
 
@@ -210,7 +210,7 @@ setArtists(
 
 여기서 `artists.filter(s => s.id !== artist.id)`는 "`artist.id`와 ID가 다른 `artists`로 구성된 배열을 생성한다"는 의미입니다. 즉 각 artists의 "삭제" 버튼은 해당 artists를 배열에서 필터링한 다음, 반환된 배열로 리렌더링을 요청합니다. `filter`가 원본 배열을 수정하지 않는다는 것에 주의하세요.
 
-### 배열 변환 {/*transforming-an-array*/}
+### 배열 변환하기 {/*transforming-an-array*/}
 
 배열의 일부 혹은 전체를 변경하려면 `map()`을 사용해 **새** 배열을 만들면 됩니다. `map`에 전달하는 함수는 데이터나 인덱스(또는 둘 다)를 기반으로 각 항목을 어떻게 처리할지 결정할 수 있습니다.
 
@@ -278,7 +278,7 @@ body { height: 300px; }
 
 </Sandpack>
 
-### 배열 안의 항목 교체 {/*replacing-items-in-an-array*/}
+### 배열 안의 항목 교체하기 {/*replacing-items-in-an-array*/}
 
 배열에서 하나 이상의 항목을 교체하는 것은 특히 흔한 경우입니다. `arr[0] = 'bird'`와 같이 할당하는 것은 원본 배열을 변경시키므로 `map`을 사용해야 합니다.
 
@@ -332,7 +332,7 @@ button { margin: 5px; }
 
 </Sandpack>
 
-### 배열에 항목 삽입 {/*inserting-into-an-array*/}
+### 배열에 항목 삽입하기 {/*inserting-into-an-array*/}
 
 때로는, 시작도 끝도 아닌 위치에 항목을 삽입하고 싶을 때가 있습니다. 이렇게 하려면, `...` 전개 연산자와 `slice()` 함수를 같이 사용하면 됩니다. `slice()` 함수를 사용하면 배열의 "일부분"을 자를 수 있습니다. 항목을 삽입하려면 삽입 지점 _앞에_ 자른 배열을 전개하고 새 항목을 전개한 다음 원본 배열의 나머지 부분을 전개하는 배열을 만듭니다.
 
@@ -454,7 +454,7 @@ setList(nextList);
 
 `nextList`와 `list`는 서로 다른 배열이지만, **`nextList[0]`과 `list[0]`은 동일한 객체를 가리킵니다**. 따라서 `nextList[0].seen`을 변경하면 `list[0].seen`도 변경됩니다. 이것은 피해야 하는 상태 변경입니다. [중첩된 JavaScript 객체 업데이트](docs/updating-objects-in-state#updating-a-nested-object)와 유사한 방식으로 이 문제를 해결할 수 있습니다.--변경하려는 개별 항목을 변경하는 대신 복사하면 됩니다. 방법은 다음과 같습니다.
 
-## 배열 내부의 객체 업데이트 {/*updating-objects-inside-arrays*/}
+## 배열 내부의 객체 업데이트하기 {/*updating-objects-inside-arrays*/}
 
 객체는 _실제로_ 배열 "내부"의 위치하지 않습니다. 코드에서 "내부"로 나타낼 수 있지만 배열의 각 객체는 배열이 "가리키는" 별도의 값입니다. 이것이 `list[0]`처럼 중첩된 필드를 변경하는 것에 주의해야 하는 이유입니다. 다른 사람의 artwork 리스트가 배열의 동일한 엘리먼트를 가리킬 수 있습니다!
 
@@ -657,7 +657,7 @@ function ItemList({ artworks, onToggle }) {
 
 일반적으로 **방금 생성한 객체만 변경해야 합니다.** *새* artwork를 삽입하는 경우 변경이 가능하지만, 이미 state에 존재하는 것을 처리하려면 복사본이 필요합니다.
 
-### Immer로 간결한 업데이트 로직 작성 {/*write-concise-update-logic-with-immer*/}
+### Immer로 간결한 업데이트 로직 작성하기 {/*write-concise-update-logic-with-immer*/}
 
 변경 없이 중첩된 배열을 업데이트하는 것은 [객체와 마찬가지로](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) 약간 반복적일 수 있습니다.
 
@@ -798,7 +798,7 @@ updateMyTodos(draft => {
 
 <Challenges>
 
-### 장바구니의 항목 업데이트 {/*update-an-item-in-the-shopping-cart*/}
+### 장바구니의 항목 업데이트하기 {/*update-an-item-in-the-shopping-cart*/}
 
 "+" 버튼을 누르면 해당 숫자가 증가하도록 로직을 작성해보세요.
 
@@ -925,7 +925,7 @@ button { margin: 5px; }
 
 </Solution>
 
-### 장바구니에서 항목 제거 {/*remove-an-item-from-the-shopping-cart*/}
+### 장바구니에서 항목 제거하기 {/*remove-an-item-from-the-shopping-cart*/}
 
 이 장바구니에는 작동하는 "+" 버튼이 있지만 "-" 버튼은 아무 기능도 하지 않습니다. 이벤트 핸들러를 추가해야 해당 product의 `count`가 감소합니다. count가 1일 때 "-"를 누르면 product가 장바구니에서 자동으로 제거됩니다. 0이 표시되지 않아야합니다.
 
@@ -1086,7 +1086,7 @@ button { margin: 5px; }
 
 </Solution>
 
-### 비변경 함수를 사용하여 변경 수정 {/*fix-the-mutations-using-non-mutative-methods*/}
+### 비변경 함수를 사용하여 변경 수정하기 {/*fix-the-mutations-using-non-mutative-methods*/}
 
 이 예시에서 `App.js`의 모든 이벤트 핸들러는 변경을 사용합니다. 결과적으로 todos를 편집하거나 삭제하는 기능이 동작하지 않습니다. 비변경 함수를 사용하도록 `handleAddTodo`, `handleChangeTodo` 그리고 `handleDeleteTodo`를 다시 작성해보세요.
 
@@ -1419,7 +1419,7 @@ ul, li { margin: 0; padding: 0; }
 </Solution>
 
 
-### Immer를 사용해서 변경 수정 {/*fix-the-mutations-using-immer*/}
+### Immer를 사용해서 변경 수정하기 {/*fix-the-mutations-using-immer*/}
 
 이 예시는 이전 예시와 동일한 예시입니다. 이번에는 Immer를 사용하여 변경을 수정합니다. 편의를 위해 `useImmer`는 이미 import되어 있으므로 `todos` state 변수를 사용하도록 수정해야 합니다.
 
