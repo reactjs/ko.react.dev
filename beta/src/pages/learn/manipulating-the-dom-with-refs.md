@@ -472,22 +472,22 @@ export default function Form() {
 
 </DeepDive>
 
-## When React attaches the refs {/*when-react-attaches-the-refs*/}
+## React가 ref를 부여할 때 {/*when-react-attaches-the-refs*/}
 
-In React, every update is split in [two phases](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom)
+React의 모든 갱신은 [두 단계](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom)로 나눌 수 있습니다.
 
-* During **render,** React calls your components to figure out what should be on the screen.
-* During **commit,** React applies changes to the DOM.
+* **렌더** 페이즈에서 React는 화면에 무엇을 그려야 하는지 알아내도록 컴포넌트를 호출합니다.
+* **커밋** 페이즈에서 React는 변경사항을 DOM에 적용합니다.
 
-In general, you [don't want](/learn/referencing-values-with-refs#best-practices-for-refs) to access refs during rendering. That goes for refs holding DOM nodes as well. During the first render, the DOM nodes have not yet been created, so `ref.current` will be `null`. And during the rendering of updates, the DOM nodes haven't been updated yet. So it's too early to read them.
+일반적으로 렌더링하는 중 ref에 접근하는 것을 [원하지 않습니다](/learn/referencing-values-with-refs#best-practices-for-refs). DOM 노드를 보유하는 ref도 마찬가지입니다. 첫 렌더링에서 DOM 노드는 아직 생성되지 않아서 `ref.current`는 `null`인 상태입니다. 그리고 갱신에 의한 렌더링에서 DOM 노드는 아직 업데이트되지 않은 상태입니다. 두 상황 모두 ref를 읽기에 너무 이른 상황입니다.
 
-React sets `ref.current` during the commit. Before updating the DOM, React sets the affected `ref.current` values to `null`. After updating the DOM, React immediately sets them to the corresponding DOM nodes.
+React는 `ref.current`를 커밋 페이즈에서 설정합니다. DOM을 변경하기 전에 React는 관련된 `ref.current` 값을 미리 `null`로 설정합니다. 그리고 DOM 변경한 후 React는 즉시 대응되는 DOM 노드를 다시 설정합니다.
 
-**Usually, you will access refs from event handlers.** If you want to do something with a ref, but there is no particular event to do it in, you might need an effect. We will discuss effects on the next pages.
+**대부분 `ref` 접근은 이벤트 핸들러 안에서 일어납니다.** ref를 사용하여 뭔가를 하고 싶지만, 그것을 시행할 특정 이벤트가 없을 때 effect가 필요할 수 있습니다. 이펙트에 대해서 다음 페이지에서 이야기해보겠습니다.
 
-<DeepDive title="Flushing state updates synchronously with flushSync">
+<DeepDive title="flushSync로 상태 변경을 동적으로 플러시하기">
 
-Consider code like this, which adds a new todo and scrolls the screen down to the last child of the list. Notice how, for some reason, it always scrolls to the todo that was *just before* the last added one
+새로운 할 일을 추가하고 할 일 목록의 마지막으로 화면 스크롤을 내리는 아래 코드를 봅시다. 어떤 이유에 의해서 마지막 추가된 할 일의 직전으로만 스크롤 되는 것을 관찰해보세요.
 
 <Sandpack>
 
@@ -541,16 +541,16 @@ for (let i = 0; i < 20; i++) {
 
 </Sandpack>
 
-The issue is with these two lines
+문제는 다음 두 줄에 있습니다.
 
 ```js
 setTodos([ ...todos, newTodo]);
 listRef.current.lastChild.scrollIntoView();
 ```
 
-In React, [state updates are queued](/learn/queueing-a-series-of-state-updates). Usually, this is what you want. However, here it causes a problem because `setTodos` does not immediately update the DOM. So the time you scroll the list to its last element, the todo has not yet been added. This is why scrolling always "lags behind" by one item.
+React에서 [상태 갱신은 큐에 쌓여 비동기적으로 처리됩니다](/learn/queueing-a-series-of-state-updates). 일반적으로 이 동작은 유효합니다. 하지만 때때로, `setTodos`가 DOM에 즉각적인 변경을 하지 않는 문제를 유발합니다. 그래서 할 일 목록의 마지막 노드로 스크롤 할 때, DOM에 아직 새로운 할 일이 추가되지 않은 상태입니다. 위 예시에서 스크롤링이 계속 한 아이템 뒤쳐지는 이유입니다.
 
-To fix this issue, you can force React to update ("flush") the DOM synchronously. To do this, import `flushSync` from `react-dom` and **wrap the state update** into a `flushSync` call
+이 문제를 고치기 위해 React에 DOM 변경을 동기적으로 수행하도록 할 수 있습니다. 이를 위해 `react-dom` 패키지의 `flushSync`를 가져오고 상태 업데이트를 `flushSync` 호출 안에 감싸면 됩니다.
 
 ```js
 flushSync(() => {
@@ -559,7 +559,7 @@ flushSync(() => {
 listRef.current.lastChild.scrollIntoView();
 ```
 
-This will instruct React to update the DOM synchronously right after the code wrapped in `flushSync` executes. As a result, the last todo will already be in the DOM by the time you try to scroll to it
+위 코드는 `flushSync`로 감쌓인 코드가 실행된 직후 React가 동기적으로 DOM을 변경하도록 지시합니다. 결과적으로 마지막 할 일은 스크롤하기 전에 항상 DOM에 추가되어 있을 것입니다.
 
 <Sandpack>
 
@@ -618,15 +618,15 @@ for (let i = 0; i < 20; i++) {
 
 </DeepDive>
 
-## Best practices for DOM manipulation with refs {/*best-practices-for-dom-manipulation-with-refs*/}
+## ref로 DOM을 조작하는 모범 사례 {/*best-practices-for-dom-manipulation-with-refs*/}
 
-Refs are an escape hatch. You should only use them when you have to "step outside React." Common examples of this include managing focus, scroll position, or calling browser APIs that React does not expose.
+Ref는 탈출구입니다. React에서 벗어나야 할 때만 사용해야 합니다. 해당되는 예시로는 들어 포커스 관리, 스크롤 위치, React가 노출하지 않는 브라우저 API 호출 등이 포함됩니다.
 
-If you stick to non-destructive actions like focusing and scrolling, you shouldn't encounter any problems. However, if you try to **modify** the DOM manually, you can risk conflicting with the changes React is making.
+포커스 및 스크롤 관리같은 비파괴적인 행동을 고수한다면 어떤 문제도 마주치지 않을 것입니다. 하지만 DOM을 직접 수정하는 시도를 한다면 React가 만들어내는 변경사항과 충돌을 발생시킬 위험을 감수해야 합니다.
 
-To illustrate this problem, this example includes a welcome message and two buttons. The first button toggles its presence using [conditional rendering](/learn/conditional-rendering) and [state](/learn/state-a-components-memory), as you would usually do in React. The second button uses the [`remove()` DOM API](https://developer.mozilla.org/en-US/docs/Web/API/Element/remove) to forcefully remove it from the DOM outside of React's control.
+이 문제를 묘사하기 위해, 이 예시에서는 환영 문구와 두 버튼을 포함하고 있습니다. 첫 버튼은 일반적인 React [조건부 렌더링](/learn/conditional-rendering)과 [상태](/learn/state-a-components-memory)를 사용하여 노드 존재 유무를 토글합니다. 두번째 버튼은 [DOM API의 `remove()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/remove)를 사용하여 React의 제어 밖에서 노드를 강제적으로 삭제합니다.
 
-Try pressing "Toggle with setState" a few times. The message should disappear and appear again. Then press "Remove from the DOM". This will forcefully remove it. Finally, press "Toggle with setState"
+"Toggle with setState"를 몇차례 눌러보세요. 메세지는 사라짐과 나타남을 반복할 것입니다. 이후 "Remove from the DOM"을 눌러보세요. 이것은 강제적으로 노드를 삭제합니다. 마지막으로 "Toggle with setState"를 다시 눌러보세요.
 
 <Sandpack>
 
@@ -667,20 +667,20 @@ button {
 
 </Sandpack>
 
-After you've manually removed the DOM element, trying to use `setState` to show it again will lead to a crash. This is because you've changed the DOM, and React doesn't know how to continue managing it correctly.
+DOM 요소를 직접 삭제한 뒤 setState를 사용하여 다시 DOM 노드를 노출시키는 것은 충돌로 이어집니다. DOM을 직접 변경했을 때, React는 DOM 노드를 올바르게 계속 관리할 방법을 모르기 때문입니다.
 
-**Avoid changing DOM nodes managed by React.** Modifying, adding children to, or removing children from elements that are managed by React can lead to inconsistent visual results or crashes like above.
+**React가 관리하는 DOM노드를 직접 바꾸려 하지 마세요.** React가 관리하는 DOM 요소에 대한 수정, 자식 추가 혹은 자식 삭제는 비일관적인 시각적 결과 혹은 위 예시처럼 충돌로 이어집니다.
 
-However, this doesn't mean that you can't do it at all. It requires caution. **You can safely modify parts of the DOM that React has _no reason_ to update.** For example, if some `<div>` is always empty in the JSX, React won't have a reason to touch its children list. Therefore, it is safe to manually add or remove elements there.
+하지만 항상 이것을 할 수 없다는 의미는 아닙니다. 주의깊게 사용해야 합니다. **안전하게 React가 업데이트할 이유가 없는 DOM 노드 일부를 수정할 수 있습니다.** 예를 들어 몇몇 `<div>`가 항상 빈 상태로 JSX에 있다면, React는 해당 노드의 자식 요소를 건드릴 이유가 없습니다. 따라서 빈 노드에서 엘리먼트를 추가하거나 삭제하는 것은 안전합니다.
 
 <Recap>
 
-- Refs are a generic concept, but most often you'll use them to hold DOM elements.
-- You instruct React to put a DOM node into `myRef.current` by passing `<div ref={myRef}>`.
-- Usually, you will use refs for non-destructive actions like focusing, scrolling, or measuring DOM elements.
-- A component doesn't expose its DOM nodes by default. You can opt into exposing a DOM node by using `forwardRef` and passing the second `ref` argument down to a specific node.
-- Avoid changing DOM nodes managed by React.
-- If you do modify DOM nodes managed by React, modify parts that React has no reason to update.
+- Ref는 범용적인 개념이지만 많은 경우 DOM 요소를 참조하기 위해 사용합니다.
+- `<div ref={myRef}>`로 React가 myRef.current에 DOM Node를 대입하도록 지시할 수 있습니다.
+- 많은 경우 ref는 포커싱, 스크롤링, DOM 요소 크기 혹은 위치 측정 등 비파괴적인 행동을 위해 사용됩니다.
+- 컴포넌트는 기본적으로 DOM 노드를 노출하지 않습니다. `forwardRef`와 두번째 `ref` 인자를 특정 노드에 전달하는 것으로 선택적으로 노출시킬 수 있습니다.
+- React가 관리하는 DOM 노드를 직접 바꾸려 하지마세요.
+- React가 관리하는 DOM 노드를 수정하려 한다면, React가 변경할 이유가 없는 부분만 수정하세요.
 
 </Recap>
 
@@ -688,9 +688,9 @@ However, this doesn't mean that you can't do it at all. It requires caution. **Y
 
 <Challenges>
 
-### Play and pause the video {/*play-and-pause-the-video*/}
+### 비디오 재생과 멈춤 {/*play-and-pause-the-video*/}
 
-In this example, the button toggles a state variable to switch between a playing and a paused state. However, in order to actually play or pause the video, toggling state is not enough. You also need to call [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) and [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) on the DOM element for the `<video>`. Add a ref to it, and make the button work.
+이 예시에서 버튼은 재생과 멈춤 상태를 토글합니다. 하지만 실제로 비디오가 재생되거나 멈추기 위해서는 상태를 변경하는 것으로 충분하지 않습니다. `<video>` DOM 요소의 [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play)와 [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause)를 호출해야 합니다. ref를 추가하고, 버튼이 작동하게 만들어보세요.
 
 <Sandpack>
 
@@ -729,7 +729,7 @@ button { display: block }
 
 <Solution>
 
-Declare a ref and put it on the `<video>` element. Then call `ref.current.play()` and `ref.current.pause()` in the event handler depending on the next state.
+ref를 선언하고 `<video>` 요소에 추가해보세요. 그리고 다음 상태에 종속된 이벤트 핸들러에서 `ref.current.play()`와 `ref.current.pause()`를 호출하세요.
 
 <Sandpack>
 
@@ -775,9 +775,9 @@ button { display: block }
 
 </Solution>
 
-### Focus the search field {/*focus-the-search-field*/}
+### 검색 필드에 포커스하기 {/*focus-the-search-field*/}
 
-Make it so that clicking the "Search" button puts focus into the field.
+"Search"버튼을 클릭하면 입력 필드에 포커스가 이동하도록 만들어보세요.
 
 <Sandpack>
 
@@ -804,7 +804,7 @@ button { display: block; margin-bottom: 10px; }
 
 <Solution>
 
-Add a ref to the input, and call `focus()` on the DOM node to focus it
+input에 ref를 추가하고 `focus()`를 호출하여 포커스를 이동하세요.
 
 <Sandpack>
 
@@ -839,9 +839,9 @@ button { display: block; margin-bottom: 10px; }
 
 </Solution>
 
-### Scrolling an image carousel {/*scrolling-an-image-carousel*/}
+### 이미지 캐로셀 스크롤링 {/*scrolling-an-image-carousel*/}
 
-This image carousel has a "Next" button that switches the active image. Make the gallery scroll horizontally to the active image on click. You will want to call [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) on the DOM node of the active image
+이 이미지 캐로셀은 활성화된 이미지를 전환하는 "Next" 버튼이 있습니다. 클릭할 때 갤러리가 활성화된 이미지로 수평 스크롤되도록 만들어 봅시다. 활성화된 이미지의 DOM 노드에서 [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) 호출이 필요할 수 있습니다.
 
 ```js
 node.scrollIntoView({
@@ -853,7 +853,7 @@ node.scrollIntoView({
 
 <Hint>
 
-You don't need to have a ref to every image for this exercise. It should be enough to have a ref to the currently active image, or to the list itself. Use `flushSync` to ensure the DOM is updated *before* you scroll.
+이 활동을 위해 모든 이미지에 `ref`를 부여할 필요는 없습니다. 현재 활성화된 이미지 혹은 리스트 자체와 연결되는 ref 하나면 충분합니다. `flushSync`를 사용해서 스크롤하기 전에 DOM이 변경되도록 하세요.
 
 </Hint>
 
@@ -948,15 +948,15 @@ img {
 
 <Solution>
 
-You can declare a `selectedRef`, and then pass it conditionally only to the current image
+`selectedRef`를 선언하고 조건적으로 현재 활성화된 이미지에 전달할 수 있습니다.
 
 ```js
 <li ref={index === i ? selectedRef : null}>
 ```
 
-When `index === i`, meaning that the image is the selected one, the `<li>` will receive the `selectedRef`. React will make sure that `selectedRef.current` always points at the correct DOM node.
+`index === i`조건이 만족될 때 이 이미지가 선택되었다는 뜻이고 선택된 `<li>`은 `selectedRef`를 받을 것입니다. React는 `selectedRef.current`가 현재 선택된 올바른 DOM 노드를 올바르게 가리키도록 합니다.
 
-Note that the `flushSync` call is necessary to force React to update the DOM before the scroll. Otherwise, `selectedRef.current` would always point at the previously selected item.
+스크롤 하기 전에 React가 DOM 변경을 끝내기 위해 `flushSync` 호출이 필요하다는 것을 상기하세요. 그렇지 않다면, `selectedRef.current`는 항상 이전에 선택된 아이템을 가리키고 있을 것입니다.
 
 <Sandpack>
 
@@ -1065,13 +1065,13 @@ img {
 
 </Solution>
 
-### Focus the search field with separate components {/*focus-the-search-field-with-separate-components*/}
+### 별개의 컴포넌트에서 검색필드에 포커스 이동하기 {/*focus-the-search-field-with-separate-components*/}
 
-Make it so that clicking the "Search" button puts focus into the field. Note that each component is defined in a separate file and shouldn't be moved out of it. How do you connect them together?
+"Search" 버튼을 클릭하면 포커스가 필드에 놓이도록 해보세요. 각 컴포넌트는 별개의 파일에 정의되어 있고 코드의 위치를 옮겨서는 안된다는 점을 명심하세요. 별개의 컴포넌트들을 어떻게 연결할 수 있을까요?
 
 <Hint>
 
-You'll need `forwardRef` to opt into exposing a DOM node from your own component like `SearchInput`.
+`SearchInput`같은 컴포넌트에서 `forwardRef`를 사용해서 DOM 노드를 노출시킬 필요가 있습니다.
 
 </Hint>
 
@@ -1121,7 +1121,7 @@ button { display: block; margin-bottom: 10px; }
 
 <Solution>
 
-You'll need to add an `onClick` prop to the `SearchButton`, and make the `SearchButton` pass it down to the browser `<button>`. You'll also pass a ref down to `<SearchInput>`, which will forward it to the real `<input>` and populate it. Finally, in the click handler, you'll call `focus` on the DOM node stored inside that ref.
+`SearchButton`에 `onClick` prop이 필요할 수 있습니다. 그리고 `SearchButton`은 `onClick`을 브라우저의 `<button>`에 전달하도록 만드세요. 또 `<SearchInput>`에 ref를 전달하고 실제 `<input>`이 전달되도록 하세요. 마지막으로 클릭 핸들러에서 ref에 저장된 DOM 내부의 `focus`를 호출하세요.
 
 <Sandpack>
 
