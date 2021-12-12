@@ -17,7 +17,7 @@ React는 처음부터 점진적으로 적용할 수 있도록 설계되었고, R
 
 </YouWillLearn>
 
-## React 시도하기 {/*try-react*/}
+## React 사용해보기 {/*try-react*/}
 
 React를 사용하기 위해서 따로 설치할 것은 없습니다. sandbox를 사용해 보세요.
 
