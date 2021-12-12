@@ -231,21 +231,21 @@ function handleAddTask(text) {
   dispatch({
     type: 'added',
     id: nextId++,
-    text: text,
+    text: text
   });
 }
 
 function handleChangeTask(task) {
   dispatch({
     type: 'changed',
-    task: task,
+    task: task
   });
 }
 
 function handleDeleteTask(taskId) {
   dispatch({
     type: 'deleted',
-    id: taskId,
+    id: taskId
   });
 }
 ```
@@ -274,7 +274,7 @@ action 객체는 어떤 모양이든 될 수 있습니다. 그렇지만, 컨벤�
 dispatch({
   // 컴포넌트마다 다른 값
   type: 'what_happened',
-  // 다른 필드들은 이곳에
+  // 다른 필드는 이곳에
 });
 ```
 
@@ -294,7 +294,7 @@ React는 reducer에서 반환한 결과 값을 state에 설정합니다.
 
 이 예제에서 이벤트 핸들러에 구현 되어있는 state 설정과 관련한 로직을 reducer 함수로 옮기기 위해서, 다음과 같이 해볼 것입니다.
 
-1. 첫번째 인자에 현재 state(`tasks`)를 선언하기.
+1. 첫번째 인자에 현재 state (`tasks`)를 선언하기.
 2. 두번째 인자에 `action` 객체를 선언하기.
 3. reducer에서 *다음* state 반환하기. (React가 state에 설정하게 될 값)
 
@@ -885,8 +885,8 @@ reducer가 좋은 점만 있는 것은 아닙니다! 아래에서 `useState`와 
 
 reducer를 작성할 때 다음과 같은 두가지 팁을 명심하세요.
 
-- **reducer는 순수해야합니다.** [상태 업데이터 함수](/learn/queueing-a-series-of-state-updates)와 비슷하게, reducer는 렌더링할 때 동작합니다! (이 때, action은 다음 렌더링이 있을 때까지 큐에 쌓입니다.) 이는 reducer가 순수해야 한다는 것, 즉 입력 값이 같다면 결과 값도 같아야 한다는 것을 의미합니다. 요청을 보내거나, timeout을 스케줄링하거나 사이드이펙트(컴포넌트 외부의 작업에 영향을 주는 연산)를 수행해서는 안 됩니다. 또한, 불변하게 [객체](/learn/updating-objects-in-state)와 [배열](/learn/updating-arrays-in-state)을 업데이트 해야합니다.
-- **action은 "무엇을 해야 하는지"가 아니라 "무엇이 발생했는지"를 설명해야 합니다.** 예를 들어, 사용자가 reducer에 의해 관리되는 다섯 개의 필드가 있는 폼에서 "Reset"을 눌렀다면, 별도의 다섯 가지 `set_field` action보다 한개의 `reset_form` action을 전달하는 것이 더 낫습니다. reducer에서 모든 action을 로깅해야 하는 경우, 해당 로그는 어떤 상호작용이나 응답이 어떤 순서로 발생했는지 재구성할 수 있을 만큼 충분히 명확해야 합니다. 이렇게 하는 것이 디버깅에 도움이 될 것입니다.
+* **reducer는 순수해야합니다.** [상태 업데이터 함수](/learn/queueing-a-series-of-state-updates)와 비슷하게, reducer는 렌더링할 때 동작합니다! (이 때, action은 다음 렌더링이 있을 때까지 큐에 쌓입니다.) 이는 reducer가 순수해야 한다는 것, 즉 입력 값이 같다면 결과 값도 같아야 한다는 것을 의미합니다. 요청을 보내거나, timeout을 스케줄링하거나 사이드이펙트(컴포넌트 외부의 작업에 영향을 주는 연산)를 수행해서는 안 됩니다. 또한, 불변하게 [객체](/learn/updating-objects-in-state)와 [배열](/learn/updating-arrays-in-state)을 업데이트 해야합니다.
+* **action은 "무엇을 해야 하는지"가 아니라 "무엇이 발생했는지"를 설명해야 합니다.** 예를 들어, 사용자가 reducer에 의해 관리되는 다섯 개의 필드가 있는 폼에서 "Reset"을 눌렀다면, 별도의 다섯 가지 `set_field` action보다 한개의 `reset_form` action을 전달하는 것이 더 낫습니다. reducer에서 모든 action을 로깅해야 하는 경우, 해당 로그는 어떤 상호작용이나 응답이 어떤 순서로 발생했는지 재구성할 수 있을 만큼 충분히 명확해야 합니다. 이렇게 하는 것이 디버깅에 도움이 될 것입니다.
 
 ## Immer로 간결한 reducer 작성하기 {/*writing-concise-reducers-with-immer*/}
 
@@ -1104,8 +1104,8 @@ reducer는 순수해야 하기 때문에, 이 안에서는 state를 변형할 �
   1. 이벤트 핸들러에서 action을 전달합니다.
   2. 주어진 state와 action으로 다음 state를 반환하는 reducer 함수를 작성합니다.
   3. `useState`를 `useReducer`로 대체합니다.
-* 리듀서는 조금 더 많은 코드를 작성해야 하지만 디버깅과 테스트에 용이합니다.
-* 리듀서는 순수해야 합니다.
+* reducer는 조금 더 많은 코드를 작성해야 하지만 디버깅과 테스트에 용이합니다.
+* reducer는 순수해야 합니다.
 * action은 "무엇을 할 것인지"가 아니라, "무엇이 발생했는지"를 설명합니다.
 * 변형 스타일(mutating style)로 reducer를 작성하려면 Immer를 사용하세요.
 
@@ -1115,7 +1115,7 @@ reducer는 순수해야 하기 때문에, 이 안에서는 state를 변형할 �
 
 <Challenges>
 
-### 이벤트 핸들러에서 action을 전달하기 {/*dispatch-actions-from-event-handlers*/}
+### 이벤트 핸들러에서 action 전달하기 {/*dispatch-actions-from-event-handlers*/}
 
 현재 `ContactList.js`와 `Chat.js`의 이벤트 핸들러 안에는 `// TODO` 주석이 있습니다. 이 때문에 input에 값을 입력해도 동작하지 않고 탭 버튼을 클릭해도 선택된 수신인이 변경되지 않습니다.
 
@@ -1136,7 +1136,7 @@ case 'changed_selection': {
 }
 ```
 
-action 객체가 `type: "changed_selection"`을 갖고 있어야 한다는 것을 의미합니다. 또, `action.contactId`가 사용되고 있는 것으로 보아, action 객체에 프로퍼티로 `contactId`를 포함시켜야 한다는 것을 알 수 있습니다.
+action 객체가 `type: 'changed_selection'`을 갖고 있어야 한다는 것을 의미합니다. 또, `action.contactId`가 사용되고 있는 것으로 보아, action 객체에 프로퍼티로 `contactId`를 포함시켜야 한다는 것을 알 수 있습니다.
 
 </Hint>
 
@@ -1966,7 +1966,7 @@ textarea {
 
 결과적으로 두 방법은 동일하게 동작합니다. 그렇지만 action 객체의 type은 "state가 어떻게 변경되길 원하는지"보다, "사용자가 무엇을 했는지"를 이상적으로 설명해야 한다는 점을 명심하세요. 이렇게 하면 이후에 기능을 추가하기 훨씬 더 수월해질 것 입니다.
 
-참고로, 두 해결책 모두 reducer 안에서 `alert`를 **작성하지 않는** 것이 중요합니다. reducer는 순수함수이어야 하므로, 이 안에서는 오직 다음 state 값을 계산하기 위한 작업만 해야 합니다. 사용자에게 message를 보여주는 것을 포함한 다른 어떤 것도 "수행하지 않아야" 합니다. 이런 부분은 이벤트 핸들러 안에서 수행해야 합니다. (이 같은 실수를 방지하기 위해 React는 Strict 모드에서 reducer를 여러 번 호출합니다. 이 부분이 바로 reducer 안에 alert를 넣으면 두 번 실행되는 이유입니다.)
+두 해결책 모두 reducer 안에서 `alert`를 **작성하지 않는** 것이 중요합니다. reducer는 순수함수이어야 하므로, 이 안에서는 오직 다음 state 값을 계산하기 위한 작업만 해야 합니다. 사용자에게 message를 보여주는 것을 포함한 다른 어떤 것도 "수행하지 않아야" 합니다. 이런 부분은 이벤트 핸들러 안에서 수행해야 합니다. (이 같은 실수를 방지하기 위해 React는 Strict 모드에서 reducer를 여러 번 호출합니다. 이 부분이 바로 reducer 안에 alert를 넣으면 두 번 실행되는 이유입니다.)
 
 </Solution>
 
