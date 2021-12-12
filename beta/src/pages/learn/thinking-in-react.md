@@ -82,20 +82,21 @@ mockup을 쪼개서 컴포넌트들을 확인하였으므로 이를 다시 계�
 <Sandpack>
 
 ```jsx App.js
-function ProductCategoryRow({category}) {
+function ProductCategoryRow({ category }) {
   return (
     <tr>
-      <th colSpan="2">{category}</th>
+      <th colSpan="2">
+        {category}
+      </th>
     </tr>
   );
 }
 
-function ProductRow({product}) {
-  const name = product.stocked ? (
-    product.name
-  ) : (
-    <span style={{color: 'red'}}>{product.name}</span>
-  );
+function ProductRow({ product }) {
+  const name = product.stocked ? product.name :
+    <span style={{ color: 'red' }}>
+      {product.name}
+    </span>;
 
   return (
     <tr>
@@ -105,7 +106,7 @@ function ProductRow({product}) {
   );
 }
 
-function ProductTable({products}) {
+function ProductTable({ products }) {
   const rows = [];
   let lastCategory = null;
 
@@ -114,11 +115,14 @@ function ProductTable({products}) {
       rows.push(
         <ProductCategoryRow
           category={product.category}
-          key={product.category}
-        />
+          key={product.category} />
       );
     }
-    rows.push(<ProductRow product={product} key={product.name} />);
+    rows.push(
+      <ProductRow
+        product={product}
+        key={product.name} />
+    );
     lastCategory = product.category;
   });
 
@@ -140,13 +144,15 @@ function SearchBar() {
     <form>
       <input type="text" placeholder="Search..." />
       <label>
-        <input type="checkbox" /> Only show products in stock
+        <input type="checkbox" />
+        {' '}
+        Only show products in stock
       </label>
     </form>
   );
 }
 
-function FilterableProductTable({products}) {
+function FilterableProductTable({ products }) {
   return (
     <div>
       <SearchBar />
@@ -156,12 +162,12 @@ function FilterableProductTable({products}) {
 }
 
 const PRODUCTS = [
-  {category: 'Fruits', price: '$1', stocked: true, name: 'Apple'},
-  {category: 'Fruits', price: '$1', stocked: true, name: 'Dragonfruit'},
-  {category: 'Fruits', price: '$2', stocked: false, name: 'Passionfruit'},
-  {category: 'Vegetables', price: '$2', stocked: true, name: 'Spinach'},
-  {category: 'Vegetables', price: '$4', stocked: false, name: 'Pumpkin'},
-  {category: 'Vegetables', price: '$1', stocked: true, name: 'Peas'},
+  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
+  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
+  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
+  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
+  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
+  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
 ];
 
 export default function App() {
@@ -291,38 +297,37 @@ function FilterableProductTable({ products }) {
 <Sandpack>
 
 ```jsx App.js
-import {useState} from 'react';
+import { useState } from 'react';
 
-function FilterableProductTable({products}) {
+function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState('');
   const [inStockOnly, setInStockOnly] = useState(false);
-
   return (
     <div>
-      <SearchBar filterText={filterText} inStockOnly={inStockOnly} />
-      <ProductTable
+      <SearchBar 
+        filterText={filterText} 
+        inStockOnly={inStockOnly} />
+      <ProductTable 
         products={products}
         filterText={filterText}
-        inStockOnly={inStockOnly}
-      />
+        inStockOnly={inStockOnly} />
     </div>
   );
 }
-
-function ProductCategoryRow({category}) {
+function ProductCategoryRow({ category }) {
   return (
     <tr>
-      <th colSpan="2">{category}</th>
+      <th colSpan="2">
+        {category}
+      </th>
     </tr>
   );
 }
-
-function ProductRow({product}) {
-  const name = product.stocked ? (
-    product.name
-  ) : (
-    <span style={{color: 'red'}}>{product.name}</span>
-  );
+function ProductRow({ product }) {
+  const name = product.stocked ? product.name :
+    <span style={{ color: 'red' }}>
+      {product.name}
+    </span>;
 
   return (
     <tr>
@@ -332,12 +337,16 @@ function ProductRow({product}) {
   );
 }
 
-function ProductTable({products, filterText, inStockOnly}) {
+function ProductTable({ products, filterText, inStockOnly }) {
   const rows = [];
   let lastCategory = null;
 
   products.forEach((product) => {
-    if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+    if (
+      product.name.toLowerCase().indexOf(
+        filterText.toLowerCase()
+      ) === -1
+    ) {
       return;
     }
     if (inStockOnly && !product.stocked) {
@@ -351,7 +360,11 @@ function ProductTable({products, filterText, inStockOnly}) {
         />
       );
     }
-    rows.push(<ProductRow product={product} key={product.name} />);
+    rows.push(
+      <ProductCategoryRow
+        category={product.category}
+        key={product.category} />
+    );
     lastCategory = product.category;
   });
 
@@ -368,25 +381,31 @@ function ProductTable({products, filterText, inStockOnly}) {
   );
 }
 
-function SearchBar({filterText, inStockOnly}) {
+function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-      <input type="text" value={filterText} placeholder="Search..." />
+      <input 
+        type="text" 
+        value={filterText} 
+        placeholder="Search..."/>
       <label>
-        <input type="checkbox" checked={inStockOnly} /> Only show products in
-        stock
+        <input 
+          type="checkbox" 
+          checked={inStockOnly} />
+        {' '}
+        Only show products in stock
       </label>
     </form>
   );
 }
 
 const PRODUCTS = [
-  {category: 'Fruits', price: '$1', stocked: true, name: 'Apple'},
-  {category: 'Fruits', price: '$1', stocked: true, name: 'Dragonfruit'},
-  {category: 'Fruits', price: '$2', stocked: false, name: 'Passionfruit'},
-  {category: 'Vegetables', price: '$2', stocked: true, name: 'Spinach'},
-  {category: 'Vegetables', price: '$4', stocked: false, name: 'Pumpkin'},
-  {category: 'Vegetables', price: '$1', stocked: true, name: 'Peas'},
+  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
+  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
+  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
+  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
+  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
+  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
 ];
 
 export default function App() {
@@ -419,9 +438,9 @@ td {
 function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-      <input
-        type="text"
-        value={filterText}
+      <input 
+        type="text" 
+        value={filterText} 
         placeholder="Search..."/>
 ```
 
@@ -444,8 +463,8 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar
-        filterText={filterText}
+      <SearchBar 
+        filterText={filterText} 
         inStockOnly={inStockOnly}
         onFilterTextChange={setFilterText}
         onInStockOnlyChange={setInStockOnly} />
@@ -454,12 +473,11 @@ function FilterableProductTable({ products }) {
 `SearchBar`의 `onChange` 이벤트 핸들러의 부모 state를 변경할 수 있도록 구현 할 수 있습니다:
 
 ```js {5}
-<input
-  type="text"
-  value={filterText}
-  placeholder="Search..."
-  onChange={(e) => onFilterTextChange(e.target.value)}
-/>
+<input 
+  type="text" 
+  value={filterText} 
+  placeholder="Search..." 
+  onChange={(e) => onFilterTextChange(e.target.value)} />
 ```
 
 이제 애플리케이션이 완전히 동작합니다!
@@ -467,43 +485,42 @@ function FilterableProductTable({ products }) {
 <Sandpack>
 
 ```jsx App.js
-import {useState} from 'react';
+import { useState } from 'react';
 
-function FilterableProductTable({products}) {
+function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState('');
   const [inStockOnly, setInStockOnly] = useState(false);
 
   return (
     <div>
-      <SearchBar
+      <SearchBar 
+        filterText={filterText} 
+        inStockOnly={inStockOnly} 
+        onFilterTextChange={setFilterText} 
+        onInStockOnlyChange={setInStockOnly} />
+      <ProductTable 
+        products={products} 
         filterText={filterText}
-        inStockOnly={inStockOnly}
-        onFilterTextChange={setFilterText}
-        onInStockOnlyChange={setInStockOnly}
-      />
-      <ProductTable
-        products={products}
-        filterText={filterText}
-        inStockOnly={inStockOnly}
-      />
+        inStockOnly={inStockOnly} />
     </div>
   );
 }
 
-function ProductCategoryRow({category}) {
+function ProductCategoryRow({ category }) {
   return (
     <tr>
-      <th colSpan="2">{category}</th>
+      <th colSpan="2">
+        {category}
+      </th>
     </tr>
   );
 }
 
-function ProductRow({product}) {
-  const name = product.stocked ? (
-    product.name
-  ) : (
-    <span style={{color: 'red'}}>{product.name}</span>
-  );
+function ProductRow({ product }) {
+  const name = product.stocked ? product.name :
+    <span style={{ color: 'red' }}>
+      {product.name}
+    </span>;
 
   return (
     <tr>
@@ -513,12 +530,16 @@ function ProductRow({product}) {
   );
 }
 
-function ProductTable({products, filterText, inStockOnly}) {
+function ProductTable({ products, filterText, inStockOnly }) {
   const rows = [];
   let lastCategory = null;
 
   products.forEach((product) => {
-    if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+    if (
+      product.name.toLowerCase().indexOf(
+        filterText.toLowerCase()
+      ) === -1
+    ) {
       return;
     }
     if (inStockOnly && !product.stocked) {
@@ -528,11 +549,14 @@ function ProductTable({products, filterText, inStockOnly}) {
       rows.push(
         <ProductCategoryRow
           category={product.category}
-          key={product.category}
-        />
+          key={product.category} />
       );
     }
-    rows.push(<ProductRow product={product} key={product.name} />);
+    rows.push(
+      <ProductRow
+        product={product}
+        key={product.name} />
+    );
     lastCategory = product.category;
   });
 
@@ -553,22 +577,20 @@ function SearchBar({
   filterText,
   inStockOnly,
   onFilterTextChange,
-  onInStockOnlyChange,
+  onInStockOnlyChange
 }) {
   return (
     <form>
-      <input
-        type="text"
-        value={filterText}
-        placeholder="Search..."
-        onChange={(e) => onFilterTextChange(e.target.value)}
-      />
+      <input 
+        type="text" 
+        value={filterText} placeholder="Search..." 
+        onChange={(e) => onFilterTextChange(e.target.value)} />
       <label>
-        <input
-          type="checkbox"
-          checked={inStockOnly}
-          onChange={(e) => onInStockOnlyChange(e.target.checked)}
-        />{' '}
+         <input 
+          type="checkbox" 
+          checked={inStockOnly} 
+          onChange={(e) => onInStockOnlyChange(e.target.checked)} />
+        {' '}
         Only show products in stock
       </label>
     </form>
@@ -576,12 +598,12 @@ function SearchBar({
 }
 
 const PRODUCTS = [
-  {category: 'Fruits', price: '$1', stocked: true, name: 'Apple'},
-  {category: 'Fruits', price: '$1', stocked: true, name: 'Dragonfruit'},
-  {category: 'Fruits', price: '$2', stocked: false, name: 'Passionfruit'},
-  {category: 'Vegetables', price: '$2', stocked: true, name: 'Spinach'},
-  {category: 'Vegetables', price: '$4', stocked: false, name: 'Pumpkin'},
-  {category: 'Vegetables', price: '$1', stocked: true, name: 'Peas'},
+  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
+  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
+  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
+  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
+  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
+  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
 ];
 
 export default function App() {
