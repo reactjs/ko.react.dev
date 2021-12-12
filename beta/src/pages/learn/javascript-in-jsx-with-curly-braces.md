@@ -1,25 +1,25 @@
 ---
-title: JavaScript in JSX with Curly Braces
+title: JavaScript에서 중괄호가 있는 JSX
 ---
 
 <Intro>
 
-JSX lets you write HTML-like markup inside a JavaScript file, keeping rendering logic and content in the same place. Sometimes you will want to add a little JavaScript logic or reference a dynamic property inside that markup. In this situation, you can use curly braces in your JSX to open a window to JavaScript.
+JSX를 사용하면 JavaScript 파일에 HTML과 비슷한 마크업을 작성하여 렌더링 로직과 콘텐츠를 같은 곳에 놓을 수 있습니다. 때로는 JavaScript 논리를 추가하거나 해당 마크업 내부의 동적인 프로퍼티를 참조하고 싶을 수 있습니다. 이 상황에서는 JSX에서 중괄호를 사용하여 JavaScript를 사용할 수 있습니다.
 
 </Intro>
 
 <YouWillLearn>
 
-* How to pass strings with quotes
-* How to reference a JavaScript variable inside JSX with curly braces
-* How to call a JavaScript function inside JSX with curly braces
-* How to use a JavaScript object inside JSX with curly braces
+* 따옴표로 문자열을 전달하는 방법
+* 중괄호가 있는 JSX 안에서 JavaScript 변수를 참조하는 방법
+* 중괄호가 있는 JSX 안에서 JavaScript 함수를 호출하는 방법
+* 중괄호가 있는 JSX 안에서 JavaScript 객체를 사용하는 방법
 
 </YouWillLearn>
 
-## Passing strings with quotes {/*passing-strings-with-quotes*/}
+## 따옴표로 문자열 전달하기 {/*passing-strings-with-quotes*/}
 
-When you want to pass a string attribute to JSX, you put it in single or double quotes:
+문자열 어트리뷰트를 JSX에 전달하려면 작은따옴표나 큰따옴표로 묶어야 합니다.
 
 <Sandpack>
 
@@ -41,9 +41,9 @@ export default function Avatar() {
 
 </Sandpack>
 
-Here, `"https://i.imgur.com/7vQD0fPs.jpg"` and `"Gregorio Y. Zara"` are being passed as strings.
+여기에서는 `"https://i.imgur.com/7vQD0fPs.jpg"`와 `"Gregorio Y. Zara"`가 문자열로 전달되고 있습니다.
 
-But what if you want to dynamically specify the `src` or `alt` text? You could **use a value from JavaScript by replacing `"` and `"` with `{` and `}`**:
+그러나 `src` 또는 `alt` 텍스트를 동적으로 지정하려면 어떻게 해야 할까요? **`"`와`"`를 `{`와`}`로 바꿔 JavaScript의 값을 사용할 수 있습니다**.
 
 <Sandpack>
 
@@ -67,11 +67,11 @@ export default function Avatar() {
 
 </Sandpack>
 
-Notice the difference between `className="avatar"`, which specifies an `"avatar"` CSS class name that makes the image round, and `src={avatar}` that reads the value of the JavaScript variable called `avatar`. That's because curly braces let you work with JavaScript right there in your markup!
+이미지를 둥글게 만드는 `"avatar"` CSS 클래스 이름을 지정하는 `className="avatar"`와 `avatar`라는 JavaScript 변수의 값을 읽는 `src={avatar}`의 차이점에 주목해야 합니다. 중괄호를 사용하면 마크업에서 바로 JavaScript를 사용할 수 있기 때문입니다.
 
-## Using curly braces: A window into the JavaScript world {/*using-curly-braces-a-window-into-the-javascript-world*/}
+## 중괄호 사용하기: JavaScript 세계로 연결하는 창 {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
-JSX is a special way of writing JavaScript. That means it’s possible to use JavaScript inside it—with curly braces `{ }`. The example below first declares a name for the scientist, `name`, then embeds it with curly braces inside the `<h1>`:
+JSX는 JavaScript를 작성하는 특별한 방법입니다. 중괄호 `{ }` 사이에서 JavaScript를 사용할 수 있습니다. 아래 예시는 이름 `name`을 선언한 다음 `<h1>` 내부에 중괄호로 포함합니다.
 
 <Sandpack>
 
@@ -86,9 +86,9 @@ export default function TodoList() {
 
 </Sandpack>
 
-Try changing `name`'s value from `'Gregorio Y. Zara'` to `'Hedy Lamarr'`. See how the To Do List title changes?
+`name` 값을 `'Gregorio Y. Zara'`에서 `'Hedy Lamarr'`로 변경해 To Do List 제목이 어떻게 변경되는지 확인해봅시다.
 
-Any JavaScript expression will work between curly braces, including function calls like `formatDate()`:
+`formatDate()`와 같은 함수 호출을 포함해 모든 JavaScript 표현식은 중괄호 사이에서 작동합니다.
 
 <Sandpack>
 
@@ -111,18 +111,18 @@ export default function TodoList() {
 
 </Sandpack>
 
-### Where to use curly braces {/*where-to-use-curly-braces*/}
+### 중괄호를 사용하는 곳 {/*where-to-use-curly-braces*/}
 
-You can only use curly braces in two ways inside JSX:
+JSX 안에서 중괄호는 두 가지 방법으로만 사용할 수 있습니다.
 
-1. **As text** directly inside a JSX tag: `<h1>{name}'s To Do List</h1>` works, but `<{tag}>Gregorio Y. Zara's To Do List</{tag}>`  will not.
-2. **As attributes** immediately following the `=` sign: `src={avatar}` will read the `avatar` variable, but `src="{avatar}"` will pass the string `{avatar}`.
+1. JSX 태그 안의 **문자**: `<h1>{name}'s To Do List</h1>`는 작동하지만, `<{tag}>Gregorio Y. Zara's To Do List</{tag}>` 작동하지 않습니다.
+2. `=` 바로 뒤에 오는 **어트리뷰트**: `src={avatar}`는 `avatar` 변수를 읽지만 `src="{avatar}"`는 `{avatar}` 문자열을 전달합니다.
 
-## Using "double curlies": CSS and other objects in JSX {/*using-double-curlies-css-and-other-objects-in-jsx*/}
+## "이중 중괄호 사용하기": JSX의 CSS와 다른 객체 {/*using-double-curlies-css-and-other-objects-in-jsx*/}
 
-In addition to strings, numbers, and other JavaScript expressions, you can even pass objects in JSX. Objects are also denoted with curly braces, like `{ name: "Hedy Lamarr", inventions: 5 }`. Therefore, to pass a JS object in JSX, you must wrap the object in another pair of curly braces: `person={{ name: "Hedy Lamarr", inventions: 5 }}`.
+문자열, 숫자 및 기타 JavaScript 표현식 외에도 JSX에 객체를 전달할 수도 있습니다. 또한 객체는 `{ name: "Hedy Lamarr", inventions: 5 }`처럼 중괄호로 표시됩니다. 따라서 JSX에서 객체를 전달하려면 `person={{ name: "Hedy Lamarr", inventions: 5 }}`와 같이 다른 중괄호 쌍으로 객체를 감싸야 합니다.
 
-You may see this with inline CSS styles in JSX. React does not require you to use inline styles (CSS classes work great for most cases). But when you need an inline style, you pass an object to the `style` attribute:
+JSX의 인라인 CSS 스타일에서도 볼 수 있습니다. React는 인라인 스타일을 사용하도록 요구하지 않습니다(CSS 클래스는 대부분 잘 작동합니다). 그러나 인라인 스타일이 필요할 때 `style` 속성에 객체를 전달해야 합니다.
 
 <Sandpack>
 
@@ -148,9 +148,9 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 
 </Sandpack>
 
-Try changing the values of `backgroundColor` and `color`.
+`backgroundColor`와 `color` 값을 변경해 보세요.
 
-You can really see the JavaScript object inside the curly braces when you write it like this:
+아래와 같이 작성할 때 중괄호 안에 JavaScript 객체를 볼 수 있습니다.
 
 ```js {2-5}
 <ul style={
@@ -161,17 +161,17 @@ You can really see the JavaScript object inside the curly braces when you write 
 }>
 ```
 
-The next time you see `{{` and `}}` in JSX, know that it's nothing more than an object inside the JSX curlies!
+JSX에서 `{{` 와 `}}` 를 본다면 JSX 중괄호 안의 객체에 불과하다는 것을 알아야 합니다.
 
 <Gotcha>
 
-Inline `style` properties are written in camelCase. For example, HTML `<ul style="background-color: black"`> would be written as `<ul style={{ backgroundColor: 'black' }}>`  in your component.
+인라인 스타일 프로퍼티는 캐멀 케이스로 작성됩니다. 예를 들어 HTML에서의 `<ul style="background-color: black">`은 컴포넌트에서 `<ul style={{ backgroundColor: 'black' }}>`로 작성됩니다.
 
 </Gotcha>
 
-## More fun with JavaScript objects and curly braces {/*more-fun-with-javascript-objects-and-curly-braces*/}
+## JavaScript 객체와 중괄호에 대해서 더 알아보기 {/*more-fun-with-javascript-objects-and-curly-braces*/}
 
-You can move several expressions into one object, and reference them in your JSX inside curly braces:
+여러 표현식을 하나의 객체로 옮기고 중괄호 안의 JSX에서 참조할 수 있습니다.
 
 <Sandpack>
 
@@ -211,7 +211,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-In this example, the `person` JavaScript object contains a `name` string and a `theme` object:
+이 예시에서 `person` 객체는 `name` 문자열과 `theme` 객체를 포함합니다.
 
 ```js
 const person = {
@@ -223,31 +223,31 @@ const person = {
 };
 ```
 
-The component can use these values from `person` like so:
+컴포넌트는 `person` 값을 아래와 같이 사용할 수 있습니다.
 
 ```js
 <div style={person.theme}>
   <h1>{person.name}'s Todos</h1>
 ```
 
-JSX is very minimal as a templating language because it lets you organize data and logic using JavaScript.
+JSX는 JavaScript를 사용하여 데이터와 논리를 구성할 수 있는 매우 작은 템플릿 언어입니다.
 
 <Recap>
 
-Now you know almost everything about JSX:
+이제 JSX에 대한 거의 모든 것을 알게 되었습니다.
 
-* JSX attributes inside quotes are passed as strings.
-* Curly braces let you bring JavaScript logic and variables into your markup.
-* They work inside the JSX tag content or immediately after `=` in attributes.
-* `{{` and `}}` is not special syntax: it's a JavaScript object tucked inside JSX curly braces.
+* 따옴표 안의 JSX 어트리뷰트는 문자열로 전달됩니다.
+* 중괄호를 사용하면 JavaScript 논리와 변수를 마크업으로 가져올 수 있습니다.
+* JSX 태그 내부 또는 어트리뷰트의 `=` 뒤에서 작동합니다.
+* `{{` 및 `}}` 는 특별한 문법이 아닙니다. JSX 중괄호 안에 들어 있는 JavaScript 객체입니다.
 
 </Recap>
 
 <Challenges>
 
-### Fix the mistake {/*fix-the-mistake*/}
+### 실수 고치기 {/*fix-the-mistake*/}
 
-This code crashes with an error saying `Objects are not valid as a React child`:
+아래 코드는 `Objects are not valid as a React child`라는 오류가 발생합니다.
 
 <Sandpack>
 
@@ -287,15 +287,15 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-Can you find the problem?
+문제를 찾았나요?
 
-<Hint>Look for what's inside the curly braces. Are we putting the right thing there?</Hint>
+<Hint>중괄호 안에 무엇이 있는지 찾아봅시다. 중괄호 안에 올바른 것을 넣고 있나요?</Hint>
 
 <Solution>
 
-This is happening because this example renders *an object itself* into the markup rather than a string: `<h1>{person}'s Todos</h1>` is trying to render the entire `person` object! Including raw objects as text content throws an error because React doesn't know how you want to display them.
+이것은 예시가 *객체 자체*를 문자열이 아닌 마크업으로 렌더링하기 때문에 발생합니다. `<h1>{person}'s Todos</h1>`는 `person` 객체 전체를 렌더링하려고 합니다. 원시 객체를 텍스트 콘텐츠로 포함하면 React가 어떻게 표시할지 모르기 때문에 오류가 발생합니다.
 
-To fix it, replace `<h1>{person}'s Todos</h1>` with `<h1>{person.name}'s Todos</h1>`:
+문제를 해결하려면 `<h1>{person}'s Todos</h1>`를 `<h1>{person.name}'s Todos</h1>`로 바꾸어야 합니다.
 
 <Sandpack>
 
@@ -337,9 +337,9 @@ body > div > div { padding: 20px; }
 
 </Solution>
 
-### Extract information into an object {/*extract-information-into-an-object*/}
+### 정보를 객체로 추출하기 {/*extract-information-into-an-object*/}
 
-Extract the image URL into the `person` object.
+이미지 URL을 `person` 객체로 추출해 봅시다.
 
 <Sandpack>
 
@@ -381,7 +381,7 @@ body > div > div { padding: 20px; }
 
 <Solution>
 
-Move the image URL into a property called `person.imageUrl` and read it from the `<img>` tag using the curlies:
+이미지 URL을 `person.imageUrl`이라는 프로퍼티로 이동하고 중괄호를 사용하여 `<img>` 태그에서 읽습니다.
 
 <Sandpack>
 
@@ -424,13 +424,13 @@ body > div > div { padding: 20px; }
 
 </Solution>
 
-### Write an expression inside JSX curly braces {/*write-an-expression-inside-jsx-curly-braces*/}
+### JSX 중괄호 안에 표현식 작성하기 {/*write-an-expression-inside-jsx-curly-braces*/}
 
-In the object below, the full image URL is split into four parts: base URL,  `imageId`, `imageSize`, and file extension.
+아래 객체에서 전체 이미지 URL은 기본 URL, `imageId`, `imageSize` 및 파일 확장자 네 부분으로 나누어져 있습니다.
 
-We want the image URL to combine these attributes together: base URL (always `'https://i.imgur.com/'`), `imageId` (`'7vQD0fP'`), `imageSize` (`'s'`), and file extension (always `'.jpg'`). However, something is wrong with how the `<img>` tag specifies its `src`.
+이미지 URL은 기본 URL (항상 `'https://i.imgur.com/'`), `imageId` (`'7vQD0fP'`), `imageSize` (`'s'`) 및 파일 확장자 (항상 `'.jpg'`)와 같은 어트리뷰트를 결합합니다. 그러나 `<img>` 태그가 `src`를 지정하는 방식에 문제가 있습니다.
 
-Can you fix it?
+어떻게 고칠 수 있을까요?
 
 <Sandpack>
 
@@ -474,15 +474,15 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-To check that your fix worked, try changing the value of `imageSize` to `'b'`. The image should resize after your edit.
+수정 사항이 제대로 작동하는지 확인하려면 `imageSize` 값을 `'b'`로 변경해 보세요. 수정 후에 이미지의 크기가 조정되어야 합니다.
 
 <Solution>
 
-You can write it as `src={baseUrl + person.imageId + person.imageSize + '.jpg'}`.
+`src={baseUrl + person.imageId + person.imageSize + '.jpg'}`같이 작성할 수 있습니다.
 
-1. `{` opens the JavaScript expression
-2. `baseUrl + person.imageId + person.imageSize + '.jpg'` produces the correct URL string
-3. `}` closes the JavaScript expression
+1. `{` 는 JavaScript 표현식을 엽니다.
+2. `baseUrl + person.imageId + person.imageSize + '.jpg'` 는 올바른 URL 문자열을 생성합니다.
+3. `}` 는 JavaScript 표현식을 닫습니다.
 
 <Sandpack>
 
@@ -525,7 +525,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-You can also move this expression into a separate function like `getImageUrl` below:
+이 표현식을 아래의 `getImageUrl`과 같은 별도의 함수로 옮길 수도 있습니다.
 
 <Sandpack>
 
@@ -580,7 +580,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-Variables and functions can help you keep the markup simple!
+변수와 함수는 마크업을 단순하게 유지하는 데 도움이 될 수 있습니다!
 
 </Solution>
 
