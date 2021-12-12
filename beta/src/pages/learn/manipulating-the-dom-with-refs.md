@@ -209,7 +209,7 @@ li {
 
 **`ref` 어트리뷰트에 함수를 넘기는 것**이 해결책입니다. React는 ref를 주입할 때 DOM node와 함께 ref 콜백을 호출합니다. 그리고 청소해야 할 때(clear 혹은 unmount)는 null과 함께 호출합니다. 이를 응용하여 배열 혹은 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)으로 관리하고 어떤 배열의 순서나 특정할 수 있는 식별자를 이용하여 어떤 ref에도 접근할 수 있습니다.
 
-아래 예시는 긴 목록에서 특정 노드에 스크롤하기 위해 앞에서 말한 접근법을 사용합니다.
+아래 예시는 긴 목록에서 특정 노드에 스크롤 하기 위해 앞에서 말한 접근법을 사용합니다.
 
 <Sandpack>
 
@@ -338,7 +338,7 @@ li {
 
 ## 다른 컴포넌트의 DOM 노드 접근하기 {/*accessing-another-components-dom-nodes*/}
 
-`<input />`같은 브라우저 요소를 출력하는 내장 컴포넌트에 ref를 주입할 때 React는 ref의 `current` 프로퍼티를 그에 해당하는 DOM 노드(브라우저의 실제 `<input />` 같은)로 설정합니다.
+`<input />`같은 브라우저 요소를 출력하는 내장 컴포넌트에 ref를 주입할 때 React는 ref의 `current` 프로퍼티를 그에 해당되는 DOM 노드(브라우저의 실제 `<input />` 같은)로 설정합니다.
 
 하지만 `<MyInput />` 같은 **직접 만든** 컴포넌트에 ref를 주입할 때는 `null`이 기본적으로 주어집니다. 여기 예시가 있습니다. 버튼을 클릭할 때 인풋 요소에 포커스 **되지 않는것을** 주목하세요.
 
@@ -377,7 +377,7 @@ export default function MyForm() {
 
 React는 기본적으로 다른 컴포넌트의 DOM 노드에 접근하는 것을 허용하지 않습니다. 컴포넌트의 자식도 예외는 아닙니다! 이것은 의도적인 설계입니다. Ref는 신중하게 혹은 자제해서 사용해야 하는 탈출구입니다. 직접 다른 컴포넌트의 DOM 노드를 조작하는 것은 코드가 쉽게 깨지게 만듭니다.
 
-대신 특정 컴포넌트에서 소유한 DOM 노드를 선택적으로 노출시킬 수 있습니다. 컴포넌트는 자식 중 하나를 "전달"하도록 지정할 수 있습니다. 여기 `MyInput`이 어떻게 `forwardRef` API를 사용할 수 있는지 살펴보세요.
+대신 특정 컴포넌트에서 소유한 DOM 노드를 선택적으로 노출할 수 있습니다. 컴포넌트는 자식 중 하나를 "전달"하도록 지정할 수 있습니다. 여기 `MyInput`이 어떻게 `forwardRef` API를 사용할 수 있는지 살펴보세요.
 
 ```js
 const MyInput = forwardRef((props, ref) => {
@@ -559,7 +559,7 @@ flushSync(() => {
 listRef.current.lastChild.scrollIntoView();
 ```
 
-위 코드는 `flushSync`로 감쌓인 코드가 실행된 직후 React가 동기적으로 DOM을 변경하도록 지시합니다. 결과적으로 마지막 할 일은 스크롤하기 전에 항상 DOM에 추가되어 있을 것입니다.
+위 코드는 `flushSync`로 감쌓인 코드가 실행된 직후 React가 동기적으로 DOM을 변경하도록 지시합니다. 결과적으로 마지막 할 일은 스크롤 하기 전에 항상 DOM에 추가되어 있을 것입니다.
 
 <Sandpack>
 
@@ -622,11 +622,11 @@ for (let i = 0; i < 20; i++) {
 
 Ref는 탈출구입니다. React에서 벗어나야 할 때만 사용해야 합니다. 해당되는 예시로는 들어 포커스 관리, 스크롤 위치, React가 노출하지 않는 브라우저 API 호출 등이 포함됩니다.
 
-포커스 및 스크롤 관리같은 비파괴적인 행동을 고수한다면 어떤 문제도 마주치지 않을 것입니다. 하지만 DOM을 직접 수정하는 시도를 한다면 React가 만들어내는 변경사항과 충돌을 발생시킬 위험을 감수해야 합니다.
+포커스 및 스크롤 관리 같은 비파괴적인 행동을 고수한다면 어떤 문제도 마주치지 않을 것입니다. 하지만 DOM을 직접 수정하는 시도를 한다면 React가 만들어내는 변경사항과 충돌을 발생시킬 위험을 감수해야 합니다.
 
-이 문제를 묘사하기 위해, 이 예시에서는 환영 문구와 두 버튼을 포함하고 있습니다. 첫 버튼은 일반적인 React [조건부 렌더링](/learn/conditional-rendering)과 [상태](/learn/state-a-components-memory)를 사용하여 노드 존재 유무를 토글합니다. 두번째 버튼은 [DOM API의 `remove()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/remove)를 사용하여 React의 제어 밖에서 노드를 강제적으로 삭제합니다.
+이 문제를 묘사하기 위해, 이 예시에서는 환영 문구와 두 버튼을 포함하고 있습니다. 첫 버튼은 일반적인 React [조건부 렌더링](/learn/conditional-rendering)과 [상태](/learn/state-a-components-memory)를 사용하여 노드 존재 여부를 토글 합니다. 두 번째 버튼은 [DOM API의 `remove()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/remove)를 사용하여 React의 제어 밖에서 노드를 강제적으로 삭제합니다.
 
-"Toggle with setState"를 몇차례 눌러보세요. 메세지는 사라짐과 나타남을 반복할 것입니다. 이후 "Remove from the DOM"을 눌러보세요. 이것은 강제적으로 노드를 삭제합니다. 마지막으로 "Toggle with setState"를 다시 눌러보세요.
+"Toggle with setState"를 몇 차례 눌러보세요. 메시지는 사라짐과 나타남을 반복할 것입니다. 이후 "Remove from the DOM"을 눌러보세요. 이것은 강제적으로 노드를 삭제합니다. 마지막으로 "Toggle with setState"를 다시 눌러보세요.
 
 <Sandpack>
 
@@ -667,19 +667,19 @@ button {
 
 </Sandpack>
 
-DOM 요소를 직접 삭제한 뒤 setState를 사용하여 다시 DOM 노드를 노출시키는 것은 충돌로 이어집니다. DOM을 직접 변경했을 때, React는 DOM 노드를 올바르게 계속 관리할 방법을 모르기 때문입니다.
+DOM 요소를 직접 삭제한 뒤 setState를 사용하여 다시 DOM 노드를 노출하는 것은 충돌로 이어집니다. DOM을 직접 변경했을 때, React는 DOM 노드를 올바르게 계속 관리할 방법을 모르기 때문입니다.
 
-**React가 관리하는 DOM노드를 직접 바꾸려 하지 마세요.** React가 관리하는 DOM 요소에 대한 수정, 자식 추가 혹은 자식 삭제는 비일관적인 시각적 결과 혹은 위 예시처럼 충돌로 이어집니다.
+**React가 관리하는 DOM 노드를 직접 바꾸려 하지 마세요.** React가 관리하는 DOM 요소에 대한 수정, 자식 추가 혹은 자식 삭제는 비일관적인 시각적 결과 혹은 위 예시처럼 충돌로 이어집니다.
 
-하지만 항상 이것을 할 수 없다는 의미는 아닙니다. 주의깊게 사용해야 합니다. **안전하게 React가 업데이트할 이유가 없는 DOM 노드 일부를 수정할 수 있습니다.** 예를 들어 몇몇 `<div>`가 항상 빈 상태로 JSX에 있다면, React는 해당 노드의 자식 요소를 건드릴 이유가 없습니다. 따라서 빈 노드에서 엘리먼트를 추가하거나 삭제하는 것은 안전합니다.
+하지만 항상 이것을 할 수 없다는 의미는 아닙니다. 주의 깊게 사용해야 합니다. **안전하게 React가 업데이트할 이유가 없는 DOM 노드 일부를 수정할 수 있습니다.** 예를 들어 몇몇 `<div>`가 항상 빈 상태로 JSX에 있다면, React는 해당 노드의 자식 요소를 건드릴 이유가 없습니다. 따라서 빈 노드에서 엘리먼트를 추가하거나 삭제하는 것은 안전합니다.
 
 <Recap>
 
 - Ref는 범용적인 개념이지만 많은 경우 DOM 요소를 참조하기 위해 사용합니다.
 - `<div ref={myRef}>`로 React가 myRef.current에 DOM Node를 대입하도록 지시할 수 있습니다.
 - 많은 경우 ref는 포커싱, 스크롤링, DOM 요소 크기 혹은 위치 측정 등 비파괴적인 행동을 위해 사용됩니다.
-- 컴포넌트는 기본적으로 DOM 노드를 노출하지 않습니다. `forwardRef`와 두번째 `ref` 인자를 특정 노드에 전달하는 것으로 선택적으로 노출시킬 수 있습니다.
-- React가 관리하는 DOM 노드를 직접 바꾸려 하지마세요.
+- 컴포넌트는 기본적으로 DOM 노드를 노출하지 않습니다. `forwardRef`와 두 번째 `ref` 인자를 특정 노드에 전달하는 것으로 선택적으로 노출할 수 있습니다.
+- React가 관리하는 DOM 노드를 직접 바꾸려 하지 마세요.
 - React가 관리하는 DOM 노드를 수정하려 한다면, React가 변경할 이유가 없는 부분만 수정하세요.
 
 </Recap>
@@ -841,7 +841,7 @@ button { display: block; margin-bottom: 10px; }
 
 ### 이미지 캐로셀 스크롤링 {/*scrolling-an-image-carousel*/}
 
-이 이미지 캐로셀은 활성화된 이미지를 전환하는 "Next" 버튼이 있습니다. 클릭할 때 갤러리가 활성화된 이미지로 수평 스크롤되도록 만들어 봅시다. 활성화된 이미지의 DOM 노드에서 [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) 호출이 필요할 수 있습니다.
+이 이미지 캐로셀은 활성화된 이미지를 전환하는 "Next" 버튼이 있습니다. 클릭할 때 갤러리가 활성화된 이미지로 수평 스크롤 되도록 만들어 봅시다. 활성화된 이미지의 DOM 노드에서 [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) 호출이 필요할 수 있습니다.
 
 ```js
 node.scrollIntoView({
@@ -853,7 +853,7 @@ node.scrollIntoView({
 
 <Hint>
 
-이 활동을 위해 모든 이미지에 `ref`를 부여할 필요는 없습니다. 현재 활성화된 이미지 혹은 리스트 자체와 연결되는 ref 하나면 충분합니다. `flushSync`를 사용해서 스크롤하기 전에 DOM이 변경되도록 하세요.
+이 활동을 위해 모든 이미지에 `ref`를 부여할 필요는 없습니다. 현재 활성화된 이미지 혹은 리스트 자체와 연결되는 ref 하나면 충분합니다. `flushSync`를 사용해서 스크롤 하기 전에 DOM이 변경되도록 하세요.
 
 </Hint>
 
@@ -954,9 +954,9 @@ img {
 <li ref={index === i ? selectedRef : null}>
 ```
 
-`index === i`조건이 만족될 때 이 이미지가 선택되었다는 뜻이고 선택된 `<li>`은 `selectedRef`를 받을 것입니다. React는 `selectedRef.current`가 현재 선택된 올바른 DOM 노드를 올바르게 가리키도록 합니다.
+`index === i` 조건이 만족할 때 이 이미지가 선택되었다는 뜻이고 선택된 `<li>`은 `selectedRef`를 받을 것입니다. React는 `selectedRef.current`가 현재 선택된 올바른 DOM 노드를 올바르게 가리키도록 합니다.
 
-스크롤 하기 전에 React가 DOM 변경을 끝내기 위해 `flushSync` 호출이 필요하다는 것을 상기하세요. 그렇지 않다면, `selectedRef.current`는 항상 이전에 선택된 아이템을 가리키고 있을 것입니다.
+스크롤 하기 전에 React가 DOM 변경을 끝내기 위해 `flushSync` 호출이 필요하다는 것을 상기하세요. 그렇지 않다면 `selectedRef.current`는 항상 이전에 선택된 아이템을 가리키고 있을 것입니다.
 
 <Sandpack>
 
@@ -1067,11 +1067,11 @@ img {
 
 ### 별개의 컴포넌트에서 검색필드에 포커스 이동하기 {/*focus-the-search-field-with-separate-components*/}
 
-"Search" 버튼을 클릭하면 포커스가 필드에 놓이도록 해보세요. 각 컴포넌트는 별개의 파일에 정의되어 있고 코드의 위치를 옮겨서는 안된다는 점을 명심하세요. 별개의 컴포넌트들을 어떻게 연결할 수 있을까요?
+"Search" 버튼을 클릭하면 포커스가 필드에 놓이도록 해보세요. 각 컴포넌트는 별개의 파일에 정의되어 있고 코드의 위치를 옮겨서는 안 된다는 점을 명심하세요. 별개의 컴포넌트들을 어떻게 연결할 수 있을까요?
 
 <Hint>
 
-`SearchInput`같은 컴포넌트에서 `forwardRef`를 사용해서 DOM 노드를 노출시킬 필요가 있습니다.
+`SearchInput`같은 컴포넌트에서 `forwardRef`를 사용해서 DOM 노드를 노출할 필요가 있습니다.
 
 </Hint>
 
@@ -1121,7 +1121,7 @@ button { display: block; margin-bottom: 10px; }
 
 <Solution>
 
-`SearchButton`에 `onClick` prop이 필요할 수 있습니다. 그리고 `SearchButton`은 `onClick`을 브라우저의 `<button>`에 전달하도록 만드세요. 또 `<SearchInput>`에 ref를 전달하고 실제 `<input>`이 전달되도록 하세요. 마지막으로 클릭 핸들러에서 ref에 저장된 DOM 내부의 `focus`를 호출하세요.
+`SearchButton`에 `onClick` prop이 필요할 수 있습니다. 그리고 `SearchButton`은 `onClick`을 브라우저의 `<button>`에 전달하도록 만드세요. 또 `<SearchInput>`에 ref를 사용하고 실제 `<input>`이 연결되도록 해야 합니다. 마지막으로 클릭 핸들러에서 ref에 저장된 DOM 내부의 `focus`를 호출하세요.
 
 <Sandpack>
 
