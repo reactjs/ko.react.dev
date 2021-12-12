@@ -328,7 +328,7 @@ function tasksReducer(tasks, action) {
 
 <Convention conventionFor="reducer functions">
 
-위 예제에서 if/else 문을 사용하고 있지만 reducer 함수 안에서는 [switch 문](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/switch)을 사용하는 것이 규칙입니다. 물론 결과는 같지만, switch 문으로 작성하는 것이 한눈에 읽기 더 쉬울 수 있습니다. 이제부터 다룰 예제에서는 아래 처럼 switch 문을 사용하게 될 것입니다.
+위 예제에서 if/else 문을 사용하고 있지만 reducer 함수 안에서는 [switch 문](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/switch)을 사용하는 것이 규칙입니다. 물론 결과는 같지만, switch 문으로 작성하는 것이 한눈에 읽기 더 쉬울 수 있습니다. 이제부터 다룰 예제에서는 아래 처럼 switch 문을 사용하게 될 것입니다.
 
 ```js
 function tasksReducer(tasks, action) {
@@ -368,7 +368,7 @@ function tasksReducer(tasks, action) {
 
 <DeepDive title="왜 reducer라고 부르게 되었을까요?">
 
-reducer를 사용하면 컴포넌트 내부의 코드 양을 "줄일 수" 있지만, 실제로는 배열에서 사용할 수 있는 [`reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) 연산의 이름을 따서 명명되었습니다.
+reducer를 사용하면 컴포넌트 내부의 코드 양을 "줄일 수" 있지만, 실제로는 배열에서 사용할 수 있는 [`reduce()`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) 연산의 이름을 따서 명명되었습니다.
 
 `reduce()` 연산을 통해 배열의 여러 아이템을 단일 값으로 "누적"할 수 있습니다.
 
@@ -2001,7 +2001,7 @@ export const initialState = {
 };
 ```
 
-`[key]: value` [계산된 프로퍼티명](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names) 문법은 `messages` 객체를 업데이트하는데 도움이 될 것입니다.
+`[key]: value` [계산된 프로퍼티명](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer#%EA%B3%84%EC%82%B0%EB%90%9C_%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0%EB%AA%85) 문법은 `messages` 객체를 업데이트하는데 도움이 될 것입니다.
 
 ```js
 {
