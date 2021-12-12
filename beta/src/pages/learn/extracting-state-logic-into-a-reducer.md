@@ -268,7 +268,7 @@ function handleDeleteTask(taskId) {
 
 <Convention conventionFor="action objects">
 
-action 객체는 어떤 모양이든 될 수 있습니다. 그렇지만, 컨벤션에 따라서 어떤 상황이 발생했는지 설명하는 문자열 타입의 `type` 을 넘겨주는 것이 보통이며, 이외의 정보는 다른 필드에 담아서 전달해주게 됩니다. `type`은 컴포넌트에 따라 다르므로 이 예제에서는 `'added'` 또는 `'added_task'` 둘 중 하나가 좋습니다. 무슨 일이 일어나는지를 설명할 수 있는 이름을 선택해주세요.
+action 객체는 어떤 모양이든 될 수 있습니다. 그렇지만 컨벤션에 따라 작성하면, 어떤 상황이 발생했는지 설명하기 위해 문자열 타입의 `type` 을 넘겨주고 이외의 정보는 다른 필드에 담아서 전달해주는 것이 일반적입니다. `type`은 컴포넌트에 따라 값이 다르며 이 예제의 경우 `'added'` 또는 `'added_task'` 둘 중 하나가 좋습니다. 무슨 일이 일어나는지를 설명할 수 있는 값을 넣어주면 됩니다.
 
 ```js
 dispatch({
@@ -328,7 +328,7 @@ function tasksReducer(tasks, action) {
 
 <Convention conventionFor="reducer functions">
 
-위 예제에서 if/else 문을 사용하고 있지만 reducer 함수 안에서는 [switch 문](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/switch)을 사용하는 것이 규칙입니다. 물론 결과는 같지만, switch 문으로 작성하는 것이 한눈에 읽기 더 쉬울 수 있습니다. 이제부터 다룰 예제에서는 아래 처럼 switch 문을 사용하게 될 것입니다.
+위 코드에서 if/else 문을 사용하고 있지만 reducer 함수 안에서는 [switch 문](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/switch)을 사용하는 것이 규칙입니다. 물론 결과는 같지만, switch 문으로 작성하는 것이 한눈에 읽기 더 쉬울 수 있습니다. 이제부터 이 문서에서 다룰 예제는 아래 처럼 switch 문을 사용하게 될 것입니다.
 
 ```js
 function tasksReducer(tasks, action) {
@@ -370,7 +370,7 @@ function tasksReducer(tasks, action) {
 
 reducer를 사용하면 컴포넌트 내부의 코드 양을 "줄일 수" 있지만, 실제로는 배열에서 사용할 수 있는 [`reduce()`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) 연산의 이름을 따서 명명되었습니다.
 
-`reduce()` 연산을 통해 배열의 여러 아이템을 단일 값으로 "누적"할 수 있습니다.
+`reduce()`은 배열의 여러 아이템을 단일 값으로 "누적"하는 연산을 수행합니다.
 
 ```
 const arr = [1, 2, 3, 4, 5];
@@ -873,11 +873,11 @@ ul, li { margin: 0; padding: 0; }
 
 reducer가 좋은 점만 있는 것은 아닙니다! 아래에서 `useState`와 `useReducer`를 비교할 수 있는 몇 가지 방법을 소개하겠습니다.
 
-- **코드 크기:** 일반적으로 `useState`를 사용하면, 미리 작성해야 하는 코드가 줄어듭니다. `useReducer`를 사용하면 reducer 함수와 action 전달하는 부분 둘 다 작성해야 합니다. 그렇지만 여러 이벤트 핸들러에서 비슷한 방식으로 state를 업데이트하는 경우, `useReducer`를 사용하면 코드의 양을 줄이는 데 도움이 될 수 있습니다.
-- **가독성:** `useState`로 간단한 state를 업데이트하는 경우 가독성이 좋은 편입니다. 그렇지만 더 복잡한 구조의 state를 다루게 되면 컴포넌트의 코드 양이 더 많아져 한눈에 읽기 어려워질 수 있습니다. 이 경우 `useReducer`를 사용하면, 업데이트 로직이 *어떻게 동작하는지*와 이벤트 핸들러를 통해서 *무엇이 발생했는지* 구현한 부분을 명확하게 구분할 수 있습니다.
-- **디버깅:** `useState`를 사용하며 버그를 발견했을 때, _왜_, _어디서_ state가 잘못 설정됐는지 찾기 어려울 수 있습니다. `useReducer`를 사용하면, 콘솔로그를 리듀서에 추가하여 state가 업데이트되는 모든 부분과 _왜_ 해당 버그가 발생했는지(어떤 `action`으로 인한 것인지)를 확인할 수 있습니다. 각 `action`이 올바르게 작성되어 있다면, 버그를 발생시킨 부분이 reducer 로직 자체에 있다는 것을 알 수 있을 것입니다. 그렇지만 `useState`를 사용하는 경우보다 더 많은 코드를 단계별로 실행해서 디버깅 해야 하는 점이 있기도 합니다.
-- **테스팅:** reducer는 컴포넌트에 의존하지 않는 순수 함수입니다. 이는 reducer를 독립적으로 분리해서 내보내거나 테스트할 수 있다는 것을 의미합니다. 일반적으로 더 현실적인 환경에서 컴포넌트를 테스트하는 것이 좋지만, 복잡한 state를 업데이트하는 로직의 경우 reducer가 특정 초기 state 및 action에 대해 특정 state를 반환한다고 생각하고 테스트하는 것이 유용할 수 있습니다.
-- **개인적인 취향:** reducer를 좋아하는 사람도 있지만, 그렇지 않는 사람들도 있습니다. 괜찮습니다. 이건 선호도의 문제이니까요. `useState`와 `useReducer`는 동일한 방식이기 때문에 언제나 마음대로 바꿔서 사용해도 무방합니다.
+* **코드 크기:** 일반적으로 `useState`를 사용하면, 미리 작성해야 하는 코드가 줄어듭니다. `useReducer`를 사용하면 reducer 함수와 action 전달하는 부분 둘 다 작성해야 합니다. 그렇지만 여러 이벤트 핸들러에서 비슷한 방식으로 state를 업데이트하는 경우, `useReducer`를 사용하면 코드의 양을 줄이는 데 도움이 될 수 있습니다.
+* **가독성:** `useState`로 간단한 state를 업데이트하는 경우 가독성이 좋은 편입니다. 그렇지만 더 복잡한 구조의 state를 다루게 되면 컴포넌트의 코드 양이 더 많아져 한눈에 읽기 어려워질 수 있습니다. 이 경우 `useReducer`를 사용하면, 업데이트 로직이 *어떻게 동작하는지*와 이벤트 핸들러를 통해서 *무엇이 발생했는지* 구현한 부분을 명확하게 구분할 수 있습니다.
+* **디버깅:** `useState`를 사용하며 버그를 발견했을 때, _왜_, _어디서_ state가 잘못 설정됐는지 찾기 어려울 수 있습니다. `useReducer`를 사용하면, 콘솔로그를 리듀서에 추가하여 state가 업데이트되는 모든 부분과 _왜_ 해당 버그가 발생했는지(어떤 `action`으로 인한 것인지)를 확인할 수 있습니다. 각 `action`이 올바르게 작성되어 있다면, 버그를 발생시킨 부분이 reducer 로직 자체에 있다는 것을 알 수 있을 것입니다. 그렇지만 `useState`를 사용하는 경우보다 더 많은 코드를 단계별로 실행해서 디버깅 해야 하는 점이 있기도 합니다.
+* **테스팅:** reducer는 컴포넌트에 의존하지 않는 순수 함수입니다. 이는 reducer를 독립적으로 분리해서 내보내거나 테스트할 수 있다는 것을 의미합니다. 일반적으로 더 현실적인 환경에서 컴포넌트를 테스트하는 것이 좋지만, 복잡한 state를 업데이트하는 로직의 경우 reducer가 특정 초기 state 및 action에 대해 특정 state를 반환한다고 생각하고 테스트하는 것이 유용할 수 있습니다.
+* **개인적인 취향:** reducer를 좋아하는 사람도 있지만, 그렇지 않는 사람들도 있습니다. 괜찮습니다. 이건 선호도의 문제이니까요. `useState`와 `useReducer`는 동일한 방식이기 때문에 언제나 마음대로 바꿔서 사용해도 무방합니다.
 
 만약 일부 컴포넌트에서 잘못된 방식으로 state를 업데이트하는 것으로 인한 버그가 자주 발생하거나 해당 코드에 더 많은 구조를 도입하고 싶다면 reducer 사용을 권장합니다. 이때 모든 부분에 reducer를 적용하지 않아도 됩니다. `useState` and `useReducer`를 마음대로 섞고 매치하세요! 이 둘은 심지어 같은 컴포넌트 안에서 사용해도 됩니다.
 
@@ -1308,7 +1308,7 @@ dispatch({
 });
 ```
 
-아래 코드는 알맞은 메시지를 전달하도록 업데이트된 코드입니다.
+아래 코드는 알맞은 메시지를 전달하도록 수정된 코드입니다.
 
 <Sandpack>
 
@@ -1796,7 +1796,7 @@ textarea {
 
 이렇게 해도 잘 동작하기 때문에 "Send" 버튼을 누르면 input의 입력값이 잘 지워질 것입니다.
 
-하지만 사용자의 관점에서 봤을 때, message를 전송하는 것과 input 필드에 텍스트를 입력하는 것은 다른 행위입니다. 이를 반영하기 위해 `send_message`라는 *새로운* action을 만들어서 reducer에서 별도로 분리하여 처리해보겠습니다.
+하지만 *사용자의 관점에서 봤을 때*, message를 전송하는 것과 input 필드에 텍스트를 입력하는 것은 다른 행위입니다. 이를 반영하기 위해 `send_message`라는 *새로운* action을 만들어서 reducer에서 별도로 분리하여 작성해보겠습니다.
 
 <Sandpack>
 
@@ -2387,7 +2387,7 @@ textarea {
 
 ### 처음부터 `useReducer` 구현해보기 {/*implement-usereducer-from-scratch*/}
 
-앞선 예제들에서는, `useReducer` Hook을 React에서 불러와 사용했습니다. 이번에는 *`useReducer` Hook*을 직접 구현 해볼 것입니다! 다음은 시작을 위한 스텁입니다. 10줄 이상의 코드를 작성할 필요가 없습니다.
+앞선 예제들에서는, `useReducer` Hook을 React에서 불러와 사용했습니다. 이번에는 *`useReducer` Hook 자체*를 직접 구현 해볼 것입니다! 다음은 시작을 위한 스텁입니다. 10줄 이상의 코드를 작성할 필요가 없습니다.
 
 변경 사항을 테스트하려면 input에 텍스트를 입력하거나 연락처를 선택해보세요.
 
