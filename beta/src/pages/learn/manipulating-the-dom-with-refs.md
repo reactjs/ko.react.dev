@@ -17,7 +17,7 @@ React는 렌더링 결과물에 맞춰 [DOM](https://developer.mozilla.org/docs/
 
 </YouWillLearn>
 
-## 노드 ref 가져오기 {/*getting-a-ref-to-the-node*/}
+## ref로 노드 가져오기 {/*getting-a-ref-to-the-node*/}
 
 React가 관리하는 DOM 노드에 접근하기 위해 `useRef` Hook을 가져옵니다.
 
@@ -476,12 +476,12 @@ export default function Form() {
 
 React의 모든 갱신은 [두 단계](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom)로 나눌 수 있습니다.
 
-* **렌더** 페이즈에서 React는 화면에 무엇을 그려야 하는지 알아내도록 컴포넌트를 호출합니다.
-* **커밋** 페이즈에서 React는 변경사항을 DOM에 적용합니다.
+* **렌더링** 단계에서 React는 화면에 무엇을 그려야 하는지 알아내도록 컴포넌트를 호출합니다.
+* **커밋** 단계에서 React는 변경사항을 DOM에 적용합니다.
 
 일반적으로 렌더링하는 중 ref에 접근하는 것을 [원하지 않습니다](/learn/referencing-values-with-refs#best-practices-for-refs). DOM 노드를 보유하는 ref도 마찬가지입니다. 첫 렌더링에서 DOM 노드는 아직 생성되지 않아서 `ref.current`는 `null`인 상태입니다. 그리고 갱신에 의한 렌더링에서 DOM 노드는 아직 업데이트되지 않은 상태입니다. 두 상황 모두 ref를 읽기에 너무 이른 상황입니다.
 
-React는 `ref.current`를 커밋 페이즈에서 설정합니다. DOM을 변경하기 전에 React는 관련된 `ref.current` 값을 미리 `null`로 설정합니다. 그리고 DOM 변경한 후 React는 즉시 대응되는 DOM 노드를 다시 설정합니다.
+React는 `ref.current`를 커밋 단계에서 설정합니다. DOM을 변경하기 전에 React는 관련된 `ref.current` 값을 미리 `null`로 설정합니다. 그리고 DOM 변경한 후 React는 즉시 대응되는 DOM 노드를 다시 설정합니다.
 
 **대부분 `ref` 접근은 이벤트 핸들러 안에서 일어납니다.** ref를 사용하여 뭔가를 하고 싶지만, 그것을 시행할 특정 이벤트가 없을 때 effect가 필요할 수 있습니다. 이펙트에 대해서 다음 페이지에서 이야기해보겠습니다.
 
