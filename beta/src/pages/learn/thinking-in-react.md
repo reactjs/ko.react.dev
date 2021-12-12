@@ -4,7 +4,7 @@ title: React로 사고하기
 
 <Intro>
 
-React를 사용하게 되면 우리가 고려하고 있는 디자인이나 만들 앱들에 대한 생각을 바꿀 수 있습니다. React를 사용하며 한 번 숲을 보고 나면 곧 각각의 나무들도 보게 될 것입니다. React는 디자인 시스템과 UI state들로 사고하는 것을 쉽게 해줍니다. 이 자습서에서는 React로 검색 가능한 데이터 테이블을 구현을 위해 사고하는 과정을 차근차근 알려드릴 것입니다.
+React를 사용하게 되면 우리가 고려하고 있는 디자인이나 만들 앱들에 대한 생각을 바꿀 수 있습니다. React를 사용하며 한 번 숲을 보면 곧 각각의 나무들도 보게 될 것입니다. React는 디자인 시스템과 UI state들로 사고하는 것을 쉽게 해줍니다. 이 자습서에서는 React로 검색 가능한 데이터 테이블을 구현을 위해 사고하는 과정을 차근차근 알려드릴 것입니다.
 
 </Intro>
 
@@ -25,7 +25,7 @@ JSON API는 몇몇 데이터를 가지고 이렇게 생겼을 겁니다:
 ]
 ```
 
-mockup 은 이렇게 생겼고:
+mockup 은 이렇게 생겼습니다.
 
 <img src="/images/docs/s_thinking-in-react_ui.png" width="300" style={{margin: '0 auto'}} />
 
@@ -35,15 +35,15 @@ mockup 은 이렇게 생겼고:
 
 우리가 할 첫 번째 일은 모든 컴포넌트와 하위 컴포넌트의 주변에 박스를 그리고 그 각각에 이름을 붙이는 것입니다. 디자이너와 함께 일한다면, 이름들을 이미 정해두었을 수 있으니 한번 확인해보세요!
 
-어떤 배경을 가지고 있냐 에 따라, 컴포넌트를 다양하게 쪼개볼 수 있습니다:
+어떤 배경을 가지고 있냐 에 따라, 컴포넌트를 다양하게 쪼개볼 수 있습니다.
 
 * **Programming**--새로운 함수나 객체를 만드는 방식과 같은 방식으로 해봅시다. 예를 들어, [단일책임 원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99)을 반영하고자 한다면 컴포넌트는 이상적으로는 한 가지 일만 해야 됩니다. 만약 점점 컴포넌트가 커진다면 작은 하위 컴포넌트로 쪼개져야 되겠죠.
-* **CSS**--class 선택자를 무엇으로 만들지 생각해봅시다. ( 실제 컴포넌트들은 약간 좀 더 세분되어 있습니다. )
+* **CSS**--class 선택자를 무엇으로 만들지 생각해봅시다. (실제 컴포넌트들은 약간 좀 더 세분되어 있습니다.)
 * **Design**--디자인 계층을 어떤 식으로 구성할지 생각해봅시다.
 
 JSON이 잘 구조화 되어있을 때 컴포넌트 구조가 자연스럽게 데이터 구조에 연결된다는 것을 발견할 수 있습니다. UI랑 데이터 모델은 같은 정보 아키텍처(information architecture)로 설계되는 경우가 많기 때문입니다. 컴포넌트들이 데이터 모델에 매칭될 수 있게 UI를 컴포넌트로 쪼개주세요!
 
-여기 다섯개의 컴포넌트가 있습니다:
+여기 다섯개의 컴포넌트가 있습니다.
 
 <FullWidth>
 
@@ -211,7 +211,7 @@ UI를 상호작용(interactive)하게 만들려면 유저가 기반 데이터 �
 
 앱을 동작시키는데 필요한 최소한의 state들만 이용해야 함을 염두에 두세요. 여기서 핵심은 [중복배제원칙(Don't Repeat Yourself)](https://ko.wikipedia.org/wiki/%EC%A4%91%EB%B3%B5%EB%B0%B0%EC%A0%9C) 입니다. 애플리케이션이 필요로 하는 가장 최소한의 state를 찾고 이를 통해 나머지 모든 것들이 필요에 따라 그때그때 계산되도록 만드세요. 예를 들어, 쇼핑 리스트를 만든다고 하면 당신은 배열에 상품 아이템들을 넣을 겁니다. UI에 상품 아이템의 개수를 노출하고 싶다고 하면 상품 아이템 개수를 따로 state 값으로 가지는 게 아니라 단순하게 배열의 길이만 쓰면 됩니다.
 
-예시 애플리케이션 내 데이터들을 생각해봅시다. 애플리케이션은 다음과 같은 데이터를 가지고 있습니다:
+예시 애플리케이션 내 데이터들을 생각해봅시다. 애플리케이션은 다음과 같은 데이터를 가지고 있습니다.
 
 1. 제품의 원본 목록
 2. 유저가 입력한 검색어
@@ -226,7 +226,7 @@ UI를 상호작용(interactive)하게 만들려면 유저가 기반 데이터 �
 
 그외 남는건 아마 state일겁니다.
 
-위 데이터들을 하나씩 다시 살펴 볼까요:
+위 데이터들을 하나씩 다시 살펴 볼까요.
 
 1. 제품의 원본 목록은 **props를 통해서 전달되었기 때문에 state가 아닙니다**.
 2. 유저가 검색한 검색어는 시간에 따라서 바뀌고 다른 것으로부터 계산이 불가 하므로 state로 볼 수 있습니다.
@@ -237,7 +237,7 @@ UI를 상호작용(interactive)하게 만들려면 유저가 기반 데이터 �
 
 <DeepDive title="Props vs State">
 
-React는 두 개의 데이터 모델이 존재합니다 : props와 state. 둘의 성격은 매우 다릅니다:
+React는 props와 state라는 두 개의 데이터 모델이 존재합니다. 둘의 성격은 매우 다릅니다.
 
 - [**Props**는 함수를 통해 전달되는 인자 같은 성격을 가집니다.](/learn/passing-props-to-a-component) props는 부모 컴포넌트로부터 자식 컴포넌트로 데이터를 넘겨서 외관을 커스터마이징 하게 해줍니다. 예를 들어, `Form` 은 color라는 prop을 `Button`으로 보내서 `Button`을 내가 원하는 형태로 커스터마이징 시킬 수 있습니다..
 - [**State**는 컴포넌트의 메모리 같은 성격을 가집니다.](/learn/state-a-components-memory) state는 컴포넌트가 몇몇 정보를 계속 따라갈 수 있게 해주고 변화하면서 상호작용(interaction)을 만들어 냅니다. 예를 들어, `Button`은 `isHovered`라는 state를 따라갈 것입니다.
@@ -248,9 +248,9 @@ props와 state는 다르지만, 함께 동작합니다. state는 보통 부모 �
 
 ## Step 4: State가 어디에 있어야 할지 정하기 {/*step-4-identify-where-your-state-should-live*/}
 
-이제 앱에서 최소한으로 필요한 state가 뭔지 정했습니다. 다음으로는 어떤 컴포넌트가 state를 가질지 변경시킬지 정해 야합니다. 기억하세요: React는 항상 컴포넌트 계층구조를 따라 부모에서 자식으로 아래로 내려가는 단방향 데이터 흐름을 따릅니다. 앱을 구현하면서 어떤 컴포넌트가 state를 가져야 하는 지 바로 명확하지 않을 수 있습니다. 또, 이 컨셉을 처음 접하는 거라면 더 어려울 수 있습니다. 아래 과정을 따라 해결해 봅시다.
+이제 앱에서 최소한으로 필요한 state가 뭔지 정했습니다. 다음으로는 어떤 컴포넌트가 state를 가질지 변경시킬지 정해야 합니다. React는 항상 컴포넌트 계층구조를 따라 부모에서 자식으로 아래로 내려가는 단방향 데이터 흐름을 따른 다는 것을 기억하세요! 앱을 구현하면서 어떤 컴포넌트가 state를 가져야 하는 지 바로 명확하지 않을 수 있습니다. 또, 이 컨셉을 처음 접하는 거라면 더 어려울 수 있습니다. 아래 과정을 따라 해결해 봅시다.
 
-애플리케이션이 가지는 각각의 state에 대해서:
+애플리케이션이 가지는 각각의 state에 대해서,
 
 1. 해당 state를 기반으로 렌더링하는 모든 컴포넌트를 찾으세요.
 2. 가장 가까운 공통되는 부모 컴포넌트를 찾으세요. - 계층 상 state 영향을 받는 컴포넌트들 위에 있는 컴포넌트
@@ -261,7 +261,7 @@ props와 state는 다르지만, 함께 동작합니다. state는 보통 부모 �
 
 이전 단계에서 유저가 검색한 검색어, 체크 박스의 값이 state임을 확인했습니다: 이 두 state는 항상 함께 노출되기 때문에 하나의 state로 보면 쉽습니다.
 
-이 전략을 애플리케이션에 적용해봅시다:
+이 전략을 애플리케이션에 적용해봅시다.
 
 1. **state를 쓰는 컴포넌트를 찾아봅시다**:
    - `ProductTable`은 state에 기반한 상품 리스트의 필터링해야 합니다 (검색어와 체크 박스의 값)
@@ -271,7 +271,7 @@ props와 state는 다르지만, 함께 동작합니다. state는 보통 부모 �
 
 이제 state값은 `FilterableProductTable`안에 있습니다.
 
-[`useState()` Hook](/reference/usestate)을 이용해서 state를 컴포넌트에 추가하세요. Hooks는 컴포넌트의 [렌더 사이클](/learn/render-and-commit)로 당신을 채갈(hook into) 겁니다. `FilterableProductTable`의 윗부분에 두 개의 state 변수를 추가해서 초깃값을 명확하게 보여주세요:
+[`useState()` Hook](/reference/usestate)을 이용해서 state를 컴포넌트에 추가하세요. Hooks는 컴포넌트의 [렌더 사이클](/learn/render-and-commit)로 당신을 채갈(hook into) 겁니다. `FilterableProductTable`의 윗부분에 두 개의 state 변수를 추가해서 초깃값을 명확하게 보여주세요.
 
 ```js
 function FilterableProductTable({ products }) {
@@ -279,7 +279,7 @@ function FilterableProductTable({ products }) {
   const [inStockOnly, setInStockOnly] = useState(false);
 ```
 
-다음으로, `filterText`와 `inStockOnly` 를 `ProductTable` 와 `SearchBar`에게 props로 전달 하세요:
+다음으로, `filterText`와 `inStockOnly` 를 `ProductTable` 와 `SearchBar`에게 props로 전달 하세요.
 
 ```js
 <div>
@@ -293,7 +293,7 @@ function FilterableProductTable({ products }) {
 </div>
 ```
 
-이제 애플리케이션이 어떻게 동작하는지 알 수 있습니다. `filterText`의 초기 값을 `useState('')` 에서 `useState('fruit')`로 수정해 보세요. 검색창과 데이터 테이블이 모두 업데이트됨을 확인 할 수 있습니다:
+이제 애플리케이션이 어떻게 동작하는지 알 수 있습니다. `filterText`의 초기 값을 `useState('')` 에서 `useState('fruit')`로 수정해 보세요. 검색창과 데이터 테이블이 모두 업데이트됨을 확인 할 수 있습니다.
 
 <Sandpack>
 
@@ -454,7 +454,7 @@ React는 전통적인 양방향 데이터 바인딩(two-way data binding)과 비
 
 4단계의 예시에서 체크하거나 키보드를 타이핑할 경우 UI의 변화가 없고 입력을 무시하는 것을 확인할 수 있습니다. 이건 의도적으로 `<input value={filterText} />`로 코드를 쓰면서 `value`라는 prop이 항상`FilterableProductTable`의 `filterText`라는 state를 통해서 데이터를 받도록 정했기 때문입니다. `filterText`라는 state가 변경되는 게 아니기 때문에 input의 `value` 는 변하지 않고 화면도 바뀌는 게 없습니다.
 
-우리는 사용자가 input을 변경할 때마다 사용자의 입력을 반영할 수 있도록 state를 업데이트하기를 원합니다. state는 `FilterableProductTable`이 가지고 있고 state 변경을 위해서는 `setFilterText`와 `setInStockOnly`를 호출을 하면 됩니다. `SearchBar`가 `FilterableProductTable` 대신 state를 업데이트시키기 위해서는 이 함수들을 `SearchBar`로 보내서 state가 업데이트되어야 할 때마다 호출되도록 하면 됩니다:
+우리는 사용자가 input을 변경할 때마다 사용자의 입력을 반영할 수 있도록 state를 업데이트하기를 원합니다. state는 `FilterableProductTable`이 가지고 있고 state 변경을 위해서는 `setFilterText`와 `setInStockOnly`를 호출을 하면 됩니다. `SearchBar`가 `FilterableProductTable` 대신 state를 업데이트시키기 위해서는 이 함수들을 `SearchBar`로 보내서 state가 업데이트되어야 할 때마다 호출되도록 하면 됩니다.
 
 ```js {2,3,10,11}
 function FilterableProductTable({ products }) {
@@ -470,7 +470,7 @@ function FilterableProductTable({ products }) {
         onInStockOnlyChange={setInStockOnly} />
 ```
 
-`SearchBar`의 `onChange` 이벤트 핸들러의 부모 state를 변경할 수 있도록 구현 할 수 있습니다:
+`SearchBar`의 `onChange` 이벤트 핸들러의 부모 state를 변경할 수 있도록 구현 할 수 있습니다.
 
 ```js {5}
 <input 
