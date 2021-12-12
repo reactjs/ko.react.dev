@@ -99,7 +99,7 @@ export function CustomPreset({
                     className="inline mr-1.5 text-xl"
                     displayDirection={isExpanded ? 'up' : 'down'}
                   />
-                  {isExpanded ? 'Show less' : 'Show more'}
+                  {isExpanded ? '숨기기' : '더 보기'}
                 </span>
               </button>
             )}
