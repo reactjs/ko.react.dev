@@ -231,7 +231,7 @@ function handleAddTask(text) {
   dispatch({
     type: 'added',
     id: nextId++,
-    text: text
+    text: text,
   });
 }
 
@@ -379,7 +379,7 @@ const sum = arr.reduce(
 ); // 1 + 2 + 3 + 4 + 5
 ```
 
-이때 `reduce`에 전달하는 함수는 "reducer"로 알려져 있습니다. 이 함수는 _지금까지의 결과_와 _현재 아이템_을 인자로 받고 _다음 결과_를 반환합니다. 비슷한 아이디어의 예로, React의 reducer는 _지금까지의 state_와 _action_을 인자로 받고 _다음 state_를 반환합니다. 이 과정에서 여러 action을 누적하여 state로 반환합니다.
+이때 `reduce`에 전달하는 함수는 "reducer"로 알려져 있습니다. 이 함수는 _지금까지의 결과_와 _현재 아이템_을 인자로 받고 _다음 결과_를 반환합니다. 비슷한 아이디어의 예로 React의 reducer는 _지금까지의 state_와 _action_을 인자로 받고 _다음 state_를 반환합니다. 이 과정에서 여러 action을 누적하여 state로 반환합니다.
 
 `initialState`와 reducer 함수를 넘겨 받아 최종적인 state 값으로 계산하기 위한 `action` 배열을 인자로 받는 `reduce()` 메서드를 사용할 수도 있습니다.
 
@@ -1125,7 +1125,7 @@ reducer는 순수해야 하기 때문에, 이 안에서는 state를 변형할 �
 
 `dispatch` 함수는 컴포넌트의 prop으로 전달되기 때문에 이미 두 컴포넌트 모두에서 사용할 수 있습니다. 따라서 알맞은 action 객체를 담아 `dispatch` 를 호출하면 됩니다.
 
-action 객체를 어떻게 작성해야하는지 확인하고 싶다면, reducer를 보고 어떤 `action` 필드가 들어갈지 유추할 수 있습니다. 예를 들어, reducer에 정의된 `changed_selection`의 경우를 살펴 보겠습니다.
+action 객체를 어떻게 작성해야하는지 확인하고 싶다면, reducer를 보고 어떤 `action` 필드가 들어갈지 유추할 수 있습니다. reducer에 정의된 `changed_selection`의 경우를 예를 들어 보겠습니다.
 
 ```js
 case 'changed_selection': {
@@ -1972,7 +1972,7 @@ textarea {
 
 ### 탭 전환 시, input 입력 값 복원하기 {/*restore-input-values-when-switching-between-tabs*/}
 
-이 예제에서 선택된 수신자를 바꾸기 위해 탭 버튼을 누르면 message를 입력받는 input 필드의 텍스트 값이 항상 지워집니다.
+이 예제에서 선택된 수신자를 바꾸기 위해 탭 버튼을 누르면 message를 입력받는 input 필드의 텍스트 값이 항상 지워지도록 되어있습니다.
 
 ```js
 case 'changed_selection': {
@@ -1985,11 +1985,11 @@ case 'changed_selection': {
 
 이렇게 하는 이유는 각 수신자 사이에서 한개의 message 입력 값을 공유하고 싶지 않기 때문입니다. 그런데 이런 방식보다, 앱이 각 연락처에 대한 message 입력 값을 별도로 "기억"하여 선택된 연락처가 전환할 때마다 기억 했던 값을 복원하도록 하는 것이 더 나을 것입니다.
 
-여러분이 할 일은 각 *연락처 마다* 별도로 message의 초기 값을 기억할 수 있도록 state의 구조를 바꾸는 것입니다. 이 때, reducer, 초기 state 값 그리고 컴포넌트를 조금씩 변경해야할 것입니다.
+여러분이 할 일은 *각 연락처 마다* 별도로 message의 초기 값을 기억할 수 있도록 state의 구조를 바꾸는 것입니다. 이 때, reducer, 초기 state 값 그리고 컴포넌트를 조금씩 변경해야할 것입니다.
 
 <Hint>
 
-다음과 같이 state를 구성할 수 있습니다.
+state를 다음과 같이 구조화할 수 있습니다.
 
 ```js
 export const initialState = {
@@ -2186,7 +2186,7 @@ reducer는 각 연락처마다 별도의 message 초기 값을 저장하고 업�
 // input 텍스트 값이 수정될 때
 case 'edited_message': {
   return {
-    // selectedId와 같은 다른 state 값은 유지
+    // selectedId와 같은 다른 state 값은 유지합니다.
     ...state,
     messages: {
       // 다른 연락처의 message 값들은 유지 시키지만,
@@ -2198,7 +2198,7 @@ case 'edited_message': {
 }
 ```
 
-현재 선택된 연락처의 message를 읽기 위해서 `Messenger` 컴포넌트의 코드 또한 수정해야합니다.
+현재 선택된 연락처의 message를 읽기 위해서 `Messenger` 컴포넌트의 코드 또한 수정해야 합니다.
 
 ```js
 const message = state.messages[state.selectedId];
@@ -2381,13 +2381,13 @@ textarea {
 
 </Sandpack>
 
-다른 동작을 구현하기 위해 이벤트 핸들러를 변경할 필요가 없습니다. reducer를 사용하지 않았더라면, state를 업데이트하는 모든 이벤트 핸들러를 변경해야 했을 것입니다.
+특히 다른 동작을 구현하기 위해 이벤트 핸들러를 변경할 필요가 없습니다. reducer를 사용하지 않았더라면, state를 업데이트하는 모든 이벤트 핸들러를 변경해야 했을 것입니다.
 
 </Solution>
 
 ### 처음부터 `useReducer` 구현해보기 {/*implement-usereducer-from-scratch*/}
 
-앞선 예제들에서는, `useReducer` Hook을 React에서 불러와 사용했습니다. 이번에는 *`useReducer` Hook 자체*를 직접 구현 해볼 것입니다! 다음은 시작을 위한 스텁입니다. 10줄 이상의 코드를 작성할 필요가 없습니다.
+앞선 예제들에서는, `useReducer` Hook을 React에서 불러와 사용했습니다. 이번에는 *`useReducer` Hook 자체*를 직접 구현해 볼 것입니다! 다음은 시작을 위한 스텁입니다. 10줄 이상의 코드를 작성할 필요가 없습니다.
 
 변경 사항을 테스트하려면 input에 텍스트를 입력하거나 연락처를 선택해보세요.
 
