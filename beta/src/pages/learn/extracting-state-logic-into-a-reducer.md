@@ -220,9 +220,9 @@ function handleDeleteTask(taskId) {
 
 위 코드에서 state 설정과 관련한 로직을 전부 지워보세요. 다음과 같이 세가지 이벤트 핸들러가 남게 될 것입니다.
 
--  사용자가 "Add" 를 눌렀을 때 호출되는 `handleAddTask(text)`
--  사용자가 task를 토글하거나 "저장"을 누르면 호출되는 `handleChangeTask(task)`
--  사용자가 "Delete" 를 누르면 호출되는 `handleDeleteTask(taskId)`
+*  사용자가 "Add" 를 눌렀을 때 호출되는 `handleAddTask(text)`
+*  사용자가 task를 토글하거나 "저장"을 누르면 호출되는 `handleChangeTask(task)`
+*  사용자가 "Delete" 를 누르면 호출되는 `handleDeleteTask(taskId)`
 
 reducer로 state를 관리하는 것은 state를 직접 설정하는 것과 조금 다른 점이 있습니다. state를 설정해서 React에게 "해야할 일"에 대한 것을 알려주는 대신, 이벤트 핸들러에서 "action"을 전달(dispatch)해줌으로써 "사용자가 방금 무엇을 했는지"를 알려줍니다. (state를 업데이트 하는 로직은 reducer가 아닌 다른 곳에 있게 됩니다!) 이를 아래 예제에 대입해보면, 이벤트 핸들러를 통해 "`tasks`를 설정하는 것" 대신 "task가 추가/제거/삭제된" 상황을 담은 action을 전달(dispatch)하게 되는 것을 의미합니다. 이런 방식은 사용자의 의도를 더 잘 설명해줄 수 있게 해줍니다.
 
