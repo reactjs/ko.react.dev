@@ -8,7 +8,7 @@ React를 사용하게 되면 우리가 고려하고 있는 디자인이나 만�
 
 </Intro>
 
-## mockup과 함께 시작하기 {/_start-with-the-mockup_/}
+## mockup과 함께 시작하기 {/*start-with-the-mockup*/}
 
 JSON API와 디자이너로부터 mockup을 이미 받았다고 생각해 봅시다.
 
@@ -31,15 +31,15 @@ mockup 은 이렇게 생겼고:
 
 리액트로 UI를 구현하기 위해서 보통 다섯가지 단계를 따릅니다.
 
-## Step 1: UI를 컴포넌트 계층으로 쪼개기 {/_step-1-break-the-ui-into-a-component-hierarchy_/}
+## Step 1: UI를 컴포넌트 계층으로 쪼개기 {/*step-1-break-the-ui-into-a-component-hierarchy*/}
 
 우리가 할 첫 번째 일은 모든 컴포넌트와 하위 컴포넌트의 주변에 박스를 그리고 그 각각에 이름을 붙이는 것입니다. 디자이너와 함께 일한다면, 이름들을 이미 정해두었을 수 있으니 한번 확인해보세요!
 
 어떤 배경을 가지고 있냐 에 따라, 컴포넌트를 다양하게 쪼개볼 수 있습니다:
 
-- **Programming**--새로운 함수나 객체를 만드는 방식과 같은 방식으로 해봅시다. 예를 들어, [단일책임 원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99)을 반영하고자 한다면 컴포넌트는 이상적으로는 한 가지 일만 해야 됩니다. 만약 점점 컴포넌트가 커진다면 작은 하위 컴포넌트로 쪼개져야 되겠죠.
-- **CSS**--class 선택자를 무엇으로 만들지 생각해봅시다. ( 실제 컴포넌트들은 약간 좀 더 세분되어 있습니다. )
-- **Design**--디자인 계층을 어떤 식으로 구성할지 생각해봅시다.
+* **Programming**--새로운 함수나 객체를 만드는 방식과 같은 방식으로 해봅시다. 예를 들어, [단일책임 원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99)을 반영하고자 한다면 컴포넌트는 이상적으로는 한 가지 일만 해야 됩니다. 만약 점점 컴포넌트가 커진다면 작은 하위 컴포넌트로 쪼개져야 되겠죠.
+* **CSS**--class 선택자를 무엇으로 만들지 생각해봅시다. ( 실제 컴포넌트들은 약간 좀 더 세분되어 있습니다. )
+* **Design**--디자인 계층을 어떤 식으로 구성할지 생각해봅시다.
 
 JSON이 잘 구조화 되어있을 때 컴포넌트 구조가 자연스럽게 데이터 구조에 연결된다는 것을 발견할 수 있습니다. UI랑 데이터 모델은 같은 정보 아키텍처(information architecture)로 설계되는 경우가 많기 때문입니다. 컴포넌트들이 데이터 모델에 매칭될 수 있게 UI를 컴포넌트로 쪼개주세요!
 
@@ -65,13 +65,13 @@ JSON이 잘 구조화 되어있을 때 컴포넌트 구조가 자연스럽게 �
 
 mockup을 쪼개서 컴포넌트들을 확인하였으므로 이를 다시 계층 구조로 나열해봅시다. 컴포넌트 내부에 존재하는 컴포넌트는 계층 구조상 자식으로 나타냅니다.
 
-- `FilterableProductTable`
-  - `SearchBar`
-  - `ProductTable`
-    - `ProductCategoryRow`
-    - `ProductRow`
+* `FilterableProductTable`
+  * `SearchBar`
+  * `ProductTable`
+    * `ProductCategoryRow`
+    * `ProductRow`
 
-## Step 2: React로 정적인 UI 구현하기 {/_step-2-build-a-static-version-in-react_/}
+## Step 2: React로 정적인 UI 구현하기 {/*step-2-build-a-static-version-in-react*/}
 
 이제 컴포넌트 계층구조가 만들어졌으니 앱을 실제로 구현해볼 시간입니다. 가장 쉬운 방법은 데이터 모델을 가지고 UI를 렌더링은 되지만 아무 동작도 없는 버전을 만들어보는 것입니다. 보통 정적인 버전을 먼저 만들고 상호작용을 개별로 추가하는 게 더 쉽습니다. 정적 버전을 만드는 것은 생각은 적게 필요하지만 타이핑이 많이 필요로 하고, 상호작용을 만드는 것은 생각은 많이 해야 하지만 타이핑은 적게 필요로 하기 때문입니다.
 
@@ -205,7 +205,7 @@ td {
 
 </Gotcha>
 
-## Step 3: 최소한의 데이터만 이용해서 완벽하게 UI State 표현해내기 {/_step-3-find-the-minimal-but-complete-representation-of-ui-state_/}
+## Step 3: 최소한의 데이터만 이용해서 완벽하게 UI State 표현해내기 {/*step-3-find-the-minimal-but-complete-representation-of-ui-state*/}
 
 UI를 상호작용(interactive)하게 만들려면 유저가 기반 데이터 모델을 변경할 수 있게 해야 합니다. React는 *state*를 통해 기반 데이터 모델을 변경할 수 있게 합니다.
 
@@ -246,7 +246,7 @@ props와 state는 다르지만, 함께 동작합니다. state는 보통 부모 �
 
 </DeepDive>
 
-## Step 4: State가 어디에 있어야 할지 정하기 {/_step-4-identify-where-your-state-should-live_/}
+## Step 4: State가 어디에 있어야 할지 정하기 {/*step-4-identify-where-your-state-should-live*/}
 
 이제 앱에서 최소한으로 필요한 state가 뭔지 정했습니다. 다음으로는 어떤 컴포넌트가 state를 가질지 변경시킬지 정해 야합니다. 기억하세요: React는 항상 컴포넌트 계층구조를 따라 부모에서 자식으로 아래로 내려가는 단방향 데이터 흐름을 따릅니다. 앱을 구현하면서 어떤 컴포넌트가 state를 가져야 하는 지 바로 명확하지 않을 수 있습니다. 또, 이 컨셉을 처음 접하는 거라면 더 어려울 수 있습니다. 아래 과정을 따라 해결해 봅시다.
 
@@ -446,7 +446,7 @@ function SearchBar({ filterText, inStockOnly }) {
 
 [Managing State](/learn/managing-state) 에서 React에서 state를 사용하는 더 심화한 방법과 어떻게 앱에 구현하는지 배울 수 있습니다.
 
-## Step 5: 역 데이터 흐름 추가하기 {/_step-5-add-inverse-data-flow_/}
+## Step 5: 역 데이터 흐름 추가하기 {/*step-5-add-inverse-data-flow*/}
 
 지금까지 우리는 계층 구조 아래로 흐르는 props와 state의 함수로써 앱을 만들었습니다. 이제 유저 입력에 따라 state를 변경하기 위해서 다른 방향의 데이터 흐름을 만들어야 하는데 이를 위해서는 계층 구조의 하단에 있는 컴포넌트에서 `FilterableProductTable`의 state를 업데이트할 수 있어야 합니다.
 
@@ -632,6 +632,6 @@ td {
 
 [Adding Interactivity](/learn/adding-interactivity) 섹션 에서 state를 변경하고 이벤트를 다루는 것에 대해 더 심화해서 배울 수 있습니다.
 
-## 이제 어디로 가야 할까 {/_where-to-go-from-here_/}
+## 이제 어디로 가야 할까 {/*where-to-go-from-here*/}
 
 지금까지는 React를 이용해서 컴포넌트와 앱을 만들려고 할 때 어떻게 사고할지에 대한 간단한 소개입니다. [당장 React로 프로젝트를 시작](/learn/installation)해도 좋고 다음 단계로 넘어가서 이 [자습서를 이용해서 좀 더 심화](/learn/describing-the-ui) 학습해도 좋습니다.
