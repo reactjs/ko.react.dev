@@ -19,7 +19,7 @@ React는 렌더링 결과물에 맞춰 [DOM](https://developer.mozilla.org/docs/
 
 ## ref로 노드 가져오기 {/*getting-a-ref-to-the-node*/}
 
-React가 관리하는 DOM 노드에 접근하기 위해 `useRef` Hook을 가져옵니다.
+먼저 React가 관리하는 DOM 노드에 접근하기 위해 `useRef` Hook을 가져옵니다.
 
 ```js
 import { useRef } from 'react';
@@ -46,7 +46,7 @@ myRef.current.scrollIntoView();
 
 ### 예시: 텍스트 입력에 포커스 이동하기 {/*example-focusing-a-text-input*/}
 
-이 예시에서, 버튼을 클릭하면 input 요소로 포커스를 이동합니다.
+이 예시에서 버튼을 클릭하면 input 요소로 포커스를 이동합니다.
 
 <Sandpack>
 
@@ -80,11 +80,11 @@ export default function Form() {
 3. `handleClick` 함수에서 `inputRef.current`에서 input DOM 노드를 읽고 `inputRef.current.focus()`로 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)를 호출합니다.
 4. `<button>`과 `onClick`으로 `handleClick` 이벤트 핸들러를 전달합니다.
 
-DOM 조작이 ref를 사용하는 가장 일반적인 사용처지만, `useRef` Hook은 setTimeout Timer ID 같은 React 외부 요소를 저장하는 용도로도 사용할 수 있습니다. 상태(state)와 비슷하게 ref는 렌더링 사이에도 유지됩니다. ref를 설정하더라도 컴포넌트의 렌더링을 다시 유발하지 않는 상태 변수로 생각해도 괜찮습니다! [Ref와 값 참조](/learn/referencing-values-with-refs)에서 ref에 대해 자세히 배울 수 있습니다.
+DOM 조작이 ref를 사용하는 가장 일반적인 사용처지만 `useRef` Hook은 setTimeout Timer ID 같은 React 외부 요소를 저장하는 용도로도 사용할 수 있습니다. 상태(state)와 비슷하게 ref는 렌더링 사이에도 유지됩니다. ref를 설정하더라도 컴포넌트의 렌더링을 다시 유발하지 않는 상태 변수로 생각해도 괜찮습니다! [Ref와 값 참조](/learn/referencing-values-with-refs)에서 ref에 대해 자세히 배울 수 있습니다.
 
 ### 예시: 한 요소로 스크롤을 이동하기 {/*example-scrolling-to-an-element*/}
 
-한 컴포넌트에서 하나 이상의 ref를 가질 수 있습니다. 이 예시에서는, 상응하는 이미지 DOM 노드로 화면 중앙 정렬하기 위해 [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) 메서드를 호출하는 버튼 세 개와 이미지 세 개가 있는 캐로셀이 있습니다.
+한 컴포넌트에서 하나 이상의 ref를 가질 수 있습니다. 이 예시에서는 상응하는 이미지 DOM 노드로 화면 중앙 정렬하기 위해 [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) 메서드를 호출하는 버튼 세 개와 이미지 세 개가 있는 캐로셀이 있습니다.
 
 <Sandpack>
 
@@ -193,7 +193,7 @@ li {
 
 <DeepDive title="ref 콜백을 사용하여 ref 리스트 관리하기">
 
-위 예시에서는 미리 정의된 숫자의 ref가 있었습니다. 하지만 때때로 목록의 아이템마다 ref가 필요할 수도 있고, 얼마나 많은 ref가 필요할지 예측할 수 없는 경우도 있습니다. 그럴 때 아래 코드는 **작동하지 않습니다**.
+위 예시에서는 미리 정해진 숫자만큼 ref가 있었습니다. 하지만 때때로 목록의 아이템마다 ref가 필요할 수도 있고, 얼마나 많은 ref가 필요할지 예측할 수 없는 경우도 있습니다. 그럴 때 아래 코드는 **작동하지 않습니다**.
 
 ```js
 <ul>
@@ -468,7 +468,7 @@ export default function Form() {
 
 </Sandpack>
 
-여기 `MyInput` 안쪽 `realInputRef`은 실제 DOM 노드를 가지고 있습니다. 하지만 `useImperativeHandle`로 React가 ref를 참조하는 부모 컴포넌트에 직접 구성한 객체를 전달하도록 지시합니다. 따라서 `Form` 컴포넌트 안쪽의 `inputRef.current`은 `foucs` 메서드만 가지고 있습니다. 이 경우, ref는 DOM 노드가 아니라 `useImperativeHandle` 호출에서 직접 구성한 객체가 됩니다.
+여기 `MyInput` 안쪽 `realInputRef`은 실제 DOM 노드를 가지고 있습니다. 하지만 `useImperativeHandle`로 React가 ref를 참조하는 부모 컴포넌트에 직접 구성한 객체를 전달하도록 지시합니다. 따라서 `Form` 컴포넌트 안쪽의 `inputRef.current`은 `foucs` 메서드만 가지고 있습니다. 이 경우 ref는 DOM 노드가 아니라 `useImperativeHandle` 호출에서 직접 구성한 객체가 됩니다.
 
 </DeepDive>
 
@@ -548,7 +548,7 @@ setTodos([ ...todos, newTodo]);
 listRef.current.lastChild.scrollIntoView();
 ```
 
-React에서 [상태 갱신은 큐에 쌓여 비동기적으로 처리됩니다](/learn/queueing-a-series-of-state-updates). 일반적으로 이 동작은 유효합니다. 하지만 때때로, `setTodos`가 DOM에 즉각적인 변경을 하지 않는 문제를 유발합니다. 그래서 할 일 목록의 마지막 노드로 스크롤 할 때, DOM에 아직 새로운 할 일이 추가되지 않은 상태입니다. 위 예시에서 스크롤링이 계속 한 아이템 뒤쳐지는 이유입니다.
+React에서 [상태 갱신은 큐에 쌓여 비동기적으로 처리됩니다](/learn/queueing-a-series-of-state-updates). 일반적으로 이 동작은 유효합니다. 하지만 때때로 `setTodos`가 DOM에 즉각적인 변경을 하지 않는 문제를 유발합니다. 그래서 할 일 목록의 마지막 노드로 스크롤 할 때, DOM에 아직 새로운 할 일이 추가되지 않은 상태입니다. 위 예시에서 스크롤링이 계속 한 아이템 뒤쳐지는 이유입니다.
 
 이 문제를 고치기 위해 React에 DOM 변경을 동기적으로 수행하도록 할 수 있습니다. 이를 위해 `react-dom` 패키지의 `flushSync`를 가져오고 상태 업데이트를 `flushSync` 호출 안에 감싸면 됩니다.
 
@@ -624,7 +624,7 @@ Ref는 탈출구입니다. React에서 벗어나야 할 때만 사용해야 합�
 
 포커스 및 스크롤 관리 같은 비파괴적인 행동을 고수한다면 어떤 문제도 마주치지 않을 것입니다. 하지만 DOM을 직접 수정하는 시도를 한다면 React가 만들어내는 변경사항과 충돌을 발생시킬 위험을 감수해야 합니다.
 
-이 문제를 묘사하기 위해, 이 예시에서는 환영 문구와 두 버튼을 포함하고 있습니다. 첫 버튼은 일반적인 React [조건부 렌더링](/learn/conditional-rendering)과 [상태](/learn/state-a-components-memory)를 사용하여 노드 존재 여부를 토글 합니다. 두 번째 버튼은 [DOM API의 `remove()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/remove)를 사용하여 React의 제어 밖에서 노드를 강제적으로 삭제합니다.
+이 문제를 이해하기 위해 이번 예시에서는 환영 문구와 두 버튼을 포함하고 있습니다. 첫 버튼은 일반적인 React [조건부 렌더링](/learn/conditional-rendering)과 [상태](/learn/state-a-components-memory)를 사용하여 노드 존재 여부를 토글 합니다. 두 번째 버튼은 [DOM API의 `remove()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/remove)를 사용하여 React의 제어 밖에서 노드를 강제적으로 삭제합니다.
 
 "Toggle with setState"를 몇 차례 눌러보세요. 메시지는 사라짐과 나타남을 반복할 것입니다. 이후 "Remove from the DOM"을 눌러보세요. 이것은 강제적으로 노드를 삭제합니다. 마지막으로 "Toggle with setState"를 다시 눌러보세요.
 
@@ -667,7 +667,7 @@ button {
 
 </Sandpack>
 
-DOM 요소를 직접 삭제한 뒤 setState를 사용하여 다시 DOM 노드를 노출하는 것은 충돌로 이어집니다. DOM을 직접 변경했을 때, React는 DOM 노드를 올바르게 계속 관리할 방법을 모르기 때문입니다.
+DOM 요소를 직접 삭제한 뒤 setState를 사용하여 다시 DOM 노드를 노출하는 것은 충돌로 이어집니다. DOM을 직접 변경했을 때 React는 DOM 노드를 올바르게 계속 관리할 방법을 모르기 때문입니다.
 
 **React가 관리하는 DOM 노드를 직접 바꾸려 하지 마세요.** React가 관리하는 DOM 요소에 대한 수정, 자식 추가 혹은 자식 삭제는 비일관적인 시각적 결과 혹은 위 예시처럼 충돌로 이어집니다.
 
@@ -690,7 +690,7 @@ DOM 요소를 직접 삭제한 뒤 setState를 사용하여 다시 DOM 노드를
 
 ### 비디오 재생과 멈춤 {/*play-and-pause-the-video*/}
 
-이 예시에서 버튼은 재생과 멈춤 상태를 토글합니다. 하지만 실제로 비디오가 재생되거나 멈추기 위해서는 상태를 변경하는 것으로 충분하지 않습니다. `<video>` DOM 요소의 [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play)와 [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause)를 호출해야 합니다. ref를 추가하고, 버튼이 작동하게 만들어보세요.
+이 예시에서 버튼은 재생과 멈춤 상태를 토글합니다. 하지만 실제로 비디오가 재생되거나 멈추기 위해서는 상태를 변경하는 것으로 충분하지 않습니다. `<video>` DOM 요소의 [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play)와 [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause)를 호출해야 합니다. ref를 추가하고 버튼이 작동하게 만들어보세요.
 
 <Sandpack>
 
