@@ -165,7 +165,11 @@ JSX에서 `{{` 와 `}}` 를 본다면 JSX 중괄호 안의 객체에 불과하�
 
 <Gotcha>
 
+<<<<<<< HEAD
 인라인 스타일 프로퍼티는 캐멀 케이스로 작성됩니다. 예를 들어 HTML에서의 `<ul style="background-color: black">`은 컴포넌트에서 `<ul style={{ backgroundColor: 'black' }}>`로 작성됩니다.
+=======
+Inline `style` properties are written in camelCase. For example, HTML `<ul style="background-color: black">` would be written as `<ul style={{ backgroundColor: 'black' }}>`  in your component.
+>>>>>>> 014f4890dc30a3946c63f83b06883241ddc9bc75
 
 </Gotcha>
 
