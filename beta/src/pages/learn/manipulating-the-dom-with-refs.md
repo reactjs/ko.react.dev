@@ -1121,7 +1121,7 @@ button { display: block; margin-bottom: 10px; }
 
 <Solution>
 
-`SearchButton`에 `onClick` prop이 필요할 수 있습니다. 그리고 `SearchButton`은 `onClick`을 브라우저의 `<button>`에 전달하도록 만드세요. 또 `<SearchInput>`에 ref를 사용하고 실제 `<input>`이 연결되도록 해야 합니다. 마지막으로 클릭 핸들러에서 ref에 저장된 DOM 내부의 `focus`를 호출하세요.
+`SearchButton`에 `onClick` prop이 필요할 수 있습니다. 그리고 `SearchButton`은 `onClick`을 브라우저의 `<button>`에 전달하도록 만드세요. 또 `<SearchInput>`에 ref를 사용하고 실제 `<input>`이 연결되도록 해야 합니다. 마지막으로 클릭 핸들러에서 ref에 저장된 DOM 노드 내부의 `focus`를 호출하세요.
 
 <Sandpack>
 
