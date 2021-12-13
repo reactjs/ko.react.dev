@@ -224,7 +224,7 @@ function handleDeleteTask(taskId) {
 *  사용자가 task를 토글하거나 "저장"을 누르면 호출되는 `handleChangeTask(task)`
 *  사용자가 "Delete" 를 누르면 호출되는 `handleDeleteTask(taskId)`
 
-reducer로 state를 관리하는 것은 state를 직접 설정하는 것과 조금 다른 점이 있습니다. state를 설정해서 React에게 "해야할 일"에 대한 것을 알려주는 대신, 이벤트 핸들러에서 "action"을 전달(dispatch)해줌으로써 "사용자가 방금 무엇을 했는지"를 알려줍니다. (state를 업데이트 하는 로직은 reducer가 아닌 다른 곳에 있게 됩니다!) 이를 아래 예제에 대입해보면, 이벤트 핸들러를 통해 "`tasks`를 설정하는 것" 대신 "task가 추가/제거/삭제된" 상황을 담은 action을 전달(dispatch)하게 되는 것을 의미합니다. 이런 방식은 사용자의 의도를 더 잘 설명해줄 수 있게 해줍니다.
+reducer로 state를 관리하는 것은 state를 직접 설정하는 것과 조금 다른 점이 있습니다. state를 설정해서 React에게 "해야할 일"에 대한 것을 알려주는 대신, 이벤트 핸들러에서 "action"을 전달(dispatch)해줌으로써 "사용자가 방금 무엇을 했는지"를 알려줍니다. (state를 업데이트 하는 로직은 reducer가 아닌 다른 곳에 있게 됩니다!) 이를 아래 예제에 대입해보면, 이벤트 핸들러를 통해 "`tasks`를 설정하는 것" 대신 "task가 추가/제거/삭제된" 상황을 담은 action을 전달(dispatch)하게 되는 것을 의미합니다. 이는 사용자의 의도를 더 잘 설명해줍니다.
 
 ```js
 function handleAddTask(text) {
@@ -264,11 +264,11 @@ function handleDeleteTask(taskId) {
 }
 ```
 
-이 객체는 일반적인 자바스크립트 객체입니다. 객체 안에 어떤 것이든 자유롭게 담을 수 있지만, 일반적으로 *어떤 상황이 발생하는지*에 대한 최소한의 정보는 담고 있어야합니다. (`dispatch` 함수 자체에 대한 부분은 이후 단계에서 다룰 예정입니다.)
+이 객체는 일반적인 자바스크립트 객체입니다. 이 안에 어떤 것이든 자유롭게 넣을 수 있지만, 일반적으로 *어떤 상황이 발생하는지*에 대한 최소한의 정보를 담고 있어야합니다. (`dispatch` 함수 자체에 대한 부분은 이후 단계에서 다룰 예정입니다.)
 
 <Convention conventionFor="action objects">
 
-action 객체는 어떤 모양이든 될 수 있습니다. 그렇지만 컨벤션에 따라 작성하면, 어떤 상황이 발생했는지 설명하기 위해 문자열 타입의 `type` 을 넘겨주고 이외의 정보는 다른 필드에 담아서 전달해주는 것이 일반적입니다. `type`은 컴포넌트에 따라 값이 다르며 이 예제의 경우 `'added'` 또는 `'added_task'` 둘 중 하나가 좋습니다. 무슨 일이 일어나는지를 설명할 수 있는 값을 넣어주면 됩니다.
+action 객체는 어떤 모양이든 될 수 있습니다. 그렇지만 컨벤션에 따르면 어떤 상황이 발생했는지 설명하기 위해 문자열 타입의 `type` 을 넘겨주고 이외의 정보는 다른 필드에 담아서 전달해주도록 작성하는 것이 일반적입니다. `type`은 컴포넌트에 따라 값이 다르며 이 예제의 경우 `'added'` 또는 `'added_task'` 둘 중 하나가 좋습니다. 무슨 일이 일어나는지를 설명할 수 있는 값을 넣어주면 됩니다.
 
 ```js
 dispatch({
@@ -290,12 +290,12 @@ function yourReducer(state, action) {
 }
 ```
 
-React는 reducer에서 반환한 결과 값을 state에 설정합니다.
+React는 reducer에서 반환한 값을 state에 설정합니다.
 
 이 예제에서 이벤트 핸들러에 구현 되어있는 state 설정과 관련한 로직을 reducer 함수로 옮기기 위해서, 다음과 같이 해볼 것입니다.
 
-1. 첫번째 인자에 현재 state (`tasks`)를 선언하기.
-2. 두번째 인자에 `action` 객체를 선언하기.
+1. 첫번째 인자에 현재 state (`tasks`) 선언하기.
+2. 두번째 인자에 `action` 객체 선언하기.
 3. reducer에서 *다음* state 반환하기. (React가 state에 설정하게 될 값)
 
 다음은 state 설정과 관련한 로직을 reducer 함수로 마이그레이션한 코드입니다.
@@ -359,7 +359,7 @@ function tasksReducer(tasks, action) {
 }
 ```
 
-각자 다른 `case` 속에서 선언된 변수들이 서로 충돌하지 않도록 `case` 블록을 중괄호인 `{`와 `}`로 감싸는 것이 좋습니다. 또 `case`는 일반적인 경우라면 `return`으로 끝나야합니다. `return` 하는 것을 잊으면 코드가 다음 case로 "떨어져" 실수가 발생할 수 있습니다!
+각자 다른 `case` 속에서 선언된 변수들이 서로 충돌하지 않도록 `case` 블록을 중괄호인 `{`와 `}`로 감싸는 것이 좋습니다. 또 `case`는 일반적인 경우라면 `return`으로 끝나야합니다. `return` 하는 것을 잊으면 코드가 다음 case로 "떨어져" 실수할 수 있습니다!
 
 아직 switch 문에 익숙하지 않다면, if/else 문을 사용해도 괜찮습니다.
 
@@ -370,7 +370,7 @@ function tasksReducer(tasks, action) {
 
 reducer를 사용하면 컴포넌트 내부의 코드 양을 "줄일 수" 있지만, 실제로는 배열에서 사용할 수 있는 [`reduce()`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) 연산의 이름을 따서 명명되었습니다.
 
-`reduce()`은 배열의 여러 아이템을 단일 값으로 "누적"하는 연산을 수행합니다.
+`reduce()`는 배열의 여러 값을 단일 값으로 "누적"하는 연산을 수행합니다.
 
 ```
 const arr = [1, 2, 3, 4, 5];
@@ -873,9 +873,9 @@ ul, li { margin: 0; padding: 0; }
 
 reducer가 좋은 점만 있는 것은 아닙니다! 아래에서 `useState`와 `useReducer`를 비교할 수 있는 몇 가지 방법을 소개하겠습니다.
 
-* **코드 크기:** 일반적으로 `useState`를 사용하면, 미리 작성해야 하는 코드가 줄어듭니다. `useReducer`를 사용하면 reducer 함수와 action 전달하는 부분 둘 다 작성해야 합니다. 그렇지만 여러 이벤트 핸들러에서 비슷한 방식으로 state를 업데이트하는 경우, `useReducer`를 사용하면 코드의 양을 줄이는 데 도움이 될 수 있습니다.
+* **코드 크기:** 일반적으로 `useState`를 사용하면, 미리 작성해야 하는 코드가 줄어듭니다. `useReducer`를 사용하면 reducer 함수 _그리고_ action을 전달하는 부분 둘 다 작성해야 합니다. 그렇지만 여러 이벤트 핸들러에서 비슷한 방식으로 state를 업데이트하는 경우, `useReducer`를 사용하면 코드의 양을 줄이는 데 도움이 될 수 있습니다.
 * **가독성:** `useState`로 간단한 state를 업데이트하는 경우 가독성이 좋은 편입니다. 그렇지만 더 복잡한 구조의 state를 다루게 되면 컴포넌트의 코드 양이 더 많아져 한눈에 읽기 어려워질 수 있습니다. 이 경우 `useReducer`를 사용하면, 업데이트 로직이 *어떻게 동작하는지*와 이벤트 핸들러를 통해서 *무엇이 발생했는지* 구현한 부분을 명확하게 구분할 수 있습니다.
-* **디버깅:** `useState`를 사용하며 버그를 발견했을 때, _왜_, _어디서_ state가 잘못 설정됐는지 찾기 어려울 수 있습니다. `useReducer`를 사용하면, 콘솔로그를 리듀서에 추가하여 state가 업데이트되는 모든 부분과 _왜_ 해당 버그가 발생했는지(어떤 `action`으로 인한 것인지)를 확인할 수 있습니다. 각 `action`이 올바르게 작성되어 있다면, 버그를 발생시킨 부분이 reducer 로직 자체에 있다는 것을 알 수 있을 것입니다. 그렇지만 `useState`를 사용하는 경우보다 더 많은 코드를 단계별로 실행해서 디버깅 해야 하는 점이 있기도 합니다.
+* **디버깅:** `useState`를 사용하며 버그를 발견했을 때, _왜_, _어디서_ state가 잘못 설정됐는지 찾기 어려울 수 있습니다. `useReducer`를 사용하면, 콘솔 로그를 reducer에 추가하여 state가 업데이트되는 모든 부분과 _왜_ 해당 버그가 발생했는지(어떤 `action`으로 인한 것인지)를 확인할 수 있습니다. 각 `action`이 올바르게 작성되어 있다면, 버그를 발생시킨 부분이 reducer 로직 자체에 있다는 것을 알 수 있을 것입니다. 그렇지만 `useState`를 사용하는 경우보다 더 많은 코드를 단계별로 실행해서 디버깅 해야 하는 점이 있기도 합니다.
 * **테스팅:** reducer는 컴포넌트에 의존하지 않는 순수 함수입니다. 이는 reducer를 독립적으로 분리해서 내보내거나 테스트할 수 있다는 것을 의미합니다. 일반적으로 더 현실적인 환경에서 컴포넌트를 테스트하는 것이 좋지만, 복잡한 state를 업데이트하는 로직의 경우 reducer가 특정 초기 state 및 action에 대해 특정 state를 반환한다고 생각하고 테스트하는 것이 유용할 수 있습니다.
 * **개인적인 취향:** reducer를 좋아하는 사람도 있지만, 그렇지 않는 사람들도 있습니다. 괜찮습니다. 이건 선호도의 문제이니까요. `useState`와 `useReducer`는 동일한 방식이기 때문에 언제나 마음대로 바꿔서 사용해도 무방합니다.
 
@@ -890,7 +890,7 @@ reducer를 작성할 때 다음과 같은 두가지 팁을 명심하세요.
 
 ## Immer로 간결한 reducer 작성하기 {/*writing-concise-reducers-with-immer*/}
 
-일반적인 state에서 [객체](/learn/updating-objects-in-state#write-concise-update-logic-with-immer)와 [배열](/learn/updating-arrays-in-state#write-concise-update-logic-with-immer)을 업데이트 하는 것처럼, Immer 라이브러리를 사용하면 reducer를 더 간결하게 작성할 수 있습니다. 이 라이브러리에서 제공하는 [`useImmerReducer`](https://github.com/immerjs/use-immer#useimmerreducer)를 사용하여 `push` 또는 `arr[i] =` 로 값을 할당하므로써 state를 변경할 수 있습니다.
+일반적인 state에서 [객체](/learn/updating-objects-in-state#write-concise-update-logic-with-immer)와 [배열](/learn/updating-arrays-in-state#write-concise-update-logic-with-immer)을 업데이트 하는 것처럼, Immer 라이브러리를 사용하면 reducer를 더 간결하게 작성할 수 있습니다. 이 라이브러리에서 제공하는 [`useImmerReducer`](https://github.com/immerjs/use-immer#useimmerreducer)를 사용하여 `push` 또는 `arr[i] =` 로 값을 할당하므로써 state를 변경해보겠습니다.
 
 <Sandpack>
 
@@ -1096,7 +1096,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-reducer는 순수해야 하기 때문에, 이 안에서는 state를 변형할 수 없습니다. 그러나, Immer에서 제공하는 특별한 `draft`객체를 사용하면 안전하게 state를 변형할 수 있습니다. 내부적으로, Immer는 변형된 state의 복사본을 `초안(draft)`으로 생성합니다. 이것이 `useImmerReducer` 가 관리하는 reducer가 첫 번째 인수인 state를 변형할 수 있고 새로운 state 값을 반환할 필요가 없는 이유입니다.
+reducer는 순수해야 하기 때문에, 이 안에서는 state를 변형할 수 없습니다. 그러나, Immer에서 제공하는 특별한 `draft`객체를 사용하면 안전하게 state를 변형할 수 있습니다. 내부적으로, Immer는 변경 사항이 반영된 `초안(draft)`으로 state의 복사본을 생성합니다. 이것이 `useImmerReducer` 가 관리하는 reducer가 첫 번째 인수인 state를 변형할 수 있고 새로운 state 값을 반환할 필요가 없는 이유입니다.
 
 <Recap>
 
@@ -1794,7 +1794,7 @@ textarea {
 
 </Sandpack>
 
-이렇게 해도 잘 동작하기 때문에 "Send" 버튼을 누르면 input의 입력값이 잘 지워질 것입니다.
+잘 동작하기 때문에 "Send" 버튼을 누르면 input의 입력값이 잘 지워질 것입니다.
 
 하지만 *사용자의 관점에서 봤을 때*, message를 전송하는 것과 input 필드에 텍스트를 입력하는 것은 다른 행위입니다. 이를 반영하기 위해 `send_message`라는 *새로운* action을 만들어서 reducer에서 별도로 분리하여 작성해보겠습니다.
 
