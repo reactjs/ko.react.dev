@@ -11,7 +11,7 @@ React는 렌더링 결과물에 맞춰 [DOM](https://developer.mozilla.org/docs/
 <YouWillLearn>
 
 - `ref` 어트리뷰트로 React가 관리하는 DOM 노드에 접근하는 법
-- `ref` JSX 어트리뷰트와 `useRef` 훅의 관련성
+- `ref` JSX 어트리뷰트와 `useRef` Hook의 관련성
 - 다른 컴포넌트의 DOM 노드에 접근하는 법
 - React가 관리하는 DOM을 수정해도 안전한 경우
 
