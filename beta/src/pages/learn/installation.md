@@ -52,4 +52,4 @@ https://codepen.io/pen/?template=wvdqJJm)과 같은 React를 지원하는 많은
 
 ## 다음 단계 {/*next-steps*/}
 
-어디서부터 시작할지는 어떻게 배우고 싶은지, 달성하려고 하는 것은 무엇인지, 다음으로 무엇을 할 것인지에 따라 다릅니다! 소개 튜토리얼인 [React로 생각하기](/learn/thinking-in-react)를 읽어 보세요. 혹은 [UI 설명하기](/learn/describing-the-ui)로 이동하여 더 많은 예제를 다루고 각 주제를 단계적으로 배울 수도 있습니다.
+어디서부터 시작할지는 어떻게 배우고 싶은지, 달성하려고 하는 것은 무엇인지, 다음으로 무엇을 할 것인지에 따라 다릅니다! 소개 튜토리얼인 [React로 생각하기](/learn/thinking-in-react)를 읽어 보세요. 혹은 [UI 설명하기](/learn/describing-the-ui)로 이동하여 더 많은 예시를 다루고 각 주제를 단계적으로 배울 수도 있습니다.
