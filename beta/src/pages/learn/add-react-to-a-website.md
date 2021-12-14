@@ -74,7 +74,7 @@ function LikeButton() {
 
 ### 4단계: 페이지에 React 컴포넌트 추가하기 {/*step-4-add-your-react-component-to-the-page*/}
 
-마지막으로 **like_button.js** 하단에 두 줄을 추가합니다. 이 두 줄의 코드는  1단계에서 HTML에 추가한 `<div>`를 찾은 다음 그 안에 React 컴포넌트 "Like" 버튼을 추가합니다.
+마지막으로 **like_button.js** 하단에 두 줄을 추가합니다. 이 두 줄의 코드는 1단계에서 HTML에 추가한 `<div>`를 찾은 다음 그 안에 React 컴포넌트 "Like" 버튼을 추가합니다.
 
 ```js
 const domContainer = document.getElementById('component-goes-here');
@@ -88,7 +88,7 @@ ReactDOM.render(React.createElement(LikeButton), domContainer);
 
 #### 컴포넌트를 재사용할 수 있습니다! {/*you-can-reuse-components*/}
 
-동일한 HTML 페이지 여러 위치에 React 컴포넌트를 추가할 수 있습니다. React기반 페이지가 서로 분리되어 있는 동안 가장 유용합니다. `ReactDOM.render()` 를 여러 번 호출함으로써 여러 개의 컨테이너 엘리먼트를 사용할 수 있습니다.
+동일한 HTML 페이지 여러 위치에 React 컴포넌트를 추가할 수 있습니다. React 기반 페이지가 서로 분리되어 있는 동안 가장 유용합니다. `ReactDOM.render()` 를 여러 번 호출함으로써 여러 개의 컨테이너 엘리먼트를 사용할 수 있습니다.
 
 1. **index.html**에서 `<div id="component-goes-here-too"></div>` 컨테이너 엘리먼트를 추가합니다.
 2. 새 컨테이너 엘리먼트를 위해 **like_button.js**에서  `ReactDOM.render()` 를 추가합니다.
@@ -105,7 +105,7 @@ ReactDOM.render(
 );
 ```
 
-Check out ["Like" 버튼을 세 번 추가하고 일부 데이터를 전달하는 예제](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)를 확인하세요!
+Check out ["Like" 버튼을 세 번 추가하고 일부 데이터를 전달하는 예시](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)를 확인하세요!
 
 ### 5단계: 프로덕션용 JavaScript 코드 경량화하기 {/*step-5-minify-javascript-for-production*/}
 
