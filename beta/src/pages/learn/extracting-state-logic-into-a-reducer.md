@@ -224,7 +224,7 @@ function handleDeleteTask(taskId) {
 *  사용자가 task를 토글하거나 "저장"을 누르면 호출되는 `handleChangeTask(task)`
 *  사용자가 "Delete" 를 누르면 호출되는 `handleDeleteTask(taskId)`
 
-reducer로 state를 관리하는 것은 state를 직접 설정하는 것과 조금 다른 점이 있습니다. state를 설정해서 React에게 "해야할 일"에 대한 것을 알려주는 대신, 이벤트 핸들러에서 "action"을 전달(dispatch)해줌으로써 "사용자가 방금 무엇을 했는지"를 알려줍니다. (state를 업데이트 하는 로직은 reducer가 아닌 다른 곳에 있게 됩니다!) 이를 아래 예제에 대입해보면, 이벤트 핸들러를 통해 "`tasks`를 설정하는 것" 대신 "task가 추가/제거/삭제된" 상황을 담은 action을 전달(dispatch)하게 되는 것을 의미합니다. 이는 사용자의 의도를 더 잘 설명해줍니다.
+reducer로 state를 관리하는 것은 state를 직접 설정하는 것과 조금 다른 점이 있습니다. state를 설정해서 React에게 "해야할 일"에 대한 것을 알려주는 대신, 이벤트 핸들러에서 "action"을 전달(dispatch)해줌으로써 "사용자가 방금 무엇을 했는지"를 알려줍니다. (state를 업데이트 하는 로직은 reducer가 아닌 다른 곳에 있게 됩니다!) 이를 아래 예시에 대입해보면, 이벤트 핸들러를 통해 "`tasks`를 설정하는 것" 대신 "task가 추가/제거/삭제된" 상황을 담은 action을 전달(dispatch)하게 되는 것을 의미합니다. 이는 사용자의 의도를 더 잘 설명해줍니다.
 
 ```js
 function handleAddTask(text) {
@@ -268,7 +268,7 @@ function handleDeleteTask(taskId) {
 
 <Convention conventionFor="action objects">
 
-action 객체는 어떤 모양이든 될 수 있습니다. 그렇지만 컨벤션에 따르면 어떤 상황이 발생했는지 설명하기 위해 문자열 타입의 `type` 을 넘겨주고 이외의 정보는 다른 필드에 담아서 전달해주도록 작성하는 것이 일반적입니다. `type`은 컴포넌트에 따라 값이 다르며 이 예제의 경우 `'added'` 또는 `'added_task'` 둘 중 하나가 좋습니다. 무슨 일이 일어나는지를 설명할 수 있는 값을 넣어주면 됩니다.
+action 객체는 어떤 모양이든 될 수 있습니다. 그렇지만 컨벤션에 따르면 어떤 상황이 발생했는지 설명하기 위해 문자열 타입의 `type` 을 넘겨주고 이외의 정보는 다른 필드에 담아서 전달해주도록 작성하는 것이 일반적입니다. `type`은 컴포넌트에 따라 값이 다르며 이 예시의 경우 `'added'` 또는 `'added_task'` 둘 중 하나가 좋습니다. 무슨 일이 일어나는지를 설명할 수 있는 값을 넣어주면 됩니다.
 
 ```js
 dispatch({
@@ -292,10 +292,10 @@ function yourReducer(state, action) {
 
 React는 reducer에서 반환한 값을 state에 설정합니다.
 
-이 예제에서 이벤트 핸들러에 구현 되어있는 state 설정과 관련한 로직을 reducer 함수로 옮기기 위해서, 다음과 같이 해볼 것입니다.
+이 예시에서 이벤트 핸들러에 구현 되어있는 state 설정과 관련한 로직을 reducer 함수로 옮기기 위해서, 다음과 같이 해볼 것입니다.
 
-1. 첫번째 인자에 현재 state (`tasks`) 선언하기.
-2. 두번째 인자에 `action` 객체 선언하기.
+1. 첫 번째 인자에 현재 state (`tasks`) 선언하기.
+2. 두 번째 인자에 `action` 객체 선언하기.
 3. reducer에서 *다음* state 반환하기. (React가 state에 설정하게 될 값)
 
 다음은 state 설정과 관련한 로직을 reducer 함수로 마이그레이션한 코드입니다.
@@ -328,7 +328,7 @@ function tasksReducer(tasks, action) {
 
 <Convention conventionFor="reducer functions">
 
-위 코드에서 if/else 문을 사용하고 있지만 reducer 함수 안에서는 [switch 문](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/switch)을 사용하는 것이 규칙입니다. 물론 결과는 같지만, switch 문으로 작성하는 것이 한눈에 읽기 더 쉬울 수 있습니다. 이제부터 이 문서에서 다룰 예제는 아래 처럼 switch 문을 사용하게 될 것입니다.
+위 코드에서 if/else 문을 사용하고 있지만 reducer 함수 안에서는 [switch 문](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/switch)을 사용하는 것이 규칙입니다. 물론 결과는 같지만, switch 문으로 작성하는 것이 한눈에 읽기 더 쉬울 수 있습니다. 이제부터 이 문서에서 다룰 예시는 아래 처럼 switch 문을 사용하게 될 것입니다.
 
 ```js
 function tasksReducer(tasks, action) {
@@ -447,7 +447,7 @@ export default function tasksReducer(
 
 </Sandpack>
 
-여러분이 직접 구현 할 일은 거의 없지만 위 예제는 React에 구현되어 있는 것과 비슷합니다.
+여러분이 직접 구현 할 일은 거의 없지만 위 예시는 React에 구현되어 있는 것과 비슷합니다.
 
 </DeepDive>
 
@@ -483,7 +483,7 @@ const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 1. state를 담을 수 있는 값
 2. dispatch 함수 (사용자의 action을 reducer 함수에게 "전달하게 될")
 
-이제 준비가 다 되었습니다! 아래 예제의 컴포넌트 파일 아래에는 reducer가 선언되어있습니다.
+이제 준비가 다 되었습니다! 아래 예시의 컴포넌트 파일 아래에는 reducer가 선언되어있습니다.
 
 <Sandpack>
 
@@ -1469,7 +1469,7 @@ textarea {
 
 ### message 전송 시, input 입력 값 지우기 {/*clear-the-input-on-sending-a-message*/}
 
-현재까지의 예제 코드를 실행 했을 때는 "Send"를 눌러도 아무런 일이 일어나지 않습니다. "Send" 버튼에 이벤트 핸들러를 추가하기 위해서 아래처럼 코드를 작성해봅시다.
+현재까지의 예시 코드를 실행 했을 때는 "Send"를 눌러도 아무런 일이 일어나지 않습니다. "Send" 버튼에 이벤트 핸들러를 추가하기 위해서 아래처럼 코드를 작성해봅시다.
 
 1. 수신자의 email과 message를 담은 `경고창(alert)` 표시하기.
 2. input의 message 값 지우기
@@ -1972,7 +1972,7 @@ textarea {
 
 ### 탭 전환 시, input 입력 값 복원하기 {/*restore-input-values-when-switching-between-tabs*/}
 
-이 예제에서 선택된 수신자를 바꾸기 위해 탭 버튼을 누르면 message를 입력받는 input 필드의 텍스트 값이 항상 지워지도록 되어있습니다.
+이 예시에서 선택된 수신자를 바꾸기 위해 탭 버튼을 누르면 message를 입력받는 input 필드의 텍스트 값이 항상 지워지도록 되어있습니다.
 
 ```js
 case 'changed_selection': {
@@ -2001,7 +2001,7 @@ export const initialState = {
 };
 ```
 
-`[key]: value` [계산된 프로퍼티명](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer#%EA%B3%84%EC%82%B0%EB%90%9C_%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0%EB%AA%85) 문법은 `messages` 객체를 업데이트하는데 도움이 될 것입니다.
+`[key]: value` [계산된 프로퍼티명](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer#계산된_프로퍼티명) 문법은 `messages` 객체를 업데이트하는데 도움이 될 것입니다.
 
 ```js
 {
@@ -2387,7 +2387,7 @@ textarea {
 
 ### 처음부터 `useReducer` 구현해보기 {/*implement-usereducer-from-scratch*/}
 
-앞선 예제들에서는, `useReducer` Hook을 React에서 불러와 사용했습니다. 이번에는 *`useReducer` Hook 자체*를 직접 구현해 볼 것입니다! 다음은 시작을 위한 스텁입니다. 10줄 이상의 코드를 작성할 필요가 없습니다.
+앞선 예시들에서는, `useReducer` Hook을 React에서 불러와 사용했습니다. 이번에는 *`useReducer` Hook 자체*를 직접 구현해 볼 것입니다! 다음은 시작을 위한 스텁입니다. 10줄 이상의 코드를 작성할 필요가 없습니다.
 
 변경 사항을 테스트하려면 input에 텍스트를 입력하거나 연락처를 선택해보세요.
 
