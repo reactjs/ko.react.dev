@@ -135,7 +135,7 @@
               "path": "/learn/preserving-and-resetting-state"
             },
             {
-              "title": "Extracting State Logic into a Reducer",
+              "title": "state 로직을 reducer로 작성하기",
               "path": "/learn/extracting-state-logic-into-a-reducer"
             },
             {
