@@ -1074,7 +1074,7 @@ export const recipes = [{
 
 ### 구분 기호가 있는 리스트 {/*list-with-a-separator*/}
 
-예시는 Katsushika Hokusai의 유명한 시 haiku를 렌더링하며 각 행은 `<p>` 태그로 래핑되어 있습니다. 각 단락 사이에 `<hr />` 구분 기호를 삽입하세요. 결과 구조는 다음과 같아야 합니다.
+예시는 Katsushika Hokusai의 유명한 하이쿠(일본의 정형시)를 렌더링하며 각 행은 `<p>` 태그로 래핑되어 있습니다. 각 단락 사이에 `<hr />` 구분 기호를 삽입하세요. 결과 구조는 다음과 같아야 합니다.
 
 ```js
 <article>
