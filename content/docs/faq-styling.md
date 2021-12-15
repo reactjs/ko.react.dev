@@ -48,4 +48,4 @@ _이러한 기능은 React에 포함된 기능이 아닌, 별도의 라이브러
 
 ### React에서 애니메이션을 할 수 있나요? {#can-i-do-animations-in-react}
 
-React는 애니메이션을 표현할 수 있습니다. 이에 대한 예시로 [React Transition Group](https://reactcommunity.org/react-transition-group/) 또는 [React Motion](https://github.com/chenglou/react-motion) 또는 [React Spring](https://github.com/react-spring/react-spring)를 확인해 보세요.
+React는 애니메이션을 표현할 수 있습니다. 이에 대한 예시로 [React Transition Group](https://reactcommunity.org/react-transition-group/), [React Motion](https://github.com/chenglou/react-motion), [React Spring](https://github.com/react-spring/react-spring) 또는 [Framer Motion](https://framer.com/motion)을 확인해 보세요.

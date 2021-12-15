@@ -4,38 +4,39 @@ title: Cross-origin Errors
 permalink: docs/cross-origin-errors.html
 ---
 
-> Note:
+> 주의:
 >
-> The following section applies only to the development mode of React. Error handling in production mode is done with regular try/catch statements.
+> 해당 부분은 오직 리액트 개발 모드에서만 적용됩니다. 배포 모드에서 오류 처리는 일반 try/catch 구문으로 수행됩니다.
 
-In [development mode](/docs/optimizing-performance.html), React uses a global `error` event handler to preserve the "pause on exceptions" behavior of browser DevTools. It also logs errors to the developer console.
+[개발 모드](/docs/optimizing-performance.html)에서 리액트는 전역 `오류` 이벤트 핸들러를 사용하여 브라우저 DevTools의 "예외 시 일시 중지" 동작을 유지해줍니다. 또한 개발자 콘솔에 오류를 기록합니다.
 
-If an error is thrown from a [different origin](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) the browser will mask its details and React will not be able to log the original error message. This is a security precaution taken by browsers to avoid leaking sensitive information.
+[다른 출처](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)로 인한 오류가 발생한다면 브라우저는 해당 세부 정보를 숨기고 리액트는 오리지널 오류 메시지를 기록할 수가 없습니다. 왜냐하면 민감한 정보가 노출되는 것을 방지하기 위해서 브라우저에서 보안 예방 조치 취하기 때문입니다.
 
-You can simplify the development/debugging process by ensuring that errors are thrown with a same-origin policy. Below are some common causes of cross-origin errors and ways to address them.
+동일 출처 정책으로 오류가 발생하도록 개발/디버깅 프로세스를 단순화할 수 있습니다. 다음은 교차 출처 오류가 발생하는 일반적인 원인과 해결 방법입니다.
 
 ### CDN {#cdn}
 
-When loading React (or other libraries that might throw errors) from a CDN, add the [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) attribute to your `<script>` tags:
+CDN에서 리액트(혹은 오류를 발생시킬 수 있는 다른 라이브러리)를 로딩할 때, `<script>` 태그에 [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) 어트리뷰트를 추가하세요:
+
 
 ```html
 <script crossorigin src="..."></script>
 ```
 
-Also ensure the CDN responds with the `Access-Control-Allow-Origin: *` HTTP header:
+또한 CDN이 `Access-Control-Allow-Origin: *` HTTP 헤더로 응답하는지 확인합니다.
 
 ![Access-Control-Allow-Origin: *](../images/docs/cdn-cors-header.png)
 
 ### Webpack {#webpack}
 
-#### Source maps {#source-maps}
+#### 소스 맵 {#source-maps}
 
-Some JavaScript bundlers may wrap the application code with `eval` statements in development. (For example Webpack will do this if [`devtool`](https://webpack.js.org/configuration/devtool/) is set to any value containing the word "eval".) This may cause errors to be treated as cross-origin.
+일부 자바스크립트 번들러는 개발 중에 `eval`문으로 코드로 감싸져 있을 수 있습니다. (예를 들어 웹팩은 [`devtool`](https://webpack.js.org/configuration/devtool/)이 "eval"이라는 단어가 포함된 값으로 설정된 경우 이 작업을 수행합니다) 이로 인해 크로스-오리진 오류로 처리될 수 있습니다.
 
-If you use Webpack, we recommend using the `cheap-module-source-map` setting in development to avoid this problem.
+웹팩을 사용하는 경우, 이러한 문제를 피하고자 개발 시에 `cheap-module-source-map` 설정하는 것을 추천합니다.
 
-#### Code splitting {#code-splitting}
+#### 코드 분할 {#code-splitting}
 
-If your application is split into multiple bundles, these bundles may be loaded using JSONP. This may cause errors thrown in the code of these bundles to be treated as cross-origin.
+애플리케이션이 여러 번들로 분할된 경우 JSONP를 사용하여 로드될 수 있습니다. 이로 인해 번들링 된 코드가 크로스-오리진 오류로 처리될 수도 있습니다.
 
-To resolve this, use the [`crossOriginLoading`](https://webpack.js.org/configuration/output/#output-crossoriginloading) setting in development to add the `crossorigin` attribute to the `<script>` tags generated for the JSONP requests.
+이러한 문제를 해결하려면, 개발 시에 [`crossOriginLoading`](https://webpack.js.org/configuration/output/#output-crossoriginloading) 설정을 사용하여 JSOPN 요청에 대해 생성된 `<script>` 태그에 `crossorigin` 속성을 추가하세요.

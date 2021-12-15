@@ -55,7 +55,7 @@
               "path": "/learn/writing-markup-with-jsx"
             },
             {
-              "title": "JavaScript in JSX with Curly Braces",
+              "title": "JavaScript에서 중괄호가 있는 JSX",
               "path": "/learn/javascript-in-jsx-with-curly-braces"
             },
             {
@@ -135,7 +135,7 @@
               "path": "/learn/preserving-and-resetting-state"
             },
             {
-              "title": "Extracting State Logic into a Reducer",
+              "title": "state 로직을 reducer로 작성하기",
               "path": "/learn/extracting-state-logic-into-a-reducer"
             },
             {
