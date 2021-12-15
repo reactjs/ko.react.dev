@@ -25,7 +25,7 @@ JSON API는 몇몇 데이터를 가지고 이렇게 생겼을 겁니다:
 ]
 ```
 
-mockup 은 이렇게 생겼습니다.
+mockup은 이렇게 생겼습니다.
 
 <img src="/images/docs/s_thinking-in-react_ui.png" width="300" style={{margin: '0 auto'}} />
 
@@ -35,7 +35,7 @@ mockup 은 이렇게 생겼습니다.
 
 우리가 할 첫 번째 일은 모든 컴포넌트와 하위 컴포넌트의 주변에 박스를 그리고 그 각각에 이름을 붙이는 것입니다. 디자이너와 함께 일한다면, 이름들을 이미 정해두었을 수 있으니 한번 확인해보세요!
 
-어떤 배경을 가지고 있냐 에 따라, 컴포넌트를 다양하게 쪼개볼 수 있습니다.
+어떤 배경을 가지고 있냐에 따라, 컴포넌트를 다양하게 쪼개볼 수 있습니다.
 
 * **Programming**--새로운 함수나 객체를 만드는 방식과 같은 방식으로 해봅시다. 예를 들어, [단일책임 원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99)을 반영하고자 한다면 컴포넌트는 이상적으로는 한 가지 일만 해야 됩니다. 만약 점점 컴포넌트가 커진다면 작은 하위 컴포넌트로 쪼개져야 되겠죠.
 * **CSS**--class 선택자를 무엇으로 만들지 생각해봅시다. (실제 컴포넌트들은 약간 좀 더 세분되어 있습니다.)
@@ -43,7 +43,7 @@ mockup 은 이렇게 생겼습니다.
 
 JSON이 잘 구조화 되어있을 때 컴포넌트 구조가 자연스럽게 데이터 구조에 연결된다는 것을 발견할 수 있습니다. UI랑 데이터 모델은 같은 정보 아키텍처(information architecture)로 설계되는 경우가 많기 때문입니다. 컴포넌트들이 데이터 모델에 매칭될 수 있게 UI를 컴포넌트로 쪼개주세요!
 
-여기 다섯개의 컴포넌트가 있습니다.
+여기 다섯 개의 컴포넌트가 있습니다.
 
 <FullWidth>
 
@@ -259,7 +259,7 @@ props와 state는 다르지만, 함께 동작합니다. state는 보통 부모 �
    2. 혹은, 공통 부모 상위의 컴포넌트에 둬도 됩니다.
    3. state를 소유할 적절한 컴포넌트를 찾지 못하였다면, state를 소유하는 컴포넌트를 하나 만들어서 상위 계층에 추가하세요.
 
-이전 단계에서 유저가 검색한 검색어, 체크 박스의 값이 state임을 확인했습니다: 이 두 state는 항상 함께 노출되기 때문에 하나의 state로 보면 쉽습니다.
+이전 단계에서 유저가 검색한 검색어, 체크 박스의 값이 state임을 확인했습니다. 이 두 state는 항상 함께 노출되기 때문에 하나의 state로 보면 쉽습니다.
 
 이 전략을 애플리케이션에 적용해봅시다.
 
@@ -279,7 +279,7 @@ function FilterableProductTable({ products }) {
   const [inStockOnly, setInStockOnly] = useState(false);
 ```
 
-다음으로, `filterText`와 `inStockOnly`를 `ProductTable`와 `SearchBar`에게 props로 전달 하세요.
+다음으로, `filterText`와 `inStockOnly`를 `ProductTable`와 `SearchBar`에게 props로 전달하세요.
 
 ```js
 <div>
@@ -293,7 +293,7 @@ function FilterableProductTable({ products }) {
 </div>
 ```
 
-이제 애플리케이션이 어떻게 동작하는지 알 수 있습니다. `filterText`의 초기 값을 `useState('')`에서 `useState('fruit')`로 수정해 보세요. 검색창과 데이터 테이블이 모두 업데이트됨을 확인 할 수 있습니다.
+이제 애플리케이션이 어떻게 동작하는지 알 수 있습니다. `filterText`의 초기 값을 `useState('')`에서 `useState('fruit')`로 수정해 보세요. 검색창과 데이터 테이블이 모두 업데이트됨을 확인할 수 있습니다.
 
 <Sandpack>
 
@@ -470,7 +470,7 @@ function FilterableProductTable({ products }) {
         onInStockOnlyChange={setInStockOnly} />
 ```
 
-`SearchBar`의 `onChange` 이벤트 핸들러의 부모 state를 변경할 수 있도록 구현 할 수 있습니다.
+`SearchBar`의 `onChange` 이벤트 핸들러의 부모 state를 변경할 수 있도록 구현할 수 있습니다.
 
 ```js {5}
 <input 
@@ -630,7 +630,7 @@ td {
 
 </Sandpack>
 
-[Adding Interactivity](/learn/adding-interactivity) 섹션 에서 state를 변경하고 이벤트를 다루는 것에 대해 더 심화해서 배울 수 있습니다.
+[Adding Interactivity](/learn/adding-interactivity) 섹션에서 state를 변경하고 이벤트를 다루는 것에 대해 더 심화해서 배울 수 있습니다.
 
 ## 더 나아가기 {/*where-to-go-from-here*/}
 
