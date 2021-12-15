@@ -76,7 +76,7 @@ export default function Form() {
 위 예시를 구현하기 위해서
 
 1. `useRef` Hook을 사용하여 `inputRef`를 선언합니다.
-2. 선언한 `inputRef`를 `<input ref={inputRef}>`로 전달합니다. 이 행위는 **React에게 이 `<input>`의 DOM 노드를 `inputRef.current`에 넣어줘** 라고 하는 것입니다.
+2. 선언한 `inputRef`를 `<input ref={inputRef}>`처럼 전달합니다. 이 행위는 **React에게 이 `<input>`의 DOM 노드를 `inputRef.current`에 넣어줘** 라고 하는 것입니다.
 3. `handleClick` 함수에서 `inputRef.current`에서 input DOM 노드를 읽고 `inputRef.current.focus()`로 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)를 호출합니다.
 4. `<button>`과 `onClick`으로 `handleClick` 이벤트 핸들러를 전달합니다.
 
@@ -84,7 +84,7 @@ DOM 조작이 ref를 사용하는 가장 일반적인 사용처지만 `useRef` H
 
 ### 예시: 한 요소로 스크롤을 이동하기 {/*example-scrolling-to-an-element*/}
 
-한 컴포넌트에서 하나 이상의 ref를 가질 수 있습니다. 이 예시에서는 상응하는 이미지 DOM 노드로 화면 중앙 정렬하기 위해 [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) 메서드를 호출하는 버튼 세 개와 이미지 세 개가 있는 캐로셀이 있습니다.
+한 컴포넌트에서 하나 이상의 ref를 가질 수 있습니다. 이 예시에서는 상응하는 이미지 DOM 노드로 화면을 중앙 정렬하기 위해 [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) 메서드를 호출하는 버튼 세 개와 이미지 세 개가 있는 캐러셀이 있습니다.
 
 <Sandpack>
 
@@ -314,7 +314,7 @@ li {
 
 </Sandpack>
 
-이 예시에서 `itemsRef`는 DOM 노드 하나를 가지고 있지 않습니다. 대신에 식별자와 DOM 노드 키맵으로 연결된 [Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)을 가지고 있습니다. ([Ref는 아무 값이나 가질 수 있습니다!](/learn/referencing-values-with-refs)) 모든 리스트 아이템에 있는 `ref` 콜백은 Map 변경을 처리합니다.
+이 예시에서 `itemsRef`는 하나의 DOM 노드를 가지고 있지 않습니다. 대신에 식별자와 DOM 노드 키맵으로 연결된 [Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)을 가지고 있습니다. ([Ref는 아무 값이나 가질 수 있습니다!](/learn/referencing-values-with-refs)) 모든 리스트 아이템에 있는 `ref` 콜백은 Map 변경을 처리합니다.
 
 ```js
 <li
@@ -340,7 +340,7 @@ li {
 
 `<input />`같은 브라우저 요소를 출력하는 내장 컴포넌트에 ref를 주입할 때 React는 ref의 `current` 프로퍼티를 그에 해당되는 DOM 노드(브라우저의 실제 `<input />` 같은)로 설정합니다.
 
-하지만 `<MyInput />` 같은 **직접 만든** 컴포넌트에 ref를 주입할 때는 `null`이 기본적으로 주어집니다. 여기 예시가 있습니다. 버튼을 클릭할 때 인풋 요소에 포커스 **되지 않는것을** 주목하세요.
+하지만 `<MyInput />` 같은 **직접 만든** 컴포넌트에 ref를 주입할 때는 `null`이 기본적으로 주어집니다. 여기 예시가 있습니다. 버튼을 클릭할 때 input 요소에 포커스 **되지 않는것을** 주목하세요.
 
 <Sandpack>
 
@@ -371,7 +371,7 @@ export default function MyForm() {
 
 </Sandpack>
 
-버튼을 클릭하면 콘솔에 에러메세지가 출력될 것입니다.
+버튼을 클릭하면 콘솔에 에러 메세지가 출력될 것입니다.
 
 > Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
 
@@ -391,7 +391,7 @@ const MyInput = forwardRef((props, ref) => {
 2. `MyInput` 컴포넌트는 `forwardRef`를 통해 선언되었습니다. 이것은 `props` 다음에 선언된 **두 번째 `ref` 인수로 위에서 `inputRef`를 수신하도록 선택합니다.**
 3. `MyInput`은 자체적으로 수신받은 `ref`를 컴포넌트 내부의 `<input>`으로 전달합니다.
 
-이제 버튼을 클릭하면 입력요소로 포커스가 잘 이동합니다.
+이제 버튼을 클릭하면 input 요소로 포커스가 잘 이동합니다.
 
 <Sandpack>
 
