@@ -1155,7 +1155,7 @@ const poem = {
 export default function Poem() {
   let output = [];
 
-  // 출력 배열 작성
+  // 출력할 배열을 작성합니다.
   poem.lines.forEach((line, i) => {
     output.push(
       <hr key={i + '-separator'} />
