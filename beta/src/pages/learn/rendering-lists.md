@@ -1166,7 +1166,7 @@ export default function Poem() {
       </p>
     );
   });
-  // 첫 번째 <hr /> 삭제
+  // 첫 번째 <hr />을 삭제합니다.
   output.shift();
 
   return (
