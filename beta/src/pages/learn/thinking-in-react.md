@@ -239,7 +239,7 @@ UI를 상호작용(interactive)하게 만들려면 유저가 기반 데이터 �
 
 React는 props와 state라는 두 개의 데이터 모델이 존재합니다. 둘의 성격은 매우 다릅니다.
 
-- [**Props**는 함수를 통해 전달되는 인자 같은 성격을 가집니다.](/learn/passing-props-to-a-component) props는 부모 컴포넌트로부터 자식 컴포넌트로 데이터를 넘겨서 외관을 커스터마이징 하게 해줍니다. 예를 들어, `Form` 은 color라는 prop을 `Button`으로 보내서 `Button`을 내가 원하는 형태로 커스터마이징 시킬 수 있습니다..
+- [**Props**는 함수를 통해 전달되는 인자 같은 성격을 가집니다.](/learn/passing-props-to-a-component) props는 부모 컴포넌트로부터 자식 컴포넌트로 데이터를 넘겨서 외관을 커스터마이징 하게 해줍니다. 예를 들어, `Form`은 color라는 prop을 `Button`으로 보내서 `Button`을 내가 원하는 형태로 커스터마이징 시킬 수 있습니다..
 - [**State**는 컴포넌트의 메모리 같은 성격을 가집니다.](/learn/state-a-components-memory) state는 컴포넌트가 몇몇 정보를 계속 따라갈 수 있게 해주고 변화하면서 상호작용(interaction)을 만들어 냅니다. 예를 들어, `Button`은 `isHovered`라는 state를 따라갈 것입니다.
 
 props와 state는 다르지만, 함께 동작합니다. state는 보통 부모 컴포넌트에 저장됩니다. ( 그래서 부모 컴포넌트는 그 state를 변경할 수 있습니다. ) 그리고 부모 컴포넌트는 state를 자식 컴포넌트에 props로서 전달합니다. 처음 봤을 때 둘의 차이를 잘 알기 어려워도 괜찮습니다. 약간 연습이 필요할 거에요!
@@ -279,7 +279,7 @@ function FilterableProductTable({ products }) {
   const [inStockOnly, setInStockOnly] = useState(false);
 ```
 
-다음으로, `filterText`와 `inStockOnly` 를 `ProductTable` 와 `SearchBar`에게 props로 전달 하세요.
+다음으로, `filterText`와 `inStockOnly`를 `ProductTable`와 `SearchBar`에게 props로 전달 하세요.
 
 ```js
 <div>
@@ -293,7 +293,7 @@ function FilterableProductTable({ products }) {
 </div>
 ```
 
-이제 애플리케이션이 어떻게 동작하는지 알 수 있습니다. `filterText`의 초기 값을 `useState('')` 에서 `useState('fruit')`로 수정해 보세요. 검색창과 데이터 테이블이 모두 업데이트됨을 확인 할 수 있습니다.
+이제 애플리케이션이 어떻게 동작하는지 알 수 있습니다. `filterText`의 초기 값을 `useState('')`에서 `useState('fruit')`로 수정해 보세요. 검색창과 데이터 테이블이 모두 업데이트됨을 확인 할 수 있습니다.
 
 <Sandpack>
 
@@ -432,7 +432,7 @@ td {
 
 </Sandpack>
 
-위에 있는 샌드박스를 보면, `ProductTable` 와 `SearchBar` 가 `filterText` 와 `inStockOnly` props 을 table, input과 체크 박스를 렌더하기 위해서 읽고 있습니다. 예를 들면, `SearchBar` input의 value를 이런 식으로 채우고 있습니다.
+위에 있는 샌드박스를 보면, `ProductTable`와 `SearchBar`가 `filterText`와 `inStockOnly` props를 table, input과 체크 박스를 렌더하기 위해서 읽고 있습니다. 예를 들면, `SearchBar` input의 value를 이런 식으로 채우고 있습니다.
 
 ```js {1,6}
 function SearchBar({ filterText, inStockOnly }) {
@@ -452,7 +452,7 @@ function SearchBar({ filterText, inStockOnly }) {
 
 React는 전통적인 양방향 데이터 바인딩(two-way data binding)과 비교하면 더 많은 타이핑을 해야 하지만 데이터 흐름을 명시적으로 보이게 만들어서 프로그램이 어떻게 동작하는지 파악할 수 있게 도와줍니다.
 
-4단계의 예시에서 체크하거나 키보드를 타이핑할 경우 UI의 변화가 없고 입력을 무시하는 것을 확인할 수 있습니다. 이건 의도적으로 `<input value={filterText} />`로 코드를 쓰면서 `value`라는 prop이 항상`FilterableProductTable`의 `filterText`라는 state를 통해서 데이터를 받도록 정했기 때문입니다. `filterText`라는 state가 변경되는 게 아니기 때문에 input의 `value` 는 변하지 않고 화면도 바뀌는 게 없습니다.
+4단계의 예시에서 체크하거나 키보드를 타이핑할 경우 UI의 변화가 없고 입력을 무시하는 것을 확인할 수 있습니다. 이건 의도적으로 `<input value={filterText} />`로 코드를 쓰면서 `value`라는 prop이 항상`FilterableProductTable`의 `filterText`라는 state를 통해서 데이터를 받도록 정했기 때문입니다. `filterText`라는 state가 변경되는 게 아니기 때문에 input의 `value`는 변하지 않고 화면도 바뀌는 게 없습니다.
 
 우리는 사용자가 input을 변경할 때마다 사용자의 입력을 반영할 수 있도록 state를 업데이트하기를 원합니다. state는 `FilterableProductTable`이 가지고 있고 state 변경을 위해서는 `setFilterText`와 `setInStockOnly`를 호출을 하면 됩니다. `SearchBar`가 `FilterableProductTable` 대신 state를 업데이트시키기 위해서는 이 함수들을 `SearchBar`로 보내서 state가 업데이트되어야 할 때마다 호출되도록 하면 됩니다.
 
