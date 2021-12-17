@@ -60,7 +60,7 @@ Hook은 우리가 5년간 React로 컴포넌트를 작성하고 유지하는 동
 
 ### 컴포넌트 사이에서 상태 로직을 재사용하기 어렵습니다. {#ts-hard-to-reuse-stateful-logic-between-components}
 
-React는 컴포넌트간에 재사용 가능한 로직을 붙이는 방법을 제공하지 않습니다. (예를 들어, 스토어에 연결하는 것) 이전부터 React를 사용해왔다면, [render props](/docs/render-props.html)이나 [고차 컴포넌트](/docs/higher-order-components.html)와 같은 패턴을 통해 이러한 문제를 해결하는 벙법에 익숙할 것입니다. 그러나 이런 패턴의 사용은 컴포넌트의 재구성을 강요하며, 코드의 추적을 어렵게 만듭니다. React 개발자 도구에서 React 애플리케이션을 본다면, providers, consumers, 고차 컴포넌트, render props 그리고 다른 추상화에 대한 레이어로 둘러싸인 "래퍼 지옥(wrapper hell)"을 볼 가능성이 높습니다. [개발자 도구에서 걸러낼 수 있지만](https://github.com/facebook/react-devtools/pull/503), 이 문제의 요점은 심층적이었습니다. React는 상태 관련 로직을 공유하기 위해 좀 더 좋은 기초 요소가 필요했습니다.
+React는 컴포넌트간에 재사용 가능한 로직을 붙이는 방법을 제공하지 않습니다. (예를 들어, 스토어에 연결하는 것) 이전부터 React를 사용해왔다면, [render props](/docs/render-props.html)이나 [고차 컴포넌트](/docs/higher-order-components.html)와 같은 패턴을 통해 이러한 문제를 해결하는 방법에 익숙할 것입니다. 그러나 이런 패턴의 사용은 컴포넌트의 재구성을 강요하며, 코드의 추적을 어렵게 만듭니다. React 개발자 도구에서 React 애플리케이션을 본다면, providers, consumers, 고차 컴포넌트, render props 그리고 다른 추상화에 대한 레이어로 둘러싸인 "래퍼 지옥(wrapper hell)"을 볼 가능성이 높습니다. [개발자 도구에서 걸러낼 수 있지만](https://github.com/facebook/react-devtools/pull/503), 이 문제의 요점은 심층적이었습니다. React는 상태 관련 로직을 공유하기 위해 좀 더 좋은 기초 요소가 필요했습니다.
 
 Hook을 사용하면 컴포넌트로부터 상태 관련 로직을 추상화할 수 있습니다. 이를 이용해 독립적인 테스트와 재사용이 가능합니다. **Hook은 계층의 변화 없이 상태 관련 로직을 재사용할 수 있도록 도와줍니다.** 이것은 많은 컴포넌트 혹은 커뮤니티 사이에서 Hook을 공유하기 쉽게 만들어줍니다.
 
