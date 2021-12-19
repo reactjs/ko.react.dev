@@ -1,26 +1,36 @@
 ---
-title: Importing and Exporting Components
+title: 컴포넌트 가져오기 및 내보내기
 ---
 
 <Intro>
 
-The magic of components lies in their reusability: you can create components that are composed of other components. But as you nest more and more components, it often makes sense to start splitting them into different files. This lets you keep your files easy to scan and reuse components in more places.
+<!-- The magic of components lies in their reusability: you can create components that are composed of other components. But as you nest more and more components, it often makes sense to start splitting them into different files. This lets you keep your files easy to scan and reuse components in more places. -->
+
+컴포넌트의 가장 큰 장점은 재사용성으로 컴포넌트를 조합해 또 다른 컴포넌트를 만들 수 있습니다. 컴포넌트를 여러번 중첩하게 되면 다른 파일로 분리해야하는 시점이 생깁니다. 이렇게 분리하면 나중에 파일을 찾기 더 쉽고 재사용하기 편리해집니다.
 
 </Intro>
 
 <YouWillLearn>
 
-* What a root component file is
+<!-- * What a root component file is
 * How to import and export a component
 * When to use default and named imports and exports
 * How to import and export multiple components from one file
-* How to split components into multiple files
+* How to split components into multiple files -->
+
+* Root 컴포넌트란
+* 컴포넌트를 가져오거나 내보내는 방법 
+* 언제 default 또는 named imports와 exports를 사용할지
+* 한 파일에서 여러 컴포넌트를 가져오거나 내보내는 방법
+* 여러 컴포넌트를 여러 파일로 분리하는 방법
 
 </YouWillLearn>
 
-## The root component file {/*the-root-component-file*/}
+## Root 컴포넌트란 {/*the-root-component-file*/}
 
-In [Your First Component](/learn/your-first-component), you made a `Profile` component and a `Gallery` component that renders it:
+<!-- In [Your First Component](/learn/your-first-component), you made a `Profile` component and a `Gallery` component that renders it: -->
+
+[첫 컴포넌트](/learn/your-first-component)에서 만든 `Profile` 컴포넌트와 `Gallery` 컴포넌트는 아래와 같이 렌더링 됩니다.
 
 <Sandpack>
 
@@ -52,11 +62,15 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-These currently live in a **root component file,** named `App.js` in this example. In [Create React App](https://create-react-app.dev/), your app lives in `src/App.js`. Depending on your setup, your root component could be in another file, though. If you use a framework with file-based routing, such as Next.js, your root component will be different for every page.
+<!-- These currently live in a **root component file,** named `App.js` in this example. In [Create React App](https://create-react-app.dev/), your app lives in `src/App.js`. Depending on your setup, your root component could be in another file, though. If you use a framework with file-based routing, such as Next.js, your root component will be different for every page. -->
 
-## Exporting and importing a component {/*exporting-and-importing-a-component*/}
+이 예제의 컴포넌트들은 모두 `App.js`라는 **root 컴포넌트 파일**에 존재합니다. [크리에이트 리액트 앱](https://create-react-app.dev/)에서는 앱 전체가 `src/App.js`에서 실행됩니다. 설정에 따라 root 컴포넌트가 다른 파일에 위치할 수도 있습니다. Next.js처럼 파일 기반으로 라우팅하는 프레임워크일 경우 페이지 별로 root 컴포넌트가 다를 수 있습니다.
 
-What if you want to change the landing screen in the future and put a list of science books there? Or place all the profiles somewhere else? It makes sense to move `Gallery` and `Profile` out of the root component file. This will make them more modular and reusable in other files. You can move a component in three steps:
+## 컴포넌트를 가져오거나 내보내는 방법 {/*exporting-and-importing-a-component*/}
+
+<!-- What if you want to change the landing screen in the future and put a list of science books there? Or place all the profiles somewhere else? It makes sense to move `Gallery` and `Profile` out of the root component file. This will make them more modular and reusable in other files. You can move a component in three steps: -->
+
+랜딩 화면을 변경하게 되어 과학자들이 아니라 과학 책으로 변경하거나 프로필 사진을 다른 곳에서 사용하게 된다면 `Gallery` 컴포넌트와 `Profile` 컴포넌트를 root 컴포넌트가 아닌 다른 파일로 옮기는 게 좋습니다. 그렇게 변경하면 재사용성이 높아 컴포넌트를 모듈로 사용할 수 있습니다. 컴포넌트를 다른 파일로 이동하려면 세가지 단계가 있습니다.
 
 1. **Make** a new JS file to put the components in.
 2. **Export** your function component from that file (using either [default](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_the_default_export) or [named](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_named_exports) exports).
