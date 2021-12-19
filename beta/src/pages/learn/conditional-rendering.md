@@ -54,7 +54,7 @@ export default function PackingList() {
 
 `Item` 컴포넌트 중 일부는 `isPacked` 프로퍼티가 `false`가 아닌 `true`로 설정되어 있습니다. `isPacked={true}`인 경우 짐을 싼 항목에 체크 표시(✔)를 추가하려고 합니다.
 
-다음과 같이 [`if`/`else` 문](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else)으로 작성할 수 있습니다.
+다음과 같이 [`if`/`else` 문](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/if...else)으로 작성할 수 있습니다.
 
 ```js
 if (isPacked) {
@@ -179,9 +179,9 @@ return <li className="item">{name}</li>;
 
 이 중복코드가 나쁘지는 않지만, 코드를 유지 보수하기 더 어렵게 만들 수 있습니다. `className`을 바꾸고 싶다면? 코드상 두 군데를 수정해야 합니다! 이러한 상황에서 조건부로 약간의 JSX를 포함해 코드를 더 [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) 하게 만들 수 있습니다.
 
-### 조건부 3항 연산자 (`? :`) {/*conditional-ternary-operator--*/}
+### 삼항 조건 연산자 (`? :`) {/*conditional-ternary-operator--*/}
 
-JavaScript는 [조건부 3항 연산자](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 조건식을 작성하기 위한 간단한 문법을 가지고 있습니다.
+JavaScript는 [삼항 조건 연산자](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 조건식을 작성하기 위한 간단한 문법을 가지고 있습니다.
 
 이 코드 대신,
 
@@ -324,7 +324,7 @@ export default function PackingList() {
 
 ### 변수에 조건부로 JSX를 할당하기 {/*conditionally-assigning-jsx-to-a-variable*/}
 
-위와 같은 방법이 일반 코드를 작성하는 데 방해가 되면 `if` 문과 변수를 사용하세요. [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)으로 정의된 변수는 재할당할 수 있으므로 표시할 기본 내용인 이름을 먼저 대입하세요.
+위와 같은 방법이 일반 코드를 작성하는 데 방해가 되면 `if` 문과 변수를 사용하세요. [`let`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/let)으로 정의된 변수는 재할당할 수 있으므로 표시할 기본 내용인 이름을 먼저 대입하세요.
 
 ```js
 let itemContent = name;
