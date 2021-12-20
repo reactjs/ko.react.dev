@@ -1,33 +1,33 @@
 ---
-title: 스냅샷으로서의 상태
+title: 스냅샷으로서의 State
 ---
 
 <Intro>
 
-읽고 쓰는 상태변수는 일반적인 자바스크립트 변수처럼 보일 수 있습니다. 그러나 상태는 스냅샷 처럼 작동합니다. 상태를 설정하여도 이미 가지고 있는 상태변수는 변경되지 않고, 대신에 리렌더링을 실행합니다.
+읽고 쓰는 State 변수는 일반적인 자바스크립트 변수처럼 보일 수 있습니다. 그러나 state는 스냅샷 처럼 작동합니다. state를 설정하여도 이미 가지고 있는 state는 변경되지 않고, 대신에 리 렌더링을 실행합니다.
 
 </Intro>
 
 <YouWillLearn>
 
-* 상태설정이 어떻게 리렌더링을 실행하는지
-* 언제 그리고 어떻게 상태가 업데이트 되는지
-* 상태를 설정한 후에 왜 상태값이 즉시 업데이트 되지 않는지
-* 이벤트 핸들러가 어떻게 상태 값의 "스냅샷"에 접근하는지
+* state 설정이 어떻게 리 렌더링을 실행하는지
+* 언제 그리고 어떻게 state가 업데이트되는지
+* state를 설정한 후에 왜 state값이 즉시 업데이트되지 않는지
+* 이벤트 핸들러가 어떻게 state의 "스냅샷"에 접근하는지
 
 </YouWillLearn>
 
-## 상태를 설정하여 렌더링을 실행합니다. {/*상태를 설정하여 렌더링을 실행합니다*/}
+## state를 설정하여 렌더링을 실행합니다. {/*setting-state-triggers-renders*/}
 
-사용자 인터페이스는 클릭과 같은 사용자의 인풋에 응답으로 즉시 변경된다고 생각 할 수 있습니다. [storyboarding](https://wikipedia.org/wiki/Storyboard) 디자인과 상호작용을 경험했다면 이것은 직관적으로 느껴 질 수 있습니다.
+사용자 인터페이스는 클릭과 같은 사용자의 인풋에 응답으로 즉시 변경된다고 생각할 수 있습니다. [storyboarding](https://wikipedia.org/wiki/Storyboard) 디자인과 상호작용을 경험했다면 이것은 직관적으로 느껴질 수 있습니다.
 
 <Illustration alt="폼에서부터 제출버튼 위에 손가락에서 확인메세지까지의 선형 과정입니다." src="/images/docs/sketches/s_ui-response.jpg" />
 
-React에서, 멘탈 모델로부터 이것은 조금 다르게 동작합니다. 이전 페이지에서 React로 부터 [상태 설정이 리렌더링을 요청합니다](/learn/render-and-commit#step-1-trigger-a-render)를 보았을 겁니다. 즉, 인터페이스가 인풋에 반응하려면 인풋의 상태를 설정해야하는 것을 의미합니다.
+React에서 멘탈 모델로부터 이것은 조금 다르게 동작합니다. 이전 페이지에서 React로부터 [state 설정이 리 렌더링을 요청합니다](/learn/render-and-commit#step-1-trigger-a-render)를 보았을 겁니다. 즉, 인터페이스가 인풋에 반응하려면 인풋의 state를 설정해야 하는 것을 의미합니다.
 
 <Illustration alt="React는 처음에 폼을 렌더링하고 제출 버튼의 손가락은 setState를 React로 보내고 React는 확인 메시지를 재렌더링합니다." src="/images/docs/sketches/s_react-ui-response.jpg" />
 
-예시에서, "전송" 버튼을 눌렀을 때, `setIsSent(true)`는 UI를 리렌더링 하도록 React에게 알려줍니다.
+예시에서 "전송" 버튼을 눌렀을 때, `setIsSent(true)`는 UI를 리 렌더링하도록 React에 알려줍니다.
 
 <Sandpack>
 
@@ -67,47 +67,47 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 </Sandpack>
 
-버튼을 클릭하면 다음과 같이 됩니다:
+버튼을 클릭하면 다음과 같이 됩니다.
 
-1. `onSubmit` 이벤트 핸들러가 실행이 됩니다.
+1. `onSubmit` 이벤트 핸들러가 실행됩니다.
 2. `setIsSent(true)`가 `isSent`를 `true`로 설정하고 새로운 렌더링을 큐에 넣습니다.
-3. React는 새로운 `isSent`값에 따라 컴포넌트를 리렌더링 합니다.
+3. React는 새로운 `isSent`값에 따라 컴포넌트를 리 렌더링합니다.
 
-상태와 렌더링의 관계를 자세히 살펴보겠습니다.
+state와 렌더링의 관계를 자세히 살펴보겠습니다.
 
-<Illustration alt="상태는 React 안에있고; React는 setUpdate를 얻습니다; 리렌더링에서, React는 상태 값의 스냅샷을 컴포넌트에 전달합니다." src="/images/docs/illustrations/i_ui-snapshot.png" />
+<Illustration alt="State는 React 안에있고; React는 setUpdate를 얻습니다; 리 렌더링에서, React는 state의 스냅샷을 컴포넌트에 전달합니다." src="/images/docs/illustrations/i_ui-snapshot.png" />
 
-## 렌더링은 적시에 스냅샷을 생성합니다. {/*렌더링은 적시에 스냅샷을 생성합니다*/}
+## 렌더링은 적시에 스냅샷을 생성합니다. {/*rendering-takes-a-snapshot-in-time*/}
 
-["렌더링"](/learn/render-and-commit#step-2-react-renders-your-components)은 React가 함수형 컴포넌트를 호출하는것을 의미합니다. 해당 함수에서 반환하는 JSX는 시간에 따른 UI의 스냅샷과 같습니다. 컴포넌트의 프로퍼티, 이벤트 핸들러, 로컬 변수들 모두 계산됩니다. **렌더링 시점의 상태 사용.**
+["렌더링"](/learn/render-and-commit#step-2-react-renders-your-components)은 React가 함수형 컴포넌트를 호출하는 것을 의미합니다. 함수에서 반환하는 JSX는 시간에 따른 UI의 스냅샷과 같습니다. 컴포넌트의 props, 이벤트 핸들러, 로컬 변수들 모두 계산됩니다. **렌더링 시점의 state 사용.**
 
-사진이나 동영상 프레임과 다르게 반환하는 UI "스냅샷"은 대화형입니다. 스냅샷은 입력에 대한 응답으로 발생하는 일을 지정하는 이벤트 핸들러와같은 로직을 포함하고 있습니다. 그런 다음 React는 스냅샷과 일치하도록 화면을 업데이트하고 이벤트 핸들러를 연결합니다. 
+사진이나 동영상 프레임과 다르게 반환하는 UI "스냅샷"은 대화형입니다. 스냅샷은 입력에 대한 응답으로 발생하는 일을 지정하는 이벤트 핸들러와 같은 로직을 포함하고 있습니다. 그런 다음 React는 스냅샷과 일치하도록 화면을 업데이트하고 이벤트 핸들러를 연결합니다. 
 결과적으로 버튼을 누르면 JSX의 클릭 핸들러를 실행합니다.
 
 
-React가 컴포넌트를 다시 렌더링할 때:
+React가 컴포넌트를 다시 렌더링할 때.
 
 1. React가 함수를 다시 호출합니다.
-2. 함수가 새 JSX 스냅샷을 반환합니다..
+2. 함수가 새 JSX 스냅샷을 반환합니다.
 3. 그런 다음 React는 반환된 스냅샷과 일치하도록 화면을 업데이트합니다.
 
-<IllustrationBlock title="리렌더링" sequential>
+<IllustrationBlock title="리 렌더링" sequential>
     <Illustration caption="React가 함수를 호출합니다" src="/images/docs/illustrations/i_render1.png" />
     <Illustration caption="스냅샷을 계산합니다" src="/images/docs/illustrations/i_render2.png" />
     <Illustration caption="DOM tree를 업데이트 합니다" src="/images/docs/illustrations/i_render3.png" />
 </IllustrationBlock>
 
-컴포넌트의 메모리인 상태는 함수가 반환된 후 사라지는 일반 변수와 다릅니다. 함수 외부에 있는 것처럼 실제로 React 자체에 "살아있는"상태를 나타냅니다. React가 컴포넌트를 호출하면 해당 특정 렌더링의 상태에 대한 스냅샷을 제공합니다. 컴포넌트는 JSX에 새로운 props 및 이벤트 핸들러 세트가 있는 UI 스냅샷을 반환하며 모두 계산 됩니다.**해당 렌더링의 상태 값 사용!**
+컴포넌트의 메모리인 state는 함수가 반환된 후 사라지는 일반 변수와 다릅니다. 함수 외부에 있는 것처럼 실제로 React 자체에 "살아있는" State를 나타냅니다. React가 컴포넌트를 호출하면 특정 렌더링의 state에 대한 스냅샷을 제공합니다. 컴포넌트는 JSX에 새로운 props 및 이벤트 핸들러 세트가 있는 UI 스냅샷을 반환하며 모두 계산됩니다.**렌더링의 state 사용!**
 
 <IllustrationBlock sequential>
   <Illustration caption="React는 setUpdate를 얻습니다." src="/images/docs/illustrations/i_state-snapshot1.png" />
-  <Illustration caption="React는 상태값을 업데이트 합니다." src="/images/docs/illustrations/i_state-snapshot2.png" />
-  <Illustration caption="React는 상태 값의 스냅샬을 컴포넌트에 전달합니다." src="/images/docs/illustrations/i_state-snapshot3.png" />
+  <Illustration caption="React는 state를 업데이트 합니다." src="/images/docs/illustrations/i_state-snapshot2.png" />
+  <Illustration caption="React는 state의 스냅샷을 컴포넌트에 전달합니다." src="/images/docs/illustrations/i_state-snapshot3.png" />
 </IllustrationBlock>
 
-이것이 어떻게 동작하는지 보여주기 위한 작은 실험이 있습니다. 이 예시에서, "+3"버튼을 클릭하면 `setNumber(number + 1)`를 세 번 호출하기 때문에 카운터가 세 번 증가할 것으로 얘상할 수 있습니다.
+이것이 어떻게 동작하는지 보여주기 위한 작은 실험이 있습니다. 이 예시에서, "+3"버튼을 클릭하면 `setNumber(number + 1)`를 세 번 호출하기 때문에 카운터가 세 번 증가할 것으로 예상할 수 있습니다.
 
-"+3" 버튼을 클릭하면 어떻게 되는지 확인해봅시다:
+"+3" 버튼을 클릭하면 어떻게 되는지 확인해봅시다.
 
 <Sandpack>
 
@@ -139,7 +139,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 `number`는 클릭당 한 번만 증가합니다!
 
-**상태를 설정하면 *다음* 렌더링에 대해서만 변경됩니다.** 첫번째 렌더링동안, `number`는 `0` 이었습니다. 이것이 "첫번째 렌더링의" `onClick`핸들러에서 `setNumber(number + 1)`가 호출된 후에도 `number`의 값이 여전히 `0`인 이유입니다:
+**state를 설정하면 *다음* 렌더링에 대해서만 변경됩니다.** 첫 번째 렌더링을 하는동안, `number`는 `0` 이었습니다. 이것이 "첫 번째 렌더링의" `onClick`핸들러에서 `setNumber(number + 1)`가 호출된 후에도 `number`의 값이 여전히 `0`인 이유입니다.
 
 ```js
 <button onClick={() => {
@@ -149,7 +149,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 }}>+3</button>
 ```
 
-다음은 버튼의 클릭 핸들러가 전달하는 React가 해야할 일들 입니다:
+다음은 버튼의 클릭 핸들러가 전달하는 React가 해야 할 일들입니다.
 1. `setNumber(number + 1)`: `number` is `0` so `setNumber(0 + 1)`.
     - React는 다음 렌더링에서 `number`를 `1`로 변경할 준비를 합니다.
 2. `setNumber(number + 1)`: `number` is `0` so `setNumber(0 + 1)`.
@@ -157,9 +157,9 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 3. `setNumber(number + 1)`: `number` is `0` so `setNumber(0 + 1)`.
     - React는 다음 렌더링에서 `number`를 `1`로 변경할 준비를 합니다.
 
-`setNumber(number + 1)`를 세 번 호출했지만 *해당 렌더링*의 이벤트 핸들러에서 `number`는 항상 `0`이므로 상태를 `1`로 세 번 설정합니다. 이것이 이벤트 핸들러가 완료된 후 React가 '3'이 아닌 '1'과 같은 `number로 구성 요소를 다시 렌더링하는 이유입니다.
+`setNumber(number + 1)`를 세 번 호출했지만 *렌더링*의 이벤트 핸들러에서 `number`는 항상 `0`이므로 state를 `1`로 세 번 설정합니다. 이것이 이벤트 핸들러가 완료된 후 React가 '3'이 아닌 '1'과 같은 `number로 구성 요소를 다시 렌더링하는 이유입니다.
 
-코드에서 상태 변수를 해당 값으로 이를 시각화할 수도 있습니다. *해당 렌더링*의 경우 `number` 상태 변수가 `0` 이므로 이벤트 핸들러는 다음과 같습니다:
+코드에서 state를 해당 값으로 이를 시각화할 수도 있습니다. *렌더링*의 경우 `number` state가 `0` 이므로 이벤트 핸들러는 다음과 같습니다.
 
 ```js
 <button onClick={() => {
@@ -169,7 +169,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 }}>+3</button>
 ```
 
-다음 렌더링의 경우 `number`는 `1`이므로 *해당 렌더링의* 클릭 핸들러는 다음과 같습니다:
+다음 렌더링의 경우 `number`는 `1`이므로 *렌더링의* 클릭 핸들러는 다음과 같습니다.
 
 ```js
 <button onClick={() => {
@@ -181,9 +181,9 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 이것이 버튼을 다시 클릭하면 카운터가 `2`로 설정되고 다음 클릭에서 `3`'으로 설정되는 방식인 이유입니다.
 
-## 시간 경과에 따른 상태 {/*시간 경과에 따른 상태*/}
+## 시간 경과에 따른 State {/*state-over-time*/}
 
-정말 재밌죠. 이 버튼을 클릭하면 무엇을 경고할지 추측해 보세요:
+정말 재밌죠. 이 버튼을 클릭하면 무엇을 경고할지 추측해 보세요.
 
 <Sandpack>
 
@@ -212,14 +212,14 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 </Sandpack>
 
-이전의 대체 메소드를 사용하면 알럿이 "0"을 표시한다고 추측할 수 있습니다:
+이전의 대체 메소드를 사용하면 알럿이 "0"을 표시한다고 추측할 수 있습니다.
 
 ```js
 setNumber(0 + 5);
 alert(0);
 ```
 
-그러나 알럿에 타이머를 설정하여 컴포넌트가 다시 렌더링된 _이후에_ 실행하면 어떻게 될까요? "0" 또는 "5" 일까요? 추측해보세요!
+그러나 알럿에 타이머를 설정하여 컴포넌트가 다시 렌더링 된 _이후에_ 실행하면 어떻게 될까요? "0" 또는 "5" 일까요? 추측해보세요!
 
 <Sandpack>
 
@@ -250,7 +250,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 </Sandpack>
 
-놀라셨나요? 대체 메소드를 사용하면 경고에 전달된 상태의 "스냅샷"을 볼 수 있습니다.
+놀라셨나요? 대체 메소드를 사용하면 경고에 전달된 state의 "스냅샷"을 볼 수 있습니다.
 
 ```js
 setNumber(0 + 5);
@@ -259,16 +259,16 @@ setTimeout(() => {
 }, 3000);
 ```
 
-React에 저장된 상태는 알럿이 실행될 때 변경되었을 수 있지만 사용자가 상호 작용할 때 상태의 스냅샷을 사용하여 예정되었습니다!
+React에 저장된 state는 알럿이 실행될 때 변경되었을 수 있지만 사용자가 상호 작용할 때 state의 스냅샷을 사용하여 예정되었습니다!
 
-이벤트 핸들러의 코드가 비동기적일지라도, **상태 변수의 값은 렌더링 내에서 절대 변경되지 않습니다.** *해당 렌더링의* `onClick` 내부에서 `setNumber(number + 5)`가 호출된 후에도 `number`의 값은 계속 `0`입니다. React가 컴포넌트를 호출하여 UI의 "스냅샷을 찍었을 때" 값이 "고정"되었습니다.
+이벤트 핸들러의 코드가 비동기적일지라도, **state 값은 렌더링 내에서 절대 변경되지 않습니다.** *렌더링의* `onClick` 내부에서 `setNumber(number + 5)`가 호출된 후에도 `number`의 값은 계속 `0`입니다. React가 컴포넌트를 호출하여 UI의 "스냅샷을 찍었을 때" 값이 "고정"되었습니다.
 
-다음은 이벤트 핸들러가 타이밍 실수를 덜 하게 만드는 방법의 예시입니다. 다음은 5초 지연 메시지를 보내는 양식입니다. 이 시나리오를 상상해보세요:
+다음은 이벤트 핸들러가 타이밍 실수를 덜 하게 만드는 방법의 예시입니다. 다음은 5초 지연 메시지를 보내는 양식입니다. 이 시나리오를 상상해보세요.
 
 1. "Send" 버튼을 누르면 Alice에게 "Hello"가 전송됩니다.
 2. 5초 지연이 끝나기 전에 "To" 필드의 값을 "Bob"으로 변경합니다.
 
-`알럿`이 표시될 것으로 예상되는 내용은 무엇입니까? "앨리스에게 인사했습니다"가 표시될까요? 아니면 "밥에게 인사했습니다"라고 표시될까요? 알고 있는 내용을 바탕으로 추측한 다음 시도해 보세요:
+`알럿`이 표시될 것으로 예상되는 내용은 무엇입니까? "앨리스에게 인사했습니다"가 표시될까요? 아니면 "밥에게 인사했습니다"라고 표시될까요? 알고 있는 내용을 바탕으로 추측한 다음 시도해 보세요.
 
 <Sandpack>
 
@@ -314,19 +314,19 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 </Sandpack>
 
-**React는 한 렌더링의 이벤트 핸들러 내에서 상태 값을 "고정"으로 유지합니다.** 코드가 실행되는 동안 상태가 변경되었는지 여부를 걱정할 필요가 없습니다.
+**React는 렌더링의 이벤트 핸들러 내에서 state를 "고정"으로 유지합니다.** 코드가 실행되는 동안 state가 변경되었는지를 걱정할 필요가 없습니다.
 
-그러나 다시 렌더링하기 전에 최신 상태를 읽고 싶다면 어떻게 해야 할까요? 다음 페이지에서 다룰 [상태 갱신 함수](/learn/queueing-a-series-of-state-updates)를 사용하고 싶을 것입니다.
+그러나 다시 렌더링하기 전에 최신 state를 읽고 싶다면 어떻게 해야 할까요? 다음 페이지에서 다룰 [state 갱신 함수](/learn/queueing-a-series-of-state-updates)를 사용하고 싶을 것입니다.
 
 <Recap>
 
-* 상태를 설정하면 새 렌더링이 요청됩니다
-* React는 선반에 있는 것처럼 구성 요소 외부에 상태를 저장합니다. (as if on a shelf) 
-* `useState`를 호출하면 React는 *해당 렌더링*의 상태에 대한 스냅샷을 제공합니다.
-* 변수 및 이벤트 핸들러는 "생존"하여 다시 렌더링되지 않습니다. 모든 렌더링에는 고유의 이벤트 핸들러가 있습니다.
-* 모든 렌더링(및 그 안의 함수)은 항상 React가 *그*렌더링에 부여한 상태의 스냅샷을 "볼" 것입니다.
-* 렌더링된 JSX에 대해 생각하는 방식과 유사하게 이벤트 핸들러에서 상태를 대체할 수 있습니다.
-* 과거에 생성된 이벤트 핸들러는 생성되었을 당시 렌더링의 상태 값을 가집니다.
+* state를 설정하면 새 렌더링이 요청됩니다
+* React는 선반에 있는 것처럼 구성 요소 외부에 state를 저장합니다. (as if on a shelf) 
+* `useState`를 호출하면 React는 *렌더링*의 state에 대한 스냅샷을 제공합니다.
+* 변수 및 이벤트 핸들러는 "생존"하여 다시 렌더링 되지 않습니다. 모든 렌더링에는 고유의 이벤트 핸들러가 있습니다.
+* 모든 렌더링(및 그 안의 함수)은 항상 React가 *그*렌더링에 부여한 state의 스냅샷을 "볼" 것입니다.
+* 렌더링 된 JSX에 대해 생각하는 방식과 유사하게 이벤트 핸들러에서 state를 대체할 수 있습니다.
+* 과거에 생성된 이벤트 핸들러는 생성되었을 당시 렌더링의 state 값을 가집니다.
 
 </Recap>
 
@@ -334,9 +334,9 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 <Challenges>
 
-### 신호등을 구현해봅시다 {/*신호등을 구현해봅시다*/}
+### 신호등을 구현해봅시다 {/*implement-a-traffic-light*/}
 
-다음은 버튼을 눌렀을 때 켜지는 횡단보도 조명 컴포넌트입니다:
+다음은 버튼을 눌렀을 때 켜지는 횡단보도 조명 컴포넌트입니다.
 
 <Sandpack>
 
@@ -373,11 +373,11 @@ h1 { margin-top: 20px; }
 
 클릭 핸들러에 `알럿`을 추가합니다. 신호등이 녹색이고 "Walk"라고 표시되면 버튼을 클릭하면 "Stop is next"라고 표시되어야 합니다. 표시등이 빨간색이고 "중지"라고 표시되면 버튼을 클릭하면 "다음은 걷기"라고 표시되어야 합니다.
 
-`setWalk` 호출 전 또는 후에 `알럿`을 설정하는지 여부에 차이가 있을까요 ?
+`setWalk` 호출 전 또는 후에 `알럿`을 설정하는지에 차이가 있을까요?
 
 <Solution>
 
-`알럿`은 다음과 같아야 합니다:
+`알럿`은 다음과 같아야 합니다.
 
 <Sandpack>
 
@@ -413,15 +413,15 @@ h1 { margin-top: 20px; }
 
 </Sandpack>
 
-알럿을 `setWalk` 호출 전후에 배치하든 상관없이 차이가 없습니다. 렌더링의 `walk` 값은 고정되어 있습니다. `setWalk`를 호출하면 *다음* 렌더링에 대해서만 변경되지만 이전 렌더링의 이벤트 핸들러에는 영향을 미치지 않습니다.
+알럿을 `setWalk` 호출 전후에 배치하든 상관없이 차이가 없습니다. 렌더링의 `walk` 값은 고정되어 있습니다. `setWalk`를 호출하면 *다음* 렌더링에 대해서만 변경되지만, 이전 렌더링의 이벤트 핸들러에는 영향을 미치지 않습니다.
 
-이 라인은 처음에는 직관적이지 않게 보일 수 있습니다:
+이 라인은 처음에는 직관적이지 않게 보일 수 있습니다.
 
 ```js
 alert(walk ? 'Stop is next' : 'Walk is next');
 ```
 
-그러나 다음과 같이 읽는다면 의미가 있습니다. "신호등이 'Walk now'로 표시되면 메시지는 'Stop is next'라고 표시되어야 합니다." 이벤트 핸들러 내부의 `walk` 변수는 해당 렌더링의 `walk` 값과 일치하고 변하지 않습니다.
+그러나 다음과 같이 읽는다면 의미가 있습니다. "신호등이 'Walk now'로 표시되면 메시지는 'Stop is next'라고 표시되어야 합니다." 이벤트 핸들러 내부의 `walk` 변수는 렌더링의 `walk` 값과 일치하고 변하지 않습니다.
 
 대체 메소드를 적용하여 이것이 올바른지 확인할 수 있습니다. `walk`가 `true`이면 다음과 같은 결과를 얻습니다.
 
