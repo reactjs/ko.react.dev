@@ -1,5 +1,5 @@
 ---
-title: Context 를 사용해 데이터 깊게 전달하기
+title: Context를 사용해 데이터 깊게 전달하기
 ---
 
 <Intro>
@@ -541,8 +541,6 @@ export const LevelContext = createContext(1);
 2. `Section`은 자식을 `<LevelContext.Provider value={level}>`로 감싸줍니다.
 3. `Header`는 `useContext(LevelContext)`를 사용해 가장 근처의 `LevelContext`의 값을 요청합니다.
 
-
-
 ## 같은 컴포넌트에서 context를 사용하며 제공하기 {/*using-and-providing-context-from-the-same-component*/}
 
 지금은 각각의 섹션에 `level`을 수동으로 지정해야 합니다.
@@ -576,7 +574,7 @@ export default function Section({ children }) {
 }
 ```
 
-이렇게 바꾸면 `<Section>`과 `<Heading>` *둘 모두에*  `level`을 넘길 필요가 없습니다.
+이렇게 바꾸면 `<Section>`과 `<Heading>` *둘 모두에* `level`을 넘길 필요가 없습니다.
 
 <Sandpack>
 
