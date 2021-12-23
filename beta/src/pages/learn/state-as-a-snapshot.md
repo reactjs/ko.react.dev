@@ -4,13 +4,13 @@ title: 스냅샷으로서의 State
 
 <Intro>
 
-읽고 쓰는 State 변수는 일반적인 자바스크립트 변수처럼 보일 수 있습니다. 그러나 state는 스냅샷 처럼 작동합니다. state를 설정하여도 이미 가지고 있는 state는 변경되지 않고, 대신에 리 렌더링을 실행합니다.
+읽고 쓰는 State 변수는 일반적인 자바스크립트 변수처럼 보일 수 있습니다. 그러나 state는 스냅샷 처럼 작동합니다. state를 설정하여도 이미 가지고 있는 state는 변경되지 않고, 대신에 다시 렌더링을 실행합니다.
 
 </Intro>
 
 <YouWillLearn>
 
-* state 설정이 어떻게 리 렌더링을 실행하는지
+* state 설정이 어떻게 다시 렌더링을 실행하는지
 * 언제 그리고 어떻게 state가 업데이트되는지
 * state를 설정한 후에 왜 state값이 즉시 업데이트되지 않는지
 * 이벤트 핸들러가 어떻게 state의 "스냅샷"에 접근하는지
@@ -21,13 +21,13 @@ title: 스냅샷으로서의 State
 
 사용자 인터페이스는 클릭과 같은 사용자의 인풋에 응답으로 즉시 변경된다고 생각할 수 있습니다. [storyboarding](https://wikipedia.org/wiki/Storyboard) 디자인과 상호작용을 경험했다면 이것은 직관적으로 느껴질 수 있습니다.
 
-<Illustration alt="폼에서부터 제출버튼 위에 손가락에서 확인메세지까지의 선형 과정입니다." src="/images/docs/sketches/s_ui-response.jpg" />
+<Illustration alt="폼에서부터 제출버튼 위에 손가락을 대고 있는 모습 그리고 확인메세지까지의 진행 과정입니다." src="/images/docs/sketches/s_ui-response.jpg" />
 
-React에서 멘탈 모델로부터 이것은 조금 다르게 동작합니다. 이전 페이지에서 React로부터 [state 설정이 리 렌더링을 요청합니다](/learn/render-and-commit#step-1-trigger-a-render)를 보았을 겁니다. 즉, 인터페이스가 인풋에 반응하려면 인풋의 state를 설정해야 하는 것을 의미합니다.
+React에서 이것은 일반적인 예상과 조금 다르게 동작합니다. 이전 페이지에서 React로부터 [state 설정이 다시 렌더링을 요청합니다](/learn/render-and-commit#step-1-trigger-a-render)를 보았을 겁니다. 즉, 인터페이스가 인풋에 반응하려면 인풋의 state를 설정해야 하는 것을 의미합니다.
 
 <Illustration alt="React는 처음에 폼을 렌더링하고 제출 버튼의 손가락은 setState를 React로 보내고 React는 확인 메시지를 재렌더링합니다." src="/images/docs/sketches/s_react-ui-response.jpg" />
 
-예시에서 "전송" 버튼을 눌렀을 때, `setIsSent(true)`는 UI를 리 렌더링하도록 React에 알려줍니다.
+예시에서 "전송" 버튼을 눌렀을 때, `setIsSent(true)`는 UI를 다시 렌더링하도록 React에 알려줍니다.
 
 <Sandpack>
 
@@ -71,11 +71,11 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 1. `onSubmit` 이벤트 핸들러가 실행됩니다.
 2. `setIsSent(true)`가 `isSent`를 `true`로 설정하고 새로운 렌더링을 큐에 넣습니다.
-3. React는 새로운 `isSent`값에 따라 컴포넌트를 리 렌더링합니다.
+3. React는 새로운 `isSent`값에 따라 컴포넌트를 다시 렌더링합니다.
 
 state와 렌더링의 관계를 자세히 살펴보겠습니다.
 
-<Illustration alt="State는 React 안에있고; React는 setUpdate를 얻습니다; 리 렌더링에서, React는 state의 스냅샷을 컴포넌트에 전달합니다." src="/images/docs/illustrations/i_ui-snapshot.png" />
+<Illustration alt="State는 React 안에있고; React는 setUpdate를 얻습니다; 다시 렌더링에서, React는 state의 스냅샷을 컴포넌트에 전달합니다." src="/images/docs/illustrations/i_ui-snapshot.png" />
 
 ## 렌더링은 적시에 스냅샷을 생성합니다. {/*rendering-takes-a-snapshot-in-time*/}
 
@@ -91,7 +91,7 @@ React가 컴포넌트를 다시 렌더링할 때.
 2. 함수가 새 JSX 스냅샷을 반환합니다.
 3. 그런 다음 React는 반환된 스냅샷과 일치하도록 화면을 업데이트합니다.
 
-<IllustrationBlock title="리 렌더링" sequential>
+<IllustrationBlock title="다시 렌더링" sequential>
     <Illustration caption="React가 함수를 호출합니다" src="/images/docs/illustrations/i_render1.png" />
     <Illustration caption="스냅샷을 계산합니다" src="/images/docs/illustrations/i_render2.png" />
     <Illustration caption="DOM tree를 업데이트 합니다" src="/images/docs/illustrations/i_render3.png" />
@@ -212,14 +212,14 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 </Sandpack>
 
-이전의 대체 메소드를 사용하면 알럿이 "0"을 표시한다고 추측할 수 있습니다.
+이전의 대체 메소드를 사용하면 경고창이 "0"을 표시한다고 추측할 수 있습니다.
 
 ```js
 setNumber(0 + 5);
 alert(0);
 ```
 
-그러나 알럿에 타이머를 설정하여 컴포넌트가 다시 렌더링 된 _이후에_ 실행하면 어떻게 될까요? "0" 또는 "5" 일까요? 추측해보세요!
+그러나 경고창에 타이머를 설정하여 컴포넌트가 다시 렌더링 된 _이후에_ 실행하면 어떻게 될까요? "0" 또는 "5" 일까요? 추측해보세요!
 
 <Sandpack>
 
@@ -259,7 +259,7 @@ setTimeout(() => {
 }, 3000);
 ```
 
-React에 저장된 state는 알럿이 실행될 때 변경되었을 수 있지만 사용자가 상호 작용할 때 state의 스냅샷을 사용하여 예정되었습니다!
+React에 저장된 state는 경고창이 실행될 때 변경되었을 수 있지만 사용자가 상호 작용할 때 state의 스냅샷을 사용하여 예정되었습니다!
 
 이벤트 핸들러의 코드가 비동기적일지라도, **state 값은 렌더링 내에서 절대 변경되지 않습니다.** *렌더링의* `onClick` 내부에서 `setNumber(number + 5)`가 호출된 후에도 `number`의 값은 계속 `0`입니다. React가 컴포넌트를 호출하여 UI의 "스냅샷을 찍었을 때" 값이 "고정"되었습니다.
 
@@ -268,7 +268,7 @@ React에 저장된 state는 알럿이 실행될 때 변경되었을 수 있지�
 1. "Send" 버튼을 누르면 Alice에게 "Hello"가 전송됩니다.
 2. 5초 지연이 끝나기 전에 "To" 필드의 값을 "Bob"으로 변경합니다.
 
-`알럿`이 표시될 것으로 예상되는 내용은 무엇입니까? "앨리스에게 인사했습니다"가 표시될까요? 아니면 "밥에게 인사했습니다"라고 표시될까요? 알고 있는 내용을 바탕으로 추측한 다음 시도해 보세요.
+`경고창`이 표시될 것으로 예상되는 내용은 무엇입니까? "앨리스에게 인사했습니다"가 표시될까요? 아니면 "밥에게 인사했습니다"라고 표시될까요? 알고 있는 내용을 바탕으로 추측한 다음 시도해 보세요.
 
 <Sandpack>
 
@@ -371,13 +371,13 @@ h1 { margin-top: 20px; }
 
 </Sandpack>
 
-클릭 핸들러에 `알럿`을 추가합니다. 신호등이 녹색이고 "Walk"라고 표시되면 버튼을 클릭하면 "Stop is next"라고 표시되어야 합니다. 표시등이 빨간색이고 "중지"라고 표시되면 버튼을 클릭하면 "다음은 걷기"라고 표시되어야 합니다.
+클릭 핸들러에 `경고창`을 추가합니다. 신호등이 녹색이고 "Walk"라고 표시되면 버튼을 클릭하면 "Stop is next"라고 표시되어야 합니다. 표시등이 빨간색이고 "중지"라고 표시되면 버튼을 클릭하면 "다음은 걷기"라고 표시되어야 합니다.
 
-`setWalk` 호출 전 또는 후에 `알럿`을 설정하는지에 차이가 있을까요?
+`setWalk` 호출 전 또는 후에 `경고창`을 설정하는지에 차이가 있을까요?
 
 <Solution>
 
-`알럿`은 다음과 같아야 합니다.
+`경고창`은 다음과 같아야 합니다.
 
 <Sandpack>
 
@@ -413,7 +413,7 @@ h1 { margin-top: 20px; }
 
 </Sandpack>
 
-알럿을 `setWalk` 호출 전후에 배치하든 상관없이 차이가 없습니다. 렌더링의 `walk` 값은 고정되어 있습니다. `setWalk`를 호출하면 *다음* 렌더링에 대해서만 변경되지만, 이전 렌더링의 이벤트 핸들러에는 영향을 미치지 않습니다.
+경고창을 `setWalk` 호출 전후에 배치하든 상관없이 차이가 없습니다. 렌더링의 `walk` 값은 고정되어 있습니다. `setWalk`를 호출하면 *다음* 렌더링에 대해서만 변경되지만, 이전 렌더링의 이벤트 핸들러에는 영향을 미치지 않습니다.
 
 이 라인은 처음에는 직관적이지 않게 보일 수 있습니다.
 
