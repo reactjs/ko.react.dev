@@ -105,7 +105,7 @@ function Panel({ title, children, isActive }) {
 
 ### Step 2: 하드 코딩된 데이터를 부모 컴포넌트로 전달하기 {/*step-2-pass-hardcoded-data-from-the-common-parent*/}
 
-state를 올리려면 조정하려는 *두* 자식 컴포넌트의 가장 가까운 공통 부모 컴포넌트에 두어야 합니다.
+state를 올리려면, 조정하려는 *두* 자식 컴포넌트의 가장 가까운 공통 부모 컴포넌트에 두어야 합니다.
 
 * `Accordion` *(가장 가까운 공통 부모)*
   - `Panel`
@@ -276,9 +276,9 @@ h3, p { margin: 5px 0px; }
 
 **각각의 고유한 state에 대해 어떤 컴포넌트가 "소유"할지 고를 수 있습니다.** 이 원칙은 또한 ["단일 진리의 원천"](https://en.wikipedia.org/wiki/Single_source_of_truth) 을 갖는 것으로 알려져 있습니다. 이는 모든 state가 한 곳에 존재한다는 의미가 아니라 그 정보를 가지고 있는 _특정_ 컴포넌트가 있다는 것을 말합니다. 컴포넌트 간의 공유된 state를 중복하는 대신 그들의 공통 부모로 *끌어올리고* 필요한 자식에게 *전달*하세요.
 
-작업하면서 애플리케이션은 계속 변합니다. 각 state가 어디에 "생존"해야 할지 고민하는 동안 state를 아래로 이동하거나 다시 올리는 것은 흔히 있는 일입니다. 이건 모두 과정의 일부입니다!
+작업이 진행되면서 애플리케이션은 계속 변합니다. 각 state가 어디에 "생존"해야 할지 고민하는 동안 state를 아래로 이동하거나 다시 올리는 것은 흔히 있는 일입니다. 이건 모두 과정의 일부입니다!
 
-컴포넌트를 몇 개 더 사용하면 어떤 느낌인지 알아보려면 [React로 사고하기](/learn/thinking-in-react)를 읽어보세요.
+컴포넌트를 몇 개 더 사용하여 어떤 느낌인지 알아보려면 [React로 사고하기](/learn/thinking-in-react)를 읽어보세요.
 
 <Recap>
 
@@ -397,7 +397,7 @@ label { display: block; }
 
 </Solution>
 
-### 목록 필터링 {/*filtering-a-list*/}
+### 목록 필터링하기 {/*filtering-a-list*/}
 
 예시에서 `SearchBar`는 텍스트 입력을 제어하는 자체 `query` state를 가집니다. 부모 컴포넌트 `FilterableList`는 `List`의 목록을 표시하지만 검색 질의를 고려하지 않습니다.
 
