@@ -233,7 +233,7 @@ Reducer를 사용하면 이벤트 핸들러를 간결하고 명확하게 만들 
 
 <!--(TODO: illustration of prop drilling)-->
 
-그래서 `tasks` state와 the `dispatch` 함수를 props를 통해 전달하는 대신 [context에 넣어서](/learn/passing-data-deeply-with-context) 사용하고 싶을 겁니다. **그러면 반복적인 "prop drilling" 없이 `TaskBoard` 아래의 모든 컴포넌트 트리에서 tasks를 읽고 dispatch 함수를 실행할 수 있습니다.**
+그래서 `tasks` state와 `dispatch` 함수를 props를 통해 전달하는 대신 [context에 넣어서](/learn/passing-data-deeply-with-context) 사용하고 싶을 겁니다. **그러면 반복적인 "prop drilling" 없이 `TaskBoard` 아래의 모든 컴포넌트 트리에서 tasks를 읽고 dispatch 함수를 실행할 수 있습니다.**
 
 <!--(TODO: illustration of context)-->
 
