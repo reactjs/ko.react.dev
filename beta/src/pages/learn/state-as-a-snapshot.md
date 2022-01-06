@@ -148,6 +148,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 ```
 
 다음은 버튼의 클릭 핸들러가 전달하는 React가 해야 할 일들입니다.
+
 1. `setNumber(number + 1)`: `number` is `0` so `setNumber(0 + 1)`.
     - React는 다음 렌더링에서 `number`를 `1`로 변경할 준비를 합니다.
 2. `setNumber(number + 1)`: `number` is `0` so `setNumber(0 + 1)`.
