@@ -156,7 +156,7 @@
           ],
           "routes": [
             {
-              "title": "Referencing Values with Refs",
+              "title": "값을 Refs와 함께 참조하기",
               "path": "/learn/referencing-values-with-refs"
             },
             {
