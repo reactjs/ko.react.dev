@@ -209,7 +209,7 @@ ul, li { margin: 0; padding: 0; }
 
 Reducer를 사용하면 이벤트 핸들러를 간결하고 명확하게 만들 수 있습니다. 그러나 앱이 커질수록 다른 어려움에 부딪힐 수 있습니다. **현재 `tasks` state와 `dispatch` 함수는 최상위 컴포넌트인 `TaskBoard`에서만 사용할 수 있습니다.** 다른 컴포넌트들에서 tasks의 리스트를 읽고 변경하려면 prop을 통해 현재 state와 state를 변경할 수 있는 이벤트 핸들러를 명시적으로 [전달](/learn/passing-props-to-a-component)해야 합니다.
 
-예를 들어, 아래 `TaskBoard` 컴포넌트에서 `TaskList` 컴포넌트로 tasks 리스트와 이벤트 핸들러를 전달합니다.:
+예를 들어, 아래 `TaskBoard` 컴포넌트에서 `TaskList` 컴포넌트로 tasks 리스트와 이벤트 핸들러를 전달합니다.
 
 ```js
 <TaskList
