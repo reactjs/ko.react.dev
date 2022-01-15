@@ -159,7 +159,7 @@ export function Profile() {
 }
 ```
 
-그다음엔 named import 방식으로 `Gallery.js` 파일에서 `Profile` 컴포넌트를 `App.js` 파일로 **import** 합니다. (중괄호를 사용합니다)
+그 다음엔 named import 방식으로 `Gallery.js` 파일에서 `Profile` 컴포넌트를 `App.js` 파일로 **import** 합니다. (중괄호를 사용합니다)
 
 ```js
 import { Profile } from './Gallery.js';
