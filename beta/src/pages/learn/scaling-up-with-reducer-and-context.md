@@ -16,7 +16,7 @@ Reducer를 사용하면 컴포넌트의 state 업데이트 로직을 통합할 �
 
 </YouWillLearn>
 
-## reducer와 context를 결합하기 {/*combining-a-reducer-with-context*/}
+## Reducer와 context를 결합하기 {/*combining-a-reducer-with-context*/}
 
 [reducer의 개요](/learn/extracting-state-logic-into-a-reducer)의 예시에서 reducer로 state를 관리하는 방법을 보았습니다. 해당 예시에서 state 업데이트 로직을 모두 포함하는 reducer 함수를 App.js 파일의 맨 아래에 선언했습니다.
 
