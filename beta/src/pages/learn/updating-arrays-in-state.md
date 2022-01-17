@@ -208,7 +208,11 @@ setArtists(
 );
 ```
 
+<<<<<<< HEAD
 여기서 `artists.filter(s => s.id !== artist.id)`는 "`artist.id`와 ID가 다른 `artists`로 구성된 배열을 생성한다"는 의미입니다. 즉 각 artists의 "삭제" 버튼은 해당 artists를 배열에서 필터링한 다음, 반환된 배열로 리렌더링을 요청합니다. `filter`가 원본 배열을 수정하지 않는다는 것에 주의하세요.
+=======
+Here, `artists.filter(a => a.id !== artist.id)` means "create an array that consists of those `artists` whose IDs are different from `artist.id`." In other words, each artist's "Delete" button will filter _that_ artist out of the array, and then request a re-render with the resulting array. Note that `filter` does not modify the original array.
+>>>>>>> b9c33a05520ddc728f15c4eb19a343213309f59f
 
 ### 배열 변환하기 {/*transforming-an-array*/}
 
@@ -1972,4 +1976,8 @@ Immer를 사용하면 각각의 다른 케이스에서 가장 자연스러운 �
 
 </Solution>
 
+<<<<<<< HEAD
 </Challenges> 
+=======
+</Challenges>
+>>>>>>> b9c33a05520ddc728f15c4eb19a343213309f59f
