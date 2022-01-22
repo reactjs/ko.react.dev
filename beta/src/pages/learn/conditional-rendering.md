@@ -18,7 +18,7 @@ title: 조건부 렌더링
 
 ## 조건부로 JSX 반환하기 {/*conditionally-returning-jsx*/}
 
-짐을 쌌으면 표시 할 수 있는 여러 개의 `Item`을 렌더링하는 `PackingList` 컴포넌트가 있다고 가정해보세요.
+짐을 챙겼는지 안 챙겼는지 표시할 수 있는 여러 개의 `Item`을 렌더링하는 `PackingList` 컴포넌트가 있다고 가정해보세요.
 
 <Sandpack>
 
@@ -52,7 +52,7 @@ export default function PackingList() {
 
 </Sandpack>
 
-`Item` 컴포넌트 중 일부는 `isPacked` 프로퍼티가 `false`가 아닌 `true`로 설정되어 있습니다. `isPacked={true}`인 경우 짐을 싼 항목에 체크 표시(✔)를 추가하려고 합니다.
+`Item` 컴포넌트 중 일부는 `isPacked` prop이 `false`가 아닌 `true`로 설정되어 있습니다. `isPacked={true}`인 경우 짐을 챙긴 항목에 체크 표시(✔)를 추가하려고 합니다.
 
 다음과 같이 [`if`/`else` 문](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/if...else)으로 작성할 수 있습니다.
 
@@ -63,7 +63,7 @@ if (isPacked) {
 return <li className="item">{name}</li>;
 ```
 
-`isPacked` 프로퍼티가 `true`이면 이 코드는 **다른 JSX 트리를 반환합니다.** 이로 인해 일부 항목은 끝에 체크 표시가 있습니다.
+`isPacked` prop이 `true`이면 이 코드는 **다른 JSX 트리를 반환합니다.** 이로 인해 일부 항목은 끝에 체크 표시가 있습니다.
 
 <Sandpack>
 
@@ -106,7 +106,7 @@ JavaScript의 `if`와 `return` 문으로 분기 로직을 만드는 방법을 �
 
 ### 조건부로 `null`을 사용하여 아무것도 반환하지 않기 {/*conditionally-returning-nothing-with-null*/}
 
-어떤 경우에는 아무것도 렌더링하고 싶지 않을 수 있습니다. 예를 들어, 짐을 싼 항목을 전혀 보여주지 않는다고 가정해보세요. 컴포넌트는 반드시 무언가를 반환해야 하는데 이 경우에 `null`을 반환할 수 있습니다. 다음과 같이 말이죠.
+어떤 경우에는 아무것도 렌더링하고 싶지 않을 수 있습니다. 예를 들어, 짐을 챙긴 항목을 전혀 보여주지 않는다고 가정해보세요. 컴포넌트는 반드시 무언가를 반환해야 하는데 이 경우에 `null`을 반환할 수 있습니다. 다음과 같이 말이죠.
 
 ```js
 if (isPacked) {
@@ -177,7 +177,7 @@ if (isPacked) {
 return <li className="item">{name}</li>;
 ```
 
-이 중복코드가 나쁘지는 않지만, 코드를 유지 보수하기 더 어렵게 만들 수 있습니다. `className`을 바꾸고 싶다면? 코드상 두 군데를 수정해야 합니다! 이러한 상황에서 조건부로 약간의 JSX를 포함해 코드를 더 [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) 하게 만들 수 있습니다.
+이 중복코드가 나쁘지는 않지만, 코드를 유지 보수하기 더 어렵게 만들 수 있습니다. `className`을 바꾸고 싶다면? 코드상 두 군데를 수정해야 합니다! 이러한 상황에서 조건부로 약간의 JSX를 포함해 코드를 더 [DRY (don't repeat yourself)](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) 하게 만들 수 있습니다.
 
 ### 삼항 조건 연산자 (`? :`) {/*conditional-ternary-operator--*/}
 
@@ -268,7 +268,7 @@ return (
 );
 ```
 
-이것을 *`isPacked`이면 (`&&`) 체크 표시를 렌더링하고, 그렇지 않으면 아무 것도 렌더링하지 않습니다."*라고 읽을 수 있습니다.
+이것을 *`isPacked`이면 (`&&`) 체크 표시를 렌더링하고, 그렇지 않으면 아무것도 렌더링하지 않습니다."*라고 읽을 수 있습니다.
 
 자, 잘 작동합니다.
 
@@ -308,7 +308,8 @@ export default function PackingList() {
 
 </Sandpack>
 
-[JavaScript && 표현식](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND)은 왼쪽(조건)이 `true`이면 오른쪽(체크 표시)의 값을 반환합니다. 그러나 조건이 `false`이면 전체 표현식이 `false`가 됩니다. React는 `false`를 `null` 또는 `undefined`처럼 JSX 트리의 "구멍"으로 간주하고 그 자리에 아무것도 렌더링하지 않습니다.
+[JavaScript && 표현식](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND)은 왼쪽(조건)이 `true`이면 오른쪽(체크 표시)의 값을 반환합니다. 그러나 조건이 `false`이면 전체 표현 식이 `false`가 됩니다. React는 `false`를 `null` 또는 `undefined`처럼 JSX 트리의 "구멍"으로 간주하고 그 자리에 아무것도 렌더링하지 않습니다.
+
 
 <Gotcha>
 
@@ -442,7 +443,7 @@ JavaScript가 익숙하지 않다면, 처음에는 이런 다양한 코드 스�
 * 조건부로 `if` 문과 함께 JSX 식을 반환할 수 있습니다.
 * 조건부로 일부 JSX를 변수에 저장한 다음 중괄호를 사용하여 다른 JSX에 포함할 수 있습니다.
 * JSX에서 `{cond ? <A /> : <B />}`는 *"`cond`이면 `<A />`를 렌더링하고, 그렇지 않으면 `<B />`를 렌더링합니다."* 를 의미합니다.
-* JSX에서 `{cond && <A />}`는 *"`cond`이면, `<A />`를 렌더링하되, 그렇지 않으면 아무것도 렌더링 하지 않습니다."*를 의미합니다.
+* JSX에서 `{cond && <A />}`는 *"`cond`이면, `<A />`를 렌더링하되, 그렇지 않으면 아무것도 렌더링하지 않습니다."*를 의미합니다.
 * 위 예시는 흔한 방법이지만, `if`를 선호한다면 사용하지 않아도 됩니다.
 
 </Recap>
@@ -533,7 +534,7 @@ export default function PackingList() {
 
 ### 항목의 중요한 정도를 `&&`로 표시합니다. {/*show-the-item-importance-with-*/}
 
-이 예시에서 각 `Item`은 숫자 타입인 `importance`를 프로퍼티즈로 받습니다. `&&` 연산자를 사용하여 "_(Importance: X)_"를 이탤릭체로 렌더링하되 난이도가 0이 아닌 항목만 렌더링합니다. 항목 목록은 다음과 같이 표시합니다.
+이 예시에서 각 `Item`은 숫자 타입인 `importance`를 props로 받습니다. `&&` 연산자를 사용하여 "_(Importance: X)_"를 이탤릭체로 렌더링하되 난이도가 0이 아닌 항목만 렌더링합니다. 항목 목록은 다음과 같이 표시합니다.
 
 * Space suit _(Importance: 9)_
 * Helmet with a golden leaf
@@ -709,7 +710,8 @@ export default function DrinkList() {
 
 </Sandpack>
 
-여기서는 각 음료에 대한 정보가 여러 조건에 분산되지 않고 함께 그룹화됩니다. 그러면 다음에 더 많은 음료를 쉽게 추가할 수 있습니다.
+여기서는 각 음료에 대한 정보가 여러 조건에 분산되지 않고 함께 그룹화됩니다.  
+그러면 다음에 더 많은 음료를 쉽게 추가할 수 있습니다.
 
 또 다른 해결책은 정보를 객체로 이동하여 조건을 완전히 제거하는 것입니다.
 
