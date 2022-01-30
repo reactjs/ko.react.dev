@@ -92,7 +92,7 @@ function getGreeting(user) {
 어트리뷰트에 따옴표를 이용해 문자열 리터럴을 정의할 수 있습니다.
 
 ```js
-const element = <div tabIndex="0"></div>;
+const element = <a href="https://www.reactjs.org"> link </a>;
 ```
 
 중괄호를 사용하여 어트리뷰트에 JavaScript 표현식을 삽입할 수도 있습니다.

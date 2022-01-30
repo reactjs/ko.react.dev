@@ -26,7 +26,7 @@ export function Toc({
         maxWidth: 'inherit',
       }}>
       <h2 className="mb-3 lg:mb-3 uppercase tracking-wide font-bold text-sm text-secondary dark:text-secondary-dark px-4 w-full">
-        On this page
+        목차
       </h2>
       <div className="toc h-full overflow-y-auto pl-4">
         <ul className="space-y-2 pb-16">

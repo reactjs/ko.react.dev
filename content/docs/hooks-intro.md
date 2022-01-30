@@ -56,11 +56,11 @@ React Conf 2018에서 Sophie Alpert와 Dan Abramov가 Hook을 소개했습니다
 **단지 Hook에 대해 배우길 원한다면, [다음 페이지](/docs/hooks-overview.html)로 바로 이동해도 됩니다.** 또한 왜 우리가 Hook을 추가했는지, 그리고 어떻게 애플리케이션을 다시 작성할 필요 없이 어떻게 Hook을 이용하는지 알고 싶다면 이 페이지를 계속 읽을 필요가 있습니다.
 
 ## 동기 {#motivation}
-Hook은 우리가 5년간 React로 컴포넌트를 작성하고 유지하는 동안 부딫혔던 수 많은 문제들을 해결했습니다. React를 배우는 중이든, 매일 사용하든, 심지어 비슷한 컴포넌트 모델과 함께 다른 라이브러리를 선호하든지 간에, 사용자는 이러한 문제를 인식해 왔을 것 입니다.
+Hook은 우리가 5년간 React로 컴포넌트를 작성하고 유지하는 동안 부딪혔던 수 많은 문제들을 해결했습니다. React를 배우는 중이든, 매일 사용하든, 심지어 비슷한 컴포넌트 모델과 함께 다른 라이브러리를 선호하든지 간에, 사용자는 이러한 문제를 인식해 왔을 것 입니다.
 
 ### 컴포넌트 사이에서 상태 로직을 재사용하기 어렵습니다. {#ts-hard-to-reuse-stateful-logic-between-components}
 
-React는 컴포넌트간에 재사용 가능한 로직을 붙이는 방법을 제공하지 않습니다. (예를 들어, 스토어에 연결하는 것) 이전부터 React를 사용해왔다면, [render props](/docs/render-props.html)이나 [고차 컴포넌트](/docs/higher-order-components.html)와 같은 패턴을 통해 이러한 문제를 해결하는 벙법에 익숙할 것입니다. 그러나 이런 패턴의 사용은 컴포넌트의 재구성을 강요하며, 코드의 추적을 어렵게 만듭니다. React 개발자 도구에서 React 애플리케이션을 본다면, providers, consumers, 고차 컴포넌트, render props 그리고 다른 추상화에 대한 레이어로 둘러싸인 "래퍼 지옥(wrapper hell)"을 볼 가능성이 높습니다. [개발자 도구에서 걸러낼 수 있지만](https://github.com/facebook/react-devtools/pull/503), 이 문제의 요점은 심층적이었습니다. React는 상태 관련 로직을 공유하기 위해 좀 더 좋은 기초 요소가 필요했습니다.
+React는 컴포넌트간에 재사용 가능한 로직을 붙이는 방법을 제공하지 않습니다. (예를 들어, 스토어에 연결하는 것) 이전부터 React를 사용해왔다면, [render props](/docs/render-props.html)이나 [고차 컴포넌트](/docs/higher-order-components.html)와 같은 패턴을 통해 이러한 문제를 해결하는 방법에 익숙할 것입니다. 그러나 이런 패턴의 사용은 컴포넌트의 재구성을 강요하며, 코드의 추적을 어렵게 만듭니다. React 개발자 도구에서 React 애플리케이션을 본다면, providers, consumers, 고차 컴포넌트, render props 그리고 다른 추상화에 대한 레이어로 둘러싸인 "래퍼 지옥(wrapper hell)"을 볼 가능성이 높습니다. [개발자 도구에서 걸러낼 수 있지만](https://github.com/facebook/react-devtools/pull/503), 이 문제의 요점은 심층적이었습니다. React는 상태 관련 로직을 공유하기 위해 좀 더 좋은 기초 요소가 필요했습니다.
 
 Hook을 사용하면 컴포넌트로부터 상태 관련 로직을 추상화할 수 있습니다. 이를 이용해 독립적인 테스트와 재사용이 가능합니다. **Hook은 계층의 변화 없이 상태 관련 로직을 재사용할 수 있도록 도와줍니다.** 이것은 많은 컴포넌트 혹은 커뮤니티 사이에서 Hook을 공유하기 쉽게 만들어줍니다.
 

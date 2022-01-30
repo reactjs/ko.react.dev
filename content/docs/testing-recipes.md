@@ -417,7 +417,7 @@ it("changes value when clicked", () => {
 });
 ```
 
-Different DOM events and their properties are described in [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent). Note that you need to pass `{ bubbles: true }` in each event you create for it to reach the React listener because React automatically delegates events to the root.
+다른 DOM 이벤트와 프로퍼티는 [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)에 설명되어 있습니다. React는 자동으로 이벤트를 루트로 위임하기 때문에 이벤트마다 `{ bubbles: true }` 를 전달하여 이벤트가 React 이벤트 리스너에 도달할 수 있도록 해야 한다는 것에 주의해주세요.
 
 > 주의
 >
