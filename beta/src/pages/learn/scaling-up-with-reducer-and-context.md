@@ -904,7 +904,7 @@ ul, li { margin: 0; padding: 0; }
 
 ## 하나의 파일로 합치기 {/*moving-all-wiring-into-a-single-file*/}
 
-필수적인 과정은 아니지만 reducer와 context를 모두 하나의 파일로 옮겨서 컴포넌트들을 조금 더 정리할 수 있습니다. 현재, `TasksContext.js`는 두 개의 context만을 선언하고 있습니다.
+반드시 이런 방식으로 작성하지 않아도 되지만,  reducer와 context를 모두 하나의 파일에 작성하면 컴포넌트들을 조금 더 정리할 수 있습니다. 현재, `TasksContext.js`는 두 개의 context만을 선언하고 있습니다.
 
 ```js
 import { createContext } from 'react';
