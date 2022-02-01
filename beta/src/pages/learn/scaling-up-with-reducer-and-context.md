@@ -716,7 +716,7 @@ export default function AddTask({ onAddTask }) {
     // ...
 ```
 
-**`TaskBoard` 컴포넌트와 `TaskList` 컴포넌트는 하위 컴포넌트에 이벤트 핸들러를 전달하지 않습니다.** 각 컴포넌트에서 필요한 context를 읽을 수 있습니다.
+**`TaskBoard` 컴포넌트는 하위 컴포넌트에, `TaskList`는 `Task` 컴포넌트에 이벤트 핸들러를 전달하지 않습니다.** 각 컴포넌트에서 필요한 context를 읽을 수 있습니다.
 
 <Sandpack>
 
@@ -933,7 +933,7 @@ export function TasksProvider({ children }) {
 }
 ```
 
-**이렇게 하면 `TaskBoard`가 깔끔해질 수 있습니다.**
+**이렇게 하면 `TaskBoard` 컴포넌트에서 복잡하게 얽혀있던 부분을 깔끔하게 정리할 수 있습니다.**
 
 <Sandpack>
 
