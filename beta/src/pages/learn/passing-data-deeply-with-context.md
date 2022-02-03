@@ -23,7 +23,7 @@ title: Context를 사용해 데이터 깊게 전달하기
 
 <img alt="Lifting state up vs prop drilling" src="/images/docs/sketches/s_prop-drilling.png" />
 
-데이터를 사용할 트리안의 컴포넌트에 props를 전달하는 대신 "순간이동"시킬 방법이 있다면 좋지 않을까요? React의 context 기능으로 가능합니다!
+데이터를 사용할 트리안의 컴포넌트에 props를 전달하는 대신 "순간이동"시킬 방법이 있다면 좋지 않을까요? React의 context를 사용하면 됩니다!
 
 ## Context: Props 전달하기의 대안 {/*context-an-alternative-to-passing-props*/}
 
