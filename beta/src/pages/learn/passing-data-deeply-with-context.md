@@ -1,5 +1,5 @@
 ---
-title: Context를 사용해 데이터 깊게 전달하기
+title: Context를 사용해 데이터를 깊게 전달하기
 ---
 
 <Intro>
