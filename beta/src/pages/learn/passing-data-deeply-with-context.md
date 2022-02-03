@@ -666,7 +666,7 @@ export const LevelContext = createContext(0);
 
 </Sandpack>
 
-이제 `Heading`과 `Section` 모두 자신들이 얼마나 "깊이" 있는지 확인하기 위해 `LevelContext`를 읽어 들입니다. 그리고 `Section`은 그 안에 있는 어떤 것이든 "더 깊은" 레벨이라는 것을 명시하기 위해 자식들을 `LevelContext`로 감싸고 있습니다.
+이제 `Heading`과 `Section` 모두 자신들이 얼마나 "깊이" 있는지 확인하기 위해 `LevelContext`를 읽습니다. 그리고 `Section`은 그 안에 있는 어떤 것이든 "더 깊은" 레벨이라는 것을 명시하기 위해 자식들을 `LevelContext`로 감싸고 있습니다.
 
 > 이 예에서는 하위 컴포넌트가 context를 오버라이드 할 수 있는 방법을 시각적으로 보여주기 때문에 제목 레벨을 사용합니다. 하지만 context는 다른 많은 상황에서도 유용합니다. 현재 색상 테마, 현재 로그인된 사용자 등 전체 하위 트리에 필요한  정보를 전달하는 데 사용 가능합니다.
 
