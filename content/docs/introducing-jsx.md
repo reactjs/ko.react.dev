@@ -68,11 +68,7 @@ ReactDOM.render(
 );
 ```
 
-<<<<<<< HEAD
-[CodePen에서 실행하기](codepen://introducing-jsx)
-=======
-**[Try it on CodePen](https://codepen.io/gaearon/pen/PGEjdG?editors=1010)**
->>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
+**[CodePen에서 실행하기](https://codepen.io/gaearon/pen/PGEjdG?editors=1010)**
 
 가독성을 좋게 하기 위해 JSX를 여러 줄로 나눴습니다. 필수는 아니지만, 이 작업을 수행할 때 [자동 세미콜론 삽입](https://stackoverflow.com/q/2846283)을 피하고자 괄호로 묶는 것을 권장합니다.
 
