@@ -3,7 +3,8 @@
  */
 
 import * as React from 'react';
-import {MDXProvider} from '@mdx-js/react';
+// @ts-ignore
+import {MDXContext} from '@mdx-js/react';
 import {DocsPageFooter} from 'components/DocsFooter';
 import {MDXComponents} from 'components/MDX/MDXComponents';
 import {Seo} from 'components/Seo';
@@ -33,7 +34,7 @@ export function MarkdownPage<
   }> = React.Children.toArray(children)
     .filter((child: any) => {
       if (child.props?.mdxType) {
-        return ['h1', 'h2', 'h3', 'Challenges', 'Recipes', 'Recap'].includes(
+        return ['h1', 'h2', 'h3', 'Challenges', 'Recap'].includes(
           child.props.mdxType
         );
       }
@@ -47,6 +48,7 @@ export function MarkdownPage<
           text: '도전',
         };
       }
+<<<<<<< HEAD
       if (child.props.mdxType === 'Recipes') {
         return {
           url: '#recipes',
@@ -54,6 +56,8 @@ export function MarkdownPage<
           text: '레시피',
         };
       }
+=======
+>>>>>>> 20f0fe280f3c122df7541256b983c46e21e33b20
       if (child.props.mdxType === 'Recap') {
         return {
           url: '#recap',
@@ -135,9 +139,9 @@ export function MarkdownPage<
         )}
         <div className="px-5 sm:px-12">
           <div className="max-w-7xl mx-auto">
-            <MDXProvider components={MDXComponents}>
+            <MDXContext.Provider value={MDXComponents}>
               {finalChildren}
-            </MDXProvider>
+            </MDXContext.Provider>
           </div>
           <DocsPageFooter
             route={route}

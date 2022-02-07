@@ -19,7 +19,11 @@ state를 업데이트하는 로직이 여러 이벤트 핸들러에 분산된 �
 
 ## reducer를 사용하여 state 로직 통합하기 {/*consolidate-state-logic-with-a-reducer*/}
 
+<<<<<<< HEAD
 컴포넌트가 복잡해짐에 따라 컴포넌트의 state가 업데이트 되는 여러 방법을 한눈에 보기 더 어려워질 수 있습니다. 예를 들어, 아래 `TaskBoard` 컴포넌트에서 state에 `tasks` 배열을 담고 있고 task를 추가, 제거 및 편집하는 세가지의 서로 다른 이벤트 핸들러를 사용하는 것을 볼 수 있습니다.
+=======
+As your components grow in complexity, it can get harder to see all the different ways that a component's state gets updated at a glance. For example, the `TaskApp` component below holds an array of `tasks` in state and uses three different event handlers to add, remove, and edit tasks:
+>>>>>>> 20f0fe280f3c122df7541256b983c46e21e33b20
 
 <Sandpack>
 
@@ -28,7 +32,7 @@ import { useState } from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, setTasks] = useState(initialTasks);
 
   function handleAddTask(text) {
@@ -224,7 +228,11 @@ function handleDeleteTask(taskId) {
 *  사용자가 task를 토글하거나 "저장"을 누르면 호출되는 `handleChangeTask(task)`
 *  사용자가 "Delete" 를 누르면 호출되는 `handleDeleteTask(taskId)`
 
+<<<<<<< HEAD
 reducer로 state를 관리하는 것은 state를 직접 설정하는 것과 조금 다른 점이 있습니다. state를 설정해서 React에게 "해야할 일"에 대한 것을 알려주는 대신, 이벤트 핸들러에서 "action"을 전달(dispatch)해줌으로써 "사용자가 방금 무엇을 했는지"를 알려줍니다. (state를 업데이트 하는 로직은 reducer가 아닌 다른 곳에 있게 됩니다!) 이를 아래 예시에 대입해보면, 이벤트 핸들러를 통해 "`tasks`를 설정하는 것" 대신 "task가 추가/제거/삭제된" 상황을 담은 action을 전달(dispatch)하게 되는 것을 의미합니다. 이는 사용자의 의도를 더 잘 설명해줍니다.
+=======
+Managing state with reducers is slightly different from directly setting state. Instead of telling React "what to do" by setting state, you specify "what the user just did" by dispatching "actions" from your event handlers. (The state update logic will live elsewhere!) So instead of "setting `tasks`" via event handler, you're dispatching an "added/changed/deleted a task" action. This is more descriptive of the user's intent.
+>>>>>>> 20f0fe280f3c122df7541256b983c46e21e33b20
 
 ```js
 function handleAddTask(text) {
@@ -492,7 +500,7 @@ import { useReducer } from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useReducer(
     tasksReducer,
     initialTasks
@@ -682,7 +690,7 @@ import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 import tasksReducer from './tasksReducer.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useReducer(
     tasksReducer,
     initialTasks
@@ -925,7 +933,7 @@ function tasksReducer(draft, action) {
   }
 }
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useImmerReducer(
     tasksReducer,
     initialTasks
