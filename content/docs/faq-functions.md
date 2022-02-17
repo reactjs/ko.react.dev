@@ -116,7 +116,7 @@ method();
 
 ```jsx
 render() {
-  // 잘못된 방법: handleClidck은 레퍼런스로 전달되지 않고 호출되었습니다!
+  // 잘못된 방법: handleClick은 레퍼런스로 전달되지 않고 호출되었습니다!
   return <button onClick={this.handleClick()}>Click Me</button>
 }
 ```

@@ -38,7 +38,7 @@ React 엘리먼트를 루트 DOM 노드에 렌더링하려면 둘 다 [`ReactDOM
 
 `embed:rendering-elements/render-an-element.js`
 
-**[CodePen에서 실행하기](codepen://rendering-elements/render-an-element)**
+**[CodePen에서 실행하기](https://codepen.io/gaearon/pen/ZpvBNJ?editors=1010)**
 
 위 코드를 실행하면 화면에 "Hello, world"가 보일 겁니다.
 
@@ -52,7 +52,7 @@ React 엘리먼트는 [불변객체](https://ko.wikipedia.org/wiki/%EB%B6%88%EB%
 
 `embed:rendering-elements/update-rendered-element.js`
 
-**[CodePen에서 실행하기](codepen://rendering-elements/update-rendered-element)**
+**[CodePen에서 실행하기](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
 
 위 함수는 [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) 콜백을 이용해 초마다 [`ReactDOM.render()`](/docs/react-dom.html#render)를 호출합니다.
 
@@ -66,7 +66,7 @@ React 엘리먼트는 [불변객체](https://ko.wikipedia.org/wiki/%EB%B6%88%EB%
 
 React DOM은 해당 엘리먼트와 그 자식 엘리먼트를 이전의 엘리먼트와 비교하고 DOM을 원하는 상태로 만드는데 필요한 경우에만 DOM을 업데이트합니다.
 
-개발자 도구를 이용해 [마지막 예시](codepen://rendering-elements/update-rendered-element)를 살펴보면 이를 확인할 수 있습니다.
+개발자 도구를 이용해 [마지막 예시](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)를 살펴보면 이를 확인할 수 있습니다.
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 

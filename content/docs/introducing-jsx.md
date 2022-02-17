@@ -68,7 +68,7 @@ ReactDOM.render(
 );
 ```
 
-[CodePen에서 실행하기](codepen://introducing-jsx)
+**[CodePen에서 실행하기](https://codepen.io/gaearon/pen/PGEjdG?editors=1010)**
 
 가독성을 좋게 하기 위해 JSX를 여러 줄로 나눴습니다. 필수는 아니지만, 이 작업을 수행할 때 [자동 세미콜론 삽입](https://stackoverflow.com/q/2846283)을 피하고자 괄호로 묶는 것을 권장합니다.
 
@@ -92,7 +92,7 @@ function getGreeting(user) {
 어트리뷰트에 따옴표를 이용해 문자열 리터럴을 정의할 수 있습니다.
 
 ```js
-const element = <div tabIndex="0"></div>;
+const element = <a href="https://www.reactjs.org"> link </a>;
 ```
 
 중괄호를 사용하여 어트리뷰트에 JavaScript 표현식을 삽입할 수도 있습니다.

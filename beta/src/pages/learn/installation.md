@@ -8,7 +8,7 @@ React는 처음부터 점진적으로 적용할 수 있도록 설계되었고, R
 
 </Intro>
 
-<YouWillLearn>
+<YouWillLearn isChapter={true}>
 
 * [HTML 페이지에 React 추가하기](/learn/add-react-to-a-website)
 * [독립형 React 프로젝트 시작하기](/learn/start-a-new-react-project)

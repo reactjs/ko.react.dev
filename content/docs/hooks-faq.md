@@ -635,19 +635,19 @@ function ProductPage({ productId }) {
   }, [productId]);
 ```
 
-Effect 내부로 함수 컴포넌트를 옮겼으므로 종속성 목록에 있을 필요가 없습니다.
+Effect 내부로 함수를 옮겼으므로 의존성 배열에 있을 필요가 없습니다.
 
 >팁
 >
 >이 [짧은 데모](https://codesandbox.io/s/jvvkoo8pq3)와 [이 기사](https://www.robinwieruch.de/react-hooks-fetch-data/)를 확인해 Hook을 사용한 데이터 가져오기에 대해 자세히 알아보세요.
 
-**어떤 이유로 effect 내에서 함수 컴포넌트를 이동할 수 _없는_ 경우 몇 가지 옵션이 더 있습니다.**
+**만일 어떤 이유로 함수를 effect 내부로 이동할 수 _없는_ 경우 몇 가지 옵션이 더 있습니다.**
 
-* **해당 함수 컴포넌트를 컴포넌트 외부로 이동해 볼 수 있습니다**. 이 경우 함수 컴포넌트는 props나 state를 참조하지 않도록 보장되며 종속성 목록에 있을 필요도 없습니다.
+* **해당 함수를 컴포넌트 외부로 이동해 볼 수 있습니다**. 이 경우 함수는 props나 state를 참조하지 않도록 보장되며 종속성 목록에 있을 필요가 없습니다.
 
-* 호출하는 함수 컴포넌트가 순수한 계산이고 렌더링하는 동안 호출해도 안전하다면, **대신에 effect 외부에서 호출하고** 반환된 값에 따라 effect가 달라지도록 할 수 있습니다.
+* 호출하는 함수가 순수한 계산이고 렌더링하는 동안 호출해도 안전하다면, **대신에 effect 외부에서 호출하고** 반환된 값에 따라 effect가 달라지도록 할 수 있습니다.
 
-* 마지막 수단으로 **종속성에 영향을 주는 함수 컴포넌트를 추가하되, _정의를_** [`useCallback`](/docs/hooks-reference.html#usecallback) Hook에 **_래핑할 수 있습니다_**. 이렇게 하면 자체 종속성도 변경되지 않는 한 모든 렌더링에서 변경되지 않습니다.
+* 마지막 수단으로 **Effect 의존성 배열에 함수를 추가하되, _정의를_** [`useCallback`](/docs/hooks-reference.html#usecallback) Hook에 **_감싸주세요_**. 이렇게 하면 자체 종속성도 변경되지 않는 한 모든 렌더링에서 변경되지 않습니다.
 
 ```js{2-5}
 function ProductPage({ productId }) {
