@@ -4,7 +4,7 @@ title: Context를 사용해 데이터를 깊게 전달하기
 
 <Intro>
 
-흔히 부모 컴포넌트에서 자식 컴포넌트로 props를 통해 정보를 전달합니다. 하지만 props를 넘기는 것은 중간에 많은 컴포넌트를 거쳐야 하거나 애플리케이션의 많은 컴포넌트에서 동일한 정보가 필요한 경우에 장황하고 불편할 수 있습니다. Context를 사용하면  명시적으로 props를 넘겨주지 않아도 부모 컴포넌트가 트리에 있는 어떤 자식 컴포넌트에서나 (얼마나 깊게 있든지 간에) 정보를 사용할 수 있습니다.
+보통의 경우 부모 컴포넌트에서 자식 컴포넌트로 props를 통해 정보를 전달합니다. 그러나 중간에 많은 컴포넌트를 거쳐야 하거나, 애플리케이션의 많은 컴포넌트에서 동일한 정보가 필요한 경우에는 props를 전달하는 것이 번거롭고 불편할 수 있습니다. Context를 사용하면  명시적으로 props를 전달해주지 않아도 부모 컴포넌트가 트리에 있는 어떤 자식 컴포넌트에서나 (얼마나 깊게 있든지 간에) 정보를 사용할 수 있습니다.
 
 </Intro>
 
@@ -19,7 +19,7 @@ title: Context를 사용해 데이터를 깊게 전달하기
 
 ## Props 전달하기의 문제점 {/*the-problem-with-passing-props*/}
 
-[Props 전달하기](/learn/passing-props-to-a-component)는 명시적으로 데이터를 UI 트리를 통해 그 데이터를 사용하는 컴포넌트에 전달하는 훌륭한 방법입니다. 하지만 이 방식은 어떤 prop을 트리를 통해 깊이 전해줘야 하거나, 많은 컴포넌트에서 같은 prop이 필요한 경우에 장황하고 불편할 수 있습니다. 데이터가 필요한 여러 컴포넌트의 가장 가까운 공통 조상은 트리 상 높이 위치할 수 있고 그렇게 높게까지 [state를 올리는 것](/learn/sharing-state-between-components)은 "Prop 내리꽂기"라는 상황을 초래할 수 있습니다.
+[Props 전달하기](/learn/passing-props-to-a-component)는 UI 트리를 통해 명시적으로 데이터를 사용하는 컴포넌트에 전달하는 훌륭한 방법입니다. 하지만 이 방식은 어떤 prop을 트리를 통해 깊이 전해줘야 하거나, 많은 컴포넌트에서 같은 prop이 필요한 경우에 장황하고 불편할 수 있습니다. 데이터가 필요한 여러 컴포넌트의 가장 가까운 공통 조상은 트리 상 높이 위치할 수 있고 그렇게 높게까지 [state를 올리는 것](/learn/sharing-state-between-components)은 "Prop 내리꽂기"라는 상황을 초래할 수 있습니다.
 
 <img alt="Lifting state up vs prop drilling" src="/images/docs/sketches/s_prop-drilling.png" />
 
@@ -27,7 +27,7 @@ title: Context를 사용해 데이터를 깊게 전달하기
 
 ## Context: Props 전달하기의 대안 {/*context-an-alternative-to-passing-props*/}
 
-Context는 부모 컴포넌트가 트리 상 아래에 있는 모든 곳에 데이터를 전달할 수 있도록 해줍니다. Context에는 많은 용도가 있습니다. 하나의 예시로 다음의 크기 조정을 위해 `level`을 받는  `Heading` 컴포넌트를 보세요.
+Context는 부모 컴포넌트가 그 아래의 트리 전체에 데이터를 전달할 수 있도록 해줍니다. Context에는 많은 용도가 있습니다. 하나의 예시로 다음의 크기 조정을 위해 `level`을 받는  `Heading` 컴포넌트를 보세요.
 
 <Sandpack>
 
@@ -309,7 +309,7 @@ export default function Heading({ children }) {
 
 `useContext`는 Hook입니다. `useState`, `useReducer` 와 같이 Hook은 React 컴포넌트의 최상위에서만 호출할 수 있습니다. **`useContext`는 React에게 `Heading` 컴포넌트가 `LevelContext`를 읽으려 한다고 알려줍니다.**
 
-이제 `Heading` 컴포넌트는 `level` prop 을 갖지 않습니다. 이제는 JSX에서 다음과 같이 `Heading`에 레벨 prop을 넘겨줄 필요가 없습니다.
+이제 `Heading` 컴포넌트는 `level` prop을 갖지 않습니다. 이제는 JSX에서 다음과 같이 `Heading`에 레벨 prop을 전달할 필요가 없습니다.
 
 ```js
 <Section>
@@ -574,7 +574,7 @@ export default function Section({ children }) {
 }
 ```
 
-이렇게 바꾸면 `<Section>`과 `<Heading>` *둘 모두에* `level`을 넘길 필요가 없습니다.
+이렇게 바꾸면 `<Section>`과 `<Heading>` *둘 모두에* `level`을 전달할 필요가 없습니다.
 
 <Sandpack>
 
@@ -814,7 +814,7 @@ Context는 사용하기에 꽤 유혹적입니다. 그러나 이는 또한 남�
 다음은 context를 사용하기 전 고려해볼 몇 가지 대안들입니다.
 
 1. **[Props 전달하기](/learn/passing-props-to-a-component)로 시작하기.** 사소한 컴포넌트들이 아니라면 여러 개의 props가 여러 컴포넌트를 거쳐 가는 가는 것은 그리 이상한 일이 아닙니다. 힘든 일처럼 느껴질 수 있지만 어떤 컴포넌트가 어떤 데이터를 사용하는지 매우 명확히 해줍니다. 데이터의 흐름이 props를 통해 분명해져 코드를 유지보수 하기에도 좋습니다.
-2. **컴포넌트를 추출하고 [JSX를 `children`으로 넘겨주기.](/learn/passing-props-to-a-component#passing-jsx-as-children)** 데이터를 사용하지 않는 많은 중간 컴포넌트 층을 통해 어떤 데이터를 전달하는 (더 아래로 보내기만 하는) 경우에는 컴포넌트를 추출하는 것을 잊은 경우가 많습니다. 예를 들어 `posts`처럼 직접 사용하지 않는 props를 `<Layout posts={posts} />`와 같이 전달할 수 있습니다. 대신 `Layout`은 `children`을 prop으로 받고 `<Layout><Posts posts={posts} /><Layout>`을 렌더링하세요. 이렇게 하면 데이터를 지정하는 컴포넌트와 데이터가 필요한 컴포넌트 사이의 층수가 줄어듭니다.
+2. **컴포넌트를 추출하고 [JSX를 `children`으로 전달하기.](/learn/passing-props-to-a-component#passing-jsx-as-children)** 데이터를 사용하지 않는 많은 중간 컴포넌트 층을 통해 어떤 데이터를 전달하는 (더 아래로 보내기만 하는) 경우에는 컴포넌트를 추출하는 것을 잊은 경우가 많습니다. 예를 들어 `posts`처럼 직접 사용하지 않는 props를 `<Layout posts={posts} />`와 같이 전달할 수 있습니다. 대신 `Layout`은 `children`을 prop으로 받고 `<Layout><Posts posts={posts} /><Layout>`을 렌더링하세요. 이렇게 하면 데이터를 지정하는 컴포넌트와 데이터가 필요한 컴포넌트 사이의 층수가 줄어듭니다.
 
 만약 이 접근 방법들이 잘 맞지 않는다면 context를 고려해보세요.
 
@@ -834,13 +834,13 @@ Context는 정적인 값으로 제한되지 않습니다. 다음 렌더링 시 �
 <Recap>
 
 - Context는 컴포넌트가 트리 상 아래에 위치한 모든 곳에 데이터를 제공하도록 합니다.
-- Context를 넘기려면 다음과 같습니다
+- Context를 전달하려면 다음과 같습니다
   1. `export const MyContext = createContext(defaultValue)`로 context를 생성하고 내보내세요.
   2. `useContext(MyContext)` Hook에 전달해 얼마나 깊이 있든 자식 컴포넌트가 읽을 수 있도록 합니다.
   3. 자식을 `<MyContext.Provider value={...}>`로 감싸 부모로부터 context를 받도록 합니다.
 - Context는 중간의 어떤 컴포넌트도 지나갈 수 있습니다.
 - Context를 활용해 "주변에 적응하는" 컴포넌트를 작성할 수 있습니다.
-- Context를 사용하기 전에 props를 전달하거나 JSX를 `children`으로 넘기는 것을 먼저 시도해보세요.
+- Context를 사용하기 전에 props를 전달하거나 JSX를 `children`으로 전달하는 것을 먼저 시도해보세요.
 
 </Recap>
 
@@ -850,7 +850,7 @@ Context는 정적인 값으로 제한되지 않습니다. 다음 렌더링 시 �
 
 다음의 예시에서 체크 박스를 토글하는 것은 각각의 `<PlaceImage>`에 전달된 `imageSize` prop을 변경합니다. 체크 박스의 state는 `App` 컴포넌트의 최상단에서 가지고 있지만 `<PlaceImage>`에서 그 값을 알아야 합니다.
 
-현재는 `App`이 `imageSize`를 `List`에 넘겨주면 또 `Place`에 넘겨주고 다시 `PlaceImage`에 넘겨주고 있습니다.`imageSize` prop을 제거하고 `App` 컴포넌트가 직접 `PlaceImage`에 값을 전달하도록 해봅시다.
+현재는 `App`이 `imageSize`를 `List`에 전달하면 또 `Place`에 전달하고 다시 `PlaceImage`에 전달하고 있습니다.`imageSize` prop을 제거하고 `App` 컴포넌트가 직접 `PlaceImage`에 값을 전달하도록 해봅시다.
 
 Context를 `Context.js`에 선언합니다.
 
@@ -1126,7 +1126,7 @@ li {
 
 </Sandpack>
 
-어떻게 중간의 컴포넌트가 `imageSize`를 더는 넘길 필요가 없어졌는지 주목하세요.
+어떻게 중간의 컴포넌트가 `imageSize`를 더는 전달할 필요가 없어졌는지 주목하세요.
 
 </Solution>
 
