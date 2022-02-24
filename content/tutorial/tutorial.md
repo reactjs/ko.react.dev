@@ -1151,7 +1151,7 @@ class Game extends React.Component {
   }
 ```
 
-`jumpTo` 함수를 살펴보면 state의 `history` 프로퍼티를 업데이트하지 않았습니다. 그 이유는 state의 업데이트가 병합되거나 간단히 말해 React가 `setState` 함수에서 언급된 프로퍼티만 업데이트하고 나머지 state를 그대로 두기 때문입니다. 자세한 내용은 **[문서를 참조하세요](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
+`jumpTo` 함수에서 state의 `history` 프로퍼티를 업데이트하지 않았음에 주목하세요. state의 업데이트가 병합되거나 간단히 말해 React는 나머지 state를 그대로 두고 setState 함수에 언급된 프로퍼티만 업데이트하기 때문입니다. 자세한 내용은 **[문서를 참조하세요](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
 
 이제 사각형을 클릭할 때 마다 실행되는 Game의 `handleClick` 함수에 몇 가지 변화를 줄 것입니다.
 
