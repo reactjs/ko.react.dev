@@ -275,7 +275,11 @@ props와 state는 다르지만, 함께 동작합니다. state는 보통 부모 �
 
 이제 state값은 `FilterableProductTable`안에 있습니다.
 
+<<<<<<< HEAD
 [`useState()` Hook](/reference/usestate)을 이용해서 state를 컴포넌트에 추가하세요. Hooks는 컴포넌트의 [렌더 사이클](/learn/render-and-commit)로 당신을 채갈(hook into) 겁니다. `FilterableProductTable`의 윗부분에 두 개의 state 변수를 추가해서 초깃값을 명확하게 보여주세요.
+=======
+Add state to the component with the [`useState()` Hook](/apis/usestate). Hooks let you "hook into" a component's [render cycle](/learn/render-and-commit). Add two state variables at the top of `FilterableProductTable` and specify the initial state of your application:
+>>>>>>> 6bd09fe682e18ccd7747fcd7798fa8fb4d3edc42
 
 ```js
 function FilterableProductTable({ products }) {
