@@ -1,24 +1,24 @@
 ---
-title: Your First Component
+title: 첫 컴포넌트
 ---
 
 <Intro>
 
-Components are one of the core concepts of React. They are the foundation upon which you build user interfaces (UI), which makes them the perfect place to start your React journey!
+컴포넌트는 React의 핵심 개념 중 하나입니다. 컴포넌트는 사용자 인터페이스(UI)를 구축하는 토대이기 때문에 컴포넌트에서부터 React로의 여정을 시작하는 것은 완벽한 선택입니다!
 
 </Intro>
 
 <YouWillLearn>
 
-* What a component is
-* What role components play in a React application
-* How to write your first React component
+* 컴포넌트가 무엇인지
+* React 애플리케이션에서 컴포넌트의 역할
+* 첫 React 컴포넌트를 작성하는 방법
 
 </YouWillLearn>
 
-## Components: UI building blocks {/*components-ui-building-blocks*/}
+## 컴포넌트: UI를 구성하는 요소  {/*components-ui-building-blocks*/}
 
-On the Web, HTML lets us create rich structured documents with its built-in set of tags like `<h1>` and `<li>`:
+웹에서 HTML은 `<h1>`나 `<li>`와 같은 내장된 태그들을 이용하여 아래와 같이 잘 구조화된 문서를 만들 수 있게 해줍니다. 
 
 ```html
 <article>
@@ -31,11 +31,11 @@ On the Web, HTML lets us create rich structured documents with its built-in set 
 </article>
 ```
 
-This markup represents this article `<article>`, its heading `<h1>`, and an (abbreviated) table of contents as an ordered list `<ol>`. Markup like this, combined with CSS for style, and JavaScript for interactivity, lies behind every sidebar, avatar, modal, dropdown—every piece of UI you see on the Web.
+위의 HTML 문서에서 `<article>` 태그는 이 포스트를, `<h1>` 태그는 제목을, `<ol>` 태그는 (간략한) 목차로서 순서가 있는 리스트를 나타냅니다. 사이드바, 아바타, 모달, 드롭다운 등 웹 상에서 볼 수 있는 모든 UI 뒤에는 위와 같은 마크업이 스타일링을 위한 CSS, 상호작용을 위한 JavaScript와 함께 존재합니다.
 
-React lets you combine your markup, CSS, and JavaScript into custom "components," **reusable UI elements for your app.** The table of contents code you saw above could be turned into a `<TableOfContents />` component you could render on every page. Under the hood, it still uses the same HTML tags like `<article>`, `<h1>`, etc.
+React는 마크업, CSS, JavaScript를 합쳐 **재사용 가능한 UI 요소**인 컴포넌트로 만들어줍니다. 위 코드에서의 목차는 어떤 페이지에서도 렌더링이 가능한 `<TableOfContents />` 컴포넌트로 작성될 수 있습니다. 속을 들여다보면 이 컴포넌트는 `<article>`, `<h1>` 등의 HTML 태그를 그대로 사용합니다.
 
-Just like with HTML tags, you can compose, order and nest components to design whole pages. For example, the documentation page you're reading is made out of React components:
+HTML 태그와 마찬가지로 전체 페이지를 디자인하기 위하여 여러 컴포넌트를 구성하고 순서를 지정하거나 중첩하는 것이 가능합니다. React 컴포넌트로 작성된 아래 문서 페이지를 참고하세요.
 
 ```js
 <PageLayout>
@@ -51,11 +51,11 @@ Just like with HTML tags, you can compose, order and nest components to design w
 </PageLayout>
 ```
 
-As your project grows, you will notice that many of your designs can be composed by reusing components you already wrote, speeding up your development. Our table of contents above could be added to any screen with `<TableOfContents />`! You can even jumpstart your project with the thousands of components shared by the React open source community like [Chakra UI](https://chakra-ui.com/) and [Material UI](https://material-ui.com/).
+프로젝트가 커질수록, 이미 작성된 컴포넌트를 재사용하면 빠른 속도로 원하는 디자인을 구성할 수 있다는 것을 발견할 것입니다. 위에서 작성한 목차 코드는 `<TableOfContents />`의 형태로 어느 화면에든 추가될 수 있습니다! 심지어는 [Chakra UI](https://chakra-ui.com/) 또는 [Material UI](https://material-ui.com/)와 같은 React 오픈 소스 커뮤니티에 공유된 수많은 컴포넌트를 사용하여 프로젝트에 바로 뛰어들 수도 있습니다.
 
-## Defining a component {/*defining-a-component*/}
+## 컴포넌트 정의하기 {/*defining-a-component*/}
 
-Traditionally when creating web pages, web developers marked up their content and then added interaction by sprinkling on some JavaScript. This worked great when interaction was a nice-to-have on the web. Now it is expected for many sites and all apps. React puts interactivity first while still using the same technology: **a React component is a JavaScript function that you can _sprinkle with markup_**. Here's what that looks like (you can edit the example below):
+전통적으로 웹 페이지를 만들 때 웹 개발자들은 콘텐츠를 먼저 마크업으로 작성한 다음 Javascript 코드를 얹어 상호작용을 추가하였습니다. 상호작용이 웹에서 꼭 필요하진 않지만 있으면 좋은 것이던 시절에는 이러한 방식이 잘 작동했습니다. 그러나 이제는 많은 사이트와 모든 애플리케이션에 상호작용이 필요합니다. React는 이전과 동일한 기술을 사용하면서도 상호작용을 우선시합니다. **즉, React 컴포넌트는 _마크업을 뿌릴 수 있는_ Javascript 함수입니다.** 아래 예시를 살펴보세요. (마음껏 편집해도 좋습니다)
 
 <Sandpack>
 
@@ -76,33 +76,33 @@ img { height: 200px; }
 
 </Sandpack>
 
-And here's how to build a component:
+컴포넌트를 작성하는 방법은 다음과 같습니다.
 
-### Step 1: Export the component {/*step-1-export-the-component*/}
+### 1단계: 컴포넌트 내보내기 {/*step-1-export-the-component*/}
 
-The `export default` prefix is a [standard JavaScript syntax](https://developer.mozilla.org/docs/web/javascript/reference/statements/export) (not specific to React). It lets you mark the main function in a file so that you can later import it from other files. (More on importing in [Importing and Exporting Components](/learn/importing-and-exporting-components)!)
+`export default`문은 React에 한정되지 않는 [표준 JavaScript 문법](https://developer.mozilla.org/docs/web/javascript/reference/statements/export)입니다. 이를 사용하면 현재 파일에서 내보낸 메인 함수를 나중에 다른 파일에서 불러와 사용할 수 있습니다. (자세한 내용은 [컴포넌트 import 및 export 하기](/learn/importing-and-exporting-components)를 참고하세요!)
 
-### Step 2: Define the function {/*step-2-define-the-function*/}
+### 2단계: 함수 정의하기 {/*step-2-define-the-function*/}
 
-With `function Profile() { }` you define a JavaScript function with the name `Profile`.
+`function Profile() { }`문은 `Profile`이라는 이름의 JavaScript 함수를 정의합니다.
 
 <Gotcha>
 
-React components are regular JavaScript functions, but **their names must start with a capital letter** or they won't work!
+React 컴포넌트는 일반적인 JavaScript 함수이지만, 제대로 작동하기 위해서는 **함수 이름이 대문자로 시작해야만 합니다**!
 
 </Gotcha>
 
-### Step 3: Add markup {/*step-3-add-markup*/}
+### 3단계: 마크업 추가하기 {/*step-3-add-markup*/}
 
-The component returns an `<img />` tag with `src` and `alt` attributes. `<img />` is written like HTML, but it is actually JavaScript under the hood! This syntax is called [JSX](/learn/writing-markup-with-jsx), and it lets you embed markup inside JavaScript.
+위에서 작성한 컴포넌트는 `src` 와 `alt` 속성을 갖는 `<img />` 태그를 반환합니다. `<img />`는 HTML과 같은 방식으로 작성되었지만 속을 들여다보면 사실은 JavaScript 코드입니다! 이처럼 마크업을 JavaScript 내부로 포함하는 문법을 [JSX](/learn/writing-markup-with-jsx) 라고 합니다.
 
-Return statements can be written all on one line, as in this component:
+아래 컴포넌트와 같이 return 문을 한 줄로 작성할 수도 있습니다.
 
 ```js
 return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
 ```
 
-But if your markup isn't all on the same line as the return statement, you must wrap it in a pair of parentheses like this:
+그러나 반환하려는 마크업이 return 문과 모두 같은 줄에 있지 않다면 다음과 같이 괄호로 묶어야 합니다.
 
 ```js
 return (
@@ -114,13 +114,13 @@ return (
 
 <Gotcha>
 
-Without parentheses, any code on the lines after `return` [will be ignored](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)!
+괄호로 묶어 주지 않으면 `return` 다음 줄의 코드는 [모두 무시될 것입니다](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)!
 
 </Gotcha>
 
-## Using a component {/*using-a-component*/}
+## 컴포넌트 사용하기 {/*using-a-component*/}
 
-Now that you've defined your `Profile` component, you can nest it inside other components. For example, you can export a `Gallery` component that uses multiple `Profile` components:
+이제 `Profile` 컴포넌트를 정의하였으니, 다른 컴포넌트의 내부에서 이 컴포넌트를 중첩하여 사용할 수 있습니다. 예를 들어 다음과 같이 여러 개의 `Profile` 컴포넌트를 사용하는 `Gallery` 컴포넌트를 작성하여 내보낼 수 있습니다.
 
 <Sandpack>
 
@@ -152,14 +152,14 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-### What the browser sees {/*what-the-browser-sees*/}
+### 브라우저에 표시되는 내용 {/*what-the-browser-sees*/}
 
-Notice the difference in casing:
+다음과 같은 대소문자 차이에 주목하세요.
 
-* `<section>` is lowercase, so React knows we refer to an HTML tag.
-* `<Profile />` starts with a capital `P`, so React knows that we want to use our component called `Profile`.
+* `<section>` 은 소문자로 작성되었기 때문에 HTML 태그를 의미한다는 것을 React가 알 수 있습니다.
+* `<Profile />` 은 대문자 `P`로 시작하기 때문에 `Profile`이라는 컴포넌트를 의미한다는 것을 React가 알 수 있습니다.
 
-And `Profile` contains even more HTML: `<img />`. In the end, this is what the browser sees:
+또한 `Profile` 컴포넌트 내부에 `<img />` 태그와 같은 HTML이 더 존재합니다. 결과적으로 브라우저에는 다음과 같은 내용이 표시됩니다.
 
 ```html
 <section>
@@ -170,34 +170,34 @@ And `Profile` contains even more HTML: `<img />`. In the end, this is what the b
 </section>
 ```
 
-### Nesting and organizing components {/*nesting-and-organizing-components*/}
+### 컴포넌트 중첩 및 구성 {/*nesting-and-organizing-components*/}
 
-Components are regular JavaScript functions, so you can keep multiple components in the same file. This is convenient when components are relatively small or tightly related to each other. If this file gets crowded, you can always move `Profile` to a separate file. You will learn how to do this shortly on the [page about imports](/learn/importing-and-exporting-components).
+컴포넌트는 일반적인 JavaScript 함수이므로, 여러 컴포넌트를 하나의 동일한 파일에 작성할 수 있습니다. 이러한 방식은 컴포넌트들이 상대적으로 작거나 서로 밀접하게 연관되어 있을 때 편리합니다. 이 파일이 복잡해지면 언제든지 `Profile` 컴포넌트를 별도의 파일로 옮겨 작성할 수 있습니다. 이 방법은 곧 [import에 대한 페이지](/learn/importing-and-exporting-components)에서 배울 것입니다.
 
-Because the `Profile` components are rendered inside `Gallery`—even several times!—we can say that `Gallery` is a **parent component,** rendering each `Profile` as a "child". This is part of the magic of React: you can define a component once, and then use it in as many places and as many times as you like.
+`Profile` 컴포넌트가 `Gallery` 컴포넌트의 내부에 (심지어 여러 번) 렌더링 되기 때문에, `Gallery` 컴포넌트는 **부모 컴포넌트**이며 `Profile` 컴포넌트는 "자녀 컴포넌트"라고 할 수 있습니다. 이것은 React 마법의 일부입니다. 컴포넌트를 한 번 정의하고 나면, 원하는 곳에서 몇 번이고 다시 사용할 수 있습니다.
 
-<DeepDive title="Components All the Way Down">
+<DeepDive title="컴포넌트로 처음부터 끝까지">
 
-Your React application begins at a "root" component. Usually, it is created automatically when you start a new project. For example, if you use [CodeSandbox](https://codesandbox.io/) or [Create React App](https://create-react-app.dev/), the root component is defined in `src/App.js`. If you use the framework [Next.js](https://nextjs.org/), the root component is defined in `pages/index.js`. In these examples, you've been exporting root components.
+React 애플리케이션은 루트 컴포넌트에서 시작됩니다. 일반적으로 루트 컴포넌트는 새 프로젝트를 시작할 때 자동으로 생성됩니다. 예를 들어, [CodeSandbox](https://codesandbox.io/) 또는 [Create React App](https://create-react-app.dev/)을 사용하는 경우 `src/App.js`에 루트 컴포넌트가 정의됩니다. [Next.js](https://nextjs.org/) 프레임워크를 사용하는 경우, 루트 컴포넌트가 `pages/index.js`에 정의됩니다. 정의된 루트 컴포넌트는 자동으로 내보내집니다.
 
-Most React apps use components all the way down. This means that you won't only use components for reusable pieces like buttons, but also for larger pieces like sidebars, lists, and ultimately, complete pages! Components are a handy way to organize UI code and markup, even if some of them are only used once.
+대부분의 React 애플리케이션은 모든 것에 컴포넌트를 사용합니다. 즉, 버튼과 같이 재사용 가능한 작은 컴포넌트뿐만 아니라 사이드바, 목록, 그리고 궁극적으로는 전체 페이지에 이르기까지 더 큰 컴포넌트들을 사용할 수 있습니다. 컴포넌트는 꼭 재사용되지 않더라도 UI와 마크업을 구성하는 편리한 방법입니다.
 
-Frameworks like Next.js take this a step further. Instead of using an empty HTML file and letting React "take over" managing the page with JavaScript, they *also* generate the HTML automatically from your React components. This allows your app to show some content before the JavaScript code loads.
+Next.js와 같은 프레임워크는 이러한 과정을 한 단계 더 발전시킵니다. 빈 HTML을 사용하여 React가 JavaScript로 페이지를 관리하는 역할을 떠맡는 대신, 프레임워크는 React 컴포넌트로부터 자동으로 HTML*까지* 생성합니다. 이렇게 하면 애플리케이션은 JavaScript 코드가 로딩되기 전에 일부 콘텐츠를 먼저 표시할 수 있습니다.
 
-Still, many websites only use React to [add "sprinkles of interactivity"](/learn/add-react-to-a-website). They have many root components instead of a single one for the entire page. You can use as much—or as little—React as you need.
+여전히 많은 웹사이트는 [약간의 상호작용을 추가](/learn/add-react-to-a-website)하기 위한 목적으로만 React를 사용하고 있습니다. 이러한 사이트들은 전체 페이지에 대해 한 개가 아닌 여러 개의 루트 컴포넌트를 갖습니다. 사용자들은 React를 많거나 적게 딱 필요한 만큼만 사용할 수 있습니다.
 
 </DeepDive>
 
 <Recap>
 
-You've just gotten your first taste of React! Let's recap some key points.
+지금까지 React를 처음으로 맛보았습니다! 몇 가지 핵심 사항을 요약해봅시다.
 
-* React lets you create components, **reusable UI elements for your app.**
-* In a React app, every piece of UI is a component.
-* React components are regular JavaScript functions except:
+* React를 사용하여 **애플리케이션에 재사용 가능한 UI 엘리먼트**인 컴포넌트를 생성할 수 있습니다.
+* React 애플리케이션에서 모든 UI 조각은 컴포넌트입니다.
+* React 컴포넌트는 다음과 같은 특징을 제외하면 일반적인 JavaScript 함수와 같습니다.
 
-  1. Their names always begin with a capital letter.
-  2. They return JSX markup.
+  1. 컴포넌트의 이름은 대문자로 시작해야 합니다.
+  2. 컴포넌트는 JSX 마크업을 반환합니다.
 
 </Recap>
 
@@ -205,9 +205,9 @@ You've just gotten your first taste of React! Let's recap some key points.
 
 <Challenges>
 
-### Export the component {/*export-the-component*/}
+### 컴포넌트 내보내기 {/*export-the-component*/}
 
-This sandbox doesn't work because the root component is not exported:
+아래 예제는 루트 컴포넌트를 내보내지 않았기 때문에 제대로 작동하지 않습니다.
 
 <Sandpack>
 
@@ -228,11 +228,11 @@ img { height: 181px; }
 
 </Sandpack>
 
-Try to fix it yourself before looking at the solution!
+아래 해결책을 보기 전에 위 예제를 스스로 고쳐보도록 시도해보세요!
 
 <Solution>
 
-Add `export default` before the function definition like so:
+다음과 같이 함수 정의 앞에 `export default`문을 추가합니다.
 
 <Sandpack>
 
@@ -253,17 +253,17 @@ img { height: 181px; }
 
 </Sandpack>
 
-You might be wondering why writing `export` alone is not enough to fix this example. You can learn the difference between `export` and `export default` in [Importing and Exporting Components](/learn/importing-and-exporting-components).
+`export` 문만 추가해서는 문제가 해결되지 않는 이유가 궁금할 수 있습니다. `export` 문과 `export default` 문의 차이점에 대해서는 [컴포넌트 import 및 export 하기](/learn/importing-and-exporting-components)에서 확인할 수  있습니다.
 
 </Solution>
 
-### Fix the return statement {/*fix-the-return-statement*/}
+### return 문 수정하기 {/*fix-the-return-statement*/}
 
-Something isn't right about this `return` statement. Can you fix it?
+아래 `return` 문에 잘못된 점이 있습니다. 잘못된 점을 찾아 고쳐보세요.
 
 <Hint>
 
-You may get an "Unexpected token" error while trying to fix this. In that case, check the that semicolon appears *after* the closing parenthesis. Leaving a semicolon inside `return ( )` will cause an error.
+수정하는 과정에서 "Unexpected token" 에러를 마주할 수 있습니다. 그런 경우, 세미콜론이 닫는 괄호 *뒤에* 위치하는지 확인해보세요. 세미콜론이 `return ( )` 문 안에 위치한다면 에러가 발생할 수 있습니다.
 
 </Hint>
 
@@ -285,7 +285,7 @@ img { height: 180px; }
 
 <Solution>
 
-You can fix this component by moving the return statement to one line like so:
+아래와 같이 return 문을 한 줄로 만들어 해결할 수 있습니다.
 
 <Sandpack>
 
@@ -301,7 +301,7 @@ img { height: 180px; }
 
 </Sandpack>
 
-Or by wrapping the returned JSX markup in parentheses that open right after `return`:
+또는 `return` 바로 뒤에 괄호를 열어 반환할 JSX 마크업을 감싸서 해결할 수도 있습니다.
 
 <Sandpack>
 
@@ -324,9 +324,9 @@ img { height: 180px; }
 
 </Solution>
 
-### Spot the mistake {/*spot-the-mistake*/}
+### 잘못된 점 찾아내기 {/*spot-the-mistake*/}
 
-Something's wrong with how the `Profile` component is declared and used. Can you spot the mistake? (Try to remember how React distinguishes components from the regular HTML tags!)
+아래 `Profile` 컴포넌트를 정의하고 사용하는 방식에 잘못된 점이 있습니다. 어떤 점이 잘못되었는지 찾을 수 있나요? (React가 컴포넌트와 일반적인 HTML 태그를 어떻게 구별하는지 되새겨보세요!)
 
 <Sandpack>
 
@@ -360,9 +360,9 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Solution>
 
-React component names must start with a capital letter.
+React 컴포넌트의 이름은 반드시 대문자로 시작해야 합니다.
 
-Change `function profile()` to `function Profile()`, and then change every `<profile />` to `<Profile />`:
+`function profile()`을 `function Profile()`로 수정하고, `<profile />`을 모두 `<Profile />`로 수정해보세요.
 
 <Sandpack>
 
@@ -396,14 +396,14 @@ img { margin: 0 10px 10px 0; }
 
 </Solution>
 
-### Your own component {/*your-own-component*/}
+### 나만의 컴포넌트 {/*your-own-component*/}
 
-Write a component from scratch. You can give it any valid name and return any markup. If you're out of ideas, you can write a `Congratulations` component thats shows `<h1>Good job!</h1>`. Don't forget to export it!
+컴포넌트를 처음부터 작성해보세요. 유효한 범위 내에서 자유롭게 이름을 붙이고 마크업을 반환하도록 작성해보세요. 어떤 컴포넌트를 작성할지 생각나지 않는다면, `<h1>Good job!</h1>` 을 보여주는 `Congratulations` 컴포넌트를 작성해도 좋습니다. 컴포넌트를 내보내는 것을 잊지 마세요!
 
 <Sandpack>
 
 ```js
-// Write your component below!
+// 아래에 나만의 컴포넌트를 작성해보세요!
 
 ```
 
