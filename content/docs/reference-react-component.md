@@ -634,8 +634,6 @@ CustomButton.defaultProps = {
 
 state는 어떤 컴포넌트에만 한정하여 사용되는 데이터를 포함하며, 해당 데이터는 시간이 지남에 따라 변경될 수 있습니다. state는 사용자가 자유롭게 정의할 수 있으며, 일반적인 자바스크립트 객체이어야 합니다.
 
-The state contains data specific to this component that may change over time. The state is user-defined, and it should be a plain JavaScript object.
-
 어떤 값이 렌더링 또는 데이터 흐름 상에서 (예를 들어, 타이머의 ID) 사용되지 않는다면, 해당 값을 state에 넣지 않아도 됩니다. 그러한 값은 컴포넌트 인스턴스의 필드로 정의할 수 있습니다.
 
 자세한 정보는 [State와 생명주기](/docs/state-and-lifecycle.html) 문서에서 확인할 수 있습니다.
