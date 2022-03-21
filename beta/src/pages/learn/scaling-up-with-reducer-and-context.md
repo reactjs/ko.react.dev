@@ -27,7 +27,7 @@ import { useReducer } from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useReducer(
     tasksReducer,
     initialTasks
@@ -207,9 +207,15 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 Reducer를 사용하면 이벤트 핸들러를 간결하고 명확하게 만들 수 있습니다. 그러나 앱이 커질수록 다른 어려움에 부딪힐 수 있습니다. **현재 `tasks` state와 `dispatch` 함수는 최상위 컴포넌트인 `TaskBoard`에서만 사용할 수 있습니다.** 다른 컴포넌트들에서 tasks의 리스트를 읽고 변경하려면 prop을 통해 현재 state와 state를 변경할 수 있는 이벤트 핸들러를 명시적으로 [전달](/learn/passing-props-to-a-component)해야 합니다.
 
 예를 들어, 아래 `TaskBoard` 컴포넌트에서 `TaskList` 컴포넌트로 tasks 리스트와 이벤트 핸들러를 전달합니다.
+=======
+A reducer helps keep the event handlers short and concise. However, as your app grows, you might run into another difficulty. **Currently, the `tasks` state and the `dispatch` function are only available in the top-level `TaskApp` component.** To let other components read the list of tasks or change it, you have to explicitly [pass down](/learn/passing-props-to-a-component) the current state and the event handlers that change it as props.
+
+For example, `TaskApp` passes a list of tasks and the event handlers to `TaskList`:
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 ```js
 <TaskList
@@ -233,7 +239,11 @@ Reducer를 사용하면 이벤트 핸들러를 간결하고 명확하게 만들 
 
 <!--(TODO: illustration of prop drilling)-->
 
+<<<<<<< HEAD
 그래서 `tasks` state와 `dispatch` 함수를 props를 통해 전달하는 대신 [context에 넣어서](/learn/passing-data-deeply-with-context) 사용하고 싶을 겁니다. **그러면 반복적인 "prop drilling" 없이 `TaskBoard` 아래의 모든 컴포넌트 트리에서 tasks를 읽고 dispatch 함수를 실행할 수 있습니다.**
+=======
+This is why, as an alternative to passing them through props, you might want to put both the `tasks` state and the `dispatch` function [into context](/learn/passing-data-deeply-with-context). **This way, any component below `TaskApp` in the tree can read the tasks and dispatch actions without the repetitive "prop drilling".**
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 <!--(TODO: illustration of context)-->
 
@@ -265,7 +275,7 @@ import { useReducer } from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useReducer(
     tasksReducer,
     initialTasks
@@ -452,16 +462,24 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 두 개의 context에 모두 기본값을 `null`로 전달하고 있습니다. 실제 값은 `TaskBoard` 컴포넌트에서 제공합니다.
+=======
+Here, you're passing `null` as the default value to both contexts. The actual values will be provided by the `TaskApp` component.
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 ### 2단계: State과 dispatch 함수를 context에 넣기 {/*step-2-put-state-and-dispatch-into-context*/}
 
+<<<<<<< HEAD
 이제 `TaskBoard` 컴포넌트에서 두 context를 모두 불러올 수 있습니다. `useReducer()`를 통해 반환된 `tasks`와 `dispatch`를 받고 아래 트리 전체에 [전달](/learn/passing-data-deeply-with-context#step-3-provide-the-context)합니다.
+=======
+Now you can import both contexts in your `TaskApp` component. Take the `tasks` and `dispatch` returned by `useReducer()` and [provide them](/learn/passing-data-deeply-with-context#step-3-provide-the-context) to the entire tree below:
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 ```js {4,7-8}
 import { TasksContext, TasksDispatchContext } from './TasksContext.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
   // ...
   return (
@@ -484,7 +502,7 @@ import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 import { TasksContext, TasksDispatchContext } from './TasksContext.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useReducer(
     tasksReducer,
     initialTasks
@@ -717,7 +735,11 @@ export default function AddTask({ onAddTask }) {
     // ...
 ```
 
+<<<<<<< HEAD
 **`TaskBoard` 컴포넌트는 하위 컴포넌트에, `TaskList`는 `Task` 컴포넌트에 이벤트 핸들러를 전달하지 않습니다.** 각 컴포넌트에서 필요한 context를 읽을 수 있습니다.
+=======
+**The `TaskApp` component does not pass any event handlers down, and the `TaskList` does not pass any event handlers to the `Task` component either.** Each component reads the context that it needs:
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 <Sandpack>
 
@@ -727,7 +749,7 @@ import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 import { TasksContext, TasksDispatchContext } from './TasksContext.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useReducer(
     tasksReducer,
     initialTasks
@@ -901,7 +923,11 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 **State와 state를 관리하는 `useReducer`는 여전히 최상위 컴포넌트인 `TaskBoard`에 있습니다.** 그러나 `tasks`와 `dispatch`는 하위 트리 컴포넌트 어디서나 context를 불러와서 사용할 수 있습니다. 
+=======
+**The state still "lives" in the top-level `TaskApp` component, managed with `useReducer`.** But its `tasks` and `dispatch` are now available to every component below in the tree by importing and using these contexts.
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 ## 하나의 파일로 합치기 {/*moving-all-wiring-into-a-single-file*/}
 
@@ -934,7 +960,11 @@ export function TasksProvider({ children }) {
 }
 ```
 
+<<<<<<< HEAD
 **이렇게 하면 `TaskBoard` 컴포넌트에서 복잡하게 얽혀있던 부분을 깔끔하게 정리할 수 있습니다.**
+=======
+**This removes all the complexity and wiring from your `TaskApp` component:**
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 <Sandpack>
 
@@ -943,7 +973,7 @@ import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 import { TasksProvider } from './TasksContext.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   return (
     <TasksProvider>
       <h1>Day off in Kyoto</h1>
@@ -1153,7 +1183,7 @@ import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 import { TasksProvider } from './TasksContext.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   return (
     <TasksProvider>
       <h1>Day off in Kyoto</h1>
