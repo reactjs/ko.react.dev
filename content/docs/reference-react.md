@@ -138,7 +138,7 @@ function MyComponent(props) {
 }
 function areEqual(prevProps, nextProps) {
   /*
-  nextProp가 prevProps와 동일한 값을 가지면 true를 반환하고, 그렇지 않다면 false를 반환
+  nextProps가 prevProps와 동일한 값을 가지면 true를 반환하고, 그렇지 않다면 false를 반환
   */
 }
 export default React.memo(MyComponent, areEqual);
