@@ -25,7 +25,11 @@ const variantMap = {
       'linear-gradient(rgba(245, 249, 248, 0), rgba(245, 249, 248, 1)',
   },
   gotcha: {
+<<<<<<< HEAD
     title: '알겠다!',
+=======
+    title: 'Pitfall',
+>>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
     Icon: IconGotcha,
     containerClasses: 'bg-yellow-5 dark:bg-yellow-60 dark:bg-opacity-20',
     textColor: 'text-yellow-50 dark:text-yellow-40',

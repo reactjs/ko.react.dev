@@ -166,7 +166,11 @@ h3, p { margin: 5px 0px; }
 
 <img alt="부모 컴포넌트는 state 설정 함수를 두 자식 컴포넌트로 전달합니다." src="/images/docs/sketches/s_passing-functions-down.png" />
 
+<<<<<<< HEAD
 예시에서 한 번에 하나의 패널만 활성화되어야 합니다. 즉 공통 부모인 `Accordion` 컴포넌트는 *어느* 패널이 활성화된 것인지 기록할 필요가 있습니다. `boolean` 값 대신 활성화 된 `Panel`의 인덱스를 나타내는 숫자를 state 변수로 쓸 수 있습니다.
+=======
+In this case, only one panel should be active at a time. This means that the `Accordion` common parent component needs to keep track of *which* panel is the active one. Instead of a `boolean` value, it could use a number as the index of the active `Panel` for the state variable:
+>>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
 
 ```js
 const [activeIndex, setActiveIndex] = useState(0);

@@ -39,12 +39,17 @@ JSX는 JavaScript의 확장 문법입니다. JSX는 템플릿 언어와 비슷�
 
 React DOM은 HTML 어트리뷰트(attribute) 이름 대신 캐멀케이스(camelCase)를 네이밍 컨벤션으로 사용합니다. 예를 들어, JSX에서 `tabindex`는 `tabIndex`로 작성합니다. `class` 어트리뷰트는 JavaScript의 예약어이므로 `className`으로 작성합니다.
 
+<<<<<<< HEAD
 ```js
 const name = 'Clementine';
 ReactDOM.render(
   <h1 className="hello">My name is {name}!</h1>,
   document.getElementById('root')
 );
+=======
+```jsx
+<h1 className="hello">My name is Clementine!</h1>
+>>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
 ```
 
 ## [엘리먼트](/docs/rendering-elements.html) {#elements}
