@@ -30,7 +30,11 @@ title: 리스트 렌더링
 </ul>
 ```
 
+<<<<<<< HEAD
 리스트 항목들 사이의 유일한 차이점은 내용과 데이터입니다. 댓글 목록에서 프로필 이미지 갤러리에 이르기까지 인터페이스를 구성할 때 다른 데이터를 사용한 많은 동일한 컴포넌트가 필요한 상황을 마주치게 될 것입니다. 이러한 상황에서 해당 데이터를 JavaScript의 객체와 배열에 저장할 수 있으며 그것들의 컴포넌트 리스트를 렌더링하기 위해 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)과 [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) 같은 메서드를 사용할 수 있습니다.
+=======
+The only difference among those list items is their contents, their data. You will often need to show several instances of the same component using different data when building interfaces: from lists of comments to galleries of profile images. In these situations, you can store that data in JavaScript objects and arrays and use methods like [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) and [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) to render lists of components from them.
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 배열에서 항목의 리스트를 생성하는 간단한 예시입니다.
 

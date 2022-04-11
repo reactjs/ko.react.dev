@@ -30,9 +30,15 @@ React는 처음부터 점진적인 도입을 위해 설계되었으며, 필요�
 
 HTML 페이지에서 닫는 `</body>` 태그 바로 앞에 다음 파일에 대한 3개의 `<script>` 태그를 추가 합니다.
 
+<<<<<<< HEAD
 - [**react.development.js**](https://unpkg.com/react@17/umd/react.development.js) 는 React의 핵심을 로드합니다.
 - [**react-dom.development.js**](https://unpkg.com/react-dom@17/umd/react-dom.development.js) 로 React는 HTML 엘리먼트를 [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model)에 렌더링할 수 있습니다.
 - **like_button.js** 는 3단계에서 컴포넌트를 작성하는 곳입니다!
+=======
+- [**react.development.js**](https://unpkg.com/react@18/umd/react.development.js) loads the core of React
+- [**react-dom.development.js**](https://unpkg.com/react-dom@18/umd/react-dom.development.js) lets React render HTML elements to the [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model).
+- **like_button.js** is where you'll write your component in step 3!
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 <Gotcha>
 
@@ -41,9 +47,15 @@ HTML 페이지에서 닫는 `</body>` 태그 바로 앞에 다음 파일에 대�
 </Gotcha>
 
 ```html
+<<<<<<< HEAD
   <!-- 페이지 끝 -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+=======
+  <!-- end of the page -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
   <script src="like_button.js"></script>
 </body>
 ```
@@ -74,11 +86,16 @@ function LikeButton() {
 
 ### 4단계: 페이지에 React 컴포넌트 추가하기 {/*step-4-add-your-react-component-to-the-page*/}
 
+<<<<<<< HEAD
 마지막으로 **like_button.js** 하단에 두 줄을 추가합니다. 이 두 줄의 코드는 1단계에서 HTML에 추가한 `<div>`를 찾은 다음 그 안에 React 컴포넌트 "Like" 버튼을 추가합니다.
+=======
+Lastly, add three lines to the bottom of **like_button.js**. These three lines of code find the `<div>` you added to your HTML in the first step, create a React app with it, and then display the "Like" button React component inside of it.
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 ```js
 const domContainer = document.getElementById('component-goes-here');
-ReactDOM.render(React.createElement(LikeButton), domContainer);
+const root = ReactDOM.createRoot(domContainer);
+root.render(React.createElement(LikeButton));
 ```
 
 **축하합니다! 웹사이트에 첫 번째 React 컴포넌트를 렌더링했습니다!**
@@ -88,21 +105,25 @@ ReactDOM.render(React.createElement(LikeButton), domContainer);
 
 #### 컴포넌트를 재사용할 수 있습니다! {/*you-can-reuse-components*/}
 
+<<<<<<< HEAD
 동일한 HTML 페이지 여러 위치에 React 컴포넌트를 추가할 수 있습니다. React 기반 페이지가 서로 분리되어 있는 동안 가장 유용합니다. `ReactDOM.render()` 를 여러 번 호출함으로써 여러 개의 컨테이너 엘리먼트를 사용할 수 있습니다.
+=======
+You might want to display a React component in multiple places on the same HTML page. This is most useful while React-powered parts of the page are isolated from each other. You can do this by calling `ReactDOM.createRoot()` multiple times with multiple container elements.
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 1. **index.html**에서 `<div id="component-goes-here-too"></div>` 컨테이너 엘리먼트를 추가합니다.
 2. 새 컨테이너 엘리먼트를 위해 **like_button.js**에서  `ReactDOM.render()` 를 추가합니다.
 
 ```js {6,7,8,9}
-ReactDOM.render(
-  React.createElement(LikeButton),
+const root1 = ReactDOM.createRoot(
   document.getElementById('component-goes-here')
 );
+root1.render(React.createElement(LikeButton));
 
-ReactDOM.render(
-  React.createElement(LikeButton),
+const root2 = ReactDOM.createRoot(
   document.getElementById('component-goes-here-too')
 );
+root2.render(React.createElement(LikeButton));
 ```
 
 Check out ["Like" 버튼을 세 번 추가하고 일부 데이터를 전달하는 예시](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)를 확인하세요!
@@ -115,8 +136,8 @@ Check out ["Like" 버튼을 세 번 추가하고 일부 데이터를 전달하�
 - 애플리케이션 스크립트를 **이미 코드 경량화한 경우** 배포된 HTML이 다음과 같이 `production.min.js`로 끝나는 React 버전을 로드해야만 사이트가 프로덕션 할 준비가 됩니다.
 
 ```html
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 ## JSX로 React 사용하기 {/*try-react-with-jsx*/}
@@ -135,7 +156,11 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 
 위에 두 코드 조각은 동일한 동작을 합니다. JSX는 자바스크립트에서 마크업을 설명하는데 널리 사용되고 있는 문법입니다. 많은 사람이 React와 다른 라이브러리에서 UI 코드 작성에 익숙하고 유용하다고 생각합니다. 다른 프로젝트에서 "자바스크립트 전체에 흩어져 있는 마크업"을 볼 수 있을지도 모릅니다!
 
+<<<<<<< HEAD
 > [온라인 변환기](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3)에서 HTML 마크업을 JSX로 변환할 수 있습니다.
+=======
+> You can play with transforming HTML markup into JSX using [this online converter](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.17).
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 ### JSX 사용하기 {/*try-jsx*/}
 
@@ -144,8 +169,8 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 ```html {6}
 <!-- ... 나머지 <head> ... -->
 
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
@@ -157,8 +182,8 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 
 ```jsx {1}
 <script type="text/babel">
-  ReactDOM.render(
-  <h1>Hello, world!</h1>, document.getElementById('root') );
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(<h1>Hello, world!</h1>);
 </script>
 ```
 
@@ -229,8 +254,13 @@ JSX가 포함된 파일을 저장할 때마다 변환이 다시 실행되어 JSX
 
 원래 JSX는 React로 컴포넌트를 작성하는 것이 HTML을 작성하는 것만큼 친숙하게 느껴지도록 하기 위해 도입되었습니다. 그 이후로 이 문법이 널리 퍼졌습니다. 그러나 JSX를 사용하고 싶지 않거나 사용할 수 없는 경우가 있을 수도 있습니다. 두 가지 옵션이 있습니다.
 
+<<<<<<< HEAD
 - [htm](https://github.com/developit/htm)과 같이 컴파일러를 사용하지 않는 JSX 대안을 사용하세요.—자바스크립트의 기본 태그가 지정된 템플릿을 사용합니다.
 - 아래에서 설명하는 특별한 구조를 가진 [`React.createElement()`](/reference/createelement)을 사용하세요.
+=======
+- Use a JSX alternative like [htm](https://github.com/developit/htm) which doesn't use a compiler—it uses JavaScript's native Tagged Templates.
+- Use [`React.createElement()`](/apis/createelement), which has a special structure explained below.
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 JSX를 사용하면 다음과 같이 컴포넌트를 작성할 수 있습니다.
 

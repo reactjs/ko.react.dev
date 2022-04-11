@@ -8,11 +8,10 @@ next: introducing-jsx.html
 
 가장 단순한 React 예시는 다음과 같이 생겼습니다.
 
-```js
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-);
+```jsx
+ReactDOM
+  .createRoot(document.getElementById('root'))
+  .render(<h1>Hello, world!</h1>);
 ```
 
 위 코드는 페이지에 "Hello, world!"라는 제목을 보여줍니다.

@@ -142,7 +142,8 @@ function Child() {
   );
 }
 
-ReactDOM.render(<Parent />, appRoot);
+const root = ReactDOM.createRoot(appRoot);
+root.render(<Parent />);
 ```
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/jGBWpE)

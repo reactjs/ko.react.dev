@@ -32,10 +32,15 @@ redirect_from:
 여러분들이 컴포넌트를 처음 마운트할 때를 고려해 보겠습니다.
 
 ```js
-ReactDOM.render(<App />, rootEl);
+const root = ReactDOM.createRoot(rootEl);
+root.render(<App />);
 ```
 
+<<<<<<< HEAD
 React DOM은 재조정자를 통해 `<App />`를 통과하게 할 것입니다. `<App />`은 React 엘리먼트이며, 렌더링 할 것을 설명해 놓은 것임을 기억합시다. 이것을 평범한 객체로 생각해도 좋습니다.
+=======
+`root.render` will pass `<App />` along to the reconciler. Remember that `<App />` is a React element, that is, a description of *what* to render. You can think about it as a plain object:
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 ```js
 console.log(<App />);
@@ -237,9 +242,9 @@ rootEl.appendChild(node);
 React의 가장 큰 특징은 모든 것을 다시 렌더링할 수 있고, DOM을 다시 생성하거나 상태를 초기화시키지 않아도 된다는 점입니다.
 
 ```js
-ReactDOM.render(<App />, rootEl);
+root.render(<App />);
 // Should reuse the existing DOM:
-ReactDOM.render(<App />, rootEl);
+root.render(<App />);
 ```
 
 그러나, 위의 구현은 초기 트리를 어떻게 마운트 하는지만 알고 있습니다. 모든 `publicInstance`와 어떤 DOM `node`가 각 컴포넌트에 대응되는지와 같은 필수 정보를 담고 있지 않기 때문에 업데이트를 할 수 없습니다.
@@ -414,7 +419,11 @@ DOM에서는 `<div>`만 보일 것입니다. 그러나 내부 인스턴스 트�
 
  <img src="../images/docs/implementation-notes-tree.png" width="500" style="max-width: 100%" alt="React DevTools tree" />
 
+<<<<<<< HEAD
 리팩토링을 완료하기 위해, `ReactDOM.render()`와 같이 전체 트리를 컨테이너 노드에 마운트하는 기능을 도입할 것입니다. 또한 `ReactDOM.render()`와 같은 공개 인스턴스를 리턴합니다.
+=======
+To complete this refactoring, we will introduce a function that mounts a complete tree into a container node and a public instance:
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 ```js
 function mountTree(element, containerNode) {
