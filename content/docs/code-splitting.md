@@ -99,7 +99,7 @@ const OtherComponent = React.lazy(() => import('./OtherComponent'));
 ```
 `MyComponent`가 처음 렌더링 될 때 `OtherComponent`를 포함한 번들을 자동으로 불러옵니다.
 
-`React.lazy`는 동적 `import()`를 호출하는 함수를 인자로 가집니다. 이 함수는 React 컴포넌트를 포함하며 `default` export를 가진 모듈로 결정되는 `Promise`로 반환해야 합니다.
+`React.lazy`는 동적 `import()`를 호출하는 함수를 인자로 가집니다. 이 함수는 React 컴포넌트를 `default` export로 가진 모듈 객체가 이행되는 `Promise`를 반환해야 합니다.
 
 lazy 컴포넌트는 `Suspense` 컴포넌트 하위에서 렌더링되어야 하며, `Suspense`는 lazy 컴포넌트가 로드되길 기다리는 동안 로딩 화면과 같은 예비 컨텐츠를 보여줄 수 있게 해줍니다.
 
