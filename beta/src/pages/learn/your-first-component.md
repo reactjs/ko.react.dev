@@ -102,7 +102,11 @@ React 컴포넌트는 일반적인 JavaScript 함수이지만, 제대로 작동�
 return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
 ```
 
+<<<<<<< HEAD
 그러나 반환하려는 마크업이 return 문과 모두 같은 줄에 있지 않다면 다음과 같이 괄호로 묶어야 합니다.
+=======
+But if your markup isn't all on the same line as the `return` keyword, you must wrap it in a pair of parentheses like this:
+>>>>>>> 07dbd86ca421c262157af673a2584a40fd3b2450
 
 ```js
 return (

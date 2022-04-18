@@ -52,10 +52,17 @@ React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다
 ```html{5,6,9}
   <!-- ... 다른 HTML ... -->
 
+<<<<<<< HEAD
   <!-- React를 실행. -->
   <!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+=======
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+>>>>>>> 07dbd86ca421c262157af673a2584a40fd3b2450
 
   <!-- 만든 React 컴포넌트를 실행. -->
   <script src="like_button.js"></script>
@@ -77,14 +84,24 @@ React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다
 
 `like_button.js`의 맨 뒷 줄, 그러니까 아까 붙여넣은 **[스타터 코드](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** 뒤에 다음 코드 두 줄을 추가해줍니다.
 
+<<<<<<< HEAD
 ```js{3,4}
 // ... 복사했던 스타터 코드 ...
+=======
+```js{3,4,5}
+// ... the starter code you pasted ...
+>>>>>>> 07dbd86ca421c262157af673a2584a40fd3b2450
 
 const domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+const root = ReactDOM.createRoot(domContainer);
+root.render(e(LikeButton));
 ```
 
+<<<<<<< HEAD
 이 두줄의 코드는 첫 단계에서 HTML 페이지에 추가했던 `<div>` 태그를 찾아주고 그 안에 "좋아요" 버튼이라는 React 컴포넌트를 추가해줍니다.
+=======
+These three lines of code find the `<div>` we added to our HTML in the first step, create a React app with it, and then display our "Like" button React component inside of it.
+>>>>>>> 07dbd86ca421c262157af673a2584a40fd3b2450
 
 ### 다 끝났습니다! {#thats-it}
 
@@ -115,8 +132,8 @@ ReactDOM.render(e(LikeButton), domContainer);
 애플리케이션 스크립트를 이미 압축했을 경우 배포된 HTML 파일이 `production.min.js`로 끝나는 React 파일을 확실히 실행하기만 하면 **사이트는 프로덕션 준비가 완료된 겁니다.**
 
 ```js
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 스크립트를 압축하는 절차가 따로 없다면 [이 사이트를 참고해서 설정해보세요.](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3)

@@ -505,7 +505,11 @@ setState(updater, [callback])
 
 `setState()`는 컴포넌트 state의 변경 사항을 대기열에 집어넣고, React에게 해당 컴포넌트와 그 자식들이 갱신된 state를 사용하여 다시 렌더링되어야 한다고 알립니다. 이 메서드는 이벤트 핸들러와 서버 응답 등에 따라 UI를 갱신할 때에 가장 많이 사용하는 메서드입니다.
 
+<<<<<<< HEAD
 `setState()`는 컴포넌트를 갱신하는 데에 있어 즉각적인 명령이 아니라 *요청*이라고 생각하시기 바랍니다. 인지 성능(Perceived Performance)의 향상을 위하여 React는 이 메서드의 실행을 지연시키고 여러 컴포넌트를 한번에 갱신할 수도 있습니다. React는 state 변화가 즉시 적용되는 것을 보장하지 않습니다.
+=======
+Think of `setState()` as a *request* rather than an immediate command to update the component. For better perceived performance, React may delay it, and then update several components in a single pass. In the rare case that you need to force the DOM update to be applied synchronously, you may wrap it in [`flushSync`](/docs/react-dom.html#flushsync), but this may hurt performance.
+>>>>>>> 07dbd86ca421c262157af673a2584a40fd3b2450
 
 `setState()`는 컴포넌트를 항상 즉각적으로 갱신하지는 않습니다. 오히려 여러 변경 사항과 함께 일괄적으로 갱신하거나, 나중으로 미룰 수도 있습니다. 이로 인하여 `setState()`를 호출하자마자 `this.state`에 접근하는 것이 잠재적인 문제가 될 수 있습니다. 그 대신에 `componentDidUpdate` 또는 `setState`의 콜백(`setState(updater, callback)`)을 사용하세요. 둘 다 갱신이 적용된 뒤에 실행되는 것이 보장됩니다. 이전 state 값을 기준으로 state 값을 설정해야 한다면, 아래에 설명된 `updater` 인자에 대한 내용을 읽어보세요.
 

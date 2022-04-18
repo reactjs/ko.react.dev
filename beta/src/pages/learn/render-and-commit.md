@@ -69,7 +69,11 @@ export default function Image() {
 
 ### State 업데이트 시 리렌더링 {/*re-renders-when-state-updates*/}
 
+<<<<<<< HEAD
 컴포넌트가 처음 렌더링되면 [`setState`](reference/setstate)로 state를 업데이트하여 추가 렌더링을 트리거 시킬 수 있습니다. 컴포넌트의 state를 업데이트하면 렌더링이 자동으로 대기열에 추가됩니다. (이것은 식당에서 손님이 첫 주문 이후에 갈증이나 배고픔에 따라 차, 디저트 등을 추가로 주문하는 모습으로 상상해 볼 수 있습니다.)
+=======
+Once the component has been initially rendered, you can trigger further renders by updating its state with the [`set` function](/apis/usestate#setstate). Updating your component's state automatically queues a render. (You can imagine these as a restaurant guest ordering tea, dessert, and all sorts of things after putting in their first order, depending on the state of their thirst or hunger.)
+>>>>>>> 07dbd86ca421c262157af673a2584a40fd3b2450
 
 <IllustrationBlock sequential>
   <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. They patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />

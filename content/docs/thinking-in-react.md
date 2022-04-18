@@ -70,7 +70,11 @@ JSON API는 아래와 같은 데이터를 반환합니다.
 
 앱을 만들 때 하향식(top-down)이나 상향식(bottom-up)으로 만들 수 있습니다. 다시 말해 계층 구조의 상층부에 있는 컴포넌트 (즉 `FilterableProductTable`부터 시작하는 것)부터 만들거나 하층부에 있는 컴포넌트 (`ProductRow`) 부터 만들 수도 있습니다. 간단한 예시에서는 보통 하향식으로 만드는 게 쉽지만 프로젝트가 커지면 상향식으로 만들고 테스트를 작성하면서 개발하기가 더 쉽습니다.
 
+<<<<<<< HEAD
 이 단계가 끝나면 데이터 렌더링을 위해 만들어진 재사용 가능한 컴포넌트들의 라이브러리를 가지게 됩니다. 현재는 앱의 정적 버전이기 때문에 컴포넌트는 `render()` 메서드만 가지고 있을 것입니다. 계층구조의 최상단 컴포넌트 (`FilterableProductTable`)는 prop으로 데이터 모델을 받습니다. 데이터 모델이 변경되면  `ReactDOM.render()`를 다시 호출해서 UI가 업데이트 됩니다. UI가 어떻게 업데이트되고 어디에서 변경해야하는지 알 수 있습니다. React의 **단방향 데이터 흐름(one-way data flow)** (또는 *단방향 바인딩(one-way binding*))는 모든 것을 모듈화 하고 빠르게 만들어줍니다.
+=======
+At the end of this step, you'll have a library of reusable components that render your data model. The components will only have `render()` methods since this is a static version of your app. The component at the top of the hierarchy (`FilterableProductTable`) will take your data model as a prop. If you make a change to your underlying data model and call `root.render()` again, the UI will be updated. You can see how your UI is updated and where to make changes. React's **one-way data flow** (also called *one-way binding*) keeps everything modular and fast.
+>>>>>>> 07dbd86ca421c262157af673a2584a40fd3b2450
 
 이 단계를 실행하는 데 도움이 필요하다면 [공식 React 문서](/docs/getting-started.html)를 참고하세요.
 
