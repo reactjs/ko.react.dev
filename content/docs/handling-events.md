@@ -84,11 +84,6 @@ class Toggle extends React.Component {
     );
   }
 }
-
-ReactDOM.render(
-  <Toggle />,
-  document.getElementById('root')
-);
 ```
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/xEmzGg?editors=0010)

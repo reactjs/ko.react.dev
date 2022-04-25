@@ -607,7 +607,11 @@ it("should render a greeting", () => {
 
 ### 다수의 렌더러 {#multiple-renderers}
 
+<<<<<<< HEAD
 드문 경우이지만 여러 렌더러를 사용하는 컴포넌트에서 테스트를 실행할 때가 있을 수 있습니다. 예를 들어, 자식 컴포넌트 내에서 `ReactDOM.render`를 내부적으로 사용하여 일부 콘텐츠를 렌더링하는 `react-test-renderer` 가 있는 컴포넌트에서 스냅샷 테스트를 실행할 수 있습니다. 이 시나리오에서는 렌더러에 해당하는 `act()`로 업데이트를 래핑 할 수 있습니다.
+=======
+In rare cases, you may be running a test on a component that uses multiple renderers. For example, you may be running snapshot tests on a component with `react-test-renderer`, that internally uses `render` from `react-dom` inside a child component to render some content. In this scenario, you can wrap updates with `act()`s corresponding to their renderers.
+>>>>>>> 1d21630e126af0f4c04ff392934dcee80fc54892
 
 ```jsx
 import { act as domAct } from "react-dom/test-utils";

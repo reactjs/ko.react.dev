@@ -19,7 +19,11 @@ state를 업데이트하는 로직이 여러 이벤트 핸들러에 분산된 �
 
 ## reducer를 사용하여 state 로직 통합하기 {/*consolidate-state-logic-with-a-reducer*/}
 
+<<<<<<< HEAD
 컴포넌트가 복잡해짐에 따라 컴포넌트의 state가 업데이트 되는 여러 방법을 한눈에 보기 더 어려워질 수 있습니다. 예를 들어, 아래 `TaskBoard` 컴포넌트에서 state에 `tasks` 배열을 담고 있고 task를 추가, 제거 및 편집하는 세가지의 서로 다른 이벤트 핸들러를 사용하는 것을 볼 수 있습니다.
+=======
+As your components grow in complexity, it can get harder to see at a glance all the different ways in which a component's state gets updated. For example, the `TaskApp` component below holds an array of `tasks` in state and uses three different event handlers to add, remove, and edit tasks:
+>>>>>>> 1d21630e126af0f4c04ff392934dcee80fc54892
 
 <Sandpack>
 
@@ -28,7 +32,7 @@ import { useState } from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, setTasks] = useState(initialTasks);
 
   function handleAddTask(text) {
@@ -224,7 +228,11 @@ function handleDeleteTask(taskId) {
 *  사용자가 task를 토글하거나 "저장"을 누르면 호출되는 `handleChangeTask(task)`
 *  사용자가 "Delete" 를 누르면 호출되는 `handleDeleteTask(taskId)`
 
+<<<<<<< HEAD
 reducer로 state를 관리하는 것은 state를 직접 설정하는 것과 조금 다른 점이 있습니다. state를 설정해서 React에게 "해야할 일"에 대한 것을 알려주는 대신, 이벤트 핸들러에서 "action"을 전달(dispatch)해줌으로써 "사용자가 방금 무엇을 했는지"를 알려줍니다. (state를 업데이트 하는 로직은 reducer가 아닌 다른 곳에 있게 됩니다!) 이를 아래 예시에 대입해보면, 이벤트 핸들러를 통해 "`tasks`를 설정하는 것" 대신 "task가 추가/제거/삭제된" 상황을 담은 action을 전달(dispatch)하게 되는 것을 의미합니다. 이는 사용자의 의도를 더 잘 설명해줍니다.
+=======
+Managing state with reducers is slightly different from directly setting state. Instead of telling React "what to do" by setting state, you specify "what the user just did" by dispatching "actions" from your event handlers. (The state update logic will live elsewhere!) So instead of "setting `tasks`" via an event handler, you're dispatching an "added/changed/deleted a task" action. This is more descriptive of the user's intent.
+>>>>>>> 1d21630e126af0f4c04ff392934dcee80fc54892
 
 ```js
 function handleAddTask(text) {
@@ -492,7 +500,7 @@ import { useReducer } from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useReducer(
     tasksReducer,
     initialTasks
@@ -682,7 +690,7 @@ import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 import tasksReducer from './tasksReducer.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useReducer(
     tasksReducer,
     initialTasks
@@ -885,8 +893,13 @@ reducer가 좋은 점만 있는 것은 아닙니다! 아래에서 `useState`와 
 
 reducer를 작성할 때 다음과 같은 두가지 팁을 명심하세요.
 
+<<<<<<< HEAD
 * **reducer는 순수해야합니다.** [상태 업데이터 함수](/learn/queueing-a-series-of-state-updates)와 비슷하게, reducer는 렌더링할 때 동작합니다! (이 때, action은 다음 렌더링이 있을 때까지 큐에 쌓입니다.) 이는 reducer가 순수해야 한다는 것, 즉 입력 값이 같다면 결과 값도 같아야 한다는 것을 의미합니다. 요청을 보내거나, timeout을 스케줄링하거나 사이드이펙트(컴포넌트 외부의 작업에 영향을 주는 연산)를 수행해서는 안 됩니다. 또한, 불변하게 [객체](/learn/updating-objects-in-state)와 [배열](/learn/updating-arrays-in-state)을 업데이트 해야합니다.
 * **action은 "무엇을 해야 하는지"가 아니라 "무엇이 발생했는지"를 설명해야 합니다.** 예를 들어, 사용자가 reducer에 의해 관리되는 다섯 개의 필드가 있는 폼에서 "Reset"을 눌렀다면, 별도의 다섯 가지 `set_field` action보다 한개의 `reset_form` action을 전달하는 것이 더 낫습니다. reducer에서 모든 action을 로깅해야 하는 경우, 해당 로그는 어떤 상호작용이나 응답이 어떤 순서로 발생했는지 재구성할 수 있을 만큼 충분히 명확해야 합니다. 이렇게 하는 것이 디버깅에 도움이 될 것입니다.
+=======
+* **Reducers must be pure.** Similar to [state updater functions](/learn/queueing-a-series-of-state-updates), reducers run during rendering! (Actions are queued until the next render.) This means that reducers [must be pure](/learn/keeping-components-pure)—same inputs always result in the same output. They should not send requests, schedule timeouts, or perform any side effects (operations that impact things outside the component). They should update [objects](/learn/updating-objects-in-state) and [arrays](/learn/updating-arrays-in-state) without mutations.
+* **Each action describes a single user interaction, even if that leads to multiple changes in the data.** For example, if a user presses "Reset" on a form with five fields managed by a reducer, it makes more sense to dispatch one `reset_form` action rather than five separate `set_field` actions. If you log every action in a reducer, that log should be clear enough for you to reconstruct what interactions or responses happened in what order. This helps with debugging!
+>>>>>>> 1d21630e126af0f4c04ff392934dcee80fc54892
 
 ## Immer로 간결한 reducer 작성하기 {/*writing-concise-reducers-with-immer*/}
 
@@ -925,7 +938,7 @@ function tasksReducer(draft, action) {
   }
 }
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useImmerReducer(
     tasksReducer,
     initialTasks
@@ -1100,6 +1113,7 @@ reducer는 순수해야 하기 때문에, 이 안에서는 state를 변형할 �
 
 <Recap>
 
+<<<<<<< HEAD
 * `useState`를 `useReducer`로 바꾸기 위해서
   1. 이벤트 핸들러에서 action을 전달합니다.
   2. 주어진 state와 action으로 다음 state를 반환하는 reducer 함수를 작성합니다.
@@ -1108,6 +1122,16 @@ reducer는 순수해야 하기 때문에, 이 안에서는 state를 변형할 �
 * reducer는 순수해야 합니다.
 * action은 "무엇을 할 것인지"가 아니라, "무엇이 발생했는지"를 설명합니다.
 * 변형 스타일(mutating style)로 reducer를 작성하려면 Immer를 사용하세요.
+=======
+* To convert from `useState` to `useReducer`:
+  1. Dispatch actions from event handlers.
+  2. Write a reducer function that returns the next state for a given state and action.
+  3. Replace `useState` with `useReducer`.
+* Reducers require you to write a bit more code, but they help with debugging and testing.
+* Reducers must be pure.
+* Each action describes a single user interaction.
+* Use Immer if you want to write reducers in a mutating style.
+>>>>>>> 1d21630e126af0f4c04ff392934dcee80fc54892
 
 </Recap>
 

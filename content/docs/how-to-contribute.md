@@ -70,7 +70,11 @@ Public API를 변경하거나 구현을 간단하게 변경하려 할 때 [이�
 
 풀 리퀘스트를 처음 해보시나요? 무료 영상 시리즈를 통해 다음과 같이 기여하는 방법을 배울 수도 있습니다.
 
+<<<<<<< HEAD
 **[GitHub에서 오픈 소스 프로젝트에 기여하는 방법](https://app.egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
+=======
+**[How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
+>>>>>>> 1d21630e126af0f4c04ff392934dcee80fc54892
 
 처음 발을 디딜 때 기여 과정에 익숙해질 수 있도록 비교적 영향력이 적은 버그를 포함하는 **[good first issues](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")** 목록은 기여 입문에 최적입니다.
 
@@ -103,10 +107,17 @@ Public API를 변경하거나 구현을 간단하게 변경하려 할 때 [이�
 
 ### 기여 선행 조건 {#contribution-prerequisites}
 
+<<<<<<< HEAD
 * [Node](https://nodejs.org) v8.0.0+과 [Yarn](https://yarnpkg.com/en/) v1.2.0+가 설치되어 있어야 합니다.
 * [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html)가 설치되어 있어야 합니다.
 * `gcc`가 설치되어 있어야 하는 데 필요하다면 컴파일러를 설치하는 게 편합니다. 일부 의존성은 컴파일 과정이 필요할 수 있습니다. OS X에서는 Xcode 커맨드 라인 도구가 도움이 됩니다. Ubuntu에서는 `apt-get install build-essential` 명령으로 필요한 패키지를 설치할 수 있습니다. 다른 Linux 배포판에서도 비슷한 명령으로 작업할 수 있습니다. Windows에서는 몇 가지 추가 단계가 필요할 수 있으므로 자세한 내용은 [`node-gyp` installation instructions](https://github.com/nodejs/node-gyp#installation)를 참조해 주세요.
 * Git 사용에 익숙해야 합니다.
+=======
+* You have [Node](https://nodejs.org) installed at LTS and [Yarn](https://yarnpkg.com/en/) at v1.2.0+.
+* You have [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) installed.
+* You have `gcc` installed or are comfortable installing a compiler if needed. Some of our dependencies may require a compilation step. On OS X, the Xcode Command Line Tools will cover this. On Ubuntu, `apt-get install build-essential` will install the required packages. Similar commands should work on other Linux distros. Windows will require some additional steps, see the [`node-gyp` installation instructions](https://github.com/nodejs/node-gyp#installation) for details.
+* You are familiar with Git.
+>>>>>>> 1d21630e126af0f4c04ff392934dcee80fc54892
 
 ### 개발 워크플로우 {#development-workflow}
 
