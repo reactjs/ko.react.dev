@@ -121,7 +121,11 @@ React는 특정 숫자 인라인 스타일 프로퍼티는 "px" 접미사를 자
 
 서버 사이드 렌더링을 사용하는 경우, 일반적으로 서버와 클라이언트가 다른 내용을 렌더링할 때 경고가 표시됩니다. 그러나 매우 드물게 정확히 일치시키는 게 힘들거나 불가능합니다. 예를 들어 타임 스탬프 같은 경우 서버와 클라이언트에서는 다를 것으로 예상됩니다.
 
+<<<<<<< HEAD
 `suppressHydrationWarning`을 `true`로 설정하면, React는 어트리뷰트와 그 엘리먼트 내용의 불일치에 대해 경고하지 않습니다. 바로 밑 한 단계 깊이를 기준으로만 작동하며 해결책으로 사용하도록 되어 있습니다. 남용하지 마세요. 이벤트 보충에 대한 자세한 내용은 [`ReactDOM.hydrate()` 문서](/docs/react-dom.html#hydrate)를 참조해주세요.
+=======
+If you set `suppressHydrationWarning` to `true`, React will not warn you about mismatches in the attributes and the content of that element. It only works one level deep, and is intended to be used as an escape hatch. Don't overuse it. You can read more about hydration in the [`ReactDOM.hydrateRoot()` documentation](/docs/react-dom-client.html#hydrateroot).
+>>>>>>> 5f3a9756e00e256735a5f52df19b403d8fdd3a9d
 
 ### value {#value}
 

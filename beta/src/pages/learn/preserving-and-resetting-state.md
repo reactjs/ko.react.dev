@@ -23,7 +23,19 @@ title: State를 보존하고 초기화하기
 
 또한 React는 당신이 만드는 UI를 관리하고 모델링하기 위한 트리 구조도 가지고 있습니다. React는 JSX로부터 **UI 트리**를 만듭니다. 그리고 React DOM은 UI 트리와 일치하도록 브라우저 DOM을 업데이트합니다. (React Native는 이 트리를 각 모바일 플랫폼에 맞는 엘리먼트로 번역합니다.)
 
+<<<<<<< HEAD
 <img alt="React는 컴포넌트를 가지고 UI 트리 구조로 바꿉니다. 그리고 ReactDOM은 이것을 DOM을 이용해 브라우저에서 HTML로 바꿉니다." src="/images/docs/sketches/s_react-dom-tree.png" />
+=======
+<DiagramGroup>
+
+<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="Diagram with three sections arranged horizontally. In the first section, there are three rectangles stacked vertically, with labels 'Component A', 'Component B', and 'Component C'. Transitioning to the next pane is an arrow with the React logo on top labeled 'React'. The middle section contains a tree of components, with the root labeled 'A' and two children labeled 'B' and 'C'. The next section is again transitioned using an arrow with the React logo on top labeled 'React'. The third and final section is a wireframe of a browser, containing a tree of 8 nodes, which has only a subset highlighted (indicating the subtree from the middle section).">
+
+From components, React creates a UI Tree which React DOM uses to render the DOM. 
+
+</Diagram>
+
+</DiagramGroup>
+>>>>>>> 5f3a9756e00e256735a5f52df19b403d8fdd3a9d
 
 ## State는 트리에서의 위치에 묶여있습니다 {/*state-is-tied-to-a-position-in-the-tree*/}
 
@@ -94,9 +106,23 @@ label {
 
 </Sandpack>
 
+<<<<<<< HEAD
 이것이 다음과 같이 트리도 바뀝니다.
 
 <img alt="JSX가 트리가 된다." src="/images/docs/sketches/s_jsx-to-tree.png" />
+=======
+Here's how these look as a tree:    
+
+<DiagramGroup>
+
+<Diagram name="preserving_state_tree" height={248} width={395} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. Each of the children are labeled 'Counter' and both contain a state bubble labeled 'count' with value 0.">
+
+React Tree
+
+</Diagram>
+
+</DiagramGroup>
+>>>>>>> 5f3a9756e00e256735a5f52df19b403d8fdd3a9d
 
 **이 둘은 각각 트리에서 자기 고유의 위치에 렌더링되어 있으므로 분리되어있는 카운터입니다.** 일반적으로 React를 사용할 때 위치에 대해 생각할 필요는 없지만 React가 어떻게 작동하는지 이해할 때 유용합니다.
 
@@ -160,7 +186,25 @@ function Counter() {
 
 </Sandpack>
 
+<<<<<<< HEAD
 React는 같은 컴포넌트를 같은 위치에 렌더링하는 동안만 state를 유지합니다. 이것을 확인하기 위해 두 카운터를 증가시킨 후 "Render the second counter" 체크 박스를 해제하고 다시 선택해보세요.
+=======
+As you can see, when one counter is updated, only the state for that component is updated:
+
+
+<DiagramGroup>
+
+<Diagram name="preserving_state_increment" height={248} width={441} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. The left child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is labeled 'Counter' and contains a state bubble labeled 'count' with value 1. The state bubble of the right child is highlighted in yellow to indicate its value has updated.">
+
+Updating state
+
+</Diagram>
+
+</DiagramGroup>
+
+
+React will keep the state around for as long as you render the same component at the same position. To see this, increment both counters, then remove the second component by unchecking "Render the second counter" checkbox, and then add it back by ticking it again:
+>>>>>>> 5f3a9756e00e256735a5f52df19b403d8fdd3a9d
 
 <Sandpack>
 
@@ -236,11 +280,35 @@ label {
 
 두 번째 카운터를 렌더링하지 않을 때 그 state가 완전히 사라지는 것을 확인해보세요. 이는 React가 컴포넌트를 제거할 때 그 state도 같이 제거하기 때문입니다.
 
+<<<<<<< HEAD
 <img alt="React가 컴포넌트를 트리에서 지울 때 state도 함께 제거합니다" src="/images/docs/sketches/s_remove-ui.png" />
+=======
+<DiagramGroup>
+
+<Diagram name="preserving_state_remove_component" height={253} width={422} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. The left child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is missing, and in its place is a yellow 'poof' image, highlighting the component being deleted from the tree.">
+
+Deleting a component
+
+</Diagram>
+
+</DiagramGroup>
+>>>>>>> 5f3a9756e00e256735a5f52df19b403d8fdd3a9d
 
 "Render the second counter"를 누를 때 두 번째 `Counter`와 그 state는 처음부터 초기화되고(`score = 0`) DOM에 추가됩니다.
 
+<<<<<<< HEAD
 <img alt="React가 UI를 DOM 트리에 추가할 때 모든 state를 새로 시작합니다." src="/images/docs/sketches/s_add-back-ui.png" />
+=======
+<DiagramGroup>
+
+<Diagram name="preserving_state_add_component" height={258} width={500} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. The left child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The entire right child node is highlighted in yellow, indicating that it was just added to the tree.">
+
+Adding a component
+
+</Diagram>
+
+</DiagramGroup>
+>>>>>>> 5f3a9756e00e256735a5f52df19b403d8fdd3a9d
 
 **React는 컴포넌트가 UI 트리에서 그 자리에 렌더링되는 한 state를 유지합니다.** 만약 그것을 제거하거나 같은 자리에 다른 컴포넌트가 렌더링되면 React는 그 state를 버립니다.
 
@@ -333,13 +401,28 @@ label {
 
 체크 박스를 선택하거나 선택 해제할 때 카운터 state는 초기화되지 않습니다. `isFancy`가 `true`이든 `false`이든 `<Counter />`는 값은 자리에 있습니다. root `App` 컴포넌트가 반환한 `div`의 첫 번째 자식으로 있죠.
 
+<<<<<<< HEAD
 <img alt="React는 렌더링할 때 컴포넌트와 UI 트리에서의 위치만 봅니다." src="/images/docs/sketches/s_ui-swap.png" />
+=======
+<DiagramGroup>
+
+<Diagram name="preserving_state_same_component" height={461} width={600} alt="Diagram with two sections separated by an arrow transitioning between them. Each section contains a layout of components with a parent labeled 'App' containing a state bubble labeled isFancy. This component has one child labeled 'div', which leads to a prop bubble containing isFancy (highlighted in purple) passed down to the only child. The last child is labeled 'Counter' and contains a state bubble with label 'count' and value 3 in both diagrams. In the left section of the diagram, nothing is highlighted and the isFancy parent state value is false. In the right section of the diagram, the isFancy parent state value has changed to true and it is highlighted in yellow, and so is the props bubble below, which has also changed its isFancy value to true.">
+
+Since Counter is always in the same position, the count does not reset, event when isFancy state in the parent changes.
+
+</Diagram>
+
+</DiagramGroup>
+>>>>>>> 5f3a9756e00e256735a5f52df19b403d8fdd3a9d
 
 
 첫 번째 자리의 같은 컴포넌트이기 때문에 React의 관점에서는 같은 카운터입니다.
 
+<<<<<<< HEAD
 <Illustration src="/images/docs/illustrations/i_react-is-blind-to-ui-swap.png" alt="React가 두 컴포넌트를 저울질하고 있고 서로 다른 색이지만 같은 것으로 봅니다." />
 
+=======
+>>>>>>> 5f3a9756e00e256735a5f52df19b403d8fdd3a9d
 <Gotcha>
 
 **React는 JSX 마크업에서가 아닌 UI 트리에서의 위치에 관심이 있다는 것을** 기억하세요! 이 컴포넌트는 `if` 안과 밖에 다른 `<Counter />`를 가진 `return` 문을 두 개 가지고 있습니다.
@@ -527,7 +610,29 @@ label {
 
 여기서 당신은 같은 자리의 _다른_ 컴포넌트 타입으로 바꿉니다. 처음에는 `<div>`가 `Counter`를 갖고 있습니다. 하지만 `p`로 바꾸면 React는 UI 트리에서 `Counter`와 그 state를 제거합니다.
 
+<<<<<<< HEAD
 <img alt="UI 트리에서 컴포넌트와 state를 제거하기" src="/images/docs/sketches/s_ui-component-swap.png" />
+=======
+<DiagramGroup>
+
+<Diagram name="preserving_state_diff_pt1" height={290} width={753} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'Counter' containing a state bubble labeled 'count' with value 3. The middle section has the same 'div' parent, but the child component has now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'p', highlighted in yellow.">
+
+When Counter changes to p, first the Counter is unmounted, then the p is mounted.
+
+</Diagram>
+
+</DiagramGroup>
+
+<DiagramGroup>
+
+<Diagram name="preserving_state_diff_pt2" height={290} width={753} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'p'. The middle section has the same 'div' parent, but the child component has now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, highlighted in yellow.">
+
+When switching back, first the p is unmounted, then the Counter is mounted.
+
+</Diagram>
+
+</DiagramGroup>
+>>>>>>> 5f3a9756e00e256735a5f52df19b403d8fdd3a9d
 
 또한 **같은 위치에 다른 컴포넌트를 렌더링할 때 컴포넌트는 그의 전체 서브 트리의 state를 초기화합니다.** 이것이 어떻게 작동하는지 보기 위해 카운터를 증가시키고 체크 박스를 체크해보세요.
 
@@ -620,7 +725,29 @@ label {
 
 체크 박스를 선택할 때 카운터 state가 초기화됩니다. `div`의 첫 번째 자식으로 `Counter`를 렌더링하는 것에서 `section`의 첫 번째 자식으로 바꾸지만요. 자식 `div`가 DOM에서 제거될 때 그것의 전체 하위 트리(`Counter`와 그 state를 포함해서)는 제거됩니다.
 
+<<<<<<< HEAD
 <img alt="첫 번째 자식이 다르면 잊으세요!" src="/images/docs/sketches/s_ui-components-swap.png" />
+=======
+<DiagramGroup>
+
+<Diagram name="preserving_state_diff_same_pt1" height={362} width={752} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'section', which has a single child labeled 'Counter' containing a state bubble labeled 'count' with value 3. The middle section has the same 'div' parent, but the child components have now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'div', highlighted in yellow, also with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, all highlighted in yellow.">
+
+When section changes to div, first the section is unmounted then the new div is mounted.
+
+</Diagram>
+
+</DiagramGroup>
+
+<DiagramGroup>
+
+<Diagram name="preserving_state_diff_same_pt2" height={362} width={752} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'div', which has a single child labeled 'Counter' containing a state bubble labeled 'count' with value 0. The middle section has the same 'div' parent, but the child components have now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'section', highlighted in yellow, also with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, all highlighted in yellow.">
+
+When switching back, first the div is unmounted then the new section is mounted.
+
+</Diagram>
+
+</DiagramGroup>
+>>>>>>> 5f3a9756e00e256735a5f52df19b403d8fdd3a9d
 
 경험상(rule of thumb) **리렌더링할 때 state를 유지하고 싶다면, 트리 구조가 "같아야" 합니다.** 만약 구조가 다르다면 React가 트리에서 컴포넌트를 지울 때 state로 지우기 때문에 state가 유지되지 않습니다.
 
@@ -741,9 +868,13 @@ h1 {
 
 지금은 선수를 바꿀 때 점수가 유지됩니다. 두 `Counter`가 같은 위치에 나타나기 때문에 React는 그들을 `person` props가 변경된 *같은* `Counter`로 봅니다.
 
+<<<<<<< HEAD
 <Illustration src="/images/docs/illustrations/i_react-is-blind-to-ui-swap.png" alt="React는 두 컴포넌트를 저울질하고 서로 색이 다르지만 같은 것으로 봅니다." />
 
 하지만 개념적으로 이 앱에서 둘은 분리된 카운터이어야합니다. UI에서 같은 위치에 나타나지만 하나는 Taylor를 위한 카운터이고 다른 하나는 Sarah를 위한 것입니다.
+=======
+But conceptually, in this app they should be two separate counters. They might appear in the same place in the UI, but one is a counter for Taylor, and another is a counter for Sarah.
+>>>>>>> 5f3a9756e00e256735a5f52df19b403d8fdd3a9d
 
 이 둘을 바꿀 때 state를 초기화하기 위한 두 가지 방법이 있습니다.
 
@@ -827,7 +958,27 @@ h1 {
 * 처음에는 `isPlayerA`가 `true`입니다. 따라서 첫 번째 자리에 `Counter`가 있고 두 번째 자리는 비어있습니다.
 * "Next player"를 클릭하면 첫 번째 자리는 비워지고 두 번째 자리에 `Counter`가 옵니다.
 
-<img alt=" " src="/images/docs/sketches/s_placeholder-ui.png" />
+<DiagramGroup>
+
+<Diagram name="preserving_state_diff_position_p1" height={375} width={504} alt="Diagram with a tree of React components. The parent is labeled 'Scoreboard' with a state bubble labeled isPlayerA with value 'true'. The only child, arranged to the left, is labeled Counter with a state bubble labeled 'count' and value 0. All of the left child is highlighted in yellow, indicating it was added.">
+
+Initial State
+
+</Diagram>
+
+<Diagram name="preserving_state_diff_position_p2" height={375} width={504} alt="Diagram with a tree of React components. The parent is labeled 'Scoreboard' with a state bubble labeled isPlayerA with value 'false'. The state bubble is highlighted in yellow, indicating that it has changed. The left child is replaced with a yellow 'poof' image indicating that it has been deleted and there is a new child on the right, highlighted in yellow indicating that it was added. The new child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0.">
+
+Clicking "next"
+
+</Diagram>
+
+<Diagram name="preserving_state_diff_position_p3" height={375} width={504} alt="Diagram with a tree of React components. The parent is labeled 'Scoreboard' with a state bubble labeled isPlayerA with value 'true'. The state bubble is highlighted in yellow, indicating that it has changed. There is a new child on the left, highlighted in yellow indicating that it was added. The new child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is replaced with a yellow 'poof' image indicating that it has been deleted.">
+
+Clicking "next" again
+
+</Diagram>
+
+</DiagramGroup>
 
 > 각 `Counter`의 state는 DOM에서 지워질 때마다 제거됩니다. 이것이 버튼을 누를 때마다 초기화되는 이유입니다.
 
@@ -921,9 +1072,13 @@ Taylor와 Sarah를 바꾸지만, state를 유지하지는 않습니다. **당신
 
 `key`를 명시하면 React는 부모 내에서의 순서 대신에 `key` 자체를 위치의 일부로 사용합니다. 이것이 컴포넌트를 JSX에서 같은 자리에 렌더링하지만 React 관점에서는 다른 카운터인 이유입니다. 결과적으로 그들은 절대 state를 공유하지 않습니다. 카운터가 화면에 나타날 때마다 state가 새로 만들어집니다. 그리고 카운터가 제거될 때 마다 state도 제거됩니다. 그들을 토글할 때마다 state가 계속 state가 초기화됩니다.
 
+<<<<<<< HEAD
 <Illustration src="/images/docs/illustrations/i_keys-in-trees.png" alt="React는 같은 타입의 컴포넌트라도 다른 key를 가지고 있으면 그들을 구별합니다." />
 
 > key가 전역적으로 유일하지는 않다는 것을 기억하세요. key는 **부모 안의** 위치에서만 유효합니다.
+=======
+> Remember that keys are not globally unique. They only specify the position *within the parent*.
+>>>>>>> 5f3a9756e00e256735a5f52df19b403d8fdd3a9d
 
 ### key를 이용해 폼을 초기화하기 {/*resetting-a-form-with-a-key*/}
 
