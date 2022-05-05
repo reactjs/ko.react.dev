@@ -195,11 +195,7 @@ td {
 
 </Sandpack>
 
-<<<<<<< HEAD
 **코드 예제가 어려워도 주저하지 마세요!** 지금 글에서는 우리는 코드보다 컨셉에 집중할 겁니다. 뒤에 배우는 [Describing the UI](/learn/describing-the-ui) 단계로 가면 React 코드를 좀 더 잘 이해 할 수 있게 될 겁니다.
-=======
-(If this code looks intimidating, go through the [Quick Start](/learn/) first!)
->>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 
 이 단계가 끝나면 데이터 렌더링을 위해 만들어진 재사용 가능한 컴포넌트들의 라이브러리를 가지게 됩니다. 현재는 앱의 정적 버전이기 때문에 컴포넌트는 단순히 JSX만 리턴 할 것 입니다. 계층구조의 최상단 컴포넌트 (FilterableProductTable)는 prop으로 데이터 모델을 받습니다. 데이터가 최상단 컴포넌트부터 트리의 맨 아래 까지 흘러가기 때문에 단방향 데이터 흐름(one-way data flow)라고 부릅니다.
 

@@ -33,11 +33,7 @@ function MyDiv(props) {
 }
 ```
 
-<<<<<<< HEAD
 **권장** 전개 연산자(spread operator)를 사용하여 변수를 props에서 빼내고 나머지 props를 변수에 넣을 수 있습니다.
-=======
-**Good:** The spread syntax can be used to pull variables off props, and put the remaining props into a variable.
->>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 
 ```js
 function MyDiv(props) {
