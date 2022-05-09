@@ -19,9 +19,15 @@ title: 렌더링 그리고 커밋
 
 주방에서 요리사가 컴포넌트를 재료로 맛있는 요리를 한다고 상상해보세요. 이 시나리오에서 React는 고객들의 요청을 받고 주문을 가져오는 웨이터입니다. 이 과정에는 UI를 요청하고 제공하는 세 가지 단계가 있습니다.
 
+<<<<<<< HEAD
 1. 렌더링 **트리거** (손님의 주문을 주방으로 전달)
 2. 컴포넌트 **렌더링** (주방에서 주문 받기)
 3. DOM에 **커밋** (테이블에 주문한 요리 내놓기)
+=======
+1. **Triggering** a render (delivering the guest's order to the kitchen)
+2. **Rendering** the component (preparing the order in the kitchen)
+3. **Committing** to the DOM (placing the order on the table)
+>>>>>>> 26a870e1c6e232062b760d37620d85802750e985
 
 <IllustrationBlock sequential>
   <Illustration caption="Trigger" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />
@@ -69,7 +75,11 @@ export default function Image() {
 
 ### State 업데이트 시 리렌더링 {/*re-renders-when-state-updates*/}
 
+<<<<<<< HEAD
 컴포넌트가 처음 렌더링되면 [`setState`](reference/setstate)로 state를 업데이트하여 추가 렌더링을 트리거 시킬 수 있습니다. 컴포넌트의 state를 업데이트하면 렌더링이 자동으로 대기열에 추가됩니다. (이것은 식당에서 손님이 첫 주문 이후에 갈증이나 배고픔에 따라 차, 디저트 등을 추가로 주문하는 모습으로 상상해 볼 수 있습니다.)
+=======
+Once the component has been initially rendered, you can trigger further renders by updating its state with the [`set` function](/apis/usestate#setstate). Updating your component's state automatically queues a render. (You can imagine these as a restaurant guest ordering tea, dessert, and all sorts of things after putting in their first order, depending on the state of their thirst or hunger.)
+>>>>>>> 26a870e1c6e232062b760d37620d85802750e985
 
 <IllustrationBlock sequential>
   <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. They patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
