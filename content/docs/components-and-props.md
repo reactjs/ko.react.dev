@@ -65,26 +65,31 @@ React가 사용자 정의 컴포넌트로 작성한 엘리먼트를 발견하면
 
 다음은 페이지에 "Hello, Sara"를 렌더링하는 예시입니다.
 
-```js{1,5}
+```js{1,6}
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
 const element = <Welcome name="Sara" />;
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
+root.render(element);
 ```
 
 **[CodePen에서 시험해보기](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
 
 이 예시에서는 다음과 같은 일들이 일어납니다.
 
+<<<<<<< HEAD
 1. `<Welcome name="Sara" />` 엘리먼트로 `ReactDOM.render()`를 호출합니다.
 2. React는 `{name: 'Sara'}`를 props로 하여 `Welcome` 컴포넌트를 호출합니다.
 3. `Welcome` 컴포넌트는 결과적으로  `<h1>Hello, Sara</h1>` 엘리먼트를 반환합니다.
 4. React DOM은 `<h1>Hello, Sara</h1>` 엘리먼트와 일치하도록 DOM을 효율적으로 업데이트합니다.
+=======
+1. We call `root.render()` with the `<Welcome name="Sara" />` element.
+2. React calls the `Welcome` component with `{name: 'Sara'}` as the props.
+3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
+4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 
 
 
@@ -115,11 +120,6 @@ function App() {
     </div>
   );
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
 ```
 
 **[CodePen에서 시험해보기](https://codepen.io/gaearon/pen/KgQKPr?editors=1010)**

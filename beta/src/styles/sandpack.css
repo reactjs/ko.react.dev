@@ -90,6 +90,9 @@ html.dark .sp-tabs .sp-tab-button[data-active='true'] {
 .sp-code-editor .cm-errorLine {
   background-color: rgba(255, 107, 99, 0.1);
   position: relative;
+  padding-right: 2em !important;
+  display: inline-block;
+  min-width: 100%;
 }
 
 .sp-code-editor .cm-errorLine:after {
@@ -98,7 +101,7 @@ html.dark .sp-tabs .sp-tab-button[data-active='true'] {
   top: 0;
   content: '\26A0';
   font-size: 22px;
-  line-height: 16px;
+  line-height: 20px;
   color: #ff3d3d;
 }
 
@@ -113,10 +116,6 @@ html.dark .sp-tabs .sp-tab-button[data-active='true'] {
  *
  * If you know a better way to keep them from diverging, send a PR.
  */
-.sp-stack {
-  height: initial !important;
-  width: 100% !important;
-}
 .sp-cm {
   -webkit-text-size-adjust: none !important;
   padding: 0 !important;
@@ -133,7 +132,6 @@ html.dark .sp-tabs .sp-tab-button[data-active='true'] {
   font-size: 13.6px !important;
   line-height: 24px !important;
   height: 100%;
-  overflow: scroll;
 }
 .text-xl .sp-pre-placeholder {
   font-size: 16px !important;
@@ -167,6 +165,9 @@ html.dark .sp-layout > :not(:first-child) {
 }
 html.dark .sp-layout {
   background-color: #343a46;
+}
+html .sp-loading {
+  background-color: transparent;
 }
 html.dark .sp-loading {
   background-color: #23272f;
@@ -229,7 +230,6 @@ html.dark .sp-devtools > div {
 }
 .sp-cm:focus-visible {
   box-shadow: inset 0 0 0 4px rgba(20, 158, 202, 0.4) !important;
-  padding-left: 0px !important;
 }
 .cm-line {
   padding: 0 var(--sp-space-3) !important;
@@ -249,4 +249,62 @@ html.dark .sp-devtools > div {
       font-size: initial;
     }
   }
+}
+
+.sp-cm {
+  padding-left: 8px !important;
+}
+.sp-layout {
+  min-height: 216px;
+}
+.sp-layout > .sp-stack:nth-child(1) {
+  /* Force vertical if there isn't enough space. */
+  min-width: 431px;
+  /* No min height on mobile because we know code in advance. */
+  /* Max height is needed to avoid too long files. */
+  max-height: 40vh;
+}
+.sp-layout > .sp-stack:nth-child(2) {
+  /* Force vertical if there isn't enough space. */
+  min-width: 431px;
+  /* Keep preview a fixed size on mobile to avoid jumps. */
+  /* This is because we don't know its content in advance. */
+  min-height: 40vh;
+  max-height: 40vh;
+}
+.sp-layout.sp-layout-expanded > .sp-stack:nth-child(1) {
+  /* Clicking "show more" lets mobile editor go full height. */
+  max-height: unset;
+  height: auto;
+}
+.sp-layout.sp-layout-expanded > .sp-stack:nth-child(2) {
+  /* Clicking "show more" lets mobile preview go full height. */
+  max-height: unset;
+  height: auto;
+}
+@media (min-width: 1280px) {
+  .sp-layout > .sp-stack:nth-child(1) {
+    /* On desktop, clamp height by pixels instead. */
+    height: auto;
+    min-height: unset;
+    max-height: 406px;
+  }
+  .sp-layout > .sp-stack:nth-child(2) {
+    /* On desktop, clamp height by pixels instead. */
+    height: auto;
+    min-height: unset;
+    max-height: 406px;
+  }
+  .sp-layout.sp-layout-expanded > .sp-stack:nth-child(1) {
+    max-height: unset;
+  }
+  .sp-layout.sp-layout-expanded > .sp-stack:nth-child(2) {
+    max-height: unset;
+  }
+}
+
+.expandable-callout .sp-stack:nth-child(2) {
+  min-width: 431px;
+  min-height: 40vh;
+  max-height: 40vh;
 }

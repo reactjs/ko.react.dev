@@ -25,7 +25,11 @@ const variantMap = {
       'linear-gradient(rgba(245, 249, 248, 0), rgba(245, 249, 248, 1)',
   },
   gotcha: {
+<<<<<<< HEAD
     title: '알겠다!',
+=======
+    title: 'Pitfall',
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
     Icon: IconGotcha,
     containerClasses: 'bg-yellow-5 dark:bg-yellow-60 dark:bg-opacity-20',
     textColor: 'text-yellow-50 dark:text-yellow-40',
@@ -41,6 +45,7 @@ function ExpandableCallout({children, type}: ExpandableCalloutProps) {
   return (
     <div
       className={cn(
+        'expandable-callout',
         'pt-8 pb-4 px-5 sm:px-8 my-8 relative rounded-none shadow-inner -mx-5 sm:mx-auto sm:rounded-lg',
         variant.containerClasses
       )}>

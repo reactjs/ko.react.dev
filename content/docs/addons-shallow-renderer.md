@@ -59,7 +59,11 @@ expect(result.props.children).toEqual([
 
 shallowRenderer는 테스트 중인 컴포넌트를 렌더링하는 "장소(place)"로 생각할 수 있으며 이것으로부터 컴포넌트의 출력을 추출할 수 있습니다.
 
+<<<<<<< HEAD
 `shallowRenderer.render()`는 [`ReactDOM.render()`](/docs/react-dom.html#render)와 비슷하지만 DOM을 요구하지 않으며 오직 한 단계 깊이만을 렌더링합니다. 이것은 컴포넌트의 자식들이 어떻게 구현되었는지 신경 쓰지 않고 독립적으로 테스트할 수 있음을 의미합니다.
+=======
+`shallowRenderer.render()` is similar to [`root.render()`](/docs/react-dom-client.html#createroot) but it doesn't require DOM and only renders a single level deep. This means you can test components isolated from how their children are implemented.
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 
 ### `shallowRenderer.getRenderOutput()` {#shallowrenderergetrenderoutput}
 

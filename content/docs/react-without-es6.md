@@ -222,10 +222,8 @@ var TickTock = createReactClass({
   }
 });
 
-ReactDOM.render(
-  <TickTock />,
-  document.getElementById('example')
-);
+const root = ReactDOM.createRoot(document.getElementById('example'));
+root.render(<TickTock />);
 ```
 
 하나의 컴포넌트가 같은 생명주기 메서드를 정의한 여러 mixin을 사용한다고 생각해봅시다. 예를 든다면, mixin들이 컴포넌트가 파괴될 때 어떠한 정리 동작을 하려고 할 수도 있습니다. 이 때는 모든 생명주기 메서드의 호출이 보장됩니다. mixin에서 정의된 생명주기 메서드들은 mixin이 나열된 순서대로 작동되며 그 뒤에 컴포넌트의 메서드가 호출됩니다.

@@ -4,7 +4,11 @@ title: 첫 컴포넌트
 
 <Intro>
 
+<<<<<<< HEAD
 컴포넌트는 React의 핵심 개념 중 하나입니다. 컴포넌트는 사용자 인터페이스(UI)를 구축하는 토대이기 때문에 컴포넌트에서부터 React로의 여정을 시작하는 것은 완벽한 선택입니다!
+=======
+*Components* are one of the core concepts of React. They are the foundation upon which you build user interfaces (UI), which makes them the perfect place to start your React journey!
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 
 </Intro>
 
@@ -102,7 +106,11 @@ React 컴포넌트는 일반적인 JavaScript 함수이지만, 제대로 작동�
 return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
 ```
 
+<<<<<<< HEAD
 그러나 반환하려는 마크업이 return 문과 모두 같은 줄에 있지 않다면 다음과 같이 괄호로 묶어야 합니다.
+=======
+But if your markup isn't all on the same line as the `return` keyword, you must wrap it in a pair of parentheses like this:
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 
 ```js
 return (
