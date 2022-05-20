@@ -76,7 +76,7 @@ Webpack이 이 구문을 만나게 되면 앱의 코드를 분할합니다. Crea
 
 [코드 분할 가이드](https://webpack.js.org/guides/code-splitting/)를 참조하세요. Webpack 설정은 [가이드](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269)에 있습니다.
 
-[Babel](http://babeljs.io/)을 사용할 때는 Babel이 동적 import를 인식할 수 있지만 변환하지는 않도록 합니다. 이를 위해 [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import)를 사용하세요.
+[Babel](http://babeljs.io/)을 사용할 때는 Babel이 동적 import를 인식할 수 있지만 변환하지는 않도록 합니다. 이를 위해 [@babel/plugin-syntax-dynamic-import](https://classic.yarnpkg.com/en/package/@babel/plugin-syntax-dynamic-import)를 사용하세요.
 
 ## `React.lazy` {#reactlazy}
 
