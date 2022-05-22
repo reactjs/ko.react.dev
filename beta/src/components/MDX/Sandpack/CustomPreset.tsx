@@ -20,6 +20,7 @@ import {IconChevron} from 'components/Icon/IconChevron';
 import {NavigationBar} from './NavigationBar';
 import {Preview} from './Preview';
 import {CustomTheme} from './Themes';
+import {useSandpackLint} from './utils';
 
 export function CustomPreset({
   isSingleFile,
@@ -32,6 +33,7 @@ export function CustomPreset({
   devToolsLoaded: boolean;
   onDevToolsLoad: () => void;
 }) {
+  const {lintErrors, onLint} = useSandpackLint();
   const lineCountRef = React.useRef<{[key: string]: number}>({});
   const containerRef = React.useRef<HTMLDivElement>(null);
   const {sandpack} = useSandpack();
@@ -64,10 +66,12 @@ export function CustomPreset({
               showInlineErrors
               showTabs={false}
               showRunButton={false}
+              extensions={[onLint]}
             />
             <Preview
               className="order-last xl:order-2"
               isExpanded={isExpanded}
+              lintErrors={lintErrors}
             />
             {isExpandable && (
               <button
