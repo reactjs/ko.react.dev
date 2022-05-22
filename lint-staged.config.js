@@ -1,6 +1,3 @@
 module.exports = {
-  linters: {
-    '*.md': ['textlint --rulesdir textlint/rules'],
-  },
-  ignore: ['textlint/fixtures/*'],
+  '*.md': ['textlint --rulesdir textlint/rules'],
 };

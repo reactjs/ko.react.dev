@@ -329,11 +329,7 @@ function Button({ children, onClick }) {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/modest-ritchie-iufrh)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/heuristic-cerf-8bo4rk)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 명심하세요 버튼은 **어떤** 상태를 갱신하던지 관여하지 않습니다. 이것은 onClick 이벤트 핸들러에서 발생하는 모든 상태 갱신을 transition에 포함합니다. 이제 `<Button>`이 트랜지션 설정을 대신해 주기 때문에 `<ProfilePage>` 컴포넌트에 트랜지션 설정을 해줄 필요가 없습니다.
 
@@ -359,11 +355,7 @@ function ProfilePage() {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/modest-ritchie-iufrh)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/heuristic-cerf-8bo4rk)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 버튼을 클릭하면 트랜지션이 시작되고 그 안에 `props.onClick()` 이 호출되서 `<ProfilePage>` 컴포넌트에서 `handleRefreshClick` 함수가 실행됩니다. 새로운 데이터를 가져오기 시작하지만 트랜지션 내부라서 폴백이 보여지지 않으며 'useTransition' 호출에 지정된 10초가 지나지 않았습니다. 트랜지션이 보류중인 동안 버튼에 인라인으로 로딩 인디케이터를 봅니다.
 
@@ -385,19 +377,11 @@ function ProfilePage() {
 
 ### 기본: 후퇴 → 스켈레톤 → 완료 {#default-receded-skeleton-complete}
 
-<<<<<<< HEAD
-[이 예시](https://codesandbox.io/s/prod-grass-g1lh5)를 열고 "Open Profile" 버튼을 클릭하세요. 여러 시각적 상태를 단계별로 볼 수 있습니다.
-=======
 Open [this example](https://codesandbox.io/s/xenodochial-breeze-khk2fh) and click "Open Profile". You will see several visual states one by one:
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
-
-<!-- textlint-disable -->
 
 * **후퇴:** 잠깐 `<h1>Loading the app...</h1>` 폴백이 보입니다.
 * **스켈레톤:** `<ProfilePage>` 컴포넌트와 내부의 `<h2>Loading posts...</h2>` 폴백이 보입니다.
 * **완료:** 별도의 내부 폴백 없이 `<ProfilePage>` 가 보입니다. 모든 것이 준비되었습니다.
-
-<!-- textlint-enable -->
 
 어떻게 후퇴와 스켈레톤 상태를 구분할 수 있을까요? 차이점은 **후퇴**상태는 '한 단계 뒤로 가기' 로 느껴지고, **스켈레톤** 상태는 더 많은 콘텐츠를 보여주기 위해서 '한 단계 앞으로 가기' 에 가까운 느낌입니다.
 
@@ -484,23 +468,14 @@ Open [this example](https://codesandbox.io/s/xenodochial-breeze-khk2fh) and clic
 
 차이를 느끼기 위해 두 예시를 비교해보세요.
 
-<<<<<<< HEAD
-* 기본: [후퇴 → 스켈레톤 → 완성](https://codesandbox.io/s/prod-grass-g1lh5)
-* **권장: [보류 → 스켈레톤 → 완성](https://codesandbox.io/s/focused-snow-xbkvl)**
-=======
 * Default: [Receded → Skeleton → Complete](https://codesandbox.io/s/xenodochial-breeze-khk2fh)
 * **Preferred: [Pending → Skeleton → Complete](https://codesandbox.io/s/serene-pascal-w3no1l)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 두 예시의 유일한 차이점은 첫 번째는 일반 `<button>`을 사용하지만 두 번째는 커스텀 `<Button>` 컴포넌트를 `useTransition`와 함께 사용한다는 것입니다.
 
 ### 지연평가 요소를 `<Suspense>`로 래핑하기 {#wrap-lazy-features-in-suspense}
 
-<<<<<<< HEAD
-[이 예시](https://codesandbox.io/s/nameless-butterfly-fkw5q)를 열어보세요. 버튼을 누르면 페이지가 전환되기 전에 몇 초간 보류 상태가 보입니다. 이 트랜지션은 자연스럽고 좋습니다.
-=======
 Open [this example](https://codesandbox.io/s/crazy-browser-0tdg6m). When you press a button, you'll see the Pending state for a second before moving on. This transition feels nice and fluid.
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 완전 새로운 기능을 프로필 페이지에 추가할 것입니다. 한 사람에 대한 재밌는 사실 목록을 말이죠.
 
@@ -532,19 +507,11 @@ function ProfileTrivia({ resource }) {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/focused-mountain-uhkzg)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/agitated-snowflake-m3scjk)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 이제 "Open Profile"을 누르면 뭔가 잘못됐다는걸 느낄 겁니다. 트랜지션을 수행하는 데 7초나 걸렸습니다! trivia API가 너무 느리기 때문입니다. API를 좀 더 빠르게 만들 수 없다고 가정해봅시다. 이 제약과 어떻게 사용자 경험을 개선할 수 있을까요?
 
-<<<<<<< HEAD
-보류 상태에 너무 오랫동안 잔류하고 싶지 않다면, 처음으로 생각나는 직관적인 방법은  `useTransition`의 `timeoutMs` 설정을 `3000`정도로 작게 만드는 것입니다. 이 방법을 [여기](https://codesandbox.io/s/practical-kowalevski-kpjg4)에서 시도해볼 수 있습니다. 너무 긴 보류 상태에서 벗어날 수는 있지만, 여전히 유용한 정보를 볼 수는 없습니다!
-=======
 If we don't want to stay in the Pending state for too long, our first instinct might be to set `timeoutMs` in `useTransition` to something smaller, like `3000`. You can try this [here](https://codesandbox.io/s/nervous-galileo-ln6pbh). This lets us escape the prolonged Pending state, but we still don't have anything useful to show!
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 이 문제를 해결하기 위한 더 간단한 방법이 있습니다. `<Suspense>`를 래핑해서 **트랜지션을 짧게 만드는 것 대신 트랜지션에서 느린 컴포넌트를 제외할 수 있습니다**.
 
@@ -564,11 +531,7 @@ function ProfilePage({ resource }) {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/condescending-shape-s6694)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/mutable-silence-wffd1t)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 위 예시는 중요한 인사이트를 보여줍니다. React는 항상 가능한 빨리 스켈레톤 상태로 가려고 합니다. 어디에서나 긴 시간제한으로 트랜지션을 사용하더라도 React는 후퇴 상태를 피하고자 필요 이상으로 보류 상태를 유지하지 않습니다.
 
@@ -578,11 +541,7 @@ function ProfilePage({ resource }) {
 
 이미 다음 화면에 있을 때 때때로 다른 `<Suspense>` 경계를 '잠금 해제'하는 데 필요한 데이터가 빠르게 연속적으로 도착합니다. 예를 들어, 두 개의 서로 다른 응답이 각각 1000ms와 1050ms 후에 도착할 수 있습니다. 이미 1초 기다렸다면 50ms 더 기다릴 수 없습니다. React가 정기적으로 도착하는 "기차"와 같이 스케줄에 `<Suspense>` 경계를 표시하는 이유입니다. 이것은 레이아웃 쓰레싱 및 사용자에게 보여주는 시각적 변화의 수를 줄이기 위해 약간의 지연을 트레이드오프합니다.
 
-<<<<<<< HEAD
-[여기에서](https://codesandbox.io/s/admiring-mendeleev-y54mk) 데모를 볼 수 있습니다. "포스트" 및 "재미있는 사실" 응답은 서로 100ms 이내에 있습니다. React는 두 응답을 통합하여 서스펜스 경계를 함께 "공개"합니다.
-=======
-You can see a demo of this [here](https://codesandbox.io/s/ecstatic-sammet-zeddc4). The "posts" and "fun facts" responses come within 100ms of each other. But React coalesces them and "reveals" their Suspense boundaries together. 
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
+You can see a demo of this [here](https://codesandbox.io/s/ecstatic-sammet-zeddc4). The "posts" and "fun facts" responses come within 100ms of each other. But React coalesces them and "reveals" their Suspense boundaries together.
 
 ### 보류 인디케이터 지연하기 {#delaying-a-pending-indicator}
 
@@ -607,11 +566,7 @@ function Button({ children, onClick }) {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/floral-thunder-iy826)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/jolly-http-n94od0)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 이 신호는 사용자에게 뭔가 작업되고 있다고 알려줍니다. 하지만 트랜지션이 상대적으로 짧다면(500ms 이내) 너무 산만해지고 트랜지션 자체가 너무 느리게 느껴질 수 있습니다.
 
@@ -645,15 +600,9 @@ return (
 );
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/gallant-spence-l6wbk)**
-
-이 변경으로 보류 상태에 있더라도 500ms가 지날 때까지 사용자에게 인디케이터가 보이지 않습니다. API 응답이 느리면 개선되지 않은 것처럼 보일 수 있습니다. 그러나 API 호출이 빠를 때 [이전 예시](https://codesandbox.io/s/thirsty-liskov-1ygph)과 [다음 예시](https://codesandbox.io/s/hardcore-http-s18xr)를 비교해보세요. 나머지 코드는 변경되지 않았지만 "너무 빠른" 로딩 상태를 억제하고 지연에 주의를 주지 않으면서 성능인식을 개선할 수 있습니다.
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/optimistic-night-4td1me)**
 
 With this change, even though we're in the Pending state, we don't display any indication to the user until 500ms has passed. This may not seem like much of an improvement when the API responses are slow. But compare how it feels [before](https://codesandbox.io/s/priceless-water-yw7zw4) and [after](https://codesandbox.io/s/mystifying-noether-tnxftn) when the API call is fast. Even though the rest of the code hasn't changed, suppressing a "too fast" loading state improves the perceived performance by not calling attention to the delay.
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 ### 요약 {#recap}
 
@@ -711,11 +660,7 @@ function Translation({ resource }) {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/brave-villani-ypxvf)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/boring-frost-t5ijqm)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 인풋에 타이핑하면 `<Transition>` 컴포넌트는 서스펜드되고 데이터가 준비될 때까지 `<p>Loading...</p>` 폴백이 보입니다. 이상적인 형태는 아닙니다. 다음 번역을 가져오는 동안 **이전**번역을 볼 수 있다면 더 좋을 것입니다.
 
@@ -752,11 +697,7 @@ function App() {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/zen-keldysh-rifos)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/wizardly-swirles-476m52)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 인풋에 입력해보세요. 뭔가 잘못됐습니다! 인풋 갱신이 아주 느립니다.
 
@@ -782,11 +723,7 @@ function handleChange(e) {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/lively-smoke-fdf93)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/elegant-kalam-dhlrkz)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 이 변경으로 예상대로 작동합니다. 입풋 입력은 즉각 반영되고 번역은 타이핑된 내용을 나중에 따라갑니다.
 
@@ -817,11 +754,7 @@ const deferredValue = useDeferredValue(value, {
 });
 ```
 
-<<<<<<< HEAD
-위 기능을 보여주기 위해, [프로필 스위치 예시](https://codesandbox.io/s/musing-ramanujan-bgw2o)를 사용합니다. "Next" 버튼을 클릭하고 전환하는 데 1초가 걸리는지 확인해보세요.
-=======
 To demonstrate this feature, we'll use [the profile switcher example](https://codesandbox.io/s/quirky-carson-vs6g0i). Click the "Next" button and notice how it takes 1 second to do a transition.
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 사용자 디테일 정보를 가져오는 작업이 매우 빠르고 300밀리세컨드 안쪽이라고 가정해봅시다. 현재 일관된 프로필 페이지를 표시하려면 사용자 세부 정보와 게시물이 모두 필요하기 때문에 1초간 기다려야 합니다. 하지만 세부 정보를 더 빨리 표시하려면 어떻게 해야 할까요?
 
@@ -857,11 +790,7 @@ function ProfileTimeline({ isStale, resource }) {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/vigorous-keller-3ed2b)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/dazzling-fog-o6ovhr)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 이 예시의 트레이드오프는 `<ProfileTimeline>` 이 다른 컴포넌트들과 비일관적으로 오래된 정보를 보여줄 수 있게 된다는 것입니다. "Next" 버튼을 여러 번 클릭해보면 알게 될 겁니다. 하지만 다행스럽게도 우리는 트랜지션에 드는 시간을 1000ms에서 300ms로 줄였습니다.
 
@@ -892,11 +821,7 @@ function App() {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/pensive-shirley-wkp46)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/runtime-pine-kl2yff)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 이 예시에선 **`<MySlowList>`의 모든 아이템은 고의로 속도 저하를 유도합니다. 각 아이템은 스레드를 몇 밀리세컨드 동안 차단합니다.** 실제 애플리케이션에서는 절대 이렇게 만들진 않겠지만 최적화가 불가능한 깊은 컴포넌트 트리를 시뮬레이션하는 용도로 생각해주세요.
 
@@ -926,11 +851,7 @@ function App() {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/infallible-dewdney-9fkv9)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/charming-goldwasser-6kuh4m)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 이제 타이핑해도 덜 버벅대긴 하지만 결과가 지연되어 보입니다.
 
@@ -960,11 +881,7 @@ function ProfilePage({ resource }) {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/proud-tree-exg5t)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/hardcore-river-14ecuq)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 이 예시에서 API 호출 시간은 무작위입니다. 계속 새로고침 하다 보면 어떨 땐 포스트가 먼저 보이고 어떨 땐 재밌는 사실들이 먼저 보입니다.
 
@@ -979,11 +896,7 @@ function ProfilePage({ resource }) {
 </Suspense>
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/currying-violet-5jsiy)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/quirky-meadow-w1c61p)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 이 방법의 문제는 이제 **항상** 두 데이터를 가져올 때까지 기다려야 한다는 것입니다. 하지만 포스트가 먼저 도착한다면 둘 다 지연시킬 필요는 없습니다. 재밌는 사실이 나중에 로드되면 포스트 영역이 이미 잡혀 있기 때문에 갑자기 레이아웃이 밀려나지 않습니다.
 
@@ -1013,19 +926,11 @@ function ProfilePage({ resource }) {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/black-wind-byilt)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/empty-leaf-lp7eom)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 `revealOrder="forwards"`옵션은 내부 리스트에 인접한 `<Suspense>` 노드들은 **트리에 나타난 순서대로 '나타난다'는 것을 의미합니다. 설령 다른 순서로 데이터가 도착하더라도 말이죠. `<SuspenseList>`는 다른 흥미로운 모드도 있습니다. `"forwards"`를 `"backwards"` 나 `"together"`로 바꿔보고 어떻게 되는지 확인해보세요.
 
-<<<<<<< HEAD
-얼마나 많은 로딩 상태를 보일 수 있게 할 건지 `tail` 프로퍼티를 사용하여 제어할 수 있습니다. `tail="collapsed"`라고 설정하면 한 번에 최대 하나의 폴백만 보게 됩니다. [여기](https://codesandbox.io/s/adoring-almeida-1zzjh)에서 사용해 볼 수 있습니다.
-=======
 You can control how many loading states are visible at once with the `tail` prop. If we specify `tail="collapsed"`, we'll see *at most one* fallback at a time. You can play with it [here](https://codesandbox.io/s/keen-leaf-gccxd8).
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 `<SuspenseList>`은 React의 다른 요소들처럼 합성가능하다는 점을 상기해두세요. 예를 들어 `<SuspenseList>` 테이블을 담는 여러 `<SusepnseList>` 열을 여러개 가진 그리드를 만들 수도 있습니다.
 
