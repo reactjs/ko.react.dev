@@ -33,15 +33,7 @@
     "debounce": "^1.2.1",
     "ga-lite": "^2.1.4",
     "github-slugger": "^1.3.0",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "next": "^12.0.5",
-=======
-    "next": "^12.0.9",
->>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
-=======
     "next": "^12.0.10",
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
     "parse-numeric-range": "^1.2.0",
     "react": "experimental",
     "react-collapsed": "3.1.0",

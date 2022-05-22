@@ -155,10 +155,6 @@ function MathI({children}: {children: any}) {
   );
 }
 
-<<<<<<< HEAD
-function YouWillLearn({children}: {children: any}) {
-  return <SimpleCallout title="배우게 될 것">{children}</SimpleCallout>;
-=======
 function YouWillLearn({
   children,
   isChapter,
@@ -166,9 +162,8 @@ function YouWillLearn({
   children: any;
   isChapter?: boolean;
 }) {
-  let title = isChapter ? 'In this chapter' : 'You will learn';
+  let title = isChapter ? '이번 장의 구성' : '배우게 될 것';
   return <SimpleCallout title={title}>{children}</SimpleCallout>;
->>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 }
 
 // TODO: typing.
