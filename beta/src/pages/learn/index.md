@@ -125,7 +125,7 @@ return (
 );
 ```
 
-You can also "escape into JavaScript" from JSX attributes, but you have to use curlies *instead of* quotes. For example, `className="avatar"` passes the `"avatar"` string as the CSS class, but `src={user.imageUrl}` reads the JavaScript `user.imageUrl` variable value, and then passes that value as the `src` attribute:
+You can also "escape into JavaScript" from JSX attributes, but you have to use curly braces *instead of* quotes. For example, `className="avatar"` passes the `"avatar"` string as the CSS class, but `src={user.imageUrl}` reads the JavaScript `user.imageUrl` variable value, and then passes that value as the `src` attribute:
 
 ```js {3,4}
 return (
@@ -136,7 +136,7 @@ return (
 );
 ```
 
-You can put any dynamic expressions inside JSX curlies, including string concatenation and object literals:
+You can put more complex expressions inside the JSX curly braces too, for example, [string concatenation](https://javascript.info/operators#string-concatenation-with-binary):
 
 <Sandpack>
 
@@ -177,7 +177,7 @@ export default function Profile() {
 
 </Sandpack>
 
-In the above example, `style={{ }}` is not a special syntax, but a regular object inside the JSX curlies. You can use the `style` attribute when your styles depend on JavaScript variables.
+In the above example, `style={{}}` is not a special syntax, but a regular `{}` object inside the `style={ }` JSX curly braces. You can use the `style` attribute when your styles depend on JavaScript variables.
 
 ## Conditional rendering {/*conditional-rendering*/}
 
@@ -197,7 +197,7 @@ return (
 );
 ```
 
-If you prefer terser code, you can use the [conditional `?` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator). Unlike `if`, it works inside JSX:
+If you prefer more compact code, you can use the [conditional `?` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator). Unlike `if`, it works inside JSX:
 
 ```js
 <div>
@@ -217,7 +217,7 @@ When you don't need the `else` branch, you can also use a shorter [logical `&&` 
 </div>
 ```
 
-All of the same approaches work for conditionally specifying attributes. If you're unfamiliar with some of this JavaScript syntax, you can start by always using `if...else`.
+All of these approaches also work for conditionally specifying attributes. If you're unfamiliar with some of this JavaScript syntax, you can start by always using `if...else`.
 
 ## Rendering lists {/*rendering-lists*/}
 
@@ -302,7 +302,7 @@ Notice how `onClick={handleClick}` has no parentheses at the end! Do not _call_ 
 
 Often, you'll want your component to "remember" some information and display it. For example, maybe you want to count the number of times a button is clicked. To do this, add *state* to your component.
 
-First, import [`useState`](/reference/usestate) from React:
+First, import [`useState`](/apis/usestate) from React:
 
 ```js {1,4}
 import { useState } from 'react';
@@ -315,7 +315,7 @@ function MyButton() {
   const [count, setCount] = useState(0);
 ```
 
-You will get two things from `useState`: the current state (`count`), and the function that lets you update it (`setCount`). You can give them any names, but the convention is to call them like `[thing, setThing]`.
+You will get two things from `useState`: the current state (`count`), and the function that lets you update it (`setCount`). You can give them any names, but the convention is to call them like `[something, setSomething]`.
 
 The first time the button is displayed, `count` will be `0` because you passed `0` to `useState()`. When you want to change state, call `setCount()` and pass the new value to it. Clicking this button will increment the counter:
 
@@ -364,7 +364,6 @@ export default function MyApp() {
       <h1>Counters that update separately</h1>
       <MyButton />
       <MyButton />
-      <MyButton />
     </div>
   );
 }
@@ -379,13 +378,59 @@ button {
 
 </Sandpack>
 
-Functions starting with `use` are called Hooks. `useState` is a built-in Hook provided by React. You can find other built-in Hooks in the [React API reference](/reference). You can also write your own Hooks by combining the existing ones.
+Notice how each button "remembers" its own `count` state and doesn't affect other buttons.
+
+## Using Hooks {/*using-hooks*/}
+
+Functions starting with `use` are called Hooks. `useState` is a built-in Hook provided by React. You can find other built-in Hooks in the [React API reference](/apis). You can also write your own Hooks by combining the existing ones.
 
 Hooks are more restrictive than regular functions. You can only call Hooks *at the top level* of your components (or other Hooks). If you want to `useState` in a condition or a loop, extract a new component and put it there.
 
 ## Sharing data between components {/*sharing-data-between-components*/}
 
-In the above example, each counter is independent. If you want them to display the same value and update together, *move the state up* to their closest common ancestor. First, move state from `MyButton` into `MyApp`:
+In the previous example, each `MyButton` had its own independent `count`, and when each button was clicked, only the `count` for the button clicked changed:
+
+<DiagramGroup>
+
+<Diagram name="sharing_data_child" height={734} width={814} alt="Diagram showing a tree of three components, one parent labeled MyApp and two children labeled MyButton. Both MyButton components contain a count with value zero.">
+
+Before clicking, each MyButton has a count value set to zero.
+
+</Diagram>
+
+<Diagram name="sharing_data_child_clicked" height={734} width={814} alt="The same diagram as the previous, with the count of the first child MyButton component highlighted indicating a click with the count value incremented to one. The second MyButton component still contains value zero." >
+
+After clicking, only one MyButton count value has updated.
+
+</Diagram>
+
+</DiagramGroup>
+
+However, often you'll need components to *share data and always update together*.
+
+To make both `MyButton` components display the same `count` and update together, you need to move the state from the individual buttons "upwards" to the closest component containing all of them.
+
+In this example, it is `MyApp`:
+
+<DiagramGroup>
+
+<Diagram name="sharing_data_parent" height={770} width={820} alt="Diagram showing a tree of three components, one parent labeled MyApp and two children labeled MyButton. MyApp contains a count value of zero which is passed down to both of the MyButton components, which also show value zero." >
+
+Before clicking, count is stored in MyApp and passed down to both children as props.
+
+</Diagram>
+
+<Diagram name="sharing_data_parent_clicked" height={770} width={820} alt="The same diagram as the previous, with the count of the parent MyApp component highlighted indicating a click with the value incremented to one. The flow to both of the children MyButton components is also highlighted, and the count value in each child is set to one indicating the value was passed down." >
+
+After clicking, count updates in MyApp and the new value is passed to both children as props.
+
+</Diagram>
+
+</DiagramGroup>
+
+Now when you click either button, the `count` in `MyApp` will change, which will change both of the counts in `MyButton`. Here's how you can express this in code.
+
+First, *move the state up* from `MyButton` into `MyApp`:
 
 ```js {2,6-10}
 function MyButton() {
@@ -404,15 +449,14 @@ export default function MyApp() {
       <h1>Counters that update separately</h1>
       <MyButton />
       <MyButton />
-      <MyButton />
     </div>
   );
 }
 ```
 
-Then, *pass down* the state and the event handler that's now inside `MyApp` to `MyButton`. You can pass information to `MyButton` using the JSX curly braces, just like you previously did with built-in tags like `<img>`:
+Then, *pass the state down* from `MyApp` to each `MyButton`, together with the shared click handler. You can pass information to `MyButton` using the JSX curly braces, just like you previously did with built-in tags like `<img>`:
 
-```js {11-13}
+```js {11-12}
 export default function MyApp() {
   const [count, setCount] = useState(0);
 
@@ -425,13 +469,14 @@ export default function MyApp() {
       <h1>Counters that update together</h1>
       <MyButton count={count} onClick={handleClick} />
       <MyButton count={count} onClick={handleClick} />
-      <MyButton count={count} onClick={handleClick} />
     </div>
   );
 }
 ```
 
-Finally, change `MyButton` to *read* the passed data from the parent component instead of using state:
+The information you pass down like this is called _props_. Now the `MyApp` component contains the `count` state and the `handleClick` event handler, and *passes both of them down as props* to each of the buttons.
+
+Finally, change `MyButton` to *read* the props you have passed from its parent component:
 
 ```js {1,3}
 function MyButton({ count, onClick }) {
@@ -443,7 +488,7 @@ function MyButton({ count, onClick }) {
 }
 ```
 
-Information received from a parent component is called *props*. The parent `MyApp` component keeps `count` in its state and declares the `handleClick` event handler. It passes `count` and `handleClick` as props to each of the `MyButton` components. When a button is clicked, the state of `MyApp` changes, and React updates the screen.
+When you click the button, the `onClick` handler fires. Each button's `onClick` prop was set to the `handleClick` function inside `MyApp`, so the code inside of it runs. That code calls `setCount(count + 1)`, incrementing the `count` state variable. The new `count` value is passed as a prop to each button, so they all show the new value.
 
 This is called "lifting state up". By moving state up, we've shared it between components.
 
@@ -470,7 +515,6 @@ export default function MyApp() {
   return (
     <div>
       <h1>Counters that update together</h1>
-      <MyButton count={count} onClick={handleClick} />
       <MyButton count={count} onClick={handleClick} />
       <MyButton count={count} onClick={handleClick} />
     </div>

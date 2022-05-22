@@ -332,11 +332,19 @@ body { margin: 0; }
 
 이와 같은 흐름은 종이에 그려 시각화할 수 있습니다. 종이에 각각의 state를 라벨링 된 원으로 그리고 각각의 state 변화를 화살표로 이어보세요. 이러한 과정을 통해 state 변화의 흐름을 파악할 수 있을 뿐 아니라 구현 전에 버그를 찾을 수도 있습니다.
 
-<img alt="A flow chart showing states and transitions between them" src="/images/docs/sketches/s_flow-chart.jpg" />
+<DiagramGroup>
+
+<Diagram name="responding_to_input_flow" height={350} width={688} alt="Flow chart moving left to right with 5 nodes. The first node labeled 'empty' has one edge labeled 'start typing' connected to a node labeled 'typing'. That node has one edge labeled 'press submit' connected to a node labeled 'submitting', which has two edges. The left edge is labeled 'network error' connecting to a node labeled 'error'. The right edge is labeled 'network success' connecting to a node labeled 'success'.">
+
+Form States
+
+</Diagram>
+
+</DiagramGroup>
 
 ### 세 번째: 메모리의 state를 `useState`로 표현하기 {/*step-3-represent-the-state-in-memory-with-usestate*/}
 
-다음으로 `useState`를 사용하여 컴포넌트의 시각적 state를 표현해야 합니다. 이 과정은 단순함이 핵심입니다. 각각의 state는 "움직이는 조각"입니다. 그리고 **"움직이는 조각"은 적을수록 좋습니다**. 복잡한 건 버그를 일으키기 마련이기 때문입니다!
+다음으로 [`useState`](/apis/usestate)를 사용하여 컴포넌트의 시각적 state를 표현해야 합니다. 이 과정은 단순함이 핵심입니다. 각각의 state는 "움직이는 조각"입니다. 그리고 **"움직이는 조각"은 적을수록 좋습니다**. 복잡한 건 버그를 일으키기 마련이기 때문입니다!
 
 먼저 *반드시 필요한* state를 가지고 시작해봅시다. 예를 들면 인풋의 `응답`은 반드시 저장해야 할 것입니다. 그리고 (존재한다면) 가장 최근에 발생한 `오류`도 저장해야 할 겁니다.
 
