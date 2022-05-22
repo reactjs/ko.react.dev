@@ -1,0 +1,13 @@
+{
+  "root": true,
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "no-unused-vars": "warn"
+  },
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "browser": true,
+    "es6": true
+  }
+}
