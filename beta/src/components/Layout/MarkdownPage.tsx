@@ -45,24 +45,14 @@ export function MarkdownPage<
         return {
           url: '#challenges',
           depth: 0,
-          text: '도전',
+          text: 'Challenges',
         };
       }
-<<<<<<< HEAD
-      if (child.props.mdxType === 'Recipes') {
-        return {
-          url: '#recipes',
-          depth: 0,
-          text: '레시피',
-        };
-      }
-=======
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
       if (child.props.mdxType === 'Recap') {
         return {
           url: '#recap',
           depth: 0,
-          text: '요약',
+          text: 'Recap',
         };
       }
       return {
@@ -77,7 +67,7 @@ export function MarkdownPage<
   if (anchors.length > 0) {
     anchors.unshift({
       depth: 1,
-      text: '개요',
+      text: 'Overview',
       url: '#',
     });
   }

@@ -224,11 +224,7 @@ function ProfileTimeline() {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 따라해보기](https://codesandbox.io/s/fragrant-glade-8huj6)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/fast-glade-rqnhtt)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
+**[CodeSandbox에서 따라해보기](https://codesandbox.io/s/fast-glade-rqnhtt)**
 
 위의 코드를 실행하고 콘솔 로그를 살펴보면, 아래와 같은 일련의 결과를 확인할 수 있습니다.
 
@@ -303,11 +299,7 @@ function ProfileTimeline({ posts }) {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 따라해보기](https://codesandbox.io/s/wandering-morning-ev6r0)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/hopeful-lake-loddz9)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
+**[CodeSandbox에서 따라해보기](https://codesandbox.io/s/hopeful-lake-loddz9)**
 
 이벤트가 발동하는 순서는 이제 아래와 같이 바뀝니다.
 
@@ -433,11 +425,7 @@ function App() {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 따라해보기](https://codesandbox.io/s/infallible-feather-xjtbu)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/sparkling-field-41z4r3)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
+**[CodeSandbox에서 따라해보기](https://codesandbox.io/s/sparkling-field-41z4r3)**
 
 이러한 접근 방식에서는, 코드와 데이터를 동시에 불러올 수 있습니다. 페이지를 전환할 때, 페이지에서 필요한 데이터를 불러오기 위하여 페이지의 코드를 기다릴 필요는 없습니다. 똑같은 시점에 코드와 데이터를 동시에 가져오기 시작하여 (링크를 클릭하는 동안), 더 향상된 사용자 경험을 전달할 수 있습니다.
 
@@ -524,11 +512,7 @@ function ProfileTimeline({ id }) {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 따라해보기](https://codesandbox.io/s/nervous-glade-b5sel)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/beautiful-mendeleev-qwyxzg)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
+**[CodeSandbox에서 따라해보기](https://codesandbox.io/s/beautiful-mendeleev-qwyxzg)**4
 
 Effect 의존성을 `[]`에서 `[id]`로 바꾼 것을 주목하시기 바랍니다. 이는 `id`가 바뀔 때마다 Effect를 다시 실행하도록 만들어야 하기 때문입니다. 그렇지 않으면 새로운 데이터를 다시 불러올 수 없을 겁니다.
 
@@ -606,11 +590,7 @@ class ProfileTimeline extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 따라해보기](https://codesandbox.io/s/trusting-clarke-8twuq)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/async-wind-9o4ojn)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 이 코드는 놀라울 정도로 읽기 쉽습니다.
 
@@ -670,11 +650,7 @@ function ProfileTimeline({ resource }) {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 따라해보기](https://codesandbox.io/s/infallible-feather-xjtbu)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/sparkling-field-41z4r3)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 기존에 사용했었던 Suspense 예시에서는 오직 하나의 `resource`만이 존재했고, 따라서 이 `resource`를 최상위 수준의 변수로서 관리했습니다. 지금은 여러 Resource들이 존재하므로, `<App>`의 컴포넌트 State로 이동시켰습니다.
 
@@ -747,11 +723,7 @@ function ProfilePage() {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 따라해보기](https://codesandbox.io/s/adoring-goodall-8wbn7)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/sparkling-rgb-r5vfhs)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 이 오류 경계는 렌더링 오류, *그리고* 데이터 불러오기를 위한 Suspense에서 발생한 오류를 둘 다 잡아낼 겁니다. 오류 경계는 쓰고 싶은 만큼 사용할 수 있지만, 오류 경계의 배치는 [계획적으로](https://aweary.dev/fault-tolerance-react/) 이루어지는 것이 제일 좋습니다.
 
@@ -761,18 +733,10 @@ function ProfilePage() {
 
 Suspense는 몇몇 질문에 대한 해답을 제시하지만, 동시에 아래와 같은 새로운 질문을 제시하기도 합니다.
 
-<<<<<<< HEAD
-* 어떤 컴포넌트가 "정지할 때", 앱이 덩달아 멈출까요? 이를 피하려면 어떻게 할까요?
-* 트리 상에서 컴포넌트 바로 위가 아닌, 다른 지점에 스피너를 표시하고 싶을 때에는 어떻게 할까요?
-* 잠시 동안 *의도적으로* 일관적이지 않은 UI를 표시하고 싶다면, 이것이 가능할까요?
-* 스피너를 표시하는 대신, 현재 화면을 "회색으로 만드는" 것과 같은 시각 효과를 더할 수 있나요?
-* [마지막 Suspense 예시](https://codesandbox.io/s/infallible-feather-xjtbu)에서 "Next" 버튼을 클릭했을 때 왜 경고 로그가 표시되나요?
-=======
 * If some component "suspends", does the app freeze? How to avoid this?
 * What if we want to show a spinner in a different place than "above" the component in a tree?
 * If we intentionally *want* to show an inconsistent UI for a small period of time, can we do that?
 * Instead of showing a spinner, can we add a visual effect like "greying out" the current screen?
 * Why does our [last Suspense example](https://codesandbox.io/s/sparkling-field-41z4r3) log a warning when clicking the "Next" button?
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 이러한 질문에 대한 답을 하기 위하여, [Concurrent UI 패턴](/docs/concurrent-mode-patterns.html)에서 다음 절을 읽어보도록 하겠습니다.

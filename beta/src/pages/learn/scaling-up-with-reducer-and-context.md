@@ -207,15 +207,9 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-<<<<<<< HEAD
-Reducer를 사용하면 이벤트 핸들러를 간결하고 명확하게 만들 수 있습니다. 그러나 앱이 커질수록 다른 어려움에 부딪힐 수 있습니다. **현재 `tasks` state와 `dispatch` 함수는 최상위 컴포넌트인 `TaskBoard`에서만 사용할 수 있습니다.** 다른 컴포넌트들에서 tasks의 리스트를 읽고 변경하려면 prop을 통해 현재 state와 state를 변경할 수 있는 이벤트 핸들러를 명시적으로 [전달](/learn/passing-props-to-a-component)해야 합니다.
-
-예를 들어, 아래 `TaskBoard` 컴포넌트에서 `TaskList` 컴포넌트로 tasks 리스트와 이벤트 핸들러를 전달합니다.
-=======
 A reducer helps keep the event handlers short and concise. However, as your app grows, you might run into another difficulty. **Currently, the `tasks` state and the `dispatch` function are only available in the top-level `TaskApp` component.** To let other components read the list of tasks or change it, you have to explicitly [pass down](/learn/passing-props-to-a-component) the current state and the event handlers that change it as props.
 
 For example, `TaskApp` passes a list of tasks and the event handlers to `TaskList`:
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 ```js
 <TaskList

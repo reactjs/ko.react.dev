@@ -128,15 +128,8 @@ export function Challenges({
                 ? 'text-xl text-purple-50 dark:text-purple-30'
                 : 'text-3xl text-link'
             )}>
-<<<<<<< HEAD
-            {isRecipes
-              ? '몇 가지 레시피를 시도해 보세요.'
-              : '몇 가지 도전을 시도해 보세요.'}
-          </H2>
-=======
             {titleText}
           </Heading>
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
           {challenges.length > 1 && (
             <Navigation
               currentChallenge={currentChallenge}
@@ -163,14 +156,14 @@ export function Challenges({
               <div>
                 <Button className="mr-2" onClick={toggleHint} active={showHint}>
                   <IconHint className="mr-1.5" />{' '}
-                  {showHint ? '힌트 숨기기' : '힌트 보기'}
+                  {showHint ? 'Hide hint' : 'Show hint'}
                 </Button>
                 <Button
                   className="mr-2"
                   onClick={toggleSolution}
                   active={showSolution}>
                   <IconSolution className="mr-1.5" />{' '}
-                  {showSolution ? '해결책 숨기기' : '해결책 보기'}
+                  {showSolution ? 'Hide solution' : 'Show solution'}
                 </Button>
               </div>
             ) : (
@@ -180,7 +173,7 @@ export function Challenges({
                   onClick={toggleSolution}
                   active={showSolution}>
                   <IconSolution className="mr-1.5" />{' '}
-                  {showSolution ? '해결책 숨기기' : '해결책 보기'}
+                  {showSolution ? 'Hide solution' : 'Show solution'}
                 </Button>
               )
             )}
@@ -197,11 +190,7 @@ export function Challenges({
                   setShowSolution(false);
                 }}
                 active>
-<<<<<<< HEAD
-                다음 {isRecipes ? '레시피' : '도전'}
-=======
                 Next {isRecipes ? 'Example' : 'Challenge'}
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
                 <IconArrowSmall
                   displayDirection="right"
                   className="block ml-1.5"
@@ -214,12 +203,12 @@ export function Challenges({
           {showSolution && (
             <div className="mt-6">
               <h3 className="text-2xl font-bold text-primary dark:text-primary-dark">
-                해결책
+                Solution
               </h3>
               {currentChallenge.solution}
               <div className="flex justify-between items-center mt-4">
                 <Button onClick={() => setShowSolution(false)}>
-                  해결책 닫기
+                  Close solution
                 </Button>
                 {nextChallenge && (
                   <Button
@@ -237,7 +226,7 @@ export function Challenges({
                       }
                     }}
                     active>
-                    다음 도전
+                    Next Challenge
                     <IconArrowSmall
                       displayDirection="right"
                       className="block ml-1.5"

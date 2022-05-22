@@ -51,11 +51,7 @@ next: concurrent-mode-adoption.html
 
 ## 트랜지션 {#transitions}
 
-<<<<<<< HEAD
-이전 [데이터를 가져오기 위한 서스펜스](/docs/concurrent-mode-suspense.html) 페이지의 [데모를](https://codesandbox.io/s/infallible-feather-xjtbu) 다시 살펴봅시다.
-=======
 Let's revisit [this demo](https://codesandbox.io/s/sparkling-field-41z4r3) from the previous page about [Suspense for Data Fetching](/docs/concurrent-mode-suspense.html).
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 프로필을 활성화하기 위해 "Next" 버튼을 누르면 페이지의 데이터가 바로 사라지고 전체 화면에 로딩 화면을 다시 보게 됩니다. '의도치 않은' 로딩 상태라고 할 수 있습니다. **새 화면을 위한 콘텐츠를 불러오는 동안 화면 전환을 생략할 수 있다면 좋을 것입니다.**
 
@@ -123,27 +119,15 @@ function App() {
 >
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/musing-driscoll-6nkie)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/vigilant-feynman-kpjy8w)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 "Next" 버튼을 몇 번 눌러보세요. 이미 매우 다른 느낌입니다. **클릭으로 즉시 빈 화면이 보이는 대신 잠깐 이전 페이지가 지속해서 보입니다.** 데이터가 완전히 로드되면 React는 새로운 화면으로 전환합니다.
 
-<<<<<<< HEAD
-API 응답까지 5초가 걸린다면 React가 이전 화면을 포기하고 3초 뒤에 다음 화면으로 어쨌든 변하는 걸 [확인할 수 있습니다](https://codesandbox.io/s/relaxed-greider-suewh). `{timeoutMs: 3000}` 설정을 `useTransition()` 훅에 전달했기 때문입니다. `{timeoutMs: 60000}`를 전달한다면 일 분 동안 기다릴 겁니다.
-=======
 If we make our API responses take 5 seconds, [we can confirm](https://codesandbox.io/s/heuristic-leftpad-9hit59) that now React "gives up" and transitions anyway to the next screen after 3 seconds. This is because we passed `{timeoutMs: 3000}` to `useTransition()`. For example, if we passed `{timeoutMs: 60000}` instead, it would wait a whole minute.
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 ### 지연 인디케이터 추가하기 {#adding-a-pending-indicator}
 
-<<<<<<< HEAD
-[마지막 예시](https://codesandbox.io/s/musing-driscoll-6nkie)에서도 여전히 망가진 듯한 느낌이 있습니다. "나쁜" 로딩 상태를 보지 않는 것은 확실히 좋지만 **아무런 진행 상태를 보여주지 않는 것은 훨씬 나쁩니다!** "Next" 버튼을 클릭하고 화면에 아무런 변화가 없다면 앱이 망가진 것 같다고 느낄 수 있습니다.
-=======
 There's still something that feels broken about [our last example](https://codesandbox.io/s/vigilant-feynman-kpjy8w). Sure, it's nice not to see a "bad" loading state. **But having no indication of progress at all feels even worse!** When we click "Next", nothing happens and it feels like the app is broken.
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 `useTransition()` 호출은 `startTransition` 그리고 `isPending` 두 값을 반환합니다.
 
@@ -173,21 +157,13 @@ return (
 );
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/jovial-lalande-26yep)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/frosty-haslett-ds0h9h)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 이제 훨씬 나아 보이네요! 버튼을 여러 번 누르는 것은 이상하기 때문에 버튼을 클릭하면 비활성화됩니다. 그리고 사용자에게 앱이 멈추지 않았다는 것을 알려주기 위해 "Loading..."이라고 알려줍니다.
 
 ### 변화 살펴보기 {#reviewing-the-changes}
 
-<<<<<<< HEAD
-[원본 예시](https://codesandbox.io/s/infallible-feather-xjtbu) 이후로 변경된 모든 사항을 살펴보겠습니다.
-=======
 Let's take another look at all the changes we've made since the [original example](https://codesandbox.io/s/nice-shadow-zvosx0):
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 ```js{3-5,9,11,14,19}
 function App() {
@@ -215,11 +191,7 @@ function App() {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/jovial-lalande-26yep)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/frosty-haslett-ds0h9h)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 7줄의 코드만으로 트랜지션을 추가했습니다.
 
@@ -240,11 +212,7 @@ function App() {
 
 이것이 컨커런트 모드의 존재 이유입니다. React의 작업은 '브랜치'의 상태 갱신과 비슷하다고 [앞서 언급했습니다](/docs/concurrent-mode-intro.html#intentional-loading-sequences). 이 개념을 잡기 위한 또 다른 방법은 `startTransition` 함수로 상태 갱신 코드를 래핑하는 것은 공상과학 영화처럼 **다른 평행 우주**에서 렌더링한다고 생각하는 것입니다. 다른 우주를 직접 "볼" 수는 없습니다. 하지만 무언가 일어나고 있다는 신호(`isPending`)를 들을 수 있습니다. 갱신이 준비되면 '우주들'이 다시 병합되고 그 결과를 화면에서 볼 수 있습니다!
 
-<<<<<<< HEAD
-[이 데모](https://codesandbox.io/s/jovial-lalande-26yep)를 좀 더 가지고 놀고 무엇이 일어나는지 상상해보세요.
-=======
-Play a bit more with the [demo](https://codesandbox.io/s/frosty-haslett-ds0h9h), and try to imagine it happening.
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
+[이 데모](https://codesandbox.io/s/frosty-haslett-ds0h9h)를 좀 더 가지고 놀고 무엇이 일어나는지 상상해보세요.
 
 물론 두 버전의 트리 렌더링이 **동시에** 일어나진 않습니다. 컴퓨터의 모든 프로그램이 동시에 실행된다는 것이 허상인 것처럼요. 운영체제는 다른 애플리케이션들을 매우 빠르게 전환합니다. 비슷하게 React도 화면에 보이는 트리 버전과 다음에 노출하기 위해 "준비중"인 버전을 전환할 수 있습니다.
 
@@ -282,19 +250,11 @@ function ProfilePage() {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/boring-shadow-100tf)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/trusting-brown-6hj0m0)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 이 예시에선 페이지가 로드되거나 "Refresh" 버튼을 누를 때 마다 데이터를 가져옵니다. `fetchUserAndPosts()`의 반환값을 상태에 저장하여 하위 컴포넌트들이 요청에서 가져온 데이터를 읽을 수 있게 하겠습니다.
 
-<<<<<<< HEAD
-[이 예시](https://codesandbox.io/s/boring-shadow-100tf)를 보면 "Refresh" 버튼을 누르는 것은 동작합니다. `<ProfileDetails>` 와 `<ProfileTimeline>` 컴포넌트들은 새로운 최신 데이터를 표현하는 `resource` 프로퍼티를 전달받습니다. `fetchUserAndPosts` 호출 직후에 아무런 응답을 받지 못했기 때문에 컴포넌트는 바로 '서스펜드' 상태가 되고 화면에는 폴백을 보게 됩니다. 응답을 받은 뒤엔 새롭게 갱신된 포스트를 볼 수 있습니다. (우리의 목 API는 3초 마다 새로운 포스트를 추가합니다.)
-=======
 We can see in [this example](https://codesandbox.io/s/trusting-brown-6hj0m0) that pressing "Refresh" works. The `<ProfileDetails>` and `<ProfileTimeline>` components receive a new `resource` prop that represents the fresh data, they "suspend" because we don't have a response yet, and we see the fallbacks. When the response loads, we can see the updated posts (our fake API adds them every 3 seconds).
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 하지만 위 경험은 자연스럽지 않습니다. 우리는 한 페이지를 브라우징하고 있었는데 버튼을 클릭한 직후에 바로 로딩 상태로 전환되어 사용자를 혼란스럽게 합니다. **이전처럼, 의도치 않은 로딩 상태를 숨기기 위해서 상태 갱신을 트랜지션에 래핑할 수 있습니다.**
 
@@ -329,11 +289,7 @@ function ProfilePage() {
 }
 ```
 
-<<<<<<< HEAD
-**[CodeSandbox에서 시도해보세요](https://codesandbox.io/s/sleepy-field-mohzb)**
-=======
 **[Try it on CodeSandbox](https://codesandbox.io/s/zealous-mccarthy-fiiwu2)**
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 훨씬 나아 보입니다! "Refresh" 버튼을 클릭해도 우리가 브라우징하고 있는 페이지가 사라지지 않습니다. 우리는 인라인으로 뭔가 로딩되고 있다는 것을 보고 데이터가 준비된 이후에 새로운 데이터가 보입니다.
 
