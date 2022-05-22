@@ -143,11 +143,7 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-<<<<<<< HEAD
 배열 전개 연산자를 사용하면 항목을 `...artists` *앞*에 배치하여 앞에 추가할 수도 있습니다.
-=======
-The array spread syntax also lets you prepend an item by placing it *before* the original `...artists`:
->>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 
 ```js
 setArtists([
@@ -212,11 +208,7 @@ setArtists(
 );
 ```
 
-<<<<<<< HEAD
 여기서 `artists.filter(s => s.id !== artist.id)`는 "`artist.id`와 ID가 다른 `artists`로 구성된 배열을 생성한다"는 의미입니다. 즉 각 artists의 "삭제" 버튼은 해당 artists를 배열에서 필터링한 다음, 반환된 배열로 리렌더링을 요청합니다. `filter`가 원본 배열을 수정하지 않는다는 것에 주의하세요.
-=======
-Here, `artists.filter(a => a.id !== artist.id)` means "create an array that consists of those `artists` whose IDs are different from `artist.id`." In other words, each artist's "Delete" button will filter _that_ artist out of the array, and then request a re-render with the resulting array. Note that `filter` does not modify the original array.
->>>>>>> b9c33a05520ddc728f15c4eb19a343213309f59f
 
 ### 배열 변환하기 {/*transforming-an-array*/}
 
@@ -342,11 +334,7 @@ button { margin: 5px; }
 
 ### 배열에 항목 삽입하기 {/*inserting-into-an-array*/}
 
-<<<<<<< HEAD
 때로는, 시작도 끝도 아닌 위치에 항목을 삽입하고 싶을 때가 있습니다. 이렇게 하려면, `...` 전개 연산자와 `slice()` 함수를 같이 사용하면 됩니다. `slice()` 함수를 사용하면 배열의 "일부분"을 자를 수 있습니다. 항목을 삽입하려면 삽입 지점 _앞에_ 자른 배열을 전개하고 새 항목을 전개한 다음 원본 배열의 나머지 부분을 전개하는 배열을 만듭니다.
-=======
-Sometimes, you may want to insert an item at a particular position that's neither at the beginning nor at the end. To do this, you can use the `...` array spread syntax together with the `slice()` method. The `slice()` method lets you cut a "slice" of the array. To insert an item, you will create an array that spreads the slice _before_ the insertion point, then the new item, and then the rest of the original array.
->>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 
 이 예시에서 삽입 버튼은 항상 인덱스 `1`에 삽입합니다.
 
@@ -410,11 +398,7 @@ button { margin-left: 5px; }
 
 ### 배열에 대한 기타 변경 사항 {/*making-other-changes-to-an-array*/}
 
-<<<<<<< HEAD
 전개 연산자와 `map()`이나 `filter()` 같은 비-변경 함수들로만으로는 할 수 없는 일이 몇 가지 있습니다. 예를 들어 배열을 뒤집거나 정렬하고 싶은 경우가 있습니다. JavaScript의 `reverse()` 및 `sort()` 함수는 원본 배열을 변경시키므로 직접 사용할 수 없습니다.
-=======
-There are some things you can't do with the spread syntax and non-mutating methods like `map()` and `filter()` alone. For example, you may want to reverse or sort an array. The JavaScript `reverse()` and `sort()` methods are mutating the original array, so you can't use them directly.
->>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 
 **그러나 먼저 배열을 복사한 다음 변경할 수 있습니다.**
 
@@ -458,11 +442,7 @@ export default function List() {
 
 </Sandpack>
 
-<<<<<<< HEAD
 먼저 `[...list]` 전개 연산자를 사용하여 원본 배열의 복사본을 만듭니다. 이제 복사본이 있으므로 `nextList.reverse()`나 `nextList.sort()`와 같은 변경 함수를 사용하거나 `nextList[0] = "something"`과 같이 개별 항목을 할당할 수도 있습니다.
-=======
-Here, you use the `[...list]` spread syntax to create a copy of the original array first. Now that you have a copy, you can use mutating methods like `nextList.reverse()` or `nextList.sort()`, or even assign individual items with `nextList[0] = "something"`.
->>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 
 그러나, **배열을 복사하더라도 배열 _내부_ 에 기존 항목을 직접 변경해서는 안됩니다**. 얕은 복사이기 때문입니다.--복사한 새 배열에는 원본 배열의과 동일한 항목이 포함됩니다. 따라서 복사된 배열 내부의 객체를 수정하면 기존 상태가 변경됩니다. 예를 들어 아래와 같은 코드가 문제입니다.
 
@@ -1118,7 +1098,7 @@ const initialTodos = [
   { id: 2, title: 'Brew tea', done: false },
 ];
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [todos, setTodos] = useState(
     initialTodos
   );
@@ -1281,7 +1261,7 @@ const initialTodos = [
   { id: 2, title: 'Brew tea', done: false },
 ];
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [todos, setTodos] = useState(
     initialTodos
   );
@@ -1452,7 +1432,7 @@ const initialTodos = [
   { id: 2, title: 'Brew tea', done: false },
 ];
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [todos, setTodos] = useState(
     initialTodos
   );
@@ -1634,7 +1614,7 @@ const initialTodos = [
   { id: 2, title: 'Brew tea', done: false },
 ];
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [todos, updateTodos] = useImmer(
     initialTodos
   );
@@ -1822,7 +1802,7 @@ const initialTodos = [
   { id: 2, title: 'Brew tea', done: false },
 ];
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [todos, updateTodos] = useImmer(
     initialTodos
   );
@@ -1992,8 +1972,4 @@ Immer를 사용하면 각각의 다른 케이스에서 가장 자연스러운 �
 
 </Solution>
 
-<<<<<<< HEAD
-</Challenges> 
-=======
 </Challenges>
->>>>>>> b9c33a05520ddc728f15c4eb19a343213309f59f
