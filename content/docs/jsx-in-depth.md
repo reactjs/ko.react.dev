@@ -230,9 +230,7 @@ Prop에 어떤 값도 넘기지 않을 경우, 기본값은 `true`입니다. 아
 일반적으로 prop에 대한 값을 전달하지 않는 것을 권장하지 않는데 이는 [ES6 object shorthand](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer#ECMAScript_2015의_새로운_표기법) 와 헷갈릴 수 있기 때문입니다. `{foo}` 는 `{foo: true}` 가 아닌 `{foo: foo}`와 동일합니다. 이는 HTML 동작 방식과 일치하기 위해 남겨두었습니다.
 
 ### 속성 펼치기 {#spread-attributes}
-
 `props`에 해당하는 객체를 이미 가지고 있다면,`...`를 "전개" 연산자로 사용해 전체 객체를 그대로 넘겨줄 수 있습니다. 아래의 두 컴포넌트는 동일합니다.
-
 ```js{7}
 function App1() {
   return <Greeting firstName="Ben" lastName="Hector" />;
@@ -243,9 +241,7 @@ function App2() {
   return <Greeting {...props} />;
 }
 ```
-
 컴포넌트가 사용하게 될 특정 prop을 선택하고 나머지 prop은 전개 연산자를 통해 넘길 수 있습니다.
-
 ```js{2}
 const Button = props => {
   const { kind, ...other } = props;

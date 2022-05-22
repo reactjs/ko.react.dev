@@ -424,7 +424,7 @@ function TextInputWithFocusButton() {
 
 본질적으로 `useRef`는 `.current` 프로퍼티에 변경 가능한 값을 담고 있는 "상자"와 같습니다.
 
-아마도 여러분은 [DOM에 접근](/docs/refs-and-the-dom.html)하는 방법으로 refs에 친숙할 지도 모르겠습니다. `<div ref={myRef} />`를 사용하여 React로 ref 객체를 전달한다면, React는 모드가 변경될 때마다 변경된 DOM 노드에 그것의 `.current` 프로퍼티를 설정할 것입니다.
+아마도 여러분은 [DOM에 접근](/docs/refs-and-the-dom.html)하는 방법으로 refs에 친숙할 지도 모르겠습니다. `<div ref={myRef} />`를 사용하여 React로 ref 객체를 전달한다면, React는 노드가 변경될 때마다 변경된 DOM 노드에 그것의 `.current` 프로퍼티를 설정할 것입니다.
 
 그렇지만, `ref` 속성보다 `useRef()`가 더 유용합니다. 이 기능은 클래스에서 인스턴스 필드를 사용하는 방법과 유사한 [어떤 가변값을 유지하는 데에 편리합니다](/docs/hooks-faq.html#is-there-something-like-instance-variables).
 

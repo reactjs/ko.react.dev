@@ -44,21 +44,21 @@ export function MarkdownPage<
         return {
           url: '#challenges',
           depth: 0,
-          text: 'Challenges',
+          text: '도전',
         };
       }
       if (child.props.mdxType === 'Recipes') {
         return {
           url: '#recipes',
           depth: 0,
-          text: 'Recipes',
+          text: '레시피',
         };
       }
       if (child.props.mdxType === 'Recap') {
         return {
           url: '#recap',
           depth: 0,
-          text: 'Recap',
+          text: '요약',
         };
       }
       return {
@@ -73,7 +73,7 @@ export function MarkdownPage<
   if (anchors.length > 0) {
     anchors.unshift({
       depth: 1,
-      text: 'Overview',
+      text: '개요',
       url: '#',
     });
   }

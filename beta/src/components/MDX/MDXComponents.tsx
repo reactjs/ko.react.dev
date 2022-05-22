@@ -91,16 +91,16 @@ function LearnMore({
       <section className="p-8 mt-16 mb-16 flex flex-row shadow-inner justify-between items-center bg-card dark:bg-card-dark rounded-lg">
         <div className="flex-col">
           <h2 className="text-primary dark:text-primary-dark font-bold text-2xl leading-tight">
-            Ready to learn this topic?
+            이 주제를 배울 준비가 되었나요?
           </h2>
           {children}
           {path ? (
             <ButtonLink
               className="mt-1"
-              label="Read More"
+              label="더 읽어보기"
               href={path}
               type="primary">
-              Read More
+              더 읽어보기
               <IconNavArrow displayDirection="right" className="inline ml-1" />
             </ButtonLink>
           ) : null}
@@ -135,8 +135,15 @@ function MathI({children}: {children: any}) {
   );
 }
 
-function YouWillLearn({children}: {children: any}) {
-  return <SimpleCallout title="You will learn">{children}</SimpleCallout>;
+function YouWillLearn({
+  children,
+  isChapter,
+}: {
+  children: any;
+  isChapter?: boolean;
+}) {
+  let title = isChapter ? '이번 장의 구성' : '배우게 될 것';
+  return <SimpleCallout title={title}>{children}</SimpleCallout>;
 }
 
 // TODO: typing.
