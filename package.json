@@ -102,5 +102,8 @@
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-tester": "^5.1.4",
     "unist-util-map": "^1.0.3"
+  },
+  "resolutions": {
+    "**/sharp": "^0.30.3"
   }
 }

@@ -187,8 +187,6 @@ context 객체(`React.createContext`에서 반환된 값)을 받아 그 context�
 
 `useContext`로 전달한 인자는 *context 객체 그 자체*이어야 함을 잊지 마세요.
 
-<!-- textlint-disable -->
-
  * **맞는 사용:** `useContext(MyContext)`
  * **틀린 사용:** `useContext(MyContext.Consumer)`
  * **틀린 사용:** `useContext(MyContext.Provider)`

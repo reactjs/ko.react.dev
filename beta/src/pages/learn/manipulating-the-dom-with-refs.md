@@ -207,13 +207,9 @@ li {
 
 왜냐하면 **Hook은 컴포넌트의 최상단에서만 호출되어야 하기 때문입니다**. `useRef`를 반복문, 조건문 혹은 `map()` 안쪽에서 호출할 수 없습니다.
 
-<<<<<<< HEAD
-**`ref` 어트리뷰트에 함수를 넘기는 것**이 해결책입니다. React는 ref를 주입할 때 DOM node와 함께 ref 콜백을 호출합니다. 그리고 청소해야 할 때(clear 혹은 unmount)는 null과 함께 호출합니다. 이를 응용하여 배열 혹은 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)으로 관리하고 어떤 배열의 순서나 특정할 수 있는 식별자를 이용하여 어떤 ref에도 접근할 수 있습니다.
-=======
 One possible way around this is to get a single ref to their parent element, and then use DOM manipulation methods like [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) to "find" the individual child nodes from it. However, this is brittle and can break if your DOM structure changes.
 
 Another solution is to **pass a function to the `ref` attribute**. This is called a "ref callback". React will call your ref callback with the DOM node when it's time to set the ref, and with `null` when it's time to clear it. This lets you maintain your own array or a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), and access any ref by its index or some kind of ID.
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 아래 예시는 긴 목록에서 특정 노드에 스크롤 하기 위해 앞에서 말한 접근법을 사용합니다.
 

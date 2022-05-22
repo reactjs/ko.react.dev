@@ -229,13 +229,8 @@ JSX가 포함된 파일을 저장할 때마다 변환이 다시 실행되어 JSX
 
 원래 JSX는 React로 컴포넌트를 작성하는 것이 HTML을 작성하는 것만큼 친숙하게 느껴지도록 하기 위해 도입되었습니다. 그 이후로 이 문법이 널리 퍼졌습니다. 그러나 JSX를 사용하고 싶지 않거나 사용할 수 없는 경우가 있을 수도 있습니다. 두 가지 옵션이 있습니다.
 
-<<<<<<< HEAD
-- [htm](https://github.com/developit/htm)과 같이 컴파일러를 사용하지 않는 JSX 대안을 사용하세요.—자바스크립트의 기본 태그가 지정된 템플릿을 사용합니다.
-- 아래에서 설명하는 특별한 구조를 가진 [`React.createElement()`](/reference/createelement)을 사용하세요.
-=======
 - Use a JSX alternative like [htm](https://github.com/developit/htm) which doesn't use a compiler—it uses JavaScript's native Tagged Templates.
 - Use [`React.createElement()`](/apis/createelement), which has a special structure explained below.
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 JSX를 사용하면 다음과 같이 컴포넌트를 작성할 수 있습니다.
 
