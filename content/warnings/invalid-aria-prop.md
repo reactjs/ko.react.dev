@@ -8,4 +8,8 @@ permalink: warnings/invalid-aria-prop.html
 
 1. 유효한 프로퍼티를 사용했는데도 이 문제가 발생했다면 철자를 확인해주세요. `aria-labelledby`와 `aria-activedescendant`의 철자를 틀리는 경우가 종종 있습니다.
 
+<<<<<<< HEAD
 2. React는 알 수 없는 속성을 아직 인식하지 못합니다. 이것은 React의 다음 버전에서 수정될 가능성이 있습니다. 하지만 React는 현재 알 수 없는 속성을 모두 제거하므로 React 애플리케이션에 설정된 알 수 없는 속성은 렌더링 되지 않습니다.
+=======
+2. React does not yet recognize the attribute you specified. This will likely be fixed in a future version of React.
+>>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594

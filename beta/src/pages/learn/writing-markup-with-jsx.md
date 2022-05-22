@@ -20,11 +20,47 @@ JSX는 JavaScript를 확장한 문법으로, JavaScript 파일을 HTML과 비슷
 
 Web은 HTML, CSS, JavaScript를 기반으로 만들어져왔습니다. 수년 동안 웹 개발자는 HTML로 내용을, CSS로 디자인을, JavaScript로 로직을 작성해왔습니다. 보통은 HTML, CSS, JavaScript를 분리된 파일로 관리합니다! 페이지의 로직은 JavaScript 안에서 분리되어 동작하는 동안, HTML 안에서는 내용이 마크업 되었습니다.
 
+<<<<<<< HEAD
 ![분리된 파일로 이루어진 HTML과 JavaScript](/images/docs/illustrations/i_html_js.svg)
+=======
+<DiagramGroup>
+
+<Diagram name="writing_jsx_html" height={237} width={325} alt="HTML markup with purple background and a div with two child tags: p and form. ">
+
+HTML
+
+</Diagram>
+
+<Diagram name="writing_jsx_js" height={237} width={325} alt="Three JavaScript handlers with yellow background: onSubmit, onLogin, and onClick.">
+
+JavaScript
+
+</Diagram>
+
+</DiagramGroup>
+>>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 그러나 Web은 상호작용하는 작업이 점점 많아지면서, 로직에서 내용을 결정하는 일이 많아졌습니다. JavaScript가 HTML을 담당했습니다! 이것이 바로 **React에서 렌더링 로직과 마크업이 같은 곳에 함께 있게 된 이유입니다. 즉, 컴포넌트에서 말이죠!**
 
+<<<<<<< HEAD
 ![마크업을 뿌려주는 JavaScript 함수](/images/docs/illustrations/i_jsx.svg)
+=======
+<DiagramGroup>
+
+<Diagram name="writing_jsx_sidebar" height={330} width={325} alt="React component with HTML and JavaScript from previous examples mixed. Function name is Sidebar which calls the function isLoggedIn, highlighted in yellow. Nested inside the function highlighted in purple is the p tag from before, and a Form tag referencing the component shown in the next diagram.">
+
+Sidebar.js
+
+</Diagram>
+
+<Diagram name="writing_jsx_form" height={330} width={325} alt="React component with HTML and JavaScript from previous examples mixed. Function name is Form containing two handlers onClick and onSubmit highlighted in yellow. Following the handlers is HTML highlighted in purple. The HTML contains a form element with a nested input element, each with an onClick prop.">
+
+Form.js
+
+</Diagram>
+
+</DiagramGroup>
+>>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 버튼의 렌더링 로직과 버튼의 마크업이 함께 있으면, 매번 변화가 생길 때마다 서로 조화를 이룰 수 있습니다. 반대로, 버튼의 마크업과 사이드바의 마크업처럼 서로 관련이 없는 항목끼리는 각각 자체적으로 변경하는 편이 더 안전하기 때문에 서로 분리되도록 합니다.
 
