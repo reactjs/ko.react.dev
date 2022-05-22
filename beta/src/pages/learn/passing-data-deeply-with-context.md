@@ -21,7 +21,22 @@ title: Context를 사용해 데이터를 깊게 전달하기
 
 [Props 전달하기](/learn/passing-props-to-a-component)는 UI 트리를 통해 명시적으로 데이터를 사용하는 컴포넌트에 전달하는 훌륭한 방법입니다. 하지만 이 방식은 어떤 prop을 트리를 통해 깊이 전해줘야 하거나, 많은 컴포넌트에서 같은 prop이 필요한 경우에 장황하고 불편할 수 있습니다. 데이터가 필요한 여러 컴포넌트의 가장 가까운 공통 조상은 트리 상 높이 위치할 수 있고 그렇게 높게까지 [state를 올리는 것](/learn/sharing-state-between-components)은 "Prop 내리꽂기"라는 상황을 초래할 수 있습니다.
 
-<img alt="Lifting state up vs prop drilling" src="/images/docs/sketches/s_prop-drilling.png" />
+But passing props can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop. The nearest common ancestor could be far removed from the components that need data, and [lifting state up](/learn/sharing-state-between-components) that high can lead to a situation sometimes called "prop drilling."
+
+<DiagramGroup>
+
+<Diagram name="passing_data_lifting_state" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in purple. The value flows down to each of the two children, both highlighted in purple." >
+
+Lifting state up
+
+</Diagram>
+<Diagram name="passing_data_prop_drilling" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root node contains a bubble representing a value highlighted in purple. The value flows down through the two children, each of which pass the value but do not contain it. The left child passes the value down to two children which are both highlighted purple. The right child of the root passes the value through to one of its two children - the right one, which is highlighted purple. That child passed the value through its single child, which passes it down to both of its two children, which are highlighted purple.">
+
+Prop drilling
+
+</Diagram>
+
+</DiagramGroup>
 
 데이터를 사용할 트리안의 컴포넌트에 props를 전달하는 대신 "순간이동"시킬 방법이 있다면 좋지 않을까요? React의 context를 사용하면 됩니다!
 
@@ -195,7 +210,21 @@ Props만으로는 불가능합니다. 여기서부터 context가 활약하기 �
 
 Context는 부모가 트리 내부 전체에, 심지어 멀리 떨어진 컴포넌트에조차 어떤 데이터를 제공할 수 있도록 합니다.
 
-<img alt="Context provides data to the entire tree" src="/images/docs/sketches/s_providing-context.png" />
+<DiagramGroup>
+
+<Diagram name="passing_data_context_close" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in orange which projects down to the two children, each highlighted in orange." >
+
+Using context in close children
+
+</Diagram>
+
+<Diagram name="passing_data_context_far" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root parent node contains a bubble representing a value highlighted in orange. The value projects down directly to four leaves and one intermediate component in the tree, which are all highlighted in orange. None of the other intermediate components are highlighted.">
+
+Using context in distant children
+
+</Diagram>
+
+</DiagramGroup>
 
 ### 1단계: Context 생성하기 {/*step-1-create-the-context*/}
 
@@ -828,8 +857,6 @@ Context는 사용하기에 꽤 유혹적입니다. 그러나 이는 또한 남�
 Context는 정적인 값으로 제한되지 않습니다. 다음 렌더링 시 다른 값을 준다면 React는 아래의 모든 컴포넌트에서 그 값을 갱신합니다. 이것은 context와 state가 자주 조합되는 이유입니다.
 
 일반적으로 트리의 다른 부분에서 멀리 떨어져 있는 컴포넌트들이 같은 정보가 필요하다는 것은 context를 사용하기 좋다는 징조입니다.
-
-<img alt="Context provides data to the entire tree" src="/images/docs/sketches/s_lifting-v-providing.png" />
 
 <Recap>
 

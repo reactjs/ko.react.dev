@@ -11,9 +11,9 @@ React를 사용하게 되면 우리가 고려하고 있는 디자인이나 만�
 ## mockup과 함께 시작하기 {/*start-with-the-mockup*/}
 
 JSON API와 디자이너로부터 mockup을 이미 받았다고 생각해 봅시다.
-
+<!-- textlint-disable -->
 JSON API는 몇몇 데이터를 가지고 이렇게 생겼을 겁니다:
-
+<!-- textlint-disable -->
 ```json
 [
   { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
@@ -194,9 +194,9 @@ td {
 ```
 
 </Sandpack>
-
-**코드 예제가 어려워도 주저하지 마세요!** 지금 글에서는 우리는 코드보다 컨셉에 집중할 겁니다. 뒤에 배우는 [Describing the UI](/learn/describing-the-ui) 단계로 가면 React 코드를 좀 더 잘 이해 할 수 있게 될 겁니다.
-
+<!-- textlint-disable -->
+**코드 예제가 어려워도 주저하지 마세요!**. 지금 글에서는 우리는 코드보다 컨셉에 집중할 겁니다. 뒤에 배우는 [Describing the UI](/learn/describing-the-ui) 단계로 가면 React 코드를 좀 더 잘 이해 할 수 있게 될 겁니다.
+<!-- textlint-disable -->
 이 단계가 끝나면 데이터 렌더링을 위해 만들어진 재사용 가능한 컴포넌트들의 라이브러리를 가지게 됩니다. 현재는 앱의 정적 버전이기 때문에 컴포넌트는 단순히 JSX만 리턴 할 것 입니다. 계층구조의 최상단 컴포넌트 (FilterableProductTable)는 prop으로 데이터 모델을 받습니다. 데이터가 최상단 컴포넌트부터 트리의 맨 아래 까지 흘러가기 때문에 단방향 데이터 흐름(one-way data flow)라고 부릅니다.
 
 <Gotcha>
@@ -263,15 +263,17 @@ props와 state는 다르지만, 함께 동작합니다. state는 보통 부모 �
 
 이 전략을 애플리케이션에 적용해봅시다.
 
+<!-- textlint-disable -->
 1. **state를 쓰는 컴포넌트를 찾아봅시다**:
    - `ProductTable`은 state에 기반한 상품 리스트의 필터링해야 합니다 (검색어와 체크 박스의 값)
    - `SearchBar`는 state를 표시해주어야 합니다. (검색어와 체크 박스의 값)
 2. **공통 부모를 찾아봅시다**: 둘 모두가 공유하는 첫 번째 부모는 `FilterableProductTable`입니다
 3. **어디에 state가 존재해야 할지 정해봅시다**: 우리는`FilterableProductTable`에 검색어와 체크 박스 값을 state로 둘겁니다.
+<!-- textlint-disable -->
 
 이제 state값은 `FilterableProductTable`안에 있습니다.
 
-[`useState()` Hook](/reference/usestate)을 이용해서 state를 컴포넌트에 추가하세요. Hooks는 컴포넌트의 [렌더 사이클](/learn/render-and-commit)로 당신을 채갈(hook into) 겁니다. `FilterableProductTable`의 윗부분에 두 개의 state 변수를 추가해서 초깃값을 명확하게 보여주세요.
+[`useState()` Hook](/apis/usestate)을 이용해서 state를 컴포넌트에 추가하세요. Hooks는 컴포넌트의 [렌더 사이클](/learn/render-and-commit)로 당신을 채갈(hook into) 겁니다. `FilterableProductTable`의 윗부분에 두 개의 state 변수를 추가해서 초깃값을 명확하게 보여주세요.
 
 ```js
 function FilterableProductTable({ products }) {
