@@ -1,7 +1,6 @@
 /*
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
-
 import React from 'react';
 // @ts-ignore
 import {flushSync} from 'react-dom';
@@ -13,7 +12,6 @@ import {
   SandpackReactDevTools,
 } from '@codesandbox/sandpack-react';
 import scrollIntoView from 'scroll-into-view-if-needed';
-
 import cn from 'classnames';
 
 import {IconChevron} from 'components/Icon/IconChevron';

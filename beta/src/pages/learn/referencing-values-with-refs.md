@@ -4,7 +4,11 @@ title: '값을 Refs와 함께 참조하기'
 
 <Intro>
 
+<<<<<<< HEAD
 컴포넌트가 일부 정보를 "기억"하고 싶지만, 해당 정보가 [렌더링을 유발](/learn/render-and-commit)하지 않도록 하려면 **ref**를 사용하세요-이것은 컴포넌트에 정보를 저장하는 비밀 "pocket"과 같습니다!
+=======
+When you want a component to "remember" some information, but you don't want that information to [trigger new renders](/learn/render-and-commit), you can use a *ref*.
+>>>>>>> 3aac8c59848046fb427aab4373a7aadd7069a24c
 
 </Intro>
 
@@ -42,7 +46,11 @@ const ref = useRef(0);
 
 <Illustration src="/images/docs/illustrations/i_ref.png" alt="An arrow with 'current' written on it stuffed into a pocket with 'ref' written on it." />
 
+<<<<<<< HEAD
 `ref.current` 프로퍼티를 통해 해당 ref의 current 값에 접근할 수 있습니다. 이 값은 의도적으로 변경할 수 있으므로 읽고 쓸 수 있습니다. (이것이 바로 React의 단방향 데이터 흐름에서 "escape hatch"가 되는 것입니다--아래에서 자세히 설명하고 있습니다!)
+=======
+You can access the current value of that ref through the `ref.current` property. This value is intentionally mutable, meaning you can both read and write to it. It's like a secret pocket of your component that React doesn't track. (This is what makes it an "escape hatch" from React's one-way data flow--more on that below!)
+>>>>>>> 3aac8c59848046fb427aab4373a7aadd7069a24c
 
 여기서 버튼은 클릭할 때마다 `ref.current`를 증가시킵니다.
 

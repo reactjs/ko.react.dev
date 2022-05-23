@@ -4,7 +4,11 @@ title: 컴포넌트 간 State 공유하기
 
 <Intro>
 
+<<<<<<< HEAD
 때때로 두 컴포넌트의 state가 항상 함께 변경되기를 원할 수 있습니다. 그렇게 하려면 각 컴포넌트에서 state를 제거하고 가장 가까운 공통의 부모 컴포넌트로 옮긴 후 props로 전달해야 합니다. 이 방법을 "State 끌어올리기"라고 하며 React 코드를 작성할 때 가장 흔히 하는 일 중 하나입니다.
+=======
+Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as *lifting state up,* and it's one of the most common things you will do writing React code.
+>>>>>>> 3aac8c59848046fb427aab4373a7aadd7069a24c
 
 </Intro>
 
@@ -75,7 +79,27 @@ h3, p { margin: 5px 0px; }
 
 한 패널의 버튼을 눌러도 다른 패널에는 영향을 미치지 않고 독립적입니다.
 
+<<<<<<< HEAD
 **그러나 이제 한 번에 하나의 패널만 열리도록 변경하려고 합니다.** 두 번째 패널을 열기 위해선 첫 번째 패널을 닫아야 합니다. 어떻게 해야 할까요?
+=======
+<DiagramGroup>
+
+<Diagram name="sharing_state_child" height={367} width={477} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Both Panel components contain isActive with value false.">
+
+Initially, each `Panel`'s `isActive` state is `false`, so they both appear collapsed
+
+</Diagram>
+
+<Diagram name="sharing_state_child_clicked" height={367} width={480} alt="The same diagram as the previous, with the isActive of the first child Panel component highlighted indicating a click with the isActive value set to true. The second Panel component still contains value false." >
+
+Clicking either `Panel`'s button will only update that `Panel`'s `isActive` state alone
+
+</Diagram>
+
+</DiagramGroup>
+
+**But now let's say you want to change it so that only one panel is expanded at any given time.** With that design, expanding the second panel should collapse the first one. How would you do that?
+>>>>>>> 3aac8c59848046fb427aab4373a7aadd7069a24c
 
 두 패널을 조정하려면 다음 세 단계를 통해 부모 컴포넌트로 패널의 "State 끌어올리기"가 필요합니다.
 
@@ -85,9 +109,13 @@ h3, p { margin: 5px 0px; }
 
 이 방법으로 `Accordion` 컴포넌트가 두 `Panel`을 조정하고 한 번에 하나만 열리도록 할 수 있습니다.
 
+<<<<<<< HEAD
 <img alt="왼쪽에는 각각 고유한 state를 갖는 두 컴포넌트가 있습니다. 오른쪽에는 두 상태 값을 모두 갖는 부모 컴포넌트의 자식 컴포넌트가 있습니다." src="/images/docs/sketches/s_lifting-state-up.png" />
 
 ### Step 1: 자식 컴포넌트에서 state 제거하기 {/*step-1-remove-state-from-the-child-components*/}
+=======
+### Step 1: Remove state from the child components {/*step-1-remove-state-from-the-child-components*/}
+>>>>>>> 3aac8c59848046fb427aab4373a7aadd7069a24c
 
 `Panel`의 `isActive`에 대한 제어권을 부모 컴포넌트에 줄 수 있습니다. 즉 부모 컴포넌트는 `isActive`를 `Panel`에 prop으로 전달합니다. 다음 줄을 `Panel` 컴포넌트에서 제거하는 것으로 시작해봅시다.
 
@@ -164,8 +192,11 @@ h3, p { margin: 5px 0px; }
 
 상태 끌어올리기는 종종 state로 저장하고 있는 것의 특성을 바꿉니다.
 
+<<<<<<< HEAD
 <img alt="부모 컴포넌트는 state 설정 함수를 두 자식 컴포넌트로 전달합니다." src="/images/docs/sketches/s_passing-functions-down.png" />
 
+=======
+>>>>>>> 3aac8c59848046fb427aab4373a7aadd7069a24c
 In this case, only one panel should be active at a time. This means that the `Accordion` common parent component needs to keep track of *which* panel is the active one. Instead of a `boolean` value, it could use a number as the index of the active `Panel` for the state variable:
 
 ```js
@@ -256,7 +287,27 @@ h3, p { margin: 5px 0px; }
 
 이렇게 상태 끌어올리기가 완성됩니다! state를 공통 부모 컴포넌트로 옮기는 것은 두 패널을 조정할 수 있게 합니다. 두 개의 "보임" 플래그 대신 활성화된 인덱스를 사용하는 것은 한 번에 하나의 패널만 활성화됨을 보장합니다. 그리고 자식 컴포넌트로 이벤트 핸들러를 전달하는 것은 자식 컴포넌트에서 부모의 상태를 변경할 수 있게 합니다.
 
+<<<<<<< HEAD
 <DeepDive title="제어와 비제어 컴포넌트">
+=======
+<DiagramGroup>
+
+<Diagram name="sharing_state_parent" height={385} width={487} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Accordion contains an activeIndex value of zero which turns into isActive value of true passed to the first Panel, and isActive value of false passed to the second Panel." >
+
+Initially, `Accordion`'s `activeIndex` is `0`, so the first `Panel` receives `isActive = true`
+
+</Diagram>
+
+<Diagram name="sharing_state_parent_clicked" height={385} width={521} alt="The same diagram as the previous, with the activeIndex value of the parent Accordion component highlighted indicating a click with the value changed to one. The flow to both of the children Panel components is also highlighted, and the isActive value passed to each child is set to the opposite: false for the first Panel and true for the second one." >
+
+When `Accordion`'s `activeIndex` state changes to `1`, the second `Panel` receives `isActive = true` instead
+
+</Diagram>
+
+</DiagramGroup>
+
+<DeepDive title="Controlled and Uncontrolled Components">
+>>>>>>> 3aac8c59848046fb427aab4373a7aadd7069a24c
 
 "제어되지 않은" 몇몇 지역 state를 갖는 컴포넌트를 사용하는 것은 흔한 일입니다. 예를 들어 `isActive` state를 갖는 원래의 `Panel` 컴포넌트는 해당 컴포넌트의 부모에서 패널의 활성화 여부에 영향을 줄 수 없기 때문에 제어되지 않습니다.
 

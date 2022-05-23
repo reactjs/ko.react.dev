@@ -336,7 +336,7 @@ body { margin: 0; }
 
 <Diagram name="responding_to_input_flow" height={350} width={688} alt="Flow chart moving left to right with 5 nodes. The first node labeled 'empty' has one edge labeled 'start typing' connected to a node labeled 'typing'. That node has one edge labeled 'press submit' connected to a node labeled 'submitting', which has two edges. The left edge is labeled 'network error' connecting to a node labeled 'error'. The right edge is labeled 'network success' connecting to a node labeled 'success'.">
 
-Form States
+Form states
 
 </Diagram>
 
@@ -373,9 +373,15 @@ state의 중복은 피하고 필수적인 state만 남겨두고 싶을 겁니다
 
 여기에 state 변수에 관한 몇 가지 질문이 있습니다.
 
+<<<<<<< HEAD
 * **state가 역설을 일으키지는 않나요?** 예를 들면 `isTyping`과 `isSubmitting`이 동시에 `true`일 수는 없습니다. 이러한 역설은 보통 state가 충분히 제한되지 않았음을 의미합니다. 여기에는 두 boolean에 대한 네 가지 조합이 있지만 오직 유효한 state는 세 개뿐입니다. 이러한 "불가능한" state를 제거하기 위해 세 가지 값 `'typing'`, `'submitting'`, `'success'`을 하나의 `status`로 합칠 수 있습니다.
 * **다른 state 변수에 이미 같은 정보가 담겨있진 않나요?** `isEmpty`와 `isTyping`은 동시에 `true`가 될 수 없습니다. 이를 각각의 state 변수로 분리하면 싱크가 맞지 않거나 버그가 발생할 위험이 있습니다. 이 경우에는 운이 좋게도 `isEmpty`를 지우고 `message.length === 0`으로 체크할 수 있습니다.
 * **다른 변수를 뒤집었을 때 같은 정보를 얻을 수 있진 않나요?** `isError`는 `error !== null`로도 대신 확인할 수 있기 때문에 필요하지 않습니다.
+=======
+* **Does this state cause a paradox?** For example, `isTyping` and `isSubmitting` can't both be `true`. A paradox usually means that the state is not constrained enough. There are four possible combinations of two booleans, but only three correspond to valid states. To remove the "impossible" state, you can combine these into a `status` that must be one of three values: `'typing'`, `'submitting'`, or `'success'`. 
+* **Is the same information available in another state variable already?** Another paradox: `isEmpty` and `isTyping` can't be `true` at the same time. By making them separate state variables, you risk them going out of sync and causing bugs. Fortunately, you can remove `isEmpty` and instead check `answer.length === 0`.
+* **Can you get the same information from the inverse of another state variable?** `isError` is not needed because you can check `error !== null` instead.
+>>>>>>> 3aac8c59848046fb427aab4373a7aadd7069a24c
 
 이러한 정리 과정을 거친 후에는 세 가지 (일곱 개에서 줄어든!) *필수* 변수만 남게 됩니다.
 
