@@ -6,10 +6,16 @@
 import * as React from 'react';
 import {useSandpack, LoadingOverlay} from '@codesandbox/sandpack-react';
 import cn from 'classnames';
-
 import {Error} from './Error';
+<<<<<<< HEAD
 import {computeViewportSize, generateRandomId} from './utils';
 import type {LintDiagnostic} from './utils';
+=======
+import type {LintDiagnostic} from './useSandpackLint';
+
+const generateRandomId = (): string =>
+  Math.floor(Math.random() * 10000).toString();
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 
 type CustomPreviewProps = {
   className?: string;
@@ -60,16 +66,35 @@ export function Preview({
     rawError = null;
   }
 
+<<<<<<< HEAD
   if (lintErrors.length > 0) {
     if (rawError == null || rawError.title === 'Runtime Exception') {
       // When there's a lint error, show it -- even over a runtime error.
       // (However, when there's a build error, we keep showing the build one.)
       const {line, column, message} = lintErrors[0];
       rawError = {
+=======
+  // Memoized because it's fed to debouncing.
+  const firstLintError = React.useMemo(() => {
+    if (lintErrors.length === 0) {
+      return null;
+    } else {
+      const {line, column, message} = lintErrors[0];
+      return {
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
         title: 'Lint Error',
         message: `${line}:${column} - ${message}`,
       };
     }
+<<<<<<< HEAD
+=======
+  }, [lintErrors]);
+
+  if (rawError == null || rawError.title === 'Runtime Exception') {
+    if (firstLintError !== null) {
+      rawError = firstLintError;
+    }
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
   }
 
   // It changes too fast, causing flicker.
@@ -116,7 +141,6 @@ export function Preview({
     [status === 'idle']
   );
 
-  const viewportStyle = computeViewportSize('auto', 'portrait');
   const overrideStyle = error
     ? {
         // Don't collapse errors
@@ -146,7 +170,6 @@ export function Preview({
       style={{
         // TODO: clean up this mess.
         ...customStyle,
-        ...viewportStyle,
         ...overrideStyle,
       }}>
       <div

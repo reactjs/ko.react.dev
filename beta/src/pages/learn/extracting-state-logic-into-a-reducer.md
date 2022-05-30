@@ -4,7 +4,11 @@ title: state 로직을 reducer로 작성하기
 
 <Intro>
 
+<<<<<<< HEAD
 state를 업데이트하는 로직이 여러 이벤트 핸들러에 분산된 컴포넌트는 양이 많아 부담스러울 수 있습니다. 이 경우 state를 업데이트하는 모든 로직을 컴포넌트 외부에서 "reducer"라고 하는 단일 함수로 통합할 수 있습니다.
+=======
+Components with many state updates spread across many event handlers can get overwhelming. For these cases, you can consolidate all the state update logic outside your component in a single function, called a *reducer.*
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 
 </Intro>
 
