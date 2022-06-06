@@ -25,7 +25,11 @@ React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다
 
 복잡한 도구를 쓰거나 뭔가를 따로 설치해야 할 필요도 없습니다. **약간의 시간과 함께 인터넷만 연결 되어 있다면 이 문서에서 다루는 것을 모두 해볼 수 있습니다.**
 
+<<<<<<< HEAD
 선택사항: [예시의 전체 소스코드 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
+=======
+Optional: [Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip)
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 ### 1단계: HTML 파일에 DOM 컨테이너 설치 {#step-1-add-a-dom-container-to-the-html}
 
@@ -52,10 +56,17 @@ React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다
 ```html{5,6,9}
   <!-- ... 다른 HTML ... -->
 
+<<<<<<< HEAD
   <!-- React를 실행. -->
   <!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+=======
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
   <!-- 만든 React 컴포넌트를 실행. -->
   <script src="like_button.js"></script>
@@ -75,16 +86,28 @@ React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다
 >
 >이 코드는 `LikeButton` 이라는 React 컴포넌트를 정의해줍니다. 지금 당장 이해가 안 되어도 걱정 마세요. React에 대한 개념을 쌓아 나가는 것은 나중에 [자습서](/tutorial/tutorial.html)와 [주요 개념 가이드](/docs/hello-world.html)에서 다룰 겁니다. 그러니 지금 당장은, 컴포넌트를 화면에 띄우는 데 집중해봅시다!
 
+<<<<<<< HEAD
 `like_button.js`의 맨 뒷 줄, 그러니까 아까 붙여넣은 **[스타터 코드](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** 뒤에 다음 코드 두 줄을 추가해줍니다.
 
 ```js{3,4}
 // ... 복사했던 스타터 코드 ...
+=======
+After **[the starter code](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, add three lines to the bottom of `like_button.js`:
+
+```js{3,4,5}
+// ... the starter code you pasted ...
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 const domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+const root = ReactDOM.createRoot(domContainer);
+root.render(e(LikeButton));
 ```
 
+<<<<<<< HEAD
 이 두줄의 코드는 첫 단계에서 HTML 페이지에 추가했던 `<div>` 태그를 찾아주고 그 안에 "좋아요" 버튼이라는 React 컴포넌트를 추가해줍니다.
+=======
+These three lines of code find the `<div>` we added to our HTML in the first step, create a React app with it, and then display our "Like" button React component inside of it.
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 ### 다 끝났습니다! {#thats-it}
 
@@ -94,7 +117,11 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 **[예시 전체 소스 코드 보기](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
 
+<<<<<<< HEAD
 **[예시 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
+=======
+**[Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip)**
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 ### 팁: 컴포넌트 재사용 {#tip-reuse-a-component}
 
@@ -102,7 +129,11 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 [예시 전체 소스 코드 보기](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
 
+<<<<<<< HEAD
 [예시 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
+=======
+[Download the full example (2KB zipped)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/279839cb9891bd41802ebebc5365e9dec08eeb9f.zip)
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 >주의
 >
@@ -115,8 +146,8 @@ ReactDOM.render(e(LikeButton), domContainer);
 애플리케이션 스크립트를 이미 압축했을 경우 배포된 HTML 파일이 `production.min.js`로 끝나는 React 파일을 확실히 실행하기만 하면 **사이트는 프로덕션 준비가 완료된 겁니다.**
 
 ```js
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 스크립트를 압축하는 절차가 따로 없다면 [이 사이트를 참고해서 설정해보세요.](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3)
@@ -183,7 +214,7 @@ JSX를 프로젝트에 추가하는 데에는 복잡한 번들러나 개발 서�
 
 `src` 폴더를 만들고 다음 터미널 명령어를 실행하세요.
 
-```
+```console
 npx babel --watch src --out-dir . --presets react-app/prod
 ```
 

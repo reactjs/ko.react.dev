@@ -53,13 +53,13 @@ React의 모든 변경사항들은 배포 전에 광범위한 내부 테스트�
 - 선호하는 지속적 통합 플랫폼을 사용해서 cron job을 설정하세요. Cron jobs는 [CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) 와 [Travis CI](https://docs.travis-ci.com/user/cron-jobs/) 모두에서 지원됩니다.
 - cron job에서, npm의 `next` 태그를 사용해서 React 패키지를 Next 채널에서 가장 최신 React 배포로 업데이트해주세요. npm cli를 사용해서
 
-  ```
+  ```console
   npm update react@next react-dom@next
   ```
 
   또는 yarn을 사용해서
 
-  ```
+  ```console
   yarn upgrade react@next react-dom@next
   ```
 - 업데이트된 패키지에 대해 테스트 suite를 실행해주세요.
