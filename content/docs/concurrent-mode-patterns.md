@@ -15,13 +15,24 @@ next: concurrent-mode-adoption.html
 
 <div class="scary">
 
->경고
+>주의:
 >
->이 페이지는 안정된 배포판에서 아직 제공되지 않는 실험적인 기능에 대해 설명합니다. 얼리 어답터와 궁금해하시는 분을 대상으로 합니다.
+>이 페이지는 **업데이트 되지 않은 페이지**이며 기록을 목적으로 존재합니다.
 >
->많은 정보는 구식이며 보관을 목적으로만 유지되고 있습니다. 최신화된 정보는 [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html)를 참조해주세요.
+>React 18에서는 컨커런트(동시성)를 지원합니다. 컨커런트 모드 동작은 [새 기능을 사용할 때](https://reactjs.org/blog/2022/03/29/react-v18.html#gradually-adopting-concurrent-features) 자동으로 활성화됩니다.
 >
->React 18이 배포되기 전에 해당 페이지를 안정된 문서로 대체할 예정입니다.
+>**최신 정보는 다음을 참조하세요.**
+>* [React 18 공지](https://reactjs.org/blog/2022/03/29/react-v18.html)
+>* [React 18로 업그레이드](https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html)
+>* [React Conf 2021 영상](http://localhost:8000/blog/2021/12/17/react-conf-2021-recap.html)
+>
+>**React 18의 컨커런트 API에 대한 자세한 내용은 다음을 참조하세요.**
+>* [`React.Suspense`](https://reactjs.org/docs/react-api.html#reactsuspense) 참조
+>* [`React.startTransition`](https://reactjs.org/docs/react-api.html#starttransition) 참조
+>* [`React.useTransition`](https://reactjs.org/docs/hooks-reference.html#usetransition) 참조
+>* [`React.useDeferredValue`](https://reactjs.org/docs/hooks-reference.html#usedeferredvalue) 참조
+>
+>이 페이지의 일부는 오래되었거나 잘못된 콘텐츠가 포함되어 있습니다.
 
 </div>
 
@@ -90,6 +101,14 @@ function App() {
 * `startTransition`는 함수입니다. React에 **어떤** 상태변화를 지연하고 싶은지 지정할 수 있습니다.
 
 바로 아래에서 사용하겠습니다.
+
+<div class="scary">
+
+>주의:
+>
+>이전 실험 릴리스 및 데모에서는 반환 값의 순서가 반대였습니다.
+
+</div>
 
 `useTransition` 훅에 설정 객체를 전달했다는 것을 명심하세요. `timeoutMs` 프로퍼티는 **트랜지션이 완료될 때까지 얼마나 오랫동안 기다릴 것인지** 결정합니다. `{timeoutMs: 3000}` 를 전달한다면 "다음 프로필을 불러오는 데 3초보다 오래 걸린다면 로딩 상태를 보여주고 그전까진 계속 이전 화면을 보여줘도 괜찮아"라는 의미입니다.
 
