@@ -78,7 +78,7 @@ import React, { useState, useTransition, Suspense } from "react";
 ```js{3-5}
 function App() {
   const [resource, setResource] = useState(initialResource);
-  const [startTransition, isPending] = useTransition({
+  const [isPending, startTransition] = useTransition({
     timeoutMs: 3000
   });
   // ...
@@ -86,8 +86,8 @@ function App() {
 
 **이 코드만으로는 아무것도 실행하지 않습니다.** 상태를 갱신하기 위해 훅의 반환 값을 사용해야 합니다. `useTransition`의 반환 값은 두가지입니다.
 
-* `startTransition`는 함수입니다. React에 **어떤** 상태변화를 지연하고 싶은지 지정할 수 있습니다.
 * `isPending`는 불리언 값입니다. 트랜지션 진행 여부를 알 수 있습니다.
+* `startTransition`는 함수입니다. React에 **어떤** 상태변화를 지연하고 싶은지 지정할 수 있습니다.
 
 바로 아래에서 사용하겠습니다.
 
@@ -132,7 +132,7 @@ There's still something that feels broken about [our last example](https://codes
 `useTransition()` 호출은 `startTransition` 그리고 `isPending` 두 값을 반환합니다.
 
 ```js
-  const [startTransition, isPending] = useTransition({ timeoutMs: 3000 });
+  const [isPending, startTransition, ] = useTransition({ timeoutMs: 3000 });
 ```
 
 `startTransition`는 이미 상태 갱신 부분을 래핑하는데 사용했습니다. 이제 `isPending`도 사용할 차례입니다. React가 알려주는 이 불리언값은 현재 트랜지션이 끝나기를 기다리고 있는지 알려줍니다. 이 값을 사용해서 현재 무언가 진행 중이라고 보여줄 수 있습니다.
@@ -168,7 +168,7 @@ Let's take another look at all the changes we've made since the [original exampl
 ```js{3-5,9,11,14,19}
 function App() {
   const [resource, setResource] = useState(initialResource);
-  const [startTransition, isPending] = useTransition({
+  const [isPending, startTransition, ] = useTransition({
     timeoutMs: 3000
   });
   return (
@@ -260,7 +260,7 @@ We can see in [this example](https://codesandbox.io/s/trusting-brown-6hj0m0) tha
 
 ```js{2-5,9-11,21}
 function ProfilePage() {
-  const [startTransition, isPending] = useTransition({
+  const [isPending, startTransition, ] = useTransition({
     // Wait 10 seconds before fallback
     timeoutMs: 10000
   });
@@ -301,7 +301,7 @@ function ProfilePage() {
 
 ```js{7-9,20,24}
 function Button({ children, onClick }) {
-  const [startTransition, isPending] = useTransition({
+  const [isPending, startTransition, ] = useTransition({
     timeoutMs: 10000
   });
 
@@ -549,7 +549,7 @@ You can see a demo of this [here](https://codesandbox.io/s/ecstatic-sammet-zeddc
 
 ```js{2,13}
 function Button({ children, onClick }) {
-  const [startTransition, isPending] = useTransition({
+  const [isPending, startTransition, ] = useTransition({
     timeoutMs: 10000
   });
 
@@ -680,7 +680,7 @@ Refer to the documentation for useTransition to learn how to implement this patt
 function App() {
   const [query, setQuery] = useState(initialQuery);
   const [resource, setResource] = useState(initialResource);
-  const [startTransition, isPending] = useTransition({
+  const [isPending, startTransition, ] = useTransition({
     timeoutMs: 5000
   });
 
