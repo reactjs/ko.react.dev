@@ -19,7 +19,7 @@ next: concurrent-mode-adoption.html
 >
 >이 페이지는 **업데이트 되지 않은 페이지**이며 기록을 목적으로 존재합니다.
 >
->React 18에서는 컨커런트(동시성)를 지원합니다. 컨커런트 모드 동작은 [새 기능을 사용할 때](https://reactjs.org/blog/2022/03/29/react-v18.html#gradually-adopting-concurrent-features) 자동으로 활성화됩니다.
+>React 18에서는 컨커런트(동시성)를 지원합니다. 컨커런트 모드 동작은 [새 기능을 사용할 때](https://reactjs.org/blog/2022/03/29/react-v18.html#gradually-adopting-concurrent-features) 활성화됩니다.
 >
 >**최신 정보는 다음을 참조하세요.**
 >* [React 18 공지](https://reactjs.org/blog/2022/03/29/react-v18.html)
@@ -151,7 +151,7 @@ There's still something that feels broken about [our last example](https://codes
 `useTransition()` 호출은 `startTransition` 그리고 `isPending` 두 값을 반환합니다.
 
 ```js
-  const [isPending, startTransition, ] = useTransition({ timeoutMs: 3000 });
+  const [isPending, startTransition] = useTransition({ timeoutMs: 3000 });
 ```
 
 `startTransition`는 이미 상태 갱신 부분을 래핑하는데 사용했습니다. 이제 `isPending`도 사용할 차례입니다. React가 알려주는 이 불리언값은 현재 트랜지션이 끝나기를 기다리고 있는지 알려줍니다. 이 값을 사용해서 현재 무언가 진행 중이라고 보여줄 수 있습니다.
@@ -187,7 +187,7 @@ Let's take another look at all the changes we've made since the [original exampl
 ```js{3-5,9,11,14,19}
 function App() {
   const [resource, setResource] = useState(initialResource);
-  const [isPending, startTransition, ] = useTransition({
+  const [isPending, startTransition] = useTransition({
     timeoutMs: 3000
   });
   return (
@@ -279,7 +279,7 @@ We can see in [this example](https://codesandbox.io/s/trusting-brown-6hj0m0) tha
 
 ```js{2-5,9-11,21}
 function ProfilePage() {
-  const [isPending, startTransition, ] = useTransition({
+  const [isPending, startTransition] = useTransition({
     // Wait 10 seconds before fallback
     timeoutMs: 10000
   });
@@ -320,7 +320,7 @@ function ProfilePage() {
 
 ```js{7-9,20,24}
 function Button({ children, onClick }) {
-  const [isPending, startTransition, ] = useTransition({
+  const [isPending, startTransition] = useTransition({
     timeoutMs: 10000
   });
 
@@ -568,7 +568,7 @@ You can see a demo of this [here](https://codesandbox.io/s/ecstatic-sammet-zeddc
 
 ```js{2,13}
 function Button({ children, onClick }) {
-  const [isPending, startTransition, ] = useTransition({
+  const [isPending, startTransition] = useTransition({
     timeoutMs: 10000
   });
 
@@ -699,7 +699,7 @@ Refer to the documentation for useTransition to learn how to implement this patt
 function App() {
   const [query, setQuery] = useState(initialQuery);
   const [resource, setResource] = useState(initialResource);
-  const [isPending, startTransition, ] = useTransition({
+  const [isPending, startTransition] = useTransition({
     timeoutMs: 5000
   });
 
