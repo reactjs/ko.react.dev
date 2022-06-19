@@ -1151,13 +1151,13 @@ class Game extends React.Component {
   }
 ```
 
-Notice in `jumpTo` method, we haven't updated `history` property of the state. That is because state updates are merged or in more simple words React will update only the properties mentioned in `setState` method leaving the remaining state as is. For more info **[see the documentation](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
+`jumpTo` 함수에서 state의 `history` 프로퍼티를 업데이트하지 않았음에 주목하세요. 이는 state의 업데이트가 병합되거나 간단히 말해 React는 나머지 state를 그대로 두고 `setState` 함수에 언급된 프로퍼티만 업데이트하기 때문입니다. 자세한 내용은 **[문서를 참조하세요](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
 
 이제 사각형을 클릭할 때 마다 실행되는 Game의 `handleClick` 함수에 몇 가지 변화를 줄 것입니다.
 
 `stepNumber` state는 현재 사용자에게 표시되는 이동을 반영합니다. 새로운 이동을 만든 후에 `this.setState`의 인자로 `stepNumber: history.length`를 추가하여 `stepNumber`를 업데이트 해아합니다. 이를 통해 새로운 이동이 생성된 후에 이동이 그대로 남아있는 것을 방지합니다.
 
-We will also replace reading `this.state.history` with `this.state.history.slice(0, this.state.stepNumber + 1)`. This ensures that if we "go back in time" and then make a new move from that point, we throw away all the "future" history that would now be incorrect.
+또한 `this.state.history`를 `this.state.history.slice(0, this.state.stepNumber + 1)`로 바꿉니다. 이것은 우리가 "시간을 되돌려" 그 시점에서 새로운 움직임을 보이면, 지금은 올바르지 않은 "미래”의 기록을 모두 버리는 것을 보장합니다.
 
 ```javascript{2,13}
   handleClick(i) {
