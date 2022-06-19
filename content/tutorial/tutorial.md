@@ -1155,7 +1155,7 @@ class Game extends React.Component {
 
 이제 사각형을 클릭할 때 마다 실행되는 Game의 `handleClick` 함수에 몇 가지 변화를 줄 것입니다.
 
-`stepNumber` state는 현재 사용자에게 표시되는 이동을 반영합니다. 새로운 이동을 만든 후에 `this.setState`의 인자로 `stepNumber: history.length`를 추가하여 `stepNumber`를 업데이트 해아합니다. 이를 통해 새로운 이동이 생성된 후에 이동이 그대로 남아있는 것을 방지합니다.
+`stepNumber` state는 현재 사용자에게 표시되는 이동을 반영합니다. 새로운 이동을 만든 후에 `this.setState`의 인자로 `stepNumber: history.length`를 추가하여 `stepNumber`를 업데이트 해야 합니다. 이를 통해 새로운 이동이 생성된 후에 이동이 그대로 남아있는 것을 방지합니다.
 
 또한 `this.state.history`를 `this.state.history.slice(0, this.state.stepNumber + 1)`로 바꿉니다. 이것은 우리가 "시간을 되돌려" 그 시점에서 새로운 움직임을 보이면, 지금은 올바르지 않은 "미래”의 기록을 모두 버리는 것을 보장합니다.
 
