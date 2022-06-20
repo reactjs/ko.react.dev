@@ -66,7 +66,11 @@ class ErrorBoundary extends React.Component {
 
 ## 라이브 데모 {#live-demo}
 
+<<<<<<< HEAD
 [React 16](/blog/2017/09/26/react-v16.0.html)으로 구현된 [에러 경계 선언과 사용 예시](https://codepen.io/gaearon/pen/wqvxGa?editors=0010)를 참고하세요.
+=======
+Check out [this example of declaring and using an error boundary](https://codepen.io/gaearon/pen/wqvxGa?editors=0010).
+>>>>>>> df2673d1b6ec0cc6657fd58690bbf30fa1e6e0e6
 
 
 ## 에러 경계를 배치할 위치 {#where-to-place-error-boundaries}

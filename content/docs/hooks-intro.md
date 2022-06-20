@@ -30,8 +30,13 @@ function Example() {
 
 >주의
 >
+<<<<<<< HEAD
 >React 16.8.0은 Hook을 지원하는 첫 번째 배포입니다. 업그레이드 시 React DOM을 포함한 모든 패키지의 업데이트를 진행해주세요.
 >React Native는 [v0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059)부터 Hook을 지원합니다.
+=======
+>React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM.
+>React Native has supported Hooks since [the 0.59 release of React Native](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059).
+>>>>>>> df2673d1b6ec0cc6657fd58690bbf30fa1e6e0e6
 
 ## 소개 영상 {#video-introduction}
 
@@ -95,7 +100,11 @@ React는 지난 5년 동안 널리 사용되어 왔으며, React의 개발진은
 
 또한 React에 추가되는 새로운 기능에 대한 기준점이 매우 높다는 것을 알고 있습니다. 궁금해하는 독자들을 위해 동기부여에 대한 구체적인 내용을 담고 있는 [자세한 RFC](https://github.com/reactjs/rfcs/pull/68)를 준비했고 특정 설계 결정 및 관련 선행 기술에 대한 추가적인 관점을 제공합니다.
 
+<<<<<<< HEAD
 **결정적으로, Hook은 존재하는 코드와 함께 나란히 작동함으로써 점진적으로 적용할 수 있습니다.** Hook의 적용을 서두를 필요는 없습니다. 이미 사용중인 복잡한 Class 컴포넌트들에 대한 "큰 리팩토링"을 피하기를 권장합니다. "Hook을 적용하기"에는 고민의 시간이 필요합니다. 경험을 토대로 하여, 상대적으로 중요성이 덜한 새 컴포넌트에서 Hook을 사용하는 것이 최고의 연습입니다. 그리고 여러분의 모든 팀원이 Hook에 대해 안정감을 느끼는지 확인하는 게 좋습니다. Hook을 이용 후, 긍정적, 부정적 의견 모두 [의견 보내기](https://github.com/facebook/react/issues/new)를 이용해 보내주시면 감사하겠습니다.
+=======
+We also understand that the bar for adding a new primitive to React is extremely high. For curious readers, we have prepared a [detailed RFC](https://github.com/reactjs/rfcs/pull/68) that dives into the motivation with more details, and provides extra perspective on the specific design decisions and related prior art.
+>>>>>>> df2673d1b6ec0cc6657fd58690bbf30fa1e6e0e6
 
 React의 개발자들은 현재 사용중인 Class 사례를 Hook으로 교체하는 것을 염두에 두고는 있지만, **미래에도 계속 Class 컴포넌트들을 지원할 예정입니다.** 페이스북은 수만 개의 Class 컴포넌트들을 작성했지만 이를 재작성할 계획은 없습니다. 대신에, 새로운 코드에서 기존 코드와 나란히 Hook을 사용할 계획입니다.
 
