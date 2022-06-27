@@ -18,14 +18,10 @@ import {IconChevron} from 'components/Icon/IconChevron';
 import {NavigationBar} from './NavigationBar';
 import {Preview} from './Preview';
 import {CustomTheme} from './Themes';
-<<<<<<< HEAD
-import {useSandpackLint} from './utils';
-=======
 import {useSandpackLint} from './useSandpackLint';
 
 // Workaround for https://github.com/reactjs/reactjs.org/issues/4686#issuecomment-1137402613.
 const emptyArray: Array<any> = [];
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 export function CustomPreset({
   isSingleFile,
@@ -38,11 +34,7 @@ export function CustomPreset({
   devToolsLoaded: boolean;
   onDevToolsLoad: () => void;
 }) {
-<<<<<<< HEAD
-  const {lintErrors, onLint} = useSandpackLint();
-=======
   const {lintErrors, lintExtensions} = useSandpackLint();
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
   const lineCountRef = React.useRef<{[key: string]: number}>({});
   const containerRef = React.useRef<HTMLDivElement>(null);
   const {sandpack} = useSandpack();
@@ -60,7 +52,8 @@ export function CustomPreset({
     <>
       <div
         className="shadow-lg dark:shadow-lg-dark rounded-lg"
-        ref={containerRef}>
+        ref={containerRef}
+      >
         <NavigationBar showDownload={isSingleFile} />
         <SandpackThemeProvider theme={CustomTheme}>
           <div
@@ -69,18 +62,15 @@ export function CustomPreset({
               'sp-layout sp-custom-layout',
               showDevTools && devToolsLoaded && 'sp-layout-devtools',
               isExpanded && 'sp-layout-expanded'
-            )}>
+            )}
+          >
             <SandpackCodeEditor
               showLineNumbers
               showInlineErrors
               showTabs={false}
               showRunButton={false}
-<<<<<<< HEAD
-              extensions={[onLint]}
-=======
               extensions={lintExtensions}
               extensionsKeymap={emptyArray}
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
             />
             <Preview
               className="order-last xl:order-2"
@@ -103,7 +93,8 @@ export function CustomPreset({
                       inline: 'nearest',
                     });
                   }
-                }}>
+                }}
+              >
                 <span className="flex p-2 focus:outline-none text-primary dark:text-primary-dark">
                   <IconChevron
                     className="inline mr-1.5 text-xl"
