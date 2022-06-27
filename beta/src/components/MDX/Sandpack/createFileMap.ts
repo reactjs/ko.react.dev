@@ -1,14 +1,10 @@
 /*
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
-<<<<<<< HEAD:beta/src/components/MDX/Sandpack/utils.ts
 import {useState} from 'react';
-import {lintDiagnostic} from './eslint-integration';
 import {linter} from '@codemirror/lint';
 import type {EditorView} from '@codemirror/view';
-=======
 
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414:beta/src/components/MDX/Sandpack/createFileMap.ts
 import type {SandpackFile} from '@codesandbox/sandpack-react';
 
 export const createFileMap = (codeSnippets: any) => {
