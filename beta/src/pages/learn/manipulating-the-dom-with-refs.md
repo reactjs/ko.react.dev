@@ -4,11 +4,7 @@ title: 'Ref로 DOM 조작하기'
 
 <Intro>
 
-<<<<<<< HEAD
-React는 렌더링 결과물에 맞춰 [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) 변경을 처리하기 때문에 컴포넌트에서 자주 DOM을 조작해야 할 필요는 없습니다. 하지만 가끔 특정 노드에 포커스를 옮기거나, 스크롤 위치를 옮기거나, 위치와 크기를 측정하기 위해서 React가 관리하는 DOM 요소에 접근해야 할 때가 있습니다. React는 이런 작업을 수행하는 내장 방법을 제공하지 않기 때문에 DOM 노드에 접근하기 위한 [ref](/learn/referencing-values-with-refs#refs-and-the-dom)가 필요할 것입니다.
-=======
-React automatically updates the [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) to match your render output, so your components won't often need to manipulate it. However, sometimes you might need access to the DOM elements managed by React--for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a *ref* to the DOM node.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+React는 렌더링 결과물에 맞춰 [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) 변경을 자동으로 처리하기 때문에 컴포넌트에서 자주 DOM을 조작해야 할 필요는 없습니다. 하지만 가끔 특정 노드에 포커스를 옮기거나, 스크롤 위치를 옮기거나, 위치와 크기를 측정하기 위해서 React가 관리하는 DOM 요소에 접근해야 할 때가 있습니다. React는 이런 작업을 수행하는 내장 방법을 제공하지 않기 때문에 DOM 노드에 접근하기 위한 *ref*가 필요할 것입니다.
 
 </Intro>
 
@@ -84,19 +80,11 @@ export default function Form() {
 3. `handleClick` 함수에서 `inputRef.current`에서 input DOM 노드를 읽고 `inputRef.current.focus()`로 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)를 호출합니다.
 4. `<button>`과 `onClick`으로 `handleClick` 이벤트 핸들러를 전달합니다.
 
-<<<<<<< HEAD
-DOM 조작이 ref를 사용하는 가장 일반적인 사용처지만 `useRef` Hook은 setTimeout Timer ID 같은 React 외부 요소를 저장하는 용도로도 사용할 수 있습니다. 상태(state)와 비슷하게 ref는 렌더링 사이에도 유지됩니다. ref를 설정하더라도 컴포넌트의 렌더링을 다시 유발하지 않는 상태 변수로 생각해도 괜찮습니다! [Ref와 값 참조](/learn/referencing-values-with-refs)에서 ref에 대해 자세히 배울 수 있습니다.
-=======
-While DOM manipulation is the most common use case for refs, the `useRef` Hook can be used for storing other things outside React, like timer IDs. Similarly to state, refs remain between renders. Refs are like state variables that don't trigger re-renders when you set them. For an introduction to refs, see [Referencing Values with Refs](/learn/referencing-values-with-refs).
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+DOM 조작이 ref를 사용하는 가장 일반적인 사용처지만 `useRef` Hook은 setTimeout Timer ID 같은 React 외부 요소를 저장하는 용도로도 사용할 수 있습니다. 상태(state)와 비슷하게 ref는 렌더링 사이에도 유지됩니다. ref를 설정하더라도 컴포넌트의 렌더링을 다시 유발하지 않는 상태 변수와 비슷합니다. [Ref와 값 참조](/learn/referencing-values-with-refs)에서 ref에 대해 자세히 배울 수 있습니다.
 
 ### 예시: 한 요소로 스크롤을 이동하기 {/*example-scrolling-to-an-element*/}
 
-<<<<<<< HEAD
-한 컴포넌트에서 하나 이상의 ref를 가질 수 있습니다. 이 예시에서는 상응하는 이미지 DOM 노드로 화면을 중앙 정렬하기 위해 [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) 메서드를 호출하는 버튼 세 개와 이미지 세 개가 있는 캐러셀이 있습니다.
-=======
-You can have more than a single ref in a component. In this example, there is a carousel of three images. Each button centers an image by calling the browser [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) method the corresponding DOM node:
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+한 컴포넌트에서 하나 이상의 ref를 가질 수 있습니다. 이 예시에서는 이미지 3개가 있는 캐러셀이 있습니다. 각 버튼은 브라우저 [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) 메서드를 해당 DOM 노드로 호출하여 이미지를 중앙에 배치합니다.
 
 <Sandpack>
 
@@ -450,8 +438,8 @@ export default function Form() {
 
 ```js
 import {
-  forwardRef, 
-  useRef, 
+  forwardRef,
+  useRef,
   useImperativeHandle
 } from 'react';
 
@@ -596,7 +584,7 @@ export default function TodoList() {
     const newTodo = { id: nextId++, text: text };
     flushSync(() => {
       setText('');
-      setTodos([ ...todos, newTodo]);      
+      setTodos([ ...todos, newTodo]);
     });
     listRef.current.lastChild.scrollIntoView({
       behavior: 'smooth',
@@ -1010,7 +998,7 @@ export default function CatFriends() {
             behavior: 'smooth',
             block: 'nearest',
             inline: 'center'
-          });            
+          });
         }}>
           Next
         </button>
