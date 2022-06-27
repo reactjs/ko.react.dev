@@ -19,17 +19,7 @@ title: 스냅샷으로서의 State
 
 ## state를 설정하여 렌더링을 실행합니다. {/*setting-state-triggers-renders*/}
 
-<<<<<<< HEAD
-사용자 인터페이스는 클릭과 같은 사용자의 인풋에 응답으로 즉시 변경된다고 생각할 수 있습니다. [storyboarding](https://wikipedia.org/wiki/Storyboard) 디자인과 상호작용을 경험했다면 이것은 직관적으로 느껴질 수 있습니다.
-
-<Illustration alt="폼에서부터 제출버튼 위에 손가락을 대고 있는 모습 그리고 확인메세지까지의 진행 과정입니다." src="/images/docs/sketches/s_ui-response.jpg" />
-
-React에서 이것은 일반적인 예상과 조금 다르게 동작합니다. 이전 페이지에서 React로부터 [state 설정이 다시 렌더링을 요청합니다](/learn/render-and-commit#step-1-trigger-a-render)를 보았을 겁니다. 즉, 인터페이스가 인풋에 반응하려면 인풋의 state를 설정해야 하는 것을 의미합니다.
-
-<Illustration alt="React는 처음에 폼을 렌더링하고 제출 버튼의 손가락은 setState를 React로 보내고 React는 확인 메시지를 재렌더링합니다." src="/images/docs/sketches/s_react-ui-response.jpg" />
-=======
 You might think of your user interface as changing directly in response to the user event like a click. In React, it works a little differently from this mental model. On the previous page, you saw that [setting state requests a re-render](/learn/render-and-commit#step-1-trigger-a-render) from React. This means that for an interface to react to the event, you need to *update the state*.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 예시에서 "전송" 버튼을 눌렀을 때, `setIsSent(true)`는 UI를 다시 렌더링하도록 React에 알려줍니다.
 
@@ -79,13 +69,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 state와 렌더링의 관계를 자세히 살펴보겠습니다.
 
-<<<<<<< HEAD
-<Illustration alt="State는 React 안에있고; React는 setUpdate를 얻습니다; 다시 렌더링에서, React는 state의 스냅샷을 컴포넌트에 전달합니다." src="/images/docs/illustrations/i_ui-snapshot.png" />
-
 ## 렌더링은 적시에 스냅샷을 생성합니다. {/*rendering-takes-a-snapshot-in-time*/}
-=======
-## Rendering takes a snapshot in time {/*rendering-takes-a-snapshot-in-time*/}
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 ["렌더링"](/learn/render-and-commit#step-2-react-renders-your-components)은 React가 함수형 컴포넌트를 호출하는 것을 의미합니다. 함수에서 반환하는 JSX는 시간에 따른 UI의 스냅샷과 같습니다. 컴포넌트의 props, 이벤트 핸들러, 로컬 변수들 모두 계산됩니다. **렌더링 시점의 state 사용.**
 
@@ -106,15 +90,9 @@ React가 컴포넌트를 다시 렌더링할 때.
 컴포넌트의 메모리인 state는 함수가 반환된 후 사라지는 일반 변수와 다릅니다. 함수 외부에 있는 것처럼 실제로 React 자체에 "살아있는" State를 나타냅니다. React가 컴포넌트를 호출하면 특정 렌더링의 state에 대한 스냅샷을 제공합니다. 컴포넌트는 JSX에 새로운 props 및 이벤트 핸들러 세트가 있는 UI 스냅샷을 반환하며 모두 계산됩니다.**렌더링의 state 사용!**
 
 <IllustrationBlock sequential>
-<<<<<<< HEAD
-  <Illustration caption="React는 setUpdate를 얻습니다." src="/images/docs/illustrations/i_state-snapshot1.png" />
-  <Illustration caption="React는 state를 업데이트 합니다." src="/images/docs/illustrations/i_state-snapshot2.png" />
-  <Illustration caption="React는 state의 스냅샷을 컴포넌트에 전달합니다." src="/images/docs/illustrations/i_state-snapshot3.png" />
-=======
-  <Illustration caption="You tell React to update the state" src="/images/docs/illustrations/i_state-snapshot1.png" />
-  <Illustration caption="React updates the state value" src="/images/docs/illustrations/i_state-snapshot2.png" />
-  <Illustration caption="React passes a snapshot of the state value into the component" src="/images/docs/illustrations/i_state-snapshot3.png" />
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+  <Illustration caption="React에게 상태를 업데이트하라고 알립니다" src="/images/docs/illustrations/i_state-snapshot1.png" />
+  <Illustration caption="React는 state를 업데이트 합니다" src="/images/docs/illustrations/i_state-snapshot2.png" />
+  <Illustration caption="React는 state의 스냅샷을 컴포넌트에 전달합니다" src="/images/docs/illustrations/i_state-snapshot3.png" />
 </IllustrationBlock>
 
 이것이 어떻게 동작하는지 보여주기 위한 작은 실험이 있습니다. 이 예시에서, "+3"버튼을 클릭하면 `setNumber(number + 1)`를 세 번 호출하기 때문에 카운터가 세 번 증가할 것으로 예상할 수 있습니다.
@@ -334,7 +312,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 <Recap>
 
 * state를 설정하면 새 렌더링이 요청됩니다
-* React는 선반에 있는 것처럼 구성 요소 외부에 state를 저장합니다. (as if on a shelf) 
+* React는 선반에 있는 것처럼 구성 요소 외부에 state를 저장합니다. (as if on a shelf)
 * `useState`를 호출하면 React는 *렌더링*의 state에 대한 스냅샷을 제공합니다.
 * 변수 및 이벤트 핸들러는 "생존"하여 다시 렌더링 되지 않습니다. 모든 렌더링에는 고유의 이벤트 핸들러가 있습니다.
 * 모든 렌더링(및 그 안의 함수)은 항상 React가 *그*렌더링에 부여한 state의 스냅샷을 "볼" 것입니다.
