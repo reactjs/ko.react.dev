@@ -4,11 +4,7 @@ title: '값을 Refs와 함께 참조하기'
 
 <Intro>
 
-<<<<<<< HEAD
-컴포넌트가 일부 정보를 "기억"하고 싶지만, 해당 정보가 [렌더링을 유발](/learn/render-and-commit)하지 않도록 하려면 **ref**를 사용하세요-이것은 컴포넌트에 정보를 저장하는 비밀 "pocket"과 같습니다!
-=======
-When you want a component to "remember" some information, but you don't want that information to [trigger new renders](/learn/render-and-commit), you can use a *ref*.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+컴포넌트가 일부 정보를 "기억"하고 싶지만, 해당 정보가 [렌더링을 유발](/learn/render-and-commit)하지 않도록 하려면 *ref*를 사용하세요.
 
 </Intro>
 
@@ -39,18 +35,14 @@ const ref = useRef(0);
 
 <!-- prettier-ignore -->
 ```js
-{ 
+{
   current: 0 // The value you passed to useRef
 }
 ```
 
 <Illustration src="/images/docs/illustrations/i_ref.png" alt="An arrow with 'current' written on it stuffed into a pocket with 'ref' written on it." />
 
-<<<<<<< HEAD
-`ref.current` 프로퍼티를 통해 해당 ref의 current 값에 접근할 수 있습니다. 이 값은 의도적으로 변경할 수 있으므로 읽고 쓸 수 있습니다. (이것이 바로 React의 단방향 데이터 흐름에서 "escape hatch"가 되는 것입니다--아래에서 자세히 설명하고 있습니다!)
-=======
-You can access the current value of that ref through the `ref.current` property. This value is intentionally mutable, meaning you can both read and write to it. It's like a secret pocket of your component that React doesn't track. (This is what makes it an "escape hatch" from React's one-way data flow--more on that below!)
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+`ref.current` 프로퍼티를 통해 해당 ref의 current 값에 접근할 수 있습니다. 이 값은 의도적으로 변경할 수 있으므로 읽고 쓸 수 있습니다. React가 추적하지 않는 구성 요소의 비밀 주머니라 할 수 있습니다. (이것이 바로 React의 단방향 데이터 흐름에서 "escape hatch"가 되는 것입니다--아래에서 자세히 설명하고 있습니다!)
 
 여기서 버튼은 클릭할 때마다 `ref.current`를 증가시킵니다.
 
@@ -266,7 +258,7 @@ React는 `useRef`가 실제로 충분히 일반적이기 때문에 built-in 버�
 일반적으로 컴포넌트가 React를 "외부"와 외부 API--컴포넌트의 형태에 영향을 미치지 않는 브라우저 API 와 통신해야 할 때 ref를 사용합니다. 다음은 몇 가지 특별한 상황입니다.
 
 - [timeout IDs](https://developer.mozilla.org/ko/docs/Web/API/setTimeout)를 저장
-- [다음 페이지](/learn/manipulating-the-dom-with-refs)에서 다루는 [DOM 엘리먼트](https://developer.mozilla.org/ko/docs/Web/API/Element) 저장 및 조작 
+- [다음 페이지](/learn/manipulating-the-dom-with-refs)에서 다루는 [DOM 엘리먼트](https://developer.mozilla.org/ko/docs/Web/API/Element) 저장 및 조작
 - JSX를 계산하는 데 필요하지 않은 다른 객체 저장
 
 컴포넌트가 일부 값을 저장해야 하지만 렌더링 로직에 영향을 미치지 않는 경우, refs를 선택합니다.
