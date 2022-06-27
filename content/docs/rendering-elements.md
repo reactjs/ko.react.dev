@@ -34,7 +34,11 @@ HTML 파일 어딘가에 `<div>`가 있다고 가정해 봅시다.
 
 React로 구현된 애플리케이션은 일반적으로 하나의 루트 DOM 노드가 있습니다. React를 기존 앱에 통합하려는 경우 원하는 만큼 많은 수의 독립된 루트 DOM 노드가 있을 수 있습니다.
 
+<<<<<<< HEAD
 React 엘리먼트를 루트 DOM 노드에 렌더링하려면 둘 다 [`ReactDOM.render()`](/docs/react-dom.html#render)로 전달하면 됩니다.
+=======
+To render a React element, first pass the DOM element to [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot), then pass the React element to `root.render()`:
+>>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 `embed:rendering-elements/render-an-element.js`
 
@@ -46,7 +50,11 @@ React 엘리먼트를 루트 DOM 노드에 렌더링하려면 둘 다 [`ReactDOM
 
 React 엘리먼트는 [불변객체](https://ko.wikipedia.org/wiki/%EB%B6%88%EB%B3%80%EA%B0%9D%EC%B2%B4)입니다. 엘리먼트를 생성한 이후에는 해당 엘리먼트의 자식이나 속성을 변경할 수 없습니다. 엘리먼트는 영화에서 하나의 프레임과 같이 특정 시점의 UI를 보여줍니다.
 
+<<<<<<< HEAD
 지금까지 소개한 내용을 바탕으로 하면 UI를 업데이트하는 유일한 방법은 새로운 엘리먼트를 생성하고 이를 [`ReactDOM.render()`](/docs/react-dom.html#render)로 전달하는 것입니다.
+=======
+With our knowledge so far, the only way to update the UI is to create a new element, and pass it to `root.render()`.
+>>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 예시로 똑딱거리는 시계를 살펴보겠습니다.
 
@@ -54,11 +62,19 @@ React 엘리먼트는 [불변객체](https://ko.wikipedia.org/wiki/%EB%B6%88%EB%
 
 **[CodePen에서 실행하기](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
 
+<<<<<<< HEAD
 위 함수는 [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) 콜백을 이용해 초마다 [`ReactDOM.render()`](/docs/react-dom.html#render)를 호출합니다.
+=======
+It calls [`root.render()`](/docs/react-dom.html#render) every second from a [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback.
+>>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 >**주의**
 >
+<<<<<<< HEAD
 >실제로 대부분의 React 앱은 `ReactDOM.render()`를 한 번만 호출합니다. 다음 장에서는 이와 같은 코드가 [유상태 컴포넌트](/docs/state-and-lifecycle.html)에 어떻게 캡슐화되는지 설명합니다.
+=======
+>In practice, most React apps only call `root.render()` once. In the next sections we will learn how such code gets encapsulated into [stateful components](/docs/state-and-lifecycle.html).
+>>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 >
 >각 주제가 서로 연관이 있기 때문에 건너뛰지 않는 것을 추천합니다.
 

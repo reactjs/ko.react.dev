@@ -9,18 +9,22 @@ next: release-channels.html
 React와 ReactDOM 모두 CDN을 통해 사용할 수 있습니다.
 
 ```html
-<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 ```
 
 위의 코드는 개발용으로 적합하며 배포용 버전에는 적합하지 않습니다. React의 용량 및 성능 최적화된 배포용 버전은 아래와 같이 제공되고 있습니다.
 
 ```html
-<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 ```
 
+<<<<<<< HEAD
 `react`와 `react-dom`의 특정 버전을 로딩하려면 `17`을 사용하고자 하는 버전 넘버로 대체하면 됩니다.
+=======
+To load a specific version of `react` and `react-dom`, replace `18` with the version number.
+>>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 ### `crossorigin` 속성이 필요한 이유 {#why-the-crossorigin-attribute}
 

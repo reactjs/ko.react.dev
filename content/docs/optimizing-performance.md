@@ -43,8 +43,8 @@ npm run build
 React 및 React DOM의 프로덕션 준비 버전을 단일 파일로 제공합니다.
 
 ```html
-<script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 ```
 
 `.production.min.js`로 끝나는 React 파일만이 프로덕션 환경에 적합합니다.
@@ -175,8 +175,13 @@ Profiler에 대한 영상도 [YouTube](https://www.youtube.com/watch?v=nySib7ipZ
 
 > 주의
 >
+<<<<<<< HEAD
 > React 17 이전에는 크롬 퍼포먼스 탭으로 컴포넌트를 프로파일링 하기 위해 [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) 표준을 사용했습니다.
 > 자세한 내용은 [Ben Schwarz이 작성한 글](https://calibreapp.com/blog/react-performance-profiling-optimization)을 참조해주세요.
+=======
+> Before React 17, we use the standard [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile components with the chrome performance tab.
+> For a more detailed walkthrough, check out [this article by Ben Schwarz](https://calibreapp.com/blog/react-performance-profiling-optimization).
+>>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 ## 긴 목록 가상화하세요 {#virtualize-long-lists}
 
