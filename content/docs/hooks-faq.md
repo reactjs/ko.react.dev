@@ -765,7 +765,7 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 
 **의미론적 보장이 아닌 성능 최적화로 `useMemo`를 사용할 수 있습니다.** 미래에 React는 이전에 메모한 일부 값을 "잊고" 다음 렌더링에서 다시 계산하도록 선택할 수 있습니다. 오프 스크린 컴포넌트를 위한 메모리를 확보합니다. `useMemo` 없이도 계속 작동하도록 코드를 작성한 다음 추가하여 성능을 최적화해주세요. (값을 다시 계산해서는 안 되는 드문 경우의 경우, ref를 [느리게 초기화](#how-to-create-expensive-objects-lazily) 할 수 있습니다.)
 
-편리하게도 `useMemo`를 사용하면 자녀의 값 비싼 다시 렌더링을 건너뛸 수 있습니다.
+편리하게, `useMemo`를 사용하면 자식의 값비싼 리렌더링을 건너뛸 수 있습니다.
 
 ```js
 function Parent({ a, b }) {
