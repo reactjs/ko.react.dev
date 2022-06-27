@@ -1,9 +1,9 @@
 ---
 id: error-decoder
-title: Error Decoder
+title: 에러 해독기(Error Decoder)
 permalink: docs/error-decoder.html
 ---
 
-In the minified production build of React, we avoid sending down full error messages in order to reduce the number of bytes sent over the wire.
+React의 축소된 배포용 빌드에서는 전송되는 바이트 수를 줄이기 위해 전체 오류 메시지를 전송하지 않습니다.
 
-We highly recommend using the development build locally when debugging your app since it tracks additional debug info and provides helpful warnings about potential problems in your apps, but if you encounter an exception while using the production build, this page will reassemble the original text of the error.
+저희는 추가 디버그 정보를 추적하고 앱의 잠재적인 문제에 대한 유용한 경고를 제공하므로 로컬에서 앱을 디버깅할 때는 개발용 빌드를 사용하는 것이 좋습니다. 그러나 배포용 빌드를 사용하는 동안 예외가 발생하면 이 페이지가 오류의 원본 텍스트를 다시 조합합니다.
