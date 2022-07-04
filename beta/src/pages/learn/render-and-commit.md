@@ -19,9 +19,15 @@ title: 렌더링 그리고 커밋
 
 주방에서 요리사가 컴포넌트를 재료로 맛있는 요리를 한다고 상상해보세요. 이 시나리오에서 React는 고객들의 요청을 받고 주문을 가져오는 웨이터입니다. 이 과정에는 UI를 요청하고 제공하는 세 가지 단계가 있습니다.
 
+<<<<<<< HEAD
 1. 렌더링 **트리거** (손님의 주문을 주방으로 전달)
 2. 컴포넌트 **렌더링** (주방에서 주문 받기)
 3. DOM에 **커밋** (테이블에 주문한 요리 내놓기)
+=======
+1. **Triggering** a render (delivering the guest's order to the kitchen)
+2. **Rendering** the component (preparing the order in the kitchen)
+3. **Committing** to the DOM (placing the order on the table)
+>>>>>>> ee7705675d2304c53c174b9fb316e2fbde1e9fb3
 
 <IllustrationBlock sequential>
   <Illustration caption="Trigger" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />

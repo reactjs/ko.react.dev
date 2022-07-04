@@ -10,9 +10,15 @@ next: handling-events.html
 
 이 페이지는 React 컴포넌트 안의 state와 생명주기에 대한 개념을 소개해 줍니다. [자세한 컴포넌트 API 레퍼런스는 여기](/docs/react-component.html)에서 찾을 수 있습니다.
 
+<<<<<<< HEAD
 [이전 섹션](/docs/rendering-elements.html#updating-the-rendered-element)에서 다뤄본 째깍거리는 시계 예시를 다시 살펴보겠습니다. [엘리먼트 렌더링](/docs/rendering-elements.html#rendering-an-element-into-the-dom)에서는 UI를 업데이트하는 한 가지 방법만 배웠으며, 렌더링 된 출력값을 변경하기 위해 `ReactDOM.render()`를 호출했습니다.
+=======
+Consider the ticking clock example from [one of the previous sections](/docs/rendering-elements.html#updating-the-rendered-element). In [Rendering Elements](/docs/rendering-elements.html#rendering-an-element-into-the-dom), we have only learned one way to update the UI. We call `root.render()` to change the rendered output:
+>>>>>>> ee7705675d2304c53c174b9fb316e2fbde1e9fb3
 
-```js{8-11}
+```js{10}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+  
 function tick() {
   const element = (
     <div>
@@ -20,10 +26,7 @@ function tick() {
       <h2>It is {new Date().toLocaleTimeString()}.</h2>
     </div>
   );
-  ReactDOM.render(
-    element,
-    document.getElementById('root')
-  );
+  root.render(element);
 }
 
 setInterval(tick, 1000);
@@ -35,7 +38,9 @@ setInterval(tick, 1000);
 
 시계가 생긴 것에 따라 캡슐화하는 것으로 시작할 수 있습니다.
 
-```js{3-6,12}
+```js{5-8,13}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
 function Clock(props) {
   return (
     <div>
@@ -46,10 +51,7 @@ function Clock(props) {
 }
 
 function tick() {
-  ReactDOM.render(
-    <Clock date={new Date()} />,
-    document.getElementById('root')
-  );
+  root.render(<Clock date={new Date()} />);
 }
 
 setInterval(tick, 1000);
@@ -62,10 +64,7 @@ setInterval(tick, 1000);
 이상적으로 한 번만 코드를 작성하고 `Clock`이 스스로 업데이트하도록 만들려고 합니다.
 
 ```js{2}
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+root.render(<Clock />);
 ```
 
 이것을 구현하기 위해서 `Clock` 컴포넌트에 "state"를 추가해야 합니다.
@@ -159,10 +158,7 @@ class Clock extends React.Component {
 3) `<Clock />` 요소에서 `date` prop을 삭제합니다.
 
 ```js{2}
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+root.render(<Clock />);
 ```
 
 타이머 코드는 나중에 다시 컴포넌트로 추가하도록 하겠습니다.
@@ -186,10 +182,8 @@ class Clock extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clock />);
 ```
 
 [**CodePen에서 시도해보기**](https://codepen.io/gaearon/pen/KgQpJd?editors=0010)
@@ -295,10 +289,8 @@ class Clock extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clock />);
 ```
 
 [**CodePen에서 시도해보기**](https://codepen.io/gaearon/pen/amqdNA?editors=0010)
@@ -307,7 +299,11 @@ ReactDOM.render(
 
 현재 어떤 상황이고 메서드가 어떻게 호출되는지 순서대로 빠르게 요약해 보겠습니다.
 
+<<<<<<< HEAD
 1) `<Clock />`가 `ReactDOM.render()`로 전달되었을 때 React는 `Clock` 컴포넌트의 constructor를 호출합니다. `Clock`이 현재 시각을 표시해야 하기 때문에 현재 시각이 포함된 객체로 `this.state`를 초기화합니다. 나중에 이 state를 업데이트할 것입니다.
+=======
+1) When `<Clock />` is passed to `root.render()`, React calls the constructor of the `Clock` component. Since `Clock` needs to display the current time, it initializes `this.state` with an object including the current time. We will later update this state.
+>>>>>>> ee7705675d2304c53c174b9fb316e2fbde1e9fb3
 
 2) React는 `Clock` 컴포넌트의 `render()` 메서드를 호출합니다. 이를 통해 React는 화면에 표시되어야 할 내용을 알게 됩니다. 그 다음 React는 `Clock`의 렌더링 출력값을 일치시키기 위해 DOM을 업데이트합니다.
 
@@ -448,11 +444,6 @@ function App() {
     </div>
   );
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
 ```
 
 [**CodePen에서 시도해보기**](https://codepen.io/gaearon/pen/vXdGmd?editors=0010)
