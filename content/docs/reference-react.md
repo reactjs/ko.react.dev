@@ -60,7 +60,7 @@ UI의 형태를 설명하는 데에 [JSX를 사용할 것](/docs/introducing-jsx
 
 ### Suspense {#suspense}
 
-Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이 먼저 이루어지도록 "대기합니다". 현재 Suspense는 단 하나의 사용 사례 [`React.lazy`를 사용하여 컴포넌트를 동적으로 불러오기](/docs/code-splitting.html#reactlazy)만 지원합니다. 나중에는 데이터 불러오기와 같은 사용 사례를 지원할 계획입니다.
+Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이 먼저 이루어지도록 "대기합니다". 현재 Suspense는 단 하나의 사용 사례 [`React.lazy`를 사용하여 컴포넌트를 동적으로 불러오기](/docs/code-splitting.html#reactlazy)만 지원합니다. 나중에는 데이터 불러오기와 같은 사용 사례를 지원할 계획입니다.
 
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
@@ -226,7 +226,7 @@ React.isValidElement(object)
 React.Children.map(children, function[(thisArg)])
 ```
 
-`children`에 포함된 각 자식에 대하여 `this`를 `thisArg`의 값으로 설정한 함수를 호출합니다. `children`이 배열일 경우, 이 배열의 각 자식에 대하여 함수가 호출됩니다. `children`이 `null` 또는 `undefined`일 경우, 이 메서드는 배열이 아니라 `null` 또는 `undefined`를 반환합니다.
+`children`에 포함된 각 자식에 대하여 `this`를 `thisArg`의 값으로 설정한 함수를 호출합니다. `children`이 배열일 경우, 이 배열의 각 자식에 대하여 함수가 호출됩니다. `children`이 `null` 또는 `undefined`일 경우, 이 메서드는 배열이 아니라 `null` 또는 `undefined`를 반환합니다.
 
 > 주의
 >

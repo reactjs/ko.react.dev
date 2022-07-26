@@ -69,7 +69,7 @@ prev: hooks-reference.html
 * React 테스트 렌더러
 * React 얕은 렌더러
 
-**Hook을 사용하려면 모든 React 패키지가 16.8.0 이상이어야합니다**. 업데이트하는 것을 (예: React DOM) 잊어버리면 Hook이 작동하지 않습니다.
+**Hook을 사용하려면 모든 React 패키지가 16.8.0 이상이어야합니다**. 업데이트하는 것을 (예: React DOM) 잊어버리면 Hook이 작동하지 않습니다.
 
 [React Native 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) 이상은 Hook을 지원합니다.
 
