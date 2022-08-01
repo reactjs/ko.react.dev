@@ -84,11 +84,6 @@ class Toggle extends React.Component {
     );
   }
 }
-
-ReactDOM.render(
-  <Toggle />,
-  document.getElementById('root')
-);
 ```
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/xEmzGg?editors=0010)
@@ -97,15 +92,23 @@ JSX 콜백 안에서 `this`의 의미에 대해 주의해야 합니다. JavaScri
 
 이는 React만의 특수한 동작이 아니며, [JavaScript에서 함수가 작동하는 방식](https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/)의 일부입니다. 일반적으로 `onClick={this.handleClick}`과 같이 뒤에 `()`를 사용하지 않고 메서드를 참조할 경우, 해당 메서드를 바인딩 해야 합니다.
 
+<<<<<<< HEAD
 `bind`를 호출하는 것이 불편하다면, 이를 해결할 수 있는 두 가지 방법이 있습니다. 실험적인 [퍼블릭 클래스 필드 문법](https://babeljs.io/docs/plugins/transform-class-properties/)을 사용하고 있다면, 클래스 필드를 사용하여 콜백을 올바르게 바인딩할 수 있습니다.
 
 ```js{2-6}
 class LoggingButton extends React.Component {
   // 이 문법은 `this`가 handleClick 내에서 바인딩되도록 합니다.
   // 주의: 이 문법은 *실험적인* 문법입니다.
+=======
+If calling `bind` annoys you, there are two ways you can get around this. You can use [public class fields syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) to correctly bind callbacks:
+
+```js{2-6}
+class LoggingButton extends React.Component {
+  // This syntax ensures `this` is bound within handleClick.
+>>>>>>> 8223159395aae806f8602de35e6527d35260acfb
   handleClick = () => {
     console.log('this is:', this);
-  }
+  };
 
   render() {
     return (

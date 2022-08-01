@@ -22,15 +22,15 @@ npm install react-dom
 
 ```js
 // Importing a specific API:
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 // Importing all APIs together:
-import * as ReactDOM from 'react';
+import * as ReactDOMClient from 'react-dom/client';
 ```
 
 </PackageImport>
 
-You'll also need to install the same version of [React](/api/).
+You'll also need to install the same version of [React](/apis/).
 
 ## Browser Support {/*browser-support*/}
 
