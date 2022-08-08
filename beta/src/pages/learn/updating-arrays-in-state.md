@@ -4,7 +4,11 @@ title: 배열 State 업데이트하기
 
 <Intro>
 
+<<<<<<< HEAD
 배열은 state에 저장할 수 있고 변경하지 못하게 처리해야하는 변경 가능한 JavaScript 객체의 다른 유형입니다. 객체와 마찬가지로 state에 저장된 배열을 업데이트 하고 싶을 때, 새 배열을 생성(혹은 기존 배열의 복사본을 생성)한 다음 새 배열을 사용하도록 state를 업데이트해야 합니다.
+=======
+Arrays are mutable in JavaScript, but you should treat them as immutable when you store them in state. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array.
+>>>>>>> 4808a469fa782cead9802619b0341b27b342e2d3
 
 </Intro>
 
