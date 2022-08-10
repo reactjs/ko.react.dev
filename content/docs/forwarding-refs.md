@@ -1,6 +1,6 @@
 ---
 id: forwarding-refs
-title: Forwarding Refs
+title: Ref 전달하기
 permalink: docs/forwarding-refs.html
 ---
 
