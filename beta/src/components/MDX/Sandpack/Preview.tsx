@@ -6,10 +6,17 @@
 import * as React from 'react';
 import {useSandpack, LoadingOverlay} from '@codesandbox/sandpack-react';
 import cn from 'classnames';
-
 import {Error} from './Error';
+<<<<<<< HEAD
 import {computeViewportSize, generateRandomId} from './utils';
 import type {LintDiagnostic} from './utils';
+=======
+import {SandpackConsole} from './Console';
+import type {LintDiagnostic} from './useSandpackLint';
+
+const generateRandomId = (): string =>
+  Math.floor(Math.random() * 10000).toString();
+>>>>>>> 5fed75dac5f4e208369b102a1337d76944111b33
 
 type CustomPreviewProps = {
   className?: string;
@@ -60,16 +67,35 @@ export function Preview({
     rawError = null;
   }
 
+<<<<<<< HEAD
   if (lintErrors.length > 0) {
     if (rawError == null || rawError.title === 'Runtime Exception') {
       // When there's a lint error, show it -- even over a runtime error.
       // (However, when there's a build error, we keep showing the build one.)
       const {line, column, message} = lintErrors[0];
       rawError = {
+=======
+  // Memoized because it's fed to debouncing.
+  const firstLintError = React.useMemo(() => {
+    if (lintErrors.length === 0) {
+      return null;
+    } else {
+      const {line, column, message} = lintErrors[0];
+      return {
+>>>>>>> 5fed75dac5f4e208369b102a1337d76944111b33
         title: 'Lint Error',
         message: `${line}:${column} - ${message}`,
       };
     }
+<<<<<<< HEAD
+=======
+  }, [lintErrors]);
+
+  if (rawError == null || rawError.title === 'Runtime Exception') {
+    if (firstLintError !== null) {
+      rawError = firstLintError;
+    }
+>>>>>>> 5fed75dac5f4e208369b102a1337d76944111b33
   }
 
   // It changes too fast, causing flicker.
@@ -116,7 +142,6 @@ export function Preview({
     [status === 'idle']
   );
 
-  const viewportStyle = computeViewportSize('auto', 'portrait');
   const overrideStyle = error
     ? {
         // Don't collapse errors
@@ -146,7 +171,6 @@ export function Preview({
       style={{
         // TODO: clean up this mess.
         ...customStyle,
-        ...viewportStyle,
         ...overrideStyle,
       }}>
       <div
@@ -203,6 +227,7 @@ export function Preview({
           loading={!isReady && iframeComputedHeight === null}
         />
       </div>
+      <SandpackConsole />
     </div>
   );
 }

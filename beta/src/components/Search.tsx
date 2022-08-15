@@ -3,7 +3,6 @@
  */
 
 // @ts-ignore
-import {useDocSearchKeyboardEvents} from '@docsearch/react';
 import {IconSearch} from 'components/Icon/IconSearch';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -37,6 +36,58 @@ function Kbd(props: {children?: React.ReactNode}) {
   );
 }
 
+// Copy-pasted from @docsearch/react to avoid importing the whole bundle.
+// Slightly trimmed to features we use.
+// (c) Algolia, Inc.
+function isEditingContent(event: any) {
+  var element = event.target;
+  var tagName = element.tagName;
+  return (
+    element.isContentEditable ||
+    tagName === 'INPUT' ||
+    tagName === 'SELECT' ||
+    tagName === 'TEXTAREA'
+  );
+}
+function useDocSearchKeyboardEvents({
+  isOpen,
+  onOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+}) {
+  React.useEffect(() => {
+    function onKeyDown(event: any) {
+      function open() {
+        // We check that no other DocSearch modal is showing before opening
+        // another one.
+        if (!document.body.classList.contains('DocSearch--active')) {
+          onOpen();
+        }
+      }
+      if (
+        (event.keyCode === 27 && isOpen) ||
+        (event.key === 'k' && (event.metaKey || event.ctrlKey)) ||
+        (!isEditingContent(event) && event.key === '/' && !isOpen)
+      ) {
+        event.preventDefault();
+        if (isOpen) {
+          onClose();
+        } else if (!document.body.classList.contains('DocSearch--active')) {
+          open();
+        }
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown);
+    return function () {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [isOpen, onOpen, onClose]);
+}
+
 const options = {
   appId: siteConfig.algolia.appId,
   apiKey: siteConfig.algolia.apiKey,
@@ -48,7 +99,6 @@ export const Search: React.FC<SearchProps> = ({
     hitsPerPage: 5,
   },
 }) => {
-  const [isLoaded] = React.useState(true);
   const [isShowing, setIsShowing] = React.useState(false);
 
   const importDocSearchModalIfNeeded = React.useCallback(
@@ -58,8 +108,8 @@ export const Search: React.FC<SearchProps> = ({
       }
 
       // @ts-ignore
-      return Promise.all([import('@docsearch/react/modal')]).then(
-        ([{DocSearchModal: Modal}]) => {
+      return import('@docsearch/react/modal').then(
+        ({DocSearchModal: Modal}) => {
           DocSearchModal = Modal;
         }
       );
@@ -114,8 +164,7 @@ export const Search: React.FC<SearchProps> = ({
         </span>
       </button>
 
-      {isLoaded &&
-        isShowing &&
+      {isShowing &&
         createPortal(
           <DocSearchModal
             {...options}

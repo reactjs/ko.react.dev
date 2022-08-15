@@ -33,13 +33,14 @@ const listItems = numbers.map((number) =>
 );
 ```
 
+<<<<<<< HEAD
 `listItems` 배열을 `<ul>`엘리먼트 안에 포함하고 [DOM에 렌더링합니다.](/content/docs/rendering-elements.html#rendering-an-element-into-the-dom)
+=======
+Then, we can include the entire `listItems` array inside a `<ul>` element:
+>>>>>>> 5fed75dac5f4e208369b102a1337d76944111b33
 
 ```javascript{2}
-ReactDOM.render(
-  <ul>{listItems}</ul>,
-  document.getElementById('root')
-);
+<ul>{listItems}</ul>
 ```
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
@@ -64,10 +65,8 @@ function NumberList(props) {
 }
 
 const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<NumberList numbers={numbers} />);
 ```
 
 이 코드를 실행하면 리스트의 각 항목에 key를 넣어야 한다는 경고가 표시됩니다. "key"는 엘리먼트 리스트를 만들 때 포함해야 하는 특수한 문자열 어트리뷰트입니다. 다음 섹션에서 key의 중요성에 대해서 더 설명하겠습니다.
@@ -85,12 +84,6 @@ function NumberList(props) {
     <ul>{listItems}</ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
@@ -129,7 +122,11 @@ const todoItems = todos.map((todo, index) =>
 );
 ```
 
+<<<<<<< HEAD
 항목의 순서가 바뀔 수 있는 경우 key에 인덱스를 사용하는 것은 권장하지 않습니다. 이로 인해 성능이 저하되거나 컴포넌트의 state와 관련된 문제가 발생할 수 있습니다. Robin Pokorny's가 작성한 글인 [인덱스를 key로 사용할 경우 부정적인 영향에 대한 상세 설명](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318)을 참고하시길 바랍니다. 리스트 항목에 명시적으로 key를 지정하지 않으면 React는 기본적으로 인덱스를 key로 사용합니다.
+=======
+We don't recommend using indexes for keys if the order of items may change. This can negatively impact performance and may cause issues with component state. Check out Robin Pokorny's article for an [in-depth explanation on the negative impacts of using an index as a key](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/). If you choose not to assign an explicit key to list items then React will default to using indexes as keys.
+>>>>>>> 5fed75dac5f4e208369b102a1337d76944111b33
 
 더 자세히 알고 싶다면 [왜 key가 필요한가에 대한 더 자세한 설명](/docs/reconciliation.html#recursing-on-children)을 읽어보세요.
 
@@ -164,12 +161,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 **예시: 올바른 Key 사용법**
@@ -192,12 +183,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
@@ -238,10 +223,9 @@ const posts = [
   {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
   {id: 2, title: 'Installation', content: 'You can install React from npm.'}
 ];
-ReactDOM.render(
-  <Blog posts={posts} />,
-  document.getElementById('root')
-);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Blog posts={posts} />);
 ```
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)

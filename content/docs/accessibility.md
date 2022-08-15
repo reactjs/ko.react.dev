@@ -398,7 +398,11 @@ React에서는 [React Document Title 컴포넌트](https://github.com/gaearon/re
 - [색 대비에 대한 모든 것과 이를 다시 생각해야 하는 이유](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
 - [The A11Y Project - 색 채도란](https://a11yproject.com/posts/what-is-color-contrast/)
 
+<<<<<<< HEAD
 웹사이트의 모든 항목에 대해 적절한 색 조합을 일일이 계산하는 것은 지루할 수 있습니다. [Colorable을 사용해 접근 가능한 모든 색 조합 표를 계산](https://jxnblk.com/colorable/)할 수 있습니다.
+=======
+It can be tedious to manually calculate the proper color combinations for all cases in your website so instead, you can [calculate an entire accessible color palette with Colorable](https://colorable.jxnblk.com/).
+>>>>>>> 5fed75dac5f4e208369b102a1337d76944111b33
 
 아래에 언급된 aXe와 WAVE 도구 모두 색 대비에 대한 테스트가 포함되어 있어, 색 대비에 대한 오류를 알려줍니다.
 

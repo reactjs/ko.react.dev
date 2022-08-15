@@ -171,6 +171,7 @@ Greeting.defaultProps = {
   name: 'Stranger'
 };
 
+<<<<<<< HEAD
 // "Hello, Stranger"를 랜더링 합니다.
 ReactDOM.render(
   <Greeting />,
@@ -179,6 +180,14 @@ ReactDOM.render(
 ```
 
 [plugin-proposal-class-properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties/) (이전의 _plugin-transform-class-properties_)와 같은 Babel 변환(transform)을 사용하고 있다면, `defaultProps`를 React 컴포넌트 클래스 내의 정적 프로퍼티로 선언 할 수도 있습니다. 이 문법은 아직 완성되지 않았으므로 브라우저에서 작동하기 위해서는 컴파일링 작업이 필요합니다. 더 자세한 정보를 위해서 [class fields proposal](https://github.com/tc39/proposal-class-fields)를 확인해 주시길 바랍니다.
+=======
+// Renders "Hello, Stranger":
+const root = ReactDOM.createRoot(document.getElementById('example')); 
+root.render(<Greeting />);
+```
+
+Since ES2022 you can also declare `defaultProps` as static property within a React component class. For more information, see the [class public static fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_static_fields). This modern syntax will require a compilation step to work within older browsers. 
+>>>>>>> 5fed75dac5f4e208369b102a1337d76944111b33
 
 ```javascript
 class Greeting extends React.Component {
