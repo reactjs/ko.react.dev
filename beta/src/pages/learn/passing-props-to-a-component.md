@@ -21,8 +21,7 @@ React 컴포넌트는 다른 컴포넌트와 통신할 때 **props**를 사용�
 
 ## 밀접한 props {/*familiar-props*/}
 
-Props는 JSX태그를 사용해서 전달하는 정보입니다.예를 들어, `className`, `src`, `alt`, `width`, 그리고 `height`
-는 `<img>`태그에 정보를 전달하는 props들입니다.
+Props는 JSX태그를 사용해서 전달하는 정보입니다.예를 들어, `className`, `src`, `alt`, `width`, 그리고 `height`는 `<img>`태그에 정보를 전달하는 props들입니다.
 
 
 <Sandpack>
@@ -54,8 +53,7 @@ body { min-height: 120px; }
 
 </Sandpack>
 
-`<img>`태그에 전달하는 props는 미리 정의되어 있습니다(ReactDOM은 [HTML 표준]을 따른다(https://www.w3.org/TR/html52/semantics-embedded-content.html#the-img-element).) 하지만 `<Avatar>` 태그와 같이 다시 원하는대로 조립함으로써,
-당신은 *당신만의* 컴포넌트에 어떠한 props든 전달해줄 수 있습니다.여기 예시를 보며 알아보자!
+`<img>`태그에 전달하는 props는 미리 정의되어 있습니다(ReactDOM은 [HTML 표준]을 따른다(https://www.w3.org/TR/html52/semantics-embedded-content.html#the-img-element).) 하지만 `<Avatar>` 태그와 같이 다시 원하는대로 조립함으로써,당신은 *당신만의* 컴포넌트에 어떠한 props든 전달해줄 수 있습니다.여기 예시를 보며 알아보자!
 
 ## 컴포넌트 간에 props전달하기  {/*컴포넌트 간에 props전달하기*/}
 
