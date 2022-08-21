@@ -74,8 +74,7 @@ export default function Profile() {
 
 ### 1단계: 자식 컴포넌트에게 props전달하기 {/*1단계-자식 컴포넌트에게 props전달하기*/}
 
-먼저, `Avatar`컴포넌트로 props를 전달하자.예를 들어서, 두가지 props를 전달합니다:`person`(객체),그리고 `size`
-(숫자):
+먼저, `Avatar`컴포넌트로 props를 전달하자.예를 들어서, 두가지 props를 전달합니다:`person`(객체),그리고 `size`(숫자):
 
 ```js
 export default function Profile() {
