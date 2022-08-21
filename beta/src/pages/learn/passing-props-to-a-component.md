@@ -21,7 +21,7 @@ React 컴포넌트는 다른 컴포넌트와 통신할 때 **props**를 사용�
 
 ## 밀접한 props {/*familiar-props*/}
 
-Props는 JSX태그를 사용해서 전달하는 정보입니다.예를 들어, `className`, `src`, `alt`, `width`, 그리고 `height`는 `<img>`태그에 정보를 전달하는 props들입니다.
+Props는 JSX태그를 사용해서 전달하는 정보입니다.예를 들어, `className`, `src`, `alt`, `width`, 그리고 `height`는 `<img>`태그에 정보를 전달하는 props들입니다:
 
 
 <Sandpack>
@@ -170,8 +170,7 @@ body { min-height: 120px; }
 
 </Sandpack>
 
-props는 부모 컴포넌트와 자식 컴포넌트가 독립적으로 만드는 역할을 합니다. 예를 들어거, 당신은 `Avartar`에서 별도로 바꾸지 않더라도 `Profile`안에서`person`이나 `size`props를 바꿀 수 있다.
-비슷한 예로는, `Profile`안에서 별다른 조치를 취하지 않더라도, `Avartar`에서 사용하는 props들을 바꿀 수 있습니다. 
+props는 부모 컴포넌트와 자식 컴포넌트가 독립적으로 만드는 역할을 합니다. 예를 들어서, 당신은 `Avartar`에서 별도로 바꾸지 않더라도 `Profile`안에서`person`이나 `size`props를 바꿀 수 있습니다.비슷한 예로는, `Profile`안에서 별다른 조치를 취하지 않더라도, `Avartar`에서 사용하는 props들을 바꿀 수 있습니다. 
 
 
 당신은 props를 "knobs(노브,문을 여닫기 위한 둥근 손잡이)" 생각하고 있을 것입니다. 함수 안에서 인자와 같은 역할을 맡지만 사실은, 오직 한 컴포넌트 안에서만 그 역할을 맡는다! React 컴포넌트 함수들은 `props`라는 객체의 한 개의 인자를 가지고 있습니다:
@@ -196,7 +195,7 @@ function Avatar({ person, size }) {
 }
 ```
 
-이 구문은 ["destructuring"](https://developer.mozilla.org/docs/Web/JavaScript/Reference/OperatorsDestructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter)이라고 불리고,함수 파라미터에서 프로퍼티를 읽어오는 것과 같습니다
+이 구문은 ["destructuring"](https://developer.mozilla.org/docs/Web/JavaScript/Reference/OperatorsDestructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter)이라고 불리고,함수 파라미터에서 프로퍼티를 읽어오는 것과 같습니다:
 
 
 ```js
@@ -212,7 +211,7 @@ function Avatar(props) {
 ## prop에 들어가는 디폴트 값 특정하기{/*prop에 들어가는 디폴트 값 특정하기*/}
 
 
-만약 값을 주지 않았을 때 props에 디폴트 값을 주기를 원한다면, `=`을 넣음으로써 그리고 그 파라미터 앞에 디폴트 값을 줄 수 있습니다. 
+만약 값을 주지 않았을 때 props에 디폴트 값을 주기를 원한다면, `=`을 넣음으로써 그리고 그 파라미터 앞에 디폴트 값을 줄 수 있습니다:
 
 ```js
 function Avatar({ person, size = 100 }) {
@@ -283,7 +282,7 @@ function Profile(props) {
 ```
 
 JSX 태그 안에 내용을 할당할 때, 부모 컴포넌트가 불려진 `자식`컴포넌트에 props를 부여합니다. 
-예를 들어, `Card`컴포넌트 `자식` 컴포넌트인 `<Avatar />`에 props를 할당하고 감싼 div에 랜더링해줍니다. 
+예를 들어, `Card`컴포넌트 `자식` 컴포넌트인 `<Avatar />`에 props를 할당하고 감싼 div에 랜더링해줍니다: 
 
 <Sandpack>
 
@@ -361,7 +360,7 @@ export function getImageUrl(person, size = 's') {
 
 `Card` 컴포넌트가 어떤 내용을 감싸고 있는지 나태내는 약간의 주석과 함께 `<Card>`안에 `<Avatar>`를 넣는 것으로 대체하십시오. 내부에서 어떻게 랜더링이 진행되는 지 "알" 필요 없습니다. 유연한 패턴들을 다양한 경우와 함께 볼 수 있습니다. 
 
-`자식` 컴포넌트의 prop을 "전체적으로" 부모 컴포넌트에 JSX로 값을 받아서 채워졌다고 생각할 수 있습니다. 눈에 보이는 포장지를 위해 `자식` props를 이요합니다: panels, grids,그리고 다른 요소들도요. [Extracting Layout Components](/learn/extracting-layout-components)에서 더 살펴볼 수 있습니다. 
+`자식` 컴포넌트의 prop을 "전체적으로" 부모 컴포넌트에 JSX로 값을 받아서 채워졌다고 생각할 수 있습니다. 눈에 보이는 포장지를 위해 `자식` props를 이합니다: panels, grids,그리고 다른 요소들도요. [Extracting Layout Components](/learn/extracting-layout-components)에서 더 살펴볼 수 있습니다. 
 
 <Illustration src="/images/docs/illustrations/i_children-prop.png" alt='A puzzle-like Card tile with a slot for "children" pieces like text and Avatar' />
 
