@@ -1,24 +1,21 @@
 ---
-title: 컴포넌트로 Props 전달하기
+title: 컴포넌트에 Props 전달하기
 ---
 
 <Intro>
 
-React 컴포넌트는 다른 컴포넌트와 통신할 때 **props**를 사용합니다. 모든 부모 컴포넌트는 자식컴포넌트에게
-그들의 props를 전달할 수 있습니다. props는 사용자에게 html 속성을 사용하게 할 뿐만 아니라, 캑체,배열 그리고 함수
-를 포함하여 자바스크립트 value값도 함께 사용하게 합니다.
+React 컴포넌트는 다른 컴포넌트와 통신할 때 **props**를 사용합니다. 모든 부모 컴포넌트는 자식컴포넌트에게 그들의 props를 전달할 수 있습니다. props는 사용자에게 html 속성을 사용하게 할 뿐만 아니라, 캑체,배열 그리고 함수 를 포함하여 자바스크립트 value값도 함께 사용하게 합니다.
 
 
 </Intro>
 
 <YouWillLearn>
 
-
 * 컴포넌트 사이에서 props를 어떻게 전달하는가
 * 컴포넌트 안에 있는 props를 어떻게 이해하는가
 * props안의 고정된 value를 어떻게 특정하는가
 * JSX를 컴포넌트로 어떻게 전달하는가
-* porps를 어떻게 다시 바꾸는가
+* props를 어떻게 다시 바꾸는가
 
 </YouWillLearn>
 
@@ -96,7 +93,7 @@ export default function Profile() {
 
 >만약 `person=`이 중괄호안에 있어서 당신을 햇갈리게 한다면, JSX 중괄호 안에 있는 객체임을 기억해라 [그들은 그저 객체입니다](/learn/javascript-in-jsx-with-curly-braces#using-double-curlies-css-and-other-objects-in-jsx).
 
-이제 당신은 `Avatar` 컴포너트 안에 있는 props를 읽어올 수 있습니다.
+이제 당신은 `Avatar` 컴포넌트 안에 있는 props를 읽어올 수 있습니다.
 
 
 ### 2단계: 자식 컴포넌트 안에 있는 props를 읽어오기 {/*2단계- 자식 컴포넌트 안에 있는 props를 읽어오기*/}
@@ -107,10 +104,10 @@ function Avatar({ person, size }) {
   // person,size 는 이곳에 들어갈 수 있습니다
 ```
 
-`Avartar`에 약간의 로직을 더할 때, `person`,`size` props는 랜더링 할 때 사용합니다.
+`Avatar`에 약간의 로직을 더할 때, `person`,`size` props는 랜더링 할 때 사용합니다.
 
 
-이제 `Avartar` 에서 서로 다른 props들과 다른 방식들로 랜더링 하는 것을 구성할 수 있습니다. 당신이 보기에 아슬아슬한 부분을 고쳐라!
+이제 `Avatar` 에서 서로 다른 props들과 다른 방식들로 렌더링 하는 것을 구성할 수 있습니다. 당신이 보기에 아슬아슬한 부분을 고쳐라!
 <Sandpack>
 
 ```js App.js
