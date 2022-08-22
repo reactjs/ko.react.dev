@@ -30,7 +30,11 @@ title: 리스트 렌더링
 </ul>
 ```
 
+<<<<<<< HEAD
 리스트 항목들 사이의 유일한 차이점은 내용과 데이터입니다. 댓글 목록에서 프로필 이미지 갤러리에 이르기까지 인터페이스를 구성할 때 다른 데이터를 사용한 많은 동일한 컴포넌트가 필요한 상황을 마주치게 될 것입니다. 이러한 상황에서 해당 데이터를 JavaScript의 객체와 배열에 저장할 수 있으며 그것들의 컴포넌트 리스트를 렌더링하기 위해 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)과 [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) 같은 메서드를 사용할 수 있습니다.
+=======
+The only difference among those list items is their contents, their data. You will often need to show several instances of the same component using different data when building interfaces: from lists of comments to galleries of profile images. In these situations, you can store that data in JavaScript objects and arrays and use methods like [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) and [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) to render lists of components from them.
+>>>>>>> 37cf98d075de3133b5ae69fe80fbecb6a742530a
 
 배열에서 항목의 리스트를 생성하는 간단한 예시입니다.
 
@@ -389,8 +393,13 @@ Fragments는 DOM에서 사라지므로 `<h1>`, `<p>`, `<h1>`, `<p>` 등의 평�
 
 다양한 데이터 소스가 다양한 key 소스를 제공합니다
 
+<<<<<<< HEAD
 * **데이터베이스의 데이터:** : 데이터베이스에서 데이터를 가져오는 경우 본질적으로 고유한 데이터베이스의 key 및 ID를 사용할 수 있습니다.
 * **로컬에서 생성된 데이터:** 노트작성 앱의 노트처럼 데이터가 로컬에서 생성되고 유지되는 경우에는 항목을 생성할 때 증가하는 일련번호나 [`uuid`](https://www.npmjs.com/package/uuid) 같은 패키지를 사용해야 합니다.
+=======
+* **Data from a database:** If your data is coming from a database, you can use the database keys/IDs, which are unique by nature.
+* **Locally generated data:** If your data is generated and persisted locally (e.g. notes in a note-taking app), use an incrementing counter, [`crypto.randomUUID()`](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID) or a package like [`uuid`](https://www.npmjs.com/package/uuid) when creating items.
+>>>>>>> 37cf98d075de3133b5ae69fe80fbecb6a742530a
 
 ### key 규칙 {/*rules-of-keys*/}
 

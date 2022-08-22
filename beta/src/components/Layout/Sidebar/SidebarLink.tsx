@@ -16,22 +16,26 @@ interface SidebarLinkProps {
   selected?: boolean;
   title: string;
   level: number;
+  wip: boolean | undefined;
   icon?: React.ReactNode;
   heading?: boolean;
   isExpanded?: boolean;
   isBreadcrumb?: boolean;
   hideArrow?: boolean;
+  isPending: boolean;
 }
 
 export function SidebarLink({
   href,
   selected = false,
   title,
+  wip,
   level,
   heading = false,
   isExpanded,
   isBreadcrumb,
   hideArrow,
+  isPending,
 }: SidebarLinkProps) {
   const ref = React.useRef<HTMLAnchorElement>(null);
   const isMobile = useIsMobile();
@@ -67,9 +71,17 @@ export function SidebarLink({
               !selected && !heading,
             'text-base text-link dark:text-link-dark bg-highlight dark:bg-highlight-dark border-blue-40 hover:bg-highlight hover:text-link dark:hover:bg-highlight-dark dark:hover:text-link-dark':
               selected,
+            'dark:bg-gray-60 bg-gray-3 dark:hover:bg-gray-60 hover:bg-gray-3':
+              isPending,
           }
         )}>
-        {title}
+        {/* This here needs to be refactored ofc */}
+        <span
+          className={cn({
+            'text-gray-400 dark:text-gray-500': wip,
+          })}>
+          {title}
+        </span>
         {isExpanded != null && !heading && !hideArrow && (
           <span
             className={cn('pr-1', {
