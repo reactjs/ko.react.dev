@@ -6,7 +6,6 @@ title: 컴포넌트에 Props 전달하기
 
 React 컴포넌트는 다른 컴포넌트와 통신할 때 **props**를 사용합니다. 모든 부모 컴포넌트는 자식컴포넌트에게 그들의 props를 전달할 수 있습니다. props는 사용자에게 html 속성을 사용하게 할 뿐만 아니라, 캑체,배열 그리고 함수 를 포함하여 자바스크립트 value값도 함께 사용하게 합니다.
 
-
 </Intro>
 
 <YouWillLearn>
@@ -21,7 +20,8 @@ React 컴포넌트는 다른 컴포넌트와 통신할 때 **props**를 사용�
 
 ## 밀접한 props {/*familiar-props*/}
 
-Props는 JSX태그를 사용해서 전달하는 정보입니다.예를 들어, `className`, `src`, `alt`, `width`, 그리고 `height`는 `<img>`태그에 정보를 전달하는 props들입니다:
+Props는 JSX태그를 사용해서 전달하는 정보입니다.예를 들어, `className`, `src`, `alt`, `width`, 그리고 `height`는 
+`<img>`태그에 정보를 전달하는 props들입니다:
 
 
 <Sandpack>
@@ -70,7 +70,6 @@ export default function Profile() {
 
 
  `Avatar` 컴포넌트에 props를 줄려면 2가지 단계를 거쳐야합니다.
-
 
 ### 1단계: 자식 컴포넌트에게 props전달하기 {/*1단계-자식 컴포넌트에게 props전달하기*/}
 
@@ -220,7 +219,6 @@ function Avatar({ person, size = 100 }) {
 
 이제,  `<Avatar person={...} />`이 어떤 `size` prop도 랜더링 안해준다면, `size는 `100`을 가지게 될 것입니다. 
 
-
 디폴트 값은 `size` prop을 잃어버리거나 `size={undefined}`으로 표시될 때 사용할 수 있습니다. 
 `size={null}` 또는 `size={0}`으로 표시된다면 디폴트 값은 **절대** 사용되지 못합니다.
 
@@ -245,7 +243,7 @@ function Profile({ person, size, isSepia, thickBorder }) {
 
 반복적인 코드를 사용되는 것이 잘못되었다는 것은 아닙니다-더 법칙을 잘 따르는 것일 수 있습니다.
 하지만 매번 반복된다면 번거롭습니다. 자식 개체들이 가지는 props들 앞에 있는 어떤 컴포넌트들은,
-`Profile`과 `Avartar` 같이 말입니다. 그들은 그 어떤 props들도 직접적으로 전할 수 없고, "Spread"법칙으로 명확히 나타납니다.  
+`Profile`과 `Avartar` 같이 말입니다. 그들은 그 어떤 props들도 직접적으로 전할 수 없고, "Spread"법칙으로 명확히 나타납니다:  
 
 ```js
 function Profile(props) {
@@ -538,7 +536,6 @@ li { margin: 5px; }
 
 <Hint>
 
-<!-- Start by extracting the markup for one of the scientists. Then find the pieces that don't match it in the second example, and make them configurable by props. -->
 과학자들 중 한명이 되어서 마크업을 추출하는 것을 시작하십시오. 두 번째 예시와 맞지 않는 부분을 찾고, props에 맞게 하십시오. 
 
 </Hint>
