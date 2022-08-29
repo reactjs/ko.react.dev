@@ -19,9 +19,15 @@ title: 렌더링 그리고 커밋
 
 주방에서 요리사가 컴포넌트를 재료로 맛있는 요리를 한다고 상상해보세요. 이 시나리오에서 React는 고객들의 요청을 받고 주문을 가져오는 웨이터입니다. 이 과정에는 UI를 요청하고 제공하는 세 가지 단계가 있습니다.
 
+<<<<<<< HEAD
 1. 렌더링 **트리거** (손님의 주문을 주방으로 전달)
 2. 컴포넌트 **렌더링** (주방에서 주문 받기)
 3. DOM에 **커밋** (테이블에 주문한 요리 내놓기)
+=======
+1. **Triggering** a render (delivering the guest's order to the kitchen)
+2. **Rendering** the component (preparing the order in the kitchen)
+3. **Committing** to the DOM (placing the order on the table)
+>>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
 
 <IllustrationBlock sequential>
   <Illustration caption="Trigger" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />
@@ -33,23 +39,30 @@ title: 렌더링 그리고 커밋
 
 컴포넌트 렌더링이 일어나는 데에는 두 가지 이유가 있습니다.
 
+<<<<<<< HEAD
 1. 컴포넌트의 **초기 렌더링인 경우**
 2. 컴포넌트의 **state가 업데이트된 경우**
+=======
+1. It's the component's **initial render.**
+2. The component's (or one of its ancestors') **state has been updated.**
+>>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
 
 ### 초기 렌더링 {/*initial-render*/}
 
+<<<<<<< HEAD
 앱이 시작되었을때 초기 렌더링을 트리거 해야합니다. 프레임워크와 샌드박스가 코드를 숨기는 경우가 있지만, 루트 컴포넌트와 타깃 DOM 노드로 `ReactDOM.render`를 호출하면 됩니다.
+=======
+When your app starts, you need to trigger the initial render. Frameworks and sandboxes sometimes hide this code, but it's done by calling [`createRoot`](https://beta.reactjs.org/apis/react-dom/client/createRoot) with the target DOM node, and then calling its `render` method with your component:
+>>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
 
 <Sandpack>
 
 ```js index.js active
 import Image from './Image.js';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
-ReactDOM.render(
-  <Image />,
-  document.getElementById('root')
-);
+const root = createRoot(document.getElementById('root'))
+root.render(<Image />);
 ```
 
 ```js Image.js
@@ -65,11 +78,15 @@ export default function Image() {
 
 </Sandpack>
 
+<<<<<<< HEAD
 `ReactDOM.render` 호출을 주석 처리하고 컴포넌트가 사라지는 것을 확인하세요!
+=======
+Try commenting out the `root.render()` call and see the component disappear!
+>>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
 
 ### State 업데이트 시 리렌더링 {/*re-renders-when-state-updates*/}
 
-Once the component has been initially rendered, you can trigger further renders by updating its state with the [`set` function](/apis/usestate#setstate). Updating your component's state automatically queues a render. (You can imagine these as a restaurant guest ordering tea, dessert, and all sorts of things after putting in their first order, depending on the state of their thirst or hunger.)
+Once the component has been initially rendered, you can trigger further renders by updating its state with the [`set` function](/apis/react/useState#setstate). Updating your component's state automatically queues a render. (You can imagine these as a restaurant guest ordering tea, dessert, and all sorts of things after putting in their first order, depending on the state of their thirst or hunger.)
 
 <IllustrationBlock sequential>
   <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. They patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
@@ -114,12 +131,10 @@ function Image() {
 
 ```js index.js
 import Gallery from './Gallery.js';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
-ReactDOM.render(
-  <Gallery />,
-  document.getElementById('root')
-);
+const root = createRoot(document.getElementById('root'))
+root.render(<Gallery />);
 ```
 
 ```css
@@ -138,7 +153,11 @@ img { margin: 0 10px 10px 0; }
 * **동일한 입력에는 동일한 출력을 해야합니다.** 동일한 입력이 주어지면 컴포넌트는 항상 동일한 JSX를 반환해야 합니다. (누군가 토마토 샐러드를 주문하면 그들은 양파가 있는 샐러드를 받으면 안 됩니다!)
 * **이전의 state를 변경해서는 안됩니다.** 렌더링 전에 존재했던 객체나 변수를 변경해서는 안 됩니다. (누군가의 주문이 다른 사람의 주문을 변경해서는 안 됩니다.)
 
+<<<<<<< HEAD
 그렇지 않으면 코드베이스가 복잡해짐에 따라 혼란스러운 버그와 예측할 수 없는 동작이 발생할 수 있습니다. "Strict Mode"에서 개발할 때 React는 각 컴포넌트의 함수를 두 번 호출하여 순수하지 않은 함수로 인한 실수를 표면화하는데 도움을 받을 수 있습니다.
+=======
+Otherwise, you can encounter confusing bugs and unpredictable behavior as your codebase grows in complexity. When developing in "Strict Mode", React calls each component's function twice, which can help surface mistakes caused by impure functions.
+>>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
 
 </Gotcha>
 

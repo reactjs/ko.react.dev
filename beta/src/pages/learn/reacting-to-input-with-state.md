@@ -336,7 +336,7 @@ body { margin: 0; }
 
 <Diagram name="responding_to_input_flow" height={350} width={688} alt="Flow chart moving left to right with 5 nodes. The first node labeled 'empty' has one edge labeled 'start typing' connected to a node labeled 'typing'. That node has one edge labeled 'press submit' connected to a node labeled 'submitting', which has two edges. The left edge is labeled 'network error' connecting to a node labeled 'error'. The right edge is labeled 'network success' connecting to a node labeled 'success'.">
 
-Form States
+Form states
 
 </Diagram>
 
@@ -344,7 +344,11 @@ Form States
 
 ### 세 번째: 메모리의 state를 `useState`로 표현하기 {/*step-3-represent-the-state-in-memory-with-usestate*/}
 
+<<<<<<< HEAD
 다음으로 [`useState`](/apis/usestate)를 사용하여 컴포넌트의 시각적 state를 표현해야 합니다. 이 과정은 단순함이 핵심입니다. 각각의 state는 "움직이는 조각"입니다. 그리고 **"움직이는 조각"은 적을수록 좋습니다**. 복잡한 건 버그를 일으키기 마련이기 때문입니다!
+=======
+Next you'll need to represent the visual states of your component in memory with [`useState`](/apis/react/useState). Simplicity is key: each piece of state is a "moving piece", and **you want as few "moving pieces" as possible**. More complexity leads to more bugs!
+>>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
 
 먼저 *반드시 필요한* state를 가지고 시작해봅시다. 예를 들면 인풋의 `응답`은 반드시 저장해야 할 것입니다. 그리고 (존재한다면) 가장 최근에 발생한 `오류`도 저장해야 할 겁니다.
 
@@ -373,9 +377,15 @@ state의 중복은 피하고 필수적인 state만 남겨두고 싶을 겁니다
 
 여기에 state 변수에 관한 몇 가지 질문이 있습니다.
 
+<<<<<<< HEAD
 * **state가 역설을 일으키지는 않나요?** 예를 들면 `isTyping`과 `isSubmitting`이 동시에 `true`일 수는 없습니다. 이러한 역설은 보통 state가 충분히 제한되지 않았음을 의미합니다. 여기에는 두 boolean에 대한 네 가지 조합이 있지만 오직 유효한 state는 세 개뿐입니다. 이러한 "불가능한" state를 제거하기 위해 세 가지 값 `'typing'`, `'submitting'`, `'success'`을 하나의 `status`로 합칠 수 있습니다.
 * **다른 state 변수에 이미 같은 정보가 담겨있진 않나요?** `isEmpty`와 `isTyping`은 동시에 `true`가 될 수 없습니다. 이를 각각의 state 변수로 분리하면 싱크가 맞지 않거나 버그가 발생할 위험이 있습니다. 이 경우에는 운이 좋게도 `isEmpty`를 지우고 `message.length === 0`으로 체크할 수 있습니다.
 * **다른 변수를 뒤집었을 때 같은 정보를 얻을 수 있진 않나요?** `isError`는 `error !== null`로도 대신 확인할 수 있기 때문에 필요하지 않습니다.
+=======
+* **Does this state cause a paradox?** For example, `isTyping` and `isSubmitting` can't both be `true`. A paradox usually means that the state is not constrained enough. There are four possible combinations of two booleans, but only three correspond to valid states. To remove the "impossible" state, you can combine these into a `status` that must be one of three values: `'typing'`, `'submitting'`, or `'success'`. 
+* **Is the same information available in another state variable already?** Another paradox: `isEmpty` and `isTyping` can't be `true` at the same time. By making them separate state variables, you risk them going out of sync and causing bugs. Fortunately, you can remove `isEmpty` and instead check `answer.length === 0`.
+* **Can you get the same information from the inverse of another state variable?** `isError` is not needed because you can check `error !== null` instead.
+>>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
 
 이러한 정리 과정을 거친 후에는 세 가지 (일곱 개에서 줄어든!) *필수* 변수만 남게 됩니다.
 
