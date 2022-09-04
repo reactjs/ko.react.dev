@@ -152,9 +152,6 @@ useEffect(() => {
 
 그렇지만, 모든 effect가 지연될 수는 없습니다. 예를 들어 사용자에게 노출되는 DOM 변경은 사용자가 노출된 내용의 불일치를 경험하지 않도록 다음 화면을 다 그리기 이전에 동기화 되어야 합니다. (그 구분이란 개념적으로는 수동적 이벤트 리스너와 능동적 이벤트 리스너의 차이와 유사합니다) 이런 종류의 effect를 위해 React는 [`useLayoutEffect`](#uselayouteffect)라는 추가적인 Hook을 제공합니다. 그것은 `useEffect`와 동일한 시그니처를 가지고 있고 그것이 수행될 때에만 차이가 납니다.
 
-<<<<<<< HEAD
-`useEffect`는 브라우저 화면이 다 그려질 때까지 지연됩니다만, 다음 어떤 새로운 렌더링이 발생하기 이전에 발생하는 것도 보장합니다. React는 새로운 갱신을 시작하기 전에 이전 렌더링을 항상 완료하게 됩니다.
-=======
 Additionally, starting in React 18, the function passed to `useEffect` will fire synchronously **before** layout and paint when it's the result of a discrete user input such as a click, or when it's the result of an update wrapped in [`flushSync`](/docs/react-dom.html#flushsync). This behavior allows the result of the effect to be observed by the event system, or by the caller of [`flushSync`](/docs/react-dom.html#flushsync).
 
 > Note
@@ -162,7 +159,6 @@ Additionally, starting in React 18, the function passed to `useEffect` will fire
 > This only affects the timing of when the function passed to `useEffect` is called - updates scheduled inside these effects are still deferred. This is different than [`useLayoutEffect`](#uselayouteffect), which fires the function and processes the updates inside of it immediately.
 
 Even in cases where `useEffect` is deferred until after the browser has painted, it's guaranteed to fire before any new renders. React will always flush a previous render's effects before starting a new update.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 #### 조건부 effect 발생 {#conditionally-firing-an-effect}
 
