@@ -15,23 +15,14 @@ permalink: docs/strict-mode.html
 
 위의 예시에서,  `Header`와 `Footer` 컴포넌트는 Strict 모드 검사가 이루어지지 않습니다. 하지만, `ComponentOne`과 `ComponentTwo`는 각각의 자손까지 검사가 이루어집니다.
 
-<<<<<<< HEAD
 `StrictMode`는 아래와 같은 부분에서 도움이 됩니다.
-=======
-`StrictMode` currently helps with:
-* [Identifying components with unsafe lifecycles](#identifying-unsafe-lifecycles)
-* [Warning about legacy string ref API usage](#warning-about-legacy-string-ref-api-usage)
-* [Warning about deprecated findDOMNode usage](#warning-about-deprecated-finddomnode-usage)
-* [Detecting unexpected side effects](#detecting-unexpected-side-effects)
-* [Detecting legacy context API](#detecting-legacy-context-api)
-* [Ensuring reusable state](#ensuring-reusable-state)
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 * [안전하지 않은 생명주기를 사용하는 컴포넌트 발견](#identifying-unsafe-lifecycles)
 * [레거시 문자열 ref 사용에 대한 경고](#warning-about-legacy-string-ref-api-usage)
 * [권장되지 않는 findDOMNode 사용에 대한 경고](#warning-about-deprecated-finddomnode-usage)
 * [예상치 못한 부작용 검사](#detecting-unexpected-side-effects)
 * [레거시 context API 검사](#detecting-legacy-context-api)
+* [Ensuring reusable state](#ensuring-reusable-state)
 
 React의 향후 릴리즈에서 더 많은 기능이 더해질 예정입니다.
 
@@ -129,13 +120,9 @@ Strict 모드가 자동으로 부작용을 찾아주는 것은 불가능합니�
 
 > 주의
 >
-<<<<<<< HEAD
-> React 17부터 React는 자동으로 `console.log()` 같은 콘솔 메서드를 수정해서 생명주기 함수의 두 번째 호출에서 로그를 찍지 않습니다. 그러나, [회피책을 사용할 수 있다면](https://github.com/facebook/react/issues/20090#issuecomment-715927125) 의도하지 않은 동작이 발생할 수 있습니다.
-=======
 > In React 17, React automatically modifies the console methods like `console.log()` to silence the logs in the second call to lifecycle functions. However, it may cause undesired behavior in certain cases where [a workaround can be used](https://github.com/facebook/react/issues/20090#issuecomment-715927125).
 >
 > Starting from React 18, React does not suppress any logs. However, if you have React DevTools installed, the logs from the second call will appear slightly dimmed. React DevTools also offers a setting (off by default) to suppress them completely.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 ### 레거시 context API 검사 {#detecting-legacy-context-api}
 
@@ -143,10 +130,7 @@ Strict 모드가 자동으로 부작용을 찾아주는 것은 불가능합니�
 
 ![](../images/blog/warn-legacy-context-in-strict-mode.png)
 
-<<<<<<< HEAD
 [새로운 context API 문서](/docs/context.html)를 참조하여 새로운 버전으로 마이그레이션하시길 바랍니다.
-=======
-Read the [new context API documentation](/docs/context.html) to help migrate to the new version.
 
 
 ### Ensuring reusable state {#ensuring-reusable-state}
@@ -203,4 +187,3 @@ Unmounting and remounting includes:
 
 For help supporting common issues, see:
   - [How to support Reusable State in Effects](https://github.com/reactwg/react-18/discussions/18)
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
