@@ -134,12 +134,8 @@ var SayHello = createReactClass({
 
 이는 ES6의 class를 사용해 이벤트 핸들러를 만드는 경우에는 다른 방법으로 처리할 때 보다 반복되는 코드가 많아진다는 뜻입니다. 하지만 큰 규모의 애플리케이션에서는 class를 사용하는 경우에 성능이 조금 더 좋아집니다.
 
-<<<<<<< HEAD
 
-보일러플레이트 코드를 정 쓰기 싫다면, **실험적인** [Class Properties](https://babeljs.io/docs/plugins/transform-class-properties/) 문법을 Babel을 통해 사용할 수도 있습니다.
-=======
-If the boilerplate code is too unattractive to you, you may use [ES2022 Class Properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) syntax:
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+보일러플레이트 코드를 정 쓰기 싫다면, [ES2022 Class Properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) 문법을 사용할 수도 있습니다.
 
 
 ```javascript
@@ -148,13 +144,8 @@ class SayHello extends React.Component {
     super(props);
     this.state = {message: 'Hello!'};
   }
-<<<<<<< HEAD
-  // 경고: 이 문법은 실험적입니다!
+
   // 화살표 함수를 통해 메서드를 바인딩합니다.
-=======
-  
-  // Using an arrow here binds the method:
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
   handleClick = () => {
     alert(this.state.message);
   };
@@ -169,14 +160,7 @@ class SayHello extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
-위 코드에서 쓰인 문법은 **실험적인** 상태이므로 그 내용이 변할 수 있거나, JavaScript에 반영되지 않을 수 있습니다.
-
-=======
-You also have a few other options:
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
-
-안전한 길을 원한다면 몇 가지 선택지가 있습니다.
+다음과 같은 몇 가지 다른 선택지도 있습니다.
 
 * 생성자에서 메서드들을 바인딩합니다.
 * `onClick={(e) => this.handleClick(e)}`와 같이 화살표 함수를 사용합니다.
