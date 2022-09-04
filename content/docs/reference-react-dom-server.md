@@ -17,9 +17,6 @@ var ReactDOMServer = require('react-dom/server');
 
 ## 개요 {#overview}
 
-<<<<<<< HEAD
-다음 메서드는 서버와 브라우저 환경에서 사용할 수 있습니다.
-=======
 These methods are only available in the **environments with [Node.js Streams](https://nodejs.dev/learn/nodejs-streams):**
 
 - [`renderToPipeableStream()`](#rendertopipeablestream)
@@ -31,23 +28,11 @@ These methods are only available in the **environments with [Web Streams](https:
 - [`renderToReadableStream()`](#rendertoreadablestream)
 
 The following methods can be used in the environments that don't support streams:
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 - [`renderToString()`](#rendertostring)
 - [`renderToStaticMarkup()`](#rendertostaticmarkup)
 
-<<<<<<< HEAD
-다음 추가 메서드는 **서버에서만 사용할 수 있는** `stream` 패키지에 의존성이 있어 브라우저에서는 작동하지 않습니다.
-
-- [`renderToNodeStream()`](#rendertonodestream)
-- [`renderToStaticNodeStream()`](#rendertostaticnodestream)
-
-* * *
-
-## 참조 {#reference}
-=======
 ## Reference {#reference}
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 ### `renderToPipeableStream()` {#rendertopipeablestream}
 
@@ -55,11 +40,6 @@ The following methods can be used in the environments that don't support streams
 ReactDOMServer.renderToPipeableStream(element, options)
 ```
 
-<<<<<<< HEAD
-React 엘리먼트의 초기 HTML을 렌더링합니다. React는 HTML 문자열을 반환합니다. 빠른 페이지 로드를 위해 초기 요청 시에 서버에서 HTML을 생성하여 마크업을 보내거나, 검색 엔진 최적화를 위해 검색 엔진이 페이지를 크롤링할 수 있도록 하는데 사용할 수 있습니다.
-
-이미 서버 렌더링 된 마크업이 있는 노드에서 [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate)를 호출할 경우 React는 이를 보존하고 이벤트 핸들러만 연결함으로써 매우 뛰어난 첫 로드 성능을 보여줍니다.
-=======
 Render a React element to its initial HTML. Returns a stream with a `pipe(res)` method to pipe the output and `abort()` to abort the request. Fully supports Suspense and streaming of HTML with "delayed" content blocks "popping in" via inline `<script>` tags later. [Read more](https://github.com/reactwg/react-18/discussions/37)
 
 If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
@@ -106,7 +86,6 @@ See the [full list of options](https://github.com/facebook/react/blob/14c2be8dac
 >
 > This is a Node.js-specific API. Environments with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), like Deno and modern edge runtimes, should use [`renderToReadableStream`](#rendertoreadablestream) instead.
 >
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 * * *
 
@@ -116,11 +95,6 @@ See the [full list of options](https://github.com/facebook/react/blob/14c2be8dac
 ReactDOMServer.renderToReadableStream(element, options);
 ```
 
-<<<<<<< HEAD
-[`renderToString`](#rendertostring)과 비슷하지만 `data-reactroot`와 같이 React에서 내부적으로 사용하는 추가적인 DOM 어트리뷰트를 만들지 않습니다. 여분의 어트리뷰트를 제거함으로써 약간의 바이트를 절약할 수 있으므로 React를 간단한 정적 페이지 생성기로 사용하고 싶은 경우에 유용합니다.
-
-클라이언트에서 React를 사용하여 상호작용이 가능한 마크업을 만들려면 이 메서드를 사용하지 마세요. 대신 서버에서 [`renderToString`](#rendertostring)을 사용하고 클라이언트에서 [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate)를 사용해주세요.
-=======
 Streams a React element to its initial HTML. Returns a Promise that resolves to a [Readable Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream). Fully supports Suspense and streaming of HTML. [Read more](https://github.com/reactwg/react-18/discussions/127)
 
 If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
@@ -169,7 +143,6 @@ See the [full list of options](https://github.com/facebook/react/blob/14c2be8dac
 >
 > This API depends on [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API). For Node.js, use [`renderToPipeableStream`](#rendertopipeablestream) instead.
 >
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 * * *
 
@@ -179,15 +152,9 @@ See the [full list of options](https://github.com/facebook/react/blob/14c2be8dac
 ReactDOMServer.renderToNodeStream(element)
 ```
 
-<<<<<<< HEAD
-React 엘리먼트의 초기 HTML을 렌더링합니다. HTML 문자열을 출력하는 [Readable 스트림](https://nodejs.org/api/stream.html#stream_readable_streams)을 반환합니다. 이 스트림이 출력하는 HTML 문자열은 [`ReactDOMServer.renderToString`](#rendertostring)이 반환하는 값과 정확히 일치합니다. 빠른 페이지 로드를 위해 초기 요청 시에 서버에서 HTML을 생성하여 마크업을 보내거나, 검색 엔진 최적화를 위해 검색 엔진이 페이지를 크롤링할 수 있도록 하는데 사용할 수 있습니다.
-
-이미 서버 렌더링 된 마크업이 있는 노드에서 [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate)를 호출할 경우 React는 이를 보존하고 이벤트 핸들러만 연결함으로써 매우 뛰어난 첫 로드 성능을 보여줍니다.
-=======
 Render a React element to its initial HTML. Returns a [Node.js Readable stream](https://nodejs.org/api/stream.html#stream_readable_streams) that outputs an HTML string. The HTML output by this stream is exactly equal to what [`ReactDOMServer.renderToString`](#rendertostring) would return. You can use this method to generate HTML on the server and send the markup down on the initial request for faster page loads and to allow search engines to crawl your pages for SEO purposes.
 
 If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 > 주의
 >
@@ -207,19 +174,12 @@ ReactDOMServer.renderToStaticNodeStream(element)
 
 이 스트림이 출력하는 HTML 문자열은 [`ReactDOMServer.renderToStaticMarkup`](#rendertostaticmarkup)이 반환하는 값과 정확히 일치합니다.
 
-<<<<<<< HEAD
-클라이언트에서 React를 사용하여 상호작용이 가능한 마크업을 만들려면 이 메서드를 사용하지 마세요. 대신 서버에서 [`renderToNodeStream`](#rendertonodestream)을 사용하고 클라이언트에서 [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate)를 사용해주세요.
-=======
 If you plan to use React on the client to make the markup interactive, do not use this method. Instead, use [`renderToNodeStream`](#rendertonodestream) on the server and [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on the client.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 > 주의
 >
 > 서버에서만 사용할 수 있습니다. 이 API는 브라우저에서 작동하지 않습니다.
 >
-<<<<<<< HEAD
-> 반환되는 스트림은 utf-8로 인코딩된 바이트 스트림을 반환합니다. 다른 방법으로 인코딩된 스트림이 필요할 경우, 텍스트 트랜스코딩을 위한 Transform 스트림을 제공하는 [iconv-lite](https://www.npmjs.com/package/iconv-lite)와 같은 프로젝트를 살펴보세요.
-=======
 > The stream returned from this method will return a byte stream encoded in utf-8. If you need a stream in another encoding, take a look at a project like [iconv-lite](https://www.npmjs.com/package/iconv-lite), which provides transform streams for transcoding text.
 
 * * *
@@ -251,4 +211,3 @@ ReactDOMServer.renderToStaticMarkup(element)
 Similar to [`renderToString`](#rendertostring), except this doesn't create extra DOM attributes that React uses internally, such as `data-reactroot`. This is useful if you want to use React as a simple static page generator, as stripping away the extra attributes can save some bytes.
 
 If you plan to use React on the client to make the markup interactive, do not use this method. Instead, use [`renderToString`](#rendertostring) on the server and [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on the client.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
