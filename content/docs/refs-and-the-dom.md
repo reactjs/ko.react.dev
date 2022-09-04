@@ -192,13 +192,13 @@ function CustomTextInput(props) {
 
 ### 부모 컴포넌트에게 DOM ref를 공개하기 {#exposing-dom-refs-to-parent-components}
 
-보기 드문 경우지만, 부모 컴포넌트에서 자식 컴포넌트의 DOM 노드에 접근하려 하는 경우도 있습니다. 자식 컴포넌트의 DOM 노드에 접근하는 것은 컴포넌트의 캡슐화를 파괴하기 떄문에 권장되지 않습니다. 그렇지만 가끔가다 자식 컴포넌트의 DOM 노드를 포커스하는 일이나, 크기 또는 위치를 계산하는 일 등을 할 때에는 효과적인 방법이 될 수 있습니다.
+보기 드문 경우지만, 부모 컴포넌트에서 자식 컴포넌트의 DOM 노드에 접근하려 하는 경우도 있습니다. 자식 컴포넌트의 DOM 노드에 접근하는 것은 컴포넌트의 캡슐화를 파괴하기 때문에 권장되지 않습니다. 그렇지만 가끔가다 자식 컴포넌트의 DOM 노드를 포커스하는 일이나, 크기 또는 위치를 계산하는 일 등을 할 때에는 효과적인 방법이 될 수 있습니다.
 
 [자식 컴포넌트에 ref를 사용할 수 있지만](#adding-a-ref-to-a-class-component), 이 방법은 자식 컴포넌트의 인스턴스의 DOM 노드가 아닌 자식 컴포넌트의 인스턴스를 가져온다는 점에서, 자식 컴포넌트가 함수 컴포넌트인 경우에는 동작하지 않는다는 점에서, 좋은 방법이 아닙니다.
 
-React 16.3 이후 버전의 React를 사용하신다면 위와 같은 경우에서 [ref 전달하기(ref forwarding)](/docs/forwarding-refs.html)을 사용하는 것이 권장됩니다. **Ref 전달하기는 컴포넌트가 자식 컴포넌트의 ref를 자신의 ref로서 외부에 노출시키게 합니다**. 자식 컴포넌트의 DOM 노드를 부모 컴포넌트에게 공개하는 방법에 대한 자세한 예시는 [ref 넘겨주기 문서에서 볼 수 있습니다.](/docs/forwarding-refs.html#forwarding-refs-to-dom-components).
+React 16.3 이후 버전의 React를 사용하신다면 위와 같은 경우에서 [ref 전달하기(ref forwarding)](/docs/forwarding-refs.html)을 사용하는 것이 권장됩니다. **Ref 전달하기는 컴포넌트가 자식 컴포넌트의 ref를 자신의 ref로서 외부에 노출시키게 합니다**. 자식 컴포넌트의 DOM 노드를 부모 컴포넌트에게 공개하는 방법에 대한 자세한 예시는 [ref 넘겨주기 문서에서 볼 수 있습니다](/docs/forwarding-refs.html#forwarding-refs-to-dom-components).
 
-React 16.2 이전 버전을 사용하시거나 ref 전달하기보다 더 유연한 방법을 원한다면 [이런 대안을 사용할 수 있습니다.](https://gist.github.com/gaearon/1a018a023347fe1c2476073330cc5509)
+React 16.2 이전 버전을 사용하시거나 ref 전달하기보다 더 유연한 방법을 원한다면 [이런 대안을 사용할 수 있습니다](https://gist.github.com/gaearon/1a018a023347fe1c2476073330cc5509).
 
 가능하다면 DOM 노드를 외부에 공개하는 일을 지양해야 합니다만 DOM 노드를 외부에 공개하는 일은 유용한 해결책이 될 수 있습니다. 또한 이 방법들은 자식 컴포넌트의 코드 수정을 요한다는 점을 기억하세요. 자식 컴포넌트의 코드를 수정할 수 없다면 최후의 방법인 [`findDOMNode()`](/docs/react-dom.html#finddomnode)를 사용하는 방법이 있지만 `findDOMNode()`는 좋지 못한 방법일 뿐더러 [`StrictMode`](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)에서 사용할 수 없습니다.
 

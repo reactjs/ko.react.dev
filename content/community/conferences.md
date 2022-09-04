@@ -33,16 +33,6 @@ June 17 & 21, 2022. In-person in Amsterdam, Netherlands + remote first interacti
 
 [Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
 
-### React Norway 2022 {#react-norway-2022}
-June 24, 2022. In-person at Farris Bad Hotel in Larvik, Norway and online (hybrid event).
-
-[Website](https://reactnorway.com/) - [Twitter](https://twitter.com/ReactNorway)
-
-### ReactNext 2022 {#react-next-2022}
-June 28, 2022. Tel-Aviv, Israel
-
-[Website](https://react-next.com) - [Twitter](https://twitter.com/ReactNext) - [Videos](https://www.youtube.com/c/ReactNext)
-
 ### React Native EU 2022: Powered by {callstack} {#react-native-eu-2022-powered-by-callstack}
 September 1-2, 2022 - Remote event
 
