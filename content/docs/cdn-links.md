@@ -20,11 +20,7 @@ React와 ReactDOM 모두 CDN을 통해 사용할 수 있습니다.
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 ```
 
-<<<<<<< HEAD
-`react`와 `react-dom`의 특정 버전을 로딩하려면 `17`을 사용하고자 하는 버전 넘버로 대체하면 됩니다.
-=======
-To load a specific version of `react` and `react-dom`, replace `18` with the version number.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+`react`와 `react-dom`의 특정 버전을 로딩하려면 `18`을 사용하고자 하는 버전 넘버로 대체하면 됩니다.
 
 ### `crossorigin` 속성이 필요한 이유 {#why-the-crossorigin-attribute}
 
