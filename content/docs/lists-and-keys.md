@@ -33,11 +33,8 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-<<<<<<< HEAD
-`listItems` 배열을 `<ul>`엘리먼트 안에 포함하고 [DOM에 렌더링합니다.](/content/docs/rendering-elements.html#rendering-an-element-into-the-dom)
-=======
 Then, we can include the entire `listItems` array inside a `<ul>` element:
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+그러면 `<ul>` 엘리먼트 안에 전체 `listItems` 배열을 포함할 수 있습니다.
 
 ```javascript{2}
 <ul>{listItems}</ul>
