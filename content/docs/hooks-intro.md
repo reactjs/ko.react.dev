@@ -30,13 +30,8 @@ function Example() {
 
 >주의
 >
-<<<<<<< HEAD
 >React 16.8.0은 Hook을 지원하는 첫 번째 배포입니다. 업그레이드 시 React DOM을 포함한 모든 패키지의 업데이트를 진행해주세요.
 >React Native는 [v0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059)부터 Hook을 지원합니다.
-=======
->React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM.
->React Native has supported Hooks since [the 0.59 release of React Native](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059).
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 ## 소개 영상 {#video-introduction}
 
@@ -83,13 +78,9 @@ Hook을 사용하면 컴포넌트로부터 상태 관련 로직을 추상화할 
 
 ### Class은 사람과 기계를 혼동시킵니다. {#classes-confuse-both-people-and-machines}
 
-React 에서의 Class 사용을 위해서는 JavaScript의 `this` 키워드가 어떻게 작동하는지 알아야만 합니다.  JavaScript의 `this`키워드는 대부분의 다른 언어에서와는 다르게 작동함으로 사용자에게 큰 혼란을 주었으며, 코드의 재사용성과 구성을 매우 어렵게 만들고는 했습니다. 또한 class의 사용을 위해 이벤트 핸들러가 등록되는 방법을 정확히 파악해야 했으며, 이는 불안정한 [문법 제안들](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/)의 도움이 없을 시엔, 코드를 매우 장황하게 만들었습니다. 사용자들은 props, state, 그리고 top-down 데이터 흐름을 완벽하게 하고도, Class의 이해에는 어려움을 겪고는 했습니다. React 내의 함수와 Class 컴포넌트의 구별, 각 요소의 사용 타이밍 등은 숙련된 React 개발자 사이에서도 의견이 일치하지 않습니다.
+React 에서의 Class 사용을 위해서는 JavaScript의 `this` 키워드가 어떻게 작동하는지 알아야만 합니다.  JavaScript의 `this`키워드는 대부분의 다른 언어에서와는 다르게 작동함으로 사용자에게 큰 혼란을 주었으며, 코드의 재사용성과 구성을 매우 어렵게 만들고는 했습니다. 또한 class의 사용을 위해 이벤트 핸들러가 등록되는 방법을 정확히 파악해야 했으며, 이는 [ES2022 public class fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields)가 없을 때 코드를 매우 장황하게 만들었습니다. 사용자들은 props, state, 그리고 top-down 데이터 흐름을 완벽하게 하고도, Class의 이해에는 어려움을 겪고는 했습니다. React 내의 함수와 Class 컴포넌트의 구별, 각 요소의 사용 타이밍 등은 숙련된 React 개발자 사이에서도 의견이 일치하지 않습니다.
 
-<<<<<<< HEAD
 React는 지난 5년 동안 널리 사용되어 왔으며, React의 개발진은 5년 뒤에도 React가 지금과 같이 널리 이용되길 원합니다. [Svelte](https://svelte.dev/), [Angular](https://angular.io/), [Glimmer](https://glimmerjs.com/) 등에서 보여주듯이, 컴포넌트를 [미리 컴파일해놓는 방식](https://en.wikipedia.org/wiki/Ahead-of-time_compilation)에는 높은 잠재력이 있습니다. 템플릿에 한정하지 않는다면 더 그렇고요. 개발진은 최근 [Prepack](https://prepack.io/)을 사용한 [컴포넌트 folding](https://github.com/facebook/react/issues/7323)에 대해서 실험해왔고 긍정적인 결과를 보았습니만, Class 컴포넌트가 이러한 최적화를 더 느린 경로로 되돌리는 의도하지 않은 패턴을 장려할 수 있다는 것을 발견했습니다. Class는 최근 사용되는 도구에서도 많은 문제를 일으킵니다. 예를 들어 Class는 코드의 최소화를 힘들게 만들고, 핫 리로딩을 깨지기 쉽고 신뢰할 수 없게 만듭니다. 우리는 코드가 최적화 가능한 경로에서 유지될 가능성이 더 높은 API를 제공하길 원하였습니다.
-=======
-In addition to making code reuse and code organization more difficult, we've found that classes can be a large barrier to learning React. You have to understand how `this` works in JavaScript, which is very different from how it works in most languages. You have to remember to bind the event handlers. Without [ES2022 public class fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields), the code is very verbose. People can understand props, state, and top-down data flow perfectly well but still struggle with classes. The distinction between function and class components in React and when to use each one leads to disagreements even between experienced React developers.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 이러한 문제를 해결하기 위해, **Hook은 Class없이 React 기능들을 사용하는 방법을 제시합니다.** 개념적으로 React 컴포넌트는 항상 함수에 더 가깝습니다. Hook은 React의 정신을 희생하지 않고 함수의 사용을 권장합니다. Hook은 명령형 코드로 해결책을 찾을 수 있게 해주며 복잡한 함수형 또는 반응형 프로그래밍 기술을 배우도록 요구하지 않습니다.
 
@@ -104,11 +95,7 @@ In addition to making code reuse and code organization more difficult, we've fou
 
 또한 React에 추가되는 새로운 기능에 대한 기준점이 매우 높다는 것을 알고 있습니다. 궁금해하는 독자들을 위해 동기부여에 대한 구체적인 내용을 담고 있는 [자세한 RFC](https://github.com/reactjs/rfcs/pull/68)를 준비했고 특정 설계 결정 및 관련 선행 기술에 대한 추가적인 관점을 제공합니다.
 
-<<<<<<< HEAD
 **결정적으로, Hook은 존재하는 코드와 함께 나란히 작동함으로써 점진적으로 적용할 수 있습니다.** Hook의 적용을 서두를 필요는 없습니다. 이미 사용중인 복잡한 Class 컴포넌트들에 대한 "큰 리팩토링"을 피하기를 권장합니다. "Hook을 적용하기"에는 고민의 시간이 필요합니다. 경험을 토대로 하여, 상대적으로 중요성이 덜한 새 컴포넌트에서 Hook을 사용하는 것이 최고의 연습입니다. 그리고 여러분의 모든 팀원이 Hook에 대해 안정감을 느끼는지 확인하는 게 좋습니다. Hook을 이용 후, 긍정적, 부정적 의견 모두 [의견 보내기](https://github.com/facebook/react/issues/new)를 이용해 보내주시면 감사하겠습니다.
-=======
-We also understand that the bar for adding a new primitive to React is extremely high. For curious readers, we have prepared a [detailed RFC](https://github.com/reactjs/rfcs/pull/68) that dives into the motivation with more details, and provides extra perspective on the specific design decisions and related prior art.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 React의 개발자들은 현재 사용중인 Class 사례를 Hook으로 교체하는 것을 염두에 두고는 있지만, **미래에도 계속 Class 컴포넌트들을 지원할 예정입니다.** 페이스북은 수만 개의 Class 컴포넌트들을 작성했지만 이를 재작성할 계획은 없습니다. 대신에, 새로운 코드에서 기존 코드와 나란히 Hook을 사용할 계획입니다.
 
