@@ -546,11 +546,7 @@ var player = {score: 1, name: 'Jeff'};
 var newPlayer = Object.assign({}, player, {score: 2});
 // 이제 player는 변하지 않았지만 newPlayer는 {score: 2, name: 'Jeff'}입니다.
 
-<<<<<<< HEAD
 // 객체 spread 구문을 사용한다면 이렇게 쓸 수 있습니다.
-=======
-// Or if you are using object spread syntax, you can write:
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 // var newPlayer = {...player, score: 2};
 ```
 
