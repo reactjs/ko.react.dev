@@ -238,21 +238,13 @@ function HelloButton() {
 
 [**CodePen에서 사용해보세요**](https://codepen.io/gaearon/pen/RVKbvW?editors=1010)
 
-<<<<<<< HEAD
-이런 격리된 컴포넌트를 원하는 만큼 가질 수 있으며 `ReactDOM.render()`를 사용해서 다른 DOM 컨테이너로 렌더링할 수 있습니다. 점점 앱의 더 많은 부분을 React로 변환하면 더 큰 컴포넌트로 결합할 수 있고 `ReactDOM.render()` 호출을 계층 구조 상위로 옮길 수 있습니다.
-=======
-You can have as many such isolated components as you like, and use `ReactDOM.createRoot()` to render them to different DOM containers. Gradually, as you convert more of your app to React, you will be able to combine them into larger components, and move some of the `ReactDOM.createRoot()` calls up the hierarchy.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+이런 격리된 컴포넌트를 원하는 만큼 가질 수 있으며 `ReactDOM.createRoot()`를 사용해서 다른 DOM 컨테이너로 렌더링할 수 있습니다. 점점 앱의 더 많은 부분을 React로 변환하면 더 큰 컴포넌트로 결합할 수 있고 `ReactDOM.createRoot()` 호출을 계층 구조 상위로 옮길 수 있습니다.
 
 ### Backbone 뷰 안에 React 포함하기 {#embedding-react-in-a-backbone-view}
 
 [Backbone](https://backbonejs.org/) 뷰는 일반적으로 HTML 문자열 또는 문자열로 제공되는 템플릿 함수를 사용하여 DOM 엘리먼트를 위한 콘텐츠를 생성합니다. 이 프로세스 또한 React 컴포넌트 렌더링으로 대체할 수 있습니다.
 
-<<<<<<< HEAD
-아래에서 `ParagraphView`라는 Backbone 뷰를 생성합니다. Backbone (`this.el`)이 제공하는 DOM 요소에 React `<Paragraph>` 컴포넌트를 렌더링하기 위해 Backbone의 `render()` 함수를 오버라이드합니다. 여기서도 [`ReactDOM.render()`](/docs/react-dom.html#render) 사용하고 있습니다.
-=======
-Below, we will create a Backbone view called `ParagraphView`. It will override Backbone's `render()` function to render a React `<Paragraph>` component into the DOM element provided by Backbone (`this.el`). Here, too, we are using [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot):
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+아래에서 `ParagraphView`라는 Backbone 뷰를 생성합니다. Backbone (`this.el`)이 제공하는 DOM 요소에 React `<Paragraph>` 컴포넌트를 렌더링하기 위해 Backbone의 `render()` 함수를 오버라이드합니다. 여기서도 [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot) 사용하고 있습니다.
 
 ```js{7,11,15}
 function Paragraph(props) {
@@ -277,11 +269,7 @@ const ParagraphView = Backbone.View.extend({
 
 [**CodePen에서 사용해보세요**](https://codepen.io/gaearon/pen/gWgOYL?editors=0010)
 
-<<<<<<< HEAD
-`remove` 메서드 안에서 `ReactDOM.unmountComponentAtNode()` 호출하여 분리가 됐을 때 React가 컴포넌트 트리와 관련된 이벤트 핸들러와 다른 리소스를 등록 해지하는 것이 중요합니다.
-=======
-It is important that we also call `root.unmount()` in the `remove` method so that React unregisters event handlers and other resources associated with the component tree when it is detached.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+`remove` 메서드 안에서 `root.unmount()` 호출하여 분리가 됐을 때 React가 컴포넌트 트리와 관련된 이벤트 핸들러와 다른 리소스를 등록 해지하는 것이 중요합니다.
 
 React 트리안에서 컴포넌트가 사라질 때 자동으로 클린업이 실행되지만, 전체 트리를 수동으로 제거하기 때문에 이 메서드를 반드시 호출해야 합니다.
 
