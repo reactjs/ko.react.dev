@@ -36,11 +36,7 @@ const root = ReactDOM.createRoot(rootEl);
 root.render(<App />);
 ```
 
-<<<<<<< HEAD
-React DOM은 재조정자를 통해 `<App />`를 통과하게 할 것입니다. `<App />`은 React 엘리먼트이며, 렌더링 할 것을 설명해 놓은 것임을 기억합시다. 이것을 평범한 객체로 생각해도 좋습니다.
-=======
-`root.render` will pass `<App />` along to the reconciler. Remember that `<App />` is a React element, that is, a description of *what* to render. You can think about it as a plain object:
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+`root.render`는 재조정자를 통해 `<App />`를 통과하게 할 것입니다. `<App />`은 React 엘리먼트이며, 렌더링 할 것을 설명해 놓은 것임을 기억합시다. 이것을 평범한 객체로 생각해도 좋습니다.
 
 ```js
 console.log(<App />);
@@ -419,11 +415,7 @@ DOM에서는 `<div>`만 보일 것입니다. 그러나 내부 인스턴스 트�
 
  <img src="../images/docs/implementation-notes-tree.png" width="500" style="max-width: 100%" alt="React DevTools tree" />
 
-<<<<<<< HEAD
-리팩토링을 완료하기 위해, `ReactDOM.render()`와 같이 전체 트리를 컨테이너 노드에 마운트하는 기능을 도입할 것입니다. 또한 `ReactDOM.render()`와 같은 공개 인스턴스를 리턴합니다.
-=======
-To complete this refactoring, we will introduce a function that mounts a complete tree into a container node and a public instance:
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+리팩토링을 완료하기 위해 전체 트리를 컨테이너 노드와 공개 인스턴스에 마운트하는 기능을 소개합니다.
 
 ```js
 function mountTree(element, containerNode) {
