@@ -79,17 +79,10 @@ root.render(element);
 
 이 예시에서는 다음과 같은 일들이 일어납니다.
 
-<<<<<<< HEAD
-1. `<Welcome name="Sara" />` 엘리먼트로 `ReactDOM.render()`를 호출합니다.
+1. `<Welcome name="Sara" />` 엘리먼트로 `root.render()`를 호출합니다.
 2. React는 `{name: 'Sara'}`를 props로 하여 `Welcome` 컴포넌트를 호출합니다.
 3. `Welcome` 컴포넌트는 결과적으로  `<h1>Hello, Sara</h1>` 엘리먼트를 반환합니다.
 4. React DOM은 `<h1>Hello, Sara</h1>` 엘리먼트와 일치하도록 DOM을 효율적으로 업데이트합니다.
-=======
-1. We call `root.render()` with the `<Welcome name="Sara" />` element.
-2. React calls the `Welcome` component with `{name: 'Sara'}` as the props.
-3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
-4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 
 
