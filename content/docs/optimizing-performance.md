@@ -43,8 +43,8 @@ npm run build
 React 및 React DOM의 프로덕션 준비 버전을 단일 파일로 제공합니다.
 
 ```html
-<script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 ```
 
 `.production.min.js`로 끝나는 React 파일만이 프로덕션 환경에 적합합니다.

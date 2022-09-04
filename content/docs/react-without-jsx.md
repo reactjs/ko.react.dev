@@ -17,10 +17,8 @@ class Hello extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Hello toWhat="World" />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Hello toWhat="World" />);
 ```
 
 아래처럼 JSX를 사용하지 않은 코드로 컴파일될 수 있습니다.
@@ -32,10 +30,8 @@ class Hello extends React.Component {
   }
 }
 
-ReactDOM.render(
-  React.createElement(Hello, {toWhat: 'World'}, null),
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(Hello, {toWhat: 'World'}, null));
 ```
 
 JSX가 JavaScript로 변환되는 예시를 더 보고 싶다면 [the online Babel compiler](babel://jsx-simple-example)를 참고하세요.
@@ -47,10 +43,8 @@ JSX가 JavaScript로 변환되는 예시를 더 보고 싶다면 [the online Bab
 ```js
 const e = React.createElement;
 
-ReactDOM.render(
-  e('div', null, 'Hello World'),
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(e('div', null, 'Hello World'));
 ```
 
 `React.createElement`를 짧은 변수에 할당하면 편리하게 JSX 없이 React를 사용할 수 있습니다.

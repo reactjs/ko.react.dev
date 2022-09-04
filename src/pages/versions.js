@@ -41,8 +41,16 @@ const Versions = ({location}: Props) => (
               </a>
               에서 살펴보세요.
               <br />
-              최근 배포에 대한 문서도 아래에서 찾을 수 있습니다.
+              최근 배포에 대한 변화도 아래에서 찾을 수 있습니다.
             </p>
+            <blockquote>
+              <p>주의</p>
+              <p>
+                해당 문서는 React 18에 대해 설명하고 있습니다. React 17은 아래를
+                살펴봐 주세요.{' '}
+                <a href="https://17.reactjs.org">https://17.reactjs.org.</a>
+              </p>
+            </blockquote>
             <p>
               <a href="/docs/faq-versioning.html">
                 버전 관리 정책 및 안정성에 대한 약속

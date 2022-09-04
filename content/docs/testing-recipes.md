@@ -607,7 +607,7 @@ it("should render a greeting", () => {
 
 ### 다수의 렌더러 {#multiple-renderers}
 
-드문 경우이지만 여러 렌더러를 사용하는 컴포넌트에서 테스트를 실행할 때가 있을 수 있습니다. 예를 들어, 자식 컴포넌트 내에서 `ReactDOM.render`를 내부적으로 사용하여 일부 콘텐츠를 렌더링하는 `react-test-renderer` 가 있는 컴포넌트에서 스냅샷 테스트를 실행할 수 있습니다. 이 시나리오에서는 렌더러에 해당하는 `act()`로 업데이트를 래핑 할 수 있습니다.
+드문 경우이지만 여러 렌더러를 사용하는 컴포넌트에서 테스트를 실행할 때가 있을 수 있습니다. 예를 들어, 자식 컴포넌트 내에서 `react-dom`의 `render`를 내부적으로 사용하여 일부 콘텐츠를 렌더링하는 `react-test-renderer` 가 있는 컴포넌트에서 스냅샷 테스트를 실행할 수 있습니다. 이 시나리오에서는 렌더러에 해당하는 `act()`로 업데이트를 래핑 할 수 있습니다.
 
 ```jsx
 import { act as domAct } from "react-dom/test-utils";

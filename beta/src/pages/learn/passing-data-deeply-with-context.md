@@ -4,7 +4,7 @@ title: Context를 사용해 데이터를 깊게 전달하기
 
 <Intro>
 
-보통의 경우 부모 컴포넌트에서 자식 컴포넌트로 props를 통해 정보를 전달합니다. 그러나 중간에 많은 컴포넌트를 거쳐야 하거나, 애플리케이션의 많은 컴포넌트에서 동일한 정보가 필요한 경우에는 props를 전달하는 것이 번거롭고 불편할 수 있습니다. Context를 사용하면  명시적으로 props를 전달해주지 않아도 부모 컴포넌트가 트리에 있는 어떤 자식 컴포넌트에서나 (얼마나 깊게 있든지 간에) 정보를 사용할 수 있습니다.
+보통의 경우 부모 컴포넌트에서 자식 컴포넌트로 props를 통해 정보를 전달합니다. 그러나 중간에 많은 컴포넌트를 거쳐야 하거나, 애플리케이션의 많은 컴포넌트에서 동일한 정보가 필요한 경우에는 props를 전달하는 것이 번거롭고 불편할 수 있습니다. *Context*를 사용하면  명시적으로 props를 전달해주지 않아도 부모 컴포넌트가 트리에 있는 어떤 자식 컴포넌트에서나 (얼마나 깊게 있든지 간에) 정보를 사용할 수 있습니다.
 
 </Intro>
 
@@ -327,7 +327,7 @@ export default function Heading({ level, children }) {
 }
 ```
 
-`level`prop을 제거하고 대신 위에서 가져온 context인 `LevelContext` 에서 값을 읽도록 합니다. 
+`level`prop을 제거하고 대신 위에서 가져온 context인 `LevelContext` 에서 값을 읽도록 합니다.
 
 ```js {2}
 export default function Heading({ children }) {
@@ -959,27 +959,27 @@ export const places = [{
   description: 'The tradition of choosing bright colors for houses began in the late 20th century.',
   imageId: 'K9HVAGH'
 }, {
-  id: 1, 
+  id: 1,
   name: 'Rainbow Village in Taichung, Taiwan',
   description: 'To save the houses from demolition, Huang Yung-Fu, a local resident, painted all 1,200 of them in 1924.',
   imageId: '9EAYZrt'
 }, {
-  id: 2, 
+  id: 2,
   name: 'Macromural de Pachuca, Mexico',
   description: 'One of the largest murals in the world covering homes in a hillside neighborhood.',
   imageId: 'DgXHVwu'
 }, {
-  id: 3, 
+  id: 3,
   name: 'Selarón Staircase in Rio de Janeiro, Brazil',
   description: 'This landmark was created by Jorge Selarón, a Chilean-born artist, as a "tribute to the Brazilian people."',
   imageId: 'aeO3rpI'
 }, {
-  id: 4, 
+  id: 4,
   name: 'Burano, Italy',
   description: 'The houses are painted following a specific color system dating back to 16th century.',
   imageId: 'kxsph5C'
 }, {
-  id: 5, 
+  id: 5,
   name: 'Chefchaouen, Marocco',
   description: 'There are a few theories on why the houses are painted blue, including that the color repells mosquitos or that it symbolizes sky and heaven.',
   imageId: 'rTqKo46'
@@ -1003,9 +1003,9 @@ export function getImageUrl(place) {
 
 ```css
 ul { list-style-type: none; padding: 0px 10px; }
-li { 
-  margin-bottom: 10px; 
-  display: grid; 
+li {
+  margin-bottom: 10px;
+  display: grid;
   grid-template-columns: auto 1fr;
   gap: 20px;
   align-items: center;
@@ -1098,27 +1098,27 @@ export const places = [{
   description: 'The tradition of choosing bright colors for houses began in the late 20th century.',
   imageId: 'K9HVAGH'
 }, {
-  id: 1, 
+  id: 1,
   name: 'Rainbow Village in Taichung, Taiwan',
   description: 'To save the houses from demolition, Huang Yung-Fu, a local resident, painted all 1,200 of them in 1924.',
   imageId: '9EAYZrt'
 }, {
-  id: 2, 
+  id: 2,
   name: 'Macromural de Pachuca, Mexico',
   description: 'One of the largest murals in the world covering homes in a hillside neighborhood.',
   imageId: 'DgXHVwu'
 }, {
-  id: 3, 
+  id: 3,
   name: 'Selarón Staircase in Rio de Janeiro, Brazil',
   description: 'This landmark was created by Jorge Selarón, a Chilean-born artist, as a "tribute to the Brazilian people."',
   imageId: 'aeO3rpI'
 }, {
-  id: 4, 
+  id: 4,
   name: 'Burano, Italy',
   description: 'The houses are painted following a specific color system dating back to 16th century.',
   imageId: 'kxsph5C'
 }, {
-  id: 5, 
+  id: 5,
   name: 'Chefchaouen, Marocco',
   description: 'There are a few theories on why the houses are painted blue, including that the color repells mosquitos or that it symbolizes sky and heaven.',
   imageId: 'rTqKo46'
@@ -1142,9 +1142,9 @@ export function getImageUrl(place) {
 
 ```css
 ul { list-style-type: none; padding: 0px 10px; }
-li { 
-  margin-bottom: 10px; 
-  display: grid; 
+li {
+  margin-bottom: 10px;
+  display: grid;
   grid-template-columns: auto 1fr;
   gap: 20px;
   align-items: center;
