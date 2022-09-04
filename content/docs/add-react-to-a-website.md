@@ -25,11 +25,7 @@ React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다
 
 복잡한 도구를 쓰거나 뭔가를 따로 설치해야 할 필요도 없습니다. **약간의 시간과 함께 인터넷만 연결 되어 있다면 이 문서에서 다루는 것을 모두 해볼 수 있습니다.**
 
-<<<<<<< HEAD
-선택사항: [예시의 전체 소스코드 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
-=======
-Optional: [Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip)
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+선택사항: [예시의 전체 소스코드 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip)
 
 ### 1단계: HTML 파일에 DOM 컨테이너 설치 {#step-1-add-a-dom-container-to-the-html}
 
@@ -56,17 +52,10 @@ Optional: [Download the full example (2KB zipped)](https://gist.github.com/gaear
 ```html{5,6,9}
   <!-- ... 다른 HTML ... -->
 
-<<<<<<< HEAD
   <!-- React를 실행. -->
   <!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-=======
-  <!-- Load React. -->
-  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
   <!-- 만든 React 컴포넌트를 실행. -->
   <script src="like_button.js"></script>
@@ -86,28 +75,17 @@ Optional: [Download the full example (2KB zipped)](https://gist.github.com/gaear
 >
 >이 코드는 `LikeButton` 이라는 React 컴포넌트를 정의해줍니다. 지금 당장 이해가 안 되어도 걱정 마세요. React에 대한 개념을 쌓아 나가는 것은 나중에 [자습서](/tutorial/tutorial.html)와 [주요 개념 가이드](/docs/hello-world.html)에서 다룰 겁니다. 그러니 지금 당장은, 컴포넌트를 화면에 띄우는 데 집중해봅시다!
 
-<<<<<<< HEAD
-`like_button.js`의 맨 뒷 줄, 그러니까 아까 붙여넣은 **[스타터 코드](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** 뒤에 다음 코드 두 줄을 추가해줍니다.
-
-```js{3,4}
-// ... 복사했던 스타터 코드 ...
-=======
-After **[the starter code](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, add three lines to the bottom of `like_button.js`:
+`like_button.js`의 맨 뒷 줄, 그러니까 아까 붙여넣은 **[스타터 코드](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** 뒤에 다음 코드 세 줄을 추가해줍니다.
 
 ```js{3,4,5}
-// ... the starter code you pasted ...
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+// ... 복사했던 스타터 코드 ...
 
 const domContainer = document.querySelector('#like_button_container');
 const root = ReactDOM.createRoot(domContainer);
 root.render(e(LikeButton));
 ```
 
-<<<<<<< HEAD
-이 두줄의 코드는 첫 단계에서 HTML 페이지에 추가했던 `<div>` 태그를 찾아주고 그 안에 "좋아요" 버튼이라는 React 컴포넌트를 추가해줍니다.
-=======
-These three lines of code find the `<div>` we added to our HTML in the first step, create a React app with it, and then display our "Like" button React component inside of it.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+이 세 줄의 코드는 첫 단계에서 HTML 페이지에 추가했던 `<div>` 태그를 찾아주고, 해당 태그에 React 앱을 만들어주고, 그 안에 "좋아요" 버튼 React 컴포넌트를 추가해줍니다.
 
 ### 다 끝났습니다! {#thats-it}
 
@@ -117,11 +95,7 @@ These three lines of code find the `<div>` we added to our HTML in the first ste
 
 **[예시 전체 소스 코드 보기](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
 
-<<<<<<< HEAD
-**[예시 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
-=======
-**[Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip)**
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+**[예시 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip)**
 
 ### 팁: 컴포넌트 재사용 {#tip-reuse-a-component}
 
@@ -129,11 +103,7 @@ These three lines of code find the `<div>` we added to our HTML in the first ste
 
 [예시 전체 소스 코드 보기](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
 
-<<<<<<< HEAD
-[예시 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
-=======
-[Download the full example (2KB zipped)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/279839cb9891bd41802ebebc5365e9dec08eeb9f.zip)
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+[예시 전체 다운로드 (2KB로 압축됨)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/279839cb9891bd41802ebebc5365e9dec08eeb9f.zip)
 
 >주의
 >
