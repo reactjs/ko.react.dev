@@ -190,15 +190,9 @@ class Chosen extends React.Component {
 
 ## 다른 뷰 라이브러리와 통합하기 {#integrating-with-other-view-libraries}
 
-<<<<<<< HEAD
-[`ReactDOM.render()`](/docs/react-dom.html#render)의 유연성 덕분에 다른 애플리케이션에 React를 포함할 수 있습니다.
+[`createRoot()`](/docs/react-dom-client.html#createRoot)의 유연성 덕분에 다른 애플리케이션에 React를 포함할 수 있습니다.
 
-React는 일반적으로 시작 시에 단일 루트 React 컴포넌트를 DOM에 로드하는 데 사용되지만 `ReactDOM.render()`는 앱처럼 크거나 버튼처럼 작은 UI의 독립적인 부분에 대해 여러 번 호출 할 수 있습니다.
-=======
-React can be embedded into other applications thanks to the flexibility of [`createRoot()`](/docs/react-dom-client.html#createRoot).
-
-Although React is commonly used at startup to load a single root React component into the DOM, `createRoot()` can also be called multiple times for independent parts of the UI which can be as small as a button, or as large as an app.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
+React는 일반적으로 시작 시에 단일 루트 React 컴포넌트를 DOM에 로드하는 데 사용되지만 `createRoot()`는 앱처럼 크거나 버튼처럼 작은 UI의 독립적인 부분에 대해 여러 번 호출 할 수 있습니다.
 
 실제로 Facebook에서 React를 사용되는 방식입니다. 이렇게 하면 React에서 애플리케이션을 한 부분씩 작성할 수 있으며 이를 기존의 서버에서 생성한 템플릿 및 다른 클라이언트 사이드 코드와 결합을 할 수 있습니다.
 
