@@ -80,15 +80,7 @@ Webpack이 이 구문을 만나게 되면 앱의 코드를 분할합니다. Crea
 
 ## `React.lazy` {#reactlazy}
 
-<<<<<<< HEAD
-> 주의
->
-> `React.lazy`와 Suspense는 아직 서버 사이드 렌더링을 할 수 없습니다. 서버에서 렌더링 된 앱에서 코드 분할을 하기 원한다면 [Loadable Components](https://github.com/gregberge/loadable-components)를 추천합니다. 이는 [서버 사이드 렌더링과 번들 스플리팅에 대한 좋은 가이드](https://loadable-components.com/docs/server-side-rendering/)입니다.
-
 `React.lazy` 함수를 사용하면 동적 import를 사용해서 컴포넌트를 렌더링 할 수 있습니다.
-=======
-The `React.lazy` function lets you render a dynamic import as a regular component.
->>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 
 **Before**
 
