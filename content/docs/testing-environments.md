@@ -47,7 +47,11 @@ Node.js에서 Jest같은 러너는 [모의 모듈을 지원합니다](https://je
 
 ### 타이머 모의하기 {#mocking-timers}
 
+<<<<<<< HEAD
 컴포넌트는 `setTimeout`, `setInterval`, `Data.now`와 같은 시간을 기반으로한 함수를 사용할 수 있습니다. 테스트 환경에서, 이러한 함수들을 수동으로 발전할 수 있는 대체품으로 모의하는 것이 유용할 수 있습니다. 이것은 테스트가 빨리 진행되도록 하는 데 좋다! 타이머에 의존하는 테스트는 여전히 순서대로 해결되지만 더 빨리 해결됩니다 [<small>(예시)</small>](https://github.com/reactjs/ko.reactjs.org/blob/master/docs/testing-recipes.html#timers). [Jest](https://jestjs.io/docs/en/timer-mocks), [sinon](https://sinonjs.org/releases/v7.3.2/fake-timers/), [lolex](https://github.com/sinonjs/lolex)를 포함한 대부분의 프레임워크는 테스트에서 타이머를 모의할 수 있게 해줍니다.
+=======
+Components might be using time-based functions like `setTimeout`, `setInterval`, or `Date.now`. In testing environments, it can be helpful to mock these functions out with replacements that let you manually "advance" time. This is great for making sure your tests run fast! Tests that are dependent on timers would still resolve in order, but quicker [<small>(example)</small>](/docs/testing-recipes.html#timers). Most frameworks, including [Jest](https://jestjs.io/docs/en/timer-mocks), [sinon](https://sinonjs.org/releases/latest/fake-timers) and [lolex](https://github.com/sinonjs/lolex), let you mock timers in your tests.
+>>>>>>> 42561f013aa0f6008cd1c5b811d8bacfc66a0779
 
 가끔, 모의 타이머를 원하지 않는 경우가 있을 수 있기도 합니다. 예를 들어, 애니메이션을 테스트하거나, 또는 (API 속도 제한 장치와 같은) 타이밍에 민감한 종단점과의 상호작용을 하는 경우가 있습니다. 타이머 모의가 있는 라이브러리는 테스트/묶음별로 활성화 및 비활성화할 수 있으므로 이러한 테스트 실행 방법을 명시적으로 선택할 수 있습니다.
 

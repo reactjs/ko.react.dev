@@ -1225,7 +1225,7 @@ const initialTasks = [
 ```
 
 ```js AddTask.js
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { useTasksDispatch } from './TasksContext.js';
 
 export default function AddTask({ onAddTask }) {
@@ -1254,7 +1254,7 @@ let nextId = 3;
 ```
 
 ```js TaskList.js active
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { useTasks, useTasksDispatch } from './TasksContext.js';
 
 export default function TaskList() {
