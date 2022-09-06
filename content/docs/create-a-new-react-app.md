@@ -51,7 +51,7 @@ npm start
 >
 >첫 번째 줄의 'npx'는 실수가 아니며 [npm 5.2+ 버전의 패키지 실행 도구입니다](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
 
-Create React App 은 백 앤드 로직이나 데이터베이스를 제어할 수 없습니다. Create React App 은 프런트 앤드 빌드 파이프라인만 생성하기 때문에 백 앤드를 원하는 대로 사용할 수 있습니다. Create React App는 Babel이나 webpack같은 build 도구를 사용하나, 설정 없이도 동작합니다.
+Create React App 은 백 앤드 로직이나 데이터베이스를 제어할 수 없습니다. Create React App 은 프런트 앤드 빌드 파이프라인만 생성하기 때문에 원하는 어떤 백엔드와도 함께 사용할 수 있습니다. Create React App는 Babel이나 webpack같은 build 도구를 사용하나, 설정 없이도 동작합니다.
 
 프로덕션을 배포할 준비가 되었을 때, npm run build 를 실행하면 build 폴더 안에 제작한 앱의 최적화된 Build를 생성합니다. [README](https://github.com/facebookincubator/create-react-app#create-react-app-) 나 [사용자 가이드](https://facebook.github.io/create-react-app/)에서 더 자세한 사항을 볼 수 있습니다.
 

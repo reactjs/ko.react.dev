@@ -8,7 +8,7 @@
 
 1. Git
 1. Node: 12.0.0 이상으로 시작하는 모든 12.x 버전
-1. Yarn: [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/) 참고
+1. Yarn v1: [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/) 참고
 1. 포크한 개인 저장소
 1. 로컬에 클론(Clone) 한 [reactjs.org repo](https://github.com/reactjs/reactjs.org) 개인 저장소
 

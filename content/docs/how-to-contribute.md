@@ -103,7 +103,7 @@ Public API를 변경하거나 구현을 간단하게 변경하려 할 때 [이�
 
 ### 기여 선행 조건 {#contribution-prerequisites}
 
-* [Node](https://nodejs.org) v8.0.0+과 [Yarn](https://yarnpkg.com/en/) v1.2.0+가 설치되어 있어야 합니다.
+* [Node](https://nodejs.org) LTS와 [Yarn](https://yarnpkg.com/en/) v1.2.0+가 설치되어 있어야 합니다.
 * [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html)가 설치되어 있어야 합니다.
 * `gcc`가 설치되어 있어야 하는 데 필요하다면 컴파일러를 설치하는 게 편합니다. 일부 의존성은 컴파일 과정이 필요할 수 있습니다. OS X에서는 Xcode 커맨드 라인 도구가 도움이 됩니다. Ubuntu에서는 `apt-get install build-essential` 명령으로 필요한 패키지를 설치할 수 있습니다. 다른 Linux 배포판에서도 비슷한 명령으로 작업할 수 있습니다. Windows에서는 몇 가지 추가 단계가 필요할 수 있으므로 자세한 내용은 [`node-gyp` installation instructions](https://github.com/nodejs/node-gyp#installation)를 참조해 주세요.
 * Git 사용에 익숙해야 합니다.

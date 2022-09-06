@@ -190,9 +190,9 @@ class Chosen extends React.Component {
 
 ## 다른 뷰 라이브러리와 통합하기 {#integrating-with-other-view-libraries}
 
-[`ReactDOM.render()`](/docs/react-dom.html#render)의 유연성 덕분에 다른 애플리케이션에 React를 포함할 수 있습니다.
+[`createRoot()`](/docs/react-dom-client.html#createRoot)의 유연성 덕분에 다른 애플리케이션에 React를 포함할 수 있습니다.
 
-React는 일반적으로 시작 시에 단일 루트 React 컴포넌트를 DOM에 로드하는 데 사용되지만 `ReactDOM.render()`는 앱처럼 크거나 버튼처럼 작은 UI의 독립적인 부분에 대해 여러 번 호출 할 수 있습니다.
+React는 일반적으로 시작 시에 단일 루트 React 컴포넌트를 DOM에 로드하는 데 사용되지만 `createRoot()`는 앱처럼 크거나 버튼처럼 작은 UI의 독립적인 부분에 대해 여러 번 호출 할 수 있습니다.
 
 실제로 Facebook에서 React를 사용되는 방식입니다. 이렇게 하면 React에서 애플리케이션을 한 부분씩 작성할 수 있으며 이를 기존의 서버에서 생성한 템플릿 및 다른 클라이언트 사이드 코드와 결합을 할 수 있습니다.
 
@@ -216,15 +216,9 @@ function Button() {
   return <button id="btn">Say Hello</button>;
 }
 
-ReactDOM.render(
-  <Button />,
-  document.getElementById('container'),
-  function() {
-    $('#btn').click(function() {
-      alert('Hello!');
-    });
-  }
-);
+$('#btn').click(function() {
+  alert('Hello!');
+});
 ```
 
 여기에서 더 많은 로직을 컴포넌트로 옮기고 일반적인 React practices를 채택할 수 있습니다. 예를 들어 컴포넌트에서 동일한 컴포넌트를 여러 번 렌더링할 수 있으므로 ID에 의존하지 않는 것이 좋습니다. 대신 [React 이벤트 시스템](/docs/handling-events.html)을 사용하고 React `<button>` 요소에 클릭 핸들러를 직접 등록하면 됩니다.
@@ -240,36 +234,34 @@ function HelloButton() {
   }
   return <Button onClick={handleClick} />;
 }
-
-ReactDOM.render(
-  <HelloButton />,
-  document.getElementById('container')
-);
 ```
 
 [**CodePen에서 사용해보세요**](https://codepen.io/gaearon/pen/RVKbvW?editors=1010)
 
-이런 격리된 컴포넌트를 원하는 만큼 가질 수 있으며 `ReactDOM.render()`를 사용해서 다른 DOM 컨테이너로 렌더링할 수 있습니다. 점점 앱의 더 많은 부분을 React로 변환하면 더 큰 컴포넌트로 결합할 수 있고 `ReactDOM.render()` 호출을 계층 구조 상위로 옮길 수 있습니다.
+이런 격리된 컴포넌트를 원하는 만큼 가질 수 있으며 `ReactDOM.createRoot()`를 사용해서 다른 DOM 컨테이너로 렌더링할 수 있습니다. 점점 앱의 더 많은 부분을 React로 변환하면 더 큰 컴포넌트로 결합할 수 있고 `ReactDOM.createRoot()` 호출을 계층 구조 상위로 옮길 수 있습니다.
 
 ### Backbone 뷰 안에 React 포함하기 {#embedding-react-in-a-backbone-view}
 
 [Backbone](https://backbonejs.org/) 뷰는 일반적으로 HTML 문자열 또는 문자열로 제공되는 템플릿 함수를 사용하여 DOM 엘리먼트를 위한 콘텐츠를 생성합니다. 이 프로세스 또한 React 컴포넌트 렌더링으로 대체할 수 있습니다.
 
-아래에서 `ParagraphView`라는 Backbone 뷰를 생성합니다. Backbone (`this.el`)이 제공하는 DOM 요소에 React `<Paragraph>` 컴포넌트를 렌더링하기 위해 Backbone의 `render()` 함수를 오버라이드합니다. 여기서도 [`ReactDOM.render()`](/docs/react-dom.html#render) 사용하고 있습니다.
+아래에서 `ParagraphView`라는 Backbone 뷰를 생성합니다. Backbone (`this.el`)이 제공하는 DOM 요소에 React `<Paragraph>` 컴포넌트를 렌더링하기 위해 Backbone의 `render()` 함수를 오버라이드합니다. 여기서도 [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot) 사용하고 있습니다.
 
-```js{1,5,8,12}
+```js{7,11,15}
 function Paragraph(props) {
   return <p>{props.text}</p>;
 }
 
 const ParagraphView = Backbone.View.extend({
+  initialize(options) {
+    this.reactRoot = ReactDOM.createRoot(this.el);
+  },
   render() {
     const text = this.model.get('text');
-    ReactDOM.render(<Paragraph text={text} />, this.el);
+    this.reactRoot.render(<Paragraph text={text} />);
     return this;
   },
   remove() {
-    ReactDOM.unmountComponentAtNode(this.el);
+    this.reactRoot.unmount();
     Backbone.View.prototype.remove.call(this);
   }
 });
@@ -277,7 +269,7 @@ const ParagraphView = Backbone.View.extend({
 
 [**CodePen에서 사용해보세요**](https://codepen.io/gaearon/pen/gWgOYL?editors=0010)
 
-`remove` 메서드 안에서 `ReactDOM.unmountComponentAtNode()` 호출하여 분리가 됐을 때 React가 컴포넌트 트리와 관련된 이벤트 핸들러와 다른 리소스를 등록 해지하는 것이 중요합니다.
+`remove` 메서드 안에서 `root.unmount()` 호출하여 분리가 됐을 때 React가 컴포넌트 트리와 관련된 이벤트 핸들러와 다른 리소스를 등록 해지하는 것이 중요합니다.
 
 React 트리안에서 컴포넌트가 사라질 때 자동으로 클린업이 실행되지만, 전체 트리를 수동으로 제거하기 때문에 이 메서드를 반드시 호출해야 합니다.
 
@@ -430,10 +422,8 @@ function Example(props) {
 }
 
 const model = new Backbone.Model({ firstName: 'Frodo' });
-ReactDOM.render(
-  <Example model={model} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Example model={model} />);
 ```
 
 [**CodePen에서 사용해보세요**](https://codepen.io/gaearon/pen/PmWwwa?editors=0010)
