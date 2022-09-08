@@ -20,7 +20,7 @@ React 컴포넌트는 다른 컴포넌트와 통신할 때 **props**를 사용�
 
 ## 밀접한 props {/*familiar-props*/}
 
-Props는 JSX태그를 사용해서 전달하는 정보입니다.예를 들어, `className`, `src`, `alt`, `width`, 그리고 `height`는 `<img>`태그에 정보를 전달하는 props들입니다:
+Props는 JSX태그를 사용해서 전달하는 정보입니다.예를 들어, `className`, `src`, `alt`, `width`, 그리고 `height`는 `<img>`태그에 정보를 전달하는 props들입니다.
 
 
 <Sandpack>
@@ -51,11 +51,11 @@ body { min-height: 120px; }
 ```
 </Sandpack>
 
-`<img>`태그에 전달하는 props는 미리 정의되어 있습니다(ReactDOM은 [HTML 표준]을 따른다(https://www.w3.org/TR/html52/semantics-embedded-content.html#the-img-element).) 하지만 `<Avatar>` 태그와 같이 다시 원하는대로 조립함으로써,당신은 *당신만의* 컴포넌트에 어떠한 props든 전달해줄 수 있습니다.여기 예시를 보며 알아보자!
+`<img>`태그에 전달하는 props는 미리 정의되어 있습니다.(ReactDOM은 [HTML 표준]을 따른다(https://www.w3.org/TR/html52/semantics-embedded-content.html#the-img-element).) 하지만 `<Avatar>` 태그와 같이 다시 원하는대로 조립함으로써,당신은 *당신만의* 컴포넌트에 어떠한 props든 전달해줄 수 있습니다.여기 예시를 보며 알아보자!
 
 ## 컴포넌트 간에 props전달하기  {/*컴포넌트 간에 props전달하기*/}
 
-주어진 예시에서, `Profile` 컴포넌트는 자식 컴포넌트인  `Avatar`컴포넌트에 어떠한 props도 전달하고 있지 않습니다:
+주어진 예시에서, `Profile` 컴포넌트는 자식 컴포넌트인  `Avatar`컴포넌트에 어떠한 props도 전달하고 있지 않습니다.
 
 ```js
 export default function Profile() {
@@ -69,7 +69,7 @@ export default function Profile() {
 
 ### 1단계: 자식 컴포넌트에게 props전달하기 {/*1단계-자식 컴포넌트에게 props전달하기*/}
 
-먼저, `Avatar`컴포넌트로 props를 전달하자.예를 들어서, 두가지 props를 전달합니다:`person`(객체),그리고 `size`(숫자):
+먼저, `Avatar`컴포넌트로 props를 전달하자.예를 들어서, 두가지 props를 전달합니다.`person`(객체),그리고 `size`(숫자):
 
 ```js
 export default function Profile() {
@@ -82,7 +82,7 @@ export default function Profile() {
 }
 ```
 
->만약 `person=`이 중괄호안에 있어서 당신을 햇갈리게 한다면, JSX 중괄호 안에 있는 객체임을 기억해라 [그들은 그저 객체입니다](/learn/javascript-in-jsx-with-curly-braces#using-double-curlies-css-and-other-objects-in-jsx).
+>만약 `person=`이 중괄호안에 있어서 당신을 햇갈리게 한다면, JSX 중괄호 안에 있는 객체임을 기억하세요. [그들은 그저 객체입니다](/learn/javascript-in-jsx-with-curly-braces#using-double-curlies-css-and-other-objects-in-jsx).
 
 이제 당신은 `Avatar` 컴포넌트 안에 있는 props를 읽어올 수 있습니다.
 
@@ -99,7 +99,7 @@ function Avatar({ person, size }) {
 `Avatar`에 약간의 로직을 더할 때, `person`,`size` props는 랜더링 할 때 사용합니다.
 
 
-이제 `Avatar` 에서 서로 다른 props들과 다른 방식들로 렌더링 하는 것을 구성할 수 있습니다. 당신이 보기에 아슬아슬한 부분을 고쳐라!
+이제 `Avatar` 에서 서로 다른 props들과 다른 방식들로 렌더링 하는 것을 구성할 수 있습니다. 당신이 보기에 아슬아슬한 부분을 고치세요!
 <Sandpack>
 
 ```js App.js
@@ -166,7 +166,7 @@ body { min-height: 120px; }
 
 props는 부모 컴포넌트와 자식 컴포넌트가 독립적으로 만드는 역할을 합니다. 예를 들어서, 당신은 `Avartar`에서 별도로 바꾸지 않더라도 `Profile`안에서`person`이나 `size`props를 바꿀 수 있습니다.비슷한 예로는, `Profile`안에서 별다른 조치를 취하지 않더라도, `Avartar`에서 사용하는 props들을 바꿀 수 있습니다. 
 
-당신은 props를 "knobs(노브,문을 여닫기 위한 둥근 손잡이)" 생각하고 있을 것입니다. 함수 안에서 인자와 같은 역할을 맡지만 사실은, 오직 한 컴포넌트 안에서만 그 역할을 맡는다! React 컴포넌트 함수들은 `props`라는 객체의 한 개의 인자를 가지고 있습니다:
+당신은 props를 "knobs(노브,문을 여닫기 위한 둥근 손잡이)" 생각하고 있을 것입니다. 함수 안에서 인자와 같은 역할을 맡지만 사실은, 오직 한 컴포넌트 안에서만 그 역할을 맡는다! React 컴포넌트 함수들은 `props`라는 객체의 한 개의 인자를 가지고 있습니다.
 
 ```js
 function Avatar(props) {
@@ -176,11 +176,11 @@ function Avatar(props) {
 }
 ```
 
-보통 `props`전체가 필요하지는 않고, 개별적인 props들을 분해 할당해서 사용합니다
+보통 `props`전체가 필요하지는 않고, 개별적인 props들을 분해 할당해서 사용합니다.
 
 <Gotcha>
 
-props를 선언할 때 **`{`, `}` 쌍과 안에 있는 `(`,`)` 쌍을** 잊지 마라:
+props를 선언할 때 **`{`, `}` 쌍과 안에 있는 `(`,`)` 쌍을** 잊지 마세요.
 
 ```js
 function Avatar({ person, size }) {
@@ -188,7 +188,7 @@ function Avatar({ person, size }) {
 }
 ```
 
-이 구문은 ["destructuring"](https://developer.mozilla.org/docs/Web/JavaScript/Reference/OperatorsDestructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter)이라고 불리고,함수 파라미터에서 프로퍼티를 읽어오는 것과 같습니다:
+이 구문은 ["destructuring"](https://developer.mozilla.org/docs/Web/JavaScript/Reference/OperatorsDestructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter)이라고 불리고,함수 파라미터에서 프로퍼티를 읽어오는 것과 같습니다.
 
 ```js
 function Avatar(props) {
@@ -233,7 +233,7 @@ function Profile({ person, size, isSepia, thickBorder }) {
 }
 ```
 
-반복적인 코드를 사용되는 것이 잘못되었다는 것은 아닙니다-더 법칙을 잘 따르는 것일 수 있습니다.하지만 매번 반복된다면 번거롭습니다. 자식 개체들이 가지는 props들 앞에 있는 어떤 컴포넌트들은,`Profile`과 `Avartar` 같이 말입니다. 그들은 그 어떤 props들도 직접적으로 전할 수 없고, "Spread"법칙으로 명확히 나타납니다:  
+반복적인 코드를 사용되는 것이 잘못되었다는 것은 아닙니다-더 법칙을 잘 따르는 것일 수 있습니다.하지만 매번 반복된다면 번거롭습니다. 자식 개체들이 가지는 props들 앞에 있는 어떤 컴포넌트들은,`Profile`과 `Avartar` 같이 말입니다. 그들은 그 어떤 props들도 직접적으로 전할 수 없고, "Spread"법칙으로 명확히 나타납니다.
 
 ```js
 function Profile(props) {
@@ -259,7 +259,7 @@ function Profile(props) {
 </div>
 ```
 
-가끔 같은 방식으로 컴포넌트에 할당될 수 있습니다:
+가끔 같은 방식으로 컴포넌트에 할당될 수 있습니다.
 
 ```js
 <Card>
@@ -267,7 +267,7 @@ function Profile(props) {
 </Card>
 ```
 
-JSX 태그 안에 내용을 할당할 때, 부모 컴포넌트가 불려진 `자식`컴포넌트에 props를 부여합니다. 예를 들어, `Card`컴포넌트 `자식` 컴포넌트인 `<Avatar />`에 props를 할당하고 감싼 div에 랜더링해줍니다: 
+JSX 태그 안에 내용을 할당할 때, 부모 컴포넌트가 불려진 `자식`컴포넌트에 props를 부여합니다. 예를 들어, `Card`컴포넌트 `자식` 컴포넌트인 `<Avatar />`에 props를 할당하고 감싼 div에 랜더링 합니다.
 
 <Sandpack>
 
@@ -343,9 +343,9 @@ export function getImageUrl(person, size = 's') {
 
 </Sandpack>
 
-`Card` 컴포넌트가 어떤 내용을 감싸고 있는지 나태내는 약간의 주석과 함께 `<Card>`안에 `<Avatar>`를 넣는 것으로 대체하십시오. 내부에서 어떻게 랜더링이 진행되는 지 "알" 필요 없습니다. 유연한 패턴들을 다양한 경우와 함께 볼 수 있습니다. 
+`Card` 컴포넌트가 어떤 내용을 감싸고 있는지 나태내는 약간의 주석과 함께 `<Card>`안에 `<Avatar>`를 넣는 것으로 대체하세요. 내부에서 어떻게 랜더링이 진행되는 지 "알" 필요 없습니다. 유연한 패턴들을 다양한 경우와 함께 볼 수 있습니다. 
 
-`자식` 컴포넌트의 prop을 "전체적으로" 부모 컴포넌트에 JSX로 값을 받아서 채워졌다고 생각할 수 있습니다. 눈에 보이는 포장지를 위해 `자식` props를 이합니다: panels, grids,그리고 다른 요소들도요. [Extracting Layout Components](/learn/extracting-layout-components)에서 더 살펴볼 수 있습니다. 
+`자식` 컴포넌트의 prop을 "전체적으로" 부모 컴포넌트에 JSX로 값을 받아서 채워졌다고 생각할 수 있습니다. 눈에 보이는 포장지를 위해 `자식` props를 사용합니다. panels, grids,그리고 다른 요소들도요. [Extracting Layout Components](/learn/extracting-layout-components)에서 더 살펴볼 수 있습니다. 
 
 <Illustration src="/images/docs/illustrations/i_children-prop.png" alt='A puzzle-like Card tile with a slot for "children" pieces like text and Avatar' />
 
@@ -353,7 +353,7 @@ export function getImageUrl(person, size = 's') {
 
  `Clock`컴포넌트는 부모 컴포넌트로 부터 2가지 props들을 받습니다: `color` 그리고 `time` 입니다. (부모 컴포넌트이 코드들은 아직 접하지 않은 [state](/learn/state-a-components-memory)을 사용해서 props들을 보냅니다. )
 
-선택 상자의 색깔들을 바꾸어보려고 시도해보십시오.
+선택 상자의 색깔들을 바꾸어보려고 시도하세요.
 
 <Sandpack>
 
@@ -407,14 +407,14 @@ export default function App() {
 
 그러나,props들은 [불변합니다](https://en.wikipedia.org/wiki/Immutable_object)— 컴퓨터 과학에서는 "불변"이라는 뜻을 가지고 있습니다. 컴포넌트가 props의 변화가 필요할 때,(예를 들어, 유저와의 상호작용 혹은 새로운 데이터에 반응할 때와 같이), 부모 컴포넌트가 _서로 다른 props들을 허용할 때 _"요청"이 필요합니다! 오래된 props는 후순위이지만, 결국 자바스크립트 엔딘은 계산하는데 메모리를 낭비할 수 있습니다. 
 
-**"props를 바꾸려고 시도하지 마십시오."** 유저 데이터가 있는 인풋에서(색깔을 선택하게 할 때 처럼) 응답을 받오올 때, [State: A Component's Memory](/learn/state-a-components-memory)여기에서 볼 수 있는 "set state"가 필요합니다.
+**"props를 바꾸려고 시도하지 마세요."** 유저 데이터가 있는 인풋에서(색깔을 선택하게 할 때 처럼) 응답을 받오올 때, [State: A Component's Memory](/learn/state-a-components-memory)여기에서 볼 수 있는 "set state"가 필요합니다.
 
 <Recap>
 
-* props의 값을 전달해줄 때, HTML문법을 사용할 때 처럼 JSX를 더하십시오.
-* props를 읽을 때, function Avatar({ person, size })`와 같은 구조 분해 할당 문법을 사용하십시오.
+* props의 값을 전달해줄 때, HTML문법을 사용할 때 처럼 JSX를 더하세요.
+* props를 읽을 때, function Avatar({ person, size })`와 같은 구조 분해 할당 문법을 사용하세요.
 * 디폴트 값이 처음부터 없거나 `undefined` props에서 사용된, `size = 100`와 같이 디폴트 값을 특정할 수 있습니다.
-* `<Avatar {...props} />`와 함께 앞에 있는 모든 props들을 볼 수 있지만,남용하지 마십시오.
+* `<Avatar {...props} />`와 함께 앞에 있는 모든 props들을 볼 수 있지만,남용하지 마세요.
 * `<Card><Avatar /></Card>`와 같이 내장된 JSX는 `Card` 컴포넌트의 `자식`prop을 나타냅니다.
 * props는 시간이 정해져 있는 읽기 전용과 같습니다: 모든 새로운 랜더링은 새로운 버전의 props들을 가져옵니다.
 * props들을 바꿀 수 없습니다. 상호작용이 필요하다면, 상태를 세팅하는 것이 필요합니다.
@@ -427,7 +427,7 @@ export default function App() {
 
 ### 컴포넌트 추출하기{/*컴포넌트 추출하기*/}
 
-이 `Gallery` 컴포넌트는 두 가지 프로필에 사용된 마크업과 매우 유사한 마크업을 포함하고 있습니다. `Profile` 컴포넌트에서 중복을 제거하십시오. 어떤 props들을 전달해야할 지 선택해야합니다
+이 `Gallery` 컴포넌트는 두 가지 프로필에 사용된 마크업과 매우 유사한 마크업을 포함하고 있습니다. `Profile` 컴포넌트에서 중복을 제거하십시오. 어떤 props들을 전달해야할 지 선택해야합니다.
 
 <Sandpack>
 
@@ -520,15 +520,15 @@ li { margin: 5px; }
 
 <Hint>
 
-과학자들 중 한명이 되어서 마크업을 추출하는 것을 시작하십시오. 두 번째 예시와 맞지 않는 부분을 찾고, props에 맞게 하십시오. 
+과학자들 중 한명이 되어서 마크업을 추출하는 것을 시작하십시오. 두 번째 예시와 맞지 않는 부분을 찾고, props에 맞게 하세요.
 
 </Hint>
 
 <Solution>
 
-이 해결책으로, `Profile` 컴포넌트는 여러개의 props들을 가질 수 있습니다:`imageId` (문자열), `name` (문자열), `profession` (문자열), `awards` (배열의 문자열), `discovery` (문자열), and `imageSize` (숫자) 
+이 해결책으로, `Profile` 컴포넌트는 여러개의 props들을 가질 수 있습니다.`imageId` (문자열), `name` (문자열), `profession` (문자열), `awards` (배열의 문자열), `discovery` (문자열), and `imageSize` (숫자) 입니다.
 
-`imageSize` prop은 컴포넌트에서 전달받지 못하는 지에 대한 이유로 비롯된 디폴트 값을 가지고 있다는 것을 기억하십시오.
+`imageSize` prop은 컴포넌트에서 전달받지 못하는 지에 대한 이유로 비롯된 디폴트 값을 가지고 있다는 것을 기억하세요.
 
 <Sandpack>
 
@@ -626,11 +626,11 @@ li { margin: 5px; }
 
   </Sandpack>
 
-`award`가 배열안에 `awardCount`prop을 가지고 있더라도 분리하지 못한다는 것을 기억하십시오. `awards.length`를 상의 갯수를 셀 때 사용할 수 있습니다. props들은 배열안에서도 어떤 값을 가질 수 있다는 것을 기억하십시오!
+`award`가 배열안에 `awardCount`prop을 가지고 있더라도 분리하지 못한다는 것을 기억하세요. `awards.length`를 상의 갯수를 셀 때 사용할 수 있습니다. props들은 배열안에서도 어떤 값을 가질 수 있다는 것을 기억하세요!
 
 다른 해결책으로는, 이 페이지의 더 앞에 있는 예제와 유사하지만, person안에 있는 단일 객체에 있는 정보들을 그룹화하고, 객체에 prop을 전달하는 것이 있습니다.
 
-  <Sandpack>
+<Sandpack>
 
 ```js App.js
 import { getImageUrl } from './utils.js';
@@ -844,7 +844,7 @@ export function getImageUrl(person, size) {
 
 </Sandpack>
 
-당신이 더 선명해 보이는 이미지를 보여주고 싶다면 [`window.devicePixelRatio`](https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio)로 살펴보십시오.
+당신이 더 선명해 보이는 이미지를 보여주고 싶다면 [`window.devicePixelRatio`](https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio)로 살펴보세요.
 
 <Sandpack>
 
@@ -921,7 +921,7 @@ props는 이미지들을 요청하고 재조정 없이 `<Avatar>` 컴포넌트�
 
 ### `자식` prop을 JSX 전달하기 {/*`자식` prop을 JSX 전달하기 */}
 
-`Card` 컴포넌트에 있는 마크업 에서 추출하고, `children` prop을 JSX의 다른 값을 전달하기 위헤 사용하십시오.
+`Card` 컴포넌트에 있는 마크업 에서 추출하고, `children` prop을 JSX의 다른 값을 전달하기 위헤 사용하세요.
 
 <Sandpack>
 
