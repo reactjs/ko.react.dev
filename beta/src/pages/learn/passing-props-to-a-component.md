@@ -20,8 +20,7 @@ React 컴포넌트는 다른 컴포넌트와 통신할 때 **props**를 사용�
 
 ## 밀접한 props {/*familiar-props*/}
 
-Props는 JSX태그를 사용해서 전달하는 정보입니다.예를 들어, `className`, `src`, `alt`, `width`, 그리고 `height`는 
-`<img>`태그에 정보를 전달하는 props들입니다:
+Props는 JSX태그를 사용해서 전달하는 정보입니다.예를 들어, `className`, `src`, `alt`, `width`, 그리고 `height`는 `<img>`태그에 정보를 전달하는 props들입니다:
 
 
 <Sandpack>
