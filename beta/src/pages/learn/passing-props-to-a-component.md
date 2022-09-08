@@ -93,10 +93,10 @@ export default function Profile() {
 ```js
 function Avatar({ person, size }) {
   // person,size 는 이곳에 들어갈 수 있습니다
-  }
+}
 ```
 
-`Avatar`에 약간의 로직을 더할 때, `person`,`size` props는 랜더링 할 때 사용합니다.
+`Avatar`에 약간의 로직을 더할 때, `person` 과 `size` props는 랜더링 할 때 사용합니다.
 
 
 이제 `Avatar` 에서 서로 다른 props들과 다른 방식들로 렌더링 하는 것을 구성할 수 있습니다. 당신이 보기에 아슬아슬한 부분을 고치세요!
@@ -166,7 +166,7 @@ body { min-height: 120px; }
 
 props는 부모 컴포넌트와 자식 컴포넌트가 독립적으로 만드는 역할을 합니다. 예를 들어서, 당신은 `Avartar`에서 별도로 바꾸지 않더라도 `Profile`안에서`person`이나 `size`props를 바꿀 수 있습니다.비슷한 예로는, `Profile`안에서 별다른 조치를 취하지 않더라도, `Avartar`에서 사용하는 props들을 바꿀 수 있습니다. 
 
-당신은 props를 "knobs(노브,문을 여닫기 위한 둥근 손잡이)" 생각하고 있을 것입니다. 함수 안에서 인자와 같은 역할을 맡지만 사실은, 오직 한 컴포넌트 안에서만 그 역할을 맡는다! React 컴포넌트 함수들은 `props`라는 객체의 한 개의 인자를 가지고 있습니다.
+당신은 props를 "knobs(노브,문을 여닫기 위한 둥근 손잡이)" 생각하고 있을 것입니다. 함수 안에서 인자와 같은 역할을 맡지만 사실은, 오직 한 컴포넌트 안에서만 그 역할을 맡습니다! React 컴포넌트 함수들은 `props`라는 객체의 한 개의 인자를 가지고 있습니다.
 
 ```js
 function Avatar(props) {
@@ -251,7 +251,7 @@ function Profile(props) {
 
 ## JXS에서 자식에게 값을 전달하기{/*JXS에서 자식에게 값을 전달하기*/}
 
-브라우저 태그안에 할당되는 것은 흔한 일입니다:
+브라우저 태그안에 할당되는 것은 흔한 일입니다.
 
 ```js
 <div>
@@ -267,7 +267,7 @@ function Profile(props) {
 </Card>
 ```
 
-JSX 태그 안에 내용을 할당할 때, 부모 컴포넌트가 불려진 `자식`컴포넌트에 props를 부여합니다. 예를 들어, `Card`컴포넌트 `자식` 컴포넌트인 `<Avatar />`에 props를 할당하고 감싼 div에 랜더링 합니다.
+JSX 태그 안에 내용을 할당할 때, 부모 컴포넌트가 불려진 `자식`컴포넌트에 props를 부여합니다. 예를 들어, `Card`컴포넌트 `자식` 컴포넌트인 `<Avatar />`에 props를 할당하고 감싼 div에 렌더링 합니다.
 
 <Sandpack>
 
@@ -345,7 +345,7 @@ export function getImageUrl(person, size = 's') {
 
 `Card` 컴포넌트가 어떤 내용을 감싸고 있는지 나태내는 약간의 주석과 함께 `<Card>`안에 `<Avatar>`를 넣는 것으로 대체하세요. 내부에서 어떻게 랜더링이 진행되는 지 "알" 필요 없습니다. 유연한 패턴들을 다양한 경우와 함께 볼 수 있습니다. 
 
-`자식` 컴포넌트의 prop을 "전체적으로" 부모 컴포넌트에 JSX로 값을 받아서 채워졌다고 생각할 수 있습니다. 눈에 보이는 포장지를 위해 `자식` props를 사용합니다. panels, grids,그리고 다른 요소들도요. [Extracting Layout Components](/learn/extracting-layout-components)에서 더 살펴볼 수 있습니다. 
+`자식` 컴포넌트의 prop을 "전체적으로" 부모 컴포넌트에 JSX로 값을 받아서 채워졌다고 생각할 수 있습니다. 눈에 보이는 포장지를 위해 `자식` props를 사용합니다. panels, grids,그리고 다른 요소들도 마찬가지입니다. [Extracting Layout Components](/learn/extracting-layout-components)에서 더 살펴볼 수 있습니다. 
 
 <Illustration src="/images/docs/illustrations/i_children-prop.png" alt='A puzzle-like Card tile with a slot for "children" pieces like text and Avatar' />
 
@@ -624,7 +624,7 @@ ul { padding: 0px 10px 0px 20px; }
 li { margin: 5px; }
 ```
 
-  </Sandpack>
+</Sandpack>
 
 `award`가 배열안에 `awardCount`prop을 가지고 있더라도 분리하지 못한다는 것을 기억하세요. `awards.length`를 상의 갯수를 셀 때 사용할 수 있습니다. props들은 배열안에서도 어떤 값을 가질 수 있다는 것을 기억하세요!
 
