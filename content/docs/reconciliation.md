@@ -45,7 +45,11 @@ React에 이 알고리즘을 적용한다면, 1000개의 엘리먼트를 그리�
 
 >주의
 >
+<<<<<<< HEAD
 >아래 메서드들은 레거시이며 새로 작성하는 코드에서는 [피해야 합니다.](/blog/2018/03/27/update-on-async-rendering.html)
+=======
+>This method is considered legacy and you should [avoid it](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>>>>>>> c7d858947f832d1ba4e78caebc391fd964ff6de6
 >
 >- `UNSAFE_componentWillMount()`
 
