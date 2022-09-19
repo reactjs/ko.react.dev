@@ -103,7 +103,11 @@ Render a React element into the DOM in the supplied `container` and return a [re
 >
 > `render()`는 현재 `ReactComponent` 루트(root) 인스턴스에 대한 참조를 반환합니다. 그러나 이 반환 값을 사용하는 것은 레거시이며 React 신규 버전이 컴포넌트를 비동기로 렌더링하는 경우가 있기 때문에 피해야 합니다. `ReactComponent` 인스턴스의 참조가 필요하다면 권장하는 해결책은 루트 엘리먼트에 [콜백 ref](/docs/refs-and-the-dom.html#callback-refs)를 붙이는 것입니다.
 >
+<<<<<<< HEAD
 > `render()`를 사용해 서버에서 렌더링한 컨테이너에 이벤트를 보충하는 것은 권장되지 않으며 React 17 버전에서 삭제될 예정입니다. [`hydrateRoot()`](#hydrateroot)를 사용해주세요.
+=======
+> Using `render()` to hydrate a server-rendered container is deprecated. Use [`hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) instead.
+>>>>>>> 841d3d1b75491ce153a53d1887ab020458090bbd
 
 * * *
 
