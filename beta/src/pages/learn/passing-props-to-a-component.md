@@ -88,7 +88,7 @@ export default function Profile() {
 
 ### 2단계: 자식 컴포넌트 안에 있는 props를 읽어오기 {/*2단계- 자식 컴포넌트 안에 있는 props를 읽어오기*/}
 
-`function Avatar` 바로 뒤에 오고, `({` and`})` 안에 쉼표로 분리된, `person, size` 이름을 나열함으로써 이 props 들을 읽어올 수 있습니다.
+`function Avatar` 바로 뒤에 오고, `({` and`})` 안에 쉼표로 분리된, `person, size` 이름을 나열함으로써 이 props를 읽어올 수 있습니다. props는 `Avatar` 내부에서, 변수와 함께 사용합니다.
 
 ```js
 function Avatar({ person, size }) {
@@ -96,10 +96,10 @@ function Avatar({ person, size }) {
 }
 ```
 
-`Avatar`에 약간의 로직을 더할 때, `person` 과 `size` props는 랜더링 할 때 사용합니다.
+`Avatar`에 약간의 로직을 더할 때, `person` 과 `size` props는 렌더링할 때 사용합니다.
 
+이제 `Avatar`에서 서로 다른 props와 다른 방식들로 렌더링하는 것을 구성할 수 있습니다. 보기에 아슬아슬한 부분을 고치세요!
 
-이제 `Avatar` 에서 서로 다른 props들과 다른 방식들로 렌더링 하는 것을 구성할 수 있습니다. 당신이 보기에 아슬아슬한 부분을 고치세요!
 <Sandpack>
 
 ```js App.js
