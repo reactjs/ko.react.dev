@@ -48,6 +48,7 @@ export default function Profile() {
 body { min-height: 120px; }
 .avatar { margin: 20px; border-radius: 50%; }
 ```
+
 </Sandpack>
 
 `<img>`태그에 전달하는 props는 미리 정의되어 있습니다. (ReactDOM은 [HTML 표준]을 따른다(https://www.w3.org/TR/html52/semantics-embedded-content.html#the-img-element)). 하지만 `<Avatar>` 태그와 같이 다시 원하는 대로 조립함으로써, 당신은 *당신만의* 컴포넌트에 어떠한 props든 전달해줄 수 있습니다. 여기 예시를 보며 알아보자!
@@ -64,11 +65,11 @@ export default function Profile() {
 }
 ```
 
-`Avatar` 컴포넌트에 props를 줄려면 2가지 단계를 거쳐야합니다.
+`Avatar` 컴포넌트에 props를 주려면 2가지 단계를 거쳐야합니다.
 
-### 1단계: 자식 컴포넌트에게 props전달하기 {/*1단계-자식 컴포넌트에게 props전달하기*/}
+### 1단계: 자식 컴포넌트에 props 전달하기 {/*1단계-자식 컴포넌트에 props 전달하기*/}
 
-먼저, `Avatar`컴포넌트로 props를 전달하자.예를 들어서, 두가지 props를 전달합니다.`person`(객체),그리고 `size`(숫자):
+먼저, `Avatar` 컴포넌트로 props를 전달해야 합니다. 예를 들어서, 두 가지 props를 전달합니다.` person`(객체), 그리고 `size`(숫자) 입니다.
 
 ```js
 export default function Profile() {
@@ -81,13 +82,13 @@ export default function Profile() {
 }
 ```
 
->만약 `person=`이 중괄호안에 있어서 당신을 햇갈리게 한다면, JSX 중괄호 안에 있는 객체임을 기억하세요. [그들은 그저 객체입니다](/learn/javascript-in-jsx-with-curly-braces#using-double-curlies-css-and-other-objects-in-jsx).
+>만약 `person=`이 중괄호 안에 있어서 당신을 헷갈리게 한다면, JSX 중괄호 안에 있는 객체임을 기억하세요. [그들은 그저 객체입니다](/learn/javascript-in-jsx-with-curly-braces#using-double-curlies-css-and-other-objects-in-jsx).
 
 이제 당신은 `Avatar` 컴포넌트 안에 있는 props를 읽어올 수 있습니다.
 
 ### 2단계: 자식 컴포넌트 안에 있는 props를 읽어오기 {/*2단계- 자식 컴포넌트 안에 있는 props를 읽어오기*/}
 
-`function Avatar`바로 뒤에 오고, `({` and `})` 안에 쉼표로 분리된,`person, size`이름을 나열함으로써 이 props들을 읽어올 수 있습니다.
+`function Avatar` 바로 뒤에 오고, `({` and`})` 안에 쉼표로 분리된, `person, size` 이름을 나열함으로써 이 props 들을 읽어올 수 있습니다.
 
 ```js
 function Avatar({ person, size }) {
