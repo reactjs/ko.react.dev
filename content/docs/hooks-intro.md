@@ -78,7 +78,7 @@ Hook을 사용하면 컴포넌트로부터 상태 관련 로직을 추상화할 
 
 ### Class은 사람과 기계를 혼동시킵니다. {#classes-confuse-both-people-and-machines}
 
-React 에서의 Class 사용을 위해서는 JavaScript의 `this` 키워드가 어떻게 작동하는지 알아야만 합니다.  JavaScript의 `this`키워드는 대부분의 다른 언어에서와는 다르게 작동함으로 사용자에게 큰 혼란을 주었으며, 코드의 재사용성과 구성을 매우 어렵게 만들고는 했습니다. 또한 class의 사용을 위해 이벤트 핸들러가 등록되는 방법을 정확히 파악해야 했으며, 이는 불안정한 [문법 제안들](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/)의 도움이 없을 시엔, 코드를 매우 장황하게 만들었습니다. 사용자들은 props, state, 그리고 top-down 데이터 흐름을 완벽하게 하고도, Class의 이해에는 어려움을 겪고는 했습니다. React 내의 함수와 Class 컴포넌트의 구별, 각 요소의 사용 타이밍 등은 숙련된 React 개발자 사이에서도 의견이 일치하지 않습니다.
+React 에서의 Class 사용을 위해서는 JavaScript의 `this` 키워드가 어떻게 작동하는지 알아야만 합니다.  JavaScript의 `this`키워드는 대부분의 다른 언어에서와는 다르게 작동함으로 사용자에게 큰 혼란을 주었으며, 코드의 재사용성과 구성을 매우 어렵게 만들고는 했습니다. 또한 class의 사용을 위해 이벤트 핸들러가 등록되는 방법을 정확히 파악해야 했으며, 이는 [ES2022 public class fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields)가 없을 때 코드를 매우 장황하게 만들었습니다. 사용자들은 props, state, 그리고 top-down 데이터 흐름을 완벽하게 하고도, Class의 이해에는 어려움을 겪고는 했습니다. React 내의 함수와 Class 컴포넌트의 구별, 각 요소의 사용 타이밍 등은 숙련된 React 개발자 사이에서도 의견이 일치하지 않습니다.
 
 React는 지난 5년 동안 널리 사용되어 왔으며, React의 개발진은 5년 뒤에도 React가 지금과 같이 널리 이용되길 원합니다. [Svelte](https://svelte.dev/), [Angular](https://angular.io/), [Glimmer](https://glimmerjs.com/) 등에서 보여주듯이, 컴포넌트를 [미리 컴파일해놓는 방식](https://en.wikipedia.org/wiki/Ahead-of-time_compilation)에는 높은 잠재력이 있습니다. 템플릿에 한정하지 않는다면 더 그렇고요. 개발진은 최근 [Prepack](https://prepack.io/)을 사용한 [컴포넌트 folding](https://github.com/facebook/react/issues/7323)에 대해서 실험해왔고 긍정적인 결과를 보았습니만, Class 컴포넌트가 이러한 최적화를 더 느린 경로로 되돌리는 의도하지 않은 패턴을 장려할 수 있다는 것을 발견했습니다. Class는 최근 사용되는 도구에서도 많은 문제를 일으킵니다. 예를 들어 Class는 코드의 최소화를 힘들게 만들고, 핫 리로딩을 깨지기 쉽고 신뢰할 수 없게 만듭니다. 우리는 코드가 최적화 가능한 경로에서 유지될 가능성이 더 높은 API를 제공하길 원하였습니다.
 
@@ -103,4 +103,4 @@ React의 개발자들은 현재 사용중인 Class 사례를 Hook으로 교체�
 [Hook FAQ 페이지](/docs/hooks-faq.html)에서 Hook에 대한 자주 묻는 질문과 답변을 확인할 수 있습니다.
 
 ## 다음 단계 {#next-steps}
-이 페이지를 다 읽었을 떄, Hook이 해결하려는 문제들에 대한 대략적인 개념을 이해하고 있어야 합니다. 그러나 아직 구체적으로 명확하진 않을 것입니다. 걱정하지 마세요! **[다음 페이지](/docs/hooks-overview.html)로 가서 예시를 통해서 Hook에 대해 배워 봅시다!**
+이 페이지를 다 읽었을 때, Hook이 해결하려는 문제들에 대한 대략적인 개념을 이해하고 있어야 합니다. 그러나 아직 구체적으로 명확하진 않을 것입니다. 걱정하지 마세요! **[다음 페이지](/docs/hooks-overview.html)로 가서 예시를 통해서 Hook에 대해 배워 봅시다!**

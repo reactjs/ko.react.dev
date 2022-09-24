@@ -60,10 +60,17 @@ UI의 형태를 설명하는 데에 [JSX를 사용할 것](/docs/introducing-jsx
 
 ### Suspense {#suspense}
 
-Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이 먼저 이루어지도록 "대기합니다". 현재 Suspense는 단 하나의 사용 사례 [`React.lazy`를 사용하여 컴포넌트를 동적으로 불러오기](/docs/code-splitting.html#reactlazy)만 지원합니다. 나중에는 데이터 불러오기와 같은 사용 사례를 지원할 계획입니다.
+Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이 먼저 이루어지도록 "대기합니다". 현재 Suspense는 단 하나의 사용 사례 [`React.lazy`를 사용하여 컴포넌트를 동적으로 불러오기](/docs/code-splitting.html#reactlazy)만 지원합니다. 나중에는 데이터 불러오기와 같은 사용 사례를 지원할 계획입니다.
 
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
+
+### Transitions {#transitions}
+
+*Transitions* are a new concurrent feature introduced in React 18. They allow you to mark updates as transitions, which tells React that they can be interrupted and avoid going back to Suspense fallbacks for already visible content.
+
+- [`React.startTransition`](#starttransition)
+- [`React.useTransition`](/docs/hooks-reference.html#usetransition)
 
 ### Hooks {#hooks}
 
@@ -81,6 +88,12 @@ Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이
   - [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)
   - [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect)
   - [`useDebugValue`](/docs/hooks-reference.html#usedebugvalue)
+  - [`useDeferredValue`](/docs/hooks-reference.html#usedeferredvalue)
+  - [`useTransition`](/docs/hooks-reference.html#usetransition)
+  - [`useId`](/docs/hooks-reference.html#useid)
+- [Library Hooks](/docs/hooks-reference.html#library-hooks)
+  - [`useSyncExternalStore`](/docs/hooks-reference.html#usesyncexternalstore)
+  - [`useInsertionEffect`](/docs/hooks-reference.html#useinsertioneffect)
 
 * * *
 
@@ -226,7 +239,7 @@ React.isValidElement(object)
 React.Children.map(children, function[(thisArg)])
 ```
 
-`children`에 포함된 각 자식에 대하여 `this`를 `thisArg`의 값으로 설정한 함수를 호출합니다. `children`이 배열일 경우, 이 배열의 각 자식에 대하여 함수가 호출됩니다. `children`이 `null` 또는 `undefined`일 경우, 이 메서드는 배열이 아니라 `null` 또는 `undefined`를 반환합니다.
+`children`에 포함된 각 자식에 대하여 `this`를 `thisArg`의 값으로 설정한 함수를 호출합니다. `children`이 배열일 경우, 이 배열의 각 자식에 대하여 함수가 호출됩니다. `children`이 `null` 또는 `undefined`일 경우, 이 메서드는 배열이 아니라 `null` 또는 `undefined`를 반환합니다.
 
 > 주의
 >
@@ -326,14 +339,11 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 `lazy`한 컴포넌트를 렌더링하려면 렌더링 트리 상위에 `<React.Suspense>` 컴포넌트가 존재해야 한다는 점에 유의하세요. 이를 활용하여 로딩 지시기(Loading indicator)를 나타낼 수 있습니다.
 
-
-> **주의**
->
-> 동적 `import`와 함께 `React.lazy`를 사용하려면 JS 환경이 프라미스(Promise)를 지원해야 합니다. IE11 이하에서는 폴리필(Polyfill)이 필요합니다.
-
 ### `React.Suspense` {#reactsuspense}
 
-`React.Suspense`를 사용하면 트리 상에 아직 렌더링이 준비되지 않은 컴포넌트가 있을 때 로딩 지시기(Loading indicator)를 나타낼 수 있습니다. 현재로서는 지연시켜서 불러오는 컴포넌트가 `<React.Suspense>`의 **유일한** 사용 사례입니다.
+`React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. In the future we plan to let `Suspense` handle more scenarios such as data fetching. You can read about this in [our roadmap](/blog/2018/11/27/react-16-roadmap.html).
+
+Today, lazy loading components is the **only** use case supported by `<React.Suspense>`:
 
 ```js
 // 이 컴포넌트는 동적으로 불러옵니다
@@ -353,8 +363,29 @@ function MyComponent() {
 
 관련된 내용을 [Code Splitting 가이드](/docs/code-splitting.html#reactlazy) 문서에서 설명하고 있습니다. `lazy`한 컴포넌트는 `Suspense` 트리 내의 깊숙한 곳에 위치할 수 있다는 점에 유의하세요. 즉, `Suspense`가 모든 컴포넌트를 감쌀 필요는 없다는 것입니다. 가장 좋은 사용법은 로딩 지시기를 보여주고 싶은 지점에 `<Suspense>`를 작성하는 것이지만, Code Splitting을 하고자 하는 지점 어디서든지 `lazy()`를 써야 할 것입니다.
 
-현재 지원되고 있지는 않지만, 나중에는 `Suspense`가 데이터 불러오기 등의 시나리오를 지원하도록 할 계획입니다. 이와 관련된 내용은 [로드맵](/blog/2018/11/27/react-16-roadmap.html) 문서에서 확인할 수 있습니다.
-
-> 주의
+> Note
 >
->`React.lazy()`와 `<React.Suspense>`는 아직 `ReactDOMServer`에서 지원하지 않습니다. 이 제한 사항은 나중에 해결될 것입니다.
+> For content that is already shown to the user, switching back to a loading indicator can be disorienting. It is sometimes better to show the "old" UI while the new UI is being prepared. To do this, you can use the new transition APIs [`startTransition`](#starttransition) and [`useTransition`](/docs/hooks-reference.html#usetransition) to mark updates as transitions and avoid unexpected fallbacks.
+
+#### `React.Suspense` in Server Side Rendering {#reactsuspense-in-server-side-rendering}
+During server side rendering Suspense Boundaries allow you to flush your application in smaller chunks by suspending.
+When a component suspends we schedule a low priority task to render the closest Suspense boundary's fallback. If the component unsuspends before we flush the fallback then we send down the actual content and throw away the fallback.
+
+#### `React.Suspense` during hydration {#reactsuspense-during-hydration}
+Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before its hydrated will cause the boundary to hydrate at
+a higher priority than neighboring boundaries. [Read more](https://github.com/reactwg/react-18/discussions/130)
+
+### `React.startTransition` {#starttransition}
+
+```js
+React.startTransition(callback)
+```
+`React.startTransition` lets you mark updates inside the provided callback as transitions. This method is designed to be used when [`React.useTransition`](/docs/hooks-reference.html#usetransition) is not available.
+
+> Note:
+>
+> Updates in a transition yield to more urgent updates such as clicks.
+>
+> Updates in a transition will not show a fallback for re-suspended content, allowing the user to continue interacting while rendering the update.
+>
+> `React.startTransition` does not provide an `isPending` flag. To track the pending status of a transition see [`React.useTransition`](/docs/hooks-reference.html#usetransition).

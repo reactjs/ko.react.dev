@@ -69,7 +69,7 @@ prev: hooks-reference.html
 * React 테스트 렌더러
 * React 얕은 렌더러
 
-**Hook을 사용하려면 모든 React 패키지가 16.8.0 이상이어야합니다**. 업데이트하는 것을 (예: React DOM) 잊어버리면 Hook이 작동하지 않습니다.
+**Hook을 사용하려면 모든 React 패키지가 16.8.0 이상이어야합니다**. 업데이트하는 것을 (예: React DOM) 잊어버리면 Hook이 작동하지 않습니다.
 
 [React Native 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) 이상은 Hook을 지원합니다.
 
@@ -150,7 +150,7 @@ React DOM을 사용하여 테스트하겠습니다. 브라우저에서 발생하
 
 ```js{3,20-22,29-31}
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
 import Counter from './Counter';
 
@@ -169,7 +169,7 @@ afterEach(() => {
 it('can render and update a counter', () => {
   // 첫 번째 렌더링 및 effect 테스트
   act(() => {
-    ReactDOM.render(<Counter />, container);
+    ReactDOM.createRoot(container).render(<Counter />);
   });
   const button = container.querySelector('button');
   const label = container.querySelector('p');

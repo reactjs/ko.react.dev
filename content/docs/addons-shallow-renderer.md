@@ -59,7 +59,7 @@ expect(result.props.children).toEqual([
 
 shallowRenderer는 테스트 중인 컴포넌트를 렌더링하는 "장소(place)"로 생각할 수 있으며 이것으로부터 컴포넌트의 출력을 추출할 수 있습니다.
 
-`shallowRenderer.render()`는 [`ReactDOM.render()`](/docs/react-dom.html#render)와 비슷하지만 DOM을 요구하지 않으며 오직 한 단계 깊이만을 렌더링합니다. 이것은 컴포넌트의 자식들이 어떻게 구현되었는지 신경 쓰지 않고 독립적으로 테스트할 수 있음을 의미합니다.
+`shallowRenderer.render()`는 [`root.render()`](/docs/react-dom-client.html#createroot)와 비슷하지만 DOM을 요구하지 않으며 오직 한 단계 깊이만을 렌더링합니다. 이것은 컴포넌트의 자식들이 어떻게 구현되었는지 신경 쓰지 않고 독립적으로 테스트할 수 있음을 의미합니다.
 
 ### `shallowRenderer.getRenderOutput()` {#shallowrenderergetrenderoutput}
 

@@ -38,7 +38,7 @@ JavaScript에서 배열은 다른 종류의 객체입니다. [객체와 마찬�
 안타깝게도, [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) 그리고 [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 함수는 이름은 비슷하지만 많이 다릅니다.
 
 * `slice`를 사용하면 배열 자체 또는 그 일부를 복사할 수 있습니다.
-* `splice`는 배열을 (항목 추가 또는 제거를 위해서) **변경**합니다. 
+* `splice`는 배열을 (항목 추가 또는 제거를 위해서) **변경**합니다.
 
 React에서는, state 안의 객체나 배열을 변경하지 않는게 좋기 때문에 `slice` (`p`가 없습니다!)를 훨씬 더 자주 사용할 것입니다. [객체 업데이트](/learn/updating-objects-in-state)는 변경이 무엇이고 state에 권장되지 않는 이유를 설명합니다.
 
@@ -974,7 +974,7 @@ export default function ShoppingCart() {
             +
           </button>
           <button>
-            –            
+            –
           </button>
         </li>
       ))}
@@ -1063,7 +1063,7 @@ export default function ShoppingCart() {
           <button onClick={() => {
             handleDecreaseClick(product.id);
           }}>
-            –            
+            –
           </button>
         </li>
       ))}
@@ -1127,7 +1127,7 @@ export default function TaskApp() {
   }
 
   return (
-    <>  
+    <>
       <AddTodo
         onAddTodo={handleAddTodo}
       />
@@ -1294,7 +1294,7 @@ export default function TaskApp() {
   }
 
   return (
-    <>  
+    <>
       <AddTodo
         onAddTodo={handleAddTodo}
       />
@@ -1461,7 +1461,7 @@ export default function TaskApp() {
   }
 
   return (
-    <>  
+    <>
       <AddTodo
         onAddTodo={handleAddTodo}
       />
@@ -1649,7 +1649,7 @@ export default function TaskApp() {
   }
 
   return (
-    <>  
+    <>
       <AddTodo
         onAddTodo={handleAddTodo}
       />
@@ -1834,7 +1834,7 @@ export default function TaskApp() {
   }
 
   return (
-    <>  
+    <>
       <AddTodo
         onAddTodo={handleAddTodo}
       />

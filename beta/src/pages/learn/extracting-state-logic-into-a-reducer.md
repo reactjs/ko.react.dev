@@ -4,7 +4,7 @@ title: state 로직을 reducer로 작성하기
 
 <Intro>
 
-state를 업데이트하는 로직이 여러 이벤트 핸들러에 분산된 컴포넌트는 양이 많아 부담스러울 수 있습니다. 이 경우 state를 업데이트하는 모든 로직을 컴포넌트 외부에서 "reducer"라고 하는 단일 함수로 통합할 수 있습니다.
+state를 업데이트하는 로직이 여러 이벤트 핸들러에 분산된 컴포넌트는 양이 많아 부담스러울 수 있습니다. 이 경우 state를 업데이트하는 모든 로직을 컴포넌트 외부에서 *reducer*라고 하는 단일 함수로 통합할 수 있습니다.
 
 </Intro>
 
@@ -711,7 +711,7 @@ export default function TaskApp() {
   }
 
   return (
-    <>  
+    <>
       <h1>Prague itinerary</h1>
       <AddTask
         onAddTask={handleAddTask}

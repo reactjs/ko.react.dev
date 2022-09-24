@@ -35,11 +35,6 @@ React는 JSX [사용이 필수가 아니지만](/docs/react-without-jsx.html), �
 ```js{1,2}
 const name = 'Josh Perez';
 const element = <h1>Hello, {name}</h1>;
-
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
 ```
 
 JSX의 중괄호 안에는 유효한 모든 [JavaScript 표현식](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Expressions_and_Operators#표현(식))을 넣을 수 있습니다. 예를 들어 `2 + 2`, `user.firstName` 또는 `formatName(user)` 등은 모두 유효한 JavaScript 표현식입니다.
@@ -60,11 +55,6 @@ const element = (
   <h1>
     Hello, {formatName(user)}!
   </h1>
-);
-
-ReactDOM.render(
-  element,
-  document.getElementById('root')
 );
 ```
 

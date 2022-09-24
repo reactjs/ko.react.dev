@@ -35,8 +35,9 @@ export default function App() {
 
 </Sandpack>
 
-이 문서 전체에서 sandbox를 보조 교재로 사용합니다. Sandbox 사용으로 React가 어떻게 동작하는지 익숙해지는 데에 친근해질 수 있고 React가 나에게 맞는 것인지 결정하는 데에도 도움을 줄 것입니다. React 문서 외에도 [CodeSandbox](https://codesandbox.io/s/new), [Stackblitz](https://stackblitz.com/fork/react), 또는 [CodePen](
-https://codepen.io/pen/?template=wvdqJJm)과 같은 React를 지원하는 많은 온라인 sandbox가 있습니다.
+You can edit it directly or open it in a new tab by pressing the "Fork" button in the upper right corner.
+
+Most pages in the React documentation contain sandboxes like this. Outside of the React documentation, there are many online sandboxes that support React: for example, [CodeSandbox](https://codesandbox.io/s/new), [StackBlitz](https://stackblitz.com/fork/react), or [CodePen](https://codepen.io/pen?&editors=0010&layout=left&prefill_data_id=3f4569d1-1b11-4bce-bd46-89090eed5ddb).
 
 ### 로컬에서 React 시도하기 {/*try-react-locally*/}
 
@@ -52,4 +53,4 @@ https://codepen.io/pen/?template=wvdqJJm)과 같은 React를 지원하는 많은
 
 ## 다음 단계 {/*next-steps*/}
 
-어디서부터 시작할지는 어떻게 배우고 싶은지, 달성하려고 하는 것은 무엇인지, 다음으로 무엇을 할 것인지에 따라 다릅니다! 소개 튜토리얼인 [React로 생각하기](/learn/thinking-in-react)를 읽어 보세요. 혹은 [UI 설명하기](/learn/describing-the-ui)로 이동하여 더 많은 예시를 다루고 각 주제를 단계적으로 배울 수도 있습니다.
+매일 접하게 될 가장 중요한 React 개념을 둘러보려면 [빠른 시작](/learn) 가이드로 이동해주세요.
