@@ -921,7 +921,7 @@ props는 이미지들을 요청하고 앞에서 보았던 `<Avatar>` 컴포넌�
 
 ### `자식` prop을 JSX 전달하기 {/*`자식` prop을 JSX 전달하기 */}
 
-`Card` 컴포넌트에 있는 마크업에서 추출하고, `children` prop을 JSX의 다른 값을 전달하기 위 사용하세요.
+`Card` 컴포넌트에 있는 마크업에서 추출하고, `children` prop을 JSX의 다른 값을 전달하기 위해 사용하세요.
 
 <Sandpack>
 
