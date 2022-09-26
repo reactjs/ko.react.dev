@@ -626,9 +626,9 @@ li { margin: 5px; }
 
 </Sandpack>
 
-`award`가 배열안에 `awardCount`prop을 가지고 있더라도 분리하지 못한다는 것을 기억하세요. `awards.length`를 상의 갯수를 셀 때 사용할 수 있습니다. props들은 배열안에서도 어떤 값을 가질 수 있다는 것을 기억하세요!
+`award`가 배열 안에 `awardCount`prop을 가지고 있더라도 분리하지 못한다는 것을 기억하세요. `awards.length`를 상의 개수를 셀 때 사용할 수 있습니다. props는 배열 안에서도 어떤 값을 가질 수 있다는 것을 기억하세요!
 
-다른 해결책으로는, 이 페이지의 더 앞에 있는 예제와 유사하지만, person안에 있는 단일 객체에 있는 정보들을 그룹화하고, 객체에 prop을 전달하는 것이 있습니다.
+다른 해결책으로는, 이 페이지의 더 앞에 있는 예제와 유사하지만, person 안에 있는 단일 객체에 있는 정보들을 그룹화하고, 객체에 prop을 전달하는 것이 있습니다.
 
 <Sandpack>
 
@@ -723,15 +723,15 @@ li { margin: 5px; }
 
 </Sandpack>
 
-규칙이 약간 달라보이더라도, JSX 집합보다 자바스크립트 객체의 프로퍼티를 묘사하는 것에 가깝습니다. 이 예제들은 균일해보이고, 다른 접근 방법보다 보편적으로 접할 수 있습니다. 
+규칙이 약간 달라 보이더라도, JSX 집합보다 자바스크립트 객체의 프로퍼티를 묘사하는 것에 가깝습니다. 이 예제들은 균일 해보이고, 다른 접근 방법보다 보편적으로 접할 수 있습니다. 
 
 </Solution>
 
 ### prop에 기반하여 이미지를 조정하기  {/*prop에 기반하여 이미지를 조정하기*/}
 
-이 예제에서, `Avatar`는 `<img>`의 넓이,높이에 해당하는 숫자 형태의 `size` prop을 전달합니다. size` prop은 `40`으로 설정되어 있습니다. 그러나, 새 탭에서 이미지를 연다면, 이미지가 `160`픽셀 보다 더 큰 것을 알아야 합니다. 원래 이미지 크기는 당신이 요청한 사이즈 그대로 결정됩니다. 
+이 예제에서, `Avatar`는 `<img>`의 넓이, 높이에 해당하는 숫자 형태의 `size` prop을 전달합니다. size` prop은 `40`으로 설정되어 있습니다. 그러나, 새 탭에서 이미지를 연다면, 이미지가 `160`픽셀보다 더 큰 것을 알아야 합니다. 원래 이미지 크기는 당신이 요청한 사이즈 그대로 결정됩니다. 
 
-`Avatar` 컴포넌트를 바꿀 때 `size` prop에 기반하여 요청한 가장 유사한 이미지 사이즈로 바뀝니다. 특히, `size`가 `90`보다 덜 할 때 `'b'` ("big")보다는 `getImageUrl` 함수로 `'s'` ("small")를 전달합니다. 아바타에 `size` prop의 다른 값들을 랜더링 함으로써 작업물에 변화를 특정할 때 새 탭에서 이미지들을 엽니다. 
+`Avatar` 컴포넌트를 바꿀 때 `size` prop에 기반하여 요청한 가장 유사한 이미지 사이즈로 바뀝니다. 특히, `size`가 `90`보다 덜 할 때 `'b'` ("big")보다는 `getImageUrl` 함수로 `'s'` ("small")를 전달합니다. 아바타에 `size` prop의 다른 값들을 더링 함으로써 작업물에 변화를 특정할 때 새 탭에서 이미지들을 엽니다. 
 
 <Sandpack>
 
@@ -782,7 +782,7 @@ export function getImageUrl(person, size) {
 
 <Solution>
 
-여기 당신이 어떻게 해야할 지에 대한 예제가 있습니다.
+여기 어떻게 해야할 지에 대한 예제가 있습니다.
 
 <Sandpack>
 
@@ -844,7 +844,7 @@ export function getImageUrl(person, size) {
 
 </Sandpack>
 
-당신이 더 선명해 보이는 이미지를 보여주고 싶다면 [`window.devicePixelRatio`](https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio)로 살펴보세요.
+더 선명해 보이는 이미지를 보여주고 싶다면 [`window.devicePixelRatio`](https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio)로 살펴보세요.
 
 <Sandpack>
 
@@ -915,13 +915,13 @@ export function getImageUrl(person, size) {
 
 </Sandpack>
 
-props는 이미지들을 요청하고 재조정 없이 `<Avatar>` 컴포넌트에서 사용할 수 있게 하기 위해서 컴포넌트 안에 로직을 캡슐화 합니다.
+props는 이미지들을 요청하고 앞에서 보았던 `<Avatar>` 컴포넌트 내부에서 작동하는 원리처럼(필요하다면 언제든지 바꿀 수 있습니다), 재조정 없이 `<Avatar>` 컴포넌트에서 사용할 수 있게 하기 위해서 컴포넌트 안에 로직을 캡슐화합니다.
 
 </Solution>
 
 ### `자식` prop을 JSX 전달하기 {/*`자식` prop을 JSX 전달하기 */}
 
-`Card` 컴포넌트에 있는 마크업 에서 추출하고, `children` prop을 JSX의 다른 값을 전달하기 위헤 사용하세요.
+`Card` 컴포넌트에 있는 마크업에서 추출하고, `children` prop을 JSX의 다른 값을 전달하기 위 사용하세요.
 
 <Sandpack>
 
