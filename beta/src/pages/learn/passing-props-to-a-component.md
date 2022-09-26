@@ -520,15 +520,15 @@ li { margin: 5px; }
 
 <Hint>
 
-과학자들 중 한명이 되어서 마크업을 추출하는 것을 시작하십시오. 두 번째 예시와 맞지 않는 부분을 찾고, props에 맞게 하세요.
+과학자 중 한 명이 되어서 마크업을 추출해서 보는 것으로 시작하세요. 두 번째 예시와 맞지 않는 부분을 찾고, props에 알맞게 설정 가능하도록 바꾸세요.
 
 </Hint>
 
 <Solution>
 
-이 해결책으로, `Profile` 컴포넌트는 여러개의 props들을 가질 수 있습니다.`imageId` (문자열), `name` (문자열), `profession` (문자열), `awards` (배열의 문자열), `discovery` (문자열), and `imageSize` (숫자) 입니다.
+이 해결책으로, `Profile` 컴포넌트는 여러 개의 props를 가질 수 있습니다.` imageId` (문자열), `name` (문자열), `profession` (문자열), `awards` (배열의 문자열), `discovery` (문자열), and `imageSize` (숫자)입니다.
 
-`imageSize` prop은 컴포넌트에서 전달받지 못하는 지에 대한 이유로 비롯된 디폴트 값을 가지고 있다는 것을 기억하세요.
+`imageSize` prop은 컴포넌트에서 전달받지 못하는지에 대한 이유로 비롯된 기본적인 값을 가지고 있다는 것을 기억하세요.
 
 <Sandpack>
 
