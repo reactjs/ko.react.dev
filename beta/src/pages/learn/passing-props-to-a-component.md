@@ -343,17 +343,17 @@ export function getImageUrl(person, size = 's') {
 
 </Sandpack>
 
-`Card` 컴포넌트가 어떤 내용을 감싸고 있는지 나태내는 약간의 주석과 함께 `<Card>`안에 `<Avatar>`를 넣는 것으로 대체하세요. 내부에서 어떻게 랜더링이 진행되는 지 "알" 필요 없습니다. 유연한 패턴들을 다양한 경우와 함께 볼 수 있습니다. 
+`Card` 컴포넌트가 어떤 내용을 감싸고 있는지 나타내는 약간의 주석과 함께 `<Card>`안에 `<Avatar>`를 넣는 것으로 대체하세요. 컴포넌트 내부에서 어떻게 렌더링이 진행되는지 "알" 필요 없습니다. 다양한 상황에서 알맞고 유연한 컴포넌트 디자인 패턴들을 볼 수 있습니다. 
 
-`자식` 컴포넌트의 prop을 "전체적으로" 부모 컴포넌트에 JSX로 값을 받아서 채워졌다고 생각할 수 있습니다. 눈에 보이는 포장지를 위해 `자식` props를 사용합니다. panels, grids,그리고 다른 요소들도 마찬가지입니다. [Extracting Layout Components](/learn/extracting-layout-components)에서 더 살펴볼 수 있습니다. 
+`자식` 컴포넌트의 prop을 "전체적으로" 부모 컴포넌트에 JSX로 값을 받아서 채워졌다고 생각할 수 있습니다. 눈에 보이는 포장지를 위해 `자식` props를 사용합니다. panels, grids, 그리고 다른 요소들도 마찬가지입니다. [Extracting Layout Components](/learn/extracting-layout-components)에서 더 살펴볼 수 있습니다. 
 
 <Illustration src="/images/docs/illustrations/i_children-prop.png" alt='A puzzle-like Card tile with a slot for "children" pieces like text and Avatar' />
 
 ## props는 시간에 따라 어떻게 변하는가 {/*props는 시간에 따라 어떻게 변하는가*/}
 
- `Clock`컴포넌트는 부모 컴포넌트로 부터 2가지 props들을 받습니다: `color` 그리고 `time` 입니다. (부모 컴포넌트이 코드들은 아직 접하지 않은 [state](/learn/state-a-components-memory)을 사용해서 props들을 보냅니다. )
+ `Clock` 컴포넌트는 부모 컴포넌트로부터 2가지 props들을 받습니다. `color` 그리고 `time`입니다. (부모 컴포넌트의 코드는 아직 접하지 않은 [state](/learn/state-a-components-memory) 을 사용해서 props를 보냅니다. )
 
-선택 상자의 색깔들을 바꾸어보려고 시도하세요.
+선택 상자의 색깔들을 바꿔보세요.
 
 <Sandpack>
 
@@ -403,21 +403,21 @@ export default function App() {
 
 </Sandpack>
 
-이 예제는 **시간에 지남에 따라 컴포넌트가 다른 props들을 받는 다는 것을**나타냅니다. Props들은 항상 정적이지 않습니다! 여기,  `time` props는 매 초마다 바뀌고, `color` prop도 다른 색상을 선택할 때마다 바뀝니다. props는 시작할 때 부터 쭉 이어지기 보다는, 매 시간의 컴포넌트 데이터를 반영합니다.
+이 예제는 **시간에 지남에 따라 컴포넌트가 다른 props를 받는다는 것을**나타냅니다. Props는 항상 정적이지 않습니다! 여기, `time` props는 매초 바뀌고, `color` prop도 다른 색상을 선택할 때마다 바뀝니다. props는 시작할 때부터 쭉 데이터가 변하지 않기보다는, 시간에 따라 변하는 컴포넌트 데이터를 반영하는 것에 가깝습니다.
 
-그러나,props들은 [불변합니다](https://en.wikipedia.org/wiki/Immutable_object)— 컴퓨터 과학에서는 "불변"이라는 뜻을 가지고 있습니다. 컴포넌트가 props의 변화가 필요할 때,(예를 들어, 유저와의 상호작용 혹은 새로운 데이터에 반응할 때와 같이), 부모 컴포넌트가 _서로 다른 props들을 허용할 때 _"요청"이 필요합니다! 오래된 props는 후순위이지만, 결국 자바스크립트 엔딘은 계산하는데 메모리를 낭비할 수 있습니다. 
+그러나, props는 [불변합니다](https://en.wikipedia.org/wiki/Immutable_object)— 컴퓨터 과학에서는 "불변"이라는 뜻을 가지고 있습니다. 컴포넌트가 props의 변화가 필요할 때, (예를 들어, 유저와의 상호작용 혹은 새로운 데이터에 반응할 때와 같이), 부모 컴포넌트가 _서로 다른 props를 허용할 때 _새로운 객체에 "요청"하는 것이 필요합니다! 오래된 props는 뒷순위이지만, 결국 자바스크립트 엔진은 props를 계산하는데 메모리를 낭비할 수 있습니다. 
 
-**"props를 바꾸려고 시도하지 마세요."** 유저 데이터가 있는 인풋에서(색깔을 선택하게 할 때 처럼) 응답을 받오올 때, [State: A Component's Memory](/learn/state-a-components-memory)여기에서 볼 수 있는 "set state"가 필요합니다.
+**"props를 바꾸려고 시도하지 마세요."** 유저 데이터가 있는 인풋에서(색깔을 선택하게 할 때처럼) 응답을 받고 올 때, [State: A Component's Memory](/learn/state-a-components-memory) 여기에서 볼 수 있는 "set state"가 필요합니다.
 
 <Recap>
 
-* props의 값을 전달해줄 때, HTML문법을 사용할 때 처럼 JSX를 더하세요.
+* props의 값을 전달해줄 때, HTML 문법을 사용할 때처럼 JSX를 더하세요.
 * props를 읽을 때, function Avatar({ person, size })`와 같은 구조 분해 할당 문법을 사용하세요.
-* 디폴트 값이 처음부터 없거나 `undefined` props에서 사용된, `size = 100`와 같이 디폴트 값을 특정할 수 있습니다.
-* `<Avatar {...props} />`와 함께 앞에 있는 모든 props들을 볼 수 있지만,남용하지 마세요.
-* `<Card><Avatar /></Card>`와 같이 내장된 JSX는 `Card` 컴포넌트의 `자식`prop을 나타냅니다.
-* props는 시간이 정해져 있는 읽기 전용과 같습니다: 모든 새로운 랜더링은 새로운 버전의 props들을 가져옵니다.
-* props들을 바꿀 수 없습니다. 상호작용이 필요하다면, 상태를 세팅하는 것이 필요합니다.
+* 디폴트 값이 처음부터 없거나 `undefined` props에서 사용된, `size = 100`과 같이 디폴트 값을 특정할 수 있습니다.
+* `<Avatar {...props} />`와 함께 앞에 있는 모든 props를 볼 수 있지만, 남용하지 마세요.
+* `<Card><Avatar /></Card>`와 같이 내장된 JSX는 `Card` 컴포넌트의 `자식` prop을 나타냅니다.
+* props는 시간이 정해져 있는 읽기 전용과 같습니다: 모든 새로운 렌더링은 새로운 버전의 props를 가져옵니다.
+* props들을 바꿀 수 없습니다. 상호작용이 필요하다면, 상태를 설정하는 것이 필요합니다.
 
 </Recap>
 
@@ -427,7 +427,7 @@ export default function App() {
 
 ### 컴포넌트 추출하기{/*컴포넌트 추출하기*/}
 
-이 `Gallery` 컴포넌트는 두 가지 프로필에 사용된 마크업과 매우 유사한 마크업을 포함하고 있습니다. `Profile` 컴포넌트에서 중복을 제거하십시오. 어떤 props들을 전달해야할 지 선택해야합니다.
+이 `Gallery` 컴포넌트는 두 가지 프로필에 사용된 마크업과 매우 유사한 마크업을 포함하고 있습니다. `Profile` 컴포넌트에서 중복을 제거하세요. 어떤 props를 전달해야할지 선택 해야합니다.
 
 <Sandpack>
 
