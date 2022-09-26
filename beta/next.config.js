@@ -3,7 +3,6 @@
  */
 
 const path = require('path');
-const {remarkPlugins} = require('./plugins/markdownToHtml');
 const redirects = require('./src/redirects.json');
 
 /**
@@ -11,6 +10,7 @@ const redirects = require('./src/redirects.json');
  **/
 const nextConfig = {
   pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx', 'md'],
+  reactStrictMode: true,
   experimental: {
     plugins: true,
     scrollRestoration: true,
@@ -63,22 +63,6 @@ const nextConfig = {
         },
       })
     );
-
-    // Add our custom markdown loader in order to support frontmatter
-    // and layout
-    config.module.rules.push({
-      test: /.mdx?$/, // load both .md and .mdx files
-      use: [
-        options.defaultLoaders.babel,
-        {
-          loader: '@mdx-js/loader',
-          options: {
-            remarkPlugins,
-          },
-        },
-        path.join(__dirname, './plugins/md-layout-loader'),
-      ],
-    });
 
     return config;
   },
