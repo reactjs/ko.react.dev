@@ -20,7 +20,7 @@ React 컴포넌트는 다른 컴포넌트와 통신할 때 **props**를 사용�
 
 ## 밀접한 props {/*familiar-props*/}
 
-Props는 JSX 태그를 사용해서 전달하는 정보입니다. 예를 들어, `className`, `src`, `alt`, `width`, 그리고 `height`는 `<img>`태그에 정보를 전달하는 props 들입니다.
+Props는 JSX 태그를 사용해서 전달하는 정보입니다. 예를 들어, `className`, `src`, `alt`, `width`, 그리고 `height`는 `<img>`태그에 정보를 전달하는 props 입니다.
 
 <Sandpack>
 
@@ -202,7 +202,7 @@ function Avatar(props) {
 
 ## prop에 들어가는 디폴트 값 특정하기{/*prop에 들어가는 디폴트 값 특정하기*/}
 
-값을 주지 않았을 때 props에 디폴트 값을 주고 싶다면, `=`을 넣음으로써 그리고 그 파라미터 앞에 디폴트 값을 줄 수 있습니다.
+어떠한 값도 주어지지 않았을 때 props에 디폴트 값을 주고 싶다면 대비책으로, `=`을 넣고 비구조화하여 변수에 할당한 직후에 파라미터 앞에 디폴트 값을 줄 수 있습니다.
 
 ```js
 function Avatar({ person, size = 100 }) {
@@ -210,13 +210,13 @@ function Avatar({ person, size = 100 }) {
 }
 ```
 
-이제,  `<Avatar person={...} />`이 어떤 `size` prop도 랜더링 안해준다면,`size는 `100`을 가지게 될 것입니다. 
+이제, `<Avatar person={...} />`이 어떤 `size` prop도 렌더링 안 해준다면, `size는 `100`을 가지게 됩니다. 
 
-디폴트 값은 `size` prop을 잃어버리거나 `size={undefined}`으로 표시될 때 사용할 수 있습니다. `size={null}` 또는 `size={0}`으로 표시된다면 디폴트 값은 **절대** 사용되지 못합니다.
+디폴트 값은 `size` prop을 잃어버리거나 `size={undefined}`으로 표시될 때 사용할 수 있습니다. `size={null}` 또는 `size={0}`으로 표시된다면, 디폴트 값은 **절대** 사용되지 못합니다.
 
 ## props를 앞에 jsx 규칙 할당하기 {/*props를 앞에 jsx 구문 할당하기*/}
 
-가끔, 허용되는 props들은 매우 반복적인 값을 가집니다.
+가끔, 허용되는 props는 매우 반복적인 규칙을 가집니다.
 
 ```js
 function Profile({ person, size, isSepia, thickBorder }) {
@@ -233,7 +233,7 @@ function Profile({ person, size, isSepia, thickBorder }) {
 }
 ```
 
-반복적인 코드를 사용되는 것이 잘못되었다는 것은 아닙니다-더 법칙을 잘 따르는 것일 수 있습니다.하지만 매번 반복된다면 번거롭습니다. 자식 개체들이 가지는 props들 앞에 있는 어떤 컴포넌트들은,`Profile`과 `Avartar` 같이 말입니다. 그들은 그 어떤 props들도 직접적으로 전할 수 없고, "Spread"법칙으로 명확히 나타납니다.
+반복적인 코드를 사용되는 것이 잘못되었다는 것은 아닙니다-더 읽기 쉬울 수 있습니다. 하지만 매번 반복된다면 읽을 때 번거롭습니다. `Profile`이 `Avatar`와 작동하는 것처럼, 그게 자식 개체들이 가지는 props든 앞에 있는 어떤 컴포넌트든 말입니다. 그 어떠한 props도 직접적으로 전할 수 없기 때문에, 이해하기 쉽게 하기 위해서 더 간결한 "Spread" 문법을 사용합니다. 
 
 ```js
 function Profile(props) {
@@ -245,11 +245,11 @@ function Profile(props) {
 }
 ```
 
-`Profile`의 props에서 `Avatar`로 전달하는 앞의 것들은 각각의 이름이 나열되지 않습니다. 
+`Profile`의 props에서 `Avatar`로 전달하는 앞에 있는 모든 것들은 각각의 이름이 나열되지 않습니다. 
 
-**제약과 함께 spread syntax를 사용하세요.** 만약 모든 컴포넌트에서 이와 같이 사용한다면,잘못된 부분이 생깁니다. 흔히 컴포넌트를 분리하고 JSX로 자식에게 값을 전달해야한다는 것을 알려줍니다. 다음에 계속 됩니다!
+**spread 문법은 제한을 두고 사용하세요.** 만약 모든 컴포넌트에서 이처럼 사용한다면, 잘못된 부분이 생깁니다. 흔히 컴포넌트를 분리하고 JSX로 자식에게 값을 전달해야 한다는 것을 알려줍니다. 다음에 계속됩니다!
 
-## JXS에서 자식에게 값을 전달하기{/*JXS에서 자식에게 값을 전달하기*/}
+## JSX에서 자식에게 값을 전달하기{/*JSX에서 자식에게 값을 전달하기*/}
 
 브라우저 태그안에 할당되는 것은 흔한 일입니다.
 
@@ -267,7 +267,7 @@ function Profile(props) {
 </Card>
 ```
 
-JSX 태그 안에 내용을 할당할 때, 부모 컴포넌트가 불려진 `자식`컴포넌트에 props를 부여합니다. 예를 들어, `Card`컴포넌트 `자식` 컴포넌트인 `<Avatar />`에 props를 할당하고 감싼 div에 렌더링 합니다.
+JSX 태그 안에 내용을 할당할 때, 부모 컴포넌트가 내용물을 가진 `자식` 컴포넌트에 props를 할당합니다. 예를 들어, `Card` 컴포넌트 `자식` 컴포넌트인 `<Avatar />`에 props를 할당하고 감싼 div에 렌더링합니다.
 
 <Sandpack>
 
