@@ -34,7 +34,7 @@ HTML 파일 어딘가에 `<div>`가 있다고 가정해 봅시다.
 
 React로 구현된 애플리케이션은 일반적으로 하나의 루트 DOM 노드가 있습니다. React를 기존 앱에 통합하려는 경우 원하는 만큼 많은 수의 독립된 루트 DOM 노드가 있을 수 있습니다.
 
-To render a React element, first pass the DOM element to [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot), then pass the React element to `root.render()`:
+React 엘리먼트를 렌더링하기 위해서는 먼저 [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot)에 루트 DOM 엘리먼트를 인자로 넘기고 다음으로 `root.render()`에 React 엘리먼트를 인자로 넘겨야 합니다.
 
 `embed:rendering-elements/render-an-element.js`
 
