@@ -82,11 +82,7 @@ const [startTime, setStartTime] = useState(null);
 const [now, setNow] = useState(null);
 ```
 
-<<<<<<< HEAD
 사용자가 "시작"을 누르면 [`setInterval`](https://developer.mozilla.org/docs/Web/API/setInterval)을 사용하여 100밀리초마다 시간을 업데이트합니다.
-=======
-When the user presses "Start," you'll use [`setInterval`](https://developer.mozilla.org/docs/Web/API/setInterval) in order to update the time every 10 milliseconds:
->>>>>>> 42561f013aa0f6008cd1c5b811d8bacfc66a0779
 
 <Sandpack>
 

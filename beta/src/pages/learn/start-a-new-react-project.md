@@ -53,7 +53,7 @@ npm start
 ### Popular alternatives {/*popular-alternatives*/}
 
 * [Vite](https://vitejs.dev/guide/)
-* [Parcel](https://parceljs.org/getting-started/webapp/)
+* [Parcel](https://parceljs.org/)
 
 ## Building with a full-featured framework {/*building-with-a-full-featured-framework*/}
 
