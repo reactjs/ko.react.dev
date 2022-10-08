@@ -99,6 +99,7 @@ export const Search: React.FC<SearchProps> = ({
     hitsPerPage: 5,
   },
 }) => {
+  const [isLoaded] = React.useState(true);
   const [isShowing, setIsShowing] = React.useState(false);
 
   const importDocSearchModalIfNeeded = React.useCallback(
@@ -108,8 +109,8 @@ export const Search: React.FC<SearchProps> = ({
       }
 
       // @ts-ignore
-      return import('@docsearch/react/modal').then(
-        ({DocSearchModal: Modal}) => {
+      return Promise.all([import('@docsearch/react/modal')]).then(
+        ([{DocSearchModal: Modal}]) => {
           DocSearchModal = Modal;
         }
       );
@@ -164,7 +165,8 @@ export const Search: React.FC<SearchProps> = ({
         </span>
       </button>
 
-      {isShowing &&
+      {isLoaded &&
+        isShowing &&
         createPortal(
           <DocSearchModal
             {...options}

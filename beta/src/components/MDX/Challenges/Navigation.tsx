@@ -15,7 +15,7 @@ export function Navigation({
   isRecipes,
 }: {
   challenges: ChallengeContents[];
-  handleChange: (index: number) => void;
+  handleChange: (id: string) => void;
   currentChallenge: ChallengeContents;
   isRecipes?: boolean;
 }) {
@@ -36,7 +36,7 @@ export function Navigation({
       if (containerRef.current) {
         containerRef.current.scrollLeft = currentNavRef.offsetLeft;
       }
-      handleChange(scrollPos + 1);
+      handleChange(challenges[scrollPos + 1].id);
     }
   };
 
@@ -49,16 +49,19 @@ export function Navigation({
       if (containerRef.current) {
         containerRef.current.scrollLeft = currentNavRef.offsetLeft;
       }
-      handleChange(scrollPos - 1);
+      handleChange(challenges[scrollPos - 1].id);
     }
   };
 
-  const handleSelectNav = (index: number) => {
-    const currentNavRef = challengesNavRef.current[index].current;
+  const handleSelectNav = (id: string) => {
+    const selectedChallenge = challenges.findIndex(
+      (challenge) => challenge.id === id
+    );
+    const currentNavRef = challengesNavRef.current[selectedChallenge].current;
     if (containerRef.current) {
       containerRef.current.scrollLeft = currentNavRef?.offsetLeft || 0;
     }
-    handleChange(index);
+    handleChange(id);
   };
 
   const handleResize = React.useCallback(() => {
@@ -94,7 +97,7 @@ export function Navigation({
                   currentChallenge.id === id &&
                   'text-link border-link hover:text-link dark:text-link-dark dark:border-link-dark dark:hover:text-link-dark'
               )}
-              onClick={() => handleSelectNav(index)}
+              onClick={() => handleSelectNav(id)}
               key={`button-${id}`}
               ref={challengesNavRef.current[index]}>
               {order}. {name}

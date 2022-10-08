@@ -774,7 +774,7 @@ export const initialTravelPlan = {
         childPlaces: [],
       }, {
         id: 41,
-        title: 'New Zealand',
+        title: 'New Zeland',
         childPlaces: [],
       }, {
         id: 42,
@@ -1079,7 +1079,7 @@ export const initialTravelPlan = {
   },
   41: {
     id: 41,
-    title: 'New Zealand',
+    title: 'New Zeland',
     childIds: []
   },
   42: {
@@ -1422,7 +1422,7 @@ export const initialTravelPlan = {
   },
   41: {
     id: 41,
-    title: 'New Zealand',
+    title: 'New Zeland',
     childIds: []
   },
   42: {
@@ -1766,7 +1766,7 @@ export const initialTravelPlan = {
   },
   41: {
     id: 41,
-    title: 'New Zealand',
+    title: 'New Zeland',
     childIds: []
   },
   42: {
@@ -2042,6 +2042,7 @@ const initialItems = [
 ];
 
 export default function TravelPlan() {
+  const [title, setTitle] = useState('');
   const [items, setItems] = useState(initialItems);
   const [total, setTotal] = useState(3);
   const [packed, setPacked] = useState(1);
@@ -2181,6 +2182,7 @@ const initialItems = [
 ];
 
 export default function TravelPlan() {
+  const [title, setTitle] = useState('');
   const [items, setItems] = useState(initialItems);
 
   const total = items.length;

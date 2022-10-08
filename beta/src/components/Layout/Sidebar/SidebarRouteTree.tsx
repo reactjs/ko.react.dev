@@ -100,7 +100,7 @@ export function SidebarRouteTree({
   const expanded = expandedPath;
   return (
     <ul>
-      {currentRoutes.map(({path, title, routes, wip, heading}) => {
+      {currentRoutes.map(({path, title, routes, heading}) => {
         const pagePath = path && removeFromLast(path, '.');
         const selected = slug === pagePath;
 
@@ -127,7 +127,6 @@ export function SidebarRouteTree({
                 selected={selected}
                 level={level}
                 title={title}
-                wip={wip}
                 isExpanded={isExpanded}
                 isBreadcrumb={expandedPath === path}
                 hideArrow={isMobile}
@@ -152,7 +151,6 @@ export function SidebarRouteTree({
               selected={selected}
               level={level}
               title={title}
-              wip={wip}
             />
           </li>
         );
