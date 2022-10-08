@@ -106,7 +106,11 @@ export default function Heading({ level, children }) {
 
 </Sandpack>
 
+<<<<<<< HEAD
 같은 `Section` 내의 여러 제목이 항상 동일한 크기를 가져야 한다고 가정해 봅시다.
+=======
+Let's say you want multiple headings within the same `Section` to always have the same size:
+>>>>>>> 42561f013aa0f6008cd1c5b811d8bacfc66a0779
 
 <Sandpack>
 
@@ -204,9 +208,15 @@ export default function Heading({ level, children }) {
 
 Props만으로는 불가능합니다. 여기서부터 context가 활약하기 시작합니다. 다음의 세 단계로 진행됩니다.
 
+<<<<<<< HEAD
 1. Context를 **생성하세요**. (제목 레벨을 위한 것이므로 `LevelContext`라고 이름 지어봅시다)
 2. 데이터가 필요한 컴포넌트에서 context를 **사용하세요**. (`Header`에서는 `LevelContext`를 사용합니다)
 3. 데이터를 지정하는 컴포넌트에서 context를 **제공하세요.** (`Section`에서는 `LevelContext`를 제공합니다)
+=======
+1. **Create** a context. (You can call it `LevelContext`, since it's for the heading level.)
+2. **Use** that context from the component that needs the data. (`Heading` will use `LevelContext`.)
+3. **Provide** that context from the component that specifies the data. (`Section` will provide `LevelContext`.)
+>>>>>>> 42561f013aa0f6008cd1c5b811d8bacfc66a0779
 
 Context는 부모가 트리 내부 전체에, 심지어 멀리 떨어진 컴포넌트에조차 어떤 데이터를 제공할 수 있도록 합니다.
 
@@ -442,7 +452,11 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
+<<<<<<< HEAD
 이 예제는 아직 잘 작동하지 않습니다! **Context를 *사용하고* 있지만, 아직 *제공하지* 않았기 때문에** 모든 제목의 크기가 동일합니다. React가 어디서 값을 가져와야 할지 모르기 때문이죠.
+=======
+Notice this example doesn't quite work, yet! All the headings have the same size because **even though you're *using* the context, you have not *provided* it yet.** React doesn't know where to get it!
+>>>>>>> 42561f013aa0f6008cd1c5b811d8bacfc66a0779
 
 Context를 제공하지 않으면 React는 이전 단계에서 지정한 기본값을 사용합니다. 이 예제에서는 `1`을 `createContext`의 인수로 지정했으므로 `useContext(LevelContext)`가 `1`을 반환하고 모든 제목을 `<h1>`로 설정합니다. 이 문제를 각각의 `Section`이 고유한 context를 제공하도록 해 해결합시다.
 
@@ -566,9 +580,15 @@ export const LevelContext = createContext(1);
 
 기존 코드와 동일한 결과이지만 `level` prop을 각 `Heading` 컴포넌트에 전달할 필요는 없습니다! 대신 위의 가장 가까운 `Section`에게 제목 레벨을 "확인"합니다.
 
+<<<<<<< HEAD
 1. `level` prop 을 `<Section>`에 전달합니다.
 2. `Section`은 자식을 `<LevelContext.Provider value={level}>`로 감싸줍니다.
 3. `Header`는 `useContext(LevelContext)`를 사용해 가장 근처의 `LevelContext`의 값을 요청합니다.
+=======
+1. You pass a `level` prop to the `<Section>`.
+2. `Section` wraps its children into `<LevelContext.Provider value={level}>`.
+3. `Heading` asks the closest value of `LevelContext` above with `useContext(LevelContext)`.
+>>>>>>> 42561f013aa0f6008cd1c5b811d8bacfc66a0779
 
 ## 같은 컴포넌트에서 context를 사용하며 제공하기 {/*using-and-providing-context-from-the-same-component*/}
 

@@ -344,7 +344,11 @@ Form states
 
 ### 세 번째: 메모리의 state를 `useState`로 표현하기 {/*step-3-represent-the-state-in-memory-with-usestate*/}
 
+<<<<<<< HEAD
 다음으로 [`useState`](/apis/usestate)를 사용하여 컴포넌트의 시각적 state를 표현해야 합니다. 이 과정은 단순함이 핵심입니다. 각각의 state는 "움직이는 조각"입니다. 그리고 **"움직이는 조각"은 적을수록 좋습니다**. 복잡한 건 버그를 일으키기 마련이기 때문입니다!
+=======
+Next you'll need to represent the visual states of your component in memory with [`useState`](/apis/react/useState). Simplicity is key: each piece of state is a "moving piece", and **you want as few "moving pieces" as possible**. More complexity leads to more bugs!
+>>>>>>> 42561f013aa0f6008cd1c5b811d8bacfc66a0779
 
 먼저 *반드시 필요한* state를 가지고 시작해봅시다. 예를 들면 인풋의 `응답`은 반드시 저장해야 할 것입니다. 그리고 (존재한다면) 가장 최근에 발생한 `오류`도 저장해야 할 겁니다.
 
