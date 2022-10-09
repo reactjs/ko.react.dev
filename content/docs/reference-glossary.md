@@ -134,7 +134,7 @@ React에 의해 입력값이 제어되는 엘리먼트를 *제어 컴포넌트(c
 
 *비제어 컴포넌트(uncontrolled component)*는 form 엘리먼트가 React 외부에서 작동하는 것처럼 작동합니다. 사용자가 form 필드(input box, dropdown 등)에 데이터를 입력하면 업데이트된 정보가 React에서 별도 처리할 필요 없이 엘리먼트에 반영됩니다. 그러나, 이는 특정 필드가 특정 값을 갖도록 강제할 수 없다는 의미이기도 합니다.
 
-대부분은 controlled component를 사용해야 합니다.
+대부분은 제어 컴포넌트를 사용해야 합니다.
 
 ## [Key](/docs/lists-and-keys.html) {#keys}
 
