@@ -4,7 +4,7 @@ title: 스냅샷으로서의 State
 
 <Intro>
 
-읽고 쓰는 State 변수는 일반적인 자바스크립트 변수처럼 보일 수 있습니다. 그러나 state는 스냅샷 처럼 작동합니다. state를 설정하여도 이미 가지고 있는 state는 변경되지 않고, 대신에 다시 렌더링을 실행합니다.
+State 변수는 읽고 쓸 수 있는 일반 자바스크립트 변수처럼 보일 수 있습니다. 그러나 state는 스냅샷 처럼 작동합니다. state를 설정하여도 이미 가지고 있는 state는 변경되지 않고, 대신에 다시 렌더링을 실행합니다.
 
 </Intro>
 
@@ -71,7 +71,7 @@ state와 렌더링의 관계를 자세히 살펴보겠습니다.
 
 ## 렌더링은 적시에 스냅샷을 생성합니다. {/*rendering-takes-a-snapshot-in-time*/}
 
-["렌더링"](/learn/render-and-commit#step-2-react-renders-your-components)은 React가 함수형 컴포넌트를 호출하는 것을 의미합니다. 함수에서 반환하는 JSX는 시간에 따른 UI의 스냅샷과 같습니다. 컴포넌트의 props, 이벤트 핸들러, 로컬 변수들 모두 계산됩니다. **렌더링 시점의 state 사용.**
+["렌더링"](/learn/render-and-commit#step-2-react-renders-your-components)은 React가 함수 컴포넌트를 호출하는 것을 의미합니다. 함수에서 반환하는 JSX는 시간에 따른 UI의 스냅샷과 같습니다. 컴포넌트의 props, 이벤트 핸들러, 로컬 변수들 모두 계산됩니다. **렌더링 시점의 state 사용.**
 
 사진이나 동영상 프레임과 다르게 반환하는 UI "스냅샷"은 대화형입니다. 스냅샷은 입력에 대한 응답으로 발생하는 일을 지정하는 이벤트 핸들러와 같은 로직을 포함하고 있습니다. 그런 다음 React는 스냅샷과 일치하도록 화면을 업데이트하고 이벤트 핸들러를 연결합니다. 결과적으로 버튼을 누르면 JSX의 클릭 핸들러를 실행합니다.
 
@@ -203,7 +203,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 </Sandpack>
 
-이전의 대체 메소드를 사용하면 경고창이 "0"을 표시한다고 추측할 수 있습니다.
+이전의 대체 메서드를 사용하면 경고창이 "0"을 표시한다고 추측할 수 있습니다.
 
 ```js
 setNumber(0 + 5);
@@ -241,7 +241,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 </Sandpack>
 
-놀라셨나요? 대체 메소드를 사용하면 경고에 전달된 state의 "스냅샷"을 볼 수 있습니다.
+놀라셨나요? 대체 메서드를 사용하면 경고에 전달된 state의 "스냅샷"을 볼 수 있습니다.
 
 ```js
 setNumber(0 + 5);
@@ -414,7 +414,7 @@ alert(walk ? 'Stop is next' : 'Walk is next');
 
 그러나 다음과 같이 읽는다면 의미가 있습니다. "신호등이 'Walk now'로 표시되면 메시지는 'Stop is next'라고 표시되어야 합니다." 이벤트 핸들러 내부의 `walk` 변수는 렌더링의 `walk` 값과 일치하고 변하지 않습니다.
 
-대체 메소드를 적용하여 이것이 올바른지 확인할 수 있습니다. `walk`가 `true`이면 다음과 같은 결과를 얻습니다.
+대체 메서드를 적용하여 이것이 올바른지 확인할 수 있습니다. `walk`가 `true`이면 다음과 같은 결과를 얻습니다.
 
 ```js
 <button onClick={() => {
