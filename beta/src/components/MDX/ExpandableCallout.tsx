@@ -9,11 +9,7 @@ import {IconNote} from '../Icon/IconNote';
 import {IconWarning} from '../Icon/IconWarning';
 import {IconPitfall} from '../Icon/IconPitfall';
 
-<<<<<<< HEAD
-type CalloutVariants = 'gotcha' | 'note';
-=======
 type CalloutVariants = 'deprecated' | 'pitfall' | 'note' | 'wip';
->>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
 
 interface ExpandableCalloutProps {
   children: React.ReactNode;
