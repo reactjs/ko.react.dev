@@ -73,11 +73,6 @@ const UL = (p: JSX.IntrinsicElements['ul']) => (
 const Divider = () => (
   <hr className="my-6 block border-b border-border dark:border-border-dark" />
 );
-<<<<<<< HEAD
-
-const Gotcha = ({children}: {children: React.ReactNode}) => (
-  <ExpandableCallout type="gotcha">{children}</ExpandableCallout>
-=======
 const Wip = ({children}: {children: React.ReactNode}) => (
   <ExpandableCallout type="wip">{children}</ExpandableCallout>
 );
@@ -86,7 +81,6 @@ const Pitfall = ({children}: {children: React.ReactNode}) => (
 );
 const Deprecated = ({children}: {children: React.ReactNode}) => (
   <ExpandableCallout type="deprecated">{children}</ExpandableCallout>
->>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
 );
 const Note = ({children}: {children: React.ReactNode}) => (
   <ExpandableCallout type="note">{children}</ExpandableCallout>
@@ -371,9 +365,6 @@ export const MDXComponents = {
   }) => <ExpandableExample {...props} type="DeepDive" />,
   Diagram,
   DiagramGroup,
-<<<<<<< HEAD
-  Gotcha,
-=======
   FullWidth({children}: {children: any}) {
     return children;
   },
@@ -383,7 +374,6 @@ export const MDXComponents = {
   Pitfall,
   Deprecated,
   Wip,
->>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
   HomepageHero,
   Illustration,
   IllustrationBlock,
