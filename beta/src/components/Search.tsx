@@ -99,14 +99,8 @@ export function Search({
   searchParameters = {
     hitsPerPage: 5,
   },
-<<<<<<< HEAD
-}) => {
-  const [isLoaded] = React.useState(true);
-  const [isShowing, setIsShowing] = React.useState(false);
-=======
 }: SearchProps) {
   const [isShowing, setIsShowing] = useState(false);
->>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
 
   const importDocSearchModalIfNeeded = useCallback(
     function importDocSearchModalIfNeeded() {
@@ -171,8 +165,7 @@ export function Search({
         </span>
       </button>
 
-      {isLoaded &&
-        isShowing &&
+      {isShowing &&
         createPortal(
           <DocSearchModal
             {...options}
