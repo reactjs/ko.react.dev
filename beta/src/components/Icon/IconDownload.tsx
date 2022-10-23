@@ -4,13 +4,8 @@
 
 import {memo} from 'react';
 
-<<<<<<< HEAD
-export const IconDownload = React.memo<JSX.IntrinsicElements['svg']>(
-  function IconArrowSmall({className}) {
-=======
 export const IconDownload = memo<JSX.IntrinsicElements['svg']>(
   function IconDownload({className}) {
->>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
     return (
       <svg
         width="1em"
