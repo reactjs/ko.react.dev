@@ -2,7 +2,7 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import {Children, useRef, useEffect, useState} from 'react';
+import {Children} from 'react';
 import * as React from 'react';
 import cn from 'classnames';
 import {Button} from 'components/Button';
@@ -77,7 +77,6 @@ export function Challenges({
   titleId = isRecipes ? 'examples' : 'challenges',
 }: ChallengesProps) {
   const challenges = parseChallengeContents(children);
-<<<<<<< HEAD
   const scrollAnchorRef = React.useRef<HTMLDivElement>(null);
 
   const [showHint, setShowHint] = React.useState(false);
@@ -85,23 +84,6 @@ export function Challenges({
   const [activeChallenge, setActiveChallenge] = React.useState(
     challenges[0].id
   );
-=======
-  const totalChallenges = challenges.length;
-  const scrollAnchorRef = useRef<HTMLDivElement>(null);
-  const queuedScrollRef = useRef<boolean>(false);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const currentChallenge = challenges[activeIndex];
-
-  useEffect(() => {
-    if (queuedScrollRef.current === true) {
-      queuedScrollRef.current = false;
-      scrollAnchorRef.current!.scrollIntoView({
-        block: 'start',
-        behavior: 'smooth',
-      });
-    }
-  });
->>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
 
   const handleChallengeChange = (challengeId: string) => {
     setShowHint(false);
