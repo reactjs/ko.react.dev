@@ -36,32 +36,10 @@ export function Page({children, toc}: PageProps) {
   return (
     <>
       <SocialBanner />
-<<<<<<< HEAD
-      <MenuProvider>
-        <SidebarContext.Provider value={routeTree}>
-          <div className="h-auto lg:h-screen flex flex-row">
-            <div className="no-bg-scrollbar h-auto lg:h-[calc(100%-40px)] lg:overflow-y-scroll fixed flex flex-row lg:flex-col py-0 top-16 sm:top-10 left-0 right-0 lg:max-w-xs w-full shadow lg:shadow-none z-50">
-              <Nav />
-              <Sidebar />
-            </div>
-
-            {/* No fallback UI so need to be careful not to suspend directly inside. */}
-            <React.Suspense fallback={null}>
-              <div className="flex flex-1 w-full h-full self-stretch">
-                <div className="w-full min-w-0">
-                  <main className="flex flex-1 self-stretch mt-16 sm:mt-10 flex-col items-end justify-around">
-                    {children}
-                    <Footer />
-                  </main>
-                </div>
-              </div>
-            </React.Suspense>
-=======
       <SidebarContext.Provider value={routeTree}>
         <div className="grid grid-cols-only-content lg:grid-cols-sidebar-content 2xl:grid-cols-sidebar-content-toc">
           <div className="fixed lg:sticky top-0 left-0 right-0 py-0 shadow lg:shadow-none z-50">
             <Nav />
->>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
           </div>
           {/* No fallback UI so need to be careful not to suspend directly inside. */}
           <Suspense fallback={null}>
