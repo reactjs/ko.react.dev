@@ -22,11 +22,7 @@
     "check-all": "npm-run-all prettier lint:fix tsc"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@codesandbox/sandpack-react": "v0.19.8-experimental.4",
-=======
     "@codesandbox/sandpack-react": "1.14.1",
->>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
     "@docsearch/css": "3.0.0-alpha.41",
     "@docsearch/react": "3.0.0-alpha.41",
     "@headlessui/react": "^1.7.0",
