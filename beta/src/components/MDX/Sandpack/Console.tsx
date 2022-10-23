@@ -50,28 +50,7 @@ export const SandpackConsole = ({visible}: {visible: boolean}) => {
       }
       if (message.type === 'console' && message.codesandbox) {
         setLogs((prev) => {
-<<<<<<< HEAD
           const newLogs = message.log.filter(({method}) => method === 'log');
-=======
-          const newLogs = message.log
-            .filter((consoleData) => {
-              if (
-                typeof consoleData.data[0] === 'string' &&
-                consoleData.data[0].indexOf('The above error occurred') !== -1
-              ) {
-                // Don't show React error addendum because
-                // we have a custom error overlay.
-                return false;
-              }
-              return true;
-            })
-            .map((consoleData) => {
-              return {
-                ...consoleData,
-                data: formatStr(...consoleData.data),
-              };
-            });
->>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
           let messages = [...prev, ...newLogs];
           while (messages.length > MAX_MESSAGE_COUNT) {
             messages.shift();
@@ -135,14 +114,8 @@ export const SandpackConsole = ({visible}: {visible: boolean}) => {
                 <div
                   key={id}
                   className={cn(
-<<<<<<< HEAD
                     'last:border-none border-b dark:border-gray-700 text-md p-1 pl-2 leading-6 font-mono',
                     `console-${getType(method)}`
-=======
-                    'first:border-none border-t dark:border-gray-700 text-md p-1 pl-2 leading-6 font-mono min-h-[32px] whitespace-pre-wrap',
-                    `console-${getType(method)}`,
-                    getColor(method)
->>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
                   )}>
                   <span className={cn('console-message')}>
                     {data.map((msg, index) => {

@@ -75,45 +75,6 @@ const SandboxShell = memo(function SandboxShell({
     <>
       <div
         className="shadow-lg dark:shadow-lg-dark rounded-lg"
-<<<<<<< HEAD
-        ref={containerRef}
-      >
-        <NavigationBar showDownload={isSingleFile} />
-        <SandpackThemeProvider theme={CustomTheme}>
-          <div
-            ref={sandpack.lazyAnchorRef}
-            className={cn(
-              'sp-layout sp-custom-layout',
-              showDevTools && devToolsLoaded && 'sp-layout-devtools',
-              isExpanded && 'sp-layout-expanded'
-            )}
-          >
-            <SandpackCodeEditor
-              showLineNumbers
-              showInlineErrors
-              showTabs={false}
-              showRunButton={false}
-              extensions={lintExtensions}
-              extensionsKeymap={emptyArray}
-            />
-            <Preview
-              className="order-last xl:order-2"
-              isExpanded={isExpanded}
-              lintErrors={lintErrors}
-            />
-            {isExpandable && (
-              <button
-                translate="yes"
-                className="flex text-base justify-between dark:border-card-dark bg-wash dark:bg-card-dark items-center z-10 rounded-t-none p-1 w-full order-2 xl:order-last border-b-1 relative top-0"
-                onClick={() => {
-                  const nextIsExpanded = !isExpanded;
-                  flushSync(() => {
-                    setIsExpanded(nextIsExpanded);
-                  });
-                  if (!nextIsExpanded && containerRef.current !== null) {
-                    scrollIntoView(containerRef.current, {
-                      scrollMode: 'if-needed',
-=======
         ref={containerRef}>
         <NavigationBar providedFiles={providedFiles} />
         <SandpackLayout
@@ -144,28 +105,10 @@ const SandboxShell = memo(function SandboxShell({
                     containerRef.current.scrollIntoViewIfNeeded();
                   } else {
                     containerRef.current.scrollIntoView({
->>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
                       block: 'nearest',
                       inline: 'nearest',
                     });
                   }
-<<<<<<< HEAD
-                }}
-              >
-                <span className="flex p-2 focus:outline-none text-primary dark:text-primary-dark">
-                  <IconChevron
-                    className="inline mr-1.5 text-xl"
-                    displayDirection={isExpanded ? 'up' : 'down'}
-                  />
-                  {isExpanded ? '숨기기' : '더 보기'}
-                </span>
-              </button>
-            )}
-          </div>
-
-          {showDevTools && (
-            <SandpackReactDevTools onLoadModule={onDevToolsLoad} />
-=======
                 }
               }}>
               <span className="flex p-2 focus:outline-none text-primary dark:text-primary-dark leading-[20px]">
@@ -176,7 +119,6 @@ const SandboxShell = memo(function SandboxShell({
                 {isExpanded ? 'Show less' : 'Show more'}
               </span>
             </button>
->>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
           )}
         </SandpackLayout>
 
