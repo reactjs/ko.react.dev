@@ -371,7 +371,7 @@ function MyComponent() {
 
 #### 서버 사이드 렌더링에서의 `React.Suspense` {#reactsuspense-in-server-side-rendering}
 서버 사이드 렌더링 중에 Suspense 경계(Suspense Boundaries)를 사용하면, 어플리케이션을 일시 중단하여 더 작은 덩어리로 렌더링 할 수 있습니다.
-컴포넌트 렌더링이 일시 중단되면 가장 가까운 Suspense boundary의 fallback을 렌더링하기 위해 우선 순위가 낮은 작업을 예약합니다. 만약 Fallback을 렌더링 하기 전에 컴포넌트 렌더링이 재개된다면(unsuspends), 우리는 실제 콘텐츠를 보여주고 fallback을 제거합니다.
+컴포넌트 렌더링이 일시 중단되면 가장 가까운 Suspense boundary의 fallback을 렌더링하기 위해 우선 순위가 낮은 작업을 예약합니다. Fallback을 렌더링 하기 전에 컴포넌트 렌더링이 재개된다면(unsuspends), 실제 콘텐츠를 보여주고 fallback을 제거합니다.
 
 
 #### Hydration 단계에서의 `React.Suspense` {#reactsuspense-during-hydration}
@@ -385,7 +385,7 @@ React.startTransition(callback)
 ```
 `React.startTransition` 는 제공된 콜백의 내부를 transition으로 표시할 수 있게합니다. 해당 메서드는 [`React.useTransition`](/docs/hooks-reference.html#usetransition) 를 사용할 수 없는 경우에 사용하도록 설계되었습니다.
 
-> 주의:
+> 주의
 >
 > Transition 업데이트는 click과 같은 우선순위가 높은 업데이트에 순서를 양보합니다.
 >
