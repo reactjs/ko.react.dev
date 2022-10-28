@@ -577,9 +577,9 @@ function Typeahead() {
 const [isPending, startTransition] = useTransition();
 ```
 
-Returns a stateful value for the pending state of the transition, and a function to start it.
+transition의 보류(pending) 상태에 대한 상태 저장 값과 시작 함수를 반환합니다.
 
-`startTransition` lets you mark updates in the provided callback as transitions:
+`startTransition` 을 사용하면 제공된 콜백의 업데이트를 transitions으로 표시할 수 있습니다:
 
 ```js
 startTransition(() => {
@@ -587,7 +587,7 @@ startTransition(() => {
 })
 ```
 
-`isPending` indicates when a transition is active to show a pending state:
+`isPending`은 보류 상태를 표시하기 위해 transition이 활성 상태임을 나타냅니다:
 
 ```js
 function App() {
@@ -609,11 +609,11 @@ function App() {
 }
 ```
 
-> Note:
+> 주의
 >
-> Updates in a transition yield to more urgent updates such as clicks.
+> Transition 업데이트는 click과 같은 우선순위가 높은 업데이트에 순서를 양보합니다.
 >
-> Updates in a transitions will not show a fallback for re-suspended content. This allows the user to continue interacting with the current content while rendering the update.
+> Transition 중 일어나는 업데이트는 다시 일시 중단된(re-suspended) 콘텐츠에 대한 fallback을 표시하지 않습니다. 이는 사용자가 업데이트를 렌더링하는 동안 계속하여 현재 콘텐츠와 상호작용 할 수 있도록 해줍니다.
 
 ### `useId` {#useid}
 
