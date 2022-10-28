@@ -621,13 +621,13 @@ function App() {
 const id = useId();
 ```
 
-`useId` is a hook for generating unique IDs that are stable across the server and client, while avoiding hydration mismatches.
+`useId`는 hydration 불일치를 방지하면서 서버와 클라이언트에서 안정적인 고유 ID를 생성하기 위한 hook입니다.
 
-> Note
+> 주의
 >
-> `useId` is **not** for generating [keys in a list](/docs/lists-and-keys.html#keys). Keys should be generated from your data.
+> `useId`는 [목록의 key](/docs/lists-and-keys.html#keys)를 생성하기 위한 것이 **아닙니다**. key는 데이터에서 생성되어야 합니다.
 
-For a basic example, pass the `id` directly to the elements that need it:
+예를 들어,  `id`를 필요한 요소에 직접 전달합니다:
 
 ```js
 function Checkbox() {
@@ -641,7 +641,7 @@ function Checkbox() {
 };
 ```
 
-For multiple IDs in the same component, append a suffix using the same `id`:
+동일한 컴포넌트의 여러 ID에 동일한 `id`를 사용하여 접미사를 추가합니다:
 
 ```js
 function NameFields() {
@@ -661,11 +661,11 @@ function NameFields() {
 }
 ```
 
-> Note:
+> 주의
 > 
-> `useId` generates a string that includes the `:` token. This helps ensure that the token is unique, but is not supported in CSS selectors or APIs like `querySelectorAll`.
+> `useId`는 `:` 토큰을 포함하는 문자열을 생성합니다. 이것은 해당 토큰이 고유함을 보장하는 데 도움이 되지만, `querySelectorAll`과 같은 CSS 셀렉터나 API에서는 지원되지 않습니다.
 > 
-> `useId` supports an `identifierPrefix` to prevent collisions in multi-root apps. To configure, see the options for [`hydrateRoot`](/docs/react-dom-client.html#hydrateroot) and [`ReactDOMServer`](/docs/react-dom-server.html).
+> `useId`는  `identifierPrefix`를 지원하여 다중 root 앱에서 충돌을 방지합니다. 설정하려면  [`hydrateRoot`](/docs/react-dom-client.html#hydrateroot) 및 [`ReactDOMServer`](/docs/react-dom-server.html) 옵션을 참조하세요.
 
 ## Library Hooks {#library-hooks}
 
