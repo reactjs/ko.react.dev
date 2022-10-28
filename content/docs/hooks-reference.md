@@ -541,18 +541,18 @@ const deferredValue = useDeferredValue(value);
 
 `useDeferredValue`는 값을 받고 보다 긴급한 업데이트를 연기하는 값의 새 복사본을 반환합니다. 만약 현재의 렌더링이 사용자 입력과 같은 긴급 업데이트의 결과인 경우, React는 이전 값을 반환한 다음 긴급 렌더링이 완료된 후 새 값을 렌더링합니다.
 
-This hook is similar to user-space hooks which use debouncing or throttling to defer updates. The benefits to using `useDeferredValue` is that React will work on the update as soon as other work finishes (instead of waiting for an arbitrary amount of time), and like [`startTransition`](/docs/react-api.html#starttransition), deferred values can suspend without triggering an unexpected fallback for existing content.
+이 hook은 업데이트를 연기하기 위해 debouncing 또는 throttling를 사용하는 user-space hook과 유사합니다. `useDeferredValue` 사용의 이점은, React가 다른 작업이 끝나는 즉시(임의의 시간을 기다리는 대신) 업데이트를 작업한다는 것이며,  [`startTransition`](/docs/react-api.html#starttransition)과 마찬가지로 지연된 값은 기존 컨텐츠에 대해 예기치 않은 fallback을 야기하지 않고 일시 중단할 수 있습니다.
 
-#### Memoizing deferred children {#memoizing-deferred-children}
-`useDeferredValue` only defers the value that you pass to it. If you want to prevent a child component from re-rendering during an urgent update, you must also memoize that component with [`React.memo`](/docs/react-api.html#reactmemo) or [`React.useMemo`](/docs/hooks-reference.html#usememo):
+
+#### 지연된 자식 memoizing {#memoizing-deferred-children}
+`useDeferredValue`는 사용자가 전달하는 값만 지연시킵니다. 긴급한 업데이트 중에 하위 요소가 리렌더링되지 않도록 하려면, [`React.memo`](/docs/react-api.html#reactmemo) 또는[`React.useMemo`](/docs/hooks-reference.html#usememo)를 사용하여 해당 구성 요소를 memoize시켜야 합니다.
 
 ```js
 function Typeahead() {
   const query = useSearchQuery('');
   const deferredQuery = useDeferredValue(query);
 
-  // Memoizing tells React to only re-render when deferredQuery changes,
-  // not when query changes.
+  // Memoizing은 query가 변경될 때가 아니라 deferredQuery가 변경될 때만 다시 렌더링하도록 합니다.
   const suggestions = useMemo(() =>
     <SearchSuggestions query={deferredQuery} />,
     [deferredQuery]
@@ -570,6 +570,8 @@ function Typeahead() {
 ```
 
 Memoizing the children tells React that it only needs to re-render them when `deferredQuery` changes and not when `query` changes. This caveat is not unique to `useDeferredValue`, and it's the same pattern you would use with similar hooks that use debouncing or throttling.
+
+자식을 memoize 하는것은 `query`의 변경이 아닌, `deferredQuery`가 변경될 때만 리렌더링하면 된다는 것을 나타냅니다. 이 원칙은 `useDeferredValue`를 사용할 때만 유일하게 적용되는 것이 아니라, debouncing 또는 throttling을 사용하는 유사한 hook에서도 동일한 패턴이 적용됩니다.
 
 ### `useTransition` {#usetransition}
 
