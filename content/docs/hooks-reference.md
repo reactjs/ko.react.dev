@@ -108,13 +108,17 @@ State Hook을 현재의 state와 동일한 값으로 갱신하는 경우 React�
 
 실행을 회피하기 전에 React에서 특정 컴포넌트를 다시 렌더링하는 것이 여전히 필요할 수도 있다는 것에 주의하세요. React가 불필요하게 트리에 그 이상으로 「더 깊게」는 관여하지 않을 것이므로 크게 신경 쓰지 않으셔도 됩니다만, 렌더링 시에 고비용의 계산을 하고 있다면 `useMemo`를 사용하여 그것들을 최적화할 수 있습니다.
 
-#### Batching of state updates {#batching-of-state-updates}
+#### state 갱신의 batch (일괄 처리) {#batching-of-state-updates}
 
-React may group several state updates into a single re-render to improve performance. Normally, this improves performance and shouldn't affect your application's behavior.
+React는 성능을 향상시키기 위해 여러 상태 업데이트를 하나의 re-render로 그룹화할 수 있습니다. 일반적으로 이렇게 하면 성능이 향상되고 어플리케이션 동작에 영향을 주지 않습니다.
+ 
+React 18 이전에는 React 이벤트 핸들러 내부의 업데이트만 일괄 처리되었습니다.
+React 18부터 [모든 업데이트에 대해 일괄 처리가 기본적으로 활성화됩니다](/blog/2022/03/08/react-18-upgrade-guide.html#automatic-batching).
 
-Before React 18, only updates inside React event handlers were batched. Starting with React 18, [batching is enabled for all updates by default](/blog/2022/03/08/react-18-upgrade-guide.html#automatic-batching). Note that React makes sure that updates from several *different* user-initiated events -- for example, clicking a button twice -- are always processed separately and do not get batched. This prevents logical mistakes.
 
-In the rare case that you need to force the DOM update to be applied synchronously, you may wrap it in [`flushSync`](/docs/react-dom.html#flushsync). However, this can hurt performance so do this only where needed.
+React는 버튼을 두 번 클릭하는 등 여러개의 *다른* 사용자 이벤트의 업데이트가 항상 별도로 처리되고 일괄 처리되지 않도록 합니다. 이렇게 하면 논리적 오류를 방지할 수 있습니다.
+
+DOM 업데이트를 강제로 동기식으로 적용해야 하는 경우는 드물지만, 이런 경우 [`flushSync`](/docs/react-dom.html#flushsync)를 적용할 수 있습니다. 그러나 이로 인해 성능이 저하될 수 있으므로 필요한 경우에만 수행하세요.
 
 ### `useEffect` {#useeffect}
 
@@ -152,13 +156,14 @@ useEffect(() => {
 
 그렇지만, 모든 effect가 지연될 수는 없습니다. 예를 들어 사용자에게 노출되는 DOM 변경은 사용자가 노출된 내용의 불일치를 경험하지 않도록 다음 화면을 다 그리기 이전에 동기화 되어야 합니다. (그 구분이란 개념적으로는 수동적 이벤트 리스너와 능동적 이벤트 리스너의 차이와 유사합니다) 이런 종류의 effect를 위해 React는 [`useLayoutEffect`](#uselayouteffect)라는 추가적인 Hook을 제공합니다. 그것은 `useEffect`와 동일한 시그니처를 가지고 있고 그것이 수행될 때에만 차이가 납니다.
 
-Additionally, starting in React 18, the function passed to `useEffect` will fire synchronously **before** layout and paint when it's the result of a discrete user input such as a click, or when it's the result of an update wrapped in [`flushSync`](/docs/react-dom.html#flushsync). This behavior allows the result of the effect to be observed by the event system, or by the caller of [`flushSync`](/docs/react-dom.html#flushsync).
+추가적으로, React 18부터는 클릭과 같은 개별 사용자 입력의 결과이거나 [`flushSync`](/docs/react-dom.html#flushsync)로 싸여있는 업데이트의 결과일 때, useEffect로 전달된 함수는 레이아웃과 페인트 전에 동기적으로 실행됩니다. 이를 통해 이벤트 시스템 또는 [`flushSync`](/docs/react-dom.html#flushsync) 호출자가 effect의 결과를 관찰할 수 있습니다.
 
-> Note
+> 주의
 > 
-> This only affects the timing of when the function passed to `useEffect` is called - updates scheduled inside these effects are still deferred. This is different than [`useLayoutEffect`](#uselayouteffect), which fires the function and processes the updates inside of it immediately.
+> 이는 `useEffect`에 전달된 함수가 호출되는 타이밍에만 영향을 미치며, 이러한 effect 내에서 예약된 업데이트는 여전히 지연됩니다. 이는 기능을 실행과 내부의 업데이트를 즉시 처리하는 `useLayoutEffect`와는 다릅니다.
 
-Even in cases where `useEffect` is deferred until after the browser has painted, it's guaranteed to fire before any new renders. React will always flush a previous render's effects before starting a new update.
+
+브라우저가 페인트를 칠할 때까지 `useEffect`가 연기되는 경우에도 새로운 렌더 전에 반드시 실행된다. React는 항상 새 업데이트를 시작하기 전에 이전 렌더의 effect를 실행합니다.
 
 #### 조건부 effect 발생 {#conditionally-firing-an-effect}
 
@@ -534,7 +539,7 @@ useDebugValue(date, date => date.toDateString());
 const deferredValue = useDeferredValue(value);
 ```
 
-`useDeferredValue` accepts a value and returns a new copy of the value that will defer to more urgent updates. If the current render is the result of an urgent update, like user input, React will return the previous value and then render the new value after the urgent render has completed.
+`useDeferredValue`는 값을 받고 보다 긴급한 업데이트를 연기하는 값의 새 복사본을 반환합니다. 만약 현재의 렌더링이 사용자 입력과 같은 긴급 업데이트의 결과인 경우, React는 이전 값을 반환한 다음 긴급 렌더링이 완료된 후 새 값을 렌더링합니다.
 
 This hook is similar to user-space hooks which use debouncing or throttling to defer updates. The benefits to using `useDeferredValue` is that React will work on the update as soon as other work finishes (instead of waiting for an arbitrary amount of time), and like [`startTransition`](/docs/react-api.html#starttransition), deferred values can suspend without triggering an unexpected fallback for existing content.
 
