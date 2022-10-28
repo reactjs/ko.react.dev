@@ -569,8 +569,6 @@ function Typeahead() {
 }
 ```
 
-Memoizing the children tells React that it only needs to re-render them when `deferredQuery` changes and not when `query` changes. This caveat is not unique to `useDeferredValue`, and it's the same pattern you would use with similar hooks that use debouncing or throttling.
-
 자식을 memoize 하는것은 `query`의 변경이 아닌, `deferredQuery`가 변경될 때만 리렌더링하면 된다는 것을 나타냅니다. 이 원칙은 `useDeferredValue`를 사용할 때만 유일하게 적용되는 것이 아니라, debouncing 또는 throttling을 사용하는 유사한 hook에서도 동일한 패턴이 적용됩니다.
 
 ### `useTransition` {#usetransition}
