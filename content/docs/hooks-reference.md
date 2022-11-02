@@ -108,15 +108,11 @@ State Hook을 현재의 state와 동일한 값으로 갱신하는 경우 React�
 
 실행을 회피하기 전에 React에서 특정 컴포넌트를 다시 렌더링하는 것이 여전히 필요할 수도 있다는 것에 주의하세요. React가 불필요하게 트리에 그 이상으로 「더 깊게」는 관여하지 않을 것이므로 크게 신경 쓰지 않으셔도 됩니다만, 렌더링 시에 고비용의 계산을 하고 있다면 `useMemo`를 사용하여 그것들을 최적화할 수 있습니다.
 
-#### state 갱신의 batch (일괄 처리) {#batching-of-state-updates}
+#### State 갱신의 batch (일괄 처리) {#batching-of-state-updates}
 
 React는 성능을 향상시키기 위해 여러 상태 업데이트를 하나의 re-render로 그룹화할 수 있습니다. 일반적으로 이렇게 하면 성능이 향상되고 어플리케이션 동작에 영향을 주지 않습니다.
  
-React 18 이전에는 React 이벤트 핸들러 내부의 업데이트만 일괄 처리되었습니다.
-React 18부터 [모든 업데이트에 대해 일괄 처리가 기본적으로 활성화됩니다](/blog/2022/03/08/react-18-upgrade-guide.html#automatic-batching).
-
-
-React는 버튼을 두 번 클릭하는 등 여러개의 *다른* 사용자 이벤트의 업데이트가 항상 별도로 처리되고 일괄 처리되지 않도록 합니다. 이렇게 하면 논리적 오류를 방지할 수 있습니다.
+React 18 이전에는 React 이벤트 핸들러 내부의 업데이트만 일괄 처리되었습니다. React 18부터는 [모든 업데이트에 대해 일괄 처리가 기본적으로 활성화됩니다](/blog/2022/03/08/react-18-upgrade-guide.html#automatic-batching). React는 버튼을 두 번 클릭하는 등 여러개의 *다른* 사용자 이벤트의 업데이트가 항상 별도로 처리되고 일괄 처리되지 않도록 합니다. 이렇게 하면 논리적 오류를 방지할 수 있습니다.
 
 DOM 업데이트를 강제로 동기식으로 적용해야 하는 경우는 드물지만, 이런 경우 [`flushSync`](/docs/react-dom.html#flushsync)를 적용할 수 있습니다. 그러나 이로 인해 성능이 저하될 수 있으므로 필요한 경우에만 수행하세요.
 
@@ -161,7 +157,6 @@ useEffect(() => {
 > 주의
 > 
 > 이는 `useEffect`에 전달된 함수가 호출되는 타이밍에만 영향을 미치며, 이러한 effect 내에서 예약된 업데이트는 여전히 지연됩니다. 이는 기능을 실행과 내부의 업데이트를 즉시 처리하는 `useLayoutEffect`와는 다릅니다.
-
 
 브라우저가 페인트를 칠할 때까지 `useEffect`가 연기되는 경우에도 새로운 렌더 전에 반드시 실행된다. React는 항상 새 업데이트를 시작하기 전에 이전 렌더의 effect를 실행합니다.
 
@@ -552,7 +547,8 @@ function Typeahead() {
   const query = useSearchQuery('');
   const deferredQuery = useDeferredValue(query);
 
-  // Memoizing은 query가 변경될 때가 아니라 deferredQuery가 변경될 때만 다시 렌더링하도록 합니다.
+  // Memoizing은 query가 변경될 때가 아니라 
+  // deferredQuery가 변경될 때만 다시 렌더링하도록 합니다.
   const suggestions = useMemo(() =>
     <SearchSuggestions query={deferredQuery} />,
     [deferredQuery]
@@ -579,7 +575,7 @@ const [isPending, startTransition] = useTransition();
 
 transition의 보류(pending) 상태에 대한 상태 저장 값과 시작 함수를 반환합니다.
 
-`startTransition` 을 사용하면 제공된 콜백의 업데이트를 transitions으로 표시할 수 있습니다:
+`startTransition` 을 사용하면 제공된 콜백의 업데이트를 transitions으로 표시할 수 있습니다.
 
 ```js
 startTransition(() => {
@@ -587,7 +583,7 @@ startTransition(() => {
 })
 ```
 
-`isPending`은 보류 상태를 표시하기 위해 transition이 활성 상태임을 나타냅니다:
+`isPending`은 보류 상태를 표시하기 위해 transition이 활성 상태임을 나타냅니다.
 
 ```js
 function App() {
@@ -627,7 +623,7 @@ const id = useId();
 >
 > `useId`는 [목록의 key](/docs/lists-and-keys.html#keys)를 생성하기 위한 것이 **아닙니다**. key는 데이터에서 생성되어야 합니다.
 
-예를 들어,  `id`를 필요한 요소에 직접 전달합니다:
+예를 들어,  `id`를 필요한 요소에 직접 전달합니다,
 
 ```js
 function Checkbox() {
@@ -641,7 +637,7 @@ function Checkbox() {
 };
 ```
 
-동일한 컴포넌트의 여러 ID에 동일한 `id`를 사용하여 접미사를 추가합니다:
+동일한 컴포넌트의 여러 ID에 동일한 `id`를 사용하여 접미사를 추가합니다.
 
 ```js
 function NameFields() {
