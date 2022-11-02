@@ -623,7 +623,7 @@ const id = useId();
 >
 > `useId`는 [목록의 key](/docs/lists-and-keys.html#keys)를 생성하기 위한 것이 **아닙니다**. key는 데이터에서 생성되어야 합니다.
 
-예를 들어,  `id`를 필요한 요소에 직접 전달합니다,
+예를 들어 `id`를 필요한 요소에 직접 전달합니다,
 
 ```js
 function Checkbox() {
