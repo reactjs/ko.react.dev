@@ -158,7 +158,7 @@ useEffect(() => {
 > 
 > 이는 `useEffect`에 전달된 함수가 호출되는 타이밍에만 영향을 미치며, 이러한 effect 내에서 예약된 업데이트는 여전히 지연됩니다. 이는 기능을 실행과 내부의 업데이트를 즉시 처리하는 `useLayoutEffect`와는 다릅니다.
 
-브라우저가 페인트를 칠할 때까지 `useEffect`가 연기되는 경우에도 새로운 렌더 전에 반드시 실행된다. React는 항상 새 업데이트를 시작하기 전에 이전 렌더의 effect를 실행합니다.
+브라우저가 페인팅을 완료할 때까지 `useEffect`가 연기되는 경우에도 새로운 렌더 전에 반드시 실행됩니다. React는 항상 새 업데이트를 시작하기 전에 이전 렌더의 effect를 실행합니다.
 
 #### 조건부 effect 발생 {#conditionally-firing-an-effect}
 
@@ -537,7 +537,6 @@ const deferredValue = useDeferredValue(value);
 `useDeferredValue`는 값을 받고 보다 긴급한 업데이트를 연기하는 값의 새 복사본을 반환합니다. 만약 현재의 렌더링이 사용자 입력과 같은 긴급 업데이트의 결과인 경우, React는 이전 값을 반환한 다음 긴급 렌더링이 완료된 후 새 값을 렌더링합니다.
 
 이 hook은 업데이트를 연기하기 위해 debouncing 또는 throttling를 사용하는 user-space hook과 유사합니다. `useDeferredValue` 사용의 이점은, React가 다른 작업이 끝나는 즉시(임의의 시간을 기다리는 대신) 업데이트를 작업한다는 것이며,  [`startTransition`](/docs/react-api.html#starttransition)과 마찬가지로 지연된 값은 기존 컨텐츠에 대해 예기치 않은 fallback을 야기하지 않고 일시 중단할 수 있습니다.
-
 
 #### 지연된 자식 memoizing {#memoizing-deferred-children}
 `useDeferredValue`는 사용자가 전달하는 값만 지연시킵니다. 긴급한 업데이트 중에 하위 요소가 리렌더링되지 않도록 하려면, [`React.memo`](/docs/react-api.html#reactmemo) 또는[`React.useMemo`](/docs/hooks-reference.html#usememo)를 사용하여 해당 구성 요소를 memoize시켜야 합니다.
