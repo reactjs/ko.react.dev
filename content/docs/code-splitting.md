@@ -139,9 +139,9 @@ function MyComponent() {
 ```
 
 ### Avoiding fallbacks {#avoiding-fallbacks}
-Any component may suspend as a result of rendering, even components that were already shown to the user. In order for screen content to always be consistent, if an already shown component suspends, React has to hide its tree up to the closest `<Suspense>` boundary. However, from the user's perspective, this can be disorienting.
+사용자에게 이미 표시된 컴포넌트를 포함하여, 어떤 컴포넌트는 렌더링의 결과가 중지될 수 있습니다. 화면 콘텐츠가 항상 일관되기 위해서, 만약에 이미 표시된 컴포넌트를 중지하려면,  React는 가장 가까운 `<Suspense>` 영역에 트리 형태로 숨기도록 해야 합니다. 그러나 사용자의 관점에서, 이것은 혼란스러울 수 있습니다.
 
-Consider this tab switcher:
+이 탭으로 전환을 고려해보세요: 
 
 ```js
 import React, { Suspense } from 'react';
@@ -170,9 +170,9 @@ function MyComponent() {
 
 ```
 
-In this example, if tab gets changed from `'photos'` to `'comments'`, but `Comments` suspends, the user will see a glimmer. This makes sense because the user no longer wants to see `Photos`, the `Comments` component is not ready to render anything, and React needs to keep the user experience consistent, so it has no choice but to show the `Glimmer` above.
+이 예에서, 탭이 `'photos'`에서 `'comments'`로 변경되면, `댓글`이 정지되지만, 사용자는 잔상을 볼것입니다. 이것은 사용자가 더 이상 `사진`을 보고 싶어하지 않고, `댓글` 컴포넌트는 어떤한 렌더링할 준비가 되지 않았기 때문에, React는 사용자 경험을 일관되게 유지하는 것이 필요해서, 위에 `Glimmer` 표시하는 것 외에 선택의 여지가 없다는 것을 의미한다.
 
-However, sometimes this user experience is not desirable. In particular, it is sometimes better to show the "old" UI while the new UI is being prepared. You can use the new [`startTransition`](/docs/react-api.html#starttransition) API to make React do this:
+그러나 때때로 이러한 사용자 경험은 바람직하지 않습니다. 특히 새 UI를 준비하는 동안 "이전" UI를 표시하는 것이 더 나은 경우가 있습니다. 새로운 [`startTransition`](/docs/react-api.html#starttransition) API를 사용하여 React가 다음을 수행하도록 할 수 있습니다.
 
 ```js
 function handleTabSelect(tab) {
@@ -182,7 +182,7 @@ function handleTabSelect(tab) {
 }
 ```
 
-Here, you tell React that setting tab to `'comments'` is not an urgent update, but is a [transition](/docs/react-api.html#transitions) that may take some time. React will then keep the old UI in place and interactive, and will switch to showing `<Comments />` when it is ready. See [Transitions](/docs/react-api.html#transitions) for more info.
+여기서 탭을 `'comments'`로 설정하는 것은 긴급 업데이트가 아니라 시간이 걸릴 수 있는 [transition](/docs/react-api.html#transitions)임을 React에 알려줍니다. React는 그런 다음 이전 UI를 제자리에 유지하고 상호작용하면서 준비가 되면 `<Comments />` 표시로 전환합니다. 자세한 내용은 [Transitions](/docs/react-api.html#transitions)을 참조하세요.
 
 ### Error boundaries {#error-boundaries}
 네트워크 장애 같은 이유로 다른 모듈을 로드에 실패할 경우 에러를 발생시킬 수 있습니다. 이때 [Error Boundaries](/docs/error-boundaries.html)를 이용하여 사용자의 경험과 복구 관리를 처리할 수 있습니다.
