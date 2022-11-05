@@ -119,10 +119,10 @@ Strict 모드가 자동으로 부작용을 찾아주는 것은 불가능합니�
 컴포넌트의 constructor와 같은 메서드를 의도적으로 두 번 호출하면 strict mode가 이와 같은 패턴을 쉽게 찾을 수 있도록 합니다.
 
 > 주의
+>React 17에서 React는 `console.log()`와 같은 콘솔 메서드를 자동으로 수정하여 생명 주기 함수에 대한 두 번째 호출에서 로그를 끕니다. 그러나 [임시적인 해결책이 사용되는](https://github.com/facebook/react/issues/20090#issuecomment-715927125). 특정 경우에는 원하지 않는 동작이 발생할 수 있습니다.
+
 >
-> In React 17, React automatically modifies the console methods like `console.log()` to silence the logs in the second call to lifecycle functions. However, it may cause undesired behavior in certain cases where [a workaround can be used](https://github.com/facebook/react/issues/20090#issuecomment-715927125).
->
-> Starting from React 18, React does not suppress any logs. However, if you have React DevTools installed, the logs from the second call will appear slightly dimmed. React DevTools also offers a setting (off by default) to suppress them completely.
+> React 18부터는 로그를 숨기지 않습니다. 그러나 만약 React DevTools가 설치되어 있다면 두번째부터 호출 되는 로그들은 약간 흐리게 표시될 수 있습니다. 또한 React DevTools는 완전히 숨길 수 있는 세팅을(디폴트값은 off) 제공합니다. 
 
 ### 레거시 context API 검사 {#detecting-legacy-context-api}
 
