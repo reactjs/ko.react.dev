@@ -133,15 +133,15 @@ Strict 모드가 자동으로 부작용을 찾아주는 것은 불가능합니�
 [새로운 context API 문서](/docs/context.html)를 참조하여 새로운 버전으로 마이그레이션하시길 바랍니다.
 
 
-### Ensuring reusable state {#ensuring-reusable-state}
+### state 재사용하기 {#ensuring-reusable-state}
 
-In the future, we’d like to add a feature that allows React to add and remove sections of the UI while preserving state. For example, when a user tabs away from a screen and back, React should be able to immediately show the previous screen. To do this, React support remounting trees using the same component state used before unmounting.
+앞으로 리액트가 state를 유지하면서 UI 섹션을 추가 및 제거할 수 있는 기능을 추가하고자 합니다. 예를 들어, 사용자가 뒤로 가기를 눌러 현재 화면을 벗어나고자 할 때, React는 즉시 이전 화면을 보여줄 수 있어야 합니다. 이를 위해 React는 마운트 해제 전에 사용된 것과 동일한 구성 요소의 state를 사용하여 트리를 다시 삽입(mounting)할 수 있도록 지원합니다.
 
-This feature will give React better performance out-of-the-box, but requires components to be resilient to effects being mounted and destroyed multiple times. Most effects will work without any changes, but some effects do not properly clean up subscriptions in the destroy callback, or implicitly assume they are only mounted or destroyed once.
+이 기능은 React가 기존 틀에서 벗어나 더 나은 성능을 가지게 만들지만, 여러번 마운트 되고 삭제되어야 하기 때문에 컴포넌트는 탄력적이어야 합니다. 대부분의 효과는 다른 변경사항 없이 작동하지만, 일부 효과들은 삭제 콜백의 구독을 제대로 깨끗하게 처리하지 못하거나, 오직 한 번만 삽입되었다가 삭제되었다고 암묵적으로 가정합니다.
 
-To help surface these issues, React 18 introduces a new development-only check to Strict Mode. This new check will automatically unmount and remount every component, whenever a component mounts for the first time, restoring the previous state on the second mount.
+이러한 문제를 해결하기 위해 React 18은 Strict 모드에 새로운 개발 전용 검사를 도입했습니다. 이 새 검사는 컴포넌트가 처음으로 마운트될 때마다 모든 컴포넌트를 자동으로 마운트 해제하고 다시 마운트하여 이전의 state를 두번째 마운트에 다시 저장합니다.
 
-To demonstrate the development behavior you'll see in Strict Mode with this feature, consider what happens when React mounts a new component. Without this change, when a component mounts, React creates the effects:
+Strict 모드에서 이 기능이 어떻게 작동되는지를 시연하려면, React가 새로운 컴포넌트를 마운트할때 어떤 일이 일어나는지를 고려해주세요. 이 변화 없이는, 컴포넌트가 마운트 될때 React는 다음과 같은 효과를 생성합니다
 
 ```
 * React mounts the component.
@@ -149,7 +149,7 @@ To demonstrate the development behavior you'll see in Strict Mode with this feat
   * Effects are created.
 ```
 
-With Strict Mode starting in React 18, whenever a component mounts in development, React will simulate immediately unmounting and remounting the component:
+React 18에서 시작하는 Strict 모드를 사용하면, 개발 중에 컴포넌트가 마운트될 때마다, React는 컴포넌트를 즉시 마운트 해제하고 다시 마운트하여 시뮬레이션합니다.
 
 ```
 * React mounts the component.
@@ -163,9 +163,9 @@ With Strict Mode starting in React 18, whenever a component mounts in developmen
     * Effect setup code runs
 ```
 
-On the second mount, React will restore the state from the first mount. This feature simulates user behavior such as a user tabbing away from a screen and back, ensuring that code will properly handle state restoration.
+두 번째 마운트에서 React는 첫 번째 마운트의 state를 복원합니다. 이 기능은 사용자가 화면을 탭하여 뒤로가기를 하는 것과 같은 행동을 시뮬레이션하여 코드가 상태 복원을 적절하게 처리하도록 보장합니다.
 
-When the component unmounts, effects are destroyed as normal:
+컴포넌트가 마운트 해제되면 효과는 정상적으로 삭제됩니다.
 
 ```
 * React unmounts the component.
@@ -173,7 +173,7 @@ When the component unmounts, effects are destroyed as normal:
   * Effect effects are destroyed.
 ```
 
-Unmounting and remounting includes:
+마운트 해제 및 재마운트(remounting)에는 다음이 포함됩니다.
 
 - `componentDidMount`
 - `componentWillUnmount`
@@ -181,9 +181,10 @@ Unmounting and remounting includes:
 - `useLayoutEffect`
 - `useInsertionEffect`
 
-> Note:
+> 주의
 >
-> This only applies to development mode, _production behavior is unchanged_.
+> 이는 오직 개발 모드에만 적용되며 _배포 단계에는 적용이 되지 않습니다_.
 
-For help supporting common issues, see:
+
+일반적인 문제에 도움을 받으시려면 다음을 참조하십시오.
   - [How to support Reusable State in Effects](https://github.com/reactwg/react-18/discussions/18)
