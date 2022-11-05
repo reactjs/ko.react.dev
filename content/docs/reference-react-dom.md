@@ -113,9 +113,9 @@ Render a React element into the DOM in the supplied `container` and return a [re
 hydrate(element, container[, callback])
 ```
 
-> Note:
+> 주의
 >
-> `hydrate` has been replaced with `hydrateRoot` in React 18. See [hydrateRoot](/docs/react-dom-client.html#hydrateroot) for more info.
+> `hydrate`는 React 18에서 `hydrateRoot`로 대체되었습니다. 자세한 내용은 [hydrateRoot](/docs/react-dom-client.html#hydrateroot)를 참조하십시오.
 
 [`render()`](#render)와 동일하지만 HTML 콘텐츠가 [`ReactDOMServer`](/docs/react-dom-server.html)로 렌더링 된 컨테이너에 이벤트를 보충하기 위해 사용됩니다. React는 기존 마크업에 이벤트 리스너를 연결합니다.
 
