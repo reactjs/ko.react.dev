@@ -6,37 +6,38 @@ category: Reference
 permalink: docs/react-dom.html
 ---
 
-The `react-dom` package provides DOM-specific methods that can be used at the top level of your app and as an escape hatch to get outside the React model if you need to.
+`react-dom` 패키지는 앱의 최상위 레벨에서 사용할 수 있는 DOM에 관련된 메서드를 제공하며, 필요할 경우 React 모델을 벗어나는 해결책으로 사용될 수 있습니다.
 
 ```js
 import * as ReactDOM from 'react-dom';
 ```
 
-If you use ES5 with npm, you can write:
+만약 ES5를 npm과 함께 쓰고 경우, 다음과 같이 코드를 작성할 수 있습니다:
 
 ```js
 var ReactDOM = require('react-dom');
 ```
 
-The `react-dom` package also provides modules specific to client and server apps:
+`react-dom`패키지는 클라이언트 및 서버 앱 전용 모듈도 제공합니다:
+
 - [`react-dom/client`](/docs/react-dom-client.html)
 - [`react-dom/server`](/docs/react-dom-server.html)
 
 ## 개요 {#overview}
 
-The `react-dom` package exports these methods:
+`react-dom` 패기지는 다음과 같은 메서드도 export합니다:
 - [`createPortal()`](#createportal)
 - [`flushSync()`](#flushsync)
 
-These `react-dom` methods are also exported, but are considered legacy:
+다음과 같은 `react-dom` 메서드 또한 export하지만, 레거시 메서드로 간주됩니다:
 - [`render()`](#render)
 - [`hydrate()`](#hydrate)
 - [`findDOMNode()`](#finddomnode)
 - [`unmountComponentAtNode()`](#unmountcomponentatnode)
 
-> Note: 
+> 주의
 > 
-> Both `render` and `hydrate` have been replaced with new [client methods](/docs/react-dom-client.html) in React 18. These methods will warn that your app will behave as if it's running React 17 (learn more [here](https://reactjs.org/link/switch-to-createroot)).
+> React 18에서는 `render` 와 `hydrate`가 새로운 [client methods](/docs/react-dom-client.html)로 대체되었습니다. 이 메서드들은 앱이 마치 React 17을 실행하는 것처럼 행동할 것이라는 경고를 보낼 것입니다. (자세한 내용은 [여기]를 참조하세요(https://reactjs.org/link/switch-to-createroot)).
 
 ### 브라우저 지원 {#browser-support}
 
