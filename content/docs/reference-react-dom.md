@@ -44,7 +44,7 @@ React는 모든 최신 브라우저를 지원하지만 오래된 버전의 브�
 
 > 주의
 >
-> 마이크로태스크를 지원하지 않는 인터넷 익스플로러 같은 이전 브라우저나 ES5 메서드는 지원하지 않습니다. [es5-shim과 es5-sham](https://github.com/es-shims/es5-shim) 같은 폴리필이 페이지에 포함되어 있으면 여러분의 앱이 오래된 브라우저에서도 작동할 수 있습니다. 하지만 이러한 방식을 선택하는 것은 여러분 스스로의 선택입니다.
+> 마이크로태스크를 지원하지 않는 인터넷 익스플로러 같은 이전 브라우저나 ES5 메서드는 지원하지 않습니다. [es5-shim과 es5-sham](https://github.com/es-shims/es5-shim) 같은 폴리필이 페이지에 포함되어 있으면 여러분의 앱이 오래된 브라우저에서도 작동할 수 있습니다. 하지만 이러한 방식을 적용하는 것은 여러분의 선택입니다.
 
 ## 참조 {#reference}
 
@@ -54,7 +54,7 @@ React는 모든 최신 브라우저를 지원하지만 오래된 버전의 브�
 createPortal(child, container)
 ```
 
-Creates a portal. Portals provide a way to [render children into a DOM node that exists outside the hierarchy of the DOM component](/docs/portals.html).
+portal을 생성합니다. portal은 [DOM 컴포넌트의 외부에 있는 자식을 DOM 노드로 렌더링](/docs/portals.html)하는 방법을 제공합니다. 
 
 ### `flushSync()` {#flushsync}
 
@@ -62,7 +62,7 @@ Creates a portal. Portals provide a way to [render children into a DOM node that
 flushSync(callback)
 ```
 
-Force React to flush any updates inside the provided callback synchronously. This ensures that the DOM is updated immediately.
+제공된 콜백 내부의 모든 업데이트를 동기적으로 만들도록 React를 강제합니다. 이렇게 하면 DOM이 즉시 업데이트됩니다.
 
 ```javascript
 // Force this state update to be synchronous.
