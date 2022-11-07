@@ -40,11 +40,11 @@ var ReactDOM = require('react-dom');
 
 ### 브라우저 지원 {#browser-support}
 
-React supports all modern browsers, although [some polyfills are required](/docs/javascript-environment-requirements.html) for older versions.
+React는 모든 최신 브라우저를 지원하지만 오래된 버전의 브라우저의 경우 [일부 폴리필(polifills)이 필요합니다](/docs/javascript-environment-requirements.html).
 
 > 주의
 >
-> We do not support older browsers that don't support ES5 methods or microtasks such as Internet Explorer. You may find that your apps do work in older browsers if polyfills such as [es5-shim and es5-sham](https://github.com/es-shims/es5-shim) are included in the page, but you're on your own if you choose to take this path.
+> 마이크로태스크를 지원하지 않는 인터넷 익스플로러 같은 이전 브라우저나 ES5 메서드는 지원하지 않습니다. [es5-shim과 es5-sham](https://github.com/es-shims/es5-shim) 같은 폴리필이 페이지에 포함되어 있으면 여러분의 앱이 오래된 브라우저에서도 작동할 수 있습니다. 하지만 이러한 방식을 선택하는 것은 여러분 스스로의 선택입니다.
 
 ## 참조 {#reference}
 
