@@ -2,6 +2,7 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
+import {Children, useRef, useEffect, useState} from 'react';
 import * as React from 'react';
 import cn from 'classnames';
 import {Button} from 'components/Button';
@@ -39,9 +40,9 @@ const parseChallengeContents = (
 
   let challenge: Partial<ChallengeContents> = {};
   let content: React.ReactElement[] = [];
-  React.Children.forEach(children, (child) => {
-    const {props} = child;
-    switch (props.mdxType) {
+  Children.forEach(children, (child) => {
+    const {props, type} = child;
+    switch ((type as any).mdxName) {
       case 'Solution': {
         challenge.solution = child;
         challenge.content = content;
@@ -54,7 +55,7 @@ const parseChallengeContents = (
         challenge.hint = child;
         break;
       }
-      case 'h3': {
+      case 'h4': {
         challenge.order = contents.length + 1;
         challenge.name = props.children;
         challenge.id = props.id;
@@ -76,6 +77,7 @@ export function Challenges({
   titleId = isRecipes ? 'examples' : 'challenges',
 }: ChallengesProps) {
   const challenges = parseChallengeContents(children);
+<<<<<<< HEAD
   const scrollAnchorRef = React.useRef<HTMLDivElement>(null);
 
   const [showHint, setShowHint] = React.useState(false);
@@ -83,6 +85,23 @@ export function Challenges({
   const [activeChallenge, setActiveChallenge] = React.useState(
     challenges[0].id
   );
+=======
+  const totalChallenges = challenges.length;
+  const scrollAnchorRef = useRef<HTMLDivElement>(null);
+  const queuedScrollRef = useRef<boolean>(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const currentChallenge = challenges[activeIndex];
+
+  useEffect(() => {
+    if (queuedScrollRef.current === true) {
+      queuedScrollRef.current = false;
+      scrollAnchorRef.current!.scrollIntoView({
+        block: 'start',
+        behavior: 'smooth',
+      });
+    }
+  });
+>>>>>>> 822330c3dfa686dbb3424886abce116f20ed20e6
 
   const handleChallengeChange = (challengeId: string) => {
     setShowHint(false);
