@@ -12,13 +12,13 @@ permalink: docs/react-dom.html
 import * as ReactDOM from 'react-dom';
 ```
 
-만약 ES5를 npm과 함께 쓰고 경우, 다음과 같이 코드를 작성할 수 있습니다:
+만약 ES5를 npm과 함께 쓰고 경우, 다음과 같이 코드를 작성할 수 있습니다.
 
 ```js
 var ReactDOM = require('react-dom');
 ```
 
-`react-dom`패키지는 클라이언트 및 서버 앱 전용 모듈도 제공합니다:
+`react-dom`패키지는 클라이언트 및 서버 앱 전용 모듈도 제공합니다.
 
 - [`react-dom/client`](/docs/react-dom-client.html)
 - [`react-dom/server`](/docs/react-dom-server.html)
@@ -29,7 +29,7 @@ var ReactDOM = require('react-dom');
 - [`createPortal()`](#createportal)
 - [`flushSync()`](#flushsync)
 
-다음과 같은 `react-dom` 메서드 또한 export하지만, 레거시 메서드로 간주됩니다:
+다음과 같은 `react-dom` 메서드 또한 export하지만, 레거시 메서드로 간주됩니다.
 - [`render()`](#render)
 - [`hydrate()`](#hydrate)
 - [`findDOMNode()`](#finddomnode)
