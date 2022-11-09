@@ -16,7 +16,7 @@ title: 컴포넌트 순수하게 유지하기
 
 </YouWillLearn>
 
-## 순수성: 공식으로서의 컴포넌트 {purity-components-as-formulas*/}
+## 순수성: 공식으로서의 컴포넌트 {/*purity-components-as-formulas*/}
 
 컴퓨터 과학에서(특히 함수형 프로그래밍의 세계에서는) [순수 함수](https://wikipedia.org/wiki/Pure_function)는 다음과 같은 특징을 지니고 있는 함수입니다.
 
