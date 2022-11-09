@@ -10,17 +10,17 @@ React 컴포넌트는 다른 컴포넌트와 통신할 때 **props**를 사용�
 
 <YouWillLearn>
 
-* 컴포넌트 사이에서 props를 어떻게 전달하는가
-* 컴포넌트 안에 있는 props를 어떻게 이해하는가
-* props 안의 고정된 value를 어떻게 특정하는가
-* JSX를 컴포넌트로 어떻게 전달하는가
-* props를 어떻게 다시 바꾸는가
+* 컴포넌트에 props를 전달하기
+* 컴포넌트의 props를 읽기
+* 컴포넌트이 props에 기본값 지정하기
+* 컴포넌트에 JSX를 전달하기
+* 시간에 따라 props가 어떻게 변경되는지
 
 </YouWillLearn>
 
 ## 밀접한 props {/*familiar-props*/}
 
-Props는 JSX 태그를 사용해서 전달하는 정보입니다. 예를 들어, `className`, `src`, `alt`, `width`, 그리고 `height`는 `<img>`태그에 정보를 전달하는 props 입니다.
+Props는 JSX 태그에 전달하는 정보입니다. 예를 들어 `className`, `src`, `alt`, `width`, 그리고 `height`는 `<img>`에 전달 할 수 있는 props들중 일부입니다.
 
 <Sandpack>
 
