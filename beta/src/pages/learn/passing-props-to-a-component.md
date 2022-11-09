@@ -98,7 +98,7 @@ function Avatar({ person, size }) {
 
 `Avatar`에 약간의 로직을 더할 때, `person` 과 `size` props는 렌더링할 때 사용합니다.
 
-이제 `Avatar`에서 다양한 방법으로 여러 props를 랜더링 할 수 있습니다. props에 담겨있는 변수들의 값을 조절해보세요!
+이제 `Avatar`에서 다양한 방법으로 여러 props를 렌더링 할 수 있습니다. props에 담겨있는 변수들의 값을 조절해 보세요!
 
 <Sandpack>
 
@@ -164,9 +164,9 @@ body { min-height: 120px; }
 
 </Sandpack>
 
-props를 사용하면 부모 컴포넌트와 자식 컴포넌트가 독립적으로 동작하게 할 수 있니다. 예를 들어서, `Avatar`에서 별도로 바꾸지 않더라도 `Profile` 에 있는 props인 `person`이나 `size` 를 조정할 수 있습니다. 비슷한 예로는, `Profile`에 있는 props를 변경하지 않더라도, `Avatar`에서 props로 값을 전달해 주는 방법을 바꿀 수 있습니다. 
+props를 사용하면 부모 컴포넌트와 자식 컴포넌트가 독립적으로 동작하게 할 수 있니다. 예를 들어서, `Avatar`에서 별도로 바꾸지 않더라도 `Profile`에 있는 props인 `person`이나 `size`를 조정할 수 있습니다. 비슷한 예로는, `Profile`에 있는 props를 변경하지 않더라도, `Avatar`에서 props로 값을 전달해 주는 방법을 바꿀 수 있습니다. 
 
-props를 "문을 여닫기 위한 둥근 손잡이" 정도로 생각하고 있을 것입니다. props는 함수 안에서 작동하는 많은 인자와 같다고 볼 수 있지만, 사실 컴포넌트 내부에 있는 유일한 인자 입니다! React 컴포넌트 함수들은 `props`라는 객체의 한 개의 인자를 가지고 있습니다.
+props를 "문을 여닫기 위한 둥근 손잡이" 정도로 생각하고 있을 것입니다. props는 함수 안에서 볼 수 있는 보편적인 인자와 같다고 볼 수 있지만, 사실 컴포넌트 내부에 있는 유일한 인자입니다! React 컴포넌트 함수들은 `props`라는 객체의 한 개의 인자를 가지고 있습니다.
 
 ```js
 function Avatar(props) {
@@ -180,7 +180,7 @@ function Avatar(props) {
 
 <Gotcha>
 
-props를 선언할 때 **`{`과`}`으로 이루어진 한 쌍과 안에 있는 핵심인 `(`와`)`으로 이루어진 한 쌍을** 잊지 마세요.
+props를 선언할 때 ** `(`와`)`안에 있는 핵심인 `{`과`}`가 한 쌍인 것을** 잊지 마세요.
 
 ```js
 function Avatar({ person, size }) {
