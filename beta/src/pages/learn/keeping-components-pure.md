@@ -168,7 +168,7 @@ React는 개발 중에 각 컴포넌트의 함수를 두 번 호출하는 "엄�
 <Sandpack>
 
 ```js
-function Cup({guest}) {
+function Cup({ guest }) {
   return <h2>Tea cup for guest #{guest}</h2>;
 }
 
