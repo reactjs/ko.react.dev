@@ -176,7 +176,7 @@ function Avatar(props) {
 }
 ```
 
-보통 객체 그 자체인 `props` 전체가 필요하지는 않고, 개별적인 props를 분해 할당해서 사용합니다.
+보통 객체인 `props` 를 직접 변수로 사용하기 보다는 , 개별적인 props를 분해 할당해서 사용합니다.
 
 <Gotcha>
 
