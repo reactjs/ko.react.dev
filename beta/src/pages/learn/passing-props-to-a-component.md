@@ -98,7 +98,7 @@ function Avatar({ person, size }) {
 
 `Avatar`에 약간의 로직을 더할 때, `person` 과 `size` props는 렌더링할 때 사용합니다.
 
-이제 `Avatar`에서 서로 다른 props와 다른 방식들로 렌더링하는 것을 구성할 수 있습니다. 보기에 아슬아슬한 부분을 고치세요!
+이제 `Avatar`에서 다양한 방법으로 여러 props를 랜더링 할 수 있습니다. props에 담겨있는 변수들의 값을 조절해보세요!
 
 <Sandpack>
 
