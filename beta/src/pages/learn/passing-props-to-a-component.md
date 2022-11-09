@@ -51,11 +51,11 @@ body { min-height: 120px; }
 
 </Sandpack>
 
-`<img>`태그에 전달하는 props는 미리 정의되어 있습니다. (ReactDOM은 [HTML 표준]을 따른다(https://www.w3.org/TR/html52/semantics-embedded-content.html#the-img-element)). 하지만 `<Avatar>` 태그와 같이 다시 원하는 대로 조립함으로써, 당신은 *당신만의* 컴포넌트에 어떠한 props든 전달해줄 수 있습니다. 여기 예시를 보며 알아보자!
+`<img>`태그에 전달할 수 있는 props들은 미리 정의되어 있습니다 (ReactDOM은 [HTML 표준]을 따릅니다.(https://www.w3.org/TR/html52/semantics-embedded-content.html#the-img-element)). 그러나 `<Avatar>`와 같이 *여러분이 직접 작성한* 컴포넌트에는 해당 컴포넌트들을 커스터마이즈하기 위해 어떤 props도 전달할 수 있습니다. 같이 알아봅시다!
 
-## 컴포넌트 간에 props전달하기 {/*컴포넌트 간에 props 전달하기*/}
+## 컴포넌트 간에 props전달하기 {/*passing-props-to-a-component*/}
 
-주어진 예시에서, `Profile` 컴포넌트는 자식 컴포넌트인 `Avatar`컴포넌트에 어떠한 props도 전달하고 있지 않습니다.
+아래 코드에서 `Profile` 컴포넌트는 자식 컴포넌트인 `Avatar`컴포넌트에 어떠한 props도 전달하고 있지 않습니다.
 
 ```js
 export default function Profile() {
@@ -67,9 +67,9 @@ export default function Profile() {
 
 `Avatar` 컴포넌트에 props를 주려면 2가지 단계를 거쳐야합니다.
 
-### 1단계: 자식 컴포넌트에 props 전달하기 {/*1단계-자식 컴포넌트에 props 전달하기*/}
+### 1단계: 자식 컴포넌트에 props 전달하기 {/*step-1-pass-props-to-the-child-component*/}```
 
-먼저, `Avatar` 컴포넌트로 props를 전달해야 합니다. 예를 들어서, 두 가지 props를 전달합니다.` person`(객체), 그리고 `size`(숫자) 입니다.
+먼저 `Avatar` 컴포넌트로 props를 전달해야 합니다. 예를 들어 `person`(객체), 그리고 `size`(숫자) 두 props를 전달합니다.
 
 ```js
 export default function Profile() {
@@ -82,17 +82,17 @@ export default function Profile() {
 }
 ```
 
->만약 `person=`이 중괄호 안에 있어서 당신을 헷갈리게 한다면, JSX 중괄호 안에 있는 객체임을 기억하세요. [그들은 그저 객체입니다](/learn/javascript-in-jsx-with-curly-braces#using-double-curlies-css-and-other-objects-in-jsx).
+> 만약 `person=`뒤에 따라 오는 중괄호가 여러분을 헷갈리게 한다면, 그것들은 그저 [JSX 내부의 객체](/learn/javascript-in-jsx-with-curly-braces#using-double-curlies-css-and-other-objects-in-jsx)임을 기억하세요.
 
 이제 당신은 `Avatar` 컴포넌트 안에 있는 props를 읽어올 수 있습니다.
 
-### 2단계: 자식 컴포넌트 안에 있는 props를 읽어오기 {/*2단계- 자식 컴포넌트 안에 있는 props를 읽어오기*/}
+### 2단계: 자식 컴포넌트 안에 있는 props를 읽어오기 {/*step-2-read-props-inside-the-child-component*/}
 
 `function Avatar` 바로 뒤에 오고, `({` and`})` 안에 쉼표로 분리된, `person, size` 이름을 나열함으로써 이 props를 읽어올 수 있습니다. props는 `Avatar` 내부에서, 변수와 함께 사용합니다.
 
 ```js
 function Avatar({ person, size }) {
-  // person,size 는 이곳에 들어갈 수 있습니다
+// person과 size는 여기에서 사용할 수 있습니다.
 }
 ```
 
