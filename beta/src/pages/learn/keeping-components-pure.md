@@ -50,9 +50,9 @@ React는 이러한 컨셉 기반에 설계되었습니다. **React는 작성되�
 <Sandpack>
 
 ```js App.js
-function Recipe({drinkers}) {
+function Recipe({ drinkers }) {
   return (
-    <ol>
+    <ol>    
       <li>Boil {drinkers} cups of milk.</li>
       <li>Add {2 * drinkers} spoons of masala spices.</li>
       <li>Remove from heat, and add {drinkers} spoons of tea.</li>
@@ -64,7 +64,7 @@ export default function App() {
   return (
     <section>
       <h1>Spiced Chai Recipe</h1>
-      <h2>For one</h2>
+      <h2>For one</h2> 
       <Recipe drinkers={1} />
       <h2>For a gathering</h2>
       <Recipe drinkers={4} />
@@ -109,7 +109,7 @@ export default function TeaSet() {
       <Cup />
       <Cup />
     </>
-  );
+  )
 }
 ```
 
@@ -124,7 +124,7 @@ export default function TeaSet() {
 <Sandpack>
 
 ```js
-function Cup({guest}) {
+function Cup({ guest }) {
   return <h2>Tea cup for guest #{guest}</h2>;
 }
 
@@ -153,7 +153,7 @@ export default function TeaSet() {
 
 React는 개발 중에 각 컴포넌트의 함수를 두 번 호출하는 "엄격 모드"를 제공합니다. **컴포넌트 함수를 두 번 호출함으로써, 엄격 모드는 이러한 규칙을 위반하는 컴포넌트를 찾는데 도움을 줍니다.**
 
-원래 예제에서 "Guest #1", "Guest #2", 그리고 "Guest #3" 대신 "Guest #2", "Guest #4", 그리고 "Guest #6"이 어떻게 표시되었는지 확인해보세요. 원래 함수는 순수하지 않았기에 두 번 호출하는 것이 이 부분을 망가트렸습니다. 그러나 고정된 순수 버전은 함수가 매번 두 번 호출되더라도 동작합니다. **순수 함수는 연산만 하므로 두 번 호출해도 아무 것도 변경되지 않습니다.**--`double(2)`을 두번 호출하는게 반환된 것을 변경하지 않고 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>을 두 번 푸는게 <MathI>y</MathI>의 답을 바꾸지 않는 것 처럼, 같은 입력이면 같은 출력입니다. 항상.
+원래 예시에서 "Guest #1", "Guest #2", 그리고 "Guest #3" 대신 "Guest #2", "Guest #4", 그리고 "Guest #6"이 어떻게 표시되었는지 확인해보세요. 원래 함수는 순수하지 않았기에 두 번 호출하는 것이 이 부분을 망가트렸습니다. 그러나 고정된 순수 버전은 함수가 매번 두 번 호출되더라도 동작합니다. **순수 함수는 연산만 하므로 두 번 호출해도 아무 것도 변경되지 않습니다.**--`double(2)`을 두번 호출하는게 반환된 것을 변경하지 않고 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>을 두 번 푸는게 <MathI>y</MathI>의 답을 바꾸지 않는 것 처럼, 같은 입력이면 같은 출력입니다. 항상.
 
 엄격 모드는 프로덕션에 영향을 주지 않기 때문에 사용자의 앱 속도가 느려지지 않습니다. 엄격 모드를 사용하기 위해서, 최상단 컴포넌트를 `<React.StrictMode>`로 감쌀 수 있습니다. 몇몇 프레임워크는 기본적으로 이 문법을 사용합니다.
 
@@ -161,7 +161,7 @@ React는 개발 중에 각 컴포넌트의 함수를 두 번 호출하는 "엄�
 
 ### 지역 변형: 컴포넌트의 작은 비밀 {/*local-mutation-your-components-little-secret*/}
 
-위의 예제에서 문제는 렌더링하는 동안 컴포넌트가 기존 변수를 변경했다는 것이다. 이것은 **"변형"**으로 불리워서 조금 무섭게 들립니다. 순수 함수는 함수 스코프 밖의 변수나 호출 전에 생성된 객체를 변경하지 않습니다.
+위의 예시에서 문제는 렌더링하는 동안 컴포넌트가 기존 변수를 변경했다는 것이다. 이것은 **"변형"**으로 불리워서 조금 무섭게 들립니다. 순수 함수는 함수 스코프 밖의 변수나 호출 전에 생성된 객체를 변경하지 않습니다.
 
 그러나, **렌더링하는 동안 _그냥_ 만든 변수와 객체를 변경하는 것은 전혀 문제가 없습니다.** 이번 예시에서는, `[]` 배열을 만들고, `cups` 변수에 할당하고, 컵 한 묶음을 `push` 할 것입니다.
 
@@ -187,19 +187,19 @@ export default function TeaGathering() {
 
 하지만, `TeaGathering`안에 _동일한 렌더링중에_ 생성되었기 때문에 괜찮습니다. `TeaGathering`밖에 어떤 코드도 이 현상이 벌어졌다는 것조차 모를 겁니다. 이 현상은 **"지역 변형"** 이라 불립니다 - 이 컴포넌트의 작은 비밀 같은 거죠.
 
-## 부작용을 _일으킬 수 있는_ 지점 {/*where-you-*can*-cause-side-effects*/}
+## 부작용을 _일으킬 수 있는_ 지점 {/*where-you-_can_-cause-side-effects*/}
 
 함수형 프로그래밍은 순수성에 크게 의존하지만, 언젠가는, 어딘가에서, _무언가가_ 바뀌어야 합니다. 그것이 프로그래밍의 요점입니다! 이러한 변화들-화면을 업데이트하고, 애니메이션을 시작하고, 데이터를 변경하는 것을 **사이드 이펙트**라고 합니다. 렌더링중에 발생하는 것이 아니라 _"사이드에서,"_ 발생하는 현상입니다.
 
 리액트에선, **사이드 이펙트는 보통 [이벤트 핸들러](/learn/responding-to-events)에 포함됩니다.** 이벤트 핸들러는 리액트가 일부 작업을 수행할 때 반응하는 기능입니다-예를 들면 버튼을 클릭할 때처럼 말이죠. 이벤트 핸들러가 컴포넌트 _내부에_ 정의되었다 하더라도 렌더링 _중에는_ 실행되지 않습니다! **그래서 이벤트 핸들러는 순수할 필요가 없습니다.**
 
-다른 옵션을 모두 사용했지만 사이드 이펙트에 적합한 이벤트 핸들러를 찾을 수 없는 경우에도, 컴포넌트에서 [`useEffect`](/reference/useeffect) 호출을 사용하여 반환된 JSX에 해당 이벤트 핸들러를 연결할 수 있습니다. 이것은 리액트에게 사이드 이펙트가 허용될 때 렌더링 후 나중에 실행하도록 지시합니다. **그러나 이 접근 방식이 마지막 수단이 되어야 합니다.**
+다른 옵션을 모두 사용했지만 사이드 이펙트에 적합한 이벤트 핸들러를 찾을 수 없는 경우에도, 컴포넌트에서 [`useEffect`](/apis/useeffect) 호출을 사용하여 반환된 JSX에 해당 이벤트 핸들러를 연결할 수 있습니다. 이것은 리액트에게 사이드 이펙트가 허용될 때 렌더링 후 나중에 실행하도록 지시합니다. **그러나 이 접근 방식이 마지막 수단이 되어야 합니다.**
 
 가능하면 렌더링만으로 로직을 표현해 보세요. 이것이 당신을 얼마나 더 나아가게 할 수 있는지 알면 놀라게 될겁니다!
 
 <DeepDive title="리액트는 왜 순수함을 신경쓸까요?">
 
-순수 함수를 작성하려면 약간의 습관과 훈련이 필요합니다. 그러나 이건 또한 놀라운 기회를 열어줍니다:
+순수 함수를 작성하려면 약간의 습관과 훈련이 필요합니다. 그러나 이건 또한 놀라운 기회를 열어줍니다.
 
 - 컴포넌트는 다른 환경에서도 실행될 수 있습니다- 예를 들면 서버에서 말이죠! 동일한 입력에 대해 동일한 결과를 반환하기 때문에 하나의 컴포넌트는 많은 사용자 요청을 처리할 수 있습니다.
 - 입력이 변경되지 않은 컴포넌트 [렌더링을 건너뛰어](/learn/skipping-unchanged-trees) 성능을 향상시킬 수 있습니다. 순수 함수는 항상 동일한 결과를 반환하므로 캐시하기에 안전합니다.
@@ -211,7 +211,7 @@ export default function TeaGathering() {
 
 <Recap>
 
-- 컴포넌트는 순수해야만 합니다. 이것은 두가지를 의미합니다:
+- 컴포넌트는 순수해야만 합니다. 이것은 두가지를 의미합니다.
   - **자신의 일에 집중하세요.** 렌더링전에 존재했던 객체나 변수를 변경하지 않아야 합니다.
   - **같은 입력, 같은 결과물.** 입력이 같을 경우, 컴포넌트는 항상 같은 JSX를 반환해야 합니다.
 - 렌더링은 언제든지 발생할 수 있으므로 컴포넌트는 서로의 렌더링 순서에 의존하지 않아야 합니다.
@@ -238,19 +238,23 @@ export default function TeaGathering() {
 <Sandpack>
 
 ```js Clock.js active
-export default function Clock({time}) {
+export default function Clock({ time }) {
   let hours = time.getHours();
   if (hours >= 0 && hours <= 6) {
     document.getElementById('time').className = 'night';
   } else {
     document.getElementById('time').className = 'day';
   }
-  return <h1 id="time">{time.toLocaleTimeString()}</h1>;
+  return (
+    <h1 id="time">
+      {time.toLocaleTimeString()}
+    </h1>
+  );
 }
 ```
 
 ```js App.js hidden
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Clock from './Clock.js';
 
 function useTime() {
@@ -266,7 +270,9 @@ function useTime() {
 
 export default function App() {
   const time = useTime();
-  return <Clock time={time} />;
+  return (
+    <Clock time={time} />
+  );
 }
 ```
 
@@ -289,12 +295,12 @@ body > * {
 
 <Solution>
 
-`className`을 연산하고 렌더 출력에 포함해서 이 컴포넌트를 고칠 수 있습니다.:
+`className`을 연산하고 렌더 출력에 포함해서 이 컴포넌트를 고칠 수 있습니다.
 
 <Sandpack>
 
 ```js Clock.js active
-export default function Clock({time}) {
+export default function Clock({ time }) {
   let hours = time.getHours();
   let className;
   if (hours >= 0 && hours <= 6) {
@@ -302,12 +308,16 @@ export default function Clock({time}) {
   } else {
     className = 'day';
   }
-  return <h1 className={className}>{time.toLocaleTimeString()}</h1>;
+  return (
+    <h1 className={className}>
+      {time.toLocaleTimeString()}
+    </h1>
+  );
 }
 ```
 
 ```js App.js hidden
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Clock from './Clock.js';
 
 function useTime() {
@@ -323,7 +333,9 @@ function useTime() {
 
 export default function App() {
   const time = useTime();
-  return <Clock time={time} />;
+  return (
+    <Clock time={time} />
+  );
 }
 ```
 
@@ -364,18 +376,18 @@ body > * {
 
 ```js Profile.js
 import Panel from './Panel.js';
-import {getImageUrl} from './utils.js';
+import { getImageUrl } from './utils.js';
 
 let currentPerson;
 
-export default function Profile({person}) {
+export default function Profile({ person }) {
   currentPerson = person;
   return (
     <Panel>
       <Header />
       <Avatar />
     </Panel>
-  );
+  )
 }
 
 function Header() {
@@ -396,9 +408,9 @@ function Avatar() {
 ```
 
 ```js Panel.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
-export default function Panel({children}) {
+export default function Panel({ children }) {
   const [open, setOpen] = useState(true);
   return (
     <section className="panel">
@@ -417,34 +429,32 @@ import Profile from './Profile.js';
 export default function App() {
   return (
     <>
-      <Profile
-        person={{
-          imageId: 'lrWQx8l',
-          name: 'Subrahmanyan Chandrasekhar',
-        }}
-      />
-      <Profile
-        person={{
-          imageId: 'MK3eW3A',
-          name: 'Creola Katherine Johnson',
-        }}
-      />
+      <Profile person={{
+        imageId: 'lrWQx8l',
+        name: 'Subrahmanyan Chandrasekhar',
+      }} />
+      <Profile person={{
+        imageId: 'MK3eW3A',
+        name: 'Creola Katherine Johnson',
+      }} />
     </>
-  );
+  )
 }
 ```
 
 ```js utils.js hidden
 export function getImageUrl(person, size = 's') {
-  return 'https://i.imgur.com/' + person.imageId + size + '.jpg';
+  return (
+    'https://i.imgur.com/' +
+    person.imageId +
+    size +
+    '.jpg'
+  );
 }
 ```
 
 ```css
-.avatar {
-  margin: 5px;
-  border-radius: 50%;
-}
+.avatar { margin: 5px; border-radius: 50%; }
 .panel {
   border: 1px solid #aaa;
   border-radius: 6px;
@@ -452,10 +462,7 @@ export function getImageUrl(person, size = 's') {
   padding: 10px;
   width: 200px;
 }
-h1 {
-  margin: 5px;
-  font-size: 18px;
-}
+h1 { margin: 5px; font-size: 18px; }
 ```
 
 </Sandpack>
@@ -562,7 +569,7 @@ h1 { margin: 5px; font-size: 18px; }
 
 </Solution>
 
-### 깨진 StoryTray를 수리해보세요 {fix-a-broken-story-tray*/}
+### 깨진 StoryTray를 수리해보세요 {/*fix-a-broken-story-tray*/}
 
 회사의 CEO가 온라인 시계 앱에 "Story"를 추가해 달라고 요청했는데 거절할 수 없는 상황입니다. "Create Story" 플레이스홀더 뒤에 `stories` 목록을 받는 `StoryTray`컴포넌트를 작성했습니다.
 
@@ -666,7 +673,7 @@ li {
 
 `StoryTray` 함수는 순수하지 않습니다. 전달된 `stories` 배열(프로퍼티!)에서 `push`를 호출하면 `StroyTray`가 렌더링을 시작하기 *전에* 객체를 변경합니다. 이로 인해 버그가 발생하고 예측하기가 매우 어렵습니다..
 
-가장 간단한 해결 방법은 배열을 전혀 건드리지 않고 "Create Story"를 별도로 렌더링하는 것입니다:
+가장 간단한 해결 방법은 배열을 전혀 건드리지 않고 "Create Story"를 별도로 렌더링하는 것입니다.
 
 <Sandpack>
 
@@ -750,7 +757,7 @@ li {
 
 </Sandpack>
 
-또는 항목을 추가하기 전에 *새로운* 배열(기존 배열을 복사해서)을 생성할 수 있습니다:
+또는 항목을 추가하기 전에 *새로운* 배열(기존 배열을 복사해서)을 생성할 수 있습니다.
 
 <Sandpack>
 
