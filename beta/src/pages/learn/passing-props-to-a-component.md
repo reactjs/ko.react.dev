@@ -200,7 +200,7 @@ function Avatar(props) {
 
 </Gotcha>
 
-## prop에 들어가는 디폴트 값 특정하기{/*prop에 들어가는 디폴트 값 특정하기*/}
+## prop에 들어가는 디폴트 값 특정하기 {/*specifying-a-default-value-for-a-prop*/}
 
 어떠한 값도 주어지지 않았을 때 prop에 기본적인 값을 주고 싶다면 대비책으로, `=`을 넣고 비구조화하여 변수에 할당한 직후에 파라미터 앞에 기본적인 값을 줄 수 있습니다.
 
@@ -349,7 +349,7 @@ export function getImageUrl(person, size = 's') {
 
 <Illustration src="/images/docs/illustrations/i_children-prop.png" alt='A puzzle-like Card tile with a slot for "children" pieces like text and Avatar' />
 
-## props는 시간에 따라 어떻게 변하는가 {/*props는 시간에 따라 어떻게 변하는가*/}
+## props는 시간에 따라 어떻게 변하는가 {/*how-props-change-over-time*/}
 
  `Clock` 컴포넌트는 부모 컴포넌트로부터 2가지 props들을 받습니다. `color` 그리고 `time`입니다. (부모 컴포넌트의 코드는 아직 접하지 않은 [state](/learn/state-a-components-memory) 을 사용해서 props를 보냅니다. )
 
@@ -425,7 +425,7 @@ export default function App() {
 
 <Challenges>
 
-### 컴포넌트 추출하기{/*컴포넌트 추출하기*/}
+### 컴포넌트 추출하기 {/*extract-a-component*/}
 
 이 `Gallery` 컴포넌트는 두 가지 프로필에 사용된 마크업과 매우 유사한 마크업을 포함하고 있습니다. `Profile` 컴포넌트에서 중복을 제거하세요. 어떤 props를 전달해야할지 선택 해야합니다.
 
@@ -919,7 +919,7 @@ props는 이미지들을 요청하고 앞에서 보았던 `<Avatar>` 컴포넌�
 
 </Solution>
 
-### `자식` prop을 JSX 전달하기 {/*`자식` prop을 JSX 전달하기 */}
+### `자식` prop을 JSX 전달하기 {/*passing-jsx-in-a-children-prop*/}
 
 `Card` 컴포넌트에 있는 마크업에서 추출하고, `children` prop을 JSX의 다른 값을 전달하기 위해 사용하세요.
 
