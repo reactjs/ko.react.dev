@@ -54,7 +54,7 @@ React는 모든 최신 브라우저를 지원하지만 오래된 버전의 브�
 createPortal(child, container)
 ```
 
-portal을 생성합니다. portal은 [DOM 컴포넌트의 외부에 있는 자식을 DOM 노드로 렌더링](/docs/portals.html)하는 방법을 제공합니다. 
+Portal을 생성합니다. portal은 [DOM 컴포넌트의 외부에 있는 자식을 DOM 노드로 렌더링](/docs/portals.html)하는 방법을 제공합니다. 
 
 ### `flushSync()` {#flushsync}
 
