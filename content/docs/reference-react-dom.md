@@ -36,7 +36,7 @@ var ReactDOM = require('react-dom');
 
 > 주의
 > 
-> React 18에서는 `render` 와 `hydrate`가 새로운 [client methods](/docs/react-dom-client.html)로 대체되었습니다. 이 메서드들은 앱이 마치 React 17을 실행하는 것처럼 행동할 것이라는 경고를 보낼 것입니다. (자세한 내용은 [여기]를 참조하세요(https://reactjs.org/link/switch-to-createroot)).
+> React 18에서는 `render` 와 `hydrate`가 새로운 [client methods](/docs/react-dom-client.html)로 대체되었습니다. 이 메서드들은 앱이 마치 React 17을 실행하는 것처럼 행동할 것이라는 경고를 보낼 것입니다. (자세한 내용은 [여기](https://reactjs.org/link/switch-to-createroot)를 참조하세요).
 
 ### 브라우저 지원 {#browser-support}
 
