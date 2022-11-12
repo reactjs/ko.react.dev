@@ -267,7 +267,7 @@ function Profile(props) {
 </Card>
 ```
 
-JSX 태그를 사용하여 내용을 중첩하면, 부모 컴포넌트가 해당 내용을 `자식` prop으로 수신합니다. 예를 들어, `Card` 컴포넌트는 `<Avatar />`로 설정된 `자식` props를 받아서 div로 렌더링합니다.
+JSX 태그를 사용하여 내용을 중첩하면, 부모 컴포넌트가 해당 내용을 `자식` prop을 사용하여 수신합니다. 예를 들어, 다음과 같은 `Card` 컴포넌트는 `<Avatar />`컴포넌트에 포함된 `자식` prop으로 해당 내용을 전달받아 div로 렌더링 합니다.
 
 <Sandpack>
 
@@ -343,15 +343,15 @@ export function getImageUrl(person, size = 's') {
 
 </Sandpack>
 
-`Card` 컴포넌트가 어떤 내용을 감싸고 있는지 나타내는 약간의 주석과 함께 `<Card>`안에 `<Avatar>`를 넣는 것으로 대체하세요. 컴포넌트 내부에서 어떻게 렌더링이 진행되는지 "알" 필요 없습니다. 다양한 상황에서 알맞고 유연한 컴포넌트 디자인 패턴들을 볼 수 있습니다. 
+`Card` 컴포넌트가 어떤 내용을 감싸고 있는지 나타내는 약간의 주석과 함께 `<Card>`안에 `<Avatar>`를 넣는 것으로 대체하세요. 컴포넌트 내부에서 어떻게 렌더링이 진행되는지 "알" 필요 없습니다. 상황에 따라 유연하게 사용할 수 있는 컴포넌트 디자인 패턴들을 볼 수 있습니다. 
 
-`자식` 컴포넌트의 prop을 "전체적으로" 부모 컴포넌트에 JSX로 값을 받아서 채워졌다고 생각할 수 있습니다. 눈에 보이는 포장지를 위해 `자식` props를 사용합니다. panels, grids, 그리고 다른 요소들도 마찬가지입니다. [Extracting Layout Components](/learn/extracting-layout-components)에서 더 살펴볼 수 있습니다. 
+`자식` 컴포넌트의 prop을 "전체적으로" 부모 컴포넌트에 JSX로 값을 받아서 채워졌다고 생각할 수 있습니다. 값을 전달받아서 채워졌다는 것을 확실히 확인하기 위해서 `자식` prop을 사용합니다. panels, grids, 그리고 다른 요소들도 마찬가지입니다. [Extracting Layout Components](/learn/extracting-layout-components)에서 더 살펴볼 수 있습니다. 
 
 <Illustration src="/images/docs/illustrations/i_children-prop.png" alt='A puzzle-like Card tile with a slot for "children" pieces like text and Avatar' />
 
 ## props는 시간에 따라 어떻게 변하는가 {/*how-props-change-over-time*/}
 
- `Clock` 컴포넌트는 부모 컴포넌트로부터 2가지 props들을 받습니다. `color` 그리고 `time`입니다. (부모 컴포넌트의 코드는 아직 접하지 않은 [state](/learn/state-a-components-memory) 을 사용해서 props를 보냅니다. )
+ `Clock` 컴포넌트는 부모 컴포넌트로부터 2가지 props를 받습니다. `color` 그리고 `time`입니다. (부모 컴포넌트의 코드는 아직 접하지 않은 [state](/learn/state-a-components-memory) 을 사용해서 props를 보냅니다. )
 
 선택 상자의 색깔들을 바꿔보세요.
 
@@ -403,7 +403,7 @@ export default function App() {
 
 </Sandpack>
 
-이 예제는 **시간에 지남에 따라 컴포넌트가 다른 props를 받는다는 것을**나타냅니다. Props는 항상 정적이지 않습니다! 여기, `time` props는 매초 바뀌고, `color` prop도 다른 색상을 선택할 때마다 바뀝니다. props는 시작할 때부터 쭉 데이터가 변하지 않기보다는, 시간에 따라 변하는 컴포넌트 데이터를 반영하는 것에 가깝습니다.
+이 예제는 **시간에 지남에 따라 컴포넌트가 다른 props를 받는다는 것을**나타냅니다. Props는 항상 정적이지 않습니다! 여기, `time` prop는 매초 바뀌고, `color` prop도 다른 색상을 선택할 때마다 바뀝니다. props는 시작할 때부터 쭉 데이터를 반영하지 않는 게 아니라, 시간에 따라 변하는 컴포넌트 데이터를 반영하는 것에 가깝습니다.
 
 그러나, props는 [불변합니다](https://en.wikipedia.org/wiki/Immutable_object)— 컴퓨터 과학에서는 "불변"이라는 뜻을 가지고 있습니다. 컴포넌트가 props의 변화가 필요할 때, (예를 들어, 유저와의 상호작용 혹은 새로운 데이터에 반응할 때와 같이), 부모 컴포넌트가 _서로 다른 props를 허용할 때 _새로운 객체에 "요청"하는 것이 필요합니다! 오래된 props는 뒷순위이지만, 결국 자바스크립트 엔진은 props를 계산하는데 메모리를 낭비할 수 있습니다. 
 
