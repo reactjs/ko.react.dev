@@ -202,7 +202,7 @@ function Avatar(props) {
 
 ## prop에 들어가는 디폴트 값 특정하기 {/*specifying-a-default-value-for-a-prop*/}
 
-어떠한 값도 주어지지 않았을 때 prop에 기본적인 값을 주고 싶다면 대비책으로, `=`을 넣고 비구조화하여 변수에 할당한 직후에 파라미터 앞에 기본적인 값을 줄 수 있습니다.
+값이 지정되지 않은 경우, props에 대신할 기본 값을 제공하려면 매개 변수 바로 뒤에 '='를 넣고 기본값을 사용하면 됩니다.
 
 ```js
 function Avatar({ person, size = 100 }) {
