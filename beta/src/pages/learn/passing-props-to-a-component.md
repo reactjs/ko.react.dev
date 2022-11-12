@@ -202,7 +202,7 @@ function Avatar(props) {
 
 ## prop에 들어가는 디폴트 값 특정하기 {/*specifying-a-default-value-for-a-prop*/}
 
-값이 지정되지 않은 경우, props에 대신할 기본 값을 제공하려면 매개 변수 바로 뒤에 '='를 넣고 기본값을 사용하면 됩니다.
+값이 지정되지 않은 경우, props에 대신할 기본 값을 제공하려면 매개 변수 바로 파라미터 바로 뒤에 '='를 넣고 기본값을 사용하면 됩니다.
 
 ```js
 function Avatar({ person, size = 100 }) {
@@ -216,7 +216,7 @@ function Avatar({ person, size = 100 }) {
 
 ## props를 앞에 jsx 규칙 할당하기 {/*props를 앞에 jsx 구문 할당하기*/}
 
-가끔, 허용되는 props는 매우 반복적인 규칙을 가집니다.
+가끔, props는 매우 반복적인 규칙을 가집니다.
 
 ```js
 function Profile({ person, size, isSepia, thickBorder }) {
@@ -267,7 +267,7 @@ function Profile(props) {
 </Card>
 ```
 
-JSX 태그 안에 내용을 할당할 때, 부모 컴포넌트가 내용물을 가진 `자식` 컴포넌트에 props를 할당합니다. 예를 들어, `Card` 컴포넌트 `자식` 컴포넌트인 `<Avatar />`에 props를 할당하고 감싼 div에 렌더링합니다.
+JSX 태그를 사용하여 내용을 중첩하면, 부모 컴포넌트가 해당 내용을 `자식` prop으로 수신합니다. 예를 들어, `Card` 컴포넌트는 `<Avatar />`로 설정된 `자식` props를 받아서 div로 렌더링합니다.
 
 <Sandpack>
 
