@@ -188,7 +188,7 @@ function Avatar({ person, size }) {
 }
 ```
 
-이 구문은 ["destructuring"](https://developer.mozilla.org/docs/Web/JavaScript/Reference/OperatorsDestructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter) 이라고 불리고, 함수 파라미터에서 프로퍼티를 읽어오는 것과 같습니다.
+이 문법은 ["destructuring"](https://developer.mozilla.org/docs/Web/JavaScript/Reference/OperatorsDestructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter) 이라고 불리고, 함수 파라미터에서 프로퍼티를 읽어오는 것과 같습니다.
 
 ```js
 function Avatar(props) {
@@ -214,7 +214,7 @@ function Avatar({ person, size = 100 }) {
 
 디폴트 값은 `size` prop을 잃어버리거나 `size={undefined}`으로 표시될 때 사용할 수 있습니다. `size={null}` 또는 `size={0}`으로 표시된다면, 디폴트 값은 **절대** 사용되지 못합니다.
 
-## props를 앞에 jsx 규칙 할당하기 {/*props를 앞에 jsx 구문 할당하기*/}
+## props를 앞에 jsx 규칙 할당하기 {/*forwarding-props-with-the-jsx-spread-syntax*/}
 
 가끔, props는 매우 반복적인 규칙을 가집니다.
 
