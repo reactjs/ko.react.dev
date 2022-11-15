@@ -52,8 +52,7 @@ export function CustomPreset({
     <>
       <div
         className="shadow-lg dark:shadow-lg-dark rounded-lg"
-        ref={containerRef}
-      >
+        ref={containerRef}>
         <NavigationBar showDownload={isSingleFile} />
         <SandpackThemeProvider theme={CustomTheme}>
           <div
@@ -62,8 +61,7 @@ export function CustomPreset({
               'sp-layout sp-custom-layout',
               showDevTools && devToolsLoaded && 'sp-layout-devtools',
               isExpanded && 'sp-layout-expanded'
-            )}
-          >
+            )}>
             <SandpackCodeEditor
               showLineNumbers
               showInlineErrors
@@ -93,8 +91,7 @@ export function CustomPreset({
                       inline: 'nearest',
                     });
                   }
-                }}
-              >
+                }}>
                 <span className="flex p-2 focus:outline-none text-primary dark:text-primary-dark">
                   <IconChevron
                     className="inline mr-1.5 text-xl"
