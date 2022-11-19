@@ -67,7 +67,7 @@ Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이
 
 ### Transitions {#transitions}
 
-*Transitions*는 React 18에서 추가된 새로운 concurrent 기능들입니다. 이 기능들은 갱신을 transition으로 표시할 수 있게 하여 이를 통해 React가 인터럽트될 수 있으며 이미 표시된 콘텐츠가 Suspense fallback으로 되돌아가는 것을 피할 수 있습니다.
+*Transitions*는 React 18에서 추가된 새로운 concurrent 기능들입니다. 이 기능들은 갱신을 transition으로 표시할 수 있게 하며 이를 통해 React가 인터럽트되어 이미 표시된 콘텐츠가 Suspense fallback으로 돌아가는 것을 피할 수 있습니다.
 
 - [`React.startTransition`](#starttransition)
 - [`React.useTransition`](/docs/hooks-reference.html#usetransition)
@@ -369,7 +369,7 @@ function MyComponent() {
 
 #### 서버 사이드 렌더링(Server Side Rendering)에서의 `React.Suspense` {#reactsuspense-in-server-side-rendering}
 서버 사이드 렌더링 중 Suspense Boundaries는 suspending을 통해 애플리케이션이 더 작은 크기의 청크들로 flush 될 수 있도록 해줍니다.
-컴포넌트가 일시 중단되면, 가장 가까운에 위치한 Suspense boundary의 fallback을 렌더링하는 낮은 우선순위의 작업을 예약합니다. 만약 컴포넌트가 fallback의 flush 전에 재개될 경우 실제 컨텐츠를 보내고 fallback을 버립니다.
+컴포넌트가 일시 중단되면, 가장 가까운 Suspense boundary의 fallback을 렌더링하는 낮은 우선순위의 작업을 예약합니다. 만약 컴포넌트가 fallback의 flush 전에 재개될 경우 실제 컨텐츠를 보내고 fallback을 버립니다.
 
 #### `React.Suspense` during hydration {#reactsuspense-during-hydration}
 Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before its hydrated will cause the boundary to hydrate at
