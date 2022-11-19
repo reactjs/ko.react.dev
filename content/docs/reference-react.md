@@ -67,7 +67,7 @@ Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이
 
 ### Transitions {#transitions}
 
-*Transitions* are a new concurrent feature introduced in React 18. They allow you to mark updates as transitions, which tells React that they can be interrupted and avoid going back to Suspense fallbacks for already visible content.
+*Transitions*는 React 18에서 추가된 새로운 concurrent 기능들입니다. 이 기능들은 갱신을 transition으로 표시할 수 있게 하여 이를 통해 React가 인터럽트될 수 있으며 이미 표시된 콘텐츠가 Suspense fallback으로 되돌아가는 것을 피할 수 있습니다.
 
 - [`React.startTransition`](#starttransition)
 - [`React.useTransition`](/docs/hooks-reference.html#usetransition)
@@ -337,13 +337,13 @@ render() {
 const SomeComponent = React.lazy(() => import('./SomeComponent'));
 ```
 
-`lazy`한 컴포넌트를 렌더링하려면 렌더링 트리 상위에 `<React.Suspense>` 컴포넌트가 존재해야 한다는 점에 유의하세요. 이를 활용하여 로딩 지시기(Loading indicator)를 나타낼 수 있습니다.
+`lazy`한 컴포넌트를 렌더링하려면 렌더링 트리 상위에 `<React.Suspense>` 컴포넌트가 존재해야 한다는 점에 유의하세요. 이를 활용하여 로딩 표시자(Loading indicator)를 나타낼 수 있습니다.
 
 ### `React.Suspense` {#reactsuspense}
 
-`React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. In the future we plan to let `Suspense` handle more scenarios such as data fetching. You can read about this in [our roadmap](/blog/2018/11/27/react-16-roadmap.html).
+`React.Suspense`는 트리 내 일부 컴포넌트들이 아직 렌더링 준비가 되지 않은 경우 표시할 로딩 표시자를 지정할 수 있습니다. 추후 `Suspense`가 데이터 불러오기와 같은 더 많은 상황을 처리할 수 있도록 만들 계획입니다. 이 계획에 대해서는 [로드맵](/blog/2018/11/27/react-16-roadmap.html)에서 확인할 수 있습니다.
 
-Today, lazy loading components is the **only** use case supported by `<React.Suspense>`:
+현재로써, `<React.Suspense>`가 지원하는 **유일한** 사용 사례는 아래와 같은 lazy 로딩 컴포넌트 뿐입니다.
 
 ```js
 // 이 컴포넌트는 동적으로 불러옵니다
@@ -351,7 +351,7 @@ const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
 function MyComponent() {
   return (
-    // Displays <Spinner> until OtherComponent loads
+    // OtherComponent가 로딩될 동안 <Spinner>를 표시합니다
     <React.Suspense fallback={<Spinner />}>
       <div>
         <OtherComponent />
@@ -361,15 +361,15 @@ function MyComponent() {
 }
 ```
 
-관련된 내용을 [Code Splitting 가이드](/docs/code-splitting.html#reactlazy) 문서에서 설명하고 있습니다. `lazy`한 컴포넌트는 `Suspense` 트리 내의 깊숙한 곳에 위치할 수 있다는 점에 유의하세요. 즉, `Suspense`가 모든 컴포넌트를 감쌀 필요는 없다는 것입니다. 가장 좋은 사용법은 로딩 지시기를 보여주고 싶은 지점에 `<Suspense>`를 작성하는 것이지만, Code Splitting을 하고자 하는 지점 어디서든지 `lazy()`를 써야 할 것입니다.
+관련된 내용을 [Code Splitting 가이드](/docs/code-splitting.html#reactlazy) 문서에서 설명하고 있습니다. `lazy`한 컴포넌트는 `Suspense` 트리 내의 깊숙한 곳에 위치할 수 있다는 점에 유의하세요. 즉, `Suspense`가 모든 컴포넌트를 감쌀 필요는 없다는 것입니다. 가장 좋은 사용법은 로딩 표시자를 보여주고 싶은 지점에 `<Suspense>`를 작성하는 것이지만, Code Splitting을 하고자 하는 지점 어디서든지 `lazy()`를 써야 할 것입니다.
 
-> Note
+> 주의
 >
-> For content that is already shown to the user, switching back to a loading indicator can be disorienting. It is sometimes better to show the "old" UI while the new UI is being prepared. To do this, you can use the new transition APIs [`startTransition`](#starttransition) and [`useTransition`](/docs/hooks-reference.html#usetransition) to mark updates as transitions and avoid unexpected fallbacks.
+> 이미 사용자에게 표시된 컨텐츠를 로딩 표시자로 되돌리는 것은 혼란을 줄 수 있습니다. 때로는 새 UI가 준비되는 동안 "이전" UI를 보여주는 것이 더 좋습니다. 이를 위해, [`startTransition`](#starttransition)과 [`useTransition`](/docs/hooks-reference.html#usetransition) 같은 새 transition API들을 사용하여 갱신을 transition으로 표시하고 예기치 않은 fallback을 피할 수 있습니다.
 
-#### `React.Suspense` in Server Side Rendering {#reactsuspense-in-server-side-rendering}
-During server side rendering Suspense Boundaries allow you to flush your application in smaller chunks by suspending.
-When a component suspends we schedule a low priority task to render the closest Suspense boundary's fallback. If the component unsuspends before we flush the fallback then we send down the actual content and throw away the fallback.
+#### 서버 사이드 렌더링(Server Side Rendering)에서의 `React.Suspense` {#reactsuspense-in-server-side-rendering}
+서버 사이드 렌더링 중 Suspense Boundaries는 suspending을 통해 애플리케이션이 더 작은 크기의 청크들로 flush 될 수 있도록 해줍니다.
+컴포넌트가 일시 중단되면, 가장 가까운에 위치한 Suspense boundary의 fallback을 렌더링하는 낮은 우선순위의 작업을 예약합니다. 만약 컴포넌트가 fallback의 flush 전에 재개될 경우 실제 컨텐츠를 보내고 fallback을 버립니다.
 
 #### `React.Suspense` during hydration {#reactsuspense-during-hydration}
 Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before its hydrated will cause the boundary to hydrate at
@@ -380,12 +380,12 @@ a higher priority than neighboring boundaries. [Read more](https://github.com/re
 ```js
 React.startTransition(callback)
 ```
-`React.startTransition` lets you mark updates inside the provided callback as transitions. This method is designed to be used when [`React.useTransition`](/docs/hooks-reference.html#usetransition) is not available.
+`React.startTransition`는 주어진 콜백 내부의 갱신을 transition으로 표시하게 해줍니다. 이 함수는 [`React.useTransition`](/docs/hooks-reference.html#usetransition)을 사용할 수 없을 때 대신 사용할 수 있도록 설계되었습니다.
 
-> Note:
+> 주의
 >
-> Updates in a transition yield to more urgent updates such as clicks.
+> Transition을 통한 갱신은 클릭과 같은 더 긴급한 갱신들보다 낮은 우선순위를 가집니다.
 >
-> Updates in a transition will not show a fallback for re-suspended content, allowing the user to continue interacting while rendering the update.
+> Transition을 통한 갱신은 재차 suspened된 컨텐츠의 fallback을 표시하지 않을 것이며, 이는 갱신이 렌더링되는 동안 사용자가 계속해서 상호작용할 수 있게 하기 위함입니다.
 >
-> `React.startTransition` does not provide an `isPending` flag. To track the pending status of a transition see [`React.useTransition`](/docs/hooks-reference.html#usetransition).
+> `React.startTransition`는 `isPending` 플래그를 제공하지 않습니다. transition의 pending status를 추적하려면 [`React.useTransition`](/docs/hooks-reference.html#usetransition)을 참고하세요.
