@@ -3,14 +3,18 @@
  */
 
 import * as React from 'react';
-// @ts-ignore
-import {MDXContext} from '@mdx-js/react';
 import {DocsPageFooter} from 'components/DocsFooter';
-import {MDXComponents} from 'components/MDX/MDXComponents';
 import {Seo} from 'components/Seo';
 import PageHeading from 'components/PageHeading';
 import {useRouteMeta} from './useRouteMeta';
+<<<<<<< HEAD
 import {Toc} from './Toc';
+=======
+import {TocContext} from '../MDX/TocContext';
+
+import(/* webpackPrefetch: true */ '../MDX/CodeBlock/CodeBlock');
+
+>>>>>>> e50e5634cca3c7cdb92c28666220fe3b61e9aa30
 export interface MarkdownProps<Frontmatter> {
   meta: Frontmatter & {description?: string};
   children?: React.ReactNode;
@@ -116,8 +120,13 @@ export function MarkdownPage<
   flushWrapper('last');
 
   return (
+<<<<<<< HEAD
     <article className="h-full mx-auto relative w-full min-w-0">
       <div className="lg:pt-0 pt-20 pl-0 lg:pl-80 2xl:px-80 ">
+=======
+    <>
+      <div className="pl-0">
+>>>>>>> e50e5634cca3c7cdb92c28666220fe3b61e9aa30
         <Seo title={title} />
         {!isHomePage && (
           <PageHeading
@@ -128,9 +137,13 @@ export function MarkdownPage<
         )}
         <div className="px-5 sm:px-12">
           <div className="max-w-7xl mx-auto">
+<<<<<<< HEAD
             <MDXContext.Provider value={MDXComponents}>
               {finalChildren}
             </MDXContext.Provider>
+=======
+            <TocContext.Provider value={toc}>{children}</TocContext.Provider>
+>>>>>>> e50e5634cca3c7cdb92c28666220fe3b61e9aa30
           </div>
           <DocsPageFooter
             route={route}
@@ -139,9 +152,13 @@ export function MarkdownPage<
           />
         </div>
       </div>
+<<<<<<< HEAD
       <div className="w-full lg:max-w-xs hidden 2xl:block">
         {!isHomePage && anchors.length > 0 && <Toc headings={anchors} />}
       </div>
     </article>
+=======
+    </>
+>>>>>>> e50e5634cca3c7cdb92c28666220fe3b61e9aa30
   );
 }
