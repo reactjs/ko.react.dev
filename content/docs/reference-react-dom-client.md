@@ -73,6 +73,7 @@ root.unmount();
 ```javascript
 hydrateRoot(container, element[, options])
 ```
+
 [`createRoot()`](#createroot)과 동일하지만, HTML 컨텐츠가 [`ReactDOMServer`](/docs/react-dom-server.html)로 렌더링된 컨테이너를 hydrate 할 때 사용합니다. React는 기존 마크업에 이벤트 리스너를 연결하려 시도할 것입니다.
 
 `hydrateRoot`는 두 가지 매개변수를 선택할 수 있습니다.
