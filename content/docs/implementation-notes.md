@@ -47,7 +47,7 @@ console.log(<App />);
 
 `App`이 함수라면, 재조정자는 렌더링 엘리먼트를 가져오기 위해 `App(props)`를 호출합니다.
 
-`App`이 class면, 재조정자는 `App`을 `new App(props)`로 인스턴스화 하고, `componentWillMount()` 생명주기 메서드를 호출한 후, `render()` 메서드를 호출하여 랜더링 엘리먼트를 가져오게 할 것입니다.
+`App`이 class면, 재조정자는 `App`을 `new App(props)`로 인스턴스화 하고, `componentWillMount()` 생명주기 메서드를 호출한 후, `render()` 메서드를 호출하여 렌더링 엘리먼트를 가져오게 할 것입니다.
 
 어느 경우든, 재조정자는 `App`이 렌더링 되는 엘리먼트를 학습하게 됩니다.
 
