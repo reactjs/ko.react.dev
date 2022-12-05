@@ -8,31 +8,45 @@ import {IconChevron} from '../Icon/IconChevron';
 import {IconDeepDive} from '../Icon/IconDeepDive';
 import {IconCodeBlock} from '../Icon/IconCodeBlock';
 import {Button} from '../Button';
+import {H4} from './Heading';
 
 interface ExpandableExampleProps {
   children: React.ReactNode;
-  title: string;
   excerpt?: string;
   type: 'DeepDive' | 'Example';
 }
 
-function ExpandableExample({
-  children,
-  title,
-  excerpt,
-  type,
-}: ExpandableExampleProps) {
+function ExpandableExample({children, excerpt, type}: ExpandableExampleProps) {
   const [isExpanded, setIsExpanded] = React.useState(false);
   const isDeepDive = type === 'DeepDive';
   const isExample = type === 'Example';
 
+  if (!Array.isArray(children) || children[0].type.mdxName !== 'h4') {
+    throw Error(
+      `Expandable content ${type} is missing a corresponding title at the beginning`
+    );
+  }
+
   return (
-    <div
+    <details
+      open={isExpanded}
+      onToggle={(e: any) => {
+        setIsExpanded(e.currentTarget!.open);
+      }}
       className={cn('my-12 rounded-lg shadow-inner relative', {
         'dark:bg-opacity-20 dark:bg-purple-60 bg-purple-5': isDeepDive,
         'dark:bg-opacity-20 dark:bg-yellow-60 bg-yellow-5': isExample,
       })}>
-      <div className="p-8">
+      <summary
+        className="list-none p-8"
+        tabIndex={-1 /* there's a button instead */}
+        onClick={(e) => {
+          // We toggle using a button instead of this whole area,
+          // with an escape case for the header anchor link
+          if (!(e.target instanceof SVGElement)) {
+            e.preventDefault();
+          }
+        }}>
         <h5
           className={cn('mb-4 uppercase font-bold flex items-center text-sm', {
             'dark:text-purple-30 text-purple-50': isDeepDive,
@@ -52,9 +66,11 @@ function ExpandableExample({
           )}
         </h5>
         <div className="mb-4">
-          <h3 className="text-xl font-bold text-primary dark:text-primary-dark">
-            {title}
-          </h3>
+          <H4
+            id={children[0].props.id}
+            className="text-xl font-bold text-primary dark:text-primary-dark">
+            {children[0].props.children}
+          </H4>
           {excerpt && <div>{excerpt}</div>}
         </div>
         <Button
@@ -71,16 +87,15 @@ function ExpandableExample({
           </span>
           {isExpanded ? '디테일 숨기기' : '디테일 보기'}
         </Button>
-      </div>
+      </summary>
       <div
         className={cn('p-8 border-t', {
           'dark:border-purple-60 border-purple-10 ': isDeepDive,
           'dark:border-yellow-60 border-yellow-50': isExample,
-          hidden: !isExpanded,
         })}>
-        {children}
+        {children.slice(1)}
       </div>
-    </div>
+    </details>
   );
 }
 
