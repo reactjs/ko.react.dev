@@ -172,6 +172,25 @@
               "path": "/learn/you-might-not-need-an-effect"
             }
           ]
+        },
+        {
+          "title": "Community",
+          "hasSeparator": true,
+          "path": "/learn/community",
+          "routes": [{
+            "title": "Acknowledgements",
+            "path": "/learn/acknowledgements"
+          }, {
+            "title": "Docs Contributors",
+            "path": "/learn/docs-contributors"
+          }, {
+            "title": "Meet the Team",
+            "path": "/learn/meet-the-team"
+          }]
+        },
+        {
+          "title": "Blog",
+          "path": "https://reactjs.org/blog"
         }
       ]
     }
