@@ -108,13 +108,13 @@ State Hook을 현재의 state와 동일한 값으로 갱신하는 경우 React�
 
 실행을 회피하기 전에 React에서 특정 컴포넌트를 다시 렌더링하는 것이 여전히 필요할 수도 있다는 것에 주의하세요. React가 불필요하게 트리에 그 이상으로 「더 깊게」는 관여하지 않을 것이므로 크게 신경 쓰지 않으셔도 됩니다만, 렌더링 시에 고비용의 계산을 하고 있다면 `useMemo`를 사용하여 그것들을 최적화할 수 있습니다.
 
-#### Batching of state updates {#batching-of-state-updates}
+#### state 일괄 갱신 {#batching-of-state-updates}
 
-React may group several state updates into a single re-render to improve performance. Normally, this improves performance and shouldn't affect your application's behavior.
+React는 성능 향상을 위해 다수의 state 갱신을 하나의 재렌더링으로 묶을 수 있습니다. 일반적으로, 이는 성능을 향상시키고 애플리케이션의 행동에 영향을 끼치지 않습니다.
 
-Before React 18, only updates inside React event handlers were batched. Starting with React 18, [batching is enabled for all updates by default](/blog/2022/03/08/react-18-upgrade-guide.html#automatic-batching). Note that React makes sure that updates from several *different* user-initiated events -- for example, clicking a button twice -- are always processed separately and do not get batched. This prevents logical mistakes.
+React 18 이전에는 React 이벤트 핸들러 내의 갱신들만 일괄 처리되었습니다. React 18부터 [일괄 처리가 기본적으로 모든 갱신에서 가능해졌습니다](/blog/2022/03/08/react-18-upgrade-guide.html#automatic-batching). React는 사용자에 의해 촉발된 *서로 다른* 다수의 이벤트들(더블 클릭 등)을 항상 개별적으로 처리하며 절대 일괄 처리하지 않음에 주의하세요. 이를 통해 논리적 실수들을 방지합니다.
 
-In the rare case that you need to force the DOM update to be applied synchronously, you may wrap it in [`flushSync`](/docs/react-dom.html#flushsync). However, this can hurt performance so do this only where needed.
+동기적으로 적용되어야 할 DOM 업데이트를 강제해야 하는 정말 드문 경우에는 이를 [`flushSync`](/docs/react-dom.html#flushsync)로 감쌀 수 있습니다. 그러나, 이는 성능을 저하시킬 수 있으므로 꼭 필요할 때만 사용하세요.
 
 ### `useEffect` {#useeffect}
 
@@ -152,13 +152,13 @@ useEffect(() => {
 
 그렇지만, 모든 effect가 지연될 수는 없습니다. 예를 들어 사용자에게 노출되는 DOM 변경은 사용자가 노출된 내용의 불일치를 경험하지 않도록 다음 화면을 다 그리기 이전에 동기화 되어야 합니다. (그 구분이란 개념적으로는 수동적 이벤트 리스너와 능동적 이벤트 리스너의 차이와 유사합니다) 이런 종류의 effect를 위해 React는 [`useLayoutEffect`](#uselayouteffect)라는 추가적인 Hook을 제공합니다. 그것은 `useEffect`와 동일한 시그니처를 가지고 있고 그것이 수행될 때에만 차이가 납니다.
 
-Additionally, starting in React 18, the function passed to `useEffect` will fire synchronously **before** layout and paint when it's the result of a discrete user input such as a click, or when it's the result of an update wrapped in [`flushSync`](/docs/react-dom.html#flushsync). This behavior allows the result of the effect to be observed by the event system, or by the caller of [`flushSync`](/docs/react-dom.html#flushsync).
+추가적으로, React 18부터 `useEffect`로 전달된 함수는 클릭과 같은 개별 유저의 입력 결과 또는 [`flushSync`](/docs/react-dom.html#flushsync)로 감싸진 갱신의 결과 발생할 그리기와 레이아웃 배치 **이전에** 동기적으로 발생할 것입니다. 이러한 행동은 effect의 결과가 이벤트 시스템 또는 [`flushSync`](/docs/react-dom.html#flushsync)의 호출자가 감시할 수 있도록 합니다.
 
-> Note
+> 주의
 > 
-> This only affects the timing of when the function passed to `useEffect` is called - updates scheduled inside these effects are still deferred. This is different than [`useLayoutEffect`](#uselayouteffect), which fires the function and processes the updates inside of it immediately.
+> 이는 오직 `useEffect`에 전달된 함수가 호출되는 타이밍에 영향을 미치며, 이러한 effect들 내부에서 계획된 갱신들은 여전히 지연됩니다. 이는 함수를 발생시키고 즉시 그 내부의 갱신을 수행하는 [`useLayoutEffect`](#uselayouteffect)와는 다릅니다.
 
-Even in cases where `useEffect` is deferred until after the browser has painted, it's guaranteed to fire before any new renders. React will always flush a previous render's effects before starting a new update.
+브라우저가 그려진 이후까지 `useEffect`가 지연되는 경우에도 어떠한 새 렌더링 이전에 발생하는 것이 보장됩니다. React는 언제나 새 갱신을 시작하기 전에 이전 렌더링의 effect들을 버릴 것입니다.
 
 #### 조건부 effect 발생 {#conditionally-firing-an-effect}
 
@@ -534,20 +534,20 @@ useDebugValue(date, date => date.toDateString());
 const deferredValue = useDeferredValue(value);
 ```
 
-`useDeferredValue` accepts a value and returns a new copy of the value that will defer to more urgent updates. If the current render is the result of an urgent update, like user input, React will return the previous value and then render the new value after the urgent render has completed.
+`useDeferredValue`는 값을 받아들여 더 긴급한 갱신들을 지연시킬 복사된 새 값을 반환합니다. 만약 현재 렌더링이 사용자 입력과 같은 긴급한 갱신의 결과라면, React는 이전 값을 반환한 후 긴급 렌더링이 완료된 이후에 새로운 값을 렌더링할 것입니다.
 
-This hook is similar to user-space hooks which use debouncing or throttling to defer updates. The benefits to using `useDeferredValue` is that React will work on the update as soon as other work finishes (instead of waiting for an arbitrary amount of time), and like [`startTransition`](/docs/react-api.html#starttransition), deferred values can suspend without triggering an unexpected fallback for existing content.
+이 Hook은 갱신을 지연시키기 위해 debouncing 또는 throttling을 이용하는 사용자 공간 Hook들과 비슷합니다. `useDeferredValue`을 이용하여 얻는 효과들은 React가 일정 시간을 기다리는 대신 다른 작업들이 끝나는 대로 갱신을 시작할 수 있도록 만들 것이며, [`startTransition`](/docs/react-api.html#starttransition)과 같이 지연된 값들을 이미 존재하는 컨텐츠에 예상치 못한 fallback을 발생시키지 않고 suspend 할 수 있게 합니다.
 
-#### Memoizing deferred children {#memoizing-deferred-children}
-`useDeferredValue` only defers the value that you pass to it. If you want to prevent a child component from re-rendering during an urgent update, you must also memoize that component with [`React.memo`](/docs/react-api.html#reactmemo) or [`React.useMemo`](/docs/hooks-reference.html#usememo):
+#### 지연된 자식들을 메모이제이션하기 {#memoizing-deferred-children}
+`useDeferredValue`는 오직 넘겨받은 값만을 지연시킵니다. 만약 긴급 갱신 과정에서 자식 컴포넌트의 재렌더링을 방지하고 싶다면 반드시 해당 컴포넌트를 [`React.memo`](/docs/react-api.html#reactmemo) 또는 [`React.useMemo`](/docs/hooks-reference.html#usememo)로 메모이제이션해야 합니다.
 
 ```js
 function Typeahead() {
   const query = useSearchQuery('');
   const deferredQuery = useDeferredValue(query);
 
-  // Memoizing tells React to only re-render when deferredQuery changes,
-  // not when query changes.
+  // 메모이제이션으로 React가 query가 바뀌었을 때가 아닌,
+  // deferredQuery가 바뀌었을 때 재렌더링해야 함을 알려줍니다.
   const suggestions = useMemo(() =>
     <SearchSuggestions query={deferredQuery} />,
     [deferredQuery]
@@ -564,7 +564,7 @@ function Typeahead() {
 }
 ```
 
-Memoizing the children tells React that it only needs to re-render them when `deferredQuery` changes and not when `query` changes. This caveat is not unique to `useDeferredValue`, and it's the same pattern you would use with similar hooks that use debouncing or throttling.
+자식들을 메모이제이션하면 React에게 `query`가 바뀌었을 때가 아니라 `deferredQuery`가 바뀌었을 때만 재렌더링해야 한다는 것을 알려줍니다. 이 주의사항은 `useDeferredValue`에만 있는 것이 아니며, debouncing 또는 throttling을 사용하는 유사한 후크와 동일한 패턴입니다.
 
 ### `useTransition` {#usetransition}
 
@@ -572,9 +572,9 @@ Memoizing the children tells React that it only needs to re-render them when `de
 const [isPending, startTransition] = useTransition();
 ```
 
-Returns a stateful value for the pending state of the transition, and a function to start it.
+Transition의 pending state와 이를 실행할 함수가 담긴 state성 값을 반환합니다.
 
-`startTransition` lets you mark updates in the provided callback as transitions:
+`startTransition`로 전달받은 콜백의 갱신을 transition으로 표시할 수 있습니다.
 
 ```js
 startTransition(() => {
@@ -582,7 +582,7 @@ startTransition(() => {
 })
 ```
 
-`isPending` indicates when a transition is active to show a pending state:
+`isPending`는 pending state를 표시할 transition의 활성화 상태를 나타냅니다.
 
 ```js
 function App() {
@@ -604,11 +604,12 @@ function App() {
 }
 ```
 
-> Note:
+> 주의
 >
-> Updates in a transition yield to more urgent updates such as clicks.
+> Transition의 갱신은 클릭과 같은 더 긴급한 갱신들보다 낮은 우선순위를 가집니다.
 >
-> Updates in a transitions will not show a fallback for re-suspended content. This allows the user to continue interacting with the current content while rendering the update.
+> 
+> Transition의 갱신은 재차 suspened된 컨텐츠의 fallback을 표시하지 않을 것이며, 이는 갱신이 렌더링되는 동안 사용자가 계속해서 상호작용할 수 있게 하기 위함입니다.
 
 ### `useId` {#useid}
 
@@ -617,12 +618,13 @@ const id = useId();
 ```
 
 `useId` is a hook for generating unique IDs that are stable across the server and client, while avoiding hydration mismatches.
+`useId`는 hydration 불일치를 피하기 위해 서버와 클라이언트 양쪽 모두에서 안정적이고 고유한 ID들을 생성하는 Hook입니다.
 
-> Note
+> 주의
 >
-> `useId` is **not** for generating [keys in a list](/docs/lists-and-keys.html#keys). Keys should be generated from your data.
+> `useId`는 [리스트 내 key](/docs/lists-and-keys.html#keys)를 생성하기 위한 것이 **아닙니다**. Key들은 가지고 있는 데이터로부터 생성되어야 합니다.
 
-For a basic example, pass the `id` directly to the elements that need it:
+기본적인 예로, `id`를 필요로 하는 엘리멘트들에게 직접 전달해 봅니다.
 
 ```js
 function Checkbox() {
@@ -636,7 +638,7 @@ function Checkbox() {
 };
 ```
 
-For multiple IDs in the same component, append a suffix using the same `id`:
+같은 컴포넌트 내 다수의 ID의 경우, 동일한 `id`를 이용해 그 뒤에 접미사를 덧붙입니다.
 
 ```js
 function NameFields() {
@@ -656,11 +658,11 @@ function NameFields() {
 }
 ```
 
-> Note:
+> 주의
 > 
-> `useId` generates a string that includes the `:` token. This helps ensure that the token is unique, but is not supported in CSS selectors or APIs like `querySelectorAll`.
+> `useId`는 `:` 토큰을 포함하는 문자열을 생성합니다. 이는 해당 토큰은 명백히 고유해지지만, CSS 선택자 또는 `querySelectorAll`과 같은 API에서는 지원되지 않게 됩니다.
 > 
-> `useId` supports an `identifierPrefix` to prevent collisions in multi-root apps. To configure, see the options for [`hydrateRoot`](/docs/react-dom-client.html#hydrateroot) and [`ReactDOMServer`](/docs/react-dom-server.html).
+> `useId`는 다중 루트 어플리케이션에서 충돌을 방지하기 위해 `identifierPrefix`를 지원합니다. 이를 설정하려면, [`hydrateRoot`](/docs/react-dom-client.html#hydrateroot)와 [`ReactDOMServer`](/docs/react-dom-server.html)의 옵션들을 살펴보세요.
 
 ## Library Hooks {#library-hooks}
 
