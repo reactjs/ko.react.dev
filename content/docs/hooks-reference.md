@@ -616,7 +616,6 @@ function App() {
 const id = useId();
 ```
 
-`useId` is a hook for generating unique IDs that are stable across the server and client, while avoiding hydration mismatches.
 `useId`는 hydration 불일치를 피하기 위해 서버와 클라이언트 양쪽 모두에서 안정적이고 고유한 ID들을 생성하는 Hook입니다.
 
 > 주의
