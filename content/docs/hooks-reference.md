@@ -102,13 +102,13 @@ const [state, setState] = useState(() => {
 });
 ```
 
-#### state 갱신의 취소 {#bailing-out-of-a-state-update}
+#### State 갱신의 취소 {#bailing-out-of-a-state-update}
 
 State Hook을 현재의 state와 동일한 값으로 갱신하는 경우 React는 자식을 렌더링 한다거나 무엇을 실행하는 것을 회피하고 그 처리를 종료합니다. (React는 [`Object.is` 비교 알고리즘](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description)을 사용합니다.)
 
 실행을 회피하기 전에 React에서 특정 컴포넌트를 다시 렌더링하는 것이 여전히 필요할 수도 있다는 것에 주의하세요. React가 불필요하게 트리에 그 이상으로 「더 깊게」는 관여하지 않을 것이므로 크게 신경 쓰지 않으셔도 됩니다만, 렌더링 시에 고비용의 계산을 하고 있다면 `useMemo`를 사용하여 그것들을 최적화할 수 있습니다.
 
-#### state 일괄 갱신 {#batching-of-state-updates}
+#### State 일괄 갱신 {#batching-of-state-updates}
 
 React는 성능 향상을 위해 다수의 state 갱신을 하나의 재렌더링으로 묶을 수 있습니다. 일반적으로, 이는 성능을 향상시키고 애플리케이션의 행동에 영향을 끼치지 않습니다.
 
@@ -130,7 +130,7 @@ useEffect(didUpdate);
 
 기본적으로 동작은 모든 렌더링이 완료된 후에 수행됩니다만, [어떤 값이 변경되었을 때만](#conditionally-firing-an-effect) 실행되게 할 수도 있습니다.
 
-#### effect 정리 {#cleaning-up-an-effect}
+#### Effect 정리 {#cleaning-up-an-effect}
 
 effect는 종종 컴포넌트가 화면에서 제거될 때 정리해야 하는 리소스를 만듭니다. 가령 구독이나 타이머 ID와 같은 것입니다. 이것을 수행하기 위해서 `useEffect`로 전달된 함수는 정리(clean-up) 함수를 반환할 수 있습니다. 예를 들어 구독을 생성하는 경우는 아래와 같습니다.
 
@@ -146,7 +146,7 @@ useEffect(() => {
 
 정리 함수는 메모리 누수 방지를 위해 UI에서 컴포넌트를 제거하기 전에 수행됩니다. 더불어, 컴포넌트가 (그냥 일반적으로 수행하는 것처럼) 여러 번 렌더링 된다면 **다음 effect가 수행되기 전에 이전 effect는 정리됩니다**. 위의 예에서, 매 갱신마다 새로운 구독이 생성된다고 볼 수 있습니다. 갱신마다 불필요한 수행이 발생하는 것을 회피하기 위해서는 다음 절을 참고하세요.
 
-#### effect 타이밍 {#timing-of-effects}
+#### Effect 타이밍 {#timing-of-effects}
 
 `componentDidMount`와 `componentDidUpdate`와는 다르게, `useEffect`로 전달된 함수는 지연 이벤트 동안에 레이아웃 배치와 그리기를 완료한 **후** 발생합니다. 이것은 구독이나 이벤트 핸들러를 설정하는 것과 같은 다수의 공통적인 부작용에 적합합니다. 왜냐면 대부분의 작업이 브라우저에서 화면을 업데이트하는 것을 차단해서는 안 되기 때문입니다.
 
@@ -363,7 +363,7 @@ function Counter({initialCount}) {
 }
 ```
 
-#### dispatch의 회피 {#bailing-out-of-a-dispatch}
+#### Dispatch의 회피 {#bailing-out-of-a-dispatch}
 
 Reducer Hook에서 현재 state와 같은 값을 반환하는 경우 React는 자식을 리렌더링하거나 effect를 발생하지 않고 이것들을 회피할 것입니다. (React는 [`Object.is` 비교 알고리즘](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description)을 사용합니다.)
 
@@ -608,7 +608,6 @@ function App() {
 >
 > Transition의 갱신은 클릭과 같은 더 긴급한 갱신들보다 낮은 우선순위를 가집니다.
 >
-> 
 > Transition의 갱신은 재차 suspened된 컨텐츠의 fallback을 표시하지 않을 것이며, 이는 갱신이 렌더링되는 동안 사용자가 계속해서 상호작용할 수 있게 하기 위함입니다.
 
 ### `useId` {#useid}
@@ -624,7 +623,7 @@ const id = useId();
 >
 > `useId`는 [리스트 내 key](/docs/lists-and-keys.html#keys)를 생성하기 위한 것이 **아닙니다**. Key들은 가지고 있는 데이터로부터 생성되어야 합니다.
 
-기본적인 예로, `id`를 필요로 하는 엘리멘트들에게 직접 전달해 봅니다.
+기본적인 예로, `id`를 필요로 하는 엘리멘트들에게 직접 전달합니다.
 
 ```js
 function Checkbox() {
@@ -660,7 +659,7 @@ function NameFields() {
 
 > 주의
 > 
-> `useId`는 `:` 토큰을 포함하는 문자열을 생성합니다. 이는 해당 토큰은 명백히 고유해지지만, CSS 선택자 또는 `querySelectorAll`과 같은 API에서는 지원되지 않게 됩니다.
+> `useId`는 `:` 토큰을 포함하는 문자열을 생성합니다. 이를 통해 해당 토큰의 고유함이 명백해지지만, CSS 선택자 또는 `querySelectorAll`과 같은 API에서는 지원되지 않게 됩니다.
 > 
 > `useId`는 다중 루트 어플리케이션에서 충돌을 방지하기 위해 `identifierPrefix`를 지원합니다. 이를 설정하려면, [`hydrateRoot`](/docs/react-dom-client.html#hydrateroot)와 [`ReactDOMServer`](/docs/react-dom-server.html)의 옵션들을 살펴보세요.
 
