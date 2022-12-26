@@ -2,10 +2,15 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import * as React from 'react';
+import {memo} from 'react';
 
+<<<<<<< HEAD
 export const IconDownload = React.memo<JSX.IntrinsicElements['svg']>(
   function IconArrowSmall({className}) {
+=======
+export const IconDownload = memo<JSX.IntrinsicElements['svg']>(
+  function IconDownload({className}) {
+>>>>>>> 4b68508440a985598571f78f60637b6dccdd5a1a
     return (
       <svg
         width="1em"
@@ -26,5 +31,3 @@ export const IconDownload = React.memo<JSX.IntrinsicElements['svg']>(
     );
   }
 );
-
-IconDownload.displayName = 'IconDownload';
