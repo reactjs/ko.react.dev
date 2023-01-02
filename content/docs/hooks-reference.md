@@ -579,7 +579,7 @@ Returns a stateful value for the pending state of the transition, and a function
 ```js
 startTransition(() => {
   setCount(count + 1);
-})
+});
 ```
 
 `isPending` indicates when a transition is active to show a pending state:
@@ -592,7 +592,7 @@ function App() {
   function handleClick() {
     startTransition(() => {
       setCount(c => c + 1);
-    })
+    });
   }
 
   return (

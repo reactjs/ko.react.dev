@@ -370,9 +370,15 @@ class BlurExample extends React.Component {
 
 각각의 위젯 타입은 명확한 디자인 패턴이 있으며, 사용자와 사용자 에이전트 모두 특정 방향으로 기능하는 것이 요구됩니다.
 
+<<<<<<< HEAD
 - [WAI-ARIA Authoring Practices - 디자인 패턴과 위젯](https://www.w3.org/TR/wai-aria-practices/#aria_ex)
 - [Heydon Pickering - ARIA 예시](https://heydonworks.com/article/practical-aria-examples/)
 - [포괄적 컴포넌트](https://inclusive-components.design/)
+=======
+- [ARIA Authoring Practices Guide (APG) - Design Patterns and Examples](https://www.w3.org/WAI/ARIA/apg/patterns/)
+- [Heydon Pickering - ARIA Examples](https://heydonworks.com/article/practical-aria-examples/)
+- [Inclusive Components](https://inclusive-components.design/)
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
 ## 기타 고려사항 {#other-points-for-consideration}
 

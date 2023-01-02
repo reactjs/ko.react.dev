@@ -10,7 +10,7 @@ import type {SandpackFile} from '@codesandbox/sandpack-react';
 export const createFileMap = (codeSnippets: any) => {
   return codeSnippets.reduce(
     (result: Record<string, SandpackFile>, codeSnippet: React.ReactElement) => {
-      if (codeSnippet.props.mdxType !== 'pre') {
+      if ((codeSnippet.type as any).mdxName !== 'pre') {
         return result;
       }
       const {props} = codeSnippet.props.children;
@@ -18,8 +18,8 @@ export const createFileMap = (codeSnippets: any) => {
       let fileHidden = false; // if the file is available as a tab
       let fileActive = false; // if the file tab is shown by default
 
-      if (props.metastring) {
-        const [name, ...params] = props.metastring.split(' ');
+      if (props.meta) {
+        const [name, ...params] = props.meta.split(' ');
         filePath = '/' + name;
         if (params.includes('hidden')) {
           fileHidden = true;
@@ -44,7 +44,7 @@ export const createFileMap = (codeSnippets: any) => {
         );
       }
       result[filePath] = {
-        code: props.children as string,
+        code: (props.children || '') as string,
         hidden: fileHidden,
         active: fileActive,
       };

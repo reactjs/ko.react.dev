@@ -2,15 +2,20 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
+import {Children, useRef, useEffect, useState} from 'react';
 import * as React from 'react';
 import cn from 'classnames';
 import {Button} from 'components/Button';
 import {H2} from 'components/MDX/Heading';
 import {H4} from 'components/MDX/Heading';
 import {Navigation} from './Navigation';
+<<<<<<< HEAD
 import {IconHint} from '../../Icon/IconHint';
 import {IconSolution} from '../../Icon/IconSolution';
 import {IconArrowSmall} from '../../Icon/IconArrowSmall';
+=======
+import {useRouter} from 'next/router';
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
 interface ChallengesProps {
   children: React.ReactElement[];
@@ -39,9 +44,9 @@ const parseChallengeContents = (
 
   let challenge: Partial<ChallengeContents> = {};
   let content: React.ReactElement[] = [];
-  React.Children.forEach(children, (child) => {
-    const {props} = child;
-    switch (props.mdxType) {
+  Children.forEach(children, (child) => {
+    const {props, type} = child;
+    switch ((type as any).mdxName) {
       case 'Solution': {
         challenge.solution = child;
         challenge.content = content;
@@ -54,7 +59,7 @@ const parseChallengeContents = (
         challenge.hint = child;
         break;
       }
-      case 'h3': {
+      case 'h4': {
         challenge.order = contents.length + 1;
         challenge.name = props.children;
         challenge.id = props.id;
@@ -69,6 +74,11 @@ const parseChallengeContents = (
   return contents;
 };
 
+enum QueuedScroll {
+  INIT = 'init',
+  NEXT = 'next',
+}
+
 export function Challenges({
   children,
   isRecipes,
@@ -76,6 +86,7 @@ export function Challenges({
   titleId = isRecipes ? 'examples' : 'challenges',
 }: ChallengesProps) {
   const challenges = parseChallengeContents(children);
+<<<<<<< HEAD
   const scrollAnchorRef = React.useRef<HTMLDivElement>(null);
 
   const [showHint, setShowHint] = React.useState(false);
@@ -83,6 +94,36 @@ export function Challenges({
   const [activeChallenge, setActiveChallenge] = React.useState(
     challenges[0].id
   );
+=======
+  const totalChallenges = challenges.length;
+  const scrollAnchorRef = useRef<HTMLDivElement>(null);
+  const queuedScrollRef = useRef<undefined | QueuedScroll>(QueuedScroll.INIT);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const currentChallenge = challenges[activeIndex];
+  const {asPath} = useRouter();
+
+  useEffect(() => {
+    if (queuedScrollRef.current === QueuedScroll.INIT) {
+      const initIndex = challenges.findIndex(
+        (challenge) => challenge.id === asPath.split('#')[1]
+      );
+      if (initIndex === -1) {
+        queuedScrollRef.current = undefined;
+      } else if (initIndex !== activeIndex) {
+        setActiveIndex(initIndex);
+      }
+    }
+    if (queuedScrollRef.current) {
+      scrollAnchorRef.current!.scrollIntoView({
+        block: 'start',
+        ...(queuedScrollRef.current === QueuedScroll.NEXT && {
+          behavior: 'smooth',
+        }),
+      });
+      queuedScrollRef.current = undefined;
+    }
+  }, [activeIndex, asPath, challenges]);
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
   const handleChallengeChange = (challengeId: string) => {
     setShowHint(false);
@@ -139,6 +180,7 @@ export function Challenges({
             />
           )}
         </div>
+<<<<<<< HEAD
         <div className="p-5 sm:py-8 sm:px-8">
           <div key={activeChallenge}>
             <h3 className="text-xl text-primary dark:text-primary-dark mb-2">
@@ -237,6 +279,19 @@ export function Challenges({
             </div>
           )}
         </div>
+=======
+        <Challenge
+          key={currentChallenge.id}
+          isRecipes={isRecipes}
+          currentChallenge={currentChallenge}
+          totalChallenges={totalChallenges}
+          hasNextChallenge={activeIndex < totalChallenges - 1}
+          handleClickNextChallenge={() => {
+            setActiveIndex((i) => i + 1);
+            queuedScrollRef.current = QueuedScroll.NEXT;
+          }}
+        />
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
       </div>
     </div>
   );
