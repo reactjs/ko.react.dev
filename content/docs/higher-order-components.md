@@ -156,7 +156,7 @@ function withSubscription(WrappedComponent, selectData) {
     }
 
     render() {
-      // ... 래핑된 컴포넌트를 새로운 데이터로 랜더링 합니다!
+      // ... 래핑된 컴포넌트를 새로운 데이터로 렌더링 합니다!
       // 컴포넌트에 추가로 props를 내려주는 것에 주목하세요.
       return <WrappedComponent data={this.state.data} {...this.props} />;
     }
