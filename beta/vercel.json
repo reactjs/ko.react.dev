@@ -5,11 +5,6 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/reference/:path*",
-      "destination": "/apis/:path*",
-      "permanent": false
-    },
-    {
       "source": "/tips/controlled-input-null-value.html",
       "destination": "/docs/forms.html#controlled-input-null-value",
       "permanent": false
@@ -253,6 +248,19 @@
       "source": "/version/16.0",
       "destination": "https://5a046bf5a6188f4b8fa4938a--reactjs.netlify.com",
       "permanent": false
+<<<<<<< HEAD
+=======
+    },
+    {
+      "source": "/apis/:path*",
+      "destination": "/reference/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/reference",
+      "destination": "/reference/react",
+      "permanent": true
+>>>>>>> 3ff6fe871c6212118991ffafa5503358194489a0
     }
   ],
   "headers": [

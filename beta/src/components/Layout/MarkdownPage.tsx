@@ -3,14 +3,20 @@
  */
 
 import * as React from 'react';
-// @ts-ignore
-import {MDXContext} from '@mdx-js/react';
+import {useRouter} from 'next/router';
 import {DocsPageFooter} from 'components/DocsFooter';
-import {MDXComponents} from 'components/MDX/MDXComponents';
 import {Seo} from 'components/Seo';
 import PageHeading from 'components/PageHeading';
 import {useRouteMeta} from './useRouteMeta';
+<<<<<<< HEAD
 import {Toc} from './Toc';
+=======
+import {useActiveSection} from '../../hooks/useActiveSection';
+import {TocContext} from '../MDX/TocContext';
+
+import(/* webpackPrefetch: true */ '../MDX/CodeBlock/CodeBlock');
+
+>>>>>>> 3ff6fe871c6212118991ffafa5503358194489a0
 export interface MarkdownProps<Frontmatter> {
   meta: Frontmatter & {description?: string};
   children?: React.ReactNode;
@@ -24,8 +30,10 @@ export function MarkdownPage<
   T extends {title: string; status?: string} = {title: string; status?: string}
 >({children, meta}: MarkdownProps<T>) {
   const {route, nextRoute, prevRoute} = useRouteMeta();
+  const section = useActiveSection();
   const title = meta.title || route?.title || '';
   const description = meta.description || route?.description || '';
+<<<<<<< HEAD
 
   let anchors: Array<{
     url: string;
@@ -118,6 +126,12 @@ export function MarkdownPage<
   return (
     <article className="h-full mx-auto relative w-full min-w-0">
       <div className="lg:pt-0 pt-20 pl-0 lg:pl-80 2xl:px-80 ">
+=======
+  const isHomePage = section === 'home';
+  return (
+    <>
+      <div className="pl-0">
+>>>>>>> 3ff6fe871c6212118991ffafa5503358194489a0
         <Seo title={title} />
         {!isHomePage && (
           <PageHeading
@@ -128,9 +142,13 @@ export function MarkdownPage<
         )}
         <div className="px-5 sm:px-12">
           <div className="max-w-7xl mx-auto">
+<<<<<<< HEAD
             <MDXContext.Provider value={MDXComponents}>
               {finalChildren}
             </MDXContext.Provider>
+=======
+            <TocContext.Provider value={toc}>{children}</TocContext.Provider>
+>>>>>>> 3ff6fe871c6212118991ffafa5503358194489a0
           </div>
           <DocsPageFooter
             route={route}
@@ -139,9 +157,13 @@ export function MarkdownPage<
           />
         </div>
       </div>
+<<<<<<< HEAD
       <div className="w-full lg:max-w-xs hidden 2xl:block">
         {!isHomePage && anchors.length > 0 && <Toc headings={anchors} />}
       </div>
     </article>
+=======
+    </>
+>>>>>>> 3ff6fe871c6212118991ffafa5503358194489a0
   );
 }
