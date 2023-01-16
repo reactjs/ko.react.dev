@@ -350,7 +350,7 @@ render() {
 <MyComponent>{'foo'}</MyComponent>
 ```
 
-이는 임의의 길이를 가진 JSX 표현식의 배열을 랜더링 할 때 종종 유용하게 사용됩니다. 아래의 예시는 HTML 배열로 랜더됩니다.
+이는 임의의 길이를 가진 JSX 표현식의 배열을 렌더링 할 때 종종 유용하게 사용됩니다. 아래의 예시는 HTML 배열로 렌더됩니다.
 
 ```js{2,9}
 function Item(props) {
