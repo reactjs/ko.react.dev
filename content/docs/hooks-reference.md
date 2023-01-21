@@ -528,17 +528,17 @@ function useFriendStatus(friendID) {
 useDebugValue(date, date => date.toDateString());
 ```
 
-### `useDeferredValue` {#usedeferredvalue}ㅜ
+### `useDeferredValue` {#usedeferredvalue}
 
 ```js
 const deferredValue = useDeferredValue(value);
 ```
 
-`useDeferredValue` 는 파라미터로 받은 값의 긴급한 업데이트로 인해 지연된 값의 복사본을 반환합니다. 만일 현재의 렌더가 사용자의 입력과 같이 긴급한 업데이트의 결과라면, React는 이전의 값을 반환한 뒤 긴급한 업데이트가 완료된 이후에 새로운 값을 렌더링합니다.
+`useDeferredValue` 는 파라미터로 받은 값의 긴급한 업데이트로 인해 지연된 값의 복사본을 반환합니다. 만일 현재의 렌더링이 사용자의 입력과 같이 긴급한 업데이트의 결과라면, React는 이전의 값을 반환한 뒤 긴급한 업데이트가 완료된 이후에 새로운 값을 렌더링합니다.
 
-이 Hook은 디바운싱이나 스로틀링을 이용하여 값의 업데이트를 지연하는 사용자 Hook들과 유사합니다. `useDeferredValue`를 사용하면 React는 다른 작업이 완료되자마자 업데이트를 수행할 수 있고(임의의 시간을 기다리는 대신에), `startTransition`처럼 현재 컨텐츠에 예상치 못한 fallback을 유발하지 않으면서 값을 지연할 수 있다는 장점이 있습니다.
+이 Hook은 디바운싱이나 스로틀링을 이용하여 값의 업데이트를 지연하는 사용자 Hook과 유사합니다. `useDeferredValue`를 사용하면 React는 다른 작업이 완료되자마자 업데이트를 수행할 수 있고(임의의 시간을 기다리는 대신에), [`startTransition`](/docs/react-api.html#starttransition)처럼 현재 컨텐츠에 예상치 못한 fallback을 유발하지 않으면서 값을 지연할 수 있다는 장점이 있습니다.
 
-#### 자식의 지연을 메모이제이션 {#memoizing-deferred-children}
+#### 지연된 자식을 메모이제이션하기 {#memoizing-deferred-children}
 `useDeferredValue`은 넘겨받은 값을 지연시킬 뿐입니다. 만일 긴급한 업데이트동안 자식 컴포넌트의 리렌더링을 막고 싶다면, [`React.memo`](/docs/react-api.html#reactmemo) 또는 [`React.useMemo`](/docs/hooks-reference.html#usememo)를 함께 사용하여 메모이제이션 할 수 있습니다.
 
 ```js
@@ -564,7 +564,7 @@ function Typeahead() {
 }
 ```
 
-자식을 메모이제이션 하는 것은 React에게 `query`가 변경되었을 때가 아닌, `defferedQuery`가 변경되었을 때만 리렌더링이 필요하다는 것을 알려줍니다. 이는 `useDeferredValue`뿐 아니라 디바운싱이나 스로틀링을 사용하는 유사한 Hook에 의한 동일한 패턴에서도 적용되는 유의 사항입니다.
+자식을 메모이제이션 하는 것은 React에게 `query`가 변경되었을 때가 아닌, `defferedQuery`가 변경되었을 때만 리렌더링이 필요하다는 것을 알려줍니다. 이는 `useDeferredValue`뿐 아니라 디바운싱이나 스로틀링을 사용하는 유사한 Hook에 의한 동일한 패턴에서도 적용되는 유의사항입니다.
 
 ### `useTransition` {#usetransition}
 
