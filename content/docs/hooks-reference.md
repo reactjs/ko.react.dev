@@ -528,15 +528,15 @@ function useFriendStatus(friendID) {
 useDebugValue(date, date => date.toDateString());
 ```
 
-### `useDeferredValue` {#usedeferredvalue}
+### `useDeferredValue` {#usedeferredvalue}ㅜ
 
 ```js
 const deferredValue = useDeferredValue(value);
 ```
 
-`useDeferredValue` accepts a value and returns a new copy of the value that will defer to more urgent updates. If the current render is the result of an urgent update, like user input, React will return the previous value and then render the new value after the urgent render has completed.
+`useDeferredValue` 는 파라미터로 받은 값의 긴급한 업데이트로 인해 지연된 값의 복사본을 반환합니다. 만일 현재의 렌더가 사용자의 입력과 같이 긴급한 업데이트의 결과라면, React는 이전의 값을 반환한 뒤 긴급한 업데이트가 완료된 이후에 새로운 값을 렌더링합니다.
 
-This hook is similar to user-space hooks which use debouncing or throttling to defer updates. The benefits to using `useDeferredValue` is that React will work on the update as soon as other work finishes (instead of waiting for an arbitrary amount of time), and like [`startTransition`](/docs/react-api.html#starttransition), deferred values can suspend without triggering an unexpected fallback for existing content.
+이 Hook은 디바운싱이나 스로틀링을 이용하여 값의 업데이트를 지연하는 사용자 Hook들과 유사합니다. `useDeferredValue`를 사용하면 React는 다른 작업이 완료되자마자 업데이트를 수행할 수 있고(임의의 시간을 기다리는 대신에), `startTransition`처럼 현재 컨텐츠에 예상치 못한 fallback을 유발하지 않으면서 값을 지연할 수 있다는 장점이 있습니다.
 
 #### Memoizing deferred children {#memoizing-deferred-children}
 `useDeferredValue` only defers the value that you pass to it. If you want to prevent a child component from re-rendering during an urgent update, you must also memoize that component with [`React.memo`](/docs/react-api.html#reactmemo) or [`React.useMemo`](/docs/hooks-reference.html#usememo):
