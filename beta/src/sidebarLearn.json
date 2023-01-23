@@ -8,6 +8,10 @@
       "path": "",
       "routes": [
         {
+          "hasSectionHeader": true,
+          "sectionHeader": "Get Started"
+        },
+        {
           "title": "Installation",
           "path": "/learn/installation",
           "routes": [
@@ -32,10 +36,20 @@
         {
           "title": "Quick Start",
           "path": "/learn",
-          "routes": [{
-            "title": "Thinking in React",
-            "path": "/learn/thinking-in-react"
-          }]
+          "routes": [
+            {
+              "title": "Tutorial: Tic-Tac-Toe",
+              "path": "/learn/tutorial-tic-tac-toe"
+            },
+            {
+              "title": "Thinking in React",
+              "path": "/learn/thinking-in-react"
+            }
+          ]
+        },
+        {
+          "hasSectionHeader": true,
+          "sectionHeader": "Learn React"
         },
         {
           "title": "Describing the UI",
@@ -114,9 +128,7 @@
         {
           "title": "Managing State",
           "path": "/learn/managing-state",
-          "tags": [
-            "intermediate"
-          ],
+          "tags": ["intermediate"],
           "routes": [
             {
               "title": "Reacting to Input with State",
@@ -151,9 +163,7 @@
         {
           "title": "Escape Hatches",
           "path": "/learn/escape-hatches",
-          "tags": [
-            "advanced"
-          ],
+          "tags": ["advanced"],
           "routes": [
             {
               "title": "값을 Refs와 함께 참조하기",
@@ -172,6 +182,32 @@
               "path": "/learn/you-might-not-need-an-effect"
             }
           ]
+        },
+        {
+          "hasSectionHeader": true,
+          "sectionHeader": "About React"
+        },
+        {
+          "title": "Community",
+          "path": "/learn/community",
+          "routes": [
+            {
+              "title": "Acknowledgements",
+              "path": "/learn/acknowledgements"
+            },
+            {
+              "title": "Docs Contributors",
+              "path": "/learn/docs-contributors"
+            },
+            {
+              "title": "Meet the Team",
+              "path": "/learn/meet-the-team"
+            }
+          ]
+        },
+        {
+          "title": "Blog",
+          "path": "https://reactjs.org/blog"
         }
       ]
     }

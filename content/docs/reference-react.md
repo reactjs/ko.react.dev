@@ -372,8 +372,13 @@ function MyComponent() {
 서버 사이드 렌더링 중에 Suspense 경계(Suspense Boundaries)를 사용하면 어플리케이션을 일시 중단하여 더 작은 덩어리로 렌더링할 수 있습니다.
 컴포넌트 렌더링이 일시 중단되면 가장 가까운 Suspense boundary의 fallback을 렌더링하기 위해 우선 순위가 낮은 작업을 예약합니다. Fallback을 렌더링 하기 전에 컴포넌트 렌더링이 재개된다면(unsuspends) 실제 콘텐츠를 보여주고 fallback을 제거합니다.
 
+<<<<<<< HEAD
 #### Hydration 단계에서의 `React.Suspense` {#reactsuspense-during-hydration}
 Suspense 경계(Suspense Boundaries)는 hydrate 하기 전에 부모 경계(parent boundaries)의 hydrate 여부에 의존하지만, 형제 경계(sibling boundaries)와는 독립적으로 hydrate를 실행할 수 있습니다. 경계가 hydrate 되기 전에 이벤트가 발생하면 인접된 경계(neighboring boundaries)보다 높은 우선순위로 hydrate 됩니다. [더 읽기](https://github.com/reactwg/react-18/discussions/130)
+=======
+#### `React.Suspense` during hydration {#reactsuspense-during-hydration}
+Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before it is hydrated will cause the boundary to hydrate at a higher priority than neighboring boundaries. [Read more](https://github.com/reactwg/react-18/discussions/130)
+>>>>>>> 38bf76a4a7bec6072d086ce8efdeef9ebb7af227
 
 ### `React.startTransition` {#starttransition}
 
