@@ -18,7 +18,7 @@ title: 에디터 설정하기
 
 ## Your editor {/*your-editor*/}
 
-[VS Code](https://code.visualstudio.com/)는 현재 가장 많이 사용되는 에디터 중 하나입니다. VS Code에 설치할 수 있는 익스텐션의 종류는 무수히 많으며, Github과 같은 외부 서비스와의 연동도 지원합니다. 아래에 나열된 기능들은 대부분 익스텐션으로 존재하기 때문에 VS Code의 설정은 다양한 방식으로 쉽게 변경할 수 있습니다.
+[VS Code](https://code.visualstudio.com/)는 현재 가장 많이 사용되는 에디터 중 하나입니다. VS Code에 설치할 수 있는 익스텐션의 종류는 무수히 많으며, Github와 같은 외부 서비스와의 연동도 지원합니다. 아래에 나열된 기능들은 대부분 익스텐션으로 존재하기 때문에 VS Code의 설정은 다양한 방식으로 쉽게 변경할 수 있습니다.
 
 그 외에도 React 커뮤니티에서는 다음과 같은 에디터들이 흔히 사용됩니다.
 
@@ -39,7 +39,7 @@ title: 에디터 설정하기
 
 ### 포맷팅 {/*formatting*/}
 
-다른 개발자들과 협업할 때 가장 피하고 싶은 것은 [탭 vs 공백](https://www.google.com/search?q=tabs+vs+spaces)에 대한 논쟁일 것입니다. 다행히 [Prettier](https://prettier.io/)를 사용하면 직접 지정해놓은 규칙들에 부합하도록 코드의 형식을 깔끔하게 정리할 수 있습니다. Prettier를 실행하면 모든 탭들은 공백으로 전환될 뿐만 아니라 들여쓰기, 따옴표 형식과 같은 요소들이 전부 설정에 부합하도록 수정될 것입니다. 파일을 저장할 때마다 Prettier가 자동 실행되어 이러한 작업들을 수행해주는 것이 가장 이상적인 설정입니다.
+다른 개발자들과 협업할 때 가장 피하고 싶은 것은 [탭 vs 공백](https://www.google.com/search?q=tabs+vs+spaces)에 대한 논쟁일 것입니다. 다행히 [Prettier](https://prettier.io/)를 사용하면 직접 지정해놓은 규칙들에 부합하도록 코드의 형식을 깔끔하게 정리할 수 있습니다. Prettier를 실행하면 모든 탭은 공백으로 전환될 뿐만 아니라 들여쓰기, 따옴표 형식과 같은 요소들이 전부 설정에 부합하도록 수정될 것입니다. 파일을 저장할 때마다 Prettier가 자동 실행되어 이러한 작업들을 수행해주는 것이 가장 이상적인 설정입니다.
 
 다음과 같은 단계를 통해 [VS Code의 Prettier 익스텐션](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)을 설치할 수 있습니다.
 
