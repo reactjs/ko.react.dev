@@ -8,6 +8,10 @@
       "path": "",
       "routes": [
         {
+          "hasSectionHeader": true,
+          "sectionHeader": "Get Started"
+        },
+        {
           "title": "Installation",
           "path": "/learn/installation",
           "routes": [
@@ -32,10 +36,20 @@
         {
           "title": "Quick Start",
           "path": "/learn",
-          "routes": [{
-            "title": "Thinking in React",
-            "path": "/learn/thinking-in-react"
-          }]
+          "routes": [
+            {
+              "title": "Tutorial: Tic-Tac-Toe",
+              "path": "/learn/tutorial-tic-tac-toe"
+            },
+            {
+              "title": "Thinking in React",
+              "path": "/learn/thinking-in-react"
+            }
+          ]
+        },
+        {
+          "hasSectionHeader": true,
+          "sectionHeader": "Learn React"
         },
         {
           "title": "Describing the UI",
@@ -55,7 +69,7 @@
               "path": "/learn/writing-markup-with-jsx"
             },
             {
-              "title": "JavaScript에서 중괄호가 있는 JSX",
+              "title": "JavaScript in JSX with Curly Braces",
               "path": "/learn/javascript-in-jsx-with-curly-braces"
             },
             {
@@ -114,9 +128,7 @@
         {
           "title": "Managing State",
           "path": "/learn/managing-state",
-          "tags": [
-            "intermediate"
-          ],
+          "tags": ["intermediate"],
           "routes": [
             {
               "title": "Reacting to Input with State",
@@ -135,7 +147,7 @@
               "path": "/learn/preserving-and-resetting-state"
             },
             {
-              "title": "state 로직을 reducer로 작성하기",
+              "title": "Extracting State Logic into a Reducer",
               "path": "/learn/extracting-state-logic-into-a-reducer"
             },
             {
@@ -151,12 +163,10 @@
         {
           "title": "Escape Hatches",
           "path": "/learn/escape-hatches",
-          "tags": [
-            "advanced"
-          ],
+          "tags": ["advanced"],
           "routes": [
             {
-              "title": "값을 Refs와 함께 참조하기",
+              "title": "Referencing Values with Refs",
               "path": "/learn/referencing-values-with-refs"
             },
             {
@@ -170,6 +180,94 @@
             {
               "title": "You Might Not Need an Effect",
               "path": "/learn/you-might-not-need-an-effect"
+            },
+            {
+              "title": "Lifecycle of Reactive Effects",
+              "path": "/learn/lifecycle-of-reactive-effects"
+            },
+            {
+              "title": "Separating Events from Effects",
+              "path": "/learn/separating-events-from-effects"
+            },
+            {
+              "title": "Removing Effect Dependencies",
+              "path": "/learn/removing-effect-dependencies"              
+            },
+            {
+              "title": "Reusing Logic with Custom Hooks",
+              "path": "/learn/reusing-logic-with-custom-hooks"
+            }
+          ]
+        },
+        {
+          "hasSectionHeader": true,
+          "sectionHeader": "About React"
+        },
+        {
+          "title": "Community",
+          "path": "/community",
+          "routes": [
+            {
+              "title": "React Conferences",
+              "path": "/community/conferences"
+            },
+            {
+              "title": "React Meetups",
+              "path": "/community/meetups"
+            },
+            {
+              "title": "React Videos",
+              "path": "/community/videos"
+            },
+            {
+              "title": "Meet the Team",
+              "path": "/community/team"
+            },
+            {
+              "title": "Docs Contributors",
+              "path": "/community/docs-contributors"
+            },
+            {
+              "title": "Acknowledgements",
+              "path": "/community/acknowledgements"
+            },
+            {
+              "title": "Versioning Policy",
+              "path": "/community/versioning-policy"
+            }
+          ]
+        },
+        {
+          "title": "Blog",
+          "path": "/blog",
+          "routes": [
+            {
+              "title": "React Labs: June 2022",
+              "path": "/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022"
+            },
+            {
+              "title": "React v18.0",
+              "path": "/blog/2022/03/29/react-v18"
+            },
+            {
+              "title": "How to Upgrade to React 18",
+              "path": "/blog/2022/03/08/react-18-upgrade-guide"
+            },
+            {
+              "title": "React Conf 2021 Recap",
+              "path": "/blog/2021/12/17/react-conf-2021-recap"
+            },
+            {
+              "title": "The Plan for React 18",
+              "path": "/blog/2021/06/08/the-plan-for-react-18"
+            },
+            {
+              "title": "Introducing Server Components",
+              "path": "/blog/2020/12/21/data-fetching-with-react-server-components"
+            },
+            {
+              "title": "Older posts",
+              "path": "https://reactjs.org/blog/all.html"
             }
           ]
         }
