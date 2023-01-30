@@ -13,7 +13,7 @@ function Recap({children}: RecapProps) {
   return (
     <section>
       <H2 isPageAnchor id="recap">
-        요약
+        Recap
       </H2>
       {children}
     </section>

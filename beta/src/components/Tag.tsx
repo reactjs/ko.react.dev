@@ -2,29 +2,28 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import * as React from 'react';
 import cn from 'classnames';
-import {RouteTag} from './Layout/useRouteMeta';
+import type {RouteTag} from './Layout/getRouteMeta';
 
 const variantMap = {
   foundation: {
-    name: '기초',
+    name: 'Foundation',
     classes: 'bg-yellow-50 text-white',
   },
   intermediate: {
-    name: '중급',
+    name: 'Intermediate',
     classes: 'bg-purple-40 text-white',
   },
   advanced: {
-    name: '고급',
+    name: 'Advanced',
     classes: 'bg-green-40 text-white',
   },
   experimental: {
-    name: '실험적인',
+    name: 'Experimental',
     classes: 'bg-ui-orange text-white',
   },
   deprecated: {
-    name: '사용되지 않는',
+    name: 'Deprecated',
     classes: 'bg-red-40 text-white',
   },
 };
