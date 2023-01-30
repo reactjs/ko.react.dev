@@ -8,7 +8,17 @@ redirect_from:
 prev: composition-vs-inheritance.html
 ---
 
+<<<<<<< HEAD
 React는 JavaScript로 규모가 크고 빠른 웹 애플리케이션을 만드는 가장 좋은 방법입니다. React는 Facebook과 Instagram을 통해 확장성을 입증했습니다.
+=======
+> Try the new React documentation.
+> 
+> The updated [Thinking in React](https://beta.reactjs.org/learn/thinking-in-react) guide teaches modern React and includes live examples.
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+React is, in our opinion, the premier way to build big, fast Web apps with JavaScript. It has scaled very well for us at Facebook and Instagram.
+>>>>>>> 5647a9485db3426d62b5a8203f4499c01bcd789b
 
 React의 가장 멋진 점 중 하나는 앱을 설계하는 방식입니다. 이 문서를 통해 React로 상품들을 검색할 수 있는 데이터 테이블을 만드는 과정을 함께 생각해 봅시다.
 
