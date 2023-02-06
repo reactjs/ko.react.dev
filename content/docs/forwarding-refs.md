@@ -4,7 +4,20 @@ title: Ref 전달하기
 permalink: docs/forwarding-refs.html
 ---
 
+<<<<<<< HEAD
 ref 전달은 컴포넌트를 통해 자식 중 하나에 [ref](/docs/refs-and-the-dom.html)를 자동으로 전달하는 기법입니다. 일반적으로 애플리케이션 대부분의 컴포넌트에 필요하지는 않습니다. 그렇지만, 특히 재사용 가능한 컴포넌트 라이브러리와 같은 어떤 컴포넌트에서는 유용할 수 있습니다. 가장 보편적인 시나리오를 아래에 설명하겠습니다.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Manipulating the DOM with Refs](https://beta.reactjs.org/learn/manipulating-the-dom-with-refs)
+> - [`forwardRef`](https://beta.reactjs.org/reference/react/forwardRef)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+Ref forwarding is a technique for automatically passing a [ref](/docs/refs-and-the-dom.html) through a component to one of its children. This is typically not necessary for most components in the application. However, it can be useful for some kinds of components, especially in reusable component libraries. The most common scenarios are described below.
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 ## DOM 에 refs 전달하기 {#forwarding-refs-to-dom-components}
 
