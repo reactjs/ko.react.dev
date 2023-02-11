@@ -2,6 +2,16 @@
 
 이 저장소는 [reactjs.org](https://reactjs.org/)의 소스 코드와 개발 문서를 포함하고 있습니다.
 
+## 한국어 번역 정보
+### 가이드
+
+번역을 진행할 때에 다음의 가이드를 확인해주세요.
+
+1. 다음과 같은 [Best practices for translation](https://github.com/reactjs/ko.reactjs.org/wiki/Best-practices-for-translation) 을 따르고 있습니다.
+2. 공통된 단어 번역을 위해 [Translate Glossary](https://github.com/reactjs/ko.reactjs.org/wiki/Translate-Glossary) 을 참고해주세요.
+3. 공통된 스타일 가이드 [공통 스타일 가이드](https://github.com/reactjs/ko.reactjs.org/blob/main/UNIVERSAL-STYLE-GUIDE.md) 를 확인해주세요.
+
+
 ## 시작하기
 
 ### 사전 준비
@@ -60,6 +70,7 @@
 
 
 번역하려는 언어가 아직 진행되지 않았다면, 해당 언어에 대해 새롭게 만들 수 있습니다. [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#translating-reactjsorg)를 참고해주세요.
+
 
 ## 문제 해결하기
 
