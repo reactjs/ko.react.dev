@@ -73,7 +73,6 @@
 
 번역하려는 언어가 아직 진행되지 않았다면, 해당 언어에 대해 새롭게 만들 수 있습니다. [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#translating-reactjsorg)를 참고해주세요.
 
-
 ## 문제 해결하기
 
 - `yarn reset` 명령어를 사용하여 로컬 캐시를 초기화합니다.
