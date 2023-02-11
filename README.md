@@ -5,11 +5,13 @@
 ## 한국어 번역 정보
 ### 가이드
 
-번역을 진행할 때에 다음의 가이드를 확인해주세요.
+번역을 진행할 때에 다음의 가이드를 따라주세요.
 
-1. 다음과 같은 [Best practices for translation](https://github.com/reactjs/ko.reactjs.org/wiki/Best-practices-for-translation) 을 따르고 있습니다.
-2. 공통된 단어 번역을 위해 [Translate Glossary](https://github.com/reactjs/ko.reactjs.org/wiki/Translate-Glossary) 을 참고해주세요.
-3. 공통된 스타일 가이드 [공통 스타일 가이드](https://github.com/reactjs/ko.reactjs.org/blob/main/UNIVERSAL-STYLE-GUIDE.md) 를 확인해주세요.
+1. 다음과 같은 [공통 스타일 가이드 확인 (Check the common style guide)](https://github.com/reactjs/ko.reactjs.org/blob/master/UNIVERSAL-STYLE-GUIDE.md) 을 따르고 있습니다.
+2. [모범사례 확인 (Check best practices)](https://github.com/reactjs/ko.reactjs.org/wiki/Best-practices-for-translation) 를 확인해주세요.
+3. 공통된 단어 번역을 위해 [용어 확인 (Check the term)](https://github.com/reactjs/ko.reactjs.org/wiki/Translate-Glossary) 을 참고해주세요.
+4. 마지막으로 [맞춤법 검사 (Spelling check)](http://speller.cs.pusan.ac.kr/) 를 진행해주세요.
+
 
 
 ## 시작하기
