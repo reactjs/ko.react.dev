@@ -6,7 +6,19 @@ layout: docs
 category: Reference
 ---
 
+<<<<<<< HEAD
 이 문서는 React의 이벤트 시스템 일부를 구성하는 `SyntheticEvent` 래퍼를 설명합니다. 더 많은 정보는 [이벤트 처리하기](/docs/handling-events.html) 문서를 보세요.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Common components (e.g. `<div>`)](https://beta.reactjs.org/reference/react-dom/components/common)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+This reference guide documents the `SyntheticEvent` wrapper that forms part of React's Event System. See the [Handling Events](/docs/handling-events.html) guide to learn more.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 ## 개요 {#overview}
 

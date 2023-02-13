@@ -4,7 +4,20 @@ title: Strict 모드
 permalink: docs/strict-mode.html
 ---
 
+<<<<<<< HEAD
 `StrictMode`는 애플리케이션 내의 잠재적인 문제를 알아내기 위한 도구입니다. `Fragment`와 같이 UI를 렌더링하지 않으며, 자손들에 대한 부가적인 검사와 경고를 활성화합니다.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`StrictMode`](https://beta.reactjs.org/reference/react/StrictMode)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
+`StrictMode` is a tool for highlighting potential problems in an application. Like `Fragment`, `StrictMode` does not render any visible UI. It activates additional checks and warnings for its descendants.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 > 주의
 >
@@ -135,7 +148,7 @@ Strict 모드가 자동으로 부작용을 찾아주는 것은 불가능합니�
 
 ### Ensuring reusable state {#ensuring-reusable-state}
 
-In the future, we’d like to add a feature that allows React to add and remove sections of the UI while preserving state. For example, when a user tabs away from a screen and back, React should be able to immediately show the previous screen. To do this, React support remounting trees using the same component state used before unmounting.
+In the future, we’d like to add a feature that allows React to add and remove sections of the UI while preserving state. For example, when a user tabs away from a screen and back, React should be able to immediately show the previous screen. To do this, React will support remounting trees using the same component state used before unmounting.
 
 This feature will give React better performance out-of-the-box, but requires components to be resilient to effects being mounted and destroyed multiple times. Most effects will work without any changes, but some effects do not properly clean up subscriptions in the destroy callback, or implicitly assume they are only mounted or destroyed once.
 
@@ -154,7 +167,7 @@ With Strict Mode starting in React 18, whenever a component mounts in developmen
 ```
 * React mounts the component.
     * Layout effects are created.
-    * Effect effects are created.
+    * Effects are created.
 * React simulates effects being destroyed on a mounted component.
     * Layout effects are destroyed.
     * Effects are destroyed.
@@ -170,7 +183,7 @@ When the component unmounts, effects are destroyed as normal:
 ```
 * React unmounts the component.
   * Layout effects are destroyed.
-  * Effect effects are destroyed.
+  * Effects are destroyed.
 ```
 
 Unmounting and remounting includes:

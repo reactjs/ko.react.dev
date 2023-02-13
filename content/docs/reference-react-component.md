@@ -15,7 +15,15 @@ redirect_from:
   - "tips/use-react-with-other-libraries.html"
 ---
 
+<<<<<<< HEAD
 이 문서에서는 React 컴포넌트 class를 다루는 API들을 자세히 소개합니다. 이 문서는 [컴포넌트와 props](/docs/components-and-props.html), [state와 생명주기](/docs/state-and-lifecycle.html) 등과 같은 기초적인 React의 개념들에 익숙하다고 가정하고 있습니다. 그렇지 않다면, 먼저 읽으시길 바랍니다.
+=======
+> Try the new React documentation for [`Component`](https://beta.reactjs.org/reference/react/Component).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+This page contains a detailed API reference for the React component class definition. It assumes you're familiar with fundamental React concepts, such as [Components and Props](/docs/components-and-props.html), as well as [State and Lifecycle](/docs/state-and-lifecycle.html). If you're not, read them first.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 ## 개요 {#overview}
 
@@ -121,11 +129,19 @@ render()
 
 이 메서드가 호출되면 `this.props`와 `this.state`의 값을 활용하여 아래의 것 중 하나를 반환해야 합니다.
 
+<<<<<<< HEAD
 - **React 엘리먼트.** 보통 [JSX](/docs/introducing-jsx.html)를 사용하여 생성됩니다. 예를 들어, `<div />`와 `<MyComponent />`는 React가 DOM 노드 또는 사용자가 정의한 컴포넌트를 만들도록 지시하는 React 엘리먼트입니다.
 - **배열과 Fragment.** `render()`를 통하여 여러 개의 엘리먼트를 반환합니다. 자세한 정보는 [Fragments](/docs/fragments.html) 문서를 통하여 확인할 수 있습니다.
 - **Portal.** 별도의 DOM 하위 트리에 자식 엘리먼트를 렌더링합니다. 자세한 정보는 [Portals](/docs/portals.html)에서 확인할 수 있습니다.
 - **문자열과 숫자.** 이 값들은 DOM 상에 텍스트 노드로서 렌더링됩니다.
 - **Boolean 또는 null.** 아무것도 렌더링하지 않습니다. (대부분의 경우 `return test && <Child />` 패턴을 지원하는 데에 사용되며, 여기서 `test`는 boolean 값입니다.)
+=======
+- **React elements.** Typically created via [JSX](/docs/introducing-jsx.html). For example, `<div />` and `<MyComponent />` are React elements that instruct React to render a DOM node, or another user-defined component, respectively.
+- **Arrays and fragments.** Let you return multiple elements from render. See the documentation on [fragments](/docs/fragments.html) for more details.
+- **Portals**. Let you render children into a different DOM subtree. See the documentation on [portals](/docs/portals.html) for more details.
+- **String and numbers.** These are rendered as text nodes in the DOM.
+- **Booleans or `null` or `undefined`**. Render nothing. (Mostly exists to support `return test && <Child />` pattern, where `test` is boolean).
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 `render()` 함수는 순수해야 합니다. 즉, 컴포넌트의 state를 변경하지 않고, 호출될 때마다 동일한 결과를 반환해야 하며, 브라우저와 직접적으로 상호작용을 하지 않습니다.
 

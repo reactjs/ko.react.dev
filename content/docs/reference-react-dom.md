@@ -50,6 +50,10 @@ React supports all modern browsers, although [some polyfills are required](/docs
 
 ### `createPortal()` {#createportal}
 
+> Try the new React documentation for [`createPortal`](https://beta.reactjs.org/reference/react-dom/createPortal).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 createPortal(child, container)
 ```
@@ -57,6 +61,10 @@ createPortal(child, container)
 Creates a portal. Portals provide a way to [render children into a DOM node that exists outside the hierarchy of the DOM component](/docs/portals.html).
 
 ### `flushSync()` {#flushsync}
+
+> Try the new React documentation for [`flushSync`](https://beta.reactjs.org/reference/react-dom/flushSync).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```javascript
 flushSync(callback)
@@ -84,6 +92,11 @@ flushSync(() => {
 
 ## Legacy Reference {#legacy-reference}
 ### `render()` {#render}
+
+> Try the new React documentation for [`render`](https://beta.reactjs.org/reference/react-dom/render).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 render(element, container[, callback])
 ```
@@ -109,6 +122,10 @@ Render a React element into the DOM in the supplied `container` and return a [re
 
 ### `hydrate()` {#hydrate}
 
+> Try the new React documentation for [`hydrate`](https://beta.reactjs.org/reference/react-dom/hydrate).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 hydrate(element, container[, callback])
 ```
@@ -131,6 +148,10 @@ React는 렌더링 된 콘텐츠가 서버와 클라이언트 간에 같을 것�
 
 ### `unmountComponentAtNode()` {#unmountcomponentatnode}
 
+> Try the new React documentation for [`unmountComponentAtNode`](https://beta.reactjs.org/reference/react-dom/unmountComponentAtNode).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 unmountComponentAtNode(container)
 ```
@@ -145,7 +166,15 @@ unmountComponentAtNode(container)
 
 ### `findDOMNode()` {#finddomnode}
 
+<<<<<<< HEAD
 > 주의
+=======
+> Try the new React documentation for [`findDOMNode`](https://beta.reactjs.org/reference/react-dom/findDOMNode).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+> Note:
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 >
 > `findDOMNode`는 기본 DOM 노드를 이용하는 데에 사용되는 해결책입니다. 대부분의 경우에서 이 해결책을 사용하는 것은 컴포넌트 추상화를 위반하기 때문에 권장하지 않습니다. [이 메서드는 `StrictMode`에서 권장되지 않습니다.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
 

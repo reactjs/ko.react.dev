@@ -8,7 +8,20 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
+<<<<<<< HEAD
 React 엘리먼트에서 이벤트를 처리하는 방식은 DOM 엘리먼트에서 이벤트를 처리하는 방식과 매우 유사합니다. 몇 가지 문법 차이는 다음과 같습니다.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Responding to Events](https://beta.reactjs.org/learn/responding-to-events)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
+Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 * React의 이벤트는 소문자 대신 캐멀 케이스(camelCase)를 사용합니다.
 * JSX를 사용하여 문자열이 아닌 함수로 이벤트 핸들러를 전달합니다.
