@@ -12,7 +12,6 @@ Do you know of a local React.js conference? Add it here! (Please keep the list c
 
 ## Upcoming Conferences {#upcoming-conferences}
 
-
 ### RemixConf 2023 {#remixconf-2023}
 May, 2023. Salt Lake City, UT
 

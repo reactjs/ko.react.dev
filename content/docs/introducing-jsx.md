@@ -15,7 +15,7 @@ next: rendering-elements.html
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
-Consider this variable declaration:
+아래 변수 선언을 살펴봅시다.
 
 ```js
 const element = <h1>Hello, world!</h1>;

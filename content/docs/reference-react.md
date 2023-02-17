@@ -105,7 +105,7 @@ Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
-`React.Component` is the base class for React components when they are defined using [ES6 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes):
+`React.Component`는 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)를 사용하여 React 컴포넌트를 정의할 때에 기초가 되는 class입니다.
 
 ```javascript
 class Greeting extends React.Component {
@@ -125,7 +125,7 @@ class Greeting extends React.Component {
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
-`React.PureComponent` is similar to [`React.Component`](#reactcomponent). The difference between them is that [`React.Component`](#reactcomponent) doesn't implement [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), but `React.PureComponent` implements it with a shallow prop and state comparison.
+`React.PureComponent`는 [`React.Component`](#reactcomponent)와 비슷합니다. [`React.Component`](#reactcomponent)는 [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate)를 구현하지 않지만, `React.PureComponent`는 props와 state를 이용한 얕은 비교를 구현한다는 차이점만이 존재합니다.
 
 React 컴포넌트의 `render()` 함수가 동일한 props와 state에 대하여 동일한 결과를 렌더링한다면, `React.PureComponent`를 사용하여 경우에 따라 성능 향상을 누릴 수 있습니다.
 
@@ -263,7 +263,7 @@ React.isValidElement(object)
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
-`React.Children` provides utilities for dealing with the `this.props.children` opaque data structure.
+`React.Children`는 불투명(Opaque) 자료 구조인 `this.props.children`를 다루는 유틸리티 함수들을 제공합니다.
 
 #### `React.Children.map` {#reactchildrenmap}
 
@@ -325,8 +325,8 @@ React.Children.toArray(children)
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
-The `React.Fragment` component lets you return multiple elements in a `render()` method without creating an additional DOM element:
-ㅊ
+`React.Fragment` 컴포넌트를 사용하면 `render()` 메서드 안에서 추가적인 DOM 엘리먼트를 생성하지 않아도 여러 엘리먼트를 반환할 수 있습니다.
+
 ```javascript
 render() {
   return (
@@ -346,7 +346,7 @@ render() {
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
-`React.createRef` creates a [ref](/docs/refs-and-the-dom.html) that can be attached to React elements via the ref attribute.
+`React.createRef`는 React 엘리먼트에 `ref` 어트리뷰트로 붙일 수 있는 [ref](/docs/refs-and-the-dom.html)를 생성합니다.
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 ### `React.forwardRef` {#reactforwardref}
@@ -355,7 +355,7 @@ render() {
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
-`React.forwardRef` creates a React component that forwards the [ref](/docs/refs-and-the-dom.html) attribute it receives to another component below in the tree. This technique is not very common but is particularly useful in two scenarios:
+`React.forwardRef`는 전달받은 [`ref`](/docs/refs-and-the-dom.html) 어트리뷰트를 하부 트리 내의 다른 컴포넌트로 전달하는 React 컴포넌트를 생성합니다. 이 기법은 잘 사용되지 않지만, 아래의 두 시나리오에서는 특히 유용합니다.
 
 * [DOM 엘리먼트로 ref 전달하기](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
 * [고차 컴포넌트(Higher Order Component)로 ref 전달하기](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
@@ -376,7 +376,7 @@ render() {
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
-`React.lazy()` lets you define a component that is loaded dynamically. This helps reduce the bundle size to delay loading components that aren't used during the initial render.
+`React.lazy()`를 사용하면 동적으로 불러오는 컴포넌트를 정의할 수 있습니다. 그러면 번들의 크기를 줄이고, 초기 렌더링에서 사용되지 않는 컴포넌트를 불러오는 작업을 지연시킬 수 있습니다.
 
 사용 방법은 [Code Splitting](/docs/code-splitting.html#reactlazy) 문서에서 익힐 수 있습니다. 또한 사용 방법을 자세히 다룬 [이 글](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d)을 읽어보는 것도 좋습니다.
 
