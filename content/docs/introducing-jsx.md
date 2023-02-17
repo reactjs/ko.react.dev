@@ -6,9 +6,6 @@ prev: hello-world.html
 next: rendering-elements.html
 ---
 
-<<<<<<< HEAD
-아래 변수 선언을 살펴봅시다.
-=======
 > Try the new React documentation.
 > 
 > These new documentation pages teach modern React and include live examples:
@@ -18,8 +15,7 @@ next: rendering-elements.html
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
-Consider this variable declaration:
->>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
+아래 변수 선언을 살펴봅시다.
 
 ```js
 const element = <h1>Hello, world!</h1>;

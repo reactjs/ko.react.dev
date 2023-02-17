@@ -4,9 +4,6 @@ title: 비제어 컴포넌트
 permalink: docs/uncontrolled-components.html
 ---
 
-<<<<<<< HEAD
-대부분 경우에 폼을 구현하는데 [제어 컴포넌트](/docs/forms.html#controlled-components)를 사용하는 것이 좋습니다. 제어 컴포넌트에서 폼 데이터는 React 컴포넌트에서 다루어집니다. 대안인 비제어 컴포넌트는 DOM 자체에서 폼 데이터가 다루어집니다.
-=======
 > Try the new React documentation.
 > 
 > These new documentation pages teach modern React and include live examples:
@@ -17,8 +14,7 @@ permalink: docs/uncontrolled-components.html
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
-In most cases, we recommend using [controlled components](/docs/forms.html#controlled-components) to implement forms. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
->>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
+대부분 경우에 폼을 구현하는데 [제어 컴포넌트](/docs/forms.html#controlled-components)를 사용하는 것이 좋습니다. 제어 컴포넌트에서 폼 데이터는 React 컴포넌트에서 다루어집니다. 대안인 비제어 컴포넌트는 DOM 자체에서 폼 데이터가 다루어집니다.
 
 모든 state 업데이트에 대한 이벤트 핸들러를 작성하는 대신 비제어 컴포넌트를 만들려면 [ref를 사용](/docs/refs-and-the-dom.html)하여 DOM에서 폼 값을 가져올 수 있습니다.
 

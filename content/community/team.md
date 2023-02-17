@@ -181,11 +181,8 @@ React was originally created by [Jordan Walke](https://github.com/jordwalke). To
 * [Paul O'Shannessy](https://github.com/zpao)
 * [Pete Hunt](https://github.com/petehunt)
 * [Philipp Spiess](https://github.com/philipp-spiess)
-<<<<<<< HEAD
-=======
 * [Rachel Nabors](https://github.com/rachelnabors)
 * [Robert Zhang](https://github.com/robertzhidealx)
->>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 * [Sander Spies](https://github.com/sanderspies)
 * [Sasha Aickin](https://github.com/aickin)
 * [Sophia Shoemaker](https://github.com/mrscobbler)
