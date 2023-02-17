@@ -101,6 +101,10 @@ Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이
 
 ### `React.Component` {#reactcomponent}
 
+> Try the new React documentation for [`Component`](https://beta.reactjs.org/reference/react/Component).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.Component`는 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)를 사용하여 React 컴포넌트를 정의할 때에 기초가 되는 class입니다.
 
 ```javascript
@@ -117,6 +121,10 @@ class Greeting extends React.Component {
 
 ### `React.PureComponent` {#reactpurecomponent}
 
+> Try the new React documentation for [`PureComponent`](https://beta.reactjs.org/reference/react/PureComponent).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.PureComponent`는 [`React.Component`](#reactcomponent)와 비슷합니다. [`React.Component`](#reactcomponent)는 [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate)를 구현하지 않지만, `React.PureComponent`는 props와 state를 이용한 얕은 비교를 구현한다는 차이점만이 존재합니다.
 
 React 컴포넌트의 `render()` 함수가 동일한 props와 state에 대하여 동일한 결과를 렌더링한다면, `React.PureComponent`를 사용하여 경우에 따라 성능 향상을 누릴 수 있습니다.
@@ -130,6 +138,10 @@ React 컴포넌트의 `render()` 함수가 동일한 props와 state에 대하여
 * * *
 
 ### `React.memo` {#reactmemo}
+
+> Try the new React documentation for [`memo`](https://beta.reactjs.org/reference/react/memo).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```javascript
 const MyComponent = React.memo(function MyComponent(props) {
@@ -167,6 +179,10 @@ export default React.memo(MyComponent, areEqual);
 
 ### `createElement()` {#createelement}
 
+> Try the new React documentation for [`createElement`](https://beta.reactjs.org/reference/react/createElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 React.createElement(
   type,
@@ -182,6 +198,10 @@ JSX로 작성된 코드는 `React.createElement()`를 사용하는 형태로 변
 * * *
 
 ### `cloneElement()` {#cloneelement}
+
+> Try the new React documentation for [`cloneElement`](https://beta.reactjs.org/reference/react/cloneElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```
 React.cloneElement(
@@ -207,6 +227,10 @@ React.cloneElement(
 
 ### `createFactory()` {#createfactory}
 
+> Try the new React documentation for [`createFactory`](https://beta.reactjs.org/reference/react/createFactory).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 React.createFactory(type)
 ```
@@ -221,6 +245,10 @@ JSX를 사용할 경우 `React.createFactory()`를 직접 호출하는 일은 �
 
 ### `isValidElement()` {#isvalidelement}
 
+> Try the new React documentation for [`isValidElement`](https://beta.reactjs.org/reference/react/isValidElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 React.isValidElement(object)
 ```
@@ -230,6 +258,10 @@ React.isValidElement(object)
 * * *
 
 ### `React.Children` {#reactchildren}
+
+> Try the new React documentation for [`Children`](https://beta.reactjs.org/reference/react/Children).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 `React.Children`는 불투명(Opaque) 자료 구조인 `this.props.children`를 다루는 유틸리티 함수들을 제공합니다.
 
@@ -289,6 +321,10 @@ React.Children.toArray(children)
 
 ### `React.Fragment` {#reactfragment}
 
+> Try the new React documentation for [`Fragment`](https://beta.reactjs.org/reference/react/Fragment).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.Fragment` 컴포넌트를 사용하면 `render()` 메서드 안에서 추가적인 DOM 엘리먼트를 생성하지 않아도 여러 엘리먼트를 반환할 수 있습니다.
 
 ```javascript
@@ -306,10 +342,18 @@ render() {
 
 ### `React.createRef` {#reactcreateref}
 
+> Try the new React documentation for [`createRef`](https://beta.reactjs.org/reference/react/createRef).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.createRef`는 React 엘리먼트에 `ref` 어트리뷰트로 붙일 수 있는 [ref](/docs/refs-and-the-dom.html)를 생성합니다.
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 ### `React.forwardRef` {#reactforwardref}
+
+> Try the new React documentation for [`forwardRef`](https://beta.reactjs.org/reference/react/forwardRef).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 `React.forwardRef`는 전달받은 [`ref`](/docs/refs-and-the-dom.html) 어트리뷰트를 하부 트리 내의 다른 컴포넌트로 전달하는 React 컴포넌트를 생성합니다. 이 기법은 잘 사용되지 않지만, 아래의 두 시나리오에서는 특히 유용합니다.
 
@@ -328,6 +372,10 @@ render() {
 
 ### `React.lazy` {#reactlazy}
 
+> Try the new React documentation for [`lazy`](https://beta.reactjs.org/reference/react/lazy).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.lazy()`를 사용하면 동적으로 불러오는 컴포넌트를 정의할 수 있습니다. 그러면 번들의 크기를 줄이고, 초기 렌더링에서 사용되지 않는 컴포넌트를 불러오는 작업을 지연시킬 수 있습니다.
 
 사용 방법은 [Code Splitting](/docs/code-splitting.html#reactlazy) 문서에서 익힐 수 있습니다. 또한 사용 방법을 자세히 다룬 [이 글](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d)을 읽어보는 것도 좋습니다.
@@ -341,6 +389,11 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 ### `React.Suspense` {#reactsuspense}
 
+> Try the new React documentation for [`Suspense`](https://beta.reactjs.org/reference/react/Suspense).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. In the future we plan to let `Suspense` handle more scenarios such as data fetching. You can read about this in [our roadmap](/blog/2018/11/27/react-16-roadmap.html).
 
 `React.Suspense`는 트리 하단에 있는 일부 컴포넌트가 아직 렌더링할 준비가 되지 않은 경우 로딩 지시기 (Loading indicator)를 나타낼 수 있도록 해줍니다. 향후에는 `Suspense`가 데이터 가져오기(fetching)등의 더 많은 시나리오를 처리할 수 있도록 할 계획입니다. 이에 대한 내용은 [로드맵](/blog/2018/11/27/react-16-roadmap.html)에서 확인할 수 있습니다.
 
@@ -372,10 +425,14 @@ function MyComponent() {
 서버 사이드 렌더링 중에 Suspense 경계(Suspense Boundaries)를 사용하면 어플리케이션을 일시 중단하여 더 작은 덩어리로 렌더링할 수 있습니다.
 컴포넌트 렌더링이 일시 중단되면 가장 가까운 Suspense boundary의 fallback을 렌더링하기 위해 우선 순위가 낮은 작업을 예약합니다. Fallback을 렌더링 하기 전에 컴포넌트 렌더링이 재개된다면(unsuspends) 실제 콘텐츠를 보여주고 fallback을 제거합니다.
 
-#### Hydration 단계에서의 `React.Suspense` {#reactsuspense-during-hydration}
-Suspense 경계(Suspense Boundaries)는 hydrate 하기 전에 부모 경계(parent boundaries)의 hydrate 여부에 의존하지만, 형제 경계(sibling boundaries)와는 독립적으로 hydrate를 실행할 수 있습니다. 경계가 hydrate 되기 전에 이벤트가 발생하면 인접된 경계(neighboring boundaries)보다 높은 우선순위로 hydrate 됩니다. [더 읽기](https://github.com/reactwg/react-18/discussions/130)
+#### `React.Suspense` during hydration {#reactsuspense-during-hydration}
+Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before it is hydrated will cause the boundary to hydrate at a higher priority than neighboring boundaries. [Read more](https://github.com/reactwg/react-18/discussions/130)
 
 ### `React.startTransition` {#starttransition}
+
+> Try the new React documentation for [`startTransition`](https://beta.reactjs.org/reference/react/startTransition).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```js
 React.startTransition(callback)

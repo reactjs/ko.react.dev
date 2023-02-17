@@ -18,6 +18,12 @@ redirect_from:
   - "docs/environments.html"
 ---
 
+> Try the new React documentation.
+> 
+> The new [Quick Start](https://beta.reactjs.org/learn) teaches modern React and includes live examples.
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 이 페이지는 React 문서 및 관련된 리소스의 개요입니다.
 
 **React**는 사용자 인터페이스를 만들기 위한 JavaScript 라이브러리입니다. [홈페이지](/)나 [자습서](/tutorial/tutorial.html)에서 React에 대한 모든 것을 알아보세요.

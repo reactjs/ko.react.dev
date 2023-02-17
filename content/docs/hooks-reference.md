@@ -35,6 +35,10 @@ Hook이 생소하다면 [Hook 개요](/docs/hooks-overview.html)를 먼저 읽�
 
 ### `useState` {#usestate}
 
+> Try the new React documentation for [`useState`](https://beta.reactjs.org/reference/react/useState).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```js
 const [state, setState] = useState(initialState);
 ```
@@ -118,6 +122,10 @@ In the rare case that you need to force the DOM update to be applied synchronous
 
 ### `useEffect` {#useeffect}
 
+> Try the new React documentation for [`useEffect`](https://beta.reactjs.org/reference/react/useEffect).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```js
 useEffect(didUpdate);
 ```
@@ -197,6 +205,11 @@ useEffect(
 
 ### `useContext` {#usecontext}
 
+> Try the new React documentation for [`useContext`](https://beta.reactjs.org/reference/react/useContext).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 ```js
 const value = useContext(MyContext);
 ```
@@ -267,6 +280,11 @@ function ThemedButton() {
 다음의 Hook는 이전 섹션에서의 기본 Hook의 변경이거나 특정한 경우에만 필요한 것입니다. 익히는 것에 너무 압박받지는 마세요.
 
 ### `useReducer` {#usereducer}
+
+> Try the new React documentation for [`useReducer`](https://beta.reactjs.org/reference/react/useReducer).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 
 ```js
 const [state, dispatch] = useReducer(reducer, initialArg, init);
@@ -371,6 +389,10 @@ Reducer Hook에서 현재 state와 같은 값을 반환하는 경우 React는 �
 
 ### `useCallback` {#usecallback}
 
+> Try the new React documentation for [`useCallback`](https://beta.reactjs.org/reference/react/useCallback).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```js
 const memoizedCallback = useCallback(
   () => {
@@ -394,6 +416,11 @@ const memoizedCallback = useCallback(
 
 ### `useMemo` {#usememo}
 
+> Try the new React documentation for [`useMemo`](https://beta.reactjs.org/reference/react/useMemo).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 ```js
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
@@ -415,6 +442,11 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 > [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 패키지의 일부로써 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 규칙을 사용하기를 권장합니다. 그것은 의존성이 바르지 않게 정의되었다면 그에 대해 경고하고 수정하도록 알려줍니다.
 
 ### `useRef` {#useref}
+
+> Try the new React documentation for [`useRef`](https://beta.reactjs.org/reference/react/useRef).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 
 ```js
 const refContainer = useRef(initialValue);
@@ -453,6 +485,11 @@ function TextInputWithFocusButton() {
 
 ### `useImperativeHandle` {#useimperativehandle}
 
+> Try the new React documentation for [`useImperativeHandle`](https://beta.reactjs.org/reference/react/useImperativeHandle).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 ```js
 useImperativeHandle(ref, createHandle, [deps])
 ```
@@ -476,6 +513,11 @@ FancyInput = forwardRef(FancyInput);
 
 ### `useLayoutEffect` {#uselayouteffect}
 
+> Try the new React documentation for [`useLayoutEffect`](https://beta.reactjs.org/reference/react/useLayoutEffect).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 이 함수의 시그니처는 `useEffect`와 동일하긴 한데, 모든 DOM 변경 후에 동기적으로 발생합니다. 이것은 DOM에서 레이아웃을 읽고 동기적으로 리렌더링하는 경우에 사용하세요. `useLayoutEffect`의 내부에 예정된 갱신은 브라우저가 화면을 그리기 이전 시점에 동기적으로 수행될 것입니다.
 
 화면 갱신 차단의 방지가 가능할 때 표준 `useEffect`를 먼저 사용하세요.
@@ -489,6 +531,11 @@ FancyInput = forwardRef(FancyInput);
 >서버에서 렌더링된 HTML에서 레이아웃 effect가 필요한 컴포넌트를 배제하고 싶다면, `showChild && <Child />`를 사용하여 조건적으로 렌더링 하고 `useEffect(() => { setShowChild(true); }, [])`를 사용하여 노출을 지연시키세요. 이런 방법으로 자바스크립트 코드가 주입되기 전에 깨져 보일 수 있는 UI는 표현되지 않게 됩니다.
 
 ### `useDebugValue` {#usedebugvalue}
+
+> Try the new React documentation for [`useDebugValue`](https://beta.reactjs.org/reference/react/useDebugValue).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 
 ```js
 useDebugValue(value)
@@ -530,6 +577,11 @@ useDebugValue(date, date => date.toDateString());
 
 ### `useDeferredValue` {#usedeferredvalue}
 
+> Try the new React documentation for [`useDeferredValue`](https://beta.reactjs.org/reference/react/useDeferredValue).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 ```js
 const deferredValue = useDeferredValue(value);
 ```
@@ -568,6 +620,11 @@ Memoizing the children tells React that it only needs to re-render them when `de
 
 ### `useTransition` {#usetransition}
 
+> Try the new React documentation for [`useTransition`](https://beta.reactjs.org/reference/react/useTransition).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 ```js
 const [isPending, startTransition] = useTransition();
 ```
@@ -579,7 +636,7 @@ Returns a stateful value for the pending state of the transition, and a function
 ```js
 startTransition(() => {
   setCount(count + 1);
-})
+});
 ```
 
 `isPending` indicates when a transition is active to show a pending state:
@@ -592,7 +649,7 @@ function App() {
   function handleClick() {
     startTransition(() => {
       setCount(c => c + 1);
-    })
+    });
   }
 
   return (
@@ -611,6 +668,11 @@ function App() {
 > Updates in a transitions will not show a fallback for re-suspended content. This allows the user to continue interacting with the current content while rendering the update.
 
 ### `useId` {#useid}
+
+> Try the new React documentation for [`useId`](https://beta.reactjs.org/reference/react/useId).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 
 ```js
 const id = useId();
@@ -668,6 +730,11 @@ The following Hooks are provided for library authors to integrate libraries deep
 
 ### `useSyncExternalStore` {#usesyncexternalstore}
 
+> Try the new React documentation for [`useSyncExternalStore`](https://beta.reactjs.org/reference/react/useSyncExternalStore).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 ```js
 const state = useSyncExternalStore(subscribe, getSnapshot[, getServerSnapshot]);
 ```
@@ -713,6 +780,10 @@ const selectedField = useSyncExternalStore(
 > As a convenience, we also provide a version of the API with automatic support for memoizing the result of getSnapshot published as `use-sync-external-store/with-selector`.
 
 ### `useInsertionEffect` {#useinsertioneffect}
+
+> Try the new React documentation for [`useInsertionEffect`](https://beta.reactjs.org/reference/react/useInsertionEffect).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```js
 useInsertionEffect(didUpdate);

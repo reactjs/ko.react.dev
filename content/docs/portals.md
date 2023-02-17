@@ -4,6 +4,14 @@ title: Portals
 permalink: docs/portals.html
 ---
 
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`createPortal`](https://beta.reactjs.org/reference/react-dom/createPortal)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 Portal은 부모 컴포넌트의 DOM 계층 구조 바깥에 있는 DOM 노드로 자식을 렌더링하는 최고의 방법을 제공합니다.
 
 ```js
@@ -46,7 +54,7 @@ portal의 전형적인 유스케이스는 부모 컴포넌트에 `overflow: hidd
 >
 > portal을 이용하여 작업할 때 [키보드 포커스 관리](/docs/accessibility.html#programmatically-managing-focus)가 매우 중요하다는 것을 염두에 두세요.
 >
-> 모달 다이얼로그(modal dialogs)의 경우 [WAI-ARIA Modal Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal)에 따라 모든 모달 다이얼로그(modal dialogs)와 상호작용할 수 있는지 확인해주세요.
+> For modal dialogs, ensure that everyone can interact with them by following the [WAI-ARIA Modal Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/).
 
 [**CodePen에서 실행하기**](https://codepen.io/gaearon/pen/yzMaBd)
 
