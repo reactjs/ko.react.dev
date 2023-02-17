@@ -8,9 +8,6 @@ prev: components-and-props.html
 next: handling-events.html
 ---
 
-<<<<<<< HEAD
-이 페이지는 React 컴포넌트 안의 state와 생명주기에 대한 개념을 소개해 줍니다. [자세한 컴포넌트 API 레퍼런스는 여기](/docs/react-component.html)에서 찾을 수 있습니다.
-=======
 > Try the new React documentation.
 > 
 > These new documentation pages teach modern React and include live examples:
@@ -21,7 +18,6 @@ next: handling-events.html
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 This page introduces the concept of state and lifecycle in a React component. You can find a [detailed component API reference here](/docs/react-component.html).
->>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 [이전 섹션](/docs/rendering-elements.html#updating-the-rendered-element)에서 다뤄본 째깍거리는 시계 예시를 다시 살펴보겠습니다. [엘리먼트 렌더링](/docs/rendering-elements.html#rendering-an-element-into-the-dom)에서는 UI를 업데이트하는 한 가지 방법만 배웠으며, 렌더링 된 출력값을 변경하기 위해 `root.render()`를 호출했습니다.
 

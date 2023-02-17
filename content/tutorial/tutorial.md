@@ -12,9 +12,6 @@ redirect_from:
   - "docs/tutorial-zh-CN.html"
 ---
 
-<<<<<<< HEAD
-이 자습서는 React에 대한 어떤 지식도 가정하지 않습니다.
-=======
 > Try the new React documentation.
 > 
 > The updated [Tutorial](https://beta.reactjs.org/learn/tutorial-tic-tac-toe) teaches modern React and includes live examples.
@@ -22,7 +19,6 @@ redirect_from:
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 This tutorial doesn't assume any existing React knowledge.
->>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 ## 자습서를 시작하기 전에 {#before-we-start-the-tutorial}
 

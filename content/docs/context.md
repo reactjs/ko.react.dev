@@ -4,9 +4,6 @@ title: Context
 permalink: docs/context.html
 ---
 
-<<<<<<< HEAD
-context를 이용하면 단계마다 일일이 props를 넘겨주지 않고도 컴포넌트 트리 전체에 데이터를 제공할 수 있습니다.
-=======
 > Try the new React documentation.
 > 
 > These new documentation pages teach modern React and include live examples:
@@ -17,7 +14,6 @@ context를 이용하면 단계마다 일일이 props를 넘겨주지 않고도 �
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 Context provides a way to pass data through the component tree without having to pass props down manually at every level.
->>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 일반적인 React 애플리케이션에서 데이터는 위에서 아래로 (즉, 부모로부터 자식에게) props를 통해 전달되지만, 애플리케이션 안의 여러 컴포넌트들에 전해줘야 하는 props의 경우 (예를 들면 선호 로케일, UI 테마) 이 과정이 번거로울 수 있습니다. context를 이용하면, 트리 단계마다 명시적으로 props를 넘겨주지 않아도 많은 컴포넌트가 이러한 값을 공유하도록 할 수 있습니다.
 

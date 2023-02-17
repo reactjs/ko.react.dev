@@ -6,9 +6,6 @@ next: hooks-effect.html
 prev: hooks-overview.html
 ---
 
-<<<<<<< HEAD
-*Hook*은 React 16.8버전에 새로 추가되었습니다. Hook은 클래스 컴포넌트를 작성하지 않아도 state와 같은 특징들을 사용할 수 있습니다.
-=======
 > Try the new React documentation.
 > 
 > These new documentation pages teach modern React and include live examples:
@@ -19,7 +16,6 @@ prev: hooks-overview.html
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 *Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
->>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 [Hook 소개](/docs/hooks-intro.html)에서 아래 예시를 통해 Hook과 친해졌습니다.
 

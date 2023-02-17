@@ -513,16 +513,12 @@ FancyInput = forwardRef(FancyInput);
 
 ### `useLayoutEffect` {#uselayouteffect}
 
-<<<<<<< HEAD
-이 함수의 시그니처는 `useEffect`와 동일하긴 한데, 모든 DOM 변경 후에 동기적으로 발생합니다. 이것은 DOM에서 레이아웃을 읽고 동기적으로 리렌더링하는 경우에 사용하세요. `useLayoutEffect`의 내부에 예정된 갱신은 브라우저가 화면을 그리기 이전 시점에 동기적으로 수행될 것입니다.
-=======
 > Try the new React documentation for [`useLayoutEffect`](https://beta.reactjs.org/reference/react/useLayoutEffect).
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 
 The signature is identical to `useEffect`, but it fires synchronously after all DOM mutations. Use this to read layout from the DOM and synchronously re-render. Updates scheduled inside `useLayoutEffect` will be flushed synchronously, before the browser has a chance to paint.
->>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 화면 갱신 차단의 방지가 가능할 때 표준 `useEffect`를 먼저 사용하세요.
 

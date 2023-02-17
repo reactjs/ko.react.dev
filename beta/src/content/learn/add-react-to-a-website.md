@@ -207,11 +207,7 @@ Congratulations! You just added a **production-ready JSX setup** to your project
 You can preprocess JSX so that every time you save a file with JSX in it, the transform will be re-run, converting the JSX file into a new, plain JavaScript file that the browser can understand. Here's how to set this up:
 
 1. Create a folder called **`src`.**
-<<<<<<< HEAD
-2. In your terminal, run this command: `npx babel --watch src --out-dir . --presets react-app/prod ` (Don't wait for it to finish! This command starts an automated watcher for edits to JSX inside `src`.)
-=======
 2. In your terminal, run this command: `npx babel --watch src --out-dir . --presets babel-preset-react-app/prod ` (Don't wait for it to finish! This command starts an automated watcher for edits to JSX inside `src`.)
->>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 3. Move your JSX-ified **`like-button.js`** ([it should look like this!](https://gist.githubusercontent.com/gaearon/be5ae0fbf563d6c5fe5c1563907b13d2/raw/4c0d0b8c7f4fcb341720424c28c72059f8174c62/like-button.js)) to the new **`src`** folder.
 
 The watcher will create a preprocessed **`like-button.js`** with the plain JavaScript code suitable for the browser.

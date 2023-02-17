@@ -130,10 +130,6 @@ If you remove the call to `flushSync`, then when the print dialog will display `
 
 `flushSync` can significantly hurt performance, and may unexpectedly force pending Suspense boundaries to show their fallback state.
 
-<<<<<<< HEAD
-Most of the time, `flushSync` can be avoided, so use `flushSync` as last resort.
-=======
 Most of the time, `flushSync` can be avoided, so use `flushSync` as a last resort.
->>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 </Pitfall>

@@ -9,9 +9,6 @@ redirect_from:
   - "docs/flux-todo-list.html"
 ---
 
-<<<<<<< HEAD
-종종 동일한 데이터에 대한 변경사항을 여러 컴포넌트에 반영해야 할 필요가 있습니다. 이럴 때는 가장 가까운 공통 조상으로 state를 끌어올리는 것이 좋습니다. 이런 일을 어떻게 할 수 있을지 지금부터 살펴봅시다.
-=======
 > Try the new React documentation.
 > 
 > These new documentation pages teach modern React and include live examples:
@@ -21,7 +18,6 @@ redirect_from:
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 Often, several components need to reflect the same changing data. We recommend lifting the shared state up to their closest common ancestor. Let's see how this works in action.
->>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 이번 섹션에서는 주어진 온도에서 물의 끓는 여부를 추정하는 온도 계산기를 만들어볼 것입니다.
 

@@ -6,9 +6,6 @@ prev: conditional-rendering.html
 next: forms.html
 ---
 
-<<<<<<< HEAD
-먼저 JavaScript에서 리스트를 어떻게 변환하는지 살펴봅시다.
-=======
 > Try the new React documentation.
 > 
 > These new documentation pages teach modern React and include live examples:
@@ -19,7 +16,6 @@ next: forms.html
 
 
 First, let's review how you transform lists in JavaScript.
->>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 아래는 [`map()`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map)함수를 이용하여 `numbers` 배열의 값을 두배로 만든 후 `map()`에서 반환하는 새 배열을 `doubled` 변수에 할당하고 로그를 확인하는 코드입니다.
 

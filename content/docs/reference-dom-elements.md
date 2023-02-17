@@ -14,9 +14,6 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
-<<<<<<< HEAD
-React는 성능 및 브라우저 간 호환성을 위해 브라우저의 독립적인 DOM 시스템을 구현합니다. React에서는 브라우저의 DOM 구현에서 몇 가지 어려운 부분을 정리할 수가 있었습니다.
-=======
 > Try the new React documentation.
 > 
 > These new documentation pages teach modern React and include live examples:
@@ -31,7 +28,6 @@ React는 성능 및 브라우저 간 호환성을 위해 브라우저의 독립�
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 React implements a browser-independent DOM system for performance and cross-browser compatibility. We took the opportunity to clean up a few rough edges in browser DOM implementations.
->>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 React에서 모든 프로퍼티 및 어트리뷰트(이벤트 핸들러 포함)은 캐멀 케이스를 사용합니다.
 예를 들어 HTML 어트리뷰트인 `tabindex`는 React의 `tabIndex`으로 표현합니다. 예외는 `aria-*` 및 `data-*` 어트리뷰트입니다. 이는 소문자로 표현합니다. 예를 들어, `aria-label`은 `aria-label`로 동일하게 유지됩니다.

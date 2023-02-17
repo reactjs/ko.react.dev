@@ -13,28 +13,6 @@ Do you know of a local React.js conference? Add it here! (Please keep the list c
 ## Upcoming Conferences {#upcoming-conferences}
 
 
-<<<<<<< HEAD
-### render(ATL) 2022 🍑 {#render-atlanta-2022} 
-June 1 - 4, 2022. Atlanta, GA, USA
-
-[Website](https://renderatl.com) - [Discord](https://www.renderatl.com/discord) - [Twitter](https://twitter.com/renderATL) - [Instagram](https://www.instagram.com/renderatl/) - [Facebook](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl) - [Podcast](https://www.renderatl.com/culture-and-code#/)
-
-### React Day Bangalore 2022 {#reactday-bangalore-2022}
-June 8 - 9, 2022.  Remote
-
-[Website](https://reactday.in/) - [Twitter](https://twitter.com/ReactDayIn) - [Linkedin](https://www.linkedin.com/company/react-day/) - [YouTube](https://www.youtube.com/reactify_in)
-
-### App.js Conf 2022 {#appjs-conf-2022}
-June 8 - 10, 2022. In-person in Kraków, Poland + remote
-
-[Website](https://appjs.co) - [Twitter](https://twitter.com/appjsconf)
-
-### React Summit 2022 {#react-summit-2022}
-June 17 & 21, 2022. In-person in Amsterdam, Netherlands + remote first interactivity (hybrid event)
-
-[Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
-
-=======
 ### RemixConf 2023 {#remixconf-2023}
 May, 2023. Salt Lake City, UT
 
@@ -116,7 +94,6 @@ September 12 - 16, 2022. In-person in Helsinki, Finland
 
 [Website](https://react-finland.fi/) - [Twitter](https://twitter.com/ReactFinland) - [Schedule](https://react-finland.fi/schedule/) - [Speakers](https://react-finland.fi/speakers/)
 
->>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 ### React Native EU 2022: Powered by {callstack} {#react-native-eu-2022-powered-by-callstack}
 September 1-2, 2022 - Remote event
 
@@ -126,29 +103,6 @@ September 1-2, 2022 - Remote event
 [Facebook](https://www.facebook.com/reactnativeeu/) - 
 [Instagram](https://www.instagram.com/reactnative_eu/)
 
-<<<<<<< HEAD
-### React Finland 2022 {#react-finland-2022}
-September 12 - 16, 2022. In-person in Helsinki, Finland
-
-[Website](https://react-finland.fi/) - [Twitter](https://twitter.com/ReactFinland) - [Schedule](https://react-finland.fi/schedule/) - [Speakers](https://react-finland.fi/speakers/)
-
-### React India 2022 {#react-india-2022}
-September 22 - 24, 2022. In-person in Goa, India + remote (hybrid event)
-
-[Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia) - [Videos](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w)
-
-### React Alicante 2022 {#react-alicante-2022}
-September 29 - October 1, 2022. In-person in Alicante, Spain + remote (hybrid event)
-
-[Website](https://reactalicante.es/) - [Twitter](https://twitter.com/reactalicante) - [Facebook](https://www.facebook.com/ReactAlicante) - [Videos](https://www.youtube.com/channel/UCaSdUaITU1Cz6PvC97A7e0w)
-
-### RemixConf 2023 {#remixconf-2023}
-May, 2023. Salt Lake City, UT
-
-[Website](https://remix.run/conf/2023) - [Twitter](https://twitter.com/remix_run)
-
-## Past Conferences {#past-conferences}
-=======
 ### ReactNext 2022 {#react-next-2022}
 June 28, 2022. Tel-Aviv, Israel
 
@@ -178,7 +132,6 @@ June 8 - 9, 2022.  Remote
 June 1 - 4, 2022. Atlanta, GA, USA
 
 [Website](https://renderatl.com) - [Discord](https://www.renderatl.com/discord) - [Twitter](https://twitter.com/renderATL) - [Instagram](https://www.instagram.com/renderatl/) - [Facebook](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl) - [Podcast](https://www.renderatl.com/culture-and-code#/)
->>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 ### RemixConf 2022 {#remixconf-2022}
 May 24 - 25, 2022. Salt Lake City, UT
