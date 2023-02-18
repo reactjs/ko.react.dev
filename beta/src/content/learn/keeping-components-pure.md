@@ -199,7 +199,9 @@ export default function TeaGathering() {
 
 가능하면 렌더링만으로 로직을 표현해 보세요. 이것이 당신을 얼마나 더 나아가게 할 수 있는지 알면 놀라게 될겁니다!
 
-<DeepDive title="리액트는 왜 순수함을 신경쓸까요?">
+<DeepDive>
+
+#### 리액트는 왜 순수함을 신경쓸까요? {/*why-does-react-care-about-purity*/}
 
 순수 함수를 작성하려면 약간의 습관과 훈련이 필요합니다. 그러나 이건 또한 놀라운 기회를 열어줍니다.
 
