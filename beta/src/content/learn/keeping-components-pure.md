@@ -366,7 +366,7 @@ body > * {
 
 </Solution>
 
-#### Fix a broken profile {/*fix-a-broken-profile*/}
+#### 망가진 프로필을 고쳐보세요 {/*fix-a-broken-profile*/}
 
 두 개의 `Profile` 컴포넌트 서로 다른 데이터로 나란히 렌더링됩니다. 첫 번째 프로필에서 "Collapse"를 누른 다음 "Expand"를 누릅니다. 이제 두 프로필에 동일한 사람이 표시됩니다. 이것은 버그입니다.
 
