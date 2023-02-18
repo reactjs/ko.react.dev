@@ -229,7 +229,7 @@ export default function TeaGathering() {
 
 <Challenges>
 
-### 고장난 시계를 고쳐보세요 {/* fix-a-broken-clock */}
+#### 고장난 시계를 고쳐보세요 {/*fix-a-broken-clock*/}
 
 이 컴포넌트는 자정부터 아침 6시까지의 시간에는 `<h1>`의 CSS 클래스를 `"night"`로 설정하고 그 외에 시간에는 `"day"`로 설정하려고 합니다. 하지만 이건 동작하지 않습니다. 이 컴포넌트를 고칠 수 있나요?
 
@@ -366,7 +366,7 @@ body > * {
 
 </Solution>
 
-#### Fix a broken profile {/* fix-a-broken-profile */}
+#### Fix a broken profile {/*fix-a-broken-profile*/}
 
 두 개의 `Profile` 컴포넌트 서로 다른 데이터로 나란히 렌더링됩니다. 첫 번째 프로필에서 "Collapse"를 누른 다음 "Expand"를 누릅니다. 이제 두 프로필에 동일한 사람이 표시됩니다. 이것은 버그입니다.
 
@@ -444,7 +444,7 @@ export default function App() {
         name: 'Creola Katherine Johnson',
       }} />
     </>
-  );
+  )
 }
 ```
 
@@ -542,7 +542,7 @@ export default function App() {
         name: 'Creola Katherine Johnson',
       }} />
     </>
-  )
+  );
 }
 ```
 
@@ -575,7 +575,7 @@ h1 { margin: 5px; font-size: 18px; }
 
 </Solution>
 
-### 깨진 StoryTray를 수리해보세요 {/* fix-a-broken-story-tray */}
+#### 깨진 StoryTray를 수리해보세요 {/*fix-a-broken-story-tray*/}
 
 회사의 CEO가 온라인 시계 앱에 "Story"를 추가해 달라고 요청했는데 거절할 수 없는 상황입니다. "Create Story" 플레이스홀더 뒤에 `stories` 목록을 받는 `StoryTray`컴포넌트를 작성했습니다.
 
