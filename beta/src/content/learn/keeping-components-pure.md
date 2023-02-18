@@ -145,7 +145,9 @@ export default function TeaSet() {
 
 일반적으로 컴포넌트가 특정 순서로 렌더링할 것으로 기대하면 안됩니다. <Math><MathI>y</MathI> = 5<MathI>x</MathI></Math> 전후에 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>을 호출한다면 문제가 없습니다. 두 공식은 서로 독립적으로 풀립니다. 마찬가지로 각 컴포넌트는 렌더링 중에 다른 컴포넌트와 같이 서로 의존하지 말고 "스스로 생각"해야 합니다. 렌더링은 학교 숙제와 같습니다. 각 컴포넌트는 자체적으로 JSX를 연산해야 합니다!
 
-<DeepDive title="엄격 모드로 순수하지 않은 연산을 감지">
+<DeepDive>
+
+#### 엄격 모드로 순수하지 않은 연산을 감지 {/*detecting-impure-calculations-with-strict-mode*/}
 
 아직 다 활용하지 않았을 수도 있지만 React에는 렌더링하면서 읽을 수 있는 세 가지 종류의 입력 요소가 있습니다. [props](/learn/passing-props-to-a-component), [state](/learn/state-a-components-memory), 그리고 [context](/learn/passing-data-deeply-with-context). 이러한 입력 요소는 항상 읽기전용으로 취급해야 합니다.
 
