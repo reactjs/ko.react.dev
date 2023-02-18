@@ -16,7 +16,7 @@ title: 컴포넌트 순수하게 유지하기
 
 </YouWillLearn>
 
-## 순수성: 공식으로서의 컴포넌트 {/* purity-components-as-formulas */}
+## 순수성: 공식으로서의 컴포넌트 {/*purity-components-as-formulas*/}
 
 컴퓨터 과학에서(특히 함수형 프로그래밍의 세계에서는) [순수 함수](https://wikipedia.org/wiki/Pure_function)는 다음과 같은 특징을 지니고 있는 함수입니다.
 
@@ -161,7 +161,7 @@ React는 개발 중에 각 컴포넌트의 함수를 두 번 호출하는 "엄�
 
 </DeepDive>
 
-### 지역 변형: 컴포넌트의 작은 비밀 {/* local-mutation-your-components-little-secret */}
+### 지역 변형: 컴포넌트의 작은 비밀 {/*local-mutation-your-components-little-secret*/}
 
 위의 예시에서 문제는 렌더링하는 동안 컴포넌트가 기존 변수를 변경했다는 것이다. 이것은 **"변형"**으로 불리워서 조금 무섭게 들립니다. 순수 함수는 함수 스코프 밖의 변수나 호출 전에 생성된 객체를 변경하지 않습니다.
 
@@ -189,7 +189,7 @@ export default function TeaGathering() {
 
 하지만, `TeaGathering`안에 _동일한 렌더링중에_ 생성되었기 때문에 괜찮습니다. `TeaGathering`밖에 어떤 코드도 이 현상이 벌어졌다는 것조차 모를 겁니다. 이 현상은 **"지역 변형"** 이라 불립니다 - 이 컴포넌트의 작은 비밀 같은 거죠.
 
-## 부작용을 _일으킬 수 있는_ 지점 {/* where-you-_can_-cause-side-effects */}
+## 부작용을 _일으킬 수 있는_ 지점 {/*where-you-_can_-cause-side-effects*/}
 
 함수형 프로그래밍은 순수성에 크게 의존하지만, 언젠가는, 어딘가에서, _무언가가_ 바뀌어야 합니다. 그것이 프로그래밍의 요점입니다! 이러한 변화들-화면을 업데이트하고, 애니메이션을 시작하고, 데이터를 변경하는 것을 **사이드 이펙트**라고 합니다. 렌더링중에 발생하는 것이 아니라 _"사이드에서,"_ 발생하는 현상입니다.
 
@@ -226,7 +226,7 @@ export default function TeaGathering() {
 </Recap>
 
 
-
+  
 <Challenges>
 
 #### 고장난 시계를 고쳐보세요 {/*fix-a-broken-clock*/}
