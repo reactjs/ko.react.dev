@@ -50,13 +50,11 @@ React는 이러한 컨셉 기반에 설계되었습니다. **React는 작성되�
 <Sandpack>
 
 ```js App.js
-function Recipe({drinkers}) {
+function Recipe({ drinkers }) {
   return (
-    <ol>
+    <ol>    
       <li>Boil {drinkers} cups of water.</li>
-      <li>
-        Add {drinkers} spoons of tea and {0.5 * drinkers} spoons of spice.
-      </li>
+      <li>Add {drinkers} spoons of tea and {0.5 * drinkers} spoons of spice.</li>
       <li>Add {0.5 * drinkers} cups of milk to boil and sugar to taste.</li>
     </ol>
   );
@@ -85,12 +83,9 @@ export default function App() {
 
 컴포넌트를 마치 레시피처럼 생각할 수 있습니다. 만약 레시피를 그대로 따르고 요리하는 동안 새로운 재료를 도입하지 않는 이상 매번 새로운 요리를 만들 수 있습니다다. 그 "요리"는 React가 [렌더](render-and-commit)하는데 컴포넌트가 제공하는 JSX입니다.
 
-<Illustration
-  src="/images/docs/illustrations/i_puritea-recipe.png"
-  alt="A tea recipe for x people: take x cups of water, add x spoons of tea and 0.5x spoons of spices, and 0.5x cups of milk"
-/>
+<Illustration src="/images/docs/illustrations/i_puritea-recipe.png" alt="A tea recipe for x people: take x cups of water, add x spoons of tea and 0.5x spoons of spices, and 0.5x cups of milk" />
 
-## 사이드 이펙트: 의도하지(않은) 결과 {/* side-effects-unintended-consequences */}
+## 사이드 이펙트: 의도하지(않은) 결과 {/*side-effects-unintended-consequences*/}
 
 React의 렌더링 과정은 항상 순수해야 합니다. 컴포넌트는 렌더링하기 전에 존재했던 객체나 변수들을 *변경*하지 말고 컴포넌트를 순수하지 않도록하는 JSX만 *반환*해야합니다.
 
@@ -129,7 +124,7 @@ export default function TeaSet() {
 <Sandpack>
 
 ```js
-function Cup({guest}) {
+function Cup({ guest }) {
   return <h2>Tea cup for guest #{guest}</h2>;
 }
 
@@ -173,7 +168,7 @@ React는 개발 중에 각 컴포넌트의 함수를 두 번 호출하는 "엄�
 <Sandpack>
 
 ```js
-function Cup({guest}) {
+function Cup({ guest }) {
   return <h2>Tea cup for guest #{guest}</h2>;
 }
 
@@ -243,19 +238,23 @@ export default function TeaGathering() {
 <Sandpack>
 
 ```js Clock.js active
-export default function Clock({time}) {
+export default function Clock({ time }) {
   let hours = time.getHours();
   if (hours >= 0 && hours <= 6) {
     document.getElementById('time').className = 'night';
   } else {
     document.getElementById('time').className = 'day';
   }
-  return <h1 id="time">{time.toLocaleTimeString()}</h1>;
+  return (
+    <h1 id="time">
+      {time.toLocaleTimeString()}
+    </h1>;
+  )
 }
 ```
 
 ```js App.js hidden
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Clock from './Clock.js';
 
 function useTime() {
@@ -271,7 +270,9 @@ function useTime() {
 
 export default function App() {
   const time = useTime();
-  return <Clock time={time} />;
+  return (
+    <Clock time={time} />;
+  )
 }
 ```
 
@@ -299,7 +300,7 @@ body > * {
 <Sandpack>
 
 ```js Clock.js active
-export default function Clock({time}) {
+export default function Clock({ time }) {
   let hours = time.getHours();
   let className;
   if (hours >= 0 && hours <= 6) {
@@ -307,12 +308,16 @@ export default function Clock({time}) {
   } else {
     className = 'day';
   }
-  return <h1 className={className}>{time.toLocaleTimeString()}</h1>;
+  return (
+    <h1 className={className}>
+      {time.toLocaleTimeString()}
+    </h1>;
+  )
 }
 ```
 
 ```js App.js hidden
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Clock from './Clock.js';
 
 function useTime() {
@@ -328,7 +333,9 @@ function useTime() {
 
 export default function App() {
   const time = useTime();
-  return <Clock time={time} />;
+  return (
+    <Clock time={time} />;
+  ) 
 }
 ```
 
@@ -369,11 +376,11 @@ body > * {
 
 ```js Profile.js
 import Panel from './Panel.js';
-import {getImageUrl} from './utils.js';
+import { getImageUrl } from './utils.js';
 
 let currentPerson;
 
-export default function Profile({person}) {
+export default function Profile({ person }) {
   currentPerson = person;
   return (
     <Panel>
@@ -401,9 +408,9 @@ function Avatar() {
 ```
 
 ```js Panel.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
-export default function Panel({children}) {
+export default function Panel({ children }) {
   const [open, setOpen] = useState(true);
   return (
     <section className="panel">
@@ -422,34 +429,32 @@ import Profile from './Profile.js';
 export default function App() {
   return (
     <>
-      <Profile
-        person={{
+      <Profile person={{
           imageId: 'lrWQx8l',
           name: 'Subrahmanyan Chandrasekhar',
-        }}
-      />
-      <Profile
-        person={{
+      }} />
+      <Profile person={{
           imageId: 'MK3eW3A',
           name: 'Creola Katherine Johnson',
-        }}
-      />
+      }} />
     </>
-  );
+  )
 }
 ```
 
 ```js utils.js hidden
 export function getImageUrl(person, size = 's') {
-  return 'https://i.imgur.com/' + person.imageId + size + '.jpg';
+  return (
+    'https://i.imgur.com/' + 
+    person.imageId + 
+    size + 
+    '.jpg'
+  );
 }
 ```
 
 ```css
-.avatar {
-  margin: 5px;
-  border-radius: 50%;
-}
+.avatar { margin: 5px; border-radius: 50%; }
 .panel {
   border: 1px solid #aaa;
   border-radius: 6px;
@@ -475,22 +480,22 @@ h1 {
 
 ```js Profile.js active
 import Panel from './Panel.js';
-import {getImageUrl} from './utils.js';
+import { getImageUrl } from './utils.js';
 
-export default function Profile({person}) {
+export default function Profile({ person }) {
   return (
     <Panel>
       <Header person={person} />
       <Avatar person={person} />
     </Panel>
-  );
+  )
 }
 
-function Header({person}) {
+function Header({ person }) {
   return <h1>{person.name}</h1>;
 }
 
-function Avatar({person}) {
+function Avatar({ person }) {
   return (
     <img
       className="avatar"
@@ -504,9 +509,9 @@ function Avatar({person}) {
 ```
 
 ```js Panel.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
-export default function Panel({children}) {
+export default function Panel({ children }) {
   const [open, setOpen] = useState(true);
   return (
     <section className="panel">
@@ -525,34 +530,32 @@ import Profile from './Profile.js';
 export default function App() {
   return (
     <>
-      <Profile
-        person={{
+      <Profile person={{
           imageId: 'lrWQx8l',
           name: 'Subrahmanyan Chandrasekhar',
-        }}
-      />
-      <Profile
-        person={{
+      }} />
+      <Profile person={{
           imageId: 'MK3eW3A',
           name: 'Creola Katherine Johnson',
-        }}
-      />
+      }} />
     </>
-  );
+  )
 }
 ```
 
 ```js utils.js hidden
 export function getImageUrl(person, size = 's') {
-  return 'https://i.imgur.com/' + person.imageId + size + '.jpg';
+  return (
+    'https://i.imgur.com/' + 
+    person.imageId + 
+    size + 
+    '.jpg'
+  );
 }
 ```
 
 ```css
-.avatar {
-  margin: 5px;
-  border-radius: 50%;
-}
+.avatar { margin: 5px; border-radius: 50%; }
 .panel {
   border: 1px solid #aaa;
   border-radius: 6px;
@@ -560,10 +563,7 @@ export function getImageUrl(person, size = 's') {
   padding: 10px;
   width: 200px;
 }
-h1 {
-  margin: 5px;
-  font-size: 18px;
-}
+h1 { margin: 5px; font-size: 18px; }
 ```
 
 </Sandpack>
@@ -581,7 +581,7 @@ h1 {
 <Sandpack>
 
 ```js StoryTray.js active
-export default function StoryTray({stories}) {
+export default function StoryTray({ stories }) {
   stories.push({
     id: 'create',
     label: 'Create Story',
@@ -590,7 +590,9 @@ export default function StoryTray({stories}) {
   return (
     <ul>
       {stories.map((story) => (
-        <li key={story.id}>{story.label}</li>
+        <li key={story.id}>
+          {story.label}
+        </li>
       ))}
     </ul>
   );
@@ -598,16 +600,16 @@ export default function StoryTray({stories}) {
 ```
 
 ```js App.js hidden
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
 let initialStories = [
-  {id: 0, label: "Ankit's Story"},
-  {id: 1, label: "Taylor's Story"},
+  {id: 0, label: "Ankit's Story" },
+  {id: 1, label: "Taylor's Story" },
 ];
 
 export default function App() {
-  let [stories, setStories] = useState([...initialStories]);
+  let [stories, setStories] = useState([...initialStories])
   let time = useTime();
 
   // HACK: Prevent the memory from growing forever while you read docs.
@@ -622,7 +624,8 @@ export default function App() {
         width: '100%',
         height: '100%',
         textAlign: 'center',
-      }}>
+      }}
+    >
       <h2>It is {time.toLocaleTimeString()} now.</h2>
       <StoryTray stories={stories} />
     </div>
@@ -678,11 +681,13 @@ li {
 <Sandpack>
 
 ```js StoryTray.js active
-export default function StoryTray({stories}) {
+export default function StoryTray({ stories }) {
   return (
     <ul>
       {stories.map((story) => (
-        <li key={story.id}>{story.label}</li>
+        <li key={story.id}>
+          {story.label}
+        </li>
       ))}
       <li>Create Story</li>
     </ul>
@@ -691,16 +696,16 @@ export default function StoryTray({stories}) {
 ```
 
 ```js App.js hidden
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
 let initialStories = [
-  {id: 0, label: "Ankit's Story"},
-  {id: 1, label: "Taylor's Story"},
+  {id: 0, label: "Ankit's Story" },
+  {id: 1, label: "Taylor's Story" },
 ];
 
 export default function App() {
-  let [stories, setStories] = useState([...initialStories]);
+  let [stories, setStories] = useState([...initialStories])
   let time = useTime();
 
   // HACK: Prevent the memory from growing forever while you read docs.
@@ -715,7 +720,8 @@ export default function App() {
         width: '100%',
         height: '100%',
         textAlign: 'center',
-      }}>
+      }}
+    >
       <h2>It is {time.toLocaleTimeString()} now.</h2>
       <StoryTray stories={stories} />
     </div>
@@ -759,7 +765,7 @@ li {
 <Sandpack>
 
 ```js StoryTray.js active
-export default function StoryTray({stories}) {
+export default function StoryTray({ stories }) {
   // Copy the array!
   let storiesToDisplay = stories.slice();
 
@@ -772,7 +778,9 @@ export default function StoryTray({stories}) {
   return (
     <ul>
       {storiesToDisplay.map((story) => (
-        <li key={story.id}>{story.label}</li>
+        <li key={story.id}>
+          {story.label}
+        </li>
       ))}
     </ul>
   );
@@ -780,16 +788,16 @@ export default function StoryTray({stories}) {
 ```
 
 ```js App.js hidden
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
 let initialStories = [
-  {id: 0, label: "Ankit's Story"},
-  {id: 1, label: "Taylor's Story"},
+  {id: 0, label: "Ankit's Story" },
+  {id: 1, label: "Taylor's Story" },
 ];
 
 export default function App() {
-  let [stories, setStories] = useState([...initialStories]);
+  let [stories, setStories] = useState([...initialStories])
   let time = useTime();
 
   // HACK: Prevent the memory from growing forever while you read docs.
@@ -804,7 +812,8 @@ export default function App() {
         width: '100%',
         height: '100%',
         textAlign: 'center',
-      }}>
+      }}
+    >
       <h2>It is {time.toLocaleTimeString()} now.</h2>
       <StoryTray stories={stories} />
     </div>
