@@ -438,7 +438,7 @@ export default function App() {
         name: 'Creola Katherine Johnson',
       }} />
     </>
-  )
+  );
 }
 ```
 
@@ -774,7 +774,7 @@ export default function StoryTray({ stories }) {
 
   return (
     <ul>
-      {storiesToDisplay.map((story) => (
+      {storiesToDisplay.map(story => (
         <li key={story.id}>
           {story.label}
         </li>
