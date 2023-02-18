@@ -248,8 +248,8 @@ export default function Clock({ time }) {
   return (
     <h1 id="time">
       {time.toLocaleTimeString()}
-    </h1>;
-  )
+    </h1>
+  );
 }
 ```
 
@@ -271,8 +271,8 @@ function useTime() {
 export default function App() {
   const time = useTime();
   return (
-    <Clock time={time} />;
-  )
+    <Clock time={time} />
+  );
 }
 ```
 
@@ -311,8 +311,8 @@ export default function Clock({ time }) {
   return (
     <h1 className={className}>
       {time.toLocaleTimeString()}
-    </h1>;
-  )
+    </h1>
+  );
 }
 ```
 
@@ -334,8 +334,8 @@ function useTime() {
 export default function App() {
   const time = useTime();
   return (
-    <Clock time={time} />;
-  ) 
+    <Clock time={time} />
+  );
 }
 ```
 
@@ -387,7 +387,7 @@ export default function Profile({ person }) {
       <Header />
       <Avatar />
     </Panel>
-  );
+  )
 }
 
 function Header() {
@@ -430,12 +430,12 @@ export default function App() {
   return (
     <>
       <Profile person={{
-          imageId: 'lrWQx8l',
-          name: 'Subrahmanyan Chandrasekhar',
+        imageId: 'lrWQx8l',
+        name: 'Subrahmanyan Chandrasekhar',
       }} />
       <Profile person={{
-          imageId: 'MK3eW3A',
-          name: 'Creola Katherine Johnson',
+        imageId: 'MK3eW3A',
+        name: 'Creola Katherine Johnson',
       }} />
     </>
   )
@@ -445,9 +445,9 @@ export default function App() {
 ```js utils.js hidden
 export function getImageUrl(person, size = 's') {
   return (
-    'https://i.imgur.com/' + 
-    person.imageId + 
-    size + 
+    'https://i.imgur.com/' +
+    person.imageId +
+    size +
     '.jpg'
   );
 }
@@ -462,10 +462,7 @@ export function getImageUrl(person, size = 's') {
   padding: 10px;
   width: 200px;
 }
-h1 {
-  margin: 5px;
-  font-size: 18px;
-}
+h1 { margin: 5px; font-size: 18px; }
 ```
 
 </Sandpack>
@@ -531,12 +528,12 @@ export default function App() {
   return (
     <>
       <Profile person={{
-          imageId: 'lrWQx8l',
-          name: 'Subrahmanyan Chandrasekhar',
+        imageId: 'lrWQx8l',
+        name: 'Subrahmanyan Chandrasekhar',
       }} />
       <Profile person={{
-          imageId: 'MK3eW3A',
-          name: 'Creola Katherine Johnson',
+        imageId: 'MK3eW3A',
+        name: 'Creola Katherine Johnson',
       }} />
     </>
   )
@@ -546,9 +543,9 @@ export default function App() {
 ```js utils.js hidden
 export function getImageUrl(person, size = 's') {
   return (
-    'https://i.imgur.com/' + 
-    person.imageId + 
-    size + 
+    'https://i.imgur.com/' +
+    person.imageId +
+    size +
     '.jpg'
   );
 }
@@ -584,12 +581,12 @@ h1 { margin: 5px; font-size: 18px; }
 export default function StoryTray({ stories }) {
   stories.push({
     id: 'create',
-    label: 'Create Story',
+    label: 'Create Story'
   });
 
   return (
     <ul>
-      {stories.map((story) => (
+      {stories.map(story => (
         <li key={story.id}>
           {story.label}
         </li>
@@ -684,7 +681,7 @@ li {
 export default function StoryTray({ stories }) {
   return (
     <ul>
-      {stories.map((story) => (
+      {stories.map(story => (
         <li key={story.id}>
           {story.label}
         </li>
@@ -772,7 +769,7 @@ export default function StoryTray({ stories }) {
   // Does not affect the original array:
   storiesToDisplay.push({
     id: 'create',
-    label: 'Create Story',
+    label: 'Create Story'
   });
 
   return (
