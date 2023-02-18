@@ -28,7 +28,7 @@ function YouWillLearnCard({title, path, children}: YouWillLearnCardProps) {
           type="primary"
           size="md"
           label={title}>
-          더 읽어보기
+          Read More
           <IconNavArrow displayDirection="right" className="inline ml-1" />
         </ButtonLink>
       </div>

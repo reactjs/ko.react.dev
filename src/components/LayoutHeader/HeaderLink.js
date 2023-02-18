@@ -39,6 +39,7 @@ const style = {
   },
 
   [media.size('xsmall')]: {
+    whiteSpace: 'nowrap',
     paddingLeft: 8,
     paddingRight: 8,
   },

@@ -2,6 +2,18 @@
 
 이 저장소는 [reactjs.org](https://reactjs.org/)의 소스 코드와 개발 문서를 포함하고 있습니다.
 
+## 한국어 번역 정보
+### 가이드
+
+번역을 진행할 때에 다음의 가이드를 따라주세요.
+
+1. 다음과 같은 [공통 스타일 가이드 확인 (Check the common style guide)](https://github.com/reactjs/ko.reactjs.org/blob/master/UNIVERSAL-STYLE-GUIDE.md) 을 따르고 있습니다.
+2. [모범사례 확인 (Check best practices)](https://github.com/reactjs/ko.reactjs.org/wiki/Best-practices-for-translation) 를 확인해주세요.
+3. 공통된 단어 번역을 위해 [용어 확인 (Check the term)](https://github.com/reactjs/ko.reactjs.org/wiki/Translate-Glossary) 을 참고해주세요.
+4. 마지막으로 [맞춤법 검사 (Spelling check)](http://speller.cs.pusan.ac.kr/) 를 진행해주세요.
+
+
+
 ## 시작하기
 
 ### 사전 준비
@@ -65,5 +77,7 @@
 
 - `yarn reset` 명령어를 사용하여 로컬 캐시를 초기화합니다.
 
+
 ## 저작권
-위 내용에 대한 저작권은 [reactjs.org](https://reactjs.org/)가 가지고 있으며, [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/main/LICENSE-DOCS.md)에서 볼 수 있는 CC-BY-4.0 라이센스를 따릅니다.
+위 내용에 대한 저작권은 [reactjs.org](https://reactjs.org/)가 가지고 있으며, [LICENSE-DOCS.md](LICENSE-DOCS.md)에서 볼 수 있는 CC-BY-4.0 라이센스를 따릅니다.
+

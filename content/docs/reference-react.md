@@ -67,7 +67,7 @@ Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이
 
 ### Transitions {#transitions}
 
-*Transitions* are a new concurrent feature introduced in React 18. They allow you to mark updates as transitions, which tells React that they can be interrupted and avoid going back to Suspense fallbacks for already visible content.
+*Transitions*는 React 18에 도입된 새로운 동시(concurrent) 기능입니다. 이는 업데이트를 transitions으로 표시할 수 있게 하여 React에게 중단될 수 있음을 알리고, 이미 보이는 콘텐츠에 대해 Suspense Fallback으로 가는 것을 방지할 수 있습니다.
 
 - [`React.startTransition`](#starttransition)
 - [`React.useTransition`](/docs/hooks-reference.html#usetransition)
@@ -101,6 +101,10 @@ Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이
 
 ### `React.Component` {#reactcomponent}
 
+> Try the new React documentation for [`Component`](https://beta.reactjs.org/reference/react/Component).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.Component`는 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)를 사용하여 React 컴포넌트를 정의할 때에 기초가 되는 class입니다.
 
 ```javascript
@@ -117,6 +121,10 @@ class Greeting extends React.Component {
 
 ### `React.PureComponent` {#reactpurecomponent}
 
+> Try the new React documentation for [`PureComponent`](https://beta.reactjs.org/reference/react/PureComponent).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.PureComponent`는 [`React.Component`](#reactcomponent)와 비슷합니다. [`React.Component`](#reactcomponent)는 [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate)를 구현하지 않지만, `React.PureComponent`는 props와 state를 이용한 얕은 비교를 구현한다는 차이점만이 존재합니다.
 
 React 컴포넌트의 `render()` 함수가 동일한 props와 state에 대하여 동일한 결과를 렌더링한다면, `React.PureComponent`를 사용하여 경우에 따라 성능 향상을 누릴 수 있습니다.
@@ -130,6 +138,10 @@ React 컴포넌트의 `render()` 함수가 동일한 props와 state에 대하여
 * * *
 
 ### `React.memo` {#reactmemo}
+
+> Try the new React documentation for [`memo`](https://beta.reactjs.org/reference/react/memo).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```javascript
 const MyComponent = React.memo(function MyComponent(props) {
@@ -167,6 +179,10 @@ export default React.memo(MyComponent, areEqual);
 
 ### `createElement()` {#createelement}
 
+> Try the new React documentation for [`createElement`](https://beta.reactjs.org/reference/react/createElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 React.createElement(
   type,
@@ -182,6 +198,10 @@ JSX로 작성된 코드는 `React.createElement()`를 사용하는 형태로 변
 * * *
 
 ### `cloneElement()` {#cloneelement}
+
+> Try the new React documentation for [`cloneElement`](https://beta.reactjs.org/reference/react/cloneElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```
 React.cloneElement(
@@ -207,6 +227,10 @@ React.cloneElement(
 
 ### `createFactory()` {#createfactory}
 
+> Try the new React documentation for [`createFactory`](https://beta.reactjs.org/reference/react/createFactory).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 React.createFactory(type)
 ```
@@ -221,6 +245,10 @@ JSX를 사용할 경우 `React.createFactory()`를 직접 호출하는 일은 �
 
 ### `isValidElement()` {#isvalidelement}
 
+> Try the new React documentation for [`isValidElement`](https://beta.reactjs.org/reference/react/isValidElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 React.isValidElement(object)
 ```
@@ -230,6 +258,10 @@ React.isValidElement(object)
 * * *
 
 ### `React.Children` {#reactchildren}
+
+> Try the new React documentation for [`Children`](https://beta.reactjs.org/reference/react/Children).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 `React.Children`는 불투명(Opaque) 자료 구조인 `this.props.children`를 다루는 유틸리티 함수들을 제공합니다.
 
@@ -289,6 +321,10 @@ React.Children.toArray(children)
 
 ### `React.Fragment` {#reactfragment}
 
+> Try the new React documentation for [`Fragment`](https://beta.reactjs.org/reference/react/Fragment).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.Fragment` 컴포넌트를 사용하면 `render()` 메서드 안에서 추가적인 DOM 엘리먼트를 생성하지 않아도 여러 엘리먼트를 반환할 수 있습니다.
 
 ```javascript
@@ -306,10 +342,18 @@ render() {
 
 ### `React.createRef` {#reactcreateref}
 
+> Try the new React documentation for [`createRef`](https://beta.reactjs.org/reference/react/createRef).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.createRef`는 React 엘리먼트에 `ref` 어트리뷰트로 붙일 수 있는 [ref](/docs/refs-and-the-dom.html)를 생성합니다.
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 ### `React.forwardRef` {#reactforwardref}
+
+> Try the new React documentation for [`forwardRef`](https://beta.reactjs.org/reference/react/forwardRef).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 `React.forwardRef`는 전달받은 [`ref`](/docs/refs-and-the-dom.html) 어트리뷰트를 하부 트리 내의 다른 컴포넌트로 전달하는 React 컴포넌트를 생성합니다. 이 기법은 잘 사용되지 않지만, 아래의 두 시나리오에서는 특히 유용합니다.
 
@@ -328,6 +372,10 @@ render() {
 
 ### `React.lazy` {#reactlazy}
 
+> Try the new React documentation for [`lazy`](https://beta.reactjs.org/reference/react/lazy).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.lazy()`를 사용하면 동적으로 불러오는 컴포넌트를 정의할 수 있습니다. 그러면 번들의 크기를 줄이고, 초기 렌더링에서 사용되지 않는 컴포넌트를 불러오는 작업을 지연시킬 수 있습니다.
 
 사용 방법은 [Code Splitting](/docs/code-splitting.html#reactlazy) 문서에서 익힐 수 있습니다. 또한 사용 방법을 자세히 다룬 [이 글](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d)을 읽어보는 것도 좋습니다.
@@ -341,9 +389,15 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 ### `React.Suspense` {#reactsuspense}
 
+> Try the new React documentation for [`Suspense`](https://beta.reactjs.org/reference/react/Suspense).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. In the future we plan to let `Suspense` handle more scenarios such as data fetching. You can read about this in [our roadmap](/blog/2018/11/27/react-16-roadmap.html).
 
-Today, lazy loading components is the **only** use case supported by `<React.Suspense>`:
+`React.Suspense`는 트리 하단에 있는 일부 컴포넌트가 아직 렌더링할 준비가 되지 않은 경우 로딩 지시기 (Loading indicator)를 나타낼 수 있도록 해줍니다. 향후에는 `Suspense`가 데이터 가져오기(fetching)등의 더 많은 시나리오를 처리할 수 있도록 할 계획입니다. 이에 대한 내용은 [로드맵](/blog/2018/11/27/react-16-roadmap.html)에서 확인할 수 있습니다.
+
+현재 `<React.Suspense>`가 지원하는 **유일한** 사용 사례는 lazy loading 컴포넌트입니다.
 
 ```js
 // 이 컴포넌트는 동적으로 불러옵니다
@@ -363,29 +417,32 @@ function MyComponent() {
 
 관련된 내용을 [Code Splitting 가이드](/docs/code-splitting.html#reactlazy) 문서에서 설명하고 있습니다. `lazy`한 컴포넌트는 `Suspense` 트리 내의 깊숙한 곳에 위치할 수 있다는 점에 유의하세요. 즉, `Suspense`가 모든 컴포넌트를 감쌀 필요는 없다는 것입니다. 가장 좋은 사용법은 로딩 지시기를 보여주고 싶은 지점에 `<Suspense>`를 작성하는 것이지만, Code Splitting을 하고자 하는 지점 어디서든지 `lazy()`를 써야 할 것입니다.
 
-> Note
+> 주의
 >
-> For content that is already shown to the user, switching back to a loading indicator can be disorienting. It is sometimes better to show the "old" UI while the new UI is being prepared. To do this, you can use the new transition APIs [`startTransition`](#starttransition) and [`useTransition`](/docs/hooks-reference.html#usetransition) to mark updates as transitions and avoid unexpected fallbacks.
+> 사용자에게 이미 표시된 콘텐츠의 경우, 다시 로딩 지시기(Loading Indicator)로 전환되는 것은 혼란을 야기할 수 있습니다. 때로는 새로운 UI가 준비되는 동안 "기존의" UI를 보여주는 것이 더 나을 수 있습니다. 이를 위해, 새로운 transition API인  [`startTransition`](#starttransition)과 [`useTransition`](/docs/hooks-reference.html#usetransition)를 사용하여 수정된 내용을 transition으로 표시하고 예상치 못한 fallback을 방지할 수 있습니다.
 
-#### `React.Suspense` in Server Side Rendering {#reactsuspense-in-server-side-rendering}
-During server side rendering Suspense Boundaries allow you to flush your application in smaller chunks by suspending.
-When a component suspends we schedule a low priority task to render the closest Suspense boundary's fallback. If the component unsuspends before we flush the fallback then we send down the actual content and throw away the fallback.
+#### 서버 사이드 렌더링에서의 `React.Suspense` {#reactsuspense-in-server-side-rendering}
+서버 사이드 렌더링 중에 Suspense 경계(Suspense Boundaries)를 사용하면 어플리케이션을 일시 중단하여 더 작은 덩어리로 렌더링할 수 있습니다.
+컴포넌트 렌더링이 일시 중단되면 가장 가까운 Suspense boundary의 fallback을 렌더링하기 위해 우선 순위가 낮은 작업을 예약합니다. Fallback을 렌더링 하기 전에 컴포넌트 렌더링이 재개된다면(unsuspends) 실제 콘텐츠를 보여주고 fallback을 제거합니다.
 
 #### `React.Suspense` during hydration {#reactsuspense-during-hydration}
-Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before its hydrated will cause the boundary to hydrate at
-a higher priority than neighboring boundaries. [Read more](https://github.com/reactwg/react-18/discussions/130)
+Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before it is hydrated will cause the boundary to hydrate at a higher priority than neighboring boundaries. [Read more](https://github.com/reactwg/react-18/discussions/130)
 
 ### `React.startTransition` {#starttransition}
+
+> Try the new React documentation for [`startTransition`](https://beta.reactjs.org/reference/react/startTransition).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```js
 React.startTransition(callback)
 ```
-`React.startTransition` lets you mark updates inside the provided callback as transitions. This method is designed to be used when [`React.useTransition`](/docs/hooks-reference.html#usetransition) is not available.
+`React.startTransition` 는 제공된 콜백의 내부를 transition으로 표시할 수 있게합니다. 해당 메서드는 [`React.useTransition`](/docs/hooks-reference.html#usetransition) 를 사용할 수 없는 경우에 사용하도록 설계되었습니다.
 
-> Note:
+> 주의
 >
-> Updates in a transition yield to more urgent updates such as clicks.
+> Transition 업데이트는 click과 같은 우선순위가 높은 업데이트에 순서를 양보합니다.
 >
-> Updates in a transition will not show a fallback for re-suspended content, allowing the user to continue interacting while rendering the update.
+> Transition 중 일어나는 업데이트는 다시 일시 중단된(re-suspended) 콘텐츠에 대한 fallback을 표시하지 않으므로, 사용자가 업데이트를 렌더링하는 동안 계속하여 상호 작용 할 수 있도록 해줍니다.
 >
-> `React.startTransition` does not provide an `isPending` flag. To track the pending status of a transition see [`React.useTransition`](/docs/hooks-reference.html#usetransition).
+> `React.startTransition`는 `isPending` 플래그를 제공하지 않습니다. Transition의 대기 상태(pending status)를 추적하려면 [`React.useTransition`](/docs/hooks-reference.html#usetransition)를 참고하세요.
