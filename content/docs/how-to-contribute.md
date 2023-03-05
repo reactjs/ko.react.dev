@@ -84,7 +84,6 @@ Public API를 변경하거나 구현을 간단하게 변경하려 할 때 [이�
 
 **풀 리퀘스트를 보내기 전에,** 다음 사항을 확인해 주세요.
 
-<<<<<<< HEAD
 1. [저장소](https://github.com/facebook/react)를 포크하고 `main`로부터 새로운 브랜치를 생성합니다.
 2. 저장소 루트에서 `yarn` 명령을 실행합니다.
 3. 버그를 수정했거나 테스트가 필요한 코드를 추가했다면 테스트를 추가해 주세요.
@@ -95,18 +94,6 @@ Public API를 변경하거나 구현을 간단하게 변경하려 할 때 [이�
 8. 코드를 린트하세요 (`yarn lint`). Tip: `yarn linc` 는 변경된 파일만 확인할 수 있습니다.
 9. [Flow](https://flowtype.org/) 타입 검사를 실행하세요. (`yarn flow`).
 10. 아직 CLA에 서명하지 않았다면, 서명을 완료해주세요.
-=======
-1. Fork [the repository](https://github.com/facebook/react) and create your branch from `main`.
-2. Run `yarn` in the repository root.
-3. If you've fixed a bug or added code that should be tested, add tests!
-4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
-5. Run `yarn test --prod` to test in the production environment.
-6. If you need a debugger, run `yarn test --debug --watch TestName`, open `chrome://inspect`, and press "Inspect".
-7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
-8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
-9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
-10. If you haven't already, complete the CLA.
->>>>>>> b0ccb47f33e52315b0ec65edb9a49dc4910dd99c
 
 ### Contributor License Agreement (CLA) {#contributor-license-agreement-cla}
 
