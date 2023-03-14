@@ -42,7 +42,6 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-Then, we can include the entire `listItems` array inside a `<ul>` element:
 그러면 `<ul>` 엘리먼트 안에 전체 `listItems` 배열을 포함할 수 있습니다.
 
 ```javascript{2}
