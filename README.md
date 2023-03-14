@@ -1,4 +1,6 @@
 # reactjs.org
+[![](https://dcbadge.vercel.app/api/server/YXdTyCh5KF)](https://discord.gg/YXdTyCh5KF)
+
 
 이 저장소는 [reactjs.org](https://reactjs.org/)의 소스 코드와 개발 문서를 포함하고 있습니다.
 
