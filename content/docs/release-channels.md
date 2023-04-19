@@ -8,6 +8,15 @@ prev: cdn-links.html
 next: hello-world.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> See [Versioning Policy](https://react.dev/community/versioning-policy) to learn about the React release channels.
+
+</div>
+
 React는 버그 신고, 풀 리퀘스트 요청, [RFCs에 제출](https://github.com/reactjs/rfcs)하기 위해서 번성하고 있는 오픈 소스 커뮤니티에 의존한다. 피드백을 장려하기 위해서 우리는 때때로 배포되지 않은 기능을 포함하고 있는 특정 React 빌드를 공유한다.
 
 > 이 문서는 프레임워크, 라이브러리, 개발자 도구에 관해 작업하는 개발자들과 가장 관련이 있습니다. 주로 React를 사용해서 사용자용 애플리케이션을 빌드하는 개발자는 prerelease 채널에 관해서 걱정할 필요가 없습니다.

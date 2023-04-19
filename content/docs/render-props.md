@@ -4,6 +4,15 @@ title: Render Props
 permalink: docs/render-props.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> Render props are used in modern React, but aren't very common.  
+> For many cases, they have been replaced by [custom Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks).
+
+</div>
+
 ["render prop"](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)란, React 컴포넌트 간에 코드를 공유하기 위해 함수 props를 이용하는 간단한 테크닉입니다.
 
 render props 패턴으로 구현된 컴포넌트는 자체적으로 렌더링 로직을 구현하는 대신, react 엘리먼트 요소를 반환하고 이를 호출하는 함수를 사용합니다.

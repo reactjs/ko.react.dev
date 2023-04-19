@@ -16,14 +16,17 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
-> Try the new React documentation.
-> 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
 > These new documentation pages teach modern React and include live examples:
 >
-> - [Your First Component](https://beta.reactjs.org/learn/your-first-component)
-> - [Passing Props to a Component](https://beta.reactjs.org/learn/passing-props-to-a-component)
->
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> - [Your First Component](https://react.dev/learn/your-first-component)
+> - [Passing Props to a Component](https://react.dev/learn/passing-props-to-a-component)
+
+</div>
 
 컴포넌트를 통해 UI를 재사용 가능한 개별적인 여러 조각으로 나누고, 각 조각을 개별적으로 살펴볼 수 있습니다. 이 페이지에서는 컴포넌트의 개념을 소개합니다. [자세한 컴포넌트 API 레퍼런스는 여기](/docs/react-component.html)에서 확인할 수 있습니다.
 

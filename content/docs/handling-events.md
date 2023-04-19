@@ -8,14 +8,15 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
-> Try the new React documentation.
-> 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
 > These new documentation pages teach modern React and include live examples:
 >
-> - [Responding to Events](https://beta.reactjs.org/learn/responding-to-events)
->
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> - [Responding to Events](https://react.dev/learn/responding-to-events)
 
+</div>
 
 React 엘리먼트에서 이벤트를 처리하는 방식은 DOM 엘리먼트에서 이벤트를 처리하는 방식과 매우 유사합니다. 몇 가지 문법 차이는 다음과 같습니다.
 

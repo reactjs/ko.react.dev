@@ -6,6 +6,17 @@ redirect_from:
   - "docs/advanced-performance.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React:
+>
+> - [`memo`: Skipping re-rendering when props are unchanged
+](https://react.dev/reference/react/memo#skipping-re-rendering-when-props-are-unchanged)
+
+</div>
+
 내부적으로 React는 UI를 최신화하기 위해 비용이 많이 드는 DOM 작업의 수를 최소화하기 위해 몇 가지 기발한 방법을 활용합니다. 많은 애플리케이션에서 React를 사용하면 성능을 특별히 최적화하기 위해 많은 작업을 수행하지 않고도 빠른 사용자 인터페이스로 이어질 수 있습니다. 그럼에도 불구하고 React 애플리케이션의 속도를 높일 수 있는 몇 가지 방법이 있습니다.
 
 ## 프로덕션 빌드를 활용하세요 {#use-the-production-build}

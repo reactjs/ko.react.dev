@@ -6,6 +6,14 @@ redirect_from:
   - "docs/webcomponents.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> See [Custom HTML elements](https://react.dev/reference/react-dom/components#custom-html-elements) in the new docs.
+>
+</div>
+
 React와 [웹 컴포넌트](https://developer.mozilla.org/ko/docs/Web/Web_Components)는 서로 다른 문제를 해결하기 위해 만들어졌습니다. 웹 컴포넌트는 재사용할 수 있는 컴포넌트에 강한 캡슐화를 제공하는 반면, React는 데이터와 DOM을 동기화하는 선언적 라이브러리를 제공합니다.
 
 두 목표는 상호보완적입니다. React에서 웹 컴포넌트를 사용할지, 웹 컴포넌트에서 React를 사용할지, 둘 다 사용할지는 자유롭게 정하실 수 있습니다.

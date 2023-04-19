@@ -8,13 +8,15 @@ redirect_from:
   - "tips/false-in-jsx.html"
 ---
 
-> Try the new React documentation.
-> 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
 > These new documentation pages teach modern React and include live examples:
 >
-> - [Conditional Rendering](https://beta.reactjs.org/learn/conditional-rendering)
->
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> - [Conditional Rendering](https://react.dev/learn/conditional-rendering)
+
+</div>
 
 React에서는 원하는 동작을 캡슐화하는 컴포넌트를 만들 수 있습니다. 이렇게 하면 애플리케이션의 상태에 따라서 컴포넌트 중 몇 개만을 렌더링할 수 있습니다.
 

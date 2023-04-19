@@ -4,15 +4,17 @@ title: 비제어 컴포넌트
 permalink: docs/uncontrolled-components.html
 ---
 
-> Try the new React documentation.
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
 > 
 > These new documentation pages teach modern React and include live examples:
 >
-> - [`<input>`](https://beta.reactjs.org/reference/react-dom/components/input)
-> - [`<select>`](https://beta.reactjs.org/reference/react-dom/components/select)
-> - [`<textarea>`](https://beta.reactjs.org/reference/react-dom/components/textarea)
->
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> - [`<input>`](https://react.dev/reference/react-dom/components/input)
+> - [`<select>`](https://react.dev/reference/react-dom/components/select)
+> - [`<textarea>`](https://react.dev/reference/react-dom/components/textarea)
+
+</div>
 
 대부분 경우에 폼을 구현하는데 [제어 컴포넌트](/docs/forms.html#controlled-components)를 사용하는 것이 좋습니다. 제어 컴포넌트에서 폼 데이터는 React 컴포넌트에서 다루어집니다. 대안인 비제어 컴포넌트는 DOM 자체에서 폼 데이터가 다루어집니다.
 

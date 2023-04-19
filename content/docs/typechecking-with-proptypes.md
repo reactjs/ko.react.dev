@@ -6,6 +6,14 @@ redirect_from:
   - "docs/react-api.html#typechecking-with-proptypes"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> PropTypes aren't commonly used in modern React. Use TypeScript for static type checking.
+
+</div>
+
 > 주의
 >
 > `React.PropTypes`는 React v15.5부터 다른 패키지로 이동하였습니다. 대신 [`prop-types` 라이브러리를](https://www.npmjs.com/package/prop-types) 사용하시길 바랍니다.

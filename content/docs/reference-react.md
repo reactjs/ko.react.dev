@@ -13,6 +13,19 @@ redirect_from:
   - "docs/top-level-api-zh-CN.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React:
+>
+> - [`react`: Components](https://react.dev/reference/react/components)
+> - [`react`: Hooks](https://react.dev/reference/react/)
+> - [`react`: APIs](https://react.dev/reference/react/apis)
+> - [`react`: Legacy APIs](https://react.dev/reference/react/legacy)
+
+</div>
+
 `React`는 React 라이브러리의 진입점입니다. `<script>` 태그를 사용하여 React를 불러오게 되면 전역 객체 `React`를 통하여 최상위 API를 사용할 수 있습니다. npm에서 ES6를 사용하는 경우, `import React from 'react'`를 작성하면 됩니다. npm에서 ES5를 사용하는 경우, `var React = require('react')`를 작성하면 됩니다.
 
 ## 개요 {#overview}
@@ -101,9 +114,13 @@ Suspense를 사용하면 컴포넌트가 렌더링하기 전에 다른 작업이
 
 ### `React.Component` {#reactcomponent}
 
-> Try the new React documentation for [`Component`](https://beta.reactjs.org/reference/react/Component).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`Component`](https://react.dev/reference/react/Component).
+
+</div>
 
 `React.Component`는 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)를 사용하여 React 컴포넌트를 정의할 때에 기초가 되는 class입니다.
 
@@ -121,9 +138,13 @@ class Greeting extends React.Component {
 
 ### `React.PureComponent` {#reactpurecomponent}
 
-> Try the new React documentation for [`PureComponent`](https://beta.reactjs.org/reference/react/PureComponent).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`PureComponent`](https://react.dev/reference/react/PureComponent).
+
+</div>
 
 `React.PureComponent`는 [`React.Component`](#reactcomponent)와 비슷합니다. [`React.Component`](#reactcomponent)는 [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate)를 구현하지 않지만, `React.PureComponent`는 props와 state를 이용한 얕은 비교를 구현한다는 차이점만이 존재합니다.
 
@@ -139,9 +160,13 @@ React 컴포넌트의 `render()` 함수가 동일한 props와 state에 대하여
 
 ### `React.memo` {#reactmemo}
 
-> Try the new React documentation for [`memo`](https://beta.reactjs.org/reference/react/memo).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`memo`](https://react.dev/reference/react/memo).
+
+</div>
 
 ```javascript
 const MyComponent = React.memo(function MyComponent(props) {
@@ -179,9 +204,13 @@ export default React.memo(MyComponent, areEqual);
 
 ### `createElement()` {#createelement}
 
-> Try the new React documentation for [`createElement`](https://beta.reactjs.org/reference/react/createElement).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`createElement`](https://react.dev/reference/react/createElement).
+
+</div>
 
 ```javascript
 React.createElement(
@@ -199,9 +228,13 @@ JSX로 작성된 코드는 `React.createElement()`를 사용하는 형태로 변
 
 ### `cloneElement()` {#cloneelement}
 
-> Try the new React documentation for [`cloneElement`](https://beta.reactjs.org/reference/react/cloneElement).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`cloneElement`](https://react.dev/reference/react/cloneElement).
+
+</div>
 
 ```
 React.cloneElement(
@@ -227,9 +260,13 @@ React.cloneElement(
 
 ### `createFactory()` {#createfactory}
 
-> Try the new React documentation for [`createFactory`](https://beta.reactjs.org/reference/react/createFactory).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`createFactory`](https://react.dev/reference/react/createFactory).
+
+</div>
 
 ```javascript
 React.createFactory(type)
@@ -245,9 +282,13 @@ JSX를 사용할 경우 `React.createFactory()`를 직접 호출하는 일은 �
 
 ### `isValidElement()` {#isvalidelement}
 
-> Try the new React documentation for [`isValidElement`](https://beta.reactjs.org/reference/react/isValidElement).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`isValidElement`](https://react.dev/reference/react/isValidElement).
+
+</div>
 
 ```javascript
 React.isValidElement(object)
@@ -259,9 +300,13 @@ React.isValidElement(object)
 
 ### `React.Children` {#reactchildren}
 
-> Try the new React documentation for [`Children`](https://beta.reactjs.org/reference/react/Children).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`Children`](https://react.dev/reference/react/Children).
+
+</div>
 
 `React.Children`는 불투명(Opaque) 자료 구조인 `this.props.children`를 다루는 유틸리티 함수들을 제공합니다.
 
@@ -321,9 +366,13 @@ React.Children.toArray(children)
 
 ### `React.Fragment` {#reactfragment}
 
-> Try the new React documentation for [`Fragment`](https://beta.reactjs.org/reference/react/Fragment).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`Fragment`](https://react.dev/reference/react/Fragment).
+
+</div>
 
 `React.Fragment` 컴포넌트를 사용하면 `render()` 메서드 안에서 추가적인 DOM 엘리먼트를 생성하지 않아도 여러 엘리먼트를 반환할 수 있습니다.
 
@@ -342,18 +391,26 @@ render() {
 
 ### `React.createRef` {#reactcreateref}
 
-> Try the new React documentation for [`createRef`](https://beta.reactjs.org/reference/react/createRef).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`createRef`](https://react.dev/reference/react/createRef).
+
+</div>
 
 `React.createRef`는 React 엘리먼트에 `ref` 어트리뷰트로 붙일 수 있는 [ref](/docs/refs-and-the-dom.html)를 생성합니다.
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 ### `React.forwardRef` {#reactforwardref}
 
-> Try the new React documentation for [`forwardRef`](https://beta.reactjs.org/reference/react/forwardRef).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`forwardRef`](https://react.dev/reference/react/forwardRef).
+
+</div>
 
 `React.forwardRef`는 전달받은 [`ref`](/docs/refs-and-the-dom.html) 어트리뷰트를 하부 트리 내의 다른 컴포넌트로 전달하는 React 컴포넌트를 생성합니다. 이 기법은 잘 사용되지 않지만, 아래의 두 시나리오에서는 특히 유용합니다.
 
@@ -372,9 +429,13 @@ render() {
 
 ### `React.lazy` {#reactlazy}
 
-> Try the new React documentation for [`lazy`](https://beta.reactjs.org/reference/react/lazy).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`lazy`](https://react.dev/reference/react/lazy).
+
+</div>
 
 `React.lazy()`를 사용하면 동적으로 불러오는 컴포넌트를 정의할 수 있습니다. 그러면 번들의 크기를 줄이고, 초기 렌더링에서 사용되지 않는 컴포넌트를 불러오는 작업을 지연시킬 수 있습니다.
 
@@ -389,9 +450,13 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 ### `React.Suspense` {#reactsuspense}
 
-> Try the new React documentation for [`Suspense`](https://beta.reactjs.org/reference/react/Suspense).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`Suspense`](https://react.dev/reference/react/Suspense).
+
+</div>
 
 `React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. In the future we plan to let `Suspense` handle more scenarios such as data fetching. You can read about this in [our roadmap](/blog/2018/11/27/react-16-roadmap.html).
 
@@ -430,9 +495,13 @@ Suspense boundaries depend on their parent boundaries being hydrated before they
 
 ### `React.startTransition` {#starttransition}
 
-> Try the new React documentation for [`startTransition`](https://beta.reactjs.org/reference/react/startTransition).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`startTransition`](https://react.dev/reference/react/startTransition).
+
+</div>
 
 ```js
 React.startTransition(callback)

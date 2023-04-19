@@ -8,6 +8,15 @@ prev: getting-started.html
 next: create-a-new-react-app.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> See [Add React to an Existing Project](https://react.dev/learn/add-react-to-an-existing-project) for the recommended ways to add React.
+
+</div>
+
 React는 필요한 만큼만 사용하면 됩니다. 적게든 많게든 말이죠.
 
 React는 처음부터 점진적으로 도입할 수 있게 설계되었습니다. **그래서 React는 필요한 만큼만 사용하면 됩니다.** 아마 기존 페이지에 "상호작용"이라는 조미료를 첨가하기만 하고 싶을 수도 있습니다. 이럴 때 React 컴포넌트를 쓰면 좋습니다.

@@ -15,9 +15,15 @@ redirect_from:
   - "tips/use-react-with-other-libraries.html"
 ---
 
-> Try the new React documentation for [`Component`](https://beta.reactjs.org/reference/react/Component).
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> These new documentation pages teach modern React:
+>
+> - [`React.Component`](https://react.dev/reference/react/Component)
+
+</div>
 
 이 문서에서는 React 컴포넌트 class를 다루는 API들을 자세히 소개합니다. 이 문서는 [컴포넌트와 props](/docs/components-and-props.html), [state와 생명주기](/docs/state-and-lifecycle.html) 등과 같은 기초적인 React의 개념들에 익숙하다고 가정하고 있습니다. 그렇지 않다면, 먼저 읽으시길 바랍니다.
 

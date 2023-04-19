@@ -6,6 +6,15 @@ prev: create-a-new-react-app.html
 next: release-channels.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> See [Add React to an Existing Project](https://react.dev/learn/add-react-to-an-existing-project) for the recommended ways to add React.
+
+</div>
+
 React와 ReactDOM 모두 CDN을 통해 사용할 수 있습니다.
 
 ```html

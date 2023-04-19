@@ -5,6 +5,14 @@ permalink: docs/hooks-faq.html
 prev: hooks-reference.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> The new documentation pages teaches React with Hooks.
+
+</div>
+
 *Hook*은 React 16.8에 새로 추가되었습니다. Class를 작성하지 않고 state 및 기타 React 기능을 사용할 수 있습니다.
 
 이 페이지는 [Hook](/docs/hooks-overview.html) 자주 묻는 질문에 대한 답변입니다.

@@ -6,6 +6,18 @@ next: hooks-state.html
 prev: hooks-intro.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach React with Hooks:
+>
+> - [Quick Start](https://react.dev/learn)
+> - [Tutorial](https://react.dev/learn/tutorial-tic-tac-toe)
+> - [`react`: Hooks](https://react.dev/reference/react)
+
+</div>
+
 *Hook*은 React 16.8에 새로 추가된 기능입니다. *Hook*은 class를 작성하지 않고도 state와 다른 React의 기능들을 사용할 수 있게 해줍니다.
 
 Hook은 [하위 호환성](/docs/hooks-intro.html#no-breaking-changes)을 가지고 있습니다. 이 문서는 React에 경험이 있는 사용자를 대상으로 Hook에 대해 간략히 소개합니다. 이 문서는 빠르게 진행됩니다. 혼란스러운 경우에는 다음과 같은 노란색 박스를 참고하세요.

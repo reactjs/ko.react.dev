@@ -6,6 +6,16 @@ category: Reference
 permalink: docs/react-dom-client.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React:
+>
+> - [`react-dom`: Client APIs](https://react.dev/reference/react-dom/client)
+
+</div>
+
 `react-dom/client` 패키지는 클라이언트에서 애플리케이션을 초기화할 때 사용할 수 있는 클라이언트 특화 함수들을 제공합니다. 대부분의 컴포넌트의 경우 이 모듈이 필요하지 않을 것입니다.
 
 ```js
@@ -37,9 +47,13 @@ React는 모든 최신 브라우저들을 지원하며, 구버전은 [폴리필�
 
 ### `createRoot()` {#createroot}
 
-> Try the new React documentation for [`createRoot`](https://beta.reactjs.org/reference/react-dom/client/createRoot).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`createRoot`](https://react.dev/reference/react-dom/client/createRoot).
+
+</div>
 
 ```javascript
 createRoot(container[, options]);
@@ -74,9 +88,13 @@ root.unmount();
 
 ### `hydrateRoot()` {#hydrateroot}
 
-> Try the new React documentation for [`hydrateRoot`](https://beta.reactjs.org/reference/react-dom/client/hydrateRoot).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`hydrateRoot`](https://react.dev/reference/react-dom/client/hydrateRoot).
+
+</div>
 
 
 ```javascript

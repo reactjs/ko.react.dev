@@ -4,6 +4,16 @@ title: Fragments
 permalink: docs/fragments.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React:
+>
+> - [`<Fragment>`](https://react.dev/reference/react/Fragment)
+
+</div>
+
 React에서 컴포넌트가 여러 엘리먼트를 반환하는 것은 흔한 패턴입니다. Fragments는 DOM에 별도의 노드를 추가하지 않고 여러 자식을 그룹화할 수 있습니다.
 
 ```js

@@ -18,11 +18,14 @@ redirect_from:
   - "docs/environments.html"
 ---
 
-> Try the new React documentation.
-> 
-> The new [Quick Start](https://beta.reactjs.org/learn) teaches modern React and includes live examples.
+<div class="scary">
+
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> The new [Quick Start](https://react.dev/learn) teaches modern React and includes live examples.
+
+</div>
 
 이 페이지는 React 문서 및 관련된 리소스의 개요입니다.
 

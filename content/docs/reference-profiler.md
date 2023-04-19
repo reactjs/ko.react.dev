@@ -6,6 +6,16 @@ category: Reference
 permalink: docs/profiler.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React:
+>
+> - [`<Profiler>`](https://react.dev/reference/react/Profiler)
+
+</div>
+
 `Profiler`는 React 애플리케이션이 렌더링하는 빈도와 렌더링 "비용"을 측정합니다.
 Profiler의 목적은 [메모이제이션 같은 성능 최적화 방법](/docs/hooks-faq.html#how-to-memoize-calculations)을 활용할 수 있는 애플리케이션의 느린 부분들을 식별해내는 것입니다.
 

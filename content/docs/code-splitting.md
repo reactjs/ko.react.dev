@@ -4,6 +4,17 @@ title: 코드 분할
 permalink: docs/code-splitting.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`lazy`](https://react.dev/reference/react/lazy)
+> - [`<Suspense>`](https://react.dev/reference/react/Suspense)
+
+</div>
+
 ## 번들링 {#bundling}
 
 대부분 React 앱들은 [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/) 또는 [Browserify](http://browserify.org/) 같은 툴을 사용하여 여러 파일을 하나로 병합한 "번들 된" 파일을 웹 페이지에 포함하여 한 번에 전체 앱을 로드 할 수 있습니다.

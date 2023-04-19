@@ -8,9 +8,27 @@ redirect_from:
   - "docs/conferences.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> See the [Conferences](https://react.dev/community/conferences) page on the new site.
+>
+</div>
+
 Do you know of a local React.js conference? Add it here! (Please keep the list chronological)
 
 ## Upcoming Conferences {#upcoming-conferences}
+
+### React Miami 2023 {#react-miami-2023}
+April 20 - 21, 2023. Miami, FL, USA
+
+[Website](https://www.reactmiami.com/) - [Twitter](https://twitter.com/ReactMiamiConf)
+
+### Reactathon 2023 {#reactathon-2023}
+May 2 - 3, 2023. San Francisco, CA, USA
+
+[Website](https://reactathon.com) - [Twitter](https://twitter.com/reactathon) - [YouTube](https://www.youtube.com/realworldreact)
 
 ### RemixConf 2023 {#remixconf-2023}
 May, 2023. Salt Lake City, UT
@@ -30,7 +48,12 @@ May 31 - June 2, 2023. Atlanta, GA, USA
 ### React Summit 2023 {#react-summit-2023}
 June 2 & 6, 2023. In-person in Amsterdam, Netherlands + remote first interactivity (hybrid event)
 
-[Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
+[Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://portal.gitnation.org/events/react-summit-2023)
+
+### React Norway 2023 {#react-norway-2023}
+June 16th, 2023. Larvik, Norway
+
+[Website](https://reactnorway.com/) - [Twitter](https://twitter.com/ReactNorway/) - [Facebook](https://www.facebook.com/reactdaynorway/)
 
 ### ReactNext 2023 {#reactnext}
 June 27th, 2023. Tel Aviv, Israel
@@ -47,17 +70,32 @@ Oct 5 - 7, 2023. In-person in Goa, India (hybrid event) + Oct 3 2023 - remote da
 
 [Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia) - [Youtube](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w)
 
+### React Advanced 2023 {#react-advanced-2023}
+October 20 & 23, 2023. In-person in London, UK + remote first interactivity (hybrid event)
+
+[Website](https://www.reactadvanced.com/) - [Twitter](https://twitter.com/ReactAdvanced) - [Facebook](https://www.facebook.com/ReactAdvanced) - [Videos](https://portal.gitnation.org/events/react-advanced-conference-2023)
+
+### React Summit US 2023 {#react-summit-us-2023}
+November 13 & 15, 2023. In-person in New York, US + remote first interactivity (hybrid event)
+
+[Website](https://reactsummit.us) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://portal.gitnation.org/events/react-summit-us-2023)
+
+### React Day Berlin 2023 {#react-day-berlin-2023}
+December 8 & 12, 2023. In-person in Berlin, Germany + remote first interactivity (hybrid event)
+
+[Website](https://reactday.berlin) - [Twitter](https://twitter.com/reactdayberlin) - [Facebook](https://www.facebook.com/reactdayberlin/) - [Videos](https://portal.gitnation.org/events/react-day-berlin-2023)
+
 ## Past Conferences {#past-conferences}
 
 ### React Day Berlin 2022 {#react-day-berlin-2022}
 December 2, 2022. In-person in Berlin, Germany + remote (hybrid event)
 
-[Website](https://reactday.berlin) - [Twitter](https://twitter.com/reactdayberlin) - [Facebook](https://www.facebook.com/reactdayberlin/) - [Videos](https://www.youtube.com/c/ReactConferences)
+[Website](https://reactday.berlin) - [Twitter](https://twitter.com/reactdayberlin) - [Facebook](https://www.facebook.com/reactdayberlin/) - [Videos](https://portal.gitnation.org/events/react-day-berlin-2022)
 
 ### Remix Conf Europe 2022 {#remixconfeu-2022}
 November 18, 2022, 7am PST / 10am EST / 4pm CET - remote event
 
-[Website](https://remixconf.eu/) - [Twitter](https://twitter.com/remixconfeu)
+[Website](https://remixconf.eu/) - [Twitter](https://twitter.com/remixconfeu) - [Videos](https://portal.gitnation.org/events/remix-conf-europe-2022)
 
 ### React Global Online Summit 22.2 by Geekle {#react-global-v2-2022}
 November 8 - 9, 2022 - Online Summit
@@ -67,7 +105,7 @@ November 8 - 9, 2022 - Online Summit
 ### React Advanced 2022 {#react-advanced-2022}
 October 21 & 25, 2022. In-person in London, UK + remote (hybrid event)
 
-[Website](https://www.reactadvanced.com/) - [Twitter](https://twitter.com/ReactAdvanced) - [Facebook](https://www.facebook.com/ReactAdvanced) - [Videos](https://www.youtube.com/c/ReactConferences)
+[Website](https://www.reactadvanced.com/) - [Twitter](https://twitter.com/ReactAdvanced) - [Facebook](https://www.facebook.com/ReactAdvanced) - [Videos](https://portal.gitnation.org/events/react-advanced-conference-2022)
 
 ### ReactJS Day 2022 {#reactjs-day-2022}
 October 21, 2022 in Verona, Italy
@@ -115,7 +153,7 @@ June 24, 2022. In-person at Farris Bad Hotel in Larvik, Norway and online (hybri
 ### React Summit 2022 {#react-summit-2022}
 June 17 & 21, 2022. In-person in Amsterdam, Netherlands + remote first interactivity (hybrid event)
 
-[Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
+[Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://portal.gitnation.org/events/react-summit-2022)
 
 ### App.js Conf 2022 {#appjs-conf-2022}
 June 8 - 10, 2022. In-person in Kraków, Poland + remote
@@ -225,7 +263,7 @@ April 27-28, 2021 - remote event
 ### React Summit - Remote Edition 2021 {#react-summit-remote-2021}
 April 14-16, 2021, 7am PST / 10am EST / 4pm CEST - remote event
 
-[Website](https://remote.reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
+[Website](https://remote.reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://portal.gitnation.org/events/react-summit-remote-edition-2021)
 
 ### React fwdays’21 {#react-fwdays-2021}
 March 27, 2021 - remote event

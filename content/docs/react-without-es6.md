@@ -4,6 +4,12 @@ title: ES6 없이 사용하는 React
 permalink: docs/react-without-es6.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 보통 React 컴포넌트를 정의할 때 JavaScript의 class를 사용한다면 이와 같을 겁니다.
 
 ```javascript

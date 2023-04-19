@@ -6,6 +6,16 @@ prev: hooks-custom.html
 next: hooks-faq.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React:
+>
+> - [`react`: Hooks](https://react.dev/reference/react)
+
+</div>
+
 *Hook*는 React 16.8에서 새로 추가된 개념입니다. Hook을 통해 class를 작성하지 않고도 state와 같은 React 기능들을 사용할 수 있습니다.
 
 이 페이지는 React에 내장된 Hook API를 설명합니다.
@@ -35,9 +45,13 @@ Hook이 생소하다면 [Hook 개요](/docs/hooks-overview.html)를 먼저 읽�
 
 ### `useState` {#usestate}
 
-> Try the new React documentation for [`useState`](https://beta.reactjs.org/reference/react/useState).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useState`](https://react.dev/reference/react/useState).
+
+</div>
 
 ```js
 const [state, setState] = useState(initialState);
@@ -122,9 +136,13 @@ In the rare case that you need to force the DOM update to be applied synchronous
 
 ### `useEffect` {#useeffect}
 
-> Try the new React documentation for [`useEffect`](https://beta.reactjs.org/reference/react/useEffect).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useEffect`](https://react.dev/reference/react/useEffect).
+
+</div>
 
 ```js
 useEffect(didUpdate);
@@ -205,9 +223,13 @@ useEffect(
 
 ### `useContext` {#usecontext}
 
-> Try the new React documentation for [`useContext`](https://beta.reactjs.org/reference/react/useContext).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useContext`](https://react.dev/reference/react/useContext).
+
+</div>
 
 
 ```js
@@ -281,9 +303,13 @@ function ThemedButton() {
 
 ### `useReducer` {#usereducer}
 
-> Try the new React documentation for [`useReducer`](https://beta.reactjs.org/reference/react/useReducer).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useReducer`](https://react.dev/reference/react/useReducer).
+
+</div>
 
 
 ```js
@@ -389,9 +415,13 @@ Reducer Hook에서 현재 state와 같은 값을 반환하는 경우 React는 �
 
 ### `useCallback` {#usecallback}
 
-> Try the new React documentation for [`useCallback`](https://beta.reactjs.org/reference/react/useCallback).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useCallback`](https://react.dev/reference/react/useCallback).
+
+</div>
 
 ```js
 const memoizedCallback = useCallback(
@@ -416,9 +446,13 @@ const memoizedCallback = useCallback(
 
 ### `useMemo` {#usememo}
 
-> Try the new React documentation for [`useMemo`](https://beta.reactjs.org/reference/react/useMemo).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useMemo`](https://react.dev/reference/react/useMemo).
+
+</div>
 
 
 ```js
@@ -443,9 +477,13 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 
 ### `useRef` {#useref}
 
-> Try the new React documentation for [`useRef`](https://beta.reactjs.org/reference/react/useRef).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useRef`](https://react.dev/reference/react/useRef).
+
+</div>
 
 
 ```js
@@ -485,9 +523,13 @@ function TextInputWithFocusButton() {
 
 ### `useImperativeHandle` {#useimperativehandle}
 
-> Try the new React documentation for [`useImperativeHandle`](https://beta.reactjs.org/reference/react/useImperativeHandle).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useImperativeHandle`](https://react.dev/reference/react/useImperativeHandle).
+
+</div>
 
 
 ```js
@@ -513,9 +555,13 @@ FancyInput = forwardRef(FancyInput);
 
 ### `useLayoutEffect` {#uselayouteffect}
 
-> Try the new React documentation for [`useLayoutEffect`](https://beta.reactjs.org/reference/react/useLayoutEffect).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useLayoutEffect`](https://react.dev/reference/react/useLayoutEffect).
+
+</div>
 
 
 이 함수의 시그니처는 `useEffect`와 동일하긴 한데, 모든 DOM 변경 후에 동기적으로 발생합니다. 이것은 DOM에서 레이아웃을 읽고 동기적으로 리렌더링하는 경우에 사용하세요. `useLayoutEffect`의 내부에 예정된 갱신은 브라우저가 화면을 그리기 이전 시점에 동기적으로 수행될 것입니다.
@@ -532,9 +578,13 @@ FancyInput = forwardRef(FancyInput);
 
 ### `useDebugValue` {#usedebugvalue}
 
-> Try the new React documentation for [`useDebugValue`](https://beta.reactjs.org/reference/react/useDebugValue).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useDebugValue`](https://react.dev/reference/react/useDebugValue).
+
+</div>
 
 
 ```js
@@ -577,9 +627,13 @@ useDebugValue(date, date => date.toDateString());
 
 ### `useDeferredValue` {#usedeferredvalue}
 
-> Try the new React documentation for [`useDeferredValue`](https://beta.reactjs.org/reference/react/useDeferredValue).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useDeferredValue`](https://react.dev/reference/react/useDeferredValue).
+
+</div>
 
 
 ```js
@@ -620,9 +674,13 @@ Memoizing the children tells React that it only needs to re-render them when `de
 
 ### `useTransition` {#usetransition}
 
-> Try the new React documentation for [`useTransition`](https://beta.reactjs.org/reference/react/useTransition).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useTransition`](https://react.dev/reference/react/useTransition).
+
+</div>
 
 
 ```js
@@ -669,9 +727,13 @@ function App() {
 
 ### `useId` {#useid}
 
-> Try the new React documentation for [`useId`](https://beta.reactjs.org/reference/react/useId).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useId`](https://react.dev/reference/react/useId).
+
+</div>
 
 
 ```js
@@ -730,9 +792,13 @@ The following Hooks are provided for library authors to integrate libraries deep
 
 ### `useSyncExternalStore` {#usesyncexternalstore}
 
-> Try the new React documentation for [`useSyncExternalStore`](https://beta.reactjs.org/reference/react/useSyncExternalStore).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useSyncExternalStore`](https://react.dev/reference/react/useSyncExternalStore).
+
+</div>
 
 
 ```js
@@ -781,9 +847,13 @@ const selectedField = useSyncExternalStore(
 
 ### `useInsertionEffect` {#useinsertioneffect}
 
-> Try the new React documentation for [`useInsertionEffect`](https://beta.reactjs.org/reference/react/useInsertionEffect).
+<div class="scary">
+
+> This content is out of date.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> Read the new React documentation for [`useInsertionEffect`](https://react.dev/reference/react/useInsertionEffect).
+
+</div>
 
 ```js
 useInsertionEffect(didUpdate);

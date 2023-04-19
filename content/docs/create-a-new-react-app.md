@@ -8,6 +8,15 @@ prev: add-react-to-a-website.html
 next: cdn-links.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> See [Start a New React Project](https://react.dev/learn/start-a-new-react-project) for the recommended ways to create an app.
+
+</div>
+
 최고의 사용자와 개발자 경험을 위해 통합된 툴체인을 사용하세요.
 
 이 페이지에서는 도움이 되는 몇 가지 인기 있는 React 툴체인을 소개합니다.

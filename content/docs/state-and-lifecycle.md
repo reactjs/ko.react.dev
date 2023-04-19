@@ -8,14 +8,17 @@ prev: components-and-props.html
 next: handling-events.html
 ---
 
-> Try the new React documentation.
-> 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
 > These new documentation pages teach modern React and include live examples:
 >
-> - [State: A Component's Memory](https://beta.reactjs.org/learn/state-a-components-memory)
-> - [Synchronizing with Effects](https://beta.reactjs.org/learn/synchronizing-with-effects)
->
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> - [State: A Component's Memory](https://react.dev/learn/state-a-components-memory)
+> - [Synchronizing with Effects](https://react.dev/learn/synchronizing-with-effects)
+
+</div>
 
 이 페이지는 React 컴포넌트 안의 state와 생명주기에 대한 개념을 소개해 줍니다. [자세한 컴포넌트 API 레퍼런스는 여기](/docs/react-component.html)에서 찾을 수 있습니다.
 

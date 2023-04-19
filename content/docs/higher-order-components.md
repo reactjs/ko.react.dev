@@ -4,6 +4,14 @@ title: 고차 컴포넌트
 permalink: docs/higher-order-components.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> Higher-order components are not commonly used in modern React code.
+
+</div>
+
 고차 컴포넌트(HOC, Higher Order Component)는 컴포넌트 로직을 재사용하기 위한 React의 고급 기술입니다. 고차 컴포넌트(HOC)는 React API의 일부가 아니며, React의 구성적 특성에서 나오는 패턴입니다.
 
 구체적으로, **고차 컴포넌트는 컴포넌트를 가져와 새 컴포넌트를 반환하는 함수입니다.**
@@ -14,7 +22,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 컴포넌트는 props를 UI로 변환하는 반면에, 고차 컴포넌트는 컴포넌트를 새로운 컴포넌트로 변환합니다.
 
-고차 컴포넌트(HOC)는 Redux의 [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect)와 Relay의 [`createFragmentContainer`](https://relay.dev/docs/v10.1.3/fragment-container/#createfragmentcontainer)와 같은 서드 파티 React 라이브러리에서 흔하게 볼 수 있습니다.
+고차 컴포넌트(HOC)는 Redux의 [`connect`](https://react-redux.js.org/api/connect)와 Relay의 [`createFragmentContainer`](https://relay.dev/docs/v10.1.3/fragment-container/#createfragmentcontainer)와 같은 서드 파티 React 라이브러리에서 흔하게 볼 수 있습니다.
 
 이 문서에서는 고차 컴포넌트가 유용한 이유를 보여주고, 직접 작성하는 방법에 대해 알아보겠습니다.
 

@@ -6,13 +6,15 @@ layout: docs
 category: Reference
 ---
 
-> Try the new React documentation.
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
 > 
 > These new documentation pages teach modern React and include live examples:
 >
-> - [Common components (e.g. `<div>`)](https://beta.reactjs.org/reference/react-dom/components/common)
->
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> - [Common components (e.g. `<div>`)](https://react.dev/reference/react-dom/components/common)
+
+</div>
 
 이 문서는 React의 이벤트 시스템 일부를 구성하는 `SyntheticEvent` 래퍼를 설명합니다. 더 많은 정보는 [이벤트 처리하기](/docs/handling-events.html) 문서를 보세요.
 

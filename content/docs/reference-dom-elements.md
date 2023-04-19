@@ -14,18 +14,20 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
-> Try the new React documentation.
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
 > 
 > These new documentation pages teach modern React and include live examples:
 >
-> - [Common components (e.g. `<div>`)](https://beta.reactjs.org/reference/react-dom/components/common)
-> - [`<input>`](https://beta.reactjs.org/reference/react-dom/components/input)
-> - [`<option>`](https://beta.reactjs.org/reference/react-dom/components/option)
-> - [`<progress>`](https://beta.reactjs.org/reference/react-dom/components/progress)
-> - [`<select>`](https://beta.reactjs.org/reference/react-dom/components/select)
-> - [`<textarea>`](https://beta.reactjs.org/reference/react-dom/components/textarea)
->
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> - [Common components (e.g. `<div>`)](https://react.dev/reference/react-dom/components/common)
+> - [`<input>`](https://react.dev/reference/react-dom/components/input)
+> - [`<option>`](https://react.dev/reference/react-dom/components/option)
+> - [`<progress>`](https://react.dev/reference/react-dom/components/progress)
+> - [`<select>`](https://react.dev/reference/react-dom/components/select)
+> - [`<textarea>`](https://react.dev/reference/react-dom/components/textarea)
+
+</div>
 
 React는 성능 및 브라우저 간 호환성을 위해 브라우저의 독립적인 DOM 시스템을 구현합니다. React에서는 브라우저의 DOM 구현에서 몇 가지 어려운 부분을 정리할 수가 있었습니다.
 

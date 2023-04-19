@@ -4,14 +4,16 @@ title: Context
 permalink: docs/context.html
 ---
 
-> Try the new React documentation.
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
 > 
 > These new documentation pages teach modern React and include live examples:
 >
-> - [Passing Data Deeply with Context](https://beta.reactjs.org/learn/passing-data-deeply-with-context)
-> - [`useContext`](https://beta.reactjs.org/reference/react/useContext)
->
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> - [Passing Data Deeply with Context](https://react.dev/learn/passing-data-deeply-with-context)
+> - [`useContext`](https://react.dev/reference/react/useContext)
+
+</div>
 
 context를 이용하면 단계마다 일일이 props를 넘겨주지 않고도 컴포넌트 트리 전체에 데이터를 제공할 수 있습니다.
 
