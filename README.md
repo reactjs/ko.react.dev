@@ -68,3 +68,4 @@ If your language does not have a translation and you would like to create one, p
 
 ## License
 Content submitted to [reactjs.org](https://ko.reactjs.org/) is CC-BY-4.0 licensed, as found in the [LICENSE-DOCS.md](LICENSE-DOCS.md) file.
+
