@@ -1,27 +1,27 @@
 ---
-title: Passing Data Deeply with Context
+title: Context를 사용해 데이터를 깊게 전달하기
 ---
 
 <Intro>
 
-Usually, you will pass information from a parent component to a child component via props. But passing props can become verbose and inconvenient if you have to pass them through many components in the middle, or if many components in your app need the same information. *Context* lets the parent component make some information available to any component in the tree below it—no matter how deep—without passing it explicitly through props.
+보통의 경우 부모 컴포넌트에서 자식 컴포넌트로 props를 통해 정보를 전달합니다. 그러나 중간에 많은 컴포넌트를 거쳐야 하거나, 애플리케이션의 많은 컴포넌트에서 동일한 정보가 필요한 경우에는 props를 전달하는 것이 번거롭고 불편할 수 있습니다. *Context*를 사용하면  명시적으로 props를 전달해주지 않아도 부모 컴포넌트가 트리에 있는 어떤 자식 컴포넌트에서나 (얼마나 깊게 있든지 간에) 정보를 사용할 수 있습니다.
 
 </Intro>
 
 <YouWillLearn>
 
-- What "prop drilling" is
-- How to replace repetitive prop passing with context
-- Common use cases for context
-- Common alternatives to context
+- "Prop 내리꽂기" 란?
+- Context로 반복적인 prop 전달 대체하기
+- Context의 일반적인 사용 사례
+- Context의 일반적인 대안
 
 </YouWillLearn>
 
-## The problem with passing props {/*the-problem-with-passing-props*/}
+## Props 전달하기의 문제점 {/*the-problem-with-passing-props*/}
 
-[Passing props](/learn/passing-props-to-a-component) is a great way to explicitly pipe data through your UI tree to the components that use it.
+[Props 전달하기](/learn/passing-props-to-a-component)는 UI 트리를 통해 명시적으로 데이터를 사용하는 컴포넌트에 전달하는 훌륭한 방법입니다. 하지만 이 방식은 어떤 prop을 트리를 통해 깊이 전해줘야 하거나, 많은 컴포넌트에서 같은 prop이 필요한 경우에 장황하고 불편할 수 있습니다. 데이터가 필요한 여러 컴포넌트의 가장 가까운 공통 조상은 트리 상 높이 위치할 수 있고 그렇게 높게까지 [state를 올리는 것](/learn/sharing-state-between-components)은 "Prop 내리꽂기"라는 상황을 초래할 수 있습니다.
 
-But passing props can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop. The nearest common ancestor could be far removed from the components that need data, and [lifting state up](/learn/sharing-state-between-components) that high can lead to a situation called "prop drilling".
+But passing props can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop. The nearest common ancestor could be far removed from the components that need data, and [lifting state up](/learn/sharing-state-between-components) that high can lead to a situation sometimes called "prop drilling."
 
 <DiagramGroup>
 
@@ -38,11 +38,11 @@ Prop drilling
 
 </DiagramGroup>
 
-Wouldn't it be great if there were a way to "teleport" data to the components in the tree that need it without passing props? With React's context feature, there is!
+데이터를 사용할 트리안의 컴포넌트에 props를 전달하는 대신 "순간이동"시킬 방법이 있다면 좋지 않을까요? React의 context를 사용하면 됩니다!
 
-## Context: an alternative to passing props {/*context-an-alternative-to-passing-props*/}
+## Context: Props 전달하기의 대안 {/*context-an-alternative-to-passing-props*/}
 
-Context lets a parent component provide data to the entire tree below it. There are many uses for context. Here is one example. Consider this `Heading` component that accepts a `level` for its size:
+Context는 부모 컴포넌트가 그 아래의 트리 전체에 데이터를 전달할 수 있도록 해줍니다. Context에는 많은 용도가 있습니다. 하나의 예시로 다음의 크기 조정을 위해 `level`을 받는  `Heading` 컴포넌트를 보세요.
 
 <Sandpack>
 
@@ -106,7 +106,7 @@ export default function Heading({ level, children }) {
 
 </Sandpack>
 
-Let's say you want multiple headings within the same `Section` to always have the same size:
+같은 `Section` 내의 여러 제목이 항상 동일한 크기를 가져야 한다고 가정해 봅시다.
 
 <Sandpack>
 
@@ -180,7 +180,7 @@ export default function Heading({ level, children }) {
 
 </Sandpack>
 
-Currently, you pass the `level` prop to each `<Heading>` separately:
+지금은 각각의 `<Heading>`에 `level` prop을 전달하고 있습니다.
 
 ```js
 <Section>
@@ -190,7 +190,7 @@ Currently, you pass the `level` prop to each `<Heading>` separately:
 </Section>
 ```
 
-It would be nice if you could pass the `level` prop to the `<Section>` component instead and remove it from the `<Heading>`. This way you could enforce that all headings in the same section have the same size:
+`<Section>` 컴포넌트에 `level` prop을 전달해 `<Heading>` 에서 제거할 수 있으면 좋겠네요. 이렇게 하면 같은 섹션의 모든 제목이 동일한 크기를 갖도록 지정할 수 있습니다.
 
 ```js
 <Section level={3}>
@@ -200,15 +200,15 @@ It would be nice if you could pass the `level` prop to the `<Section>` component
 </Section>
 ```
 
-But how can the `<Heading>` component know the level of its closest `<Section>`? **That would require some way for a child to "ask" for data from somewhere above in the tree.**
+하지만 어떻게 `<Heading>` 컴포넌트가 가장 가까운 `<Section>`의 레벨을 알 수 있을까요? **그렇게 하려면 자식에게 트리 위 어딘가에 있는 데이터를 "요청하는" 방법이 필요합니다.**
 
-You can't do it with props alone. This is where context comes into play. You will do it in three steps:
+Props만으로는 불가능합니다. 여기서부터 context가 활약하기 시작합니다. 다음의 세 단계로 진행됩니다.
 
-1. **Create** a context. (You can call it `LevelContext`, since it's for the heading level.)
-2. **Use** that context from the component that needs the data. (`Heading` will use `LevelContext`.)
-3. **Provide** that context from the component that specifies the data. (`Section` will provide `LevelContext`.)
+1. Context를 **생성하세요**. (제목 레벨을 위한 것이므로 `LevelContext`라고 이름 지어봅시다)
+2. 데이터가 필요한 컴포넌트에서 context를 **사용하세요**. (`Header`에서는 `LevelContext`를 사용합니다)
+3. 데이터를 지정하는 컴포넌트에서 context를 **제공하세요.** (`Section`에서는 `LevelContext`를 제공합니다)
 
-Context lets a parent--even a distant one!--provide some data to the entire tree inside of it.
+Context는 부모가 트리 내부 전체에, 심지어 멀리 떨어진 컴포넌트에조차 어떤 데이터를 제공할 수 있도록 합니다.
 
 <DiagramGroup>
 
@@ -226,9 +226,9 @@ Using context in distant children
 
 </DiagramGroup>
 
-### Step 1: Create the context {/*step-1-create-the-context*/}
+### 1단계: Context 생성하기 {/*step-1-create-the-context*/}
 
-First, you need to create the context. You'll need to **export it from a file** so that your components can use it:
+먼저 context를 만들어야 합니다. 컴포넌트에서 사용할 수 있도록 **파일에서 내보내야 합니다.**
 
 <Sandpack>
 
@@ -308,18 +308,18 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-The only argument to `createContext` is the _default_ value. Here, `1` refers to the biggest heading level, but you could pass any kind of value (even an object). You will see the significance of the default value in the next step.
+`createContext` 의 유일한 인자는 기본값입니다. 여기서 `1`은 가장 큰 제목 레벨을 나타내지만 모든 종류의 값을(객체까지) 전달할 수 있습니다. 다음 단계에서 기본값이 얼마나 중요한지 알게 됩니다.
 
-### Step 2: Use the context {/*step-2-use-the-context*/}
+### 2단계: Context 사용하기 {/*step-2-use-the-context*/}
 
-Import the `useContext` Hook from React and your context:
+React에서 `useContext` Hook과 생성한 Context를 가져옵니다.
 
 ```js
 import { useContext } from 'react';
 import { LevelContext } from './LevelContext.js';
 ```
 
-Currently, the `Heading` component reads `level` from props:
+지금은 `Heading` 컴포넌트가 `level`을 props에서 읽어옵니다.
 
 ```js
 export default function Heading({ level, children }) {
@@ -327,7 +327,7 @@ export default function Heading({ level, children }) {
 }
 ```
 
-Instead, remove the `level` prop and read the value from the context you just imported, `LevelContext`:
+`level`prop을 제거하고 대신 위에서 가져온 context인 `LevelContext` 에서 값을 읽도록 합니다.
 
 ```js {2}
 export default function Heading({ children }) {
@@ -336,9 +336,9 @@ export default function Heading({ children }) {
 }
 ```
 
-`useContext` is a Hook. Just like `useState` and `useReducer`, you can only call a Hook immediately inside a React component (not inside loops or conditions). **`useContext` tells React that the `Heading` component wants to read the `LevelContext`.**
+`useContext`는 Hook입니다. `useState`, `useReducer` 와 같이 Hook은 React 컴포넌트의 최상위에서만 호출할 수 있습니다. **`useContext`는 React에게 `Heading` 컴포넌트가 `LevelContext`를 읽으려 한다고 알려줍니다.**
 
-Now that the `Heading` component doesn't have a `level` prop, you don't need to pass the level prop to `Heading` in your JSX like this anymore:
+이제 `Heading` 컴포넌트는 `level` prop을 갖지 않습니다. 이제는 JSX에서 다음과 같이 `Heading`에 레벨 prop을 전달할 필요가 없습니다.
 
 ```js
 <Section>
@@ -348,7 +348,7 @@ Now that the `Heading` component doesn't have a `level` prop, you don't need to 
 </Section>
 ```
 
-Update the JSX so that it's the `Section` that receives it instead:
+`Section`이 대신 레벨을 받도록 JSX를 업데이트합니다.
 
 ```jsx
 <Section level={4}>
@@ -358,7 +358,7 @@ Update the JSX so that it's the `Section` that receives it instead:
 </Section>
 ```
 
-As a reminder, this is the markup that you were trying to get working:
+다시 한번 알려드리자면, 동작하도록 만들려던 마크업은 다음과 같습니다.
 
 <Sandpack>
 
@@ -442,13 +442,13 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-Notice this example doesn't quite work, yet! All the headings have the same size because **even though you're *using* the context, you have not *provided* it yet.** React doesn't know where to get it!
+이 예제는 아직 잘 작동하지 않습니다! **Context를 *사용하고* 있지만, 아직 *제공하지* 않았기 때문에** 모든 제목의 크기가 동일합니다. React가 어디서 값을 가져와야 할지 모르기 때문이죠.
 
-If you don't provide the context, React will use the default value you've specified in the previous step. In this example, you specified `1` as the argument to `createContext`, so `useContext(LevelContext)` returns `1`, setting all those headings to `<h1>`. Let's fix this problem by having each `Section` provide its own context.
+Context를 제공하지 않으면 React는 이전 단계에서 지정한 기본값을 사용합니다. 이 예제에서는 `1`을 `createContext`의 인수로 지정했으므로 `useContext(LevelContext)`가 `1`을 반환하고 모든 제목을 `<h1>`로 설정합니다. 이 문제를 각각의 `Section`이 고유한 context를 제공하도록 해 해결합시다.
 
-### Step 3: Provide the context {/*step-3-provide-the-context*/}
+### 3단계: Context 제공하기 {/*step-3-provide-the-context*/}
 
-The `Section` component currently renders its children:
+`Section` 컴포넌트는 자식들을 렌더링하고 있습니다.
 
 ```js
 export default function Section({ children }) {
@@ -460,7 +460,7 @@ export default function Section({ children }) {
 }
 ```
 
-**Wrap them with a context provider** to provide the `LevelContext` to them:
+`LevelContext`를 자식들에게 제공하기 위해 **context provider로 감싸줍니다.**
 
 ```js {1,6,8}
 import { LevelContext } from './LevelContext.js';
@@ -476,7 +476,7 @@ export default function Section({ level, children }) {
 }
 ```
 
-This tells React: "if any component inside this `<Section>` asks for `LevelContext`, give them this `level`." The component will use the value of the nearest `<LevelContext.Provider>` in the UI tree above it.
+이것은 React에게 `Section` 내의 어떤 컴포넌트가 `LevelContext`를 요구하면 `level`을 주라고 알려줍니다. 컴포넌트는 그 위에 있는 UI 트리에서 가장 가까운 `<LevelContext.Provider>`의 값을 사용합니다.
 
 <Sandpack>
 
@@ -564,15 +564,15 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-It's the same result as the original code, but you did not need to pass the `level` prop to each `Heading` component! Instead, it "figures out" its heading level by asking the closest `Section` above:
+기존 코드와 동일한 결과이지만 `level` prop을 각 `Heading` 컴포넌트에 전달할 필요는 없습니다! 대신 위의 가장 가까운 `Section`에게 제목 레벨을 "확인"합니다.
 
-1. You pass a `level` prop to the `<Section>`.
-2. `Section` wraps its children into `<LevelContext.Provider value={level}>`.
-3. `Heading` asks the closest value of `LevelContext` above with `useContext(LevelContext)`.
+1. `level` prop 을 `<Section>`에 전달합니다.
+2. `Section`은 자식을 `<LevelContext.Provider value={level}>`로 감싸줍니다.
+3. `Header`는 `useContext(LevelContext)`를 사용해 가장 근처의 `LevelContext`의 값을 요청합니다.
 
-## Using and providing context from the same component {/*using-and-providing-context-from-the-same-component*/}
+## 같은 컴포넌트에서 context를 사용하며 제공하기 {/*using-and-providing-context-from-the-same-component*/}
 
-Currently, you still have to specify each section's `level` manually:
+지금은 각각의 섹션에 `level`을 수동으로 지정해야 합니다.
 
 ```js
 export default function Page() {
@@ -585,7 +585,7 @@ export default function Page() {
           ...
 ```
 
-Since context lets you read information from a component above, each `Section` could read the `level` from the `Section` above, and pass `level + 1` down automatically. Here is how you could do it:
+Context를 통해 위의 컴포넌트에서 정보를 읽을 수 있으므로 각 `Section`은 위의 `Section`에서 `level`을 읽고 자동으로 `level + 1`을 아래로 전달할 수 있습니다. 방법은 다음과 같습니다.
 
 ```js Section.js {5,8}
 import { useContext } from 'react';
@@ -603,7 +603,7 @@ export default function Section({ children }) {
 }
 ```
 
-With this change, you don't need to pass the `level` prop *either* to the `<Section>` or to the `<Heading>`:
+이렇게 바꾸면 `<Section>`과 `<Heading>` *둘 모두에* `level`을 전달할 필요가 없습니다.
 
 <Sandpack>
 
@@ -695,19 +695,15 @@ export const LevelContext = createContext(0);
 
 </Sandpack>
 
-Now both `Heading` and `Section` read the `LevelContext` to figure out how "deep" they are. And the `Section` wraps its children into the `LevelContext` to specify that anything inside of it is at a "deeper" level.
+이제 `Heading`과 `Section` 모두 자신들이 얼마나 "깊이" 있는지 확인하기 위해 `LevelContext`를 읽습니다. 그리고 `Section`은 그 안에 있는 어떤 것이든 "더 깊은" 레벨이라는 것을 명시하기 위해 자식들을 `LevelContext`로 감싸고 있습니다.
 
-<Note>
+> 이 예에서는 하위 컴포넌트가 context를 오버라이드 할 수 있는 방법을 시각적으로 보여주기 때문에 제목 레벨을 사용합니다. 하지만 context는 다른 많은 상황에서도 유용합니다. 현재 색상 테마, 현재 로그인된 사용자 등 전체 하위 트리에 필요한  정보를 전달하는 데 사용 가능합니다.
 
-This example uses heading levels because they show visually how nested components can override context. But context is useful for many other use cases too. You can pass down any information needed by the entire subtree: the current color theme, the currently logged in user, and so on.
+## Context로 중간 컴포넌트 지나치기 {/*context-passes-through-intermediate-components*/}
 
-</Note>
+Context를 제공하는 컴포넌트와 context를 사용하는 컴포넌트 사이에 원하는 만큼의 컴포넌트를 삽입할 수 있습니다. 여기에는 `<div>`와 같은 기본 컴포넌트와 직접 만들 수 있는 컴포넌트가 모두 포함됩니다.
 
-## Context passes through intermediate components {/*context-passes-through-intermediate-components*/}
-
-You can insert as many components as you like between the component that provides context and the one that uses it. This includes both built-in components like `<div>` and components you might build yourself.
-
-In this example, the same `Post` component (with a dashed border) is rendered at two different nesting levels. Notice that the `<Heading>` inside of it gets its level automatically from the closest `<Section>`:
+이 예시에서는 점선 테두리를 가진 동일한 `Post` 컴포넌트가 두 가지 다른 네스팅 레벨로 렌더링 됩니다. 내부의 `<Heading>`이 가장 가까운 `<Section>`에서 자동으로 레벨을 가져오는 것에 주목하세요.
 
 <Sandpack>
 
@@ -832,58 +828,58 @@ export const LevelContext = createContext(0);
 
 </Sandpack>
 
-You didn't do anything special for this to work. A `Section` specifies the context for the tree inside it, so you can insert a `<Heading>` anywhere, and it will have the correct size. Try it in the sandbox above!
+이 작업을 위해 아무것도 하지 않아도 됩니다. `Section`은 트리에 대한 context를 지정하므로 아무 곳에나 `<Heading>`을 삽입할 수 있으며 알맞은 크기를 가집니다. 위의 샌드박스에서 한 번 시도해보세요!
 
-**Context lets you write components that "adapt to their surroundings" and display themselves differently depending on _where_ (or, in other words, _in which context_) they are being rendered.**
+**Context를 사용하면 "주변에 적응"하고 렌더링 되는 *위치*(또는 *어떤 context*)에 따라 자신을 다르게 표시하는 컴포넌트를 작성할 수 있습니다.**
 
-How context works might remind you of [CSS property inheritance.](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance) In CSS, you can specify `color: blue` for a `<div>`, and any DOM node inside of it, no matter how deep, will inherit that color unless some other DOM node in the middle overrides it with `color: green`. Similarly, in React, the only way to override some context coming from above is to wrap children into a context provider with a different value.
+Context의 작동 방식은 [CSS 속성 상속](https://developer.mozilla.org/ko/docs/Web/CSS/inheritance)을 연상시킵니다. CSS에서 `<div>`에 대해 `color: blue`를 지정할 수 있으며, 중간에 있는 다른 DOM 노드가 `color: green`으로 재정의하지 않는 한 그 안의 모든 DOM 노드가 그 색상을 상속합니다. 마찬가지로, React에서 위에서 가져온 어떤 context를 재정의하는 유일한 방법은 자식들을 다른 값을 가진 context provider로 래핑하는 것입니다.
 
-In CSS, different properties like `color` and `background-color` don't override each other. You can set all  `<div>`'s `color` to red without impacting `background-color`. Similarly, **different React contexts don't override each other.** Each context that you make with `createContext()` is completely separate from other ones, and ties together components using and providing *that particular* context. One component may use or provide many different contexts without a problem.
+CSS에서 `color`와 `background-color` 같이 다른 속성들은 서로 영향을 주지 않습니다. `<div>`의 모든 `color`를 `background-color`에 영향을 미치지 않고 빨간색으로 지정할 수 있죠. 이처럼 **서로 다른 React context는 영향을 주지 않습니다.** `createContext()`로 만든 각각의 context는 완벽히 분리되어 있고 *특정 context*를 사용 및 제공하는 컴포넌트끼리 묶여 있습니다. 하나의 컴포넌트는 문제없이 많은 다른 context를 사용하거나 제공할 수 있습니다.
 
-## Before you use context {/*before-you-use-context*/}
+## Context를 사용하기 전에 고려할 것 {/*before-you-use-context*/}
 
-Context is very tempting to use! However, this also means it's too easy to overuse it. **Just because you need to pass some props several levels deep doesn't mean you should put that information into context.**
+Context는 사용하기에 꽤 유혹적입니다. 그러나 이는 또한 남용하기 쉽다는 의미이기도 합니다. **어떤 props를 여러 레벨 깊이 전달해야 한다고 해서 해당 정보를 context에 넣어야 하는 것은 아닙니다.**
 
-Here's a few alternatives you should consider before using context:
+다음은 context를 사용하기 전 고려해볼 몇 가지 대안들입니다.
 
-1. **Start by [passing props.](/learn/passing-props-to-a-component)** If your components are not trivial, it's not unusual to pass a dozen props down through a dozen components. It may feel like a slog, but it makes it very clear which components use which data! The person maintaining your code will be glad you've made the data flow explicit with props.
-2. **Extract components and [pass JSX as `children`](/learn/passing-props-to-a-component#passing-jsx-as-children) to them.** If you pass some data through many layers of intermediate components that don't use that data (and only pass it further down), this often means that you forgot to extract some components along the way. For example, maybe you pass data props like `posts` to visual components that don't use them directly, like `<Layout posts={posts} />`. Instead, make `Layout` take `children` as a prop, and render `<Layout><Posts posts={posts} /></Layout>`. This reduces the number of layers between the component specifying the data and the one that needs it.
+1. **[Props 전달하기](/learn/passing-props-to-a-component)로 시작하기.** 사소한 컴포넌트들이 아니라면 여러 개의 props가 여러 컴포넌트를 거쳐 가는 가는 것은 그리 이상한 일이 아닙니다. 힘든 일처럼 느껴질 수 있지만 어떤 컴포넌트가 어떤 데이터를 사용하는지 매우 명확히 해줍니다. 데이터의 흐름이 props를 통해 분명해져 코드를 유지보수 하기에도 좋습니다.
+2. **컴포넌트를 추출하고 [JSX를 `children`으로 전달하기.](/learn/passing-props-to-a-component#passing-jsx-as-children)** 데이터를 사용하지 않는 많은 중간 컴포넌트 층을 통해 어떤 데이터를 전달하는 (더 아래로 보내기만 하는) 경우에는 컴포넌트를 추출하는 것을 잊은 경우가 많습니다. 예를 들어 `posts`처럼 직접 사용하지 않는 props를 `<Layout posts={posts} />`와 같이 전달할 수 있습니다. 대신 `Layout`은 `children`을 prop으로 받고 `<Layout><Posts posts={posts} /><Layout>`을 렌더링하세요. 이렇게 하면 데이터를 지정하는 컴포넌트와 데이터가 필요한 컴포넌트 사이의 층수가 줄어듭니다.
 
-If neither of these approaches works well for you, consider context.
+만약 이 접근 방법들이 잘 맞지 않는다면 context를 고려해보세요.
 
-## Use cases for context {/*use-cases-for-context*/}
+## Context 사용 예시 {/*use-cases-for-context*/}
 
-* **Theming:** If your app lets the user change its appearance (e.g. dark mode), you can put a context provider at the top of your app, and use that context in components that need to adjust their visual look.
-* **Current account:** Many components might need to know the currently logged in user. Putting it in context makes it convenient to read it anywhere in the tree. Some apps also let you operate multiple accounts at the same time (e.g. to leave a comment as a different user). In those cases, it can be convenient to wrap a part of the UI into a nested provider with a different current account value.
-* **Routing:** Most routing solutions use context internally to hold the current route. This is how every link "knows" whether it's active or not. If you build your own router, you might want to do it too.
-* **Managing state:** As your app grows, you might end up with a lot of state closer to the top of your app. Many distant components below may want to change it. It is common to [use a reducer together with context](/learn/scaling-up-with-reducer-and-context) to manage complex state and pass it down to distant components without too much hassle.
-  
-Context is not limited to static values. If you pass a different value on the next render, React will update all the components reading it below! This is why context is often used in combination with state.
+- **테마 지정하기:** 사용자가 모양을 변경할 수 있는 애플리케이션의 경우에 (e.g. 다크 모드) context provider를 앱 최상단에 두고 시각적으로 조정이 필요한 컴포넌트에서 context를 사용할 수 있습니다.
+- **현재 계정:** 로그인한 사용자를 알아야 하는 컴포넌트가 많을 수 있습니다. Context에 놓으면 트리 어디에서나 편하게 알아낼 수 있습니다. 일부 애플리케이션에서는 동시에 여러 계정을 운영할 수도 있습니다(e.g. 다른 사용자로 댓글을 남기는 경우). 이런 경우에는 UI의 일부를 서로 다른 현재 계정 값을 가진 provider로 감싸 주는 것이 편리합니다.
+- **라우팅:** 대부분의 라우팅 솔루션은 현재 경로를 유지하기 위해 내부적으로 context를 사용합니다. 이것이 모든 링크의 활성화 여부를 "알 수 있는" 방법입니다. 라우터를 만든다면 같은 방식으로 하고 싶을 것입니다.
+- **상태 관리:** 애플리케이션이 커지면 결국 앱 상단에 수많은 state가 생기게 됩니다. 아래 멀리 떨어진 많은 컴포넌트가 그 값을 변경하고싶어할 수 있습니다. 흔히 [reducer를 context와 함께 사용하는 것](/learn/scaling-up-with-reducer-and-context)은 복잡한 state를 관리하고 번거로운 작업 없이 멀리 있는 컴포넌트까지 값을 전달하는 방법입니다.
 
-In general, if some information is needed by distant components in different parts of the tree, it's a good indication that context will help you.
+Context는 정적인 값으로 제한되지 않습니다. 다음 렌더링 시 다른 값을 준다면 React는 아래의 모든 컴포넌트에서 그 값을 갱신합니다. 이것은 context와 state가 자주 조합되는 이유입니다.
+
+일반적으로 트리의 다른 부분에서 멀리 떨어져 있는 컴포넌트들이 같은 정보가 필요하다는 것은 context를 사용하기 좋다는 징조입니다.
 
 <Recap>
 
-* Context lets a component provide some information to the entire tree below it.
-* To pass context:
-  1. Create and export it with `export const MyContext = createContext(defaultValue)`.
-  2. Pass it to the `useContext(MyContext)` Hook to read it in any child component, no matter how deep.
-  3. Wrap children into `<MyContext.Provider value={...}>` to provide it from a parent.
-* Context passes through any components in the middle.
-* Context lets you write components that "adapt to their surroundings".
-* Before you use context, try passing props or passing JSX as `children`.
+- Context는 컴포넌트가 트리 상 아래에 위치한 모든 곳에 데이터를 제공하도록 합니다.
+- Context를 전달하려면 다음과 같습니다
+  1. `export const MyContext = createContext(defaultValue)`로 context를 생성하고 내보내세요.
+  2. `useContext(MyContext)` Hook에 전달해 얼마나 깊이 있든 자식 컴포넌트가 읽을 수 있도록 합니다.
+  3. 자식을 `<MyContext.Provider value={...}>`로 감싸 부모로부터 context를 받도록 합니다.
+- Context는 중간의 어떤 컴포넌트도 지나갈 수 있습니다.
+- Context를 활용해 "주변에 적응하는" 컴포넌트를 작성할 수 있습니다.
+- Context를 사용하기 전에 props를 전달하거나 JSX를 `children`으로 전달하는 것을 먼저 시도해보세요.
 
 </Recap>
 
 <Challenges>
 
-#### Replace prop drilling with context {/*replace-prop-drilling-with-context*/}
+#### Context로 prop 내리꽂기 대체하기 {/*replace-prop-drilling-with-context*/}
 
-In this example, toggling the checkbox changes the `imageSize` prop passed to each `<PlaceImage>`. The checkbox state is held in the top-level `App` component, but each `<PlaceImage>` needs to be aware of it.
+다음의 예시에서 체크 박스를 토글하는 것은 각각의 `<PlaceImage>`에 전달된 `imageSize` prop을 변경합니다. 체크 박스의 state는 `App` 컴포넌트의 최상단에서 가지고 있지만 `<PlaceImage>`에서 그 값을 알아야 합니다.
 
-Currently, `App` passes `imageSize` to `List`, which passes it to each `Place`, which passes it to the `PlaceImage`. Remove the `imageSize` prop, and instead pass it from the `App` component directly to `PlaceImage`.
+현재는 `App`이 `imageSize`를 `List`에 전달하면 또 `Place`에 전달하고 다시 `PlaceImage`에 전달하고 있습니다.`imageSize` prop을 제거하고 `App` 컴포넌트가 직접 `PlaceImage`에 값을 전달하도록 해봅시다.
 
-You can declare context in `Context.js`.
+Context를 `Context.js`에 선언합니다.
 
 <Sandpack>
 
@@ -963,27 +959,27 @@ export const places = [{
   description: 'The tradition of choosing bright colors for houses began in the late 20th century.',
   imageId: 'K9HVAGH'
 }, {
-  id: 1, 
+  id: 1,
   name: 'Rainbow Village in Taichung, Taiwan',
   description: 'To save the houses from demolition, Huang Yung-Fu, a local resident, painted all 1,200 of them in 1924.',
   imageId: '9EAYZrt'
 }, {
-  id: 2, 
+  id: 2,
   name: 'Macromural de Pachuca, Mexico',
   description: 'One of the largest murals in the world covering homes in a hillside neighborhood.',
   imageId: 'DgXHVwu'
 }, {
-  id: 3, 
+  id: 3,
   name: 'Selarón Staircase in Rio de Janeiro, Brazil',
   description: 'This landmark was created by Jorge Selarón, a Chilean-born artist, as a "tribute to the Brazilian people."',
   imageId: 'aeO3rpI'
 }, {
-  id: 4, 
+  id: 4,
   name: 'Burano, Italy',
   description: 'The houses are painted following a specific color system dating back to 16th century.',
   imageId: 'kxsph5C'
 }, {
-  id: 5, 
+  id: 5,
   name: 'Chefchaouen, Marocco',
   description: 'There are a few theories on why the houses are painted blue, including that the color repells mosquitos or that it symbolizes sky and heaven.',
   imageId: 'rTqKo46'
@@ -1007,9 +1003,9 @@ export function getImageUrl(place) {
 
 ```css
 ul { list-style-type: none; padding: 0px 10px; }
-li { 
-  margin-bottom: 10px; 
-  display: grid; 
+li {
+  margin-bottom: 10px;
+  display: grid;
   grid-template-columns: auto 1fr;
   gap: 20px;
   align-items: center;
@@ -1020,9 +1016,9 @@ li {
 
 <Solution>
 
-Remove `imageSize` prop from all the components.
+`imageSize` prop을 모든 컴포넌트에서 제거합니다.
 
-Create and export `ImageSizeContext` from `Context.js`. Then wrap the List into `<ImageSizeContext.Provider value={imageSize}>` to pass the value down, and `useContext(ImageSizeContext)` to read it in the `PlaceImage`:
+`Context.js`에 `ImageSizeContext`를 생성하고 내보냅니다. 리스트를 `<ImageSizeContext.Provider value={imageSize}>`로 감싸 값을 아래로 전달하고 `useContext(ImageSizeContext)`로 `PlaceImage`에서 그것을 읽습니다.
 
 <Sandpack>
 
@@ -1055,7 +1051,7 @@ export default function App() {
   )
 }
 
-function List() {
+function List({ imageSize }) {
   const listItems = places.map(place =>
     <li key={place.id}>
       <Place place={place} />
@@ -1102,27 +1098,27 @@ export const places = [{
   description: 'The tradition of choosing bright colors for houses began in the late 20th century.',
   imageId: 'K9HVAGH'
 }, {
-  id: 1, 
+  id: 1,
   name: 'Rainbow Village in Taichung, Taiwan',
   description: 'To save the houses from demolition, Huang Yung-Fu, a local resident, painted all 1,200 of them in 1924.',
   imageId: '9EAYZrt'
 }, {
-  id: 2, 
+  id: 2,
   name: 'Macromural de Pachuca, Mexico',
   description: 'One of the largest murals in the world covering homes in a hillside neighborhood.',
   imageId: 'DgXHVwu'
 }, {
-  id: 3, 
+  id: 3,
   name: 'Selarón Staircase in Rio de Janeiro, Brazil',
-  description: 'This landmark was created by Jorge Selarón, a Chilean-born artist, as a "tribute to the Brazilian people".',
+  description: 'This landmark was created by Jorge Selarón, a Chilean-born artist, as a "tribute to the Brazilian people."',
   imageId: 'aeO3rpI'
 }, {
-  id: 4, 
+  id: 4,
   name: 'Burano, Italy',
   description: 'The houses are painted following a specific color system dating back to 16th century.',
   imageId: 'kxsph5C'
 }, {
-  id: 5, 
+  id: 5,
   name: 'Chefchaouen, Marocco',
   description: 'There are a few theories on why the houses are painted blue, including that the color repells mosquitos or that it symbolizes sky and heaven.',
   imageId: 'rTqKo46'
@@ -1146,9 +1142,9 @@ export function getImageUrl(place) {
 
 ```css
 ul { list-style-type: none; padding: 0px 10px; }
-li { 
-  margin-bottom: 10px; 
-  display: grid; 
+li {
+  margin-bottom: 10px;
+  display: grid;
   grid-template-columns: auto 1fr;
   gap: 20px;
   align-items: center;
@@ -1157,7 +1153,7 @@ li {
 
 </Sandpack>
 
-Note how components in the middle don't need to pass `imageSize` anymore.
+어떻게 중간의 컴포넌트가 `imageSize`를 더는 전달할 필요가 없어졌는지 주목하세요.
 
 </Solution>
 

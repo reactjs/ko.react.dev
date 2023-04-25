@@ -1,62 +1,62 @@
 ---
-title: Editor Setup
+title: 에디터 설정하기
 ---
 
 <Intro>
 
-A properly configured editor can make code clearer to read and faster to write. It can even help you catch bugs as you write them! If this is your first time setting up an editor or you're looking to tune up your current editor, we have a few recommendations.
+적절한 개발환경은 코드의 가독성을 높이며, 개발 속도를 높여줍니다. 심지어 코드를 작성하는 과정에서 버그를 찾아줄 수도 있습니다. 코드 에디터를 설치하는 것이 이번이 처음이거나, 현재 사용하는 에디터의 설정을 개선하고 싶으시다면 몇 가지 추천 사항이 있습니다.
 
 </Intro>
 
 <YouWillLearn>
 
-* What the most popular editors are
-* How to format your code automatically
+* 어떤 에디터가 가장 유명한지
+* 어떻게 자동으로 코드를 포맷팅 하는지
 
 </YouWillLearn>
 
-## Your editor {/*your-editor*/}
+## 에디터 {/*your-editor*/}
 
-[VS Code](https://code.visualstudio.com/) is one of the most popular editors in use today. It has a large marketplace of extensions and integrates well with popular services like GitHub. Most of the features listed below can be added to VS Code as extensions as well, making it highly configurable!
+[VS Code](https://code.visualstudio.com/)는 현재 가장 많이 사용되는 에디터 중 하나입니다. VS Code에 설치할 수 있는 익스텐션의 종류는 무수히 많으며, Github과 같은 외부 서비스와의 연동도 지원합니다. 아래에 나열된 기능들은 대부분 익스텐션으로 존재하기 때문에 VS Code의 설정은 다양한 방식으로 쉽게 변경할 수 있습니다.
 
-Other popular text editors used in the React community include:
+그 외에도 React 커뮤니티에서는 다음과 같은 에디터들이 흔히 사용됩니다.
 
 * [WebStorm](https://www.jetbrains.com/webstorm/) is an integrated development environment designed specifically for JavaScript.
 * [Sublime Text](https://www.sublimetext.com/) has support for JSX and TypeScript, [syntax highlighting](https://stackoverflow.com/a/70960574/458193) and autocomplete built in.
 * [Vim](https://www.vim.org/) is a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as "vi" with most UNIX systems and with Apple OS X.
 
-## Recommended text editor features {/*recommended-text-editor-features*/}
+## 에디터 기능 추천 {/*recommended-text-editor-features*/}
 
-Some editors come with these features built in, but others might require adding an extension. Check to see what support your editor of choice provides to be sure!
+이러한 기능들이 기본으로 설정된 에디터들도 있지만, 별도의 익스텐션 추가가 필요한 경우도 존재합니다. 현재 사용 중인 에디터에서 어떠한 기능을 지원하는지 한번 확인해보세요!
 
-### Linting {/*linting*/}
+### 린팅 {/*linting*/}
 
-Code linters find problems in your code as you write, helping you fix them early. [ESLint](https://eslint.org/) is a popular, open source linter for JavaScript. 
+코드 린터는 코드를 작성하는 동안 실시간으로 문제를 찾아줌으로써 빠른 문제해결이 가능하도록 도와줍니다. [ESLint](https://eslint.org/)는 많이 사용되고 JavaScript를 위한 오픈소스 린터입니다.
 
-* [Install ESLint with the recommended configuration for React](https://www.npmjs.com/package/eslint-config-react-app) (be sure you have [Node installed!](https://nodejs.org/en/download/current/))
-* [Integrate ESLint in VSCode with the official extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+* [React를 위한 추천 설정과 함께 ESLint 설치하기](https://www.npmjs.com/package/eslint-config-react-app) (사전에 [Node](https://nodejs.org/ko/download/current/)가 설치되어있어야 합니다)
+* [VS Code의 ESLint를 공식 익스텐션과 통합하기](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
 **Make sure that you've enabled all the [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) rules for your project.** They are essential and catch the most severe bugs early. The recommended [`eslint-config-react-app`](https://www.npmjs.com/package/eslint-config-react-app) preset already includes them.
 
-### Formatting {/*formatting*/}
+### 포맷팅 {/*formatting*/}
 
-The last thing you want to do when sharing your code with another contributor is get into an discussion about [tabs vs spaces](https://www.google.com/search?q=tabs+vs+spaces)! Fortunately, [Prettier](https://prettier.io/) will clean up your code by reformatting it to conform to preset, configurable rules. Run Prettier, and all your tabs will be converted to spaces—and your indentation, quotes, etc will also all be changed to conform to the configuration. In the ideal setup, Prettier will run when you save your file, quickly making these edits for you.
+다른 개발자들과 협업할 때 가장 피하고 싶은 것은 [탭 vs 공백](https://www.google.com/search?q=tabs+vs+spaces)에 대한 논쟁일 것입니다. 다행히 [Prettier](https://prettier.io/)를 사용하면 직접 지정해놓은 규칙들에 부합하도록 코드의 형식을 깔끔하게 정리할 수 있습니다. Prettier를 실행하면 모든 탭들은 공백으로 전환될 뿐만 아니라 들여쓰기, 따옴표 형식과 같은 요소들이 전부 설정에 부합하도록 수정될 것입니다. 파일을 저장할 때마다 Prettier가 자동 실행되어 이러한 작업들을 수행해주는 것이 가장 이상적인 설정입니다.
 
-You can install the [Prettier extension in VSCode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) by following these steps:
+다음과 같은 단계를 통해 [VS Code의 Prettier 익스텐션](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)을 설치할 수 있습니다.
 
-1. Launch VS Code
-2. Use Quick Open (press Ctrl/Cmd+P)
-3. Paste in `ext install esbenp.prettier-vscode`
-4. Press Enter
+1. VS Code 실행하기
+2. 퀵오픈 사용하기 (Ctrl/Cmd+P 누르기)
+3. `ext install esbenp.prettier-vscode`라고 입력하기
+4. 엔터 누르기
 
-#### Formatting on save {/*formatting-on-save*/}
+#### 저장 시점에 포맷팅하기 {/*formatting-on-save*/}
 
-Ideally, you should format your code on every save. VS Code has settings for this!
+저장할 때마다 코드가 포맷팅되는 것이 가장 이상적일 것입니다. 이러한 설정은 VS Code에 자체적으로 내장되어있습니다!
 
-1. In VS Code, press `CTRL/CMD + SHIFT + P`.
-2. Type "settings"
-3. Hit Enter
-4. In the search bar, type "format on save"
-5. Be sure the "format on save" option is ticked!
+1. VS Code에서 `CTRL/CMD + SHIFT + P` 누르기
+2. "settings"라고 입력하기
+3. 엔터 누르기
+4. 검색 창에서 "format on save"라고 입력하기
+5. "format on save" 옵션이 제대로 체크되었는지 확인하세요!
 
-> If your ESLint preset has formatting rules, they may conflict with Prettier. We recommend disabling all formatting rules in your ESLint preset using [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier) so that ESLint is *only* used for catching logical mistakes. If you want to enforce that files are formatted before a pull request is merged, use [`prettier --check`](https://prettier.io/docs/en/cli.html#--check) for your continuous integration.
+> Prettier는 때때로 다른 린터들과 충돌을 일으킬 수도 있습니다. 하지만 일반적으로 다른 린터들과 함께 깔끔하게 병행해서 동작하도록 하는 방법이 존재합니다. 예를 들어 Prettier를 ESLint와 함께 사용하는 경우 [eslint-prettier](https://github.com/prettier/eslint-plugin-prettier) 플러그인을 설치하면 ESLint 규칙으로서 Prettier가 동작하도록 설정할 수 있습니다.
