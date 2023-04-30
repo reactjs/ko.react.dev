@@ -19,7 +19,7 @@ title: "<select>"
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `<select>` {/*select*/}
 
@@ -222,7 +222,7 @@ select { display: block; margin-top: 10px; width: 200px; }
 
 ---
 
-### form을 제출할 때 선택 상자에서 제공하는 값 읽기 {/*reading-the-select-box-value-when-submitting-a-form*/}
+### 폼을 제출할 때 선택 상자에서 제공하는 값 읽기 {/*reading-the-select-box-value-when-submitting-a-form*/}
 
 내부에 [`<button type="submit">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)이 있는 select box 주변에 [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)을 추가하면 `<form onSubmit>` 이벤트 핸들러를 호출해 값을 전달할 수 있습니다. 아무런 설정이 되어 있지 않다면 브라우저는 양식 데이터를 현재 URL로 보내고 페이지를 새로 고칩니다. `e.preventDefault()`를 호출하여 해당 동작을 재정의할 수 있습니다. [`new FormData(e.target)`](https://developer.mozilla.org/en-US/docs/Web/API/FormData)로 양식 데이터 읽는 방법은 다음과 같습니다.
 
@@ -308,12 +308,12 @@ label { margin-bottom: 20px; }
 
 ```js {2,6,7}
 function FruitPicker() {
-  const [selectedFruit, setSelectedFruit] = useState('orange'); // Declare a state variable...
+  const [selectedFruit, setSelectedFruit] = useState('orange'); // 상태 변수를 선언합니다.
   // ...
   return (
     <select
-      value={selectedFruit} // ...force the select's value to match the state variable...
-      onChange={e => setSelectedFruit(e.target.value)} // ... and update the state variable on any change!
+      value={selectedFruit} // ...선택의 값이 상태 변수와 일치하도록 강제합니다....
+      onChange={e => setSelectedFruit(e.target.value)} // ... 변경 사항에 대해 상태 변수를 업데이트하십시오!
     >
       <option value="apple">Apple</option>
       <option value="banana">Banana</option>
@@ -382,6 +382,6 @@ select { margin-bottom: 10px; display: block; }
 
 **`onChange` 없이 `value`를 전달하면 옵션을 선택할 수 없습니다.** `value`를 전달하여 select box를 제어하면 전달한 값이 항상 있도록 *강제*합니다. 따라서 `value`를 상태 변수로 전달했지만 `onChange` 이벤트 핸들러에서 상태 변수를 동기적으로 업데이트하지 않으면 React는 키를 누를 때마다 select box를 지정한 `value`로 되돌립니다.
 
-HTML과는 다르게 개별 `<option>`에 `selected` 속성을 전달하는 것은 지원하지 않습니다.
+HTML과는 달리 개별 `<option>`에 `selected` 속성을 전달하는 것은 지원하지 않습니다.
 
 </Pitfall>
