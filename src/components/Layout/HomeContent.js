@@ -148,7 +148,7 @@ export function HomeContent() {
               size="lg"
               className="w-full sm:w-auto justify-center"
               label="API Reference">
-              API 문서
+              API 참고서
             </ButtonLink>
           </div>
         </div>
