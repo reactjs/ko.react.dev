@@ -105,7 +105,7 @@ function Link({href, children, ...props}: JSX.IntrinsicElements['a']) {
 
 function NavItem({url, isActive, children}: any) {
   return (
-    <div className="flex flex-auto sm:flex-1">
+    <div className="flex flex-auto">
       <Link
         href={url}
         className={cn(
