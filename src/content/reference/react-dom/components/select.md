@@ -58,17 +58,17 @@ select box를 표시하려면 [`<select>` 내장 컴포넌트](https://developer
 * [`multiple`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-multiple): boolean 타입이며 `true`라면 브라우저는 [다중 선택](#enabling-multiple-selection)을 허용합니다.
 * [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-name): String 타입이며 select box의 [폼을 제출할 때](#reading-the-select-box-value-when-submitting-a-form) 제출되는 이름을 지정합니다.
 * `onChange`: [`Event` 핸들러](/reference/react-dom/components/common#event-handler) 함수입니다. [제어되어야 하는 select box](#controlling-a-select-box-with-a-state-variable)인 경우 필수입니다. 사용자가 값을 변경할 때마다 즉시 호출됩니다. 브라우저의 [`input` 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)와 유사하게 동작합니다.
-* `onChangeCapture`: `onChange`와 동일하지만 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 호출됩니다.
+* `onChangeCapture`: `onChange`와 같지만 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 호출됩니다.
 * [`onInput`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event): [`Event` 핸들러](/reference/react-dom/components/common#event-handler) 함수입니다. 사용자가 값을 변경할 때마다 즉시 호출됩니다. React에서는 `onChange`를 사용하는 것이 관습이지만, `onInput`과 유사하게 동작합니다.
-* `onInputCapture`: `onInput`와 동일하지만 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 호출됩니다.
+* `onInputCapture`: `onInput`와 같지만 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 호출됩니다.
 * [`onInvalid`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event): [`Event` 핸들러](/reference/react-dom/components/common#event-handler) 함수입니다. 폼 제출 시 입력이 유효하지 않으면 호출됩니다. 내장된 `invalid` 이벤트와 달리 Reactdml `onInvalid` 이벤트는 버블링됩니다.
-* `onInvalidCapture`: `onInvalid`와 동일하지만 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 호출됩니다.
+* `onInvalidCapture`: `onInvalid`와 같지만 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 호출됩니다.
 * [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-required): boolean 타입이며 `true`라면 폼 제출 시 값을 제공해야 합니다.
 * [`size`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-size): 숫자 타입이며 `multiple={true}`인 경우 처음 보여지는 아이템 개수를 지정합니다.
 
 #### 주의 사항 {/*caveats*/}
 
-- HTML과는 달리, `selected` 속성을 `<option>`에 전달하는 것은 지원하지 않습니다. 대신, [제어되지 않는 select box](#controlling-a-select-box-with-a-state-variable)의 경우 [`<select defaultValue>`](#providing-an-initially-selected-option)를 사용하고, [제어되어야 하는 select box](#controlling-a-select-box-with-a-state-variable)의 경우 [`<select value>`](#controlling-a-select-box-with-a-state-variable)를 사용하십시오.
+- HTML과는 달리, `selected` 속성을 `<option>`에 전달하는 것은 지원하지 않습니다. 대신, [제어되지 않는 select box](#controlling-a-select-box-with-a-state-variable)인 경우 [`<select defaultValue>`](#providing-an-initially-selected-option)를 사용하고, [제어되어야 하는 select box](#controlling-a-select-box-with-a-state-variable)인 경우 [`<select value>`](#controlling-a-select-box-with-a-state-variable)를 사용하십시오.
 - `<select>`에 `value` prop이 전달된다면, [제어되는 것으로 간주합니다.](#controlling-a-select-box-with-a-state-variable)
 - select box는 제어 상태와 비제어 상태를 동시에 행할 수 없습니다. 둘 중 하나의 상태만 가질 수 있습니다.
 - select box는 생명 주기 동안 처음 설정한 제어 상태를 변경할 수 없습니다.
@@ -109,9 +109,9 @@ select { margin: 5px; }
 
 ### select box가 포함된 라벨 제공 {/*providing-a-label-for-a-select-box*/}
 
-라벨이 해당 select box와 연결되어 있음을 브라우저에 알리기 위해 [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) 태그 안에 `<select>`를 배치합니다. 사용자가 라벨을 클릭하면 브라우저는 자동으로 선택 상자에 초점을 맞춥니다. 또한 접근성을 위해 필수적입니다. 사용자가 select box에 초점을 맞추면 스크린 리더가 라벨 캡션을 알립니다.
+라벨이 해당 select box와 연결되어 있음을 브라우저에 알리기 위해 [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) 태그 안에 `<select>`를 배치합니다. 사용자가 라벨을 클릭하면 브라우저는 자동으로 선택 상자에 초점을 맞춥니다. 또한, 접근성을 위해 필수적입니다. 사용자가 select box에 초점을 맞추면 스크린 리더가 라벨 캡션을 알립니다.
 
-`<select>`를 `<label>` 안에 중첩 시킬 수 없다면, 동일한 ID를 `<select id>`와 [`<label htmlFor>`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor)에 전달하여 연결해야 합니다. 한 컴포넌트에서 여러 인스턴스 간 충돌을 피하려면 [`useId`를 사용하여](/reference/react/useId) ID를 생성하십시오.
+`<select>`를 `<label>` 안에 중첩 시킬 수 없다면, 같은 ID를 `<select id>`와 [`<label htmlFor>`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor)에 전달하여 연결해야 합니다. 한 컴포넌트에서 여러 인스턴스 간 충돌을 피하려면 [`useId`를 사용하여](/reference/react/useId) ID를 생성하십시오.
 
 <Sandpack>
 
