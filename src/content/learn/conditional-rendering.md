@@ -626,11 +626,7 @@ export default function PackingList() {
 
 `importance && ...` 보다는 `importance > 0 && ...`로 작성해야 합니다. `importance`가 `0`이면 결과로 `0`이 렌더링 되지 않습니다!
 
-<<<<<<< HEAD
 이 솔루션에서는 이름과 중요도 레이블 사이에 공백을 삽입하는 데 두 가지 개별 조건이 사용됩니다. `importance > 0 && <><i>...</i></>` 처럼 공백이 있는 프래그먼트를 앞에 사용할 수 있습니다. 또는 `importance > 0 && <i> ...</i>` 처럼 `<i>` 안에 바로 공백을 넣으세요.
-=======
-In this solution, two separate conditions are used to insert a space between the name and the importance label. Alternatively, you could use a fragment with a leading space: `importance > 0 && <> <i>...</i></>` or add a space immediately inside the `<i>`:  `importance > 0 && <i> ...</i>`.
->>>>>>> 68a934313f8d04f6dabb8475f71b3a0773ea433f
 
 </Solution>
 
