@@ -4,13 +4,13 @@ title: cloneElement
 
 <Pitfall>
 
-Using `cloneElement` is uncommon and can lead to fragile code. [See common alternatives.](#alternatives)
+`cloneElement`를 사용하는 것은 흔하지 않으며, 불안정한 코드를 만들 수 있습니다. [일반적인 대안을 확인하세요.](#alternatives)
 
 </Pitfall>
 
 <Intro>
 
-`cloneElement` lets you create a new React element using another element as a starting point.
+`cloneElement`를 사용하면 엘리먼트를 기준으로 새로운 React 엘리먼트를 만들 수 있습니다.
 
 ```js
 const clonedElement = cloneElement(element, props, ...children)
@@ -26,7 +26,7 @@ const clonedElement = cloneElement(element, props, ...children)
 
 ### `cloneElement(element, props, ...children)` {/*cloneelement*/}
 
-Call `cloneElement` to create a React element based on the `element`, but with different `props` and `children`:
+엘리먼트를 기준으로 하되, `props`와 `children`을 다르게 하여 새로운 React 엘리먼트를 만들기 위해 `cloneElement`를 호출하세요.
 
 ```js
 import { cloneElement } from 'react';
@@ -43,13 +43,13 @@ const clonedElement = cloneElement(
 console.log(clonedElement); // <Row title="Cabbage">Goodbye</Row>
 ```
 
-[See more examples below.](#usage)
+[예제를 더 보려면 아래를 참고하세요.](#usage)
 
 #### Parameters {/*parameters*/}
 
-* `element`: The `element` argument must be a valid React element. For example, it could be a JSX node like `<Something />`, the result of calling [`createElement`](/reference/react/createElement), or the result of another `cloneElement` call.
+* `element`: `element` 인자는 유효한 React 엘리먼트여야 합니다. 예를 들어, `<Something />`과 같은 JSX 노드, [`createElement`](/reference/react/createElement)로 호출한 결과물 또는 다른 `cloneElement`로 호출한 결과물이 될 수 있습니다.
 
-* `props`: The `props` argument must either be an object or `null`. If you pass `null`, the cloned element will retain all of the original `element.props`. Otherwise, for every prop in the `props` object, the returned element will "prefer" the value from `props` over the value from `element.props`. The rest of the props will be filled from the original `element.props`. If you pass `props.key` or `props.ref`, they will replace the original ones.
+* `props`: `props` 인자는 객체 또는 `null`이어야 합니다. `null`을 전달하면 복제된 엘리먼트는 원본 `element.props`를 모두 유지합니다. 그렇지 않으면 `props` 객체의 각 prop에 대해 반환된 엘리먼트는 `element.props`의 값보다 `props`의 값을 "우선"합니다. 나머지 `props`는 원본 `element.props`에서 채워집니다. `props.key` 또는 `props.ref`를 전달하면 원본의 것을 대체합니다.
 
 * **optional** `...children`: Zero or more child nodes. They can be any React nodes, including React elements, strings, numbers, [portals](/reference/react-dom/createPortal), empty nodes (`null`, `undefined`, `true`, and `false`), and arrays of React nodes. If you don't pass any `...children` arguments, the original `element.props.children` will be preserved.
 
