@@ -763,4 +763,3 @@ export default function DrinkList() {
 
 </Solution>
 
-</Challenges>
