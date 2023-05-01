@@ -4,11 +4,11 @@ title: React Developer Tools
 
 <Intro>
 
-React Developer Tools를 사용하여 React [컴포넌트](/learn/your-first-component)를 검사하고, [props](/learn/passing-props-to-a-component)와 [state](/learn/state-a-components-memory)를 편집할 수 있으며 성능 문제를 식별할 수 있습니다.
+React Developer Tools를 사용하여 React [컴포넌트](/learn/your-first-component)를 검사하고 [props](/learn/passing-props-to-a-component)와 [state](/learn/state-a-components-memory)를 편집할 수 있으며 성능 문제를 식별할 수 있습니다.
 
 </Intro>
 
-<YouWillLearn title='테스트'>
+<YouWillLearn>
 
 * React Developer Tools 설치 방법
 
