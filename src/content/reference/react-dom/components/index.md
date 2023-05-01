@@ -244,7 +244,7 @@ React는 브라우저에 내장된 모든 SVG 엘리먼트를 지원합니다. �
 
 [DOM 표준](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)과 유사하게 React는 프로퍼티에 `캐멀 케이스` 표기법을 사용합니다. 예를 들어 `tabindex` 대신 `tabIndex`를 작성합니다. [온라인 변환기](https://transform.tools/)를 사용하여 기존 SVG를 JSX로 변환할 수 있습니다.
 
-네임스페이스 어트리뷰트는 콜론 없이 작성해야 합니다.
+네임스페이스 어트리뷰트 또한 콜론 없이 작성해야 합니다.
 
 * `xlink:actuate` 대신 `xlinkActuate`
 * `xlink:arcrole` 대신 `xlinkArcrole`
