@@ -17,4 +17,4 @@ title: Client React DOM APIs
 
 ## 지원 브라우저 {/*browser-support*/}
 
-React는 Internet Explorer 9 이상을 포함한 모든 인기 브라우저를 지원합니다. IE 9, IE 10 이하 같은 구형 브라우저에서는 일부 폴리필이 필요합니다.
+React는 Internet Explorer 9 이상을 포함한 모든 대중적인 브라우저를 지원합니다. IE 9, IE 10 이하 같은 구형 브라우저에서는 일부 폴리필이 필요합니다.
