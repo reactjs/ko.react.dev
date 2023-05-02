@@ -4,7 +4,7 @@ title: 리스트 렌더링
 
 <Intro>
 
-데이터 모음에서 유사한 컴포넌트를 여러 개 표시하고 싶을 때가 많습니다. [JavaScript 배열 메서드](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array#)를 사용하여 데이터 배열을 조작할 수 있습니다. 이 페이지에서는 React에서 [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)와 [`map()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map)을 사용해 데이터 배열을 필터링하고 컴포넌트 배열로 변환해보겠습니다.
+데이터 모음에서 유사한 컴포넌트를 여러 개 표시하고 싶을 때가 종종 있습니다. [JavaScript 배열 메서드](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array#)를 사용하여 데이터 배열을 조작할 수 있습니다. 이 페이지에서는 React에서 [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)와 [`map()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map)을 사용해 데이터 배열을 필터링하고 컴포넌트 배열로 변환해보겠습니다.
 
 </Intro>
 
@@ -12,7 +12,7 @@ title: 리스트 렌더링
 
 * JavaScript의 `map()`을 사용하여 배열을 컴포넌트로 렌더링하는 방법
 * JavaScript의 `filter()`를 사용하여 특정 컴포넌트만 렌더링하는 방법
-* React에서 Key를 사용하는 시기와 이유
+* React에서 Key가 필요한 때와 이유
 
 </YouWillLearn>
 
@@ -30,7 +30,7 @@ title: 리스트 렌더링
 </ul>
 ```
 
-이러한 리스트 항목의 유일한 차이점은 콘텐츠, 즉 데이터입니다. 댓글 목록에서 프로필 이미지 갤러리에 이르기까지 인터페이스를 구축할 때 서로 다른 데이터를 사용하여 동일한 컴포넌트의 여러 인스턴스를 표시해야 하는 경우가 종종 있습니다. 이러한 상황에서 해당 데이터를 JavaScript 객체와 배열에 저장하고 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)과 [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) 등의 메서드를 사용하여 해당 객체에서 컴포넌트 리스트를 렌더링할 수 있습니다.
+이러한 리스트 항목의 유일한 차이점은 콘텐츠, 즉 데이터입니다. 댓글 목록에서 프로필 이미지 갤러리에 이르기까지 인터페이스를 구축할 때 서로 다른 데이터를 사용하여 동일한 컴포넌트의 여러 인스턴스를 표시해야 하는 경우가 종종 있습니다. 이러한 상황에서 해당 데이터를 JavaScript 객체와 배열에 저장하고 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)과 [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) 같은 메서드를 사용하여 해당 객체에서 컴포넌트 리스트를 렌더링할 수 있습니다.
 
 다음은 배열에서 항목 리스트를 생성하는 방법에 대한 간단한 예시입니다.
 
@@ -1080,7 +1080,7 @@ export const recipes = [{
 
 여기서 `<Recipe {...recipe} key={recipe.id} />`는 “`recipe` 객체의 모든 속성을 props로 `Recipe` 컴포넌트로 전달”하는 손쉬운 구문입니다. `<Recipe id={recipe.id} name={recipe.name} ingredients={recipe.ingredients} key={recipe.id} />` 처럼 각 prop을 명시적으로 작성할 수도 있습니다.
 
-**`key`는 `Recipe`에서 반환된 루트 `<div>`가 아니라 `<Recipe>` 자체에 지정된다는 점에 유의하세요.** 이는 이 `key`가 주변 배열의 컨텍스트 내에서 직접 필요하기 때문입니다. 이전에는 `<div>` 배열이 있었기 때문에 각 배열에 `key`가 필요했지만, 지금은 `<Recipe>` 배열이 있습니다. 즉, 컴포넌트를 추출할 때 복사하여 붙여넣은 JSX 외부에 `key`를 남겨두는 것을 잊지 마세요.
+**`key`는 `Recipe`에서 반환된 루트 `<div>`가 아니라 `<Recipe>` 자체에 지정된다는 점에 유의하세요.** 이는 이 `key`가 주변 배열의 context 내에서 직접 필요하기 때문입니다. 이전에는 `<div>` 배열이 있었기 때문에 각 배열에 `key`가 필요했지만, 지금은 `<Recipe>` 배열이 있습니다. 즉, 컴포넌트를 추출할 때 복사하여 붙여넣은 JSX 외부에 `key`를 남겨두는 것을 잊지 마세요.
 
 </Solution>
 
@@ -1098,7 +1098,7 @@ export const recipes = [{
 </article>
 ```
 
-하이쿠는 세 줄로만 구성되어 있지만 솔루션 코드은 몇 줄이든 상관없습니다. `<hr />` 요소는 `<p>`요소 *사이*에만 표시되며 시작이나 끝에는 표시되지 않습니다!
+하이쿠는 세 줄로만 구성되어 있지만 솔루션 코드는 몇 줄이든 상관없이 동작합니다. `<hr />` 요소는 `<p>`요소 *사이*에만 표시되며 시작이나 끝에는 표시되지 않는다는 점에 유의하세요!
 
 <Sandpack>
 
@@ -1141,7 +1141,7 @@ hr {
 
 </Sandpack>
 
-(시의 행은 절대로 순서가 바뀌지 않으므로 인덱스를 key로 사용할 수 있는 경우는 드뭅니다.)
+(시의 행은 절대로 순서가 바뀌지 않으므로 인덱스를 key로 사용할 수 있는 드문 예입니다.)
 
 <Hint>
 
