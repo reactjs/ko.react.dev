@@ -28,7 +28,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 const html = renderToStaticMarkup(<Page />);
 ```
 
-이것은 상호작용하지 않는 React 컴포넌트의 HTML 출력을 생성합니다.
+상호작용하지 않는 React 컴포넌트의 HTML 출력을 생성합니다.
 
 [아래 예시를 참고하세요.](#usage)
 
@@ -46,7 +46,7 @@ HTML 문자열을 반환합니다.
 
 * `renderToStaticMarkup`은 Suspense를 제한적으로 지원합니다. 만약 suspense 컴포넌트라면, `renderToStaticMarkup`은 즉시 HTML을 fallback으로 보냅니다.
 
-* `renderToStaticMarkup`은 브라우저에서 동작하지만, 클라이언트 코드에서 사용되는 건 권장되지 않습니다. 브라우저에서 컴포넌트를 HTML로 렌더링해야 하는 경우, [DOM 노드로 렌더링하여 HTML을 가져오세요.](/reference/react-dom/server/renderToString#removing-rendertostring-from-the-client-code)
+* `renderToStaticMarkup`은 브라우저에서 동작하지만, 클라이언트 코드에서 사용되는 건 권장하지 않습니다. 브라우저에서 컴포넌트를 HTML로 렌더링해야 하는 경우, [HTML 을 DOM 노드로 렌더링해서 가져오세요.](/reference/react-dom/server/renderToString#removing-rendertostring-from-the-client-code)
 
 ---
 
