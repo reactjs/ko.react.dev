@@ -51,26 +51,27 @@ console.log(clonedElement); // <Row title="Cabbage">Goodbye</Row>
 
 * `props`: `props` 인자는 객체 또는 `null`이어야 합니다. `null`을 전달하면 복제된 엘리먼트는 원본 `element.props`를 모두 유지합니다. 그렇지 않으면 `props` 객체의 각 prop에 대해 반환된 엘리먼트는 `element.props`의 값보다 `props`의 값을 "우선"합니다. 나머지 `props`는 원본 `element.props`에서 채워집니다. `props.key` 또는 `props.ref`를 전달하면 원본의 것을 대체합니다.
 
-* **optional** `...children`: Zero or more child nodes. They can be any React nodes, including React elements, strings, numbers, [portals](/reference/react-dom/createPortal), empty nodes (`null`, `undefined`, `true`, and `false`), and arrays of React nodes. If you don't pass any `...children` arguments, the original `element.props.children` will be preserved.
+* **(선택 사항)** `...children`: 0개 이상의 자식 노드를 필요로 합니다. React 엘리먼트, 문자열, 숫자, [portals](/reference/react-dom/createPortal), 빈 노드 (`null`, `undefined`, `true`, `false`) 및 React 노드 배열을 포한 모든 React 노드가 해당될 수 있습니다. `...children` 인자를 전달하지 않으면 원본 `element.props.children`이 유지됩니다.
+
 
 #### Returns {/*returns*/}
 
-`cloneElement` returns a React element object with a few properties:
+`cloneElement`는 다음과 같은 프로퍼티를 가진 React 엘리먼트 객체를 반환합니다.
 
-* `type`: Same as `element.type`.
-* `props`: The result of shallowly merging `element.props` with the overriding `props` you have passed.
-* `ref`: The original `element.ref`, unless it was overridden by `props.ref`.
-* `key`: The original `element.key`, unless it was overridden by `props.key`.
+* `type`: `element.type`과 동일합니다.
+* `props`: `element.props`와 전달한 `props`를 얕게 병합한 결과입니다.
+* `ref`: `props.ref`에 의해 재정의되지 않은 경우 원본 `element.ref`입니다.
+* `key`: `props.key`에 의해 재정의되지 않은 경우 원본 `element.key`입니다.
 
-Usually, you'll return the element from your component or make it a child of another element. Although you may read the element's properties, it's best to treat every element as opaque after it's created, and only render it.
+일반적으로 컴포넌트에서 엘리먼트를 반환하거나 다른 엘리먼트의 자식으로 만듭니다. 엘리먼트의 프로퍼티를 읽을 수 있지만, 생성된 후에는 모든 엘리먼트를 불투명하게 취급하고 렌더링하는 것이 좋습니다.
 
-#### Caveats {/*caveats*/}
+#### 주의 {/*caveats*/}
 
-* Cloning an element **does not modify the original element.**
+* 엘리먼트를 복제해도 **원본 엘리먼트는 수정되지 않습니다.**
 
 * You should only **pass children as multiple arguments to `cloneElement` if they are all statically known,** like `cloneElement(element, null, child1, child2, child3)`. If your children are dynamic, pass the entire array as the third argument: `cloneElement(element, null, listItems)`. This ensures that React will [warn you about missing `key`s](/learn/rendering-lists#keeping-list-items-in-order-with-key) for any dynamic lists. For static lists this is not necessary because they never reorder.
 
-* `cloneElement` makes it harder to trace the data flow, so **try the [alternatives](#alternatives) instead.**
+* **자식이 모두 정적으로 알려져 있는 경우에만** `cloneElement(element, null, child1, child2, child3)`와 같이 **자식을 여러 개의 인자로 전달해야 합니다.** 자식이 동적으로 생성되었다면 `cloneElement(element, null, listItems)`와 같이 전체 배열을 세 번째 인자로 전달해야합니다. 이렇게 하면 React가 모든 동적 리스트에 대해 [key가 누락되었다는 경고](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 보여줍니다. 정적 리스트의 경우는 순서가 변경되지 않으므로 이 작업은 필요하지 않습니다.
 
 ---
 
