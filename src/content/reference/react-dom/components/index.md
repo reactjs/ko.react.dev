@@ -14,7 +14,7 @@ React는 브라우저에 내장된 모든 [HTML](https://developer.mozilla.org/e
 
 브라우저에 내장된 모든 컴포넌트는 일부 props와 이벤트를 지원합니다.
 
-* [Common components (e.g. `<div>`)](/reference/react-dom/components/common)
+* [공통 컴포넌트 (예: `<div>`)](/reference/react-dom/components/common)
 
 `ref`와 `dangerouslySetInnerHTML`같은 React 특정 props를 포함합니다.
 
@@ -22,7 +22,7 @@ React는 브라우저에 내장된 모든 [HTML](https://developer.mozilla.org/e
 
 ## 폼 컴포넌트 {/*form-components*/}
 
-이 브라우저에 내장된 컴포넌트는 사용자 입력을 받습니다.
+다음과 같은 브라우저에 내장된 컴포넌트는 사용자 입력을 받습니다.
 
 * [`<input>`](/reference/react-dom/components/input)
 * [`<select>`](/reference/react-dom/components/select)
@@ -151,7 +151,7 @@ React는 브라우저에 내장된 모든 HTML 컴포넌트를 지원합니다. 
 `<my-element>`같이 대시가 포함된 태그를 렌더링하면 React는 [커스텀 HTML 엘리먼트](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)를 렌더링한다고 가정합니다. React에서 커스텀 엘리먼트를 렌더링하는 방법은 브라우저 내장 태그를 렌더링하는 방법과 다릅니다.
 
 - 모든 커스텀 엘리먼트 props는 문자열로 직렬화되며 항상 어트리뷰트를 사용하여 설정됩니다.
-- 커스텀 엘리먼트는 `class`대신 `className`을 사용하고 `for`대신 `htmlFor`를 사용합니다.
+- 커스텀 엘리먼트는 `class` 대신 `className`을 사용하고 `for` 대신 `htmlFor`를 사용합니다.
 
 [`is`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/is) 어트리뷰트를 사용하여 브라우저 내장 HTML 엘리먼트를 렌더링하면 커스텀 엘리먼트로 취급됩니다.
 
