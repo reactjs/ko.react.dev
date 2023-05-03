@@ -16,7 +16,7 @@ React는 브라우저에 내장된 모든 [HTML](https://developer.mozilla.org/e
 
 * [공통 컴포넌트 (예: `<div>`)](/reference/react-dom/components/common)
 
-`ref`와 `dangerouslySetInnerHTML`같은 React 특정 props를 포함합니다.
+`ref`와 `dangerouslySetInnerHTML`같은 React 고유의 props를 포함합니다.
 
 ---
 
