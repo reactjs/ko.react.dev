@@ -27,7 +27,7 @@ React로 빌드된 웹 사이트를 디버깅하는 가장 쉬운 방법은 Reac
 ![React Developer Tools extension](/images/docs/react-devtools-extension.png)
 
 ### Safari 및 기타 브라우저 {/*safari-and-other-browsers*/}
-다른 브라우저(예: Safari)의 경우, [`react-devtools`](https://www.npmjs.com/package/react-devtools) 를 npm package로 설치해야 합니다.
+다른 브라우저(예: Safari)의 경우, [`react-devtools`](https://www.npmjs.com/package/react-devtools)를 npm package로 설치해야 합니다.
 ```bash
 # Yarn
 yarn global add react-devtools
@@ -53,7 +53,7 @@ react-devtools
 ![React Developer Tools standalone](/images/docs/react-devtools-standalone.png)
 
 ## 모바일 (React Native) {/*mobile-react-native*/}
-React Developer Tools는 [React Native](https://reactnative.dev/) 로 만들어진 앱에서도 잘 동작합니다.
+React Developer Tools는 [React Native](https://reactnative.dev/)로 만들어진 앱에서도 잘 동작합니다.
 
 React Developer Tools를 사용하는 가장 쉬운 방법은 전역적으로 설치하는 것입니다.
 ```bash
