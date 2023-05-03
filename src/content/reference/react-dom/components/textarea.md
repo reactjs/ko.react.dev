@@ -33,17 +33,17 @@ title: "<textarea>"
 
 `<textarea>`는 [일반적인 엘리먼트 props](/reference/react-dom/components/common#props)를 지원합니다.
 
-[텍스트 영역을 제어](#controlling-a-select-box-with-a-state-variable)하려면 `value` prop을 전달하세요:
+[텍스트 영역을 제어](#controlling-a-select-box-with-a-state-variable)하려면 `value` prop을 전달하세요.
 
 * `value`: 문자열 타입. 텍스트 영역 내부의 텍스트를 제어합니다.
 
 `value`를 전달할 땐 반드시 해당 값을 업데이트하는 `onChange` 핸들러도 함께 전달해야 합니다.
 
-`<textarea>`가 제어되지 않는 경우 `defaultValue` prop을 대신 전달해도 됩니다:
+`<textarea>`가 제어되지 않는 경우 `defaultValue` prop을 대신 전달해도 됩니다.
 
 * `defaultValue`: 문자열 타입. 텍스트 영역 [초깃값](#providing-an-initial-value-for-a-text-area)을 지정합니다.
 
-다음의 `<textarea>` props는 제어되지 않는 텍스트 영역과 제어되는 텍스트 영역 모두에 적용됩니다:
+다음의 `<textarea>` props는 제어되지 않는 텍스트 영역과 제어되는 텍스트 영역 모두에 적용됩니다.
 
 * [`autoComplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-autocomplete): 'on' 또는 'off'. 자동 완성 동작을 지정합니다.
 * [`autoFocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-autofocus): 불리언 타입. `true`일 경우 React는 마운트 시 엘리먼트에 포커스를 맞춥니다.
@@ -255,7 +255,7 @@ input { margin: 5px; }
 
 `<textarea />`와 같은 텍스트 영역은 *제어되지 않습니다*. `<textarea defaultValue="Initial text" />`와 같은 [초깃값을 전달](#providing-an-initial-value-for-a-text-area)한대도 JSX는 당장의 값이 아닌 초깃값만을 지정합니다.
 
-**_제어되는_ 텍스트 영역을 렌더링하려면 `value` prop을 전달하세요.** React는 전달한 `value`를 항상 갖도록 텍스트 영역에 강제합니다. 일반적으로 텍스트 영역은 [state 변수](/reference/react/useState)를 선언하여 제어합니다:
+**_제어되는_ 텍스트 영역을 렌더링하려면 `value` prop을 전달하세요.** React는 전달한 `value`를 항상 갖도록 텍스트 영역에 강제합니다. 일반적으로 텍스트 영역은 [state 변수](/reference/react/useState)를 선언하여 제어합니다.
 
 ```js {2,6,7}
 function NewPost() {
@@ -342,7 +342,7 @@ textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 
 ### 텍스트 영역에 타이핑을 해도 업데이트되지 않습니다 {/*my-text-area-doesnt-update-when-i-type-into-it*/}
 
-`onChange` 없이 `value`만 전달하여 텍스트 영역을 렌더링하면 콘솔에 에러가 나타납니다:
+`onChange` 없이 `value`만 전달하여 텍스트 영역을 렌더링하면 콘솔에 에러가 나타납니다.
 
 ```js
 // 🔴 버그: 제어되는 텍스트 영역에 onChange 핸들러가 없습니다.
@@ -355,21 +355,21 @@ textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 
 </ConsoleBlock>
 
-에러 메시지가 제안하듯 [*초깃값*만 지정](#providing-an-initial-value-for-a-text-area)하려면 `defaultVallue`를 대신 전달하세요:
+에러 메시지가 제안하듯 [*초깃값*만 지정](#providing-an-initial-value-for-a-text-area)하려면 `defaultVallue`를 대신 전달하세요.
 
 ```js
 // ✅ 좋은 예: 제어되지 않는 텍스트 영역에 초깃값 전달
 <textarea defaultValue={something} />
 ```
 
-[텍스트 영역을 state 변수로 제어](#controlling-a-text-area-with-a-state-variable)하려면 `onChange` 핸들러를 지정하세요:
+[텍스트 영역을 state 변수로 제어](#controlling-a-text-area-with-a-state-variable)하려면 `onChange` 핸들러를 지정하세요.
 
 ```js
 // ✅ 좋은 예: 제어되는 텍스트 영역에 onChange 전달
 <textarea value={something} onChange={e => setSomething(e.target.value)} />
 ```
 
-값이 내부적으로 읽기 전용이라면 에러를 막기 위해 `readOnly` prop을 추가하세요:
+값이 내부적으로 읽기 전용이라면 에러를 막기 위해 `readOnly` prop을 추가하세요.
 
 ```js
 // ✅ 좋은 예: 제어되는 읽기 전용 텍스트 영역에 onChange 생략
@@ -382,7 +382,7 @@ textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 
 [텍스트 영역을 제어](#controlling-a-text-area-with-a-state-variable)할 경우 `onChange` 안에서 state 변수를 DOM에서 받아온 텍스트 영역 값으로 업데이트해야 합니다.
 
-state 변수는 `e.target.value` 외의 값으로 업데이트할 수 없습니다:
+state 변수는 `e.target.value` 외의 값으로 업데이트할 수 없습니다.
 
 ```js
 function handleChange(e) {
@@ -391,7 +391,7 @@ function handleChange(e) {
 }
 ```
 
-비동기로 업데이트할 수도 없습니다:
+비동기로 업데이트할 수도 없습니다.
 
 ```js
 function handleChange(e) {
@@ -402,11 +402,11 @@ function handleChange(e) {
 }
 ```
 
-코드를 고치려면 e.target.value로 동기 업데이트하세요:
+코드를 고치려면 e.target.value로 동기 업데이트하세요.
 
 ```js
 function handleChange(e) {
-  // ✅ 제어되는  input을 e.target.value로 동기 업데이트합니다.
+  // ✅ 제어되는 input을 e.target.value로 동기 업데이트합니다.
   setFirstName(e.target.value);
 }
 ```
