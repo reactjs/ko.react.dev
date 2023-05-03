@@ -4,7 +4,7 @@ title: UI 표현하기
 
 <Intro>
 
-React는 사용자 인터페이스(UI)를 렌더링하기 위한 JavaScript 라이브러리입니다. UI는 버튼, 텍스트, 이미지와 같은 작은 요소로 구성됩니다. React를 통해 작은 요소들을 재사용 가능하고 중첩할 수 있는 *컴포넌트*로 조합할 수 있습니다. 웹 사이트에서 휴대전화 앱에 이르기까지, 화면에 있는 모든 것을 컴포넌트로 나눌 수 있습니다. 이 장에서는 React 컴포넌트를 만들고, 사용자화하며, 조건부로 표시하는 방법에 대해서 알아봅시다.
+React는 사용자 인터페이스(UI)를 렌더링하기 위한 JavaScript 라이브러리입니다. UI는 버튼, 텍스트, 이미지와 같은 작은 요소로 구성됩니다. React를 통해 작은 요소들을 재사용 가능하고 중첩할 수 있는 *컴포넌트*로 조합할 수 있습니다. 웹 사이트에서 휴대전화 앱에 이르기까지 화면에 있는 모든 것을 컴포넌트로 나눌 수 있습니다. 이 장에서는 React 컴포넌트를 만들고, 사용자화하며, 조건부로 표시하는 방법에 대해서 알아봅시다.
 
 </Intro>
 
@@ -117,9 +117,9 @@ img { margin: 0 10px 10px 0; }
 
 ## JSX로 마크업 작성하기 {/*writing-markup-with-jsx*/}
 
-각 React 컴포넌트는 React가 브라우저에 렌더링하는 마크업을 포함할 수 있는 JavaScript 함수입니다. React 컴포넌트는 그 마크업을 표현하기 위해 JSX라는 확장된 문법을 사용합니다. JSX는 HTML과 매우 유사하지만 조금 더 엄격하며 동적인 정보를 표시할 수 있습니다.
+React 컴포넌트는 React가 브라우저에 렌더링하는 마크업을 포함할 수 있는 JavaScript 함수입니다. React 컴포넌트는 그 마크업을 표현하기 위해 JSX라는 확장된 문법을 사용합니다. JSX는 HTML과 매우 유사하지만 조금 더 엄격하며 동적인 정보를 표시할 수 있습니다.
 
-기존의 HTML 마크업을 React 컴포넌트에 붙여넣으면 동작하지 않을 수도 있습니다.
+기존의 HTML 마크업을 React 컴포넌트에 그대로 붙여넣으면 동작하지 않을 수도 있습니다.
 
 <Sandpack>
 
@@ -184,7 +184,7 @@ img { height: 90px; }
 
 </LearnMore>
 
-## JSX에서 중괄호를 사용하여 JavaScript 사용하기 {/*javascript-in-jsx-with-curly-braces*/}
+## JSX에서 중괄호를 이용하여 JavaScript 사용하기 {/*javascript-in-jsx-with-curly-braces*/}
 
 JSX를 사용하면 JavaScript 파일에 HTML과 비슷한 마크업을 작성할 수 있어 렌더링 로직과 콘텐츠를 같은 곳에 둘 수 있습니다. 때로는 그 마크업 내부에 JavaScript 로직을 추가하거나 동적인 프로퍼티를 참조해야 하는 경우가 있습니다. 그럴 때 JSX에서 중괄호를 사용하여 JavaScript와 연결된 "창문을 열 수" 있습니다.
 
@@ -228,7 +228,7 @@ body > div > div { padding: 20px; }
 
 <LearnMore path="/learn/javascript-in-jsx-with-curly-braces">
 
-JSX에서 중괄호를 사용하여 JavaScript 데이터에 접근하는 방법을 배우려면 **[JSX에서 중괄호를 사용하여 JavaScript 사용하기](/learn/javascript-in-jsx-with-curly-braces)** 를 읽어보세요.
+JSX에서 중괄호를 사용하여 JavaScript 데이터에 접근하는 방법을 배우려면 **[JSX에서 중괄호를 이용하여 JavaScript 사용하기](/learn/javascript-in-jsx-with-curly-braces)** 를 읽어보세요.
 
 </LearnMore>
 
@@ -363,7 +363,7 @@ export default function PackingList() {
 
 ## 리스트 렌더링 {/*rendering-lists*/}
 
-데이터 집합을 가지고 여러 개의 유사한 컴포넌트를 표시하려는 경우가 많습니다. React와 JavaScript의 `filter()`와 `map()`을 함께 사용하면 데이터 배열을 필터링하고 변환하여 컴포넌트 배열로 변환할 수 있습니다.
+데이터 모음에서 유사한 컴포넌트를 여러 개 표시하고 싶을 때가 종종 있습니다. React와 JavaScript의 `filter()`와 `map()`을 함께 사용하면 데이터 배열을 필터링하고 컴포넌트 배열로 변환할 수 있습니다.
 
 각 배열 항목마다 `key`를 지정해야 합니다. 일반적으로 데이터베이스에서 가져온 ID를 `key`로 사용하게 될 것입니다. Key를 사용하면 리스트가 변경되더라도 React가 각 항목의 위치를 추적할 수 있습니다.
 
@@ -457,7 +457,7 @@ h2 { font-size: 20px; }
 
 <LearnMore path="/learn/rendering-lists">
 
-React에서 컴포넌트의 리스트를 렌더링하고, 어떤 key를 선택해야 하는지 알아보려면 **[리스트 렌더링](/learn/rendering-lists)** 를 읽어보세요.
+컴포넌트 목록을 렌더링하는 방법과 어떻게 key를 선택하는지에 대해 배우려면 **[리스트 렌더링](/learn/rendering-lists)** 을 읽어보세요.
 
 </LearnMore>
 
