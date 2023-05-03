@@ -1,5 +1,5 @@
 ---
-title: "내장 React APIs"
+title: "내부에 포함된 React APIs"
 ---
 
 <Intro>
