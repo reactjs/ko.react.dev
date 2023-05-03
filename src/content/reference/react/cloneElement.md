@@ -69,9 +69,9 @@ console.log(clonedElement); // <Row title="Cabbage">Goodbye</Row>
 
 * 엘리먼트를 복제해도 **원본 엘리먼트는 수정되지 않습니다.**
 
-* You should only **pass children as multiple arguments to `cloneElement` if they are all statically known,** like `cloneElement(element, null, child1, child2, child3)`. If your children are dynamic, pass the entire array as the third argument: `cloneElement(element, null, listItems)`. This ensures that React will [warn you about missing `key`s](/learn/rendering-lists#keeping-list-items-in-order-with-key) for any dynamic lists. For static lists this is not necessary because they never reorder.
-
 * **자식이 모두 정적으로 알려져 있는 경우에만** `cloneElement(element, null, child1, child2, child3)`와 같이 **자식을 여러 개의 인자로 전달해야 합니다.** 자식이 동적으로 생성되었다면 `cloneElement(element, null, listItems)`와 같이 전체 배열을 세 번째 인자로 전달해야합니다. 이렇게 하면 React가 모든 동적 리스트에 대해 [key가 누락되었다는 경고](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 보여줍니다. 정적 리스트의 경우는 순서가 변경되지 않으므로 이 작업은 필요하지 않습니다.
+
+* `cloneElement`는 데이터 흐름을 추적하기 어렵기 때문에 다음 [대안](#alternatives)을 사용해보세요.
 
 ---
 
