@@ -148,7 +148,7 @@ export function HomeContent() {
               size="lg"
               className="w-full sm:w-auto justify-center"
               label="API Reference">
-              API 참고서
+              API 레퍼런스
             </ButtonLink>
           </div>
         </div>
@@ -231,12 +231,12 @@ export function HomeContent() {
 
         <Section background="right-card">
           <Center>
-            <Header>프레임워크를 통해서 full-stack으로 만들기</Header>
+            <Header>프레임워크를 통해서 풀스택으로 만들기</Header>
             <Para>
               React는 라이브러리입니다. 컴포넌트를 함께 묶을 수 있지만, 라우팅과
               데이터를 가져오는 방법을 규정하지는 않습니다. React로 앱을
               만들려면, <Link href="https://nextjs.org">Next.js</Link> 또는
-              <Link href="https://remix.run">Remix</Link> 같은 full-stack React
+              <Link href="https://remix.run">Remix</Link> 같은 풀스택 React
               프레임워크를 추천합니다.
             </Para>
           </Center>

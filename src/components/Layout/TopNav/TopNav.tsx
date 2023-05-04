@@ -286,7 +286,7 @@ export default function TopNav({
                 <NavItem
                   isActive={section === 'reference'}
                   url="/reference/react">
-                  참고서
+                  레퍼런스
                 </NavItem>
                 <NavItem isActive={section === 'community'} url="/community">
                   커뮤니티
