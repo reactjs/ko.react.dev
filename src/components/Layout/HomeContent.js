@@ -379,7 +379,7 @@ export function HomeContent() {
                           와{' '}
                           <Link href="https://github.com/expo/expo">Expo</Link>
                           를 사용하면 React를 통하여 Android, iOS 등을 위한 앱을
-                          빌드 할 수 있습니다. UI 들이 native 이기때문에 정말
+                          빌드 할 수 있습니다. UI들이 native 이기때문에 진짜
                           native 처럼 보여집니다. 이것은 web view 가 아닙니다.
                           React 컴포넌트들은 실제 Android, iOS 플랫폼에서
                           제공하는 view 를 렌더링합니다.
@@ -477,7 +477,7 @@ export function HomeContent() {
               <Center>
                 <Para>
                   이것이 바로 React가 라이브러리를 넘어 아키텍처, 심지어
-                  에코티스템 그 이상인 이유입니다. React는 커뮤니티입니다.
+                  에코시스템 그 이상인 이유입니다. React는 커뮤니티입니다.
                   도움을 요청하고, 기회를 찾고, 새로운 친구를 만날 수 있는
                   곳입니다. 개발자와 디자이너, 초보자와 전문가, 연구원과 예술가,
                   교사와 학생을 만날 수 있습니다. 모두의 배경은 다를 수 있지만,
