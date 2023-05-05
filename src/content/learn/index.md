@@ -46,7 +46,7 @@ export default function MyApp() {
 }
 ```
 
-`<MyButton />`이 대문자로 시작하는 것을 주목하세요. 이것이 바로 React 컴포넌트임을 알 수 있는 방법입니다. React 컴포넌트의 이름은 항상 대문자로 시작해야 하고 HTML 태그는 소문자로 시작해야 합니다.
+`<MyButton />`이 대문자로 시작하는 것을 주목해 주세요. 이것이 바로 React 컴포넌트임을 알 수 있는 방법입니다. React 컴포넌트의 이름은 항상 대문자로 시작해야 하고 HTML 태그는 소문자로 시작해야 합니다.
 
 결과를 확인해 보세요.
 
@@ -73,13 +73,13 @@ export default function MyApp() {
 
 </Sandpack>
 
-`export default` 키워드는 파일의 기본 컴포넌트를 지정합니다. 자바스크립트 문법에 익숙하지 않다면 [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/export)과 [javascript.info](https://ko.javascript.info/import-export)를 참고하세요.
+`export default` 키워드는 파일의 기본 컴포넌트를 지정합니다. 자바스크립트 문법에 익숙하지 않다면 [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/export)과 [javascript.info](https://ko.javascript.info/import-export)를 참고해 주세요.
 
 ## JSX로 마크업 작성하기 {/*writing-markup-with-jsx*/}
 
 위에서 본 마크업 문법을 *JSX*라고 합니다. 이것은 선택 사항이지만 대부분의 React 프로젝트는 편의성을 위해 JSX를 사용합니다. [로컬 개발에 권장하는 모든 도구](/learn/installation)는 JSX를 기본적으로 지원합니다.
 
-JSX는 HTML보다 엄격합니다. JSX에서는 `<br />`같이 태그를 닫아야 합니다. 또한 컴포넌트는 여러 개의 JSX 태그를 반환할 수 없습니다. `<div>...</div>` 또는 빈 `<>...</>` 래퍼와 같이 공유되는 부모로 래핑해야 합니다.
+JSX는 HTML보다 엄격합니다. JSX에서는 `<br />`같이 태그를 닫아야 합니다. 또한 컴포넌트는 여러 개의 JSX 태그를 반환할 수 없습니다. `<div>...</div>` 또는 빈 `<>...</>` 래퍼와 같이 공유되는 부모로 감싸야 합니다.
 
 ```js {3,6}
 function AboutPage() {
@@ -181,7 +181,7 @@ export default function Profile() {
 
 ## 조건부 렌더링 {/*conditional-rendering*/}
 
-React에서 조건문을 작성하는 데에는 특별한 문법이 없습니다. 일반적인 자바스크립트 코드를 작성할 때 사용하는 것과 동일한 방법을 사용합니다. 예를 들어 [`if`](https://developer.mozilla.org/ko-KR/docs/Web/JavaScript/Reference/Statements/if...else) 문을 사용하여 조건부로 JSX를 포함할 수 있습니다.
+React에서 조건문을 작성하는 데에는 특별한 문법이 필요 없습니다. 일반적인 자바스크립트 코드를 작성할 때 사용하는 것과 동일한 방법을 사용합니다. 예를 들어 [`if`](https://developer.mozilla.org/ko-KR/docs/Web/JavaScript/Reference/Statements/if...else) 문을 사용하여 조건부로 JSX를 포함할 수 있습니다.
 
 ```js
 let content;
@@ -378,7 +378,7 @@ button {
 
 </Sandpack>
 
-각 버튼이 고유한 `count` state를 "기억"하고 다른 버튼에 영향을 주지 않는 방식에 주목하세요.
+각 버튼이 고유한 `count` state를 "기억"하고 다른 버튼에 영향을 주지 않는 방식에 주목해 주세요.
 
 ## Hooks 사용하기 {/*using-hooks*/}
 
