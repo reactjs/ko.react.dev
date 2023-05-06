@@ -4,7 +4,7 @@ title: useCallback
 
 <Intro>
 
-`useCallback`은 리렌더링 사이에 함수 정의를 캐시할 수 있게 해주는 React Hook입니다.
+`useCallback`은 리렌더링 사이에 함수 정의를 캐시할 수 있게 해주는 React 훅입니다.
 
 ```js
 const cachedFn = useCallback(fn, dependencies)
@@ -16,11 +16,11 @@ const cachedFn = useCallback(fn, dependencies)
 
 ---
 
-## 문서 {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `useCallback(fn, dependencies)` {/*usecallback*/}
 
-컴포넌트의 최상위 레벨에서 useCallback을 호출하여 리렌더링 간 함수 선언 캐시하세요.
+컴포넌트의 최상위 레벨에서 useCallback을 호출하여 리렌더링 간 함수 선언하세요.
 
 ```js {4,9}
 import { useCallback } from 'react';
@@ -38,7 +38,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 #### 인자 {/*parameters*/}
 
-* `fn`: 캐시하려는 함수입니다. 어떠한 인자를 취하고 어떠한 값을 반환할 수 있습니다. React는 초기 렌더링 중에 함수를 반환(호출하지 않음)합니다. 다음 렌더링할 때, `dependencies`가 마지막 렌더링 이후 변경되지 않은 경우 React는 동일한 함수를 다시 반환합니다. 변경되었다면, React는 현재 렌더링 중에 전달한 함수를 반환하고 나중에 재사용할 수 있는지 확인하기 위해 저장합니다. React는 함수를 호출하지 않습니다. 함수는 호출할 시기와 여부를 결정할 수 있도록 반환됩니다.
+* `fn`: 캐시하려는 함수입니다. 이 함수는 아무 인자나 받을 수 있고, 아무 값이나 반환할 수 있습니다. React는 초기 렌더링 중에 함수를 반환(호출하지 않음)합니다. 이후 렌더링할 때 `dependencies`가 마지막 렌더링 이후 변경되지 않은 경우 React는 동일한 함수를 다시 반환합니다. 변경되었다면, React는 현재 렌더링 중에 전달한 함수를 반환하고 나중에 재사용할 수 있는지 확인하기 위해 저장합니다. React는 함수를 호출하지 않습니다. 함수는 호출 시점과 여부를 직접 결정할 수 있도록 반환됩니다.
 
 * `dependencies`: The list of all reactive values referenced inside of the `fn` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison algorithm.
 
