@@ -1,5 +1,5 @@
 {
-  "title": "Community",
+  "title": "커뮤니티",
   "path": "/community",
   "routes": [
     {
@@ -7,28 +7,28 @@
       "sectionHeader": "GET INVOLVED"
     },
     {
-      "title": "Community",
+      "title": "커뮤니티",
       "path": "/community",
       "skipBreadcrumb": true,
       "routes": [
         {
-          "title": "React Conferences",
+          "title": "리액트 컨퍼런스",
           "path": "/community/conferences"
         },
         {
-          "title": "React Meetups",
+          "title": "리액트 밋업",
           "path": "/community/meetups"
         },
         {
-          "title": "React Videos",
+          "title": "리액트 비디오",
           "path": "/community/videos"
         },
         {
-          "title": "Meet the Team",
+          "title": "팀 소개",
           "path": "/community/team"
         },
         {
-          "title": "Docs Contributors",
+          "title": "문서 기여자",
           "path": "/community/docs-contributors"
         },
         {

@@ -1,5 +1,5 @@
 {
-  "title": "Blog",
+  "title": "블로그",
   "path": "/blog",
   "routes": [
     {
@@ -7,7 +7,7 @@
       "sectionHeader": "STAY INFORMED"
     },
     {
-      "title": "Blog",
+      "title": "블로그",
       "path": "/blog",
       "skipBreadcrumb": true,
       "routes": [
@@ -19,7 +19,7 @@
           "path": "/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023"
         },
         {
-          "title": "Introducing react.dev",
+          "title": "react.dev 소개",
           "titleForHomepage": "Introducing react.dev",
           "icon": "blog",
           "date": "March 16, 2023",
@@ -33,7 +33,7 @@
           "path": "/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022"
         },
         {
-          "title": "React v18.0",
+          "title": "리액트 18.0 버전",
           "titleForHomepage": "React v18.0",
           "icon": "blog",
           "date": "March 29, 2022",
