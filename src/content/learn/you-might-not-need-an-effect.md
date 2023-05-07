@@ -4,7 +4,7 @@ title: 'Effect가 필요하지 않을 수도 있습니다'
 
 <Intro>
 
-Effect는 React 패러다임에서 벗어날 수 있는 탈출구입니다. Effect를 사용하면 React를 "벗어나" 컴포넌트를 React가 아닌 위젯, 네트워크, 또는 브라우저 DOM과 같은 외부 시스템과 동기화할 수 있습니다. 외부 시스템이 관여하지 않는 경우 (예를 들어 일부 props 또는 상태가 변경될 때 컴포넌트의 상태를 업데이트하려는 경우), Effect가 필요하지 않습니다. 불필요한 Effect를 제거하면 코드를 더 쉽게 따라갈 수 있고, 실행 속도가 빨라지며, 에러 발생 가능성이 줄어듭니다.
+Effect는 React 패러다임에서 벗어날 수 있는 탈출구입니다. Effect를 사용하면 React를 "벗어나" 컴포넌트를 React가 아닌 위젯, 네트워크, 또는 브라우저 DOM과 같은 외부 시스템과 동기화할 수 있습니다. 외부 시스템이 관여하지 않는 경우 (예를 들어 일부 props 또는 state가 변경될 때 컴포넌트의 state를 업데이트하려는 경우), Effect가 필요하지 않습니다. 불필요한 Effect를 제거하면 코드를 더 쉽게 따라갈 수 있고, 실행 속도가 빨라지며, 에러 발생 가능성이 줄어듭니다.
 
 </Intro>
 
@@ -12,7 +12,7 @@ Effect는 React 패러다임에서 벗어날 수 있는 탈출구입니다. Effe
 
 * 컴포넌트에서 불필요한 Effect를 제거하는 이유와 방법
 * Effect 없이 값비싼 계산을 캐시하는 방법
-* Effect 없이 컴포넌트 상태를 재설정하고 조정하는 방법
+* Effect 없이 컴포넌트 state를 재설정하고 조정하는 방법
 * 이벤트 핸들러 간에 로직을 공유하는 방법
 * 이벤트 핸들러로 이동해야 하는 로직
 * 부모 컴포넌트에 변경 사항을 알리는 방법
@@ -23,23 +23,23 @@ Effect는 React 패러다임에서 벗어날 수 있는 탈출구입니다. Effe
 
 Effect가 필요하지 않은 두 가지 일반적인 경우가 있습니다.
 
-* **렌더링을 위해 데이터를 변환하는 데 Effect가 필요하지 않습니다.** 예를 들어 리스트를 표시하기 전에 필터링하고 싶다고 가정해 보겠습니다. 리스트가 변경될 때 상태 변수를 업데이트하는 Effect를 작성하고 싶을 수 있습니다. 하지만 이는 비효율적입니다. 상태를 업데이트할 때 React는 먼저 컴포넌트 함수를 호출해 화면에 표시될 내용을 계산합니다. 그런 다음 React는 이러한 변경 사항을 DOM에 ["commit"](/learn/render-and-commit)하여 화면을 업데이트합니다. 그리고 나서 React가 Effect를 실행합니다. 만약 **Effect도** 즉시 상태를 업데이트한다면 전체 프로세스가 처음부터 다시 시작됩니다! 불필요한 렌더링 패스를 피하려면, 컴포넌트의 최상위 레벨에서 모든 데이터를 변환하세요. 그러면 props나 상태가 변경될 때마다 해당 코드가 자동으로 다시 실행됩니다.
+* **렌더링을 위해 데이터를 변환하는 데 Effect가 필요하지 않습니다.** 예를 들어 리스트를 표시하기 전에 필터링하고 싶다고 가정해 보겠습니다. 리스트가 변경될 때 state 변수를 업데이트하는 Effect를 작성하고 싶을 수 있습니다. 하지만 이는 비효율적입니다. state를 업데이트할 때 React는 먼저 컴포넌트 함수를 호출해 화면에 표시될 내용을 계산합니다. 그런 다음 React는 이러한 변경 사항을 DOM에 ["commit"](/learn/render-and-commit)하여 화면을 업데이트합니다. 그리고 나서 React가 Effect를 실행합니다. 만약 **Effect도** 즉시 state를 업데이트한다면 전체 프로세스가 처음부터 다시 시작됩니다! 불필요한 렌더링 패스를 피하려면, 컴포넌트의 최상위 레벨에서 모든 데이터를 변환하세요. 그러면 props나 state가 변경될 때마다 해당 코드가 자동으로 다시 실행됩니다.
 * **사용자 이벤트를 핸들링하는 데 Effect가 필요하지 않습니다.** 예를 들어 사용자가 제품을 구매할 때 `/api/buy` POST 요청을 전송하고 알림을 표시하고 싶다고 가정해 보겠습니다. 구매 버튼 클릭 이벤트 핸들러에서는 정확히 어떤 일이 일어났는지 알 수 있습니다. Effect가 실행될 때까지 사용자가 무엇을 했는지 (예: 어떤 버튼을 클릭 했는지) 알 수 없습니다. 그렇기 때문에 일반적으로 해당되는 이벤트 핸들러에서 사용자 이벤트를 핸들링합니다.
 
-외부 시스템과 [동기화](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events)하려면 Effect가 *반드시* 필요합니다. 예를 들어 jQuery 위젯이 React 상태와 동기화되도록 유지하는 Effect를 작성할 수 있습니다. Effect로 데이터를 가져올 수도 있습니다: 예를 들어 검색 결과를 현재 검색 쿼리와 동기화할 수 있습니다. 모던 [프레임워크](/learn/start-a-new-react-project#production-grade-react-frameworks)는 컴포넌트에 직접 Effect를 작성하는 것보다 더 효율적인 내장 데이터 가져오기 메커니즘을 제공한다는 점을 명심하세요.
+외부 시스템과 [동기화](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events)하려면 Effect가 *반드시* 필요합니다. 예를 들어 jQuery 위젯이 React state와 동기화되도록 유지하는 Effect를 작성할 수 있습니다. Effect로 데이터를 가져올 수도 있습니다: 예를 들어 검색 결과를 현재 검색 쿼리와 동기화할 수 있습니다. 모던 [프레임워크](/learn/start-a-new-react-project#production-grade-react-frameworks)는 컴포넌트에 직접 Effect를 작성하는 것보다 더 효율적인 내장 데이터 가져오기 메커니즘을 제공한다는 점을 명심하세요.
 
 올바른 직관을 얻기 위해, 몇 가지 일반적이고 구체적인 예를 살펴봅시다!
 
-### props 또는 상태에 따라 상태 업데이트하기 {/*updating-state-based-on-props-or-state*/}
+### props 또는 state에 따라 state 업데이트하기 {/*updating-state-based-on-props-or-state*/}
 
-`firstName`과 `lastName`이라는 두 개의 상태 변수가 있다고 가정해 봅시다. 두 변수를 연결해서 `fullName`을 계산하고 싶습니다. 또한 `firstName`이나 `lastName`이 변경될 때마다 `fullName`이 업데이트되기를 바랍니다. 가장 먼저 `fullName` 상태 변수를 추가하고 Effect에서 업데이트하고 싶을 것입니다.
+`firstName`과 `lastName`이라는 두 개의 state 변수가 있다고 가정해 봅시다. 두 변수를 연결해서 `fullName`을 계산하고 싶습니다. 또한 `firstName`이나 `lastName`이 변경될 때마다 `fullName`이 업데이트되기를 바랍니다. 가장 먼저 `fullName` state 변수를 추가하고 Effect에서 업데이트하고 싶을 것입니다.
 
 ```js {5-9}
 function Form() {
   const [firstName, setFirstName] = useState('Taylor');
   const [lastName, setLastName] = useState('Swift');
 
-  // 🔴 피하세요: 중복된 상태 및 불필요한 Effect
+  // 🔴 피하세요: 중복된 state 및 불필요한 Effect
   const [fullName, setFullName] = useState('');
   useEffect(() => {
     setFullName(firstName + ' ' + lastName);
@@ -48,7 +48,7 @@ function Form() {
 }
 ```
 
-이는 필요 이상으로 복잡합니다. 또한`fullName`에 대한 오래된 값으로 전체 렌더링 패스를 수행한 다음, 업데이트된 값으로 즉시 다시 렌더링하기 때문에 비효율적입니다. 상태 변수와 Effect를 제거하세요.
+이는 필요 이상으로 복잡합니다. 또한`fullName`에 대한 오래된 값으로 전체 렌더링 패스를 수행한 다음, 업데이트된 값으로 즉시 다시 렌더링하기 때문에 비효율적입니다. state 변수와 Effect를 제거하세요.
 
 ```js {4-5}
 function Form() {
@@ -60,17 +60,17 @@ function Form() {
 }
 ```
 
-**기존 props나 상태에서 계산할 수 있는 것이 있으면 , [그것을 상태에 넣지 마세요.](/learn/choosing-the-state-structure#avoid-redundant-state) 대신, 렌더링 중에 계산하게 하세요.** 이렇게 하면 코드가 더 빨라지고 (추가적인 "연속적인" 업데이트를 피할 수 있으며), 더 간단해지고 (일부 코드를 제거할 수 있으며), 에러가 덜 발생합니다(서로 다른 상태 변수가 서로 동기화되지 않아 발생하는 버그를 피할 수 있습니다). 이 접근 방식이 생소하게 느껴진다면, [React로 사고하기](/learn/thinking-in-react#step-3-find-the-minimal-but-complete-representation-of-ui-state)에서 무엇이 상태에 들어가야 하는지 설명해 줄 것입니다.
+**기존 props나 state에서 계산할 수 있는 것이 있으면 , [그것을 state에 넣지 마세요.](/learn/choosing-the-state-structure#avoid-redundant-state) 대신, 렌더링 중에 계산하게 하세요.** 이렇게 하면 코드가 더 빨라지고 (추가적인 "연속적인" 업데이트를 피할 수 있으며), 더 간단해지고 (일부 코드를 제거할 수 있으며), 에러가 덜 발생합니다(서로 다른 state 변수가 서로 동기화되지 않아 발생하는 버그를 피할 수 있습니다). 이 접근 방식이 생소하게 느껴진다면, [React로 사고하기](/learn/thinking-in-react#step-3-find-the-minimal-but-complete-representation-of-ui-state)에서 무엇이 state에 들어가야 하는지 설명해 줄 것입니다.
 
 ### 비용이 많이 드는 계산 캐싱하기 {/*caching-expensive-calculations*/}
 
-이 컴포넌트는 props로 받은 `todos`를 `filter` prop에 따라 필터링하여 `visibleTodos`를 계산합니다. 결과를 상태에 저장하고 Effect에서 업데이트하고 싶을 수 있습니다.
+이 컴포넌트는 props로 받은 `todos`를 `filter` prop에 따라 필터링하여 `visibleTodos`를 계산합니다. 결과를 state에 저장하고 Effect에서 업데이트하고 싶을 수 있습니다.
 
 ```js {4-8}
 function TodoList({ todos, filter }) {
   const [newTodo, setNewTodo] = useState('');
 
-  // 🔴 피하세요: 중복된 상태 및 불필요한 효과
+  // 🔴 피하세요: 중복된 state 및 불필요한 효과
   const [visibleTodos, setVisibleTodos] = useState([]);
   useEffect(() => {
     setVisibleTodos(getFilteredTodos(todos, filter));
@@ -80,7 +80,7 @@ function TodoList({ todos, filter }) {
 }
 ```
 
-앞의 예시와 마찬가지로, 이것은 불필요하고 비효율적입니다. 먼저, 상태와 Effect를 제거합니다.
+앞의 예시와 마찬가지로, 이것은 불필요하고 비효율적입니다. 먼저, state와 Effect를 제거합니다.
 
 ```js {3-4}
 function TodoList({ todos, filter }) {
@@ -91,9 +91,9 @@ function TodoList({ todos, filter }) {
 }
 ```
 
-보통, 이 코드는 괜찮습니다! 하지만 `getFilteredTodos()`가 느리거나 `todos`가 많을 수도 있습니다. 이 경우 `newTodo`와 같이 관련 없는 상태 변수가 변경된 경우 `getFilteredTodos()`를 다시 계산하고 싶지 않을 수 있습니다.
+보통, 이 코드는 괜찮습니다! 하지만 `getFilteredTodos()`가 느리거나 `todos`가 많을 수도 있습니다. 이 경우 `newTodo`와 같이 관련 없는 state 변수가 변경된 경우 `getFilteredTodos()`를 다시 계산하고 싶지 않을 수 있습니다.
 
-[`useMemo`](/reference/react/useMemo) Hook으로 감싸서 값비싼 계산을 캐시(또는 ["메모이제이션"](https://ko.wikipedia.org/wiki/메모이제이션)) 할 수 있습니다.
+[`useMemo`](/reference/react/useMemo) Hook으로 래핑해서 값비싼 계산을 캐시(또는 ["메모이제이션"](https://ko.wikipedia.org/wiki/메모이제이션)) 할 수 있습니다.
 
 ```js {5-8}
 import { useMemo, useState } from 'react';
@@ -137,7 +137,7 @@ const visibleTodos = getFilteredTodos(todos, filter);
 console.timeEnd('filter array');
 ```
 
-측정하려는 인터랙션을 수행합니다(예: input에 입력하기). 그러면 `filter array: 0.15ms`과 같은 로그가 console에 표시됩니다. 전체적으로 기록된 시간이 상당한 양(예: 1ms 이상)으로 합산되면 해당 계산을 메모이제이션하는 것이 좋습니다. 그런 다음 실험적으로 해당 계산을 `useMemo`로 감싸서 해당 인터랙션에 대해 총 로깅 시간이 감소했는지를 확인할 수 있습니다.
+측정하려는 상호작용을 수행합니다(예: input에 입력하기). 그러면 `filter array: 0.15ms`과 같은 로그가 console에 표시됩니다. 전체적으로 기록된 시간이 상당한 양(예: 1ms 이상)으로 합산되면 해당 계산을 메모이제이션하는 것이 좋습니다. 그런 다음 실험적으로 해당 계산을 `useMemo`로 감싸서 해당 상호작용에 대해 총 로깅 시간이 감소했는지를 확인할 수 있습니다.
 
 ```js
 console.time('filter array');
@@ -155,15 +155,15 @@ console.timeEnd('filter array');
 
 </DeepDive>
 
-### prop 변경 시 모든 상태 초기화 {/*resetting-all-state-when-a-prop-changes*/}
+### prop 변경 시 모든 state 초기화 {/*resetting-all-state-when-a-prop-changes*/}
 
-이 `ProfilePage` 컴포넌트는 `userId` prop을 받습니다. 페이지는 댓글 입력을 포함하며 `comment` 상태 변수를 사용해 해당 값을 보관합니다. 어느 날 한 프로필에서 다른 프로필로 이동할 때 `comment` 상태가 재설정되지 않는 문제를 발견했습니다. 그 결과 실수로 잘못된 사용자의 프로필에 댓글을 게시하기 쉽습니다. 이 문제를 해결하기 위해 `userId`가 변경될 때마다 `comment` 상태 변수를 비우려고 합니다.
+이 `ProfilePage` 컴포넌트는 `userId` prop을 받습니다. 페이지는 댓글 입력을 포함하며 `comment` state 변수를 사용해 해당 값을 보관합니다. 어느 날 한 프로필에서 다른 프로필로 이동할 때 `comment` state가 재설정되지 않는 문제를 발견했습니다. 그 결과 실수로 잘못된 사용자의 프로필에 댓글을 게시하기 쉽습니다. 이 문제를 해결하기 위해 `userId`가 변경될 때마다 `comment` state 변수를 비우려고 합니다.
 
 ```js {4-7}
 export default function ProfilePage({ userId }) {
   const [comment, setComment] = useState('');
 
-  // 🔴 피하세요: Effect에서 prop 변경 시 상태 초기화
+  // 🔴 피하세요: Effect에서 prop 변경 시 state 초기화
   useEffect(() => {
     setComment('');
   }, [userId]);
@@ -171,9 +171,9 @@ export default function ProfilePage({ userId }) {
 }
 ```
 
-이는 비효율적인데 `ProfilePage`와 그 자식들이 오래된 값으로 처음 렌더링 한 다음 다시 렌더링 하기 때문입니다. 또한 `ProfilePage` 내부에 어떤 state가 있는 *모든* 컴포넌트에서 이 작업을 수행해야 하므로 복잡합니다. 예를 들어 댓글 UI가 중첩된 경우 중첩된 댓글 상태도 비워야 합니다.
+이는 비효율적인데 `ProfilePage`와 그 자식이 오래된 값으로 처음 렌더링 한 다음 다시 렌더링 하기 때문입니다. 또한 `ProfilePage` 내부에 어떤 state가 있는 *모든* 컴포넌트에서 이 작업을 수행해야 하므로 복잡합니다. 예를 들어 댓글 UI가 중첩된 경우 중첩된 댓글 state도 비워야 합니다.
 
-대신 명시적인 key를 전달하여 각 사용자의 프로필이 개념적으로 _다른_ 프로필임을 React에 알릴 수 있습니다. 컴포넌트를 둘로 분할하고 외부 컴포넌트에서 내부 컴포넌트로 `key` 속성을 전달하세요.
+대신 명시적인 key를 전달하여 각 사용자의 프로필이 개념적으로 _다른_ 프로필임을 React에 알릴 수 있습니다. 컴포넌트를 둘로 분할하고 외부 컴포넌트에서 내부 컴포넌트로 `key` 어트리뷰트를 전달하세요.
 
 ```js {5,11-12}
 export default function ProfilePage({ userId }) {
@@ -186,28 +186,28 @@ export default function ProfilePage({ userId }) {
 }
 
 function Profile({ userId }) {
-  // ✅ 이 상태 및 아래의 다른 상태는 key 변경 시 자동으로 재설정됩니다.
+  // ✅ 이 state 및 아래의 다른 state는 key 변경 시 자동으로 재설정됩니다.
   const [comment, setComment] = useState('');
   // ...
 }
 ```
 
-일반적으로 React는 동일한 컴포넌트가 같은 위치에 렌더링 될 때 상태를 보존합니다. **`Profile` 컴포넌트에 `userId`를 `key`로 전달하면 React가 `userId`가 다른 두 개의 `Profile` 컴포넌트를 상태를 공유해서는 안 되는 두 개의 다른 컴포넌트로 취급하도록 요청하는 것입니다.** `userId`로 설정한 key가 변경될 때마다 React는 DOM을 다시 생성하고 `Profile` 컴포넌트와 그 모든 자식들의 [상태를 재설정](/learn/preserving-and-resetting-state#option-2-resetting-state-with-a-key)합니다. 이제 프로필 사이를 탐색할 때 `comment` 필드가 자동으로 비워집니다.
+일반적으로 React는 동일한 컴포넌트가 같은 위치에 렌더링 될 때 state를 보존합니다. **`Profile` 컴포넌트에 `userId`를 `key`로 전달하면 React가 `userId`가 다른 두 개의 `Profile` 컴포넌트를 state를 공유해서는 안 되는 두 개의 다른 컴포넌트로 취급하도록 요청하는 것입니다.** `userId`로 설정한 key가 변경될 때마다 React는 DOM을 다시 생성하고 `Profile` 컴포넌트와 그 모든 자식의 [state를 재설정](/learn/preserving-and-resetting-state#option-2-resetting-state-with-a-key)합니다. 이제 프로필 사이를 탐색할 때 `comment` 필드가 자동으로 비워집니다.
 
 이 예제에서는 외부 `ProfilePage` 컴포넌트만 내보내 프로젝트의 다른 파일에 표시된다는 점에 유의하세요. `ProfilePage`를 렌더링 하는 컴포넌트는 key를 전달할 필요 없이 일반적인 prop로 `userId`를 전달합니다. `ProfilePage`가 이를 내부 `Profile` 컴포넌트에 `key`로 전달한다는 사실은 구현 세부 사항입니다.
 
-### prop가 변경될 때 일부 상태 조정하기 {/*adjusting-some-state-when-a-prop-changes*/}
+### prop가 변경될 때 일부 state 조정하기 {/*adjusting-some-state-when-a-prop-changes*/}
 
-prop가 변경될 때 전체가 아닌 일부 상태만 재설정하거나 조정하고 싶을 때가 있습니다.
+prop가 변경될 때 전체가 아닌 일부 state만 재설정하거나 조정하고 싶을 때가 있습니다.
 
-이 `List` 컴포넌트는 `items` 목록을 prop으로 받고 `selection` 상태 변수에 선택된 아이템을 유지합니다. `items` prop이 다른 배열을 받을 때마다 `selection`을 `null`로 재설정하고 싶습니다.
+이 `List` 컴포넌트는 `items` 목록을 prop으로 받고 `selection` state 변수에 선택된 아이템을 유지합니다. `items` prop이 다른 배열을 받을 때마다 `selection`을 `null`로 재설정하고 싶습니다.
 
 ```js {5-8}
 function List({ items }) {
   const [isReverse, setIsReverse] = useState(false);
   const [selection, setSelection] = useState(null);
 
-  // 🔴 피하세요: Effect에서 prop 변경 시 상태 조정하기
+  // 🔴 피하세요: Effect에서 prop 변경 시 state 조정하기
   useEffect(() => {
     setSelection(null);
   }, [items]);
@@ -217,14 +217,14 @@ function List({ items }) {
 
 이것 역시 이상적이지 않습니다. `items`가 변경될 때마다 `List`와 그 자식 컴포넌트들은 처음에는 오래된 `selection` 값으로 렌더링됩니다. 그런 다음 React는 DOM을 업데이트하고 Effect를 실행합니다. 마지막으로 `setSelection(null)` 호출은 `List`와 그 자식 컴포넌트들을 다시 렌더링하여 이 전체 프로세스를 다시 시작하게 됩니다.
 
-Effect를 삭제하는 것으로 시작하세요. 대신 렌더링 중에 직접 상태를 조정하세요.
+Effect를 삭제하는 것으로 시작하세요. 대신 렌더링 중에 직접 state를 조정하세요.
 
 ```js {5-11}
 function List({ items }) {
   const [isReverse, setIsReverse] = useState(false);
   const [selection, setSelection] = useState(null);
 
-  // 더 좋습니다: 렌더링 중 상태 조정
+  // 더 좋습니다: 렌더링 중 state 조정
   const [prevItems, setPrevItems] = useState(items);
   if (items !== prevItems) {
     setPrevItems(items);
@@ -234,11 +234,11 @@ function List({ items }) {
 }
 ```
 
-이렇게 [이전 렌더링의 정보를 저장하는 것](/reference/react/useState#storing-information-from-previous-renders)은 이해하기 어려울 수 있지만 Effect에서 동일한 상태를 업데이트하는 것보다 낫습니다. 위 예시에서는 렌더링 도중 `setSelection`이 직접 호출됩니다. React는 `return` 문으로 종료된 후 *즉시* `List`를 다시 렌더링 합니다. React는 아직 `List` 자식들을 렌더링 하거나 DOM을 업데이트하지 않았기 때문에 오래된 `selection` 값의 렌더링을 건너뛸 수 있습니다.
+이렇게 [이전 렌더링의 정보를 저장하는 것](/reference/react/useState#storing-information-from-previous-renders)은 이해하기 어려울 수 있지만 Effect에서 동일한 state를 업데이트하는 것보다 낫습니다. 위 예시에서는 렌더링 도중 `setSelection`이 직접 호출됩니다. React는 `return` 문으로 종료된 후 *즉시* `List`를 다시 렌더링 합니다. React는 아직 `List` 자식을 렌더링 하거나 DOM을 업데이트하지 않았기 때문에 오래된 `selection` 값의 렌더링을 건너뛸 수 있습니다.
 
-렌더링 도중 컴포넌트를 업데이트하면 React는 반환된 JSX를 버리고 즉시 렌더링을 다시 시도합니다. 매우 느린 연속적 재시도를 피하기 위해 React는 렌더링 중에 *동일한* 컴포넌트의 상태만 업데이트할 수 있도록 합니다. 렌더링 도중 다른 컴포넌트의 상태를 업데이트하면 에러가 발생합니다. 반복을 피하려면 `items !== prevItems`와 같은 조건이 필요합니다. 이런 식으로 상태를 조정할 수는 있지만 [컴포넌트를 순수하게 유지](/learn/keeping-components-pure)하기 위해 DOM 변경이나 타임아웃 설정과 같은 다른 사이드 이펙트들은 이벤트 핸들러나 Effect에 남겨둬야 합니다.
+렌더링 도중 컴포넌트를 업데이트하면 React는 반환된 JSX를 버리고 즉시 렌더링을 다시 시도합니다. 매우 느린 연속적 재시도를 피하기 위해 React는 렌더링 중에 *동일한* 컴포넌트의 state만 업데이트할 수 있도록 합니다. 렌더링 도중 다른 컴포넌트의 state를 업데이트하면 에러가 발생합니다. 반복을 피하려면 `items !== prevItems`와 같은 조건이 필요합니다. 이런 식으로 state를 조정할 수는 있지만 [컴포넌트를 순수하게 유지](/learn/keeping-components-pure)하기 위해 DOM 변경이나 타임아웃 설정과 같은 다른 사이드 이펙트들은 이벤트 핸들러나 Effect에 남겨둬야 합니다.
 
-**이 패턴이 Effect보다 더 효율적이지만 대부분의 컴포넌트에는 이 패턴이 필요하지 않습니다.** 어떻게 하든 props나 다른 상태에 따라 상태를 조정하면 데이터 흐름을 이해하고 디버깅하기가 더 어려워집니다. 대신 [key를 사용하여 모든 상태를 초기화](#resetting-all-state-when-a-prop-changes)하거나 [렌더링 중에 모든 상태를 계산](#updating-state-based-on-props-or-state)할 수 있는지 항상 확인하세요. 예를 들어 선택한 *item*을 저장(및 재설정)하는 대신 선택한 *item ID*를 저장할 수 있습니다.
+**이 패턴이 Effect보다 더 효율적이지만 대부분의 컴포넌트에는 이 패턴이 필요하지 않습니다.** 어떻게 하든 props나 다른 state에 따라 state를 조정하면 데이터 흐름을 이해하고 디버깅하기가 더 어려워집니다. 대신 [key를 사용하여 모든 state를 초기화](#resetting-all-state-when-a-prop-changes)하거나 [렌더링 중에 모든 state를 계산](#updating-state-based-on-props-or-state)할 수 있는지 항상 확인하세요. 예를 들어 선택한 *item*을 저장(및 재설정)하는 대신 선택한 *item ID*를 저장할 수 있습니다.
 
 ```js {3-5}
 function List({ items }) {
@@ -250,7 +250,7 @@ function List({ items }) {
 }
 ```
 
-이제 상태를 "조정"할 필요가 전혀 없습니다. 선택한 ID를 가진 item이 목록에 있으면 선택된 상태로 유지됩니다. 그렇지 않은 경우 일치하는 item을 찾을 수 없으므로 렌더링 중에 계산된 `selection`은 `null`이 됩니다. 이 동작은 다르지만 대부분의 `items` 변경이 선택 내용을 유지하므로 더 나은 방법이라고 할 수 있습니다.
+이제 state를 "조정"할 필요가 전혀 없습니다. 선택한 ID를 가진 item이 목록에 있으면 선택된 state로 유지됩니다. 그렇지 않은 경우 일치하는 item을 찾을 수 없으므로 렌더링 중에 계산된 `selection`은 `null`이 됩니다. 이 동작은 다르지만 대부분의 `items` 변경이 선택 내용을 유지하므로 더 나은 방법이라고 할 수 있습니다.
 
 ### 이벤트 핸들러 간 로직 공유 {/*sharing-logic-between-event-handlers*/}
 
@@ -305,7 +305,7 @@ function ProductPage({ product, addToCart }) {
 
 ### POST 요청 보내기 {/*sending-a-post-request*/}
 
-이 `Form` 컴포넌트는 두 가지 종류의 POST 요청을 전송합니다. 마운트 될 때 analytics 이벤트를 보냅니다. form을 작성하고 Submit 버튼을 클릭하면 `/api/register` 엔드포인트로 POST 요청을 보냅니다.
+이 `Form` 컴포넌트는 두 가지 종류의 POST 요청을 전송합니다. 마운트 될 때 analytics 이벤트를 보냅니다. 폼을 작성하고 Submit 버튼을 클릭하면 `/api/register` 엔드포인트로 POST 요청을 보냅니다.
 
 ```js {5-8,10-16}
 function Form() {
@@ -335,9 +335,9 @@ function Form() {
 
 앞의 예와 동일한 기준을 적용해 보겠습니다.
 
-analytics POST 요청은 Effect에 남아 있어야 합니다. analytics 이벤트를 전송하는 _이유_는 form이 표시되었기 때문입니다. (개발 중에는 두 번 실행되지만 이를 처리하는 방법은 [여기](/learn/synchronizing-with-effects#sending-analytics)를 참조하세요.)
+analytics POST 요청은 Effect에 남아 있어야 합니다. analytics 이벤트를 전송하는 _이유_는 폼이 표시되었기 때문입니다. (개발 중에는 두 번 실행되지만 이를 처리하는 방법은 [여기](/learn/synchronizing-with-effects#sending-analytics)를 참조하세요.)
 
-그러나 `/api/register` POST 요청은 _표시되는_ form으로 인해 발생하는 것이 아닙니다. 사용자가 버튼을 누를 때라는 특정 시점에만 요청을 보내려고 합니다. 이 요청은 해당 _특정 인터랙션에서만_ 발생해야 합니다. 두 번째 Effect를 삭제하고 해당 POST 요청을 이벤트 핸들러로 이동합니다:
+그러나 `/api/register` POST 요청은 _표시되는_ 폼으로 인해 발생하는 것이 아닙니다. 사용자가 버튼을 누를 때라는 특정 시점에만 요청을 보내려고 합니다. 이 요청은 해당 _특정 상호작용에서만_ 발생해야 합니다. 두 번째 Effect를 삭제하고 해당 POST 요청을 이벤트 핸들러로 이동합니다:
 
 ```js {12-13}
 function Form() {
@@ -358,11 +358,11 @@ function Form() {
 }
 ```
 
-어떤 로직을 이벤트 핸들러에 넣을지 Effect에 넣을지 선택할 때 사용자 관점에서 _어떤 종류의 로직인지_에 대한 답을 찾아야 합니다. 이 로직이 특정 인터랙션으로 인해 발생하는 것이라면 이벤트 핸들러에 두세요. 사용자가 화면에서 컴포넌트를 _보는 것_이 원인이라면 Effect에 두세요.
+어떤 로직을 이벤트 핸들러에 넣을지 Effect에 넣을지 선택할 때 사용자 관점에서 _어떤 종류의 로직인지_에 대한 답을 찾아야 합니다. 이 로직이 특정 상호작용으로 인해 발생하는 것이라면 이벤트 핸들러에 두세요. 사용자가 화면에서 컴포넌트를 _보는 것_이 원인이라면 Effect에 두세요.
 
 ### 연쇄 계산 {/*chains-of-computations*/}
 
-때때로 다른 상태에 따라 각각 상태를 조정하는 Effect를 체이닝하고 싶을 때가 있습니다.
+때때로 다른 state에 따라 각각 state를 조정하는 Effect를 체이닝하고 싶을 때가 있습니다.
 
 ```js {7-29}
 function Game() {
@@ -371,7 +371,7 @@ function Game() {
   const [round, setRound] = useState(1);
   const [isGameOver, setIsGameOver] = useState(false);
 
-  // 🔴 피하세요: 서로를 트리거하기 위해서만 상태를 조정하는 Effect 체인
+  // 🔴 피하세요: 서로를 트리거하기 위해서만 state를 조정하는 Effect 체인
   useEffect(() => {
     if (card !== null && card.gold) {
       setGoldCardCount(c => c + 1);
@@ -408,11 +408,11 @@ function Game() {
 
 이 코드에는 두 가지 문제가 있습니다.
 
-한 가지 문제는 매우 비효율적이라는 점입니다. 컴포넌트(및 그 자식들)는 체인의 각 `set` 호출 사이에 다시 렌더링해야 합니다. 위의 예시에서 최악의 경우(`setCard` → 렌더링 → `setGoldCardCount` → 렌더링 → `setRound` → 렌더링 → `setIsGameOver` → 렌더링)에는 아래 트리의 불필요한 리렌더링이 세 번 발생합니다.
+한 가지 문제는 매우 비효율적이라는 점입니다. 컴포넌트(및 그 자식)는 체인의 각 `set` 호출 사이에 다시 렌더링해야 합니다. 위의 예시에서 최악의 경우(`setCard` → 렌더링 → `setGoldCardCount` → 렌더링 → `setRound` → 렌더링 → `setIsGameOver` → 렌더링)에는 아래 트리의 불필요한 리렌더링이 세 번 발생합니다.
 
-속도가 느리지 않더라도 코드가 발전함에 따라 작성한 "체인"이 새로운 요구 사항에 맞지 않는 경우가 발생할 수 있습니다. 게임 이동의 기록을 단계별로 살펴볼 수 있는 방법을 추가한다고 가정해 보겠습니다. 각 상태 변수를 과거의 값으로 업데이트하여 이를 수행할 수 있습니다. 하지만 `card` 상태를 과거의 값으로 설정하면 Effect 체인이 다시 트리거되고 표시되는 데이터가 변경됩니다. 이러한 코드는 융통성 없고 취약한 경우가 많습니다.
+속도가 느리지 않더라도 코드가 발전함에 따라 작성한 "체인"이 새로운 요구 사항에 맞지 않는 경우가 발생할 수 있습니다. 게임 이동의 기록을 단계별로 살펴볼 수 있는 방법을 추가한다고 가정해 보겠습니다. 각 state 변수를 과거의 값으로 업데이트하여 이를 수행할 수 있습니다. 하지만 `card` state를 과거의 값으로 설정하면 Effect 체인이 다시 트리거되고 표시되는 데이터가 변경됩니다. 이러한 코드는 융통성 없고 취약한 경우가 많습니다.
 
-이 경우 렌더링 중에 가능한 것을 계산하고 이벤트 핸들러에서 상태를 조정하는 것이 좋습니다.
+이 경우 렌더링 중에 가능한 것을 계산하고 이벤트 핸들러에서 state를 조정하는 것이 좋습니다.
 
 ```js {6-7,14-26}
 function Game() {
@@ -428,7 +428,7 @@ function Game() {
       throw Error('Game already ended.');
     }
 
-    // ✅ 이벤트 핸들러에서 다음 상태를 모두 계산합니다
+    // ✅ 이벤트 핸들러에서 다음 state를 모두 계산합니다
     setCard(nextCard);
     if (nextCard.gold) {
       if (goldCardCount <= 3) {
@@ -446,11 +446,11 @@ function Game() {
   // ...
 ```
 
-훨씬 더 효율적입니다. 또한 게임 기록을 볼 수 있는 방법을 구현하면 이제 다른 모든 값을 조정하는 Effect 체인을 트리거 하지 않고도 각 상태 변수를 과거의 행동으로 설정할 수 있습니다. 여러 이벤트 핸들러 간에 로직을 재사용해야 하는 경우 [함수를 추출](#sharing-logic-between-event-handlers)하여 해당 핸들러에서 호출할 수 있습니다.
+훨씬 더 효율적입니다. 또한 게임 기록을 볼 수 있는 방법을 구현하면 이제 다른 모든 값을 조정하는 Effect 체인을 트리거 하지 않고도 각 state 변수를 과거의 행동으로 설정할 수 있습니다. 여러 이벤트 핸들러 간에 로직을 재사용해야 하는 경우 [함수를 추출](#sharing-logic-between-event-handlers)하여 해당 핸들러에서 호출할 수 있습니다.
 
-이벤트 핸들러 내부에서 [상태는 스냅샷처럼 동작한다](/learn/state-as-a-snapshot)는 점을 기억하세요. 예를 들어 `setRound(round + 1)`를 호출한 후에도 `round` 변수는 사용자가 버튼을 클릭한 시점의 값을 반영합니다. 계산에 다음 값을 사용해야 하는 경우 `const nextRound = round + 1`처럼 수동으로 정의하세요.
+이벤트 핸들러 내부에서 [state는 스냅샷처럼 동작한다](/learn/state-as-a-snapshot)는 점을 기억하세요. 예를 들어 `setRound(round + 1)`를 호출한 후에도 `round` 변수는 사용자가 버튼을 클릭한 시점의 값을 반영합니다. 계산에 다음 값을 사용해야 하는 경우 `const nextRound = round + 1`처럼 수동으로 정의하세요.
 
-이벤트 핸들러에서 직접 다음 상태를 계산할 수 **없는** 경우도 있습니다. 예를 들어 여러 개의 드롭 다운이 있는 form에서 다음 드롭 다운의 옵션이 이전 드롭 다운의 선택된 값에 따라 달라진다고 가정해 보겠습니다. 이 경우 네트워크와 동기화하기 때문에 Effect 체인이 적절합니다.
+이벤트 핸들러에서 직접 다음 state를 계산할 수 **없는** 경우도 있습니다. 예를 들어 여러 개의 드롭 다운이 있는 폼에서 다음 드롭 다운의 옵션이 이전 드롭 다운의 선택된 값에 따라 달라진다고 가정해 보겠습니다. 이 경우 네트워크와 동기화하기 때문에 Effect 체인이 적절합니다.
 
 ### 애플리케이션 초기화 {/*initializing-the-application*/}
 
@@ -506,9 +506,9 @@ function App() {
 컴포넌트를 import 할 때 최상위 레벨의 코드는 렌더링 되지 않더라도 한 번 실행됩니다. 임의의 컴포넌트를 import 할 때 속도 저하나 예상치 못한 동작을 방지하려면 이 패턴을 과도하게 사용하지 마세요. app 전체 초기화 로직은 `App.js`와 같은 루트 컴포넌트 모듈이나 애플리케이션의 엔트리 포인트에 두세요.
 
 
-### 상태 변경을 부모 컴포넌트에게 알리기 {/*notifying-parent-components-about-state-changes*/}
+### state 변경을 부모 컴포넌트에게 알리기 {/*notifying-parent-components-about-state-changes*/}
 
-`true` 또는 `false`가 될 수 있는 내부 `isOn` 상태를 가진 `Toggle` 컴포넌트를 작성하고 있다고 가정해 보겠습니다. 클릭 또는 드래그를 통해 토글하는 방법에는 몇 가지가 있습니다. `Toggle` 내부 상태가 변경될 때마다 부모 컴포넌트에 알리고 싶을 때 `onChange` 이벤트를 노출하고 Effect에서 호출합니다.
+`true` 또는 `false`가 될 수 있는 내부 `isOn` state를 가진 `Toggle` 컴포넌트를 작성하고 있다고 가정해 보겠습니다. 클릭 또는 드래그를 통해 토글하는 방법에는 몇 가지가 있습니다. `Toggle` 내부 state가 변경될 때마다 부모 컴포넌트에 알리고 싶을 때 `onChange` 이벤트를 노출하고 Effect에서 호출합니다.
 
 ```js {4-7}
 function Toggle({ onChange }) {
@@ -535,9 +535,9 @@ function Toggle({ onChange }) {
 }
 ```
 
-앞서와 마찬가지로 이것은 이상적이지 않습니다. `Toggle`이 먼저 상태를 업데이트하고 React가 화면을 업데이트합니다. 그런 다음 React는 Effect를 실행하고 부모 컴포넌트에서 전달된 `onChange` 함수를 호출합니다. 이제 부모 컴포넌트는 자신의 상태를 업데이트하고 다른 렌더링 패스를 시작합니다. 모든 것을 한 번의 패스로 처리하는 것이 좋습니다.
+앞서와 마찬가지로 이것은 이상적이지 않습니다. `Toggle`이 먼저 state를 업데이트하고 React가 화면을 업데이트합니다. 그런 다음 React는 Effect를 실행하고 부모 컴포넌트에서 전달된 `onChange` 함수를 호출합니다. 이제 부모 컴포넌트는 자신의 state를 업데이트하고 다른 렌더링 패스를 시작합니다. 모든 것을 한 번의 패스로 처리하는 것이 좋습니다.
 
-Effect를 삭제하고 대신 동일한 이벤트 핸들러 내에서 *두* 컴포넌트의 상태를 업데이트합니다.
+Effect를 삭제하고 대신 동일한 이벤트 핸들러 내에서 *두* 컴포넌트의 state를 업데이트합니다.
 
 ```js {5-7,11,16,18}
 function Toggle({ onChange }) {
@@ -565,9 +565,9 @@ function Toggle({ onChange }) {
 }
 ```
 
-이 접근 방식을 사용하면 `Toggle` 컴포넌트와 그 부모 컴포넌트 모두 이벤트가 진행되는 동안 상태를 업데이트 합니다. React는 서로 다른 컴포넌트의 [업데이트를 일괄 처리](/learn/queueing-a-series-of-state-updates)하므로 렌더링 패스는 한 번만 발생합니다.
+이 접근 방식을 사용하면 `Toggle` 컴포넌트와 그 부모 컴포넌트 모두 이벤트가 진행되는 동안 state를 업데이트 합니다. React는 서로 다른 컴포넌트의 [업데이트를 일괄 처리](/learn/queueing-a-series-of-state-updates)하므로 렌더링 패스는 한 번만 발생합니다.
 
-상태를 완전히 제거하고 대신 부모 컴포넌트로부터 `isOn`을 수신할 수도 있습니다.
+state를 완전히 제거하고 대신 부모 컴포넌트로부터 `isOn`을 수신할 수도 있습니다.
 
 ```js {1,2}
 // ✅ 이것도 좋습니다: 컴포넌트는 부모에 의해 완전히 제어됩니다.
@@ -588,7 +588,7 @@ function Toggle({ isOn, onChange }) {
 }
 ```
 
-["상태 끌어올리기"](/learn/sharing-state-between-components)는 부모 컴포넌트가 부모 자체의 상태를 토글 하여 `Toggle`을 완전히 제어할 수 있게 해줍니다. 즉, 부모 컴포넌트에 더 많은 로직을 포함해야 하지만 전체적으로 걱정해야 할 상태는 줄어듭니다. 두 개의 서로 다른 상태 변수를 동기화하려고 할 때마다 대신 상태 끌어올리기를 사용해 보세요!
+["state 끌어올리기"](/learn/sharing-state-between-components)는 부모 컴포넌트가 부모 자체의 state를 토글 하여 `Toggle`을 완전히 제어할 수 있게 해줍니다. 즉, 부모 컴포넌트에 더 많은 로직을 포함해야 하지만 전체적으로 걱정해야 할 state는 줄어듭니다. 두 개의 서로 다른 state 변수를 동기화하려고 할 때마다 대신 state 끌어올리기를 사용해 보세요!
 
 ### 부모에게 데이터 전달하기 {/*passing-data-to-the-parent*/}
 
@@ -613,7 +613,7 @@ function Child({ onFetched }) {
 }
 ```
 
-React에서 데이터는 부모 컴포넌트에서 자식 컴포넌트로 흐릅니다. 화면에 뭔가 잘못된 것이 보이면 컴포넌트 체인을 따라 올라가서 어떤 컴포넌트가 잘못된 prop을 전달하거나 잘못된 상태를 가지고 있는지 찾아내면 정보의 출처를 추적할 수 있습니다. 자식 컴포넌트가 Effect에서 부모 컴포넌트의 상태를 업데이트하면 데이터 흐름을 추적하기가 매우 어려워집니다. 자식과 부모 모두 동일한 데이터가 필요하므로 부모 컴포넌트가 해당 데이터를 가져와서 자식에게 대신 *내려주도록* 하세요.
+React에서 데이터는 부모 컴포넌트에서 자식 컴포넌트로 흐릅니다. 화면에 뭔가 잘못된 것이 보이면 컴포넌트 체인을 따라 올라가서 어떤 컴포넌트가 잘못된 prop을 전달하거나 잘못된 state를 가지고 있는지 찾아내면 정보의 출처를 추적할 수 있습니다. 자식 컴포넌트가 Effect에서 부모 컴포넌트의 state를 업데이트하면 데이터 흐름을 추적하기가 매우 어려워집니다. 자식과 부모 모두 동일한 데이터가 필요하므로 부모 컴포넌트가 해당 데이터를 가져와서 자식에게 대신 *내려주도록* 하세요.
 
 ```js {4-5}
 function Parent() {
@@ -632,7 +632,7 @@ function Child({ data }) {
 
 ### 외부 저장소 구독하기 {/*subscribing-to-an-external-store*/}
 
-때로는 컴포넌트가 React 상태 외부의 일부 데이터를 구독해야 할 수도 있습니다. 이 데이터는 타사 라이브러리 또는 내장 브라우저 API에서 가져올 수 있습니다. 이 데이터는 React가 모르는 사이에 변경될 수 있으므로 컴포넌트를 수동으로 구독해야 합니다. 이 작업은 종종 Effect를 통해 수행됩니다. 다음은 예시입니다.
+때로는 컴포넌트가 React state 외부의 일부 데이터를 구독해야 할 수도 있습니다. 이 데이터는 서드파티 라이브러리 또는 내장 브라우저 API에서 가져올 수 있습니다. 이 데이터는 React가 모르는 사이에 변경될 수 있으므로 컴포넌트를 수동으로 구독해야 합니다. 이 작업은 종종 Effect를 통해 수행됩니다. 다음은 예시입니다.
 
 ```js {2-17}
 function useOnlineStatus() {
@@ -661,7 +661,7 @@ function ChatIndicator() {
 }
 ```
 
-여기서 컴포넌트는 외부 데이터 저장소(이 경우 브라우저 `navigator.onLine` API)를 구독합니다. 이 API는 서버에 존재하지 않으므로(초기 HTML에 사용할 수 없으므로) 처음 상태는 `true`로 설정됩니다. 브라우저에서 해당 데이터 저장소의 값이 변경될 때마다 컴포넌트는 해당 상태를 업데이트합니다.
+여기서 컴포넌트는 외부 데이터 저장소(이 경우 브라우저 `navigator.onLine` API)를 구독합니다. 이 API는 서버에 존재하지 않으므로(초기 HTML에 사용할 수 없으므로) 처음 state는 `true`로 설정됩니다. 브라우저에서 해당 데이터 저장소의 값이 변경될 때마다 컴포넌트는 해당 state를 업데이트합니다.
 
 이를 위해 Effect를 사용하는 것이 일반적이지만 React에는 외부 저장소를 구독하기 위해 특별히 제작된 Hook이 있습니다. Effect를 삭제하고 [`useSyncExternalStore`](/reference/react/useSyncExternalStore)에 대한 호출로 대체합니다.
 
@@ -690,7 +690,7 @@ function ChatIndicator() {
 }
 ```
 
-이 접근 방식은 변경 가능한 데이터를 Effect를 사용해 React 상태에 수동으로 동기화하는 것보다 에러가 덜 발생합니다. 일반적으로 위의 `useOnlineStatus()`와 같은 사용자 정의 Hook을 작성하여 개별 컴포넌트에서 이 코드를 반복할 필요가 없도록 합니다. [React 컴포넌트에서 외부 store를 구독하는 방법에 대해 자세히 읽어보세요.](/reference/react/useSyncExternalStore)
+이 접근 방식은 변경 가능한 데이터를 Effect를 사용해 React state에 수동으로 동기화하는 것보다 에러가 덜 발생합니다. 일반적으로 위의 `useOnlineStatus()`와 같은 사용자 정의 Hook을 작성하여 개별 컴포넌트에서 이 코드를 반복할 필요가 없도록 합니다. [React 컴포넌트에서 외부 store를 구독하는 방법에 대해 자세히 읽어보세요.](/reference/react/useSyncExternalStore)
 
 ### 데이터 가져오기 {/*fetching-data*/}
 
@@ -795,11 +795,11 @@ function useData(url) {
 
 - 렌더링 중에 무언가를 계산할 수 있다면 Effect가 필요하지 않습니다.
 - 비용이 많이 드는 계산을 캐시하려면 `useEffect` 대신 `useMemo`를 추가하세요.
-- 전체 컴포넌트 트리의 상태를 재설정하려면 다른 `key`를 전달하세요.
-- prop 변경에 대한 응답으로 특정 상태 bit를 재설정하려면 렌더링 중에 설정하세요.
+- 전체 컴포넌트 트리의 state를 재설정하려면 다른 `key`를 전달하세요.
+- prop 변경에 대한 응답으로 특정 state bit를 재설정하려면 렌더링 중에 설정하세요.
 - 컴포넌트가 *표시되어* 실행되는 코드는 Effect에 있어야 하고 나머지는 이벤트에 있어야 합니다.
-- 여러 컴포넌트의 상태를 업데이트해야 하는 경우 단일 이벤트 중에 수행하는 것이 좋습니다.
-- 다른 컴포넌트의 상태 변수를 동기화하려고 할 때마다 상태 끌어올리기를 고려하세요.
+- 여러 컴포넌트의 state를 업데이트해야 하는 경우 단일 이벤트 중에 수행하는 것이 좋습니다.
+- 다른 컴포넌트의 state 변수를 동기화하려고 할 때마다 state 끌어올리기를 고려하세요.
 - Effect로 데이터를 가져올 수 있지만 경쟁 조건을 피하기 위해 정리를 구현해야 합니다.
 
 </Recap>
@@ -810,7 +810,7 @@ function useData(url) {
 
 아래의 todos 목록에 `TodoList`가 표시됩니다. "Show only active todos" 체크박스를 선택하면 완료된 todos은 목록에 표시되지 않습니다. 표시되는 todos과 관계없이 footer에는 아직 완료되지 않은 todos의 수가 표시됩니다.
 
-불필요한 상태와 Effect를 모두 제거하여 이 컴포넌트를 단순화하세요.
+불필요한 state와 Effect를 모두 제거하여 이 컴포넌트를 단순화하세요.
 
 <Sandpack>
 
@@ -910,13 +910,13 @@ input { margin-top: 10px; }
 
 <Hint>
 
-렌더링 중에 무언가를 계산할 수 있다면 상태나 이를 업데이트하는 Effect가 필요하지 않습니다.
+렌더링 중에 무언가를 계산할 수 있다면 state나 이를 업데이트하는 Effect가 필요하지 않습니다.
 
 </Hint>
 
 <Solution>
 
-이 예제에서는 `todos` 목록과 체크박스의 체크 여부를 나타내는 `showActive` 상태 변수의 두 가지 필수 상태만 있습니다. 다른 모든 상태 변수는 [불필요하며](/learn/choosing-the-state-structure#avoid-redundant-state) 렌더링 중에 대신 계산할 수 있습니다. 여기에는 주변 JSX로 바로 이동할 수 있는 `footer`이 포함됩니다.
+이 예제에서는 `todos` 목록과 체크박스의 체크 여부를 나타내는 `showActive` state 변수의 두 가지 필수 state만 있습니다. 다른 모든 state 변수는 [불필요하며](/learn/choosing-the-state-structure#avoid-redundant-state) 렌더링 중에 대신 계산할 수 있습니다. 여기에는 주변 JSX로 바로 이동할 수 있는 `footer`이 포함됩니다.
 
 결과는 다음과 같아야 합니다.
 
@@ -1097,7 +1097,7 @@ input { margin-top: 10px; }
 
 <Solution>
 
-상태 변수와 Effect를 제거하고 대신 `getVisibleTodos()`를 호출한 결과를 캐시하는 `useMemo` 호출을 추가합니다.
+state 변수와 Effect를 제거하고 대신 `getVisibleTodos()`를 호출한 결과를 캐시하는 `useMemo` 호출을 추가합니다.
 
 <Sandpack>
 
@@ -1178,9 +1178,9 @@ input { margin-top: 10px; }
 
 </Sandpack>
 
-이렇게 변경하면 `todos` 또는 `showActive`가 변경되는 경우에만 `getVisibleTodos()`가 호출됩니다. input에 입력하면 `text` 상태 변수만 변경되므로 `getVisibleTodos()` 호출이 트리거 되지 않습니다.
+이렇게 변경하면 `todos` 또는 `showActive`가 변경되는 경우에만 `getVisibleTodos()`가 호출됩니다. input에 입력하면 `text` state 변수만 변경되므로 `getVisibleTodos()` 호출이 트리거 되지 않습니다.
 
-`useMemo`가 필요 없는 다른 해결책도 있습니다. `text` 상태 변수가 todos 목록에 영향을 줄 수 없으므로 `NewTodo` form을 별도의 컴포넌트로 추출하고 `text` 상태 변수를 그 안에 옮길 수 있습니다.
+`useMemo`가 필요 없는 다른 해결책도 있습니다. `text` state 변수가 todos 목록에 영향을 줄 수 없으므로 `NewTodo` 폼을 별도의 컴포넌트로 추출하고 `text` state 변수를 그 안에 옮길 수 있습니다.
 
 <Sandpack>
 
@@ -1267,15 +1267,15 @@ input { margin-top: 10px; }
 
 </Sandpack>
 
-이 접근 방식도 요구 사항을 충족합니다. input에 입력하면 `text` 상태 변수만 업데이트됩니다. `text` 상태 변수가 하위 `NewTodo` 컴포넌트에 있기 때문에 상위 `TodoList` 컴포넌트는 다시 렌더링 되지 않습니다. 이것이 사용자가 입력할 때 `getVisibleTodos()`가 호출되지 않는 이유입니다. (다른 이유로 `TodoList`가 다시 렌더링 되는 경우에도 여전히 호출됩니다.)
+이 접근 방식도 요구 사항을 충족합니다. input에 입력하면 `text` state 변수만 업데이트됩니다. `text` state 변수가 하위 `NewTodo` 컴포넌트에 있기 때문에 상위 `TodoList` 컴포넌트는 다시 렌더링 되지 않습니다. 이것이 사용자가 입력할 때 `getVisibleTodos()`가 호출되지 않는 이유입니다. (다른 이유로 `TodoList`가 다시 렌더링 되는 경우에도 여전히 호출됩니다.)
 
 </Solution>
 
-#### Effect 없이 상태 초기화하기 {/*reset-state-without-effects*/}
+#### Effect 없이 state 초기화하기 {/*reset-state-without-effects*/}
 
-이 `EditContact` 컴포넌트는 `{ id, name, email }` 모양의 연락처 객체를 `savedContact` prop으로 받습니다. name과 email input 필드를 편집해 보세요. Save을 누르면 form 위의 연락처 버튼이 편집된 name으로 업데이트됩니다. 재설정을 누르면 form의 보류 중인 변경 사항이 모두 삭제됩니다. 이 UI를 사용해 보면서 사용법을 익혀보세요.
+이 `EditContact` 컴포넌트는 `{ id, name, email }` 모양의 연락처 객체를 `savedContact` prop으로 받습니다. name과 email input 필드를 편집해 보세요. Save을 누르면 폼 위의 연락처 버튼이 편집된 name으로 업데이트됩니다. 재설정을 누르면 폼의 보류 중인 변경 사항이 모두 삭제됩니다. 이 UI를 사용해 보면서 사용법을 익혀보세요.
 
-상단의 버튼으로 연락처를 선택하면 해당 연락처의 세부 정보를 반영하도록 form이 재설정됩니다. 이 작업은 `EditContact.js` 내의 Effect로 수행됩니다. 이 Effect를 제거합니다. `savedContact.id`가 변경될 때 form을 재설정하는 다른 방법을 찾아보세요.
+상단의 버튼으로 연락처를 선택하면 해당 연락처의 세부 정보를 반영하도록 폼이 재설정됩니다. 이 작업은 `EditContact.js` 내의 Effect로 수행됩니다. 이 Effect를 제거합니다. `savedContact.id`가 변경될 때 폼을 재설정하는 다른 방법을 찾아보세요.
 
 <Sandpack>
 
@@ -1433,13 +1433,13 @@ button {
 
 <Hint>
 
-`savedContact.id`가 다른 경우 `EditContact` form은 개념적으로 _다른 연락처의 form_이며 상태를 보존해서는 안 된다는 것을 React에 알리는 방법이 있다면 좋을 것 같습니다. 그런 방법을 기억하시나요?
+`savedContact.id`가 다른 경우 `EditContact` 폼은 개념적으로 _다른 연락처의 폼_이며 state를 보존해서는 안 된다는 것을 React에 알리는 방법이 있다면 좋을 것 같습니다. 그런 방법을 기억하시나요?
 
 </Hint>
 
 <Solution>
 
-`EditContact` 컴포넌트를 둘로 분할합니다. 모든 form 상태를 내부 `EditForm` 컴포넌트로 이동합니다. 외부 `EditContact` 컴포넌트를 내보내고 내부 `EditContact` 컴포넌트에 `savedContact.id`를 `key`로 전달하도록 합니다. 그 결과 내부 `EditForm` 컴포넌트는 다른 연락처를 선택할 때마다 모든 form 상태를 재설정하고 DOM을 다시 생성합니다.
+`EditContact` 컴포넌트를 둘로 분할합니다. 모든 폼 state를 내부 `EditForm` 컴포넌트로 이동합니다. 외부 `EditContact` 컴포넌트를 내보내고 내부 `EditContact` 컴포넌트에 `savedContact.id`를 `key`로 전달하도록 합니다. 그 결과 내부 `EditForm` 컴포넌트는 다른 연락처를 선택할 때마다 모든 폼 state를 재설정하고 DOM을 다시 생성합니다.
 
 <Sandpack>
 
@@ -1601,11 +1601,11 @@ button {
 
 </Solution>
 
-#### Effect 없이 form 제출하기 {/*submit-a-form-without-effects*/}
+#### Effect 없이 폼 제출하기 {/*submit-a-form-without-effects*/}
 
-이 `Form` 컴포넌트를 사용하면 친구에게 메시지를 보낼 수 있습니다. form을 제출하면 `showForm` 상태 변수가 `false`로 설정됩니다. 그러면 `sendMessage(message)`를 호출하는 Effect가 트리거되어 메시지가 전송됩니다(콘솔에서 확인할 수 있음). 메시지가 전송되면 "Open chat" 버튼이 있는 "Thank you" 대화 상자가 표시되어 form으로 돌아갈 수 있습니다.
+이 `Form` 컴포넌트를 사용하면 친구에게 메시지를 보낼 수 있습니다. 폼을 제출하면 `showForm` state 변수가 `false`로 설정됩니다. 그러면 `sendMessage(message)`를 호출하는 Effect가 트리거되어 메시지가 전송됩니다(콘솔에서 확인할 수 있음). 메시지가 전송되면 "Open chat" 버튼이 있는 "Thank you" 대화 상자가 표시되어 폼으로 돌아갈 수 있습니다.
 
-앱 사용자가 너무 많은 메시지를 보내고 있습니다. 채팅을 조금 더 어렵게 만들기 위해 양식 대신 "Thank you" 대화 상자를 *먼저* 표시하기로 결정했습니다. `showForm` 상태 변수를 `true`가 아닌 `false`으로 초기화하도록 변경합니다. 이렇게 변경하자마자 콘솔에 빈 메시지가 전송된 것으로 표시됩니다. 이 로직의 뭔가가 잘못되었습니다!
+앱 사용자가 너무 많은 메시지를 보내고 있습니다. 채팅을 조금 더 어렵게 만들기 위해 양식 대신 "Thank you" 대화 상자를 *먼저* 표시하기로 결정했습니다. `showForm` state 변수를 `true`가 아닌 `false`으로 초기화하도록 변경합니다. 이렇게 변경하자마자 콘솔에 빈 메시지가 전송된 것으로 표시됩니다. 이 로직의 뭔가가 잘못되었습니다!
 
 이 문제의 근본 원인은 무엇인가요? 그리고 어떻게 해결할 수 있을까요?
 
@@ -1676,7 +1676,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 <Solution>
 
-`showForm` 상태 변수는 form을 표시할지 아니면 "Thank you" 대화 상자를 표시할지를 결정합니다. 그러나 "Thank you" 대화 상자가 _표시되었기_ 때문에 메시지를 보내지 않습니다. 사용자가 _form을 제출했기_ 때문에 메시지를 보내려고 합니다. 오해의 소지가 있는 Effect를 삭제하고 `handleSubmit` 이벤트 핸들러 내부로 `sendMessage` 호출을 이동합니다.
+`showForm` state 변수는 폼을 표시할지 아니면 "Thank you" 대화 상자를 표시할지를 결정합니다. 그러나 "Thank you" 대화 상자가 _표시되었기_ 때문에 메시지를 보내지 않습니다. 사용자가 _폼을 제출했기_ 때문에 메시지를 보내려고 합니다. 오해의 소지가 있는 Effect를 삭제하고 `handleSubmit` 이벤트 핸들러 내부로 `sendMessage` 호출을 이동합니다.
 
 <Sandpack>
 
@@ -1732,7 +1732,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 </Sandpack>
 
-이 버전에서는 이벤트인 _form을 제출하는 것_만으로 메시지가 전송되는 것을 확인할 수 있습니다. 이 기능은 `showForm`이 처음에 `true`으로 설정되었는지 `false`으로 설정되었는지에 관계없이 동일하게 잘 작동합니다. (`false`로 설정하면 추가 콘솔 메시지가 표시되지 않습니다.)
+이 버전에서는 이벤트인 _폼을 제출하는 것_만으로 메시지가 전송되는 것을 확인할 수 있습니다. 이 기능은 `showForm`이 처음에 `true`으로 설정되었는지 `false`으로 설정되었는지에 관계없이 동일하게 잘 작동합니다. (`false`로 설정하면 추가 콘솔 메시지가 표시되지 않습니다.)
 
 </Solution>
 
