@@ -93,7 +93,7 @@ function TodoList({ todos, filter }) {
 
 보통, 이 코드는 괜찮습니다! 하지만 `getFilteredTodos()`가 느리거나 `todos`가 많을 수도 있습니다. 이 경우 `newTodo`와 같이 관련 없는 상태 변수가 변경된 경우 `getFilteredTodos()`를 다시 계산하고 싶지 않을 수 있습니다.
 
-[`useMemo`](/reference/react/useMemo) Hook으로 감싸서 값비싼 계산을 캐시(또는 ["메모이제이션"](https://en.wikipedia.org/wiki/Memoization)) 할 수 있습니다.
+[`useMemo`](/reference/react/useMemo) Hook으로 감싸서 값비싼 계산을 캐시(또는 ["메모이제이션"](https://ko.wikipedia.org/wiki/메모이제이션)) 할 수 있습니다.
 
 ```js {5-8}
 import { useMemo, useState } from 'react';
@@ -721,7 +721,7 @@ function SearchResults({ query }) {
 
 `page`와 `query`의 출처가 어디인지는 중요하지 않습니다. 이 컴포넌트가 표시되는 동안에는 현재 `page` 및 `query`에 대한 네트워크의 데이터와 `results`를 [동기화](/learn/synchronizing-with-effects)하고 싶을 것입니다. 이것이 바로 Effect의 이유입니다.
 
-하지만 위의 코드에는 버그가 있습니다. `"hello"`를 빠르게 입력한다고 가정해 봅시다. 그러면 `query`가 `"h"`에서 `"he"`, `"hel"`, `"hell"`, `"hello"`로 바뀝니다. 이렇게 하면 별도의 데이터 가져오기가 시작되지만 응답이 어떤 순서로 도착할지는 보장할 수 없습니다. 예를 들어, `"hello"` 응답 *후에* `"hell"` 응답이 도착할 수 있습니다. `setResults()`를 마지막으로 호출하므로 잘못된 검색 결과가 표시될 수 있습니다. 이를 ["경쟁 조건"](https://en.wikipedia.org/wiki/Race_condition)이라고 하는데, 서로 다른 두 요청이 서로 "경쟁"하여 예상과 다른 순서로 도착하는 것을 말합니다.
+하지만 위의 코드에는 버그가 있습니다. `"hello"`를 빠르게 입력한다고 가정해 봅시다. 그러면 `query`가 `"h"`에서 `"he"`, `"hel"`, `"hell"`, `"hello"`로 바뀝니다. 이렇게 하면 별도의 데이터 가져오기가 시작되지만 응답이 어떤 순서로 도착할지는 보장할 수 없습니다. 예를 들어, `"hello"` 응답 *후에* `"hell"` 응답이 도착할 수 있습니다. `setResults()`를 마지막으로 호출하므로 잘못된 검색 결과가 표시될 수 있습니다. 이를 ["경쟁 조건"](https://ko.wikipedia.org/wiki/경쟁_상태)이라고 하는데, 서로 다른 두 요청이 서로 "경쟁"하여 예상과 다른 순서로 도착하는 것을 말합니다.
 
 **경쟁 조건을 수정하려면 오래된 응답을 무시하는 [정리 함수를 추가](/learn/synchronizing-with-effects#fetching-data)해야 합니다.**
 
