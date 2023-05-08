@@ -4,7 +4,7 @@ title: 'Effect가 필요하지 않을 수도 있습니다'
 
 <Intro>
 
-Effect는 React 패러다임에서 벗어날 수 있는 탈출구입니다. Effect를 사용하면 React를 "벗어나" 컴포넌트를 React가 아닌 위젯, 네트워크, 또는 브라우저 DOM과 같은 외부 시스템과 동기화할 수 있습니다. 외부 시스템이 관여하지 않는 경우 (예를 들어 일부 props 또는 state가 변경될 때 컴포넌트의 state를 업데이트하려는 경우), Effect가 필요하지 않습니다. 불필요한 Effect를 제거하면 코드를 더 쉽게 따라갈 수 있고, 실행 속도가 빨라지며, 에러 발생 가능성이 줄어듭니다.
+Effect는 React 패러다임에서 벗어날 수 있는 탈출구입니다. Effect를 사용하면 React를 "벗어나" 컴포넌트를 React가 아닌 위젯, 네트워크, 또는 브라우저 D**OM과 같은 외부 시스템과 동기화할 수 있습니다. 외부 **시스템이 관여하지 않는 경우 (예를 들어 일부 props 또는 state가 변경될 때 컴포넌트의 state를 업데이트하려는 경우), Effect가 필요하지 않습니다. 불필요한 Effect를 제거하면 코드를 더 쉽게 따라갈 수 있고, 실행 속도가 빨라지며, 에러 발생 가능성이 줄어듭니다.
 
 </Intro>
 
@@ -12,7 +12,7 @@ Effect는 React 패러다임에서 벗어날 수 있는 탈출구입니다. Effe
 
 * 컴포넌트에서 불필요한 Effect를 제거하는 이유와 방법
 * Effect 없이 값비싼 계산을 캐시하는 방법
-* Effect 없이 컴포넌트 state를 재설정하고 조정하는 방법
+* Effect 없이 컴포넌트 state를 초기화하고 조정하는 방법
 * 이벤트 핸들러 간에 로직을 공유하는 방법
 * 이벤트 핸들러로 이동해야 하는 로직
 * 부모 컴포넌트에 변경 사항을 알리는 방법
@@ -48,7 +48,7 @@ function Form() {
 }
 ```
 
-이는 필요 이상으로 복잡합니다. 또한`fullName`에 대한 오래된 값으로 전체 렌더링 패스를 수행한 다음, 업데이트된 값으로 즉시 다시 렌더링하기 때문에 비효율적입니다. state 변수와 Effect를 제거하세요.
+이는 필요 이상으로 복잡합니다. 또한 `fullName`에 대한 오래된 값으로 전체 렌더링 패스를 수행한 다음, 업데이트된 값으로 즉시 다시 렌더링하기 때문에 비효율적입니다. state 변수와 Effect를 제거하세요.
 
 ```js {4-5}
 function Form() {
@@ -85,7 +85,7 @@ function TodoList({ todos, filter }) {
 ```js {3-4}
 function TodoList({ todos, filter }) {
   const [newTodo, setNewTodo] = useState('');
-  // ✅ getFilteredTodos()이 느리지 않다면 괜찮습니다.
+  // ✅ getFilteredTodos()가 느리지 않다면 괜찮습니다.
   const visibleTodos = getFilteredTodos(todos, filter);
   // ...
 }
@@ -137,12 +137,12 @@ const visibleTodos = getFilteredTodos(todos, filter);
 console.timeEnd('filter array');
 ```
 
-측정하려는 상호작용을 수행합니다(예: input에 입력하기). 그러면 `filter array: 0.15ms`과 같은 로그가 console에 표시됩니다. 전체적으로 기록된 시간이 상당한 양(예: 1ms 이상)으로 합산되면 해당 계산을 메모이제이션하는 것이 좋습니다. 그런 다음 실험적으로 해당 계산을 `useMemo`로 감싸서 해당 상호작용에 대해 총 로깅 시간이 감소했는지를 확인할 수 있습니다.
+측정하려는 상호작용을 수행합니다(예: input에 입력하기). 그러면 `filter array: 0.15ms`와 같은 로그가 console에 표시됩니다. 전체적으로 기록된 시간이 상당한 양(예: 1ms 이상)으로 합산되면 해당 계산을 메모이제이션하는 것이 좋습니다. 그런 다음 실험적으로 해당 계산을 `useMemo`로 감싸서 해당 상호작용에 대해 총 로깅 시간이 감소했는지를 확인할 수 있습니다.
 
 ```js
 console.time('filter array');
 const visibleTodos = useMemo(() => {
-  return getFilteredTodos(todos, filter); // todos과 filter가 변경되지 않은 경우 건너뜁니다
+  return getFilteredTodos(todos, filter); // todos와 filter가 변경되지 않은 경우 건너뜁니다
 }, [todos, filter]);
 console.timeEnd('filter array');
 ```
@@ -196,11 +196,11 @@ function Profile({ userId }) {
 
 이 예제에서는 외부 `ProfilePage` 컴포넌트만 내보내 프로젝트의 다른 파일에 표시된다는 점에 유의하세요. `ProfilePage`를 렌더링 하는 컴포넌트는 key를 전달할 필요 없이 일반적인 prop로 `userId`를 전달합니다. `ProfilePage`가 이를 내부 `Profile` 컴포넌트에 `key`로 전달한다는 사실은 구현 세부 사항입니다.
 
-### prop가 변경될 때 일부 state 조정하기 {/*adjusting-some-state-when-a-prop-changes*/}
+### prop이 변경될 때 일부 state 조정하기 {/*adjusting-some-state-when-a-prop-changes*/}
 
-prop가 변경될 때 전체가 아닌 일부 state만 재설정하거나 조정하고 싶을 때가 있습니다.
+prop이 변경될 때 전체가 아닌 일부 state만 재설정하거나 조정하고 싶을 때가 있습니다.
 
-이 `List` 컴포넌트는 `items` 목록을 prop으로 받고 `selection` state 변수에 선택된 아이템을 유지합니다. `items` prop이 다른 배열을 받을 때마다 `selection`을 `null`로 재설정하고 싶습니다.
+이 `List` 컴포넌트는 `items` 목록을 prop으로 받고 `selection` state 변수에 선택된 item을 유지합니다. `items` prop이 다른 배열을 받을 때마다 `selection`을 `null`로 재설정하고 싶습니다.
 
 ```js {5-8}
 function List({ items }) {
@@ -238,7 +238,7 @@ function List({ items }) {
 
 렌더링 도중 컴포넌트를 업데이트하면 React는 반환된 JSX를 버리고 즉시 렌더링을 다시 시도합니다. 매우 느린 연속적 재시도를 피하기 위해 React는 렌더링 중에 *동일한* 컴포넌트의 state만 업데이트할 수 있도록 합니다. 렌더링 도중 다른 컴포넌트의 state를 업데이트하면 에러가 발생합니다. 반복을 피하려면 `items !== prevItems`와 같은 조건이 필요합니다. 이런 식으로 state를 조정할 수는 있지만 [컴포넌트를 순수하게 유지](/learn/keeping-components-pure)하기 위해 DOM 변경이나 타임아웃 설정과 같은 다른 사이드 이펙트들은 이벤트 핸들러나 Effect에 남겨둬야 합니다.
 
-**이 패턴이 Effect보다 더 효율적이지만 대부분의 컴포넌트에는 이 패턴이 필요하지 않습니다.** 어떻게 하든 props나 다른 state에 따라 state를 조정하면 데이터 흐름을 이해하고 디버깅하기가 더 어려워집니다. 대신 [key를 사용하여 모든 state를 초기화](#resetting-all-state-when-a-prop-changes)하거나 [렌더링 중에 모든 state를 계산](#updating-state-based-on-props-or-state)할 수 있는지 항상 확인하세요. 예를 들어 선택한 *item*을 저장(및 재설정)하는 대신 선택한 *item ID*를 저장할 수 있습니다.
+**이 패턴이 Effect보다 더 효율적이지만 대부분의 컴포넌트에는 이 패턴이 필요하지 않습니다.** 어떻게 하든 props나 다른 state에 따라 state를 조정하면 데이터 흐름을 이해하고 디버깅하기가 더 어려워집니다. 대신 [key를 사용하여 모든 state를 초기화](#resetting-all-state-when-a-prop-changes)하거나 [렌더링 중에 모든 state를 계산](#updating-state-based-on-props-or-state)할 수 있는지 항상 확인하세요. 예를 들어 선택한 *item*을 저장(및 초기화)하는 대신 선택한 *item ID*를 저장할 수 있습니다.
 
 ```js {3-5}
 function List({ items }) {
@@ -250,7 +250,7 @@ function List({ items }) {
 }
 ```
 
-이제 state를 "조정"할 필요가 전혀 없습니다. 선택한 ID를 가진 item이 목록에 있으면 선택된 state로 유지됩니다. 그렇지 않은 경우 일치하는 item을 찾을 수 없으므로 렌더링 중에 계산된 `selection`은 `null`이 됩니다. 이 동작은 다르지만 대부분의 `items` 변경이 선택 내용을 유지하므로 더 나은 방법이라고 할 수 있습니다.
+이제 state를 "조정"할 필요가 전혀 없습니다. 선택한 ID를 가진 item이 목록에 있으면 선택된 state로 유지됩니다. 그렇지 않은 경우 일치하는 item을 찾을 수 없으므로 렌더링 중에 계산된 `selection`은 `null`이 됩니다. 이 동작은 다르지만 대부분의 `items` 변경이 selection을 보존하므로 더 나은 방법이라고 할 수 있습니다.
 
 ### 이벤트 핸들러 간 로직 공유 {/*sharing-logic-between-event-handlers*/}
 
@@ -795,8 +795,8 @@ function useData(url) {
 
 - 렌더링 중에 무언가를 계산할 수 있다면 Effect가 필요하지 않습니다.
 - 비용이 많이 드는 계산을 캐시하려면 `useEffect` 대신 `useMemo`를 추가하세요.
-- 전체 컴포넌트 트리의 state를 재설정하려면 다른 `key`를 전달하세요.
-- prop 변경에 대한 응답으로 특정 state bit를 재설정하려면 렌더링 중에 설정하세요.
+- 전체 컴포넌트 트리의 state를 초기화하려면 다른 `key`를 전달하세요.
+- prop 변경에 대한 응답으로 특정 state bit를 초기화하려면 렌더링 중에 설정하세요.
 - 컴포넌트가 *표시되어* 실행되는 코드는 Effect에 있어야 하고 나머지는 이벤트에 있어야 합니다.
 - 여러 컴포넌트의 state를 업데이트해야 하는 경우 단일 이벤트 중에 수행하는 것이 좋습니다.
 - 다른 컴포넌트의 state 변수를 동기화하려고 할 때마다 state 끌어올리기를 고려하세요.
@@ -808,7 +808,7 @@ function useData(url) {
 
 #### Effect 없이 데이터 변환하기 {/*transform-data-without-effects*/}
 
-아래의 todos 목록에 `TodoList`가 표시됩니다. "Show only active todos" 체크박스를 선택하면 완료된 todos은 목록에 표시되지 않습니다. 표시되는 todos과 관계없이 footer에는 아직 완료되지 않은 todos의 수가 표시됩니다.
+아래의 todos 목록에 `TodoList`가 표시됩니다. "Show only active todos" 체크박스를 선택하면 완료된 todos는 목록에 표시되지 않습니다. 표시되는 todos와 관계없이 footer에는 아직 완료되지 않은 todos의 수가 표시됩니다.
 
 불필요한 state와 Effect를 모두 제거하여 이 컴포넌트를 단순화하세요.
 
@@ -916,7 +916,7 @@ input { margin-top: 10px; }
 
 <Solution>
 
-이 예제에서는 `todos` 목록과 체크박스의 체크 여부를 나타내는 `showActive` state 변수의 두 가지 필수 state만 있습니다. 다른 모든 state 변수는 [불필요하며](/learn/choosing-the-state-structure#avoid-redundant-state) 렌더링 중에 대신 계산할 수 있습니다. 여기에는 주변 JSX로 바로 이동할 수 있는 `footer`이 포함됩니다.
+이 예제에서는 `todos` 목록과 체크박스의 체크 여부를 나타내는 `showActive` state 변수의 두 가지 필수 state만 있습니다. 다른 모든 state 변수는 [불필요하며](/learn/choosing-the-state-structure#avoid-redundant-state) 렌더링 중에 대신 계산할 수 있습니다. 여기에는 주변 JSX로 바로 이동할 수 있는 `footer`가 포함됩니다.
 
 결과는 다음과 같아야 합니다.
 
@@ -1005,7 +1005,7 @@ input { margin-top: 10px; }
 
 #### Effect 없이 계산 캐시하기 {/*cache-a-calculation-without-effects*/}
 
-이 예제에서는 todos 필터링이 `getVisibleTodos()`라는 별도의 함수로 추출되었습니다. 이 함수 안에는 언제 호출되는지 알 수 있도록 `console.log()` 호출이 포함되어 있습니다. "Show only active todos"를 토글하면 `getVisibleTodos()`가 다시 실행되는 것을 확인할 수 있습니다. 이는 표시할 todos를 토글하면 표시되는 todos이 변경되기 때문에 예상되는 현상입니다.
+이 예제에서는 todos 필터링이 `getVisibleTodos()`라는 별도의 함수로 추출되었습니다. 이 함수 안에는 언제 호출되는지 알 수 있도록 `console.log()` 호출이 포함되어 있습니다. "Show only active todos"를 토글하면 `getVisibleTodos()`가 다시 실행되는 것을 확인할 수 있습니다. 이는 표시할 todos를 토글하면 표시되는 todos가 변경되기 때문에 예상되는 현상입니다.
 
 여러분이 해야 할 일은 `TodoList` 컴포넌트에서 `visibleTodos` 목록을 다시 계산하는 Effect를 제거하는 것입니다. 그러나 input에 입력할 때 `getVisibleTodos()`가 다시 실행되지 않도록(따라서 로그를 출력하지 *않도록*) 해야 합니다.
 
@@ -1273,9 +1273,9 @@ input { margin-top: 10px; }
 
 #### Effect 없이 state 초기화하기 {/*reset-state-without-effects*/}
 
-이 `EditContact` 컴포넌트는 `{ id, name, email }` 모양의 연락처 객체를 `savedContact` prop으로 받습니다. name과 email input 필드를 편집해 보세요. Save을 누르면 폼 위의 연락처 버튼이 편집된 name으로 업데이트됩니다. 재설정을 누르면 폼의 보류 중인 변경 사항이 모두 삭제됩니다. 이 UI를 사용해 보면서 사용법을 익혀보세요.
+이 `EditContact` 컴포넌트는 `{ id, name, email }` 모양의 연락처 객체를 `savedContact` prop으로 받습니다. name과 email input 필드를 편집해 보세요. Save을 누르면 폼 위의 연락처 버튼이 편집된 name으로 업데이트됩니다. Reset을 누르면 폼의 보류 중인 변경 사항이 모두 삭제됩니다. 이 UI를 사용해 보면서 사용법을 익혀보세요.
 
-상단의 버튼으로 연락처를 선택하면 해당 연락처의 세부 정보를 반영하도록 폼이 재설정됩니다. 이 작업은 `EditContact.js` 내의 Effect로 수행됩니다. 이 Effect를 제거합니다. `savedContact.id`가 변경될 때 폼을 재설정하는 다른 방법을 찾아보세요.
+상단의 버튼으로 연락처를 선택하면 해당 연락처의 세부 정보를 반영하도록 폼이 초기화됩니다. 이 작업은 `EditContact.js` 내의 Effect로 수행됩니다. 이 Effect를 제거합니다. `savedContact.id`가 변경될 때 폼을 초기화하는 다른 방법을 찾아보세요.
 
 <Sandpack>
 
@@ -1439,7 +1439,7 @@ button {
 
 <Solution>
 
-`EditContact` 컴포넌트를 둘로 분할합니다. 모든 폼 state를 내부 `EditForm` 컴포넌트로 이동합니다. 외부 `EditContact` 컴포넌트를 내보내고 내부 `EditContact` 컴포넌트에 `savedContact.id`를 `key`로 전달하도록 합니다. 그 결과 내부 `EditForm` 컴포넌트는 다른 연락처를 선택할 때마다 모든 폼 state를 재설정하고 DOM을 다시 생성합니다.
+`EditContact` 컴포넌트를 둘로 분할합니다. 모든 폼 state를 내부 `EditForm` 컴포넌트로 이동합니다. 외부 `EditContact` 컴포넌트를 내보내고 내부 `EditContact` 컴포넌트에 `savedContact.id`를 `key`로 전달하도록 합니다. 그 결과 내부 `EditForm` 컴포넌트는 다른 연락처를 선택할 때마다 모든 폼 state를 초기화하고 DOM을 다시 생성합니다.
 
 <Sandpack>
 
@@ -1605,7 +1605,7 @@ button {
 
 이 `Form` 컴포넌트를 사용하면 친구에게 메시지를 보낼 수 있습니다. 폼을 제출하면 `showForm` state 변수가 `false`로 설정됩니다. 그러면 `sendMessage(message)`를 호출하는 Effect가 트리거되어 메시지가 전송됩니다(콘솔에서 확인할 수 있음). 메시지가 전송되면 "Open chat" 버튼이 있는 "Thank you" 대화 상자가 표시되어 폼으로 돌아갈 수 있습니다.
 
-앱 사용자가 너무 많은 메시지를 보내고 있습니다. 채팅을 조금 더 어렵게 만들기 위해 양식 대신 "Thank you" 대화 상자를 *먼저* 표시하기로 결정했습니다. `showForm` state 변수를 `true`가 아닌 `false`으로 초기화하도록 변경합니다. 이렇게 변경하자마자 콘솔에 빈 메시지가 전송된 것으로 표시됩니다. 이 로직의 뭔가가 잘못되었습니다!
+앱 사용자가 너무 많은 메시지를 보내고 있습니다. 채팅을 조금 더 어렵게 만들기 위해 양식 대신 "Thank you" 대화 상자를 *먼저* 표시하기로 결정했습니다. `showForm` state 변수를 `true`가 아닌 `false`로 초기화하도록 변경합니다. 이렇게 변경하자마자 콘솔에 빈 메시지가 전송된 것으로 표시됩니다. 이 로직의 뭔가가 잘못되었습니다!
 
 이 문제의 근본 원인은 무엇인가요? 그리고 어떻게 해결할 수 있을까요?
 
@@ -1732,7 +1732,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 </Sandpack>
 
-이 버전에서는 이벤트인 _폼을 제출하는 것_만으로 메시지가 전송되는 것을 확인할 수 있습니다. 이 기능은 `showForm`이 처음에 `true`으로 설정되었는지 `false`으로 설정되었는지에 관계없이 동일하게 잘 작동합니다. (`false`로 설정하면 추가 콘솔 메시지가 표시되지 않습니다.)
+이 버전에서는 이벤트인 _폼을 제출하는 것_만으로 메시지가 전송되는 것을 확인할 수 있습니다. 이 기능은 `showForm`이 처음에 `true`으로 설정되었는지 `false`로 설정되었는지에 관계없이 동일하게 잘 작동합니다. (`false`로 설정하면 추가 콘솔 메시지가 표시되지 않습니다.)
 
 </Solution>
 
