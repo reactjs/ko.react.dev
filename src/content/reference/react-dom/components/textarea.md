@@ -4,7 +4,7 @@ title: "<textarea>"
 
 <Intro>
 
-[`<textarea>` 브라우저 내장 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)를 사용하면 여러 줄짜리 텍스트 input을 렌더링할 수 있습니다.
+[`<textarea>` 브라우저 내장 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)를 사용하면 여러 줄의 텍스트 input을 렌더링할 수 있습니다.
 
 
 ```js
@@ -17,7 +17,7 @@ title: "<textarea>"
 
 ---
 
-## 참조 {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `<textarea>` {/*textarea*/}
 
@@ -55,14 +55,14 @@ title: "<textarea>"
 * [`minLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-minlength): 숫자 타입. 텍스트의 최소 길이를 지정합니다. 
 * [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name): 문자열 타입. [폼과 제출](#reading-the-textarea-value-when-submitting-a-form)되는 input의 이름을 지정합니다.
 * `onChange`: [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. [제어되는 텍스트 영역](#controlling-a-text-area-with-a-state-variable) 필수 요소로 가령 사용자가 키보드를 누를 때마다 실행되는 방식으로 input 값을 변경하는 즉시 실행되며 브라우저 [`input` 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)처럼 동작합니다. 
-* `onChangeCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onChange`의 버전
+* `onChangeCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onChange`
 * [`onInput`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event): [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. 사용자가 값을 변경하는 즉시 실행됩니다. 지금까지의 용법에 비춰봤을 때 React에서는 유사하게 동작하는 `onChange`를 사용하는 것이 관습적입니다.
-* `onInputCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onInput`의 버전
+* `onInputCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onInput`
 * [`onInvalid`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event): [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. 폼 제출 시 input이 유효하지 않을 경우 실행되며 `invalid` 내장 이벤트와 달리 React `onInvalid` 이벤트는 버블링됩니다.
-* `onInvalidCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onInvalid`의 버전
+* `onInvalidCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onInvalid`
 * [`onSelect`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/select_event): [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. `<textarea>` 내부의 선택 사항이 변경된 후 실행됩니다.
 React는 `onSelect` 이벤트를 확장하여 선택 사항이 비거나 편집 시 선택 사항에 영향을 끼치게 될 때도 실행됩니다.
-* `onSelectCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onSelect`의 버전
+* `onSelectCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onSelect`
 * [`placeholder`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-placeholder): 문자열 타입. 텍스트 영역 값이 비었을 때 흐린 색으로 표시됩니다.
 * [`readOnly`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-readonly): 불리언 타입. `true`일 경우 사용자가 텍스트 영역을 편집할 수 없습니다.
 * [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-required): 불리언 타입. `true`일 경우 폼이 제출할 값을 반드시 제공해야 합니다.
@@ -351,7 +351,7 @@ textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 
 <ConsoleBlock level="error">
 
-폼 필드에 `onChange` 핸들러 없이 `value` prop만 전달하셨습니다. 이렇게 하면 읽기 전용 필드를 렌더링하게 됩니다. 필드가 변경 가능해야 하는 경우 `defaultValue`를 사용하고 그렇지 않은 경우 `onChange` 또는 `readOnly`를 설정하세요.
+폼 필드에 `onChange` 핸들러 없이 `value` prop만 전달했습니다. 이렇게 하면 읽기 전용 필드를 렌더링하게 됩니다. 필드가 변경 가능해야 하는 경우 `defaultValue`를 사용하고 그렇지 않은 경우 `onChange` 또는 `readOnly`를 설정하세요.
 
 </ConsoleBlock>
 
