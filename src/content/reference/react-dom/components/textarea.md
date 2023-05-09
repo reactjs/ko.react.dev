@@ -59,8 +59,7 @@ title: "<textarea>"
 * `onInputCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onInput`
 * [`onInvalid`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event): [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. 폼 제출 시 input이 유효하지 않을 경우 실행되며 `invalid` 내장 이벤트와 달리 React `onInvalid` 이벤트는 버블링됩니다.
 * `onInvalidCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onInvalid`
-* [`onSelect`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/select_event): [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. `<textarea>` 내부의 선택 사항이 변경된 후 실행됩니다.
-React는 `onSelect` 이벤트를 확장하여 선택 사항이 비거나 편집 시 선택 사항에 영향을 끼치게 될 때도 실행됩니다.
+* [`onSelect`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/select_event): [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. `<textarea>` 내부의 선택 사항이 변경된 후 실행됩니다. React는 `onSelect` 이벤트를 확장하여 선택 사항이 비거나 편집 시 선택 사항에 영향을 끼치게 될 때도 실행됩니다.
 * `onSelectCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onSelect`
 * [`placeholder`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-placeholder): 문자열 타입. 텍스트 영역 값이 비었을 때 흐린 색으로 표시됩니다.
 * [`readOnly`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-readonly): 불리언 타입. `true`일 경우 사용자가 텍스트 영역을 편집할 수 없습니다.
