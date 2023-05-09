@@ -16,7 +16,7 @@ const snapshot = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot?
 
 ---
 
-## 참고 {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot?)` {/*usesyncexternalstore*/}
 
@@ -50,7 +50,7 @@ store에 있는 데이터의 스냅샷을 반환합니다. 두 개의 함수를 
 
 렌더링 로직에 사용할 수 있는 store의 현재 스냅샷입니다.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * `getSnapshot`이 반환하는 store 스냅샷은 불변이어야 합니다. 기본 스토어에 변경 가능한 데이터가 있는 경우 데이터가 변경된 경우 변경 불가능한 새 스냅샷을 반환합니다. 그렇지 않으면 캐시 된 마지막 스냅샷을 반환합니다.
 
