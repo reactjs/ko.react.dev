@@ -16,7 +16,7 @@ const [isPending, startTransition] = useTransition()
 
 ---
 
-## 참고서 {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `useTransition()` {/*usetransition*/}
 
@@ -431,7 +431,7 @@ export default function TabButton({ children, isActive, onClick }) {
 }
 ```
 
-부모 컴포넌트가 `onClick` 이벤트 핸들러 내에서 state를 업데이트하기 때문에 해당 state 업데이트는 transition으로 표시됩니다. 그렇기 때문에 앞의 예시에서처럼 "posts"을 클릭한 다음 바로 "Contact"를 클릭할 수 있습니다. 선택한 탭을 업데이트하는 것은 transition으로 표시되므로 사용자 상호 작용을 차단하지 않습니다.
+부모 컴포넌트가 `onClick` 이벤트 핸들러 내에서 state를 업데이트하기 때문에 해당 state 업데이트는 transition으로 표시됩니다. 그렇기 때문에 앞의 예시에서처럼 "posts"을 클릭한 다음 바로 "Contact"를 클릭할 수 있습니다. 선택한 탭을 업데이트하는 것은 transition으로 표시되므로 사용자 상호작용을 차단하지 않습니다.
 
 <Sandpack>
 
