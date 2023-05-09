@@ -23,7 +23,7 @@ React는 사용자 인터페이스(UI)를 렌더링하기 위한 JavaScript 라�
 
 ## 첫 컴포넌트 {/*your-first-component*/}
 
-React 애플리케이션은 *컴포넌트*라고 불리는 분리된 UI 조각들로 이루어집니다. React 컴포넌트는 마크업을 얹을 수 있는 JavaScript 함수입니다. 컴포넌트는 버튼과 같이 작을 수도 있고 전체 페이지와 같이 큰 경우도 있습니다. 다음에 나오는 `Gallery` 컴포넌트는 세 개의 `Profile` 컴포넌트를 렌더링하고 있습니다.
+React 애플리케이션은 *컴포넌트*라고 불리는 독립된 UI 조각들로 이루어집니다. React 컴포넌트는 마크업을 얹을 수 있는 JavaScript 함수입니다. 컴포넌트는 버튼과 같이 작을 수도 있고 전체 페이지와 같이 큰 경우도 있습니다. 다음의 `Gallery` 컴포넌트는 세 개의 `Profile` 컴포넌트를 렌더링하고 있습니다.
 
 <Sandpack>
 
@@ -234,7 +234,7 @@ JSX에서 중괄호를 사용하여 JavaScript 데이터에 접근하는 방법�
 
 ## 컴포넌트에 Props 전달하기 {/*passing-props-to-a-component*/}
 
-React 컴포넌트는 서로 통신하기 위해 *props*를 사용합니다. 모든 부모 컴포넌트는 자식 컴포넌트에 props를 제공하여 정보를 전달할 수 있습니다. Props는 HTML 속성과 유사해 보이지만 객체, 배열, 함수를 포함한 모든 JavaScript 값이 전달될 수 있습니다. 심지어 JSX도 가능합니다!
+React 컴포넌트는 서로 통신하기 위해 *props*를 사용합니다. 모든 부모 컴포넌트는 자식 컴포넌트에 props를 제공하여 정보를 전달할 수 있습니다. Props는 HTML 어트리뷰트와 유사해 보이지만 객체, 배열, 함수를 포함한 모든 JavaScript 값이 전달될 수 있습니다. 심지어 JSX도 가능합니다!
 
 <Sandpack>
 
@@ -363,7 +363,7 @@ export default function PackingList() {
 
 ## 리스트 렌더링 {/*rendering-lists*/}
 
-데이터 모음에서 유사한 컴포넌트를 여러 개 표시하고 싶을 때가 종종 있습니다. React와 JavaScript의 `filter()`와 `map()`을 함께 사용하면 데이터 배열을 필터링하고 컴포넌트 배열로 변환할 수 있습니다.
+데이터 모음으로부터 유사한 컴포넌트를 여러 개 표시하고 싶을 때가 종종 있습니다. React와 JavaScript의 `filter()`와 `map()`을 함께 사용하면 데이터 배열을 필터링하고 컴포넌트 배열로 변환할 수 있습니다.
 
 각 배열 항목마다 `key`를 지정해야 합니다. 일반적으로 데이터베이스에서 가져온 ID를 `key`로 사용하게 될 것입니다. Key를 사용하면 리스트가 변경되더라도 React가 각 항목의 위치를 추적할 수 있습니다.
 
@@ -518,7 +518,7 @@ export default function TeaSet() {
 
 <LearnMore path="/learn/keeping-components-pure">
 
-**[컴포넌트 순수하게 유지하기](/learn/keeping-components-pure)** 를 읽어 컴포넌트를 순수하고 예측 가능한 함수로 작성하는 방법을 배우세요.
+컴포넌트를 순수하고 예측 가능한 함수로 작성하는 방법을 배우려면 **[컴포넌트 순수하게 유지하기](/learn/keeping-components-pure)** 를 읽어보세요.
 
 </LearnMore>
 
