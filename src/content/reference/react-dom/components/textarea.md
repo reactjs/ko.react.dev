@@ -6,7 +6,6 @@ title: "<textarea>"
 
 [`<textarea>` 브라우저 내장 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)를 사용하면 여러 줄의 텍스트 input을 렌더링할 수 있습니다.
 
-
 ```js
 <textarea />
 ```
