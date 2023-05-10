@@ -51,11 +51,8 @@ const root = hydrateRoot(domNode, reactNode);
 #### Caveats {/*caveats*/}
 
 * `hydrateRoot()`는 서버에서 렌더링된 내용과 후에 렌더링된 내용이 동일할 것을 기대합니다. 따라서 동일하지 않은 부분들은 직접 버그로 취급해주거나 고쳐줘야 합니다.
-
 * 개발 모드에선, 리액트가 hydration 중에 동일하지 않은 부분에 대해 경고해줍니다. 속성이 동일하지 않을 경우에 해당 속성이 올바르게 적용될 것이라고 보장할 수 없습니다. 모든 markup을 보장하지 않는 것은 성능면에서 중요하기 때문입니다. markup이 동일하지 않는 경우는 드물기 때문에 모든 markup을 검증하는 비용은 굉장히 비쌉니다.
-
 * 여러분은 App에서 `hydrateRoot`를 단 한 번만 호출하게 될 것입니다. 만약 프레임워크를 사용한다면, 프레임워크가 대신 호출해 줄 것입니다.
-
 * App을 사전에 렌더링된 HTML 없이 클라이언트에서 직접 렌더링을 한다면 `hydrateRoot()`은 지원되지 않습니다. [`createRoot()`](/reference/react-dom/client/createRoot)를 대신 사용해주세요.
 
 ---
@@ -103,6 +100,7 @@ root.unmount();
 #### Parameters {/*root-unmount-parameters*/}
 
 `root.unmount`는 그 어떤 파라미터도 받지 않습니다.
+
 
 #### Returns {/*root-unmount-returns*/}
 
