@@ -43,7 +43,7 @@ React는 `domNode` 내에 `<App />`을 표시하고 해당 DOM을 관리합니�
 
 [아래 예시를 참고하세요.](#usage)
 
-#### 파라미터 {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
 * `reactNode`: 표시하려는 *React node*입니다. 보통 `<App />`과 같은 JSX를 사용하지만 [`createElement()`](/reference/react/createElement)로 구성된 React 요소, 문자열, 숫자, `null`, 또는 `undefined`를 전달할 수 있습니다.
 
@@ -54,7 +54,7 @@ React는 `domNode` 내에 `<App />`을 표시하고 해당 DOM을 관리합니�
 
 #### 반환값 {/*returns*/}
 
-`render`는 일반적으로 `null`을 반환합니다. 하지만 전달한 `reactNode`가 *클래스 컴포넌트*인 경우, 해당 컴포넌트의 인스턴스를 반환합니다.
+`render`는 일반적으로 `null`을 반환합니다. 하지만 전달한 `reactNode`가 *class 컴포넌트*인 경우, 해당 컴포넌트의 인스턴스를 반환합니다.
 
 #### 주의 사항 {/*caveats*/}
 
