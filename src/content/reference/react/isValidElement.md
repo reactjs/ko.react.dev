@@ -37,7 +37,7 @@ console.log(isValidElement({ age: 42 })); // false
 
 [아래에서 더 많은 예시를 확인하세요](#usage)
 
-#### 파라미터 {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
 `value`: 확인하려는 `value`입니다. 모든 종류의 값이 될 수 있습니다.
 
