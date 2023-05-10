@@ -106,7 +106,7 @@ React는 사용자가 <CodeStep step={1}>전달한 JSX</CodeStep>에 대한 DOM 
 React will put the DOM nodes for <CodeStep step={1}>the JSX you passed</CodeStep> inside of the <CodeStep step={2}>DOM node you provided</CodeStep>.
 
 
-Portal이 없다면 두 번째 `<p>`는 상위 `<div>` 안에 배치되지만 portal은 이를 [`document.body`:] 안으로 "순간이동"합니다.
+Portal이 없다면 두 번째 `<p>`는 상위 `<div>` 안에 배치되지만 portal은 이를 [`document.body`:](https://developer.mozilla.org/ko/docs/Web/API/Document/body) 안으로 "순간이동"합니다.
 
 Without a portal, the second `<p>` would be placed inside the parent `<div>`, but the portal "teleported" it into the [`document.body`:](https://developer.mozilla.org/en-US/docs/Web/API/Document/body)
 
