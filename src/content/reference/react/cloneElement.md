@@ -22,7 +22,7 @@ const clonedElement = cloneElement(element, props, ...children)
 
 ---
 
-## Reference {/*reference*/}
+## 참고 {/*reference*/}
 
 ### `cloneElement(element, props, ...children)` {/*cloneelement*/}
 
@@ -75,11 +75,11 @@ console.log(clonedElement); // <Row title="Cabbage">Goodbye</Row>
 
 ---
 
-## Usage {/*usage*/}
+## 사용 방법 {/*usage*/}
 
-### Overriding props of an element {/*overriding-props-of-an-element*/}
+### 엘리먼트의 props 재정의하기 {/*overriding-props-of-an-element*/}
 
-To override the props of some <CodeStep step={1}>React element</CodeStep>, pass it to `cloneElement` with the <CodeStep step={2}>props you want to override</CodeStep>:
+일부 <CodeStep step={1}>React 엘리먼트</CodeStep>의 props를 재정의하려면 <CodeStep step={2}>재정의하려는 props</CodeStep>를 `cloneElement`에 전달하세요.
 
 ```js [[1, 5, "<Row title=\\"Cabbage\\" />"], [2, 6, "{ isHighlighted: true }"], [3, 4, "clonedElement"]]
 import { cloneElement } from 'react';
@@ -91,11 +91,12 @@ const clonedElement = cloneElement(
 );
 ```
 
-Here, the resulting <CodeStep step={3}>cloned element</CodeStep> will be `<Row title="Cabbage" isHighlighted={true} />`.
+<CodeStep step={3}>clonedElement</CodeStep>의 결과는 `<Row title="Cabbage" isHighlighted={true} />`가 됩니다.
 
-**Let's walk through an example to see when it's useful.**
+**어떤 경우에 유용한지 예제를 통해 알아보도록 하겠습니다.**
 
-Imagine a `List` component that renders its [`children`](/learn/passing-props-to-a-component#passing-jsx-as-children) as a list of selectable rows with a "Next" button that changes which row is selected. The `List` component needs to render the selected `Row` differently, so it clones every `<Row>` child that it has received, and adds an extra `isHighlighted: true` or `isHighlighted: false` prop:
+[`children`](/learn/passing-props-to-a-component#passing-jsx-as-children)을 선택할 수 있는 행 목록으로 렌더링하고, 선택된 행을 변경하는 "다음" 버튼이 있는 `List` 컴포넌트를 상상해 보세요. `List` 컴포넌트는 선택된 행을 다르게 렌더링 해야하므로 전달 받은 모든 `<Row>` 자식 요소를 복제합니다. 그리고 `isHighlighted: true` 또는 `isHighlighted: false`인 `prop`을 추가합니다.
+
 
 ```js {6-8}
 export default function List({ children }) {
@@ -109,7 +110,7 @@ export default function List({ children }) {
       )}
 ```
 
-Let's say the original JSX received by `List` looks like this:
+다음과 같이 `List`에서 전달 받은 원본 JSX가 있다고 가정합시다.
 
 ```js {2-4}
 <List>
@@ -119,7 +120,7 @@ Let's say the original JSX received by `List` looks like this:
 </List>
 ```
 
-By cloning its children, the `List` can pass extra information to every `Row` inside. The result looks like this:
+자식 요소를 복제함으로써 `List`는 모든 `Row` 안에 추가적인 정보를 전달할 수 있습니다. 결과는 다음과 같습니다.
 
 ```js {4,8,12}
 <List>
@@ -138,7 +139,7 @@ By cloning its children, the `List` can pass extra information to every `Row` in
 </List>
 ```
 
-Notice how pressing "Next" updates the state of the `List`, and highlights a different row:
+"다음" 버튼을 누르면 `List`의 상태가 업데이트 되고 다른 행이 하이라이트 표시가 되는 것을 확인할 수 있습니다.
 
 <Sandpack>
 
@@ -179,7 +180,7 @@ export default function List({ children }) {
           (i + 1) % Children.count(children)
         );
       }}>
-        Next
+        다음
       </button>
     </div>
   );
@@ -233,11 +234,11 @@ button {
 
 </Sandpack>
 
-To summarize, the `List` cloned the `<Row />` elements it received and added an extra prop to them.
+요약하자면, `List`는 전달 받은 `<Row />` 엘리먼트를 복제하고 추가로 들어오는 prop 또한 추가합니다.
 
 <Pitfall>
 
-Cloning children makes it hard to tell how the data flows through your app. Try one of the [alternatives.](#alternatives)
+자식 요소를 복제하는 것은 앱에서 데이터가 어떻게 흘러가는지 파악하기 어렵기 때문에 다음 [대안](#alternatives)을 사용해보세요.
 
 </Pitfall>
 
