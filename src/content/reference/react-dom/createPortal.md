@@ -22,7 +22,7 @@ title: createPortal
 
 ---
 
-## Reference {/*reference*/}
+## Reference 레퍼런스 {/*reference*/}
 
 ### `createPortal(children, domNode)` {/*createportal*/}
 
@@ -52,7 +52,7 @@ Portal은 DOM 노드의 물리적 배치만 변경합니다.
 
 A portal only changes the physical placement of the DOM node. In every other way, the JSX you render into a portal acts as a child node of the React component that renders it. For example, the child can access the context provided by the parent tree, and events bubble up from children to parents according to the React tree.
 
-#### Parameters {/*parameters*/}
+#### Parameters 매개변수 {/*parameters*/}
 
 * `children` : JSX의 일부(예를 들어 `<div />` 또는 `<SomeComponent />`), [Fragment](/reference/react/Fragment)(`<>...</>`), 문자열이나 숫자 또는 이들의 배열과 같이 React로 렌더링할 수 있는 모든 것입니다. 
 * `children`: Anything that can be rendered with React, such as a piece of JSX (e.g. `<div />` or `<SomeComponent />`), a [Fragment](/reference/react/Fragment) (`<>...</>`), a string or a number, or an array of these.
@@ -66,14 +66,14 @@ A portal only changes the physical placement of the DOM node. In every other way
 
 `createPortal` returns a React node that can be included into JSX or returned from a React component. If React encounters it in the render output, it will place the provided `children` inside the provided `domNode`.
 
-#### Caveats {/*caveats*/}
+#### Caveats 주의 사항 {/*caveats*/}
 
 * Portal의 이벤트는 DOM 트리가 아닌 React 트리에 따라 전파됩니다. 예를 들어, portal 내부를 클릭했을 때 포털이 `<div onClick>`으로 감싸져 있으면 해당 `onClick` 핸들러가 실행됩니다. 이로 인해 문제가 발생하면 포털 내부에서 이벤트 전파를 중지하거나 portal 자체를 React 트리에서 위로 이동하세요.
 * Events from portals propagate according to the React tree rather than the DOM tree. For example, if you click inside a portal, and the portal is wrapped in `<div onClick>`, that `onClick` handler will fire. If this causes issues, either stop the event propagation from inside the portal, or move the portal itself up in the React tree.
 
 ---
 
-## Usage {/*usage*/}
+## Usage 사용 방법 {/*usage*/}
 
 ### Rendering to a different part of the DOM DOM의 다른 부분으로 렌더링하기 {/*rendering-to-a-different-part-of-the-dom*/}
 
@@ -101,7 +101,7 @@ function MyComponent() {
 }
 ```
 
-React는 사용자가 전달한 <CodeStep step={1}>JSX에 대한 DOM 노드를 사용자가 제공한 <CodeStep step={2}>DOM 노드 안에 넣습니다</CodeStep>.
+React는 사용자가 <CodeStep step={1}>전달한 JSX</CodeStep>에 대한 DOM 노드를 사용자가 <CodeStep step={2}>제공한 DOM 노드</CodeStep> 안에 넣습니다.
 
 React will put the DOM nodes for <CodeStep step={1}>the JSX you passed</CodeStep> inside of the <CodeStep step={2}>DOM node you provided</CodeStep>.
 
