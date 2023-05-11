@@ -41,8 +41,8 @@ function TabContainer() {
 
 `useTransition`은 정확히 두 개의 항목이 있는 배열을 반환합니다.
 
-1. 보류 중인 transition이 있는지를 알려주는 `isPending` 플래그입니다.
-2. state 업데이트를 transition으로 표시할 수 있는 [`startTransition` 함수](#starttransition)입니다.
+1. `isPending` 플래그는 대기 중인 transition이 있는지 알려줍니다.
+2. [`startTransition` 함수](#starttransition)는 상태 업데이트를 transition으로 표시할 수 있게 해주는 함수입니다.
 
 ---
 
@@ -92,7 +92,7 @@ function TabContainer() {
 
 ### state 업데이트를 non-blocking transition으로 표시 {/*marking-a-state-update-as-a-non-blocking-transition*/}
 
-컴포넌트의 최상위 수준에서 `useTransition`을 호출하여 state 업데이트를 non-blocking *transitions*으로 표시하세요.
+컴포넌트의 최상위 레벨에서 `useTransition`을 호출하여 state 업데이트를 non-blocking *transitions*으로 표시하세요.
 
 ```js [[1, 4, "isPending"], [2, 4, "startTransition"]]
 import { useState, useTransition } from 'react';
