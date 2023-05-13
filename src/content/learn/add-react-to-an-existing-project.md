@@ -65,7 +65,7 @@ npm install react react-dom
 <html>
   <head><title>My app</title></head>
   <body>
-    <!-- Your existing page content (in this example, it gets replaced) -->
+    <!-- 기존 페이지 컨텐츠 (이 예제에서는 이 부분이 대체됩니다)-->
   </body>
 </html>
 ```
@@ -73,10 +73,10 @@ npm install react react-dom
 ```js index.js active
 import { createRoot } from 'react-dom/client';
 
-// Clear the existing HTML content
+// 기존 HTML 컨텐츠를 지웁니다.
 document.body.innerHTML = '<div id="app"></div>';
 
-// Render your React component instead
+// 대신에 여러분이 작성한 React 컴포넌트를 렌더링합니다.
 const root = createRoot(document.getElementById('app'));
 root.render(<h1>Hello, world</h1>);
 ```
@@ -98,10 +98,10 @@ root.render(<h1>Hello, world</h1>);
 ```js
 import { createRoot } from 'react-dom/client';
 
-// Clear the existing HTML content
+// 기존 HTML 컨텐츠를 지웁니다.
 document.body.innerHTML = '<div id="app"></div>';
 
-// Render your React component instead
+// 대신에 여러분이 작성한 React 컴포넌트를 렌더링합니다.
 const root = createRoot(document.getElementById('app'));
 root.render(<h1>Hello, world</h1>);
 ```
@@ -113,9 +113,9 @@ root.render(<h1>Hello, world</h1>);
 대신 React 컴포넌트를 HTML의 특정 위치에 렌더링하고 싶을 것입니다. HTML 페이지를 열고(또는 이를 생성하는 서버 템플릿) HTML 태그에 고유한 `id` 속성을 추가하세요. 
 
 ```html
-<!-- ... somewhere in your html ... -->
+<!-- ... html의 어딘가 ... -->
 <nav id="navigation"></nav>
-<!-- ... more html ... -->
+<!-- ... 더 많은 html ... -->
 ```
 
 이렇게 하면 HTML 요소를 [`document.getElementById`](https://developer.mozilla.org/ko/docs/Web/API/Document/getElementById)를 통해 찾고 찾은 [`createRoot`](/reference/react-dom/client/createRoot)에 전달함으로써 해당 요소 내부에 React 컴포넌트를 렌더링할 수 있습니다.
@@ -138,7 +138,7 @@ root.render(<h1>Hello, world</h1>);
 import { createRoot } from 'react-dom/client';
 
 function NavigationBar() {
-  // TODO: Actually implement a navigation bar
+  // TODO: 실제로 네비게이션 바를 구현합니다.
   return <h1>Hello from React!</h1>;
 }
 
