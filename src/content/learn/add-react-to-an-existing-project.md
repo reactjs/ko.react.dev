@@ -36,7 +36,7 @@ title: 기존 프로젝트에 React 추가하기
 
 이 방식은 두 가지 단계로 수행할 수 있습니다.
 
-1. [JSX syntax](/learn/writing-markup-with-jsx)을 사용할 수 있게 **JavaScript 환경을 설정**하고 [`import`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import) / [`export`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/export) 문법을 통해 코드를 모듈로 분리한 다음 [npm](https://www.npmjs.com/) 패키지 레지스트리의 패키지(예: React)를 사용하세요.
+1. [JSX 문법](/learn/writing-markup-with-jsx)을 사용할 수 있게 **JavaScript 환경을 설정**하고 [`import`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import) / [`export`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/export) 문법을 통해 코드를 모듈로 분리한 다음 [npm](https://www.npmjs.com/) 패키지 레지스트리의 패키지(예시: React)를 사용하세요.
 
 2. 해당 페이지에서 보고 싶은 곳에 **React 컴포넌트를 렌더링하세요.**
 
@@ -46,7 +46,7 @@ title: 기존 프로젝트에 React 추가하기
 
 모듈 JavaScript 환경은 모든 코드를 한 파일에 작성하는 것이 아닌 각각의 React 컴포넌트를 개별 파일로 작성할 수 있게 합니다. 또한 React 자체를 포함한 다른 개발자들이 [npm](https://www.npmjs.com/) 레지스트리에 배포한 모든 훌륭한 패키지들을 사용할 수 있습니다. 이 방법은 기존 설정에 따라 다르게 진행될 것입니다.
 
-* **이미 애플리케이션이 `import` 구문을 이용해 파일로 분리하고 있다면** 기존에 가지고 있는 설정을 이용해 보세요. JS 코드에서 `<div />`를 작성하면 구문 오류가 발생하는지 확인해 보세요. 구문 오류가 발생한다면  [Babel을 이용한 JavaScript 코드 변환](https://babeljs.io/setup)이 필요할 수 있으며 JSX를 사용하려면 [Babel React 프리셋](https://babeljs.io/docs/babel-preset-react)을 활성화해야 할 수 있습니다.
+* **이미 애플리케이션이 `import` 문법을 이용해 파일로 분리하고 있다면** 기존에 가지고 있는 설정을 이용해 보세요. JS 코드에서 `<div />`를 작성하면 문법 오류가 발생하는지 확인해 보세요. 문법 오류가 발생한다면  [Babel을 이용한 JavaScript 코드 변환](https://babeljs.io/setup)이 필요할 수 있으며 JSX를 사용하려면 [Babel React 프리셋](https://babeljs.io/docs/babel-preset-react)을 활성화해야 할 수 있습니다.
 
 * **애플레키에션이 JavaScript 모듈을 컴파일하기 위한 기존 설정이 없다면,** [Vite](https://vitejs.dev/)를 이용하여 설정하세요. Vite 커뮤니티는 Rails, Django, Laravel을 포함한 [다양한 백엔드 프레임워크와의 통합](https://github.com/vitejs/awesome-vite#integrations-with-backends)을 지원하고 있습니다. 사용 중인 백엔드 프레임워크가 목록에 없다면 [이 가이드를 참고하여](https://vitejs.dev/guide/backend-integration.html) Vite 빌드를 백엔드와 수동으로 통합하세요. 
 
@@ -65,7 +65,7 @@ npm install react react-dom
 <html>
   <head><title>My app</title></head>
   <body>
-    <!-- 기존 페이지 컨텐츠 (이 예제에서는 이 부분이 대체됩니다)-->
+    <!-- 기존 페이지 컨텐츠 (이 예시에서는 이 부분이 대체됩니다)-->
   </body>
 </html>
 ```
@@ -110,7 +110,7 @@ root.render(<h1>Hello, world</h1>);
 
 이 코드를 삭제하세요.
 
-대신 React 컴포넌트를 HTML의 특정 위치에 렌더링하고 싶을 것입니다. HTML 페이지를 열고(또는 이를 생성하는 서버 템플릿) HTML 태그에 고유한 `id` 속성을 추가하세요. 
+대신 React 컴포넌트를 HTML의 특정 위치에 렌더링하고 싶을 것입니다. HTML 페이지를 열고(또는 이를 생성하는 서버 템플릿) HTML 태그에 고유한 `id` 어트리뷰트를 추가하세요. 
 
 ```html
 <!-- ... html의 어딘가 ... -->
@@ -118,7 +118,7 @@ root.render(<h1>Hello, world</h1>);
 <!-- ... 더 많은 html ... -->
 ```
 
-이렇게 하면 HTML 요소를 [`document.getElementById`](https://developer.mozilla.org/ko/docs/Web/API/Document/getElementById)를 통해 찾고 찾은 [`createRoot`](/reference/react-dom/client/createRoot)에 전달함으로써 해당 요소 내부에 React 컴포넌트를 렌더링할 수 있습니다.
+이렇게 하면 [`document.getElementById`](https://developer.mozilla.org/ko/docs/Web/API/Document/getElementById)로 HTML 엘리먼트를 찾아서 [`createRoot`](/reference/react-dom/client/createRoot)에 전달함으로써 해당 요소 내부에 React 컴포넌트를 렌더링할 수 있습니다.
 
 <Sandpack>
 
@@ -149,9 +149,9 @@ root.render(<NavigationBar />);
 
 </Sandpack>
 
-기존에 존재하던 'index.html'의 원본 HTML 컨텐츠가 그대로 남아있는 것을 확인할 수 있습니다. 하지만 이제는 `<nav id="navigation">` 안에 개발자가 직접 작성한 `NavigationBar` React 컴포넌트가 나타납니다. 기존 HTML 페이지에서 React 컴포넌트가 렌더링 되는 것에 대하여 더 알아보려면 [`createRoot` usage documentation](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react)를 읽어보세요.
+기존에 존재하던 'index.html'의 원본 HTML 컨텐츠가 그대로 남아있는 것을 확인할 수 있습니다. 하지만 이제는 `<nav id="navigation">` 안에 개발자가 직접 작성한 `NavigationBar` React 컴포넌트가 나타납니다. 기존 HTML 페이지에서 React 컴포넌트가 렌더링 되는 것에 대하여 더 알아보려면 [`createRoot` 사용법 문서](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react)를 읽어보세요.
 
-기존 프로젝트에서 React를 도입할 때, 일반적으로 작은 상호작용 컴포넌트(예: 버튼)에서 시작하여 점진적으로 "상위 구조로 확장하면서" 결국에는 전체 페이지가 React로 빌드될 때까지 이 과정을 반복하게 됩니다. 이 지점에 도달한다면 React의 장점을 최대한 활용하기 위해 [React 프레임워크](/learn/start-a-new-react-project)로 마이그레이션하는 것을 권장합니다.
+기존 프로젝트에서 React를 도입할 때, 일반적으로 작은 상호작용 컴포넌트(예시: 버튼)에서 시작하여 점진적으로 "상위 구조로 확장하면서" 결국에는 전체 페이지가 React로 빌드될 때까지 이 과정을 반복하게 됩니다. 이 지점에 도달한다면 React의 장점을 최대한 활용하기 위해 [React 프레임워크](/learn/start-a-new-react-project)로 마이그레이션하는 것을 권장합니다.
 
 ## 기존 네이티브 모바일 앱에서 React Native 사용하기 {/*using-react-native-in-an-existing-native-mobile-app*/}
 
