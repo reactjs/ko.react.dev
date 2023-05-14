@@ -4,7 +4,7 @@ title: 기존 프로젝트에 React 추가하기
 
 <Intro>
 
-기존 프로젝트에 일부 상호작용 요소를 추가하고 싶다면, React에 프로젝트를 다시 작성할 필요가 없습니다. 기존의 스택에 React를 추가하고 어디에서나 상호작용할 수 있는 React 컴포넌트를 렌더링하세요.
+기존 프로젝트와 일부 상호작용 요소를 추가하고 싶다면, React에 프로젝트를 다시 작성할 필요가 없습니다. 기존의 스택에 React를 추가하고 어디에서나 상호작용할 수 있는 React 컴포넌트를 렌더링하세요.
 
 </Intro>
 
@@ -21,10 +21,8 @@ title: 기존 프로젝트에 React 추가하기
 다음과 같이 설정하는 것을 추천합니다.
 
 1. [React 기반 프레임워크](/learn/start-a-new-react-project) 중 하나를 사용하여 **앱의 React 부분을 빌드하세요.**
-
 2. 사용하는 프레임워크 설정에서 **`/some-app` 을 *기본 경로*로 명시하세요.** (방법은 다음과 같습니다. [Next.js](https://nextjs.org/docs/api-reference/next.config.js/basepath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/))
-
-3. **서버 또는 프락시를 구성**하여 `/some-app/` 아래의 모든 요청이 React 애플리케이션에서 처리되도록 하세요.
+3. **서버 또는 프록시를 구성**하여 `/some-app/` 아래의 모든 요청이 React 애플리케이션에서 처리되도록 하세요.
 
 이는 앱의 React 부분이 이러한 프레임워크에 내장된 [최고의 사례들로부터 이점을 얻을 수 있습니다.](/learn/start-a-new-react-project#can-i-use-react-without-a-framework)
 
