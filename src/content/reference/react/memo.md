@@ -16,7 +16,7 @@ const MemoizedComponent = memo(SomeComponent, arePropsEqual?)
 
 ---
 
-## 참조 {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `memo(Component, arePropsEqual?)` {/*memo*/}
 
@@ -40,7 +40,7 @@ const SomeComponent = memo(function SomeComponent(props) {
 
 #### 반환 {/*returns*/}
 
-`memo`는 새로운 React 컴포넌트를 반환합니다. `memo`에 제공한 컴포넌트와 동일하게 동작하지만, 부모가 리렌더링하더라도 props가 변경되지 않는 한 React는 이를 리렌더링하지 않습니다.
+`memo`는 새로운 React 컴포넌트를 반환합니다. `memo`에 제공한 컴포넌트와 동일하게 동작하지만, 부모가 리렌더링되더라도 props가 변경되지 않는 한 React는 이를 리렌더링하지 않습니다.
 
 ---
 
@@ -115,7 +115,7 @@ label {
 
 `memo`로 최적화하는 것은 컴포넌트가 정확히 동일한 props로 자주 리렌더링하고, 리렌더링 로직이 비용이 많이 드는 경우에만 유용합니다. 컴포넌트가 리렌더링할 때 인지할 수 있을 만큼의 지연이 없다면 `memo`가 필요하지 않습니다. `memo`는 객체 또는 렌더링 중에 정의된 일반 함수처럼 *항상 다른* props가 컴포넌트에 전달되는 경우에 완전히 무용지물입니다. 따라서 `memo`와 함께 [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components)와 [`useCallback`](/reference/react/useCallback#skipping-re-rendering-of-components)이 종종 필요합니다.
 
-그 외의 경우에는 컴포넌트를 `memo`로 감싸는 이점이 없습니다. 그렇다고 해서 크게 해가 되지 않기 때문에 일부 팀에서는 개별 사례에 대해 고려하지 않고 가능한 한 많이 메모하는 방식을 선택하기도 합니다. 이 접근 방식은 코드 가독성이 떨어진다는 단점이 있습니다. 또한 모든 메모화가 효과적이지는 않습니다. 항상 새로운 값이 단 하나만 있어도 컴포넌트 전체의 메모화를 중단하기에 충분합니다.
+그 외의 경우에는 컴포넌트를 `memo`로 감싸는 이점이 없습니다. 그렇다고 해서 크게 해가 되지 않기 때문에 일부 팀에서는 개별 사례에 대해 고려하지 않고 가능한 한 많이 메모하는 방식을 선택하기도 합니다. 이 접근 방식은 코드 가독성이 떨어진다는 단점이 있습니다. 또한 모든 메모화가 효과적이지는 않습니다. 항상 변경되는 값이 하나라도 있다면, 컴포넌트 전체의 메모화를 중단하기에 충분합니다.
 
 **실제로 몇가지 원칙을 따르면 메모화가 불필요할 수 있습니다.**
 
@@ -268,7 +268,7 @@ label {
 
 ### props 변경 최소화하기 {/*minimizing-props-changes*/}
 
-`memo`를 사용할 때 어떤 prop든 이전의 prop과 *얕은 비교 결과가 같지*  않을 때마다 컴포넌트가 리렌더링 합니다. 즉 React는 [`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 사용하여 컴포넌트의 모든 prop을 이전 값과 비교합니다. `Object.is(3, 3)`는 `true`이지만 `Object.is({}, {})`는 `false`입니다.
+`memo`를 사용할 때 어떤 prop든 이전의 prop과 *얕은 비교 결과*가 같지  않을 때마다 컴포넌트가 리렌더링 합니다. 즉 React는 [`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 사용하여 컴포넌트의 모든 prop을 이전 값과 비교합니다. `Object.is(3, 3)`는 `true`이지만 `Object.is({}, {})`는 `false`입니다.
 
 
 `memo`를 최대한 활용하려면, props가 변경되는 횟수를 최소화해야 합니다. 예를 들어 prop이 객체인 경우, [`useMemo`:](/reference/react/useMemo)를 사용하여 부모 컴포넌트가 해당 객체를 매번 다시 만드는 것을 방지하세요.
@@ -347,7 +347,7 @@ function arePropsEqual(oldProps, newProps) {
 
 <Pitfall>
 
-커스텀 `arePropsEqual` 구현을 제공하는 경우 **함수를 포함하여 모든 prop를 비교해야 합니다.** 함수는 종종 부모 컴포넌트의 props와 state를 [클로저로 다룹니다](https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures). `oldProps.onClick !== newProps.onClick`일 때 `true`를 반환하면 컴포넌트가 `onClick` 핸들러 내에서 이전 렌더링의 props와 state를 계속 "인식"하여 매우 혼란스러운 버그가 발생할 수 있습니다.
+`arePropsEqual`를 구현을 제공하는 경우 **함수를 포함하여 모든 prop를 비교해야 합니다.** 함수는 종종 부모 컴포넌트의 props와 state를 [클로저로 다룹니다](https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures). `oldProps.onClick !== newProps.onClick`일 때 `true`를 반환하면 컴포넌트가 `onClick` 핸들러 내에서 이전 렌더링의 props와 state를 계속 "인식"하여 매우 혼란스러운 버그가 발생할 수 있습니다.
 
 작업 중인 데이터 구조가 알려진 제한된 깊이를 가지고 있다고 100% 확신하지 않는 한, `arePropsEqual` 내에서 깊은 비교를 수행하지 마세요. **깊은 비교는 매우 느려질 수 있으며** 나중에 누군가 데이터 구조를 변경하면 앱이 잠깐 정지될 수 있습니다.
 
@@ -356,6 +356,6 @@ function arePropsEqual(oldProps, newProps) {
 ---
 
 ## 문제 해결 {/*troubleshooting*/}
-### prop가 객체, 배열 또는 함수인 경우 컴포넌트가 리렌더링합니다 {/*my-component-rerenders-when-a-prop-is-an-object-or-array*/}
+### prop가 객체, 배열 또는 함수인 경우 컴포넌트가 리렌더링됩니다. {/*my-component-rerenders-when-a-prop-is-an-object-or-array*/}
 
 React는 얕은 비교를 기준으로 이전 props와 새로운 props를 비교합니다. 즉, 각각의 새로운 prop가 이전 prop와 참조가 동일한지 여부를 고려합니다. 부모가 리렌더링할 때마다 새로운 객체나 배열을 생성하면, 개별 요소들이 모두 동일하더라도 React는 여전히 변경된 것으로 간주합니다. 마찬가지로 부모 컴포넌트를 렌더링할 때 새로운 함수를 만들면 React는 함수의 정의가 동일하더라도 변경된 것으로 간주합니다. 이를 방지하려면 [부모 컴포넌트에서 props를 단순화하거나 메모화 하세요.](#minimizing-props-changes)
