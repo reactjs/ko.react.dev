@@ -131,7 +131,7 @@ export function HomeContent() {
             React
           </h1>
           <p className="text-4xl font-display max-w-lg md:max-w-full py-1 text-center text-secondary dark:text-primary-dark leading-snug self-center">
-            The library for web and native user interfaces
+            웹 및 사용자 인터페이스를 위한 라이브러리
           </p>
           <div className="mt-5 self-center flex gap-2 w-full sm:w-auto flex-col sm:flex-row">
             <ButtonLink
@@ -140,7 +140,7 @@ export function HomeContent() {
               size="lg"
               className="w-full sm:w-auto justify-center"
               label="Learn React">
-              Learn React
+              React 학습하기
             </ButtonLink>
             <ButtonLink
               href={'/reference/react'}
@@ -148,20 +148,20 @@ export function HomeContent() {
               size="lg"
               className="w-full sm:w-auto justify-center"
               label="API Reference">
-              API Reference
+              API 레퍼런스
             </ButtonLink>
           </div>
         </div>
 
         <Section background="left-card">
           <Center>
-            <Header>Create user interfaces from components</Header>
+            <Header>컴포넌트를 사용하여 사용자 인터페이스 만들기</Header>
             <Para>
-              React lets you build user interfaces out of individual pieces
-              called components. Create your own React components like{' '}
-              <Code>Thumbnail</Code>, <Code>LikeButton</Code>, and{' '}
-              <Code>Video</Code>. Then combine them into entire screens, pages,
-              and apps.
+              React를 사용하면 컴포넌트라고 불리는 조각들을 사용하여 사용자
+              인터페이스를 만들 수 있습니다.
+              <Code>Thumbnail</Code>, <Code>LikeButton</Code>, 그리고{' '}
+              <Code>Video</Code> 같은 컴포넌트를 만들 수 있습니다. 그런 다음
+              전체 화면, 페이지 및 앱에서 이들을 결합할 수 있습니다.
             </Para>
           </Center>
           <FullBleed>
@@ -169,22 +169,21 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              Whether you work on your own or with thousands of other
-              developers, using React feels the same. It is designed to let you
-              seamlessly combine components written by independent people,
-              teams, and organizations.
+              혼자서 작업하든, 수천 명의 다른 개발자와 함께 작업하든, React를
+              사용하는 느낌은 동일합니다. 개인, 팀, 조직에서 작성한 컴포넌트를
+              원활하게 결합할 수 있도록 설계되었습니다.
             </Para>
           </Center>
         </Section>
 
         <Section background="right-card">
           <Center>
-            <Header>Write components with code and markup</Header>
+            <Header>코드와 마크업으로 컴포넌트 작성하기</Header>
             <Para>
-              React components are JavaScript functions. Want to show some
-              content conditionally? Use an <Code>if</Code> statement.
-              Displaying a list? Try array <Code>map()</Code>. Learning React is
-              learning programming.
+              React 컴포넌트는 JavaScript 함수입니다. 조건부로 내용을 표시하려면{' '}
+              <Code>if</Code> 문을 사용할 수 있습니다. 목록을 표시하려면 배열에{' '}
+              <Code>map()</Code>을 사용할 수 있습니다. React를 배우는 것은
+              프로그래밍을 배우는 것입니다.
             </Para>
           </Center>
           <FullBleed>
@@ -192,22 +191,22 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              This markup syntax is called JSX. It is a JavaScript syntax
-              extension popularized by React. Putting JSX markup close to
-              related rendering logic makes React components easy to create,
-              maintain, and delete.
+              이 마크업 구문을 JSX 라고 부릅니다. 이것은 React에 의해서 대중화된
+              JavaScript 구문의 확장입니다. JSX 마크업을 관련된 렌더링 로직과
+              가까이 두면, React 컴포넌트를 쉽게 만들고 유지하고 삭제할 수
+              있습니다.
             </Para>
           </Center>
         </Section>
 
         <Section background="left-card">
           <Center>
-            <Header>Add interactivity wherever you need it</Header>
+            <Header>필요한 곳에 상호작용 요소 추가하기</Header>
             <Para>
-              React components receive data and return what should appear on the
-              screen. You can pass them new data in response to an interaction,
-              like when the user types into an input. React will then update the
-              screen to match the new data.
+              React 컴포넌트는 데이터를 받고 화면에 표시할 내용을 반환합니다.
+              사용자가 입력란에 입력하는 것과 같이 상호작용에 응답하여 새
+              데이터를 전달할 수 있습니다. 그런 다음 React는 새 데이터와
+              일치하도록 화면을 업데이트합니다.
             </Para>
           </Center>
           <FullBleed>
@@ -215,16 +214,16 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              You don’t have to build your whole page in React. Add React to
-              your existing HTML page, and render interactive React components
-              anywhere on it.
+              전체 페이지를 React로 빌드할 필요는 없습니다. React를 기존 HTML
+              페이지에 추가하고, 어디에서나 상호작용하는 React 컴포넌트를
+              렌더링할 수 있습니다.
             </Para>
             <div className="flex justify-start w-full lg:justify-center">
               <CTA
                 color="gray"
                 icon="code"
                 href="/learn/add-react-to-an-existing-project">
-                Add React to your page
+                페이지에 React 추가하기
               </CTA>
             </div>
           </Center>
@@ -232,16 +231,13 @@ export function HomeContent() {
 
         <Section background="right-card">
           <Center>
-            <Header>
-              Go full-stack <br className="hidden lg:inline" />
-              with a framework
-            </Header>
+            <Header>프레임워크를 통해서 풀스택으로 만들기</Header>
             <Para>
-              React is a library. It lets you put components together, but it
-              doesn’t prescribe how to do routing and data fetching. To build an
-              entire app with React, we recommend a full-stack React framework
-              like <Link href="https://nextjs.org">Next.js</Link> or{' '}
-              <Link href="https://remix.run">Remix</Link>.
+              React는 라이브러리입니다. 컴포넌트를 함께 묶을 수 있지만, 라우팅과
+              데이터를 가져오는 방법을 규정하지는 않습니다. React로 앱을
+              만들려면, <Link href="https://nextjs.org">Next.js</Link> 또는
+              <Link href="https://remix.run">Remix</Link> 같은 풀스택 React
+              프레임워크를 추천합니다.
             </Para>
           </Center>
           <FullBleed>
@@ -249,17 +245,17 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              React is also an architecture. Frameworks that implement it let
-              you fetch data in asynchronous components that run on the server
-              or even during the build. Read data from a file or a database, and
-              pass it down to your interactive components.
+              React는 아키텍처이기도 합니다. 이를 구현하는 프레임워크를 사용하면
+              서버에서 실행되는 비동기 컴포넌트에서 또는 빌드 도중에 데이터를
+              가져올 수 있습니다. 파일이나 데이터베이스에서 데이터를 읽고, 이를
+              상호작용하는 컴포넌트로 전달할 수 있습니다.
             </Para>
             <div className="flex justify-start w-full lg:justify-center">
               <CTA
                 color="gray"
                 icon="framework"
                 href="/learn/start-a-new-react-project">
-                Get started with a framework
+                프레임워크로 시작하기
               </CTA>
             </div>
           </Center>
@@ -267,12 +263,12 @@ export function HomeContent() {
         <Section background="left-card">
           <div className="mx-auto flex flex-col w-full">
             <div className="mx-auto max-w-4xl lg:text-center items-center px-5 flex flex-col">
-              <Header>Use the best from every platform</Header>
+              <Header>모든 플랫폼에서 사용하기</Header>
               <Para>
-                People love web and native apps for different reasons. React
-                lets you build both web apps and native apps using the same
-                skills. It leans upon each platform’s unique strengths to let
-                your interfaces feel just right on every platform.
+                사람들은 다양한 이유로 웹과 네이티브 앱을 좋아합니다. React는
+                동일한 기술을 사용하여 웹 앱과 네이티브 앱을 모두 만들 수
+                있습니다. 각 플랫폼에 강점을 활용하여 모든 플랫폼에서 적합한
+                인터페이스를 구현할 수 있습니다.
               </Para>
             </div>
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row mt-16 mb-20 lg:mb-28 px-5 gap-20 lg:gap-5">
@@ -286,15 +282,15 @@ export function HomeContent() {
                     <div className="bg-wash relative h-14 w-full" />
                     <div className="relative flex items-start justify-center flex-col flex-1 pb-16 pt-5 gap-3 px-5 lg:px-10 lg:pt-8">
                       <h4 className="leading-tight text-primary font-semibold text-3xl lg:text-4xl">
-                        Stay true to the web
+                        웹에 충실하기
                       </h4>
                       <p className="lg:text-xl leading-normal text-secondary">
-                        People expect web app pages to load fast. On the server,
-                        React lets you start streaming HTML while you’re still
-                        fetching data, progressively filling in the remaining
-                        content before any JavaScript code loads. On the client,
-                        React can use standard web APIs to keep your UI
-                        responsive even in the middle of rendering.
+                        사람들은 웹이 빠르게 로드되길 기대합니다. 서버에서 React
+                        를 사용하면 데이터를 가져오는 동안 HTML을 스트리밍하여
+                        JavaScript 코드가 로드되기 전에 남은 내용을 점진적으로
+                        채울 수 있습니다. 클라이언트에서 React는 표준 web API를
+                        사용하여 렌더링 중에도 UI를 반응적으로 유지할 수
+                        있습니다.
                       </p>
                     </div>
                   </div>
@@ -372,21 +368,21 @@ export function HomeContent() {
                       </div>
                       <div className="flex flex-col items-start justify-center pt-0 gap-3 px-2.5 lg:pt-8 lg:px-8">
                         <h4 className="leading-tight text-primary dark:text-primary-dark font-semibold text-3xl lg:text-4xl">
-                          Go truly native
+                          네이티브에서 사용하기
                         </h4>
                         <p className="h-full lg:text-xl text-secondary dark:text-secondary-dark leading-normal">
-                          People expect native apps to look and feel like their
-                          platform.{' '}
+                          사람들은 네이티브 앱이 플랫폼과 같은 모양처럼
+                          느껴지기를 원합니다.{' '}
                           <Link href="https://reactnative.dev">
                             React Native
                           </Link>{' '}
-                          and{' '}
-                          <Link href="https://github.com/expo/expo">Expo</Link>{' '}
-                          let you build apps in React for Android, iOS, and
-                          more. They look and feel native because their UIs{' '}
-                          <i>are</i> truly native. It’s not a web view—your
-                          React components render real Android and iOS views
-                          provided by the platform.
+                          와{' '}
+                          <Link href="https://github.com/expo/expo">Expo</Link>
+                          를 사용하면 React를 통하여 Android, iOS 등을 위한 앱을
+                          빌드 할 수 있습니다. UI들이 native 이기때문에 진짜
+                          native 처럼 보여집니다. 이것은 web view 가 아닙니다.
+                          React 컴포넌트들은 실제 Android, iOS 플랫폼에서
+                          제공하는 view 를 렌더링합니다.
                         </p>
                       </div>
                     </div>
@@ -396,14 +392,14 @@ export function HomeContent() {
             </div>
             <div className="px-5 lg:px-0 max-w-4xl mx-auto lg:text-center text-secondary dark:text-secondary-dark">
               <Para>
-                With React, you can be a web <i>and</i> a native developer. Your
-                team can ship to many platforms without sacrificing the user
-                experience. Your organization can bridge the platform silos, and
-                form teams that own entire features end-to-end.
+                React를 사용하면 웹 및 네이티브 개발자가 될 수 있습니다. 사용자
+                경험의 저하 없이 여러 플랫폼에 출시할 수 있습니다. 조직에서는
+                플랫폼 간의 격차를 줄이고, 기능을 완전히 소유하는 팀을 구성할 수
+                있습니다.
               </Para>
               <div className="flex justify-start w-full lg:justify-center">
                 <CTA color="gray" icon="native" href="https://reactnative.dev/">
-                  Build for native platforms
+                  네이티브 플랫폼에서 React 사용하기
                 </CTA>
               </div>
             </div>
@@ -414,23 +410,23 @@ export function HomeContent() {
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row px-5">
             <div className="max-w-3xl lg:max-w-7xl gap-5 flex flex-col lg:flex-row lg:px-5">
               <div className="w-full lg:w-6/12 max-w-3xl flex flex-col items-start justify-start lg:pl-5 lg:pr-10">
-                <Header>Upgrade when the future is ready</Header>
+                <Header>새로운 기능이 준비되면 업그레이드 하기</Header>
                 <Para>
-                  React approaches changes with care. Every React commit is
-                  tested on business-critical surfaces with over a billion
-                  users. Over 100,000 React components at Meta help validate
-                  every migration strategy.
+                  React는 변화에 신중하게 접근합니다. 모든 React 커밋은 10억 명
+                  이상의 사용자가 있는 비즈니스에 크리티컬한 영역에서 테스트
+                  됩니다. Meta에서는 10만 개 이상의 React 컴포넌트가 모든
+                  마이그레이션 전략을 검증합니다.
                 </Para>
                 <div className="order-last pt-5">
                   <Para>
-                    The React team is always researching how to improve React.
-                    Some research takes years to pay off. React has a high bar
-                    for taking a research idea into production. Only proven
-                    approaches become a part of React.
+                    React 팀은 항상 React를 개선하는 방법을 연구합니다. 몇 년이
+                    걸리는 연구도 있습니다. React는 연구 아이디어를 제품에
+                    적용하는 데에 높은 기준을 가지고 있습니다. 검증된 접근
+                    방식만이 React 일부가 됩니다.
                   </Para>
                   <div className="hidden lg:flex justify-start w-full">
                     <CTA color="gray" icon="news" href="/blog">
-                      Read more React news
+                      더 많은 React 뉴스 읽기
                     </CTA>
                   </div>
                 </div>
@@ -438,7 +434,7 @@ export function HomeContent() {
               <div className="w-full lg:w-6/12">
                 <p className="uppercase tracking-wide font-bold text-sm text-tertiary dark:text-tertiary-dark flex flex-row gap-2 items-center mt-5 lg:-mt-2 w-full">
                   <IconChevron />
-                  Latest React News
+                  최신 React 뉴스
                 </p>
                 <div className="flex-col sm:flex-row flex-wrap flex gap-5 text-left my-5">
                   <div className="flex-1 min-w-[40%]">
@@ -456,7 +452,7 @@ export function HomeContent() {
                 </div>
                 <div className="flex lg:hidden justify-start w-full">
                   <CTA color="gray" icon="news" href="/blog">
-                    Read more React news
+                    React 뉴스 더 보기
                   </CTA>
                 </div>
               </div>
@@ -468,14 +464,11 @@ export function HomeContent() {
           <div className="w-full">
             <div className="mx-auto flex flex-col max-w-4xl">
               <Center>
-                <Header>
-                  Join a community <br className="hidden lg:inline" />
-                  of millions
-                </Header>
+                <Header>수백만명이 있는 커뮤니티</Header>
                 <Para>
-                  You’re not alone. Two million developers from all over the
-                  world visit the React docs every month. React is something
-                  that people and teams can agree on.
+                  여러분은 혼자가 아닙니다. 200만 명이 넘는 개발자들이 React
+                  문서를 매달 방문합니다. React는 사람들과 팀이 동의할 수 있는
+                  것입니다.
                 </Para>
               </Center>
             </div>
@@ -483,13 +476,12 @@ export function HomeContent() {
             <div className="mx-auto flex flex-col max-w-4xl">
               <Center>
                 <Para>
-                  This is why React is more than a library, an architecture, or
-                  even an ecosystem. React is a community. It’s a place where
-                  you can ask for help, find opportunities, and meet new
-                  friends. You will meet both developers and designers,
-                  beginners and experts, researchers and artists, teachers and
-                  students. Our backgrounds may be very different, but React
-                  lets us all create user interfaces together.
+                  이것이 바로 React가 라이브러리를 넘어 아키텍처, 심지어
+                  에코시스템 그 이상인 이유입니다. React는 커뮤니티입니다.
+                  도움을 요청하고, 기회를 찾고, 새로운 친구를 만날 수 있는
+                  곳입니다. 개발자와 디자이너, 초보자와 전문가, 연구원과 예술가,
+                  교사와 학생을 만날 수 있습니다. 모두의 배경은 다를 수 있지만,
+                  React를 통해 함께 사용자 인터페이스를 만들 수 있습니다.
                 </Para>
               </Center>
             </div>
@@ -497,16 +489,13 @@ export function HomeContent() {
 
           <div className="mt-20 px-5 lg:px-0 mb-6 max-w-4xl text-center text-opacity-80">
             <Logo className="text-link dark:text-link-dark w-24 lg:w-28 mb-10 lg:mb-8 mt-12 h-auto mx-auto self-start" />
-            <Header>
-              Welcome to the <br className="" />
-              React community
-            </Header>
+            <Header>React 커뮤니티에 오신 것을 환영합니다.</Header>
             <ButtonLink
               href={'/learn'}
               type="primary"
               size="lg"
               label="Take the Tutorial">
-              Get Started
+              시작하기
             </ButtonLink>
           </div>
         </Section>
@@ -1274,7 +1263,7 @@ function BrowserChrome({children, hasPulse, hasRefresh, domain, path}) {
     <div className="mx-auto max-w-3xl shadow-nav dark:shadow-nav-dark relative overflow-hidden w-full dark:border-opacity-10 rounded-2xl">
       <div className="w-full h-14 rounded-t-2xl shadow-outer-border backdrop-filter overflow-hidden backdrop-blur-lg backdrop-saturate-200 bg-white bg-opacity-90 z-10 absolute top-0 px-3 gap-2 flex flex-row items-center">
         <div className="select-none h-8 relative bg-gray-30/20 text-sm text-tertiary text-center rounded-full w-full flex-row flex space-between items-center">
-          <div className="h-4 w-6" />
+          {hasRefresh && <div className="h-4 w-6" />}
           <div className="w-full leading-snug flex flex-row items-center justify-center">
             <svg
               className="text-tertiary mr-1 opacity-60"
