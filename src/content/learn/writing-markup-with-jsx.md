@@ -66,7 +66,7 @@ JSX와 React는 서로 다른 별개의 개념입니다. 종종 함께 사용되
 
 ## HTML을 JSX로 변환하기 {/*converting-html-to-jsx*/}
 
-다음과 같은 HTML이 있다고 가정해봅시다. (완벽한 코드라고 가정합시다.)
+다음과 같은 HTML이 있다고 가정해 봅시다. (완벽한 코드라고 가정합시다.)
 
 ```html
 <h1>Hedy Lamarr's Todos</h1>
@@ -272,7 +272,7 @@ img { height: 90px }
 
 #### HTML을 JSX로 변환해보기 {/*convert-some-html-to-jsx*/}
 
-다음은 컴포넌트에 HTML을 붙여넣었지만 올바른 JSX가 아닙니다. 수정해보세요.
+다음은 컴포넌트에 HTML을 붙여 넣었지만, 올바른 JSX가 아닙니다. 수정해 보세요.
 
 <Sandpack>
 
