@@ -244,11 +244,11 @@ button {
 
 ---
 
-## Alternatives {/*alternatives*/}
+## 대안 {/*alternatives*/}
 
-### Passing data with a render prop {/*passing-data-with-a-render-prop*/}
+### render prop으로 데이터를 전달하기 {/*passing-data-with-a-render-prop*/}
 
-Instead of using `cloneElement`, consider accepting a *render prop* like `renderItem`. Here, `List` receives `renderItem` as a prop. `List` calls `renderItem` for every item and passes `isHighlighted` as an argument: 
+`cloneElement`를 사용하는 대신에 `renderItem`과 같은 *render prop*을 사용하는 것을 고려해보세요. 다음 예제의 `List`는 `renderItem`을 prop으로 받습니다. `List`는 모든 item에 대해 `renderItem`을 호출하고 `isHighlighted`를 인자로 전달합니다.
 
 ```js {1,7}
 export default function List({ items, renderItem }) {
@@ -261,7 +261,7 @@ export default function List({ items, renderItem }) {
       })}
 ```
 
-The `renderItem` prop is called a "render prop" because it's a prop that specifies how to render something. For example, you can pass a `renderItem` implementation that renders a `<Row>` with the given `isHighlighted` value:
+`renderItem` prop은 렌더링 방법을 지정하는 prop이기 때문에 "render prop"이라고 불립니다. 예를 들어, 주어진 `isHighlighted` 값으로 `<Row>`를 렌더링하는 `renderItem`을 전달할 수 있습니다.
 
 ```js {3,7}
 <List
@@ -276,7 +276,7 @@ The `renderItem` prop is called a "render prop" because it's a prop that specifi
 />
 ```
 
-The end result is the same as with `cloneElement`:
+최종적으로 `cloneElement`와 같은 결과가 됩니다.
 
 ```js {4,8,12}
 <List>
@@ -295,7 +295,7 @@ The end result is the same as with `cloneElement`:
 </List>
 ```
 
-However, you can clearly trace where the `isHighlighted` value is coming from.
+하지만 `isHighlighted` 값의 출처를 명확하게 추적할 수 있습니다.
 
 <Sandpack>
 
@@ -337,7 +337,7 @@ export default function List({ items, renderItem }) {
           (i + 1) % items.length
         );
       }}>
-        Next
+        다음
       </button>
     </div>
   );
@@ -391,7 +391,7 @@ button {
 
 </Sandpack>
 
-This pattern is preferred to `cloneElement` because it is more explicit.
+이러한 패턴은 보다 명시적이기 때문에 `cloneElement` 보다 선호됩니다.
 
 ---
 
