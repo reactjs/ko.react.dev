@@ -10,7 +10,7 @@ title: Context를 사용해 데이터를 깊게 전달하기
 
 <YouWillLearn>
 
-- "Prop 내리꽂기" 란?
+- "Prop drilling" 이란?
 - Context로 반복적인 prop 전달 대체하기
 - Context의 일반적인 사용 사례
 - Context의 일반적인 대안
@@ -21,7 +21,7 @@ title: Context를 사용해 데이터를 깊게 전달하기
 
 [Props 전달하기](/learn/passing-props-to-a-component)는 UI 트리를 통해 명시적으로 데이터를 사용하는 컴포넌트에 전달하는 훌륭한 방법입니다.
 
-하지만 이 방식은 어떤 prop을 트리를 통해 깊이 전해줘야 하거나, 많은 컴포넌트에서 같은 prop이 필요한 경우에 장황하고 불편할 수 있습니다. 데이터가 필요한 여러 컴포넌트의 가장 가까운 공통 조상은 트리 상 높이 위치할 수 있고 그렇게 높게까지 [state를 끌어올리는 것](/learn/sharing-state-between-components)은 "Prop 내리꽂기"라는 상황을 초래할 수 있습니다.
+하지만 이 방식은 어떤 prop을 트리를 통해 깊이 전해줘야 하거나, 많은 컴포넌트에서 같은 prop이 필요한 경우에 장황하고 불편할 수 있습니다. 데이터가 필요한 여러 컴포넌트의 가장 가까운 공통 조상은 트리 상 높이 위치할 수 있고 그렇게 높게까지 [state를 끌어올리는 것](/learn/sharing-state-between-components)은 "Prop drilling"이라는 상황을 초래할 수 있습니다.
 
 <DiagramGroup>
 
@@ -32,7 +32,7 @@ State 끌어올리기
 </Diagram>
 <Diagram name="passing_data_prop_drilling" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root node contains a bubble representing a value highlighted in purple. The value flows down through the two children, each of which pass the value but do not contain it. The left child passes the value down to two children which are both highlighted purple. The right child of the root passes the value through to one of its two children - the right one, which is highlighted purple. That child passed the value through its single child, which passes it down to both of its two children, which are highlighted purple.">
 
-Prop 내리꽂기
+Prop drilling
 
 </Diagram>
 
@@ -877,7 +877,7 @@ Context는 정적인 값으로 제한되지 않습니다. 다음 렌더링 시 �
 
 <Challenges>
 
-#### Context로 prop 내리꽂기 대체하기 {/*replace-prop-drilling-with-context*/}
+#### Context로 prop drilling 대체하기 {/*replace-prop-drilling-with-context*/}
 
 다음의 예시에서 체크 박스를 토글하는 것은 각각의 `<PlaceImage>`에 전달된 `imageSize` prop을 변경합니다. 체크 박스의 state는 `App` 컴포넌트의 최상단에서 가지고 있지만 `<PlaceImage>`에서 그 값을 알아야 합니다.
 
