@@ -1,5 +1,5 @@
 ---
-title: Your First Component
+title: 첫번째 컴포넌트
 ---
 
 <Intro>
@@ -78,7 +78,7 @@ img { height: 200px; }
 
 컴포넌트를 빌드하는 방법은 다음과 같습니다.
 
-### 1단계: 컴포넌트 내보내기{/*step-1-export-the-component*/}
+### 1단계: 컴포넌트 내보내기 {/*step-1-export-the-component*/}
 
 `export default` 접두사는 [표준 JavaScript 구문](https://developer.mozilla.org/docs/web/javascript/reference/statements/export)입니다(React에만 해당되지 않습니다). 이 접두사를 사용하면 나중에 다른 파일에서 가져올 수 있도록 파일에 주요 기능을 표시할 수 있습니다. (더 자세한 내용은 [컴포넌트 Importing 및 Exporting](/learn/importing-and-exporting-components)을 참고하세요!)
 
