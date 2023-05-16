@@ -1,24 +1,24 @@
 ---
-title: "Built-in React Components"
+title: "내장 컴포넌트"
 ---
 
 <Intro>
 
-React exposes a few built-in components that you can use in your JSX.
+React는 JSX에서 사용할 수 있는 몇 가지 기본 제공 구성 요소를 제공합니다.
 
 </Intro>
 
 ---
 
-## Built-in components {/*built-in-components*/}
+## 내장 컴포넌트 {/*built-in-components*/}
 
-* [`<Fragment>`](/reference/react/Fragment), alternatively written as `<>...</>`, lets you group multiple JSX nodes together.
-* [`<Profiler>`](/reference/react/Profiler) lets you measure rendering performance of a React tree programmatically.
-* [`<Suspense>`](/reference/react/Suspense) lets you display a fallback while the child components are loading.
-* [`<StrictMode>`](/reference/react/StrictMode) enables extra development-only checks that help you find bugs early.
+* [`<Fragment>`](/reference/react/Fragment), 또는 `<>...</>` 로 표기하며, 여러 JSX 노드를 함께 그룹화할 수 있습니다.
+* [`<Profiler>`](/reference/react/Profiler) 리액트 트리의 렌더링 성능을 프로그래밍적으로 측정할 수 있습니다.
+* [`<Suspense>`](/reference/react/Suspense) 자식 컴포넌트를 로딩하는 동안 fallback을 표시할 수 있습니다.
+* [`<StrictMode>`](/reference/react/StrictMode) 초기에 버그를 찾는 데 도움이 되는 추가 개발 전용 검사를 사용할 수 있습니다.
 
 ---
 
-## Your own components {/*your-own-components*/}
+## 자신의 컴포넌트 {/*your-own-components*/}
 
-You can also [define your own components](/learn/your-first-component) as JavaScript functions.
+JavaScript [함수로 자신의 컴포넌트를 정의](/learn/your-first-component)할 수도 있습니다.
