@@ -14,7 +14,7 @@ title: "공통 (예시: <div>)"
 
 ## 레퍼런스 {/*reference*/}
 
-### 공통 (예시: `<div>`) {/*common*/}
+### 공통 컴포넌트 (예시: `<div>`) {/*common*/}
 
 ```js
 <div className="wrapper">Some content</div>
