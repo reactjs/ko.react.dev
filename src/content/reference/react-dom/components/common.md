@@ -28,13 +28,13 @@ title: "공통 (예시: <div>)"
 
 * `children`: React 노드(엘리먼트, 문자열, 숫자, [portal,](/reference/react-dom/createPortal) `null`, `undefined` 그리고 불리언 타입과 같은 빈 노드, 또는 다른 React 노드의 배열) 입니다. 컴포넌트 내부의 콘텐츠를 지정합니다. JSX를 사용하면 일반적으로`<div><span /></div>`의 예시처럼 태그를 중첩하여 `children` prop를 암시적으로 지정합니다.
 
-* `dangerouslySetInnerHTML`: 원시 HTML 문자열이 포함된`{ __html: '<p>some html</p>' }`형식의 객체입니다. DOM 노드의 [`innerHTML`](https://developer.mozilla.org/ko/docs/Web/API/Element/innerHTML) 프로퍼티를 덮어쓰고 전달된 HTML을 내부에 표시합니다. 이것은 매우 주의해서 사용해야합니다. 내부 HTML을 신뢰할 수 없는 경우 (예시: 사용자 데이터를 기반으로 하는 경우) [XSS](https://ko.wikipedia.org/wiki/%EC%82%AC%EC%9D%B4%ED%8A%B8_%EA%B0%84_%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8C%85) 취약점이 발생할 수 있습니다. [`dangerouslySetInnerHTML`에 대해 더 알아보려면 읽어보세요.](#dangerously-setting-the-inner-html)
+* `dangerouslySetInnerHTML`: 원시 HTML 문자열이 포함된`{ __html: '<p>some html</p>' }`형식의 객체입니다. DOM 노드의 [`innerHTML`](https://developer.mozilla.org/ko/docs/Web/API/Element/innerHTML) 프로퍼티를 덮어쓰고 전달된 HTML을 내부에 표시합니다. 이것은 매우 주의해서 사용해야 합니다. 내부 HTML을 신뢰할 수 없는 경우 (예시: 사용자 데이터를 기반으로 하는 경우) [XSS](https://ko.wikipedia.org/wiki/%EC%82%AC%EC%9D%B4%ED%8A%B8_%EA%B0%84_%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8C%85) 취약점이 발생할 수 있습니다. [`dangerouslySetInnerHTML`에 대해 더 알아보려면 읽어보세요.](#dangerously-setting-the-inner-html)
 
 * `ref`: [`useRef`](/reference/react/useRef)나 [`createRef`](/reference/react/createRef)의 ref 객체, 또는 [`ref` 콜백 함수](#ref-callback)거나 [레거시 refs](https://ko.legacy.reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs)의 문자열입니다. 해당 ref는 해당 노드의 DOM 엘리먼트로 채워집니다. [ref를 사용하여 DOM을 조작하는 방법에 대해 더 자세히 알아보세요.](#manipulating-a-dom-node-with-a-ref)
 
 * `suppressContentEditableWarning`: 불리언 타입입니다. `true` 일 때 `children`과 `contentEditable={true}`(이 둘은 일반적으로 함께 작동하지 않습니다.)가 모두 존재하는 엘리먼트에 대해 React에서 발생하는 경고를 억제합니다. 이는`contentEditable` 콘텐츠를 수동으로 관리하는 텍스트 입력 라이브러리를 빌드할 때 사용됩니다.
 
-* `suppressHydrationWarning`: 불리언 타입입니다. [서버 렌더링](/reference/react-dom/server)을 사용할 때, 일반적으로 서버와 클라이언트가 서로 다른 콘텐츠를 렌더링하면 경고가 표시됩니다. 일부 드문 케이스(예시: 타임스탬프)에서는 정확한 일치를 보장하기가 매우 어렵거나 불가능합니다. `suppressHydrationWarning`를 `true` 로 설정하면, React는 해당 엘리먼트의 어트리뷰트와 콘텐츠가 일치하지 않아도 경고를 표시하지 않습니다. 이는 한단계의 깊이에서만 작동하며, 탈출구로 사용하기 위한 것입니다. 과도하게 사용하지 마세요. [suppressing hydration errors 에 대해서 읽어보세요.](/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors)
+* `suppressHydrationWarning`: 불리언 타입입니다. [서버 렌더링](/reference/react-dom/server)을 사용할 때, 일반적으로 서버와 클라이언트가 서로 다른 콘텐츠를 렌더링하면 경고가 표시됩니다. 일부 드문 사례(예시: 타임스탬프)에서는 정확한 일치를 보장하기가 매우 어렵거나 불가능합니다. `suppressHydrationWarning`를 `true`로 설정하면, React는 해당 엘리먼트의 어트리뷰트와 콘텐츠가 일치하지 않아도 경고를 표시하지 않습니다. 이는 한 단계의 깊이에서만 작동하며, 탈출구로 사용하기 위한 것입니다. 과도하게 사용하지 마세요. [suppressing hydration 오류에 대해서 읽어보세요.](/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors)
 
 * `style`: `{ fontWeight: 'bold', margin: 20 }`와 같이 CSS 스타일이 있는 객체입니다. DOM의 [`style`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) 프로퍼티에서 `fontWeight` 대신 `font-weight`로 작성하는 것과 마찬가지로 CSS 프로퍼티의 이름도 `camelCase`로 작성해야 합니다. 또한 문자열이나 숫자를 값으로 전달할 수 있습니다. `width: 100`와 같은 숫자를 전달한다면 React는 [단위가 없는 프로퍼티](https://github.com/facebook/react/blob/81d4ee9ca5c405dce62f64e61506b8e155f38d8d/packages/react-dom-bindings/src/shared/CSSProperty.js#L8-L57)가 아니라면 자동으로 `px` ("픽셀")로 값을 추가합니다. `style`은 스타일 값을 미리 알 수 없는 동적 스타일에만 사용하는 것을 권장합니다. 그 외의 경우에는 `className`을 사용하여 일반 CSS 클래스를 사용하는 것이 더 효율적입니다. [`className`과 `style`에 대해서 더 자세히 알아보세요.](#applying-css-styles)
 
@@ -44,14 +44,14 @@ title: "공통 (예시: <div>)"
 * [`aria-*`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes): ARIA 속성을 사용하면 이 엘리먼트에 대한 접근성 트리 정보를 지정할 수 있습니다. 전체적인 레퍼런스는 [ARIA 어트리뷰트](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes)를 참조하세요. React에서 모든 ARIA 어트리뷰트의 이름은 HTML에서의 이름과 완전히 동일합니다.
 * [`autoCapitalize`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/autocapitalize): 문자열 타입입니다. 사용자의 입력을 대문자로 표시할지 여부와 방법을 지정합니다. 
 * [`className`](https://developer.mozilla.org/ko/docs/Web/API/Element/className): 문자열 타입입니다. 엘리먼트의 CSS 클래스 이름을 지정합니다. [CSS 스타일 적용에 대해 자세히 알아보기.](#applying-css-styles)
-* [`contentEditable`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/contenteditable): 불리언 타입입니다. `true`일 때 브라우저는 사용자가 렌더링된 엘리먼트를 직접 편집할 수 있도록 합니다. 이는 [Lexical](https://lexical.dev/)과 같은 서식이 있는 텍스트 입력 라이브러리를 구현하는 데 사용됩니다. React는 사용자가 편집한 후에 React가 그 내용을 업데이트할 수 없기 때문에 `contentEditable={true}`가 있는 엘리먼트에 React의 자식을 전달하려고 하면 경고를 표시합니다.
+* [`contentEditable`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/contenteditable): 불리언 타입입니다. `true`일 때 브라우저는 사용자가 렌더링 된 엘리먼트를 직접 편집할 수 있도록 합니다. 이는 [Lexical](https://lexical.dev/)과 같은 서식이 있는 텍스트 입력 라이브러리를 구현하는 데 사용됩니다. React는 사용자가 편집한 후에 React가 그 내용을 업데이트할 수 없기 때문에 `contentEditable={true}`가 있는 엘리먼트에 React의 자식을 전달하려고 하면 경고를 표시합니다.
 * [`data-*`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/data-*): 데이터 속성을 사용하면 엘리먼트에 일부 문자열 데이터를 첨부할 수 있습니다.(예시: `data-fruit="banana"`) React에서는 일반적으로 프로퍼티나 state에서 데이터를 읽어오기 때문에 일반적으로 사용되지는 않습니다.
 * [`dir`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/dir): `'ltr'` 또는 `'rtl'`입니다. 엘리먼트의 텍스트 방향을 지정합니다.
 * [`draggable`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/draggable): 불리언 타입입니다. 엘리먼트의 드래그 가능 여부를 지정합니다. [HTML 드래그 앤 드롭 API](https://developer.mozilla.org/ko/docs/Web/API/HTML_Drag_and_Drop_API)의 일부입니다.
 * [`enterKeyHint`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/enterKeyHint): 문자열 타입입니다. 가상 키보드의 입력 키에 어떤 동작을 표시할지 지정합니다.
 * [`htmlFor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor): 문자열 타입입니다. [`<label>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/label) 이나 [`<output>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/output)의 경우 [label을 일부 동작에 연결할 수 있습니다.](/reference/react-dom/components/input#providing-a-label-for-an-input) 이는 [HTML attribute의 `for` 과 동일합니다.](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/for) React는 HTML 어트리뷰트의 이름 대신 `htmlFor`와 같은 표준 DOM 프로퍼티의 이름을 사용합니다.
 * [`hidden`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/hidden): 불리언 혹은 문자열 타입입니다. 엘리먼트를 숨길지에 대한 여부를 지정합니다.
-* [`id`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/id): 문자열 타입입니다. 엘리먼트의 고유 식별자를 지정하여 나중에 찾거나 다른 엘리먼트와 연결하는 데 사용할 수 있습니다. 동일한 컴포넌트의 여러 인스턴스 간의 충돌을 피하기 위해 [`useId`](/reference/react/useId)로 생성합니다.
+* [`id`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/id): 문자열 타입입니다. 엘리먼트의 고유 식별자를 지정하여 나중에 찾거나 다른 엘리먼트와 연결하는 데 사용할 수 있습니다. 동일한 컴포넌트의 여러 인스턴스 간의 충돌을 피하고자 [`useId`](/reference/react/useId)로 생성합니다.
 * [`is`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/is): 문자열 타입입니다. 지정하게 되면 컴포넌트가 [사용자 정의 엘리먼트](/reference/react-dom/components#custom-html-elements)처럼 작동합니다.
 * [`inputMode`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/inputmode): 문자열 타입입니다. 표시할 키보드의 종류(예시: 텍스트, 숫자 또는 전화번호)를 지정합니다.
 * [`itemProp`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/itemprop): 문자열 타입입니다. 구조화된 데이터 크롤러에 대해 엘리먼트가 나타내는 속성을 지정합니다.
@@ -64,17 +64,17 @@ title: "공통 (예시: <div>)"
 * `onAnimationStartCapture`: `onAnimationStart`입니다. 그러나 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행됩니다.
 * [`onAuxClick`](https://developer.mozilla.org/en-US/docs/Web/API/Element/auxclick_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 기본 포인터가 아닌 버튼을 클릭했을 때 발생합니다
 * `onAuxClickCapture`: `onAuxClick`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* `onBeforeInput`: [`InputEvent` 핸들러](#inputevent-handler) 함수입니다. 편집 가능한 엘리먼트의 값이 수정되기 전에 발생합니다. React는 아직 네이티브 [`beforeinput`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/beforeinput_event) 이벤트를 *사용하지 않습니다.* 대신 다른 이벤트를 사용하여 폴리필을 시도합니다.
+* `onBeforeInput`: [`InputEvent` 핸들러](#inputevent-handler) 함수입니다. 편집할 수 있는 엘리먼트의 값이 수정되기 전에 발생합니다. React는 아직 네이티브 [`beforeinput`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/beforeinput_event) 이벤트를 *사용하지 않습니다.* 대신 다른 이벤트를 사용하여 폴리필을 시도합니다.
 * `onBeforeInputCapture`: `onBeforeInput`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * `onBlur`: [`FocusEvent` 핸들러](#focusevent-handler) 함수입니다. 엘리먼트가 포커싱을 잃었을 때 발생합니다. 브라우저에 내장된 [`blur`](https://developer.mozilla.org/ko/docs/Web/API/Element/blur_event) 이벤트와 달리 React에서는 `onBlur` 이벤트가 버블링을 발생시킵니다.
 * `onBlurCapture`: `onBlur`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onClick`](https://developer.mozilla.org/ko/docs/Web/API/Element/click_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 포인팅 디바이스에서 기본 버튼이 클릭되었을 때 발생합니다.
+* [`onClick`](https://developer.mozilla.org/ko/docs/Web/API/Element/click_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 포인팅 디바이스에서 기본 버튼이 클릭 되었을 때 발생합니다.
 * `onClickCapture`: `onClick`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onCompositionStart`](https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionstart_event):  [`CompositionEvent` 핸들러](#compositionevent-handler) 함수입니다. [입력 메서드 편집기](https://developer.mozilla.org/en-US/docs/Glossary/Input_method_editor)가 새로운 구성 세션을 시작할 때 발생합니다.
 * `onCompositionStartCapture`: `onCompositionStart`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onCompositionEnd`](https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionend_event):  [`CompositionEvent` 핸들러](#compositionevent-handler) 함수입니다. [입력 메서드 편집기](https://developer.mozilla.org/en-US/docs/Glossary/Input_method_editor)가 구성 세션을 완료하거나 취소할 때 발생합니다.
 * `onCompositionEndCapture`: `onCompositionEnd`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onCompositionUpdate`](https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionupdate_event):  [`CompositionEvent` 핸들러](#compositionevent-handler) 함수입니다. [입력 메서드 편집기](https://developer.mozilla.org/en-US/docs/Glossary/Input_method_editor)에 새로운 문자가 입력되면 발생합니다.
+* [`onCompositionUpdate`](https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionupdate_event):  [`CompositionE드vent` 핸들러](#compositionevent-handler) 함수입니다. [입력 메서드 편집기](https://developer.mozilla.org/en-US/docs/Glossary/Input_method_editor)에 새로운 문자가 입력되면 발생합니다.
 * `onCompositionUpdateCapture`: `onCompositionUpdate`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onContextMenu`](https://developer.mozilla.org/ko/docs/Web/API/Element/contextmenu_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 컨텍스트 메뉴를 열려고 할 때 발생합니다.
 * `onContextMenuCapture`: `onContextMenu`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
@@ -126,15 +126,15 @@ title: "공통 (예시: <div>)"
 * [`onPointerLeave`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerleave_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터가 엘리먼트 내부로 이동할 때 발생합니다. 캡처 단계가 없습니다. 대신 `onPointerLeave`와 `onPointerEnter`는 떠나는 엘리먼트에서 입력되는 엘리먼트로 전파됩니다.
 * [`onPointerMove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointermove_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터의 좌표를 변경할 때 발생합니다.
 * `onPointerMoveCapture`: `onPointerMove`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onPointerOut`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerout_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터가 엘리먼트 외부로 이동하거나 포인터 상호 작용이 취소되는 경우, 그리고 [그 외 몇가지 이유](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerout_event)로 인해 발생합니다. 
+* [`onPointerOut`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerout_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터가 엘리먼트 외부로 이동하거나 포인터 상호 작용이 취소되는 경우, 그리고 [그 외 몇 가지 이유](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerout_event)로 인해 발생합니다. 
 * `onPointerOutCapture`: `onPointerOut`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onPointerUp`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerup_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터가 더 이상 활성화되지 않을 때 발생합니다.
 * `onPointerUpCapture`: `onPointerUp`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onPaste`](https://developer.mozilla.org/ko/docs/Web/API/Element/paste_event): [`ClipboardEvent` 핸들러](#clipboardevent-handler) 함수입니다. 사용자가 클립보드에서 붙여넣으려고 할 때 발생합니다.
+* [`onPaste`](https://developer.mozilla.org/ko/docs/Web/API/Element/paste_event): [`ClipboardEvent` 핸들러](#clipboardevent-handler) 함수입니다. 사용자가 클립보드에서 붙여 넣으려고 할 때 발생합니다.
 * `onPasteCapture`: `onPaste`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onScroll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll_event): [`이벤트` 핸들러](#event-handler) 함수입니다. 엘리먼트를 스크롤할 때 발생합니다. 이 이벤트는 버블링이 발생하지 않습니다.
+* [`onScroll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll_event): [`이벤트` 핸들러](#event-handler) 함수입니다. 엘리먼트를 스크롤 할 때 발생합니다. 이 이벤트는 버블링이 발생하지 않습니다.
 * `onScrollCapture`: `onScroll`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onSelect`](https://developer.mozilla.org/ko/docs/Web/API/HTMLInputElement/select_event): [`이벤트` 핸들러](#event-handler) 함수입니다. 입력 변경과 같이 편집 가능한 엘리먼트 내부에서 선택되면 실행됩니다. React는 `onSelect` 이벤트를 `contentEditable={true}` 엘리먼트에도 작동하도록 확장합니다. 또한 React는 빈 선택과 (선택에 영향을 줄 수 있는) 편집 시에도 발동되도록 확장합니다.
+* [`onSelect`](https://developer.mozilla.org/ko/docs/Web/API/HTMLInputElement/select_event): [`이벤트` 핸들러](#event-handler) 함수입니다. 입력 변경과 같이 편집할 수 있는 엘리먼트 내부에서 선택되면 실행됩니다. React는 `onSelect` 이벤트를 `contentEditable={true}` 엘리먼트에도 작동하도록 확장합니다. 또한 React는 빈 선택과 (선택에 영향을 줄 수 있는) 편집 시에도 발동되도록 확장합니다.
 * `onSelectCapture`: `onSelect`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onTouchCancel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchcancel_event): [`TouchEvent` 핸들러](#touchevent-handler) 함수입니다. 브라우저가 터치 상호작용을 취소할 때 발생합니다.
 * `onTouchCancelCapture`: `onTouchCancel`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
@@ -151,7 +151,7 @@ title: "공통 (예시: <div>)"
 * [`role`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles): 문자열 타입입니다. 보조 기술에 대한 엘리먼트의 역할을 명시적으로 지정합니다.
 * [`slot`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles): 문자열 타입입니다. 그림자 DOM을 사용할 때 슬롯의 이름을 지정합니다. React에서는 일반적으로 JSX를 프로퍼티로 전달하여 동일한 패턴을 얻을 수 있습니다. (예시: `<Layout left={<Sidebar />} right={<Content />} />`.
 * [`spellCheck`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/spellcheck): 불리언 또는 null 타입입니다. `true` 또는 `false`로 설정하여 맞춤법 검사를 활성화 또는 비활성화합니다.
-* [`tabIndex`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/tabindex): 숫자 타입입니다. 기본 탭 버튼 동작을 재정의합니다. [`-1` 과 `0` 이외의 값은 사용하지 마십시오.](https://www.tpgi.com/using-the-tabindex-attribute/)
+* [`tabIndex`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/tabindex): 숫자 타입입니다. 기본 탭 버튼 동작을 재정의합니다. [`-1`과 `0` 이외의 값은 사용하지 마십시오.](https://www.tpgi.com/using-the-tabindex-attribute/)
 * [`title`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/title): 문자열 타입입니다. 엘리먼트의 툴팁 텍스트를 지정합니다.
 * [`translate`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/translate): `'yes'`나`'no'` 중 하나입니다. `'no'` 를 전달하면 엘리먼트의 콘텐츠가 번역에서 제외됩니다.
 
@@ -253,9 +253,9 @@ ref 객체 (예시: [`useRef`](/reference/react/useRef#manipulating-the-dom-with
 
 [`ref` 콜백에 대한 예시를 참조하세요.](/learn/manipulating-the-dom-with-refs#how-to-manage-a-list-of-refs-using-a-ref-callback)
 
-`<div>` DOM 노드가 화면에 추가될 때, React는 `node`를 인수로 사용하여 `ref` 콜백을 호출합니다. 해당 `<div>` DOM 노드가 제거되면 React는 `null` 을 사용하여 `ref` 콜백을 호출합니다.
+`<div>` DOM 노드가 화면에 추가될 때, React는 `node`를 인수로 사용하여 `ref` 콜백을 호출합니다. 해당 `<div>` DOM 노드가 제거되면 React는 `null`을 사용하여 `ref` 콜백을 호출합니다.
 
-React는 *다른* `ref` 콜백을 전달할 때 마다 `ref` 콜백을 호출합니다. 위의 예시에서 `(node) => { ... }` 는 모든 렌더링에서 다른 함수입니다. 컴포넌트가 다시 렌더링 될 때, *이전* 함수는 `null`을 인수로 사용하여 호출되고 *다음*함수는 DOM 노드를 사용하여 호출됩니다.
+React는 *다른* `ref` 콜백을 전달할 때 마다 `ref` 콜백을 호출합니다. 위의 예시에서 `(node) => { ... }` 는 모든 렌더링에서 다른 함수입니다. 컴포넌트가 다시 렌더링 될 때, *이전* 함수는 `null`을 인수로 사용하여 호출되고 *다음* 함수는 DOM 노드를 사용하여 호출됩니다.
 
 #### 매개변수 {/*ref-callback-parameters*/}
 
@@ -269,7 +269,7 @@ React는 *다른* `ref` 콜백을 전달할 때 마다 `ref` 콜백을 호출합
 
 ### React 이벤트 객체 {/*react-event-object*/}
 
-이벤트 핸들러는 *React 이벤트 객체* 를 받게 되며, "합성 이벤트"라고도 합니다.
+이벤트 핸들러는 *React 이벤트 객체*를 받게 되며, "합성 이벤트"라고도 합니다.
 
 ```js
 <button onClick={e => {
@@ -287,15 +287,15 @@ React는 *다른* `ref` 콜백을 전달할 때 마다 `ref` 콜백을 호출합
 React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs/Web/API/Event) 프로퍼티의 일부를 구현했습니다.
 
 * [`bubbles`](https://developer.mozilla.org/ko/docs/Web/API/Event/bubbles): 불리언 타입입니다. 이벤트가 DOM을 통해 버블링되는지 여부를 반환합니다. 
-* [`cancelable`](https://developer.mozilla.org/ko/docs/Web/API/Event/cancelable): 불리언 타입입니다. 이벤트를 취소할 수 있는지 여부를 반환합니다.
-* [`currentTarget`](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget): DOM 노드 입니다. React 트리에서 현재 핸들러가 연결된 노드를 반환합니다.
+* [`cancelable`](https://developer.mozilla.org/ko/docs/Web/API/Event/cancelable): 불리언 타입입니다. 이벤트를 취소할 수 있는지를 반환합니다.
+* [`currentTarget`](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget): DOM 노드입니다. React 트리에서 현재 핸들러가 연결된 노드를 반환합니다.
 * [`defaultPrevented`](https://developer.mozilla.org/ko/docs/Web/API/Event/defaultPrevented): 불리언 타입입니다. `preventDefault`가 호출되었는지 여부를 반환합니다.
 * [`eventPhase`](https://developer.mozilla.org/ko/docs/Web/API/Event/eventPhase): 숫자 타입입니다. 이벤트가 현재 어느 단계에 있는지 반환합니다.
-* [`isTrusted`](https://developer.mozilla.org/ko/docs/Web/API/Event/isTrusted): 불리언 타입입니다. 사용자에 의해 이벤트가 시작되었는에 대한 여부를 반환합니다. 
+* [`isTrusted`](https://developer.mozilla.org/ko/docs/Web/API/Event/isTrusted): 불리언 타입입니다. 사용자에 의해 이벤트가 시작되었는지에 대한 여부를 반환합니다. 
 * [`target`](https://developer.mozilla.org/ko/docs/Web/API/Event/target): DOM 노드입니다. (멀리 있는 자식일 수도 있는)이벤트가 발생한 노드를 반환합니다.
 * [`timeStamp`](https://developer.mozilla.org/ko/docs/Web/API/Event/timeStamp): 숫자 타입입니다. 이벤트가 발생한 시간을 반환합니다.
 
-추가적으로 React 이벤트 객체는 다음과 같은 프로퍼티를 제공합니다.
+추가로 React 이벤트 객체는 다음과 같은 프로퍼티를 제공합니다.
 
 * `nativeEvent`: DOM [`Event`](https://developer.mozilla.org/ko/docs/Web/API/Event) 이벤트입니다. 원래의 브라우저 이벤트 객체입니다.
 
@@ -306,7 +306,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
 * [`preventDefault()`](https://developer.mozilla.org/ko/docs/Web/API/Event/preventDefault): 이벤트에 대한 기본 브라우저 동작을 방지합니다.
 * [`stopPropagation()`](https://developer.mozilla.org/ko/docs/Web/API/Event/stopPropagation): React 트리를 통한 이벤트 전파를 중지합니다.
 
-추가적으로 React 이벤트 객체는 다음과 같은 프로퍼티를 제공합니다.
+추가로 React 이벤트 객체는 다음과 같은 프로퍼티를 제공합니다.
 
 * `isDefaultPrevented()`: `preventDefault`가 호출되었는지에 대한 여부를 나타내는 불리언 값을 반환합니다.
 * `isPropagationStopped()`: `stopPropagation`이 호출되었는지에 대한 여부를 나타내는 불리언 값을 반환합니다.
@@ -315,7 +315,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
 
 #### 주의사항 {/*react-event-object-caveats*/}
 
-* `currentTarget`, `eventPhase`, `target`, `type`의 값은 React 코드가 예상하는 값을 반영합니다. 내부적으로는 React는 이벤트 핸들러를 루에 첨부하지만 React 이벤트 객체에는 반영되지 않습니다. 예를 들어 `e.currentTarget`은 기본`e.nativeEvent.currentTarget`과 동일하지 않을 수 있습니다. 폴리필 된 이벤트의 경우 `e.type` (React 이벤트 타입)이 `e.nativeEvent.type` (기본 타입)과 다를 수 있습니다.
+* `currentTarget`, `eventPhase`, `target`, `type`의 값은 React 코드가 예상하는 값을 반영합니다. 내부적으로는 React는 이벤트 핸들러를 루트에 첨부하지만, React 이벤트 객체에는 반영되지 않습니다. 예를 들어 `e.currentTarget`은 기본`e.nativeEvent.currentTarget`과 동일하지 않을 수 있습니다. 폴리필 된 이벤트의 경우 `e.type` (React 이벤트 타입)이 `e.nativeEvent.type` (기본 타입)과 다를 수 있습니다.
 
 ---
 
@@ -409,7 +409,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
 * `e`: 다음과 같은 추가 [`DragEvent`](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent) 프로퍼티가 있는 [React 이벤트 객체](#react-event-object)입니다. 
   * [`dataTransfer`](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent/dataTransfer)
 
-  이는 상속된 [`MouseEvent`](https://developer.mozilla.org/ko/docs/Web/API/MouseEvent)의 프로퍼티도 포함됩니다.
+  이는 상속된 [`MouseEvent`](https://developer.mozilla.org/ko/docs/Web/API/MouseEvent)의 프로퍼티도 포함합니다.
 
   * [`altKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/altKey)
   * [`button`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button)
@@ -428,7 +428,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
   * [`screenY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenY)
   * [`shiftKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/shiftKey)
 
-  또한 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함됩니다.
+  또한 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함합니다.
 
   * [`detail`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail)
   * [`view`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/view)
@@ -453,7 +453,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
 * `e`: 다음과 같은 추가 [`FocusEvent`](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent) 프로퍼티가 있는 [React 이벤트 객체](#react-event-object)입니다. 
   * [`relatedTarget`](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/relatedTarget)
 
-  또한 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함됩니다.
+  또한 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함합니다.
 
   * [`detail`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail)
   * [`view`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/view)
@@ -515,7 +515,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
   * [`shiftKey`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/shiftKey)
   * [`which`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/which)
 
-  또한 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함됩니다.
+  또한 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함합니다.
 
   * [`detail`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail)
   * [`view`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/view)
@@ -559,7 +559,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
   * [`screenY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenY)
   * [`shiftKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/shiftKey)
 
-  또한 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함됩니다.
+  또한 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함합니다.
 
   * [`detail`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail)
   * [`view`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/view)
@@ -615,7 +615,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
   * [`screenY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenY)
   * [`shiftKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/shiftKey)
 
-  또한 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함됩니다.
+  또한 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함합니다.
 
   * [`detail`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail)
   * [`view`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/view)
@@ -647,7 +647,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
   * [`touches`](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches)
   * [`targetTouches`](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/targetTouches)
   
-  또한 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함됩니다.
+  또한 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함합니다.
 
   * [`detail`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail)
   * [`view`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/view)
@@ -710,7 +710,7 @@ CSS 전환 이벤트에 대한 이벤트 핸들러 유형입니다.
   * [`deltaZ`](https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent/deltaZ)
 
 
-  또한 다음과 같이 상속된 [`MouseEvent`](https://developer.mozilla.org/ko/docs/Web/API/MouseEvent)의 프로퍼티도 포함됩니다.
+  또한 다음과 같이 상속된 [`MouseEvent`](https://developer.mozilla.org/ko/docs/Web/API/MouseEvent)의 프로퍼티도 포함합니다.
 
 * [`altKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/altKey)
 * [`button`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button)
@@ -729,7 +729,7 @@ CSS 전환 이벤트에 대한 이벤트 핸들러 유형입니다.
 * [`screenY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenY)
 * [`shiftKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/shiftKey)
 
-  더불어 아래의 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함됩니다.
+  더불어 아래의 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함합니다.
 
   * [`detail`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail)
   * [`view`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/view)
@@ -834,7 +834,7 @@ function Row({ isSelected }) {
 }
 ```
 
-이는 조건부 클래스가 여러개 있는 경우 특히 편리합니다.
+이는 조건부 클래스가 여러 개 있는 경우 특히 편리합니다.
 
 ```js
 import cn from 'classnames';
@@ -858,7 +858,7 @@ function Row({ isSelected, size }) {
 
 ### ref를 사용하여 DOM 노드 조작하기 {/*manipulating-a-dom-node-with-a-ref*/}
 
-때로는 JSX에서 태그와 연결된 브라우저 DOM 노드를 가져와야 하는 경우가 있습니다. 예를 들어 버튼이 클릭될 때 `<input>` 에 포커싱을 맞추러면 브라우저의 `<input>` DOM 노드에서 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) 를 호출하면 됩니다. 
+때로는 JSX에서 태그와 연결된 브라우저 DOM 노드를 가져와야 하는 경우가 있습니다. 예를 들어 버튼이 클릭 될 때 `<input>` 에 포커싱을 맞추려면 브라우저의 `<input>` DOM 노드에서 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)를 호출하면 됩니다. 
 
 태그에 대한 브라우저의 DOM 노드를 가져오려면 [ref를 선언](/reference/react/useRef)하고 해당 태그에 `ref` 어트리뷰트로 전달합니다.
 
@@ -873,7 +873,7 @@ export default function Form() {
     // ...
 ```
 
-React는 DOM 노드가 화면에 렌더링된 후 `inputRef.current` 에 넣습니다.
+React는 DOM 노드가 화면에 렌더링 된 후 `inputRef.current` 에 넣습니다.
 
 <Sandpack>
 
@@ -1000,7 +1000,7 @@ export default function MarkdownPreview() {
 }
 ```
 
-HTML에 포함된 코드가 실행됩니다. 해커는 이 보안 허점을 이용하여 사용자의 정보를 훔치거나 사용자 대신 작업을 수행할 수 있습니다. **신뢰할 수 있고 유해한 정보가 포함되어 있지 않은 데이터를 사용할 때만 `dangerouslySetInnerHTML` 를 사용하세요.**
+HTML에 포함된 코드가 실행됩니다. 해커는 이 보안 허점을 이용하여 사용자의 정보를 훔치거나 사용자 대신 작업을 수행할 수 있습니다. **신뢰할 수 있고 유해한 정보가 포함되어 있지 않은 데이터를 사용할 때만 `dangerouslySetInnerHTML`을 사용하세요.**
 
 ---
 
