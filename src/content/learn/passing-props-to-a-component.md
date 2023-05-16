@@ -180,7 +180,7 @@ function Avatar(props) {
 }
 ```
 
-보통은 전체 props 자체를 필요로 하지는 않기에, 개별 props로 구조 분해 합니다.
+보통은 전체 props 자체를 필요로 하지는 않기에, 개별 props로 구조 분해 할당합니다.
 
 <Pitfall>
 
@@ -421,7 +421,7 @@ export default function App() {
 <Recap>
 
 * Props를 전달하려면 HTML 어트리뷰트를 사용할 때와 마찬가지로 JSX에 props를 추가합니다.
-* Props를 읽으려면 `function Avatar({ person, size })` 구조 분해 문법을 사용합니다.
+* Props를 읽으려면 `function Avatar({ person, size })` 구조 분해 할당 문법을 사용합니다.
 * `size = 100` 과 같은 기본값을 지정할 수 있으며, 이는 누락되거나 `undefined` 인 props에 사용됩니다.
 * 모든 props를 `<Avatar {...props} />`로 전달할 수 있습니다. JSX spread 문법을 사용할 수 있지만 과도하게 사용하지 마세요!
 * `<Card><Avatar /></Card>`와 같이 중첩된 JSX는 `Card`컴포넌트의 자식 컴포넌트로 나타납니다.
