@@ -546,7 +546,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
   * [`button`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button)
   * [`buttons`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/buttons)
   * [`ctrlKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/ctrlKey)
-  * [`clientX`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientX)
+  * [`clientX`](https://developer.mozilla.org/ko/docs/Web/API/MouseEvent/clientX)
   * [`clientY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientY)
   * [`getModifierState(key)`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/getModifierState)
   * [`metaKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/metaKey)
@@ -602,7 +602,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
   * [`button`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button)
   * [`buttons`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/buttons)
   * [`ctrlKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/ctrlKey)
-  * [`clientX`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientX)
+  * [`clientX`](https://developer.mozilla.org/ko/docs/Web/API/MouseEvent/clientX)
   * [`clientY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientY)
   * [`getModifierState(key)`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/getModifierState)
   * [`metaKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/metaKey)
@@ -712,22 +712,22 @@ CSS 전환 이벤트에 대한 이벤트 핸들러 유형입니다.
 
   또한 다음과 같이 상속된 [`MouseEvent`](https://developer.mozilla.org/ko/docs/Web/API/MouseEvent)의 프로퍼티도 포함됩니다.
 
-  * [`altKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/altKey)
-  * [`button`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button)
-  * [`buttons`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/buttons)
-  * [`ctrlKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/ctrlKey)
-  * [`clientX`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientX)
-  * [`clientY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientY)
-  * [`getModifierState(key)`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/getModifierState)
-  * [`metaKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/metaKey)
-  * [`movementX`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/movementX)
-  * [`movementY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/movementY)
-  * [`pageX`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageX)
-  * [`pageY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY)
-  * [`relatedTarget`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/relatedTarget)
-  * [`screenX`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenX)
-  * [`screenY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenY)
-  * [`shiftKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/shiftKey)
+* [`altKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/altKey)
+* [`button`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button)
+* [`buttons`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/buttons)
+* [`ctrlKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/ctrlKey)
+* [`clientX`](https://developer.mozilla.org/ko/docs/Web/API/MouseEvent/clientX)
+* [`clientY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientY)
+* [`getModifierState(key)`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/getModifierState)
+* [`metaKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/metaKey)
+* [`movementX`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/movementX)
+* [`movementY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/movementY)
+* [`pageX`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageX)
+* [`pageY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY)
+* [`relatedTarget`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/relatedTarget)
+* [`screenX`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenX)
+* [`screenY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenY)
+* [`shiftKey`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/shiftKey)
 
   더불어 아래의 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함됩니다.
 
@@ -755,7 +755,7 @@ CSS 전환 이벤트에 대한 이벤트 핸들러 유형입니다.
 }
 ```
 
-React는 CSS 파일을 추가하는 방법을 규정하지 않습니다. 가장 간단한 방법은 HTML에 [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) 태그를 추가하는 것입니다. 빌드 도구나 프레임워크를 사용하고 있다면, 해당 기술의 문서를 참조하여 프로젝트에 CSS 파일을 추가하는 방법을 알아보세요.
+React는 CSS 파일을 추가하는 방법을 규정하지 않습니다. 가장 간단한 방법은 HTML에 [`<link>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/link) 태그를 추가하는 것입니다. 빌드 도구나 프레임워크를 사용하고 있다면, 해당 기술의 문서를 참조하여 프로젝트에 CSS 파일을 추가하는 방법을 알아보세요.
 
 때때로 스타일 값은 데이터에 따라 달라집니다. `style` 어트리뷰트를 사용하여 일부 스타일을 동적으로 전달할 수 있습니다.
 
@@ -820,7 +820,7 @@ export default function Avatar({ user }) {
 
 예를 들어 `className={'row ' + (isSelected ? 'selected': '')}`는 `isSelected`가 `true`인지의 여부에 따라 `className="row"` 또는 `className="row selected"`를 생성합니다.
 
-가독성을 높이고 싶다면 [`classnames`](https://github.com/JedWatson/classnames)와 같은 작은 헬퍼 라이브러리를 사용할 수 있습니다.
+가독성을 높이고 싶다면 [`classnames`](https://github.com/JedWatson/classnames)와 같은 작은 도움을 주는 라이브러리를 사용할 수 있습니다.
 
 ```js
 import cn from 'classnames';
@@ -915,7 +915,7 @@ const markup = { __html: '<p>some raw html</p>' };
 return <div dangerouslySetInnerHTML={markup} />;
 ```
 
-**이것은 위험합니다. 기본 DOM의 [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) 프로퍼티와 마찬가지로 각별히 주의해야 합니다! 마크업이 완전히 신뢰할 수 있는 출처에서 제공되는 것이 아니라면,  [XSS](https://ko.wikipedia.org/wiki/%EC%82%AC%EC%9D%B4%ED%8A%B8_%EA%B0%84_%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8C%85) 취약점을 도입하는 것은 간단합니다.**
+**이것은 위험합니다. 기본 DOM의 [`innerHTML`](https://developer.mozilla.org/ko/docs/Web/API/Element/innerHTML) 프로퍼티와 마찬가지로 각별히 주의해야 합니다! 마크업이 완전히 신뢰할 수 있는 출처에서 제공되는 것이 아니라면,  [XSS](https://ko.wikipedia.org/wiki/%EC%82%AC%EC%9D%B4%ED%8A%B8_%EA%B0%84_%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8C%85) 취약점을 도입하는 것은 간단합니다.**
 
 예를 들어, 마크다운을 HTML로 변환하는 라이브러리를 사용할 때, 해당 파서에 버그가 없고 사용자가 자신의 입력만 볼 수 있다고 믿는다면 다음과 같이 결과 HTML을 표시할 수 있습니다.
 
