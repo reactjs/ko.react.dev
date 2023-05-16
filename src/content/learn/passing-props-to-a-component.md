@@ -218,7 +218,7 @@ function Avatar({ person, size = 100 }) {
 
 이 [기본값](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Default_parameters)은 size prop이 없거나 `size={undefined}`로 전달될 때 사용됩니다. 그러나 `size={null}`  또는 `size={0}`으로 전달된다면, 기본값은 사용되지 **않습니다**.
 
-## JSX 전개 문법으로 props 전달하기 {/*forwarding-props-with-the-jsx-spread-syntax*/}
+## JSX spread 문법으로 props 전달하기 {/*forwarding-props-with-the-jsx-spread-syntax*/}
 
 때때로 전달되는 props는 반복적입니다.
 
@@ -238,7 +238,7 @@ function Profile({ person, size, isSepia, thickBorder }) {
 ```
 
 반복적인 코드는 가독성을 높일 수 있다는 점에서 잘못된 것은 아닙니다. 하지만 때로는 간결함이 중요할 때도 있습니다. `Profile`이 `Avatar`에서 하는 것처럼, 일부 컴포넌트는 그들의 모든 props를 자식 컴포넌트에 전달합니다. 
-props를 직접 사용하지 않기 때문에 보다 간결한 "전개" 문법을 사용하는 것이 합리적일 수 있습니다.
+props를 직접 사용하지 않기 때문에 보다 간결한 "spread" 문법을 사용하는 것이 합리적일 수 있습니다.
 
 
 ```js
@@ -253,7 +253,7 @@ function Profile(props) {
 
 이렇게 하면 `Profile`의 모든 props를 각각의 이름을 나열하지 않고 `Avatar`로 전달합니다.
 
-**전개 문법은 제한적으로 사용하세요**. 다른 모든 컴포넌트에 이 구문을 사용한다면 문제가 있는 것입니다. 이는 종종 컴포넌트들을 분할하여 자식을 JSX로 전달해야 함을 나타냅니다. 더 자세히 알아봅시다!
+**spread 문법은 제한적으로 사용하세요**. 다른 모든 컴포넌트에 이 구문을 사용한다면 문제가 있는 것입니다. 이는 종종 컴포넌트들을 분할하여 자식을 JSX로 전달해야 함을 나타냅니다. 더 자세히 알아봅시다!
 
 ## 자식을 JSX로 전달하기 {/*passing-jsx-as-children*/}
 
@@ -423,7 +423,7 @@ export default function App() {
 * Props를 전달하려면 HTML 어트리뷰트를 사용할 때와 마찬가지로 JSX에 props를 추가합니다.
 * Props를 읽으려면 `function Avatar({ person, size })` 구조 분해 문법을 사용합니다.
 * `size = 100` 과 같은 기본값을 지정할 수 있으며, 이는 누락되거나 `undefined` 인 props에 사용됩니다.
-* 모든 props를 `<Avatar {...props} />`로 전달할 수 있습니다. JSX 전개 문법을 사용할 수 있지만 과도하게 사용하지 마세요!
+* 모든 props를 `<Avatar {...props} />`로 전달할 수 있습니다. JSX spread 문법을 사용할 수 있지만 과도하게 사용하지 마세요!
 * `<Card><Avatar /></Card>`와 같이 중첩된 JSX는 `Card`컴포넌트의 자식 컴포넌트로 나타납니다.
 * Props는 읽기 전용 스냅샷으로, 렌더링 할 때마다 새로운 버전의 props를 받습니다.
 * Props는 변경할 수 없습니다. 상호작용이 필요한 경우 state를 설정해야 합니다.
