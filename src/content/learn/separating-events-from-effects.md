@@ -31,7 +31,7 @@ title: 'Effect에서 이벤트 분리하기'
 
 ### 이벤트 핸들러는 특정 상호작용에 대한 응답으로 실행된다 {/*event-handlers-run-in-response-to-specific-interactions*/}
 
-사용자 관점에서, 메시지는 "전송" 버튼이 클릭 되었기 *때문에* 전송되어야 합니다. 다른 때나 다른 이유로 메시지가 전송되면 사용자는 꽤 당황할 것입니다. 그러므로 메시지를 전송하는 건 이벤트 핸들러가 되어야 합니다. 이벤트 핸들러는 특정 상호작용을 처리하게 해줍니다.
+사용자 관점에서 메시지는 "전송" 버튼이 클릭 되었기 *때문에* 전송되어야 합니다. 다른 때나 다른 이유로 메시지가 전송되면 사용자는 꽤 당황할 것입니다. 그러므로 메시지를 전송하는 건 이벤트 핸들러가 되어야 합니다. 이벤트 핸들러는 특정 상호작용을 처리하게 해줍니다.
 
 ```js {4-6}
 function ChatRoom({ roomId }) {
@@ -72,7 +72,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-위의 코드로, 사용자가 수행하는 특정 상호작용에 *상관없이* 현재 선택된 채팅 서버와 항상 연결된 상태임을 확신할 수 있습니다. 사용자가 앱을 열기만 했든, 다른 방을 선택했든, 다른 화면으로 이동했다가 다시 돌아왔든, 컴포넌트가 현재 선택된 방과 *동기화된 상태를 유지*할 것이고 [필요할 때마다 다시 연결](/learn/lifecycle-of-reactive-effects#why-synchronization-may-need-to-happen-more-than-once)할 것을 Effect가 보장합니다.
+이렇게 코드를 작성하면 사용자가 수행하는 특정 상호작용에 *상관없이* 현재 선택된 채팅 서버와 항상 연결된 상태임을 확신할 수 있습니다. 사용자가 앱을 열기만 했든 다른 방을 선택했든 다른 화면으로 이동했다가 다시 돌아왔든, 컴포넌트가 현재 선택된 방과 *동기화된 상태를 유지*할 것이고 [필요할 때마다 다시 연결](/learn/lifecycle-of-reactive-effects#why-synchronization-may-need-to-happen-more-than-once)할 것을 Effect가 보장합니다.
 
 <Sandpack>
 
@@ -189,7 +189,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-사용자 관점에서, **`message`를 바꾸는 것이 메시지를 전송하고 싶다는 의미는 _아닙니다._** 사용자가 입력 중이라는 의미일 뿐입니다. 즉, 메시지를 전송하는 로직은 반응형이어서는 안 됩니다. <CodeStep step={2}>반응형 값</CodeStep>이 변경되었다는 이유만으로 로직이 재실행되어서는 안 됩니다. 그러므로 이 로직은 이벤트 핸들러에 속합니다.
+사용자 관점에서 **`message`를 바꾸는 것이 메시지를 전송하고 싶다는 의미는 _아닙니다._** 사용자가 입력 중이라는 의미일 뿐입니다. 즉 메시지를 전송하는 로직은 반응형이어서는 안 됩니다. <CodeStep step={2}>반응형 값</CodeStep>이 변경되었다는 이유만으로 로직이 재실행되어서는 안 됩니다. 그러므로 이 로직은 이벤트 핸들러에 속합니다.
 
 ```js {2}
   function handleSendClick() {
@@ -210,7 +210,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-사용자 관점에서, **`roomId`를 바꾸는 것은 다른 방에 연결하고 싶다는 의미입니다.** 즉, 방에 연결하기 위한 로직은 반응형이어야 합니다. 우리는 이 코드가 <CodeStep step={2}>반응형 값</CodeStep>을 "따라가고" 그 값이 바뀌면 다시 실행되기를 원합니다. 그러므로 이 로직은 Effect에 속합니다.
+사용자 관점에서 **`roomId`를 바꾸는 것은 다른 방에 연결하고 싶다는 의미입니다.** 즉 방에 연결하기 위한 로직은 반응형이어야 합니다. 우리는 이 코드가 <CodeStep step={2}>반응형 값</CodeStep>을 "따라가고" 그 값이 바뀌면 다시 실행되기를 원합니다. 그러므로 이 로직은 Effect에 속합니다.
 
 ```js {2-3}
   useEffect(() => {
@@ -388,7 +388,7 @@ label { display: block; margin-top: 10px; }
 
 `roomId`가 변경되면 채팅은 예상대로 다시 연결됩니다. 하지만 `theme`도 의존성이므로 dark 테마와 light 테마 사이를 전환할 때마다 채팅도 다시 연결됩니다. 좋지 않습니다!
 
-다시 말해, 아래의 코드 라인이 비록 (반응형인) Effect 내부에 있지만 반응형이 *아니길* 바랍니다.
+다시 말해 아래의 코드 라인이 비록 (반응형인) Effect 내부에 있지만 반응형이 *아니길* 바랍니다.
 
 ```js
       // ...
@@ -574,7 +574,7 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-Effect Event가 이벤트 핸들러와 아주 비슷하다고 생각할 수 있습니다. 이벤트 핸들러는 사용자의 상호작용에 대한 응답으로 실행되는 반면, Effect Event는 Effect에서 직접 트리거 된다는 것이 주요한 차이점입니다. Effect Event를 사용하면 Effect의 반응성과 반응형이어서는 안 되는 코드 사이의 "연결을 끊어줍니다".
+Effect Event가 이벤트 핸들러와 아주 비슷하다고 생각할 수 있습니다. 이벤트 핸들러는 사용자의 상호작용에 대한 응답으로 실행되는 반면에 Effect Event는 Effect에서 직접 트리거 된다는 것이 주요한 차이점입니다. Effect Event를 사용하면 Effect의 반응성과 반응형이어서는 안 되는 코드 사이의 "연결을 끊어줍니다".
 
 ### Effect Event로 최근 props와 state 읽기 {/*reading-latest-props-and-state-with-effect-events*/}
 
@@ -597,7 +597,7 @@ function Page() {
 }
 ```
 
-이후 사이트에 여러 경로가 추가되고, 이제 `Page` 컴포넌트는 현재 경로가 담긴 `url`을 prop으로 받습니다. `logVisit`에 `url`을 전달하여 호출하려는데 의존성 린터가 불평합니다.
+이후 사이트에 여러 경로가 추가되고 이제 `Page` 컴포넌트는 현재 경로가 담긴 `url`을 prop으로 받습니다. `logVisit`에 `url`을 전달하여 호출하려는데 의존성 린터가 불평합니다.
 
 ```js {1,3}
 function Page({ url }) {
@@ -608,7 +608,7 @@ function Page({ url }) {
 }
 ```
 
-이 코드로 무엇을 하려는 것인지 생각해 보세요. 각 URL은 서로 다른 페이지를 나타내므로 각 URL에 대한 방문을 *따로 기록하려 합니다*. 즉, 이 `logVisit` 호출은 `url`에 반응형*이어야 합니다*. 그러므로 이런 경우에는 의존성 린터의 말을 따라 `url`을 의존성으로 추가하는 것이 합리적입니다.
+이 코드로 무엇을 하려는 것인지 생각해 보세요. 각 URL은 서로 다른 페이지를 나타내므로 각 URL에 대한 방문을 *따로 기록하려 합니다*. 즉 이 `logVisit` 호출은 `url`에 반응형*이어야 합니다*. 그러므로 이런 경우에는 의존성 린터의 말을 따라 `url`을 의존성으로 추가하는 것이 합리적입니다.
 
 ```js {4}
 function Page({ url }) {
@@ -633,7 +633,7 @@ function Page({ url }) {
 }
 ```
 
-Effect 내부에서 `numberOfItems`를 사용했으므로 린터는 이를 의존성에 추가해달라고 부탁합니다. 하지만 `logVisit` 호출이 `numberOfItems`에 반응하지 *않길* 원합니다. 사용자가 장바구니에 무언가를 넣어 `numberOfItems`가 변경되는 것이 사용자가 페이지를 다시 방문했음을 *의미하지는 않습니다*. 즉, *페이지 방문*은 어떤 의미에서 "이벤트"입니다. 이 이벤트는 특정한 시점에 발생합니다.
+Effect 내부에서 `numberOfItems`를 사용했으므로 린터는 이를 의존성에 추가해달라고 부탁합니다. 하지만 `logVisit` 호출이 `numberOfItems`에 반응하지 *않길* 원합니다. 사용자가 장바구니에 무언가를 넣어 `numberOfItems`가 변경되는 것이 사용자가 페이지를 다시 방문했음을 *의미하지는 않습니다*. 즉 *페이지 방문*은 어떤 의미에서 "이벤트"입니다. 이 이벤트는 특정한 시점에 발생합니다.
 
 코드를 두 부분으로 나눠보세요.
 
@@ -657,7 +657,7 @@ function Page({ url }) {
 
 반면에 Effect 자체는 여전히 반응형입니다. Effect 내부의 코드는 prop인 `url`을 사용하므로 다른 `url`로 리렌더링 될 때마다 Effect가 재실행됩니다. 그로 인해 Effect Event인 `onVisit`가 호출될 것입니다.
 
-결과적으로 prop인 `url` 변경될 때마다 `logVisit`을 호출할 것이고, 항상 최근의 `numberOfItems`를 읽을 것입니다. 하지만 `numberOfItems` 혼자만 변경되면 어떠한 코드도 재실행되지 않습니다.
+결과적으로 prop인 `url` 변경될 때마다 `logVisit`을 호출할 것이고 항상 최근의 `numberOfItems`를 읽을 것입니다. 하지만 `numberOfItems` 혼자만 변경되면 어떠한 코드도 재실행되지 않습니다.
 
 <Note>
 
@@ -727,7 +727,7 @@ function Page({ url }) {
 
 `useEffectEvent`가 React의 안정적인 기능이 되면 **린터를 절대로 억제하지 않을 것**을 추천합니다.
 
-규칙을 억제하는 것의 첫 번째 단점은 코드에 추가한 새로운 반응형 의존성에 Effect가 "반응"해야 할 때, React가 더 이상 경고하지 않는다는 것입니다. 이전 예제에서는 React가 의존성에 `url`을 추가하라고 상기시켜 주었기 *때문에* 그렇게 했습니다. 린터를 억제하면 해당 Effect에 대한 향후 편집에 대해 이러한 알림을 더 이상 받지 않게 됩니다. 이는 버그로 이어집니다.
+규칙을 억제하는 것의 첫 번째 단점은 코드에 추가한 새로운 반응형 의존성에 Effect가 "반응"해야 할 때 React가 더 이상 경고하지 않는다는 것입니다. 이전 예제에서는 React가 의존성에 `url`을 추가하라고 상기시켜 주었기 *때문에* 그렇게 했습니다. 린터를 억제하면 해당 Effect에 대한 향후 편집에 대해 이러한 알림을 더 이상 받지 않게 됩니다. 이는 버그로 이어집니다.
 
 다음은 린터를 억제하여 발생하는 혼란스러운 버그의 예시입니다. 이 예시에서 `handleMove` 함수는 점이 커서를 따라가야 하는지를 결정하기 위해 state 변수 `canMove`의 현재 값을 읽어야 합니다. 그러나 `handleMove` 내부에서 `canMove`는 항상 `true`입니다.
 
@@ -790,7 +790,7 @@ body {
 </Sandpack>
 
 
-이 코드의 문제는 린터를 억제한다는 것입니다. 억제하는 것을 제거하면 이 Effect가 `handleMove` 함수에 의존해야 함을 알게 될 것입니다. `handleMove`는 컴포넌트 본문 내부에서 선언되어서 반응형 값이기 때문입니다. 모든 반응형 값은 의존성으로 지정되어야 하며, 그렇지 않으면 시간이 지나 오래될 가능성이 있습니다!
+이 코드의 문제는 린터를 억제한다는 것입니다. 억제하는 것을 제거하면 이 Effect가 `handleMove` 함수에 의존해야 함을 알게 될 것입니다. `handleMove`는 컴포넌트 본문 내부에서 선언되어서 반응형 값이기 때문입니다. 모든 반응형 값은 의존성으로 지정되어야 하며 그렇지 않으면 시간이 지나 오래될 가능성이 있습니다!
 
 기존 코드의 작성자는 Effect가 반응형 값에 의존하지 않는다고(`[]`) React에 "거짓말"을 했습니다. 그러므로 React는 `canMove`가 (`handleMove`와 함께) 변경된 후에 Effect를 다시 동기화하지 않았습니다. React가 Effect를 다시 동기화하지 않았기 때문에 리스너로 부착된 `handleMove`는 초기 렌더링 과정에서 생성된 `handleMove` 함수입니다. 초기 렌더링 과정에서 `canMove`가 `true`였으므로 초기 렌더링 과정에서 생성된 `handleMove`는 영원히 `true`를 바라보게 됩니다.
 
@@ -1070,13 +1070,13 @@ button { margin: 10px; }
 
 </Sandpack>
 
-이제 `increment`가 변경되면 React는 Effect를 다시 동기화시킬 것이고, 그로 인해 interval은 재시작될 것입니다.
+이제 `increment`가 변경되면 React는 Effect를 다시 동기화시킬 것이고 그로 인해 interval은 재시작될 것입니다.
 
 </Solution>
 
 #### 멈추는 카운터 고치기 {/*fix-a-freezing-counter*/}
 
-아래의 `Timer` 컴포넌트에는 매초 증가하는 state 변수 `count`가 있습니다. 증가량은 state 변수 `increment`에 저장되며, 더하기와 빼기 버튼으로 제어할 수 있습니다. 예를 들어 더하기 버튼을 9번 누르면 `count`가 이제 매초 1이 아닌 10씩 증가하는 것을 확인할 수 있습니다.
+아래의 `Timer` 컴포넌트에는 매초 증가하는 state 변수 `count`가 있습니다. 증가량은 state 변수 `increment`에 저장되며 더하기와 빼기 버튼으로 제어할 수 있습니다. 예를 들어 더하기 버튼을 9번 누르면 `count`가 이제 매초 1이 아닌 10씩 증가하는 것을 확인할 수 있습니다.
 
 이 사용자 인터페이스에는 작은 문제가 있습니다. 더하기 또는 빼기 버튼을 초당 한 번보다 빠르게 계속 누르면 타이머 자체가 잠시 멈춘 것처럼 보입니다. 타이머는 마지막으로 버튼을 누른 후 1초가 지나야 다시 시작됩니다. 타이머가 중단되지 않고 *매초* tick 하도록 이 현상의 원인을 찾고 문제를 해결하세요.
 
@@ -1151,7 +1151,7 @@ button { margin: 10px; }
 
 <Solution>
 
-Effect 내부의 코드가 state 변수 `increment`를 사용하는 것이 문제입니다. Effect가 `increment`에 의존하므로 `increment`가 변경될 때마다 Effect가 다시 동기화되고, 그로 인해 interval이 clear 됩니다. 타이머가 시작되려고 할 때마다 매번 interval을 clear 하면 타이머가 멈춘 것처럼 보일 것입니다.
+Effect 내부의 코드가 state 변수 `increment`를 사용하는 것이 문제입니다. Effect가 `increment`에 의존하므로 `increment`가 변경될 때마다 Effect가 다시 동기화되고 그로 인해 interval이 clear 됩니다. 타이머가 시작되려고 할 때마다 매번 interval을 clear 하면 타이머가 멈춘 것처럼 보일 것입니다.
 
 이 문제를 해결하려면 Effect에서 Effect Event를 `onTick`으로 추출하세요.
 
@@ -1229,7 +1229,7 @@ button { margin: 10px; }
 
 #### 조정할 수 없는 딜레이 고치기 {/*fix-a-non-adjustable-delay*/}
 
-이 예제에서는 지연 시간인 interval을 사용자화할 수 있습니다. interval은 state 변수 `delay`에 저장되어 있고 두 개의 버튼으로 업데이트됩니다. 그러나 `delay`가 1000밀리초(즉, 1초)가 될 때까지 "+100 ms" 버튼을 눌러도 타이머가 여전히 매우 빠르게(100밀리초마다) 증가하는 것을 알 수 있습니다. 마치 `delay`의 변화가 무시되는 것 같습니다. 버그를 찾아 고치세요.
+이 예제에서는 지연 시간인 interval을 사용자화할 수 있습니다. interval은 state 변수 `delay`에 저장되어 있고 두 개의 버튼으로 업데이트됩니다. 그러나 `delay`가 1000밀리초(즉 1초)가 될 때까지 "+100 ms" 버튼을 눌러도 타이머가 여전히 매우 빠르게(100밀리초마다) 증가하는 것을 알 수 있습니다. 마치 `delay`의 변화가 무시되는 것 같습니다. 버그를 찾아 고치세요.
 
 <Hint>
 
@@ -1322,7 +1322,7 @@ button { margin: 10px; }
 
 <Solution>
 
-위 예제의 문제는 코드가 실제로 해야 하는 일을 고려하지 않고 `onMount`라는 Effect Event로 추출했다는 것입니다. Effect Event는 코드의 일부를 비반응형으로 만들고 싶다는 특정한 이유가 있을 때만 추출해야 합니다. 하지만 `setInterval` 호출은 state 변수 `delay`에 *반응해야 합니다*. `delay`가 변경되면 interval이 다시 설정되기를 원하는 겁니다! 이 코드를 고치려면 모든 반응형 코드를 Effect 내부로 다시 가져오세요.
+위 예제의 문제는 코드가 실제로 해야 하는 일을 고려하지 않고 `onMount`라는 Effect Event로 추출했다는 것입니다. Effect Event는 코드 일부를 비반응형으로 만들고 싶다는 특정한 이유가 있을 때만 추출해야 합니다. 하지만 `setInterval` 호출은 state 변수 `delay`에 *반응해야 합니다*. `delay`가 변경되면 interval이 다시 설정되기를 원하는 겁니다! 이 코드를 고치려면 모든 반응형 코드를 Effect 내부로 다시 가져오세요.
 
 <Sandpack>
 
@@ -1402,7 +1402,7 @@ button { margin: 10px; }
 
 </Sandpack>
 
-코드의 *목적*보다는 *타이밍*에 초점을 두는 `onMount`같은 함수는 보통 의심해 봐야 합니다. 언뜻 보기에 "더 잘 설명한다"라고 느낄 수 있지만 의도를 모호하게 합니다. 경험상 Effect Event는 *사용자* 관점에서 일어나는 일에 부합해야 합니다. 예를 들어, `onMessage`, `onTick`, `onVisit` 또는 `onConnected`는 Effect Event의 이름으로 좋습니다. 내부의 코드는 반응형일 필요가 없을 가능성이 높습니다. 반면에 `onMount`, `onUpdate`, `onUnmount` 또는 `onAfterRender`는 너무 일반적이어서 *반응형이어야 하는* 코드를 실수로 넣기 쉽습니다. 그러므로 Effect Event의 이름은 코드가 실행된 시점이 아니라 *사용자가 일어났다고 생각하는 일*을 따서 지어야 합니다.
+코드의 *목적*보다는 *타이밍*에 초점을 두는 `onMount` 같은 함수는 보통 의심해 봐야 합니다. 언뜻 보기에 "더 잘 설명한다"라고 느낄 수 있지만 의도를 모호하게 합니다. 경험상 Effect Event는 *사용자* 관점에서 일어나는 일에 부합해야 합니다. 예를 들어 `onMessage`, `onTick`, `onVisit` 또는 `onConnected`는 Effect Event의 이름으로 좋습니다. 내부의 코드는 반응형일 필요가 없을 가능성이 높습니다. 반면에 `onMount`, `onUpdate`, `onUnmount` 또는 `onAfterRender`는 너무 일반적이어서 *반응형이어야 하는* 코드를 실수로 넣기 쉽습니다. 그러므로 Effect Event의 이름은 코드가 실행된 시점이 아니라 *사용자가 일어났다고 생각하는 일*을 따서 지어야 합니다.
 
 </Solution>
 
@@ -1412,7 +1412,7 @@ button { margin: 10px; }
 
 대부분 동작하지만, 버그가 있습니다. 드롭다운을 "general"에서 "travel"로 변경한 다음 "music"으로 아주 빠르게 변경해 보세요. 2초 안에 변경하면 (기대한 대로!) 두 개의 알림이 보이지만 *둘 다* "music에 오신 것을 환영합니다"라고 합니다.
 
-"general"에서 "travel"로 전환한 다음 "music"으로 매우 빠르게 전환할 때, 첫 번째 알림은 "travel에 오신 것을 환영합니다"이고 두 번째 알림은 "music에 오신 것을 환영합니다"가 되도록 고쳐보세요. (추가 도전으로, *이미* 알림이 올바른 방을 보여주도록 만들었다면 나중의 알림만 보여주도록 코드를 바꿔보세요.)
+"general"에서 "travel"로 전환한 다음 "music"으로 매우 빠르게 전환할 때 첫 번째 알림은 "travel에 오신 것을 환영합니다"이고 두 번째 알림은 "music에 오신 것을 환영합니다"가 되도록 고쳐보세요. (추가 도전으로 *이미* 알림이 올바른 방을 보여주도록 만들었다면 나중의 알림만 보여주도록 코드를 바꿔보세요.)
 
 <Hint>
 
@@ -1557,9 +1557,9 @@ label { display: block; margin-top: 10px; }
 
 Effect Event 내부의 `roomId`는 *Effect Event가 호출되는 시점*의 값입니다.
 
-Effect Event는 2초의 지연 후에 호출됩니다. travel 방에서 music 방으로 빠르게 전환하는 경우, travel 방의 알림을 보여줄 때쯤이면 `roomId`는 이미 `"music"`입니다. 그러므로 두 알림 모두 "music에 오신 것을 환영합니다"를 보여줍니다.
+Effect Event는 2초의 지연 후에 호출됩니다. travel 방에서 music 방으로 빠르게 전환하는 경우 travel 방의 알림을 보여줄 때쯤이면 `roomId`는 이미 `"music"`입니다. 그러므로 두 알림 모두 "music에 오신 것을 환영합니다"를 보여줍니다.
 
-이 문제를 고치려면 Effect Event 내부에서 *최근의* `roomId`을 읽는 게 아니라, 아래의 `connectedRoomId`처럼 Effect Event의 매개변수로 만드세요. 그다음 Effect에서 `onConnected(roomId)`로 호출해서 `roomId`를 전달하세요.
+이 문제를 고치려면 Effect Event 내부에서 *최근의* `roomId`를 읽는 게 아니라 아래의 `connectedRoomId`처럼 Effect Event의 매개변수로 만드세요. 그다음 Effect에서 `onConnected(roomId)`로 호출해서 `roomId`를 전달하세요.
 
 <Sandpack>
 
@@ -1694,7 +1694,7 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-`roomId`가 `"travel"`로 설정된 (그래서 `"travel"` 방에 연결된) Effect는 `"travel"`에 대한 알림을 보여줄 것입니다. `roomId`가 `"music"`으로 설정된 (그래서 `"music"` 방에 연결된) Effect는 `"music"`에 대한 알림을 보여줄 것입니다. 다시 말해 `theme`은 항상 최근 값을 사용하는 반면에, `connectedRoomId`는 (반응형인) Effect에서 비롯됩니다.
+`roomId`가 `"travel"`로 설정된 (그래서 `"travel"` 방에 연결된) Effect는 `"travel"`에 대한 알림을 보여줄 것입니다. `roomId`가 `"music"`으로 설정된 (그래서 `"music"` 방에 연결된) Effect는 `"music"`에 대한 알림을 보여줄 것입니다. 다시 말해 `theme`은 항상 최근 값을 사용하는 반면에 `connectedRoomId`는 (반응형인) Effect에서 비롯됩니다.
 
 추가 도전을 해결하려면 알림의 timeout ID를 저장하고 Effect의 클린업 함수에서 clear 하면 됩니다.
 
