@@ -1,29 +1,29 @@
 ---
-title: Describing the UI
+title: UI 표현하기
 ---
 
 <Intro>
 
-React is a JavaScript library for rendering user interfaces (UI). UI is built from small units like buttons, text, and images. React lets you combine them into reusable, nestable *components.* From web sites to phone apps, everything on the screen can be broken down into components. In this chapter, you'll learn to create, customize, and conditionally display React components.
+React는 사용자 인터페이스(UI)를 렌더링하기 위한 JavaScript 라이브러리입니다. UI는 버튼, 텍스트, 이미지와 같은 작은 요소로 구성됩니다. React를 통해 작은 요소들을 재사용 가능하고 중첩할 수 있는 *컴포넌트*로 조합할 수 있습니다. 웹 사이트에서 휴대전화 앱에 이르기까지 화면에 있는 모든 것을 컴포넌트로 나눌 수 있습니다. 이 장에서는 React 컴포넌트를 만들고, 사용자화하며, 조건부로 표시하는 방법에 대해서 알아봅시다.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to write your first React component](/learn/your-first-component)
-* [When and how to create multi-component files](/learn/importing-and-exporting-components)
-* [How to add markup to JavaScript with JSX](/learn/writing-markup-with-jsx)
-* [How to use curly braces with JSX to access JavaScript functionality from your components](/learn/javascript-in-jsx-with-curly-braces)
-* [How to configure components with props](/learn/passing-props-to-a-component)
-* [How to conditionally render components](/learn/conditional-rendering)
-* [How to render multiple components at a time](/learn/rendering-lists)
-* [How to avoid confusing bugs by keeping components pure](/learn/keeping-components-pure)
+* [첫 React 컴포넌트를 작성하는 방법](/learn/your-first-component)
+* [다중 컴포넌트 파일을 만드는 경우와 방법](/learn/importing-and-exporting-components)
+* [JSX로 JavaScript에 마크업을 추가하는 방법](/learn/writing-markup-with-jsx)
+* [컴포넌트에서 JavaScript 기능을 이용하기 위해 JSX에 중괄호를 사용하는 방법](/learn/javascript-in-jsx-with-curly-braces)
+* [Props를 사용하여 컴포넌트를 구성하는 방법](/learn/passing-props-to-a-component)
+* [조건부 렌더링을 하는 방법](/learn/conditional-rendering)
+* [여러 개의 컴포넌트를 한 번에 렌더링하는 방법](/learn/rendering-lists)
+* [컴포넌트를 순수하게 유지하여 혼란스러운 버그를 피하는 방법](/learn/keeping-components-pure)
 
 </YouWillLearn>
 
-## Your first component {/*your-first-component*/}
+## 첫 컴포넌트 {/*your-first-component*/}
 
-React applications are built from isolated pieces of UI called *components*. A React component is a JavaScript function that you can sprinkle with markup. Components can be as small as a button, or as large as an entire page. Here is a `Gallery` component rendering three `Profile` components:
+React 애플리케이션은 *컴포넌트*라고 불리는 독립된 UI 조각들로 이루어집니다. React 컴포넌트는 마크업을 얹을 수 있는 JavaScript 함수입니다. 컴포넌트는 버튼과 같이 작을 수도 있고 전체 페이지와 같이 큰 경우도 있습니다. 다음의 `Gallery` 컴포넌트는 세 개의 `Profile` 컴포넌트를 렌더링하고 있습니다.
 
 <Sandpack>
 
@@ -57,14 +57,13 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <LearnMore path="/learn/your-first-component">
 
-Read **[Your First Component](/learn/your-first-component)** to learn how to declare and use React components.
+React 컴포넌트를 선언하고 사용하는 방법을 배우려면 **[첫 컴포넌트](/learn/your-first-component)** 를 읽어보세요.
 
 </LearnMore>
 
-## Importing and exporting components {/*importing-and-exporting-components*/}
+## 컴포넌트 Import 및 Export 하기 {/*importing-and-exporting-components*/}
 
-You can declare many components in one file, but large files can get difficult to navigate. To solve this, you can *export* a component into its own file, and then *import* that component from another file:
-
+하나의 파일에 많은 컴포넌트를 선언할 수 있지만, 파일이 커지면 탐색하기 어려워집니다. 이를 해결하기 위해 컴포넌트를 별도의 파일로 만들어 *export*하고 다른 파일에서 해당 컴포넌트를 *import*할 수 있습니다.
 
 <Sandpack>
 
@@ -112,15 +111,15 @@ img { margin: 0 10px 10px 0; }
 
 <LearnMore path="/learn/importing-and-exporting-components">
 
-Read **[Importing and Exporting Components](/learn/importing-and-exporting-components)** to learn how to split components into their own files.
+컴포넌트를 개별 파일로 분리하는 방법을 배우려면 **[컴포넌트 Import 및 Export 하기](/learn/importing-and-exporting-components)** 를 읽어보세요.
 
 </LearnMore>
 
-## Writing markup with JSX {/*writing-markup-with-jsx*/}
+## JSX로 마크업 작성하기 {/*writing-markup-with-jsx*/}
 
-Each React component is a JavaScript function that may contain some markup that React renders into the browser. React components use a syntax extension called JSX to represent that markup. JSX looks a lot like HTML, but it is a bit stricter and can display dynamic information.
+React 컴포넌트는 React가 브라우저에 렌더링하는 마크업을 포함할 수 있는 JavaScript 함수입니다. React 컴포넌트는 그 마크업을 표현하기 위해 JSX라는 확장된 문법을 사용합니다. JSX는 HTML과 매우 유사하지만 조금 더 엄격하며 동적인 정보를 표시할 수 있습니다.
 
-If we paste existing HTML markup into a React component, it won't always work:
+기존의 HTML 마크업을 React 컴포넌트에 그대로 붙여넣으면 동작하지 않을 수도 있습니다.
 
 <Sandpack>
 
@@ -149,7 +148,7 @@ img { height: 90px; }
 
 </Sandpack>
 
-If you have existing HTML like this, you can fix it using a [converter](https://transform.tools/html-to-jsx):
+만약 이미 만들어진 HTML 마크업이 있다면 [converter](https://transform.tools/html-to-jsx)를 사용하여 변환할 수 있습니다.
 
 <Sandpack>
 
@@ -181,13 +180,13 @@ img { height: 90px; }
 
 <LearnMore path="/learn/writing-markup-with-jsx">
 
-Read **[Writing Markup with JSX](/learn/writing-markup-with-jsx)** to learn how to write valid JSX.
+올바르게 JSX를 작성하는 방법을 배우려면 **[JSX로 마크업 작성하기](/learn/writing-markup-with-jsx)** 를 읽어보세요.
 
 </LearnMore>
 
-## JavaScript in JSX with curly braces {/*javascript-in-jsx-with-curly-braces*/}
+## JSX에서 중괄호를 이용하여 JavaScript 사용하기 {/*javascript-in-jsx-with-curly-braces*/}
 
-JSX lets you write HTML-like markup inside a JavaScript file, keeping rendering logic and content in the same place. Sometimes you will want to add a little JavaScript logic or reference a dynamic property inside that markup. In this situation, you can use curly braces in your JSX to "open a window" to JavaScript:
+JSX를 사용하면 JavaScript 파일에 HTML과 비슷한 마크업을 작성할 수 있어 렌더링 로직과 콘텐츠를 같은 곳에 둘 수 있습니다. 때로는 그 마크업 내부에 JavaScript 로직을 추가하거나 동적인 프로퍼티를 참조해야 하는 경우가 있습니다. 그럴 때 JSX에서 중괄호를 사용하여 JavaScript와 연결된 "창문을 열 수" 있습니다.
 
 <Sandpack>
 
@@ -229,13 +228,13 @@ body > div > div { padding: 20px; }
 
 <LearnMore path="/learn/javascript-in-jsx-with-curly-braces">
 
-Read **[JavaScript in JSX with Curly Braces](/learn/javascript-in-jsx-with-curly-braces)** to learn how to access JavaScript data from JSX.
+JSX에서 중괄호를 사용하여 JavaScript 데이터에 접근하는 방법을 배우려면 **[JSX에서 중괄호를 이용하여 JavaScript 사용하기](/learn/javascript-in-jsx-with-curly-braces)** 를 읽어보세요.
 
 </LearnMore>
 
-## Passing props to a component {/*passing-props-to-a-component*/}
+## 컴포넌트에 Props 전달하기 {/*passing-props-to-a-component*/}
 
-React components use *props* to communicate with each other. Every parent component can pass some information to its child components by giving them props. Props might remind you of HTML attributes, but you can pass any JavaScript value through them, including objects, arrays, functions, and even JSX!
+React 컴포넌트는 서로 통신하기 위해 *props*를 사용합니다. 모든 부모 컴포넌트는 자식 컴포넌트에 props를 제공하여 정보를 전달할 수 있습니다. Props는 HTML 어트리뷰트와 유사해 보이지만 객체, 배열, 함수를 포함한 모든 JavaScript 값이 전달될 수 있습니다. 심지어 JSX도 가능합니다!
 
 <Sandpack>
 
@@ -310,15 +309,15 @@ export function getImageUrl(person, size = 's') {
 
 <LearnMore path="/learn/passing-props-to-a-component">
 
-Read **[Passing Props to a Component](/learn/passing-props-to-a-component)** to learn how to pass and read props.
+Props를 전달하고 활용하는 방법을 배우려면 **[컴포넌트에 Props 전달하기](/learn/passing-props-to-a-component)** 를 읽어보세요.
 
 </LearnMore>
 
-## Conditional rendering {/*conditional-rendering*/}
+## 조건부 렌더링 {/*conditional-rendering*/}
 
-Your components will often need to display different things depending on different conditions. In React, you can conditionally render JSX using JavaScript syntax like `if` statements, `&&`, and `? :` operators.
+컴포넌트는 조건에 따라 다른 항목을 표시해야 하는 경우가 많습니다. React는 `if` 문, `&&` 및 `? :` 연산자와 같은 자바스크립트 문법을 사용하여 JSX를 조건부로 렌더링할 수 있습니다.
 
-In this example, the JavaScript `&&` operator is used to conditionally render a checkmark:
+이 예제에서는 JavaScript `&&` 연산자를 사용하여 체크 표시를 조건부로 렌더링합니다.
 
 <Sandpack>
 
@@ -358,15 +357,15 @@ export default function PackingList() {
 
 <LearnMore path="/learn/conditional-rendering">
 
-Read **[Conditional Rendering](/learn/conditional-rendering)** to learn the different ways to render content conditionally.
+**[조건부 렌더링](/learn/conditional-rendering)** 을 통해 콘텐츠를 조건부로 렌더링하는 다양한 방법을 배울 수 있습니다.
 
 </LearnMore>
 
-## Rendering lists {/*rendering-lists*/}
+## 리스트 렌더링 {/*rendering-lists*/}
 
-You will often want to display multiple similar components from a collection of data. You can use JavaScript's `filter()` and `map()` with React to filter and transform your array of data into an array of components.
+데이터 모음으로부터 유사한 컴포넌트를 여러 개 표시하고 싶을 때가 종종 있습니다. React와 JavaScript의 `filter()`와 `map()`을 함께 사용하면 데이터 배열을 필터링하고 컴포넌트 배열로 변환할 수 있습니다.
 
-For each array item, you will need to specify a `key`. Usually, you will want to use an ID from the database as a `key`. Keys let React keep track of each item's place in the list even if the list changes.
+각 배열 항목마다 `key`를 지정해야 합니다. 일반적으로 데이터베이스에서 가져온 ID를 `key`로 사용하게 될 것입니다. Key를 사용하면 리스트가 변경되더라도 React가 각 항목의 위치를 추적할 수 있습니다.
 
 <Sandpack>
 
@@ -458,18 +457,18 @@ h2 { font-size: 20px; }
 
 <LearnMore path="/learn/rendering-lists">
 
-Read **[Rendering Lists](/learn/rendering-lists)** to learn how to render a list of components, and how to choose a key.
+컴포넌트 목록을 렌더링하는 방법과 어떻게 key를 선택하는지에 대해 배우려면 **[리스트 렌더링](/learn/rendering-lists)** 을 읽어보세요.
 
 </LearnMore>
 
-## Keeping components pure {/*keeping-components-pure*/}
+## 컴포넌트 순수하게 유지하기 {/*keeping-components-pure*/}
 
-Some JavaScript functions are *pure.* A pure function:
+어떤 JavaScript 함수는 *순수*합니다. 순수 함수는 다음과 같은 특징이 있습니다.
 
-* **Minds its own business.** It does not change any objects or variables that existed before it was called.
-* **Same inputs, same output.** Given the same inputs, a pure function should always return the same result.
+* **자신의 일만 처리합니다.** 호출되기 전에 존재했던 어떤 객체나 변수도 변경하지 않습니다.
+* **입력이 같으면 출력도 같습니다.** 순수 함수는 같은 입력을 받으면 언제나 같은 결과를 반환해야 합니다.
 
-By strictly only writing your components as pure functions, you can avoid an entire class of baffling bugs and unpredictable behavior as your codebase grows. Here is an example of an impure component:
+컴포넌트를 엄격하게 순수 함수로만 작성하면 코드 베이스가 커져도 이해하기 어려운 버그와 예측할 수 없는 동작을 피할 수 있습니다. 다음은 순수하지 않은 컴포넌트의 예시입니다.
 
 <Sandpack>
 
@@ -495,7 +494,7 @@ export default function TeaSet() {
 
 </Sandpack>
 
-You can make this component pure by passing a prop instead of modifying a preexisting variable:
+기존 변수를 수정하는 대신 prop을 전달하여 컴포넌트를 순수하게 만들 수 있습니다.
 
 <Sandpack>
 
@@ -519,12 +518,12 @@ export default function TeaSet() {
 
 <LearnMore path="/learn/keeping-components-pure">
 
-Read **[Keeping Components Pure](/learn/keeping-components-pure)** to learn how to write components as pure, predictable functions.
+컴포넌트를 순수하고 예측 가능한 함수로 작성하는 방법을 배우려면 **[컴포넌트 순수하게 유지하기](/learn/keeping-components-pure)** 를 읽어보세요.
 
 </LearnMore>
 
 ## What's next? {/*whats-next*/}
 
-Head over to [Your First Component](/learn/your-first-component) to start reading this chapter page by page!
+[첫 컴포넌트](/learn/your-first-component) 페이지로 이동하여 이 장을 페이지별로 읽어보세요!
 
-Or, if you're already familiar with these topics, why not read about [Adding Interactivity](/learn/adding-interactivity)?
+이미 이러한 주제에 대해 알고 있다면 [상호작용 추가하기](/learn/adding-interactivity)를 읽어보는 것은 어떨까요?
