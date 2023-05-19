@@ -10,14 +10,14 @@ State 변수는 읽고 쓸 수 있는 일반 자바스크립트 변수처럼 보
 
 <YouWillLearn>
 
-* state 설정으로 리렌더링이 촉발되는 방식
+* state 설정으로 리렌더링이 동작하는 방식
 * state 업데이트 시기 및 방법
 * state를 설정한 직후에 state가 업데이트되지 않는 이유
 * 이벤트 핸들러가 state의 "스냅샷"에 접근하는 방법
 
 </YouWillLearn>
 
-## state를 설정하면 렌더링이 촉발됩니다 {/*setting-state-triggers-renders*/}
+## state를 설정하면 렌더링이 동작합니다 {/*setting-state-triggers-renders*/}
 
 클릭과 같은 사용자 이벤트에 반응하여 사용자 인터페이스가 직접 변경된다고 생각할 수 있습니다. React에서는 이 멘탈 모델과는 조금 다르게 작동합니다. 이전 페이지에서 [state를 설정하면 React에 리렌더링을 요청](/learn/render-and-commit#step-1-trigger-a-render)하는 것을 보았습니다. 즉, 인터페이스가 이벤트에 반응하려면 state를 업데이트해야 합니다.
 
@@ -408,7 +408,7 @@ h1 { margin-top: 20px; }
 
 `setWalk` 호출 앞에 넣든, 뒤에 넣든 아무런 차이가 없습니다. 해당 렌더링의 `walk` 값은 고정되어 있습니다. `setWalk`를 호출하면 다음 렌더링에 대해서만 변경되고, 이전 렌더링의 이벤트 핸들러에는 영향을 미치지 않습니다.
 
-이 줄은 처음에는 직관적이지 않게 보일 수 있습니다.
+이 라인은 처음에는 직관적이지 않게 보일 수 있습니다.
 
 ```js
 alert(walk ? 'Stop is next' : 'Walk is next');
