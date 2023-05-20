@@ -382,7 +382,7 @@ label {
 
 <Diagram name="preserving_state_same_component" height={461} width={600} alt="Diagram with two sections separated by an arrow transitioning between them. Each section contains a layout of components with a parent labeled 'App' containing a state bubble labeled isFancy. This component has one child labeled 'div', which leads to a prop bubble containing isFancy (highlighted in purple) passed down to the only child. The last child is labeled 'Counter' and contains a state bubble with label 'count' and value 3 in both diagrams. In the left section of the diagram, nothing is highlighted and the isFancy parent state value is false. In the right section of the diagram, the isFancy parent state value has changed to true and it is highlighted in yellow, and so is the props bubble below, which has also changed its isFancy value to true.">
 
-Counter는 같은 자리에 있기 때문에 App 상태의 갱신은 Counter를 초기화시키지 않습니다
+`Counter`는 같은 자리에 있기 때문에 `App` 상태의 갱신은 `Counter`를 초기화시키지 않습니다
 
 </Diagram>
 
@@ -828,7 +828,7 @@ h1 {
 
 지금은 선수를 바꿀 때 점수가 유지됩니다. 두 `Counter`가 같은 위치에 나타나기 때문에 React는 그들을 `person` props가 변경된 *같은* `Counter`로 봅니다.
 
-하지만, 개념상 `app` 에는 두 개의 분리된 카운터가 있어야 합니다. 그들은 UI에 같은 위치에 나타나지만, 하나는 Taylor의 카운터이고, 다른 하나는 Sarah의 카운터입니다.
+하지만, 개념적으로 `app` 에는 두 개의 분리된 카운터가 있어야 합니다. 그들은 UI에 같은 위치에 나타나지만, 하나는 Taylor의 카운터이고, 다른 하나는 Sarah의 카운터입니다.
 
 이 둘을 바꿀 때 state를 초기화하기 위한 두 가지 방법이 있습니다.
 
