@@ -327,11 +327,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 #### 신호등을 구현해봅시다 {/*implement-a-traffic-light*/}
 
-<<<<<<< HEAD
-다음은 버튼을 눌렀을 때 켜지는 횡단보도 조명 컴포넌트입니다.
-=======
-Here is a crosswalk light component that toggles when the button is pressed:
->>>>>>> ebc45f563e9612df7b485ad82324225d554c625b
+다음은 버튼을 토글되는 신호등 컴포넌트입니다.
 
 <Sandpack>
 
