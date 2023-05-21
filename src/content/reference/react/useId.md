@@ -222,7 +222,7 @@ input { margin: 5px; }
 
 ### 생성된 모든 ID에 대해 공유 접두사 지정하기 {/*specifying-a-shared-prefix-for-all-generated-ids*/}
 
-여러 개의 독립된 React 애플리케이션을 하나의 페이지에서 렌더링한다면 `identifierPrefix`를  [`createRoot`](/reference/react-dom/client/createRoot#parameters) 또는 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 호출에 대한 옵션으로 전달합니다. `useId`로 생성된 모든 식별자가 지정한 별개의 접두사로 시작하므로 서로 다른 두 개의 앱에서 생성된 ID가 충돌하지 않는 것을 보장합니다.
+여러 개의 독립된 React 애플리케이션을 하나의 페이지에서 렌더링한다면 `identifierPrefix`를  [`createRoot`](/reference/react-dom/client/createRoot#parameters) 또는 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 호출에 대한 옵션으로 전달합니다. `useId`로 생성된 모든 식별자가 별개의 접두사로 시작하므로 서로 다른 두 개의 앱에서 생성된 ID가 충돌하지 않는 것을 보장합니다.
 
 <Sandpack>
 
