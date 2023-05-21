@@ -52,7 +52,7 @@ function PasswordField() {
 
 <Pitfall>
 
-`useId`를 리스트의 key를 생성하기 위해 사용하면 안 됩니다. [Key는 데이터에서 생성해야 합니다.](/learn/rendering-lists#where-to-get-your-key)
+**`useId`를 리스트의 key를 생성하기 위해 사용하면 안 됩니다.** [Key는 데이터에서 생성해야 합니다.](/learn/rendering-lists#where-to-get-your-key)
 
 </Pitfall>
 
@@ -96,7 +96,7 @@ HTML에서는 일반적으로 다음과 같이 작성합니다.
 </p>
 ```
 
-React에서 이렇게 ID를 직접 입력하는 것은 좋은 사례가 아닙니다. 페이지에서 컴포넌트는 몇 번이고 렌더링 될 수 있지만 ID는 고유해야 합니다. ID를 직접 입력하는 대신 `useId`를 활용해서 고유한 ID를 생성할 수 있습니다.
+React에서 ID를 직접 코드에 입력하는 것은 좋은 사례가 아닙니다. 페이지에서 컴포넌트는 몇 번이고 렌더링 될 수 있지만 ID는 고유해야 합니다. ID를 직접 입력하는 대신 `useId`를 활용해서 고유한 ID를 생성할 수 있습니다.
 
 ```js {4,11,14}
 import { useId } from 'react';
@@ -120,7 +120,7 @@ function PasswordField() {
 }
 ```
 
-이제 PasswordField가 화면에 여러 번 나타나도 생성된 ID는 충돌하지 않습니다.
+이제 `PasswordField`가 화면에 여러 번 나타나도 생성된 ID는 충돌하지 않습니다.
 
 <Sandpack>
 
@@ -163,33 +163,33 @@ input { margin: 5px; }
 
 </Sandpack>
 
-[영상](https://www.youtube.com/watch?v=0dNzNcuEuOo)을 통해 보조 기술을 활용한 사용자 경험의 차이점을 확인할 수 있습니다.
+[영상](https://www.youtube.com/watch?v=0dNzNcuEuOo)을 통해 보조 기술을 활용했을 때 사용자 경험의 차이점을 확인할 수 있습니다.
 
 <Pitfall>
 
-[서버 렌더링](/reference/react-dom/server)을 사용하는 경우 `useId`는 서버와 클라이언트에 같은 컴포넌트 트리가 필요합니다. 서버와 클라이언트에서 렌더링하는 트리가 정확히 일치하지 않으면 생성된 ID는 일치하지 않습니다.
+[서버 렌더링](/reference/react-dom/server)에서 **`useId`는 서버와 클라이언트에서 동일한 컴포넌트 트리가 필요합니다.** 서버와 클라이언트에서 렌더링하는 트리가 정확히 일치하지 않으면 생성된 ID는 일치하지 않습니다.
 
 </Pitfall>
 
 <DeepDive>
 
-#### useId는 왜 카운터를 증가하는 것보다 나을까요? {/*why-is-useid-better-than-an-incrementing-counter*/}
+#### useId가 카운터를 증가하는 것보다 나은 이유는 무엇일까요? {/*why-is-useid-better-than-an-incrementing-counter*/}
 
-`useId`를 사용하는 것이 왜 `nextId++`처럼 글로벌 변수를 증가하는 것보다 나을까요?
+`useId`가 `nextId++`처럼 글로벌 변수를 증가하는 것보다 나은 이유에 대해 궁금할 수 있습니다.
 
-`useId`는 React가 [서버 렌더링](/reference/react-dom/server)과 함께 동작하는 것을 보장합니다. 서버 렌더링 중에 컴포넌트가 HTML을 생성합니다. 이후 클라이언트의 [하이드레이션](/reference/react-dom/client/hydrateRoot)에서 이벤트 핸들러를 생성된 HTML에 연결합니다. 하이드레이션이 작동하려면 클라이언트의 출력이 서버 HTML과 일치해야 합니다.
+`useId`의 주요 이점은 React가 [서버 렌더링](/reference/react-dom/server)과 함께 작동하도록 보장한다는 것입니다. 서버 렌더링을 하는 동안 컴포넌트는 HTML 결과물을 생성합니다. 이후, 클라이언트에서 [hydration](/reference/react-dom/client/hydrateRoot)이 HTML 결과물에 이벤트 핸들러를 연결합니다. hydration이 동작하려면 클라이언트의 출력이 서버 HTML과 일치해야 합니다.
 
-클라이언트 컴포넌트의 하이드레이트된 순서가 서버 HTML이 생성된 순서와 일치하지 않을 수 있기 때문에 증가하는 카운터에서 이를 보장하기는 매우 어렵습니다. `useId`를 호출하면 하이드레이션이 작동하고 서버와 클라이언트 간에 출력이 일치하는 것을 보장할 수 있습니다.
+클라이언트 컴포넌트의 hydrated 순서가 서버 HTML이 생성된 순서와 일치하지 않을 수 있기 때문에 카운터 증가로 이를 보장하기는 매우 어렵습니다. `useId`를 사용하면 hydration이 동작하고 서버와 클라이언트 간에 출력이 일치하는 것을 보장할 수 있습니다.
 
-React에서 `useId`는 호출된 컴포넌트의 "부모 경로"에서 생성됩니다. 클라이언트와 서버 트리가 동일한 경우 렌더링 순서에 관계없이 "부모 경로"가 일치하는 이유입니다.
+React에서 `useId`는 호출한 컴포넌트의 "부모 경로"에서 생성됩니다. 클라이언트와 서버 트리가 동일한 경우 렌더링 순서에 관계없이 "부모 경로"가 일치하는 이유입니다.
 
 </DeepDive>
 
 ---
 
-### 연관된 여러 개의 엘리먼트의 ID 생성 {/*generating-ids-for-several-related-elements*/}
+### 연관된 여러 개의 엘리먼트의 ID 생성하기 {/*generating-ids-for-several-related-elements*/}
 
-`useId`를 호출해서 여러 개의 관련된 엘리먼트에 ID를 전달할 때 공유 접두사를 생성할 수 있습니다.
+연관된 여러 개의 엘리먼트에 ID를 전달하는 과정이 필요할 때 `useId`를 사용해서 공유 접두사를 생성할 수 있습니다.
 
 <Sandpack>
 
@@ -220,9 +220,9 @@ input { margin: 5px; }
 
 ---
 
-### 생성된 모든 ID에 대한 공유 접두사 지정 {/*specifying-a-shared-prefix-for-all-generated-ids*/}
+### 생성된 모든 ID에 대해 공유 접두사 지정하기 {/*specifying-a-shared-prefix-for-all-generated-ids*/}
 
-여러 개의 독립된 React 애플리케이션을 하나의 페이지에서 렌더링한다면 [`createRoot`](/reference/react-dom/client/createRoot#parameters) 또는 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 호출에 대한 옵션으로 `identifierPrefix`를 전달합니다. `useId`로 생성된 모든 식별자가 사용자가 지정한 고유 접두사로 시작하므로 서로 다른 두 앱에서 생성된 ID가 충돌하지 않습니다.
+여러 개의 독립된 React 애플리케이션을 하나의 페이지에서 렌더링한다면 `identifierPrefix`를  [`createRoot`](/reference/react-dom/client/createRoot#parameters) 또는 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 호출에 대한 옵션으로 전달합니다. `useId`로 생성된 모든 식별자가 지정한 별개의 접두사로 시작하므로 서로 다른 두 개의 앱에서 생성된 ID가 충돌하지 않는 것을 보장합니다.
 
 <Sandpack>
 
