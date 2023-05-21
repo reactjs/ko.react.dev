@@ -189,7 +189,7 @@ React에서 `useId`는 호출한 컴포넌트의 "부모 경로"에서 생성됩
 
 ### 여러 개의 연관된 엘리먼트의 ID 생성하기 {/*generating-ids-for-several-related-elements*/}
 
-연관된 여러 개의 엘리먼트에 ID를 전달하는 과정이 필요할 때 `useId`를 사용해서 공유 접두사를 생성할 수 있습니다.
+여러 개의 연관된 엘리먼트에 ID를 전달하는 과정이 필요할 때 `useId`를 사용해서 공유 접두사를 생성할 수 있습니다.
 
 <Sandpack>
 
