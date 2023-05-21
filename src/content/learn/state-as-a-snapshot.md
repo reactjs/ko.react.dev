@@ -329,7 +329,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 #### 신호등 구현하기 {/*implement-a-traffic-light*/}
 
-다음은 버튼을 눌렀을 때 켜지는 횡단보도 조명 컴포넌트입니다.
+다음은 버튼을 토글되는 신호등 컴포넌트입니다.
 
 <Sandpack>
 
