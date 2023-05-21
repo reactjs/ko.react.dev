@@ -44,9 +44,9 @@ function useCSS(rule) {
 
 #### 매개변수 {/*parameters*/}
 
-* `setup`: 이펙트의 로직이 포함된 함수입니다. setup 함수는 선택적으로 *cleanup* 함수를 반환할 수도 있습니다. 컴포넌트가 DOM에 추가되기 전에 React는 setup 함수를 실행합니다. 의존성이 변경되어 다시 렌더링할 때마다 React는 먼저 이전 값으로 cleanup 함수(제공한 경우)를 실행한 다음 새 값으로 setup 함수를 실행합니다. 컴포넌트가 DOM에서 제거되기 전에 React는 정리 함수를 한 번 더 실행합니다.
+* `setup`: 이펙트의 로직이 포함된 함수입니다. setup 함수는 선택적으로 *cleanup* 함수를 반환할 수도 있습니다. 컴포넌트가 DOM에 추가되기 전에 React는 setup 함수를 실행합니다. dependencies가 변경되어 다시 렌더링할 때마다 React는 먼저 이전 값으로 cleanup 함수(제공한 경우)를 실행한 다음 새 값으로 setup 함수를 실행합니다. 컴포넌트가 DOM에서 제거되기 전에 React는 cleanup 함수를 한 번 더 실행합니다.
  
-* **선택사항** `dependencies`: `setup` 코드 내에서 참조된 모든 반응형 값의 목록입니다. 반응형 값에는 props, state, 그리고 컴포넌트 본문에 직접 선언된 모든 변수와 함수가 포함됩니다. linter가 [React용으로 설정된](/learn/editor-setup#linting) 경우, 모든 반응형 값이 의존성으로 올바르게 지정되었는지 확인합니다. 의존성 목록에는 일정한 수의 항목이 있어야 하며 `[dep1, dep2, dep3]`와 같이 인라인으로 작성해야 합니다. React는 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교 알고리즘을 사용하여 각 의존성을 이전 값과 비교합니다. 의존성을 전혀 지정하지 않으면 컴포넌트를 다시 렌더링할 때마다 Effect가 다시 실행됩니다.
+* **선택사항** `dependencies`: `setup` 코드 내에서 참조된 모든 반응형 값의 목록입니다. 반응형 값에는 props, state, 그리고 컴포넌트 본문에 직접 선언된 모든 변수와 함수가 포함됩니다. linter가 [React용으로 설정된](/learn/editor-setup#linting) 경우, 모든 반응형 값이 의존성으로 올바르게 지정되었는지 확인합니다. 의존성 목록에는 일정한 수의 항목이 있어야 하며 `[dep1, dep2, dep3]`와 같이 작성해야 합니다. React는 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교 알고리즘을 사용하여 각 의존성을 이전 값과 비교합니다. 의존성을 전혀 지정하지 않으면 컴포넌트를 다시 렌더링할 때마다 Effect가 다시 실행됩니다.
 
 #### 반환 값 {/*returns*/}
 
@@ -64,7 +64,7 @@ function useCSS(rule) {
 
 ### CSS-in-JS 라이브러리에서 동적 스타일 주입하기 {/*injecting-dynamic-styles-from-css-in-js-libraries*/}
 
-기존에는 일반 CSS를 사용해 React 컴포넌트의 스타일을 지정했습니다.
+전통적으로 plain CSS를 사용해 React 컴포넌트의 스타일을 지정했습니다.
 
 ```js
 // JS 파일 안에서
@@ -132,7 +132,7 @@ function useCSS(rule) {
 
 #### 이것이 렌더링 중에 스타일을 주입하거나 useLayoutEffect를 사용하는 것보다 어떻게 더 나은가요? {/*how-is-this-better-than-injecting-styles-during-rendering-or-uselayouteffect*/}
 
-렌더링 중에 스타일을 주입하고 React가 [비차단 업데이트](/reference/react/useTransition#marking-a-state-update-as-non-blocking-transition)를 처리하는 경우 브라우저는 컴포넌트 트리를 렌더링하는 동안 매 프레임마다 스타일을 다시 계산하므로 **매우 느릴 수 있습니다.**
+렌더링 중에 스타일을 주입하고 React가 [non-blocking update](/reference/react/useTransition#marking-a-state-update-as-non-blocking-transition)를 처리하는 경우 브라우저는 컴포넌트 트리를 렌더링하는 동안 매 프레임마다 스타일을 다시 계산하므로 **매우 느릴 수 있습니다.**
 
 `useInsertionEffect`는 컴포넌트에서 다른 Effect가 실행될 때 `<style>` 태그가 주입되어 있음을 보장하기 때문에 [`useLayoutEffect`](/reference/react/useLayoutEffect) 또는 [`useEffect`](/reference/react/useEffect)로 스타일을 주입하는 것보다 낫습니다. 그렇지 않으면 오래된 스타일로 인해 일반 Effects의 레이아웃 계산이 잘못될 수 있습니다.
 
