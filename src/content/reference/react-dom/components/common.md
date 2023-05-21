@@ -24,21 +24,21 @@ title: "공통 컴포넌트 (예시: <div>)"
 
 #### Props {/*common-props*/}
 
-내장된 모든 컴포넌트에 대해 다음과 같은 특별한 React props가 지원됩니다.
+아래의 특별한 React props 들은 내장된 모든 컴포넌트에서 지원합니다.
 
-* `children`: React 노드(엘리먼트, 문자열, 숫자, [portal,](/reference/react-dom/createPortal) `null`, `undefined` 그리고 불리언 타입과 같은 빈 노드, 또는 다른 React 노드의 배열) 입니다. 컴포넌트 내부의 콘텐츠를 지정합니다. JSX를 사용하면 일반적으로`<div><span /></div>`의 예시처럼 태그를 중첩하여 `children` prop를 암시적으로 지정합니다.
+* `children`: React 노드(엘리먼트, 문자열, 숫자, [portal,](/reference/react-dom/createPortal) `null`, `undefined` 그리고 불리언 타입과 같은 빈 노드, 또는 다른 React 노드의 배열) 입니다. 컴포넌트 내부의 콘텐츠를 지정합니다. JSX를 사용하면 일반적으로`<div><span /></div>`의 예시처럼 태그를 중첩하여 `children` prop를 암묵적으로 지정합니다.
 
 * `dangerouslySetInnerHTML`: 원시 HTML 문자열이 포함된`{ __html: '<p>some html</p>' }`형식의 객체입니다. DOM 노드의 [`innerHTML`](https://developer.mozilla.org/ko/docs/Web/API/Element/innerHTML) 프로퍼티를 덮어쓰고 전달된 HTML을 내부에 표시합니다. 이것은 매우 주의해서 사용해야 합니다. 내부 HTML을 신뢰할 수 없는 경우 (예시: 사용자 데이터를 기반으로 하는 경우) [XSS](https://ko.wikipedia.org/wiki/%EC%82%AC%EC%9D%B4%ED%8A%B8_%EA%B0%84_%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8C%85) 취약점이 발생할 수 있습니다. [`dangerouslySetInnerHTML`에 대해 더 알아보려면 읽어보세요.](#dangerously-setting-the-inner-html)
 
-* `ref`: [`useRef`](/reference/react/useRef)나 [`createRef`](/reference/react/createRef)의 ref 객체, 또는 [`ref` 콜백 함수](#ref-callback)거나 [레거시 refs](https://ko.legacy.reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs)의 문자열입니다. 해당 ref는 해당 노드의 DOM 엘리먼트로 채워집니다. [ref를 사용하여 DOM을 조작하는 방법에 대해 더 자세히 알아보세요.](#manipulating-a-dom-node-with-a-ref)
+* `ref`: [`useRef`](/reference/react/useRef)나 [`createRef`](/reference/react/createRef)의 ref 객체, 또는 [`ref` 콜백 함수](#ref-callback)거나 [legacy refs](https://ko.legacy.reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs)의 문자열입니다. 해당 ref는 해당 노드의 DOM 엘리먼트로 채워집니다. [ref를 사용하여 DOM을 조작하는 방법에 대해 더 자세히 알아보세요.](#manipulating-a-dom-node-with-a-ref)
 
-* `suppressContentEditableWarning`: 불리언 타입입니다. `true` 일 때 `children`과 `contentEditable={true}`(이 둘은 일반적으로 함께 작동하지 않습니다.)가 모두 존재하는 엘리먼트에 대해 React에서 발생하는 경고를 억제합니다. 이는`contentEditable` 콘텐츠를 수동으로 관리하는 텍스트 입력 라이브러리를 빌드할 때 사용됩니다.
+* `suppressContentEditableWarning`: 불리언 타입입니다. `true` 일 때, 일반적으로 같이 사용하지 않는 `children`과 `contentEditable={true}`가 모두 존재하는 엘리먼트에 대해 React에서 발생하는 경고를 나타내지 않습니다. 이는`contentEditable` 콘텐츠를 수동으로 관리하는 텍스트 입력 라이브러리를 빌드할 때 사용됩니다.
 
 * `suppressHydrationWarning`: 불리언 타입입니다. [서버 렌더링](/reference/react-dom/server)을 사용할 때, 일반적으로 서버와 클라이언트가 서로 다른 콘텐츠를 렌더링하면 경고가 표시됩니다. 일부 드문 사례(예시: 타임스탬프)에서는 정확한 일치를 보장하기가 매우 어렵거나 불가능합니다. `suppressHydrationWarning`를 `true`로 설정하면, React는 해당 엘리먼트의 어트리뷰트와 콘텐츠가 일치하지 않아도 경고를 표시하지 않습니다. 이는 한 단계의 깊이에서만 작동하며, 탈출구로 사용하기 위한 것입니다. 과도하게 사용하지 마세요. [suppressing hydration 오류에 대해서 읽어보세요.](/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors)
 
 * `style`: `{ fontWeight: 'bold', margin: 20 }`와 같이 CSS 스타일이 있는 객체입니다. DOM의 [`style`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) 프로퍼티에서 `fontWeight` 대신 `font-weight`로 작성하는 것과 마찬가지로 CSS 프로퍼티의 이름도 `camelCase`로 작성해야 합니다. 또한 문자열이나 숫자를 값으로 전달할 수 있습니다. `width: 100`와 같은 숫자를 전달한다면 React는 [단위가 없는 프로퍼티](https://github.com/facebook/react/blob/81d4ee9ca5c405dce62f64e61506b8e155f38d8d/packages/react-dom-bindings/src/shared/CSSProperty.js#L8-L57)가 아니라면 자동으로 `px` ("픽셀")로 값을 추가합니다. `style`은 스타일 값을 미리 알 수 없는 동적 스타일에만 사용하는 것을 권장합니다. 그 외의 경우에는 `className`을 사용하여 일반 CSS 클래스를 사용하는 것이 더 효율적입니다. [`className`과 `style`에 대해서 더 자세히 알아보세요.](#applying-css-styles)
 
-아래의 표준 DOM props는 내장된 모든 컴포넌트에 지원됩니다.
+아래의 표준 DOM props 들은 내장된 모든 컴포넌트에서 지원합니다.
 
 * [`accessKey`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/accesskey): 문자열 타입입니다. 엘리먼트의 바로 가기 키를 지정합니다. [일반적으로 권장되지 않습니다.](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/accesskey)
 * [`aria-*`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes): ARIA 속성을 사용하면 이 엘리먼트에 대한 접근성 트리 정보를 지정할 수 있습니다. 전체적인 레퍼런스는 [ARIA 어트리뷰트](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes)를 참조하세요. React에서 모든 ARIA 어트리뷰트의 이름은 HTML에서의 이름과 완전히 동일합니다.
@@ -245,7 +245,7 @@ capture-phase-events)
 
 ### `ref` 콜백 함수 {/*ref-callback*/}
 
-ref 객체 (예시: [`useRef`](/reference/react/useRef#manipulating-the-dom-with-a-ref) 에서 반환되는 객체) 대신 내부 HTML을 설정하면 `ref` 속성에 함수를 전달할 수 있습니다.
+[`useRef`](/reference/react/useRef#manipulating-the-dom-with-a-ref) 에서 반환되는 ref 객체 대신 `ref` 속성에 함수를 전달할 수 있습니다.
 
 ```js
 <div ref={(node) => console.log(node)} />
@@ -253,7 +253,7 @@ ref 객체 (예시: [`useRef`](/reference/react/useRef#manipulating-the-dom-with
 
 [`ref` 콜백에 대한 예시를 참조하세요.](/learn/manipulating-the-dom-with-refs#how-to-manage-a-list-of-refs-using-a-ref-callback)
 
-`<div>` DOM 노드가 화면에 추가될 때, React는 `node`를 인수로 사용하여 `ref` 콜백을 호출합니다. 해당 `<div>` DOM 노드가 제거되면 React는 `null`을 사용하여 `ref` 콜백을 호출합니다.
+`<div>` DOM 노드가 화면에 추가될 때, React는 `node`를 인수로 사용하여 `ref` 콜백을 호출합니다. 해당 `<div>` DOM 노드가 제거되면 React는 `null`을 인수로 사용하여 `ref` 콜백을 호출합니다.
 
 React는 *다른* `ref` 콜백을 전달할 때 마다 `ref` 콜백을 호출합니다. 위의 예시에서 `(node) => { ... }` 는 모든 렌더링에서 다른 함수입니다. 컴포넌트가 다시 렌더링 될 때, *이전* 함수는 `null`을 인수로 사용하여 호출되고 *다음* 함수는 DOM 노드를 사용하여 호출됩니다.
 
@@ -820,7 +820,7 @@ export default function Avatar({ user }) {
 
 예를 들어 `className={'row ' + (isSelected ? 'selected': '')}`는 `isSelected`가 `true`인지의 여부에 따라 `className="row"` 또는 `className="row selected"`를 생성합니다.
 
-가독성을 높이고 싶다면 [`classnames`](https://github.com/JedWatson/classnames)와 같은 작은 도움을 주는 라이브러리를 사용할 수 있습니다.
+가독성을 높이고 싶다면 [`classnames`](https://github.com/JedWatson/classnames)와 같은 작은 헬퍼 라이브러리를 사용할 수 있습니다.
 
 ```js
 import cn from 'classnames';
@@ -915,7 +915,7 @@ const markup = { __html: '<p>some raw html</p>' };
 return <div dangerouslySetInnerHTML={markup} />;
 ```
 
-**이것은 위험합니다. 기본 DOM의 [`innerHTML`](https://developer.mozilla.org/ko/docs/Web/API/Element/innerHTML) 프로퍼티와 마찬가지로 각별히 주의해야 합니다. 마크업이 완전히 신뢰할 수 있는 출처에서 제공되는 것이 아니라면,  [XSS](https://ko.wikipedia.org/wiki/%EC%82%AC%EC%9D%B4%ED%8A%B8_%EA%B0%84_%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8C%85) 취약점을 도입하는 것은 사소한 일입니다.**
+**이것은 위험합니다. 기본 DOM의 [`innerHTML`](https://developer.mozilla.org/ko/docs/Web/API/Element/innerHTML) 프로퍼티와 마찬가지로 각별히 주의해야 합니다. 마크업이 완전히 신뢰할 수 있는 출처에서 제공되는 것이 아니라면,  [XSS](https://ko.wikipedia.org/wiki/%EC%82%AC%EC%9D%B4%ED%8A%B8_%EA%B0%84_%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8C%85) 취약점이 쉽게 나타날 수 있습니다.**
 
 예를 들어, 마크다운을 HTML로 변환하는 라이브러리를 사용할 때, 해당 파서에 버그가 없고 사용자가 자신의 입력만 볼 수 있다고 믿는다면 다음과 같이 결과 HTML을 표시할 수 있습니다.
 
@@ -994,7 +994,7 @@ const post = {
 };
 
 export default function MarkdownPreview() {
-  // 🔴 보안 구멍: 신뢰할 수 없는 입력을 dangerouslySetInnerHTML로 전달했습니다.
+  // 🔴 보안 취약점: 신뢰할 수 없는 입력을 dangerouslySetInnerHTML로 전달했습니다.
   const markup = { __html: post.content };
   return <div dangerouslySetInnerHTML={markup} />;
 }
@@ -1099,9 +1099,9 @@ input { margin-left: 10px; }
 
 ---
 
-### 포커싱 이벤트 처리 {/*handling-focus-events*/}
+### 포커스 이벤트 처리 {/*handling-focus-events*/}
 
-React에서는 [포커싱 이벤트](#focusevent-handler)가 버블링됩니다. 부모 엘리먼트의 바깥 부분에서 발생한 이벤트가 포커싱(focusing) 혹은 포커싱 해제(blurring)인지 구분하기 위해 `currentTarget`과 `relatedTarget`를 사용할 수 있습니다. 해당 예시는 자식 엘리먼트에 포커싱 될 때, 부모 엘리먼트에 포커싱 될 때, 그리고 전체 서브트리(subtree)에서 포커싱이 되거나 해제되는 것을 감지하는 방법을 보여줍니다.
+React에서는 [focus 이벤트](#focusevent-handler)가 버블링됩니다. 부모 엘리먼트의 바깥 부분에서 발생한 이벤트가 focus 혹은 blur인지 구분하기 위해 `currentTarget`과 `relatedTarget`를 사용할 수 있습니다.
 
 <Sandpack>
 
