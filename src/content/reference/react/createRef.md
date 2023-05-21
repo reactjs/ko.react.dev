@@ -117,7 +117,7 @@ export default class Form extends Component {
 
 ### `createRef`를 사용하는 클래스에서 `useRef`를 사용하는 함수로 마이그레이션하기 {/*migrating-from-a-class-with-createref-to-a-function-with-useref*/}
 
-새로 코드를 짠다면 [클래스 컴포넌트](/reference/react/Component) 대신 함수 컴포넌트를 사용하는 것이 좋습니다. `createRef`를 사용하는 기존 클래스 컴포넌트가 있는 경우, 이를 변환하는 방법은 다음과 같습니다. 다음은 원본 코드입니다.
+새로운 코드를 작성한다면 [클래스 컴포넌트](/reference/react/Component) 대신 함수 컴포넌트를 사용하는 것을 추천합니다. `createRef`를 사용하는 기존 클래스 컴포넌트가 있는 경우, 이를 변환하는 방법은 다음과 같습니다. 다음은 원본 코드입니다.
 
 <Sandpack>
 
