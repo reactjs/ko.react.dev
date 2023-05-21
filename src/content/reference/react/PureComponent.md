@@ -50,8 +50,7 @@ class Greeting extends PureComponent {
 
 ## 사용법 {/*usage*/}
 
-### 클래스 컴포넌트에서 불필요한 재 렌더링 건너뛰기
-{/*skipping-unnecessary-re-renders-for-class-components*/}
+### 클래스 컴포넌트에서 불필요한 재 렌더링 건너뛰기 {/*skipping-unnecessary-re-renders-for-class-components*/}
 
 리액트는 일반적으로 부모가 다시 렌더링 될 때마다 자식 컴포넌트도 다시 렌더링 합니다. 하지만 `PureComponent`를 extend 하여 새 props 및 state가 이전 props 및 state와 같다면 부모가 다시 렌더링 되더라도 자식 컴포넌트는 다시 렌더링 되지 않도록 [Class component](/reference/react/Component)를 최적화할 수 있습니다.
 
