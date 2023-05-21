@@ -4,7 +4,7 @@ title: 스냅샷으로서의 State
 
 <Intro>
 
-State 변수는 읽고 쓸 수 있는 일반 자바스크립트 변수처럼 보일 수 있습니다. 하지만 state는 스냅샷처럼 동작 합니다. state 변수를 설정하여도 이미 가지고 있는 state 변수는 변경되지 않고, 대신 리렌더링이 발동됩니다.
+State 변수는 읽고 쓸 수 있는 일반 자바스크립트 변수처럼 보일 수 있습니다. 하지만 state는 스냅샷처럼 동작합니다. state 변수를 설정하여도 이미 가지고 있는 state 변수는 변경되지 않고, 대신 리렌더링이 발동됩니다.
 
 </Intro>
 
@@ -89,7 +89,7 @@ React가 컴포넌트를 다시 렌더링할 때.
     <Illustration caption="DOM tree를 업데이트 합니다" src="/images/docs/illustrations/i_render3.png" />
 </IllustrationBlock>
 
-컴포넌트의 메모리로서 state는 함수가 반환된 후 사라지는 일반 변수와 다릅니다. state는 실제로 함수 외부에 마치 선반에 있는 것처럼 React 자체에 “존재”합니다. React가 컴포넌트를 호출하면 특정 렌더링에 대한 state의 스냅샷을 제공합니다. 컴포넌트는 **해당 렌더링의 state 값을 사용해** 계산된 새로운 props 세트와 이벤트 핸들러가 포함된 UI의 스냅샷을 JSX에 반환합니다!
+컴포넌트의 메모리로써 state는 함수가 반환된 후 사라지는 일반 변수와 다릅니다. state는 실제로 함수 외부에 마치 선반에 있는 것처럼 React 자체에 “존재”합니다. React가 컴포넌트를 호출하면 특정 렌더링에 대한 state의 스냅샷을 제공합니다. 컴포넌트는 **해당 렌더링의 state 값을 사용해** 계산된 새로운 props 세트와 이벤트 핸들러가 포함된 UI의 스냅샷을 JSX에 반환합니다!
 
 <IllustrationBlock sequential>
   <Illustration caption="React에 state를 업데이트하라고 명령합니다" src="/images/docs/illustrations/i_state-snapshot1.png" />
