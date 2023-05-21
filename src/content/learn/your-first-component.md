@@ -55,7 +55,7 @@ HTML 태그와 마찬가지로 컴포넌트를 작성, 순서 지정 및 중첩�
 
 ## 컴포넌트 정의하기 {/*defining-a-component*/}
 
-기존에는 웹 페이지를 만들 때 웹 개발자가 컨텐츠를 마크업한 다음 JavaScript를 뿌려 상호작용을 추가했습니다. 이는 웹에서 상호작용이 중요했던 시절에 효과적이였습니다. 이제는 많은 사이트와 모든 앱에서 상호작용을 기대합니다. React는 동일한 기술을 사용하면서도 상호작용을 우선시합니다. **React컴포넌트는 *마크업으로 뿌릴 수 있는 JavaScript* 함수입니다.** 그 모습은 다음과 같습니다.(아래 예시는 편집할 수 있습니다.)
+기존에는 웹 페이지를 만들 때 웹 개발자가 컨텐츠를 마크업한 다음 JavaScript를 뿌려 상호작용을 추가했습니다. 이는 웹에서 상호작용이 중요했던 시절에 효과적이였습니다. 이제는 많은 사이트와 모든 앱에서 상호작용을 기대합니다. React는 동일한 기술을 사용하면서도 상호작용을 우선시합니다. **React 컴포넌트는 *마크업으로 뿌릴 수 있는 JavaScript* 함수입니다.** 그 모습은 다음과 같습니다.(아래 예시는 편집할 수 있습니다.)
 
 <Sandpack>
 
@@ -219,7 +219,7 @@ React 애플리케이션은 "root"컴포넌트에서 시작됩니다. 보통 새
 
 대부분의 React 앱은 모든 부분에서 컴포넌트를 사용합니다. 즉, 버튼과 같이 재사용 가능한 부분뿐만 아니라 사이드바, 목록, 그리고 궁극적으로 전체 페이지와 같은 큰 부분에도 컴포넌트를 사용하게 됩니다! 컴포넌트는 한 번만 사용되더라도 UI 코드와 마크업을 정리하는 편리한 방법입니다.
 
-[React 기반 프레임워크들](/learn/start-a-new-react-project)은 이를 한 단계 더 발전시킵니다. 빈 HTML파일을 사용하고 React가 JavaScript로 페이지 관리를 "대신"하도록 하는 대신, React 컴포넌트에서 HTML을 자동으로 생성하기도합니다. 이를 통해 JavaScript 코드가 로드되기 전에 앱에서 일부 컨텐츠를 표시할 수 있습니다.
+[React 기반 프레임워크들](/learn/start-a-new-react-project)은 이를 한 단계 더 발전시킵니다. 빈 HTML파일을 사용하고 React가 JavaScript로 페이지 관리를 "다룰 수 있게" 하도록 하는 대신, React 컴포넌트에서 HTML을 자동으로 생성하기도합니다. 이를 통해 JavaScript 코드가 로드되기 전에 앱에서 일부 컨텐츠를 표시할 수 있습니다.
 
 Still, many websites only use React to [add interactivity to existing HTML pages.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) They have many root components instead of a single one for the entire page. You can use as much—or as little—React as you need.
 
