@@ -395,18 +395,18 @@ button {
 
 ---
 
-### Passing data through context {/*passing-data-through-context*/}
+### Context를 통해 데이터 전달하기 {/*passing-data-through-context*/}
 
-Another alternative to `cloneElement` is to [pass data through context.](/learn/passing-data-deeply-with-context)
+`cloneElement`의 또 다른 대안으로는 [Context를 통해 데이터를 전달하는 것](/learn/passing-data-deeply-with-context)입니다.
 
 
-For example, you can call [`createContext`](/reference/react/createContext) to define a `HighlightContext`:
+예를 들어, [`createContext`](/reference/react/createContext)를 호출하여 `HighlightContext`를 정의할 수 있습니다.
 
 ```js
 export const HighlightContext = createContext(false);
 ```
 
-Your `List` component can wrap every item it renders into a `HighlightContext` provider:
+`List` 컴포넌트는 렌더링하는 모든 item을 `HighlightContext.Provider`로 감쌀 수 있습니다.
 
 ```js {8,10}
 export default function List({ items, renderItem }) {
@@ -423,7 +423,7 @@ export default function List({ items, renderItem }) {
       })}
 ```
 
-With this approach, `Row` does not need to receive an `isHighlighted` prop at all. Instead, it reads the context:
+이러한 접근 방식으로 인해 `Row`는 `isHighlighted` prop을 받을 필요가 없어집니다. 대신 context를 읽습니다.
 
 ```js Row.js {2}
 export default function Row({ title }) {
@@ -431,7 +431,7 @@ export default function Row({ title }) {
   // ...
 ```
 
-This allows the calling component to not know or worry about passing `isHighlighted` to `<Row>`:
+이로 인해 `isHighlighted`를 `<Row>`로 전달하는 것에 대해 호출된 컴포넌트가 알거나 걱정하지 않아도 됩니다.
 
 ```js {4}
 <List
@@ -442,7 +442,7 @@ This allows the calling component to not know or worry about passing `isHighligh
 />
 ```
 
-Instead, `List` and `Row` coordinate the highlighting logic through context.
+대신에 `List`와 `Row`는 context를 통해 하이라이팅 로직을 조정합니다.
 
 <Sandpack>
 
@@ -488,7 +488,7 @@ export default function List({ items, renderItem }) {
           (i + 1) % items.length
         );
       }}>
-        Next
+        다음
       </button>
     </div>
   );
@@ -552,7 +552,7 @@ button {
 
 </Sandpack>
 
-[Learn more about passing data through context.](/reference/react/useContext#passing-data-deeply-into-the-tree)
+[context를 통해 데이터를 전달하는 것에 대하여 자세히 알아보세요.](/reference/react/useContext#passing-data-deeply-into-the-tree)
 
 ---
 
