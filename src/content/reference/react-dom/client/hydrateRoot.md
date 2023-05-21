@@ -124,7 +124,7 @@ root.unmount();
 import { hydrateRoot } from 'react-dom/client';
 
 hydrateRoot(document.getElementById('root'), <App />);
-````
+```
 
 위 코드를 통해 서버 HTML을 <CodeStep step={1}>브라우저 DOM node</CodeStep>에서 <CodeStep step={2}>리액트 컴포넌트</CodeStep>를 이용해 hydrate 해줄 것 입니다. 주로 앱을 시작할 때 단 한 번 실행하게 될 것입니다. 프레임워크를 사용중이라면 프레임워크가 알아서 실행해 줄 것입니다.
 
