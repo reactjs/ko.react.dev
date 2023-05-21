@@ -556,9 +556,9 @@ button {
 
 ---
 
-### Extracting logic into a custom Hook {/*extracting-logic-into-a-custom-hook*/}
+### Custom Hook으로 로직 추출하기 {/*extracting-logic-into-a-custom-hook*/}
 
-Another approach you can try is to extract the "non-visual" logic into your own Hook, and use the information returned by your Hook to decide what to render. For example, you could write a `useList` custom Hook like this:
+다른 접근 방식으로는 자체 hook을 통해 "비시각적인" 로직을 추출하는 것을 시도해볼 수 있습니다. 그리고 hook에 의해서 반환된 정보를 사용하여 렌더링할 내용을 정합니다. 예를 들어 다음과 같이 `useList` 같은 custom hook을 작성할 수 있습니다.
 
 ```js
 import { useState } from 'react';
@@ -577,7 +577,7 @@ export default function useList(items) {
 }
 ```
 
-Then you could use it like this:
+그러므로 다음과 같이 사용할 수 있습니다.
 
 ```js {2,9,13}
 export default function App() {
@@ -593,14 +593,14 @@ export default function App() {
       )}
       <hr />
       <button onClick={onNext}>
-        Next
+        다음
       </button>
     </div>
   );
 }
 ```
 
-The data flow is explicit, but the state is inside the `useList` custom Hook that you can use from any component:
+데이터 흐름은 명시적이지만 state는 모든 컴포넌트에서 사용할 수 있는 `useList` custom hook 내부에 있습니다.
 
 <Sandpack>
 
@@ -622,7 +622,7 @@ export default function App() {
       )}
       <hr />
       <button onClick={onNext}>
-        Next
+        다음
       </button>
     </div>
   );
@@ -693,4 +693,4 @@ button {
 
 </Sandpack>
 
-This approach is particularly useful if you want to reuse this logic between different components.
+이러한 접근 방식은 다른 컴포넌트 간에 해당 로직을 재사용하고 싶을 때 특히 유용합니다.
