@@ -28,7 +28,7 @@ import { forwardRef, useImperativeHandle } from 'react';
 const MyInput = forwardRef(function MyInput(props, ref) {
   useImperativeHandle(ref, () => {
     return {
-      // ... your methods ...
+      // ... 메서드를 여기에 입력하세요 ...
     };
   }, []);
   // ...
@@ -42,7 +42,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 * `createHandle`: 인자가 없고 노출하려는 ref 핸들을 반환하는 함수입니다. 해당 ref 핸들은 어떠한 유형이든 될 수 있습니다. 일반적으로 노출하려는 메서드가 있는 객체를 반환합니다.
 
-* **(선택적)** `dependencies`: `createHandle` 코드 내에서 참조하는 모든 반응형 값을 나열한 목록입니다. 반응형 값은 props, state 및 컴포넌트 내에서 직접 선언한 모든 변수와 함수를 포함합니다. [React에 대한 린터를 구성한 경우](/learn/editor-setup#linting) 모든 반응형 값이 올바르게 의존성으로 지정되었는지 확인합니다. 의존성 목록은 항상 일정한 수의 항목을 가지고 `[dep1, dep2, dep3]`와 같이 인라인으로 작성되어야 합니다. React는 각 의존성을 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 사용하여 이전 값과 비교합니다. 리렌더링으로 인해 일부 의존성이 변경되거나 이 인수를 생략한 경우,`createHandle`함수가 다시 실행되고 새로 생성된 핸들이 ref에 할당됩니다.
+* **(선택적)** `dependencies`: `createHandle` 코드 내에서 참조하는 모든 반응형 값을 나열한 목록입니다. 반응형 값은 props, state 및 컴포넌트 내에서 직접 선언한 모든 변수와 함수를 포함합니다. [React에 대한 린터를 구성한 경우](/learn/editor-setup#linting) 모든 반응형 값이 올바르게 의존성으로 지정되었는지 확인합니다. 의존성 목록은 항상 일정한 수의 항목을 가지고 `[dep1, dep2, dep3]`와 같이 인라인으로 작성되어야 합니다. React는 각 의존성을 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 사용하여 이전 값과 비교합니다. 리렌더링으로 인해 일부 의존성이 변경되거나 이 인수를 생략한 경우 `createHandle`함수가 다시 실행되고 새로 생성된 핸들이 ref에 할당됩니다.
 
 #### 반환값 {/*returns*/}
 
@@ -54,7 +54,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 ### 부모 컴포넌트에 커스텀 ref핸들 노출 {/*exposing-a-custom-ref-handle-to-the-parent-component*/}
 
-기본적으로 컴포넌트는 자식 컴포넌트의 DOM 노드를 부모 컴포넌트에 노출하지 않습니다. 예를 들어, `MyInput`의 부모 컴포넌트가 `<input>` DOM 노드에 [접근하려면](/learn/manipulating-the-dom-with-refs) [`forwardRef`](/reference/react/forwardRef)를 사용하여 선택적으로 참조에 포함해야 합니다.
+기본적으로 컴포넌트는 자식 컴포넌트의 DOM 노드를 부모 컴포넌트에 노출하지 않습니다. 예를 들어 `MyInput`의 부모 컴포넌트가 `<input>` DOM 노드에 [접근하려면](/learn/manipulating-the-dom-with-refs) [`forwardRef`](/reference/react/forwardRef)를 사용하여 선택적으로 참조에 포함해야 합니다.
 
 ```js {4}
 import { forwardRef } from 'react';
@@ -72,7 +72,7 @@ import { forwardRef, useImperativeHandle } from 'react';
 const MyInput = forwardRef(function MyInput(props, ref) {
   useImperativeHandle(ref, () => {
     return {
-      // ... your methods ...
+      // ... 메서드를 여기에 입력하세요 ...
     };
   }, []);
 
@@ -82,7 +82,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 위의 코드에서 `<input>`에 대한 `ref`는 더이상 전달되지 않습니다.
 
-예를 들어, 전체 `<input>` DOM 노드를 노출하지 않고 `focus`와 `scrollIntoView`의 두 메서드만을 노출하고 싶다고 가정해 봅시다. 그러기 위해서는 실제 브라우저 DOM을 별도의 ref에 유지해야 합니다. 그리고 `useImperativeHandle`을 사용하여 부모 컴포넌트에서 호출할 메서드만 있는 핸들을 노출합니다.
+예를 들어 전체 `<input>` DOM 노드를 노출하지 않고 `focus`와 `scrollIntoView`의 두 메서드만을 노출하고 싶다고 가정해 봅시다. 그러기 위해서는 실제 브라우저 DOM을 별도의 ref에 유지해야 합니다. 그리고 `useImperativeHandle`을 사용하여 부모 컴포넌트에서 호출할 메서드만 있는 핸들을 노출합니다.
 
 ```js {7-14}
 import { forwardRef, useRef, useImperativeHandle } from 'react';
@@ -118,7 +118,7 @@ export default function Form() {
 
   function handleClick() {
     ref.current.focus();
-    // This won't work because the DOM node isn't exposed:
+    // 이 작업은 DOM 노드가 노출되지 않으므로 작동하지 않습니다.
     // ref.current.style.opacity = 0.5;
   }
 
@@ -281,7 +281,7 @@ export default AddComment;
 
 <Pitfall>
 
-**ref를 과도하게 사용하지 마세요.** ref는 props로 표현할 수 없는 필수적인 행동에만 사용해야 합니다. 예를 들어, 특정 노드로 스크롤하기, 노드에 초점 맞추기, 애니메이션 촉발하기, 텍스트 선택하기 등이 있습니다.
+**ref를 과도하게 사용하지 마세요.** ref는 props로 표현할 수 없는 필수적인 행동에만 사용해야 합니다. 예를 들어 특정 노드로 스크롤 하기, 노드에 초점 맞추기, 애니메이션 촉발하기, 텍스트 선택하기 등이 있습니다.
 
-**prop으로 표현할 수 있는 것은 ref를 사용하지 마세요.** 예를 들어, `Modal` 컴포넌트에서 `{ open, close }` 와 같은  imperative handle을 노출하는 대신 `<Modal isOpen={isOpen} />`과 같은 `isOpen` prop을 사용하는 것이 더 좋습니다. [Effects](/learn/synchronizing-with-effects)를 사용하면 prop을 통해 명령형 동작(imperative behavior)을 노출할 수 있습니다.
+**prop으로 표현할 수 있는 것은 ref를 사용하지 마세요.** 예를 들어 `Modal` 컴포넌트에서 `{ open, close }` 와 같은  imperative handle을 노출하는 대신 `<Modal isOpen={isOpen} />`과 같은 `isOpen` prop을 사용하는 것이 더 좋습니다. [Effects](/learn/synchronizing-with-effects)를 사용하면 prop을 통해 명령형 동작(imperative behavior)을 노출할 수 있습니다.
 </Pitfall>
