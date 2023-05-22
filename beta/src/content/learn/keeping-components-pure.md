@@ -75,9 +75,9 @@ export default function App() {
 
 </Sandpack>
 
-`Recipe`에 `drinkers={1}`를 넘기면 항상 `1 cups of milk`를 포함한 JSX 반환합니다.
+`Recipe`에 `drinkers={2}`를 넘기면 항상 `2 cups of water`를 포함한 JSX 반환합니다.
 
-`drinkers={4}`를 넘기면 항상 `4 cups of milk`를 포함한 JSX를 반환합니다.
+`drinkers={4}`를 넘기면 항상 `4 cups of water`를 포함한 JSX를 반환합니다.
 
 수학 공식처럼 말입니다.
 
