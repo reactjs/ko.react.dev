@@ -81,7 +81,7 @@ export default function App() {
 
 수학 공식처럼 말입니다.
 
-컴포넌트를 마치 레시피처럼 생각할 수 있습니다. 만약 레시피를 그대로 따르고 요리하는 동안 새로운 재료를 도입하지 않는 이상 매번 새로운 요리를 만들 수 있습니다다. 그 "요리"는 React가 [렌더](render-and-commit)하는데 컴포넌트가 제공하는 JSX입니다.
+컴포넌트를 마치 레시피처럼 생각할 수 있습니다. 만약 레시피를 그대로 따르고 요리하는 동안 새로운 재료를 도입하지 않는 이상 매번 새로운 요리를 만들 수 있습니다다. 그 "요리"는 React가 [렌더](/learn/render-and-commit)하는데 컴포넌트가 제공하는 JSX입니다.
 
 <Illustration src="/images/docs/illustrations/i_puritea-recipe.png" alt="A tea recipe for x people: take x cups of water, add x spoons of tea and 0.5x spoons of spices, and 0.5x cups of milk" />
 
