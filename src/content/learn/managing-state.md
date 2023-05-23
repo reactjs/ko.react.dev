@@ -799,11 +799,11 @@ Read **[Passing Data Deeply with Context](/learn/passing-data-deeply-with-contex
 
 </LearnMore>
 
-## Scaling up with reducer and context {/*scaling-up-with-reducer-and-context*/}
+## Reducer와 Context로 앱 확장하기 {/*scaling-up-with-reducer-and-context*/}
 
-Reducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.
+Reducer를 사용하면 컴포넌트의 state 업데이트 로직을 통합할 수 있습니다. Context를 사용하면 다른 컴포넌트에 정보를 깊숙이 전달할 수 있습니다. Reducer와 Context를 함께 사용하여 복잡한 화면의 state를 관리할 수 있습니다.
 
-With this approach, a parent component with complex state manages it with a reducer. Other components anywhere deep in the tree can read its state via context. They can also dispatch actions to update that state.
+이 접근 방식을 사용하면 상위 컴포넌트가 Reducer로 복잡한 state를 관리합니다. 트리 깊은 곳에 있는 다른 컴포넌트는 Context를 통해 상위 컴포넌트의 state를 읽을 수 있습니다. 또한 해당 state를 업데이트하기 위해 action을 dispatch할 수도 있습니다. 
 
 <Sandpack>
 
@@ -1006,12 +1006,12 @@ ul, li { margin: 0; padding: 0; }
 
 <LearnMore path="/learn/scaling-up-with-reducer-and-context">
 
-Read **[Scaling Up with Reducer and Context](/learn/scaling-up-with-reducer-and-context)** to learn how state management scales in a growing app.
+커져가는 앱에서 state 관리가 어떻게 확장되는지 알아보려면  **[Scaling Up with Reducer and Context](/learn/scaling-up-with-reducer-and-context)** 를 읽어보세요.
 
 </LearnMore>
 
-## What's next? {/*whats-next*/}
+## 다음은 무엇인가요? {/*whats-next*/}
 
-Head over to [Reacting to Input with State](/learn/reacting-to-input-with-state) to start reading this chapter page by page!
+이 챕터를 한 페이지씩 읽어보려면 [Reacting to Input with State](/learn/reacting-to-input-with-state)로 이동하세요!
 
-Or, if you're already familiar with these topics, why not read about [Escape Hatches](/learn/escape-hatches)?
+이 주제에 이미 익숙하다면 [Escape Hatches](/learn/escape-hatches)에 대해서 읽어보는 건 어떤가요?
