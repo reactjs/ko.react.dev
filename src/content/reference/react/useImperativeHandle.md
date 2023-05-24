@@ -166,9 +166,9 @@ input {
 
 ---
 
-### 사용자 정의 명령 노출 {/*exposing-your-own-imperative-methods*/}
+### 사용자 정의 명령형 노출 {/*exposing-your-own-imperative-methods*/}
 
-imperative handle을 통해 노출하는 메서드는 DOM 메서드와 정확하게 일치할 필요가 없습니다. 예를 들어, 이 `Post` 컴포넌트는 명령 핸들을 통해 `scrollAndFocusAddComment` 메서드를 표시합니다. 이렇게 하면 부모 `Page`에서 버튼을 클릭할 때 댓글 목록을 스크롤하고 입력 필드에 초점을 맞출 수 있습니다.
+imperative handle을 통해 노출하는 메서드는 DOM 메서드와 정확하게 일치할 필요가 없습니다. 예를 들어, 이 `Post` 컴포넌트는 imperative handle을 통해 `scrollAndFocusAddComment` 메서드를 표시합니다. 이렇게 하면 부모 `Page`에서 버튼을 클릭할 때 댓글 목록을 스크롤하고 입력 필드에 초점을 맞출 수 있습니다.
 
 <Sandpack>
 
