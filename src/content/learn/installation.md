@@ -1,25 +1,25 @@
 ---
-title: Installation
+title: 설치하기
 ---
 
 <Intro>
 
-React has been designed from the start for gradual adoption. You can use as little or as much React as you need. Whether you want to get a taste of React, add some interactivity to an HTML page, or start a complex React-powered app, this section will help you get started.
+React는 처음부터 점진적인 도입을 염두에 두고 설계되었습니다. 필요한 만큼 React를 사용할 수 있습니다. React를 맛보기로 사용하든, HTML 페이지에 상호작용을 추가하든, 복잡한 React 기반 앱을 시작하든, 이 섹션에서는 시작하는 데 도움이 됩니다.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to start a new React project](/learn/start-a-new-react-project)
-* [How to add React to an existing project](/learn/add-react-to-an-existing-project)
-* [How to set up your editor](/learn/editor-setup)
-* [How to install React Developer Tools](/learn/react-developer-tools)
+* [새로운 React 프로젝트 시작 방법](/learn/start-a-new-react-project)
+* [기존 프로젝트에 React 추가 방법](/learn/add-react-to-an-existing-project)
+* [에디터 설정 방법](/learn/editor-setup)
+* [React 개발자 도구 설치 방법](/learn/react-developer-tools)
 
 </YouWillLearn>
 
-## Try React {/*try-react*/}
+## React 시도하기 {/*try-react*/}
 
-You don't need to install anything to play with React. Try editing this sandbox!
+React를 시도하려면 별도로 설치할 필요가 없습니다. 이 샌드박스를 수정해보세요!
 
 <Sandpack>
 
@@ -35,23 +35,23 @@ export default function App() {
 
 </Sandpack>
 
-You can edit it directly or open it in a new tab by pressing the "Fork" button in the upper right corner.
+직접 수정하거나 오른쪽 상단의 "Fork" 버튼을 눌러 새 탭에서 열 수 있습니다.
 
-Most pages in the React documentation contain sandboxes like this. Outside of the React documentation, there are many online sandboxes that support React: for example, [CodeSandbox](https://codesandbox.io/s/new), [StackBlitz](https://stackblitz.com/fork/react), or [CodePen.](https://codepen.io/pen?&editors=0010&layout=left&prefill_data_id=3f4569d1-1b11-4bce-bd46-89090eed5ddb)
 
-### Try React locally {/*try-react-locally*/}
+React 문서의 대부분 페이지에는 이와 같은 샌드박스가 있습니다. React 문서 외에도 [CodeSandbox](https://codesandbox.io/s/new), [StackBlitz](https://stackblitz.com/fork/react), [CodePen.](https://codepen.io/pen?&editors=0010&layout=left&prefill_data_id=3f4569d1-1b11-4bce-bd46-89090eed5ddb) 등의 온라인 샌드박스에서 React를 지원합니다.
 
-To try React locally on your computer, [download this HTML page.](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html) Open it in your editor and in your browser!
+### 로컬에서 React 시도하기 {/*try-react-locally*/}
 
-## Start a new React project {/*start-a-new-react-project*/}
+컴퓨터에서 로컬 환경에서 React를 시도하려면, [이 HTML 페이지를 다운로드](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html)하세요. 에디터와 브라우저에서 열어보세요!
 
-If you want to build an app or a website fully with React, [start a new React project.](/learn/start-a-new-react-project)
+## 새로운 React 프로젝트 시작하기 {/*start-a-new-react-project*/}
 
-## Add React to an existing project {/*add-react-to-an-existing-project*/}
+React로 완전히 앱이나 웹사이트를 구축하려면 [새로운 React 프로젝트를 시작](/learn/start-a-new-react-project)하세요.
 
-If want to try using React in your existing app or a website, [add React to an existing project.](/learn/add-react-to-an-existing-project)
+## 기존 프로젝트에 React 추가하기 {/*add-react-to-an-existing-project*/}
 
-## Next steps {/*next-steps*/}
+기존 앱이나 웹사이트에서 React를 사용해보고 싶다면, [기존 프로젝트에 React를 추가](/learn/add-react-to-an-existing-project)하세요.
 
-Head to the [Quick Start](/learn) guide for a tour of the most important React concepts you will encounter every day.
+## 다음 단계 {/*next-steps*/}
+React 개념 중 가장 중요한 개념들을 살펴보기 위해 [빠른 시작 가이드](/learn)로 이동하세요.
 
