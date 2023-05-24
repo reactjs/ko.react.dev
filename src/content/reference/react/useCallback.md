@@ -36,7 +36,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 [아래에서 더 많은 예시를 확인해보세요.](#usage)
 
-#### 매개변수 {/*parameters*/}
+#### Parameters {/*parameters*/}
 
 * `fn`: 캐싱할 함숫값입니다. 이 함수는 어떤 인자나 반환값도 가질 수 있습니다. React는 첫 렌더링에서 이 함수를 반환합니다. (호출하는 것이 아닙니다!) 다음 렌더링에서 `dependencies` 값이 이전과 같다면 React는 같은 함수를 다시 반환합니다. 반대로 `dependencies` 값이 변경되었다면 이번 렌더링에서 넘겨줬던 함수를 반환하고 다음 렌더링에 재사용할 수 있도록 이를 저장합니다. React는 함수를 호출하지 않습니다. 이 함수는 호출 여부와 호출 시점을 개발자가 결정할 수 있도록 반환됩니다.
 
