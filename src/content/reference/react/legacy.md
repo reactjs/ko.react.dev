@@ -31,4 +31,4 @@ title: "Legacy React APIs"
 
 </Deprecated>
 
-* [`createFactory`](/reference/react/createFactory)는 특정 유형의 React 엘리먼트를 생성하는 함수를 생성합니다.
+* [`createFactory`](/reference/react/createFactory)는 특정 유형의 React 엘리먼트를 생성하는 함수를 만듭니다.
