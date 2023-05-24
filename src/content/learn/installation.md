@@ -52,5 +52,6 @@ React로 완전히 앱이나 웹사이트를 구축하고 싶다면, [새로운 
 기존 앱이나 웹사이트에서 React를 적용하고 싶다면, [기존 프로젝트에 React를 추가](/learn/add-react-to-an-existing-project)하세요.
 
 ## 다음 단계 {/*next-steps*/}
+
 React 개념 중 가장 중요한 개념들을 살펴보기 위해 [빠른 시작 가이드](/learn)로 이동하세요.
 
