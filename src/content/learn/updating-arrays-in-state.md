@@ -12,7 +12,7 @@ title: 배열 State 업데이트하기
 
 - React state에서 배열의 항목을 추가, 삭제 또는 변경하는 방법
 - 배열 내부의 객체를 업데이트하는 방법
-- Immer로 덜 반복적으로 배열을 복사하는 방법
+- Immer로 덜 반복해서 배열을 복사하는 방법
 
 </YouWillLearn>
 
@@ -660,7 +660,7 @@ function ItemList({ artworks, onToggle }) {
 변경 없이 중첩된 배열을 업데이트하는 것은 [객체와 마찬가지로](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) 약간 반복적일 수 있습니다.
 
 - 일반적으로 깊은 레벨까지의 state를 업데이트할 필요는 없습니다. state 객체가 매우 깊다면 [다르게 재구성](/learn/choosing-the-state-structure#avoid-deeply-nested-state)하여 평평하게 만들 수 있습니다.
-- state 구조를 변경하고 싶지 않다면, [Immer](https://github.com/immerjs/use-immer) 사용할 수 있습니다. 손쉽게 변경 문법을 사용하여 작성할 수 있고 복사본을 생성해주어 처리할 수 있습니다.
+- state 구조를 변경하고 싶지 않다면, [Immer](https://github.com/immerjs/use-immer) 사용할 수 있습니다. 손쉽게 변경 문법을 사용하여 작성할 수 있고 복사본을 생성하여 처리할 수 있습니다.
 
 다음은 Immer로 다시 작성한 Art Bucket List 예시입니다.
 
@@ -1781,7 +1781,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-또한 Immer를 사용하여 변경 및 비변경 접근 방식을 혼용할 수 있습니다.
+또한 Immer를 사용하여 변경 및 비변경 접근 방식을 함께 사용할 수 있습니다.
 
 예를 들어, 이 버전에서 `handleAddTodo`는 Immer의 `draft`를 변경하여 구현되는 반면, `handleChangeTodo`와 `handleDeleteTodo`는 비변경 함수인 `map`과 `filter` 함수를 사용합니다.
 
