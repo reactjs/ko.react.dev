@@ -48,11 +48,11 @@ export default function App() {
 
 [아래에서 더 많은 사용법을 확인하세요.](#usage)
 
-#### 인수 {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
 * `type`: `type`은 반드시 유효한 React 컴포넌트 type이어야 합니다. 예를 들어 태그 이름 문자열(`'div'` 나 `'span'`) 혹은 React 컴포넌트(함수 컴포넌트, 클래스 컴포넌트, [`Fragment`](/reference/react/Fragment)와 같은 특별한 컴포넌트)가 될 수 있습니다.
 
-#### 반환 {/*returns*/}
+#### 반환 값 {/*returns*/}
 
 팩토리 함수를 반환합니다. 이 함수는 자식 인수의 리스트에 뒤이어, 첫 번째 인수로 `props` 객체를 받으며, 주어진 `types`, `props` 그리고 `자식`을 가진 React 엘리먼트를 반환합니다. 
 
@@ -62,7 +62,7 @@ export default function App() {
 
 ### 팩토리 함수로 React 엘리먼트 만들기 {/*creating-react-elements-with-a-factory*/}
 
-비록 대부분의 React 프로젝트들은 [JSX](/learn/writing-markup-with-jsx)를 사용하여 유저 인터페이스를 그려내지만, JSX가 필수는 아닙니다. 과거에는 `createFactory`를 JSX 없이 유저 인터페이스를 그려낼 방법의 하나로 사용하였습니다.
+비록 대부분의 React 프로젝트들은 [JSX](/learn/writing-markup-with-jsx)를 사용하여 유저 인터페이스를 표현하지만, JSX가 필수는 아닙니다. 과거에는 `createFactory`를 JSX 없이 유저 인터페이스를 표현하는 방법의 하나로 사용하였습니다.
 
 `button`과 같이 특정 엘리먼트 type을 반환하는 *팩토리 함수*를 생성하기 위해 `createFactory`를 호출합니다.
 
@@ -134,7 +134,7 @@ export function createFactory(type) {
 
 ### `createFactory`를 `createElement`로 대체하기 {/*replacing-createfactory-with-createelement*/}
 
-직접 옮겨와도 상관없을 정도로 `createFactory`를 몇 개 호출하고 있고 JSX를 사용하고 싶지 않다면, [`createElement`](/reference/react/createElement)를 실행하여 팩토리 함수를 대체할 수 있습니다. 예를 들어 이 코드는, 
+직접 옮겨와도 무방할 정도로 `createFactory`를 몇 개만 호출하고 있고 JSX를 사용하고 싶지 않다면, [`createElement`](/reference/react/createElement)를 실행하여 팩토리 함수를 대체할 수 있습니다. 예를 들어 이 코드는, 
 
 
 ```js {1,3,6}
@@ -218,7 +218,7 @@ function Heading({ isSubheading, ...props }) {
 }
 ```
 
-JSX에서도 같게 하기 위해서는 `Type`처럼 대문자로 시작하는 변수 이름을 새롭게 설정해야 합니다.
+JSX를 사용해 같은 방식으로 구현한다면 `Type`처럼 대문자로 시작하는 변수 이름을 새롭게 설정해야 합니다.
 
 ```js {2,3}
 function Heading({ isSubheading, ...props }) {
@@ -227,6 +227,6 @@ function Heading({ isSubheading, ...props }) {
 }
 ```
 
-그렇게 하지 않는 경우 `<type>`이 소문자로 되어있으므로, React는 이것을 내장된 HTML 태그로 해석할 것입니다.
+그렇게 하지 않는 경우 React는 소문자로 작성된 `<type>`을 내장된 HTML 태그로 해석할 것입니다.
 
 </Pitfall>
