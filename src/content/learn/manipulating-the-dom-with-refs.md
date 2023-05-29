@@ -31,7 +31,11 @@ import { useRef } from 'react';
 const myRef = useRef(null);
 ```
 
+<<<<<<< HEAD
 마지막으로 이전에 선언한 ref를 DOM 노드에 ref 어트리뷰트로 전달합니다.
+=======
+Finally, pass your ref as the `ref` attribute to the JSX tag for which you want to get the DOM node:
+>>>>>>> 3364c93feb358a7d1ac2e8d8b0468c3e32214062
 
 ```js
 <div ref={myRef}>

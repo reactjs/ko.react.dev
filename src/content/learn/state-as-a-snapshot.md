@@ -329,7 +329,11 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 #### 신호등 구현하기 {/*implement-a-traffic-light*/}
 
+<<<<<<< HEAD
 다음은 버튼을 토글되는 신호등 컴포넌트입니다.
+=======
+Here is a crosswalk light component that toggles when the button is pressed:
+>>>>>>> 3364c93feb358a7d1ac2e8d8b0468c3e32214062
 
 <Sandpack>
 
