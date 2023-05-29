@@ -1434,8 +1434,6 @@ function ShippingForm({ country }) {
 
 </DeepDive>
 
-### There is more than one way to do it {/*there-is-more-than-one-way-to-do-it*/}
-
 ### 여러 방법이 존재합니다. {/*there-is-more-than-one-way-to-do-it*/}
 
 브라우저의 [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) API를 이용해 **처음부터** 페이드 인 애니메이션을 구현한다고 생각해 봅시다. 아마 애니메이션을 반복시키기 위해 Effect부터 작성할 겁니다. 각각의 애니메이션 프레임 동안 [참조해 둔 ref](/learn/manipulating-the-dom-with-refs) DOM 노드의 투명도를 `1`에 도달할 때까지 변경할 수 있습니다. 코드는 다음과 같이 작성될 겁니다.
