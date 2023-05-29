@@ -884,7 +884,7 @@ const options2 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 
 // These are two different objects!
 console.log(Object.is(options1, options2)); // false
-````
+```
 
 **객체 및 함수 의존성으로 인해 이펙트가 필요 이상으로 자주 재동기화될 수 있습니다.**
 
@@ -970,7 +970,7 @@ const roomId2 = 'music';
 
 // These two strings are the same!
 console.log(Object.is(roomId1, roomId2)); // true
-````
+```
 
 이 수정 덕분에 입력을 수정해도 더 이상 채팅이 다시 연결되지 않습니다.
 
