@@ -18,7 +18,7 @@ Hooks can only be called inside the body of a function component.
 
 이러한 경우들을 살펴보겠습니다.
 
-## Hooks의 규칙을 위반 {/breaking-rules-of-hooks/} {/*hooks의-규칙을-위반-breaking-rules-of-hooks*/}
+## Hooks의 규칙을 위반 {/*breaking-rules-of-hooks*/}
 
 React에서 `use`로 시작하는 함수를 [*Hooks*](/reference/react)라고 합니다.
 
