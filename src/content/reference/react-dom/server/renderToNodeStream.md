@@ -10,7 +10,7 @@ title: renderToNodeStream
 
 <Intro>
 
-`renderToNodeStream` React 트리를 [Node.js Readable Stream.](https://nodejs.org/api/stream.html#readable-streams)으로 렌더링합니다.
+`renderToNodeStream`은 React 트리를 [Node.js Readable Stream.](https://nodejs.org/api/stream.html#readable-streams)으로 렌더링합니다.
 
 ```js
 const stream = renderToNodeStream(reactNode)
