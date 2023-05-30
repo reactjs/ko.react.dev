@@ -18,7 +18,7 @@ title: 조건부 렌더링
 
 ## 조건부로 JSX 반환하기 {/*conditionally-returning-jsx*/}
 
-짐을 챙겼는지 안 챙겼는지 표시할 수 있는 여러 개의 `Item`을 렌더링하는 `PackingList` 컴포넌트가 있다고 가정해보세요.
+짐을 챙겼는지 안 챙겼는지 표시할 수 있는 여러 개의 `Item`을 렌더링하는 `PackingList` 컴포넌트가 있다고 가정해봅시다.
 
 <Sandpack>
 
@@ -177,11 +177,11 @@ if (isPacked) {
 return <li className="item">{name}</li>;
 ```
 
-이 중복코드가 나쁘지는 않지만, 코드를 유지 보수하기 더 어렵게 만들 수 있습니다. `className`을 바꾸고 싶다면? 코드상 두 군데를 수정해야 합니다! 이러한 상황에서 조건부로 약간의 JSX를 포함해 코드를 더 [DRY (don't repeat yourself)](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) 하게 만들 수 있습니다.
+이 중복코드가 나쁘지는 않지만, 코드를 유지 보수하기 더 어렵게 만들 수 있습니다. `className`을 바꾸고 싶다면 어떻게 해야 할까요? 코드상 두 군데를 수정해야 합니다! 이러한 상황에서 조건부로 약간의 JSX를 포함해 코드를 더 [DRY(덜 반복적이게)](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) 하게 만들 수 있습니다.
 
 ### 삼항 조건 연산자 (`? :`) {/*conditional-ternary-operator--*/}
 
-JavaScript는 [삼항 조건 연산자](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 조건식을 작성하기 위한 간단한 문법을 가지고 있습니다.
+JavaScript는 [조건 연산자](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 또는 "삼항 조건 연산자"라는 조건식을 작성하기 위한 간단한 문법이 있습니다.
 
 이 코드 대신,
 
@@ -202,11 +202,11 @@ return (
 );
 ```
 
-*"`isPacked`가 true이면 (`?`) `name + ' ✔'`을 렌더링 하고, 그렇지 않으면 (`:`) `name`을 렌더링 한다.*로 읽을 수 있습니다.
+*“`isPacked`가 참이면 (`?`) `name + ' ✔'`을 렌더링하고, 그렇지 않으면 (`:`) `name`을 렌더링 한다."* 라고 읽을 수 있습니다.
 
 <DeepDive>
 
-#### Are these two examples fully equivalent? {/*are-these-two-examples-fully-equivalent*/}
+#### 두 예제는 완전히 동일할까요? {/*are-these-two-examples-fully-equivalent*/}
 
 `<li>`의 두 가지 다른 "인스턴스"를 만들 수 있기 때문에 객체 지향 프로그래밍에서는 위의 두 예가 미묘하게 다르다고 생각할 수 있습니다. 그러나 JSX 엘리먼트는 내부 상태를 보유하지 않으며 실제 DOM 노드가 아니기 때문에 "인스턴스"가 아닙니다. 이것은 청사진처럼 간단한 설명입니다. 따라서 위의 두 가지 예시 코드는 실제로 완전히 *동일합니다*. [상태를 보존하고 초기화하기](/learn/preserving-and-resetting-state)에서는 이 기능이 어떻게 작동하는지 자세히 설명합니다.
 
@@ -270,7 +270,7 @@ return (
 );
 ```
 
-이것을 *`isPacked`이면 (`&&`) 체크 표시를 렌더링하고, 그렇지 않으면 아무것도 렌더링하지 않습니다."*라고 읽을 수 있습니다.
+이것을 “`isPacked`이면 (`&&`) 체크 표시를 렌더링하고, 그렇지 않으면 아무것도 렌더링하지 않습니다."라고 읽을 수 있습니다.
 
 자, 잘 작동합니다.
 
@@ -341,7 +341,7 @@ if (isPacked) {
 }
 ```
 
-[중괄호를 사용하면 "JavaScript로 들어가는 창"이 열립니다.](/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world) 반환된 JSX 트리에 중괄호를 사용하고 이전에 계산된 식을 JSX 내부에 중첩하여 변수를 포함합니다.
+[중괄호는 "JavaScript로 들어가는 창"을 엽니다.](/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world) 반환된 JSX 트리에 중괄호를 사용하고 이전에 계산된 식을 JSX 내부에 중첩하여 변수를 포함합니다.
 
 ```js
 <li className="item">
@@ -444,8 +444,8 @@ JavaScript가 익숙하지 않다면, 처음에는 이런 다양한 코드 스�
 * React에서 JavaScript로 분기 로직을 제어합니다.
 * 조건부로 `if` 문과 함께 JSX 식을 반환할 수 있습니다.
 * 조건부로 일부 JSX를 변수에 저장한 다음 중괄호를 사용하여 다른 JSX에 포함할 수 있습니다.
-* JSX에서 `{cond ? <A /> : <B />}`는 *"`cond`이면 `<A />`를 렌더링하고, 그렇지 않으면 `<B />`를 렌더링합니다."* 를 의미합니다.
-* JSX에서 `{cond && <A />}`는 *"`cond`이면, `<A />`를 렌더링하되, 그렇지 않으면 아무것도 렌더링하지 않습니다."*를 의미합니다.
+* JSX에서 `{cond ? <A /> : <B />}`는 *“`cond`이면 `<A />`를 렌더링하고, 그렇지 않으면 `<B />`를 렌더링합니다."* 를 의미합니다.
+* JSX에서 `{cond && <A />}`는 *“`cond`이면, `<A />`를 렌더링하되, 그렇지 않으면 아무것도 렌더링하지 않습니다."* 를 의미합니다.
 * 위 예시는 흔한 방법이지만, `if`를 선호한다면 사용하지 않아도 됩니다.
 
 </Recap>
