@@ -10,7 +10,7 @@ title: cloneElement
 
 <Intro>
 
-`cloneElement`를 사용하면 엘리먼트를 기준으로 새로운 React 엘리먼트를 만들 수 있습니다.
+`cloneElement`를 사용하면 element를 기준으로 새로운 React 엘리먼트를 만들 수 있습니다.
 
 ```js
 const clonedElement = cloneElement(element, props, ...children)
@@ -26,7 +26,7 @@ const clonedElement = cloneElement(element, props, ...children)
 
 ### `cloneElement(element, props, ...children)` {/*cloneelement*/}
 
-엘리먼트를 기준으로 하되, `props`와 `children`을 다르게 하여 새로운 React 엘리먼트를 만들기 위해 `cloneElement`를 호출하세요.
+새로운 React 엘리먼트를 만들기 위해 `element`를 기준으로 하고, `props`와 `children`을 다르게 하여 `cloneElement`를 호출하세요.
 
 ```js
 import { cloneElement } from 'react';
@@ -43,18 +43,18 @@ const clonedElement = cloneElement(
 console.log(clonedElement); // <Row title="Cabbage">Goodbye</Row>
 ```
 
-[예제를 더 보려면 아래를 참고하세요.](#usage)
+[아래에서 더 많은 예제를 볼 수 있습니다.](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
 * `element`: `element` 인자는 유효한 React 엘리먼트여야 합니다. 예를 들어, `<Something />`과 같은 JSX 노드, [`createElement`](/reference/react/createElement)로 호출한 결과물 또는 다른 `cloneElement`로 호출한 결과물이 될 수 있습니다.
 
 * `props`: `props` 인자는 객체 또는 `null`이어야 합니다. `null`을 전달하면 복제된 엘리먼트는 원본 `element.props`를 모두 유지합니다. 그렇지 않으면 `props` 객체의 각 prop에 대해 반환된 엘리먼트는 `element.props`의 값보다 `props`의 값을 "우선"합니다. 나머지 `props`는 원본 `element.props`에서 채워집니다. `props.key` 또는 `props.ref`를 전달하면 원본의 것을 대체합니다.
 
-* **(선택 사항)** `...children`: 0개 이상의 자식 노드를 필요로 합니다. React 엘리먼트, 문자열, 숫자, [portals](/reference/react-dom/createPortal), 빈 노드 (`null`, `undefined`, `true`, `false`) 및 React 노드 배열을 포한 모든 React 노드가 해당될 수 있습니다. `...children` 인자를 전달하지 않으면 원본 `element.props.children`이 유지됩니다.
+* **(선택사항)** `...children`: 0개 이상의 자식 노드를 필요로 합니다. React 엘리먼트, 문자열, 숫자, [portals](/reference/react-dom/createPortal), 빈 노드 (`null`, `undefined`, `true`, `false`) 및 React 노드 배열을 포한 모든 React 노드가 해당될 수 있습니다. `...children` 인자를 전달하지 않으면 원본 `element.props.children`이 유지됩니다.
 
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
 `cloneElement`는 다음과 같은 프로퍼티를 가진 React 엘리먼트 객체를 반환합니다.
 
@@ -75,7 +75,7 @@ console.log(clonedElement); // <Row title="Cabbage">Goodbye</Row>
 
 ---
 
-## 사용 방법 {/*usage*/}
+## 사용 {/*usage*/}
 
 ### 엘리먼트의 props 재정의하기 {/*overriding-props-of-an-element*/}
 
@@ -139,7 +139,7 @@ export default function List({ children }) {
 </List>
 ```
 
-"다음" 버튼을 누르면 `List`의 상태가 업데이트 되고 다른 행이 하이라이트 표시가 되는 것을 확인할 수 있습니다.
+"다음" 버튼을 누르면 `List`의 state가 업데이트 되고 다른 행이 하이라이트 표시가 되는 것을 확인할 수 있습니다.
 
 <Sandpack>
 
