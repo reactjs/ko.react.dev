@@ -51,7 +51,7 @@ console.log(clonedElement); // <Row title="Cabbage">Goodbye</Row>
 
 * `props`: `props` 인자는 객체 또는 `null`이어야 합니다. `null`을 전달하면 복제된 엘리먼트는 원본 `element.props`를 모두 유지합니다. 그렇지 않으면 `props` 객체의 각 prop에 대해 반환된 엘리먼트는 `element.props`의 값보다 `props`의 값을 "우선"합니다. 나머지 `props`는 원본 `element.props`에서 채워집니다. `props.key` 또는 `props.ref`를 전달하면 원본의 것을 대체합니다.
 
-* **(선택사항)** `...children`: 0개 이상의 자식 노드를 필요로 합니다. React 엘리먼트, 문자열, 숫자, [portals](/reference/react-dom/createPortal), 빈 노드 (`null`, `undefined`, `true`, `false`) 및 React 노드 배열을 포한 모든 React 노드가 해당될 수 있습니다. `...children` 인자를 전달하지 않으면 원본 `element.props.children`이 유지됩니다.
+* **(선택사항)** `...children`: 0개 이상의 자식 노드가 필요합니다. React 엘리먼트, 문자열, 숫자, [portals](/reference/react-dom/createPortal), 빈 노드 (`null`, `undefined`, `true`, `false`) 및 React 노드 배열을 포함한 모든 React 노드가 해당할 수 있습니다. `...children` 인자를 전달하지 않으면 원본 `element.props.children`이 유지됩니다.
 
 
 #### 반환값 {/*returns*/}
@@ -69,9 +69,9 @@ console.log(clonedElement); // <Row title="Cabbage">Goodbye</Row>
 
 * 엘리먼트를 복제해도 **원본 엘리먼트는 수정되지 않습니다.**
 
-* **자식이 모두 정적으로 알려져 있는 경우에만** `cloneElement(element, null, child1, child2, child3)`와 같이 **자식을 여러 개의 인자로 전달해야 합니다.** 자식이 동적으로 생성되었다면 `cloneElement(element, null, listItems)`와 같이 전체 배열을 세 번째 인자로 전달해야합니다. 이렇게 하면 React가 모든 동적 리스트에 대해 [key가 누락되었다는 경고](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 보여줍니다. 정적 리스트의 경우는 순서가 변경되지 않으므로 이 작업은 필요하지 않습니다.
+* **자식이 모두 정적으로 알려진 경우에만** `cloneElement(element, null, child1, child2, child3)`와 같이 **자식을 여러 개의 인자로 전달해야 합니다.** 자식이 동적으로 생성되었다면 `cloneElement(element, null, listItems)`와 같이 전체 배열을 세 번째 인자로 전달해야 합니다. 이렇게 하면 React가 모든 동적 리스트에 대해 [key가 누락되었다는 경고](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 보여줍니다. 정적 리스트의 경우는 순서가 변경되지 않으므로 이 작업은 필요하지 않습니다.
 
-* `cloneElement`는 데이터 흐름을 추적하기 어렵기 때문에 다음 [대안](#alternatives)을 사용해보세요.
+* `cloneElement`는 데이터 흐름을 추적하기 어렵기 때문에 다음 [대안](#alternatives)을 사용해 보세요.
 
 ---
 
@@ -95,7 +95,7 @@ const clonedElement = cloneElement(
 
 **어떤 경우에 유용한지 예제를 통해 알아보도록 하겠습니다.**
 
-[`children`](/learn/passing-props-to-a-component#passing-jsx-as-children)을 선택할 수 있는 행 목록으로 렌더링하고, 선택된 행을 변경하는 "다음" 버튼이 있는 `List` 컴포넌트를 상상해 보세요. `List` 컴포넌트는 선택된 행을 다르게 렌더링 해야하므로 전달 받은 모든 `<Row>` 자식 요소를 복제합니다. 그리고 `isHighlighted: true` 또는 `isHighlighted: false`인 `prop`을 추가합니다.
+[`children`](/learn/passing-props-to-a-component#passing-jsx-as-children)을 선택할 수 있는 행 목록으로 렌더링하고, 선택된 행을 변경하는 "다음" 버튼이 있는 `List` 컴포넌트를 상상해 보세요. `List` 컴포넌트는 선택된 행을 다르게 렌더링해야 하므로 전달받은 모든 `<Row>` 자식 요소를 복제합니다. 그리고 `isHighlighted: true` 또는 `isHighlighted: false`인 `prop`을 추가합니다.
 
 
 ```js {6-8}
@@ -110,7 +110,7 @@ export default function List({ children }) {
       )}
 ```
 
-다음과 같이 `List`에서 전달 받은 원본 JSX가 있다고 가정합시다.
+다음과 같이 `List`에서 전달받은 원본 JSX가 있다고 가정합시다.
 
 ```js {2-4}
 <List>
@@ -139,7 +139,7 @@ export default function List({ children }) {
 </List>
 ```
 
-"다음" 버튼을 누르면 `List`의 state가 업데이트 되고 다른 행이 하이라이트 표시가 되는 것을 확인할 수 있습니다.
+"다음" 버튼을 누르면 `List`의 state가 업데이트되고 다른 행이 하이라이트 표시가 되는 것을 확인할 수 있습니다.
 
 <Sandpack>
 
@@ -234,11 +234,11 @@ button {
 
 </Sandpack>
 
-요약하자면, `List`는 전달 받은 `<Row />` 엘리먼트를 복제하고 추가로 들어오는 prop 또한 추가합니다.
+요약하자면, `List`는 전달받은 `<Row />` 엘리먼트를 복제하고 추가로 들어오는 prop 또한 추가합니다.
 
 <Pitfall>
 
-자식 요소를 복제하는 것은 앱에서 데이터가 어떻게 흘러가는지 파악하기 어렵기 때문에 다음 [대안](#alternatives)을 사용해보세요.
+자식 요소를 복제하는 것은 앱에서 데이터가 어떻게 흘러가는지 파악하기 어렵기 때문에 다음 [대안](#alternatives)을 사용해 보세요.
 
 </Pitfall>
 
@@ -248,7 +248,7 @@ button {
 
 ### render prop으로 데이터를 전달하기 {/*passing-data-with-a-render-prop*/}
 
-`cloneElement`를 사용하는 대신에 `renderItem`과 같은 *render prop*을 사용하는 것을 고려해보세요. 다음 예제의 `List`는 `renderItem`을 prop으로 받습니다. `List`는 모든 item에 대해 `renderItem`을 호출하고 `isHighlighted`를 인자로 전달합니다.
+`cloneElement`를 사용하는 대신에 `renderItem`과 같은 *render prop*을 사용하는 것을 고려해 보세요. 다음 예제의 `List`는 `renderItem`을 prop으로 받습니다. `List`는 모든 item에 대해 `renderItem`을 호출하고 `isHighlighted`를 인자로 전달합니다.
 
 ```js {1,7}
 export default function List({ items, renderItem }) {
@@ -391,7 +391,7 @@ button {
 
 </Sandpack>
 
-이러한 패턴은 보다 명시적이기 때문에 `cloneElement` 보다 선호됩니다.
+이러한 패턴은 더 명시적이기 때문에 `cloneElement` 보다 선호됩니다.
 
 ---
 
@@ -431,7 +431,7 @@ export default function Row({ title }) {
   // ...
 ```
 
-이로 인해 `isHighlighted`를 `<Row>`로 전달하는 것에 대해 호출된 컴포넌트가 알거나 걱정하지 않아도 됩니다.
+이에 따라 `isHighlighted`를 `<Row>`로 전달하는 것에 대해 호출된 컴포넌트가 알거나 걱정하지 않아도 됩니다.
 
 ```js {4}
 <List
@@ -558,7 +558,7 @@ button {
 
 ### Custom Hook으로 로직 추출하기 {/*extracting-logic-into-a-custom-hook*/}
 
-다른 접근 방식으로는 자체 hook을 통해 "비시각적인" 로직을 추출하는 것을 시도해볼 수 있습니다. 그리고 hook에 의해서 반환된 정보를 사용하여 렌더링할 내용을 정합니다. 예를 들어 다음과 같이 `useList` 같은 custom hook을 작성할 수 있습니다.
+다른 접근 방식으로는 자체 hook을 통해 "비 시각적인" 로직을 추출하는 것을 시도해 볼 수 있습니다. 그리고 hook에 의해서 반환된 정보를 사용하여 렌더링할 내용을 정합니다. 예를 들어 다음과 같이 `useList` 같은 custom hook을 작성할 수 있습니다.
 
 ```js
 import { useState } from 'react';
