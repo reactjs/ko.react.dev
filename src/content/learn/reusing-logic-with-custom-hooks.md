@@ -4,7 +4,7 @@ title: 커스텀 Hook을 이용하는 로직 재사용하기
 
 <Intro>
 
-React는 `useState`, `useContext`, 그리고 `useEffect`과같이 몇몇 내재하고 있는 Hook이 존재합니다. 가끔 조금 더 구체적인 목적을 가진 Hook이 존재하길 바랄 때도 있을 겁니다. 예를 들어, 데이터를 가져온다던가, 사용자가 온라인 상태인지 계속 확인한다던가, 혹은 채팅방에 연결하기 위한 목적들처럼요. React에서 다음과 같은 Hook들을 찾기는 어려울 것입니다. 하지만 애플리케이션의 필요에 알맞은 본인만의 Hook을 만들 수 있습니다.
+React는 `useState`, `useContext`, 그리고 `useEffect`같이 몇몇 내재하고 있는 Hook이 존재합니다. 가끔 조금 더 구체적인 목적을 가진 Hook이 존재하길 바랄 때도 있을 겁니다. 예를 들어, 데이터를 가져온다던가, 사용자가 온라인 상태인지 계속 확인한다던가, 혹은 채팅방에 연결하기 위한 목적들처럼요. React에서 다음과 같은 Hook들을 찾기는 어려울 것입니다. 하지만 애플리케이션의 필요에 알맞은 본인만의 Hook을 만들 수 있습니다.
 
 </Intro>
 
@@ -56,9 +56,9 @@ export default function StatusBar() {
 
 네트워크를 껐다 켰다 해보세요. 그리고 `StatusBar` 가 어떻게 업데이트되는지 확인해 보세요.
 
-이제 다른 컴포넌트에서 같은 로직을 *또* 사용한다고 상상해 보세요. 네트워크가 꺼졌을 때, "저장" 대신 "재연결 중..."을 보여주며 비활성화된 저장 버튼을 구현하고 싶다고 가정해 봅시다.
+이제 다른 컴포넌트에서 같은 로직을 *또* 사용한다고 상상해 보세요. 네트워크가 꺼졌을 때, "저장" 대신 "재연결 중..."을 보여주는 비활성화된 저장 버튼을 구현하고 싶다고 가정해 봅시다.
 
-구현하기 위해, `SaveButton` 안에 앞서 사용한 `isOnline` state과 Effect를 복사 붙여넣기 할 수 있습니다.
+구현하기 위해, 앞서 사용한 `isOnline` state과 Effect를 `SaveButton` 안에 복사 붙여넣기 할 수 있습니다.
 
 <Sandpack>
 
@@ -100,7 +100,7 @@ export default function SaveButton() {
 
 위의 두 컴포넌트는 잘 동작합니다. 하지만 둘 사이의 논리가 중복되는 점은 아쉽습니다. 두 컴포넌트가 다른 *시각적 모양*을 갖고 있다고 해도, 둘 사이의 로직을 재사용하길 원합니다.
 
-### Extracting your own custom Hook from a component {/*extracting-your-own-custom-hook-from-a-component*/}
+### 컴포넌트로부터 커스텀 Hook 추출하기 {/*extracting-your-own-custom-hook-from-a-component*/}
 
 [`useState`](/reference/react/useState) 그리고 [`useEffect`](/reference/react/useEffect)와 비슷한 내장된 `useOnlineStatus` Hook이 있다고 상상해 봅시다. 그럼 두 컴포넌트를 단순화할 수 있고, 둘 간의 중복을 제거할 수 있게 됩니다.
 
@@ -213,7 +213,7 @@ export function useOnlineStatus() {
 
 이제 컴포넌트는 반복되는 로직이 많지 않게 되었습니다. **중요한 건, 두 컴포넌트 내부 코드가 *어떻게 그것을 하는지* (브라우저 이벤트 구독하기) 보다 *그들이 무엇을 하려는지* (온라인 state 사용하기)에 대해 설명하고 있다는 점입니다.**
 
-커스텀 Hook을 만들어 낼 때, 브라우저 API나 외부 시스템과 소통하는 방법과 같은 불필요한 세부 사항을 숨길 수 있습니다. 컴포넌트의 코드는 목적만을 나타낼 뿐 실행 방법에 대해선 나타내지 않습니다. 
+커스텀 Hook을 만들어 낼 때, 브라우저 API나 외부 시스템과 소통하는 방법과 같은 불필요한 세부 사항을 숨길 수 있습니다. 컴포넌트의 코드는 목적만을 나타낼 뿐 실행 방법에 대해선 나타내지 않습니다.
 
 ### Hook의 이름은 항상 `use`로 시작해야 합니다. {/*hook-names-always-start-with-use*/}
 
@@ -222,7 +222,7 @@ React 애플리케이션은 여러 컴포넌트로 만들어집니다. 컴포넌
 이때, 다음의 작명 규칙을 준수해야 합니다.
 
 1. **React 컴포넌트의 이름은 항상 대문자로 시작해야 합니다.** (예시 : `StatusBar`, `SaveButton`) 또한 React 컴포넌트는 JSX처럼 어떻게 보이는지 React가 알 수 있는 무언가를 반환해야 합니다.
-2. **Hook의 이름은 `use` 뒤에 대문자로 시작해야 합니다. (예시 : [`useState`](/reference/react/useState) (내장된 Hook) or `useOnlineStatus` (앞서 작성한 커스텀 Hook).) Hook들은 어떤 값이든 반환할 수 있습니다.
+2. **Hook의 이름은 `use` 뒤에 대문자로 시작해야 합니다.** (예시 : [`useState`](/reference/react/useState) (내장된 Hook) or `useOnlineStatus` (앞서 작성한 커스텀 Hook)) Hook들은 어떤 값이든 반환할 수 있습니다.
 
 이런 규칙들은 컴포넌트를 볼 때, 어디에 state, Effect 및 다른 React 기능들이 "숨어" 있는지 알 수 있게 해줍니다. 예를 들어, 만약 컴포넌트 안에 `getColor()`라는 함수를 보았다면, 해당 함수의 이름이 `use`로 시작하지 않으므로 함수 안에 React state가 있을 수 없다는 것을 확신할 수 있습니다. 반대로 `useOnlineStatus()` 함수의 경우 높은 확률로 내부에 다른 Hook을 사용하고 있을 수 있습니다!
 
@@ -234,9 +234,9 @@ linter가 [React에 맞춰있다면](/learn/editor-setup#linting), 작명 규칙
 
 <DeepDive>
 
-#### use로 시작되는 모든 함수들이 렌더링되는 동안 불러와지나요? {/*should-all-functions-called-during-rendering-start-with-the-use-prefix*/}
+#### 렌더링 중에 호출되는 모든 함수는 use 접두사로 시작해야 하나요? {/*should-all-functions-called-during-rendering-start-with-the-use-prefix*/}
 
-아닙니다. Hook을 *호출*하지 않는 함수는 Hook*일* 필요가 없습니다.
+아닙니다. Hook을 *호출*하지 않는 함수는 *Hook일* 필요가 없습니다.
 
 함수가 어떤 Hook도 호출하지 않는다면, `use`를 이름 앞에 작성하는 것을 피하세요. 대신, `use` 없이 일반적인 함수로 작성하세요. 예를 들어 `useSorted`가 Hook을 호출하지 않는다면 `getSorted`로 변경할 수 있습니다. 
 
@@ -252,7 +252,7 @@ function getSorted(items) {
 }
 ```
 
-다음의 예시는 조건문을 포함해 어디든 일반 함수를 사용할 수 있다는 것을 보여줍니다.
+다음의 예시는 조건문 뿐만 아니라 어디든 일반 함수를 사용할 수 있다는 것을 보여줍니다.
 
 ```js
 function List({ items, shouldSort }) {
@@ -324,7 +324,7 @@ function SaveButton() {
 }
 ```
 
-완전히 독립적인 두 state 변수와 Effect가 있음을 확인할 수 있습니다. 그들은 우리가 동일한 외부 변수(네트워크의 연결 state)를 동기화했기 때문에 같은 시간에 같은 값을 가지고 있을 뿐입니다. 
+완전히 독립적인 두 state 변수와 Effect가 있음을 확인할 수 있습니다. 그들은 우리가 동일한 외부 변수(네트워크의 연결 state)를 동기화했기 때문에 같은 시간에 같은 값을 가지고 있을 뿐입니다.
 
 이걸 더 잘 표현하기 위해 다른 예시가 필요할 겁니다. 다음의 `Form` 컴포넌트를 살펴보세요.
 
@@ -644,7 +644,7 @@ export default function ChatRoom({ roomId }) {
 
 매우 간단해졌습니다! (그런데도 똑같이 동작합니다)
 
-로직이 props와 state 변화에 따라 *여전히 응답*하는 것을 확인해 보세요. 서버 URL이나 방을 변경해 보세요.
+로직이 props와 state 변화에 따라 *여전히 응답*하는지 확인해 봅시다. 서버 URL이나 방을 변경해 보세요.
 
 <Sandpack>
 
@@ -1267,7 +1267,7 @@ function ChatRoom({ roomId }) {
 
 ### 커스텀 Hook은 더 나은 패턴으로 변경할 수 있도록 도와줍니다. {/*custom-hooks-help-you-migrate-to-better-patterns*/}
 
-Effect는 [도피구](/learn/escape-hatches) 입니다. "React에서 벗어나"는 것이 필요할 때나 사용 시에 괜찮은 내장된 해결 방법이 없는 경우, 사용합니다. 시간이 지나며 React 팀의 목표는 더 구체적인 문제에 더 구체적인 해결 방법을 제공해 앱에 있는 Effect의 숫자를 최소한으로 줄이는 것입니다. 커스텀 Hook으로 Effect를 감싸는 것은 이런 해결 방법들이 가능해질 때 코드를 쉽게 업그레이드할 수 있게 해줍니다.
+Effect는 [도피구](/learn/escape-hatches) 입니다. "React에서 벗어나"는 것이 필요할 때나 사용 시에 괜찮은 내장된 해결 방법이 없는 경우, 사용합니다. React 팀의 목표는 더 구체적인 문제에 더 구체적인 해결 방법을 제공해 앱에 있는 Effect의 숫자를 점차 최소한으로 줄이는 것입니다. 커스텀 Hook으로 Effect를 감싸는 것은 이런 해결 방법들이 가능해질 때 코드를 쉽게 업그레이드할 수 있게 해줍니다.
 
 예시로 돌아가 봅시다.
 
@@ -1330,7 +1330,7 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-위의 예시에서 `useOnlineStatus`는 한 쌍의 [`useState`](/reference/react/useState)와 [`useEffect`.](/reference/react/useEffect) 과 함께 실행됩니다. 하지만 이건 가장 좋은 해결 방법은 아닙니다. 이 해결 방법이 고려하지 못한 수많은 예외 상황이 존재합니다. 예를 들어, 이건 컴포넌트가 마운트됐을 때, `isOnline`이 이미 `true`라고 가정합니다. 하지만 이것은 네트워크가 이미 꺼졌을 때 틀린 가정이 됩니다. 이런 상황을 확인하기 위해 브라우저 [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API를 사용할 수도 있습니다. 하지만 이걸 직접적으로 사용하게 되면 초기 HTML을 생성하기 위한 서버에선 동작하지 않습니다. 짧게 말하면 코드는 보완되어야 합니다.
+위의 예시에서 `useOnlineStatus`는 한 쌍의 [`useState`](/reference/react/useState)와 [`useEffect`](/reference/react/useEffect)와 함께 실행됩니다. 하지만 이건 가장 좋은 해결 방법은 아닙니다. 이 해결 방법이 고려하지 못한 수많은 예외 상황이 존재합니다. 예를 들어, 이건 컴포넌트가 마운트됐을 때, `isOnline`이 이미 `true`라고 가정합니다. 하지만 이것은 네트워크가 이미 꺼졌을 때 틀린 가정이 됩니다. 이런 상황을 확인하기 위해 브라우저 [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API를 사용할 수도 있습니다. 하지만 이걸 직접적으로 사용하게 되면 초기 HTML을 생성하기 위한 서버에선 동작하지 않습니다. 짧게 말하면 코드는 보완되어야 합니다.
 
 운 좋게도 React 18은 이런 모든 문제를 신경 써주는 [`useSyncExternalStore`](/reference/react/useSyncExternalStore)라고 불리는 섬세한 API를 포함합니다. 여기 새 API의 장점을 가지고 다시 쓰인 `useOnlineStatus`이 있습니다.
 
@@ -1418,7 +1418,7 @@ function SaveButton() {
 
 #### React가 데이터 패칭을 위한 내부 해결책을 제공할까요? {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
 
-아직 세부적인 사항을 작업 중이지만, 앞으로는 이와 같은 데이터 가져오기를 작성하게 될 것으로 예상합니다.
+아직 세부적인 사항을 작업 중이지만, 앞으로는 이와 같이 데이터 가져오도록 작성하게 될 것으로 예상합니다.
 
 ```js {1,4,6}
 import { use } from 'react'; // 아직 사용 불가능합니다!
@@ -1430,7 +1430,7 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-앱에 `useData`과 같은 커스텀 Hook을 사용한다면, 모든 컴포넌트에 수동으로 Effect를 작성하는 것보다 최종적으로 권장되는 접근 방식으로 변경하는 것이 더 적은 변경이 필요합니다. 그러나 이전의 접근 방식도 충분히 잘 동작하기 때문에 Effect 사용을 즐긴다면 그렇게 사용해도 됩니다. 
+앱에 `useData`과 같은 커스텀 Hook을 사용한다면, 모든 컴포넌트에 수동으로 Effect를 작성하는 것보다 최종적으로 권장되는 접근 방식으로 변경하는 것이 더 적은 변경이 요구됩니다. 그러나 이전의 접근 방식도 충분히 잘 동작하기 때문에 Effect 사용을 즐긴다면 그렇게 사용해도 됩니다.
 
 </DeepDive>
 
@@ -1814,7 +1814,7 @@ html, body { min-height: 300px; }
 
 Effect는 외부 시스템과 React를 연결할 수 있게 해줍니다. 예를 들어 여러 애니메이션을 연결하는 것처럼 Effects 간의 조정이 더 많이 필요할수록, 위의 코드 예시처럼 Effect와 Hook 밖으로 로직을 *완전히* 분리하는 것이 합리적입니다. 그렇게 분리한 코드는 "외부 시스템"이 *될 것입니다* Effect는 React 밖으로 내보낸 시스템에 메시지만 보내면 되기 때문에 이런 방식은 Effect가 심플한 상태를 유지하도록 합니다.
 
-위의 예시는 페이드인 로직이 자바스크립트로 작성되어야 하는 경우라고 가정합니다. 하지만 이런 특정 페이드인 애니메이션은  일반 [CSS 애니메이션](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Animations/Using_CSS_animations)으로 구현하는 것이 더 간단하고 훨씬 효율적입니다.
+위의 예시는 페이드인 로직이 자바스크립트로 작성되어야 하는 경우라고 가정합니다. 하지만 이런 특정 페이드인 애니메이션은 일반 [CSS 애니메이션](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Animations/Using_CSS_animations)으로 구현하는 것이 더 간단하고 훨씬 효율적입니다.
 
 <Sandpack>
 
@@ -2152,7 +2152,7 @@ export function useInterval(onTick, delay) {
 
 </Sandpack>
 
-이 해결 방법은 다음에 해결해야할 약간의 도전 과제가 있습니다.
+이 해결 방법은 다음에 해결해야할 약간의 도전 과제가 남아 있습니다.
 
 </Solution>
 
@@ -2486,7 +2486,7 @@ body { min-height: 300px; }
 
 </Sandpack>
 
-이 Effect는 정리할 필요가 "없다"는 걸 기억하세요. 정리 기능에 `clearTimeout`를 호출했다면 매번 `value`는 변경되고, 이미 예정된 타임아웃을 리셋할 겁니다. 동작이 계속 유지되도록 하기 위해 모든 타임아웃이 동작하길 바랄 겁니다.
+이 Effect는 정리할 필요가 "없다"는 걸 기억하세요. 정리 기능에 `clearTimeout`를 호출했다면 매번 `value`는 변경되고, 이미 예정된 타임아웃을 리셋합니다. 동작이 계속 유지되도록 하기 위해 모든 타임아웃이 동작하길 바랄 겁니다.
 
 </Solution>
 
