@@ -807,7 +807,7 @@ React에 재렌더링을 건너뛸 수 있음을 알리려면 `false`를 반환�
 
 - props 변경에 대한 응답으로 **부수 효과를 실행**(예: 데이터 가져오기, 애니메이션 실행, 구독 재초기화)해야 하는 경우 해당 로직을 [`componentDidUpdate`](#componentdidupdate)로 옮기세요.
 - **props가 변경될 때만 일부 데이터를 다시 계산하지 않아야** 하는 경우 대신 [memoization helper](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization)를 사용하세요.
-- **props가 변경될 때 일부 상태를 "초기화"** 해야 하는 경우, 컴포넌트를 [완전히 제어](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component)하거나 [key로 완전히 제어하지 않도록](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) 만드는 것이 좋습니다.
+- **props가 변경될 때 일부 state를 "초기화"** 해야 하는 경우, 컴포넌트를 [완전히 제어](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component)하거나 [key로 완전히 제어하지 않도록](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) 만드는 것이 좋습니다.
 - **props가 변경될 때 일부 state를 "조정"** 해야 하는 경우 렌더링 중에 props만으로 필요한 모든 정보를 계산할 수 있는지 확인하세요. 계산할 수 없는 경우 [`static getDerivedStateFromProps`](/reference/react/Component#static-getderivedstatefromprops)를 대신 사용하세요.
 
 [안전하지 않은 생명주기에서 벗어나 마이그레이션한 사례를 확인하세요.](https://ko.legacy.reactjs.org/blog/2018/03/27/update-on-async-rendering.html#updating-state-based-on-props)
@@ -1037,7 +1037,7 @@ class Greeting extends React.Component {
 
 `static getDerivedStateFromProps`를 정의하면 React는 초기 마운트 및 후속 업데이트 모두에서 [`render`](#render)를 호출하기 바로 전에 이를 호출합니다. state를 업데이트하려면 객체를 반환하고, 아무것도 업데이트하지 않으려면 `null`을 반환해야 합니다.
 
-이 메서드는 시간이 지남에 따라 props의 변경에 따라 상태가 달라지는 [드문 사용 사례](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state)를 위해 존재합니다. 예를 들어, 이 `Form` 컴포넌트는 `userId` props가 변경되면 `email` state를 재설정합니다.
+이 메서드는 시간이 지남에 따라 props의 변경에 따라 state가 달라지는 [드문 사용 사례](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state)를 위해 존재합니다. 예를 들어, 이 `Form` 컴포넌트는 `userId` props가 변경되면 `email` state를 재설정합니다.
 
 ```js {7-18}
 class Form extends Component {
@@ -1071,7 +1071,7 @@ state를 파생하면 코드가 장황해지고 컴포넌트에 대해 생각하
 
 - props 변경에 대한 응답으로 부수 효과(예: 데이터 불러오기 또는 애니메이션)를 수행해야 하는 경우, 대신 [`componentDidUpdate`](#componentdidupdate) 메서드를 사용하세요.
 - **props이 변경될 때만 일부 데이터를 다시 계산**하려면 [memoization helper를 대신 사용하세요.](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization)
-- **prop이 변경될 때 일부 상태를 "초기화"** 하려면 컴포넌트를 [완전히 제어](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component)하거나 [key로 완전히 제어하지 않도록](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) 만드는 것이 좋습니다.
+- **prop이 변경될 때 일부 state를 "초기화"** 하려면 컴포넌트를 [완전히 제어](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component)하거나 [key로 완전히 제어하지 않도록](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) 만드는 것이 좋습니다.
 
 </Pitfall>
 
@@ -1154,7 +1154,7 @@ export default function App() {
 
 ### 클래스 컴포넌트에 state 추가하기 {/*adding-state-to-a-class-component*/}
 
-class에 [state](/learn/state-a-components-memory)를 추가하려면 [`state`](#state)라는 프로퍼티에 객체를 할당합니다. 상태를 업데이트하려면 [`this.setState`](#setstate)를 호출합니다.
+class에 [state](/learn/state-a-components-memory)를 추가하려면 [`state`](#state)라는 프로퍼티에 객체를 할당합니다. state를 업데이트하려면 [`this.setState`](#setstate)를 호출합니다.
 
 <Sandpack>
 
@@ -1392,7 +1392,7 @@ class ErrorBoundary extends React.Component {
 
 `Profile` 또는 그 하위 컴포넌트가 오류를 발생시키면 `ErrorBoundary`가 해당 오류를 "포착"하고 사용자가 제공한 오류 메시지와 함께 fallback UI를 표시한 다음 프로덕션 오류 보고서를 오류 보고 서비스에 전송합니다.
 
-모든 컴포넌트를 별도의 오류 경계로 묶을 필요는 없습니다. [오류 경계의 세분화](https://aweary.dev/fault-tolerance-react/)를 고려할 때는 오류 메시지를 표시하는 것이 적절한 위치를 고려하세요. 예를 들어 메시징 앱의 경우 대화 목록 주위에 오류 경계를 배치하는 것이 좋습니다. 또한 모든 개별 메시지 주위에 오류 경계를 배치하는 것도 좋습니다. 하지만 모든 아바타 주위에 경계를 배치하는 것은 적절하지 않습니다.
+모든 컴포넌트를 별도의 오류 경계로 묶을 필요는 없습니다. [오류 경계의 세분화](https://aweary.dev/fault-tolerance-react/)를 고려할 때는 오류 메시지를 표시하는 것이 적절한 위치를 고려하세요. 예를 들어 메시징 앱의 경우 대화 목록 주위에 오류 경계를 위치시키는 것이 좋습니다. 또한 모든 개별 메시지 주위에 오류 경계를 위치시키는 것도 좋습니다. 하지만 모든 아바타 주위에 경계를 위치시키는 것은 적절하지 않습니다.
 
 <Note>
 
