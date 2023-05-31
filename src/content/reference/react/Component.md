@@ -1088,7 +1088,7 @@ state를 파생하면 코드가 장황해지고 컴포넌트에 대해 생각하
 
 - 이 메서드는 원인에 관계없이 *모든* 렌더링에서 호출됩니다. 이는 부모가 다시 렌더링을 일으킬 때만 발동하고 로컬 `setState`의 결과가 아닐 때만 발동하는 [`UNSAFE_componentWillReceiveProps`](#unsafe_cmoponentwillreceiveprops)와는 다릅니다.
 
-- 이 메서드에는 컴포넌트 인스턴스에 대한 액세스 권한이 없습니다. 원하는 경우 클래스 정의 외부 컴포넌트 props 및 state의 순수 함수를 추출하여 `static getDerivedStateFromProps`와 다른 클래스 메서드 사이에 일부 코드를 재사용할 수 있습니다.
+- 이 메서드에는 컴포넌트 인스턴스에 대한 액세스 권한이 없습니다. 원하는 경우 class 정의 외부 컴포넌트 props 및 state의 순수 함수를 추출하여 `static getDerivedStateFromProps`와 다른 class 메서드 사이에 일부 코드를 재사용할 수 있습니다.
 
 <Note>
 
@@ -1146,7 +1146,7 @@ export default function App() {
 
 <Pitfall>
 
-컴포넌트를 클래스 대신 함수로 정의하는 것을 추천합니다. [마이그레이션 방법을 확인하세요.](#migrating-a-simple-component-from-a-class-to-a-function)
+컴포넌트를 class 대신 함수로 정의하는 것을 추천합니다. [마이그레이션 방법을 확인하세요.](#migrating-a-simple-component-from-a-class-to-a-function)
 
 </Pitfall>
 
@@ -1154,7 +1154,7 @@ export default function App() {
 
 ### 클래스 컴포넌트에 state 추가하기 {/*adding-state-to-a-class-component*/}
 
-클래스에 [state](/learn/state-a-components-memory)를 추가하려면 [`state`](#state)라는 프로퍼티에 객체를 할당합니다. 상태를 업데이트하려면 [`this.setState`](#setstate)를 호출합니다.
+class에 [state](/learn/state-a-components-memory)를 추가하려면 [`state`](#state)라는 프로퍼티에 객체를 할당합니다. 상태를 업데이트하려면 [`this.setState`](#setstate)를 호출합니다.
 
 <Sandpack>
 
@@ -1204,7 +1204,7 @@ button { display: block; margin-top: 10px; }
 
 <Pitfall>
 
-컴포넌트를 클래스 대신 함수로 정의하는 것을 추천합니다. [마이그레이션 방법을 확인하세요.](#migrating-a-component-with-state-from-a-class-to-a-function)
+컴포넌트를 class 대신 함수로 정의하는 것을 추천합니다. [마이그레이션 방법을 확인하세요.](#migrating-a-component-with-state-from-a-class-to-a-function)
 
 </Pitfall>
 
@@ -1212,7 +1212,7 @@ button { display: block; margin-top: 10px; }
 
 ### 클래스 컴포넌트에 생명주기 메서드 추가하기 {/*adding-lifecycle-methods-to-a-class-component*/}
 
-클래스에서 정의할 수 있는 몇 가지 특별한 메서드가 있습니다.
+class에서 정의할 수 있는 몇 가지 특별한 메서드가 있습니다.
 
 [`componentDidMount`](#componentdidmount) 메서드를 정의하면 컴포넌트가 화면에 추가 *(마운트)* 될 때 React가 이를 호출합니다. 컴포넌트가 props나 state 변경으로 인해 다시 렌더링되면 React는 [`componentDidUpdate`](#componentdidupdate)를 호출합니다. 컴포넌트가 화면에서 제거 *(마운트 해제)* 된 후 React는 [`componentWillUnmount`](#componentwillunmount)를 호출합니다.
 
@@ -1338,7 +1338,7 @@ button { margin-left: 10px; }
 
 <Pitfall>
 
-컴포넌트를 클래스 대신 함수로 정의하는 것을 추천합니다. [마이그레이션 방법을 확인하세요.](#migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function)
+컴포넌트를 class 대신 함수로 정의하는 것을 추천합니다. [마이그레이션 방법을 확인하세요.](#migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function)
 
 </Pitfall>
 
@@ -1396,7 +1396,7 @@ class ErrorBoundary extends React.Component {
 
 <Note>
 
-현재 에러 경계를 함수 컴포넌트로 작성할 수 있는 방법은 없습니다. 하지만 에러 경계 클래스를 직접 작성할 필요는 없습니다. 예를 들어 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary)를 대신 사용할 수 있습니다.
+현재 에러 경계를 함수 컴포넌트로 작성할 수 있는 방법은 없습니다. 하지만 에러 경계 class를 직접 작성할 필요는 없습니다. 예를 들어 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary)를 대신 사용할 수 있습니다.
 
 </Note>
 
@@ -1404,7 +1404,7 @@ class ErrorBoundary extends React.Component {
 
 ## 대안 {/*alternatives*/}
 
-### 클래스에서 함수로 간단한 컴포넌트 마이그레이션하기 {/*migrating-a-simple-component-from-a-class-to-a-function*/}
+### class에서 함수로 간단한 컴포넌트 마이그레이션하기 {/*migrating-a-simple-component-from-a-class-to-a-function*/}
 
 일반적으로 [컴포넌트를 함수로 대신 정의합니다.](/learn/your-first-component#defining-a-component)
 
@@ -1474,7 +1474,7 @@ export default function App() {
 
 ---
 
-### state가 있는 컴포넌트를 클래스에서 함수로 마이그레이션하기 {/*migrating-a-component-with-state-from-a-class-to-a-function*/}
+### state가 있는 컴포넌트를 class에서 함수로 마이그레이션하기 {/*migrating-a-component-with-state-from-a-class-to-a-function*/}
 
 이 `Counter` 클래스 컴포넌트를 함수로 변환한다고 가정해 봅시다.
 
@@ -1596,7 +1596,7 @@ button { display: block; margin-top: 10px; }
 
 ---
 
-### 생명주기 메서드가 있는 컴포넌트를 클래스에서 함수로 마이그레이션하기 {/*migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function*/}
+### 생명주기 메서드가 있는 컴포넌트를 class에서 함수로 마이그레이션하기 {/*migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function*/}
 
 생명주기 메서드가 있는 `ChatRoom` 클래스 컴포넌트를 함수로 변환한다고 가정해 보겠습니다.
 
@@ -1831,7 +1831,7 @@ button { margin-left: 10px; }
 
 ---
 
-### context가 있는 컴포넌트를 클래스에서 함수로 마이그레이션하기 {/*migrating-a-component-with-context-from-a-class-to-a-function*/}
+### context가 있는 컴포넌트를 class에서 함수로 마이그레이션하기 {/*migrating-a-component-with-context-from-a-class-to-a-function*/}
 
 이 예제에서 `Panel` 및 `Button` 클래스 컴포넌트는 [`this.context`](#context)에서 [context](/learn/passing-data-deeply-with-context)를 읽습니다:
 
