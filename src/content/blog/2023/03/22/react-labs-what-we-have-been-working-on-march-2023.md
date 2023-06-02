@@ -1,5 +1,5 @@
 ---
-title: "React 실험실: 그동안의 작업 – 2023년 3월"
+title: "React Labs: 그동안의 작업 – 2023년 3월"
 ---
 
 2023년 3월 22일 [Joseph Savona](https://twitter.com/en_JS), [Josh Story](https://twitter.com/joshcstory), [Lauren Tan](https://twitter.com/potetotes), [Mengdi Chen](https://twitter.com/mengdi_en), [Samuel Susla](https://twitter.com/SamuelSusla), [Sathya Gunasekaran](https://twitter.com/_gsathya), [Sebastian Markbåge](https://twitter.com/sebmarkbage), [Andrew Clark](https://twitter.com/acdlite) 작성
@@ -8,7 +8,7 @@ title: "React 실험실: 그동안의 작업 – 2023년 3월"
 
 <Intro>
 
-React 실험실 게시글에는 활발히 연구 개발 중인 프로젝트에 대한 내용을 작성합니다. 우리는 [지난 업데이트](https://react.dev/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022) 이후 상당한 발전을 이루었고, 그 내용들을 공유하려고 합니다.
+React Labs 게시글에는 활발히 연구 개발 중인 프로젝트에 대한 내용을 작성합니다. 우리는 [지난 업데이트](https://react.dev/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022) 이후 상당한 발전을 이루었고, 그 내용들을 공유하려고 합니다.
 
 </Intro>
 
