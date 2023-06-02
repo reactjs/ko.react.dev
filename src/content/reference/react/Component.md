@@ -192,7 +192,7 @@ constructor는 부수 효과 또는 구독을 포함하면 안됩니다.
 
 #### 반환값 {/*constructor-returns*/}
 
-`constructor`는 아무것도 반환해서는 안 됩니다.
+`constructor`는 아무것도 반환하면 안 됩니다.
 
 #### 주의사항 {/*constructor-caveats*/}
 
@@ -218,7 +218,7 @@ constructor는 부수 효과 또는 구독을 포함하면 안됩니다.
 
 `componentDidCatch`를 정의하면, 일부 자식 컴포넌트(먼 자식을 포함)가 에러를 발생시킬 때 React가 이를 호출합니다. 이를 통해 운영 중인 에러 보고 서비스에 에러를 기록할 수 있습니다.
 
-일반적으로, 에러에 대한 응답으로 state를 업데이트하고 사용자에게 에러 메시지를 표시할 수 있는 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)와 함께 사용됩니다. 이런 여러 메서드를 사용하는 컴포넌트를 *오차 경계*라고 합니다.
+일반적으로, 에러에 대한 응답으로 state를 업데이트하고 사용자에게 에러 메시지를 표시할 수 있는 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)와 함께 사용됩니다. 이런 여러 메서드를 사용하는 컴포넌트를 *error boundary*라고 합니다.
 
 [예시를 확인하세요.](#catching-rendering-errors-with-an-error-boundary)
 
@@ -230,7 +230,7 @@ constructor는 부수 효과 또는 구독을 포함하면 안됩니다.
 
 #### 반환값 {/*componentdidcatch-returns*/}
 
-`componentDidCatch`는 아무것도 반환해서는 안 됩니다.
+`componentDidCatch`는 아무것도 반환하면 안 됩니다.
 
 #### 주의사항 {/*componentdidcatch-caveats*/}
 
@@ -288,7 +288,7 @@ class ChatRoom extends Component {
 
 #### 반환값 {/*componentdidmount-returns*/}
 
-`componentDidMount`는 아무것도 반환해서는 안 됩니다.
+`componentDidMount`는 아무것도 반환하면 안 됩니다.
 
 #### 주의사항 {/*componentdidmount-caveats*/}
 
@@ -587,9 +587,9 @@ class Greeting extends Component {
 }
 ```
 
-React는 언제든 `render`를 호출할 수 있으므로 특정 시간에 실행된다고 가정해서는 안 됩니다. 일반적으로 `render` 메서드는 [JSX](/learn/writing-markup-with-jsx)를 반환해야 하지만 몇 가지 (문자열과 같은) [다른 반환 유형](#render-returns)이 지원됩니다. 반환된 JSX를 계산하기 위해 `render` 메서드는 [`this.props`](#props), [`this.state`](#state) 및 [`this.context`](#context)를 읽을 수 있습니다.
+React는 언제든 `render`를 호출할 수 있으므로 특정 시간에 실행된다고 가정하면 안 됩니다. 일반적으로 `render` 메서드는 [JSX](/learn/writing-markup-with-jsx)를 반환해야 하지만 몇 가지 (문자열과 같은) [다른 반환 유형](#render-returns)이 지원됩니다. 반환된 JSX를 계산하기 위해 `render` 메서드는 [`this.props`](#props), [`this.state`](#state) 및 [`this.context`](#context)를 읽을 수 있습니다.
 
-`render` 메서드는 순수 함수로 작성해야 합니다. 즉, props, state 및 context가 동일한 경우 동일한 결과를 반환해야 합니다. 또한 (구독 설정과 같은) 부수 효과를 포함하거나 브라우저 API와 상호작용해서는 안 됩니다. 부수 효과는 이벤트 핸들러나 [`componentDidMount`](#componentdidmount)와 같은 메서드에서 발생해야 합니다.
+`render` 메서드는 순수 함수로 작성해야 합니다. 즉, props, state 및 context가 동일한 경우 동일한 결과를 반환해야 합니다. 또한 (구독 설정과 같은) 부수 효과를 포함하거나 브라우저 API와 상호작용하면 안 됩니다. 부수 효과는 이벤트 핸들러나 [`componentDidMount`](#componentdidmount)와 같은 메서드에서 발생해야 합니다.
 
 #### 매개변수 {/*render-parameters*/}
 
@@ -770,7 +770,7 @@ React에 재렌더링을 건너뛸 수 있음을 알리려면 `false`를 반환�
 
 ### `UNSAFE_componentWillMount()` {/*unsafe_componentwillmount*/}
 
-`UNSAFE_componentWillMount`를 정의하면 React는 [`constructor`](#constructor) 바로 뒤에 이를 호출합니다. 이 메서드는 역사적인 이유로만 존재하며 새로운 코드에서 사용해서는 안 됩니다. 대신 다른 대안을 사용하세요.
+`UNSAFE_componentWillMount`를 정의하면 React는 [`constructor`](#constructor) 바로 뒤에 이를 호출합니다. 이 메서드는 역사적인 이유로만 존재하며 새로운 코드에서 사용하면 안 됩니다. 대신 다른 대안을 사용하세요.
 
 - state를 초기화하려면 [`state`](#state)를 class 필드로 선언하거나 [`constructor`](#constructor) 내에서 `this.state`를 설정하세요.
 - 부수 효과를 실행하거나 구독을 설정해야 하는 경우 해당 로직을 [`componentDidMount`](#componentdidmount)로 옮기세요.
@@ -803,7 +803,7 @@ React에 재렌더링을 건너뛸 수 있음을 알리려면 `false`를 반환�
 
 ### `UNSAFE_componentWillReceiveProps(nextProps, nextContext)` {/*unsafe_componentwillreceiveprops*/}
 
-`UNSAFE_componentWillReceiveProps`를 정의하면 컴포넌트가 새로운 props를 수신할 때 React가 이를 호출합니다. 이 메서드는 역사적인 이유로만 존재하며 새로운 코드에서 사용해서는 안 됩니다. 대신 다른 방법을 사용하세요.
+`UNSAFE_componentWillReceiveProps`를 정의하면 컴포넌트가 새로운 props를 수신할 때 React가 이를 호출합니다. 이 메서드는 역사적인 이유로만 존재하며 새로운 코드에서 사용하면 안 됩니다. 대신 다른 방법을 사용하세요.
 
 - props 변경에 대한 응답으로 **부수 효과를 실행**(예: 데이터 가져오기, 애니메이션 실행, 구독 재초기화)해야 하는 경우 해당 로직을 [`componentDidUpdate`](#componentdidupdate)로 옮기세요.
 - **props가 변경될 때만 일부 데이터를 다시 계산하지 않아야** 하는 경우 대신 [memoization helper](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization)를 사용하세요.
@@ -841,7 +841,7 @@ React에 재렌더링을 건너뛸 수 있음을 알리려면 `false`를 반환�
 
 ### `UNSAFE_componentWillUpdate(nextProps, nextState)` {/*unsafe_componentwillupdate*/}
 
-`UNSAFE_componentWillUpdate`를 정의하면 React는 새 props나 state로 렌더링하기 전에 이를 호출합니다. 이 메서드는 역사적인 이유로만 존재하며 새로운 코드에서 사용해서는 안 됩니다. 대신 다른 대안을 사용하세요.
+`UNSAFE_componentWillUpdate`를 정의하면 React는 새 props나 state로 렌더링하기 전에 이를 호출합니다. 이 메서드는 역사적인 이유로만 존재하며 새로운 코드에서 사용하면 안 됩니다. 대신 다른 대안을 사용하세요.
 
 - props나 state 변경에 대한 응답으로 부수 효과(예: 데이터 가져오기, 애니메이션 실행, 구독 재초기화)를 실행해야 하는 경우, 해당 로직을 [`componentDidUpdate`](#componentdidupdate)로 이동하세요.
 - 나중에 [`componentDidUpdate`](#componentdidupdate)에서 사용할 수 있도록 DOM에서 일부 정보(예: 현재 스크롤 위치를 저장하기 위해)를 읽어야 하는 경우, 대신 [`getSnapshotBeforeUpdate`](#getsnapshotbeforeupdate) 내부에서 읽습니다.
@@ -1009,7 +1009,7 @@ class Greeting extends React.Component {
 
 `static getDerivedStateFromError`를 정의하면 렌더링 도중 자식 컴포넌트(멀리 떨어진 자식 포함)가 에러를 던질 때 React가 이를 호출합니다. 이렇게 하면 UI를 지우는 대신 오류 메시지를 표시할 수 있습니다.
 
-일반적으로 일부 분석 서비스에 오류 보고서를 보낼 수 있는 [`componentDidCatch`](#componentDidCatch)와 함께 사용됩니다. 이러한 메서드가 있는 컴포넌트를 *오류 경계(error boundary)* 라고 합니다.
+일반적으로 일부 분석 서비스에 오류 보고서를 보낼 수 있는 [`componentDidCatch`](#componentDidCatch)와 함께 사용됩니다. 이러한 메서드가 있는 컴포넌트를 *error boundary* 라고 합니다.
 
 [예시를 확인하세요.](#catching-rendering-errors-with-an-error-boundary)
 
@@ -1344,11 +1344,11 @@ button { margin-left: 10px; }
 
 ---
 
-### 오류 경계(error boundary)로 렌더링 오류 포착하기 {/*catching-rendering-errors-with-an-error-boundary*/}
+### error boundary로 렌더링 오류 포착하기 {/*catching-rendering-errors-with-an-error-boundary*/}
 
-기본적으로 애플리케이션이 렌더링 도중 에러를 발생시키면 React는 화면에서 해당 UI를 제거합니다. 이를 방지하기 위해 UI의 일부를 *에러 경계*로 감싸면 됩니다. 에러 경계는 에러가 발생한 부분 대신 오류 메시지와 같은 fallback UI를 표시할 수 있는 특수 컴포넌트입니다.
+기본적으로 애플리케이션이 렌더링 도중 에러를 발생시키면 React는 화면에서 해당 UI를 제거합니다. 이를 방지하기 위해 UI의 일부를 *error boundary*로 감싸면 됩니다. error boundary는 에러가 발생한 부분 대신 오류 메시지와 같은 fallback UI를 표시할 수 있는 특수 컴포넌트입니다.
 
-오류 경계 컴포넌트를 구현하려면 오류에 대한 응답으로 state를 업데이트하고 사용자에게 오류 메시지를 표시할 수 있는 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)를 제공해야 합니다. 또한 선택적으로 [`componentDidCatch`](#componentdidcatch)를 구현하여 분석 서비스에 오류를 기록하는 등의 추가 로직을 추가할 수도 있습니다.
+error boundary 컴포넌트를 구현하려면 오류에 대한 응답으로 state를 업데이트하고 사용자에게 오류 메시지를 표시할 수 있는 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)를 제공해야 합니다. 또한 선택적으로 [`componentDidCatch`](#componentdidcatch)를 구현하여 분석 서비스에 오류를 기록하는 등의 추가 로직을 추가할 수도 있습니다.
 
 ```js {7-10,12-19}
 class ErrorBoundary extends React.Component {
@@ -1392,11 +1392,11 @@ class ErrorBoundary extends React.Component {
 
 `Profile` 또는 그 하위 컴포넌트가 오류를 발생시키면 `ErrorBoundary`가 해당 오류를 "포착"하고 사용자가 제공한 오류 메시지와 함께 fallback UI를 표시한 다음 프로덕션 오류 보고서를 오류 보고 서비스에 전송합니다.
 
-모든 컴포넌트를 별도의 오류 경계로 묶을 필요는 없습니다. [오류 경계의 세분화](https://aweary.dev/fault-tolerance-react/)를 고려할 때는 오류 메시지를 표시하는 것이 적절한 위치를 고려하세요. 예를 들어 메시징 앱의 경우 대화 목록 주위에 오류 경계를 위치시키는 것이 좋습니다. 또한 모든 개별 메시지 주위에 오류 경계를 위치시키는 것도 좋습니다. 하지만 모든 아바타 주위에 경계를 위치시키는 것은 적절하지 않습니다.
+모든 컴포넌트를 별도의 error boundary로 묶을 필요는 없습니다. [error boundary의 세분화](https://aweary.dev/fault-tolerance-react/)를 고려할 때는 오류 메시지를 표시하는 것이 적절한 위치를 고려하세요. 예를 들어 메시징 앱의 경우 error boundary를 대화 목록 주위에 위치시키는 것이 좋습니다. 또한 모든 개별 메시지 주위에 위치시키는 것도 좋습니다. 하지만 모든 아바타 주위에 boundary를 위치시키는 것은 적절하지 않습니다.
 
 <Note>
 
-현재 에러 경계를 함수 컴포넌트로 작성할 수 있는 방법은 없습니다. 하지만 에러 경계 class를 직접 작성할 필요는 없습니다. 예를 들어 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary)를 대신 사용할 수 있습니다.
+현재 error boundary를 함수 컴포넌트로 작성할 수 있는 방법은 없습니다. 하지만 error boundary class를 직접 작성할 필요는 없습니다. 예를 들어 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary)를 대신 사용할 수 있습니다.
 
 </Note>
 
@@ -1927,7 +1927,7 @@ export default function MyApp() {
 
 </Sandpack>
 
-함수 컴포넌트로 변환할 때는 `this.context`를 [`useContext`](/reference/react/useContext) 호출로 바꾸세요.
+함수 컴포넌트로 변환할 때는 `this.context`를 [`useContext`](/reference/react/useContext) 호출로 바꿔주세요.
 
 <Sandpack>
 
