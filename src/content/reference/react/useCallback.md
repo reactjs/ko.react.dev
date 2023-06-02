@@ -36,23 +36,21 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 [아래에서 더 많은 예시를 확인해보세요.](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `fn`: 캐싱할 함숫값입니다. 이 함수는 어떤 인자나 반환값도 가질 수 있습니다. React는 첫 렌더링에서 이 함수를 반환합니다. (호출하는 것이 아닙니다!) 다음 렌더링에서 `dependencies` 값이 이전과 같다면 React는 같은 함수를 다시 반환합니다. 반대로 `dependencies` 값이 변경되었다면 이번 렌더링에서 넘겨줬던 함수를 반환하고 다음 렌더링에 재사용할 수 있도록 이를 저장합니다. React는 함수를 호출하지 않습니다. 이 함수는 호출 여부와 호출 시점을 개발자가 결정할 수 있도록 반환됩니다.
+* `fn`: 캐싱할 함숫값입니다. 이 함수는 어떤 인자나 반환값도 가질 수 있습니다. React는 첫 렌더링에서 이 함수를 반환합니다. (호출하는 것이 아닙니다!) 다음 렌더링에서 `dependencies` 값이 이전과 같다면 React는 같은 함수를 다시 반환합니다. 반대로 `dependencies` 값이 변경되었다면 이번 렌더링에서 전달한 함수를 반환하고 나중에 재사용할 수 있도록 이를 저장합니다. React는 함수를 호출하지 않습니다. 이 함수는 호출 여부와 호출 시점을 개발자가 결정할 수 있도록 반환됩니다.
 
 * `dependencies`: `fn` 내에서 참조되는 모든 반응형 값의 목록입니다. 반응형 값은 props와 state, 그리고 컴포넌트 안에서 직접 선언된 모든 변수와 함수를 포함합니다. 린터가 [React를 위한 설정](/learn/editor-setup#linting)으로 구성되어 있다면 모든 반응형 값이 의존성으로 올바르게 명시되어 있는지 검증합니다. 의존성 목록은 항목 수가 일정해야 하며 `[dep1, dep2, dep3]`처럼 인라인으로 작성해야 합니다. React는 [`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교 알고리즘을 이용해 각 의존성을 이전 값과 비교합니다.
 
 #### 반환값 {/*returns*/}
 
-최초 렌더링에서는 `useCallback`은 넘겨준 `fn`을 그대로 반환합니다.
+최초 렌더링에서는 `useCallback`은 전달한 `fn`함수를 그대로 반환합니다.
 
-그 후 렌더링에서는 직전 렌더링에서 이미 저장해 두었던 `fn`을 반환하거나 (의존성이 변하지 않았을 때), 현재 렌더링에서 넘겨준 `fn`을 그대로 반환합니다.
-
+후속 렌더링에서는 이전 렌더링에서 이미 저장해 두었던 `fn`함수를 반환하거나 (의존성이 변하지 않았을 때), 현재 렌더링 중에 전달한 `fn`함수를 그대로 반환합니다.
 #### 주의사항 {/*caveats*/}
 
-* `useCallback`은 Hook이므로, **컴포넌트의 최상위 레벨** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문 내에서 호출할 수 없습니다. 이 작업이 필요하다면 새로운 컴포넌트로 빼내서 state를 이곳으로 옮기세요. 
-* React는 **특별한 이유가 없는 한 캐시 된 함수를 삭제하지 않습니다.** 예를 들어 개발 환경에서 파일이나 컴포넌트를 수정하면 React는 캐시를 삭제합니다. 개발 환경과 프로덕션 환경 모두에서 컴포넌트가 대기 상태이면 React는 캐시를 삭제합니다. 향후 React는 캐시 삭제를 활용하는 기능을 추가할 수 있습니다. 예를 들어, React에 가상화 목록을 위한 빌트인 지원이 추가된다면, 가상화 테이블 뷰포트에서 스크롤 되는 항목의 캐시를 삭제하는 것이 좋습니다. 성능 최적화를 위해 `useCallback`을 사용한다면 이런 방식이 적절할 것 입니다. 그렇지 않다면 [state 변수](/reference/react/useState#im-trying-to-set-state-to-a-function-but-it-gets-called-instead) 나 [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents)가 더 적절할 수 있습니다.
-
+* `useCallback`은 Hook이므로, **컴포넌트의 최상위 레벨** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문 내에서 호출할 수 없습니다. 이 작업이 필요하다면 새로운 컴포넌트로 분리해서 state를 새 컴포넌로 옮기세요.
+* React는 **특별한 이유가 없는 한 캐시 된 함수를 삭제하지 않습니다.** 예를 들어 개발 환경에서는 컴포넌트 파일을 편집할 때 React가 캐시를 삭제합니다. 개발 환경과 프로덕션 환경 모두에서, 초기 마운트 중에 컴포넌트가 일시 중단되면 React는 캐시를 삭제합니다. 앞으로 React는 캐시 삭제를 활용하는 더 많은 기능을 추가할 수 있습니다. 예를 들어, React에 가상화된 목록에 대한 빌트인 지원이 추가한다면, 가상화된 테이블 뷰포트에서 스크롤 밖의 항목에 대해 캐시를 삭제하는것이 적절할 것 입니다. 이는 `useCallback`을 성능 최적화 방법으로 의존하는 경우에 개발자의 예상과 일치해야 합니다. 그렇지 않다면 [state 변수](/reference/react/useState#im-trying-to-set-state-to-a-function-but-it-gets-called-instead) 나 [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents)가 더 적절할 수 있습니다.
 ---
 
 ## 용법 {/*usage*/}
@@ -117,7 +115,7 @@ const ShippingForm = memo(function ShippingForm({ onSubmit }) {
 
 ```js {2,3,8,12-13}
 function ProductPage({ productId, referrer, theme }) {
-  // theme이 바뀔때마다 이 것은 새로운 함수가 될 것입니다...
+  // theme이 바뀔때마다 다른 함수가 될 것입니다...
   function handleSubmit(orderDetails) {
     post('/product/' + productId + '/buy', {
       referrer,
@@ -127,7 +125,7 @@ function ProductPage({ productId, referrer, theme }) {
   
   return (
     <div className={theme}>
-      {/* ... 그래서 ShippingForm의 props는 절대 같은 값이 될 수 없고, 매번 리렌더링 할 것입니다.*/}
+      {/* ... 그래서 ShippingForm의 props는 같은 값이 아니므로 매번 리렌더링 할 것입니다.*/}
       <ShippingForm onSubmit={handleSubmit} />
     </div>
   );
@@ -155,7 +153,7 @@ function ProductPage({ productId, referrer, theme }) {
 }
 ```
 
-**`handleSubmit`을 `useCallback`으로 감쌈으로써 리렌더링 간에 이것이 (의존성이 변경되기 전까지는) 같은 함수라는 것을 보장합니다.** 특별한 이유가 없다면 함수를 꼭 `useCallback`으로 감쌀 필요는 없습니다. 이 예시에서의 이유는 ['memo'](/reference/react/memo)로 감싼 컴포넌트에 전달하기 때문에 해당 함수가 리렌더링을 건너뛸 수 있기 때문입니다. `useCallback`이 필요한 다른 이유는 이 페이지의 뒷부분에서 설명됩니다.
+**`handleSubmit`을 `useCallback`으로 감쌈으로써 리렌더링 간에 이것이 (의존성이 변경되기 전까지는) 같은 함수라는 것을 보장합니다.** 특별한 이유가 없다면 함수를 꼭 `useCallback`으로 감쌀 필요는 없습니다. 이 예시에서의 이유는 ['memo'](/reference/react/memo)로 감싼 컴포넌트에 전달하기 때문에 해당 함수가 리렌더링을 건너뛸 수 있기 때문입니다. `useCallback`이 필요한 다른 이유는 이 페이지의 뒷부분에서 설명하겠습니다.
 
 <Note>
 
@@ -214,7 +212,7 @@ function useCallback(fn, dependencies) {
 
 <DeepDive>
 
-#### 어디에나 useCallback을 추가해야 할까요? {/*should-you-add-usecallback-everywhere*/}
+#### 항상 useCallback을 사용해야 할까요? {/*should-you-add-usecallback-everywhere*/}
 
 이 사이트처럼 대부분의 상호작용이 (페이지 전체나 전체 부문을 교체하는 것처럼) 굵직한 경우, 보통 memoization이 필요하지 않습니다. 반면에 앱이 (도형을 이동하는 것과 같이) 미세한 상호작용을 하는 그림 편집기 같은 경우, memoization이 매우 유용할 수 있습니다.
 
