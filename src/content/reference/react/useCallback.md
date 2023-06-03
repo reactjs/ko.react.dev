@@ -55,7 +55,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 ## 용법 {/*usage*/}
 
-### 컴포넌트의 리렌더링 막기 {/*skipping-re-rendering-of-components*/}
+### 컴포넌트의 리렌더링 건너뛰기 {/*skipping-re-rendering-of-components*/}
 
 렌더링 성능을 최적화할 때 자식 컴포넌트에 넘기는 함수를 캐싱할 필요가 있습니다. 먼저 이 작업을 수행하는 방법에 대한 구문을 살펴본 다음 어떤 경우에 유용한지 알아보겠습니다.
 
@@ -74,20 +74,20 @@ function ProductPage({ productId, referrer, theme }) {
   // ...
 ```
 
-`useCallback`에게 두 가지를 넘겨야 합니다
+`useCallback`에게 두 가지를 전달해야 합니다
 
 1. 리렌더링 간에 캐싱할 함수 정의
 2. 함수에서 사용되는 컴포넌트 내부의 모든 값을 포함하고 있는 <CodeStep step={2}>의존성 목록</CodeStep>
 
-최초 렌더링에서 `useCallback`으로부터 <CodeStep step={3}>반환되는 함수</CodeStep>는 호출 시에 넘겨줬던 함수일 것입니다.
+최초 렌더링에서 `useCallback`으로부터 <CodeStep step={3}>반환되는 함수</CodeStep>는 호출시에 전달할 함수입니다.
 
-이어지는 렌더링에서 React는 <CodeStep step={2}>의존성</CodeStep>을 이전 렌더링에서 넘겨줬던 값들과 비교합니다. 의존성 중 하나라도 변한 값이 없다면([`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is)로 비교했을 때), `useCallback`은 전과 똑같은 함수를 반환합니다. 그렇지 않으면 `useCallback`은 *이번* 렌더링에서 넘겨줬던 함수를 반환합니다.
+이어지는 렌더링에서 React는 <CodeStep step={2}>의존성</CodeStep>을 이전 렌더링에서 전달한 의존성과 비교합니다. 의존성 중 하나라도 변한 값이 없다면([`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is)로 비교), `useCallback`은 전과 똑같은 함수를 반환합니다. 그렇지 않으면 `useCallback`은 *이번* 렌더링에서 전달한 함수를 반환합니다.
 
 다시 말하면, `useCallback`은 의존성이 변하기 전까지 리렌더링 간에 함수를 캐싱합니다.
 
 **이 기능이 언제 유용한지 예시를 통해 살펴보겠습니다.**
 
-`handleSubmit` 함수를 `ProductPage`에서 `ShippingForm` 컴포넌트로 넘겨준다고 가정해 봅시다.
+`handleSubmit` 함수를 `ProductPage`에서 `ShippingForm` 컴포넌트로 전달한다고 가정해 봅시다.
 
 ```js {5}
 function ProductPage({ productId, referrer, theme }) {
@@ -101,7 +101,7 @@ function ProductPage({ productId, referrer, theme }) {
 
 `theme` prop을 토글 하면 앱이 잠시 멈춘다는 것을 알게 되었는데, JSX에서 `<ShippingForm />`을 제거하면 앱이 빨라진 것처럼 느껴집니다. 이것은 `<ShippingForm />` 컴포넌트의 최적화를 시도해 볼 가치가 있다는 것을 나타냅니다.
 
-**기본적으로, 컴포넌트가 리렌더링할 때 React는 이것의 모든 자식을 재귀적으로 재랜더링합니다.** 이것이 `ProductPage`가 다른 `theme` 값으로 리렌더링 할 때, `ShippingForm` 컴포넌트 **또한** 리렌더링 하는 이유입니다. 이 것은 리렌더링에 많은 계산을 요구하지 않는 컴포넌트에서는 괜찮습니다. 하지만 리렌더링이 느린 것을 확인하면 `ShippingForm`을 [`memo`](/reference/react/memo)로 감싸서 props가 이전과 같으면 리렌더링을 건너뛰게 할 수 있습니다.
+**기본적으로, 컴포넌트가 리렌더링할 때 React는 이것의 모든 자식을 재귀적으로 재랜더링합니다.** 이것이 `ProductPage`가 다른 `theme` 값으로 리렌더링 할 때, `ShippingForm` 컴포넌트 **또한** 리렌더링 하는 이유입니다. 이 것은 리렌더링에 많은 계산을 요구하지 않는 컴포넌트에서는 괜찮습니다. 하지만 리렌더링이 느린 것을 확인한 경우, `ShippingForm`을 [`memo`](/reference/react/memo)로 감싸면 마지막 렌더링과 동일한 props일 때 리렌더링을 건너뛰도록 할 수 있습니다.
 
 ```js {3,5}
 import { memo } from 'react';
@@ -195,7 +195,7 @@ function ProductPage({ productId, referrer }) {
 차이점은 *무엇을* 캐싱하는지 입니다.
 
 * **[`useMemo`](/reference/react/useMemo) 는 호출한 함수의 결과값을 캐싱합니다.** 이 예시에서는 `computeRequirements(product)` 함수 호출 결과를 캐싱해서 `product`가 변경되지 않는 한 이 결과값이 변경되지 않도록 합니다. 이것은 불필요하게 `ShippingForm`을 리렌더링하지 않고 `requirements` 객체를 넘겨줄 수 있도록 해줍니다. 필요할 때 React는 렌더링 중에 넘겨주었던 함수를 호출하여 결과를 계산합니다.
-* **`useCallback`은 *함수 자체*를 캐싱합니다.** `useMemo`와 달리, 전달한 함수를 호출하지 않습니다. 그 대신, 전달한 함수를 캐싱해서 `productId`나 `referrer`이 변하지 않으면 `handleSubmit` 자체가 변하지 않도록 합니다. 이것은 불필요하게 `ShippingForm`을 리렌더링하지 않고 `handleSubmit` 함수를 넘겨줄 수 있도록 해줍니다. 함수의 코드는 사용자가 폼을 제출하기 전까지 실행되지 않을 것입니다.
+* **`useCallback`은 *함수 자체*를 캐싱합니다.** `useMemo`와 달리, 전달한 함수를 호출하지 않습니다. 그 대신, 전달한 함수를 캐싱해서 `productId`나 `referrer`이 변하지 않으면 `handleSubmit` 자체가 변하지 않도록 합니다. 이것은 불필요하게 `ShippingForm`을 리렌더링하지 않고 `handleSubmit` 함수를 전달할 수 있도록 해줍니다. 함수의 코드는 사용자가 폼을 제출하기 전까지 실행되지 않을 것입니다.
 
 이미 [`useMemo`](/reference/react/useMemo)에 익숙하다면 `useCallback`을 다음과 같이 생각하는 것이 도움이 될 수 있습니다.
 
@@ -221,11 +221,11 @@ function useCallback(fn, dependencies) {
 - [`memo`](/reference/react/memo)로 감싸진 컴포넌트에 prop으로 넘깁니다. 이 값이 변하지 않으면 리렌더링을 건너뛰고 싶습니다. memoization은 의존성이 변했을 때만 컴포넌트가 리렌더링하도록 합니다. 
 - 넘긴 함수가 나중에 어떤 Hook의 의존성으로 사용됩니다. 예를 들어, `useCallback`으로 감싸진 다른 함수가 이 함수에 의존하거나, [`useEffect`](/reference/react/useEffect)에서 이 함수에 의존합니다.
 
-다른 경우에서 `useCallback`으로 함수를 감싸는 것은 아무런 이익이 없습니다. 그렇게 하는 것이 큰 불이익을 가져오지도 않습니다. 그래서 몇몇 팀은 개별적인 경우를 따로 생각하지 않고, 가능한 한 많이 memoization 하는 방식을 택합니다. 단점은 코드의 가독성이 떨어지는 것입니다. 또한, 모든 memoization이 효과적인 것은 아닙니다. "항상 새로운" 하나의 값은 전체 컴포넌트의 memoization을 깨기에 충분합니다.
+다른 경우에서 `useCallback`으로 함수를 감싸는 것은 아무런 이익이 없습니다. 또한 이렇게 하는 것이 큰 불이익을 가져오지도 않으므로  일부 팀은 개별적인 경우를 따로 생각하지 않고, 가능한 한 많이 memoization하는 방식을 택합니다. 단점은 코드의 가독성이 떨어지는 것입니다. 또한, 모든 memoization이 효과적인 것은 아닙니다. "항상 새로운" 하나의 값이 있다면 전체 컴포넌트의 memoization을 깨기에 충분합니다.
 
 `useCallback`이 함수의 *생성*을 막지 않는다는 점을 주의하세요. 항상 함수를 생성하지만 (이건 괜찮습니다!), 아무것도 변경되지 않았다면 React는 이 것을 무시하고 캐싱된 함수를 돌려줍니다.
 
-**실제로, 몇 가지 원칙을 따르면 많은 memoization을 불필요하게 만들 수 있습니다.**
+**실제로 몇 가지 원칙을 따르면 많은 memoization을 불필요하게 만들 수 있습니다.**
 
 1. 컴포넌트가 다른 컴포넌트를 시각적으로 감싸고 있다면, [JSX를 자식으로 받게](/learn/passing-props-to-a-component#passing-jsx-as-children) 하세요. 감싸는 컴포넌트가 자신의 상태를 업데이트하면, React는 자식들은 리렌더링할 필요가 없다는 것을 압니다.
 1. 가능한 한 로컬 상태를 선호하고, [컴포넌트 간 상태 공유](/learn/sharing-state-between-components)를 필요 이상으로 하지 마세요. 폼이나 항목이 호버되었는지와 같은 일시적인 상태를 트리의 상단이나 전역 상태 라이브러리에 유지하지 마세요.
@@ -241,11 +241,11 @@ function useCallback(fn, dependencies) {
 
 #### `useCallback`과 `memo`로 리렌더링 건너뛰기 {/*skipping-re-rendering-with-usecallback-and-memo*/}
 
-이 예시에서, `ShippingForm` 컴포넌트는 **인위적으로 느리게 만들었기 때문에** 렌더링하는 React 컴포넌트가 실제로 느릴 때 어떤 일이 일어나는 지 볼 수 있습니다. 카운터를 증가시키고 테마를 토글 해보세요.
+이 예시에서 `ShippingForm` 컴포넌트는 **인위적으로 느리게 만들었기 때문에** 렌더링하는 React 컴포넌트가 실제로 느릴 때 어떤 일이 일어나는 지 볼 수 있습니다. 카운터를 증가시키고 테마를 토글 해보세요.
 
 카운터를 증가시키면 느려진 `ShippingForm`이 리렌더링하기 때문에 느리다고 느껴집니다. 이는 예상된 동작입니다. 카운터가 변경되었으므로 사용자의 새로운 선택을 화면에 반영해야 하기 때문입니다.
 
-다음으로, 테마를 토글 해보세요. **`useCallback`을 [`memo`](/reference/react/memo)와 함께 사용한 덕분에, 인위적인 지연에도 불구하고 빠릅니다!** `ShippingForm`은 `handleSubmit` 함수가 변하지 않았기 때문에 리렌더링을 건너뛰었습니다. `productId` 와 `referrer` (`useCallback`의 의존성) 모두 마지막 렌더링으로부터 변하지 않았기 때문에 `handleSubmit` 함수도 변하지 않았습니다.
+다음으로 테마를 토글 해보세요. **`useCallback`을 [`memo`](/reference/react/memo)와 함께 사용한 덕분에, 인위적인 지연에도 불구하고 빠릅니다!** `ShippingForm`은 `handleSubmit` 함수가 변하지 않았기 때문에 리렌더링을 건너뛰었습니다. `productId` 와 `referrer` (`useCallback`의 의존성) 모두 마지막 렌더링으로부터 변하지 않았기 때문에 `handleSubmit` 함수도 변하지 않았습니다.
 
 <Sandpack>
 
@@ -383,7 +383,7 @@ button[type="button"] {
 
 #### 컴포넌트를 항상 리렌더링하기 {/*always-re-rendering-a-component*/}
 
-이 예시에서, `ShippingForm` 컴포넌트 또한 **인위적으로 느리게 만들었기 때문에** 렌더링하는 React 컴포넌트가 실제로 느릴 때 어떤 일이 일어나는 지 볼 수 있습니다. 카운터를 증가시키고 테마를 토글 해보세요.
+이 예시에서 `ShippingForm` 컴포넌트 또한 **인위적으로 느리게 만들었기 때문에** 렌더링하는 React 컴포넌트가 실제로 느릴 때 어떤 일이 일어나는 지 볼 수 있습니다. 카운터를 증가시키고 테마를 토글 해보세요.
 
 이전 예시와 다르게 지금은 테마를 토글 하는 것도 느립니다! **이 버전에서는 `useCallback`을 호출하고 있지 않기** 때문에 `handleSubmit`은 항상 새로운 함수이고, 느려진 `ShippingForm` 컴포넌트는 리렌더링을 건너뛸 수 없습니다. 
 
@@ -881,7 +881,7 @@ function ReportList({ items }) {
 }
 ```
 
-대신 개별 항목을 컴포넌트로 빼내고 `useCallback`을 거기 안에 넣으세요.
+대신 개별 항목을 컴포넌트로 분리하고, 거기에 `useCallback`을 넣으세요.
 
 ```js {5,12-21}
 function ReportList({ items }) {
@@ -908,7 +908,7 @@ function Report({ item }) {
 }
 ```
 
-또는, 마지막 스니펫에서 `useCallback`을 제거하고 대신 `Report` 자체를 [`memo`](/reference/react/memo)로 감싸도 됩니다. `item` prop이 변경되지 않으면 `Report`는 리렌더링하지 않기 때문에 `Chart`도 렌더링을 건너뜁니다.
+대안으로 마지막 스니펫에서 `useCallback`을 제거하고 대신 `Report` 자체를 [`memo`](/reference/react/memo)로 감싸도 됩니다. `item` prop이 변경되지 않으면 `Report`는 리렌더링하지 않기 때문에 `Chart`도 리렌더링을 건너뜁니다.
 
 ```js {5,6-8,15}
 function ReportList({ items }) {
