@@ -97,7 +97,7 @@ class Greeting extends Component {
 
 <Note>
 
-클래스 컴포넌트에서 `this.props`를 읽는 것은 함수 컴포넌트에서 [props를 선언하는 것](/learn/passing-props-to-a-component#step-2-read-props-inside-the-child-component)와 같습니다.
+클래스 컴포넌트에서 `this.props`를 읽는 것은 함수 컴포넌트에서 [props를 선언하는 것](/learn/passing-props-to-a-component#step-2-read-props-inside-the-child-component)과 같습니다.
 
 [마이그레이션 방법을 확인하세요.](#migrating-a-simple-component-from-a-class-to-a-function)
 
@@ -224,9 +224,9 @@ constructor는 부수 효과 또는 구독을 포함하면 안됩니다.
 
 #### 매개변수 {/*componentdidcatch-parameters*/}
 
-* `error`: 발생한 에러입니다. 실제로, 보통은 [`에러`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error)의 인스턴스가 되지만 JavaScript에서 문자열 또는 `null`을 포함한 어떤 값이든 [`던질`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/throw) 수 있기 때문에 보장되지 않습니다.
+* `error`: 발생한 에러입니다. 실제로, 보통은 [`에러`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error)의 인스턴스가 되지만 JavaScript에서 문자열 또는 `null`을 포함한 어떤 값이든 [`throw`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/throw)할 수 있기 때문에 보장되지 않습니다.
 
-* `info`: 에러에 대한 추가 정보를 포함하는 객체입니다. 이것의 `componentStack` 필드는 모든 부모 컴포넌트의 이름과 출처 위치뿐만 아니라 던진 컴포넌트의 스택 추적을 포함합니다. 프로덕션에서, 컴포넌트의 이름은 최소화됩니다. 프로덕션 에러 보고를 설정하면 일반 JavaScript 에러 스택과 동일한 방법으로 소스맵을 사용하여 컴포넌트 스택을 디코딩할 수 있습니다.
+* `info`: 에러에 대한 추가 정보를 포함하는 객체입니다. 이것의 `componentStack` 필드는 모든 부모 컴포넌트의 이름과 출처 위치뿐만 아니라 에러를 throw한 컴포넌트의 stack trace을 포함합니다. 프로덕션에서, 컴포넌트의 이름은 최소화됩니다. 프로덕션 에러 보고를 설정하면 일반 JavaScript 에러 스택과 동일한 방법으로 소스맵을 사용하여 컴포넌트 스택을 디코딩할 수 있습니다.
 
 #### 반환값 {/*componentdidcatch-returns*/}
 
@@ -236,7 +236,7 @@ constructor는 부수 효과 또는 구독을 포함하면 안됩니다.
 
 * 과거에는 UI를 업데이트하고 대체 에러 메세지를 표시하기 위해 `setState`를 `componentDidCatch` 안에서 호출하는 것이 일반적이었습니다. 이는 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)를 정의하기 위해 더 이상 사용되지 않습니다.
 
-* React의 프로덕션과 개발 빌드는 `componentDidCatch`가 에러를 처리하는 방식이 약간 다릅니다. 개발에서는, 에러는 `window`까지 버블업될 것이며, 이는 `window.onerror` 또는 `window.addEventListener('error', callback)`가 `componentDidCatch`에 의해 탐지된 에러를 가로챈다는 것을 의미합니다. 대신 프로덕션에서, 에러는 버블업되지 않을 것이며, 이는 어떤 상위 에러 처리기든 `componentDidCatch`에 의해 명시적으로 탐지되지 않은 에러만을 수신하는 것을 의미합니다.
+* React의 프로덕션과 개발 빌드는 `componentDidCatch`가 에러를 처리하는 방식이 약간 다릅니다. 개발에서는, 에러는 `window`까지 버블링될 것이며, 이는 `window.onerror` 또는 `window.addEventListener('error', callback)`가 `componentDidCatch`에 의해 탐지된 에러를 가로챈다는 것을 의미합니다. 대신 프로덕션에서, 에러는 버블링되지 않을 것이며, 이는 어떤 상위의 에러 핸들러가 `componentDidCatch`에 의해 명시적으로 탐지되지 않은 에러만을 수신하는 것을 의미합니다.
 
 <Note>
 
@@ -841,6 +841,7 @@ React에 재렌더링을 건너뛸 수 있음을 알리려면 `false`를 반환�
 
 ### `UNSAFE_componentWillUpdate(nextProps, nextState)` {/*unsafe_componentwillupdate*/}
 
+
 `UNSAFE_componentWillUpdate`를 정의하면 React는 새 props나 state로 렌더링하기 전에 이를 호출합니다. 이 메서드는 역사적인 이유로만 존재하며 새로운 코드에서 사용하면 안 됩니다. 대신 다른 대안을 사용하세요.
 
 - props나 state 변경에 대한 응답으로 부수 효과(예: 데이터 가져오기, 애니메이션 실행, 구독 재초기화)를 실행해야 하는 경우, 해당 로직을 [`componentDidUpdate`](#componentdidupdate)로 이동하세요.
@@ -865,7 +866,7 @@ React에 재렌더링을 건너뛸 수 있음을 알리려면 `false`를 반환�
 
 - `componentWillUpdate` 중에 [`setState`](#setstate)를 호출하는 것(또는 Redux 액션을 dispatch하는 것과 같이 `setState`가 호출되도록 하는 모든 메서드)은 지원되지 않습니다.
 
-- 이름과는 달리, 앱이 [`Suspense`](/reference/react/Suspense)와 같은 최신 React 기능을 사용하는 경우 `UNSAFE_componentWillUpdate`가 컴포넌트가 업데이트*할 것*을 보장하지는 않습니다. 렌더링 시도가 일시 중단되면(예를 들어 일부 하위 컴포넌트의 코드가 아직 로드되지 않았기 때문에) React는 진행 중인 트리를 버리고 다음 시도에서 컴포넌트를 처음부터 새로 구성하려고 시도합니다. 다음 렌더링 시도 시에는 props와 state가 달라질 수 있습니다. 이것이 바로 이 메서드가 "안전하지 않은" 이유입니다. 커밋된 업데이트에 대해서만 실행되어야 하는 코드(예: 구독 재설정)는 [`componentDidUpdate`](#componentdidupdate)로 이동해야 합니다.
+- 이름과는 달리, 앱이 [`Suspense`](/reference/react/Suspense)와 같은 최신 React 기능을 사용하는 경우 `UNSAFE_componentWillUpdate`는 컴포넌트가 업데이트*될 것*을 보장하지는 않습니다. 렌더링 시도가 일시 중단되면(예를 들어 일부 하위 컴포넌트의 코드가 아직 로드되지 않았기 때문에) React는 진행 중인 트리를 버리고 다음 시도에서 컴포넌트를 처음부터 새로 구성하려고 시도합니다. 다음 렌더링 시도 시에는 props와 state가 달라질 수 있습니다. 이것이 바로 이 메서드가 "안전하지 않은" 이유입니다. 커밋된 업데이트에 대해서만 실행되어야 하는 코드(예: 구독 재설정)는 [`componentDidUpdate`](#componentdidupdate)로 이동해야 합니다.
 
 - `UNSAFE_componentWillUpdate`는 컴포넌트가 지난번과 *다른* props나 state를 받았다는 것을 의미하지 않습니다. `nextProps`를 `this.props`와, `nextState`를 `this.state`와 직접 비교하여 변경된 사항이 있는지 확인해야 합니다.
 
@@ -1007,7 +1008,7 @@ class Greeting extends React.Component {
 
 ### `static getDerivedStateFromError(error)` {/*static-getderivedstatefromerror*/}
 
-`static getDerivedStateFromError`를 정의하면 렌더링 도중 자식 컴포넌트(멀리 떨어진 자식 포함)가 에러를 던질 때 React가 이를 호출합니다. 이렇게 하면 UI를 지우는 대신 오류 메시지를 표시할 수 있습니다.
+`static getDerivedStateFromError`를 정의하면 렌더링 도중 자식 컴포넌트(멀리 떨어진 자식 포함)가 에러를 throw 할 때 React가 이를 호출합니다. 이렇게 하면 UI를 지우는 대신 오류 메시지를 표시할 수 있습니다.
 
 일반적으로 일부 분석 서비스에 오류 보고서를 보낼 수 있는 [`componentDidCatch`](#componentDidCatch)와 함께 사용됩니다. 이러한 메서드가 있는 컴포넌트를 *error boundary* 라고 합니다.
 
@@ -1015,7 +1016,7 @@ class Greeting extends React.Component {
 
 #### 매개변수 {/*static-getderivedstatefromerror-parameters*/}
 
-* `error`: 던져진 오류입니다. 실제로는 일반적으로 [`Error`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error)의 인스턴스가 되지만, 자바스크립트에서는 문자열이나 심지어 `null`을 포함한 모든 값을 [`throw`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/throw) 할 수 있으므로 보장되지는 않습니다.
+* `error`: throw 된 오류입니다. 실제로는 일반적으로 [`Error`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error)의 인스턴스가 되지만, 자바스크립트에서는 문자열이나 심지어 `null`을 포함한 모든 값을 [`throw`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/throw) 할 수 있으므로 보장되지는 않습니다.
 
 #### 반환값 {/*static-getderivedstatefromerror-returns*/}
 
@@ -1071,7 +1072,7 @@ state를 파생하면 코드가 장황해지고 컴포넌트에 대해 생각하
 
 - props 변경에 대한 응답으로 부수 효과(예: 데이터 불러오기 또는 애니메이션)를 수행해야 하는 경우, 대신 [`componentDidUpdate`](#componentdidupdate) 메서드를 사용하세요.
 - **props이 변경될 때만 일부 데이터를 다시 계산**하려면 [memoization helper를 대신 사용하세요.](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization)
-- **prop이 변경될 때 일부 state를 "초기화"** 하려면 컴포넌트를 [완전히 제어](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component)하거나 [key로 완전히 제어하지 않도록](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) 만드는 것이 좋습니다.
+- **prop이 변경될 때 일부 state를 "초기화"** 하려면 컴포넌트를 [완전히 제어](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component)하거나 [key를 사용해 완전히 제어하지 않도록](https://ko.legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) 만드는 것이 좋습니다.
 
 </Pitfall>
 
