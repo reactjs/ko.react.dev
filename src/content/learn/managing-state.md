@@ -20,7 +20,7 @@ title: State 관리하기
 
 </YouWillLearn>
 
-## State를 사용해 Input 다루기 {/*reacting-to-input-with-state*/}
+## State를 사용해 input 다루기 {/*reacting-to-input-with-state*/}
 
 React를 사용하면 코드에서 직접 UI를 수정하지 않습니다. 예를 들어 "버튼 비활성화", "버튼 활성화", "성공 메시지 표시" 등의 명령을 작성하지 않습니다. 대신 컴포넌트의 여러 시각적 상태("초기 상태", "입력 상태", "성공 상태")에 대해 보고 싶은 UI를 설명하고, 유저 입력에 따라 state 변경을 유발합니다. 이는 디자이너가 UI를 바라보는 방식과 비슷합니다.
 
