@@ -1,5 +1,5 @@
 ---
-title: 유효하지 않은 ARIA 프로퍼티 경고
+title: 유효하지 않은 ARIA Prop 경고
 ---
 
 이 경고는 Web Accessibility Initiative (WAI) Accessible Rich Internet Application (ARIA) [명세](https://www.w3.org/TR/wai-aria-1.1/#states_and_properties)에 존재하지 않는 `aria-*` 프로퍼티를 가진 DOM 요소를 렌더링하려고 할 때 발생합니다.
