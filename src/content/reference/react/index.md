@@ -17,7 +17,7 @@ title: "React에 내장된 Hooks"
 컴포넌트에 state를 추가하려면, 다음 Hooks를 사용하세요.
 
 * [`useState`](/reference/react/useState)는 직접 업데이트할 수 있는 state 변수를 선언합니다.
-* [`useReducer`](/reference/react/useReducer)는 [리듀서 함수](/learn/extracting-state-logic-into-a-reducer) 내에서 업데이트 로직이 포함된 state 변수를 선언합니다.
+* [`useReducer`](/reference/react/useReducer)는 [reducer 함수](/learn/extracting-state-logic-into-a-reducer) 내에서 업데이트 로직이 포함된 state 변수를 선언합니다.
 
 ```js
 function ImageGallery() {
@@ -43,10 +43,10 @@ function Button() {
 
 ## Ref Hooks {/*ref-hooks*/}
 
-*Refs*는 컴포넌트가 [렌더링에 사용되지 않는 DOM 노드나 타임아웃 ID와 같은 정보](/learn/referencing-values-with-refs)를 보유할 수 있도록 해줍니다. state와 달리 ref를 업데이트하면 컴포넌트를 다시 렌더링하지 않습니다. Refs는 React 패러다임에서의 "탈출"입니다. 내장된 브라우저 API와 같은 React 외부 시스템과 작업해야 할 때 유용합니다.
+*Refs*는 DOM 노드나 타임아웃 ID 와 같은 [렌더링에 사용되지 않는 정보](/learn/referencing-values-with-refs)를 보유할 수 있도록 해줍니다. state와 달리 ref를 업데이트하면 컴포넌트를 다시 렌더링하지 않습니다. Refs는 React 패러다임에서의 "escape hatch"입니다. 내장된 브라우저 API와 같은 React 외부 시스템과 작업해야 할 때 유용합니다.
 
 * [`useRef`](/reference/react/useRef)는 ref를 선언합니다. ref에는 어떤 값이든 가질 수 있지만, 주로 DOM 노드를 보관합니다.
-* [`useImperativeHandle`](/reference/react/useImperativeHandle) 은 컴포넌트가 노출하는 ref를 사용자 정의합니다. 이 기능은 사용 빈도가 낮습니다.
+* [`useImperativeHandle`](/reference/react/useImperativeHandle)은 컴포넌트가 노출하는 ref를 정의합니다. 이 기능은 사용 빈도가 낮습니다.
 
 ```js
 function Form() {
@@ -72,7 +72,7 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-Effects는 React 패러다임에서의 "탈출"입니다. 애플리케이션의 데이터 흐름을 조율하기 위해 Effects를 사용하지 마세요. 외부 시스템과 상호작용하지 않는다면, [Effect가 필요하지 않을 수도 있습니다.](/learn/you-might-not-need-an-effect)
+Effects는 React 패러다임에서의 "escape hatch"입니다. 애플리케이션의 데이터 흐름을 조율하기 위해 Effects를 사용하지 마세요. 외부 시스템과 상호작용하지 않는다면, [Effect가 필요하지 않을 수도 있습니다.](/learn/you-might-not-need-an-effect)
 
 `useEffect`에는 사용 빈도가 낮은 두 가지 변형이 있습니다. 두 가지 변형은 타이밍 측면에서 차이가 있습니다.
 
@@ -101,7 +101,7 @@ function TodoList({ todos, tab, theme }) {
 
 렌더링 우선순위를 설정하기 위해 다음 중 하나의 Hook을 사용하세요.
 
-- [`useTransition`](/reference/react/useTransition)은 state 전환을 논블로킹으로 표시하고 다른 업데이트를 중단합니다.
+- [`useTransition`](/reference/react/useTransition)은 state 전환을 논블로킹으로 표시하고 다른 업데이트가 이를 중단시킬 수 있습니다.
 - [`useDeferredValue`](/reference/react/useDeferredValue)는 UI의 덜 중요한 부분의 업데이트를 미루고, 다른 부분이 먼저 업데이트되도록 허용합니다.
 
 ---
