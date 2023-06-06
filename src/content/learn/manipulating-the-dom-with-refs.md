@@ -31,7 +31,7 @@ import { useRef } from 'react';
 const myRef = useRef(null);
 ```
 
-마지막으로 이전에 선언한 ref를 DOM 노드에 ref 어트리뷰트로 전달합니다.
+마지막으로 ref를 DOM 노드를 가져와야하는 JSX tag 에 `ref` 어트리뷰트로 전달합니다.
 
 ```js
 <div ref={myRef}>
