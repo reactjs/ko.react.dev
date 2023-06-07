@@ -4,13 +4,13 @@ title: createFactory
 
 <Deprecated>
 
-This API will be removed in a future major version of React. [See the alternatives.](#alternatives)
+이 API는 향후 React의 주요 버전에서 제거될 예정입니다. [대안들을 살펴보세요.](#alternatives)
 
 </Deprecated>
 
 <Intro>
 
-`createFactory` lets you create a function that produces React elements of a given type.
+`createFactory`는 특정 type의 React 엘리먼트를 만드는 함수를 생성합니다.
 
 ```js
 const factory = createFactory(type)
@@ -22,11 +22,11 @@ const factory = createFactory(type)
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `createFactory(type)` {/*createfactory*/}
 
-Call `createFactory(type)` to create a factory function which produces React elements of a given `type`.
+주어진 `type`의 React 엘리먼트를 만들어 내는 팩토리 함수를 생성하기 위해 `createFactory(type)`를 호출하세요.
 
 ```js
 import { createFactory } from 'react';
@@ -34,7 +34,7 @@ import { createFactory } from 'react';
 const button = createFactory('button');
 ```
 
-Then you can use it to create React elements without JSX:
+이후 JSX 없이 React 엘리먼트를 만들기 위해, 해당 함수를 사용할 수 있습니다. 
 
 ```js
 export default function App() {
@@ -46,25 +46,25 @@ export default function App() {
 }
 ```
 
-[See more examples below.](#usage)
+[아래에서 더 많은 사용법을 확인하세요.](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `type`: The `type` argument must be a valid React component type. For example, it could be a tag name string (such as `'div'` or `'span'`), or a React component (a function, a class, or a special component like [`Fragment`](/reference/react/Fragment)).
+* `type`: `type`은 반드시 유효한 React 컴포넌트 type이어야 합니다. 예를 들어 태그 이름 문자열(`'div'` 나 `'span'`) 혹은 React 컴포넌트(함수 컴포넌트, 클래스 컴포넌트, [`Fragment`](/reference/react/Fragment)와 같은 특별한 컴포넌트)가 될 수 있습니다.
 
-#### Returns {/*returns*/}
+#### 반환 값 {/*returns*/}
 
-Returns a factory function. That factory function receives a `props` object as the first argument, followed by a list of `...children` arguments, and returns a React element with the given `type`, `props` and `children`.
+팩토리 함수를 반환합니다. 이 함수는 자식 인수의 리스트에 뒤이어, 첫 번째 인수로 `props` 객체를 받으며, 주어진 `types`, `props` 그리고 `자식`을 가진 React 엘리먼트를 반환합니다. 
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Creating React elements with a factory {/*creating-react-elements-with-a-factory*/}
+### 팩토리 함수로 React 엘리먼트 만들기 {/*creating-react-elements-with-a-factory*/}
 
-Although most React projects use [JSX](/learn/writing-markup-with-jsx) to describe the user interface, JSX is not required. In the past, `createFactory` used to be one of the ways you could describe the user interface without JSX.
+비록 대부분의 React 프로젝트들은 [JSX](/learn/writing-markup-with-jsx)를 사용하여 유저 인터페이스를 표현하지만, JSX가 필수는 아닙니다. 과거에는 `createFactory`를 JSX 없이 유저 인터페이스를 표현하는 방법의 하나로 사용하였습니다.
 
-Call `createFactory` to create a *factory function* for a specific element type like `'button'`:
+`button`과 같이 특정 엘리먼트 type을 반환하는 *팩토리 함수*를 생성하기 위해 `createFactory`를 호출합니다.
 
 ```js
 import { createFactory } from 'react';
@@ -72,7 +72,7 @@ import { createFactory } from 'react';
 const button = createFactory('button');
 ```
 
-Calling that factory function will produce React elements with the props and children you have provided:
+그 다음, 제공된 props와 자식으로 React 엘리먼트를 만들어내는 팩토리 함수를 실행합니다.
 
 <Sandpack>
 
@@ -92,15 +92,15 @@ export default function App() {
 
 </Sandpack>
 
-This is how `createFactory` was used as an alternative to JSX. However, `createFactory` is deprecated, and you should not call `createFactory` in any new code. See how to migrate away from `createFactory` below.
+이는 `createFactory`을 JSX의 대안으로 사용하는 방법입니다. 하지만 `createFactory`는 더 이상 사용하지 않으며, 이후 새로운 코드를 작성할 때 `createFactory`를 사용하지 않아야 합니다. 아래에서 `createFactory` 대신 다른 방법을 사용하는 방식을 살펴보세요.
 
 ---
 
-## Alternatives {/*alternatives*/}
+## 대안 {/*alternatives*/}
 
-### Copying `createFactory` into your project {/*copying-createfactory-into-your-project*/}
+### 프로젝트에 `createFactory` 복사하기 {/*copying-createfactory-into-your-project*/}
 
-If your project has many `createFactory` calls, copy this `createFactory.js` implementation into your project:
+만약 프로젝트에 `createFactory`가 많이 사용된다면, 다음의 `createFactory.js` 내용을 프로젝트 내부에서 사용할 수 있도록 복사하세요.
 
 <Sandpack>
 
@@ -128,13 +128,14 @@ export function createFactory(type) {
 
 </Sandpack>
 
-This lets you keep all of your code unchanged except the imports.
+이러한 작업을 통해, import 문을 제외하고 다른 코드를 바꾸지 않은 상태로 유지할 수 있습니다.
 
 ---
 
-### Replacing `createFactory` with `createElement` {/*replacing-createfactory-with-createelement*/}
+### `createFactory`를 `createElement`로 대체하기 {/*replacing-createfactory-with-createelement*/}
 
-If you have a few `createFactory` calls that you don't mind porting manually, and you don't want to use JSX, you can replace every call a factory function with a [`createElement`](/reference/react/createElement) call. For example, you can replace this code:
+직접 옮겨와도 무방할 정도로 `createFactory`를 몇 개만 호출하고 있고 JSX를 사용하고 싶지 않다면, [`createElement`](/reference/react/createElement)를 실행하여 팩토리 함수를 대체할 수 있습니다. 예를 들어 이 코드는, 
+
 
 ```js {1,3,6}
 import { createFactory } from 'react';
@@ -150,7 +151,7 @@ export default function App() {
 }
 ```
 
-with this code:
+아래와 같이 바꿀 수 있습니다.
 
 
 ```js {1,4}
@@ -165,7 +166,7 @@ export default function App() {
 }
 ```
 
-Here is a complete example of using React without JSX:
+최종적으로 JSX 없이 React를 사용하는 예시입니다.
 
 <Sandpack>
 
@@ -185,9 +186,9 @@ export default function App() {
 
 ---
 
-### Replacing `createFactory` with JSX {/*replacing-createfactory-with-jsx*/}
+### `createFactory`를 JSX로 대체하기 {/*replacing-createfactory-with-jsx*/}
 
-Finally, you can use JSX instead of `createFactory`. This is the most common way to use React:
+마지막으로 `createFactory` 대신 JSX를 사용할 수 있습니다. 이는 React를 사용하기 위해 가장 흔하게 사용하는 방법입니다.
 
 <Sandpack>
 
@@ -207,7 +208,7 @@ export default function App() {
 
 <Pitfall>
 
-Sometimes, your existing code might pass some variable as a `type` instead of a constant like `'button'`:
+`button`과 같은 상수 대신 `type`을 특정 변수로 사용할 수도 있습니다.
 
 ```js {3}
 function Heading({ isSubheading, ...props }) {
@@ -217,7 +218,7 @@ function Heading({ isSubheading, ...props }) {
 }
 ```
 
-To do the same in JSX, you need to rename your variable to start with an uppercase letter like `Type`:
+JSX를 사용해 같은 방식으로 구현한다면 `Type`처럼 대문자로 시작하는 변수 이름을 새롭게 설정해야 합니다.
 
 ```js {2,3}
 function Heading({ isSubheading, ...props }) {
@@ -226,6 +227,6 @@ function Heading({ isSubheading, ...props }) {
 }
 ```
 
-Otherwise React will interpret `<type>` as a built-in HTML tag because it is lowercase.
+그렇게 하지 않는 경우 React는 소문자로 작성된 `<type>`을 내장된 HTML 태그로 해석할 것입니다.
 
 </Pitfall>

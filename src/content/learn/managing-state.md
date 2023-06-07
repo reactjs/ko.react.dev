@@ -1,30 +1,30 @@
 ---
-title: Managing State
+title: State 관리하기
 ---
 
 <Intro>
 
-As your application grows, it helps to be more intentional about how your state is organized and how the data flows between your components. Redundant or duplicate state is a common source of bugs. In this chapter, you'll learn how to structure your state well, how to keep your state update logic maintainable, and how to share state between distant components.
+애플리케이션이 커짐에 따라, state가 어떻게 구성되는지 그리고 데이터가 컴포넌트 간에 어떻게 흐르는지에 대해 의식적으로 파악하면 도움이 됩니다. 불필요하거나 중복된 state는 버그의 흔한 원인입니다. 이 장에서는 state를 잘 구성하는 방법, state 업데이트 로직을 유지 보수 가능하게 관리하는 방법, 그리고 멀리 있는 컴포넌트 간에 state를 공유하는 방법에 대해 알아봅니다.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to think about UI changes as state changes](/learn/reacting-to-input-with-state)
-* [How to structure state well](/learn/choosing-the-state-structure)
-* [How to "lift state up" to share it between components](/learn/sharing-state-between-components)
-* [How to control whether the state gets preserved or reset](/learn/preserving-and-resetting-state)
-* [How to consolidate complex state logic in a function](/learn/extracting-state-logic-into-a-reducer)
-* [How to pass information without "prop drilling"](/learn/passing-data-deeply-with-context)
-* [How to scale state management as your app grows](/learn/scaling-up-with-reducer-and-context)
+* [UI 변경을 state 변경으로 생각하는 방법](/learn/reacting-to-input-with-state)
+* [State를 잘 구조화하는 방법](/learn/choosing-the-state-structure)
+* ["State를 끌어올려" 컴포넌트 간에 공유하는 방법](/learn/sharing-state-between-components)
+* [State가 보존될지 초기화될지 컨트롤하는 방법](/learn/preserving-and-resetting-state)
+* [복잡한 State 로직을 함수로 통합하는 방법](/learn/extracting-state-logic-into-a-reducer)
+* ["Prop drilling" 없이 정보를 전달하는 방법](/learn/passing-data-deeply-with-context)
+* [앱이 커짐에 따라 state 관리를 확장하는 방법](/learn/scaling-up-with-reducer-and-context)
 
 </YouWillLearn>
 
-## Reacting to input with state {/*reacting-to-input-with-state*/}
+## State를 사용해 input 다루기 {/*reacting-to-input-with-state*/}
 
-With React, you won't modify the UI from code directly. For example, you won't write commands like "disable the button", "enable the button", "show the success message", etc. Instead, you will describe the UI you want to see for the different visual states of your component ("initial state", "typing state", "success state"), and then trigger the state changes in response to user input. This is similar to how designers think about UI.
+React를 사용하면 코드에서 직접 UI를 수정하지 않습니다. 예를 들어 "버튼 비활성화", "버튼 활성화", "성공 메시지 표시" 등의 명령을 작성하지 않습니다. 대신 컴포넌트의 여러 시각적 상태("초기 상태", "입력 상태", "성공 상태")에 대해 보고 싶은 UI를 설명하고, 유저 입력에 따라 state 변경을 유발합니다. 이는 디자이너가 UI를 바라보는 방식과 비슷합니다.
 
-Here is a quiz form built using React. Note how it uses the `status` state variable to determine whether to enable or disable the submit button, and whether to show the success message instead.
+여기 React로 구현된 퀴즈 폼이 있습니다. `status` state 변수를 사용해 제출 버튼을 활성화 혹은 비활성화할지, 또는 성공 메시지를 대신 표지할지 여부를 결정하는 것에 주목해 주세요.
 
 <Sandpack>
 
@@ -108,15 +108,15 @@ function submitForm(answer) {
 
 <LearnMore path="/learn/reacting-to-input-with-state">
 
-Read **[Reacting to Input with State](/learn/reacting-to-input-with-state)** to learn how to approach interactions with a state-driven mindset.
+State-driven 사고방식으로 상호작용에 접근하는 법을 배우려면 **[State를 사용해 Input 다루기](/learn/reacting-to-input-with-state)** 를 읽어보세요.
 
 </LearnMore>
 
-## Choosing the state structure {/*choosing-the-state-structure*/}
+## State 구조 선택하기 {/*choosing-the-state-structure*/}
 
-Structuring state well can make a difference between a component that is pleasant to modify and debug, and one that is a constant source of bugs. The most important principle is that state shouldn't contain redundant or duplicated information. If there's unnecessary state, it's easy to forget to update it, and introduce bugs!
+State를 잘 구조화한다면 지속적인 버그의 원인이 되는 컴포넌트가 아닌, 수정과 디버깅이 용이한 컴포넌트를 만들 수 있습니다. 가장 중요한 원칙은 state가 중복되거나 불필요한 정보를 포함하지 않는 것입니다. 불필요한 state가 있다면 업데이트하는 것을 잊어버려 버그가 발생하기 쉽습니다!
 
-For example, this form has a **redundant** `fullName` state variable:
+예를 들어 아래 폼에는 **중복된** `fullName` state 변수가 있습니다.
 
 <Sandpack>
 
@@ -169,7 +169,7 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-You can remove it and simplify the code by calculating `fullName` while the component is rendering:
+컴포넌트가 렌더링 되는 동안 `fullName` 을 계산해 이를 제거하고 코드를 단순화할 수 있습니다. 
 
 <Sandpack>
 
@@ -221,19 +221,19 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-This might seem like a small change, but many bugs in React apps are fixed this way.
+이 변경이 사소해 보일 수 있지만, React 앱의 많은 버그가 이러한 방식으로 수정됩니다.
 
 <LearnMore path="/learn/choosing-the-state-structure">
 
-Read **[Choosing the State Structure](/learn/choosing-the-state-structure)** to learn how to design the state shape to avoid bugs.
+버그 방지를 위해 state 구조를 설계하는 방법을 배우려면 **[State 구조 선택하기](/learn/choosing-the-state-structure)** 를 읽어보세요.
 
 </LearnMore>
 
-## Sharing state between components {/*sharing-state-between-components*/}
+## 컴포넌트 간 State 공유하기 {/*sharing-state-between-components*/}
 
-Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as "lifting state up", and it's one of the most common things you will do writing React code.
+때때로 두 컴포넌트의 state가 항상 함께 변경되기를 원할 수 있습니다. 이를 위해서는 각 컴포넌트에서 state를 제거하고 가장 가까운 공통 부모 컴포넌트로 옮긴 후 props로 자식들에게 전달해야 합니다. 이 방법을 "state 끌어올리기"라고 하며, React 코드를 작성할 때 가장 흔히 하는 일 중 하나입니다.
 
-In this example, only one panel should be active at a time. To achieve this, instead of keeping the active state inside each individual panel, the parent component holds the state and specifies the props for its children.
+아래 예시에서는 한 번에 하나의 패널만 활성화되어야 합니다. 이를 위해 개별 패널 내에서 활성 state를 유지하는 대신, 부모 컴포넌트에서 state를 관리하고 자식들의 props를 지정합니다.
 
 <Sandpack>
 
@@ -296,15 +296,15 @@ h3, p { margin: 5px 0px; }
 
 <LearnMore path="/learn/sharing-state-between-components">
 
-Read **[Sharing State Between Components](/learn/sharing-state-between-components)** to learn how to lift state up and keep components in sync.
+State를 끌어올려 컴포넌트들을 동기화하는 방법을 배우려면 **[컴포넌트 간 State 공유하기](/learn/sharing-state-between-components)** 를 읽어보세요.
 
 </LearnMore>
 
-## Preserving and resetting state {/*preserving-and-resetting-state*/}
+## State를 보존하고 초기화하기 {/*preserving-and-resetting-state*/}
 
-When you re-render a component, React needs to decide which parts of the tree to keep (and update), and which parts to discard or re-create from scratch. In most cases, React's automatic behavior works well enough. By default, React preserves the parts of the tree that "match up" with the previously rendered component tree.
+컴포넌트가 리렌더링 될 때, React는 트리에서 유지(및 업데이트) 할 부분과, 버리거나 다시 생성할 부분을 결정해야 합니다. 대부분의 경우 React의 자동화된 동작이 충분히 잘 작동합니다. 기본적으로 React는 기존에 렌더링 된 컴포넌트 트리와 "일치하는" 트리 부분을 보존합니다.
 
-However, sometimes this is not what you want. In this chat app, typing a message and then switching the recipient does not reset the input. This can make the user accidentally send a message to the wrong person:
+하지만 때로는 이것이 바람직한 동작이 아닐 수 있습니다. 아래 채팅 앱에서는 메시지를 입력한 후에 수신자를 변경하더라도 입력이 초기화되지 않습니다. 따라서 유저가 실수로 잘못된 사람에게 메시지를 보낼 수도 있습니다.
 
 <Sandpack>
 
@@ -399,7 +399,7 @@ textarea {
 
 </Sandpack>
 
-React lets you override the default behavior, and *force* a component to reset its state by passing it a different `key`, like `<Chat key={email} />`. This tells React that if the recipient is different, it should be considered a *different* `Chat` component that needs to be re-created from scratch with the new data (and UI like inputs). Now switching between the recipients resets the input field--even though you render the same component.
+`<Chat key={email} />` 처럼 다른 `key`를 전달함으로써 React의 기본 동작을 무시하고 *강제로* 컴포넌트의 상태를 초기화할 수 있습니다. 이를 통해 수신자가 다르다면 새로운 데이터(및 input과 같은 UI)로 처음부터 다시 생성해야 하는 **별개의** Chat 컴포넌트로 간주해야 한다는 것을 React에 알려줍니다. 이제 수신자를 변경하면 같은 컴포넌트를 렌더링하더라도 input 필드가 초기화됩니다.
 
 <Sandpack>
 
@@ -496,13 +496,13 @@ textarea {
 
 <LearnMore path="/learn/preserving-and-resetting-state">
 
-Read **[Preserving and Resetting State](/learn/preserving-and-resetting-state)** to learn the lifetime of state and how to control it.
+State의 생명주기, 그리고 생명주기를 컨트롤하는 방법을 배우려면 **[State를 보존하고 초기화하기](/learn/preserving-and-resetting-state)** 를 읽어보세요.
 
 </LearnMore>
 
-## Extracting state logic into a reducer {/*extracting-state-logic-into-a-reducer*/}
+## State 로직을 reducer로 작성하기 {/*extracting-state-logic-into-a-reducer*/}
 
-Components with many state updates spread across many event handlers can get overwhelming. For these cases, you can consolidate all the state update logic outside your component in a single function, called "reducer". Your event handlers become concise because they only specify the user "actions". At the bottom of the file, the reducer function specifies how the state should update in response to each action!
+여러 이벤트 핸들러를 통해 많은 state 업데이트가 이루어지는 컴포넌트는 감당하기 힘들 수 있습니다. 이 때 컴포넌트 외부에서 "reducer"라는 단일 함수를 사용하여 모든 state 업데이트 로직을 통합할 수 있습니다. 이벤트 핸들러는 오로지 유저의 "action"만을 명시하므로 간결해집니다. 각 action에 대한 state 업데이트 방법은 파일 맨 마지막 부분의 reducer 함수에 명시되어 있습니다.
 
 <Sandpack>
 
@@ -693,15 +693,15 @@ ul, li { margin: 0; padding: 0; }
 
 <LearnMore path="/learn/extracting-state-logic-into-a-reducer">
 
-Read **[Extracting State Logic into a Reducer](/learn/extracting-state-logic-into-a-reducer)** to learn how to consolidate logic in the reducer function.
+Reducer 함수에 로직을 통합하는 방법을 배우려면 **[state 로직을 reducer로 작성하기](/learn/extracting-state-logic-into-a-reducer)** 를 읽어보세요.
 
 </LearnMore>
 
-## Passing data deeply with context {/*passing-data-deeply-with-context*/}
+## Context를 사용해 데이터를 깊게 전달하기 {/*passing-data-deeply-with-context*/}
 
-Usually, you will pass information from a parent component to a child component via props. But passing props can become inconvenient if you need to pass some prop through many components, or if many components need the same information. Context lets the parent component make some information available to any component in the tree below it—no matter how deep it is—without passing it explicitly through props.
+일반적으로는 props를 통해 부모 컴포넌트에서 자식 컴포넌트로 정보를 전달합니다. 그러나 중간에 많은 컴포넌트를 거쳐야 하거나, 애플리케이션의 많은 컴포넌트에서 동일한 정보가 필요한 경우에는 props를 전달하는 것이 번거롭고 불편할 수 있습니다. 이때 Context를 사용하면 부모 컴포넌트가 props를 통해 명시적으로 정보를 전달하지 않아도, 트리에 있는 모든 자식 컴포넌트가 (얼마나 깊게 있든지 간에) 정보를 사용할 수 있도록 할 수 있습니다.
 
-Here, the `Heading` component determines its heading level by "asking" the closest `Section` for its level. Each `Section` tracks its own level by asking the parent `Section` and adding one to it. Every `Section` provides information to all components below it without passing props--it does that through context.
+아래 예시에서 `Heading` 컴포넌트는 가장 가까운 `Section`에 "물어봄으로써" 자신의 heading 레벨을 결정합니다. 각 `Section`은 부모 `Section`에 레벨을 물어보고 거기에 1을 더해 자신의 레벨을 트래킹합니다. 각 `Section`은 props를 전달하지 않고도 모든 하위 컴포넌트에 정보를 제공하며, 이는 Context를 통해 수행됩니다.
 
 <Sandpack>
 
@@ -795,7 +795,7 @@ export const LevelContext = createContext(0);
 
 <LearnMore path="/learn/passing-data-deeply-with-context">
 
-Read **[Passing Data Deeply with Context](/learn/passing-data-deeply-with-context)** to learn about using context as an alternative to passing props.
+Props 전달하기의 대안으로 context를 사용하는 방법을 배우려면 **[Context를 사용해 데이터를 깊게 전달하기](/learn/passing-data-deeply-with-context)** 를 읽어보세요.
 
 </LearnMore>
 
@@ -803,7 +803,7 @@ Read **[Passing Data Deeply with Context](/learn/passing-data-deeply-with-contex
 
 Reducer를 사용하면 컴포넌트의 state 업데이트 로직을 통합할 수 있습니다. Context를 사용하면 다른 컴포넌트에 정보를 깊숙이 전달할 수 있습니다. Reducer와 Context를 함께 사용하여 복잡한 화면의 state를 관리할 수 있습니다.
 
-이 접근 방식을 사용하면 상위 컴포넌트가 Reducer로 복잡한 state를 관리합니다. 트리 깊은 곳에 있는 다른 컴포넌트는 Context를 통해 상위 컴포넌트의 state를 읽을 수 있습니다. 또한 해당 state를 업데이트하기 위해 action을 dispatch할 수도 있습니다. 
+이 접근 방식을 사용하면 상위 컴포넌트가 Reducer로 복잡한 state를 관리합니다. 트리 깊은 곳에 있는 다른 컴포넌트는 Context를 통해 상위 컴포넌트의 state를 읽을 수 있습니다. 또한 해당 state를 업데이트하기 위해 action을 dispatch 할 수도 있습니다. 
 
 <Sandpack>
 
@@ -1012,6 +1012,6 @@ ul, li { margin: 0; padding: 0; }
 
 ## 다음은 무엇인가요? {/*whats-next*/}
 
-이 챕터를 한 페이지씩 읽어보려면 [Reacting to Input with State](/learn/reacting-to-input-with-state)로 이동하세요!
+이 장을 한 페이지씩 읽어보려면 [State를 사용해 Input 다루기](/learn/reacting-to-input-with-state)로 이동하세요!
 
-이 주제에 이미 익숙하다면 [Escape Hatches](/learn/escape-hatches)에 대해서 읽어보는 건 어떤가요?
+이 주제에 이미 익숙하다면 [해결책(Escape Hatches)](/learn/escape-hatches)에 대해서 읽어보는 것은 어떨까요?
