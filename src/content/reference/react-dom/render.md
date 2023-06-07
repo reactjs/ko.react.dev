@@ -77,7 +77,7 @@ import { render } from 'react-dom';
 import App from './App.js';
 
 render(<App />, document.getElementById('root'));
-````
+```
 
 ### 최상단 컴포넌트 렌더링하기 {/*rendering-the-root-component*/}
 
