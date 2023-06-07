@@ -18,53 +18,53 @@ title: Effect와 동기화
 
 </YouWillLearn>
 
-## What are Effects and how are they different from events? {/*what-are-effects-and-how-are-they-different-from-events*/}
+## Effect란 무엇이고 이벤트와 어떻게 다른가요? {/*what-are-effects-and-how-are-they-different-from-events*/}
 
-Before getting to Effects, you need to be familiar with two types of logic inside React components:
+Effect에 들어가기 전에 React 컴포넌트 내부에 있는 두 가지 유형의 로직에 익숙해져야 합니다.
 
-- **Rendering code** (introduced in [Describing the UI](/learn/describing-the-ui)) lives at the top level of your component. This is where you take the props and state, transform them, and return the JSX you want to see on the screen. [Rendering code must be pure.](/learn/keeping-components-pure) Like a math formula, it should only _calculate_ the result, but not do anything else.
+- **렌더링 코드**([Describing the UI](/learn/describing-the-ui)에서 소개됨)는 컴포넌트의 최상위 레벨에 있습니다. 여기에서 props와 state를 가져와서 변환하고 화면에 표시할 JSX를 반환합니다. [렌더링 코드는 순수해야 합니다.](/learn/keeping-components-pur) 수학 공식처럼 결과만 _계산_ 하고 다른 작업은 수행하지 않아야 합니다.
 
-- **Event handlers** (introduced in [Adding Interactivity](/learn/adding-interactivity)) are nested functions inside your components that *do* things rather than just calculate them. An event handler might update an input field, submit an HTTP POST request to buy a product, or navigate the user to another screen. Event handlers contain ["side effects"](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) (they change the program's state) caused by a specific user action (for example, a button click or typing).
+- **이벤트 핸들러**([Adding Interactivity](/learn/adding-interactivity)에서 소개됨)는 컴포넌트 내부에 중첩된 함수로, 단순히 계산만 하는 것이 아니라 *작업을 수행*합니다. 이벤트 핸들러는 입력 필드를 업데이트하거나, 제품 구매를 위해 HTTP POST 요청을 제출하거나, 사용자를 다른 화면으로 안내할 수 있습니다. 이벤트 핸들러에는 특정 사용자 액션(예: 버튼 클릭 또는 입력)으로 인해 발생하는 ["부작용"](https://en.wikipedia.org/wiki/Side_effect_(computer_science))(프로그램의 상태를 변경)이 포함됩니다.
 
-Sometimes this isn't enough. Consider a `ChatRoom` component that must connect to the chat server whenever it's visible on the screen. Connecting to a server is not a pure calculation (it's a side effect) so it can't happen during rendering. However, there is no single particular event like a click that causes `ChatRoom` to be displayed.
+때로는 이것만으로는 충분하지 않습니다. 화면에 표시될 때마다 채팅 서버에 연결해야 하는 `ChatRoom` 컴포넌트를 생각해 보세요. 서버에 연결하는 것은 순수한 계산이 아니므로(부수적인 효과) 렌더링 중에 발생할 수 없습니다. 그러나 클릭과 같은 특정 이벤트 하나만으로는 `ChatRoom`을 표시할 수 없습니다.
 
-***Effects* let you specify side effects that are caused by rendering itself, rather than by a particular event.** Sending a message in the chat is an *event* because it is directly caused by the user clicking a specific button. However, setting up a server connection is an *Effect* because it should happen no matter which interaction caused the component to appear. Effects run at the end of a [commit](/learn/render-and-commit) after the screen updates. This is a good time to synchronize the React components with some external system (like network or a third-party library).
+***Effect*를 사용하면 특정 이벤트가 아닌 렌더링 자체로 인해 발생하는 부작용을 지정할 수 있습니다.** 채팅에서 메시지를 보내는 것은 사용자가 특정 버튼을 클릭함으로써 직접 발생하므로 *이벤트*에 해당합니다. 그러나 서버 연결 설정은 컴포넌트가 표시되도록 한 상호작용과 상관없이 발생해야 하므로 *Effect*입니다. Effect는 화면이 업데이트된 후 [커밋](/learn/render-and-commit)이 끝날 때 실행됩니다. 이 때는 React 컴포넌트를 외부 시스템(예: 네트워크 또는 타사 라이브러리)과 동기화하기에 좋은 시기입니다.
 
 <Note>
 
-Here and later in this text, capitalized "Effect" refers to the React-specific definition above, i.e. a side effect caused by rendering. To refer to the broader programming concept, we'll say "side effect".
+이 글에서 대문자로 표시된 "Effect"는 위의 React 관련 정의, 즉 렌더링으로 인해 발생하는 부작용을 의미합니다. 더 넓은 프로그래밍 개념을 언급하기 위해 "부작용(side effect)"이라고 하겠습니다.
 
 </Note>
 
 
-## You might not need an Effect {/*you-might-not-need-an-effect*/}
+## Effect가 필요하지 않을 수도 있습니다 {/*you-might-not-need-an-effect*/}
 
-**Don't rush to add Effects to your components.** Keep in mind that Effects are typically used to "step out" of your React code and synchronize with some *external* system. This includes browser APIs, third-party widgets, network, and so on. If your Effect only adjusts some state based on other state, [you might not need an Effect.](/learn/you-might-not-need-an-effect)
+**컴포넌트에 Effect를 추가하는 것을 서두르지 마세요.** Effect는 일반적으로 React 코드에서 벗어나 외부 시스템과동기화할 때 사용된다는 점을 기억하세요. 여기에는 브라우저 API, 타사 위젯, 네트워크 등이 포함됩니다. Effect가 다른 상태에 따라 일부 상태만 조정하는 경우 [Effect가 필요하지 않을 수도 있습니다.](/learn/you-might-not-need-an-effect)
 
-## How to write an Effect {/*how-to-write-an-effect*/}
+## Effect를 작성하는 방법 {/*how-to-write-an-effect*/}
 
-To write an Effect, follow these three steps:
+Effect를 작성하려면 다음 세 단계를 따르세요:
 
-1. **Declare an Effect.** By default, your Effect will run after every render.
-2. **Specify the Effect dependencies.** Most Effects should only re-run *when needed* rather than after every render. For example, a fade-in animation should only trigger when a component appears. Connecting and disconnecting to a chat room should only happen when the component appears and disappears, or when the chat room changes. You will learn how to control this by specifying *dependencies.*
-3. **Add cleanup if needed.** Some Effects need to specify how to stop, undo, or clean up whatever they were doing. For example, "connect" needs "disconnect", "subscribe" needs "unsubscribe", and "fetch" needs either "cancel" or "ignore". You will learn how to do this by returning a *cleanup function*.
+1. **Effect를 선언합니다.** 기본적으로 Effect는 렌더링할 때마다 실행됩니다.
+2. **Effect 의존성을 지정합니다.** 대부분의 Effect는 매번 렌더링할 때마다 실행하는 것이 아니라 *필요할 때만* 다시 실행해야 합니다. 예를 들어 fade-in 애니메이션은 컴포넌트가 나타날 때만 트리거되어야 합니다. 대화방 연결 및 연결 해제는 컴포넌트가 나타났다가 사라지거나 대화방이 변경될 때만 발생해야 합니다. 여러분은 *의존성*을 지정하여 이를 제어하는 방법을 배우게 됩니다.
+3. **필요한 경우 정리 수함수를 추가합니다.** 일부 Effect는 수행 중이던 작업을 중지, 실행 취소 또는 정리하는 방법을 지정해야 합니다. 예를 들어, "연결"에는 "연결 끊기", "구독"에는 "구독 취소", "fetch"에는 "취소" 또는 "무시"가 필요합니다. 여러분은 *정리 함수*를 반환하여 이를 수행하는 방법을 배우게 됩니다.
 
-Let's look at each of these steps in detail.
+각 단계를 자세히 살펴보겠습니다.
 
-### Step 1: Declare an Effect {/*step-1-declare-an-effect*/}
+### Step 1: Effect 선언 {/*step-1-declare-an-effect*/}
 
-To declare an Effect in your component, import the [`useEffect` Hook](/reference/react/useEffect) from React:
+컴포넌트에서 Effect를 선언하려면 React에서 [`useEffect` Hook](/reference/react/useEffect)을 가져옵니다:
 
 ```js
 import { useEffect } from 'react';
 ```
 
-Then, call it at the top level of your component and put some code inside your Effect:
+그런 다음 컴포넌트의 최상위 수준에서 호출하고 Effect 안에 코드를 넣습니다:
 
 ```js {2-4}
 function MyComponent() {
   useEffect(() => {
-    // Code here will run after *every* render
+    // 여기의 코드는 *매번* 렌더링 후에 실행됩니다.
   });
   return <div />;
 }
