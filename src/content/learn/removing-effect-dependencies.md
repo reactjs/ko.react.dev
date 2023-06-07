@@ -1,18 +1,18 @@
 ---
-title: 이펙트 의존성 제거하기
+title: Effect 의존성 제거하기
 ---
 
 <Intro>
 
-이펙트를 작성하면 린터는 이펙트의 의존성 목록에 이펙트가 읽는 모든 반응형 값(예를 들어 프로퍼티 및 스테이트)을 포함했는지 확인합니다. 이렇게 하면 이펙트가 컴포넌트의 최신 프로퍼티 및 스테이트와 동기화 상태를 유지할 수 있습니다. 불필요한 의존성으로 인해 이펙트가 너무 자주 실행되거나 무한 루프를 생성할 수도 있습니다. 이 가이드를 따라 이펙트에서 불필요한 의존성을 검토하고 제거하세요.
+Effect를 작성하면 린터는 Effect의 의존성 목록에 Effect가 읽는 모든 반응형 값(예를 들어 props 및 State)을 포함했는지 확인합니다. 이렇게 하면 Effect가 컴포넌트의 최신 props 및 State와 동기화 상태를 유지할 수 있습니다. 불필요한 의존성으로 인해 Effect가 너무 자주 실행되거나 무한 루프를 생성할 수도 있습니다. 이 가이드를 따라 Effect에서 불필요한 의존성을 검토하고 제거하세요.
 
 </Intro>
 
 <YouWillLearn>
 
-* 이펙트 의존성 무한 루프를 수정하는 방법
+* Effect 의존성 무한 루프를 수정하는 방법
 * 의존성을 제거하고자 할 때 해야 할 일
-* 이펙트에 "반응"하지 않고 이펙트에서 값을 읽는 방법
+* Effect에 "반응"하지 않고 Effect에서 값을 읽는 방법
 * 객체와 함수 의존성을 피하는 방법과 이유
 * 의존성 린터를 억제하는 것이 위험한 이유와 대신 할 수 있는 일
 
@@ -20,7 +20,7 @@ title: 이펙트 의존성 제거하기
 
 ## 의존성은 코드와 일치해야 합니다. {/*dependencies-should-match-the-code*/}
 
-이펙트를 작성할 때는 먼저 이펙트가 수행하기를 원하는 작업을 [시작하고 중지](/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect)하는 방법을 지정합니다.
+Effect를 작성할 때는 먼저 Effect가 수행하기를 원하는 작업을 [시작하고 중지](/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect)하는 방법을 지정합니다.
 
 ```js {5-7}
 const serverUrl = 'https://localhost:1234';
@@ -34,7 +34,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-그런 다음 이펙트 의존성을 비워두면(`[]`) 린터가 올바른 의존성을 제안합니다.
+그런 다음 Effect 의존성을 비워두면(`[]`) 린터가 올바른 의존성을 제안합니다.
 
 <Sandpack>
 
@@ -109,7 +109,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-[이펙트는 반응형 값에 "반응"합니다.](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) `roomId`는 반응형 값이므로(재렌더링으로 인해 변경될 수 있음), 린터는 이를 의존성으로 지정했는지 확인합니다. `roomId`가 다른 값을 받으면 리액트는 이펙트를 다시 동기화합니다. 이렇게 하면 채팅이 선택된 방에 연결된 상태를 유지하고 드롭다운에 '반응'합니다.
+[Effect는 반응형 값에 "반응"합니다.](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) `roomId`는 반응형 값이므로(재렌더링으로 인해 변경될 수 있음), 린터는 이를 의존성으로 지정했는지 확인합니다. `roomId`가 다른 값을 받으면 React는 Effect를 다시 동기화합니다. 이렇게 하면 채팅이 선택된 방에 연결된 상태를 유지하고 드롭다운에 '반응'합니다.
 
 <Sandpack>
 
@@ -173,7 +173,7 @@ button { margin-left: 10px; }
 
 ### 의존성을 제거하려면 의존성이 아님을 증명하세요 {/*to-remove-a-dependency-prove-that-its-not-a-dependency*/}
 
-이펙트의 의존성을 "선택"할 수 없다는 점에 유의하세요. 이펙트의 코드에서 사용되는 모든 <CodeStep step={2}>반응형 값</CodeStep>은 의존성 목록에 선언되어야 합니다. 의존성 목록은 주변 코드에 의해 결정됩니다.
+Effect의 의존성을 "선택"할 수 없다는 점에 유의하세요. Effect의 코드에서 사용되는 모든 <CodeStep step={2}>반응형 값</CodeStep>은 의존성 목록에 선언되어야 합니다. 의존성 목록은 주변 코드에 의해 결정됩니다.
 
 ```js [[2, 3, "roomId"], [2, 5, "roomId"], [2, 8, "roomId"]]
 const serverUrl = 'https://localhost:1234';
@@ -188,7 +188,7 @@ function ChatRoom({ roomId }) { // This is a reactive value
 }
 ```
 
-[반응형 값](/learn/lifecycle-of-reactive-effects#all-variables-declared-in-the-component-body-are-reactive)에는 프로퍼티와 컴포넌트 내부에서 직접 선언된 모든 변수 및 함수가 포함됩니다. `roomId`는 반응형 값이므로 의존성 목록에서 제거할 수 없습니다. 린터가 허용하지 않습니다.
+[반응형 값](/learn/lifecycle-of-reactive-effects#all-variables-declared-in-the-component-body-are-reactive)에는 props와 컴포넌트 내부에서 직접 선언된 모든 변수 및 함수가 포함됩니다. `roomId`는 반응형 값이므로 의존성 목록에서 제거할 수 없습니다. 린터가 허용하지 않습니다.
 
 ```js {8}
 const serverUrl = 'https://localhost:1234';
@@ -205,7 +205,7 @@ function ChatRoom({ roomId }) {
 
 그리고 린터가 맞을 것입니다! `roomId`는 시간이 지남에 따라 변경될 수 있으므로 코드에 버그가 발생할 수 있습니다.
 
-**의존성을 제거하려면 해당 컴포넌트가 의존성이 될 *필요가 없다는 것*을 린터에 "증명"하세요.** 예를 들어 `roomId`를 컴포넌트 밖으로 이동시켜도 반응하지 않고 재렌더링 시에도 변경되지 않음을 증명할 수 있습니다.
+**의존성을 제거하려면 해당 컴포넌트가 의존성이 될 *필요가 없다는 것*을 린터에 "증명"하세요.** 예를 들어 `roomId`를 컴포넌트 밖으로 이동시켜서 반응형값이 아니고 재렌더링 시에도 변경되지 않음을 증명할 수 있습니다.
 
 ```js {2,9}
 const serverUrl = 'https://localhost:1234';
@@ -263,23 +263,23 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-이것이 [빈(`[]`) 의존성 목록](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means)을 지정할 수 있는 이유입니다. 이펙트는 더 이상 반응형 값에 의존하지 않으므로 컴포넌트의 프로퍼티나 스테이트가 변경될 때 이펙트를 다시 실행할 필요가 없습니다.
+이것이 [빈(`[]`) 의존성 목록](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means)을 지정할 수 있는 이유입니다. Effect는 더 이상 반응형 값에 의존하지 않으므로 컴포넌트의 props나 State가 변경될 때 Effect를 다시 실행할 필요가 없습니다.
 
 ### 의존성을 변경하려면 코드를 변경하세요. {/*to-change-the-dependencies-change-the-code*/}
 
 작업 흐름에서 패턴을 발견했을 수도 있습니다.
 
-1. 먼저 이펙트의 코드 또는 반응형 값 선언 방식을 **변경**합니다.
+1. 먼저 Effect의 코드 또는 반응형 값 선언 방식을 **변경**합니다.
 2. 그런 다음, **변경한 코드에 맞게** 의존성을 조정합니다.
 3. 의존성 목록이 마음에 들지 않으면 **첫 번째 단계로 돌아가서** 코드를 다시 변경합니다. (그리고 코드를 다시 변경하세요).
 
-마지막 부분이 중요합니다. 의존성을 변경하려면 먼저 주변 코드를 변경하세요. 의존성 목록은 [이펙트의 코드에서 사용하는 모든 반응형 값의 목록](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)이라고 생각하면 됩니다. 이 목록에 무엇을 넣을지는 사용자가 선택하지 않습니다. 이 목록은 코드를 설명합니다. 의존성 목록을 변경하려면 코드를 변경하세요.
+마지막 부분이 중요합니다. 의존성을 변경하려면 먼저 주변 코드를 변경하세요. 의존성 목록은 [Effect의 코드에서 사용하는 모든 반응형 값의 목록](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)이라고 생각하면 됩니다. 이 목록에 무엇을 넣을지는 사용자가 선택하지 않습니다. 이 목록은 코드를 설명합니다. 의존성 목록을 변경하려면 코드를 변경하세요.
 
-이것은 방정식을 푸는 것처럼 느껴질 수 있습니다. 예를 들어 의존성 제거와 같은 목표를 설정하고 그 목표에 맞는 코드를 "찾아야" 합니다. 모든 사람이 방정식을 푸는 것을 재미있어하는 것은 아니며, 이펙트를 작성할 때도 마찬가지입니다! 다행히도 아래에 시도해 볼 수 있는 일반적인 레시피 목록이 있습니다.
+이것은 방정식을 푸는 것처럼 느껴질 수 있습니다. 예를 들어 의존성 제거와 같은 목표를 설정하고 그 목표에 맞는 코드를 "찾아야" 합니다. 모든 사람이 방정식을 푸는 것을 재미있어하는 것은 아니며, Effect를 작성할 때도 마찬가지입니다! 다행히도 아래에 시도해 볼 수 있는 일반적인 레시피 목록이 있습니다.
 
 <Pitfall>
 
-기존 코드베이스가 있는 경우 이와 같이 린터를 억제하는 이펙트가 있을 수 있습니다.
+기존 코드베이스가 있는 경우 이와 같이 린터를 억제하는 Effect가 있을 수 있습니다.
 
 ```js {3-4}
 useEffect(() => {
@@ -289,7 +289,7 @@ useEffect(() => {
 }, []);
 ```
 
-**의존성이 코드와 일치하지 않으면 버그가 발생할 위험이 매우 높습니다.** 린터를 억제하면 이펙트가 의존하는 값에 대해 리액트에 "거짓말"을 하게 됩니다.
+**의존성이 코드와 일치하지 않으면 버그가 발생할 위험이 매우 높습니다.** 린터를 억제하면 Effect가 의존하는 값에 대해 React에 "거짓말"을 하게 됩니다.
 
 대신 다음에 소개할 기술을 사용하세요.
 
@@ -348,9 +348,9 @@ button { margin: 10px; }
 
 </Sandpack>
 
-"마운트할 때만" 이펙트를 실행하고 싶다고 가정해 봅시다. [빈(`[]`) 의존성](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means)이 그렇게 한다는 것을 읽었으므로 린터를 무시하고 `[]` 의존성을 강제로 지정하기로 결정했습니다.
+"마운트할 때만" Effect를 실행하고 싶다고 가정해 봅시다. [빈(`[]`) 의존성](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means)이 그렇게 한다는 것을 읽었으므로 린터를 무시하고 `[]` 의존성을 강제로 지정하기로 결정했습니다.
 
-이 카운터는 두 개의 버튼으로 설정할 수 있는 양만큼 매초마다 증가해야 합니다. 하지만 이 이펙트가 아무 것도 의존하지 않는다고 리액트에 "거짓말"을 했기 때문에, 리액트는 초기 렌더링에서 계속 `onTick` 함수를 사용합니다. [이 렌더링에서](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `count`는 `0`이었고 `increment`는 `1`이었습니다. 그래서 이 렌더링의 `onTick`은 항상 매초마다 `setCount(0 + 1)`를 호출하고 항상 `1`이 표시됩니다. 이와 같은 버그는 여러 컴포넌트에 분산되어 있을 때 수정하기가 더 어렵습니다.
+이 카운터는 두 개의 버튼으로 설정할 수 있는 양만큼 매초마다 증가해야 합니다. 하지만 이 Effect가 아무 것도 의존하지 않는다고 React에 "거짓말"을 했기 때문에, React는 초기 렌더링에서 계속 `onTick` 함수를 사용합니다. [이 렌더링에서](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `count`는 `0`이었고 `increment`는 `1`이었습니다. 그래서 이 렌더링의 `onTick`은 항상 매초마다 `setCount(0 + 1)`를 호출하고 항상 `1`이 표시됩니다. 이와 같은 버그는 여러 컴포넌트에 분산되어 있을 때 수정하기가 더 어렵습니다.
 
 린터를 무시하는 것보다 더 좋은 해결책은 항상 있습니다! 이 코드를 수정하려면 의존성 목록에 `onTick`을 추가해야 합니다. (interval을 한 번만 설정하려면 [onTick을 Effect Event로 만드세요.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events))
 
@@ -360,19 +360,19 @@ button { margin: 10px; }
 
 ## 불필요한 의존성 제거하기 {/*removing-unnecessary-dependencies*/}
 
-코드를 반영하기 위해 이펙트의 의존성을 조정할 때마다 의존성 목록을 살펴보십시오. 이러한 의존성 중 하나라도 변경되면 이펙트가 다시 실행되는 것이 합리적일까요? 가끔 대답은 "아니오"입니다.
+코드를 반영하기 위해 Effect의 의존성을 조정할 때마다 의존성 목록을 살펴보십시오. 이러한 의존성 중 하나라도 변경되면 Effect가 다시 실행되는 것이 합리적일까요? 가끔 대답은 "아니오"입니다.
 
-* 다른 조건에서 이펙트의 *다른 부분*을 다시 실행하고 싶을 수도 있습니다.
+* 다른 조건에서 Effect의 *다른 부분*을 다시 실행하고 싶을 수도 있습니다.
 * 일부 의존성의 변경에 "반응"하지 않고 "최신 값"만 읽고 싶을 수도 있습니다.
 * 의존성은 객체나 함수이기 때문에 *의도치 않게* 너무 자주 변경될 수 있습니다.
 
-올바른 해결책을 찾으려면 이펙트에 대한 몇 가지 질문에 답해야 합니다. 몇 가지 질문을 살펴봅시다.
+올바른 해결책을 찾으려면 Effect에 대한 몇 가지 질문에 답해야 합니다. 몇 가지 질문을 살펴봅시다.
 
 ### 이 코드를 이벤트 핸들러로 옮겨야 하나요? {/*should-this-code-move-to-an-event-handler*/}
 
-가장 먼저 고려해야 할 것은 이 코드가 이펙트 되어야 하는지 여부입니다.
+가장 먼저 고려해야 할 것은 이 코드가 Effect 되어야 하는지 여부입니다.
 
-폼을 상상해 봅시다. 제출할 때 `submitted` 스테이트 변수를 `true`로 설정합니다. POST 요청을 보내고 알림을 표시해야 합니다. 이 로직은 `submitted`가 `true`가 될 때 "반응"하는 이펙트 안에 넣었습니다.
+폼을 상상해 봅시다. 제출할 때 `submitted` State 변수를 `true`로 설정합니다. POST 요청을 보내고 알림을 표시해야 합니다. 이 로직은 `submitted`가 `true`가 될 때 "반응"하는 Effect 안에 넣었습니다.
 
 ```js {6-8}
 function Form() {
@@ -417,9 +417,9 @@ function Form() {
 }
 ```
 
-이렇게 하면 버그가 발생하게 됩니다. 먼저 폼을 제출한 다음 어두운 테마와 밝은 테마 간 전환한다고 가정해 보겠습니다. `theme`이 변경되고 이펙트가 다시 실행되어 동일한 알림이 다시 표시됩니다!
+이렇게 하면 버그가 발생하게 됩니다. 먼저 폼을 제출한 다음 어두운 테마와 밝은 테마 간 전환한다고 가정해 보겠습니다. `theme`이 변경되고 Effect가 다시 실행되어 동일한 알림이 다시 표시됩니다!
 
-**여기서 문제는 이것이 애초에 이펙트가 아니어야 한다는 점입니다.** 이 POST 요청을 보내고 특정 상호작용인 폼 제출에 대한 응답으로 알림을 표시하고 싶다는 것입니다. 특정 상호작용에 대한 응답으로 일부 코드를 실행하려면 해당 로직을 해당 이벤트 핸들러에 직접 넣어야 합니다.
+**여기서 문제는 이것이 애초에 Effect가 아니어야 한다는 점입니다.** 이 POST 요청을 보내고 특정 상호작용인 폼 제출에 대한 응답으로 알림을 표시하고 싶다는 것입니다. 특정 상호작용에 대한 응답으로 일부 코드를 실행하려면 해당 로직을 해당 이벤트 핸들러에 직접 넣어야 합니다.
 
 ```js {6-7}
 function Form() {
@@ -435,12 +435,12 @@ function Form() {
 }
 ```
 
-이제 코드가 이벤트 핸들러에 있고, 이는 반응형 코드가 아니므로 사용자가 폼을 제출할 때만 실행됩니다. [이벤트 핸들러와 이펙트 중에서 선택하는 방법](/learn/separating-events-from-effects#reactive-values-and-reactive-logic)과 [불필요한 이펙트를 삭제하는 방법](/learn/you-might-not-need-an-effect)에 대해 자세히 알아보세요.
+이제 코드가 이벤트 핸들러에 있고, 이는 반응형 코드가 아니므로 사용자가 폼을 제출할 때만 실행됩니다. [이벤트 핸들러와 Effect 중에서 선택하는 방법](/learn/separating-events-from-effects#reactive-values-and-reactive-logic)과 [불필요한 Effect를 삭제하는 방법](/learn/you-might-not-need-an-effect)에 대해 자세히 알아보세요.
 
-### 이펙트가 여러 관련 없는 일을 하고 있나요? 다음으로 스스로에게 물어봐야 할 질문은 이펙트가 서로 관련이 없는 여러 가지 작업을 수행하고 있는지 여부입니다.
+### Effect 가 관련 없는 여러 가지 작업을 수행하나요?
  {/*is-your-effect-doing-several-unrelated-things*/}
 
-다음으로 스스로에게 물어봐야 할 질문은 이펙트가 서로 관련이 없는 여러 가지 작업을 수행하고 있는지 여부입니다.
+다음으로 스스로에게 물어봐야 할 질문은 Effect가 서로 관련이 없는 여러 가지 작업을 수행하고 있는지 여부입니다.
 
 사용자가 도시와 지역을 선택해야 하는 배송 폼을 만든다고 가정해 보겠습니다. 선택한 `country`에 따라 서버에서 `cities` 목록을 가져와 드롭다운에 표시합니다.
 
@@ -466,9 +466,9 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-[이펙트에서 데이터를 페칭하는](/learn/you-might-not-need-an-effect#fetching-data) 좋은 예시입니다. `country` 프로퍼티에 따라 `cities` 스테이트를 네트워크와 동기화하고 있습니다. `ShippingForm`이 표시되는 즉시 그리고 `country`가 변경될 때마다 (어떤 상호작용이 원인이든 상관없이) 데이터를 가져와야 하므로 이벤트 핸들러에서는 이 작업을 수행할 수 없습니다.
+[Effect에서 데이터를 페칭하는](/learn/you-might-not-need-an-effect#fetching-data) 좋은 예시입니다. `country` props에 따라 `cities` State를 네트워크와 동기화하고 있습니다. `ShippingForm`이 표시되는 즉시 그리고 `country`가 변경될 때마다 (어떤 상호작용이 원인이든 상관없이) 데이터를 가져와야 하므로 이벤트 핸들러에서는 이 작업을 수행할 수 없습니다.
 
-이제 도시 지역에 대한 두 번째 셀렉트박스를 추가하여 현재 선택된 `city`의 `areas`을 가져온다고 가정해 보겠습니다. 동일한 이펙트 내에 지역 목록에 대한 두 번째 `fetch` 호출을 추가하는 것으로 시작할 수 있습니다.
+이제 도시 지역에 대한 두 번째 셀렉트박스를 추가하여 현재 선택된 `city`의 `areas`을 가져온다고 가정해 보겠습니다. 동일한 Effect 내에 지역 목록에 대한 두 번째 `fetch` 호출을 추가하는 것으로 시작할 수 있습니다.
 
 ```js {15-24,28}
 function ShippingForm({ country }) {
@@ -503,14 +503,14 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-하지만 이제 이펙트가 `city` 스테이트 변수를 사용하므로 의존성 목록에 `city`를 추가해야 했습니다. 이로 인해 사용자가 다른 도시를 선택하면 이펙트가 다시 실행되어 `fetchCities(country)`를 호출하는 문제가 발생했습니다. 결과적으로 불필요하게 도시 목록을 여러 번 다시 가져오게 됩니다.
+하지만 이제 Effect가 `city` State 변수를 사용하므로 의존성 목록에 `city`를 추가해야 했습니다. 이로 인해 사용자가 다른 도시를 선택하면 Effect가 다시 실행되어 `fetchCities(country)`를 호출하는 문제가 발생했습니다. 결과적으로 불필요하게 도시 목록을 여러 번 다시 가져오게 됩니다.
 
 **이 코드의 문제점은 서로 관련이 없는 두 가지를 동기화하고 있다는 것입니다.**
 
-1. `country` 프로퍼티를 기반으로 `cities` 스테이트를 네트워크에 동기화하려고 합니다.
-2. `city` 스테이트를 기반으로 `areas` 스테이트를 네트워크에 동기화하려고 합니다.
+1. `country` props를 기반으로 `cities` State를 네트워크에 동기화하려고 합니다.
+2. `city` State를 기반으로 `areas` State를 네트워크에 동기화하려고 합니다.
 
-로직을 두 개의 이펙트로 분할하고, 각 이펙트는 동기화해야 하는 프로퍼티즈에 반응합니다.
+로직을 두 개의 Effect로 분할하고, 각 Effect는 동기화해야 하는 props즈에 반응합니다.
 
 
 ```js {19-33}
@@ -551,13 +551,13 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-이제 첫 번째 이펙트는 `country`가 변경될 때만 다시 실행되고, 두 번째 이펙트는 `city`가 변경될 때 다시 실행됩니다. 목적에 따라 분리했으니, 서로 다른 두 가지가 두 개의 개별 이펙트에 의해 동기화됩니다. 두 개의 개별 이펙트에는 두 개의 개별 의존성 목록이 있으므로 의도치 않게 서로를 촉발하지 않습니다.
+이제 첫 번째 Effect는 `country`가 변경될 때만 다시 실행되고, 두 번째 Effect는 `city`가 변경될 때 다시 실행됩니다. 목적에 따라 분리했으니, 서로 다른 두 가지가 두 개의 개별 Effect에 의해 동기화됩니다. 두 개의 개별 Effect에는 두 개의 개별 의존성 목록이 있으므로 의도치 않게 서로를 트리거하지 않습니다.
 
-최종 코드는 원본보다 길지만 이펙트를 분할하는 것이 여전히 정확합니다. [각 이펙트는 독립적인 동기화 프로세스를 나타내야 합니다.](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process) 이 예시에서는 한 이펙트를 삭제해도 다른 이펙트의 로직이 깨지지 않습니다. 즉, *서로 다른 것을 동기화*하므로 분할하는 것이 좋습니다. [중복이 걱정된다면 반복되는 로직을 커스텀 훅으로 추출](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks)하여 이 코드를 개선할 수 있습니다.
+최종 코드는 원본보다 길지만 Effect를 분할하는 것이 여전히 정확합니다. [각 Effect는 독립적인 동기화 프로세스를 나타내야 합니다.](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process) 이 예시에서는 한 Effect를 삭제해도 다른 Effect의 로직이 깨지지 않습니다. 즉, *서로 다른 것을 동기화*하므로 분할하는 것이 좋습니다. [중복이 걱정된다면 반복되는 로직을 커스텀 훅으로 추출](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks)하여 이 코드를 개선할 수 있습니다.
 
-### 다음 스테이트를 계산하기 위해 어떤 스테이트를 읽고 있나요? {/*are-you-reading-some-state-to-calculate-the-next-state*/}
+### 다음 State를 계산하기 위해 어떤 State를 읽고 있나요? {/*are-you-reading-some-state-to-calculate-the-next-state*/}
 
-이 이펙트는 새 메시지가 도착할 때마다 새로 생성된 배열로 `messages` 스테이트 변수를 업데이트합니다.
+이 Effect는 새 메시지가 도착할 때마다 새로 생성된 배열로 `messages` State 변수를 업데이트합니다.
 
 ```js {2,6-8}
 function ChatRoom({ roomId }) {
@@ -571,7 +571,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-`messages` 변수를 사용하여 모든 기존 메시지로 시작하는 [새 배열을 생성](/learn/updating-arrays-in-state)하고 마지막에 새 메시지를 추가합니다. 하지만 `messages`는 이펙트에서 읽는 반응형 값이므로 의존성이어야 합니다.
+`messages` 변수를 사용하여 모든 기존 메시지로 시작하는 [새 배열을 생성](/learn/updating-arrays-in-state)하고 마지막에 새 메시지를 추가합니다. 하지만 `messages`는 Effect에서 읽는 반응형 값이므로 의존성이어야 합니다.
 
 ```js {7,10}
 function ChatRoom({ roomId }) {
@@ -589,9 +589,9 @@ function ChatRoom({ roomId }) {
 
 그리고 `messages`를 의존성으로 만들면 문제가 발생합니다.
 
-메시지를 수신할 때마다 `setMessages()`는 컴포넌트가 수신된 메시지를 포함하는 새 `messages` 배열로 재렌더링하도록 합니다. 하지만 이 이펙트는 이제 `messages`에 따라 달라지므로 이펙트도 다시 동기화됩니다. 따라서 새 메시지가 올 때마다 채팅이 다시 연결됩니다. 사용자가 원하지 않을 것입니다!
+메시지를 수신할 때마다 `setMessages()`는 컴포넌트가 수신된 메시지를 포함하는 새 `messages` 배열로 재렌더링하도록 합니다. 하지만 이 Effect는 이제 `messages`에 따라 달라지므로 Effect도 다시 동기화됩니다. 따라서 새 메시지가 올 때마다 채팅이 다시 연결됩니다. 사용자가 원하지 않을 것입니다!
 
-이 문제를 해결하려면 이펙트 내에서 `messages`를 읽지 마세요. 대신 [업데이터 함수](/reference/react/useState#updating-state-based-on-the-previous-state)를 `setMessages`에 전달하세요:
+이 문제를 해결하려면 Effect 내에서 `messages`를 읽지 마세요. 대신 [업데이터 함수](/reference/react/useState#updating-state-based-on-the-previous-state)를 `setMessages`에 전달하세요:
 
 ```js {7,10}
 function ChatRoom({ roomId }) {
@@ -607,13 +607,13 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-**이제 이펙트가 `messages` 변수를 전혀 읽지 않는 것을 알 수 있습니다.** `msgs => [...msgs, receivedMessage]`와 같은 업데이터 함수만 전달하면 됩니다. 리액트는 [업데이터 함수를 대기열에 넣고](/learn/queueing-a-series-of-state-updates) 다음 렌더링 중에 `msgs` 인수를 제공합니다. 이 때문에 이펙트 자체는 더 이상 `messages`에 의존할 필요가 없습니다. 이 수정으로 인해 채팅 메시지를 수신해도 더 이상 채팅이 다시 연결되지 않습니다.
+**이제 Effect가 `messages` 변수를 전혀 읽지 않는 것을 알 수 있습니다.** `msgs => [...msgs, receivedMessage]`와 같은 업데이터 함수만 전달하면 됩니다. React는 [업데이터 함수를 대기열에 넣고](/learn/queueing-a-series-of-state-updates) 다음 렌더링 중에 `msgs` 인수를 제공합니다. 이 때문에 Effect 자체는 더 이상 `messages`에 의존할 필요가 없습니다. 이 수정으로 인해 채팅 메시지를 수신해도 더 이상 채팅이 다시 연결되지 않습니다.
 
 ### 값의 변경에 '반응'하지 않고 값을 읽고 싶으신가요? {/*do-you-want-to-read-a-value-without-reacting-to-its-changes*/}
 
 <Wip>
 
-이 섹션에서는 아직 안정된 버전의 리액트로 **출시되지 않은 실험적인 API**에 대해 설명합니다.
+이 섹션에서는 아직 안정된 버전의 React로 **출시되지 않은 실험적인 API**에 대해 설명합니다.
 
 </Wip>
 
@@ -636,7 +636,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-이제 이펙트의 코드에서 `isMuted`를 사용하므로 의존성에 추가해야 합니다.
+이제 Effect의 코드에서 `isMuted`를 사용하므로 의존성에 추가해야 합니다.
 
 ```js {10,15}
 function ChatRoom({ roomId }) {
@@ -657,9 +657,9 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-문제는 (사용자가 `isMuted` 토글을 누르는 등) `isMuted`가 변경될 때마다 이펙트가 다시 동기화되고 채팅에 다시 연결된다는 점입니다. 이는 바람직한 사용자 경험이 아닙니다! (이 예시에서는 린터를 비활성화해도 작동하지 않습니다. 그렇게 하면 `isMuted`가 이전 값으로 '고착'됩니다.)
+문제는 (사용자가 `isMuted` 토글을 누르는 등) `isMuted`가 변경될 때마다 Effect가 다시 동기화되고 채팅에 다시 연결된다는 점입니다. 이는 바람직한 사용자 경험이 아닙니다! (이 예시에서는 린터를 비활성화해도 작동하지 않습니다. 그렇게 하면 `isMuted`가 이전 값으로 '고착'됩니다.)
 
-이 문제를 해결하려면 이펙트에서 반응해서는 안 되는 로직을 추출해야 합니다. 이 이펙트가 `isMuted`의 변경에 "반응"하지 않기를 원합니다. [이 비반응 로직을 이펙트 이벤트로 옮기면 됩니다](/learn/separating-events-from-effects#declaring-an-effect-event):
+이 문제를 해결하려면 Effect에서 반응해서는 안 되는 로직을 추출해야 합니다. 이 Effect가 `isMuted`의 변경에 "반응"하지 않기를 원합니다. [이 비반응 로직을 Effect 이벤트로 옮기면 됩니다](/learn/separating-events-from-effects#declaring-an-effect-event):
 
 ```js {1,7-12,18,21}
 import { useState, useEffect, useEffectEvent } from 'react';
@@ -686,11 +686,11 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-이펙트 이벤트를 사용하면 이펙트를 반응형 부분(`roomId`와 같은 반응형 값과 그 변경에 "반응"해야 하는)과 비반응형 부분(`onMessage`가 `isMuted`를 읽는 것처럼 최신 값만 읽는)으로 나눌 수 있습니다. **이제 이펙트 이벤트 내에서 `isMuted`를 읽었으므로 이펙트의 의존성이 될 필요가 없습니다.** 그 결과, "Muted" 설정을 켜고 끌 때 채팅이 다시 연결되지 않아 원래 문제가 해결되었습니다!
+Effect 이벤트를 사용하면 Effect를 반응형 부분(`roomId`와 같은 반응형 값과 그 변경에 "반응"해야 하는)과 비반응형 부분(`onMessage`가 `isMuted`를 읽는 것처럼 최신 값만 읽는)으로 나눌 수 있습니다. **이제 Effect 이벤트 내에서 `isMuted`를 읽었으므로 Effect의 의존성이 될 필요가 없습니다.** 그 결과, "Muted" 설정을 켜고 끌 때 채팅이 다시 연결되지 않아 원래 문제가 해결되었습니다!
 
-#### 프로퍼티를 이벤트 핸들러로 감싸기 {/*wrapping-an-event-handler-from-the-props*/}
+#### props를 이벤트 핸들러로 감싸기 {/*wrapping-an-event-handler-from-the-props*/}
 
-컴포넌트가 이벤트 핸들러를 프로퍼티로 받을 때 비슷한 문제가 발생할 수 있습니다.
+컴포넌트가 이벤트 핸들러를 props로 받을 때 비슷한 문제가 발생할 수 있습니다.
 
 ```js {1,8,11}
 function ChatRoom({ roomId, onReceiveMessage }) {
@@ -718,7 +718,7 @@ function ChatRoom({ roomId, onReceiveMessage }) {
 />
 ```
 
-`onReceiveMessage`는 의존성이므로 부모가 재렌더링할 때마다 이펙트가 다시 동기화됩니다. 그러면 채팅에 다시 연결됩니다. 이 문제를 해결하려면 호출을 이펙트 이벤트로 감싸세요:
+`onReceiveMessage`는 의존성이므로 부모가 재렌더링할 때마다 Effect가 다시 동기화됩니다. 그러면 채팅에 다시 연결됩니다. 이 문제를 해결하려면 호출을 Effect 이벤트로 감싸세요:
 
 ```js {4-6,12,15}
 function ChatRoom({ roomId, onReceiveMessage }) {
@@ -739,13 +739,13 @@ function ChatRoom({ roomId, onReceiveMessage }) {
   // ...
 ```
 
-이펙트 이벤트는 반응하지 않으므로 의존성으로 지정할 필요가 없습니다. 그 결과, 부모 컴포넌트가 재렌더링할 때마다 다른 함수를 전달하더라도 채팅이 더 이상 다시 연결되지 않습니다.
+Effect 이벤트는 반응하지 않으므로 의존성으로 지정할 필요가 없습니다. 그 결과, 부모 컴포넌트가 재렌더링할 때마다 다른 함수를 전달하더라도 채팅이 더 이상 다시 연결되지 않습니다.
 
 #### 반응형 코드와 비반응형 코드 분리 {/*separating-reactive-and-non-reactive-code*/}
 
 이 예시에서는 `roomId`가 변경될 때마다 방문을 기록하려고 합니다. 모든 로그에 현재 `notificationCount`를 포함하고 싶지만 `notificationCount` 변경으로 로그 이벤트가 촉발하는 것은 원하지 않습니다.
 
-해결책은 다시 비반응형 코드를 이펙트 이벤트로 분리하는 것입니다.
+해결책은 다시 비반응형 코드를 Effect 이벤트로 분리하는 것입니다.
 
 ```js {2-4,7}
 function Chat({ roomId, notificationCount }) {
@@ -760,11 +760,11 @@ function Chat({ roomId, notificationCount }) {
 }
 ```
 
-로직이 `roomId`와 관련하여 반응하기를 원하므로 이펙트 내부에서 `roomId`를 읽습니다. 그러나 `notificationCount`를 변경하여 추가 방문을 기록하는 것은 원하지 않으므로 이펙트 이벤트 내부에서 `notificationCount`를 읽습니다. [이펙트 이벤트를 사용하여 Effect에서 최신 프로퍼티와 스테이트를 읽는 방법에 대해 자세히 알아보세요.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
+로직이 `roomId`와 관련하여 반응하기를 원하므로 Effect 내부에서 `roomId`를 읽습니다. 그러나 `notificationCount`를 변경하여 추가 방문을 기록하는 것은 원하지 않으므로 Effect 이벤트 내부에서 `notificationCount`를 읽습니다. [Effect 이벤트를 사용하여 Effect에서 최신 props와 State를 읽는 방법에 대해 자세히 알아보세요.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
 
 ### 일부 반응형 값이 의도치 않게 변경되나요? {/*does-some-reactive-value-change-unintentionally*/}
 
-이펙트가 특정 값에 '반응'하기를 원하지만, 그 값이 원하는 것보다 더 자주 변경되어 사용자의 관점에서 실제 변경 사항을 반영하지 못할 수도 있습니다. 예를 들어 컴포넌트 본문에 `options` 객체를 생성한 다음 이펙트 내부에서 해당 객체를 읽는다고 가정해 보겠습니다.
+Effect가 특정 값에 '반응'하기를 원하지만, 그 값이 원하는 것보다 더 자주 변경되어 사용자의 관점에서 실제 변경 사항을 반영하지 못할 수도 있습니다. 예를 들어 컴포넌트 본문에 `options` 객체를 생성한 다음 Effect 내부에서 해당 객체를 읽는다고 가정해 보겠습니다.
 
 ```js {3-6,9}
 function ChatRoom({ roomId }) {
@@ -780,7 +780,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-이 객체는 컴포넌트 본문에서 선언되므로 [반응형 값](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)입니다. 이펙트 내에서 이와 같은 반응형 값을 읽으면 의존성으로 선언합니다. 이렇게 하면 이펙트가 변경 사항에 "반응"하게 됩니다.
+이 객체는 컴포넌트 본문에서 선언되므로 [반응형 값](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)입니다. Effect 내에서 이와 같은 반응형 값을 읽으면 의존성으로 선언합니다. 이렇게 하면 Effect가 변경 사항에 "반응"하게 됩니다.
 
 ```js {3,6}
   // ...
@@ -792,7 +792,7 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-의존성으로 선언하는 것이 중요합니다! 이렇게 하면 예를 들어 `roomId`가 변경되면 이펙트가 새 `options`으로 채팅에 다시 연결됩니다. 하지만 위 코드에도 문제가 있습니다. 이를 확인하려면 아래 샌드박스의 인풋에 타이핑하고 콘솔에서 어떤 일이 발생하는지 살펴보세요:
+의존성으로 선언하는 것이 중요합니다! 이렇게 하면 예를 들어 `roomId`가 변경되면 Effect가 새 `options`으로 채팅에 다시 연결됩니다. 하지만 위 코드에도 문제가 있습니다. 이를 확인하려면 아래 샌드박스의 인풋에 타이핑하고 콘솔에서 어떤 일이 발생하는지 살펴보세요:
 
 <Sandpack>
 
@@ -869,9 +869,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-위의 샌드박스에서 입력은 `message` 스테이트 변수만 업데이트합니다. 사용자 입장에서는 이것이 채팅 연결에 영향을 미치지 않아야 합니다. 하지만 `message`를 업데이트할 때마다 컴포넌트가 재렌더링됩니다. 컴포넌트가 재렌더링되면 그 안에 있는 코드가 처음부터 다시 실행됩니다.
+위의 샌드박스에서 입력은 `message` State 변수만 업데이트합니다. 사용자 입장에서는 이것이 채팅 연결에 영향을 미치지 않아야 합니다. 하지만 `message`를 업데이트할 때마다 컴포넌트가 재렌더링됩니다. 컴포넌트가 재렌더링되면 그 안에 있는 코드가 처음부터 다시 실행됩니다.
 
-`ChatRoom` 컴포넌트를 재렌더링할 때마다 새로운 `options` 객체가 처음부터 새로 생성됩니다. 리액트는 `options` 객체가 마지막 렌더링 중에 생성된 `options` 객체와 *다른 객체*임을 인식합니다. 그렇기 때문에 (`options`에 따라 달라지는) 이펙트를 다시 동기화하고 사용자가 입력할 때 채팅이 다시 연결됩니다.
+`ChatRoom` 컴포넌트를 재렌더링할 때마다 새로운 `options` 객체가 처음부터 새로 생성됩니다. React는 `options` 객체가 마지막 렌더링 중에 생성된 `options` 객체와 *다른 객체*임을 인식합니다. 그렇기 때문에 (`options`에 따라 달라지는) Effect를 다시 동기화하고 사용자가 입력할 때 채팅이 다시 연결됩니다.
 
 **이 문제는 객체와 함수에만 영향을 줍니다. 자바스크립트에서는 새로 생성된 객체와 함수가 다른 모든 객체와 구별되는 것으로 간주됩니다. 그 안의 내용이 동일할 수 있다는 것은 중요하지 않습니다!**
 
@@ -886,13 +886,13 @@ const options2 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 console.log(Object.is(options1, options2)); // false
 ````
 
-**객체 및 함수 의존성으로 인해 이펙트가 필요 이상으로 자주 재동기화될 수 있습니다.**
+**객체 및 함수 의존성으로 인해 Effect가 필요 이상으로 자주 재동기화될 수 있습니다.**
 
-그렇기 때문에 가능하면 객체와 함수를 이펙트의 의존성으로 사용하지 않는 것이 좋습니다. 대신 컴포넌트 외부나 이펙트 내부로 이동하거나 원시 값을 추출해 보세요.
+그렇기 때문에 가능하면 객체와 함수를 Effect의 의존성으로 사용하지 않는 것이 좋습니다. 대신 컴포넌트 외부나 Effect 내부로 이동하거나 원시 값을 추출해 보세요.
 
 #### 정적 객체와 함수를 컴포넌트 외부로 이동 {/*move-static-objects-and-functions-outside-your-component*/}
 
-객체가 프롶티 및 스테이트에 의존하지 않는 경우 해당 객체를 컴포넌트 외부로 이동할 수 있습니다.
+객체가 프롶티 및 State에 의존하지 않는 경우 해당 객체를 컴포넌트 외부로 이동할 수 있습니다.
 
 ```js {1-4,13}
 const options = {
@@ -911,7 +911,7 @@ function ChatRoom() {
   // ...
 ```
 
-이렇게 하면 린터가 반응하지 않는다는 것을 증명할 수 있습니다. 재렌더링의 결과로 변경될 수 없으므로 의존성이 될 필요가 없습니다. 이제 `ChatRoom`을 재렌더링해도 이펙트가 다시 동기화되지 않습니다.
+이렇게 하면 린터가 반응하지 않는다는 것을 증명할 수 있습니다. 재렌더링의 결과로 변경될 수 없으므로 의존성이 될 필요가 없습니다. 이제 `ChatRoom`을 재렌더링해도 Effect가 다시 동기화되지 않습니다.
 
 이는 함수에도 적용됩니다.
 
@@ -935,11 +935,11 @@ function ChatRoom() {
   // ...
 ```
 
-`createOptions`는 컴포넌트 외부에서 선언되므로 반응형 값이 아닙니다. 그렇기 때문에 이펙트의 의존성에 지정할 필요가 없으며, 이펙트가 다시 동기화되지 않는 이유이기도 합니다.
+`createOptions`는 컴포넌트 외부에서 선언되므로 반응형 값이 아닙니다. 그렇기 때문에 Effect의 의존성에 지정할 필요가 없으며, Effect가 다시 동기화되지 않는 이유이기도 합니다.
 
-#### 이펙트 내에서 동적 객체 및 함수 이동 {/*move-dynamic-objects-and-functions-inside-your-effect*/}
+#### Effect 내에서 동적 객체 및 함수 이동 {/*move-dynamic-objects-and-functions-inside-your-effect*/}
 
-객체가 `roomId` 프로퍼티처럼 재렌더링의 결과로 변경될 수 있는 반응형 값에 의존하는 경우, 컴포넌트 외부로 끌어낼 수 없습니다. 하지만 이펙트의 코드 *내부*로 이동시킬 수는 있습니다.
+객체가 `roomId` props처럼 재렌더링의 결과로 변경될 수 있는 반응형 값에 의존하는 경우, 컴포넌트 외부로 끌어낼 수 없습니다. 하지만 Effect의 코드 *내부*로 이동시킬 수는 있습니다.
 
 ```js {7-10,11,14}
 const serverUrl = 'https://localhost:1234';
@@ -959,7 +959,7 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-이제 `options`이 이펙트 내부에서 선언되었으므로 더 이상 이펙트의 의존성이 아닙니다. 대신 이펙트에서 사용하는 유일한 반응형 값은 `roomId`입니다. `roomId`는 객체나 함수가 아니기 때문에 의도치 않게 달라지지 않을 것이라고 확신할 수 있습니다. 자바스크립트에서 숫자와 문자열은 그 내용에 따라 비교됩니다.
+이제 `options`이 Effect 내부에서 선언되었으므로 더 이상 Effect의 의존성이 아닙니다. 대신 Effect에서 사용하는 유일한 반응형 값은 `roomId`입니다. `roomId`는 객체나 함수가 아니기 때문에 의도치 않게 달라지지 않을 것이라고 확신할 수 있습니다. 자바스크립트에서 숫자와 문자열은 그 내용에 따라 비교됩니다.
 
 ```js {7-8}
 // During the first render
@@ -1072,11 +1072,11 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-이펙트 내에서 로직을 그룹화하기 위해 자신만의 함수를 작성할 수 있습니다. 이펙트 내부에서 선언하는 한, 반응형 값이 아니므로 이펙트의 의존성이 될 필요가 없습니다.
+Effect 내에서 로직을 그룹화하기 위해 자신만의 함수를 작성할 수 있습니다. Effect 내부에서 선언하는 한, 반응형 값이 아니므로 Effect의 의존성이 될 필요가 없습니다.
 
 #### 객체에서 원시 값 읽기 {/*read-primitive-values-from-objects*/}
 
-가끔 프로퍼티에서 객체를 받을 수도 있습니다.
+가끔 props에서 객체를 받을 수도 있습니다.
 
 ```js {1,5,8}
 function ChatRoom({ options }) {
@@ -1102,7 +1102,7 @@ function ChatRoom({ options }) {
 />
 ```
 
-이렇게 하면 부모 컴포넌트가 재렌더링할 때마다 이펙트가 다시 연결됩니다. 이 문제를 해결하려면 이펙트 외부의 객체에서 정보를 읽고 객체 및 함수 의존성을 피하십시오:
+이렇게 하면 부모 컴포넌트가 재렌더링할 때마다 Effect가 다시 연결됩니다. 이 문제를 해결하려면 Effect 외부의 객체에서 정보를 읽고 객체 및 함수 의존성을 피하십시오:
 
 ```js {4,7-8,12}
 function ChatRoom({ options }) {
@@ -1120,7 +1120,7 @@ function ChatRoom({ options }) {
   // ...
 ```
 
-로직은 약간 반복적입니다 (이펙트 외부의 객체에서 일부 값을 읽은 다음 이펙트 내부에 동일한 값을 가진 객체를 만듭니다). 하지만 이펙트가 실제로 어떤 정보에 의존하는지 매우 명확하게 알 수 있습니다. 부모 컴포넌트에 의해 의도치 않게 객체가 다시 생성된 경우 채팅이 다시 연결되지 않습니다. 하지만 `options.roomId` 또는 `options.serverUrl`이 실제로 다른 경우 채팅이 다시 연결됩니다.
+로직은 약간 반복적입니다 (Effect 외부의 객체에서 일부 값을 읽은 다음 Effect 내부에 동일한 값을 가진 객체를 만듭니다). 하지만 Effect가 실제로 어떤 정보에 의존하는지 매우 명확하게 알 수 있습니다. 부모 컴포넌트에 의해 의도치 않게 객체가 다시 생성된 경우 채팅이 다시 연결되지 않습니다. 하지만 `options.roomId` 또는 `options.serverUrl`이 실제로 다른 경우 채팅이 다시 연결됩니다.
 
 #### 함수에서 원시값 계산 {/*calculate-primitive-values-from-functions*/}
 
@@ -1138,7 +1138,7 @@ function ChatRoom({ options }) {
 />
 ```
 
-의존성을 만들지 않으려면 (그리고 재렌더링할 때 다시 연결되는 것을 방지하려면) 이펙트 외부에서 호출하세요. 이렇게 하면 객체가 아니며 이펙트 내부에서 읽을 수 있는 `roomId` 및 `serverUrl` 값을 얻을 수 있습니다.
+의존성을 만들지 않으려면 (그리고 재렌더링할 때 다시 연결되는 것을 방지하려면) Effect 외부에서 호출하세요. 이렇게 하면 객체가 아니며 Effect 내부에서 읽을 수 있는 `roomId` 및 `serverUrl` 값을 얻을 수 있습니다.
 
 ```js {1,4}
 function ChatRoom({ getOptions }) {
@@ -1156,7 +1156,7 @@ function ChatRoom({ getOptions }) {
   // ...
 ```
 
-이는 렌더링 중에 호출해도 안전하므로 [순수](/learn/keeping-components-pure) 함수에서만 작동합니다. 함수가 이벤트 핸들러이지만 변경 사항으로 인해 이펙트가 다시 동기화되는 것을 원하지 않는 경우, [대신 이펙트 이벤트로 함수를 감싸세요.](#do-you-want-to-read-a-value-without-reacting-to-its-changes)
+이는 렌더링 중에 호출해도 안전하므로 [순수](/learn/keeping-components-pure) 함수에서만 작동합니다. 함수가 이벤트 핸들러이지만 변경 사항으로 인해 Effect가 다시 동기화되는 것을 원하지 않는 경우, [대신 Effect 이벤트로 함수를 감싸세요.](#do-you-want-to-read-a-value-without-reacting-to-its-changes)
 
 <Recap>
 
@@ -1165,11 +1165,11 @@ function ChatRoom({ getOptions }) {
 - 린터를 억제하면 매우 혼란스러운 버그가 발생하므로 항상 피해야 합니다.
 - 의존성을 제거하려면 해당 의존성이 필요하지 않다는 것을 린터에게 "증명"해야 합니다.
 - 특정 상호작용에 대한 응답으로 일부 코드가 실행되어야 하는 경우 해당 코드를 이벤트 핸들러로 이동하세요.
-- 이펙트의 다른 부분이 다른 이유로 다시 실행되어야 하는 경우 여러 개의 Effect로 분할하세요.
-- 이전 스테이트를 기반으로 일부 스테이트를 업데이트하려면 업데이터 함수를 전달하세요.
-- "반응"하지 않고 최신 값을 읽으려면 이펙트에서 이펙트 이벤트를 추출하세요.
+- Effect의 다른 부분이 다른 이유로 다시 실행되어야 하는 경우 여러 개의 Effect로 분할하세요.
+- 이전 State를 기반으로 일부 State를 업데이트하려면 업데이터 함수를 전달하세요.
+- "반응"하지 않고 최신 값을 읽으려면 Effect에서 Effect 이벤트를 추출하세요.
 - 자바스크립트에서 객체와 함수는 서로 다른 시간에 생성된 경우 서로 다른 것으로 간주됩니다.
-- 객체와 함수의 의존성을 피하세요. 컴포넌트 외부나 이펙트 내부로 이동하세요.
+- 객체와 함수의 의존성을 피하세요. 컴포넌트 외부나 Effect 내부로 이동하세요.
 
 </Recap>
 
@@ -1177,11 +1177,11 @@ function ChatRoom({ getOptions }) {
 
 #### 인터벌 초기화 수정하기 {/*fix-a-resetting-interval*/}
 
-이 이펙트는 매초마다 증가되는 인터벌을 설정합니다. 이상한 일이 발생하는 것을 발견했습니다. 인터벌이 증가될 때마다 인터벌이 파괴되고 다시 생성되는 것 같습니다. 인터벌이 계속 다시 생성되지 않도록 코드를 수정하세요.
+이 Effect는 매초마다 증가되는 인터벌을 설정합니다. 이상한 일이 발생하는 것을 발견했습니다. 인터벌이 증가될 때마다 인터벌이 파괴되고 다시 생성되는 것 같습니다. 인터벌이 계속 다시 생성되지 않도록 코드를 수정하세요.
 
 <Hint>
 
-이 이펙트 코드가 `count`에 의존하는 것 같습니다. 이 의존성이 필요하지 않은 방법이 있을까요? 해당 값에 의존성을 추가하지 않고 이전 값을 기반으로 `count` 스테이트를 업데이트하는 방법이 있을 것입니다.
+이 Effect 코드가 `count`에 의존하는 것 같습니다. 이 의존성이 필요하지 않은 방법이 있을까요? 해당 값에 의존성을 추가하지 않고 이전 값을 기반으로 `count` State를 업데이트하는 방법이 있을 것입니다.
 
 </Hint>
 
@@ -1213,7 +1213,7 @@ export default function Timer() {
 
 <Solution>
 
-이펙트 내부에서 `count` 스테이트를 `count + 1`로 업데이트하고 싶습니다. 그러나 이렇게 하면 이펙트가 틱할 때마다 변경되는 `count`에 의존하게되므로 매 틱마다 인터벌이 다시 만들어집니다.
+Effect 내부에서 `count` State를 `count + 1`로 업데이트하고 싶습니다. 그러나 이렇게 하면 Effect가 틱할 때마다 변경되는 `count`에 의존하게되므로 매 틱마다 인터벌이 다시 만들어집니다.
 
 이 문제를 해결하려면 [업데이터 함수](/reference/react/useState#updating-state-based-on-the-previous-state)를 사용하여 `setCount(count + 1)` 대신 `setCount(c => c + 1)`를 작성합니다.
 
@@ -1243,19 +1243,19 @@ export default function Timer() {
 
 </Sandpack>
 
-이펙트 내부에서 `count`를 읽는 대신 `c => c + 1` 명령어("이 숫자를 증가시켜라!")를 리액트에 전달합니다. 리액트는 다음 렌더링에 이를 적용합니다. 그리고 이펙트 내부에서 `count` 값을 더 이상 읽을 필요가 없으므로 이펙트의 의존성을 비워둘 수 있습니다(`[]`). 이렇게 하면 매 틱마다 이펙트가 인터벌을 다시 생성하지 않아도 됩니다.
+Effect 내부에서 `count`를 읽는 대신 `c => c + 1` 명령어("이 숫자를 증가시켜라!")를 React에 전달합니다. React는 다음 렌더링에 이를 적용합니다. 그리고 Effect 내부에서 `count` 값을 더 이상 읽을 필요가 없으므로 Effect의 의존성을 비워둘 수 있습니다(`[]`). 이렇게 하면 매 틱마다 Effect가 인터벌을 다시 생성하지 않아도 됩니다.
 
 </Solution>
 
 #### 애니메이션을 다시 촉발하는 현상 고치기 {/*fix-a-retriggering-animation*/}
 
-이 예시에서는 "Show"를 누르면 환영 메시지가 페이드인 합니다. 애니메이션은 1초 정도 걸립니다."Remove"를 누르면 환영 메시지가 즉시 사라집니다. 페이드인 애니메이션의 로직은 `animation.js` 파일에서 일반 자바스크립트 애니메이션 루프로 구현됩니다. 이 로직을 변경할 필요는 없습니다. 서드파티 라이브러리로 처리하면 됩니다. 이펙트는 돔 노드에 대한 `FadeInAnimation` 인스턴스를 생성한 다음 `start(duration)` 또는 `stop()`을 호출하여 애니메이션을 제어합니다. `duration`은 슬라이더로 제어합니다. 슬라이더를 조정하여 애니메이션이 어떻게 변하는지 확인하세요.
+이 예시에서는 "Show"를 누르면 환영 메시지가 페이드인 합니다. 애니메이션은 1초 정도 걸립니다."Remove"를 누르면 환영 메시지가 즉시 사라집니다. 페이드인 애니메이션의 로직은 `animation.js` 파일에서 일반 자바스크립트 애니메이션 루프로 구현됩니다. 이 로직을 변경할 필요는 없습니다. 서드파티 라이브러리로 처리하면 됩니다. Effect는 돔 노드에 대한 `FadeInAnimation` 인스턴스를 생성한 다음 `start(duration)` 또는 `stop()`을 호출하여 애니메이션을 제어합니다. `duration`은 슬라이더로 제어합니다. 슬라이더를 조정하여 애니메이션이 어떻게 변하는지 확인하세요.
 
-이 코드는 이미 작동하지만 변경하고 싶은 부분이 있습니다. 현재 `duration` 스테이트 변수를 제어하는 슬라이더를 움직이면 애니메이션이 다시 촉발됩니다. 이펙트가 `duration` 변수에 "반응"하지 않도록 동작을 변경하세요. "Show"를 누르면 이펙트는 슬라이더의 현재 `duration을` 사용해야 합니다. 그러나 슬라이더를 움직이는 것만으로 애니메이션이 다시 촉발되어서는 안 됩니다.
+이 코드는 이미 작동하지만 변경하고 싶은 부분이 있습니다. 현재 `duration` State 변수를 제어하는 슬라이더를 움직이면 애니메이션이 다시 촉발됩니다. Effect가 `duration` 변수에 "반응"하지 않도록 동작을 변경하세요. "Show"를 누르면 Effect는 슬라이더의 현재 `duration을` 사용해야 합니다. 그러나 슬라이더를 움직이는 것만으로 애니메이션이 다시 촉발되어서는 안 됩니다.
 
 <Hint>
 
-이펙트 안에 반응성이 없어야 하는 코드가 있나요? 비반응형 코드를 이펙트 밖으로 옮기려면 어떻게 해야 하나요?
+Effect 안에 반응성이 없어야 하는 코드가 있나요? 비반응형 코드를 Effect 밖으로 옮기려면 어떻게 해야 하나요?
 
 </Hint>
 
@@ -1384,7 +1384,7 @@ html, body { min-height: 300px; }
 
 <Solution>
 
-이펙트는 `duration`의 최신 값을 읽어야 하지만, `duration`의 변화에 "반응"하지 않기를 원합니다. 애니메이션을 시작하기 위해 `duration`을 사용하지만 애니메이션이 시작해도 반응하지 않습니다. 반응하지 않는 코드를 추출하고 이펙트에서 해당 함수를 호출합니다.
+Effect는 `duration`의 최신 값을 읽어야 하지만, `duration`의 변화에 "반응"하지 않기를 원합니다. 애니메이션을 시작하기 위해 `duration`을 사용하지만 애니메이션이 시작해도 반응하지 않습니다. 반응하지 않는 코드를 추출하고 Effect에서 해당 함수를 호출합니다.
 
 <Sandpack>
 
@@ -1507,7 +1507,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-`onAppear`와 같은 이펙트 이벤트는 반응형 이벤트가 아니므로 애니메이션을 다시 촉발시키지 않고도 내부의 `duration`을 읽을 수 있습니다.
+`onAppear`와 같은 Effect 이벤트는 반응형 이벤트가 아니므로 애니메이션을 다시 촉발시키지 않고도 내부의 `duration`을 읽을 수 있습니다.
 
 </Solution>
 
@@ -1613,9 +1613,9 @@ label, button { display: block; margin-bottom: 5px; }
 
 <Solution>
 
-이펙트가 `options` 객체에 의존하기 때문에 다시 실행되고 있습니다. 객체는 의도치 않게 다시 생성될 수 있으므로 가능하면 이펙트의 의존성 요소로 지정하지 않도록 해야 합니다.
+Effect가 `options` 객체에 의존하기 때문에 다시 실행되고 있습니다. 객체는 의도치 않게 다시 생성될 수 있으므로 가능하면 Effect의 의존성 요소로 지정하지 않도록 해야 합니다.
 
-가장 덜 공격적인 수정 방법은 이펙트 외부에서 `roomId`와 `serverUrl`을 읽은 다음 이펙트가 이러한 기본 값에 의존하도록 만드는 것입니다(의도치 않게 변경할 수 없음). 이펙트 내부에서 객체를 생성하면 `createConnection`으로 전달됩니다.
+가장 덜 공격적인 수정 방법은 Effect 외부에서 `roomId`와 `serverUrl`을 읽은 다음 Effect가 이러한 기본 값에 의존하도록 만드는 것입니다(의도치 않게 변경할 수 없음). Effect 내부에서 객체를 생성하면 `createConnection`으로 전달됩니다.
 
 <Sandpack>
 
@@ -1709,7 +1709,7 @@ label, button { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-객체의 `options` 프로퍼티를 보다 구체적인 `roomId` 및 `serverUrl` 프로퍼티로 대체하는 것이 더 좋을 것입니다.
+객체의 `options` props를 보다 구체적인 `roomId` 및 `serverUrl` props로 대체하는 것이 더 좋을 것입니다.
 
 <Sandpack>
 
@@ -1800,7 +1800,7 @@ label, button { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-가능하면 원시 프로퍼티를 사용하면 나중에 컴포넌트를 더 쉽게 최적화할 수 있습니다.
+가능하면 원시 props를 사용하면 나중에 컴포넌트를 더 쉽게 최적화할 수 있습니다.
 
 </Solution>
 
@@ -1810,15 +1810,15 @@ label, button { display: block; margin-bottom: 5px; }
 
 이 예시에서는 테마를 변경하려고 할 때마다 채팅이 다시 연결됩니다. 이 문제를 수정하세요. 수정 후 테마를 변경해도 채팅이 다시 연결되지 않지만, 암호화 설정을 토글하거나 채팅방을 변경하면 다시 연결됩니다.
 
-`chat.js`의 코드를 변경하지 마세요. 그 외에는 동일한 동작을 초래하는 한 어떤 코드든 변경할 수 있습니다. 예를 들어 어떤 프로퍼티가 전달되는지를 확인하고 변경하는 것이 도움이 될 수 있습니다.
+`chat.js`의 코드를 변경하지 마세요. 그 외에는 동일한 동작을 초래하는 한 어떤 코드든 변경할 수 있습니다. 예를 들어 어떤 props가 전달되는지를 확인하고 변경하는 것이 도움이 될 수 있습니다.
 
 <Hint>
 
-두 개의 함수를 전달하고 있습니다. `onMessage`와 `createConnection`입니다. 이 두 함수는 `App`이 다시 렌더링할 때마다 처음부터 새로 생성됩니다. 매번 새로운 값으로 간주되기 때문에 이펙트를 다시 촉발시킵니다.
+두 개의 함수를 전달하고 있습니다. `onMessage`와 `createConnection`입니다. 이 두 함수는 `App`이 다시 렌더링할 때마다 처음부터 새로 생성됩니다. 매번 새로운 값으로 간주되기 때문에 Effect를 다시 촉발시킵니다.
 
-이러한 함수 중 하나가 이벤트 핸들러입니다. 이벤트 핸들러 함수의 새 값에 '반응'하지 않고 이벤트 핸들러를 이펙트로 호출하는 방법을 알고 계신가요? 유용할 것 같습니다!
+이러한 함수 중 하나가 이벤트 핸들러입니다. 이벤트 핸들러 함수의 새 값에 '반응'하지 않고 이벤트 핸들러를 Effect로 호출하는 방법을 알고 계신가요? 유용할 것 같습니다!
 
-이러한 함수 중 다른 함수는 가져온 API 메서드에 일부 스테이트를 전달하기 위해서만 존재합니다. 이 함수가 정말 필요한가요? 전달되는 필수 정보는 무엇인가요? 일부 import를 `App.js`에서 `ChatRoom.js`로 옮겨야 할 수도 있습니다.
+이러한 함수 중 다른 함수는 가져온 API 메서드에 일부 State를 전달하기 위해서만 존재합니다. 이 함수가 정말 필요한가요? 전달되는 필수 정보는 무엇인가요? 일부 import를 `App.js`에서 `ChatRoom.js`로 옮겨야 할 수도 있습니다.
 
 </Hint>
 
@@ -2035,9 +2035,9 @@ label, button { display: block; margin-bottom: 5px; }
 
 이 문제를 해결하는 올바른 방법은 여러 가지가 있는데, 그 중 한 가지 해결책을 소개합니다.
 
-원래 예시에서는 테마를 변경하면 다른 `onMessage` 및 `createConnection` 함수가 생성되어 전달되었습니다. 이펙트가 이러한 함수에 의존했기 때문에 테마를 전환할 때마다 채팅이 다시 연결되었습니다.
+원래 예시에서는 테마를 변경하면 다른 `onMessage` 및 `createConnection` 함수가 생성되어 전달되었습니다. Effect가 이러한 함수에 의존했기 때문에 테마를 전환할 때마다 채팅이 다시 연결되었습니다.
 
-`message`의 문제를 해결하려면 `onMessage`를 이펙트 이벤트로 감싸야 했습니다.
+`message`의 문제를 해결하려면 `onMessage`를 Effect 이벤트로 감싸야 했습니다.
 
 ```js {1,2,6}
 export default function ChatRoom({ roomId, createConnection, onMessage }) {
@@ -2049,9 +2049,9 @@ export default function ChatRoom({ roomId, createConnection, onMessage }) {
     // ...
 ```
 
-`onMessage` 프로퍼티와 달리 `onReceiveMessage` 이펙트 이벤트는 반응하지 않습니다. 그렇기 때문에 이펙트의 의존성이 될 필요가 없습니다. 따라서 `onMessage`를 변경해도 채팅이 다시 연결되지 않습니다.
+`onMessage` props와 달리 `onReceiveMessage` Effect 이벤트는 반응하지 않습니다. 그렇기 때문에 Effect의 의존성이 될 필요가 없습니다. 따라서 `onMessage`를 변경해도 채팅이 다시 연결되지 않습니다.
 
-반응형이어야 하기 때문에 `createConnection`으로는 동일한 작업을 수행할 수 없습니다. 사용자가 암호화 연결과 비암호화 연결 사이를 전환하거나 사용자가 현재 방을 전환하면 이펙트가 다시 촉발되기를 원합니다. 하지만 `createConnection`은 함수이기 때문에 이 함수가 읽는 정보가 실제로 변경되었는지 여부를 확인할 수 없습니다. 이 문제를 해결하려면 `App` 컴포넌트에서 `createConnection`을 전달하는 대신 원시값인 `roomId` 및 `isEncrypted`를 전달하세요:
+반응형이어야 하기 때문에 `createConnection`으로는 동일한 작업을 수행할 수 없습니다. 사용자가 암호화 연결과 비암호화 연결 사이를 전환하거나 사용자가 현재 방을 전환하면 Effect가 다시 촉발되기를 원합니다. 하지만 `createConnection`은 함수이기 때문에 이 함수가 읽는 정보가 실제로 변경되었는지 여부를 확인할 수 없습니다. 이 문제를 해결하려면 `App` 컴포넌트에서 `createConnection`을 전달하는 대신 원시값인 `roomId` 및 `isEncrypted`를 전달하세요:
 
 ```js {2-3}
       <ChatRoom
@@ -2063,7 +2063,7 @@ export default function ChatRoom({ roomId, createConnection, onMessage }) {
       />
 ```
 
-이제 `App`에서 전달하지 않고 이펙트 내부로 `createConnection` 함수를 옮길 수 있습니다.
+이제 `App`에서 전달하지 않고 Effect 내부로 `createConnection` 함수를 옮길 수 있습니다.
 
 ```js {1-4,6,10-20}
 import {
@@ -2089,7 +2089,7 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) {
     // ...
 ```
 
-이 두 가지 변경 사항 이후에는 이펙트가 더 이상 함수 값에 의존하지 않습니다.
+이 두 가지 변경 사항 이후에는 Effect가 더 이상 함수 값에 의존하지 않습니다.
 
 ```js {1,8,10,21}
 export default function ChatRoom({ roomId, isEncrypted, onMessage }) { // Reactive values
