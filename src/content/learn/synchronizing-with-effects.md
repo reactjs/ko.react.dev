@@ -1,20 +1,20 @@
 ---
-title: 'Synchronizing with Effects'
+title: Effect와 동기화
 ---
 
 <Intro>
 
-Some components need to synchronize with external systems. For example, you might want to control a non-React component based on the React state, set up a server connection, or send an analytics log when a component appears on the screen. *Effects* let you run some code after rendering so that you can synchronize your component with some system outside of React.
+일부 컴포넌트는 외부 시스템과 동기화해야 합니다. 예를 들어, React의 상태에 따라 React 컴포넌트가 아닌 다른 컴포넌트를 제어하거나 서버와 연결을 하거나, 컴포넌트가 화면에 표시될 때 분석 로그를 전송할 수 있습니다. *Effects*를 사용하면 렌더링 후 일부 코드를 실행하여 React 외부의 시스템과 동기화할 수 있습니다.
 
 </Intro>
 
 <YouWillLearn>
 
-- What Effects are
-- How Effects are different from events
-- How to declare an Effect in your component
-- How to skip re-running an Effect unnecessarily
-- Why Effects run twice in development and how to fix them
+- Effect의 의미
+- 이벤트와 Effect의 다른점
+- 컴포넌트에 Effect를 선언하는 방법
+- Effect를 불필요하게 다시 실행하지 않는 방법
+- 개발 환경에서 Effect가 두 번 실행되는 이유와 해결 방법
 
 </YouWillLearn>
 
