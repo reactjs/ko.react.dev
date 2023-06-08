@@ -32,23 +32,23 @@ input 을 표시하려면, [`<input>` 브라우저 내장 컴포넌트](https://
 
 `<input>` 은 [일반적인 엘리먼트 props](/reference/react-dom/components/common#props) 를 지원합니다.
 
- [input 을 제어하기 위해서](#controlling-an-input-with-a-state-variable) 아래 props 들 중의 하나를 전달하세요.
+ [input을 제어하기 위해서](#controlling-an-input-with-a-state-variable) 아래 props 들 중의 하나를 전달하세요.
 
-* [`checked`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#checked): 불리언 타입. 체크박스 입력 또는 라디오 버튼에서  선택 여부를 제어합니다.
-* [`value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#value): 문자열 타입. 텍스트 입력의 경우 텍스트를 제어합니다. (라디오 버튼의 경우 폼 데이터를 지정합니다.)
+* [`checked`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#checked): 불리언 타입. 체크박스 input 또는 라디오 버튼에서 선택 여부를 제어합니다.
+* [`value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#value): 문자열 타입. 텍스트 input의 경우 텍스트를 제어합니다. (라디오 버튼의 경우 폼 데이터를 지정합니다.)
 
 둘 중 하나를 전달할 때는 반드시 전달된 값을 업데이트하는 `onChange` 핸들러도 함께 전달해야 합니다.
 
-다음의 `<input>` props 들은 제어되지 않는 입력들에만 적용됩니다.
+다음의 `<input>` props 들은 제어되지 않는 input들에만 적용됩니다.
 
-* [`defaultChecked`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#defaultChecked): 불리언 타입. `type="checkbox"` 와 `type="radio"` 입력에 대한 [초기값](#providing-an-initial-value-for-an-input) 을 지정합니다.
-* [`defaultValue`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#defaultValue): 문자열 타입. 텍스트 입력에 대한 [초기값](#providing-an-initial-value-for-an-input) 을 지정합니다.
+* [`defaultChecked`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#defaultChecked): 불리언 타입. `type="checkbox"` 와 `type="radio"` input에 대한 [초기값](#providing-an-initial-value-for-an-input) 을 지정합니다.
+* [`defaultValue`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#defaultValue): 문자열 타입. 텍스트 input에 대한 [초기값](#providing-an-initial-value-for-an-input) 을 지정합니다.
 
-다음의 `<input>` props 들은 제어되지 않는 입력과 제어되는 입력 모두에 적용됩니다.
+다음의 `<input>` props 들은 제어되지 않는 input과 제어되는 input 모두에 적용됩니다.
 
-* [`accept`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#accept): 문자열 타입. `type="file"` 입력에서 허용할 파일 형식을 지정합니다.
-* [`alt`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#alt): 문자열 타입. `type="image"` 입력에서 대체 이미지 텍스트를 지정합니다.
-* [`capture`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#capture): 문자열 타입. `type="file"` 입력으로 캡처한 미디어(마이크, 비디오 또는 카메라)를 지정합니다.
+* [`accept`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#accept): 문자열 타입. `type="file"` input에서 허용할 파일 형식을 지정합니다.
+* [`alt`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#alt): 문자열 타입. `type="image"` input에서 대체 이미지 텍스트를 지정합니다.
+* [`capture`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#capture): 문자열 타입. `type="file"` input으로 캡처한 미디어(마이크, 비디오 또는 카메라)를 지정합니다.
 * [`autoComplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#autocomplete): 문자열 타입.  [자동 완성 동작들](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#values) 중 가능한 하나를 지정합니다.
 * [`autoFocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#autofocus): 불리언 타입. `true`일 경우 React는 마운트 시 엘리먼트에 포커스를 맞춥니다.
 * [`dirname`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#dirname): 문자열 타입. 엘리먼트 방향성에 대한 폼 필드 이름을 지정합니다.
@@ -62,46 +62,46 @@ input 을 표시하려면, [`<input>` 브라우저 내장 컴포넌트](https://
 * [`formTarget`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formtarget): 문자열 타입. `<form target>` for `type="submit"` 과 `type="image"`의 부모 `<form target>` 을 덮어씁니다.
 * [`height`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#height): 문자열 타입. `type="image"` 의 이미지 높이를 지정합니다.
 * [`list`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#list): 문자열 타입.  `<datalist>` 의 `id` 를 자동 완성 옵션들로 지정합니다.
-* [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#max): 숫자 타입. 숫자 와 날짜 입력들의 최댓값을 지정합니다.
-* [`maxLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#maxlength): 숫자 타입. 텍스트와 다른 입력들의 최대 길이를 지정합니다.
-* [`min`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#min): 숫자 타입. 숫자 와 날짜 입력들의 최솟값을 지정합니다.
-* [`minLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#minlength): 숫자 타입. 텍스트와 다른 입력들의 최소 길이를 지정합니다.
+* [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#max): 숫자 타입. 숫자 와 날짜 input들의 최댓값을 지정합니다.
+* [`maxLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#maxlength): 숫자 타입. 텍스트와 다른 input들의 최대 길이를 지정합니다.
+* [`min`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#min): 숫자 타입. 숫자 와 날짜 input들의 최솟값을 지정합니다.
+* [`minLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#minlength): 숫자 타입. 텍스트와 다른 input들의 최소 길이를 지정합니다.
 * [`multiple`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#multiple): 불리언 타입. `type="file"` 과 `type="email"` 에 대해 여러 값을 허용할지 여부를 지정합니다.
-* [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name): 문자열 타입.  [폼과 제출](#reading-the-input-values-when-submitting-a-form) 되는 입력의 이름을 지정합니다.
-* `onChange`: [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. [제어되는 입력](#controlling-an-input-with-a-state-variable) 필수 요소로 가령 사용자가 키보드를 누를 때마다 실행되는 방식으로 입력 값을 변경하는 즉시 실행되며 브라우저 [`입력` 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)처럼 동작합니다. 
+* [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name): 문자열 타입. [폼과 제출](#reading-the-input-values-when-submitting-a-form) 되는 input의 이름을 지정합니다.
+* `onChange`: [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. [제어되는 input](#controlling-an-input-with-a-state-variable) 필수 요소로 가령 사용자가 키보드를 누를 때마다 실행되는 방식으로 input 값을 변경하는 즉시 실행되며 브라우저 [`input` 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)처럼 동작합니다. 
 * `onChangeCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onChange`
 * [`onInput`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event): [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. 사용자가 값을 변경하는 즉시 실행됩니다. 지금까지의 용법에 비춰봤을 때 React에서는 유사하게 동작하는 `onChange`를 사용하는 것이 관습적입니다.
 * `onInputCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onInput`
-* [`onInvalid`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event): [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. 폼 제출 시 입력이 유효하지 않을 경우 실행되며 `invalid` 내장 이벤트와 달리 React `onInvalid` 이벤트는 버블링됩니다.
+* [`onInvalid`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event): [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. 폼 제출 시 input이 유효하지 않을 경우 실행되며 `invalid` 내장 이벤트와 달리 React `onInvalid` 이벤트는 버블링됩니다.
 * `onInvalidCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onInvalid`
 * [`onSelect`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select_event): [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. `<input>` 내부의 선택 사항이 변경된 후 실행됩니다. React는 `onSelect` 이벤트를 확장하여 선택 사항이 비거나 편집 시 선택 사항에 영향을 끼치게 될 때도 실행됩니다.
 * `onSelectCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onSelect`
 * [`pattern`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#pattern): 문자열 타입. `value`가 일치해야 하는 패턴을 지정합니다.
-* [`placeholder`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#placeholder): 문자열 타입. 입력 값이 비었을 때 흐린 색으로 표시됩니다.
-* [`readOnly`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#readonly): 불리언 타입. `true`일 경우 사용자가 입력을 편집할 수 없습니다.
+* [`placeholder`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#placeholder): 문자열 타입. input 값이 비었을 때 흐린 색으로 표시됩니다.
+* [`readOnly`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#readonly): 불리언 타입. `true`일 경우 사용자가 input을 편집할 수 없습니다.
 * [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#required): 불리언 타입. `true`일 경우 폼이 제출할 값을 반드시 제공해야 합니다.
 * [`size`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#size): 숫자 타입. 너비를 설정하는 것과 비슷하지만 단위는 제어에 따라 다릅니다.
-* [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#src): 문자열 타입.  `type="image"` 입력의 이미지 소스를 지정합니다.
+* [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#src): 문자열 타입. `type="image"` input의 이미지 소스를 지정합니다.
 * [`step`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step): 양수 또는 `'any'` 문자열. 유효한 값 사이의 간격을 지정합니다.
 * [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#type): 문자열 타입.  [input types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types) 중의 하나
-* [`width`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#width):  문자열 타입. `type="image"` 입력의 이미지 너비를 지정합니다.
+* [`width`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#width): 문자열 타입. `type="image"` input의 이미지 너비를 지정합니다.
 
 #### 경고 {/*caveats*/}
 
 - 체크박스에는 `value` (또는 `defaultValue`)가 아닌 `checked` (또는 `defaultChecked`)가 필요합니다.
-- 텍스트 입력 영역은 문자열 `value` prop을 받을 경우 [제어되는 것으로 취급](#controlling-an-input-with-a-state-variable)됩니다.
+- 텍스트 input 영역은 문자열 `value` prop을 받을 경우 [제어되는 것으로 취급](#controlling-an-input-with-a-state-variable)됩니다.
 - 체크박스 또는 라디오 버튼이 불리언 `checked` prop을 받을 경우 [제어되는 것으로 취급](#controlling-an-input-with-a-state-variable)됩니다.
-- 입력은 제어되면서 동시에 비제어될 수 없습니다.
-- 입력은 생명주기 동안 제어 또는 비제어 상태를 오갈 수 없습니다.
-- 제어되는 입력엔 모두 백업 값을 동기적으로 업데이트하는 `onChange` 이벤트 핸들러가 필요합니다.
+- input은 제어되면서 동시에 비제어될 수 없습니다.
+- input은 생명주기 동안 제어 또는 비제어 상태를 오갈 수 없습니다.
+- 제어되는 input엔 모두 백업 값을 동기적으로 업데이트하는 `onChange` 이벤트 핸들러가 필요합니다.
 
 ---
 
 ## 사용법 {/*usage*/}
 
-### 다양한 유형의 입력 표시 {/*displaying-inputs-of-different-types*/}
+### 다양한 유형의 input 표시 {/*displaying-inputs-of-different-types*/}
 
-입력을 표시하기 위해 `<input>` 컴포넌트를 렌더링 하세요. 기본적으로 텍스트 입력이 됩니다. 체크박스에는 `type="checkbox"`를, 라디오 버튼에는 `type="radio"` 전달하거나 [다른 입력 타입들 중의 하나](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types)를 전달할 수 있습니다.
+input을 표시하기 위해 `<input>` 컴포넌트를 렌더링 하세요. 기본적으로 텍스트 input이 됩니다. 체크박스에는 `type="checkbox"`를, 라디오 버튼에는 `type="radio"` 전달하거나 [다른 input 타입들 중의 하나](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types)를 전달할 수 있습니다.
 
 <Sandpack>
 
@@ -146,9 +146,9 @@ input { margin: 5px; }
 
 ---
 
-### 입력에 라벨 제공하기 {/*providing-a-label-for-an-input*/}
+### input에 라벨 제공하기 {/*providing-a-label-for-an-input*/}
 
-일반적으로 모든 `<input>` 은 [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) 태그 안에 두게 되는데 이렇게 하면 해당 라벨이 해당 입력과 연관됨을 브라우저가 알 수 있습니다. 사용자가 라벨을 클릭하면 브라우저는 입력에 자동적으로 포커스를 맞춥니다. 스크린 리더는 사용자가 연관된 입력에 포커스를 맞출 때 라벨 캡션을 읽게 되므로 이 방식은 접근성을 위해서도 필수입니다.
+일반적으로 모든 `<input>` 은 [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) 태그 안에 두게 되는데 이렇게 하면 해당 라벨이 해당 input과 연관됨을 브라우저가 알 수 있습니다. 사용자가 라벨을 클릭하면 브라우저는 input에 자동적으로 포커스를 맞춥니다. 스크린 리더는 사용자가 연관된 input에 포커스를 맞출 때 라벨 캡션을 읽게 되므로 이 방식은 접근성을 위해서도 필수입니다.
 
 `<label>` 안에 `<input>` 을 감쌀 수 없다면, `<input id>` 와 [`<label htmlFor>`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor)에 동일한 ID를 전달해서 연관성을 부여하세요. 한 컴포넌트의 여러 인스턴스 간 충돌을 피하려면 [`useId`](/reference/react/useId)로 그러한 ID를 생성하세요.
 
@@ -181,9 +181,9 @@ input { margin: 5px; }
 
 ---
 
-### 입력에 초깃값 제공하기 {/*providing-an-initial-value-for-an-input*/}
+### input에 초깃값 제공하기 {/*providing-an-initial-value-for-an-input*/}
 
-입력의 초깃값은 선택적으로 지정할 수 있습니다. 텍스트 입력을 위한 `defaultValue` 문자열로 전달하세요. 대신 체크박스와 라디오 버튼은 `defaultChecked` 불리언으로 초깃값을 지정해야 합니다.
+input의 초깃값은 선택적으로 지정할 수 있습니다. 텍스트 input을 위한 `defaultValue` 문자열로 전달하세요. 대신 체크박스와 라디오 버튼은 `defaultChecked` 불리언으로 초깃값을 지정해야 합니다.
 
 <Sandpack>
 
@@ -233,7 +233,7 @@ input { margin: 5px; }
 
 ---
 
-### 폼 제출 시 입력 값 읽기 {/*reading-the-input-values-when-submitting-a-form*/}
+### 폼 제출 시 input 값 읽기 {/*reading-the-input-values-when-submitting-a-form*/}
 
 inputs과 [`<button type="submit">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) 바깥을 [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) 으로 감싸면 버튼을 클릭했을 때 `<form onSubmit>` 이벤트 핸들러가 호출됩니다. 기본적으로 브라우저는 현재 URL에 폼 데이터를 전송한 후 페이지를 새로고침하며 이러한 동작은 `e.preventDefault()`를 호출하여 덮어쓸 수 있습니다. 폼 데이터는 [`new FormData(e.target)`](https://developer.mozilla.org/en-US/docs/Web/API/FormData)로 읽으세요.
 <Sandpack>
@@ -301,11 +301,11 @@ input { margin: 5px; }
 
 ---
 
-### state 변수로 입력 제어하기 {/*controlling-an-input-with-a-state-variable*/}
+### state 변수로 input 제어하기 {/*controlling-an-input-with-a-state-variable*/}
 
-`<input />` 과 같은 입력은 *제어되지 않습니다.* `<input defaultValue="Initial text" />`와 같은 [초깃값을 전달](#providing-an-initial-value-for-an-input)한대도 JSX는 당장의 값을 제어하지 않고 초깃값만을 지정합니다.
+`<input />` 과 같은 input은 *제어되지 않습니다.* `<input defaultValue="Initial text" />`와 같은 [초깃값을 전달](#providing-an-initial-value-for-an-input)한대도 JSX는 당장의 값을 제어하지 않고 초깃값만을 지정합니다.
 
-**_제어되는_ 입력을 렌더링하려면, `value` (또는 체크박스와 라디오에는 `checked`) prop 을 전달하세요.** React는 전달한 `value`를 항상 갖도록 입력에 강제합니다. 일반적으로 [state 변수](/reference/react/useState)를 선언하여 할 수 있습니다.
+**_제어되는_ input을 렌더링하려면, `value` (또는 체크박스와 라디오에는 `checked`) prop 을 전달하세요.** React는 전달한 `value`를 항상 갖도록 input에 강제합니다. 일반적으로 [state 변수](/reference/react/useState)를 선언하여 할 수 있습니다.
 
 ```js {2,6,7}
 function Form() {
@@ -314,13 +314,13 @@ function Form() {
   return (
     <input
       value={firstName} // 입력 값이 state 변수와 일치하도록 강제합니다.
-      onChange={e => setFirstName(e.target.value)} // 입력을 편집할 때마다 state 변수를 업데이트합니다.
+      onChange={e => setFirstName(e.target.value)} // input을 편집할 때마다 state 변수를 업데이트합니다.
     />
   );
 }
 ```
 
-예를 들어 수정할 때마다 UI를 리렌더링 하는 등 state가 필요한 경우 제어된 입력이 적합합니다.
+예를 들어 수정할 때마다 UI를 리렌더링 하는 등 state가 필요한 경우 제어된 input이 적합합니다.
 
 ```js {2,9}
 function Form() {
@@ -335,7 +335,7 @@ function Form() {
       ...
 ```
 
-또한 버튼을 클릭하는 등의 입력 state를 조정하는 여러 가지 방법을 제공하려는 경우에도 유용합니다.
+또한 버튼을 클릭하는 등의 input state를 조정하는 여러 가지 방법을 제공하려는 경우에도 유용합니다.
 
 ```js {3-4,10-11,14}
 function Form() {
@@ -408,7 +408,7 @@ p { font-weight: bold; }
 
 <Pitfall>
 
-**입력에 `onChange` 없이 `value`를 전달하면 해당 입력에 타이핑을 할 수 없게 됩니다.** `value`를 전달하여 입력을 제어하면 항상 해당 value를 가지도록 *강제합니다*. 그러므로 state 변수를 `value`로 전달해도 `onChange` 이벤트 핸들러 내에서 해당 state 변수를 동기적으로 업데이트하지 않으면 React는 키보드를 누를 때마다 입력을 처음 지정한 `value`로 되돌리게 됩니다.
+**input에 `onChange` 없이 `value`를 전달하면 해당 input에 타이핑을 할 수 없게 됩니다.** `value`를 전달하여 input을 제어하면 항상 해당 value를 가지도록 *강제합니다*. 그러므로 state 변수를 `value`로 전달해도 `onChange` 이벤트 핸들러 내에서 해당 state 변수를 동기적으로 업데이트하지 않으면 React는 키보드를 누를 때마다 input을 처음 지정한 `value`로 되돌리게 됩니다.
 
 </Pitfall>
 
@@ -416,7 +416,7 @@ p { font-weight: bold; }
 
 ### 키보드를 누를 때마다 리렌더링 최적화하기 {/*optimizing-re-rendering-on-every-keystroke*/}
 
-제어된 입력을 사용할 때는 키보드를 누를 때마다 state를 설정합니다. state를 포함하는 컴포넌트가 큰 트리를 리렌더링할 경우 속도가 느려질 수 있습니다. 리렌더링 성능을 최적화할 수 있는 몇 가지 방법이 있습니다.
+제어된 input을 사용할 때는 키보드를 누를 때마다 state를 설정합니다. state를 포함하는 컴포넌트가 큰 트리를 리렌더링할 경우 속도가 느려질 수 있습니다. 리렌더링 성능을 최적화할 수 있는 몇 가지 방법이 있습니다.
 
 예를 들어, 키보드를 누를 때마다 모든 페이지 내용을 리렌더링하는 폼으로 시작한다고 가정해보세요.
 
@@ -434,7 +434,7 @@ function App() {
 }
 ```
 
-`<PageContent />`는 입력 state에 의존하지 않으므로 입력 state를 자체 컴포넌트로 이동할 수 있습니다.
+`<PageContent />`는 input state에 의존하지 않으므로 input state를 자체 컴포넌트로 이동할 수 있습니다.
 
 ```js {4,10-17}
 function App() {
@@ -458,18 +458,18 @@ function SignupForm() {
 
 이렇게 하면 키보드를 누를 때마다 `SignupForm`만 리렌더링하기 때문에 성능이 크게 향상됩니다.
 
-`PageContent`가 검색 입력 값에 의존하는 경우처럼 리렌더링을 피할 방법이 없는 경우 [`useDeferredValue`](/reference/react/useDeferredValue#deferring-re-rendering-for-a-part-of-the-ui)를 사용하면 많은 리렌더링 중에도 제어된 입력이 응답하도록 할 수 있습니다.
+`PageContent`가 검색 input 값에 의존하는 경우처럼 리렌더링을 피할 방법이 없는 경우 [`useDeferredValue`](/reference/react/useDeferredValue#deferring-re-rendering-for-a-part-of-the-ui)를 사용하면 많은 리렌더링 중에도 제어된 input이 응답하도록 할 수 있습니다.
 
 ---
 
 ## 문제해결 {/*troubleshooting*/}
 
-### 텍스트 입력에 타이핑을 해도 업데이트되지 않습니다 {/*my-text-input-doesnt-update-when-i-type-into-it*/}
+### 텍스트 input에 타이핑을 해도 업데이트되지 않습니다 {/*my-text-input-doesnt-update-when-i-type-into-it*/}
 
-`onChange` 없이 `value`만 전달하여 입력을 렌더링하면 콘솔에 에러가 나타납니다.
+`onChange` 없이 `value`만 전달하여 input을 렌더링하면 콘솔에 에러가 나타납니다.
 
 ```js
-// 🔴 버그: 제어되는 입력에 onChange 핸들러가 없습니다.
+// 🔴 버그: 제어되는 input에 onChange 핸들러가 없습니다.
 <input value={something} />
 ```
 
@@ -482,21 +482,21 @@ function SignupForm() {
 에러 메시지가 제안하듯 [*초깃값*만 지정](#providing-an-initial-value-for-an-input)하려면 `defaultVallue`를 대신 전달하세요.
 
 ```js
-// ✅ 좋은 예: 제어되지 않는 입력에 초깃값 전달
+// ✅ 좋은 예: 제어되지 않는 input에 초깃값 전달
 <input defaultValue={something} />
 ```
 
-[입력을 state 변수로 제어](#controlling-an-input-with-a-state-variable)하려면 `onChange` 핸들러를 지정하세요.
+[input을 state 변수로 제어](#controlling-an-input-with-a-state-variable)하려면 `onChange` 핸들러를 지정하세요.
 
 ```js
-// ✅ 좋은 예: 제어되는 입력에 onChange 전달
+// ✅ 좋은 예: 제어되는 input에 onChange 전달
 <input value={something} onChange={e => setSomething(e.target.value)} />
 ```
 
 값이 의도적으로 읽기 전용이라면 에러를 막기 위해 `readOnly` prop을 추가하세요.
 
 ```js
-// ✅ 좋은 예: 제어되는 읽기 전용 입력에 onChange 생략
+// ✅ 좋은 예: 제어되는 읽기 전용 input에 onChange 생략
 <input value={something} readOnly={true} />
 ```
 
@@ -540,21 +540,21 @@ function SignupForm() {
 체크박스가 의도적으로 읽기 전용이라면 에러를 막기 위해 `readOnly` prop을 추가하세요.
 
 ```js
-// ✅ 좋은 예: 제어되는 읽기 전용 입력에 onChange 생략
+// ✅ 좋은 예: 제어되는 읽기 전용 input에 onChange 생략
 <input type="checkbox" checked={something} readOnly={true} />
 ```
 
 ---
 
-### 키보드를 누를 때마다 입력 커서가 입력의 처음으로 돌아갑니다 {/*my-input-caret-jumps-to-the-beginning-on-every-keystroke*/}
+### 키보드를 누를 때마다 입력 커서가 input의 처음으로 돌아갑니다 {/*my-input-caret-jumps-to-the-beginning-on-every-keystroke*/}
 
-[입력을 제어](#controlling-an-input-with-a-state-variable)할 경우 `onChange` 안에서 state 변수를 DOM에서 받아온 입력 값으로 업데이트해야 합니다.
+[input을 제어](#controlling-an-input-with-a-state-variable)할 경우 `onChange` 안에서 state 변수를 DOM에서 받아온 input 값으로 업데이트해야 합니다.
 
 state 변수는 `e.target.value` (혹은 체크박스에서는 `e.target.checked`) 외의 값으로 업데이트할 수 없습니다.
 
 ```js
 function handleChange(e) {
-  // 🔴 버그: 입력을 e.target.value 외의 값으로 업데이트합니다.
+  // 🔴 버그: input을 e.target.value 외의 값으로 업데이트합니다.
   setFirstName(e.target.value.toUpperCase());
 }
 ```
@@ -563,7 +563,7 @@ function handleChange(e) {
 
 ```js
 function handleChange(e) {
-  // 🔴 버그: 입력을 비동기로 업데이트합니다.
+  // 🔴 버그: input을 비동기로 업데이트합니다.
   setTimeout(() => {
     setFirstName(e.target.value);
   }, 100);
@@ -574,16 +574,16 @@ function handleChange(e) {
 
 ```js
 function handleChange(e) {
-  // ✅ 제어되는 입력을 e.target.value로 동기 업데이트합니다.
+  // ✅ 제어되는 input을 e.target.value로 동기 업데이트합니다.
   setFirstName(e.target.value);
 }
 ```
 
-이 방법으로 문제가 해결되지 않을 경우 키보드를 누를 때마다 입력이 제거 후 다시 추가되고 있을 가능성이 있습니다. 실수로 리렌더링마다 [state를 재설정](/learn/preserving-and-resetting-state)하고 있다면 나타날 수 있는 현상입니다. 가령 입력이나 입력의 부모 중 하나가 매번 다른 `key` 어트리뷰트를 받거나 컴포넌트 함수 정의를 중첩시키는 경우(이는 지원되지 않으며 '내부' 컴포넌트가 항상 다른 트리로 간주되도록 합니다)에 해당 문제가 발생할 수 있습니다.
+이 방법으로 문제가 해결되지 않을 경우 키보드를 누를 때마다 input이 DOM에서 제거된 후 다시 추가되고 있을 가능성이 있습니다. 실수로 리렌더링마다 [state를 재설정](/learn/preserving-and-resetting-state)하고 있다면 나타날 수 있는 현상입니다. 가령 input이나 input의 부모 중 하나가 매번 다른 `key` 어트리뷰트를 받거나 컴포넌트 함수 정의를 중첩시키는 경우(이는 지원되지 않으며 '내부' 컴포넌트가 항상 다른 트리로 간주되도록 합니다)에 해당 문제가 발생할 수 있습니다.
 
 ---
 
-### 다음과 같은 에러가 납니다. "A component is changing an uncontrolled input to be controlled(컴포넌트가 제어되지 않는 입력을 제어 상태로 변경합니다)" {/*im-getting-an-error-a-component-is-changing-an-uncontrolled-input-to-be-controlled*/}
+### 다음과 같은 에러가 납니다. "A component is changing an uncontrolled input to be controlled(컴포넌트가 제어되지 않는 input을 제어 상태로 변경합니다)" {/*im-getting-an-error-a-component-is-changing-an-uncontrolled-input-to-be-controlled*/}
 
 
 컴포넌트에 `value`를 제공할 경우 반드시 생명주기 내내 문자열 타입으로 남아야 합니다.
