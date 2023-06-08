@@ -228,12 +228,12 @@ Effect는 보통 컴포넌트를 *외부* 시스템과 동기화해야 합니다
 
 ### Step 2: Effect의 의존성 지정 {/*step-2-specify-the-effect-dependencies*/}
 
-By default, Effects run after *every* render. Often, this is **not what you want:**
+기본적으로 Effect는 렌더링할 때마다 실행됩니다. 종종, 이는 당신이 **원하지 않는 동작일 수 있습니다:**
 
-- Sometimes, it's slow. Synchronizing with an external system is not always instant, so you might want to skip doing it unless it's necessary. For example, you don't want to reconnect to the chat server on every keystroke.
-- Sometimes, it's wrong. For example, you don't want to trigger a component fade-in animation on every keystroke. The animation should only play once when the component appears for the first time.
+- 때로는 속도가 느릴 수 있습니다. 외부 시스템과의 동기화가 항상 즉각적인 것은 아니므로 꼭 필요한 경우가 아니라면 동기화를 건너뛰는 것이 좋습니다. 예를 들어, 키 입력 시마다 채팅 서버에 다시 연결하고 싶지는 않을 수 있습니다.
+- 때로는 잘못된 경우가 있습니다. 예를 들어 키 입력 시마다 컴포넌트 페이드인 애니메이션을 트리거하고 싶지 않을 수 있습니다. 애니메이션은 컴포넌트가 처음 나타날 때 한 번만 재생되어야 합니다.
 
-To demonstrate the issue, here is the previous example with a few `console.log` calls and a text input that updates the parent component's state. Notice how typing causes the Effect to re-run:
+이 문제를 설명하기 위해 몇 개의 `console.log` 호출과 부모 컴포넌트의 상태를 업데이트하는 텍스트 입력이 포함된 이전 예시를 보여드리겠습니다. 입력하면 이펙트가 다시 실행되는 것을 확인할 수 있습니다:
 
 <Sandpack>
 
@@ -281,7 +281,7 @@ video { width: 250px; }
 
 </Sandpack>
 
-You can tell React to **skip unnecessarily re-running the Effect** by specifying an array of *dependencies* as the second argument to the `useEffect` call. Start by adding an empty `[]` array to the above example on line 14:
+`useEffect` 호출의 두 번째 인수로 *의존성 배열*을 지정하여 React가 **불필요하게 Effect를 다시 실행하는 것을 건너뛰도록** 지시할 수 있습니다. 위의 예시 14라인에 빈 `[]` 배열을 추가하는 것으로 시작하세요:
 
 ```js {3}
   useEffect(() => {
@@ -289,7 +289,7 @@ You can tell React to **skip unnecessarily re-running the Effect** by specifying
   }, []);
 ```
 
-You should see an error saying `React Hook useEffect has a missing dependency: 'isPlaying'`:
+당신은 다음과 같은 에러를 볼 것입니다. `React Hook useEffect has a missing dependency: 'isPlaying'`:
 
 <Sandpack>
 
@@ -307,7 +307,7 @@ function VideoPlayer({ src, isPlaying }) {
       console.log('Calling video.pause()');
       ref.current.pause();
     }
-  }, []); // This causes an error
+  }, []); // 이로 인해 에러가 발생합니다.
 
   return <video ref={ref} src={src} loop playsInline />;
 }
@@ -337,19 +337,19 @@ video { width: 250px; }
 
 </Sandpack>
 
-The problem is that the code inside of your Effect *depends on* the `isPlaying` prop to decide what to do, but this dependency was not explicitly declared. To fix this issue, add `isPlaying` to the dependency array:
+문제는 Effect 내부의 코드가 `isPlaying` 프로퍼티에 *의존하여* 수행할 작업을 결정하는데 의존성이 명시적으로 선언되어 있지 않았다는 점입니다. 이 문제를 해결하려면 의존성 배열에 `isPlaying`을 추가하세요.
 
 ```js {2,7}
   useEffect(() => {
-    if (isPlaying) { // It's used here...
+    if (isPlaying) { // 여기에 사용됩니다...
       // ...
     } else {
       // ...
     }
-  }, [isPlaying]); // ...so it must be declared here!
+  }, [isPlaying]); // ...따라서 여기에서 선언해야 합니다!
 ```
 
-Now all dependencies are declared, so there is no error. Specifying `[isPlaying]` as the dependency array tells React that it should skip re-running your Effect if `isPlaying` is the same as it was during the previous render. With this change, typing into the input doesn't cause the Effect to re-run, but pressing Play/Pause does:
+이제 모든 의존성이 선언되었으므로 오류가 없습니다. 의존성 배열로 `[isPlaying]`을 지정하면 React가 `isPlaying`이 이전 렌더링 때와 동일한 경우 Effect를 다시 실행하지 않고 건너뛰도록 지시합니다. 이렇게 변경하면 input에 입력해도 Effect가 다시 실행되지 않지만 Play/Pause 버튼을 누르면 실행됩니다:
 
 <Sandpack>
 
@@ -397,29 +397,29 @@ video { width: 250px; }
 
 </Sandpack>
 
-The dependency array can contain multiple dependencies. React will only skip re-running the Effect if *all* of the dependencies you specify have exactly the same values as they had during the previous render. React compares the dependency values using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. See the [`useEffect` reference](/reference/react/useEffect#reference) for details.
+의존성 배열은 여러 개의 의존성을 포함할 수 있습니다. React는 지정한 *모든* 의존성 값이 이전 렌더링에서 가졌던 값과 정확히 동일한 경우에만 Effect를 다시 실행하는 것을 건너뜁니다. React는 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 사용하여 의존성 값을 비교합니다. 자세한 내용은 [`useEffect` reference](/reference/react/useEffect#reference)에서 참조하세요.
 
-**Notice that you can't "choose" your dependencies.** You will get a lint error if the dependencies you specified don't match what React expects based on the code inside your Effect. This helps catch many bugs in your code. If you don't want some code to re-run, [*edit the Effect code itself* to not "need" that dependency.](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)
+**의존성을 "선택"할 수 없다는 점에 유의하세요.** 지정한 의존성이 Effect 내부 코드를 기반으로 React가 예상하는 것과 일치하지 않으면 lint 오류가 발생합니다. 이 오류는 코드에서 많은 버그를 잡는 데 도움이 됩니다. 일부 코드가 다시 실행되는 것을 원하지 않는다면 [해당 의존성이 "필요"하지 않도록 *Effect 코드 자체를 편집하세요.*](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)
 
 <Pitfall>
 
-The behaviors without the dependency array and with an *empty* `[]` dependency array are different:
+의존성 배열이 없는 경우와 빈 `[]` 의존성 배열이 있는 경우의 동작은 다릅니다:
 
 ```js {3,7,11}
 useEffect(() => {
-  // This runs after every render
+  // 모든 렌더링 후에 실행됩니다.
 });
 
 useEffect(() => {
-  // This runs only on mount (when the component appears)
+  // 마운트 시(컴포넌트가 표시될 때)에만 실행됩니다.
 }, []);
 
 useEffect(() => {
-  // This runs on mount *and also* if either a or b have changed since the last render
+  // 마운트 되었을 때 *그리고* 마지막 렌더링 이후 a 또는 b가 변경된 경우에도 실행됩니다.
 }, [a, b]);
 ```
 
-We'll take a close look at what "mount" means in the next step.
+다음 단계에서는 "마운트"가 무엇을 의미하는지 자세히 살펴보겠습니다.
 
 </Pitfall>
 
