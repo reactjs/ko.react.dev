@@ -399,7 +399,7 @@ video { width: 250px; }
 
 의존성 배열은 여러 개의 의존성을 포함할 수 있습니다. React는 지정한 *모든* 의존성 값이 이전 렌더링에서 가졌던 값과 정확히 동일한 경우에만 Effect를 다시 실행하는 것을 건너뜁니다. React는 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 사용하여 의존성 값을 비교합니다. 자세한 내용은 [`useEffect` reference](/reference/react/useEffect#reference)에서 참조하세요.
 
-**의존성을 "선택"할 수 없다는 점에 유의하세요.** 지정한 의존성이 Effect 내부 코드를 기반으로 React가 예상하는 것과 일치하지 않으면 lint 오류가 발생합니다. 이 오류는 코드에서 많은 버그를 잡는 데 도움이 됩니다. 일부 코드가 다시 실행되는 것을 원하지 않는다면 [해당 의존성이 "필요"하지 않도록 *Effect 코드 자체를 편집하세요.*](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)
+**의존성을 "선택"할 수 없다는 점에 유의하세요.** 지정한 의존성이 Effect 내부 코드를 기반으로 React가 예상하는 것과 일치하지 않으면 린트 오류가 발생합니다. 이 오류는 코드에서 많은 버그를 잡는 데 도움이 됩니다. 일부 코드가 다시 실행되는 것을 원하지 않는다면 [해당 의존성이 "필요"하지 않도록 *Effect 코드 자체를 편집하세요.*](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)
 
 <Pitfall>
 
@@ -425,9 +425,9 @@ useEffect(() => {
 
 <DeepDive>
 
-#### Why was the ref omitted from the dependency array? {/*why-was-the-ref-omitted-from-the-dependency-array*/}
+#### 의존성 배열에서 ref가 생략된 이유는 무엇인가요? {/*why-was-the-ref-omitted-from-the-dependency-array*/}
 
-This Effect uses _both_ `ref` and `isPlaying`, but only `isPlaying` is declared as a dependency:
+이 Effect는 `ref`와 `isPlaying`을 _모두_ 사용하지만 의존성으로 선언된 것은 `isPlaying`뿐입니다:
 
 ```js {9}
 function VideoPlayer({ src, isPlaying }) {
@@ -441,7 +441,7 @@ function VideoPlayer({ src, isPlaying }) {
   }, [isPlaying]);
 ```
 
-This is because the `ref` object has a *stable identity:* React guarantees [you'll always get the same object](/reference/react/useRef#returns) from the same `useRef` call on every render. It never changes, so it will never by itself cause the Effect to re-run. Therefore, it does not matter whether you include it or not. Including it is fine too:
+이는 `ref` 객체가 *안정적인 정체성*을 가지고 있기 때문입니다: React는 모든 렌더링에서 동일한 `useRef` 호출에서 [항상 동일한 객체를 얻을 수 있도록](/reference/react/useRef#returns) 보장합니다. 이는 절대 변경되지 않으므로 그 자체로 Effect가 다시 실행되지 않습니다. 따라서 포함 여부는 중요하지 않습니다. 포함해도 괜찮습니다:
 
 ```js {9}
 function VideoPlayer({ src, isPlaying }) {
@@ -455,17 +455,17 @@ function VideoPlayer({ src, isPlaying }) {
   }, [isPlaying, ref]);
 ```
 
-The [`set` functions](/reference/react/useState#setstate) returned by `useState` also have stable identity, so you will often see them omitted from the dependencies too. If the linter lets you omit a dependency without errors, it is safe to do.
+`useState`가 반환하는 [`set` 함수](/reference/react/useState#setstate)도 안정적인 정체성을 가지므로 의존성에서 생략되는 경우가 많습니다. 린터를 통해 오류 없이 의존성을 생략할 수 있다면 그렇게 해도 안전합니다.
 
-Omitting always-stable dependencies only works when the linter can "see" that the object is stable. For example, if `ref` was passed from a parent component, you would have to specify it in the dependency array. However, this is good because you can't know whether the parent component always passes the same ref, or passes one of several refs conditionally. So your Effect _would_ depend on which ref is passed.
+항상 안정적인 종속성을 생략하는 것은 린터가 오브젝트가 안정적이라는 것을 "인지"할 수 있을 때만 작동합니다. 예를 들어 부모 컴포넌트에서 `ref`를 전달받은 경우 의존성 배열에 이를 지정해야 합니다. 하지만 부모 컴포넌트가 항상 동일한 참조를 전달하는지, 아니면 여러 참조 중 하나를 조건부로 전달하는지 알 수 없기 때문에 이 방법이 좋습니다. 따라서 Effect는 전달되는 참조에 따라 달라집니다.
 
 </DeepDive>
 
-### Step 3: Add cleanup if needed {/*step-3-add-cleanup-if-needed*/}
+### Step 3: 필요한 경우 정리 함수 추가 {/*step-3-add-cleanup-if-needed*/}
 
-Consider a different example. You're writing a `ChatRoom` component that needs to connect to the chat server when it appears. You are given a `createConnection()` API that returns an object with `connect()` and `disconnect()` methods. How do you keep the component connected while it is displayed to the user?
+다른 예를 생각해봅시다. 당신은 `ChatRoom`이라는 컴포넌트를 만들고 있고 이 컴포넌트가 나타날 때 채팅 서버에 연결을 해야 합니다. 당신에게는 `connect()` 및 `disconnect()` 메서드가 있는 객체를 반환하는 `createConnection()` API가 제공됩니다. 컴포넌트가 사용자에게 표시되는 동안 어떻게 연결 상태를 유지하나요?
 
-Start by writing the Effect logic:
+Effect 로직을 작성하여 시작하십시오:
 
 ```js
 useEffect(() => {
@@ -474,7 +474,7 @@ useEffect(() => {
 });
 ```
 
-It would be slow to connect to the chat after every re-render, so you add the dependency array:
+리렌더링 이후 채팅에 연결할 때마다 속도가 느려지므로 의존성 배열을 추가합니다:
 
 ```js {4}
 useEffect(() => {
@@ -483,9 +483,9 @@ useEffect(() => {
 }, []);
 ```
 
-**The code inside the Effect does not use any props or state, so your dependency array is `[]` (empty). This tells React to only run this code when the component "mounts", i.e. appears on the screen for the first time.**
+**Effect 내부의 코드는 props나 state를 사용하지 않으므로 의존성 배열은 `[]` (비어있음)입니다. 이는 컴포넌트가 "마운트"될 때, 즉 화면에 처음 나타날 때만 이 코드를 실행하도록 React에 지시합니다.**
 
-Let's try running this code:
+이 코드를 실행해 보겠습니다:
 
 <Sandpack>
 
@@ -504,7 +504,7 @@ export default function ChatRoom() {
 
 ```js chat.js
 export function createConnection() {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결됩니다
   return {
     connect() {
       console.log('✅ Connecting...');
@@ -522,15 +522,15 @@ input { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-This Effect only runs on mount, so you might expect `"✅ Connecting..."` to be printed once in the console. **However, if you check the console, `"✅ Connecting..."` gets printed twice. Why does it happen?**
+이 Effect는 마운트 시에만 실행되므로 콘솔에서 `"✅ Connecting..."`이 한 번 출력될 것으로 예상할 수 있습니다. **그러나 콘솔을 확인하면 `"✅ Connecting..."`이 두 번 출력됩니다. 왜 이런 현상이 발생하나요?**
 
-Imagine the `ChatRoom` component is a part of a larger app with many different screens. The user starts their journey on the `ChatRoom` page. The component mounts and calls `connection.connect()`. Then imagine the user navigates to another screen--for example, to the Settings page. The `ChatRoom` component unmounts. Finally, the user clicks Back and `ChatRoom` mounts again. This would set up a second connection--but the first connection was never destroyed! As the user navigates across the app, the connections would keep piling up.
+`ChatRoom` 컴포넌트가 다양한 화면이 있는 더 큰 앱의 일부라고 상상해 보세요. 사용자는 `ChatRoom` 페이지에서 여정을 시작합니다. 컴포넌트가 마운트하고 `connection.connect()`를 호출합니다. 그런 다음 사용자가 다른 화면(예: 설정 페이지)으로 이동한다고 가정해 보세요. `ChatRoom` 컴포넌트가 언마운트됩니다. 마지막으로 사용자가 뒤로 버튼을 클릭하면 `ChatRoom`이 다시 마운트됩니다. 이렇게 하면 두 번째 연결이 설정되지만 첫 번째 연결은 해제되지 않습니다! 사용자가 앱을 탐색할 때 연결은 계속 쌓이게 됩니다.
 
-Bugs like this are easy to miss without extensive manual testing. To help you spot them quickly, in development React remounts every component once immediately after its initial mount.
+이와 같은 버그는 광범위한 수동 테스트 없이는 놓치기 쉽습니다. 버그를 빠르게 발견할 수 있도록 개발 단계에서는 React는 모든 컴포넌트를 최초 마운트 직후에 한 번씩 다시 마운트합니다.
 
-Seeing the `"✅ Connecting..."` log twice helps you notice the real issue: your code doesn't close the connection when the component unmounts.
+`"✅ Connecting..."` 로그를 두 번 확인하면 컴포넌트가 마운트 해제될 때 코드가 연결을 닫지 않는 실제 문제를 파악하는데 도움이 됩니다.
 
-To fix the issue, return a *cleanup function* from your Effect:
+이 문제를 해결하려면 Effect에서 *정리 함수*를 반환하세요:
 
 ```js {4-6}
   useEffect(() => {
@@ -542,7 +542,7 @@ To fix the issue, return a *cleanup function* from your Effect:
   }, []);
 ```
 
-React will call your cleanup function each time before the Effect runs again, and one final time when the component unmounts (gets removed). Let's see what happens when the cleanup function is implemented:
+React는 Effect가 다시 실행되기 전에 매번 정리 함수를 호출하고, 컴포넌트가 언마운트(제거)될 때 마지막으로 한 번 더 호출합니다. 정리 함수가 구현되면 어떤 일이 발생하는지 살펴봅시다:
 
 <Sandpack>
 
@@ -580,15 +580,15 @@ input { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-Now you get three console logs in development:
+개발 모드에서 콘솔 로그가 3개가 생겼습니다:
 
 1. `"✅ Connecting..."`
 2. `"❌ Disconnected."`
 3. `"✅ Connecting..."`
 
-**This is the correct behavior in development.** By remounting your component, React verifies that navigating away and back would not break your code. Disconnecting and then connecting again is exactly what should happen! When you implement the cleanup well, there should be no user-visible difference between running the Effect once vs running it, cleaning it up, and running it again. There's an extra connect/disconnect call pair because React is probing your code for bugs in development. This is normal--don't try to make it go away!
+**이것은 개발 모드에서 올바른 동작입니다.** 컴포넌트를 다시 마운트함으로써 React는 다른 곳으로 이동하거나 뒤로 이동해도 코드가 손상되지 않는지 확인합니다. 연결을 끊었다가 다시 연결하는 것이 정확히 일어나야 할 일입니다! 정리 함수를 잘 구현하면 Effect를 한 번 실행하는 것과 Effect를 실행하고 정리한 후 다시 실행하는 것 사이에 사용자에게 보이는 눈에 띄는 차이가 없어야 합니다. React가 개발 중 코드에 버그가 있는지 검사하기 때문에 connect/disconnect 호출 쌍이 추가로 있습니다. 이것은 정상적인 현상이니 없애려고 하지 마세요!
 
-**In production, you would only see `"✅ Connecting..."` printed once.** Remounting components only happens in development to help you find Effects that need cleanup. You can turn off [Strict Mode](/reference/react/StrictMode) to opt out of the development behavior, but we recommend keeping it on. This lets you find many bugs like the one above.
+**프로덕션 환경에서는 `"✅ Connecting..."`이 한 번만 출력됩니다.** 컴포넌트를 다시 마운트하는 것은 정리가 필요한 Effect를 찾는 데 도움이 되는 개발 단계에서만 발생합니다. [Strict Mode](/reference/react/StrictMode)를 해제하여 개발 동작을 선택 해제할 수 있지만, 계속 켜두는 것이 좋습니다. 이렇게 하면 위와 같은 버그를 많이 발견할 수 있습니다.
 
 ## How to handle the Effect firing twice in development? {/*how-to-handle-the-effect-firing-twice-in-development*/}
 
