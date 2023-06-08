@@ -70,28 +70,28 @@ function MyComponent() {
 }
 ```
 
-Every time your component renders, React will update the screen *and then* run the code inside `useEffect`. In other words, **`useEffect` "delays" a piece of code from running until that render is reflected on the screen.**
+컴포넌트가 렌더링될 때마다 React는 화면을 업데이트한 *다음* `useEffect` 내부에서 코드를 실행합니다. 다시 말해, **`useEffect`는 해당 렌더링이 화면에 반영될 때까지 코드 실행을 "지연"시킵니다.**
 
-Let's see how you can use an Effect to synchronize with an external system. Consider a `<VideoPlayer>` React component. It would be nice to control whether it's playing or paused by passing an `isPlaying` prop to it:
+Effect를 사용하여 외부 시스템과 동기화하는 방법을 살펴봅시다. `<VideoPlayer>` React 컴포넌트를 생각해봅시다. 이 컴포넌트에 `isPlaying` prop을 전달해 재생 또는 일시정지 여부를 제어하면 좋을 것입니다:
 
 ```js
 <VideoPlayer isPlaying={isPlaying} />;
 ```
 
-Your custom `VideoPlayer` component renders the built-in browser [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) tag:
+당신의 커스텀 `VideoPlayer` 컴포넌트는 기본 제공 브라우저 [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) 태그를 렌더링합니다:
 
 ```js
 function VideoPlayer({ src, isPlaying }) {
-  // TODO: do something with isPlaying
+  // TODO: isPlaying을 사용해서 작업하기
   return <video src={src} />;
 }
 ```
 
-However, the browser `<video>` tag does not have an `isPlaying` prop. The only way to control it is to manually call the [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) and [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) methods on the DOM element. **You need to synchronize the value of `isPlaying` prop, which tells whether the video _should_ currently be playing, with calls like `play()` and `pause()`.**
+그러나, 브라우저 `<video>` 태그에는 `isPlaying` prop이 없습니다. 이를 제어하는 유일한 방법은 DOM 요소에서 [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) 및 [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) 메서드를 수동으로 호출하는 것입니다. **동영상이 현재 재생 중인지 여부를 알려주는 `isPlaying` prop의 값을 `play()` 및 `pause()`등의 호출과 동기화해야 합니다.**
 
-We'll need to first [get a ref](/learn/manipulating-the-dom-with-refs) to the `<video>` DOM node.
+우리는 먼저 `<video>` DOM 노드에 대한 [참조를 가져와야](/learn/manipulating-the-dom-with-refs) 합니다.
 
-You might be tempted to try to call `play()` or `pause()` during rendering, but that isn't correct:
+렌더링 중에 `play()` 또는 `pause()`를 호출하고 싶을 수 있지만 이는 올바르지 않습니다:
 
 <Sandpack>
 
@@ -102,9 +102,9 @@ function VideoPlayer({ src, isPlaying }) {
   const ref = useRef(null);
 
   if (isPlaying) {
-    ref.current.play();  // Calling these while rendering isn't allowed.
+    ref.current.play();  // 렌더링 중에 이 함수를 호출하는 것은 허용되지 않습니다.
   } else {
-    ref.current.pause(); // Also, this crashes.
+    ref.current.pause(); // 이 또한, 허용되지 않습니다.
   }
 
   return <video ref={ref} src={src} loop playsInline />;
@@ -133,11 +133,11 @@ video { width: 250px; }
 
 </Sandpack>
 
-The reason this code isn't correct is that it tries to do something with the DOM node during rendering. In React, [rendering should be a pure calculation](/learn/keeping-components-pure) of JSX and should not contain side effects like modifying the DOM.
+이 코드가 올바르지 않은 이유는 렌더링 중에 DOM 노드로 무언가를 하려고 하기 때문입니다. React에서 [렌더링은 JSX의 순수한 계산](/learn/keeping-components-pure)이어야 하며 DOM 수정과 같은 부작용을 포함하지 않아야 합니다.
 
-Moreover, when `VideoPlayer` is called for the first time, its DOM does not exist yet! There isn't a DOM node yet to call `play()` or `pause()` on, because React doesn't know what DOM to create until you return the JSX.
+게다가 `VideoPlayer`를 처음 호출할 때, 그 DOM은 아직 존재하지 않습니다! React는 JSX를 반환할 때까지 어떤 DOM을 생성할지 모르기 때문에 아직 `play()` 또는 `pause()`를 호출할 DOM 노드가 존재하지 않습니다.
 
-The solution here is to **wrap the side effect with `useEffect` to move it out of the rendering calculation:**
+여기서 해결책은 **부수 효과를 `useEffect`로 래핑하여 렌더링 계산에서 제외하는 것입니다**:
 
 ```js {6,12}
 import { useEffect, useRef } from 'react';
@@ -157,11 +157,11 @@ function VideoPlayer({ src, isPlaying }) {
 }
 ```
 
-By wrapping the DOM update in an Effect, you let React update the screen first. Then your Effect runs.
+DOM 업데이트를 Effect에 래핑하면 React가 먼저 화면을 업데이트합니다. 그런 다음 Effect가 실행됩니다.
 
-When your `VideoPlayer` component renders (either the first time or if it re-renders), a few things will happen. First, React will update the screen, ensuring the `<video>` tag is in the DOM with the right props. Then React will run your Effect. Finally, your Effect will call `play()` or `pause()` depending on the value of `isPlaying`.
+`VideoPlayer` 컴포넌트가 렌더링될 때(처음 렌더링 되거나 다시 렌더링되는 경우) 몇 가지 일이 발생합니다. 먼저, React가 화면을 업데이트하여 `<video>` 태그가 올바른 props와 함께 DOM에 있는지 확인합니다. 그런 다음 React가 Effect를 실행합니다. 마지막으로 Effect는 `isPlaying`의 값에 따라 `play()` 또는 `pause()`를 호출합니다.
 
-Press Play/Pause multiple times and see how the video player stays synchronized to the `isPlaying` value:
+Play/Pause를 여러 번 누르고 동영상 플레이어가 `isPlaying` 값과 어떻게 동기화되는지 확인합니다:
 
 <Sandpack>
 
@@ -205,13 +205,13 @@ video { width: 250px; }
 
 </Sandpack>
 
-In this example, the "external system" you synchronized to React state was the browser media API. You can use a similar approach to wrap legacy non-React code (like jQuery plugins) into declarative React components.
+이 예제에서 React state에 동기화한 "외부 시스템"은 브라우저 media API 였습니다. 당신은 비슷한 접근 방식을 사용하여 레거시 non-React 코드(예: jQuery 플러그인)를 선언적 React 컴포넌트로 래핑할 수 있습니다.
 
-Note that controlling a video player is much more complex in practice. Calling `play()` may fail, the user might play or pause using the built-in browser controls, and so on. This example is very simplified and incomplete.
+동영상 플레이어를 제어하는 것은 실제로는 훨씬 더 복잡하다는 점에 유의하세요. `play()` 호출이 실패할 수도 있고, 사용자가 내장된 브라우저 컨트롤을 사용하여 재생하거나 일시 정지할 수도 있습니다. 이 예시는 매우 단순하고 불완전합니다.
 
 <Pitfall>
 
-By default, Effects run after *every* render. This is why code like this will **produce an infinite loop:**
+기본적으로 Effect는 렌더링할 때마다 실행됩니다. 그렇기 때문에 이와 같은 코드는 **무한 루프를 생성합니다:**
 
 ```js
 const [count, setCount] = useState(0);
@@ -220,13 +220,13 @@ useEffect(() => {
 });
 ```
 
-Effects run as a *result* of rendering. Setting state *triggers* rendering. Setting state immediately in an Effect is like plugging a power outlet into itself. The Effect runs, it sets the state, which causes a re-render, which causes the Effect to run, it sets the state again, this causes another re-render, and so on.
+Effect는 렌더링의 *결과*로 실행됩니다. 상태를 업데이트하면 렌더링이 *트리거*됩니다. Effect에서 상태를 업데이트하는 것은 전원 콘텐트를 자체에 꽂는 것과 같습니다. Effect가 실행되고, 상태를 업데이트하면 다시 렌더링이 발생하고, 다시 렌더링이 발생하면 Effect가 실행되고, 다시 상태를 업데이트하면 또 다시 렌더링이 발생하는 식입니다.
 
-Effects should usually synchronize your components with an *external* system. If there's no external system and you only want to adjust some state based on other state, [you might not need an Effect.](/learn/you-might-not-need-an-effect)
+Effect는 보통 컴포넌트를 *외부* 시스템과 동기화해야 합니다. 외부 시스템이 없고 다른 상태를 기반으로 일부 상태만 조정하려는 경우 [Effect가 필요하지 않을 수 있습니다.](/learn/you-might-not-need-an-effect)
 
 </Pitfall>
 
-### Step 2: Specify the Effect dependencies {/*step-2-specify-the-effect-dependencies*/}
+### Step 2: Effect의 의존성 지정 {/*step-2-specify-the-effect-dependencies*/}
 
 By default, Effects run after *every* render. Often, this is **not what you want:**
 
