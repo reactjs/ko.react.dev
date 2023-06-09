@@ -1,5 +1,5 @@
 ---
-title: Effect와 동기화
+title: Effect로 동기화
 ---
 
 <Intro>
@@ -588,19 +588,19 @@ input { display: block; margin-bottom: 20px; }
 
 **이것은 개발 모드에서 올바른 동작입니다.** 컴포넌트를 다시 마운트함으로써 React는 다른 곳으로 이동하거나 뒤로 이동해도 코드가 손상되지 않는지 확인합니다. 연결을 끊었다가 다시 연결하는 것이 정확히 일어나야 할 일입니다! 정리 함수를 잘 구현하면 Effect를 한 번 실행하는 것과 Effect를 실행하고 정리한 후 다시 실행하는 것 사이에 사용자에게 보이는 눈에 띄는 차이가 없어야 합니다. React가 개발 중 코드에 버그가 있는지 검사하기 때문에 connect/disconnect 호출 쌍이 추가로 있습니다. 이것은 정상적인 현상이니 없애려고 하지 마세요!
 
-**프로덕션 환경에서는 `"✅ Connecting..."`이 한 번만 출력됩니다.** 컴포넌트를 다시 마운트하는 것은 정리가 필요한 Effect를 찾는 데 도움이 되는 개발 단계에서만 발생합니다. [Strict Mode](/reference/react/StrictMode)를 해제하여 개발 동작을 선택 해제할 수 있지만, 계속 켜두는 것이 좋습니다. 이렇게 하면 위와 같은 버그를 많이 발견할 수 있습니다.
+**프로덕션 환경에서는 `"✅ Connecting..."`이 한 번만 출력됩니다.** 컴포넌트를 다시 마운트하는 것은 정리가 필요한 Effect를 찾는 데 도움이 되는 개발 단계에서만 발생합니다. [엄격 모드](/reference/react/StrictMode)를 해제하여 개발 동작을 선택 해제할 수 있지만, 계속 켜두는 것이 좋습니다. 이렇게 하면 위와 같은 버그를 많이 발견할 수 있습니다.
 
-## How to handle the Effect firing twice in development? {/*how-to-handle-the-effect-firing-twice-in-development*/}
+## 개발 과정에서 Effect가 두 번 발생하면 어떻게 처리하나요? {/*how-to-handle-the-effect-firing-twice-in-development*/}
 
-React intentionally remounts your components in development to find bugs like in the last example. **The right question isn't "how to run an Effect once", but "how to fix my Effect so that it works after remounting".**
+React는 지난 예제에서와 같이 버그를 찾기 위해 개발 중에 컴포넌트를 의도적으로 다시 마운트합니다. **올바른 질문은 "어떻게 Effect를 한 번 실행하는가?"가 아니라 "어떻게 Effect를 다시 마운트한 후 작동하도록 수정하는가"입니다.**
 
-Usually, the answer is to implement the cleanup function.  The cleanup function should stop or undo whatever the Effect was doing. The rule of thumb is that the user shouldn't be able to distinguish between the Effect running once (as in production) and a _setup → cleanup → setup_ sequence (as you'd see in development).
+일반적으로 정답은 정리 함수를 구현하는 것입니다. 정리 함수를 사용하면 Effect가 수행하던 작업을 중지하거나 취소할 수 있습니다. 경험상 사용자가 한 번 실행되는 Effect(프로덕션 환경)와 _설정_ -> _정리_ -> _설정_ 순서(개발 환경)를 구분할 수 없어야 한다는 것입니다.
 
-Most of the Effects you'll write will fit into one of the common patterns below.
+작성하게 될 대부분의 Effect는 아래의 일반적인 패턴 중 하나에 해당합니다.
 
-### Controlling non-React widgets {/*controlling-non-react-widgets*/}
+### non-React 위젯 제어 {/*controlling-non-react-widgets*/}
 
-Sometimes you need to add UI widgets that aren't written to React. For example, let's say you're adding a map component to your page. It has a `setZoomLevel()` method, and you'd like to keep the zoom level in sync with a `zoomLevel` state variable in your React code. Your Effect would look similar to this:
+때때로 React로 작성되지 않은 UI 위젯을 추가해야 할 때가 있습니다. 예를 들어 페이지에 지도 컴포넌트를 추가한다고 가정해 보겠습니다. 이 컴포넌트에는 `setZoomLevel` 메서드가 있으며, React 코드의 `zoomLevel` 상태 변수와 줌 레벨을 동기화하고자 합니다. Effect는 다음과 비슷하게 보일 것입니다:
 
 ```js
 useEffect(() => {
@@ -609,9 +609,9 @@ useEffect(() => {
 }, [zoomLevel]);
 ```
 
-Note that there is no cleanup needed in this case. In development, React will call the Effect twice, but this is not a problem because calling `setZoomLevel` twice with the same value does not do anything. It may be slightly slower, but this doesn't matter because it won't remount needlessly in production.
+이 경우 정리가 필요하지 않습니다. 개발 단계에서 React는 Effect를 두 번 호출하지만, 같은 값으로 `setZoomLevel`을 두 번 호출해도 아무 일도 일어나지 않으므로 문제가 되지 않습니다. 속도가 약간 느려질 수 있지만 프로덕션에서는 불필요하게 다시 마운트되지 않으므로 문제가 되지 않습니다.
 
-Some APIs may not allow you to call them twice in a row. For example, the [`showModal`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal) method of the built-in [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement) element throws if you call it twice. Implement the cleanup function and make it close the dialog:
+일부 API는 연속으로 두 번 호출하는 것을 허용하지 않을 수 있습니다. 예를 들어, 내장된 [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement) 요소의 [`showModal`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal) 메서드는 두 번 호출하면 throw됩니다. 정리 함수를 구현하고 대화 상자를 닫도록 합니다:
 
 ```js {4}
 useEffect(() => {
@@ -621,11 +621,11 @@ useEffect(() => {
 }, []);
 ```
 
-In development, your Effect will call `showModal()`, then immediately `close()`, and then `showModal()` again. This has the same user-visible behavior as calling `showModal()` once, as you would see in production.
+개발 환경에서 Effect는 `showModal()`를 호출한 다음 즉시 `close()`를 호출한 다음 다시 `showModal`를 호출합니다. 이는 프로덕션 환경에서 볼 수 있는 것처럼 `showModal()`을 한 번 호출하는 것과 동일하게 사용자에게 보여집니다.
 
-### Subscribing to events {/*subscribing-to-events*/}
+### 이벤트 구독 {/*subscribing-to-events*/}
 
-If your Effect subscribes to something, the cleanup function should unsubscribe:
+Effect가 무언가를 구독하는 경우 정리 함수에서 구독을 취소해야 합니다:
 
 ```js {6}
 useEffect(() => {
@@ -637,27 +637,27 @@ useEffect(() => {
 }, []);
 ```
 
-In development, your Effect will call `addEventListener()`, then immediately `removeEventListener()`, and then `addEventListener()` again with the same handler. So there would be only one active subscription at a time. This has the same user-visible behavior as calling `addEventListener()` once, as in production.
+개발 환경에서 Effect는 `addEventListener()`를 호출한 다음 즉시 `removeEventListener()`를 호출한 다음 동일한 핸들러로 다시 `addEventListener()`를 호출합니다. 따라서 한 번에 하나의 활성 구독만 있을 수 있습니다. 이는 프로덕션 환경에서와 같이 `addEventListener()`를 한 번 호출하는 것과 동일하게 사용자에게 보여집니다.
 
-### Triggering animations {/*triggering-animations*/}
+### 애니메이션 트리거 {/*triggering-animations*/}
 
-If your Effect animates something in, the cleanup function should reset the animation to the initial values:
+Effect가 무언가를 애니메이션화하는 경우 정리 함수는 애니메이션을 초기 값으로 재설정해야 합니다:
 
 ```js {4-6}
 useEffect(() => {
   const node = ref.current;
-  node.style.opacity = 1; // Trigger the animation
+  node.style.opacity = 1; // 애니메이션 트리거
   return () => {
-    node.style.opacity = 0; // Reset to the initial value
+    node.style.opacity = 0; // 초기 값으로 재설정
   };
 }, []);
 ```
 
-In development, opacity will be set to `1`, then to `0`, and then to `1` again. This should have the same user-visible behavior as setting it to `1` directly, which is what would happen in production. If you use a third-party animation library with support for tweening, your cleanup function should reset the timeline to its initial state.
+개발 환경에서는 불투명도를 `1`로 설정한 다음, `0`으로 설정한 다음, 다시 `1`로 설정합니다. 이렇게 하면 프로덕션에서 직접 `1`로 설정하는 것과 동일하게 사용자에게 표시됩니다. Tweening을 지원하는 타사 애니메이션 라이브러리를 사용하는 경우 정리 함수를 사용하면 타기임라인이 초기 상태로 재설정됩니다.
 
-### Fetching data {/*fetching-data*/}
+### 데이터 가져오기 {/*fetching-data*/}
 
-If your Effect fetches something, the cleanup function should either [abort the fetch](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) or ignore its result:
+Effect가 무언가를 가져오는 경우, 정리 함수는 [가져오기를 중단](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)하거나 결과를 무시해야합니다:
 
 ```js {2,6,13-15}
 useEffect(() => {
@@ -678,11 +678,11 @@ useEffect(() => {
 }, [userId]);
 ```
 
-You can't "undo" a network request that already happened, but your cleanup function should ensure that the fetch that's _not relevant anymore_ does not keep affecting your application. If the `userId` changes from `'Alice'` to `'Bob'`, cleanup ensures that the `'Alice'` response is ignored even if it arrives after `'Bob'`.
+이미 발생한 네트워크 요청을 "실행 취소"할 수는 없지만, 정리 함수를 사용하면 _더 이상 관련성이 없는_ 가져오기가 애플리케이션에 계속 영향을 미치지 않도록 할 수 있습니다. `userId`가 `Alice`에서 `Bob`으로 변경된 경우, 정리 함수는 `Alice`에 대한 응답이 `Bob` 이후에 도착하더라도 응답을 무시하도록 보장합니다.
 
-**In development, you will see two fetches in the Network tab.** There is nothing wrong with that. With the approach above, the first Effect will immediately get cleaned up so its copy of the `ignore` variable will be set to `true`. So even though there is an extra request, it won't affect the state thanks to the `if (!ignore)` check.
+**개발 환경에서 네트워크 탭에 두 개의 가져오기가 표시됩니다.** 잘못된 것은 없습니다. 위의 접근 방식을 사용하면 첫 번째 Effect가 즉시 정리되어 `ignore` 변수의 복사본이 `true`로 설정됩니다. 따라서 추가 요청이 있더라도 `if (!ignore)` 검사 덕분에 상태에 영향을 미치지 않습니다.
 
-**In production, there will only be one request.** If the second request in development is bothering you, the best approach is to use a solution that deduplicates requests and caches their responses between components:
+**프로덕션 환경에서는 요청이 하나만 있을 것입니다.** 개발 환경에서 두 번째 요청이 번거로운 경우 요청의 중복을 제거하고 컴포넌트 간에 응답을 캐시하는 솔루션을 사용하는 것이 가장 좋은 방법입니다:
 
 ```js
 function TodoList() {
@@ -690,50 +690,50 @@ function TodoList() {
   // ...
 ```
 
-This will not only improve the development experience, but also make your application feel faster. For example, the user pressing the Back button won't have to wait for some data to load again because it will be cached. You can either build such a cache yourself or use one of the many alternatives to manual fetching in Effects.
+이렇게 하면 개발 환경이 개선될 뿐만 아니라 애플리케이션의 속도도 빨라집니다. 예를 들어 사용자가 뒤로가기 버튼을 누르면 일부 데이터가 캐시되므로 다시 로드될 때까지 기다릴 필요가 없습니다. 이러한 캐시를 직접 구축하거나 Effect에서 수동 가져오기를 대체하는 여러 방법 중 하나를 사용할 수 있습니다.
 
 <DeepDive>
 
-#### What are good alternatives to data fetching in Effects? {/*what-are-good-alternatives-to-data-fetching-in-effects*/}
+#### Effect에서 데이터 가져오기를 대체하는 좋은 대안은 무엇인가요? {/*what-are-good-alternatives-to-data-fetching-in-effects*/}
 
-Writing `fetch` calls inside Effects is a [popular way to fetch data](https://www.robinwieruch.de/react-hooks-fetch-data/), especially in fully client-side apps. This is, however, a very manual approach and it has significant downsides:
+특히 완전한 클라이언트 측 앱에서 Effect 내에서 `fetch`를 호출해서 데이터를 가져오는 것은 [널리 사용되는 방법](https://www.robinwieruch.de/react-hooks-fetch-data/)입니다. 그러나 이것은 매우 수동적인 접근 방식이며 상당한 단점이 있습니다:
 
-- **Effects don't run on the server.** This means that the initial server-rendered HTML will only include a loading state with no data. The client computer will have to download all JavaScript and render your app only to discover that now it needs to load the data. This is not very efficient.
-- **Fetching directly in Effects makes it easy to create "network waterfalls".** You render the parent component, it fetches some data, renders the child components, and then they start fetching their data. If the network is not very fast, this is significantly slower than fetching all data in parallel.
-- **Fetching directly in Effects usually means you don't preload or cache data.** For example, if the component unmounts and then mounts again, it would have to fetch the data again.
-- **It's not very ergonomic.** There's quite a bit of boilerplate code involved when writing `fetch` calls in a way that doesn't suffer from bugs like [race conditions.](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect)
+- **Effect는 서버에서 실행되지 않습니다.** 즉, 초기 서버에서 렌더링되는 HTML에는 데이터가 없는 로딩 상태만 포함됩니다. 클라이언트 컴퓨터는 모든 자바스크립트를 다운로드하고 앱을 렌더링해야만 이제 데이터를 로드해야 한다는 것을 알게 됩니다. 이는 매우 효율적이지 않습니다.
+- **Effect에서 직접 가져오기를 사용하면 "Network waterfalls"를 쉽게 만들 수 있습니다.** 부모 컴포넌트를 렌더링하면 일부 데이터를 가져오고, 자식 컴포넌트를 렌더링하면 자식 컴포넌트가 데이터 가져오기 시작합니다. 네트워크가 매우 빠르지 않은 경우 모든 데이터를 병렬로 가져오는 것보다 훨씬 느립니다.
+- **Effect에서 직접 가져오기는 일반적으로 데이터를 미리 로드하거나 캐시하지 않는다는 의미입니다.** 예를 들어 컴포넌트가 언마운트했다가 다시 마운트하는 경우 데이터를 다시 가져와야 합니다.
+- **인체공학적이지 않습니다.** [경쟁 조건](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect)과 같은 버그가 발생하지 않는 방식으로 가져오기 호출을 작성할 때는 꽤 많은 상용구 코드가 필요합니다.
 
-This list of downsides is not specific to React. It applies to fetching data on mount with any library. Like with routing, data fetching is not trivial to do well, so we recommend the following approaches:
+이 단점 목록은 React에만 국한된 것이 아닙니다. 모든 라이브러리를 사용한 마운트에서 데이터를 가져올 때 적용됩니다. 라우팅과 마찬가지로 데이터 불러오기도 제대로 수행하기가 쉽지 않으므로 다음과 같은 접근 방식을 권장합니다:
 
-- **If you use a [framework](/learn/start-a-new-react-project#production-grade-react-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
-- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [React Query](https://tanstack.com/query/latest), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood, but add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
+- **프레임워크를 사용하는 경우 [프레임워크](/learn/start-a-new-react-project#production-grade-react-frameworks)에 내장된 데이터 불러오기 메커니즘을 사용하세요.**  최신 React 프레임워크는 효율적이고 위의 함정을 겪지 않는 통합 데이터 불러오기 메커니즘을 갖추고 있습니다.
+- **그렇지 않으면 클라이언트 측 캐시를 사용하거나 만드는 것이 좋습니다.** 인기 있는 오픈 소스 솔루션으로는 [React Query](https://tanstack.com/query/latest), [useSWR](https://swr.vercel.app/), [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview)가 있습니다. 자체 솔루션을 구축할 수도 있는데, 이 경우 내부적으로 Effect를 사용하되 요청 중복 제거, 응답 캐싱, Network waterfall 방지(데이터 사전 로드 또는 라우트에 데이터 요구 사항 올리기)를 위한 로직을 추가할 수 있습니다.
 
-You can continue fetching data directly in Effects if neither of these approaches suit you.
+이 두 가지 방법 중 어느 것도 적합하지 않은 경우 Effect에서 직접 데이터를 계속 가져올 수 있습니다.
 
 </DeepDive>
 
-### Sending analytics {/*sending-analytics*/}
+### 분석 전송 {/*sending-analytics*/}
 
-Consider this code that sends an analytics event on the page visit:
+페이지 방문 시 애널리틱스 이벤트를 전송하는 이 코드를 살펴보겠습니다:
 
 ```js
 useEffect(() => {
-  logVisit(url); // Sends a POST request
+  logVisit(url); // POST 요청을 보냄
 }, [url]);
 ```
 
-In development, `logVisit` will be called twice for every URL, so you might be tempted to try to fix that. **We recommend keeping this code as is.** Like with earlier examples, there is no *user-visible* behavior difference between running it once and running it twice. From a practical point of view, `logVisit` should not do anything in development because you don't want the logs from the development machines to skew the production metrics. Your component remounts every time you save its file, so it logs extra visits in development anyway.
+개발 환경에서는 모든 URL에 대해 `logVisit`이 두 번 호출되므로 이 문제를 해결하고 싶을 수 있습니다. **우리는 이 코드를 그대로 유지하는 것을 추천합니다.** 앞의 예시와 마찬가지로 한 번 실행하는 것과 두 번 실행하는 것 사이에는 *사용자가 볼 수 있는* 동작의 차이가 없습니다. 실용적인 관점에서 볼 때, 개발 기기의 로그가 프로덕션 메트릭을 왜곡하는 것을 원치 않기 때문에 `logVisit`은 개발 단계에서 아무 작업도 수행해서는 안 됩니다. 컴포넌트는 파일을 저장할 때마다 다시 마운트되므로 어쨋든 개발 과정에서 추가 방문을 기록합니다.
 
-**In production, there will be no duplicate visit logs.**
+**프로덕션 환경에서는, 중복된 방문 로그가 없습니다.**
 
-To debug the analytics events you're sending, you can deploy your app to a staging environment (which runs in production mode) or temporarily opt out of [Strict Mode](/reference/react/StrictMode) and its development-only remounting checks. You may also send analytics from the route change event handlers instead of Effects. For more precise analytics, [intersection observers](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) can help track which components are in the viewport and how long they remain visible.
+전송 중인 분석 이벤트를 디버깅하려면 앱을 스테이징 환경(프로덕션 모드에서 실행)에 배포하거나 [엄격 모드](/reference/react/StrictMode)의 개발 전용 리마운트 체크를 일시적으로 해제할 수 있습니다.  Effect 대신 라우트 변경 이벤트 핸들러에서 분석을 전송할 수도 있습니다. 보다 정확한 분석을 위해 [intersection observers](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)를 사용하면 뷰포트에 어떤 컴포넌트가 있는지, 얼마나 오래 표시되는지 추적할 수 있습니다.
 
-### Not an Effect: Initializing the application {/*not-an-effect-initializing-the-application*/}
+### Effect가 아닌 것: 애플리케이션 초기화 {/*not-an-effect-initializing-the-application*/}
 
-Some logic should only run once when the application starts. You can put it outside your components:
+일부 로직은 애플리케이션이 시작할 때 한 번만 실행되어야 합니다. 당신은 이를 컴포넌트 외부에 배치할 수 있습니다:
 
 ```js {2-3}
-if (typeof window !== 'undefined') { // Check if we're running in the browser.
+if (typeof window !== 'undefined') { // 브라우저에서 실행 중인지 확인합니다.
   checkAuthToken();
   loadDataFromLocalStorage();
 }
@@ -743,37 +743,37 @@ function App() {
 }
 ```
 
-This guarantees that such logic only runs once after the browser loads the page.
+이렇게 하면 브라우저가 페이지를 로드한 후 해당 로직이 한 번만 실행되도록 보장합니다.
 
-### Not an Effect: Buying a product {/*not-an-effect-buying-a-product*/}
+### Effect가 아닌 것: 제품을 사는 것 {/*not-an-effect-buying-a-product*/}
 
-Sometimes, even if you write a cleanup function, there's no way to prevent user-visible consequences of running the Effect twice. For example, maybe your Effect sends a POST request like buying a product:
+가끔 정리 함수를 작성하더라도 사용자가 Effect를 두 번 실행하는 결과를 방지할 방법이 없는 경우가 있습니다. 예를 들어 Effect가 제품 구매와 같은 POST 요청을 전송할 수 있습니다:
 
 ```js {2-3}
 useEffect(() => {
-  // 🔴 Wrong: This Effect fires twice in development, exposing a problem in the code.
+  // 🔴 Wrong: 이 Effect는 개발 중에 두 번 실행되어 코드에 문제가 있음을 노출합니다.
   fetch('/api/buy', { method: 'POST' });
 }, []);
 ```
 
-You wouldn't want to buy the product twice. However, this is also why you shouldn't put this logic in an Effect. What if the user goes to another page and then presses Back? Your Effect would run again. You don't want to buy the product when the user *visits* a page; you want to buy it when the user *clicks* the Buy button.
+당신은 제품을 두 번 구매하고 싶지 않을 것입니다. 하지만 이 로직을 Effect에 넣지 말아야 하는 이유도 바로 여기에 있습니다. 사용자가 다른 페이지로 이동한 후 뒤로가기 버튼을 누르면 어떻게 되나요? Effect가 다시 실행됩니다. 사용자가 페이지를 *방문*했을 때 제품을 구매하는 것이 아니라 사용자가 구매 버튼을 *클릭*했을 때 제품을 구매하기를 원합니다.
 
-Buying is not caused by rendering; it's caused by a specific interaction. It should run only when the user presses the button. **Delete the Effect and move your `/api/buy` request into the Buy button event handler:**
+구매는 렌더링이 아니라 특정 상호 작용으로 인해 발생합니다. 사용자가 버튼을 누를 때만 실행되어야 합니다. **Effect를 삭제하고 `/api/buy` 요청을 구매 버튼 이벤트 핸들러로 이동합니다**:
 
 ```js {2-3}
   function handleClick() {
-    // ✅ Buying is an event because it is caused by a particular interaction.
+    // ✅ 구매는 특정 상호 작용으로 인해 발생하므로 이벤트입니다.
     fetch('/api/buy', { method: 'POST' });
   }
 ```
 
-**This illustrates that if remounting breaks the logic of your application, this usually uncovers existing bugs.** From the user's perspective, visiting a page shouldn't be different from visiting it, clicking a link, and pressing Back. React verifies that your components abide by this principle by remounting them once in development.
+**이는 다시 마운트하면 애플리케이션의 로직이 깨지는 경우 일반적으로 기존 버그가 발견된다는 것을 보여줍니다.** 사용자 관점에서 페이지를 방문하는 것이 페이지를 방문하고 링크를 클릭한 다음 뒤로가기 버튼을 누르는 것과 다르지 않아야 합니다. React는 개발 단계에서 컴포넌트를 한 번 다시 마운트하여 이 원칙을 준수하는지 확인합니다.
 
-## Putting it all together {/*putting-it-all-together*/}
+## 모든 것을 종합하기 {/*putting-it-all-together*/}
 
-This playground can help you "get a feel" for how Effects work in practice.
+이 플레이그라운드를 통해 실제로 Effect가 어떻게 작동하는지 "느껴볼" 수 있습니다.
 
-This example uses [`setTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) to schedule a console log with the input text to appear three seconds after the Effect runs. The cleanup function cancels the pending timeout. Start by pressing "Mount the component":
+이 예에서는 [`setTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)을 사용하여 Effect가 실행된 후 3초 후에 입력 텍스트가 포함된 콘솔 로그가 표시되도록 예약합니다. 정리 함수는 보류 중인 시간 초과를 취소합니다. "컴포넌트 마운트"를 눌러 시작하세요:
 
 <Sandpack>
 
@@ -827,21 +827,21 @@ export default function App() {
 
 </Sandpack>
 
-You will see three logs at first: `Schedule "a" log`, `Cancel "a" log`, and `Schedule "a" log` again. Three second later there will also be a log saying `a`. As you learned earlier, the extra schedule/cancel pair is because React remounts the component once in development to verify that you've implemented cleanup well.
+처음에 세 개의 로그가 표시됩니다: `Schedule "a" log`, `Cancel "a" log`, 다시 `Schedule "a" log`가 표시됩니다. 3초 후에는 `a`라는 로그가 표시됩니다. 앞서 배운 것처럼, schedule/cancel 쌍이 추가되는 이유는 React가 개발 단계에서 컴포넌트를 한 번 다시 마운트하여 정리 함수를 잘 구현했는지 확인하기 때문입니다.
 
-Now edit the input to say `abc`. If you do it fast enough, you'll see `Schedule "ab" log` immediately followed by `Cancel "ab" log` and `Schedule "abc" log`. **React always cleans up the previous render's Effect before the next render's Effect.** This is why even if you type into the input fast, there is at most one timeout scheduled at a time. Edit the input a few times and watch the console to get a feel for how Effects get cleaned up.
+이제 입력을 `abc`로 수정합니다. 충분히 빠르게 수행하면 `Schedule "ab" log` 뒤에 바로 `Cancel "ab" log`와 `Schedule "abc" log`가 표시됩니다. **React는 항상 다음 렌더링의 Effect 전에 이전 렌더링의 Effect를 정리합니다.** 그렇기 때문에 입력을 빠르게 입력하더라도 한 번에 최대 한 번만 타임아웃이 예약됩니다. 입력을 몇 번 편집하고 콘솔을 보면서 Effect가 어떻게 정리되는지 느껴보세요.
 
-Type something into the input and then immediately press "Unmount the component". Notice how unmounting cleans up the last render's Effect. Here, it clears the last timeout before it has a chance to fire.
+입력에 무언가를 입력한 다음 즉시 "컴포넌트 마운트 해제"를 누릅니다. 마운트를 해제하면 마지막 렌더링의 Effect가 어떻게 정리되는지 보세요. 여기서는 Effect가 실행될 기회를 갖기 전에 마지막 타임아웃을 지웁니다.
 
-Finally, edit the component above and comment out the cleanup function so that the timeouts don't get cancelled. Try typing `abcde` fast. What do you expect to happen in three seconds? Will `console.log(text)` inside the timeout print the *latest* `text` and produce five `abcde` logs? Give it a try to check your intuition!
+마지막으로, 위의 컴포넌트를 편집하고 정리 함수를 주석 처리하여 시간 초과가 취소되지 않도록 합니다. `abcde`를 빠르게 입력해보세요. What do you expect to happen in three seconds? 3초 후에 어떤 일이 일어날 것으로 예상하시나요? 시간 초과 내에 `console.log(text)`가 *최신* 텍스트를 출력하고 5개의 `abcde` 로그를 생성할까요? 여러분의 직관을 확인해보세요!
 
-Three seconds later, you should see a sequence of logs (`a`, `ab`, `abc`, `abcd`, and `abcde`) rather than five `abcde` logs. **Each Effect "captures" the `text` value from its corresponding render.**  It doesn't matter that the `text` state changed: an Effect from the render with `text = 'ab'` will always see `'ab'`. In other words, Effects from each render are isolated from each other. If you're curious how this works, you can read about [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures).
+3초 후, 5개의 `abcde` 로그가 아니라 일련의 로그(`a`, `ab`, `abc`, `abcd`, `abcde`)가 표시되어야 합니다. **각 Effect는 해당 렌더링에서 `text` 값을 "캡처"합니다.** 텍스트 상태가 변경되었는지 여부는 중요하지 않습니다. `text = 'ab'`로 렌더링된 Effect는 항상 `'ab'`로 표시됩니다. 다시 말해서, 각 렌더링의 Effect는 서로 분리되어 있습니다. 이것이 어떻게 작동하는지 궁금하다면 [클로저](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)에 대해 읽어보세요.
 
 <DeepDive>
 
-#### Each render has its own Effects {/*each-render-has-its-own-effects*/}
+#### 각 렌더링에는 고유한 Effect가 있습니다 {/*each-render-has-its-own-effects*/}
 
-You can think of `useEffect` as "attaching" a piece of behavior to the render output. Consider this Effect:
+당신은 `useEffect`를 렌더링 결과에 동작을 "첨부"하는 것으로 생각할 수 있습니다. 이 Effect를 생각해보세요:
 
 ```js
 export default function ChatRoom({ roomId }) {
@@ -855,119 +855,119 @@ export default function ChatRoom({ roomId }) {
 }
 ```
 
-Let's see what exactly happens as the user navigates around the app.
+사용자가 앱을 탐색할 때 정확히 어떤 일이 발생하는지 살펴봅시다.
 
-#### Initial render {/*initial-render*/}
+#### 초기 렌더링 {/*initial-render*/}
 
-The user visits `<ChatRoom roomId="general" />`. Let's [mentally substitute](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `roomId` with `'general'`:
+사용자가 `<ChatRoom roomId="general" />`을 방문합니다. 이 컴포넌트에서 `roomId`를 `'general'`로 [대체한다고 생각](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time)해봅시다:
 
 ```js
-  // JSX for the first render (roomId = "general")
+  // 첫 렌더링에 대한 JSX (roomId = "general")
   return <h1>Welcome to general!</h1>;
 ```
 
-**The Effect is *also* a part of the rendering output.** The first render's Effect becomes:
+**Effect는 렌더링 결과의 일부이기도 합니다.** 첫 렌더링의 Effect는 다음과 같습니다:
 
 ```js
-  // Effect for the first render (roomId = "general")
+  // 첫 렌더링에 대한 Effect (roomId = "general")
   () => {
     const connection = createConnection('general');
     connection.connect();
     return () => connection.disconnect();
   },
-  // Dependencies for the first render (roomId = "general")
+  // 첫 렌더링에 대한 의존성 배열 (roomId = "general")
   ['general']
 ```
 
-React runs this Effect, which connects to the `'general'` chat room.
+React는 `'general'` 채팅방에 연결되는 이 Effect를 실행합니다.
 
-#### Re-render with same dependencies {/*re-render-with-same-dependencies*/}
+#### 같은 의존성으로 리렌더링 {/*re-render-with-same-dependencies*/}
 
-Let's say `<ChatRoom roomId="general" />` re-renders. The JSX output is the same:
+`<ChatRoom roomId="general" />`이 다시 렌더링되었다고 가정해 보겠습니다. JSX 출력은 동일합니다:
 
 ```js
-  // JSX for the second render (roomId = "general")
+  // 두 번째 렌더링에 대한 JSX (roomId = "general")
   return <h1>Welcome to general!</h1>;
 ```
 
-React sees that the rendering output has not changed, so it doesn't update the DOM.
+React는 렌더링 출력이 변경되지 않았다고 판단하여 DOM을 업데이트하지 않습니다.
 
-The Effect from the second render looks like this:
+두 번째 렌더링의 Effect는 다음과 같습니다:
 
 ```js
-  // Effect for the second render (roomId = "general")
+  // 두 번째 렌더링에 대한 Effect (roomId = "general")
   () => {
     const connection = createConnection('general');
     connection.connect();
     return () => connection.disconnect();
   },
-  // Dependencies for the second render (roomId = "general")
+  // 두 번째 렌더링에 대한 의존성 배열 (roomId = "general")
   ['general']
 ```
 
-React compares `['general']` from the second render with `['general']` from the first render. **Because all dependencies are the same, React *ignores* the Effect from the second render.** It never gets called.
+React는 두 번째 렌더링의 `['general']`을 첫 번째 렌더링의 `['general']`와 비교합니다. **모든 의존성이 동일하기 때문에 React는 두 번째 렌더링의 Effect를 *무시합니다*.** 호출되지 않습니다.
 
-#### Re-render with different dependencies {/*re-render-with-different-dependencies*/}
+#### 다양한 의존성을 사용하여 리렌더링 {/*re-render-with-different-dependencies*/}
 
-Then, the user visits `<ChatRoom roomId="travel" />`. This time, the component returns different JSX:
+그런 다음 사용자는 `<ChatRoom roomId="travel" />`을 방문합니다. 이번에는 컴포넌트가 다른 JSX를 반환합니다:
 
 ```js
-  // JSX for the third render (roomId = "travel")
+  // 세 번째 렌더링에 대한 JSX (roomId = "travel")
   return <h1>Welcome to travel!</h1>;
 ```
 
-React updates the DOM to change `"Welcome to general"` into `"Welcome to travel"`.
+React가 DOM을 업데이트하여 `"Welcome to general"`를 `"Welcome to travel"`로 변경합니다.
 
-The Effect from the third render looks like this:
+세 번째 렌더링의 Effect는 다음과 같습니다:
 
 ```js
-  // Effect for the third render (roomId = "travel")
+  //세 번째 렌더링에 대한 Effect (roomId = "travel")
   () => {
     const connection = createConnection('travel');
     connection.connect();
     return () => connection.disconnect();
   },
-  // Dependencies for the third render (roomId = "travel")
+  // 세 번째 렌더링에 대한 의존성 배열 (roomId = "travel")
   ['travel']
 ```
 
-React compares `['travel']` from the third render with `['general']` from the second render. One dependency is different: `Object.is('travel', 'general')` is `false`. The Effect can't be skipped.
+React는 세 번째 렌더링의 `['travel']`을 두 번째 렌더링의 `['general']`과 비교합니다. 하나의 의존성이 다릅니다: `Object.is('travel', 'general')`는 `false`입니다. Effect는 생략될 수 없습니다.
 
-**Before React can apply the Effect from the third render, it needs to clean up the last Effect that _did_ run.** The second render's Effect was skipped, so React needs to clean up the first render's Effect. If you scroll up to the first render, you'll see that its cleanup calls `disconnect()` on the connection that was created with `createConnection('general')`. This disconnects the app from the `'general'` chat room.
+**React가 세 번째 렌더링에서 Effect를 적용하기 전에 마지막으로 실행한 Effect를 정리해야 합니다.** 두 번째 렌더링의 Effect가 건너뛰었기 때문에 React는 첫 번째 렌더링의 Effect를 정리해야 합니다. 첫 번째 렌더링까지 스크롤하면 해당 정리 함수에서 `createConnection('general')`으로 생성된 연결에 대해 `disconnect()`를 호출하는 것을 볼 수 있습니다. 이는 앱에서 `'general'` 대화방의 연결을 끊습니다.
 
-After that, React runs the third render's Effect. It connects to the `'travel'` chat room.
+그 후 React는 세 번째 Effect를 실행합니다. `'travel'` 채팅방에 연결됩니다.
 
-#### Unmount {/*unmount*/}
+#### 언마운트 {/*unmount*/}
 
-Finally, let's say the user navigates away, and the `ChatRoom` component unmounts. React runs the last Effect's cleanup function. The last Effect was from the third render. The third render's cleanup destroys the `createConnection('travel')` connection. So the app disconnects from the `'travel'` room.
+마지막으로, 사용자가 다른 곳으로 이동하고 `ChatRoom` 컴포넌트가 언마운트된다고 가정해 봅시다. React는 마지막 Effect의 정리 함수를 실행합니다. 마지막 Effect는 세 번째 렌더링에서 나온 것입니다. 세 번째 렌더링의 정리 함수는 `createConnection('travel')` 연결을 파괴합니다. 따라서 앱은 `'travel'` 대화방의 연결을 끊습니다.
 
-#### Development-only behaviors {/*development-only-behaviors*/}
+#### 개발 환경 전용 동작 {/*development-only-behaviors*/}
 
-When [Strict Mode](/reference/react/StrictMode) is on, React remounts every component once after mount (state and DOM are preserved). This [helps you find Effects that need cleanup](#step-3-add-cleanup-if-needed) and exposes bugs like race conditions early. Additionally, React will remount the Effects whenever you save a file in development. Both of these behaviors are development-only.
+[엄격 모드](/reference/react/StrictMode)가 켜져 있으면 React는 마운트 후 모든 컴포넌트를 한 번 다시 마운트합니다.(상태와 DOM은 보존됩니다.) 이렇게 하면 [정리가 필요한 Effect를 찾고](#step-3-add-cleanup-if-needed) 경쟁 조건과 같은 버그를 조기에 발견할 수 있습니다. 추가적으로, React는 개발 중인 파일을 저장할 때마다 Effect를 다시 마운트 합니다. 이 두가지 동작은 모두 개발 전용입니다.
 
 </DeepDive>
 
 <Recap>
 
-- Unlike events, Effects are caused by rendering itself rather than a particular interaction.
-- Effects let you synchronize a component with some external system (third-party API, network, etc).
-- By default, Effects run after every render (including the initial one).
-- React will skip the Effect if all of its dependencies have the same values as during the last render.
-- You can't "choose" your dependencies. They are determined by the code inside the Effect.
-- Empty dependency array (`[]`) corresponds to the component "mounting", i.e. being added to the screen.
-- In Strict Mode, React mounts components twice (in development only!) to stress-test your Effects.
-- If your Effect breaks because of remounting, you need to implement a cleanup function.
-- React will call your cleanup function before the Effect runs next time, and during the unmount.
+- 이벤트와 달리, Effect는 특정 상호작용이 아닌 렌더링 자체로 인해 발생합니다.
+- Effect를 사용하면 컴포넌트를 외부 시스템(타사 API, 네트워크 등)과 동기화할 수 있습니다.
+- 기본적으로 Effect는 모든 렌더링(초기 렌더링 포함) 후에 실행됩니다.
+- 모든 의존성의 값이 마지막 렌더링 때와 같으면 React는 Effect를 건너뜁니다.
+- 의존성을 "선택"할 수는 없습니다. 의존 요소는 Effect 내부 코드에 의해 결정됩니다.
+- 빈 의존성 배열(`[]`)은 컴포넌트 "마운트", 즉 화면에 추가되는 것에 해당합니다.
+- 엄격 모드에서 React는 컴포넌트를 두 번 마운트하여(개발 환경에서만!) Effect를 스트레스 테스트합니다.
+- 다시 마운트되는 것으로 인해 Effect가 손상된 경우 정리 함수를 구현해야 합니다.
+- React는 다음 Effect가 실행되지 전과 마운트 해제 중에 정리 함수를 호출합니다.
 
 </Recap>
 
 <Challenges>
 
-#### Focus a field on mount {/*focus-a-field-on-mount*/}
+#### 마운트시에 필드에 포커스 맞추기 {/*focus-a-field-on-mount*/}
 
-In this example, the form renders a `<MyInput />` component.
+이 예제에서는 폼이 `<MyInput />` 컴포넌트를 렌더링합니다.
 
-Use the input's [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) method to make `MyInput` automatically focus when it appears on the screen. There is already a commented out implementation, but it doesn't quite work. Figure out why it doesn't work, and fix it. (If you're familiar with the `autoFocus` attribute, pretend that it does not exist: we are reimplementing the same functionality from scratch.)
+입력의 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) 메서드를 사용하여 `MyInput`이 화면에 표시될 때 자동으로 포커스를 맞추도록 합니다. 이미 주석 처리된 구현이 있지만 제대로 동작하지 않습니다. 작동하지 않는 이유를 파악하고 수정하세요.(`autoFocus` 속성에 익숙하다면 이 속성이 존재하지 않는다고 생각하세요: 동일한 기능을 처음부터 다시 구현하고 있기 때문입니다.)
 
 <Sandpack>
 
@@ -977,7 +977,7 @@ import { useEffect, useRef } from 'react';
 export default function MyInput({ value, onChange }) {
   const ref = useRef(null);
 
-  // TODO: This doesn't quite work. Fix it.
+  // TODO: 이것은 제대로 작동하지 않습니다. 고쳐보세요.
   // ref.current.focus()    
 
   return (
@@ -1043,15 +1043,15 @@ body {
 </Sandpack>
 
 
-To verify that your solution works, press "Show form" and verify that the input receives focus (becomes highlighted and the cursor is placed inside). Press "Hide form" and "Show form" again. Verify the input is highlighted again.
+솔루션이 동작하는지 확인하려면 "Show form"을 누르고 input이 포커스를 받는지(강조 표시되고 커서가 내부에 위치하는지) 확인합니다. "Hide form"과 "Show form"을 다시 누릅니다. input이 다시 강조 표시되는지 확인합니다.
 
-`MyInput` should only focus _on mount_ rather than after every render. To verify that the behavior is right, press "Show form" and then repeatedly press the "Make it uppercase" checkbox. Clicking the checkbox should _not_ focus the input above it.
+`MyInput`은 매번 렌더링할 때가 아니라 _마운트할 때만_ 포커스를 맞춰야 합니다. 동작이 올바른지 확인하려면 "Show form"을 누른 다음 "Make it uppercase" 체크박스를 반복해서 누릅니다. 체크박스를 클릭해도 input에 포커스가 맞춰져서는 _안_ 됩니다.
 
 <Solution>
 
-Calling `ref.current.focus()` during render is wrong because it is a *side effect*. Side effects should either be placed inside an event handler or be declared with `useEffect`. In this case, the side effect is _caused_ by the component appearing rather than by any specific interaction, so it makes sense to put it in an Effect.
+렌더링 중에 `ref.current.focus()`를 호출하는 것은 *부작용*이 발생하므로 잘못된 것입니다. 부작용은 이벤트 핸들러 내부에 배치하거나 `useEffect`와 함께 선언해야 합니다. 이 경우 부작용은 특정 상호작용이 아니라 나타나는 컴포넌트로 인해 발생하는 Effect에 넣는 것이 좋습니다.
 
-To fix the mistake, wrap the `ref.current.focus()` call into an Effect declaration. Then, to ensure that this Effect runs only on mount rather than after every render, add the empty `[]` dependencies to it.
+실수를 수정하려면 `ref.current.focus()` 호출을 Effect 선언으로 래핑하세요. 그런 다음, 이 Effect가 렌더링할 때마다 실행되는 것이 아닌 마운트할 때만 실행되도록 빈 `[]` 의존성 배열을 추가합니다.
 
 <Sandpack>
 
@@ -1129,13 +1129,13 @@ body {
 
 </Solution>
 
-#### Focus a field conditionally {/*focus-a-field-conditionally*/}
+#### 조건부로 필드에 포커스하기 {/*focus-a-field-conditionally*/}
 
-This form renders two `<MyInput />` components.
+이 폼은 두개의 `<MyInput />` 컴포넌트를 렌더링합니다.
 
-Press "Show form" and notice that the second field automatically gets focused. This is because both of the `<MyInput />` components try to focus the field inside. When you call `focus()` for two input fields in a row, the last one always "wins".
+"Show form"을 누르면 두 번째 필드에 자동으로 포커스가 맞춰지는 것을 확인할 수 있습니다. 이는 두 `<MyInput />` 컴포넌트 모두 내부의 필드에 포커스를 맞추려고 시도하기 때문입니다. 두 input 필드에 대해 연속으로 `focus()`를 호출하면 항상 마지막 input 필드가 "승리"합니다.
 
-Let's say you want to focus the first field. The first `MyInput` component now receives a boolean `shouldFocus` prop set to `true`. Change the logic so that `focus()` is only called if the `shouldFocus` prop received by `MyInput` is `true`.
+첫 번째 필드에 포커스을 맞추고 싶다고 가정해보겠습니다. 이제 첫 번째 `MyInput` 컴포넌트는 `true`로 설정된 불리언 `shouldFocus` prop을 받습니다. `MyInput`이 수신한 `shouldFocus` prop이 `true`인 경우에만 `focus()`가 호출되도록 로직을 변경합니다.
 
 <Sandpack>
 
@@ -1215,17 +1215,17 @@ body {
 
 </Sandpack>
 
-To verify your solution, press "Show form" and "Hide form" repeatedly. When the form appears, only the *first* input should get focused. This is because the parent component renders the first input with `shouldFocus={true}` and the second input with `shouldFocus={false}`. Also check that both inputs still work and you can type into both of them.
+솔루션을 증명하려면 "Show form"과 "Hide form"를 반복해서 누릅니다. 양식이 나타나면 *첫 번째* input에만 포커스가 맞춰져야 합니다. 이는 부모 컴포넌트가 첫 번째 input은 `shouldFocus={false}`로, 두 번째 입력은 `shouldFocus={false}`로 렌더링하기 때문입니다. 또한 두 input이 모두 작동하고 두 input에 모두 입력할 수 있는지 확인합니다.
 
 <Hint>
 
-You can't declare an Effect conditionally, but your Effect can include conditional logic.
+당신은 조건부로 Effect를 선언할 수는 없지만 Effect에서 조건부 논리를 포함할 수는 있습니다.
 
 </Hint>
 
 <Solution>
 
-Put the conditional logic inside the Effect. You will need to specify `shouldFocus` as a dependency because you are using it inside the Effect. (This means that if some input's `shouldFocus` changes from `false` to `true`, it will focus after mount.)
+Effect안에 조건부 로직을 넣습니다. Effect 내부에서 사용하므로 `shouldFocus`를 의존성으로 지정해야 합니다.(즉, 일부 input의 `shouldFocus`가 `false`에서 `true`로 변경되면 마운트 후에 포커스를 맞춥니다.)
 
 <Sandpack>
 
@@ -1308,15 +1308,15 @@ body {
 
 </Solution>
 
-#### Fix an interval that fires twice {/*fix-an-interval-that-fires-twice*/}
+#### 두 번 실행되는 interval 수정하기 {/*fix-an-interval-that-fires-twice*/}
 
-This `Counter` component displays a counter that should increment every second. On mount, it calls [`setInterval`.](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) This causes `onTick` to run every second. The `onTick` function increments the counter.
+이 `Counter` 컴포넌트는 매초마다 증가해야 하는 카운터를 표시합니다. 마운트하면 이 컴포넌트는 [`setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)을 호출합니다. 이렇게 하면 `onTick`이 매초마다 실행됩니다. `onTick` 함수는 카운터를 증가시킵니다.
 
-However, instead of incrementing once per second, it increments twice. Why is that? Find the cause of the bug and fix it.
+그러나 초당 한 번씩 증가하는 대신 두 번씩 증가합니다. 왜 그럴까요? 버그의 원인을 찾아서 수정해보세요.
 
 <Hint>
 
-Keep in mind that `setInterval` returns an interval ID, which you can pass to [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) to stop the interval.
+`setInterval`은 interval ID를 반환하며, 이를 [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval)에 전달하여 interval을 중지할 수 있습니다.
 
 </Hint>
 
@@ -1373,11 +1373,11 @@ body {
 
 <Solution>
 
-When [Strict Mode](/reference/react/StrictMode) is on (like in the sandboxes on this site), React remounts each component once in development. This causes the interval to be set up twice, and this is why each second the counter increments twice.
+[엄격 모드](/reference/react/StrictMode)가 켜져 있으면(이 사이트의 샌드박스와 같이) React는 개발 중에 각 컴포넌트를 한 번씩 다시 마운트합니다. 이로 인해 interval이 두 번 설정되므로 초마다 카운터가 두 번씩 증가합니다.
 
-However, React's behavior is not the *cause* of the bug: the bug already exists in the code. React's behavior makes the bug more noticeable. The real cause is that this Effect starts a process but doesn't provide a way to clean it up.
+그러나 React의 동작이 버그의 *원인*은 아닙니다: 버그는 이미 코드에 존재합니다. React의 동작은 버그를 더 눈에 띄게 만듭니다. 진짜 원인은 이 Effect가 프로세스를 시작하지만 이를 정리할 방법을 제공하지 않기 때문입니다.
 
-To fix this code, save the interval ID returned by `setInterval`, and implement a cleanup function with [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval):
+이 코드를 수정하려면 `setInterval`이 반환한 interval ID를 저장하고 [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval)로 정리 함수를 구현하세요:
 
 <Sandpack>
 
@@ -1431,13 +1431,13 @@ body {
 
 </Sandpack>
 
-In development, React will still remount your component once to verify that you've implemented cleanup well. So there will be a `setInterval` call, immediately followed by `clearInterval`, and `setInterval` again. In production, there will be only one `setInterval` call. The user-visible behavior in both cases is the same: the counter increments once per second.
+개발 환경에서, React는 정리 함수를 잘 구현했는지 확인하기 위해 컴포넌트를 한 번 다시 마운트합니다. 따라서 `setInterval` 호출이 있고, 바로 뒤에 `clearInterval` 호출이 있고, 다시 `setInterval` 호출이 있을 것입니다. 프로덕션 환경에서는 `setInterval` 호출이 한 번만 있을 것입니다. 두 경우 모두 사용자에게 표시되는 동작은 동일합니다: 카운터가 초당 한 번씩 증가합니다.
 
 </Solution>
 
-#### Fix fetching inside an Effect {/*fix-fetching-inside-an-effect*/}
+#### Effect 내부 가져오기 수정 {/*fix-fetching-inside-an-effect*/}
 
-This component shows the biography for the selected person. It loads the biography by calling an asynchronous function `fetchBio(person)` on mount and whenever `person` changes. That asynchronous function returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) which eventually resolves to a string. When fetching is done, it calls `setBio` to display that string under the select box.
+이 컴포넌트는 선택한 인물의 약력을 표시합니다. 이 컴포넌트는 마운트할 때와 `person`이 변경될 때마다 비동기 함수 `fetchBio(person)`를 호출하여 약력을 로드합니다. 이 비동기 함수는 결국 문자열로 resolve되는 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)를 반환합니다. 가져오기가 완료되면 `setBio`를 호출하여 select box 아래에 해당 문자열을 표시합니다.
 
 <Sandpack>
 
@@ -1487,30 +1487,30 @@ export async function fetchBio(person) {
 </Sandpack>
 
 
-There is a bug in this code. Start by selecting "Alice". Then select "Bob" and then immediately after that select "Taylor". If you do this fast enough, you will notice that bug: Taylor is selected, but the paragraph below says "This is Bob's bio."
+이 코드에는 버그가 있습니다. 먼저 "Alice"를 선택합니다. 그런 다음 "Bob"을 선택한 다음 바로 뒤에 "Taylor"를 선택합니다. 이 작업을 충분히 빠르게 수행하면 해당 버그를 발견할 수 있습니다: Taylor가 선택되었지만 아래 단락에 "This is Bob's bio."라고 표시됩니다.
 
-Why does this happen? Fix the bug inside this Effect.
+왜 이런 일이 발생하나요? 이 Effect 내부의 버그를 수정하세요.
 
 <Hint>
 
-If an Effect fetches something asynchronously, it usually needs cleanup.
+Effect가 비동기적으로 무언가를 가져오는 경우 일반적으로 정리 함수가 필요합니다.
 
 </Hint>
 
 <Solution>
 
-To trigger the bug, things need to happen in this order:
+버그를 트리거하려면 다음 순서로 일이 발생해야 합니다:
 
-- Selecting `'Bob'` triggers `fetchBio('Bob')`
-- Selecting `'Taylor'` triggers `fetchBio('Taylor')`
-- **Fetching `'Taylor'` completes *before* fetching `'Bob'`**
-- The Effect from the `'Taylor'` render calls `setBio('This is Taylor’s bio')`
-- Fetching `'Bob'` completes
-- The Effect from the `'Bob'` render calls `setBio('This is Bob’s bio')`
+- `Bob`을 선택하면 `fetchBio('Bob')`가 트리거됩니다.
+- `Taylor`를 선택하면 `fetchBio('Taylor')`가 트리거됩니다.
+- **`'Taylor'` 가져오기가 `'Bob'` 가져오기 전에 완료됩니다.**
+- `'Taylor'`의 렌더링 Effect가 `setBio('This is Taylor’s bio')`를 호출합니다.
+- `'Bob'` 가져오기가 완료됩니다.
+- `'Bob'`의 렌더링 Effect가 `setBio('This is Bob’s bio')`를 호출합니다.
 
-This is why you see Bob's bio even though Taylor is selected. Bugs like this are called [race conditions](https://en.wikipedia.org/wiki/Race_condition) because two asynchronous operations are "racing" with each other, and they might arrive in an unexpected order.
+이것이 Taylor가 선택되었는데도 Bob의 약력이 표시되는 이유입니다. 이와 같은 버그를 [race conditions](https://en.wikipedia.org/wiki/Race_condition)이라고 부르는 이유는 두 개의 비동기 연산이 서로 "경쟁"하고 있으며 예상치 못한 순서로 도착할 수 있기 때문입니다.
 
-To fix this race condition, add a cleanup function:
+이 경쟁 조건을 수정하려면 정리 함수를 추가하세요:
 
 <Sandpack>
 
@@ -1564,16 +1564,16 @@ export async function fetchBio(person) {
 
 </Sandpack>
 
-Each render's Effect has its own `ignore` variable. Initially, the `ignore` variable is set to `false`. However, if an Effect gets cleaned up (such as when you select a different person), its `ignore` variable becomes `true`. So now it doesn't matter in which order the requests complete. Only the last person's Effect will have `ignore` set to `false`, so it will call `setBio(result)`. Past Effects have been cleaned up, so the `if (!ignore)` check will prevent them from calling `setBio`:
+각 렌더링의 Effect에는 자체 `ignore` 변수가 있습니다. 처음에는, `ignore` 변수가 `false`로 설정됩니다. 그러나 Effect가 정리되면(다른 사람을 선택하는 경우 등) `ignore` 변수가 참이 됩니다. 따라서 이제 요청이 완료되는 순서는 중요하지 않습니다. 마지막 사람의 Effect만 `ignore` 변수가 거짓으로 설정되어 있으므로 `setBio(result)`를 호출합니다. 과거의 Effect는 정리되었으므로 `if(!ignore)` 검사는 `setBio`를 호출하지 못하도록 합니다:
 
-- Selecting `'Bob'` triggers `fetchBio('Bob')`
-- Selecting `'Taylor'` triggers `fetchBio('Taylor')` **and cleans up the previous (Bob's) Effect**
-- Fetching `'Taylor'` completes *before* fetching `'Bob'`
-- The Effect from the `'Taylor'` render calls `setBio('This is Taylor’s bio')`
-- Fetching `'Bob'` completes
-- The Effect from the `'Bob'` render **does not do anything because its `ignore` flag was set to `true`**
+- `Bob`을 선택하면 `fetchBio('Bob')`가 트리거됩니다.
+- `'Taylor'`를 선택하면 `fetchBio('Taylor')`가 트리거되고 **이전 Bob의 Effect가 정리됩니다.**
+- `'Taylor'` 가져오기가 `'Bob'` 가져오기 *전에* 완료됩니다.
+- `'Taylor'` 렌더링의 Effect는 `setBio('This is Taylor’s bio')`를 호출합니다.
+- `'Bob'`의 가져오기가 완료됩니다.
+- `'Bob'`의 렌더링의 Effect는 `ignore` 플래그가 `true`로 설정되었기 때문에 아무 작업도 수행하지 않습니다.
 
-In addition to ignoring the result of an outdated API call, you can also use [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) to cancel the requests that are no longer needed. However, by itself this is not enough to protect against race conditions. More asynchronous steps could be chained after the fetch, so using an explicit flag like `ignore` is the most reliable way to fix this type of problems.
+오래된 API 호출의 결과를 무시하는 것 외에도 [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)를 사용하여 더 이상 필요하지 않은 요청을 취소할 수도 있습니다. 그러나 이것만으로는 경쟁 조건을 방지하기에 충분하지 않습니다. 가져오기 이후에 더 많은 비동기 단계가 연쇄적으로 발생할 수 있으므로 `ignore`과 같은 명시적 플래그를 사용하는 것이 이러한 유형의 문제를 해결하는 가장 신뢰할 수 있는 방법입니다.
 
 </Solution>
 
