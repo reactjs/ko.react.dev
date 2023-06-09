@@ -1,5 +1,5 @@
 ---
-title: Effect로 동기화
+title: Effect로 동기화하기
 ---
 
 <Intro>
