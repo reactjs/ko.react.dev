@@ -319,6 +319,7 @@ export default function Square() {
   return <button className="square">X</button>;
 }
 ```
+
 두 번째 줄은 버튼을 반환합니다. JavaScript의 `return` 키워드는 해당 키워드 뒤에 오는 모든 것이 함수 호출자에게 값으로 반환됨을 의미합니다. `<button>`은 *JSX 엘리먼트*입니다. JSX 엘리먼트는 JavaScript 코드와 HTML 태그의 조합으로 표시할 내용을 설명합니다. `className="square"`는 버튼 *prop* 또는 프로퍼티로, CSS에 버튼의 스타일을 지정하는 방법을 알려줍니다. `X`는 버튼 내부에 표시되는 텍스트이며, `</button>`은 JSX 엘리먼트를 닫아 버튼 내부에 다음 콘텐츠를 배치해서는 안 됨을 나타냅니다.
 #### `styles.css` {/*stylescss*/}
 
@@ -912,7 +913,7 @@ React 개발자 도구를 사용하면 React 컴포넌트의 props와 state를 �
 
 </Note>
 
-## 게임 완성하기 {/*completing-the-game*/}
+## 게임 완료하기 {/*completing-the-game*/}
 
 이제 틱택토 게임을 위한 기본적인 구성 요소는 모두 갖추었습니다. 게임을 완성하기 위해서는 보드에 “X”와 “O”를 번갈아 배치해야 하며, 승자를 결정할 방법이 필요합니다.
 
