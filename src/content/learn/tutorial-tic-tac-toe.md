@@ -4,21 +4,21 @@ title: '자습서: 틱택토 게임'
 
 <Intro>
 
-이 자습서에서는 작은 틱택토 게임을 만들어 볼 것입니다. 이 자습서는 현재 사용되는 React 지식을 전제로 하지 않습니다. 이 자습서에서 배우게 될 기술은 모든 React 앱을 만드는데 기본이 되는 기술이며 이 기술들을 완전히 이해하면 React에 대해 깊게 이해할 수 있습니다.
+이 자습서에서는 작은 틱택토 게임을 만들어 볼 것입니다. 이 자습서는 현재 사용되는 React 지식을 전제로 하지 않습니다. 이 자습서에서 배우게 될 기술은 모든 React 앱을 만드는데 기본이 되는 기술이며 이 기술을 완전히 이해하면 React에 대해 깊게 이해할 수 있습니다.
 
 </Intro>
 
 <Note>
 
 이 자습서는 **직접 해보면서 배우는 것**을 선호하고, 빠르게 무언가를 만들어 보고 싶은 분들을 위해 설계되었습니다.
-각 개념을 단계별로 학습하는 것을 선호하신다면 [UI 표현하기](/learn/describing-the-ui)부터 시작하세요.
+각 개념을 단계별로 학습하는 것을 선호한다면 [UI 표현하기](/learn/describing-the-ui)부터 시작하세요.
 
 </Note>
 
 자습서는 아래와 같이 몇 가지 부문으로 나뉩니다.
 
 - [자습서 환경설정](#setup-for-the-tutorial)은 자습서를 따를 수 있는 **시작점**을 제공합니다.
-- [개요](#overview)에서는 React의 **핵심**(components, props, state)을 배울 수 있습니다.
+- [개요](#overview)에서는 React의 **핵심**(컴포넌트, props, state)을 배울 수 있습니다.
 - [게임 완료하기](#completing-the-game)에서는 React 개발에서 **가장 흔히 쓰이는 기술**을 배울 수 있습니다.
 - [시간여행 추가하기](#adding-time-travel)에서는 React의 고유한 강점에 대해 **더 깊은 통찰력**을 얻을 수 있습니다.
 
@@ -280,15 +280,15 @@ body {
 
 ### 초기 코드 살펴보기 {/*inspecting-the-starter-code*/}
 
-CodeSandBox에는 세 가지 주요 부문이 있습니다.
+CodeSandBox에는 세 가지 주요 구역이 있습니다.
 
 ![CodeSandBox의 초기 코드](../images/tutorial/react-starter-code-codesandbox.png)
 
-1. `App.js`, `index.js`, `style.css` 와 같은 파일 목록과 `public` 폴더가 있는 _파일_ 섹션
+1. `App.js`, `index.js`, `style.css` 와 같은 파일 목록과 `public` 폴더가 있는 _파일_ 구역
 1. 선택한 파일의 소스 코드를 볼 수 있는 _코드 편집기_
-1. 작성한 코드가 어떻게 보이는지 확인할 수 있는 _브라우저_ 섹션
+1. 작성한 코드가 어떻게 보이는지 확인할 수 있는 _브라우저_ 구역
 
-_파일_ 섹션에서 `App.js` 파일을 선택하세요. _코드 편집기_ 에서 해당 파일의 내용이 있어야 합니다.
+_파일_ 구역에서 `App.js` 파일을 선택하세요. _코드 편집기_ 에서 해당 파일의 내용이 있어야 합니다.
 
 ```jsx
 export default function Square() {
@@ -304,7 +304,7 @@ _브라우저_ 구역에 아래와 같이 X가 있는 사각형이 표시되어�
 
 #### `App.js` {/*appjs*/}
 
-`App.js`의 코드는 _컴포넌트_ 를 생성합니다. React에서 컴포넌트는 사용자 인터페이스 일부를 표시하는 재사용 가능한 코드의 조각입니다. 컴포넌트는 애플리케이션의 UI엘리먼트를 렌더링, 관리, 업데이트할 때 사용합니다. 컴포넌트를 한 줄씩 살펴보면서 무슨 일이 일어나는지 알아보겠습니다.
+`App.js`의 코드는 _컴포넌트_ 를 생성합니다. React에서 컴포넌트는 사용자 인터페이스 일부를 표시하는 재사용 가능한 코드의 조각입니다. 컴포넌트는 애플리케이션의 UI 엘리먼트를 렌더링, 관리, 업데이트할 때 사용합니다. 컴포넌트를 한 줄씩 살펴보면서 무슨 일이 일어나는지 알아보겠습니다.
 
 ```js {1}
 export default function Square() {
@@ -319,7 +319,7 @@ export default function Square() {
   return <button className="square">X</button>;
 }
 ```
-두 번째 줄은 버튼을 반환합니다. JavaScript의 `return` 키워드는 해당 키워드 뒤에 오는 모든 것이 함수 호출자에게 값으로 반환됨을 의미합니다. `<button>`은 *JSX 엘리먼트*입니다. JSX 엘리먼트는 JavaScript 코드와 HTML 태그들의 조합으로 표시할 내용을 설명합니다. `className="square"`는 버튼 *prop* 또는 프로퍼티로, CSS에 버튼의 스타일을 지정하는 방법을 알려줍니다. `X`는 버튼 내부에 표시되는 텍스트이며, `</button>`은 JSX 엘리먼트를 닫아 버튼 내부에 다음 콘텐츠를 배치해서는 안 됨을 나타냅니다.
+두 번째 줄은 버튼을 반환합니다. JavaScript의 `return` 키워드는 해당 키워드 뒤에 오는 모든 것이 함수 호출자에게 값으로 반환됨을 의미합니다. `<button>`은 *JSX 엘리먼트*입니다. JSX 엘리먼트는 JavaScript 코드와 HTML 태그의 조합으로 표시할 내용을 설명합니다. `className="square"`는 버튼 *prop* 또는 프로퍼티로, CSS에 버튼의 스타일을 지정하는 방법을 알려줍니다. `X`는 버튼 내부에 표시되는 텍스트이며, `</button>`은 JSX 엘리먼트를 닫아 버튼 내부에 다음 콘텐츠를 배치해서는 안 됨을 나타냅니다.
 #### `styles.css` {/*stylescss*/}
 
 CodeSandBox의 _파일_ 구역에서 `styles.css` 파일을 여세요. 이 파일은 React 앱의 스타일을 정의합니다. 처음 두 개의 _CSS 선택자_ 인 `*`와 `body`는 앱 대부분의 스타일을 정의하고, `.square` 선택자는 className 프로퍼티가 `square`로 설정된 모든 컴포넌트의 스타일을 정의합니다. 초기 코드에서는 `App.js` 파일의 Square 컴포넌트의 버튼과 매치됩니다.
@@ -550,7 +550,7 @@ export default function Board() {
 }
 ```
 
-브라우저의 `div`와 달리, 직접 만든 `Board`와 `Square` 컴포넌트는 대문자로 시작해야 한다는 점에 유의하세요.
+브라우저의 `div`와 달리, 직접 만든 `Board`와 `Square` 컴포넌트는 반드시 대문자로 시작해야 한다는 점에 유의하세요.
 
 보드를 살펴보겠습니다.
 
@@ -592,7 +592,7 @@ function Square({ value }) {
 
 ![비어있는 보드](../images/tutorial/empty-board.png)
 
-보드가 비어있는 이유는 `Board` 컴포넌트가 렌더링하는 각 `Square` 컴포넌트에 `value` prop를 아직 전달하지 않았기 때문입니다. 이 문제를 해결하기 위해 `Board` 컴포넌트가 렌더링하는 각 `Square` 컴포넌트에 `value` prop를 추가하겠습니다.
+보드가 비어있는 이유는 `Board` 컴포넌트가 렌더링하는 각 `Square` 컴포넌트에 아직 `value` prop를 전달하지 않았기 때문입니다. 이 문제를 해결하기 위해 `Board` 컴포넌트가 렌더링하는 각 `Square` 컴포넌트에 `value` prop를 추가하겠습니다.
 
 ```js {5-7,10-12,15-17}
 export default function Board() {
@@ -748,7 +748,7 @@ function Square() {
 
 `value`는 값을 저장하고 `setValue`는 값을 변경하는 데 사용하는 함수입니다. `useState`에 전달된 `null`은 이 state 변수의 초깃값으로 사용되므로 현재 `value`는 `null`과 같습니다.
 
-`Square` 컴포넌트는 더 이상 props를 허용하지 않으므로 보드 컴포넌트가 생성한 9개의 사각형 컴포넌트에서 `value` prop를 제거하겠습니다.
+`Square` 컴포넌트는 더 이상 props를 허용하지 않으므로 보드 컴포넌트가 생성한 9개의 사각형 컴포넌트에서 `value` prop를 제거하세요.
 
 ```js {6-8,11-13,16-18}
 // ...
@@ -800,7 +800,7 @@ function Square() {
 
 ![보드에 x를 추가하기](../images/tutorial/tictac-adding-x-s.gif)
 
-각 사각형에는 고유한 `state`가 있습니다. 각 사각형에 저장된 `value`는 다른 사각형과 완전히 독립적입니다. 컴포넌트에서 `set` 함수를 호출하면 React는 그 안에 있는 자식 컴포넌트도 자동으로 업데이트합니다.
+각 사각형에는 고유한 state가 있습니다. 각 사각형에 저장된 `value`는 다른 사각형과 완전히 독립적입니다. 컴포넌트에서 `set` 함수를 호출하면 React는 그 안에 있는 자식 컴포넌트도 자동으로 업데이트합니다.
 
 위의 변경 사항을 적용한 코드는 다음과 같습니다.
 
@@ -1065,11 +1065,11 @@ body {
 
 </Sandpack>
 
-이제 각 사각형은 `'X'` , `'O'` , 또는 빈 사각형의 경우 `null` 이 되는 `value` prop를 받습니다.
+이제 각 사각형은 `'X'` , `'O'` , 또는 빈 사각형의 경우 `null`이 되는 `value` prop를 받습니다.
 
 다음으로 `Square`가 클릭 되었을 때 발생하는 동작을 변경하겠습니다. 이제 `Board` 컴포넌트가 어떤 사각형이 채워졌는지를 관리하므로 `Square`가 `Board`의 state를 업데이트할 방법을 만들어야 합니다. 컴포넌트는 자신이 정의한 state에만 접근할 수 있으므로 `Square`에서 `Board`의 state를 직접 변경할 수 없습니다.
 
-대신에, `Board` 컴포넌트에서 `Square` 컴포넌트로 함수를 전달하고 사각형이 클릭 될 때 `Square` 가 해당 함수를 호출하도록 할 수 있습니다. `Square` 컴포넌트가 클릭 될 때 호출할 함수부터 시작하겠습니다. `onSquareClick`으로 해당 함수를 호출하세요.
+대신에 `Board` 컴포넌트에서 `Square` 컴포넌트로 함수를 전달하고 사각형이 클릭 될 때 `Square` 가 해당 함수를 호출하도록 할 수 있습니다. `Square` 컴포넌트가 클릭 될 때 호출할 함수부터 시작하겠습니다. `onSquareClick`으로 해당 함수를 호출하세요.
 
 ```js {3}
 function Square({ value }) {
@@ -1132,7 +1132,7 @@ export default function Board() {
 
 <Note>
 
-JavaScript는 [클로저](https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures)를 지원하므로 내부 함수가 (예: `handleClick`) 외부 함수(예: `Board`)에 정의된 변수 및 함수에 접근할 수 있습니다. `handleClick` 함수는 `squares`의 state를 읽고 `setSquares` 메서드를 호출할 수 있는데, 이 두 함수는 `Board` 함수 내부에 정의되어 있기 때문입니다.
+JavaScript는 [클로저](https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures)를 지원하므로 내부 함수가(예: `handleClick`) 외부 함수(예: `Board`)에 정의된 변수 및 함수에 접근할 수 있습니다. `handleClick` 함수는 `squares`의 state를 읽고 `setSquares` 메서드를 호출할 수 있는데, 이 두 함수는 `Board` 함수 내부에 정의되어 있기 때문입니다.
 
 </Note>
 
@@ -1188,7 +1188,7 @@ export default function Board() {
 }
 ```
 
-새로운 문법 `() =>`에 주목하세요. 여기서 `() => handleClick(0)`은 *화살표 함수*로, 함수를 짧게 정의하는 방법입니다. 사각형이 클릭 되면, `=>` “화살표” 뒤의 코드가 실행되어 `handleClick(0)`을 호출합니다.
+새로운 문법 `() =>`에 주목하세요. 여기서 `() => handleClick(0)`은 *화살표 함수*로, 함수를 짧게 정의하는 방법입니다. 사각형이 클릭 되면 `=>` “화살표” 뒤의 코드가 실행되어 `handleClick(0)`을 호출합니다.
 
 이제 전달한 화살표 함수에서 `handleClick`을 호출하도록 나머지 8개의 사각형 컴포넌트를 수정해야 합니다. `handleClick`을 호출할 때 인수가 올바른 사각형의 인덱스에 해당하는지 확인하세요.
 
@@ -1219,7 +1219,7 @@ export default function Board() {
 
 이제 보드의 사각형을 클릭하여 X를 다시 추가할 수 있습니다.
 
-![보드을 X로 채우기](../images/tutorial/tictac-adding-x-s.gif)
+![보드를 X로 채우기](../images/tutorial/tictac-adding-x-s.gif)
 
 하지만 이번에는 모든 state 관리가 사각형이 아닌 `Board` 컴포넌트에서 처리됩니다!
 
@@ -1356,7 +1356,7 @@ const nextSquares = ['X', null, null, null, null, null, null, null, null];
 
 불변성을 사용하면 복잡한 기능을 훨씬 쉽게 구현할 수 있습니다. 우리는 이 자습서의 뒷부분에서 게임의 진행 과정을 검토하고 과거 움직임으로 “돌아가기”를 할 수 있는 “시간 여행” 기능을 구현할 예정입니다. 특정 작업을 실행 취소하고 다시 실행하는 기능은 이 게임에만 국한된 것이 아닌 앱의 일반적인 요구사항입니다. 직접적인 데이터 변경을 피하면 이전 버전의 데이터를 그대로 유지하여 나중에 재사용(또는 초기화)할 수 있습니다.
 
-불변성을 사용하는 것의 또 다른 장점이 있습니다. 기본적으로 부모 컴포넌트의 state가 변경되면 모든 자식 컴포넌트가 자동으로 다시 렌더링 됩니다. 여기에는 변경 사항이 없는 자식 컴포넌트도 포함됩니다. 리 렌더링 자체가 사용자에게 보이는 것은 아니지만 성능상의 이유로 트리의 영향을 받지 않는 부분의 리 렌더링을 피하는 것이 좋습니다. 불변성을 사용하면 컴포넌트가 데이터의 변경 여부를 저렴한 비용으로 판단할 수 있습니다. [the `memo` API reference](/reference/react/memo) 문서에서 React가 컴포넌트를 다시 렌더링할 시점을 선택하는 방법에 대해 살펴볼 수 있습니다.
+불변성을 사용하는 것의 또 다른 장점이 있습니다. 기본적으로 부모 컴포넌트의 state가 변경되면 모든 자식 컴포넌트가 자동으로 다시 렌더링 됩니다. 여기에는 변경 사항이 없는 자식 컴포넌트도 포함됩니다. 리렌더링 자체가 사용자에게 보이는 것은 아니지만 성능상의 이유로 트리의 영향을 받지 않는 부분의 리렌더링을 피하는 것이 좋습니다. 불변성을 사용하면 컴포넌트가 데이터의 변경 여부를 저렴한 비용으로 판단할 수 있습니다. [`memo` API 레퍼런스](/reference/react/memo)에서 React가 컴포넌트를 다시 렌더링할 시점을 선택하는 방법에 대해 살펴볼 수 있습니다.
 
 ### 순서 정하기 {/*taking-turns*/}
 
@@ -1403,9 +1403,9 @@ export default function Board() {
 
 ![O가 X를 덮어씁니다.](../images/tutorial/o-replaces-x.gif)
 
-`X`가 `O`로 덮어씌워집니다! 이렇게 하면 게임이 좀 더 흥미로워질 수 있지만 지금은 원래의 규칙을 유지하겠습니다.
+`O`가 `X`를 덮어씌웁니다! 이렇게 하면 게임이 좀 더 흥미로워질 수 있지만 지금은 원래의 규칙을 유지하겠습니다.
 
-지금은 `X`와 `O`로 사각형을 표시할 때 먼저 해당 사각형에 이미 `X` 또는 `O`값이 있는지 확인하고 있지 않습니다. *일찍이 돌아와서* 이 문제를 해결하기 위해 사각형에 이미 `X`와 `O`가 있는지 확인하겠습니다. 사각형이 이미 채워져 있는 경우 보드의 state를 업데이트하기 전에 `handleClick` 함수에서 일찍 `return` 하겠습니다.
+지금은 `X`와 `O`로 사각형을 표시할 때 먼저 해당 사각형에 이미 `X` 또는 `O`값이 있는지 확인하고 있지 않습니다. *일찍이 돌아와서* 이 문제를 해결하기 위해 사각형에 이미 `X`와 `O`가 있는지 확인하겠습니다. 사각형이 이미 채워져 있는 경우 보드의 state를 업데이트하기 전에 `handleClick` 함수에서 조기에 `return` 하겠습니다.
 
 ```js {2,3,4}
 function handleClick(i) {
@@ -1748,7 +1748,7 @@ body {
 
 이제 과거 이동 목록을 표시하기 위해 새로운 최상위 컴포넌트 `Game`을 작성하세요. 여기에 전체 게임 기록을 포함하는 `history` state를 배치하겠습니다.
 
-`history` state를 `Game` 컴포넌트에 배치하면 자식 `Board` 컴포넌트에서 `squares` state를 제거할 수 있습니다. `Square` 컴포넌트에서 `Board` 컴포넌트로 state를 “끌어올린” 것처럼, 이제 `Board` 컴포넌트에서 최상위 `Game` 컴포넌트로 state를 끌어올릴 수 있습니다. 이렇게 하면 `Game` 컴포넌트가 `Board` 컴포넌트의 데이터를 완전히 제어하고 `Board`의 `history`에서 이전 순서를 렌더링하도록 지시할 수 있습니다.
+`history` state를 `Game` 컴포넌트에 배치하면 자식 `Board` 컴포넌트에서 `squares` state를 제거할 수 있습니다. `Square` 컴포넌트에서 `Board` 컴포넌트로 state를 “끌어올렸던” 것처럼, 이제 `Board` 컴포넌트에서 최상위 `Game` 컴포넌트로 state를 끌어올릴 수 있습니다. 이렇게 하면 `Game` 컴포넌트가 `Board` 컴포넌트의 데이터를 완전히 제어하고 `Board`의 `history`에서 이전 순서를 렌더링하도록 지시할 수 있습니다.
 
 먼저 `export default`가 있는 `Game` 컴포넌트를 추가하세요. 일부 마크업 안에 `Board` 컴포넌트를 렌더링하도록 하세요.
 
@@ -1773,7 +1773,7 @@ export default function Game() {
 
 `export default` 키워드를 `function Board() {` 선언 앞에서 제거하고 `function Game() {` 선언 앞에 추가한 것에 유의하세요. 이것은 `index.js` 파일에서 `Board` 컴포넌트 대신 `Game` 컴포넌트를 최상위 컴포넌트로 사용하도록 지시합니다. `Game` 컴포넌트가 반환하는 내용에 추가한 div는 나중에 보드에 추가할 게임 정보를 위한 공간을 확보합니다.
 
-다음 플레이어와 이동 기록을 추적하기 위해 `Game` 컴포넌트에 아래의 state를 추가하세요.
+다음 플레이어와 이동 기록을 추적하기 위해 `Game` 컴포넌트에 몇개의 state를 추가하세요.
 
 ```js {2-3}
 export default function Game() {
@@ -1784,7 +1784,7 @@ export default function Game() {
 
 `[Array(9).fill(null)]`은 단일 항목배열로 그 자체가 9개의 `null`의 배열이라는 점에 유의하세요.
 
-현재 이동에 대한 사각형들을 렌더링하려면 `history`에서 마지막 사각형들의 배열을 읽어야 합니다. 렌더링 중에 계산할 수 있는 충분한 정보가 이미 있으므로 `useState`는 필요하지 않습니다.
+현재 이동에 대한 사각형을 렌더링하려면 `history`에서 마지막 사각형의 배열을 읽어야 합니다. 렌더링 중에 계산할 수 있는 충분한 정보가 이미 있으므로 `useState`는 필요하지 않습니다.
 
 ```js {4}
 export default function Game() {
@@ -1815,7 +1815,7 @@ export default function Game() {
 }
 ```
 
-`Board` 컴포넌트가 props에 의해 완전히 제어되도록 만들겠습니다. `Board` 컴포넌트를 `xIsNext`, `squares`, 그리고 플레이어가 움직일 때마다 `Board`가 업데이트된 사각형들을 배열로 호출할 수 있는 새로운 `onPlay` 함수를 props로 받도록 변경하세요. 다음으로 `Board` 함수에서 `useState`를 호출하는 처음 두 줄을 제거하세요.
+`Board` 컴포넌트가 props에 의해 완전히 제어되도록 만들겠습니다. `Board` 컴포넌트를 `xIsNext`, `squares`, 그리고 플레이어가 움직일 때마다 `Board`가 업데이트된 사각형을 배열로 호출할 수 있는 새로운 `onPlay` 함수를 props로 받도록 변경하세요. 다음으로 `Board` 함수에서 `useState`를 호출하는 처음 두 줄을 제거하세요.
 
 ```js {1}
 function Board({ xIsNext, squares, onPlay }) {
@@ -1850,7 +1850,7 @@ function Board({ xIsNext, squares, onPlay }) {
 
 `handlePlay`가 호출되면 무엇을 해야 할까요? 이전의 보드는 업데이트된 `setSquares`를 호출했지만, 이제는 업데이트된 `squares` 배열을 `onPlay`로 전달한다는 걸 기억하세요.
 
-`handlePlay` 함수는 리 렌더링을 촉발하기 위해 `Game`의 state를 업데이트해야 하지만, 더 이상 호출할 수 있는 `setSquares` 함수가 없으며 대신 이 정보를 저장하기 위해 `history` state 변수를 사용하고 있습니다. 업데이트된 `squares` 배열을 새 히스토리 항목으로 추가하여 `history`를 업데이트해야 하고, Board에서 했던 것처럼 `xIsNext` 값을 반전시켜야 합니다.
+`handlePlay` 함수는 리렌더링을 촉발하기 위해 `Game`의 state를 업데이트해야 하지만, 더 이상 호출할 수 있는 `setSquares` 함수가 없으며 대신 이 정보를 저장하기 위해 `history` state 변수를 사용하고 있습니다. 업데이트된 `squares` 배열을 새 히스토리 항목으로 추가하여 `history`를 업데이트해야 하고, Board에서 했던 것처럼 `xIsNext` 값을 반전시켜야 합니다.
 
 ```js {4-5}
 export default function Game() {
@@ -1863,7 +1863,7 @@ export default function Game() {
 }
 ```
 
-여기서 `[...history, nextSquares]` 는 `history`에 있는 모든 항목을 포함하는 새 배열을 만들고 그 뒤에 `nextSquares`를 만듭니다. (`...history` [*전개 구문*](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Spread_syntax)을 "`history` 의 모든 항목 열거"로 읽을 수 있습니다)
+위에서 `[...history, nextSquares]` 는 `history`에 있는 모든 항목을 포함하는 새 배열을 만들고 그 뒤에 `nextSquares`를 만듭니다. (`...history` [*전개 구문*](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Spread_syntax)을 "`history` 의 모든 항목 열거"로 읽을 수 있습니다)
 
 예를 들어, `history`가 `[[null,null,null], ["X",null,null]]`이고 `nextSquares` 가 `["X",null,"O"]`라면 새로운 `[...history, nextSquares]` 배열은 `[[null,null,null], ["X",null,null], ["X",null,"O"]]`가 될 것입니다.
 
@@ -2022,7 +2022,7 @@ body {
 
 `<button>`과 같은 React 엘리먼트는 일반 JavaScript 객체이므로 애플리케이션에서 전달할 수 있습니다. React에서 여러 엘리먼트를 렌더링하려면 React 엘리먼트 배열을 사용할 수 있습니다.
 
-이미 state에 이동 `history` 배열이 있으므로 이를 React 엘리먼트 배열로 변환해야 합니다. JavaScript에서 한 배열을 다른 배열로 변환하려면 [array `map` 메서드](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map)를 사용하면 됩니다.
+이미 state에 이동 `history` 배열이 있으므로 이를 React 엘리먼트 배열로 변환해야 합니다. JavaScript에서 한 배열을 다른 배열로 변환하려면 [배열 `map` 메서드](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map)를 사용하면 됩니다.
 
 ```jsx
 [1, 2, 3].map((x) => x * 2) // [2, 4, 6]
@@ -2265,7 +2265,7 @@ body {
 <li>Alexa: 5 tasks left</li>
 ```
 
-아마 task의 개수가 업데이트되었을 뿐만 아니라 Alexa와 Ben의 순서가 바뀌고 Claudia가 두 사람 사이에 추가되었다고 생각할 것입니다. 그러나 React는 컴퓨터 프로그램이므로 우리가 의도한 바가 무엇인지 알지 못합니다. 그러므로 리스트의 항목에 _key_ 프로퍼티를 지정하여 각 리스트의 항목이 다른 항목들과 다르다는 것을 구별해 주어야 합니다. 만약 데이터베이스에서 데이터를 불러와서 사용한다면 Alexa, Ben, Claudia의 데이터베이스 ID를 key로 사용할 수 있습니다.
+아마 task의 개수가 업데이트되었을 뿐만 아니라 Alexa와 Ben의 순서가 바뀌고 Claudia가 두 사람 사이에 추가되었다고 생각할 것입니다. 그러나 React는 컴퓨터 프로그램이므로 우리가 의도한 바가 무엇인지 알지 못합니다. 그러므로 리스트의 항목에 _key_ 프로퍼티를 지정하여 각 리스트의 항목이 다른 항목과 다르다는 것을 구별해 주어야 합니다. 만약 데이터베이스에서 데이터를 불러와서 사용한다면 Alexa, Ben, Claudia의 데이터베이스 ID를 key로 사용할 수 있습니다.
 
 ```js {1}
 <li key={user.id}>
@@ -2283,7 +2283,7 @@ key는 각 React가 각 컴포넌트를 구별할 수 있도록 하여 컴포넌
 
 key가 지정되지 않은 경우, React는 경고를 표시하며 배열의 인덱스를 기본 key로 사용합니다. 배열 인덱스를 key로 사용하면 리스트 항목의 순서를 바꾸거나 항목을 추가/제거할 때 문제가 발생합니다. 명시적으로 `key={i}`를 전달하면 경고는 사라지지만 배열의 인덱스를 사용할 때와 같은 문제가 발생하므로 대부분은 추천하지 않습니다.
 
-key는 전역적으로 고유할 필요는 없으며 컴포넌트와 해당 컴포넌트의 형제 컴포넌트들 사이에서만 고유하면 됩니다.
+key는 전역적으로 고유할 필요는 없으며 컴포넌트와 해당 컴포넌트의 형제 컴포넌트 사이에서만 고유하면 됩니다.
 
 ### 시간여행 구현하기 {/*implementing-time-travel*/}
 
@@ -2902,10 +2902,10 @@ body {
 
 시간이 남거나 새로운 React 기술을 연습하고 싶다면 아래에 틱택토 게임을 개선할 수 있는 몇 가지 아이디어가 있습니다. 아이디어는 난이도가 낮은 순으로 정렬되어 있습니다.
 
-1. 현재 이동에 대해서만 버튼 대신 “당신은 이동 #에 있습니다…”를 표시해 보세요.
-1. `Board`를 하드코딩 하는 대신 두 개의 루프를 사용하여 사각형을 만들도록 다시 작성해 보세요.
+1. 현재 이동에 대해서만 버튼 대신 “당신은 #번째 순서에 있습니다…”를 표시해 보세요.
+1. `Board`를 하드 코딩 하는 대신 두 개의 루프를 사용하여 사각형을 만들도록 다시 작성해 보세요.
 1. 동작을 오름차순 또는 내림차순으로 정렬할 수 있는 토글 버튼을 추가해 보세요.
 1. 누군가 승리하면 승리의 원인이 된 세 개의 사각형을 강조 표시해 보세요. (아무도 승리하지 않으면 무승부라는 메시지를 표시하세요. )
 1. 이동 히스토리 목록에서 각 이동의 위치를 형식(열, 행)으로 표시해 보세요.
 
-이 자습서를 통해 엘리먼트, 컴포넌트, props, state를 포함한 React의 개념에 대해 살펴봤습니다. 이제 이러한 개념들이 게임을 만들 때 어떻게 작동하는지 보았으니, [React로 사고하기](/learn/thinking-in-react)를 통해 앱의 UI를 만들 때 동일한 React 개념이 어떻게 작동하는지 확인해 보세요.
+이 자습서를 통해 엘리먼트, 컴포넌트, props, state를 포함한 React의 개념에 대해 살펴봤습니다. 이제 이러한 개념이 게임을 만들 때 어떻게 작동하는지 보았으니, [React로 사고하기](/learn/thinking-in-react)를 통해 앱의 UI를 만들 때 동일한 React 개념이 어떻게 작동하는지 확인해 보세요.
