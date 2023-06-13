@@ -2469,7 +2469,7 @@ body {
 
 </Sandpack>
 
-`jumpTo`를 구현하기 전에 사용자가 현재 어떤 단계를 보고 있는지를 추적할 수 있는 `Game` 컴포넌트가 필요합니다. 이를 위해 기본값이 `0`인 `currentMove` 라는 새 state 변수를 정의하겠습니다.
+`jumpTo`를 구현하기 전에 사용자가 현재 어떤 단계를 보고 있는지를 추적할 수 있는 `Game` 컴포넌트가 필요합니다. 이를 위해 기본값이 `0`인 `currentMove` 라는 새 state 변수를 정의하세요.
 
 ```js {4}
 export default function Game() {
