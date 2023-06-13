@@ -1851,7 +1851,7 @@ function Board({ xIsNext, squares, onPlay }) {
 
 `handlePlay`가 호출되면 무엇을 해야 할까요? 이전의 보드는 업데이트된 `setSquares`를 호출했지만, 이제는 업데이트된 `squares` 배열을 `onPlay`로 전달한다는 걸 기억하세요.
 
-`handlePlay` 함수는 리렌더링을 촉발하기 위해 `Game`의 state를 업데이트해야 하지만, 더 이상 호출할 수 있는 `setSquares` 함수가 없으며 대신 이 정보를 저장하기 위해 `history` state 변수를 사용하고 있습니다. 업데이트된 `squares` 배열을 새 히스토리 항목으로 추가하여 `history`를 업데이트해야 하고, Board에서 했던 것처럼 `xIsNext` 값을 반전시켜야 합니다.
+`handlePlay` 함수는 리렌더링을 트리거하기 위해 `Game`의 state를 업데이트해야 하지만, 더 이상 호출할 수 있는 `setSquares` 함수가 없으며 대신 이 정보를 저장하기 위해 `history` state 변수를 사용하고 있습니다. 업데이트된 `squares` 배열을 새 히스토리 항목으로 추가하여 `history`를 업데이트해야 하고, Board에서 했던 것처럼 `xIsNext` 값을 반전시켜야 합니다.
 
 ```js {4-5}
 export default function Game() {
