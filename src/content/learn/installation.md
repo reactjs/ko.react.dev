@@ -1,5 +1,5 @@
 ---
-title: 설치
+title: 설치하기
 ---
 
 <Intro>
