@@ -385,7 +385,7 @@ export default function Square() {
 
 훌륭합니다! 이제 간단히 복사-붙여넣기 몇 번만 하면 9개의 사각형을 만들 수 있습니다.
 
-![한 줄로 된 있는 X가 채워진 사각형](../images/tutorial/nine-x-filled-squares.png)
+![한 줄에 X가 채워진 9개의 사각형](../images/tutorial/nine-x-filled-squares.png)
 
 이런! 사각형이 보드에 필요한 격자 모양이 아니라 한 줄로 되어있습니다. 이 문제를 해결하려면 `div`를 사용하여 사각형을 행으로 그룹화하고 몇 가지 CSS 클래스를 추가해야 합니다. 이 과정에서 각 사각형에 번호를 부여하여 표시되는 위치를 알 수 있게 하겠습니다.
 
