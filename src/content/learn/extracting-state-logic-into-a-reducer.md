@@ -1,10 +1,10 @@
 ---
-title: state 로직을 reducer로 작성하기
+title: 상태 로직을 reducer를 사용해 외부로 추출하기
 ---
 
 <Intro>
 
-state를 업데이트하는 로직이 여러 이벤트 핸들러에 분산된 컴포넌트는 양이 많아 부담스러울 수 있습니다. 이 경우 state를 업데이트하는 모든 로직을 컴포넌트 외부에서 *reducer*라고 하는 단일 함수로 통합할 수 있습니다.
+한 컴포넌트에서 상태 업데이트가 많은 이벤트 핸들러에 분산되어 있는 경우가 있습니다. 때문에 컴포넌트를 관리하기 부담스러울 수 있습니다. 이 경우 상태를 업데이트하는 모든 로직을 *reducer*를 사용해 컴포넌트 외부로 단일 함수로 통합해 관리할 수 있습니다.
 
 </Intro>
 
@@ -220,9 +220,9 @@ function handleDeleteTask(taskId) {
 
 위 코드에서 state 설정과 관련한 로직을 전부 지워보세요. 다음과 같이 세가지 이벤트 핸들러가 남게 될 것입니다.
 
-*  사용자가 "Add" 를 눌렀을 때 호출되는 `handleAddTask(text)`
-*  사용자가 task를 토글하거나 "저장"을 누르면 호출되는 `handleChangeTask(task)`
-*  사용자가 "Delete" 를 누르면 호출되는 `handleDeleteTask(taskId)`
+- 사용자가 "Add" 를 눌렀을 때 호출되는 `handleAddTask(text)`
+- 사용자가 task를 토글하거나 "저장"을 누르면 호출되는 `handleChangeTask(task)`
+- 사용자가 "Delete" 를 누르면 호출되는 `handleDeleteTask(taskId)`
 
 Managing state with reducers is slightly different from directly setting state. Instead of telling React "what to do" by setting state, you specify "what the user just did" by dispatching "actions" from your event handlers. (The state update logic will live elsewhere!) So instead of "setting `tasks`" via an event handler, you're dispatching an "added/changed/deleted a task" action. This is more descriptive of the user's intent.
 
@@ -874,11 +874,11 @@ ul, li { margin: 0; padding: 0; }
 
 reducer가 좋은 점만 있는 것은 아닙니다! 아래에서 `useState`와 `useReducer`를 비교할 수 있는 몇 가지 방법을 소개하겠습니다.
 
-* **코드 크기:** 일반적으로 `useState`를 사용하면, 미리 작성해야 하는 코드가 줄어듭니다. `useReducer`를 사용하면 reducer 함수 _그리고_ action을 전달하는 부분 둘 다 작성해야 합니다. 그렇지만 여러 이벤트 핸들러에서 비슷한 방식으로 state를 업데이트하는 경우, `useReducer`를 사용하면 코드의 양을 줄이는 데 도움이 될 수 있습니다.
-* **가독성:** `useState`로 간단한 state를 업데이트하는 경우 가독성이 좋은 편입니다. 그렇지만 더 복잡한 구조의 state를 다루게 되면 컴포넌트의 코드 양이 더 많아져 한눈에 읽기 어려워질 수 있습니다. 이 경우 `useReducer`를 사용하면, 업데이트 로직이 *어떻게 동작하는지*와 이벤트 핸들러를 통해서 *무엇이 발생했는지* 구현한 부분을 명확하게 구분할 수 있습니다.
-* **디버깅:** `useState`를 사용하며 버그를 발견했을 때, _왜_, _어디서_ state가 잘못 설정됐는지 찾기 어려울 수 있습니다. `useReducer`를 사용하면, 콘솔 로그를 reducer에 추가하여 state가 업데이트되는 모든 부분과 _왜_ 해당 버그가 발생했는지(어떤 `action`으로 인한 것인지)를 확인할 수 있습니다. 각 `action`이 올바르게 작성되어 있다면, 버그를 발생시킨 부분이 reducer 로직 자체에 있다는 것을 알 수 있을 것입니다. 그렇지만 `useState`를 사용하는 경우보다 더 많은 코드를 단계별로 실행해서 디버깅 해야 하는 점이 있기도 합니다.
-* **테스팅:** reducer는 컴포넌트에 의존하지 않는 순수 함수입니다. 이는 reducer를 독립적으로 분리해서 내보내거나 테스트할 수 있다는 것을 의미합니다. 일반적으로 더 현실적인 환경에서 컴포넌트를 테스트하는 것이 좋지만, 복잡한 state를 업데이트하는 로직의 경우 reducer가 특정 초기 state 및 action에 대해 특정 state를 반환한다고 생각하고 테스트하는 것이 유용할 수 있습니다.
-* **개인적인 취향:** reducer를 좋아하는 사람도 있지만, 그렇지 않는 사람들도 있습니다. 괜찮습니다. 이건 선호도의 문제이니까요. `useState`와 `useReducer`는 동일한 방식이기 때문에 언제나 마음대로 바꿔서 사용해도 무방합니다.
+- **코드 크기:** 일반적으로 `useState`를 사용하면, 미리 작성해야 하는 코드가 줄어듭니다. `useReducer`를 사용하면 reducer 함수 *그리고* action을 전달하는 부분 둘 다 작성해야 합니다. 그렇지만 여러 이벤트 핸들러에서 비슷한 방식으로 state를 업데이트하는 경우, `useReducer`를 사용하면 코드의 양을 줄이는 데 도움이 될 수 있습니다.
+- **가독성:** `useState`로 간단한 state를 업데이트하는 경우 가독성이 좋은 편입니다. 그렇지만 더 복잡한 구조의 state를 다루게 되면 컴포넌트의 코드 양이 더 많아져 한눈에 읽기 어려워질 수 있습니다. 이 경우 `useReducer`를 사용하면, 업데이트 로직이 *어떻게 동작하는지*와 이벤트 핸들러를 통해서 *무엇이 발생했는지* 구현한 부분을 명확하게 구분할 수 있습니다.
+- **디버깅:** `useState`를 사용하며 버그를 발견했을 때, *왜*, *어디서* state가 잘못 설정됐는지 찾기 어려울 수 있습니다. `useReducer`를 사용하면, 콘솔 로그를 reducer에 추가하여 state가 업데이트되는 모든 부분과 *왜* 해당 버그가 발생했는지(어떤 `action`으로 인한 것인지)를 확인할 수 있습니다. 각 `action`이 올바르게 작성되어 있다면, 버그를 발생시킨 부분이 reducer 로직 자체에 있다는 것을 알 수 있을 것입니다. 그렇지만 `useState`를 사용하는 경우보다 더 많은 코드를 단계별로 실행해서 디버깅 해야 하는 점이 있기도 합니다.
+- **테스팅:** reducer는 컴포넌트에 의존하지 않는 순수 함수입니다. 이는 reducer를 독립적으로 분리해서 내보내거나 테스트할 수 있다는 것을 의미합니다. 일반적으로 더 현실적인 환경에서 컴포넌트를 테스트하는 것이 좋지만, 복잡한 state를 업데이트하는 로직의 경우 reducer가 특정 초기 state 및 action에 대해 특정 state를 반환한다고 생각하고 테스트하는 것이 유용할 수 있습니다.
+- **개인적인 취향:** reducer를 좋아하는 사람도 있지만, 그렇지 않는 사람들도 있습니다. 괜찮습니다. 이건 선호도의 문제이니까요. `useState`와 `useReducer`는 동일한 방식이기 때문에 언제나 마음대로 바꿔서 사용해도 무방합니다.
 
 만약 일부 컴포넌트에서 잘못된 방식으로 state를 업데이트하는 것으로 인한 버그가 자주 발생하거나 해당 코드에 더 많은 구조를 도입하고 싶다면 reducer 사용을 권장합니다. 이때 모든 부분에 reducer를 적용하지 않아도 됩니다. `useState` and `useReducer`를 마음대로 섞고 매치하세요! 이 둘은 심지어 같은 컴포넌트 안에서 사용해도 됩니다.
 
@@ -886,8 +886,8 @@ reducer가 좋은 점만 있는 것은 아닙니다! 아래에서 `useState`와 
 
 reducer를 작성할 때 다음과 같은 두가지 팁을 명심하세요.
 
-* **Reducers must be pure.** Similar to [state updater functions](/learn/queueing-a-series-of-state-updates), reducers run during rendering! (Actions are queued until the next render.) This means that reducers [must be pure](/learn/keeping-components-pure)—same inputs always result in the same output. They should not send requests, schedule timeouts, or perform any side effects (operations that impact things outside the component). They should update [objects](/learn/updating-objects-in-state) and [arrays](/learn/updating-arrays-in-state) without mutations.
-* **Each action describes a single user interaction, even if that leads to multiple changes in the data.** For example, if a user presses "Reset" on a form with five fields managed by a reducer, it makes more sense to dispatch one `reset_form` action rather than five separate `set_field` actions. If you log every action in a reducer, that log should be clear enough for you to reconstruct what interactions or responses happened in what order. This helps with debugging!
+- **Reducers must be pure.** Similar to [state updater functions](/learn/queueing-a-series-of-state-updates), reducers run during rendering! (Actions are queued until the next render.) This means that reducers [must be pure](/learn/keeping-components-pure)—same inputs always result in the same output. They should not send requests, schedule timeouts, or perform any side effects (operations that impact things outside the component). They should update [objects](/learn/updating-objects-in-state) and [arrays](/learn/updating-arrays-in-state) without mutations.
+- **Each action describes a single user interaction, even if that leads to multiple changes in the data.** For example, if a user presses "Reset" on a form with five fields managed by a reducer, it makes more sense to dispatch one `reset_form` action rather than five separate `set_field` actions. If you log every action in a reducer, that log should be clear enough for you to reconstruct what interactions or responses happened in what order. This helps with debugging!
 
 ## Immer로 간결한 reducer 작성하기 {/*writing-concise-reducers-with-immer*/}
 
@@ -1101,14 +1101,14 @@ reducer는 순수해야 하기 때문에, 이 안에서는 state를 변형할 �
 
 <Recap>
 
-* To convert from `useState` to `useReducer`:
+- To convert from `useState` to `useReducer`:
   1. Dispatch actions from event handlers.
   2. Write a reducer function that returns the next state for a given state and action.
   3. Replace `useState` with `useReducer`.
-* Reducers require you to write a bit more code, but they help with debugging and testing.
-* Reducers must be pure.
-* Each action describes a single user interaction.
-* Use Immer if you want to write reducers in a mutating style.
+- Reducers require you to write a bit more code, but they help with debugging and testing.
+- Reducers must be pure.
+- Each action describes a single user interaction.
+- Use Immer if you want to write reducers in a mutating style.
 
 </Recap>
 
