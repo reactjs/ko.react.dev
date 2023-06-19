@@ -19,7 +19,7 @@ const element = createElement(type, props, ...children)
 
 ### `createElement(type, props, ...children)` {/*createelement*/}
 
-`type`, `prop`, `children`와 함께 `createElement`을 호출하여 React 엘리먼트를 생성합니다.
+`type`, `prop`, `children`를 인수로 제공하고 `createElement`을 호출하여 React 엘리먼트를 생성합니다.
 
 
 ```js
