@@ -437,8 +437,7 @@ function Form() {
 
 이제 코드가 이벤트 핸들러에 있고, 이는 반응형 코드가 아니므로 사용자가 폼을 제출할 때만 실행됩니다. [이벤트 핸들러와 Effect 중에서 선택하는 방법](/learn/separating-events-from-effects#reactive-values-and-reactive-logic)과 [불필요한 Effect를 삭제하는 방법](/learn/you-might-not-need-an-effect)에 대해 자세히 알아보세요.
 
-### Effect 가 관련 없는 여러 가지 작업을 수행하나요?
- {/*is-your-effect-doing-several-unrelated-things*/}
+### Effect 가 관련 없는 여러 가지 작업을 수행하나요? {/*is-your-effect-doing-several-unrelated-things*/}
 
 다음으로 스스로에게 물어봐야 할 질문은 Effect가 서로 관련이 없는 여러 가지 작업을 수행하고 있는지 여부입니다.
 
