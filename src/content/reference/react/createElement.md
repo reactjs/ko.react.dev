@@ -42,16 +42,16 @@ function Greeting({ name }) {
  
 * `props`: `props` 인수는 객체 또는 `null`이어야 합니다. null을 전달하면 빈 객체와 동일하게 처리됩니다. React는 전달한 `props`와 일치하는 프로퍼티를 가진 엘리먼트를 생성합니다. 전달한 `props` 객체의 `ref`와 `key`는 특수하기 때문에 생성한 `엘리먼트`에서 `element.props.ref` 와 `element.props.key`는 사용할 수 *없다*는 점에 유의하세요. `element.ref` 또는 `element.key`로 사용할 수 있습니다.
 
-* **선택적** `...children`: 0개 이상의 자식 노드. React 엘리먼트, 문자열, 숫자, [포탈](/reference/react-dom/createPortal), 빈 노드(`null`, `undefined`, `true`, `false`) 그리고 React 노드 배열을 포함한 모든 React 노드가 될 수 있습니다.
+* **선택사항** `...children`: 0개 이상의 자식 노드. React 엘리먼트, 문자열, 숫자, [포탈](/reference/react-dom/createPortal), 빈 노드(`null`, `undefined`, `true`, `false`) 그리고 React 노드 배열을 포함한 모든 React 노드가 될 수 있습니다.
 
 #### 반환값 {/*returns*/}
 
 `createElement`는 아래 프로퍼티를 가지는 React 엘리먼트 객체를 반환합니다.
+
 * `type`: 전달받은 `type`.
 * `props`: `ref`와 `key`를 제외한 전달받은 `props`. `type`이 레거시 `type.defaultProps`를 가지는 컴포넌트라면, 누락되거나 정의되지 않은 `props`는 `type.defaultProps` 값을 가져옵니다.
 * `ref`: 전달받은 `ref`. 누락된 경우 `null`.
 * `key`: 전달받은 `key`를 강제 변환한 문자열. 누락된 경우 `null`.
-
 
 일반적으로 엘리먼트는 컴포넌트에서 반환되거나 다른 엘리먼트의 자식으로 만듭니다. 엘리먼트의 프러퍼티에는 접근할 수 있지만, 엘리먼트 생성 후에는 모든 엘리먼트에 접근할 수 없는 것처럼 대하고 렌더링만 하는 것이 좋습니다.
 
@@ -59,7 +59,7 @@ function Greeting({ name }) {
 #### 주의 사항 {/*caveats*/}
 
 ****
-* 반드시 **리액트 엘리먼트와 그 프러퍼티는 [불변](https://en.wikipedia.org/wiki/Immutable_object)으로 취급**해야하며 엘리먼트 생성 후에는 그 내용을 변경해선 안 됩니다. 개발환경에서 리액트는 이를 강제하기 위해 반환된 엘리먼트와 그 프로퍼티를 얕게 [동결](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)합니다.
+* 반드시 **리액트 엘리먼트와 그 프러퍼티는 [불변](https://en.wikipedia.org/wiki/Immutable_object)하게 취급**해야하며 엘리먼트 생성 후에는 그 내용이 변경되어선 안 됩니다. 개발환경에서 리액트는 이를 강제하기 위해 반환된 엘리먼트와 그 프로퍼티를 얕게 [freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)합니다.
 
 
 * JSX를 사용한다면 **태그를 대문자로 시작해야만 사용자 컴포넌트를 렌더링할 수 있습니다.** 즉, `<Something />`은 `createElement(Something)`과 동일하지만 `<something />`(소문자) 은 `createElement('something')`와 동일합니다. (문자열임을 주의하세요. 내장된 HTML 태그로 취급됩니다.)
@@ -183,13 +183,13 @@ export default function App() {
 
 </Sandpack>
 
-두 코딩 스타일 모두 괜찮으므로 프로젝트에 맞는 선호하는 스타일을 사용하면 됩니다. `createElement`와 비교하여 JSX를 사용할 때의 장점은 어떤 닫는 태그가 어떤 여는 태그에 해당하는지 쉽게 확인할 수 있다는 것입니다.
+두 코딩 스타일 모두 허용되므로 프로젝트에 맞는 스타일을 사용하면 됩니다. `createElement`와 비교하여 JSX를 사용할 때의 장점은 어떤 닫는 태그가 어떤 여는 태그에 대응되는지 쉽게 확인할 수 있다는 것입니다.
 
 <DeepDive>
 
 #### React 엘리먼트란 정확히 무엇인가요? {/*what-is-a-react-element-exactly*/}
 
-엘리먼트는 사용자 인터페이스의 일부에 대한 설명입니다. 예를 들어 `<Greeting name="Taylor" />`와 `createElement(Greeting, { name: 'Taylor' })`는 모두 다음과 같은 객체를 생성합니다.
+엘리먼트는 사용자 인터페이스의 일부에 대한 표현입니다. 예를 들어 `<Greeting name="Taylor" />`와 `createElement(Greeting, { name: 'Taylor' })`는 모두 다음과 같은 객체를 생성합니다.
 
 ```js
 // 약간 단순화됨
