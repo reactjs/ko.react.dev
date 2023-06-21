@@ -52,7 +52,7 @@
       "path": "/learn/describing-the-ui",
       "routes": [
         {
-          "title": "첫번째 컴포넌트",
+          "title": "첫 번째 컴포넌트",
           "path": "/learn/your-first-component"
         },
         {
@@ -126,7 +126,7 @@
       "tags": ["intermediate"],
       "routes": [
         {
-          "title": "Reacting to Input with State",
+          "title": "State를 사용해 Input 다루기",
           "path": "/learn/reacting-to-input-with-state"
         },
         {
