@@ -4,7 +4,7 @@
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET INVOLVED"
+      "sectionHeader": "참여하기"
     },
     {
       "title": "커뮤니티",
@@ -12,15 +12,15 @@
       "skipBreadcrumb": true,
       "routes": [
         {
-          "title": "리액트 컨퍼런스",
+          "title": "React 컨퍼런스",
           "path": "/community/conferences"
         },
         {
-          "title": "리액트 밋업",
+          "title": "React 밋업",
           "path": "/community/meetups"
         },
         {
-          "title": "리액트 비디오",
+          "title": "React 비디오",
           "path": "/community/videos"
         },
         {
@@ -32,7 +32,7 @@
           "path": "/community/docs-contributors"
         },
         {
-          "title": "Acknowledgements",
+          "title": "감사의 말",
           "path": "/community/acknowledgements"
         },
         {

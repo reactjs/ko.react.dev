@@ -1,5 +1,5 @@
 {
-  "title": "API Reference",
+  "title": "API 레퍼런스",
   "path": "/reference/react",
   "routes": [
     {
@@ -7,7 +7,7 @@
       "sectionHeader": "react@18.2.0"
     },
     {
-      "title": "Hooks",
+      "title": "Hook",
       "path": "/reference/react",
       "routes": [
         {
@@ -73,7 +73,7 @@
       ]
     },
     {
-      "title": "Components",
+      "title": "컴포넌트",
       "path": "/reference/react/components",
       "routes": [
         {

@@ -12,15 +12,15 @@
       "skipBreadcrumb": true,
       "routes": [
         {
-          "title": "React Canaries: Enabling Incremental Feature Rollout Outside Meta",
-          "titleForHomepage": "React Canaries: Incremental Feature Rollout",
+          "title": "Meta와 별도로 점전적인 새로운 기능을 외부에 발표할 수 있게 되었습니다.",
+          "titleForHomepage": "React Canaries: 점진적인 기능 발표",
           "icon": "blog",
           "date": "2023.05.03",
           "path": "/blog/2023/05/03/react-canaries"
         },
         {
-          "title": "리액트 랩: 우리가 2023년 3월에 작업한 것들",
-          "titleForHomepage": "리액트 랩: 2023년 3월",
+          "title": "React Labs: 그동안의 작업 - 2023년 3월",
+          "titleForHomepage": "React Labs: 2023년 3월",
           "icon": "labs",
           "date": "2023.03.22",
           "path": "/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023"
@@ -33,8 +33,8 @@
           "path": "/blog/2023/03/16/introducing-react-dev"
         },
         {
-          "title": "리액트 랩: 우리가 2022년 6월에 작업한 것들",
-          "titleForHomepage": "리액트 랩: 2022년 6월",
+          "title": "React Labs: 그동안의 작업 - 2022년 6월",
+          "titleForHomepage": "React Labs: 2022년 6월",
           "icon": "labs",
           "date": "2022.06.15",
           "path": "/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022"
@@ -54,8 +54,8 @@
           "path": "/blog/2022/03/08/react-18-upgrade-guide"
         },
         {
-          "title": "리액트 컨퍼런스 2021 요약",
-          "titleForHomepage": "React Conf 2021 Recap",
+          "title": "React Conf 2021 요약",
+          "titleForHomepage": "React Conf 2021 요약",
           "icon": "blog",
           "date": "2021.12.17",
           "path": "/blog/2021/12/17/react-conf-2021-recap"

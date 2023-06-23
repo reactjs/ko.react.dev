@@ -1,5 +1,5 @@
 {
-  "title": "리액트 학습",
+  "title": "React 학습",
   "path": "/learn",
   "routes": [
     {
@@ -7,7 +7,7 @@
       "sectionHeader": "시작하기"
     },
     {
-      "title": "빠른 시작",
+      "title": "빠르게 시작하기",
       "path": "/learn",
       "routes": [
         {
@@ -25,29 +25,29 @@
       "path": "/learn/installation",
       "routes": [
         {
-          "title": "새 리액트 프로젝트 시작하기",
+          "title": "새로운 React 프로젝트 시작하기",
           "path": "/learn/start-a-new-react-project"
         },
         {
-          "title": "기존 프로젝트에 리액트 추가하기",
+          "title": "기존 프로젝트에 React 추가하기",
           "path": "/learn/add-react-to-an-existing-project"
         },
         {
-          "title": "에디터 설정",
+          "title": "에디터 설정하기",
           "path": "/learn/editor-setup"
         },
         {
-          "title": "리액트 개발자 도구",
+          "title": "React 개발자 도구",
           "path": "/learn/react-developer-tools"
         }
       ]
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "리액트 학습"
+      "sectionHeader": "React 학습"
     },
     {
-      "title": "UI 그리기",
+      "title": "UI 표현하기",
       "tags": [],
       "path": "/learn/describing-the-ui",
       "routes": [
@@ -56,7 +56,7 @@
           "path": "/learn/your-first-component"
         },
         {
-          "title": "컴포넌트 가져오기와 내보내기",
+          "title": "컴포넌트 import 및 export하기",
           "path": "/learn/importing-and-exporting-components"
         },
         {
@@ -64,11 +64,11 @@
           "path": "/learn/writing-markup-with-jsx"
         },
         {
-          "title": "JSX에서 중괄호와 함께 자바스크립트 사용하기",
+          "title": "중괄호가 있는 JSX 안에서 자바스크립트 사용하기",
           "path": "/learn/javascript-in-jsx-with-curly-braces"
         },
         {
-          "title": "컴포넌트로 props 전달하기",
+          "title": "컴포넌트에 props 전달하기",
           "path": "/learn/passing-props-to-a-component"
         },
         {
@@ -76,7 +76,7 @@
           "path": "/learn/conditional-rendering"
         },
         {
-          "title": "목록 렌더링하기",
+          "title": "리스트 렌더링",
           "path": "/learn/rendering-lists"
         },
         {
@@ -107,21 +107,21 @@
           "path": "/learn/state-as-a-snapshot"
         },
         {
-          "title": "일련의 State 업데이트 대기시키기",
+          "title": "State 업데이트 큐",
           "path": "/learn/queueing-a-series-of-state-updates"
         },
         {
-          "title": "State의 객체 업데이트하기",
+          "title": "객체 state 업데이트하기",
           "path": "/learn/updating-objects-in-state"
         },
         {
-          "title": "State의 배열 업데이트하기",
+          "title": "배열 state 업데이트하기",
           "path": "/learn/updating-arrays-in-state"
         }
       ]
     },
     {
-      "title": "State 관리",
+      "title": "State 관리하기",
       "path": "/learn/managing-state",
       "tags": ["intermediate"],
       "routes": [
@@ -138,11 +138,11 @@
           "path": "/learn/sharing-state-between-components"
         },
         {
-          "title": "State 값 보존하기와 리셋하기",
+          "title": "State를 보존하고 초기화하기",
           "path": "/learn/preserving-and-resetting-state"
         },
         {
-          "title": "State 로직을 리듀서로 추출하기",
+          "title": "State 로직을 리듀서로 작성하기",
           "path": "/learn/extracting-state-logic-into-a-reducer"
         },
         {
@@ -150,7 +150,7 @@
           "path": "/learn/passing-data-deeply-with-context"
         },
         {
-          "title": "리듀서와 컨텍스트로 확장하기",
+          "title": "Reducer와 Context로 앱 확장하기",
           "path": "/learn/scaling-up-with-reducer-and-context"
         }
       ]
@@ -169,27 +169,27 @@
           "path": "/learn/manipulating-the-dom-with-refs"
         },
         {
-          "title": "이펙트로 동기화하기",
+          "title": "Effect로 값 동기화하기",
           "path": "/learn/synchronizing-with-effects"
         },
         {
-          "title": "이펙트가 필요하지 않은 경우",
+          "title": "Effect가 필요하지 않은 경우",
           "path": "/learn/you-might-not-need-an-effect"
         },
         {
-          "title": "리액트 이펙트의 생명주기",
+          "title": "React Effect의 생명주기",
           "path": "/learn/lifecycle-of-reactiㄴve-effects"
         },
         {
-          "title": "이펙트로부터 이벤트 분리하기",
+          "title": "Effect에서 이벤트 분리하기",
           "path": "/learn/separating-events-from-effects"
         },
         {
-          "title": "이펙트 의존성 제거하기",
+          "title": "Effect의 의존성 제거하기",
           "path": "/learn/removing-effect-dependencies"
         },
         {
-          "title": "커스텀 훅으로 로직 재사용하기",
+          "title": "커스텀 Hook으로 로직 재사용하기",
           "path": "/learn/reusing-logic-with-custom-hooks"
         }
       ]
