@@ -12,7 +12,7 @@
       "skipBreadcrumb": true,
       "routes": [
         {
-          "title": "Meta와 별도로 점전적인 새로운 기능을 외부에 발표할 수 있게 되었습니다.",
+          "title": "React Canaries: Meta와 별도로 점전적인 새로운 기능을 외부에 발표할 수 있게 되었습니다.",
           "titleForHomepage": "React Canaries: 점진적인 기능 발표",
           "icon": "blog",
           "date": "2023.05.03",
