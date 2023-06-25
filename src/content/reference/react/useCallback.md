@@ -4,7 +4,7 @@ title: useCallback
 
 <Intro>
 
-`useCallback`은 리렌더링 사이에 함수 정의를 캐시할 수 있게 해주는 React 훅입니다.
+`useCallback`은 리렌더링 간에 함수 정의를 캐싱해 주는 React Hook입니다.
 
 ```js
 const cachedFn = useCallback(fn, dependencies)
@@ -20,7 +20,7 @@ const cachedFn = useCallback(fn, dependencies)
 
 ### `useCallback(fn, dependencies)` {/*usecallback*/}
 
-컴포넌트의 최상위 레벨에서 useCallback을 호출하여 리렌더링 간 함수 선언하세요.
+리렌더링 간에 함수 정의를 캐싱하려면 컴포넌트의 최상단에서 `useCallback`을 호출하세요.
 
 ```js {4,9}
 import { useCallback } from 'react';
@@ -34,34 +34,32 @@ export default function ProductPage({ productId, referrer, theme }) {
   }, [productId, referrer]);
 ```
 
-[See more examples below.](#usage)
+[아래에서 더 많은 예시를 확인해보세요.](#usage)
 
 #### 매개변수 {/*parameters*/}
 
-* `fn`: 캐시하려는 함수입니다. 이 함수는 아무 인자나 받을 수 있고, 아무 값이나 반환할 수 있습니다. React는 초기 렌더링 중에 함수를 반환(호출하지 않음)합니다. 이후 렌더링할 때 `dependencies`가 마지막 렌더링 이후 변경되지 않은 경우 React는 동일한 함수를 다시 반환합니다. 변경되었다면, React는 현재 렌더링 중에 전달한 함수를 반환하고 나중에 재사용할 수 있는지 확인하기 위해 저장합니다. React는 함수를 호출하지 않습니다. 함수는 호출 시점과 여부를 직접 결정할 수 있도록 반환됩니다.
+* `fn`: 캐싱할 함숫값입니다. 이 함수는 어떤 인자나 반환값도 가질 수 있습니다. React는 첫 렌더링에서 이 함수를 반환합니다. (호출하는 것이 아닙니다!) 다음 렌더링에서 `dependencies` 값이 이전과 같다면 React는 같은 함수를 다시 반환합니다. 반대로 `dependencies` 값이 변경되었다면 이번 렌더링에서 전달한 함수를 반환하고 나중에 재사용할 수 있도록 이를 저장합니다. React는 함수를 호출하지 않습니다. 이 함수는 호출 여부와 호출 시점을 개발자가 결정할 수 있도록 반환됩니다.
 
-* `dependencies`: The list of all reactive values referenced inside of the `fn` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison algorithm.
+* `dependencies`: `fn` 내에서 참조되는 모든 반응형 값의 목록입니다. 반응형 값은 props와 state, 그리고 컴포넌트 안에서 직접 선언된 모든 변수와 함수를 포함합니다. 린터가 [React를 위한 설정](/learn/editor-setup#linting)으로 구성되어 있다면 모든 반응형 값이 의존성으로 올바르게 명시되어 있는지 검증합니다. 의존성 목록은 항목 수가 일정해야 하며 `[dep1, dep2, dep3]`처럼 인라인으로 작성해야 합니다. React는 [`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교 알고리즘을 이용해 각 의존성을 이전 값과 비교합니다.
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-On the initial render, `useCallback` returns the `fn` function you have passed.
+최초 렌더링에서는 `useCallback`은 전달한 `fn`함수를 그대로 반환합니다.
 
-During subsequent renders, it will either return an already stored `fn`  function from the last render (if the dependencies haven't changed), or return the `fn` function you have passed during this render.
+후속 렌더링에서는 이전 렌더링에서 이미 저장해 두었던 `fn`함수를 반환하거나 (의존성이 변하지 않았을 때), 현재 렌더링 중에 전달한 `fn`함수를 그대로 반환합니다.
+#### 주의사항 {/*caveats*/}
 
-#### Caveats {/*caveats*/}
-
-* `useCallback` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
-* React **will not throw away the cached function unless there is a specific reason to do that.** For example, in development, React throws away the cache when you edit the file of your component. Both in development and in production, React will throw away the cache if your component suspends during the initial mount. In the future, React may add more features that take advantage of throwing away the cache--for example, if React adds built-in support for virtualized lists in the future, it would make sense to throw away the cache for items that scroll out of the virtualized table viewport. This should match your expectations if you rely on `useCallback` as a performance optimization. Otherwise, a [state variable](/reference/react/useState#im-trying-to-set-state-to-a-function-but-it-gets-called-instead) or a [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents) may be more appropriate.
-
+* `useCallback`은 Hook이므로, **컴포넌트의 최상위 레벨** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문 내에서 호출할 수 없습니다. 이 작업이 필요하다면 새로운 컴포넌트로 분리해서 state를 새 컴포넌로 옮기세요.
+* React는 **특별한 이유가 없는 한 캐시 된 함수를 삭제하지 않습니다.** 예를 들어 개발 환경에서는 컴포넌트 파일을 편집할 때 React가 캐시를 삭제합니다. 개발 환경과 프로덕션 환경 모두에서, 초기 마운트 중에 컴포넌트가 일시 중단되면 React는 캐시를 삭제합니다. 앞으로 React는 캐시 삭제를 활용하는 더 많은 기능을 추가할 수 있습니다. 예를 들어, React에 가상화된 목록에 대한 빌트인 지원이 추가한다면, 가상화된 테이블 뷰포트에서 스크롤 밖의 항목에 대해 캐시를 삭제하는것이 적절할 것 입니다. 이는 `useCallback`을 성능 최적화 방법으로 의존하는 경우에 개발자의 예상과 일치해야 합니다. 그렇지 않다면 [state 변수](/reference/react/useState#im-trying-to-set-state-to-a-function-but-it-gets-called-instead) 나 [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents)가 더 적절할 수 있습니다.
 ---
 
-## Usage {/*usage*/}
+## 용법 {/*usage*/}
 
-### Skipping re-rendering of components {/*skipping-re-rendering-of-components*/}
+### 컴포넌트의 리렌더링 건너뛰기 {/*skipping-re-rendering-of-components*/}
 
-When you optimize rendering performance, you will sometimes need to cache the functions that you pass to child components. Let's first look at the syntax for how to do this, and then see in which cases it's useful.
+렌더링 성능을 최적화할 때 자식 컴포넌트에 넘기는 함수를 캐싱할 필요가 있습니다. 먼저 이 작업을 수행하는 방법에 대한 구문을 살펴본 다음 어떤 경우에 유용한지 알아보겠습니다.
 
-To cache a function between re-renders of your component, wrap its definition into the `useCallback` Hook:
+컴포넌트의 리렌더링 간에 함수를 캐싱하려면 함수 정의를 `useCallback` Hook으로 감싸세요.
 
 ```js [[3, 4, "handleSubmit"], [2, 9, "[productId, referrer]"]]
 import { useCallback } from 'react';
@@ -76,20 +74,20 @@ function ProductPage({ productId, referrer, theme }) {
   // ...
 ```
 
-You need to pass two things to `useCallback`:
+`useCallback`에게 두 가지를 전달해야 합니다
 
-1. A function definition that you want to cache between re-renders.
-2. A <CodeStep step={2}>list of dependencies</CodeStep> including every value within your component that's used inside your function.
+1. 리렌더링 간에 캐싱할 함수 정의
+2. 함수에서 사용되는 컴포넌트 내부의 모든 값을 포함하고 있는 <CodeStep step={2}>의존성 목록</CodeStep>
 
-On the initial render, the <CodeStep step={3}>returned function</CodeStep> you'll get from `useCallback` will be the function you passed.
+최초 렌더링에서 `useCallback`으로부터 <CodeStep step={3}>반환되는 함수</CodeStep>는 호출시에 전달할 함수입니다.
 
-On the following renders, React will compare the <CodeStep step={2}>dependencies</CodeStep> with the dependencies you passed during the previous render. If none of the dependencies have changed (compared with [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)), `useCallback` will return the same function as before. Otherwise, `useCallback` will return the function you passed on *this* render.
+이어지는 렌더링에서 React는 <CodeStep step={2}>의존성</CodeStep>을 이전 렌더링에서 전달한 의존성과 비교합니다. 의존성 중 하나라도 변한 값이 없다면([`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is)로 비교), `useCallback`은 전과 똑같은 함수를 반환합니다. 그렇지 않으면 `useCallback`은 *이번* 렌더링에서 전달한 함수를 반환합니다.
 
-In other words, `useCallback` caches a function between re-renders until its dependencies change.
+다시 말하면, `useCallback`은 의존성이 변하기 전까지 리렌더링 간에 함수를 캐싱합니다.
 
-**Let's walk through an example to see when this is useful.**
+**이 기능이 언제 유용한지 예시를 통해 살펴보겠습니다.**
 
-Say you're passing a `handleSubmit` function down from the `ProductPage` to the `ShippingForm` component:
+`handleSubmit` 함수를 `ProductPage`에서 `ShippingForm` 컴포넌트로 전달한다고 가정해 봅시다.
 
 ```js {5}
 function ProductPage({ productId, referrer, theme }) {
@@ -101,9 +99,9 @@ function ProductPage({ productId, referrer, theme }) {
   );
 ```
 
-You've noticed that toggling the `theme` prop freezes the app for a moment, but if you remove `<ShippingForm />` from your JSX, it feels fast. This tells you that it's worth trying to optimize the `ShippingForm` component.
+`theme` prop을 토글 하면 앱이 잠시 멈춘다는 것을 알게 되었는데, JSX에서 `<ShippingForm />`을 제거하면 앱이 빨라진 것처럼 느껴집니다. 이것은 `<ShippingForm />` 컴포넌트의 최적화를 시도해 볼 가치가 있다는 것을 나타냅니다.
 
-**By default, when a component re-renders, React re-renders all of its children recursively.** This is why, when `ProductPage` re-renders with a different `theme`, the `ShippingForm` component *also* re-renders. This is fine for components that don't require much calculation to re-render. But if you verified a re-render is slow, you can tell `ShippingForm` to skip re-rendering when its props are the same as on last render by wrapping it in [`memo`:](/reference/react/memo)
+**기본적으로, 컴포넌트가 리렌더링할 때 React는 이것의 모든 자식을 재귀적으로 재랜더링합니다.** 이것이 `ProductPage`가 다른 `theme` 값으로 리렌더링 할 때, `ShippingForm` 컴포넌트 **또한** 리렌더링 하는 이유입니다. 이 것은 리렌더링에 많은 계산을 요구하지 않는 컴포넌트에서는 괜찮습니다. 하지만 리렌더링이 느린 것을 확인한 경우, `ShippingForm`을 [`memo`](/reference/react/memo)로 감싸면 마지막 렌더링과 동일한 props일 때 리렌더링을 건너뛰도록 할 수 있습니다.
 
 ```js {3,5}
 import { memo } from 'react';
@@ -113,11 +111,11 @@ const ShippingForm = memo(function ShippingForm({ onSubmit }) {
 });
 ```
 
-**With this change, `ShippingForm` will skip re-rendering if all of its props are the *same* as on the last render.** This is when caching a function becomes important! Let's say you defined `handleSubmit` without `useCallback`:
+**이렇게 변경한 `ShippingForm`은 모든 props가 마지막 렌더링과 *같다면* 리렌더링을 건너뜁니다.** 여기가 함수 캐싱이 중요해지는 순간입니다! `useCallback` 없이 `handleSubmit`을 정의했다고 가정해 봅시다.
 
 ```js {2,3,8,12-13}
 function ProductPage({ productId, referrer, theme }) {
-  // Every time the theme changes, this will be a different function...
+  // theme이 바뀔때마다 다른 함수가 될 것입니다...
   function handleSubmit(orderDetails) {
     post('/product/' + productId + '/buy', {
       referrer,
@@ -127,47 +125,47 @@ function ProductPage({ productId, referrer, theme }) {
   
   return (
     <div className={theme}>
-      {/* ... so ShippingForm's props will never be the same, and it will re-render every time */}
+      {/* ... 그래서 ShippingForm의 props는 같은 값이 아니므로 매번 리렌더링 할 것입니다.*/}
       <ShippingForm onSubmit={handleSubmit} />
     </div>
   );
 }
 ```
 
-**In JavaScript, a `function () {}` or `() => {}` always creates a _different_ function,** similar to how the `{}` object literal always creates a new object. Normally, this wouldn't be a problem, but it means that `ShippingForm` props will never be the same, and your [`memo`](/reference/react/memo) optimization won't work. This is where `useCallback` comes in handy:
+**자바스크립트에서 `function () {}` 나 `() => {}`은 항상 _다른_ 함수를 생성합니다.** 이것은 `{}` 객체 리터럴이 항상 새로운 객체를 생성하는 방식과 유사합니다. 보통의 경우에는 문제가 되지 않지만, 여기서는 `ShippingForm` props는 절대 같아질 수 없고 [`memo`](/reference/react/memo) 최적화는 동작하지 않을 것이라는 걸 의미합니다. 여기서 `useCallback`이 유용하게 사용됩니다.
 
 ```js {2,3,8,12-13}
 function ProductPage({ productId, referrer, theme }) {
-  // Tell React to cache your function between re-renders...
+  // React에게 리렌더링 간에 함수를 캐싱하도록 요청합니다...
   const handleSubmit = useCallback((orderDetails) => {
     post('/product/' + productId + '/buy', {
       referrer,
       orderDetails,
     });
-  }, [productId, referrer]); // ...so as long as these dependencies don't change...
+  }, [productId, referrer]); // ...이 의존성이 변경되지 않는 한...
 
   return (
     <div className={theme}>
-      {/* ...ShippingForm will receive the same props and can skip re-rendering */}
+      {/* ...ShippingForm은 같은 props를 받게 되고 리렌더링을 건너뛸 수 있습니다.*/}
       <ShippingForm onSubmit={handleSubmit} />
     </div>
   );
 }
 ```
 
-**By wrapping `handleSubmit` in `useCallback`, you ensure that it's the *same* function between the re-renders** (until dependencies change). You don't *have to* wrap a function in `useCallback` unless you do it for some specific reason. In this example, the reason is that you pass it to a component wrapped in [`memo`,](/reference/react/memo) and this lets it skip re-rendering. There are other reasons you might need `useCallback` which are described further on this page.
+**`handleSubmit`을 `useCallback`으로 감쌈으로써 리렌더링 간에 이것이 (의존성이 변경되기 전까지는) 같은 함수라는 것을 보장합니다.** 특별한 이유가 없다면 함수를 꼭 `useCallback`으로 감쌀 필요는 없습니다. 이 예시에서의 이유는 ['memo'](/reference/react/memo)로 감싼 컴포넌트에 전달하기 때문에 해당 함수가 리렌더링을 건너뛸 수 있기 때문입니다. `useCallback`이 필요한 다른 이유는 이 페이지의 뒷부분에서 설명하겠습니다.
 
 <Note>
 
-**You should only rely on `useCallback` as a performance optimization.** If your code doesn't work without it, find the underlying problem and fix it first. Then you may add `useCallback` back.
+**`useCallback`은 성능 최적화를 위한 용도로만 사용해야 합니다.** 만약 코드가 `useCallback` 없이 작동하지 않는다면 먼저 근본적인 문제를 찾아 해결해야 합니다. 그다음에 `useCallback`을 다시 추가할 수 있습니다. 
 
 </Note>
 
 <DeepDive>
 
-#### How is useCallback related to useMemo? {/*how-is-usecallback-related-to-usememo*/}
+#### useCallback과 useMemo는 어떤 연관이 있나요? {/*how-is-usecallback-related-to-usememo*/}
 
-You will often see [`useMemo`](/reference/react/useMemo) alongside `useCallback`. They are both useful when you're trying to optimize a child component. They let you [memoize](https://en.wikipedia.org/wiki/Memoization) (or, in other words, cache) something you're passing down:
+[`useMemo`](/reference/react/useMemo)가 `useCallback`과 함께 쓰이는 것을 자주 봤을 것입니다. 두 hook은 모두 자식 컴포넌트를 최적화할 때 유용합니다. 무언가를 전달할 때 [memoization](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98)(다른 말로는 캐싱)을 할 수 있도록 해줍니다.
 
 ```js {6-8,10-15,19}
 import { useMemo, useCallback } from 'react';
@@ -175,11 +173,11 @@ import { useMemo, useCallback } from 'react';
 function ProductPage({ productId, referrer }) {
   const product = useData('/product/' + productId);
 
-  const requirements = useMemo(() => { // Calls your function and caches its result
+  const requirements = useMemo(() => { // 함수를 호출하고 그 결과를 캐싱합니다.
     return computeRequirements(product);
   }, [product]);
 
-  const handleSubmit = useCallback((orderDetails) => { // Caches your function itself
+  const handleSubmit = useCallback((orderDetails) => { // 함수 자체를 캐싱합니다.
     post('/product/' + productId + '/buy', {
       referrer,
       orderDetails,
@@ -194,60 +192,60 @@ function ProductPage({ productId, referrer }) {
 }
 ```
 
-The difference is in *what* they're letting you cache:
+차이점은 *무엇을* 캐싱하는지 입니다.
 
-* **[`useMemo`](/reference/react/useMemo) caches the *result* of calling your function.** In this example, it caches the result of calling `computeRequirements(product)` so that it doesn't change unless `product` has changed. This lets you pass the `requirements` object down without unnecessarily re-rendering `ShippingForm`. When necessary, React will call the function you've passed during rendering to calculate the result.
-* **`useCallback` caches *the function itself.*** Unlike `useMemo`, it does not call the function you provide. Instead, it caches the function you provided so that `handleSubmit` *itself* doesn't change unless `productId` or `referrer` has changed. This lets you pass the `handleSubmit` function down without unnecessarily re-rendering `ShippingForm`. Your code won't run until the user submits the form.
+* **[`useMemo`](/reference/react/useMemo) 는 호출한 함수의 결과값을 캐싱합니다.** 이 예시에서는 `computeRequirements(product)` 함수 호출 결과를 캐싱해서 `product`가 변경되지 않는 한 이 결과값이 변경되지 않도록 합니다. 이것은 불필요하게 `ShippingForm`을 리렌더링하지 않고 `requirements` 객체를 넘겨줄 수 있도록 해줍니다. 필요할 때 React는 렌더링 중에 넘겨주었던 함수를 호출하여 결과를 계산합니다.
+* **`useCallback`은 *함수 자체*를 캐싱합니다.** `useMemo`와 달리, 전달한 함수를 호출하지 않습니다. 그 대신, 전달한 함수를 캐싱해서 `productId`나 `referrer`이 변하지 않으면 `handleSubmit` 자체가 변하지 않도록 합니다. 이것은 불필요하게 `ShippingForm`을 리렌더링하지 않고 `handleSubmit` 함수를 전달할 수 있도록 해줍니다. 함수의 코드는 사용자가 폼을 제출하기 전까지 실행되지 않을 것입니다.
 
-If you're already familiar with [`useMemo`,](/reference/react/useMemo) you might find it helpful to think of `useCallback` as this:
+이미 [`useMemo`](/reference/react/useMemo)에 익숙하다면 `useCallback`을 다음과 같이 생각하는 것이 도움이 될 수 있습니다.
 
 ```js
-// Simplified implementation (inside React)
+// (React 내부의) 간단한 구현
 function useCallback(fn, dependencies) {
   return useMemo(() => fn, dependencies);
 }
 ```
 
-[Read more about the difference between `useMemo` and `useCallback`.](/reference/react/useMemo#memoizing-a-function)
+[`useMemo`와 `useCallback`의 차이점에 대해 더 알아보세요.](/reference/react/useMemo#memoizing-a-function)
 
 </DeepDive>
 
 <DeepDive>
 
-#### Should you add useCallback everywhere? {/*should-you-add-usecallback-everywhere*/}
+#### 항상 useCallback을 사용해야 할까요? {/*should-you-add-usecallback-everywhere*/}
 
-If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful. 
+이 사이트처럼 대부분의 상호작용이 (페이지 전체나 전체 부문을 교체하는 것처럼) 굵직한 경우, 보통 memoization이 필요하지 않습니다. 반면에 앱이 (도형을 이동하는 것과 같이) 미세한 상호작용을 하는 그림 편집기 같은 경우, memoization이 매우 유용할 수 있습니다.
 
-Caching a function with `useCallback`  is only valuable in a few cases:
+`useCallback`으로 함수를 캐싱하는 것은 몇 가지 경우에만 가치 있습니다.
 
-- You pass it as a prop to a component wrapped in [`memo`.](/reference/react/memo) You want to skip re-rendering if the value hasn't changed. Memoization lets your component re-render only if dependencies changed.
-- The function you're passing is later used as a dependency of some Hook. For example, another function wrapped in `useCallback` depends on it, or you depend on this function from [`useEffect.`](/reference/react/useEffect)
+- [`memo`](/reference/react/memo)로 감싸진 컴포넌트에 prop으로 넘깁니다. 이 값이 변하지 않으면 리렌더링을 건너뛰고 싶습니다. memoization은 의존성이 변했을 때만 컴포넌트가 리렌더링하도록 합니다. 
+- 넘긴 함수가 나중에 어떤 Hook의 의존성으로 사용됩니다. 예를 들어, `useCallback`으로 감싸진 다른 함수가 이 함수에 의존하거나, [`useEffect`](/reference/react/useEffect)에서 이 함수에 의존합니다.
 
-There is no benefit to wrapping a function in `useCallback` in other cases. There is no significant harm to doing that either, so some teams choose to not think about individual cases, and memoize as much as possible. The downside is that code becomes less readable. Also, not all memoization is effective: a single value that's "always new" is enough to break memoization for an entire component.
+다른 경우에서 `useCallback`으로 함수를 감싸는 것은 아무런 이익이 없습니다. 또한 이렇게 하는 것이 큰 불이익을 가져오지도 않으므로  일부 팀은 개별적인 경우를 따로 생각하지 않고, 가능한 한 많이 memoization하는 방식을 택합니다. 단점은 코드의 가독성이 떨어지는 것입니다. 또한, 모든 memoization이 효과적인 것은 아닙니다. "항상 새로운" 하나의 값이 있다면 전체 컴포넌트의 memoization을 깨기에 충분합니다.
 
-Note that `useCallback` does not prevent *creating* the function. You're always creating a function (and that's fine!), but React ignores it and gives you back a cached function if nothing changed.
+`useCallback`이 함수의 *생성*을 막지 않는다는 점을 주의하세요. 항상 함수를 생성하지만 (이건 괜찮습니다!), 그러나 React는 변경이 없는 경우에는 무시하고 캐시된 함수를 반환합니다
 
-**In practice, you can make a lot of memoization unnecessary by following a few principles:**
+**실제로 몇 가지 원칙을 따르면 많은 memoization을 불필요하게 만들 수 있습니다.**
 
-1. When a component visually wraps other components, let it [accept JSX as children.](/learn/passing-props-to-a-component#passing-jsx-as-children) Then, if the wrapper component updates its own state, React knows that its children don't need to re-render.
-1. Prefer local state and don't [lift state up](/learn/sharing-state-between-components) any further than necessary. Don't keep transient state like forms and whether an item is hovered at the top of your tree or in a global state library.
-1. Keep your [rendering logic pure.](/learn/keeping-components-pure) If re-rendering a component causes a problem or produces some noticeable visual artifact, it's a bug in your component! Fix the bug instead of adding memoization.
-1. Avoid [unnecessary Effects that update state.](/learn/you-might-not-need-an-effect) Most performance problems in React apps are caused by chains of updates originating from Effects that cause your components to render over and over.
-1. Try to [remove unnecessary dependencies from your Effects.](/learn/removing-effect-dependencies) For example, instead of memoization, it's often simpler to move some object or a function inside an Effect or outside the component.
+1. 컴포넌트가 다른 컴포넌트를 시각적으로 감싸고 있다면 [JSX를 자식으로 받게](/learn/passing-props-to-a-component#passing-jsx-as-children) 하세요. 감싸는 컴포넌트가 자신의 상태를 업데이트하면, React는 자식들은 리렌더링할 필요가 없다는 것을 알게 됩니다.
+1. 가능한 한 로컬 상태를 선호하고, [컴포넌트 간 상태 공유](/learn/sharing-state-between-components)를 필요 이상으로 하지 마세요. 폼이나 항목이 호버되었는지와 같은 일시적인 상태를 트리의 상단이나 전역 상태 라이브러리에 유지하지 마세요.
+1. [렌더링 로직을 순수하게 유지](/learn/keeping-components-pure)하세요. 컴포넌트를 리렌더링하는 것이 문제를 일으키거나 눈에 띄는 시각적인 형체를 생성한다면, 그것은 컴포넌트의 버그입니다! memoization을 추가하는 대신 버그를 해결하세요.
+1. [상태를 업데이트하는 불필요한 Effects](/learn/you-might-not-need-an-effect)를 피하세요. React 앱에서 대부분의 성능 문제는 Effects로부터 발생한 연속된 업데이트가 컴포넌트를 계속해서 렌더링하는 것이 원인입니다.
+1. [Effects에서 불필요한 의존성을 제거](/learn/removing-effect-dependencies)하세요. 예를 들어, memoization 대신 객체나 함수를 Effect 안이나 컴포넌트 외부로 이동시키는 것이 더 간단한 경우가 많습니다.
 
-If a specific interaction still feels laggy, [use the React Developer Tools profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) to see which components benefit the most from memoization, and add memoization where needed. These principles make your components easier to debug and understand, so it's good to follow them in any case. In long term, we're researching [doing memoization automatically](https://www.youtube.com/watch?v=lGEMwh32soc) to solve this once and for all.
+만약 특정 상호작용이 여전히 느리게 느껴진다면, [React Developer Tools profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)를 사용하여, 어떤 컴포넌트가 memoization을 가장 필요로 하는지 살펴보고, 필요한 곳에 memoization을 추가하세요. 이런 원칙들은 컴포넌트를 더 쉽게 디버깅하고 이해할 수 있도록 해주기 때문에 어떤 경우라도 따르는 것이 좋습니다. 장기적으로 이러한 문제를 해결하기 위해 우리는 [memoization을 자동화하는 기술](https://www.youtube.com/watch?v=lGEMwh32soc)을 연구하고 있습니다.
 
 </DeepDive>
 
-<Recipes titleText="The difference between useCallback and declaring a function directly" titleId="examples-rerendering">
+<Recipes titleText="useCallback과 함수를 직접 선언하는 것의 차이점" titleId="examples-rerendering">
 
-#### Skipping re-rendering with `useCallback` and `memo` {/*skipping-re-rendering-with-usecallback-and-memo*/}
+#### `useCallback`과 `memo`로 리렌더링 건너뛰기 {/*skipping-re-rendering-with-usecallback-and-memo*/}
 
-In this example, the `ShippingForm` component is **artificially slowed down** so that you can see what happens when a React component you're rendering is genuinely slow. Try incrementing the counter and toggling the theme.
+이 예시에서 `ShippingForm` 컴포넌트는 **인위적으로 느리게 만들었기 때문에** 렌더링하는 React 컴포넌트가 실제로 느릴 때 어떤 일이 일어나는 지 볼 수 있습니다. 카운터를 증가시키고 테마를 토글 해보세요.
 
-Incrementing the counter feels slow because it forces the slowed down `ShippingForm` to re-render. That's expected because the counter has changed, and so you need to reflect the user's new choice on the screen.
+카운터를 증가시키면 느려진 `ShippingForm`이 리렌더링하기 때문에 느리다고 느껴집니다. 이는 예상된 동작입니다. 카운터가 변경되었으므로 사용자의 새로운 선택을 화면에 반영해야 하기 때문입니다.
 
-Next, try toggling the theme. **Thanks to `useCallback` together with [`memo`](/reference/react/memo), it’s fast despite the artificial slowdown!** `ShippingForm` skipped re-rendering because the `handleSubmit` function has not changed. The `handleSubmit` function has not changed because both `productId` and `referrer` (your `useCallback` dependencies) haven't changed since last render.
+다음으로 테마를 토글 해보세요. **`useCallback`을 [`memo`](/reference/react/memo)와 함께 사용한 덕분에, 인위적인 지연에도 불구하고 빠릅니다!** `ShippingForm`은 `handleSubmit` 함수가 변하지 않았기 때문에 리렌더링을 건너뛰었습니다. `productId` 와 `referrer` (`useCallback`의 의존성) 모두 마지막 렌더링으로부터 변하지 않았기 때문에 `handleSubmit` 함수도 변하지 않았습니다.
 
 <Sandpack>
 
@@ -298,7 +296,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 }
 
 function post(url, data) {
-  // Imagine this sends a request...
+  // 요청을 보낸다고 생각하세요...
   console.log('POST /' + url);
   console.log(data);
 }
@@ -313,11 +311,11 @@ const ShippingForm = memo(function ShippingForm({ onSubmit }) {
   console.log('[ARTIFICIALLY SLOW] Rendering <ShippingForm />');
   let startTime = performance.now();
   while (performance.now() - startTime < 500) {
-    // Do nothing for 500 ms to emulate extremely slow code
+    // 매우 느린 코드를 재현하기 위해 500ms동안 아무것도 하지 않습니다
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault(); 
     const formData = new FormData(e.target);
     const orderDetails = {
       ...Object.fromEntries(formData),
@@ -383,11 +381,11 @@ button[type="button"] {
 
 <Solution />
 
-#### Always re-rendering a component {/*always-re-rendering-a-component*/}
+#### 컴포넌트를 항상 리렌더링하기 {/*always-re-rendering-a-component*/}
 
-In this example, the `ShippingForm` implementation is also **artificially slowed down** so that you can see what happens when some React component you're rendering is genuinely slow. Try incrementing the counter and toggling the theme.
+이 예시에서 `ShippingForm` 컴포넌트 또한 **인위적으로 느리게 만들었기 때문에** 렌더링하는 React 컴포넌트가 실제로 느릴 때 어떤 일이 일어나는 지 볼 수 있습니다. 카운터를 증가시키고 테마를 토글 해보세요.
 
-Unlike in the previous example, toggling the theme is also slow now! This is because **there is no `useCallback` call in this version,** so `handleSubmit` is always a new function, and the slowed down `ShippingForm` component can't skip re-rendering.
+이전 예시와 다르게 지금은 테마를 토글 하는 것도 느립니다! **이 버전에서는 `useCallback`을 호출하고 있지 않기** 때문에 `handleSubmit`은 항상 새로운 함수이고, 느려진 `ShippingForm` 컴포넌트는 리렌더링을 건너뛸 수 없습니다. 
 
 <Sandpack>
 
@@ -437,7 +435,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 }
 
 function post(url, data) {
-  // Imagine this sends a request...
+  // 요청을 보낸다고 생각하세요...
   console.log('POST /' + url);
   console.log(data);
 }
@@ -452,7 +450,7 @@ const ShippingForm = memo(function ShippingForm({ onSubmit }) {
   console.log('[ARTIFICIALLY SLOW] Rendering <ShippingForm />');
   let startTime = performance.now();
   while (performance.now() - startTime < 500) {
-    // Do nothing for 500 ms to emulate extremely slow code
+    // 매우 느린 코드를 재현하기 위해 500ms동안 아무것도 하지 않습니다
   }
 
   function handleSubmit(e) {
@@ -521,7 +519,7 @@ button[type="button"] {
 </Sandpack>
 
 
-However, here is the same code **with the artificial slowdown removed.** Does the lack of `useCallback` feel noticeable or not?
+하지만 여기 같지만 **인위적인 지연이 제거된** 코드가 있습니다. `useCallback`이 없을 때 차이가 크게 느껴지시나요?
 
 <Sandpack>
 
@@ -571,7 +569,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 }
 
 function post(url, data) {
-  // Imagine this sends a request...
+  // 요청을 보낸다고 생각하세요...
   console.log('POST /' + url);
   console.log(data);
 }
@@ -650,9 +648,9 @@ button[type="button"] {
 </Sandpack>
 
 
-Quite often, code without memoization works fine. If your interactions are fast enough, you don't need memoization.
+많은 경우에 memoization이 없어도 코드는 잘 동작합니다. 상호작용이 충분히 빠르다면 memoization을 사용하지 않아도 됩니다.
 
-Keep in mind that you need to run React in production mode, disable [React Developer Tools](/learn/react-developer-tools), and use devices similar to the ones your app's users have in order to get a realistic sense of what's actually slowing down your app.
+프로덕션 모드로 React를 실행시키고, [React Developer Tools](/learn/react-developer-tools)를 비활성화하고, 앱 사용자와 유사한 기기를 사용해서 앱을 실제로 느리게 만드는 원인을 실감해야 한다는 것을 명심하세요.
 
 <Solution />
 
@@ -660,11 +658,11 @@ Keep in mind that you need to run React in production mode, disable [React Devel
 
 ---
 
-### Updating state from a memoized callback {/*updating-state-from-a-memoized-callback*/}
+### Memoized 콜백에서 상태 업데이트하기 {/*updating-state-from-a-memoized-callback*/}
 
-Sometimes, you might need to update state based on previous state from a memoized callback.
+때때로 memoized 콜백에서 이전 상태를 기반으로 상태를 업데이트해야 할 때가 있습니다.
 
-This `handleAddTodo` function specifies `todos` as a dependency because it computes the next todos from it:
+`handleAddTodo` 함수는 `todos`로부터 다음 할 일을 계산하기 때문에 이를 의존성으로 명시했습니다. 
 
 ```js {6,7}
 function TodoList() {
@@ -677,7 +675,7 @@ function TodoList() {
   // ...
 ```
 
-You'll usually want memoized functions to have as few dependencies as possible. When you read some state only to calculate the next state, you can remove that dependency by passing an [updater function](/reference/react/useState#updating-state-based-on-the-previous-state) instead:
+보통은 memoized 함수가 가능한 한 적은 의존성을 갖는 것이 좋습니다. 다음 상태를 계산하기 위해 어떤 상태를 읽는 경우, [업데이트 함수](/reference/react/useState#updating-state-based-on-the-previous-state)를 대신 넘겨줌으로써 의존성을 제거할 수 있습니다.
 
 ```js {6,7}
 function TodoList() {
@@ -686,17 +684,17 @@ function TodoList() {
   const handleAddTodo = useCallback((text) => {
     const newTodo = { id: nextId++, text };
     setTodos(todos => [...todos, newTodo]);
-  }, []); // ✅ No need for the todos dependency
+  }, []); // ✅ todos 의존성은 필요하지 않습니다.
   // ...
 ```
 
-Here, instead of making `todos` a dependency and reading it inside, you pass an instruction about *how* to update the state (`todos => [...todos, newTodo]`) to React. [Read more about updater functions.](/reference/react/useState#updating-state-based-on-the-previous-state)
+여기서 `todos`를 의존성으로 만들고 안에서 값을 읽는 대신, React에 *어떻게* 상태를 업데이트할지에 대한 지침을 넘겨줍니다. [업데이트 함수에 대해 더 알아보세요.](/reference/react/useState#updating-state-based-on-the-previous-state)
 
 ---
 
-### Preventing an Effect from firing too often {/*preventing-an-effect-from-firing-too-often*/}
+### Effect가 너무 자주 실행되는 것을 방지하기 {/*preventing-an-effect-from-firing-too-often*/}
 
-Sometimes, you might want to call a function from inside an [Effect:](/learn/synchronizing-with-effects)
+가끔 [Effect 안에서 함수를 호출해야 할 수도 있습니다.](/learn/synchronizing-with-effects)
 
 ```js {4-9,12}
 function ChatRoom({ roomId }) {
@@ -716,7 +714,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-This creates a problem. [Every reactive value must be declared as a dependency of your Effect.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) However, if you declare `createOptions` as a dependency, it will cause your Effect to constantly reconnect to the chat room:
+이것은 문제를 발생시킵니다. [모든 반응형 값은 Effect의 의존성으로 선언되어야 합니다.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) 하지만 `createOptions`를 의존성으로 선언하면 Effect가 채팅방과 계속 재연결되는 문제가 발생합니다.
 
 
 ```js {6}
@@ -725,11 +723,11 @@ This creates a problem. [Every reactive value must be declared as a dependency o
     const connection = createConnection();
     connection.connect();
     return () => connection.disconnect();
-  }, [createOptions]); // 🔴 Problem: This dependency changes on every render
+  }, [createOptions]); // 🔴 문제점: 이 의존성은 매 렌더링마다 변경됩니다.
   // ...
 ```
 
-To solve this, you can wrap the function you need to call from an Effect into `useCallback`:
+이를 해결하기 위해, Effect에서 호출하려는 함수를 `useCallback`으로 감쌀 수 있습니다.
 
 ```js {4-9,16}
 function ChatRoom({ roomId }) {
@@ -740,25 +738,25 @@ function ChatRoom({ roomId }) {
       serverUrl: 'https://localhost:1234',
       roomId: roomId
     };
-  }, [roomId]); // ✅ Only changes when roomId changes
+  }, [roomId]); // ✅ roomId가 변경될 때만 변경됩니다.
 
   useEffect(() => {
     const options = createOptions();
     const connection = createConnection();
     connection.connect();
     return () => connection.disconnect();
-  }, [createOptions]); // ✅ Only changes when createOptions changes
+  }, [createOptions]); // ✅ createOptions가 변경될 때만 변경됩니다.
   // ...
 ```
 
-This ensures that the `createOptions` function is the same between re-renders if the `roomId` is the same. **However, it's even better to remove the need for a function dependency.** Move your function *inside* the Effect:
+이것은 리렌더링 간에 `roomId`가 같다면 `createOptions` 함수는 같다는 것을 보장합니다. **하지만, 함수 의존성을 제거하는 것이 더 좋습니다.** 함수를 Effect *안으로* 이동시키세요.
 
 ```js {5-10,16}
 function ChatRoom({ roomId }) {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    function createOptions() { // ✅ No need for useCallback or function dependencies!
+    function createOptions() { // ✅ useCallback이나 함수 의존성이 필요하지 않습니다.
       return {
         serverUrl: 'https://localhost:1234',
         roomId: roomId
@@ -769,17 +767,17 @@ function ChatRoom({ roomId }) {
     const connection = createConnection();
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ Only changes when roomId changes
+  }, [roomId]); // ✅ roomId가 변경될 때만 변경됩니다.
   // ...
 ```
 
-Now your code is simpler and doesn't need `useCallback`. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+이제 코드는 더 간단해졌고 `useCallback`은 필요하지 않습니다. [Effect의 의존성 제거에 대해 더 알아보세요.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
 ---
 
-### Optimizing a custom Hook {/*optimizing-a-custom-hook*/}
+### 커스텀 Hook 최적화하기 {/*optimizing-a-custom-hook*/}
 
-If you're writing a [custom Hook,](/learn/reusing-logic-with-custom-hooks) it's recommended to wrap any functions that it returns into `useCallback`:
+[커스텀 Hook](/learn/reusing-logic-with-custom-hooks)을 작성하는 경우, 반환하는 모든 함수를 `useCallback`으로 감싸는 것이 좋습니다.
 
 ```js {4-6,8-10}
 function useRouter() {
@@ -800,30 +798,17 @@ function useRouter() {
 }
 ```
 
-This ensures that the consumers of your Hook can optimize their own code when needed.
+이렇게 하면 Hook을 사용하는 컴포넌트가 필요할 때 가지고 있는 코드를 최적화할 수 있습니다.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
-### Every time my component renders, `useCallback` returns a different function {/*every-time-my-component-renders-usecallback-returns-a-different-function*/}
+### 컴포넌트가 렌더링 될 때마다 `useCallback`이 다른 함수를 반환합니다. {/*every-time-my-component-renders-usecallback-returns-a-different-function*/}
 
-Make sure you've specified the dependency array as a second argument!
+두 번째 인수로 의존성 배열을 지정했는지 확인하세요!
 
-If you forget the dependency array, `useCallback` will return a new function every time:
-
-```js {7}
-function ProductPage({ productId, referrer }) {
-  const handleSubmit = useCallback((orderDetails) => {
-    post('/product/' + productId + '/buy', {
-      referrer,
-      orderDetails,
-    });
-  }); // 🔴 Returns a new function every time: no dependency array
-  // ...
-```
-
-This is the corrected version passing the dependency array as a second argument:
+의존성 배열을 까먹으면 `useCallback`은 매번 새로운 함수를 반환합니다.
 
 ```js {7}
 function ProductPage({ productId, referrer }) {
@@ -832,11 +817,24 @@ function ProductPage({ productId, referrer }) {
       referrer,
       orderDetails,
     });
-  }, [productId, referrer]); // ✅ Does not return a new function unnecessarily
+  }); // 🔴 매번 새로운 함수를 반환합니다: 의존성 배열 없음
   // ...
 ```
 
-If this doesn't help, then the problem is that at least one of your dependencies is different from the previous render. You can debug this problem by manually logging your dependencies to the console:
+다음은 두 번째 인수로 의존성 배열을 넘겨주도록 수정한 코드입니다.
+
+```js {7}
+function ProductPage({ productId, referrer }) {
+  const handleSubmit = useCallback((orderDetails) => {
+    post('/product/' + productId + '/buy', {
+      referrer,
+      orderDetails,
+    });
+  }, [productId, referrer]); // ✅ 불필요하게 새로운 함수를 반환하지 않습니다.
+  // ...
+```
+
+이것이 도움이 되지 않는다면 의존성 중 적어도 하나가 이전 렌더링과 다른 것이 문제입니다. 의존성을 콘솔에 직접 기록하여 이 문제를 디버깅할 수 있습니다.
 
 ```js {5}
   const handleSubmit = useCallback((orderDetails) => {
@@ -846,28 +844,28 @@ If this doesn't help, then the problem is that at least one of your dependencies
   console.log([productId, referrer]);
 ```
 
-You can then right-click on the arrays from different re-renders in the console and select "Store as a global variable" for both of them. Assuming the first one got saved as `temp1` and the second one got saved as `temp2`, you can then use the browser console to check whether each dependency in both arrays is the same:
+그런 다음 콘솔에서 서로 다른 렌더링의 배열을 마우스 오른쪽 클릭 후 "전역 변수로 저장"을 선택할 수 있습니다. 첫 번째 것이 `temp1`, 두 번째 것이 `temp2`로 저장됐다면, 브라우저 콘솔을 통해 각 의존성이 두 배열에서 같은지 확인할 수 있습니다.
 
 ```js
-Object.is(temp1[0], temp2[0]); // Is the first dependency the same between the arrays?
-Object.is(temp1[1], temp2[1]); // Is the second dependency the same between the arrays?
-Object.is(temp1[2], temp2[2]); // ... and so on for every dependency ...
+Object.is(temp1[0], temp2[0]); // 첫 번째 의존성이 배열 간에 동일한가요?
+Object.is(temp1[1], temp2[1]); // 두 번째 의존성이 배열 간에 동일한가요?
+Object.is(temp1[2], temp2[2]); // ... 나머지 모든 의존성도 확인합니다  ...
 ```
 
-When you find which dependency is breaking memoization, either find a way to remove it, or [memoize it as well.](/reference/react/useMemo#memoizing-a-dependency-of-another-hook)
+어떤 의존성이 memoization을 깨고 있는지 찾았다면 이를 제거하거나 [memoization](/reference/react/useMemo#memoizing-a-dependency-of-another-hook)하는 방법을 찾으세요.
 
 ---
 
-### I need to call `useCallback` for each list item in a loop, but it's not allowed {/*i-need-to-call-usememo-for-each-list-item-in-a-loop-but-its-not-allowed*/}
+### 반복문에서 각 항목마다 `useCallback`을 호출하고 싶지만, 이것은 허용되지 않습니다. {/*i-need-to-call-usememo-for-each-list-item-in-a-loop-but-its-not-allowed*/}
 
-Suppose the `Chart` component is wrapped in [`memo`](/reference/react/memo). You want to skip re-rendering every `Chart` in the list when the `ReportList` component re-renders. However, you can't call `useCallback` in a loop:
+`Chart` 컴포넌트가 [`memo`](/reference/react/memo)로 감싸져 있다고 생각해 봅시다. `ReportList` 컴포넌트가 렌더링 될 때마다, 모든 `Chart` 항목이 리렌더링 하는 것을 막고 싶습니다. 하지만 반복문에서 `useCallback`을 호출할 수 없습니다.
 
 ```js {5-14}
 function ReportList({ items }) {
   return (
     <article>
       {items.map(item => {
-        // 🔴 You can't call useCallback in a loop like this:
+        // 🔴 이렇게 반복문 안에서 useCallback을 호출할 수 없습니다.
         const handleClick = useCallback(() => {
           sendReport(item)
         }, [item]);
@@ -883,7 +881,7 @@ function ReportList({ items }) {
 }
 ```
 
-Instead, extract a component for an individual item, and put `useCallback` there:
+대신 개별 항목을 컴포넌트로 분리하고, 거기에 `useCallback`을 넣으세요.
 
 ```js {5,12-21}
 function ReportList({ items }) {
@@ -897,7 +895,7 @@ function ReportList({ items }) {
 }
 
 function Report({ item }) {
-  // ✅ Call useCallback at the top level:
+  // ✅ useCallback을 최상위 레벨에서 호출하세요
   const handleClick = useCallback(() => {
     sendReport(item)
   }, [item]);
@@ -910,7 +908,7 @@ function Report({ item }) {
 }
 ```
 
-Alternatively, you could remove `useCallback` in the last snippet and instead wrap `Report` itself in [`memo`.](/reference/react/memo) If the `item` prop does not change, `Report` will skip re-rendering, so `Chart` will skip re-rendering too:
+대안으로 마지막 스니펫에서 `useCallback`을 제거하고 대신 `Report` 자체를 [`memo`](/reference/react/memo)로 감싸도 됩니다. `item` prop이 변경되지 않으면 `Report`는 리렌더링하지 않기 때문에 `Chart`도 리렌더링을 건너뜁니다.
 
 ```js {5,6-8,15}
 function ReportList({ items }) {
