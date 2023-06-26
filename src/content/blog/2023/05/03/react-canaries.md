@@ -2,7 +2,7 @@
 title: "React Canaries: Meta 외부에서 점진적 기능 롤아웃 활성화하기"
 ---
 
-2023년 5월 3일 by [Dan Abramov](https://twitter.com/dan_abramov), [Sophie Alpert](https://twitter.com/sophiebits), [Rick Hanlon](https://twitter.com/rickhanlonii), [Sebastian Markbåge](https://twitter.com/sebmarkbage), and [Andrew Clark](https://twitter.com/acdlite)
+2023년 5월 3일 [Dan Abramov](https://twitter.com/dan_abramov), [Sophie Alpert](https://twitter.com/sophiebits), [Rick Hanlon](https://twitter.com/rickhanlonii), [Sebastian Markbåge](https://twitter.com/sebmarkbage), [Andrew Clark](https://twitter.com/acdlite) 작성
 
 ---
 
