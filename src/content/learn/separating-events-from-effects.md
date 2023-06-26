@@ -1,37 +1,37 @@
 ---
-title: 'Separating Events from Effects'
+title: 'Effect에서 이벤트 분리하기'
 ---
 
 <Intro>
 
-Event handlers only re-run when you perform the same interaction again. Unlike event handlers, Effects re-synchronize if some value they read, like a prop or a state variable, is different from what it was during the last render. Sometimes, you also want a mix of both behaviors: an Effect that re-runs in response to some values but not others. This page will teach you how to do that.
+이벤트 핸들러는 같은 상호작용을 반복하는 경우에만 재실행됩니다. Effect는 이벤트 핸들러와 달리 prop이나 state 변수 등 읽은 값이 마지막 렌더링 때와 다르면 다시 동기화합니다. 때로는 두 동작이 섞여서 어떤 값에는 반응해 재실행되지만, 다른 값에는 그러지 않는 Effect를 원할 때도 있습니다. 이 페이지에서 그 방법을 알려드리겠습니다.
 
 </Intro>
 
 <YouWillLearn>
 
-- How to choose between an event handler and an Effect
-- Why Effects are reactive, and event handlers are not
-- What to do when you want a part of your Effect's code to not be reactive
-- What Effect Events are, and how to extract them from your Effects
-- How to read the latest props and state from Effects using Effect Events
+- 이벤트 핸들러와 Effect 중에 선택하는 방법
+- Effect는 반응형이고 이벤트 핸들러는 아닌 이유
+- Effect의 코드 일부가 반응형이 아니길 원한다면 해야 할 것
+- Effect Event의 정의와 Effect에서 추출하는 방법
+- Effect Event를 사용해 Effect에서 최근의 props와 state를 읽는 방법
 
 </YouWillLearn>
 
-## Choosing between event handlers and Effects {/*choosing-between-event-handlers-and-effects*/}
+## 이벤트 핸들러와 Effect 중에 선택하기 {/*choosing-between-event-handlers-and-effects*/}
 
-First, let's recap the difference between event handlers and Effects.
+먼저 이벤트 핸들러와 Effect의 차이점에 대해 간단히 알아보겠습니다.
 
-Imagine you're implementing a chat room component. Your requirements look like this:
+채팅방 컴포넌트를 구현한다고 상상해 보세요. 요구사항은 아래와 같습니다.
 
-1. Your component should automatically connect to the selected chat room.
-1. When you click the "Send" button, it should send a message to the chat.
+1. 채팅방 컴포넌트는 선택된 채팅방에 자동으로 연결해야 합니다.
+2. "전송" 버튼을 클릭하면 채팅에 메시지를 전송해야 합니다.
 
-Let's say you've already implemented the code for them, but you're not sure where to put it. Should you use event handlers or Effects? Every time you need to answer this question, consider [*why* the code needs to run.](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events)
+코드를 이미 구현했다고 하겠습니다. 그런데 그 코드를 어디에 넣어야 할지 확실하지 않습니다. 이벤트 핸들러와 Effect 중에 무엇을 사용해야 할까요? 이 질문에 답해야 할 때마다 [해당 코드가 실행되어야 하는 *이유*](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events)를 고려해 보세요.
 
-### Event handlers run in response to specific interactions {/*event-handlers-run-in-response-to-specific-interactions*/}
+### 이벤트 핸들러는 특정 상호작용에 대한 응답으로 실행된다 {/*event-handlers-run-in-response-to-specific-interactions*/}
 
-From the user's perspective, sending a message should happen *because* the particular "Send" button was clicked. The user will get rather upset if you send their message at any other time or for any other reason. This is why sending a message should be an event handler. Event handlers let you handle specific interactions:
+사용자 관점에서 메시지는 "전송" 버튼이 클릭 되었기 *때문에* 전송되어야 합니다. 다른 때나 다른 이유로 메시지가 전송되면 사용자는 꽤 당황할 것입니다. 그러므로 메시지를 전송하는 건 이벤트 핸들러가 되어야 합니다. 이벤트 핸들러는 특정 상호작용을 처리하게 해줍니다.
 
 ```js {4-6}
 function ChatRoom({ roomId }) {
@@ -44,19 +44,19 @@ function ChatRoom({ roomId }) {
   return (
     <>
       <input value={message} onChange={e => setMessage(e.target.value)} />
-      <button onClick={handleSendClick}>Send</button>;
+      <button onClick={handleSendClick}>전송</button>;
     </>
   );
 }
 ```
 
-With an event handler, you can be sure that `sendMessage(message)` will *only* run if the user presses the button.
+이벤트 핸들러를 사용하면 사용자가 버튼을 누를 *때만* `sendMessage(message)`가 실행될 것이라고 확신할 수 있습니다.
 
-### Effects run whenever synchronization is needed {/*effects-run-whenever-synchronization-is-needed*/}
+### Effect는 동기화가 필요할 때마다 실행된다 {/*effects-run-whenever-synchronization-is-needed*/}
 
-Recall that you also need to keep the component connected to the chat room. Where does that code go?
+채팅방 컴포넌트는 채팅방과의 연결을 유지해야 한다는 요구사항도 떠올려 보세요. 이 코드는 어디에 넣어야 할까요?
 
-The *reason* to run this code is not some particular interaction. It doesn't matter why or how the user navigated to the chat room screen. Now that they're looking at it and could interact with it, the component needs to stay connected to the selected chat server. Even if the chat room component was the initial screen of your app, and the user has not performed any interactions at all, you would *still* need to connect. This is why it's an Effect:
+이 코드를 실행하는 *이유*는 어떠한 특정 상호작용이 아닙니다. 사용자가 채팅방 화면으로 이동한 이유나 방법은 상관없습니다. 사용자가 현재 채팅방 화면을 보고 상호작용할 수 있으므로 컴포넌트는 선택된 채팅 서버에 계속 연결되어 있어야 합니다. 채팅방 컴포넌트가 앱의 첫 화면이고 사용자가 아무런 상호작용을 하지 않은 경우라 해도 *여전히* 연결되어 있어야 합니다. 그러므로 이 코드는 Effect입니다.
 
 ```js {3-9}
 function ChatRoom({ roomId }) {
@@ -72,7 +72,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-With this code, you can be sure that there is always an active connection to the currently selected chat server, *regardless* of the specific interactions performed by the user. Whether the user has only opened your app, selected a different room, or navigated to another screen and back, your Effect ensures that the component will *remain synchronized* with the currently selected room, and will [re-connect whenever it's necessary.](/learn/lifecycle-of-reactive-effects#why-synchronization-may-need-to-happen-more-than-once)
+이렇게 코드를 작성하면 사용자가 수행하는 특정 상호작용에 *상관없이* 현재 선택된 채팅 서버와 항상 연결된 상태임을 확신할 수 있습니다. 사용자가 앱을 열기만 했든 다른 방을 선택했든 다른 화면으로 이동했다가 다시 돌아왔든, 컴포넌트가 현재 선택된 방과 *동기화된 상태를 유지*할 것이고 [필요할 때마다 다시 연결](/learn/lifecycle-of-reactive-effects#why-synchronization-may-need-to-happen-more-than-once)할 것을 Effect가 보장합니다.
 
 <Sandpack>
 
@@ -97,9 +97,9 @@ function ChatRoom({ roomId }) {
 
   return (
     <>
-      <h1>Welcome to the {roomId} room!</h1>
+      <h1>{roomId} 방에 오신 것을 환영합니다!</h1>
       <input value={message} onChange={e => setMessage(e.target.value)} />
-      <button onClick={handleSendClick}>Send</button>
+      <button onClick={handleSendClick}>전송</button>
     </>
   );
 }
@@ -110,7 +110,7 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        채팅방 선택:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -121,7 +121,7 @@ export default function App() {
         </select>
       </label>
       <button onClick={() => setShow(!show)}>
-        {show ? 'Close chat' : 'Open chat'}
+        {show ? '채팅 닫기' : '채팅 열기'}
       </button>
       {show && <hr />}
       {show && <ChatRoom roomId={roomId} />}
@@ -132,17 +132,17 @@ export default function App() {
 
 ```js chat.js
 export function sendMessage(message) {
-  console.log('🔵 You sent: ' + message);
+  console.log('🔵 전송한 메시지: ' + message);
 }
 
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결했을 것입니다.
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ ' + serverUrl + '의 "' + roomId + '" 방에 연결 중...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ ' + serverUrl + '의 "' + roomId + '" 방과 연결 해제');
     }
   };
 }
@@ -154,13 +154,13 @@ input, select { margin-right: 20px; }
 
 </Sandpack>
 
-## Reactive values and reactive logic {/*reactive-values-and-reactive-logic*/}
+## 반응형 값과 반응형 로직 {/*reactive-values-and-reactive-logic*/}
 
-Intuitively, you could say that event handlers are always triggered "manually", for example by clicking a button. Effects, on the other hand, are "automatic": they run and re-run as often as it's needed to stay synchronized.
+이벤트 핸들러는 버튼 클릭과 같이 항상 "수동으로" 트리거 되지만, Effect는 동기화 유지에 필요한 만큼 자주 실행 및 재실행되기 때문에 "자동으로" 트리거 된다고 직감적으로 말할 수도 있습니다.
 
-There is a more precise way to think about this.
+이에 대해 더 정확하게 생각하는 방법이 있습니다.
 
-Props, state, and variables declared inside your component's body are called <CodeStep step={2}>reactive values</CodeStep>. In this example, `serverUrl` is not a reactive value, but `roomId` and `message` are. They participate in the rendering data flow:
+컴포넌트 본문 내부에 선언된 props, state, 변수를 <CodeStep step={2}>반응형 값</CodeStep>이라고 합니다. 이 예시에서 `serverUrl`은 반응형 값이 아니지만 `roomId`와 `message`는 반응형 값입니다. 반응형 값은 데이터 렌더링 과정에 관여합니다.
 
 ```js [[2, 3, "roomId"], [2, 4, "message"]]
 const serverUrl = 'https://localhost:1234';
@@ -172,16 +172,16 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-Reactive values like these can change due to a re-render. For example, the user may edit the `message` or choose a different `roomId` in a dropdown. Event handlers and Effects respond to changes differently:
+이러한 반응형 값은 리렌더링으로 인해 변경될 수 있습니다. 예를 들어 사용자가 `message`를 편집하거나 드롭다운에서 다른 `roomId`를 선택하는 경우가 있습니다. 이벤트 핸들러와 Effect는 변화에 다르게 반응합니다.
 
-- **Logic inside event handlers is *not reactive.*** It will not run again unless the user performs the same interaction (e.g. a click) again. Event handlers can read reactive values without "reacting" to their changes.
-- **Logic inside Effects is *reactive.*** If your Effect reads a reactive value, [you have to specify it as a dependency.](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) Then, if a re-render causes that value to change, React will re-run your Effect's logic with the new value.
+- **이벤트 핸들러 내부의 로직은 *반응형*이 아닙니다**. 사용자가 같은 상호작용(예: 클릭)을 반복하지 않는 한 재실행되지 않습니다. 이벤트 핸들러는 변화에 "반응"하지 않으면서 반응형 값을 읽을 수 있습니다.
+- **Effect 내부의 로직은 *반응형*입니다.** Effect에서 반응형 값을 읽는 경우 [그 값을 의존성으로 지정해야 합니다.](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) 그렇게 하면 리렌더링이 그 값을 바꾸는 경우 React가 새로운 값으로 Effect의 로직을 다시 실행합니다.
 
-Let's revisit the previous example to illustrate this difference.
+이 차이를 설명하기 위해 이전 예시를 다시 보겠습니다.
 
-### Logic inside event handlers is not reactive {/*logic-inside-event-handlers-is-not-reactive*/}
+### 이벤트 핸들러 내부의 로직은 반응형이 아니다 {/*logic-inside-event-handlers-is-not-reactive*/}
 
-Take a look at this line of code. Should this logic be reactive or not?
+아래의 코드 라인을 보세요. 이 로직이 반응형이어야 할까요, 아닐까요?
 
 ```js [[2, 2, "message"]]
     // ...
@@ -189,7 +189,7 @@ Take a look at this line of code. Should this logic be reactive or not?
     // ...
 ```
 
-From the user's perspective, **a change to the `message` does _not_ mean that they want to send a message.** It only means that the user is typing. In other words, the logic that sends a message should not be reactive. It should not run again only because the <CodeStep step={2}>reactive value</CodeStep> has changed. That's why it belongs in the event handler:
+사용자 관점에서 **`message`를 바꾸는 것이 메시지를 전송하고 싶다는 의미는 _아닙니다._** 사용자가 입력 중이라는 의미일 뿐입니다. 즉 메시지를 전송하는 로직은 반응형이어서는 안 됩니다. <CodeStep step={2}>반응형 값</CodeStep>이 변경되었다는 이유만으로 로직이 재실행되어서는 안 됩니다. 그러므로 이 로직은 이벤트 핸들러에 속합니다.
 
 ```js {2}
   function handleSendClick() {
@@ -197,11 +197,11 @@ From the user's perspective, **a change to the `message` does _not_ mean that th
   }
 ```
 
-Event handlers aren't reactive, so `sendMessage(message)` will only run when the user clicks the Send button.
+이벤트 핸들러는 반응형이 아니므로 `sendMessage(message)`는 사용자가 전송 버튼을 클릭할 때만 실행될 것입니다.
 
-### Logic inside Effects is reactive {/*logic-inside-effects-is-reactive*/}
+### Effect 내부의 로직은 반응형이다 {/*logic-inside-effects-is-reactive*/}
 
-Now let's return to these lines:
+이제 아래의 코드 라인으로 돌아가 봅시다.
 
 ```js [[2, 2, "roomId"]]
     // ...
@@ -210,7 +210,7 @@ Now let's return to these lines:
     // ...
 ```
 
-From the user's perspective, **a change to the `roomId` *does* mean that they want to connect to a different room.** In other words, the logic for connecting to the room should be reactive. You *want* these lines of code to "keep up" with the <CodeStep step={2}>reactive value</CodeStep>, and to run again if that value is different. That's why it belongs in an Effect:
+사용자 관점에서 **`roomId`를 바꾸는 것은 다른 방에 연결하고 싶다는 의미입니다.** 즉 방에 연결하기 위한 로직은 반응형이어야 합니다. 우리는 이 코드가 <CodeStep step={2}>반응형 값</CodeStep>을 "따라가고" 그 값이 바뀌면 다시 실행되기를 원합니다. 그러므로 이 로직은 Effect에 속합니다.
 
 ```js {2-3}
   useEffect(() => {
@@ -222,43 +222,43 @@ From the user's perspective, **a change to the `roomId` *does* mean that they wa
   }, [roomId]);
 ```
 
-Effects are reactive, so `createConnection(serverUrl, roomId)` and `connection.connect()` will run for every distinct value of `roomId`. Your Effect keeps the chat connection synchronized to the currently selected room.
+Effect는 반응형이므로 `createConnection(serverUrl, roomId)`와 `connection.connect()`는 구별되는 모든 `roomId` 값에 대해 실행될 겁니다. Effect는 채팅 연결과 현재 선택된 방의 동기화를 유지해 줍니다.
 
-## Extracting non-reactive logic out of Effects {/*extracting-non-reactive-logic-out-of-effects*/}
+## Effect에서 비반응형 로직 추출하기 {/*extracting-non-reactive-logic-out-of-effects*/}
 
-Things get more tricky when you want to mix reactive logic with non-reactive logic.
+반응형 로직과 비반응형 로직을 섞으려 한다면 더 까다로워집니다.
 
-For example, imagine that you want to show a notification when the user connects to the chat. You read the current theme (dark or light) from the props so that you can show the notification in the correct color:
+예를 들어 사용자가 채팅에 연결할 때 알림을 보여주는 상황을 상상해 보세요. 올바른 색상의 알림을 보여주기 위해 props로부터 현재 테마(dark 또는 light)를 읽습니다.
 
 ```js {1,4-6}
 function ChatRoom({ roomId, theme }) {
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.on('connected', () => {
-      showNotification('Connected!', theme);
+      showNotification('연결됨!', theme);
     });
     connection.connect();
     // ...
 ```
 
-However, `theme` is a reactive value (it can change as a result of re-rendering), and [every reactive value read by an Effect must be declared as its dependency.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) Now you have to specify `theme` as a dependency of your Effect:
+그러나 `theme`은 (리렌더링으로 변경될 수 있는) 반응형 값이고 [Effect가 읽는 모든 반응형 값은 의존성으로 선언되어야 합니다.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) 그러므로 `theme`을 Effect의 의존성으로 지정해야 합니다.
 
 ```js {5,11}
 function ChatRoom({ roomId, theme }) {
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.on('connected', () => {
-      showNotification('Connected!', theme);
+      showNotification('연결됨!', theme);
     });
     connection.connect();
     return () => {
       connection.disconnect()
     };
-  }, [roomId, theme]); // ✅ All dependencies declared
+  }, [roomId, theme]); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
-Play with this example and see if you can spot the problem with this user experience:
+이 예제로 이것저것 해보면서 사용자 경험상의 문제를 발견할 수 있을지 확인해 보세요.
 
 <Sandpack>
 
@@ -290,13 +290,13 @@ function ChatRoom({ roomId, theme }) {
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.on('connected', () => {
-      showNotification('Connected!', theme);
+      showNotification('연결됨!', theme);
     });
     connection.connect();
     return () => connection.disconnect();
   }, [roomId, theme]);
 
-  return <h1>Welcome to the {roomId} room!</h1>
+  return <h1>{roomId} 방에 오신 것을 환영합니다!</h1>
 }
 
 export default function App() {
@@ -305,7 +305,7 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        채팅방 선택:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -321,7 +321,7 @@ export default function App() {
           checked={isDark}
           onChange={e => setIsDark(e.target.checked)}
         />
-        Use dark theme
+        어두운 테마 사용
       </label>
       <hr />
       <ChatRoom
@@ -335,7 +335,7 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결했을 것입니다.
   let connectedCallback;
   let timeout;
   return {
@@ -348,10 +348,10 @@ export function createConnection(serverUrl, roomId) {
     },
     on(event, callback) {
       if (connectedCallback) {
-        throw Error('Cannot add the handler twice.');
+        throw Error('핸들러는 두 번 추가할 수 없습니다.');
       }
       if (event !== 'connected') {
-        throw Error('Only "connected" event is supported.');
+        throw Error('"connected" 이벤트만 지원됩니다.');
       }
       connectedCallback = callback;
     },
@@ -386,46 +386,46 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-When the `roomId` changes, the chat re-connects as you would expect. But since `theme` is also a dependency, the chat *also* re-connects every time you switch between the dark and the light theme. That's not great!
+`roomId`가 변경되면 채팅은 예상대로 다시 연결됩니다. 하지만 `theme`도 의존성이므로 dark 테마와 light 테마 사이를 전환할 때마다 채팅도 다시 연결됩니다. 좋지 않습니다!
 
-In other words, you *don't* want this line to be reactive, even though it is inside an Effect (which is reactive):
+다시 말해 아래의 코드 라인이 비록 (반응형인) Effect 내부에 있지만 반응형이 *아니길* 바랍니다.
 
 ```js
       // ...
-      showNotification('Connected!', theme);
+      showNotification('연결됨!', theme);
       // ...
 ```
 
-You need a way to separate this non-reactive logic from the reactive Effect around it.
+이 비반응형 로직을 주변의 반응형 Effect로부터 분리할 방법이 필요합니다.
 
-### Declaring an Effect Event {/*declaring-an-effect-event*/}
+### Effect Event 선언하기 {/*declaring-an-effect-event*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+이 단락에서는 **아직 안정된 버전의 React로 출시되지 않은 실험적인 API**를 설명합니다.
 
 </Wip>
 
-Use a special Hook called [`useEffectEvent`](/reference/react/experimental_useEffectEvent) to extract this non-reactive logic out of your Effect:
+이 비반응형 로직을 Effect에서 추출하려면 [`useEffectEvent`](/reference/react/experimental_useEffectEvent)라는 특수한 Hook을 사용하세요.
 
 ```js {1,4-6}
 import { useEffect, useEffectEvent } from 'react';
 
 function ChatRoom({ roomId, theme }) {
   const onConnected = useEffectEvent(() => {
-    showNotification('Connected!', theme);
+    showNotification('연결됨!', theme);
   });
   // ...
 ```
 
-Here, `onConnected` is called an *Effect Event.* It's a part of your Effect logic, but it behaves a lot more like an event handler. The logic inside it is not reactive, and it always "sees" the latest values of your props and state.
+여기서 `onConnected`를 *Effect Event*라고 합니다. Effect 로직의 일부이지만 이벤트 핸들러와 훨씬 비슷하게 동작합니다. 내부의 로직은 반응형이 아니며 항상 props와 state의 최근 값을 "바라봅니다".
 
-Now you can call the `onConnected` Effect Event from inside your Effect:
+이제 Effect 내부에서 Effect Event인 `onConnected`를 호출할 수 있습니다.
 
 ```js {2-4,9,13}
 function ChatRoom({ roomId, theme }) {
   const onConnected = useEffectEvent(() => {
-    showNotification('Connected!', theme);
+    showNotification('연결됨!', theme);
   });
 
   useEffect(() => {
@@ -435,13 +435,13 @@ function ChatRoom({ roomId, theme }) {
     });
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 모든 의존성이 선언됨
   // ...
 ```
 
-This solves the problem. Note that you had to *remove* `onConnected` from the list of your Effect's dependencies. **Effect Events are not reactive and must be omitted from dependencies.**
+이렇게 하면 문제가 해결됩니다. Effect의 의존성 목록에서 `onConnected`를 *제거*해야 한다는 것에 유의하세요. **Effect Event는 반응형이 아니므로 의존성에서 제외되어야 합니다.**
 
-Verify that the new behavior works as you would expect:
+새로운 동작이 예상대로 작동하는지 확인해 보세요.
 
 <Sandpack>
 
@@ -472,7 +472,7 @@ const serverUrl = 'https://localhost:1234';
 
 function ChatRoom({ roomId, theme }) {
   const onConnected = useEffectEvent(() => {
-    showNotification('Connected!', theme);
+    showNotification('연결됨!', theme);
   });
 
   useEffect(() => {
@@ -484,7 +484,7 @@ function ChatRoom({ roomId, theme }) {
     return () => connection.disconnect();
   }, [roomId]);
 
-  return <h1>Welcome to the {roomId} room!</h1>
+  return <h1>{roomId} 방에 오신 것을 환영합니다!</h1>
 }
 
 export default function App() {
@@ -493,7 +493,7 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        채팅방 선택:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -509,7 +509,7 @@ export default function App() {
           checked={isDark}
           onChange={e => setIsDark(e.target.checked)}
         />
-        Use dark theme
+        어두운 테마 사용
       </label>
       <hr />
       <ChatRoom
@@ -523,7 +523,7 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결했을 것입니다.
   let connectedCallback;
   let timeout;
   return {
@@ -536,10 +536,10 @@ export function createConnection(serverUrl, roomId) {
     },
     on(event, callback) {
       if (connectedCallback) {
-        throw Error('Cannot add the handler twice.');
+        throw Error('핸들러는 두 번 추가할 수 없습니다.');
       }
       if (event !== 'connected') {
-        throw Error('Only "connected" event is supported.');
+        throw Error('"connected" 이벤트만 지원됩니다.');
       }
       connectedCallback = callback;
     },
@@ -574,19 +574,19 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-You can think of Effect Events as being very similar to event handlers. The main difference is that event handlers run in response to a user interactions, whereas Effect Events are triggered by you from Effects. Effect Events let you "break the chain" between the reactivity of Effects and code that should not be reactive.
+Effect Event가 이벤트 핸들러와 아주 비슷하다고 생각할 수 있습니다. 이벤트 핸들러는 사용자의 상호작용에 대한 응답으로 실행되는 반면에 Effect Event는 Effect에서 직접 트리거 된다는 것이 주요한 차이점입니다. Effect Event를 사용하면 Effect의 반응성과 반응형이어서는 안 되는 코드 사이의 "연결을 끊어줍니다".
 
-### Reading latest props and state with Effect Events {/*reading-latest-props-and-state-with-effect-events*/}
+### Effect Event로 최근 props와 state 읽기 {/*reading-latest-props-and-state-with-effect-events*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+이 단락에서는 **아직 안정된 버전의 React로 출시되지 않은 실험적인 API**를 설명합니다.
 
 </Wip>
 
-Effect Events let you fix many patterns where you might be tempted to suppress the dependency linter.
+Effect Event는 의존성 린터를 억제하고 싶었을 많은 패턴을 수정하게 합니다.
 
-For example, say you have an Effect to log the page visits:
+예를 들어 페이지 방문을 기록하기 위한 Effect가 있다고 해보겠습니다.
 
 ```js
 function Page() {
@@ -597,7 +597,7 @@ function Page() {
 }
 ```
 
-Later, you add multiple routes to your site. Now your `Page` component receives a `url` prop with the current path. You want to pass the `url` as a part of your `logVisit` call, but the dependency linter complains:
+이후 사이트에 여러 경로가 추가되고 이제 `Page` 컴포넌트는 현재 경로가 담긴 `url`을 prop으로 받습니다. `logVisit`에 `url`을 전달하여 호출하려는데 의존성 린터가 불평합니다.
 
 ```js {1,3}
 function Page({ url }) {
@@ -608,18 +608,18 @@ function Page({ url }) {
 }
 ```
 
-Think about what you want the code to do. You *want* to log a separate visit for different URLs since each URL represents a different page. In other words, this `logVisit` call *should* be reactive with respect to the `url`. This is why, in this case, it makes sense to follow the dependency linter, and add `url` as a dependency:
+이 코드로 무엇을 하려는 것인지 생각해 보세요. 각 URL은 서로 다른 페이지를 나타내므로 각 URL에 대한 방문을 *따로 기록하려 합니다*. 즉 이 `logVisit` 호출은 `url`에 반응형*이어야 합니다*. 그러므로 이런 경우에는 의존성 린터의 말을 따라 `url`을 의존성으로 추가하는 것이 합리적입니다.
 
 ```js {4}
 function Page({ url }) {
   useEffect(() => {
     logVisit(url);
-  }, [url]); // ✅ All dependencies declared
+  }, [url]); // ✅ 모든 의존성이 선언됨
   // ...
 }
 ```
 
-Now let's say you want to include the number of items in the shopping cart together with every page visit:
+이제 모든 페이지 방문기록에 장바구니의 물건 개수도 포함하려 한다고 해보겠습니다.
 
 ```js {2-3,6}
 function Page({ url }) {
@@ -633,9 +633,9 @@ function Page({ url }) {
 }
 ```
 
-You used `numberOfItems` inside the Effect, so the linter asks you to add it as a dependency. However, you *don't* want the `logVisit` call to be reactive with respect to `numberOfItems`. If the user puts something into the shopping cart, and the `numberOfItems` changes, this *does not mean* that the user visited the page again. In other words, *visiting the page* is, in some sense, an "event". It happens at a precise moment in time.
+Effect 내부에서 `numberOfItems`를 사용했으므로 린터는 이를 의존성에 추가해달라고 부탁합니다. 하지만 `logVisit` 호출이 `numberOfItems`에 반응하지 *않길* 원합니다. 사용자가 장바구니에 무언가를 넣어 `numberOfItems`가 변경되는 것이 사용자가 페이지를 다시 방문했음을 *의미하지는 않습니다*. 즉 *페이지 방문*은 어떤 의미에서 "이벤트"입니다. 이 이벤트는 특정한 시점에 발생합니다.
 
-Split the code in two parts:
+코드를 두 부분으로 나눠보세요.
 
 ```js {5-7,10}
 function Page({ url }) {
@@ -648,20 +648,20 @@ function Page({ url }) {
 
   useEffect(() => {
     onVisit(url);
-  }, [url]); // ✅ All dependencies declared
+  }, [url]); // ✅ 모든 의존성 선언됨
   // ...
 }
 ```
 
-Here, `onVisit` is an Effect Event. The code inside it isn't reactive. This is why you can use `numberOfItems` (or any other reactive value!) without worrying that it will cause the surrounding code to re-execute on changes.
+여기서 `onVisit`은 Effect Event입니다. 그 내부의 코드는 반응형이 아닙니다. 그러므로 `numberOfItems` (또는 다른 반응형 값!)의 변경이 주변 코드를 재실행시킬 걱정 없이 사용할 수 있습니다.
 
-On the other hand, the Effect itself remains reactive. Code inside the Effect uses the `url` prop, so the Effect will re-run after every re-render with a different `url`. This, in turn, will call the `onVisit` Effect Event.
+반면에 Effect 자체는 여전히 반응형입니다. Effect 내부의 코드는 prop인 `url`을 사용하므로 다른 `url`로 리렌더링 될 때마다 Effect가 재실행됩니다. 그로 인해 Effect Event인 `onVisit`가 호출될 것입니다.
 
-As a result, you will call `logVisit` for every change to the `url`, and always read the latest `numberOfItems`. However, if `numberOfItems` changes on its own, this will not cause any of the code to re-run.
+결과적으로 prop인 `url` 변경될 때마다 `logVisit`을 호출할 것이고 항상 최근의 `numberOfItems`를 읽을 것입니다. 하지만 `numberOfItems` 혼자만 변경되면 어떠한 코드도 재실행되지 않습니다.
 
 <Note>
 
-You might be wondering if you could call `onVisit()` with no arguments, and read the `url` inside it:
+인수 없이 `onVisit()`을 호출하고 그 내부에서 `url`을 읽을 수 있는지 궁금할 수도 있습니다.
 
 ```js {2,6}
   const onVisit = useEffectEvent(() => {
@@ -673,7 +673,7 @@ You might be wondering if you could call `onVisit()` with no arguments, and read
   }, [url]);
 ```
 
-This would work, but it's better to pass this `url` to the Effect Event explicitly. **By passing `url` as an argument to your Effect Event, you are saying that visiting a page with a different `url` constitutes a separate "event" from the user's perspective.** The `visitedUrl` is a *part* of the "event" that happened:
+이렇게 해도 읽을 수 있지만 `url`을 Effect Event에 명시적으로 전달하는 것이 좋습니다. **`url`을 Effect Event에 인수로 전달함으로써 다른 `url`로 페이지를 방문하는 것이 사용자 관점에서는 별도의 "이벤트"임을 나타내는 것입니다.** `visitedUrl`은 발생한 "이벤트"의 *일부분*입니다.
 
 ```js {1-2,6}
   const onVisit = useEffectEvent(visitedUrl => {
@@ -685,9 +685,9 @@ This would work, but it's better to pass this `url` to the Effect Event explicit
   }, [url]);
 ```
 
-Since your Effect Event explicitly "asks" for the `visitedUrl`, now you can't accidentally remove `url` from the Effect's dependencies. If you remove the `url` dependency (causing distinct page visits to be counted as one), the linter will warn you about it. You want `onVisit` to be reactive with regards to the `url`, so instead of reading the `url` inside (where it wouldn't be reactive), you pass it *from* your Effect.
+Effect Event가 `visitedUrl`을 명시적으로 "요구"하므로 `url`을 Effect의 의존성에서 실수로 제거하는 일은 이제 있을 수 없습니다. 의존성에서 `url`을 제거하면 (별개의 페이지 방문을 하나로 취급하게 되는데) 린터가 경고할 것입니다. `onVisit`이 `url`에 반응하기를 원하므로 `url`을 (반응형이 아닌) `onVisit` 내부에서 읽지 말고 Effect에서 전달해 줍니다.
 
-This becomes especially important if there is some asynchronous logic inside the Effect:
+이것은 Effect 내부에 비동기 로직이 있는 경우에 특히 중요해집니다.
 
 ```js {6,8}
   const onVisit = useEffectEvent(visitedUrl => {
@@ -697,19 +697,19 @@ This becomes especially important if there is some asynchronous logic inside the
   useEffect(() => {
     setTimeout(() => {
       onVisit(url);
-    }, 5000); // Delay logging visits
+    }, 5000); // 방문 기록을 지연시킴
   }, [url]);
 ```
 
-Here, `url` inside `onVisit` corresponds to the *latest* `url` (which could have already changed), but `visitedUrl` corresponds to the `url` that originally caused this Effect (and this `onVisit` call) to run.
+여기서 `onVisit` 내부의 `url`은 (이미 변경되었을 수 있는) *최근의* `url`에 해당하지만 `visitedUrl`은 최초에 이 Effect (및 `onVisit` 호출)을 실행하게 만든 `url`에 해당합니다.
 
 </Note>
 
 <DeepDive>
 
-#### Is it okay to suppress the dependency linter instead? {/*is-it-okay-to-suppress-the-dependency-linter-instead*/}
+#### 대안으로 의존성 린터를 억제하는 것은 괜찮은가요? {/*is-it-okay-to-suppress-the-dependency-linter-instead*/}
 
-In the existing codebases, you may sometimes see the lint rule suppressed like this:
+기존 코드베이스에서는 아래와 같이 린트 규칙이 억제된 것을 가끔 볼 수 있습니다.
 
 ```js {7-9}
 function Page({ url }) {
@@ -718,20 +718,20 @@ function Page({ url }) {
 
   useEffect(() => {
     logVisit(url, numberOfItems);
-    // 🔴 Avoid suppressing the linter like this:
+    // 🔴 이런 식으로 린터를 억제하는 것은 피하세요.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
   // ...
 }
 ```
 
-After `useEffectEvent` becomes a stable part of React, we recommend **never suppressing the linter**.
+`useEffectEvent`가 React의 안정적인 기능이 되면 **린터를 절대로 억제하지 않을 것**을 추천합니다.
 
-The first downside of suppressing the rule is that React will no longer warn you when your Effect needs to "react" to a new reactive dependency you've introduced to your code. In the earlier example, you added `url` to the dependencies *because* React reminded you to do it. You will no longer get such reminders for any future edits to that Effect if you disable the linter. This leads to bugs.
+규칙을 억제하는 것의 첫 번째 단점은 코드에 추가한 새로운 반응형 의존성에 Effect가 "반응"해야 할 때 React가 더 이상 경고하지 않는다는 것입니다. 이전 예제에서는 React가 의존성에 `url`을 추가하라고 상기시켜 주었기 *때문에* 그렇게 했습니다. 린터를 억제하면 해당 Effect에 대한 향후 편집에 대해 이러한 알림을 더 이상 받지 않게 됩니다. 이는 버그로 이어집니다.
 
-Here is an example of a confusing bug caused by suppressing the linter. In this example, the `handleMove` function is supposed to read the current `canMove` state variable value in order to decide whether the dot should follow the cursor. However, `canMove` is always `true` inside `handleMove`.
+다음은 린터를 억제하여 발생하는 혼란스러운 버그의 예시입니다. 이 예시에서 `handleMove` 함수는 점이 커서를 따라가야 하는지를 결정하기 위해 state 변수 `canMove`의 현재 값을 읽어야 합니다. 그러나 `handleMove` 내부에서 `canMove`는 항상 `true`입니다.
 
-Can you see why?
+왜 그런지 알겠나요?
 
 <Sandpack>
 
@@ -761,7 +761,7 @@ export default function App() {
           checked={canMove}
           onChange={e => setCanMove(e.target.checked)}
         />
-        The dot is allowed to move
+        점 움직이게 하기
       </label>
       <hr />
       <div style={{
@@ -790,13 +790,13 @@ body {
 </Sandpack>
 
 
-The problem with this code is in suppressing the dependency linter. If you remove the suppression, you'll see that this Effect should depend on the `handleMove` function. This makes sense: `handleMove` is declared inside the component body, which makes it a reactive value. Every reactive value must be specified as a dependency, or it can potentially get stale over time!
+이 코드의 문제는 린터를 억제한다는 것입니다. 억제하는 것을 제거하면 이 Effect가 `handleMove` 함수에 의존해야 함을 알게 될 것입니다. `handleMove`는 컴포넌트 본문 내부에서 선언되어서 반응형 값이기 때문입니다. 모든 반응형 값은 의존성으로 지정되어야 하며 그렇지 않으면 시간이 지남에 따라 오래되어 최근 값과 달라질 가능성이 있습니다!
 
-The author of the original code has "lied" to React by saying that the Effect does not depend (`[]`) on any reactive values. This is why React did not re-synchronize the Effect after `canMove` has changed (and `handleMove` with it). Because React did not re-synchronize the Effect, the `handleMove` attached as a listener is the `handleMove` function created during the initial render. During the initial render, `canMove` was `true`, which is why `handleMove` from the initial render will forever see that value.
+기존 코드의 작성자는 Effect가 반응형 값에 의존하지 않는다고(`[]`) React에 "거짓말"을 했습니다. 그러므로 React는 `canMove`가 (`handleMove`와 함께) 변경된 후에 Effect를 다시 동기화하지 않았습니다. React가 Effect를 다시 동기화하지 않았기 때문에 리스너로 부착된 `handleMove`는 초기 렌더링 과정에서 생성된 `handleMove` 함수입니다. 초기 렌더링 과정에서 `canMove`가 `true`였으므로 초기 렌더링 과정에서 생성된 `handleMove`는 영원히 `true`를 바라보게 됩니다.
 
-**If you never suppress the linter, you will never see problems with stale values.**
+**린터를 억제하지 않으면 오래된 값으로 인한 문제가 절대 발생하지 않습니다.**
 
-With `useEffectEvent`, there is no need to "lie" to the linter, and the code works as you would expect:
+`useEffectEvent`를 사용하면 린터에 "거짓말"을 할 필요가 없으며 코드는 기대한 대로 동작합니다.
 
 <Sandpack>
 
@@ -842,7 +842,7 @@ export default function App() {
           checked={canMove}
           onChange={e => setCanMove(e.target.checked)}
         />
-        The dot is allowed to move
+        점 움직이게 하기
       </label>
       <hr />
       <div style={{
@@ -870,26 +870,26 @@ body {
 
 </Sandpack>
 
-This doesn't mean that `useEffectEvent` is *always* the correct solution. You should only apply it to the lines of code that you don't want to be reactive. In the above sandbox, you didn't want the Effect's code to be reactive with regards to `canMove`. That's why it made sense to extract an Effect Event.
+`useEffectEvent`가 *항상* 올바른 해결책이라는 의미는 아닙니다. `useEffectEvent`는 반응형이 아니길 원하는 코드 라인에만 적용해야 합니다. 위의 샌드박스에서는 Effect의 코드가 `canMove`에 반응하길 원하지 않았습니다. 그러므로 Effect Event로 추출하는 것이 합리적이었습니다.
 
-Read [Removing Effect Dependencies](/learn/removing-effect-dependencies) for other correct alternatives to suppressing the linter.
+린터 억제의 다른 올바른 대안에 대해서는 [Effect 의존성 제거하기](/learn/removing-effect-dependencies)를 읽어보세요.
 
 </DeepDive>
 
-### Limitations of Effect Events {/*limitations-of-effect-events*/}
+### Effect Event의 한계 {/*limitations-of-effect-events*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+이 단락에서는 **아직 안정된 버전의 React로 출시되지 않은 실험적인 API**를 설명합니다.
 
 </Wip>
 
-Effect Events are very limited in how you can use them:
+Effect Event는 사용할 수 있는 방법이 매우 제한적입니다.
 
-* **Only call them from inside Effects.**
-* **Never pass them to other components or Hooks.**
+* **Effect 내부에서만 호출하세요.**
+* **절대로 다른 컴포넌트나 Hook에 전달하지 마세요.**
 
-For example, don't declare and pass an Effect Event like this:
+예를 들어 아래와 같이 Effect Event를 선언하고 전달하지 마세요.
 
 ```js {4-6,8}
 function Timer() {
@@ -899,7 +899,7 @@ function Timer() {
     setCount(count + 1);
   });
 
-  useTimer(onTick, 1000); // 🔴 Avoid: Passing Effect Events
+  useTimer(onTick, 1000); // 🔴 금지: Effect Event 전달하기
 
   return <h1>{count}</h1>
 }
@@ -912,11 +912,11 @@ function useTimer(callback, delay) {
     return () => {
       clearInterval(id);
     };
-  }, [delay, callback]); // Need to specify "callback" in dependencies
+  }, [delay, callback]); // 의존성에 "callback"을 지정해야 함
 }
 ```
 
-Instead, always declare Effect Events directly next to the Effects that use them:
+그 대신 Effect Event는 항상 자신을 사용하는 Effect의 바로 근처에 선언하세요.
 
 ```js {10-12,16,21}
 function Timer() {
@@ -934,40 +934,40 @@ function useTimer(callback, delay) {
 
   useEffect(() => {
     const id = setInterval(() => {
-      onTick(); // ✅ Good: Only called locally inside an Effect
+      onTick(); // ✅ 바람직함: Effect 내부에서 지역적으로만 호출됨
     }, delay);
     return () => {
       clearInterval(id);
     };
-  }, [delay]); // No need to specify "onTick" (an Effect Event) as a dependency
+  }, [delay]); // "onTick"(Effect Event)를 의존성으로 지정할 필요 없음
 }
 ```
 
-Effect Events are non-reactive "pieces" of your Effect code. They should be next to the Effect using them.
+Effect Event는 Effect의 코드 중 비반응형인 "부분"입니다. Effect Event는 자신을 사용하는 Effect 근처에 있어야 합니다.
 
 <Recap>
 
-- Event handlers run in response to specific interactions.
-- Effects run whenever synchronization is needed.
-- Logic inside event handlers is not reactive.
-- Logic inside Effects is reactive.
-- You can move non-reactive logic from Effects into Effect Events.
-- Only call Effect Events from inside Effects.
-- Don't pass Effect Events to other components or Hooks.
+- 이벤트 핸들러는 특정 상호작용에 대한 응답으로 실행됩니다.
+- Effect는 동기화가 필요할 때마다 실행됩니다.
+- 이벤트 핸들러 내부의 로직은 반응형이 아닙니다.
+- Effect 내부의 로직은 반응형입니다.
+- Effect의 비반응형 로직은 Effect Event로 옮길 수 있습니다.
+- Effect Event는 Effect 내부에서만 호출하세요.
+- Effect Event를 다른 컴포넌트나 Hook에 전달하지 마세요.
 
 </Recap>
 
 <Challenges>
 
-#### Fix a variable that doesn't update {/*fix-a-variable-that-doesnt-update*/}
+#### 업데이트되지 않는 변수 고치기 {/*fix-a-variable-that-doesnt-update*/}
 
-This `Timer` component keeps a `count` state variable which increases every second. The value by which it's increasing is stored in the `increment` state variable. You can control the `increment` variable with the plus and minus buttons.
+아래의 `Timer` 컴포넌트에는 매초 증가하는 state 변수 `count`가 있습니다. 증가량은 state 변수 `increment`에 저장됩니다. 변수 `increment`는 더하기와 빼기 버튼으로 제어할 수 있습니다.
 
-However, no matter how many times you click the plus button, the counter is still incremented by one every second. What's wrong with this code? Why is `increment` always equal to `1` inside the Effect's code? Find the mistake and fix it.
+하지만 더하기 버튼을 아무리 많이 클릭해도 카운터는 여전히 매초 1씩 증가합니다. 이 코드는 무엇이 잘못되었을까요? Effect의 코드 내부에서 `increment`는 왜 항상 `1`일까요? 실수를 찾아 고쳐보세요.
 
 <Hint>
 
-To fix this code, it's enough to follow the rules.
+이 코드를 고치려면 규칙을 따르는 것으로 충분합니다.
 
 </Hint>
 
@@ -993,12 +993,12 @@ export default function Timer() {
   return (
     <>
       <h1>
-        Counter: {count}
-        <button onClick={() => setCount(0)}>Reset</button>
+        카운터: {count}
+        <button onClick={() => setCount(0)}>재설정</button>
       </h1>
       <hr />
       <p>
-        Every second, increment by:
+        초당 증가량:
         <button disabled={increment === 0} onClick={() => {
           setIncrement(i => i - 1);
         }}>–</button>
@@ -1020,9 +1020,9 @@ button { margin: 10px; }
 
 <Solution>
 
-As usual, when you're looking for bugs in Effects, start by searching for linter suppressions.
+Effect의 버그를 찾을 때는 늘 그렇듯 억제된 린터 규칙이 있는지 찾는 것부터 시작하세요.
 
-If you remove the suppression comment, React will tell you that this Effect's code depends on `increment`, but you "lied" to React by claiming that this Effect does not depend on any reactive values (`[]`). Add `increment` to the dependency array:
+린터를 억제하는 주석을 제거하면 React는 이 Effect의 코드가 `increment`에 의존한다고 알려줄 것입니다. 하지만 여러분은 이 Effect가 어떠한 반응형 값에도 의존하지 않는다고(`[]`) 함으로써 React에 "거짓말"을 했습니다. 의존성 배열에 `increment`를 추가하세요.
 
 <Sandpack>
 
@@ -1045,12 +1045,12 @@ export default function Timer() {
   return (
     <>
       <h1>
-        Counter: {count}
-        <button onClick={() => setCount(0)}>Reset</button>
+        카운터: {count}
+        <button onClick={() => setCount(0)}>재설정</button>
       </h1>
       <hr />
       <p>
-        Every second, increment by:
+        초당 증가량:
         <button disabled={increment === 0} onClick={() => {
           setIncrement(i => i - 1);
         }}>–</button>
@@ -1070,19 +1070,19 @@ button { margin: 10px; }
 
 </Sandpack>
 
-Now, when `increment` changes, React will re-synchronize your Effect, which will restart the interval.
+이제 `increment`가 변경되면 React는 Effect를 다시 동기화시킬 것이고 그로 인해 interval은 재시작될 것입니다.
 
 </Solution>
 
-#### Fix a freezing counter {/*fix-a-freezing-counter*/}
+#### 멈추는 카운터 고치기 {/*fix-a-freezing-counter*/}
 
-This `Timer` component keeps a `count` state variable which increases every second. The value by which it's increasing is stored in the `increment` state variable, which you can control it with the plus and minus buttons. For example, try pressing the plus button nine times, and notice that the `count` now increases each second by ten rather than by one.
+아래의 `Timer` 컴포넌트에는 매초 증가하는 state 변수 `count`가 있습니다. 증가량은 state 변수 `increment`에 저장되며 더하기와 빼기 버튼으로 제어할 수 있습니다. 예를 들어 더하기 버튼을 9번 누르면 `count`가 이제 매초 1이 아닌 10씩 증가하는 것을 확인할 수 있습니다.
 
-There is a small issue with this user interface. You might notice that if you keep pressing the plus or minus buttons faster than once per second, the timer itself seems to pause. It only resumes after a second passes since the last time you've pressed either button. Find why this is happening, and fix the issue so that the timer ticks on *every* second without interruptions.
+이 사용자 인터페이스에는 작은 문제가 있습니다. 더하기 또는 빼기 버튼을 초당 한 번보다 빠르게 계속 누르면 타이머 자체가 잠시 멈춘 것처럼 보입니다. 타이머는 마지막으로 버튼을 누른 후 1초가 지나야 다시 시작됩니다. 타이머가 중단되지 않고 *매초* tick 하도록 이 현상의 원인을 찾고 문제를 해결하세요.
 
 <Hint>
 
-It seems like the Effect which sets up the timer "reacts" to the `increment` value. Does the line that uses the current `increment` value in order to call `setCount` really need to be reactive?
+타이머를 설정하는 Effect가 `increment` 값에 "반응"하는 것으로 보입니다. `setCount`를 호출하려고 현재의 `increment` 값을 사용하는 코드 라인이 정말 반응형이어야 할까요?
 
 </Hint>
 
@@ -1124,12 +1124,12 @@ export default function Timer() {
   return (
     <>
       <h1>
-        Counter: {count}
-        <button onClick={() => setCount(0)}>Reset</button>
+        카운터: {count}
+        <button onClick={() => setCount(0)}>재설정</button>
       </h1>
       <hr />
       <p>
-        Every second, increment by:
+        초당 증가량:
         <button disabled={increment === 0} onClick={() => {
           setIncrement(i => i - 1);
         }}>–</button>
@@ -1151,9 +1151,9 @@ button { margin: 10px; }
 
 <Solution>
 
-The issue is that the code inside the Effect uses the `increment` state variable. Since it's a dependency of your Effect, every change to `increment` causes the Effect to re-synchronize, which causes the interval to clear. If you keep clearing the interval every time before it has a chance to fire, it will appear as if the timer has stalled.
+Effect 내부의 코드가 state 변수 `increment`를 사용하는 것이 문제입니다. Effect가 `increment`에 의존하므로 `increment`가 변경될 때마다 Effect가 다시 동기화되고 그로 인해 interval이 clear 됩니다. 타이머가 시작되려고 할 때마다 매번 interval을 clear 하면 타이머가 멈춘 것처럼 보일 것입니다.
 
-To solve the issue, extract an `onTick` Effect Event from the Effect:
+이 문제를 해결하려면 Effect에서 Effect Event를 `onTick`으로 추출하세요.
 
 <Sandpack>
 
@@ -1197,12 +1197,12 @@ export default function Timer() {
   return (
     <>
       <h1>
-        Counter: {count}
-        <button onClick={() => setCount(0)}>Reset</button>
+        카운터: {count}
+        <button onClick={() => setCount(0)}>재설정</button>
       </h1>
       <hr />
       <p>
-        Every second, increment by:
+        초당 증가량:
         <button disabled={increment === 0} onClick={() => {
           setIncrement(i => i - 1);
         }}>–</button>
@@ -1223,17 +1223,17 @@ button { margin: 10px; }
 
 </Sandpack>
 
-Since `onTick` is an Effect Event, the code inside it isn't reactive. The change to `increment` does not trigger any Effects.
+`onTick`은 Effect Event이므로 내부의 코드는 반응형이 아닙니다. `increment`가 변해도 Effect를 트리거 하지 않습니다.
 
 </Solution>
 
-#### Fix a non-adjustable delay {/*fix-a-non-adjustable-delay*/}
+#### 조정할 수 없는 딜레이 고치기 {/*fix-a-non-adjustable-delay*/}
 
-In this example, you can customize the interval delay. It's stored in a `delay` state variable which is updated by two buttons. However, even if you press the "plus 100 ms" button until the `delay` is 1000 milliseconds (that is, a second), you'll notice that the timer still increments very fast (every 100 ms). It's as if your changes to the `delay` are ignored. Find and fix the bug.
+이 예제에서는 지연 시간인 interval을 사용자화할 수 있습니다. interval은 state 변수 `delay`에 저장되어 있고 두 개의 버튼으로 업데이트됩니다. 그러나 `delay`가 1000밀리초(즉 1초)가 될 때까지 "+100 ms" 버튼을 눌러도 타이머가 여전히 매우 빠르게(100밀리초마다) 증가하는 것을 알 수 있습니다. 마치 `delay`의 변화가 무시되는 것 같습니다. 버그를 찾아 고치세요.
 
 <Hint>
 
-Code inside Effect Events is not reactive. Are there cases in which you would _want_ the `setInterval` call to re-run?
+Effect Event 내부의 코드는 반응형이 아닙니다. `setInterval` 호출이 재실행되길 _원할_ 경우가 있을까요?
 
 </Hint>
 
@@ -1284,12 +1284,12 @@ export default function Timer() {
   return (
     <>
       <h1>
-        Counter: {count}
-        <button onClick={() => setCount(0)}>Reset</button>
+        카운터: {count}
+        <button onClick={() => setCount(0)}>재설정</button>
       </h1>
       <hr />
       <p>
-        Increment by:
+        증가량:
         <button disabled={increment === 0} onClick={() => {
           setIncrement(i => i - 1);
         }}>–</button>
@@ -1299,7 +1299,7 @@ export default function Timer() {
         }}>+</button>
       </p>
       <p>
-        Increment delay:
+        증가 지연 시간:
         <button disabled={delay === 100} onClick={() => {
           setDelay(d => d - 100);
         }}>–100 ms</button>
@@ -1322,7 +1322,7 @@ button { margin: 10px; }
 
 <Solution>
 
-The problem with the above example is that it extracted an Effect Event called `onMount` without considering what the code should actually be doing. You should only extract Effect Events for a specific reason: when you want to make a part of your code non-reactive. However, the `setInterval` call *should* be reactive with respect to the `delay` state variable. If the `delay` changes, you want to set up the interval from scratch! To fix this code, pull all the reactive code back inside the Effect:
+위 예제의 문제는 코드가 실제로 해야 하는 일을 고려하지 않고 `onMount`라는 Effect Event로 추출했다는 것입니다. Effect Event는 코드 일부를 비반응형으로 만들고 싶다는 특정한 이유가 있을 때만 추출해야 합니다. 하지만 `setInterval` 호출은 state 변수 `delay`에 *반응해야 합니다*. `delay`가 변경되면 interval이 다시 설정되기를 원하는 겁니다! 이 코드를 고치려면 모든 반응형 코드를 Effect 내부로 다시 가져오세요.
 
 <Sandpack>
 
@@ -1367,12 +1367,12 @@ export default function Timer() {
   return (
     <>
       <h1>
-        Counter: {count}
-        <button onClick={() => setCount(0)}>Reset</button>
+        카운터: {count}
+        <button onClick={() => setCount(0)}>재설정</button>
       </h1>
       <hr />
       <p>
-        Increment by:
+        증가량:
         <button disabled={increment === 0} onClick={() => {
           setIncrement(i => i - 1);
         }}>–</button>
@@ -1382,7 +1382,7 @@ export default function Timer() {
         }}>+</button>
       </p>
       <p>
-        Increment delay:
+        증가 지연 시간:
         <button disabled={delay === 100} onClick={() => {
           setDelay(d => d - 100);
         }}>–100 ms</button>
@@ -1402,21 +1402,21 @@ button { margin: 10px; }
 
 </Sandpack>
 
-In general, you should be suspicious of functions like `onMount` that focus on the *timing* rather than the *purpose* of a piece of code. It may feel "more descriptive" at first but it obscures your intent. As a rule of thumb, Effect Events should correspond to something that happens from the *user's* perspective. For example, `onMessage`, `onTick`, `onVisit`, or `onConnected` are good Effect Event names. Code inside them would likely not need to be reactive. On the other hand, `onMount`, `onUpdate`, `onUnmount`, or `onAfterRender` are so generic that it's easy to accidentally put code that *should* be reactive into them. This is why you should name your Effect Events after *what the user thinks has happened,* not when some code happened to run.
+코드의 *목적*보다는 *타이밍*에 초점을 두는 `onMount` 같은 함수는 보통 의심해 봐야 합니다. 언뜻 보기에 "더 잘 설명한다"라고 느낄 수 있지만 의도를 모호하게 합니다. 경험상 Effect Event는 *사용자* 관점에서 일어나는 일에 부합해야 합니다. 예를 들어 `onMessage`, `onTick`, `onVisit` 또는 `onConnected`는 Effect Event의 이름으로 좋습니다. 내부의 코드는 반응형일 필요가 없을 가능성이 높습니다. 반면에 `onMount`, `onUpdate`, `onUnmount` 또는 `onAfterRender`는 너무 일반적이어서 *반응형이어야 하는* 코드를 실수로 넣기 쉽습니다. 그러므로 Effect Event의 이름은 코드가 실행된 시점이 아니라 *사용자가 일어났다고 생각하는 일*을 따서 지어야 합니다.
 
 </Solution>
 
-#### Fix a delayed notification {/*fix-a-delayed-notification*/}
+#### 지연된 알림 고치기 {/*fix-a-delayed-notification*/}
 
-When you join a chat room, this component shows a notification. However, it doesn't show the notification immediately. Instead, the notification is artificially delayed by two seconds so that the user has a chance to look around the UI.
+이 컴포넌트는 채팅방에 참여하면 알림을 보여줍니다. 하지만 알림을 바로 보여주지는 않습니다. 대신 의도적으로 2초 정도 지연시켜서 사용자가 UI를 둘러볼 수 있도록 합니다.
 
-This almost works, but there is a bug. Try changing the dropdown from "general" to "travel" and then to "music" very quickly. If you do it fast enough, you will see two notifications (as expected!) but they will *both* say "Welcome to music".
+대부분 동작하지만, 버그가 있습니다. 드롭다운을 "general"에서 "travel"로 변경한 다음 "music"으로 아주 빠르게 변경해 보세요. 2초 안에 변경하면 (기대한 대로!) 두 개의 알림이 보이지만 *둘 다* "music에 오신 것을 환영합니다"라고 합니다.
 
-Fix it so that when you switch from "general" to "travel" and then to "music" very quickly, you see two notifications, the first one being "Welcome to travel" and the second one being "Welcome to music". (For an additional challenge, assuming you've *already* made the notifications show the correct rooms, change the code so that only the latter notification is displayed.)
+"general"에서 "travel"로 전환한 다음 "music"으로 매우 빠르게 전환할 때 첫 번째 알림은 "travel에 오신 것을 환영합니다"이고 두 번째 알림은 "music에 오신 것을 환영합니다"가 되도록 고쳐보세요. (추가 도전으로 *이미* 알림이 올바른 방을 보여주도록 만들었다면 나중의 알림만 보여주도록 코드를 바꿔보세요.)
 
 <Hint>
 
-Your Effect knows which room it connected to. Is there any information that you might want to pass to your Effect Event?
+Effect는 자신이 어느 방에 연결했는지 알고 있습니다. Effect Event에 전달하고 싶을 만한 정보는 없나요?
 
 </Hint>
 
@@ -1449,7 +1449,7 @@ const serverUrl = 'https://localhost:1234';
 
 function ChatRoom({ roomId, theme }) {
   const onConnected = useEffectEvent(() => {
-    showNotification('Welcome to ' + roomId, theme);
+    showNotification(roomId + '에 오신 것을 환영합니다', theme);
   });
 
   useEffect(() => {
@@ -1463,7 +1463,7 @@ function ChatRoom({ roomId, theme }) {
     return () => connection.disconnect();
   }, [roomId]);
 
-  return <h1>Welcome to the {roomId} room!</h1>
+  return <h1>{roomId} 방에 오신 것을 환영합니다!</h1>
 }
 
 export default function App() {
@@ -1472,7 +1472,7 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        채팅방 선택:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -1488,7 +1488,7 @@ export default function App() {
           checked={isDark}
           onChange={e => setIsDark(e.target.checked)}
         />
-        Use dark theme
+        어두운 테마 사용
       </label>
       <hr />
       <ChatRoom
@@ -1502,7 +1502,7 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결했을 것입니다.
   let connectedCallback;
   let timeout;
   return {
@@ -1515,10 +1515,10 @@ export function createConnection(serverUrl, roomId) {
     },
     on(event, callback) {
       if (connectedCallback) {
-        throw Error('Cannot add the handler twice.');
+        throw Error('핸들러는 두 번 추가할 수 없습니다.');
       }
       if (event !== 'connected') {
-        throw Error('Only "connected" event is supported.');
+        throw Error('"connected" 이벤트만 지원됩니다.');
       }
       connectedCallback = callback;
     },
@@ -1555,11 +1555,11 @@ label { display: block; margin-top: 10px; }
 
 <Solution>
 
-Inside your Effect Event, `roomId` is the value *at the time Effect Event was called.*
+Effect Event 내부의 `roomId`는 *Effect Event가 호출되는 시점*의 값입니다.
 
-Your Effect Event is called with a two second delay. If you're quickly switching from the travel to the music room, by the time the travel room's notification shows, `roomId` is already `"music"`. This is why both notifications say "Welcome to music".
+Effect Event는 2초의 지연 후에 호출됩니다. travel 방에서 music 방으로 빠르게 전환하는 경우 travel 방의 알림을 보여줄 때쯤이면 `roomId`는 이미 `"music"`입니다. 그러므로 두 알림 모두 "music에 오신 것을 환영합니다"를 보여줍니다.
 
-To fix the issue, instead of reading the *latest* `roomId` inside the Effect Event, make it a parameter of your Effect Event, like `connectedRoomId` below. Then pass `roomId` from your Effect by calling `onConnected(roomId)`:
+이 문제를 고치려면 Effect Event 내부에서 *최근의* `roomId`를 읽는 게 아니라 아래의 `connectedRoomId`처럼 Effect Event의 매개변수로 만드세요. 그다음 Effect에서 `onConnected(roomId)`로 호출해서 `roomId`를 전달하세요.
 
 <Sandpack>
 
@@ -1590,7 +1590,7 @@ const serverUrl = 'https://localhost:1234';
 
 function ChatRoom({ roomId, theme }) {
   const onConnected = useEffectEvent(connectedRoomId => {
-    showNotification('Welcome to ' + connectedRoomId, theme);
+    showNotification(connectedRoomId + '에 오신 것을 환영합니다', theme);
   });
 
   useEffect(() => {
@@ -1604,7 +1604,7 @@ function ChatRoom({ roomId, theme }) {
     return () => connection.disconnect();
   }, [roomId]);
 
-  return <h1>Welcome to the {roomId} room!</h1>
+  return <h1>{roomId} 방에 오신 것을 환영합니다!</h1>
 }
 
 export default function App() {
@@ -1613,7 +1613,7 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        채팅방 선택:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -1629,7 +1629,7 @@ export default function App() {
           checked={isDark}
           onChange={e => setIsDark(e.target.checked)}
         />
-        Use dark theme
+        어두운 테마 사용
       </label>
       <hr />
       <ChatRoom
@@ -1643,7 +1643,7 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결했을 것입니다.
   let connectedCallback;
   let timeout;
   return {
@@ -1656,10 +1656,10 @@ export function createConnection(serverUrl, roomId) {
     },
     on(event, callback) {
       if (connectedCallback) {
-        throw Error('Cannot add the handler twice.');
+        throw Error('핸들러는 두 번 추가할 수 없습니다.');
       }
       if (event !== 'connected') {
-        throw Error('Only "connected" event is supported.');
+        throw Error('"connected" 이벤트만 지원됩니다.');
       }
       connectedCallback = callback;
     },
@@ -1694,9 +1694,9 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-The Effect that had `roomId` set to `"travel"` (so it connected to the `"travel"` room) will show the notification for `"travel"`. The Effect that had `roomId` set to `"music"` (so it connected to the `"music"` room) will show the notification for `"music"`. In other words, `connectedRoomId` comes from your Effect (which is reactive), while `theme` always uses the latest value.
+`roomId`가 `"travel"`로 설정된 (그래서 `"travel"` 방에 연결된) Effect는 `"travel"`에 대한 알림을 보여줄 것입니다. `roomId`가 `"music"`으로 설정된 (그래서 `"music"` 방에 연결된) Effect는 `"music"`에 대한 알림을 보여줄 것입니다. 다시 말해 `theme`은 항상 최근 값을 사용하는 반면에 `connectedRoomId`는 (반응형인) Effect에서 비롯됩니다.
 
-To solve the additional challenge, save the notification timeout ID and clear it in the cleanup function of your Effect:
+추가 도전을 해결하려면 알림의 timeout ID를 저장하고 Effect의 클린업 함수에서 해제하면 됩니다.
 
 <Sandpack>
 
@@ -1727,7 +1727,7 @@ const serverUrl = 'https://localhost:1234';
 
 function ChatRoom({ roomId, theme }) {
   const onConnected = useEffectEvent(connectedRoomId => {
-    showNotification('Welcome to ' + connectedRoomId, theme);
+    showNotification(connectedRoomId + '에 오신 것을 환영합니다', theme);
   });
 
   useEffect(() => {
@@ -1747,7 +1747,7 @@ function ChatRoom({ roomId, theme }) {
     };
   }, [roomId]);
 
-  return <h1>Welcome to the {roomId} room!</h1>
+  return <h1>{roomId} 방에 오신 것을 환영합니다!</h1>
 }
 
 export default function App() {
@@ -1756,7 +1756,7 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        채팅방 선택:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -1772,7 +1772,7 @@ export default function App() {
           checked={isDark}
           onChange={e => setIsDark(e.target.checked)}
         />
-        Use dark theme
+        어두운 테마 사용
       </label>
       <hr />
       <ChatRoom
@@ -1786,7 +1786,7 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제 서버에 연결했을 것입니다.
   let connectedCallback;
   let timeout;
   return {
@@ -1799,10 +1799,10 @@ export function createConnection(serverUrl, roomId) {
     },
     on(event, callback) {
       if (connectedCallback) {
-        throw Error('Cannot add the handler twice.');
+        throw Error('핸들러는 두 번 추가할 수 없습니다.');
       }
       if (event !== 'connected') {
-        throw Error('Only "connected" event is supported.');
+        throw Error('"connected" 이벤트만 지원됩니다.');
       }
       connectedCallback = callback;
     },
@@ -1837,7 +1837,7 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-This ensures that already scheduled (but not yet displayed) notifications get cancelled when you change rooms.
+이것으로 이미 예약된 (하지만 아직 표시되지 않은) 알림은 방을 바꿀 때 취소되는 것이 보장됩니다.
 
 </Solution>
 
