@@ -10,7 +10,7 @@ title: findDOMNode
 
 <Intro>
 
-`findDOMNode`는 리액트의 [클래스 컴포넌트](/reference/react/Component)에서 브라우저의 DOM 노드를 찾는 방법입니다.
+`findDOMNode`는 React의 [클래스 컴포넌트](/reference/react/Component)에서 브라우저의 DOM 노드를 찾는 방법입니다.
 
 ```js
 const domNode = findDOMNode(componentInstance)
@@ -22,7 +22,7 @@ const domNode = findDOMNode(componentInstance)
 
 ---
 
-## 참조 {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `findDOMNode(componentInstance)` {/*finddomnode*/}
 
@@ -76,7 +76,7 @@ class AutoselectingInput extends Component {
 }
 ```
 
-여기서 `input` 변수는 `<input>` DOM 요소를 갖게 됩니다. 이제 이것을 통해 작업이 가능해집니다. 예를 들어 "Show example"을 클릭하여 입력창을 마운트하고, [`input.select()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select)로 입력창의 모든 문자를 선택하도록 합니다.
+여기서 `input` 변수는 `<input>` DOM 요소를 값으로 갖게 됩니다. 이제 이것을 통해 작업이 가능해집니다. 예를 들어 "Show example"을 클릭하여 입력창을 마운트하고, [`input.select()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select)로 입력창의 모든 문자를 선택하도록 합니다.
 
 <Sandpack>
 
