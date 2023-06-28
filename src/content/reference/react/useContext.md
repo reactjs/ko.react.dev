@@ -63,7 +63,7 @@ function Button() {
   // ... 
 ```
 
-`useContext`는 전달한 <CodeStep step={2}>context</CodeStep> 에 대한 <CodeStep step={1}>context value </CodeStep>를 반환합니다. context 값을 결정하기 위해 React는 컴포넌트 트리를 검색하고 특정 context에 대해 **상위에서 가장 가까운 context provider**를 찾습니다.
+`useContext`는 전달한 <CodeStep step={1}>context</CodeStep> 에 대한 <CodeStep step={2}>context value </CodeStep>를 반환합니다. context 값을 결정하기 위해 React는 컴포넌트 트리를 검색하고 특정 context에 대해 **상위에서 가장 가까운 context provider**를 찾습니다.
 
 context를 `Button`에 전달하려면 해당 버튼 또는 상위 컴포넌트 중 하나를 해당 context provider로 감쌉니다:
 
