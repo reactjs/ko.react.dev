@@ -53,11 +53,11 @@ function Greeting({ name }) {
 * `ref`: 전달받은 `ref`. 누락된 경우 `null`.
 * `key`: 전달받은 `key`를 강제 변환한 문자열. 누락된 경우 `null`.
 
-일반적으로 엘리먼트는 컴포넌트에서 반환되거나 다른 엘리먼트의 자식으로 만듭니다. 엘리먼트의 프러퍼티에는 접근할 수 있지만, 엘리먼트 생성 후에는 모든 엘리먼트에 접근할 수 없는 것처럼 대하고 렌더링만 하는 것이 좋습니다.
+일반적으로 엘리먼트는 컴포넌트에서 반환되거나 다른 엘리먼트의 자식으로 만듭니다. 엘리먼트의 프로퍼티에는 접근할 수 있지만, 엘리먼트 생성 후에는 모든 엘리먼트에 접근할 수 없는 것처럼 대하고 렌더링만 하는 것이 좋습니다.
 
 #### 주의 사항 {/*caveats*/}
 
-* 반드시 **리액트 엘리먼트와 그 프로퍼티는 [불변](https://en.wikipedia.org/wiki/Immutable_object)하게 취급**해야하며 엘리먼트 생성 후에는 그 내용이 변경되어선 안 됩니다. 개발환경에서 리액트는 이를 강제하기 위해 반환된 엘리먼트와 그 프로퍼티를 얕게 [freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)합니다.
+* 반드시 **React 엘리먼트와 그 프로퍼티는 [불변](https://en.wikipedia.org/wiki/Immutable_object)하게 취급**해야하며 엘리먼트 생성 후에는 그 내용이 변경되어선 안 됩니다. 개발환경에서 React는 이를 강제하기 위해 반환된 엘리먼트와 그 프로퍼티를 얕게 [freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)합니다.
 
 * JSX를 사용한다면 **태그를 대문자로 시작해야만 사용자 컴포넌트를 렌더링할 수 있습니다.** 즉, `<Something />`은 `createElement(Something)`과 동일하지만 `<something />`(소문자) 은 `createElement('something')`와 동일합니다. (문자열임을 주의하세요. 내장된 HTML 태그로 취급됩니다.)
 
@@ -201,7 +201,7 @@ export default function App() {
 
 **이 객체를 생성해도 `Greeting` 컴포넌트가 렌더링 되거나 DOM 엘리먼트가 생성되지는 않는다는 점을 주의하세요.**
 
-리액트 엘리먼트는 나중에 React가 `Greeting` 컴포넌트를 렌더링하도록 지시하는 설명서와 비슷합니다. `App` 컴포넌트에서 이 객체를 반환함으로써 React에게 다음 할 일을 지시할 수 있습니다.
+React 엘리먼트는 나중에 React가 `Greeting` 컴포넌트를 렌더링하도록 지시하는 설명서와 비슷합니다. `App` 컴포넌트에서 이 객체를 반환함으로써 React에게 다음 할 일을 지시할 수 있습니다.
 
 엘리먼트 생성 비용은 매우 저렴하므로 엘리먼트 생성을 최적화하거나 피하려고 노력할 필요가 없습니다.
 </DeepDive>
