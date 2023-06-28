@@ -1309,7 +1309,7 @@ function MyApp() {
 }
 ```
 
-여기서 <CodeStep step={2}>context 값</CodeStep>은 두 개의 프로퍼티를 가진 자바스크립트 객체이며, 그 중 하나는 함수입니다. `MyApp`이 다시 렌더링할 때마다(예를 들어 경로 업데이트 시) *다른* 함수를 가리키는 *다른* 객체가 될 것이므로 React는 `useContext(AuthContext)`를 호출하는 트리 깊숙한 곳에 있는 모든 컴포넌트도 다시 렌더링해야 합니다.
+여기서 <CodeStep step={2}>context value</CodeStep>은 두 개의 프로퍼티를 가진 자바스크립트 객체이며, 그 중 하나는 함수입니다. `MyApp`이 다시 렌더링할 때마다(예를 들어 경로 업데이트 시) *다른* 함수를 가리키는 *다른* 객체가 될 것이므로 React는 `useContext(AuthContext)`를 호출하는 트리 깊숙한 곳에 있는 모든 컴포넌트도 다시 렌더링해야 합니다.
 
 작은 앱에서는 문제가 되지 않습니다. 그러나 `currentUser`와 같은 기본적인 데이터가 변경되지 않았다면 다시 렌더링할 필요가 없습니다. React가 이 사실을 활용할 수 있도록 `login` 함수를 [`useCallback`](/reference/react/useCallback)으로 감싸고 객체 생성을 [`useMemo`](/reference/react/useMemo)로 감싸면 됩니다. 이것이 성능 최적화입니다.
 
