@@ -26,7 +26,7 @@ title: <Fragment> (<>...</>)
 하나의 엘리먼트가 필요한 상황에서 엘리먼트를 `<Fragment>`로 감싸서 그룹화하세요. `Fragment` 안에서 그룹화된 엘리먼트는 DOM 결과물에 영향을 주지 않습니다. 즉, 엘리먼트가 그룹화되지 않은 것과 같습니다. 대부분의 경우 빈 JSX 태그인 `<></>`는 `<Fragment></Fragment>`의 줄임말입니다.
 
 #### Props {/*props*/}
-- **Optional** `key`: 명시적 `<Fragment>`로 선언된 Fragment에는 [key](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 사용할 수 있습니다.
+- **optional** `key`: 명시적 `<Fragment>`로 선언된 Fragment에는 [key](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 사용할 수 있습니다.
 
 #### 주의 사항 {/*caveats*/}
 
