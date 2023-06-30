@@ -32,8 +32,7 @@ title: <Fragment> (<>...</>)
 
 - Fragment에 `key`를 사용하려면 `<>...</>` 구문을 사용할 수 없습니다. 명시적으로 `react`에서 `Fragment`를 import하고 `<Fragment key={yourKey}>...</Fragment>`를 렌더링해야 합니다.
 
-- React는 `<><Child /></>`에서 `[<Child />]`로 렌더링하거나 반대의 경우 혹은 `<><Child /></>` 에서 `<Child />` 렌더링하거나 그 반대의 경우 [reset state](/learn/preserving-and-resetting-state)를 하지 않습니다. 이는 오직 single level까지 적용됩니다. 예를 들어 `<><><Child /></></>` 에서 `<Child />`로 렌더링하는 것은 state가 초기화됩니다. 정확한 semantics는 [여기](https://gist.github.com/clemmy/b3ef00f9507909429d8aa0d3ee4f986b)서 참조하실 수 있습니다.
-
+- React는 `<><Child /></>`에서 `[<Child />]`로 렌더링하거나 (또는 반대의 경우), 혹은 `<><Child /></>` 에서 `<Child />` 렌더링하거나 (또는 반대의 경우) [state를 초기화](/learn/preserving-and-resetting-state)하지 않습니다. 이는 오직 single level까지 적용됩니다. 예를 들어 `<><><Child /></></>` 에서 `<Child />`로 렌더링하는 것은 state가 초기화됩니다. 정확한 semantics는 [여기](https://gist.github.com/clemmy/b3ef00f9507909429d8aa0d3ee4f986b)서 참조하실 수 있습니다.
 
 ---
 
