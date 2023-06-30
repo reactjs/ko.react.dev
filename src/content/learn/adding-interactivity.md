@@ -1,5 +1,5 @@
 ---
-title: 상호작용의 추가
+title: 상호작용 추가하기
 ---
 
 <Intro>
@@ -24,7 +24,7 @@ title: 상호작용의 추가
 
 React에서는 JSX에 *이벤트 핸들러*를 추가할 수 있습니다. 이벤트 핸들러는 클릭, 마우스 호버, 폼 인풋 포커스 등 사용자 상호작용에 따라 유발되는 사용자 정의 함수입니다.
 
-`<button>`과 같은 내장 컴포넌트는 `onClick`과 같은 내장 브라우저 이벤트만 지원합니다. 반면 사용자 정의 컴포넌트를 생성하는 경우, 컴포넌트의 이벤트 핸들러 props의 역할에 맞는 원하는 이름을 사용할 수 있습니다.
+`<button>`과 같은 내장 컴포넌트는 `onClick`과 같은 내장 브라우저 이벤트만 지원합니다. 반면 사용자 정의 컴포넌트를 생성하는 경우, 컴포넌트 이벤트 핸들러 props의 역할에 맞는 원하는 이름을 사용할 수 있습니다.
 
 <Sandpack>
 
@@ -68,7 +68,7 @@ button { margin-right: 10px; }
 
 <LearnMore path="/learn/responding-to-events">
 
-이벤트 핸들러를 추가하는 방법을 배우려면 **[Responding to Events](/learn/responding-to-events)** 를 읽어보세요.
+이벤트 핸들러를 추가하는 방법을 배우려면 **[사용자 이벤트를 처리하는 방법](/learn/responding-to-events)** 을 읽어보세요.
 
 </LearnMore>
 
@@ -229,7 +229,7 @@ button {
 
 <LearnMore path="/learn/state-a-components-memory">
 
-값을 기억하고 상호 작용에 따라 업데이트하는 방법을 배우려면 **[State: A Component's Memory](/learn/state-a-components-memory)** 를 읽어보세요.
+값을 기억하고 상호 작용에 따라 업데이트하는 방법을 배우려면 **[컴포넌트가 state를 이용하여 정보를 "기억"하는 방법](/learn/state-a-components-memory)** 을 읽어보세요.
 
 </LearnMore>
 
@@ -240,7 +240,7 @@ button {
 컴포넌트가 주방에서 재료들을 사용해 맛있는 요리를 조리하는 요리사라고 생각해 봅시다. 이 시나리오에서 React는 손님들로부터 주문받고 요리사에게 주문을 가져다주는 웨이터입니다. 이때, UI를 주문하고 서빙하는 과정은 세 단계로 이루어집니다.
 
 1. 렌더링 **유발** (주방에 식사 주문을 전달하기)
-2. 컴포넌트의 **렌더링** (주방에서 주문을 준비하기)
+2. 컴포넌트 **렌더링** (주방에서 주문을 준비하기)
 3. DOM에 **반영** (주문을 테이블에 서빙하기)
 
 <IllustrationBlock sequential>
@@ -251,13 +251,13 @@ button {
 
 <LearnMore path="/learn/render-and-commit">
 
-UI 업데이트의 생명주기를 배우려면 **[Render and Commit](/learn/render-and-commit)** 를 읽어보세요.
+UI 업데이트의 생명주기를 배우려면 **[React가 UI를 업데이트하는 두 가지 단계](/learn/render-and-commit)** 를 읽어보세요.
 
 </LearnMore>
 
 ## snapshot으로서의 state {/*state-as-a-snapshot*/}
 
-일반적인 JavaScript 변수와 달리, React의 state는 snapshot과 유사하게 동작합니다. 상태를 갱신하면 이미 있는 state 변수 자체를 변경하는 것이 아니라, 리 렌더링을 유발합니다. 이는 처음에는 놀라울 수 있습니다!
+일반적인 JavaScript 변수와 달리, React의 state는 snapshot과 유사하게 동작합니다. 상태를 갱신하면 이미 있는 state 변수 자체를 변경하는 것이 아니라, 리렌더링을 유발합니다. 이는 처음에는 놀라울 수 있습니다!
 
 ```js
 console.log(count);  // 0
@@ -314,7 +314,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 <LearnMore path="/learn/state-as-a-snapshot">
 
-이벤트 핸들러 내에서 state가 "고정되어" 변하지 않는 것처럼 보이는 이유에 대하여 배우려면 **[State as a Snapshot](/learn/state-as-a-snapshot)** 을 읽어보세요.
+이벤트 핸들러 내에서 state가 "고정되어" 변하지 않는 것처럼 보이는 이유에 대하여 배우려면 **[state가 변경된 후 바로 업데이트되지 않는 이유](/learn/state-as-a-snapshot)** 를 읽어보세요.
 
 </LearnMore>
 
@@ -354,7 +354,7 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 </Sandpack>
 
-[State as a Snapshot](/learn/state-as-a-snapshot)은 이런 현상이 발생하는 이유를 설명해 줍니다. state를 설정하면 리 렌더링이 유발되지만, 이미 실행 중인 코드에서는 변경되지 않습니다. 따라서 `setScore(score + 1)`를 호출한 직후에도 `score`는 여전히 `0`으로 유지됩니다.
+[state가 변경된 후 바로 업데이트되지 않는 이유](/learn/state-as-a-snapshot)는 이런 현상이 발생하는 이유를 설명해 줍니다. state를 설정하면 리렌더링이 유발되지만, 이미 실행 중인 코드에서는 변경되지 않습니다. 따라서 `setScore(score + 1)`를 호출한 직후에도 `score`는 여전히 `0`으로 유지됩니다.
 
 ```js
 console.log(score);  // 0
@@ -402,7 +402,7 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 <LearnMore path="/learn/queueing-a-series-of-state-updates">
 
-state 업데이트를 연속적으로 대기열에 추가하는 방법을 배우려면 **[Queueing a Series of State Updates](/learn/queueing-a-series-of-state-updates)** 을 읽어보세요.
+state 업데이트를 연속적으로 대기열에 추가하는 방법을 배우려면 **[여러 개의 state 업데이트를 대기열에 추가하는 방법](/learn/queueing-a-series-of-state-updates)** 을 읽어보세요.
 
 </LearnMore>
 
@@ -633,7 +633,7 @@ img { width: 200px; height: 200px; }
 
 <LearnMore path="/learn/updating-objects-in-state">
 
-객체를 올바르게 업데이트하는 방법을 배우려면 **[Updating Objects in State](/learn/updating-objects-in-state)** 를 읽어보세요.
+객체를 올바르게 업데이트하는 방법을 배우려면 **[state에서 객체를 업데이트하는 방법](/learn/updating-objects-in-state)** 을 읽어보세요.
 
 </LearnMore>
 
@@ -791,12 +791,12 @@ function ItemList({ artworks, onToggle }) {
 
 <LearnMore path="/learn/updating-arrays-in-state">
 
-배열을 올바르게 업데이트하는 방법을 배우려면 **[Updating Arrays in State](/learn/updating-arrays-in-state)** 를 읽어보세요.
+배열을 올바르게 업데이트하는 방법을 배우려면 **[state에서 배열을 업데이트하는 방법](/learn/updating-arrays-in-state)** 을 읽어보세요.
 
 </LearnMore>
 
 ## What's next? {/*whats-next*/}
 
-이 장을 페이지별로 읽으려면 [Responding to Events](/learn/responding-to-events)로 이동하세요!
+이 장을 페이지별로 읽으려면 [사용자 이벤트를 처리하는 방법](/learn/responding-to-events)으로 이동하세요!
 
-이미 이러한 주제에 익숙하시다면 [Managing State](/learn/managing-state)에 대해 읽어보시는 것도 좋습니다.
+이미 이러한 주제에 익숙하시다면 [State 다루기](/learn/managing-state)에 대해 읽어보시는 것도 좋습니다.
