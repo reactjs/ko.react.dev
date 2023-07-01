@@ -46,7 +46,7 @@ title: "<option>"
 
 #### 유의 사항 {/*caveats*/}
 
-* React는 `<option>`에서 `selected` 속성을 지원하지 않습니다. 대신, 이 옵션의 `value`를 제어되지 않은 select box의 경우 상위 [`<select defaultValue>`](/reference/react-dom/components/select#providing-an-initially-selected-option) 에 전달하거나 제어되는 select box의 경우 [`<select value>`](/reference/react-dom/components/select#controlling-a-select-box-with-a-state-variable) 에 전달하세요.
+* React는 `<option>`에서 `selected` 속성을 지원하지 않습니다. 대신, 이 옵션의 `value`를 제어되지 않은 select box의 경우 상위 [`<select defaultValue>`](/reference/react-dom/components/select#providing-an-initially-selected-option) 에 전달하거나, 제어되는 select box의 경우 [`<select value>`](/reference/react-dom/components/select#controlling-a-select-box-with-a-state-variable) 에 전달하세요.
 
 ---
 
