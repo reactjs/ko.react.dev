@@ -4,7 +4,7 @@ title: isValidElement
 
 <Intro>
 
-`isValidElement` checks whether a value is a React element.
+`isValidElement`는 값이 React 엘리먼트인지 확인합니다.
 
 ```js
 const isElement = isValidElement(value)
@@ -16,72 +16,72 @@ const isElement = isValidElement(value)
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `isValidElement(value)` {/*isvalidelement*/}
 
-Call `isValidElement(value)` to check whether `value` is a React element.
+`isValidElement(value)`를 호출하여 `value`가 React 엘리먼트인지 확인합니다.
 
 ```js
 import { isValidElement, createElement } from 'react';
 
-// ✅ React elements
+// ✅ React 엘리먼트
 console.log(isValidElement(<p />)); // true
 console.log(isValidElement(createElement('p'))); // true
 
-// ❌ Not React elements
+// ❌ React 엘리먼트가 아님
 console.log(isValidElement(25)); // false
 console.log(isValidElement('Hello')); // false
 console.log(isValidElement({ age: 42 })); // false
 ```
 
-[See more examples below.](#usage)
+[아래에서 더 많은 예시를 확인하세요](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `value`: The `value` you want to check. It can be any a value of any type.
+`value`: 확인하려는 `value`입니다. 모든 종류의 값이 될 수 있습니다.
 
-#### Returns {/*returns*/}
+#### 반환 {/*returns*/}
 
-`isValidElement` returns `true` if the `value` is a React element. Otherwise, it returns `false`.
+`isValidElement`는 `value`가 React 엘리먼트인 경우 `true`를 반환합니다. 그렇지 않으면 `false`를 반환합니다.
 
-#### Caveats {/*caveats*/}
+#### 주의사항 {/*caveats*/}
 
-* **Only [JSX tags](/learn/writing-markup-with-jsx) and objects returned by [`createElement`](/reference/react/createElement) are considered to be React elements.** For example, even though a number like `42` is a valid React *node* (and can be returned from a component), it is not a valid React element. Arrays and portals created with [`createPortal`](/reference/react-dom/createPortal) are also *not* considered to be React elements.
+* **[`createElement`](/reference/react/createElement)가 반환한 [JSX 태그](/learn/writing-markup-with-jsx)와 객체는 React 엘리먼트로 간주합니다.** 예를 들어, `42`와 같은 숫자는 유효한 React *노드* (컴포넌트에서 반환될 수 있지만)이지만, 유효한 React 엘리먼트는 아닙니다. [`createPortal`](/reference/react-dom/createPortal)로 만들어진 배열과 portal도 React 엘리먼트로 간주하지 *않습니다*.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Checking if something is a React element {/*checking-if-something-is-a-react-element*/}
+### 어떤 것이 React 엘리먼트인지 확인하기 {/*checking-if-something-is-a-react-element*/}
 
-Call `isValidElement` to check if some value is a *React element.*
+어떤 값이 React 엘리먼트인지 확인하려면 `isValidElement`를 호출해 보세요.
 
-React elements are:
+React 엘리먼트는 다음과 같습니다.
 
-- Values produced by writing a [JSX tag](/learn/writing-markup-with-jsx)
-- Values produced by calling [`createElement`](/reference/react/createElement)
+- [JSX tag](/learn/writing-markup-with-jsx)를 작성하여 생성된 값
+- [`createElement`](/reference/react/createElement)를 호출하여 생성된 값
 
-For React elements, `isValidElement` returns `true`:
+React 엘리먼트의 경우 `isValidElement`는 `true`를 반환합니다.
 
 ```js
 import { isValidElement, createElement } from 'react';
 
-// ✅ JSX tags are React elements
+// ✅ JSX 태그는 React 엘리먼트입니다.
 console.log(isValidElement(<p />)); // true
 console.log(isValidElement(<MyComponent />)); // true
 
-// ✅ Values returned by createElement are React elements
+// ✅ createElement가 반환하는 값은 React 엘리먼트입니다.
 console.log(isValidElement(createElement('p'))); // true
 console.log(isValidElement(createElement(MyComponent))); // true
 ```
 
-Any other values, such as strings, numbers, or arbitrary objects and arrays, are not React elements.
+문자열, 숫자, 임의의 객체 및 배열과 같은 값들은 React 엘리먼트가 아닙니다.
 
-For them, `isValidElement` returns `false`:
+이 경우 `isValidElement`는 `false`를 반환합니다.
 
 ```js
-// ❌ These are *not* React elements
+// ❌ 이것들은 React 엘리먼트가 *아닙니다*.
 console.log(isValidElement(null)); // false
 console.log(isValidElement(25)); // false
 console.log(isValidElement('Hello')); // false
@@ -90,39 +90,38 @@ console.log(isValidElement([<div />, <div />])); // false
 console.log(isValidElement(MyComponent)); // false
 ```
 
-It is very uncommon to need `isValidElement`. It's mostly useful if you're calling another API that *only* accepts elements (like [`cloneElement`](/reference/react/cloneElement) does) and you want to avoid an error when your argument is not a React element.
+`isValidElement`가 필요한 경우는 매우 드뭅니다. 주로 "엘리먼트만" 허용하는 다른 API를 호출할 때와 ([`cloneElement`](/reference/react/cloneElement)가 하는 것처럼) 인수가 React 엘리먼트가 아닌 경우 오류를 피하고 싶을 때 유용합니다.
 
-Unless you have some very specific reason to add an `isValidElement` check, you probably don't need it.
+`isValidElement`확인을 추가 해야 하는 구체적인 이유가 없는 한 이 확인은 필요하지 않을 수 있습니다.
 
 <DeepDive>
 
-#### React elements vs React nodes {/*react-elements-vs-react-nodes*/}
+#### React 엘리먼트 vs React 노드 {/*react-elements-vs-react-nodes*/}
 
-When you write a component, you can return any kind of *React node* from it:
-
-```js
-function MyComponent() {
-  // ... you can return any React node ...
-}
-```
-
-A React node can be:
-
-- A React element created like `<div />` or `createElement('div')`
-- A portal created with [`createPortal`](/reference/react-dom/createPortal)
-- A string
-- A number
-- `true`, `false`, `null`, or `undefined` (which are not displayed)
-- An array of other React nodes
-
-**Note `isValidElement` checks whether the argument is a *React element,* not whether it's a React node.** For example, `42` is not a valid React element. However, it is a perfectly valid React node:
+컴포넌트를 작성할 때 모든 종류의 *React 노드*를 반환할 수 있습니다.
 
 ```js
 function MyComponent() {
-  return 42; // It's ok to return a number from component
+  // ... React 노드를 반환할수 있습니다. ...
 }
 ```
 
-This is why you shouldn't use `isValidElement` as a way to check whether something can be rendered.
+React 노드는 다음과 같습니다.
+- `<div />` 또는 `createElement('div')`와 같이 생성된 React 엘리먼트입니다.
+- [`createPortal`](/reference/react-dom/createPortal)로 생성된 portal입니다.
+- 문자열
+- 숫자
+- `true`, `false`, `null`, 또는 `undefined` (표시되지 않는 경우)
+- 다른 React 노드의 배열
+
+**주의 `isValidElement`는 인수가 React 노드의 여부가 아니라 *React 엘리먼트*의 여부를 확인합니다.** 예를 들어 `42`는 유효한 React 엘리먼트가 아닙니다. 하지만 완벽하게 유효한 React 노드입니다.
+
+```js
+function MyComponent() {
+  return 42; // 컴포넌트에서 숫자를 반환해도 괜찮습니다.
+}
+```
+
+이것이 무언가를 렌더링할 수 있는지 확인하는 여부로 `isValidElement`를 사용해서는 안 되는 이유입니다.
 
 </DeepDive>
