@@ -38,8 +38,8 @@ React 18 was years in the making, and with it brought valuable lessons for the R
 React 18 is now available on npm! In our last post, we shared step-by-step instructions for upgrading your app to React 18. In this post, we’ll give an overview of what’s new in React 18, and what it means for the future...
 </BlogCard>
 
-<BlogCard title="How to Upgrade to React 18" date="March 8, 2022" url="/blog/2022/03/08/react-18-upgrade-guide">
-As we shared in the release post, React 18 introduces features powered by our new concurrent renderer, with a gradual adoption strategy for existing applications. In this post, we will guide you through the steps for upgrading to React 18...
+<BlogCard title="React 18로 업그레이드하는 방법" date="2022년 3월 8일" url="/blog/2022/03/08/react-18-upgrade-guide">
+React 18은 릴리스 노트에서 언급한 대로, 새로운 동시성 렌더러를 도입하여 기존 어플리케이션에 점진적으로 적용할 계획입니다. 이 글에서는 React 18로 업그레이드하는 방법을 단계별로 소개하겠습니다...
 </BlogCard>
 
 <BlogCard title="React Conf 2021 Recap" date="December 17, 2021" url="/blog/2021/12/17/react-conf-2021-recap">
