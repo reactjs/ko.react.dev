@@ -1,10 +1,10 @@
 ---
-title: React Blog
+title: React 블로그
 ---
 
 <Intro>
 
-This blog is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted here first. You can also follow the [@reactjs](https://twitter.com/reactjs) account on Twitter, but you won’t miss anything essential if you only read this blog.
+이 블로그는 React 팀에서 업데이트한 내용들의 공식 소스입니다. 릴리스 노트 및 더 이상 사용되지 않는 표현에 대한 알림을 비롯하여 중요한 내용은 이곳에 먼저 공유됩니다. 또, 트위터에서 [@reactjs](https://twitter.com/reactjs) 계정을 팔로우하셔도 좋지만, 이 블로그만으로도 모든 정보를 얻을 수 있습니다.
 
 </Intro>
 
@@ -62,14 +62,14 @@ The React team is excited to share a few updates:
 
 ---
 
-### All release notes {/*all-release-notes*/}
+### 모든 릴리스 노트 {/*all-release-notes*/}
 
-Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md`](https://github.com/facebook/react/blob/main/CHANGELOG.md) file in the React repository, as well as on the [Releases](https://github.com/facebook/react/releases) page.
+React의 모든 릴리스 내용이 별도의 블로그 게시글로 작성되지는 않지만, 모든 릴리스에 대한 세부 변경 명세는 React 저장소의 [`CHANGELOG.md`](https://github.com/facebook/react/blob/main/CHANGELOG.md) 파일 또는 [Releases](https://github.com/facebook/react/releases) 페이지에서 확인할 수 있습니다.
 
 ---
 
-### Older posts {/*older-posts*/}
+### 더 오래된 게시글 {/*older-posts*/}
 
-See the [older posts.](https://reactjs.org/blog/all.html)
+[더 오래된 게시글](https://reactjs.org/blog/all.html)을 확인해 보세요.
 
 <div className="h-12"></div>
