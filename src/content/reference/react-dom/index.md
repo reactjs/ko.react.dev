@@ -21,10 +21,10 @@ title: React DOM APIs
 
 ## Entry points {/*entry-points*/}
 
-`react-dom` package 는 두개의 진입점을 제공합니다.
+`react-dom` package 는 두 개의 진입점을 제공합니다.
 
 * [`react-dom/client`](/reference/react-dom/client)는 React 컴포넌트를 클라이언트에 렌더링하는 API를 포함합니다(브라우저에서).
-* [`react-dom/server`](/reference/react-dom/server)는 React 컴포넌트를 서버에 렌더링하는 API를 포함합니다
+* [`react-dom/server`](/reference/react-dom/server)는 React 컴포넌트를 서버에 렌더링하는 API를 포함합니다.
 
 ---
 
