@@ -15,7 +15,7 @@ title: React DOM APIs
 이 API는 components에서 불러올 수 있습니다. 사용될 일은 거의 없습니다.
 
 * [`createPortal`](/reference/react-dom/createPortal)을 사용하면 자식 컴포넌트를 DOM tree의 다른 부분에 렌더링 할 수 있습니다.
-* [`flushSync`](/reference/react-dom/flushSync) 를 사용하면 React 가 state 업데이트를 수행하고 동기적으로 DOM을 업데이트하도록 강제할 수 있습니다.
+* [`flushSync`](/reference/react-dom/flushSync) 를 사용하면 React가 state 업데이트를 수행하고 동기적으로 DOM을 업데이트하도록 강제할 수 있습니다.
 
 ---
 
