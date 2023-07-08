@@ -4,7 +4,7 @@ title: React DOM APIs
 
 <Intro>
 
-`react-dom` package는 웹 애플리케이션에서만 지원되는 메서드들을 포함합니다. (브라우저 DOM 환경에서만 실행되는). React Native에서는 지원되지 않습니다.
+`react-dom` package는 웹 애플리케이션에서만 지원되는 메서드를 포함합니다. (브라우저 DOM 환경에서만 실행되는). React Native에서는 지원되지 않습니다.
 
 </Intro>
 
