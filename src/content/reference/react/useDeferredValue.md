@@ -933,7 +933,7 @@ export default SlowList;
 
 <Pitfall>
 
-이 최적화를 위해서는 `SlowList`를 [`memo`](/reference/react/memo)로 감싸야 합니다. `text`가 변경될 때마다 React는 부모 컴포넌트를 빠르게 리렌더링할 수 있어야 하기 때문입니다. 리렌더링하는 동안 `deferredText`는 여전히 이전 값을 가지므로 `SlowList`는 리렌더링을 건너뛸 수 있습니다(props는 변경되지 않았습니다). [`memo`](/reference/react/memo)가 없으면 어쨌든 리렌더링해야 하므로 최적화의 취지가 무색해집니다
+이 최적화를 위해서는 `SlowList`를 [`memo`](/reference/react/memo)로 감싸야 합니다. `text`가 변경될 때마다 React는 부모 컴포넌트를 빠르게 리렌더링할 수 있어야 하기 때문입니다. 리렌더링하는 동안 `deferredText`는 여전히 이전 값을 가지므로 `SlowList`는 리렌더링을 건너뛸 수 있습니다(props는 변경되지 않았습니다). [`memo`](/reference/react/memo)가 없으면 어쨌든 리렌더링해야 하므로 최적화의 취지가 무색해집니다.
 
 </Pitfall>
 
