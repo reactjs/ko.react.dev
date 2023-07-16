@@ -70,6 +70,6 @@ React의 모든 릴리스 내용이 별도의 블로그 게시글로 작성되�
 
 ### 더 오래된 게시글 {/*older-posts*/}
 
-[더 오래된 게시글](https://reactjs.org/blog/all.html)을 확인해 보세요.
+[옛 게시글](https://reactjs.org/blog/all.html)을 확인해 보세요.
 
 <div className="h-12"></div>
