@@ -1,5 +1,5 @@
 {
-  "title": "API Reference",
+  "title": "API 레퍼런스",
   "path": "/reference/react",
   "routes": [
     {
@@ -7,7 +7,7 @@
       "sectionHeader": "react@18.2.0"
     },
     {
-      "title": "Hooks",
+      "title": "Hook",
       "path": "/reference/react",
       "routes": [
         {
@@ -73,7 +73,7 @@
       ]
     },
     {
-      "title": "Components",
+      "title": "컴포넌트",
       "path": "/reference/react/components",
       "routes": [
         {
@@ -95,7 +95,7 @@
       ]
     },
     {
-      "title": "APIs",
+      "title": "API",
       "path": "/reference/react/apis",
       "routes": [
         {
@@ -125,7 +125,7 @@
       "sectionHeader": "react-dom@18.2.0"
     },
     {
-      "title": "Components",
+      "title": "컴포넌트",
       "path": "/reference/react-dom/components",
       "routes": [
         {
@@ -155,7 +155,7 @@
       ]
     },
     {
-      "title": "APIs",
+      "title": "API",
       "path": "/reference/react-dom",
       "routes": [
         {
@@ -185,7 +185,7 @@
       ]
     },
     {
-      "title": "Client APIs",
+      "title": "클라이언트 API",
       "path": "/reference/react-dom/client",
       "routes": [
         {
@@ -199,7 +199,7 @@
       ]
     },
     {
-      "title": "Server APIs",
+      "title": "서버 API",
       "path": "/reference/react-dom/server",
       "routes": [
         {
@@ -230,10 +230,10 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "Legacy APIs"
+      "sectionHeader": "레거시 API"
     },
     {
-      "title": "Legacy React APIs",
+      "title": "레거시 React API",
       "path": "/reference/react/legacy",
       "routes": [
         {

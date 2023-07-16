@@ -1,5 +1,5 @@
 ---
-title: JavaScript에서 중괄호가 있는 JSX
+title: 중괄호가 있는 JSX 안에서 자바스크립트 사용하기
 ---
 
 <Intro>
