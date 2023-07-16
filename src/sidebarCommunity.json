@@ -1,42 +1,42 @@
 {
-  "title": "Community",
+  "title": "커뮤니티",
   "path": "/community",
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET INVOLVED"
+      "sectionHeader": "참여하기"
     },
     {
-      "title": "Community",
+      "title": "커뮤니티",
       "path": "/community",
       "skipBreadcrumb": true,
       "routes": [
         {
-          "title": "React Conferences",
+          "title": "React 컨퍼런스",
           "path": "/community/conferences"
         },
         {
-          "title": "React Meetups",
+          "title": "React 밋업",
           "path": "/community/meetups"
         },
         {
-          "title": "React Videos",
+          "title": "React 비디오",
           "path": "/community/videos"
         },
         {
-          "title": "Meet the Team",
+          "title": "팀 소개",
           "path": "/community/team"
         },
         {
-          "title": "Docs Contributors",
+          "title": "문서 기여자",
           "path": "/community/docs-contributors"
         },
         {
-          "title": "Acknowledgements",
+          "title": "감사의 말",
           "path": "/community/acknowledgements"
         },
         {
-          "title": "Versioning Policy",
+          "title": "버전 관리 정책",
           "path": "/community/versioning-policy"
         }
       ]
