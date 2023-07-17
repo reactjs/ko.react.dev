@@ -10,7 +10,7 @@ title: Context를 사용해 데이터를 깊게 전달하기
 
 <YouWillLearn>
 
-- "Prop 내리꽂기" 란?
+- "Prop drilling" 이란?
 - Context로 반복적인 prop 전달 대체하기
 - Context의 일반적인 사용 사례
 - Context의 일반적인 대안
@@ -19,15 +19,15 @@ title: Context를 사용해 데이터를 깊게 전달하기
 
 ## Props 전달하기의 문제점 {/*the-problem-with-passing-props*/}
 
-[Props 전달하기](/learn/passing-props-to-a-component)는 UI 트리를 통해 명시적으로 데이터를 사용하는 컴포넌트에 전달하는 훌륭한 방법입니다. 하지만 이 방식은 어떤 prop을 트리를 통해 깊이 전해줘야 하거나, 많은 컴포넌트에서 같은 prop이 필요한 경우에 장황하고 불편할 수 있습니다. 데이터가 필요한 여러 컴포넌트의 가장 가까운 공통 조상은 트리 상 높이 위치할 수 있고 그렇게 높게까지 [state를 올리는 것](/learn/sharing-state-between-components)은 "Prop 내리꽂기"라는 상황을 초래할 수 있습니다.
+[Props 전달하기](/learn/passing-props-to-a-component)는 UI 트리를 통해 명시적으로 데이터를 사용하는 컴포넌트에 전달하는 훌륭한 방법입니다.
 
-But passing props can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop. The nearest common ancestor could be far removed from the components that need data, and [lifting state up](/learn/sharing-state-between-components) that high can lead to a situation sometimes called "prop drilling."
+하지만 이 방식은 어떤 prop을 트리를 통해 깊이 전해줘야 하거나, 많은 컴포넌트에서 같은 prop이 필요한 경우에 장황하고 불편할 수 있습니다. 데이터가 필요한 여러 컴포넌트의 가장 가까운 공통 조상은 트리 상 높이 위치할 수 있고 그렇게 높게까지 [state를 끌어올리는 것](/learn/sharing-state-between-components)은 "Prop drilling"이라는 상황을 초래할 수 있습니다.
 
 <DiagramGroup>
 
 <Diagram name="passing_data_lifting_state" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in purple. The value flows down to each of the two children, both highlighted in purple." >
 
-Lifting state up
+State 끌어올리기
 
 </Diagram>
 <Diagram name="passing_data_prop_drilling" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root node contains a bubble representing a value highlighted in purple. The value flows down through the two children, each of which pass the value but do not contain it. The left child passes the value down to two children which are both highlighted purple. The right child of the root passes the value through to one of its two children - the right one, which is highlighted purple. That child passed the value through its single child, which passes it down to both of its two children, which are highlighted purple.">
@@ -205,7 +205,7 @@ export default function Heading({ level, children }) {
 Props만으로는 불가능합니다. 여기서부터 context가 활약하기 시작합니다. 다음의 세 단계로 진행됩니다.
 
 1. Context를 **생성하세요**. (제목 레벨을 위한 것이므로 `LevelContext`라고 이름 지어봅시다)
-2. 데이터가 필요한 컴포넌트에서 context를 **사용하세요**. (`Header`에서는 `LevelContext`를 사용합니다)
+2. 데이터가 필요한 컴포넌트에서 context를 **사용하세요**. (`Heading`에서는 `LevelContext`를 사용합니다)
 3. 데이터를 지정하는 컴포넌트에서 context를 **제공하세요.** (`Section`에서는 `LevelContext`를 제공합니다)
 
 Context는 부모가 트리 내부 전체에, 심지어 멀리 떨어진 컴포넌트에조차 어떤 데이터를 제공할 수 있도록 합니다.
@@ -336,7 +336,7 @@ export default function Heading({ children }) {
 }
 ```
 
-`useContext`는 Hook입니다. `useState`, `useReducer` 와 같이 Hook은 React 컴포넌트의 최상위에서만 호출할 수 있습니다. **`useContext`는 React에게 `Heading` 컴포넌트가 `LevelContext`를 읽으려 한다고 알려줍니다.**
+`useContext`는 Hook입니다. `useState`, `useReducer` 와 같이 Hook은 React 컴포넌트의 바로 안에서만 호출할 수 있습니다. (반복문이나 조건문 내부가 아닙니다.) **`useContext`는 React에게 `Heading` 컴포넌트가 `LevelContext`를 읽으려 한다고 알려줍니다.**
 
 이제 `Heading` 컴포넌트는 `level` prop을 갖지 않습니다. 이제는 JSX에서 다음과 같이 `Heading`에 레벨 prop을 전달할 필요가 없습니다.
 
@@ -568,7 +568,7 @@ export const LevelContext = createContext(1);
 
 1. `level` prop 을 `<Section>`에 전달합니다.
 2. `Section`은 자식을 `<LevelContext.Provider value={level}>`로 감싸줍니다.
-3. `Header`는 `useContext(LevelContext)`를 사용해 가장 근처의 `LevelContext`의 값을 요청합니다.
+3. `Heading`은 `useContext(LevelContext)`를 사용해 가장 근처의 `LevelContext`의 값을 요청합니다.
 
 ## 같은 컴포넌트에서 context를 사용하며 제공하기 {/*using-and-providing-context-from-the-same-component*/}
 
@@ -697,7 +697,11 @@ export const LevelContext = createContext(0);
 
 이제 `Heading`과 `Section` 모두 자신들이 얼마나 "깊이" 있는지 확인하기 위해 `LevelContext`를 읽습니다. 그리고 `Section`은 그 안에 있는 어떤 것이든 "더 깊은" 레벨이라는 것을 명시하기 위해 자식들을 `LevelContext`로 감싸고 있습니다.
 
-> 이 예에서는 하위 컴포넌트가 context를 오버라이드 할 수 있는 방법을 시각적으로 보여주기 때문에 제목 레벨을 사용합니다. 하지만 context는 다른 많은 상황에서도 유용합니다. 현재 색상 테마, 현재 로그인된 사용자 등 전체 하위 트리에 필요한  정보를 전달하는 데 사용 가능합니다.
+<Note>
+
+이 예에서는 하위 컴포넌트가 context를 오버라이드 할 수 있는 방법을 시각적으로 보여주기 때문에 제목 레벨을 사용합니다. 하지만 context는 다른 많은 상황에서도 유용합니다. 현재 색상 테마, 현재 로그인된 사용자 등 전체 하위 트리에 필요한 정보를 전달할 수 있습니다.
+
+</Note>
 
 ## Context로 중간 컴포넌트 지나치기 {/*context-passes-through-intermediate-components*/}
 
@@ -873,7 +877,7 @@ Context는 정적인 값으로 제한되지 않습니다. 다음 렌더링 시 �
 
 <Challenges>
 
-#### Context로 prop 내리꽂기 대체하기 {/*replace-prop-drilling-with-context*/}
+#### Context로 prop drilling 대체하기 {/*replace-prop-drilling-with-context*/}
 
 다음의 예시에서 체크 박스를 토글하는 것은 각각의 `<PlaceImage>`에 전달된 `imageSize` prop을 변경합니다. 체크 박스의 state는 `App` 컴포넌트의 최상단에서 가지고 있지만 `<PlaceImage>`에서 그 값을 알아야 합니다.
 
@@ -1051,7 +1055,7 @@ export default function App() {
   )
 }
 
-function List({ imageSize }) {
+function List() {
   const listItems = places.map(place =>
     <li key={place.id}>
       <Place place={place} />
@@ -1110,7 +1114,7 @@ export const places = [{
 }, {
   id: 3,
   name: 'Selarón Staircase in Rio de Janeiro, Brazil',
-  description: 'This landmark was created by Jorge Selarón, a Chilean-born artist, as a "tribute to the Brazilian people."',
+  description: 'This landmark was created by Jorge Selarón, a Chilean-born artist, as a "tribute to the Brazilian people".',
   imageId: 'aeO3rpI'
 }, {
   id: 4,

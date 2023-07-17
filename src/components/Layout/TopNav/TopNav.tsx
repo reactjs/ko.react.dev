@@ -90,22 +90,24 @@ const githubIcon = (
   </svg>
 );
 
-function Link({href, children, ...props}: JSX.IntrinsicElements['a']) {
+function Link({
+  href,
+  children,
+  ...props
+}: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
-    <NextLink href={`${href}`}>
-      {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-      <a
-        className="inline text-primary dark:text-primary-dark hover:text-link hover:dark:text-link-dark border-b border-link border-opacity-0 hover:border-opacity-100 duration-100 ease-in transition leading-normal"
-        {...props}>
-        {children}
-      </a>
+    <NextLink
+      href={`${href}`}
+      className="inline text-primary dark:text-primary-dark hover:text-link hover:dark:text-link-dark border-b border-link border-opacity-0 hover:border-opacity-100 duration-100 ease-in transition leading-normal"
+      {...props}>
+      {children}
     </NextLink>
   );
 }
 
 function NavItem({url, isActive, children}: any) {
   return (
-    <div className="flex flex-auto sm:flex-1">
+    <div className="flex flex-auto">
       <Link
         href={url}
         className={cn(
@@ -247,16 +249,15 @@ export default function TopNav({
                 {isOpen ? <IconClose /> : <IconHamburger />}
               </button>
               <div className="3xl:flex-1 flex align-center">
-                <NextLink href="/">
-                  <a
-                    className={`active:scale-95 overflow-hidden transition-transform relative items-center text-primary dark:text-primary-dark p-1 whitespace-nowrap outline-link rounded-full 3xl:rounded-xl inline-flex text-lg font-normal gap-2`}>
-                    <Logo
-                      className={cn(
-                        'text-sm mr-0 w-10 h-10 text-link dark:text-link-dark flex origin-center transition-all ease-in-out'
-                      )}
-                    />
-                    <span className="sr-only 3xl:not-sr-only">React</span>
-                  </a>
+                <NextLink
+                  href="/"
+                  className={`active:scale-95 overflow-hidden transition-transform relative items-center text-primary dark:text-primary-dark p-1 whitespace-nowrap outline-link rounded-full 3xl:rounded-xl inline-flex text-lg font-normal gap-2`}>
+                  <Logo
+                    className={cn(
+                      'text-sm mr-0 w-10 h-10 text-link dark:text-link-dark flex origin-center transition-all ease-in-out'
+                    )}
+                  />
+                  <span className="sr-only 3xl:not-sr-only">React</span>
                 </NextLink>
               </div>
             </div>
@@ -268,7 +269,7 @@ export default function TopNav({
                 )}
                 onClick={onOpenSearch}>
                 <IconSearch className="mr-3 align-middle text-gray-30 shrink-0 group-betterhover:hover:text-gray-70" />
-                Search
+                검색
                 <span className="ml-auto hidden sm:flex item-center mr-1">
                   <Kbd data-platform="mac">⌘</Kbd>
                   <Kbd data-platform="win" wide>
@@ -281,18 +282,18 @@ export default function TopNav({
             <div className="text-base justify-center items-center gap-1.5 flex 3xl:flex-1 flex-row 3xl:justify-end">
               <div className="mx-2.5 gap-1.5 hidden lg:flex">
                 <NavItem isActive={section === 'learn'} url="/learn">
-                  Learn
+                  학습하기
                 </NavItem>
                 <NavItem
                   isActive={section === 'reference'}
                   url="/reference/react">
-                  Reference
+                  레퍼런스
                 </NavItem>
                 <NavItem isActive={section === 'community'} url="/community">
-                  Community
+                  커뮤니티
                 </NavItem>
                 <NavItem isActive={section === 'blog'} url="/blog">
-                  Blog
+                  블로그
                 </NavItem>
               </div>
               <div className="flex w-full md:hidden"></div>

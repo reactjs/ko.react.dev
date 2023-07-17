@@ -4,13 +4,13 @@ title: findDOMNode
 
 <Deprecated>
 
-This API will be removed in a future major version of React. [See the alternatives.](#alternatives)
+이 API는 향후 React의 주요 버전에서 제거될 예정입니다. [대안들을 살펴보세요.](#alternatives)
 
 </Deprecated>
 
 <Intro>
 
-`findDOMNode` finds the browser DOM node for a React [class component](/reference/react/Component) instance.
+`findDOMNode`는 React의 [클래스 컴포넌트](/reference/react/Component)에서 브라우저의 DOM 노드를 찾는 방법입니다.
 
 ```js
 const domNode = findDOMNode(componentInstance)
@@ -22,11 +22,11 @@ const domNode = findDOMNode(componentInstance)
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `findDOMNode(componentInstance)` {/*finddomnode*/}
 
-Call `findDOMNode` to find the browser DOM node for a given React [class component](/reference/react/Component) instance.
+`findDOMNode`를 호출하여 주어진 [클래스 컴포넌트](/reference/react/Component)에서 브라우저의 DOM 노드를 찾습니다.
 
 ```js
 import { findDOMNode } from 'react-dom';
@@ -34,34 +34,34 @@ import { findDOMNode } from 'react-dom';
 const domNode = findDOMNode(componentInstance);
 ```
 
-[See more examples below.](#usage)
+[아래 예시를 참고하세요.](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `componentInstance`: An instance of the [`Component`](/reference/react/Component) subclass. For example, `this` inside a class component.
+* `componentInstance`: [`컴포넌트`](/reference/react/Component) 하위 클래스의 인스턴스입니다. 예를 들어 클래스 컴포넌트의 경우 `this`가 포함되어 있습니다.
 
 
-#### Returns {/*returns*/}
+#### 반환 {/*returns*/}
 
-`findDOMNode` returns the first closest browser DOM node within the given `componentInstance`. When a component renders to `null`, or renders `false`, `findDOMNode` returns `null`. When a component renders to a string, `findDOMNode` returns a text DOM node containing that value.
+`findDOMNode`는 주어진 `componentInstance`에서 가장 처음 등장하는 브라우저 DOM 노드를 반환합니다. 컴포넌트가 `null`이나 `false`를 렌더링할 경우 `findDOMNode`는 `null`을 반환합니다. 컴포넌트가 문자열을 렌더링하면 `findDOMNode`는 그 값을 포함한 텍스트 DOM 노드를 반환합니다.
 
-#### Caveats {/*caveats*/}
+#### 주의사항 {/*caveats*/}
 
-* A component may return an array or a [Fragment](/reference/react/Fragment) with multiple children. In that case `findDOMNode`, will return the DOM node corresponding to the first non-empty child.
+* 컴포넌트가 배열이나 다수의 자식을 가진 [Fragment](/reference/react/Fragment)를 반환할 수 있습니다. 이런 경우 `findDOMNode`는 해당하는 DOM 노드 중 비어있지 않은 첫 번째 자식을 반환합니다.
 
-* `findDOMNode` only works on mounted components (that is, components that have been placed in the DOM). If you try to call this on a component that has not been mounted yet (like calling `findDOMNode()` in `render()` on a component that has yet to be created), an exception will be thrown.
+* `findDOMNode`는 컴포넌트가 마운트 되었을 때(즉, 컴포넌트가 DOM에 배치되었을 때)만 동작합니다. 컴포넌트가 아직 마운트 되지 않은 상태에서 호출할 경우 (예시로 컴포넌트가 생성되기 전인 `render()` 내에서 `findDOMNode()`를 호출하는 경우) 예외가 발생합니다.
 
-* `findDOMNode` only returns the result at the time of your call. If a child component renders a different node later, there is no way for you to be notified of this change.
+* `findDOMNode`는 호출할 당시의 결과만 반환합니다. 이후에 자식 컴포넌트가 다른 노드를 렌더링하더라도, 그 변화에 대해 알 수 없습니다.
 
-* `findDOMNode` accepts a class component instance, so it can't be used with function components.
+* `findDOMNode`는 클래스 컴포넌트에서만 사용할 수 있습니다. 함수 컴포넌트에서는 사용할 수 없습니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Finding the root DOM node of a class component {/*finding-the-root-dom-node-of-a-class-component*/}
+### 클래스 컴포넌트의 root DOM 노드를 찾기 {/*finding-the-root-dom-node-of-a-class-component*/}
 
-Call `findDOMNode` with a [class component](/reference/react/Component) instance (usually, `this`) to find the DOM node it has rendered.
+[클래스 컴포넌트](/reference/react/Component) 인스턴스에서 `findDOMNode`를 호출하여 (주로 `this`) 이를 렌더링한 DOM 노드를 찾습니다.
 
 ```js {3}
 class AutoselectingInput extends Component {
@@ -76,7 +76,7 @@ class AutoselectingInput extends Component {
 }
 ```
 
-Here, the `input` variable will be set to the `<input>` DOM element. This lets you do something with it. For example, when clicking "Show example" below mounts the input, [`input.select()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select) selects all text in the input:
+여기서 `input` 변수는 `<input>` DOM 요소를 값으로 갖게 됩니다. 이제 이것을 통해 작업이 가능해집니다. 예를 들어 "Show example"을 클릭하여 입력창을 마운트하고, [`input.select()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select)로 입력창의 모든 문자를 선택하도록 합니다.
 
 <Sandpack>
 
@@ -120,11 +120,11 @@ export default AutoselectingInput;
 
 ---
 
-## Alternatives {/*alternatives*/}
+## 대안 {/*alternatives*/}
 
-### Reading component's own DOM node from a ref {/*reading-components-own-dom-node-from-a-ref*/}
+### ref를 통해 컴포넌트의 DOM 노드 읽기 {/*reading-components-own-dom-node-from-a-ref*/}
 
-Code using `findDOMNode` is fragile because the connection between the JSX node and the code manipulating the corresponding DOM node is not explicit. For example, try wrapping this `<input />` into a `<div>`:
+`findDOMNode`를 사용하는 코드는 JSX 노드와 이에 해당하는 코드 사이의 연결이 명시적이지 않아 취약합니다. 예시로 `<input />`를 `<div>`로 감싸보세요.
 
 <Sandpack>
 
@@ -165,9 +165,9 @@ export default AutoselectingInput;
 
 </Sandpack>
 
-This will break the code because now, `findDOMNode(this)` finds the `<div>` DOM node, but the code expects an `<input>` DOM node. To avoid these kinds of problems, use [`createRef`](/reference/react/createRef) to manage a specific DOM node.
+이제 코드가 깨질 텐데, 코드는 `findDOMNode(this)`가 `<input>` DOM 노드를 찾을 것으로 기대하고 있었지만 실제로 찾은 것은 `<div>` DOM 노드이기 때문입니다. 이러한 문제를 방지하기 위해 특정 DOM 노드를 관리할 때는 [`createRef`](/reference/react/createRef)를 사용하세요.
 
-In this example, `findDOMNode` is no longer used. Instead, `inputRef = createRef(null)` is defined as an instance field on the class. To read the DOM node from it, you can use `this.inputRef.current`. To attach it to the JSX, you render `<input ref={this.inputRef} />`. This connects the code using the DOM node to its JSX:
+이 예시에선 `findDOMNode`는 더 이상 사용하지 않습니다. 대신 `inputRef = createRef(null)`를 클래스의 인스턴스 필드에 정의하였습니다. 여기서 `this.inputRef.current`를 통해 DOM 노드를 읽을 수 있습니다. 이것을 JSX에 붙이려면, `<input ref={this.inputRef} />`를 렌더링합니다. 이 작업은 DOM 노드를 사용하는 코드와 JSX를 연결합니다.
 
 <Sandpack>
 
@@ -212,7 +212,7 @@ export default AutoselectingInput;
 
 </Sandpack>
 
-In modern React without class components, the equivalent code would call [`useRef`](/reference/react/useRef) instead:
+클래스 컴포넌트를 사용하지 않는 최신 React에서는, [`useRef`](/reference/react/useRef)를 대신 호출하여 동일한 기능을 구현합니다.
 
 <Sandpack>
 
@@ -251,13 +251,13 @@ export default function AutoselectingInput() {
 
 </Sandpack>
 
-[Read more about manipulating the DOM with refs.](/learn/manipulating-the-dom-with-refs)
+[refs를 사용한 DOM 조작에 대해 더 알아보세요.](/learn/manipulating-the-dom-with-refs)
 
 ---
 
-### Reading a child component's DOM node from a forwarded ref {/*reading-a-child-components-dom-node-from-a-forwarded-ref*/}
+### forwarded ref를 사용하여 자식 컴포넌트의 DOM 노드를 읽기 {/*reading-a-child-components-dom-node-from-a-forwarded-ref*/}
 
-In this example, `findDOMNode(this)` finds a DOM node that belongs to another component. The `AutoselectingInput` renders `MyInput`, which is your own component that renders a browser `<input>`.
+이 예시에서는 `findDOMNode(this)`가 다른 컴포넌트에 속한 DOM 노드를 찾습니다. `AutoselectingInput` 컴포넌트는 브라우저의 `<input>`을 렌더링하는 `MyInput` 컴포넌트를 렌더링합니다.
 
 <Sandpack>
 
@@ -305,14 +305,14 @@ export default function MyInput() {
 
 </Sandpack>
 
-Notice that calling `findDOMNode(this)` inside `AutoselectingInput` still gives you the DOM `<input>`--even though the JSX for this `<input>` is hidden inside the `MyInput` component. This seems convenient for the above example, but it leads to fragile code. Imagine that you wanted to edit `MyInput` later and add a wrapper `<div>` around it. This would break the code of `AutoselectingInput` (which expects to find an `<input>`).
+`AutoselectingInput` 컴포넌트의 내부에서 `findDOMNode(this)`를 호출하면, `<input>`에 대한 JSX가 `MyInput` 컴포넌트 내부에 숨겨져 있더라도 문제없이 `<input>` DOM 노드를 찾아낼 수 있습니다. 이러한 동작이 위 예시에서는 편리해 보일 수 있겠지만, 결국은 취약한 코드로 가는 밑거름이 됩니다. 만약 나중에 코드를 수정하며 `MyInput`을 `<div>`로 감싼다고 생각해 보세요. `<input>`을 찾을 것으로 기대하던 `AutoselectingInput`의 코드를 깨뜨리게 됩니다.
 
-To replace `findDOMNode` in this example, the two components need to coordinate:
+위 예시의 `findDOMNode`를 대체하려면, 두 컴포넌트가 협력해야 합니다.
 
-1. `AutoSelectingInput` should declare a ref, like [in the earlier example](#reading-components-own-dom-node-from-a-ref), and pass it to `<MyInput>`.
-2. `MyInput` should be declared with [`forwardRef`](/reference/react/forwardRef) to take that ref and forward it down to the `<input>` node.
+1. `AutoSelectingInput`에서는 ref를 선언해야 하고, [이전의 예시](#reading-components-own-dom-node-from-a-ref)처럼 `<MyInput>`으로 전달합니다.
+2. `MyInput`은 [`forwardRef`](/reference/react/forwardRef)로 선언해야 하며, 해당 ref를 가져와 `<input>` 노드로 전달합니다.
 
-This version does that, so it no longer needs `findDOMNode`:
+아래 방식으로 사용하면 더 이상 `findDOMNode`가 필요하지 않습니다.
 
 <Sandpack>
 
@@ -368,7 +368,7 @@ export default MyInput;
 
 </Sandpack>
 
-Here is how this code would look like with function components instead of classes:
+클래스 컴포넌트 대신 함수 컴포넌트에서 사용할 때는 이런 코드로 동작합니다.
 
 <Sandpack>
 
@@ -420,11 +420,11 @@ export default MyInput;
 
 ---
 
-### Adding a wrapper `<div>` element {/*adding-a-wrapper-div-element*/}
+### 감싸주는 `<div>` 요소 추가하기 {/*adding-a-wrapper-div-element*/}
 
-Sometimes a component needs to know the position and size of its children. This makes it tempting to find the children with `findDOMNode(this)`, and then use DOM methods like [`getBoundingClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) for measurements.
+컴포넌트는 종종 자식의 위치와 크기를 알아야 할 때가 있습니다. 때문에 `findDOMNode(this)`를 사용하여 자식들을 찾고, 측정을 위해 [`getBoundingClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)와 같은 DOM 메서드를 사용하게 됩니다.
 
-There is currently no direct equivalent for this use case, which is why `findDOMNode` is deprecated but is not yet removed completely from React. In the meantime, you can try rendering a wrapper `<div>` node around the content as a workaround, and getting a ref to that node. However, extra wrappers can break styling.
+이러한 사용 사례에 직접적으로 대응되는 방법이 없기 때문에 `findDOMNode`는 더 이상 사용되지 않음에도 React에서 완전히 사라지지는 않았습니다. 그동안 이를 해결하기 위해 콘텐츠 주위를 `<div>` 노드로 감싸주고, 그 노드의 ref를 가져왔습니다. 하지만, 콘텐츠를 감싸는 요소를 추가하는 방법은 스타일을 손상할 수 있습니다.
 
 ```js
 <div ref={someRef}>
@@ -432,4 +432,4 @@ There is currently no direct equivalent for this use case, which is why `findDOM
 </div>
 ```
 
-This also applies to focusing and scrolling to arbitrary children.
+이는 특정 항목에 초점을 맞추고 스크롤을 하는 경우에도 적용됩니다.

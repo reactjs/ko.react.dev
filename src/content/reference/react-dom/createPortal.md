@@ -9,7 +9,7 @@ title: createPortal
 ```js
 <div>
   <SomeComponent />
-  {createPortal(children, domNode)}
+  {createPortal(children, domNode, key?)}
 </div>
 ```
 
@@ -21,7 +21,7 @@ title: createPortal
 
 ## 레퍼런스 {/*reference*/}
 
-### `createPortal(children, domNode)` {/*createportal*/}
+### `createPortal(children, domNode, key?)` {/*createportal*/}
 
 Portal을 생성하려면 `createPortal`을 호출하여 일부 JSX와 렌더링할 DOM 노드를 전달합니다.
 
@@ -51,7 +51,6 @@ Portal은 DOM 노드의 물리적 배치만 변경합니다.
 * `domNode` : `document.getElementById()`가 반환하는 것과 같은 일부 DOM 노드. 노드가 미리 존재해야 합니다. 업데이트 중에 다른 DOM 노드를 전달하면 portal 콘텐츠가 다시 생성됩니다.
 
 * **optional** `key`: Portal의 [key](/learn/rendering-lists/#keeping-list-items-in-order-with-key)로 사용할 고유한 문자열 또는 숫자입니다. 
-
 
 #### 반환 값 {/*returns*/}
 
