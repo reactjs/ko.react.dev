@@ -1439,7 +1439,11 @@ button {
 
 <Solution>
 
+<<<<<<< HEAD
 `EditContact` 컴포넌트를 둘로 분할합니다. 모든 폼 state를 내부 `EditForm` 컴포넌트로 이동합니다. 외부 `EditContact` 컴포넌트를 내보내고 내부 `EditContact` 컴포넌트에 `savedContact.id`를 `key`로 전달하도록 합니다. 그 결과 내부 `EditForm` 컴포넌트는 다른 연락처를 선택할 때마다 모든 폼 state를 초기화하고 DOM을 다시 생성합니다.
+=======
+Split the `EditContact` component in two. Move all the form state into the inner `EditForm` component. Export the outer `EditContact` component, and make it pass `savedContact.id` as the `key` to the inner `EditForm` component. As a result, the inner `EditForm` component resets all of the form state and recreates the DOM whenever you select a different contact.
+>>>>>>> a30e1f954dce2a67985caa8b2376a1839dbfa6cf
 
 <Sandpack>
 
