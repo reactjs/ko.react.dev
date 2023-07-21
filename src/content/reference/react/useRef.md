@@ -228,7 +228,7 @@ function MyComponent() {
 
 렌더링 중에 무언가를 읽거나 [써야](/reference/react/useState#storing-information-from-previous-renders)*만* 하는 경우, 대신 [state를 사용](/reference/react/useState)하세요.
 
-컴포넌트는 이러한 규칙을 어기더라도 여전히 작동할 수도 있지만, React에 추가되는 대부분의 새로운 기능들은 이러한 기대에 의존합니다. 자세한 내용은 [컴포넌트를 순수하게 유지하기](/learn/keeping-components-pure#where-you-can-cause-side-effects)에서 확인하세요.
+컴포넌트는 이러한 규칙을 어기더라도 여전히 작동할 수도 있지만, React에 추가되는 대부분의 새로운 기능들은 이러한 기대에 의존합니다. 자세한 내용은 [컴포넌트를 순수하게 유지하기](/learn/keeping-components-pure#where-you-_can_-cause-side-effects)에서 확인하세요.
 
 </Pitfall>
 
