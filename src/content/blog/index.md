@@ -1,10 +1,10 @@
 ---
-title: React Blog
+title: React 블로그
 ---
 
 <Intro>
 
-This blog is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted here first. You can also follow the [@reactjs](https://twitter.com/reactjs) account on Twitter, but you won’t miss anything essential if you only read this blog.
+이 블로그는 React 팀에서 업데이트한 내용들의 공식 소스입니다. 릴리스 노트 및 더 이상 사용되지 않는 표현에 대한 알림을 비롯하여 중요한 내용은 이곳에 먼저 공유됩니다. 또, 트위터에서 [@reactjs](https://twitter.com/reactjs) 계정을 팔로우하셔도 좋지만, 이 블로그만으로도 모든 정보를 얻을 수 있습니다.
 
 </Intro>
 
@@ -38,8 +38,8 @@ React 18 was years in the making, and with it brought valuable lessons for the R
 React 18 is now available on npm! In our last post, we shared step-by-step instructions for upgrading your app to React 18. In this post, we’ll give an overview of what’s new in React 18, and what it means for the future...
 </BlogCard>
 
-<BlogCard title="How to Upgrade to React 18" date="March 8, 2022" url="/blog/2022/03/08/react-18-upgrade-guide">
-As we shared in the release post, React 18 introduces features powered by our new concurrent renderer, with a gradual adoption strategy for existing applications. In this post, we will guide you through the steps for upgrading to React 18...
+<BlogCard title="React 18로 업그레이드하는 방법" date="2022년 3월 8일" url="/blog/2022/03/08/react-18-upgrade-guide">
+React 18은 릴리스 노트에서 언급한 대로, 새로운 동시성 렌더러를 도입하여 기존 어플리케이션에 점진적으로 적용할 계획입니다. 이 글에서는 React 18로 업그레이드하는 방법을 단계별로 소개하겠습니다...
 </BlogCard>
 
 <BlogCard title="React Conf 2021 Recap" date="December 17, 2021" url="/blog/2021/12/17/react-conf-2021-recap">
@@ -62,14 +62,14 @@ The React team is excited to share a few updates:
 
 ---
 
-### All release notes {/*all-release-notes*/}
+### 모든 릴리스 노트 {/*all-release-notes*/}
 
-Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md`](https://github.com/facebook/react/blob/main/CHANGELOG.md) file in the React repository, as well as on the [Releases](https://github.com/facebook/react/releases) page.
+React의 모든 릴리스 내용이 별도의 블로그 게시글로 작성되지는 않지만, 모든 릴리스에 대한 세부 변경 명세는 React 저장소의 [`CHANGELOG.md`](https://github.com/facebook/react/blob/main/CHANGELOG.md) 파일 또는 [Releases](https://github.com/facebook/react/releases) 페이지에서 확인할 수 있습니다.
 
 ---
 
-### Older posts {/*older-posts*/}
+### 옛 게시글 {/*older-posts*/}
 
-See the [older posts.](https://reactjs.org/blog/all.html)
+[옛 게시글](https://reactjs.org/blog/all.html)을 확인해 보세요.
 
 <div className="h-12"></div>
