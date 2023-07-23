@@ -1393,7 +1393,7 @@ class ErrorBoundary extends React.Component {
 
 `Profile` 또는 그 하위 컴포넌트가 오류를 발생시키면 `ErrorBoundary`가 해당 오류를 "포착"하고 사용자가 제공한 오류 메시지와 함께 fallback UI를 표시한 다음 프로덕션 오류 보고서를 오류 보고 서비스에 전송합니다.
 
-모든 컴포넌트를 별도의 error boundary로 묶을 필요는 없습니다. [error boundary의 세분화](https://aweary.dev/fault-tolerance-react/)를 고려할 때는 오류 메시지를 표시하는 것이 적절한 위치를 고려하세요. 예를 들어 메시징 앱의 경우 error boundary를 대화 목록 주위에 위치시키는 것이 좋습니다. 또한 모든 개별 메시지 주위에 위치시키는 것도 좋습니다. 하지만 모든 아바타 주위에 boundary를 위치시키는 것은 적절하지 않습니다.
+모든 컴포넌트를 별도의 error boundary로 묶을 필요는 없습니다. [error boundary의 세분화](https://www.brandondail.com/posts/fault-tolerance-react)를 고려할 때는 오류 메시지를 표시하는 것이 적절한 위치를 고려하세요. 예를 들어 메시징 앱의 경우 error boundary를 대화 목록 주위에 위치시키는 것이 좋습니다. 또한 모든 개별 메시지 주위에 위치시키는 것도 좋습니다. 하지만 모든 아바타 주위에 boundary를 위치시키는 것은 적절하지 않습니다.
 
 <Note>
 
