@@ -8,7 +8,7 @@ title: "React 18로 업그레이드하는 방법"
 
 <Intro>
 
-React 18은 [릴리스 노트](/blog/2022/03/29/react-v18)에서 언급한 대로, 새로운 동시성 렌더러를 도입하여 기존 애플리케이션에 점진적으로 적용할 계획입니다. 이 글에서는 React 18로 업그레이드하는 방법을 단계별로 소개하겠습니다.
+React 18은 [릴리스 노트](/blog/2022/03/29/react-v18)에서 언급한 대로 새로운 동시성 렌더러를 도입하여 기존 애플리케이션에 점진적으로 적용할 계획입니다. 이 글에서는 React 18로 업그레이드하는 방법을 단계별로 소개하겠습니다.
 
 React 18로 업그레이드하는 과정에서 발생하는 [문제를 알려주세요](https://github.com/facebook/react/issues/new/choose).
 
@@ -24,13 +24,13 @@ React Native 사용자의 경우, React 18은 React Native의 향후 버전에 �
 
 ## 설치 {/*installing*/}
 
-최신 버전의 React를 설치하기 위해, 다음 명령어를 입력하세요.
+최신 버전의 React를 설치하기 위해 다음 명령어를 입력하세요.
 
 ```bash
 npm install react react-dom
 ```
 
-혹은 yarn을 사용한다면, 다음 명령어를 입력하세요.
+혹은 yarn을 사용한다면 다음 명령어를 입력하세요.
 
 ```bash
 yarn add react react-dom
@@ -57,7 +57,7 @@ render(<App tab="home" />, container);
 // 변경 후
 import { createRoot } from 'react-dom/client';
 const container = document.getElementById('app');
-const root = createRoot(container); // createRoot(container!) if you use TypeScript
+const root = createRoot(container); // 만약 TypeScript를 사용한다면 createRoot(container!)
 root.render(<App tab="home" />);
 ```
 
@@ -71,7 +71,7 @@ unmountComponentAtNode(container);
 root.unmount();
 ```
 
-또한, Suspense를 사용할 때 일반적으로 기대한 결과가 나오지 않기 때문에 콜백 함수를 렌더링 메서드에서 제거했습니다.
+또한 Suspense를 사용할 때 일반적으로 기대한 결과가 나오지 않기 때문에 콜백 함수를 렌더링 메서드에서 제거했습니다.
 
 ```js
 // 변경 전
@@ -131,10 +131,10 @@ const root = hydrateRoot(container, <App tab="home" />);
 
 * `renderToNodeStream`: **더 이상 사용되지 않음 ⛔️️**
 
-대신에, Node 환경에서 스트리밍하려면 다음 API를 사용하세요.
+대신에 Node 환경에서 스트리밍하려면 다음 API를 사용하세요.
 * `renderToPipeableStream`: **새로 추가됨 ✨**
 
-더불어, Deno나 Cloudflare workers와 같은 최신 런타임 환경에서 Suspense를 활용하여 스트리밍 SSR를 지원하기 위해 새로운 API를 도입합니다.
+더불어 Deno나 Cloudflare workers와 같은 최신 런타임 환경에서 Suspense를 활용하여 스트리밍 SSR를 지원하기 위해 새로운 API를 도입합니다.
 * `renderToReadableStream`: **새로 추가됨 ✨**
 
 다음 API들은 계속 작동되긴 하지만, Suspense 지원이 제한될 것입니다.
@@ -167,7 +167,6 @@ interface MyButtonProps {
 React 18은 자동으로 더 많은 batching을 수행하여 놀라운 성능 향상을 이뤘습니다. Batching이란 더 나은 성능을 위해 여러 개의 상태 업데이트를 단 한 번의 리렌더링으로 처리하는 것을 말합니다. React 18 이전에는 React 이벤트 핸들러 내에서의 상태 업데이트만 batching을 수행해 왔습니다. 그러나 프로미스, setTimeout, 네이티브 이벤트 핸들러 또는 다른 이벤트들은 React에서 기본적으로 batching을 수행하지 않았죠. 다음 예시를 확인하세요.
 
 ```js
-// Before React 18 only React events were batched
 // React 18 이전에는 오직 React 이벤트들만 batch되었습니다.
 
 function handleClick() {
@@ -239,7 +238,6 @@ React 18 워킹 그룹은 스타일이나 외부 저장 장치와 같은 특정 
 
 React 18은 이러한 문제를 시각적으로 보여주기 위해 Strict 모드에 개발 전용 검사를 새롭게 도입합니다. 이 검사는 컴포넌트가 처음 마운트될 때 자동으로 언마운트한 다음, 이전 상태를 복원하면서 다시 마운트할 것입니다.
 
-Before this change, React would mount the component and create the effects:
 이 업데이트 이전에는 React가 다음과 같이 컴포넌트를 마운트하고 effect를 생성했습니다.
 
 ```
@@ -248,7 +246,7 @@ Before this change, React would mount the component and create the effects:
     * 이펙트 effect가 생성됩니다.
 ```
 
-React 18의 Strict 모드에서는, 개발 전용 모드에서 React가 컴포넌트를 마운트 해제하고 다시 마운트하는 것을 실험합니다.
+React 18의 Strict 모드에서는 개발 전용 모드에서 React가 컴포넌트를 마운트 해제하고 다시 마운트하는 것을 실험합니다.
 
 ```
 * React가 컴포넌트를 마운트합니다.
@@ -285,7 +283,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 React에 `act`가 필요 없다고 알리려면 해당 변수를 `false`로 설정할 수 있습니다. 이렇게 하면 전체 브라우저 환경을 시뮬레이션하는 종단 간 테스트에 유용하게 사용할 수 있습니다.
 
-결국에는, 테스트 라이브러리가 이를 자동으로 설정해줄 것으로 예상합니다. 예를 들어, [React Testing Library의 다음 버전은 추가적인 설정 없이도 React 18을 지원하는 기능이 내장되어 있습니다](https://github.com/testing-library/react-testing-library/issues/509#issuecomment-917989936).
+결국에는 테스트 라이브러리가 이를 자동으로 설정해줄 것으로 예상합니다. 예를 들어, [React Testing Library의 다음 버전은 추가적인 설정 없이도 React 18을 지원하는 기능이 내장되어 있습니다](https://github.com/testing-library/react-testing-library/issues/509#issuecomment-917989936).
 
 [`act` 테스트 API와 유관 변경 사항에 대한 추가 정보](https://github.com/reactwg/react-18/discussions/102)는 워킹 그룹에서 확인할 수 있습니다.
 
@@ -319,7 +317,7 @@ Internet Explorer를 지원해야 하는 경우 React 17을 사용하는 것을 
 * **이제 컴포넌트들이 `undefined`를 렌더링할 수 있습니다.** React는 더 이상 컴포넌트에서 `undefined`를 반환할 때 경고하지 않습니다. 이렇게 함으로써 컴포넌트는 컴포넌트 트리의 중간에 허용된 값과 일관된 값을 반환하게 됩니다. JSX 앞에 `return` 문을 빼먹는 실수와 같은 문제를 방지하기 위해 린터를 사용하는 것을 권장합니다.
 * **테스트에서 `act` 경고는 이제 선택 사항입니다.** 종단 간 테스트를 실행하는 경우 `act` 경고 메시지는 불필요합니다. 이 경고 메시지가 쓸모 있는 [유닛 테스트에서만 활성화할 수 있도록](https://github.com/reactwg/react-18/discussions/102) 만들었습니다.
 * **이제 마운트가 해제된 컴포넌트에서 `setState` 관련 경고가 나타나지 않습니다.** 이전에는 `setState`를 마운트가 해제된 컴포넌트에서 호출할 때 메모리 누수에 대한 경고가 표시되었습니다. 이 경고는 구독을 위해 추가되었지만, 대부분의 경우 상태 설정에 문제가 없을 때 이 경고를 마주치게 되어 코드를 더 나빠지게 만드는 대안을 찾아야 했습니다. React 18에서는 이 경고를 [제거했습니다](https://github.com/facebook/react/pull/22114).
-* **더 이상 콘솔 로그를 억제하지 않습니다.** Strict 모드를 사용할 때, React는 예기치 않은 부작용을 감지하기 위해 각 컴포넌트를 두 번 렌더링합니다. React 17에서는 두 번째 렌더링의 콘솔 로그를 억제하여 로그를 더 쉽게 읽을 수 있게 했습니다. 그러나 [커뮤니티의 피드백](https://github.com/facebook/react/issues/21783)에 따라 이 억제를 제거했습니다. 이제 React DevTools가 설치되어 있다면 두 번째 로그의 렌더링이 회색으로 표시되며, 완전히 억제하는 옵션도 사용할 수 있습니다. (기본적으로 꺼져 있음)
+* **더 이상 콘솔 로그를 억제하지 않습니다.** Strict 모드를 사용할 때 React는 예기치 않은 부작용을 감지하기 위해 각 컴포넌트를 두 번 렌더링합니다. React 17에서는 두 번째 렌더링의 콘솔 로그를 억제하여 로그를 더 쉽게 읽을 수 있게 했습니다. 그러나 [커뮤니티의 피드백](https://github.com/facebook/react/issues/21783)에 따라 이 억제를 제거했습니다. 이제 React DevTools가 설치되어 있다면 두 번째 로그의 렌더링이 회색으로 표시되며 완전히 억제하는 옵션도 사용할 수 있습니다. (기본적으로 꺼져 있음)
 * **메모리 사용을 개선했습니다.** React는 이제 마운트가 해제될 때 더 많은 내부 필드를 정리하여 코드에 존재할 수 있는 수정되지 않은 메모리 누수의 영향을 덜 심하게 만듭니다.
 
 ### React DOM 서버 {/*react-dom-server*/}
