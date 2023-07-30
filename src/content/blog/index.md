@@ -59,7 +59,7 @@ React 팀은 몇가지 업데이트를 공유할 수 있어서 기쁩니다.
 </BlogCard>
 
 <BlogCard title="Introducing Zero-Bundle-Size React Server Components" date="December 21, 2020" url="/blog/2020/12/21/data-fetching-with-react-server-components">
-2020년은 긴 해였습니다. 한 해를 마무리하면서, zero-bundle-size React Server Components에 대한 연구에 대한 특별한 연말 업데이트를 공유하고 싶습니다. React Server Components를 소개하기 위해 강의와 데모를 준비했습니다. 원하신다면, 연말 동안 또는 새해에 일이 다시 시작될 때 이들을 확인해 보실 수 있습니다...
+2020년은 긴 해였습니다. 한 해를 마무리하면서, zero-bundle-size React 서버 컴포넌트에 대한 연구에 대한 특별한 연말 업데이트를 공유하고 싶습니다. React 서버 컴포넌트를 소개하기 위해 강의와 데모를 준비했습니다. 원하신다면, 연말 동안 또는 새해에 일이 다시 시작될 때 이들을 확인해 보실 수 있습니다...
 </BlogCard>
 
 </div>
