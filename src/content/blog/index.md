@@ -12,7 +12,7 @@ title: React 블로그
 
 <BlogCard title="React Canaries: Incremental Feature Rollout Outside Meta" date="May 3, 2023" url="/blog/2023/05/03/react-canaries">
 
-그동안 React의 새로운 기능들은 Meta에서 먼저 사용하고, 추후에 오픈소스로 릴리스 되었습니다. 하지만 앞으로는 새로운 기능들의 디자인이 최종단계에 이를 때, Meta에서 내부적으로 React를 사용하는 방식과 유사하게 리액트 커뮤니티의 구성원들이 해당 기능들을 적용할 수 있는 옵션을 제공하고자 합니다. 이를 위해 Canary release 채널을 공식적으로 지원하고자 합니다. 이를 통해 React 신규 기능들을 공식 release 전에 먼저 적용할 수 있을 것입니다.
+그동안 React의 새로운 기능들은 Meta에서 먼저 사용하고, 추후에 오픈소스로 릴리스 되었습니다. 하지만 앞으로는 새로운 기능들의 디자인이 최종단계에 이를 때, Meta에서 내부적으로 React를 사용하는 방식과 유사하게 리액트 커뮤니티의 구성원들이 해당 기능들을 적용할 수 있는 옵션을 제공하고자 합니다. 이를 위해 Canary 릴리스 채널을 공식적으로 지원하고자 합니다. 이를 통해 React의 새로운 기능들을 공식 릴리스 전에 먼저 적용할 수 있을 것입니다.
 
 </BlogCard>
 
@@ -32,7 +32,7 @@ React Labs 게시물은 현재 활발히 연구 및 개발 중인 프로젝트�
 
 <BlogCard title="React Labs: What We've Been Working On – June 2022" date="June 15, 2022" url="/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022">
 
-React 18의 개발은 수년간에 걸쳐 이루어졌고, 그 과정에서 React 팀에게 귀중한 교훈들을 남겼습니다. React 18의 release는 수년간의 연구와 수많은 길을 탐색한 결과입니다. 일부는 성공했지만, 대부분은 새로운 통찰을 이끌어낸 막다른 길이었습니다. 한 가지 교훈은, 탐색하고 있는 길에 대한 통찰력 없이 커뮤니티가 새로운 기능을 기다리는 것이 얼마나 불편한지입니다...
+React 18의 개발은 수년간에 걸쳐 이루어졌고, 그 과정에서 React 팀에게 귀중한 교훈들을 남겼습니다. React 18의 출시는 수년간의 연구와 수많은 길을 탐색한 결과입니다. 일부는 성공했지만, 대부분은 새로운 통찰을 이끌어낸 막다른 길이었습니다. 한 가지 교훈은, 탐색하고 있는 길에 대한 통찰력 없이 커뮤니티가 새로운 기능을 기다리는 것이 얼마나 불편한지입니다...
 
 </BlogCard>
 
@@ -59,7 +59,7 @@ React 팀은 몇가지 업데이트를 공유할 수 있어서 기쁩니다.
 </BlogCard>
 
 <BlogCard title="Introducing Zero-Bundle-Size React Server Components" date="December 21, 2020" url="/blog/2020/12/21/data-fetching-with-react-server-components">
-2020년은 긴 해였습니다. 한 해를 마무리하면서, zero-bundle-size React 서버 컴포넌트에 대한 연구에 대한 특별한 연말 업데이트를 공유하고 싶습니다. React 서버 컴포넌트를 소개하기 위해 강의와 데모를 준비했습니다. 원하신다면, 연말 동안 또는 새해에 일이 다시 시작될 때 이들을 확인해 보실 수 있습니다...
+2020년은 긴 해였습니다. 한 해를 마무리하면서, zero-bundle-size React 서버 컴포넌트에 대한 연구에 대한 특별한 연말 업데이트를 공유하고 싶습니다. React 서버 컴포넌트를 소개하기 위해 강의와 데모를 준비했습니다. 연말 동안 또는 새해에 일이 다시 시작될 때 이들을 확인해 보실 수 있습니다...
 </BlogCard>
 
 </div>
