@@ -12,7 +12,7 @@ title: React 블로그
 
 <BlogCard title="React Canaries: Incremental Feature Rollout Outside Meta" date="May 3, 2023" url="/blog/2023/05/03/react-canaries">
 
-그동안 React의 새로운 기능들은 Meta에서 먼저 사용하고, 추후에 오픈소스로 릴리스 되었습니다. 하지만 앞으로는 새로운 기능들의 디자인이 최종단계에 이를 때, Meta에서 내부적으로 React를 사용하는 방식과 유사하게 리액트 커뮤니티의 구성원들이 해당 기능들을 적용할 수 있는 옵션을 제공하고자 합니다. 이를 위해 Canary 릴리스 채널을 공식적으로 지원하고자 합니다. 이를 통해 React의 새로운 기능들을 공식 릴리스 전에 먼저 적용할 수 있을 것입니다.
+그동안 React의 새로운 기능들은 Meta에서 먼저 사용한 다음에 오픈소스로 릴리스 되었습니다. 하지만 앞으로는 새로운 기능들의 디자인이 최종단계에 이를 때, Meta에서 내부적으로 React를 사용하는 방식과 유사하게 리액트 커뮤니티의 구성원들이 해당 기능들을 적용할 수 있는 옵션을 제공하고자 합니다. 이를 위해 Canary 릴리스 채널을 공식적으로 지원하고자 합니다. 이를 통해 React의 새로운 기능들을 공식 릴리스 전에 먼저 적용할 수 있을 것입니다.
 
 </BlogCard>
 
@@ -25,33 +25,33 @@ React Labs 게시물은 현재 활발히 연구 및 개발 중인 프로젝트�
 
 <BlogCard title="Introducing react.dev" date="March 16, 2023" url="/blog/2023/03/16/introducing-react-dev">
 
-오늘 우리는 React와 공식문서를 위한 react.dev를 런칭하게 되어 기쁩니다. 이 글에서 새로운 사이트를 소개하고자 합니다
+오늘 우리는 React와 공식 문서를 위한 react.dev를 오픈하게 되어 기쁩니다. 이 글에서 새로운 사이트를 소개하고자 합니다.
 
 </BlogCard>
 
 
 <BlogCard title="React Labs: What We've Been Working On – June 2022" date="June 15, 2022" url="/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022">
 
-React 18의 개발은 수년간에 걸쳐 이루어졌고, 그 과정에서 React 팀에게 귀중한 교훈들을 남겼습니다. React 18의 출시는 수년간의 연구와 수많은 길을 탐색한 결과입니다. 일부는 성공했지만, 대부분은 새로운 통찰을 이끌어낸 막다른 길이었습니다. 한 가지 교훈은, 탐색하고 있는 길에 대한 통찰력 없이 커뮤니티가 새로운 기능을 기다리는 것이 얼마나 불편한지입니다...
+React 18의 개발은 수년간에 걸쳐 이루어졌고, 그 과정에서 React 팀에게 귀중한 교훈을 남겼습니다. React 18의 출시는 수년간의 연구와 수많은 길을 탐색한 결과입니다. 일부는 성공했지만, 대부분은 새로운 통찰을 끌어낸 막다른 길이었습니다. 한 가지 교훈은, 탐색하고 있는 길에 대한 통찰력 없이 커뮤니티가 새로운 기능을 기다리는 것이 얼마나 불편한지입니다...
 
 </BlogCard>
 
 <BlogCard title="React v18.0" date="March 29, 2022" url="/blog/2022/03/29/react-v18">
 
-React 18이 이제 npm에서 사용할 수 있습니다! 마지막 게시글에서는, React 18로 업그레이드하는 단계별 지침을 공유했습니다. 이 글에서는, React 18에 무엇이 새로 추가되었는지, 그리고 그것이 미래에 어떤 의미를 갖는지에 대해 알려드리겠습니다...
+React 18이 이제 npm에서 사용할 수 있습니다! 마지막 게시글에서는, React 18로 업그레이드하는 단계별 지침을 공유했습니다. 이 글에서는, React 18에 무엇이 새로 추가되었는지, 그리고 그것이 미래에 어떤 의미를 갖는지 알려드리겠습니다...
 
 </BlogCard>
 
 <BlogCard title="React 18로 업그레이드하는 방법" date="2022년 3월 8일" url="/blog/2022/03/08/react-18-upgrade-guide">
-React 18은 릴리스 노트에서 언급한 대로, 새로운 동시성 렌더러를 도입하여 기존 어플리케이션에 점진적으로 적용할 계획입니다. 이 글에서는 React 18로 업그레이드하는 방법을 단계별로 소개하겠습니다...
+React 18은 릴리스 노트에서 언급한 대로, 새로운 동시성 렌더러를 도입하여 기존 애플리케이션에 점진적으로 적용할 계획입니다. 이 글에서는 React 18로 업그레이드하는 방법을 단계별로 소개하겠습니다...
 </BlogCard>
 
 <BlogCard title="React Conf 2021 Recap" date="December 17, 2021" url="/blog/2021/12/17/react-conf-2021-recap">
-지난 주에 6번째 React Conf를 개최했습니다. 지난 몇 년간, React Conf 무대에서 React Native와 React Hooks와 같이 산업을 변화시키는 발표를 하곤 했습니다. 올해는, React 18의 출시와 동시에 동시성 기능의 점진적인 채택을 시작하여 React에 대한 다중 플랫폼 비전을 공유했습니다...
+지난주에 6번째 React Conf를 개최했습니다. 지난 몇 년간, React Conf 무대에서 React Native와 React Hooks와 같이 산업을 변화시키는 발표를 하곤 했습니다. 올해는, React 18의 출시와 동시에 동시성 기능의 점진적인 채택을 시작하여 React에 대한 다중 플랫폼 비전을 공유했습니다...
 </BlogCard>
 
 <BlogCard title="The Plan for React 18" date="June 8, 2021" url="/blog/2021/06/08/the-plan-for-react-18">
-React 팀은 몇가지 업데이트를 공유할 수 있어서 기쁩니다.
+React 팀은 몇 가지 업데이트를 공유할 수 있어서 기쁩니다.
 
 - 다음 주요 버전인 React 18 릴리즈 작업을 시작했습니다.
 - React 18에서의 새로운 기능의 점진적인 채택을 커뮤니티에 준비시키기 위한 워킹 그룹을 만들었습니다.
