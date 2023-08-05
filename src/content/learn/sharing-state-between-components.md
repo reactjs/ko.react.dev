@@ -79,13 +79,13 @@ h3, p { margin: 5px 0px; }
 
 <Diagram name="sharing_state_child" height={367} width={477} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Both Panel components contain isActive with value false.">
 
-Initially, each `Panel`'s `isActive` state is `false`, so they both appear collapsed
+처음에는 각 `Panel`의 `isActive` state가 `false`이기 때문에 두 컴포넌트 모두 닫힌 상태로 보입니다.
 
 </Diagram>
 
 <Diagram name="sharing_state_child_clicked" height={367} width={480} alt="The same diagram as the previous, with the isActive of the first child Panel component highlighted indicating a click with the isActive value set to true. The second Panel component still contains value false." >
 
-Clicking either `Panel`'s button will only update that `Panel`'s `isActive` state alone
+두 `Panel`의 버튼 중 어느 것을 클릭하더라도 클릭한 해당 `Panel`의 `isActive` state만 변경됩니다.
 
 </Diagram>
 
@@ -178,7 +178,7 @@ h3, p { margin: 5px 0px; }
 
 상태 끌어올리기는 종종 state로 저장하고 있는 것의 특성을 바꿉니다.
 
-In this case, only one panel should be active at a time. This means that the `Accordion` common parent component needs to keep track of *which* panel is the active one. Instead of a `boolean` value, it could use a number as the index of the active `Panel` for the state variable:
+이 케이스에서는, 한 번에 하나의 패널만 활성화되어야 합니다. 이를 위해 공통 부모 컴포넌트인 `Accordian`은 *어떤* 패널이 활성화된 패널인지 추적하고 있어야 합니다. state 변수에 `boolean` 값을 사용하는 대신, 활성화되어있는 `Panel`의 인덱스 숫자를 사용할 수 있습니다:
 
 ```js
 const [activeIndex, setActiveIndex] = useState(0);
