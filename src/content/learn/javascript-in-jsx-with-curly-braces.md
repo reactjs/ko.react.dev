@@ -1,5 +1,5 @@
 ---
-title: JavaScript에서 중괄호가 있는 JSX
+title: 중괄호가 있는 JSX 안에서 자바스크립트 사용하기
 ---
 
 <Intro>
@@ -43,7 +43,7 @@ export default function Avatar() {
 
 여기에서는 `"https://i.imgur.com/7vQD0fPs.jpg"`와 `"Gregorio Y. Zara"`가 문자열로 전달되고 있습니다.
 
-그러나 `src` 또는 `alt` 텍스트를 동적으로 지정하려면 어떻게 해야 할까요? **`"`와`"`를 `{`와`}`로 바꿔 JavaScript의 값을 사용할 수 있습니다**.
+그러나 `src` 또는 `alt`를 동적으로 지정하려면 어떻게 해야 할까요? **`"`와`"`를 `{`와`}`로 바꿔 JavaScript의 값을 사용할 수 있습니다**.
 
 <Sandpack>
 
@@ -67,11 +67,11 @@ export default function Avatar() {
 
 </Sandpack>
 
-이미지를 둥글게 만드는 `"avatar"` CSS 클래스 이름을 지정하는 `className="avatar"`와 `avatar`라는 JavaScript 변수의 값을 읽는 `src={avatar}`의 차이점에 주목해야 합니다. 중괄호를 사용하면 마크업에서 바로 JavaScript를 사용할 수 있기 때문입니다.
+이미지를 둥글게 만드는 `"avatar"` CSS class 이름을 지정하는 `className="avatar"`와 `avatar`라는 JavaScript 변수의 값을 읽는 `src={avatar}`의 차이점에 주목해야 합니다. 중괄호를 사용하면 마크업에서 바로 JavaScript를 사용할 수 있기 때문입니다.
 
 ## 중괄호 사용하기: JavaScript 세계로 연결하는 창 {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
-JSX는 JavaScript를 작성하는 특별한 방법입니다. 중괄호 `{ }` 사이에서 JavaScript를 사용할 수 있습니다. 아래 예시는 이름 `name`을 선언한 다음 `<h1>` 내부에 중괄호로 포함합니다.
+JSX는 JavaScript를 작성하는 특별한 방법입니다. 중괄호 `{ }` 사이에서 JavaScript를 사용할 수 있습니다. 아래 예시는 `name`을 선언한 다음 `<h1>` 내부에 중괄호로 포함합니다.
 
 <Sandpack>
 
@@ -115,14 +115,14 @@ export default function TodoList() {
 
 JSX 안에서 중괄호는 두 가지 방법으로만 사용할 수 있습니다.
 
-1. JSX 태그 안의 **문자**: `<h1>{name}'s To Do List</h1>`는 작동하지만, `<{tag}>Gregorio Y. Zara's To Do List</{tag}>` 작동하지 않습니다.
-2. `=` 바로 뒤에 오는 **어트리뷰트**: `src={avatar}`는 `avatar` 변수를 읽지만 `src="{avatar}"`는 `{avatar}` 문자열을 전달합니다.
+1. JSX 태그 안의 **문자**: `<h1>{name}'s To Do List</h1>`는 작동하지만, `<{tag}>Gregorio Y. Zara's To Do List</{tag}>`는 작동하지 않습니다.
+2. `=` 바로 뒤에 오는 **어트리뷰트**: `src={avatar}`는 `avatar` 변수를 읽지만 `src="{avatar}"`는 `"{avatar}"` 문자열을 전달합니다.
 
-## "이중 중괄호 사용하기": JSX의 CSS와 다른 객체 {/*using-double-curlies-css-and-other-objects-in-jsx*/}
+## "이중 중괄호" 사용하기: JSX의 CSS와 다른 객체 {/*using-double-curlies-css-and-other-objects-in-jsx*/}
 
-문자열, 숫자 및 기타 JavaScript 표현식 외에도 JSX에 객체를 전달할 수도 있습니다. 또한 객체는 `{ name: "Hedy Lamarr", inventions: 5 }`처럼 중괄호로 표시됩니다. 따라서 JSX에서 객체를 전달하려면 `person={{ name: "Hedy Lamarr", inventions: 5 }}`와 같이 다른 중괄호 쌍으로 객체를 감싸야 합니다.
+JSX에는 문자열, 숫자 및 기타 JavaScript 표현식뿐만 아니라 객체를 전달할 수도 있습니다. 또한 객체는 `{ name: "Hedy Lamarr", inventions: 5 }`처럼 중괄호로 표시됩니다. 따라서 JSX에서 객체를 전달하려면 `person={{ name: "Hedy Lamarr", inventions: 5 }}`와 같이 다른 중괄호 쌍으로 객체를 감싸야 합니다.
 
-JSX의 인라인 CSS 스타일에서도 볼 수 있습니다. React는 인라인 스타일을 사용하도록 요구하지 않습니다(CSS 클래스는 대부분 잘 작동합니다). 그러나 인라인 스타일이 필요할 때 `style` 속성에 객체를 전달해야 합니다.
+JSX의 인라인 CSS 스타일에서도 볼 수 있습니다. React에서 인라인 스타일을 사용할 필요가 없습니다(CSS class는 대부분 잘 작동합니다). 그러나 인라인 스타일이 필요할 때 `style` 어트리뷰트에 객체를 전달해야 합니다.
 
 <Sandpack>
 
@@ -165,7 +165,7 @@ JSX에서 `{{` 와 `}}` 를 본다면 JSX 중괄호 안의 객체에 불과하�
 
 <Pitfall>
 
-인라인 스타일 프로퍼티는 캐멀 케이스로 작성됩니다. 예를 들어 HTML에서의 `<ul style="background-color: black">`은 컴포넌트에서 `<ul style={{ backgroundColor: 'black' }}>`로 작성됩니다.
+인라인 `style` 프로퍼티는 캐멀 케이스로 작성됩니다. 예를 들어 HTML에서의 `<ul style="background-color: black">`은 컴포넌트에서 `<ul style={{ backgroundColor: 'black' }}>`로 작성됩니다.
 
 </Pitfall>
 

@@ -1,5 +1,5 @@
 {
-  "title": "Blog",
+  "title": "블로그",
   "path": "/blog",
   "routes": [
     {
@@ -7,68 +7,75 @@
       "sectionHeader": "STAY INFORMED"
     },
     {
-      "title": "Blog",
+      "title": "블로그",
       "path": "/blog",
       "skipBreadcrumb": true,
       "routes": [
         {
-          "title": "React Labs: What We've Been Working On – March 2023",
-          "titleForHomepage": "React Labs: March 2023",
+          "title": "React Canaries: Meta와 별도로 점전적인 새로운 기능을 외부에 발표할 수 있게 되었습니다.",
+          "titleForHomepage": "React Canaries: 점진적인 기능 발표",
+          "icon": "blog",
+          "date": "2023.05.03",
+          "path": "/blog/2023/05/03/react-canaries"
+        },
+        {
+          "title": "React Labs: 그동안의 작업 - 2023년 3월",
+          "titleForHomepage": "React Labs: 2023년 3월",
           "icon": "labs",
-          "date": "March 22, 2023",
+          "date": "2023.03.22",
           "path": "/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023"
         },
         {
-          "title": "Introducing react.dev",
-          "titleForHomepage": "Introducing react.dev",
+          "title": "react.dev 소개",
+          "titleForHomepage": "react.dev 소개",
           "icon": "blog",
-          "date": "March 16, 2023",
+          "date": "2023.03.16",
           "path": "/blog/2023/03/16/introducing-react-dev"
         },
         {
-          "title": "React Labs: What We've Been Working On – June 2022",
-          "titleForHomepage": "React Labs: June 2022",
+          "title": "React Labs: 그동안의 작업 - 2022년 6월",
+          "titleForHomepage": "React Labs: 2022년 6월",
           "icon": "labs",
-          "date": "June 15, 2022",
+          "date": "2022.06.15",
           "path": "/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022"
         },
         {
-          "title": "React v18.0",
-          "titleForHomepage": "React v18.0",
+          "title": "리액트 18.0 버전",
+          "titleForHomepage": "리액트 18.0 버전",
           "icon": "blog",
-          "date": "March 29, 2022",
+          "date": "2022.03.29",
           "path": "/blog/2022/03/29/react-v18"
         },
         {
-          "title": "How to Upgrade to React 18",
+          "title": "리액트 18버전으로 업그레이드하는 방법",
           "titleForHomepage": "Upgrading to React 18",
           "icon": "blog",
-          "date": "March 8, 2022",
+          "date": "2022.03.08",
           "path": "/blog/2022/03/08/react-18-upgrade-guide"
         },
         {
-          "title": "React Conf 2021 Recap",
-          "titleForHomepage": "React Conf 2021 Recap",
+          "title": "React Conf 2021 요약",
+          "titleForHomepage": "React Conf 2021 요약",
           "icon": "blog",
-          "date": "December 17, 2021",
+          "date": "2021.12.17",
           "path": "/blog/2021/12/17/react-conf-2021-recap"
         },
         {
-          "title": "The Plan for React 18",
-          "titleForHomepage": "The Plan for React 18",
+          "title": "리액트 18버전에 대한 계획",
+          "titleForHomepage": "리액트 18버전에 대한 계획",
           "icon": "blog",
-          "date": "June 8, 2021",
+          "date": "2021.06.08",
           "path": "/blog/2021/06/08/the-plan-for-react-18"
         },
         {
-          "title": "Introducing Server Components",
-          "titleForHomepage": "Introducing Server Components",
+          "title": "서버 컴포넌트 소개",
+          "titleForHomepage": "서버 컴포넌트 소개",
           "icon": "labs",
-          "date": "December 21, 2020",
+          "date": "2020.12.21",
           "path": "/blog/2020/12/21/data-fetching-with-react-server-components"
         },
         {
-          "title": "Older posts",
+          "title": "이전 글",
           "path": "https://reactjs.org/blog/all.html"
         }
       ]

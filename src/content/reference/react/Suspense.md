@@ -252,7 +252,7 @@ async function getAlbums() {
 
 **Suspense가 가능한 데이터만이 Suspense 컴포넌트를 활성화합니다.** 아래와 같은 것들이 해당됩니다.
 
-- [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/advanced-features/react-18) 같이 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기
+- [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/getting-started/react-essentials) 같이 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기
 - [`lazy`](/reference/react/lazy)를 활용한 지연 로딩 컴포넌트
 
 Suspense는 Effect 또는 이벤트 핸들러 내부에서 가져오는 데이터를 감지하지 **않습니다**.

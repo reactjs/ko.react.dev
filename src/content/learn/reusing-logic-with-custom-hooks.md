@@ -1,30 +1,30 @@
 ---
-title: 'Reusing Logic with Custom Hooks'
+title: 커스텀 Hook으로 로직 재사용하기
 ---
 
 <Intro>
 
-React comes with several built-in Hooks like `useState`, `useContext`, and `useEffect`. Sometimes, you'll wish that there was a Hook for some more specific purpose: for example, to fetch data, to keep track of whether the user is online, or to connect to a chat room. You might not find these Hooks in React, but you can create your own Hooks for your application's needs.
+React는 `useState`, `useContext`, 그리고 `useEffect`같이 몇몇 내재하고 있는 Hook이 존재합니다. 가끔 조금 더 구체적인 목적을 가진 Hook이 존재하길 바랄 때도 있을 겁니다. 예를 들어, 데이터를 가져온다던가, 사용자가 온라인 상태인지 계속 확인한다던가, 혹은 채팅방에 연결하기 위한 목적들처럼요. React에서 다음과 같은 Hook들을 찾기는 어려울 것입니다. 하지만 애플리케이션의 필요에 알맞은 본인만의 Hook을 만들 수 있습니다.
 
 </Intro>
 
 <YouWillLearn>
 
-- What custom Hooks are, and how to write your own
-- How to reuse logic between components
-- How to name and structure your custom Hooks
-- When and why to extract custom Hooks
+- 커스텀 Hook이 무엇이고, 어떻게 본인만의 Hook을 작성하는 지
+- 컴포넌트 간 로직을 재사용하는 방법
+- 나만의 커스텀 Hook 이름 짓기와 구조 잡기
+- 언제 그리고 왜 커스텀 Hook을 추출해야 하는지
 
 </YouWillLearn>
 
-## Custom Hooks: Sharing logic between components {/*custom-hooks-sharing-logic-between-components*/}
+## 커스텀 Hook: 컴포넌트간 로직 공유하기 {/*custom-hooks-sharing-logic-between-components*/}
 
-Imagine you're developing an app that heavily relies on the network (as most apps do). You want to warn the user if their network connection has accidentally gone off while they were using your app. How would you go about it? It seems like you'll need two things in your component:
+네트워크에 크게 의존하는 앱 (대부분의 앱이 그렇듯)을 개발 중이라고 생각해 보세요. 유저가 앱을 사용하는 동안 네트워크가 갑자기 사라진다면, 유저에게 경고하고 싶을 겁니다. 이런 경우 어떻게 하실 건가요? 컴포넌트에는 다음 두 가지가 필요할 것입니다.
 
-1. A piece of state that tracks whether the network is online.
-2. An Effect that subscribes to the global [`online`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event) and [`offline`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event) events, and updates that state.
+1. 네트워크가 온라인 상태인지 아닌지 추적하는 하나의 state
+2. 전역 [`online (온라인)`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event), [`offline (오프라인)`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event) 이벤트를 구독하고, 이에 맞춰 state를 업데이트하는 Effect
 
-This will keep your component [synchronized](/learn/synchronizing-with-effects) with the network status. You might start with something like this:
+두 가지 요소는 컴포넌트가 네트워크 상태와 [동기화](/learn/synchronizing-with-effects) 되도록 합니다. 다음과 같이 구현할 수 있습니다.
 
 <Sandpack>
 
@@ -48,17 +48,17 @@ export default function StatusBar() {
     };
   }, []);
 
-  return <h1>{isOnline ? '✅ Online' : '❌ Disconnected'}</h1>;
+  return <h1>{isOnline ? '✅ 온라인' : '❌ 연결 안 됨'}</h1>;
 }
 ```
 
 </Sandpack>
 
-Try turning your network on and off, and notice how this `StatusBar` updates in response to your actions.
+네트워크를 껐다 켰다 해보세요. 그리고 `StatusBar` 가 어떻게 업데이트되는지 확인해 보세요.
 
-Now imagine you *also* want to use the same logic in a different component. You want to implement a Save button that will become disabled and show "Reconnecting..." instead of "Save" while the network is off.
+이제 다른 컴포넌트에서 같은 로직을 *또* 사용한다고 상상해 보세요. 네트워크가 꺼졌을 때, "저장" 대신 "재연결 중..."을 보여주는 비활성화된 저장 버튼을 구현하고 싶다고 가정해 봅시다.
 
-To start, you can copy and paste the `isOnline` state and the Effect into `SaveButton`:
+구현하기 위해, 앞서 사용한 `isOnline` state과 Effect를 `SaveButton` 안에 복사 붙여넣기 할 수 있습니다.
 
 <Sandpack>
 
@@ -83,12 +83,12 @@ export default function SaveButton() {
   }, []);
 
   function handleSaveClick() {
-    console.log('✅ Progress saved');
+    console.log('✅ 진행사항 저장됨');
   }
 
   return (
     <button disabled={!isOnline} onClick={handleSaveClick}>
-      {isOnline ? 'Save progress' : 'Reconnecting...'}
+      {isOnline ? '진행사항 저장' : '재연결 중...'}
     </button>
   );
 }
@@ -96,36 +96,36 @@ export default function SaveButton() {
 
 </Sandpack>
 
-Verify that, if you turn off the network, the button will change its appearance.
+네트워크를 껐을 때, 버튼의 모양이 바뀌는지 확인해 봅시다.
 
-These two components work fine, but the duplication in logic between them is unfortunate. It seems like even though they have different *visual appearance,* you want to reuse the logic between them.
+위의 두 컴포넌트는 잘 동작합니다. 하지만 둘 사이의 논리가 중복되는 점은 아쉽습니다. 두 컴포넌트가 다른 *시각적 모양*을 갖고 있다고 해도, 둘 사이의 로직을 재사용하길 원합니다.
 
-### Extracting your own custom Hook from a component {/*extracting-your-own-custom-hook-from-a-component*/}
+### 컴포넌트로부터 커스텀 Hook 추출하기 {/*extracting-your-own-custom-hook-from-a-component*/}
 
-Imagine for a moment that, similar to [`useState`](/reference/react/useState) and [`useEffect`](/reference/react/useEffect), there was a built-in `useOnlineStatus` Hook. Then both of these components could be simplified and you could remove the duplication between them:
+[`useState`](/reference/react/useState) 그리고 [`useEffect`](/reference/react/useEffect)와 비슷한 내장된 `useOnlineStatus` Hook이 있다고 상상해 봅시다. 그럼 두 컴포넌트를 단순화할 수 있고, 둘 간의 중복을 제거할 수 있게 됩니다.
 
 ```js {2,7}
 function StatusBar() {
   const isOnline = useOnlineStatus();
-  return <h1>{isOnline ? '✅ Online' : '❌ Disconnected'}</h1>;
+  return <h1>{isOnline ? '✅ 온라인' : '❌ 연결 안 됨'}</h1>;
 }
 
 function SaveButton() {
   const isOnline = useOnlineStatus();
 
   function handleSaveClick() {
-    console.log('✅ Progress saved');
+    console.log('✅ 진행사항 저장됨');
   }
 
   return (
     <button disabled={!isOnline} onClick={handleSaveClick}>
-      {isOnline ? 'Save progress' : 'Reconnecting...'}
+      {isOnline ? '진행사항 저장' : '재연결 중...'}
     </button>
   );
 }
 ```
 
-Although there is no such built-in Hook, you can write it yourself. Declare a function called `useOnlineStatus` and move all the duplicated code into it from the components you wrote earlier:
+내장된 Hook이 없다고 해도, 스스로 만들어 낼 수 있습니다. `useOnlineStatus` 함수를 정의하고, 앞서 작성한 컴포넌트들의 중복되는 코드를 바꿔보세요.
 
 ```js {2-16}
 function useOnlineStatus() {
@@ -148,7 +148,7 @@ function useOnlineStatus() {
 }
 ```
 
-At the end of the function, return `isOnline`. This lets your components read that value:
+함수의 마지막에 `isOnline`을 반환하면, 컴포넌트가 그 값을 읽을 수 있게 해줍니다.
 
 <Sandpack>
 
@@ -157,19 +157,19 @@ import { useOnlineStatus } from './useOnlineStatus.js';
 
 function StatusBar() {
   const isOnline = useOnlineStatus();
-  return <h1>{isOnline ? '✅ Online' : '❌ Disconnected'}</h1>;
+  return <h1>{isOnline ? '✅ 온라인' : '❌ 연결 안 됨'}</h1>;
 }
 
 function SaveButton() {
   const isOnline = useOnlineStatus();
 
   function handleSaveClick() {
-    console.log('✅ Progress saved');
+    console.log('✅ 진행사항 저장됨');
   }
 
   return (
     <button disabled={!isOnline} onClick={handleSaveClick}>
-      {isOnline ? 'Save progress' : 'Reconnecting...'}
+      {isOnline ? '진행사항 저장' : '재연결 중...'}
     </button>
   );
 }
@@ -209,89 +209,88 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-Verify that switching the network on and off updates both components.
+네트워크에 따라 두 컴포넌트가 업데이트되는지 확인해 봅시다.
 
-Now your components don't have as much repetitive logic. **More importantly, the code inside them describes *what they want to do* (use the online status!) rather than *how to do it* (by subscribing to the browser events).**
+이제 컴포넌트는 반복되는 로직이 많지 않게 되었습니다. **중요한 건, 두 컴포넌트 내부 코드가 *어떻게 그것을 하는지* (브라우저 이벤트 구독하기) 보다 *그들이 무엇을 하려는지* (온라인 state 사용하기)에 대해 설명하고 있다는 점입니다.**
 
-When you extract logic into custom Hooks, you can hide the gnarly details of how you deal with some external system or a browser API. The code of your components expresses your intent, not the implementation.
+커스텀 Hook을 만들어 낼 때, 브라우저 API나 외부 시스템과 소통하는 방법과 같은 불필요한 세부 사항을 숨길 수 있습니다. 컴포넌트의 코드는 목적만을 나타낼 뿐 실행 방법에 대해선 나타내지 않습니다.
 
-### Hook names always start with `use` {/*hook-names-always-start-with-use*/}
+### Hook의 이름은 항상 `use`로 시작해야 합니다. {/*hook-names-always-start-with-use*/}
 
-React applications are built from components. Components are built from Hooks, whether built-in or custom. You'll likely often use custom Hooks created by others, but occasionally you might write one yourself!
+React 애플리케이션은 여러 컴포넌트로 만들어집니다. 컴포넌트들은 내장되거나 직접 작성한 Hook으로 만들어집니다. 종종 다른 사람들에 의해 만들어진 Hook을 사용했을 것입니다. 하지만 때에 따라 본인만의 Hook을 만들어야 할 때도 있습니다.
 
-You must follow these naming conventions:
+이때, 다음의 작명 규칙을 준수해야 합니다.
 
-1. **React component names must start with a capital letter,** like `StatusBar` and `SaveButton`. React components also need to return something that React knows how to display, like a piece of JSX.
-2. **Hook names must start with `use` followed by a capital letter,** like [`useState`](/reference/react/useState) (built-in) or `useOnlineStatus` (custom, like earlier on the page). Hooks may return arbitrary values.
+1. **React 컴포넌트의 이름은 항상 대문자로 시작해야 합니다.** (예시 : `StatusBar`, `SaveButton`) 또한 React 컴포넌트는 JSX처럼 어떻게 보이는지 React가 알 수 있는 무언가를 반환해야 합니다.
+2. **Hook의 이름은 `use` 뒤에 대문자로 시작해야 합니다.** (예시 : [`useState`](/reference/react/useState) (내장된 Hook) or `useOnlineStatus` (앞서 작성한 커스텀 Hook)) Hook들은 어떤 값이든 반환할 수 있습니다.
 
-This convention guarantees that you can always look at a component and know where its state, Effects, and other React features might "hide". For example, if you see a `getColor()` function call inside your component, you can be sure that it can't possibly contain React state inside because its name doesn't start with `use`. However, a function call like `useOnlineStatus()` will most likely contain calls to other Hooks inside!
+이런 규칙들은 컴포넌트를 볼 때, 어디에 state, Effect 및 다른 React 기능들이 "숨어" 있는지 알 수 있게 해줍니다. 예를 들어, 만약 컴포넌트 안에 `getColor()`라는 함수를 보았다면, 해당 함수의 이름이 `use`로 시작하지 않으므로 함수 안에 React state가 있을 수 없다는 것을 확신할 수 있습니다. 반대로 `useOnlineStatus()` 함수의 경우 높은 확률로 내부에 다른 Hook을 사용하고 있을 수 있습니다!
 
 <Note>
 
-If your linter is [configured for React,](/learn/editor-setup#linting) it will enforce this naming convention. Scroll up to the sandbox above and rename `useOnlineStatus` to `getOnlineStatus`. Notice that the linter won't allow you to call `useState` or `useEffect` inside of it anymore. Only Hooks and components can call other Hooks!
+linter가 [React에 맞춰있다면](/learn/editor-setup#linting), 작명 규칙을 지키게합니다. 위의 코드로 다시 올라가 `useOnlineStatus`를 `getOnlineStatus`로 바꿔보세요. linter가 내부에서 `useState`나 `useEffect`를 사용하는 것을 더 이상 허용하지 않을 겁니다. 오로지 Hook과 컴포넌트만 다른 Hook을 사용할 수 있습니다!
 
 </Note>
 
 <DeepDive>
 
-#### Should all functions called during rendering start with the use prefix? {/*should-all-functions-called-during-rendering-start-with-the-use-prefix*/}
+#### 렌더링 중에 호출되는 모든 함수는 use 접두사로 시작해야 하나요? {/*should-all-functions-called-during-rendering-start-with-the-use-prefix*/}
 
-No. Functions that don't *call* Hooks don't need to *be* Hooks.
+아닙니다. Hook을 *호출*하지 않는 함수는 *Hook일* 필요가 없습니다.
 
-If your function doesn't call any Hooks, avoid the `use` prefix. Instead, write it as a regular function *without* the `use` prefix. For example, `useSorted` below doesn't call Hooks, so call it `getSorted` instead:
+함수가 어떤 Hook도 호출하지 않는다면, `use`를 이름 앞에 작성하는 것을 피하세요. 대신, `use` 없이 일반적인 함수로 작성하세요. 예를 들어 `useSorted`가 Hook을 호출하지 않는다면 `getSorted`로 변경할 수 있습니다. 
 
 ```js
-// 🔴 Avoid: A Hook that doesn't use Hooks
+// 🔴 안 좋은 예시 : Hook을 사용하고 있지 않는 Hook.
 function useSorted(items) {
   return items.slice().sort();
 }
 
-// ✅ Good: A regular function that doesn't use Hooks
+// ✅ 좋은 예시 : Hook을 사용하지 않는 일반 함수.
 function getSorted(items) {
   return items.slice().sort();
 }
 ```
 
-This ensures that your code can call this regular function anywhere, including conditions:
+다음의 예시는 조건문 뿐만 아니라 어디든 일반 함수를 사용할 수 있다는 것을 보여줍니다.
 
 ```js
 function List({ items, shouldSort }) {
   let displayedItems = items;
   if (shouldSort) {
-    // ✅ It's ok to call getSorted() conditionally because it's not a Hook
+    // ✅ getSorted()가 Hook이 아니기 때문에 조건에 따라 호출할 수 있습니다. 
     displayedItems = getSorted(items);
   }
   // ...
 }
 ```
 
-You should give `use` prefix to a function (and thus make it a Hook) if it uses at least one Hook inside of it:
+적어도 하나의 Hook을 내부에서 사용한다면 반드시 함수 앞에 `use`를 작성해야 합니다. (그리고 이 자체로 Hook이 됩니다.)
 
 ```js
-// ✅ Good: A Hook that uses other Hooks
+// ✅ 좋은 예시 : Hook을 사용하는 Hook
 function useAuth() {
   return useContext(Auth);
 }
 ```
 
-Technically, this isn't enforced by React. In principle, you could make a Hook that doesn't call other Hooks. This is often confusing and limiting so it's best to avoid that pattern. However, there may be rare cases where it is helpful. For example, maybe your function doesn't use any Hooks right now, but you plan to add some Hook calls to it in the future. Then it makes sense to name it with the `use` prefix:
+기술적으로 이건 React에 의해 강요되진 않습니다. 원칙적으로 다른 Hook을 사용하지 않는 Hook을 만들 수 있습니다. 이건 가끔 혼란스럽고 제한되기 때문에 해당 방식을 피하는 것이 가장 좋습니다. 하지만, 매우 드물게 이런 방식이 도움이 될 때도 있습니다. 예를 들어 지금 당장은 함수에서 어떤 Hook도 사용하지 않지만, 미래에 Hook을 호출할 계획이 있다면 `use`를 앞에 붙여 이름 짓는 것이 가능합니다.
 
 ```js {3-4}
-// ✅ Good: A Hook that will likely use some other Hooks later
+// ✅ 좋은 예시 : 추후에 다른 Hook을 사용할 가능성이 있는 Hook
 function useAuth() {
-  // TODO: Replace with this line when authentication is implemented:
-  // return useContext(Auth);
+  // TODO: 인증이 수행될 때 해당 코드를 useContext(Auth)를 반환하는 코드로 바꾸기
   return TEST_USER;
 }
 ```
 
-Then components won't be able to call it conditionally. This will become important when you actually add Hook calls inside. If you don't plan to use Hooks inside it (now or later), don't make it a Hook.
+그럼, 컴포넌트는 조건에 따라 호출할 수 없게 됩니다. 이건 실제로 Hook을 내부에 추가해 호출할 때 매우 중요합니다. 지금이든 나중이든 Hook을 내부에서 사용할 계획이 없다면, Hook으로 만들지 마세요.
 
 </DeepDive>
 
-### Custom Hooks let you share stateful logic, not state itself {/*custom-hooks-let-you-share-stateful-logic-not-state-itself*/}
+### 커스텀 Hook은 state 그 자체를 공유하는게 아닌 state 저장 로직을 공유하도록 합니다. {/*custom-hooks-let-you-share-stateful-logic-not-state-itself*/}
 
-In the earlier example, when you turned the network on and off, both components updated together. However, it's wrong to think that a single `isOnline` state variable is shared between them. Look at this code:
+앞선 예시에서, 우리가 네트워크를 껐다 켰을 때 양쪽 컴포넌트가 함께 업데이트되었습니다. 그렇다고 해서 `isOnline` state 변수가 두 컴포넌트 간 공유되었다고 생각하면 안 됩니다. 다음의 코드를 확인해 보세요.
 
 ```js {2,7}
 function StatusBar() {
@@ -305,7 +304,7 @@ function SaveButton() {
 }
 ```
 
-It works the same way as before you extracted the duplication:
+우리가 중복된 부분을 걷어내기 전에도 동일하게 동작합니다.
 
 ```js {2-5,10-13}
 function StatusBar() {
@@ -325,9 +324,9 @@ function SaveButton() {
 }
 ```
 
-These are two completely independent state variables and Effects! They happened to have the same value at the same time because you synchronized them with the same external value (whether the network is on).
+완전히 독립적인 두 state 변수와 Effect가 있음을 확인할 수 있습니다. 그들은 우리가 동일한 외부 변수(네트워크의 연결 state)를 동기화했기 때문에 같은 시간에 같은 값을 가지고 있을 뿐입니다.
 
-To better illustrate this, we'll need a different example. Consider this `Form` component:
+이걸 더 잘 표현하기 위해 다른 예시가 필요할 겁니다. 다음의 `Form` 컴포넌트를 살펴보세요.
 
 <Sandpack>
 
@@ -369,13 +368,13 @@ input { margin-left: 10px; }
 
 </Sandpack>
 
-There's some repetitive logic for each form field:
+각각의 폼 입력에 반복되는 로직이 있습니다.
 
-1. There's a piece of state (`firstName` and `lastName`).
-1. There's a change handler (`handleFirstNameChange` and `handleLastNameChange`).
-1. There's a piece of JSX that specifies the `value` and `onChange` attributes for that input.
+1. state가 존재합니다. (`firstName`와 `lastName`)
+2. 변화를 다루는 함수가 존재합니다. (`handleFirstNameChange`와 `handleLastNameChange`).
+3. 해당 입력에 대한 `value`와 `onChange`의 속성을 지정하는 JSX가 존재합니다. 
 
-You can extract the repetitive logic into this `useFormInput` custom Hook:
+`useFormInput` 커스텀 Hook을 통해 반복되는 로직을 추출할 수 있습니다.
 
 <Sandpack>
 
@@ -428,9 +427,9 @@ input { margin-left: 10px; }
 
 </Sandpack>
 
-Notice that it only declares *one* state variable called `value`.
+`value`라고 불리는 state 변수가 *한 번만* 정의된다는 것을 기억하세요.
 
-However, the `Form` component calls `useFormInput` *two times:*
+이와 달리, `Form` 컴포넌트는 `useFormInput`을 **두 번** 호출합니다.
 
 ```js
 function Form() {
@@ -439,17 +438,17 @@ function Form() {
   // ...
 ```
 
-This is why it works like declaring two separate state variables!
+위의 예시는 왜 두 개의 다른 state 변수를 정의하는 식으로 동작하는지 보여줍니다.
 
-**Custom Hooks let you share *stateful logic* but not *state itself.* Each call to a Hook is completely independent from every other call to the same Hook.** This is why the two sandboxes above are completely equivalent. If you'd like, scroll back up and compare them. The behavior before and after extracting a custom Hook is identical.
+**커스텀 Hook은 우리가 *state 그 자체*가 아닌 *state 저장 로직*을 공유하도록 해줍니다. 같은 Hook을 호출하더라도 각각의 Hook 호출은 완전히 독립되어 있습니다.** 이것이 위의 두 코드가 완전히 같은 이유입니다. 원한다면 위로 돌아가 비교해 보세요. 커스텀 Hook을 추출하기 전과 후가 동일합니다.
 
-When you need to share the state itself between multiple components, [lift it up and pass it down](/learn/sharing-state-between-components) instead.
+대신 여러 컴포넌트 간 state 자체를 공유할 필요가 있다면, [state를 위로 올려 전달하세요](/learn/sharing-state-between-components).
 
-## Passing reactive values between Hooks {/*passing-reactive-values-between-hooks*/}
+## Hook 사이에 상호작용하는 값 전달하기 {/*passing-reactive-values-between-hooks*/}
 
-The code inside your custom Hooks will re-run during every re-render of your component. This is why, like components, custom Hooks [need to be pure.](/learn/keeping-components-pure) Think of custom Hooks' code as part of your component's body!
+커스텀 Hook 안의 코드는 컴포넌트가 재렌더링될 때마다 다시 돌아갈 겁니다. 이게 바로 커스컴 Hook이 (컴포넌트처럼) [순수해야하는 이유](/learn/keeping-components-pure) 입니다. 커스텀 Hook을 컴포넌트 본체의 한 부분이라고 생각하세요!
 
-Because custom Hooks re-render together with your component, they always receive the latest props and state. To see what this means, consider this chat room example. Change the server URL or the chat room:
+커스텀 Hook이 컴포넌트와 함께 재렌더링된다면, 항상 가장 최신의 props와 state를 전달받을 것입니다. 이게 무슨 말인지 살펴보기 위해 아래의 채팅방 예시를 확인해 보세요. 서버 URL이나 채팅방을 바꾼다고 생각해봅시다.
 
 <Sandpack>
 
@@ -516,7 +515,7 @@ export default function ChatRoom({ roomId }) {
 
 ```js chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결됩니다.
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }
@@ -599,9 +598,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-When you change `serverUrl` or `roomId`, the Effect ["reacts" to your changes](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) and re-synchronizes. You can tell by the console messages that the chat re-connects every time that you change your Effect's dependencies.
+`serverUrl`나 `roomId`를 변경할 때, Effect는 [변화에 "반응"](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)하며 재동기화합니다. Effect의 의존성이 변경될 때마다 채팅방을 재연결하는 콘솔 메시지를 보낼 수 있습니다. 
 
-Now move the Effect's code into a custom Hook:
+이제 Effect 코드를 커스텀 Hook 안에 넣어봅시다.
 
 ```js {2-13}
 export function useChatRoom({ serverUrl, roomId }) {
@@ -620,7 +619,7 @@ export function useChatRoom({ serverUrl, roomId }) {
 }
 ```
 
-This lets your `ChatRoom` component call your custom Hook without worrying about how it works inside:
+`ChatRoom` 컴포넌트가 내부 동작이 어떻게 동작하는지 걱정할 필요 없이 커스텀 Hook을 호출할 수 있게 해줍니다.
 
 ```js {4-7}
 export default function ChatRoom({ roomId }) {
@@ -643,9 +642,9 @@ export default function ChatRoom({ roomId }) {
 }
 ```
 
-This looks much simpler! (But it does the same thing.)
+매우 간단해졌습니다! (그런데도 똑같이 동작합니다)
 
-Notice that the logic *still responds* to prop and state changes. Try editing the server URL or the selected room:
+로직이 props와 state 변화에 따라 *여전히 응답*하는지 확인해 봅시다. 서버 URL이나 방을 변경해 보세요.
 
 <Sandpack>
 
@@ -724,7 +723,7 @@ export function useChatRoom({ serverUrl, roomId }) {
 
 ```js chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결됩니다.
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }
@@ -807,7 +806,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Notice how you're taking the return value of one Hook:
+어떻게 Hook의 반환 값을 가져올 수 있는지 확인해 보세요.
 
 ```js {2}
 export default function ChatRoom({ roomId }) {
@@ -820,7 +819,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-and pass it as an input to another Hook:
+그리고 반환 값을 다른 Hook에 입력해보세요.
 
 ```js {6}
 export default function ChatRoom({ roomId }) {
@@ -833,17 +832,17 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-Every time your `ChatRoom` component re-renders, it passes the latest `roomId` and `serverUrl` to your Hook. This is why your Effect re-connects to the chat whenever their values are different after a re-render. (If you ever worked with audio or video processing software, chaining Hooks like this might remind you of chaining visual or audio effects. It's as if the output of `useState` "feeds into" the input of the `useChatRoom`.)
+매번 `ChatRoom`가 재렌더링될 때마다, Hook에 최신 `roomId`와 `serverUrl` 값을 넘겨줍니다. 이게 바로 재렌더링 이후에 값이 달라지는지 여부에 관계없이 Effect가 재연결하는 이유입니다. (만약 오디오 또는 비디오 처리 소프트웨어를 작업해 본 적이 있다면, 이처럼 Hook을 연결하는 것이 시각적 혹은 청각적 효과를 연결하는 것을 떠오르게 할 겁니다. 이게 바로 `useState`의 결과를 `useChatRoom`의 입력으로 "넣어주는 것"과 같습니다.)
 
-### Passing event handlers to custom Hooks {/*passing-event-handlers-to-custom-hooks*/}
+### 커스텀 Hook에 이벤트 핸들러 넘겨주기 {/*passing-event-handlers-to-custom-hooks*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+이 섹션은 React의 안정화 버전에 **아직 반영되지 않은 실험적인 API**를 설명하고 있습니다.
 
 </Wip>
 
-As you start using `useChatRoom` in more components, you might want to let components customize its behavior. For example, currently, the logic for what to do when a message arrives is hardcoded inside the Hook:
+만약 `useChatRoom`을 더 많은 컴포넌트에서 사용하길 원한다면, 컴포넌트가 본인의 동작을 커스텀할 수 있길 바랄 것입니다. 예를 들어, 최근 메시지가 도착했을 때 무엇을 해야 하는지에 대한 로직이 Hook 안에 하드코딩 되어있다고 해봅시다.
 
 ```js {9-11}
 export function useChatRoom({ serverUrl, roomId }) {
@@ -862,7 +861,7 @@ export function useChatRoom({ serverUrl, roomId }) {
 }
 ```
 
-Let's say you want to move this logic back to your component:
+이 로직을 컴포넌트에 되돌려 놓고 싶다고 해봅시다.
 
 ```js {7-9}
 export default function ChatRoom({ roomId }) {
@@ -878,7 +877,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-To make this work, change your custom Hook to take `onReceiveMessage` as one of its named options:
+이게 동작하게 하기 위해, 커스텀 Hook을 정의된 옵션 중 하나인 `onReceiveMessage`를 갖도록 해봅시다.
 
 ```js {1,10,13}
 export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
@@ -893,13 +892,13 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
       onReceiveMessage(msg);
     });
     return () => connection.disconnect();
-  }, [roomId, serverUrl, onReceiveMessage]); // ✅ All dependencies declared
+  }, [roomId, serverUrl, onReceiveMessage]); // ✅ 모든 의존성이 정의됨.
 }
 ```
 
-This will work, but there's one more improvement you can do when your custom Hook accepts event handlers.
+이대로도 동작하지만, 커스텀 Hook이 이벤트 핸들러를 허용할 때 하나 더 개선할 수 있는 부분이 있습니다.
 
-Adding a dependency on `onReceiveMessage` is not ideal because it will cause the chat to re-connect every time the component re-renders. [Wrap this event handler into an Effect Event to remove it from the dependencies:](/learn/removing-effect-dependencies#wrapping-an-event-handler-from-the-props)
+컴포넌트가 재렌더링될 때마다 채팅방을 재연결하는 원인이 되기 때문에, 의존성에 `onReceiveMessage`를 추가하는 것은 이상적이지 않습니다. [이 이벤트 핸들러를 의존성에서 제거하기 위해 Effect 이벤트로 감싸주세요.](/learn/removing-effect-dependencies#wrapping-an-event-handler-from-the-props)
 
 ```js {1,4,5,15,18}
 import { useEffect, useEffectEvent } from 'react';
@@ -919,11 +918,11 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
       onMessage(msg);
     });
     return () => connection.disconnect();
-  }, [roomId, serverUrl]); // ✅ All dependencies declared
+  }, [roomId, serverUrl]); // ✅ 모든 의존성이 정의됨.
 }
 ```
 
-Now the chat won't re-connect every time that the `ChatRoom` component re-renders. Here is a fully working demo of passing an event handler to a custom Hook that you can play with:
+이제 `ChatRoom`가 재렌더링될 때마다 채팅방이 재연결되지 않습니다. 여기 커스텀 Hook에 이벤트 핸들러를 넘겨주는 직접 다뤄볼 수 있는  제대로 동작하는 예시가 있습니다.
 
 <Sandpack>
 
@@ -1091,20 +1090,20 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Notice how you no longer need to know *how* `useChatRoom` works in order to use it. You could add it to any other component, pass any other options, and it would work the same way. That's the power of custom Hooks.
+이제 `useChatRoom`을 사용하기 위해 `useChatRoom`이 *어떻게* 동작하는지 알 필요가 없습니다. 다른 컴포넌트에 추가하거나, 다른 옵션을 전달해도 똑같이 동작할 겁니다. 이게 바로 커스텀 Hook의 힘입니다.
 
-## When to use custom Hooks {/*when-to-use-custom-hooks*/}
+## 언제 커스텀 Hook을 사용해야 하는지 {/*when-to-use-custom-hooks*/}
 
-You don't need to extract a custom Hook for every little duplicated bit of code. Some duplication is fine. For example, extracting a `useFormInput` Hook to wrap a single `useState` call like earlier is probably unnecessary.
+모든 자잘한 중복되는 코드들까지 커스텀 Hook으로 분리할 필요가 없습니다. 어떤 중복된 코드는 괜찮습니다. 예를 들어, 앞선 예시처럼 하나의 `useState`를 감싸기 위한 `useFormInput`을 분리하는 것은 불필요합니다.
 
-However, whenever you write an Effect, consider whether it would be clearer to also wrap it in a custom Hook. [You shouldn't need Effects very often,](/learn/you-might-not-need-an-effect) so if you're writing one, it means that you need to "step outside React" to synchronize with some external system or to do something that React doesn't have a built-in API for. Wrapping it into a custom Hook lets you precisely communicate your intent and how the data flows through it.
+하지만 Effect를 사용하든 사용하지 않든, 커스텀 Hook 안에 그것을 감싸는 게 좋은지 아닌지 고려하세요. [Effect를 자주 쓸 필요가 없을지 모릅니다.](/learn/you-might-not-need-an-effect) 만약 Effect를 사용한다면, 그건 외부 시스템과 동기화한다던가 React가 내장하지 않은 API를 위해 무언가를 하는 등 "React에서 벗어나기" 위함일 겁니다. 커스텀 Hook으로 감싸는 것은 목적을 정확하게 전달하고 어떻게 데이터가 그것을 통해 흐르는지 알 수 있게 해줍니다.
 
-For example, consider a `ShippingForm` component that displays two dropdowns: one shows the list of cities, and another shows the list of areas in the selected city. You might start with some code that looks like this:
+예를 들어 두 가지 목록을 보여주는 `ShippingForm` 컴포넌트를 살펴봅시다. 하나는 도시의 목록을 보여주고, 다른 하나는 선택된 도시의 구역 목록을 보여줍니다. 아마 코드를 다음과 같이 작성하기 시작할 겁니다.
 
 ```js {3-16,20-35}
 function ShippingForm({ country }) {
   const [cities, setCities] = useState(null);
-  // This Effect fetches cities for a country
+  // 이 Effect는 나라별 도시를 불러옵니다.
   useEffect(() => {
     let ignore = false;
     fetch(`/api/cities?country=${country}`)
@@ -1121,7 +1120,7 @@ function ShippingForm({ country }) {
 
   const [city, setCity] = useState(null);
   const [areas, setAreas] = useState(null);
-  // This Effect fetches areas for the selected city
+  // 이 Effect 선택된 도시의 구역을 불러옵니다.
   useEffect(() => {
     if (city) {
       let ignore = false;
@@ -1141,7 +1140,7 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-Although this code is quite repetitive, [it's correct to keep these Effects separate from each other.](/learn/removing-effect-dependencies#is-your-effect-doing-several-unrelated-things) They synchronize two different things, so you shouldn't merge them into one Effect. Instead, you can simplify the `ShippingForm` component above by extracting the common logic between them into your own `useData` Hook:
+이 코드들이 반복됨에도 불구하고, [Effect들을 따로 분리하는 것이 옳습니다.](/learn/removing-effect-dependencies#is-your-effect-doing-several-unrelated-things) 그들은 다른 두 가지(도시, 구역)를 동기화합니다. 따라서 하나의 Effect로 통합시킬 필요가 없습니다. 대신 `ShippingForm` 컴포넌트를 `useData`라는 커스텀 Hook을 통해 공통된 로직을 추출할 수 있습니다.
 
 ```js {2-18}
 function useData(url) {
@@ -1165,7 +1164,7 @@ function useData(url) {
 }
 ```
 
-Now you can replace both Effects in the `ShippingForm` components with calls to `useData`:
+이제 `ShippingForm` 컴포넌트 내부의 Effect들을 `useData`로 교체할 수 있습니다.
 
 ```js {2,4}
 function ShippingForm({ country }) {
@@ -1175,39 +1174,39 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-Extracting a custom Hook makes the data flow explicit. You feed the `url` in and you get the `data` out. By "hiding" your Effect inside `useData`, you also prevent someone working on the `ShippingForm` component from adding [unnecessary dependencies](/learn/removing-effect-dependencies) to it. With time, most of your app's Effects will be in custom Hooks.
+커스텀 Hook을 추출하는 것은 데이터의 흐름을 명확하게 해줍니다. `url`을 입력하고 `data`를 받습니다. `useData`안의 Effect를 "숨김으로써" 다른 사람이 `ShippingForm` 컴포넌트에 [불필요한 의존성](/learn/removing-effect-dependencies)을 추가하는 것을 막을 수 있습니다. 시간이 지나면 앱의 대부분 Effect들은 커스텀 Hook 안에 있을 겁니다.
 
 <DeepDive>
 
-#### Keep your custom Hooks focused on concrete high-level use cases {/*keep-your-custom-hooks-focused-on-concrete-high-level-use-cases*/}
+#### 커스텀 Hook이 구체적인 고급 사용 사례에 집중하도록 하기 {/*keep-your-custom-hooks-focused-on-concrete-high-level-use-cases*/}
 
-Start by choosing your custom Hook's name. If you struggle to pick a clear name, it might mean that your Effect is too coupled to the rest of your component's logic, and is not yet ready to be extracted.
+커스텀 Hook의 이름을 고르는 것부터 시작해 봅시다. 만약 명확한 이름을 고르기 위해 고군분투한다면, 그건 아마 사용하는 Effect가 컴포넌트 로직의 일부분에 너무 결합하여 있다는 의미일 겁니다. 그리고 아직 분리될 준비가 안 됐다는 뜻입니다.
 
-Ideally, your custom Hook's name should be clear enough that even a person who doesn't write code often could have a good guess about what your custom Hook does, what it takes, and what it returns:
+이상적으로 커스텀 Hook의 이름은 코드를 자주 작성하는 사람이 아니더라도 커스텀 Hook이 무슨 일을 하고, 무엇을 props로 받고, 무엇을 반환하는지 알 수 있도록 아주 명확해야 합니다.
 
 * ✅ `useData(url)`
 * ✅ `useImpressionLog(eventName, extraData)`
 * ✅ `useChatRoom(options)`
 
-When you synchronize with an external system, your custom Hook name may be more technical and use jargon specific to that system. It's good as long as it would be clear to a person familiar with that system:
+외부 시스템과 동기화할 때, 커스텀 Hook의 이름은 좀 더 기술적이고 해당 시스템을 특정하는 용어를 사용하는 것이 좋습니다. 해당 시스템에 친숙한 사람에게도 명확한 이름이라면 좋습니다.
 
 * ✅ `useMediaQuery(query)`
 * ✅ `useSocket(url)`
 * ✅ `useIntersectionObserver(ref, options)`
 
-**Keep custom Hooks focused on concrete high-level use cases.** Avoid creating and using custom "lifecycle" Hooks that act as alternatives and convenience wrappers for the `useEffect` API itself:
+**커스텀 Hook이 구체적인 고급 사용 사례에 집중할 수 있도록 하세요.** `useEffect` API 그 자체를 위한 대책이나 편리하게 감싸는 용도로 동작하는 커스텀 "생명 주기" Hook을 생성하거나 사용하는 것을 피하세요.
 
 * 🔴 `useMount(fn)`
 * 🔴 `useEffectOnce(fn)`
 * 🔴 `useUpdateEffect(fn)`
 
-For example, this `useMount` Hook tries to ensure some code only runs "on mount":
+예를 들어, 이 `useMount` Hook은 코드가 "마운트 시"에만 동작하는 것을 확인하기 위해 만들어졌습니다.
 
 ```js {4-5,14-15}
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
-  // 🔴 Avoid: using custom "lifecycle" Hooks
+  // 🔴 안 좋은 예 : 커스텀 "생명 주기" Hook을 사용
   useMount(() => {
     const connection = createConnection({ roomId, serverUrl });
     connection.connect();
@@ -1217,23 +1216,23 @@ function ChatRoom({ roomId }) {
   // ...
 }
 
-// 🔴 Avoid: creating custom "lifecycle" Hooks
+// 🔴 안 좋은 예 : 커스텀 "생명 주기" Hook을 생성
 function useMount(fn) {
   useEffect(() => {
     fn();
-  }, []); // 🔴 React Hook useEffect has a missing dependency: 'fn'
+  }, []); // 🔴 React Hook useEffect은 'fn'의 의존성을 갖고 있지 않음.
 }
 ```
 
-**Custom "lifecycle" Hooks like `useMount` don't fit well into the React paradigm.** For example, this code example has a mistake (it doesn't "react" to `roomId` or `serverUrl` changes), but the linter won't warn you about it because the linter only checks direct `useEffect` calls. It won't know about your Hook.
+**`useMount`과 같은 커스텀 "생명 주기" Hook은 전형적인 React와 맞지 않습니다.** 예를 들어 이 코드 예시는 문제가 있지만(`roomId`나 `serverUrl`의 변화에 반응하지 않음.), 린터는 오직 직접적인 `useEffect` 호출만 체크하기 때문에 경고하지 않습니다. 린터는 Hook에 대해 모르고 있습니다.
 
-If you're writing an Effect, start by using the React API directly:
+Effect를 작성할 때, React API를 직접적으로 사용하세요.
 
 ```js
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
-  // ✅ Good: two raw Effects separated by purpose
+  // ✅ 좋은 예시 : 두 Effect는 목적에 따라 나뉘어 있습니다.
 
   useEffect(() => {
     const connection = createConnection({ serverUrl, roomId });
@@ -1249,7 +1248,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-Then, you can (but don't have to) extract custom Hooks for different high-level use cases:
+그렇게 되면 (그럴 필요는 없지만) 커스텀 Hook을 서로 다른 고급 사용 예시에 따라 분리할 수 있습니다.
 
 ```js
 function ChatRoom({ roomId }) {
@@ -1262,15 +1261,15 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-**A good custom Hook makes the calling code more declarative by constraining what it does.** For example, `useChatRoom(options)` can only connect to the chat room, while `useImpressionLog(eventName, extraData)` can only send an impression log to the analytics. If your custom Hook API doesn't constrain the use cases and is very abstract, in the long run it's likely to introduce more problems than it solves.
+**좋은 커스텀 Hook은 호출 코드가 하는 일을 제한하면서 좀 더 선언적으로 만들 수 있습니다.** 예를 들어, `useChatRoom(options)`은 오직 채팅방과 연결할 수 있지만, `useImpressionLog(eventName, extraData)`은 애널리틱스에만 노출된 기록(Impression log)을 보낼 수 있습니다. 커스텀 Hook API가 사용 사례를 제한하지 않고 너무 추상적이라면, 장기적으로는 그것이 해결할 수 있는 것보다 더 많은 문제를 만들 가능성이 높습니다.
 
 </DeepDive>
 
-### Custom Hooks help you migrate to better patterns {/*custom-hooks-help-you-migrate-to-better-patterns*/}
+### 커스텀 Hook은 더 나은 패턴으로 변경할 수 있도록 도와줍니다. {/*custom-hooks-help-you-migrate-to-better-patterns*/}
 
-Effects are an ["escape hatch"](/learn/escape-hatches): you use them when you need to "step outside React" and when there is no better built-in solution for your use case. With time, the React team's goal is to reduce the number of the Effects in your app to the minimum by providing more specific solutions to more specific problems. Wrapping your Effects in custom Hooks makes it easier to upgrade your code when these solutions become available.
+Effect는 [도피구](/learn/escape-hatches) 입니다. "React에서 벗어나"는 것이 필요할 때나 사용 시에 괜찮은 내장된 해결 방법이 없는 경우, 사용합니다. React 팀의 목표는 더 구체적인 문제에 더 구체적인 해결 방법을 제공해 앱에 있는 Effect의 숫자를 점차 최소한으로 줄이는 것입니다. 커스텀 Hook으로 Effect를 감싸는 것은 이런 해결 방법들이 가능해질 때 코드를 쉽게 업그레이드할 수 있게 해줍니다.
 
-Let's return to this example:
+예시로 돌아가 봅시다.
 
 <Sandpack>
 
@@ -1331,9 +1330,9 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-In the above example, `useOnlineStatus` is implemented with a pair of [`useState`](/reference/react/useState) and [`useEffect`.](/reference/react/useEffect) However, this isn't the best possible solution. There is a number of edge cases it doesn't consider. For example, it assumes that when the component mounts, `isOnline` is already `true`, but this may be wrong if the network already went offline. You can use the browser [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API to check for that, but using it directly would not work on the server for generating the initial HTML. In short, this code could be improved.
+위의 예시에서 `useOnlineStatus`는 한 쌍의 [`useState`](/reference/react/useState)와 [`useEffect`](/reference/react/useEffect)와 함께 실행됩니다. 하지만 이건 가장 좋은 해결 방법은 아닙니다. 이 해결 방법이 고려하지 못한 수많은 예외 상황이 존재합니다. 예를 들어, 이건 컴포넌트가 마운트됐을 때, `isOnline`이 이미 `true`라고 가정합니다. 하지만 이것은 네트워크가 이미 꺼졌을 때 틀린 가정이 됩니다. 이런 상황을 확인하기 위해 브라우저 [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API를 사용할 수도 있습니다. 하지만 이걸 직접적으로 사용하게 되면 초기 HTML을 생성하기 위한 서버에선 동작하지 않습니다. 짧게 말하면 코드는 보완되어야 합니다.
 
-Luckily, React 18 includes a dedicated API called [`useSyncExternalStore`](/reference/react/useSyncExternalStore) which takes care of all of these problems for you. Here is how your `useOnlineStatus` Hook, rewritten to take advantage of this new API:
+운 좋게도 React 18은 이런 모든 문제를 신경 써주는 [`useSyncExternalStore`](/reference/react/useSyncExternalStore)라고 불리는 섬세한 API를 포함합니다. 여기 새 API의 장점을 가지고 다시 쓰인 `useOnlineStatus`이 있습니다.
 
 <Sandpack>
 
@@ -1384,8 +1383,8 @@ function subscribe(callback) {
 export function useOnlineStatus() {
   return useSyncExternalStore(
     subscribe,
-    () => navigator.onLine, // How to get the value on the client
-    () => true // How to get the value on the server
+    () => navigator.onLine, // 클라이언트의 값을 받아오는 방법
+    () => true // 서버의 값을 받아오는 방법
   );
 }
 
@@ -1393,7 +1392,7 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-Notice how **you didn't need to change any of the components** to make this migration:
+어떻게 이 변경을 하기 위해 **다른 컴포넌트들을 변경하지 않아**도 되는지 알아봅시다.
 
 ```js {2,7}
 function StatusBar() {
@@ -1407,22 +1406,22 @@ function SaveButton() {
 }
 ```
 
-This is another reason for why wrapping Effects in custom Hooks is often beneficial:
+커스텀 Hook으로 Effect를 감싸는 것이 종종 유용한 이유는 다음과 같습니다.
 
-1. You make the data flow to and from your Effects very explicit.
-2. You let your components focus on the intent rather than on the exact implementation of your Effects.
-3. When React adds new features, you can remove those Effects without changing any of your components.
+1. 매우 명확하게 Effect로 주고받는 데이터 흐름을 만들 때
+2. 컴포넌트가 Effect의 정확한 실행보다 목적에 집중하도록 할 때
+3. React가 새 기능을 추가할 때, 다른 컴포넌트의 변경 없이 이 Effect를 삭제할 수 있을 때
 
-Similar to a [design system,](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969) you might find it helpful to start extracting common idioms from your app's components into custom Hooks. This will keep your components' code focused on the intent, and let you avoid writing raw Effects very often. Many excellent custom Hooks are maintained by the React community.
+[디자인 시스템](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969)과 과 마찬가지로, 앱의 컴포넌트에서 일반적인 관용구를 추출하여 커스텀 Hook으로 만드는 것이 도움이 될 수 있습니다. 이렇게 하면 컴포넌트의 코드가 의도에 집중할 수 있고, Effect를 자주 작성하지 않아도 됩니다. React 커뮤니티에서 많은 훌륭한 커스텀 Hook을 관리하고 있습니다.
 
 <DeepDive>
 
-#### Will React provide any built-in solution for data fetching? {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
+#### React가 데이터 패칭을 위한 내부 해결책을 제공할까요? {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
 
-We're still working out the details, but we expect that in the future, you'll write data fetching like this:
+아직 세부적인 사항을 작업 중이지만, 앞으로는 이와 같이 데이터 가져오도록 작성하게 될 것으로 예상합니다.
 
 ```js {1,4,6}
-import { use } from 'react'; // Not available yet!
+import { use } from 'react'; // 아직 사용 불가능합니다!
 
 function ShippingForm({ country }) {
   const cities = use(fetch(`/api/cities?country=${country}`));
@@ -1431,13 +1430,13 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-If you use custom Hooks like `useData` above in your app, it will require fewer changes to migrate to the eventually recommended approach than if you write raw Effects in every component manually. However, the old approach will still work fine, so if you feel happy writing raw Effects, you can continue to do that.
+앱에 `useData`과 같은 커스텀 Hook을 사용한다면, 모든 컴포넌트에 수동으로 Effect를 작성하는 것보다 최종적으로 권장되는 접근 방식으로 변경하는 것이 더 적은 변경이 요구됩니다. 그러나 이전의 접근 방식도 충분히 잘 동작하기 때문에 Effect 사용을 즐긴다면 그렇게 사용해도 됩니다.
 
 </DeepDive>
 
-### There is more than one way to do it {/*there-is-more-than-one-way-to-do-it*/}
+### 여러 방법이 존재합니다. {/*there-is-more-than-one-way-to-do-it*/}
 
-Let's say you want to implement a fade-in animation *from scratch* using the browser [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) API. You might start with an Effect that sets up an animation loop. During each frame of the animation, you could change the opacity of the DOM node you [hold in a ref](/learn/manipulating-the-dom-with-refs) until it reaches `1`. Your code might start like this:
+브라우저의 [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) API를 이용해 **처음부터** 페이드 인 애니메이션을 구현한다고 생각해 봅시다. 아마 애니메이션을 반복시키기 위해 Effect부터 작성할 겁니다. 각각의 애니메이션 프레임 동안 [참조해 둔 ref](/learn/manipulating-the-dom-with-refs) DOM 노드의 투명도를 `1`에 도달할 때까지 변경할 수 있습니다. 코드는 다음과 같이 작성될 겁니다.
 
 <Sandpack>
 
@@ -1459,7 +1458,7 @@ function Welcome() {
       const progress = Math.min(timePassed / duration, 1);
       onProgress(progress);
       if (progress < 1) {
-        // We still have more frames to paint
+        // 아직 그려야 할 프레임이 많습니다.
         frameId = requestAnimationFrame(onFrame);
       }
     }
@@ -1520,7 +1519,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-To make the component more readable, you might extract the logic into a `useFadeIn` custom Hook:
+이 컴포넌트의 가독성을 위해 로직을 추출해 `useFadeIn` 커스텀 Hook을 만들어 봅시다.
 
 <Sandpack>
 
@@ -1569,7 +1568,7 @@ export function useFadeIn(ref, duration) {
       const progress = Math.min(timePassed / duration, 1);
       onProgress(progress);
       if (progress < 1) {
-        // We still have more frames to paint
+        // 아직 그려야 할 프레임이 많습니다.
         frameId = requestAnimationFrame(onFrame);
       }
     }
@@ -1611,7 +1610,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-You could keep the `useFadeIn` code as is, but you could also refactor it more. For example, you could extract the logic for setting up the animation loop out of `useFadeIn` into a custom `useAnimationLoop` Hook:
+`useFadeIn` 코드를 유지할 수도 있지만 더 리팩토링할 수도 있습니다. 예를 들어 `useFadeIn` 밖으로 애니메이션 반복 설정 로직을 빼내 `useAnimationLoop` 커스텀 Hook으로 만들 수 있습니다.
 
 <Sandpack>
 
@@ -1715,7 +1714,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-However, you didn't *have to* do that. As with regular functions, ultimately you decide where to draw the boundaries between different parts of your code. You could also take a very different approach. Instead of keeping the logic in the Effect, you could move most of the imperative logic inside a JavaScript [class:](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+하지만, *반드시* 이처럼 작성할 필요는 없습니다. 일반 함수와 마찬가지로 궁극적으로 코드의 여러 부분 사이의 경계를 어디에 그릴지 결정해야 합니다. 매우 다르게 접근할 수도 있습니다. Effect 내부의 로직을 유지하는 대신, 대부분의 중요한 로직을 자바스크립트의 [Class](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes) 내부로 이동시킬 수 있습니다.
 
 <Sandpack>
 
@@ -1813,9 +1812,9 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-Effects let you connect React to external systems. The more coordination between Effects is needed (for example, to chain multiple animations), the more it makes sense to extract that logic out of Effects and Hooks *completely* like in the sandbox above. Then, the code you extracted *becomes* the "external system". This lets your Effects stay simple because they only need to send messages to the system you've moved outside React.
+Effect는 외부 시스템과 React를 연결할 수 있게 해줍니다. 예를 들어 여러 애니메이션을 연결하는 것처럼 Effects 간의 조정이 더 많이 필요할수록, 위의 코드 예시처럼 Effect와 Hook 밖으로 로직을 *완전히* 분리하는 것이 합리적입니다. 그렇게 분리한 코드는 "외부 시스템"이 *될 것입니다* Effect는 React 밖으로 내보낸 시스템에 메시지만 보내면 되기 때문에 이런 방식은 Effect가 심플한 상태를 유지하도록 합니다.
 
-The examples above assume that the fade-in logic needs to be written in JavaScript. However, this particular fade-in animation is both simpler and much more efficient to implement with a plain [CSS Animation:](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations)
+위의 예시는 페이드인 로직이 자바스크립트로 작성되어야 하는 경우라고 가정합니다. 하지만 이런 특정 페이드인 애니메이션은 일반 [CSS 애니메이션](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Animations/Using_CSS_animations)으로 구현하는 것이 더 간단하고 훨씬 효율적입니다.
 
 <Sandpack>
 
@@ -1870,27 +1869,27 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-Sometimes, you don't even need a Hook!
+가끔 Hook이 필요하지 않을 수 있습니다!
 
 <Recap>
 
-- Custom Hooks let you share logic between components.
-- Custom Hooks must be named starting with `use` followed by a capital letter.
-- Custom Hooks only share stateful logic, not state itself.
-- You can pass reactive values from one Hook to another, and they stay up-to-date.
-- All Hooks re-run every time your component re-renders.
-- The code of your custom Hooks should be pure, like your component's code.
-- Wrap event handlers received by custom Hooks into Effect Events.
-- Don't create custom Hooks like `useMount`. Keep their purpose specific.
-- It's up to you how and where to choose the boundaries of your code.
+- 커스텀 Hook을 사용하면 컴포넌트 간 로직을 공유할 수 있습니다.
+- 커스텀 Hook의 이름은 `use` 뒤에 대문자로 시작되어야 합니다.
+- 커스텀 Hook은 state 자체가 아닌 state 저장 로직만 공유합니다.
+- 하나의 Hook에서 다른 Hook으로 반응형 값을 전달할 수 있고, 값은 최신 상태로 유지됩니다.
+- 모든 Hook은 컴포넌트가 재렌더링될 때 마다 재실행됩니다.
+- 커스텀 Hook의 코드는 컴포넌트 코드처럼 순수해야 합니다.
+- 커스텀 Hook을 통해 받는 이벤트 핸들러는 Effect로 감싸야 합니다.
+- `useMount`같은 커스텀 Hook을 생성하면 안 됩니다. 용도를 명확히 하세요.
+- 코드의 경계를 선택하는 방법과 위치는 여러분이 결정할 수 있습니다.
 
 </Recap>
 
 <Challenges>
 
-#### Extract a `useCounter` Hook {/*extract-a-usecounter-hook*/}
+#### `useCounter` Hook 추출하기 {/*extract-a-usecounter-hook*/}
 
-This component uses a state variable and an Effect to display a number that increments every second. Extract this logic into a custom Hook called `useCounter`. Your goal is to make the `Counter` component implementation look exactly like this:
+이 컴포넌트는 매초 증가하는 숫자를 보여주기 위해 state 변수와 Effect를 사용합니다. `useCounter`라는 커스텀 Hook으로 이 로직을 분리해 봅시다. 우리의 목표는 정확히 다음과 같이 동작하는 `Counter`를 만드는 것입니다.
 
 ```js
 export default function Counter() {
@@ -1899,7 +1898,7 @@ export default function Counter() {
 }
 ```
 
-You'll need to write your custom Hook in `useCounter.js` and import it into the `Counter.js` file.
+`useCounter.js` 에 커스텀 Hook을 작성하고 `Counter.js` 파일에 가져와야 합니다.
 
 <Sandpack>
 
@@ -1926,7 +1925,7 @@ export default function Counter() {
 
 <Solution>
 
-Your code should look like this:
+코드가 다음과 같아야 합니다.
 
 <Sandpack>
 
@@ -1956,13 +1955,13 @@ export function useCounter() {
 
 </Sandpack>
 
-Notice that `App.js` doesn't need to import `useState` or `useEffect` anymore.
+`App.js`가 더 이상 `useState`와 `useEffect`를 가져오지 않아도 된다는 것을 기억하세요.
 
 </Solution>
 
-#### Make the counter delay configurable {/*make-the-counter-delay-configurable*/}
+#### 카운터의 지연을 수정 가능하게 하기 {/*make-the-counter-delay-configurable*/}
 
-In this example, there is a `delay` state variable controlled by a slider, but its value is not used. Pass the `delay` value to your custom `useCounter` Hook, and change the `useCounter` Hook to use the passed `delay` instead of hardcoding `1000` ms.
+이 예시에는 슬라이더를 통해 조작되는 `delay`라는 state 변수가 있지만 사용되고 있지 않습니다. `useCounter` 커스텀 Hook에 `delay` 값을 전달해, 하드 코딩된 `1000` ms이 아닌 전달된 `delay` 값을 사용하도록 해봅시다.
 
 <Sandpack>
 
@@ -2012,7 +2011,7 @@ export function useCounter() {
 
 <Solution>
 
-Pass the `delay` to your Hook with `useCounter(delay)`. Then, inside the Hook, use `delay` instead of the hardcoded `1000` value. You'll need to add `delay` to your Effect's dependencies. This ensures that a change in `delay` will reset the interval.
+`useCounter(delay)`에 `delay` 값을 넘겨준 뒤, Hook 내부에서 하드 코딩된 `1000` 값 대신 `delay`를 사용해 봅시다. Effect의 의존성에 `delay`를 추가해야 합니다. 이렇게 되면 `delay`가 변경되면 간격이 재설정됩니다.
 
 <Sandpack>
 
@@ -2062,9 +2061,9 @@ export function useCounter(delay) {
 
 </Solution>
 
-#### Extract `useInterval` out of `useCounter` {/*extract-useinterval-out-of-usecounter*/}
+#### `useCounter`에서 `useInterval` 분리하기 {/*extract-useinterval-out-of-usecounter*/}
 
-Currently, your `useCounter` Hook does two things. It sets up an interval, and it also increments a state variable on every interval tick. Split out the logic that sets up the interval into a separate Hook called `useInterval`. It should take two arguments: the `onTick` callback, and the `delay`. After this change, your `useCounter` implementation should look like this:
+이제 `useCounter`는 두 가지 일을 합니다. 간격을 설정하고, 간격마다 state 변수를 증가시킵니다. 간격을 설정하는 로직을 `useInterval`라는 이름의 다른 Hook으로 분리해 봅시다. 이 Hook은 `onTick` 콜백과 `delay`, 두 가지 props가 필요합니다. 이렇게 변경하면 `useCounter`은 다음과 같이 보일 것입니다.
 
 ```js
 export function useCounter(delay) {
@@ -2076,7 +2075,8 @@ export function useCounter(delay) {
 }
 ```
 
-Write `useInterval` in the `useInterval.js` file and import it into the `useCounter.js` file.
+`useInterval.js` 파일에 `useInterval`을 작성하고 `useCounter.js` 파일에 가져오세요.
+
 
 <Sandpack>
 
@@ -2106,14 +2106,14 @@ export function useCounter(delay) {
 ```
 
 ```js useInterval.js
-// Write your Hook here!
+// Hook을 여기에 작성하세요!
 ```
 
 </Sandpack>
 
 <Solution>
 
-The logic inside `useInterval` should set up and clear the interval. It doesn't need to do anything else.
+`useInterval` 내부의 로직은 간격을 설정하고 초기화해야 합니다. 그 외에 다른 것은 필요하지 않습니다.
 
 <Sandpack>
 
@@ -2152,17 +2152,17 @@ export function useInterval(onTick, delay) {
 
 </Sandpack>
 
-Note that there is a bit of a problem with this solution, which you'll solve in the next challenge.
+이 해결 방법은 다음에 해결해야할 약간의 도전 과제가 남아 있습니다.
 
 </Solution>
 
-#### Fix a resetting interval {/*fix-a-resetting-interval*/}
+#### 간격 재설정 고치기 {/*fix-a-resetting-interval*/}
 
-In this example, there are *two* separate intervals.
+이 예시에서 *두 개의* 별개의 간격이 존재합니다.
 
-The `App` component calls `useCounter`, which calls `useInterval` to update the counter every second. But the `App` component *also* calls `useInterval` to randomly update the page background color every two seconds.
+`useCounter`를 호출하는 `App` 컴포넌트는 카운터를 매초 업데이트하기 위해 `useInterval`를 호출합니다. 그러나 `App` 는 `useInterval`를 2초에 한 번씩 랜덤하게 배경색을 변경하기 위해 `useInterval`를 *또* 호출합니다.
 
-For some reason, the callback that updates the page background never runs. Add some logs inside `useInterval`:
+이런 이유로 배경을 업데이트하는 콜백은 절대 실행되지 않습니다. `useInterval` 내부에 로그를 남겨보세요.
 
 ```js {2,5}
   useEffect(() => {
@@ -2175,13 +2175,13 @@ For some reason, the callback that updates the page background never runs. Add s
   }, [onTick, delay]);
 ```
 
-Do the logs match what you expect to happen? If some of your Effects seem to re-synchronize unnecessarily, can you guess which dependency is causing that to happen? Is there some way to [remove that dependency](/learn/removing-effect-dependencies) from your Effect?
+로그가 생각했던 대로 잘 동작하나요? 어떤 Effect가 불필요하게 재동기화한다면, 어떤 의존성이 원인이 되었는지 예측할 수 있나요? 해당 Effect에서 [그 의존성을 제거하는](/learn/removing-effect-dependencies) 방법이 있나요?
 
-After you fix the issue, you should expect the page background to update every two seconds.
+이 문제를 해결한 뒤, 배경 화면이 2초마다 바뀔 수 있다고 예상합니다.
 
 <Hint>
 
-It looks like your `useInterval` Hook accepts an event listener as an argument. Can you think of some way to wrap that event listener so that it doesn't need to be a dependency of your Effect?
+`useInterval`가 이벤트 리스너를 하나의 prop로 받는 것처럼 보입니다. 이 이벤트 리스너를 감싸 Effect의 의존성이 될 필요가 없도록 만드는 방법을 생각해 낼 수 있나요?
 
 </Hint>
 
@@ -2250,11 +2250,12 @@ export function useInterval(onTick, delay) {
 
 <Solution>
 
-Inside `useInterval`, wrap the tick callback into an Effect Event, as you did [earlier on this page.](/learn/reusing-logic-with-custom-hooks#passing-event-handlers-to-custom-hooks)
+[앞서 그랬던 것처럼](/learn/reusing-logic-with-custom-hooks#passing-event-handlers-to-custom-hooks) `useInterval` 내부에서 콜백을 Effect 이벤트로 감싸주세요.
 
-This will allow you to omit `onTick` from dependencies of your Effect. The Effect won't re-synchronize on every re-render of the component, so the page background color change interval won't get reset every second before it has a chance to fire.
+이 방법은 `onTick`을 Effect의 의존성에서 빼낼 수 있도록 합니다. Effect는 컴포넌트가 재렌더링될 때마다 재동기화하지 않을 것이고 배경색을 변경 간격 역시 변경되는 기회가 오기 전에 매초 초기화되는 일은 없게 됩니다.
 
-With this change, both intervals work as expected and don't interfere with each other:
+이제 각 간격은 원하는 대로 동작하고 서로를 방해하지 않습니다.
+
 
 <Sandpack>
 
@@ -2321,21 +2322,21 @@ export function useInterval(callback, delay) {
 
 </Solution>
 
-#### Implement a staggering movement {/*implement-a-staggering-movement*/}
+#### 엇갈린 움직임 구현하기 {/*implement-a-staggering-movement*/}
 
-In this example, the `usePointerPosition()` Hook tracks the current pointer position. Try moving your cursor or your finger over the preview area and see the red dot follow your movement. Its position is saved in the `pos1` variable.
+이 예시에선 `usePointerPosition()` Hook이 최근 포인터의 위치를 추적합니다. 커서나 손을 미리보기 화면 위로 이동하면 빨간 점이 움직임을 따라가는 것을 확인할 수 있습니다. 이 위치는 `pos1` 변수에 저장됩니다.
 
-In fact, there are five (!) different red dots being rendered. You don't see them because currently they all appear at the same position. This is what you need to fix. What you want to implement instead is a "staggered" movement: each dot should "follow" the previous dot's path. For example, if you quickly move your cursor, the first dot should follow it immediately, the second dot should follow the first dot with a small delay, the third dot should follow the second dot, and so on.
+실제로는 다섯 개의 다른 점이 렌더링되고 있습니다. 모든 점이 같은 위치에 나타나기 때문에 보이지 않습니다. 이 부분을 수정해야 합니다. 대신 구현해야 하는 것은 "엇갈린" 움직임입니다. 각 점이 이전 점의 경로를 "따라야" 합니다. 예를 들어 커서를 빠르게 움직이면 첫 번째 점이 빠르게 뒤쫓고, 두 번째 점이 첫 번째 점을 약간의 지연을 두고 따라가고, 세 번째 점이 두 번째 점을 따라가는 방식으로 움직여야 합니다.
 
-You need to implement the `useDelayedValue` custom Hook. Its current implementation returns the `value` provided to it. Instead, you want to return the value back from `delay` milliseconds ago. You might need some state and an Effect to do this.
+`useDelayedValue` 커스텀 Hook을 구현해야 합니다. 현재 구현은 제공된 `value`를 반환하지만, 대신 밀리초 이전의 `delay`를 받으려고 합니다. 이를 위해선 state와 Effect가 필요할 수 있습니다.
 
-After you implement `useDelayedValue`, you should see the dots move following one another.
+`useDelayedValue`를 값을 구현하고 나면 점들이 서로 따라 움직이는 것을 볼 수 있을 것입니다.
 
 <Hint>
 
-You'll need to store the `delayedValue` as a state variable inside your custom Hook. When the `value` changes, you'll want to run an Effect. This Effect should update `delayedValue` after the `delay`. You might find it helpful to call `setTimeout`.
+`delayedValue`을 커스텀 Hook 안에 state 변수로 저장해야 합니다. `value`가 변경되면 Effect를 실행하고 싶을 것입니다. 이 Effect는 `delay`만큼의 시간이 지난 후 `delayedValue`을 업데이트해야 합니다. `setTimeout`을 호출하는 것이 도움이 될 수 있습니다.
 
-Does this Effect need cleanup? Why or why not?
+이 Effect를 정리해야 하나요? 왜 또는 왜 안 되나요?
 
 </Hint>
 
@@ -2345,7 +2346,7 @@ Does this Effect need cleanup? Why or why not?
 import { usePointerPosition } from './usePointerPosition.js';
 
 function useDelayedValue(value, delay) {
-  // TODO: Implement this Hook
+  // TODO: 이 Hook 실행하기
   return value;
 }
 
@@ -2408,7 +2409,7 @@ body { min-height: 300px; }
 
 <Solution>
 
-Here is a working version. You keep the `delayedValue` as a state variable. When `value` updates, your Effect schedules a timeout to update the `delayedValue`. This is why the `delayedValue` always "lags behind" the actual `value`.
+다음은 동작하는 버전입니다. state 변수로 `delayedValue`를 유지합니다. `value`가 업데이트되면, Effect는 `delayedValue`를 업데이트하기 위한 타임아웃을 예약해 둡니다. 이게 바로 `delayedValue`가 항상 진짜 `value`보다 "뒤처지는" 이유입니다.
 
 <Sandpack>
 
@@ -2485,7 +2486,7 @@ body { min-height: 300px; }
 
 </Sandpack>
 
-Note that this Effect *does not* need cleanup. If you called `clearTimeout` in the cleanup function, then each time the `value` changes, it would reset the already scheduled timeout. To keep the movement continuous, you want all the timeouts to fire.
+이 Effect는 정리할 필요가 "없다"는 걸 기억하세요. 정리 기능에 `clearTimeout`를 호출했다면 매번 `value`는 변경되고, 이미 예정된 타임아웃을 리셋합니다. 동작이 계속 유지되도록 하기 위해 모든 타임아웃이 동작하길 바랄 겁니다.
 
 </Solution>
 
