@@ -4,7 +4,7 @@ title: 컴포넌트 import 및 export 하기
 
 <Intro>
 
-컴포넌트의 가장 큰 장점은 재사용성으로 컴포넌트를 조합해 또 다른 컴포넌트를 만들 수 있습니다. 컴포넌트를 여러 번 중첩하게 되면 다른 파일로 분리해야 하는 시점이 생깁니다. 이렇게 분리하면 나중에 파일을 찾기 더 쉽고 재사용하기 편리해집니다.
+컴포넌트의 가장 큰 장점은 재사용성으로 컴포넌트를 조합해 또 다른 컴포넌트를 만들 수 있다는 것입니다. 컴포넌트를 여러 번 중첩하게 되면 다른 파일로 분리해야 하는 시점이 생깁니다. 이렇게 분리하면 나중에 파일을 찾기 더 쉽고 재사용하기 편리해집니다.
 
 </Intro>
 
@@ -56,7 +56,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 ## 컴포넌트를 import 하거나 export 하는 방법 {/*exporting-and-importing-a-component*/}
 
-랜딩 화면을 변경하게 되어 과학자들이 아니라 과학책으로 변경하거나 프로필 사진을 다른 곳에서 사용하게 된다면 `Gallery` 컴포넌트와 `Profile` 컴포넌트를 root 컴포넌트가 아닌 다른 파일로 옮기는 게 좋습니다. 그렇게 변경하면 재사용성이 높아 컴포넌트를 모듈로 사용할 수 있습니다. 컴포넌트를 다른 파일로 이동하려면 세 가지 단계가 있습니다.
+랜딩 화면을 변경하게 되어 과학자들이 아니라 과학책으로 변경되거나 프로필 사진을 다른 곳에서 사용하게 된다면 `Gallery` 컴포넌트와 `Profile` 컴포넌트를 root 컴포넌트가 아닌 다른 파일로 옮기는 게 좋습니다. 그렇게 변경하면 재사용성이 높아져 컴포넌트를 모듈로 사용할 수 있습니다. 컴포넌트를 다른 파일로 이동하려면 세 가지 단계가 있습니다.
 
 1. 컴포넌트를 추가할 JS 파일을 **생성**합니다.
 2. 새로 만든 파일에서 함수 컴포넌트를 **export** 합니다. ([default](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_the_default_export) 또는 [named](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_named_exports) export 방식을 사용합니다)
@@ -117,7 +117,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Note>
 
-가끔 `.js`와 같은 파일 확장자가 없는 때도 있습니다.
+가끔 `.js`와 같은 파일 확장자가 없을 때도 있습니다.
 
 ```js 
 import Gallery from './Gallery';
@@ -135,14 +135,14 @@ React에서는 `'./Gallery.js'` 또는 `'./Gallery'` 둘 다 사용할 수 있�
 
 ![Default and named exports](/images/docs/illustrations/i_import-export.svg)
 
-Export 하는 방식에 따라 import 하는 방식이 정해집니다. Default export로 한 값을 named import로 가져오려고 하려면 에러가 발생합니다. 아래 표에는 각각의 경우의 문법이 정리되어 있습니다.
+Export 하는 방식에 따라 import 하는 방식이 정해져 있습니다. Default export로 한 값을 named import로 가져오려고 하려면 에러가 발생합니다. 아래 표에는 각각의 경우의 문법이 정리되어 있습니다.
 
-| Syntax           | Export statement                           | Import statement                          |
+| Syntax           | Export 구문                           | Import 구문                          |
 | -----------      | -----------                                | -----------                               |
 | Default  | `export default function Button() {}` | `import Button from './button.js';`     |
 | Named    | `export function Button() {}`         | `import { Button } from './button.js';` |
 
-_Default_ import를 사용하는 경우 원한다면 `import` 단어 후에 다른 이름으로 값을 가져올 수 있습니다. 예를 들어 `import Banana from './button.js'` 라고 쓰더라도 같은 default export 값을 가져오게 됩니다. 반대로 named import를 사용할 때는 양쪽 파일에서 사용하고자 하는 값의 이름이 같아야 해서 _named_ import라고 불립니다.
+_Default_ import를 사용하는 경우 원한다면 `import` 단어 후에 다른 이름으로 값을 가져올 수 있습니다. 예를 들어 `import Banana from './button.js'` 라고 쓰더라도 같은 default export 값을 가져오게 됩니다. 반대로 named import를 사용할 때는 양쪽 파일에서 사용하고자 하는 값의 이름이 같아야 하기 때문에 _named_ import라고 불립니다.
 
 **보편적으로 한 파일에서 하나의 컴포넌트만 export 할 때 default export 방식을 사용하고 여러 컴포넌트를 export 할 경우엔 named export 방식을 사용합니다.** 어떤 방식을 사용하든 컴포넌트와 파일의 이름을 의미 있게 명명하는 것은 중요합니다. `export default () => {}` 처럼 이름 없는 컴포넌트는 나중에 디버깅하기 어렵기 때문에 권장하지 않습니다.
 
@@ -245,13 +245,13 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 #### 컴포넌트를 한 단계 더 분리하기 {/*split-the-components-further*/}
 
-현재 `Gallery.js` 파일이 `Profile`과 `Gallery`를 두 다 export 해서 헷갈리게 할 수 있습니다.
+현재 `Gallery.js` 파일이 `Profile`과 `Gallery`를 둘 다 export 해서 헷갈리게 할 수 있습니다.
 
-`Profile.js` 파일을 생성해서 `Profile` 컴포넌트를 해당 파일로 옮기고 `App` 컴포넌트에서는 `<Profile />`과 `<Gallery />`를 각각 렌더링하게 변경합니다.
+`Profile.js` 파일을 생성해서 `Profile` 컴포넌트를 해당 파일로 옮기고 `App` 컴포넌트에서는 `<Profile />`과 `<Gallery />`를 각각 렌더링하도록 변경합니다.
 
 Default 또는 named export를 사용해서 `Profile`을 export 할 수 있습니다. 다만 주의할 점은 사용한 export 방식에 맞는 import 문법을 사용해야 한다는 점입니다. 아래 문법 표는 위 deep dive에서 인용했습니다.
 
-| Syntax           | Export statement                           | Import statement                          |
+| Syntax           | Export 구문                           | Import 구문                          |
 | -----------      | -----------                                | -----------                               |
 | Default  | `export default function Button() {}` | `import Button from './button.js';`     |
 | Named    | `export function Button() {}`         | `import { Button } from './button.js';` |
