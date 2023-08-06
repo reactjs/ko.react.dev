@@ -61,12 +61,12 @@ const { pipe } = renderToPipeableStream(<App />, {
   * **선택 사항** `onShellError`: 초기 셸을 렌더링하는 데 오류가 발생하면 호출되는 콜백입니다. 오류를 인자로 받습니다. 스트림에서 아직 바이트가 전송되지 않았고, `onShellReady`나 `onAllReady`도 호출되지 않으므로 [폴백 HTML 셸을 출력](#recovering-from-errors-inside-the-shell) 할 수 있습니다.
   * **선택 사항** `progressiveChunkSize`: 청크의 바이트 수입니다. [기본 휴리스틱에 대해 자세히 알아보세요.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
 
+
 #### 반환값 {/*returns*/}
 
 `renderToPipeableStream`은 두 개의 메서드가 있는 객체를 반환합니다.
 
 * `pipe`는 HTML을 제공된 [쓰기 가능한 Node.js 스트림](https://nodejs.org/api/stream.html#writable-streams)으로 출력합니다. 스트리밍을 활성화하려면 `onShellReady`에서, 크롤러와 정적 생성을 사용하려면 `onAllReady`에서 `pipe`를 호출하세요.
-
 * `abort`를 사용하면 [서버 렌더링을 중단](#aborting-server-rendering)하고 나머지는 클라이언트에서 렌더링할 수 있습니다.
 
 ---
@@ -125,7 +125,6 @@ React는 [doctype](https://developer.mozilla.org/ko/docs/Glossary/Doctype)과 <C
 ```
 
 클라이언트에서 부트스트랩 스크립트는 [`hydrateRoot`를 호출하여 전체 `document`를 하이드레이트해야 합니다.](/reference/react-dom/client/hydrateRoot#hydrating-an-entire-document)
-
 
 ```js [[1, 4, "<App />"]]
 import { hydrateRoot } from 'react-dom/client';
@@ -236,7 +235,6 @@ function ProfilePage() {
 ```
 
 `<Posts />`에 대한 데이터를 로드하는 데 시간이 걸린다고 가정해 보겠습니다. 이상적으로는 게시물을 기다리지 않고 나머지 프로필 페이지 콘텐츠를 사용자에게 표시하고 싶을 것입니다. 이렇게 하려면, [`<Posts>`를 `<Suspense>` 경계로 감싸면 됩니다](/reference/react/Suspense#displaying-a-fallback-while-content-is-loading).
-
 
 ```js {9,11}
 function ProfilePage() {
