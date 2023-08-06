@@ -280,7 +280,7 @@ console.log(ref.current); // 5
 
 그 이유는 **ref 자체가 일반 자바스크립트 객체**처럼 동작하기 때문입니다.
 
-또한 ref로 작업할 때 [mutation 방지](/learning/updating-objects-in-state)에 대해 걱정할 필요가 없습니다. 변형하는 객체가 렌더링에 사용되지 않는 한, React는 ref 혹은 해당 콘텐츠를 어떻게 처리하든 신경 쓰지 않습니다.
+또한 ref로 작업할 때 [mutation 방지](/learn/updating-objects-in-state)에 대해 걱정할 필요가 없습니다. 변형하는 객체가 렌더링에 사용되지 않는 한, React는 ref 혹은 해당 콘텐츠를 어떻게 처리하든 신경 쓰지 않습니다.
 
 ## Refs 와 DOM {/*refs-and-the-dom*/}
 
