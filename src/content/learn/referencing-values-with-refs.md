@@ -1,5 +1,5 @@
 ---
-title: '값을 Refs와 함께 참조하기'
+title: 'Ref로 값 참조하기'
 ---
 
 <Intro>
@@ -35,7 +35,7 @@ const ref = useRef(0);
 
 ```js
 {
-  current: 0 // The value you passed to useRef
+  current: 0 // useRef에 전달한 값 
 }
 ```
 
@@ -70,9 +70,9 @@ export default function Counter() {
 
 ref는 숫자를 가리키지만, [state](/learn/state-a-components-memory)처럼 문자열, 객체, 심지어 함수 등 모든 것을 가리킬 수 있습니다. state와 달리 ref는 읽고 수정할 수 있는 `current` 프로퍼티를 가진 일반 자바스크립트 객체입니다.
 
-**컴포넌트는 모든 증가에 따라 다시 렌더링 되지 않습니다.** state와 마찬가지로 ref도 React에 리렌더에 의해 유지됩니다. 그러나 state를 설정하면 컴포넌트가 다시 렌더링 됩니다. ref를 변경하면 변경되지 않습니다!
+**컴포넌트는 모든 증가에 대하여 다시 렌더링 되지 않습니다.** state와 마찬가지로 ref도 React에 리렌더에 의해 유지됩니다. 그러나, state를 설정하면 컴포넌트가 다시 렌더링 됩니다. ref를 변경하면 다시 렌더링 되지 않습니다!
 
-## 예시: 스톱워치 작성 {/*example-building-a-stopwatch*/}
+## 예시: 스톱워치 작성하기 {/*example-building-a-stopwatch*/}
 
 ref와 state를 단일 컴포넌트로 결합할 수 있습니다. 예를 들어 사용자가 버튼을 눌러 시작하거나 중지할 수 있는 스톱워치를 만들어봅시다. 사용자가 "시작"을 누른 후 시간이 얼마나 지났는지 표시하려면 시작 버튼을 누른 시기와 현재 시각을 추적해야 합니다. **이 정보는 렌더링에 사용되므로 state를 유지합니다.**
 
@@ -93,12 +93,12 @@ export default function Stopwatch() {
   const [now, setNow] = useState(null);
 
   function handleStart() {
-    // Start counting.
+    // 카운팅을 시작합니다.
     setStartTime(Date.now());
     setNow(Date.now());
 
     setInterval(() => {
-      // Update the current time every 10ms.
+      // 10ms 마다 현재 시간을 업데이트 합니다. 
       setNow(Date.now());
     }, 10);
   }
@@ -121,7 +121,7 @@ export default function Stopwatch() {
 
 </Sandpack>
 
-"Stop" 버튼을 누르면 `now` state 변수의 업데이트를 중지하기 위해 기존 interval을 취소해야 합니다. 이를 위해 [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval)을 호출하면 됩니다. 그러나 이전에 사용자가 시작을 눌렀을 때 `setInterval` 호출로 반환된 interval ID를 제공해야 합니다. interval ID는 어딘가에 보관해야 합니다. **interval ID는 렌더링에 사용되지 않으므로 ref에 보관할 수 있습니다.**
+"Stop" 버튼을 누르면 `now` state 변수의 업데이트를 중지하기 위해 기존 interval을 취소해야 합니다. 이를 위해 [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval)을 호출하면 됩니다. 그러나 이전에 사용자가 시작을 눌렀을 때 `setInterval` 호출로 반환된 interval ID를 제공해야 합니다. interval ID는 어딘가에 보관해야 합니다. **interval ID는 렌더링에 사용되지 않으므로 ref에 저장할 수 있습니다.**
 
 <Sandpack>
 
@@ -168,18 +168,18 @@ export default function Stopwatch() {
 
 </Sandpack>
 
-렌더링에 정보를 사용할 때 해당 정보를 state로 유지합니다. event handler에게만 정보가 필요하고 변경할 필요가 없을 때, ref를 사용하는 것이 더 효율적일 수 있습니다.
+렌더링에 정보를 사용할 때 해당 정보를 state로 유지합니다. event handler에게만 필요한 정보이고 변경이 일어날 때 리렌더가 필요하지 않다면, ref를 사용하는 것이 더 효율적일 수 있습니다.
 
 ## ref와 state의 차이 {/*differences-between-refs-and-state*/}
 
-예를 들어, ref가 state보다 덜 "엄격한" 것으로 생각될 수 있습니다-항상 state 설정 함수를 사용하지 않고 변경할 수 있습니다. 하지만 대부분은 state를 사용하고 싶을 것입니다. ref는 자주 필요하지 않은 "escape hatch"입니다. state 및 ref의 비교 방법은 다음과 같습니다.
+ref가 state보다 덜 "엄격한" 것으로 생각될 수 있습니다-예를 들어, 항상 state 설정 함수를 사용하지 않고 변경할 수 있습니다. 하지만 대부분은 state를 사용하고 싶을 것입니다. ref는 자주 필요하지 않은 "escape hatch"입니다. state와 ref를 비교한 것은 다음과 같습니다.
 
-| refs                                                                                  | state                                                                                                                     |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `useRef(initialValue)` 가 `{ current: initialValue }` 을 반환합니다.                      | `useState(initialValue)` 은 state 변수와 setter 함수 `[value, setValue]` 의 current 값을 반환합니다.  |
-| state를 바꿔도 리렌더 되지 않습니다.                                                           | state를 바꾸면 리렌더됩니다.                                                                                             |
-| Mutable-렌더링 프로세스 외부에서 `current` 값을 수정 및 업데이트할 수 있습니다. | "Immutable"—state 설정 함수를 사용하여 state 변수를 수정하여 리렌더러를 대기열에 넣어야 합니다. |
-| 렌더링 중에는 `current` 값을 읽거나 쓰면 안 됩니다. | 언제든지 state를 읽을 수 있습니다. 그러나 각 렌더에는 변경되지 않는 자체적인 [snapshot](/learn/state-as-a-snapshot) state가 있습니다.
+| refs                                                          | state                                                                                              |
+|---------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| `useRef(initialValue)` 는 `{ current: initialValue }` 을 반환합니다. | `useState(initialValue)` 은 state 변수의 현재 값과 setter 함수 `[value, setValue]` 를 반환합니다.                  |
+| state를 바꿔도 리렌더 되지 않습니다.                                       | state를 바꾸면 리렌더 됩니다.                                                                                |
+| Mutable-렌더링 프로세스 외부에서 `current` 값을 수정 및 업데이트할 수 있습니다.         | "Immutable"—state 를 수정하기 위해서는 state 설정 함수를 반드시 사용하여 리렌더 대기열에 넣어야 합니다.                              |
+| 렌더링 중에는 `current` 값을 읽거나 쓰면 안 됩니다.                            | 언제든지 state를 읽을 수 있습니다. 그러나 각 렌더마다 변경되지 않는 자체적인 state의 [snapshot](/learn/state-as-a-snapshot)이 있습니다. 
 
 다음은 state와 함께 구현되는 카운터 버튼입니다.
 
@@ -218,7 +218,7 @@ export default function Counter() {
   let countRef = useRef(0);
 
   function handleClick() {
-    // This doesn't re-render the component!
+    // 이것은 컴포넌트의 리렌더를 일으키지 않습니다!
     countRef.current = countRef.current + 1;
   }
 
@@ -236,7 +236,7 @@ export default function Counter() {
 
 <DeepDive>
 
-#### How does useRef work inside? {/*how-does-useref-work-inside*/}
+#### useRef는 내부적으로 어떻게 동작하나요? {/*how-does-useref-work-inside*/}
 
 `useState`와 `useRef`가 모두 React에 의해 제공되지만, 원칙적으로 `useRef`는 `useState` 위에 구현될 수 있습니다. React 내부에서 `useRef`가 이렇게 구현되는 것을 상상할 수 있습니다.
 
@@ -250,7 +250,7 @@ function useRef(initialValue) {
 
 첫 번째 렌더 중에 `useRef`는 `{ current: initialValue }`을 반환합니다. 이 객체는 React에 의해 저장되므로 다음 렌더 중에 같은 객체가 반환됩니다. 이 예시에서는 state setter가 어떻게 사용되지 않는지 주의하세요. `useRef`는 항상 동일한 객체를 반환해야 하므로 필요하지 않습니다!
 
-React는 `useRef`가 실제로 충분히 일반적이기 때문에 built-in 버전을 제공합니다. 하지만 setter가 없는 정규 state 변수라고 생각하면 됩니다. 객체 지향 프로그래밍에 익숙한 경우 refs는 인스턴스 필드를 상기시킬 수 있습니다-하지만 `this.something` 대신에 `somethingRef.current` 처럼 써야 합니다.
+React는 `useRef`가 실제로 충분히 일반적이기 때문에 built-in 버전을 제공합니다. setter가 없는 일반적인 state 변수라고 생각할 수 있습니다. 객체 지향 프로그래밍에 익숙하다면 refs는 인스턴스 필드를 상기시킬 수 있습니다-하지만 `this.something` 대신에 `somethingRef.current` 처럼 써야 합니다.
 
 </DeepDive>
 
@@ -284,7 +284,7 @@ console.log(ref.current); // 5
 
 ## Refs 와 DOM {/*refs-and-the-dom*/}
 
-임의의 값을 ref로 지정할 수 있습니다. 그러나 ref의 가장 일반적인 사용 사례는 DOM 엘리먼트에 액세스하는 것입니다. 예를 들어 프로그래밍 방식으로 입력의 초점을 맞추려는 경우 유용합니다. `<div ref={myRef}>`와 같은 JSX의 `ref` 어트리뷰트에 ref를 전달하면 React는 해당 DOM 엘리먼트를 `myRef.current`에 넣습니다. 이에 대한 자세한 내용은 [Refs를 사용하여 DOM 조작](/learn/maniping-the-dom-with-refs)에서 확인할 수 있습니다.
+임의의 값을 ref로 지정할 수 있습니다. 그러나 ref의 가장 일반적인 사용 사례는 DOM 엘리먼트에 액세스하는 것입니다. 예를 들어 프로그래밍 방식으로 입력의 초점을 맞추려는 경우 유용합니다. `<div ref={myRef}>`와 같은 JSX의 `ref` 어트리뷰트에 ref를 전달하면 React는 해당 DOM 엘리먼트를 `myRef.current`에 넣습니다. 이에 대한 자세한 내용은 [Refs를 사용하여 DOM 조작](/learn/manipulating-the-dom-with-refs)에서 확인할 수 있습니다.
 
 <Recap>
 
@@ -412,7 +412,7 @@ export default function Chat() {
 
 #### 리렌더를 못하는 컴포넌트 수정 {/*fix-a-component-failing-to-re-render*/}
 
-이 버튼은 "On"과 "Off"를 표시하게 되어 있습니다. 그러나 항상 "Off"로 표시됩니다. 코드가 뭐가 잘못됐나요? 고쳐볼게요.
+이 버튼은 "On"과 "Off"를 표시하게 되어 있습니다. 그러나 항상 "Off"로 표시됩니다. 코드가 뭐가 잘못됐나요? 고쳐봅시다.
 
 <Sandpack>
 
@@ -466,7 +466,7 @@ export default function Toggle() {
 
 예시는 작동하지만, 의도한 대로 작동하지 않습니다. 버튼은 독립적이지 않습니다. 문제를 보려면 버튼 중 하나를 클릭한 다음 즉시 다른 버튼을 클릭합니다. 지연된 후에 양쪽 버튼의 메시지를 볼 수 있을 것이라고 예상할 것입니다. 그러나 마지막 버튼의 메시지만 표시됩니다. 첫 번째 버튼의 메시지가 사라집니다.
 
-왜 두 버튼이 서로 간섭하는 것일까요? 문제를 찾아 해결해보죠.
+왜 두 버튼이 서로 간섭하는 것일까요? 문제를 찾아 해결해 봅시다.
 
 <Hint>
 
@@ -482,38 +482,38 @@ import { useState } from 'react';
 let timeoutID;
 
 function DebouncedButton({ onClick, children }) {
-  return (
-    <button onClick={() => {
-      clearTimeout(timeoutID);
-      timeoutID = setTimeout(() => {
-        onClick();
-      }, 1000);
-    }}>
-      {children}
-    </button>
-  );
+    return (
+        <button onClick={() => {
+            clearTimeout(timeoutID);
+            timeoutID = setTimeout(() => {
+                onClick();
+            }, 1000);
+        }}>
+            {children}
+        </button>
+    );
 }
 
 export default function Dashboard() {
-  return (
-    <>
-      <DebouncedButton
-        onClick={() => alert('Spaceship launched!')}
-      >
-        Launch the spaceship
-      </DebouncedButton>
-      <DebouncedButton
-        onClick={() => alert('Soup boiled!')}
-      >
-        Boil the soup
-      </DebouncedButton>
-      <DebouncedButton
-        onClick={() => alert('Lullaby sung!')}
-      >
-        Sing a lullaby
-      </DebouncedButton>
-    </>
-  )
+    return (
+        <>
+            <DebouncedButton
+                onClick={() => alert('Spaceship launched!')}
+            >
+                Launch the spaceship
+            </DebouncedButton>
+            <DebouncedButton
+                onClick={() => alert('Soup boiled!')}
+            >
+                Boil the soup
+            </DebouncedButton>
+            <DebouncedButton
+                onClick={() => alert('Lullaby sung!')}
+            >
+                Sing a lullaby
+            </DebouncedButton>
+        </>
+    )
 }
 ```
 
@@ -533,39 +533,39 @@ button { display: block; margin: 10px; }
 import { useState, useRef } from 'react';
 
 function DebouncedButton({ onClick, children }) {
-  const timeoutRef = useRef(null);
-  return (
-    <button onClick={() => {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => {
-        onClick();
-      }, 1000);
-    }}>
-      {children}
-    </button>
-  );
+    const timeoutRef = useRef(null);
+    return (
+        <button onClick={() => {
+            clearTimeout(timeoutRef.current);
+            timeoutRef.current = setTimeout(() => {
+                onClick();
+            }, 1000);
+        }}>
+            {children}
+        </button>
+    );
 }
 
 export default function Dashboard() {
-  return (
-    <>
-      <DebouncedButton
-        onClick={() => alert('Spaceship launched!')}
-      >
-        Launch the spaceship
-      </DebouncedButton>
-      <DebouncedButton
-        onClick={() => alert('Soup boiled!')}
-      >
-        Boil the soup
-      </DebouncedButton>
-      <DebouncedButton
-        onClick={() => alert('Lullaby sung!')}
-      >
-        Sing a lullaby
-      </DebouncedButton>
-    </>
-  )
+    return (
+        <>
+            <DebouncedButton
+                onClick={() => alert('Spaceship launched!')}
+            >
+                Launch the spaceship
+            </DebouncedButton>
+            <DebouncedButton
+                onClick={() => alert('Soup boiled!')}
+            >
+                Boil the soup
+            </DebouncedButton>
+            <DebouncedButton
+                onClick={() => alert('Lullaby sung!')}
+            >
+                Sing a lullaby
+            </DebouncedButton>
+        </>
+    )
 }
 ```
 
@@ -589,26 +589,26 @@ button { display: block; margin: 10px; }
 import { useState, useRef } from 'react';
 
 export default function Chat() {
-  const [text, setText] = useState('');
+    const [text, setText] = useState('');
 
-  function handleSend() {
-    setTimeout(() => {
-      alert('Sending: ' + text);
-    }, 3000);
-  }
+    function handleSend() {
+        setTimeout(() => {
+            alert('Sending: ' + text);
+        }, 3000);
+    }
 
-  return (
-    <>
-      <input
-        value={text}
-        onChange={e => setText(e.target.value)}
-      />
-      <button
-        onClick={handleSend}>
-        Send
-      </button>
-    </>
-  );
+    return (
+        <>
+            <input
+                value={text}
+                onChange={e => setText(e.target.value)}
+            />
+            <button
+                onClick={handleSend}>
+                Send
+            </button>
+        </>
+    );
 }
 ```
 
@@ -624,32 +624,32 @@ state는 [snapshot 처럼](/learn/state-as-a-snapshot) 작동하므로 타임아
 import { useState, useRef } from 'react';
 
 export default function Chat() {
-  const [text, setText] = useState('');
-  const textRef = useRef(text);
+    const [text, setText] = useState('');
+    const textRef = useRef(text);
 
-  function handleChange(e) {
-    setText(e.target.value);
-    textRef.current = e.target.value;
-  }
+    function handleChange(e) {
+        setText(e.target.value);
+        textRef.current = e.target.value;
+    }
 
-  function handleSend() {
-    setTimeout(() => {
-      alert('Sending: ' + textRef.current);
-    }, 3000);
-  }
+    function handleSend() {
+        setTimeout(() => {
+            alert('Sending: ' + textRef.current);
+        }, 3000);
+    }
 
-  return (
-    <>
-      <input
-        value={text}
-        onChange={handleChange}
-      />
-      <button
-        onClick={handleSend}>
-        Send
-      </button>
-    </>
-  );
+    return (
+        <>
+            <input
+                value={text}
+                onChange={handleChange}
+            />
+            <button
+                onClick={handleSend}>
+                Send
+            </button>
+        </>
+    );
 }
 ```
 
