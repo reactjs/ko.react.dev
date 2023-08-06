@@ -4,7 +4,7 @@ title: renderToPipeableStream
 
 <Intro>
 
-`renderToPipeableStream`은 React 트리를 파이프 가능한 [Node.js Stream](https://nodejs.org/api/stream.html)으로 렌더링합니다.
+`renderToPipeableStream`은 React 트리를 파이프 가능한 [Node.js 스트림](https://nodejs.org/api/stream.html)으로 렌더링합니다.
 
 ```js
 const { pipe, abort } = renderToPipeableStream(reactNode, options?)
