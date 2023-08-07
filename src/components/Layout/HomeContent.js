@@ -235,7 +235,7 @@ export function HomeContent() {
             <Para>
               React는 라이브러리입니다. 컴포넌트를 함께 묶을 수 있지만, 라우팅과
               데이터를 가져오는 방법을 규정하지는 않습니다. React로 앱을
-              만들려면, <Link href="https://nextjs.org">Next.js</Link> 또는
+              만들려면, <Link href="https://nextjs.org">Next.js</Link> 또는{' '}
               <Link href="https://remix.run">Remix</Link> 같은 풀스택 React
               프레임워크를 추천합니다.
             </Para>
