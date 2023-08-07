@@ -1010,7 +1010,11 @@ class Greeting extends React.Component {
 
 `static getDerivedStateFromError`를 정의하면 렌더링 도중 자식 컴포넌트(멀리 떨어진 자식 포함)가 에러를 throw 할 때 React가 이를 호출합니다. 이렇게 하면 UI를 지우는 대신 오류 메시지를 표시할 수 있습니다.
 
+<<<<<<< HEAD
 일반적으로 일부 분석 서비스에 오류 보고서를 보낼 수 있는 [`componentDidCatch`](#componentDidCatch)와 함께 사용됩니다. 이러한 메서드가 있는 컴포넌트를 *error boundary* 라고 합니다.
+=======
+Typically, it is used together with [`componentDidCatch`](#componentdidcatch) which lets you send the error report to some analytics service. A component with these methods is called an *error boundary.*
+>>>>>>> a472775b7c15f41b21865db1698113ca49ca95c4
 
 [예시를 확인하세요.](#catching-rendering-errors-with-an-error-boundary)
 
@@ -1393,7 +1397,11 @@ class ErrorBoundary extends React.Component {
 
 `Profile` 또는 그 하위 컴포넌트가 오류를 발생시키면 `ErrorBoundary`가 해당 오류를 "포착"하고 사용자가 제공한 오류 메시지와 함께 fallback UI를 표시한 다음 프로덕션 오류 보고서를 오류 보고 서비스에 전송합니다.
 
+<<<<<<< HEAD
 모든 컴포넌트를 별도의 error boundary로 묶을 필요는 없습니다. [error boundary의 세분화](https://www.brandondail.com/posts/fault-tolerance-react)를 고려할 때는 오류 메시지를 표시하는 것이 적절한 위치를 고려하세요. 예를 들어 메시징 앱의 경우 error boundary를 대화 목록 주위에 위치시키는 것이 좋습니다. 또한 모든 개별 메시지 주위에 위치시키는 것도 좋습니다. 하지만 모든 아바타 주위에 boundary를 위치시키는 것은 적절하지 않습니다.
+=======
+You don't need to wrap every component into a separate error boundary. When you think about the [granularity of error boundaries,](https://www.brandondail.com/posts/fault-tolerance-react) consider where it makes sense to display an error message. For example, in a messaging app, it makes sense to place an error boundary around the list of conversations. It also makes sense to place one around every individual message. However, it wouldn't make sense to place a boundary around every avatar.
+>>>>>>> a472775b7c15f41b21865db1698113ca49ca95c4
 
 <Note>
 
