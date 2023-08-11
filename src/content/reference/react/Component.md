@@ -1010,7 +1010,7 @@ class Greeting extends React.Component {
 
 `static getDerivedStateFromError`를 정의하면 렌더링 도중 자식 컴포넌트(멀리 떨어진 자식 포함)가 에러를 throw 할 때 React가 이를 호출합니다. 이렇게 하면 UI를 지우는 대신 오류 메시지를 표시할 수 있습니다.
 
-일반적으로 일부 분석 서비스에 오류 보고서를 보낼 수 있는 [`componentDidCatch`](#componentDidCatch)와 함께 사용됩니다. 이러한 메서드가 있는 컴포넌트를 *error boundary* 라고 합니다.
+일반적으로 일부 분석 서비스에 오류 보고서를 보낼 수 있는 [`componentDidCatch`](#componentdidcatch)와 함께 사용됩니다. 이러한 메서드가 있는 컴포넌트를 *error boundary* 라고 합니다.
 
 [예시를 확인하세요.](#catching-rendering-errors-with-an-error-boundary)
 
