@@ -23,11 +23,7 @@ title: "<option>"
 
 ### `<option>` {/*option*/}
 
-<<<<<<< HEAD
 [브라우저에 내장된 `<option>` 컴포넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/option)를 사용해 [`<select>`](/reference/react-dom/components/select) 박스 안에 옵션을 렌더링할 수 있습니다.
-=======
-The [built-in browser `<option>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) lets you render an option inside a [`<select>`](/reference/react-dom/components/select) box.
->>>>>>> a472775b7c15f41b21865db1698113ca49ca95c4
 
 ```js
 <select>

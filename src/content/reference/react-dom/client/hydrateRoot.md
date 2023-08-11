@@ -104,11 +104,7 @@ root.unmount();
 
 #### Returns {/*root-unmount-returns*/}
 
-<<<<<<< HEAD
-`render`는 `null`을 리턴합니다.
-=======
 `root.unmount` returns `undefined`.
->>>>>>> a472775b7c15f41b21865db1698113ca49ca95c4
 
 #### Caveats {/*root-unmount-caveats*/}
 
