@@ -10,43 +10,37 @@ title: React 블로그
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<BlogCard title="React Canaries: Incremental Feature Rollout Outside Meta" date="May 3, 2023" url="/blog/2023/05/03/react-canaries">
-
-Traditionally, new React features used to only be available at Meta first, and land in the open source releases later. We'd like to offer the React community an option to adopt individual new features as soon as their design is close to final--similar to how Meta uses React internally. We are introducing a new officially supported Canary release channel. It lets curated setups like frameworks decouple adoption of individual React features from the React release schedule.
-
+<BlogCard title="React Canaries: Meta 외부에서 점진적 기능 롤아웃 활성화하기" date="2023년 5월 3일" url="/blog/2023/05/03/react-canaries">
+Meta가 오랫동안 내부적으로 최첨단 버전의 React를 사용해 온 것과 유사하게, 새로운 기능이 안정된 버전으로 출시되기 전에 디자인이 거의 완성되는 즉시 개별적인 새로운 기능을 채택할 수 있는 옵션을 React 커뮤니티에 제공하고자 합니다. 공식적으로 지원하는 새로운 Canary 릴리즈 채널을 소개합니다. 프레임워크와 같이 엄선된 설정을 통해 개별 React 기능의 채택을 React 릴리즈 일정에서 분리할 수 있습니다.
 </BlogCard>
 
-<BlogCard title="React Labs: What We've Been Working On – March 2023" date="March 22, 2023" url="/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023">
-
-In React Labs posts, we write about projects in active research and development. Since our last update, we've made significant progress on React Server Components, Asset Loading, Optimizing Compiler, Offscreen Rendering, and Transition Tracing, and we'd like to share what we learned.
-
+<BlogCard title="React Labs: 그동안의 작업 – 2023년 3월" date="2023년 3월 22일" url="/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023">
+React Labs 게시글에는 활발히 연구 개발 중인 프로젝트에 대한 내용을 작성합니다. 우리는 지난 업데이트 이후 React 서버 컴포넌트, 에셋 로딩, 컴파일러 최적화, 오프스크린 랜더링, 트랜지션 추적에 대해 상당한 발전을 이루었고, 그 내용들을 공유하려고 합니다.
 </BlogCard>
 
 
-<BlogCard title="Introducing react.dev" date="March 16, 2023" url="/blog/2023/03/16/introducing-react-dev">
-
+<BlogCard title="Introducing react.dev" date="2022년 3월 16일" url="/blog/2023/03/16/introducing-react-dev">
 Today we are thrilled to launch react.dev, the new home for React and its documentation. In this post, we would like to give you a tour of the new site.
-
 </BlogCard>
 
 
-<BlogCard title="React Labs: What We've Been Working On – June 2022" date="June 15, 2022" url="/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022">
-React 18 was years in the making, and with it brought valuable lessons for the React team. Its release was the result of many years of research and exploring many paths. Some of those paths were successful; many more were dead-ends that led to new insights. One lesson we’ve learned is that it’s frustrating for the community to wait for new features without having insight into these paths that we’re exploring...
+<BlogCard title="React Labs: 그동안의 작업 – 2022년 6월" date="2022년 6월 15일" url="/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022">
+React 18은 수년간의 준비 끝에 탄생한 버전으로 React 팀에게 귀중한 교훈을 가져다주었습니다. 수년간의 연구와 다양한 경로를 모색한 끝에 출시된 제품입니다. 그 경로 중 일부는 성공적이었지만 더 많은 경로가 막다른 골목에서 새로운 인사이트로 이어졌습니다. 우리가 얻은 한 가지 교훈은 우리가 탐색하고 있는 경로에 대한 인사이트를 공유받지 못한 채 새로운 기능을 기다리는 것은 커뮤니티에 실망감을 준다는 것입니다.
 </BlogCard>
 
-<BlogCard title="React v18.0" date="March 29, 2022" url="/blog/2022/03/29/react-v18">
-React 18 is now available on npm! In our last post, we shared step-by-step instructions for upgrading your app to React 18. In this post, we’ll give an overview of what’s new in React 18, and what it means for the future...
+<BlogCard title="React v18.0" date="2022년 3월 29일" url="/blog/2022/03/29/react-v18">
+이제 npm에서 React 18을 사용할 수 있습니다! 지난 포스팅에서는 앱을 React 18로 업그레이드하는 방법을 단계별로 공유했습니다. 이번 포스팅에서는 React 18의 새로운 기능과 미래에 어떤 의미를 갖는지에 대해 설명하겠습니다.
 </BlogCard>
 
 <BlogCard title="React 18로 업그레이드하는 방법" date="2022년 3월 8일" url="/blog/2022/03/08/react-18-upgrade-guide">
-React 18은 릴리스 노트에서 언급한 대로, 새로운 동시성 렌더러를 도입하여 기존 어플리케이션에 점진적으로 적용할 계획입니다. 이 글에서는 React 18로 업그레이드하는 방법을 단계별로 소개하겠습니다...
+React 18은 릴리스 노트에서 언급한 대로, 새로운 동시성 렌더러를 도입하여 기존 애플리케이션에 점진적으로 적용할 계획입니다. 이 글에서는 React 18로 업그레이드하는 방법을 단계별로 소개하겠습니다.
 </BlogCard>
 
-<BlogCard title="React Conf 2021 Recap" date="December 17, 2021" url="/blog/2021/12/17/react-conf-2021-recap">
-Last week we hosted our 6th React Conf.  In previous years, we’ve used the React Conf stage to deliver industry changing announcements such as React Native and React Hooks. This year, we shared our multi-platform vision for React, starting with the release of React 18 and gradual adoption of concurrent features...
+<BlogCard title="React Conf 2021 요약" date="2021년 12월 17일" url="/blog/2021/12/17/react-conf-2021-recap">
+지난주, 우리는 6번째 React Conf를 개최했습니다. 지난 몇 년 동안 우리는 React Conf 무대를 통해 React Native, React Hooks와 같은 업계 변화를 알리는 발표를 해왔습니다. 올해는 React 18의 출시와 동시 기능의 점진적인 도입을 시작으로 React의 멀티 플랫폼 비전을 공유했습니다.
 </BlogCard>
 
-<BlogCard title="The Plan for React 18" date="June 8, 2021" url="/blog/2021/06/08/the-plan-for-react-18">
+<BlogCard title="The Plan for React 18" date="2021년 6월 8일" url="/blog/2021/06/08/the-plan-for-react-18">
 The React team is excited to share a few updates:
 
 - We’ve started work on the React 18 release, which will be our next major version.
@@ -54,8 +48,8 @@ The React team is excited to share a few updates:
 - We’ve published a React 18 Alpha so that library authors can try it and provide feedback...
 </BlogCard>
 
-<BlogCard title="Introducing Zero-Bundle-Size React Server Components" date="December 21, 2020" url="/blog/2020/12/21/data-fetching-with-react-server-components">
-2020 has been a long year. As it comes to an end we wanted to share a special Holiday Update on our research into zero-bundle-size React Server Components. To introduce React Server Components, we have prepared a talk and a demo. If you want, you can check them out during the holidays, or later when work picks back up in the new year...
+<BlogCard title="제로 번들 사이즈 React 서버 컴포넌트 소개" date="2020년 12월 21일" url="/blog/2020/12/21/data-fetching-with-react-server-components">
+2020년은 긴 한 해였습니다. 연말이 다가옴에 따라 제로 번들 사이즈의 React 서버 컴포넌트 연구에 대한 특별한 홀리데이 업데이트를 공유하고자 합니다. React 서버 컴포넌트를 소개하기 위해 강연과 데모를 준비했습니다. 이는 연휴 기간 또는 새해에 업무가 재개되는 시점에서 확인할 수 있습니다.
 </BlogCard>
 
 </div>
