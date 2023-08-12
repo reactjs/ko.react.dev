@@ -2,13 +2,13 @@
 title: "React Labs: 그동안의 작업 – 2022년 6월"
 ---
 
-2022년 6월 15일 [Andrew Clark](https://twitter.com/acdlite), [Dan Abramov](https://twitter.com/dan_abramov), [Jan Kassens](https://twitter.com/kassens), [Joseph Savona](https://twitter.com/en_JS), [Josh Story](https://twitter.com/joshcstory), [Lauren Tan](https://twitter.com/potetotes), [Luna Ruan](https://twitter.com/lunaruan), [Mengdi Chen](https://twitter.com/mengdi_en), [Rick Hanlon](https://twitter.com/rickhanlonii), [Robert Zhang](https://twitter.com/jiaxuanzhang01), [Sathya Gunasekaran](https://twitter.com/_gsathya), [Sebastian Markbåge](https://twitter.com/sebmarkbage), [Xuan Huang](https://twitter.com/Huxpro) 작성
+2022년 6월 15일, [Andrew Clark](https://twitter.com/acdlite), [Dan Abramov](https://twitter.com/dan_abramov), [Jan Kassens](https://twitter.com/kassens), [Joseph Savona](https://twitter.com/en_JS), [Josh Story](https://twitter.com/joshcstory), [Lauren Tan](https://twitter.com/potetotes), [Luna Ruan](https://twitter.com/lunaruan), [Mengdi Chen](https://twitter.com/mengdi_en), [Rick Hanlon](https://twitter.com/rickhanlonii), [Robert Zhang](https://twitter.com/jiaxuanzhang01), [Sathya Gunasekaran](https://twitter.com/_gsathya), [Sebastian Markbåge](https://twitter.com/sebmarkbage), [Xuan Huang](https://twitter.com/Huxpro)
 
 ---
 
 <Intro>
 
-[React 18](https://reactjs.org/blog/2022/03/29/react-v18) 은 수년간의 준비 끝에 탄생한 버전으로 React 팀에게 귀중한 교훈을 가져다주었습니다. 수년간의 연구와 다양한 경로를 모색한 끝에 출시된 제품입니다. 그 경로 중 일부는 성공적이었지만 더 많은 경로가 막다른 골목에서 새로운 인사이트로 이어졌습니다. 우리가 얻은 한 가지 교훈은 우리가 탐색하고 있는 경로에 대한 인사이트를 공유받지 못한 채 새로운 기능을 기다리는 것은 커뮤니티에 실망감을 준다는 것입니다.
+[React 18](https://reactjs.org/blog/2022/03/29/react-v18)은 수년간의 준비 끝에 탄생한 버전으로 React 팀에게 귀중한 교훈을 가져다주었습니다. 수년간의 연구와 다양한 경로를 모색한 끝에 출시된 제품입니다. 그 경로 중 일부는 성공적이었지만 더 많은 경로가 막다른 골목에서 새로운 인사이트로 이어졌습니다. 우리가 얻은 한 가지 교훈은 우리가 탐색하고 있는 경로에 대한 인사이트를 공유받지 못한 채 새로운 기능을 기다리는 것은 커뮤니티에 실망감을 준다는 것입니다.
 
 </Intro>
 
