@@ -2,7 +2,7 @@
 title: "제로 번들 사이즈 React 서버 컴포넌트 소개"
 ---
 
-2020년 12월 21일, 작성자: [Dan Abramov](https://twitter.com/dan_abramov), [Lauren Tan](https://twitter.com/potetotes), [Joseph Savona](https://twitter.com/en_JS), [Sebastian Markbåge](https://twitter.com/sebmarkbage)
+2020년 12월 21일, [Dan Abramov](https://twitter.com/dan_abramov), [Lauren Tan](https://twitter.com/potetotes), [Joseph Savona](https://twitter.com/en_JS), [Sebastian Markbåge](https://twitter.com/sebmarkbage)
 
 ---
 

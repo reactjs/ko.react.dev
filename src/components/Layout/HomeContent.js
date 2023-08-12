@@ -8,12 +8,10 @@ import {
   useState,
   useContext,
   useId,
-  Fragment,
   Suspense,
   useEffect,
   useRef,
   useTransition,
-  useReducer,
 } from 'react';
 import cn from 'classnames';
 import NextLink from 'next/link';
@@ -26,7 +24,6 @@ import {IconSearch} from 'components/Icon/IconSearch';
 import {Logo} from 'components/Logo';
 import Link from 'components/MDX/Link';
 import CodeBlock from 'components/MDX/CodeBlock';
-import {IconNavArrow} from 'components/Icon/IconNavArrow';
 import {ExternalLink} from 'components/ExternalLink';
 import sidebarBlog from '../../sidebarBlog.json';
 
@@ -67,14 +64,6 @@ function Para({children}) {
   );
 }
 
-function Left({children}) {
-  return (
-    <div className="px-5 lg:px-0 max-w-4xl lg:text-left text-white text-opacity-80">
-      {children}
-    </div>
-  );
-}
-
 function Center({children}) {
   return (
     <div className="px-5 lg:px-0 max-w-4xl lg:text-center text-white text-opacity-80 flex flex-col items-center justify-center">
@@ -90,19 +79,23 @@ function FullBleed({children}) {
 }
 
 function CurrentTime() {
-  const msPerMinute = 60 * 1000;
-  const date = new Date();
-  let nextMinute = Math.floor(+date / msPerMinute + 1) * msPerMinute;
-
+  const [date, setDate] = useState(new Date());
   const currentTime = date.toLocaleTimeString([], {
     hour: 'numeric',
     minute: 'numeric',
   });
-  let [, forceUpdate] = useReducer((n) => n + 1, 0);
   useEffect(() => {
-    const timeout = setTimeout(forceUpdate, nextMinute - Date.now());
+    const msPerMinute = 60 * 1000;
+    let nextMinute = Math.floor(+date / msPerMinute + 1) * msPerMinute;
+
+    const timeout = setTimeout(() => {
+      if (Date.now() > nextMinute) {
+        setDate(new Date());
+      }
+    }, nextMinute - Date.now());
     return () => clearTimeout(timeout);
   }, [date]);
+
   return <span suppressHydrationWarning>{currentTime}</span>;
 }
 
@@ -158,10 +151,10 @@ export function HomeContent() {
             <Header>컴포넌트를 사용하여 사용자 인터페이스 만들기</Header>
             <Para>
               React를 사용하면 컴포넌트라고 불리는 조각들을 사용하여 사용자
-              인터페이스를 만들 수 있습니다.
-              <Code>Thumbnail</Code>, <Code>LikeButton</Code>, 그리고{' '}
-              <Code>Video</Code> 같은 컴포넌트를 만들 수 있습니다. 그런 다음
-              전체 화면, 페이지 및 앱에서 이들을 결합할 수 있습니다.
+              인터페이스를 만들 수 있습니다. <Code>Thumbnail</Code>,{' '}
+              <Code>LikeButton</Code>, 그리고 <Code>Video</Code> 같은 컴포넌트를
+              만들 수 있습니다. 그런 다음 전체 화면, 페이지 및 앱에서 이들을
+              결합할 수 있습니다.
             </Para>
           </Center>
           <FullBleed>
@@ -235,7 +228,7 @@ export function HomeContent() {
             <Para>
               React는 라이브러리입니다. 컴포넌트를 함께 묶을 수 있지만, 라우팅과
               데이터를 가져오는 방법을 규정하지는 않습니다. React로 앱을
-              만들려면, <Link href="https://nextjs.org">Next.js</Link> 또는
+              만들려면, <Link href="https://nextjs.org">Next.js</Link> 또는{' '}
               <Link href="https://remix.run">Remix</Link> 같은 풀스택 React
               프레임워크를 추천합니다.
             </Para>
@@ -285,12 +278,12 @@ export function HomeContent() {
                         웹에 충실하기
                       </h4>
                       <p className="lg:text-xl leading-normal text-secondary">
-                        사람들은 웹이 빠르게 로드되길 기대합니다. 서버에서 React
-                        를 사용하면 데이터를 가져오는 동안 HTML을 스트리밍하여
-                        JavaScript 코드가 로드되기 전에 남은 내용을 점진적으로
-                        채울 수 있습니다. 클라이언트에서 React는 표준 web API를
-                        사용하여 렌더링 중에도 UI를 반응적으로 유지할 수
-                        있습니다.
+                        사람들은 웹이 빠르게 로드되길 기대합니다. 서버에서
+                        React를 사용하면 데이터를 가져오는 동안 HTML을
+                        스트리밍하여 JavaScript 코드가 로드되기 전에 남은 내용을
+                        점진적으로 채울 수 있습니다. 클라이언트에서 React는 표준
+                        web API를 사용하여 렌더링 중에도 UI를 반응적으로 유지할
+                        수 있습니다.
                       </p>
                     </div>
                   </div>
@@ -375,14 +368,14 @@ export function HomeContent() {
                           느껴지기를 원합니다.{' '}
                           <Link href="https://reactnative.dev">
                             React Native
-                          </Link>{' '}
+                          </Link>
                           와{' '}
                           <Link href="https://github.com/expo/expo">Expo</Link>
                           를 사용하면 React를 통하여 Android, iOS 등을 위한 앱을
-                          빌드 할 수 있습니다. UI들이 native 이기때문에 진짜
-                          native 처럼 보여집니다. 이것은 web view 가 아닙니다.
-                          React 컴포넌트들은 실제 Android, iOS 플랫폼에서
-                          제공하는 view 를 렌더링합니다.
+                          빌드할 수 있습니다. UI들이 native이기 때문에 진짜
+                          native처럼 보입니다. 이것은 web view가 아닙니다. React
+                          컴포넌트들은 실제 Android, iOS 플랫폼에서 제공하는
+                          view를 렌더링합니다.
                         </p>
                       </div>
                     </div>
@@ -464,7 +457,7 @@ export function HomeContent() {
           <div className="w-full">
             <div className="mx-auto flex flex-col max-w-4xl">
               <Center>
-                <Header>수백만명이 있는 커뮤니티</Header>
+                <Header>수백만 명이 있는 커뮤니티</Header>
                 <Para>
                   여러분은 혼자가 아닙니다. 200만 명이 넘는 개발자들이 React
                   문서를 매달 방문합니다. React는 사람들과 팀이 동의할 수 있는
@@ -820,7 +813,7 @@ function ExampleLayout({
         .filter((s) => s !== null);
       setOverlayStyles(nextOverlayStyles);
     }
-  }, [activeArea]);
+  }, [activeArea, hoverTopOffset]);
   return (
     <div className="lg:pl-10 lg:pr-5 w-full">
       <div className="mt-12 mb-2 lg:my-16 max-w-7xl mx-auto flex flex-col w-full lg:rounded-2xl lg:bg-card lg:dark:bg-card-dark">
@@ -1200,7 +1193,7 @@ function useNestedScrollLock(ref) {
       window.removeEventListener('scroll', handleScroll);
       clearInterval(interval);
     };
-  }, []);
+  }, [ref]);
 }
 
 function ExamplePanel({
@@ -1209,7 +1202,6 @@ function ExamplePanel({
   noShadow,
   height,
   contentMarginTop,
-  activeArea,
 }) {
   return (
     <div
