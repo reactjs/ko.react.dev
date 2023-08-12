@@ -63,7 +63,9 @@ function SendFeedback({onSubmit}: {onSubmit: () => void}) {
   return (
     <div className="max-w-xs w-80 lg:w-auto py-3 shadow-lg rounded-lg m-4 bg-wash dark:bg-gray-95 px-4 flex">
       <p className="w-full font-bold text-primary dark:text-primary-dark text-lg mr-4">
-        {isSubmitted ? 'Thank you for your feedback!' : 'Is this page useful?'}
+        {isSubmitted
+          ? '피드백을 보내주셔서 감사합니다!'
+          : '이 페이지가 도움이 되었나요?'}
       </p>
       {!isSubmitted && (
         <button
