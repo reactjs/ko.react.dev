@@ -151,10 +151,10 @@ export function HomeContent() {
             <Header>컴포넌트를 사용하여 사용자 인터페이스 만들기</Header>
             <Para>
               React를 사용하면 컴포넌트라고 불리는 조각들을 사용하여 사용자
-              인터페이스를 만들 수 있습니다.
-              <Code>Thumbnail</Code>, <Code>LikeButton</Code>, 그리고{' '}
-              <Code>Video</Code> 같은 컴포넌트를 만들 수 있습니다. 그런 다음
-              전체 화면, 페이지 및 앱에서 이들을 결합할 수 있습니다.
+              인터페이스를 만들 수 있습니다. <Code>Thumbnail</Code>,{' '}
+              <Code>LikeButton</Code>, 그리고 <Code>Video</Code> 같은 컴포넌트를
+              만들 수 있습니다. 그런 다음 전체 화면, 페이지 및 앱에서 이들을
+              결합할 수 있습니다.
             </Para>
           </Center>
           <FullBleed>
@@ -278,12 +278,12 @@ export function HomeContent() {
                         웹에 충실하기
                       </h4>
                       <p className="lg:text-xl leading-normal text-secondary">
-                        사람들은 웹이 빠르게 로드되길 기대합니다. 서버에서 React
-                        를 사용하면 데이터를 가져오는 동안 HTML을 스트리밍하여
-                        JavaScript 코드가 로드되기 전에 남은 내용을 점진적으로
-                        채울 수 있습니다. 클라이언트에서 React는 표준 web API를
-                        사용하여 렌더링 중에도 UI를 반응적으로 유지할 수
-                        있습니다.
+                        사람들은 웹이 빠르게 로드되길 기대합니다. 서버에서
+                        React를 사용하면 데이터를 가져오는 동안 HTML을
+                        스트리밍하여 JavaScript 코드가 로드되기 전에 남은 내용을
+                        점진적으로 채울 수 있습니다. 클라이언트에서 React는 표준
+                        web API를 사용하여 렌더링 중에도 UI를 반응적으로 유지할
+                        수 있습니다.
                       </p>
                     </div>
                   </div>
@@ -368,14 +368,14 @@ export function HomeContent() {
                           느껴지기를 원합니다.{' '}
                           <Link href="https://reactnative.dev">
                             React Native
-                          </Link>{' '}
+                          </Link>
                           와{' '}
                           <Link href="https://github.com/expo/expo">Expo</Link>
                           를 사용하면 React를 통하여 Android, iOS 등을 위한 앱을
-                          빌드 할 수 있습니다. UI들이 native 이기때문에 진짜
-                          native 처럼 보여집니다. 이것은 web view 가 아닙니다.
-                          React 컴포넌트들은 실제 Android, iOS 플랫폼에서
-                          제공하는 view 를 렌더링합니다.
+                          빌드할 수 있습니다. UI들이 native이기 때문에 진짜
+                          native처럼 보입니다. 이것은 web view가 아닙니다. React
+                          컴포넌트들은 실제 Android, iOS 플랫폼에서 제공하는
+                          view를 렌더링합니다.
                         </p>
                       </div>
                     </div>
@@ -457,7 +457,7 @@ export function HomeContent() {
           <div className="w-full">
             <div className="mx-auto flex flex-col max-w-4xl">
               <Center>
-                <Header>수백만명이 있는 커뮤니티</Header>
+                <Header>수백만 명이 있는 커뮤니티</Header>
                 <Para>
                   여러분은 혼자가 아닙니다. 200만 명이 넘는 개발자들이 React
                   문서를 매달 방문합니다. React는 사람들과 팀이 동의할 수 있는
