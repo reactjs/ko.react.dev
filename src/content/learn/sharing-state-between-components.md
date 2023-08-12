@@ -79,13 +79,13 @@ h3, p { margin: 5px 0px; }
 
 <Diagram name="sharing_state_child" height={367} width={477} alt="Accordion이라는 이름의 하나의 부모와 Panel이라는 이름의 두 자식으로 구성된 세 컴포넌트 트리를 나타내는 다이어그램입니다. 두 Panel 컴포넌트는 값이 false인 isActive를 가집니다.">
 
-처음에 각 `Panel`의 `isActive` 상태는 `false`이므로 두 패널은 접혀있습니다.
+처음에는 각 `Panel`의 `isActive` state가 `false`이기 때문에 두 컴포넌트 모두 닫힌 상태로 보입니다.
 
 </Diagram>
 
 <Diagram name="sharing_state_child_clicked" height={367} width={480} alt="이전과 동일한 그림에서 자식 중 첫 번째 Panel 컴포넌트의 강조 표시된 isActive가 값이 true로 변경된 클릭을 나타냅니다. 두 번째 Panel 컴포넌트는 여전히 false 값을 가집니다." >
 
-각 `Panel`의 버튼 클릭은 그 `Panel`의 `isActive` 상태만 변경합니다.
+두 `Panel`의 버튼 중 어느 것을 클릭하더라도 클릭한 해당 `Panel`의 `isActive` state만 변경됩니다.
 
 </Diagram>
 
@@ -178,7 +178,7 @@ h3, p { margin: 5px 0px; }
 
 상태 끌어올리기는 종종 state로 저장하고 있는 것의 특성을 바꿉니다.
 
-이 예제에서는 한 번에 하나의 패널만 활성화되어야 합니다. 즉 공통 부모 컴포넌트인 `Accordion`이 활성화된 패널이 어떤 것인지 추적해야 합니다. `boolean` 값 대신, 활성화된 `Panel`의 인덱스를 가리키는 숫자를 state 변수로 사용해야 합니다:
+이 케이스에서는, 한 번에 하나의 패널만 활성화되어야 합니다. 이를 위해 공통 부모 컴포넌트인 `Accordian`은 *어떤* 패널이 활성화된 패널인지 추적하고 있어야 합니다. state 변수에 `boolean` 값을 사용하는 대신, 활성화되어있는 `Panel`의 인덱스 숫자를 사용할 수 있습니다:
 
 ```js
 const [activeIndex, setActiveIndex] = useState(0);
