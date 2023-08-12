@@ -2,13 +2,13 @@
 title: "React Conf 2021 요약"
 ---
 
-2021년 12월 17일 [Jesslyn Tannady](https://twitter.com/jtannady), [Rick Hanlon](https://twitter.com/rickhanlonii)
+2021년 12월 17일, [Jesslyn Tannady](https://twitter.com/jtannady), [Rick Hanlon](https://twitter.com/rickhanlonii)
 
 ---
 
 <Intro>
 
-지난 주, 우리는 6번째 React Conf를 개최했습니다. 지난 몇 년 동안 우리는 React Conf 무대를 통해 [_React Native_](https://engineering.fb.com/2015/03/26/android/react-native-bringing-modern-web-techniques-to-mobile/), [_React Hooks_](https://reactjs.org/docs/hooks-intro.html)와 같은 업계 변화를 알리는 발표를 해왔습니다. 올해는 React 18의 출시와 동시 기능의 점진적인 도입을 시작으로 React의 멀티 플랫폼 비전을 공유했습니다.
+지난주, 우리는 6번째 React Conf를 개최했습니다. 지난 몇 년 동안 우리는 React Conf 무대를 통해 [_React Native_](https://engineering.fb.com/2015/03/26/android/react-native-bringing-modern-web-techniques-to-mobile/), [_React Hooks_](https://reactjs.org/docs/hooks-intro.html)와 같은 업계 변화를 알리는 발표를 해왔습니다. 올해는 React 18의 출시와 동시 기능의 점진적인 도입을 시작으로 React의 멀티 플랫폼 비전을 공유했습니다.
 
 </Intro>
 

@@ -77,13 +77,13 @@ h3, p { margin: 5px 0px; }
 
 <DiagramGroup>
 
-<Diagram name="sharing_state_child" height={367} width={477} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Both Panel components contain isActive with value false.">
+<Diagram name="sharing_state_child" height={367} width={477} alt="Accordion이라는 이름의 하나의 부모와 Panel이라는 이름의 두 자식으로 구성된 세 컴포넌트 트리를 나타내는 다이어그램입니다. 두 Panel 컴포넌트는 값이 false인 isActive를 가집니다.">
 
 처음에는 각 `Panel`의 `isActive` state가 `false`이기 때문에 두 컴포넌트 모두 닫힌 상태로 보입니다.
 
 </Diagram>
 
-<Diagram name="sharing_state_child_clicked" height={367} width={480} alt="The same diagram as the previous, with the isActive of the first child Panel component highlighted indicating a click with the isActive value set to true. The second Panel component still contains value false." >
+<Diagram name="sharing_state_child_clicked" height={367} width={480} alt="이전과 동일한 그림에서 자식 중 첫 번째 Panel 컴포넌트의 강조 표시된 isActive가 값이 true로 변경된 클릭을 나타냅니다. 두 번째 Panel 컴포넌트는 여전히 false 값을 가집니다." >
 
 두 `Panel`의 버튼 중 어느 것을 클릭하더라도 클릭한 해당 `Panel`의 `isActive` state만 변경됩니다.
 
@@ -270,15 +270,15 @@ h3, p { margin: 5px 0px; }
 
 <DiagramGroup>
 
-<Diagram name="sharing_state_parent" height={385} width={487} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Accordion contains an activeIndex value of zero which turns into isActive value of true passed to the first Panel, and isActive value of false passed to the second Panel." >
+<Diagram name="sharing_state_parent" height={385} width={487} alt="Accordion이라는 이름의 하나의 부모와 Panel이라는 이름의 두 자식으로 구성된 세 컴포넌트 트리를 나타내는 다이어그램입니다. Accordion은 값이 0인 activeIndex를 가지며, 첫 번째 패널의 isActive에 true를, 두 번째 패널의 isActive에 false를 반환합니다." >
 
-Initially, `Accordion`'s `activeIndex` is `0`, so the first `Panel` receives `isActive = true`
+처음에 `Accordion`의 `activeIndex`는 0이고, 따라서 첫 번째 `Panel`은 `isActive = true`를 받습니다.
 
 </Diagram>
 
-<Diagram name="sharing_state_parent_clicked" height={385} width={521} alt="The same diagram as the previous, with the activeIndex value of the parent Accordion component highlighted indicating a click with the value changed to one. The flow to both of the children Panel components is also highlighted, and the isActive value passed to each child is set to the opposite: false for the first Panel and true for the second one." >
+<Diagram name="sharing_state_parent_clicked" height={385} width={521} alt="이전과 동일한 그림에서 부모 컴포넌트 Accordion의 강조 표시된 activeIndex가 값이 1로 변경된 클릭을 나타냅니다. 두 하위 Panel 컴포넌트에 대한 전달 흐름도 강조 표시되어 isActive 값이 반대로 변경됨을 나타냅니다: 첫 번째 패널은 false, 두 번째 패널은 true" >
 
-When `Accordion`'s `activeIndex` state changes to `1`, the second `Panel` receives `isActive = true` instead
+`Accordion`의 `activeIndex` state가 `1`로 변경되면 두 번째 `Panel`은 `isActive = true`를 받게 됩니다.
 
 </Diagram>
 
