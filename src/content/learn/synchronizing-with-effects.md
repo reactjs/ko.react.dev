@@ -598,9 +598,9 @@ React는 마지막 예시와 같은 버그를 찾기 위해 개발 중에 컴포
 
 작성할 대부분의 Effect는 아래의 일반적인 패턴 중 하나에 해당될 것입니다.
 
-### 비-React 위젯 제어하기 {/*controlling-non-react-widgets*/}
+### React로 작성되지 않은 위젯 제어하기 {/*controlling-non-react-widgets*/}
 
-가끔씩 React에 작성되지 않은 UI 위젯을 추가해야 할 때가 있습니다. 예를 들어, 페이지에 지도 컴포넌트를 추가한다고 가정해 보겠습니다. 이 지도 컴포넌트에는 `setZoomLevel()` 메서드가 있으며, `zoomLevel` state 변수와 동기화하려고 할 것입니다. Effect는 다음과 비슷할 것입니다.
+가끔씩 React로 작성되지 않은 UI 위젯을 추가해야 할 때가 있습니다. 예를 들어, 페이지에 지도 컴포넌트를 추가한다고 가정해 보겠습니다. 이 지도 컴포넌트에는 `setZoomLevel()` 메서드가 있으며, `zoomLevel` state 변수와 동기화하려고 할 것입니다. Effect는 다음과 비슷할 것입니다.
 
 ```js
 useEffect(() => {
