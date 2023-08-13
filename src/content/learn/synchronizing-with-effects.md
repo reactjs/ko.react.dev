@@ -1,5 +1,5 @@
 ---
-title: 'Effects로 동기화하기'
+title: 'Effect로 동기화하기'
 ---
 
 <Intro>
