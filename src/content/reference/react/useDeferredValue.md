@@ -62,7 +62,7 @@ function SearchPage() {
 
 ### 새 콘텐츠가 로딩되는 동안 오래된 콘텐츠 표시하기 {/*showing-stale-content-while-fresh-content-is-loading*/}
 
-컴포넌트의 최상위 레벨에서 `useDeferredValue`를 호출하여 UI 일부 업데이트를 연기할 수 있습니다.
+컴포넌트의 최상위 레벨에서 `useDeferredValue`를 호출하여 UI 일부 업데이트를 지연할 수 있습니다.
 
 ```js [[1, 5, "query"], [2, 5, "deferredQuery"]]
 import { useState, useDeferredValue } from 'react';
@@ -731,7 +731,7 @@ input { margin: 10px; }
 
 ---
 
-### UI 일부에 대해 리렌더링 연기하기 {/*deferring-re-rendering-for-a-part-of-the-ui*/}
+### UI 일부에 대해 리렌더링 지연하기 {/*deferring-re-rendering-for-a-part-of-the-ui*/}
 
 `useDeferredValue`를 성능 최적화로 적용할 수도 있습니다. UI 일부가 리렌더링 속도가 느리고, 이를 최적화할 쉬운 방법이 없으며, 나머지 UI를 차단하지 않도록 하려는 경우에 유용합니다.
 
@@ -778,7 +778,7 @@ function App() {
 
 <Recipes titleText="useDeferredValue와 최적화되지 않은 리렌더링의 차이점" titleId="examples">
 
-#### 목록 리렌더링 연기 {/*deferred-re-rendering-of-the-list*/}
+#### 목록 리렌더링 지연 {/*deferred-re-rendering-of-the-list*/}
 
 이 예시에서는 `SlowList` 컴포넌트의 각 항목을 **인위적으로 느려지도록 하여** `useDeferredValue`를 통해 input의 반응성을 유지하는 방법을 확인할 수 있습니다. input에 타이핑하면 입력은 빠르게 느껴지는 반면 목록은 "지연"되는 것을 확인할 수 있습니다.
 
@@ -939,7 +939,7 @@ export default SlowList;
 
 <DeepDive>
 
-#### 값을 연기하는 것은 디바운싱 및 스로틀링과 어떤 점이 다른가요? {/*how-is-deferring-a-value-different-from-debouncing-and-throttling*/}
+#### 값을 지연하는 것은 디바운싱 및 스로틀링과 어떤 점이 다른가요? {/*how-is-deferring-a-value-different-from-debouncing-and-throttling*/}
 
 이 시나리오에서 이전에 사용했을 수 있는 두 가지 일반적인 최적화 기술이 있습니다
 
@@ -950,7 +950,7 @@ export default SlowList;
 
 디바운싱이나 스로틀링과 달리 고정된 지연을 선택할 필요가 없습니다. 사용자의 디바이스가 빠른 경우(예: 고성능 노트북) 지연된 리렌더링은 거의 즉시 발생하며 눈에 띄지 않습니다. 사용자의 디바이스가 느린 경우, 기기 속도에 비례하여 목록이 input에 '지연'됩니다.
 
-또한 디바운싱이나 스로틀링과 달리, `useDeferredValue`에 의해 수행되는 지연된 리렌더링은 기본적으로 중단할 수 있습니다. 즉, React가 큰 목록을 리렌더링하는 도중에 사용자가 다른 키 입력을 하면 React는 해당 리렌더링을 중단하고 키 입력을 처리한 다음 백그라운드에서 리렌더링을 시작합니다. 반면 디바운싱과 스로틀링은 렌더링이 키 입력을 차단하는 순간을 연기할 뿐이므로 여전히 불안정한 경험을 만들어 냅니다.
+또한 디바운싱이나 스로틀링과 달리, `useDeferredValue`에 의해 수행되는 지연된 리렌더링은 기본적으로 중단할 수 있습니다. 즉, React가 큰 목록을 리렌더링하는 도중에 사용자가 다른 키 입력을 하면 React는 해당 리렌더링을 중단하고 키 입력을 처리한 다음 백그라운드에서 리렌더링을 시작합니다. 반면 디바운싱과 스로틀링은 렌더링이 키 입력을 차단하는 순간을 지연할 뿐이므로 여전히 불안정한 경험을 만들어 냅니다.
 
 최적화하려는 작업이 렌더링 중에 발생하지 않는 경우에도 디바운싱과 스로틀링은 여전히 유용합니다. 예를 들어 디바운싱과 스로틀링을 사용하면 네트워크 요청을 더 적게 처리할 수 있습니다. 이러한 기술을 함께 사용할 수도 있습니다.
 
