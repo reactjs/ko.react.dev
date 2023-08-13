@@ -80,7 +80,7 @@ function FooterLink({
       />
       <span>
         <span className="block no-underline text-sm tracking-wide text-secondary dark:text-secondary-dark uppercase font-bold group-focus:text-link dark:group-focus:text-link-dark group-focus:text-opacity-100">
-          {type}
+          {type === 'Previous' ? '이전' : '다음'}
         </span>
         <span className="block text-lg group-hover:underline">{title}</span>
       </span>

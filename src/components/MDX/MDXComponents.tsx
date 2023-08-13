@@ -113,7 +113,7 @@ function LearnMore({
       <section className="p-8 mt-16 mb-16 flex flex-row shadow-inner-border dark:shadow-inner-border-dark justify-between items-center bg-card dark:bg-card-dark rounded-2xl">
         <div className="flex-col">
           <h2 className="text-primary font-display dark:text-primary-dark font-bold text-2xl leading-tight">
-            Ready to learn this topic?
+            이 주제를 배울 준비가 되셨나요?
           </h2>
           {children}
           {path ? (
@@ -122,7 +122,7 @@ function LearnMore({
               label="Read More"
               href={path}
               type="primary">
-              Read More
+              더 보기
               <IconNavArrow displayDirection="right" className="inline ml-1" />
             </ButtonLink>
           ) : null}
@@ -173,7 +173,7 @@ function YouWillLearn({
   children: any;
   isChapter?: boolean;
 }) {
-  let title = isChapter ? 'In this chapter' : 'You will learn';
+  let title = isChapter ? '이 장에서는' : '학습 내용';
   return <SimpleCallout title={title}>{children}</SimpleCallout>;
 }
 
@@ -369,7 +369,8 @@ function YouTubeIframe(props: any) {
 }
 
 function Image(props: any) {
-  return <img className="max-w-[calc(min(700px,100%))]" {...props} />;
+  const {alt, ...rest} = props;
+  return <img alt={alt} className="max-w-[calc(min(700px,100%))]" {...rest} />;
 }
 
 export const MDXComponents = {
