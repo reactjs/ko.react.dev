@@ -825,6 +825,6 @@ React는 `<StrictMode>` 트리 내부의 컴포넌트가 더 이상 사용되지
 * [`findDOMNode`](/reference/react-dom/findDOMNode). [대안 보기](https://reactjs.org/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
 * [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount)와 같은 `UNSAFE_` 클래스 생명주기 메서드. [대안 보기](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles)
 * 레거시 context ([`childContextTypes`](/reference/react/Component#static-childcontexttypes), [`contextTypes`](/reference/react/Component#static-contexttypes), 및 [`getChildContext`](/reference/react/Component#getchildcontext)). [대안 보기](/reference/react/createContext)
-* 레거시 문자열 refs ([`this.refs`](/reference/react/Component#refs)). [대안 보기](https://reactjs.org/docs/strict-mode.html#warning-about-legacy-string-ref-api-usage)
+* 레거시 문자열 refs ([`this.refs`](/reference/react/Component#refs)). [대안 보기](https://ko.legacy.reactjs.org/docs/strict-mode.html#warning-about-legacy-string-ref-api-usage)
 
 이러한 API는 주로 이전 [클래스 컴포넌트](/reference/react/Component)에서 사용되므로 최신 앱에서는 거의 나타나지 않습니다.
