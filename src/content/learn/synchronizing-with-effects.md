@@ -4,7 +4,7 @@ title: 'Effect로 동기화하기'
 
 <Intro>
 
-일부 컴포넌트에서는 외부 시스템과 동기화해야할 수 있습니다. 예를 들어 React의 state을 기준으로 React와 상관 없는 구성 요소를 제어하거나, 서버 연결을 설정하거나, 구성 요소가 화면에 나타날 때 분석 목적의 로그를 전송할 수도 있습니다. *Effect*를 사용하면 렌더링 후 특정 코드를 실행하여 React 외부의 시스템과 컴포넌트를 동기화할 수 있습니다.
+일부 컴포넌트에서는 외부 시스템과 동기화해야 할 수 있습니다. 예를 들어 React의 state을 기준으로 React와 상관없는 구성 요소를 제어하거나, 서버 연결을 설정하거나, 구성 요소가 화면에 나타날 때 분석 목적의 로그를 전송할 수도 있습니다. *Effect*를 사용하면 렌더링 후 특정 코드를 실행하여 React 외부의 시스템과 컴포넌트를 동기화할 수 있습니다.
 
 </Intro>
 
@@ -14,7 +14,7 @@ title: 'Effect로 동기화하기'
 - Effect가 이벤트와 다른 점
 - 컴포넌트에서 Effect를 선언하는 방법
 - 불필요한 Effect 재실행을 건너뛰는 방법
-- 개발 중에 Effect가 두번 실행되는 이유와 해결 방법
+- 개발 중에 Effect가 두 번 실행되는 이유와 해결 방법
 
 </YouWillLearn>
 
@@ -26,7 +26,7 @@ Effect에 대해 자세히 알아보기 전에, 컴포넌트 내부의 2가지 �
 
 - **이벤트 핸들러**([상호작용 더하기](/learn/adding-interactivity)에 소개됨)는 단순한 계산 용도가 아닌 무언가를 *하는* 컴포넌트 내부의 중첩 함수입니다. 이벤트 핸들러는 입력 필드를 업데이트하거나, 제품을 구입하기 위해 HTTP POST 요청을 보내거나, 사용자를 다른 화면으로 이동시킬 수 있습니다. 이벤트 핸들러에는 특정 사용자 작업(예: 버튼 클릭 또는 입력)으로 인해 발생하는 ["부수 효과"](https://en.wikipedia.org/wiki/Side_effect_(computer_science))(이러한 부수 효과가 프로그램 상태를 변경합니다.)를 포함합니다.
 
-가끔은 이것으로 충분하지 않습니다. 화면에 보일 때마다 채팅 서버에 접속해야 하는 `ChatRoom` 컴포넌트를 생각해보세요. 서버에 접속하는 것은 순수한 계산이 아니고 부수 효과를 발생시키기 때문에 렌더링 중에는 할 수 없습니다. 하지만 클릭 한 번으로 `ChatRoo,m`이 표시되는 특정 이벤트는 하나도 없습니다.
+가끔은 이것으로 충분하지 않습니다. 화면에 보일 때마다 채팅 서버에 접속해야 하는 `ChatRoom` 컴포넌트를 생각해 보세요. 서버에 접속하는 것은 순수한 계산이 아니고 부수 효과를 발생시키기 때문에 렌더링 중에는 할 수 없습니다. 하지만 클릭 한 번으로 `ChatRoom`이 표시되는 특정 이벤트는 하나도 없습니다.
 
 **Effect**는 렌더링 자체에 의해 발생하는 부수 효과를 특정하는 것으로, 특정 이벤트가 아닌 렌더링에 의해 직접 발생합니다. 채팅에서 메시지를 보내는 것은 *이벤트*입니다. 왜냐하면 이것은 사용자가 특정 버튼을 클릭함에 따라 직접적으로 발생합니다. 그러나 서버 연결 설정은 *Effect*입니다. 왜냐하면 이것은 컴포넌트의 표시를 주관하는 어떤 상호 작용과도 상관없이 발생해야 합니다. Effect는 [커밋](/learn/render-and-commit)이 끝난 후에 화면 업데이트가 이루어지고 나서 실행됩니다. 이 시점이 React 컴포넌트를 외부 시스템(네트워크 또는 써드파티 라이브러리와 같은)과 동기화하기 좋은 타이밍입니다.
 
@@ -46,14 +46,14 @@ Effect에 대해 자세히 알아보기 전에, 컴포넌트 내부의 2가지 �
 Effect를 작성하기 위해서는 다음 세 단계를 따릅니다.
 
 1. **Effect 선언.** 기본적으로 Effect는 모든 렌더링 후에 실행됩니다.
-2. **Effect 의존성 지정.** 대부분의 Effect는 모든 렌더링 후가 아닌 *필요할 때*만 다시 실행되어야 합니다. 예를 들어, 페이드 인 애니메이션은 컴포넌트가 나타날 때에만 트리거되어야 합니다. 채팅 방에 연결, 연결 해제하는 것은 컴포넌트가 나타나거나 사라질 때 또는 채팅 방이 변경될 때만 발생해야 합니다. *의존성*을 지정하여 이를 제어하는 방법을 배우게 될 것입니다.
+2. **Effect 의존성 지정.** 대부분의 Effect는 모든 렌더링 후가 아닌 *필요할 때*만 다시 실행되어야 합니다. 예를 들어, 페이드 인 애니메이션은 컴포넌트가 나타날 때에만 트리거 되어야 합니다. 채팅 방에 연결, 연결 해제하는 것은 컴포넌트가 나타나거나 사라질 때 또는 채팅 방이 변경될 때만 발생해야 합니다. *의존성*을 지정하여 이를 제어하는 방법을 배우게 될 것입니다.
 3. **필요한 경우 cleanup 추가.** 일부 Effect는 수행 중이던 작업을 중지, 취소 또는 정리하는 방법을 지정해야 할 수 있습니다. 예를 들어, "연결"은 "연결 해제"가 필요하며, "구독"은 "구독 취소"가 필요하고, "불러오기(fetch)"는 "취소" 또는 "무시"가 필요합니다. 이런 경우에 Effect에서 *정리 함수(cleanup function)*를 반환하여 어떻게 수행하는지 배우게 될 것입니다.
 
 각 단계를 자세히 살펴보겠습니다.
 
 ### 1단계: Effect 선언하기 {/*step-1-declare-an-effect*/}
 
-컴포넌트 내에서 Effect를 선언하려면, React에서 [`useEffect` 훅](/reference/react/useEffect)을 import하세요.
+컴포넌트 내에서 Effect를 선언하려면, React에서 [`useEffect` 훅](/reference/react/useEffect)을 import 하세요.
 
 ```js
 import { useEffect } from 'react';
@@ -70,7 +70,7 @@ function MyComponent() {
 }
 ```
 
-컴포넌트가 렌더링될 때마다 React는 화면을 업데이트한 다음 `useEffect` 내부의 코드를 실행합니다. 다시 말해, **`useEffect`는 화면에 렌더링이 반영될 때까지 코드 실행을 "지연"시킵니다.**
+컴포넌트가 렌더링 될 때마다 React는 화면을 업데이트한 다음 `useEffect` 내부의 코드를 실행합니다. 다시 말해, **`useEffect`는 화면에 렌더링이 반영될 때까지 코드 실행을 "지연"시킵니다.**
 
 이제 외부 시스템과 동기화하기 위해 어떻게 Effect를 사용할 수 있는지 알아보겠습니다. `<VideoPlayer>`라는 React 컴포넌트를 살펴보겠습니다. 이 컴포넌트를 `isPlaying`이라는 props를 통해 재생 중인지 일시 정지 상태인지 제어하는 것이 좋아 보이네요.
 
@@ -78,7 +78,7 @@ function MyComponent() {
 <VideoPlayer isPlaying={isPlaying} />;
 ```
 
-커스텀 `VideoPlayer` 컴포넌트는 내장 브라우저 [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) 태그를 렌더링합니다.
+커스텀 `VideoPlayer` 컴포넌트는 내장 브라우저 [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) 태그를 렌더링 합니다.
 
 ```js
 function VideoPlayer({ src, isPlaying }) {
@@ -159,9 +159,9 @@ function VideoPlayer({ src, isPlaying }) {
 
 DOM 업데이트를 Effect로 감싸면 React가 화면을 업데이트한 다음에 Effect가 실행됩니다.
 
-`VideoPlayer` 컴포넌트가 렌더링될 때(처음 호출하거나 다시 렌더링할 때) 몇 가지 일이 발생합니다. 먼저 React는 화면을 업데이트하여 `<video>` 태그가 올바른 속성과 함께 DOM에 있는지 확인합니다. 그런 다음 React는 Effect를 실행합니다. 마지막으로 Effect에서는 `isPlaying` 값에 따라 `play()` 또는 `pause()`를 호출합니다.
+`VideoPlayer` 컴포넌트가 렌더링 될 때(처음 호출하거나 다시 렌더링 할 때) 몇 가지 일이 발생합니다. 먼저 React는 화면을 업데이트하여 `<video>` 태그가 올바른 속성과 함께 DOM에 있는지 확인합니다. 그런 다음 React는 Effect를 실행합니다. 마지막으로 Effect에서는 `isPlaying` 값에 따라 `play()` 또는 `pause()`를 호출합니다.
 
-"재생" 또는 "일시 정지"를 여러 번 눌러보고 비디오 플레이어가 `isPlaying` 값과 동기화되는지 확인해보세요.
+"재생" 또는 "일시 정지"를 여러 번 눌러보고 비디오 플레이어가 `isPlaying` 값과 동기화되는지 확인해 보세요.
 
 <Sandpack>
 
@@ -441,7 +441,7 @@ function VideoPlayer({ src, isPlaying }) {
   }, [isPlaying]);
 ```
 
-이것은 `ref` 객체가 *안정된 식별성(stable identity)*을 가지기 때문입니다. React는 동일한 `useRef` 호출에서 항상 [같은 객체를 얻을 수 있음을](/reference/react/useRef#returns) 보장합니다. 이 객체는 절대 변경되지 않기 때문에 자체적으로 Effect를 다시 실행시키지 않습니다. 따라서 `ref`는 의존성 배열에 포함하든 포함하지 않든 상관없습니다. 포함해도 문제 없습니다.
+이것은 `ref` 객체가 *안정된 식별성(stable identity)*을 가지기 때문입니다. React는 동일한 `useRef` 호출에서 항상 [같은 객체를 얻을 수 있음을](/reference/react/useRef#returns) 보장합니다. 이 객체는 절대 변경되지 않기 때문에 자체적으로 Effect를 다시 실행시키지 않습니다. 따라서 `ref`는 의존성 배열에 포함하든 포함하지 않든 상관없습니다. 포함해도 문제없습니다.
 
 ```js {9}
 function VideoPlayer({ src, isPlaying }) {
@@ -463,9 +463,9 @@ function VideoPlayer({ src, isPlaying }) {
 
 ### 3단계: 필요하다면 cleanup을 추가하세요 {/*step-3-add-cleanup-if-needed*/}
 
-다른 예시를 고려해보겠습니다. 사용자에게 표시될 때 채팅 서버에 연결해야 하는 `ChatRoom` 컴포넌트를 작성 중입니다. `createConnection()` API가 주어지며, 이 API는 `connect()` 및 `disconnect()` 메서드를 가진 객체를 반환합니다. 사용자에게 표시되는 동안 컴포넌트가 채팅 서버와의 연결을 유지하려면 어떻게 해야할까요?
+다른 예시를 고려해 보겠습니다. 사용자에게 표시될 때 채팅 서버에 연결해야 하는 `ChatRoom` 컴포넌트를 작성 중입니다. `createConnection()` API가 주어지며, 이 API는 `connect()` 및 `disconnect()` 메서드를 가진 객체를 반환합니다. 사용자에게 표시되는 동안 컴포넌트가 채팅 서버와의 연결을 유지하려면 어떻게 해야 할까요?
 
-먼저 Effect를 작성해보겠습니다.
+먼저 Effect를 작성해 보겠습니다.
 
 ```js
 useEffect(() => {
@@ -485,7 +485,7 @@ useEffect(() => {
 
 **Effect 내부의 코드는 어떠한 props나 상태도 사용하지 않으므로, 의존성 배열은 `[]` (빈 배열)입니다. 이는 React에게 이 코드를 컴포넌트가 "마운트"될 때만 실행하도록 알려줍니다. 즉, 화면에 처음으로 나타날 때에만 실행되게 됩니다.**
 
-이 코드를 실행해보겠습니다.
+이 코드를 실행해 보겠습니다.
 
 <Sandpack>
 
@@ -522,9 +522,9 @@ input { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-이 Effect는 마운트될 때만 실행되므로 콘솔에 "✅ 연결 중..."이 한 번 출력될 것으로 예상할 수 있습니다. 그러나 콘솔을 확인해보면 "✅ 연결 중..."이 두 번 출력됩니다. 왜 그럴까요?
+이 Effect는 마운트될 때만 실행되므로 콘솔에 "✅ 연결 중..."이 한 번 출력될 것으로 예상할 수 있습니다. 그러나 콘솔을 확인해 보면 "✅ 연결 중..."이 두 번 출력됩니다. 왜 그럴까요?
 
-ChatRoom 컴포넌트가 여러 화면으로 구성된 큰 앱의 일부라고 가정해보겠습니다. 사용자가 ChatRoom 페이지에서 여정을 시작합니다. 컴포넌트가 마운트되고 connection.connect()를 호출합니다. 그런 다음 사용자가 다른 화면으로 이동한다고 상상해보세요. 예를 들어, 설정 페이지로 이동할 수 있습니다. ChatRoom 컴포넌트가 언마운트됩니다. 마지막으로 사용자가 뒤로 가기 버튼을 클릭하고 ChatRoom이 다시 마운트됩니다. 이렇게 되면 두 번째 연결이 설정되지만 첫 번째 연결은 종료되지 않았습니다! 사용자가 앱을 탐색하는 동안 연결은 종료되지 않고 계속 쌓일 것입니다.
+ChatRoom 컴포넌트가 여러 화면으로 구성된 큰 앱의 일부라고 가정해 보겠습니다. 사용자가 ChatRoom 페이지에서 여정을 시작합니다. 컴포넌트가 마운트되고 connection.connect()를 호출합니다. 그런 다음 사용자가 다른 화면으로 이동한다고 상상해보세요. 예를 들어, 설정 페이지로 이동할 수 있습니다. ChatRoom 컴포넌트가 언마운트됩니다. 마지막으로 사용자가 뒤로 가기 버튼을 클릭하고 ChatRoom이 다시 마운트됩니다. 이렇게 되면 두 번째 연결이 설정되지만 첫 번째 연결은 종료되지 않았습니다! 사용자가 앱을 탐색하는 동안 연결은 종료되지 않고 계속 쌓일 것입니다.
 
 이와 같은 버그는 앱의 이곳저곳을 수동으로 테스트해보지 않으면 놓치기 쉽습니다. 이러한 문제를 빠르게 파악할 수 있도록 React는 개발 모드에서 초기 마운트 후 모든 컴포넌트를 한 번 다시 마운트합니다.
 
@@ -600,7 +600,7 @@ React는 마지막 예시와 같은 버그를 찾기 위해 개발 중에 컴포
 
 ### 비-React 위젯 제어하기 {/*controlling-non-react-widgets*/}
 
-가끔씩 React에 작성되지 않은 UI 위젯을 추가해야 할 때가 있습니다. 예를 들어, 페이지에 지도 컴포넌트를 추가한다고 가정해보겠습니다. 이 지도 컴포넌트에는 `setZoomLevel()` 메서드가 있으며, `zoomLevel` state 변수와 동기화하려고 할 것입니다. Effect는 다음과 비슷할 것입니다.
+가끔씩 React에 작성되지 않은 UI 위젯을 추가해야 할 때가 있습니다. 예를 들어, 페이지에 지도 컴포넌트를 추가한다고 가정해 보겠습니다. 이 지도 컴포넌트에는 `setZoomLevel()` 메서드가 있으며, `zoomLevel` state 변수와 동기화하려고 할 것입니다. Effect는 다음과 비슷할 것입니다.
 
 ```js
 useEffect(() => {
@@ -611,7 +611,7 @@ useEffect(() => {
 
 이 경우에는 클린업이 필요하지 않음을 유의하세요. 개발 모드에서 React는 Effect를 두 번 호출하지만, 동일한 값을 가지고 `setZoomLevel`을 두 번 호출하는 것은 아무런 문제가 되지 않습니다. 약간 느릴 수 있지만, 이것은 제품 환경에서 불필요하게 다시 마운트되지 않기 때문에 문제가 되지 않습니다.
 
-일부 API는 연속해서 두 번 호출하는 것을 허용하지 않을 수도 있습니다. 예를 들어 내장된 [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement) 요소의 [`showModal`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal) 메서드는 두 번 호출하면 예외를 던집니다. 클린업 함수를 구현하고 이 함수에서 대화 상자를 닫도록 만들어보세요:
+일부 API는 연속해서 두 번 호출하는 것을 허용하지 않을 수도 있습니다. 예를 들어 내장된 [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement) 요소의 [`showModal`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal) 메서드는 두 번 호출하면 예외를 던집니다. 클린업 함수를 구현하고 이 함수에서 대화 상자를 닫도록 만들어보세요.
 
 ```js {4}
 useEffect(() => {
@@ -637,7 +637,7 @@ useEffect(() => {
 }, []);
 ```
 
-개발 중에는 Effect가 `addEventListener()`를 호출한 다음 즉시 `removeEventListener()`를 호출하고, 그 다음 동일한 핸들러로 `addEventListener()`를 호출합니다. 따라서 한 번에 하나의 활성 구독만 있게 됩니다. 이것은 제품 환경에서 한 번 `addEventListener()`를 호출하는 것과 동일한 동작을 가집니다.
+개발 중에는 Effect가 `addEventListener()`를 호출한 다음 즉시 `removeEventListener()`를 호출하고, 그다음 동일한 핸들러로 `addEventListener()`를 호출합니다. 따라서 한 번에 하나의 활성 구독만 있게 됩니다. 이것은 제품 환경에서 한 번 `addEventListener()`를 호출하는 것과 동일한 동작을 가집니다.
 
 ### 애니메이션 트리거 {/*triggering-animations*/}
 
@@ -730,7 +730,7 @@ useEffect(() => {
 
 ### Effect가 아닌 경우: 애플리케이션 초기화 {/*not-an-effect-initializing-the-application*/}
 
-일부 로직은 애플리케이션 시작 시에 한 번만 실행되어야 합니다. 이러한 로직은 컴포넌트 외부에 배치할 수 있습니다:
+일부 로직은 애플리케이션 시작 시에 한 번만 실행되어야 합니다. 이러한 로직은 컴포넌트 외부에 배치할 수 있습니다.
 
 ```js {2-3}
 if (typeof window !== 'undefined') { // 브라우저에서 실행 중인지 확인합니다.
@@ -747,7 +747,7 @@ function App() {
 
 ### Effect가 아닌 경우: 제품 구입하기 {/*not-an-effect-buying-a-product*/}
 
-가끔은 cleanup 함수를 작성하더라도 Effect가 두 번 실행되는 것에 대해 사용자가 확인할 수 있는 결과를 방지할 방법이 없을 수 있습니다. 예를 들어, 아래와 같이 제품을 구매하는 POST 요청을 보내는 Effect가 있다고 가정해보겠습니다:
+가끔은 cleanup 함수를 작성하더라도 Effect가 두 번 실행되는 것에 대해 사용자가 확인할 수 있는 결과를 방지할 방법이 없을 수 있습니다. 예를 들어, 아래와 같이 제품을 구매하는 POST 요청을 보내는 Effect가 있다고 가정해 보겠습니다.
 
 ```js {2-3}
 useEffect(() => {
@@ -758,7 +758,7 @@ useEffect(() => {
 
 사용자는 제품을 두 번 구매하고 싶지 않을 것입니다. 그러나 이것은 이러한 로직을 Effect에 넣지 않아야 하는 이유입니다. 사용자가 다른 페이지로 이동한 다음 뒤로 가기 버튼을 누르는 경우 어떻게 될까요? Effect가 다시 실행됩니다. 사용자가 페이지를 방문할 때 제품을 구매하려고 하지 않으며, 사용자가 "구매" 버튼을 클릭할 때 제품을 구매하고 싶은 것입니다.
 
-구매는 렌더링에 의해 발생하는 것이 아니라 특정 상호 작용에 의해 발생합니다. 사용자가 버튼을 누를 때만 실행되어야 합니다. **Effect를 삭제하고 `/api/buy` 요청을 Buy 버튼의 이벤트 핸들러로 이동하세요:**
+구매는 렌더링에 의해 발생하는 것이 아니라 특정 상호 작용에 의해 발생합니다. 사용자가 버튼을 누를 때만 실행되어야 합니다. **Effect를 삭제하고 `/api/buy` 요청을 Buy 버튼의 이벤트 핸들러로 이동하세요.**
 
 ```js {2-3}
   function handleClick() {
@@ -827,21 +827,21 @@ export default function App() {
 
 </Sandpack>
 
-처음에는 `Schedule "a" log`, `Cancel "a" log`, 그리고 다시 `Schedule "a" log` 라는 세 가지 로그를 볼 수 있을 것입니다. 세컨드 후에는 `a`라는 로그가 나타날 것입니다. 이전에 배운 내용처럼 추가된 스케줄/취소 쌍은 React가 컴포넌트를 개발 중에 한 번 다시 마운트하여 정리를 제대로 구현했는지 확인하기 때문입니다.
+처음에는 `Schedule "a" log`, `Cancel "a" log`, 그리고 다시 `Schedule "a" log` 라는 세 가지 로그를 볼 수 있을 것입니다. 몇 초 후에는 `a`라는 로그가 나타날 것입니다. 이전에 배운 내용처럼 추가된 스케줄/취소 쌍은 React가 컴포넌트를 개발 중에 한 번 다시 마운트하여 정리를 제대로 구현했는지 확인하기 때문입니다.
 
 이제 입력란을 `abc`로 수정해 보세요. 충분히 빠르게 입력하면 `Schedule "ab" log` 바로 뒤에 `Cancel "ab" log`와 `Schedule "abc" log`가 나타날 것입니다. **React는 항상 이전 렌더의 Effect를 다음 렌더의 Effect보다 먼저 정리합니다.** 따라서 빠르게 입력하더라도 한 번에 최대 하나의 타임아웃만 예약되는 것을 볼 수 있습니다. 입력을 몇 번 해보면서 Effect가 어떻게 정리되는지 느껴보세요.
 
 입력란에 무언가를 입력한 다음 "컴포넌트 언마운트"를 눌러보세요. 언마운트가 마지막 렌더의 Effect를 정리함을 주목하세요. 여기서는 타임아웃이 실행되기 전에 마지막 타임아웃이 취소됩니다.
 
-마지막으로 위 컴포넌트를 수정하고 정리 함수의 주석 처리를 해제하여 타임아웃이 취소되지 않도록 해보세요. `abcde`를 빠르게 입력해 보세요. 세컨드 후에 무엇이 기대되는지 생각해 보세요. 타임아웃 내부의 `console.log(text)`가 가장 최근의 `text`를 출력하고 다섯 번의 `abcde` 로그가 생성될까요? 직접 시도하여 확인해 보세요!
+마지막으로 위 컴포넌트를 수정하고 정리 함수의 주석 처리를 해제하여 타임아웃이 취소되지 않도록 해보세요. `abcde`를 빠르게 입력해 보세요. 몇 초 후에 무엇이 기대되는지 생각해 보세요. 타임아웃 내부의 `console.log(text)`가 가장 최근의 `text`를 출력하고 다섯 번의 `abcde` 로그가 생성될까요? 직접 시도하여 확인해 보세요!
 
-세컨드 후에 `a`, `ab`, `abc`, `abcd`, 그리고 `abcde`라는 일련의 로그를 볼 수 있을 것입니다. **각 Effect는 해당 렌더의 `text` 값을 "캡처"합니다.** `text` 상태가 변경되었는지 여부는 중요하지 않습니다. `text = 'ab'` 렌더의 Effect에서는 항상 `'ab'`를 볼 것입니다. 다시 말해, 각 렌더의 Effect는 서로 격리되어 있습니다. 이 작동 방식에 대해서 궁금하다면 [클로저](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)에 대해 읽어볼 수 있습니다.
+수 초 후에 `a`, `ab`, `abc`, `abcd`, 그리고 `abcde`라는 일련의 로그를 볼 수 있을 것입니다. **각 Effect는 해당 렌더의 `text` 값을 "캡처"합니다.** `text` 상태가 변경되었는지 여부는 중요하지 않습니다. `text = 'ab'` 렌더의 Effect에서는 항상 `'ab'`를 볼 것입니다. 다시 말해, 각 렌더의 Effect는 서로 격리되어 있습니다. 이 작동 방식에 대해서 궁금하다면 [클로저](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)에 대해 읽어볼 수 있습니다.
 
 <DeepDive>
 
 #### 각각의 렌더링은 각각의 고유한 Effect를 갖습니다. {/*each-render-has-its-own-effects*/}
 
-`useEffect`를 렌더링 결과물에 "부착"하는 것으로 생각할 수 있습니다. 다음과 같은 Effect를 고려해보세요:
+`useEffect`를 렌더링 결과물에 "부착"하는 것으로 생각할 수 있습니다. 다음과 같은 Effect를 고려해 보세요.
 
 ```js
 export default function ChatRoom({ roomId }) {
@@ -967,7 +967,7 @@ React는 세 번째 렌더링에서의 `['travel']`와 두 번째 렌더링에�
 
 이 예시에서는 form이 `<MyInput />` 컴포넌트를 렌더링합니다.
 
-화면에 나타날 때 `MyInput`이 자동으로 포커스되도록 입력의 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) 메서드를 사용하세요. 이미 주석 처리된 구현이 있지만 제대로 작동하지 않습니다. 왜 작동하지 않는지 확인하고 수정해보세요. (`autoFocus` 속성은 존재하지 않는 것으로 가정하세요. 우리는 처음부터 동일한 기능을 다시 구현하고 있습니다.)
+화면에 나타날 때 `MyInput`이 자동으로 포커스되도록 입력의 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) 메서드를 사용하세요. 이미 주석 처리된 구현이 있지만 제대로 작동하지 않습니다. 왜 작동하지 않는지 확인하고 수정해 보세요. (`autoFocus` 속성은 존재하지 않는 것으로 가정하세요. 우리는 처음부터 동일한 기능을 다시 구현하고 있습니다.)
 
 <Sandpack>
 
@@ -1135,7 +1135,7 @@ body {
 
 "form 보기"를 누르면 두 번째 필드가 자동으로 포커스됩니다. 이는 두 `<MyInput />` 컴포넌트 모두 내부의 필드에 포커스를 주려고 하기 때문입니다. 두 개의 입력 필드에 연속해서 `focus()`를 호출하면 마지막 호출이 항상 "승리하게" 됩니다.
 
-이제 첫 번째 필드에 포커스를 주려면 첫 번째 `MyInput` 컴포넌트가 `true`로 설정된 `shouldFocus` prop을 받도록 변경해야 합니다. 변경된 로직에 따라 `MyInput`이 받은 `shouldFocus` prop이 `true`일 때에만 `focus()`가 호출되도록 변경해보세요.
+이제 첫 번째 필드에 포커스를 주려면 첫 번째 `MyInput` 컴포넌트가 `true`로 설정된 `shouldFocus` prop을 받도록 변경해야 합니다. 변경된 로직에 따라 `MyInput`이 받은 `shouldFocus` prop이 `true`일 때에만 `focus()`가 호출되도록 변경해 보세요.
 
 <Sandpack>
 
@@ -1215,7 +1215,7 @@ body {
 
 </Sandpack>
 
-해당 코드를 실행하고 주어진 검증 방법을 따라 진행해봅시다. "form 보기" 버튼을 반복적으로 누르고 "form 숨기기" 버튼을 클릭하여 결과를 확인할 수 있습니다. form이 나타날 때, *첫 번째* 입력 필드에만 포커스가 설정됩니다. 부모 컴포넌트가 첫 번째 입력 필드를 `shouldFocus={true}`로 렌더링하고 두 번째 입력 필드를 `shouldFocus={false}`로 렌더링하기 때문입니다. 또한 두 입력 필드 모두 정상적으로 작동하며, 둘 다 텍스트를 입력할 수 있습니다.
+해당 코드를 실행하고 주어진 검증 방법을 따라 진행해 봅시다. "form 보기" 버튼을 반복적으로 누르고 "form 숨기기" 버튼을 클릭하여 결과를 확인할 수 있습니다. form이 나타날 때, *첫 번째* 입력 필드에만 포커스가 설정됩니다. 부모 컴포넌트가 첫 번째 입력 필드를 `shouldFocus={true}`로 렌더링하고 두 번째 입력 필드를 `shouldFocus={false}`로 렌더링하기 때문입니다. 또한 두 입력 필드 모두 정상적으로 작동하며, 둘 다 텍스트를 입력할 수 있습니다.
 
 <Hint>
 
@@ -1316,7 +1316,7 @@ body {
 
 <Hint>
 
-`setInterval`은 interval ID를 반환하는데, 이를 [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval)함수에 전달하여 interval을 중지할 수 있습니다.
+`setInterval`은 interval ID를 반환하는데, 이를 [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) 함수에 전달하여 interval을 중지할 수 있습니다.
 
 </Hint>
 
