@@ -866,7 +866,7 @@ export default function ChatRoom({ roomId }) {
   return <h1>Welcome to general!</h1>;
 ```
 
-**Effect 또한 렌더링 출력물의 일부입니다.** 첫 번째 렌더링의 Effect는 다음과 같습니다.
+**Effect 또한 렌더링 결과물의 일부입니다.** 첫 번째 렌더링의 Effect는 다음과 같습니다.
 
 ```js
   // 첫 번째 렌더링에 대한 이펙트 (roomId = "general")
@@ -883,7 +883,7 @@ React는 이 Effect를 실행하며, `'general'` 채팅방에 연결합니다.
 
 #### 같은 의존성 사이에서의 재랜더링 {/*re-render-with-same-dependencies*/}
 
-`<ChatRoom roomId="general" />`가 다시 렌더링된다고 가정해봅시다. JSX 출력은 동일합니다.
+`<ChatRoom roomId="general" />`가 다시 렌더링된다고 가정해봅시다. JSX 결과물은 동일합니다.
 
 ```js
   // 두 번째 렌더링에 대한 JSX (roomId = "general")
