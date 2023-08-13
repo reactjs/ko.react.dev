@@ -52,7 +52,7 @@ function RowList({ children }) {
 
 * `children`: 컴포넌트에서 받은 [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
 
-#### 반환 {/*children-count-returns*/}
+#### 반환값 {/*children-count-returns*/}
 
 `children` 내부 노드의 수.
 
@@ -86,7 +86,7 @@ function SeparatorList({ children }) {
 * `fn`: [배열의`forEach` 메서드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) 콜백처럼 각 자식 요소에서 실행할 함수. 자식 요소를 첫 번째 인수로, 인덱스를 두 번째 인수로 받습니다. 인덱스는 0에서 시작해서 호출할 때마다 증가합니다.
 * **optional** `thisArg`: `fn` 함수가 호출될 때 사용될 [`this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)의 값. 생략 시 `undefined`로 간주합니다.
 
-#### 반환 {/*children-foreach-returns*/}
+#### 반환값 {/*children-foreach-returns*/}
 
 `Children.forEach`는 `undefined`를 반환합니다.
 
@@ -124,7 +124,7 @@ function RowList({ children }) {
 * `fn`: [베열의 `map` 메서드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 콜백같은 매핑 함수. 자식 요소를 첫 번째 인수로, 인덱스를 두 번째 인수로 받습니다. 인덱스는 0에서 시작해서 호출할 때마다 증가합니다. 함수는 빈 노드(`null`, `undefined` 혹은 Boolean), 문자열, 숫자, React 엘리먼트 혹은 다른 React 노드의 배열과 같은 React 노드를 반환해야 합니다.
 * **optional** `thisArg`: `fn` 함수가 호출될 때 사용될 [`this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)의 값. 생략시 `undefined`로 간주합니다.
 
-#### 반환 {/*children-map-returns*/}
+#### 반환값 {/*children-map-returns*/}
 
 `children`이 `null`이거나 `undefined`일 땐 해당 값을 반환합니다.
 
@@ -153,7 +153,7 @@ function Box({ children }) {
 
 * `children`: 컴포넌트에서 받은 [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
 
-#### 반환 {/*children-only-returns*/}
+#### 반환값 {/*children-only-returns*/}
 
 `children`이 [유효한 엘리먼트](/reference/react/isValidElement)라면 그 엘리먼트를 반환합니다.
 그렇지 않다면, 에러를 throw합니다.
@@ -181,7 +181,7 @@ export default function ReversedList({ children }) {
 
 * `children`: 컴포넌트에서 받은 [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
 
-#### 반환 {/*children-toarray-returns*/}
+#### 반환값 {/*children-toarray-returns*/}
 
 `children`에 속한 엘리먼트를 평면 배열로 반환합니다.
 
