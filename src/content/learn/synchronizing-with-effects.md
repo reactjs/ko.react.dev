@@ -211,7 +211,7 @@ video { width: 250px; }
 
 <Pitfall>
 
-By default, Effects run after *every* render. This is why code like this will **produce an infinite loop:**
+기본적으로, Effect는 *모든* 렌더링 후에 실행됩니다. 이러한 이유로 다음과 같은 코드는 **무한 루프를 만들어낼** 것입니다.
 
 ```js
 const [count, setCount] = useState(0);
