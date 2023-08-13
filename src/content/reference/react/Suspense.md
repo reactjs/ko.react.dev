@@ -2513,7 +2513,7 @@ Transition이 진행되는 동안 React는 이미 보인 콘텐츠를 숨기지 
 
 ---
 
-### 서버 에러 및 서버 전용 콘텐츠에 대한 Fallback 제공 {/*providing-a-fallback-for-server-errors-and-server-only-content*/}
+### 서버 에러 및 서버 전용 콘텐츠에 대한 Fallback 제공 {/*providing-a-fallback-for-server-errors-and-client-only-content*/}
 
 [스트리밍 서버 렌더링 API](/reference/react-dom/server) 중 하나(또는 이에 의존하는 프레임워크)를 사용하는 경우, React는 서버의 에러를 처리하기 위해 `<Suspense>` 바운더리도 사용할 것입니다. 컴포넌트가 서버에서 에러를 발생시키더라도 React는 서버 렌더링을 중단하지 않습니다. 대신, 그 위에 있는 가장 가까운 `<Suspense>` 컴포넌트를 찾아서 그 Fallback(예: 스피너)을 생성된 서버 HTML에 포함합니다. 사용자는 처음에는 스피너를 보게 됩니다.
 

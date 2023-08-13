@@ -286,50 +286,46 @@ export function Footer() {
         </div>
         <div className="flex flex-col">
           <FooterLink href="/learn" isHeader={true}>
-            Learn React
+            React 학습하기
           </FooterLink>
-          <FooterLink href="/learn/">Quick Start</FooterLink>
-          <FooterLink href="/learn/installation">Installation</FooterLink>
-          <FooterLink href="/learn/describing-the-ui">
-            Describing the UI
-          </FooterLink>
+          <FooterLink href="/learn/">빠르게 시작하기</FooterLink>
+          <FooterLink href="/learn/installation">설치하기</FooterLink>
+          <FooterLink href="/learn/describing-the-ui">UI 표현하기</FooterLink>
           <FooterLink href="/learn/adding-interactivity">
-            Adding Interactivity
+            상호작용성 더하기
           </FooterLink>
-          <FooterLink href="/learn/managing-state">Managing State</FooterLink>
+          <FooterLink href="/learn/managing-state">State 관리하기</FooterLink>
           <FooterLink href="/learn/escape-hatches">Escape Hatches</FooterLink>
         </div>
         <div className="flex flex-col">
           <FooterLink href="/reference/react" isHeader={true}>
-            API Reference
+            API 참고서
           </FooterLink>
           <FooterLink href="/reference/react">React APIs</FooterLink>
           <FooterLink href="/reference/react-dom">React DOM APIs</FooterLink>
         </div>
         <div className="md:col-start-2 xl:col-start-4 flex flex-col">
           <FooterLink href="/community" isHeader={true}>
-            Community
+            커뮤니티
           </FooterLink>
           <FooterLink href="https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md">
             Code of Conduct
           </FooterLink>
-          <FooterLink href="/community/team">Meet the Team</FooterLink>
+          <FooterLink href="/community/team">팀 소개</FooterLink>
           <FooterLink href="/community/docs-contributors">
-            Docs Contributors
+            문서 기여자
           </FooterLink>
-          <FooterLink href="/community/acknowledgements">
-            Acknowledgements
-          </FooterLink>
+          <FooterLink href="/community/acknowledgements">감사의 말</FooterLink>
         </div>
         <div className="flex flex-col">
-          <FooterLink isHeader={true}>More</FooterLink>
-          <FooterLink href="/blog">Blog</FooterLink>
+          <FooterLink isHeader={true}>더 보기</FooterLink>
+          <FooterLink href="/blog">블로그</FooterLink>
           <FooterLink href="https://reactnative.dev/">React Native</FooterLink>
           <FooterLink href="https://opensource.facebook.com/legal/privacy">
-            Privacy
+            개인 정보 보호
           </FooterLink>
           <FooterLink href="https://opensource.fb.com/legal/terms/">
-            Terms
+            약관
           </FooterLink>
           <div className="flex flex-row mt-8 gap-x-2">
             <ExternalLink
