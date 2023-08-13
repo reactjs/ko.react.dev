@@ -771,7 +771,7 @@ useEffect(() => {
 
 ## 위에서 설명한 모든 것들 적용해보기 {/*putting-it-all-together*/}
 
-이 playground를 사용하면 실제로 Effects가 어떻게 작동하는지에 대한 "느낌을 얻을" 수 있습니다.
+이 플레이그라운드를 살펴보면 실제로 Effect가 어떻게 작동하는지에 대한 "느낌을 얻을" 수 있습니다.
 
 이 예제는 [`setTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)을 사용하여 Effect가 실행된 후 3초 후에 입력 텍스트와 함께 콘솔 로그가 표시되도록 합니다. 클린업 함수는 실행을 기다리는 타임아웃을 취소합니다. "컴포넌트 마운트" 버튼을 눌러 시작하세요.
 
