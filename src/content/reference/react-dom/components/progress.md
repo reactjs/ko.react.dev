@@ -34,8 +34,13 @@ title: "<progress>"
 
 또한 `<progress>`는 이러한 props를 지원합니다.
 
+<<<<<<< HEAD
 * [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attr-max): 숫자. 최대 `value`를 지정합니다. 기본값은 `1`입니다.
 * [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attr-value): `0`에서 `최대` 사이의 숫자 또는 결정되지 않은 상태인 경우 `null`입니다. 완료된 양을 나타냅니다.
+=======
+* [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max): A number. Specifies the maximum `value`. Defaults to `1`.
+* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value): A number between `0` and `max`, or `null` for indeterminate progress. Specifies how much was done.
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
 
 ---
 

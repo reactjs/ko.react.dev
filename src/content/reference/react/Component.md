@@ -593,9 +593,13 @@ React는 언제든 `render`를 호출할 수 있으므로 특정 시간에 실�
 
 #### 매개변수 {/*render-parameters*/}
 
+<<<<<<< HEAD
 * `prevProps`: 업데이트 이전의 props. `prevProps`와 [`this.props`](#props)를 비교하여 변경된 내용을 확인합니다.
 
 * `prevState`: 업데이트 전 state. `prevState`를 [`this.state`](#state)와 비교하여 변경된 내용을 확인합니다.
+=======
+`render` does not take any parameters.
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
 
 #### 반환값 {/*render-returns*/}
 

@@ -333,9 +333,15 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
 
 #### 매개변수 {/*animationevent-handler-parameters*/}
 
+<<<<<<< HEAD
 * `e`: 다음과 같은 추가 [`AnimationEvent`](https://developer.mozilla.org/ko/docs/Web/API/AnimationEvent) 프로퍼티가 있는 [React 이벤트 객체](#react-event-object)입니다.
   * [`animationName`](https://developer.mozilla.org/ko/docs/Web/API/AnimationEvent/animationName)
   * [`elapsedTime`](https://developer.mozilla.org/ko/docs/Web/API/AnimationEvent/elapsedTime)
+=======
+* `e`: A [React event object](#react-event-object) with these extra [`AnimationEvent`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent) properties:
+  * [`animationName`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent/animationName)
+  * [`elapsedTime`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent/elapsedTime)
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
   * [`pseudoElement`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent/pseudoElement)
 
 ---

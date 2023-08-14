@@ -1173,7 +1173,11 @@ Too many re-renders. React limits the number of renders to prevent an infinite l
 
 이전에 `onSquareClick={handleClick}`을 전달할 땐 함수를 *호출*한 것이 아니라 `handleClick` 함수를 prop로 전달했기 때문입니다. 하지만 지금은 `handleClick(0)`의 괄호를 보면 알 수 있듯이 해당 함수를 호출하고 있으므로 해당 함수가 너무 일찍 실행됩니다. 사용자가 클릭하기 전까지 `handleClick` 함수를 호출하면 *안 됩*니다!
 
+<<<<<<< HEAD
 이 문제를 해결하려면 `handleClick(0)`을 호출하는 `handleFirstSquareClick` 함수를 만들고, `handleClick(1)`을 호출하는 `handleSecondSquareClick`을 만들고… 계속해서 만들면 됩니다. 그리고 아까와 같이 호출하는 대신 `onSquareClick={handleFirstSquareClick}`와 같은 함수를 prop로 전달 해 주면 됩니다. 이렇게 하면 무한 루프를 해결할 수 있습니다.
+=======
+You could fix this by creating a function like `handleFirstSquareClick` that calls `handleClick(0)`, a function like `handleSecondSquareClick` that calls `handleClick(1)`, and so on. You would pass (rather than call) these functions down as props like `onSquareClick={handleFirstSquareClick}`. This would solve the infinite loop.
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
 
 하지만 9개의 서로 다른 함수를 정의하고 각각에 이름을 붙이는 것은 너무 장황합니다. 대신 이렇게 해보겠습니다.
 

@@ -37,7 +37,15 @@
           "path": "/learn/editor-setup"
         },
         {
+<<<<<<< HEAD
           "title": "React 개발자 도구",
+=======
+          "title": "Using TypeScript",
+          "path": "/learn/typescript"
+        },
+        {
+          "title": "React Developer Tools",
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
           "path": "/learn/react-developer-tools"
         }
       ]

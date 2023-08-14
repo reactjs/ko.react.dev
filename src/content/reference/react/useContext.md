@@ -1078,7 +1078,7 @@ function Button({ children, onClick }) {
 
 필요한 만큼 provider를 중첩하고 오버라이드 할 수 있습니다.
 
-<Recipes title="Examples of overriding context">
+<Recipes titleText="Examples of overriding context">
 
 #### theme 오버라이드 {/*overriding-a-theme*/}
 
