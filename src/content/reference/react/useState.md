@@ -4,7 +4,7 @@ title: useState
 
 <Intro>
 
-`useState`는 컴포넌트에 [state 변수](/learn/state-a-components-memory)를 추가할 수 있게 해주는 React Hook입니다.
+`useState`는 컴포넌트에 [state 변수](/learn/state-a-components-memory)를 추가할 수 있는 React Hook입니다.
 
 ```js
 const [state, setState] = useState(initialState);
@@ -20,7 +20,7 @@ const [state, setState] = useState(initialState);
 
 ### `useState(initialState)` {/*usestate*/}
 
-컴포넌트의 최상위 레벨에서 useState를 호출하여 [state 변수](/learn/state-a-components-memory)를 선언하세요.
+컴포넌트의 최상위 레벨에서 `useState`를 호출하여 [state 변수](/learn/state-a-components-memory)를 선언합니다. 
 
 ```js
 import { useState } from 'react';
@@ -32,14 +32,14 @@ function MyComponent() {
   // ...
 ```
 
-[배열 구조 분해 할당](https://javascript.info/destructuring-assignment)을 사용하여 `[something, setSomething]`과 같은 state 변수의 이름을 지정하는 것이 관례입니다.
+[배열 구조 분해](https://ko.javascript.info/destructuring-assignment)를 사용하여 `[something, setSomething]`과 같은 state 변수의 이름을 지정하는 것이 규칙입니다.
 
 [아래에서 더 많은 예시를 확인하세요.](#usage)
 
 #### 매개변수 {/*parameters*/}
 
-* `initialState`: 초기에 state를 설정할 값입니다. 값은 모든 데이터 타입이 허용되지만, 함수에 대해서는 특별한 동작이 있습니다. 이 인자는 초기 렌더링 이후에는 무시됩니다.
-  * 함수를 `initialState`로 전달하면 이를 *초기화 함수*로 취급합니다. 이 함수는 순수해야 하고 인자를 받지 않아야 하며 반드시 어떤 값을 반환해야 합니다. React는 컴포넌트를 초기화할 때 초기화 함수를 호출하고, 그 반환값을 초기 state로 저장합니다. [아래 예시를 참고하세요.](#avoiding-recreating-the-initial-state)
+* `initialState`: state의 초기 설정값입니다. 어떤 유형의 값이든 지정할 수 있지만 함수에 대해서는 특별한 동작이 있습니다. 이 인수는 초기 렌더링 이후에는 무시됩니다.
+  * 함수를 `initialState`로 전달하면 이를 *초기화 함수*로 취급합니다. 이 함수는 순수해야 하고 인수를 받지 않아야 하며 반드시 어떤 값을 반환해야 합니다. React는 컴포넌트를 초기화할 때 초기화 함수를 호출하고, 그 반환값을 초기 state로 저장합니다. [아래 예시를 참고하세요.](#avoiding-recreating-the-initial-state)
 
 #### 반환값 {/*returns*/}
 
@@ -57,7 +57,7 @@ function MyComponent() {
 
 ### `setSomething(nextState)`과 같은 `set` 함수 {/*setstate*/}
 
-`useState`가 반환하는 `set` 함수를 사용하면 state를 다른 값으로 업데이트하고 리렌더링을 촉발할 수 있습니다. 여기에는 다음 state를 직접 전달하거나, 이전 state로부터 계산하여 다음 state를 도출하는 함수를 전달할 수도 있습니다.
+`useState`가 반환하는 `set` 함수를 사용하면 state를 다른 값으로 업데이트하고 리렌더링을 촉발할 수 있습니다. 여기에는 다음 state를 직접 전달하거나, 이전 state로부터 계산한 함수를 전달할 수도 있습니다.
 
 ```js
 const [name, setName] = useState('Edward');
@@ -71,7 +71,7 @@ function handleClick() {
 #### 파라미터 {/*setstate-parameters*/}
 
 * `nextState`: state가 될 값입니다. 값은 모든 데이터 타입이 허용되지만, 함수에 대해서는 특별한 동작이 있습니다.
-  * 함수를 `nextState`로 전달하면 *업데이터 함수*로 취급됩니다. 이 함수는 순수해야 하고, 대기 중인 state를 유일한 인수로 사용해야 하며, 다음 state를 반환해야 합니다. React는 업데이터 함수를 대기열에 넣고 컴포넌트를 리렌더링 합니다. 다음 렌더링 중에 React는 대기열에 있는 모든 업데이터를 이전 state에 적용하여 다음 state를 계산합니다. [아래 예제를 참고하세요.](#updating-state-based-on-the-previous-state)
+  * 함수를 `nextState`로 전달하면 *업데이터 함수*로 취급합니다. 이 함수는 순수해야 하고, 대기 중인 state를 유일한 인수로 사용해야 하며, 다음 state를 반환해야 합니다. React는 업데이터 함수를 대기열에 넣고 컴포넌트를 리렌더링 합니다. 다음 렌더링 중에 React는 대기열에 있는 모든 업데이터를 이전 state에 적용하여 다음 state를 계산합니다. [아래 예시를 참고하세요.](#updating-state-based-on-the-previous-state)
 
 #### 반환값 {/*setstate-returns*/}
 
@@ -81,9 +81,9 @@ function handleClick() {
 
 * `set` 함수는 ***다음* 렌더링에 대한 state 변수만 업데이트합니다.** `set` 함수를 호출한 후에도 state 변수에는 여전히 호출 전 화면에 있던 [이전 값이 담겨 있습니다.](#ive-updated-the-state-but-logging-gives-me-the-old-value) 
 
-* 사용자가 제공한 새로운 값이 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)에 의해 현재 `state`와 동일하다고 판정되면, React는 **컴포넌트와 그 자식들을 리렌더링하지 않습니다.** 이것이 최적화입니다. 경우에 따라 React가 자식을 건너뛰기 전에 컴포넌트를 호출해야 할 수도 있지만, 코드에 영향을 미치지는 않습니다.
+* 사용자가 제공한 새로운 값이 [`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is)에 의해 현재 `state`와 동일하다고 판정되면, React는 **컴포넌트와 그 자식들을 리렌더링하지 않습니다.** 이것이 바로 최적화입니다. 경우에 따라 React가 자식을 건너뛰기 전에 컴포넌트를 호출해야 할 수도 있지만, 코드에 영향을 미치지는 않습니다.
 
-* React는 [state 업데이트를 일괄처리합니다. ](/learn/queueing-a-series-of-state-updates) **모든 이벤트 핸들러가 실행되고** `set` 함수를 호출한 후에 화면을 업데이트합니다. 이렇게 하면 단일 이벤트 중에 여러 번 리렌더링 되는 것을 방지할 수 있습니다. 드물지만 DOM에 접근하기 위해 React가 화면을 더 일찍 업데이트하도록 강제해야 하는 경우, [`flushSync`](/reference/react-dom/flushSync)를 사용할 수 있습니다.
+* React는 [state 업데이트를 batch 합니다. ](/learn/queueing-a-series-of-state-updates) **모든 이벤트 핸들러가 실행되고** `set` 함수를 호출한 후에 화면을 업데이트합니다. 이렇게 하면 단일 이벤트 중에 여러 번 리렌더링 하는 것을 방지할 수 있습니다. 드물지만 DOM에 접근하기 위해 React가 화면을 더 일찍 업데이트하도록 강제해야 하는 경우, [`flushSync`](/reference/react-dom/flushSync)를 사용할 수 있습니다.
 
 * *렌더링 도중* `set` 함수를 호출하는 것은 현재 렌더링 중인 컴포넌트 내에서만 허용됩니다. React는 해당 출력을 버리고 즉시 새로운 state로 다시 렌더링을 시도합니다. 이 패턴은 거의 필요하지 않지만 **이전 렌더링의 정보를 저장하는 데 사용할 수 있습니다**. [아래 예시를 참고하세요.](#storing-information-from-previous-renders)
 
@@ -106,7 +106,7 @@ function MyComponent() {
   // ...
 ```
 
-[배열 구조 분해 할당](https://javascript.info/destructuring-assignment)을 사용하여 `[something, setSomething]`과 같은 state 변수의 이름을 지정하는 것이 관례입니다.
+[배열 구조 분해](https://ko.javascript.info/destructuring-assignment)를 사용하여 `[something, setSomething]`과 같은 state 변수의 이름을 지정하는 것이 관례입니다.
 
 `useState`는 정확히 두 개의 항목이 있는 배열을 반환합니다.
 
@@ -170,7 +170,7 @@ export default function Counter() {
 
 #### 텍스트 필드 (문자열) {/*text-field-string*/}
 
-예시에서 텍스트 state 변수는 문자열을 받습니다. input에 타이핑하면 `handleChange`는 input DOM 요소에서 최신 input 값을 읽고 `setText`를 호출하여 state를 업데이트합니다. 이렇게 하면 아래에 현재 텍스트를 표시할 수 있습니다.
+예시에서 `text` state 변수는 문자열을 받습니다. input에 타이핑하면 `handleChange`는 input DOM 요소에서 최신 input 값을 읽고 `setText`를 호출하여 state를 업데이트합니다. 이렇게 하면 아래에 현재 `text`를 표시할 수 있습니다.
 
 <Sandpack>
 
@@ -202,7 +202,7 @@ export default function MyInput() {
 
 #### 체크박스 (불리언) {/*checkbox-boolean*/}
 
-예시에서 `liked` state 변수는 불리언을 받습니다. input을 클릭하면 `setLiked`는 체크박스가 선택되어 있는지 여부에 따라 `liked` state 변수를 업데이트합니다. liked 변수는 체크박스 아래의 텍스트를 렌더링하는 데 사용됩니다.
+예시에서 `liked` state 변수는 불리언을 받습니다. input을 클릭하면 `setLiked`는 체크박스가 선택되어 있는지 여부에 따라 `liked` state 변수를 업데이트합니다. `liked` 변수는 체크박스 아래의 텍스트를 렌더링하는 데 사용됩니다.
 
 <Sandpack>
 
@@ -238,7 +238,7 @@ export default function MyCheckbox() {
 
 #### 폼 (두 개의 변수) {/*form-two-variables*/}
 
-동일한 컴포넌트에 두개 이상의 state 변수를 선언할 수 있습니다. 각 state 변수는 완전히 독립적입니다.
+동일한 컴포넌트에 두 개 이상의 state 변수를 선언할 수 있습니다. 각 state 변수는 완전히 독립적입니다.
 
 <Sandpack>
 
@@ -288,7 +288,7 @@ function handleClick() {
 }
 ```
 
-그러나 클릭해보면 `age`는 `45`가 아니라 `43`이 됩니다! 이는 `set` 함수를 호출해도 이미 실행 중인 코드에서 `age` state 변수가 [업데이트되지 않기](/learn/state-as-a-snapshot) 때문입니다. 따라서 각 `setAge(age + 1)` 호출은 `setAge(43)`이 됩니다.
+하지만 클릭해보면 `age`는 `45`가 아니라 `43`이 됩니다! 이는 `set` 함수를 호출해도 이미 실행 중인 코드에서 `age` state 변수가 [업데이트되지 않기](/learn/state-as-a-snapshot) 때문입니다. 따라서 각 `setAge(age + 1)` 호출은 `setAge(43)`이 됩니다.
 
 이 문제를 해결하려면 다음 state 대신 `setAge`에 ***업데이터 함수*를 전달할 수 있습니다**.
 
@@ -310,7 +310,7 @@ React는 업데이터 함수를 [큐](/learn/queueing-a-series-of-state-updates)
 
 대기 중인 다른 업데이트가 없으므로, React는 결국 `45`를 현재 state로 저장합니다.
 
-관례상 대기 중인 state 인수의 이름을 `age`의 `a`와 같이 state 변수 이름의 첫 글자로 지정하는 것이 일반적입니다. 그러나 `prevAge` 또는 더 명확하다고 생각하는 다른 이름으로 지정해도 됩니다.
+규칙상 대기 중인 state 인수의 이름을 `age`의 `a`와 같이 state 변수 이름의 첫 글자로 지정하는 것이 일반적입니다. 그러나 `prevAge` 또는 더 명확하다고 생각하는 다른 이름으로 지정해도 됩니다.
 
 React는 개발 환경에서 [순수](/learn/keeping-components-pure)한지 확인하기 위해 [업데이터를 두 번 호출](#my-initializer-or-updater-function-runs-twice)할 수 있습니다.
 
@@ -371,7 +371,7 @@ h1 { display: block; margin: 10px; }
 
 <Solution />
 
-#### Passing the next state directly {/*passing-the-next-state-directly*/}
+#### 다음 state 바로 전달하기 {/*passing-the-next-state-directly*/}
 
 이 예시는 업데이터 함수를 전달하지 **않으므로** "+3" 버튼이 **의도한 대로 작동하지 않습니다**.
 
@@ -416,9 +416,9 @@ h1 { display: block; margin: 10px; }
 
 ---
 
-### 객체 및 배열 state 업데이트 {/*updating-objects-and-arrays-in-state*/}
+### 객체 및 배열 state 업데이트하기 {/*updating-objects-and-arrays-in-state*/}
 
-state에는 객체와 배열도 넣을 수 있습니다. React에서 state는 읽기 전용으로 간주되므로 **기존 객체를 *변경*하지 않고, *교체*를 해야 합니다**. 예를 들어, state에 `form` 객체가 있는 경우 변경하지 마세요.
+state에는 객체와 배열도 넣을 수 있습니다. React에서 state는 읽기 전용으로 간주되므로 **기존 객체를 *변경*하지 않고, *교체* 해야 합니다**. 예를 들어, state에 `form` 객체가 있는 경우 변경하지 마세요.
 
 ```js
 // 🚩 state 안에 있는 객체를 다음과 같이 변경하지 마세요.
@@ -428,7 +428,7 @@ form.firstName = 'Taylor';
 대신 새로운 객체를 생성하여 전체 객체를 교체하세요.
 
 ```js
-// ✅ 새로운 객체로 state 교체합니다.
+// ✅ 새로운 객체로 state를 교체합니다.
 setForm({
   ...form,
   firstName: 'Taylor'
@@ -441,7 +441,7 @@ setForm({
 
 #### 폼 (객체) {/*form-object*/}
 
-이 예제에서 `form` state 변수는 객체를 받습니다. 각 input에는 전체 form의 다음 state로 `setForm`을 호출하는 change 핸들러가 있습니다. 전개 구문 `{ ...form }`은 state 객체를 변경하지 않고 교체합니다.
+이 예시에서 `form` state 변수는 객체를 받습니다. 각 input에는 전체 form의 다음 state로 `setForm`을 호출하는 change 핸들러가 있습니다. 전개 구문인 `{ ...form }`은 state 객체를 변경하지 않고 교체합니다.
 
 <Sandpack>
 
@@ -624,7 +624,7 @@ img { width: 200px; height: 200px; }
 
 <Solution />
 
-#### List (배열) {/*list-array*/}
+#### 리스트 (배열) {/*list-array*/}
 
 이 예시에서 `todos` state 변수는 배열을 받습니다. 각 버튼 핸들러는 해당 배열의 다음 버전으로 `setTodos`를 호출합니다. `[...todos]` 전개 구문, `todos.map()` 및 `todos.filter()`는 state 배열이 변경하지 않고 교체합니다.
 
@@ -892,9 +892,9 @@ function TodoList() {
   // ...
 ```
 
-`createInitialTodos()`의 결과는 초기 렌더링에만 사용되지만, 여전히 모든 렌더링에서 이 함수를 호출하게 됩니다. 이는 큰 배열을 생성하거나 값비싼 계산을 수행하는 경우 낭비가 될 수 있습니다.
+`createInitialTodos()`의 결과는 초기 렌더링에만 사용되지만, 여전히 모든 렌더링에서 이 함수를 호출합니다. 이는 큰 배열을 생성하거나 값비싼 계산을 수행하는 경우 낭비일 수 있습니다.
 
-이 문제를 해결하려면, 대신 이를 `useState`에 **초기화 함수로 전달하세요**.
+이 문제를 해결하려면, `useState`에 **초기화 함수로 전달하세요**.
 
 ```js
 function TodoList() {
@@ -910,7 +910,7 @@ function TodoList() {
 
 #### 초기화 함수 전달하기 {/*passing-the-initializer-function*/}
 
-이 예시에서는 초기화 함수를 전달하므로, `createInitialTodos` 함수는 초기화 중에만 실행됩니다. 컴포넌트가 리렌더링될 때(input에 타이핑할 때 등)에는 실행되지 않습니다.
+이 예시에서는 초기화 함수를 전달하므로, `createInitialTodos` 함수는 초기화 중에만 실행됩니다. input에 타이핑할 때 같이 컴포넌트가 리렌더링할 때에는 실행되지 않습니다.
 
 <Sandpack>
 
@@ -963,7 +963,7 @@ export default function TodoList() {
 
 #### 초기 state 직접 전달하기 {/*passing-the-initial-state-directly*/}
 
-이 예시에서는 초기화 함수를 전달하므로, `createInitialTodos` 함수는 초기화 중에만 실행됩니다. 컴포넌트가 리렌더링될 때(input에 타이핑할 때 등)에는 실행되지 않습니다.
+이 예시에서는 초기화 함수를 전달하지 **않으므로,** input을 타이핑할 때 같이 모든 렌더링에서 `createInitialTodos` 함수가 실행됩니다. 동작에 눈에 띄는 차이는 없지만 이 코드는 효율성이 떨어집니다.
 
 <Sandpack>
 
@@ -1018,13 +1018,13 @@ export default function TodoList() {
 
 ---
 
-### key로 state 재설정하기 {/*resetting-state-with-a-key*/}
+### key로 state 초기화하기 {/*resetting-state-with-a-key*/}
 
 [목록을 렌더링](/learn/rendering-lists)할 때 `key` 속성을 자주 접하게 됩니다. 하지만 `key` 속성은 다른 용도로도 사용됩니다.
 
-**컴포넌트에 다른 `key`를 전달하여 컴포넌트의 state를 재설정**할 수 있습니다. 이 예제에서는 Reset 버튼이 `version` state 변수를 변경하고, 이를 `Form`에 `key`로 전달합니다. `key`가 변경되면 React는 `Form` 컴포넌트(및 그 모든 자식)를 처음부터 다시 생성하므로 state가 초기화됩니다.
+**컴포넌트에 다른 `key`를 전달하여 컴포넌트의 state를 초기화**할 수 있습니다. 이 예시에서는 Reset 버튼이 `version` state 변수를 변경하고, 이를 `Form`에 `key`로 전달합니다. `key`가 변경되면 React는 `Form` 컴포넌트(및 그 모든 자식)를 처음부터 다시 생성하므로 state가 초기화됩니다.
 
-자세히 알아보려면 [state 보존 및 재설정](/learn/preserving-and-resetting-state)을 읽어보세요.
+자세히 알아보려면 [State를 보존하고 초기화하기](/learn/preserving-and-resetting-state)를 읽어보세요.
 
 <Sandpack>
 
@@ -1076,10 +1076,10 @@ button { display: block; margin-bottom: 20px; }
 대부분의 경우 이 기능은 필요하지 않습니다.
 
 * **필요한 값을 현재 props나 다른 state에서 모두 계산할 수 있는 경우, [중복되는 state를 모두 제거하세요](#resetting-state-with-a-key)**. 너무 자주 재계산하는 것이 걱정된다면, [`useMemo` Hook](#resetting-state-with-a-key)을 사용하면 도움이 될 수 있습니다.
-* 전체 컴포넌트 트리의 state를 재설정하려면 [컴포넌트에 다른 `key`를 전달하세요](#resetting-state-with-a-key).
+* 전체 컴포넌트 트리의 state를 초기화하려면 [컴포넌트에 다른 `key`를 전달하세요](#resetting-state-with-a-key).
 * 가능하다면 이벤트 핸들러의 모든 관련 state를 업데이트하세요.
 
-이 중 어느 것에도 해당하지 않는 희귀한 경우에는, 컴포넌트가 렌더링되는 동안 `set` 함수를 호출하여 지금까지 렌더링된 값을 기반으로 state를 업데이트하는 데 사용할 수 있는 패턴이 있습니다.
+이 중 어느 것에도 해당하지 않는 희귀한 경우에는, 컴포넌트가 렌더링되는 동안 `set` 함수를 호출하여 지금까지 렌더링된 값을 바탕으로 state를 업데이트하는 데 사용할 수 있는 패턴이 있습니다.
 
 다음은 그 예시입니다. `CountLabel` 컴포넌트는 전달된 `count` props를 표시합니다.
 
@@ -1089,7 +1089,7 @@ export default function CountLabel({ count }) {
 }
 ```
 
-카운터가 마지막 변경 이후 *증가 또는 감소했는지*를 표시하고 싶다고 가정해 보겠습니다. `count` prop는 이를 알려주지 않으므로 이전 값을 추적해야 합니다. 이를 추적하기 위해 `prevCount` state 변수를 추가합니다. `trend`라는 또 다른 state 변수를 추가하여 count의 증가 또는 감소 여부를 추적합시다. `prevCount`와 `count`를 비교해서, 같지 않은 경우 `prevCount`와 `trend`를 모두 업데이트합니다. 이제 현재 count props와 마지막 렌더링 이후 count가 *어떻게* 변경되었는지 모두 표시할 수 있습니다.
+카운터가 마지막 변경 이후 *증가 또는 감소했는지*를 표시하고 싶다고 가정해 보겠습니다. `count` prop는 이를 알려주지 않으므로 이전 값을 추적해야 합니다. 이를 추적하기 위해 `prevCount` state 변수를 추가합니다. `trend`라는 또 다른 state 변수를 추가하여 count의 증가 또는 감소 여부를 추적합니다. `prevCount`와 `count`를 비교해서, 같지 않은 경우 `prevCount`와 `trend`를 모두 업데이트합니다. 이제 현재 count props와 마지막 렌더링 이후 count가 *어떻게* 변경되었는지 모두 표시할 수 있습니다.
 
 <Sandpack>
 
@@ -1140,7 +1140,7 @@ button { margin-bottom: 10px; }
 
 렌더링하는 동안 `set` 함수를 호출하는 경우, 그 `set` 함수는 `prevCount !== count`와 같은 조건 안에 있어야 하며, 조건 내부에 `setPrevCount(count)`와 같은 호출이 있어야 한다는 점에 유의하세요. 그렇지 않으면 리렌더링을 반복하다가 결국 깨질 것입니다. 또한 이 방식은 오직 *현재* 렌더링 중인 컴포넌트의 state만을 업데이트할 수 있습니다. 렌더링 중에 다른 컴포넌트의 `set` 함수를 호출하는 것은 에러입니다. 마지막으로, 이 경우에도 `set` 함수 호출은 여전히 [변경이 아닌 state 업데이트](#updating-objects-and-arrays-in-state)여야만 합니다. [순수 함수](/learn/keeping-components-pure)의 다른 규칙을 어겨도 된다는 의미가 아닙니다.
 
-이 패턴은 이해하기 어려울 수 있으며 일반적으로 피하는 것이 가장 좋습니다. 하지만 Effect에서 state를 업데이트하는 것보다는 낫습니다. 렌더링 도중 `set` 함수를 호출하면 React는 컴포넌트가 `return`문으로 종료된 직후, 자식을 렌더링하기 전에, 해당 컴포넌트를 리렌더링 합니다. 이렇게 하면 자식 컴포넌트를 두 번 렌더링할 필요가 없습니다. 나머지 컴포넌트 함수는 계속 실행되고 결과는 버려집니다. 조건이 모든 훅 호출보다 아래에 있으면 이른(early) `return;`을 통해 렌더링을 더 일찍 다시 시작할 수 있습니다.
+이 패턴은 이해하기 어려울 수 있으며 일반적으로 피하는 것이 가장 좋습니다. 하지만 Effect에서 state를 업데이트하는 것보다는 낫습니다. 렌더링 도중 `set` 함수를 호출하면 React는 컴포넌트가 `return`문으로 종료된 직후, 자식을 렌더링하기 전에 해당 컴포넌트를 리렌더링 합니다. 이렇게 하면 자식 컴포넌트를 두 번 렌더링할 필요가 없습니다. 나머지 컴포넌트 함수는 계속 실행되고 결과는 버려집니다. 조건이 모든 Hook 호출보다 아래에 있으면 이른(early) `return;`을 통해 렌더링을 더 일찍 다시 시작할 수 있습니다.
 
 ---
 
@@ -1148,7 +1148,7 @@ button { margin-bottom: 10px; }
 
 ### state를 업데이트했지만 로그에는 계속 이전 값이 표시됩니다 {/*ive-updated-the-state-but-logging-gives-me-the-old-value*/}
 
-`set` 함수를 호출해도 **실행 중인 코드의 state는 변경되지 않습니다**:
+`set` 함수를 호출해도 **실행 중인 코드의 state는 변경되지 않습니다**.
 
 ```js {4,5,8}
 function handleClick() {
@@ -1179,7 +1179,7 @@ console.log(nextCount); // 1
 
 ### state를 업데이트해도 화면이 바뀌지 않습니다 {/*ive-updated-the-state-but-the-screen-doesnt-update*/}
 
-React는 [Object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)비교 결과 **다음 state가 이전 state와 같으면 업데이트를 무시**합니다. 이는 보통 객체나 배열의 state를 직접 변경할 때 발생합니다.
+React는 [Object.is](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is)로 비교한 뒤 **다음 state가 이전 state와 같으면 업데이트를 무시**합니다. 이는 보통 객체나 배열의 state를 직접 변경할 때 발생합니다.
 
 ```js
 obj.x = 10;  // 🚩 잘못된 방법: 기존 객체를 변경
@@ -1200,7 +1200,7 @@ setObj({
 
 ### 에러가 발생했습니다: "리렌더링 횟수가 너무 많습니다” {/*im-getting-an-error-too-many-re-renders*/}
 
-다음과 같은 에러가 발생할 수 있습니다: `리렌더링 횟수가 너무 많습니다. React는 무한 루프를 방지하기 위해 렌더링 횟수를 제한합니다.` 전형적으로 이는 *렌더링 중*에 state를 무조건적으로 설정하고 있음을 의미 하기 때문에, 컴포넌트가 렌더링, state 설정(렌더링 유발), 렌더링, state 설정(렌더링 유발) 등의 루프에 들어가는 것입니다. 이 문제는 이벤트 핸들러를 지정하는 과정에서 실수로 발생하는 경우가 많습니다:
+다음과 같은 에러가 발생할 수 있습니다. `리렌더링 횟수가 너무 많습니다. React는 무한 루프를 방지하기 위해 렌더링 횟수를 제한합니다.` 전형적으로 이는 *렌더링 중*에 state를 무조건적으로 설정하고 있음을 의미 하기 때문에, 컴포넌트가 렌더링, state 설정(렌더링 유발), 렌더링, state 설정(렌더링 유발) 등의 루프에 들어가는 것입니다. 이 문제는 이벤트 핸들러를 지정하는 과정에서 실수로 발생하는 경우가 많습니다.
 
 ```js {1-2}
 // 🚩 잘못된 방법: 렌더링 동안 핸들러 요청
@@ -1253,7 +1253,7 @@ setTodos(prevTodos => {
 ```
 
 Because React calls your updater function twice, you'll see the todo was added twice, so you'll know that there is a mistake. In this example, you can fix the mistake by [replacing the array instead of mutating it](#updating-objects-and-arrays-in-state):
-React는 업데이터 함수를 두 번 호출하기 때문에 할 일이 두 번 추가되었음을 알 수 있으므로, 실수가 있음을 파악할 수 있습니다. 이 예제에서는 [배열을 변이하는 대신 교체](#updating-objects-and-arrays-in-state)하여 실수를 수정할 수 있습니다:
+React는 업데이터 함수를 두 번 호출하기 때문에 할 일이 두 번 추가되었음을 알 수 있으므로, 실수가 있음을 파악할 수 있습니다. 이 예시에서는 [배열을 변이하는 대신 교체](#updating-objects-and-arrays-in-state)하여 실수를 수정할 수 있습니다:
 
 ```js {2,3}
 setTodos(prevTodos => {
@@ -1268,9 +1268,9 @@ setTodos(prevTodos => {
 
 ---
 
-### state의 값으로 함수를 설정하려고 하면 설정은 안되고 대신 호출됩니다 {/*im-trying-to-set-state-to-a-function-but-it-gets-called-instead*/}
+### state의 값으로 함수를 설정하려고 하면 설정 대신 호출됩니다 {/*im-trying-to-set-state-to-a-function-but-it-gets-called-instead*/}
 
-state에 함수를 넣을 수는 없습니다:
+state에 함수를 넣을 수 없습니다.
 
 ```js
 const [fn, setFn] = useState(someFunction);
@@ -1280,7 +1280,7 @@ function handleClick() {
 }
 ```
 
-함수를 값으로 전달하면 React는 `someFunction`을 [초기화 함수](#avoiding-recreating-the-initial-state)로 여기고, `someOtherFunction`은 [업데이터 함수](#updating-state-based-on-the-previous-state)라고 받아들이며, 따라서 이들을 호출해서 그 결과를 저장하려고 시도합니다. 정말로 함수를 저장하길 원한다면, 두 경우 모두 함수 앞에 `() =>`를 넣어야 합니다. 그러면 React는 전달한 함수를 값으로써 저장합니다.
+함수를 값으로 전달하면 React는 `someFunction`을 [초기화 함수](#avoiding-recreating-the-initial-state)로 여기고, `someOtherFunction`은 [업데이터 함수](#updating-state-based-on-the-previous-state)라고 여깁니다. 따라서 이들을 호출해서 그 결과를 저장하려고 시도합니다. 정말로 함수를 저장하길 원한다면, 두 경우 모두 함수 앞에 `() =>`를 넣어야 합니다. 그러면 React는 전달한 함수를 값으로 저장합니다.
 
 ```js {1,4}
 const [fn, setFn] = useState(() => someFunction);
