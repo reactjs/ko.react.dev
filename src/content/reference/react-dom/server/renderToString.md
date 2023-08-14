@@ -4,13 +4,13 @@ title: renderToString
 
 <Pitfall>
 
-`renderToString` does not support streaming or waiting for data. [See the alternatives.](#alternatives)
+`renderToString`은 스트리밍이나 데이터 대기를 지원하지 않습니다. [대안을 참고하세요.](#alternatives)
 
 </Pitfall>
 
 <Intro>
 
-`renderToString` renders a React tree to an HTML string.
+`renderToString`은 React 트리를 HTML 문자열로 렌더링합니다.
 
 ```js
 const html = renderToString(reactNode)
@@ -22,11 +22,11 @@ const html = renderToString(reactNode)
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `renderToString(reactNode)` {/*rendertostring*/}
 
-On the server, call `renderToString` to render your app to HTML.
+서버에서 `renderToString`을 실행하면 앱을 HTML로 렌더링합니다.
 
 ```js
 import { renderToString } from 'react-dom/server';
@@ -34,81 +34,81 @@ import { renderToString } from 'react-dom/server';
 const html = renderToString(<App />);
 ```
 
-On the client, call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to make the server-generated HTML interactive.
+클라이언트에서 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)을 호출하면 서버에서 생성된 HTML을 상호작용하게 만듭니다.
 
-[See more examples below.](#usage)
+[아래에서 더 많은 예시를 참고하세요.](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `reactNode`: A React node you want to render to HTML. For example, a JSX node like `<App />`.
+* `reactNode`: HTML로 렌더링할 React 노드입니다. 예를 들어 `<App />`과 같은 JSX 노드입니다.
 
-#### Returns {/*returns*/}
+#### 반환 {/*returns*/}
 
-An HTML string.
+HTML 문자열.
 
-#### Caveats {/*caveats*/}
+#### 주의사항 {/*caveats*/}
 
-* `renderToString` has limited Suspense support. If a component suspends, `renderToString` immediately sends its fallback as HTML.
+* `renderToString`는 Suspense 지원에 한계가 있습니다. 컴포넌트가 중단된다면 `renderToString`는 즉시 해당 폴백을 HTML로 보냅니다.
 
-* `renderToString` works in the browser, but using it in the client code is [not recommended.](#removing-rendertostring-from-the-client-code)
+* `renderToString`은 브라우저에서 동작하지만 클라이언트 코드에서 사용하는 것은 [권장하지 않습니다.](#removing-rendertostring-from-the-client-code)
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Rendering a React tree as HTML to a string {/*rendering-a-react-tree-as-html-to-a-string*/}
+### React 트리를 HTML 문자열로 렌더링하기 {/*rendering-a-react-tree-as-html-to-a-string*/}
 
-Call `renderToString` to render your app to an HTML string which you can send with your server response:
+서버 응답과 함께 보낼 수 있는 HTML 문자열로 앱을 렌더링하려면 `renderToString`을 호출하세요:
 
 ```js {5-6}
 import { renderToString } from 'react-dom/server';
 
-// The route handler syntax depends on your backend framework
+// 라우트 핸들러 구문은 백엔드 프레임워크에 따라 다릅니다
 app.use('/', (request, response) => {
   const html = renderToString(<App />);
   response.send(html);
 });
 ```
 
-This will produce the initial non-interactive HTML output of your React components. On the client, you will need to call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to *hydrate* that server-generated HTML and make it interactive.
+이렇게 하면 React 컴포넌트의 초기 비대화형 HTML 출력이 생성됩니다. 클라이언트에서 서버에서 생성된 HTML을 *hydrate*하여 상호작용할 수 있도록 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 실행해야 합니다.
 
 
 <Pitfall>
 
-`renderToString` does not support streaming or waiting for data. [See the alternatives.](#alternatives)
+`renderToString`은 스트리밍 또는 데이터 대기를 지원하지 않습니다. [대안을 참고하세요.](#alternatives)
 
 </Pitfall>
 
 ---
 
-## Alternatives {/*alternatives*/}
+## 대안 {/*alternatives*/}
 
-### Migrating from `renderToString` to a streaming method on the server {/*migrating-from-rendertostring-to-a-streaming-method-on-the-server*/}
+### 서버에서 `renderToString`을 스트리밍 함수로 마이그레이션 {/*migrating-from-rendertostring-to-a-streaming-method-on-the-server*/}
 
-`renderToString` returns a string immediately, so it does not support streaming or waiting for data.
+`renderToString`은 문자열을 즉시 반환하므로 스트리밍이나 데이터 대기를 지원하지 않습니다.
 
-When possible, we recommend using these fully-featured alternatives:
+가능하면 다음과 같은 완전한 기능을 갖춘 대안을 사용하는 것을 권장합니다:
 
-* If you use Node.js, use [`renderToPipeableStream`.](/reference/react-dom/server/renderToPipeableStream)
-* If you use Deno or a modern edge runtime with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), use [`renderToReadableStream`.](/reference/react-dom/server/renderToReadableStream)
+* Node.js를 사용하는 경우 ['renderToPipeableStream']을 사용하세요. (/reference/react-dom/server/renderToPipeableStream)
+* Deno와 최신 엣지 런타임에서 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)을 사용하는 경우 [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)을 사용하세요
 
-You can continue using `renderToString` if your server environment does not support streams.
+서버 환경에서 스트림을 지원하지 않는 경우에도 `renderToString`을 계속 사용할 수 있습니다.
 
 ---
 
-### Removing `renderToString` from the client code {/*removing-rendertostring-from-the-client-code*/}
+### 클라이언트 코드에서 `renderToString` 제거하기 {/*removing-rendertostring-from-the-client-code*/}
 
-Sometimes, `renderToString` is used on the client to convert some component to HTML.
+클라이언트에서 일부 컴포넌트를 HTML로 변환하기 위해 `renderToString`을 사용하기도 합니다.
 
 ```js {1-2}
-// 🚩 Unnecessary: using renderToString on the client
+// 🚩 불필요: 클라이언트에서 renderToString 사용하기
 import { renderToString } from 'react-dom/server';
 
 const html = renderToString(<MyIcon />);
-console.log(html); // For example, "<svg>...</svg>"
+console.log(html); // 예를 들어, "<svg>...</svg>"
 ```
 
-Importing `react-dom/server` **on the client** unnecessarily increases your bundle size and should be avoided. If you need to render some component to HTML in the browser, use [`createRoot`](/reference/react-dom/client/createRoot) and read HTML from the DOM:
+**클라이언트에서** `react-dom/server`를 가져오면 불필요하게 번들 크기가 커지므로 피해야 합니다. 브라우저에서 일부 컴포넌트를 HTML로 렌더링해야 할 경우 [`createRoot`](/reference/react-dom/client/createRoot)을 사용하고 DOM에서 HTML을 읽으세요:
 
 ```js
 import { createRoot } from 'react-dom/client';
@@ -119,20 +119,19 @@ const root = createRoot(div);
 flushSync(() => {
   root.render(<MyIcon />);
 });
-console.log(div.innerHTML); // For example, "<svg>...</svg>"
+console.log(div.innerHTML); // 예를 들어, "<svg>...</svg>"
 ```
 
-The [`flushSync`](/reference/react-dom/flushSync) call is necessary so that the DOM is updated before reading its [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property.
+[`flushSync`](/reference/react-dom/flushSync) 호출은 [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) 속성을 읽기 전에 DOM을 업데이트하기 위해 필요합니다.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
-### When a component suspends, the HTML always contains a fallback {/*when-a-component-suspends-the-html-always-contains-a-fallback*/}
+### 컴포넌트가 일시 중단되면 HTML에 항상 폴백을 포함합니다. {/*when-a-component-suspends-the-html-always-contains-a-fallback*/}
 
-`renderToString` does not fully support Suspense.
+`renderToString`은 Suspense를 완벽하게 지원하지 않습니다.
 
-If some component suspends (for example, because it's defined with [`lazy`](/reference/react/lazy) or fetches data), `renderToString` will not wait for its content to resolve. Instead, `renderToString` will find the closest [`<Suspense>`](/reference/react/Suspense) boundary above it and render its `fallback` prop in the HTML. The content will not appear until the client code loads.
+일부 컴포넌트가 일시중단되거나 (예를 들어, [`lazy`](/reference/react/lazy)와 함께 정의되거나 데이터를 가져올 때) `renderToString`은 콘텐츠가 해결될때 까지 기다리지 않습니다. `renderToString`는 그 위에 가장 가까운 [`<Suspense>`](/reference/react/Suspense) 경계를 찾아 `fallback` 프로퍼티를 HTML에 렌더링합니다. 내용은 클라이언트 코드가 로드될 때까지 나타나지 않습니다.
 
-To solve this, use one of the [recommended streaming solutions.](#migrating-from-rendertostring-to-a-streaming-method-on-the-server) They can stream content in chunks as it resolves on the server so that the user sees the page being progressively filled in before the client code loads.
-
+이를 해결하기 위해 [권장하는 스트리밍 솔루션](#migrating-from-rendertostring-to-a-streaming-method-on-the-server) 중 하나를 사용하세요. 사용자가 클라이언트 코드가 로드되기 전에 페이지가 점진적으로 채워지는 것을 볼 수 있도록 서버에서 해결할 때 컨텐츠를 청크로 스트리밍할 수 있습니다.
