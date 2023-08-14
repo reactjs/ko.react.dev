@@ -50,7 +50,7 @@ HTML 문자열.
 
 * `renderToString`는 Suspense 지원에 한계가 있습니다. 컴포넌트가 중단된다면 `renderToString`는 즉시 해당 폴백을 HTML로 보냅니다.
 
-* `renderToString`은 브라우저에서 동작하지만 클라이언트 코드에서 사용하는 것은 [권장하지 않습니다.](#removing-rendertostring-from-the-client-code)
+* `renderToString`은 브라우저에서 동작하지만, 클라이언트 코드에서 사용하는 것은 [권장하지 않습니다.](#removing-rendertostring-from-the-client-code)
 
 ---
 
@@ -70,7 +70,7 @@ app.use('/', (request, response) => {
 });
 ```
 
-이렇게 하면 React 컴포넌트의 초기 비대화형 HTML 출력이 생성됩니다. 클라이언트에서 서버에서 생성된 HTML을 *hydrate*하여 상호작용할 수 있도록 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 실행해야 합니다.
+이렇게 하면 React 컴포넌트의 초기 비대화형 HTML 출력이 생성됩니다. 클라이언트에서 서버에서 생성된 HTML을 *hydrate*하여 상호작용할 수 있도록 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 를 실행해야 합니다.
 
 
 <Pitfall>
@@ -90,7 +90,7 @@ app.use('/', (request, response) => {
 가능하면 다음과 같은 완전한 기능을 갖춘 대안을 사용하는 것을 권장합니다:
 
 * Node.js를 사용하는 경우 ['renderToPipeableStream']을 사용하세요. (/reference/react-dom/server/renderToPipeableStream)
-* Deno와 최신 엣지 런타임에서 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)을 사용하는 경우 [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)을 사용하세요
+* Deno와 최신 엣지 런타임에서 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)을 사용하는 경우 [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) 을 사용하세요
 
 서버 환경에서 스트림을 지원하지 않는 경우에도 `renderToString`을 계속 사용할 수 있습니다.
 
@@ -132,6 +132,6 @@ console.log(div.innerHTML); // 예를 들어, "<svg>...</svg>"
 
 `renderToString`은 Suspense를 완벽하게 지원하지 않습니다.
 
-일부 컴포넌트가 일시중단되거나 (예를 들어, [`lazy`](/reference/react/lazy)와 함께 정의되거나 데이터를 가져올 때) `renderToString`은 콘텐츠가 해결될때 까지 기다리지 않습니다. `renderToString`는 그 위에 가장 가까운 [`<Suspense>`](/reference/react/Suspense) 경계를 찾아 `fallback` 프로퍼티를 HTML에 렌더링합니다. 내용은 클라이언트 코드가 로드될 때까지 나타나지 않습니다.
+일부 컴포넌트가 일시 중단되거나 (예를 들어, [`lazy`](/reference/react/lazy)와 함께 정의되거나 데이터를 가져올 때) `renderToString`은 콘텐츠가 해결될 때까지 기다리지 않습니다. `renderToString`는 그 위에 가장 가까운 [`<Suspense>`](/reference/react/Suspense) 경계를 찾아 `fallback` 프로퍼티를 HTML에 렌더링합니다. 내용은 클라이언트 코드가 로드될 때까지 나타나지 않습니다.
 
 이를 해결하기 위해 [권장하는 스트리밍 솔루션](#migrating-from-rendertostring-to-a-streaming-method-on-the-server) 중 하나를 사용하세요. 사용자가 클라이언트 코드가 로드되기 전에 페이지가 점진적으로 채워지는 것을 볼 수 있도록 서버에서 해결할 때 컨텐츠를 청크로 스트리밍할 수 있습니다.
