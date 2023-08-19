@@ -169,7 +169,7 @@
           "path": "/learn/manipulating-the-dom-with-refs"
         },
         {
-          "title": "Effect로 값 동기화하기",
+          "title": "Effect로 동기화하기",
           "path": "/learn/synchronizing-with-effects"
         },
         {
