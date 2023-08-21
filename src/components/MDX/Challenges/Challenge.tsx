@@ -61,26 +61,42 @@ export function Challenge({
       <div className="flex justify-between items-center mt-4">
         {currentChallenge.hint ? (
           <div>
+<<<<<<< HEAD
             <Button className="mr-2" onClick={toggleHint} active={showHint}>
               <IconHint className="mr-1.5" />{' '}
               {showHint ? '힌트 숨기기' : '힌트 보기'}
+=======
+            <Button className="me-2" onClick={toggleHint} active={showHint}>
+              <IconHint className="me-1.5" />{' '}
+              {showHint ? 'Hide hint' : 'Show hint'}
+>>>>>>> 842c24c9aefaa60b7ae9b46b002bd1b3cf4d31f3
             </Button>
             <Button
-              className="mr-2"
+              className="me-2"
               onClick={toggleSolution}
               active={showSolution}>
+<<<<<<< HEAD
               <IconSolution className="mr-1.5" />{' '}
               {showSolution ? '정답 숨기기' : '정답 보기'}
+=======
+              <IconSolution className="me-1.5" />{' '}
+              {showSolution ? 'Hide solution' : 'Show solution'}
+>>>>>>> 842c24c9aefaa60b7ae9b46b002bd1b3cf4d31f3
             </Button>
           </div>
         ) : (
           !isRecipes && (
             <Button
-              className="mr-2"
+              className="me-2"
               onClick={toggleSolution}
               active={showSolution}>
+<<<<<<< HEAD
               <IconSolution className="mr-1.5" />{' '}
               {showSolution ? '정답 숨기기' : '정답 보기'}
+=======
+              <IconSolution className="me-1.5" />{' '}
+              {showSolution ? 'Hide solution' : 'Show solution'}
+>>>>>>> 842c24c9aefaa60b7ae9b46b002bd1b3cf4d31f3
             </Button>
           )
         )}
@@ -94,8 +110,13 @@ export function Challenge({
             )}
             onClick={handleClickNextChallenge}
             active>
+<<<<<<< HEAD
             다음 {isRecipes ? '예제' : '챌린지'}
             <IconArrowSmall displayDirection="right" className="block ml-1.5" />
+=======
+            Next {isRecipes ? 'Example' : 'Challenge'}
+            <IconArrowSmall displayDirection="end" className="block ms-1.5" />
+>>>>>>> 842c24c9aefaa60b7ae9b46b002bd1b3cf4d31f3
           </Button>
         )}
       </div>
@@ -118,8 +139,8 @@ export function Challenge({
                 active>
                 다음 챌린지
                 <IconArrowSmall
-                  displayDirection="right"
-                  className="block ml-1.5"
+                  displayDirection="end"
+                  className="block ms-1.5"
                 />
               </Button>
             )}
