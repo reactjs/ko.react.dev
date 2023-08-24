@@ -1186,7 +1186,7 @@ obj.x = 10;  // 🚩 잘못된 방법: 기존 객체를 변경
 setObj(obj); // 🚩 아무것도 하지 않습니다.
 ```
 
-기존 `obj` 객체를 변이한 후 다시 `setObj`로 전달했기 때문에 React가 업데이트를 무시했습니다. 이 문제를 해결하려면 [객체나 배열 state를 변경하는 대신 항상 교체](#updating-objects-and-arrays-in-state)해야 합니다.
+기존 `obj` 객체를 변경한 후 다시 `setObj`로 전달했기 때문에 React가 업데이트를 무시했습니다. 이 문제를 해결하려면 [객체나 배열 state를 변경하는 대신 항상 교체](#updating-objects-and-arrays-in-state)해야 합니다.
 
 ```js
 // ✅ 올바른 방법: 새로운 객체 생성
@@ -1247,13 +1247,12 @@ function TodoList() {
 
 ```js {2,3}
 setTodos(prevTodos => {
-  // 🚩 실수: state 변이
+  // 🚩 실수: state 변경
   prevTodos.push(createTodo());
 });
 ```
 
-Because React calls your updater function twice, you'll see the todo was added twice, so you'll know that there is a mistake. In this example, you can fix the mistake by [replacing the array instead of mutating it](#updating-objects-and-arrays-in-state):
-React는 업데이터 함수를 두 번 호출하기 때문에 할 일이 두 번 추가되었음을 알 수 있으므로, 실수가 있음을 파악할 수 있습니다. 이 예시에서는 [배열을 변이하는 대신 교체](#updating-objects-and-arrays-in-state)하여 실수를 수정할 수 있습니다:
+React는 업데이터 함수를 두 번 호출하기 때문에 할 일이 두 번 추가되었음을 알 수 있으므로, 실수가 있음을 파악할 수 있습니다. 이 예시에서는 [배열을 변경하는 대신 교체](#updating-objects-and-arrays-in-state)하여 실수를 수정할 수 있습니다:
 
 ```js {2,3}
 setTodos(prevTodos => {
