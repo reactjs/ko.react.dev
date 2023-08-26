@@ -215,11 +215,7 @@ function Profile() {
 
 #### 컴포넌트의 모든 것 {/*components-all-the-way-down*/}
 
-<<<<<<< HEAD
-React 애플리케이션은 "root"컴포넌트에서 시작됩니다. 보통 새 프로젝트를 시작할 때 자동으로 생성됩니다. 예를 들어, [CodeSandbox](https://codesandbox.io/) 또는 [Create React App](https://create-react-app.dev/)를 사용하는 경우, root 컴포넌트에서 `src/App.js`에 정의됩니다. [Next.js](https://nextjs.org/)프레임워크를 사용하는 경우, root 컴포넌트는 `pages/index.js`에 정의됩니다. 이 예제에서는 root 컴포넌트를 내보내고 있습니다.
-=======
-Your React application begins at a "root" component. Usually, it is created automatically when you start a new project. For example, if you use [CodeSandbox](https://codesandbox.io/) or if you use the framework [Next.js](https://nextjs.org/), the root component is defined in `pages/index.js`. In these examples, you've been exporting root components.
->>>>>>> 842c24c9aefaa60b7ae9b46b002bd1b3cf4d31f3
+React 애플리케이션은 "root"컴포넌트에서 시작됩니다. 보통 새 프로젝트를 시작할 때 자동으로 생성됩니다. 예를 들어, [CodeSandbox](https://codesandbox.io/) 또는 [Next.js](https://nextjs.org/)를 사용하는 경우, root 컴포넌트는 `pages/index.js`에 정의됩니다. 이 예제에서는 root 컴포넌트를 내보내고 있습니다.
 
 대부분의 React 앱은 모든 부분에서 컴포넌트를 사용합니다. 즉, 버튼과 같이 재사용 가능한 부분뿐만 아니라 사이드바, 목록, 그리고 궁극적으로 전체 페이지와 같은 큰 부분에도 컴포넌트를 사용하게 됩니다! 컴포넌트는 한 번만 사용되더라도 UI 코드와 마크업을 정리하는 편리한 방법입니다.
 

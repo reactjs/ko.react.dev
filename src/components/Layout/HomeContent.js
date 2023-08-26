@@ -368,7 +368,6 @@ export function HomeContent() {
                           느껴지기를 원합니다.{' '}
                           <Link href="https://reactnative.dev">
                             React Native
-<<<<<<< HEAD
                           </Link>
                           와{' '}
                           <Link href="https://github.com/expo/expo">Expo</Link>
@@ -377,16 +376,6 @@ export function HomeContent() {
                           native처럼 보입니다. 이것은 web view가 아닙니다. React
                           컴포넌트들은 실제 Android, iOS 플랫폼에서 제공하는
                           view를 렌더링합니다.
-=======
-                          </Link>{' '}
-                          and{' '}
-                          <Link href="https://github.com/expo/expo">Expo</Link>{' '}
-                          let you build apps in React for Android, iOS, and
-                          more. They look and feel native because their UIs{' '}
-                          <i>are</i> truly native. It’s not a web view—your
-                          React components render real Android and iOS views
-                          provided by the platform.
->>>>>>> 842c24c9aefaa60b7ae9b46b002bd1b3cf4d31f3
                         </p>
                       </div>
                     </div>
@@ -413,13 +402,8 @@ export function HomeContent() {
         <Section background="right-card">
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row px-5">
             <div className="max-w-3xl lg:max-w-7xl gap-5 flex flex-col lg:flex-row lg:px-5">
-<<<<<<< HEAD
-              <div className="w-full lg:w-6/12 max-w-3xl flex flex-col items-start justify-start lg:pl-5 lg:pr-10">
-                <Header>새로운 기능이 준비되면 업그레이드 하기</Header>
-=======
               <div className="w-full lg:w-6/12 max-w-3xl flex flex-col items-start justify-start lg:ps-5 lg:pe-10">
-                <Header>Upgrade when the future is ready</Header>
->>>>>>> 842c24c9aefaa60b7ae9b46b002bd1b3cf4d31f3
+                <Header>새로운 기능이 준비되면 업그레이드 하기</Header>
                 <Para>
                   React는 변화에 신중하게 접근합니다. 모든 React 커밋은 10억 명
                   이상의 사용자가 있는 비즈니스에 크리티컬한 영역에서 테스트
@@ -498,14 +482,7 @@ export function HomeContent() {
 
           <div className="mt-20 px-5 lg:px-0 mb-6 max-w-4xl text-center text-opacity-80">
             <Logo className="text-link dark:text-link-dark w-24 lg:w-28 mb-10 lg:mb-8 mt-12 h-auto mx-auto self-start" />
-<<<<<<< HEAD
             <Header>React 커뮤니티에 오신 것을 환영합니다.</Header>
-=======
-            <Header>
-              Welcome to the <br className="hidden lg:inline" />
-              React community
-            </Header>
->>>>>>> 842c24c9aefaa60b7ae9b46b002bd1b3cf4d31f3
             <ButtonLink
               href={'/learn'}
               type="primary"
