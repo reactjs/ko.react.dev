@@ -42,14 +42,14 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 #### 주의 {/*caveats*/}
 
-* Strict Mode에서 React는 [실수로 발생한 결함을 찾기 위해](#my-initializer-or-updater-function-runs-twice) **렌더링 함수를 두 번 호출**합니다. 이는 개발 환경 전용 동작이며 상용 환경에는 영향을 미치지 않습니다. 렌더링 함수가 순수함수인 경우(그래야만 합니다.) 컴포넌트 로직에 영향을 미치지 않습니다. 호출 결과 중 하나의 결과는 무시됩니다.
+* Strict Mode에서 React는 [실수로 발생한 결함을 찾기 위해](#my-initializer-or-updater-function-runs-twice) **렌더링 함수를 두 번 호출**합니다. 이는 개발 환경 전용 동작이며 프로덕션 환경에는 영향을 미치지 않습니다. 렌더링 함수가 순수함수인 경우(그래야만 합니다.) 컴포넌트 로직에 영향을 미치지 않습니다. 호출 결과 중 하나의 결과는 무시됩니다.
 
 
 ---
 
-### `렌더링` 함수 {/*render-function*/}
+### `render` 함수 {/*render-function*/}
 
-`forwardRef`는 렌더링 함수를 인수로 받습니다. React는 `props`와 `ref`와 함께 이 함수를 호출합니다.
+`forwardRef`는 render 함수를 인수로 받습니다. React는 `props`와 `ref`와 함께 이 함수를 호출합니다.
 
 ```js
 const MyInput = forwardRef(function MyInput(props, ref) {
@@ -78,7 +78,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 ### 부모 컴포넌트에 DOM 노드 노출하기 {/*exposing-a-dom-node-to-the-parent-component*/}
 
-기본적으로 각 컴포넌트의 DOM 노드는 비공개입니다. 그러나 때로는 부모에 DOM 노드를 노출하는 것이 유용할 수 있습니다. 예를 들어 초점 맞추기를 허용하기 위해 노출할 수 있습니다. 이를 위해 컴포넌트 정의를 `forwardRef()`로 감싸주면 됩니다.
+기본적으로 각 컴포넌트의 DOM 노드는 비공개입니다. 그러나 때로는 부모에 DOM 노드를 노출하는 것이 유용할 수 있습니다. 예를 들어 focus 하기 위해 노출할 수 있습니다. 이를 위해 컴포넌트 정의를 `forwardRef()`로 감싸주면 됩니다.
 
 ```js {3,11}
 import { forwardRef } from 'react';
@@ -139,7 +139,7 @@ function Form() {
 
 #### 텍스트 input에 초점 맞추기 {/*focusing-a-text-input*/}
 
-버튼을 클릭하면 input에 초점이 맞춰집니다. `Form` 컴포넌트는 ref를 정의하고 이를 `MyInput` 컴포넌트로 전달합니다. `MyInput` 컴포넌트는 해당 ref를 `input`으로 전달합니다. 이렇게 하면 `Form` 컴포넌트가 `input`의 초점을 맞출 수 있습니다.
+버튼을 클릭하면 input에 포커스 됩니다. `Form` 컴포넌트는 ref를 정의하고 이를 `MyInput` 컴포넌트로 전달합니다. `MyInput` 컴포넌트는 해당 ref를 `input`으로 전달합니다. 이렇게 하면 `Form` 컴포넌트가 `input`의 포커스를 줄 수 있습니다.
 
 <Sandpack>
 
@@ -467,7 +467,7 @@ input {
 
 <Pitfall>
 
-**ref를 과도하게 사용하지 마세요.** 노드로 스크롤 하기, 노드에 초점 맞추기, 애니메이션 트리거하기, 텍스트 선택하기 등 prop로 표현할 수 없는 필수적인 동작에만 ref를 사용해야 합니다.
+**ref를 과도하게 사용하지 마세요.** 노드로 스크롤 하기, 노드에 포커스하기, 애니메이션 트리거하기, 텍스트 선택하기 등 prop로 표현할 수 없는 필수적인 동작에만 ref를 사용해야 합니다.
 
 **prop로 무언가를 표현할 수 있다면 ref를 사용해서는 안 됩니다.** 예를 들어 `Modal` 컴포넌트에서 `{ open, close }`와 같은 명령형 핸들을 노출하는 대신 `<Modal isOpen={isOpen} />`과 같이 prop `isOpen`을 사용하는 것이 더 좋습니다. [Effects](/learn/synchronizing-with-effects)는 props를 통해 명령형 동작을 노출하는 데 도움이 될 수 있습니다.
 
