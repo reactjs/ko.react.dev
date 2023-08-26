@@ -52,7 +52,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-이 예제의 컴포넌트들은 모두 `App.js`라는 **root 컴포넌트 파일**에 존재합니다. [Create React App](https://create-react-app.dev/)에서는 앱 전체가 `src/App.js`에서 실행됩니다. 설정에 따라 root 컴포넌트가 다른 파일에 위치할 수도 있습니다. Next.js처럼 파일 기반으로 라우팅하는 프레임워크일 경우 페이지별로 root 컴포넌트가 다를 수 있습니다.
+이 예제의 컴포넌트들은 모두 `App.js`라는 **root 컴포넌트 파일**에 존재합니다. 설정에 따라 root 컴포넌트가 다른 파일에 위치할 수도 있습니다. Next.js처럼 파일 기반으로 라우팅하는 프레임워크일 경우 페이지별로 root 컴포넌트가 다를 수 있습니다.
 
 ## 컴포넌트를 import 하거나 export 하는 방법 {/*exporting-and-importing-a-component*/}
 
