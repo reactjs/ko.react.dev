@@ -10,7 +10,7 @@ title: 탈출구
 
 <YouWillLearn isChapter={true}>
 
-* [리렌더링하지 않고 정보를 "기억"하는 방법](/learn/referencing-values-with-refs)
+* [다시 렌더링하지 않고 정보를 "기억"하는 방법](/learn/referencing-values-with-refs)
 * [React가 관리하는 DOM 엘리먼트에 접근하는 방법](/learn/manipulating-the-dom-with-refs)
 * [컴포넌트를 외부 시스템과 동기화하는 방법](/learn/synchronizing-with-effects)
 * [컴포넌트에서 불필요한 Effect를 제거하는 방법](/learn/you-might-not-need-an-effect)
@@ -29,7 +29,7 @@ title: 탈출구
 const ref = useRef(0);
 ```
 
-state처럼 ref는 리렌더링 사이에 React에 의해 유지됩니다. 다만 state의 설정은 컴포넌트가 리렌더링 되지만, ref의 변경은 그렇지 않습니다! `ref.current` 프로퍼티를 통해 해당 ref의 현재 값에 접근할 수 있습니다.
+state처럼 ref는 다시 렌더링하는 사이에 React에 의해 유지됩니다. 다만 state의 설정은 컴포넌트가 다시 렌더링 되지만, ref의 변경은 그렇지 않습니다! `ref.current` 프로퍼티를 통해 해당 ref의 현재 값에 접근할 수 있습니다.
 
 <Sandpack>
 
@@ -145,7 +145,7 @@ video { width: 250px; }
 
 </Sandpack>
 
-많은 Effect는 스스로 "정리"하기도 합니다. 예를 들어 채팅 서버에 대한 연결을 설정하는 Effect는 해당 서버에서 컴포넌트의 연결을 끊는 방법을 React에 알려주는 *정리 함수* 를 반환해야 합니다.
+많은 Effect는 스스로 "클린업"하기도 합니다. 예를 들어 채팅 서버에 대한 연결을 설정하는 Effect는 해당 서버에서 컴포넌트의 연결을 끊는 방법을 React에 알려주는 *클린업 함수* 를 반환해야 합니다.
 
 <Sandpack>
 
@@ -183,7 +183,7 @@ input { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-개발 모드에서 React는 즉시 실행되고 Effect를 한 번 더 정리합니다. 그래서 `"✅ Connecting..."`이 두 번 인쇄되는 것입니다. 이렇게 하여 정리 함수를 구현하는 것을 잊지 않도록 합니다.
+개발 모드에서 React는 즉시 실행되고 Effect를 한 번 더 클린업합니다. 그래서 `"✅ Connecting..."`이 두 번 인쇄되는 것입니다. 이렇게 하여 클린업 함수를 구현하는 것을 잊지 않도록 합니다.
 
 <LearnMore path="/learn/synchronizing-with-effects">
 
@@ -239,7 +239,7 @@ function Form() {
 
 Effect는 컴포넌트와 다른 생명주기를 가집니다. 컴포넌트는 마운트, 업데이트 또는 언마운트할 수 있습니다. 반면 Effect는 동기화를 시작하거나 후에 동기화를 중지하는 두 가지 작업만 할 수 있습니다. Effect가 시간에 따라 변하는 props와 state에 의존하는 경우 이 주기는 여러 번 발생할 수 있습니다.
 
-다음 Effect는 `roomId` prop의 값에 의존합니다. Props는 리렌더링할 때 변할 수 있는 *반응형 값* 입니다. `roomId`가 변경되면 Effect가 *재동기화* (및 서버 재연결)합니다.
+다음 Effect는 `roomId` prop의 값에 의존합니다. Props는 다시 렌더링할 때 변할 수 있는 *반응형 값* 입니다. `roomId`가 변경되면 Effect가 *다시 동기화* (및 서버에 다시 연결)합니다.
 
 <Sandpack>
 
@@ -318,9 +318,9 @@ Effect의 생명주기가 컴포넌트와 어떻게 다른지를 배우려면 **
 
 </Wip>
 
-이벤트 핸들러는 같은 상호작용을 반복하는 경우에만 재실행됩니다. Effect는 이벤트 핸들러와 달리 prop이나 state 변수 등 읽은 값이 마지막 렌더링 때와 다르면 다시 동기화합니다. 때로는 두 동작이 섞여서 어떤 값에는 반응해 재실행되지만, 다른 값에는 그러지 않는 Effect를 원할 때도 있습니다. 이 페이지에서 그 방법을 알려드리겠습니다.
+이벤트 핸들러는 같은 상호작용을 반복하는 경우에만 다시 실행됩니다. Effect는 이벤트 핸들러와 달리 prop이나 state 변수 등 읽은 값이 마지막 렌더링 때와 다르면 다시 동기화합니다. 때로는 두 동작이 섞여서 어떤 값에는 반응해 다시 실행되지만, 다른 값에는 그러지 않는 Effect를 원할 때도 있습니다. 이 페이지에서 그 방법을 알려드리겠습니다.
 
-Effect 내의 모든 코드는 *반응형* 이며, 읽은 반응형 값이 리렌더링으로 인해 변경되면 다시 실행됩니다. 예를 들어 다음의 Effect는 `roomId` 또는 `theme`이 변경되면 채팅에 다시 연결됩니다:
+Effect 내의 모든 코드는 *반응형* 이며, 읽은 반응형 값이 다시 렌더링되는 것으로 인해 변경되면 다시 실행됩니다. 예를 들어 다음의 Effect는 `roomId` 또는 `theme`이 변경되면 채팅에 다시 연결됩니다:
 
 <Sandpack>
 
@@ -448,7 +448,7 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-이것은 이상적이지 않습니다. `roomId`가 변경된 경우에만 채팅에 다시 연결하고 싶습니다. `theme`를 전환해도 채팅에 재연결되지 않아야 합니다! `theme`를 읽는 코드를 Effect에서 *Effect Event* 로 옮기세요.
+이것은 이상적이지 않습니다. `roomId`가 변경된 경우에만 채팅에 다시 연결하고 싶습니다. `theme`를 전환해도 채팅에 다시 연결되지 않아야 합니다! `theme`를 읽는 코드를 Effect에서 *Effect Event* 로 옮기세요.
 
 <Sandpack>
 
