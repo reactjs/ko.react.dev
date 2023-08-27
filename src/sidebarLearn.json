@@ -37,6 +37,10 @@
           "path": "/learn/editor-setup"
         },
         {
+          "title": "TypeScript 사용하기",
+          "path": "/learn/typescript"
+        },
+        {
           "title": "React 개발자 도구",
           "path": "/learn/react-developer-tools"
         }
@@ -169,7 +173,7 @@
           "path": "/learn/manipulating-the-dom-with-refs"
         },
         {
-          "title": "Effect로 값 동기화하기",
+          "title": "Effect로 동기화하기",
           "path": "/learn/synchronizing-with-effects"
         },
         {

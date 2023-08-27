@@ -62,24 +62,24 @@ export function Challenge({
         {currentChallenge.hint ? (
           <div>
             <Button className="mr-2" onClick={toggleHint} active={showHint}>
-              <IconHint className="mr-1.5" />{' '}
+              <IconHint className="me-1.5" />{' '}
               {showHint ? '힌트 숨기기' : '힌트 보기'}
             </Button>
             <Button
-              className="mr-2"
+              className="me-2"
               onClick={toggleSolution}
               active={showSolution}>
-              <IconSolution className="mr-1.5" />{' '}
+              <IconSolution className="me-1.5" />{' '}
               {showSolution ? '정답 숨기기' : '정답 보기'}
             </Button>
           </div>
         ) : (
           !isRecipes && (
             <Button
-              className="mr-2"
+              className="me-2"
               onClick={toggleSolution}
               active={showSolution}>
-              <IconSolution className="mr-1.5" />{' '}
+              <IconSolution className="me-1.5" />{' '}
               {showSolution ? '정답 숨기기' : '정답 보기'}
             </Button>
           )
@@ -95,7 +95,7 @@ export function Challenge({
             onClick={handleClickNextChallenge}
             active>
             다음 {isRecipes ? '예제' : '챌린지'}
-            <IconArrowSmall displayDirection="right" className="block ml-1.5" />
+            <IconArrowSmall displayDirection="end" className="block ms-1.5" />
           </Button>
         )}
       </div>
@@ -118,8 +118,8 @@ export function Challenge({
                 active>
                 다음 챌린지
                 <IconArrowSmall
-                  displayDirection="right"
-                  className="block ml-1.5"
+                  displayDirection="end"
+                  className="block ms-1.5"
                 />
               </Button>
             )}

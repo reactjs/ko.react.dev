@@ -44,14 +44,14 @@ title: "<textarea>"
 
 다음의 `<textarea>` props는 제어되지 않는 텍스트 영역과 제어되는 텍스트 영역 모두에 적용됩니다.
 
-* [`autoComplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-autocomplete): 'on' 또는 'off'. 자동 완성 동작을 지정합니다.
-* [`autoFocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-autofocus): 불리언 타입. `true`일 경우 React는 마운트 시 엘리먼트에 포커스를 맞춥니다.
+* [`autoComplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#autocomplete): 'on' 또는 'off'. 자동 완성 동작을 지정합니다.
+* [`autoFocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#autofocus): 불리언 타입. `true`일 경우 React는 마운트 시 엘리먼트에 포커스를 맞춥니다.
 * `children`: `<textarea>`는 자식을 받지 않습니다. 초깃값을 설정하려면 `defaultValue`를 사용하세요.
-* [`cols`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-cols): 숫자 타입. 평균 문자 너비의 기본 너비를 지정하세요. 기본값은 `20`입니다.
-* [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-disabled): 불리언 타입. `true`일 경우 input은 상호작용이 불가능해지며 흐릿하게 보입니다.
-* [`form`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-form): 문자열 타입. 텍스트 영역 input이 속하는 `<form>`의 `id`를 지정합니다. 생략 시 가장 가까운 부모 폼으로 설정됩니다.
-* [`maxLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-maxlength): 숫자 타입. 텍스트의 최대 길이를 지정합니다.
-* [`minLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-minlength): 숫자 타입. 텍스트의 최소 길이를 지정합니다. 
+* [`cols`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#cols): 숫자 타입. 평균 문자 너비의 기본 너비를 지정하세요. 기본값은 `20`입니다.
+* [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#disabled): 불리언 타입. `true`일 경우 input은 상호작용이 불가능해지며 흐릿하게 보입니다.
+* [`form`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#form): 문자열 타입. 텍스트 영역 input이 속하는 `<form>`의 `id`를 지정합니다. 생략 시 가장 가까운 부모 폼으로 설정됩니다.
+* [`maxLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#maxlength): 숫자 타입. 텍스트의 최대 길이를 지정합니다.
+* [`minLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#minlength): 숫자 타입. 텍스트의 최소 길이를 지정합니다. 
 * [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name): 문자열 타입. [폼과 제출](#reading-the-textarea-value-when-submitting-a-form)되는 input의 이름을 지정합니다.
 * `onChange`: [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. [제어되는 텍스트 영역](#controlling-a-text-area-with-a-state-variable) 필수 요소로 가령 사용자가 키보드를 누를 때마다 실행되는 방식으로 input 값을 변경하는 즉시 실행되며 브라우저 [`input` 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)처럼 동작합니다. 
 * `onChangeCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onChange`
