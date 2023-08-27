@@ -593,9 +593,7 @@ React는 언제든 `render`를 호출할 수 있으므로 특정 시간에 실�
 
 #### 매개변수 {/*render-parameters*/}
 
-* `prevProps`: 업데이트 이전의 props. `prevProps`와 [`this.props`](#props)를 비교하여 변경된 내용을 확인합니다.
-
-* `prevState`: 업데이트 전 state. `prevState`를 [`this.state`](#state)와 비교하여 변경된 내용을 확인합니다.
+* `render`: 어떤 매개변수도 받지 않습니다.
 
 #### 반환값 {/*render-returns*/}
 
@@ -1010,7 +1008,7 @@ class Greeting extends React.Component {
 
 `static getDerivedStateFromError`를 정의하면 렌더링 도중 자식 컴포넌트(멀리 떨어진 자식 포함)가 에러를 throw 할 때 React가 이를 호출합니다. 이렇게 하면 UI를 지우는 대신 오류 메시지를 표시할 수 있습니다.
 
-일반적으로 일부 분석 서비스에 오류 보고서를 보낼 수 있는 [`componentDidCatch`](#componentDidCatch)와 함께 사용됩니다. 이러한 메서드가 있는 컴포넌트를 *error boundary* 라고 합니다.
+일반적으로 일부 분석 서비스에 오류 보고서를 보낼 수 있는 [`componentDidCatch`](#componentdidcatch)와 함께 사용됩니다. 이러한 메서드가 있는 컴포넌트를 *error boundary* 라고 합니다.
 
 [예시를 확인하세요.](#catching-rendering-errors-with-an-error-boundary)
 
