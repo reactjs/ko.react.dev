@@ -438,7 +438,7 @@ export default function PackingList() {
 
 ### 다이어그램과 삽화로 직관력을 높여보세요 {/*build-an-intuition-with-diagrams-and-illustrations*/}
 
-코드와 단어만으로 어떤 것을 설명하기 어려운 경우, 직관력을 제공하는 데 도움을 주는 다이어그램을 추가했습니다. 예를 들어, 여기 [State를 보장하고 재설정하기](/learn/preserving-and-resetting-state)에 있는 다이어그램 중 하나가 있습니다.
+코드와 단어만으로 어떤 것을 설명하기 어려운 경우, 직관적으로 도움을 주는 다이어그램을 추가했습니다. 예를 들어, 여기 [State를 보장하고 재설정하기](/learn/preserving-and-resetting-state)에 있는 다이어그램 중 하나가 있습니다.
 
 <Diagram name="preserving_state_diff_same_pt1" height={350} width={794} alt="다이어그램에는 세 개의 섹션이 있으며, 각 섹션 사이에 전환되는 화살표가 있습니다. 첫 번째 섹션에는 'div'로 레이블 된 React 컴포넌트가 있습니다. 이 컴포넌트의 단일 자식으로 'section'이라고 레이블 된 섹션이 있으며, 그 안에 'Counter'라고 레이블 된 컴포넌트가 있습니다. 이 컴포넌트 안에는 'count'라고 레이블 된 state 버블이 있으며 값은 3입니다. 중간 섹션에는 동일한 'div' 부모가 있지만, 이제는 하위 컴포넌트들이 삭제되었습니다. 이를 노란색 'proof' 이미지로 표시합니다. 세 번째 섹션에는 다시 동일한 'div' 부모가 있으며, 이번에는 'div'라고 레이블 된 새로운 하위 컴포넌트가 추가되었습니다. 이 컴포넌트 안에는 'Counter'라고 레이블 된 컴포넌트가 있으며, 그 안에 'count'라고 레이블 된 state 버블이 있습니다. 이번에는 값이 0으로 표시됩니다. 모든 부분이 노란색으로 강조되어 있습니다.">
 
