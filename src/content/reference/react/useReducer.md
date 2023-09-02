@@ -4,7 +4,7 @@ title: useReducer
 
 <Intro>
 
-`useReducer` is a React Hook that lets you add a [reducer](/learn/extracting-state-logic-into-a-reducer) to your component.
+`useReducer`는 컴포넌트에 [reducer](/learn/extracting-state-logic-into-a-reducer)를 추가할 수 있게 해주는 React Hook입니다.
 
 ```js
 const [state, dispatch] = useReducer(reducer, initialArg, init?)
@@ -16,11 +16,11 @@ const [state, dispatch] = useReducer(reducer, initialArg, init?)
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `useReducer(reducer, initialArg, init?)` {/*usereducer*/}
 
-Call `useReducer` at the top level of your component to manage its state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
+`useReducer`를 컴포넌트의 최상위에 호출하고, [reducer](/learn/extracting-state-logic-into-a-reducer)를 이용해 state를 관리합니다.
 
 ```js
 import { useReducer } from 'react';
@@ -34,25 +34,25 @@ function MyComponent() {
   // ...
 ```
 
-[See more examples below.](#usage)
+[아래에서 더 많은 예시를 확인하세요.](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `reducer`: The reducer function that specifies how the state gets updated. It must be pure, should take the state and action as arguments, and should return the next state. State and action can be of any types. 
-* `initialArg`: The value from which the initial state is calculated. It can be a value of any type. How the initial state is calculated from it depends on the next `init` argument.
-* **optional** `init`: The initializer function that should return the initial state. If it's not specified, the initial state is set to `initialArg`. Otherwise, the initial state is set to the result of calling `init(initialArg)`.
+* `reducer`: state가 어떻게 업데이트되는지를 지정하는 리듀서 함수입니다. 리듀서 함수는 반드시 순수 함수여야 하며, state와 action을 인수로 받아야 하고, 다음 state를 반환해야 합니다. state와 action에는 모든 데이터 타입이 할당될 수 있습니다.
+* `initialArg`: 초기 state가 계산되는 값입니다. 모든 데이터 타입이 할당될 수 있습니다. 초기 state가 어떻게 계산되는지는 다음 `init` 인수에 따라 달라집니다.
+* **선택사항** `init`: 초기 state를 반환하는 초기화 함수입니다. 이 함수가 인수에 할당되지 않으면 초기 state는 `initialArg`로 설정됩니다. 할당되었다면 초기 state는 `init(initialArg)`를 호출한 결과가 할당됩니다.
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-`useReducer` returns an array with exactly two values:
+`useReducer`는 아래 2개의 값으로 구성된 배열을 반환합니다.
 
-1. The current state. During the first render, it's set to `init(initialArg)` or `initialArg` (if there's no `init`).
-2. The [`dispatch` function](#dispatch) that lets you update the state to a different value and trigger a re-render.
+1. 현재 state. 첫번째 렌더링에서의 state는 `init(initialArg)` 또는 `initialArg`로 설정됩니다 (`init`이 없을 경우 `initialArg`로 설정됩니다).
+2. [`dispatch` function](#dispatch). `dispatch`는 state를 새로운 값으로 업데이트하고 리렌더링을 일으킵니다.
 
-#### Caveats {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
-* `useReducer` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
-* In Strict Mode, React will **call your reducer and initializer twice** in order to [help you find accidental impurities.](#my-reducer-or-initializer-function-runs-twice) This is development-only behavior and does not affect production. If your reducer and initializer are pure (as they should be), this should not affect your logic. The result from one of the calls is ignored.
+* `useReducer`는 Hook이므로 **컴포넌트의 최상위** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문에서는 사용할 수 없습니다. 필요한 경우 새로운 컴포넌트를 추출하고 해당 컴포넌트로 state를 이동해서 사용할 수 있습니다.
+* 엄격 모드에서는 [우연한 비순수성](#my-reducer-or-initializer-function-runs-twice)을 찾아내기 위해 reducer와 init 함수를 두번 호출합니다. 개발 환경에서만 한정된 동작이며, 배포 모드에는 영향을 미치지 않습니다. reducer와 init 함수가 순수 함수라면(그래야만 하듯이) 로직에 어떠한 영향도 미치지 않습니다. 호출 중 하나의 결과는 무시합니다.
 
 ---
 
