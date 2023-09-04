@@ -4,7 +4,7 @@ title: lazy
 
 <Intro>
 
-`lazy`는 로딩 중인 컴포넌트 코드가 처음으로 렌더링될 때까지 연기할 수 있습니다.
+`lazy`는 로딩 중인 컴포넌트 코드가 처음으로 렌더링 될 때까지 연기할 수 있습니다.
 
 ```js
 const SomeComponent = lazy(load)
@@ -32,11 +32,11 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
 #### 매개변수 {/*parameters*/}
 
-* `load`: [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 또는 또 다른 *thenable* (`then` 메서드가 있는 Promise 유사 객체)을 반환하는 함수입니다. React는 반환된 컴포넌트를 처음 렌더링하려고 할 때까지 `load`를 호출하지 않을 것입니다. React는 먼저 `load`를 실행한 후 `load`가 이행될 때까지 기다렸다가 이행된 값을 React 컴포넌트로 렌더링합니다. 반환된 Promise와 Promise의 이행된 값이 모두 캐시되므로 React는 `load`를 두 번 이상 호출하지 않습니다. Promise가 거부하면 React는 가장 가까운 Error Boundary를 처리하기 위해 Error Boundary에 대한 거부 사유를 `throw`할 것입니다.
+* `load`: [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 또는 또 다른 *thenable* (`then` 메서드가 있는 Promise 유사 객체)을 반환하는 함수입니다. React는 반환된 컴포넌트를 처음 렌더링하려고 할 때까지 `load`를 호출하지 않을 것입니다. React는 먼저 `load`를 실행한 후 `load`가 이행될 때까지 기다렸다가 이행된 값을 React 컴포넌트로 렌더링합니다. 반환된 Promise와 Promise의 이행된 값이 모두 캐시 되므로 React는 `load`를 두 번 이상 호출하지 않습니다. Promise가 거부하면 React는 가장 가까운 Error Boundary를 처리하기 위해 Error Boundary에 대한 거부 사유를 `throw` 할 것입니다.
 
 #### 반환값 {/*returns*/}
 
-`lazy`는 트리에 렌더링할 수 있는 React 컴포넌트를 반환합니다. 컴포넌트의 코드가 여전히 로드되는 동안 렌더링을 시도하면 서스펜스됩니다. 로딩 중에 로딩 인디케이터를 표시하려면 [`<Suspense>`](/reference/react/Suspense)를 사용합니다.
+`lazy`는 트리에 렌더링할 수 있는 React 컴포넌트를 반환합니다. 컴포넌트의 코드가 여전히 로드되는 동안 렌더링을 시도하면 일시 중지됩니다. 로딩 중에 로딩 인디케이터를 표시하려면 [`<Suspense>`](/reference/react/Suspense)를 사용합니다.
 
 ---
 
@@ -48,13 +48,13 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
 #### 반환값 {/*load-returns*/}
 
-[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 또는 다른 *thenable* (`then` 메서드가 있는 Promise 유사 객체)을 반환해야 합니다. 결국 함수, [`memo`](/reference/react/memo), 또는 [`forwardRef`](/reference/react/forwardRef) 컴포넌트와 같은 유효한 React 컴포넌트 유형으로 이행해야 합니다.
+[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 또는 다른 *thenable* (`then` 메서드가 있는 Promise 유사 객체)을 반환해야 합니다. 결국 함수, [`memo`](/reference/react/memo) 또는 [`forwardRef`](/reference/react/forwardRef) 컴포넌트와 같은 유효한 React 컴포넌트 유형으로 이행해야 합니다.
 
 ---
 
 ## 사용법 {/*usage*/}
 
-### lazy와 Suspense 컴포넌트 {/*suspense-for-code-splitting*/}
+### Suspense와 Lazy-loading 컴포넌트 {/*suspense-for-code-splitting*/}
 
 일반적으로 정적 [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) 선언으로 컴포넌트를 가져옵니다.
 
@@ -62,7 +62,7 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 import MarkdownPreview from './MarkdownPreview.js';
 ```
 
-해당 컴포넌트 코드가 처음 렌더링될 때까지 로드하는 것을 연기하려면 import를 다음과 같이 대체합니다.
+해당 컴포넌트 코드가 처음 렌더링 될 때까지 로드하는 것을 연기하려면 import를 다음과 같이 대체합니다.
 
 ```js
 import { lazy } from 'react';
@@ -175,7 +175,7 @@ body {
 
 </Sandpack>
 
-이 데모는 인위적인 지연으로 로드됩니다. 다음에 체크박스를 선택 해제하고 다시 선택하면 `Preview`가 캐시되어 로딩 상태가 되지 않습니다. 로딩 상태를 다시 보려면 샌드박스에서 "Reset"을 클릭하세요.
+이 데모는 인위적인 지연으로 로드됩니다. 다음에 체크박스를 선택 해제하고 다시 선택하면 `Preview`가 캐시 되어 로딩 상태가 되지 않습니다. 로딩 상태를 다시 보려면 샌드박스에서 "Reset"을 클릭하세요.
 
 [Suspense를 사용하여 로딩 상태를 관리하는 방법에 대해 자세히 알아보세요.](/reference/react/Suspense)
 
