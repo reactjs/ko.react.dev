@@ -32,7 +32,7 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
 #### 매개변수 {/*parameters*/}
 
-* `load`: [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 또는 또 다른 *thenable* (`then` 메서드가 있는 Promise 유사 객체)을 반환하는 함수입니다. React는 반환된 컴포넌트를 처음 렌더링하려고 할 때까지 `load`를 호출하지 않을 것입니다. React는 먼저 `load`를 실행한 후 `load`가 이행될 때까지 기다렸다가 이행된 값을 React 컴포넌트로 렌더링합니다. 반환된 Promise와 Promise의 이행된 값이 모두 캐시 되므로 React는 `load`를 두 번 이상 호출하지 않습니다. Promise가 거부하면 React는 가장 가까운 Error Boundary를 처리하기 위해 Error Boundary에 대한 거부 사유를 `throw` 할 것입니다.
+* `load`: [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise) 또는 또 다른 *thenable* (`then` 메서드가 있는 Promise 유사 객체)을 반환하는 함수입니다. React는 반환된 컴포넌트를 처음 렌더링하려고 할 때까지 `load`를 호출하지 않을 것입니다. React는 먼저 `load`를 실행한 후 `load`가 이행될 때까지 기다렸다가 이행된 값을 React 컴포넌트로 렌더링합니다. 반환된 Promise와 Promise의 이행된 값이 모두 캐시 되므로 React는 `load`를 두 번 이상 호출하지 않습니다. Promise가 거부하면 React는 가장 가까운 Error Boundary를 처리하기 위해 Error Boundary에 대한 거부 사유를 `throw` 할 것입니다.
 
 #### 반환값 {/*returns*/}
 
@@ -48,7 +48,7 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
 #### 반환값 {/*load-returns*/}
 
-[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 또는 다른 *thenable* (`then` 메서드가 있는 Promise 유사 객체)을 반환해야 합니다. 결국 함수, [`memo`](/reference/react/memo) 또는 [`forwardRef`](/reference/react/forwardRef) 컴포넌트와 같은 유효한 React 컴포넌트 유형으로 이행해야 합니다.
+[Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise) 또는 다른 *thenable* (`then` 메서드가 있는 Promise 유사 객체)을 반환해야 합니다. 결국 함수, [`memo`](/reference/react/memo) 또는 [`forwardRef`](/reference/react/forwardRef) 컴포넌트와 같은 유효한 React 컴포넌트 유형으로 이행해야 합니다.
 
 ---
 
@@ -56,7 +56,7 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
 ### Suspense와 Lazy-loading 컴포넌트 {/*suspense-for-code-splitting*/}
 
-일반적으로 정적 [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) 선언으로 컴포넌트를 가져옵니다.
+일반적으로 정적 [`import`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import) 선언으로 컴포넌트를 가져옵니다.
 
 ```js
 import MarkdownPreview from './MarkdownPreview.js';
