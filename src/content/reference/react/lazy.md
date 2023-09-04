@@ -36,7 +36,7 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
 #### 반환값 {/*returns*/}
 
-`lazy`는 트리에 렌더링할 수 있는 React 컴포넌트를 반환합니다. 컴포넌트의 코드가 여전히 로드되는 동안 렌더링을 시도하면 일시 중지됩니다. 로딩 중에 로딩 인디케이터를 표시하려면 [`<Suspense>`](/reference/react/Suspense)를 사용합니다.
+`lazy`는 트리에 렌더링할 수 있는 React 컴포넌트를 반환합니다. 컴포넌트의 코드가 여전히 로드되는 동안 렌더링을 시도하면 일시 중지됩니다. 로딩 중에 loading indicator를 표시하려면 [`<Suspense>`](/reference/react/Suspense)를 사용합니다.
 
 ---
 
