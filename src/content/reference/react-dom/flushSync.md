@@ -48,7 +48,7 @@ flushSync(() => {
 
 `flushSync`는 `undefined`를 반환합니다.
 
-#### Caveats {/*caveats*/}
+#### 주의사항 {/*caveats*/}
 
 * `flushSync`를 사용하면 애플리케이션의 성능이 크게 저하될 수 있습니다. 가급적 사용하지 마세요.
 * `flushSync`는 보류 중인 Suspense 바운더리의 `fallback` state를 표시하도록 강제할 수 있습니다.
