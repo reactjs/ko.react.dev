@@ -183,7 +183,7 @@ body {
 
 ## 문제 해결 {/*troubleshooting*/}
 
-### `lazy` 컴포넌트의 상태가 예기치 않게 재설정됩니다. {/*my-lazy-components-state-gets-reset-unexpectedly*/}
+### `lazy` 컴포넌트의 상태가 의도치 않게 재설정됩니다. {/*my-lazy-components-state-gets-reset-unexpectedly*/}
 
 `lazy` 컴포넌트를 다른 컴포넌트 내부에서 선언하지 마세요.
 
