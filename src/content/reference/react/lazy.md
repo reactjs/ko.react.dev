@@ -202,7 +202,7 @@ function Editor() {
 ```js {3-4}
 import { lazy } from 'react';
 
-// ✅ 올바른 방법: lazy 컴포넌트를 컴포넌트 외부에서 선언합니다.
+// ✅ 올바른 방법: lazy 컴포넌트를 컴포넌트 외부에 선언합니다.
 const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
 function Editor() {
