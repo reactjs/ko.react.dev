@@ -112,7 +112,7 @@ export default function MarkdownEditor() {
   );
 }
 
-// 로딩 상태를 확인하기 위해 fixed delay를 추가합니다.
+// 로딩 상태를 확인하기 위해, 테스트를 위한 지연값을 추가합니다.
 function delayForDemo(promise) {
   return new Promise(resolve => {
     setTimeout(resolve, 2000);
