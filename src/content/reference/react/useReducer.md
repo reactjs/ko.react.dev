@@ -44,10 +44,10 @@ function MyComponent() {
 
 #### 반환값 {/*returns*/}
 
-`useReducer`는 아래 2개의 값으로 구성된 배열을 반환합니다.
+`useReducer`는 2개의 엘리먼트로 구성된 배열을 반환합니다.
 
 1. 현재 state. 첫번째 렌더링에서의 state는 `init(initialArg)` 또는 `initialArg`로 설정됩니다 (`init`이 없을 경우 `initialArg`로 설정됩니다).
-2. [`dispatch` function](#dispatch). `dispatch`는 state를 새로운 값으로 업데이트하고 리렌더링을 일으킵니다.
+2. [`dispatch` 함수](#dispatch). `dispatch`는 state를 새로운 값으로 업데이트하고 리렌더링을 일으킵니다.
 
 #### 주의 사항 {/*caveats*/}
 
@@ -56,9 +56,9 @@ function MyComponent() {
 
 ---
 
-### `dispatch` function {/*dispatch*/}
+### `dispatch` 함수 {/*dispatch*/}
 
-The `dispatch` function returned by `useReducer` lets you update the state to a different value and trigger a re-render. You need to pass the action as the only argument to the `dispatch` function:
+`useReducer`에 의해 반환되는 `dispatch` 함수는 state를 새로운 값으로 업데이트하고 리렌더링을 일으킵니다. `dispatch`의 유일한 인수는 action입니다.
 
 ```js
 const [state, dispatch] = useReducer(reducer, { age: 42 });
@@ -68,31 +68,31 @@ function handleClick() {
   // ...
 ```
 
-React will set the next state to the result of calling the `reducer` function you've provided with the current `state` and the action you've passed to `dispatch`.
+리액트는 현재 `state`와 `dispatch`를 통해 전달된 action을 제공받아 호출된 `reducer`의 반환값을 통해 다음 state값을 설정합니다. 
 
-#### Parameters {/*dispatch-parameters*/}
+#### 매개변수 {/*dispatch-parameters*/}
 
-* `action`: The action performed by the user. It can be a value of any type. By convention, an action is usually an object with a `type` property identifying it and, optionally, other properties with additional information.
+* `action`: 사용자에 의해 수행된 활동입니다. 모든 데이터 타입이 할당될 수 있습니다. 컨벤션에 의해 action은 일반적으로 action을 정의하는 `type` 프로퍼티와 추가적인 정보를 표현하는 기타 프로퍼티를 포함한 객체로 구성됩니다.
 
-#### Returns {/*dispatch-returns*/}
+#### 반환값 {/*dispatch-returns*/}
 
-`dispatch` functions do not have a return value.
+`dispatch` 함수는 어떤 값도 반환하지 않습니다.
 
-#### Caveats {/*setstate-caveats*/}
+#### 주의 사항 {/*setstate-caveats*/}
 
-* The `dispatch` function **only updates the state variable for the *next* render**. If you read the state variable after calling the `dispatch` function, [you will still get the old value](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value) that was on the screen before your call.
+* `dispatch` 함수는 **오직 *다음* 렌더링에 사용할 state 변수만 업데이트 합니다.** 만약 `dispatch` 함수를 호출한 직후에 state 변수를 읽는다면 호출 이전의 [최신화되지 않은 값을 참조할 것입니다.](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value)
 
-* If the new value you provide is identical to the current `state`, as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison, React will **skip re-rendering the component and its children.** This is an optimization. React may still need to call your component before ignoring the result, but it shouldn't affect your code.
+* [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 통해 새롭게 제공된 값과 현재 `state`를 비교한 값이 같을 경우, 리액트는 컴포넌트와 해당 컴포넌트의 자식 요소들의 리렌더링을 건너뜁니다. 이것은 최적화에 관련된 동작입니다. 리액트는 결과를 무시하기 전에 컴포넌트를 호출해야 하지만, 호출이 코드에 영향을 미치지 않아야 합니다.
 
-* React [batches state updates.](/learn/queueing-a-series-of-state-updates) It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple re-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`.](/reference/react-dom/flushSync)
+* 리액트는 [state의 업데이트를 배치합니다.](/learn/queueing-a-series-of-state-updates) **이벤트 핸들러의 모든 코드가 수행**되고 `set` 함수가 모두 호출된 후에 화면을 업데이트 합니다. 이는 하나의 이벤트에 리렌더링이 여러번 일어나는 것을 방지합니다. DOM 접근 등 이른 화면 업데이트를 강제해야할 특수한 상황이 있을 경우 [`flushSync`](/reference/react-dom/flushSync)를 사용할 수 있습니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Adding a reducer to a component {/*adding-a-reducer-to-a-component*/}
+### 컴포넌트에 reducer 추가하기 {/*adding-a-reducer-to-a-component*/}
 
-Call `useReducer` at the top level of your component to manage state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
+state를 [reducer](/learn/extracting-state-logic-into-a-reducer)로 관리하기 위해 `useReducer`를 컴포넌트의 최상단에서 호출합니다.
 
 ```js [[1, 8, "state"], [2, 8, "dispatch"], [4, 8, "reducer"], [3, 8, "{ age: 42 }"]]
 import { useReducer } from 'react';
@@ -106,12 +106,12 @@ function MyComponent() {
   // ...
 ```
 
-`useReducer` returns an array with exactly two items:
+`useReducer`는 정확히 2개의 항목이 포함된 배열 반환합니다.
 
-1. The <CodeStep step={1}>current state</CodeStep> of this state variable, initially set to the <CodeStep step={3}>initial state</CodeStep> you provided.
-2. The <CodeStep step={2}>`dispatch` function</CodeStep> that lets you change it in response to interaction.
+1. state 변수의 <CodeStep step={1}>현재 state</CodeStep>. 최초에는 사용자가 제공한 <CodeStep step={3}>초기 state</CodeStep>로 초기화됩니다.
+2. <CodeStep step={2}>`dispatch` 함수</CodeStep>. 상호작용에 대응하여 state를 변경합니다.
 
-To update what's on the screen, call <CodeStep step={2}>`dispatch`</CodeStep> with an object representing what the user did, called an *action*:
+화면을 업데이트하려면 사용자가 수행한 활동을 의미하는 *action* 객체를 인수로하여 `dispatch` 함수를 호출하세요.
 
 ```js [[2, 2, "dispatch"]]
 function handleClick() {
@@ -119,7 +119,7 @@ function handleClick() {
 }
 ```
 
-React will pass the current state and the action to your <CodeStep step={4}>reducer function</CodeStep>. Your reducer will calculate and return the next state. React will store that next state, render your component with it, and update the UI.
+리액트는 현재 state와 action을 <CodeStep step={4}>reducer 함수</CodeStep>로 전달합니다. reducer는 다음 state를 계산한 후 반환합니다. 리액트는 다음 state를 저장한 뒤에 컴포넌트와 함께 렌더링 하고 UI를 업데이트 합니다.
 
 <Sandpack>
 
@@ -157,13 +157,13 @@ button { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-`useReducer` is very similar to [`useState`](/reference/react/useState), but it lets you move the state update logic from event handlers into a single function outside of your component. Read more about [choosing between `useState` and `useReducer`.](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer)
+`useReducer`는 [`useState`](/reference/react/useState)와 매우 유사하지만, state 업데이트 로직을 이벤트 핸들러에서 컴포넌트 외부의 단일함수로 분리할 수 있다는 차이점이 있습니다. 자세한 사항은 [`useState`와 `useReducer` 비교하기](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer)를 읽어보세요.
 
 ---
 
-### Writing the reducer function {/*writing-the-reducer-function*/}
+### reducer 함수 작성하기 {/*writing-the-reducer-function*/}
 
-A reducer function is declared like this:
+reducer 함수는 아래와 같이 선언합니다.
 
 ```js
 function reducer(state, action) {
@@ -171,7 +171,7 @@ function reducer(state, action) {
 }
 ```
 
-Then you need to fill in the code that will calculate and return the next state. By convention, it is common to write it as a [`switch` statement.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) For each `case` in the `switch`, calculate and return some next state.
+이후 다음 state를 계산할 코드를 작성하고, 계산된 state를 반환합니다. 보통은 컨벤션에 따라 [`switch` 문](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch)을 사용합니다. `switch`는 각 `case`를 이용해 다음 state를 계산하고 반환합니다.
 
 ```js {4-7,10-13}
 function reducer(state, action) {
@@ -193,7 +193,7 @@ function reducer(state, action) {
 }
 ```
 
-Actions can have any shape. By convention, it's common to pass objects with a `type` property identifying the action. It should include the minimal necessary information that the reducer needs to compute the next state.
+Actions은 다양한 형태가 될 수 있습니다. 하지만 컨벤션에 따라 액션이 무엇인지 정의하는 `type` 프로퍼티를 포함한 객체로 선언하는 것이 일반적입니다. `type`은 reducer가 다음 state를 계산하는데 필요한 최소한의 정보를 포함해야 합니다.
 
 ```js {5,9-12}
 function Form() {
@@ -212,9 +212,9 @@ function Form() {
   // ...
 ```
 
-The action type names are local to your component. [Each action describes a single interaction, even if that leads to multiple changes in data.](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well) The shape of the state is arbitrary, but usually it'll be an object or an array.
+action type 이름은 컴포넌트 내에서 지역적입니다. [각 action은 단일 상호작용을 설명하며, 데이터에 여러 변경 사항을 초래하더라도 하나의 상호작용만을 나타냅니다.](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well) state의 형태는 임의적이지만, 일반적으로 객체나 배열일 것입니다.
 
-Read [extracting state logic into a reducer](/learn/extracting-state-logic-into-a-reducer) to learn more.
+자세한 내용은 [state 로직을 reducer로 작성하기](/learn/extracting-state-logic-into-a-reducer)를 읽어보세요.
 
 <Pitfall>
 
