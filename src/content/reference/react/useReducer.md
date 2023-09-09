@@ -4,7 +4,7 @@ title: useReducer
 
 <Intro>
 
-`useReducer`는 컴포넌트에 [reducer](/learn/extracting-state-logic-into-a-reducer)를 추가할 수 있게 해주는 React Hook입니다.
+`useReducer`는 컴포넌트에 [reducer](/learn/extracting-state-logic-into-a-reducer)를 추가하는 React Hook입니다.
 
 ```js
 const [state, dispatch] = useReducer(reducer, initialArg, init?)
@@ -38,7 +38,7 @@ function MyComponent() {
 
 #### 매개변수 {/*parameters*/}
 
-* `reducer`: state가 어떻게 업데이트되는지를 지정하는 리듀서 함수입니다. 리듀서 함수는 반드시 순수 함수여야 하며, state와 action을 인수로 받아야 하고, 다음 state를 반환해야 합니다. state와 action에는 모든 데이터 타입이 할당될 수 있습니다.
+* `reducer`: state가 어떻게 업데이트 되는지 지정하는 리듀서 함수입니다. 리듀서 함수는 반드시 순수 함수여야 하며, state와 action을 인수로 받아야 하고, 다음 state를 반환해야 합니다. state와 action에는 모든 데이터 타입이 할당될 수 있습니다.
 * `initialArg`: 초기 state가 계산되는 값입니다. 모든 데이터 타입이 할당될 수 있습니다. 초기 state가 어떻게 계산되는지는 다음 `init` 인수에 따라 달라집니다.
 * **선택사항** `init`: 초기 state를 반환하는 초기화 함수입니다. 이 함수가 인수에 할당되지 않으면 초기 state는 `initialArg`로 설정됩니다. 할당되었다면 초기 state는 `init(initialArg)`를 호출한 결과가 할당됩니다.
 
@@ -51,7 +51,7 @@ function MyComponent() {
 
 #### 주의 사항 {/*caveats*/}
 
-* `useReducer`는 Hook이므로 **컴포넌트의 최상위** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문에서는 사용할 수 없습니다. 필요한 경우 새로운 컴포넌트를 추출하고 해당 컴포넌트로 state를 이동해서 사용할 수 있습니다.
+* `useReducer`는 Hook이므로 **컴포넌트의 최상위** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문에서는 사용할 수 없습니다. 필요한 경우 새로운 컴포넌트를 추출하고 해당 컴포넌트로 state를 옮겨서 사용할 수 있습니다.
 * 엄격 모드에서는 [우연한 비순수성](#my-reducer-or-initializer-function-runs-twice)을 찾아내기 위해 reducer와 init 함수를 두번 호출합니다. 개발 환경에서만 한정된 동작이며, 배포 모드에는 영향을 미치지 않습니다. reducer와 init 함수가 순수 함수라면(그래야만 하듯이) 로직에 어떠한 영향도 미치지 않습니다. 호출 중 하나의 결과는 무시합니다.
 
 ---
@@ -82,9 +82,9 @@ function handleClick() {
 
 * `dispatch` 함수는 **오직 *다음* 렌더링에 사용할 state 변수만 업데이트 합니다.** 만약 `dispatch` 함수를 호출한 직후에 state 변수를 읽는다면 호출 이전의 [최신화되지 않은 값을 참조할 것입니다.](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value)
 
-* [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 통해 새롭게 제공된 값과 현재 `state`를 비교한 값이 같을 경우, 리액트는 컴포넌트와 해당 컴포넌트의 자식 요소들의 리렌더링을 건너뜁니다. 이것은 최적화에 관련된 동작입니다. 리액트는 결과를 무시하기 전에 컴포넌트를 호출해야 하지만, 호출이 코드에 영향을 미치지 않아야 합니다.
+* [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 통해 새롭게 제공된 값과 현재 `state`를 비교한 값이 같을 경우, 리액트는 컴포넌트와 해당 컴포넌트의 자식 요소들의 리렌더링을 건너뜁니다. 이것은 최적화에 관련된 동작으로써 결과를 무시하기 전에 컴포넌트가 호출되지만, 호출된 결과가 코드에 영향을 미치지는 않습니다.
 
-* 리액트는 [state의 업데이트를 배치합니다.](/learn/queueing-a-series-of-state-updates) **이벤트 핸들러의 모든 코드가 수행**되고 `set` 함수가 모두 호출된 후에 화면을 업데이트 합니다. 이는 하나의 이벤트에 리렌더링이 여러번 일어나는 것을 방지합니다. DOM 접근 등 이른 화면 업데이트를 강제해야할 특수한 상황이 있을 경우 [`flushSync`](/reference/react-dom/flushSync)를 사용할 수 있습니다.
+* 리액트는 [state의 업데이트를 배치(batch)합니다.](/learn/queueing-a-series-of-state-updates) **이벤트 핸들러의 모든 코드가 수행**되고 `set` 함수가 모두 호출된 후에 화면을 업데이트 합니다. 이는 하나의 이벤트에 리렌더링이 여러번 일어나는 것을 방지합니다. DOM 접근 등 이른 화면 업데이트를 강제해야할 특수한 상황이 있을 경우 [`flushSync`](/reference/react-dom/flushSync)를 사용할 수 있습니다.
 
 ---
 
@@ -993,7 +993,7 @@ function reducer(state, action) {
 }
 ```
 
-기존의 `state` 객체를 변형하고 그대로 반환한다면 리액트는 업데이트를 무시합니다. 이러한 현상을 방지하기 위해서는 객체나 배열을 변형시키지 않고 [객체 state를 변경](/learn/updating-objects-in-state)하거나 [배열 state](/learn/updating-arrays-in-state)를 변경해야 합니다.
+리액트는 기존의 `state` 객체가 mutation된 상태로 반환된다면 업데이트를 무시합니다. 이러한 현상을 방지하기 위해서는 객체나 배열을 mutation시키지 않고 [객체 state를 변경](/learn/updating-objects-in-state)하거나 [배열 state](/learn/updating-arrays-in-state)를 변경해야 합니다.
 
 ```js {4-8,11-15}
 function reducer(state, action) {
@@ -1019,9 +1019,9 @@ function reducer(state, action) {
 
 ---
 
-### A part of my reducer state becomes undefined after dispatching {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
+### reducer의 state 일부가 dispatch된 이후에 undefined가 할당됩니다. {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
 
-Make sure that every `case` branch **copies all of the existing fields** when returning the new state:
+각각의 `case`가 **새로운 state를 반환할 때 기존에 있던 필드를 모두 복사하는지** 확인해보세요.
 
 ```js {5}
 function reducer(state, action) {
@@ -1035,13 +1035,13 @@ function reducer(state, action) {
     // ...
 ```
 
-Without `...state` above, the returned next state would only contain the `age` field and nothing else.
+위의 코드에서는 `...state`가 없다면 다음 state는 오로지 `age` 필드만 포함하거나, 아무것도 포함하지 않을 것입니다.
 
 ---
 
-### My entire reducer state becomes undefined after dispatching {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
+### reducer의 모든 state가 dispatch가 이루어 진 후 undefined가 할당됩니다. {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
 
-If your state unexpectedly becomes `undefined`, you're likely forgetting to `return` state in one of the cases, or your action type doesn't match any of the `case` statements. To find why, throw an error outside the `switch`:
+state에 예기치 않은 `undefined`가 할당되고 있다면 case 중 하나에 `return`이 누락되었거나 action의 타입이 `case`와 짝지어지지 않았을 수 있습니다. 이유를 찾기 위해 switch문 밖에서 에러를 throw 할 수 있습니다.
 
 ```js {10}
 function reducer(state, action) {
@@ -1057,13 +1057,13 @@ function reducer(state, action) {
 }
 ```
 
-You can also use a static type checker like TypeScript to catch such mistakes.
+이 외에도 실수를 방지하기 위해 타입스크립트 같은 정적 타입 체커를 사용할 수 있습니다.
 
 ---
 
-### I'm getting an error: "Too many re-renders" {/*im-getting-an-error-too-many-re-renders*/}
+### "Too many re-renders" 오류가 발생합니다. {/*im-getting-an-error-too-many-re-renders*/}
 
-You might get an error that says: `Too many re-renders. React limits the number of renders to prevent an infinite loop.` Typically, this means that you're unconditionally dispatching an action *during render*, so your component enters a loop: render, dispatch (which causes a render), render, dispatch (which causes a render), and so on. Very often, this is caused by a mistake in specifying an event handler:
+`Too many re-renders. React limits the number of renders to prevent an infinite loop.`라는 에러 메세지를 받을 수 있습니다. 일반적으로는 렌더링 과정에서 dispatch가 실행될 때 이러한 일이 일어납니다. 렌더링은 dispatch를 야기하고, dispatch는 렌더링을 야기하므로 렌더링 무한 루프가 일어납니다. 이러한 상황은 이벤트 핸들러를 잘못 호출할 때 종종 발생합니다.
 
 ```js {1-2}
 // 🚩 Wrong: calls the handler during render
@@ -1076,17 +1076,17 @@ return <button onClick={handleClick}>Click me</button>
 return <button onClick={(e) => handleClick(e)}>Click me</button>
 ```
 
-If you can't find the cause of this error, click on the arrow next to the error in the console and look through the JavaScript stack to find the specific `dispatch` function call responsible for the error.
+오류의 원인을 찾을 수 없는 경우에는 어느 `dispatch` 함수에서 에러가 생성되는지 확인하기 위해 콘솔창의 오류 옆에 있는 화살표를 클릭한 후 자바스크립트 스택을 찾아보세요.
 
 ---
 
-### My reducer or initializer function runs twice {/*my-reducer-or-initializer-function-runs-twice*/}
+### reducer와 초기화 함수가 두번 호출됩니다. {/*my-reducer-or-initializer-function-runs-twice*/}
 
-In [Strict Mode](/reference/react/StrictMode), React will call your reducer and initializer functions twice. This shouldn't break your code.
+리액트는 [엄격 모드](/reference/react/StrictMode)일 때 reducer와 초기화 함수를 두번씩 호출합니다. 이 현상은 코드 실행에 문제가 되지 않습니다.
 
-This **development-only** behavior helps you [keep components pure.](/learn/keeping-components-pure) React uses the result of one of the calls, and ignores the result of the other call. As long as your component, initializer, and reducer functions are pure, this shouldn't affect your logic. However, if they are accidentally impure, this helps you notice the mistakes.
+이러한 현상은 컴포넌트가 [순수함수로 유지될 수 있도록](/learn/keeping-components-pure) 오직 개발 환경에서만 일어나며, 두개의 호출 중 하나는 무시됩니다. 컴포넌트, 초기화 함수, reducer가 순수하다면 로직에 아무런 영향을 미치지 않지만, 순수하지 않다면 실수를 알아챌 수 있도록 알려줍니다.
 
-For example, this impure reducer function mutates an array in state:
+예시로, 아래의 순수하지 않은 reducer 함수는 state 배열에 mutation을 일으키고 있습니다.
 
 ```js {4-6}
 function reducer(state, action) {
@@ -1101,7 +1101,7 @@ function reducer(state, action) {
 }
 ```
 
-Because React calls your reducer function twice, you'll see the todo was added twice, so you'll know that there is a mistake. In this example, you can fix the mistake by [replacing the array instead of mutating it](/learn/updating-arrays-in-state#adding-to-an-array):
+리액트는 reducer 함수를 두 번 호출하므로 todo가 두 개 추가되는 것을 볼 수 있고, 이를 통해 reducer 함수 작성에 실수가 있다는 것을 알아낼 수 있습니다. 이러한 실수는 [배열을 mutation 하지 않고 교체하는 방법](/learn/updating-arrays-in-state#adding-to-an-array)을 통해 수정할 수 있습니다.
 
 ```js {4-11}
 function reducer(state, action) {
@@ -1121,6 +1121,6 @@ function reducer(state, action) {
 }
 ```
 
-Now that this reducer function is pure, calling it an extra time doesn't make a difference in behavior. This is why React calling it twice helps you find mistakes. **Only component, initializer, and reducer functions need to be pure.** Event handlers don't need to be pure, so React will never call your event handlers twice.
+이제 reducer 함수는 순수하므로, 여러번 호출되어도 같은 값을 보장할 수 있습니다. 리액트는 순수성을 보장하기 위해 개발 환경에서 두번씩 호출합니다. **오로지 컴포넌트와 초기화 함수, reducer 함수만 순수할 필요가 있습니다.** 이벤트 핸들러는 순수할 필요가 없습니다. 따라서 이벤트 핸들러는 두 번씩 호출되지 않습니다.
 
-Read [keeping components pure](/learn/keeping-components-pure) to learn more.
+자세한 사항은 [컴포넌트 순수하게 유지하기](/learn/keeping-components-pure)를 읽어보세요.
