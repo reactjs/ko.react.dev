@@ -1,59 +1,59 @@
 ---
-title: "Introducing react.dev"
+title: "react.dev를 소개합니다"
 ---
 
-March 16, 2023 by [Dan Abramov](https://twitter.com/dan_abramov) and [Rachel Nabors](https://twitter.com/rachelnabors)
+2023년 3월 16일 [Dan Abramov](https://twitter.com/dan_abramov)와 [Rachel Nabors](https://twitter.com/rachelnabors)가 작성함
 
 ---
 
 <Intro>
 
-Today we are thrilled to launch [react.dev](https://react.dev), the new home for React and its documentation. In this post, we would like to give you a tour of the new site.
+오늘 React와 React 문서의 새로운 보금자리인 [react.dev](https://react.dev)를 출시하게 되어 기쁩니다. 이 글에서는 새로운 사이트에 대해 소개해 드리겠습니다.
 
 </Intro>
 
 ---
 
-## tl;dr {/*tldr*/}
+## 요약 {/*tldr*/}
 
-* The new React site ([react.dev](https://react.dev)) teaches modern React with function components and Hooks.
-* We've included diagrams, illustrations, challenges, and over 600 new interactive examples.
-* The previous React documentation site has now moved to [legacy.reactjs.org](https://legacy.reactjs.org).
+* 새로운 React 사이트 ([react.dev](https://react.dev)) 는 함수 컴포넌트와 Hooks를 사용한 현대적인 React를 가르칩니다.
+* 다이어그램, 삽화, 도전 과제, 그리고 600개 이상의 새로운 상호 작용하는 예시를 포함했습니다.
+* 예전 React 문서 사이트는 이제 [legacy.reactjs.org](https://legacy.reactjs.org)로 이전되었습니다.
 
-## New site, new domain, new homepage {/*new-site-new-domain-new-homepage*/}
+## 새로운 사이트, 새로운 도메인, 새로운 홈페이지 {/*new-site-new-domain-new-homepage*/}
 
-First, a little bit of housekeeping.
+우선, 조금의 정리를 진행하겠습니다.
 
-To celebrate the launch of the new docs and, more importantly, to clearly separate the old and the new content, we've moved to the shorter [react.dev](https://react.dev) domain. The old [reactjs.org](https://reactjs.org) domain will now redirect here.
+새로운 문서의 출시를 축하하고, 더욱 중요한 것은 오래된 내용과 새로운 내용을 명확하게 구분하기 위해, 더 짧은 [react.dev](https://react.dev) 도메인으로 이전했습니다. 예전 [reactjs.org](https://reactjs.org) 도메인은 이제 이곳으로 리다이렉트할 것입니다.
 
-The old React docs are now archived at [legacy.reactjs.org](https://legacy.reactjs.org). All existing links to the old content will automatically redirect there to avoid "breaking the web", but the legacy site will not get many more updates.
+예전 React 문서는 이제 [legacy.reactjs.org](https://legacy.reactjs.org)에 보관되었습니다. 예전 내용으로 가는 모든 기존 링크는 "웹을 망가트리는 것"을 방지하기 위해 자동으로 해당 위치로 리다이렉트할 것이지만, 레거시 사이트는 더 이상 업데이트 받지 않을 것입니다.
 
-Believe it or not, React will soon be ten years old. In JavaScript years, it's like a whole century! We've [refreshed the React homepage](https://react.dev) to reflect why we think React is a great way to create user interfaces today, and updated the getting started guides to more prominently mention modern React-based frameworks.
+믿기 힘들겠지만, React는 곧 10살이 됩니다. JavaScript 시대에, 이건 마치 한 세기와 같습니다! 오늘날 React가 사용자 인터페이스를 만들기 위한 훌륭한 방법인 이유를 반영하기 위해 [React 홈페이지를 갱신하고](https://react.dev), 현대적인 React 기반 프레임워크를 더욱 명확하게 언급하기 위해 시작 가이드를 업데이트했습니다.
 
-If you haven't seen the new homepage yet, check it out!
+아직 새로운 홈페이지를 보지 않았다면, 꼭 확인해 보세요!
 
-## Going all-in on modern React with Hooks {/*going-all-in-on-modern-react-with-hooks*/}
+## Hooks를 사용한 현대적인 React에 전념하기 {/*going-all-in-on-modern-react-with-hooks*/}
 
-When we released React Hooks in 2018, the Hooks docs assumed the reader is familiar with class components. This helped the community adopt Hooks very swiftly, but after a while the old docs failed to serve the new readers. New readers had to learn React twice: once with class components and then once again with Hooks.
+2018년에 React Hooks를 발표했을 때, Hooks 문서는 클래스 컴포넌트에 익숙한 독자를 가정했습니다. 이는 커뮤니티가 Hooks를 매우 빠르게 채택하는 데 도움이 되었지만, 시간이 지나면서 예전 문서는 새로운 독자에게 적합하지 않았습니다. 새로운 독자는 클래스 컴포넌트와 Hooks를 사용한 것으로 React를 두 번 배워야만 했습니다.
 
-**The new docs teach React with Hooks from the beginning.** The docs are divided in two main sections:
+**새로운 문서는 Hooks를 사용한 React를 처음부터 가르칩니다.** 문서는 두 가지 주요 섹션으로 나뉘어져 있습니다.
 
-* **[Learn React](/learn)** is a self-paced course that teaches React from scratch.
-* **[API Reference](/reference)** provides the details and usage examples for every React API.
+* **[React 배우기](/learn)** 는 React를 기초부터 스스로 학습할 수 있는 과정입니다.
+* **[API 레퍼런스](/reference)** 는 모든 React API에 대한 세부 내용과 사용 예시를 제공합니다.
 
-Let's have a closer look at what you can find in each section.
+각 섹션에서 무슨 내용을 알 수 있는지 자세히 살펴보겠습니다.
 
 <Note>
 
-There are still a few rare class component use cases that do not yet have a Hook-based equivalent. Class components remain supported, and are documented in the [Legacy API](/reference/react/legacy) section of the new site.
+아직 Hook 기반의 동등한 것이 없는 몇 가지 희귀한 클래스 컴포넌트 사용 사례가 여전히 있습니다. 클래스 컴포넌트는 그대로 지원되고, 새로운 사이트의 [Legacy API](/reference/react/legacy) 섹션에 문서화되어 있습니다.
 
 </Note>
 
-## Quick start {/*quick-start*/}
+## 빠르게 시작하기 {/*quick-start*/}
 
-The Learn section begins with the [Quick Start](/learn) page. It is a short introductory tour of React. It introduces the syntax for concepts like components, props, and state, but doesn't go into much detail on how to use them.
+학습 섹션은 [빠르게 시작하기](/learn) 페이지로 시작됩니다. 이는 React를 짧게 소개하는 여정입니다. 컴포넌트, props, state 같은 개념에 대한 문법을 소개하지만, 그들을 어떻게 사용하는지에 대한 세부 내용을 다루진 않습니다.
 
-If you like to learn by doing, we recommend checking out the [Tic-Tac-Toe Tutorial](/learn/tutorial-tic-tac-toe) next. It walks you through building a little game with React, while teaching the skills you'll use every day. Here's what you'll build:
+직접 해보며 배우고 싶다면, 다음으로 [Tic-Tac-Toe 튜토리얼](/learn/tutorial-tic-tac-toe)을 확인하는 것을 추천합니다. React로 작은 게임을 구현하는 것을 자세히 설명하면서, 동시에 일상적으로 사용할 기술을 가르칩니다. 여기에 구현하게 될 내용이 있습니다.
 
 <Sandpack>
 
@@ -222,43 +222,43 @@ body {
 
 </Sandpack>
 
-We'd also like to highlight [Thinking in React](/learn/thinking-in-react)—that's the tutorial that made React "click" for many of us. **We've updated both of these classic tutorials to use function components and Hooks,** so they're as good as new.
+또한 많은 사람에게 React를 "완전히 이해시켜 준" 튜토리얼인 [React로 사고하기](/learn/thinking-in-react)도 강조하고 싶습니다. **두 가지 클래식 튜토리얼 모두 함수 컴포넌트와 Hooks를 사용하도록 업데이트했고,** 따라서 새 튜토리얼만큼 좋습니다.
 
 <Note>
 
-The example above is a *sandbox*. We've added a lot of sandboxes—over 600!—everywhere throughout the site. You can edit any sandbox, or press "Fork" in the upper right corner to open it in a separate tab. Sandboxes let you quickly play with the React APIs, explore your ideas, and check your understanding.
+위쪽에 있는 예제는 *샌드박스*입니다. 우리는 600개 이상의 많은 샌드박스를 사이트 전체 모든 곳에 추가했습니다. 아무 샌드박스나 편집할 수 있고, 우측 상단에 있는 "Fork"를 눌러 별도의 탭에서 열 수 있습니다. 샌드박스는 React API를 빠르게 갖고 놀면서, 아이디어를 탐구하고, 이해를 확인하게 해줍니다.
 
 </Note>
 
-## Learn React step by step {/*learn-react-step-by-step*/}
+## 단계별로 React 배우기 {/*learn-react-step-by-step*/}
 
-We'd like everyone in the world to have an equal opportunity to learn React for free on their own.
+세상에 있는 모든 사람이 React를 무료로 배울 동등한 기회를 가지길 바랍니다.
 
-This is why the Learn section is organized like a self-paced course split into chapters. The first two chapters describe the fundamentals of React. If you're new to React, or want to refresh it in your memory, start here:
+이것이 학습 섹션이 여러 개의 장으로 구분된 자기 주도 학습 과정으로 구성된 이유입니다. 처음 두 장은 React의 기초에 관해서 설명합니다. React가 처음이거나 기억을 되살리고 싶다면, 여기서부터 시작하세요.
 
-- **[Describing the UI](/learn/describing-the-ui)** teaches how to display information with components.
-- **[Adding Interactivity](/learn/adding-interactivity)** teaches how to update the screen in response to user input.
+- **[UI 표현하기](/learn/describing-the-ui)**에서는 컴포넌트로 어떻게 정보를 표시하는지 가르칩니다. 
+- **[상호작용 추가하기](/learn/adding-interactivity)**에서는 사용자 입력에 대한 응답으로 화면을 어떻게 업데이트하는지 가르칩니다. 
 
-The next two chapters are more advanced, and will give you a deeper insight into the trickier parts:
+다음 두 장은 더욱 고급 내용을 다루며, 더 복잡한 부분에 대해서 깊은 통찰을 줄 것입니다. 
 
-- **[Managing State](/learn/managing-state)** teaches how to organize your logic as your app grows in complexity.
-- **[Escape Hatches](/learn/escape-hatches)** teaches how you can "step outside" React, and when it makes most sense to do so.
+- **[State 관리하기](/learn/managing-state)**에서는 앱의 복잡성이 증가함에 따라 어떻게 로직을 조직화하는지 가르칩니다. 
+- **[탈출구](/learn/escape-hatches)**에서는 React "외부로 탈출"할 방법과, 이를 수행하기에 가장 적절한 시기를 가르칩니다.
 
-Every chapter consists of several related pages. Most of these pages teach a specific skill or a technique—for example, [Writing Markup with JSX](/learn/writing-markup-with-jsx), [Updating Objects in State](/learn/updating-objects-in-state), or [Sharing State Between Components](/learn/sharing-state-between-components). Some of the pages focus on explaining an idea—like [Render and Commit](/learn/render-and-commit), or [State as a Snapshot](/learn/state-as-a-snapshot). And there are a few, like [You Might Not Need an Effect](/learn/you-might-not-need-an-effect), that share our suggestions based on what we've learned over these years.
+모든 장은 여러 개의 관련된 페이지로 구성되어 있습니다. 대부분의 페이지는 특정 기술이나 기법을 가르칩니다-예를 들어, [JSX로 마크업 작성하기](/learn/writing-markup-with-jsx), [State에 있는 객체 업데이트하기](/learn/updating-objects-in-state)나 [컴포넌트 간 State 공유하기](/learn/sharing-state-between-components) 같은 것들이 있습니다. [렌더와 커밋](/learn/render-and-commit), [스냅샷으로서의 State](/learn/state-as-a-snapshot)와 같은 몇몇 페이지들은 아이디어를 설명하는 것에 집중합니다. 그리고 지난 몇 년 동안의 경험을 기반으로 제안을 공유하는 [Effect가 필요하지 않을 수 있습니다](/learn/you-might-not-need-an-effect) 같은 페이지도 몇 개 있습니다.
 
-You don't have to read these chapters as a sequence. Who has the time for this?! But you could. Pages in the Learn section only rely on concepts introduced by the earlier pages. If you want to read it like a book, go for it!
+이러한 장들을 순서대로 읽을 필요는 없습니다. 누가 그런 시간이 있을까요?! 하지만 읽을 수도 있습니다. 학습 섹션에 있는 페이지는 오로지 이전 페이지에 소개된 개념에만 의존합니다. 책처럼 읽고 싶다면, 도전해 보세요!
 
-### Check your understanding with challenges {/*check-your-understanding-with-challenges*/}
+### 도전 과제로 이해를 확인하세요 {/*check-your-understanding-with-challenges*/}
 
-Most pages in the Learn section end with a few challenges to check your understanding. For example, here are a few challenges from the page about [Conditional Rendering](/learn/conditional-rendering#challenges).
+학습 섹션에 있는 대부분의 페이지는 이해를 확인하기 위한 몇 가지 도전 과제로 끝납니다. 예를 들어, 여기 [조건부 렌더링](/learn/conditional-rendering#challenges) 페이지에 있는 몇 가지 도전 과제가 있습니다.
 
-You don't have to solve them right now! Unless you *really* want to.
+지금 당장 풀지 않아도 됩니다! *정말로* 원하지 않는다면 말입니다.
 
 <Challenges noTitle={true}>
 
-#### Show an icon for incomplete items with `? :` {/*show-an-icon-for-incomplete-items-with--*/}
+#### `? :`로 미완료 항목에 대한 아이콘을 보여주세요 {/*show-an-icon-for-incomplete-items-with--*/}
 
-Use the conditional operator (`cond ? a : b`) to render a ❌ if `isPacked` isn’t `true`.
+`isPacked` 가 `true`가 아니라면 ❌를 렌더링하기 위해 조건 연산자 (`cond ? a : b`)를 사용하세요.
 
 <Sandpack>
 
@@ -336,15 +336,15 @@ export default function PackingList() {
 
 </Solution>
 
-#### Show the item importance with `&&` {/*show-the-item-importance-with-*/}
+#### `&&`로 항목의 중요성을 보여주세요 {/*show-the-item-importance-with-*/}
 
-In this example, each `Item` receives a numerical `importance` prop. Use the `&&` operator to render "_(Importance: X)_" in italics, but only for items that have non-zero importance. Your item list should end up looking like this:
+이 예시에서는, 각 `Item`이 숫자로 된 `importance` prop을 받습니다. 오직 중요도가 0이 아닌 항목만 "_(중요도: X)_"을 이탤릭체로 렌더링하기 위해 `&&` 연산자를 사용하세요. 아이템 목록은 최종적으로 이렇게 되어야 합니다:
 
-* Space suit _(Importance: 9)_
-* Helmet with a golden leaf
-* Photo of Tam _(Importance: 6)_
+* 우주복 _(중요도: 9)_
+* 금색 잎사귀가 달린 헬멧
+* Tam의 사진 _(중요도: 6)_
 
-Don't forget to add a space between the two labels!
+두 라벨 사이에 공백을 넣는 것을 잊지 마세요!
 
 <Sandpack>
 
@@ -384,7 +384,7 @@ export default function PackingList() {
 
 <Solution>
 
-This should do the trick:
+이렇게 하면 해결할 수 있습니다.
 
 <Sandpack>
 
@@ -426,53 +426,53 @@ export default function PackingList() {
 
 </Sandpack>
 
-Note that you must write `importance > 0 && ...` rather than `importance && ...` so that if the `importance` is `0`, `0` isn't rendered as the result!
+만약 `importance`가 `0`일 경우, `0`이 결과로 렌더링 되지 않도록 `importance && ...`보다 `importance > 0 && ...`로 작성해야 한다는 것을 주의하세요!
 
-In this solution, two separate conditions are used to insert a space between then name and the importance label. Alternatively, you could use a fragment with a leading space: `importance > 0 && <> <i>...</i></>` or add a space immediately inside the `<i>`:  `importance > 0 && <i> ...</i>`.
+이 해결책에서는, 독립된 두 개의 조건이 name과 importance 라벨 사이에 공백을 넣기 위해 사용되었습니다. 그 대신에, `importance > 0 && <> <i>...</i></>` 같이 선행 공백에 있는 fragment를 사용하거나 `importance > 0 && <i> ...</i>` 같이 `<i>`내부에 바로 공백을 추가할 수 있습니다.
 
 </Solution>
 
 </Challenges>
 
-Notice the "Show solution" button in the left bottom corner. It's handy if you want to check yourself!
+좌측 하단에 있는 "Show solution" 버튼을 주목해 보세요. 스스로 확인하고 싶을 때 유용하게 사용할 수 있습니다!
 
-### Build an intuition with diagrams and illustrations {/*build-an-intuition-with-diagrams-and-illustrations*/}
+### 다이어그램과 삽화로 직관력을 높여보세요 {/*build-an-intuition-with-diagrams-and-illustrations*/}
 
-When we couldn't figure out how to explain something with code and words alone, we've added diagrams that help provide some intuition. For example, here is one of the diagrams from [Preserving and Resetting State](/learn/preserving-and-resetting-state):
+코드와 단어만으로 어떤 것을 설명하기 어려운 경우, 직관적으로 도움을 주는 다이어그램을 추가했습니다. 예를 들어, 여기 [State를 보장하고 재설정하기](/learn/preserving-and-resetting-state)에 있는 다이어그램 중 하나가 있습니다.
 
-<Diagram name="preserving_state_diff_same_pt1" height={350} width={794} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'section', which has a single child labeled 'Counter' containing a state bubble labeled 'count' with value 3. The middle section has the same 'div' parent, but the child components have now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'div', highlighted in yellow, also with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, all highlighted in yellow.">
+<Diagram name="preserving_state_diff_same_pt1" height={350} width={794} alt="다이어그램에는 세 개의 섹션이 있으며, 각 섹션 사이에 전환되는 화살표가 있습니다. 첫 번째 섹션에는 'div'로 레이블 된 React 컴포넌트가 있습니다. 이 컴포넌트의 단일 자식으로 'section'이라고 레이블 된 섹션이 있으며, 그 안에 'Counter'라고 레이블 된 컴포넌트가 있습니다. 이 컴포넌트 안에는 'count'라고 레이블 된 state 버블이 있으며 값은 3입니다. 중간 섹션에는 동일한 'div' 부모가 있지만, 이제는 하위 컴포넌트들이 삭제되었습니다. 이를 노란색 'proof' 이미지로 표시합니다. 세 번째 섹션에는 다시 동일한 'div' 부모가 있으며, 이번에는 'div'라고 레이블 된 새로운 하위 컴포넌트가 추가되었습니다. 이 컴포넌트 안에는 'Counter'라고 레이블 된 컴포넌트가 있으며, 그 안에 'count'라고 레이블 된 state 버블이 있습니다. 이번에는 값이 0으로 표시됩니다. 모든 부분이 노란색으로 강조되어 있습니다.">
 
-When `section` changes to `div`, the `section` is deleted and the new `div` is added
+`section`이 `div`로 변경될 때, `section`은 삭제되고 새로운 `div`가 추가됩니다.
 
 </Diagram>
 
-You'll also see some illustrations throughout the docs--here's one of the [browser painting the screen](/learn/render-and-commit#epilogue-browser-paint):
+또한 문서 곳곳에서 몇몇 삽화를 보게 될 것입니다--여기 [화면을 그리는 브라우저](/learn/render-and-commit#epilogue-browser-paint) 중 하나가 있습니다.
 
-<Illustration alt="A browser painting 'still life with card element'." src="/images/docs/illustrations/i_browser-paint.png" />
+<Illustration alt="'카드 요소가 있는 정물화'를 그리는 브라우저" src="/images/docs/illustrations/i_browser-paint.png" />
 
-We've confirmed with the browser vendors that this depiction is 100% scientifically accurate.
+브라우저 공급업체에게 이 표현이 100% 과학적으로 정확하다는 확인을 받았습니다.
 
-## A new, detailed API Reference {/*a-new-detailed-api-reference*/}
+## 새로운, 상세한 API 레퍼런스 {/*a-new-detailed-api-reference*/}
 
-In the [API Reference](/reference/react), every React API now has a dedicated page. This includes all kinds of APIs:
+[API 레퍼런스](/reference/react)에서, 이제 모든 React API는 전용 페이지를 가집니다. 모든 종류의 API들이 포함됩니다.
 
-- Built-in Hooks like [`useState`](/reference/react/useState).
-- Built-in components like [`<Suspense>`](/reference/react/Suspense).
-- Built-in browser components like [`<input>`](/reference/react-dom/components/input).
-- Framework-oriented APIs like [`renderToPipeableStream`](/reference/react-dom/server/renderToReadableStream).
-- Other React APIs like [`memo`](/reference/react/memo).
+- [`useState`](/reference/react/useState) 같은 내장 Hooks
+- [`<Suspense>`](/reference/react/Suspense) 같은 내장 컴포넌트
+- [`<input>`](/reference/react-dom/components/input) 같은 브라우저 내장 컴포넌트
+- [`renderToPipeableStream`](/reference/react-dom/server/renderToReadableStream) 같은 프레임워크 지향 API
+- [`memo`](/reference/react/memo) 같은 그 밖의 React API
 
-You'll notice that every API page is split into at least two segments: *Reference* and *Usage*.
+모든 API 페이지가 *레퍼런스* 와 *사용법*을 포함하는 최소 두 개의 세그먼트로 나뉘어 있다는 것을 알 수 있습니다.
 
-[Reference](/reference/react/useState#reference) describes the formal API signature by listing its arguments and return values. It's concise, but it can feel a bit abstract if you're not familiar with that API. It describes what an API does, but not how to use it.
+[레퍼런스](/reference/react/useState#reference)는 인자와 반환 값을 나열하여 형식적인 API 서명을 설명합니다. 이는 간결하지만, 해당 API에 익숙하지 않다면 약간 추상적으로 느껴질 수 있습니다. 이것은 API를 어떻게 사용하는지가 아닌, API가 무엇을 하는지를 설명합니다.
 
-[Usage](/reference/react/useState#usage) shows why and how you would use this API in practice, like a colleague or a friend might explain. It shows the **canonical scenarios for how each API was meant to be used by the React team.** We've added color-coded snippets, examples of using different APIs together, and recipes that you can copy and paste from:
+[사용법](/reference/react/useState#usage)은 동료나 친구가 설명하는 것처럼 실제로 API를 사용하는 이유와 방법을 보여줍니다. **이는 React 팀에서 각 API가 어떻게 사용되기를 의도한 것인지에 대한 표준적인 시나리오**를 보여줍니다. 색상 있는 코드 스니펫, 서로 다른 API들을 함께 사용하는 예시, 복사 및 붙여넣기 할 수 있는 레시피를 추가했습니다.
 
 <Recipes titleText="Basic useState examples" titleId="examples-basic">
 
-#### Counter (number) {/*counter-number*/}
+#### 카운터 (숫자) {/*counter-number*/}
 
-In this example, the `count` state variable holds a number. Clicking the button increments it.
+이 예시에서 `count` state 변수는 숫자를 저장합니다. 버튼을 누르면 숫자가 증가합니다.
 
 <Sandpack>
 
@@ -498,9 +498,9 @@ export default function Counter() {
 
 <Solution />
 
-#### Text field (string) {/*text-field-string*/}
+#### 텍스트 필드 (문자열) {/*text-field-string*/}
 
-In this example, the `text` state variable holds a string. When you type, `handleChange` reads the latest input value from the browser input DOM element, and calls `setText` to update the state. This allows you to display the current `text` below.
+이 예시에서 `text` state 변수는 문자열을 저장합니다. 문자를 입력할 때, `handleChange`가 브라우저의 input DOM 요소로부터 가장 최근에 입력된 값을 읽고 state를 업데이트하기 위해 `setText`를 호출합니다. 이에 따라 현재의 `text`를 아래에 표시할 수 있습니다.
 
 <Sandpack>
 
@@ -530,9 +530,9 @@ export default function MyInput() {
 
 <Solution />
 
-#### Checkbox (boolean) {/*checkbox-boolean*/}
+#### 체크박스 (불리언) {/*checkbox-boolean*/}
 
-In this example, the `liked` state variable holds a boolean. When you click the input, `setLiked` updates the `liked` state variable with whether the browser checkbox input is checked. The `liked` variable is used to render the text below the checkbox.
+이 예시에서 `liked` state 변수는 불리언을 저장합니다. input 요소를 클릭할 때, `setLiked`가 브라우저 체크박스의 선택 여부에 따라 `liked` state 변수를 업데이트합니다. `liked`는 체크박스 아래에 있는 문구를 렌더링하는 데 사용됩니다. 
 
 <Sandpack>
 
@@ -566,9 +566,9 @@ export default function MyCheckbox() {
 
 <Solution />
 
-#### Form (two variables) {/*form-two-variables*/}
+#### 양식 (두 가지 변수) {/*form-two-variables*/}
 
-You can declare more than one state variable in the same component. Each state variable is completely independent.
+하나의 컴포넌트에서 여러 개의 state 변수를 선언할 수 있습니다. 각각의 state 변수는 완전히 독립적입니다.
 
 <Sandpack>
 
@@ -604,43 +604,43 @@ button { display: block; margin-top: 10px; }
 
 </Recipes>
 
-Some API pages also include [Troubleshooting](/reference/react/useEffect#troubleshooting) (for common problems) and [Alternatives](/reference/react-dom/findDOMNode#alternatives) (for deprecated APIs).
+또한 몇몇 API 페이지는 (일반적인 문제에 대한) [트러블슈팅](/reference/react/useEffect#troubleshooting)과 (더 이상 사용하지 않는 API와 관련된) [대안](/reference/react-dom/findDOMNode#alternatives)을 포함하고 있습니다.
 
-We hope that this approach will make the API reference useful not only as a way to look up an argument, but as a way to see all the different things you can do with any given API—and how it connects to the other ones.
+이러한 접근 방식이 API 레퍼런스를 단순히 인자를 찾는 용도뿐만 아니라, 각 API가 어떤 다양한 작업을 수행할 수 있는지, 어떻게 다른 API와 연결되어 있는지를 확인하는 데 유용하게 될 것을 기대합니다.
 
-## What's next? {/*whats-next*/}
+## 다음은 무엇인가요? {/*whats-next*/}
 
-That's a wrap for our little tour! Have a look around the new website, see what you like or don't like, and keep the feedback coming in the [anonymous survey](https://www.surveymonkey.co.uk/r/PYRPF3X) or in our [issue tracker](https://github.com/reactjs/reactjs.org/issues).
+우리의 작은 여정을 마무리할 차례입니다! 새로운 웹 사이트를 둘러보며 마음에 드는 점과 안 드는 점을 찾아보고, [익명 설문조사](https://www.surveymonkey.co.uk/r/PYRPF3X)나 [이슈 트래커](https://github.com/reactjs/reactjs.org/issues)에 계속해서 피드백을 남겨주세요.
 
-We acknowledge this project has taken a long time to ship. We wanted to maintain a high quality bar that the React community deserves. While writing these docs and creating all of the examples, we found mistakes in some of our own explanations, bugs in React, and even gaps in the React design that we are now working to address. We hope that the new documentation will help us hold React itself to a higher bar in the future.
+이 프로젝트가 출시되기까지 오랜 시간이 걸렸다는 것을 알고 있습니다. React 커뮤니티에 걸맞은 높은 품질 기준을 유지하고자 했습니다. 이 문서를 작성하고 모든 예시를 만들면서 몇몇 기존 설명에서의 오류, React의 버그, 심지어 현재 해결하기 위해 노력하고 있는 React 디자인의 빈 곳까지 발견했습니다. 새로운 문서가 앞으로 React 자체를 더 높은 기준에 맞추도록 도와줄 것을 기대합니다.
 
-We've heard many of your requests to expand the content and functionality of the website, for example:
+웹 사이트의 내용과 기능을 확장해달라는 많은 요청을 들었습니다. 예를 들어,
 
-- Providing a TypeScript version for all examples;
-- Creating the updated performance, testing, and accessibility guides;
-- Documenting React Server Components independently from the frameworks that support them;
-- Working with our international community to get the new docs translated;
-- Adding missing features to the new website (for example, RSS for this blog).
+- 모든 예시에 대한 TypeScript 버전을 제공하기 
+- 업데이트된 성능, 테스트, 접근성 가이드 만들기 
+- React 서버 컴포넌트를 지원하는 프레임워크로부터 독립적으로 문서화하기 
+- 새로운 문서가 번역되도록 전 세계 커뮤니티와 협업하기 
+- 새로운 웹 사이트에 놓친 기능 추가하기 (예를 들어, 이 블로그를 위한 RSS)
 
-Now that [react.dev](https://react.dev/) is out, we will be able to shift our focus from "catching up" with the third-party React educational resources to adding new information and further improving our new website.
+이제 [react.dev](https://react.dev/)가 출시되었으니, 제삼자 React 교육 자료를 "따라잡는" 데서 벗어나 새로운 정보를 추가하고 새 웹 사이트를 더욱 개선하는 데 집중할 수 있게 되었습니다. 
 
-We think there's never been a better time to learn React.
+React를 배우기에 가장 좋은 시기가 왔다고 생각합니다.
 
-## Who worked on this? {/*who-worked-on-this*/}
+## 누가 작업하고 있나요? {/*who-worked-on-this*/}
 
-On the React team, [Rachel Nabors](https://twitter.com/rachelnabors/) led the project (and provided the illustrations), and [Dan Abramov](https://twitter.com/dan_abramov) designed the curriculum. They co-authored most of the content together as well.
+React 팀에서 [Rachel Nabors](https://twitter.com/rachelnabors/)는 프로젝트를 이끌고 (삽화도 제공했습니다), [Dan Abramov](https://twitter.com/dan_abramov)는 커리큘럼을 설계했습니다. 또한 두 사람은 대부분의 내용을 함께 저술했습니다.
 
-Of course, no project this large happens in isolation. We have a lot of people to thank!
+물론, 이렇게 큰 프로젝트는 혼자서 진행되는 것이 아닙니다. 감사할 분들이 많습니다!
 
-[Sylwia Vargas](https://twitter.com/SylwiaVargas) overhauled our examples to go beyond "foo/bar/baz" and kittens, and feature scientists, artists and cities from around the world. [Maggie Appleton](https://twitter.com/Mappletons) turned our doodles into a clear diagram system.
+[Sylwia Vargas](https://twitter.com/SylwiaVargas)는 "foo/bar/baz"와 고양이만 있던 예시를 전 세계의 과학자, 예술가, 그리고 도시들을 소개하는 내용으로 개선했습니다. [Maggie Appleton](https://twitter.com/Mappletons)은 간단한 스케치를 명확한 다이어그램 시스템으로 변경했습니다.
 
-Thanks to [David McCabe](https://twitter.com/mcc_abe), [Sophie Alpert](https://twitter.com/sophiebits), [Rick Hanlon](https://twitter.com/rickhanlonii), [Andrew Clark](https://twitter.com/acdlite), and [Matt Carroll](https://twitter.com/mattcarrollcode) for additional writing contributions. We'd also like to thank [Natalia Tepluhina](https://twitter.com/n_tepluhina) and [Sebastian Markbåge](https://twitter.com/sebmarkbage) for their ideas and feedback.
+추가적인 글쓰기에 기여하신 [David McCabe](https://twitter.com/mcc_abe), [Sophie Alpert](https://twitter.com/sophiebits), [Rick Hanlon](https://twitter.com/rickhanlonii), [Andrew Clark](https://twitter.com/acdlite), [Matt Carroll](https://twitter.com/mattcarrollcode)에게 감사드립니다. 또한 아이디어와 피드백을 주신 [Natalia Tepluhina](https://twitter.com/n_tepluhina)와 [Sebastian Markbåge](https://twitter.com/sebmarkbage)에게 감사드립니다.
 
-Thanks to [Dan Lebowitz](https://twitter.com/lebo) for the site design and [Razvan Gradinar](https://dribbble.com/GradinarRazvan) for the sandbox design.
+웹 사이트 디자인을 해주신 [Dan Lebowitz](https://twitter.com/lebo)와 샌드박스 디자인을 해주신 [Razvan Gradinar](https://dribbble.com/GradinarRazvan)에게 감사드립니다.
 
-On the development front, thanks to [Jared Palmer](https://twitter.com/jaredpalmer) for prototype development. Thanks to [Dane Grant](https://twitter.com/danecando) and [Dustin Goodman](https://twitter.com/dustinsgoodman) from [ThisDotLabs](https://www.thisdot.co/) for their support on UI development. Thanks to [Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), and [Danilo Woznica](https://twitter.com/danilowoz) from [CodeSandbox](https://codesandbox.io/) for their work with sandbox integration. Thanks to [Rick Hanlon](https://twitter.com/rickhanlonii) for spot development and design work, finessing our colors and finer details. Thanks to [Harish Kumar](https://www.strek.in/) and [Luna Ruan](https://twitter.com/lunaruan) for adding new features to the site and helping maintain it.
+프론트엔드 개발에서는, 프로토타입 개발을 해주신 [Jared Palmer](https://twitter.com/jaredpalmer)에게 감사드립니다. UI 개발에 도움을 주신 [ThisDotLabs](https://www.thisdot.co/)의 [Dane Grant](https://twitter.com/danecando)와 [Dustin Goodman](https://twitter.com/dustinsgoodman)에게 감사드립니다. 샌드박스 통합 작업을 진행해 주신 [CodeSandbox](https://codesandbox.io/)의 [Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), [Danilo Woznica](https://twitter.com/danilowoz)에게 감사드립니다. 세부 개발과 색상 및 미세한 세부 사항을 다듬는 디자인 작업을 해주신 [Rick Hanlon](https://twitter.com/rickhanlonii)에게 감사드립니다. 웹 사이트에 새로운 기능을 추가하고 유지하는 데 도움 주신 [Harish Kumar](https://www.strek.in/)와 [Luna Ruan](https://twitter.com/lunaruan)에게 감사드립니다. 
 
-Huge thanks to the folks who volunteered their time to participate in the alpha and beta testing program. Your enthusiasm and invaluable feedback helped us shape these docs. A special shout out to our beta tester, [Debbie O'Brien](https://twitter.com/debs_obrien), who gave a talk about her experience using the React docs at React Conf 2021.
+알파, 베타 테스트에 참여하기 위해 자발적으로 시간 내어 주신 분들께 큰 감사를 드립니다. 여러분의 열정과 소중한 피드백 덕분에 이 문서를 만들어 낼 수 있었습니다. 특별한 인사를 드리고 싶은 분은 React Conf 2021에서 React 문서를 이용했던 경험을 이야기해 주신 베타 테스터, [Debbie O'Brien](https://twitter.com/debs_obrien) 입니다. 
 
-Finally, thanks to the React community for being the inspiration behind this effort. You are the reason we do this, and we hope that the new docs will help you use React to build any user interface that you want.
+끝으로, 이 노력의 영감이 된 React 커뮤니티에 감사드립니다. 여러분은 우리가 이 일을 하는 이유이며, 새로운 문서가 여러분이 원하는 어떤 사용자 인터페이스든 React를 사용하여 구현하는 데 도움이 되길 바랍니다.
 
