@@ -218,7 +218,7 @@ action type 이름은 컴포넌트 내에서 지역적입니다. [각 action은 
 
 <Pitfall>
 
-State is read-only. Don't modify any objects or arrays in state:
+state는 읽기 전용입니다. state의 객체나 배열을 변경하지 마세요!
 
 ```js {4,5}
 function reducer(state, action) {
@@ -230,7 +230,7 @@ function reducer(state, action) {
     }
 ```
 
-Instead, always return new objects from your reducer:
+대신 reducer에서 새로운 객체를 반환하세요.
 
 ```js {4-8}
 function reducer(state, action) {
@@ -244,15 +244,16 @@ function reducer(state, action) {
     }
 ```
 
-Read [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) to learn more.
+
+자세한 내용을 공부하시려면 [객체 State 업데이트하기](/learn/updating-objects-in-state)와 [배열 State 업데이트하기](/learn/updating-arrays-in-state)를 읽어보세요.
 
 </Pitfall>
 
-<Recipes titleText="Basic useReducer examples" titleId="examples-basic">
+<Recipes titleText="기본적인 useReducer 예제" titleId="examples-basic">
 
-#### Form (object) {/*form-object*/}
+#### 폼 (객체) {/*form-object*/}
 
-In this example, the reducer manages a state object with two fields: `name` and `age`.
+이 예제에서는 reducer를 이용해 `name`과 `age` 필드를 가진 객체를 state로 관리합니다.
 
 <Sandpack>
 
@@ -316,9 +317,9 @@ button { display: block; margin-top: 10px; }
 
 <Solution />
 
-#### Todo list (array) {/*todo-list-array*/}
+#### 투두 리스트 (배열) {/*todo-list-array*/}
 
-In this example, the reducer manages an array of tasks. The array needs to be updated [without mutation.](/learn/updating-arrays-in-state)
+이 예제에서는 리듀서를 이용해 할 일 목록들을 배열로 관리합니다. 배열의 업데이트는 [mutation이 없이](/learn/updating-arrays-in-state) 이루어져야 합니다.
 
 <Sandpack>
 
@@ -509,9 +510,9 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution />
 
-#### Writing concise update logic with Immer {/*writing-concise-update-logic-with-immer*/}
+#### Immer를 이용해 업데이트 로직을 보다 간결하게 작성하기 {/*writing-concise-update-logic-with-immer*/}
 
-If updating arrays and objects without mutation feels tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer#useimmerreducer) to reduce repetitive code. Immer lets you write concise code as if you were mutating objects, but under the hood it performs immutable updates:
+mutation 없이 배열이나 객체를 수정하는 것이 신경 쓰이고, 반복되는 코드를 줄이고 싶으시다면 [Immer](https://github.com/immerjs/use-immer#useimmerreducer)같은 라이브러리를 사용하실 수 있습니다. Immer는 코드를 간결하게 작성할 수 있게 해주며, mutation이 일어나는 것 처럼 코드를 작성하더라도 내부 동작에서는 immutable한 업데이트가 일어납니다.
 
 <Sandpack>
 
@@ -723,9 +724,9 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### Avoiding recreating the initial state {/*avoiding-recreating-the-initial-state*/}
+### 초기 state 재생성 방지하기 {/*avoiding-recreating-the-initial-state*/}
 
-React saves the initial state once and ignores it on the next renders.
+리액트는 초기 state를 저장한 후, 다음 렌더에서는 이를 무시합니다.
 
 ```js
 function createInitialState(username) {
@@ -737,9 +738,9 @@ function TodoList({ username }) {
   // ...
 ```
 
-Although the result of `createInitialState(username)` is only used for the initial render, you're still calling this function on every render. This can be wasteful if it's creating large arrays or performing expensive calculations.
+`createInitialState(username)`의 반환값이 초기 렌더링에만 사용되더라도 함수는 매 렌더링마다 호출될 것입니다. 함수가 큰 배열이나 무거운 연산을 다룰 경우에는 성능상 낭비가 될 수 있습니다.
 
-To solve this, you may **pass it as an _initializer_ function** to `useReducer` as the third argument instead:
+이를 해결하기 위한 방법으로는 `useReducer`의 3번째 인수에 **_초기화 함수_ 를 전달하는 방법**이 있습니다.
 
 ```js {6}
 function createInitialState(username) {
@@ -751,15 +752,15 @@ function TodoList({ username }) {
   // ...
 ```
 
-Notice that you’re passing `createInitialState`, which is the *function itself*, and not `createInitialState()`, which is the result of calling it. This way, the initial state does not get re-created after initialization.
+`createInitialState()`처럼 함수를 호출해서 전달하는 것이 아니라, `createInitialState` *함수 자체*를 전달해야 한다는 것을 기억하세요. 이 방법을 이용하면 초기화 이후에 초기 state가 다시 생성되는 일은 발생하지 않습니다.
 
-In the above example, `createInitialState` takes a `username` argument. If your initializer doesn't need any information to compute the initial state, you may pass `null` as the second argument to `useReducer`.
+위의 예제에서는 `createInitialState` 함수가 `username`을 인수로 받습니다. 만약 초기화 함수가 초기 state를 계산하는 것에 어떤 인수도 필요하지 않다면, `useReducer`의 두번째 인수에 null을 전달할 수 있습니다.
 
-<Recipes titleText="The difference between passing an initializer and passing the initial state directly" titleId="examples-initializer">
+<Recipes titleText="초기화 함수를 전달하는 것과 초기 state를 직접 전달하는 것의 차이점" titleId="examples-initializer">
 
-#### Passing the initializer function {/*passing-the-initializer-function*/}
+#### 초기화 함수 전달 {/*passing-the-initializer-function*/}
 
-This example passes the initializer function, so the `createInitialState` function only runs during initialization. It does not run when component re-renders, such as when you type into the input.
+이 예제에서는 초기화 단계에서만 동작하는 함수인 `createInitialState`를 초기화 함수로 전달합니다. 이 함수는 인풋에 입력 할 때 발생하는 리렌더링 상황 등에서는 호출되지 않습니다. 
 
 <Sandpack>
 
@@ -845,9 +846,9 @@ export default function TodoList({ username }) {
 
 <Solution />
 
-#### Passing the initial state directly {/*passing-the-initial-state-directly*/}
+#### 초기 state 직접 전달 {/*passing-the-initial-state-directly*/}
 
-This example **does not** pass the initializer function, so the `createInitialState` function runs on every render, such as when you type into the input. There is no observable difference in behavior, but this code is less efficient.
+이 예제에서는 초기화 함수를 **전달하지 않으므로**, `createInitialState` 함수는 인풋에 입력을 할때 발생하는 리렌더링에서도 매번 호출됩니다. 이 코드는 동작에는 큰 차이가 없을 수 있지만, 효율성이 떨어집니다.
 
 <Sandpack>
 
@@ -936,11 +937,11 @@ export default function TodoList({ username }) {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 트러블 슈팅 {/*troubleshooting*/}
 
-### I've dispatched an action, but logging gives me the old state value {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
+### dispatch로 action을 호출해도 오래된 state 값이 출력됩니다. {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
 
-Calling the `dispatch` function **does not change state in the running code**:
+`dispatch` 함수의 호출은 **현재 동작하고 있는 코드의 state를 변경하지 않습니다.**
 
 ```js {4,5,8}
 function handleClick() {
@@ -955,9 +956,9 @@ function handleClick() {
 }
 ```
 
-This is because [states behaves like a snapshot.](/learn/state-as-a-snapshot) Updating state requests another render with the new state value, but does not affect the `state` JavaScript variable in your already-running event handler.
+이러한 현상은 [State가 스냅샷으로서](/learn/state-as-a-snapshot) 사용되기 때문에 일어납니다. state를 업데이트하면 새로운 state를 이용한 또 다른 렌더링이 요청되지만, 이미 실행중인 이벤트 핸들러 내의 `state` 자바스크립트 변수에는 영향을 미치지 않습니다.
 
-If you need to guess the next state value, you can calculate it manually by calling the reducer yourself:
+만약 다음 state 값을 알고 싶다면, reducer 함수를 직접 호출해서 다음 값을 계산해볼 수 있습니다.
 
 ```js
 const action = { type: 'incremented_age' };
@@ -970,9 +971,9 @@ console.log(nextState); // { age: 43 }
 
 ---
 
-### I've dispatched an action, but the screen doesn't update {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
+### dispatch로 action을 호출해도 화면이 업데이트되지 않습니다. {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
 
-React will **ignore your update if the next state is equal to the previous state,** as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. This usually happens when you change an object or an array in state directly:
+리액트는 **이전 state와 다음 state를 비교했을 때, 값이 일치한다면 업데이트가 무시됩니다.** 비교는 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)를 통해 이루어집니다. 이런 현상은 보통 객체나 배열의 state를 직접적으로 수정했을 때 발생합니다.
 
 ```js {4-5,9-10}
 function reducer(state, action) {
@@ -992,7 +993,7 @@ function reducer(state, action) {
 }
 ```
 
-You mutated an existing `state` object and returned it, so React ignored the update. To fix this, you need to ensure that you're always [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) instead of mutating them:
+기존의 `state` 객체를 변형하고 그대로 반환한다면 리액트는 업데이트를 무시합니다. 이러한 현상을 방지하기 위해서는 객체나 배열을 변형시키지 않고 [객체 state를 변경](/learn/updating-objects-in-state)하거나 [배열 state](/learn/updating-arrays-in-state)를 변경해야 합니다.
 
 ```js {4-8,11-15}
 function reducer(state, action) {
