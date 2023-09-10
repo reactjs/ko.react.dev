@@ -58,7 +58,7 @@ React 18을 위해 우리는 전문가, 개발자, 도서관 관리자, 교육�
 
 ### React docs 키노트 {/*react-docs-keynote*/}
 
-[Rachel Nabors](https://twitter.com/rachelnabors)는 React의 새로운 문서에 대한 우리의 투자를 설명하는 키노트를 통해 React와 함께 학습하고 디자인하는 섹션을 시작했습니다.
+[Rachel Nabors](https://twitter.com/rachelnabors)는 React의 새로운 문서([react.dev로 배포](/blog/2023/03/16/introducing-react-dev))에 대한 우리의 투자를 설명하는 키노트를 통해 React와 함께 학습하고 디자인하는 섹션을 시작했습니다. 
 
 <YouTubeIframe src="https://www.youtube.com/embed/mneDaMYOKP8" title="YouTube video player" />
 
