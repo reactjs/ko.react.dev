@@ -24,7 +24,7 @@ React 18로 업그레이드하는 데모는 여기에서 [Shruti Kapoor](https:/
 
 <YouTubeIframe src="https://www.youtube.com/embed/ytudH8je5ko" title="YouTube video player" />
 
-## Suspense가 있는 스트리밍 서버 렌더링 {/*streaming-server-rendering-with-suspense*/}
+### Suspense가 있는 스트리밍 서버 렌더링 {/*streaming-server-rendering-with-suspense*/}
 
 React 18에는 Suspense를 사용한 서버 측 렌더링 성능 개선 사항도 포함되어 있습니다.
 
@@ -34,7 +34,7 @@ React 18에는 Suspense를 사용한 서버 측 렌더링 성능 개선 사항�
 
 <YouTubeIframe src="https://www.youtube.com/embed/pj5N-Khihgc" title="YouTube video player" />
 
-## 첫 번째 React 워킹 그룹 {/*the-first-react-working-group*/}
+### 첫 번째 React 워킹 그룹 {/*the-first-react-working-group*/}
 
 React 18에서는 전문가, 개발자, 라이브러리 관리자, 교육자들로 구성된 패널과 협력하기 위해 첫 번째 워킹 그룹을 만들었습니다. 우리는 함께 점진적인 채택 전략을 세우고 `useId`, `useSyncExternalStore`, `useInsertionEffect`와 같은 새로운 API를 개선하기 위해 노력했습니다.
 
@@ -42,7 +42,7 @@ React 18에서는 전문가, 개발자, 라이브러리 관리자, 교육자들�
 
 <YouTubeIframe src="https://www.youtube.com/embed/qn7gRClrC9U" title="YouTube video player" />
 
-## React 개발자 도구 {/*react-developer-tooling*/}
+### React 개발자 도구 {/*react-developer-tooling*/}
 
 이번 릴리즈의 새로운 기능을 지원하기 위해 새로 구성된 React 개발자 도구 팀과 개발자가 React 앱을 디버깅하는 데 도움이 되는 새로운 타임라인 프로파일러도 발표했습니다.
 
@@ -50,13 +50,13 @@ React 18에서는 전문가, 개발자, 라이브러리 관리자, 교육자들�
 
 <YouTubeIframe src="https://www.youtube.com/embed/oxDfrke8rZg" title="YouTube video player" />
 
-## memo 없는 React {/*react-without-memo*/}
+### memo 없는 React {/*react-without-memo*/}
 
 미래를 내다보며, [Xuan Huang(黄玄)](https://twitter.com/Huxpro)이 자동 메모화 컴파일러에 대한 React Labs 연구의 업데이트를 공유했습니다. 이 강연에서 자세한 정보와 컴파일러 프로토타입 데모를 확인하세요:
 
 <YouTubeIframe src="https://www.youtube.com/embed/lGEMwh32soc" title="YouTube video player" />
 
-## React 문서 기조연설 {/*react-docs-keynote*/}
+### React 문서 기조연설 {/*react-docs-keynote*/}
 
 [Rachel Nabors](https://twitter.com/rachelnabors)가 React의 새로운 문서에 대한 투자에 대한 기조연설로 React로 학습하고 디자인하는 방법에 대한 강연을 시작했습니다([현재 react.dev로 제공됨](/blog/2023/03/16/introducing-react-dev)):
 
