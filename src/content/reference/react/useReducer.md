@@ -68,7 +68,7 @@ function handleClick() {
   // ...
 ```
 
-리액트는 현재 `state`와 `dispatch`를 통해 전달된 action을 제공받아 호출된 `reducer`의 반환값을 통해 다음 state값을 설정합니다. 
+React는 현재 `state`와 `dispatch`를 통해 전달된 action을 제공받아 호출된 `reducer`의 반환값을 통해 다음 state값을 설정합니다. 
 
 #### 매개변수 {/*dispatch-parameters*/}
 
@@ -82,9 +82,9 @@ function handleClick() {
 
 * `dispatch` 함수는 **오직 *다음* 렌더링에 사용할 state 변수만 업데이트 합니다.** 만약 `dispatch` 함수를 호출한 직후에 state 변수를 읽는다면 호출 이전의 [최신화되지 않은 값을 참조할 것입니다.](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value)
 
-* [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 통해 새롭게 제공된 값과 현재 `state`를 비교한 값이 같을 경우, 리액트는 컴포넌트와 해당 컴포넌트의 자식 요소들의 리렌더링을 건너뜁니다. 이것은 최적화에 관련된 동작으로써 결과를 무시하기 전에 컴포넌트가 호출되지만, 호출된 결과가 코드에 영향을 미치지는 않습니다.
+* [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 통해 새롭게 제공된 값과 현재 `state`를 비교한 값이 같을 경우, React는 컴포넌트와 해당 컴포넌트의 자식 요소들의 리렌더링을 건너뜁니다. 이것은 최적화에 관련된 동작으로써 결과를 무시하기 전에 컴포넌트가 호출되지만, 호출된 결과가 코드에 영향을 미치지는 않습니다.
 
-* 리액트는 [state의 업데이트를 배치(batch)합니다.](/learn/queueing-a-series-of-state-updates) **이벤트 핸들러의 모든 코드가 수행**되고 `set` 함수가 모두 호출된 후에 화면을 업데이트 합니다. 이는 하나의 이벤트에 리렌더링이 여러번 일어나는 것을 방지합니다. DOM 접근 등 이른 화면 업데이트를 강제해야할 특수한 상황이 있을 경우 [`flushSync`](/reference/react-dom/flushSync)를 사용할 수 있습니다.
+* React는 [state의 업데이트를 batch합니다.](/learn/queueing-a-series-of-state-updates) **이벤트 핸들러의 모든 코드가 수행**되고 `set` 함수가 모두 호출된 후에 화면을 업데이트 합니다. 이는 하나의 이벤트에 리렌더링이 여러번 일어나는 것을 방지합니다. DOM 접근 등 이른 화면 업데이트를 강제해야할 특수한 상황이 있을 경우 [`flushSync`](/reference/react-dom/flushSync)를 사용할 수 있습니다.
 
 ---
 
@@ -119,7 +119,7 @@ function handleClick() {
 }
 ```
 
-리액트는 현재 state와 action을 <CodeStep step={4}>reducer 함수</CodeStep>로 전달합니다. reducer는 다음 state를 계산한 후 반환합니다. 리액트는 다음 state를 저장한 뒤에 컴포넌트와 함께 렌더링 하고 UI를 업데이트 합니다.
+React는 현재 state와 action을 <CodeStep step={4}>reducer 함수</CodeStep>로 전달합니다. reducer는 다음 state를 계산한 후 반환합니다. React는 다음 state를 저장한 뒤에 컴포넌트와 함께 렌더링 하고 UI를 업데이트 합니다.
 
 <Sandpack>
 
@@ -726,7 +726,7 @@ ul, li { margin: 0; padding: 0; }
 
 ### 초기 state 재생성 방지하기 {/*avoiding-recreating-the-initial-state*/}
 
-리액트는 초기 state를 저장한 후, 다음 렌더에서는 이를 무시합니다.
+React는 초기 state를 저장한 후, 다음 렌더링에서는 이를 무시합니다.
 
 ```js
 function createInitialState(username) {
@@ -973,7 +973,7 @@ console.log(nextState); // { age: 43 }
 
 ### dispatch로 action을 호출해도 화면이 업데이트되지 않습니다. {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
 
-리액트는 **이전 state와 다음 state를 비교했을 때, 값이 일치한다면 업데이트가 무시됩니다.** 비교는 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)를 통해 이루어집니다. 이런 현상은 보통 객체나 배열의 state를 직접적으로 수정했을 때 발생합니다.
+React는 **이전 state와 다음 state를 비교했을 때, 값이 일치한다면 업데이트가 무시됩니다.** 비교는 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)를 통해 이루어집니다. 이런 현상은 보통 객체나 배열의 state를 직접적으로 수정했을 때 발생합니다.
 
 ```js {4-5,9-10}
 function reducer(state, action) {
@@ -993,7 +993,7 @@ function reducer(state, action) {
 }
 ```
 
-리액트는 기존의 `state` 객체가 mutation된 상태로 반환된다면 업데이트를 무시합니다. 이러한 현상을 방지하기 위해서는 객체나 배열을 mutation시키지 않고 [객체 state를 변경](/learn/updating-objects-in-state)하거나 [배열 state](/learn/updating-arrays-in-state)를 변경해야 합니다.
+React는 기존의 `state` 객체가 mutation된 상태로 반환된다면 업데이트를 무시합니다. 이러한 현상을 방지하기 위해서는 객체나 배열을 mutation시키지 않고 [객체 state를 변경](/learn/updating-objects-in-state)하거나 [배열 state](/learn/updating-arrays-in-state)를 변경해야 합니다.
 
 ```js {4-8,11-15}
 function reducer(state, action) {
@@ -1082,7 +1082,7 @@ return <button onClick={(e) => handleClick(e)}>Click me</button>
 
 ### reducer와 초기화 함수가 두번 호출됩니다. {/*my-reducer-or-initializer-function-runs-twice*/}
 
-리액트는 [엄격 모드](/reference/react/StrictMode)일 때 reducer와 초기화 함수를 두번씩 호출합니다. 이 현상은 코드 실행에 문제가 되지 않습니다.
+React는 [엄격 모드](/reference/react/StrictMode)일 때 reducer와 초기화 함수를 두번씩 호출합니다. 이 현상은 코드 실행에 문제가 되지 않습니다.
 
 이러한 현상은 컴포넌트가 [순수함수로 유지될 수 있도록](/learn/keeping-components-pure) 오직 개발 환경에서만 일어나며, 두개의 호출 중 하나는 무시됩니다. 컴포넌트, 초기화 함수, reducer가 순수하다면 로직에 아무런 영향을 미치지 않지만, 순수하지 않다면 실수를 알아챌 수 있도록 알려줍니다.
 
@@ -1101,7 +1101,7 @@ function reducer(state, action) {
 }
 ```
 
-리액트는 reducer 함수를 두 번 호출하므로 todo가 두 개 추가되는 것을 볼 수 있고, 이를 통해 reducer 함수 작성에 실수가 있다는 것을 알아낼 수 있습니다. 이러한 실수는 [배열을 mutation 하지 않고 교체하는 방법](/learn/updating-arrays-in-state#adding-to-an-array)을 통해 수정할 수 있습니다.
+React는 reducer 함수를 두 번 호출하므로 todo가 두 개 추가되는 것을 볼 수 있고, 이를 통해 reducer 함수 작성에 실수가 있다는 것을 알아낼 수 있습니다. 이러한 실수는 [배열을 mutation 하지 않고 교체하는 방법](/learn/updating-arrays-in-state#adding-to-an-array)을 통해 수정할 수 있습니다.
 
 ```js {4-11}
 function reducer(state, action) {
@@ -1121,6 +1121,6 @@ function reducer(state, action) {
 }
 ```
 
-이제 reducer 함수는 순수하므로, 여러번 호출되어도 같은 값을 보장할 수 있습니다. 리액트는 순수성을 보장하기 위해 개발 환경에서 두번씩 호출합니다. **오로지 컴포넌트와 초기화 함수, reducer 함수만 순수할 필요가 있습니다.** 이벤트 핸들러는 순수할 필요가 없습니다. 따라서 이벤트 핸들러는 두 번씩 호출되지 않습니다.
+이제 reducer 함수는 순수하므로, 여러번 호출되어도 같은 값을 보장할 수 있습니다. React는 순수성을 보장하기 위해 개발 환경에서 두번씩 호출합니다. **오로지 컴포넌트와 초기화 함수, reducer 함수만 순수할 필요가 있습니다.** 이벤트 핸들러는 순수할 필요가 없습니다. 따라서 이벤트 핸들러는 두 번씩 호출되지 않습니다.
 
 자세한 사항은 [컴포넌트 순수하게 유지하기](/learn/keeping-components-pure)를 읽어보세요.
