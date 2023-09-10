@@ -74,7 +74,7 @@ function App() {
 
 ```js
 function Button() {
-  // 🟡 이전 방식 (권장되지 않음)
+  // 🟡 이전 방식 (권장하지 않음)
   return (
     <ThemeContext.Consumer>
       {theme => (
