@@ -4,7 +4,7 @@ title: React 영상들
 
 <Intro>
 
-React와 React ecosystem에 대한 토론을 위한 영상들입니다.
+React와 React 에코시스템에 대한 토론을 위한 영상들입니다.
 
 </Intro>
 
@@ -18,7 +18,7 @@ React와 React ecosystem에 대한 토론을 위한 영상들입니다.
 
 <YouTubeIframe src="https://www.youtube.com/embed/FZ0cG47msEk" title="YouTube video player" />
 
-### Application 개발자를 위한 React 18 {/*react-18-for-application-developers*/}
+### 어플리케이션 개발자를 위한 React 18 {/*react-18-for-application-developers*/}
 
 React 18로 업그레이드하는 데모는 [Shruti Kapoor](https://twitter.com/shrutikapoor08) 강연에서 확인하세요.
 
@@ -34,9 +34,9 @@ React 18은 Suspense를 이용한 서버 측 렌더링 성능 향상도 포함�
 
 <YouTubeIframe src="https://www.youtube.com/embed/pj5N-Khihgc" title="YouTube video player" />
 
-### 첫 번째 React working group {/*the-first-react-working-group*/}
+### 첫 번째 React 워킹그룹 {/*the-first-react-working-group*/}
 
-React 18을 위해 우리는 전문가, 개발자, 도서관 관리자, 교육자로 구성된 위원회와 협력하기 위해 첫 번째 working group을 만들었습니다. 우리는 점진적인 채택 전략을 만들고 `useId`, `useSyncExternalStore`, `useInsertionEffect` 등의 새로운 API를 개선하기 위해 함께 노력했습니다.
+React 18을 위해 우리는 전문가, 개발자, 도서관 관리자, 교육자로 구성된 위원회와 협력하기 위해 첫 번째 워킹그룹을 만들었습니다. 우리는 점진적인 채택 전략을 만들고 `useId`, `useSyncExternalStore`, `useInsertionEffect` 등의 새로운 API를 개선하기 위해 함께 노력했습니다.
 
 이 작업에 대한 개요는 [Aakansha' Doshi](https://twitter.com/aakansha1216) 강연을 확인하세요.
 
@@ -44,19 +44,20 @@ React 18을 위해 우리는 전문가, 개발자, 도서관 관리자, 교육�
 
 ### React Developer Tooling {/*react-developer-tooling*/}
 
-이번 릴리즈의 새로운 기능을 지원하기 위해 새로 구성된 React DevTools 팀과 개발자들이 React 앱을 디버깅할 수 있도록 지원하는 새로운 Timeline Profiler도 발표했습니다.
+이번 릴리즈의 새로운 기능을 지원하기 위해 새로 구성된 React DevTools 팀과 개발자들이 React 앱을 디버깅할 수 있도록 지원하는 새로운 타임라인 프로파일러도 발표했습니다.
 
 자세한 정보와 새로운 DevTools 데모는 [Brian Vaughn](https://twitter.com/brian_d_vaughn) 강연을 확인하세요.
 
 <YouTubeIframe src="https://www.youtube.com/embed/oxDfrke8rZg" title="YouTube video player" />
 
-### React without memo {/*react-without-memo*/}
+### memo 없는 React {/*react-without-memo*/}
 
 [Xuan Huang (黄玄)](https://twitter.com/Huxpro)은 미래를 예상하고 React Labs 연구에서 자동 동기화 컴파일러에 대한 업데이트를 공유했습니다. 자세한 정보와 컴파일러 프로토타입 데모를 보려면 이 강연을 확인하세요.
 
 <YouTubeIframe src="https://www.youtube.com/embed/lGEMwh32soc" title="YouTube video player" />
 
 ### React docs 키노트 {/*react-docs-keynote*/}
+
 [Rachel Nabors](https://twitter.com/rachelnabors)는 React의 새로운 문서에 대한 우리의 투자를 설명하는 키노트를 통해 React와 함께 학습하고 디자인하는 섹션을 시작했습니다.
 
 <YouTubeIframe src="https://www.youtube.com/embed/mneDaMYOKP8" title="YouTube video player" />
