@@ -10,79 +10,79 @@ React와 React 에코시스템에 대한 토론을 위한 영상들입니다.
 
 ## React Conf 2021 {/*react-conf-2021*/}
 
-### React 18 키노트 {/*react-18-keynote*/}
+### React 18 기조연설 {/*react-18-keynote*/}
 
-키노트에서 React 18을 시작으로 React의 미래에 대한 비전을 공유했습니다.
+기조연설에서 React 18을 시작으로 React의 미래에 대한 비전을 공유했습니다.
 
-[Andrew Clark](https://twitter.com/acdlite), [Juan Tejada](https://twitter.com/_jstejada), [Lauren Tan](https://twitter.com/potetotes), 그리고 [Rick Hanlon](https://twitter.com/rickhanlonii)의 전체 키노트 보기.
+[Andrew Clark](https://twitter.com/acdlite), [Juan Tejada](https://twitter.com/_jstejada), [Lauren Tan](https://twitter.com/potetotes), 그리고 [Rick Hanlon](https://twitter.com/rickhanlonii)의 전체 기조연설 보기.
 
 <YouTubeIframe src="https://www.youtube.com/embed/FZ0cG47msEk" title="YouTube video player" />
 
 ### 어플리케이션 개발자를 위한 React 18 {/*react-18-for-application-developers*/}
 
-React 18로 업그레이드하는 데모는 [Shruti Kapoor](https://twitter.com/shrutikapoor08) 강연에서 확인하세요.
+React 18로 업그레이드하는 데모는 여기에서 [Shruti Kapoor](https://twitter.com/shrutikapoor08)의 강연을 참조하세요:
 
 <YouTubeIframe src="https://www.youtube.com/embed/ytudH8je5ko" title="YouTube video player" />
 
-### Suspense와 함께하는 스트리밍 서버 렌더링 {/*streaming-server-rendering-with-suspense*/}
+## Suspense가 있는 스트리밍 서버 렌더링 {/*streaming-server-rendering-with-suspense*/}
 
-React 18은 Suspense를 이용한 서버 측 렌더링 성능 향상도 포함하고 있습니다.
+React 18에는 Suspense를 사용한 서버 측 렌더링 성능 개선 사항도 포함되어 있습니다.
 
-스트리밍 서버 렌더링을 사용하면 서버의 React 컴포넌트에서 HTML을 생성하여 사용자에게 스트리밍할 수 있습니다. React 18에서는 `Suspense`를 사용하여 앱을 더 작은 독립 단위로 분해하여 다른 앱을 차단하지 않고 서로 독립적으로 스트리밍할 수 있습니다. 이는 사용자가 콘텐츠를 더 빨리 볼 수 있고 보다 빠르게 상호 작용을 시작할 수 있다는 것을 의미합니다.
+스트리밍 서버 렌더링을 사용하면 서버의 React 컴포넌트에서 HTML을 생성하고 해당 HTML을 사용자에게 스트리밍할 수 있습니다. React 18에서는 'Suspense'를 사용하여 앱을 더 작은 독립 단위로 분해하여 나머지 앱을 차단하지 않고 서로 독립적으로 스트리밍할 수 있습니다. 이는 사용자가 콘텐츠를 더 빨리 보고 훨씬 빠르게 상호작용을 시작할 수 있다는 것을 의미합니다.
 
-자세한 내용은 [Shaundai Person](https://twitter.com/shaundai) 강연에서 확인하세요.
+더 자세히 알아보려면 [Shaundai Person](https://twitter.com/shaundai)의 강연을 참조하세요:
 
 <YouTubeIframe src="https://www.youtube.com/embed/pj5N-Khihgc" title="YouTube video player" />
 
-### 첫 번째 React 워킹그룹 {/*the-first-react-working-group*/}
+## 첫 번째 React 워킹 그룹 {/*the-first-react-working-group*/}
 
-React 18을 위해 우리는 전문가, 개발자, 도서관 관리자, 교육자로 구성된 위원회와 협력하기 위해 첫 번째 워킹그룹을 만들었습니다. 우리는 점진적인 채택 전략을 만들고 `useId`, `useSyncExternalStore`, `useInsertionEffect` 등의 새로운 API를 개선하기 위해 함께 노력했습니다.
+React 18에서는 전문가, 개발자, 라이브러리 관리자, 교육자들로 구성된 패널과 협력하기 위해 첫 번째 워킹 그룹을 만들었습니다. 우리는 함께 점진적인 채택 전략을 세우고 `useId`, `useSyncExternalStore`, `useInsertionEffect`와 같은 새로운 API를 개선하기 위해 노력했습니다.
 
-이 작업에 대한 개요는 [Aakansha' Doshi](https://twitter.com/aakansha1216) 강연을 확인하세요.
+이 작업에 대한 개요는 [Aakansha' Doshi](https://twitter.com/aakansha1216)의 강연을 참조하세요:
 
 <YouTubeIframe src="https://www.youtube.com/embed/qn7gRClrC9U" title="YouTube video player" />
 
-### React Developer Tooling {/*react-developer-tooling*/}
+## React 개발자 도구 {/*react-developer-tooling*/}
 
-이번 릴리즈의 새로운 기능을 지원하기 위해 새로 구성된 React DevTools 팀과 개발자들이 React 앱을 디버깅할 수 있도록 지원하는 새로운 타임라인 프로파일러도 발표했습니다.
+이번 릴리즈의 새로운 기능을 지원하기 위해 새로 구성된 React 개발자 도구 팀과 개발자가 React 앱을 디버깅하는 데 도움이 되는 새로운 타임라인 프로파일러도 발표했습니다.
 
-자세한 정보와 새로운 DevTools 데모는 [Brian Vaughn](https://twitter.com/brian_d_vaughn) 강연을 확인하세요.
+새로운 개발자 도구 기능에 대한 자세한 내용과 데모는 [Brian Vaughn](https://twitter.com/brian_d_vaughn)의 강연을 참조하세요:
 
 <YouTubeIframe src="https://www.youtube.com/embed/oxDfrke8rZg" title="YouTube video player" />
 
-### memo 없는 React {/*react-without-memo*/}
+## memo 없는 React {/*react-without-memo*/}
 
-[Xuan Huang (黄玄)](https://twitter.com/Huxpro)은 미래를 예상하고 React Labs 연구에서 자동 동기화 컴파일러에 대한 업데이트를 공유했습니다. 자세한 정보와 컴파일러 프로토타입 데모를 보려면 이 강연을 확인하세요.
+미래를 내다보며, [Xuan Huang(黄玄)](https://twitter.com/Huxpro)이 자동 메모화 컴파일러에 대한 React Labs 연구의 업데이트를 공유했습니다. 이 강연에서 자세한 정보와 컴파일러 프로토타입 데모를 확인하세요:
 
 <YouTubeIframe src="https://www.youtube.com/embed/lGEMwh32soc" title="YouTube video player" />
 
-### React docs 키노트 {/*react-docs-keynote*/}
+## React 문서 기조연설 {/*react-docs-keynote*/}
 
-[Rachel Nabors](https://twitter.com/rachelnabors)는 React의 새로운 문서([react.dev로 배포](/blog/2023/03/16/introducing-react-dev))에 대한 우리의 투자를 설명하는 키노트를 통해 React와 함께 학습하고 디자인하는 섹션을 시작했습니다. 
+[Rachel Nabors](https://twitter.com/rachelnabors)가 React의 새로운 문서에 대한 투자에 대한 기조연설로 React로 학습하고 디자인하는 방법에 대한 강연을 시작했습니다([현재 react.dev로 제공됨](/blog/2023/03/16/introducing-react-dev)):
 
 <YouTubeIframe src="https://www.youtube.com/embed/mneDaMYOKP8" title="YouTube video player" />
 
-### 그리고 더... {/*and-more*/}
+### 그리고... {/*and-more*/}
 
-**React 학습 및 디자인에 대한 이야기**
+**React로 학습하고 디자인하는 방법에 대한 강연:**
 
-* Debbie O'Brien: [Things I learnt from the new React docs](https://youtu.be/-7odLW_hG7s).
-* Sarah Rainsberger: [Learning in the Browser](https://youtu.be/5X-WEQflCL0).
-* Linton Ye: [The ROI of Designing with React](https://youtu.be/7cPWmID5XAk).
-* Delba de Oliveira: [Interactive playgrounds with React](https://youtu.be/zL8cz2W0z34).
+* Debbie O'Brien: [새로운 React 문서에서 배운 것들](https://youtu.be/-7odLW_hG7s).
+* Sarah Rainsberger: [브라우저에서 학습하기](https://youtu.be/5X-WEQflCL0).
+* Linton Ye: [React로 디자인함에서의 ROI](https://youtu.be/7cPWmID5XAk).
+* Delba de Oliveira: [React를 이용한 인터랙티브 놀이터](https://youtu.be/zL8cz2W0z34).
 
-**Relay, React Native, PyTorch 팀의 강연**
+**Relay, React Native, PyTorch 팀의 강연:**
 
-* Robert Balicki: [Re-introducing Relay](https://youtu.be/lhVGdErZuN4).
-* Eric Rozell and Steven Moyes: [React Native Desktop](https://youtu.be/9L4FFrvwJwY).
-* Roman Rädle: [On-device Machine Learning for React Native](https://youtu.be/NLj73vrc2I8)
+* Robert Balicki: [Relay 다시 소개](https://youtu.be/lhVGdErZuN4).
+* Eric Rozell과 Steven Moyes: [React Native 데스크톱](https://youtu.be/9L4FFrvwJwY).
+* Roman Rädle: [React Native를 위한 온디바이스 머신러닝](https://youtu.be/NLj73vrc2I8)
 
-**접근성, tooling 및 서버 컴포넌트에 대한 커뮤니티의 강연**
+**접근성, 툴링 및 서버 컴포넌트에 대한 커뮤니티 강연:**
 
-* Daishi Kato: [React 18 for External Store Libraries](https://youtu.be/oPfSC5bQPR8).
-* Diego Haz: [Building Accessible Components in React 18](https://youtu.be/dcm8fjBfro8).
-* Tafu Nakazaki: [Accessible Japanese Form Components with React](https://youtu.be/S4a0QlsH0pU).
-* Lyle Troxell: [UI tools for artists](https://youtu.be/b3l4WxipFsE).
+* Daishi Kato: [외부 스토어 라이브러리를 위한 React 18](https://youtu.be/oPfSC5bQPR8).
+* Diego Haz: [React 18에서 접근 가능한 컴포넌트 구축하기](https://youtu.be/dcm8fjBfro8).
+* Tafu Nakazaki: [React로 접근 가능한 일본어 폼 컴포넌트](https://youtu.be/S4a0QlsH0pU).
+* Lyle Troxell: [아티스트를 위한 UI 도구](https://youtu.be/b3l4WxipFsE).
 * Helen Lin: [Hydrogen + React 18](https://youtu.be/HS6vIYkSNks).
 
 ## 더 예전 영상들 {/*older-videos*/}
