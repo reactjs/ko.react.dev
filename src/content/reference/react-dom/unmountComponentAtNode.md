@@ -68,7 +68,7 @@ unmountComponentAtNode(rootNode);
 
 ### DOM 엘리먼트에서 React 애플리케이션 제거하기 {/*removing-a-react-app-from-a-dom-element*/}
 
-때때로 기존 페이지나 일부만 React로 작성된 페이지에서 React를 "포함"하고 싶을 수 있습니다. 이런 경우 렌더링 된 DOM 노드에서 UI와 state 및 리스너를 모두 제거해서 React 애플리케이션을 "중지" 해야 할 수 있습니다.
+때때로 기존 페이지나 일부만 React로 작성된 페이지에서 React를 "포함"하고 싶을 수 있습니다. 이런 경우 렌더링 된 DOM 노드에서 UI와 state 및 리스너를 모두 제거해서 React 애플리케이션을 "중지"해야 할 수 있습니다.
 
 아래 예시에서는 "Render React App"을 클릭하면 React 애플리케이션을 렌더링합니다. "Unmount React App"을 클릭하면 React 애플리케이션을 제거합니다.
 
