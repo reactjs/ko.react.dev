@@ -88,14 +88,14 @@ import { flushSync } from 'react-dom';
 
 export default function PrintApp() {
   const [isPrinting, setIsPrinting] = useState(false);
-  
+
   useEffect(() => {
     function handleBeforePrint() {
       flushSync(() => {
         setIsPrinting(true);
       })
     }
-    
+
     function handleAfterPrint() {
       setIsPrinting(false);
     }
@@ -107,7 +107,7 @@ export default function PrintApp() {
       window.removeEventListener('afterprint', handleAfterPrint);
     }
   }, []);
-  
+
   return (
     <>
       <h1>isPrinting: {isPrinting ? 'yes' : 'no'}</h1>
