@@ -812,8 +812,13 @@ React에 재렌더링을 건너뛸 수 있음을 알리려면 `false`를 반환�
 
 #### 매개변수 {/*unsafe_componentwillreceiveprops-parameters*/}
 
+<<<<<<< HEAD
 - `nextProps`: 컴포넌트가 부모 컴포넌트로부터 받으려는 다음 props입니다. `nextProps`와 [`this.props`](#props)를 비교하여 무엇이 변경되었는지 확인합니다.
 - `nextContext`: 컴포넌트가 가장 가까운 공급자(provider)로부터 받으려는 다음 props입니다. `nextContext`를 [`this.context`](#context)와 비교하여 변경된 내용을 확인합니다. [`static contextType`](#static-contexttype)(modern) 또는 [`static contextTypes`](#static-contexttypes)(legacy)를 지정한 경우에만 사용할 수 있습니다.
+=======
+- `nextProps`: The next props that the component is about to receive from its parent component. Compare `nextProps` to [`this.props`](#props) to determine what changed.
+- `nextContext`: The next context that the component is about to receive from the closest provider. Compare `nextContext` to [`this.context`](#context) to determine what changed. Only available if you specify [`static contextType`](#static-contexttype) (modern) or [`static contextTypes`](#static-contexttypes) (legacy).
+>>>>>>> bdc60c26848820239db732b7218d41f4c2b204af
 
 #### 반환값 {/*unsafe_componentwillreceiveprops-returns*/}
 
