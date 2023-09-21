@@ -4,7 +4,7 @@ title: 문서 기여자
 
 <Intro>
 
-리액트 문서는  [리액트 팀](/community/team) 과 [외부 기여자](https://github.com/reactjs/reactjs.org/graphs/contributors)에 의해 작성되고 유지되고 있습니다. 우리는 이 페이지에서, 사이트에 상당한 기여를 한 사람들에게 감사를 전하고 싶습니다.
+React 문서는  [React 팀](/community/team) 과 [외부 기여자](https://github.com/reactjs/reactjs.org/graphs/contributors)에 의해 작성되고 유지되고 있습니다. 우리는 이 페이지에서, 사이트에 상당한 기여를 한 사람들에게 감사를 전하고 싶습니다.
 
 </Intro>
 
@@ -25,7 +25,7 @@ title: 문서 기여자
 ## 디자인 {/*design*/}
 
 * [Dan Lebowitz](https://twitter.com/lebo): 사이트 디자인
-* [Razvan Gradinar](https://dribbble.com/GradinarRazvan): 샌드박스 디자인
+* [Razvan Gradinar](https://dribbble.com/GradinarRazvan): Sandbox 디자인
 * [Maggie Appleton](https://maggieappleton.com/): 도표 시스템
 * [Sophie Alpert](https://twitter.com/sophiebits): 색칠된 코드를 사용한 설명
 
@@ -33,10 +33,10 @@ title: 문서 기여자
 
 * [Jared Palmer](https://twitter.com/jaredpalmer): 사이트 개발
 * [ThisDotLabs](https://www.thisdot.co/) ([Dane Grant](https://twitter.com/danecando), [Dustin Goodman](https://twitter.com/dustinsgoodman)): 사이트 개발
-* [CodeSandbox](https://codesandbox.io/) ([Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), [Danilo Woznica](https://twitter.com/danilowoz)): 샌드박스 통합
+* [CodeSandbox](https://codesandbox.io/) ([Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), [Danilo Woznica](https://twitter.com/danilowoz)): Sandbox 통합
 * [Dan Abramov](https://twitter.com/dan_abramov): 사이트 개발
 * [Rick Hanlon](https://twitter.com/rickhanlonii): 사이트 개발
 * [Harish Kumar](https://www.strek.in/): 개발과 유지보수
-* [Luna Ruan](https://twitter.com/lunaruan): 샌드박스 개선
+* [Luna Ruan](https://twitter.com/lunaruan): Sandbox 개선
 
 우리는 길을 따라 피드백을 제공한 수 많은 알파 테스터들과 커뮤니티 멤버들에게도 감사를 전하고 싶습니다.
