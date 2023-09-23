@@ -4,7 +4,7 @@ title: State 구조 선택하기
 
 <Intro>
 
-State를 잘 구조화하면 수정과 디버깅이 즐거운 컴포넌트와 지속적인 버그의 원인이되는 컴포넌트의 차이를 만들 수 있습니다. 다음은 state를 구조화할 때 고려해야 할 몇 가지 팁입니다.
+State를 잘 구조화하면 수정과 디버깅이 즐거운 컴포넌트와 지속적인 버그의 원인이 되는 컴포넌트의 차이를 만들 수 있습니다. 다음은 state를 구조화할 때 고려해야 할 몇 가지 팁입니다.
 
 </Intro>
 
@@ -25,15 +25,15 @@ State를 잘 구조화하면 수정과 디버깅이 즐거운 컴포넌트와 �
 3. **불필요한 state 피하기.** 렌더링 중에 컴포넌트의 props나 기존 state 변수에서 일부 정보를 계산할 수 있다면, 컴포넌트의 state에 해당 정보를 넣지 않아야 합니다.
 4. **State의 중복 피하기.** 여러 상태 변수 간 또는 중첩된 객체 내에서 동일한 데이터가 중복될 경우 동기화를 유지하기가 어렵습니다. 가능하다면 중복을 줄이세요.
 5. **깊게 중첩된 state 피하기.** 깊게 계층화된 state는 업데이트하기 쉽지 않습니다. 가능하면 state를 평탄한 방식으로 구성하는 것이 좋습니다.
-평
-이러한 원칙 뒤에 있는 목표는 *오류 없이 상태를 쉽게 업데이트하는 것* 입니다. State에서 불필요하고 중복된 데이터를 제거하면 모든 데이터 조각이 동기화 상태를 유지하는 데 도움이 됩니다. 이는 데이터베이스 엔지니어가 [데이터베이스 구조를 "정규화"](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description)하여 버그 발생 가능성을 줄이는 것과 유사합니다. 알버트 아인슈타인의 말을 빌리자면, **"당신의 state를 가능한한 단순하게 만들어야한다, 보다 단순하게가 아니라."**
+
+이러한 원칙 뒤에 있는 목표는 *오류 없이 상태를 쉽게 업데이트하는 것* 입니다. State에서 불필요하고 중복된 데이터를 제거하면 모든 데이터 조각이 동기화 상태를 유지하는 데 도움이 됩니다. 이는 데이터베이스 엔지니어가 [데이터베이스 구조를 "정규화"](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description)하여 버그 발생 가능성을 줄이는 것과 유사합니다. 알베르트 아인슈타인의 말을 빌리자면, **"당신의 state를 가능한 한 단순하게 만들어야 한다, 더 단순하게 가 아니라."**
 
 이제 이 원칙들이 실제로 어떻게 적용되는지 살펴보겠습니다.
 
 
 ## 연관된 state 그룹화하기 {/*group-related-state*/}
 
-단일 state 변수와 다중 state 변수 사이에서 무엇을 사용할 지 불확실한 경우가 있습니다.
+단일 state 변수와 다중 state 변수 사이에서 무엇을 사용할지 불확실한 경우가 있습니다.
 
 이렇게 해야 할까요?
 
@@ -98,7 +98,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 <Pitfall>
 
-State 변수가 객체인 경우에는 다른 필드를 명시적으로 복사하지 않고 [하나의 필드만 업데이트할 수 없다](/learn/updating-objects-in-state)는 것을 기억하세요. 예를 들어, 위의 예제에서는 `y` 속성이 전혀 없기 때문입니다 `setPosition({ x: 100 })`를 할 수 없습니다! 대신, `x`만 설정하려면 `setPosition({ ...position, x: 100 })`을 하거나 두 개의 state 변수로 나누고 `setX(100)`을 해야합니다.
+State 변수가 객체인 경우에는 다른 필드를 명시적으로 복사하지 않고 [하나의 필드만 업데이트할 수 없다](/learn/updating-objects-in-state)는 것을 기억하세요. 예를 들어, 위의 예제에서는 `y` 속성이 전혀 없기 때문입니다 `setPosition({ x: 100 })`를 할 수 없습니다! 대신, `x`만 설정하려면 `setPosition({ ...position, x: 100 })`을 하거나 두 개의 state 변수로 나누고 `setX(100)`을 해야 합니다.
 
 </Pitfall>
 
@@ -160,7 +160,7 @@ function sendMessage(text) {
 
 이 코드는 작동하긴 하지만, "불가능한" state를 허용합니다. 예를 들어 `setIsSent`와 `setIsSending`을 함께 호출하는 것을 잊어버린 경우, `isSending`과 `isSent`가 동시에 `true`인 상황에 처할 수 있습니다. 컴포넌트가 복잡할수록 무슨 일이 일어났는지 이해하기가 어렵습니다.
 
-**`isSending`과 `isSent`는 동시에 `true`가 되어서는 안되기 때문에, 이 두 변수를** `'typing'`(초기값), `'sending'`, `'sent'` **세 가지 유효한 상태 중 하나를 가질 수 있는 `status` state 변수로 대체하는 것이 좋습니다.**
+**`isSending`과 `isSent`는 동시에 `true`가 되어서는 안되기 때문에, 이 두 변수를** `'typing'`(초깃값), `'sending'`, `'sent'` **세 가지 유효한 상태 중 하나를 가질 수 있는 `status` state 변수로 대체하는 것이 좋습니다.**
 
 <Sandpack>
 
@@ -228,7 +228,7 @@ const isSent = status === 'sent';
 
 렌더링 중에 컴포넌트의 props나 기존 state 변수에서 일부 정보를 계산할 수 있다면, 컴포넌트의 state에 해당 정보를 넣지 **않아야 합니다.**
 
-예를 들어, 이 양식을 사용해 보세요. 작동은 하지만, 불필요한 state가 있지않나요?
+예를 들어, 이 양식을 사용해 보세요. 작동은 하지만, 불필요한 state가 있지 않나요?
 
 <Sandpack>
 
@@ -356,7 +356,7 @@ function Message({ messageColor }) {
 
 여기서 `color` state 변수는 `messageColor` prop로 초기화됩니다. 문제는 **부모 컴포넌트가 나중에 다른 값의 `messageColor`를 전달한다면 (예를 들어, `'blue'` 대신 `'red'`), `color` *state 변수* 가 업데이트되지 않습니다!** State는 첫 번째 렌더링 중에만 초기화됩니다.
 
-때문에 state 변수의 일부 prop를 "미러링"하면 혼란이 발생할 수 있습니다. 대신 코드에 `messageColor` prop를 직접 사용하세요. 더 짧은 이름을 지정하려면 상수를 사용하세요.
+그 때문에 state 변수의 일부 prop를 "미러링"하면 혼란이 발생할 수 있습니다. 대신 코드에 `messageColor` prop를 직접 사용하세요. 더 짧은 이름을 지정하려면 상수를 사용하세요.
 
 ```js
 function Message({ messageColor }) {
@@ -365,7 +365,7 @@ function Message({ messageColor }) {
 
 이렇게 하면 부모 컴포넌트에서 전달된 prop와 동기화를 잃지 않습니다.
 
-Props를 상태로 "미러링"하는 것은 특정 prop에 대한 모든 업데이트를 무시하기를 *원할* 때에만 의미가 있습니다. 관례에 따라 prop의 이름을 `initial` 또는 `default`로 시작하여 새로운 값이 무시됨을 명확히하세요.
+Props를 상태로 "미러링"하는 것은 특정 prop에 대한 모든 업데이트를 무시하기를 *원할* 때에만 의미가 있습니다. 관례에 따라 prop의 이름을 `initial` 또는 `default`로 시작하여 새로운 값이 무시됨을 명확히 하세요.
 
 ```js
 function Message({ initialColor }) {
@@ -488,9 +488,9 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-먼저 항목에서 "Choose"를 클릭한 *후* 이를 편집할 경우, **입력이 업데이트되지만 하단의 라벨에는 편집 내용이 반영되지 않습니다.** 이는 state가 중복되었으며 `selectedItem`을 업데이트하는 것을 잊어버렸기 때문입니다.
+먼저 항목에서 "Choose"를 클릭한 *후* 이를 편집할 경우, **입력이 업데이트되지만, 하단의 라벨에는 편집 내용이 반영되지 않습니다.** 이는 state가 중복되었으며 `selectedItem`을 업데이트하는 것을 잊어버렸기 때문입니다.
 
-`selectedItem`도 업데이트할 수 있지만 더 쉬운 수정 방법은 중복을 제거하는 것입니다. 이 예에서는 `selectedItem` 객체(`items` 내부의 객체와 중복을 생성하는) 대신 `selectedId`를 state로 유지하고, *그 다음* `items` 배열에서 해당 ID의 항목을 검색하여 `selectedItem`을 가져옵니다.
+`selectedItem`도 업데이트할 수 있지만 더 쉬운 수정 방법은 중복을 제거하는 것입니다. 이 예에서는 `selectedItem` 객체(`items` 내부의 객체와 중복을 생성하는) 대신 `selectedId`를 state로 유지하고, *그다음* `items` 배열에서 해당 ID의 항목을 검색하여 `selectedItem`을 가져옵니다.
 
 <Sandpack>
 
@@ -573,7 +573,7 @@ State는 다음과 같이 중복되었습니다.
 
 ## 깊게 중첩된 state 피하기 {/*avoid-deeply-nested-state*/}
 
-행성, 대륙, 국가로 구성된 여행 계획을 상상해보세요. 이 예제처럼 중첩된 객체와 배열을 사용하여 여행 계획의 state를 구성하고 싶을 수 있습니다.
+행성, 대륙, 국가로 구성된 여행 계획을 상상해 보세요. 이 예제처럼 중첩된 객체와 배열을 사용하여 여행 계획의 state를 구성하고 싶을 수 있습니다.
 
 <Sandpack>
 
@@ -1824,13 +1824,13 @@ button { margin: 10px; }
 
 <Recap>
 
-* 만약 두 state 변수가 항상 함께 업데이트된다면, 하나로 합치는 것을 고려해보세요.
+* 만약 두 state 변수가 항상 함께 업데이트된다면, 하나로 합치는 것을 고려해 보세요.
 * State 변수를 신중하게 선택하여 "불가능한" state를 만들지 않도록 하세요.
-* State를 업데이트 할 때 실수할 가능성을 줄이도록 state를 구조화하세요.
+* State를 업데이트할 때 실수할 가능성을 줄이도록 state를 구조화하세요.
 * 동기화를 유지하지 않아도 되도록 불필요하고 중복된 state를 피하세요.
 * 특별히 업데이트를 방지하려는 경우를 제외하고는 props를 state에 *넣지* 마세요.
 * 선택과 같은 UI 패턴의 경우, 객체 자체가 아닌 ID 또는 인덱스를 state에 유지하세요.
-* 깊게 중첩된 state를 업데이트하는 것이 복잡한 경우, 평탄하게 만들어보세요.
+* 깊게 중첩된 state를 업데이트하는 것이 복잡한 경우, 평탄하게 만들어 보세요.
 
 </Recap>
 
@@ -1838,7 +1838,7 @@ button { margin: 10px; }
 
 #### 업데이트되지 않는 컴포넌트 수정하기 {/*fix-a-component-thats-not-updating*/}
 
-이 `Clock` 컴포넌트는 `color`와 `time` 두 가지 props를 받습니다. 선택창에서 다른 색상을 선택하면 `Clock` 컴포넌트는 부모 컴포넌트에서 다른 `color` prop을 받습니다. 그러나 어떤 이유에서인지 표시된 색상이 업데이트되지 않습니다. 왜 그럴까요? 문제를 해결하세요.
+이 `Clock` 컴포넌트는 `color`와 `time` 두 가지 props를 받습니다. 선택 창에서 다른 색상을 선택하면 `Clock` 컴포넌트는 부모 컴포넌트에서 다른 `color` prop을 받습니다. 그러나 어떤 이유에서인지 표시된 색상이 업데이트되지 않습니다. 왜 그럴까요? 문제를 해결하세요.
 
 <Sandpack>
 
@@ -2279,13 +2279,13 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-이벤트 핸들러가 이 변경 후에 `setItems`를 호출하는 것에만 관심이 있다는 것을 주목하세요. 항목 수는 이제 `items`에서 다음 렌더링 동안 계산되므로 항상 최신 상태입니다.
+이벤트 핸들러가 이 변경 후에 `setItems`를 호출하는 것에만 관심이 있다는 것을 주목하세요. 항목 수는 이제 `items`에서 다음 렌더링하는 동안 계산되므로 항상 최신 상태입니다.
 
 </Solution>
 
 #### 선택 사라짐 수정하기 {/*fix-the-disappearing-selection*/}
 
-State에 `letters` 목록이 있습니다. 특정 문자에 호버 또는 포커스하면 하이라이트됩니다. 현재 하이라이트된 문자는 `highlightedLetter` state 변수에 저장됩니다. 각각의 문자에 "별표"와 "별표 해제"를 할 수 있으며, 이는 state의 `letters` 배열을 업데이트합니다.
+State에 `letters` 목록이 있습니다. 특정 문자에 호버 또는 포커스하면 하이라이트 됩니다. 현재 하이라이트 된 문자는 `highlightedLetter` state 변수에 저장됩니다. 각각의 문자에 "별표"와 "별표 해제"를 할 수 있으며, 이는 state의 `letters` 배열을 업데이트합니다.
 
 이 코드는 작동하지만, 작은 UI 버그가 있습니다. "별표" 또는 "별표 해제"를 누르면 하이라이트가 잠시 사라집니다. 그러나 포인터를 움직이거나 키보드로 다른 문자로 전환하면 바로 다시 나타납니다. 왜 이런 일이 발생할까요? 버튼 클릭 후 하이라이트가 사라지지 않도록 수정하세요.
 
@@ -2507,7 +2507,7 @@ li { border-radius: 5px; }
 
 이 예제에서 각 `Letter`는 `isSelected` prop와 선택된 것으로 표시하는 `onToggle` 핸들러를 갖고 있습니다. 이는 작동하지만 state는 `selectedId` (`null` 또는 ID)로 저장되므로 한 번에 하나의 문자만 선택할 수 있습니다.
 
-다중 선택을 지원하도록 state 구조를 변경하세요. (어떻게 구조화할까요? 코드를 작성하기 전에 이에 대해 생각해보세요.) 각 체크박스는 다른 체크박스와 독립적이어야 합니다. 선택된 문자를 클릭하면 선택이 해제되어야 합니다. 마지막으로, 푸터는 선택된 항목의 올바른 수를 보여야 합니다.
+다중 선택을 지원하도록 state 구조를 변경하세요. (어떻게 구조화할까요? 코드를 작성하기 전에 이에 대해 생각해 보세요.) 각 체크박스는 다른 체크박스와 독립적이어야 합니다. 선택된 문자를 클릭하면 선택이 해제되어야 합니다. 마지막으로, 푸터는 선택된 항목의 올바른 수를 보여야 합니다.
 
 <Hint>
 
@@ -2821,11 +2821,11 @@ label { width: 100%; padding: 5px; display: inline-block; }
 .selected { background: #d2eaff; }
 ```
 
-</Sandpack>
+</Sandpack>사
 
 이제 각 항목은 매우 빠른 `selectedIds.has(letter.id)` 검사를 수행합니다.
 
-[State의 객체를 변경해서는 안되며,](/learn/updating-objects-in-state) Set도 마찬가지입니다. 이것이 `handleToggle` 함수가 먼저 Set의 *복사본* 을 만들고 그 복사본을 업데이트하는 이유입니다.
+[State의 객체를 변경해서는 안 되며,](/learn/updating-objects-in-state) Set도 마찬가지입니다. 이것이 `handleToggle` 함수가 먼저 Set의 *복사본* 을 만들고 그 복사본을 업데이트하는 이유입니다.
 
 </Solution>
 
