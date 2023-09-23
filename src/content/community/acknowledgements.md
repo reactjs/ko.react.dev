@@ -55,7 +55,7 @@ React는 원래 [Jordan Walke](https://github.com/jordwalke)에 의해 만들어
 
 수년간 지도와 지원을 주신 [Tom Occhino](https://github.com/tomocchino)와 [Adam Wolff](https://github.com/wolffiex)에게 특별한 감사를 드립니다. [리액트를 다른 언어로 번역한](https://translations.reactjs.org/) 모든 자원봉사자에게도 감사합니다.
 
-## 추가 감사 {/*additional-thanks*/}
+## 특별한 감사 인사 {/*additional-thanks*/}
 
 뿐만 아니라, 다음 분들도 감사드립니다.
 
