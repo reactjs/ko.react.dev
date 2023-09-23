@@ -2821,7 +2821,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 .selected { background: #d2eaff; }
 ```
 
-</Sandpack>사
+</Sandpack>
 
 이제 각 항목은 매우 빠른 `selectedIds.has(letter.id)` 검사를 수행합니다.
 
