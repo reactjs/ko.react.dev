@@ -934,11 +934,7 @@ Clicking "next" again
 
 </DiagramGroup>
 
-<<<<<<< HEAD
 > 각 `Counter`의 state는 DOM에서 지워질 때마다 제거됩니다. 이것이 버튼을 누를 때마다 초기화되는 이유입니다.
-=======
-Each `Counter`'s state gets destroyed each time it's removed from the DOM. This is why they reset every time you click the button.
->>>>>>> bdc60c26848820239db732b7218d41f4c2b204af
 
 이 방법은 같은 자리에 적은 수의 독립된 컴포넌트만을 가지고 있을 때 편리합니다. 이 예시에서는 두 개밖에 없기 때문에 JSX에서 각각 렌더링하기 번거롭지 않습니다.
 

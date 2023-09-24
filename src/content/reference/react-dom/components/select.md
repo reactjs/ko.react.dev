@@ -50,10 +50,9 @@ select box를 표시하려면 [`<select>` 내장 컴포넌트](https://developer
 
 `<select>` props는 제어되지 않는 상태와 제어되는 상태 모두에 적용됩니다.
 
-<<<<<<< HEAD
 * [`autoComplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#autocomplete): String 타입이며 사용 가능한 [자동 완성 동작](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#values) 중 하나를 지정합니다.
 * [`autoFocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#autofocus): boolean 타입이며 `true`라면 React는 마운트 시 엘리먼트에 집중합니다.
-* `children`: `<select>`는 [`<option>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option), [`<optgroup>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup) 그리고 [`<datalist>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup)의 하위 컴포넌트를 허용합니다. 허용된 컴포넌트 중 하나를 전달해 렌더링할 수 있습니다. `<option>` 태그를 렌더링하는 컴포넌트를 전달하는 경우, 각 `<option>`에는 `value`가 있어야 합니다. 
+* `children`: `<select>`는 [`<option>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option), [`<optgroup>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup) 그리고 [`<datalist>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist)의 하위 컴포넌트를 허용합니다. 허용된 컴포넌트 중 하나를 전달해 렌더링할 수 있습니다. `<option>` 태그를 렌더링하는 컴포넌트를 전달하는 경우, 각 `<option>`에는 `value`가 있어야 합니다. 
 * [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#disabled): boolean 타입이며 `true`라면 select box와는 상호작용할 수 없고 흐릿하게 보입니다.
 * [`form`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#form): String 타입이며 select box에 속한 `<form>`의 `id`를 지정합니다. 생략하면 가장 가까운 부모 폼의 `id`가 지정됩니다.
 * [`multiple`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#multiple): boolean 타입이며 `true`라면 브라우저는 [다중 선택](#enabling-multiple-selection)을 허용합니다.
@@ -66,23 +65,6 @@ select box를 표시하려면 [`<select>` 내장 컴포넌트](https://developer
 * `onInvalidCapture`: `onInvalid`와 같지만 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 호출됩니다.
 * [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#required): boolean 타입이며 `true`라면 폼 제출 시 값을 제공해야 합니다.
 * [`size`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#size): 숫자 타입이며 `multiple={true}`인 경우 처음 보여지는 아이템 개수를 지정합니다.
-=======
-* [`autoComplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#autocomplete): A string. Specifies one of the possible [autocomplete behaviors.](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#values)
-* [`autoFocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#autofocus): A boolean. If `true`, React will focus the element on mount.
-* `children`: `<select>` accepts [`<option>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option), [`<optgroup>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup), and [`<datalist>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist) components as children. You can also pass your own components as long as they eventually render one of the allowed components. If you pass your own components that eventually render `<option>` tags, each `<option>` you render must have a `value`.
-* [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#disabled): A boolean. If `true`, the select box will not be interactive and will appear dimmed.
-* [`form`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#form): A string. Specifies the `id` of the `<form>` this select box belongs to. If omitted, it's the closest parent form.
-* [`multiple`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#multiple): A boolean. If `true`, the browser allows [multiple selection.](#enabling-multiple-selection)
-* [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#name): A string. Specifies the name for this select box that's [submitted with the form.](#reading-the-select-box-value-when-submitting-a-form)
-* `onChange`: An [`Event` handler](/reference/react-dom/components/common#event-handler) function. Required for [controlled select boxes.](#controlling-a-select-box-with-a-state-variable) Fires immediately when the user picks a different option. Behaves like the browser [`input` event.](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)
-* `onChangeCapture`: A version of `onChange` that fires in the [capture phase.](/learn/responding-to-events#capture-phase-events)
-* [`onInput`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event): An [`Event` handler](/reference/react-dom/components/common#event-handler) function. Fires immediately when the value is changed by the user. For historical reasons, in React it is idiomatic to use `onChange` instead which works similarly.
-* `onInputCapture`: A version of `onInput` that fires in the [capture phase.](/learn/responding-to-events#capture-phase-events)
-* [`onInvalid`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event): An [`Event` handler](/reference/react-dom/components/common#event-handler) function. Fires if an input fails validation on form submit. Unlike the built-in `invalid` event, the React `onInvalid` event bubbles.
-* `onInvalidCapture`: A version of `onInvalid` that fires in the [capture phase.](/learn/responding-to-events#capture-phase-events)
-* [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#required): A boolean. If `true`, the value must be provided for the form to submit.
-* [`size`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#size): A number. For `multiple={true}` selects, specifies the preferred number of initially visible items.
->>>>>>> bdc60c26848820239db732b7218d41f4c2b204af
 
 #### 주의 사항 {/*caveats*/}
 

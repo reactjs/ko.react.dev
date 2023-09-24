@@ -121,11 +121,7 @@ export default function PrintApp() {
 
 </Sandpack>
 
-<<<<<<< HEAD
 `flushSync`를 사용하지 않으면 프린트 다이얼로그는 `isPrinting`을 "no"로 표시합니다. React가 업데이트를 비동기적으로 batch하고 프린트 다이얼로그를 state가 업데이트되기 전에 표시하기 때문입니다.
-=======
-Without `flushSync`, the print dialog will display `isPrinting` as "no". This is because React batches the updates asynchronously and the print dialog is displayed before the state is updated.
->>>>>>> bdc60c26848820239db732b7218d41f4c2b204af
 
 <Pitfall>
 
