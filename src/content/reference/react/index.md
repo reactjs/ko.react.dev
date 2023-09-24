@@ -108,11 +108,11 @@ function TodoList({ todos, tab, theme }) {
 
 ## Resource Hooks {/*resource-hooks*/}
 
-*Resources* can be accessed by a component without having them as part of their state. For example, a component can read a message from a Promise or read styling information from a context.
+컴포넌트는 *Resources*를 상태의 일부로 포함하지 않고도 접근할 수 있습니다. 예를 들어 컴포넌트는 Promise 로 부터 메세지를 읽거나 context 로 부터 styling 정보를 가져올 수 있습니다.
+resource 를 통해서 값을 읽으려면 다음 Hook 를 사용할 수 있습니다.
 
-To read a value from a resource, use this Hook:
 
-- [`use`](/reference/react/use) lets you read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+- [`use`](/reference/react/use) [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 또는 [context](/learn/passing-data-deeply-with-context) 와 같은 리소스 값을 읽을 수 있습니다.
 
 ```js
 function MessageComponent({ messagePromise }) {
