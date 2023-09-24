@@ -1014,4 +1014,4 @@ ul, li { margin: 0; padding: 0; }
 
 이 장을 한 페이지씩 읽어보려면 [State를 사용해 Input 다루기](/learn/reacting-to-input-with-state)로 이동하세요!
 
-이 주제에 이미 익숙하다면 [해결책(Escape Hatches)](/learn/escape-hatches)에 대해서 읽어보는 것은 어떨까요?
+이 주제에 이미 익숙하다면 [해결책(탈출구)](/learn/escape-hatches)에 대해서 읽어보는 것은 어떨까요?
