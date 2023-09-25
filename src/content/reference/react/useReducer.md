@@ -1123,4 +1123,4 @@ function reducer(state, action) {
 
 이제 reducer 함수는 순수하므로, 여러번 호출되어도 같은 값을 보장할 수 있습니다. React는 순수성을 보장하기 위해 개발 환경에서 두번씩 호출합니다. **오로지 컴포넌트와 초기화 함수, reducer 함수만 순수할 필요가 있습니다.** 이벤트 핸들러는 순수할 필요가 없습니다. 따라서 이벤트 핸들러는 두 번씩 호출되지 않습니다.
 
-자세한 사항은 [컴포넌트 순수하게 유지하기](/learn/keeping-components-pure)를 읽어보세요.
+자세한 사항은 [컴포넌트를 순수하게 유지하기](/learn/keeping-components-pure)를 읽어보세요.
