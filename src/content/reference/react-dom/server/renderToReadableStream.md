@@ -45,7 +45,7 @@ async function handler(request) {
 
 [아래에서 더 많은 예시를 참고하세요.](#usage)
 
-#### Parameter {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
 * `reactNode`: 사용자가 HTML로 렌더링하고 하고자하는 React node입니다. `<App />`같은 JSX 요소가 그 예시입니다. reactNode 인자는 문서 전체를 표현할 수 있는 것이어야하며, 따라서 `App` 컴포넌트는 `<html>`에 렌더링됩니다.
 
