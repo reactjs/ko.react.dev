@@ -47,7 +47,7 @@ async function handler(request) {
 
 #### Parameter {/*parameters*/}
 
-* `reactNode`: 사용자가 HTML로 렌더하고 하고자하는 React node입니다. `<App />`같은 JSX 요소가 그 예시입니다. reactNode 인자는 문서 전체를 표현할 수 있는 것이어야하며, 따라서 `App` 컴포넌트는 `<html>`에 렌더됩니다.
+* `reactNode`: 사용자가 HTML로 렌더링하고 하고자하는 React node입니다. `<App />`같은 JSX 요소가 그 예시입니다. reactNode 인자는 문서 전체를 표현할 수 있는 것이어야하며, 따라서 `App` 컴포넌트는 `<html>`에 렌더링됩니다.
 
 * **optional** `options`: 스트리밍 옵션을 지정할 수 있는 객체입니다.
   * **optional** `bootstrapScriptContent`: 지정될 경우, 해당 문자열은 `<script>` 태그에 인라인 형식으로 추가됩니다.
@@ -58,7 +58,7 @@ async function handler(request) {
   * **optional** `nonce`: [`script-src` Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)를 허용하기 위한 [`nonce`](http://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) (한번만 사용되는) 문자열입니다.
   * **optional** `onError`: [회복할 수 있든](#recovering-from-errors-outside-the-shell) 있든 [없든] 상관없이, 서버에서 에러가 발생할 때마다 호출되는 콜백입니다. 기본적으로, 이 콜백은 `console.error`만 호출합니다. [크래시 리포트를 로그하기](#logging-crashes-on-the-server) 위해 오버라이드하거나, [상태 코드를 조정하기](#setting-the-status-code) 위해 오버라이드할 수 있습니다.
   * **optional** `progressiveChunkSize`: 청크의 바이트 수를 설정합니다. [기본 휴리스틱에 대해 더 읽어보기.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
-  * **optional** `signal`: [서버 렌더링을 취소](#aborting-server-rendering)하고, 그 나머지를 클라이언트에 렌더하기 위한 [거절 신호(abort signal)](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)를 설정합니다.
+  * **optional** `signal`: [서버 렌더링을 취소](#aborting-server-rendering)하고, 그 나머지를 클라이언트에 렌더링하기 위한 [거절 신호(abort signal)](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)를 설정합니다.
 
 #### 반환값 {/*returns*/}
 
@@ -157,7 +157,7 @@ export default function App({ assetMap }) {
 }
 ```
 
-서버에선 `<App assetMap={assetMap} />`을 렌더하고, 에셋 URL들과 함께 `assetMap`을 전달합니다:
+서버에선 `<App assetMap={assetMap} />`을 렌더링하고, 에셋 URL들과 함께 `assetMap`을 전달합니다:
 
 ```js {1-5,8,9}
 // 빌드 도구로부터 이 JSON을 얻어야합니다. 예를 들어, 빌드 결과물에서 읽어올 수 있습니다.
@@ -176,7 +176,7 @@ async function handler(request) {
 }
 ```
 
-서버가 `<App assetMap={assetMap} />`를 렌더한 이후엔, 클라이언트에서도 hydration 에러를 피하기 위해 `assetMap`과 함께 렌더해야합니다. `assetMap`을 직렬화하고 클라이언트에 전달하기 위해 다음과 같이 할 수 있습니다:
+서버가 `<App assetMap={assetMap} />`를 렌더링한 이후엔, 클라이언트에서도 hydration 에러를 피하기 위해 `assetMap`과 함께 렌더링해야합니다. `assetMap`을 직렬화하고 클라이언트에 전달하기 위해 다음과 같이 할 수 있습니다:
 
 ```js {9-10}
 // 빌드 도구로부터 이 JSON을 얻어야합니다.
@@ -206,7 +206,7 @@ import App from './App.js';
 hydrateRoot(document, <App assetMap={window.assetMap} />);
 ```
 
-클라이언트와 서버는 모두 같은 `assetMap` prop을 이용해 `App`을 렌더하므로, hydration 에러가 일어나지 않습니다.
+클라이언트와 서버는 모두 같은 `assetMap` prop을 이용해 `App`을 렌더링하므로, hydration 에러가 일어나지 않습니다.
 
 </DeepDive>
 
@@ -332,7 +332,7 @@ function ProfilePage() {
 
 만약, `<Suspense>` 경계를 root에 걸어 앱 전체를 감쌌다면, shell은 spinner만을 보여줄 것입니다. 하지만, 이는 사용자 경험에 있어서 좋지 않습니다. 큰 spinner를 보는 것은 비록 더 기다리게 될 지 언정, 실제 레이아웃이 나타나는 것보다 더 느리고 더 짜증나는 경험을 줄 수 있습니다. 이런 이유로 개발자들은 `<Suspense>` 경계를 통해 shell을 전체 페이지 레이아웃의 뼈대처럼 *최소한으로 완성된* 상태이다라는 느낌을 줄 수 있도록 하고 싶을 것입니다.
 
-`renderToReadableStream`를 비동기 호출하여 모든 shell이 렌더될 때까지 `stream`으로 위 문제를 해결합니다. 보통, `stream`을 가진 응답을 생성하고 반환함으로서 스트리밍을 시작합니다.
+`renderToReadableStream`를 비동기 호출하여 모든 shell이 렌더링될 때까지 `stream`으로 위 문제를 해결합니다. 보통, `stream`을 가진 응답을 생성하고 반환함으로서 스트리밍을 시작합니다.
 
 ```js {5}
 async function handler(request) {
