@@ -60,7 +60,7 @@ async function handler(request) {
   * **optional** `progressiveChunkSize`: 청크의 바이트 수를 설정합니다. [기본 휴리스틱에 대해 더 읽어보기.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
   * **optional** `signal`: [서버 렌더링을 취소](#aborting-server-rendering)하고, 그 나머지를 클라이언트에 렌더하기 위한 [거절 신호(abort signal)](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)를 설정합니다.
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
 `renderToReadableStream`는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)를 반환합니다.
 
@@ -114,7 +114,7 @@ export default function App() {
 }
 ```
 
-리액트는 [doctype](https://developer.mozilla.org/en-US/docs/Glossary/Doctype)와 <CodeStep step={2}>bootstrap `<script>` 태그들</CodeStep>을 결과 HTML 스트림에 주입합니다:
+React는 [doctype](https://developer.mozilla.org/en-US/docs/Glossary/Doctype)와 <CodeStep step={2}>bootstrap `<script>` 태그들</CodeStep>을 결과 HTML 스트림에 주입합니다:
 
 ```html [[2, 5, "/main.js"]]
 <!DOCTYPE html>
@@ -250,7 +250,7 @@ function ProfilePage() {
 }
 ```
 
-이렇게 하면 리액트는 `Posts`가 모든 데이터를 불러오기 전까지, HTML 스트리밍을 시작합니다. 리액트는 먼저 로딩 대체 컨텐츠인 `<PostsGlimmer />`를 HTML로 보내고, `Posts`의 데이터 로딩이 완료되면, `<PostsGlimmer />`를 `<Posts />`로 교체할 HTML과 인라인 `<script>` 태그를 함께 보냅니다. 사용자 입장에선, 먼저 `<PostsGlimmer />`를 보고, 후에 `<Posts />`를 보게 됩니다.
+이렇게 하면 React는 `Posts`가 모든 데이터를 불러오기 전까지, HTML 스트리밍을 시작합니다. React는 먼저 로딩 대체 컨텐츠인 `<PostsGlimmer />`를 HTML로 보내고, `Posts`의 데이터 로딩이 완료되면, `<PostsGlimmer />`를 `<Posts />`로 교체할 HTML과 인라인 `<script>` 태그를 함께 보냅니다. 사용자 입장에선, 먼저 `<PostsGlimmer />`를 보고, 후에 `<Posts />`를 보게 됩니다.
 
 더 정밀한 로딩 순서를 만들기 위해 [`<Suspense>` 경계를 중첩](/reference/react/Suspense#revealing-nested-content-as-it-loads) 할 수 있습니다:
 
@@ -274,7 +274,7 @@ function ProfilePage() {
 ```
 
 
-이 예시를 보았을 때, 리액트가 더 빠르게 스트리밍을 시작하게 할 수 있습니다. `<ProfileLayout>`과 `<ProfileCover>`는 어떤 `<Suspense>` 경계에도 감싸져있지 않기 때문에, 리액트는 먼저 이 두 컴포넌트를 렌더링합니다. 하지만, `Sidebar`나 `Friends` 혹은 `Photos`가 데이터를 불러올 필요가 있는 경우엔, `BigSpinner`를 대체 HTML로 보냅니다. 그 후, 데이터가 더 불러와지면, 더 많은 컨텐츠가 보여지게 되고 이 과정은 모든 컨텐츠가 보여질 때까지 반복됩니다.
+이 예시를 보았을 때, React가 더 빠르게 스트리밍을 시작하게 할 수 있습니다. `<ProfileLayout>`과 `<ProfileCover>`는 어떤 `<Suspense>` 경계에도 감싸져있지 않기 때문에, React는 먼저 이 두 컴포넌트를 렌더링합니다. 하지만, `Sidebar`나 `Friends` 혹은 `Photos`가 데이터를 불러올 필요가 있는 경우엔, `BigSpinner`를 대체 HTML로 보냅니다. 그 후, 데이터가 더 불러와지면, 더 많은 컨텐츠가 보여지게 되고 이 과정은 모든 컨텐츠가 보여질 때까지 반복됩니다.
 
 스트리밍은 브라우저에서 React 자체가 로드되거나 앱이 상호 작용 가능해질 때까지 기다릴 필요가 없습니다. 서버로부터 로딩되는 HTML 콘텐츠는 `<script>` 태그 중 하나가 로드되기 전까지 점진적으로 표시될 것입니다.
 
@@ -389,7 +389,7 @@ function ProfilePage() {
 }
 ```
 
-만약, 위의 컴포넌트들을 렌더링하다가 에러가 발생했다면, 리액트는 클라이언트로 보낼 의미있는 HTML을 가지고 있지 않을 것 입니다. 이런 때를 대비해 `renderToReadableStream`을 `try...catch`로 감싸 서버 렌더링에 의존하지 않는 대체 HTML을 보낼 수 있도록 하세요.
+만약, 위의 컴포넌트들을 렌더링하다가 에러가 발생했다면, React는 클라이언트로 보낼 의미있는 HTML을 가지고 있지 않을 것 입니다. 이런 때를 대비해 `renderToReadableStream`을 `try...catch`로 감싸 서버 렌더링에 의존하지 않는 대체 HTML을 보낼 수 있도록 하세요.
 
 ```js {2,13-18}
 async function handler(request) {
@@ -434,13 +434,13 @@ function ProfilePage() {
 }
 ```
 
-`Posts` 컴포넌트 혹은 그 내부 어딘가에서 에러가 발생했을 경우, 리액트는 [에러로 부터 회복하려고 할 것입니다:](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)
+`Posts` 컴포넌트 혹은 그 내부 어딘가에서 에러가 발생했을 경우, React는 [에러로 부터 회복하려고 할 것입니다:](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)
 
 1. 가장 가까운 `<Suspense>` 경계의 로딩 대체인 (`PostsGlimmer`)를 HTML로 보냅니다.
 2. 서버에서 더이상의 `Posts`와 그 내부를 렌더링하는 것을 "포기"합니다.
-3. 클라이언트에서 자바스크립트 코드가 로딩되었을 때, 리액트는 `Posts`를 다시 렌더링하려고 시도할 것입니다.
+3. 클라이언트에서 자바스크립트 코드가 로딩되었을 때, React는 `Posts`를 다시 렌더링하려고 시도할 것입니다.
 
-만약 클라이언트에서도 `Posts` 렌더링 재시도가 실패한다면, 리액트는 클라이언트에서 에러를 던지게 됩니다. 렌더링 중에 일어난 모든 에러과 함께, [가장 가까운 부모 에러 경계](/reference/react/Component#static-getderivedstatefromerror)로 유저에게 어떤 에러를 보여줘야할 지를 결정하게 됩니다. 실제로는, 사용자가 에러가 복구될 수 없다는 것이 확실시 될 때까지 로딩 표시기를 보고있어야 한 다는 것을 의미합니다.
+만약 클라이언트에서도 `Posts` 렌더링 재시도가 실패한다면, React는 클라이언트에서 에러를 던지게 됩니다. 렌더링 중에 일어난 모든 에러과 함께, [가장 가까운 부모 에러 경계](/reference/react/Component#static-getderivedstatefromerror)로 유저에게 어떤 에러를 보여줘야할 지를 결정하게 됩니다. 실제로는, 사용자가 에러가 복구될 수 없다는 것이 확실시 될 때까지 로딩 표시기를 보고있어야 한 다는 것을 의미합니다.
 
 클라이언트에서 `Posts` 렌더링 재시도가 성공하면, 서버에서 온 로딩 대체 HTML이 클라이언트에서 렌더링된 결과로 교체됩니다. 사용자는 서버에서 에러가 있었는지 모를 것입니다. 하지만, 서버의 `onError` 콜백과 클라이언트의 [`onRecoverableError`](/reference/react-dom/client/hydrateRoot#hydrateroot) 콜백은 그대로 실행됩니다. 이를 통해 에러 내용을 받아서 로깅할 수 있습니다.
 
@@ -475,7 +475,7 @@ async function handler(request) {
 }
 ```
 
-만약 shell 바깥 (`<Suspense>` 경계의 안쪽)에서 에러가 발생했다면, 리액트는 렌더링을 멈추지 않을 것입니다. 즉, `onError` 콜백은 실행되지만, `catch` 블록은 실행되지 않은 채로 코드가 계속해서 실행된다는 의미입니다. 그 이유는, [위에서 설명했던 것 처럼](#recovering-from-errors-outside-the-shell), 리액트가 클라이언트에서 해당 에러를 복구하려고 하기 때문입니다.
+만약 shell 바깥 (`<Suspense>` 경계의 안쪽)에서 에러가 발생했다면, React는 렌더링을 멈추지 않을 것입니다. 즉, `onError` 콜백은 실행되지만, `catch` 블록은 실행되지 않은 채로 코드가 계속해서 실행된다는 의미입니다. 그 이유는, [위에서 설명했던 것 처럼](#recovering-from-errors-outside-the-shell), React가 클라이언트에서 해당 에러를 복구하려고 하기 때문입니다.
 
 하지만, 그래도 상태 코드를 설정하고 싶다면, 오류가 발생했다는 사실을 이용하여 상태 코드를 설정할 수 있습니다:
 
@@ -623,4 +623,4 @@ async function handler(request) {
 }
 ```
 
-리액트는 나머지 로딩 대체 내용을 HTML로 내보낼 것이고, 클라이언트에서 그 나머지 렌더링을 계속할 것입니다.
+React는 나머지 로딩 대체 내용을 HTML로 내보낼 것이고, 클라이언트에서 그 나머지 렌더링을 계속할 것입니다.
