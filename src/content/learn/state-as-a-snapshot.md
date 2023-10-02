@@ -79,9 +79,15 @@ state와 렌더링의 관계를 자세히 살펴보겠습니다.
 
 React가 컴포넌트를 다시 렌더링할 때.
 
+<<<<<<< HEAD
 1. React가 함수를 다시 호출합니다.
 2. 함수가 새로운 JSX 스냅샷을 반환합니다.
 3. 그러면 React가 반환한 스냅샷과 일치하도록 화면을 업데이트합니다.
+=======
+1. React calls your function again.
+2. Your function returns a new JSX snapshot.
+3. React then updates the screen to match the snapshot your function returned.
+>>>>>>> 68f417a600c7d7b8c4131e39f8a843a856ae3909
 
 <IllustrationBlock title="다시 렌더링" sequential>
     <Illustration caption="React가 함수를 호출합니다" src="/images/docs/illustrations/i_render1.png" />
