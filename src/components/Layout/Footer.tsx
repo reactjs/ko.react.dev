@@ -297,7 +297,7 @@ export function Footer() {
             상호작용성 더하기
           </FooterLink>
           <FooterLink href="/learn/managing-state">State 관리하기</FooterLink>
-          <FooterLink href="/learn/escape-hatches">Escape Hatches</FooterLink>
+          <FooterLink href="/learn/escape-hatches">탈출구</FooterLink>
         </div>
         <div className="flex flex-col">
           <FooterLink href="/reference/react" isHeader={true}>
