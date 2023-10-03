@@ -286,7 +286,7 @@ button { margin-left: 10px; }
 
 그러나 다시 동기화해야 하는 더 특이한 경우도 있습니다. 예를 들어, 채팅이 열려 있는 상태에서 위의 sandbox에서 `serverUrl`을 편집해 보세요. 코드 편집에 대한 응답으로 effect가 어떻게 다시 동기화되는지 주목하세요. 앞으로 React는 재동기화에 의존하는 더 많은 기능을 추가할 수 있습니다.
 
-### React가 effect를 다시 동기화해야 한다는 것을 인식하는 방법 { *how-react-knows-that-it-needs-to-re-synchronize-the-effect*/} {/*react가-effect를-다시-동기화해야-한다는-것을-인식하는-방법--how-react-knows-that-it-needs-to-re-synchronize-the-effect*/}
+### React가 effect를 다시 동기화해야 한다는 것을 인식하는 방법 {/*how-react-knows-that-it-needs-to-re-synchronize-the-effect*/}
 
 `roomId`가 변경된 후 effect를 다시 동기화해야 한다는 것을 어떻게 React가 알았는지 궁금할 것입니다. 그것은 여러분이 [종속성 목록](/learn/synchronizing-with-effects#step-2-specify-the-effect-dependencies)에 `roomId`를 포함함으로써 해당 코드가 `roomId`에 종속되어 있다고 React에 알렸기 때문입니다.
 
@@ -313,7 +313,7 @@ function ChatRoom({ roomId }) { // roomId prop은 시간이 지남에 따라 변
 
 예를 들어, 초기 렌더링 중에 `["general"]`을 전달했는데 나중에 다음 렌더링 중에 `["travel"]`을 전달한 경우, React는 `"general"`과 `"travel"`을 비교합니다. 이 값들은 ([`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)와 비교) 다른 값이기 때문에 React는 effect를 다시 동기화합니다. 반면에 컴포넌트가 다시 렌더링 되지만 `roomId`가 변경되지 않은 경우, effect는 동일한 방에 연결된 상태로 유지됩니다.
 
-### 각 effect는 별도의 동기화 프로세스를 나타냅니다. { *each-effect-represents-a-separate-synchronization-process*/} {/*각-effect는-별도의-동기화-프로세스를-나타냅니다--each-effect-represents-a-separate-synchronization-process*/}
+### 각 effect는 별도의 동기화 프로세스를 나타냅니다. {/*each-effect-represents-a-separate-synchronization-process*/}
 
 이 로직은 이미 작성한 effect와 동시에 실행되어야 하므로 관련 없는 로직을 effect에 추가하지 마세요. 예를 들어 사용자가 회의실을 방문할 때 분석 이벤트를 전송하고 싶다고 가정해 보겠습니다. 이미 `roomId`에 의존하는 effect가 있으므로 거기에 분석 호출을 추가하고 싶을 수 있습니다.
 
