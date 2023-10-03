@@ -284,16 +284,16 @@ function ProfilePage() {
 
 <Note>
 
-**서스펜스가 활성화된 데이터 소스만 서스펜스 컴포넌트를 활성화합니다.** 여기에는 다음이 포함됩니다.
+**Suspense 가 활성화된 데이터 소스만 Suspense 컴포넌트를 활성화합니다.** 여기에는 다음이 포함됩니다.
 
-- [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 및 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)와 같은 서스펜스 지원 프레임워크를 사용한 데이터 가져오기
+- [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 및 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)와 같은 Suspense 지원 프레임워크를 사용한 데이터 가져오기
 - [`lazy`](/reference/react/lazy)를 사용한 지연 로딩 컴포넌트 코드
 
-서스펜스는 이펙트 또는 이벤트 핸들러 내부에서 데이터를 가져올 때를 감지하지 **않습니다.**
+Suspense 는 이펙트 또는 이벤트 핸들러 내부에서 데이터를 가져올 때를 감지하지 **않습니다.**
 
-위의 `Posts` 컴포넌트에서 데이터를 로드하는 정확한 방법은 프레임워크에 따라 다릅니다. 서스펜스 지원 프레임워크를 사용하는 경우 해당 데이터 가져오기 문서에서 자세한 내용을 확인할 수 있습니다.
+위의 `Posts` 컴포넌트에서 데이터를 로드하는 정확한 방법은 프레임워크에 따라 다릅니다. Suspense 지원 프레임워크를 사용하는 경우 해당 데이터 가져오기 문서에서 자세한 내용을 확인할 수 있습니다.
 
-독자적인 프레임워크를 사용하지 않는 서스펜스 가능한 데이터 가져오기는 아직 지원되지 않습니다. 서스펜스 가능한 데이터 소스를 구현하기 위한 요구 사항은 불안정하고 문서화되지 않았습니다. 데이터 소스를 서스펜스와 통합하기 위한 공식 API는 향후 React 버전에서 출시될 예정입니다.
+독자적인 프레임워크를 사용하지 않는 Suspense 가능한 데이터 가져오기는 아직 지원되지 않습니다. Suspense 가능한 데이터 소스를 구현하기 위한 요구 사항은 불안정하고 문서화되지 않았습니다. 데이터 소스를 Suspense 와 통합하기 위한 공식 API는 향후 React 버전에서 출시될 예정입니다.
 
 </Note>
 
