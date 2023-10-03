@@ -29,7 +29,7 @@ effects는 컴포넌트와 다른 생명주기를 가집니다. 컴포넌트는 
 - 컴포넌트는 일반적으로 상호작용에 대한 응답으로 새로운 props나 state를 수신하면 _업데이트_ 됩니다.
 - 컴포넌트가 화면에서 제거되면 _마운트가 해제_ 됩니다.
 
-**컴포넌트에 대해 생각하기에는 좋지만 effects에 대해서는 생각하지 _않는_ 것이 좋습니다.** 대신 컴포넌트의 생명주기와 독립적으로 각 effect를 생각해보세요. effect는 [외부 시스템을 현재 props 및 state와 동기화](/learn/synchronizing-with-effects)하는 방법을 설명합니다. 코드가 변경되면 동기화를 더 자주 또는 덜 자주 수행해야 합니다.
+**컴포넌트에 대해 생각하기에는 좋지만 effects에 대해서는 생각하지 _않는_ 것이 좋습니다.** 대신 컴포넌트의 생명주기와 독립적으로 각 effect를 생각해 보세요. effect는 [외부 시스템을 현재 props 및 state와 동기화](/learn/synchronizing-with-effects)하는 방법을 설명합니다. 코드가 변경되면 동기화를 더 자주 또는 덜 자주 수행해야 합니다.
 
 이 점을 설명하기 위해 컴포넌트를 채팅 서버에 연결하는 effect를 예로 들어보겠습니다.
 
@@ -175,8 +175,8 @@ function ChatRoom({ roomId /* "travel" */ }) {
 
 1. effect가 `"general"` 대화방에 연결됨
 2. `"general"` 방에서 연결이 끊어지고 `"travel"` 방에 연결된 effect
-3. `"travel"` 룸에서 연결이 끊어지고 `"music"` 룸에 연결된 effect
-4. `"music"` 룸에서 연결이 끊어진 effect
+3. `"travel"` 방에서 연결이 끊어지고 `"music"` 방에 연결된 effect
+4. `"music"` 방에서 연결이 끊어진 effect
 
 이제 effect 자체의 관점에서 무슨 일이 일어났는지 생각해 봅시다.
 
@@ -192,21 +192,21 @@ function ChatRoom({ roomId /* "travel" */ }) {
   }, [roomId]);
 ```
 
-이 코드의 구조는 어던 일이 일어났는지 겹치지 않는 시간의 연속으로 보는 데 영감을 줄 수 있습니다.
+이 코드의 구조는 어떤 일이 일어났는지 겹치지 않는 시간의 연속으로 보는 데 영감을 줄 수 있습니다.
 
 1. `"general"` 방에 연결된 effect (연결이 끊어질 때까지)
 2. `"travel"` 방에 연결된 effect (연결이 끊어질 때까지)
 3. `"music"` 방에 연결된 effect (연결이 끊어질 때까지)
 
-이전에는 컴포넌트의 관점에서 생각했습니다. 컴포넌트의 관점에서 보면 effect를 '렌더링 후' 또는 '마운트 해제 전'과 같은 특정 시점에 실행되는 '콜백' 또는 '생명주기 이벤트'로 생각하기 쉬웠습니다. 이러한 사고 방식은 매우 빠르게 복잡해지므로 피하는 것이 가장 좋습니다.
+이전에는 컴포넌트의 관점에서 생각했습니다. 컴포넌트의 관점에서 보면 effect를 '렌더링 후' 또는 '마운트 해제 전'과 같은 특정 시점에 실행되는 '콜백' 또는 '생명주기 이벤트'로 생각하기 쉬웠습니다. 이러한 사고방식은 매우 빠르게 복잡해지므로 피하는 것이 가장 좋습니다.
 
 **대신 항상 한 번에 하나의 시작/중지 사이클에만 집중하세요. 컴포넌트를 마운트, 업데이트 또는 마운트 해제하는 것은 중요하지 않습니다. 동기화를 시작하는 방법과 중지하는 방법만 설명하면 됩니다. 이 작업을 잘 수행하면 필요한 횟수만큼 effect를 시작하고 중지할 수 있는 탄력성을 확보할 수 있습니다.**
 
-이렇게 하면 JSX를 생성하는 렌더링 로직을 작성할 때 컴포넌트가 마운트되는지 업데이트되는지 생각하지 않는 방법을 떠올릴 수 있습니다. 화면에 무엇이 표시되어야 하는지 설명하면 [나머지는 React가 알아서 처리합니다](/learn/reacting-to-input-with-state).
+이렇게 하면 JSX를 생성하는 렌더링 로직을 작성할 때 컴포넌트가 마운트되는지 업데이트되는지 생각하지 않는 방법을 떠올릴 수 있습니다. 화면에 무엇이 표시되어야 하는지 설명하면 [나머지는 React가 알아서 처리합니다.](/learn/reacting-to-input-with-state)
 
 ### React가 effect를 다시 동기화될 수 있는지 확인하는 방법 {/*how-react-verifies-that-your-effect-can-re-synchronize*/}
 
-다음은 여러분이 플레이할 수 있는 라이브 예시입니다. "채팅 열기"를 눌러 `ChatRoom` 컴포넌트를 마운트합니다
+다음은 여러분이 플레이할 수 있는 라이브 예시입니다. "채팅 열기"를 눌러 `ChatRoom` 컴포넌트를 마운트합니다.
 
 <Sandpack>
 
@@ -274,9 +274,9 @@ button { margin-left: 10px; }
 
 컴포넌트가 처음 마운트될 때 3개의 로그가 표시됩니다.
 
-1. `✅ https://localhost:1234... 에서 "general" 룸에 연결 중입니다.` *(개발 전용)*
-2. `❌ https://localhost:1234 에서 "일반" 방에서 연결 해제되었습니다.` *(개발 전용)*
-3. `✅ https://localhost:1234... 에서 "general" 룸에 연결 중입니다.`
+1. `✅ https://localhost:1234... 에서 "general" 방에 연결 중입니다.` *(개발 전용)*
+2. `❌ https://localhost:1234에서 "일반" 방에서 연결 해제되었습니다.` *(개발 전용)*
+3. `✅ https://localhost:1234... 에서 "general" 방에 연결 중입니다.`
 
 처음 두 개의 로그는 개발 전용입니다. 개발 시 React는 항상 각 컴포넌트를 한 번씩 다시 마운트합니다.
 
@@ -288,7 +288,7 @@ button { margin-left: 10px; }
 
 ### React가 effect를 다시 동기화해야 한다는 것을 인식하는 방법 { *how-react-knows-that-it-needs-to-re-synchronize-the-effect*/} {/*react가-effect를-다시-동기화해야-한다는-것을-인식하는-방법--how-react-knows-that-it-needs-to-re-synchronize-the-effect*/}
 
-`roomId`가 변경된 후 effect를 다시 동기화해야 한다는 것을 어떻게 React가 알았는지 궁금할 것입니다. 그것은 여러분이 [종속성 목록](/learn/synchronizing-with-effects#step-2-specify-the-effect-dependencies)에 `roomId`를 포함시킴으로써 해당 코드가 `roomId`에 종속되어 있다고 React에 알렸기 때문입니다.
+`roomId`가 변경된 후 effect를 다시 동기화해야 한다는 것을 어떻게 React가 알았는지 궁금할 것입니다. 그것은 여러분이 [종속성 목록](/learn/synchronizing-with-effects#step-2-specify-the-effect-dependencies)에 `roomId`를 포함함으로써 해당 코드가 `roomId`에 종속되어 있다고 React에 알렸기 때문입니다.
 
 ```js {1,3,8}
 function ChatRoom({ roomId }) { // roomId prop은 시간이 지남에 따라 변경될 수 있습니다.
@@ -299,19 +299,19 @@ function ChatRoom({ roomId }) { // roomId prop은 시간이 지남에 따라 변
       connection.disconnect();
     };
     
-  }, [roomId]); // 따라서 React에게 이 effect가 roomId에 "의존"한다고 알려줍니다.
+  }, [roomId]); // 따라서 React에 이 effect가 roomId에 "의존"한다고 알려줍니다.
   // ...
 ```
 
 작동 방식은 다음과 같습니다.
 
 1. `roomId`가 `prop`이므로 시간이 지남에 따라 변경될 수 있다는 것을 알고 있습니다.
-2. effect가 `roomId`를 읽는다는 것을 알았습니다 (따라서 로직이 나중에 변경될 수 있는 값에 따라 달라집니다).
+2. effect가 `roomId`를 읽는다는 것을 알았습니다.(따라서 로직이 나중에 변경될 수 있는 값에 따라 달라집니다.)
 3. 그렇기 때문에 `roomId`를 effect의 종속성으로 지정한 것입니다 (`roomId` 가 변경되면 다시 동기화되도록).
 
-컴포넌트가 다시 렌더링될 때마다 React는 전달한 의존성 배열을 살펴봅니다. 배열의 값 중 하나라도 이전 렌더링 중에 전달한 동일한 지점의 값과 다르면 React는 effect를 다시 동기화합니다.
+컴포넌트가 다시 렌더링 될 때마다 React는 전달한 의존성 배열을 살펴봅니다. 배열의 값 중 하나라도 이전 렌더링 중에 전달한 동일한 지점의 값과 다르면 React는 effect를 다시 동기화합니다.
 
-예를 들어, 초기 렌더링 중에 `["general"]`을 전달했는데 나중에 다음 렌더링 중에 `["travel"]`을 전달한 경우, React는 `"general"`과 `"travel"`을 비교합니다. 이 값들은 ([`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)와 비교) 다른 값이기 때문에 React는 effect를 다시 동기화합니다. 반면에 컴포넌트가 다시 렌더링되지만 `roomId`가 변경되지 않은 경우, effect는 동일한 방에 연결된 상태로 유지됩니다.
+예를 들어, 초기 렌더링 중에 `["general"]`을 전달했는데 나중에 다음 렌더링 중에 `["travel"]`을 전달한 경우, React는 `"general"`과 `"travel"`을 비교합니다. 이 값들은 ([`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)와 비교) 다른 값이기 때문에 React는 effect를 다시 동기화합니다. 반면에 컴포넌트가 다시 렌더링 되지만 `roomId`가 변경되지 않은 경우, effect는 동일한 방에 연결된 상태로 유지됩니다.
 
 ### 각 effect는 별도의 동기화 프로세스를 나타냅니다. { *each-effect-represents-a-separate-synchronization-process*/} {/*각-effect는-별도의-동기화-프로세스를-나타냅니다--each-effect-represents-a-separate-synchronization-process*/}
 
@@ -372,9 +372,9 @@ function ChatRoom({ roomId }) {
 
 `serverUrl`이 종속성이 될 필요가 없는 이유는 무엇인가요?
 
-이는 재렌더링으로 인해 `serverUrl`이 변경되지 않기 때문입니다. 컴포넌트가 몇 번이나 다시 렌더링하든, 그 이유와 상관없이 항상 동일합니다. `serverUrl`은 절대 변경되지 않으므로 종속성으로 지정하는 것은 의미가 없습니다. 결국 종속성은 시간이 지남에 따라 변경될 때만 무언가를 수행합니다!
+이는 재 렌더링으로 인해 `serverUrl`이 변경되지 않기 때문입니다. 컴포넌트가 몇 번이나 다시 렌더링하든, 그 이유와 상관없이 항상 동일합니다. `serverUrl`은 절대 변경되지 않으므로 종속성으로 지정하는 것은 의미가 없습니다. 결국 종속성은 시간이 지남에 따라 변경될 때만 무언가를 수행합니다!
 
-반면에 `roomId`는 다시 렌더링할 때 달라질 수 있습니다. 컴포넌트 내부에서 선언된 **Props, state 및 기타 값은 렌더링 중에 계산되고 React 데이터 흐름에 참여하기 때문에 _반응형_ 입니다.**
+반면에 `roomId`는 다시 렌더링할 때 달라질 수 있습니다. 컴포넌트 내부에서 선언된 **Props, state 및 기타값은 렌더링 중에 계산되고 React 데이터 흐름에 참여하기 때문에 _반응형_ 입니다.**
 
 `serverUrl`이 state 변수라면 반응형일 것입니다. 반응형 값은 종속성에 포함되어야 합니다.
 
@@ -388,7 +388,7 @@ function ChatRoom({ roomId }) { // Props는 시간이 지남에 따라 변화합
     return () => {
       connection.disconnect();
     };
-  }, [roomId, serverUrl]); // 따라서 이 effect는 props과 state에 "의존"한다고 React에 알려줍니다.
+  }, [roomId, serverUrl]); // 따라서 이 effect는 props와 state에 "의존"한다고 React에 알려줍니다.
   // ...
 }
 ```
@@ -493,7 +493,7 @@ function ChatRoom() {
 
 이제 effect의 코드는 *어떤* 반응형 값도 사용하지 않으므로 종속성이 비어 있을 수 있습니다(`[]`).
 
-컴포넌트의 관점에서 생각해보면, 빈 `[]` 의존성 배열은 이 effect가 컴포넌트가 마운트될 때만 채팅방에 연결되고 컴포넌트가 마운트 해제될 때만 연결이 끊어진다는 것을 의미합니다. (React는 로직을 스트레스 테스트하기 위해 개발 단계에서 [한 번 더 동기화](#how-react-verifies-that-your-effect-can-re-synchronize)한다는 점을 기억하세요).
+컴포넌트의 관점에서 생각해 보면, 빈 `[]` 의존성 배열은 이 effect가 컴포넌트가 마운트될 때만 채팅방에 연결되고 컴포넌트가 마운트 해제될 때만 연결이 끊어진다는 것을 의미합니다. (React는 로직을 스트레스 테스트하기 위해 개발 단계에서 [한 번 더 동기화](#how-react-verifies-that-your-effect-can-re-synchronize)한다는 점을 기억하세요.)
 
 
 <Sandpack>
@@ -553,9 +553,9 @@ button { margin-left: 10px; }
 
 ### 컴포넌트 본문에서 선언된 모든 변수는 반응형입니다. {/*all-variables-declared-in-the-component-body-are-reactive*/}
 
-props와 state만 반응형 값인 것은 아닙니다. 이들로부터 계산하는 값도 반응형입니다. props나 state가 변경되면 컴포넌트가 다시 렌더링되고 그로부터 계산된 값도 변경됩니다. 이 때문에 effect에서 사용하는 컴포넌트 본문의 모든 변수는 effect 종속성 목록에 있어야 합니다.
+props와 state만 반응형 값인 것은 아닙니다. 이들로부터 계산하는 값도 반응형입니다. props나 state가 변경되면 컴포넌트가 다시 렌더링 되고 그로부터 계산된 값도 변경됩니다. 이 때문에 effect에서 사용하는 컴포넌트 본문의 모든 변수는 effect 종속성 목록에 있어야 합니다.
 
-사용자가 드롭다운에서 채팅 서버를 선택할 수 있지만 설정에서 기본 서버를 구성할 수도 있다고 가정해 봅시다. 이미 settings state를 [context](/learn/scaling-up-with-reducer-and-context)에 넣어서 해당 context에서 `settings`을 읽었다고 가정해 보겠습니다. 이제 props에서 선택한 서버와 기본 서버를 기준으로 `serverUrl`을 계산합니다.
+사용자가 드롭다운에서 채팅 서버를 선택할 수 있지만 설정에서 기본 서버를 구성할 수도 있다고 가정해 봅시다. 이미 settings state를 [context](/learn/scaling-up-with-reducer-and-context)에 넣어서 해당 context에서 `settings`를 읽었다고 가정해 보겠습니다. 이제 props에서 선택한 서버와 기본 서버를 기준으로 `serverUrl`을 계산합니다.
 
 ```js {3,5,10}
 function ChatRoom({ roomId, selectedServerUrl }) { // roomId는 반응형입니다.
@@ -572,21 +572,21 @@ function ChatRoom({ roomId, selectedServerUrl }) { // roomId는 반응형입니�
 }
 ```
 
-이 예제에서 `serverUrl`은 prop나 state 변수가 아닙니다. 렌더링 중에 계산하는 일반 변수입니다. 하지만 렌더링 중에 계산되므로 재렌더링으로 인해 변경될 수 있습니다. 이것이 바로 반응형인 이유입니다.
+이 예제에서 `serverUrl`은 prop이나 state 변수가 아닙니다. 렌더링 중에 계산하는 일반 변수입니다. 하지만 렌더링 중에 계산되므로 재 렌더링으로 인해 변경될 수 있습니다. 이것이 바로 반응형인 이유입니다.
 
-**컴포넌트 내부의 모든 값(컴포넌트 본문의 props, state, 변수 포함)은 반응형입니다. 모든 반응형 값은 다시 렌더링할 때 변경될 수 있으므로 반응형 값을 effect의 종속 요소로 포함시켜야 합니다.**
+**컴포넌트 내부의 모든 값(컴포넌트 본문의 props, state, 변수 포함)은 반응형입니다. 모든 반응형 값은 다시 렌더링할 때 변경될 수 있으므로 반응형 값을 effect의 종속 요소로 포함해야 합니다.**
 
 즉, effect는 컴포넌트 본문의 모든 값에 "반응"합니다.
 
 <DeepDive>
 
-#### 전역 또는 변경 가능한 값이 종속성이 될 수 있나요? {/*can-global-or-mutable-values-be-dependencies*/}
+#### 전역 또는 변경할 수 있는 값이 종속성이 될 수 있나요? {/*can-global-or-mutable-values-be-dependencies*/}
 
-변경 가능한 값(전역 변수 포함)은 반응하지 않습니다.
+변경할 수 있는 값(전역 변수 포함)은 반응하지 않습니다.
 
-**[`location.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname)과 같은 변경 가능한 값은 종속성이 될 수 없습니다.** 이 값은 변경 가능하므로 React 렌더링 데이터 흐름 외부에서 언제든지 변경할 수 있습니다. 이 값을 변경해도 컴포넌트가 다시 렌더링되지는 않습니다. 따라서 종속성에서 지정했더라도 React는 effect가 변경될 때 effect를 다시 동기화할지 *알 수 없습니다.* 또한 렌더링 도중(의존성을 계산할 때) 변경 가능한 데이터를 읽는 것은 [렌더링의 순수성](/learn/keeping-components-pure)을 깨뜨리기 때문에 React의 규칙을 위반합니다. 대신, [`useSyncExternalStore`](/learn/you-might-not-need-an-effect#subscribing-to-an-external-store)를 사용하여 외부 변경 가능한 값을 읽고 구독해야 합니다.
+**[`location.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname)과 같은 변경 가능한 값은 종속성이 될 수 없습니다.** 이 값은 변경할 수 있으므로 React 렌더링 데이터 흐름 외부에서 언제든지 변경할 수 있습니다. 이 값을 변경해도 컴포넌트가 다시 렌더링 되지는 않습니다. 따라서 종속성에서 지정했더라도 React는 effect가 변경될 때 effect를 다시 동기화할지 *알 수 없습니다.* 또한 렌더링 도중(의존성을 계산할 때) 변경할 수 있는 데이터를 읽는 것은 [렌더링의 순수성](/learn/keeping-components-pure)을 깨뜨리기 때문에 React의 규칙을 위반합니다. 대신, [`useSyncExternalStore`](/learn/you-might-not-need-an-effect#subscribing-to-an-external-store)를 사용하여 외부 변경할 수 있는 값을 읽고 구독해야 합니다.
 
-**[`ref.current`](/reference/react/useRef#reference)와 같이 변경 가능한 값이나 이 값에서 읽은 것 역시 종속성이 될 수 없습니다.** `useRef`가 반환하는 `ref` 객체 자체는 종속성이 될 수 있지만 `current` prop는 의도적으로 변경 가능합니다. 이를 통해 [재렌더링을 트리거하지 않고도 무언가를 추적할 수 있습니다.](/learn/referencing-values-with-refs) 하지만 변경해도 다시 렌더링이 트리거되지 않기 때문에 반응형 값이 아니며, React는 이 값이 변경될 때 effect를 다시 실행할지 알지 못합니다.
+**[`ref.current`](/reference/react/useRef#reference)와 같이 변경 가능한 값이나 이 값에서 읽은 것 역시 종속성이 될 수 없습니다.** `useRef`가 반환하는 `ref` 객체 자체는 종속성이 될 수 있지만 `current` prop는 의도적으로 변경할 수 있습니다. 이를 통해 [재 렌더링을 트리거하지 않고도 무언가를 추적할 수 있습니다.](/learn/referencing-values-with-refs) 하지만 변경해도 다시 렌더링이 트리거되지 않기 때문에 반응형 값이 아니며, React는 이 값이 변경될 때 effect를 다시 실행할지 알지 못합니다.
 
 이 페이지에서 아래에서 배우게 되겠지만, 린터는 이러한 문제를 자동으로 확인합니다.
 
@@ -696,9 +696,9 @@ function ChatRoom({ roomId }) { // roomId는 반응형입니다.
 
 ### 다시 동기화하지 않으려는 경우 어떻게 해야 하나요? {/*what-to-do-when-you-dont-want-to-re-synchronize*/}
 
-이전 예제에서는 `roomId`와 `serverUrl`를 종속성으로 나열하여 린트 오류를 수정했습니다.
+이전 예제에서는 `roomId`와 `serverUrl`을 종속성으로 나열하여 린트 오류를 수정했습니다.
 
-**그러나 대신 이러한 값이 반응형 값이 아니라는 것, 즉 재렌더링의 결과로 변경*될 수 없다*는 것을 린터에 "증명"할 수 있습니다.** 예를 들어 `serverUrl`과 `roomId`가 렌더링에 의존하지 않고 항상 같은 값을 갖는다면 컴포넌트 외부로 옮길 수 있습니다. 이제 종속성이 될 필요가 없습니다.
+**그러나 대신 이러한 값이 반응형 값이 아니라는 것, 즉 재 렌더링의 결과로 변경*될 수 없다*는 것을 린터에 "증명"할 수 있습니다.** 예를 들어 `serverUrl`과 `roomId`가 렌더링에 의존하지 않고 항상 같은 값을 갖는다면 컴포넌트 외부로 옮길 수 있습니다. 이제 종속성이 될 필요가 없습니다.
 
 ```js {1,2,11}
 const serverUrl = 'https://localhost:1234'; // serverUrl는 반응형이 아닙니다.
@@ -716,7 +716,7 @@ function ChatRoom() {
 }
 ```
 
-*effect 내부*로 이동할 수도 있습니다. 렌더링 중에 계산되지 않으므로 반응하지 않습니다:
+*effect 내부*로 이동할 수도 있습니다. 렌더링 중에 계산되지 않으므로 반응하지 않습니다.
 
 ```js {3,4,10}
 function ChatRoom() {
@@ -735,11 +735,11 @@ function ChatRoom() {
 
 **effect는 반응형 코드 블록입니다.** 내부에서 읽은 값이 변경되면 다시 동기화됩니다. 상호작용당 한 번만 실행되는 이벤트 핸들러와 달리 effect는 동기화가 필요할 때마다 실행됩니다.
 
-**종속성을 "선택"할 수 없습니다.** 종속성에는 effect에서 읽은 모든 [반응형 값](#all-variables-declared-in-the-component-body-are-reactive)이 포함되어야 합니다. 린터가 이를 강제합니다. 때때로 이로 인해 무한 루프와 같은 문제가 발생하거나 effect가 너무 자주 다시 동기화될 수 있습니다. 린터를 억제하여 이러한 문제를 해결하지 마세요! 대신 시도할 수 있는 방법은 다음과 같습니다.
+**종속성을 "선택"할 수 없습니다.** 종속성에는 effect에서 읽은 모든 [반응형 값](#all-variables-declared-in-the-component-body-are-reactive)이 포함되어야 합니다. 린터가 이를 강제합니다. 때때로 이에 따라 무한 루프와 같은 문제가 발생하거나 effect가 너무 자주 다시 동기화될 수 있습니다. 린터를 억제하여 이러한 문제를 해결하지 마세요! 대신 시도할 방법은 다음과 같습니다.
 
 * **effect가 독립적인 동기화 프로세스를 나타내는지 확인하세요.** effect가 아무것도 동기화하지 않는다면 [불필요한 것일 수 있습니다.](/learn/you-might-not-need-an-effect) 여러 개의 독립적인 것을 동기화하는 경우 [분할](#each-effect-represents-a-separate-synchronization-process)하세요.
 
-* **props이나 state에 "반응"하지 않고 effect를 다시 동기화하지 않고 최신 값을 읽으려면** effect를 반응하는 부분(effect에 유지할 것)과 반응하지 않는 부분(_effect 이벤트_ 라고 하는 것으로 추출할 수 있는 것)으로 분리하면 됩니다. [이벤트와 effect를 분리하는 방법을 읽어보세요.](/learn/separating-events-from-effects)
+* **props나 state에 "반응"하지 않고 effect를 다시 동기화하지 않고 최신 값을 읽으려면** effect를 반응하는 부분(effect에 유지할 것)과 반응하지 않는 부분(_effect 이벤트_ 라고 하는 것으로 추출할 수 있는 것)으로 분리하면 됩니다. [이벤트와 effect를 분리하는 방법을 읽어보세요.](/learn/separating-events-from-effects)
 
 * **객체와 함수를 종속성으로 사용하지 마세요.** 렌더링 중에 오브젝트와 함수를 생성한 다음 effect에서 읽으면 렌더링할 때마다 오브젝트와 함수가 달라집니다. 그러면 매번 effect를 다시 동기화해야 합니다. [effect에서 불필요한 종속성을 제거하는 방법에 대해 자세히 읽어보세요.](/learn/removing-effect-dependencies)
 
@@ -747,7 +747,7 @@ function ChatRoom() {
 
 린터는 여러분의 친구이지만 그 힘은 제한되어 있습니다. 린터는 종속성이 *잘못*되었을 때만 알 수 있습니다. 각 사례를 해결하는 *최선*의 방법은 알지 못합니다. 만약 린터가 종속성을 제안하지만 이를 추가하면 루프가 발생한다고 해서 린터를 무시해야 한다는 의미는 아닙니다. 해당 값이 반응적이지 않고 종속성이 될 *필요*가 없도록 effect 내부(또는 외부)의 코드를 변경해야 합니다.
 
-기존 코드베이스가 있는 경우 이와 같이 린터를 억제하는 effect가 있을 수 있습니다.
+기존 코드베이스가 있는 경우 이처럼 린터를 억제하는 effect가 있을 수 있습니다.
 
 ```js {3-4}
 useEffect(() => {
@@ -766,11 +766,11 @@ useEffect(() => {
 - 컴포넌트는 마운트, 업데이트, 마운트 해제할 수 있습니다.
 - 각 effect는 주변 컴포넌트와 별도의 라이프사이클을 가집니다.
 - 각 effect는 시작 및 중지할 수 있는 별도의 동기화 프로세스를 설명합니다.
-- effect를 작성하고 읽을 때는 컴포넌트의 관점(마운트, 업데이트 또는 마운트 해제 방법)이 아닌 각 개별 effect의 관점(동기화 *시작* 및 *중지* 방법)에서 생각하세요.
+- effect를 작성하고 읽을 때는 컴포넌트의 관점(마운트, 업데이트 또는 마운트 해제 방법)이 아닌 개별 effect의 관점(동기화 *시작* 및 *중지* 방법)에서 생각하세요.
 - 컴포넌트 본문 내부에 선언된 값은 "반응형"입니다.
 - 반응형 값은 시간이 지남에 따라 변경될 수 있으므로 effect를 다시 동기화해야 합니다.
 - 린터는 effect 내부에서 사용된 모든 반응형 값이 종속성으로 지정되었는지 확인합니다.
-- 린터에 의해 플래그가 지정된 모든 오류는 합법적인 오류입니다. 규칙을 위반하지 않도록 코드를 수정할 수 있는 방법은 항상 있습니다.
+- 린터에 의해 플래그가 지정된 모든 오류는 합법적인 오류입니다. 규칙을 위반하지 않도록 코드를 수정할 방법은 항상 있습니다.
 
 </Recap>
 
@@ -780,7 +780,7 @@ useEffect(() => {
 
 이 예제에서 `ChatRoom` 컴포넌트는 컴포넌트가 마운트될 때 채팅방에 연결되고, 마운트가 해제되면 연결이 끊어지며, 다른 채팅방을 선택하면 다시 연결됩니다. 이 동작은 올바른 것이므로 계속 작동하도록 해야 합니다.
 
-하지만 문제가 있습니다. 하단의 메시지 상자 입력란에 입력할 때마다 `ChatRoom`*도* 채팅에 다시 연결됩니다. (콘솔을 지우고 입력란에 입력하면 이 문제를 확인할 수 있습니다.) 이런 일이 발생하지 않도록 문제를 해결하세요.
+하지만 문제가 있습니다. 하단의 메시지 상자 입력란에 입력할 때마다 `ChatRoom`*도* 채팅에 다시 연결됩니다. (콘솔을 지우고 입력란에 입력하면 이 문제를 확인할 수 있습니다) 이런 일이 발생하지 않도록 문제를 해결하세요.
 
 <Hint>
 
@@ -940,7 +940,7 @@ button { margin-left: 10px; }
 
 이 예제에서 effect는 창 [`pointermove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointermove_event) 이벤트를 구독하여 화면에서 분홍색 점을 이동합니다. 미리 보기 영역 위로 마우스를 가져가서(또는 모바일 장치에서 화면을 터치하여) 분홍색 점이 어떻게 움직이는지 확인해 보세요.
 
-체크박스도 있습니다. 체크 박스를 선택하면 `canMove` state 변수가 토글되지만 이 state 변수는 코드의 어느 곳에서도 사용되지 않습니다. 여러분의 임무는 `canMove`가 `false`일 때(체크박스가 체크된 상태) 점의 이동이 중지되도록 코드를 변경하는 것입니다. 체크 박스를 다시 켜고 `canMove`를 `true`로 설정하면 상자가 다시 움직여야 합니다. 즉, 도트가 움직일 수 있는지 여부는 체크 박스의 체크 여부와 동기화 state를 유지해야 합니다.
+체크박스도 있습니다. 체크 박스를 선택하면 `canMove` state 변수가 토글되지만 이 state 변수는 코드의 어느 곳에서도 사용되지 않습니다. 여러분의 임무는 `canMove`가 `false`일 때(체크박스가 체크된 상태) 점의 이동이 중지되도록 코드를 변경하는 것입니다. 체크 박스를 다시 켜고 `canMove`를 `true`로 설정하면 상자가 다시 움직여야 합니다. 즉, 점이 움직일 수 있는지는 체크 박스의 체크 여부와 동기화 state를 유지해야 합니다.
 
 <Hint>
 
@@ -1058,7 +1058,7 @@ body {
 
 </Sandpack>
 
-또는 *이벤트 구독 로직*을 `if (canMove) { ... }` 조건으로 래핑할 수 있습니다:
+또는 *이벤트 구독 로직*을 `if (canMove) { ... }` 조건으로 래핑할 수 있습니다.
 
 <Sandpack>
 
@@ -1190,11 +1190,11 @@ body {
 
 원래 코드의 문제는 의존성 린터를 억제하는 것이었습니다. 억제를 제거하면 이 effect가 `handleMove` 함수에 의존한다는 것을 알 수 있습니다. `handleMove`는 컴포넌트 본문 내부에서 선언되어 반응형 값이 되기 때문입니다. 모든 반응형 값은 종속성으로 지정해야 하며, 그렇지 않으면 시간이 지나면 낡아질 수 있습니다!
 
-원본 코드 작성자는 effect가 어떤 반응형 값에도 의존(`[]`)하지 않는다고 말함으로써 React에 "거짓말"을 했습니다. 이것이 바로 React가 `canMove`가 변경된 후 effect를 다시 동기화하지 않은 이유입니다(그리고 `handleMove`도 함께). React가 effect를 재동기화하지 않았기 때문에 리스너로 첨부된 `handleMove`는 초기 렌더링 중에 생성된 `handleMove` 함수입니다. 초기 렌더링 동안 `canMove`는 `true`이었기 때문에 초기 렌더링의 `handleMove`는 영원히 그 값을 보게 됩니다.
+원본 코드 작성자는 effect가 어떤 반응형 값에도 의존(`[]`)하지 않는다고 말함으로써 React에 "거짓말"을 했습니다. 이것이 바로 React가 `canMove`가 변경된 후 effect를 다시 동기화하지 않은 이유입니다(그리고 `handleMove`도 함께). React가 effect를 재동기화하지 않았기 때문에 리스너로 첨부된 `handleMove`는 초기 렌더링 중에 생성된 `handleMove` 함수입니다. 초기 렌더링하는 동안 `canMove`는 `true`이었기 때문에 초기 렌더링의 `handleMove`는 영원히 그 값을 보게 됩니다.
 
 **린터를 억제하지 않으면 오래된 값으로 인한 문제가 발생하지 않습니다.** 이 버그를 해결하는 방법에는 몇 가지가 있지만 항상 린터 억제를 제거하는 것부터 시작해야 합니다. 그런 다음 코드를 변경하여 린트 오류를 수정하세요.
 
-effect 종속성을 `[handleMove]`로 변경할 수 있지만, 렌더링할 때마다 새로 정의되는 함수가 *될 것*이므로 종속성 배열을 모두 제거하는 것이 좋습니다. 그러면 렌더링할 때마다 effect가 다시 동기화됩니다:
+effect 종속성을 `[handleMove]`로 변경할 수 있지만, 렌더링할 때마다 새로 정의되는 함수가 *될 것*이므로 종속성 배열을 모두 제거하는 것이 좋습니다. 그러면 렌더링할 때마다 effect가 다시 동기화됩니다.
 
 <Sandpack>
 
@@ -1251,9 +1251,9 @@ body {
 
 </Sandpack>
 
-이 솔루션은 작동하지만 이상적이지는 않습니다. effect 안에 `console.log('Resubscribing')`을 넣으면 렌더링할 때마다 재구독하는 것을 확인할 수 있습니다. 재구독은 빠르지만 너무 자주 하는 것은 피하는 것이 좋습니다.
+이 솔루션은 작동하지만 이상적이지는 않습니다. effect 안에 `console.log('Resubscribing')`를 넣으면 렌더링할 때마다 재구독하는 것을 확인할 수 있습니다. 재구독은 빠르지만 너무 자주 하는 것은 피하는 것이 좋습니다.
 
-더 나은 해결책은 핸들무브 함수를 effect *내부*로 옮기는 것입니다. 그러면 `handleMove`는 반응형 값이 아니므로 effect가 함수에 종속되지 않습니다. 대신, 이제 코드가 effect 내부에서 읽는 `canMove`에 의존해야 합니다. 이제 effect가 `canMove`의 값과 동기화 state를 유지하므로 원하는 동작과 일치합니다.
+더 나은 해결책은 `handleMove` 함수를 effect *내부*로 옮기는 것입니다. 그러면 `handleMove`는 반응형 값이 아니므로 effect가 함수에 종속되지 않습니다. 대신, 이제 코드가 effect 내부에서 읽는 `canMove`에 의존해야 합니다. 이제 effect가 `canMove`의 값과 동기화 state를 유지하므로 원하는 동작과 일치합니다.
 
 <Sandpack>
 
@@ -1310,7 +1310,7 @@ body {
 
 </Sandpack>
 
-effect 본문에 `console.log('Resubscribing')`를 추가하면 이제 체크 박스를 토글하거나(`canMove` 변경 사항) 코드를 편집할 때만 다시 구독하는 것을 확인할 수 있습니다. 이렇게 하면 항상 재구독하던 이전 접근 방식보다 개선되었습니다.
+effect 본문에 `console.log('Resubscribing')`를 추가하면 이제 체크 박스를 토글 하거나(`canMove` 변경 사항) 코드를 편집할 때만 다시 구독하는 것을 확인할 수 있습니다. 이렇게 하면 항상 재구독하던 이전 접근 방식보다 개선되었습니다.
 
 [이벤트와 effect 분리하기](/learn/separating-events-from-effects)에서 이러한 유형의 문제에 대한 보다 일반적인 접근 방식을 배우게 됩니다.
 
@@ -1318,7 +1318,7 @@ effect 본문에 `console.log('Resubscribing')`를 추가하면 이제 체크 �
 
 #### 연결 스위치 수정 {/*fix-a-connection-switch*/}
 
-이 예제에서 `chat.js`의 채팅 서비스는 `createEncryptedConnection`과 `createUnencryptedConnection`이라는 두 개의 서로 다른 API를 노출합니다. 루트 `App` 컴포넌트는 사용자가 암호화 사용 여부를 선택할 수 있도록 한 다음, 해당 API 메서드를 하위 `ChatRoom` 컴포넌트에 `createConnection` prop로 전달합니다.
+이 예제에서 `chat.js`의 채팅 서비스는 `createEncryptedConnection`과 `createUnencryptedConnection`이라는 두 개의 서로 다른 API를 노출합니다. 루트 `App` 컴포넌트는 사용자가 암호화 사용 여부를 선택할 수 있도록 한 다음, 해당 API 메서드를 하위 `ChatRoom` 컴포넌트에 `createConnection` prop으로 전달합니다.
 
 처음에는 콘솔 로그에 연결이 암호화되지 않았다고 표시됩니다. 체크 박스를 켜면 아무 일도 일어나지 않습니다. 그러나 그 후에 선택한 대화방을 변경하면 채팅이 다시 연결*되고* 콘솔 메시지에서 볼 수 있듯이 암호화가 활성화됩니다. 이것은 버그입니다. 체크 박스를 토글해*도* 채팅이 다시 연결되도록 버그를 수정했습니다.
 
@@ -1424,7 +1424,7 @@ label { display: block; margin-bottom: 10px; }
 
 <Solution>
 
-린터 억제를 제거하면 린트 오류가 표시됩니다. 문제는 `createConnection`이 props이기 때문에 반응형 값이라는 것입니다. 시간이 지남에 따라 변경될 수 있습니다! (실제로 사용자가 체크박스를 선택하면 부모 컴포넌트가 다른 값의 `createConnection` prop을 전달합니다.) 실제로 그래야 합니다. 이것이 바로 종속성이 되어야 하는 이유입니다. 목록에 포함시켜 버그를 수정하세요.
+린터 억제를 제거하면 린트 오류가 표시됩니다. 문제는 `createConnection`이 props이기 때문에 반응형 값이라는 것입니다. 시간이 지남에 따라 변경될 수 있습니다! (실제로 사용자가 체크박스를 선택하면 부모 컴포넌트가 다른 값의 `createConnection` prop을 전달합니다) 실제로 그래야 합니다. 이것이 바로 종속성이 되어야 하는 이유입니다. 목록에 포함해 버그를 수정하세요.
 
 <Sandpack>
 
@@ -1519,7 +1519,7 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-`createConnection`이 종속성이라는 것은 맞습니다. 하지만 누군가 이 프로퍼티의 값으로 인라인 함수를 전달하도록 `App` 컴포넌트를 편집할 수 있기 때문에 이 코드는 약간 취약합니다. 이 경우 `App` 컴포넌트가 다시 렌더링할 때마다 값이 달라지므로 effect가 너무 자주 다시 동기화될 수 있습니다. 이를 방지하려면 대신 `isEncrypted`를 전달할 수 있습니다:
+`createConnection`이 종속성이라는 것은 맞습니다. 하지만 누군가 이 프로퍼티의 값으로 인라인 함수를 전달하도록 `App` 컴포넌트를 편집할 수 있기 때문에 이 코드는 약간 취약합니다. 이 경우 `App` 컴포넌트가 다시 렌더링할 때마다 값이 달라지므로 effect가 너무 자주 다시 동기화될 수 있습니다. 이를 방지하려면 대신 `isEncrypted`를 전달할 수 있습니다.
 
 <Sandpack>
 
@@ -1614,7 +1614,7 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-이 버전에서는 `App` 컴포넌트가 함수 대신 boolean prop를 전달합니다. effect 내에서 어떤 함수를 사용할지 결정합니다. `createEncryptedConnection`과 `createUnencryptedConnection`은 모두 컴포넌트 외부에서 선언되므로 반응형이 아니므로 종속성이 될 필요가 없습니다. 이에 대한 자세한 내용은 [effect 종속성 제거하기](/learn/removing-effect-dependencies)에서 확인할 수 있습니다.
+이 버전에서는 `App` 컴포넌트가 함수 대신 boolean prop을 전달합니다. effect 내에서 어떤 함수를 사용할지 결정합니다. `createEncryptedConnection`과 `createUnencryptedConnection`은 모두 컴포넌트 외부에서 선언되므로 반응형이 아니므로 종속성이 될 필요가 없습니다. 이에 대한 자세한 내용은 [effect 종속성 제거하기](/learn/removing-effect-dependencies)에서 확인할 수 있습니다.
 
 </Solution>
 
@@ -1942,7 +1942,7 @@ label { display: block; margin-bottom: 10px; }
 
 이 코드는 약간 반복적입니다. 하지만 그렇다고 해서 이를 하나의 effect로 결합해야 하는 이유는 없습니다! 이렇게 하면 두 effect의 종속성을 하나의 목록으로 결합한 다음 행성을 변경하면 모든 행성 목록을 다시 가져와야 합니다. effect는 코드 재사용을 위한 도구가 아닙니다.
 
-대신 반복을 줄이기 위해 아래의 `useSelectOptions`와 같은 커스텀 Hook에 일부 로직을 추출할 수 있습니다:
+대신 반복을 줄이기 위해 아래의 `useSelectOptions`와 같은 커스텀 Hook에 일부 로직을 추출할 수 있습니다.
 
 <Sandpack>
 
@@ -2103,7 +2103,7 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-sandbox에서 `useSelectOptions.js` 탭을 확인하여 작동 방식을 확인하세요. 이상적으로는 애플리케이션의 대부분의 effect는 사용자가 직접 작성했든 커뮤니티에서 작성했든 결국 커스텀 hook으로 대체되어야 합니다. 커스텀 hook은 동기화 로직을 숨기므로 호출 컴포넌트는 effect에 대해 알지 못합니다. 앱을 계속 개발하다 보면 선택할 수 있는 Hook 팔레트를 개발하게 될 것이고, 결국에는 컴포넌트에 effect를 자주 작성할 필요가 없게 될 것입니다.
+sandbox에서 `useSelectOptions.js` 탭을 확인하여 작동 방식을 확인하세요. 이상적으로는 애플리케이션의 대부분 effect는 사용자가 직접 작성했든 커뮤니티에서 작성했든 결국 커스텀 hook으로 대체되어야 합니다. 커스텀 hook은 동기화 로직을 숨기므로 호출 컴포넌트는 effect에 대해 알지 못합니다. 앱을 계속 개발하다 보면 선택할 수 있는 Hook 팔레트를 개발하게 될 것이고, 결국에는 컴포넌트에 effect를 자주 작성할 필요가 없게 될 것입니다.
 
 </Solution>
 
