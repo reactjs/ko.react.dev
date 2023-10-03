@@ -4,7 +4,8 @@ title: createContext
 
 <Intro>
 
-`createContext` lets you create a [context](/learn/passing-data-deeply-with-context) that components can provide or read.
+`createContext`를 사용하면 컴포넌트가 [Context](/learn/passing-data-deeply-with-context)를 제공하거나 읽을 수 있습니다.
+
 
 ```js
 const SomeContext = createContext(defaultValue)
@@ -18,9 +19,9 @@ const SomeContext = createContext(defaultValue)
 
 ## Reference {/*reference*/}
 
-### `createContext(defaultValue)` {/*createcontext*/}
+### `createContext(기본값)` {/*createcontext*/}
 
-Call `createContext` outside of any components to create a context.
+컴포넌트 외부에서 `createContext`를 호출하여 컨텍스트를 생성합니다.
 
 ```js
 import { createContext } from 'react';
@@ -28,26 +29,26 @@ import { createContext } from 'react';
 const ThemeContext = createContext('light');
 ```
 
-[See more examples below.](#usage)
+[아래에서 더 많은 예시를 확인하세요.](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `defaultValue`: The value that you want the context to have when there is no matching context provider in the tree above the component that reads context. If you don't have any meaningful default value, specify `null`. The default value is meant as a "last resort" fallback. It is static and never changes over time.
+* `기본값`: 컴포넌트가 컨텍스트를 읽을 때 상위에 일치하는 컨텍스트 제공자가 없는 경우 컨텍스트가 가져야 할 값입니다. 의미 있는 기본값이 없으면 `null`을 지정하세요. 기본값은 "최후의 수단"으로 사용됩니다. 이 값은 정적이며 시간이 지나도 변경되지 않습니다.
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
 `createContext` returns a context object.
 
-**The context object itself does not hold any information.** It represents _which_ context other components read or provide. Typically, you will use [`SomeContext.Provider`](#provider) in components above to specify the context value, and call [`useContext(SomeContext)`](/reference/react/useContext) in components below to read it. The context object has a few properties:
+**컨텍스트 객체 자체는 어떠한 정보도 가지고 있지 않습니다.** 다른 컴포넌트가 읽거나 제공하는 어떤 컨텍스트를 나타냅니다. 일반적으로 상위 컴포넌트에서 컨텍스트 값을 지정하기 위해 [`SomeContext.Provider`](#provider)를 사용하고, 아래 컴포넌트에서 읽기 위해 [`useContext(SomeContext)`](/reference/react/useContext)를 호출합니다. 컨텍스트 객체에는 몇 가지 속성이 있습니다.
 
-* `SomeContext.Provider` lets you provide the context value to components.
-* `SomeContext.Consumer` is an alternative and rarely used way to read the context value.
+* `SomeContext.Provider`는 컴포넌트에 컨텍스트 값을 제공하게 해줍니다.
+* `SomeContext.Consumer`는 컨텍스트 값을 읽는 대안적이며 드물게 사용되는 방법입니다.
 
 ---
 
 ### `SomeContext.Provider` {/*provider*/}
 
-Wrap your components into a context provider to specify the value of this context for all components inside:
+컴포넌트를 컨텍스트 제공자로 감싸서 이 컨텍스트의 값을 모든 내부 컴포넌트에 지정합니다.
 
 ```js
 function App() {
@@ -63,17 +64,17 @@ function App() {
 
 #### Props {/*provider-props*/}
 
-* `value`: The value that you want to pass to all the components reading this context inside this provider, no matter how deep. The context value can be of any type. A component calling [`useContext(SomeContext)`](/reference/react/useContext) inside of the provider receives the `value` of the innermost corresponding context provider above it.
+* `value`: 이 제공자 내부의 컨텍스트를 읽는 모든 컴포넌트에 전달하려는 값입니다. 컨텍스트 값은 어떠한 유형이든 될 수 있습니다. 제공자 내부에서 [`useContext(SomeContext)`](/reference/react/useContext)를 호출하는 컴포넌트는 그 위의 가장 가까운 해당 컨텍스트 제공자의 `value`를 받게 됩니다.
 
 ---
 
 ### `SomeContext.Consumer` {/*consumer*/}
 
-Before `useContext` existed, there was an older way to read context:
+`useContext`가 존재하기 전에는 컨텍스트를 읽는 더 오래된 방법이 있습니다.
 
 ```js
 function Button() {
-  // 🟡 Legacy way (not recommended)
+  // 🟡 이전 방식 (권장하지 않음)
   return (
     <ThemeContext.Consumer>
       {theme => (
@@ -84,11 +85,11 @@ function Button() {
 }
 ```
 
-Although this older way still works, but **newly written code should read context with [`useContext()`](/reference/react/useContext) instead:**
+이 오래된 방법은 여전히 작동하지만, **새로 작성된 코드는 대신 [`useContext()`](/reference/react/useContext)로 컨텍스트를 읽어야 합니다:**
 
 ```js
 function Button() {
-  // ✅ Recommended way
+  // ✅ 권장되는 방법
   const theme = useContext(ThemeContext);
   return <button className={theme} />;
 }
@@ -96,17 +97,17 @@ function Button() {
 
 #### Props {/*consumer-props*/}
 
-* `children`: A function. React will call the function you pass with the current context value determined by the same algorithm as [`useContext()`](/reference/react/useContext) does, and render the result you return from this function. React will also re-run this function and update the UI whenever the context from the parent components changes.
+* `children`: 함수입니다. React는 [`useContext()`](/reference/react/useContext)와 동일한 알고리즘으로 결정된 현재 컨텍스트 값을 전달하여 함수를 호출하고, 이 함수에서 반환하는 결과를 렌더링합니다. 부모 컴포넌트에서 컨텍스트가 변경되면 React는 이 함수를 다시 실행하고 UI를 업데이트합니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Creating context {/*creating-context*/}
+### 컨텍스트 생성 {/*creating-context*/}
 
-Context lets components [pass information deep down](/learn/passing-data-deeply-with-context) without explicitly passing props.
+컨텍스트를 사용하면 컴포넌트가 [정보를 깊게 전달](/learn/passing-data-deeply-with-context)할 수 있습니다.
 
-Call `createContext` outside any components to create one or more contexts.
+컴포넌트 외부에서 `createContext`를 호출하여 하나 이상의 컨텍스트를 생성합니다.
 
 ```js [[1, 3, "ThemeContext"], [1, 4, "AuthContext"], [3, 3, "'light'"], [3, 4, "null"]]
 import { createContext } from 'react';
@@ -115,7 +116,7 @@ const ThemeContext = createContext('light');
 const AuthContext = createContext(null);
 ```
 
-`createContext` returns a <CodeStep step={1}>context object</CodeStep>. Components can read context by passing it to [`useContext()`](/reference/react/useContext):
+`createContext`는 <CodeStep step={1}>컨텍스트 객체</CodeStep>를 반환합니다. 컴포넌트는 이를 [`useContext()`](/reference/react/useContext)에 전달하여 컨텍스트를 읽을 수 있습니다.
 
 ```js [[1, 2, "ThemeContext"], [1, 7, "AuthContext"]]
 function Button() {
@@ -129,9 +130,10 @@ function Profile() {
 }
 ```
 
-By default, the values they receive will be the <CodeStep step={3}>default values</CodeStep> you have specified when creating the contexts. However, by itself this isn't useful because the default values never change.
+기본적으로, 그들이 받는 값은 컨텍스트를 생성할 때 지정한 <CodeStep step={3}>기본값</CodeStep>이 됩니다. 그러나 자체적으로 이는 유용하지 않습니다. 왜냐하면 기본값은 절대 변경되지 않기 때문입니다.
 
-Context is useful because you can **provide other, dynamic values from your components:**
+컨텍스트는 **다른 동적 값들을 컴포넌트에서 제공**할 수 있기 때문에 유용합니다.
+
 
 ```js {8-9,11-12}
 function App() {
@@ -150,15 +152,15 @@ function App() {
 }
 ```
 
-Now the `Page` component and any components inside it, no matter how deep, will "see" the passed context values. If the passed context values change, React will re-render the components reading the context as well.
+이제 `Page` 컴포넌트와 그 안의 모든 컴포넌트, 얼마나 깊든지 간에 전달된 컨텍스트 값을 "볼" 수 있습니다. 전달된 컨텍스트 값이 변경되면, React는 컨텍스트를 읽는 컴포넌트를 다시 렌더링합니다.
 
-[Read more about reading and providing context and see examples.](/reference/react/useContext)
+[컨텍스트 읽기와 제공에 대해 더 알아보고 예시를 확인하세요.](/reference/react/useContext)
 
 ---
 
-### Importing and exporting context from a file {/*importing-and-exporting-context-from-a-file*/}
+### 파일에서 컨텍스트 가져오기 및 내보내기 {/*importing-and-exporting-context-from-a-file*/}
 
-Often, components in different files will need access to the same context. This is why it's common to declare contexts in a separate file. Then you can use the [`export` statement](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) to make context available for other files:
+다른 파일의 컴포넌트가 동일한 컨텍스트에 액세스해야 할 필요가 종종 있습니다. 이것이 별도의 파일에서 컨텍스트를 선언하는 것이 일반적인 이유입니다. 그런 다음 [`export` 문](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export)을 사용하여 다른 파일에서 사용할 수 있도록 컨텍스트를 사용할 수 있습니다.
 
 ```js {4-5}
 // Contexts.js
@@ -168,7 +170,7 @@ export const ThemeContext = createContext('light');
 export const AuthContext = createContext(null);
 ```
 
-Components declared in other files can then use the [`import`](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import) statement to read or provide this context:
+다른 파일에서 선언된 컴포넌트는 이 컨텍스트를 읽거나 제공하기 위해 [`import`](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import) 문을 사용할 수 있습니다.
 
 ```js {2}
 // Button.js
@@ -196,22 +198,20 @@ function App() {
 }
 ```
 
-This works similar to [importing and exporting components.](/learn/importing-and-exporting-components)
+이것은 [컴포넌트를 가져오고 내보내기](/learn/importing-and-exporting-components)와 유사하게 작동합니다.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
 ### I can't find a way to change the context value {/*i-cant-find-a-way-to-change-the-context-value*/}
 
-
-Code like this specifies the *default* context value:
+이런 코드는 *기본* 컨텍스트 값을 지정합니다.
 
 ```js
 const ThemeContext = createContext('light');
 ```
 
-This value never changes. React only uses this value as a fallback if it can't find a matching provider above.
+이 값은 절대 변경되지 않습니다. React는 일치하는 제공자가 위에 없는 경우 이 값을 대체로 사용합니다.
 
-To make context change over time, [add state and wrap components in a context provider.](/reference/react/useContext#updating-data-passed-via-context)
-
+시간이 지나면서 컨텍스트를 변경하려면, [상태를 추가하고 컴포넌트를 컨텍스트 제공자로 감싸세요.](/reference/react/useContext#updating-data-passed-via-context)
