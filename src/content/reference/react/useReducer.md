@@ -4,7 +4,7 @@ title: useReducer
 
 <Intro>
 
-`useReducer` is a React Hook that lets you add a [reducer](/learn/extracting-state-logic-into-a-reducer) to your component.
+`useReducer`는 컴포넌트에 [reducer](/learn/extracting-state-logic-into-a-reducer)를 추가하는 React Hook입니다.
 
 ```js
 const [state, dispatch] = useReducer(reducer, initialArg, init?)
@@ -16,11 +16,11 @@ const [state, dispatch] = useReducer(reducer, initialArg, init?)
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `useReducer(reducer, initialArg, init?)` {/*usereducer*/}
 
-Call `useReducer` at the top level of your component to manage its state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
+`useReducer`를 컴포넌트의 최상위에 호출하고, [reducer](/learn/extracting-state-logic-into-a-reducer)를 이용해 state를 관리합니다.
 
 ```js
 import { useReducer } from 'react';
@@ -34,31 +34,31 @@ function MyComponent() {
   // ...
 ```
 
-[See more examples below.](#usage)
+[아래에서 더 많은 예시를 확인하세요.](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `reducer`: The reducer function that specifies how the state gets updated. It must be pure, should take the state and action as arguments, and should return the next state. State and action can be of any types. 
-* `initialArg`: The value from which the initial state is calculated. It can be a value of any type. How the initial state is calculated from it depends on the next `init` argument.
-* **optional** `init`: The initializer function that should return the initial state. If it's not specified, the initial state is set to `initialArg`. Otherwise, the initial state is set to the result of calling `init(initialArg)`.
+* `reducer`: state가 어떻게 업데이트 되는지 지정하는 리듀서 함수입니다. 리듀서 함수는 반드시 순수 함수여야 하며, state와 action을 인수로 받아야 하고, 다음 state를 반환해야 합니다. state와 action에는 모든 데이터 타입이 할당될 수 있습니다.
+* `initialArg`: 초기 state가 계산되는 값입니다. 모든 데이터 타입이 할당될 수 있습니다. 초기 state가 어떻게 계산되는지는 다음 `init` 인수에 따라 달라집니다.
+* **선택사항** `init`: 초기 state를 반환하는 초기화 함수입니다. 이 함수가 인수에 할당되지 않으면 초기 state는 `initialArg`로 설정됩니다. 할당되었다면 초기 state는 `init(initialArg)`를 호출한 결과가 할당됩니다.
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-`useReducer` returns an array with exactly two values:
+`useReducer`는 2개의 엘리먼트로 구성된 배열을 반환합니다.
 
-1. The current state. During the first render, it's set to `init(initialArg)` or `initialArg` (if there's no `init`).
-2. The [`dispatch` function](#dispatch) that lets you update the state to a different value and trigger a re-render.
+1. 현재 state. 첫번째 렌더링에서의 state는 `init(initialArg)` 또는 `initialArg`로 설정됩니다 (`init`이 없을 경우 `initialArg`로 설정됩니다).
+2. [`dispatch` 함수](#dispatch). `dispatch`는 state를 새로운 값으로 업데이트하고 리렌더링을 일으킵니다.
 
-#### Caveats {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
-* `useReducer` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
-* In Strict Mode, React will **call your reducer and initializer twice** in order to [help you find accidental impurities.](#my-reducer-or-initializer-function-runs-twice) This is development-only behavior and does not affect production. If your reducer and initializer are pure (as they should be), this should not affect your logic. The result from one of the calls is ignored.
+* `useReducer`는 Hook이므로 **컴포넌트의 최상위** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문에서는 사용할 수 없습니다. 필요한 경우 새로운 컴포넌트를 추출하고 해당 컴포넌트로 state를 옮겨서 사용할 수 있습니다.
+* Strict Mode에서는 [우연한 비순수성](#my-reducer-or-initializer-function-runs-twice)을 찾아내기 위해 reducer와 init 함수를 두번 호출합니다. 개발 환경에서만 한정된 동작이며, 배포 모드에는 영향을 미치지 않습니다. reducer와 init 함수가 순수 함수라면(그래야만 하듯이) 로직에 어떠한 영향도 미치지 않습니다. 호출 중 하나의 결과는 무시합니다.
 
 ---
 
-### `dispatch` function {/*dispatch*/}
+### `dispatch` 함수 {/*dispatch*/}
 
-The `dispatch` function returned by `useReducer` lets you update the state to a different value and trigger a re-render. You need to pass the action as the only argument to the `dispatch` function:
+`useReducer`에 의해 반환되는 `dispatch` 함수는 state를 새로운 값으로 업데이트하고 리렌더링을 일으킵니다. `dispatch`의 유일한 인수는 action입니다.
 
 ```js
 const [state, dispatch] = useReducer(reducer, { age: 42 });
@@ -68,31 +68,31 @@ function handleClick() {
   // ...
 ```
 
-React will set the next state to the result of calling the `reducer` function you've provided with the current `state` and the action you've passed to `dispatch`.
+React는 현재 `state`와 `dispatch`를 통해 전달된 action을 제공받아 호출된 `reducer`의 반환값을 통해 다음 state값을 설정합니다. 
 
-#### Parameters {/*dispatch-parameters*/}
+#### 매개변수 {/*dispatch-parameters*/}
 
-* `action`: The action performed by the user. It can be a value of any type. By convention, an action is usually an object with a `type` property identifying it and, optionally, other properties with additional information.
+* `action`: 사용자에 의해 수행된 활동입니다. 모든 데이터 타입이 할당될 수 있습니다. 컨벤션에 의해 action은 일반적으로 action을 정의하는 `type` 프로퍼티와 추가적인 정보를 표현하는 기타 프로퍼티를 포함한 객체로 구성됩니다.
 
-#### Returns {/*dispatch-returns*/}
+#### 반환값 {/*dispatch-returns*/}
 
-`dispatch` functions do not have a return value.
+`dispatch` 함수는 어떤 값도 반환하지 않습니다.
 
-#### Caveats {/*setstate-caveats*/}
+#### 주의 사항 {/*setstate-caveats*/}
 
-* The `dispatch` function **only updates the state variable for the *next* render**. If you read the state variable after calling the `dispatch` function, [you will still get the old value](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value) that was on the screen before your call.
+* `dispatch` 함수는 **오직 *다음* 렌더링에 사용할 state 변수만 업데이트 합니다.** 만약 `dispatch` 함수를 호출한 직후에 state 변수를 읽는다면 호출 이전의 [최신화되지 않은 값을 참조할 것입니다.](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value)
 
-* If the new value you provide is identical to the current `state`, as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison, React will **skip re-rendering the component and its children.** This is an optimization. React may still need to call your component before ignoring the result, but it shouldn't affect your code.
+* [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 통해 새롭게 제공된 값과 현재 `state`를 비교한 값이 같을 경우, React는 컴포넌트와 해당 컴포넌트의 자식 요소들의 리렌더링을 건너뜁니다. 이것은 최적화에 관련된 동작으로써 결과를 무시하기 전에 컴포넌트가 호출되지만, 호출된 결과가 코드에 영향을 미치지는 않습니다.
 
-* React [batches state updates.](/learn/queueing-a-series-of-state-updates) It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple re-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`.](/reference/react-dom/flushSync)
+* React는 [state의 업데이트를 batch합니다.](/learn/queueing-a-series-of-state-updates) **이벤트 핸들러의 모든 코드가 수행**되고 `set` 함수가 모두 호출된 후에 화면을 업데이트 합니다. 이는 하나의 이벤트에 리렌더링이 여러번 일어나는 것을 방지합니다. DOM 접근 등 이른 화면 업데이트를 강제해야할 특수한 상황이 있을 경우 [`flushSync`](/reference/react-dom/flushSync)를 사용할 수 있습니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Adding a reducer to a component {/*adding-a-reducer-to-a-component*/}
+### 컴포넌트에 reducer 추가하기 {/*adding-a-reducer-to-a-component*/}
 
-Call `useReducer` at the top level of your component to manage state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
+state를 [reducer](/learn/extracting-state-logic-into-a-reducer)로 관리하기 위해 `useReducer`를 컴포넌트의 최상단에서 호출합니다.
 
 ```js [[1, 8, "state"], [2, 8, "dispatch"], [4, 8, "reducer"], [3, 8, "{ age: 42 }"]]
 import { useReducer } from 'react';
@@ -106,12 +106,12 @@ function MyComponent() {
   // ...
 ```
 
-`useReducer` returns an array with exactly two items:
+`useReducer`는 정확히 2개의 항목이 포함된 배열 반환합니다.
 
-1. The <CodeStep step={1}>current state</CodeStep> of this state variable, initially set to the <CodeStep step={3}>initial state</CodeStep> you provided.
-2. The <CodeStep step={2}>`dispatch` function</CodeStep> that lets you change it in response to interaction.
+1. state 변수의 <CodeStep step={1}>현재 state</CodeStep>. 최초에는 사용자가 제공한 <CodeStep step={3}>초기 state</CodeStep>로 초기화됩니다.
+2. <CodeStep step={2}>`dispatch` 함수</CodeStep>. 상호작용에 대응하여 state를 변경합니다.
 
-To update what's on the screen, call <CodeStep step={2}>`dispatch`</CodeStep> with an object representing what the user did, called an *action*:
+화면을 업데이트하려면 사용자가 수행한 활동을 의미하는 *action* 객체를 인수로하여 `dispatch` 함수를 호출하세요.
 
 ```js [[2, 2, "dispatch"]]
 function handleClick() {
@@ -119,7 +119,7 @@ function handleClick() {
 }
 ```
 
-React will pass the current state and the action to your <CodeStep step={4}>reducer function</CodeStep>. Your reducer will calculate and return the next state. React will store that next state, render your component with it, and update the UI.
+React는 현재 state와 action을 <CodeStep step={4}>reducer 함수</CodeStep>로 전달합니다. reducer는 다음 state를 계산한 후 반환합니다. React는 다음 state를 저장한 뒤에 컴포넌트와 함께 렌더링 하고 UI를 업데이트 합니다.
 
 <Sandpack>
 
@@ -157,13 +157,13 @@ button { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-`useReducer` is very similar to [`useState`](/reference/react/useState), but it lets you move the state update logic from event handlers into a single function outside of your component. Read more about [choosing between `useState` and `useReducer`.](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer)
+`useReducer`는 [`useState`](/reference/react/useState)와 매우 유사하지만, state 업데이트 로직을 이벤트 핸들러에서 컴포넌트 외부의 단일함수로 분리할 수 있다는 차이점이 있습니다. 자세한 사항은 [`useState`와 `useReducer` 비교하기](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer)를 읽어보세요.
 
 ---
 
-### Writing the reducer function {/*writing-the-reducer-function*/}
+### reducer 함수 작성하기 {/*writing-the-reducer-function*/}
 
-A reducer function is declared like this:
+reducer 함수는 아래와 같이 선언합니다.
 
 ```js
 function reducer(state, action) {
@@ -171,7 +171,7 @@ function reducer(state, action) {
 }
 ```
 
-Then you need to fill in the code that will calculate and return the next state. By convention, it is common to write it as a [`switch` statement.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) For each `case` in the `switch`, calculate and return some next state.
+이후 다음 state를 계산할 코드를 작성하고, 계산된 state를 반환합니다. 보통은 컨벤션에 따라 [`switch` 문](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch)을 사용합니다. `switch`는 각 `case`를 이용해 다음 state를 계산하고 반환합니다.
 
 ```js {4-7,10-13}
 function reducer(state, action) {
@@ -193,7 +193,7 @@ function reducer(state, action) {
 }
 ```
 
-Actions can have any shape. By convention, it's common to pass objects with a `type` property identifying the action. It should include the minimal necessary information that the reducer needs to compute the next state.
+Actions은 다양한 형태가 될 수 있습니다. 하지만 컨벤션에 따라 액션이 무엇인지 정의하는 `type` 프로퍼티를 포함한 객체로 선언하는 것이 일반적입니다. `type`은 reducer가 다음 state를 계산하는데 필요한 최소한의 정보를 포함해야 합니다.
 
 ```js {5,9-12}
 function Form() {
@@ -212,13 +212,13 @@ function Form() {
   // ...
 ```
 
-The action type names are local to your component. [Each action describes a single interaction, even if that leads to multiple changes in data.](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well) The shape of the state is arbitrary, but usually it'll be an object or an array.
+action type 이름은 컴포넌트 내에서 지역적입니다. [각 action은 단일 상호작용을 설명하며, 데이터에 여러 변경 사항을 초래하더라도 하나의 상호작용만을 나타냅니다.](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well) state의 형태는 임의적이지만, 일반적으로 객체나 배열일 것입니다.
 
-Read [extracting state logic into a reducer](/learn/extracting-state-logic-into-a-reducer) to learn more.
+자세한 내용은 [state 로직을 reducer로 작성하기](/learn/extracting-state-logic-into-a-reducer)를 읽어보세요.
 
 <Pitfall>
 
-State is read-only. Don't modify any objects or arrays in state:
+state는 읽기 전용입니다. state의 객체나 배열을 변경하지 마세요!
 
 ```js {4,5}
 function reducer(state, action) {
@@ -230,7 +230,7 @@ function reducer(state, action) {
     }
 ```
 
-Instead, always return new objects from your reducer:
+대신 reducer에서 새로운 객체를 반환하세요.
 
 ```js {4-8}
 function reducer(state, action) {
@@ -244,15 +244,16 @@ function reducer(state, action) {
     }
 ```
 
-Read [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) to learn more.
+
+자세한 내용을 공부하시려면 [객체 State 업데이트하기](/learn/updating-objects-in-state)와 [배열 State 업데이트하기](/learn/updating-arrays-in-state)를 읽어보세요.
 
 </Pitfall>
 
-<Recipes titleText="Basic useReducer examples" titleId="examples-basic">
+<Recipes titleText="기본적인 useReducer 예제" titleId="examples-basic">
 
-#### Form (object) {/*form-object*/}
+#### 폼 (객체) {/*form-object*/}
 
-In this example, the reducer manages a state object with two fields: `name` and `age`.
+이 예제에서는 reducer를 이용해 `name`과 `age` 필드를 가진 객체를 state로 관리합니다.
 
 <Sandpack>
 
@@ -316,9 +317,9 @@ button { display: block; margin-top: 10px; }
 
 <Solution />
 
-#### Todo list (array) {/*todo-list-array*/}
+#### 투두 리스트 (배열) {/*todo-list-array*/}
 
-In this example, the reducer manages an array of tasks. The array needs to be updated [without mutation.](/learn/updating-arrays-in-state)
+이 예제에서는 리듀서를 이용해 할 일 목록들을 배열로 관리합니다. 배열의 업데이트는 [mutation이 없이](/learn/updating-arrays-in-state) 이루어져야 합니다.
 
 <Sandpack>
 
@@ -509,9 +510,9 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution />
 
-#### Writing concise update logic with Immer {/*writing-concise-update-logic-with-immer*/}
+#### Immer를 이용해 업데이트 로직을 보다 간결하게 작성하기 {/*writing-concise-update-logic-with-immer*/}
 
-If updating arrays and objects without mutation feels tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer#useimmerreducer) to reduce repetitive code. Immer lets you write concise code as if you were mutating objects, but under the hood it performs immutable updates:
+mutation 없이 배열이나 객체를 수정하는 것이 신경 쓰이고, 반복되는 코드를 줄이고 싶으시다면 [Immer](https://github.com/immerjs/use-immer#useimmerreducer)같은 라이브러리를 사용하실 수 있습니다. Immer는 코드를 간결하게 작성할 수 있게 해주며, mutation이 일어나는 것 처럼 코드를 작성하더라도 내부 동작에서는 immutable한 업데이트가 일어납니다.
 
 <Sandpack>
 
@@ -723,9 +724,9 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### Avoiding recreating the initial state {/*avoiding-recreating-the-initial-state*/}
+### 초기 state 재생성 방지하기 {/*avoiding-recreating-the-initial-state*/}
 
-React saves the initial state once and ignores it on the next renders.
+React는 초기 state를 저장한 후, 다음 렌더링에서는 이를 무시합니다.
 
 ```js
 function createInitialState(username) {
@@ -737,9 +738,9 @@ function TodoList({ username }) {
   // ...
 ```
 
-Although the result of `createInitialState(username)` is only used for the initial render, you're still calling this function on every render. This can be wasteful if it's creating large arrays or performing expensive calculations.
+`createInitialState(username)`의 반환값이 초기 렌더링에만 사용되더라도 함수는 매 렌더링마다 호출될 것입니다. 함수가 큰 배열이나 무거운 연산을 다룰 경우에는 성능상 낭비가 될 수 있습니다.
 
-To solve this, you may **pass it as an _initializer_ function** to `useReducer` as the third argument instead:
+이를 해결하기 위한 방법으로는 `useReducer`의 3번째 인수에 **_초기화 함수_ 를 전달하는 방법**이 있습니다.
 
 ```js {6}
 function createInitialState(username) {
@@ -751,15 +752,15 @@ function TodoList({ username }) {
   // ...
 ```
 
-Notice that you’re passing `createInitialState`, which is the *function itself*, and not `createInitialState()`, which is the result of calling it. This way, the initial state does not get re-created after initialization.
+`createInitialState()`처럼 함수를 호출해서 전달하는 것이 아니라, `createInitialState` *함수 자체*를 전달해야 한다는 것을 기억하세요. 이 방법을 이용하면 초기화 이후에 초기 state가 다시 생성되는 일은 발생하지 않습니다.
 
-In the above example, `createInitialState` takes a `username` argument. If your initializer doesn't need any information to compute the initial state, you may pass `null` as the second argument to `useReducer`.
+위의 예제에서는 `createInitialState` 함수가 `username`을 인수로 받습니다. 만약 초기화 함수가 초기 state를 계산하는 것에 어떤 인수도 필요하지 않다면, `useReducer`의 두번째 인수에 null을 전달할 수 있습니다.
 
-<Recipes titleText="The difference between passing an initializer and passing the initial state directly" titleId="examples-initializer">
+<Recipes titleText="초기화 함수를 전달하는 것과 초기 state를 직접 전달하는 것의 차이점" titleId="examples-initializer">
 
-#### Passing the initializer function {/*passing-the-initializer-function*/}
+#### 초기화 함수 전달 {/*passing-the-initializer-function*/}
 
-This example passes the initializer function, so the `createInitialState` function only runs during initialization. It does not run when component re-renders, such as when you type into the input.
+이 예제에서는 초기화 단계에서만 동작하는 함수인 `createInitialState`를 초기화 함수로 전달합니다. 이 함수는 인풋에 입력 할 때 발생하는 리렌더링 상황 등에서는 호출되지 않습니다. 
 
 <Sandpack>
 
@@ -845,9 +846,9 @@ export default function TodoList({ username }) {
 
 <Solution />
 
-#### Passing the initial state directly {/*passing-the-initial-state-directly*/}
+#### 초기 state 직접 전달 {/*passing-the-initial-state-directly*/}
 
-This example **does not** pass the initializer function, so the `createInitialState` function runs on every render, such as when you type into the input. There is no observable difference in behavior, but this code is less efficient.
+이 예제에서는 초기화 함수를 **전달하지 않으므로**, `createInitialState` 함수는 인풋에 입력을 할때 발생하는 리렌더링에서도 매번 호출됩니다. 이 코드는 동작에는 큰 차이가 없을 수 있지만, 효율성이 떨어집니다.
 
 <Sandpack>
 
@@ -936,11 +937,11 @@ export default function TodoList({ username }) {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 트러블 슈팅 {/*troubleshooting*/}
 
-### I've dispatched an action, but logging gives me the old state value {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
+### dispatch로 action을 호출해도 오래된 state 값이 출력됩니다. {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
 
-Calling the `dispatch` function **does not change state in the running code**:
+`dispatch` 함수의 호출은 **현재 동작하고 있는 코드의 state를 변경하지 않습니다.**
 
 ```js {4,5,8}
 function handleClick() {
@@ -955,9 +956,9 @@ function handleClick() {
 }
 ```
 
-This is because [states behaves like a snapshot.](/learn/state-as-a-snapshot) Updating state requests another render with the new state value, but does not affect the `state` JavaScript variable in your already-running event handler.
+이러한 현상은 [State가 스냅샷으로서](/learn/state-as-a-snapshot) 사용되기 때문에 일어납니다. state를 업데이트하면 새로운 state를 이용한 또 다른 렌더링이 요청되지만, 이미 실행중인 이벤트 핸들러 내의 `state` 자바스크립트 변수에는 영향을 미치지 않습니다.
 
-If you need to guess the next state value, you can calculate it manually by calling the reducer yourself:
+만약 다음 state 값을 알고 싶다면, reducer 함수를 직접 호출해서 다음 값을 계산해볼 수 있습니다.
 
 ```js
 const action = { type: 'incremented_age' };
@@ -970,9 +971,9 @@ console.log(nextState); // { age: 43 }
 
 ---
 
-### I've dispatched an action, but the screen doesn't update {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
+### dispatch로 action을 호출해도 화면이 업데이트되지 않습니다. {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
 
-React will **ignore your update if the next state is equal to the previous state,** as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. This usually happens when you change an object or an array in state directly:
+React는 **이전 state와 다음 state를 비교했을 때, 값이 일치한다면 업데이트가 무시됩니다.** 비교는 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)를 통해 이루어집니다. 이런 현상은 보통 객체나 배열의 state를 직접적으로 수정했을 때 발생합니다.
 
 ```js {4-5,9-10}
 function reducer(state, action) {
@@ -992,7 +993,7 @@ function reducer(state, action) {
 }
 ```
 
-You mutated an existing `state` object and returned it, so React ignored the update. To fix this, you need to ensure that you're always [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) instead of mutating them:
+React는 기존의 `state` 객체가 mutation된 상태로 반환된다면 업데이트를 무시합니다. 이러한 현상을 방지하기 위해서는 객체나 배열을 mutation시키지 않고 [객체 state를 변경](/learn/updating-objects-in-state)하거나 [배열 state](/learn/updating-arrays-in-state)를 변경해야 합니다.
 
 ```js {4-8,11-15}
 function reducer(state, action) {
@@ -1018,9 +1019,9 @@ function reducer(state, action) {
 
 ---
 
-### A part of my reducer state becomes undefined after dispatching {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
+### reducer의 state 일부가 dispatch된 이후에 undefined가 할당됩니다. {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
 
-Make sure that every `case` branch **copies all of the existing fields** when returning the new state:
+각각의 `case`가 **새로운 state를 반환할 때 기존에 있던 필드를 모두 복사하는지** 확인해보세요.
 
 ```js {5}
 function reducer(state, action) {
@@ -1034,13 +1035,13 @@ function reducer(state, action) {
     // ...
 ```
 
-Without `...state` above, the returned next state would only contain the `age` field and nothing else.
+위의 코드에서는 `...state`가 없다면 다음 state는 오로지 `age` 필드만 포함하거나, 아무것도 포함하지 않을 것입니다.
 
 ---
 
-### My entire reducer state becomes undefined after dispatching {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
+### reducer의 모든 state가 dispatch가 이루어 진 후 undefined가 할당됩니다. {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
 
-If your state unexpectedly becomes `undefined`, you're likely forgetting to `return` state in one of the cases, or your action type doesn't match any of the `case` statements. To find why, throw an error outside the `switch`:
+state에 예기치 않은 `undefined`가 할당되고 있다면 case 중 하나에 `return`이 누락되었거나 action의 타입이 `case`와 짝지어지지 않았을 수 있습니다. 이유를 찾기 위해 switch문 밖에서 에러를 throw 할 수 있습니다.
 
 ```js {10}
 function reducer(state, action) {
@@ -1056,13 +1057,13 @@ function reducer(state, action) {
 }
 ```
 
-You can also use a static type checker like TypeScript to catch such mistakes.
+이 외에도 실수를 방지하기 위해 타입스크립트 같은 정적 타입 체커를 사용할 수 있습니다.
 
 ---
 
-### I'm getting an error: "Too many re-renders" {/*im-getting-an-error-too-many-re-renders*/}
+### "Too many re-renders" 오류가 발생합니다. {/*im-getting-an-error-too-many-re-renders*/}
 
-You might get an error that says: `Too many re-renders. React limits the number of renders to prevent an infinite loop.` Typically, this means that you're unconditionally dispatching an action *during render*, so your component enters a loop: render, dispatch (which causes a render), render, dispatch (which causes a render), and so on. Very often, this is caused by a mistake in specifying an event handler:
+`Too many re-renders. React limits the number of renders to prevent an infinite loop.`라는 에러 메세지를 받을 수 있습니다. 일반적으로는 렌더링 과정에서 dispatch가 실행될 때 이러한 일이 일어납니다. 렌더링은 dispatch를 야기하고, dispatch는 렌더링을 야기하므로 렌더링 무한 루프가 일어납니다. 이러한 상황은 이벤트 핸들러를 잘못 호출할 때 종종 발생합니다.
 
 ```js {1-2}
 // 🚩 Wrong: calls the handler during render
@@ -1075,17 +1076,17 @@ return <button onClick={handleClick}>Click me</button>
 return <button onClick={(e) => handleClick(e)}>Click me</button>
 ```
 
-If you can't find the cause of this error, click on the arrow next to the error in the console and look through the JavaScript stack to find the specific `dispatch` function call responsible for the error.
+오류의 원인을 찾을 수 없는 경우에는 어느 `dispatch` 함수에서 에러가 생성되는지 확인하기 위해 콘솔창의 오류 옆에 있는 화살표를 클릭한 후 자바스크립트 스택을 찾아보세요.
 
 ---
 
-### My reducer or initializer function runs twice {/*my-reducer-or-initializer-function-runs-twice*/}
+### reducer와 초기화 함수가 두번 호출됩니다. {/*my-reducer-or-initializer-function-runs-twice*/}
 
-In [Strict Mode](/reference/react/StrictMode), React will call your reducer and initializer functions twice. This shouldn't break your code.
+React는 [엄격 모드](/reference/react/StrictMode)일 때 reducer와 초기화 함수를 두번씩 호출합니다. 이 현상은 코드 실행에 문제가 되지 않습니다.
 
-This **development-only** behavior helps you [keep components pure.](/learn/keeping-components-pure) React uses the result of one of the calls, and ignores the result of the other call. As long as your component, initializer, and reducer functions are pure, this shouldn't affect your logic. However, if they are accidentally impure, this helps you notice the mistakes.
+이러한 현상은 컴포넌트가 [순수함수로 유지될 수 있도록](/learn/keeping-components-pure) 오직 개발 환경에서만 일어나며, 두개의 호출 중 하나는 무시됩니다. 컴포넌트, 초기화 함수, reducer가 순수하다면 로직에 아무런 영향을 미치지 않지만, 순수하지 않다면 실수를 알아챌 수 있도록 알려줍니다.
 
-For example, this impure reducer function mutates an array in state:
+예시로, 아래의 순수하지 않은 reducer 함수는 state 배열에 mutation을 일으키고 있습니다.
 
 ```js {4-6}
 function reducer(state, action) {
@@ -1100,7 +1101,7 @@ function reducer(state, action) {
 }
 ```
 
-Because React calls your reducer function twice, you'll see the todo was added twice, so you'll know that there is a mistake. In this example, you can fix the mistake by [replacing the array instead of mutating it](/learn/updating-arrays-in-state#adding-to-an-array):
+React는 reducer 함수를 두 번 호출하므로 todo가 두 개 추가되는 것을 볼 수 있고, 이를 통해 reducer 함수 작성에 실수가 있다는 것을 알아낼 수 있습니다. 이러한 실수는 [배열을 mutation 하지 않고 교체하는 방법](/learn/updating-arrays-in-state#adding-to-an-array)을 통해 수정할 수 있습니다.
 
 ```js {4-11}
 function reducer(state, action) {
@@ -1120,6 +1121,6 @@ function reducer(state, action) {
 }
 ```
 
-Now that this reducer function is pure, calling it an extra time doesn't make a difference in behavior. This is why React calling it twice helps you find mistakes. **Only component, initializer, and reducer functions need to be pure.** Event handlers don't need to be pure, so React will never call your event handlers twice.
+이제 reducer 함수는 순수하므로, 여러번 호출되어도 같은 값을 보장할 수 있습니다. React는 순수성을 보장하기 위해 개발 환경에서 두번씩 호출합니다. **오로지 컴포넌트와 초기화 함수, reducer 함수만 순수할 필요가 있습니다.** 이벤트 핸들러는 순수할 필요가 없습니다. 따라서 이벤트 핸들러는 두 번씩 호출되지 않습니다.
 
-Read [keeping components pure](/learn/keeping-components-pure) to learn more.
+자세한 사항은 [컴포넌트를 순수하게 유지하기](/learn/keeping-components-pure)를 읽어보세요.

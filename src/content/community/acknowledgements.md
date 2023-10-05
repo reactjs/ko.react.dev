@@ -1,16 +1,16 @@
 ---
-title: Acknowledgements
+title: 감사의 말
 ---
 
 <Intro>
 
-React was originally created by [Jordan Walke.](https://github.com/jordwalke) Today, React has a [dedicated full-time team working on it](/community/team), as well as over a thousand [open source contributors.](https://github.com/facebook/react/blob/main/AUTHORS)
+React는 원래 [Jordan Walke](https://github.com/jordwalke)에 의해 만들어졌습니다. 오늘날 React에는 [작업을 전담하는 전임 팀](/community/team)과 천여 명이 넘는 [오픈 소스 기여자들](https://github.com/facebook/react/blob/main/AUTHORS)이 있습니다.
 
 </Intro>
 
-## Past contributors {/*past-contributors*/}
+## 과거 기여자 {/*past-contributors*/}
 
-We'd like to recognize a few people who have made significant contributions to React and its documentation in the past and have helped maintain them over the years:
+과거에 React와 그 문서에 상당한 기여를 하고 수년간 이를 유지 관리하는 데 도움을 준 분들을 소개합니다.
 
 * [Almero Steyn](https://github.com/AlmeroSteyn)
 * [Andreas Svensson](https://github.com/syranide)
@@ -51,15 +51,15 @@ We'd like to recognize a few people who have made significant contributions to R
 * [Tim Yung](https://github.com/yungsters)
 * [Xuan Huang](https://github.com/huxpro)
 
-This list is not exhaustive.
+이 목록이 전체 목록은 아닙니다.
 
-We'd like to give special thanks to [Tom Occhino](https://github.com/tomocchino) and [Adam Wolff](https://github.com/wolffiex) for their guidance and support over the years. We are also thankful to all the volunteers who [translated React into other languages.](https://translations.reactjs.org/)
+수년간 지도와 지원을 주신 [Tom Occhino](https://github.com/tomocchino)와 [Adam Wolff](https://github.com/wolffiex)에게 특별한 감사를 드립니다. [리액트를 다른 언어로 번역한](https://translations.reactjs.org/) 모든 자원봉사자에게도 감사합니다.
 
-## Additional Thanks {/*additional-thanks*/}
+## 특별한 감사 인사 {/*additional-thanks*/}
 
-Additionally, we're grateful to:
+뿐만 아니라, 다음 분들도 감사드립니다.
 
-* [Jeff Barczewski](https://github.com/jeffbski) for allowing us to use the `react` package name on npm
-* [Christopher Aue](https://christopheraue.net/) for letting us use the reactjs.com domain name and the [@reactjs](https://twitter.com/reactjs) username on Twitter
-* [ProjectMoon](https://github.com/ProjectMoon) for letting us use the [flux](https://www.npmjs.com/package/flux) package name on npm
-* Shane Anderson for allowing us to use the [react](https://github.com/react) org on GitHub
+* npm에서 `react` package 이름을 사용하도록 허락한 [Jeff Barczewski](https://github.com/jeffbski)
+* reactjs.com 도메인명과 트위터의 [@reactjs](https://twitter.com/reactjs) 사용자 아이디를 양보한 [Christopher Aue](https://christopheraue.net/)
+* npm에서 [flux](https://www.npmjs.com/package/flux) package 이름을 사용하도록 한 [ProjectMoon](https://github.com/ProjectMoon)
+* GitHub의 [react](https://github.com/react) 조직을 사용하게 한 Shane Anderson
