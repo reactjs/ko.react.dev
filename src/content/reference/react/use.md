@@ -5,13 +5,14 @@ canary: true
 
 <Canary>
 
-The `use` Hook is currently only available in React's canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+`use` Hook은 현재 React의 canary 채널과 실험 채널에서만 사용할 수 있습니다. 자세한 내용은 [React 릴리즈 채널](https://ko.react.dev/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
 
 </Canary>
 
 <Intro>
 
-`use` is a React Hook that lets you read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+`use`는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](https://ko.react.dev/learn/passing-data-deeply-with-context)와 같은 데이터를 참조하는 React Hook입니다.
+
 
 ```js
 const value = use(resource);
@@ -27,7 +28,8 @@ const value = use(resource);
 
 ### `use(resource)` {/*use*/}
 
-Call `use` in your component to read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+컴포넌트에서 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](https://ko.react.dev/learn/passing-data-deeply-with-context)와 같은 데이터를 참조하려면 `use`를 사용합니다.
+
 
 ```jsx
 import { use } from 'react';
@@ -38,33 +40,41 @@ function MessageComponent({ messagePromise }) {
   // ...
 ```
 
-Unlike all other React Hooks, `use` can be called within loops and conditional statements like `if`. Like other React Hooks, the function that calls `use` must be a Component or Hook.
+다른 React Hook과 달리 `use`는 `if`와 같은 조건문과 반복문 내부에서 호출할 수 있습니다.
+다른 React Hook과 같이 `use`는 컴포넌트 또는 Hook에서만 호출할 수 있습니다.
 
-When called with a Promise, the `use` Hook integrates with [`Suspense`](/reference/react/Suspense) and [error boundaries](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). The component calling `use` *suspends* while the Promise passed to `use` is pending. If the component that calls `use` is wrapped in a Suspense boundary, the fallback will be displayed.  Once the Promise is resolved, the Suspense fallback is replaced by the rendered components using the data returned by the `use` Hook. If the Promise passed to `use` is rejected, the fallback of the nearest Error Boundary will be displayed.
+Promise와 함께 호출될 때 `use` Hook은 [Suspense](https://ko.react.dev/reference/react/Suspense) 및 [error boundary](https://ko.react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)와 통합됩니다.
+`use`에 전달된 Promise가 보류되는 동안 `use`를 호출하는 컴포넌트는 *일시 중단*됩니다.
+`use`를 호출하는 컴포넌트가 Suspense 경계로 둘러싸여 있으면 fallback이 표시됩니다.
+Promise가 리졸브되면 Suspense fallback은 `use` Hook이 반환한 컴포넌트로 대체됩니다.
+`use`에 전달된 Promise가 거부되면 가장 가까운 Error Boundary의 fallback이 표시됩니다.
 
-[See more examples below.](#usage)
+[사용법 확인하기](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `resource`: this is the source of the data you want to read a value from. A resource can be a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or a [context](/learn/passing-data-deeply-with-context).
+* `resource`: 참조하려는 데이터입니다. 데이터는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](https://ko.react.dev/learn/passing-data-deeply-with-context)일 수 있습니다.
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-The `use` Hook returns the value that was read from the resource like the resolved value of a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+`use` Hook은 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](https://ko.react.dev/learn/passing-data-deeply-with-context)에서 참조한 값을 반환합니다.
 
-#### Caveats {/*caveats*/}
 
-* The `use` Hook must be called inside a Component or a Hook.
-* When fetching data in a [Server Component](/reference/react/use-server), prefer `async` and `await` over `use`. `async` and `await` pick up rendering from the point where `await` was invoked, whereas `use` re-renders the component after the data is resolved.
-* Prefer creating Promises in [Server Components](/reference/react/use-server) and passing them to [Client Components](/reference/react/use-client) over creating Promises in Client Components. Promises created in Client Components are recreated on every render. Promises passed from a Server Component to a Client Component are stable across re-renders. [See this example](#streaming-data-from-server-to-client).
+#### 주의사항 {/*caveats*/}
+
+* `use` Hook은 컴포넌트나 Hook 내부에서 호출되어야 합니다.
+* [서버 컴포넌트](https://ko.react.dev/reference/react/use-server)에서 데이터를 fetch할 때는 `use`보다 `async` 및 `await`를 사용합니다.
+* `async` 및 `await`은 `await`이 호출된 시점부터 렌더링을 시작하는 반면 `use`는 데이터가 리졸브된 후 컴포넌트를 리렌더링합니다.
+* [클라이언트 컴포넌트](https://ko.react.dev/reference/react/use-client)에서 Promise를 생성하는 것보다 [서버 컴포넌트](https://ko.react.dev/reference/react/use-server)에서 Promise를 생성하여 클라이언트 컴포넌트에 전달하는 것이 좋습니다. 클라이언트 컴포넌트에서 생성된 Promise는 렌더링할 때마다 다시 생성됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 전달된 Promise는 리렌더링 전반에 걸쳐 안정적입니다. [예시 확인하기](#streaming-data-from-server-to-client).
+
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Reading context with `use` {/*reading-context-with-use*/}
+### `use`를 사용하여 context 참조하기 {/*reading-context-with-use*/}
 
-When a [context](/learn/passing-data-deeply-with-context) is passed to `use`, it works similarly to [`useContext`](/reference/react/useContext). While `useContext` must be called at the top level of your component, `use` can be called inside conditionals like `if` and loops like `for`. `use` is preferred over `useContext` because it is more flexible.
+[context](https://ko.react.dev/learn/passing-data-deeply-with-context)가 `use`에 전달되면 [`useContext`](https://ko.react.dev/reference/react/useContext)와 유사하게 작동합니다. `useContext`는 컴포넌트의 최상위 수준에서 호출해야 하지만 `use`는 `if`와 같은 조건문이나 `for`과 같은 반복문 내부에서 호출할 수 있습니다. `use`는 유연하므로 `useContext`보다 선호됩니다.
 
 ```js [[2, 4, "theme"], [1, 4, "ThemeContext"]]
 import { use } from 'react';
@@ -74,9 +84,9 @@ function Button() {
   // ... 
 ```
 
-`use` returns the <CodeStep step={2}>context value</CodeStep> for the <CodeStep step={1}>context</CodeStep> you passed. To determine the context value, React searches the component tree and finds **the closest context provider above** for that particular context.
+`use`는 전달한 <CodeStep step={1}>context</CodeStep>의 <CodeStep step={2}>context 값</CodeStep>을 반환합니다. context 값을 결정하기 위해 React는 컴포넌트 트리를 검색하고 **위에서 가장 가까운 context provider**를 찾습니다.
 
-To pass context to a `Button`, wrap it or one of its parent components into the corresponding context provider.
+context를 `Button`에 전달하려면 `Button` 또는 상위 컴포넌트 중 하나를 context provider로 래핑합니다.
 
 ```js [[1, 3, "ThemeContext"], [2, 3, "\\"dark\\""], [1, 5, "ThemeContext"]]
 function MyPage() {
@@ -88,13 +98,14 @@ function MyPage() {
 }
 
 function Form() {
-  // ... renders buttons inside ...
+  // ... 버튼 렌더링 ...
 }
 ```
 
-It doesn't matter how many layers of components there are between the provider and the `Button`. When a `Button` *anywhere* inside of `Form` calls `use(ThemeContext)`, it will receive `"dark"` as the value.
+provider와 `Button` 사이에 얼마나 많은 컴포넌트가 있는지는 중요하지 않습니다. `Form` 내부의 *어느 곳이든* `Button`이 `use(ThemeContext)`를 호출하면 `"dark"`를 값으로 받습니다
 
-Unlike [`useContext`](/reference/react/useContext), <CodeStep step={2}>`use`</CodeStep> can be called in conditionals and loops like <CodeStep step={1}>`if`</CodeStep>.
+[`useContext`](https://ko.react.dev/reference/react/useContext)와 달리 <CodeStep step={2}>`use`</CodeStep>는 <CodeStep step={1}>`if`</CodeStep>와 같은 조건문과 반복문 내부에서 호출할 수 있습니다.
+
 
 ```js [[1, 2, "if"], [2, 3, "use"]]
 function HorizontalRule({ show }) {
@@ -106,11 +117,12 @@ function HorizontalRule({ show }) {
 }
 ```
 
-<CodeStep step={2}>`use`</CodeStep> is called from inside a <CodeStep step={1}>`if`</CodeStep> statement, allowing you to conditionally read values from a Context.
+<CodeStep step={2}>`use`</CodeStep>는 <CodeStep step={1}>`if`</CodeStep> 내부에서 호출되므로 context에서 조건부로 값을 참조할 수 있습니다.
+
 
 <Pitfall>
 
-Like `useContext`, `use(context)` always looks for the closest context provider *above* the component that calls it. It searches upwards and **does not** consider context providers in the component from which you're calling `use(context)`.
+`useContext`와 마찬가지로 `use(context)`는 호출 컴포넌트의 **위에서** 가장 가까운 context provider를 찾습니다. 위쪽으로 검색하며 `use(context)`를 호출 컴포넌트 내부의 context provider는 고려하지 **않습니다**.
 
 </Pitfall>
 
@@ -212,9 +224,9 @@ function Button({ show, children }) {
 
 </Sandpack>
 
-### Streaming data from the server to the client {/*streaming-data-from-server-to-client*/}
+### 서버에서 클라이언트로 데이터 스트리밍하기 {/*streaming-data-from-server-to-client*/}
 
-Data can be streamed from the server to the client by passing a Promise as a prop from a <CodeStep step={1}>Server Component</CodeStep> to a <CodeStep step={2}>Client Component</CodeStep>.
+<CodeStep step={1}>서버 컴포넌트</CodeStep>에서 <CodeStep step={2}>클라이언트 컴포넌트</CodeStep>로 Promise prop을 전달하여 서버에서 클라이언트로 데이터를 스트리밍할 수 있습니다.
 
 ```js [[1, 4, "App"], [2, 2, "Message"], [3, 7, "Suspense"], [4, 8, "messagePromise", 30], [4, 5, "messagePromise"]]
 import { fetchMessage } from './lib.js';
@@ -230,7 +242,8 @@ export default function App() {
 }
 ```
 
-The <CodeStep step={2}>Client Component</CodeStep> then takes <CodeStep step={4}>the Promise it received as a prop</CodeStep> and passes it to the <CodeStep step={5}>`use`</CodeStep> Hook. This allows the <CodeStep step={2}>Client Component</CodeStep> to read the value from <CodeStep step={4}>the Promise</CodeStep> that was initially created by the Server Component.
+<CodeStep step={2}>클라이언트 컴포넌트</CodeStep>는 <CodeStep step={4}>prop으로 받은 Promise</CodeStep>를 <CodeStep step={5}>`use`</CodeStep> Hook에 전달합니다.
+<CodeStep step={2}>Client Component</CodeStep>는 서버 컴포넌트가 처음에 생성한 <CodeStep step={4}>Promise</CodeStep>에서 값을 읽을 수 있습니다.
 
 ```js [[2, 6, "Message"], [4, 6, "messagePromise"], [4, 7, "messagePromise"], [5, 7, "use"]]
 // message.js
@@ -243,7 +256,8 @@ export function Message({ messagePromise }) {
   return <p>Here is the message: {messageContent}</p>;
 }
 ```
-Because <CodeStep step={2}>`Message`</CodeStep> is wrapped in <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep>, the fallback will be displayed until the Promise is resolved. When the Promise is resolved, the value will be read by the <CodeStep step={5}>`use`</CodeStep> Hook and the <CodeStep step={2}>`Message`</CodeStep> component will replace the Suspense fallback.
+
+<CodeStep step={2}>`Message`</CodeStep>는 <CodeStep step={3}>[`Suspense`](https://ko.react.dev/reference/react/Suspense)</CodeStep>로 래핑되어 있으므로 Promise가 리졸브될 때까지 fallback이 표시됩니다. Promise가 리졸브되면 <CodeStep step={5}>`use`</CodeStep> Hook이 값을 참조하고 <CodeStep step={2}>`Message`</CodeStep> 컴포넌트가 Suspense fallback을 대체합니다.
 
 <Sandpack>
 
@@ -291,16 +305,12 @@ export default function App() {
 ```
 
 ```js index.js hidden
-// TODO: update to import from stable
-// react instead of canary once the `use`
-// Hook is in a stable release of React
+// TODO: `use` Hook이 안정적으로 릴리즈 되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
-// TODO: update this example to use
-// the Codesandbox Server Component
-// demo environment once it is created
+// TODO: 이 예제를 업데이트하여 작성한 후 Codesandbox Server Component 데모 환경을 사용합니다
 import App from './App';
 
 const root = createRoot(document.getElementById('root'));
@@ -325,16 +335,16 @@ root.render(
 
 <Note>
 
-When passing a Promise from a Server Component to a Client Component, its resolved value must be serializable to pass between server and client. Data types like functions aren't serializable and cannot be the resolved value of such a Promise.
+서버 컴포넌트에서 클라이언트 컴포넌트로 Promise를 전달할 때 리졸브된 값이 직렬화 가능해야 합니다. 함수는 직렬화할 수 없으므로 Promise의 리졸브 값이 될 수 없습니다.
 
 </Note>
 
 
 <DeepDive>
 
-#### Should I resolve a Promise in a Server or Client Component? {/*resolve-promise-in-server-or-client-component*/}
+#### 서버 또는 클라이언트 컴포넌트에서 프로미스를 리졸브해만 하나요? {/*resolve-promise-in-server-or-client-component*/}
 
-A Promise can be passed from a Server Component to a Client Component and resolved in the Client component with the `use` Hook. You can also resolve the Promise in a Server Component with `await` and pass the required data to the Client Component as a prop.
+Promise는 서버 컴포넌트에서 클라이언트 컴포넌트로 전달될 수 있으며 `use` Hook을 통해 클라이언트 컴포넌트에서 리졸브됩니다. 또한 서버 컴포넌트에서 `await`을 사용하여 Promise를 리졸브하고 데이터를 클라이언트 컴포넌트에 `prop`으로 전달하는 방법도 존재합니다.
 
 ```js
 export default function App() {
@@ -343,24 +353,26 @@ export default function App() {
 }
 ```
 
-But using `await` in a [Server Component](/reference/react/components#server-components) will block its rendering until the `await` statement is finished. Passing a Promise from a Server Component to a Client Component prevents the Promise from blocking the rendering of the Server Component.
+하지만 [서버 컴포넌트](https://ko.react.dev/reference/react/use-server)에서 `await`을 사용하면 `await` 문이 완료될 때까지 렌더링이 차단됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 Promise를 prop으로 전달하면 Promise가 서버 컴포넌트의 렌더링을 차단하는 것을 방지할 수 있습니다.
 
 </DeepDive>
 
-### Dealing with rejected Promises {/*dealing-with-rejected-promises*/}
+### 거부된 Promise 처리하기 {/*dealing-with-rejected-promises*/}
 
-In some cases a Promise passed to `use` could be rejected. You can handle rejected Promises by either:
+경우에 따라 `use`에 전달된 Promise가 거부될 수 있습니다. 거부된 프로미스를 처리하는 방법은 2가지가 존재합니다.
 
-1. [Displaying an error to users with error boundary.](#displaying-an-error-to-users-with-error-boundary)
-2. [Providing an alternative value with `Promise.catch`](#providing-an-alternative-value-with-promise-catch)
+1. [error boundary를 사용하여 오류를 표시하기](#displaying-an-error-to-users-with-error-boundary)
+2. [`Promise.catch`로 대체 값 제공하기](#providing-an-alternative-value-with-promise-catch)
 
 <Pitfall>
-`use` cannot be called in a try-catch block. Instead of a try-catch block [wrap your component in an Error Boundary](#displaying-an-error-to-users-with-error-boundary), or [provide an alternative value to use with the Promise's `.catch` method](#providing-an-alternative-value-with-promise-catch).
+
+`use`는 try-catch 블록에서 호출할 수 없습니다. try-catch 블록 대신 [컴포넌트를 Error Boundary로 래핑]((#displaying-an-error-to-users-with-error-boundary))하거나 Promise의 [`catch` 메서드를 사용하여 대체 값을 제공합니다.]((#providing-an-alternative-value-with-promise-catch))
 </Pitfall>
 
-#### Displaying an error to users with a error boundary {/*displaying-an-error-to-users-with-error-boundary*/}
+####  error boudary를 사용하여 오류 표시하기 {/*error-boudary를-사용하여-오류-표시하기*/}
+ {/*displaying-an-error-to-users-with-error-boundary*/}
 
-If you'd like to display an error to your users when a Promise is rejected, you can use an [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). To use an error boundary, wrap the component where you are calling the `use` Hook in an error boundary. If the Promise passed to `use` is rejected the fallback for the error boundary will be displayed.
+Promise가 거부될 때 오류를 표시하고 싶다면 [error boundary](https://ko.react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용합니다. error boundary를 사용하려면 `use` Hook을 호출하는 컴포넌트를 error boundary로 래핑합니다. `use`에 전달된 Promise가 거부되면 error boundary에 대한 fallback이 표시됩니다.
 
 <Sandpack>
 
@@ -411,16 +423,12 @@ export default function App() {
 ```
 
 ```js index.js hidden
-// TODO: update to import from stable
-// react instead of canary once the `use`
-// Hook is in a stable release of React
+// TODO: `use` Hook이 안정적으로 릴리즈 되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
-// TODO: update this example to use
-// the Codesandbox Server Component
-// demo environment once it is created
+// TODO: 이 예제를 업데이트하여 작성한 후 Codesandbox Server Component 데모 환경을 사용합니다
 import App from './App';
 
 const root = createRoot(document.getElementById('root'));
@@ -444,9 +452,9 @@ root.render(
 ```
 </Sandpack>
 
-#### Providing an alternative value with `Promise.catch` {/*providing-an-alternative-value-with-promise-catch*/}
+### `Promise.catch`를 사용하여 대체 값 제공하기 {/*providing-an-alternative-value-with-promise-catch*/}
 
-If you'd like to provide an alternative value when the Promise passed to `use` is rejected you can use the Promise's <CodeStep step={1}>[`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)</CodeStep> method.
+`use`에 전달된 Promise가 거부될 때 대체 값을 제공하려면 Promise의 <CodeStep step={1}>[`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)</CodeStep>메서드를 사용합니다.
 
 ```js [[1, 6, "catch"],[2, 7, "return"]]
 import { Message } from './message.js';
@@ -466,31 +474,33 @@ export default function App() {
 }
 ```
 
-To use the Promise's <CodeStep step={1}>`catch`</CodeStep> method, call <CodeStep step={1}>`catch`</CodeStep> on the Promise object. <CodeStep step={1}>`catch`</CodeStep> takes a single argument: a function that takes an error message as an argument. Whatever is <CodeStep step={2}>returned</CodeStep> by the function passed to <CodeStep step={1}>`catch`</CodeStep> will be used as the resolved value of the Promise.
+Promise의 <CodeStep step={1}>`catch`</CodeStep> 메서드를 사용하려면 Promise 객체에서 <CodeStep step={1}>`catch`</CodeStep>를 호출합니다. <CodeStep step={1}>`catch`</CodeStep>는 오류 메시지를 인자로 받는 함수를 인수로 받습니다. <CodeStep step={1}>`catch`</CodeStep>에 전달된 함수가 <CodeStep step={2}>반환하는</CodeStep>하는 값은 모두 Promise의 리졸브 값으로 사용됩니다.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 트러블슈팅 {/*troubleshooting*/}
+
 
 ### "Suspense Exception: This is not a real error!" {/*suspense-exception-error*/}
 
-You are either calling `use` outside of a React component or Hook function, or calling `use` in a try–catch block. If you are calling `use` inside a try–catch block, wrap your component in an error boundary, or call the Promise's `catch` to catch the error and resolve the Promise with another value. [See these examples](#dealing-with-rejected-promises).
+React 컴포넌트 또는 hook 함수 외부에서, 혹은 try-catch 블록에서 `use`를 호출하고 있는 경우입니다. try-catch 블록 내에서 `use`를 호출하는 경우 컴포넌트를 error boundary로 래핑하거나 Promise의 `catch`를 호출하여 에러를 발견하고 Promise를 다른 값으로 리졸브합니다. [예시 확인하기](#dealing-with-rejected-promises)
 
-If you are calling `use` outside a React component or Hook function, move the `use` call to a React component or Hook function.
+React 컴포넌트나 Hook 함수 외부에서 `use`를 호출하는 경우 `use` 호출을 React 컴포넌트나 Hook 함수로 이동합니다.
+
 
 ```jsx
 function MessageComponent({messagePromise}) {
   function download() {
-    // ❌ the function calling `use` is not a Component or Hook
+    // ❌ `use`를 호출하는 함수가 컴포넌트나 hook이 아닙니다.
     const message = use(messagePromise);
     // ...
 ```
 
-Instead, call `use` outside any component closures, where the function that calls `use` is a component or Hook.
+컴포넌트 클로저 외부에서 `use`를 호출합니다. 여기서 `use`를 호출하는 함수는 컴포넌트 또는 Hook입니다.
 
 ```jsx
 function MessageComponent({messagePromise}) {
-  // ✅ `use` is being called from a component. 
+  // ✅ `use`가 컴포넌트에서 호출되고 있습니다.
   const message = use(messagePromise);
   // ...
 ```
