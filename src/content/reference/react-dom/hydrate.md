@@ -44,7 +44,7 @@ React는 `domNode`에 있는 HTML에 연결되고, 그 내부의 DOM 관리를 �
 
 * `reactNode`: HTML을 렌더링하기 위해 사용되는 React 노드입니다. React 17의 `renderToString(<App />)`같은 `ReactDOM Server` 메서드로 렌더링 된 `<App />`처럼, 일반적으로 JSX 조각 형태입니다.
 
-* `domNode`: 서버에서 루트 요소로서 렌더링 된 [DOM 요소](https://developer.mozilla.org/en-US/docs/Web/API/Element)입니다.
+* `domNode`: 서버에서 루트 요소로 렌더링 된 [DOM 요소](https://developer.mozilla.org/en-US/docs/Web/API/Element)입니다.
 
 * **optional**: `callback`: 컴포넌트가 hydrate 된 후 호출되는 함수입니다.
 
@@ -54,7 +54,7 @@ React는 `domNode`에 있는 HTML에 연결되고, 그 내부의 DOM 관리를 �
 
 #### 주의 사항 {/*caveats*/}
 * `hydrate`는 클라이언트에서 렌더링 된 콘텐츠가 서버에서 렌더링 된 콘텐츠와 동일할 것이라고 예상합니다. 텍스트 콘텐츠의 차이 정도는 React가 조정할 수 있긴 하지만, 불일치는 버그로 간주하고 수정해야 합니다.
-* 개발 모드에서 React는 hydration 중 일어난 불일치에 대해 경고합니다. 불일치가 일어날 경우 어트리뷰트 차이가 조정된다고 보장할 수 없고, 모든 마크업의 유효성을 검사하는 것은 매우 큰 비용이 들어가기 때문에 성능상 문제가 발생할 수 있습니다. 대부분의 앱에서 불일치는 드문 현상입니다.
+* 개발 모드에서 React는 hydration 중 일어난 불일치에 대해 경고합니다. 불일치하는 경우 어트리뷰트 차이가 조정된다는 보장은 없습니다. 이는 성능상의 이유로 중요한데, 대부분의 앱에서 불일치가 발생하는 경우는 드물기 때문에 모든 마크업의 유효성을 검사하는 데 엄청난 비용이 들기 때문입니다.
 * 각 앱에서 `hydrate`는 한 번만 실행하세요. 프레임워크를 사용하는 경우 프레임워크가 대신 호출하고 있을 것입니다.
 * 앱이 서버에서 렌더링 된 HTML 없이 클라이언트에서만 렌더링 되는 경우엔 `hydrate()`를 사용할 수 없습니다. 이럴 때는 [render()](/reference/react-dom/render)(React 17 이하) 또는 [createRoot()](/reference/react-dom/client/createRoot)(React 18+)를 사용하세요.
 
