@@ -5,7 +5,7 @@ canary: true
 
 <Canary>
 
-`use` Hook은 현재 React의 canary 채널과 실험 채널에서만 사용할 수 있습니다. 자세한 내용은 [React 릴리즈 채널](https://ko.react.dev/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
+`use` Hook은 현재 React의 canary 채널과 실험 채널에서만 사용할 수 있습니다. 자세한 내용은 [React 릴리즈   채널](https://ko.react.dev/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
 
 </Canary>
 
@@ -55,15 +55,15 @@ Promise가 리졸브되면 Suspense fallback은 `use` Hook이 반환한 컴포�
 
 * `resource`: 참조하려는 데이터입니다. 데이터는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](https://ko.react.dev/learn/passing-data-deeply-with-context)일 수 있습니다.
 
-#### 반환값 {/*returns*/}
+#### 반환 값 {/*returns*/}
 
 `use` Hook은 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](https://ko.react.dev/learn/passing-data-deeply-with-context)에서 참조한 값을 반환합니다.
 
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * `use` Hook은 컴포넌트나 Hook 내부에서 호출되어야 합니다.
-* [서버 컴포넌트](https://ko.react.dev/reference/react/use-server)에서 데이터를 fetch할 때는 `use`보다 `async` 및 `await`를 사용합니다.
+* [서버 컴포넌트](https://ko.react.dev/reference/react/use-server)에서 데이터를 fetch 할 때는 `use`보다 `async` 및 `await`를 사용합니다.
 * `async` 및 `await`은 `await`이 호출된 시점부터 렌더링을 시작하는 반면 `use`는 데이터가 리졸브된 후 컴포넌트를 리렌더링합니다.
 * [클라이언트 컴포넌트](https://ko.react.dev/reference/react/use-client)에서 Promise를 생성하는 것보다 [서버 컴포넌트](https://ko.react.dev/reference/react/use-server)에서 Promise를 생성하여 클라이언트 컴포넌트에 전달하는 것이 좋습니다. 클라이언트 컴포넌트에서 생성된 Promise는 렌더링할 때마다 다시 생성됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 전달된 Promise는 리렌더링 전반에 걸쳐 안정적입니다. [예시 확인하기](#streaming-data-from-server-to-client).
 
@@ -305,7 +305,7 @@ export default function App() {
 ```
 
 ```js index.js hidden
-// TODO: `use` Hook이 안정적으로 릴리즈 되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
+// TODO: `use` Hook이 안정적으로 릴리즈되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -423,7 +423,7 @@ export default function App() {
 ```
 
 ```js index.js hidden
-// TODO: `use` Hook이 안정적으로 릴리즈 되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
+// TODO: `use` Hook이 안정적으로 릴리즈되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
