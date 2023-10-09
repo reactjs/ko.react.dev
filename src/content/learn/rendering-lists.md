@@ -1086,7 +1086,11 @@ export const recipes = [{
 
 #### 구분 기호가 있는 리스트 {/*list-with-a-separator*/}
 
+<<<<<<< HEAD
 이 예제는 Katsushika Hokusai의 유명한 하이쿠(일본의 정형시)를 렌더링하며, 각 행은 `<p>` 태그로 래핑되어 있습니다. 여러분이 해야 할 일은 각 단락 사이에 `<hr />` 구분 기호를 삽입하는 것입니다. 결과 구조는 다음과 같아야 합니다.
+=======
+This example renders a famous haiku by Tachibana Hokushi, with each line wrapped in a `<p>` tag. Your job is to insert an `<hr />` separator between each paragraph. Your resulting structure should look like this:
+>>>>>>> 9aa84b19222838f38863ce4bd8f516dbfe193bbc
 
 ```js
 <article>

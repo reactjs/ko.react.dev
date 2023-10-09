@@ -767,7 +767,11 @@ useEffect(() => {
   }
 ```
 
+<<<<<<< HEAD
 **만약 컴포넌트를 다시 마운트했을 때 애플리케이션의 로직이 깨진다면, 기존에 존재하던 버그가 드러난 것입니다.** 사용자의 관점에서 페이지를 방문하는 것과 페이지를 방문하고 링크를 클릭한 다음 뒤로 가기 버튼을 누르는 것 사이에는 차이가 없어야 합니다. React는 개발 환경에서 컴포넌트를 한 번 다시 마운트하여 이 원칙을 준수하는지 확인합니다.
+=======
+**This illustrates that if remounting breaks the logic of your application, this usually uncovers existing bugs.** From a user's perspective, visiting a page shouldn't be different from visiting it, clicking a link, then pressing Back to view the page again. React verifies that your components abide by this principle by remounting them once in development.
+>>>>>>> 9aa84b19222838f38863ce4bd8f516dbfe193bbc
 
 ## 위에서 설명한 모든 것들 적용해보기 {/*putting-it-all-together*/}
 
