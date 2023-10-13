@@ -55,7 +55,7 @@ Promise가 리졸브되면 Suspense fallback은 `use` Hook이 반환한 컴포�
 
 * `resource`: 참조하려는 데이터입니다. 데이터는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](https://ko.react.dev/learn/passing-data-deeply-with-context)일 수 있습니다.
 
-#### 반환 값 {/*returns*/}
+#### 반환값 {/*returns*/}
 
 `use` Hook은 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](https://ko.react.dev/learn/passing-data-deeply-with-context)에서 참조한 값을 반환합니다.
 
