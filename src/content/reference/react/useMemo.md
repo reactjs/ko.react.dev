@@ -38,7 +38,7 @@ function TodoList({ todos, tab }) {
 
 #### 매개변수 {/*parameters*/}
 
-* `calculateValue`: 캐싱하려는 값을 계산하는 함수입니다. 순수하여야 하며 인자를 받지 않고, 모든 타입의 값을 반환할 수 있어야 합니다. React는 초기 렌더링 중에 함수를 호출합니다. 다음 렌더링에서, React는 마지막 렌더링 이후 `dependencies`가 변경되지 않았을 때 동일한 값을 다시 반환합니다. 그렇지 않다면 `calculateValue`를 호출하고 결과를 반환하며, 나중에 재사용할 수 있도록 저장합니다.
+* `calculateValue`: 캐싱하려는 값을 계산하는 함수입니다. 순수해야 하며 인자를 받지 않고, 모든 타입의 값을 반환할 수 있어야 합니다. React는 초기 렌더링 중에 함수를 호출합니다. 다음 렌더링에서, React는 마지막 렌더링 이후 `dependencies`가 변경되지 않았을 때 동일한 값을 다시 반환합니다. 그렇지 않다면 `calculateValue`를 호출하고 결과를 반환하며, 나중에 재사용할 수 있도록 저장합니다.
 
 * `dependencies`: `calculateValue` 코드 내에서 참조된 모든 반응형 값들의 목록입니다. 반응형 값에는 props, state와 컴포넌트 바디에 직접 선언된 모든 변수와 함수가 포함됩니다. 만약 linter가 [React용으로 설정된 경우](/learn/editor-setup#linting) 모든 반응형 값이 의존성으로 올바르게 설정되었는지 확인할 수 있습니다. 의존성 목록은 일정한 수의 항목을 가져야 하며, `[dep1, dep2, dep3]`와 같이 인라인 형태로 작성돼야 합니다. React는 [`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 통해 각 의존성 들을 이전 값과 비교합니다.
 
@@ -64,7 +64,7 @@ function TodoList({ todos, tab }) {
 
 ## 사용법 {/*usage*/}
 
-### 많은 비용이 드는 계산을 다시 하는 것을 생략하기 {/*skipping-expensive-recalculations*/}
+### 비용이 높은 로직의 재계산 생략하기 {/*skipping-expensive-recalculations*/}
 
 재렌더링 사이에 계산을 캐싱하려면 컴포넌트의 최상위 레벨에서 `useMemo`를 호출하여 계산을 감싸면 됩니다.
 
@@ -79,7 +79,7 @@ function TodoList({ todos, tab, theme }) {
 
 `useMemo`에 두 가지를 전달해야 합니다.
 
-1. `() =>`와 같이 인수를 받지 않고 계산하려는 값을 반환하는 <CodeStep step={1}>계산 함수</CodeStep> 입니다.
+1. `() =>`와 같이 인수를 받지 않고 계산하려는 값을 반환하는 <CodeStep step={1}>계산 함수</CodeStep> 입니다은.
 2. 계산 내부에서 사용되는 컴포넌트 내의 모든 값을 포함하는 <CodeStep step={2}>종속성 목록</CodeStep> 입니다.
 
 초기 렌더링에서 `useMemo`에서 얻을 수 있는 <CodeStep step={3}>값</CodeStep>은 <CodeStep step={1}>계산 함수</CodeStep>를 호출한 결과값 입니다.
@@ -299,7 +299,7 @@ label {
 
 <Solution />
 
-#### 항상 값 재계산하기 {/*always-recalculating-a-value*/}
+#### 항상 값을 재계산하기 {/*always-recalculating-a-value*/}
 
 이 예제에서는 렌더링 중에 호출하는 자바스크립트 함수가 실제로 느릴 때 어떤 일이 발생하는지 확인할 수 있도록 `filterTodos`을 **인위적으로 느리게** 만들었습니다. 탭을 전환하고 테마를 토글해 보세요.
 
