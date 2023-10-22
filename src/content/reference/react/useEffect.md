@@ -1687,16 +1687,18 @@ button { margin-left: 10px; }
 
 ---
 
-### Reading the latest props and state from an Effect {/*reading-the-latest-props-and-state-from-an-effect*/}
+### Effect에서 최신 props와 state를 읽기 {/*reading-the-latest-props-and-state-from-an-effect*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+이 섹션은 안정 버전의 리액트에 **반영되지 않은 실험적 API**에 대해 설명합니다.
 
 </Wip>
 
+기본적으로 Effect에서 반응형 값을 읽을 때는 해당 값을 의존성에 추가해야 합니다. 이렇게 하면 Effect가 해당 값의 모든 변경에 '반응'하게 됩니다. 대부분의 의존성에서 원하는 동작입니다.
 By default, when you read a reactive value from an Effect, you have to add it as a dependency. This ensures that your Effect "reacts" to every change of that value. For most dependencies, that's the behavior you want.
 
+**그러나 때로는 Effect에서 최신 props와 state를 '반응'하지 않고 읽고 싶을 수 있습니다.** 예를 들어 매 페이지 방문마다 쇼핑 카트에 담긴 항목 수를 기록하고 싶다고 가정해보겠습니다.
 **However, sometimes you'll want to read the *latest* props and state from an Effect without "reacting" to them.** For example, imagine you want to log the number of the items in the shopping cart for every page visit:
 
 ```js {3}
@@ -1708,7 +1710,7 @@ function Page({ url, shoppingCart }) {
 }
 ```
 
-**What if you want to log a new page visit after every `url` change, but *not* if only the `shoppingCart` changes?** You can't exclude `shoppingCart` from dependencies without breaking the [reactivity rules.](#specifying-reactive-dependencies) However, you can express that you *don't want* a piece of code to "react" to changes even though it is called from inside an Effect. [Declare an *Effect Event*](/learn/separating-events-from-effects#declaring-an-effect-event) with the [`useEffectEvent`](/reference/react/experimental_useEffectEvent) Hook, and move the code reading `shoppingCart` inside of it:
+**`url` 변경마다 새로운 페이지 방문을 기록하고 싶지만 `shoppingCart`만 변경되는 경우에는 기록하고 싶지 않다면 어떻게 해야 할까요?** `shoppingCart`를 의존성에서 제외하면 [반응성 규칙](#specifying-reactive-dependencies)을 어기게 됩니다. Effect 내에서 호출되는 코드이지만 변경에 반응하지 않기를 원한다면 [`useEffectEvent`](/reference/react/experimental_useEffectEvent) Hook을 사용하여 [`Effect Event`](/learn/separating-events-from-effects#declaring-an-effect-event)를 선언하고 `shoppingCart`를 읽는 코드를 그 안에 이동시킬 수 있습니다.
 
 ```js {2-4,7,8}
 function Page({ url, shoppingCart }) {
@@ -1723,18 +1725,18 @@ function Page({ url, shoppingCart }) {
 }
 ```
 
-**Effect Events are not reactive and must always be omitted from dependencies of your Effect.** This is what lets you put non-reactive code (where you can read the latest value of some props and state) inside of them. By reading `shoppingCart` inside of `onVisit`, you ensure that `shoppingCart` won't re-run your Effect.
+**Effect Event는 반응적이지 않으며 Effect의 의존성에서 배제되어야 합니다.** Effect Event에는 비반응형 코드(Effect Event 로직은 최신 props와 state를 읽을 수 있음)를 배치할 수 있습니다. `onVisit`내의 `shoppingCart`를 읽음으로써 `shoppingCart`의 변경으로 인한 Effect의 재실행을 방지합니다.
 
-[Read more about how Effect Events let you separate reactive and non-reactive code.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
+[Effect Event가 어떻게 반응형 및 비반응형 코드를 분리하는 데 도움이 되는지에 대한 자세한 내용은 여기를 읽어보세요.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
 
 
 ---
 
-### Displaying different content on the server and the client {/*displaying-different-content-on-the-server-and-the-client*/}
+### 서버와 클라이언트에서 다른 컨텐츠를 표시하기 {/*displaying-different-content-on-the-server-and-the-client*/}
 
-If your app uses server rendering (either [directly](/reference/react-dom/server) or via a [framework](/learn/start-a-new-react-project#production-grade-react-frameworks)), your component will render in two different environments. On the server, it will render to produce the initial HTML. On the client, React will run the rendering code again so that it can attach your event handlers to that HTML. This is why, for [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) to work, your initial render output must be identical on the client and the server.
+앱이 서버 렌더링을 사용하는 경우 ([직접](/reference/react-dom/server) 또는 [프레임워크](/learn/start-a-new-react-project#production-grade-react-frameworks)를 통해) 컴포넌트는 두 가지 다른 환경에서 렌더링됩니다. 서버에서는 초기 HTML을 생성하기 위해 렌더링되고, 클라이언트에서는 React가 이벤트 핸들러를 해당 HTML에 연결하기 위해 다시 렌더링 코드를 실행합니다. 이것이 [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html)이 작동하려면 초기 렌더링 출력이 서버와 클라이언트에서 동일해야 하는 이유입니다.
 
-In rare cases, you might need to display different content on the client. For example, if your app reads some data from [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), it can't possibly do that on the server. Here is how you could implement this:
+드물게 클라이언트에서 다른 내용을 표시해야 할 수 있습니다. 예를 들어 앱이 [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)에서 일부 데이터를 읽는 경우, 이를 서버에서 구현할 수 없습니다. 다음은 이것을 구현하는 방법입니다.
 
 ```js
 function MyComponent() {
@@ -1752,26 +1754,27 @@ function MyComponent() {
 }
 ```
 
-While the app is loading, the user will see the initial render output. Then, when it's loaded and hydrated, your Effect will run and set `didMount` to `true`, triggering a re-render. This will switch to the client-only render output. Effects don't run on the server, so this is why `didMount` was `false` during the initial server render.
+앱이 로딩중인 동안 사용자는 초기 렌더링 출력을 볼 것입니다. 그 다음 로딩 및 hydration이 완료되면 Effect가 실행되어 `didMount`를 `true`로 설정하면서 다시 렌더링이 동작합니다. 이로써 클라이언트 전용 렌더링 출력으로 전환됩니다. Effect는 서버에서 실행되지 않으므로 초기 서버 렌더링 중의 `didMount`는 `false`가 됩니다.
 
-Use this pattern sparingly. Keep in mind that users with a slow connection will see the initial content for quite a bit of time--potentially, many seconds--so you don't want to make jarring changes to your component's appearance. In many cases, you can avoid the need for this by conditionally showing different things with CSS.
-
----
-
-## Troubleshooting {/*troubleshooting*/}
-
-### My Effect runs twice when the component mounts {/*my-effect-runs-twice-when-the-component-mounts*/}
-
-When Strict Mode is on, in development, React runs setup and cleanup one extra time before the actual setup.
-
-This is a stress-test that verifies your Effect’s logic is implemented correctly. If this causes visible issues, your cleanup function is missing some logic. The cleanup function should stop or undo whatever the setup function was doing. The rule of thumb is that the user shouldn’t be able to distinguish between the setup being called once (as in production) and a setup → cleanup → setup sequence (as in development).
-
-Read more about [how this helps find bugs](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) and [how to fix your logic.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
+이 패턴은 적절히 사용해야 합니다. 느린 연결 환경을 가진 사용자는 초기 렌더링 화면을 상당한 시간 동안 볼 것이므로 컴포넌트의 모양을 급변시키지 않는 것이 좋습니다. 많은 경우에는 CSS를 사용하여 조건부로 다양한 것들을 표시하는 방법으로 대처할 수 있습니다.
 
 ---
 
-### My Effect runs after every re-render {/*my-effect-runs-after-every-re-render*/}
+## 트러블 슈팅 {/*troubleshooting*/}
 
+### Effect가 컴포넌트 마운트 시 2번 동작합니다. {/*my-effect-runs-twice-when-the-component-mounts*/}
+
+개발 환경에서 Strict Mode가 활성화되면 React는 실제 setup 이전에 setup과 cleanup을 한번 더 실행합니다.
+
+이것은 Effect의 로직이 올바르게 구현되었는지 확인하는 스트레스 테스트입니다. 만약 이로 인해 눈에 띄는 문제가 발생한다면 cleanup 함수에 어떤 로직이 누락되었을 수 있습니다. cleanup 함수는 setup 함수가 수행한 것을 중지하거나 되돌릴 수 있어야 합니다. 일반적인 지침으로는 사용자가 setup이 한번 호출되는 것(배포 환경과 같이)과 setup → cleanup → setup 순서로 호출되는 것을 구별할 수 없어야 한다는 것입니다.
+
+이것이 [버그를 찾는데 어떻게 도움이 되며,](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) [로직을 어떻게 수정하는지](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)에 대해서 자세히 알아보려면 여기를 읽어보세요.
+
+---
+
+### Effect가 매 리렌더링마다 실행됩니다. {/*my-effect-runs-after-every-re-render*/}
+
+먼저 의존성 배열에 값을 추가했는지 확인해보세요.
 First, check that you haven't forgotten to specify the dependency array:
 
 ```js {3}
@@ -1780,9 +1783,9 @@ useEffect(() => {
 }); // 🚩 No dependency array: re-runs after every render!
 ```
 
-If you've specified the dependency array but your Effect still re-runs in a loop, it's because one of your dependencies is different on every re-render.
+의존성 배열을 명시했지만 Effect가 여전히 반복해서 실행된다면 그 중 하나의 의존성이 매 렌더링마다 다르기 때문입니다.
 
-You can debug this problem by manually logging your dependencies to the console:
+이 문제를 해결하기 위해 콘솔에 의존성을 수동으로 기록하는 방법으로 디버깅할 수 있습니다.
 
 ```js {5}
   useEffect(() => {
@@ -1792,7 +1795,7 @@ You can debug this problem by manually logging your dependencies to the console:
   console.log([serverUrl, roomId]);
 ```
 
-You can then right-click on the arrays from different re-renders in the console and select "Store as a global variable" for both of them. Assuming the first one got saved as `temp1` and the second one got saved as `temp2`, you can then use the browser console to check whether each dependency in both arrays is the same:
+그 다음 콘솔에서 기록된 다른 렌더링 배열을 마우스 오른쪽 버튼으로 클릭하고 두 배열 모두에 대해 전역 변수로 저장을 선택할 수 있습니다. 첫 번째 요소가 `temp1`이고 두 번째 요소가 `temp2`라고 가정하면 브라우저 콘솔을 사용하여 양쪽 배열의 각 의존성이 동일한지 확인할 수 있습니다.
 
 ```js
 Object.is(temp1[0], temp2[0]); // Is the first dependency the same between the arrays?
@@ -1800,39 +1803,39 @@ Object.is(temp1[1], temp2[1]); // Is the second dependency the same between the 
 Object.is(temp1[2], temp2[2]); // ... and so on for every dependency ...
 ```
 
-When you find the dependency that is different on every re-render, you can usually fix it in one of these ways:
+매 렌더링마다 다른 의존성을 찾아냈다면 일반적으로 다음 중 하나의 방법으로 수정할 수 있습니다.
 
-- [Updating state based on previous state from an Effect](#updating-state-based-on-previous-state-from-an-effect)
-- [Removing unnecessary object dependencies](#removing-unnecessary-object-dependencies)
-- [Removing unnecessary function dependencies](#removing-unnecessary-function-dependencies)
-- [Reading the latest props and state from an Effect](#reading-the-latest-props-and-state-from-an-effect)
+- [Effect에서 이전 state를 기반으로 state 업데이트하기](#updating-state-based-on-previous-state-from-an-effect)
+- [불필요한 객체 의존성 제거하기](#removing-unnecessary-object-dependencies)
+- [불필요한 함수 의존성 제거하기](#removing-unnecessary-function-dependencies)
+- [Effect에서 최신 props와 state를 읽기](#reading-the-latest-props-and-state-from-an-effect)
 
-As a last resort (if these methods didn't help), wrap its creation with [`useMemo`](/reference/react/useMemo#memoizing-a-dependency-of-another-hook) or [`useCallback`](/reference/react/useCallback#preventing-an-effect-from-firing-too-often) (for functions).
-
----
-
-### My Effect keeps re-running in an infinite cycle {/*my-effect-keeps-re-running-in-an-infinite-cycle*/}
-
-If your Effect runs in an infinite cycle, these two things must be true:
-
-- Your Effect is updating some state.
-- That state leads to a re-render, which causes the Effect's dependencies to change.
-
-Before you start fixing the problem, ask yourself whether your Effect is connecting to some external system (like DOM, network, a third-party widget, and so on). Why does your Effect need to set state? Does it synchronize with that external system? Or are you trying to manage your application's data flow with it?
-
-If there is no external system, consider whether [removing the Effect altogether](/learn/you-might-not-need-an-effect) would simplify your logic.
-
-If you're genuinely synchronizing with some external system, think about why and under what conditions your Effect should update the state. Has something changed that affects your component's visual output? If you need to keep track of some data that isn't used by rendering, a [ref](/reference/react/useRef#referencing-a-value-with-a-ref) (which doesn't trigger re-renders) might be more appropriate. Verify your Effect doesn't update the state (and trigger re-renders) more than needed.
-
-Finally, if your Effect is updating the state at the right time, but there is still a loop, it's because that state update leads to one of the Effect's dependencies changing. [Read how to debug dependency changes.](/reference/react/useEffect#my-effect-runs-after-every-re-render)
+최후의 수단으로 (이러한 방법들이 도움이 되지 않은 경우), [`useMemo`](/reference/react/useMemo#memoizing-a-dependency-of-another-hook)나 [`useCallback`](/reference/react/useCallback#preventing-an-effect-from-firing-too-often)(함수의 경우)을 이용할 수 있습니다.
 
 ---
 
-### My cleanup logic runs even though my component didn't unmount {/*my-cleanup-logic-runs-even-though-my-component-didnt-unmount*/}
+### Effect가 무한 반복됩니다. {/*my-effect-keeps-re-running-in-an-infinite-cycle*/}
 
-The cleanup function runs not only during unmount, but before every re-render with changed dependencies. Additionally, in development, React [runs setup+cleanup one extra time immediately after component mounts.](#my-effect-runs-twice-when-the-component-mounts)
+Effect가 무한 반복되려면 다음 두 가지 조건이 충족되어야 합니다..
 
-If you have cleanup code without corresponding setup code, it's usually a code smell:
+- Effect에서 state를 업데이트함.
+- 변경된 state가 리렌더링을 유발하며, 이로 인해 Effect의 종속성이 변경됨.
+
+문제를 해결하기 전에 Effect가 외부 시스템(DOM, 네트워크, 서드파티 위젯 등)에 연결되어 있는지 스스로에게 자문해보세요. Effect에서 왜 state를 변경했나요? 변경된 state가 외부 시스템과 동기화됐나요? 또는 Effect를 통해 어플리케이션의 데이터 흐름을 관리하려고 하는 건가요?
+
+외부 시스템이 없다면 [Effect를 제거](/learn/you-might-not-need-an-effect)해서 로직을 단순화 할 수 있는지 고려해보세요.
+
+만약 실제로 어떤 외부 시스템과 동기화 중이라면 Effect가 state를 언제 어떤 조건하에서 업데이트 해야하는지에 대해 고려해보세요. 컴포넌트의 시각적 출력에 영향을 주는 state가 변했나요? 렌더링에 사용되지 않는 데이터를 추적해야 한다면 리렌더링을 야기하지 않는 [ref](/reference/react/useRef#referencing-a-value-with-a-ref)가 더 적합할 수 있습니다. Effect가 필요 이상으로 state를 업데이트하는지(리렌더링을 야기하지 않도록) 확인해보세요.
+
+마지막으로 Effect가 제대로된 시점에 state를 업데이트했지만 여전히 무한 반복되는 경우, 해당 state의 업데이트가 Effect의 종속성의 변경을 야기했을 수 있습니다. [종속성 변경을 디버깅하는 방법을 읽어보세요.](/reference/react/useEffect#my-effect-runs-after-every-re-render)
+
+---
+
+### 컴포넌트가 마운트 해제되지 않았음에도 cleanup 함수가 실행됩니다. {/*my-cleanup-logic-runs-even-though-my-component-didnt-unmount*/}
+
+cleanup 함수는 마운트 해제시 뿐만 아니라 변경된 종속성으로 인한 모든 리렌더링 전에 실행됩니다. 또한 개발환경에서는 React가 [컴포넌트가 마운트된 직후에 한번 더 setup과 cleanup을 실행합니다.](#my-effect-runs-twice-when-the-component-mounts)
+
+setup 코드와 상응하는 cleanup 코드가 없을 경우, 보통은 코드에 문제가 있을 가능성이 높습니다.
 
 ```js {2-5}
 useEffect(() => {
@@ -1843,7 +1846,7 @@ useEffect(() => {
 }, []);
 ```
 
-Your cleanup logic should be "symmetrical" to the setup logic, and should stop or undo whatever setup did:
+cleanup 로직은 setup 로직과 '대칭'이어야 하며 setup이 수행한 것을 중지하거나 되돌릴 수 있어야 합니다.
 
 ```js {2-3,5}
   useEffect(() => {
@@ -1855,10 +1858,10 @@ Your cleanup logic should be "symmetrical" to the setup logic, and should stop o
   }, [serverUrl, roomId]);
 ```
 
-[Learn how the Effect lifecycle is different from the component's lifecycle.](/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect)
+[Effect의 생명주기와 컴포넌트의 생명주기가 어떻게 다른지 확인해보세요.](/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect)
 
 ---
 
-### My Effect does something visual, and I see a flicker before it runs {/*my-effect-does-something-visual-and-i-see-a-flicker-before-it-runs*/}
+### Effect가 시각적인 작업을 수행하며, 실행되기 전에 깜빡임이 보입니다. {/*my-effect-does-something-visual-and-i-see-a-flicker-before-it-runs*/}
 
-If your Effect must block the browser from [painting the screen,](/learn/render-and-commit#epilogue-browser-paint) replace `useEffect` with [`useLayoutEffect`](/reference/react/useLayoutEffect). Note that **this shouldn't be needed for the vast majority of Effects.** You'll only need this if it's crucial to run your Effect before the browser paint: for example, to measure and position a tooltip before the user sees it.
+Effect가 `브라우저가 화면을 그리는 것`을 차단해야 하는 경우 `useEffect`를 [`useLayoutEffect`](/reference/react/useLayoutEffect)로 대체하세요. **이것은 대부분의 Effect에는 필요하지 않습니다.** 브라우저 페인팅 이전에 Effect를 실행하는 것이 중요한 경우에만 필요합니다. 예를 들어 사용자가 보기 전에 툴팁의 위치를 측정하고 지정해야 하는 경우가 있습니다.
