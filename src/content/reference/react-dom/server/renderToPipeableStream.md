@@ -286,8 +286,14 @@ function ProfilePage() {
 
 **Suspense 가 활성화된 데이터 소스만 Suspense 컴포넌트를 활성화합니다.** 여기에는 다음이 포함됩니다.
 
+<<<<<<< HEAD
 - [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 및 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)와 같은 Suspense 지원 프레임워크를 사용한 데이터 가져오기
 - [`lazy`](/reference/react/lazy)를 사용한 지연 로딩 컴포넌트 코드
+=======
+- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/getting-started/react-essentials)
+- Lazy-loading component code with [`lazy`](/reference/react/lazy)
+- Reading the value of a Promise with [`use`](/reference/react/use)
+>>>>>>> a0cacd7d3a89375e5689ccfba0461e293bfe9eeb
 
 Suspense 는 이펙트 또는 이벤트 핸들러 내부에서 데이터를 가져올 때를 감지하지 **않습니다.**
 

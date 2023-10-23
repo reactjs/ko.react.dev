@@ -127,6 +127,16 @@
         {
           "title": "startTransition",
           "path": "/reference/react/startTransition"
+        },
+        {
+          "title": "experimental_taintObjectReference",
+          "path": "/reference/react/experimental_taintObjectReference",
+          "canary": true
+        },
+        {
+          "title": "experimental_taintUniqueValue",
+          "path": "/reference/react/experimental_taintUniqueValue",
+          "canary": true
         }
       ]
     },
@@ -152,7 +162,22 @@
       "sectionHeader": "react-dom@18.2.0"
     },
     {
+<<<<<<< HEAD
       "title": "컴포넌트",
+=======
+      "title": "Hooks",
+      "path": "/reference/react-dom/hooks",
+      "routes": [
+        {
+          "title": "useFormStatus",
+          "path": "/reference/react-dom/hooks/useFormStatus",
+          "canary": true
+        }
+      ]
+    },
+    {
+      "title": "Components",
+>>>>>>> a0cacd7d3a89375e5689ccfba0461e293bfe9eeb
       "path": "/reference/react-dom/components",
       "routes": [
         {

@@ -10,6 +10,7 @@ title: State를 보존하고 초기화하기
 
 <YouWillLearn>
 
+<<<<<<< HEAD
 * React가 컴포넌트 구조를 어떻게 "보는지"
 * React가 언제 state를 보존하고 언제 초기화하는지
 * 어떻게 React가 state를 초기화하도록 강제할 수 있는지
@@ -36,7 +37,19 @@ React는 React DOM이 DOM을 렌더링할 때 사용하는 UI 트리를 컴포�
 ## State는 트리에서의 위치에 묶여있습니다 {/*state-is-tied-to-a-position-in-the-tree*/}
 
 컴포넌트에 state를 줄 때 state가 컴포넌트 안에 "살고" 있다고 생각할 수도 있습니다. 하지만 사실 state는 React 안에 있습니다. React는 컴포넌트가 UI 트리에 있는 위치를 이용해 React가 가지고 있는 각 state를 알맞은 컴포넌트와 연결합니다.
+=======
+* When React chooses to preserve or reset the state
+* How to force React to reset component's state
+* How keys and types affect whether the state is preserved
 
+</YouWillLearn>
+
+## State is tied to a position in the render tree {/*state-is-tied-to-a-position-in-the-tree*/}
+
+React builds [render trees](learn/understanding-your-ui-as-a-tree#the-render-tree) for the component structure in your UI.
+>>>>>>> a0cacd7d3a89375e5689ccfba0461e293bfe9eeb
+
+When you give a component state, you might think the state "lives" inside the component. But the state is actually held inside React. React associates each piece of state it's holding with the correct component by where that component sits in the render tree.
 
 여기 동일한 `<Counter />` JSX 태그가 다른 두 군데에서 렌더링되고 있습니다.
 
@@ -189,7 +202,12 @@ Updating state
 
 </DiagramGroup>
 
+<<<<<<< HEAD
 React는 동일한 컴포넌트를 동일한 위치에 렌더링하는 동안 상태를 유지합니다. 이를 확인하려면, 두 Counter를 모두 증가시키고, "Render the second counter" 체크박스의 체크를 해제하여 두 번째 컴포넌트를 제거해보세요. 그리고, 다시 체크박스를 눌러 추가해보세요.
+=======
+
+React will keep the state around for as long as you render the same component at the same position in the tree. To see this, increment both counters, then remove the second component by unchecking "Render the second counter" checkbox, and then add it back by ticking it again:
+>>>>>>> a0cacd7d3a89375e5689ccfba0461e293bfe9eeb
 
 <Sandpack>
 
