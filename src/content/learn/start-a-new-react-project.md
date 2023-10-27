@@ -26,11 +26,7 @@ npx create-next-app@latest
 
 Next.js를 처음 사용하는 분이라면 [Next.js 자습서](https://nextjs.org/learn/foundations/about-nextjs)를 읽어보세요.
 
-<<<<<<< HEAD
-Next.js는 [Vercel](https://vercel.com/)이 관리합니다. 어느 Node.js 서버, 서버리스 호스팅 또는 직접 소유한 서버 어느 곳에라도 [Next.js 애플리케이션을 배포](https://nextjs.org/docs/deployment)할 수 있습니다. [완전 정적인 Next.js 애플리케이션](https://nextjs.org/docs/advanced-features/static-html-export)은 어느 정적 호스팅에라도 배포할 수 있습니다.
-=======
-Next.js is maintained by [Vercel](https://vercel.com/). You can [deploy a Next.js app](https://nextjs.org/docs/app/building-your-application/deploying) to any Node.js or serverless hosting, or to your own server. Next.js also supports a [static export](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) which doesn't require a server.
->>>>>>> 68f417a600c7d7b8c4131e39f8a843a856ae3909
+Next.js는 [Vercel](https://vercel.com/)에 의해 유지보수되고 있습니다. Next.js 앱을 [Node.js 또는 서버리스 호스팅](https://nextjs.org/docs/app/building-your-application/deploying) 또는 자체 서버에 배포할 수 있습니다. Next.js는 또한 [서버가 필요하지 않은 정적 익스포트](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports)를 지원합니다.
 
 ### Remix {/*remix*/}
 
