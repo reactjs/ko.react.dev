@@ -19,8 +19,8 @@ React Labs 게시글에는 활발히 연구 개발 중인 프로젝트에 대한
 </BlogCard>
 
 
-<BlogCard title="Introducing react.dev" date="2022년 3월 16일" url="/blog/2023/03/16/introducing-react-dev">
-Today we are thrilled to launch react.dev, the new home for React and its documentation. In this post, we would like to give you a tour of the new site.
+<BlogCard title="react.dev를 소개합니다" date="2023년 3월 16일" url="/blog/2023/03/16/introducing-react-dev">
+오늘 React와 React 문서의 새로운 보금자리인 react.dev를 출시하게 되어 기쁩니다. 이 글에서는 새로운 사이트에 대해 소개해 드리겠습니다.
 </BlogCard>
 
 
@@ -40,12 +40,12 @@ React 18은 릴리스 노트에서 언급한 대로, 새로운 동시성 렌더�
 지난주, 우리는 6번째 React Conf를 개최했습니다. 지난 몇 년 동안 우리는 React Conf 무대를 통해 React Native, React Hooks와 같은 업계 변화를 알리는 발표를 해왔습니다. 올해는 React 18의 출시와 동시 기능의 점진적인 도입을 시작으로 React의 멀티 플랫폼 비전을 공유했습니다.
 </BlogCard>
 
-<BlogCard title="The Plan for React 18" date="2021년 6월 8일" url="/blog/2021/06/08/the-plan-for-react-18">
-The React team is excited to share a few updates:
+<BlogCard title="React 18 계획" date="2021년 6월 8일" url="/blog/2021/06/08/the-plan-for-react-18">
+React 팀은 몇 가지 업데이트를 공유하게 되어 기쁩니다.
 
-- We’ve started work on the React 18 release, which will be our next major version.
-- We’ve created a Working Group to prepare the community for gradual adoption of new features in React 18.
-- We’ve published a React 18 Alpha so that library authors can try it and provide feedback...
+- 다음 주요 버전이 될 React 18 릴리즈에 대한 작업을 시작했습니다.
+- 커뮤니티가 React 18의 새로운 기능을 점진적으로 채택할 수 있도록 준비하기 위해 워킹 그룹을 만들었습니다.
+- 라이브러리 작성자가 사용해 보고 피드백을 제공할 수 있도록 React 18 알파를 게시했습니다.
 </BlogCard>
 
 <BlogCard title="제로 번들 사이즈 React 서버 컴포넌트 소개" date="2020년 12월 21일" url="/blog/2020/12/21/data-fetching-with-react-server-components">
