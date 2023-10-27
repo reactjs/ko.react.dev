@@ -40,122 +40,6 @@ title: "공통 컴포넌트 (예시: <div>)"
 
 아래의 표준 DOM props 들은 내장된 모든 컴포넌트에서 지원합니다.
 
-<<<<<<< HEAD
-* [`accessKey`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/accesskey): 문자열 타입입니다. 엘리먼트의 바로 가기 키를 지정합니다. [일반적으로 권장되지 않습니다.](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/accesskey)
-* [`aria-*`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes): ARIA 속성을 사용하면 이 엘리먼트에 대한 접근성 트리 정보를 지정할 수 있습니다. 전체적인 레퍼런스는 [ARIA 어트리뷰트](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes)를 참조하세요. React에서 모든 ARIA 어트리뷰트의 이름은 HTML에서의 이름과 완전히 동일합니다.
-* [`autoCapitalize`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/autocapitalize): 문자열 타입입니다. 사용자의 입력을 대문자로 표시할지 여부와 방법을 지정합니다. 
-* [`className`](https://developer.mozilla.org/ko/docs/Web/API/Element/className): 문자열 타입입니다. 엘리먼트의 CSS 클래스 이름을 지정합니다. [CSS 스타일 적용에 대해 자세히 알아보기.](#applying-css-styles)
-* [`contentEditable`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/contenteditable): 불리언 타입입니다. `true`일 때 브라우저는 사용자가 렌더링 된 엘리먼트를 직접 편집할 수 있도록 합니다. 이는 [Lexical](https://lexical.dev/)과 같은 서식이 있는 텍스트 입력 라이브러리를 구현하는 데 사용됩니다. React는 사용자가 편집한 후에 React가 그 내용을 업데이트할 수 없기 때문에 `contentEditable={true}`가 있는 엘리먼트에 React의 자식을 전달하려고 하면 경고를 표시합니다.
-* [`data-*`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/data-*): 데이터 속성을 사용하면 엘리먼트에 일부 문자열 데이터를 첨부할 수 있습니다.(예시: `data-fruit="banana"`) React에서는 일반적으로 프로퍼티나 state에서 데이터를 읽어오기 때문에 일반적으로 사용되지는 않습니다.
-* [`dir`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/dir): `'ltr'` 또는 `'rtl'`입니다. 엘리먼트의 텍스트 방향을 지정합니다.
-* [`draggable`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/draggable): 불리언 타입입니다. 엘리먼트의 드래그 가능 여부를 지정합니다. [HTML 드래그 앤 드롭 API](https://developer.mozilla.org/ko/docs/Web/API/HTML_Drag_and_Drop_API)의 일부입니다.
-* [`enterKeyHint`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/enterKeyHint): 문자열 타입입니다. 가상 키보드의 입력 키에 어떤 동작을 표시할지 지정합니다.
-* [`htmlFor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor): 문자열 타입입니다. [`<label>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/label) 이나 [`<output>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/output)의 경우 [label을 일부 동작에 연결할 수 있습니다.](/reference/react-dom/components/input#providing-a-label-for-an-input) 이는 [HTML attribute의 `for` 과 동일합니다.](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/for) React는 HTML 어트리뷰트의 이름 대신 `htmlFor`와 같은 표준 DOM 프로퍼티의 이름을 사용합니다.
-* [`hidden`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/hidden): 불리언 혹은 문자열 타입입니다. 엘리먼트를 숨길지에 대한 여부를 지정합니다.
-* [`id`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/id): 문자열 타입입니다. 엘리먼트의 고유 식별자를 지정하여 나중에 찾거나 다른 엘리먼트와 연결하는 데 사용할 수 있습니다. 동일한 컴포넌트의 여러 인스턴스 간의 충돌을 피하고자 [`useId`](/reference/react/useId)로 생성합니다.
-* [`is`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/is): 문자열 타입입니다. 지정하게 되면 컴포넌트가 [사용자 정의 엘리먼트](/reference/react-dom/components#custom-html-elements)처럼 작동합니다.
-* [`inputMode`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/inputmode): 문자열 타입입니다. 표시할 키보드의 종류(예시: 텍스트, 숫자 또는 전화번호)를 지정합니다.
-* [`itemProp`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/itemprop): 문자열 타입입니다. 구조화된 데이터 크롤러에 대해 엘리먼트가 나타내는 속성을 지정합니다.
-* [`lang`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/lang): 문자열 타입입니다. 엘리먼트의 언어를 지정합니다.
-* [`onAnimationEnd`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationend_event): [`AnimationEvent` 핸들러](#animationevent-handler) 함수입니다. CSS 애니메이션이 완료될 때 발생합니다.
-* `onAnimationEndCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onAnimationEnd`의 버전입니다.
-* [`onAnimationIteration`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationiteration_event): [`AnimationEvent` 핸들러](#animationevent-handler) 함수입니다. CSS 애니메이션의 반복이 끝나고 다른 애니메이션이 시작될 때 발생합니다.
-* `onAnimationIterationCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onAnimationIteration`의 버전입니다. 
-* [`onAnimationStart`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationstart_event): [`AnimationEvent` 핸들러](#animationevent-handler) 함수입니다. CSS 애니메이션이 시작될 때 발생합니다.
-* `onAnimationStartCapture`: `onAnimationStart`입니다. 그러나 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행됩니다.
-* [`onAuxClick`](https://developer.mozilla.org/en-US/docs/Web/API/Element/auxclick_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 기본 포인터가 아닌 버튼을 클릭했을 때 발생합니다
-* `onAuxClickCapture`: `onAuxClick`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* `onBeforeInput`: [`InputEvent` 핸들러](#inputevent-handler) 함수입니다. 편집할 수 있는 엘리먼트의 값이 수정되기 전에 발생합니다. React는 아직 네이티브 [`beforeinput`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/beforeinput_event) 이벤트를 *사용하지 않습니다.* 대신 다른 이벤트를 사용하여 폴리필을 시도합니다.
-* `onBeforeInputCapture`: `onBeforeInput`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* `onBlur`: [`FocusEvent` 핸들러](#focusevent-handler) 함수입니다. 엘리먼트가 포커싱을 잃었을 때 발생합니다. 브라우저에 내장된 [`blur`](https://developer.mozilla.org/ko/docs/Web/API/Element/blur_event) 이벤트와 달리 React에서는 `onBlur` 이벤트가 버블링을 발생시킵니다.
-* `onBlurCapture`: `onBlur`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onClick`](https://developer.mozilla.org/ko/docs/Web/API/Element/click_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 포인팅 디바이스에서 기본 버튼이 클릭 되었을 때 발생합니다.
-* `onClickCapture`: `onClick`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onCompositionStart`](https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionstart_event):  [`CompositionEvent` 핸들러](#compositionevent-handler) 함수입니다. [입력 메서드 편집기](https://developer.mozilla.org/en-US/docs/Glossary/Input_method_editor)가 새로운 구성 세션을 시작할 때 발생합니다.
-* `onCompositionStartCapture`: `onCompositionStart`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onCompositionEnd`](https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionend_event):  [`CompositionEvent` 핸들러](#compositionevent-handler) 함수입니다. [입력 메서드 편집기](https://developer.mozilla.org/en-US/docs/Glossary/Input_method_editor)가 구성 세션을 완료하거나 취소할 때 발생합니다.
-* `onCompositionEndCapture`: `onCompositionEnd`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onCompositionUpdate`](https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionupdate_event):  [`CompositionE드vent` 핸들러](#compositionevent-handler) 함수입니다. [입력 메서드 편집기](https://developer.mozilla.org/en-US/docs/Glossary/Input_method_editor)에 새로운 문자가 입력되면 발생합니다.
-* `onCompositionUpdateCapture`: `onCompositionUpdate`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onContextMenu`](https://developer.mozilla.org/ko/docs/Web/API/Element/contextmenu_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 컨텍스트 메뉴를 열려고 할 때 발생합니다.
-* `onContextMenuCapture`: `onContextMenu`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onCopy`](https://developer.mozilla.org/ko/docs/Web/API/Element/copy_event): [`ClipboardEvent` 핸들러](#clipboardevent-handler) 함수입니다. 클립보드에 무언가를 복사하려고 할 때 발생합니다.
-* `onCopyCapture`: `onCopy`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onCut`](https://developer.mozilla.org/ko/docs/Web/API/Element/cut_event): [`ClipboardEvent` 핸들러](#clipboardevent-handler) 함수입니다. 클립보드에서 무언가를 잘라내려고 할 때 발생합니다.
-* `onCutCapture`: `onCut`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* `onDoubleClick`: [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 두 번 클릭하면 발생합니다. 브라우저의 [`dblclick` 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/Element/dblclick_event)에 해당합니다.
-* `onDoubleClickCapture`: `onDoubleClick`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onDrag`](https://developer.mozilla.org/ko/docs/Web/API/HTMLElement/drag_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 무언가를 드래그하는 동안 실행됩니다. 
-* `onDragCapture`: `onDrag`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onDragEnd`](https://developer.mozilla.org/ko/docs/Web/API/HTMLElement/dragend_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 드래그를 멈추면 발생합니다. 
-* `onDragEndCapture`: `onDragEnd`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onDragEnter`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dragenter_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 드래그한 콘텐츠가 유효한 드롭 대상에 들어가면 발생합니다. 
-* `onDragEnterCapture`: `onDragEnter`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onDragOver`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dragover_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 드래그된 콘텐츠를 드래그하는 동안 유효한 드롭 대상에서 발생합니다. 드롭을 허용하려면 여기서 `e.preventDefault()`를 호출해야 합니다.
-* `onDragOverCapture`: `onDragOver`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onDragStart`](https://developer.mozilla.org/ko/docs/Web/API/HTMLElement/dragstart_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 엘리먼트를 드래그하기 시작할 때 발생합니다.
-* `onDragStartCapture`: `onDragStart`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onDrop`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/drop_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 유효한 드롭 대상에 무언가를 떨어뜨리면 발동합니다.
-* `onDropCapture`: `onDrop`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* `onFocus`: [`FocusEvent` 핸들러](#focusevent-handler) 함수입니다. 엘리먼트가 포커싱을 잃었을 때 발생합니다. 브라우저에 내장된 [`focus`](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event) 이벤트와 달리 React에서는 `onFocus` 이벤트가 버블링을 발생시킵니다.
-* `onFocusCapture`: `onFocus`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onGotPointerCapture`](https://developer.mozilla.org/en-US/docs/Web/API/Element/gotpointercapture_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 엘리먼트가 프로그래밍 방식으로 포인터를 캡처할 때 발생합니다.
-* `onGotPointerCaptureCapture`: `onGotPointerCapture`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onKeyDown`](https://developer.mozilla.org/ko/docs/Web/API/Element/keydown_event): [`KeyboardEvent` 핸들러](#pointerevent-handler) 함수입니다. 키를 누르면 실행됩니다.
-* `onKeyDownCapture`: `onKeyDown`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onKeyPress`](https://developer.mozilla.org/en-US/docs/Web/API/Element/keypress_event): [`KeyboardEvent` 핸들러](#pointerevent-handler) 함수입니다. 사용되지 않습니다. 대신 `onKeyDown` 또는 `onBeforeInput`을 사용하세요.
-* `onKeyPressCapture`: `onKeyPress`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onKeyUp`](https://developer.mozilla.org/ko/docs/Web/API/Element/keyup_event): [`KeyboardEvent` 핸들러](#pointerevent-handler) 함수입니다. 키를 놓으면 실행됩니다.
-* `onKeyUpCapture`: `onKeyUp`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onLostPointerCapture`](https://developer.mozilla.org/en-US/docs/Web/API/Element/lostpointercapture_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 엘리먼트가 포인터 캡처를 중지하면 발생합니다.
-* `onLostPointerCaptureCapture`: `onLostPointerCapture`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onMouseDown`](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 마우스 포인터를 눌렀을 때 실행됩니다.
-* `onMouseDownCapture`: `onMouseDown`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onMouseEnter`](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseenter_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 마우스 포인터가 엘리먼트 내부로 이동할 때 발생합니다. 캡처 단계가 없습니다. 대신 `onMouseLeave`와 `onMouseEnter`는 떠나는 엘리먼트에서 입력되는 엘리먼트로 전파됩니다.
-* [`onMouseLeave`](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseleave_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 마우스 포인터가 엘리먼트 외부로 이동하면 발생합니다. 캡처 단계가 없습니다. 대신 `onMouseLeave`와 `onMouseEnter`는 떠나는 엘리먼트에서 입력되는 엘리먼트로 전파됩니다.
-* [`onMouseMove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousemove_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 마우스 포인터의 좌표를 변경할 때 발생합니다.
-* `onMouseMoveCapture`: `onMouseMove`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onMouseOut`](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseout_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 마우스 포인터가 엘리먼트 외부로 이동하거나 하위 엘리먼트로 이동하면 발생합니다.
-* `onMouseOutCapture`: `onMouseOut`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onMouseUp`](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseup_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 마우스 포인터에서 손을 떼면 발생합니다.
-* `onMouseUpCapture`: `onMouseUp`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onPointerCancel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointercancel_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 브라우저가 포인터와 상호작용을 취소할 때 발생합니다.
-* `onPointerCancelCapture`: `onPointerCancel`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onPointerDown`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerdown_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터가 활성화되면 발생합니다.
-* `onPointerDownCapture`: `onPointerDown`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onPointerEnter`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerenter_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터가 엘리먼트 내부로 이동할 때 발생합니다. 캡처 단계가 없습니다. 대신 `onPointerLeave`와 `onPointerEnter`는 떠나는 엘리먼트에서 입력되는 엘리먼트로 전파됩니다.
-* [`onPointerLeave`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerleave_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터가 엘리먼트 내부로 이동할 때 발생합니다. 캡처 단계가 없습니다. 대신 `onPointerLeave`와 `onPointerEnter`는 떠나는 엘리먼트에서 입력되는 엘리먼트로 전파됩니다.
-* [`onPointerMove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointermove_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터의 좌표를 변경할 때 발생합니다.
-* `onPointerMoveCapture`: `onPointerMove`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onPointerOut`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerout_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터가 엘리먼트 외부로 이동하거나 포인터 상호 작용이 취소되는 경우, 그리고 [그 외 몇 가지 이유](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerout_event)로 인해 발생합니다. 
-* `onPointerOutCapture`: `onPointerOut`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onPointerUp`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerup_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터가 더 이상 활성화되지 않을 때 발생합니다.
-* `onPointerUpCapture`: `onPointerUp`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onPaste`](https://developer.mozilla.org/ko/docs/Web/API/Element/paste_event): [`ClipboardEvent` 핸들러](#clipboardevent-handler) 함수입니다. 사용자가 클립보드에서 붙여 넣으려고 할 때 발생합니다.
-* `onPasteCapture`: `onPaste`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onScroll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll_event): [`이벤트` 핸들러](#event-handler) 함수입니다. 엘리먼트를 스크롤 할 때 발생합니다. 이 이벤트는 버블링이 발생하지 않습니다.
-* `onScrollCapture`: `onScroll`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onSelect`](https://developer.mozilla.org/ko/docs/Web/API/HTMLInputElement/select_event): [`이벤트` 핸들러](#event-handler) 함수입니다. 입력 변경과 같이 편집할 수 있는 엘리먼트 내부에서 선택되면 실행됩니다. React는 `onSelect` 이벤트를 `contentEditable={true}` 엘리먼트에도 작동하도록 확장합니다. 또한 React는 빈 선택과 (선택에 영향을 줄 수 있는) 편집 시에도 발동되도록 확장합니다.
-* `onSelectCapture`: `onSelect`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onTouchCancel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchcancel_event): [`TouchEvent` 핸들러](#touchevent-handler) 함수입니다. 브라우저가 터치 상호작용을 취소할 때 발생합니다.
-* `onTouchCancelCapture`: `onTouchCancel`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onTouchEnd`](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event): [`TouchEvent` 핸들러](#touchevent-handler) 함수입니다. 하나 이상의 터치 포인트가 사라지면 발생합니다.
-* `onTouchEndCapture`: `onTouchEnd`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onTouchMove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event): [`TouchEvent` 핸들러](#touchevent-handler) 함수입니다. 하나 이상의 터치 포인트가 이동하면 발생합니다.
-* `onTouchMoveCapture`: `onTouchMove`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onTouchStart`](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event): [`TouchEvent` 핸들러](#touchevent-handler) 함수입니다. 하나 이상의 터치 포인트가 위치하면 발생합니다.
-* `onTouchStartCapture`: `onTouchStart`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onTransitionEnd`](https://developer.mozilla.org/en-US/docs/Web/API/Element/transitionend_event): [`TransitionEvent` 헨들러](#transitionevent-handler) 함수입니다. CSS 전환을 완료하면 발생합니다.
-* `onTransitionEndCapture`: `onTransitionEnd`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onWheel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/wheel_event): [`WheelEvent` 핸들러](#wheelevent-handler) 함수입니다. 휠 버튼을 돌리면 발생합니다.
-* `onWheelCapture`: `onWheel`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`role`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles): 문자열 타입입니다. 보조 기술에 대한 엘리먼트의 역할을 명시적으로 지정합니다.
-* [`slot`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles): 문자열 타입입니다. 그림자 DOM을 사용할 때 슬롯의 이름을 지정합니다. React에서는 일반적으로 JSX를 프로퍼티로 전달하여 동일한 패턴을 얻을 수 있습니다. (예시: `<Layout left={<Sidebar />} right={<Content />} />`.
-* [`spellCheck`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/spellcheck): 불리언 또는 null 타입입니다. `true` 또는 `false`로 설정하여 맞춤법 검사를 활성화 또는 비활성화합니다.
-* [`tabIndex`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/tabindex): 숫자 타입입니다. 기본 탭 버튼 동작을 재정의합니다. [`-1`과 `0` 이외의 값은 사용하지 마십시오.](https://www.tpgi.com/using-the-tabindex-attribute/)
-* [`title`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/title): 문자열 타입입니다. 엘리먼트의 툴팁 텍스트를 지정합니다.
-* [`translate`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/translate): `'yes'`나`'no'` 중 하나입니다. `'no'` 를 전달하면 엘리먼트의 콘텐츠가 번역에서 제외됩니다.
-=======
 * [`accessKey`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey): A string. Specifies a keyboard shortcut for the element. [Not generally recommended.](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey#accessibility_concerns)
 * [`aria-*`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes): ARIA attributes let you specify the accessibility tree information for this element. See [ARIA attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes) for a complete reference. In React, all ARIA attribute names are exactly the same as in HTML.
 * [`autoCapitalize`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize): A string. Specifies whether and how the user input should be capitalized.
@@ -270,7 +154,6 @@ title: "공통 컴포넌트 (예시: <div>)"
 * [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex): A number. Overrides the default Tab button behavior. [Avoid using values other than `-1` and `0`.](https://www.tpgi.com/using-the-tabindex-attribute/)
 * [`title`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title): A string. Specifies the tooltip text for the element.
 * [`translate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/translate): Either `'yes'` or `'no'`. Passing `'no'` excludes the element content from being translated.
->>>>>>> 68f417a600c7d7b8c4131e39f8a843a856ae3909
 
 사용자 정의 어트리뷰트를 props로 전달할 수도 있습니다. (예시: `mycustomprop="someValue"`) 이는 서드파티 라이브러리와 통합할 때 유용할 수 있습니다. 사용자 정의 어트리뷰트의 이름은 소문자이어야 하며 `on`으로 시작하지 않아야 합니다. 값은 문자열로 변환됩니다. `null` 또는 `undefined`를 전달하면 사용자 정의 어트리뷰트가 제거됩니다.
 
