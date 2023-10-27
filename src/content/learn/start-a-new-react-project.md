@@ -21,12 +21,12 @@ React를 전체적으로 적용한 애플리케이션이나 웹 사이트를 새
 **[Next.js](https://nextjs.org/)는 풀스택 React 프레임워크입니다.** 다재다능한 도구이며, 정적인 블로그부터 복잡한 동적 애플리케이션까지 다양한 크기의 React 애플리케이션을 만들 수 있습니다. 새로운 Next.js 프로젝트를 작성하려면 터미널에서 다음을 실행하세요.
 
 <TerminalBlock>
-npx create-next-app
+npx create-next-app@latest
 </TerminalBlock>
 
 Next.js를 처음 사용하는 분이라면 [Next.js 자습서](https://nextjs.org/learn/foundations/about-nextjs)를 읽어보세요.
 
-Next.js는 [Vercel](https://vercel.com/)이 관리합니다. 어느 Node.js 서버, 서버리스 호스팅 또는 직접 소유한 서버 어느 곳에라도 [Next.js 애플리케이션을 배포](https://nextjs.org/docs/deployment)할 수 있습니다. [완전 정적인 Next.js 애플리케이션](https://nextjs.org/docs/advanced-features/static-html-export)은 어느 정적 호스팅에라도 배포할 수 있습니다.
+Next.js는 [Vercel](https://vercel.com/)에 의해 유지보수되고 있습니다. Next.js 앱을 [Node.js 또는 서버리스 호스팅](https://nextjs.org/docs/app/building-your-application/deploying) 또는 자체 서버에 배포할 수 있습니다. Next.js는 또한 [서버가 필요하지 않은 정적 익스포트](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports)를 지원합니다.
 
 ### Remix {/*remix*/}
 
@@ -89,14 +89,9 @@ React를 지속적으로 개선할 방법을 찾아가는 과정에서, 우리�
 
 ### Next.js (App Router) {/*nextjs-app-router*/}
 
-**[Next.js의 App Router](https://beta.nextjs.org/docs/getting-started)는 React 팀의 풀스택 아키텍처 비전을 구현하기 위해 재설계된 Next.js API입니다.** 이를 통해 서버에서 또는 빌드 중에 실행되는 비동기 컴포넌트에서 데이터를 가져올 수 있습니다.
+**[Next.js의 앱 라우터](https://nextjs.org/docs)**는 React 팀의 풀 스택 아키텍처 비전을 구현하기 위한 Next.js API의 재설계입니다. 이를 통해 서버에서 실행되거나 빌드 중에 데이터를 비동기적으로 가져올 수 있습니다.
 
-Next.js는 [Vercel](https://vercel.com/)이 관리합니다. 어느 Node.js 서버, 서버리스 호스팅 또는 직접 소유한 서버 어느 곳에라도 [Next.js 애플리케이션을 배포](https://nextjs.org/docs/deployment) 할 수 있습니다. Next.js는 서버가 필요하지 않은 [정적 사이트로 내보내기](https://beta.nextjs.org/docs/configuring/static-export)도 지원합니다.
-<Pitfall>
-
-Next.js의 App Router는 **현재 베타 버전이며 아직 프로덕션 사용을 권장하지는 않습니다**(2023년 3월 현재 기준). 기존 Next.js 프로젝트에서 이를 실험해보려면 [점진적 마이그레이션 가이드](https://beta.nextjs.org/docs/upgrade-guide#migrating-from-pages-to-app)를 참고하세요.
-
-</Pitfall>
+Next.js는 [Vercel](https://vercel.com/)에서 유지보수되고 있습니다. Next.js 앱을 [Node.js 또는 서버리스 호스팅](https://nextjs.org/docs/app/building-your-application/deploying) 또는 자체 서버에 배포할 수 있습니다. 또한 Next.js는 [서버가 필요하지 않은 정적 익스포트](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)도 지원합니다.
 
 <DeepDive>
 
