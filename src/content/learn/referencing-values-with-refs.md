@@ -284,7 +284,7 @@ console.log(ref.current); // 5
 
 ## Refs 와 DOM {/*refs-and-the-dom*/}
 
-임의의 값을 ref로 지정할 수 있습니다. 그러나 ref의 가장 일반적인 사용 사례는 DOM 엘리먼트에 액세스하는 것입니다. 예를 들어 프로그래밍 방식으로 입력의 초점을 맞추려는 경우 유용합니다. `<div ref={myRef}>`와 같은 JSX의 `ref` 어트리뷰트에 ref를 전달하면 React는 해당 DOM 엘리먼트를 `myRef.current`에 넣습니다. 이에 대한 자세한 내용은 [Refs를 사용하여 DOM 조작](/learn/manipulating-the-dom-with-refs)에서 확인할 수 있습니다.
+임의의 값을 ref로 지정할 수 있습니다. 그러나 ref의 가장 일반적인 사용 사례는 DOM 엘리먼트에 액세스하는 것입니다. 예를 들어 프로그래밍 방식으로 입력의 초점을 맞추려는 경우 유용합니다. `<div ref={myRef}>`와 같은 JSX의 `ref` 어트리뷰트에 ref를 전달하면 React는 해당 DOM 엘리먼트를 `myRef.current`에 넣습니다. DOM에서 요소가 제거되면 React는 myRef.current를 null로 업데이트합니다. 이에 대한 자세한 내용은 [Refs를 사용하여 DOM 조작](/learn/manipulating-the-dom-with-refs)에서 확인할 수 있습니다.
 
 <Recap>
 

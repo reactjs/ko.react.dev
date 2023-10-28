@@ -2073,7 +2073,13 @@ export default function Game() {
 }
 ```
 
-아래에서 코드가 어떻게 표시되는지 확인할 수 있습니다. ``Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of `Game`.``라는 오류가 표시되어야 합니다. 다음 부문에서 이 오류를 수정하겠습니다.
+아래에서 코드가 어떻게 보이는지 확인할 수 있습니다. 개발자 도구 콘솔에 다음과 같은 오류 메시지가 표시되어야 합니다:
+
+<ConsoleBlock level="warning">
+경고: 배열 또는 반복자의 각 자식 요소는 고유한 "key" 속성을 가져야 합니다. &#96;Game&#96;의 렌더 메서드를 확인하세요.
+</ConsoleBlock>
+  
+다음 부문에서 이 오류를 수정하겠습니다.
 
 <Sandpack>
 
