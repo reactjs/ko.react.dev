@@ -33,16 +33,16 @@ title: <Profiler>
 #### Props {/*props*/}
 
 * `id`: 측정하는 UI의 부분을 식별하기 위한 문자열입니다.
-* `onRender`: 프로파일링된 트리 내의 컴포넌트가 업데이트될 때마다 호출되는 [`onRender` 콜백 함수](#onrender-callback)입니다. 이때 콜백 함수는 어떤것이 렌더링되었는지, 얼마나 걸렷는지에 대한 정보를 받고 있습니다.
+* `onRender`: 프로파일링된 트리 내의 컴포넌트가 업데이트될 때마다 React가 호출하는 [`onRender` 콜백](#onrender-callback)입니다. 렌더링된 내용과 소요된 시간에 대한 정보를 받고 있습니다.
 
 #### 주의 사항 {/*caveats*/}
 
 * 프로파일링은 추가적인 오버헤드를 더하기 때문에, **프로덕션 빌드에서는 기본적으로 비활성화가 되어있습니다.** 프로덕션 프로파일링을 사용하려면, [특정 프로덕션 빌드를 활성화](https://fb.me/react-profiling)해야합니다.
 ---
 
-### `onRender` 콜백 함수 {/*onrender-callback*/}
+### `onRender` 콜백 {/*onrender-callback*/}
 
-React는 `onRender` 콜백함수를 렌더링된 내용과 같이 호출합니다.
+React는 `onRender` 콜백을 렌더링된 내용과 같이 호출합니다.
 
 ```js
 function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {
