@@ -254,6 +254,7 @@ async function getAlbums() {
 
 - [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/getting-started/react-essentials) 같이 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기
 - [`lazy`](/reference/react/lazy)를 활용한 지연 로딩 컴포넌트
+- [`use`](/reference/react/use)를 사용해서 Promise 값 읽기
 
 Suspense는 Effect 또는 이벤트 핸들러 내부에서 가져오는 데이터를 감지하지 **않습니다**.
 
