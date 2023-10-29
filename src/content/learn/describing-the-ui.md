@@ -10,7 +10,6 @@ React는 사용자 인터페이스(UI)를 렌더링하기 위한 JavaScript 라�
 
 <YouWillLearn isChapter={true}>
 
-<<<<<<< HEAD
 * [첫 React 컴포넌트를 작성하는 방법](/learn/your-first-component)
 * [다중 컴포넌트 파일을 만드는 경우와 방법](/learn/importing-and-exporting-components)
 * [JSX로 JavaScript에 마크업을 추가하는 방법](/learn/writing-markup-with-jsx)
@@ -19,17 +18,7 @@ React는 사용자 인터페이스(UI)를 렌더링하기 위한 JavaScript 라�
 * [조건부 렌더링을 하는 방법](/learn/conditional-rendering)
 * [여러 개의 컴포넌트를 한 번에 렌더링하는 방법](/learn/rendering-lists)
 * [컴포넌트를 순수하게 유지하여 혼란스러운 버그를 피하는 방법](/learn/keeping-components-pure)
-=======
-* [How to write your first React component](/learn/your-first-component)
-* [When and how to create multi-component files](/learn/importing-and-exporting-components)
-* [How to add markup to JavaScript with JSX](/learn/writing-markup-with-jsx)
-* [How to use curly braces with JSX to access JavaScript functionality from your components](/learn/javascript-in-jsx-with-curly-braces)
-* [How to configure components with props](/learn/passing-props-to-a-component)
-* [How to conditionally render components](/learn/conditional-rendering)
-* [How to render multiple components at a time](/learn/rendering-lists)
-* [How to avoid confusing bugs by keeping components pure](/learn/keeping-components-pure)
 * [Why understanding your UI as trees is useful](/learn/understanding-your-ui-as-a-tree)
->>>>>>> a0cacd7d3a89375e5689ccfba0461e293bfe9eeb
 
 </YouWillLearn>
 

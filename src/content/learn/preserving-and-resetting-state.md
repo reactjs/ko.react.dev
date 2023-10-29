@@ -10,46 +10,17 @@ title: State를 보존하고 초기화하기
 
 <YouWillLearn>
 
-<<<<<<< HEAD
-* React가 컴포넌트 구조를 어떻게 "보는지"
 * React가 언제 state를 보존하고 언제 초기화하는지
-* 어떻게 React가 state를 초기화하도록 강제할 수 있는지
+* 어떻게 React가 컴포넌트의 state를 초기화하도록 강제할 수 있는지
 * key와 타입이 state 보존에 어떻게 영향을 주는지
 
 </YouWillLearn>
 
-## UI 트리 {/*the-ui-tree*/}
+## State 는 렌더트리의 위치에 연결 됩니다. {/*state-is-tied-to-a-position-in-the-tree*/}
 
-브라우저는 UI를 모델링할 때 여러 트리 구조를 사용합니다. [DOM](https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model/Introduction)은 HTML 엘리먼트를 나타내고, [CSSOM](https://developer.mozilla.org/ko/docs/Web/API/CSS_Object_Model)은 CSS를 나타냅니다. 또 [접근성 트리](https://developer.mozilla.org/docs/Glossary/Accessibility_tree)라는 것도 있습니다!
-
-또한 React는 당신이 만드는 UI를 관리하고 모델링하기 위한 트리 구조도 가지고 있습니다. React는 JSX로부터 **UI 트리**를 만듭니다. 그리고 React DOM은 UI 트리와 일치하도록 브라우저 DOM을 업데이트합니다. (React Native는 이 트리를 각 모바일 플랫폼에 맞는 엘리먼트로 번역합니다.)
-
-<DiagramGroup>
-
-<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="Diagram with three sections arranged horizontally. In the first section, there are three rectangles stacked vertically, with labels 'Component A', 'Component B', and 'Component C'. Transitioning to the next pane is an arrow with the React logo on top labeled 'React'. The middle section contains a tree of components, with the root labeled 'A' and two children labeled 'B' and 'C'. The next section is again transitioned using an arrow with the React logo on top labeled 'React'. The third and final section is a wireframe of a browser, containing a tree of 8 nodes, which has only a subset highlighted (indicating the subtree from the middle section).">
-
-React는 React DOM이 DOM을 렌더링할 때 사용하는 UI 트리를 컴포넌트에서 생성합니다
-
-</Diagram>
-
-</DiagramGroup>
-
-## State는 트리에서의 위치에 묶여있습니다 {/*state-is-tied-to-a-position-in-the-tree*/}
+React 는 UI 안에 있는 컴포넌트 구조로 [렌더 트리](learn/understanding-your-ui-as-a-tree#the-render-tree)를 만듭니다.
 
 컴포넌트에 state를 줄 때 state가 컴포넌트 안에 "살고" 있다고 생각할 수도 있습니다. 하지만 사실 state는 React 안에 있습니다. React는 컴포넌트가 UI 트리에 있는 위치를 이용해 React가 가지고 있는 각 state를 알맞은 컴포넌트와 연결합니다.
-=======
-* When React chooses to preserve or reset the state
-* How to force React to reset component's state
-* How keys and types affect whether the state is preserved
-
-</YouWillLearn>
-
-## State is tied to a position in the render tree {/*state-is-tied-to-a-position-in-the-tree*/}
-
-React builds [render trees](learn/understanding-your-ui-as-a-tree#the-render-tree) for the component structure in your UI.
->>>>>>> a0cacd7d3a89375e5689ccfba0461e293bfe9eeb
-
-When you give a component state, you might think the state "lives" inside the component. But the state is actually held inside React. React associates each piece of state it's holding with the correct component by where that component sits in the render tree.
 
 여기 동일한 `<Counter />` JSX 태그가 다른 두 군데에서 렌더링되고 있습니다.
 
@@ -202,12 +173,7 @@ Updating state
 
 </DiagramGroup>
 
-<<<<<<< HEAD
-React는 동일한 컴포넌트를 동일한 위치에 렌더링하는 동안 상태를 유지합니다. 이를 확인하려면, 두 Counter를 모두 증가시키고, "Render the second counter" 체크박스의 체크를 해제하여 두 번째 컴포넌트를 제거해보세요. 그리고, 다시 체크박스를 눌러 추가해보세요.
-=======
-
-React will keep the state around for as long as you render the same component at the same position in the tree. To see this, increment both counters, then remove the second component by unchecking "Render the second counter" checkbox, and then add it back by ticking it again:
->>>>>>> a0cacd7d3a89375e5689ccfba0461e293bfe9eeb
+React는 트리의 동일한 컴포넌트를 동일한 위치에 렌더링하는 동안 상태를 유지합니다. 이를 확인하려면, 두 Counter를 모두 증가시키고, "Render the second counter" 체크박스의 체크를 해제하여 두 번째 컴포넌트를 제거해보세요. 그리고, 다시 체크박스를 눌러 추가해보세요.
 
 <Sandpack>
 
