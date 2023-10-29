@@ -53,7 +53,7 @@ function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime
 #### 매개변수 {/*onrender-parameters*/}
 
 * `id`: 커밋된 `<Profiler>` 트리의 문자열 `id` 프로퍼티입니다. 프로파일러를 다중으로 사용하고 있는 트리 내에서 어떤 부분이 커밋 되었는지 식별할 수 있도록 해줍니다.
-* `phase`: `"mount"`, `"update"` 혹은 `"nested-update"`. 트리가 최초로 마운트되었는지 또는 props, state 또는 hook의 변경으로 인해 다시 렌더링 되었는지 알 수 있습니다.
+* `phase`: `"mount"`, `"update"` 혹은 `"nested-update"`. 트리가 최초로 마운트되었는지 또는 props, state 또는 hook의 변경으로 인해 리렌더링 되었는지 알 수 있습니다.
 * `actualDuration`: 현재 업데이트에 대해 `<Profiler>`와 자식들을 렌더링하는데 소요된 시간(밀리초)입니다. 이는 하위 트리가 memoization을 얼마나 잘 사용하는지를 나타냅니다 (e.g. [`memo`](/reference/react/memo) 와 [`useMemo`](/reference/react/useMemo)). 많은 자식이 특정 props가 변경되는 경우에만 다시 리렌더링이 되어야 하므로 이상적으로는 이 값은 최초 마운트 이후에는 많이 감소해야 합니다.
 * `baseDuration`: 최적화 없이 전체 `<Profiler>` 하위트리에 대해 걸리는 시간을 추정하는 소요된 시간(밀리초)입니다. 트리에 있는 각 컴포넌트의 가장 최근 렌더링 시간을 합산하여 계산됩니다. 이 값은 최악의 렌더링 비용(예: 최초 마운트 또는 memoization이 없는 트리)을 추정합니다. `actualDuration` 과 비교하여 memoization이 작동하는지 확인합니다.
 * `startTime`: React가 현재 업데이트 렌더링을 시작한 시점에 대한 숫자 타임스탬프입니다.
