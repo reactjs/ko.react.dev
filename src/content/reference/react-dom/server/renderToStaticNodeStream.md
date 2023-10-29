@@ -62,7 +62,7 @@ HTML 문자열을 출력하는 [Node.js Readable Stream](https://nodejs.org/api/
 ```js {5-6}
 import { renderToStaticNodeStream } from 'react-dom/server';
 
-// 라우트 핸들러 구문은 백엔드 프레임워크에 따라 다릅니다.
+// 라우트 핸들러 문법은 백엔드 프레임워크에 따라 다릅니다.
 app.use('/', (request, response) => {
   const stream = renderToStaticNodeStream(<Page />);
   stream.pipe(response);
