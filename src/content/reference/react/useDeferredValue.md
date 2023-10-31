@@ -85,9 +85,9 @@ function SearchPage() {
 
 이 예제에서는 Suspense 지원 데이터 소스 중 하나를 사용한다고 가정합니다
 
-- [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 및 [Next.js](https://nextjs.org/docs/advanced-features/react-18)와 같은 Suspense 지원 프레임워크를 사용한 데이터 페칭
-
-- [`lazy`](/reference/react/lazy)를 사용한 지연 로딩 컴포넌트 코드
+- [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/getting-started/react-essentials) 같이 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기
+- [`lazy`](/reference/react/lazy)를 활용한 지연 로딩 컴포넌트
+- [`use`](/reference/react/use)를 사용해서 Promise 값 읽기
 
 [Suspense와 그 한계 자세히 알아보기](/reference/react/Suspense)
 

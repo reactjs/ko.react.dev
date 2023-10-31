@@ -18,6 +18,7 @@ React는 사용자 인터페이스(UI)를 렌더링하기 위한 JavaScript 라�
 * [조건부 렌더링을 하는 방법](/learn/conditional-rendering)
 * [여러 개의 컴포넌트를 한 번에 렌더링하는 방법](/learn/rendering-lists)
 * [컴포넌트를 순수하게 유지하여 혼란스러운 버그를 피하는 방법](/learn/keeping-components-pure)
+* [Why understanding your UI as trees is useful](/learn/understanding-your-ui-as-a-tree)
 
 </YouWillLearn>
 
@@ -521,6 +522,29 @@ export default function TeaSet() {
 컴포넌트를 순수하고 예측 가능한 함수로 작성하는 방법을 배우려면 **[컴포넌트 순수하게 유지하기](/learn/keeping-components-pure)** 를 읽어보세요.
 
 </LearnMore>
+
+## Your UI as a tree {/*your-ui-as-a-tree*/}
+
+React uses trees to model the relationships between components and modules. 
+
+A React render tree is a representation of the parent and child relationship between components. 
+
+<Diagram name="generic_render_tree" height={250} width={500} alt="A tree graph with five nodes, with each node representing a component. The root node is located at the top the tree graph and is labelled 'Root Component'. It has two arrows extending down to two nodes labelled 'Component A' and 'Component C'. Each of the arrows is labelled with 'renders'. 'Component A' has a single 'renders' arrow to a node labelled 'Component B'. 'Component C' has a single 'renders' arrow to a node labelled 'Component D'.">An example React render tree.</Diagram>
+
+Components near the top of the tree, near the root component, are considered top-level components. Components with no child components are leaf components. This categorization of components is useful for understanding data flow and rendering performance.
+
+Modelling the relationship between JavaScript modules is another useful way to understand your app. We refer to it as a module dependency tree. 
+
+<Diagram name="generic_dependency_tree" height={250} width={500} alt="A tree graph with five nodes. Each node represents a JavaScript module. The top-most node is labelled 'RootModule.js'. It has three arrows extending to the nodes: 'ModuleA.js', 'ModuleB.js', and 'ModuleC.js'. Each arrow is labelled as 'imports'. 'ModuleC.js' node has a single 'imports' arrow that points to a node labelled 'ModuleD.js'.">An example module dependency tree.</Diagram>
+
+A dependency tree is often used by build tools to bundle all the relevant JavaScript code for the client to download and render. A large bundle size regresses user experience for React apps. Understanding the module dependency tree is helpful to debug such issues. 
+
+<LearnMore path="/learn/understanding-your-ui-as-a-tree">
+
+Read **[Your UI as a Tree](/learn/understanding-your-ui-as-a-tree)** to learn how to create a render and module dependency trees for a React app and how they're useful mental models for improving user experience and performance.
+
+</LearnMore>
+
 
 ## What's next? {/*whats-next*/}
 

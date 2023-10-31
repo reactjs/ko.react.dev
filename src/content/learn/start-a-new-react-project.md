@@ -26,7 +26,7 @@ npx create-next-app@latest
 
 Next.js를 처음 사용하는 분이라면 [Next.js 자습서](https://nextjs.org/learn/foundations/about-nextjs)를 읽어보세요.
 
-Next.js는 [Vercel](https://vercel.com/)에 의해 유지보수되고 있습니다. Next.js 앱을 [Node.js 또는 서버리스 호스팅](https://nextjs.org/docs/app/building-your-application/deploying) 또는 자체 서버에 배포할 수 있습니다. Next.js는 또한 [서버가 필요하지 않은 정적 익스포트](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports)를 지원합니다.
+Next.js는 [Vercel](https://vercel.com/)이 관리합니다. 어느 Node.js 서버, 서버리스 호스팅 또는 직접 소유한 서버 어느 곳에라도 [Next.js 애플리케이션을 배포](https://nextjs.org/docs/app/building-your-application/deploying)할 수 있습니다. Next.js 는 서버가 필요없는 [static export](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) 도 제공합니다.
 
 ### Remix {/*remix*/}
 
@@ -89,9 +89,10 @@ React를 지속적으로 개선할 방법을 찾아가는 과정에서, 우리�
 
 ### Next.js (App Router) {/*nextjs-app-router*/}
 
-**[Next.js의 앱 라우터](https://nextjs.org/docs)**는 React 팀의 풀 스택 아키텍처 비전을 구현하기 위한 Next.js API의 재설계입니다. 이를 통해 서버에서 실행되거나 빌드 중에 데이터를 비동기적으로 가져올 수 있습니다.
+**[Next.js's App Router](https://nextjs.org/docs)는 React 팀의 풀스택 아키텍처 비전을 구현하기 위해 재설계된 Next.js API입니다.** 이를 통해 서버에서 또는 빌드 중에 실행되는 비동기 컴포넌트에서 데이터를 가져올 수 있습니다.
 
-Next.js는 [Vercel](https://vercel.com/)에서 유지보수되고 있습니다. Next.js 앱을 [Node.js 또는 서버리스 호스팅](https://nextjs.org/docs/app/building-your-application/deploying) 또는 자체 서버에 배포할 수 있습니다. 또한 Next.js는 [서버가 필요하지 않은 정적 익스포트](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)도 지원합니다.
+
+Next.js는 [Vercel](https://vercel.com/)이 관리합니다. 어느 Node.js 서버, 서버리스 호스팅 또는 직접 소유한 서버 어느 곳에라도 [Next.js 애플리케이션을 배포](https://nextjs.org/docs/app/building-your-application/deploying)할 수 있습니다. Next.js 는 서버가 필요없는 [static export](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) 도 제공합니다.
 
 <DeepDive>
 

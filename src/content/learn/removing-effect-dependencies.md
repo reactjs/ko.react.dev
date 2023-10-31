@@ -1614,7 +1614,7 @@ label, button { display: block; margin-bottom: 5px; }
 
 Effect가 `options` 객체에 의존하기 때문에 다시 실행되고 있습니다. 객체는 의도치 않게 다시 생성될 수 있으므로 가능하면 Effect의 의존성 요소로 지정하지 않도록 해야 합니다.
 
-가장 덜 공격적인 수정 방법은 Effect 외부에서 `roomId`와 `serverUrl`을 읽은 다음 Effect가 이러한 기본 값에 의존하도록 만드는 것입니다(의도치 않게 변경할 수 없음). Effect 내부에서 객체를 생성하면 `createConnection`으로 전달됩니다:
+가장 덜 공격적인 수정 방법은 Effect 외부에서 `roomId`와 `serverUrl`을 읽은 다음 Effect가 이러한 기본 값에 의존하도록 만드는 것입니다(의도치 않게 변경할 수 없음). Effect 내부에서, 객체를 생성하고 이를 `createConnection`에 전달합니다.
 
 <Sandpack>
 
