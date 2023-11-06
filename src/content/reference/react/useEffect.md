@@ -76,7 +76,7 @@ function ChatRoom({ roomId }) {
 
 몇몇 컴포넌트들은 페이지에 표시되는 동안 네트워크나 브라우저 API, 또는 서드파티 라이브러리와의 연결이 유지되어야 합니다. React에 제어되지 않는 이러한 시스템들을 *외부 시스템(external)* 이라 부릅니다.
 
-[컴포넌트를 외부 시스템과 연결](/learn/synchronizing-with-effects)하려면 컴포넌트의 최상위 레벨에 `useEffect`를 호출해야 합니다.
+[컴포넌트를 외부 시스템과 연결](/learn/synchronizing-with-effects)하려면 컴포넌트의 최상위 레벨에서 `useEffect`를 호출해야 합니다.
 
 ```js [[1, 8, "const connection = createConnection(serverUrl, roomId);"], [1, 9, "connection.connect();"], [2, 11, "connection.disconnect();"], [3, 13, "[serverUrl, roomId]"]]
 import { useEffect } from 'react';
