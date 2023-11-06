@@ -7,8 +7,17 @@
       "sectionHeader": "react@18.2.0"
     },
     {
+<<<<<<< HEAD
       "title": "Hook",
       "path": "/reference/react",
+=======
+      "title": "Overview",
+      "path": "/reference/react"
+    },
+    {
+      "title": "Hooks",
+      "path": "/reference/react/hooks",
+>>>>>>> a8790ca810c1cebd114db35a433b90eb223dbb04
       "routes": [
         {
           "title": "use",
@@ -56,6 +65,11 @@
           "path": "/reference/react/useMemo"
         },
         {
+          "title": "useOptimistic",
+          "path": "/reference/react/useOptimistic",
+          "canary": true
+        },
+        {
           "title": "useReducer",
           "path": "/reference/react/useReducer"
         },
@@ -73,7 +87,8 @@
         },
         {
           "title": "useTransition",
-          "path": "/reference/react/useTransition"
+          "path": "/reference/react/useTransition",
+          "canary": true
         }
       ]
     },
@@ -166,6 +181,11 @@
       "path": "/reference/react-dom/hooks",
       "routes": [
         {
+          "title": "useFormState",
+          "path": "/reference/react-dom/hooks/useFormState",
+          "canary": true
+        },
+        {
           "title": "useFormStatus",
           "path": "/reference/react-dom/hooks/useFormStatus",
           "canary": true
@@ -179,6 +199,11 @@
         {
           "title": "Common (e.g. <div>)",
           "path": "/reference/react-dom/components/common"
+        },
+        {
+          "title": "<form>",
+          "path": "/reference/react-dom/components/form",
+          "canary": true
         },
         {
           "title": "<input>",

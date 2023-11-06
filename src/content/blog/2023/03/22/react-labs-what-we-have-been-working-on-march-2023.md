@@ -74,7 +74,11 @@ React 컴포넌트의 순수한 JavaScript를 반응형으로 만들기 위해�
 
 ## 오프스크린 렌더링 {/*offscreen-rendering*/}
 
+<<<<<<< HEAD
 오프스크린 렌더링은 React에 다가올 추가적인 성능 부담 없이 백그라운드에서 화면을 렌더링하는 기능입니다. [`content-visiblity` CSS 프로퍼티](https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility)를 DOM 엘리먼트뿐만 아니라 React 컴포넌트에서도 작동하는 버전으로 이해하시면 됩니다. 이번 연구 중에 우리는 아래와 같은 다양한 사용 사례를 발견했습니다.
+=======
+Offscreen rendering is an upcoming capability in React for rendering screens in the background without additional performance overhead. You can think of it as a version of the [`content-visibility` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility) that works not only for DOM elements but React components, too. During our research, we've discovered a variety of use cases:
+>>>>>>> a8790ca810c1cebd114db35a433b90eb223dbb04
 
 - 라우터는 백그라운드에서 화면을 사전 렌더링하여 사용자가 특정 화면으로 이동했을 때 즉시 사용하게 할 수 있습니다.
 - 탭 전환 컴포넌트는 숨겨진 탭의 state를 유지하여 사용자가 진행 상황을 잃지 않고 탭을 전환할 수 있습니다.

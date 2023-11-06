@@ -84,7 +84,7 @@ function submitForm(answer) {
   // 네트워크에 접속한다고 가정해봅시다.
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (answer.toLowerCase() == 'istanbul') {
+      if (answer.toLowerCase() === 'istanbul') {
         resolve();
       } else {
         reject(new Error('Good guess but a wrong answer. Try again!'));
