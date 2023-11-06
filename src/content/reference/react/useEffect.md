@@ -20,7 +20,7 @@ useEffect(setup, dependencies?)
 
 ### `useEffect(setup, dependencies?)` {/*useeffect*/}
 
-컴포넌트의 최상위 레벨에 `useEffect`를 호출하여 Effect를 선언할 수 있습니다.
+컴포넌트의 최상위 레벨에서 `useEffect`를 호출하여 Effect를 선언할 수 있습니다.
 
 ```js
 import { useEffect } from 'react';
@@ -44,9 +44,9 @@ function ChatRoom({ roomId }) {
 
 #### 매개변수 {/*parameters*/}
 
-+ `setup`: Effect의 로직이 포함된 함수입니다. setup 함수는 선택적으로 *clean up* 함수를 반환할 수 있습니다. React는 컴포넌트가 DOM에 추가된 이후에 setup 함수를 실행합니다. 의존성의 변화에 따라 컴포넌트가 리렌더링이 되었을 경우, (setup 함수에 clean up 함수를 추가했었다면) React는 이전 렌더링에 사용된 값으로 clean up 함수를 실행한 후 새로운 값으로 setup 함수를 실행합니다. 컴포넌트가 DOM에서 제거된 경우에도 clean up 함수를 실행합니다.
++ `setup(설정)`: Effect의 로직이 포함된 함수입니다. 설정 함수는 선택적으로 *clean up(정리)* 함수를 반환할 수 있습니다. React는 컴포넌트가 DOM에 추가된 이후에 설정 함수를 실행합니다. 의존성의 변화에 따라 컴포넌트가 리렌더링이 되었을 경우, (설정 함수에 정리 함수를 추가했었다면) React는 이전 렌더링에 사용된 값으로 정리 함수를 실행한 후 새로운 값으로 설정 함수를 실행합니다. 컴포넌트가 DOM에서 제거된 경우에도 정리 함수를 실행합니다.
  
-+ **선택사항** `의존성`: `setup` 함수의 코드 내부에서 참조되는 모든 반응형 값들이 포함된 배열로 구성됩니다. 반응형 값에는 props와 state, 모든 변수 및 컴포넌트 body에 직접적으로 선언된 함수들이 포함됩니다. 린터가 [리액트 환경에 맞게 설정되어 있을 경우](/learn/editor-setup#linting), 린터는 모든 반응형 값들이 의존성에 제대로 명시되어 있는지 검증할 것입니다. 의존성 배열은 항상 일정한 수의 항목을 가지고 있어야 하며 `[dep1, dep2, dep3]`과 같이 작성되어야 합니다. React는 각각의 의존성들을 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교법을 통해 이전 값과 비교합니다. 의존성을 생략할 경우, Effect는 컴포넌트가 리렌더링될 때마다 실행됩니다. [인수에 의존성 배열을 추가했을 때, 빈 배열을 추가했을 때, 의존성을 추가하지 않았을 때의 차이를 확인해 보세요.](#examples-dependencies)
++ `dependencies` **선택사항** : `설정` 함수의 코드 내부에서 참조되는 모든 반응형 값들이 포함된 배열로 구성됩니다. 반응형 값에는 props와 state, 모든 변수 및 컴포넌트 body에 직접적으로 선언된 함수들이 포함됩니다. 린터가 [리액트 환경에 맞게 설정되어 있을 경우](/learn/editor-setup#linting), 린터는 모든 반응형 값들이 의존성에 제대로 명시되어 있는지 검증할 것입니다. 의존성 배열은 항상 일정한 수의 항목을 가지고 있어야 하며 `[dep1, dep2, dep3]`과 같이 작성되어야 합니다. React는 각각의 의존성들을 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교법을 통해 이전 값과 비교합니다. 의존성을 생략할 경우, Effect는 컴포넌트가 리렌더링될 때마다 실행됩니다. [인수에 의존성 배열을 추가했을 때, 빈 배열을 추가했을 때, 의존성을 추가하지 않았을 때의 차이를 확인해 보세요.](#examples-dependencies)
 
 #### 반환값 {/*returns*/}
 
@@ -58,7 +58,7 @@ function ChatRoom({ roomId }) {
 
 * 외부 시스템과 컴포넌트를 동기화할 필요가 없는 경우, [Effect를 선언할 필요가 없을 수 있습니다.](/learn/you-might-not-need-an-effect)
 
-* Strict Mode를 사용할 경우, React는 실제 첫 번째 setup 함수가 실행되기 이전에 **개발 모드에만 한정하여 한 번의 추가적인 setup + cleanup 사이클을 실행합니다.** 이는 cleanup 로직이 setup 로직을 완벽히 "반영"하고 setup 로직이 수행하는 작업을 중단하거나 취소할 수 있는지를 확인하는 스트레스 테스트입니다. 이에 따라 문제가 생길 경우, [cleanup 함수를 구현하십시오.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
+* Strict Mode를 사용할 경우, React는 실제 첫 번째 설정 함수가 실행되기 이전에 **개발 모드에만 한정하여 한 번의 추가적인 설정 + 정리 사이클을 실행합니다.** 이는 정리 로직이 설정 로직을 완벽히 "반영"하고 설정 로직이 수행하는 작업을 중단하거나 취소할 수 있는지를 확인하는 스트레스 테스트입니다. 이에 따라 문제가 생길 경우, [정리 함수를 구현하십시오.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
 
 * 만약 의존성이 객체이거나 컴포넌트 내부에 선언된 함수일 경우에는 Effect가 필요 이상으로 재실행될 수 있습니다. 이를 수정하려면 불필요한 [객체 의존성](#removing-unnecessary-object-dependencies)이나 [함수 의존성](#updating-state-based-on-previous-state-from-an-effect)을 제거하세요. 또는 [state 업데이트를 추출](#updating-state-based-on-previous-state-from-an-effect)하거나 Effect 밖으로 [비 반응형 로직](#reading-the-latest-props-and-state-from-an-effect)을 빼낼 수 있습니다.
 
@@ -98,25 +98,25 @@ function ChatRoom({ roomId }) {
 
 `useEffect`는 2개의 인수가 필요합니다.
 
-1. 외부 시스템과 컴포넌트를 연결하는 <CodeStep step={1}>setup 코드</CodeStep>가 포함된 *setup 함수*
-   - 외부 시스템과의 연결을 해제하는 <CodeStep step={2}>cleanup 코드</CodeStep>가 포함된 *cleanup 함수*를 반환할 수 있습니다.
+1. 외부 시스템과 컴포넌트를 연결하는 <CodeStep step={1}>설정 코드</CodeStep>가 포함된 *설정 함수*
+   - 외부 시스템과의 연결을 해제하는 <CodeStep step={2}>정리 코드</CodeStep>가 포함된 *정리 함수*를 반환할 수 있습니다.
 2. 위 함수 내부에서 사용하는 컴포넌트에서 비롯된 반응형 값들을 포함하는 <CodeStep step={3}>의존성 배열</CodeStep>
 
-**React는 setup과 cleanup 함수를 필요할 때마다 호출할 수 있으며, 이는 여러 번 호출될 수 있습니다.**
+**React는 설정 함수와 정리 함수가 필요할 때마다 호출할 수 있으며, 이는 여러 번 호출될 수 있습니다.**
 
-1. 컴포넌트가 화면에 추가되었을 때 <CodeStep step={1}>setup 코드</CodeStep>가 동작합니다 *(마운트 시)*.
+1. 컴포넌트가 화면에 추가되었을 때 <CodeStep step={1}>설정 코드</CodeStep>가 동작합니다 *(마운트 시)*.
 2. <CodeStep step={3}>의존성</CodeStep>이 변경된 컴포넌트가 리렌더링 될 때마다 아래 동작을 수행합니다.
-   - 먼저 <CodeStep step={2}>cleanup 코드</CodeStep>가 오래된 props와 state와 함께 실행됩니다.
-   - 이후, <CodeStep step={1}>setup 코드</CodeStep>가 새로운 props와 state와 함께 실행됩니다.
-3. 컴포넌트가 화면에서 제거된 이후에 <CodeStep step={2}>cleanup 코드</CodeStep>가 마지막으로 실행됩니다 *(마운트 해제 시)*.
+   - 먼저 <CodeStep step={2}>정리 코드</CodeStep>가 오래된 props와 state와 함께 실행됩니다.
+   - 이후, <CodeStep step={1}>설정 코드</CodeStep>가 새로운 props와 state와 함께 실행됩니다.
+3. 컴포넌트가 화면에서 제거된 이후에 <CodeStep step={2}>정리 코드</CodeStep>가 마지막으로 실행됩니다 *(마운트 해제 시)*.
 
 **위의 예제를 통해 순서를 설명해 보겠습니다.**
 
 위의 `ChatRoom` 컴포넌트가 화면에 추가되면 초기 `serverUrl`과 `roomId`를 이용해 채팅방과 연결될 것입니다. 리렌더링에 의해 `serverUrl` 또는 `roomId`가 변경된다면 (예를 들어 사용자가 드롭다운 메뉴를 이용해 다른 채팅방을 선택할 경우) *Effect는 이전 채팅방과의 연결을 해제하고 다음 채팅방과 연결합니다.* `ChatRoom` 컴포넌트가 화면에서 제거된다면 Effect는 마지막 채팅방과 이뤄진 연결을 해제할 것입니다. 
 
-리액트는 **[버그를 발견하기 위해](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) 개발모드에서 <CodeStep step={1}>setup</CodeStep>이 실행되기 전에 <CodeStep step={1}>setup</CodeStep>과 <CodeStep step={2}>cleanup</CodeStep>을 한 번 더 실행시킵니다.** 이는 스트레스 테스트의 하나로써 Effect의 로직이 정확하게 수행되고 있는지를 검증합니다. 만약 가시적인 이슈가 보인다면 cleanup 함수의 로직에 놓친 부분이 있는 것입니다. cleanup 함수는 setup 함수의 어떠한 동작이라도 중지하거나 실행 취소를 할 수 있어야 하며, 사용자는 *setup* 함수가 한 번 호출될 때와 *setup* → *cleanup* → *setup* 순서로 호출될 때의 차이를 느낄 수 없어야 합니다.
+리액트는 **[버그를 발견하기 위해](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) 개발모드에서 <CodeStep step={1}>설정</CodeStep>이 실행되기 전에 <CodeStep step={1}>설정</CodeStep>과 <CodeStep step={2}>정리</CodeStep>를 한 번 더 실행시킵니다.** 이는 스트레스 테스트의 하나로써 Effect의 로직이 정확하게 수행되고 있는지를 검증합니다. 만약 가시적인 이슈가 보인다면 정리 함수의 로직에 놓친 부분이 있는 것입니다. 정리 함수는 설정 함수의 어떠한 동작이라도 중지하거나 실행 취소를 할 수 있어야 하며, 사용자는 *설정* 함수가 한 번 호출될 때와 *설정* → *정리* → *설정* 순서로 호출될 때의 차이를 느낄 수 없어야 합니다.
 
-**[각각의 Effect를 독립적인 프로세스로 작성](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process)하고 [정확한 setup/cleanup 사이클을 고려하세요.](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective)** 컴포넌트의 마운트, 업데이트, 마운트 해제 여부는 중요하지 않아야 합니다. cleanup 로직이 setup 로직과 정확하게 "미러링"될 때, Effect는 setup과 cleanup을 필요한 만큼 견고하게 처리합니다.
+**[각각의 Effect를 독립적인 프로세스로 작성](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process)하고 [정확한 설정/정리 사이클을 고려하세요.](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective)** 컴포넌트의 마운트, 업데이트, 마운트 해제 여부는 중요하지 않아야 합니다. 정리 로직이 설정 로직과 정확하게 "미러링"될 때, Effect는 설정과 정리를 필요한 만큼 견고하게 처리합니다.
 
 <Note>
 
@@ -268,7 +268,7 @@ body {
 
 #### 애니메이션 동작시키기 {/*triggering-an-animation*/}
 
-이 예시에서 외부 시스템은 `animation.js`파일에 있는 라이브러리입니다. 이 라이브러리는 DOM 노드를 인자로 받는 `FadeInAnimation`라는 자바스크립트 class를 제공하며, 이 class는 애니메이션을 제어하기 위한 `start()`과 `stop()` 메서드를 노출합니다. 이 컴포넌트는 [ref를 이용하여](/learn/manipulating-the-dom-with-refs) DOM 노드에 접근합니다. Effect는 ref를 통해 DOM 노드를 읽고, 컴포넌트가 나타날 때 해당 노드의 애니메이션을 자동으로 시작시킵니다.
+이 예시에서 외부 시스템은 `animation.js`파일에 있는 라이브러리입니다. 이 라이브러리는 DOM 노드를 인자로 받는 `FadeInAnimation`라는 자바스크립트 클래스를 제공하며, 이 클래스는 애니메이션을 제어하기 위한 `start()`과 `stop()` 메서드를 노출합니다. 이 컴포넌트는 [ref를 이용하여](/learn/manipulating-the-dom-with-refs) DOM 노드에 접근합니다. Effect는 ref를 통해 DOM 노드를 읽고, 컴포넌트가 나타날 때 해당 노드의 애니메이션을 자동으로 시작시킵니다.
 
 <Sandpack>
 
@@ -790,7 +790,7 @@ export function useIntersectionObserver(ref) {
 
 가끔은 컴포넌트의 prop 또는 state를 외부 시스템과 동기화해야할 때가 있습니다.
 
-예를 들어 React 없이 작성된 third-party 지도 위젯이나 비디오 플레이어 컴포넌트가 있다면 이 컴포넌트의 state를 현재 React 컴포넌트의 state와 일치하도록 하기 위해 Effect를 사용할 수 있습니다. 이 Effect는 `map-widget.js`에 정의된 `MapWidget` class의 인스턴스를 생성합니다. `Map` 컴포넌트의 `zoomLevel` prop을 변경할 때, Effect는 해당 class 인스턴스의 `setZoom()`을 호출하여 동기화를 유지합니다.
+예를 들어 React 없이 작성된 third-party 지도 위젯이나 비디오 플레이어 컴포넌트가 있다면 이 컴포넌트의 state를 현재 React 컴포넌트의 state와 일치하도록 하기 위해 Effect를 사용할 수 있습니다. 이 Effect는 `map-widget.js`에 정의된 `MapWidget` 클래스의 인스턴스를 생성합니다. `Map` 컴포넌트의 `zoomLevel` prop을 변경할 때, Effect는 해당 클래스 인스턴스의 `setZoom()`을 호출하여 동기화를 유지합니다.
 
 <Sandpack>
 
@@ -890,7 +890,7 @@ button { margin: 5px; }
 
 </Sandpack>
 
-이 예제에서는 cleanup 함수가 필요하지 않습니다. 이는 `MapWidget` class가 class에 전달된 DOM 노드만 관리하기 때문입니다. `Map` 컴포넌트가 트리에서 제거된 후, 브라우저의 자바스크립트 엔진에 의해 DOM 노드와 `MapWidget` class 인스턴스 모두가 자동으로 가비지 컬렉션에 의해 정리됩니다.
+이 예제에서는 정리 함수가 필요하지 않습니다. 이는 `MapWidget` 클래스가 클래스에 전달된 DOM 노드만 관리하기 때문입니다. `Map` 컴포넌트가 트리에서 제거된 후, 브라우저의 자바스크립트 엔진에 의해 DOM 노드와 `MapWidget` 클래스 인스턴스 모두가 자동으로 가비지 컬렉션에 의해 정리됩니다.
 
 ---
 
@@ -924,7 +924,7 @@ export default function Page() {
   // ...
 ```
 
-`ignore` 변수의 초기값이 `false`로 설정되고 cleanup 함수 동작 중에 `true`로 설정되는 것에 주목하세요. 이 로직은 [코드가 "경쟁 상태(race conditions)"에 빠지지 않도록 보장해 줍니다.](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect) 네트워크 요청을 보낸 순서와 응답을 받는 순서가 다르게 동작할 수 있기 때문에 이러한 처리가 필요합니다.
+`ignore` 변수의 초기값이 `false`로 설정되고 정리 함수 동작 중에 `true`로 설정되는 것에 주목하세요. 이 로직은 [코드가 "경쟁 상태(race conditions)"에 빠지지 않도록 보장해 줍니다.](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect) 네트워크 요청을 보낸 순서와 응답을 받는 순서가 다르게 동작할 수 있기 때문에 이러한 처리가 필요합니다.
 
 <Sandpack>
 
@@ -977,7 +977,7 @@ export async function fetchBio(person) {
 
 </Sandpack>
 
-또한 [`async` / `await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) 구문을 사용하여 코드를 다시 작성할 수 있지만 여전히 cleanup 함수를 제공해야 합니다.
+또한 [`async` / `await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) 구문을 사용하여 코드를 다시 작성할 수 있지만 여전히 정리 함수를 제공해야 합니다.
 
 <Sandpack>
 
@@ -1249,7 +1249,7 @@ useEffect(() => {
 }, []); // Does not run again (except once in development)
 ```
 
-**개발 환경에서는 빈 의존성 배열이 있더라도 버그를 찾기 위해 setup과 cleanup이 [한번 더 실행됩니다.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)**
+**개발 환경에서는 빈 의존성 배열이 있더라도 버그를 찾기 위해 설정과 정리가 [한번 더 실행됩니다.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)**
 
 이 예제에서 `serverUrl`와 `roomId`는 모두 하드코딩되어 있습니다. 컴포넌트 외부에서 선언되었으므로 반응형 값이 아니며, 따라서 의존성이 아닙니다. 의존성 배열이 비어있으므로 Effect는 리렌더링될 때까지 실행되지 않습니다.
 
@@ -1434,7 +1434,7 @@ function Counter() {
 }
 ```
 
-`count`가 반응형 값이므로 반드시 의존성 배열에 추가해야 합니다. 그러나 `count`가 변경되는 것은 Effect가 cleanup된 후 다시 setup되는 것을 야기하므로 `count`는 계속 증가할 것입니다. 이상적이지 않은 방식입니다.
+`count`가 반응형 값이므로 반드시 의존성 배열에 추가해야 합니다. 그러나 `count`가 변경되는 것은 Effect가 정리된 후 다시 설정되는 것을 야기하므로 `count`는 계속 증가할 것입니다. 이상적이지 않은 방식입니다.
 
 이러한 현상을 방지하려면 [`c => c + 1` state 변경함수](/reference/react/useState#updating-state-based-on-the-previous-state)를 `setCount`에 추가하세요,
 
@@ -1471,7 +1471,7 @@ body {
 
 </Sandpack>
 
-`c => c + 1`을 `count + 1` 대신 전달하고 있으므로, [Effect는 더 이상 `count`에 의존하지 않습니다.](/learn/removing-effect-dependencies#are-you-reading-some-state-to-calculate-the-next-state) 이 수정으로 인해 `count`가 변경될 때마다 Effect가 cleanup 및 setup을 다시 실행할 필요가 없게 됩니다.
+`c => c + 1`을 `count + 1` 대신 전달하고 있으므로, [Effect는 더 이상 `count`에 의존하지 않습니다.](/learn/removing-effect-dependencies#are-you-reading-some-state-to-calculate-the-next-state) 이 수정으로 인해 `count`가 변경될 때마다 Effect가 정리 및 설정을 다시 실행할 필요가 없게 됩니다.
 
 ---
 
@@ -1762,9 +1762,9 @@ function MyComponent() {
 
 ### Effect가 컴포넌트 마운트 시 2번 동작합니다. {/*my-effect-runs-twice-when-the-component-mounts*/}
 
-개발 환경에서 Strict Mode가 활성화되면 React는 실제 setup 이전에 setup과 cleanup을 한번 더 실행합니다.
+개발 환경에서 Strict Mode가 활성화되면 React는 실제 설정 이전에 설정과 정리를 한번 더 실행합니다.
 
-이것은 Effect의 로직이 올바르게 구현되었는지 확인하는 스트레스 테스트입니다. 이에 따라 눈에 띄는 문제가 발생한다면 cleanup 함수에 어떤 로직이 누락되었을 수 있습니다. cleanup 함수는 setup 함수가 수행한 것을 중지하거나 되돌릴 수 있어야 합니다. 일반적인 지침으로는 사용자가 setup이 한번 호출되는 것(배포 환경과 같이)과 setup → cleanup → setup 순서로 호출되는 것을 구별할 수 없어야 한다는 것입니다.
+이것은 Effect의 로직이 올바르게 구현되었는지 확인하는 스트레스 테스트입니다. 이에 따라 눈에 띄는 문제가 발생한다면 정리 함수에 어떤 로직이 누락되었을 수 있습니다. 정리 함수는 설정 함수가 수행한 것을 중지하거나 되돌릴 수 있어야 합니다. 일반적인 지침으로는 사용자가 설정이 한번 호출되는 것(배포 환경과 같이)과 설정 → 정리 → 설정 순서로 호출되는 것을 구별할 수 없어야 한다는 것입니다.
 
 이것이 [버그를 찾는 데 어떻게 도움이 되며,](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) [로직을 어떻게 수정하는지](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)에 자세히 알아보려면 여기를 읽어보세요.
 
@@ -1828,11 +1828,11 @@ Effect가 무한 반복되려면 다음 두 가지 조건이 충족되어야 합
 
 ---
 
-### 컴포넌트가 마운트 해제되지 않았음에도 cleanup 함수가 실행됩니다. {/*my-cleanup-logic-runs-even-though-my-component-didnt-unmount*/}
+### 컴포넌트가 마운트 해제되지 않았음에도 정리 함수가 실행됩니다. {/*my-cleanup-logic-runs-even-though-my-component-didnt-unmount*/}
 
-cleanup 함수는 마운트 해제 시 뿐만 아니라 변경된 종속성으로 인한 모든 리렌더링 전에 실행됩니다. 또한 개발 환경에서는 React가 [컴포넌트가 마운트된 직후에 한 번 더 setup과 cleanup을 실행합니다.](#my-effect-runs-twice-when-the-component-mounts)
+정리 함수는 마운트 해제 시 뿐만 아니라 변경된 종속성으로 인한 모든 리렌더링 전에 실행됩니다. 또한 개발 환경에서는 React가 [컴포넌트가 마운트된 직후에 한 번 더 설정과 정리를 실행합니다.](#my-effect-runs-twice-when-the-component-mounts)
 
-setup 코드와 상응하는 cleanup 코드가 없다면 보통은 코드에 문제가 있을 가능성이 높습니다.
+설정 코드와 상응하는 정리 코드가 없다면 보통은 코드에 문제가 있을 가능성이 높습니다.
 
 ```js {2-5}
 useEffect(() => {
@@ -1843,7 +1843,7 @@ useEffect(() => {
 }, []);
 ```
 
-cleanup 로직은 setup 로직과 '대칭'이어야 하며 setup이 수행한 것을 중지하거나 되돌릴 수 있어야 합니다.
+정리 로직은 설정 로직과 '대칭'이어야 하며 설정이 수행한 것을 중지하거나 되돌릴 수 있어야 합니다.
 
 ```js {2-3,5}
   useEffect(() => {
