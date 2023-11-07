@@ -34,7 +34,7 @@ experimental_taintObjectReference(message, object);
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `taintObjectReference(message, object)` {/*taintobjectreference*/}
 
@@ -49,19 +49,19 @@ experimental_taintObjectReference(
 );
 ```
 
-[See more examples below.](#usage)
+[더 많은 예제를 아래에서 볼 수 있습니다.](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `message`: The message you want to display if the object gets passed to a Client Component. This message will be displayed as a part of the Error that will be thrown if the object gets passed to a Client Component.
+* `message`: 객체가 클라이언트 컴포넌트로 전달될 때 표시할 메시지. 객체가 클라이언트 컴포넌트로 전달될 때 발생하는 에러 객체에 포함되어 나타나는 메시지입니다.
 
-* `object`: The object to be tainted. Functions and class instances can be passed to `taintObjectReference` as `object`. Functions and classes are already blocked from being passed to Client Components but the React's default error message will be replaced by what you defined in `message`. When a specific instance of a Typed Array is passed to `taintObjectReference` as `object`, any other copies of the Typed Array will not be tainted.
+* `object`: 오염(taint)될 객체. 함수와 클래스 인스턴스도 `object`로서 `taintObjectReference`에 전달될 수 있습니다. 함수와 클래스는 클라이언트 컴포넌트로 전달되지 않도록 이미 막혀있지만 React의 기본 에러 메시지 대신 `message`에 설정한 메시지를 보여줄 수 있습니다. 타입 배열(Typed Array)의 인스턴스를 `object`로서 `taintObjectReference`에 전달하면 같은 타입 배열의 다른 인스턴스가 오염되지 않습니다.
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-`experimental_taintObjectReference` returns `undefined`.
+`experimental_taintObjectReference`는 `undefined`를 반환합니다.
 
-#### Caveats {/*caveats*/}
+#### 주의사항 {/*caveats*/}
 
 - Recreating or cloning a tainted object creates a new untained object which main contain sensetive data. For example, if you have a tainted `user` object, `const userInfo = {name: user.name, ssn: user.ssn}` or `{...user}` will create new objects which are not tainted. `taintObjectReference` only protects against simple mistakes when the object is passed through to a Client Component unchanged.
 
