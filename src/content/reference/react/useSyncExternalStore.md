@@ -360,7 +360,11 @@ function subscribe(callback) {
 - HTML을 생성할 때 서버에서 실행됩니다.
 - [hydration](/reference/react-dom/client/hydrateRoot) 중 즉 React가 서버 HTML을 가져와서 인터랙티브하게 만들 때 클라이언트에서 실행됩니다.
 
+<<<<<<< HEAD
 이를 통해 앱이 상호작용하기 전에 사용될 초기 스냅샷 값을 제공할 수 있습니다. 서버 렌더링에 의미 있는 초기값이 없다면 [컴포넌트가 클라이언트에서만 렌더링되도록 강제 설정](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)할 수 있습니다.
+=======
+This lets you provide the initial snapshot value which will be used before the app becomes interactive. If there is no meaningful initial value for the server rendering, omit this argument to [force rendering on the client.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content)
+>>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 <Note>
 

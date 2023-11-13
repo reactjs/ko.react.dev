@@ -142,7 +142,12 @@ startTransition으로 래핑된 업데이트는 긴급하지 않은 것으로 �
 
 transition은 concurrent 렌더링을 선택하여 업데이트를 중단할 수 있습니다. 콘텐츠가 다시 일시 중단되면, transition은 백그라운드에서 transition 콘텐츠를 렌더링하는 동안 현재 콘텐츠를 계속 표시하도록 React에 지시합니다. (자세한 내용은 [Suspense RFC](https://github.com/reactjs/rfcs/blob/main/text/0213-suspense-in-react-18.md)를 참고하세요.)
 
+<<<<<<< HEAD
 [Transitions 참고 문서](/reference/react/useTransition)
+=======
+* `useTransition`: a Hook to start transitions, including a value to track the pending state.
+* `startTransition`: a method to start transitions when the Hook cannot be used.
+>>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 ### 새로운 Suspense 기능들 {/*new-suspense-features*/}
 
@@ -226,7 +231,11 @@ React 18의 Strict 모드에서는 개발 모드에서 컴포넌트를 마운트
 
 #### useId {/*useid*/}
 
+<<<<<<< HEAD
 `useId`는 hydration 불일치를 방지하면서 클라이언트와 서버 모두에서 고유 ID를 생성하기 위한 새로운 hook입니다. 주로 고유 ID가 필요한 접근성 API와 통합되는 컴포넌트 라이브러리에 유용합니다. 이는 React 17 이하에서 이미 존재하던 문제를 해결하지만, 새로운 스트리밍 서버 렌더러가 HTML을 순서대로 전달하지 않기 때문에 React 18에서는 더욱 중요합니다. [참고 문서](/reference/react/useId)
+=======
+`useId` is a new Hook for generating unique IDs on both the client and server, while avoiding hydration mismatches. It is primarily useful for component libraries integrating with accessibility APIs that require unique IDs. This solves an issue that already exists in React 17 and below, but it's even more important in React 18 because of how the new streaming server renderer delivers HTML out-of-order. [See docs here](/reference/react/useId).
+>>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 > 주의
 >
@@ -242,7 +251,11 @@ React 18의 Strict 모드에서는 개발 모드에서 컴포넌트를 마운트
 
 #### useSyncExternalStore {/*usesyncexternalstore*/}
 
+<<<<<<< HEAD
 `useSyncExternalStore`는 스토어에 대한 업데이트를 강제로 동기화하여 외부 스토어가 동시 읽기를 지원할 수 있도록 하는 새로운 hook입니다. 이 hook은 외부 데이터에 대한 구독을 구현할 때 useEffect가 필요하지 않으며, React 외부 state와 통합하는 모든 라이브러리에 권장됩니다. [참고 문서](/reference/react/useSyncExternalStore)
+=======
+`useSyncExternalStore` is a new Hook that allows external stores to support concurrent reads by forcing updates to the store to be synchronous. It removes the need for useEffect when implementing subscriptions to external data sources, and is recommended for any library that integrates with state external to React. [See docs here](/reference/react/useSyncExternalStore).
+>>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 > 주의
 >
@@ -250,7 +263,11 @@ React 18의 Strict 모드에서는 개발 모드에서 컴포넌트를 마운트
 
 #### useInsertionEffect {/*useinsertioneffect*/}
 
+<<<<<<< HEAD
 `useInsertionEffect`는 CSS-in-JS 라이브러리가 렌더링에서 스타일을 삽입할 때 발생하는 성능 문제를 해결할 수 있는 새로운 hook입니다. 이미 CSS-in-JS 라이브러리를 빌드한 경우가 아니라면 이 hook을 사용할 일은 없을 것으로 예상됩니다. 이 hook은 DOM이 변경된 후에 실행되지만, 레이아웃 effects가 새 레이아웃을 읽기 전에 실행됩니다. 이는 React 17 이하에서 이미 존재하던 문제를 해결하지만, React 18에서는 concurrent 렌더링 중에 브라우저가 레이아웃을 다시 계산할 기회를 제공하기 때문에 더욱 중요합니다. [참고 문서](/reference/react/useInsertionEffect)
+=======
+`useInsertionEffect` is a new Hook that allows CSS-in-JS libraries to address performance issues of injecting styles in render. Unless you’ve already built a CSS-in-JS library we don’t expect you to ever use this. This Hook will run after the DOM is mutated, but before layout effects read the new layout. This solves an issue that already exists in React 17 and below, but is even more important in React 18 because React yields to the browser during concurrent rendering, giving it a chance to recalculate layout. [See docs here](/reference/react/useInsertionEffect).
+>>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 > 주의
 >
@@ -336,4 +353,3 @@ React 18의 Strict 모드에서는 개발 모드에서 컴포넌트를 마운트
 * Update webpack plugin for webpack 5 ([#22739](https://github.com/facebook/react/pull/22739)  by [@michenly](https://github.com/michenly))
 * Fix a mistake in the Node loader. ([#22537](https://github.com/facebook/react/pull/22537)  by [@btea](https://github.com/btea))
 * Use `globalThis` instead of `window` for edge environments. ([#22777](https://github.com/facebook/react/pull/22777)  by [@huozhi](https://github.com/huozhi))
-

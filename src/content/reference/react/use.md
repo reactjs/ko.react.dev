@@ -344,7 +344,11 @@ root.render(
 
 #### 서버 또는 클라이언트 컴포넌트에서 프로미스를 리졸브해만 하나요? {/*resolve-promise-in-server-or-client-component*/}
 
+<<<<<<< HEAD
 Promise는 서버 컴포넌트에서 클라이언트 컴포넌트로 전달될 수 있으며 `use` Hook을 통해 클라이언트 컴포넌트에서 리졸브됩니다. 또한 서버 컴포넌트에서 `await`을 사용하여 Promise를 리졸브하고 데이터를 클라이언트 컴포넌트에 `prop`으로 전달하는 방법도 존재합니다.
+=======
+A Promise can be passed from a Server Component to a Client Component and resolved in the Client Component with the `use` Hook. You can also resolve the Promise in a Server Component with `await` and pass the required data to the Client Component as a prop.
+>>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 ```js
 export default function App() {

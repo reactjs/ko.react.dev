@@ -28,8 +28,13 @@ Vercel 및 Shopify와 협력하여 Webpack 및 Vite 모두에서 공유 시맨�
 
 ## 자산 로딩 {/*asset-loading*/}
 
+<<<<<<< HEAD
 현재 스크립트, 외부 스타일, 글꼴 및 이미지와 같은 리소스는 일반적으로 외부 시스템을 사용하여 사전 로드되고 로드됩니다. 이로 인해 스트리밍, 서버 컴포넌트 등과 같은 새로운 환경에서 조정하기 까다로울 수 있습니다.
 우리는 모든 React 환경에서 작동하는 React API를 통해 중복 제거된 외부 자산을 미리 로드하고 로드하기 위해 API를 추가하는 것을 고려하고 있습니다.
+=======
+Currently, assets like scripts, external styles, fonts, and images are typically preloaded and loaded using external systems. This can make it tricky to coordinate across new environments like streaming, Server Components, and more.
+We’re looking at adding APIs to preload and load deduplicated external assets through React APIs that work in all React environments.
+>>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 우리는 또한 Suspense를 지원하여 로드될 때까지 표시를 차단하지만 스트리밍 및 동시 렌더링을 차단하지 않는 이미지, CSS 및 글꼴을 가질 수 있도록 하는 것을 고려하고 있습니다. 이것은 시각적 요소가 튀어나오고 레이아웃이 바뀔 때 ["popcorning"](https://twitter.com/sebmarkbage/status/1516852731251724293)을 방지하는 데 도움이 될 수 있습니다.
 
@@ -41,7 +46,11 @@ Vercel 및 Shopify와 협력하여 Webpack 및 Vite 모두에서 공유 시맨�
 
 우리는 React Conf 2021에서 React Forget을 [미리 선보였습니다](https://www.youtube.com/watch?v=lGEMwh32soc). 이 컴파일러는 React의 프로그래밍 모델을 유지하면서 재렌더링 비용을 최소화하기 위해 `useMemo` 와 `useCallback` 에 상응하는 호출을 자동으로 생성하는 컴파일러입니다.
 
+<<<<<<< HEAD
 최근 저희는 컴파일러의 안정성과 성능을 높이기 위해 컴파일러 재작업을 완료했습니다. 이 새로운 아키텍처를 통해 [로컬 변이 사용](/learn/keeping-components-pure#local-mutation-your-components-little-secret)과 같은 더 복잡한 패턴을 분석하고 메모화할 수 있게 되었으며, memoization hooks 와 동등한 수준 이상으로 많은 새로운 컴파일 시간 최적화 기회가 열리게 되었습니다.
+=======
+Recently, we finished a rewrite of the compiler to make it more reliable and capable. This new architecture allows us to analyze and memoize more complex patterns such as the use of [local mutations](/learn/keeping-components-pure#local-mutation-your-components-little-secret), and opens up many new compile-time optimization opportunities beyond just being on par with memoization Hooks.
+>>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 또한 컴파일러의 여러 측면을 탐색할 수 있는 플레이그라운드도 개발 중입니다. 플레이그라운드의 목표는 컴파일러를 더 쉽게 개발하는 것이지만, 컴파일러를 사용해보고 컴파일러가 하는 일에 대한 직관력을 키우는 데 도움이 될 것으로 생각합니다. 컴파일러가 내부에서 어떻게 작동하는지에 대한 다양한 인사이트를 제공하며, 입력하는 대로 컴파일러의 출력을 실시간으로 렌더링합니다. 이 기능은 컴파일러가 출시될 때 함께 제공됩니다.
 
