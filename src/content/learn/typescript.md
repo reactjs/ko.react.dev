@@ -119,7 +119,7 @@ export default App = AppTSX;
 
 </Sandpack>
 
-컴포넌트의 props를 설명하는 타입은 원하는 만큼 단순하거나 복잡할 수 있지만, `type` 또는 `interface`로 설명되는 객체 타입이어야 합니다. [객체 타입](https://www.typescriptlang.org/docs/handbook/2/objects.html)에서 TypeScript가 객체를 설명하는 방법에 대해 배울 수 있지만, [유니언 타입](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types)을 사용하여 몇 가지 타입 중 하나가 될 수 있는 prop을 설명하는 것과 고급 사용 사례에 대한 [타입에서 타입 만들기](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) 가이드 또한 관심이 있을 수도 있습니다.
+컴포넌트의 props를 설명하는 타입은 원하는 만큼 단순하거나 복잡할 수 있지만, `type` 또는 `interface`로 설명되는 객체 타입이어야 합니다. TypeScript가 객체를 설명하는 방법에 대해 [객체 타입](https://www.typescriptlang.org/docs/handbook/2/objects.html)에서 배울 수 있습니다만, [유니언 타입](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types)을 사용하여 몇 가지 타입 중 하나가 될 수 있는 prop을 설명하는 것과 더 고급 사용 예시에 대한 [타입에서 타입 만들기](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) 가이드 역시 흥미로울 것입니다.
 
 
 ## Hooks 예시 {/*example-hooks*/}
@@ -339,7 +339,7 @@ const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
 
 ### `useCallback` {/*typing-usecallback*/}
 
-[`useCallback`](/reference/react/useCallback)는 두 번째 매개변수로 전달되는 종속성이 같다면 함수에 대한 안정적인 레퍼런스를 제공합니다. `useMemo`와 마찬가지로, 함수의 타입은 첫 번째 매개변수에 있는 함수의 반환 값에서 추론되며, hook에 타입 인수를 제공하여 더욱더 명확하게 할 수 있습니다.
+[`useCallback`](/reference/react/useCallback)는 두 번째 매개변수로 전달되는 종속성이 같다면 함수에 대한 안정적인 참조를 제공합니다. `useMemo`와 마찬가지로, 함수의 타입은 첫 번째 매개변수에 있는 함수의 반환 값에서 추론되며, hook에 타입 인수를 제공하여 더욱더 명확하게 할 수 있습니다.
 
 
 ```ts
