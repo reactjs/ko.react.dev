@@ -15,7 +15,7 @@ export const OpenInCodeSandboxButton = () => {
         width="1em"
         height="1em"
       />
-      <span className="hidden md:block">Fork</span>
+      <span className="hidden md:block">포크</span>
     </UnstyledOpenInCodeSandboxButton>
   );
 };
