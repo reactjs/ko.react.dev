@@ -51,7 +51,7 @@ JSX를 포함하고 있는 모든 파일은 `.tsx` 파일 확장자를 사용해
 
 React와 함께 TypeScript를 작성하는 것은 React와 함께 JavaScript를 작성하는 것과 매우 유사합니다. 컴포넌트로 작업할 때 가장 중요한 차이점은 컴포넌트의 props에 타입을 제공할 수 있다는 점입니다. 이러한 타입은 에디터에서 정확성을 검사하고 인라인 문서를 제공하는 데 사용할 수 있습니다.
 
-[`MyButton` 컴포넌트](/learn#components)를 [빠르게 시작하기](/learn) 가이드에서 가져와, `title`을 설명하는 타입을 추가할 수 있습니다.
+[빠르게 시작하기](/learn) 가이드에서 가져온 [`MyButton` 컴포넌트](/learn#components)를 예로 들어 버튼의 `title`을 설명하는 타입을 추가할 수 있습니다.
 
 <Sandpack>
 
@@ -80,7 +80,7 @@ export default App = AppTSX;
 
  <Note>
 
-이 샌드박스들은 TypeScript 코드를 처리할 수 있지만 타입 검사를 실행하지는 않습니다. 즉, TypeScript 샌드박스를 수정하여 학습할 수는 있지만 타입 오류나 경고는 발생하지 않습니다. 타입 검사를 받으려면, [TypeScript Playground](https://www.typescriptlang.org/ko/play)를 사용하거나 더 완전한 기능을 갖춘 온라인 샌드박스를 사용할 수 있습니다.
+이 문서에 있는 샌드박스들은 TypeScript 코드를 다룰 수는 있지만 타입을 검사하지는 않습니다. 즉, TypeScript 샌드박스를 수정하여 학습할 수는 있지만 타입 오류나 경고는 발생하지 않습니다. 타입 검사를 받으려면, [TypeScript Playground](https://www.typescriptlang.org/ko/play)를 사용하거나 더 완전한 기능을 갖춘 온라인 샌드박스를 사용할 수 있습니다.
 
 </Note>
 
