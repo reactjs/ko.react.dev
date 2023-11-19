@@ -4,30 +4,30 @@ title: experimental_taintUniqueValue
 
 <Wip>
 
-**This API is experimental and is not available in a stable version of React yet.**
+**이 API는 실험적이며 React 안정 버전에서는 아직 사용할 수 없습니다.**
 
-You can try it by upgrading React packages to the most recent experimental version:
+이 API를 사용하려면 React 패키지를 가장 최근의 실험적인 버전으로 업그레이드해야 합니다.
 
 - `react@experimental`
 - `react-dom@experimental`
 - `eslint-plugin-react-hooks@experimental`
 
-Experimental versions of React may contain bugs. Don't use them in production.
+실험적인 버전의 React에는 버그가 있을 수 있습니다. 프로덕션에서는 사용하지 마세요.
 
-This API is only available inside [React Server Components](/reference/react/use-client).
+이 API는 [React Server Components](/reference/react/use-client)에서만 사용할 수 있습니다.
 
 </Wip>
 
 
 <Intro>
 
-`taintUniqueValue` lets you prevent unique values from being passed to Client Components like passwords, keys, or tokens.
+`taintUniqueValue`를 사용하면 암호, 키 또는 토큰과 같은 고유 값을 클라이언트 컴포넌트로 전송하는 것을 방지할 수 있습니다.
 
 ```js
 taintUniqueValue(errMessage, lifetime, value)
 ```
 
-To prevent passing an object containing sensitive data, see [`taintObjectReference`](/reference/react/experimental_taintObjectReference).
+중요한 데이터가 포함된 객체가 전달되는 것을 방지하는 방법은 [`taintObjectReference`](/reference/react/experimental_taintObjectReference)를 참고하세요.
 
 </Intro>
 
