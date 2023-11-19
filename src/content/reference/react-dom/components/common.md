@@ -96,7 +96,7 @@ title: "공통 컴포넌트 (예시: <div>)"
 * `onDragStartCapture`: `onDragStart`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onDrop`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/drop_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 유효한 드롭 대상에 무언가를 떨어뜨리면 발동합니다.
 * `onDropCapture`: `onDrop`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* `onFocus`: [`FocusEvent` 핸들러](#focusevent-handler) 함수입니다. 엘리먼트가 포커싱을 잃었을 때 발생합니다. 브라우저에 내장된 [`focus`](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event) 이벤트와 달리 React에서는 `onFocus` 이벤트가 버블링을 발생시킵니다.
+* `onFocus`: [`FocusEvent` 핸들러](#focusevent-handler) 함수입니다. 엘리먼트가 포커싱을 얻었을 때 발생합니다. 브라우저에 내장된 [`focus`](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event) 이벤트와 달리 React에서는 `onFocus` 이벤트가 버블링을 발생시킵니다.
 * `onFocusCapture`: `onFocus`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onGotPointerCapture`](https://developer.mozilla.org/en-US/docs/Web/API/Element/gotpointercapture_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 엘리먼트가 프로그래밍 방식으로 포인터를 캡처할 때 발생합니다.
 * `onGotPointerCaptureCapture`: `onGotPointerCapture`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
