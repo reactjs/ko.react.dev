@@ -35,45 +35,45 @@ taintUniqueValue(errMessage, lifetime, value)
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `taintUniqueValue(message, lifetime, value)` {/*taintuniquevalue*/}
 
-Call `taintUniqueValue` with a password, token, key or hash to register it with React as something that should not be allowed to be passed to the Client as is:
+클라이언트에 전달되지 않아야 할 암호, 토큰, 키 또는 해시를 `taintUniqueValue`와 함께 호출하여 React에 등록합니다.
 
 ```js
 import {experimental_taintUniqueValue} from 'react';
 
 experimental_taintUniqueValue(
-  'Do not pass secret keys to the client.',
+  '시크릿 키를 클라이언트로 전달하지 마세요.',
   process,
   process.env.SECRET_KEY
 );
 ```
 
-[See more examples below.](#usage)
+[더 많은 예제를 아래에서 볼 수 있습니다.](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `message`: The message you want to display if `value` is passed to a Client Component. This message will be displayed as a part of the Error that will be thrown if `value` is passed to a Client Component.
+* `message`: `value`가 클라이언트 컴포넌트로 전달될 때 표시할 메시지. `value`가 클라이언트 컴포넌트로 전달될 때 발생하는 에러 객체에 포함되어 나타나는 메시지입니다.
 
-* `lifetime`: Any object that indicates how long `value` should be tainted. `value` will be blocked from being sent to any Client Component while this object still exists. For example, passing `globalThis` blocks the value for the lifetime of an app. `lifetime` is typically an object whose properties contains `value`.
+* `lifetime`: `value`가 오염(taint)되어야 할 기간을 나타내는 객체. `value`는 이 객체가 존재하는 동안 클라이언트 컴포넌트로 전달되지 않도록 차단됩니다. 예를 들어 `globalThis`를 전달하면 앱의 수명 동안 값이 차단됩니다. `lifetime`은 일반적으로 `value`를 프로퍼티로 가지는 객체입니다.
 
-* `value`: A string, bigint or TypedArray. `value` must be a unique sequence of characters or bytes with high entropy such as a cryptographic token, private key, hash, or a long password. `value` will be blocked from being sent to any Client Component.
+* `value`: string, bigint 또는 TypedArray. `value`는 암호화 토큰, 개인 키, 해시 또는 긴 암호와 같이 문자 또는 바이트로 이루어진 복잡하고 고유한 값이어야 합니다. `value`는 클라이언트 컴포넌트로 전송되지 않도록 차단됩니다.
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-`experimental_taintUniqueValue` returns `undefined`.
+`experimental_taintUniqueValue`는 `undefined`를 반환합니다.
 
-#### Caveats {/*caveats*/}
+#### 주의사항 {/*caveats*/}
 
-- Deriving new values from tainted values can compromise tainting protection. New values created by uppercasing tainted values, concatenating tainted string values into a larger string, converting tainted values to base64, substringing tainted values, and other similar transformations are not tainted unless you explicity call `taintUniqueValue` on these newly created values.
+- 오염된 값에서 새로운 값을 도출하면 오염 보호가 손상될 수 있습니다. 오염된 값을 대문자로 변경하거나, 다른 문자열과 연결하거나, base64로 변환하거나, 잘라내는 등 기타 유사한 변환을 통해서 새롭게 생성된 값은 `taintUniqueValue`을 명시적으로 호출하지 않으면 오염되지 않습니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Prevent a token from being passed to Client Components {/*prevent-a-token-from-being-passed-to-client-components*/}
+### 토큰이 클라이언트 구성 요소로 전달되지 않도록 방지하기 {/*prevent-a-token-from-being-passed-to-client-components*/}
 
 To ensure that sensitive information such as passwords, session tokens, or other unique values do not inadvertently get passed to Client Components, the `taintUniqueValue` function provides a layer of protection. When a value is tainted, any attempt to pass it to a Client Component will result in an error. 
 
