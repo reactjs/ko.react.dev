@@ -67,7 +67,7 @@ experimental_taintUniqueValue(
 
 #### 주의사항 {/*caveats*/}
 
-- 오염된 값에서 새로운 값을 도출하면 오염 보호가 손상될 수 있습니다. 오염된 값을 대문자로 변경하거나, 다른 문자열과 연결하거나, base64로 변환하거나, 잘라내는 등 기타 유사한 변환을 통해서 새롭게 생성된 값은 `taintUniqueValue`을 명시적으로 호출하지 않으면 오염되지 않습니다.
+- 오염된 값을 이용해서 새로운 값을 만들어내면 오염 보호가 손상될 수 있습니다. 오염된 값을 대문자로 변경하거나, 다른 문자열과 연결하거나, base64로 변환하거나, 잘라내는 등 기타 유사한 변환을 통해서 새롭게 생성된 값은 `taintUniqueValue`을 명시적으로 호출하지 않으면 오염되지 않습니다.
 
 ---
 
@@ -109,7 +109,7 @@ export async function getUser(id) {
 
 <Pitfall>
 
-**Do not rely solely on tainting for security.** Tainting a value doesn't block every possible derived value. For example, creating a new value by upper casing a tainted string will not taint the new value.
+**보안을 오염에만 의존하지 마세요.** 값을 오염시킨다고 해서 모든 파생 값의 누출이 방지되는 것은 아닙니다. 예를 들어 오염된 문자열을 대문자로 바꾸어 새로운 값을 만들면 오염되지 않은 새로운 값이 만들어집니다.
 
 
 ```js
@@ -118,19 +118,19 @@ import {experimental_taintUniqueValue} from 'react';
 const password = 'correct horse battery staple';
 
 experimental_taintUniqueValue(
-  'Do not pass the password to the client.',
+  '패스워드를 클라이언트로 전달하지 마세요.',
   globalThis,
   password
 );
 
-const uppercasePassword = password.toUpperCase() // `uppercasePassword` is not tainted
+const uppercasePassword = password.toUpperCase() // `uppercasePassword`는 오염되지 않았습니다.
 ```
 
-In this example, the constant `password` is tainted. Then `password` is used to create a new value `uppercasePassword` by calling the `toUpperCase` method on `password`. The newly created `uppercasePassword` is not tainted.
+이 예시에서는 상수 `password`가 오염되어 있습니다. 이러한 `password`에 `toUpperCase`메서드를 사용하여 `uppercasePassword`라는 새로운 값을 만들었습니다. 이렇게 새로 생성된 `uppercasePassword`는 오염되지 않았습니다.
 
-Other similar ways of deriving new values from tainted values like concatenating it into a larger string, converting it to base64, or returning a substring create untained values.
+오염되지 않은 새로운 값이 만들어지는 다른 유사한 방법에는 오염된 값을 다른 문자열과 연결하거나, base64로 변환하거나, 잘라내는 것이 있습니다.
 
-Tainting only protects against simple mistakes like explictly passing secret values to the client. Mistakes in calling the `taintUniqueValue` like using a global store outside of React, without the corresponding lifetime object, can cause the tainted value to become untainted. Tainting is a layer of protection; a secure app will have multiple layers of protection, well designed APIs, and isolation patterns.
+오염은 비밀 값을 클라이언트에 전달하는 것과 같이 단순한 실수만 방지합니다. lifetime 객체 없이 리액트 외부의 글로벌 스토어를 사용하는 것과 같이 `taintUniqueValue`를 호출하는 실수는 오염된 값을 오염되지 않은 값으로 만들 수 있습니다. 오염은 보호 레이어이며 안전한 앱에는 여러개의 보호 레이어와 잘 설계된 API, 격리 패턴이 있습니다.
 
 </Pitfall>
 
