@@ -32,7 +32,18 @@ input 을 표시하려면, [`<input>` 브라우저 내장 컴포넌트](https://
 
 `<input>` 은 [일반적인 엘리먼트 props](/reference/react-dom/components/common#props) 를 지원합니다.
 
+<<<<<<< HEAD
  [input을 제어하기 위해서](#controlling-an-input-with-a-state-variable) 아래 props 들 중의 하나를 전달하세요.
+=======
+<Canary>
+
+React's extensions to the `formAction` prop are currently only available in React's Canary and experimental channels. In stable releases of React `formAction` works only as a [built-in browser HTML component](https://react.dev/reference/react-dom/components#all-html-components). Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+</Canary>
+
+[`formAction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formaction): A string or function. Overrides the parent `<form action>` for `type="submit"` and `type="image"`. When a URL is passed to `action` the form will behave like a standard HTML form. When a function is passed to `formAction` the function will handle the form submission. See [`<form action>`](/reference/react-dom/components/form#props).
+
+You can [make an input controlled](#controlling-an-input-with-a-state-variable) by passing one of these props:
+>>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
 
 * [`checked`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#checked): 불리언 타입. 체크박스 input 또는 라디오 버튼에서 선택 여부를 제어합니다.
 * [`value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#value): 문자열 타입. 텍스트 input의 경우 텍스트를 제어합니다. (라디오 버튼의 경우 폼 데이터를 지정합니다.)

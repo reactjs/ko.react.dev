@@ -1,34 +1,54 @@
 ---
+<<<<<<< HEAD
 title: "React에 내장된 Hooks"
+=======
+title: React Reference Overview
+>>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
 ---
 
 <Intro>
 
+<<<<<<< HEAD
 *Hooks*는 컴포넌트에서 다양한 React 기능을 사용할 수 있게 해줍니다. 내장된 Hooks를 사용하거나 조합하여 직접 만들 수도 있습니다. 이 페이지는 React에서 제공하는 모든 내장된 Hooks의 목록을 제공합니다.
+=======
+This section provides detailed reference documentation for working with React. For an introduction to React, please visit the [Learn](/learn) section.
+>>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
 
 </Intro>
 
----
+Our The React reference documentation is broken down into functional subsections:
 
-## State Hooks {/*state-hooks*/}
+## React {/*react*/}
 
+<<<<<<< HEAD
 *State*는 컴포넌트가 [사용자 입력과 같은 정보를 "기억"](/learn/state-a-components-memory)할 수 있게 해줍니다. 예를 들어, 폼 컴포넌트는 입력값 저장을 위해 state를 사용할 수 있고, 이미지 갤러리 컴포넌트는 선택된 이미지 인덱스를 저장하기 위해 state를 사용할 수 있습니다.
 
 컴포넌트에 state를 추가하려면, 다음 Hooks를 사용하세요.
 
 * [`useState`](/reference/react/useState)는 직접 업데이트할 수 있는 state 변수를 선언합니다.
 * [`useReducer`](/reference/react/useReducer)는 [reducer 함수](/learn/extracting-state-logic-into-a-reducer) 내에서 업데이트 로직이 포함된 state 변수를 선언합니다.
+=======
+Programmatic React features:
 
-```js
-function ImageGallery() {
-  const [index, setIndex] = useState(0);
-  // ...
-```
+* [Hooks](/reference/react/hooks) - Use different React features from your components.
+* [Components](/reference/react/components) - Documents built-in components that you can use in your JSX.
+* [APIs](/reference/react/apis) - APIs that are useful for defining components.
+* [Directives](/reference/react/directives) - Provide instructions to bundlers compatible with React Server Components.
 
----
+## React DOM {/*react-dom*/}
+>>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
 
-## Context Hooks {/*context-hooks*/}
+React-dom contains features that are only supported for web applications (which run in the browser DOM environment). This section is broken into the following:
 
+* [Hooks](/reference/react-dom/hooks) - Hooks for web applications which run in the browser DOM environment.
+* [Components](/reference/react-dom/components) - React supports all of the browser built-in HTML and SVG components.
+* [APIs](/reference/react-dom) - The `react-dom` package contains methods supported only in web applications.
+* [Client APIs](/reference/react-dom/client) - The `react-dom/client` APIs let you render React components on the client (in the browser).
+* [Server APIs](/reference/react-dom/server) - The `react-dom/server` APIs let you render React components to HTML on the server.
+
+## Legacy APIs {/*legacy-apis*/}
+
+<<<<<<< HEAD
 *Context*는 컴포넌트가 [props로 전달하지 않고도 먼 부모로부터 정보를 받을 수 있게 해줍니다.](/learn/passing-props-to-a-component) 예를 들어, 앱의 최상위 컴포넌트는 현재 UI 테마를 깊이와 관계없이 모든 하위 컴포넌트에 전달할 수 있습니다.
 
 * [`useContext`](/reference/react/useContext)는 context를 읽고 구독하는 역할을 합니다.
@@ -137,3 +157,6 @@ function MessageComponent({ messagePromise }) {
 ## 사용자 정의 Hooks {/*your-own-hooks*/}
 
 JavaScript 함수로 [사용자 정의 커스텀 Hooks](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component)를 정의할 수 있습니다.
+=======
+* [Legacy APIs](/reference/react/legacy) - Exported from the `react` package, but not recommended for use in newly written code.
+>>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc

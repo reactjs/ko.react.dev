@@ -63,7 +63,11 @@ experimental_taintObjectReference(
 
 #### 주의사항 {/*caveats*/}
 
+<<<<<<< HEAD
 - 오염된 객체를 다시 작성하거나 복제하면 오염되지 않은 객체가 새로 만들어집니다. 새로 만들어진 객체는 민감한 데이터를 포함할 수 있습니다. 예를 들어, 오염된 `user` 객체가 있다고 할 때, `const userInfo = {name: user.name, ssn: user.ssn}` 혹은 `{...user}`를 실행하면 오염되지 않은 새로운 객체를 작성합니다. `taintObjectReference`는 객체가 변경되지 않은 상태에서 클라이언트 컴포넌트로 그대로 전달되는 것만 방지합니다.
+=======
+- Recreating or cloning a tainted object creates a new untained object which may contain sensitive data. For example, if you have a tainted `user` object, `const userInfo = {name: user.name, ssn: user.ssn}` or `{...user}` will create new objects which are not tainted. `taintObjectReference` only protects against simple mistakes when the object is passed through to a Client Component unchanged.
+>>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
 
 <Pitfall>
 
@@ -77,7 +81,11 @@ experimental_taintObjectReference(
 
 ### 사용자 데이터가 의도하지 않게 클라이언트로 전달되는 것을 방지하기 {/*prevent-user-data-from-unintentionally-reaching-the-client*/}
 
+<<<<<<< HEAD
 클라이언트 컴포넌트에는 민감한 데이터를 담은 객체가 전달되어서는 안 됩니다. 이상적으로, 데이터 페치 함수는 현재 사용자가 접근할 수 없는 데이터를 노출하면 안 됩니다. 하지만 리팩토링 도중 가끔 실수가 발생하기도 합니다. 데이터 API에서 사용자 객체를 "오염(taint)"시켜서 이러한 실수를 방지할 수 있습니다.
+=======
+A Client Component should never accept objects that carry sensitive data. Ideally, the data fetching functions should not expose data that the current user should not have access to. Sometimes mistakes happen during refactoring. To protect against these mistakes happening down the line we can "taint" the user object in our data API.
+>>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
 
 ```js
 import {experimental_taintObjectReference} from 'react';

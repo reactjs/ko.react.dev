@@ -46,7 +46,14 @@ React의 개발 빌드에는 유용한 경고가 많이 포함되어 있습니�
 * **알파 버전과 카나리 버전의 React.** 이른 시일 내에 새로운 기능을 테스트하기 위해 알파 버전의 React를 제공하지만, 알파 기간 동안 배운 것을 바탕으로 변경할 수 있는 유연성이 필요합니다. 이러한 버전을 사용하는 경우, 안정적인 릴리즈 이전에 API가 변경될 수 있음을 유의해야 합니다.
 * **문서화되지 않은 API와 내부 데이터 구조.** `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED`나 `__reactInternalInstance$uk43rzhitjg`와 같은 내부 속성 이름에 접근하는 경우, 이에 대한 보장이 없습니다. 당신 스스로 해결해야 합니다.
 
+<<<<<<< HEAD
 당신이 골머리를 앓는 것을 바라지 않기에, 이 정책은 실용적으로 설계되었습니다. 만약 이러한 변화를 모두 메이저 버전으로 릴리즈한다면, 더 많은 메이저 버전을 릴리즈하게 되고, 궁극적으로 버전 관리에 대해 커뮤니티에 더 많은 고통을 야기할 것입니다. 이는 우리가 원하는 만큼 React를 빠르게 개선할 수 없다는 것을 의미합니다.
+=======
+* **Development warnings.** Since these don't affect production behavior, we may add new warnings or modify existing warnings in between major versions. In fact, this is what allows us to reliably warn about upcoming breaking changes.
+* **APIs starting with `unstable_`.** These are provided as experimental features whose APIs we are not yet confident in. By releasing these with an `unstable_` prefix, we can iterate faster and get to a stable API sooner.
+* **Alpha and Canary versions of React.** We provide alpha versions of React as a way to test new features early, but we need the flexibility to make changes based on what we learn in the alpha period. If you use these versions, note that APIs may change before the stable release.
+* **Undocumented APIs and internal data structures.** If you access internal property names like `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` or `__reactInternalInstance$uk43rzhitjg`, there is no warranty.  You are on your own.
+>>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
 
 만약 목록에 있는 변경 사항이 커뮤니티에 광범위한 문제를 야기할 것으로 예상된다면, 우리는 점진적인 마이그레이션 과정을 제공하기 위해 최선을 다할 것입니다.
 

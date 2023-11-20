@@ -179,7 +179,11 @@ input { margin: 5px; }
 
 `useId`의 주요 이점은 React가 [서버 렌더링](/reference/react-dom/server)과 함께 작동하도록 보장한다는 것입니다. 서버 렌더링을 하는 동안 컴포넌트는 HTML 결과물을 생성합니다. 이후, 클라이언트에서 [hydration](/reference/react-dom/client/hydrateRoot)이 HTML 결과물에 이벤트 핸들러를 연결합니다. hydration이 동작하려면 클라이언트의 출력이 서버 HTML과 일치해야 합니다.
 
+<<<<<<< HEAD
 클라이언트 컴포넌트의 hydrated 순서가 서버 HTML이 생성된 순서와 일치하지 않을 수 있기 때문에 카운터 증가로 이를 보장하기는 매우 어렵습니다. `useId`를 사용하면 hydration이 동작하고 서버와 클라이언트 간에 출력이 일치하는 것을 보장할 수 있습니다.
+=======
+This is very difficult to guarantee with an incrementing counter because the order in which the Client Components are hydrated may not match the order in which the server HTML was emitted. By calling `useId`, you ensure that hydration will work, and the output will match between the server and the client.
+>>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
 
 React에서 `useId`는 호출한 컴포넌트의 "부모 경로"에서 생성됩니다. 클라이언트와 서버 트리가 동일한 경우 렌더링 순서와 관계없이 "부모 경로"가 일치하는 이유입니다.
 
