@@ -21,7 +21,7 @@ title: experimental_taintUniqueValue
 
 <Intro>
 
-`taintUniqueValue`를 사용하면 암호, 키 또는 토큰과 같은 고유 값을 클라이언트 컴포넌트로 전송하는 것을 방지할 수 있습니다.
+`taintUniqueValue`를 사용하면 패스워드, 키 또는 토큰과 같은 고유 값을 클라이언트 컴포넌트로 전송하는 것을 방지할 수 있습니다.
 
 ```js
 taintUniqueValue(errMessage, lifetime, value)
@@ -39,7 +39,7 @@ taintUniqueValue(errMessage, lifetime, value)
 
 ### `taintUniqueValue(message, lifetime, value)` {/*taintuniquevalue*/}
 
-클라이언트에 전달되지 않아야 할 암호, 토큰, 키 또는 해시를 `taintUniqueValue`와 함께 호출하여 React에 등록합니다.
+클라이언트에 전달되지 않아야 할 패스워드, 토큰, 키 또는 해시를 `taintUniqueValue`와 함께 호출하여 React에 등록합니다.
 
 ```js
 import {experimental_taintUniqueValue} from 'react';
@@ -57,9 +57,9 @@ experimental_taintUniqueValue(
 
 * `message`: `value`가 클라이언트 컴포넌트로 전달될 때 표시할 메시지. `value`가 클라이언트 컴포넌트로 전달될 때 발생하는 에러 객체에 포함되어 나타나는 메시지입니다.
 
-* `lifetime`: `value`가 오염(taint)되어야 할 기간을 나타내는 객체. `value`는 이 객체가 존재하는 동안 클라이언트 컴포넌트로 전달되지 않도록 차단됩니다. 예를 들어 `globalThis`를 전달하면 앱의 수명 동안 값이 차단됩니다. `lifetime`은 일반적으로 `value`를 프로퍼티로 가지는 객체입니다.
+* `lifetime`: `value`가 오염(taint)되어야 할 기간을 나타내는 객체. `value`는 이 객체가 존재하는 동안 클라이언트 컴포넌트로 전달되지 않도록 차단됩니다. 예를 들어 `globalThis`를 전달하면 앱이 종료될 때 까지 값이 차단됩니다. `lifetime`은 일반적으로 `value`를 프로퍼티로 가지는 객체입니다.
 
-* `value`: string, bigint 또는 TypedArray. `value`는 암호화 토큰, 개인 키, 해시 또는 긴 암호와 같이 문자 또는 바이트로 이루어진 복잡하고 고유한 값이어야 합니다. `value`는 클라이언트 컴포넌트로 전송되지 않도록 차단됩니다.
+* `value`: string, bigint 또는 TypedArray. `value`는 암호화 토큰, 개인 키, 해시 또는 긴 패스워드와 같이 문자 또는 바이트로 이루어진 복잡하고 고유한 값이어야 합니다. `value`는 클라이언트 컴포넌트로 전송되지 않도록 차단됩니다.
 
 #### 반환값 {/*returns*/}
 
@@ -75,21 +75,21 @@ experimental_taintUniqueValue(
 
 ### 토큰이 클라이언트 구성 요소로 전달되지 않도록 방지하기 {/*prevent-a-token-from-being-passed-to-client-components*/}
 
-To ensure that sensitive information such as passwords, session tokens, or other unique values do not inadvertently get passed to Client Components, the `taintUniqueValue` function provides a layer of protection. When a value is tainted, any attempt to pass it to a Client Component will result in an error. 
+패스워드, 세션 토큰 또는 기타 고유 값과 같은 민감한 정보가 실수로 클라이언트 컴포넌트로 전달되지 않도록 `taintUniqueValue` 함수는 보호 계층을 제공합니다. 값이 오염되면 클라이언트 컴포넌트로 전달하려는 시도는 에러를 발생시킵니다.
 
-The `lifetime` argument defines the duration for which the value remains tainted. For values that should remain tainted indefinitely, objects like [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis) or `process` can serve as the `lifetime` argument. These objects have a lifespan that spans the entire duration of your app's execution.
+`lifetime` 인자는 값이 오염된 상태로 남아 있는 기간을 정의합니다. 값이 무한히 오염된 상태로 유지되어야 하는 경우 [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis) 또는 `process`와 같은 객체가 `lifetime` 인자로 사용될 수 있습니다. 이 객체들은 앱이 실행되는 전체 기간을 수명으로 가집니다.
 
 ```js
 import {experimental_taintUniqueValue} from 'react';
 
 experimental_taintUniqueValue(
-  'Do not pass a user password to the client.',
+  '패스워드를 클라이언트로 전달하지 마세요.',
   globalThis,
   process.env.SECRET_KEY
 );
 ```
 
-If the tainted value's lifespan is tied to a object, the `lifetime` should be the object that encapsulates the value. This ensures the tainted value remains protected for the lifetime of the encapsulating object.
+만약 오염된 값의 수명이 객체에 묶여 있다면, `lifetime`은 그 값을 갭슐화하는 객체이어야 합니다. 이렇게 하면 오염된 값이 캡슐화 객체의 수명 동안 보호될 수 있습니다.
 
 ```js
 import {experimental_taintUniqueValue} from 'react';
@@ -97,7 +97,7 @@ import {experimental_taintUniqueValue} from 'react';
 export async function getUser(id) {
   const user = await db`SELECT * FROM users WHERE id = ${id}`;
   experimental_taintUniqueValue(
-    'Do not pass a user session token to the client.',
+    '세션 토큰을 클라이언트로 전달하지 마세요.',
     user,
     user.session.token
   );
@@ -105,7 +105,7 @@ export async function getUser(id) {
 }
 ```
 
-In this example, the `user` object serves as the `lifetime` argument. If this object gets stored in a global cache or is accessible by another request, the session token remains tainted.
+이 예시에서 `user` 객체는 `lifetime` 인자 역할을 합니다. 이 객체가 글로벌 캐시에 저장되거나 다른 요청에 의해 접근할 수 있다면 세션 토큰은 오염된 상태로 유지됩니다.
 
 <Pitfall>
 
