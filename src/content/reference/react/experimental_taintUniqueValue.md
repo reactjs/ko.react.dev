@@ -136,9 +136,9 @@ const uppercasePassword = password.toUpperCase() // `uppercasePassword`는 오�
 
 <DeepDive>
 
-#### Using `server-only` and `taintUniqueValue` to prevent leaking secrets {/*using-server-only-and-taintuniquevalue-to-prevent-leaking-secrets*/}
+#### 비밀 누출 방지를 위해서 `server-only`와 `taintUniqueValue` 사용하기 {/*using-server-only-and-taintuniquevalue-to-prevent-leaking-secrets*/}
 
-If you're running a Server Components environment that has access to private keys or passwords such as database passwords, you have to be careful not to pass that to a Client Component.
+데이터베이스 패스워드와 같은 개인 키 또는 패스워드에 접근할 수 있는 서버 컴포넌트 환경을 실행하는 경우 개인 키나 패스워드를 클라이언트 컴포넌트로 전달하지 않도록 주의해야 합니다.
 
 ```js
 export async function Dashboard(props) {
@@ -161,11 +161,11 @@ export async function Overview({ password }) {
 }
 ```
 
-This example would leak the secret API token to the client. If this API token can be used to access data this particular user shouldn't have access to, it could lead to a data breach.
+이 예시는 비밀 API 토큰을 클라이언트에 유출시킵니다. 이 API 토큰을 사용하여 특정 사용자가 접근해서는 안 되는 데이터에 접근한다면 데이터 유출로 이어질 수 있습니다.
 
 [comment]: <> (TODO: Link to `server-only` docs once they are written)
 
-Ideally, secrets like this are abstracted into a single helper file that can only be imported by trusted data utilities on the server. The helper can even be tagged with [`server-only`](https://www.npmjs.com/package/server-only) to ensure that this file isn't imported on the client.
+이와 같은 비밀은 서버의 신뢰할 수 있는 데이터 유틸리티에서만 임포트할 수 있는 단일 헬퍼(helper) 파일로 추상화 되는 것이 이상적입니다. 헬퍼는 [`server-only`](https://www.npmjs.com/package/server-only)라는 태그를 지정하여 이 파일을 클라이언트에서 임포트 되지 않도록 할 수 있습니다.
 
 ```js
 import "server-only";
@@ -176,22 +176,21 @@ export function fetchAPI(url) {
 }
 ```
 
-Sometimes mistakes happen during refactoring and not all of your colleagues might know about this. 
-To protect against this mistakes happening down the line we can "taint" the actual password:
+때때로 리팩토링 중에 실수가 발생할 수도 있으며 이것에 대해서 잘 모르는 동료가 있을 수도 있습니다. 이러한 실수를 방지하기 위해서 실제 패스워드를 "오염"시킬 수 있습니다.
 
 ```js
 import "server-only";
 import {experimental_taintUniqueValue} from 'react';
 
 experimental_taintUniqueValue(
-  'Do not pass the API token password to the client. ' +
-    'Instead do all fetches on the server.'
+  'API 토큰 패스워드를 클라이언트에 전달하지 마세요. ' +
+    '서버에서 모든 fetch를 수행하는 것이 좋습니다.'
   process,
   process.env.API_PASSWORD
 );
 ```
 
-Now whenever anyone tries to pass this password to a Client Component, or send the password to a Client Component with a Server Action, a error will be thrown with message you defined when you called `taintUniqueValue`.
+이제 다른 사용자가 이 패스워드를 클라이언트 컴포넌트로 전달하거나, Server Action으로 클라이언트 컴포넌트에 패스워드를 보내려고 할 때마다 `taintUniqueValue`를 호출했을 때 정의한 메시지와 함께 오류가 발생합니다.
 
 </DeepDive>
 
