@@ -1,30 +1,30 @@
 ---
-title: Adding Interactivity
+title: 상호작용 추가하기
 ---
 
 <Intro>
 
-Some things on the screen update in response to user input. For example, clicking an image gallery switches the active image. In React, data that changes over time is called *state.* You can add state to any component, and update it as needed. In this chapter, you'll learn how to write components that handle interactions, update their state, and display different output over time.
+화면의 일부 요소는 사용자의 입력에 따라 업데이트됩니다. 예를 들어 이미지 갤러리에서 특정 이미지를 클릭하면 해당 이미지가 활성 상태가 됩니다. React에서는 시간에 따라 변화하는 데이터를 *state*라고 합니다. state는 어떠한 컴포넌트에든 추가할 수 있으며 필요에 따라 업데이트할 수도 있습니다. 이번 장에서는 상호작용을 다루는 컴포넌트를 작성하고 state를 업데이트하며, 시간에 따라 화면을 갱신하는 방법에 대해서 알아보겠습니다.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to handle user-initiated events](/learn/responding-to-events)
-* [How to make components "remember" information with state](/learn/state-a-components-memory)
-* [How React updates the UI in two phases](/learn/render-and-commit)
-* [Why state doesn't update right after you change it](/learn/state-as-a-snapshot)
-* [How to queue multiple state updates](/learn/queueing-a-series-of-state-updates)
-* [How to update an object in state](/learn/updating-objects-in-state)
-* [How to update an array in state](/learn/updating-arrays-in-state)
+* [사용자 이벤트를 처리하는 방법](/learn/responding-to-events)
+* [컴포넌트가 state를 이용하여 정보를 "기억"하는 방법](/learn/state-a-components-memory)
+* [React가 UI를 업데이트하는 두 가지 단계](/learn/render-and-commit)
+* [state가 변경된 후 바로 업데이트되지 않는 이유](/learn/state-as-a-snapshot)
+* [여러 개의 state 업데이트를 대기열에 추가하는 방법](/learn/queueing-a-series-of-state-updates)
+* [state에서 객체를 업데이트하는 방법](/learn/updating-objects-in-state)
+* [state에서 배열을 업데이트하는 방법](/learn/updating-arrays-in-state)
 
 </YouWillLearn>
 
-## Responding to events {/*responding-to-events*/}
+## 이벤트에 대한 응답 {/*responding-to-events*/}
 
-React lets you add *event handlers* to your JSX. Event handlers are your own functions that will be triggered in response to user interactions like clicking, hovering, focusing on form inputs, and so on.
+React에서는 JSX에 *이벤트 핸들러*를 추가할 수 있습니다. 이벤트 핸들러는 클릭, 마우스 호버, 폼 인풋 포커스 등 사용자 상호작용에 따라 유발되는 사용자 정의 함수입니다.
 
-Built-in components like `<button>` only support built-in browser events like `onClick`. However, you can also create your own components, and give their event handler props any application-specific names that you like.
+`<button>`과 같은 내장 컴포넌트는 `onClick`과 같은 내장 브라우저 이벤트만 지원합니다. 반면 사용자 정의 컴포넌트를 생성하는 경우, 컴포넌트 이벤트 핸들러 props의 역할에 맞는 원하는 이름을 사용할 수 있습니다.
 
 <Sandpack>
 
@@ -68,22 +68,22 @@ button { margin-right: 10px; }
 
 <LearnMore path="/learn/responding-to-events">
 
-Read **[Responding to Events](/learn/responding-to-events)** to learn how to add event handlers.
+이벤트 핸들러를 추가하는 방법을 배우려면 **[사용자 이벤트를 처리하는 방법](/learn/responding-to-events)** 을 읽어보세요.
 
 </LearnMore>
 
-## State: a component's memory {/*state-a-components-memory*/}
+## State: 컴포넌트의 메모리 {/*state-a-components-memory*/}
 
-Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" puts a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called *state.*
+상호작용에 따라 컴포넌트는 종종 화면에 표시되는 내용을 변경해야 합니다. 폼에 타이핑하면 입력 필드를 업데이트해야 하고, 이미지 캐러셀에서 "다음"을 클릭하면 표시되는 이미지가 변경되어야 하며, "구매"를 클릭하면 제품이 장바구니에 추가되어야 합니다. 컴포넌트는 현재 입력값, 현재 이미지, 장바구니에 담긴 상품 등을 "기억"해야 합니다. React에서는 이러한 컴포넌트별 메모리를 *state*라고 부릅니다.
 
-You can add state to a component with a [`useState`](/reference/react/useState) Hook. *Hooks* are special functions that let your components use React features (state is one of those features). The `useState` Hook lets you declare a state variable. It takes the initial state and returns a pair of values: the current state, and a state setter function that lets you update it.
+[`useState`](/reference/react/useState) Hook을 사용하면 컴포넌트에 state를 추가할 수 있습니다. *Hooks*는 컴포넌트가 React의 주요 기능(state는 그중 하나입니다.)을 사용할 수 있도록 해주는 특별한 함수입니다. `useState` Hook을 사용하면 state 변수를 선언할 수 있습니다. `useState`는 초기 state를 인자로 받으며, 현재 상태와 상태를 업데이트할 수 있는 상태 설정 함수를 배열에 담아 반환합니다.
 
 ```js
 const [index, setIndex] = useState(0);
 const [showMore, setShowMore] = useState(false);
 ```
 
-Here is how an image gallery uses and updates state on click:
+다음은 이미지 갤러리가 클릭 이벤트에 따라 state를 사용하고 업데이트하는 방법입니다.
 
 <Sandpack>
 
@@ -229,19 +229,19 @@ button {
 
 <LearnMore path="/learn/state-a-components-memory">
 
-Read **[State: A Component's Memory](/learn/state-a-components-memory)** to learn how to remember a value and update it on interaction.
+값을 기억하고 상호 작용에 따라 업데이트하는 방법을 배우려면 **[컴포넌트가 state를 이용하여 정보를 "기억"하는 방법](/learn/state-a-components-memory)** 을 읽어보세요.
 
 </LearnMore>
 
-## Render and commit {/*render-and-commit*/}
+## 렌더링과 반영 {/*render-and-commit*/}
 
-Before your components are displayed on the screen, they must be rendered by React. Understanding the steps in this process will help you think about how your code executes and explain its behavior.
+컴포넌트는 화면에 표시되기 전에 React에 의해 렌더링 되어야 합니다. 이 과정을 이해하면 코드가 어떻게 실행되는지 파악하고 코드의 동작을 설명하는 데 도움이 될 것입니다.
 
-Imagine that your components are cooks in the kitchen, assembling tasty dishes from ingredients. In this scenario, React is the waiter who puts in requests from customers and brings them their orders. This process of requesting and serving UI has three steps:
+컴포넌트가 주방에서 재료들을 사용해 맛있는 요리를 조리하는 요리사라고 생각해 봅시다. 이 시나리오에서 React는 손님들로부터 주문받고 요리사에게 주문을 가져다주는 웨이터입니다. 이때, UI를 주문하고 서빙하는 과정은 세 단계로 이루어집니다.
 
-1. **Triggering** a render (delivering the diner's order to the kitchen)
-2. **Rendering** the component (preparing the order in the kitchen)
-3. **Committing** to the DOM (placing the order on the table)
+1. 렌더링 **유발** (주방에 식사 주문을 전달하기)
+2. 컴포넌트 **렌더링** (주방에서 주문을 준비하기)
+3. DOM에 **반영** (주문을 테이블에 서빙하기)
 
 <IllustrationBlock sequential>
   <Illustration caption="Trigger" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />
@@ -251,13 +251,13 @@ Imagine that your components are cooks in the kitchen, assembling tasty dishes f
 
 <LearnMore path="/learn/render-and-commit">
 
-Read **[Render and Commit](/learn/render-and-commit)** to learn the lifecycle of a UI update.
+UI 업데이트의 생명주기를 배우려면 **[React가 UI를 업데이트하는 두 가지 단계](/learn/render-and-commit)** 를 읽어보세요.
 
 </LearnMore>
 
-## State as a snapshot {/*state-as-a-snapshot*/}
+## snapshot으로서의 state {/*state-as-a-snapshot*/}
 
-Unlike regular JavaScript variables, React state behaves more like a snapshot. Setting it does not change the state variable you already have, but instead triggers a re-render. This can be surprising at first!
+일반적인 JavaScript 변수와 달리, React의 state는 snapshot과 유사하게 동작합니다. 상태를 갱신하면 이미 있는 state 변수 자체를 변경하는 것이 아니라, 리렌더링을 유발합니다. 이는 처음에는 놀라울 수 있습니다!
 
 ```js
 console.log(count);  // 0
@@ -265,7 +265,7 @@ setCount(count + 1); // Request a re-render with 1
 console.log(count);  // Still 0!
 ```
 
-This behavior help you avoid subtle bugs. Here is a little chat app. Try to guess what happens if you press "Send" first and *then* change the recipient to Bob. Whose name will appear in the `alert` five seconds later?
+이 동작은 미묘한 버그를 피하는 데 도움이 됩니다. 간단한 채팅 앱을 예시로 들겠습니다. "Send"를 먼저 누른 다음 수신자를 Bob으로 변경하면 어떻게 될지 추측해 보세요. 5초 후에 `alert`에 어떤 이름이 나타날까요?
 
 <Sandpack>
 
@@ -314,13 +314,13 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 <LearnMore path="/learn/state-as-a-snapshot">
 
-Read **[State as a Snapshot](/learn/state-as-a-snapshot)** to learn why state appears "fixed" and unchanging inside the event handlers.
+이벤트 핸들러 내에서 state가 "고정되어" 변하지 않는 것처럼 보이는 이유에 대하여 배우려면 **[state가 변경된 후 바로 업데이트되지 않는 이유](/learn/state-as-a-snapshot)** 를 읽어보세요.
 
 </LearnMore>
 
-## Queueing a series of state updates {/*queueing-a-series-of-state-updates*/}
+## state 업데이트를 연속으로 대기열에 추가하기 {/*queueing-a-series-of-state-updates*/}
 
-This component is buggy: clicking "+3" increments the score only once.
+이 컴포넌트는 버그가 있습니다. "+3"을 클릭하면 점수가 한 번만 증가합니다.
 
 <Sandpack>
 
@@ -354,7 +354,7 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 </Sandpack>
 
-[State as a Snapshot](/learn/state-as-a-snapshot) explains why this is happening. Setting state requests a new re-render, but does not change it in the already running code. So `score` continues to be `0` right after you call `setScore(score + 1)`.
+[state가 변경된 후 바로 업데이트되지 않는 이유](/learn/state-as-a-snapshot)는 이런 현상이 발생하는 이유를 설명해 줍니다. state를 설정하면 리렌더링이 유발되지만, 이미 실행 중인 코드에서는 변경되지 않습니다. 따라서 `setScore(score + 1)`를 호출한 직후에도 `score`는 여전히 `0`으로 유지됩니다.
 
 ```js
 console.log(score);  // 0
@@ -366,7 +366,7 @@ setScore(score + 1); // setScore(0 + 1);
 console.log(score);  // 0
 ```
 
-You can fix this by passing an *updater function* when setting state. Notice how replacing `setScore(score + 1)` with `setScore(s => s + 1)` fixes the "+3" button. This lets you queue multiple state updates.
+이 문제는 state를 설정할 때 *updater function*을 전달하는 방식을 통해 해결할 수 있습니다. `setScore(score + 1)`를 `setScore(s => s + 1)`로 대체함으로써 "+3" 버튼이 수정되는 것을 확인할 수 있습니다. 이러한 방법으로 여러 개의 state 업데이트를 대기열에 추가할 수 있습니다.
 
 <Sandpack>
 
@@ -402,15 +402,15 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 <LearnMore path="/learn/queueing-a-series-of-state-updates">
 
-Read **[Queueing a Series of State Updates](/learn/queueing-a-series-of-state-updates)** to learn how to queue a sequence of state updates.
+state 업데이트를 연속적으로 대기열에 추가하는 방법을 배우려면 **[여러 개의 state 업데이트를 대기열에 추가하는 방법](/learn/queueing-a-series-of-state-updates)** 을 읽어보세요.
 
 </LearnMore>
 
-## Updating objects in state {/*updating-objects-in-state*/}
+## state 내 객체 업데이트 {/*updating-objects-in-state*/}
 
-State can hold any kind of JavaScript value, including objects. But you shouldn't change objects and arrays that you hold in the React state directly. Instead, when you want to update an object and array, you need to create a new one (or make a copy of an existing one), and then update the state to use that copy.
+State는 객체를 포함하여 모든 종류의 JavaScript 타입을 관리할 수 있습니다. 그러나 React state에 있는 개체와 배열을 직접 변경해서는 안 됩니다. 대신 객체나 배열을 업데이트할 때는 새로운 객체를 생성하거나 기존 객체의 복사본을 만들어서 상태를 업데이트해야 합니다.
 
-Usually, you will use the `...` spread syntax to copy objects and arrays that you want to change. For example, updating a nested object could look like this:
+일반적으로 변경하려는 객체나 배열을 복사하기 위해 `...` 전개 구문을 사용합니다. 예를 들어 중첩된 객체의 업데이트는 다음과 같이 처리할 수 있습니다.
 
 <Sandpack>
 
@@ -518,7 +518,7 @@ img { width: 200px; height: 200px; }
 
 </Sandpack>
 
-If copying objects in code gets tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer) to reduce repetitive code:
+객체를 복사하는 작업이 번거롭다면 [Immer](https://github.com/immerjs/use-immer)와 같은 라이브러리를 사용하여 반복적인 코드를 줄일 수 있습니다.
 
 <Sandpack>
 
@@ -633,13 +633,13 @@ img { width: 200px; height: 200px; }
 
 <LearnMore path="/learn/updating-objects-in-state">
 
-Read **[Updating Objects in State](/learn/updating-objects-in-state)** to learn how to update objects correctly.
+객체를 올바르게 업데이트하는 방법을 배우려면 **[state에서 객체를 업데이트하는 방법](/learn/updating-objects-in-state)** 을 읽어보세요.
 
 </LearnMore>
 
-## Updating arrays in state {/*updating-arrays-in-state*/}
+## state 내 배열 업데이트 {/*updating-arrays-in-state*/}
 
-Arrays are another type of mutable JavaScript objects you can store in state and should treat as read-only. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array:
+배열 또한 state에 저장될 때 읽기 전용으로 다루어야 하는 가변 JavaScript 객체입니다. 객체와 마찬가지로 상태에 저장된 배열을 업데이트하려면 새로운 배열을 생성하거나 기존 배열의 복사본을 만들어서 상태를 업데이트한 후, 새로운 배열을 상태에 설정해야 합니다.
 
 <Sandpack>
 
@@ -706,7 +706,7 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-If copying arrays in code gets tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer) to reduce repetitive code:
+배열을 복사하는 작업이 번거롭다면 [Immer](https://github.com/immerjs/use-immer)와 같은 라이브러리를 사용하여 반복적인 코드를 줄일 수 있습니다.
 
 <Sandpack>
 
@@ -791,12 +791,12 @@ function ItemList({ artworks, onToggle }) {
 
 <LearnMore path="/learn/updating-arrays-in-state">
 
-Read **[Updating Arrays in State](/learn/updating-arrays-in-state)** to learn how to update arrays correctly.
+배열을 올바르게 업데이트하는 방법을 배우려면 **[state에서 배열을 업데이트하는 방법](/learn/updating-arrays-in-state)** 을 읽어보세요.
 
 </LearnMore>
 
 ## What's next? {/*whats-next*/}
 
-Head over to [Responding to Events](/learn/responding-to-events) to start reading this chapter page by page!
+이 장을 페이지별로 읽으려면 [사용자 이벤트를 처리하는 방법](/learn/responding-to-events)으로 이동하세요!
 
-Or, if you're already familiar with these topics, why not read about [Managing State](/learn/managing-state)?
+이미 이러한 주제에 익숙하시다면 [State 다루기](/learn/managing-state)에 대해 읽어보시는 것도 좋습니다.

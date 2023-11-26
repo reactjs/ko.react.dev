@@ -1,5 +1,5 @@
 {
-  "title": "React Docs",
+  "title": "리액트 문서",
   "path": "/",
   "routes": [
     {
@@ -7,11 +7,11 @@
       "sectionHeader": "GET STARTED"
     },
     {
-      "title": "Quick Start",
+      "title": "빠르게 시작하기",
       "path": "/learn"
     },
     {
-      "title": "Installation",
+      "title": "설치",
       "path": "/learn/installation"
     },
     {
@@ -19,19 +19,19 @@
       "sectionHeader": "LEARN REACT"
     },
     {
-      "title": "Describing the UI",
+      "title": "UI 표현하기",
       "path": "/learn/describing-the-ui"
     },
     {
-      "title": "Adding Interactivity",
+      "title": "상호작용성 더하기",
       "path": "/learn/adding-interactivity"
     },
     {
-      "title": "Managing State",
+      "title": "State 다루기",
       "path": "/learn/managing-state"
     },
     {
-      "title": "Escape Hatches",
+      "title": "탈출구",
       "path": "/learn/escape-hatches"
     },
     {
@@ -39,19 +39,19 @@
       "sectionHeader": "REACT API"
     },
     {
-      "title": "Hooks",
+      "title": "훅",
       "path": "/reference/react"
     },
     {
-      "title": "Components",
+      "title": "컴포넌트",
       "path": "/reference/react/components"
     },
     {
-      "title": "APIs",
+      "title": "API",
       "path": "/reference/react/apis"
     },
     {
-      "title": "Legacy APIs",
+      "title": "레거시 API",
       "path": "/reference/react/legacy"
     },
     {
@@ -59,19 +59,19 @@
       "sectionHeader": "REACT DOM API"
     },
     {
-      "title": "Components",
+      "title": "컴포넌트",
       "path": "/reference/react-dom/components"
     },
     {
-      "title": "APIs",
+      "title": "API",
       "path": "/reference/react-dom"
     },
     {
-      "title": "Client APIs",
+      "title": "클라이언트 API",
       "path": "/reference/react-dom/client"
     },
     {
-      "title": "Server APIs",
+      "title": "서버 API",
       "path": "/reference/react-dom/server"
     },
     {
@@ -79,7 +79,7 @@
       "sectionHeader": "GET INVOLVED"
     },
     {
-      "title": "React Community",
+      "title": "리액트 커뮤니티",
       "path": "/community"
     },
     {
@@ -87,7 +87,7 @@
       "sectionHeader": "STAY INFORMED"
     },
     {
-      "title": "React Blog",
+      "title": "리액트 블로그",
       "path": "/blog"
     }
   ]

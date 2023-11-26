@@ -96,15 +96,15 @@ title: "공통 컴포넌트 (예시: <div>)"
 * `onDragStartCapture`: `onDragStart`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onDrop`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/drop_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 유효한 드롭 대상에 무언가를 떨어뜨리면 발동합니다.
 * `onDropCapture`: `onDrop`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* `onFocus`: [`FocusEvent` 핸들러](#focusevent-handler) 함수입니다. 엘리먼트가 포커싱을 잃었을 때 발생합니다. 브라우저에 내장된 [`focus`](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event) 이벤트와 달리 React에서는 `onFocus` 이벤트가 버블링을 발생시킵니다.
+* `onFocus`: [`FocusEvent` 핸들러](#focusevent-handler) 함수입니다. 엘리먼트가 포커싱을 얻었을 때 발생합니다. 브라우저에 내장된 [`focus`](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event) 이벤트와 달리 React에서는 `onFocus` 이벤트가 버블링을 발생시킵니다.
 * `onFocusCapture`: `onFocus`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onGotPointerCapture`](https://developer.mozilla.org/en-US/docs/Web/API/Element/gotpointercapture_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 엘리먼트가 프로그래밍 방식으로 포인터를 캡처할 때 발생합니다.
 * `onGotPointerCaptureCapture`: `onGotPointerCapture`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onKeyDown`](https://developer.mozilla.org/ko/docs/Web/API/Element/keydown_event): [`KeyboardEvent` 핸들러](#pointerevent-handler) 함수입니다. 키를 누르면 실행됩니다.
+* [`onKeyDown`](https://developer.mozilla.org/ko/docs/Web/API/Element/keydown_event): [`KeyboardEvent` 핸들러](#keyboardevent-handler) 함수입니다. 키를 누르면 실행됩니다.
 * `onKeyDownCapture`: `onKeyDown`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onKeyPress`](https://developer.mozilla.org/en-US/docs/Web/API/Element/keypress_event): [`KeyboardEvent` 핸들러](#pointerevent-handler) 함수입니다. 사용되지 않습니다. 대신 `onKeyDown` 또는 `onBeforeInput`을 사용하세요.
+* [`onKeyPress`](https://developer.mozilla.org/en-US/docs/Web/API/Element/keypress_event): [`KeyboardEvent` 핸들러](#keyboardevent-handler) 함수입니다. 사용되지 않습니다. 대신 `onKeyDown` 또는 `onBeforeInput`을 사용하세요.
 * `onKeyPressCapture`: `onKeyPress`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onKeyUp`](https://developer.mozilla.org/ko/docs/Web/API/Element/keyup_event): [`KeyboardEvent` 핸들러](#pointerevent-handler) 함수입니다. 키를 놓으면 실행됩니다.
+* [`onKeyUp`](https://developer.mozilla.org/ko/docs/Web/API/Element/keyup_event): [`KeyboardEvent` 핸들러](#keyboardevent-handler) 함수입니다. 키를 놓으면 실행됩니다.
 * `onKeyUpCapture`: `onKeyUp`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onLostPointerCapture`](https://developer.mozilla.org/en-US/docs/Web/API/Element/lostpointercapture_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 엘리먼트가 포인터 캡처를 중지하면 발생합니다.
 * `onLostPointerCaptureCapture`: `onLostPointerCapture`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
@@ -155,7 +155,7 @@ title: "공통 컴포넌트 (예시: <div>)"
 * [`title`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/title): 문자열 타입입니다. 엘리먼트의 툴팁 텍스트를 지정합니다.
 * [`translate`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/translate): `'yes'`나`'no'` 중 하나입니다. `'no'` 를 전달하면 엘리먼트의 콘텐츠가 번역에서 제외됩니다.
 
-사용자 정의 어트리뷰트를 props로 전달할 수도 있습니다. (예시: `mycustomprop="someValue"`) 이는 서드파티 라이브러리와 통합할 때 유용할 수 있습니다. 사용자 정의 어트리뷰트의 이름은 소문자이어야 하며 `on`으로 시작하지 않아야 합니다. 값은 문자열로 변환됩니다. `null` 또는 `undefined`를 전달하면 사용자 지정 어트리뷰트가 제거됩니다.
+사용자 정의 어트리뷰트를 props로 전달할 수도 있습니다. (예시: `mycustomprop="someValue"`) 이는 서드파티 라이브러리와 통합할 때 유용할 수 있습니다. 사용자 정의 어트리뷰트의 이름은 소문자이어야 하며 `on`으로 시작하지 않아야 합니다. 값은 문자열로 변환됩니다. `null` 또는 `undefined`를 전달하면 사용자 정의 어트리뷰트가 제거됩니다.
 
 다음의 이벤트는 [`<form>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form) 엘리먼트에 대해서만 발생합니다.
 
@@ -259,7 +259,7 @@ React는 *다른* `ref` 콜백을 전달할 때 마다 `ref` 콜백을 호출합
 
 #### 매개변수 {/*ref-callback-parameters*/}
 
-* `node`: DOM 노드 또는 `null`입니다. React는 ref가 연결될 때 DOM 노드를 전달하고 ref가 분리되면 `null`을 전달합니다. 모든 렌더링에서 `ref` 콜백에 대해 동일한 함수 인자를 전달하는 경우 외에는 컴포넌트를 다시 렌더링할 마다 콜백이 일시적으로 분리되었다가 다시 연결됩니다.
+* `node`: DOM 노드 또는 `null`입니다. React는 ref가 연결될 때 DOM 노드를 전달하고 ref가 분리되면 `null`을 전달합니다. 모든 렌더링에서 `ref` 콜백에 대해 동일한 함수를 전달하는 경우를 제외하고, 컴포넌트를 다시 렌더링할 마다 콜백이 일시적으로 분리되었다가 다시 연결됩니다.
 
 #### 반환 값 {/*returns*/}
 
@@ -697,7 +697,7 @@ CSS 전환 이벤트에 대한 이벤트 핸들러 유형입니다.
 
 ```js
 <div
-  onScroll={e => console.log('onScroll')}
+  onWheel={e => console.log('onWheel')}
 />
 ```
 

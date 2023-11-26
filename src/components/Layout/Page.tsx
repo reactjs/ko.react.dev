@@ -28,7 +28,7 @@ interface PageProps {
   children: React.ReactNode;
   toc: Array<TocItem>;
   routeTree: RouteItem;
-  meta: {title?: string; description?: string};
+  meta: {title?: string; canary?: boolean; description?: string};
   section: 'learn' | 'reference' | 'community' | 'blog' | 'home' | 'unknown';
 }
 
@@ -40,6 +40,7 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
     routeTree
   );
   const title = meta.title || route?.title || '';
+  const canary = meta.canary || false;
   const description = meta.description || route?.description || '';
   const isHomePage = cleanedPath === '/';
   const isBlogIndex = cleanedPath === '/blog';
@@ -49,13 +50,14 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
     content = <HomeContent />;
   } else {
     content = (
-      <div className="pl-0">
+      <div className="ps-0">
         <div
           className={cn(
             section === 'blog' && 'mx-auto px-0 lg:px-4 max-w-5xl'
           )}>
           <PageHeading
             title={title}
+            canary={canary}
             description={description}
             tags={route?.tags}
             breadcrumbs={breadcrumbs}
@@ -122,7 +124,7 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
         )}>
         {showSidebar && (
           <div className="lg:-mt-16">
-            <div className="lg:pt-16 fixed lg:sticky top-0 left-0 right-0 py-0 shadow lg:shadow-none">
+            <div className="lg:pt-16 fixed lg:sticky top-0 start-0 end-0 py-0 shadow lg:shadow-none">
               <SidebarNav
                 key={section}
                 routeTree={routeTree}
@@ -153,7 +155,7 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
                     <>
                       <div className="flex flex-col items-center m-4 p-4">
                         <p className="font-bold text-primary dark:text-primary-dark text-lg mb-4">
-                          How do you like these docs?
+                          이 문서가 마음에 드시나요?
                         </p>
                         <div>
                           <ButtonLink
@@ -162,10 +164,10 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
                             type="primary"
                             size="md"
                             target="_blank">
-                            Take our survey!
+                            설문조사에 참여하세요!
                             <IconNavArrow
-                              displayDirection="right"
-                              className="inline ml-1"
+                              displayDirection="end"
+                              className="inline ms-1"
                             />
                           </ButtonLink>
                         </div>

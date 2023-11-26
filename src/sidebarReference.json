@@ -1,5 +1,5 @@
 {
-  "title": "API Reference",
+  "title": "API 레퍼런스",
   "path": "/reference/react",
   "routes": [
     {
@@ -7,9 +7,14 @@
       "sectionHeader": "react@18.2.0"
     },
     {
-      "title": "Hooks",
+      "title": "Hook",
       "path": "/reference/react",
       "routes": [
+        {
+          "title": "use",
+          "path": "/reference/react/use",
+          "canary": true
+        },
         {
           "title": "useCallback",
           "path": "/reference/react/useCallback"
@@ -73,7 +78,7 @@
       ]
     },
     {
-      "title": "Components",
+      "title": "컴포넌트",
       "path": "/reference/react/components",
       "routes": [
         {
@@ -95,9 +100,14 @@
       ]
     },
     {
-      "title": "APIs",
+      "title": "API",
       "path": "/reference/react/apis",
       "routes": [
+        {
+          "title": "cache",
+          "path": "/reference/react/cache",
+          "canary": true
+        },
         {
           "title": "createContext",
           "path": "/reference/react/createContext"
@@ -117,6 +127,33 @@
         {
           "title": "startTransition",
           "path": "/reference/react/startTransition"
+        },
+        {
+          "title": "experimental_taintObjectReference",
+          "path": "/reference/react/experimental_taintObjectReference",
+          "canary": true
+        },
+        {
+          "title": "experimental_taintUniqueValue",
+          "path": "/reference/react/experimental_taintUniqueValue",
+          "canary": true
+        }
+      ]
+    },
+    {
+      "title": "Directives",
+      "path": "/reference/react/directives",
+      "canary": true,
+      "routes": [
+        {
+          "title": "'use client'",
+          "path": "/reference/react/use-client",
+          "canary": true
+        },
+        {
+          "title": "'use server'",
+          "path": "/reference/react/use-server",
+          "canary": true
         }
       ]
     },
@@ -125,7 +162,18 @@
       "sectionHeader": "react-dom@18.2.0"
     },
     {
-      "title": "Components",
+      "title": "훅",
+      "path": "/reference/react-dom/hooks",
+      "routes": [
+        {
+          "title": "useFormStatus",
+          "path": "/reference/react-dom/hooks/useFormStatus",
+          "canary": true
+        }
+      ]
+    },
+    {
+      "title": "컴포넌트",
       "path": "/reference/react-dom/components",
       "routes": [
         {
@@ -155,7 +203,7 @@
       ]
     },
     {
-      "title": "APIs",
+      "title": "API",
       "path": "/reference/react-dom",
       "routes": [
         {
@@ -185,7 +233,7 @@
       ]
     },
     {
-      "title": "Client APIs",
+      "title": "클라이언트 API",
       "path": "/reference/react-dom/client",
       "routes": [
         {
@@ -199,7 +247,7 @@
       ]
     },
     {
-      "title": "Server APIs",
+      "title": "서버 API",
       "path": "/reference/react-dom/server",
       "routes": [
         {
@@ -230,10 +278,10 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "Legacy APIs"
+      "sectionHeader": "레거시 API"
     },
     {
-      "title": "Legacy React APIs",
+      "title": "레거시 React API",
       "path": "/reference/react/legacy",
       "routes": [
         {

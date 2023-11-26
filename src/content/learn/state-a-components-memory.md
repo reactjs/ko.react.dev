@@ -1,25 +1,25 @@
 ---
-title: "State: A Component's Memory"
+title: "State: 컴포넌트의 기억 저장소"
 ---
 
 <Intro>
 
-Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" should put a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called *state*.
+컴포넌트는 상호 작용의 결과로 화면의 내용을 변경해야 하는 경우가 많습니다. 폼에 입력하면 입력 필드가 업데이트되어야 하고, 이미지 캐러셀에서 "다음"을 클릭할 때 표시되는 이미지가 변경되어야 하고, "구매"를 클릭하면 상품이 장바구니에 담겨야 합니다. 컴포넌트는 현재 입력값, 현재 이미지, 장바구니와 같은 것들을 "기억"해야 합니다. React는 이런 종류의 컴포넌트별 메모리를 *state*라고 부릅니다.
 
 </Intro>
 
 <YouWillLearn>
 
-* How to add a state variable with the [`useState`](/reference/react/useState) Hook
-* What pair of values the `useState` Hook returns
-* How to add more than one state variable
-* Why state is called local
+* [`useState`](/reference/react/useState) 훅으로 state 변수를 추가하는 방법
+* `useState` 훅이 반환하는 한 쌍의 값
+* 둘 이상의 state 변수를 추가하는 방법
+* state를 지역적이라고 하는 이유
 
 </YouWillLearn>
 
-## When a regular variable isn’t enough {/*when-a-regular-variable-isnt-enough*/}
+## 일반 변수로 충분하지 않은 경우 {/*when-a-regular-variable-isnt-enough*/}
 
-Here's a component that renders a sculpture image. Clicking the "Next" button should show the next sculpture by changing the `index` to `1`, then `2`, and so on. However, this **won't work** (you can try it!):
+다음은 조각상 이미지를 렌더링하는 컴포넌트입니다. "Next" 버튼을 클릭하면 `index`를 `1`, `2`로 변경하여 다음 조각상을 표시해야 합니다. 그러나 이것은 **작동하지 않습니다** (시도해 보세요!)
 
 <Sandpack>
 
@@ -151,46 +151,46 @@ button {
 
 </Sandpack>
 
-The `handleClick` event handler is updating a local variable, `index`. But two things prevent that change from being visible:
+`handleClick` 이벤트 핸들러는 지역 변수 `index`를 업데이트하고 있습니다. 하지만 이러한 변화를 보이지 않게 하는 두 가지 이유가 있습니다.
 
-1. **Local variables don't persist between renders.** When React renders this component a second time, it renders it from scratch—it doesn't consider any changes to the local variables.
-2. **Changes to local variables won't trigger renders.** React doesn't realize it needs to render the component again with the new data.
+1. **지역 변수는 렌더링 간에 유지되지 않습니다.** React는 이 컴포넌트를 두 번째로 렌더링할 때 지역 변수에 대한 변경 사항은 고려하지 않고 처음부터 렌더링 합니다.
+2. **지역 변수를 변경해도 렌더링을 일으키지 않습니다.** React는 새로운 데이터로 컴포넌트를 다시 렌더링해야 한다는 것을 인식하지 못합니다.
 
-To update a component with new data, two things need to happen:
+컴포넌트를 새로운 데이터로 업데이트하기 위해선 다음 두 가지가 필요합니다.
 
-1. **Retain** the data between renders.
-2. **Trigger** React to render the component with new data (re-rendering).
+1. 렌더링 사이에 데이터를 **유지**합니다.
+2. React가 새로운 데이터로 컴포넌트를 렌더링하도록 **유발**합니다. 
 
-The [`useState`](/reference/react/useState) Hook provides those two things:
+[`useState`](/reference/react/useState) 훅은 이 두 가지를 제공합니다. 
 
-1. A **state variable** to retain the data between renders.
-2. A **state setter function** to update the variable and trigger React to render the component again.
+1. 렌더링 간에 데이터를 유지하기 위한 **state 변수**.
+2. 변수를 업데이트하고 React가 컴포넌트를 다시 렌더링하도록 유발하는 **state setter 함수**
 
-## Adding a state variable {/*adding-a-state-variable*/}
+## state 변수 추가하기 {/*adding-a-state-variable*/}
 
-To add a state variable, import `useState` from React at the top of the file:
+state 변수를 추가하려면 파일 상단의 React에서 `useState`를 가져옵니다.
 
 ```js
 import { useState } from 'react';
 ```
 
-Then, replace this line:
+그런 다음 이 줄을 
 
 ```js
 let index = 0;
 ```
 
-with
+다음과 같이 바꿉니다.
 
 ```js
 const [index, setIndex] = useState(0);
 ```
 
-`index` is a state variable and `setIndex` is the setter function.
+`index`는 state 변수이고 `setIndex` 는 setter 함수입니다.
 
-> The `[` and `]` syntax here is called [array destructuring](https://javascript.info/destructuring-assignment) and it lets you read values from an array. The array returned by `useState` always has exactly two items.
+> 여기서 `[`와 `]` 문법을 [배열 구조 분해](https://ko.javascript.info/destructuring-assignment)라고 하며, 배열로부터 값을 읽을 수 있게 해줍니다. `useState`가 반환하는 배열에는 항상 두 개의 항목이 있습니다.
 
-This is how they work together in `handleClick`:
+이것이 `handleClick`에서 함께 작동하는 방식입니다
 
 ```js
 function handleClick() {
@@ -198,7 +198,7 @@ function handleClick() {
 }
 ```
 
-Now clicking the "Next" button switches the current sculpture:
+이제 "Next" 버튼을 클릭하면 현재 조각상을 전환합니다. 
 
 <Sandpack>
 
@@ -331,57 +331,57 @@ button {
 
 </Sandpack>
 
-### Meet your first Hook {/*meet-your-first-hook*/}
+### 첫 번째 훅 만나기 {/*meet-your-first-hook*/}
 
-In React, `useState`, as well as any other function starting with "`use`", is called a Hook.
+React에서 `useState`와 같이 "`use`"로 시작하는 다른 모든 함수를 훅이라고 합니다.
 
-*Hooks* are special functions that are only available while React is [rendering](/learn/render-and-commit#step-1-trigger-a-render) (which we'll get into in more detail on the next page). They let you "hook into" different React features.
+*훅*은 React가 오직 [렌더링](/learn/render-and-commit#step-1-trigger-a-render) 중일 때만 사용할 수 있는 특별한 함수입니다. (이에 대해서는 다음 페이지에서 자세히 알아보겠습니다) 이를 통해 다양한 React 기능을 "연결"할 수 있습니다.
 
-State is just one of those features, but you will meet the other Hooks later.
+State는 이러한 기능 중 하나일 뿐이며, 나중에 다른 훅들을 만나게 됩니다.
 
 <Pitfall>
 
-**Hooks—functions starting with `use`—can only be called at the top level of your components or [your own Hooks.](/learn/reusing-logic-with-custom-hooks)** You can't call Hooks inside conditions, loops, or other nested functions. Hooks are functions, but it's helpful to think of them as unconditional declarations about your component's needs. You "use" React features at the top of your component similar to how you "import" modules at the top of your file.
+**훅(`use`로 시작하는 함수들)은 컴포넌트의 최상위 수준 또는 [커스텀 훅](/learn/reusing-logic-with-custom-hooks)에서만 호출할 수 있습니다.** 조건문, 반복문 또는 기타 중첩 함수 내부에서는 훅을 호출할 수 없습니다. 훅은 함수이지만 컴포넌트의 필요에 대한 무조건적인 선언으로 생각하면 도움이 됩니다. 파일 상단에서 모듈을 "import"하는 것과 유사하게 컴포넌트 상단에서 React 기능을 "사용"합니다.
 
 </Pitfall>
 
-### Anatomy of `useState` {/*anatomy-of-usestate*/}
+### `useState` 해부하기 {/*anatomy-of-usestate*/}
 
-When you call [`useState`](/reference/react/useState), you are telling React that you want this component to remember something:
+[`useState`](/reference/react/useState)를 호출하는 것은, React에 이 컴포넌트가 무언가를 기억하기를 원한다고 말하는 것입니다.
 
 ```js
 const [index, setIndex] = useState(0);
 ```
 
-In this case, you want React to remember `index`.
+이 경우 React가 `index`를 기억하기를 원합니다.
 
 <Note>
 
-The convention is to name this pair like `const [something, setSomething]`. You could name it anything you like, but conventions make things easier to understand across projects.
+이 쌍의 이름은 `const [something, setSomething]`과 같이 지정하는 것이 규칙입니다. 원하는 대로 이름을 지을 수 있지만, 규칙을 사용하면 프로젝트 전반에 걸쳐 상황을 더 쉽게 이해할 수 있습니다.
 
 </Note>
 
-The only argument to `useState` is the **initial value** of your state variable. In this example, the `index`'s initial value is set to `0` with `useState(0)`. 
+`useState`의 유일한 인수는 state 변수의 **초깃값**입니다. 이 예제에서 `index`의 초깃값은 `useState(0)`에 의해 `0`으로 설정됩니다.
 
-Every time your component renders, `useState` gives you an array containing two values:
+컴포넌트가 렌더링될 때마다, `useState`는 다음 두 개의 값을 포함하는 배열을 제공합니다.
 
-1. The **state variable** (`index`) with the value you stored.
-2. The **state setter function** (`setIndex`) which can update the state variable and trigger React to render the component again.
+1. 저장한 값을 가진 **state 변수** (`index`).
+2. state 변수를 업데이트하고 React에 컴포넌트를 다시 렌더링하도록 유발하는 **state setter 함수** (`setIndex`).
 
-Here's how that happens in action:
+실제 작동 방식은 다음과 같습니다.
 
 ```js
 const [index, setIndex] = useState(0);
 ```
 
-1. **Your component renders the first time.** Because you passed `0` to `useState` as the initial value for `index`, it will return `[0, setIndex]`. React remembers `0` is the latest state value.
-2. **You update the state.** When a user clicks the button, it calls `setIndex(index + 1)`. `index` is `0`, so it's `setIndex(1)`. This tells React to remember `index` is `1` now and triggers another render.
-3. **Your component's second render.** React still sees `useState(0)`, but because React *remembers* that you set `index` to `1`, it returns `[1, setIndex]` instead.
-4. And so on!
+1. **컴포넌트가 처음 렌더링 됩니다.** `index`의 초깃값으로 `useState`를 사용해 `0`을 전달했으므로 `[0, setIndex]`를 반환합니다. React는 `0`을 최신 state 값으로 기억합니다.
+2. **state를 업데이트합니다.** 사용자가 버튼을 클릭하면 `setIndex(index + 1)`를 호출합니다. `index`는 `0`이므로 `setIndex(1)`입니다. 이는 React에 `index`는 `1`임을 기억하게 하고 또 다른 렌더링을 유발합니다.
+3. **컴포넌트가 두 번째로 렌더링 됩니다.** React는 여전히 `useState(0)`를 보지만, `index`를 `1`로 설정한 것을 기억하고 있기 때문에, 이번에는 `[1, setIndex]`를 반환합니다.
+4. 이런 식으로 계속됩니다!
 
-## Giving a component multiple state variables {/*giving-a-component-multiple-state-variables*/}
+## 컴포넌트에 여러 state 변수 지정하기 {/*giving-a-component-multiple-state-variables*/}
 
-You can have as many state variables of as many types as you like in one component. This component has two state variables, a number `index` and a boolean `showMore` that's toggled when you click "Show details":
+하나의 컴포넌트에 원하는 만큼 많은 타입의 state 변수를 가질 수 있습니다. 이 컴포넌트는 숫자 타입 `index`와 "Show details"를 클릭했을 때 토글 되는 불리언 타입인 `showMore`라는 두 개의 state 변수를 가지고 있습니다.
 
 <Sandpack>
 
@@ -520,19 +520,19 @@ button {
 
 </Sandpack>
 
-It is a good idea to have multiple state variables if their state is unrelated, like `index` and `showMore` in this example. But if you find that you often change two state variables together, it might be easier to combine them into one. For example, if you have a form with many fields, it's more convenient to have a single state variable that holds an object than state variable per field. Read [Choosing the State Structure](/learn/choosing-the-state-structure) for more tips.
+이 예제에서 `index`와 `showMore`처럼 서로 연관이 없는 경우 여러 개의 state 변수를 가지는 것이 좋습니다. 하지만 두 state 변수를 자주 함께 변경하는 경우에는 두 변수를 하나로 합치는 것이 더 좋을 수 있습니다. 예를 들어, 필드가 많은 폼의 경우 필드별로 state 변수를 사용하는 것보다 하나의 객체 state 변수를 사용하는 것이 더 편리합니다. 더 많은 팁은 [state 구조 선택](/learn/choosing-the-state-structure)에서 확인할 수 있습니다.
 
 <DeepDive>
 
-#### How does React know which state to return? {/*how-does-react-know-which-state-to-return*/}
+#### React는 어떤 state를 반환할지 어떻게 알 수 있을까요? {/*how-does-react-know-which-state-to-return*/}
 
-You might have noticed that the `useState` call does not receive any information about *which* state variable it refers to. There is no "identifier" that is passed to `useState`, so how does it know which of the state variables to return? Does it rely on some magic like parsing your functions? The answer is no.
+`useState` 호출이 *어떤* state 변수를 참조하는지에 대한 정보를 받지 못한다는 것을 눈치채셨을 것입니다. `useState`에 전달되는 "식별자"가 없는데 어떤 변수를 반환할지 어떻게 알 수 있을까요? 함수를 파싱하는 것과 같은 마법에 의존할까요? 대답은 '아니오' 입니다.
 
-Instead, to enable their concise syntax, Hooks **rely on a stable call order on every render of the same component.** This works well in practice because if you follow the rule above ("only call Hooks at the top level"), Hooks will always be called in the same order. Additionally, a [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) catches most mistakes.
+대신 간결한 구문을 구현하기 위해 훅은 **동일한 컴포넌트의 모든 렌더링에서 안정적인 호출 순서에 의존합니다.** 위의 규칙("최상위 수준에서만 훅 호출")을 따르면, 훅은 항상 같은 순서로 호출되기 때문에 실제로 잘 작동합니다. 또한, [린터 플러그인](https://www.npmjs.com/package/eslint-plugin-react-hooks)은 대부분의 실수를 잡아줍니다.
 
-Internally, React holds an array of state pairs for every component. It also maintains the current pair index, which is set to `0` before rendering. Each time you call `useState`, React gives you the next state pair and increments the index. You can read more about this mechanism in [React Hooks: Not Magic, Just Arrays.](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)
+내부적으로 React는 모든 컴포넌트에 대해 한 쌍의 state 배열을 가집니다. 또한 렌더링 전에 `0`으로 설정된 현재 인덱스 쌍을 유지합니다. `useState`를 호출할 때마다, React는 다음 state 쌍을 제공하고 인덱스를 증가시킵니다. 이 메커니즘에 대한 자세한 내용은 [리액트 훅: 마법이 아닌 배열](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)에서 확인할 수 있습니다.
 
-This example **doesn't use React** but it gives you an idea of how `useState` works internally:
+이 예제에서는 **React를 사용하지 않지만,** 내부적으로 `useState`가 어떻게 작동하는지에 대한 아이디어를 제공합니다.
 
 <Sandpack>
 
@@ -724,16 +724,15 @@ button { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-You don't have to understand it to use React, but you might find this a helpful mental model.
+이해하지 않아도 React를 사용하는 데 문제는 없지만, 도움이 되는 사고방식으로서 유용할 수 있을 것입니다.
 
 </DeepDive>
 
-## State is isolated and private {/*state-is-isolated-and-private*/}
+## State는 격리되고 비공개로 유지됩니다 {/*state-is-isolated-and-private*/}
 
-State is local to a component instance on the screen. In other words, **if you render the same component twice, each copy will have completely isolated state!** Changing one of them will not affect the other.
+State는 화면에서 컴포넌트 인스턴스에 지역적입니다. 다시 말해, **동일한 컴포넌트를 두 번 렌더링한다면 각 복사본은 완전히 격리된 state를 가집니다!** 그중 하나를 변경해도 다른 하나에는 영향을 미치지 않습니다.
 
-In this example, the `Gallery` component from earlier is rendered twice with no changes to its logic. Try clicking the buttons inside each of the galleries. Notice that their state is independent:
-
+이 예제에서 이전에 나왔던 `Gallery` 컴포넌트가 로직 변경 없이 두 번 렌더링되었습니다. 각각의 갤러리 내부 버튼을 클릭해 보세요. 그들의 state가 서로 독립적임을 주목하세요.
 <Sandpack>
 
 ```js
@@ -891,21 +890,21 @@ button {
 
 </Sandpack>
 
-This is what makes state different from regular variables that you might declare at the top of your module. State is not tied to a particular function call or a place in the code, but it's "local" to the specific place on the screen. You rendered two `<Gallery />` components, so their state is stored separately.
+이것이 state를 일반적인 모듈 상단에 선언할 수 있는 보통의 변수와 구별하는 요소입니다. State는 특정 함수 호출이나 코드 내의 특정 위치와 관련이 없습니다. 대신, 화면의 특정 위치에 "지역적"입니다. `<Gallery />` 컴포넌트를 두 번 렌더링했으므로 그들의 state는 별도로 저장됩니다.
 
-Also notice how the `Page` component doesn't "know" anything about the `Gallery` state or even whether it has any. Unlike props, **state is fully private to the component declaring it.** The parent component can't change it. This lets you add state to any component or remove it without impacting the rest of the components.
+또한 `Page` 컴포넌트가 `Gallery`의 state에 대해 아무것도 "알지" 않는다는 점과 심지어 그것이 있는지도 모른다는 것에 주목하세요. Props와 달리, **state는 선언한 컴포넌트에 완전히 비공개입니다.** 부모 컴포넌트는 이를 변경할 수 없습니다. 이로써 다른 컴포넌트에 영향을 미치지 않고 어떤 컴포넌트에든 state를 추가하거나 제거할 수 있게 됩니다.
 
-What if you wanted both galleries to keep their states in sync? The right way to do it in React is to *remove* state from child components and add it to their closest shared parent. The next few pages will focus on organizing state of a single component, but we will return to this topic in [Sharing State Between Components.](/learn/sharing-state-between-components)
+만약 두 개의 갤러리가 state를 동기화하길 원한다면, React에서 올바른 방법은 자식 컴포넌트에서 state를 *제거*하고 가장 가까운 공유 부모 컴포넌트에 추가하는 것입니다. 다음 몇 페이지는 단일 컴포넌트의 state 구성에 중점을 두겠지만, 이 주제는 [컴포넌트 간 state 공유](/learn/sharing-state-between-components)에서 다시 다룰 것입니다.
 
 <Recap>
 
-* Use a state variable when a component needs to "remember" some information between renders.
-* State variables are declared by calling the `useState` Hook.
-* Hooks are special functions that start with `use`. They let you "hook into" React features like state.
-* Hooks might remind you of imports: they need to be called unconditionally. Calling Hooks, including `useState`, is only valid at the top level of a component or another Hook.
-* The `useState` Hook returns a pair of values: the current state and the function to update it.
-* You can have more than one state variable. Internally, React matches them up by their order.
-* State is private to the component. If you render it in two places, each copy gets its own state.
+* 컴포넌트가 렌더링 간에 어떤 정보를 "기억"해야 할 때 state 변수를 사용합니다.
+* state 변수는 `useState` 훅을 호출하여 선언합니다.
+* 훅은 use로 시작하는 특별한 함수들입니다. 이들은 state와 같은 React 기능에 "연결"할 수 있도록 해줍니다.
+* 훅은 import와 마찬가지로 반드시 호출되어야 합니다. `useState`를 포함한 훅을 호출하는 것은 컴포넌트나 다른 훅의 최상위 수준에서만 유효합니다.
+* `useState` 훅은 현재 state와 이를 업데이트할 함수로 이루어진 한 쌍을 반환합니다.
+* 여러 개의 state 변수를 가질 수 있습니다. React 내부에서는 그들을 순서대로 매칭합니다.
+* state는 컴포넌트에 비공개입니다. 두 곳에서 렌더링하더라도 각각의 복사본은 고유한 state를 가집니다.
 
 </Recap>
 
@@ -913,11 +912,11 @@ What if you wanted both galleries to keep their states in sync? The right way to
 
 <Challenges>
 
-#### Complete the gallery {/*complete-the-gallery*/}
+#### 갤러리 완성하기 {/*complete-the-gallery*/}
 
-When you press "Next" on the last sculpture, the code crashes. Fix the logic to prevent the crash. You may do this by adding extra logic to event handler or by disabling the button when the action is not possible.
+마지막 조각상에서 "Next"를 누르면 코드가 충돌합니다. 로직을 수정하여 이를 해결하세요. 이벤트 핸들러에 추가로 로직을 추가하거나 동작이 불가능할 때 버튼을 비활성화하여 이를 처리할 수 있습니다.
 
-After fixing the crash, add a "Previous" button that shows the previous sculpture. It shouldn't crash on the first sculpture.
+충돌을 수정한 후, 이전 조각상을 표시하는 "Previous" 버튼을 추가하세요. 첫 번째 조각상에서는 충돌이 발생하지 않아야 합니다.
 
 <Sandpack>
 
@@ -1059,7 +1058,7 @@ img { width: 120px; height: 120px; }
 
 <Solution>
 
-This adds a guarding condition inside both event handlers and disables the buttons when needed:
+이것은 각 이벤트 핸들러 내에 방어 조건을 추가하고 필요할 때 버튼을 비활성화하는 방식으로 구현합니다:
 
 <Sandpack>
 
@@ -1219,13 +1218,13 @@ img { width: 120px; height: 120px; }
 
 </Sandpack>
 
-Notice how `hasPrev` and `hasNext` are used *both* for the returned JSX and inside the event handlers! This handy pattern works because event handler functions ["close over"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) any variables declared while rendering.
+반환된 JSX와 이벤트 핸들러 내부에서 `hasPrev`와 `hasNext`가 어떻게 사용되는지 주목하세요! 이 편리한 패턴은 이벤트 핸들러 함수가 렌더링하는 동안 선언된 모든 변수를 ["클로저로 참조"](https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures)하기 때문에 작동합니다.
 
 </Solution>
 
-#### Fix stuck form inputs {/*fix-stuck-form-inputs*/}
+#### 폼 입력 불가 문제 고치기 {/*fix-stuck-form-inputs*/}
 
-When you type into the input fields, nothing appears. It's like the input values are "stuck" with empty strings. The `value` of the first `<input>` is set to always match the `firstName` variable, and the `value` for the second `<input>` is set to always match the `lastName` variable. This is correct. Both inputs have `onChange` event handlers, which try to update the variables based on the latest user input (`e.target.value`). However, the variables don't seem to "remember" their values between re-renders. Fix this by using state variables instead.
+입력 필드에 입력하면 아무것도 나타나지 않습니다. 마치 입력값이 빈 문자열로 "고정"된 것처럼 보입니다. 첫 번째 `<input>`의 `value`는 항상 `firstName` 변수와 일치하도록 설정되어 있으며, 두 번째 `<input>`의 `value`는 항상 `lastName` 변수와 일치하도록 설정되어 있습니다. 이 부분은 맞습니다. 두 입력 모두 onChange 이벤트 핸들러를 가지고 있으며, 최신 사용자 입력(`e.target.value`)을 기반으로 변수를 업데이트하려고 시도합니다. 그러나 변수들은 다시 렌더링 되는 동안 값을 "기억"하지 않는 것처럼 보입니다. state 변수를 사용하여 이 문제를 해결하세요.
 
 <Sandpack>
 
@@ -1274,8 +1273,7 @@ h1 { margin-top: 10px; }
 
 <Solution>
 
-First, import `useState` from React. Then replace `firstName` and `lastName` with state variables declared by calling `useState`. Finally, replace every `firstName = ...` assignment with `setFirstName(...)`, and do the same for `lastName`. Don't forget to update `handleReset` too so that the reset button works.
-
+먼저, React에서 `useState`를 가져와야 합니다. 그런 다음 `useState`를 호출하여 선언된 state 변수로 `firstName`과 `lastName`을 대체합니다. 마지막으로 `firstName = ...` 할당을 `setFirstName(...)`로 대체하고, `lastName`에 대해서도 동일하게 수행합니다. 재설정 버튼이 작동하도록 `handleReset`을 업데이트하는 것을 잊지 마세요.
 <Sandpack>
 
 ```js
@@ -1325,13 +1323,13 @@ h1 { margin-top: 10px; }
 
 </Solution>
 
-#### Fix a crash {/*fix-a-crash*/}
+#### 충돌 고치기 {/*fix-a-crash*/}
 
-Here is a small form that is supposed to let the user leave some feedback. When the feedback is submitted, it's supposed to display a thank-you message. However, it crashes with an error message saying "Rendered fewer hooks than expected". Can you spot the mistake and fix it?
+사용자가 피드백을 남길 수 있는 간단한 폼이 있는데, 피드백을 제출하면 감사 메시지가 표시되어야 합니다. 그러나 "예상보다 적은 훅을 렌더링했습니다"라는 오류 메시지와 함께 충돌이 발생합니다. 실수를 발견하고 고칠 수 있나요?
 
 <Hint>
 
-Are there any limitations on _where_ Hooks may be called? Does this component break any rules? Check if there are any comments disabling the linter checks--this is where the bugs often hide!
+훅을 호출할 수 있는 *위치*에 제한이 있나요? 이 컴포넌트가 규칙을 어겼나요? 린터 검사를 비활성화하는 주석이 있는지 확인해 보세요. 버그가 자주 숨어 있는 곳입니다!
 
 </Hint>
 
@@ -1370,9 +1368,9 @@ export default function FeedbackForm() {
 
 <Solution>
 
-Hooks can only be called at the top level of the component function. Here, the first `isSent` definition follows this rule, but the `message` definition is nested in a condition.
+훅은 컴포넌트 함수의 최상위 수준에서만 호출할 수 있습니다. 여기서 첫 번째 `isSent` 정의는 이 규칙을 따르지만 `message` 정의는 조건문 내에 중첩되어 있습니다.
 
-Move it out of the condition to fix the issue:
+문제를 해결하려면 조건문 밖으로 옮기세요.
 
 <Sandpack>
 
@@ -1407,9 +1405,9 @@ export default function FeedbackForm() {
 
 </Sandpack>
 
-Remember, Hooks must be called unconditionally and always in the same order!
+훅은 무조건 항상 동일한 순서로 호출되어야 한다는 것을 기억하세요!
 
-You could also remove the unnecessary `else` branch to reduce the nesting. However, it's still important that all calls to Hooks happen *before* the first `return`.
+또한 중첩을 줄이기 위해 불필요한 `else` 분기를 제거할 수도 있습니다. 그러나 여전히 모든 훅 호출이 첫 번째 `return ` *이전*에 발생하는 것이 중요합니다.
 
 <Sandpack>
 
@@ -1444,19 +1442,19 @@ export default function FeedbackForm() {
 
 </Sandpack>
 
-Try moving the second `useState` call after the `if` condition and notice how this breaks it again.
+두 번째 `useState` 호출을 `if` 조건문 뒤로 이동해 보세요. 그러면 어떻게 오류가 발생하는지 확인할 수 있을 것입니다.
 
-If your linter is [configured for React](/learn/editor-setup#linting), you should see a lint error when you make a mistake like this. If you don't see an error when you try the faulty code locally, you need to set up linting for your project. 
+만약 [React 용으로 설정된](/learn/editor-setup#linting) 린터를 사용 중이라면 이와 같은 실수를 할 때 린트 오류가 표시될 것입니다. 로컬에서 잘못된 코드를 시도할 때 오류가 보이지 않는다면 프로젝트에 린터를 설정해야 합니다.
 
 </Solution>
 
-#### Remove unnecessary state {/*remove-unnecessary-state*/}
+#### 불필요한 state 제거하기 {/*remove-unnecessary-state*/}
 
-When the button is clicked, this example should ask for the user's name and then display an alert greeting them. You tried to use state to keep the name, but for some reason it always shows "Hello, !".
+이 예제에서 버튼이 클릭 되면 사용자의 이름을 요청하고 그런 다음 환영 메시지를 표시해야 합니다. 이름을 유지하기 위해 state를 사용하려고 했지만, 어떤 이유로 항상 "Hello, !"라고 표시됩니다.
 
-To fix this code, remove the unnecessary state variable. (We will discuss about [why this didn't work](/learn/state-as-a-snapshot) later.)
+이 코드를 수정하려면 불필요한 state 변수를 제거하세요. ([왜 이것이 작동하지 않는지](/learn/state-as-a-snapshot)에 대해서는 나중에 설명하겠습니다.)
 
-Can you explain why this state variable was unnecessary?
+이 state 변수가 불필요한 이유를 설명할 수 있을까요?
 
 <Sandpack>
 
@@ -1483,13 +1481,11 @@ export default function FeedbackForm() {
 
 <Solution>
 
-Here is a fixed version that uses a regular `name` variable declared in the function that needs it:
+다음은 필요한 곳에서 선언된 일반적인 `name` 변수를 사용하는 수정된 버전입니다.
 
 <Sandpack>
 
 ```js
-import { useState } from 'react';
-
 export default function FeedbackForm() {
   function handleClick() {
     const name = prompt('What is your name?');
@@ -1506,7 +1502,7 @@ export default function FeedbackForm() {
 
 </Sandpack>
 
-A state variable is only necessary to keep information between re-renders of a component. Within a single event handler, a regular variable will do fine. Don't introduce state variables when a regular variable works well.
+컴포넌트가 다시 렌더링 될 때만 정보를 유지하기 위해 state 변수가 필요합니다. 단일 이벤트 핸들러 내에서는 일반 변수가 잘 작동합니다. 일반 변수가 잘 동작할 때 state 변수를 도입하지 마세요.
 
 </Solution>
 

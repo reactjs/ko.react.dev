@@ -81,7 +81,7 @@ React가 컴포넌트를 다시 렌더링할 때.
 
 1. React가 함수를 다시 호출합니다.
 2. 함수가 새로운 JSX 스냅샷을 반환합니다.
-3. 그러면 React가 반환한 스냅샷과 일치하도록 화면을 업데이트합니다.
+3. 그러면 React가 함수가 반환한 스냅샷과 일치하도록 화면을 업데이트합니다.
 
 <IllustrationBlock title="다시 렌더링" sequential>
     <Illustration caption="React가 함수를 호출합니다" src="/images/docs/illustrations/i_render1.png" />
@@ -329,7 +329,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 #### 신호등 구현하기 {/*implement-a-traffic-light*/}
 
-다음은 버튼을 토글되는 신호등 컴포넌트입니다.
+다음은 버튼을 누르면 토글되는 신호등 컴포넌트입니다.
 
 <Sandpack>
 

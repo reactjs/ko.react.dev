@@ -8,8 +8,9 @@ import cn from 'classnames';
 import {IconNote} from '../Icon/IconNote';
 import {IconWarning} from '../Icon/IconWarning';
 import {IconPitfall} from '../Icon/IconPitfall';
+import {IconCanary} from '../Icon/IconCanary';
 
-type CalloutVariants = 'deprecated' | 'pitfall' | 'note' | 'wip';
+type CalloutVariants = 'deprecated' | 'pitfall' | 'note' | 'wip' | 'canary';
 
 interface ExpandableCalloutProps {
   children: React.ReactNode;
@@ -18,7 +19,7 @@ interface ExpandableCalloutProps {
 
 const variantMap = {
   deprecated: {
-    title: 'Deprecated',
+    title: '더 이상 사용되지 않습니다',
     Icon: IconWarning,
     containerClasses: 'bg-red-5 dark:bg-red-60 dark:bg-opacity-20',
     textColor: 'text-red-50 dark:text-red-40',
@@ -26,11 +27,20 @@ const variantMap = {
       'linear-gradient(rgba(249, 247, 243, 0), rgba(249, 247, 243, 1)',
   },
   note: {
-    title: 'Note',
+    title: '중요합니다!',
     Icon: IconNote,
     containerClasses:
       'bg-green-5 dark:bg-green-60 dark:bg-opacity-20 text-primary dark:text-primary-dark text-lg',
     textColor: 'text-green-60 dark:text-green-40',
+    overlayGradient:
+      'linear-gradient(rgba(245, 249, 248, 0), rgba(245, 249, 248, 1)',
+  },
+  canary: {
+    title: 'Canary',
+    Icon: IconCanary,
+    containerClasses:
+      'bg-gray-5 dark:bg-gray-60 dark:bg-opacity-20 text-primary dark:text-primary-dark text-lg',
+    textColor: 'text-gray-60 dark:text-gray-30',
     overlayGradient:
       'linear-gradient(rgba(245, 249, 248, 0), rgba(245, 249, 248, 1)',
   },
@@ -43,7 +53,7 @@ const variantMap = {
       'linear-gradient(rgba(249, 247, 243, 0), rgba(249, 247, 243, 1)',
   },
   wip: {
-    title: 'Under Construction',
+    title: '개발중이에요',
     Icon: IconNote,
     containerClasses: 'bg-yellow-5 dark:bg-yellow-60 dark:bg-opacity-20',
     textColor: 'text-yellow-50 dark:text-yellow-40',
@@ -65,7 +75,7 @@ function ExpandableCallout({children, type = 'note'}: ExpandableCalloutProps) {
       )}>
       <h3 className={cn('text-2xl font-display font-bold', variant.textColor)}>
         <variant.Icon
-          className={cn('inline mr-3 mb-1 text-lg', variant.textColor)}
+          className={cn('inline me-3 mb-1 text-lg', variant.textColor)}
         />
         {variant.title}
       </h3>
