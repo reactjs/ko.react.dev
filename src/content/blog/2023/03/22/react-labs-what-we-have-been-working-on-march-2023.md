@@ -24,7 +24,11 @@ RSC는 서버 중심의 멀티 페이지 애플리케이션의 간단한 "요청
 
 지난 업데이트 이후 우리는 제안을 승인하기 위해 [React 서버 컴포넌트 RFC](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md)를 병합했습니다. [React 서버 모듈 컨벤션](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md) 제안과 관련된 남아 있는 문제를 해결했고, 동료들과 `"use client"` 컨벤션을 따르기로 합의했습니다. 이러한 문서들은 RSC와 호환할 수 있는 구현 방식이 지원해야 하는 것에 대한 명세로도 사용됩니다.
 
+<<<<<<< HEAD
 가장 큰 변경 점은 서버 컴포넌트에서 데이터를 가져오는 기본 방법으로 [`async` / `await`](https://github.com/reactjs/rfcs/pull/229)를 도입했다는 점입니다. 또한 Promise의 결과를 읽는 새로운 `use` hook을 도입하여 클라이언트에서 데이터를 불러오는 것을 지원할 계획입니다. 비록 클라이언트 전용 애플리케이션의 임의의 컴포넌트에서 `async / await`를 지원할 수는 없지만, RSC 애플리케이션의 구조와 유사하게 클라이언트 전용 애플리케이션을 구성할 때를 위한 지원을 추가할 계획입니다.
+=======
+The biggest change is that we introduced [`async` / `await`](https://github.com/reactjs/rfcs/pull/229) as the primary way to do data fetching from Server Components. We also plan to support data loading from the client by introducing a new Hook called `use` that unwraps Promises. Although we can't support `async / await` in arbitrary components in client-only apps, we plan to add support for it when you structure your client-only app similar to how RSC apps are structured.
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 이제 데이터 가져오기가 어느 정도 잘 정리되었으므로 다른 방향을 살펴보고 있습니다. 바로 클라이언트에서 서버로 데이터를 전송하여 데이터베이스 변경을 실행하고 폼을 구현할 수 있도록 하는 것입니다. 서버와 클라이언트의 경계를 넘어 서버 액션 함수를 전달하면 클라이언트가 이를 호출하여 원활한 RPC를 제공할 수 있습니다. 서버 액션은 또한 JavaScript를 불러오기 전에 점진적으로 향상된 폼을 제공합니다.
 
@@ -74,7 +78,11 @@ React 컴포넌트의 순수한 JavaScript를 반응형으로 만들기 위해�
 
 ## 오프스크린 렌더링 {/*offscreen-rendering*/}
 
+<<<<<<< HEAD
 오프스크린 렌더링은 React에 다가올 추가적인 성능 부담 없이 백그라운드에서 화면을 렌더링하는 기능입니다. [`content-visiblity` CSS 프로퍼티](https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility)를 DOM 엘리먼트뿐만 아니라 React 컴포넌트에서도 작동하는 버전으로 이해하시면 됩니다. 이번 연구 중에 우리는 아래와 같은 다양한 사용 사례를 발견했습니다.
+=======
+Offscreen rendering is an upcoming capability in React for rendering screens in the background without additional performance overhead. You can think of it as a version of the [`content-visibility` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility) that works not only for DOM elements but React components, too. During our research, we've discovered a variety of use cases:
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 - 라우터는 백그라운드에서 화면을 사전 렌더링하여 사용자가 특정 화면으로 이동했을 때 즉시 사용하게 할 수 있습니다.
 - 탭 전환 컴포넌트는 숨겨진 탭의 state를 유지하여 사용자가 진행 상황을 잃지 않고 탭을 전환할 수 있습니다.

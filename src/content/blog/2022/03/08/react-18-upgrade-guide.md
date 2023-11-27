@@ -224,7 +224,12 @@ function handleClick() {
 
 React 18 워킹 그룹은 스타일이나 외부 저장 장치와 같은 특정 목적을 위한 동시성 렌더링을 지원하기 위해 라이브러리 관리자들과 협력하여 새로운 API를 개발했습니다. React 18을 지원하기 위해서는 일부 라이브러리들은 다음 API 중 하나로 변경해야 할 수도 있습니다.
 
+<<<<<<< HEAD
 * `useSyncExternalStore`는 외부 저장 장치의 업데이트를 실시간으로 반영하여 외부 저장 장치가 동시성 불러오기를 지원할 수 있도록 하는 새로운 hook입니다. 이 API는 React 외부의 상태를 포함하는 라이브러리에서 사용하는 것을 추천합니다. 자세한 정보는 [useSyncExternalStore overview post](https://github.com/reactwg/react-18/discussions/70)와 [useSyncExternalStore API details](https://github.com/reactwg/react-18/discussions/86)에서 확인할 수 있습니다.
+=======
+* `useSyncExternalStore` is a new Hook that allows external stores to support concurrent reads by forcing updates to the store to be synchronous. This new API is recommended for any library that integrates with state external to React. For more information, see the [useSyncExternalStore overview post](https://github.com/reactwg/react-18/discussions/70) and [useSyncExternalStore API details](https://github.com/reactwg/react-18/discussions/86).
+* `useInsertionEffect` is a new Hook that allows CSS-in-JS libraries to address performance issues of injecting styles in render. Unless you've already built a CSS-in-JS library we don't expect you to ever use this. This Hook will run after the DOM is mutated, but before layout effects read the new layout. This solves an issue that already exists in React 17 and below, but is even more important in React 18 because React yields to the browser during concurrent rendering, giving it a chance to recalculate layout. For more information, see the [Library Upgrade Guide for `<style>`](https://github.com/reactwg/react-18/discussions/110).
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 * `useInsertionEffect`는 CSS-in-JS 라이브러리가 렌더링 시 스타일 주입과 같은 성능 이슈를 개선하는 새로운 hook입니다. 이미 CSS-in-JS 라이브러리를 만든 경우가 아니라면 이 hook을 사용할 필요는 없을 것입니다. 이 hook은 DOM이 변경된 후 실행되지만, 레이아웃 effect가 새로운 레이아웃을 읽어 들이기 전에 실행됩니다. 자세한 정보는 [Library Upgrade Guide for `<style>`](https://github.com/reactwg/react-18/discussions/110)에서 확인할 수 있습니다.
 

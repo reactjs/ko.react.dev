@@ -11,10 +11,17 @@ TypeScript는 JavaScript 코드 베이스에 타입 정의를 추가하는 데 �
 
 <YouWillLearn>
 
+<<<<<<< HEAD
 * [React 컴포넌트가 있는 TypeScript](/learn/typescript#typescript-with-react-components)
 * [Hooks 타이핑 예시](/learn/typescript#example-hooks)
 * [`@types/react`의 일반적인 타입](/learn/typescript/#useful-types)
 * [추가 학습 위치](/learn/typescript/#further-learning)
+=======
+* [TypeScript with React Components](/learn/typescript#typescript-with-react-components)
+* [Examples of typing with Hooks](/learn/typescript#example-hooks)
+* [Common types from `@types/react`](/learn/typescript/#useful-types)
+* [Further learning locations](/learn/typescript/#further-learning)
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 </YouWillLearn>
 
@@ -124,6 +131,7 @@ export default App = AppTSX;
 
 ## Hooks 예시 {/*example-hooks*/}
 
+<<<<<<< HEAD
 `@types/react`의 타입 정의에는 내장 hooks에 대한 타입이 포함되어 있으므로 추가 설정 없이 컴포넌트에 사용할 수 있습니다. 컴포넌트에 작성한 코드를 고려하도록 만들어졌기 때문에 대부분의 경우 [추론된 타입](https://www.typescriptlang.org/ko/docs/handbook/type-inference.html)을 얻을 수 있으며, 이상적으로는 타입을 제공하는 사소한 작업을 처리할 필요가 없습니다.
 
 하지만, hooks에 타입을 제공하는 방법의 몇 가지 예시를 볼 수 있습니다.
@@ -131,6 +139,15 @@ export default App = AppTSX;
 ### `useState` {/*typing-usestate*/}
 
 [`useState` hook](/reference/react/useState)은 초기 state로 전달된 값을 재사용하여 값의 타입을 결정합니다. 예를 들어
+=======
+The type definitions from `@types/react` include types for the built-in Hooks, so you can use them in your components without any additional setup. They are built to take into account the code you write in your component, so you will get [inferred types](https://www.typescriptlang.org/docs/handbook/type-inference.html) a lot of the time and ideally do not need to handle the minutiae of providing the types. 
+
+However, we can look at a few examples of how to provide types for Hooks.
+
+### `useState` {/*typing-usestate*/}
+
+The [`useState` Hook](/reference/react/useState) will re-use the value passed in as the initial state to determine what the type of the value should be. For example:
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 ```ts
 // 타입을 "boolean"으로 추론합니다
@@ -166,7 +183,11 @@ const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' 
 
 ### `useReducer` {/*typing-usereducer*/}
 
+<<<<<<< HEAD
 [`useReducer` hook](/reference/react/useReducer)은 reducer 함수와 초기 state를 취하는 더 복잡한 hook입니다. reducer 함수의 타입은 초기 state에서 추론됩니다. state에 대한 타입을 제공하기 위해 `useReducer` 호출에 타입 인수를 선택적으로 제공할 수 있지만, 대신 초기 state에서 타입을 설정하는 것이 더 좋은 경우가 많습니다.
+=======
+The [`useReducer` Hook](/reference/react/useReducer) is a more complex Hook that takes a reducer function and an initial state. The types for the reducer function are inferred from the initial state. You can optionally provide a type argument to the `useReducer` call to provide a type for the state, but it is often better to set the type on the initial state instead:
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 <Sandpack>
 
@@ -242,7 +263,11 @@ export default function App() {
 
 ### `useContext` {/*typing-usecontext*/}
 
+<<<<<<< HEAD
 [`useContext` hook](/reference/react/useContext)은 컴포넌트를 통해 props를 전달할 필요 없이 컴포넌트 트리를 따라 데이터를 전달하는 기술입니다. 공급자 컴포넌트를 생성할 때 사용되며, 종종 자식 컴포넌트에서 값을 소비하는 hook을 생성할 때 사용됩니다.
+=======
+The [`useContext` Hook](/reference/react/useContext) is a technique for passing data down the component tree without having to pass props through components. It is used by creating a provider component and often by creating a Hook to consume the value in a child component.
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 context에서 제공한 값의 타입은 `createContext` 호출에 전달된 값에서 추론됩니다.
 
@@ -286,7 +311,11 @@ export default App = AppTSX;
 
 이 기술은 합리적인 기본값이 있을 때 효과적이지만 그렇지 않은 경우도 간혹 있으며, 그러한 경우 `null`이 기본값으로 합리적이라고 느낄 수 있습니다. 그러나, 타입 시스템이 코드를 이해할 수 있도록 하려면 `createContext`에서 `ContextShape | null`을 명시적으로 설정해야 합니다.
 
+<<<<<<< HEAD
 이에 따라 context 소비자에 대한 타입에서 `| null`을 제거해야 하는 문제가 발생합니다. 권장 사항은 hook이 런타임에 존재 여부를 검사하고 존재하지 않을 경우 에러를 throw 하는 것입니다.
+=======
+This causes the issue that you need to eliminate the `| null` in the type for context consumers. Our recommendation is to have the Hook do a runtime check for it's existence and throw an error when not present:
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 ```js {5, 16-20}
 import { createContext, useContext, useState, useMemo } from 'react';
@@ -299,7 +328,11 @@ type ComplexObject = {
 // context는 기본값을 정확하게 반영하기 위해 타입에 `| null`을 사용하여 만들어집니다.
 const Context = createContext<ComplexObject | null>(null);
 
+<<<<<<< HEAD
 // hook의 검사를 통해 `| null`을 제거합니다.
+=======
+// The `| null` will be removed via the check in the Hook.
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 const useGetComplexObject = () => {
   const object = useContext(Context);
   if (!object) { throw new Error("useGetComplexObject must be used within a Provider") }
@@ -329,7 +362,11 @@ function MyComponent() {
 
 ### `useMemo` {/*typing-usememo*/}
 
+<<<<<<< HEAD
 [`useMemo`](/reference/react/useMemo) hooks는 함수 호출로부터 기억된(memorized) 값을 생성/재접근하여, 두 번째 매개변수로 전달된 종속성이 변경될 때만 함수를 다시 실행합니다. hook을 호출한 결과는 첫 번째 매개변수에 있는 함수의 반환 값에서 추론됩니다. hook에 타입 인수를 제공하여 더욱더 명확하게 할 수 있습니다.
+=======
+The [`useMemo`](/reference/react/useMemo) Hooks will create/re-access a memorized value from a function call, re-running the function only when dependencies passed as the 2nd parameter are changed. The result of calling the Hook is inferred from the return value from the function in the first parameter. You can be more explicit by providing a type argument to the Hook.
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 ```ts
 // visibleTodos의 타입은 filterTodos의 반환 값에서 추론됩니다.
@@ -339,7 +376,11 @@ const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
 
 ### `useCallback` {/*typing-usecallback*/}
 
+<<<<<<< HEAD
 [`useCallback`](/reference/react/useCallback)는 두 번째 매개변수로 전달되는 종속성이 같다면 함수에 대한 안정적인 참조를 제공합니다. `useMemo`와 마찬가지로, 함수의 타입은 첫 번째 매개변수에 있는 함수의 반환 값에서 추론되며, hook에 타입 인수를 제공하여 더욱더 명확하게 할 수 있습니다.
+=======
+The [`useCallback`](/reference/react/useCallback) provide a stable reference to a function as long as the dependencies passed into the second parameter are the same. Like `useMemo`, the function's type is inferred from the return value of the function in the first parameter, and you can be more explicit by providing a type argument to the Hook.
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 
 ```ts

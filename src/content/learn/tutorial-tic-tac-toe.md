@@ -362,11 +362,15 @@ export default function Square() {
 
 <ConsoleBlock level="error">
 
-/src/App.js: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment `<>...</>`?
+/src/App.js: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX Fragment `<>...</>`?
 
 </ConsoleBlock>
 
+<<<<<<< HEAD
 React 컴포넌트는 두 개의 버튼처럼 인접한 여러 개의 JSX 엘리먼트가 아닌 단일 JSX 엘리먼트를 반환해야 합니다. 이 오류는 *fragments*(`<>` 와 `</>`)를 사용하여 다음과 같이 여러 개의 인접한 JSX 엘리먼트를 감싸 해결할 수 있습니다.
+=======
+React components need to return a single JSX element and not multiple adjacent JSX elements like two buttons. To fix this you can use *Fragments* (`<>` and `</>`) to wrap multiple adjacent JSX elements like this:
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 ```js {3-6}
 export default function Square() {
