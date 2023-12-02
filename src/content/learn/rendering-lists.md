@@ -1145,11 +1145,7 @@ hr {
 
 <Hint>
 
-<<<<<<< HEAD
-`map`을 반복문으로 변환하거나 fragment를 사용해야 합니다.
-=======
-You'll either need to convert `map` to a manual loop, or use a Fragment.
->>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
+`map`을 반복문으로 변환하거나 Fragment 를 사용해야 합니다.
 
 </Hint>
 
@@ -1212,11 +1208,7 @@ hr {
 
 각 구분 기호와 단락이 동일한 배열에 있기 때문에 원래 행의 인덱스를 `key`로 사용하면 더는 작동하지 않습니다. 하지만  `key={i + '-text'}` 처럼 접미사를 사용해서 각각에 고유한 key를 부여할 수 있습니다.
 
-<<<<<<< HEAD
-또는 `<hr />` 과 `<p>...</p>` 를 포함한 fragments 모음을 렌더링할 수 있습니다. 하지만 `<> </>` 이렇게 쓰는 손쉬운 문법은 key를 전달해주지 않기 때문에 `<Fragment>` 를 명시적으로 작성해야 합니다.
-=======
-Alternatively, you could render a collection of Fragments which contain `<hr />` and `<p>...</p>`. However, the `<>...</>` shorthand syntax doesn't support passing keys, so you'd have to write `<Fragment>` explicitly:
->>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
+또는 `<hr />` 과 `<p>...</p>` 를 포함한 Fragment 모음을 렌더링할 수 있습니다. 하지만 `<> </>` 이렇게 쓰는 손쉬운 문법은 key를 전달해주지 않기 때문에 `<Fragment>` 를 명시적으로 작성해야 합니다.
 
 <Sandpack>
 
@@ -1262,11 +1254,7 @@ hr {
 
 </Sandpack>
 
-<<<<<<< HEAD
-종종 `<> </>` 이렇게 쓰이는 fragments는 부가적인 `<div>`를 추가하지 않고도 JSX 노드를 그룹화할 수 있다는 것을 기억하세요!
-=======
-Remember, Fragments (often written as `<> </>`) let you group JSX nodes without adding extra `<div>`s!
->>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
+종종 `<> </>` 이렇게 쓰이는 Fragment 는 부가적인 `<div>`를 추가하지 않고도 JSX 노드를 그룹화할 수 있다는 것을 기억하세요!
 
 </Solution>
 

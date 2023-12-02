@@ -1501,9 +1501,6 @@ main {
 
 ---
 
-<<<<<<< HEAD
-## 문제 해결 {/*troubleshooting*/}
-=======
 ### Displaying an error to users with a error boundary {/*displaying-an-error-to-users-with-error-boundary*/}
 
 <Canary>
@@ -1599,7 +1596,6 @@ root.render(
 ---
 
 ## Troubleshooting {/*troubleshooting*/}
->>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 ### Transition에서 입력 업데이트가 작동하지 않습니다 {/*updating-an-input-in-a-transition-doesnt-work*/}
 

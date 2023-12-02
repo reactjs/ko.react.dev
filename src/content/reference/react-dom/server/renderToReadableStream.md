@@ -435,11 +435,7 @@ function ProfilePage() {
 }
 ```
 
-<<<<<<< HEAD
-`Posts` 컴포넌트 혹은 그 내부 어딘가에서 에러가 발생했을 경우, React는 [에러로 부터 회복하려고 할 것입니다:](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)
-=======
-If an error happens in the `Posts` component or somewhere inside it, React will [try to recover from it:](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content)
->>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
+`Posts` 컴포넌트 혹은 그 내부 어딘가에서 에러가 발생했을 경우, React는 [에러로 부터 회복하려고 할 것입니다:](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content)
 
 1. 가장 가까운 `<Suspense>` 경계의 로딩 대체인 (`PostsGlimmer`)를 HTML로 보냅니다.
 2. 서버에서 더이상의 `Posts`와 그 내부를 렌더링하는 것을 "포기"합니다.
