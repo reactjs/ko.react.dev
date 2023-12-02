@@ -6,14 +6,14 @@ canary: true
 
 <Canary>
 
-`'use server'` is needed only if you're [using React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) or building a library compatible with them.
+`'use server'`는 [React 서버 컴포넌트를 사용](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)하거나 그와 호환되는 라이브러리를 만들 때만 필요합니다. 
 
 </Canary>
 
 
 <Intro>
 
-`'use server'` marks server-side functions that can be called from client-side code.
+`'use server'`는 클라이언트 측 코드에서 호출할 수 있는 서버 측 함수를 표시합니다.
 
 </Intro>
 
@@ -21,11 +21,11 @@ canary: true
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `'use server'` {/*use-server*/}
 
-Add `'use server'` at the top of an async function body to mark the function as callable by the client. We call these functions _Server Actions_.
+함수가 클라이언트에서 실행될 수 있음을 표시하기 위해, 비동기 함수의 맨 위에 `'use server';`를 추가하세요. 우리는 이를 _Server Actions_ 이라고 부릅니다.
 
 ```js {2}
 async function addToCart(data) {
@@ -98,7 +98,7 @@ Notably, these are not supported:
 Supported serializable return values are the same as [serializable props](/reference/react/use-client#passing-props-from-server-to-client-components) for a boundary Client Component.
 
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
 ### Server Actions in forms {/*server-actions-in-forms*/}
 
