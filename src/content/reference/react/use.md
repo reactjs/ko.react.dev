@@ -5,7 +5,7 @@ canary: true
 
 <Canary>
 
-`use` Hook은 현재 React의 canary 채널과 실험 채널에서만 사용할 수 있습니다. 자세한 내용은 [React 릴리즈   채널](https://ko.react.dev/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
+`use` Hook은 현재 React의 Canary 채널과 실험 채널에서만 사용할 수 있습니다. 자세한 내용은 [React 릴리즈 채널](https://ko.react.dev/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
 
 </Canary>
 
