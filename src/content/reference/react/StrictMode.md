@@ -95,11 +95,7 @@ Strict Mode에서는 개발 시 다음과 같은 검사를 가능하게 합니�
 
 ---
 
-<<<<<<< HEAD
 ### 앱의 일부분에서 Strict Mode 활성화 {/*enabling-strict-mode-for-a-part-of-the-app*/}
-=======
-### Enabling Strict Mode for a part of the app {/*enabling-strict-mode-for-a-part-of-the-app*/}
->>>>>>> 943e3ce4e52be56bcd75b679448847302f557da1
 
 애플리케이션의 어떤 부분에서라도 Strict Mode를 활성화할 수 있습니다.
 
