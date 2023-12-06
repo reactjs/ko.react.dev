@@ -280,7 +280,7 @@ export default [
 
 의존성 트리는 React 앱을 실행하는 데 필요한 모듈을 결정하는 데 유용합니다. React 앱을 프로덕션용으로 빌드할 때, 일반적으로 클라이언트에 제공할 모든 필요 JavaScript를 번들로 묶는 빌드 단계가 있습니다. 이 작업을 담당하는 도구를 [번들러](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Overview#the_modern_tooling_ecosystem)라고 하며, 번들러는 의존성 트리를 사용하여 포함해야 할 모듈을 결정합니다.
 
-앱이 커짐에 따라 번들 크기도 커집니다. 큰 번들 크기는 클라이언트가 다운로드하고 실행하는 데 비용이 많이 듭니다. 큰 번들 크기는 UI가 그려지는 데 시간이 지체될 수 있습니다. 앱의 의존성 트리를 파악하면 이러한 문제를 디버깅하는 데 도움이 될 수 있습니다.
+앱이 커짐에 따라 번들 크기도 커집니다. 번들 크기가 커지면 클라이언트가 다운로드하고 실행하는 데 드는 비용도 커집니다. 또한 UI가 그려지는 데 시간이 지체될 수 있습니다. 앱의 의존성 트리를 파악하면 이러한 문제를 디버깅하는 데 도움이 될 수 있습니다.
 
 [comment]: <> (perhaps we should also deep dive on conditional imports)
 
