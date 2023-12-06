@@ -124,7 +124,7 @@ export default App = AppTSX;
 
 ## Hooks 예시 {/*example-hooks*/}
 
-`@types/react`의 타입 정의에는 내장 hooks에 대한 타입이 포함되어 있으므로 추가 설정 없이 컴포넌트에 사용할 수 있습니다. 컴포넌트에 작성한 코드를 고려하도록 만들어졌기 때문에 대부분의 경우 [추론된 타입](https://www.typescriptlang.org/ko/docs/handbook/type-inference.html)을 얻을 수 있으며, 이상적으로는 타입을 제공하는 사소한 작업을 처리할 필요가 없습니다.
+`@types/react`의 타입 정의에는 내장 Hooks에 대한 타입이 포함되어 있으므로 추가 설정 없이 컴포넌트에 사용할 수 있습니다. 컴포넌트에 작성한 코드를 고려하도록 만들어졌기 때문에 대부분의 경우 [추론된 타입](https://www.typescriptlang.org/ko/docs/handbook/type-inference.html)을 얻을 수 있으며, 이상적으로는 타입을 제공하는 사소한 작업을 처리할 필요가 없습니다.
 
 하지만, hooks에 타입을 제공하는 방법의 몇 가지 예시를 볼 수 있습니다.
 
@@ -166,7 +166,7 @@ const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' 
 
 ### `useReducer` {/*typing-usereducer*/}
 
-[`useReducer` hook](/reference/react/useReducer)은 reducer 함수와 초기 state를 취하는 더 복잡한 hook입니다. reducer 함수의 타입은 초기 state에서 추론됩니다. state에 대한 타입을 제공하기 위해 `useReducer` 호출에 타입 인수를 선택적으로 제공할 수 있지만, 대신 초기 state에서 타입을 설정하는 것이 더 좋은 경우가 많습니다.
+[`useReducer` Hook](/reference/react/useReducer)은 reducer 함수와 초기 state를 취하는 더 복잡한 Hook입니다. reducer 함수의 타입은 초기 state에서 추론됩니다. state에 대한 타입을 제공하기 위해 `useReducer` 호출에 타입 인수를 선택적으로 제공할 수 있지만, 대신 초기 state에서 타입을 설정하는 것이 더 좋은 경우가 많습니다.
 
 <Sandpack>
 
@@ -242,7 +242,7 @@ export default function App() {
 
 ### `useContext` {/*typing-usecontext*/}
 
-[`useContext` hook](/reference/react/useContext)은 컴포넌트를 통해 props를 전달할 필요 없이 컴포넌트 트리를 따라 데이터를 전달하는 기술입니다. 공급자 컴포넌트를 생성할 때 사용되며, 종종 자식 컴포넌트에서 값을 소비하는 hook을 생성할 때 사용됩니다.
+[`useContext` Hook](/reference/react/useContext)은 컴포넌트를 통해 props를 전달할 필요 없이 컴포넌트 트리를 따라 데이터를 전달하는 기술입니다. Provider 컴포넌트를 생성할 때 사용되며, 종종 자식 컴포넌트에서 값을 소비하는 Hook을 생성할 때 사용됩니다.
 
 context에서 제공한 값의 타입은 `createContext` 호출에 전달된 값에서 추론됩니다.
 
@@ -286,7 +286,7 @@ export default App = AppTSX;
 
 이 기술은 합리적인 기본값이 있을 때 효과적이지만 그렇지 않은 경우도 간혹 있으며, 그러한 경우 `null`이 기본값으로 합리적이라고 느낄 수 있습니다. 그러나, 타입 시스템이 코드를 이해할 수 있도록 하려면 `createContext`에서 `ContextShape | null`을 명시적으로 설정해야 합니다.
 
-이에 따라 context 소비자에 대한 타입에서 `| null`을 제거해야 하는 문제가 발생합니다. 권장 사항은 hook이 런타임에 존재 여부를 검사하고 존재하지 않을 경우 에러를 throw 하는 것입니다.
+이에 따라 context 소비자에 대한 타입에서 `| null`을 제거해야 하는 문제가 발생합니다. 권장 사항은 Hook이 런타임에 존재 여부를 검사하고 존재하지 않을 경우 에러를 throw 하는 것입니다.
 
 ```js {5, 16-20}
 import { createContext, useContext, useState, useMemo } from 'react';
@@ -299,7 +299,7 @@ type ComplexObject = {
 // context는 기본값을 정확하게 반영하기 위해 타입에 `| null`을 사용하여 만들어집니다.
 const Context = createContext<ComplexObject | null>(null);
 
-// hook의 검사를 통해 `| null`을 제거합니다.
+// Hook의 검사를 통해 `| null`을 제거합니다.
 const useGetComplexObject = () => {
   const object = useContext(Context);
   if (!object) { throw new Error("useGetComplexObject must be used within a Provider") }
@@ -329,7 +329,7 @@ function MyComponent() {
 
 ### `useMemo` {/*typing-usememo*/}
 
-[`useMemo`](/reference/react/useMemo) hooks는 함수 호출로부터 기억된(memorized) 값을 생성/재접근하여, 두 번째 매개변수로 전달된 종속성이 변경될 때만 함수를 다시 실행합니다. hook을 호출한 결과는 첫 번째 매개변수에 있는 함수의 반환 값에서 추론됩니다. hook에 타입 인수를 제공하여 더욱더 명확하게 할 수 있습니다.
+[`useMemo`](/reference/react/useMemo) Hooks는 함수 호출로부터 memorized 된 값을 생성/재접근하여, 두 번째 매개변수로 전달된 종속성이 변경될 때만 함수를 다시 실행합니다. Hook을 호출한 결과는 첫 번째 매개변수에 있는 함수의 반환 값에서 추론됩니다. Hook에 타입 인수를 제공하여 더욱더 명확하게 할 수 있습니다.
 
 ```ts
 // visibleTodos의 타입은 filterTodos의 반환 값에서 추론됩니다.
@@ -339,7 +339,7 @@ const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
 
 ### `useCallback` {/*typing-usecallback*/}
 
-[`useCallback`](/reference/react/useCallback)는 두 번째 매개변수로 전달되는 종속성이 같다면 함수에 대한 안정적인 참조를 제공합니다. `useMemo`와 마찬가지로, 함수의 타입은 첫 번째 매개변수에 있는 함수의 반환 값에서 추론되며, hook에 타입 인수를 제공하여 더욱더 명확하게 할 수 있습니다.
+[`useCallback`](/reference/react/useCallback)는 두 번째 매개변수로 전달되는 종속성이 같다면 함수에 대한 안정적인 참조를 제공합니다. `useMemo`와 마찬가지로, 함수의 타입은 첫 번째 매개변수에 있는 함수의 반환 값에서 추론되며, Hook에 타입 인수를 제공하여 더욱더 명확하게 할 수 있습니다.
 
 
 ```ts
