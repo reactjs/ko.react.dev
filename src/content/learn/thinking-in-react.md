@@ -80,7 +80,7 @@ JSON이 잘 구조화 되어있다면, 종종 이것이 UI의 컴포넌트 구�
 
 <Sandpack>
 
-```jsx App.js
+```jsx src/App.js
 function ProductCategoryRow({ category }) {
   return (
     <tr>
@@ -298,7 +298,7 @@ function FilterableProductTable({ products }) {
 
 <Sandpack>
 
-```jsx App.js
+```jsx src/App.js
 import { useState } from 'react';
 
 function FilterableProductTable({ products }) {
@@ -489,7 +489,7 @@ function FilterableProductTable({ products }) {
 
 <Sandpack>
 
-```jsx App.js
+```jsx src/App.js
 import { useState } from 'react';
 
 function FilterableProductTable({ products }) {

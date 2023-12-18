@@ -106,7 +106,7 @@ function Avatar({ person, size }) {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { getImageUrl } from './utils.js';
 
 function Avatar({ person, size }) {
@@ -150,7 +150,7 @@ export default function Profile() {
 }
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person, size = 's') {
   return (
     'https://i.imgur.com/' +
@@ -278,7 +278,7 @@ JSX 태그 내에 콘텐츠를 중첩하면, 부모 컴포넌트는 해당 콘�
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import Avatar from './Avatar.js';
 
 function Card({ children }) {
@@ -304,7 +304,7 @@ export default function Profile() {
 }
 ```
 
-```js Avatar.js
+```js src/Avatar.js
 import { getImageUrl } from './utils.js';
 
 export default function Avatar({ person, size }) {
@@ -320,7 +320,7 @@ export default function Avatar({ person, size }) {
 }
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person, size = 's') {
   return (
     'https://i.imgur.com/' +
@@ -365,7 +365,7 @@ export function getImageUrl(person, size = 's') {
 
 <Sandpack>
 
-```js Clock.js active
+```js src/Clock.js active
 export default function Clock({ color, time }) {
   return (
     <h1 style={{ color: color }}>
@@ -375,7 +375,7 @@ export default function Clock({ color, time }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState, useEffect } from 'react';
 import Clock from './Clock.js';
 
@@ -440,7 +440,7 @@ export default function App() {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { getImageUrl } from './utils.js';
 
 export default function Gallery() {
@@ -500,7 +500,7 @@ export default function Gallery() {
 }
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(imageId, size = 's') {
   return (
     'https://i.imgur.com/' +
@@ -541,7 +541,7 @@ li { margin: 5px; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { getImageUrl } from './utils.js';
 
 function Profile({
@@ -608,7 +608,7 @@ export default function Gallery() {
 }
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(imageId, size = 's') {
   return (
     'https://i.imgur.com/' +
@@ -641,7 +641,7 @@ li { margin: 5px; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { getImageUrl } from './utils.js';
 
 function Profile({ person, imageSize = 70 }) {
@@ -705,7 +705,7 @@ export default function Gallery() {
 }
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person, size = 's') {
   return (
     'https://i.imgur.com/' +
@@ -743,7 +743,7 @@ JSX 어트리뷰트의 컬렉션이 아닌 JavaScript 객체의 속성으로 구
 `size` prop에 따라 가장 가까운 이미지 크기를 요청하도록 `Avatar` 컴포넌트를 변경하세요. 특히 `size` 가 `90`보다 작으면 `'s'`(”small”)을, 아니면 `'b'`(”big”)을 `getImageUrl` 함수에 전달하세요. `size` prop를 다른 값들을 전달해 보고, 아바타를 렌더링 하는지, 새 탭에서 이미지를 열어 변경사항이 제대로 반영되는지 확인해 보세요.
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { getImageUrl } from './utils.js';
 
 function Avatar({ person, size }) {
@@ -771,7 +771,7 @@ export default function Profile() {
 }
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person, size) {
   return (
     'https://i.imgur.com/' +
@@ -794,7 +794,7 @@ export function getImageUrl(person, size) {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { getImageUrl } from './utils.js';
 
 function Avatar({ person, size }) {
@@ -835,7 +835,7 @@ export default function Profile() {
 }
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person, size) {
   return (
     'https://i.imgur.com/' +
@@ -856,7 +856,7 @@ export function getImageUrl(person, size) {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { getImageUrl } from './utils.js';
 
 const ratio = window.devicePixelRatio;
@@ -906,7 +906,7 @@ export default function Profile() {
 }
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person, size) {
   return (
     'https://i.imgur.com/' +

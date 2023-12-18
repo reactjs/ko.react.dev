@@ -35,7 +35,7 @@ UI 인터랙션을 디자인할 때 유저가 액션을 하면 어떻게 UI를 *
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 async function handleFormSubmit(e) {
   e.preventDefault();
   disable(textarea);
@@ -246,7 +246,7 @@ export default function Form({
 
 <Sandpack>
 
-```js App.js active
+```js src/App.js active
 import Form from './Form.js';
 
 let statuses = [
@@ -271,7 +271,7 @@ export default function App() {
 }
 ```
 
-```js Form.js
+```js src/Form.js
 export default function Form({ status }) {
   if (status === 'success') {
     return <h1>That's right!</h1>
@@ -703,7 +703,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 function handleFormSubmit(e) {
   e.preventDefault();
   if (button.textContent === 'Edit Profile') {
@@ -905,7 +905,7 @@ label { display: block; margin-bottom: 20px; }
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 function handleFormSubmit(e) {
   e.preventDefault();
   if (button.textContent === 'Edit Profile') {
@@ -1004,7 +1004,7 @@ label { display: block; margin-bottom: 20px; }
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 let firstName = 'Jane';
 let lastName = 'Jacobs';
 let isEditing = false;
@@ -1111,7 +1111,7 @@ label { display: block; margin-bottom: 20px; }
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 let firstName = 'Jane';
 let lastName = 'Jacobs';
 let isEditing = false;

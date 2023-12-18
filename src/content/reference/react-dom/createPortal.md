@@ -137,7 +137,7 @@ Portal은 DOM 노드의 물리적 배치만 변경합니다. 다른 모든 면�
 
 <Sandpack>
 
-```js App.js active
+```js src/App.js active
 import NoPortalExample from './NoPortalExample';
 import PortalExample from './PortalExample';
 
@@ -155,7 +155,7 @@ export default function App() {
 }
 ```
 
-```js NoPortalExample.js
+```js src/NoPortalExample.js
 import { useState } from 'react';
 import ModalContent from './ModalContent.js';
 
@@ -174,7 +174,7 @@ export default function NoPortalExample() {
 }
 ```
 
-```js PortalExample.js active
+```js src/PortalExample.js active
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import ModalContent from './ModalContent.js';
@@ -195,7 +195,7 @@ export default function PortalExample() {
 }
 ```
 
-```js ModalContent.js
+```js src/ModalContent.js
 export default function ModalContent({ onClose }) {
   return (
     <div className="modal">
@@ -207,7 +207,7 @@ export default function ModalContent({ onClose }) {
 ```
 
 
-```css styles.css
+```css src/styles.css
 .clipping-container {
   position: relative;
   border: 1px solid #aaa;
@@ -269,7 +269,7 @@ Portal은 React 루트가 React로 빌드되지 않은 정적 또는 서버 렌�
 </html>
 ```
 
-```js index.js
+```js src/index.js
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.js';
@@ -283,7 +283,7 @@ root.render(
 );
 ```
 
-```js App.js active
+```js src/App.js active
 import { createPortal } from 'react-dom';
 
 const sidebarContentEl = document.getElementById('sidebar-content');
@@ -398,7 +398,7 @@ return (
 }
 ```
 
-```js App.js
+```js src/App.js
 import { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createMapWidget, addPopupToMapWidget } from './map-widget.js';
@@ -428,7 +428,7 @@ export default function Map() {
 }
 ```
 
-```js map-widget.js
+```js src/map-widget.js
 import 'leaflet/dist/leaflet.css';
 import * as L from 'leaflet';
 

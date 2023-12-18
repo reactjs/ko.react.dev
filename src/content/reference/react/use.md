@@ -261,7 +261,7 @@ export function Message({ messagePromise }) {
 
 <Sandpack>
 
-```js message.js active
+```js src/message.js active
 "use client";
 
 import { use, Suspense } from "react";
@@ -280,7 +280,7 @@ export function MessageContainer({ messagePromise }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from "react";
 import { MessageContainer } from "./message.js";
 
@@ -304,8 +304,15 @@ export default function App() {
 }
 ```
 
+<<<<<<< HEAD
 ```js index.js hidden
 // TODO: `use` Hook이 안정적으로 릴리즈되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
+=======
+```js src/index.js hidden
+// TODO: update to import from stable
+// react instead of canary once the `use`
+// Hook is in a stable release of React
+>>>>>>> 303ecae3dd4c7b570cf18e0115b94188f6aad5a1
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -376,7 +383,7 @@ Promise가 거부될 때 오류를 표시하고 싶다면 [error boundary](https
 
 <Sandpack>
 
-```js message.js active
+```js src/message.js active
 "use client";
 
 import { use, Suspense } from "react";
@@ -398,7 +405,7 @@ function Message({ messagePromise }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from "react";
 import { MessageContainer } from "./message.js";
 
@@ -422,8 +429,15 @@ export default function App() {
 }
 ```
 
+<<<<<<< HEAD
 ```js index.js hidden
 // TODO: `use` Hook이 안정적으로 릴리즈되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
+=======
+```js src/index.js hidden
+// TODO: update to import from stable
+// react instead of canary once the `use`
+// Hook is in a stable release of React
+>>>>>>> 303ecae3dd4c7b570cf18e0115b94188f6aad5a1
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';

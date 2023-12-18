@@ -150,7 +150,7 @@ export default function App() {
 }
 ```
 
-```js ButtonWithTooltip.js
+```js src/ButtonWithTooltip.js
 import { useState, useRef } from 'react';
 import Tooltip from './Tooltip.js';
 
@@ -186,7 +186,7 @@ export default function ButtonWithTooltip({ tooltipContent, ...rest }) {
 }
 ```
 
-```js Tooltip.js active
+```js src/Tooltip.js active
 import { useRef, useLayoutEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import TooltipContainer from './TooltipContainer.js';
@@ -221,7 +221,7 @@ export default function Tooltip({ children, targetRect }) {
 }
 ```
 
-```js TooltipContainer.js
+```js src/TooltipContainer.js
 export default function TooltipContainer({ children, x, y, contentRef }) {
   return (
     <div
@@ -300,7 +300,7 @@ export default function App() {
 }
 ```
 
-```js ButtonWithTooltip.js
+```js src/ButtonWithTooltip.js
 import { useState, useRef } from 'react';
 import Tooltip from './Tooltip.js';
 
@@ -336,7 +336,7 @@ export default function ButtonWithTooltip({ tooltipContent, ...rest }) {
 }
 ```
 
-```js Tooltip.js active
+```js src/Tooltip.js active
 import { useRef, useLayoutEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import TooltipContainer from './TooltipContainer.js';
@@ -370,7 +370,7 @@ export default function Tooltip({ children, targetRect }) {
 }
 ```
 
-```js TooltipContainer.js
+```js src/TooltipContainer.js
 export default function TooltipContainer({ children, x, y, contentRef }) {
   return (
     <div
@@ -447,7 +447,7 @@ export default function App() {
 }
 ```
 
-```js ButtonWithTooltip.js
+```js src/ButtonWithTooltip.js
 import { useState, useRef } from 'react';
 import Tooltip from './Tooltip.js';
 
@@ -483,7 +483,7 @@ export default function ButtonWithTooltip({ tooltipContent, ...rest }) {
 }
 ```
 
-```js Tooltip.js active
+```js src/Tooltip.js active
 import { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import TooltipContainer from './TooltipContainer.js';
@@ -517,7 +517,7 @@ export default function Tooltip({ children, targetRect }) {
 }
 ```
 
-```js TooltipContainer.js
+```js src/TooltipContainer.js
 export default function TooltipContainer({ children, x, y, contentRef }) {
   return (
     <div
@@ -590,7 +590,7 @@ export default function App() {
 }
 ```
 
-```js ButtonWithTooltip.js
+```js src/ButtonWithTooltip.js
 import { useState, useRef } from 'react';
 import Tooltip from './Tooltip.js';
 
@@ -626,7 +626,7 @@ export default function ButtonWithTooltip({ tooltipContent, ...rest }) {
 }
 ```
 
-```js Tooltip.js active
+```js src/Tooltip.js active
 import { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import TooltipContainer from './TooltipContainer.js';
@@ -666,7 +666,7 @@ export default function Tooltip({ children, targetRect }) {
 }
 ```
 
-```js TooltipContainer.js
+```js src/TooltipContainer.js
 export default function TooltipContainer({ children, x, y, contentRef }) {
   return (
     <div
