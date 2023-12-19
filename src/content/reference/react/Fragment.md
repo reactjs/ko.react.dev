@@ -111,7 +111,7 @@ function Post() {
 }
 ```
 
-일반적으로 [`Fragment`에 `key`를 넘겨야 하는 경우]((#rendering-a-list-of-fragments))가 아니라면 이 기능은 필요하지 않습니다.
+일반적으로 [`Fragment`에 `key`를 넘겨야 하는 경우](#rendering-a-list-of-fragments)가 아니라면 이 기능은 필요하지 않습니다.
 
 </DeepDive>
 
