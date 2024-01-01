@@ -58,7 +58,7 @@ store에 있는 데이터의 스냅샷을 반환합니다. 두 개의 함수를 
 
 * If the store is mutated during a [non-blocking transition update](/reference/react/useTransition), React will fall back to performing that update as blocking. Specifically, for every transition update, React will call `getSnapshot` a second time just before applying changes to the DOM. If it returns a different value than when it was called originally, React will restart the update from scratch, this time applying it as a blocking update, to ensure that every component on screen is reflecting the same version of the store.
 
-* It's not recommended to _suspend_ a render based on a store value returned by `useSyncExternalStore`. The reason is that mutations to the external store cannot be [marked as non-blocking transition updates](/reference/react/useTransition), so they will trigger the nearest [`Suspense` fallback](/reference/react/Suspense), replacing already-rendered content on screen with a loading spinner, which typically makes a poor UX.
+* It's not recommended to _suspend_ a render based on a store value returned by `useSyncExternalStore`. The reason is that mutations to the external store cannot be marked as [non-blocking transition updates](/reference/react/useTransition), so they will trigger the nearest [`Suspense` fallback](/reference/react/Suspense), replacing already-rendered content on screen with a loading spinner, which typically makes a poor UX.
 
   For example, the following are discouraged:
 
@@ -130,9 +130,15 @@ export default function TodosApp() {
 }
 ```
 
+<<<<<<< HEAD
 ```js todoStore.js
 // 이것은 third-party store의 예시입니다
 // 해당 store를 사용하는 경우 React와 통합할 필요가 있을 수 있습니다.
+=======
+```js src/todoStore.js
+// This is an example of a third-party store
+// that you might need to integrate with React.
+>>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
 
 // 앱이 React로 완전히 빌드된 경우,
 // React state를 사용하는 것을 추천드립니다.
@@ -299,7 +305,7 @@ export default function App() {
 }
 ```
 
-```js useOnlineStatus.js
+```js src/useOnlineStatus.js
 import { useSyncExternalStore } from 'react';
 
 export function useOnlineStatus() {

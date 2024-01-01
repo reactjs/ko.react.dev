@@ -76,7 +76,7 @@ const button = createFactory('button');
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { createFactory } from 'react';
 
 const button = createFactory('button');
@@ -104,7 +104,7 @@ export default function App() {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { createFactory } from './createFactory.js';
 
 const button = createFactory('button');
@@ -118,7 +118,7 @@ export default function App() {
 }
 ```
 
-```js createFactory.js
+```js src/createFactory.js
 import { createElement } from 'react';
 
 export function createFactory(type) {
@@ -170,7 +170,7 @@ export default function App() {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { createElement } from 'react';
 
 export default function App() {
@@ -192,7 +192,7 @@ export default function App() {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 export default function App() {
   return (
     <button onClick={() => {
