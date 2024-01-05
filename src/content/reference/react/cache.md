@@ -4,14 +4,14 @@ canary: true
 ---
 
 <Canary>
-* `cache` is only for use with [React Server Components](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components). See [frameworks](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) that support React Server Components.
+* `cache`는 오직 [React 서버 컴포넌트](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)와 함께 사용됩니다. React 서버 컴포넌트를 지원하는 [프레임워크](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)를 확인해 보세요.
 
-* `cache` is only available in React’s [Canary](/community/versioning-policy#canary-channel) and [experimental](/community/versioning-policy#experimental-channel) channels. Please ensure you understand the limitations before using `cache` in production. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+* `cache`는 [Canary](/community/versioning-policy#canary-channel)와 [실험](/community/versioning-policy#experimental-channel) 채널에서만 사용할 수 있습니다. 프로덕션 환경에서 `cache`를 사용하기 전에 이 한계점에 대해 인지하고 있어야 합니다. React의 릴리즈 채널에 대한 자세한 내용은 [여기](/community/versioning-policy#all-release-channels)를 참조하세요.
 </Canary>
 
 <Intro>
 
-`cache` lets you cache the result of a data fetch or computation.
+`cache`는 가져온 데이터나 연산의 결과를 캐싱하게 해줍니다.
 
 ```js
 const cachedFn = cache(fn);
@@ -23,11 +23,11 @@ const cachedFn = cache(fn);
 
 ---
 
-## Reference {/*reference*/}
+## 참조 {/*reference*/}
 
 ### `cache(fn)` {/*cache*/}
 
-Call `cache` outside of any components to create a version of the function with caching.
+컴포넌트 외부에서 `cache`를 호출해 캐싱 기능을 가진 함수의 한 버전을 만들 수 있습니다.
 
 ```js {4,7}
 import {cache} from 'react';
@@ -40,43 +40,40 @@ function Chart({data}) {
   // ...
 }
 ```
+`getMetrics`가 처음 `data`를 호출할 때, `getMetrics`는 `calculateMetrics(data)`를 호출하고 캐시에 결과를 저장합니다. `getMetrics`가 같은 `data`와 함께 다시 호출되면, `calculateMetrics(data)`를 다시 호출하는 대신에 캐싱 된 결과를 반환합니다.
 
-When `getMetrics` is first called with `data`, `getMetrics` will call `calculateMetrics(data)` and store the result in cache. If `getMetrics` is called again with the same `data`, it will return the cached result instead of calling `calculateMetrics(data)` again.
+[아래에 있는 예시를 참고하세요.](#usage)
 
-[See more examples below.](#usage)
+#### 매개변수 {/*parameters*/}
 
-#### Parameters {/*parameters*/}
+- `fn`: 결과를 저장하고 싶은 함수. `fn`는 어떤 인자값도 받을 수 있고 어떤 결과도 반환할 수 있습니다.
 
-- `fn`: The function you want to cache results for. `fn` can take any arguments and return any value.
+#### 반환값 {/*returns*/}
 
-#### Returns {/*returns*/}
+`cache`는 같은 타입 시그니처를 가진 `fn`의 캐싱 된 버전을 반환합니다. 이 과정에서 `fn`를 호출하지 않습니다.
 
-`cache` returns a cached version of `fn` with the same type signature. It does not call `fn` in the process.
-
-When calling `cachedFn` with given arguments, it first checks if a cached result exists in the cache. If a cached result exists, it returns the result. If not, it calls `fn` with the arguments, stores the result in the cache, and returns the result. The only time `fn` is called is when there is a cache miss.
+주어진 인자값과 함께 `cachedFn`를 호출할 때, 캐시에 캐싱 된 데이터가 있는지 먼저 확인합니다. 만약 캐싱 된 데이터가 있다면, 그 결과를 반환합니다. 만약 없다면, 매개변수와 함께 `fn`을 호출하고 결과를 캐시에 저장하고 값을 반환합니다. `fn`가 유일하게 호출되는 경우는 캐싱 된 데이터가 없는 경우입니다.
 
 <Note>
 
-The optimization of caching return values based on inputs is known as [_memoization_](https://en.wikipedia.org/wiki/Memoization). We refer to the function returned from `cache` as a memoized function.
+입력을 기반으로 반환 값 캐싱을 최적화하는 것을 [_메모이제이션_](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98)라고 합니다. `cache`에서 반환되는 함수를 메모화된 함수라고 합니다.
 
 </Note>
 
-#### Caveats {/*caveats*/}
+#### 주의 {/*caveats*/}
 
-[//]: # 'TODO: add links to Server/Client Component reference once https://github.com/reactjs/react.dev/pull/6177 is merged'
-
-- React will invalidate the cache for all memoized functions for each server request. 
-- Each call to `cache` creates a new function. This means that calling `cache` with the same function multiple times will return different memoized functions that do not share the same cache.
-- `cachedFn` will also cache errors. If `fn` throws an error for certain arguments, it will be cached, and the same error is re-thrown when `cachedFn` is called with those same arguments.
-- `cache` is for use in [Server Components](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) only.
+- React는 서버 요청마다 모든 메모화된 함수들을 위해 캐시를 무효화합니다.
+- `cache`를 호출할 때마다 새 함수가 생성됩니다. 즉, 동일한 함수로 `cache`를 여러 번 호출하면 동일한 캐시를 공유하지 않는 다른 메모화된 함수가 반환됩니다.
+- `cachedFn` 또한 캐시 에러를 잡아냅니다. `fn`가 특정 인수에 대해 에러를 던지면 캐싱 되고, 동일한 인수로 `cachedFn`를 호출하면 동일한 에러가 다시 발생합니다.
+- `cache`는 [서버 컴포넌트](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)에서만 사용가능합니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Cache an expensive computation {/*cache-expensive-computation*/}
+### 고비용 연산 캐싱하기 {/*cache-expensive-computation*/}
 
-Use `cache` to skip duplicate work.
+반복 작업을 피하기 위해 `cache`를 사용하세요.
 
 ```js [[1, 7, "getUserMetrics(user)"],[2, 13, "getUserMetrics(user)"]]
 import {cache} from 'react';
@@ -97,18 +94,17 @@ function TeamReport({users}) {
   // ...
 }
 ```
+같은 `user` 객체가 `Profile`과 `TeamReport`에서 렌더될 때, 두 컴포넌트는 일을 공유하고, `user`를 위한 `calculateUserMetrics`를 한 번만 호출합니다.
 
-If the same `user` object is rendered in both `Profile` and `TeamReport`, the two components can share work and only call `calculateUserMetrics` once for that `user`. 
+`Profile`이 먼저 렌더된다고 가정해 봅시다. `Profile`은 <CodeStep step={1}>`getUserMetrics`</CodeStep>를 호출하고, 캐싱 된 결과가 있는지 확인합니다. `user`와 함께 `getUserMetrics`를 처음 호출하기 때문에, 현재 저장된 캐시는 없습니다. `getUserMetrics`는 `user`와 함께 `calculateUserMetrics`를 호출하고 캐시에 결괏값을 저장합니다.
 
-Assume `Profile` is rendered first. It will call <CodeStep step={1}>`getUserMetrics`</CodeStep>, and check if there is a cached result. Since it is the first time `getUserMetrics` is called with that `user`, there will be a cache miss. `getUserMetrics` will then call `calculateUserMetrics` with that `user` and write the result to cache. 
-
-When `TeamReport` renders its list of `users` and reaches the same `user` object, it will call <CodeStep step={2}>`getUserMetrics`</CodeStep> and read the result from cache.
+`TeamReport`가 `users` 목록과 함께 렌더될 때 같은 `user` 객체를 사용하게 되고, 이는 <CodeStep step={2}>`getUserMetrics`</CodeStep>를 호출해 캐시에서 결괏값을 읽어옵니다.
 
 <Pitfall>
 
-##### Calling different memoized functions will read from different caches. {/*pitfall-different-memoized-functions*/}
+##### 다른 메모화된 함수를 호출하면 다른 캐시에서 읽습니다. {/*pitfall-different-memoized-functions*/}
 
-To access the same cache, components must call the same memoized function.
+같은 캐시에 접근하기 위해선, 컴포넌트는 반드시 같은 메모화된 함수를 호출해야 합니다.
 
 ```js [[1, 7, "getWeekReport"], [1, 7, "cache(calculateWeekReport)"], [1, 8, "getWeekReport"]]
 // Temperature.js
@@ -116,7 +112,7 @@ import {cache} from 'react';
 import {calculateWeekReport} from './report';
 
 export function Temperature({cityData}) {
-  // 🚩 Wrong: Calling `cache` in component creates new `getWeekReport` for each render
+  // 🚩 Wrong: 컴포넌트에서 `cache`를 호출하면 각 렌더링에 대해 `getWeekReport`가 생성됩니다.
   const getWeekReport = cache(calculateWeekReport);
   const report = getWeekReport(cityData);
   // ...
@@ -128,7 +124,7 @@ export function Temperature({cityData}) {
 import {cache} from 'react';
 import {calculateWeekReport} from './report';
 
-// 🚩 Wrong: `getWeekReport` is only accessible for `Precipitation` component.
+// 🚩 Wrong: `getWeekReport`는 `Precipitation` 컴포넌트에서만 적용할 수 있습니다.
 const getWeekReport = cache(calculateWeekReport);
 
 export function Precipitation({cityData}) {
@@ -137,11 +133,11 @@ export function Precipitation({cityData}) {
 }
 ```
 
-In the above example, <CodeStep step={2}>`Precipitation`</CodeStep> and <CodeStep step={1}>`Temperature`</CodeStep> each call `cache` to create a new memoized function with their own cache look-up. If both components render for the same `cityData`, they will do duplicate work to call `calculateWeekReport`.
+위의 예시에서, <CodeStep step={2}>`Precipitation`</CodeStep>와 <CodeStep step={1}>`Temperature`</CodeStep>는 각각 `cache`를 호출하여 자체 캐시 조회를 통해 새로운 메모화된 함수를 만들어 냅니다. 두 컴포넌트가 같은 `cityData`를 렌더한다면, `calculateWeekReport`를 호출하는 반복 작업을 하게 됩니다.
 
-In addition, `Temperature` creates a <CodeStep step={1}>new memoized function</CodeStep> each time the component is rendered which doesn't allow for any cache sharing.
+게다가, `Temperature`는 컴포넌트가 렌더될 때마다 어떤 캐시 공유도 허용하지 않는 <CodeStep step={1}>새로운 메모화된 함수</CodeStep>를 생성하게 됩니다.
 
-To maximize cache hits and reduce work, the two components should call the same memoized function to access the same cache. Instead, define the memoized function in a dedicated module that can be [`import`-ed](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) across components.
+캐시 사용을 늘리고 일을 줄이기 위해서 두 컴포넌트는 같은 캐시에 접근하는 같은 메모화된 함수를 호출해야 합니다. 대신, 컴포넌트끼리 [`import` 할 수 있는](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) 전용 모듈에 메모화된 함수를 정의하세요.
 
 ```js [[3, 5, "export default cache(calculateWeekReport)"]]
 // getWeekReport.js
@@ -170,12 +166,12 @@ export default function Precipitation({cityData}) {
   // ...
 }
 ```
-Here, both components call the <CodeStep step={3}>same memoized function</CodeStep> exported from `./getWeekReport.js` to read and write to the same cache. 
+여기 두 컴포넌트가 같은 캐시를 읽고 쓰기 위해 `./getWeekReport.js`로 부터 export해 온 <CodeStep step={3}>같은 메모화된 함수</CodeStep>를 호출했습니다.
 </Pitfall>
 
-### Share a snapshot of data {/*take-and-share-snapshot-of-data*/}
+### 데이터의 스냅샷 공유하기 {/*take-and-share-snapshot-of-data*/}
 
-To share a snapshot of data between components, call `cache` with a data-fetching function like `fetch`. When multiple components make the same data fetch, only one request is made and the data returned is cached and shared across components. All components refer to the same snapshot of data across the server render. 
+컴포넌트끼리 데이터의 스냅샷을 공유하기 위해선 `fetch`와 같이 데이터를 받아오는 함수와 함께 `cache`를 사용해야 합니다. 여러 컴포넌트가 같은 데이터를 받아올 때, 요청이 한 번만 발생하고 받아온 데이터는 캐싱 되며 컴포넌트끼리 공유됩니다. 모든 컴포넌트는 서버 렌더링 전반에 걸쳐 동일한 데이터 스냅샷을 참조합니다.
 
 ```js [[1, 4, "city"], [1, 5, "fetchTemperature(city)"], [2, 4, "getTemperature"], [2, 9, "getTemperature"], [1, 9, "city"], [2, 14, "getTemperature"], [1, 14, "city"]]
 import {cache} from 'react';
@@ -196,17 +192,15 @@ async function MinimalWeatherCard({city}) {
 }
 ```
 
-If `AnimatedWeatherCard` and `MinimalWeatherCard` both render for the same <CodeStep step={1}>city</CodeStep>, they will receive the same snapshot of data from the <CodeStep step={2}>memoized function</CodeStep>. 
+`AnimatedWeatherCard`와 `MinimalWeatherCard`가 같은 <CodeStep step={1}>도시</CodeStep>를 렌더링할 때, <CodeStep step={2}>메모화된 함수</CodeStep>로 부터 같은 데이터의 스냅샷을 받게 됩니다.
 
-If `AnimatedWeatherCard` and `MinimalWeatherCard` supply different <CodeStep step={1}>city</CodeStep> arguments to <CodeStep step={2}>`getTemperature`</CodeStep>, then `fetchTemperature` will be called twice and each call site will receive different data.
+`AnimatedWeatherCard`와 `MinimalWeatherCard`가 다른 <CodeStep step={1}>도시</CodeStep>를 <CodeStep step={2}>`getTemperature`</CodeStep>의 인자로 받게 된다면, `fetchTemperature`는 두 번 호출되고 호출마다 다른 데이터를 받게 됩니다. 
 
-The <CodeStep step={1}>city</CodeStep> acts as a cache key.
+<CodeStep step={1}>도시</CodeStep>가 캐시 키처럼 동작하게 됩니다.
 
 <Note>
 
-[//]: # 'TODO: add links to Server Components when merged.'
-
-<CodeStep step={3}>Asynchronous rendering</CodeStep> is only supported for Server Components.
+<CodeStep step={3}>비동기 렌더링</CodeStep>은 [서버 컴포넌트](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)에서만 지원됩니다.
 
 ```js [[3, 1, "async"], [3, 2, "await"]]
 async function AnimatedWeatherCard({city}) {
@@ -214,14 +208,13 @@ async function AnimatedWeatherCard({city}) {
 	// ...
 }
 ```
-[//]: # 'TODO: add link and mention to use documentation when merged'
-[//]: # 'To render components that use asynchronous data in Client Components, see `use` documentation.'
+클라이언트 컴포넌트에서 비동기 데이터를 사용하는 컴포넌트를 렌더하고 싶다면 [`use`](/reference/react/use) 문서를 참고하세요.
 
 </Note>
 
-### Preload data {/*preload-data*/}
+### 사전에 데이터 받아두기 {/*preload-data*/}
 
-By caching a long-running data fetch, you can kick off asynchronous work prior to rendering the component.
+장시간 실행되는 데이터 가져오기를 캐싱하면, 컴포넌트를 렌더링하기 전에 비동기 작업을 시작할 수 있습니다.
 
 ```jsx [[2, 6, "await getUser(id)"], [1, 17, "getUser(id)"]]
 const getUser = cache(async (id) => {
@@ -239,9 +232,9 @@ async function Profile({id}) {
 }
 
 function Page({id}) {
-  // ✅ Good: start fetching the user data
+  // ✅ Good: 유저 데이터 가져오기를 시작합니다.
   getUser(id);
-  // ... some computational work
+  // ... 몇몇의 계산 작업들
   return (
     <>
       <Profile id={id} />
@@ -250,17 +243,17 @@ function Page({id}) {
 }
 ```
 
-When rendering `Page`, the component calls <CodeStep step={1}>`getUser`</CodeStep> but note that it doesn't use the returned data. This early <CodeStep step={1}>`getUser`</CodeStep> call kicks off the asynchronous database query that occurs while `Page` is doing other computational work and rendering children.
+`Page`를 렌더링할 때, 컴포넌트는 <CodeStep step={1}>`getUser`</CodeStep>를 호출하지만, 반환된 데이터를 사용하지 않는다는 점에 유의하세요. 이 초기 <CodeStep step={1}>`getUser`</CodeStep> 호출은 페이지가 다른 계산 작업을 수행하고 자식을 렌더링하는 동안 발생하는, 비동기 데이터베이스 쿼리를 시작합니다. 
 
-When rendering `Profile`, we call <CodeStep step={2}>`getUser`</CodeStep> again. If the initial <CodeStep step={1}>`getUser`</CodeStep> call has already returned and cached the user data, when `Profile` <CodeStep step={2}>asks and waits for this data</CodeStep>, it can simply read from the cache without requiring another remote procedure call. If the <CodeStep step={1}> initial data request</CodeStep> hasn't been completed, preloading data in this pattern reduces delay in data-fetching.
+`Profile`을 렌더링할 때, <CodeStep step={2}>`getUser`</CodeStep>를 다시 호출합니다. 초기 <CodeStep step={1}>`getUser`</CodeStep> 호출이 이미 유저 데이터에 반환되고 캐싱 되었다면, `Profile`이 <CodeStep step={2}>해당 데이터를 요청하고 기다릴 때</CodeStep>, 다른 원격 프로시저 호출 없이 쉽게 캐시에서 읽어올 수 있습니다. <CodeStep step={1}> 초기 데이터 요청</CodeStep>이 완료되지 않은 경우, 이 패턴으로 데이터를 미리 로드하면 데이터를 받아올 때 생기는 지연이 줄어듭니다.
 
 <DeepDive>
 
-#### Caching asynchronous work {/*caching-asynchronous-work*/}
+#### 비동기 작업 캐싱하기 {/*caching-asynchronous-work*/}
 
-When evaluating an [asynchronous function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function), you will receive a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) for that work. The promise holds the state of that work (_pending_, _fulfilled_, _failed_) and its eventual settled result.
+[비동기 함수](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/async_function)의 결과를 보면, [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)를 받습니다. 이 Promise는 작업에 대한 상태(_보류 중_, _완료됨_, _실패함_)와 최종적으로 확정된 결과를 가지고 있습니다.
 
-In this example, the asynchronous function <CodeStep step={1}>`fetchData`</CodeStep> returns a promise that is awaiting the `fetch`. 
+이 예시에서, 비동기 함수 <CodeStep step={1}>`fetchData`</CodeStep>는 `fetch`를 기다리는 Promise를 반환합니다.
 
 ```js [[1, 1, "fetchData()"], [2, 8, "getData()"], [3, 10, "getData()"]]
 async function fetchData() {
@@ -277,18 +270,18 @@ async function MyComponent() {
 }
 ```
 
-In calling <CodeStep step={2}>`getData`</CodeStep> the first time, the promise returned from <CodeStep step={1}>`fetchData`</CodeStep> is cached. Subsequent look-ups will then return the same promise.
+<CodeStep step={2}>`getData`</CodeStep>를 처음 호출할 때, <CodeStep step={1}>`fetchData`</CodeStep>에서 반환된 Promise가 캐싱 됩니다. 이후 조회 시, 같은 Promise를 반환합니다.
 
-Notice that the first <CodeStep step={2}>`getData`</CodeStep> call does not `await` whereas the <CodeStep step={3}>second</CodeStep> does. [`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await) is a JavaScript operator that will wait and return the settled result of the promise. The first <CodeStep step={2}>`getData`</CodeStep> call simply initiates the `fetch` to cache the promise for the second <CodeStep step={3}>`getData`</CodeStep> to look-up.
+첫 번째 <CodeStep step={2}>`getData`</CodeStep> 호출은 `기다리지 않지만(await)` <CodeStep step={3}>두 번째</CodeStep>는 기다립니다. [`await`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/await) 는 자바스크립트 연산자로, 기다렸다가 확정된 Promise의 결과를 반환합니다. 첫 번째 <CodeStep step={2}>`getData`</CodeStep>은 단순히 조회할 두 번째 <CodeStep step={3}>`getData`</CodeStep>에 대한 Promise를 캐싱하기 위해 `fetch`를 실행합니다.
 
-If by the <CodeStep step={3}>second call</CodeStep> the promise is still _pending_, then `await` will pause for the result. The optimization is that while we wait on the `fetch`, React can continue with computational work, thus reducing the wait time for the <CodeStep step={3}>second call</CodeStep>. 
+<CodeStep step={3}>두 번째 호출</CodeStep>에서 Promise가 여전히 _보류 중_이면, 결과를 기다리는 동안 `await`가 일시 중지됩니다. 이 최적화는 데이터 불러오기를 기다리는 동안 React가 계산 작업을 계속할 수 있게 해 <CodeStep step={3}>두 번째 호출</CodeStep>에 대한 대기 시간을 줄일 수 있게 합니다. 
 
-If the promise is already settled, either to an error or the _fulfilled_ result, `await` will return that value immediately. In both outcomes, there is a performance benefit.
+_완료된_ 결과나 에러에 대한 Promise가 이미 정해진 경우, `await`는 즉시 값을 반환합니다. 두 결과 모두 성능상의 이점이 있습니다.
 </DeepDive>
 
 <Pitfall>
 
-##### Calling a memoized function outside of a component will not use the cache. {/*pitfall-memoized-call-outside-component*/}
+##### 컴포넌트 외부에서 메모화된 함수를 사용하면 캐시가 사용되지 않습니다. {/*pitfall-memoized-call-outside-component*/}
 
 ```jsx [[1, 3, "getUser"]]
 import {cache} from 'react';
@@ -297,31 +290,31 @@ const getUser = cache(async (userId) => {
   return await db.user.query(userId);
 });
 
-// 🚩 Wrong: Calling memoized function outside of component will not memoize.
+// 🚩 Wrong: 컴포넌트 외부에서 메모화된 함수를 호출하면 메모화하지 않습니다.
 getUser('demo-id');
 
 async function DemoProfile() {
-  // ✅ Good: `getUser` will memoize.
+  // ✅ Good: `getUser`는 메모화 됩니다.
   const user = await getUser('demo-id');
   return <Profile user={user} />;
 }
 ```
 
-React only provides cache access to the memoized function in a component. When calling <CodeStep step={1}>`getUser`</CodeStep> outside of a component, it will still evaluate the function but not read or update the cache.
+React는 컴포넌트에서 메모화된 함수의 캐시 접근만 제공합니다. 컴포넌트 외부에서 <CodeStep step={1}>`getUser`</CodeStep>를 호출하면 여전히 함수를 실행하지만, 캐시를 읽거나 업데이트하지는 않습니다.
 
-This is because cache access is provided through a [context](/learn/passing-data-deeply-with-context) which is only accessible from a component. 
+이는 컴포넌트에서만 접근할 수 있는 [컨텍스트](/learn/passing-data-deeply-with-context)를 통해 캐시 접근이 제공되기 때문입니다.
 
 </Pitfall>
 
 <DeepDive>
 
-#### When should I use `cache`, [`memo`](/reference/react/memo), or [`useMemo`](/reference/react/useMemo)? {/*cache-memo-usememo*/}
+#### `cache`, [`memo`](/reference/react/memo), or [`useMemo`](/reference/react/useMemo) 중 언제 어떤 걸 사용해야 하나요? {/*cache-memo-usememo*/}
 
-All mentioned APIs offer memoization but the difference is what they're intended to memoize, who can access the cache, and when their cache is invalidated.
+언급된 모든 API들은 메모이제이션을 제공하지만, 메모화 대상, 캐시 접근 권한, 캐시 무효화 시점에 차이가 있습니다.
 
 #### `useMemo` {/*deep-dive-use-memo*/}
 
-In general, you should use [`useMemo`](/reference/react/useMemo) for caching a expensive computation in a Client Component across renders. As an example, to memoize a transformation of data within a component.
+일반적으로 [`useMemo`](/reference/react/useMemo)는 클라이언트 컴포넌트에서 렌더링에 걸쳐 고비용의 계산을 캐싱할 때 사용합니다. 예를 들어 컴포넌트 내에서 데이터의 변환을 메모화할 수 있습니다.
 
 ```jsx {4}
 'use client';
@@ -341,13 +334,14 @@ function App() {
   );
 }
 ```
-In this example, `App` renders two `WeatherReport`s with the same record. Even though both components do the same work, they cannot share work. `useMemo`'s cache is only local to the component.
 
-However, `useMemo` does ensure that if `App` re-renders and the `record` object doesn't change, each component instance would skip work and use the memoized value of `avgTemp`. `useMemo` will only cache the last computation of `avgTemp` with the given dependencies. 
+이 예시에서 `App`은 두 개의 `WeatherReport`를 같은 데이터와 함께 렌더했습니다. 두 컴포넌트가 같은 작업을 수행했음에도 불구하고 서로 작업을 공유하지 않습니다. `useMemo`의 캐시는 해당 컴포넌트 내부에만 있습니다.
+
+하지만 `useMemo`는 `App`이 다시 렌더링 되고 `record` 객체가 변경되지 않는 경우, 각 컴포넌트 인스턴스가 작업을 건너뛰고 메모화된 `avgTemp`의 값을 사용합니다. `useMemo`는 주어진 종속성을 가진 `avgTemp`의 마지막 계산만 캐싱합니다.
 
 #### `cache` {/*deep-dive-cache*/}
 
-In general, you should use `cache` in Server Components to memoize work that can be shared across components.
+일반적으로 `cache`는 서버 컴포넌트에서 컴포넌트 간에 공유할 수 있는 작업을 메모화하기 위해 사용합니다.
 
 ```js [[1, 12, "<WeatherReport city={city} />"], [3, 13, "<WeatherReport city={city} />"], [2, 1, "cache(fetchReport)"]]
 const cachedFetchReport = cache(fetchReport);
@@ -367,13 +361,13 @@ function App() {
   );
 }
 ```
-Re-writing the previous example to use `cache`, in this case the <CodeStep step={3}>second instance of `WeatherReport`</CodeStep> will be able to skip duplicate work and read from the same cache as the <CodeStep step={1}>first `WeatherReport`</CodeStep>. Another difference from the previous example is that `cache` is also recommended for <CodeStep step={2}>memoizing data fetches</CodeStep>, unlike `useMemo` which should only be used for computations.
+이전 예제를 `cache`를 이용해 재작성하면, 이 경우에 <CodeStep step={3}>`WeatherReport`의 두 번째 인스턴스</CodeStep>는 중복 작업을 생략하고 <CodeStep step={1}>첫 번째 `WeatherReport`</CodeStep>와 같은 캐시를 읽게 됩니다. 이전 예제와 다른 점은 계산에만 사용되는 `useMemo`와 달리 `cache`는 <CodeStep step={2}>데이터 가져오기를 메모화하는 데</CodeStep>도 권장된다는 점입니다.
 
-At this time, `cache` should only be used in Server Components and the cache will be invalidated across server requests.
+이때, `cache`는 서버 컴포넌트에서만 사용해야 하며 캐시는 서버 요청 전체에서 무효화가 됩니다.
 
 #### `memo` {/*deep-dive-memo*/}
 
-You should use [`memo`](reference/react/memo) to prevent a component re-rendering if its props are unchanged.
+[`memo`](reference/react/memo)는 프로퍼티가 변경되지 않았을 때 컴포넌트가 재 렌더링 되는 것을 막기 위해 사용합니다.
 
 ```js
 'use client';
@@ -396,27 +390,27 @@ function App() {
 }
 ```
 
-In this example, both `MemoWeatherReport` components will call `calculateAvg` when first rendered. However, if `App` re-renders, with no changes to `record`, none of the props have changed and `MemoWeatherReport` will not re-render. 
+예제에서 `MemoWeatherReport` 컴포넌트 모두 첫 번째 렌더에서 `calculateAvg`를 호출합니다. 하지만 `App`이 재 렌더링 될 때 `record`의 변경이 없다면 프로퍼티의 변경이 없기 때문에 `MemoWeatherReport`가 다시 렌더링 되지 않습니다.
 
-Compared to `useMemo`, `memo` memoizes the component render based on props vs. specific computations. Similar to `useMemo`, the memoized component only caches the last render with the last prop values. Once the props change, the cache invalidates and the component re-renders.
+`useMemo`와 비교하면 `memo`는 프로퍼티와 특정 계산을 기반으로 컴포넌트 렌더링을 메모화합니다. `useMemo`와 유사하게, 메모화된 컴포넌트는 마지막 프로퍼티 값에 대한 마지막 렌더링을 캐싱합니다. 프로퍼티가 변경되면, 캐쉬는 무효화되고 컴포넌트는 재 렌더링 됩니다.
 
 </DeepDive>
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
-### My memoized function still runs even though I've called it with the same arguments {/*memoized-function-still-runs*/}
+### 동일한 인수로 함수를 호출해도 메모된 함수가 계속 실행됩니다. {/*memoized-function-still-runs*/}
 
-See prior mentioned pitfalls
-* [Calling different memoized functions will read from different caches.](#pitfall-different-memoized-functions)
-* [Calling a memoized function outside of a component will not use the cache.](#pitfall-memoized-call-outside-component)
+앞서 언급된 주의 사항들을 확인하세요.
+* [다른 메모화된 함수를 호출하면 다른 캐시에서 읽습니다.](#pitfall-different-memoized-functions)
+* [컴포넌트 외부에서 메모화된 함수를 사용하면 캐시가 사용되지 않습니다.](#pitfall-memoized-call-outside-component)
 
-If none of the above apply, it may be a problem with how React checks if something exists in cache.
+위의 어느 것도 해당하지 않는다면, React가 캐시에 무엇이 존재하는지 확인하는 방식에 문제가 있을 수 있습니다.
 
-If your arguments are not [primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) (ex. objects, functions, arrays), ensure you're passing the same object reference.
+인자가 [원시 값](https://developer.mozilla.org/ko/docs/Glossary/Primitive)(객체, 함수, 배열 등) 이 아니라면, 같은 객체 참조를 넘겼는지 확인하세요.
 
-When calling a memoized function, React will look up the input arguments to see if a result is already cached. React will use shallow equality of the arguments to determine if there is a cache hit.
+메모화된 함수 호출 시, React는 입력된 인자값을 조회해 결과가 이미 캐싱 되어 있는지 확인합니다. React는 인수의 얕은 동등성을 사용해 캐시 히트가 있는지를 결정합니다.
 
 ```js
 import {cache} from 'react';
@@ -426,7 +420,7 @@ const calculateNorm = cache((vector) => {
 });
 
 function MapMarker(props) {
-  // 🚩 Wrong: props is an object that changes every render.
+  // 🚩 Wrong: 인자가 매 렌더링마다 변경되는 객체입니다.
   const length = calculateNorm(props);
   // ...
 }
@@ -440,10 +434,9 @@ function App() {
   );
 }
 ```
+이 경우 두 `MapMarker`는 동일한 작업을 수행하고 동일한 값인 `{x: 10, y: 10, z:10}`와 함께 `calculateNorm`를 호출하는 듯 보입니다. 객체에 동일한 값이 포함되어 있더라도 각 컴포넌트가 자체 프로퍼티 객체를 생성하므로, 동일한 객체 참조가 아닙니다.
 
-In this case the two `MapMarker`s look like they're doing the same work and calling `calculateNorm` with the same value of `{x: 10, y: 10, z:10}`. Even though the objects contain the same values, they are not the same object reference as each component creates its own `props` object.
-
-React will call [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) on the input to verify if there is a cache hit.
+React는 입력에서 [`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is)를 호출해 캐시 히트가 있는지 확인합니다.
 
 ```js {3,9}
 import {cache} from 'react';
@@ -453,7 +446,7 @@ const calculateNorm = cache((x, y, z) => {
 });
 
 function MapMarker(props) {
-  // ✅ Good: Pass primitives to memoized function
+  // ✅ Good: 메모화 함수에 인자로 원시값 제공하기
   const length = calculateNorm(props.x, props.y, props.z);
   // ...
 }
@@ -468,9 +461,9 @@ function App() {
 }
 ```
 
-One way to address this could be to pass the vector dimensions to `calculateNorm`. This works because the dimensions themselves are primitives.
+이 문제를 해결하는 한 가지 방법은 벡터 차원을 `calculateNorm`에 전달하는 것입니다. 차원 자체가 원시 값이기 때문에 가능합니다.
 
-Another solution may be to pass the vector object itself as a prop to the component. We'll need to pass the same object to both component instances.
+다른 방법은 벡터 객체를 컴포넌트의 프로퍼티로 전달하는 방법입니다. 두 컴포넌트 인스턴스에 동일한 객체를 전달해야 합니다.
 
 ```js {3,9,14}
 import {cache} from 'react';
@@ -480,7 +473,7 @@ const calculateNorm = cache((vector) => {
 });
 
 function MapMarker(props) {
-  // ✅ Good: Pass the same `vector` object
+  // ✅ Good: 동일한 `vector` 객체를 넘겨줍니다.
   const length = calculateNorm(props.vector);
   // ...
 }
