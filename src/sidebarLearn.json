@@ -88,7 +88,7 @@
           "path": "/learn/keeping-components-pure"
         },
         {
-          "title": "Your UI as a Tree",
+          "title": "트리로서의 UI",
           "path": "/learn/understanding-your-ui-as-a-tree"
         }
       ]
