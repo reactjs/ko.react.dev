@@ -102,7 +102,7 @@ ${css}
       onClick={downloadHTML}
       title="Download Sandbox"
       type="button">
-      <IconDownload className="inline me-1" /> Download
+      <IconDownload className="inline me-1" /> 다운로드
     </button>
   );
 }

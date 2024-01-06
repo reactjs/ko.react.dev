@@ -1,41 +1,41 @@
 ---
-title: Understanding Your UI as a Tree
+title: 트리로서 UI 이해하기
 ---
 
 <Intro>
 
-Your React app is taking shape with many components being nested within each other. How does React keep track of your app's component structure?
+React 앱은 서로 중첩된 많은 컴포넌트로 구성되어 있습니다. React는 어떻게 앱의 컴포넌트 구조를 추적할까요?
 
-React, and many other UI libraries, model UI as a tree. Thinking of your app as a tree is useful for understanding the relationship between components. This understanding will help you debug future concepts like performance and state management.
+React와 많은 다른 UI 라이브러리는 UI를 트리로 모델링합니다. 애플리케이션을 트리로 생각하면 컴포넌트 간의 관계를 이해하는 데 도움이 됩니다. 이러한 이해는 성능과 상태 관리와 같이 앞으로 배울 개념을 디버깅하는 데 도움이 될 것입니다.
 
 </Intro>
 
 <YouWillLearn>
 
-* How React "sees" component structures
-* What a render tree is and what it is useful for
-* What a module dependency tree is and what it is useful for
+* React가 컴포넌트 구조를 "이해하는" 방법
+* 렌더 트리가 무엇이고 어떤 용도로 사용되는지
+* 모듈 의존성 트리가 무엇이고 어떤 용도로 사용되는지
 
 </YouWillLearn>
 
-## Your UI as a tree {/*your-ui-as-a-tree*/}
+## 트리로서의 UI {/*your-ui-as-a-tree*/}
 
-Trees are a relationship model between items and UI is often represented using tree structures. For example, browsers use tree structures to model HTML ([DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction)) and CSS ([CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model)). Mobile platforms also use trees to represent their view hierarchy.
+트리는 요소와 UI 사이의 관계 모델이며 UI는 종종 트리 구조를 사용하여 표현됩니다. 예를 들어, 브라우저는 HTML ([DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction))과 CSS ([CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model))를 모델링하기 위해 트리 구조를 사용합니다. 모바일 플랫폼도 뷰 계층 구조를 나타내는 데 트리를 사용합니다.
 
-<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="Diagram with three sections arranged horizontally. In the first section, there are three rectangles stacked vertically, with labels 'Component A', 'Component B', and 'Component C'. Transitioning to the next pane is an arrow with the React logo on top labeled 'React'. The middle section contains a tree of components, with the root labeled 'A' and two children labeled 'B' and 'C'. The next section is again transitioned using an arrow with the React logo on top labeled 'React'. The third and final section is a wireframe of a browser, containing a tree of 8 nodes, which has only a subset highlighted (indicating the subtree from the middle section).">
+<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="세 개의 섹션을 수평으로 배열한 다이어그램. 첫 번째 섹션에는 '컴포넌트 A', '컴포넌트 B' 및 '컴포넌트 C' 레이블의 세 개의 직사각형이 수직으로 쌓여있습니다. 상단에 'React' 레이블과 React 로고가 있는 화살표가 다음 창을 가리킵니다. 중간 섹션에는 컴포넌트의 트리가 포함되어 있으며 최상위에는 'A' 레이블이 있고 두 개의 자식에는 'B' 와 'C' 레이블이 있습니다. 다음 섹션은 'React' 레이블과 React 로고가 있는 화살표로 전환됩니다. 세 번째이자 마지막 섹션은 브라우저의 와이어프레임으로 8개의 노드로 구성된 트리를 포함하고 있으며, 부분집합만 강조 표시되어 있습니다(중간 섹션에서 하위 트리를 나타냅니다).">
 
-React creates a UI tree from your components. In this example, the UI tree is then used to render to the DOM.
+React는 컴포넌트로부터 UI 트리를 생성합니다. 이 예에서 UI 트리는 DOM을 렌더링하는 데 사용됩니다.
 </Diagram>
 
-Like browsers and mobile platforms, React also uses tree structures to manage and model the relationship between components in a React app. These trees are useful tools to understand how data flows through a React app and how to optimize rendering and app size.
+브라우저와 모바일 플랫폼처럼 React도 React 앱의 컴포넌트 간의 관계를 관리하고 모델링하기 위해 트리 구조를 사용합니다. 트리는 React 앱에서 데이터가 흐르는 방식과 렌더링 및 앱 크기를 최적화하는 방법을 이해하는 데 유용한 도구입니다.
 
-## The Render Tree {/*the-render-tree*/}
+## 렌더 트리 {/*the-render-tree*/}
 
-A major feature of components is the ability to compose components of other components. As we [nest components](/learn/your-first-component#nesting-and-organizing-components), we have the concept of parent and child components, where each parent component may itself be a child of another component.
+컴포넌트의 주요 특징은 다른 컴포넌트의 컴포넌트를 구성하는 것입니다. [컴포넌트를 중첩](/learn/your-first-component#nesting-and-organizing-components)하면 부모 컴포넌트와 자식 컴포넌트의 개념이 생기며, 각 부모 컴포넌트는 다른 컴포넌트의 자식이 될 수 있습니다.
 
-When we render a React app, we can model this relationship in a tree, known as the render tree.
+React 앱을 렌더링할 때, 이 관계를 렌더 트리라고 알려진 트리로 모델링할 수 있습니다.
 
-Here is a React app that renders inspirational quotes.
+아래는 명언을 렌더링하는 React 앱입니다.
 
 <Sandpack>
 
@@ -118,34 +118,33 @@ export default [
 
 </Sandpack>
 
-<Diagram name="render_tree" height={250} width={500} alt="Tree graph with five nodes. Each node represents a component. The root of the tree is App, with two arrows extending from it to 'InspirationGenerator' and 'FancyText'. The arrows are labelled with the word 'renders'. 'InspirationGenerator' node also has two arrows pointing to nodes 'FancyText' and 'Copyright'.">
+<Diagram name="render_tree" height={250} width={500} alt="다섯 개의 노드가 있는 트리 그래프입니다. 각 노드는 컴포넌트를 나타냅니다. 트리의 루트는 앱이며, 두 개의 화살표가 여기에서 'InspirationGenerator'와 'FancyText'로 확장됩니다. 화살표에는 'renders'라는 레이블이 표시됩니다. 'InspirationGenerator' 노드에는 'FancyText'와 'Copyright' 노드를 가리키는 두 개의 화살표가 있습니다.">
 
-React creates a *render tree*, a UI tree, composed of the rendered components.
-
+React는 렌더링된 컴포넌트로 구성된 UI 트리인 *렌더 트리*를 생성합니다.
 
 </Diagram>
 
-From the example app, we can construct the above render tree.
+예시 앱에서, 우리는 위의 렌더 트리를 구성할 수 있습니다.
 
-The tree is composed of nodes, each of which represents a component. `App`, `FancyText`, `Copyright`, to name a few, are all nodes in our tree.
+트리는 노드로 구성되어 있으며, 각 노드는 컴포넌트를 나타냅니다. `App`, `FancyText`, `Copyright` 등은 모두 트리의 노드입니다.
 
-The root node in a React render tree is the [root component](/learn/importing-and-exporting-components#the-root-component-file) of the app. In this case, the root component is `App` and it is the first component React renders. Each arrow in the tree points from a parent component to a child component.
+React 렌더 트리에서 루트 노드는 앱의 [Root 컴포넌트](/learn/importing-and-exporting-components#the-root-component-file)입니다. 이 경우 루트 컴포넌트는 `App`이며 React가 렌더링하는 첫 번째 컴포넌트입니다. 트리의 각 화살표는 부모 컴포넌트에서 자식 컴포넌트를 가리킵니다.
 
 <DeepDive>
 
-#### Where are the HTML tags in the render tree? {/*where-are-the-html-elements-in-the-render-tree*/}
+#### 렌더 트리에 HTML 태그는 어디에 있나요? {/*where-are-the-html-elements-in-the-render-tree*/}
 
-You'll notice in the above render tree, there is no mention of the HTML tags that each component renders. This is because the render tree is only composed of React [components](learn/your-first-component#components-ui-building-blocks).
+위의 렌더 트리에서 각 컴포넌트가 렌더링하는 HTML 태그에 대한 언급이 없음을 알 수 있습니다. 이는 렌더 트리가 React [컴포넌트](learn/your-first-component#components-ui-building-blocks)로만 구성되어 있기 때문입니다.
 
-React, as a UI framework, is platform agnostic. On react.dev, we showcase examples that render to the web, which uses HTML markup as its UI primitives. But a React app could just as likely render to a mobile or desktop platform, which may use different UI primitives like [UIView](https://developer.apple.com/documentation/uikit/uiview) or [FrameworkElement](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement?view=windowsdesktop-7.0).
+UI 프레임워크로서 React는 플랫폼에 독립적입니다. react.dev에서는 HTML 마크업을 UI 기본 요소로 사용하는 웹을 렌더링하는 예제를 보여줍니다. 하지만 React 앱은 모바일이나 데스크톱 플랫폼에 렌더링 될 수 있으며, 이러한 플랫폼은 [UIView](https://developer.apple.com/documentation/uikit/uiview)나 [FrameworkElement](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement?view=windowsdesktop-7.0)와 같은 다른 UI 기본 요소를 사용할 수 있습니다.
 
-These platform UI primitives are not a part of React. React render trees can provide insight to our React app regardless of what platform your app renders to.
+이러한 플랫폼 UI 기본 요소는 React의 일부가 아닙니다. React 렌더 트리는 앱이 렌더링되는 플랫폼에 관계없이 React 앱에 대한 통찰력을 제공할 수 있습니다.
 
 </DeepDive>
 
-A render tree represents a single render pass of a React application. With [conditional rendering](/learn/conditional-rendering), a parent component may render different children depending on the data passed.
+렌더 트리는 React 앱의 단일 렌더링을 나타냅니다. [조건부 렌더링](/learn/conditional-rendering)을 사용하면 부모 컴포넌트가 전달된 데이터에 따라 다른 자식을 렌더링할 수 있습니다.
 
-We can update the app to conditionally render either an inspirational quote or color.
+우리는 앱을 업데이트하여 명언이나 색상을 조건부로 렌더링할 수 있습니다.
 
 <Sandpack>
 
@@ -245,55 +244,55 @@ export default [
 ```
 </Sandpack>
 
-<Diagram name="conditional_render_tree" height={250} width={561} alt="Tree graph with six nodes. The top node of the tree is labelled 'App' with two arrows extending to nodes labelled 'InspirationGenerator' and 'FancyText'. The arrows are solid lines and are labelled with the word 'renders'. 'InspirationGenerator' node also has three arrows. The arrows to nodes 'FancyText' and 'Color' are dashed and labelled with 'renders?'. The last arrow points to the node labelled 'Copyright' and is solid and labelled with 'renders'.">
+<Diagram name="conditional_render_tree" height={250} width={561} alt="6개의 노드가 있는 트리 그래프. 트리의 맨 위 노드에는 'App'이라는 이름이 붙고, 두 개의 화살표가 'InspirationGenerator'와 'FancyText'라는 이름의 노드로 확장됩니다. 화살표는 실선이며 'renders'라고 표시됩니다. 'InspirationGenerator' 노드에도 세 개의 화살표가 있습니다. 'FancyText'와 'Color' 노드의 화살표는 점선으로 표시되고 'renders?'로 표시됩니다. 마지막 화살표는 'Copyright'라는 이름의 노드를 가리키고, 실선으로 표시되고 'renders'로 표시됩니다.">
 
-With conditional rendering, across different renders, the render tree may render different components.
-
-</Diagram>
-
-In this example, depending on what `inspiration.type` is, we may render `<FancyText>` or `<Color>`. The render tree may be different for each render pass.
-
-Although render trees may differ across render passes, these trees are generally helpful for identifying what the *top-level* and *leaf components* are in a React app. Top-level components are the components nearest to the root component and affect the rendering performance of all the components beneath them and often contain the most complexity. Leaf components are near the bottom of the tree and have no child components and are often frequently re-rendered.
-
-Identifying these categories of components are useful for understanding data flow and performance of your app.
-
-## The Module Dependency Tree {/*the-module-dependency-tree*/}
-
-Another relationship in a React app that can be modeled with a tree are an app's module dependencies. As we [break up our components](/learn/importing-and-exporting-components#exporting-and-importing-a-component) and logic into separate files, we create [JS modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) where we may export components, functions, or constants.
-
-Each node in a module dependency tree is a module and each branch represents an `import` statement in that module.
-
-If we take the previous Inspirations app, we can build a module dependency tree, or dependency tree for short.
-
-<Diagram name="module_dependency_tree" height={250} width={658} alt="A tree graph with seven nodes. Each node is labelled with a module name. The top level node of the tree is labelled 'App.js'. There are three arrows pointing to the modules 'InspirationGenerator.js', 'FancyText.js' and 'Copyright.js' and the arrows are labelled with 'imports'. From the 'InspirationGenerator.js' node, there are three arrows that extend to three modules: 'FancyText.js', 'Color.js', and 'inspirations.js'. The arrows are labelled with 'imports'.">
-
-The module dependency tree for the Inspirations app.
+조건부 렌더링을 사용하면, 서로 다른 렌더링에서 렌더 트리가 다른 컴포넌트를 렌더링할 수 있습니다.
 
 </Diagram>
 
-The root node of the tree is the root module, also known as the entrypoint file. It often is the module that contains the root component.
+이 예시에서, `inspiration.type`이 무엇이냐에 따라 `<FancyText>` 또는 `<Color>`를 렌더링할 수 있습니다. 렌더 트리는 각 렌더링마다 다를 수 있습니다.
 
-Comparing to the render tree of the same app, there are similar structures but some notable differences:
+렌더 트리가 렌더링 단계마다 다를 수 있지만, 이 트리는 React 앱에서 최상위 컴포넌트와 리프 컴포넌트가 무엇인지를 식별하는 데 도움이 됩니다. 최상위 컴포넌트는 루트 컴포넌트에 가장 가까운 컴포넌트이며, 그 아래의 모든 컴포넌트의 렌더링 성능에 영향을 미치며, 가장 복잡성이 높습니다. 리프 컴포넌트는 트리의 맨 아래에 있으며 자식 컴포넌트가 없으며 자주 다시 렌더링 됩니다.
 
-* The nodes that make-up the tree represent modules, not components.
-* Non-component modules, like `inspirations.js`, are also represented in this tree. The render tree only encapsulates components.
-* `Copyright.js` appears under `App.js` but in the render tree, `Copyright`, the component, appears as a child of `InspirationGenerator`. This is because `InspirationGenerator` accepts JSX as [children props](/learn/passing-props-to-a-component#passing-jsx-as-children), so it renders `Copyright` as a child component but does not import the module.
+이 컴포넌트 카테고리를 식별하는 것은 앱의 데이터 흐름과 성능을 이해하는 데 유용합니다.
 
-Dependency trees are useful to determine what modules are necessary to run your React app. When building a React app for production, there is typically a build step that will bundle all the necessary JavaScript to ship to the client. The tool responsible for this is called a [bundler](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Overview#the_modern_tooling_ecosystem), and bundlers will use the dependency tree to determine what modules should be included.
+## 모듈 의존성 트리 {/*the-module-dependency-tree*/}
 
-As your app grows, often the bundle size does too. Large bundle sizes are expensive for a client to download and run. Large bundle sizes can delay the time for your UI to get drawn. Getting a sense of your app's dependency tree may help with debugging these issues.
+트리로 모델링 할 수 있는 React 앱의 다른 관계는 앱의 모듈 의존성입니다. [컴포넌트를 분리](/learn/importing-and-exporting-components#exporting-and-importing-a-component)하고 로직을 별도의 파일로 분리하면 컴포넌트, 함수 또는 상수를 내보내는 [JS 모듈](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)을 만들 수 있습니다.
+
+모듈 의존성 트리의 각 노드는 모듈이며, 각 가지는 해당 모듈의 `import` 문을 나타냅니다.
+
+이전의 영감 앱을 사용하면 모듈 의존성 트리 또는 줄여서 의존성 트리를 구축할 수 있습니다.
+
+<Diagram name="module_dependency_tree" height={250} width={658} alt="7개의 노드가 있는 트리 그래프. 각 노드는 모듈 이름으로 레이블됩니다. 트리의 최상위 노드는 'App.js'로 레이블이 표시됩니다. 모듈 'InspirationGenerator.js', 'FancyText.js' 및 'Copyright.js'를 가리키는 세 개의 화살표가 있고 화살표는 'imports'로 레이블이 표시됩니다. InspirationGenerator.js' 노드에서 'FancyText.js', 'Color.js' 및 'inspirations.js'의 세 개의 모듈로 확장되는 세 개의 화살표가 있습니다. 화살표는 'imports'로 레이블이 표시됩니다.">
+
+영감 앱의 모듈 의존성 트리입니다.
+
+</Diagram>
+
+트리의 루트 노드는 루트 모듈이며, 엔트리 포인트 파일이라고도 합니다. 일반적으로 루트 컴포넌트를 포함하는 모듈입니다.
+
+동일한 앱의 렌더 트리와 비교하면 유사한 구조가 있지만 몇 가지 차이점이 있습니다.
+
+* 트리를 구성하는 노드는 컴포넌트가 아닌 모듈을 나타냅니다.
+* `inspirations.js`와 같은 컴포넌트가 아닌 모듈도 이 트리에 나타납니다. 렌더 트리는 컴포넌트만 캡슐화합니다.
+* `Copyright.js`가 `App.js` 아래에 나타나지만, 렌더 트리에서 `Copyright` 컴포넌트는 `InspirationGenerator`의 자식으로 나타납니다. 이는 `InspirationGenerator`가 [자식 props](/learn/passing-props-to-a-component#passing-jsx-as-children)로 JSX를 허용하기 때문에, `Copyright`를 자식 컴포넌트로 렌더링하지만 모듈을 가져오지는 않기 때문입니다.
+
+의존성 트리는 React 앱을 실행하는 데 필요한 모듈을 결정하는 데 유용합니다. React 앱을 프로덕션용으로 빌드할 때, 일반적으로 클라이언트에 제공할 모든 필요 JavaScript를 번들로 묶는 빌드 단계가 있습니다. 이 작업을 담당하는 도구를 [번들러](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Overview#the_modern_tooling_ecosystem)라고 하며, 번들러는 의존성 트리를 사용하여 포함해야 할 모듈을 결정합니다.
+
+앱이 커짐에 따라 번들 크기도 커집니다. 번들 크기가 커지면 클라이언트가 다운로드하고 실행하는 데 드는 비용도 커집니다. 또한 UI가 그려지는 데 시간이 지체될 수 있습니다. 앱의 의존성 트리를 파악하면 이러한 문제를 디버깅하는 데 도움이 될 수 있습니다.
 
 [comment]: <> (perhaps we should also deep dive on conditional imports)
 
 <Recap>
 
-* Trees are a common way to represent the relationship between entities. They are often used to model UI.
-* Render trees represent the nested relationship between React components across a single render.
-* With conditional rendering, the render tree may change across different renders. With different prop values, components may render different children components.
-* Render trees help identify what the top-level and leaf components are. Top-level components affect the rendering performance of all components beneath them and leaf components are often re-rendered frequently. Identifying them is useful for understanding and debugging rendering performance.
-* Dependency trees represent the module dependencies in a React app.
-* Dependency trees are used by build tools to bundle the necessary code to ship an app.
-* Dependency trees are useful for debugging large bundle sizes that slow time to paint and expose opportunities for optimizing what code is bundled.
+* 트리는 요소 간의 관계를 나타내는 일반적인 방법입니다. UI를 모델링하는 데 자주 사용됩니다.
+* 렌더 트리는 단일 렌더링에서 React 컴포넌트 간의 중첩 관계를 나타냅니다.
+* 조건부 렌더링을 사용하면 렌더 트리가 다른 렌더링에서 변경될 수 있습니다. 다른 prop 값으로 인해 컴포넌트가 다른 자식 컴포넌트를 렌더링할 수 있습니다.
+* 렌더 트리는 최상위 컴포넌트와 리프 컴포넌트를 식별하는 데 도움이 됩니다. 최상위 컴포넌트는 그 아래의 모든 컴포넌트의 렌더링 성능에 영향을 미치며, 리프 컴포넌트는 자주 다시 렌더링됩니다. 이러한 컴포넌트를 식별하는 것은 렌더링 성능을 이해하고 디버깅하는 데 유용합니다.
+* 의존성 트리는 React 앱의 모듈 의존성을 나타냅니다.
+* 의존성 트리는 앱을 배포하기 위해 필요한 코드를 번들로 묶는 데 빌드 도구에서 사용됩니다.
+* 의존성 트리는 느리게 페인트되는 큰 번들 크기를 디버깅하는 데 유용하며, 어떤 코드를 번들로 묶을지 최적화할 기회를 제공합니다.
 
 </Recap>
 
