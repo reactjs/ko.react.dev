@@ -47,8 +47,7 @@ stream.pipe(response);
 
 #### 반환 {/*returns*/}
 
-HTML 문자열.
-
+HTML 문자열을 출력하는 [Node.js Readable Stream](https://nodejs.org/api/stream.html#readable-streams)를 반환합니다.
 
 #### 주의 사항 {/*caveats*/}
 
