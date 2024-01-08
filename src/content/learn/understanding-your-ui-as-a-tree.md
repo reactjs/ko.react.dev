@@ -22,7 +22,11 @@ React와 많은 다른 UI 라이브러리는 UI를 트리로 모델링합니다.
 
 트리는 요소와 UI 사이의 관계 모델이며 UI는 종종 트리 구조를 사용하여 표현됩니다. 예를 들어, 브라우저는 HTML ([DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction))과 CSS ([CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model))를 모델링하기 위해 트리 구조를 사용합니다. 모바일 플랫폼도 뷰 계층 구조를 나타내는 데 트리를 사용합니다.
 
+<<<<<<< HEAD
 <Diagram name="preserving_state_dom_tree" height={193} width={864} alt="세 개의 섹션을 수평으로 배열한 다이어그램. 첫 번째 섹션에는 '컴포넌트 A', '컴포넌트 B' 및 '컴포넌트 C' 레이블의 세 개의 직사각형이 수직으로 쌓여있습니다. 상단에 'React' 레이블과 React 로고가 있는 화살표가 다음 창을 가리킵니다. 중간 섹션에는 컴포넌트의 트리가 포함되어 있으며 최상위에는 'A' 레이블이 있고 두 개의 자식에는 'B' 와 'C' 레이블이 있습니다. 다음 섹션은 'React' 레이블과 React 로고가 있는 화살표로 전환됩니다. 세 번째이자 마지막 섹션은 브라우저의 와이어프레임으로 8개의 노드로 구성된 트리를 포함하고 있으며, 부분집합만 강조 표시되어 있습니다(중간 섹션에서 하위 트리를 나타냅니다).">
+=======
+<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="Diagram with three sections arranged horizontally. In the first section, there are three rectangles stacked vertically, with labels 'Component A', 'Component B', and 'Component C'. Transitioning to the next pane is an arrow with the React logo on top labeled 'React'. The middle section contains a tree of components, with the root labeled 'A' and two children labeled 'B' and 'C'. The next section is again transitioned using an arrow with the React logo on top labeled 'React DOM'. The third and final section is a wireframe of a browser, containing a tree of 8 nodes, which has only a subset highlighted (indicating the subtree from the middle section).">
+>>>>>>> 315cb7a38a1645623fc55501429285ab680b8a6a
 
 React는 컴포넌트로부터 UI 트리를 생성합니다. 이 예에서 UI 트리는 DOM을 렌더링하는 데 사용됩니다.
 </Diagram>
@@ -39,7 +43,7 @@ React 앱을 렌더링할 때, 이 관계를 렌더 트리라고 알려진 트�
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import FancyText from './FancyText';
 import InspirationGenerator from './InspirationGenerator';
 import Copyright from './Copyright';
@@ -57,7 +61,7 @@ export default function App() {
 
 ```
 
-```js FancyText.js
+```js src/FancyText.js
 export default function FancyText({title, text}) {
   return title
     ? <h1 className='fancy title'>{text}</h1>
@@ -65,7 +69,7 @@ export default function FancyText({title, text}) {
 }
 ```
 
-```js InspirationGenerator.js
+```js src/InspirationGenerator.js
 import * as React from 'react';
 import quotes from './quotes';
 import FancyText from './FancyText';
@@ -86,13 +90,13 @@ export default function InspirationGenerator({children}) {
 }
 ```
 
-```js Copyright.js
+```js src/Copyright.js
 export default function Copyright({year}) {
   return <p className='small'>©️ {year}</p>;
 }
 ```
 
-```js quotes.js
+```js src/quotes.js
 export default [
   "Don’t let yesterday take up too much of today.” — Will Rogers",
   "Ambition is putting a ladder against the sky.",
@@ -148,7 +152,7 @@ UI 프레임워크로서 React는 플랫폼에 독립적입니다. react.dev에�
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import FancyText from './FancyText';
 import InspirationGenerator from './InspirationGenerator';
 import Copyright from './Copyright';
@@ -166,7 +170,7 @@ export default function App() {
 
 ```
 
-```js FancyText.js
+```js src/FancyText.js
 export default function FancyText({title, text}) {
   return title
     ? <h1 className='fancy title'>{text}</h1>
@@ -174,13 +178,13 @@ export default function FancyText({title, text}) {
 }
 ```
 
-```js Color.js
+```js src/Color.js
 export default function Color({value}) {
   return <div className="colorbox" style={{backgroundColor: value}} />
 }
 ```
 
-```js InspirationGenerator.js
+```js src/InspirationGenerator.js
 import * as React from 'react';
 import inspirations from './inspirations';
 import FancyText from './FancyText';
@@ -205,13 +209,13 @@ export default function InspirationGenerator({children}) {
 }
 ```
 
-```js Copyright.js
+```js src/Copyright.js
 export default function Copyright({year}) {
   return <p className='small'>©️ {year}</p>;
 }
 ```
 
-```js inspirations.js
+```js src/inspirations.js
 export default [
   {type: 'quote', value: "Don’t let yesterday take up too much of today.” — Will Rogers"},
   {type: 'color', value: "#B73636"},

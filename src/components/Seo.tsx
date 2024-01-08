@@ -23,6 +23,11 @@ const deployedTranslations = [
   'zh-hans',
   'es',
   'fr',
+<<<<<<< HEAD
+=======
+  'ja',
+  'tr',
+>>>>>>> 315cb7a38a1645623fc55501429285ab680b8a6a
   // We'll add more languages when they have enough content.
   // Please DO NOT edit this list without a discussion in the reactjs/react.dev repo.
   // It must be the same between all translations.

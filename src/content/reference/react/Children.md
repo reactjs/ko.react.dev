@@ -33,7 +33,7 @@ const mappedChildren = Children.map(children, child =>
 
 `Children.count(children)`는 `children` 데이터 구조의 자식 요소 수를 반환합니다.
 
-```js RowList.js active
+```js src/RowList.js active
 import { Children } from 'react';
 
 function RowList({ children }) {
@@ -66,7 +66,7 @@ function RowList({ children }) {
 
 `Children.forEach(children, fn, thisArg?)`는 `children` 데이터 구조의 모든 자식 요소에 대해 특정 코드를 실행합니다.
 
-```js RowList.js active
+```js src/RowList.js active
 import { Children } from 'react';
 
 function SeparatorList({ children }) {
@@ -100,7 +100,7 @@ function SeparatorList({ children }) {
 
 `Children.map(children, fn, thisArg?)`은 `children` 데이터 구조에서 각 자식 요소를 매핑하거나 변환합니다.
 
-```js RowList.js active
+```js src/RowList.js active
 import { Children } from 'react';
 
 function RowList({ children }) {
@@ -168,7 +168,7 @@ function Box({ children }) {
 
 `Children.toArray(children)`은 `children` 데이터 구조로부터 배열을 생성합니다.
 
-```js ReversedList.js active
+```js src/ReversedList.js active
 import { Children } from 'react';
 
 export default function ReversedList({ children }) {
@@ -258,7 +258,7 @@ export default function App() {
 }
 ```
 
-```js RowList.js active
+```js src/RowList.js active
 import { Children } from 'react';
 
 export default function RowList({ children }) {
@@ -336,7 +336,7 @@ function MoreRows() {
 }
 ```
 
-```js RowList.js
+```js src/RowList.js
 import { Children } from 'react';
 
 export default function RowList({ children }) {
@@ -395,7 +395,7 @@ export default function App() {
 }
 ```
 
-```js SeparatorList.js active
+```js src/SeparatorList.js active
 import { Children } from 'react';
 
 export default function SeparatorList({ children }) {
@@ -439,7 +439,7 @@ export default function App() {
 }
 ```
 
-```js RowList.js active
+```js src/RowList.js active
 import { Children } from 'react';
 
 export default function RowList({ children }) {
@@ -510,7 +510,7 @@ export default function App() {
 }
 ```
 
-```js ReversedList.js active
+```js src/ReversedList.js active
 import { Children } from 'react';
 
 export default function ReversedList({ children }) {
@@ -572,7 +572,7 @@ export default function App() {
 }
 ```
 
-```js RowList.js
+```js src/RowList.js
 export function RowList({ children }) {
   return (
     <div className="RowList">
@@ -640,7 +640,7 @@ function MoreRows() {
 }
 ```
 
-```js RowList.js
+```js src/RowList.js
 export function RowList({ children }) {
   return (
     <div className="RowList">
@@ -699,7 +699,7 @@ export default function App() {
 }
 ```
 
-```js RowList.js
+```js src/RowList.js
 export function RowList({ rows }) {
   return (
     <div className="RowList">
@@ -762,7 +762,7 @@ export default function App() {
 }
 ```
 
-```js TabSwitcher.js
+```js src/TabSwitcher.js
 import { useState } from 'react';
 
 export default function TabSwitcher({ tabs }) {
@@ -818,7 +818,7 @@ export default function App() {
 }
 ```
 
-```js TabSwitcher.js
+```js src/TabSwitcher.js
 import { useState } from 'react';
 
 export default function TabSwitcher({ tabIds, getHeader, renderContent }) {
@@ -871,7 +871,7 @@ export default function App() {
 }
 ```
 
-```js RowList.js
+```js src/RowList.js
 import { Fragment } from 'react';
 
 export function RowList({ rowIds, renderRow }) {
