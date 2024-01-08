@@ -68,7 +68,7 @@ npm install react react-dom
 </html>
 ```
 
-```js index.js active
+```js src/index.js active
 import { createRoot } from 'react-dom/client';
 
 // 기존 HTML 컨텐츠를 지웁니다.
@@ -132,7 +132,7 @@ root.render(<h1>Hello, world</h1>);
 </html>
 ```
 
-```js index.js active
+```js src/index.js active
 import { createRoot } from 'react-dom/client';
 
 function NavigationBar() {

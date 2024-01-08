@@ -24,7 +24,7 @@ React를 전체적으로 적용한 애플리케이션이나 웹 사이트를 새
 npx create-next-app@latest
 </TerminalBlock>
 
-Next.js를 처음 사용하는 분이라면 [Next.js 자습서](https://nextjs.org/learn/foundations/about-nextjs)를 읽어보세요.
+Next.js를 처음 사용하는 분이라면 [Next.js 배우기 코스](https://nextjs.org/learn)를 읽어보세요.
 
 Next.js는 [Vercel](https://vercel.com/)이 관리합니다. 어느 Node.js 서버, 서버리스 호스팅 또는 직접 소유한 서버 어느 곳에라도 [Next.js 애플리케이션을 배포](https://nextjs.org/docs/app/building-your-application/deploying)할 수 있습니다. Next.js 는 서버가 필요없는 [static export](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) 도 제공합니다.
 
