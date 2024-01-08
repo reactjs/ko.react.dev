@@ -22,7 +22,7 @@ React와 많은 다른 UI 라이브러리는 UI를 트리로 모델링합니다.
 
 트리는 요소와 UI 사이의 관계 모델이며 UI는 종종 트리 구조를 사용하여 표현됩니다. 예를 들어, 브라우저는 HTML ([DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction))과 CSS ([CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model))를 모델링하기 위해 트리 구조를 사용합니다. 모바일 플랫폼도 뷰 계층 구조를 나타내는 데 트리를 사용합니다.
 
-<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="Diagram with three sections arranged horizontally. In the first section, there are three rectangles stacked vertically, with labels 'Component A', 'Component B', and 'Component C'. Transitioning to the next pane is an arrow with the React logo on top labeled 'React'. The middle section contains a tree of components, with the root labeled 'A' and two children labeled 'B' and 'C'. The next section is again transitioned using an arrow with the React logo on top labeled 'React DOM'. The third and final section is a wireframe of a browser, containing a tree of 8 nodes, which has only a subset highlighted (indicating the subtree from the middle section).">
+<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="가로로 배열된 세 부분으로 구성된 다이어그램입니다. 첫 번째 부분에는 '컴포넌트 A', '컴포넌트 B', '컴포넌트 C'라는 레이블이 붙은 세 개의 직사각형이 수직으로 쌓여 있습니다. 다음 패널로 넘어가는 화살표는 위에 React 로고가 있고 'React'라고 레이블이 붙어 있습니다. 중간 섹션에는 'A'라고 레이블이 붙은 루트와 'B', 'C'라고 레이블이 붙은 두 자식이 있는 컴포넌트 트리가 포함되어 있습니다. 다음 섹션은 다시 위에 React 로고가 있는 화살표를 사용하여 'React DOM'이라는 레이블과 함께 전환됩니다. 세 번째이자 마지막 섹션은 브라우저의 와이어프레임으로, 8개의 노드가 있는 트리를 포함하고 있으며, 그 중 일부분만 강조되어 있습니다(중간 섹션에서 파생된 서브트리를 나타냅니다).">
 
 React는 컴포넌트로부터 UI 트리를 생성합니다. 이 예에서 UI 트리는 DOM을 렌더링하는 데 사용됩니다.
 </Diagram>
