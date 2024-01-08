@@ -1353,7 +1353,6 @@ export default function Panel({ children }) {
 // Note: 데이터 가져오기를 수행하는 방식은 Suspense와 함께
 // 사용하는 프레임워크에 따라 다릅니다.
 // 일반적으로 캐싱 로직은 프래임워크 내부에 있습니다.
-=======
 let cache = new Map();
 
 export function fetchData(url) {
