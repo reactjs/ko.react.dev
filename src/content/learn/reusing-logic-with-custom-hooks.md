@@ -2105,13 +2105,8 @@ export function useCounter(delay) {
 }
 ```
 
-<<<<<<< HEAD
-```js useInterval.js
-// Hook을 여기에 작성하세요!
-=======
 ```js src/useInterval.js
-// Write your Hook here!
->>>>>>> 315cb7a38a1645623fc55501429285ab680b8a6a
+// Hook을 여기에 작성하세요!
 ```
 
 </Sandpack>

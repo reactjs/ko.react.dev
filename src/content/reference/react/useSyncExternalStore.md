@@ -130,15 +130,9 @@ export default function TodosApp() {
 }
 ```
 
-<<<<<<< HEAD
-```js todoStore.js
+```js src/todoStore.js
 // 이것은 third-party store의 예시입니다
 // 해당 store를 사용하는 경우 React와 통합할 필요가 있을 수 있습니다.
-=======
-```js src/todoStore.js
-// This is an example of a third-party store
-// that you might need to integrate with React.
->>>>>>> 315cb7a38a1645623fc55501429285ab680b8a6a
 
 // 앱이 React로 완전히 빌드된 경우,
 // React state를 사용하는 것을 추천드립니다.
