@@ -55,7 +55,7 @@ React와 함께 TypeScript를 작성하는 것은 React와 함께 JavaScript를 
 
 <Sandpack>
 
-```tsx App.tsx active
+```tsx src/App.tsx active
 function MyButton({ title }: { title: string }) {
   return (
     <button>{title}</button>
@@ -72,7 +72,7 @@ export default function MyApp() {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import AppTSX from "./App.tsx";
 export default App = AppTSX;
 ```
@@ -88,7 +88,7 @@ export default App = AppTSX;
 
 <Sandpack>
 
-```tsx App.tsx active
+```tsx src/App.tsx active
 interface MyButtonProps {
   /** 버튼 안에 보여질 텍스트 */
   title: string;
@@ -112,7 +112,7 @@ export default function MyApp() {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import AppTSX from "./App.tsx";
 export default App = AppTSX;
 ```
@@ -170,7 +170,7 @@ const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' 
 
 <Sandpack>
 
-```tsx App.tsx active
+```tsx src/App.tsx active
 import {useReducer} from 'react';
 
 interface State {
@@ -213,7 +213,7 @@ export default function App() {
 
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import AppTSX from "./App.tsx";
 export default App = AppTSX;
 ```
@@ -248,7 +248,7 @@ context에서 제공한 값의 타입은 `createContext` 호출에 전달된 값
 
 <Sandpack>
 
-```tsx App.tsx active
+```tsx src/App.tsx active
 import { createContext, useContext, useState } from 'react';
 
 type Theme = "light" | "dark" | "system";
@@ -277,7 +277,7 @@ function MyComponent() {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import AppTSX from "./App.tsx";
 export default App = AppTSX;
 ```
@@ -381,7 +381,7 @@ React에서 DOM events로 작업할 때, 종종 이벤트 핸들러로부터 이
 
 <Sandpack>
 
-```tsx App.tsx active
+```tsx src/App.tsx active
 import { useState } from 'react';
 
 export default function Form() {
@@ -400,7 +400,7 @@ export default function Form() {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import AppTSX from "./App.tsx";
 export default App = AppTSX;
 ```

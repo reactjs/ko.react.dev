@@ -85,7 +85,7 @@ React로 완전히 구축된 앱에서는 "최상단('root')" 컴포넌트를 �
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 import './styles.css';
 import { render } from 'react-dom';
 import App from './App.js';
@@ -93,7 +93,7 @@ import App from './App.js';
 render(<App />, document.getElementById('root'));
 ```
 
-```js App.js
+```js src/App.js
 export default function App() {
   return <h1>Hello, world!</h1>;
 }
@@ -119,7 +119,7 @@ export default function App() {
 </main>
 ```
 
-```js index.js active
+```js src/index.js active
 import './styles.css';
 import { render } from 'react-dom';
 import { Comments, Navigation } from './Components.js';
@@ -135,7 +135,7 @@ render(
 );
 ```
 
-```js Components.js
+```js src/Components.js
 export function Navigation() {
   return (
     <ul>
@@ -187,7 +187,7 @@ nav ul li { display: inline-block; margin-right: 20px; }
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 import { render } from 'react-dom';
 import './styles.css';
 import App from './App.js';
@@ -202,7 +202,7 @@ setInterval(() => {
 }, 1000);
 ```
 
-```js App.js
+```js src/App.js
 export default function App({counter}) {
   return (
     <>

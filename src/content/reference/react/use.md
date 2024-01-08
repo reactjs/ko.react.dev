@@ -261,7 +261,7 @@ export function Message({ messagePromise }) {
 
 <Sandpack>
 
-```js message.js active
+```js src/message.js active
 "use client";
 
 import { use, Suspense } from "react";
@@ -280,7 +280,7 @@ export function MessageContainer({ messagePromise }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from "react";
 import { MessageContainer } from "./message.js";
 
@@ -304,7 +304,7 @@ export default function App() {
 }
 ```
 
-```js index.js hidden
+```js src/index.js hidden
 // TODO: `use` Hook이 안정적으로 릴리즈되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -376,7 +376,7 @@ Promise가 거부될 때 오류를 표시하고 싶다면 [error boundary](https
 
 <Sandpack>
 
-```js message.js active
+```js src/message.js active
 "use client";
 
 import { use, Suspense } from "react";
@@ -398,7 +398,7 @@ function Message({ messagePromise }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from "react";
 import { MessageContainer } from "./message.js";
 
@@ -422,7 +422,7 @@ export default function App() {
 }
 ```
 
-```js index.js hidden
+```js src/index.js hidden
 // TODO: `use` Hook이 안정적으로 릴리즈되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
