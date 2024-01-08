@@ -847,17 +847,10 @@ export default function ContactTab() {
 ```
 
 
-<<<<<<< HEAD
-```js data.js hidden
+```js src/data.js hidden
 // Note: 데이터 가져오기를 수행하는 방식은 Suspense와 함께
 // 사용하는 프레임워크에 따라 다릅니다.
 // 일반적으로 캐싱 로직은 프래임워크 내부에 있습니다.
-=======
-```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
 
 let cache = new Map();
 
@@ -1048,17 +1041,10 @@ export default function ContactTab() {
 ```
 
 
-<<<<<<< HEAD
-```js data.js hidden
+```js src/data.js hidden
 // Note: 데이터 가져오기를 수행하는 방식은 Suspense와 함께
 // 사용하는 프레임워크에 따라 다릅니다.
 // 일반적으로 캐싱 로직은 프래임워크 내부에 있습니다.
-=======
-```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
 
 let cache = new Map();
 
@@ -1363,17 +1349,10 @@ export default function Panel({ children }) {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js hidden
+```js src/data.js hidden
 // Note: 데이터 가져오기를 수행하는 방식은 Suspense와 함께
 // 사용하는 프레임워크에 따라 다릅니다.
 // 일반적으로 캐싱 로직은 프래임워크 내부에 있습니다.
-=======
-```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
 
 let cache = new Map();
 

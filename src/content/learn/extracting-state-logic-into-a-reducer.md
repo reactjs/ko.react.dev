@@ -410,16 +410,8 @@ output.textContent = JSON.stringify(
 );
 ```
 
-<<<<<<< HEAD
-```js tasksReducer.js
-export default function tasksReducer(
-  tasks,
-  action
-) {
-=======
 ```js src/tasksReducer.js
 export default function tasksReducer(tasks, action) {
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
   switch (action.type) {
     case 'added': {
       return [...tasks, {
@@ -739,16 +731,8 @@ const initialTasks = [
 ];
 ```
 
-<<<<<<< HEAD
-```js tasksReducer.js
-export default function tasksReducer(
-  tasks,
-  action
-) {
-=======
 ```js src/tasksReducer.js
 export default function tasksReducer(tasks, action) {
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
   switch (action.type) {
     case 'added': {
       return [...tasks, {
@@ -1227,17 +1211,8 @@ export function messengerReducer(
 }
 ```
 
-<<<<<<< HEAD
-```js ContactList.js
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
-=======
 ```js src/ContactList.js
 export default function ContactList({contacts, selectedId, dispatch}) {
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
   return (
     <section className="contact-list">
       <ul>
@@ -1402,17 +1377,8 @@ export function messengerReducer(
 }
 ```
 
-<<<<<<< HEAD
-```js ContactList.js
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
-=======
 ```js src/ContactList.js
 export default function ContactList({contacts, selectedId, dispatch}) {
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
   return (
     <section className="contact-list">
       <ul>
@@ -1571,17 +1537,8 @@ export function messengerReducer(
 }
 ```
 
-<<<<<<< HEAD
-```js ContactList.js
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
-=======
 ```js src/ContactList.js
 export default function ContactList({contacts, selectedId, dispatch}) {
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
   return (
     <section className="contact-list">
       <ul>
@@ -1735,17 +1692,8 @@ export function messengerReducer(
 }
 ```
 
-<<<<<<< HEAD
-```js ContactList.js
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
-=======
 ```js src/ContactList.js
 export default function ContactList({contacts, selectedId, dispatch}) {
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
   return (
     <section className="contact-list">
       <ul>
@@ -1911,17 +1859,8 @@ export function messengerReducer(
 }
 ```
 
-<<<<<<< HEAD
-```js ContactList.js
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
-=======
 ```js src/ContactList.js
 export default function ContactList({contacts, selectedId, dispatch}) {
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
   return (
     <section className="contact-list">
       <ul>
@@ -2130,17 +2069,8 @@ export function messengerReducer(
 }
 ```
 
-<<<<<<< HEAD
-```js ContactList.js
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
-=======
 ```js src/ContactList.js
 export default function ContactList({contacts, selectedId, dispatch}) {
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
   return (
     <section className="contact-list">
       <ul>
@@ -2338,17 +2268,8 @@ export function messengerReducer(
 }
 ```
 
-<<<<<<< HEAD
-```js ContactList.js
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
-=======
 ```js src/ContactList.js
 export default function ContactList({contacts, selectedId, dispatch}) {
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
   return (
     <section className="contact-list">
       <ul>
@@ -2560,17 +2481,8 @@ export function useReducer(reducer, initialState) {
 }
 ```
 
-<<<<<<< HEAD
-```js ContactList.js hidden
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
-=======
 ```js src/ContactList.js hidden
 export default function ContactList({contacts, selectedId, dispatch}) {
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
   return (
     <section className="contact-list">
       <ul>
@@ -2759,17 +2671,8 @@ export function useReducer(reducer, initialState) {
 }
 ```
 
-<<<<<<< HEAD
-```js ContactList.js hidden
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
-=======
 ```js src/ContactList.js hidden
 export default function ContactList({contacts, selectedId, dispatch}) {
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
   return (
     <section className="contact-list">
       <ul>

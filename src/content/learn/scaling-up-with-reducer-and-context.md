@@ -1224,13 +1224,8 @@ const initialTasks = [
 ];
 ```
 
-<<<<<<< HEAD
-```js AddTask.js
-import { useState, useContext } from 'react';
-=======
 ```js src/AddTask.js
 import { useState } from 'react';
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
 import { useTasksDispatch } from './TasksContext.js';
 
 export default function AddTask({ onAddTask }) {
@@ -1258,13 +1253,8 @@ export default function AddTask({ onAddTask }) {
 let nextId = 3;
 ```
 
-<<<<<<< HEAD
-```js TaskList.js active
-import { useState, useContext } from 'react';
-=======
 ```js src/TaskList.js active
 import { useState } from 'react';
->>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
 import { useTasks, useTasksDispatch } from './TasksContext.js';
 
 export default function TaskList() {
