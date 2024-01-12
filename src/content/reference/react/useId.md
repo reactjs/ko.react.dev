@@ -305,9 +305,9 @@ input { margin: 5px; }
 
 ---
 
-### Using the same ID prefix on the client and the server {/*using-the-same-id-prefix-on-the-client-and-the-server*/}
+### 클라이언트와 서버에서 동일한 ID 접두사 사용하기 {/*using-the-same-id-prefix-on-the-client-and-the-server*/}
 
-If you [render multiple independent React apps on the same page](#specifying-a-shared-prefix-for-all-generated-ids), and some of these apps are server-rendered, make sure that the `identifierPrefix` you pass to the [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) call on the client side is the same as the `identifierPrefix` you pass to the [server APIs](/reference/react-dom/server) such as [`renderToPipeableStream`.](/reference/react-dom/server/renderToPipeableStream)
+[동일한 페이지에서 여러 독립적인 React 앱을 렌더링하는 경우](#specifying-a-shared-prefix-for-all-generated-ids), 이러한 앱 중 일부가 서버에서 렌더링되는 경우, 클라이언트 측에서 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 호출에 전달하는 `identifierPrefix가` [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream)와 같은 [서버 API](/reference/react-dom/server)에 전달하는 `identifierPrefix`와 동일한지 확인해야 합니다.
 
 ```js
 // Server
