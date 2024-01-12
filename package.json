@@ -107,5 +107,8 @@
   "lint-staged": {
     "*.{js,ts,jsx,tsx,css}": "yarn prettier",
     "src/**/*.md": "yarn fix-headings"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/wlals1126/ko.react.dev.git",
+  "author": "유지민 <a01040987587@gmail.com>"
 }

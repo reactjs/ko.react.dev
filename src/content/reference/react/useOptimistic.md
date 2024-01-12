@@ -5,13 +5,13 @@ canary: true
 
 <Canary>
 
-The `useOptimistic` Hook is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+`useOptimistic` Hook은 현재 React의 Canary 및 실험적인 채널에서만 사용 가능합니다. [React의 릴리스 채널에 대한 정보](/community/versioning-policy#all-release-channels).
 
 </Canary>
 
 <Intro>
 
-`useOptimistic` is a React Hook that lets you optimistically update the UI.
+`useOptimistic` 는 UI를 낙관적으로 업데이트할 수 있게 해주는 React Hook입니다.
 
 ```js
   const [optimisticState, addOptimistic] = useOptimistic(state, updateFn);
@@ -23,13 +23,13 @@ The `useOptimistic` Hook is currently only available in React's Canary and exper
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `useOptimistic(state, updateFn)` {/*use*/}
 
-`useOptimistic` is a React Hook that lets you show a different state while an async action is underway. It accepts some state as an argument and returns a copy of that state that can be different during the duration of an async action such as a network request. You provide a function that takes the current state and the input to the action, and returns the optimistic state to be used while the action is pending.
+`useOptimistic`은 React Hook으로, 비동기 작업이 진행 중일 때 다른 상태를 보여줄 수 있게 해줍니다. 인자로 주어진 일부 상태를 받아, 네트워크 요청과 같은 비동기 작업 기간 동안 달라질 수 있는 그 상태의 복사본을 반환합니다. 현재 상태와 작업의 입력을 취하는 함수를 제공하고, 작업이 대기 중일 때 사용할 낙관적인 상태를 반환합니다.
 
-This state is called the "optimistic" state because it is usually used to immediately present the user with the result of performing an action, even though the action actually takes time to complete.
+이 상태는 "낙관적" 상태라고 불리는데, 실제로 작업을 완료하는 데 시간이 걸리더라도 사용자에게 즉시 작업의 결과를 표시하기 위해 일반적으로 사용됩니다.
 
 ```js
 import { useOptimistic } from 'react';
@@ -46,28 +46,28 @@ function AppContainer() {
 }
 ```
 
-[See more examples below.](#usage)
+[아래에 더 많은 예제를 참조하세요.](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `state`: the value to be returned initially and whenever no action is pending.
-* `updateFn(currentState, optimisticValue)`: a function that takes the current state and the optimistic value passed to `addOptimistic` and returns the resulting optimistic state. It must be a pure function. `updateFn` takes in two parameters. The `currentState` and the `optimisticValue`. The return value will be the merged value of the `currentState` and `optimisticValue`.
+* `state`: 작업이 대기 중이지 않을 때 초기에 반환될 값입니다.
+* `updateFn(currentState, optimisticValue)`: 현재 상태와 addOptimistic에 전달된 낙관적인 값을 취하는 함수로, 결과적인 낙관적인 상태를 반환합니다. 순수 함수여야 합니다. `updateFn`은 두 개의 매개변수를 취합니다. `currentState`와 `optimisticValue`. 반환 값은 `currentState`와 `optimisticValue`의 병합된 값입니다.
 
 
-#### Returns {/*returns*/}
+#### 반환 {/*returns*/}
 
-* `optimisticState`: The resulting optimistic state. It is equal to `state` unless an action is pending, in which case it is equal to the value returned by `updateFn`.
-* `addOptimistic`: `addOptimistic` is the dispatching function to call when you have an optimistic update. It takes one argument, `optimisticValue`, of any type and will call the `updateFn` with `state` and `optimisticValue`.
+* `optimisticState`: 결과적인 낙관적인 상태입니다. 작업이 대기 중이지 않을 때는 `state`와 동일하며, 그렇지 않은 경우 `updateFn`에서 반환된 값과 동일합니다.
+* `addOptimistic`: `addOptimistic`는 낙관적인 업데이트가 있을 때 호출하는 디스패치 함수입니다. 어떠한 타입의 `optimisticValue`라는 하나의 인자를 취하며, `state`와 `optimisticValue`로 `updateFn`을 호출합니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Optimistically updating forms {/*optimistically-updating-with-forms*/}
+### 폼을 낙관적으로 업데이트하기 {/*optimistically-updating-with-forms*/}
 
-The `useOptimistic` Hook provides a way to optimistically update the user interface before a background operation, like a network request, completes. In the context of forms, this technique helps to make apps feel more responsive. When a user submits a form, instead of waiting for the server's response to reflect the changes, the interface is immediately updated with the expected outcome.
+`useOptimistic` Hook은 네트워크 요청과 같은 백그라운드 작업이 완료되기 전에 사용자 인터페이스를 낙관적으로 업데이트하는 방법을 제공합니다. 폼의 맥락에서, 이 기술은 앱이 더 반응적으로 느껴지도록 도와줍니다. 사용자가 폼을 제출할 때, 서버의 응답을 기다리는 대신 인터페이스는 기대하는 결과로 즉시 업데이트됩니다.
 
-For example, when a user types a message into the form and hits the "Send" button, the `useOptimistic` Hook allows the message to immediately appear in the list with a "Sending..." label, even before the message is actually sent to a server. This "optimistic" approach gives the impression of speed and responsiveness. The form then attempts to truly send the message in the background. Once the server confirms the message has been received, the "Sending..." label is removed.
+예를 들어, 사용자가 폼에 메시지를 입력하고 "전송" 버튼을 누르면, `useOptimistic` Hook은 메시지가 실제로 서버로 전송되기 전에 "전송 중..." 라벨이 있는 목록에 메시지가 즉시 나타나도록 합니다. 이 "낙관적" 접근법은 속도와 반응성의 느낌을 줍니다. 그런 다음 폼은 백그라운드에서 메시지를 실제로 전송하려고 시도합니다. 서버가 메시지를 받았음을 확인하면, "전송 중..." 라벨이 제거됩니다.
 
 <Sandpack>
 
