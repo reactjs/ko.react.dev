@@ -76,9 +76,15 @@ React는 버그의 제출, 풀 리퀘스트의 생성, [RFC의 제출](https://g
 
 각각의 React 릴리즈 채널은 서로 다른 사용 사례를 위해 설계되었습니다.
 
+<<<<<<< HEAD
 - [**최신 채널**](#latest-channel)은 안정적인 시맨틱 버전 React 릴리즈를 위한 채널입니다. npm에서 React를 설치할 때 확인할 수 있습니다. 최신 채널은 당신이 이미 사용하고 있는 채널입니다. **React를 직접 사용하는 사용자 인터페이스 애플리케이션은 이 채널을 사용합니다.**
 - [**카나리 채널**](#canary-channel)은 React 저장소의 메인 브랜치를 따릅니다. 다음 시맨틱 버전 릴리즈를 위한 릴리즈 후보로 간주할 수 있습니다. **[프레임워크나 엄선된 설정에서 고정 버전의 React와 함께 이 채널을 사용할 수 있습니다.](/blog/2023/05/03/react-canaries) React와 서드파티 프로젝트 간의 통합 테스트를 위해 카나리 채널을 사용할 수 있습니다.**
 - [**실험적 채널**](#experimental-channel)은 아직 안정된 릴리즈에 포함되지 않은 실험적인 API와 기능을 포함합니다. 추가적인 기능 플래그를 활성화한 채로 메인 브랜치를 따릅니다. 이 채널을 사용하여 릴리즈되기 전에 새로운 기능을 시도할 수 있습니다.
+=======
+- [**Latest**](#latest-channel) is for stable, semver React releases. It's what you get when you install React from npm. This is the channel you're already using today. **User-facing applications that consume React directly use this channel.**
+- [**Canary**](#canary-channel) tracks the main branch of the React source code repository. Think of these as release candidates for the next semver release. **[Frameworks or other curated setups may choose to use this channel with a pinned version of React.](/blog/2023/05/03/react-canaries) You can also use Canaries for integration testing between React and third party projects.**
+- [**Experimental**](#experimental-channel) includes experimental APIs and features that aren't available in the stable releases. These also track the main branch, but with additional feature flags turned on. Use this to try out upcoming features before they are released.
+>>>>>>> 6bfde58c109ec86fd6c5767421404cb679ffba9a
 
 모든 릴리즈는 npm에 공개되지만, 최신 채널만 시맨틱 버전을 사용합니다. 사전 릴리즈(카나리 채널과 실험적 채널)는 릴리즈의 내용과 커밋 날짜의 해시로부터 생성된 버전을 사용합니다. 예를 들어, 카나리 채널의 경우 `18.3.0-canary-388686f29-20230503`이고, 실험적 채널의 경우 `0.0.0-experimental-388686f29-20230503`입니다.
 
