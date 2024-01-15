@@ -59,7 +59,7 @@ experimental_taintUniqueValue(
 
 * `lifetime`: `value가` 얼마나 오랫동안 오염(taint) 상태를 유지해야 하는지를 나타내는 객체입니다.`value`는 이 객체가 존재하는 동안 클라이언트 컴포넌트로 전달되지 않도록 차단됩니다. 예를 들어 `globalThis`를 전달하면 앱이 종료될 때까지 값이 차단됩니다. `lifetime`은 일반적으로 `value`를 프로퍼티로 가지는 객체입니다.
 
-* `value`: string, bigint 또는 TypedArray. `value`는 암호화 토큰, 개인 키, 해시 또는 긴 패스워드와 같이 문자 또는 바이트로 이루어진 복잡하고 고유한 값이어야 합니다. `value`는 클라이언트 컴포넌트로 전송되지 않도록 차단됩니다.
+* `value`: string, bigint 또는 TypedArray입니다. `value`는 암호화 토큰, 개인 키, 해시 또는 긴 비밀번호와 같이 높은 엔트로피를 가진 고유한 문자 또는 바이트 시퀀스여야 합니다. `value`는 클라이언트 컴포넌트로 전송되지 않도록 차단됩니다.
 
 #### 반환값 {/*returns*/}
 
