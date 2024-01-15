@@ -27,7 +27,7 @@ title: experimental_taintUniqueValue
 taintUniqueValue(errMessage, lifetime, value)
 ```
 
-중요한 데이터가 포함된 객체가 전달되는 것을 방지하는 방법은 [`taintObjectReference`](/reference/react/experimental_taintObjectReference)를 참고하세요.
+민감한 데이터가 포함된 객체가 전달되는 것을 방지하는 방법은 [`taintObjectReference`](/reference/react/experimental_taintObjectReference)를 참고하세요.
 
 </Intro>
 
@@ -55,9 +55,9 @@ experimental_taintUniqueValue(
 
 #### 매개변수 {/*parameters*/}
 
-* `message`: `value`가 클라이언트 컴포넌트로 전달될 때 표시할 메시지. `value`가 클라이언트 컴포넌트로 전달될 때 발생하는 에러 객체에 포함되어 나타나는 메시지입니다.
+* `message`: 클라이언트 컴포넌트에 `value`가 전달될 경우 표시하고자 하는 메시지입니다.  이 메시지는 `value`가 클라이언트 컴포넌트에 전달될 경우 발생하는 오류의 일부로 표시됩니다.
 
-* `lifetime`: `value`가 오염(taint)되어야 할 기간을 나타내는 객체. `value`는 이 객체가 존재하는 동안 클라이언트 컴포넌트로 전달되지 않도록 차단됩니다. 예를 들어 `globalThis`를 전달하면 앱이 종료될 때까지 값이 차단됩니다. `lifetime`은 일반적으로 `value`를 프로퍼티로 가지는 객체입니다.
+* `lifetime`: `value가` 얼마나 오랫동안 오염(taint) 상태를 유지해야 하는지를 나타내는 객체입니다.`value`는 이 객체가 존재하는 동안 클라이언트 컴포넌트로 전달되지 않도록 차단됩니다. 예를 들어 `globalThis`를 전달하면 앱이 종료될 때까지 값이 차단됩니다. `lifetime`은 일반적으로 `value`를 프로퍼티로 가지는 객체입니다.
 
 * `value`: string, bigint 또는 TypedArray. `value`는 암호화 토큰, 개인 키, 해시 또는 긴 패스워드와 같이 문자 또는 바이트로 이루어진 복잡하고 고유한 값이어야 합니다. `value`는 클라이언트 컴포넌트로 전송되지 않도록 차단됩니다.
 
