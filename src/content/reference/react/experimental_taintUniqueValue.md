@@ -78,7 +78,7 @@ experimental_taintUniqueValue(
 
 패스워드, 세션 토큰 또는 기타 고유 값과 같은 민감한 정보가 실수로 클라이언트 컴포넌트로 전달되지 않도록 `taintUniqueValue` 함수는 보호 레이어을 제공합니다. 값이 오염되면 클라이언트 컴포넌트로 전달하려는 시도는 에러를 발생시킵니다.
 
-`lifetime` 인자는 값이 오염된 상태로 남아 있는 기간을 정의합니다. 값이 무한히 오염된 상태로 유지되어야 하는 경우 [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis) 또는 `process`와 같은 객체가 `lifetime` 인자로 사용될 수 있습니다. 이 객체들은 앱이 실행되는 전체 기간을 수명으로 가집니다.
+`lifetime` 인자는 값이 오염된 상태로 남아 있는 기간을 정의합니다. 오염된 상태로 무기한 유지되어야 하는 값의 경우 [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis) 또는 `process`와 같은 객체가 `lifetime` 인자로 사용될 수 있습니다. 이 객체들은 앱이 실행되는 전체 기간을 수명으로 가집니다.
 
 ```js
 import {experimental_taintUniqueValue} from 'react';
