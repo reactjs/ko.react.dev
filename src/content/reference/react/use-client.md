@@ -4,6 +4,7 @@ canary: true
 ---
 
 <Canary>
+
 `'use client'` 는 [React 서버 컴포넌트를 사용](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)하거나 그와 호환되는 라이브러리를 만들 때에만 사용합니다.
 </Canary>
 
