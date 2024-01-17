@@ -7,7 +7,6 @@ canary: true
 <Canary>
 
 `'use client'`는 [React 서버 컴포넌트를 사용](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)하거나 그와 호환되는 라이브러리를 만들 때만 사용합니다.
-
 </Canary>
 
 
@@ -149,9 +148,7 @@ export default [
 예제 앱의 모듈 종속성 트리에서 `InspirationGenerator.js`의 `'use client'` 지시어는 해당 모듈과 모든 전이적 종속성을 클라이언트 모듈로 표시합니다. 이제 `InspirationGenerator.js`에서 시작하는 하위 트리는 클라이언트 모듈로 표시됩니다.
 
 <Diagram name="use_client_module_dependency" height={250} width={545} alt="A tree graph with the top node representing the module 'App.js'. 'App.js' has three children: 'Copyright.js', 'FancyText.js', and 'InspirationGenerator.js'. 'InspirationGenerator.js' has two children: 'FancyText.js' and 'inspirations.js'. The nodes under and including 'InspirationGenerator.js' have a yellow background color to signify that this sub-graph is client-rendered due to the 'use client' directive in 'InspirationGenerator.js'.">
-
 `'use client'`는 React 서버 컴포넌트 앱의 모듈 종속성 트리를 분할하여 `InspirationGenerator.js`와 모든 종속성을 클라이언트-렌더링으로 표시합니다.
-
 </Diagram>
 
 렌더링하는 동안 프레임워크는 루트 컴포넌트를 서버-렌더링하고 [렌더 트리](/learn/understanding-your-ui-as-a-tree#the-render-tree)를 통해 계속 진행하여 클라이언트에서 가져온 코드를 평가하지 않습니다.
@@ -159,9 +156,7 @@ export default [
 그런 다음 서버에서 렌더링한 렌더 트리 부분을 클라이언트로 보냅니다. 클라이언트 코드를 다운로드한 클라이언트는 트리의 나머지 부분 렌더링을 완료합니다.
 
 <Diagram name="use_client_render_tree" height={250} width={500} alt="A tree graph where each node represents a component and its children as child components. The top-level node is labelled 'App' and it has two child components 'InspirationGenerator' and 'FancyText'. 'InspirationGenerator' has two child components, 'FancyText' and 'Copyright'. Both 'InspirationGenerator' and its child component 'FancyText' are marked to be client-rendered.">
-
 React 서버 컴포넌트 앱을 위한 렌더 트리에서 `InspirationGenerator`와 그 자식 컴포넌트 `FancyText`는 클라이언트 표시 코드에서 내보낸 컴포넌트이며 클라이언트 컴포넌트로 간주합니다.
-
 </Diagram>
 
 다음 정의를 소개합니다.
@@ -172,7 +167,6 @@ React 서버 컴포넌트 앱을 위한 렌더 트리에서 `InspirationGenerato
 예제 앱이 실행되는 동안 `App`, `FancyText` 및 `Copyright`는 모두 서버에서 렌더링 되며 서버 컴포넌트로 간주합니다. `InspirationGenerator.js`와 그 전이적 종속성이 클라이언트 코드로 표시되므로 컴포넌트 `InspirationGenerator`와 그 자식 컴포넌트 `FancyText`는 클라이언트 컴포넌트입니다.
 
 <DeepDive>
-
 #### 어떻게 `FancyText`는 서버 컴포넌트이면서 클라이언트 컴포넌트인가요? {/*how-is-fancytext-both-a-server-and-a-client-component*/}
 
 위 정의에 따르면 `FancyText` 컴포넌트는 서버 컴포넌트이자 클라이언트 컴포넌트입니다. 어떻게 그럴 수 있을까요?
@@ -189,7 +183,6 @@ function MyComponent() {
 ```
 
 2. "컴포넌트"는 그 정의의 **컴포넌트 사용**을 참조할 수 있습니다.
-
 ```js
 import MyComponent from './MyComponent';
 
@@ -205,6 +198,7 @@ function App() {
 
 * 컴포넌트가 `'use client'` 지시어가 있는 모듈에서 정의되었거나 컴포넌트가 클라이언트에서 가져와 호출된다면 그 컴포넌트 사용은 클라이언트 컴포넌트입니다.
 * 그렇지 않은 경우 컴포넌트 사용은 서버 컴포넌트입니다.
+
 
 <Diagram name="use_client_render_tree" height={150} width={450} alt="A tree graph where each node represents a component and its children as child components. The top-level node is labelled 'App' and it has two child components 'InspirationGenerator' and 'FancyText'. 'InspirationGenerator' has two child components, 'FancyText' and 'Copyright'. Both 'InspirationGenerator' and its child component 'FancyText' are marked to be client-rendered.">렌더 트리는 컴포넌트 사용을 보여줍니다.</Diagram>
 
@@ -225,9 +219,7 @@ function App() {
 `'use client'` 지시어는 _모듈 종속성 트리_(렌더 트리가 아닌)에서 서버와 클라이언트 코드 간의 경계를 정의한다는 점을 기억하세요.
 
 <Diagram name="use_client_module_dependency" height={200} width={500} alt="A tree graph with the top node representing the module 'App.js'. 'App.js' has three children: 'Copyright.js', 'FancyText.js', and 'InspirationGenerator.js'. 'InspirationGenerator.js' has two children: 'FancyText.js' and 'inspirations.js'. The nodes under and including 'InspirationGenerator.js' have a yellow background color to signify that this sub-graph is client-rendered due to the 'use client' directive in 'InspirationGenerator.js'.">
-
 `'use client'` 지시어는 모듈 종속성 트리에서 서버와 클라이언트 코드의 경계를 정의합니다.
-
 </Diagram>
 
 모듈 종속성 트리에서 `App.js`는 `Copyright.js` 모듈로부터 `Copyright`를 가져와 호출합니다. `Copyright.js`에는 `'use client'` 지시어가 없기 때문에 컴포넌트 사용이 서버에서 렌더링 됩니다. `App`은 루트 컴포넌트로 서버에서 렌더링 됩니다.
@@ -261,7 +253,6 @@ React 앱에서와 같이 부모 컴포넌트는 자식 컴포넌트에 데이�
 서버 컴포넌트에서 클라이언트 컴포넌트로 전달되는 prop 값은 직렬화할 수 있어야 합니다.
 
 직렬화할 수 있는 props는 다음과 같습니다.
-
 * 원시 자료형
 	* [string](https://developer.mozilla.org/en-US/docs/Glossary/String)
 	* [number](https://developer.mozilla.org/en-US/docs/Glossary/Number)
@@ -376,7 +367,6 @@ export default function Circle() {
 React 앱에서는 서드파티 라이브러리를 활용하여 일반적인 UI 패턴이나 로직을 처리하는 경우가 많습니다.
 
 이러한 라이브러리들은 컴포넌트 Hook이나 클라이언트 API에 의존할 수 있습니다. 다음 React API를 사용하는 서드파티 컴포넌트는 클라이언트에서 실행되어야 합니다.
-
 * [createContext](/reference/react/createContext)
 * [`use`](/reference/react/use) 및 [`useId`](/reference/react/useId)를 제외한 [`react`](/reference/react/hooks)와 [`react-dom`](/reference/react-dom/hooks)의 Hook
 * [forwardRef](/reference/react/forwardRef)
