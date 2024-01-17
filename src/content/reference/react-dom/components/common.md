@@ -96,7 +96,7 @@ title: "공통 컴포넌트 (예시: <div>)"
 * `onDragStartCapture`: `onDragStart`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onDrop`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/drop_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 유효한 드롭 대상에 무언가를 떨어뜨리면 발동합니다.
 * `onDropCapture`: `onDrop`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* `onFocus`: [`FocusEvent` 핸들러](#focusevent-handler) 함수입니다. 엘리먼트가 포커싱을 잃었을 때 발생합니다. 브라우저에 내장된 [`focus`](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event) 이벤트와 달리 React에서는 `onFocus` 이벤트가 버블링을 발생시킵니다.
+* `onFocus`: [`FocusEvent` 핸들러](#focusevent-handler) 함수입니다. 엘리먼트가 포커싱을 얻었을 때 발생합니다. 브라우저에 내장된 [`focus`](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event) 이벤트와 달리 React에서는 `onFocus` 이벤트가 버블링을 발생시킵니다.
 * `onFocusCapture`: `onFocus`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onGotPointerCapture`](https://developer.mozilla.org/en-US/docs/Web/API/Element/gotpointercapture_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 엘리먼트가 프로그래밍 방식으로 포인터를 캡처할 때 발생합니다.
 * `onGotPointerCaptureCapture`: `onGotPointerCapture`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
@@ -774,7 +774,7 @@ React는 CSS 파일을 추가하는 방법을 규정하지 않습니다. 가장 
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import Avatar from './Avatar.js';
 
 const user = {
@@ -788,7 +788,7 @@ export default function App() {
 }
 ```
 
-```js Avatar.js active
+```js src/Avatar.js active
 export default function Avatar({ user }) {
   return (
     <img
@@ -804,7 +804,7 @@ export default function Avatar({ user }) {
 }
 ```
 
-```css styles.css
+```css src/styles.css
 .avatar {
   border-radius: 50%;
 }
@@ -943,7 +943,7 @@ export default function MarkdownEditor() {
 }
 ```
 
-```js MarkdownPreview.js active
+```js src/MarkdownPreview.js active
 import { Remarkable } from 'remarkable';
 
 const md = new Remarkable();
@@ -984,6 +984,8 @@ textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 ```
 
 </Sandpack>
+
+The `{__html}` object should be created as close to where the HTML is generated as possible, like the above example does in the `renderMarkdownToHTML` function. This ensures that all raw HTML being used in your code is explicitly marked as such, and that only variables that you expect to contain HTML are passed to `dangerouslySetInnerHTML`. It is not recommended to create the object inline like `<div dangerouslySetInnerHTML={{__html: markup}} />`.
 
 임의의 HTML을 렌더링하는 것이 왜 위험한지를 알아보려면 위의 코드를 다음과 같이 바꿔보세요.
 

@@ -269,7 +269,7 @@ export default function App() {
 }
 ```
 
-```js index.js active
+```js src/index.js active
 import { createRoot } from 'react-dom/client';
 import App from './App.js';
 import './styles.css';
@@ -302,3 +302,33 @@ input { margin: 5px; }
 ```
 
 </Sandpack>
+
+---
+
+### 클라이언트와 서버에서 동일한 ID 접두사 사용하기 {/*using-the-same-id-prefix-on-the-client-and-the-server*/}
+
+[동일한 페이지에서 여러 독립적인 React 앱을 렌더링하는 경우](#specifying-a-shared-prefix-for-all-generated-ids), 이러한 앱 중 일부가 서버에서 렌더링되는 경우, 클라이언트 측에서 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 호출에 전달하는 `identifierPrefix가` [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream)와 같은 [서버 API](/reference/react-dom/server)에 전달하는 `identifierPrefix`와 동일한지 확인해야 합니다.
+
+```js
+// Server
+import { renderToPipeableStream } from 'react-dom/server';
+
+const { pipe } = renderToPipeableStream(
+  <App />,
+  { identifierPrefix: 'react-app1' }
+);
+```
+
+```js
+// Client
+import { hydrateRoot } from 'react-dom/client';
+
+const domNode = document.getElementById('root');
+const root = hydrateRoot(
+  domNode,
+  reactNode,
+  { identifierPrefix: 'react-app1' }
+);
+```
+
+You do not need to pass `identifierPrefix` if you only have one React app on the page.

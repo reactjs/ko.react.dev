@@ -35,7 +35,9 @@ const html = renderToStaticMarkup(<Page />);
 #### 파라미터 {/*parameters*/}
 
 * `reactNode`: HTML로 렌더링할 React 노드입니다. 예를 들어, `<Page />`와 같은 JSX 노드입니다.
-
+* **optional** `options`: 서버 렌더링을 위한 객체입니다.
+  * **optional** `identifierPrefix`: [`useId`.](/reference/react/useId)에 의해 생성된 ID에 대해 React가 사용하는 문자열 접두사입니다. 같은 페이지에서 여러 루트를 사용할 때 충돌을 피하기 위해 유용합니다.
+  
 #### 반환 {/*returns*/}
 
 HTML 문자열을 반환합니다.

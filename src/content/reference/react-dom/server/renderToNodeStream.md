@@ -42,6 +42,9 @@ stream.pipe(response);
 #### 매개변수 {/*parameters*/}
 
 * `reactNode`: HTML로 렌더링하려는 React 노드입니다. 예를 들어, `<App />`과 같은 JSX 엘리먼트입니다.
+* **optional** `options`: 서버 렌더링을 위한 객체입니다.
+  * **optional** `identifierPrefix`: [`useId`.](/reference/react/useId)에 의해 생성된 ID에 대해 React가 사용하는 문자열 접두사입니다. 같은 페이지에서 여러 루트를 사용할 때 충돌을 피하기 위해 유용합니다. [`hydrateRoot`.](/reference/react-dom/client/hydrateRoot#parameters)에 전달된 접두사와 동일해야 합니다.
+
 #### 반환 {/*returns*/}
 
 HTML 문자열을 출력하는 [Node.js Readable Stream](https://nodejs.org/api/stream.html#readable-streams)를 반환합니다.

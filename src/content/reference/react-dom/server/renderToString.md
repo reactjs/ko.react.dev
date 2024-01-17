@@ -41,6 +41,8 @@ const html = renderToString(<App />);
 #### 매개변수 {/*parameters*/}
 
 * `reactNode`: HTML로 렌더링할 React 노드입니다. 예를 들어 `<App />`과 같은 JSX 노드입니다.
+* **optional** `options`: 서버 렌더링을 위한 객체입니다.
+  * **optional** `identifierPrefix`: [`useId`.](/reference/react/useId)에 의해 생성된 ID에 대해 React가 사용하는 문자열 접두사입니다. 같은 페이지에서 여러 루트를 사용할 때 충돌을 피하기 위해 유용합니다. [`hydrateRoot`.](/reference/react-dom/client/hydrateRoot#parameters)에 전달된 접두사와 동일해야 합니다.
 
 #### 반환 {/*returns*/}
 
@@ -89,7 +91,7 @@ app.use('/', (request, response) => {
 
 가능하면 다음과 같은 완전한 기능을 갖춘 대안을 사용하는 것을 권장합니다:
 
-* Node.js를 사용하는 경우 ['renderToPipeableStream']을 사용하세요. (/reference/react-dom/server/renderToPipeableStream)
+* Node.js를 사용하는 경우 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) 을 사용하세요.
 * Deno와 최신 엣지 런타임에서 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)을 사용하는 경우 [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) 을 사용하세요
 
 서버 환경에서 스트림을 지원하지 않는 경우에도 `renderToString`을 계속 사용할 수 있습니다.

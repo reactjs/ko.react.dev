@@ -150,7 +150,7 @@ export default function App() {
 }
 ```
 
-```js ButtonWithTooltip.js
+```js src/ButtonWithTooltip.js
 import { useState, useRef } from 'react';
 import Tooltip from './Tooltip.js';
 
@@ -186,7 +186,7 @@ export default function ButtonWithTooltip({ tooltipContent, ...rest }) {
 }
 ```
 
-```js Tooltip.js active
+```js src/Tooltip.js active
 import { useRef, useLayoutEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import TooltipContainer from './TooltipContainer.js';
@@ -221,7 +221,7 @@ export default function Tooltip({ children, targetRect }) {
 }
 ```
 
-```js TooltipContainer.js
+```js src/TooltipContainer.js
 export default function TooltipContainer({ children, x, y, contentRef }) {
   return (
     <div
@@ -300,7 +300,7 @@ export default function App() {
 }
 ```
 
-```js ButtonWithTooltip.js
+```js src/ButtonWithTooltip.js
 import { useState, useRef } from 'react';
 import Tooltip from './Tooltip.js';
 
@@ -336,7 +336,7 @@ export default function ButtonWithTooltip({ tooltipContent, ...rest }) {
 }
 ```
 
-```js Tooltip.js active
+```js src/Tooltip.js active
 import { useRef, useLayoutEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import TooltipContainer from './TooltipContainer.js';
@@ -370,7 +370,7 @@ export default function Tooltip({ children, targetRect }) {
 }
 ```
 
-```js TooltipContainer.js
+```js src/TooltipContainer.js
 export default function TooltipContainer({ children, x, y, contentRef }) {
   return (
     <div
@@ -447,7 +447,7 @@ export default function App() {
 }
 ```
 
-```js ButtonWithTooltip.js
+```js src/ButtonWithTooltip.js
 import { useState, useRef } from 'react';
 import Tooltip from './Tooltip.js';
 
@@ -483,7 +483,7 @@ export default function ButtonWithTooltip({ tooltipContent, ...rest }) {
 }
 ```
 
-```js Tooltip.js active
+```js src/Tooltip.js active
 import { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import TooltipContainer from './TooltipContainer.js';
@@ -517,7 +517,7 @@ export default function Tooltip({ children, targetRect }) {
 }
 ```
 
-```js TooltipContainer.js
+```js src/TooltipContainer.js
 export default function TooltipContainer({ children, x, y, contentRef }) {
   return (
     <div
@@ -590,7 +590,7 @@ export default function App() {
 }
 ```
 
-```js ButtonWithTooltip.js
+```js src/ButtonWithTooltip.js
 import { useState, useRef } from 'react';
 import Tooltip from './Tooltip.js';
 
@@ -626,7 +626,7 @@ export default function ButtonWithTooltip({ tooltipContent, ...rest }) {
 }
 ```
 
-```js Tooltip.js active
+```js src/Tooltip.js active
 import { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import TooltipContainer from './TooltipContainer.js';
@@ -666,7 +666,7 @@ export default function Tooltip({ children, targetRect }) {
 }
 ```
 
-```js TooltipContainer.js
+```js src/TooltipContainer.js
 export default function TooltipContainer({ children, x, y, contentRef }) {
   return (
     <div
@@ -733,7 +733,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 - `useLayoutEffect`를 [`useEffect`](/reference/react/useEffect)로 대체 하세요. 화면을 그리는 것을 막지 말고 (초기 HTML이 Effect 실행 전에 보이기 때문에) 초기 렌더링이 보이더라도 괜찮다고 React에게 말해주는 것입니다.
 
-- 또는 [해당 컴포넌트를 클라이언트 전용으로 만드세요.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content) React가 가장 가까운 [`<Suspense>`](/reference/react/Suspense) 경계 안의 콘텐츠를 서버렌더링 동안 (스피너나 글리머같은) loading fallbck으로 대체 하게 합니다.
+- 또는 [해당 컴포넌트를 클라이언트 전용으로 만드세요.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content) React가 가장 가까운 [`<Suspense>`](/reference/react/Suspense) 경계 안의 콘텐츠를 서버렌더링 동안 (스피너나 글리머같은) loading fallbck으로 대체 하게 합니다.
 
 - 또는 `useLayoutEffect`가 있는 컴포넌트를 hydration 이후에만 렌더링할 수도 있습니다. 불리언 타입인 `isMounted` state를 초깃값인 `false`로 유지하다가, `useEffect` 호출되면 거기서 `true`로 값을 변경하세요. 그러면 렌더링 로직은 `return isMounted ? <RealContent /> : <FallbackContent />` 처럼 될 수 있습니다. 서버에서 렌더링하는 중이거나 hydration 동안 유저는 `FallbackContent`를 볼 것이고 `FallbackContent`는 `useLayoutEffect`를 호출하지 않아야 합니다. 그 후에 React가 `FallbackContent`를 클라이언트 전용이면서 `useLayoutEffect`를 호출하는 `RealContent`로 변경할 겁니다. 
 

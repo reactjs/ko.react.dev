@@ -105,7 +105,7 @@ export function NavigationBar({providedFiles}: {providedFiles: Array<string>}) {
      */
     if (
       sandpack.editorState === 'dirty' &&
-      confirm('Reset all your edits too?')
+      confirm('모든 수정 사항이 초기화됩니다. 계속하시겠습니까?')
     ) {
       sandpack.resetAllFiles();
     }

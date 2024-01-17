@@ -431,7 +431,7 @@ function ProfilePage() {
 }
 ```
 
-`Posts` 컴포넌트 또는 그 내부 어딘가에서 오류가 발생하면 React는 [이를 복구하려고 시도합니다.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)
+`Posts` 컴포넌트 또는 그 내부 어딘가에서 오류가 발생하면 React는 [이를 복구하려고 시도합니다.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content)
 
 1. 가장 가까운 `<Suspense>` 경계(`PostsGlimmer`)에 대한 로딩 폴백을 HTML로 방출합니다. 
 2. 더 이상 서버에서 `Posts` 콘텐츠를 렌더링하는 것을 "포기"합니다. 
