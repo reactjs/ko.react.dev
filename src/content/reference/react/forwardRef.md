@@ -42,7 +42,11 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 #### 주의 {/*caveats*/}
 
+<<<<<<< HEAD
 * Strict Mode에서 React는 [실수로 발생한 결함을 찾기 위해](#my-initializer-or-updater-function-runs-twice) **렌더링 함수를 두 번 호출**합니다. 이는 개발 환경 전용 동작이며 프로덕션 환경에는 영향을 미치지 않습니다. 렌더링 함수가 순수함수인 경우(그래야만 합니다.) 컴포넌트 로직에 영향을 미치지 않습니다. 호출 결과 중 하나의 결과는 무시됩니다.
+=======
+* In Strict Mode, React will **call your render function twice** in order to [help you find accidental impurities.](/reference/react/useState#my-initializer-or-updater-function-runs-twice) This is development-only behavior and does not affect production. If your render function is pure (as it should be), this should not affect the logic of your component. The result from one of the calls will be ignored.
+>>>>>>> 3563d95efe8719bdae8bbd258e6ab4134753348b
 
 
 ---

@@ -8,7 +8,11 @@ title: "React Labs: 그동안의 작업 – 2023년 3월"
 
 <Intro>
 
+<<<<<<< HEAD
 React Labs 게시글에는 활발히 연구 개발 중인 프로젝트에 대한 내용을 작성합니다. 우리는 [지난 업데이트](https://react.dev/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022) 이후 상당한 발전을 이루었고, 그 내용들을 공유하려고 합니다.
+=======
+In React Labs posts, we write about projects in active research and development. We've made significant progress on them since our [last update](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022), and we'd like to share what we learned.
+>>>>>>> 3563d95efe8719bdae8bbd258e6ab4134753348b
 
 </Intro>
 
