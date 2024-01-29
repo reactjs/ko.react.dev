@@ -347,7 +347,7 @@ root.render(
 Promise는 서버 컴포넌트에서 클라이언트 컴포넌트로 전달될 수 있으며 `use` Hook을 통해 클라이언트 컴포넌트에서 리졸브됩니다. 또한 서버 컴포넌트에서 `await`을 사용하여 Promise를 리졸브하고 데이터를 클라이언트 컴포넌트에 `prop`으로 전달하는 방법도 존재합니다.
 
 ```js
-export default function App() {
+export default async function App() {
   const messageContent = await fetchMessage();
   return <Message messageContent={messageContent} />
 }

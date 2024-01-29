@@ -341,7 +341,11 @@ import './styles.css';
 import App from './App';
 ```
 
+<<<<<<< HEAD
 1~5줄은 아래에 있는 필요한 모든 코드를 한 곳으로 가져옵니다.
+=======
+Lines 1-5 bring all the necessary pieces together: 
+>>>>>>> 5d2f7105bd6374e465b8bdce8efceaeb8f01c937
 
 * React
 * 웹 브라우저와 상호작용하는 React의 라이브러리 (React DOM)
