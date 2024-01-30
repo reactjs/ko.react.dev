@@ -11,7 +11,7 @@ canary: true
 
 <Intro>
 
-`useFormStatus`는 마지막 폼 제출의 상태 정보를 제공하는 Hook 입니다.
+`useFormStatus`는 마지막 폼 제출의 상태 정보를 제공하는 Hook입니다.
 
 ```js
 const { pending, data, method, action } = useFormStatus();
@@ -63,7 +63,7 @@ export default function App() {
 
 * `pending`: 불리언 값입니다. `true`라면 상위 `<form>`이 아직 제출 중이라는 것을 의미합니다. 그렇지 않으면 `false`입니다.
 
-* `data`: [`FormData 인터페이스`](https://developer.mozilla.org/ko/docs/Web/API/FormData)를 구현한 객체로, 상위 `<form>`이 제출하는 데이터를 포함합니다. 활성된 제출이 없거나 상위에 `<form>`이 없는 경우에는 `null`입니다.
+* `data`: [`FormData 인터페이스`](https://developer.mozilla.org/ko/docs/Web/API/FormData)를 구현한 객체로, 상위 `<form>`이 제출하는 데이터를 포함합니다. 활성화된 제출이 없거나 상위에 `<form>`이 없는 경우에는 `null`입니다.
 
 * `method`: `'get'` 또는 `'post'` 중 하나의 문자열 값입니다. 이 프로퍼티는 상위 `<form>`이 `GET` 또는 `POST` [HTTP 메서드](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods)를 사용하여 제출되는지를 나타냅니다. 기본적으로 `<form>`은 `GET` 메서드를 사용하며 [`method`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form#method) 프로퍼티를 통해 지정할 수 있습니다.
 
@@ -72,17 +72,17 @@ export default function App() {
 
 #### 주의 사항 {/*caveats*/}
 
-* `useFormStatus` Hook은 `<form>` 내부에 렌더링되는 컴포넌트에서 호출해야 합니다.
+* `useFormStatus` Hook은 `<form>` 내부에 렌더링 되는 컴포넌트에서 호출해야 합니다.
 * `useFormStatus`는 오직 상위 `<form>`에 대한 상태 정보만 반환합니다. 동일한 컴포넌트나 자식 컴포넌트에서 렌더링한 `<form>`의 상태 정보는 반환하지 않습니다.
 
 ---
 
 ## 사용법 {/*usage*/}
 
-### 폼을 제출하는 동안 보류중인 상태로 표시하기 {/*display-a-pending-state-during-form-submission*/}
+### 폼을 제출하는 동안 보류 중인 상태로 표시하기 {/*display-a-pending-state-during-form-submission*/}
 폼을 제출하는 동안 보류 상태를 표시하려면 `<form>` 내에서 렌더링한 컴포넌트에서 `useFormStatus` Hook을 호출하고 반환된 `pending` 프로퍼티를 확인하세요.
 
-여기서는 `pending` 프로퍼티를 사용하여 폼이 제출중인지를 나타냅니다.
+여기서는 `pending` 프로퍼티를 사용하여 폼이 제출 중인지를 나타냅니다.
 
 <Sandpack>
 
@@ -156,7 +156,7 @@ function Submit() {
 }
 
 function Form() {
-  // `useFormStatus`가 추적하는 <form> 입니다
+  // `useFormStatus`가 추적하는 <form>입니다
   return (
     <form action={submit}>
       <Submit />
