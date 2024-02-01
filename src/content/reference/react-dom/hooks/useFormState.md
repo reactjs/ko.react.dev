@@ -58,17 +58,17 @@ Server Action과 함께 사용하는 경우, `useFormState`를 사용하여 hydr
 
 #### 매개변수 {/*parameters*/}
 
-* `fn`: 폼이 제출되거나 버튼을 눌렀을 때 호출될 함수입니다. 함수가 호출될 때, 첫번째 인수로 폼의 이전 state를 전달합니다. state는 초기에 전달한 `initialState`이고, 이후에는 이전 호출의 반환값입니다. 그 후 일반적으로 폼 액션에 전달하는 인수들이 이어집니다.
+* `fn`: 폼이 제출되거나 버튼을 눌렀을 때 호출될 함수입니다. 함수가 실행될 때, 첫번째 인수로 폼의 이전 state를 전달합니다. state는 초기에 전달한 `initialState`이고, 이후에는 이전 실행의 반환값입니다. 그 후 일반적으로 폼 액션에 전달하는 인수들이 이어집니다.
 * `initialState`: 초기 state로 설정하고자 하는 값으로, 직렬화 가능한 값일 수 있습니다. 액션이 처음 호출 된 후에는 이 인수를 무시합니다.
 
 {/* TODO T164397693: link to serializable values docs once it exists */}
 
 #### 반환값 {/*returns*/}
 
-`useFormState`는 정확히 두 개의 값이 담긴 배열을 반환합니다:
+`useFormState`는 정확히 두 개의 값이 담긴 배열을 반환합니다.
 
 1. 현재 state입니다. 첫 번째 렌더링에서는 전달한 `initialState`와 일치합니다. 액션이 실행된 이후에는 액션에서 반환한 값과 일치합니다.
-2. `form` 컴포넌트의 `action` 프로퍼티로 전달하거나 폼 내부 `button` 컴포넌트의 `formAction` 프로퍼티로 전달할 수 있는 새로운 액션입니다.
+2. `form` 컴포넌트의 `action` prop에 전달하거나 폼 내부 `button` 컴포넌트의 `formAction` prop에 전달할 수 있는 새로운 액션입니다.
 
 #### 주의 사항 {/*caveats*/}
 
@@ -98,10 +98,10 @@ function MyComponent() {
 }
 ```
 
-`useFormState`는 정확히 두 개의 항목으로 구성된 배열을 반환합니다:
+`useFormState`는 정확히 두 개의 항목으로 구성된 배열을 반환합니다.
 
 1. 폼의 <CodeStep step={1}>현재 state</CodeStep>입니다. 처음에는 제공한 <CodeStep step={4}>초기 state</CodeStep>로 설정되며, 폼이 제출된 후에는 전달한 <CodeStep step={3}>액션</CodeStep>의 반환값으로 설정됩니다.
-2. `<form>`의 `action` 프로퍼티에 전달할 <CodeStep step={2}>새로운 action</CodeStep>입니다.
+2. `<form>`의 `action` prop에 전달할 <CodeStep step={2}>새로운 action</CodeStep>입니다.
 
 폼을 제출하면 전달한 <CodeStep step={3}>액션</CodeStep> 함수가 호출됩니다. 액션의 반환값은 폼의 새로운 <CodeStep step={1}>현재 state</CodeStep>가 됩니다.
 
