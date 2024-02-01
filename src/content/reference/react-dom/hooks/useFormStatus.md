@@ -47,7 +47,7 @@ export default function App() {
 }
 ```
 
-상태 정보를 제공받기 위해 `Submit` 컴포넌트는 `<form>` 내부에 렌더링해야 합니다. 이 Hook은 폼이 현재 제출하는 상태인지를 의미하는 <CodeStep step={1}>`pending`</CodeStep> 프로퍼티와 같은 상태 정보를 반환합니다.
+상태 정보를 제공받기 위해 `Submit` 컴포넌트를 `<form>` 내부에 렌더링해야 합니다. 이 Hook은 폼이 현재 제출하고 있는 상태인지를 의미하는 <CodeStep step={1}>`pending`</CodeStep> 프로퍼티와 같은 상태 정보를 반환합니다.
 
 위의 예시에서 `Submit` 컴포넌트는 폼이 제출 중일 때 `<button>`을 누를 수 없도록 하기 위해 이 정보를 활용합니다.
 
@@ -59,7 +59,7 @@ export default function App() {
 
 #### 반환값 {/*returns*/}
 
-다음 프로퍼티를 가진 `status` 객체를 반환합니다:
+다음의 프로퍼티를 가지는 `status` 객체를 반환합니다:
 
 * `pending`: 불리언 값입니다. `true`라면 상위 `<form>`이 아직 제출 중이라는 것을 의미합니다. 그렇지 않으면 `false`입니다.
 
@@ -72,7 +72,7 @@ export default function App() {
 
 #### 주의 사항 {/*caveats*/}
 
-* `useFormStatus` Hook은 `<form>` 내부에 렌더링 되는 컴포넌트에서 호출해야 합니다.
+* `useFormStatus` Hook은 `<form>` 내부에 렌더링한 컴포넌트에서 호출해야 합니다.
 * `useFormStatus`는 오직 상위 `<form>`에 대한 상태 정보만 반환합니다. 동일한 컴포넌트나 자식 컴포넌트에서 렌더링한 `<form>`의 상태 정보는 반환하지 않습니다.
 
 ---
