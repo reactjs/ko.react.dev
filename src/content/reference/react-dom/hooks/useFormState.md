@@ -58,8 +58,8 @@ Server Action과 함께 사용하는 경우, `useFormState`를 사용하여 hydr
 
 #### 매개변수 {/*parameters*/}
 
-* `fn`: 폼이 제출되거나 버튼을 눌렀을 때 호출될 함수입니다. 함수가 실행될 때, 첫번째 인수로 폼의 이전 state를 전달합니다. state는 초기에 전달한 `initialState`이고, 이후에는 이전 실행의 반환값입니다. 그 후 일반적으로 폼 액션에 전달하는 인수들이 이어집니다.
-* `initialState`: 초기 state로 설정하고자 하는 값으로, 직렬화 가능한 값일 수 있습니다. 액션이 처음 호출 된 후에는 이 인수를 무시합니다.
+* `fn`: 폼이 제출되거나 버튼을 눌렀을 때 호출될 함수입니다. 함수가 실행될 때, 첫 번째 인수로 폼의 이전 state를 전달합니다. state는 초기에 전달한 `initialState`이고, 이후에는 이전 실행의 반환값입니다. 그 후 일반적으로 폼 액션에 전달하는 인수들이 이어집니다.
+* `initialState`: 초기 state로 설정하고자 하는 값으로, 직렬화 할 수 있는 값일 수 있습니다. 액션이 처음 호출된 후에는 이 인수를 무시합니다.
 
 {/* TODO T164397693: link to serializable values docs once it exists */}
 
@@ -72,7 +72,7 @@ Server Action과 함께 사용하는 경우, `useFormState`를 사용하여 hydr
 
 #### 주의 사항 {/*caveats*/}
 
-* React Server Components를 지원하는 프레임워크와 함께 사용할 때, `useFormState`는 클라이언트에서 자바스크립트가 실행되기 이전에도 폼을 상호작용 하도록 만들 수 있습니다. Server Components를 사용하지 않는다면 컴포넌트 지역 state와 동일합니다.
+* React Server Components를 지원하는 프레임워크와 함께 사용할 때, `useFormState`는 클라이언트에서 자바스크립트가 실행되기 이전에도 폼을 상호작용하도록 만들 수 있습니다. Server Components를 사용하지 않는다면 컴포넌트 지역 state와 동일합니다.
 * `useFormState`에 전달한 함수는 첫 번째 인수로 이전 혹은 초기 state를 추가로 받습니다. 이를 통해 `useFormState`를 사용하지 않고 직접 폼 액션을 사용했을 경우와는 다른 시그니처를 가지게 됩니다. 
 
 ---
@@ -118,7 +118,7 @@ function action(currentState, formData) {
 
 #### 오류 표시하기 {/*display-form-errors*/}
 
-Server Action에서 반환한 오류 메세지나 토스트와 같은 메세지를 표시하려면 해당 액션을 `useFormState` 호출로 감싸세요.
+Server Action에서 반환한 오류 메시지나 토스트와 같은 메시지를 표시하려면 해당 액션을 `useFormState` 호출로 감싸세요.
 
 <Sandpack>
 
@@ -191,7 +191,7 @@ form button {
 
 #### 폼 제출 후 구조화된 정보 표시하기 {/*display-structured-information-after-submitting-a-form*/}
 
-Server Action의 반환값으로 어떠한 직렬화 가능한 값이든 될 수 있습니다. 예를 들어, 액션이 성공적인지를 나타내는 불리언 값, 오류 메세지, 또는 업데이트된 정보를 포함하는 객체일 수 있습니다.
+Server Action의 반환값으로 어떠한 직렬화 가능한 값이든 될 수 있습니다. 예를 들어, 액션이 성공적인지를 나타내는 불리언 값, 오류 메시지, 또는 업데이트된 정보를 포함하는 객체일 수 있습니다.
 
 <Sandpack>
 
@@ -281,9 +281,9 @@ form button {
 
 ## 문제 해결 {/*troubleshooting*/}
 
-### 액션이 더이상 제출된 폼 데이터를 읽을 수 없습니다 {/*my-action-can-no-longer-read-the-submitted-form-data*/}
+### 액션이 더 이상 제출된 폼 데이터를 읽을 수 없습니다 {/*my-action-can-no-longer-read-the-submitted-form-data*/}
 
-액션을 `useFormState`로 감싸면 *첫 번째 인수*를 추가로 받습니다. 따라서 제출된 폼 데이터는 보통의 경우처럼 첫 번째로 전달되는 대신 *두 번째* 인수가 됩니다. 새롭게 추가된 첫 번째 인수는 폼의 현재 state입니다.
+액션을 `useFormState`로 감싸면 *첫 번째 인수*를 추가로 전달받습니다. 따라서 제출된 폼 데이터는 보통의 경우처럼 첫 번째로 전달되는 대신 *두 번째* 인수가 됩니다. 새롭게 추가된 첫 번째 인수는 폼의 현재 state입니다.
 
 ```js
 function action(currentState, formData) {
