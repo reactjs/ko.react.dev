@@ -68,7 +68,7 @@ export default function App() {
 * `method`: `'get'` 또는 `'post'` 중 하나의 문자열 값입니다. 이 프로퍼티는 상위 `<form>`이 `GET` 또는 `POST` [HTTP 메서드](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods)를 사용하여 제출되는지를 나타냅니다. 기본적으로 `<form>`은 `GET` 메서드를 사용하며 [`method`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form#method) 프로퍼티를 통해 지정할 수 있습니다.
 
 [//]: # (Link to `<form>` documentation. "Read more on the `action` prop on `<form>`.")
-* `action`: 상위 `<form>`의 `action` 프로퍼티로 전달한 함수의 레퍼런스입니다. 상위 `<form>`이 없는 경우에는 이 프로퍼티는 `null`입니다. `action` 프로퍼티에 URI 값이 제공되었거나 `action` 프로퍼티가 지정되지 않았을 경우에는 `status.action`은 `null`입니다.
+* `action`: 상위 `<form>`의 `action` prop에 전달한 함수의 레퍼런스입니다. 상위 `<form>`이 없는 경우에는 이 프로퍼티는 `null`입니다. `action` prop에 URI 값이 제공되었거나 `action` prop를 지정하지 않았을 경우에는 `status.action`은 `null`입니다.
 
 #### 주의 사항 {/*caveats*/}
 
