@@ -5,7 +5,6 @@ canary: true
 
 <Canary>
 
-
 `useFormState` Hook은 현재 React의 Canary 채널과 실험적인 채널에서만 사용할 수 있습니다. 자세한 내용은 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다. 또한 `useFormState`의 모든 이점을 얻으려면 [React Server Components](/reference/react/use-client)를 지원하는 프레임워크를 사용해야 합니다.
 
 </Canary>
