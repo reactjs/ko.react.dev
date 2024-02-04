@@ -123,7 +123,7 @@ export default function App() {
 }
 ```
 
-예시에서 `requestUsername`는 `<form>`를 통한 Server Action이다. 사용자가 이 양식을 제출하면 서버 함수인 `requestUsername`에 네트워크 요청이 있습니다. form에서 Server Action을 호출할 때 React는 form의 <CodeStep step={1}>[FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData)<CodeStep>를 Server Action의 첫 번째 인자로 제공합니다.
+예시에서 `requestUsername`는 `<form>`를 통한 Server Action이다. 사용자가 이 양식을 제출하면 서버 함수인 `requestUsername`에 네트워크 요청이 있습니다. form에서 Server Action을 호출할 때 React는 form의 <CodeStep step={1}>[FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData)</CodeStep>를 Server Action의 첫 번째 인자로 제공합니다.
 
 Server Action을 from `action`에 전달하여, React는 form을 [점진적 향상](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement)할 수 있습니다. 이것은 자바스크립트 번들이 로드되기 전에 양식을 제출할 수 있다는 것을 의미합니다.
 
