@@ -49,7 +49,7 @@ function StatefulForm({}) {
 }
 ```
 
-폼 state는 폼을 마지막으로 제출했을 때 액션에서 반환되는 값입니다. 폼이 아직 제출되지 않았다면 전달한 초기 state입니다.
+폼 state는 폼을 마지막으로 제출했을 때 액션에서 반환되는 값입니다. 폼이 제출되기 전이라면 전달한 초기 state와 같습니다.
 
 Server Action과 함께 사용하는 경우, `useFormState`를 사용하여 hydration이 완료되기 전에도 폼 제출에 대한 서버의 응답을 보여줄 수 있습니다.
 
