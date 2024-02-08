@@ -24,7 +24,7 @@ render(reactNode, domNode, callback?)
 
 ---
 
-## 참조 {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `render(reactNode, domNode, callback?)` {/*render*/}
 

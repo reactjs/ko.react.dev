@@ -24,7 +24,7 @@ const value = use(resource);
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `use(resource)` {/*use*/}
 
