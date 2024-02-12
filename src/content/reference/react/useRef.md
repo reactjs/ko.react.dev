@@ -47,10 +47,17 @@ function MyComponent() {
 
 #### 주의사항 {/*caveats*/}
 
+<<<<<<< HEAD
 * `ref.current` 프로퍼티는 state와 달리 변이할 수 있습니다. 그러나 렌더링에 사용되는 객체(예: state의 일부)를 포함하는 경우 해당 객체를 변이해서는 안 됩니다.
 * `ref.current` 프로퍼티를 변경해도 React는 컴포넌트를 다시 렌더링하지 않습니다. ref는 일반 JavaScript 객체이기 때문에 React는 사용자가 언제 변경했는지 알지 못합니다.
 * [초기화](#avoiding-recreating-the-ref-contents)를 제외하고는 렌더링 중에 `ref.current`를 쓰거나 *읽지* 마세요. 이렇게 하면 컴포넌트의 동작을 예측할 수 없게 됩니다.
 * Strict Mode에서 React는 **컴포넌트 함수를 두 번 호출하여** [의도하지 않은 불순물을 찾을 수 있도록 돕습니다.](#my-initializer-or-updater-function-runs-twice) 이는 개발 환경 전용 동작이며 상용 환경에는 영향을 미치지 않습니다. 각 ref 객체는 두 번 생성되고 그중 하나는 버려집니다. 컴포넌트 함수가 순수하다면(그래야만 합니다), 컴포넌트의 로직에 영향을 미치지 않습니다.
+=======
+* You can mutate the `ref.current` property. Unlike state, it is mutable. However, if it holds an object that is used for rendering (for example, a piece of your state), then you shouldn't mutate that object.
+* When you change the `ref.current` property, React does not re-render your component. React is not aware of when you change it because a ref is a plain JavaScript object.
+* Do not write _or read_ `ref.current` during rendering, except for [initialization.](#avoiding-recreating-the-ref-contents) This makes your component's behavior unpredictable.
+* In Strict Mode, React will **call your component function twice** in order to [help you find accidental impurities.](/reference/react/useState#my-initializer-or-updater-function-runs-twice) This is development-only behavior and does not affect production. Each ref object will be created twice, but one of the versions will be discarded. If your component function is pure (as it should be), this should not affect the behavior.
+>>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 
 ---
 

@@ -4,21 +4,52 @@ title: 새로운 React 프로젝트 시작하기
 
 <Intro>
 
+<<<<<<< HEAD
 React를 전체적으로 적용한 애플리케이션이나 웹 사이트를 새롭게 작성하고 싶다면 커뮤니티에서 React 기반 프레임워크 중 하나를 사용하는 것이 좋습니다. 이런 프레임워크는 대부분의 애플리케이션이나 웹 사이트에서 사용하게 될 라우팅, data fetching, HTML 생성과 같은 기능을 제공합니다.
+=======
+If you want to build a new app or a new website fully with React, we recommend picking one of the React-powered frameworks popular in the community.
+>>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 
 </Intro>
 
-<Note>
 
+<<<<<<< HEAD
 **로컬에서 개발하려면 [Node.js](https://nodejs.org/ko/)를 설치해야 합니다.** 원한다면 프로덕션 환경에서도 Node.js를 사용할 수 있지만 꼭 필요하지는 않습니다. 많은 React 프레임워크가 정적 HTML/CSS/JS 폴더로 내보내는 기능을 지원합니다.
+=======
+You can use React without a framework, however we’ve found that most apps and sites eventually build solutions to common problems such as code-splitting, routing, data fetching, and generating HTML. These problems are common to all UI libraries, not just React.
+>>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 
-</Note>
+By starting with a framework, you can get started with React quickly, and avoid essentially building your own framework later.
+
+<DeepDive>
+
+#### Can I use React without a framework? {/*can-i-use-react-without-a-framework*/}
+
+You can definitely use React without a framework--that's how you'd [use React for a part of your page.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) **However, if you're building a new app or a site fully with React, we recommend using a framework.**
+
+Here's why.
+
+Even if you don't need routing or data fetching at first, you'll likely want to add some libraries for them. As your JavaScript bundle grows with every new feature, you might have to figure out how to split code for every route individually. As your data fetching needs get more complex, you are likely to encounter server-client network waterfalls that make your app feel very slow. As your audience includes more users with poor network conditions and low-end devices, you might need to generate HTML from your components to display content early--either on the server, or during the build time. Changing your setup to run some of your code on the server or during the build can be very tricky.
+
+**These problems are not React-specific. This is why Svelte has SvelteKit, Vue has Nuxt, and so on.** To solve these problems on your own, you'll need to integrate your bundler with your router and with your data fetching library. It's not hard to get an initial setup working, but there are a lot of subtleties involved in making an app that loads quickly even as it grows over time. You'll want to send down the minimal amount of app code but do so in a single client–server roundtrip, in parallel with any data required for the page. You'll likely want the page to be interactive before your JavaScript code even runs, to support progressive enhancement. You may want to generate a folder of fully static HTML files for your marketing pages that can be hosted anywhere and still work with JavaScript disabled. Building these capabilities yourself takes real work.
+
+**React frameworks on this page solve problems like these by default, with no extra work from your side.** They let you start very lean and then scale your app with your needs. Each React framework has a community, so finding answers to questions and upgrading tooling is easier. Frameworks also give structure to your code, helping you and others retain context and skills between different projects. Conversely, with a custom setup it's easier to get stuck on unsupported dependency versions, and you'll essentially end up creating your own framework—albeit one with no community or upgrade path (and if it's anything like the ones we've made in the past, more haphazardly designed).
+
+If your app has unusual constraints not served well by these frameworks, or you prefer to solve these problems yourself, you can roll your own custom setup with React. Grab `react` and `react-dom` from npm, set up your custom build process with a bundler like [Vite](https://vitejs.dev/) or [Parcel](https://parceljs.org/), and add other tools as you need them for routing, static generation or server-side rendering, and more.
+
+</DeepDive>
 
 ## 프로덕션 수준의 React 프레임워크 {/*production-grade-react-frameworks*/}
 
-### Next.js {/*nextjs*/}
+These frameworks support all the features you need to deploy and scale your app in production and are working towards supporting our [full-stack architecture vision](#which-features-make-up-the-react-teams-full-stack-architecture-vision). All of the frameworks we recommend are open source with active communities for support, and can be deployed to your own server or a hosting provider. If you’re a framework author interested in being included on this list, [please let us know](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+).
 
+<<<<<<< HEAD
 **[Next.js](https://nextjs.org/)는 풀스택 React 프레임워크입니다.** 다재다능한 도구이며, 정적인 블로그부터 복잡한 동적 애플리케이션까지 다양한 크기의 React 애플리케이션을 만들 수 있습니다. 새로운 Next.js 프로젝트를 작성하려면 터미널에서 다음을 실행하세요.
+=======
+### Next.js {/*nextjs-pages-router*/}
+
+**[Next.js' Pages Router](https://nextjs.org/) is a full-stack React framework.** It's versatile and lets you create React apps of any size--from a mostly static blog to a complex dynamic application. To create a new Next.js project, run in your terminal:
+>>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 
 <TerminalBlock>
 npx create-next-app@latest
@@ -64,6 +95,7 @@ Expo를 처음 사용하는 분이라면 [Expo 자습서](https://docs.expo.dev/
 
 Expo는 [Expo (기업)](https://expo.dev/about)이 관리합니다. Expo를 사용하여 애플리케이션을 작성하는 것은 무료이며 작성된 앱을 구글과 애플 앱 스토어에 올리는 데에도 제약이 없습니다. Expo는 추가로 사용할 수 있는 클라우드 서비스를 유료로 제공하고 있습니다.
 
+<<<<<<< HEAD
 <DeepDive>
 
 #### 프레임워크 없이 React를 사용할 수 있나요? {/*can-i-use-react-without-a-framework*/}
@@ -82,6 +114,9 @@ Expo는 [Expo (기업)](https://expo.dev/about)이 관리합니다. Expo를 사�
 </DeepDive>
 
 ## 최신 React 프레임워크 {/*bleeding-edge-react-frameworks*/}
+=======
+## Bleeding-edge React frameworks {/*bleeding-edge-react-frameworks*/}
+>>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 
 React를 지속적으로 개선할 방법을 찾아가는 과정에서, 우리는 React를 프레임워크(특히 라우팅, 번들링, 서버 기술)와 더 밀접하게 통합하는 것이 React 사용자가 더 나은 앱을 만드는 데 도움을 줄 수 있는 가장 큰 기회라는 것을 깨달았습니다. Next.js 팀은 [React Server Component](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)와 같은 가장 최신의 React 기능을 프레임워크에 구애받지 않는 형태로 연구, 개발, 통합, 테스트하는 데에 협력하기로 합의했습니다.
 

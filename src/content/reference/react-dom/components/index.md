@@ -32,7 +32,25 @@ React는 브라우저에 내장된 모든 [HTML](https://developer.mozilla.org/e
 
 ---
 
+<<<<<<< HEAD
 ## 모든 HTML 컴포넌트 {/*all-html-components*/}
+=======
+## Resource and Metadata Components {/*resource-and-metadata-components*/}
+
+These bulit-in browser components let you load external resources or annotate the document with metadata:
+
+* [`<link>`](/reference/react-dom/components/link)
+* [`<meta>`](/reference/react-dom/components/meta)
+* [`<script>`](/reference/react-dom/components/script)
+* [`<style>`](/reference/react-dom/components/style)
+* [`<title>`](/reference/react-dom/components/title)
+
+They are special in React because React can render them into the document head, suspend while resources are loading, and enact other behaviors that are described on the reference page for each specific component.
+
+---
+
+## All HTML components {/*all-html-components*/}
+>>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 
 React는 브라우저에 내장된 모든 HTML 컴포넌트를 지원합니다. 이는 다음과 같은 컴포넌트를 포함합니다.
 

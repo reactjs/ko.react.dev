@@ -268,11 +268,19 @@ body {
 
 로컬 개발 환경을 사용하여 이 자습서를 진행할 수도 있습니다. 로컬 환경에서 진행을 원한다면 아래와 같이 수행하세요.
 
+<<<<<<< HEAD
 1. [Node.js](https://nodejs.org/ko/)를 설치하세요.
 1. 앞서 열었던 CodeSandBox 탭에서 왼쪽 위 모서리의 버튼을 누르고 메뉴를 열어 **File > Export to ZIP**을 선택하여 보관된 파일을 로컬로 내려받으세요.
 1. 파일의 압축을 풀고, 터미널을 열어 `cd` 명령어로 압축을 푼 디렉터리로 이동하세요.
 1. `npm install` 명령어를 실행하여 의존성을 설치하세요.
 1. `npm start` 명령어를 실행하여 로컬 서버를 시작하고 프롬프트에 따라 브라우저에서 실행 중인 코드를 확인하세요.
+=======
+1. Install [Node.js](https://nodejs.org/en/)
+1. In the CodeSandbox tab you opened earlier, press the top-left corner button to open the menu, and then choose **Download Sandbox** in that menu to download an archive of the files locally
+1. Unzip the archive, then open a terminal and `cd` to the directory you unzipped
+1. Install the dependencies with `npm install`
+1. Run `npm start` to start a local server and follow the prompts to view the code running in a browser
+>>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 
 문제가 생기더라도 좌절하지 마세요! 로컬 환경 대신 온라인에서 자습서를 진행하시고 로컬 설정은 나중에 다시 시도하세요.
 
@@ -341,7 +349,11 @@ import './styles.css';
 import App from './App';
 ```
 
+<<<<<<< HEAD
 1~5줄은 아래에 있는 필요한 모든 코드를 한 곳으로 가져옵니다.
+=======
+Lines 1-5 bring all the necessary pieces together: 
+>>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 
 * React
 * 웹 브라우저와 상호작용하는 React의 라이브러리 (React DOM)

@@ -8,7 +8,11 @@ title: 리액트(React) 참조 개요
 
 </Intro>
 
+<<<<<<< HEAD
 리액트 참조 문서는 다음과 같은 기능적인 하위 섹션으로 구성되어 있습니다:
+=======
+The React reference documentation is broken down into functional subsections:
+>>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 
 ## React {/*react*/}
 
