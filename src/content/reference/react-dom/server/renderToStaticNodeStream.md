@@ -16,7 +16,7 @@ const stream = renderToStaticNodeStream(reactNode)
 
 ---
 
-## 참조 {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `renderToStaticNodeStream(reactNode)` {/*rendertostaticnodestream*/}
 
