@@ -38,7 +38,7 @@ title: 렌더링 그리고 커밋
 
 ### 초기 렌더링 {/*initial-render*/}
 
-When your app starts, you need to trigger the initial render. Frameworks and sandboxes sometimes hide this code, but it's done by calling [`createRoot`](/reference/react-dom/client/createRoot) with the target DOM node, and then calling its `render` method with your component:
+앱을 시작할 때 초기 렌더링을 트리거해야 합니다. 프레임워크와 샌드박스는 때때로 이 코드를 숨기곤 하지만, 대상 DOM 노드와 함께 [`createRoot`](/reference/react-dom/client/createRoot)를 호출한 다음 해당 컴포넌트로 `render` 메서드를 호출하면 이 작업이 완료됩니다.
 
 <Sandpack>
 
@@ -67,7 +67,7 @@ export default function Image() {
 
 ### State 업데이트 시 리렌더링 {/*re-renders-when-state-updates*/}
 
-Once the component has been initially rendered, you can trigger further renders by updating its state with the [`set` function](/apis/usestate#setstate). Updating your component's state automatically queues a render. (You can imagine these as a restaurant guest ordering tea, dessert, and all sorts of things after putting in their first order, depending on the state of their thirst or hunger.)
+컴포넌트가 처음으로 렌더링 된 후에는 [`set` 함수](/reference/react/useState#setstate)를 통해 상태를 업데이트하여 추가적인 렌더링을 트리거할 수 있습니다. 컴포넌트의 상태를 업데이트하면 자동으로 렌더링 대기열에 추가됩니다. (이것은 레스토랑의 손님이 첫 주문 이후에 갈증이나 배고픔의 상태에 따라 차, 디저트 등의 메뉴를 주문하는 것으로 상상해 볼 수 있습니다.)
 
 <IllustrationBlock sequential>
   <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. They patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
@@ -142,7 +142,7 @@ img { margin: 0 10px 10px 0; }
 
 #### Optimizing performance {/*optimizing-performance*/}
 
-업데이트된 컴포넌트 내에 중첩된 모든 컴포넌트를 렌더링하는 기본 동작은 업데이트된 컴포넌트가 트리에서 매우 높은 곳에 있는 경우 성능 최적화되지 않습니다. 성능 문제가 발생하는 경우 [성능](/learn/performance) 섹션에 설명된 몇 가지 옵트인 방식으로 문제를 해결 할 수 있습니다. **성급하게 최적화하지 마세요!**
+업데이트된 컴포넌트 내에 중첩된 모든 컴포넌트를 렌더링하는 기본 동작은 업데이트된 컴포넌트가 트리에서 매우 높은 곳에 있는 경우 성능 최적화되지 않습니다. 성능 문제가 발생하는 경우 [성능](https://ko.legacy.reactjs.org/docs/optimizing-performance.html) 섹션에 설명된 몇 가지 옵트인 방식으로 문제를 해결 할 수 있습니다. **성급하게 최적화하지 마세요!**
 
 </DeepDive>
 
