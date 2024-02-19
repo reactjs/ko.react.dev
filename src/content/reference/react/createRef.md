@@ -25,7 +25,7 @@ class MyInput extends Component {
 
 ---
 
-## 참조 {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `createRef()` {/*createref*/}
 

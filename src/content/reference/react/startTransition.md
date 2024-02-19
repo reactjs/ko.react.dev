@@ -16,7 +16,7 @@ startTransition(scope)
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `startTransition(scope)` {/*starttransitionscope*/}
 

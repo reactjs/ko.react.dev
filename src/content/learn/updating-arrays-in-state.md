@@ -452,7 +452,7 @@ nextList[0].seen = true; // 문제: list[0]을 변경시킵니다.
 setList(nextList);
 ```
 
-`nextList`와 `list`는 서로 다른 배열이지만, **`nextList[0]`과 `list[0]`은 동일한 객체를 가리킵니다**. 따라서 `nextList[0].seen`을 변경하면 `list[0].seen`도 변경됩니다. 이것은 state 변경이므로 피해야 합니다. [중첩된 JavaScript 객체 업데이트](docs/updating-objects-in-state#updating-a-nested-object)와 유사한 방식으로 이 문제를 해결할 수 있습니다. 변경하려는 개별 항목을 변경하는 대신 복사합니다. 방법은 다음과 같습니다.
+`nextList`와 `list`는 서로 다른 배열이지만, **`nextList[0]`과 `list[0]`은 동일한 객체를 가리킵니다**. 따라서 `nextList[0].seen`을 변경하면 `list[0].seen`도 변경됩니다. 이것은 state 변경이므로 피해야 합니다. [중첩된 JavaScript 객체 업데이트](/learn/updating-objects-in-state#updating-a-nested-object)와 유사한 방식으로 이 문제를 해결할 수 있습니다. 변경하려는 개별 항목을 변경하는 대신 복사합니다. 방법은 다음과 같습니다.
 
 ## 배열 내부의 객체 업데이트하기 {/*updating-objects-inside-arrays*/}
 

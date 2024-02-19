@@ -19,7 +19,7 @@ title: <Fragment> (<>...</>)
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `<Fragment>` {/*fragment*/}
 
