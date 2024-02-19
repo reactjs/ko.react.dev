@@ -16,7 +16,7 @@ const root = hydrateRoot(domNode, reactNode, options?)
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `hydrateRoot(domNode, reactNode, options?)` {/*hydrateroot*/}
 

@@ -23,7 +23,7 @@ const cachedFn = cache(fn);
 
 ---
 
-## 참조 {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `cache(fn)` {/*cache*/}
 

@@ -22,7 +22,7 @@ const stream = await renderToReadableStream(reactNode, options?)
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `renderToReadableStream(reactNode, options?)` {/*rendertoreadablestream*/}
 

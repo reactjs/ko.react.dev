@@ -17,7 +17,7 @@ const SomeContext = createContext(defaultValue)
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `createContext(기본값)` {/*createcontext*/}
 
