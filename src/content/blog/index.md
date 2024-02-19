@@ -10,8 +10,21 @@ title: React 블로그
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<<<<<<< HEAD
 <BlogCard title="React Canaries: Meta 외부에서 점진적 기능 롤아웃 활성화하기" date="2023년 5월 3일" url="/blog/2023/05/03/react-canaries">
 Meta가 오랫동안 내부적으로 최첨단 버전의 React를 사용해 온 것과 유사하게, 새로운 기능이 안정된 버전으로 출시되기 전에 디자인이 거의 완성되는 즉시 개별적인 새로운 기능을 채택할 수 있는 옵션을 React 커뮤니티에 제공하고자 합니다. 공식적으로 지원하는 새로운 Canary 릴리즈 채널을 소개합니다. 프레임워크와 같이 엄선된 설정을 통해 개별 React 기능의 채택을 React 릴리즈 일정에서 분리할 수 있습니다.
+=======
+<BlogCard title="React Labs: What We've Been Working On – February 2024" date="February 15, 2024" url="/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024">
+
+In React Labs posts, we write about projects in active research and development. Since our last update, we've made significant progress on React Compiler, new features, and React 19, and we'd like to share what we learned.
+
+</BlogCard>
+
+<BlogCard title="React Canaries: Incremental Feature Rollout Outside Meta" date="May 3, 2023" url="/blog/2023/05/03/react-canaries">
+
+Traditionally, new React features used to only be available at Meta first, and land in the open source releases later. We'd like to offer the React community an option to adopt individual new features as soon as their design is close to final--similar to how Meta uses React internally. We are introducing a new officially supported Canary release channel. It lets curated setups like frameworks decouple adoption of individual React features from the React release schedule.
+
+>>>>>>> 35530eea4bb8ba2567c1f57f1ccf730cc89b76de
 </BlogCard>
 
 <BlogCard title="React Labs: 그동안의 작업 – 2023년 3월" date="2023년 3월 22일" url="/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023">
