@@ -448,11 +448,11 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-여기서는 두 컨텍스트에 모두 기본값으로 `null`을 전달하고 있습니다. 실제 값은 `TaskApp` 컴포넌트에서 제공될 것입니다.
+여기서는 두 context에 모두 기본값으로 `null`을 전달하고 있습니다. 실제 값은 `TaskApp` 컴포넌트에서 제공될 것입니다.
 
 ### 2단계: State과 dispatch 함수를 context에 넣기 {/*step-2-put-state-and-dispatch-into-context*/}
 
-이제 `TaskApp` 컴포넌트에서 두 컨텍스트를 모두 가져올 수 있습니다. `useReducer()`에서 반환된 `tasks` 및 `dispatch`를 가져와 아래 트리 전체에 [제공](/learn/passing-data-deeply-with-context#step-3-provide-the-context)하세요.
+이제 `TaskApp` 컴포넌트에서 두 context를 모두 가져올 수 있습니다. `useReducer()`에서 반환된 `tasks` 및 `dispatch`를 가져와 아래 트리 전체에 [제공](/learn/passing-data-deeply-with-context#step-3-provide-the-context)하세요.
 
 ```js {4,7-8}
 import { TasksContext, TasksDispatchContext } from './TasksContext.js';
@@ -713,7 +713,7 @@ export default function AddTask({ onAddTask }) {
     // ...
 ```
 
-**`TaskApp` 컴포넌트는 어떤 이벤트 핸들러도 아래로 전달하지 않으며, `TaskList`도 `Task` 컴포넌트로 이벤트 핸들러를 전달하지 않습니다.** 각 컴포넌트는 필요한 컨텍스트를 읽습니다.
+**`TaskApp` 컴포넌트는 어떤 이벤트 핸들러도 아래로 전달하지 않으며, `TaskList`도 `Task` 컴포넌트로 이벤트 핸들러를 전달하지 않습니다.** 각 컴포넌트는 필요한 context를 읽습니다.
 
 <Sandpack>
 
