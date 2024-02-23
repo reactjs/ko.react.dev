@@ -140,7 +140,7 @@ img { margin: 0 10px 10px 0; }
 
 <DeepDive>
 
-#### Optimizing performance {/*optimizing-performance*/}
+#### 성능 최적화 {/*optimizing-performance*/}
 
 업데이트된 컴포넌트 내에 중첩된 모든 컴포넌트를 렌더링하는 기본 동작은 업데이트된 컴포넌트가 트리에서 매우 높은 곳에 있는 경우 성능 최적화되지 않습니다. 성능 문제가 발생하는 경우 [성능](https://ko.legacy.reactjs.org/docs/optimizing-performance.html) 섹션에 설명된 몇 가지 옵트인 방식으로 문제를 해결 할 수 있습니다. **성급하게 최적화하지 마세요!**
 
