@@ -207,9 +207,9 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-A reducer helps keep the event handlers short and concise. However, as your app grows, you might run into another difficulty. **Currently, the `tasks` state and the `dispatch` function are only available in the top-level `TaskApp` component.** To let other components read the list of tasks or change it, you have to explicitly [pass down](/learn/passing-props-to-a-component) the current state and the event handlers that change it as props.
+Reducer는 이벤트 핸들러를 짧고 간결하게 유지하는 데 도움이 됩니다. 그러나 앱이 커지면 다른 어려움에 부딪힐지도 모릅니다. **현재 `tasks` state 및 `dispatch` 함수는 최상위 `TaskApp` 컴포넌트에서만 사용할 수 있습니다.** 다른 컴포넌트가 작업 목록을 읽거나 변경하려면 현재 state와 해당 state를 변경하는 이벤트 핸들러를 명시적으로 [props로 전달](/learn/passing-props-to-a-component)해야 합니다.
 
-For example, `TaskApp` passes a list of tasks and the event handlers to `TaskList`:
+예를 들어, `TaskApp`은 tasks 리스트와 이벤트 핸들러를 `TaskList`에 전달합니다.
 
 ```js
 <TaskList
@@ -231,7 +231,7 @@ For example, `TaskApp` passes a list of tasks and the event handlers to `TaskLis
 
 지금처럼 간단한 예시에서는 잘 동작하지만, 수십 수백개의 컴포넌트를 거쳐 state나 함수를 전달하기는 쉽지 않습니다.
 
-This is why, as an alternative to passing them through props, you might want to put both the `tasks` state and the `dispatch` function [into context](/learn/passing-data-deeply-with-context). **This way, any component below `TaskApp` in the tree can read the tasks and dispatch actions without the repetitive "prop drilling".**
+이것이 props를 통한 전달 대신 `tasks` state와 `dispatch` 함수를 모두 [context에 넣고](/learn/passing-data-deeply-with-context) 싶은 이유입니다. **이렇게 하면 트리에서 `TaskApp` 아래에 있는 모든 컴포넌트가 "prop drilling"이라는 반복적인 작업 없이 tasks와 dispatch actions를 읽을 수 있습니다.**
 
 Reducer와 context를 결합하는 방법은 아래와 같습니다.
 
@@ -448,11 +448,11 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-Here, you're passing `null` as the default value to both contexts. The actual values will be provided by the `TaskApp` component.
+여기서는 두 컨텍스트에 모두 기본값으로 `null`을 전달하고 있습니다. 실제 값은 `TaskApp` 컴포넌트에서 제공될 것입니다.
 
 ### 2단계: State과 dispatch 함수를 context에 넣기 {/*step-2-put-state-and-dispatch-into-context*/}
 
-Now you can import both contexts in your `TaskApp` component. Take the `tasks` and `dispatch` returned by `useReducer()` and [provide them](/learn/passing-data-deeply-with-context#step-3-provide-the-context) to the entire tree below:
+이제 `TaskApp` 컴포넌트에서 두 컨텍스트를 모두 가져올 수 있습니다. `useReducer()`에서 반환된 `tasks` 및 `dispatch`를 가져와 아래 트리 전체에 [제공](/learn/passing-data-deeply-with-context#step-3-provide-the-context)하세요.
 
 ```js {4,7-8}
 import { TasksContext, TasksDispatchContext } from './TasksContext.js';
@@ -685,7 +685,7 @@ ul, li { margin: 0; padding: 0; }
 </TasksContext.Provider>
 ```
 
-대신 필요한 컴포넌트에서는 `TaskContext`에서 task 리스트를 읽을 수 있습니다.
+대신 필요한 컴포넌트에서는 `TaskContext`에서 tasks 리스트를 읽을 수 있습니다.
 
 ```js {2}
 export default function TaskList() {
@@ -693,7 +693,7 @@ export default function TaskList() {
   // ...
 ```
 
-task 리스트를 업데이트하기 위해서 컴포넌트에서 context의 `dispatch` 함수를 읽고 호출할 수 있습니다.
+tasks 리스트를 업데이트하기 위해서 컴포넌트에서 context의 `dispatch` 함수를 읽고 호출할 수 있습니다.
 
 ```js {3,9-13}
 export default function AddTask({ onAddTask }) {
@@ -713,7 +713,7 @@ export default function AddTask({ onAddTask }) {
     // ...
 ```
 
-**The `TaskApp` component does not pass any event handlers down, and the `TaskList` does not pass any event handlers to the `Task` component either.** Each component reads the context that it needs:
+**`TaskApp` 컴포넌트는 어떤 이벤트 핸들러도 아래로 전달하지 않으며, `TaskList`도 `Task` 컴포넌트로 이벤트 핸들러를 전달하지 않습니다.** 각 컴포넌트는 필요한 컨텍스트를 읽습니다.
 
 <Sandpack>
 
@@ -897,7 +897,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-**The state still "lives" in the top-level `TaskApp` component, managed with `useReducer`.** But its `tasks` and `dispatch` are now available to every component below in the tree by importing and using these contexts.
+**State는 여전히 최상위 `TaskApp` 컴포넌트에서 `useReducer`로 관리되고 있습니다.** 그러나 이제 context를 가져와 트리 아래의 모든 컴포넌트에서 해당 `tasks` 및 `dispatch`를 사용할 수 있습니다.
 
 ## 하나의 파일로 합치기 {/*moving-all-wiring-into-a-single-file*/}
 
@@ -930,7 +930,7 @@ export function TasksProvider({ children }) {
 }
 ```
 
-**This removes all the complexity and wiring from your `TaskApp` component:**
+**이렇게 하면 `TaskApp` 컴포넌트의 복잡성과 연결이 모두 제거됩니다.**
 
 <Sandpack>
 
