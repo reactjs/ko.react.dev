@@ -74,7 +74,7 @@ title: "공통 컴포넌트 (예시: <div>)"
 * `onCompositionStartCapture`: `onCompositionStart`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onCompositionEnd`](https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionend_event):  [`CompositionEvent` 핸들러](#compositionevent-handler) 함수입니다. [입력 메서드 편집기](https://developer.mozilla.org/en-US/docs/Glossary/Input_method_editor)가 구성 세션을 완료하거나 취소할 때 발생합니다.
 * `onCompositionEndCapture`: `onCompositionEnd`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onCompositionUpdate`](https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionupdate_event):  [`CompositionE드vent` 핸들러](#compositionevent-handler) 함수입니다. [입력 메서드 편집기](https://developer.mozilla.org/en-US/docs/Glossary/Input_method_editor)에 새로운 문자가 입력되면 발생합니다.
+* [`onCompositionUpdate`](https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionupdate_event):  [`CompositionEvent` 핸들러](#compositionevent-handler) 함수입니다. [입력 메서드 편집기](https://developer.mozilla.org/en-US/docs/Glossary/Input_method_editor)에 새로운 문자가 입력되면 발생합니다.
 * `onCompositionUpdateCapture`: `onCompositionUpdate`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onContextMenu`](https://developer.mozilla.org/ko/docs/Web/API/Element/contextmenu_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 컨텍스트 메뉴를 열려고 할 때 발생합니다.
 * `onContextMenuCapture`: `onContextMenu`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
