@@ -192,7 +192,11 @@ experimental_taintUniqueValue(
 );
 ```
 
+<<<<<<< HEAD
 이제 다른 사용자가 이 패스워드를 클라이언트 컴포넌트로 전달하거나, Server Action으로 클라이언트 컴포넌트에 패스워드를 보내려고 할 때마다 `taintUniqueValue`를 호출했을 때 정의한 메시지와 함께 오류가 발생합니다.
+=======
+Now whenever anyone tries to pass this password to a Client Component, or send the password to a Client Component with a Server Action, an error will be thrown with message you defined when you called `taintUniqueValue`.
+>>>>>>> 081d1008dd1eebffb9550a3ff623860a7d977acf
 
 </DeepDive>
 

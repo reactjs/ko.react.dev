@@ -7,7 +7,7 @@ title: renderToStaticNodeStream
 `renderToStaticNodeStream`은 상호작용하지 않는 React 트리를 [Node.js Readable Stream](https://nodejs.org/api/stream.html#readable-streams)으로 렌더링합니다.
 
 ```js
-const stream = renderToStaticNodeStream(reactNode)
+const stream = renderToStaticNodeStream(reactNode, options?)
 ```
 
 </Intro>
@@ -18,7 +18,7 @@ const stream = renderToStaticNodeStream(reactNode)
 
 ## 레퍼런스 {/*reference*/}
 
-### `renderToStaticNodeStream(reactNode)` {/*rendertostaticnodestream*/}
+### `renderToStaticNodeStream(reactNode, options?)` {/*rendertostaticnodestream*/}
 
 서버에서 `renderToStaticNodeStream`을 호출하여 [Node.js Readable Stream](https://nodejs.org/api/stream.html#readable-streams)을 불러옵니다.
 

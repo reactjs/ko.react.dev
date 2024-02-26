@@ -7,7 +7,7 @@ title: renderToStaticMarkup
 `renderToStaticMarkup` 상호작용하지 않는 React 트리를 HTML 문자열로 렌더링합니다.
 
 ```js
-const html = renderToStaticMarkup(reactNode)
+const html = renderToStaticMarkup(reactNode, options?)
 ```
 
 </Intro>
@@ -18,7 +18,7 @@ const html = renderToStaticMarkup(reactNode)
 
 ## 레퍼런스 {/*reference*/}
 
-### `renderToStaticMarkup(reactNode)` {/*rendertostaticmarkup*/}
+### `renderToStaticMarkup(reactNode, options?)` {/*rendertostaticmarkup*/}
 
 서버에서 `renderToStaticMarkup`을 호출하여 앱을 HTML로 렌더링합니다.
 

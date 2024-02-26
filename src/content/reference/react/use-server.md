@@ -87,12 +87,21 @@ Server Action에서 중요한 데이터를 전송하지 않도록 하기 위해,
 * Server Action인 함수
 * [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
+<<<<<<< HEAD
 특히 다음은 지원되지 않습니다.
 * React 엘리먼트 또는 [JSX](https://react.dev/learn/writing-markup-with-jsx)
 * 컴포넌트 함수 또는 Server Action이 아닌 다른 함수를 포함하는 함수
 * [클래스](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 * 클래스의 인스턴스인 객체(언급된 내장 객체 제외)또는 [null 프로토타입](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)이 있는 개체
 * 전역에 등록되지 않은 Symbol, 예. `Symbol('my new symbol')`
+=======
+Notably, these are not supported:
+* React elements, or [JSX](/learn/writing-markup-with-jsx)
+* Functions, including component functions or any other function that is not a Server Action
+* [Classes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
+* Objects that are instances of any class (other than the built-ins mentioned) or objects with [a null prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
+* Symbols not registered globally, ex. `Symbol('my new symbol')`
+>>>>>>> 081d1008dd1eebffb9550a3ff623860a7d977acf
 
 지원되는 직렬화 가능한 반환 값은 경계 클라이언트 컴포넌트의 [직렬화 가능한 props](/reference/react/use-client#passing-props-from-server-to-client-components)와 동일합니다.
 
