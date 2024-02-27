@@ -10,7 +10,7 @@ title: "내장된 React Hook"
 
 ---
 
-## State Hook {/*state-hooks*/}
+## State Hooks {/*state-hooks*/}
 
 *State*를 통해 컴포넌트는 [사용자 입력과 같은 정보를 "기억"할 수 있습니다.](/learn/state-a-components-memory) 예를 들어, 폼 컴포넌트는 state를 사용하여 입력값을 저장할 수 있고, 이미지 갤러리 컴포넌트는 state를 사용하여 선택한 이미지 인덱스를 저장할 수 있습니다.
 
@@ -27,7 +27,7 @@ function ImageGallery() {
 
 ---
 
-## Context Hook {/*context-hooks*/}
+## Context Hooks {/*context-hooks*/}
 
 *Context*를 사용하면 컴포넌트가 [멀리 있는 부모 컴포넌트로부터 props로 전달하지 않으면서 정보를 받을 수 있습니다.](/learn/passing-props-to-a-component) 예를 들어,
 애플리케이션의 최상위 컴포넌트는 현재 UI 테마를 아래의 모든 컴포넌트에 깊이와 상관없이 전달할 수 있습니다.
@@ -42,7 +42,7 @@ function Button() {
 
 ---
 
-## Ref Hook {/*ref-hooks*/}
+## Ref Hooks {/*ref-hooks*/}
 
 *Ref*를 사용하면 컴포넌트가 DOM 노드나 timeout ID와 같이 [렌더링에 사용되지 않는 일부 정보를 보유할 수 있습니다.](/learn/referencing-values-with-refs) state와 달리, ref를 업데이트해도 컴포넌트가 다시 렌더링 되지 않습니다. Ref는 React 패러다임의 "탈출구"입니다. 내장된 브라우저 API와 같이, React가 아닌 시스템으로 작업해야 할 때 유용합니다.
 
@@ -57,9 +57,9 @@ function Form() {
 
 ---
 
-## Effect Hook {/*effect-hooks*/}
+## Effect Hooks {/*effect-hooks*/}
 
-*Effect*를 통해 컴포넌트를 [외부 시스템에 연결하고 동기화할 수 있습니다.](/learn/synchronizing-with-effects) 여기에는 네트워크, 브라우저 DOM, 애니메이션, 다른 UI 라이브러리를 사용하여 작성된 위젯, 기타 React가 아닌 코드를 다루는 것이 포함됩니다.
+*Effects*를 통해 컴포넌트를 [외부 시스템에 연결하고 동기화할 수 있습니다.](/learn/synchronizing-with-effects) 여기에는 네트워크, 브라우저 DOM, 애니메이션, 다른 UI 라이브러리를 사용하여 작성된 위젯, 기타 React가 아닌 코드를 다루는 것이 포함됩니다.
 
 * [`useEffect`](/reference/react/useEffect)는 컴포넌트를 외부 시스템에 연결합니다.
 
@@ -82,7 +82,7 @@ Effect는 React 패러다임의 "탈출구"입니다. 애플리케이션의 데�
 
 ---
 
-## Performance Hook {/*performance-hooks*/}
+## Performance Hooks {/*performance-hooks*/}
 
 재렌더링 성능을 최적화하는 일반적인 방법은 불필요한 작업을 건너뛰는 것입니다. 예를 들어, 이전 렌더링 이후 데이터가 변경되지 않은 경우 캐시된 계산을 재사용하거나 재렌더링을 건너뛰도록 React에 지시할 수 있습니다.
 
@@ -107,7 +107,7 @@ function TodoList({ todos, tab, theme }) {
 
 ---
 
-## Resource Hook {/*resource-hooks*/}
+## Resource Hooks {/*resource-hooks*/}
 
 *resource*를 state의 일부로 포함하지 않고도 컴포넌트에서 resource에 액세스할 수 있습니다. 예를 들어, 구성 요소는 Promise에서 메시지를 읽거나 context에서 스타일 정보를 읽을 수 있습니다.
 
@@ -125,7 +125,7 @@ function MessageComponent({ messagePromise }) {
 
 ---
 
-## 기타 Hook {/*other-hooks*/}
+## 기타 Hooks {/*other-hooks*/}
 
 다음 Hook은 대부분 라이브러리 작성자에게 유용하며 애플리케이션 코드에서는 일반적으로 사용되지 않습니다.
 
@@ -135,5 +135,5 @@ function MessageComponent({ messagePromise }) {
 
 ---
 
-## 나만의 Hook {/*your-own-hooks*/}
+## 나만의 Hooks {/*your-own-hooks*/}
 또한 자바스크립트 함수로 [나만의 커스텀 Hook을 정의할 수도 있습니다.](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component)
