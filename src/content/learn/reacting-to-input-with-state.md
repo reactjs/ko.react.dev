@@ -240,7 +240,7 @@ export default function Form({
 
 <DeepDive>
 
-#### Displaying many visual states at once {/*displaying-many-visual-states-at-once*/}
+#### 많은 시각적 state를 한 번에 보여주기 {/*displaying-many-visual-states-at-once*/}
 
 컴포넌트가 많은 시각적 state를 가지고 있다면 한 페이지에서 모두 보여주는 것도 편하게 할 수 있습니다.
 
@@ -391,7 +391,7 @@ const [status, setStatus] = useState('typing'); // 'typing', 'submitting', or 's
 
 <DeepDive>
 
-#### Eliminating "impossible" states with a reducer {/*eliminating-impossible-states-with-a-reducer*/}
+#### Reducer를 사용하여 "불가능한" state 제거 {/*eliminating-impossible-states-with-a-reducer*/}
 
 여기 폼의 state를 나타내는데 충분한 세 가지 변수가 있습니다. 하지만 세 변수는 여전히 말이 안 되는 일부 중간 state를 가지고 있습니다. 예를 들면 `error`가 null이 아닌데 `status`가 `success`인 것은 말이 되지 않습니다. state를 조금 더 정확하게 모델링하기 위해서는 [리듀서로 분리](/learn/extracting-state-logic-into-a-reducer)하는 방법도 있습니다. 리듀서를 사용하면 여러 state 변수를 하나의 객체로 통합하고 관련된 모든 로직도 합칠 수 있습니다!
 
