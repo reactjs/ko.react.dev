@@ -555,13 +555,7 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-<<<<<<< HEAD
-(또는 선택된 인덱스를 state로 유지할 수 있습니다.)
-
 State는 다음과 같이 중복되었습니다.
-=======
-The state used to be duplicated like this:
->>>>>>> 081d1008dd1eebffb9550a3ff623860a7d977acf
 
 * `items = [{ id: 0, title: 'pretzels'}, ...]`
 * `selectedItem = {id: 0, title: 'pretzels'}`

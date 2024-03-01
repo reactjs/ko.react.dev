@@ -361,25 +361,16 @@ export default async function App() {
 
 경우에 따라 `use`에 전달된 Promise가 거부될 수 있습니다. 거부된 프로미스를 처리하는 방법은 2가지가 존재합니다.
 
-<<<<<<< HEAD
 1. [error boundary를 사용하여 오류를 표시하기](#displaying-an-error-to-users-with-error-boundary)
 2. [`Promise.catch`로 대체 값 제공하기](#providing-an-alternative-value-with-promise-catch)
-=======
-1. [Displaying an error to users with an error boundary.](#displaying-an-error-to-users-with-error-boundary)
-2. [Providing an alternative value with `Promise.catch`](#providing-an-alternative-value-with-promise-catch)
->>>>>>> 081d1008dd1eebffb9550a3ff623860a7d977acf
 
 <Pitfall>
 
 `use`는 try-catch 블록에서 호출할 수 없습니다. try-catch 블록 대신 [컴포넌트를 Error Boundary로 래핑]((#displaying-an-error-to-users-with-error-boundary))하거나 Promise의 [`catch` 메서드를 사용하여 대체 값을 제공합니다.]((#providing-an-alternative-value-with-promise-catch))
 </Pitfall>
 
-<<<<<<< HEAD
-####  error boudary를 사용하여 오류 표시하기 {/*error-boudary를-사용하여-오류-표시하기*/}
+####  error boundary를 사용하여 오류 표시하기 {/*error-boundary를-사용하여-오류-표시하기*/}
  {/*displaying-an-error-to-users-with-error-boundary*/}
-=======
-#### Displaying an error to users with an error boundary {/*displaying-an-error-to-users-with-error-boundary*/}
->>>>>>> 081d1008dd1eebffb9550a3ff623860a7d977acf
 
 Promise가 거부될 때 오류를 표시하고 싶다면 [error boundary](https://ko.react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용합니다. error boundary를 사용하려면 `use` Hook을 호출하는 컴포넌트를 error boundary로 래핑합니다. `use`에 전달된 Promise가 거부되면 error boundary에 대한 fallback이 표시됩니다.
 

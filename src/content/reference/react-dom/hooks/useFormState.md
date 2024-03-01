@@ -57,14 +57,9 @@ Server Action과 함께 사용하는 경우, `useFormState`를 사용하여 hydr
 
 #### 매개변수 {/*parameters*/}
 
-<<<<<<< HEAD
 * `fn`: 폼이 제출되거나 버튼을 눌렀을 때 호출될 함수입니다. 함수가 실행될 때, 첫 번째 인수로 폼의 이전 state를 전달합니다. state는 초기에 전달한 `initialState`이고, 이후에는 이전 실행의 반환값입니다. 그 후 일반적으로 폼 액션에 전달하는 인수들이 이어집니다.
 * `initialState`: 초기 state로 설정하고자 하는 값으로, 직렬화 할 수 있는 값일 수 있습니다. 액션이 처음 호출된 후에는 이 인수를 무시합니다.
-=======
-* `fn`: The function to be called when the form is submitted or button pressed. When the function is called, it will receive the previous state of the form (initially the `initialState` that you pass, subsequently its previous return value) as its initial argument, followed by the arguments that a form action normally receives.
-* `initialState`: The value you want the state to be initially. It can be any serializable value. This argument is ignored after the action is first invoked.
 * **optional** `permalink`: A string containing the unique page URL that this form modifies. For use on pages with dynamic content (eg: feeds) in conjunction with progressive enhancement: if `fn` is a [server action](/reference/react/use-server) and the form is submitted before the JavaScript bundle loads, the browser will navigate to the specified permalink URL, rather than the current page's URL. Ensure that the same form component is rendered on the destination page (including the same action `fn` and `permalink`) so that React knows how to pass the state through. Once the form has been hydrated, this parameter has no effect.
->>>>>>> 081d1008dd1eebffb9550a3ff623860a7d977acf
 
 {/* TODO T164397693: link to serializable values docs once it exists */}
 
@@ -110,11 +105,7 @@ function MyComponent() {
 
 폼을 제출하면 전달한 <CodeStep step={3}>액션</CodeStep> 함수가 호출됩니다. 액션의 반환값은 폼의 새로운 <CodeStep step={1}>현재 state</CodeStep>가 됩니다.
 
-<<<<<<< HEAD
 전달한 <CodeStep step={3}>액션</CodeStep>은 또한 폼의 <CodeStep step={1}>현재 state</CodeStep>를 새로운 첫 번째 인수로 받게 됩니다. 폼이 처음 제출되면 제공한 <CodeStep step={4}>초기 state</CodeStep>이며, 이후 제출에서는 액션이 마지막으로 호출된 시점의 반환값이 됩니다. 나머지 인수는 `useFormState`를 사용하지 않았을 때와 동일합니다.
-=======
-The <CodeStep step={3}>action</CodeStep> that you provide will also receive a new first argument, namely the <CodeStep step={1}>current state</CodeStep> of the form. The first time the form is submitted, this will be the <CodeStep step={4}>initial state</CodeStep> you provided, while with subsequent submissions, it will be the return value from the last time the action was called. The rest of the arguments are the same as if `useFormState` had not been used.
->>>>>>> 081d1008dd1eebffb9550a3ff623860a7d977acf
 
 ```js [[3, 1, "action"], [1, 1, "currentState"]]
 function action(currentState, formData) {

@@ -159,15 +159,9 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
                   }
                   {showSurvey && (
                     <>
-<<<<<<< HEAD
-                      <div className="flex flex-col items-center m-4 p-4">
-                        <p className="font-bold text-primary dark:text-primary-dark text-lg mb-4">
-                          이 문서가 마음에 드시나요?
-=======
                       <div className="flex flex-col items-center p-4 m-4">
                         <p className="mb-4 text-lg font-bold text-primary dark:text-primary-dark">
-                          How do you like these docs?
->>>>>>> 081d1008dd1eebffb9550a3ff623860a7d977acf
+                          이 문서가 마음에 드시나요?
                         </p>
                         <div>
                           <ButtonLink

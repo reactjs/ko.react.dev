@@ -12,10 +12,6 @@
       "skipBreadcrumb": true,
       "routes": [
         {
-<<<<<<< HEAD
-          "title": "React Canaries: Meta 외부에서 점진적 기능 롤아웃 활성화하기",
-          "titleForHomepage": "React Canaries: 점진적 기능 롤아웃",
-=======
           "title": "React Labs: What We've Been Working On – February 2024",
           "titleForHomepage": "React Labs: February 2024",
           "icon": "labs",
@@ -25,7 +21,6 @@
         {
           "title": "React Canaries: Enabling Incremental Feature Rollout Outside Meta",
           "titleForHomepage": "React Canaries: Incremental Feature Rollout",
->>>>>>> 081d1008dd1eebffb9550a3ff623860a7d977acf
           "icon": "blog",
           "date": "2023.05.03",
           "path": "/blog/2023/05/03/react-canaries"
