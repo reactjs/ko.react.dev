@@ -985,7 +985,7 @@ textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 
 </Sandpack>
 
-The `{__html}` object should be created as close to where the HTML is generated as possible, like the above example does in the `renderMarkdownToHTML` function. This ensures that all raw HTML being used in your code is explicitly marked as such, and that only variables that you expect to contain HTML are passed to `dangerouslySetInnerHTML`. It is not recommended to create the object inline like `<div dangerouslySetInnerHTML={{__html: markup}} />`.
+위 예시의 `renderMarkdownToHTML` 함수처럼, `{__html}` 객체는 가능한 한 HTML이 만들어지는 곳 가까이에서 생성되어야 합니다. 이렇게 하면 코드에서 사용되는 모든 원시 HTML이 명시적으로 표시되고 HTML을 포함할 것으로 예상되는 변수만 `dangerouslySetInnerHTML`로 전달됩니다. `<div dangerouslySetInnerHTML={{__html: markup}} />`처럼 인라인으로 객체를 생성하는 것은 권장하지 않습니다.
 
 임의의 HTML을 렌더링하는 것이 왜 위험한지를 알아보려면 위의 코드를 다음과 같이 바꿔보세요.
 
