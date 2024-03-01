@@ -88,7 +88,7 @@ Server Action에서 중요한 데이터를 전송하지 않도록 하기 위해,
 * [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
 특히 다음은 지원되지 않습니다.
-* React 엘리먼트 또는 [JSX](https://react.dev/learn/writing-markup-with-jsx)
+* React 엘리먼트 또는 [JSX](/learn/writing-markup-with-jsx)
 * 컴포넌트 함수 또는 Server Action이 아닌 다른 함수를 포함하는 함수
 * [클래스](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 * 클래스의 인스턴스인 객체(언급된 내장 객체 제외)또는 [null 프로토타입](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)이 있는 개체

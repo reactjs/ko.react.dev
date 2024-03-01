@@ -50,7 +50,7 @@ function MyComponent() {
 * `ref.current` 프로퍼티는 state와 달리 변이할 수 있습니다. 그러나 렌더링에 사용되는 객체(예: state의 일부)를 포함하는 경우 해당 객체를 변이해서는 안 됩니다.
 * `ref.current` 프로퍼티를 변경해도 React는 컴포넌트를 다시 렌더링하지 않습니다. ref는 일반 JavaScript 객체이기 때문에 React는 사용자가 언제 변경했는지 알지 못합니다.
 * [초기화](#avoiding-recreating-the-ref-contents)를 제외하고는 렌더링 중에 `ref.current`를 쓰거나 *읽지* 마세요. 이렇게 하면 컴포넌트의 동작을 예측할 수 없게 됩니다.
-* Strict Mode에서 React는 **컴포넌트 함수를 두 번 호출하여** [의도하지 않은 불순물을 찾을 수 있도록 돕습니다.](#my-initializer-or-updater-function-runs-twice) 이는 개발 환경 전용 동작이며 상용 환경에는 영향을 미치지 않습니다. 각 ref 객체는 두 번 생성되고 그중 하나는 버려집니다. 컴포넌트 함수가 순수하다면(그래야만 합니다), 컴포넌트의 로직에 영향을 미치지 않습니다.
+* Strict Mode에서 React는 **컴포넌트 함수를 두 번 호출하여** [의도하지 않은 변경을 찾을 수 있도록 돕습니다.](/reference/react/useState#my-initializer-or-updater-function-runs-twice) 이는 개발 환경 전용 동작이며 Production 환경에는 영향을 미치지 않습니다. 각 ref 객체는 두 번 생성되고 그중 하나는 버려집니다. 컴포넌트 함수가 순수하다면(그래야만 합니다), 컴포넌트의 로직에 영향을 미치지 않습니다.
 
 ---
 

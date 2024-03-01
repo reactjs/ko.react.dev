@@ -13,7 +13,7 @@ title: renderToString
 `renderToString`은 React 트리를 HTML 문자열로 렌더링합니다.
 
 ```js
-const html = renderToString(reactNode)
+const html = renderToString(reactNode, options?)
 ```
 
 </Intro>
@@ -24,7 +24,7 @@ const html = renderToString(reactNode)
 
 ## 레퍼런스 {/*reference*/}
 
-### `renderToString(reactNode)` {/*rendertostring*/}
+### `renderToString(reactNode, options?)` {/*rendertostring*/}
 
 서버에서 `renderToString`을 실행하면 앱을 HTML로 렌더링합니다.
 

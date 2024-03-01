@@ -555,8 +555,6 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-(또는 선택된 인덱스를 state로 유지할 수 있습니다.)
-
 State는 다음과 같이 중복되었습니다.
 
 * `items = [{ id: 0, title: 'pretzels'}, ...]`

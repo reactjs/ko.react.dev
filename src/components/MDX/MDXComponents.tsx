@@ -19,6 +19,7 @@ import Link from './Link';
 import {PackageImport} from './PackageImport';
 import Recap from './Recap';
 import Sandpack from './Sandpack';
+import SandpackWithHTMLOutput from './SandpackWithHTMLOutput';
 import Diagram from './Diagram';
 import DiagramGroup from './DiagramGroup';
 import SimpleCallout from './SimpleCallout';
@@ -30,6 +31,8 @@ import ButtonLink from 'components/ButtonLink';
 import {TocContext} from './TocContext';
 import type {Toc, TocItem} from './TocContext';
 import {TeamMember} from './TeamMember';
+
+import ErrorDecoder from './ErrorDecoder';
 
 function CodeStep({children, step}: {children: any; step: number}) {
   return (
@@ -432,6 +435,7 @@ export const MDXComponents = {
   Recap,
   Recipes,
   Sandpack,
+  SandpackWithHTMLOutput,
   TeamMember,
   TerminalBlock,
   YouWillLearn,
@@ -441,6 +445,7 @@ export const MDXComponents = {
   Solution,
   CodeStep,
   YouTubeIframe,
+  ErrorDecoder,
 };
 
 for (let key in MDXComponents) {
