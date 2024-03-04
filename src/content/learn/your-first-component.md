@@ -172,8 +172,6 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 ### 컴포넌트 중첩 및 구성 {/*nesting-and-organizing-components*/}
 
-Components are regular JavaScript functions, so you can keep multiple components in the same file. This is convenient when components are relatively small or tightly related to each other. If this file gets crowded, you can always move `Profile` to a separate file. You will learn how to do this shortly on the [page about imports.](/learn/importing-and-exporting-components)
-
 컴포넌트는 일반 JavaScript함수이므로 같은 파일에 여러 컴포넌트를 포함할 수 있습니다. 컴포넌트가 상대적으로 작거나 서로 밀접하게 관련되어 있을 때 편리합니다. 이 파일이 복잡해지면 언제든지 `Profile`을 별도의 파일로 옮길 수 있습니다. 이 방법은 바로 다음 챕터인 [컴포넌트의 importing과 exporting](/learn/importing-and-exporting-components) 페이지에서 확인할 수 있습니다.
 
 `Profile` 컴포넌트는 `Gallery`안에서 렌더링되기 때문에(심지어 여러번 렌더링됩니다!), `Gallery`는 각 `Profile`을 "자식"으로 렌더링하는 **부모 컴포넌트**라고 말할 수 있습니다. 컴포넌트를 한 번 정의한 다음 원하는 곳에서 원하는 만큼 여러 번 사용할 수 있다는 점이 바로 React의 마법입니다.
@@ -184,15 +182,13 @@ Components are regular JavaScript functions, so you can keep multiple components
 
 ```js {2-5}
 export default function Gallery() {
-  // 🔴 Never define a component inside another component!
+  // 🔴 절대 컴포넌트 안에 다른 컴포넌트를 정의하면 안 됩니다!
   function Profile() {
     // ...
   }
   // ...
 }
 ```
-
-The snippet above is [very slow and causes bugs.](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state) Instead, define every component at the top level:
 
 위 스니펫은 [매우 느리고 버그를 촉발합니다.](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state) 대신 최상위 레벨에서 컴포넌트를 정의하세요.
 
@@ -201,7 +197,7 @@ export default function Gallery() {
   // ...
 }
 
-// ✅ Declare components at the top level
+// ✅ 최상위 레벨에서 컴포넌트를 선언합니다
 function Profile() {
   // ...
 }
@@ -220,8 +216,6 @@ React 애플리케이션은 "root"컴포넌트에서 시작됩니다. 보통 새
 대부분의 React 앱은 모든 부분에서 컴포넌트를 사용합니다. 즉, 버튼과 같이 재사용 가능한 부분뿐만 아니라 사이드바, 목록, 그리고 궁극적으로 전체 페이지와 같은 큰 부분에도 컴포넌트를 사용하게 됩니다! 컴포넌트는 한 번만 사용되더라도 UI 코드와 마크업을 정리하는 편리한 방법입니다.
 
 [React 기반 프레임워크들](/learn/start-a-new-react-project)은 이를 한 단계 더 발전시킵니다. 빈 HTML파일을 사용하고 React가 JavaScript로 페이지 관리를 "다룰 수 있게" 하도록 하는 대신, React 컴포넌트에서 HTML을 자동으로 생성하기도합니다. 이를 통해 JavaScript 코드가 로드되기 전에 앱에서 일부 컨텐츠를 표시할 수 있습니다.
-
-Still, many websites only use React to [add interactivity to existing HTML pages.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) They have many root components instead of a single one for the entire page. You can use as much—or as little—React as you need.
 
 그렇지만 여전히 많은 웹사이트들은 React를 [약간의 상호작용을 추가하는 용도로만](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) 사용합니다. 이러한 웹사이트에는 전체 페이지에 하나의 root 컴포넌트가 아닌 여러 개의 root 컴포넌트가 있습니다. 필요한 만큼 React를 많이 또는 적게 사용할 수 있습니다.
 
@@ -442,7 +436,7 @@ img { margin: 0 10px 10px 0; }
 <Sandpack>
 
 ```js
-// Write your component below!
+// 아래에 컴포넌트를 작성해 보세요!
 
 ```
 
