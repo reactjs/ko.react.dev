@@ -168,7 +168,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 <DeepDive>
 
-#### Local mutation is fine {/*local-mutation-is-fine*/}
+#### 지역 변경은 괜찮습니다 {/*local-mutation-is-fine*/}
 
 이 코드는 state에 *존재하는* 객체를 변경하기에 문제가 됩니다.
 
@@ -375,7 +375,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 <DeepDive>
 
-#### Using a single event handler for multiple fields {/*using-a-single-event-handler-for-multiple-fields*/}
+#### 여러 필드에 단일 이벤트 핸들러 사용하기 {/*using-a-single-event-handler-for-multiple-fields*/}
 
 `[` 와 `]` 괄호를 객체 정의 안에 사용하여 동적 이름을 가진 프로퍼티를 명시할 수 있습니다. 아래에는 이전 예제와 같지만, 세 개의 다른 이벤트 핸들러 대신 하나의 이벤트 핸들러를 사용하는 예제가 있습니다.
 
@@ -596,7 +596,7 @@ img { width: 200px; height: 200px; }
 
 <DeepDive>
 
-#### Objects are not really nested {/*objects-are-not-really-nested*/}
+#### 객체들은 사실 중첩되어 있지 않습니다 {/*objects-are-not-really-nested*/}
 
 이러한 객체는 코드에서 "중첩되어" 나타납니다.
 
@@ -664,7 +664,7 @@ updatePerson(draft => {
 
 <DeepDive>
 
-#### How does Immer work? {/*how-does-immer-work*/}
+#### Immer는 어떻게 작동할까요? {/*how-does-immer-work*/}
 
 Immer가 제공하는 `draft`는 [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)라고 하는 아주 특별한 객체 타입으로, 당신이 하는 일을 "기록" 합니다. 객체를 원하는 만큼 자유롭게 변경할 수 있는 이유죠! Immer는 내부적으로 `draft`의 어느 부분이 변경되었는지 알아내어, 변경사항을 포함한 완전히 새로운 객체를 생성합니다.
 
@@ -793,7 +793,7 @@ img { width: 200px; height: 200px; }
 
 <DeepDive>
 
-#### Why is mutating state not recommended in React? {/*why-is-mutating-state-not-recommended-in-react*/}
+#### 왜 리액트에서 state 변경은 추천되지 않나요? {/*why-is-mutating-state-not-recommended-in-react*/}
 
 몇 가지 이유가 있습니다.
 
