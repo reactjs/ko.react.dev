@@ -60,7 +60,7 @@ JavaScript
 
 <Note>
 
-JSX와 React는 서로 다른 별개의 개념입니다. 종종 함께 사용되기도 하지만 [독립적으로](/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) 사용할 수도 있습니다. JSX는 확장된 문법이고, React는 JavaScript 라이브러리입니다.
+JSX와 React는 서로 다른 별개의 개념입니다. 종종 함께 사용되기도 하지만 [독립적으로](https://ko.legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) 사용할 수도 있습니다. JSX는 확장된 문법이고, React는 JavaScript 라이브러리입니다.
 
 </Note>
 
