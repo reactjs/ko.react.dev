@@ -40,7 +40,11 @@ function SearchPage() {
 
 #### 반환값 {/*returns*/}
 
+<<<<<<< HEAD
 초기 렌더링 중에는 반환된 ‘지연된 값’은 사용자가 제공한 값과 같습니다. 업데이트가 발생하면 React는 먼저 이전 값으로 리렌더링을 시도(반환값이 이전 값과 일치하도록)하고, 그다음 백그라운드에서 다시 새 값으로 리렌더링을 시도(반환값이 업데이트된 새 값과 일치하도록)합니다.
+=======
+During the initial render, the returned deferred value will be the same as the value you provided. During updates, React will first attempt a re-render with the old value (so it will return the old value), and then try another re-render in the background with the new value (so it will return the updated value). 
+>>>>>>> 5de85198a3c575d94a395138e3f471cc7172a51c
 
 #### 주의사항 {/*caveats*/}
 
@@ -76,7 +80,11 @@ function SearchPage() {
 
 초기 렌더링 중에 <CodeStep step={2}>지연된 값</CodeStep>은 사용자가 제공한 <CodeStep step={1}>값</CodeStep>과 일치합니다.
 
+<<<<<<< HEAD
 업데이트가 발생하면 <CodeStep step={2}>지연된 값</CodeStep>은 최신 <CodeStep step={1}>값</CodeStep>보다 "뒤쳐지게" 됩니다. React는 먼저 지연된 값을 업데이트하지 *않은 채로* 렌더링한 다음, 백그라운드에서 새로 받은 값으로 리렌더링을 시도합니다.
+=======
+During updates, the <CodeStep step={2}>deferred value</CodeStep> will "lag behind" the latest <CodeStep step={1}>value</CodeStep>. In particular, React will first re-render *without* updating the deferred value, and then try to re-render with the newly received value in the background.
+>>>>>>> 5de85198a3c575d94a395138e3f471cc7172a51c
 
 
 **이것이 언제 유용한지 예시를 통해 살펴보겠습니다.**
@@ -509,7 +517,11 @@ input { margin: 10px; }
 
 2. **백그라운드에서 React는 `query`와 `deferredQuery`를 모두 `"ab"`로 업데이트한 상태로 리렌더링을 시도합니다.** 이 리렌더링이 완료되면 React는 이를 화면에 표시합니다. 그러나 일시 중단되는 경우(`"ab"`에 대한 결과가 아직 로딩되지 않은 경우) React는 이 렌더링 시도를 포기하며, 데이터가 로딩된 후 이 리렌더링을 다시 시도합니다. 사용자는 데이터가 준비될 때까지 오래된 지연된 값을 계속 보게 됩니다.
 
+<<<<<<< HEAD
 지연된 "background" 렌더링은 중단할 수 있습니다. 예를 들어 input을 다시 입력하면 React는 지연된 값을 버리고 새 값으로 다시 시작합니다. React는 항상 가장 최근에 제공받은 값을 사용합니다.
+=======
+2. **In the background, React tries to re-render with *both* `query` and `deferredQuery` updated to `"ab"`.** If this re-render completes, React will show it on the screen. However, if it suspends (the results for `"ab"` have not loaded yet), React will abandon this rendering attempt, and retry this re-render again after the data has loaded. The user will keep seeing the stale deferred value until the data is ready.
+>>>>>>> 5de85198a3c575d94a395138e3f471cc7172a51c
 
 여전히 각 키 입력마다 네트워크 요청이 있다는 점에 주의하세요. 여기서 지연되는 것은 네트워크 요청 자체가 아니라 결과가 준비될 때까지 결과를 표시하는 것입니다. 사용자가 계속 입력하더라도 각 키 입력에 대한 응답은 캐시 되므로 백스페이스를 누르면 즉시 다시 가져오지 않습니다.
 
@@ -950,7 +962,11 @@ export default SlowList;
 
 디바운싱이나 스로틀링과 달리 고정된 지연을 선택할 필요가 없습니다. 사용자의 디바이스가 빠른 경우(예: 고성능 노트북) 지연된 리렌더링은 거의 즉시 발생하며 눈에 띄지 않습니다. 사용자의 디바이스가 느린 경우, 기기 속도에 비례하여 목록이 input에 '지연'됩니다.
 
+<<<<<<< HEAD
 또한 디바운싱이나 스로틀링과 달리, `useDeferredValue`에 의해 수행되는 지연된 리렌더링은 기본적으로 중단할 수 있습니다. 즉, React가 큰 목록을 리렌더링하는 도중에 사용자가 다른 키 입력을 하면 React는 해당 리렌더링을 중단하고 키 입력을 처리한 다음 백그라운드에서 리렌더링을 시작합니다. 반면 디바운싱과 스로틀링은 렌더링이 키 입력을 차단하는 순간을 지연할 뿐이므로 여전히 불안정한 경험을 만들어 냅니다.
+=======
+Also, unlike with debouncing or throttling, deferred re-renders done by `useDeferredValue` are interruptible by default. This means that if React is in the middle of re-rendering a large list, but the user makes another keystroke, React will abandon that re-render, handle the keystroke, and then start rendering in the background again. By contrast, debouncing and throttling still produce a janky experience because they're *blocking:* they merely postpone the moment when rendering blocks the keystroke.
+>>>>>>> 5de85198a3c575d94a395138e3f471cc7172a51c
 
 최적화하려는 작업이 렌더링 중에 발생하지 않는 경우에도 디바운싱과 스로틀링은 여전히 유용합니다. 예를 들어 디바운싱과 스로틀링을 사용하면 네트워크 요청을 더 적게 처리할 수 있습니다. 이러한 기술을 함께 사용할 수도 있습니다.
 
