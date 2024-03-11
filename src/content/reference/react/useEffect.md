@@ -196,7 +196,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결됩니다.
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -616,7 +616,7 @@ export function useChatRoom({ serverUrl, roomId }) {
 
 ```js src/chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결됩니다.
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -1062,14 +1062,14 @@ Effect 내부에서 `fetch` 호출을 작성하는 것은 클라이언트 사이
 **Effect의 의존성을 "선택"할 수 없다는 점에 유의하세요.** Effect 코드에서 사용하는 모든 <CodeStep step={2}>반응형 값</CodeStep>은 의존성으로 선언되어야 합니다. Effect의 의존성 배열은 코드에 의해 결정됩니다.
 
 ```js [[2, 1, "roomId"], [2, 2, "serverUrl"], [2, 5, "serverUrl"], [2, 5, "roomId"], [2, 8, "serverUrl"], [2, 8, "roomId"]]
-function ChatRoom({ roomId }) { // This is a reactive value
-  const [serverUrl, setServerUrl] = useState('https://localhost:1234'); // This is a reactive value too
+function ChatRoom({ roomId }) { // 이것은 반응형 값입니다
+  const [serverUrl, setServerUrl] = useState('https://localhost:1234'); // 이것도 반응형 값입니다
 
   useEffect(() => {
-    const connection = createConnection(serverUrl, roomId); // This Effect reads these reactive values
+    const connection = createConnection(serverUrl, roomId); // 이 Effect는 이 반응형 값들을 읽습니다
     connection.connect();
     return () => connection.disconnect();
-  }, [serverUrl, roomId]); // ✅ So you must specify them as dependencies of your Effect
+  }, [serverUrl, roomId]); // ✅ 그래서 이 값들을 Effect의 의존성으로 지정해야 합니다
   // ...
 }
 ```
@@ -1094,14 +1094,14 @@ function ChatRoom({ roomId }) {
 **의존성을 제거하려면 [그것이 의존성이 되지 않아야 함을 린터에 증명해야 합니다.](/learn/removing-effect-dependencies#removing-unnecessary-dependencies)** 예를 들어, `serverUrl` 을 컴포넌트 밖으로 이동하여 그것이 반응적이지 않고 리렌더링될 때 변경되지 않을 것임을 증명할 수 있습니다.
 
 ```js {1,8}
-const serverUrl = 'https://localhost:1234'; // Not a reactive value anymore
+const serverUrl = 'https://localhost:1234'; // 더 이상 반응형 값이 아님
 
 function ChatRoom({ roomId }) {
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 모든 의존성이 선언됨
   // ...
 }
 ```
@@ -1109,15 +1109,15 @@ function ChatRoom({ roomId }) {
 이제 `serverUrl`은 반응형 값이 아니며 (리렌더링될 때 변경되지 않을 것이므로), 의존성에 추가할 필요가 없습니다. **Effect의 코드가 어떤 반응형 값도 사용하지 않는다면 그 의존성 목록은 비어있어야 합니다. (`[]`)**
 
 ```js {1,2,9}
-const serverUrl = 'https://localhost:1234'; // Not a reactive value anymore
-const roomId = 'music'; // Not a reactive value anymore
+const serverUrl = 'https://localhost:1234'; // 더 이상 반응형 값이 아님
+const roomId = 'music'; // 더 이상 반응형 값이 아님
 
 function ChatRoom() {
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ All dependencies declared
+  }, []); // ✅ 모든 의존성이 선언됨
   // ...
 }
 ```
@@ -1149,7 +1149,7 @@ useEffect(() => {
 ```js {3}
 useEffect(() => {
   // ...
-}, [a, b]); // Runs again if a or b are different
+}, [a, b]); // a나 b가 다르면 다시 실행됨
 ```
 
 아래 예제에서는 `serverUrl`와 `roomId`은 [반응형 값](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)이므로 둘 다 의존성으로 지정해야 합니다. 결과적으로 드롭다운에서 다른 방을 선택하거나 서버 URL 입력을 편집하면 채팅이 다시 연결됩니다. 그러나 `message`는 Effect에서 사용되지 않으므로(의존성이 아니므로), 메세지를 편집해도 대화가 다시 연결되지 않습니다.
@@ -1218,7 +1218,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결됩니다.
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -1246,7 +1246,7 @@ button { margin-left: 5px; }
 ```js {3}
 useEffect(() => {
   // ...
-}, []); // Does not run again (except once in development)
+}, []); // 다시 실행되지 않음 (개발 환경에서만 한번 실행)
 ```
 
 **개발 환경에서는 빈 의존성 배열이 있더라도 버그를 찾기 위해 설정과 정리가 [한번 더 실행됩니다.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)**
@@ -1298,7 +1298,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결됩니다.
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -1322,7 +1322,7 @@ export function createConnection(serverUrl, roomId) {
 ```js {3}
 useEffect(() => {
   // ...
-}); // Always runs again
+}); // 항상 다시 실행됨
 ```
 
 이 예제에서 Effect는 `serverUrl`과 `roomId`를 변경할 때 다시 실행하는 것은 합리적입니다. 그러나 `message`를 변경할때도 다시 실행되므로 바람직하지 않습니다. 보통은 이런 이슈를 방지하고자 의존성 배열을 명시합니다.
@@ -1343,7 +1343,7 @@ function ChatRoom({ roomId }) {
     return () => {
       connection.disconnect();
     };
-  }); // No dependency array at all
+  }); // 의존성 배열이 아예 없음
 
   return (
     <>
@@ -1391,7 +1391,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결됩니다.
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -1426,10 +1426,10 @@ function Counter() {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setCount(count + 1); // You want to increment the counter every second...
+      setCount(count + 1); // 초마다 카운터를 증가시키고 싶습니다...
     }, 1000)
     return () => clearInterval(intervalId);
-  }, [count]); // 🚩 ... but specifying `count` as a dependency always resets the interval.
+  }, [count]); // 🚩 ... 하지만 'count'를 의존성으로 명시하면 항상 인터벌이 초기화됩니다.
   // ...
 }
 ```
@@ -1448,10 +1448,10 @@ export default function Counter() {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setCount(c => c + 1); // ✅ Pass a state updater
+      setCount(c => c + 1); // ✅ State 업데이터를 전달
     }, 1000);
     return () => clearInterval(intervalId);
-  }, []); // ✅ Now count is not a dependency
+  }, []); // ✅ 이제 count는 의존성이 아닙니다
 
   return <h1>{count}</h1>;
 }
@@ -1486,16 +1486,16 @@ const serverUrl = 'https://localhost:1234';
 function ChatRoom({ roomId }) {
   const [message, setMessage] = useState('');
 
-  const options = { // 🚩 This object is created from scratch on every re-render
+  const options = { // 🚩 이 객체는 재 렌더링 될 때마다 새로 생성됩니다
     serverUrl: serverUrl,
     roomId: roomId
   };
 
   useEffect(() => {
-    const connection = createConnection(options); // It's used inside the Effect
+    const connection = createConnection(options); // 객체가 Effect 안에서 사용됩니다
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // 🚩 As a result, these dependencies are always different on a re-render
+  }, [options]); // 🚩 결과적으로, 의존성이 재 렌더링 때마다 다릅니다
   // ...
 ```
 
@@ -1554,7 +1554,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결됩니다.
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -1587,7 +1587,7 @@ Effect가 렌더링 중에 생성된 객체나 함수에 의존하는 경우, �
 function ChatRoom({ roomId }) {
   const [message, setMessage] = useState('');
 
-  function createOptions() { // 🚩 This function is created from scratch on every re-render
+  function createOptions() { // 🚩 이 함수는 재 렌더링 될 때마다 새로 생성됩니다
     return {
       serverUrl: serverUrl,
       roomId: roomId
@@ -1595,11 +1595,11 @@ function ChatRoom({ roomId }) {
   }
 
   useEffect(() => {
-    const options = createOptions(); // It's used inside the Effect
+    const options = createOptions(); // 함수가 Effect 안에서 사용됩니다
     const connection = createConnection();
     connection.connect();
     return () => connection.disconnect();
-  }, [createOptions]); // 🚩 As a result, these dependencies are always different on a re-render
+  }, [createOptions]); // 🚩 결과적으로, 의존성이 재 렌더링 때마다 다릅니다
   // ...
 ```
 
@@ -1664,7 +1664,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 실제 구현은 실제로 서버에 연결됩니다.
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -1703,7 +1703,7 @@ button { margin-left: 10px; }
 function Page({ url, shoppingCart }) {
   useEffect(() => {
     logVisit(url, shoppingCart.length);
-  }, [url, shoppingCart]); // ✅ All dependencies declared
+  }, [url, shoppingCart]); // ✅ 모든 의존성이 선언됨
   // ...
 }
 ```
@@ -1718,7 +1718,7 @@ function Page({ url, shoppingCart }) {
 
   useEffect(() => {
     onVisit(url);
-  }, [url]); // ✅ All dependencies declared
+  }, [url]); // ✅ 모든 의존성이 선언됨
   // ...
 }
 ```
@@ -1745,9 +1745,9 @@ function MyComponent() {
   }, []);
 
   if (didMount) {
-    // ... return client-only JSX ...
+    // ... 클라이언트 전용 JSX 반환 ...
   }  else {
-    // ... return initial JSX ...
+    // ... 초기 JSX 반환 ...
   }
 }
 ```
@@ -1777,7 +1777,7 @@ function MyComponent() {
 ```js {3}
 useEffect(() => {
   // ...
-}); // 🚩 No dependency array: re-runs after every render!
+}); // 🚩 의존성 배열이 없음. 재 렌더링 될 때마다 재실행됨!
 ```
 
 의존성 배열을 명시했음에도 Effect가 여전히 반복해서 실행된다면 의존성이 렌더링마다 다르기 때문입니다.
@@ -1795,9 +1795,9 @@ useEffect(() => {
 그다음 콘솔에서 기록된 다른 렌더링 배열을 마우스 오른쪽 버튼으로 클릭하고 두 배열 모두에 대해 전역 변수로 저장을 선택할 수 있습니다. 첫 번째 요소가 `temp1`이고 두 번째 요소가 `temp2`라고 가정하면 브라우저 콘솔을 사용하여 양쪽 배열의 각 의존성이 동일한지 확인할 수 있습니다.
 
 ```js
-Object.is(temp1[0], temp2[0]); // Is the first dependency the same between the arrays?
-Object.is(temp1[1], temp2[1]); // Is the second dependency the same between the arrays?
-Object.is(temp1[2], temp2[2]); // ... and so on for every dependency ...
+Object.is(temp1[0], temp2[0]); // 첫 번째 의존성이 배열 간에 동일한가요?
+Object.is(temp1[1], temp2[1]); // 두 번째 의존성이 배열 간에 동일한가요?
+Object.is(temp1[2], temp2[2]); // ... 나머지 모든 의존성도 확인합니다  ...
 ```
 
 렌더링마다 다른 의존성을 찾아냈다면 일반적으로 다음 중 하나의 방법으로 수정할 수 있습니다.
@@ -1836,7 +1836,7 @@ Effect가 무한 반복되려면 다음 두 가지 조건이 충족되어야 합
 
 ```js {2-5}
 useEffect(() => {
-  // 🔴 Avoid: Cleanup logic without corresponding setup logic
+  // 🔴 피하세요: 상응하는 설정 로직이 없는 정리 로직
   return () => {
     doSomething();
   };
