@@ -696,7 +696,7 @@ function TodoList() {
 
 #### Effect에서 데이터를 가져오는 좋은 대안은 무엇인가요? {/*what-are-good-alternatives-to-data-fetching-in-effects*/}
 
-Effect 안에서 `fetch` 호출을 작성하는 것은 [데이터를 가져오는](https://www.robinwieruch.de/react-hooks-fetch-data/) [인기 있는 방법](https://www.robinwieruch.de/react-hooks-fetch-data/)입니다, 특히 완전히 클라이언트 측 앱에서는요. 하지만 이는 매우 수동적인 접근 방식이며 중요한 단점이 있습니다.
+Effect 안에서 `fetch` 호출을 작성하는 것은 [데이터를 가져오는 인기 있는 방법](https://www.robinwieruch.de/react-hooks-fetch-data/)입니다, 특히 완전히 클라이언트 측 앱에서는요. 하지만 이는 매우 수동적인 접근 방식이며 중요한 단점이 있습니다.
 
 - **Effect는 서버에서 실행되지 않습니다.** 따라서 초기 서버 렌더링된 HTML은 데이터가 없는 로딩 상태만 포함하게 됩니다. 클라이언트 컴퓨터는 모든 JavaScript를 다운로드하고 앱을 렌더링해야만 데이터를 로드해야 한다는 것을 알게 될 것입니다. 이는 효율적이지 않습니다.
 - **Effect 안에서 직접 가져오면 "네트워크 폭포"를 쉽게 만들 수 있습니다.** 부모 컴포넌트를 렌더링하면 일부 데이터를 가져오고 자식 컴포넌트를 렌더링한 다음 그들이 데이터를 가져오기 시작합니다. 네트워크가 빠르지 않으면 이는 모든 데이터를 병렬로 가져오는 것보다 훨씬 느립니다.
