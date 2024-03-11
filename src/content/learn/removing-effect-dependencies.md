@@ -891,7 +891,7 @@ console.log(Object.is(options1, options2)); // false
 
 #### 정적 객체와 함수를 컴포넌트 외부로 이동 {/*move-static-objects-and-functions-outside-your-component*/}
 
-객체가 프롶티 및 State에 의존하지 않는 경우 해당 객체를 컴포넌트 외부로 이동할 수 있습니다.
+객체가 props 및 State에 의존하지 않는 경우 해당 객체를 컴포넌트 외부로 이동할 수 있습니다.
 
 ```js {1-4,13}
 const options = {
