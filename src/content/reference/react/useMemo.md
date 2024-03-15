@@ -79,7 +79,7 @@ function TodoList({ todos, tab, theme }) {
 
 `useMemo`에 두 가지를 전달해야 합니다.
 
-1. `() =>`와 같이 인수를 받지 않고 계산하려는 값을 반환하는 <CodeStep step={1}>계산 함수</CodeStep> 입니다은.
+1. `() =>`와 같이 인수를 받지 않고 계산하려는 값을 반환하는 <CodeStep step={1}>계산 함수</CodeStep> 입니다.
 2. 계산 내부에서 사용되는 컴포넌트 내의 모든 값을 포함하는 <CodeStep step={2}>종속성 목록</CodeStep> 입니다.
 
 초기 렌더링에서 `useMemo`에서 얻을 수 있는 <CodeStep step={3}>값</CodeStep>은 <CodeStep step={1}>계산 함수</CodeStep>를 호출한 결과값 입니다.

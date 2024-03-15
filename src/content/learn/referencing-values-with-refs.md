@@ -271,7 +271,7 @@ React는 `useRef`가 실제로 충분히 일반적이기 때문에 built-in 버�
 - **refs를 escape hatch로 간주합니다.** Refs는 외부 시스템이나 브라우저 API로 작업할 때 유용합니다. 애플리케이션 로직과 데이터 흐름의 상당 부분이 refs에 의존한다면 접근 방식을 재고해 보는 것이 좋습니다.
 - **렌더링 중에 `ref.current`를 읽거나 쓰지 마세요.** 렌더링 중에 일부 정보가 필요한 경우 [state](/learn/state-a-components-memory)를 대신 사용하세요. `ref.current`가 언제 변하는지 React는 모르기 때문에 렌더링할 때 읽어도 컴포넌트의 동작을 예측하기 어렵습니다. (`if (!ref.current) ref.current = new Thing()` 과 같은 코드는 첫 번째 렌더 중에 ref를 한 번만 설정하는 경우가 예외입니다.)
 
-React state의 제한은 refs에 적용되지 않습니다. 예를 들어 state는 [모든 render에 대한 snapshot](/learn/state-as-a-snapshot) 및 [동기적으로 업데이트되지 않는 것](/learn/queue-a-series-the-updates)과 같이 작동합니다. 그러나 ref의 current 값을 변조하면 다음과 같이 즉시 변경됩니다.
+React state의 제한은 refs에 적용되지 않습니다. 예를 들어 state는 [모든 render에 대한 snapshot](/learn/state-as-a-snapshot) 및 [동기적으로 업데이트되지 않는 것](/learn/queueing-a-series-of-state-updates)과 같이 작동합니다. 그러나 ref의 current 값을 변조하면 다음과 같이 즉시 변경됩니다.
 
 ```js
 ref.current = 5;
