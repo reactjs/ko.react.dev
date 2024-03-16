@@ -523,33 +523,34 @@ export default function TeaSet() {
 
 </LearnMore>
 
-## Your UI as a tree {/*your-ui-as-a-tree*/}
+## 트리로서의 UI {/*your-ui-as-a-tree*/}
 
-React uses trees to model the relationships between components and modules. 
+React는 컴포넌트와 모듈 간의 관계를 모델링하기 위해 트리를 사용합니다.
 
-A React render tree is a representation of the parent and child relationship between components. 
+React 렌더 트리는 컴포넌트 간의 부모-자식 관계를 나타냅니다.
+
 
 <Diagram name="generic_render_tree" height={250} width={500} alt="A tree graph with five nodes, with each node representing a component. The root node is located at the top the tree graph and is labelled 'Root Component'. It has two arrows extending down to two nodes labelled 'Component A' and 'Component C'. Each of the arrows is labelled with 'renders'. 'Component A' has a single 'renders' arrow to a node labelled 'Component B'. 'Component C' has a single 'renders' arrow to a node labelled 'Component D'.">
 
-An example React render tree.
+React 렌더 트리 예시
 
 </Diagram>
 
-Components near the top of the tree, near the root component, are considered top-level components. Components with no child components are leaf components. This categorization of components is useful for understanding data flow and rendering performance.
+트리의 상단에 위치한 컴포넌트와 루트 컴포넌트 근처의 컴포넌트를 최상위 컴포넌트라고 합니다. 자식 컴포넌트가 없는 컴포넌트를 리프 컴포넌트라고 합니다. 이 컴포넌트 분류는 앱의 데이터 흐름과 성능을 이해하는 데 유용합니다.
 
-Modelling the relationship between JavaScript modules is another useful way to understand your app. We refer to it as a module dependency tree. 
+자바스크립트 모듈 간의 관계를 모델링하는 것은 앱을 이해하는데 유용한 또 다른 방법입니다. 이를 모듈 의존성 트리라고 정의합니다.
 
 <Diagram name="generic_dependency_tree" height={250} width={500} alt="A tree graph with five nodes. Each node represents a JavaScript module. The top-most node is labelled 'RootModule.js'. It has three arrows extending to the nodes: 'ModuleA.js', 'ModuleB.js', and 'ModuleC.js'. Each arrow is labelled as 'imports'. 'ModuleC.js' node has a single 'imports' arrow that points to a node labelled 'ModuleD.js'.">
 
-An example module dependency tree.
+모듈 의존성 트리 예시
 
 </Diagram>
 
-A dependency tree is often used by build tools to bundle all the relevant JavaScript code for the client to download and render. A large bundle size regresses user experience for React apps. Understanding the module dependency tree is helpful to debug such issues. 
+의존성 트리는 종종 빌드 도구에 의해 클라이언트가 다운로드하고 렌더링하는 데 필요한 모든 관련 자바스크립트 코드를 bundle 하는 데에 사용됩니다. 큰 bundle 크기는 리액트 앱의 사용자 경험을 저하합니다. 모듈 의존성 트리를 이해하는 것은 이러한 문제를 디버깅하는 데 도움이 됩니다.
 
 <LearnMore path="/learn/understanding-your-ui-as-a-tree">
 
-Read **[Your UI as a Tree](/learn/understanding-your-ui-as-a-tree)** to learn how to create a render and module dependency trees for a React app and how they're useful mental models for improving user experience and performance.
+ React 앱을 위한 렌더, 모듈 의존성 트리를 생성하는 법과 사용자 경험과 성능을 향상하기 위한 유용한 사고방식을 알고 싶은 경우 **[트리로서의 UI](/learn/understanding-your-ui-as-a-tree)**을 읽어보세요.
 
 </LearnMore>
 
