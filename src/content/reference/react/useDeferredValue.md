@@ -950,11 +950,7 @@ export default SlowList;
 
 디바운싱이나 스로틀링과 달리 고정된 지연을 선택할 필요가 없습니다. 사용자의 디바이스가 빠른 경우(예: 고성능 노트북) 지연된 리렌더링은 거의 즉시 발생하며 눈에 띄지 않습니다. 사용자의 디바이스가 느린 경우, 기기 속도에 비례하여 목록이 input에 '지연'됩니다.
 
-<<<<<<< HEAD
 또한 디바운싱이나 스로틀링과 달리, `useDeferredValue`에 의해 수행되는 지연된 리렌더링은 기본적으로 중단할 수 있습니다. 즉, React가 큰 목록을 리렌더링하는 도중에 사용자가 다른 키 입력을 하면 React는 해당 리렌더링을 중단하고 키 입력을 처리한 다음 백그라운드에서 리렌더링을 시작합니다. 반면 디바운싱과 스로틀링은 렌더링이 키 입력을 차단하는 순간을 지연할 뿐이므로 여전히 불안정한 경험을 만들어 냅니다.
-=======
-Also, unlike with debouncing or throttling, deferred re-renders done by `useDeferredValue` are interruptible by default. This means that if React is in the middle of re-rendering a large list, but the user makes another keystroke, React will abandon that re-render, handle the keystroke, and then start rendering in the background again. By contrast, debouncing and throttling still produce a janky experience because they're *blocking:* they merely postpone the moment when rendering blocks the keystroke.
->>>>>>> 265fa26e3b39739f06c956140d9acf618c6b4e6b
 
 최적화하려는 작업이 렌더링 중에 발생하지 않는 경우에도 디바운싱과 스로틀링은 여전히 유용합니다. 예를 들어 디바운싱과 스로틀링을 사용하면 네트워크 요청을 더 적게 처리할 수 있습니다. 이러한 기술을 함께 사용할 수도 있습니다.
 
