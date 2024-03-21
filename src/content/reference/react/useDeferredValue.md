@@ -76,11 +76,7 @@ function SearchPage() {
 
 초기 렌더링 중에 <CodeStep step={2}>지연된 값</CodeStep>은 사용자가 제공한 <CodeStep step={1}>값</CodeStep>과 일치합니다.
 
-<<<<<<< HEAD
 업데이트가 발생하면 <CodeStep step={2}>지연된 값</CodeStep>은 최신 <CodeStep step={1}>값</CodeStep>보다 "뒤쳐지게" 됩니다. React는 먼저 지연된 값을 업데이트하지 *않은 채로* 렌더링한 다음, 백그라운드에서 새로 받은 값으로 리렌더링을 시도합니다.
-=======
-During updates, the <CodeStep step={2}>deferred value</CodeStep> will "lag behind" the latest <CodeStep step={1}>value</CodeStep>. In particular, React will first re-render *without* updating the deferred value, and then try to re-render with the newly received value in the background.
->>>>>>> 265fa26e3b39739f06c956140d9acf618c6b4e6b
 
 
 **이것이 언제 유용한지 예시를 통해 살펴보겠습니다.**
