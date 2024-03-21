@@ -509,11 +509,7 @@ input { margin: 10px; }
 
 2. **백그라운드에서 React는 `query`와 `deferredQuery`를 모두 `"ab"`로 업데이트한 상태로 리렌더링을 시도합니다.** 이 리렌더링이 완료되면 React는 이를 화면에 표시합니다. 그러나 일시 중단되는 경우(`"ab"`에 대한 결과가 아직 로딩되지 않은 경우) React는 이 렌더링 시도를 포기하며, 데이터가 로딩된 후 이 리렌더링을 다시 시도합니다. 사용자는 데이터가 준비될 때까지 오래된 지연된 값을 계속 보게 됩니다.
 
-<<<<<<< HEAD
 지연된 "background" 렌더링은 중단할 수 있습니다. 예를 들어 input을 다시 입력하면 React는 지연된 값을 버리고 새 값으로 다시 시작합니다. React는 항상 가장 최근에 제공받은 값을 사용합니다.
-=======
-2. **In the background, React tries to re-render with *both* `query` and `deferredQuery` updated to `"ab"`.** If this re-render completes, React will show it on the screen. However, if it suspends (the results for `"ab"` have not loaded yet), React will abandon this rendering attempt, and retry this re-render again after the data has loaded. The user will keep seeing the stale deferred value until the data is ready.
->>>>>>> 265fa26e3b39739f06c956140d9acf618c6b4e6b
 
 여전히 각 키 입력마다 네트워크 요청이 있다는 점에 주의하세요. 여기서 지연되는 것은 네트워크 요청 자체가 아니라 결과가 준비될 때까지 결과를 표시하는 것입니다. 사용자가 계속 입력하더라도 각 키 입력에 대한 응답은 캐시 되므로 백스페이스를 누르면 즉시 다시 가져오지 않습니다.
 
