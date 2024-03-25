@@ -435,7 +435,11 @@ interface ModalRendererProps {
 
 자식이 특정 JSX 엘리먼트 타입이라고 설명하기 위해 TypeScript를 사용할 수 없으므로, `<li>` 자식만 허용하는 컴포넌트를 설명하기 위해 타입 시스템을 사용할 수 없다는 점에 주의하세요.
 
+<<<<<<< HEAD
 [이 TypeScript 플레이그라운드](https://www.typescriptlang.org/ko/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA)에서 타입 체커를 사용하여 `React.ReactNode`와 `React.ReactElement`의 모든 예시를 확인할 수 있습니다.
+=======
+You can see an example of both `React.ReactNode` and `React.ReactElement` with the type-checker in [this TypeScript playground](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA).
+>>>>>>> 7bdbab144e09d4edf793ff5128080eb1dba79be4
 
 ### Style Props {/*typing-style-props*/}
 
@@ -456,7 +460,11 @@ interface MyComponentProps {
 
  - [TypeScript 핸드북](https://www.typescriptlang.org/ko/docs/handbook/)은 TypeScript에 대한 공식 문서로, 대부분 주요 언어 기능을 다루고 있습니다.
 
+<<<<<<< HEAD
  - [TypeScript 릴리즈 노트](https://devblogs.microsoft.com/typescript/)에서는 각각의 새로운 기능에 대해 자세히 설명합니다.
+=======
+ - [The TypeScript release notes](https://devblogs.microsoft.com/typescript/) cover new features in depth.
+>>>>>>> 7bdbab144e09d4edf793ff5128080eb1dba79be4
 
  - [React TypeScript 치트시트](https://react-typescript-cheatsheet.netlify.app/)는 React와 함께 TypeScript를 사용하기 위해 커뮤니티에서 관리하는 치트시트로, 유용한 엣지 케이스를 많이 다루고 이 문서보다 더 폭넓은 정보를 제공합니다.
 
