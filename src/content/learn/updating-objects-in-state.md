@@ -793,7 +793,7 @@ img { width: 200px; height: 200px; }
 
 <DeepDive>
 
-#### 왜 리액트에서 state 변경은 추천되지 않나요? {/*why-is-mutating-state-not-recommended-in-react*/}
+#### 왜 리액트에서 state 변경은 권장되지 않나요? {/*why-is-mutating-state-not-recommended-in-react*/}
 
 몇 가지 이유가 있습니다.
 
