@@ -29,6 +29,14 @@ React-dom은 브라우저 DOM 환경에서 실행되는 웹 애플리케이션�
 * [Client APIs](/reference/react-dom/client) - `react-dom/client` API를 사용하면 브라우저에서 React 컴포넌트를 렌더링할 수 있습니다.
 * [Server APIs](/reference/react-dom/server) - `react-dom/server` API를 사용하면 서버에서 React 컴포넌트를 HTML로 렌더링할 수 있습니다.
 
+## Rules of React {/*rules-of-react*/}
+
+React has idioms — or rules — for how to express patterns in a way that is easy to understand and yields high-quality applications:
+
+* [Components and Hooks must be pure](/reference/rules/components-and-hooks-must-be-pure) – Purity makes your code easier to understand, debug, and allows React to automatically optimize your components and hooks correctly.
+* [React calls Components and Hooks](/reference/rules/react-calls-components-and-hooks) – React is responsible for rendering components and hooks when necessary to optimize the user experience.
+* [Rules of Hooks](/reference/rules/rules-of-hooks) – Hooks are defined using JavaScript functions, but they represent a special type of reusable UI logic with restrictions on where they can be called.
+
 ## Legacy APIs {/*legacy-apis*/}
 
 * [Legacy APIs](/reference/react/legacy) - `react` 패키지에서 내보낸 것이지만 새로 작성되는 코드에서는 권장되지 않습니다.

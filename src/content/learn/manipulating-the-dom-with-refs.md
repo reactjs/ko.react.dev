@@ -493,7 +493,11 @@ React의 모든 갱신은 [두 단계](/learn/render-and-commit#step-3-react-com
 
 React는 `ref.current`를 커밋 단계에서 설정합니다. DOM을 변경하기 전에 React는 관련된 `ref.current` 값을 미리 `null`로 설정합니다. 그리고 DOM을 변경한 후 React는 즉시 대응하는 DOM 노드로 다시 설정합니다.
 
+<<<<<<< HEAD
 **대부분 `ref` 접근은 이벤트 핸들러 안에서 일어납니다.** ref를 사용하여 뭔가를 하고 싶지만, 그것을 시행할 특정 이벤트가 없을 때 effect가 필요할 수 있습니다. effect에 대해서 다음 페이지에서 이야기해 보겠습니다.
+=======
+**Usually, you will access refs from event handlers.** If you want to do something with a ref, but there is no particular event to do it in, you might need an Effect. We will discuss Effects on the next pages.
+>>>>>>> 97489434323b0c4cce78588cd0f48e3808e0eba4
 
 <DeepDive>
 
