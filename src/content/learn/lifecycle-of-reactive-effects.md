@@ -702,7 +702,7 @@ function ChatRoom({ roomId }) { // roomId는 반응형입니다.
 
 ```js {1,2,11}
 const serverUrl = 'https://localhost:1234'; // serverUrl는 반응형이 아닙니다.
-const roomId = 'general'; // roomId는 반응형입니다.
+const roomId = 'general'; // roomId는 반응형이 아닙니다.
 
 function ChatRoom() {
   useEffect(() => {
@@ -722,7 +722,7 @@ function ChatRoom() {
 function ChatRoom() {
   useEffect(() => {
     const serverUrl = 'https://localhost:1234'; // serverUrl는 반응형이 아닙니다.
-    const roomId = 'general'; // roomId는 반응형입니다.
+    const roomId = 'general'; // roomId는 반응형이 아닙니다.
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => {
