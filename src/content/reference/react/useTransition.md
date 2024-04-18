@@ -1600,15 +1600,15 @@ main {
 
 ---
 
-### Displaying an error to users with an error boundary {/*displaying-an-error-to-users-with-error-boundary*/}
+### Error boundary로 사용자에게 오류 표시하기 {/*displaying-an-error-to-users-with-error-boundary*/}
 
 <Canary>
 
-Error Boundary for useTransition is currently only available in React's canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+useTransition의 error Boundary는 현재 React의 canary와 실험적인 채널에서만 사용할 수 있습니다. [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에서 더 자세히 알아보세요.
 
 </Canary>
 
-If a function passed to `startTransition` throws an error, you can display an error to your user with an [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). To use an error boundary, wrap the component where you are calling the `useTransition` in an error boundary. Once the function passed to `startTransition` errors, the fallback for the error boundary will be displayed.
+startTransition에 전달된 함수가 오류를 발생시키면 [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용하여 사용자에게 오류를 표시할 수 있습니다. error boundary를 사용하려면 useTransition을 호출하는 컴포넌트를 error boundary로 래핑하세요. startTransition에 전달된 함수에서 오류가 발생하면, error boundary의 fallback이 표시됩니다.
 
 <Sandpack>
 
