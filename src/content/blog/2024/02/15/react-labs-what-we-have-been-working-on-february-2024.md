@@ -52,7 +52,7 @@ JavaScript는 느슨한 규칙과 동적인 특징 때문에 최적화하기에 
 </form>
 ```
 
-`액션` 함수는 동기 또는 비동기적으로 실행할 수 있습니다. 클라이언트 측에서 표준 자바스크립트를 사용하여 정의하거나, [`'use server'`](/reference/react/use-server)라는 지시어를 사용하여 서버에서 정의할 수 있습니다. 액션을 사용할 때, React는 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus), [`useFormState`](/reference/react-dom/hooks/useFormState)와 같은 hook을 제공하여 데이터 제출의 생명주기를 관리하고 현재 폼의 state와 응답에 접근할 수 있습니다.
+`액션` 함수는 동기 또는 비동기적으로 실행할 수 있습니다. 클라이언트 측에서 표준 JavaScript를 사용하여 정의하거나, [`'use server'`](/reference/react/use-server)라는 지시어를 사용하여 서버에서 정의할 수 있습니다. 액션을 사용할 때, React는 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus), [`useFormState`](/reference/react-dom/hooks/useFormState)와 같은 hook을 제공하여 데이터 제출의 생명주기를 관리하고 현재 폼의 state와 응답에 접근할 수 있습니다.
 
 기본적으로 액션은 [트랜지션](/reference/react/useTransition) 내에서 제출되어 현재 페이지가 상호작용을 하는 동안 액션을 처리합니다. 액션은 비동기 함수를 지원하므로, 트랜지션 내에서 `async/await`를 사용할 수 있도록 추가했습니다. 이를 통해 `fetch`와 같은 비동기 요청이 시작되면 트랜지션의 `isPending` state를 사용하여 대기 중인 UI를 표시하고, 업데이트가 적용될 때까지 대기 중인 UI를 계속 보여줄 수 있습니다.
 
