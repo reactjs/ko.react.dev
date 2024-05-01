@@ -330,7 +330,11 @@ textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 
 <Pitfall>
 
+<<<<<<< HEAD
 **텍스트 영역에 `onChange` 없이 `value`를 전달하면 해당 텍스트 영역에 타이핑을 할 수 없게 됩니다.** `value`를 전달하여 텍스트 영역을 제어하면 항상 해당 value를 가지도록 *강제합니다*. 그러므로 state 변수를 `value`로 전달해도 `onChange` 이벤트 핸들러 내에서 해당 state 변수를 동기적으로 업데이트하지 않으면 React는 키보드를 누를 때마다 텍스트 영역을 처음 지정한 `value`로 되돌리게 됩니다.
+=======
+**If you pass `value` without `onChange`, it will be impossible to type into the text area.** When you control a text area by passing some `value` to it, you *force* it to always have the value you passed. So if you pass a state variable as a `value` but forget to update that state variable synchronously during the `onChange` event handler, React will revert the text area after every keystroke back to the `value` that you specified.
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 </Pitfall>
 

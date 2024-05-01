@@ -266,6 +266,7 @@ React 앱에서와 같이 부모 컴포넌트는 자식 컴포넌트에 데이�
 	* [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 	* [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 	* [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
+<<<<<<< HEAD:src/content/reference/react/use-client.md
 	* [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) 및 [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
 * [Date 객체](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 * 일반 [객체](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) (직렬화할 수 있는 properties를 사용하여 [객체 이니셜라이저](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer)로 생성된 객체)
@@ -278,6 +279,20 @@ React 앱에서와 같이 부모 컴포넌트는 자식 컴포넌트에 데이�
 * [클래스](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 * 위에서 언급한 내장형 클래스의 인스턴스가 아닌 객체 혹은 [null 프로토타입](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)을 가진 객체
 * 글로벌하게 등록되지 않은 symbol (예: `Symbol('my new symbol')`)
+=======
+	* [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) and [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
+* [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+* Plain [objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object): those created with [object initializers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer), with serializable properties
+* Functions that are [Server Actions](/reference/rsc/use-server)
+* Client or Server Component elements (JSX)
+* [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+Notably, these are not supported:
+* [Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function) that are not exported from client-marked modules or marked with [`'use server'`](/reference/rsc/use-server)
+* [Classes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
+* Objects that are instances of any class (other than the built-ins mentioned) or objects with [a null prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
+* Symbols not registered globally, ex. `Symbol('my new symbol')`
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951:src/content/reference/rsc/use-client.md
 
 
 ## 사용법 {/*usage*/}
