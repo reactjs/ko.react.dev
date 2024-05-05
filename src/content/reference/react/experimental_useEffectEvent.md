@@ -4,15 +4,15 @@ title: experimental_useEffectEvent
 
 <Wip>
 
-**이 API는 실험 단계이므로 아직 stable 버전의 리액트에는 사용할 수 없습니다.**
+**이 API는 실험 단계이므로 아직 안정된 버전의 리액트에는 사용할 수 없습니다.**
 
-가장 최신 버전의 recent experimental 버전으로 업그레이드하여 사용해 볼 수 있습니다.
+가장 최신 실험 버전으로 업그레이드하여 리액트 패키지를 사용해 볼 수 있습니다.
 
 - `react@experimental`
 - `react-dom@experimental`
 - `eslint-plugin-react-hooks@experimental`
 
-Experimental 버전의 리액트는 버그가 발생할 수 있습니다. 제품에는 이 버전을 사용하지 마세요.
+실험 버전의 리액트는 버그가 발생할 수 있습니다. 제품환경에서는 이 버전을 사용하지 마세요.
 
 
 </Wip>
