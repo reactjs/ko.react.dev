@@ -12,7 +12,7 @@ title: experimental_useEffectEvent
 - `react-dom@experimental`
 - `eslint-plugin-react-hooks@experimental`
 
-실험 버전의 리액트는 버그가 발생할 수 있습니다. 제품환경에서는 이 버전을 사용하지 마세요.
+실험 버전의 리액트에는 버그가 있을 수 있습니다. 프로덕션 환경에서는 이 버전을 사용하지 마세요.
 
 
 </Wip>
@@ -20,7 +20,7 @@ title: experimental_useEffectEvent
 
 <Intro>
 
-`useEffectEvent`는 [Effect Event.](/learn/separating-events-from-effects#declaring-an-effect-event) 에 non-reactive 로직을 추출하는 리액트 훅입니다.
+`useEffectEvent`는 [Effect Event.](/learn/separating-events-from-effects#declaring-an-effect-event) 에 반응하지 않는 로직을 추출하는 리액트 훅입니다.
 
 ```js
 const onSomething = useEffectEvent(callback)
