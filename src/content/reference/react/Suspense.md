@@ -1348,11 +1348,7 @@ input { margin: 10px; }
 
 <Note>
 
-<<<<<<< HEAD
-지연된 값(deferred value)과 [transitions](#preventing-already-revealed-content-from-hiding) 을 사용하면 Suspense fallback을 표시하지 않을 수 있습니다. transitions는 전체 업데이트를 긴급하지 않은 것으로 처리하므로 일반적으로 프레임워크와 router 라이브러리에서 navigation을 위해 사용됩니다. 반면에 지연된 값(deferred value)은 UI의 일부를 긴급하지 않은 것으로 처리하고 나머지 UI보다 "지연"시키려는 목적의 애플리케이션 코드에서 유용합니다.
-=======
-Both deferred values and [Transitions](#preventing-already-revealed-content-from-hiding) let you avoid showing Suspense fallback in favor of inline indicators. Transitions mark the whole update as non-urgent so they are typically used by frameworks and router libraries for navigation. Deferred values, on the other hand, are mostly useful in application code where you want to mark a part of UI as non-urgent and let it "lag behind" the rest of the UI.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+지연된 값(deferred value)과 [Transitions](#preventing-already-revealed-content-from-hiding) 을 사용하면 Suspense fallback 을 표시하지 않을 수 있습니다. Transitions 는 전체 업데이트를 긴급하지 않은 것으로 처리하므로 일반적으로 프레임워크와 router 라이브러리에서 navigation 을 위해 사용됩니다. 반면에 지연된 값(deferred value)은 UI의 일부를 긴급하지 않은 것으로 처리하고 나머지 UI보다 "지연"시키려는 목적의 애플리케이션 코드에서 유용합니다.
 
 </Note>
 
@@ -1731,11 +1727,7 @@ main {
 
 버튼을 눌렀을 때 `Router` 컴포넌트가 `IndexPage` 대신 `ArtistPage`를 렌더링했습니다. `ArtistPage` 내부의 컴포넌트가 지연됐기 때문에 가장 가까운 Suspense가 Fallback을 보여주기 시작했습니다. 가장 가까운 Suspense가 root 근처에 있었기 때문에 전체 사이트 레이아웃이 `BigSpinner`로 대체되었습니다.
 
-<<<<<<< HEAD
-이를 방지하려면 [`startTransition`](/reference/react/startTransition)을 사용하여 navigation state 업데이트를 *transition*으로 처리할 수 있습니다.
-=======
-To prevent this, you can mark the navigation state update as a *Transition* with [`startTransition`:](/reference/react/startTransition)
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+이를 방지하려면 [`startTransition`](/reference/react/startTransition)을 사용하여 navigation state 업데이트를 *Transition*으로 처리할 수 있습니다.
 
 ```js {5,7}
 function Router() {
@@ -2120,33 +2112,19 @@ main {
 
 </Sandpack>
 
-<<<<<<< HEAD
-transition은 *모든* 콘텐츠가 로드될 때까지 기다리지 않습니다. 이미 보여진 콘텐츠가 숨겨지지 않도록 충분히 오래 기다립니다. 예를 들어 웹사이트 `Layout`은 이미 보이므로 로딩 스피너 뒤에 숨기는 것은 좋지 않을 것입니다. 그러나 `Albums` 주위에 중첩된 `Suspense`는 새로운 것이므로 transition이 기다리지 않습니다.
+Transition 은 *모든* 콘텐츠가 로드될 때까지 기다리지 않습니다. 이미 보여진 콘텐츠가 숨겨지지 않도록 충분히 오래 기다립니다. 예를 들어 웹사이트 `Layout`은 이미 보이므로 로딩 스피너 뒤에 숨기는 것은 좋지 않을 것입니다. 그러나 `Albums` 주위에 중첩된 `Suspense`는 새로운 것이므로 Transition 이 기다리지 않습니다.
 
 <Note>
 
 Suspense를 지원하는 router는 기본적으로 navigation 업데이트를 transition으로 래핑할 것으로 예상됩니다.
-=======
-A Transition doesn't wait for *all* content to load. It only waits long enough to avoid hiding already revealed content. For example, the website `Layout` was already revealed, so it would be bad to hide it behind a loading spinner. However, the nested `Suspense` boundary around `Albums` is new, so the Transition doesn't wait for it.
-
-<Note>
-
-Suspense-enabled routers are expected to wrap the navigation updates into Transitions by default.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 </Note>
 
 ---
 
-<<<<<<< HEAD
 ### Transition이 발생하고 있음을 보여주기 {/*indicating-that-a-transition-is-happening*/}
 
-위의 예시에서는 버튼을 클릭해도 navigation이 진행 중이라는 시각적 표시가 없습니다. 표시기를 추가하려면 [`startTransition`](/reference/react/startTransition)을 boolean 값인 `isPending` 값을 제공하는 [`useTransition`](/reference/react/useTransition)으로 바꾸면 됩니다. 아래 예시에서는 transition이 진행되는 동안 웹사이트 헤더 스타일을 변경하는 데 사용됩니다.
-=======
-### Indicating that a Transition is happening {/*indicating-that-a-transition-is-happening*/}
-
-In the above example, once you click the button, there is no visual indication that a navigation is in progress. To add an indicator, you can replace [`startTransition`](/reference/react/startTransition) with [`useTransition`](/reference/react/useTransition) which gives you a boolean `isPending` value. In the example below, it's used to change the website header styling while a Transition is happening:
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+위의 예시에서는 버튼을 클릭해도 navigation 이 진행 중이라는 시각적 표시가 없습니다. 표시기를 추가하려면 [`startTransition`](/reference/react/startTransition)을 boolean 값인 `isPending` 값을 제공하는 [`useTransition`](/reference/react/useTransition)으로 바꾸면 됩니다. 아래 예시에서는 Transition 이 진행되는 동안 웹사이트 헤더 스타일을 변경하는 데 사용됩니다.
 
 <Sandpack>
 
@@ -2524,21 +2502,13 @@ main {
 
 ### Navigation에서 Suspense 재설정하기 {/*resetting-suspense-boundaries-on-navigation*/}
 
-<<<<<<< HEAD
 Transition이 진행되는 동안 React는 이미 보인 콘텐츠를 숨기지 않습니다. 하지만 다른 매개변수가 있는 경로로 이동하는 경우 React에 *다른* 콘텐츠라고 알려주고 싶을 수 있습니다. 이를 `key`로 표현할 수 있습니다.
-=======
-During a Transition, React will avoid hiding already revealed content. However, if you navigate to a route with different parameters, you might want to tell React it is *different* content. You can express this with a `key`:
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 ```js
 <ProfilePage key={queryParams.id} />
 ```
 
-<<<<<<< HEAD
-사용자의 프로필 페이지 내에서 이동 중인데 무언가가 지연되었다고 가정해 보세요. 해당 업데이트가 transition으로 감싸져 있으면 이미 표시된 콘텐츠에 대한 Fallback이 트리거되지 않습니다. 이것이 예상되는 동작입니다.
-=======
-Imagine you're navigating within a user's profile page, and something suspends. If that update is wrapped in a Transition, it will not trigger the fallback for already visible content. That's the expected behavior.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+사용자의 프로필 페이지 내에서 이동 중인데 무언가가 지연되었다고 가정해 보세요. 해당 업데이트가 Transition 으로 감싸져 있으면 이미 표시된 콘텐츠에 대한 Fallback 이 트리거되지 않습니다. 이것이 예상되는 동작입니다.
 
 하지만 이제 두 개의 서로 다른 사용자 프로필 사이를 이동한다고 가정해 보겠습니다. 이 경우 Fallback을 표시하는 것이 좋습니다. 예를 들어 한 사용자의 타임라인이 다른 사용자의 타임라인과 *다른 콘텐츠*라고, 가정해 보겠습니다. `key`를 지정하면 React가 서로 다른 사용자의 프로필을 서로 다른 컴포넌트로 취급하고 탐색하는 동안 Suspense를 재설정하도록 할 수 있습니다. Suspense 통합 라우터는 이 동작을 자동으로 수행해야 합니다.
 
@@ -2575,11 +2545,7 @@ function Chat() {
 
 표시되는 UI를 Fallback으로 대체하면 사용자 환경이 불안정해집니다. 이는 업데이트로 인해 컴포넌트가 지연되고 가장 가까운 Suspense가 이미 사용자에게 콘텐츠를 보여주고 있을 때 발생할 수 있습니다.
 
-<<<<<<< HEAD
-이런 일이 발생하지 않도록 하려면, [`startTransition`](#preventing-already-revealed-content-from-hiding)을 사용하여 업데이트를 긴급하지 않은 것으로 처리하세요. transition이 진행되는 동안 React는 원치 않는 Fallback이 나타나지 않도록 충분한 데이터가 로드될 때까지 기다립니다.
-=======
-To prevent this from happening, [mark the update as non-urgent using `startTransition`](#preventing-already-revealed-content-from-hiding). During a Transition, React will wait until enough data has loaded to prevent an unwanted fallback from appearing:
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+이런 일이 발생하지 않도록 하려면, [`startTransition`](#preventing-already-revealed-content-from-hiding)을 사용하여 업데이트를 긴급하지 않은 것으로 처리하세요. Transition 이 진행되는 동안 React는 원치 않는 Fallback이 나타나지 않도록 충분한 데이터가 로드될 때까지 기다립니다.
 
 ```js {2-3,5}
 function handleNextPageClick() {

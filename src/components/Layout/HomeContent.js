@@ -493,10 +493,6 @@ export function HomeContent() {
           </div>
 
           <div className="mt-20 px-5 lg:px-0 mb-6 max-w-4xl text-center text-opacity-80">
-<<<<<<< HEAD
-            <Logo className="text-link dark:text-link-dark w-24 lg:w-28 mb-10 lg:mb-8 mt-12 h-auto mx-auto self-start" />
-            <Header>React 커뮤니티에 오신 것을 환영합니다.</Header>
-=======
             <div className="uwu-visible flex justify-center">
               <img
                 alt="logo by @sawaratsuki1004"
@@ -506,11 +502,7 @@ export function HomeContent() {
               />
             </div>
             <Logo className="uwu-hidden text-brand dark:text-brand-dark w-24 lg:w-28 mb-10 lg:mb-8 mt-12 h-auto mx-auto self-start" />
-            <Header>
-              Welcome to the <br className="hidden lg:inline" />
-              React community
-            </Header>
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+            <Header>React 커뮤니티에 오신 것을 환영합니다.</Header>
             <ButtonLink
               href={'/learn'}
               type="primary"

@@ -335,10 +335,7 @@
     },
     {
       "hasSectionHeader": true,
-<<<<<<< HEAD
-      "sectionHeader": "레거시 API"
-=======
-      "sectionHeader": "Rules of React"
+      "sectionHeader": "React 의 규칙"
     },
     {
       "title": "Overview",
@@ -391,8 +388,7 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "Legacy APIs"
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+      "sectionHeader": "레거시 API"
     },
     {
       "title": "레거시 React API",

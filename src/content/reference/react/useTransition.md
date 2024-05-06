@@ -20,11 +20,7 @@ const [isPending, startTransition] = useTransition()
 
 ### `useTransition()` {/*usetransition*/}
 
-<<<<<<< HEAD
-컴포넌트의 최상위 수준에서 `useTransition`을 호출하여 일부 state 업데이트를 transition으로 표시합니다.
-=======
-Call `useTransition` at the top level of your component to mark some state updates as Transitions.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+컴포넌트의 최상위 수준에서 `useTransition`을 호출하여 일부 state 업데이트를 Transition 으로 표시합니다.
 
 ```js
 import { useTransition } from 'react';
@@ -45,23 +41,14 @@ function TabContainer() {
 
 `useTransition`은 정확히 두 개의 항목이 있는 배열을 반환합니다.
 
-<<<<<<< HEAD
-1. `isPending` 플래그는 대기 중인 transition이 있는지 알려줍니다.
-2. [`startTransition` 함수](#starttransition)는 상태 업데이트를 transition으로 표시할 수 있게 해주는 함수입니다.
-=======
-1. The `isPending` flag that tells you whether there is a pending Transition.
-2. The [`startTransition` function](#starttransition) that lets you mark a state update as a Transition.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+1. `isPending` 플래그는 대기 중인 Transition 이 있는지 알려줍니다.
+2. [`startTransition` 함수](#starttransition)는 상태 업데이트를 Transition 으로 표시할 수 있게 해주는 함수입니다.
 
 ---
 
 ### `startTransition` 함수 {/*starttransition*/}
 
-<<<<<<< HEAD
-`useTransition`이 반환하는 `startTransition` 함수를 사용하면 state 업데이트를 transition으로 표시할 수 있습니다.
-=======
-The `startTransition` function returned by `useTransition` lets you mark a state update as a Transition.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+`useTransition`이 반환하는 `startTransition` 함수를 사용하면 state 업데이트를 Transition 으로 표시할 수 있습니다.
 
 ```js {6,8}
 function TabContainer() {
@@ -79,11 +66,7 @@ function TabContainer() {
 
 #### 매개변수 {/*starttransition-parameters*/}
 
-<<<<<<< HEAD
-* `scope`: 하나 이상의 [`set` 함수](/reference/react/useState#setstate)를 호출하여 일부 state를 업데이트하는 함수입니다. React는 매개변수 없이 `scope`를 즉시 호출하고 `scope` 함수를 호출하는 동안 동기적으로 예약된 모든 state 업데이트를 transition으로 표시합니다. 이는 [non-blocking](#marking-a-state-update-as-a-non-blocking-transition)이며 [원치 않는 로딩을 표시하지 않습니다.](#preventing-unwanted-loading-indicators)
-=======
-* `scope`: A function that updates some state by calling one or more [`set` functions.](/reference/react/useState#setstate) React immediately calls `scope` with no parameters and marks all state updates scheduled synchronously during the `scope` function call as Transitions. They will be [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) and [will not display unwanted loading indicators.](#preventing-unwanted-loading-indicators)
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+* `scope`: 하나 이상의 [`set` 함수](/reference/react/useState#setstate)를 호출하여 일부 state를 업데이트하는 함수입니다. React는 매개변수 없이 `scope`를 즉시 호출하고 `scope` 함수를 호출하는 동안 동기적으로 예약된 모든 state 업데이트를 Transition 으로 표시합니다. 이는 [non-blocking](#marking-a-state-update-as-a-non-blocking-transition)이며 [원치 않는 로딩을 표시하지 않습니다.](#preventing-unwanted-loading-indicators)
 
 #### 반환값 {/*starttransition-returns*/}
 
@@ -91,45 +74,25 @@ function TabContainer() {
 
 #### 주의 사항 {/*starttransition-caveats*/}
 
-<<<<<<< HEAD
-* `useTransition`은 Hook이므로 컴포넌트나 커스텀 Hook 내부에서만 호출할 수 있습니다. 다른 곳(예시: 데이터 라이브러리)에서 transition을 시작해야 하는 경우, 독립형 [`startTransition`](/reference/react/startTransition)을 호출하세요.
+* `useTransition`은 Hook이므로 컴포넌트나 커스텀 Hook 내부에서만 호출할 수 있습니다. 다른 곳(예시: 데이터 라이브러리)에서 Transition 을 시작해야 하는 경우, 독립형 [`startTransition`](/reference/react/startTransition)을 호출하세요.
 
-* 해당 state의 `set` 함수에 액세스할 수 있는 경우에만 업데이트를 transition으로 래핑할 수 있습니다. 일부 prop이나 커스텀 Hook 값에 대한 응답으로 transition을 시작하려면 [`useDeferredValue`](/reference/react/useDeferredValue)를 사용해 보세요.
+* 해당 state의 `set` 함수에 액세스할 수 있는 경우에만 업데이트를 Transition 으로 래핑할 수 있습니다. 일부 prop이나 커스텀 Hook 값에 대한 응답으로 Transition 을 시작하려면 [`useDeferredValue`](/reference/react/useDeferredValue)를 사용해 보세요.
 
-* `startTransition`에 전달하는 함수는 동기식이어야 합니다. React는 이 함수를 즉시 실행하여 실행하는 동안 발생하는 모든 state 업데이트를 transition으로 표시합니다. 나중에 더 많은 state 업데이트를 수행하려고 하면(예시: timeout), transition으로 표시되지 않습니다.
+* `startTransition`에 전달하는 함수는 동기식이어야 합니다. React는 이 함수를 즉시 실행하여 실행하는 동안 발생하는 모든 state 업데이트를 Transition 으로 표시합니다. 나중에 더 많은 state 업데이트를 수행하려고 하면(예시: timeout), Transition 으로 표시되지 않습니다.
 
-* Transition으로 표시된 state 업데이트는 다른 state 업데이트에 의해 중단됩니다. 예를 들어, transition 내에서 차트 컴포넌트를 업데이트한 다음 차트가 다시 렌더링 되는 도중에 입력을 시작하면 React는 입력 업데이트를 처리한 후 차트 컴포넌트에서 렌더링 작업을 다시 시작합니다.
-=======
-* `useTransition` is a Hook, so it can only be called inside components or custom Hooks. If you need to start a Transition somewhere else (for example, from a data library), call the standalone [`startTransition`](/reference/react/startTransition) instead.
-
-* You can wrap an update into a Transition only if you have access to the `set` function of that state. If you want to start a Transition in response to some prop or a custom Hook value, try [`useDeferredValue`](/reference/react/useDeferredValue) instead.
-
-* The function you pass to `startTransition` must be synchronous. React immediately executes this function, marking all state updates that happen while it executes as Transitions. If you try to perform more state updates later (for example, in a timeout), they won't be marked as Transitions.
-
-* A state update marked as a Transition will be interrupted by other state updates. For example, if you update a chart component inside a Transition, but then start typing into an input while the chart is in the middle of a re-render, React will restart the rendering work on the chart component after handling the input update.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+* Transition으로 표시된 state 업데이트는 다른 state 업데이트에 의해 중단됩니다. 예를 들어, Transition 내에서 차트 컴포넌트를 업데이트한 다음 차트가 다시 렌더링 되는 도중에 입력을 시작하면 React는 입력 업데이트를 처리한 후 차트 컴포넌트에서 렌더링 작업을 다시 시작합니다.
 
 * Transition 업데이트는 텍스트 입력을 제어하는 데 사용할 수 없습니다.
 
-<<<<<<< HEAD
-* 진행 중인 transition이 여러 개 있는 경우, React는 현재 transition을 함께 일괄 처리합니다. 이는 향후 릴리즈에서 제거될 가능성이 높은 제한 사항입니다.
-=======
-* If there are multiple ongoing Transitions, React currently batches them together. This is a limitation that will likely be removed in a future release.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+* 진행 중인 Transition 이 여러 개 있는 경우, React는 현재 Transition 을 함께 일괄 처리합니다. 이는 향후 릴리즈에서 제거될 가능성이 높은 제한 사항입니다.
 
 ---
 
 ## 사용법 {/*usage*/}
 
-<<<<<<< HEAD
-### state 업데이트를 non-blocking transition으로 표시 {/*marking-a-state-update-as-a-non-blocking-transition*/}
+### state 업데이트를 non-blocking Transition 으로 표시 {/*marking-a-state-update-as-a-non-blocking-transition*/}
 
-컴포넌트의 최상위 레벨에서 `useTransition`을 호출하여 state 업데이트를 non-blocking *transitions*으로 표시하세요.
-=======
-### Marking a state update as a non-blocking Transition {/*marking-a-state-update-as-a-non-blocking-transition*/}
-
-Call `useTransition` at the top level of your component to mark state updates as non-blocking *Transitions*.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+컴포넌트의 최상위 레벨에서 `useTransition`을 호출하여 state 업데이트를 non-blocking *Transitionㄴ*으로 표시하세요.
 
 ```js [[1, 4, "isPending"], [2, 4, "startTransition"]]
 import { useState, useTransition } from 'react';
@@ -142,17 +105,10 @@ function TabContainer() {
 
 `useTransition`은 정확히 두 개의 항목이 있는 배열을 반환합니다.
 
-<<<<<<< HEAD
-1. 보류 중인 transition이 있는지를 알려주는 <CodeStep step={1}>`isPending` 플래그</CodeStep>입니다.
-2. state 업데이트를 transition으로 표시할 수 있는 <CodeStep step={2}>`startTransition` 함수</CodeStep>입니다.
+1. 보류 중인 Transition 이 있는지를 알려주는 <CodeStep step={1}>`isPending` 플래그</CodeStep>입니다.
+2. state 업데이트를 Transition 으로 표시할 수 있는 <CodeStep step={2}>`startTransition` 함수</CodeStep>입니다.
 
-그 후 다음과 같이 state 업데이트를 transition으로 표시할 수 있습니다.
-=======
-1. The <CodeStep step={1}>`isPending` flag</CodeStep> that tells you whether there is a pending Transition.
-2. The <CodeStep step={2}>`startTransition` function</CodeStep> that lets you mark a state update as a Transition.
-
-You can then mark a state update as a Transition like this:
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+그 후 다음과 같이 state 업데이트를 Transition 으로 표시할 수 있습니다.
 
 ```js {6,8}
 function TabContainer() {
@@ -170,27 +126,15 @@ function TabContainer() {
 
 Transition을 사용하면 느린 디바이스에서도 사용자 인터페이스 업데이트의 반응성을 유지할 수 있습니다.
 
-<<<<<<< HEAD
 Transition을 사용하면 리렌더링 도중에도 UI가 반응성을 유지합니다. 예를 들어 사용자가 탭을 클릭했다가 마음이 바뀌어 다른 탭을 클릭하면 첫 번째 리렌더링이 완료될 때까지 기다릴 필요 없이 다른 탭을 클릭할 수 있습니다.
-=======
-With a Transition, your UI stays responsive in the middle of a re-render. For example, if the user clicks a tab but then change their mind and click another tab, they can do that without waiting for the first re-render to finish.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 <Recipes titleText="useTransition과 일반 state 업데이트의 차이점" titleId="examples">
 
-<<<<<<< HEAD
 #### Transition에서 현재 탭 업데이트 {/*updating-the-current-tab-in-a-transition*/}
-=======
-#### Updating the current tab in a Transition {/*updating-the-current-tab-in-a-transition*/}
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 이 예시에서는 "Posts" 탭이 **인위적으로 느려지도록** 하여 렌더링하는 데 최소 1초가 걸리도록 했습니다.
 
-<<<<<<< HEAD
-"posts"을 클릭한 다음 바로 "Contact"를 클릭합니다. 이렇게 하면 "Posts"의 느린 렌더링이 중단됩니다. "Contact" 탭이 즉시 표시됩니다. 이 state 업데이트는 transition으로 표시되므로 느리게 다시 렌더링해도 사용자 인터페이스가 멈추지 않습니다.
-=======
-Click "Posts" and then immediately click "Contact". Notice that this interrupts the slow render of "Posts". The "Contact" tab shows immediately. Because this state update is marked as a Transition, a slow re-render did not freeze the user interface.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+"posts"을 클릭한 다음 바로 "Contact"를 클릭합니다. 이렇게 하면 "Posts"의 느린 렌더링이 중단됩니다. "Contact" 탭이 즉시 표시됩니다. 이 state 업데이트는 Transition 으로 표시되므로 느리게 다시 렌더링해도 사용자 인터페이스가 멈추지 않습니다.
 
 <Sandpack>
 
@@ -325,19 +269,11 @@ b { display: inline-block; margin-right: 10px; }
 
 <Solution />
 
-<<<<<<< HEAD
 #### Transition 없이 현재 탭 업데이트 {/*updating-the-current-tab-without-a-transition*/}
 
-이 예시에서도 "Posts" 탭이 렌더링하는 데 최소 1초가 걸리도록 **인위적으로 느려지게** 했습니다. 이전 예시와 달리 이 state 업데이트는 **transition이 아닙니다.**
+이 예시에서도 "Posts" 탭이 렌더링하는 데 최소 1초가 걸리도록 **인위적으로 느려지게** 했습니다. 이전 예시와 달리 이 state 업데이트는 **Transition  아닙니다.**
 
-"posts"을 클릭한 다음 바로 "Contact"를 클릭합니다. 속도가 느려진 탭을 렌더링하는 동안 앱이 멈추고 UI가 응답하지 않는 것을 확인할 수 있습니다. 이 state 업데이트는 transition이 아니므로 느리게 다시 렌더링 되면 사용자 인터페이스가 정지됩니다.
-=======
-#### Updating the current tab without a Transition {/*updating-the-current-tab-without-a-transition*/}
-
-In this example, the "Posts" tab is also **artificially slowed down** so that it takes at least a second to render. Unlike in the previous example, this state update is **not a Transition.**
-
-Click "Posts" and then immediately click "Contact". Notice that the app freezes while rendering the slowed down tab, and the UI becomes unresponsive. This state update is not a Transition, so a slow re-render freezed the user interface.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+"posts"을 클릭한 다음 바로 "Contact"를 클릭합니다. 속도가 느려진 탭을 렌더링하는 동안 앱이 멈추고 UI가 응답하지 않는 것을 확인할 수 있습니다. 이 state 업데이트는 Transition 이 아니므로 느리게 다시 렌더링 되면 사용자 인터페이스가 정지됩니다.
 
 <Sandpack>
 
@@ -473,15 +409,9 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-<<<<<<< HEAD
 ### Transition에서 상위 컴포넌트 업데이트 {/*updating-the-parent-component-in-a-transition*/}
 
-`useTransition` 호출에서도 부모 컴포넌트의 state를 업데이트할 수 있습니다. 예를 들어, 아래의 `TabButton` 컴포넌트는 `onClick` 로직을 transition으로 래핑합니다.
-=======
-### Updating the parent component in a Transition {/*updating-the-parent-component-in-a-transition*/}
-
-You can update a parent component's state from the `useTransition` call, too. For example, this `TabButton` component wraps its `onClick` logic in a Transition:
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+`useTransition` 호출에서도 부모 컴포넌트의 state를 업데이트할 수 있습니다. 예를 들어, 아래의 `TabButton` 컴포넌트는 `onClick` 로직을 Transition 으로 래핑합니다.
 
 ```js {8-10}
 export default function TabButton({ children, isActive, onClick }) {
@@ -501,11 +431,7 @@ export default function TabButton({ children, isActive, onClick }) {
 }
 ```
 
-<<<<<<< HEAD
-부모 컴포넌트가 `onClick` 이벤트 핸들러 내에서 state를 업데이트하기 때문에 해당 state 업데이트는 transition으로 표시됩니다. 그렇기 때문에 앞의 예시에서처럼 "posts"을 클릭한 다음 바로 "Contact"를 클릭할 수 있습니다. 선택한 탭을 업데이트하는 것은 transition으로 표시되므로 사용자 상호작용을 차단하지 않습니다.
-=======
-Because the parent component updates its state inside the `onClick` event handler, that state update gets marked as a Transition. This is why, like in the earlier example, you can click on "Posts" and then immediately click "Contact". Updating the selected tab is marked as a Transition, so it does not block user interactions.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+부모 컴포넌트가 `onClick` 이벤트 핸들러 내에서 state를 업데이트하기 때문에 해당 state 업데이트는 Transition 으로 표시됩니다. 그렇기 때문에 앞의 예시에서처럼 "posts"을 클릭한 다음 바로 "Contact"를 클릭할 수 있습니다. 선택한 탭을 업데이트하는 것은 Transition 으로 표시되므로 사용자 상호작용을 차단하지 않습니다.
 
 <Sandpack>
 
@@ -634,15 +560,9 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-<<<<<<< HEAD
 ### Transition 중에 보류 중인 시각적 state 표시 {/*displaying-a-pending-visual-state-during-the-transition*/}
 
 `useTransition`이 반환하는 `isPending` boolean 값을 사용하여 transition이 진행 중임을 사용자에게 표시할 수 있습니다. 예를 들어 탭 버튼은 특별한 "pending" 시각적 상태를 가질 수 있습니다.
-=======
-### Displaying a pending visual state during the Transition {/*displaying-a-pending-visual-state-during-the-transition*/}
-
-You can use the `isPending` boolean value returned by `useTransition` to indicate to the user that a Transition is in progress. For example, the tab button can have a special "pending" visual state:
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 ```js {4-6}
 function TabButton({ children, isActive, onClick }) {
@@ -1167,19 +1087,11 @@ b { display: inline-block; margin-right: 10px; }
 
 </Sandpack>
 
-<<<<<<< HEAD
-[Suspense에서 transition을 사용하는 방법에 대해 자세히 알아보세요.](/reference/react/Suspense#preventing-already-revealed-content-from-hiding)
+[Suspense에서 Transition 을 사용하는 방법에 대해 자세히 알아보세요.](/reference/react/Suspense#preventing-already-revealed-content-from-hiding)
 
 <Note>
 
-Transition은 *이미 표시된* 콘텐츠(예시: 탭 컨테이너)를 숨기지 않을 만큼만 "대기"합니다. 만약 Posts 탭에 [중첩된 `<Suspense>` 경계](/reference/react/Suspense#revealing-nested-content-as-it-loads)가 있는 경우 transition은 이를 "대기"하지 않습니다.
-=======
-[Read more about using Transitions with Suspense.](/reference/react/Suspense#preventing-already-revealed-content-from-hiding)
-
-<Note>
-
-Transitions will only "wait" long enough to avoid hiding *already revealed* content (like the tab container). If the Posts tab had a [nested `<Suspense>` boundary,](/reference/react/Suspense#revealing-nested-content-as-it-loads) the Transition would not "wait" for it.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+Transition은 *이미 표시된* 콘텐츠(예시: 탭 컨테이너)를 숨기지 않을 만큼만 "대기"합니다. 만약 Posts 탭에 [중첩된 `<Suspense>` 경계](/reference/react/Suspense#revealing-nested-content-as-it-loads)가 있는 경우 Transition 은 이를 "대기"하지 않습니다.
 
 </Note>
 
@@ -1187,11 +1099,7 @@ Transitions will only "wait" long enough to avoid hiding *already revealed* cont
 
 ### Suspense-enabled 라우터 구축 {/*building-a-suspense-enabled-router*/}
 
-<<<<<<< HEAD
-React 프레임워크나 라우터를 구축하는 경우 페이지 탐색을 transition으로 표시하는 것이 좋습니다.
-=======
-If you're building a React framework or a router, we recommend marking page navigations as Transitions.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+React 프레임워크나 라우터를 구축하는 경우 페이지 탐색을 Transition 으로 표시하는 것이 좋습니다.
 
 ```js {3,6,8}
 function Router() {
@@ -1211,11 +1119,7 @@ function Router() {
 - [Transition은 중단할 수 있으므로](#marking-a-state-update-as-a-non-blocking-transition) 사용자는 리렌더링이 완료될 때까지 기다릴 필요 없이 바로 클릭할 수 있습니다.
 - [Transition은 원치 않는 로딩 표시기를 방지하므로](#preventing-unwanted-loading-indicators) 사용자가 탐색 시 갑작스러운 이동을 방지할 수 있습니다.
 
-<<<<<<< HEAD
-다음은 탐색을 위해 transition을 사용하는 아주 간단한 라우터 예시입니다.
-=======
-Here is a tiny simplified router example using Transitions for navigations.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+다음은 탐색을 위해 Transition 을 사용하는 아주 간단한 라우터 예시입니다.
 
 <Sandpack>
 
@@ -1590,11 +1494,7 @@ main {
 
 <Note>
 
-<<<<<<< HEAD
-[Suspense-enabled](/reference/react/Suspense) 라우터는 기본적으로 탐색 업데이트를 transition으로 래핑할 것으로 예상됩니다.
-=======
-[Suspense-enabled](/reference/react/Suspense) routers are expected to wrap the navigation updates into Transitions by default.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+[Suspense-enabled](/reference/react/Suspense) 라우터는 기본적으로 탐색 업데이트를 Transition 으로 래핑할 것으로 예상됩니다.
 
 </Note>
 
@@ -1697,25 +1597,15 @@ root.render(
 
 ## Troubleshooting {/*troubleshooting*/}
 
-<<<<<<< HEAD
 ### Transition에서 입력 업데이트가 작동하지 않습니다 {/*updating-an-input-in-a-transition-doesnt-work*/}
 
-입력을 제어하는 state 변수에는 transition을 사용할 수 없습니다.
-=======
-### Updating an input in a Transition doesn't work {/*updating-an-input-in-a-transition-doesnt-work*/}
-
-You can't use a Transition for a state variable that controls an input:
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+입력을 제어하는 state 변수에는 Transition 을 사용할 수 없습니다.
 
 ```js {4,10}
 const [text, setText] = useState('');
 // ...
 function handleChange(e) {
-<<<<<<< HEAD
-  // ❌ 제어된 입력 state에 transition을 사용할 수 없습니다.
-=======
-  // ❌ Can't use Transitions for controlled input state
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+  // ❌ 제어된 입력 state에 Transition 을 사용할 수 없습니다.
   startTransition(() => {
     setText(e.target.value);
   });
@@ -1724,10 +1614,9 @@ function handleChange(e) {
 return <input value={text} onChange={handleChange} />;
 ```
 
-<<<<<<< HEAD
-이는 transition이 non-blocking이지만, 변경 이벤트에 대한 응답으로 입력을 업데이트하는 것은 동기적으로 이루어져야 하기 때문입니다. 입력에 대한 응답으로 transition을 실행하려면 두 가지 옵션이 있습니다.
+이는 Transition 이 non-blocking이지만, 변경 이벤트에 대한 응답으로 입력을 업데이트하는 것은 동기적으로 이루어져야 하기 때문입니다. 입력에 대한 응답으로 Transition 을 실행하려면 두 가지 옵션이 있습니다.
 
-1. 두 개의 개별 state 변수를 선언할 수 있습니다. 하나는 입력 state(항상 동기적으로 업데이트됨) 용이고 다른 하나는 transition시 업데이트할 state입니다. 이를 통해 동기 state를 사용하여 입력을 제어하고 (입력보다 "지연"되는) transition state 변수를 나머지 렌더링 로직에 전달할 수 있습니다.
+1. 두 개의 개별 state 변수를 선언할 수 있습니다. 하나는 입력 state(항상 동기적으로 업데이트됨) 용이고 다른 하나는 Transition 시 업데이트할 state입니다. 이를 통해 동기 state를 사용하여 입력을 제어하고 (입력보다 "지연"되는) Transition state 변수를 나머지 렌더링 로직에 전달할 수 있습니다.
 2. 또는 state 변수가 하나 있고 실제 값보다 "지연"되는 [`useDeferredValue`](/reference/react/useDeferredValue)를 추가할 수 있습니다. 그러면 non-blocking 리렌더링이 새로운 값을 자동으로 "따라잡기" 위해 트리거됩니다.
 
 ---
@@ -1735,18 +1624,6 @@ return <input value={text} onChange={handleChange} />;
 ### React가 state 업데이트를 transition으로 처리하지 않습니다 {/*react-doesnt-treat-my-state-update-as-a-transition*/}
 
 state 업데이트를 transition으로 래핑할 때는 `startTransition` 호출 *도중*에 발생해야 합니다.
-=======
-This is because Transitions are non-blocking, but updating an input in response to the change event should happen synchronously. If you want to run a Transition in response to typing, you have two options:
-
-1. You can declare two separate state variables: one for the input state (which always updates synchronously), and one that you will update in a Transition. This lets you control the input using the synchronous state, and pass the Transition state variable (which will "lag behind" the input) to the rest of your rendering logic.
-2. Alternatively, you can have one state variable, and add [`useDeferredValue`](/reference/react/useDeferredValue) which will "lag behind" the real value. It will trigger non-blocking re-renders to "catch up" with the new value automatically.
-
----
-
-### React doesn't treat my state update as a Transition {/*react-doesnt-treat-my-state-update-as-a-transition*/}
-
-When you wrap a state update in a Transition, make sure that it happens *during* the `startTransition` call:
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 ```js
 startTransition(() => {
@@ -1757,11 +1634,7 @@ startTransition(() => {
 
 `startTransition`에 전달하는 함수는 동기식이어야 합니다.
 
-<<<<<<< HEAD
-아래와 같은 업데이트는 transition으로 표시할 수 없습니다.
-=======
-You can't mark an update as a Transition like this:
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+아래와 같은 업데이트는 Transition 으로 표시할 수 없습니다.
 
 ```js
 startTransition(() => {
@@ -1783,11 +1656,7 @@ setTimeout(() => {
 }, 1000);
 ```
 
-<<<<<<< HEAD
-마찬가지로 업데이트를 이와 같은 transition으로 표시할 수 없습니다.
-=======
-Similarly, you can't mark an update as a Transition like this:
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+마찬가지로 업데이트를 이와 같은 Transition 으로 표시할 수 없습니다.
 
 ```js
 startTransition(async () => {
@@ -1828,11 +1697,7 @@ startTransition(() => {
 console.log(3);
 ```
 
-<<<<<<< HEAD
-**1, 2, 3을 출력할 것으로 예상됩니다.** `startTransition`에 전달한 함수는 지연되지 않습니다. 브라우저 `setTimeout`과 달리 나중에 콜백을 실행하지 않습니다. React는 함수를 즉시 실행하지만, *함수가 실행되는 동안* 예약된 모든 상태 업데이트는 트랜지션으로 표시됩니다. 아래와 같이 작동한다고 상상하면 됩니다.
-=======
-**It is expected to print 1, 2, 3.** The function you pass to `startTransition` does not get delayed. Unlike with the browser `setTimeout`, it does not run the callback later. React executes your function immediately, but any state updates scheduled *while it is running* are marked as Transitions. You can imagine that it works like this:
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+**1, 2, 3을 출력할 것으로 예상됩니다.** `startTransition`에 전달한 함수는 지연되지 않습니다. 브라우저 `setTimeout`과 달리 나중에 콜백을 실행하지 않습니다. React는 함수를 즉시 실행하지만, *함수가 실행되는 동안* 예약된 모든 상태 업데이트는 Transition 으로 표시됩니다. 아래와 같이 작동한다고 상상하면 됩니다.
 
 ```js
 // React 작동 방식의 간소화된 버전
@@ -1847,11 +1712,7 @@ function startTransition(scope) {
 
 function setState() {
   if (isInsideTransition) {
-<<<<<<< HEAD
-    // ... transition state 업데이트 예약 ...
-=======
-    // ... schedule a Transition state update ...
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+    // ... Transition state 업데이트 예약 ...
   } else {
     // ... 긴급 state 업데이트 예약 ...
   }

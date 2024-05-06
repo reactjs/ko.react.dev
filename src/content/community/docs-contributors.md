@@ -4,11 +4,7 @@ title: 문서 기여자
 
 <Intro>
 
-<<<<<<< HEAD
-React 문서는  [React 팀](/community/team) 과 [외부 기여자](https://github.com/reactjs/reactjs.org/graphs/contributors)에 의해 작성되고 유지되고 있습니다. 우리는 이 페이지에서, 사이트에 상당한 기여를 한 사람들에게 감사를 전하고 싶습니다.
-=======
-React documentation is written and maintained by the [React team](/community/team) and [external contributors.](https://github.com/reactjs/react.dev/graphs/contributors) On this page, we'd like to thank a few people who've made significant contributions to this site.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+React 문서는  [React 팀](/community/team) 과 [외부 기여자](https://github.com/reactjs/react.dev/graphs/contributors)에 의해 작성되고 유지되고 있습니다. 우리는 이 페이지에서, 사이트에 상당한 기여를 한 사람들에게 감사를 전하고 싶습니다.
 
 </Intro>
 

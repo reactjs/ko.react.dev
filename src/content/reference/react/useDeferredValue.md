@@ -36,37 +36,26 @@ function SearchPage() {
 
 #### 매개변수 {/*parameters*/}
 
-<<<<<<< HEAD
 * `value`: 지연시키려는 값입니다. 모든 타입을 가질 수 있습니다.
-=======
-* `value`: The value you want to defer. It can have any type.
 * <CanaryBadge title="This feature is only available in the Canary channel" /> **optional** `initialValue`: A value to use during the initial render of a component. If this option is omitted, `useDeferredValue` will not defer during the initial render, because there's no previous version of `value` that it can render instead.
 
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 #### 반환값 {/*returns*/}
 
-<<<<<<< HEAD
-초기 렌더링 중에는 반환된 ‘지연된 값’은 사용자가 제공한 값과 같습니다. 업데이트가 발생하면 React는 먼저 이전 값으로 리렌더링을 시도(반환값이 이전 값과 일치하도록)하고, 그다음 백그라운드에서 다시 새 값으로 리렌더링을 시도(반환값이 업데이트된 새 값과 일치하도록)합니다.
-=======
-- `currentValue`: During the initial render, the returned deferred value will be the same as the value you provided. During updates, React will first attempt a re-render with the old value (so it will return the old value), and then try another re-render in the background with the new value (so it will return the updated value).
+
+- `currentValue`: 초기 렌더링 중에는 반환된 ‘지연된 값’은 사용자가 제공한 값과 같습니다. 업데이트가 발생하면 React는 먼저 이전 값으로 리렌더링을 시도(반환값이 이전 값과 일치하도록)하고, 그다음 백그라운드에서 다시 새 값으로 리렌더링을 시도(반환값이 업데이트된 새 값과 일치하도록)합니다.
 
 <Canary>
 
 In the latest React Canary versions, `useDeferredValue` returns the `initialValue` on initial render, and schedules a re-render in the background with the `value` returned.
 
 </Canary>
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 #### 주의사항 {/*caveats*/}
 
-<<<<<<< HEAD
 - `useDeferredValue`에 전달하는 값은 문자열 및 숫자와 같은 원시값이거나, 컴포넌트의 외부에서 생성된 객체여야 합니다. 렌더링 중에 새 객체를 생성하고 즉시 `useDeferredValue`에 전달하면 렌더링할 때마다 값이 달라져 불필요한 백그라운드 리렌더링이 발생할 수 있습니다.
-=======
-- When an update is inside a Transition, `useDeferredValue` always returns the new `value` and does not spawn a deferred render, since the update is already deferred.
 
 - The values you pass to `useDeferredValue` should either be primitive values (like strings and numbers) or objects created outside of rendering. If you create a new object during rendering and immediately pass it to `useDeferredValue`, it will be different on every render, causing unnecessary background re-renders.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 - `useDeferredValue`가 현재 렌더링(여전히 이전 값을 사용하는 경우) 외에 다른 값([`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is)로 비교)을 받으면 백그라운드에서 새 값으로 리렌더링하도록 예약합니다. `값`에 대한 또 다른 업데이트가 있으면 백그라운드 리렌더링은 중단될 수 있습니다. React는 백그라운드 리렌더링을 처음부터 다시 시작할 것입니다. 예를 들어 차트가 리렌더링 가능한 지연된 값을 받는 속도보다 사용자가 input에 값을 입력하는 속도가 더 빠른 경우, 차트는 사용자가 입력을 멈춘 후에만 리렌더링됩니다.
 

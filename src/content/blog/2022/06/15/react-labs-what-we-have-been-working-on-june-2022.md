@@ -1,12 +1,8 @@
 ---
-<<<<<<< HEAD
 title: "React Labs: 그동안의 작업 – 2022년 6월"
-=======
-title: "React Labs: What We've Been Working On – June 2022"
 author:  Andrew Clark, Dan Abramov, Jan Kassens, Joseph Savona, Josh Story, Lauren Tan, Luna Ruan, Mengdi Chen, Rick Hanlon, Robert Zhang, Sathya Gunasekaran, Sebastian Markbage, and Xuan Huang
 date: 2022/06/15
-description: React 18 was years in the making, and with it brought valuable lessons for the React team. Its release was the result of many years of research and exploring many paths. Some of those paths were successful; many more were dead-ends that led to new insights. One lesson we’ve learned is that it’s frustrating for the community to wait for new features without having insight into these paths that we’re exploring.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+description: React 18 은 수년간의 준비 끝에 탄생한 버전으로 React 팀에게 귀중한 교훈을 가져다주었습니다. 수년간의 연구와 다양한 경로를 모색한 끝에 출시된 제품입니다. 그 경로 중 일부는 성공적이었지만 더 많은 경로가 막다른 골목에서 새로운 인사이트로 이어졌습니다. 우리가 얻은 한 가지 교훈은 우리가 탐색하고 있는 경로에 대한 인사이트를 공유받지 못한 채 새로운 기능을 기다리는 것은 커뮤니티에 실망감을 준다는 것입니다.
 ---
 
 2022년 6월 15일, [Andrew Clark](https://twitter.com/acdlite), [Dan Abramov](https://twitter.com/dan_abramov), [Jan Kassens](https://twitter.com/kassens), [Joseph Savona](https://twitter.com/en_JS), [Josh Story](https://twitter.com/joshcstory), [Lauren Tan](https://twitter.com/potetotes), [Luna Ruan](https://twitter.com/lunaruan), [Mengdi Chen](https://twitter.com/mengdi_en), [Rick Hanlon](https://twitter.com/rickhanlonii), [Robert Zhang](https://twitter.com/jiaxuanzhang01), [Sathya Gunasekaran](https://twitter.com/_gsathya), [Sebastian Markbåge](https://twitter.com/sebmarkbage), [Xuan Huang](https://twitter.com/Huxpro)
@@ -81,10 +77,6 @@ Vercel 및 Shopify와 협력하여 Webpack 및 Vite 모두에서 공유 시맨�
 
 작년에 우리는 새로운 React 문서 웹사이트의 베타 버전([나중에 react.dev로 출시](/blog/2023/03/16/introducing-react-dev))을 발표했습니다. 새로운 학습 자료는 Hooks를 먼저 가르치고 새로운 다이어그램, 일러스트레이션, 많은 대화형 예제 및 과제를 포함합니다. 우리는 React 18 릴리스에 집중하기 위해 해당 작업에서 잠시 휴식을 취했지만 이제 React 18이 출시되었으므로 새 문서를 완료하고 제공하기 위해 적극적으로 노력하고 있습니다.
 
-<<<<<<< HEAD
-신규 및 숙련된 React 사용자 모두에게 더 어려운 주제 중 하나라고 들었기 때문에 현재 effect에 대한 자세한 섹션을 작성하고 있습니다. [effect와 동기화](/learn/synchronizing-with-effects)는 시리즈의 첫 번째 게시된 페이지이며 다음 주에 더 많은 페이지가 추가될 예정입니다. effect에 대한 자세한 섹션을 처음 작성하기 시작했을 때 React에 새로운 프리미티브를 추가하여 많은 일반적인 effect 패턴을 단순화할 수 있다는 것을 깨달았습니다. [useEvent RFC](https://github.com/reactjs/rfcs/pull/220)에서 이에 대한 몇 가지 초기 생각을 공유했습니다. 현재 초기 연구 단계에 있으며 여전히 아이디어를 반복하고 있습니다. 지금까지 RFC에 대한 커뮤니티의 의견과 진행 중인 문서 재작성에 대한 [피드백](https://github.com/reactjs/reactjs.org/issues/3308) 및 기여에 감사드립니다. 새로운 웹 사이트 구현에 대한 많은 개선 사항을 제출하고 검토한 [Harish Kumar](https://github.com/harish-sethuraman)에게 특별히 감사드립니다.
-=======
-We are currently writing a detailed section about effects, as we’ve heard that is one of the more challenging topics for both new and experienced React users. [Synchronizing with Effects](/learn/synchronizing-with-effects) is the first published page in the series, and there are more to come in the following weeks. When we first started writing a detailed section about effects, we’ve realized that many common effect patterns can be simplified by adding a new primitive to React. We’ve shared some initial thoughts on that in the [useEvent RFC](https://github.com/reactjs/rfcs/pull/220). It is currently in early research, and we are still iterating on the idea. We appreciate the community’s comments on the RFC so far, as well as the [feedback](https://github.com/reactjs/react.dev/issues/3308) and contributions to the ongoing documentation rewrite. We’d specifically like to thank [Harish Kumar](https://github.com/harish-sethuraman) for submitting and reviewing many improvements to the new website implementation.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+신규 및 숙련된 React 사용자 모두에게 더 어려운 주제 중 하나라고 들었기 때문에 현재 effect에 대한 자세한 섹션을 작성하고 있습니다. [effect와 동기화](/learn/synchronizing-with-effects)는 시리즈의 첫 번째 게시된 페이지이며 다음 주에 더 많은 페이지가 추가될 예정입니다. effect에 대한 자세한 섹션을 처음 작성하기 시작했을 때 React에 새로운 프리미티브를 추가하여 많은 일반적인 effect 패턴을 단순화할 수 있다는 것을 깨달았습니다. [useEvent RFC](https://github.com/reactjs/rfcs/pull/220)에서 이에 대한 몇 가지 초기 생각을 공유했습니다. 현재 초기 연구 단계에 있으며 여전히 아이디어를 반복하고 있습니다. 지금까지 RFC에 대한 커뮤니티의 의견과 진행 중인 문서 재작성에 대한 [피드백](https://github.com/reactjs/react.dev/issues/3308) 및 기여에 감사드립니다. 새로운 웹 사이트 구현에 대한 많은 개선 사항을 제출하고 검토한 [Harish Kumar](https://github.com/harish-sethuraman)에게 특별히 감사드립니다.
 
 *이 블로그 게시물을 검토해 주신 [Sophie Alpert](https://twitter.com/sophiebits)에게 감사드립니다!*

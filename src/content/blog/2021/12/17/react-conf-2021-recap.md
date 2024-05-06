@@ -1,12 +1,8 @@
 ---
-<<<<<<< HEAD
 title: "React Conf 2021 요약"
-=======
-title: "React Conf 2021 Recap"
 author: Jesslyn Tannady and Rick Hanlon
 date: 2021/12/17
-description: Last week we hosted our 6th React Conf. In previous years, we've used the React Conf stage to deliver industry changing announcements such as React Native and React Hooks. This year, we shared our multi-platform vision for React, starting with the release of React 18 and gradual adoption of concurrent features.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+description: 지난주, 우리는 6번째 React Conf를 개최했습니다. 지난 몇 년 동안 우리는 React Conf 무대를 통해 React Native, React Hooks 와 같은 업계 변화를 알리는 발표를 해왔습니다. 올해는 React 18의 출시와 동시 기능의 점진적인 도입을 시작으로 React의 멀티 플랫폼 비전을 공유했습니다.
 ---
 
 2021년 12월 17일, [Jesslyn Tannady](https://twitter.com/jtannady), [Rick Hanlon](https://twitter.com/rickhanlonii)

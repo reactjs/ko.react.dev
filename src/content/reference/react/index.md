@@ -14,17 +14,10 @@ title: 리액트(React) 참조 개요
 
 리액트의 프로그래밍 기능:
 
-<<<<<<< HEAD
 * [Hooks](/reference/react/hooks) - 컴포넌트에서 다양한 리액트 기능을 사용하세요.
 * [Components](/reference/react/components) - JSX에서 사용할 수 있는 내장 컴포넌트를 문서화합니다.
 * [APIs](/reference/react/apis) - 컴포넌트 정의에 유용한 API들을 다룹니다.
-* [Directives](/reference/react/directives) - 리액트 서버 컴포넌트와 호환되는 번들러에게 지시를 제공합니다.
-=======
-* [Hooks](/reference/react/hooks) - Use different React features from your components.
-* [Components](/reference/react/components) - Documents built-in components that you can use in your JSX.
-* [APIs](/reference/react/apis) - APIs that are useful for defining components.
-* [Directives](/reference/rsc/directives) - Provide instructions to bundlers compatible with React Server Components.
->>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
+* [Directives](/reference/rsc/directives) - 리액트 서버 컴포넌트와 호환되는 번들러에게 지시를 제공합니다.
 
 ## React DOM {/*react-dom*/}
 
