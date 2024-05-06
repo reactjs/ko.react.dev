@@ -137,7 +137,7 @@ export default App = AppTSX;
 const [enabled, setEnabled] = useState(false);
 ```
 
-`boolean` 타입이 `enabled`에 할당되고, `setEnabled`는 `boolean` 인수나 `boolean`을 반환하는 함수를 받는 함수가 됩니다. state에 대한 타입을 명시적으로 제공하려면 `useState` 호출에 타입 인수를 제공하면 됩니다.
+`boolean` 타입이 `enabled`에 할당되고, `setEnabled` 는 `boolean` 인수나 `boolean`을 반환하는 함수를 받는 함수가 됩니다. state에 대한 타입을 명시적으로 제공하려면 `useState` 호출에 타입 인수를 제공하면 됩니다.
 
 ```ts
 // 명시적으로 타입을 "boolean"으로 설정합니다
@@ -435,7 +435,7 @@ interface ModalRendererProps {
 
 자식이 특정 JSX 엘리먼트 타입이라고 설명하기 위해 TypeScript를 사용할 수 없으므로, `<li>` 자식만 허용하는 컴포넌트를 설명하기 위해 타입 시스템을 사용할 수 없다는 점에 주의하세요.
 
-[이 TypeScript 플레이그라운드](https://www.typescriptlang.org/ko/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA)에서 타입 체커를 사용하여 `React.ReactNode`와 `React.ReactElement`의 모든 예시를 확인할 수 있습니다.
+[TypeScript 플레이그라운드](https://www.typescriptlang.org/ko/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA)에서 타입 체커를 사용하여 `React.ReactNode`와 `React.ReactElement`의 모든 예시를 확인할 수 있습니다.
 
 ### Style Props {/*typing-style-props*/}
 

@@ -5,13 +5,13 @@ canary: true
 
 <Canary>
 
-`use` Hook은 현재 React의 Canary 채널과 실험 채널에서만 사용할 수 있습니다. 자세한 내용은 [React 릴리즈 채널](https://ko.react.dev/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
+`use` Hook 은 현재 React의 Canary 채널과 실험 채널에서만 사용할 수 있습니다. 자세한 내용은 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
 
 </Canary>
 
 <Intro>
 
-`use`는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](https://ko.react.dev/learn/passing-data-deeply-with-context)와 같은 데이터를 참조하는 React Hook입니다.
+`use`는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](/learn/passing-data-deeply-with-context)와 같은 데이터를 참조하는 React Hook입니다.
 
 
 ```js
@@ -28,7 +28,7 @@ const value = use(resource);
 
 ### `use(resource)` {/*use*/}
 
-컴포넌트에서 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](https://ko.react.dev/learn/passing-data-deeply-with-context)와 같은 데이터를 참조하려면 `use`를 사용합니다.
+컴포넌트에서 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](/learn/passing-data-deeply-with-context)와 같은 데이터를 참조하려면 `use`를 사용합니다.
 
 
 ```jsx
@@ -40,32 +40,25 @@ function MessageComponent({ messagePromise }) {
   // ...
 ```
 
-다른 React Hook과 달리 `use`는 `if`와 같은 조건문과 반복문 내부에서 호출할 수 있습니다.
-다른 React Hook과 같이 `use`는 컴포넌트 또는 Hook에서만 호출할 수 있습니다.
+다른 React Hook과 달리 `use`는 `if`와 같은 조건문과 반복문 내부에서 호출할 수 있습니다. 다른 React Hook과 같이 `use`는 컴포넌트 또는 Hook에서만 호출할 수 있습니다.
 
-Promise와 함께 호출될 때 `use` Hook은 [Suspense](https://ko.react.dev/reference/react/Suspense) 및 [error boundary](https://ko.react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)와 통합됩니다.
-`use`에 전달된 Promise가 보류되는 동안 `use`를 호출하는 컴포넌트는 *일시 중단*됩니다.
-`use`를 호출하는 컴포넌트가 Suspense 경계로 둘러싸여 있으면 fallback이 표시됩니다.
-Promise가 리졸브되면 Suspense fallback은 `use` Hook이 반환한 컴포넌트로 대체됩니다.
-`use`에 전달된 Promise가 거부되면 가장 가까운 Error Boundary의 fallback이 표시됩니다.
+Promise와 함께 호출될 때 `use` Hook은 [`Suspense`](/reference/react/Suspense) 및 [error boundaries](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)와 통합됩니다. `use`에 전달된 Promise가 pending 되는 동안 `use`를 호출하는 컴포넌트는 *suspend*됩니다. `use`를 호출하는 컴포넌트가 Suspense 경계로 둘러싸여 있으면 fallback 이 표시됩니다. Promise가 리졸브되면 Suspense fallback은 `use` Hook이 반환한 컴포넌트로 대체됩니다. `use`에 전달된 Promise가 reject 되면 가장 가까운 Error Boundary의 fallback이 표시됩니다.
 
 [사용법 확인하기](#usage)
 
 #### 매개변수 {/*parameters*/}
 
-* `resource`: 참조하려는 데이터입니다. 데이터는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](https://ko.react.dev/learn/passing-data-deeply-with-context)일 수 있습니다.
+* `resource`: 참조하려는 데이터입니다. 데이터는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](/learn/passing-data-deeply-with-context)일 수 있습니다.
 
 #### 반환값 {/*returns*/}
 
-`use` Hook은 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](https://ko.react.dev/learn/passing-data-deeply-with-context)에서 참조한 값을 반환합니다.
+`use` Hook은 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](/learn/passing-data-deeply-with-context)에서 참조한 값을 반환합니다.
 
-
-#### 주의 사항 {/*caveats*/}
 
 * `use` Hook은 컴포넌트나 Hook 내부에서 호출되어야 합니다.
-* [서버 컴포넌트](https://ko.react.dev/reference/react/use-server)에서 데이터를 fetch 할 때는 `use`보다 `async` 및 `await`를 사용합니다.
+* [서버 컴포넌트](/reference/rsc/use-server)에서 데이터를 fetch 할 때는 `use`보다 `async` 및 `await`를 사용합니다.
 * `async` 및 `await`은 `await`이 호출된 시점부터 렌더링을 시작하는 반면 `use`는 데이터가 리졸브된 후 컴포넌트를 리렌더링합니다.
-* [클라이언트 컴포넌트](https://ko.react.dev/reference/react/use-client)에서 Promise를 생성하는 것보다 [서버 컴포넌트](https://ko.react.dev/reference/react/use-server)에서 Promise를 생성하여 클라이언트 컴포넌트에 전달하는 것이 좋습니다. 클라이언트 컴포넌트에서 생성된 Promise는 렌더링할 때마다 다시 생성됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 전달된 Promise는 리렌더링 전반에 걸쳐 안정적입니다. [예시 확인하기](#streaming-data-from-server-to-client).
+* [클라이언트 컴포넌트](/reference/rsc/use-clientt)에서 Promise를 생성하는 것보다 [서버 컴포넌트](/reference/rsc/use-server)에서 Promise를 생성하여 클라이언트 컴포넌트에 전달하는 것이 좋습니다. 클라이언트 컴포넌트에서 생성된 Promise는 렌더링할 때마다 다시 생성됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 전달된 Promise는 리렌더링 전반에 걸쳐 안정적입니다. [예시 확인하기](#streaming-data-from-server-to-client).
 
 
 ---
@@ -74,7 +67,7 @@ Promise가 리졸브되면 Suspense fallback은 `use` Hook이 반환한 컴포�
 
 ### `use`를 사용하여 context 참조하기 {/*reading-context-with-use*/}
 
-[context](https://ko.react.dev/learn/passing-data-deeply-with-context)가 `use`에 전달되면 [`useContext`](https://ko.react.dev/reference/react/useContext)와 유사하게 작동합니다. `useContext`는 컴포넌트의 최상위 수준에서 호출해야 하지만 `use`는 `if`와 같은 조건문이나 `for`과 같은 반복문 내부에서 호출할 수 있습니다. `use`는 유연하므로 `useContext`보다 선호됩니다.
+[context](/learn/passing-data-deeply-with-context)가 `use`에 전달되면 [`useContext`](https://ko.react.dev/reference/react/useContext)와 유사하게 작동합니다. `useContext`는 컴포넌트의 최상위 수준에서 호출해야 하지만 `use`는 `if`와 같은 조건문이나 `for`과 같은 반복문 내부에서 호출할 수 있습니다. `use`는 유연하므로 `useContext`보다 선호됩니다.
 
 ```js [[2, 4, "theme"], [1, 4, "ThemeContext"]]
 import { use } from 'react';
@@ -242,7 +235,7 @@ export default function App() {
 }
 ```
 
-<CodeStep step={2}>클라이언트 컴포넌트</CodeStep>는 <CodeStep step={4}>prop으로 받은 Promise</CodeStep>를 <CodeStep step={5}>`use`</CodeStep> Hook에 전달합니다.
+<CodeStep step={2}>클라이언트 컴포넌트</CodeStep>는 <CodeStep step={4}>prop으로 받은 Promise</CodeStep>를 <CodeStep step={5}>`use`</CodeStep> API 에 전달합니다.
 <CodeStep step={2}>Client Component</CodeStep>는 서버 컴포넌트가 처음에 생성한 <CodeStep step={4}>Promise</CodeStep>에서 값을 읽을 수 있습니다.
 
 ```js [[2, 6, "Message"], [4, 6, "messagePromise"], [4, 7, "messagePromise"], [5, 7, "use"]]
@@ -257,7 +250,7 @@ export function Message({ messagePromise }) {
 }
 ```
 
-<CodeStep step={2}>`Message`</CodeStep>는 <CodeStep step={3}>[`Suspense`](https://ko.react.dev/reference/react/Suspense)</CodeStep>로 래핑되어 있으므로 Promise가 리졸브될 때까지 fallback이 표시됩니다. Promise가 리졸브되면 <CodeStep step={5}>`use`</CodeStep> Hook이 값을 참조하고 <CodeStep step={2}>`Message`</CodeStep> 컴포넌트가 Suspense fallback을 대체합니다.
+<CodeStep step={2}>`Message`</CodeStep>는 <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep>로 래핑되어 있으므로 Promise가 리졸브될 때까지 fallback이 표시됩니다. Promise가 리졸브되면 <CodeStep step={5}>`use`</CodeStep> Hook이 값을 참조하고 <CodeStep step={2}>`Message`</CodeStep> 컴포넌트가 Suspense fallback을 대체합니다.
 
 <Sandpack>
 
@@ -305,7 +298,7 @@ export default function App() {
 ```
 
 ```js src/index.js hidden
-// TODO: `use` Hook이 안정적으로 릴리즈되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
+// TODO: `use` API가 안정적으로 릴리즈되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -344,7 +337,7 @@ root.render(
 
 #### 서버 또는 클라이언트 컴포넌트에서 프로미스를 리졸브해만 하나요? {/*resolve-promise-in-server-or-client-component*/}
 
-Promise는 서버 컴포넌트에서 클라이언트 컴포넌트로 전달될 수 있으며 `use` Hook을 통해 클라이언트 컴포넌트에서 리졸브됩니다. 또한 서버 컴포넌트에서 `await`을 사용하여 Promise를 리졸브하고 데이터를 클라이언트 컴포넌트에 `prop`으로 전달하는 방법도 존재합니다.
+Promise는 서버 컴포넌트에서 클라이언트 컴포넌트로 전달될 수 있으며 `use` API 를 통해 클라이언트 컴포넌트에서 리졸브됩니다. 또한 서버 컴포넌트에서 `await` 을 사용하여 Promise를 리졸브하고 데이터를 클라이언트 컴포넌트에 `prop`으로 전달하는 방법도 존재합니다.
 
 ```js
 export default async function App() {
@@ -372,7 +365,7 @@ export default async function App() {
 ####  error boundary를 사용하여 오류 표시하기 {/*error-boundary를-사용하여-오류-표시하기*/}
  {/*displaying-an-error-to-users-with-error-boundary*/}
 
-Promise가 거부될 때 오류를 표시하고 싶다면 [error boundary](https://ko.react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용합니다. error boundary를 사용하려면 `use` Hook을 호출하는 컴포넌트를 error boundary로 래핑합니다. `use`에 전달된 Promise가 거부되면 error boundary에 대한 fallback이 표시됩니다.
+Promise가 reject 될 때 오류를 표시하고 싶다면 [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용합니다. error boundary를 사용하려면 `use` API 를 호출하는 컴포넌트를 error boundary로 래핑합니다. `use`에 전달된 Promise가 reject 되면 error boundary에 대한 fallback이 표시됩니다.
 
 <Sandpack>
 
@@ -423,7 +416,7 @@ export default function App() {
 ```
 
 ```js src/index.js hidden
-// TODO: `use` Hook이 안정적으로 릴리즈되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
+// TODO: `use` API 가 안정적으로 릴리즈되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
