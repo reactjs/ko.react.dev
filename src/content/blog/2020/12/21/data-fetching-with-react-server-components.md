@@ -1,5 +1,8 @@
 ---
 title: "제로 번들 사이즈 React 서버 컴포넌트 소개"
+author: Dan Abramov, Lauren Tan, Joseph Savona, and Sebastian Markbage
+date: 2020/12/21
+description: 2020년은 긴 한 해였습니다. 연말이 다가옴에 따라 제로 번들 사이즈의 React 서버 컴포넌트 연구에 대한 특별한 홀리데이 업데이트를 공유하고자 합니다.
 ---
 
 2020년 12월 21일, [Dan Abramov](https://twitter.com/dan_abramov), [Lauren Tan](https://twitter.com/potetotes), [Joseph Savona](https://twitter.com/en_JS), [Sebastian Markbåge](https://twitter.com/sebmarkbage)

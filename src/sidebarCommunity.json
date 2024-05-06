@@ -32,6 +32,10 @@
           "path": "/community/docs-contributors"
         },
         {
+          "title": "번역",
+          "path": "/community/translations"
+        },
+        {
           "title": "감사의 말",
           "path": "/community/acknowledgements"
         },

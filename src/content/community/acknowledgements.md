@@ -16,6 +16,7 @@ React는 원래 [Jordan Walke](https://github.com/jordwalke)에 의해 만들어
 * [Andreas Svensson](https://github.com/syranide)
 * [Alex Krolick](https://github.com/alexkrolick)
 * [Alexey Pyltsyn](https://github.com/lex111)
+* [Andrey Lunyov](https://github.com/alunyov)
 * [Brandon Dail](https://github.com/aweary)
 * [Brian Vaughn](https://github.com/bvaughn)
 * [Caleb Meredith](https://github.com/calebmer)
