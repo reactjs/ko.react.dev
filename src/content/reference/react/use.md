@@ -5,14 +5,22 @@ canary: true
 
 <Canary>
 
+<<<<<<< HEAD
 `use` Hook은 현재 React의 Canary 채널과 실험 채널에서만 사용할 수 있습니다. 자세한 내용은 [React 릴리즈 채널](https://ko.react.dev/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
+=======
+The `use` API is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 </Canary>
 
 <Intro>
 
+<<<<<<< HEAD
 `use`는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](https://ko.react.dev/learn/passing-data-deeply-with-context)와 같은 데이터를 참조하는 React Hook입니다.
 
+=======
+`use` is a React API that lets you read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 ```js
 const value = use(resource);
@@ -40,6 +48,7 @@ function MessageComponent({ messagePromise }) {
   // ...
 ```
 
+<<<<<<< HEAD
 다른 React Hook과 달리 `use`는 `if`와 같은 조건문과 반복문 내부에서 호출할 수 있습니다.
 다른 React Hook과 같이 `use`는 컴포넌트 또는 Hook에서만 호출할 수 있습니다.
 
@@ -48,6 +57,11 @@ Promise와 함께 호출될 때 `use` Hook은 [Suspense](https://ko.react.dev/re
 `use`를 호출하는 컴포넌트가 Suspense 경계로 둘러싸여 있으면 fallback이 표시됩니다.
 Promise가 리졸브되면 Suspense fallback은 `use` Hook이 반환한 컴포넌트로 대체됩니다.
 `use`에 전달된 Promise가 거부되면 가장 가까운 Error Boundary의 fallback이 표시됩니다.
+=======
+Unlike React Hooks, `use` can be called within loops and conditional statements like `if`. Like React Hooks, the function that calls `use` must be a Component or Hook.
+
+When called with a Promise, the `use` API integrates with [`Suspense`](/reference/react/Suspense) and [error boundaries](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). The component calling `use` *suspends* while the Promise passed to `use` is pending. If the component that calls `use` is wrapped in a Suspense boundary, the fallback will be displayed.  Once the Promise is resolved, the Suspense fallback is replaced by the rendered components using the data returned by the `use` API. If the Promise passed to `use` is rejected, the fallback of the nearest Error Boundary will be displayed.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 [사용법 확인하기](#usage)
 
@@ -57,9 +71,14 @@ Promise가 리졸브되면 Suspense fallback은 `use` Hook이 반환한 컴포�
 
 #### 반환값 {/*returns*/}
 
+<<<<<<< HEAD
 `use` Hook은 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](https://ko.react.dev/learn/passing-data-deeply-with-context)에서 참조한 값을 반환합니다.
+=======
+The `use` API returns the value that was read from the resource like the resolved value of a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 
+<<<<<<< HEAD
 #### 주의 사항 {/*caveats*/}
 
 * `use` Hook은 컴포넌트나 Hook 내부에서 호출되어야 합니다.
@@ -67,6 +86,11 @@ Promise가 리졸브되면 Suspense fallback은 `use` Hook이 반환한 컴포�
 * `async` 및 `await`은 `await`이 호출된 시점부터 렌더링을 시작하는 반면 `use`는 데이터가 리졸브된 후 컴포넌트를 리렌더링합니다.
 * [클라이언트 컴포넌트](https://ko.react.dev/reference/react/use-client)에서 Promise를 생성하는 것보다 [서버 컴포넌트](https://ko.react.dev/reference/react/use-server)에서 Promise를 생성하여 클라이언트 컴포넌트에 전달하는 것이 좋습니다. 클라이언트 컴포넌트에서 생성된 Promise는 렌더링할 때마다 다시 생성됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 전달된 Promise는 리렌더링 전반에 걸쳐 안정적입니다. [예시 확인하기](#streaming-data-from-server-to-client).
 
+=======
+* The `use` API must be called inside a Component or a Hook.
+* When fetching data in a [Server Component](/reference/rsc/use-server), prefer `async` and `await` over `use`. `async` and `await` pick up rendering from the point where `await` was invoked, whereas `use` re-renders the component after the data is resolved.
+* Prefer creating Promises in [Server Components](/reference/rsc/use-server) and passing them to [Client Components](/reference/rsc/use-client) over creating Promises in Client Components. Promises created in Client Components are recreated on every render. Promises passed from a Server Component to a Client Component are stable across re-renders. [See this example](#streaming-data-from-server-to-client).
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 ---
 
@@ -242,8 +266,12 @@ export default function App() {
 }
 ```
 
+<<<<<<< HEAD
 <CodeStep step={2}>클라이언트 컴포넌트</CodeStep>는 <CodeStep step={4}>prop으로 받은 Promise</CodeStep>를 <CodeStep step={5}>`use`</CodeStep> Hook에 전달합니다.
 <CodeStep step={2}>Client Component</CodeStep>는 서버 컴포넌트가 처음에 생성한 <CodeStep step={4}>Promise</CodeStep>에서 값을 읽을 수 있습니다.
+=======
+The <CodeStep step={2}>Client Component</CodeStep> then takes <CodeStep step={4}>the Promise it received as a prop</CodeStep> and passes it to the <CodeStep step={5}>`use`</CodeStep> API. This allows the <CodeStep step={2}>Client Component</CodeStep> to read the value from <CodeStep step={4}>the Promise</CodeStep> that was initially created by the Server Component.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 ```js [[2, 6, "Message"], [4, 6, "messagePromise"], [4, 7, "messagePromise"], [5, 7, "use"]]
 // message.js
@@ -256,8 +284,12 @@ export function Message({ messagePromise }) {
   return <p>Here is the message: {messageContent}</p>;
 }
 ```
+<<<<<<< HEAD
 
 <CodeStep step={2}>`Message`</CodeStep>는 <CodeStep step={3}>[`Suspense`](https://ko.react.dev/reference/react/Suspense)</CodeStep>로 래핑되어 있으므로 Promise가 리졸브될 때까지 fallback이 표시됩니다. Promise가 리졸브되면 <CodeStep step={5}>`use`</CodeStep> Hook이 값을 참조하고 <CodeStep step={2}>`Message`</CodeStep> 컴포넌트가 Suspense fallback을 대체합니다.
+=======
+Because <CodeStep step={2}>`Message`</CodeStep> is wrapped in <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep>, the fallback will be displayed until the Promise is resolved. When the Promise is resolved, the value will be read by the <CodeStep step={5}>`use`</CodeStep> API and the <CodeStep step={2}>`Message`</CodeStep> component will replace the Suspense fallback.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 <Sandpack>
 
@@ -305,7 +337,13 @@ export default function App() {
 ```
 
 ```js src/index.js hidden
+<<<<<<< HEAD
 // TODO: `use` Hook이 안정적으로 릴리즈되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
+=======
+// TODO: update to import from stable
+// react instead of canary once the `use`
+// API is in a stable release of React
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -344,7 +382,11 @@ root.render(
 
 #### 서버 또는 클라이언트 컴포넌트에서 프로미스를 리졸브해만 하나요? {/*resolve-promise-in-server-or-client-component*/}
 
+<<<<<<< HEAD
 Promise는 서버 컴포넌트에서 클라이언트 컴포넌트로 전달될 수 있으며 `use` Hook을 통해 클라이언트 컴포넌트에서 리졸브됩니다. 또한 서버 컴포넌트에서 `await`을 사용하여 Promise를 리졸브하고 데이터를 클라이언트 컴포넌트에 `prop`으로 전달하는 방법도 존재합니다.
+=======
+A Promise can be passed from a Server Component to a Client Component and resolved in the Client Component with the `use` API. You can also resolve the Promise in a Server Component with `await` and pass the required data to the Client Component as a prop.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 ```js
 export default async function App() {
@@ -372,7 +414,11 @@ export default async function App() {
 ####  error boundary를 사용하여 오류 표시하기 {/*error-boundary를-사용하여-오류-표시하기*/}
  {/*displaying-an-error-to-users-with-error-boundary*/}
 
+<<<<<<< HEAD
 Promise가 거부될 때 오류를 표시하고 싶다면 [error boundary](https://ko.react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용합니다. error boundary를 사용하려면 `use` Hook을 호출하는 컴포넌트를 error boundary로 래핑합니다. `use`에 전달된 Promise가 거부되면 error boundary에 대한 fallback이 표시됩니다.
+=======
+If you'd like to display an error to your users when a Promise is rejected, you can use an [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). To use an error boundary, wrap the component where you are calling the `use` API in an error boundary. If the Promise passed to `use` is rejected the fallback for the error boundary will be displayed.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 <Sandpack>
 
@@ -423,7 +469,13 @@ export default function App() {
 ```
 
 ```js src/index.js hidden
+<<<<<<< HEAD
 // TODO: `use` Hook이 안정적으로 릴리즈되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
+=======
+// TODO: update to import from stable
+// react instead of canary once the `use`
+// API is in a stable release of React
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -483,10 +535,16 @@ Promise의 <CodeStep step={1}>`catch`</CodeStep> 메서드를 사용하려면 Pr
 
 ### "Suspense Exception: This is not a real error!" {/*suspense-exception-error*/}
 
+<<<<<<< HEAD
 React 컴포넌트 또는 hook 함수 외부에서, 혹은 try-catch 블록에서 `use`를 호출하고 있는 경우입니다. try-catch 블록 내에서 `use`를 호출하는 경우 컴포넌트를 error boundary로 래핑하거나 Promise의 `catch`를 호출하여 에러를 발견하고 Promise를 다른 값으로 리졸브합니다. [예시 확인하기](#dealing-with-rejected-promises)
 
 React 컴포넌트나 Hook 함수 외부에서 `use`를 호출하는 경우 `use` 호출을 React 컴포넌트나 Hook 함수로 이동합니다.
 
+=======
+You are either calling `use` outside of a React Component or Hook function, or calling `use` in a try–catch block. If you are calling `use` inside a try–catch block, wrap your component in an error boundary, or call the Promise's `catch` to catch the error and resolve the Promise with another value. [See these examples](#dealing-with-rejected-promises).
+
+If you are calling `use` outside a React Component or Hook function, move the `use` call to a React Component or Hook function.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 ```jsx
 function MessageComponent({messagePromise}) {
@@ -496,7 +554,11 @@ function MessageComponent({messagePromise}) {
     // ...
 ```
 
+<<<<<<< HEAD
 컴포넌트 클로저 외부에서 `use`를 호출합니다. 여기서 `use`를 호출하는 함수는 컴포넌트 또는 Hook입니다.
+=======
+Instead, call `use` outside any component closures, where the function that calls `use` is a Component or Hook.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 ```jsx
 function MessageComponent({messagePromise}) {

@@ -259,11 +259,40 @@ React는 *다른* `ref` 콜백을 전달할 때 마다 `ref` 콜백을 호출합
 
 #### 매개변수 {/*ref-callback-parameters*/}
 
+<<<<<<< HEAD
 * `node`: DOM 노드 또는 `null`입니다. React는 ref가 연결될 때 DOM 노드를 전달하고 ref가 분리되면 `null`을 전달합니다. 모든 렌더링에서 `ref` 콜백에 대해 동일한 함수를 전달하는 경우를 제외하고, 컴포넌트를 다시 렌더링할 마다 콜백이 일시적으로 분리되었다가 다시 연결됩니다.
+=======
+* `node`: A DOM node or `null`. React will pass you the DOM node when the ref gets attached, and `null` when the `ref` gets detached. Unless you pass the same function reference for the `ref` callback on every render, the callback will get temporarily detached and re-attached during every re-render of the component.
+
+<Canary>
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 #### 반환 값 {/*returns*/}
 
+<<<<<<< HEAD
 `ref` 콜백에서는 아무것도 반환하지 않습니다.
+=======
+*  **optional** `cleanup function`: When the `ref` is detached, React will call the cleanup function. If a function is not returned by the `ref` callback, React will call the callback again with `null` as the argument when the `ref` gets detached.
+
+```js
+
+<div ref={(node) => {
+  console.log(node);
+
+  return () => {
+    console.log('Clean up', node)
+  }
+}}>
+
+```
+
+#### Caveats {/*caveats*/}
+
+* When Strict Mode is on, React will **run one extra development-only setup+cleanup cycle** before the first real setup. This is a stress-test that ensures that your cleanup logic "mirrors" your setup logic and that it stops or undoes whatever the setup is doing. If this causes a problem, implement the cleanup function.
+* When you pass a *different* `ref` callback, React will call the *previous* callback's cleanup function if provided. If not cleanup function is defined, the `ref` callback will be called with `null` as the argument. The *next* function will be called with the DOM node.
+
+</Canary>
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 ---
 

@@ -107,6 +107,7 @@ function TodoList({ todos, tab, theme }) {
 
 ---
 
+<<<<<<< HEAD
 ## Resource Hooks {/*resource-hooks*/}
 
 *resource*를 state의 일부로 포함하지 않고도 컴포넌트에서 resource에 액세스할 수 있습니다. 예를 들어, 구성 요소는 Promise에서 메시지를 읽거나 context에서 스타일 정보를 읽을 수 있습니다.
@@ -126,12 +127,22 @@ function MessageComponent({ messagePromise }) {
 ---
 
 ## 기타 Hooks {/*other-hooks*/}
+=======
+## Other Hooks {/*other-hooks*/}
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 다음 Hook은 대부분 라이브러리 작성자에게 유용하며 애플리케이션 코드에서는 일반적으로 사용되지 않습니다.
 
+<<<<<<< HEAD
 - [`useDebugValue`](/reference/react/useDebugValue)를 사용하면 커스텀 Hook에 대해 React DevTools에 표시해 주는 레이블을 커스텀할 수 있습니다.
 - [`useId`](/reference/react/useId)를 사용하면 컴포넌트가 고유 ID를 자신과 연결할 수 있습니다. 일반적으로 접근성 API와 함께 사용됩니다.
 - [`useSyncExternalStore`](/reference/react/useSyncExternalStore)를 사용하면 컴포넌트가 외부 저장소를 구독할 수 있습니다.
+=======
+- [`useDebugValue`](/reference/react/useDebugValue) lets you customize the label React DevTools displays for your custom Hook.
+- [`useId`](/reference/react/useId) lets a component associate a unique ID with itself. Typically used with accessibility APIs.
+- [`useSyncExternalStore`](/reference/react/useSyncExternalStore) lets a component subscribe to an external store.
+* [`useActionState`](/reference/react/useActionState) allows you to manage state of actions.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 ---
 

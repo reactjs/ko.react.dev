@@ -218,18 +218,19 @@ li {
 <Sandpack>
 
 ```js
-import { useRef } from 'react';
+import { useRef, useState } from "react";
 
 export default function CatFriends() {
   const itemsRef = useRef(null);
+  const [catList, setCatList] = useState(setupCatList);
 
-  function scrollToId(itemId) {
+  function scrollToCat(cat) {
     const map = getMap();
-    const node = map.get(itemId);
+    const node = map.get(cat);
     node.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'center'
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
     });
   }
 
@@ -244,34 +245,25 @@ export default function CatFriends() {
   return (
     <>
       <nav>
-        <button onClick={() => scrollToId(0)}>
-          Tom
-        </button>
-        <button onClick={() => scrollToId(5)}>
-          Maru
-        </button>
-        <button onClick={() => scrollToId(9)}>
-          Jellylorum
-        </button>
+        <button onClick={() => scrollToCat(catList[0])}>Tom</button>
+        <button onClick={() => scrollToCat(catList[5])}>Maru</button>
+        <button onClick={() => scrollToCat(catList[9])}>Jellylorum</button>
       </nav>
       <div>
         <ul>
-          {catList.map(cat => (
+          {catList.map((cat) => (
             <li
-              key={cat.id}
+              key={cat}
               ref={(node) => {
                 const map = getMap();
                 if (node) {
-                  map.set(cat.id, node);
+                  map.set(cat, node);
                 } else {
-                  map.delete(cat.id);
+                  map.delete(cat);
                 }
               }}
             >
-              <img
-                src={cat.imageUrl}
-                alt={'Cat #' + cat.id}
-              />
+              <img src={cat} />
             </li>
           ))}
         </ul>
@@ -280,12 +272,13 @@ export default function CatFriends() {
   );
 }
 
-const catList = [];
-for (let i = 0; i < 10; i++) {
-  catList.push({
-    id: i,
-    imageUrl: 'https://placekitten.com/250/200?image=' + i
-  });
+function setupCatList() {
+  const catList = [];
+  for (let i = 0; i < 10; i++) {
+    catList.push("https://loremflickr.com/320/240/cat?lock=" + i);
+  }
+
+  return catList;
 }
 
 ```
@@ -316,6 +309,16 @@ li {
 }
 ```
 
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "canary",
+    "react-dom": "canary",
+    "react-scripts": "^5.0.0"
+  }
+}
+```
+
 </Sandpack>
 
 이 예시에서 `itemsRef`는 하나의 DOM 노드를 가지고 있지 않습니다. 대신에 식별자와 DOM 노드로 연결된 [Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)을 가지고 있습니다. ([Ref는 어떤 값이든 가질 수 있습니다!](/learn/referencing-values-with-refs)) 모든 리스트 아이템에 있는 [`ref` 콜백](/reference/react-dom/components/common#ref-callback)은 Map 변경을 처리합니다.
@@ -326,17 +329,47 @@ li {
   ref={node => {
     const map = getMap();
     if (node) {
+<<<<<<< HEAD
       // Map에 노드를 추가합니다
       map.set(cat.id, node);
     } else {
       // Map에서 노드를 제거합니다
       map.delete(cat.id);
+=======
+      // Add to the Map
+      map.set(cat, node);
+    } else {
+      // Remove from the Map
+      map.delete(cat);
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
     }
   }}
 >
 ```
 
 위 방법으로 이후 Map에서 개별적인 DOM 노드를 읽을 수 있습니다.
+
+<Canary>
+
+This example shows another approach for managing the Map with a `ref` callback cleanup function.
+
+```js
+<li
+  key={cat.id}
+  ref={node => {
+    const map = getMap();
+    // Add to the Map
+    map.set(cat, node);
+
+    return () => {
+      // Remove from the Map
+      map.delete(cat);
+    };
+  }}
+>
+```
+
+</Canary>
 
 </DeepDive>
 
@@ -493,7 +526,11 @@ React의 모든 갱신은 [두 단계](/learn/render-and-commit#step-3-react-com
 
 React는 `ref.current`를 커밋 단계에서 설정합니다. DOM을 변경하기 전에 React는 관련된 `ref.current` 값을 미리 `null`로 설정합니다. 그리고 DOM을 변경한 후 React는 즉시 대응하는 DOM 노드로 다시 설정합니다.
 
+<<<<<<< HEAD
 **대부분 `ref` 접근은 이벤트 핸들러 안에서 일어납니다.** ref를 사용하여 뭔가를 하고 싶지만, 그것을 시행할 특정 이벤트가 없을 때 effect가 필요할 수 있습니다. effect에 대해서 다음 페이지에서 이야기해 보겠습니다.
+=======
+**Usually, you will access refs from event handlers.** If you want to do something with a ref, but there is no particular event to do it in, you might need an Effect. We will discuss Effects on the next pages.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 <DeepDive>
 

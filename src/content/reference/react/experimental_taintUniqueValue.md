@@ -14,7 +14,11 @@ title: experimental_taintUniqueValue
 
 실험적인 버전의 React에는 버그가 있을 수 있습니다. 프로덕션에서는 사용하지 마세요.
 
+<<<<<<< HEAD
 이 API는 [React Server Components](/reference/react/use-client)에서만 사용할 수 있습니다.
+=======
+This API is only available inside [React Server Components](/reference/rsc/use-client).
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 </Wip>
 

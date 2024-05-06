@@ -7,8 +7,14 @@ React의 모든 안정적인 빌드는 높은 수준의 테스트를 거치고 �
 
 </Intro>
 
+<<<<<<< HEAD
 ## 안정적인 릴리즈 {/*stable-releases*/}
 안정적인 릴리즈 채널 ("최신" 릴리즈 채널)은 [시맨틱 버전 (semver)](https://semver.org/) 원칙을 따릅니다.
+=======
+For a list of previous releases, see the [Versions](/versions) page.
+
+## Stable releases {/*stable-releases*/}
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 버전 번호 **x.y.z**를 사용할 때 다음과 같습니다.
 

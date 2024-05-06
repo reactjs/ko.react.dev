@@ -1,5 +1,12 @@
 ---
+<<<<<<< HEAD
 title: "제로 번들 사이즈 React 서버 컴포넌트 소개"
+=======
+title: "Introducing Zero-Bundle-Size React Server Components"
+author: Dan Abramov, Lauren Tan, Joseph Savona, and Sebastian Markbage
+date: 2020/12/21
+description: 2020 has been a long year. As it comes to an end we wanted to share a special Holiday Update on our research into zero-bundle-size React Server Components.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 ---
 
 2020년 12월 21일, [Dan Abramov](https://twitter.com/dan_abramov), [Lauren Tan](https://twitter.com/potetotes), [Joseph Savona](https://twitter.com/en_JS), [Sebastian Markbåge](https://twitter.com/sebmarkbage)

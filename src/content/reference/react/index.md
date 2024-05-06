@@ -14,10 +14,17 @@ title: 리액트(React) 참조 개요
 
 리액트의 프로그래밍 기능:
 
+<<<<<<< HEAD
 * [Hooks](/reference/react/hooks) - 컴포넌트에서 다양한 리액트 기능을 사용하세요.
 * [Components](/reference/react/components) - JSX에서 사용할 수 있는 내장 컴포넌트를 문서화합니다.
 * [APIs](/reference/react/apis) - 컴포넌트 정의에 유용한 API들을 다룹니다.
 * [Directives](/reference/react/directives) - 리액트 서버 컴포넌트와 호환되는 번들러에게 지시를 제공합니다.
+=======
+* [Hooks](/reference/react/hooks) - Use different React features from your components.
+* [Components](/reference/react/components) - Documents built-in components that you can use in your JSX.
+* [APIs](/reference/react/apis) - APIs that are useful for defining components.
+* [Directives](/reference/rsc/directives) - Provide instructions to bundlers compatible with React Server Components.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 ## React DOM {/*react-dom*/}
 
@@ -28,6 +35,14 @@ React-dom은 브라우저 DOM 환경에서 실행되는 웹 애플리케이션�
 * [APIs](/reference/react-dom) - `react-dom` 패키지에는 웹 애플리케이션에서만 지원되는 메소드가 포함되어 있습니다.
 * [Client APIs](/reference/react-dom/client) - `react-dom/client` API를 사용하면 브라우저에서 React 컴포넌트를 렌더링할 수 있습니다.
 * [Server APIs](/reference/react-dom/server) - `react-dom/server` API를 사용하면 서버에서 React 컴포넌트를 HTML로 렌더링할 수 있습니다.
+
+## Rules of React {/*rules-of-react*/}
+
+React has idioms — or rules — for how to express patterns in a way that is easy to understand and yields high-quality applications:
+
+* [Components and Hooks must be pure](/reference/rules/components-and-hooks-must-be-pure) – Purity makes your code easier to understand, debug, and allows React to automatically optimize your components and hooks correctly.
+* [React calls Components and Hooks](/reference/rules/react-calls-components-and-hooks) – React is responsible for rendering components and hooks when necessary to optimize the user experience.
+* [Rules of Hooks](/reference/rules/rules-of-hooks) – Hooks are defined using JavaScript functions, but they represent a special type of reusable UI logic with restrictions on where they can be called.
 
 ## Legacy APIs {/*legacy-apis*/}
 

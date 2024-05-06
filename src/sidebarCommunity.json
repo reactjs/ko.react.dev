@@ -32,7 +32,15 @@
           "path": "/community/docs-contributors"
         },
         {
+<<<<<<< HEAD
           "title": "감사의 말",
+=======
+          "title": "Translations",
+          "path": "/community/translations"
+        },
+        {
+          "title": "Acknowledgements",
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
           "path": "/community/acknowledgements"
         },
         {

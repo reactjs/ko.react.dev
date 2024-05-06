@@ -39,6 +39,7 @@ Server Action을 클라이언트에서 호출하면, 직렬화된 인자의 사�
 함수 각각에 `'use server'`를 표기하는 대신, 파일의 맨 위에 지시어를 추가하여 파일의 모든 export를, 클라이언트를 포함한 모든 곳에서 사용할 수 있는 Server Action으로 표기할 수 있습니다.
 
 #### Caveats {/*caveats*/}
+<<<<<<< HEAD:src/content/reference/react/use-server.md
 * `'use server'`는 함수 또는 모듈의 맨 처음에 있어야 합니다. import를 포함한 다른 코드보다 위에 있어야 합니다(지시어 위의 주석은 괜찮습니다). 백틱이 아닌 단일 또는 이중 따옴표로 작성해야 합니다.
 * `'use server'`는 서버 측 파일에서만 사용할 수 있습니다. 결과적인 Server Action은 props를 통해 클라이언트 컴포넌트로 전달할 수 있습니다. 제공되는 [직렬화 타입](#serializable-parameters-and-return-values)을 참고하세요.
 * Server Action을 [클라이언트 코드](/reference/react/use-client)에서 import 하기 위해, 지시어는 모듈 수준에서 사용되어야 합니다.
@@ -46,6 +47,15 @@ Server Action을 클라이언트에서 호출하면, 직렬화된 인자의 사�
 * 항상 Server Action의 인자를 신뢰할 수 없는 입력으로 취급하고 모든 변경을 검토하세요. [보안 고려사항](#security)을 확인하세요.
 * Server Action은 [transition](/reference/react/useTransition) 안에서 호출되어야합니다. [`<form action>`](/reference/react-dom/components/form#props) 또는 [`formAction`](/reference/react-dom/components/input#props)로 전달된 Server Action은 자동으로 transition 내에서 호출됩니다.
 * Server Action은 서버 측 상태를 업데이트하는 mutation을 위해 설계되었으며 데이터 fetching에는 권장되지 않습니다. 따라서 서버 액션을 구현하는 프레임워크는 일반적으로 한 번에 하나의 액션을 처리하며 반환 값을 캐시할 방법이 없습니다.
+=======
+* `'use server'` must be at the very beginning of their function or module; above any other code including imports (comments above directives are OK). They must be written with single or double quotes, not backticks.
+* `'use server'` can only be used in server-side files. The resulting Server Actions can be passed to Client Components through props. See supported [types for serialization](#serializable-parameters-and-return-values).
+* To import a Server Action from [client code](/reference/rsc/use-client), the directive must be used on a module level.
+* Because the underlying network calls are always asynchronous, `'use server'` can only be used on async functions.
+* Always treat arguments to Server Actions as untrusted input and authorize any mutations. See [security considerations](#security).
+* Server Actions should be called in a [Transition](/reference/react/useTransition). Server Actions passed to [`<form action>`](/reference/react-dom/components/form#props) or [`formAction`](/reference/react-dom/components/input#props) will automatically be called in a transition.
+* Server Actions are designed for mutations that update server-side state; they are not recommended for data fetching. Accordingly, frameworks implementing Server Actions typically process one action at a time and do not have a way to cache the return value.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4:src/content/reference/rsc/use-server.md
 
 ### 보안 고려사항 {/*security*/}
 
@@ -96,7 +106,11 @@ Server Action에서 중요한 데이터를 전송하지 않도록 하기 위해,
 
 지원되는 직렬화 가능한 반환 값은 경계 클라이언트 컴포넌트의 [직렬화 가능한 props](/reference/react/use-client#passing-props-from-server-to-client-components)와 동일합니다.
 
+<<<<<<< HEAD:src/content/reference/react/use-server.md
 ## 사용법 {/*usage*/}
+=======
+Supported serializable return values are the same as [serializable props](/reference/rsc/use-client#passing-props-from-server-to-client-components) for a boundary Client Component.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4:src/content/reference/rsc/use-server.md
 
 ### Server Action 형식 {/*server-actions-in-forms*/}
 
@@ -130,9 +144,13 @@ Server Action을 from `action`에 전달하여, React는 form을 [점진적 향�
 
 #### form에서 반환 값 처리 {/*handling-return-values*/}
 
+<<<<<<< HEAD:src/content/reference/react/use-server.md
 username 요청 form에서, username을 사용할 수 없을 가능성이 있습니다. `requestUsername`은 실패 여부를 알려주어야 합니다.
 
 점진적 향상을 지원하며 Server Action의 결과를 기반으로 UI를 업데이트하려면, [`useFormState`](/reference/react-dom/hooks/useFormState)를 사용하세요.
+=======
+To update the UI based on the result of a Server Action while supporting progressive enhancement, use [`useActionState`](/reference/react/useActionState).
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4:src/content/reference/rsc/use-server.md
 
 ```js
 // requestUsername.js
@@ -152,11 +170,11 @@ export default async function requestUsername(formData) {
 // UsernameForm.js
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState } from 'react';
 import requestUsername from './requestUsername';
 
 function UsernameForm() {
-  const [returnValue, action] = useFormState(requestUsername, 'n/a');
+  const [state, action] = useActionState(requestUsername, null, 'n/a');
 
   return (
     <>
@@ -164,19 +182,27 @@ function UsernameForm() {
         <input type="text" name="username" />
         <button type="submit">Request</button>
       </form>
-      <p>Last submission request returned: {returnValue}</p>
+      <p>Last submission request returned: {state}</p>
     </>
   );
 }
 ```
 
+<<<<<<< HEAD:src/content/reference/react/use-server.md
 대부분의 Hook과 마찬가지로 `useFormState`는 <CodeStep step={1}>[client code](/reference/react/use-client)</CodeStep>에서만 호출할 수 있습니다.
+=======
+Note that like most Hooks, `useActionState` can only be called in <CodeStep step={1}>[client code](/reference/rsc/use-client)</CodeStep>.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4:src/content/reference/rsc/use-server.md
 
 ### `<form>`외부에서 Server Action 호출하기 {/*calling-a-server-action-outside-of-form*/}
 
 Server Action은 노출된 서버 엔드포인트이며 클라이언트 코드 어디에서나 호출할 수 있습니다.
 
+<<<<<<< HEAD:src/content/reference/react/use-server.md
 [form](/reference/react-dom/components/form) 외부에서 Server Action을 사용할 때, [transition](/reference/react/useTransition)에서 서버 액션을 호출하면 로딩 인디케이터를 표시하고, [낙관적 상태 업데이트](/reference/react/useOptimistic)를 표시하며 예기치 않은 오류를 처리할 수 있습니다. Form은 transition의 Server Action을 자동으로 래핑합니다.
+=======
+When using a Server Action outside of a [form](/reference/react-dom/components/form), call the Server Action in a [Transition](/reference/react/useTransition), which allows you to display a loading indicator, show [optimistic state updates](/reference/react/useOptimistic), and handle unexpected errors. Forms will automatically wrap Server Actions in transitions.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4:src/content/reference/rsc/use-server.md
 
 ```js {9-12}
 import incrementLike from './actions';
