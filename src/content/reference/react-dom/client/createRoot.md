@@ -1172,21 +1172,6 @@ const root = createRoot(container, {onUncaughtError});
 root.render(<App />);
 ```
 
----
-
-### I'm getting an error: "Target container is not a DOM element" {/*im-getting-an-error-target-container-is-not-a-dom-element*/}
-
-이 오류는 `createRoot`에 전달한 것이 DOM 노드가 아님을 의미합니다.
-
-무슨 일이 발생했는지 확실하지 않다면 로그 살펴보기를 시도해보세요.
-
-```js {2}
-const domNode = document.getElementById('root');
-console.log(domNode); // ???
-const root = createRoot(domNode);
-root.render(<App />);
-```
-
 예를 들어 `domNode`가 `null`이면 [`getElementById`](https://developer.mozilla.org/ko/docs/Web/API/Document/getElementById) 가 `null`을 반환했음을 의미합니다. 이는 호출 시점에 문서에 지정된 ID를 가진 노드가 없는 경우에 발생합니다. 여기에는 몇 가지 이유가 있을 수 있습니다.
 
 1. 찾고자 하는 ID가 HTML 파일에서 사용한 ID와 다를 수 있습니다. 오타가 있는지 확인하세요!
