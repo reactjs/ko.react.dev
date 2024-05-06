@@ -6,7 +6,7 @@ title: experimental_useEffectEvent
 
 **이 API는 실험 단계이므로 아직 안정된 버전의 리액트에는 사용할 수 없습니다.**
 
-가장 최신 실험 버전으로 업그레이드하여 리액트 패키지를 사용해 볼 수 있습니다.
+리액트 패키지를 최신 실험 버전으로 업그레이드하여 API를 사용해 볼 수 있습니다.
 
 - `react@experimental`
 - `react-dom@experimental`
