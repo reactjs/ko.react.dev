@@ -311,7 +311,7 @@ function ChatRoom({ roomId }) { // roomId prop은 시간이 지남에 따라 변
 
 컴포넌트가 다시 렌더링 될 때마다 React는 전달한 의존성 배열을 살펴봅니다. 배열의 값 중 하나라도 이전 렌더링 중에 전달한 동일한 지점의 값과 다르면 React는 effect를 다시 동기화합니다.
 
-예를 들어, 초기 렌더링 중에 `["general"]`을 전달했는데 나중에 다음 렌더링 중에 `["travel"]`을 전달한 경우, React는 `"general"`과 `"travel"`을 비교합니다. 이 값들은 ([`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)와 비교) 다른 값이기 때문에 React는 effect를 다시 동기화합니다. 반면에 컴포넌트가 다시 렌더링 되지만 `roomId`가 변경되지 않은 경우, effect는 동일한 방에 연결된 상태로 유지됩니다.
+예를 들어, 초기 렌더링 중에 `["general"]`을 전달했는데 나중에 다음 렌더링 중에 `["travel"]`을 전달한 경우, React는 `"general"`과 `"travel"`을 비교합니다. 이 값들은 ([`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)로 비교) 다른 값이기 때문에 React는 effect를 다시 동기화합니다. 반면에 컴포넌트가 다시 렌더링 되지만 `roomId`가 변경되지 않은 경우, effect는 동일한 방에 연결된 상태로 유지됩니다.
 
 ### 각 effect는 별도의 동기화 프로세스를 나타냅니다. {/*each-effect-represents-a-separate-synchronization-process*/}
 

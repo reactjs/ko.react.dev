@@ -1,5 +1,9 @@
 ---
 title: "react.dev를 소개합니다"
+author: Dan Abramov and Rachel Nabors
+date: 2023/03/16
+description: 오늘 React와 React 문서의 새로운 보금자리인 react.dev 를 출시하게 되어 기쁩니다. 이 글에서는 새로운 사이트에 대해 소개해 드리겠습니다.
+
 ---
 
 2023년 3월 16일 [Dan Abramov](https://twitter.com/dan_abramov)와 [Rachel Nabors](https://twitter.com/rachelnabors)가 작성함
@@ -610,7 +614,7 @@ button { display: block; margin-top: 10px; }
 
 ## 다음은 무엇인가요? {/*whats-next*/}
 
-우리의 작은 여정을 마무리할 차례입니다! 새로운 웹 사이트를 둘러보며 마음에 드는 점과 안 드는 점을 찾아보고, [익명 설문조사](https://www.surveymonkey.co.uk/r/PYRPF3X)나 [이슈 트래커](https://github.com/reactjs/reactjs.org/issues)에 계속해서 피드백을 남겨주세요.
+우리의 작은 여정을 마무리할 차례입니다! 새로운 웹 사이트를 둘러보며 마음에 드는 점과 안 드는 점을 찾아보고, [익명 설문조사](https://www.surveymonkey.co.uk/r/PYRPF3X)나 [이슈 트래커](https://github.com/reactjs/react.dev/issues)에 계속해서 피드백을 남겨주세요.
 
 이 프로젝트가 출시되기까지 오랜 시간이 걸렸다는 것을 알고 있습니다. React 커뮤니티에 걸맞은 높은 품질 기준을 유지하고자 했습니다. 이 문서를 작성하고 모든 예시를 만들면서 몇몇 기존 설명에서의 오류, React의 버그, 심지어 현재 해결하기 위해 노력하고 있는 React 디자인의 빈 곳까지 발견했습니다. 새로운 문서가 앞으로 React 자체를 더 높은 기준에 맞추도록 도와줄 것을 기대합니다.
 
