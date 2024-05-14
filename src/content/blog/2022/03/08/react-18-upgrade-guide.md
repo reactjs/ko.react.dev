@@ -1,5 +1,8 @@
 ---
 title: "React 18로 업그레이드하는 방법"
+author: Rick Hanlon
+date: 2022/03/08
+description: React 18은 릴리스 노트에서 언급한 대로 새로운 동시성 렌더러를 도입하여 기존 애플리케이션에 점진적으로 적용할 계획입니다. 이 글에서는 React 18로 업그레이드하는 방법을 단계별로 소개하겠습니다.
 ---
 
 2022년 3월 8일, [Rick Hanlon](https://twitter.com/rickhanlonii)

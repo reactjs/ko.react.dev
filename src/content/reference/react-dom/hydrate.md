@@ -152,7 +152,7 @@ export default function App() {
 
 ### 서로 다른 클라이언트 및 서버 콘텐츠 처리하기 {/*handling-different-client-and-server-content*/}
 
-서버와 클라이언트에서 의도적으로 다른 것을 렌더링하는 경우, 투 패스 렌더링(two-pass rendering)을 사용해 볼 수 있습니다. `isClient` 같은 [state](/reference/react/useState)를 선언해 [effect](/reference/react/useEffect)에서 `true`로 바꿔 사용하면 됩니다.
+서버와 클라이언트에서 의도적으로 다른 것을 렌더링하는 경우, 투 패스 렌더링(two-pass rendering)을 사용해 볼 수 있습니다. `isClient` 같은 [state variable](/reference/react/useState)를 선언해 [Effect](/reference/react/useEffect)에서 `true`로 바꿔 사용하면 됩니다.
 
 <Sandpack>
 

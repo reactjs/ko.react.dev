@@ -21,14 +21,13 @@ title: "Built-in React DOM Hooks"
 *폼*은 정보 제출을 위한 상호 작용형 제어를 만들 수 있도록 해줍니다. 컴포넌트에 있는 폼을 관리하기 위해 다음과 같은 훅 중 하나를 사용할 수 있습니다.
 
 * [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 폼의 상태에 따라 UI를 업데이트할 수 있게 해줍니다.
-* [`useFormState`](/reference/react-dom/hooks/useFormState) 폼 안에 있는 state를 관리할 수 있게 해줍니다.
 
 ```js
 function Form({ action }) {
   async function increment(n) {
     return n + 1;
   }
-  const [count, incrementFormAction] = useFormState(increment, 0);
+  const [count, incrementFormAction] = useActionState(increment, 0);
   return (
     <form action={action}>
       <button formAction={incrementFormAction}>Count: {count}</button>
@@ -46,4 +45,3 @@ function Button() {
   );
 }
 ```
-

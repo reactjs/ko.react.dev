@@ -1,5 +1,8 @@
 ---
 title: "React Labs: 그동안의 작업 - 2024년 2월"
+author: Joseph Savona, Ricky Hanlon, Andrew Clark, Matt Carroll, and Dan Abramov
+date: 2024/02/15
+description: React Labs 게시글에는 활발히 연구 개발 중인 프로젝트에 대한 내용을 작성합니다. 우리의 지난 업데이트 이후 상당한 발전을 이루었고, 이러한 진전 사항을 공유하려고 합니다.
 ---
 
 2024년 2월 15일, [Joseph Savona](https://twitter.com/en_JS), [Ricky Hanlon](https://twitter.com/rickhanlonii), [Andrew Clark](https://twitter.com/acdlite), [Matt Carroll](https://twitter.com/mattcarrollcode), [Dan Abramov](https://twitter.com/dan_abramov)
@@ -8,7 +11,7 @@ title: "React Labs: 그동안의 작업 - 2024년 2월"
 
 <Intro>
 
-React Labs 게시글에는 활발히 연구 개발 중인 프로젝트에 대한 내용을 작성합니다. 우리의 [지난 업데이트](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023) 이후 상당한 발전이 이루었고, 이러한 진전 사항을 공유하려고 합니다.
+React Labs 게시글에는 활발히 연구 개발 중인 프로젝트에 대한 내용을 작성합니다. 우리의 [지난 업데이트](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023) 이후 상당한 발전을 이루었고, 이러한 진전 사항을 공유하려고 합니다.
 
 </Intro>
 
@@ -52,7 +55,7 @@ JavaScript는 느슨한 규칙과 동적인 특징 때문에 최적화하기에 
 </form>
 ```
 
-`액션` 함수는 동기 또는 비동기적으로 실행할 수 있습니다. 클라이언트 측에서 표준 JavaScript를 사용하여 정의하거나, [`'use server'`](/reference/react/use-server)라는 지시어를 사용하여 서버에서 정의할 수 있습니다. 액션을 사용할 때, React는 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus), [`useFormState`](/reference/react-dom/hooks/useFormState)와 같은 hook을 제공하여 데이터 제출의 생명주기를 관리하고 현재 폼의 state와 응답에 접근할 수 있습니다.
+`액션` 함수는 동기 또는 비동기적으로 실행할 수 있습니다. 클라이언트 측에서 표준 JavaScript를 사용하여 정의하거나, [`'use server'`](/reference/rsc/use-server)라는 지시어를 사용하여 서버에서 정의할 수 있습니다. 액션을 사용할 때, React는 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus), [`useActionState`](/reference/react/useActionState)와 같은 hook을 제공하여 데이터 제출의 생명주기를 관리하고 현재 폼의 state와 응답에 접근할 수 있습니다.
 
 기본적으로 액션은 [트랜지션](/reference/react/useTransition) 내에서 제출되어 현재 페이지가 상호작용을 하는 동안 액션을 처리합니다. 액션은 비동기 함수를 지원하므로, 트랜지션 내에서 `async/await`를 사용할 수 있도록 추가했습니다. 이를 통해 `fetch`와 같은 비동기 요청이 시작되면 트랜지션의 `isPending` state를 사용하여 대기 중인 UI를 표시하고, 업데이트가 적용될 때까지 대기 중인 UI를 계속 보여줄 수 있습니다.
 
@@ -72,13 +75,13 @@ Canary는 React의 개발 방식을 변경하는 것입니다. 이전에는 기�
 
 React 서버 컴포넌트, 에셋 불러오기, 문서 메타데이터 및 액션 모두 React Canary에 도입되었으며, 이러한 기능에 대한 문서를 react.dev에 추가했습니다.
 
-- **지시어**: [`"use client"`](/reference/react/use-client)와 [`"use server"`](/reference/react/use-server)는 풀스택 React 프레임워크를 위해 설계한 bundler 기능입니다. 이들은 두 환경 사이의 "분할점"을 나타냅니다. "use client"는 [Astro Islands](https://docs.astro.build/en/concepts/islands/#creating-an-island)처럼 bundler에 `<script>` 태그를 생성하도록 지시합니다. 반면 `"use server"`는 [tRPC Mutations](https://trpc.io/docs/concepts)처럼 bundler에 POST 엔드포인트를 생성하도록 지시합니다. 두 지시어를 함께 사용하여 클라이이언트 측의 상호작용을 서버 측의 로직과 결합하는 재사용 가능한 컴포넌트를 작성할 수 있습니다.
+- **지시어**: [`"use client"`](/reference/rsc/use-client)와 [`"use server"`](/reference/rsc/use-server)는 풀스택 React 프레임워크를 위해 설계한 bundler 기능입니다. 이들은 두 환경 사이의 "분할점"을 나타냅니다. "use client"는 [Astro Islands](https://docs.astro.build/en/concepts/islands/#creating-an-island)처럼 bundler에 `<script>` 태그를 생성하도록 지시합니다. 반면 `"use server"`는 [tRPC Mutations](https://trpc.io/docs/concepts)처럼 bundler에 POST 엔드포인트를 생성하도록 지시합니다. 두 지시어를 함께 사용하여 클라이이언트 측의 상호작용을 서버 측의 로직과 결합하는 재사용 가능한 컴포넌트를 작성할 수 있습니다.
 
 - **문서 메타데이터**: 우리는 컴포넌트 트리 어디에서든 [`<title>`](/reference/react-dom/components/title), [`<meta>`](/reference/react-dom/components/meta) 및 메타데이터 [`<link>`](/reference/react-dom/components/link) 태그를 렌더링하는 내장 지원을 추가했습니다. 이는 완전한 클라이언트 측 코드, SSR 및 RSC를 포함한 모든 환경에서 동일하게 작동합니다. 이는 [React Helmet](https://github.com/nfl/react-helmet)과 같은 라이브러리가 이미 제공하던 기능을 내장 지원으로 제공합니다.
 
 - **에셋 불러오기**: 우리는 Suspense를 스타일시트, 폰트, 스크립트와 같은 리소스를 불러오는 생명주기와 통합했습니다. 이를 통해 React는 표시할 준비가 되었는지 결정하는데 [`<style>`](/reference/react-dom/components/style), [`<link>`](/reference/react-dom/components/link) 및 [`<script>`](/reference/react-dom/components/script)와 같은 엘리먼트 내부의 콘텐츠를 고려합니다. 또한 `preload`와 `preinit`과 같은 [새로운 리소스 불러오기 API](/reference/react-dom#resource-preloading-apis)를 추가하여 리소스를 언제 불러오고 초기화할지에 대한 더 많은 제어권을 제공했습니다.
 
-- **액션**: 앞서 언급한 대로, 클라이언트에서 서버로 데이터를 전송하는 것을 관리하기 위해 액션을 추가했습니다. [`<form/>`](/reference/react-dom/components/form)과 같은 엘리먼트에 `action`을 추가할 수 있으며, [`useFormStatus`](/reference/react-dom/hooks/useFormStatus)를 사용하여 진행 상황에 접근하고, [`useFormState`](/reference/react-dom/hooks/useFormState)를 사용하여 결과를 처리하며, [`useOptimistic`](/reference/react/useOptimistic)를 사용하여 UI를 낙관적으로 업데이트할 수 있습니다.
+- **액션**: 앞서 언급한 대로, 클라이언트에서 서버로 데이터를 전송하는 것을 관리하기 위해 액션을 추가했습니다. [`<form/>`](/reference/react-dom/components/form)과 같은 엘리먼트에 `action`을 추가할 수 있으며, [`useFormStatus`](/reference/react-dom/hooks/useFormStatus)를 사용하여 진행 상황에 접근하고, [`useActionState`](/reference/react/useActionState)를 사용하여 결과를 처리하며, [`useOptimistic`](/reference/react/useOptimistic)를 사용하여 UI를 낙관적으로 업데이트할 수 있습니다.
 
 이러한 모든 기능은 함께 작동하기 때문에, 이들을 각각 안정적 채널에 배포하기는 어렵습니다. 폼 state에 접근하는 보조 hook 없이 액션을 배포하는 것은 액션의 실제 유용성을 제한할 것입니다. 서버 액션을 통합하지 않으면서 React 서버 컴포넌트를 도입하면 서버에서 데이터를 수정하기에 복잡해질 것입니다.
 
