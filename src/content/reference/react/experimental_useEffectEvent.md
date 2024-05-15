@@ -14,7 +14,6 @@ title: experimental_useEffectEvent
 
 실험 버전의 리액트에는 버그가 있을 수 있습니다. 프로덕션 환경에서는 이 버전을 사용하지 마세요.
 
-
 </Wip>
 
 
