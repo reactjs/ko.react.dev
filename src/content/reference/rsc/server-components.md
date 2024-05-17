@@ -17,14 +17,14 @@ canary: true
 
 #### 서버 컴포넌트를 지원하려면 어떻게 해야 하나요? {/*how-do-i-build-support-for-server-components*/}
 
-React 19의 서버 컴포넌트는 안정적이며 주요 버전 간에는 변경되지 않습니다. 그러나 React 서버 컴포넌트 번들러나 프레임워크를 구현하는 데 사용되는 기본 API는 시맨틱 버전(semver)을 따르지 않으며 React 19.x 버전의 마이너 버전 간에 변경될 수 있습니다.
+React 19의 서버 컴포넌트는 안정적이며 메이저 버전 간에는 변경되지 않습니다. 그러나 React 서버 컴포넌트 번들러나 프레임워크를 구현하는 데 사용되는 기본 API는 시맨틱 버전(semver)을 따르지 않으며 React 19.x 버전의 마이너 버전 간에 변경될 수 있습니다.
 
-React 서버 컴포넌트를 번들러나 프레임워크로 지원하려면 특정 React 버전에 고정하거나 Canary 릴리스를 사용하는 것을 권장합니다. 향후 React 서버 컴포넌트를 구현하는 데 사용되는 API를 안정화하기 위해 번들러 및 프레임워크와 계속 협력할 것입니다.
+React 서버 컴포넌트를 번들러나 프레임워크로 지원하려면 특정 React 버전에 고정하거나 Canary 릴리즈를 사용하는 것을 권장합니다. 향후 React 서버 컴포넌트를 구현하는 데 사용되는 API를 안정화하기 위해 번들러 및 프레임워크와 계속 협력할 것입니다.
 
 </Note>
 
 ### 서버 없이 서버 컴포넌트 사용하기 {/*server-components-without-a-server*/}
-서버 컴포넌트는 빌드 시간에 파일 시스템에서 읽거나 정적 콘텐츠를 가져올 수 있으므로 웹 서버가 필요하지 않습니다. 예를 들어, 콘텐츠 관리 시스템에서 정적 데이터를 읽고 싶을 때 유용합니다.
+서버 컴포넌트는 빌드 시간에 파일 시스템에서 읽거나 정적 콘텐츠를 가져올 수 있으므로 웹 서버가 필요하지 않습니다. 예를 들어, 콘텐츠 관리 시스템(CMS)에서 정적 데이터를 읽고 싶을 때 유용합니다.
 
 서버 컴포넌트 없이 클라이언트에서 정적 데이터를 가져오는 일반적인 패턴은 다음과 같습니다.
 ```js
@@ -55,7 +55,7 @@ app.get(`/api/content/:page`, async (req, res) => {
 
 이 패턴은 사용자가 정적 콘텐츠를 렌더링하기 위해 페이지가 로드된 후 추가 75K (gzipped) 라이브러리를 다운로드하고 파싱해야 하며, 데이터를 가져오기 위해 두 번째 요청을 기다려야 합니다.
 
-서버 컴포넌트를 사용하면 이러한 컴포넌트를 빌드 시간에 한 번 렌더링할 수 있습니다.
+서버 컴포넌트를 사용하면 이러한 컴포넌트를 빌드 시간에 한 번만 렌더링할 수 있습니다.
 
 ```js
 import marked from 'marked'; // Not included in bundle
@@ -89,7 +89,7 @@ async function Page({page}) {
 
 비동기 컴포넌트는 렌더링 중에 `await`를 사용할 수 있게 해주는 서버 컴포넌트의 새로운 기능입니다.
 
-자세한 내용은 아래의 [Async components with Server Components](#async-components-with-server-components)를 참조하세요.
+자세한 내용은 아래의 [서버 컴포넌트와 함께 비동기 컴포넌트 사용하기](#async-components-with-server-components)를 참조하세요.
 
 </Note>
 
@@ -178,7 +178,7 @@ async function Author({id}) {
 </div>
 ```
 
-서버 컴포넌트는 서버에서 다시 가져와 동적으로 만들 수 있으며, 데이터를 접근하고 다시 렌더링할 수 있습니다. 이 새로운 애플리케이션 아키텍처는 서버 중심의 다중 페이지 앱(server-centric Multi-Page Apps)의 간단한 "request/response" 모델과 클라이언트 중심의 단일 페이지 앱(client-centric Single-Page Apps)의 원활한 상호작용을 결합하여 두 가지의 장점을 모두 제공합니다.
+서버 컴포넌트는 서버에서 다시 페칭함으로써 데이터에 액세스하고 다시 렌더링하여 동적으로 만들 수 있습니다. 이 새로운 애플리케이션 아키텍처는 서버 중심의 다중 페이지 앱(server-centric Multi-Page Apps)의 간단한 "request/response" 모델과 클라이언트 중심의 단일 페이지 앱(client-centric Single-Page Apps)의 원활한 상호작용을 결합하여 두 가지의 장점을 모두 제공합니다.
 
 ### 서버 컴포넌트에 상호작용 추가하기 {/*adding-interactivity-to-server-components*/}
 
@@ -186,11 +186,11 @@ async function Author({id}) {
 
 <Note>
 
-#### 서버 컴포넌트에 대한 지시어은 없습니다. {/*there-is-no-directive-for-server-components*/}
+#### 서버 컴포넌트에 대한 지시어는 없습니다. {/*there-is-no-directive-for-server-components*/}
 
 서버 컴포넌트는 `"use server"`로 표시된다는 오해가 있지만, 서버 컴포넌트에 대한 지시어은 없습니다. `"use server"` 지시어은 서버 액션에 사용됩니다.
 
-자세한 내용은 [Directives](/reference/rsc/directives) 참조.
+자세한 내용은 [Directives](/reference/rsc/directives) 참조하세요.
 
 </Note>
 
@@ -256,7 +256,7 @@ export default function Expandable({children}) {
 
 서버 컴포넌트는 async/await를 사용하는 새로운 방법을 소개합니다. 비동기 컴포넌트에서 `await`를 사용할 때 React는 중단하고, Promise가 해결될 때까지 렌더링을 기다린 후 다시 렌더링을 재개합니다. 이는 서버/클라이언트 경계를 넘어 서스펜스 스트리밍 지원과 함께 작동합니다.
 
-심지어 서버에서 프라미스를 생성하고 클라이언트에서 이를 기다릴 수 있습니다.
+심지어 서버에서 Promise를 생성하고 클라이언트에서 이를 기다릴 수 있습니다.
 
 ```js
 // Server Component
