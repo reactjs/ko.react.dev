@@ -5,13 +5,13 @@ canary: true
 
 <Canary>
 
-`preconnect`는 현재 React의 카나리아(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. 여기에서 [React의 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
+`preconnect`는 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. 여기에서 [React의 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
 
 </Canary>
 
 <Intro>
 
-'preconnect'를 사용하면 리소스를 로드할 것으로 예상되는 서버에 연결할 수 있습니다.
+'preconnect'를 사용하면 리소스를 가져올 것으로 예상하는 서버에 연결할 수 있습니다.
 
 ```js
 preconnect("https://example.com");
@@ -54,7 +54,7 @@ function AppRoot() {
 
 #### 주의 사항 {/*caveats*/}
 
-* 동일한 서버에 대한 여러 번의 `preconnect` 호출은 한 번의 호출과 동일한 효과를 갖습니다.
+* 동일한 서버에 대해 여러 번의 `preconnect` 호출은 한 번의 호출과 동일한 효과를 갖습니다.
 * 브라우저에서 `preconnect`는 컴포넌트를 렌더링할 때, Effect 내부, 이벤트 핸들러 내부 등 모든 상황에서 호출할 수 있습니다.
 * 서버 사이드 렌더링 또는 서버 컴포넌트를 렌더링할 때, `preconnect`는 컴포넌트를 렌더링하는 동안 호출하거나 컴포넌트를 렌더링하는 컨텍스트에서 시작된 비동기 컨텍스트 내에서 호출할 때만 효과가 있습니다. 그 외의 호출은 무시됩니다.
 * 필요한 특정 리소스를 알고 있다면, [다른 함수](/reference/react-dom/#resource-preloading-apis)를 호출하여 리소스를 즉시 로드할 수 있습니다.
