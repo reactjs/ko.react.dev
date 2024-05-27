@@ -2919,4 +2919,8 @@ body {
 1. 누군가 승리하면 승리의 원인이 된 세 개의 사각형을 강조 표시해 보세요. (아무도 승리하지 않으면 무승부라는 메시지를 표시하세요. )
 1. 이동 히스토리 목록에서 각 이동의 위치를 형식(열, 행)으로 표시해 보세요.
 
+<<<<<<< HEAD
 이 자습서를 통해 엘리먼트, 컴포넌트, props, state를 포함한 React의 개념에 대해 살펴봤습니다. 이제 이러한 개념이 게임을 만들 때 어떻게 작동하는지 보았으니, [React로 사고하기](/learn/thinking-in-react)를 통해 앱의 UI를 만들 때 동일한 React 개념이 어떻게 작동하는지 확인해 보세요.
+=======
+Throughout this tutorial, you've touched on React concepts including elements, components, props, and state. Now that you've seen how these concepts work when building a game, check out [Thinking in React](/learn/thinking-in-react) to see how the same React concepts work when building an app's UI.
+>>>>>>> c3bc5affa0e7452e306c785af11798d16b4f6dd4

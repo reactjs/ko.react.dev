@@ -237,7 +237,11 @@ React 18의 Strict 모드에서는 개발 모드에서 컴포넌트를 마운트
 
 #### useTransition {/*usetransition*/}
 
+<<<<<<< HEAD
 `useTransition`과 `startTransition`으로 일부 state 업데이트를 긴급하지 않은 것으로 표시할 수 있습니다. 다른 state 업데이트는 기본적으로 긴급한 것으로 간주합니다. React는 긴급한 state 업데이트(예: 텍스트 input 업데이트)가 긴급하지 않은 state 업데이트(예: 검색 결과 목록 렌더링)를 중단할 수 있도록 합니다. [참고 문서](/reference/react/useTransition)
+=======
+`useTransition` and `startTransition` let you mark some state updates as not urgent. Other state updates are considered urgent by default. React will allow urgent state updates (for example, updating a text input) to interrupt non-urgent state updates (for example, rendering a list of search results). [See docs here](/reference/react/useTransition).
+>>>>>>> c3bc5affa0e7452e306c785af11798d16b4f6dd4
 
 #### useDeferredValue {/*usedeferredvalue*/}
 
