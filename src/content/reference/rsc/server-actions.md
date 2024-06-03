@@ -173,7 +173,7 @@ Form 제출이 성공하면, React는 자동으로 form을 재설정합니다. �
 import {updateName} from './actions';
 
 function UpdateName() {
-  const [submitAction, state, isPending] = useActionState(updateName, {error: null});
+  const [state, submitAction, isPending] = useActionState(updateName, {error: null});
 
   return (
     <form action={submitAction}>
