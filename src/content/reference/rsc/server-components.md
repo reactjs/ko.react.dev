@@ -5,28 +5,28 @@ canary: true
 
 <Intro>
 
-Server Components are a new type of Component that renders ahead of time, before bundling, in an environment separate from your client app or SSR server.
+서버 컴포넌트는 번들링 전에 클라이언트 앱이나 SSR 서버와는 분리된 환경에서 미리 렌더링되는 새로운 유형의 컴포넌트입니다.
 
 </Intro>
 
-This separate environment is the "server" in React Server Components. Server Components can run once at build time on your CI server, or they can be run for each request using a web server.
+이 별도의 환경이 바로 React 서버 컴포넌트에서의 "서버"입니다. 서버 컴포넌트는 빌드 시간에 CI 서버에서 한 번 실행되거나, 각 요청마다 웹 서버를 통해 실행될 수 있습니다.
 
 <InlineToc />
 
 <Note>
 
-#### How do I build support for Server Components? {/*how-do-i-build-support-for-server-components*/}
+#### 서버 컴포넌트를 지원하려면 어떻게 해야 하나요? {/*how-do-i-build-support-for-server-components*/}
 
-While React Server Components in React 19 are stable and will not break between major versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x. 
+React 19의 서버 컴포넌트는 안정적이며 메이저 버전 간에는 변경되지 않습니다. 그러나 React 서버 컴포넌트 번들러나 프레임워크를 구현하는 데 사용되는 기본 API는 시맨틱 버전(semver)을 따르지 않으며 React 19.x 버전의 마이너 버전 간에 변경될 수 있습니다.
 
-To support React Server Components as a bundler or framework, we recommend pinning to a specific React version, or using the Canary release. We will continue working with bundlers and frameworks to stabilize the APIs used to implement React Server Components in the future.
+React 서버 컴포넌트를 번들러나 프레임워크로 지원하려면 특정 React 버전에 고정하거나 Canary 릴리즈를 사용하는 것을 권장합니다. 향후 React 서버 컴포넌트를 구현하는 데 사용되는 API를 안정화하기 위해 번들러 및 프레임워크와 계속 협력할 것입니다.
 
 </Note>
 
-### Server Components without a Server {/*server-components-without-a-server*/}
-Server components can run at build time to read from the filesystem or fetch static content, so a web server is not required. For example, you may want to read static data from a content management system.
+### 서버 없이 서버 컴포넌트 사용하기 {/*server-components-without-a-server*/}
+서버 컴포넌트는 빌드 시간에 파일 시스템에서 읽거나 정적 콘텐츠를 가져올 수 있으므로 웹 서버가 필요하지 않습니다. 예를 들어, 콘텐츠 관리 시스템(CMS)에서 정적 데이터를 읽고 싶을 때 유용합니다.
 
-Without Server Components, it's common to fetch static data on the client with an Effect:
+서버 컴포넌트 없이 클라이언트에서 정적 데이터를 가져오는 일반적인 패턴은 다음과 같습니다.
 ```js
 // bundle.js
 import marked from 'marked'; // 35.9K (11.2K gzipped)
@@ -53,9 +53,9 @@ app.get(`/api/content/:page`, async (req, res) => {
 });
 ```
 
-This pattern means users need to download and parse an additional 75K (gzipped) of libraries, and wait for a second request to fetch the data after the page loads, just to render static content that will not change for the lifetime of the page.
+이 패턴은 사용자가 정적 콘텐츠를 렌더링하기 위해 페이지가 로드된 후 추가 75K (gzipped) 라이브러리를 다운로드하고 파싱해야 하며, 데이터를 가져오기 위해 두 번째 요청을 기다려야 합니다.
 
-With Server Components, you can render these components once at build time:
+서버 컴포넌트를 사용하면 이러한 컴포넌트를 빌드 시간에 한 번만 렌더링할 수 있습니다.
 
 ```js
 import marked from 'marked'; // Not included in bundle
@@ -69,17 +69,17 @@ async function Page({page}) {
 }
 ```
 
-The rendered output can then be server-side rendered (SSR) to HTML and uploaded to a CDN. When the app loads, the client will not see the original `Page` component, or the expensive libraries for rendering the markdown. The client will only see the rendered output:
+렌더링된 출력은 서버 측 렌더링(SSR)을 통해 HTML로 변환되어 CDN에 업로드될 수 있습니다. 앱이 로드될 때 클라이언트는 원래   `Page` 컴포넌트나 마크다운을 렌더링하기 위한 고비용의 라이브러리를 보지 않습니다. 클라이언트는 렌더링된 출력만 보게 됩니다.
 
 ```js
 <div><!-- html for markdown --></div>
 ```
 
-This means the content is visible during first page load, and the bundle does not include the expensive libraries needed to render the static content.
+이렇게 하면 첫 페이지 로드 시 콘텐츠가 표시되고 번들에 정적 콘텐츠를 렌더링하는 데 필요한 고비용의 라이브러리가 포함되지 않게 됩니다.
 
 <Note>
 
-You may notice that the Server Component above is an async function:
+아래의 서버 컴포넌트는 비동기 함수임을 알 수 있습니다.
 
 ```js
 async function Page({page}) {
@@ -87,16 +87,16 @@ async function Page({page}) {
 }
 ```
 
-Async Components are a new feature of Server Components that allow you to `await` in render.
+비동기 컴포넌트는 렌더링 중에 `await`를 사용할 수 있게 해주는 서버 컴포넌트의 새로운 기능입니다.
 
-See [Async components with Server Components](#async-components-with-server-components) below.
+자세한 내용은 아래의 [서버 컴포넌트와 함께 비동기 컴포넌트 사용하기](#async-components-with-server-components)를 참조하세요.
 
 </Note>
 
-### Server Components with a Server {/*server-components-with-a-server*/}
-Server Components can also run on a web server during a request for a page, letting you access your data layer without having to build an API. They are rendered before your application is bundled, and can pass data and JSX as props to Client Components.
+### 서버와 함께 서버 컴포넌트 사용하기 {/*server-components-with-a-server*/}
+서버 컴포넌트는 웹 서버에서 페이지 요청 시 실행될 수도 있어, API를 구축할 필요 없이 데이터 레이어에 접근할 수 있게 해줍니다. 이들은 애플리케이션이 번들링되기 전에 렌더링되며, 데이터와 JSX를 클라이언트 컴포넌트에 props로 전달할 수 있습니다.
 
-Without Server Components, it's common to fetch dynamic data on the client in an Effect:
+서버 컴포넌트 없이 클라이언트에서 동적 데이터를 가져오는 일반적인 패턴은 다음과 같습니다.
 
 ```js
 // bundle.js
@@ -145,7 +145,7 @@ app.get(`/api/authors/:id`, async (req, res) => {
 });
 ```
 
-With Server Components, you can read the data and render it in the component:
+서버 컴포넌트를 사용하면 데이터를 읽고 컴포넌트 내에서 렌더링할 수 있습니다.
 
 ```js
 import db from './database';
@@ -169,33 +169,33 @@ async function Author({id}) {
 }
 ```
 
-The bundler then combines the data, rendered Server Components and dynamic Client Components into a bundle. Optionally, that bundle can then be server-side rendered (SSR) to create the initial HTML for the page. When the page loads, the browser does not see the original `Note` and `Author` components; only the rendered output is sent to the client:
+번들러는 데이터를 결합하여 서버 컴포넌트를 렌더링하고 동적 클라이언트 컴포넌트와 함께 번들을 만듭니다. 선택적으로 이 번들은 서버 측 렌더링(SSR)을 통해 페이지의 초기 HTML을 생성할 수 있습니다. 페이지가 로드될 때 브라우저는 원래 `Note` 및 `Author` 컴포넌트를 보지 않고 렌더링된 출력만 클라이언트에 전송됩니다.
 
 ```js
 <div>
   <span>By: The React Team</span>
-  <p>React 19 Beta is...</p>
+  <p>React 19 is...</p>
 </div>
 ```
 
-Server Components can be made dynamic by re-fetching them from a server, where they can access the data and render again. This new application architecture combines the simple “request/response” mental model of server-centric Multi-Page Apps with the seamless interactivity of client-centric Single-Page Apps, giving you the best of both worlds.
+서버 컴포넌트는 서버에서 다시 페칭함으로써 데이터에 액세스하고 다시 렌더링하여 동적으로 만들 수 있습니다. 이 새로운 애플리케이션 아키텍처는 서버 중심의 다중 페이지 앱(server-centric Multi-Page Apps)의 간단한 "request/response" 모델과 클라이언트 중심의 단일 페이지 앱(client-centric Single-Page Apps)의 원활한 상호작용을 결합하여 두 가지의 장점을 모두 제공합니다.
 
-### Adding interactivity to Server Components {/*adding-interactivity-to-server-components*/}
+### 서버 컴포넌트에 상호작용 추가하기 {/*adding-interactivity-to-server-components*/}
 
-Server Components are not sent to the browser, so they cannot use interactive APIs like `useState`. To add interactivity to Server Components, you can compose them with Client Component using the `"use client"` directive.
+서버 컴포넌트는 브라우저로 전송되지 않으므로 `useState`와 같은 상호작용 API를 사용할 수 없습니다. 서버 컴포넌트에 상호작용을 추가하려면 `"use client"` 지시문을 사용하여 클라이언트 컴포넌트와 함께 구성할 수 있습니다.
 
 <Note>
 
-#### There is no directive for Server Components. {/*there-is-no-directive-for-server-components*/}
+#### 서버 컴포넌트에 대한 지시어는 없습니다. {/*there-is-no-directive-for-server-components*/}
 
-A common misunderstanding is that Server Components are denoted by `"use server"`, but there is no directive for Server Components. The `"use server"` directive is used for Server Actions.
+서버 컴포넌트는 `"use server"`로 표시된다는 오해가 있지만, 서버 컴포넌트에 대한 지시어은 없습니다. `"use server"` 지시어은 서버 액션에 사용됩니다.
 
-For more info, see the docs for [Directives](/reference/rsc/directives).
+자세한 내용은 [Directives](/reference/rsc/directives) 참조하세요.
 
 </Note>
 
 
-In the following example, the `Notes` Server Component imports an `Expandable` Client Component that uses state to toggle its `expanded` state:
+다음 예제에서는 `Notes` 서버 컴포넌트가 상태를 사용하여 `expanded` 상태를 토글하는 `Expandable` 클라이언트 컴포넌트를 가져옵니다.
 ```js
 // Server Component
 import Expandable from './Expandable';
@@ -232,7 +232,7 @@ export default function Expandable({children}) {
 }
 ```
 
-This works by first rendering `Notes` as a Server Component, and then instructing the bundler to create a bundle for the Client Component `Expandable`. In the browser, the Client Components will see output of the Server Components passed as props:
+이 예제는 먼저 `Notes`를 서버 컴포넌트로 렌더링한 다음 번들러에 `Expandable` 클라이언트 컴포넌트의 번들을 생성하도록 지시합니다. 브라우저에서는 클라이언트 컴포넌트가 서버 컴포넌트의 출력을 props로 받게 됩니다.
 
 ```js
 <head>
@@ -252,11 +252,11 @@ This works by first rendering `Notes` as a Server Component, and then instructin
 </body>
 ```
 
-### Async components with Server Components {/*async-components-with-server-components*/}
+### 서버 컴포넌트와 함께 비동기 컴포넌트 사용하기 {/*async-components-with-server-components*/}
 
-Server Components introduce a new way to write Components using async/await. When you `await` in an async component, React will suspend and wait for the promise to resolve before resuming rendering. This works across server/client boundaries with streaming support for Suspense.
+서버 컴포넌트는 async/await를 사용하는 새로운 방법을 소개합니다. 비동기 컴포넌트에서 `await`를 사용할 때 React는 중단하고, Promise가 해결될 때까지 렌더링을 기다린 후 다시 렌더링을 재개합니다. 이는 서버/클라이언트 경계를 넘어 서스펜스 스트리밍 지원과 함께 작동합니다.
 
-You can even create a promise on the server, and await it on the client:
+심지어 서버에서 Promise를 생성하고 클라이언트에서 이를 기다릴 수 있습니다.
 
 ```js
 // Server Component
@@ -292,6 +292,6 @@ function Comments({commentsPromise}) {
 }
 ```
 
-The `note` content is important data for the page to render, so we `await` it on the server. The comments are below the fold and lower-priority, so we start the promise on the server, and wait for it on the client with the `use` API. This will Suspend on the client, without blocking the `note` content from rendering.
+`note` 콘텐츠는 페이지 렌더링에 중요한 데이터이므로 서버에서 `await` 합니다. 댓글은 중요도가 낮아 페이지 아래에 표시되므로 서버에서 Promise를 시작하고 클라이언트에서 `use` API를 사용하여 기다립니다. 이는 클라이언트에서 중단되지만 `note` 콘텐츠가 렌더링되는 것을 차단하지 않습니다.
 
-Since async components are [not supported on the client](#why-cant-i-use-async-components-on-the-client), we await the promise with `use`.
+비동기 컴포넌트는 [클라이언트에서 지원되지 않으므로](#why-cant-i-use-async-components-on-the-client) Promise를 `use`로 기다립니다.

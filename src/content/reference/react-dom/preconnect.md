@@ -5,13 +5,13 @@ canary: true
 
 <Canary>
 
-The `preconnect` function is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+`preconnect`는 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. 여기에서 [React의 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
 
 </Canary>
 
 <Intro>
 
-`preconnect` lets you eagerly connect to a server that you expect to load resources from.
+'preconnect'를 사용하면 리소스를 가져올 것으로 예상하는 서버에 연결할 수 있습니다.
 
 ```js
 preconnect("https://example.com");
@@ -23,11 +23,11 @@ preconnect("https://example.com");
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `preconnect(href)` {/*preconnect*/}
 
-To preconnect to a host, call the `preconnect` function from `react-dom`.
+호스트에 미리 연결하려면, `react-dom`에서 `preconnect`를 호출합니다.
 
 ```js
 import { preconnect } from 'react-dom';
@@ -39,34 +39,34 @@ function AppRoot() {
 
 ```
 
-[See more examples below.](#usage)
+[아래에서 더 많은 예시를 확인하세요.](#usage)
 
-The `preconnect` function provides the browser with a hint that it should open a connection to the given server. If the browser chooses to do so, this can speed up the loading of resources from that server. 
+`preconnect`는 브라우저가 해당 서버와 연결을 맺어야 한다는 힌트를 제공합니다. 브라우저가 해당 서버를 선택하면, 해당 서버에서 리소스를 로드하는 속도가 빨라질 수 있습니다.
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `href`: a string. The URL of the server you want to connect to.
+* `href`: 문자열. 연결할 서버의 URL입니다.
 
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-`preconnect` returns nothing.
+`preconnect`는 아무 값도 반환하지 않습니다.
 
-#### Caveats {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
-* Multiple calls to `preconnect` with the same server have the same effect as a single call.
-* In the browser, you can call `preconnect` in any situation: while rendering a component, in an Effect, in an event handler, and so on.
-* In server-side rendering or when rendering Server Components, `preconnect` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
-* If you know the specific resources you'll need, you can call [other functions](/reference/react-dom/#resource-preloading-apis) instead that will start loading the resources right away.
-* There is no benefit to preconnecting to the same server the webpage itself is hosted from because it's already been connected to by the time the hint would be given.
+* 동일한 서버에 대해 여러 번의 `preconnect` 호출은 한 번의 호출과 동일한 효과를 갖습니다.
+* 브라우저에서 `preconnect`는 컴포넌트를 렌더링할 때, Effect 내부, 이벤트 핸들러 내부 등 모든 상황에서 호출할 수 있습니다.
+* 서버 사이드 렌더링 또는 서버 컴포넌트를 렌더링할 때, `preconnect`는 컴포넌트를 렌더링하는 동안 호출하거나 컴포넌트를 렌더링하는 컨텍스트에서 시작된 비동기 컨텍스트 내에서 호출할 때만 효과가 있습니다. 그 외의 호출은 무시됩니다.
+* 필요한 특정 리소스를 알고 있다면, [다른 함수](/reference/react-dom/#resource-preloading-apis)를 호출하여 리소스를 즉시 로드할 수 있습니다.
+* 웹 페이지 자체가 호스팅되는 동일한 서버에 사전 연결하는 것은 이점이 없습니다. 힌트가 주어질 때 웹 페이지 자체가 이미 연결되어 있기 때문입니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Preconnecting when rendering {/*preconnecting-when-rendering*/}
+### 렌더링 시 사전 연결 {/*preconnecting-when-rendering*/}
 
-Call `preconnect` when rendering a component if you know that its children will load external resources from that host.
+자식 컴포넌트가 해당 호스트에서 외부 리소스를 로드할 것임을 알고 있다면, 컴포넌트를 렌더링할 때 `preconnect`를 호출하세요.
 
 ```js
 import { preconnect } from 'react-dom';
@@ -77,9 +77,9 @@ function AppRoot() {
 }
 ```
 
-### Preconnecting in an event handler {/*preconnecting-in-an-event-handler*/}
+### 이벤트 핸들러에서 사전 연결 {/*preconnecting-in-an-event-handler*/}
 
-Call `preconnect` in an event handler before transitioning to a page or state where external resources will be needed. This gets the process started earlier than if you call it during the rendering of the new page or state.
+외부 리소스가 필요한 페이지나 state로 전환하기 전에 이벤트 핸들러에서 `preconnect`를 호출하세요. 이렇게 하면 새로운 페이지나 state를 렌더링할 때 호출하는 것보다 더 일찍 프로세스를 시작할 수 있습니다.
 
 ```js
 import { preconnect } from 'react-dom';

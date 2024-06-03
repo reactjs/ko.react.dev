@@ -378,8 +378,8 @@ export async function signUpNewUser(newEmail) {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "18.3.0-canary-6db7f4209-20231021",
-    "react-dom": "18.3.0-canary-6db7f4209-20231021",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "^5.0.0"
   },
   "main": "/index.js",
@@ -389,7 +389,7 @@ export async function signUpNewUser(newEmail) {
 
 </Sandpack>
 
-[`useActionState`](/reference/react/hooks/useActionState)문서를 통해 폼 작업에서 상태를 업데이트하는 방법에 대해 자세히 알아보세요.
+[`useActionState`](/reference/react/useActionState)문서를 통해 폼 작업에서 상태를 업데이트하는 방법에 대해 자세히 알아보세요.
 
 ### 다양한 제출 타입 처리하기 {/*handling-multiple-submission-types*/}
 
