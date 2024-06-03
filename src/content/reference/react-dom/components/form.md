@@ -5,12 +5,13 @@ canary: true
 
 <Canary>
 
-리액트의 익스텐션인 `<form>`은 현재 리액트 카나리와 실험적 채널에서만 사용할 수 있습니다. 리액트에서의 안정적인 배포를 위해 `<form>`은 [내장 브라우저 HTML 컴포넌트](https://react.dev/reference/react-dom/components#all-html-components)로서만 동작합니다. 더 자세한 사항은 [리액트 배포 채널](/community/versioning-policy#all-release-channels)을 확인하세요.
+React의 익스텐션인 `<form>`은 현재 React  Canary(카나리)와 실험적 채널에서만 사용할 수 있습니다. React에서의 안정적인 배포를 위해 `<form>`은 [내장 브라우저 HTML 컴포넌트](https://react.dev/reference/react-dom/components#all-html-components)로서만 동작합니다. 더 자세한 사항은 [React 배포 채널](/community/versioning-policy#all-release-channels)을 확인하세요.
 
 </Canary>
 
 
 <Intro>
+
 [내장 브라우저 `<form>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)는 정보 제출을 위한 대화형 컨트롤을 만들 수 있습니다.
 
 ```js
@@ -43,7 +44,7 @@ canary: true
 
 #### Props {/*props*/}
 
-`<form>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<form>`은 모든 [공통 엘리먼트 props](/reference/react-dom/components/common#props)를 지원합니다.
 
 [`action`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action): URL 혹은 함수.
 URL이 `action`을 통해 전달되면, 폼은 HTML 폼 컴포넌트처럼 행동합니다. 함수가 action을 통해 전달되면, 해당 함수는 폼 제출처럼 동작합니다. `action`을 통한 함수는 비동기로 동작할 수 있으며, 폼을 통해 제출된 [formData](https://developer.mozilla.org/ko/docs/Web/API/FormData)를 포함한 단일 인수로 호출됩니다. `action`의 프로퍼티는 `formAction`의 속성인 `<button>`, `<input type="submit">`, 혹은 `<input type="image">`로 재정의될 수 있습니다.
@@ -142,7 +143,7 @@ function AddToCart({productId}) {
 
 ### 폼이 제출되는 동안 pending 상태 보여주기 {/*display-a-pending-state-during-form-submission*/}
 
-폼이 제출되는 동안 pending 상태를 보여주기 위해, `<form>`이 렌더되는 컴포넌트 안에서 `useFormStatus` 훅을 호출해 반환된 `pending` 프로퍼티를 읽어낼 수 있습니다.
+폼이 제출되는 동안 pending 상태를 보여주기 위해, `<form>`이 렌더되는 컴포넌트 안에서 `useFormStatus` hook을 호출해 반환된 `pending` 프로퍼티를 읽어낼 수 있습니다.
 
 여기 폼이 제출되고 있음을 나타내기 위해 `pending` 프로퍼티를 사용해 보았습니다.
 
@@ -193,13 +194,13 @@ export async function submitForm(query) {
 ```
 </Sandpack>
 
-`useFormStatus`훅에 대해 더 알고 싶다면, [참고 문서](/reference/react-dom/hooks/useFormStatus)를 확인하세요.
+`useFormStatus` hook에 대해 더 알고 싶다면, [참고 문서](/reference/react-dom/hooks/useFormStatus)를 확인하세요.
 
 ### 낙관적으로 폼 데이터 업데이트하기 {/*optimistically-updating-form-data*/}
 
-`useOptimistic` 훅은 네트워크 요청과 같은 백그라운드의 작업이 끝나기 전에 유저 인터페이스에 낙관적으로 업데이트하는 방법을 제공합니다. 폼의 맥락에서 이 기술은 앱을 더욱 반응형으로 느끼게 해줍니다. 유저가 폼을 제출하면 인터페이스는 유저가 기대하는 결과물로 즉시 업데이트됩니다. 
+`useOptimistic` hook은 네트워크 요청과 같은 백그라운드의 작업이 끝나기 전에 유저 인터페이스에 낙관적으로 업데이트하는 방법을 제공합니다. 폼의 맥락에서 이 기술은 앱을 더욱 반응형으로 느끼게 해줍니다. 유저가 폼을 제출하면 인터페이스는 유저가 기대하는 결과물로 즉시 업데이트됩니다. 
 
-예를 들어, 유저가 폼에 메시지를 입력하고 "제출" 버튼을 클릭하면 `useOptimistic` 훅은 "제출중..." 라벨과 함께 메시지가 서버에 보내지기 전에 리스트에 즉시 보입니다. 이러한 '낙관적인' 접근 방식은 속도와 반응성이 뛰어나다는 인상을 줍니다. 그다음 폼은 실제로 백그라운드에 메시지 보내기를 시도합니다. 서버에 메시지가 잘 도착하면, "제출중..." 라벨은 사라집니다.
+예를 들어, 유저가 폼에 메시지를 입력하고 "제출" 버튼을 클릭하면 `useOptimistic` hook은 "제출중..." 라벨과 함께 메시지가 서버에 보내지기 전에 리스트에 즉시 보입니다. 이러한 '낙관적인' 접근 방식은 속도와 반응성이 뛰어나다는 인상을 줍니다. 그다음 폼은 실제로 백그라운드에 메시지 보내기를 시도합니다. 서버에 메시지가 잘 도착하면, "제출중..." 라벨은 사라집니다.
 
 
 <Sandpack>
@@ -277,7 +278,7 @@ export async function deliverMessage(message) {
 
 </Sandpack>
 
-`useOptimistic` 훅에 대해 더 알고 싶다면 [참고 문서](/reference/react/hooks/useOptimistic)를 확인해 보세요.
+`useOptimistic` hook에 대해 더 알고 싶다면 [참고 문서](/reference/react/hooks/useOptimistic)를 확인해 보세요.
 
 ### 폼 제출 에러 처리하기 {/*handling-form-submission-errors*/}
 
@@ -327,7 +328,7 @@ export default function Search() {
 
 1. `<form>`이 [서버 컴포넌트](/reference/rsc/use-client)에서 렌더.
 2. `<form>`의 `action` 프로퍼티로 전달된 함수가 [Server Action](/reference/rsc/use-server).
-3. `useActionState` 훅이 에러메시지를 보여주기 위해 사용.
+3. `useActionState` hook이 에러메시지를 보여주기 위해 사용.
 
 `useActionState`는 [Server Action](/reference/rsc/use-server)과 초기 상태 값이라는 두 개의 매개변수를 가집니다. `useActionState`는 상태 변수와 액션이라는 두 개의 값을 반환합니다. `useActionState`를 통해 반환된 액션은 폼의 `action` 프로퍼티에 전달될 수 있습니다. `useActionState`를 통해 반환된 상태 변수는 에러 메시지를 보여주는 데 사용됩니다. `useActionState`에 전달된 [Server Action](/reference/rsc/use-server)에서 반환된 값은 상태 변수를 업데이트하는 데 사용됩니다. 
 
