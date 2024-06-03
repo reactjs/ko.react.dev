@@ -5,7 +5,7 @@ canary: true
 
 <Canary>
 
-React의 익스텐션인 `<form>`은 현재 React  Canary(카나리)와 실험적 채널에서만 사용할 수 있습니다. React에서의 안정적인 배포를 위해 `<form>`은 [내장 브라우저 HTML 컴포넌트](https://react.dev/reference/react-dom/components#all-html-components)로서만 동작합니다. 더 자세한 사항은 [React 배포 채널](/community/versioning-policy#all-release-channels)을 확인하세요.
+React의 익스텐션인 `<form>`은 현재 React Canary(카나리)와 실험적 채널에서만 사용할 수 있습니다. React에서의 안정적인 배포를 위해 `<form>`은 [내장 브라우저 HTML 컴포넌트](https://react.dev/reference/react-dom/components#all-html-components)로서만 동작합니다. 더 자세한 사항은 [React 배포 채널](/community/versioning-policy#all-release-channels)을 확인하세요.
 
 </Canary>
 
