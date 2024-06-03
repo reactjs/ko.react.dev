@@ -45,7 +45,7 @@ Effect에 대해 자세히 알아보기 전에, 컴포넌트 내부의 2가지 �
 
 Effect를 작성하기 위해서는 다음 세 단계를 따릅니다.
 
-1. **Effect 선언.** 기본적으로 Effect는 모든 렌더링 후에 실행됩니다.
+1. **Effect 선언.** 기본적으로 Effect는 모든 [commit](/learn/render-and-commit) 이후에 실행됩니다.
 2. **Effect 의존성 지정.** 대부분의 Effect는 모든 렌더링 후가 아닌 *필요할 때*만 다시 실행되어야 합니다. 예를 들어, 페이드 인 애니메이션은 컴포넌트가 나타날 때에만 트리거 되어야 합니다. 채팅 방에 연결, 연결 해제하는 것은 컴포넌트가 나타나거나 사라질 때 또는 채팅 방이 변경될 때만 발생해야 합니다. *의존성*을 지정하여 이를 제어하는 방법을 배우게 될 것입니다.
 3. **필요한 경우 클린업 함수 추가.** 일부 Effect는 수행 중이던 작업을 중지, 취소 또는 정리하는 방법을 지정해야 할 수 있습니다. 예를 들어, "연결"은 "연결 해제"가 필요하며, "구독"은 "구독 취소"가 필요하고, "불러오기(fetch)"는 "취소" 또는 "무시"가 필요합니다. 이런 경우에 Effect에서 *클린업 함수(cleanup function)*를 반환하여 어떻게 수행하는지 배우게 될 것입니다.
 
@@ -597,6 +597,33 @@ React는 마지막 예시와 같은 버그를 찾기 위해 개발 중에 컴포
 일반적으로 정답은 클린업 함수를 구현하는 것입니다. 클린업 함수는 Effect가 수행하던 작업을 중단하거나 되돌리는 역할을 합니다. 기본 원칙은 사용자가 Effect가 한 번 실행되는 것(배포 환경과 같이)과 _설정 → 클린업 → 설정_ 순서(개발 중에 볼 수 있는 것) 간에 차이를 느끼지 못해야 합니다.
 
 작성할 대부분의 Effect는 아래의 일반적인 패턴 중 하나에 해당될 것입니다.
+
+<Pitfall>
+
+#### Don't use refs to prevent Effects from firing {/*dont-use-refs-to-prevent-effects-from-firing*/}
+
+A common pitfall for preventing Effects firing twice in development is to use a `ref` to prevent the Effect from running more than once. For example, you could "fix" the above bug with a `useRef`:
+
+```js {1,3-4}
+  const connectionRef = useRef(null);
+  useEffect(() => {
+    // 🚩 This wont fix the bug!!!
+    if (!connectionRef.current) {
+      connectionRef.current = createConnection();
+      connectionRef.current.connect();
+    }
+  }, []);
+```
+
+This makes it so you only see `"✅ Connecting..."` once in development, but it doesn't fix the bug.
+
+When the user navigates away, the connection still isn't closed and when they navigate back, a new connection is created. As the user navigates across the app, the connections would keep piling up, the same as it would before the "fix". 
+
+To fix the bug, it is not enough to just make the Effect run once. The effect needs to work after re-mounting, which means the connection needs to be cleaned up like in the solution above.
+
+See the examples below for how to handle common patterns.
+
+</Pitfall>
 
 ### React로 작성되지 않은 위젯 제어하기 {/*controlling-non-react-widgets*/}
 

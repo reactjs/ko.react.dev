@@ -62,9 +62,9 @@ function ChatRoom({ roomId }) {
 
 * 만약 의존성이 객체이거나 컴포넌트 내부에 선언된 함수일 경우에는 Effect가 필요 이상으로 재실행될 수 있습니다. 이를 수정하려면 불필요한 [객체 의존성](#removing-unnecessary-object-dependencies)이나 [함수 의존성](#updating-state-based-on-previous-state-from-an-effect)을 제거하세요. 또는 [state 업데이트를 추출](#updating-state-based-on-previous-state-from-an-effect)하거나 Effect 밖으로 [비 반응형 로직](#reading-the-latest-props-and-state-from-an-effect)을 빼낼 수 있습니다.
 
-* Effect가 상호작용(클릭과 같은)에 의해 일어나지 않는다면, React는 브라우저가 **업데이트된 화면을 그리도록 허용한 후 Effect를 실행합니다.** 만약 Effect로 수행하는 작업이 시각적인 효과가 있고 지연이 눈에 띄게 발생한다면(예를 들어, 툴팁을 위치시키는 경우와 같이 화면에 어떤 변화를 주는 경우), `useEffect` 대신 [`useLayoutEffect`](/reference/react/useLayoutEffect)를 사용하십시오.
+* If your Effect is caused by an interaction (like a click), **React may run your Effect before the browser paints the updated screen**. This ensures that the result of the Effect can be observed by the event system. Usually, this works as expected. However, if you must defer the work until after paint, such as an `alert()`, you can use `setTimeout`. See [reactwg/react-18/128](https://github.com/reactwg/react-18/discussions/128) for more information.
 
-* Effect가 상호작용(클릭과 같은)에 의해 일어난다고 하더라도 브라우저는 Effect 내부의 state가 업데이트되기 이전에 화면을 리페인팅할 것입니다. 이는 일반적으로 의도한 상황일 수 있으나, 브라우저가 화면을 리페인팅 하는 것을 블로킹하고 싶다면 `useEffect` 대신 [`useLayoutEffect`](/reference/react/useLayoutEffect)를 사용하십시오.
+* Even if your Effect was caused by an interaction (like a click), **React may allow the browser to repaint the screen before processing the state updates inside your Effect.** Usually, this works as expected. However, if you must block the browser from repainting the screen, you need to replace `useEffect` with [`useLayoutEffect`.](/reference/react/useLayoutEffect)
 
 * Effect는 **client 환경에서만 동작합니다.** 서버 렌더링에서는 동작하지 않습니다.
 
