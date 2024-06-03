@@ -56,11 +56,11 @@ store에 있는 데이터의 스냅샷을 반환합니다. 두 개의 함수를 
 
 * 리렌더링하는 동안 다른 `subscribe` 함수가 전달되면 React는 새로 전달된 `subscribe` 함수를 사용하여 저장소를 다시 구독합니다. 컴포넌트 외부에서 `subscribe` 를 선언하면 이를 방지할 수 있습니다.
 
-* If the store is mutated during a [non-blocking Transition update](/reference/react/useTransition), React will fall back to performing that update as blocking. Specifically, for every Transition update, React will call `getSnapshot` a second time just before applying changes to the DOM. If it returns a different value than when it was called originally, React will restart the update from scratch, this time applying it as a blocking update, to ensure that every component on screen is reflecting the same version of the store.
+* [non-blocking transition 업데이트](/reference/react/useTransition) 중에 스토어가 변경되면, React는 해당 업데이트를 blocking으로 수행하도록 되돌아갑니다. 구체적으로, 모든 Transition 업데이트에 대해 React는 DOM에 변경 사항을 적용하기 직전에 `getSnapshot`을 한 번 더 호출합니다. 처음 호출했을 때와 다른 값을 반환하면, React는 처음부터 다시 업데이트를 시작하고, 이번에는 blocking 업데이트를 적용하여 화면의 모든 컴포넌트가 같은 스토어 버전을 반영하도록 합니다.
 
-* It's not recommended to _suspend_ a render based on a store value returned by `useSyncExternalStore`. The reason is that mutations to the external store cannot be marked as [non-blocking Transition updates](/reference/react/useTransition), so they will trigger the nearest [`Suspense` fallback](/reference/react/Suspense), replacing already-rendered content on screen with a loading spinner, which typically makes a poor UX.
+* `useSyncExternalStore`가 반환한 스토어 값을 기반으로 렌더링을 _일시 중단_ 하는 것은 권장하지 않습니다. 그 이유는 외부 스토어에 대한 변형을 [non-blocking transition 업데이트](/reference/react/useTransition)로 표시할 수 없기 때문에, 가장 가까운 [`Suspense` fallback](/reference/react/Suspense)을 트리거해서, 화면에서 로딩 스피너로 대체하여, 일반적으로 UX가 좋지 않기 때문입니다.
 
-  For example, the following are discouraged:
+  예를 들어, 다음은 권장되지 않습니다.
 
   ```js
   const LazyProductDetailPage = lazy(() => import('./ProductDetailPage.js'));
@@ -68,10 +68,10 @@ store에 있는 데이터의 스냅샷을 반환합니다. 두 개의 함수를 
   function ShoppingApp() {
     const selectedProductId = useSyncExternalStore(...);
 
-    // ❌ Calling `use` with a Promise dependent on `selectedProductId`
+    // ❌ `selectedProductId`에 종속된 Promise로 `use`를 호출하는 것
     const data = use(fetchItem(selectedProductId))
 
-    // ❌ Conditionally rendering a lazy component based on `selectedProductId`
+    // ❌ `selectedProductId`를 기반으로 지연 컴포넌트를 조건부로 렌더링하는 것
     return selectedProductId != null ? <LazyProductDetailPage /> : <FeaturedProducts />;
   }
   ```
@@ -82,7 +82,7 @@ store에 있는 데이터의 스냅샷을 반환합니다. 두 개의 함수를 
 
 ### 외부 store 구독 {/*subscribing-to-an-external-store*/}
 
-대부분의 React 컴포넌트는 [props,](/learn/passing-props-to-a-component) [state,](/reference/react/useState) 그리고 [context](/reference/react/useContext)에서만 데이터를 읽습니다. 하지만 때로는 컴포넌트가 시간이 지남에 따라 변경되는 React 외부의 일부 저장소에서 일부 데이터를 읽어야 하는 경우가 있습니다. 다음이 포함됩니다.
+대부분의 React 컴포넌트는 [props](/learn/passing-props-to-a-component), [state](/reference/react/useState), 그리고 [context](/reference/react/useContext)에서만 데이터를 읽습니다. 하지만 때로는 컴포넌트가 시간이 지남에 따라 변경되는 React 외부의 일부 저장소에서 일부 데이터를 읽어야 하는 경우가 있습니다. 다음이 포함됩니다.
 
 * React 외부에 state를 보관하는 서드파티 상태 관리 라이브러리.
 * 변경 가능한 값을 노출하는 브라우저 API와 그 변경 사항을 구독하는 이벤트.

@@ -92,7 +92,7 @@ function TabContainer() {
 
 ### state 업데이트를 non-blocking Transition 으로 표시 {/*marking-a-state-update-as-a-non-blocking-transition*/}
 
-컴포넌트의 최상위 레벨에서 `useTransition`을 호출하여 state 업데이트를 non-blocking *Transitionㄴ*으로 표시하세요.
+컴포넌트의 최상위 레벨에서 `useTransition`을 호출하여 state 업데이트를 non-blocking *Transition*으로 표시하세요.
 
 ```js [[1, 4, "isPending"], [2, 4, "startTransition"]]
 import { useState, useTransition } from 'react';
