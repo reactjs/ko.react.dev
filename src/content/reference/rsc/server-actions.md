@@ -17,7 +17,7 @@ Server Actions를 사용하면 클라이언트 컴포넌트가 서버에서 실�
 
 React 19의 Server Actions는 안정적이고 주요 버전 간에 중단되지 않지만, React 서버 컴포넌트 bundler 또는 프레임워크에서 Server Actions를 구현하는 데 사용되는 API는 semver를 따르지 않으며 React 19.x의 마이너 버전에서는 중단될 수 있습니다.
 
-Server Actions를 bundler 또는 프레임워크로 지원하려면, 특정 React 버전에 고정하거나 Canary 릴리즈를 사용하는 것이 좋습니다. 향후 Server Actions를 구현하는 데 사용되는 API를 안정화하기 위해 bundler 및 프레임워크와 계속 협력할 예정입니다.
+Server Actions를 bundler 또는 프레임워크로 지원하려면, 특정 React 버전에 고정하거나 카나리(Canary) 릴리즈를 사용하는 것이 좋습니다. 향후 Server Actions를 구현하는 데 사용되는 API를 안정화하기 위해 bundler 및 프레임워크와 계속 협력할 예정입니다.
 
 </Note>
 
@@ -138,11 +138,11 @@ function UpdateName() {
 
 자세한 내용은 [`<form>` 외부에서 Server Action 호출하기](/reference/rsc/use-server#calling-a-server-action-outside-of-form) 문서를 참조하세요.
 
-### Server Actions를 사용한 form 액션 {/*form-actions-with-server-actions*/}
+### Server Actions를 사용한 폼 액션 {/*form-actions-with-server-actions*/}
 
 Server Actions는 React 19의 새로운 Form 기능과 함께 작동합니다.
 
-Server Action을 Form에 전달하여 form을 서버에 자동으로 제출할 수 있습니다.
+Server Action을 Form에 전달하여 폼을 서버에 자동으로 제출할 수 있습니다.
 
 
 ```js [[1, 3, "updateName"], [1, 7, "updateName"]]
@@ -159,7 +159,7 @@ function UpdateName() {
 }
 ```
 
-Form 제출이 성공하면, React는 자동으로 form을 재설정합니다. 보류 상태, 마지막 응답에 액세스하거나 점진적인 향상을 지원하기 위해 `useActionState`를 추가할 수 있습니다.
+Form 제출이 성공하면, React는 자동으로 폼을 재설정합니다. 보류 상태, 마지막 응답에 액세스하거나 점진적인 향상을 지원하기 위해 `useActionState`를 추가할 수 있습니다.
 
 자세한 내용은 [Server Actions 형식](/reference/rsc/use-server#server-actions-in-forms) 문서를 참조하세요.
 
@@ -184,7 +184,7 @@ function UpdateName() {
 }
 ```
 
-Server Actions와 함께 `useActionState`를 사용하는 경우, React는 hydration이 완료되기 전에 입력된 form 제출 또한 자동으로 재생합니다. 즉, 사용자는 앱이 hydration 되기 전에도 앱과 상호작용을 할 수 있습니다.
+Server Actions와 함께 `useActionState`를 사용하는 경우, React는 hydration이 완료되기 전에 입력된 폼 제출 또한 자동으로 재생합니다. 즉, 사용자는 앱이 hydration 되기 전에도 앱과 상호작용을 할 수 있습니다.
 
 자세한 내용은 [`useActionState`](/reference/react-dom/hooks/useFormState) 문서를 참조하세요.
 
@@ -208,6 +208,6 @@ function UpdateName() {
 }
 ```
 
-<CodeStep step={2}>permalink</CodeStep>가 `useActionState`에 제공될 때, 자바스크립트 bundle이 로드되기 전에 form이 제출되면 React는 제공된 URL로 리디렉션합니다.
+<CodeStep step={2}>permalink</CodeStep>가 `useActionState`에 제공될 때, 자바스크립트 bundle이 로드되기 전에 폼이 제출되면 React는 제공된 URL로 리디렉션합니다.
 
 자세한 내용은 [`useActionState`](/reference/react-dom/hooks/useFormState) 문서를 참조하세요.
