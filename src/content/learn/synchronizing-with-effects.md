@@ -45,9 +45,15 @@ Effect에 대해 자세히 알아보기 전에, 컴포넌트 내부의 2가지 �
 
 Effect를 작성하기 위해서는 다음 세 단계를 따릅니다.
 
+<<<<<<< HEAD
 1. **Effect 선언.** 기본적으로 Effect는 모든 렌더링 후에 실행됩니다.
 2. **Effect 의존성 지정.** 대부분의 Effect는 모든 렌더링 후가 아닌 *필요할 때*만 다시 실행되어야 합니다. 예를 들어, 페이드 인 애니메이션은 컴포넌트가 나타날 때에만 트리거 되어야 합니다. 채팅 방에 연결, 연결 해제하는 것은 컴포넌트가 나타나거나 사라질 때 또는 채팅 방이 변경될 때만 발생해야 합니다. *의존성*을 지정하여 이를 제어하는 방법을 배우게 될 것입니다.
 3. **필요한 경우 클린업 함수 추가.** 일부 Effect는 수행 중이던 작업을 중지, 취소 또는 정리하는 방법을 지정해야 할 수 있습니다. 예를 들어, "연결"은 "연결 해제"가 필요하며, "구독"은 "구독 취소"가 필요하고, "불러오기(fetch)"는 "취소" 또는 "무시"가 필요합니다. 이런 경우에 Effect에서 *클린업 함수(cleanup function)*를 반환하여 어떻게 수행하는지 배우게 될 것입니다.
+=======
+1. **Declare an Effect.** By default, your Effect will run after every [commit](/learn/render-and-commit).
+2. **Specify the Effect dependencies.** Most Effects should only re-run *when needed* rather than after every render. For example, a fade-in animation should only trigger when a component appears. Connecting and disconnecting to a chat room should only happen when the component appears and disappears, or when the chat room changes. You will learn how to control this by specifying *dependencies.*
+3. **Add cleanup if needed.** Some Effects need to specify how to stop, undo, or clean up whatever they were doing. For example, "connect" needs "disconnect", "subscribe" needs "unsubscribe", and "fetch" needs either "cancel" or "ignore". You will learn how to do this by returning a *cleanup function*.
+>>>>>>> b12743c31af7f5cda2c25534f64281ff030b7205
 
 각 단계를 자세히 살펴보겠습니다.
 
@@ -598,7 +604,38 @@ React는 마지막 예시와 같은 버그를 찾기 위해 개발 중에 컴포
 
 작성할 대부분의 Effect는 아래의 일반적인 패턴 중 하나에 해당될 것입니다.
 
+<<<<<<< HEAD
 ### React로 작성되지 않은 위젯 제어하기 {/*controlling-non-react-widgets*/}
+=======
+<Pitfall>
+
+#### Don't use refs to prevent Effects from firing {/*dont-use-refs-to-prevent-effects-from-firing*/}
+
+A common pitfall for preventing Effects firing twice in development is to use a `ref` to prevent the Effect from running more than once. For example, you could "fix" the above bug with a `useRef`:
+
+```js {1,3-4}
+  const connectionRef = useRef(null);
+  useEffect(() => {
+    // 🚩 This wont fix the bug!!!
+    if (!connectionRef.current) {
+      connectionRef.current = createConnection();
+      connectionRef.current.connect();
+    }
+  }, []);
+```
+
+This makes it so you only see `"✅ Connecting..."` once in development, but it doesn't fix the bug.
+
+When the user navigates away, the connection still isn't closed and when they navigate back, a new connection is created. As the user navigates across the app, the connections would keep piling up, the same as it would before the "fix". 
+
+To fix the bug, it is not enough to just make the Effect run once. The effect needs to work after re-mounting, which means the connection needs to be cleaned up like in the solution above.
+
+See the examples below for how to handle common patterns.
+
+</Pitfall>
+
+### Controlling non-React widgets {/*controlling-non-react-widgets*/}
+>>>>>>> b12743c31af7f5cda2c25534f64281ff030b7205
 
 가끔씩 React로 작성되지 않은 UI 위젯을 추가해야 할 때가 있습니다. 예를 들어, 페이지에 지도 컴포넌트를 추가한다고 가정해 보겠습니다. 이 지도 컴포넌트에는 `setZoomLevel()` 메서드가 있으며, `zoomLevel` state 변수와 동기화하려고 할 것입니다. Effect는 다음과 비슷할 것입니다.
 
@@ -1573,7 +1610,11 @@ export async function fetchBio(person) {
 - `'Bob'`의 일대기를 가져오는 작업이 완료됩니다.
 - `'Bob'` 렌더링의 Effect는 **`ignore` 플래그가 `true`로 설정되었기 때문에 아무 일도 수행하지 않습니다.**
 
+<<<<<<< HEAD
 오래된 API 호출의 결과를 무시하는 것 외에도 더 이상 필요하지 않은 요청을 취소하기 위해 [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)를 사용할 수도 있습니다. 그러나 이것만으로는 경쟁 조건에 대한 충분한 보호가 이뤄지지 않습니다. 피치 못할 상황에서는 추가적인 비동기 작업이 후행할 수 있으므로 `ignore`와 같은 명시적 플래그를 사용하는 것이 이러한 종류의 문제를 가장 안전하게 해결하는 가장 신뢰할 수 있는 방법입니다.
+=======
+In addition to ignoring the result of an outdated API call, you can also use [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) to cancel the requests that are no longer needed. However, by itself this is not enough to protect against race conditions. More asynchronous steps could be chained after the fetch, so using an explicit flag like `ignore` is the most reliable way to fix this type of problem.
+>>>>>>> b12743c31af7f5cda2c25534f64281ff030b7205
 
 </Solution>
 

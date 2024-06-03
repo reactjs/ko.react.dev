@@ -174,7 +174,7 @@ async function Author({id}) {
 ```js
 <div>
   <span>By: The React Team</span>
-  <p>React 19 Beta is...</p>
+  <p>React 19 is...</p>
 </div>
 ```
 

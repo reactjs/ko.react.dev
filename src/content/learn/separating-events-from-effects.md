@@ -44,7 +44,11 @@ function ChatRoom({ roomId }) {
   return (
     <>
       <input value={message} onChange={e => setMessage(e.target.value)} />
+<<<<<<< HEAD
       <button onClick={handleSendClick}>전송</button>;
+=======
+      <button onClick={handleSendClick}>Send</button>
+>>>>>>> b12743c31af7f5cda2c25534f64281ff030b7205
     </>
   );
 }

@@ -43,6 +43,11 @@
         {
           "title": "React 개발자 도구",
           "path": "/learn/react-developer-tools"
+        },
+        {
+          "title": "React Compiler",
+          "path": "/learn/react-compiler",
+          "canary": true
         }
       ]
     },
@@ -193,7 +198,11 @@
           "path": "/learn/separating-events-from-effects"
         },
         {
+<<<<<<< HEAD
           "title": "Effect의 의존성 제거하기",
+=======
+          "title": "Removing Effect Dependencies",
+>>>>>>> b12743c31af7f5cda2c25534f64281ff030b7205
           "path": "/learn/removing-effect-dependencies"
         },
         {
