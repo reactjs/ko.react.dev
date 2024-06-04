@@ -5,7 +5,7 @@ canary: true
 
 <Canary>
 
-React의 `<link>` 확장은 현재 React의 Canary 채널과 실험 채널에서만 사용할 수 있습니다. React의 안정적인 릴리즈에서는 `<link>`가 [내장 브라우저 HTML 컴포넌트](https://react.dev/reference/react-dom/components#all-html-components)로만 작동합니다. 자세한 내용은 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
+React의 `<link>` 확장은 현재 React의 카나리(Canary) 채널과 실험 채널에서만 사용할 수 있습니다. React의 안정적인 릴리즈에서는 `<link>`가 [내장 브라우저 HTML 컴포넌트](https://react.dev/reference/react-dom/components#all-html-components)로만 작동합니다. 자세한 내용은 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
 
 </Canary>
 
