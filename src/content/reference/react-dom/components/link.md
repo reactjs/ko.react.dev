@@ -73,7 +73,7 @@ React의 `<link>` 확장은 현재 React의 카나리(Canary) 채널과 실험 �
 * `integrity`: 문자열 타입. 리소스의 암호 해시로 [진위를 확인](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)합니다.
 * `type`: 문자열 타입. 연결된 리소스의 MIME 유형입니다.
 
-다음 React 속성들은 **권장되지 않습니다.**
+다음 React 속성들은 **권장하지 않습니다.**
 
 * `blocking`: 문자열 타입. `"render"`로 설정하면 스타일시트가 로드될 때까지 브라우저가 페이지를 렌더링하지 않도록 지시합니다. React는 Suspense를 사용하여 더 세밀하게 제어할 수 있습니다.
 
