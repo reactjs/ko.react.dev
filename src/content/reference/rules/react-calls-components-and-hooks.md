@@ -1,5 +1,5 @@
 ---
-title: React에서 컴포넌트와 훅 호출하기
+title: React가 컴포넌트와 훅을 호출하는 방식
 ---
 
 <Intro>
