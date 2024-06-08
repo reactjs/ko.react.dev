@@ -437,7 +437,7 @@ td {
 
 <ConsoleBlock level="error">
 
-현재 `onChange` 핸들러 없이 폼의 필드에 `value` prop을 전달하였습니다. 이렇게 하면 읽기 전용 필드가 렌더링 됩니다.
+You provided a \`value\` prop to a form field without an \`onChange\` handler. This will render a read-only field.
 
 </ConsoleBlock>
 
