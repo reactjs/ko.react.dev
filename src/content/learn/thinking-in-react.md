@@ -435,7 +435,11 @@ td {
 
 아직 폼을 수정하는 작업이 작동하지 않음을 유의하세요. 위의 샌드박스에서 콘솔 에러가 발생하고 그 이유를 설명하겠습니다.
 
+<ConsoleBlock level="error">
+
 현재 `onChange` 핸들러 없이 폼의 필드에 `value` prop을 전달하였습니다. 이렇게 하면 읽기 전용 필드가 렌더링 됩니다.
+
+</ConsoleBlock>
 
 위에 있는 샌드박스를 보면, `ProductTable`와 `SearchBar`가 `filterText`와 `inStockOnly` props를 table, input과 체크 박스를 렌더하기 위해서 읽고 있습니다. 예를 들면, `SearchBar` input의 value를 아래와 같이 채우고 있습니다.
 
