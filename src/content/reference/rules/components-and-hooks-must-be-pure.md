@@ -224,13 +224,13 @@ function Post({ item }) {
 ```
 
 ### State를 변경하지 마세요 {/*state*/}
-`useState`는 state 변수와 그 state를 업데이트하기 위한 setter를 반환합니다.
+`useState`는 state 변수와 그 state를 변경하기 위한 setter를 반환합니다.
 
 ```js
 const [stateVariable, setter] = useState(0);
 ```
 
-state 변수를 직접 업데이트하는 대신, `useState`에 의해 반환된 setter 함수를 사용하여 업데이트해야 합니다. state 변수의 값을 변경하면 컴포넌트가 업데이트되지 않아 사용자는 이전 UI를 보게 됩니다. setter 함수를 사용하면 React에 state가 변경되었으며 UI를 업데이트하기 위해 리렌더링을 대기열에 추가해야 한다는 것을 알립니다.
+state 변수를 직접 변경하는 대신, `useState`에 의해 반환된 setter 함수를 사용하여 변경해야 합니다. state 변수의 값을 변경하면 컴포넌트가 변경되지 않아 사용자는 이전 UI를 보게 됩니다. setter 함수를 사용하면 React에 state가 변경되었으며 UI를 변경하기 위해 리렌더링을 대기열에 추가해야 한다는 것을 알립니다.
 
 ```js {5}
 function Counter() {
