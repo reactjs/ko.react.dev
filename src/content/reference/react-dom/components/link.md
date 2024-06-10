@@ -5,13 +5,13 @@ canary: true
 
 <Canary>
 
-React's extensions to `<link>` are currently only available in React's canary and experimental channels. In stable releases of React `<link>` works only as a [built-in browser HTML component](https://react.dev/reference/react-dom/components#all-html-components). Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+React의 `<link>` 확장은 현재 React의 카나리(Canary) 채널과 실험 채널에서만 사용할 수 있습니다. React의 안정적인 릴리즈에서는 `<link>`가 [내장 브라우저 HTML 컴포넌트](https://react.dev/reference/react-dom/components#all-html-components)로만 작동합니다. 자세한 내용은 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
 
 </Canary>
 
 <Intro>
 
-The [built-in browser `<link>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) lets you use external resources such as stylesheets or annotate the document with link metadata.
+[브라우저 내장 `<link>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)는 스타일시트와 같은 외부 리소스를 사용하거나 링크 메타데이터로 문서를 주석 처리할 수 있게 해줍니다. 
 
 ```js
 <link rel="icon" href="favicon.ico" />
@@ -23,94 +23,94 @@ The [built-in browser `<link>` component](https://developer.mozilla.org/en-US/do
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `<link>` {/*link*/}
 
-To link to external resources such as stylesheets, fonts, and icons, or to annotate the document with link metadata, render the [built-in browser `<link>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link). You can render `<link>` from any component and React will [in most cases](#special-rendering-behavior) place the corresponding DOM element in the document head.
+스타일시트, 폰트, 아이콘과 같은 외부 리소스를 링크하거나 링크 메타데이터로 문서를 주석 처리하려면, [브라우저 내장 `<link>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)를 렌더링하세요. 어떤 컴포넌트에서든 `<link>`를 렌더링할 수 있으며, React는 [대부분의 경우](#special-rendering-behavior) 해당 DOM 요소를 `<head>`에 배치합니다.
 
 ```js
 <link rel="icon" href="favicon.ico" />
 ```
 
-[See more examples below.](#usage)
+[아래 더 많은 예시가 있습니다.](#usage)
 
 #### Props {/*props*/}
 
-`<link>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<link>`는 모든 [공통 요소 속성](/reference/react-dom/components/common#props)을 지원합니다.
 
-* `rel`: a string, required. Specifies the [relationship to the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel). React [treats links with `rel="stylesheet"` differently](#special-rendering-behavior) from other links.
+* `rel`: 문자열 타입, 필수, [리소스와의 관계](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel)를 지정합니다. React는 다른 링크와는 달리 [`rel="stylesheet"` 링크를 특별하게 처리](#special-rendering-behavior)합니다.
 
-These props apply when `rel="stylesheet"`:
+다음 속성들은 `rel="stylesheet"`인 경우에 적용됩니다.
 
-* `precedence`: a string. Tells React where to rank the `<link>` DOM node relative to others in the document `<head>`, which determines which stylesheet can override the other. React will infer that precedence values it discovers first are "lower" and precedence values it discovers later are "higher". Many style systems can work fine using a single precedence value because style rules are atomic. Stylesheets with the same precedence go together whether they are `<link>` or inline `<style>` tags or loaded using [`preinit`](/reference/react-dom/preinit) functions.
-* `media`: a string. Restricts the stylesheet to a certain [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries).
-* `title`: a string. Specifies the name of an [alternative stylesheet](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
+* `precedence`: 문자열 타입. `<link>` DOM 노드를 문서의 `<head>` 내 다른 요소와 비교하여 순위를 지정해야 합니다. 이를 통해 어떤 스타일시트가 다른 스타일시트를 덮어쓸 수 있는지 결정합니다. 값은 우선순위에 따라 `"reset"`, `"low"`, `"medium"`, `"high"`가 될 수 있습니다. 동일한 우선순위를 가진 스타일시트는 `<link>` 또는 인라인 `<style>` 태그 또는 [`preload`](/reference/react-dom/preload)나 [`preinit`](/reference/react-dom/preinit) 함수로 로드되었는지에 관계없이 함께 적용됩니다.
+* `media`: 문자열 타입. 스타일시트를 특정 [미디어 쿼리](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries)에 제한합니다.
+* `title`: 문자열 타입. [대체 스타일시트](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets)의 이름을 지정합니다.
 
-These props apply when `rel="stylesheet"` but disable React's [special treatment of stylesheets](#special-rendering-behavior):
+다음 속성들은 `rel=stylesheet`인 경우에 적용되지만, React의 [스타일시트에 대한 특별한 처리](#special-rendering-behavior)를 비활성화합니다.
 
-* `disabled`: a boolean. Disables the stylesheet.
-* `onError`: a function. Called when the stylesheet fails to load.
-* `onLoad`: a function. Called when the stylesheet finishes being loaded.
+* `disabled`: 불리언 타입. 스타일시트를 비활성화합니다.
+* `onError`: 함수. 스타일시트 로드에 실패했을 때 호출됩니다.
+* `onLoad`: 함수. 스타일시트 로드가 완료되었을 때 호출됩니다.
 
-These props apply when `rel="preload"` or `rel="modulepreload"`:
+다음 속성들은 `rel="preload"` 나 `rel="modulepreload"`인 경우에 적용됩니다.
 
-* `as`: a string. The type of resource. Its possible values are `audio`, `document`, `embed`, `fetch`, `font`, `image`, `object`, `script`, `style`, `track`, `video`, `worker`.
-* `imageSrcSet`: a string. Applicable only when `as="image"`. Specifies the [source set of the image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
-* `imageSizes`: a string. Applicable only when `as="image"`. Specifies the [sizes of the image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
+* `as`: 문자열 타입. 리소스의 유형을 지정합니다. 가능한 값은 `audio`, `document`, `embed`, `fetch`, `font`, `image`, `object`, `script`, `style`, `track`, `video`, `worker`입니다.
+* `imageSrcSet`: 문자열 타입. `as="image"`인 경우에만 적용됩니다. [이미지 소스의 세트](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)를 지정합니다.
+* `imageSizes`: 문자열 타입. `as="image"`인 경우에만 적용됩니다. [이미지의 크기](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)를 지정합니다.
 
-These props apply when `rel="icon"` or `rel="apple-touch-icon"`:
+다음 속성들은 `rel="icon"`이나 `rel="apple-touch-icon"`인 경우에 적용됩니다.
 
-* `sizes`: a string. The [sizes of the icon](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
+* `sizes`: 문자열 타입. [아이콘의 크기](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)를 지정합니다.
 
-These props apply in all cases:
+다음 속성들은 모든 경우에 적용됩니다.
 
-* `href`: a string. The URL of the linked resource.
-*  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`. It is required when `as` is set to `"fetch"`.
-*  `referrerPolicy`: a string. The [Referrer header](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#referrerpolicy) to send when fetching. Its possible values are `no-referrer-when-downgrade` (the default), `no-referrer`, `origin`, `origin-when-cross-origin`, and `unsafe-url`.
-* `fetchPriority`: a string. Suggests a relative priority for fetching the resource. The possible values are `auto` (the default), `high`, and `low`.
-* `hrefLang`: a string. The language of the linked resource.
-* `integrity`: a string. A cryptographic hash of the resource, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-* `type`: a string. The MIME type of the linked resource.
+* `href`: 문자열 타입. 연결된 리소스의 URL입니다.
+* `crossOrigin`: 문자열 타입. 사용할 [CORS 정책](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin). 가능한 값은 `anonymous`와 `use-credentials`입니다. `as`가 `"fetch"`로 설정된 경우 필수입니다.
+* `referrerPolicy`: 문자열 타입. 리소스를 가져올 때 보낼 [Referrer 헤더](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#referrerpolicy)를 지정합니다. 가능한 값은 `no-referrer-when-downgrade` (기본값), `no-referrer`, `origin`, `origin-when-cross-origin`, `unsafe-url`입니다.
+* `fetchPriority`: 문자열 타입. 리소스를 가져오는 우선순위를 지정합니다. 가능한 값은 `auto` (기본값), `high`, `low`입니다.
+* `hrefLang`: 문자열 타입. 연결된 리소스의 언어입니다.
+* `integrity`: 문자열 타입. 리소스의 암호 해시로 [진위를 확인](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)합니다.
+* `type`: 문자열 타입. 연결된 리소스의 MIME 유형입니다.
 
-Props that are **not recommended** for use with React:
+다음 React 속성들은 **권장하지 않습니다.**
 
-* `blocking`: a string. If set to `"render"`, instructs the browser not to render the page until the stylesheet is loaded. React provides more fine-grained control using Suspense.
+* `blocking`: 문자열 타입. `"render"`로 설정하면 스타일시트가 로드될 때까지 브라우저가 페이지를 렌더링하지 않도록 지시합니다. React는 Suspense를 사용하여 더 세밀하게 제어할 수 있습니다.
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### 특별한 렌더링 동작 {/*special-rendering-behavior*/}
 
-React will always place the DOM element corresponding to the `<link>` component within the document’s `<head>`, regardless of where in the React tree it is rendered. The `<head>` is the only valid place for `<link>` to exist within the DOM, yet it’s convenient and keeps things composable if a component representing a specific page can render `<link>` components itself.
+React는 `<link>` 컴포넌트에 해당하는 DOM 요소를 React 트리의 어디에 렌더링하든 상관없이 항상 문서의 `<head>`에 배치합니다. `<head>`는 DOM 내에서 `<link>`가 위치할 수 있는 유일한 위치이지만, 특정 페이지를 나타내는 컴포넌트가 `<link>` 컴포넌트를 자체적으로 렌더링할 수 있다면 편리하고 구성이 용이합니다.
 
-There are a few exceptions to this:
+여기에는 몇 가지 예외가 있습니다.
 
-* If the `<link>` has a `rel="stylesheet"` prop, then it has to also have a `precedence` prop to get this special behavior. This is because the order of stylesheets within the document is significant, so React needs to know how to order this stylesheet relative to others, which you specify using the `precedence` prop. If the `precedence` prop is omitted, there is no special behavior.
-* If the `<link>` has an [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) prop, there is no special behavior, because in this case it doesn’t apply to the document but instead represents metadata about a specific part of the page.
-* If the `<link>` has an `onLoad` or `onError` prop, because in that case you are managing the loading of the linked resource manually within your React component.
+* `<link>`에 `rel="stylesheet"` 속성이 있는 경우, 이 특별한 동작을 위해 반드시 `precedence` 속성이 있어야 합니다. 이는 문서 내 스타일시트의 순서가 중요하기 때문입니다. React는 다른 스타일시트와의 순서를 결정하기 위해 `precedence` 속성을 사용합니다. `precedence` 속성이 생략된 경우 특별한 동작이 없습니다.
+* `<link>`에 [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) 속성이 있는 경우, 특별한 동작이 없습니다. 이 속성은 문서 전체가 아니라 페이지의 특정 부분에 대한 메타데이터를 나타냅니다.
+* `<link>`에 `onLoad`또는 `onError` 속성이 있는 경우, 연결된 리소스의 로딩을 React 컴포넌트 내에서 수동으로 관리하기 때문입니다.
 
-#### Special behavior for stylesheets {/*special-behavior-for-stylesheets*/}
+#### 스타일시트에 대한 특별한 동작 {/*special-behavior-for-stylesheets*/}
 
-In addition, if the `<link>` is to a stylesheet (namely, it has `rel="stylesheet"` in its props), React treats it specially in the following ways:
+또한, `<link>`가 스타일시트로 연결된 경우 (즉, 속성에 `rel="stylesheet"`가 있는 경우) React는 다음과 같은 방식으로 특별하게 동작합니다.
 
-* The component that renders `<link>` will [suspend](/reference/react/Suspense) while the stylesheet is loading.
-* If multiple components render links to the same stylesheet, React will de-duplicate them and only put a single link into the DOM. Two links are considered the same if they have the same `href` prop.
+* 스타일시트가 로드되는 동안 `<link>`를 렌더링하는 컴포넌트는 [일시 중단](/reference/react/Suspense)됩니다.
+* 여러 컴포넌트가 동일한 스타일시트에 대한 링크를 렌더링하는 경우, React는 중복된 링크를 제거하고 DOM에 단일 링크만 배치합니다. 두 링크는 `href` 속성이 동일하면 같은 것으로 간주합니다.
 
-There are two exception to this special behavior:
+위 특별한 동작에는 두 가지 예외가 있습니다.
 
-* If the link doesn't have a `precedence` prop, there is no special behavior, because the order of stylesheets within the document is significant, so React needs to know how to order this stylesheet relative to others, which you specify using the `precedence` prop.
-* If you supply any of the `onLoad`, `onError`, or `disabled` props, there is no special behavior, because these props indicate that you are managing the loading of the stylesheet manually within your component.
+* 링크에 `precedence` 속성이 없으면 특별한 동작이 없습니다. 이는 문서 내 스타일시트의 순서가 중요하기 때문에 React는 다른 스타일시트와의 순서를 결정하기 위해 `precedence` 속성을 사용합니다.
+* `onLoad`, `onError`, `disabled` 속성을 제공하는 경우 특별한 동작이 없습니다. 이러한 속성들은 스타일시트 로딩을 컴포넌트 내에서 수동으로 관리하고 있음을 나타내기 때문입니다.
 
-This special treatment comes with two caveats:
+위 특별한 처리에는 두 가지 주의 사항이 있습니다.
 
-* React will ignore changes to props after the link has been rendered. (React will issue a warning in development if this happens.)
-* React may leave the link in the DOM even after the component that rendered it has been unmounted.
+* 링크가 렌더링 된 후에 React가 속성 변경을 무시합니다. (개발 중에 경고 메시지가 표시됩니다)
+* 링크를 렌더링한 컴포넌트가 언마운트된 후에도 React는 링크를 DOM에 남길 수 있습니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Linking to related resources {/*linking-to-related-resources*/}
+### 관련 리소스 연결하기 {/*linking-to-related-resources*/}
 
-You can annotate the document with links to related resources such as an icon, canonical URL, or pingback. React will place this metadata within the document `<head>` regardless of where in the React tree it is rendered.
+아이콘, 정규화된 URL, 핑백과 같은 관련 리소스에 대한 링크로 문서에 주석을 추가할 수 있습니다. React는 이 메타데이터를 React 트리의 어디에 렌더링 되든 상관없이 문서의 `<head>`에 배치합니다.
 
 <SandpackWithHTMLOutput>
 
@@ -131,12 +131,12 @@ export default function BlogPage() {
 
 </SandpackWithHTMLOutput>
 
-### Linking to a stylesheet {/*linking-to-a-stylesheet*/}
+### 스타일시트 연결하기 {/*linking-to-a-stylesheet*/}
 
-If a component depends on a certain stylesheet in order to be displayed correctly, you can render a link to that stylesheet within the component. Your component will [suspend](/reference/react/Suspense) while the stylesheet is loading. You must supply the `precedence` prop, which tells React where to place this stylesheet relative to others — stylesheets with higher precedence can override those with lower precedence.
+컴포넌트가 올바르게 표시되기 위해 특정 스타일시트에 의존하는 경우 해당 스타일시트에 대한 링크를 컴포넌트 내에서 렌더링할 수 있습니다. 스타일시트가 로드되는 동안 컴포넌트는 [일시 중단](/reference/react/Suspense)됩니다. `precedence` 속성을 제공해야 하며 이는 React에 이 스타일시트를 다른 스타일시트와 비교하여 어디에 배치해야 하는지 알려줍니다. 높은 우선순위의 스타일시트는 낮은 우선순위의 스타일시트를 덮어쓸 수 있습니다.
 
 <Note>
-When you want to use a stylesheet, it can be beneficial to call the [preinit](/reference/react-dom/preinit) function. Calling this function may allow the browser to start fetching the stylesheet earlier than if you just render a `<link>` component, for example by sending an [HTTP Early Hints response](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103).
+스타일시트를 사용하고 싶을 때 [preinit](/reference/react-dom/preinit) 함수를 호출하는 것이 유용할 수 있습니다. 이 함수를 호출하면 단순히 `<link>` 컴포넌트를 렌더링하는 것보다 브라우저가 스타일시트를 더 빨리 가져올 수 있습니다. 예를 들어 [HTTP Early Hints 응답](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103)을 보내는 방식으로 가능합니다.
 </Note>
 
 <SandpackWithHTMLOutput>
@@ -156,9 +156,9 @@ export default function SiteMapPage() {
 
 </SandpackWithHTMLOutput>
 
-### Controlling stylesheet precedence {/*controlling-stylesheet-precedence*/}
+### 스타일시트 우선순위 제어하기 {/*controlling-stylesheet-precedence*/}
 
-Stylesheets can conflict with each other, and when they do, the browser goes with the one that comes later in the document. React lets you control the order of stylesheets with the `precedence` prop. In this example, two components render stylesheets, and the one with the higher precedence goes later in the document even though the component that renders it comes earlier.
+스타일시트는 서로 충돌할 수 있으며, 이 경우 브라우저는 문서에서 나중에 오는 스타일시트를 적용합니다. React는 `precedence` 속성을 사용하여 스타일시트의 순서를 제어할 수 있도록 합니다. 이 예제에서는 두 개의 컴포넌트가 스타일시트를 렌더링하며, 더 높은 우선순위를 가진 스타일시트는 해당 컴포넌트를 더 먼저 렌더링하더라도 문서에서 나중에 배치됩니다.
 
 {/*FIXME: this doesn't appear to actually work -- I guess precedence isn't implemented yet?*/}
 
@@ -189,9 +189,9 @@ function SecondComponent() {
 
 </SandpackWithHTMLOutput>
 
-### Deduplicated stylesheet rendering {/*deduplicated-stylesheet-rendering*/}
+### 중복으로 제거된 스타일시트 렌더링 {/*deduplicated-stylesheet-rendering*/}
 
-If you render the same stylesheet from multiple components, React will place only a single `<link>` in the document head.
+여러 컴포넌트에서 동일한 스타일시트를 렌더링하면 React는 문서의 head에 단일 `<link>`만 배치합니다.
 
 <SandpackWithHTMLOutput>
 
@@ -215,9 +215,9 @@ function Component() {
 
 </SandpackWithHTMLOutput>
 
-### Annotating specific items within the document with links {/*annotating-specific-items-within-the-document-with-links*/}
+### 문서 내 특정 항목에 링크로 주석 달기 {/*annotating-specific-items-within-the-document-with-links*/}
 
-You can use the `<link>` component with the `itemProp` prop to annotate specific items within the document with links to related resources. In this case, React will *not* place these annotations within the document `<head>` but will place them like any other React component.
+`itemProp` 속성을 사용하여 `<link>` 컴포넌트를 문서 내 특정 항목에 관련 리소스 링크로 주석을 달 수 있습니다. 이 경우 React는 이러한 주석을 문서의 `<head>`에 *배치하지 않고* 다른 React 컴포넌트와 같이 배치합니다.
 
 ```js
 <section itemScope>
