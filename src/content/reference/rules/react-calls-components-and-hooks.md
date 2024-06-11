@@ -1,86 +1,87 @@
 ---
-title: React calls Components and Hooks
+title: React가 컴포넌트와 Hook을 호출하는 방식
 ---
 
 <Intro>
-React is responsible for rendering components and Hooks when necessary to optimize the user experience. It is declarative: you tell React what to render in your component’s logic, and React will figure out how best to display it to your user.
+React는 사용자 경험을 최적화하기 위해 필요할 때마다 컴포넌트와 Hook을 렌더링하는 역할을 합니다. React는 선언적입니다. 즉 컴포넌트의 로직에서 무엇을 렌더링할지를 React에 알려주면, React는 이를 사용자에게 가장 잘 표시할 방법을 찾아냅니다.
 </Intro>
 
 <InlineToc />
 
 ---
 
-## Never call component functions directly {/*never-call-component-functions-directly*/}
-Components should only be used in JSX. Don't call them as regular functions. React should call it.
+## 컴포넌트 함수를 직접 호출하지 마세요 {/*never-call-component-functions-directly*/}
+컴포넌트는 JSX에서만 사용해야 합니다. 일반 함수처럼 호출하지 마세요. React가 호출해야 합니다.
 
-React must decide when your component function is called [during rendering](/reference/rules/components-and-hooks-must-be-pure#how-does-react-run-your-code). In React, you do this using JSX.
+React는 [렌더링하는 동안](/reference/rules/components-and-hooks-must-be-pure#how-does-react-run-your-code) 컴포넌트 함수가 언제 호출될지 결정해야 합니다. React에서는 이를 JSX로 수행합니다.
 
 ```js {2}
 function BlogPost() {
-  return <Layout><Article /></Layout>; // ✅ Good: Only use components in JSX
+  return <Layout><Article /></Layout>; // ✅ 컴포넌트를 JSX에서만 사용합니다
 }
 ```
 
 ```js {2}
 function BlogPost() {
-  return <Layout>{Article()}</Layout>; // 🔴 Bad: Never call them directly
+  return <Layout>{Article()}</Layout>; // 🔴 컴포넌트 함수를 직접 호출하지 마세요
 }
 ```
 
-If a component contains Hooks, it's easy to violate the [Rules of Hooks](/reference/rules/rules-of-hooks) when components are called directly in a loop or conditionally.
+컴포넌트가 Hook을 포함하고 있다면, 컴포넌트를 반복문이나 조건문에서 직접 호출할 때 [Hook의 규칙](/reference/rules/rules-of-hooks)을 위반하기 쉽습니다.
 
-Letting React orchestrate rendering also allows a number of benefits:
+React가 렌더링을 조정하도록 하면 여러 이점이 있습니다.
 
-* **Components become more than functions.** React can augment them with features like _local state_ through Hooks that are tied to the component's identity in the tree.
-* **Component types participate in reconciliation.** By letting React call your components, you also tell it more about the conceptual structure of your tree. For example, when you move from rendering `<Feed>` to the `<Profile>` page, React won’t attempt to re-use them.
-* **React can enhance your user experience.** For example, it can let the browser do some work between component calls so that re-rendering a large component tree doesn’t block the main thread.
-* **A better debugging story.** If components are first-class citizens that the library is aware of, we can build rich developer tools for introspection in development.
-* **More efficient reconciliation.** React can decide exactly which components in the tree need re-rendering and skip over the ones that don't. That makes your app faster and more snappy.
+* **컴포넌트가 함수 이상의 역할을 하게 됩니다.** React는 Hook을 사용해 컴포넌트에 _로컬 상태_ 와 같은 기능을 추가하여, 컴포넌트가 트리 내에서 고유한 정체성을 갖도록 할 수 있습니다.
+* **컴포넌트 타입이 재조정 과정에 참여합니다.** React가 컴포넌트를 호출하도록 하면 트리의 개념적 구조에 대해 더 많은 정보를 제공하게 됩니다. 예를 들어 `<Feed>`에서 `<Profile>` 페이지로 전환될 때 React는 이를 재사용하려고 하지 않습니다.
+* **React가 사용자 경험을 향상할 수 있습니다.** 예를 들어 React는 컴포넌트를 호출하는 사이에 브라우저가 일부 작업을 수행할 수 있도록 하여, 큰 컴포넌트 트리를 다시 렌더링하는 것이 메인 스레드를 차단하지 않도록 할 수 있습니다.
+* **더 나은 디버깅 경험을 제공합니다.** 컴포넌트가 라이브러리에서 일급 객체로 취급되면, 개발 중에 분석할 수 있는 풍부한 개발 도구를 제공할 수 있습니다.
+* **재조정 과정이 더 효율적입니다.** React는 트리에서 정확히 어떤 컴포넌트가 다시 렌더링이 필요한지 결정하고, 필요 없는 컴포넌트는 건너뛸 수 있습니다. 이는 앱을 더 빠르고 민첩하게 만듭니다.
 
 ---
 
-## Never pass around Hooks as regular values {/*never-pass-around-hooks-as-regular-values*/}
+## Hook을 일반 값으로 전달하지 마세요 {/*never-pass-around-hooks-as-regular-values*/}
 
-Hooks should only be called inside of components or Hooks. Never pass it around as a regular value.
+Hook은 컴포넌트나 Hook 내부에서만 호출되어야 합니다. Hook을 일반 값처럼 전달하지 마세요.
 
-Hooks allow you to augment a component with React features. They should always be called as a function, and never passed around as a regular value. This enables _local reasoning_, or the ability for developers to understand everything a component can do by looking at that component in isolation.
+Hook은 컴포넌트에 React 기능을 추가할 수 있게 합니다. Hook은 항상 함수로 호출되어야 하며 일반 값처럼 전달하면 안 됩니다. Hook을 함수로 호출해야, 개발자가 컴포넌트를 독립적으로 이해할 수 있는 _로컬 추론_ 이 가능합니다. 
 
-Breaking this rule will cause React to not automatically optimize your component.
+이 규칙을 어기면 React가 컴포넌트를 자동으로 최적화하지 못합니다.
 
-### Don't dynamically mutate a Hook {/*dont-dynamically-mutate-a-hook*/}
+### Hook을 동적으로 변경하지 마세요 {/*dont-dynamically-mutate-a-hook*/}
 
-Hooks should be as "static" as possible. This means you shouldn't dynamically mutate them. For example, this means you shouldn't write higher order Hooks:
+Hook은 가능한 한 "정적"으로 유지되어야 합니다. 이는 Hook을 동적으로 변경해서는 안 된다는 의미입니다. 예를 들어 고차 Hook을 작성하면 안됩니다.
 
 ```js {2}
 function ChatInput() {
-  const useDataWithLogging = withLogging(useData); // 🔴 Bad: don't write higher order Hooks
+  const useDataWithLogging = withLogging(useData); // 🔴 고차 Hook을 작성하지 마세요
   const data = useDataWithLogging();
 }
 ```
 
-Hooks should be immutable and not be mutated. Instead of mutating a Hook dynamically, create a static version of the Hook with the desired functionality.
+Hook은 변경 불가능해야 하며 수정되지 않아야 합니다. Hook을 동적으로 변경하는 대신, 원하는 기능을 가진 정적인 Hook을 작성하세요.
 
 ```js {2,6}
 function ChatInput() {
-  const data = useDataWithLogging(); // ✅ Good: Create a new version of the Hook
+  const data = useDataWithLogging(); // ✅ Hook을 새로 작성하세요
 }
 
 function useDataWithLogging() {
-  // ... Create a new version of the Hook and inline the logic here
+  // ... 여기에 새로운 Hook의 로직을 작성하세요
 }
 ```
 
-### Don't dynamically use Hooks {/*dont-dynamically-use-hooks*/}
+### Hook을 동적으로 사용하지 마세요 {/*dont-dynamically-use-hooks*/}
 
 Hooks should also not be dynamically used: for example, instead of doing dependency injection in a component by passing a Hook as a value:
+Hook은 동적으로 사용해서도 안 됩니다. 예를 들어 Hook을 값으로 전달하여 컴포넌트에 의존성을 주입하는 대신,
 
 ```js {2}
 function ChatInput() {
-  return <Button useData={useDataWithLogging} /> // 🔴 Bad: don't pass Hooks as props
+  return <Button useData={useDataWithLogging} /> // 🔴 Hook을 props로 전달하지 마세요
 }
 ```
 
-You should always inline the call of the Hook into that component and handle any logic in there.
+항상 Hook 호출을 해당 컴포넌트에 직접 작성하고, 모든 로직을 그 안에서 처리해야 합니다.
 
 ```js {6}
 function ChatInput() {
@@ -88,14 +89,12 @@ function ChatInput() {
 }
 
 function Button() {
-  const data = useDataWithLogging(); // ✅ Good: Use the Hook directly
+  const data = useDataWithLogging(); // ✅ Hook을 직접 사용하세요
 }
 
 function useDataWithLogging() {
-  // If there's any conditional logic to change the Hook's behavior, it should be inlined into
-  // the Hook
+  // Hook의 동작을 변경하는 조건부 로직이 있다면, 이는 Hook 내부에 포함해야 합니다.
 }
 ```
 
-This way, `<Button />` is much easier to understand and debug. When Hooks are used in dynamic ways, it increases the complexity of your app greatly and inhibits local reasoning, making your team less productive in the long term. It also makes it easier to accidentally break the [Rules of Hooks](/reference/rules/rules-of-hooks) that Hooks should not be called conditionally. If you find yourself needing to mock components for tests, it's better to mock the server instead to respond with canned data. If possible, it's also usually more effective to test your app with end-to-end tests.
-
+이렇게 하면 `<Button />` 컴포넌트가 훨씬 이해하기 쉽고 디버깅하기도 쉬워집니다. Hook을 동적으로 사용하면 앱의 복잡성이 크게 증가하고, 로컬 추론을 방해하여 장기적으로 팀의 생산성을 저하시킵니다. 또한 Hook을 조건부로 호출하면 안된다는 [Hook의 규칙](/reference/rules/rules-of-hooks)을 실수로 어기기 쉽습니다. 테스트를 위해 컴포넌트를 모킹해야 한다면, 대신 서버를 모킹하여 미리 준비된 데이터에 응답하도록 하는 것이 낫습니다. 가능하다면 앱을 end-to-end 테스트하는 것이 더 효과적입니다.
