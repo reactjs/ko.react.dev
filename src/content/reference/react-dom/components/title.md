@@ -5,14 +5,14 @@ canary: true
 
 <Canary>
 
-React's extensions to `<title>` are currently only available in React's canary and experimental channels. In stable releases of React `<title>` works only as a [built-in browser HTML component](https://react.dev/reference/react-dom/components#all-html-components). Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+React의 `<title>` 확장은 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. React의 안정적인 릴리즈에서는 `<title>`이 [내장 브라우저 HTML 컴포넌트](https://react.dev/reference/react-dom/components#all-html-components)로만 작동합니다. 여기에서 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
 
 </Canary>
 
 
 <Intro>
 
-The [built-in browser `<title>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title) lets you specify the title of the document.
+[내장된 브라우저 `<title>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title)를 사용하면 문서의 제목을 지정할 수 있습니다.
 
 ```js
 <title>My Blog</title>
@@ -24,45 +24,45 @@ The [built-in browser `<title>` component](https://developer.mozilla.org/en-US/d
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `<title>` {/*title*/}
 
-To specify the title of the document, render the [built-in browser `<title>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title). You can render `<title>` from any component and React will always place the corresponding DOM element in the document head.
+문서의 제목을 지정하려면 [내장된 브라우저 `<title>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title)를 렌더링하십시오. `<title>`은 어떤 컴포넌트에서든 렌더링할 수 있으며, React는 항상 해당하는 DOM 요소를 문서의 헤드에 배치합니다.
 
 ```js
 <title>My Blog</title>
 ```
 
-[See more examples below.](#usage)
+[아래에서 더 많은 예시를 확인하세요.](#usage)
 
 #### Props {/*props*/}
 
-`<title>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<title>`은 [모든 컴포넌트 속성](/reference/react-dom/components/common#props)을 지원합니다.
 
-* `children`: `<title>` accepts only text as a child. This text will become the title of the document. You can also pass your own components as long as they only render text.
+* `children`: `<title>`은 자식으로 텍스트만 허용합니다. 이 텍스트는 문서의 제목이 됩니다. 텍스트만 렌더링하는 한, 사용자 정의 컴포넌트도 전달할 수 있습니다.
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### 특별한 렌더링 동작 {/*special-rendering-behavior*/}
 
-React will always place the DOM element corresponding to the `<title>` component within the document’s `<head>`, regardless of where in the React tree it is rendered. The `<head>` is the only valid place for `<title>` to exist within the DOM, yet it’s convenient and keeps things composable if a component representing a specific page can render its `<title>` itself. 
+React는 `<title>` 컴포넌트에 해당하는 DOM 요소를 React 트리 내 어디에서 렌더링하든 항상 문서의 `<head>` 내에 배치합니다. `<head>`는 DOM 내에서 `<title>`이 존재할 수 있는 유일한 위치이지만, 특정 페이지를 나타내는 컴포넌트가 자체적으로 `<title>`을 렌더링할 수 있으면 편리하고 구성 가능하게 유지됩니다.
 
-There are two exception to this:
-* If `<title>` is within an `<svg>` component, then there is no special behavior, because in this context it doesn’t represent the document’s title but rather is an [accessibility annotation for that SVG graphic](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title).
-* If the `<title>` has an [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) prop, there is no special behavior, because in this case it doesn’t represent the document’s title but rather metadata about a specific part of the page. 
+여기에는 두 가지 예외가 있습니다.
+* `<title>`이 `<svg>` 컴포넌트 내에 있는 경우, 특별한 동작이 없습니다. 이 context에서는 문서의 제목을 나타내는 것이 아니라 [해당 SVG 그래픽에 대한 접근성 주석](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title)이기 때문입니다.
+* `<title>`에 [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) 속성이 있는 경우, 특별한 동작이 없습니다. 이 경우 문서의 제목이 아니라 페이지의 특정 부분에 대한 메타데이터를 나타내기 때문입니다.
 
 <Pitfall>
 
-Only render a single `<title>` at a time. If more than one component renders a `<title>` tag at the same time, React will place all of those titles in the document head. When this happens, the behavior of browsers and search engines is undefined.
+한 번에 하나의 `<title>`만 렌더링하십시오. 여러 구성 요소가 동시에 `<title>` 태그를 렌더링하면 React는 모든 제목을 문서의 헤드에 배치합니다. 이렇게 되면 브라우저와 검색 엔진의 동작이 정의되지 않습니다.
 
 </Pitfall>
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Set the document title {/*set-the-document-title*/}
+### 문서 제목 설정하기 {/*set-the-document-title*/}
 
-Render the `<title>` component from any component with text as its children. React will put a `<title>` DOM node in the document `<head>`.
+텍스트를 자식으로 갖는 `<title>` 컴포넌트를 어떤 컴포넌트에서도 렌더링할 수 있습니다. React는 문서의 `<head>`에 `<title>` DOM 노드를 배치합니다.
 
 <SandpackWithHTMLOutput>
 
@@ -82,15 +82,15 @@ export default function ContactUsPage() {
 
 </SandpackWithHTMLOutput>
 
-### Use variables in the title {/*use-variables-in-the-title*/}
+### 제목에 변수 사용하기 {/*use-variables-in-the-title*/}
 
-The children of the `<title>` component must be a single string of text. (Or a single number or a single object with a `toString` method.) It might not be obvious, but using JSX curly braces like this:
+`<title>` 컴포넌트의 자식은 단일 텍스트 문자열이어야 합니다. (또는 단일 숫자나 `toString` 메서드를 가진 단일 객체). JSX 중괄호를 다음과 같이 사용하면 명확하지 않을 수 있습니다.
 
 ```js
 <title>Results page {pageNumber}</title> // 🔴 Problem: This is not a single string
 ```
 
-... actually causes the `<title>` component to get a two-element array as its children (the string `"Results page"` and the value of `pageNumber`). This will cause an error. Instead, use string interpolation to pass `<title>` a single string:
+... 실제로는 `<title>` 컴포넌트에 두 개의 요소로 구성된 배열이 자식으로 전달됩니다 (문자열 `"Results page"`와 `pageNumber`의 값). 이는 오류를 발생시킵니다. 대신에 문자열 보간을 사용하여 `<title>`에 단일 문자열을 전달하십시오
 
 ```js
 <title>{`Results page ${pageNumber}`}</title>
