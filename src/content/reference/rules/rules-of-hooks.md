@@ -1,5 +1,5 @@
 ---
-title: Rules of Hooks
+title: Hook의 규칙
 ---
 
 <Intro>
