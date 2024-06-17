@@ -381,7 +381,7 @@ hydrate된 root에서 [`root.render`](#root-render)를 호출하는 것은 흔�
 
 </Canary>
 
-기본적으로 React는 처리되지 않은 모든 에러를 콘솔에 기록합니다. 자체적인 에러 보고 기능을 구현하려면 선택적 root 옵션인 `onUncaughtError` 옵션을 사용할 수 있습니다.
+기본적으로 React는 처리되지 않은 모든 에러를 콘솔에 기록합니다. 자체적인 에러 보고 기능을 구현하려면 선택적 root 옵션인 `onUncaughtError`를 사용할 수 있습니다.
 
 ```js [[1, 7, "onUncaughtError"], [2, 7, "error", 1], [3, 7, "errorInfo"], [4, 11, "componentStack"]]
 import { hydrateRoot } from 'react-dom/client';
@@ -402,7 +402,7 @@ const root = hydrateRoot(
 root.render(<App />);
 ```
 
-<CodeStep step={1}>onUncaughtError</CodeStep> 옵션은 두 개의 인자를 입력받는 함수입니다.
+<CodeStep step={1}>onUncaughtError</CodeStep> 옵션은 두 개의 인자를 받는 함수입니다.
 
 1. 발생한 <CodeStep step={2}>에러</CodeStep>.
 2. 에러의 <CodeStep step={4}>componentStack</CodeStep>을 포함하는 <CodeStep step={3}>errorInfo</CodeStep> 객체.
@@ -631,7 +631,7 @@ export default function App() {
 
 </Canary>
 
-기본적으로 React는 Error Boundary에 의해 잡힌 모든 에러를 `console.error`에 기록합니다. 이 동작을 재정의하려면 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)에서 잡힌 에러 처리에 대한 선택적 root 옵션인 `onCaughtError` 옵션을 사용할 수 있습니다.
+기본적으로 React는 Error Boundary에 의해 잡힌 모든 에러를 `console.error`에 기록합니다. 이 동작을 재정의하려면 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)에서 잡힌 에러 처리에 대한 선택적 root 옵션인 `onCaughtError`를 사용할 수 있습니다.
 
 ```js [[1, 7, "onCaughtError"], [2, 7, "error", 1], [3, 7, "errorInfo"], [4, 11, "componentStack"]]
 import { hydrateRoot } from 'react-dom/client';
@@ -652,12 +652,12 @@ const root = hydrateRoot(
 root.render(<App />);
 ```
 
-<CodeStep step={1}>onCaughtError</CodeStep> 옵션은 두 개의 인수로 호출되는 함수입니다.
+<CodeStep step={1}>onCaughtError</CodeStep> 옵션은 두 개의 인수를 받는 함수입니다.
 
 1. Error Boundary에 의해 잡힌 <CodeStep step={2}>에러</CodeStep>.
 2. 에러의 <CodeStep step={4}>componentStack</CodeStep>을 포함하는 <CodeStep step={3}>errorInfo</CodeStep>.
 
-`onCaughtError` root 옵션을 사용해 에러 대화 상자를 표시하거나 기록된 에러 중 알고있는 에러를 필터링 할 수 있습니다.
+`onCaughtError` root 옵션을 사용해 에러 대화 상자를 표시하거나 기록된 에러 중 알고 있는 에러를 필터링할 수 있습니다.
 
 <Sandpack>
 
@@ -911,7 +911,7 @@ function Throw({error}) {
 
 ### 복구 가능한 hydration 불일치 에러에 대한 대화 상자 표시하기 {/*show-a-dialog-for-recoverable-hydration-mismatch-errors*/}
 
-React가 hydration 불일치를 만나면 클라이언트에서 자동으로 렌더링을 시도합니다. 기본적으로 React는 hydration 불일치 에러를 `console.error`에 기록합니다. 이 동작을 재정의하려면 `onRecoverableError` root 옵션을 선택적으로 제공할 수 있습니다.
+React가 hydration 불일치를 만나면 클라이언트에서 자동으로 렌더링을 시도합니다. 기본적으로 React는 hydration 불일치 에러를 `console.error`에 기록합니다. 이 동작을 재정의하려면 선택적 root 옵션인 `onRecoverableError`를 사용할 수 있습니다.
 
 ```js [[1, 7, "onRecoverableError"], [2, 7, "error", 1], [3, 11, "error.cause", 1], [4, 7, "errorInfo"], [5, 12, "componentStack"]]
 import { hydrateRoot } from 'react-dom/client';
@@ -932,7 +932,7 @@ const root = hydrateRoot(
 );
 ```
 
-<CodeStep step={1}>onRecoverableError</CodeStep> 옵션은 두 개의 인자를 입력받는 함수입니다.
+<CodeStep step={1}>onRecoverableError</CodeStep> 옵션은 두 개의 인자를 받는 함수입니다.
 
 1. React가 발생시킨 <CodeStep step={2}>error</CodeStep>. 일부 에러는 원래 원인을 <CodeStep step={3}>error.cause</CodeStep>에 포함하기도 합니다.
 2. 에러의 <CodeStep step={5}>componentStack</CodeStep>을 포함하는 <CodeStep step={4}>errorInfo</CodeStep> 객체.
@@ -1064,7 +1064,6 @@ function reportError({ title, error, componentStack, dismissable }) {
   // 이미 메시지와 첫 번째 'Error:' 줄을 표시했으므로, 이를 제거.
   errorStack.innerText = error.stack.replace(error.message, '').split(/\n(.*)/s)[1];
   
-  // Display the cause, if available
   // 원인이 있는 경우 표시
   if (error.cause) {
     errorCauseMessage.innerText = error.cause.message;
@@ -1173,7 +1172,7 @@ function Throw({error}) {
 ## 문제 해결 {/*troubleshooting*/}
 
 
-### 다음과 같은 에러가 납니다: "You passed a second argument to root.render" {/*im-getting-an-error-you-passed-a-second-argument-to-root-render*/}
+### 다음과 같은 에러가 발생합니다: "You passed a second argument to root.render" {/*im-getting-an-error-you-passed-a-second-argument-to-root-render*/}
 
 `hydrateRoot` 옵션을 `root.render(...)`에 전달하는 실수가 흔히 일어나곤 합니다.
 
