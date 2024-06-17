@@ -109,7 +109,7 @@ function Bad() {
 
 <Note>
 
-[커스텀 Hook](/learn/reusing-logic-with-custom-hooks)은 다른 Hook을 *호출할 수 있습니다*. (그것이 커스텀 Hook의 주된 목적입니다) 커스텀 Hook도 함수 컴포넌트가 렌더링되는 동안에만 호출될 수 있기 때문입니다.
+[커스텀 Hook](/learn/reusing-logic-with-custom-hooks)은 다른 Hook을 *호출할 수 있습니다* (그것이 커스텀 Hook의 주된 목적입니다). 커스텀 Hook도 함수 컴포넌트가 렌더링되는 동안에만 호출될 수 있기 때문입니다.
 
 </Note>
 
