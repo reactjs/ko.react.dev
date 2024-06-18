@@ -403,7 +403,7 @@ Fragment는 DOM에서 사라지므로 `<h1>`, `<p>`, `<h1>`, `<p>` 등의 평평
 
 데이터 소스마다 다른 key 소스를 제공합니다
 
-* **데이터베이스의 데이터:** : 데이터베이스에서 데이터를 가져오는 경우 본질적으로 고유한 데이터베이스 key/ID를 사용할 수 있습니다.
+* **데이터베이스의 데이터:** 데이터베이스에서 데이터를 가져오는 경우 본질적으로 고유한 데이터베이스 key/ID를 사용할 수 있습니다.
 * **로컬에서 생성된 데이터:** 데이터가 로컬에서 생성되고 유지되는 경우(예: 메모 작성 앱의 노트), 항목을 만들 때 증분 일련번호나 [`crypto.randomUUID()`](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID) 또는 [`uuid`](https://www.npmjs.com/package/uuid) 같은 패키지를 사용하세요.
 
 ### key 규칙 {/*rules-of-keys*/}
