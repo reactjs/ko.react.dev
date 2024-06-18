@@ -268,7 +268,7 @@ const listItems = chemists.map(person => { // 중괄호
 
 ## `key`를 사용해서 리스트 항목을 순서대로 유지하기 {/*keeping-list-items-in-order-with-key*/}
 
-위의 모든 샌드박스에 콘솔에 에러가 표시되는 것을 확인할 수 있습니다.
+위의 모든 샌드박스의 콘솔에 에러가 표시되는 것을 확인할 수 있습니다.
 
 <ConsoleBlock level="error">
 
