@@ -4,7 +4,7 @@ title: useMemo
 
 <Intro>
 
-`useMemo` 는 재렌더링 사이에 계산 결과를 캐싱할 수 있게 해주는 Rect Hook 입니다.
+`useMemo` 는 재렌더링 사이에 계산 결과를 캐싱할 수 있게 해주는 React Hook 입니다.
 
 ```js
 const cachedValue = useMemo(calculateValue, dependencies)
