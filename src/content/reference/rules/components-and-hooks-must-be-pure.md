@@ -1,5 +1,5 @@
 ---
-title: Components and Hooks must be pure
+title: 컴포넌트와 Hook은 순수해야 합니다
 ---
 
 <Intro>

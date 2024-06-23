@@ -72,7 +72,6 @@ function useDataWithLogging() {
 
 ### Hook을 동적으로 사용하지 마세요 {/*dont-dynamically-use-hooks*/}
 
-Hooks should also not be dynamically used: for example, instead of doing dependency injection in a component by passing a Hook as a value:
 Hook은 동적으로 사용해서도 안 됩니다. 예를 들어 Hook을 값으로 전달하여 컴포넌트에 의존성을 주입하는 대신,
 
 ```js {2}
