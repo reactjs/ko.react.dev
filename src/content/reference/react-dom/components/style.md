@@ -5,13 +5,13 @@ canary: true
 
 <Canary>
 
-React의 `<title>` 확장은 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. React의 안정적인 릴리즈에서는 `<title>`이 [내장 브라우저 HTML 컴포넌트](https://react.dev/reference/react-dom/components#all-html-components)로만 작동합니다. 여기에서 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
+React의 `<title>` 확장은 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. React의 안정적인 릴리즈에서는 `<title>`이 [내장 브라우저 HTML 컴포넌트](/reference/react-dom/components#all-html-components)로만 작동합니다. 여기에서 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
 
 </Canary>
 
 <Intro>
 
-[내장된 브라우저 `<style>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style)를 사용하면 문서에 인라인 CSS 스타일시트를 추가할 수 있습니다. 
+[내장된 브라우저 `<style>` 컴포넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/style)를 사용하면 문서에 인라인 CSS 스타일시트를 추가할 수 있습니다. 
 
 ```js
 <style>{` p { color: red; } `}</style>
@@ -27,7 +27,7 @@ React의 `<title>` 확장은 현재 React의 카나리(Canary) 버전 및 실험
 
 ### `<style>` {/*style*/}
 
-문서에 인라인 스타일을 추가하려면, [내장된 브라우저 `<style>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style)를 렌더링하세요. 어떤 컴포넌트에서든 `<style>`을 렌더링할 수 있으며, React는 [특정 경우](#special-rendering-behavior)에 해당 DOM 요소를 문서의 head에 배치하고 동일한 스타일을 중복 제거합니다.
+문서에 인라인 스타일을 추가하려면, [내장된 브라우저 `<style>` 컴포넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/style)를 렌더링하세요. 어떤 컴포넌트에서든 `<style>`을 렌더링할 수 있으며, React는 [특정 경우](#special-rendering-behavior)에 해당 DOM 요소를 문서의 head에 배치하고 동일한 스타일을 중복 제거합니다.
 
 ```js
 <style>{` p { color: red; } `}</style>
@@ -42,9 +42,9 @@ React의 `<title>` 확장은 현재 React의 카나리(Canary) 버전 및 실험
 * `children`: 문자열 타입. 필수 항목. 스타일시트의 내용.
 * `precedence`: 문자열 타입. 문서의 `<head>` 내 다른 요소들에 비해 `<style>` DOM 노드의 순위를 지정하여, 어떤 스타일시트가 다른 스타일시트를 덮어쓸 수 있는지를 결정합니다. React는 먼저 발견한 우선순위를 "낮게", 나중에 발견한 우선순위를 "높게" 추론합니다. 많은 스타일 시스템은 스타일 규칙이 원자적이기 때문에 단일 우선순위 값을 사용해도 잘 작동할 수 있습니다. 동일한 우선순위를 가지는 스타일시트는 `<link>` 태그인지 인라인 `<style>` 태그인지 [`preinit`](/reference/react-dom/preinit) 함수로 로드된 것인지와 무관하게 함께 적용됩니다.
 * `href`: 문자열 타입. 동일한 `href`를 가진 스타일의 [중복 적용을 제거](#special-rendering-behavior)합니다.
-* `media`: 문자열 타입. 스타일시트를 특정 [미디어 쿼리](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries)로 제한합니다.
+* `media`: 문자열 타입. 스타일시트를 특정 [미디어 쿼리](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_media_queries/Using_media_queries)로 제한합니다.
 * `nonce`: 문자열 타입. 엄격한 콘텐츠 보안 정책을 사용할 때 [리소스를 허용하기 위한 암호화 난수](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
-* `title`: 문자열 타입. [대체 스타일시트](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets)의 이름을 지정합니다.
+* `title`: 문자열 타입. [대체 스타일시트](https://developer.mozilla.org/ko/docs/Web/CSS/Alternative_style_sheets)의 이름을 지정합니다.
 
 다음 React 속성들은 **권장하지 않습니다.**
 
