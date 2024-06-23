@@ -67,7 +67,7 @@ button { margin-right: 10px; }
 * 주로 컴포넌트 *내부*에서 정의됩니다.
 * `handle`로 시작하고 그 뒤에 이벤트명을 붙인 함수명을 가집니다.
 
-관습적으로 `handle`로 시작하여 이벤트명을 이어 붙인 이벤트 핸들러 명명법이 일반적입니다. `onClick={handleClick}`, `onMouseEnter={handleMouseEnter}`와 같은 경우를 자주 볼 수 있을 것입니다.
+관습적으로 `handle`로 시작하며 이벤트명을 이어 붙인 이벤트 핸들러 명명법이 일반적입니다. `onClick={handleClick}`, `onMouseEnter={handleMouseEnter}`와 같은 경우를 자주 볼 수 있을 것입니다.
 
 다른 방법으로 이벤트 핸들러를 JSX 내에서 인라인으로 정의할 수 있습니다.
 
@@ -126,7 +126,7 @@ button { margin-right: 10px; }
 * `<button onClick={handleClick}>`은 `handleClick` 함수를 전달합니다.
 * `<button onClick={() => alert('...')}>`은 `() => alert('...')` 함수를 전달합니다.
 
-[화살표 함수에 대해 더 알아보세요.](https://javascript.info/arrow-functions-basics)
+[화살표 함수에 대해 더 알아보세요.](https://ko.javascript.info/arrow-functions-basics)
 
 </Pitfall>
 
@@ -316,7 +316,7 @@ button { margin-right: 10px; }
   
 <Note>
 
-이벤트 핸들러에 적절한 HTML 태그를 사용하고 있는지 확인하세요. 예를 들어 클릭을 핸들링하기 위해서는 `<div onClick={handleClick}>` 대신 [`<button onClick={handleClick}>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)을 사용하세요. 실제 브라우저에서 `<button>`은 키보드 내비게이션과 같은 빌트인 브라우저 동작을 활성화 합니다. 만일 버튼의 기본 브라우저 스타일링이 싫어서 링크나 다른 UI 요소처럼 보이도록 하고 싶다면 CSS를 통해 그 목적을 이룰 수 있습니다. [접근성을 위한 마크업 작성법에 대해 더 알아보세요.](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
+이벤트 핸들러에 적절한 HTML 태그를 사용하고 있는지 확인하세요. 예를 들어 클릭을 핸들링하기 위해서는 `<div onClick={handleClick}>` 대신 [`<button onClick={handleClick}>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/button)을 사용하세요. 실제 브라우저에서 `<button>`은 키보드 내비게이션과 같은 빌트인 브라우저 동작을 활성화 합니다. 만일 버튼의 기본 브라우저 스타일링이 싫어서 링크나 다른 UI 요소처럼 보이도록 하고 싶다면 CSS를 통해 그 목적을 이룰 수 있습니다. [접근성을 위한 마크업 작성법에 대해 더 알아보세요.](https://developer.mozilla.org/ko/docs/Learn/Accessibility/HTML)
   
 </Note>
 
