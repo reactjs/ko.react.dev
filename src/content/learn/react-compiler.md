@@ -34,7 +34,7 @@ React 컴파일러는 애플리케이션을 최적화하기 위해 코드를 자
 
 컴파일러는 JavaScript와 React의 규칙에 대한 지식을 활용하여 자동으로 컴포넌트와 Hooks 내의 값 또는 값 그룹을 메모이제이션 합니다. 규칙 위반을 감지할 경우 해당 컴포넌트 또는 Hooks를 건너뛰고 다른 코드를 안전하게 컴파일합니다.
 
-이미 코드베이스가 아주 잘 메모이제이션 되어 있다면, 컴파일러를 통해 주요 성능 향상을 기대하기 어려울 수 있습니다. 그러나 실제로 성능 문제를 일으키는 올바른 의존성을 메모이제이션 하는 것은 수작업으로 처리하기 까다로울 수 있습니다.
+이미 코드베이스에 메모이제이션이 잘 되어 있다면, 컴파일러를 통해 주요 성능 향상을 기대하기 어려울 수 있습니다. 그러나 실제로 성능 문제를 일으키는 올바른 의존성을 메모이제이션 하는 것은 수작업으로 처리하기 까다로울 수 있습니다.
 
 <DeepDive>
 #### React Compiler은 어떤 것을 메모이제이션 하나요? {/*what-kind-of-memoization-does-react-compiler-add*/}
@@ -100,7 +100,7 @@ function TableContainer({ items }) {
 
 React 컴파일러는 다음과 같이 가정합니다.
 
-1. 유효하고 의미론적인 JavaScript입니다.
+1. 올바르고 의미 있는 JavaScript 코드로 작성되었습니다.
 2. nullable/optional 값과 속성에 접근하기 전에 그 값이 정의되어 있는지 테스트합니다. TypeScript를 사용하는 경우 [`strictNullChecks`](https://www.typescriptlang.org/ko/tsconfig/#strictNullChecks)을 활성화하여 수행합니다. 예를 들어 `if (object.nullableProperty) { object.nullableProperty.foo }`와 같이 처리하거나, 옵셔널 체이닝을 사용하여 `object.nullableProperty?.foo`와 같이 처리합니다.
 3. [React의 규칙](https://ko.react.dev/reference/rules)을 따릅니다.
 
