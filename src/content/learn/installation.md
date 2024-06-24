@@ -37,7 +37,11 @@ export default function App() {
 
 직접 편집하거나 오른쪽 상단의 "Fork" 버튼을 눌러 새 탭에서 열 수 있습니다.
 
+<<<<<<< HEAD
 React 문서의 대부분 페이지에는 이와 같은 샌드박스가 있습니다. React 문서 외에도 [CodeSandbox](https://codesandbox.io/s/new), [StackBlitz](https://stackblitz.com/fork/react), [CodePen.](https://codepen.io/pen?template=QWYVwWN) 등의 온라인 샌드박스에서 React를 지원합니다.
+=======
+Most pages in the React documentation contain sandboxes like this. Outside of the React documentation, there are many online sandboxes that support React: for example, [CodeSandbox](https://codesandbox.io/s/new), [StackBlitz](https://stackblitz.com/fork/react), or [CodePen.](https://codepen.io/pen?template=QWYVwWN)
+>>>>>>> 169d5c1820cd1514429bfac2a923e51dd782d37e
 
 ### 로컬 환경에서 React 시도하기 {/*try-react-locally*/}
 

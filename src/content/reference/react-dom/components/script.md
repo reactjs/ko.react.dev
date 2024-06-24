@@ -68,13 +68,21 @@ React에서 **권장되지 않는** 속성들:
 
 #### 특별한 렌더링 동작 {/*special-rendering-behavior*/}
 
+<<<<<<< HEAD
 React는 `<script>` 컴포넌트를 문서의 `<head>`로 이동시키고, 동일한 스크립트를 중복으로 처리하며 스크립트가 로딩 중일 때 [중단](/reference/react/Suspense)할 수 있습니다.
+=======
+React can move `<script>` components to the document's `<head>` and de-duplicate identical scripts.
+>>>>>>> 169d5c1820cd1514429bfac2a923e51dd782d37e
 
 이 동작을 사용하려면 `src` 와 `async={true}` 속성을 제공하세요. React는 `src`가 동일한 경우에만 스크립트를 중복 처리합니다. 스크립트를 안전하게 이동하려면 `async` 속성이 반드시 true여야 합니다.
 
+<<<<<<< HEAD
 만약 `onLoad` 또는 `onError` 속성 중 하나라도 제공하면 특별한 동작이 없습니다. 이는 이러한 속성이 스크립트의 로딩을 컴포넌트 내에서 수동으로 관리한다는 것을 나타내기 때문입니다.
 
 이 특별한 처리에는 두 가지 주의사항이 있습니다.
+=======
+This special treatment comes with two caveats:
+>>>>>>> 169d5c1820cd1514429bfac2a923e51dd782d37e
 
 * React는 스크립트를 렌더링한 후에 속성 변경을 무시합니다. (개발 환경에서 이러한 경우에는 경고가 표시됩니다.)
 * React는 컴포넌트를 마운트 해제한 후에도 DOM에 스크립트를 남길 수 있습니다. (스크립트는 DOM에 삽입될 때 한 번만 실행되므로 이것은 영향을 미치지 않습니다.)
@@ -85,9 +93,17 @@ React는 `<script>` 컴포넌트를 문서의 `<head>`로 이동시키고, 동�
 
 ### 외부 스크립트 렌더링 {/*rendering-an-external-script*/}
 
+<<<<<<< HEAD
 특정 스크립트에 의존하여 컴포넌트를 올바르게 표시해야 한다면, 컴포넌트 내에서 `<script>`를 렌더링할 수 있습니다.
 
 만약 `src` and `async` 속성을 제공하면 스크립트가 로드되는 동안 컴포넌트가 중단됩니다. React는 `src`가 동일한 스크립트를 중복 처리하여 동일한 스크립트를 DOM에 한 번만 삽입하며, 여러 컴포넌트가 렌더링해도 같은 동작을 수행합니다.
+=======
+If a component depends on certain scripts in order to be displayed correctly, you can render a `<script>` within the component.
+However, the component might be committed before the script has finished loading.
+You can start depending on the script content once the `load` event is fired e.g. by using the `onLoad` prop.
+
+React will de-duplicate scripts that have the same `src`, inserting only one of them into the DOM even if multiple components render it.
+>>>>>>> 169d5c1820cd1514429bfac2a923e51dd782d37e
 
 <SandpackWithHTMLOutput>
 
@@ -97,7 +113,7 @@ import ShowRenderedHTML from './ShowRenderedHTML.js';
 function Map({lat, long}) {
   return (
     <>
-      <script async src="map-api.js" />
+      <script async src="map-api.js" onLoad={() => console.log('script loaded')} />
       <div id="map" data-lat={lat} data-long={long} />
     </>
   );
@@ -120,7 +136,11 @@ export default function Page() {
 
 ### 인라인 스크립트 렌더링 {/*rendering-an-inline-script*/}
 
+<<<<<<< HEAD
 인라인 스크립트를 포함하려면 render the `<script>` 컴포넌트를 자식으로 스크립트 소스 코드와 함께 렌더링하세요. 인라인 스크립트는 중복 처리되거나 문서 `<head>`로 이동되지 않으며, 외부 리소스를 로드하지 않기 때문에 컴포넌트가 중단되지 않습니다.
+=======
+To include an inline script, render the `<script>` component with the script source code as its children. Inline scripts are not de-duplicated or moved to the document `<head>`.
+>>>>>>> 169d5c1820cd1514429bfac2a923e51dd782d37e
 
 <SandpackWithHTMLOutput>
 
