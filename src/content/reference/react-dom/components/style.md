@@ -5,13 +5,13 @@ canary: true
 
 <Canary>
 
-React's extensions to `<style>` are currently only available in React's canary and experimental channels. In stable releases of React `<style>` works only as a [built-in browser HTML component](https://react.dev/reference/react-dom/components#all-html-components). Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+React의 `<title>` 확장은 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. React의 안정적인 릴리즈에서는 `<title>`이 [내장 브라우저 HTML 컴포넌트](/reference/react-dom/components#all-html-components)로만 작동합니다. 여기에서 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
 
 </Canary>
 
 <Intro>
 
-The [built-in browser `<style>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) lets you add inline CSS stylesheets to your document.
+[내장된 브라우저 `<style>` 컴포넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/style)를 사용하면 문서에 인라인 CSS 스타일시트를 추가할 수 있습니다. 
 
 ```js
 <style>{` p { color: red; } `}</style>
@@ -23,53 +23,54 @@ The [built-in browser `<style>` component](https://developer.mozilla.org/en-US/d
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `<style>` {/*style*/}
 
-To add inline styles to your document, render the [built-in browser `<style>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style). You can render `<style>` from any component and React will [in certain cases](#special-rendering-behavior) place the corresponding DOM element in the document head and de-duplicate identical styles.
+문서에 인라인 스타일을 추가하려면, [내장된 브라우저 `<style>` 컴포넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/style)를 렌더링하세요. 어떤 컴포넌트에서든 `<style>`을 렌더링할 수 있으며, React는 [특정 경우](#special-rendering-behavior)에 해당 DOM 요소를 문서의 head에 배치하고 동일한 스타일을 중복 제거합니다.
 
 ```js
 <style>{` p { color: red; } `}</style>
 ```
 
-[See more examples below.](#usage)
+[아래에 더 많은 예시를 확인하세요.](#usage)
 
 #### Props {/*props*/}
 
-`<style>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<style>`은 [모든 컴포넌트 속성](/reference/react-dom/components/common#props)을 지원합니다. 
 
-* `children`: a string, required. The contents of the stylesheet.
-* `precedence`: a string. Tells React where to rank the `<style>` DOM node relative to others in the document `<head>`, which determines which stylesheet can override the other. React will infer that precedence values it discovers first are "lower" and precedence values it discovers later are "higher". Many style systems can work fine using a single precedence value because style rules are atomic. Stylesheets with the same precedence go together whether they are `<link>` or inline `<style>` tags or loaded using [`preinit`](/reference/react-dom/preinit) functions.
-* `href`: a string. Allows React to [de-duplicate styles](#special-rendering-behavior) that have the same `href`.
-* `media`: a string. Restricts the stylesheet to a certain [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries).
-* `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy.
-* `title`: a string. Specifies the name of an [alternative stylesheet](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
+* `children`: 문자열 타입. 필수 항목. 스타일시트의 내용.
+* `precedence`: 문자열 타입. 문서의 `<head>` 내 다른 요소들에 비해 `<style>` DOM 노드의 순위를 지정하여, 어떤 스타일시트가 다른 스타일시트를 덮어쓸 수 있는지를 결정합니다. React는 먼저 발견한 우선순위를 "낮게", 나중에 발견한 우선순위를 "높게" 추론합니다. 많은 스타일 시스템은 스타일 규칙이 원자적이기 때문에 단일 우선순위 값을 사용해도 잘 작동할 수 있습니다. 동일한 우선순위를 가지는 스타일시트는 `<link>` 태그인지 인라인 `<style>` 태그인지 [`preinit`](/reference/react-dom/preinit) 함수로 로드된 것인지와 무관하게 함께 적용됩니다.
+* `href`: 문자열 타입. 동일한 `href`를 가진 스타일의 [중복 적용을 제거](#special-rendering-behavior)합니다.
+* `media`: 문자열 타입. 스타일시트를 특정 [미디어 쿼리](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_media_queries/Using_media_queries)로 제한합니다.
+* `nonce`: 문자열 타입. 엄격한 콘텐츠 보안 정책을 사용할 때 [리소스를 허용하기 위한 암호화 난수](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
+* `title`: 문자열 타입. [대체 스타일시트](https://developer.mozilla.org/ko/docs/Web/CSS/Alternative_style_sheets)의 이름을 지정합니다.
 
-Props that are **not recommended** for use with React:
+다음 React 속성들은 **권장하지 않습니다.**
 
-* `blocking`: a string. If set to `"render"`, instructs the browser not to render the page until the stylesheet is loaded. React provides more fine-grained control using Suspense.
+* `blocking`: 문자열 타입. `"render"`로 설정하면 스타일시트가 로드될 때까지 브라우저가 페이지를 렌더링하지 않도록 지시합니다. React는 Suspense를 사용하여 더 세밀하게 제어할 수 있습니다.
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### 특별한 렌더링 동작 {/*special-rendering-behavior*/}
 
-React can move `<style>` components to the document's `<head>`, de-duplicate identical stylesheets, and [suspend](/reference/react/Suspense) while the stylesheet is loading.
+React는 `<style>` 컴포넌트를 문서의 `<head>`로 이동시키고, 동일한 스타일시트의 중복을 제거하며, 스타일시트가 로딩되는 동안 [서스펜스](/reference/react/Suspense)할 수 있습니다.
 
-To opt into this behavior, provide the `href` and `precedence` props. React will de-duplicate styles if they have the same `href`. The precedence prop tells React where to rank the `<style>` DOM node relative to others in the document `<head>`, which determines which stylesheet can override the other.
+이 동작을 사용하려면 `href`와 `precedence` 속성을 제공하세요. React는 동일한 `href`를 가진 스타일의 중복을 제거합니다. precedence 속성은 문서의 `<head>` 내 다른 요소에 비해 `<style>` DOM 노드의 순위를 지정하며, 어떤 스타일시트가 다른 스타일시트를 덮어쓸 수 있는지를 결정합니다.
 
-This special treatment comes with two caveats:
+이러한 처리는 두 가지 주의 사항이 있습니다.
 
-* React will ignore changes to props after the style has been rendered. (React will issue a warning in development if this happens.)
-* React may leave the style in the DOM even after the component that rendered it has been unmounted.
+* 스타일이 렌더링된 후에는 React가 속성 변경을 무시합니다. (개발 중에 이 상황이 발생하면 React는 경고를 표시합니다.)
+
+* 스타일을 렌더링한 컴포넌트가 언마운트된 후에도 DOM에 스타일이 유지될 수 있습니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Rendering an inline CSS stylesheet {/*rendering-an-inline-css-stylesheet*/}
+### 인라인 CSS 스타일시트 렌더링하기 {/*rendering-an-inline-css-stylesheet*/}
 
-If a component depends on certain CSS styles in order to be displayed correctly, you can render an inline stylesheet within the component.
+컴포넌트가 올바르게 표시되기 위해 특정 CSS 스타일에 의존하는 경우, 컴포넌트 내에서 인라인 스타일시트를 렌더링할 수 있습니다.
 
-If you supply an `href` and `precedence` prop, your component will suspend while the stylesheet is loading. (Even with inline stylesheets, there may be a loading time due to fonts and images that the stylesheet refers to.) The `href` prop should uniquely identify the stylesheet, because React will de-duplicate stylesheets that have the same `href`.
+`href`와 `precedence` 속성을 제공하면 스타일시트가 로딩되는 동안 컴포넌트가 일시 중지됩니다. (인라인 스타일시트의 경우에도 스타일시트가 참조하는 폰트와 이미지로 인해 로딩 시간이 발생할 수 있습니다.) `href` 속성은 스타일시트를 고유하게 식별해야 하며, 이를 통해 React는 동일한 href를 가진 스타일시트의 중복을 제거할 수 있습니다.
 
 <SandpackWithHTMLOutput>
 
