@@ -45,7 +45,7 @@
           "path": "/learn/react-developer-tools"
         },
         {
-          "title": "React Compiler",
+          "title": "React 컴파일러",
           "path": "/learn/react-compiler",
           "canary": true
         }
