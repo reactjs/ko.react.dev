@@ -372,7 +372,7 @@ React 앱에서는 서드파티 라이브러리를 활용하여 일반적인 UI 
 * [forwardRef](/reference/react/forwardRef)
 * [memo](/reference/react/memo)
 * [startTransition](/reference/react/startTransition)
-* 클라이언트 API를 사용하는 경우(예: Dom 삽입 혹은 네이티브 플랫폼 뷰 등)
+* 클라이언트 API를 사용하는 경우(예: DOM 삽입 혹은 네이티브 플랫폼 뷰 등)
 
 이 라이브러리들이 React 서버 컴포넌트와 호환되도록 업데이트되었다면 이미 `'use client'`를 포함하고 있어 서버 컴포넌트에서 직접 사용할 수 있습니다. 라이브러리가 업데이트되지 않았거나 컴포넌트가 클라이언트에서만 지정할 수 있는 이벤트 핸들러와 같은 props가 필요한 경우 사용할 서드파티 클라이언트 컴포넌트와 서버 컴포넌트 사이에 자체 클라이언트 컴포넌트 파일을 추가해야 할 수 있습니다.
 
