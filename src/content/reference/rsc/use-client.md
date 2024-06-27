@@ -254,29 +254,29 @@ React 앱에서와 같이 부모 컴포넌트는 자식 컴포넌트에 데이�
 
 직렬화할 수 있는 props는 다음과 같습니다.
 * 원시 자료형
-	* [string](https://developer.mozilla.org/en-US/docs/Glossary/String)
-	* [number](https://developer.mozilla.org/en-US/docs/Glossary/Number)
-	* [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
-	* [boolean](https://developer.mozilla.org/en-US/docs/Glossary/Boolean)
-	* [undefined](https://developer.mozilla.org/en-US/docs/Glossary/Undefined)
-	* [null](https://developer.mozilla.org/en-US/docs/Glossary/Null)
-	* [symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol) ( [`Symbol.for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)을 통해 글로벌 심볼 레지스트리에 등록된 심볼만 해당 )
+	* [string](https://developer.mozilla.org/ko/docs/Glossary/String)
+	* [number](https://developer.mozilla.org/ko/docs/Glossary/Number)
+	* [bigint](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
+	* [boolean](https://developer.mozilla.org/ko/docs/Glossary/Boolean)
+	* [undefined](https://developer.mozilla.org/ko/docs/Glossary/Undefined)
+	* [null](https://developer.mozilla.org/ko/docs/Glossary/Null)
+	* [symbol](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol) ( [`Symbol.for`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)을 통해 글로벌 심볼 레지스트리에 등록된 심볼만 해당 )
 * 직렬화할 수 있는 값을 포함하는 이터러블
-	* [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-	* [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
-	* [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
-	* [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
-	* [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) 및 [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
-* [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
-* 일반 [객체](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) (직렬화할 수 있는 properties를 사용하여 [객체 이니셜라이저](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer)로 생성된 객체)
+	* [String](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String)
+	* [Array](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array)
+	* [Map](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map)
+	* [Set](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set)
+	* [TypedArray](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) 및 [ArrayBuffer](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
+* [Date](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date)
+* 일반 [객체](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object) (직렬화할 수 있는 properties를 사용하여 [객체 이니셜라이저](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer)로 생성된 객체)
 * [서버 액션](/reference/react/use-server)으로서의 함수
 * 클라이언트 또는 서버 컴포넌트 요소(JSX)
-* [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+* [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
 단, 다음은 지원되지 않습니다.
-* 클라이언트로 표시된 모듈에서 내보내지 않았거나 [`'use server'`](/reference/rsc/use-server)로 표시된 [함수](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
-* [클래스](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
-* 위에서 언급한 내장형 클래스의 인스턴스가 아닌 객체 혹은 [null 프로토타입](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)을 가진 객체
+* 클라이언트로 표시된 모듈에서 내보내지 않았거나 [`'use server'`](/reference/rsc/use-server)로 표시된 [함수](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function)
+* [클래스](https://developer.mozilla.org/ko/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
+* 위에서 언급한 내장형 클래스의 인스턴스가 아닌 객체 혹은 [null 프로토타입](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)을 가진 객체
 * 글로벌하게 등록되지 않은 symbol (예: `Symbol('my new symbol')`)
 
 
@@ -339,9 +339,9 @@ export default function FancyText({title, text}) {
 
 ### 클라이언트 API 사용 {/*using-client-apis*/}
 
-React 앱에서는 웹 스토리지, 오디오 및 비디오 조작, 하드웨어 장치 등과 같은 [브라우저의 API](https://developer.mozilla.org/en-US/docs/Web/API)를 포함한 클라이언트 특정 API를 사용할 수 있습니다.
+React 앱에서는 웹 스토리지, 오디오 및 비디오 조작, 하드웨어 장치 등과 같은 [브라우저의 API](https://developer.mozilla.org/ko/docs/Web/API)를 포함한 클라이언트 특정 API를 사용할 수 있습니다.
 
-이 예제에서 컴포넌트는 [DOM API](https://developer.mozilla.org/en-US/docs/Glossary/DOM)를 사용해 [`canvas`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) 요소를 조작합니다. 이러한 API는 브라우저에서만 사용할 수 있으므로 클라이언트 컴포넌트로 표시되어야 합니다.
+이 예제에서 컴포넌트는 [DOM API](https://developer.mozilla.org/ko/docs/Glossary/DOM)를 사용해 [`canvas`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/canvas) 요소를 조작합니다. 이러한 API는 브라우저에서만 사용할 수 있으므로 클라이언트 컴포넌트로 표시되어야 합니다.
 
 ```js
 'use client';
