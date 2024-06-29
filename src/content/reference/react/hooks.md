@@ -29,8 +29,7 @@ function ImageGallery() {
 
 ## Context Hooks {/*context-hooks*/}
 
-*Context*를 사용하면 컴포넌트가 [멀리 있는 부모 컴포넌트로부터 props로 전달하지 않으면서 정보를 받을 수 있습니다.](/learn/passing-props-to-a-component) 예를 들어,
-애플리케이션의 최상위 컴포넌트는 현재 UI 테마를 아래의 모든 컴포넌트에 깊이와 상관없이 전달할 수 있습니다.
+*Context*를 사용하면 컴포넌트가 [멀리 있는 부모 컴포넌트로부터 props로 전달하지 않으면서 정보를 받을 수 있습니다.](/learn/passing-props-to-a-component) 예를 들어, 애플리케이션의 최상위 컴포넌트는 현재 UI 테마를 아래의 모든 컴포넌트에 깊이와 상관없이 전달할 수 있습니다.
 
 * [`useContext`](/reference/react/useContext)는 context를 읽고 구독합니다.
 
