@@ -31,7 +31,7 @@
 
 ### 개발 서버 실행하기
 
-1. `yarn dev` 명령어를 사용하여 hot-reloading 개발 서버를 시작합니다. (powered by [Next.js](https://nextjs.org/))
+1. `yarn dev` 명령어를 사용하여 hot-reloading 개발 서버를 시작합니다. (powered by [Next.js](https://nextjs.org))
 1. `open http://localhost:3000` 명령어를 사용하여 선호하는 브라우저로 접속하세요.
 
 ## 기여 방법
@@ -78,4 +78,4 @@
 번역하려는 언어가 아직 진행되지 않았다면, 해당 언어에 대해 새롭게 만들 수 있습니다. [translations.react.dev repo](https://github.com/reactjs/translations.react.dev)를 참고해주세요.
 
 ## 저작권
-위 내용에 대한 저작권은 [react.dev](https://reactjs.org/)가 가지고 있으며, [LICENSE-DOCS.md](LICENSE-DOCS.md)에서 볼 수 있는 CC-BY-4.0 라이센스를 따릅니다.
+위 내용에 대한 저작권은 [react.dev](https://react.dev)가 가지고 있으며, [LICENSE-DOCS.md](LICENSE-DOCS.md)에서 볼 수 있는 CC-BY-4.0 라이센스를 따릅니다.
