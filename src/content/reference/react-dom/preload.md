@@ -11,7 +11,7 @@ canary: true
 
 <Note>
 
-[리액트 기반 프레임워크](/learn/start-a-new-react-project)는 리소스 로딩을 대신 처리하는 경우가 많으므로 이 API를 직접 호출할 필요가 없을 수도 있습니다. 자세한 내용은 해당 프레임워크의 문서를 참조하세요.
+[React 기반 프레임워크](/learn/start-a-new-react-project)는 리소스 로딩을 대신 처리하는 경우가 많으므로 이 API를 직접 호출할 필요가 없을 수도 있습니다. 자세한 내용은 해당 프레임워크의 문서를 참조하세요.
 
 </Note>
 
@@ -63,7 +63,7 @@ function AppRoot() {
   *  `imageSrcSet`: 문자열입니다. `as: "image"`와만 함께 사용합니다. [이미지의 소스 세트](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)를 지정합니다.
   *  `imageSizes`: 문자열입니다. `as: "image"`와만 함께 사용합니다. [이미지의 크기](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)를 지정합니다.
 
-#### 반환 {/*returns*/}
+#### 반환값 {/*returns*/}
 
 `preload`는 아무것도 반환하지 않습니다.
 
