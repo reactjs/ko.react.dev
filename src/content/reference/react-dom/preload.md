@@ -5,19 +5,19 @@ canary: true
 
 <Canary>
 
-The `preload` function is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+`preload` 는 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. 여기에서 [React의 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
 
 </Canary>
 
 <Note>
 
-[React-based frameworks](/learn/start-a-new-react-project) frequently handle resource loading for you, so you might not have to call this API yourself. Consult your framework's documentation for details.
+[React 기반 프레임워크](/learn/start-a-new-react-project)는 리소스 로딩을 대신 처리하는 경우가 많으므로 이 API를 직접 호출할 필요가 없을 수도 있습니다. 자세한 내용은 해당 프레임워크의 문서를 참조하세요.
 
 </Note>
 
 <Intro>
 
-`preload` lets you eagerly fetch a resource such as a stylesheet, font, or external script that you expect to use.
+`preload`를 사용하면 사용할 스타일시트, 글꼴 또는 외부 스크립트와 같은 리소스를 미리 가져올 수 있습니다.
 
 ```js
 preload("https://example.com/font.woff2", {as: "font"});
@@ -29,11 +29,11 @@ preload("https://example.com/font.woff2", {as: "font"});
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `preload(href, options)` {/*preload*/}
 
-To preload a resource, call the `preload` function from `react-dom`.
+리소스를 미리 로드하려면 `react-dom`에서 `preload` 함수를 호출합니다.
 
 ```js
 import { preload } from 'react-dom';
@@ -45,47 +45,47 @@ function AppRoot() {
 
 ```
 
-[See more examples below.](#usage)
+[아래에서 더 많은 예시를 확인하세요.](#usage)
 
-The `preload` function provides the browser with a hint that it should start downloading the given resource, which can save time.
+`preload` 기능은 브라우저에 주어진 리소스 다운로드를 시작해야 한다는 힌트를 제공하여 시간을 절약할 수 있습니다.
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `href`: a string. The URL of the resource you want to download.
-* `options`: an object. It contains the following properties:
-  *  `as`: a required string. The type of resource. Its [possible values](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#as) are `audio`, `document`, `embed`, `fetch`, `font`, `image`, `object`, `script`, `style`, `track`, `video`, `worker`.
-  *  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`. It is required when `as` is set to `"fetch"`.
-  *  `referrerPolicy`: a string. The [Referrer header](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#referrerpolicy) to send when fetching. Its possible values are `no-referrer-when-downgrade` (the default), `no-referrer`, `origin`, `origin-when-cross-origin`, and `unsafe-url`.
-  *  `integrity`: a string. A cryptographic hash of the resource, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-  *  `type`: a string. The MIME type of the resource.
-  *  `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy. 
-  *  `fetchPriority`: a string. Suggests a relative priority for fetching the resource. The possible values are `auto` (the default), `high`, and `low`.
-  *  `imageSrcSet`: a string. For use only with `as: "image"`. Specifies the [source set of the image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
-  *  `imageSizes`: a string. For use only with `as: "image"`. Specifies the [sizes of the image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
+* `href`: 문자열입니다. 다운로드하려는 리소스의 URL입니다.
+* `options`: 객체입니다. 여기에는 다음과 같은 속성이 포함되어 있습니다:
+  *  `as`: 필수 문자열입니다. 리소스의 타입입니다. [가능한 값](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#as)은 `audio`, `document`, `embed`, `fetch`, `font`, `image`, `object`, `script`, `style`, `track`, `video`, `worker`입니다.
+  *  `crossOrigin`: 문자열입니다. 사용할 [CORS 정책](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)입니다. 가능한 값은 `anonymous`와 `use-credentials`입니다. `as`가 `"fetch"`로 설정된 경우 필수입니다.
+  *  `referrerPolicy`: 문자열입니다. 페칭할 때 전송할 [Referrer 헤더](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#referrerpolicy)입니다. 사용할 수 있는 값은 `no-referrer-when-downgrade` (기본값), `no-referrer`, `origin`, `origin-when-cross-origin` 그리고 `unsafe-url`입니다.
+  *  `integrity`: 문자열입니다. 리소스의 [진위 확인](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)을 위한 리소스의 암호화 해시입니다.
+  *  `type`: 문자열입니다. 리소스의 MIME 타입입니다.
+  *  `nonce`: 문자열입니다. 엄격한 콘텐츠 보안 정책을 사용할 때 [리소스를 허용하기 위한 암호화 논스](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
+  *  `fetchPriority`: 문자열입니다. 리소스 페칭의 상대적 우선순위를 제안합니다. 사용할 수 있는 값은 `auto` (기본값), `high` 그리고 `low`입니다.
+  *  `imageSrcSet`: 문자열입니다. `as: "image"`와만 함께 사용합니다. [이미지의 소스 세트](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)를 지정합니다.
+  *  `imageSizes`: 문자열입니다. `as: "image"`와만 함께 사용합니다. [이미지의 크기](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)를 지정합니다.
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-`preload` returns nothing.
+`preload`는 아무것도 반환하지 않습니다.
 
-#### Caveats {/*caveats*/}
+#### 주의사항 {/*caveats*/}
 
-* Multiple equivalent calls to `preload` have the same effect as a single call. Calls to `preload` are considered equivalent according to the following rules:
-  * Two calls are equivalent if they have the same `href`, except:
-  * If `as` is set to `image`, two calls are equivalent if they have the same `href`, `imageSrcSet`, and `imageSizes`.
-* In the browser, you can call `preload` in any situation: while rendering a component, in an Effect, in an event handler, and so on.
-* In server-side rendering or when rendering Server Components, `preload` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
+* `preload`에 대한 여러 번의 동등한 호출은 한 번의 호출과 동일한 효과를 갖습니다. `preload`에 대한 호출은 다음 규칙에 따라 동등한 것으로 간주합니다:
+  * 다음의 경우를 제외하고 두 호출의 `href`가 같으면 두 호출은 동일합니다:
+  * `as`가 `image`로 설정된 경우 두 호출의 `href`, `imageSrcSet` 및 `imageSizes`가 같으면 두 호출은 동일합니다.
+* 브라우저에서는 컴포넌트 렌더링 중, Effect, 이벤트 핸들러 등 어떤 상황에서도 `preload`를 호출할 수 있습니다.
+* 서버 사이드 렌더링 또는 서버 컴포넌트를 렌더링할 때 `preload`는 컴포넌트를 렌더링하는 동안 또는 컴포넌트 렌더링에서 발생하는 비동기 context에서 호출하는 경우에만 영향을 미칩니다. 다른 호출은 무시됩니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Preloading when rendering {/*preloading-when-rendering*/}
+### 렌더링 시 프리로딩 {/*preloading-when-rendering*/}
 
-Call `preload` when rendering a component if you know that it or its children will use a specific resource.
+컴포넌트 또는 그 자식 컴포넌트가 특정 리소스를 사용한다는 것을 알고 있다면 컴포넌트를 렌더링할 때 `preload`를 호출하세요.
 
-<Recipes titleText="Examples of preloading">
+<Recipes titleText="프리로딩 예시">
 
-#### Preloading an external script {/*preloading-an-external-script*/}
+#### 외부 스크립트 프리로드하기 {/*preloading-an-external-script*/}
 
 ```js
 import { preload } from 'react-dom';
@@ -96,11 +96,11 @@ function AppRoot() {
 }
 ```
 
-If you want the browser to start executing the script immediately (rather than just downloading it), use [`preinit`](/reference/react-dom/preinit) instead. If you want to load an ESM module, use [`preloadModule`](/reference/react-dom/preloadModule).
+브라우저에서 스크립트 실행을 즉시 시작하려면(스크립트를 다운로드하는 대신) [`preinit`](/reference/react-dom/preinit)을 대신 사용하세요. ESM 모듈을 로드하려면 [`preloadModule`](/reference/react-dom/preloadModule)을 사용하세요.
 
 <Solution />
 
-#### Preloading a stylesheet {/*preloading-a-stylesheet*/}
+#### 스타일시트 프리로드하기 {/*preloading-a-stylesheet*/}
 
 ```js
 import { preload } from 'react-dom';
@@ -111,11 +111,11 @@ function AppRoot() {
 }
 ```
 
-If you want the stylesheet to be inserted into the document immediately (which means the browser will start parsing it immediately rather than just downloading it), use [`preinit`](/reference/react-dom/preinit) instead.
+스타일시트를 문서에 즉시 삽입하려면(즉, 브라우저가 다운로드하는 대신 즉시 구문 분석을 시작한다는 의미) [`preinit`](/reference/react-dom/preinit)을 대신 사용하세요.
 
 <Solution />
 
-#### Preloading a font {/*preloading-a-font*/}
+#### 글꼴 프리로드하기 {/*preloading-a-font*/}
 
 ```js
 import { preload } from 'react-dom';
@@ -127,11 +127,11 @@ function AppRoot() {
 }
 ```
 
-If you preload a stylesheet, it's smart to also preload any fonts that the stylesheet refers to. That way, the browser can start downloading the font before it's downloaded and parsed the stylesheet.
+스타일시트를 프리로드하는 경우 스타일시트가 참조하는 모든 글꼴도 프리로드하는 것이 좋습니다. 이렇게 하면 브라우저가 스타일시트를 다운로드하고 구문 분석하기 전에 글꼴 다운로드를 시작할 수 있습니다.
 
 <Solution />
 
-#### Preloading an image {/*preloading-an-image*/}
+#### 이미지 프리로드하기 {/*preloading-an-image*/}
 
 ```js
 import { preload } from 'react-dom';
@@ -146,15 +146,15 @@ function AppRoot() {
 }
 ```
 
-When preloading an image, the `imageSrcSet` and `imageSizes` options help the browser [fetch the correctly sized image for the size of the screen](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
+이미지를 프리로드할 때 `imageSrcSet` 과 `imageSizes` 옵션은 브라우저가 [화면 크기에 맞는 올바른 크기의 이미지를 가져오는 데](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) 도움이 됩니다.
 
 <Solution />
 
 </Recipes>
 
-### Preloading in an event handler {/*preloading-in-an-event-handler*/}
+### 이벤트 핸들러에서 프리로드하기 {/*preloading-in-an-event-handler*/}
 
-Call `preload` in an event handler before transitioning to a page or state where external resources will be needed. This gets the process started earlier than if you call it during the rendering of the new page or state.
+외부 리소스가 필요한 페이지나 state로 전환하기 전에 이벤트 핸들러에서 `preload`를 호출하세요. 이렇게 하면 새 페이지나 state를 렌더링하는 동안 호출하는 것보다 프로세스가 더 빨리 시작됩니다.
 
 ```js
 import { preload } from 'react-dom';
