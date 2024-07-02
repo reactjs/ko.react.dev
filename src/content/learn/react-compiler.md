@@ -341,7 +341,7 @@ function reactCompilerLoader(sourceCode, sourceMap) {
 
   this.callback(
     null,
-    result.code
+    result.code,
     result.map === null ? undefined : result.map
   );
 }
@@ -351,7 +351,11 @@ module.exports = reactCompilerLoader;
 
 ### Expo {/*usage-with-expo*/}
 
+<<<<<<< HEAD
 Expo는 Metro를 통해 Babel을 사용하므로 설치 지침은 [Babel 사용법](#usage-with-babel) 섹션을 참조하세요.
+=======
+Please refer to [Expo's docs](https://docs.expo.dev/preview/react-compiler/) to enable and use the React Compiler in Expo apps.
+>>>>>>> 53fbed3f676013508fb9cce22a3fc8664b1dc5a1
 
 ### Metro (React Native) {/*usage-with-react-native-metro*/}
 
