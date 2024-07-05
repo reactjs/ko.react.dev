@@ -94,10 +94,10 @@ module.exports = [
     },
   },
   {
-    sources: [/Third\s?Plugin/],
-    target: '서드파티 플러그인',
+    sources: [/Third/, /써드/],
+    target: '서드',
     meta: {
-      term: 'Third Plugin',
+      term: 'Third',
       discussions: [2],
       type: 'React',
     },
@@ -328,7 +328,7 @@ module.exports = [
     },
   },
   {
-    sources: [/Propert[y(?:ies)]/],
+    sources: [/Propert(?:y|ies)/],
     target: '프로퍼티',
     meta: {
       term: 'Property',
@@ -373,7 +373,7 @@ module.exports = [
     },
   },
   {
-    sources: [/Interacti[(?:vity)(?:on)]/, /인터[랙렉][선션]/],
+    sources: [/Interacti(?:vity|on)/, /인터[랙렉][선션]/],
     target: '상호작용',
     meta: {
       term: 'Interactivity',
