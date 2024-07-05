@@ -1,7 +1,10 @@
-const data = require('../data/translateGlossary');
+const data = require('../data/rules/translateGlossary');
+const {errMsgTranslateGlossary} = require('../utils/errMsg');
+const {isKoreanIncluded} = require('../utils/is');
+const {stripDoubleQuotes, stripParentheses} = require('../utils/strip');
 
 /**
- * Look for all the `Str` type `node` on the AST Tree.
+ * Rule for the Translate Glossary
  *
  * @param {RuleContext} context
  * @returns
@@ -10,24 +13,24 @@ module.exports = function ({Syntax, report, getSource, locator, RuleError}) {
   return {
     [Syntax.Str](node) {
       const text = getSource(node);
+      const textStripped = stripParentheses(stripDoubleQuotes(text));
 
-      data.forEach(({source, target}) => {
-        source.forEach((typo) => {
-          // Do not use 'g' flag with Textlint's 'pretty-error' option. It prevents Textlint from finding the exact location.
-          const match = text.match(new RegExp(typo, 'i'));
+      if (!isKoreanIncluded(textStripped)) return; // Textlint only when korean is included in `textStripped`.
+
+      data.forEach(({sources, target}) => {
+        sources.forEach((source) => {
+          const matchIndex = text.match(new RegExp(source, 'i')); // Do not use 'g' flag with textlint's CLI 'pretty-error' option. It prevents textlint from finding the exact locations.
+          const match = textStripped.match(new RegExp(source, 'i'));
 
           if (match) {
             report(
               node,
-              new RuleError(
-                `'${typo}'은/는 '${target}'(으)로 번역되어야 합니다.`,
-                {
-                  padding: locator.range([
-                    match.index,
-                    match.index + text.length,
-                  ]),
-                }
-              )
+              new RuleError(errMsgTranslateGlossary(match[0], target), {
+                padding: locator.range([
+                  matchIndex.index,
+                  matchIndex.index + text.length,
+                ]),
+              })
             );
           }
         });
