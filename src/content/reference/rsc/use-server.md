@@ -38,8 +38,8 @@ Server Action을 클라이언트에서 호출하면, 직렬화된 인자의 사�
 
 함수 각각에 `'use server'`를 표기하는 대신, 파일의 맨 위에 지시어를 추가하여 파일의 모든 export를, 클라이언트를 포함한 모든 곳에서 사용할 수 있는 Server Action으로 표기할 수 있습니다.
 
-#### Caveats {/*caveats*/}
-* `'use server'`는 함수 또는 모듈의 맨 처음에 있어야 합니다. import를 포함한 다른 코드보다 위에 있어야 합니다(지시어 위의 주석은 괜찮습니다). 백틱이 아닌 단일 또는 이중 따옴표로 작성해야 합니다.
+#### 주의사항 {/*caveats*/}
+* `'use server'`는 함수 또는 모듈의 맨 처음에 있어야 합니다. import를 포함한 다른 코드보다 위에 있어야 합니다.(지시어 위의 주석은 괜찮습니다). 백틱이 아닌 단일 또는 이중 따옴표로 작성해야 합니다.
 * `'use server'`는 서버 측 파일에서만 사용할 수 있습니다. 결과적인 Server Action은 props를 통해 클라이언트 컴포넌트로 전달할 수 있습니다. 제공되는 [직렬화 타입](#serializable-parameters-and-return-values)을 참고하세요.
 * Server Action을 [클라이언트 코드](/reference/rsc/use-client)에서 import 하기 위해, 지시어는 모듈 수준에서 사용되어야 합니다.
 * 기본 네트워크 호출이 항상 비동기이므로 `'use server'`는 비동기 함수에서만 사용할 수 있습니다.
@@ -68,37 +68,37 @@ Server Action에서 중요한 데이터를 전송하지 않도록 하기 위해,
 다음은 지원되는 Server Action 인자의 타입입니다.
 
 * Primitives
-	* [string](https://developer.mozilla.org/en-US/docs/Glossary/String)
-	* [number](https://developer.mozilla.org/en-US/docs/Glossary/Number)
-	* [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
-	* [boolean](https://developer.mozilla.org/en-US/docs/Glossary/Boolean)
-	* [undefined](https://developer.mozilla.org/en-US/docs/Glossary/Undefined)
-	* [null](https://developer.mozilla.org/en-US/docs/Glossary/Null)
-	* [symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), [`Symbol.for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)를 통해 전역 Symbol로 등록된 Symbol 한정
+	* [string](https://developer.mozilla.org/ko/docs/Glossary/String)
+	* [number](https://developer.mozilla.org/ko/docs/Glossary/Number)
+	* [bigint](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
+	* [boolean](https://developer.mozilla.org/ko/docs/Glossary/Boolean)
+	* [undefined](https://developer.mozilla.org/ko/docs/Glossary/Undefined)
+	* [null](https://developer.mozilla.org/ko/docs/Glossary/Null)
+	* [symbol](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol), [`Symbol.for`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)를 통해 전역 Symbol로 등록된 Symbol 한정
 * 직렬화 가능한 값을 포함한 Iterables
-	* [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-	* [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
-	* [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
-	* [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
-	* [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)와 [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
-* [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
-* [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) 인스턴스
-* [object initializers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer)로 직렬화 가능한 속성과 함께 생성된 일반 [objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+	* [String](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String)
+	* [Array](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array)
+	* [Map](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map)
+	* [Set](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set)
+	* [TypedArray](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)와 [ArrayBuffer](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
+* [Date](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date)
+* [FormData](https://developer.mozilla.org/ko/docs/Web/API/FormData) 인스턴스
+* [object initializers](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer)로 직렬화 가능한 속성과 함께 생성된 일반 [objects](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object)
 * Server Action인 함수
-* [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+* [Promises](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
 특히 다음은 지원되지 않습니다.
 * React 엘리먼트 또는 [JSX](/learn/writing-markup-with-jsx)
 * 컴포넌트 함수 또는 Server Action이 아닌 다른 함수를 포함하는 함수
-* [클래스](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
-* 클래스의 인스턴스인 객체(언급된 내장 객체 제외)또는 [null 프로토타입](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)이 있는 개체
+* [클래스](https://developer.mozilla.org/ko/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
+* 클래스의 인스턴스인 객체(언급된 내장 객체 제외)또는 [null 프로토타입](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)이 있는 개체
 * 전역에 등록되지 않은 Symbol, 예. `Symbol('my new symbol')`
 
 지원되는 직렬화 가능한 반환 값은 경계 클라이언트 컴포넌트의 [직렬화 가능한 props](/reference/react/use-client#passing-props-from-server-to-client-components)와 동일합니다.
 
 ### Server Action 형식 {/*server-actions-in-forms*/}
 
-Server Action의 가장 일반적인 사용 사례는, 데이터를 변경하는 Server Function을 호출하는 것입니다. 브라우저에서 [HTML form 엘리먼트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)는 사용자가 mutation을 제출하는 전통적인 접근 방식입니다. React 서버 컴포넌트로, React는 [forms](/reference/react-dom/components/form)에서 Server Action에 대한 최상의 지원을 제공합니다.
+Server Action의 가장 일반적인 사용 사례는, 데이터를 변경하는 Server Function을 호출하는 것입니다. 브라우저에서 [HTML form 엘리먼트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form)는 사용자가 mutation을 제출하는 전통적인 접근 방식입니다. React 서버 컴포넌트로, React는 [forms](/reference/react-dom/components/form)에서 Server Action에 대한 최상의 지원을 제공합니다.
 
 사용자가 사용자 이름을 요청할 수 있는 양식이 있습니다.
 
@@ -121,9 +121,9 @@ export default function App() {
 }
 ```
 
-예시에서 `requestUsername`는 `<form>`를 통한 Server Action이다. 사용자가 이 양식을 제출하면 서버 함수인 `requestUsername`에 네트워크 요청이 있습니다. form에서 Server Action을 호출할 때 React는 form의 <CodeStep step={1}>[FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData)</CodeStep>를 Server Action의 첫 번째 인자로 제공합니다.
+예시에서 `requestUsername`는 `<form>`을 통한 Server Action입니다. 사용자가 이 양식을 제출하면 서버 함수인 `requestUsername`에 네트워크 요청이 있습니다. form에서 Server Action을 호출할 때 React는 form의 <CodeStep step={1}>[FormData](https://developer.mozilla.org/ko/docs/Web/API/FormData)</CodeStep>를 Server Action의 첫 번째 인자로 제공합니다.
 
-Server Action을 from `action`에 전달하여, React는 form을 [점진적 향상](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement)할 수 있습니다. 이것은 자바스크립트 번들이 로드되기 전에 양식을 제출할 수 있다는 것을 의미합니다.
+Server Action을 form `action`에 전달하여, React는 form을 [점진적 향상](https://developer.mozilla.org/ko/docs/Glossary/Progressive_Enhancement)할 수 있습니다. 이것은 자바스크립트 번들이 로드되기 전에 양식을 제출할 수 있다는 것을 의미합니다.
 
 
 #### form에서 반환 값 처리 {/*handling-return-values*/}
