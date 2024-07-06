@@ -1,6 +1,6 @@
 const assert = require('assert');
 const functions = require('../../utils/errMsg');
-const testCases = require('../../data/tests/errMsg.spec');
+const testCases = require('../../data/utils/errMsg.spec');
 
 describe('Util errMsg strictEqual testing', function () {
   Object.keys(testCases).forEach((funcName) => {

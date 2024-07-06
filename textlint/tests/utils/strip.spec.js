@@ -1,6 +1,6 @@
 const assert = require('assert');
 const functions = require('../../utils/strip');
-const testCases = require('../../data/tests/strip.spec');
+const testCases = require('../../data/utils/strip.spec');
 
 describe('Util strip strictEqual testing', function () {
   Object.keys(testCases).forEach((funcName) => {
