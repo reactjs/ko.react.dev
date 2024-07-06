@@ -17,22 +17,24 @@ module.exports = function ({Syntax, report, getSource, locator, RuleError}) {
 
       if (!isKoreanIncluded(textStripped)) return; // Textlint only when korean is included in `textStripped`.
 
-      data.forEach(({sources, target}) => {
-        sources.forEach((source) => {
-          const matchIndex = text.match(new RegExp(source, 'i')); // Do not use 'g' flag with textlint's CLI 'pretty-error' option. It prevents textlint from finding the exact locations.
-          const match = textStripped.match(new RegExp(source, 'i'));
+      Object.values(data).forEach((type) => {
+        type.forEach(({sources, target}) => {
+          sources.forEach((source) => {
+            const matchIndex = text.match(new RegExp(source, 'i')); // Do not use 'g' flag with textlint's CLI 'pretty-error' option. It prevents textlint from finding the exact locations.
+            const match = textStripped.match(new RegExp(source, 'i'));
 
-          if (match) {
-            report(
-              node,
-              new RuleError(errMsgTranslateGlossary(match[0], target), {
-                padding: locator.range([
-                  matchIndex.index,
-                  matchIndex.index + text.length,
-                ]),
-              })
-            );
-          }
+            if (match) {
+              report(
+                node,
+                new RuleError(errMsgTranslateGlossary(match[0], target), {
+                  padding: locator.range([
+                    matchIndex.index,
+                    matchIndex.index + text.length,
+                  ]),
+                })
+              );
+            }
+          });
         });
       });
     },
