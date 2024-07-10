@@ -26,7 +26,7 @@ State를 잘 구조화하면 수정과 디버깅이 즐거운 컴포넌트와 �
 4. **State의 중복 피하기.** 여러 상태 변수 간 또는 중첩된 객체 내에서 동일한 데이터가 중복될 경우 동기화를 유지하기가 어렵습니다. 가능하다면 중복을 줄이세요.
 5. **깊게 중첩된 state 피하기.** 깊게 계층화된 state는 업데이트하기 쉽지 않습니다. 가능하면 state를 평탄한 방식으로 구성하는 것이 좋습니다.
 
-이러한 원칙 뒤에 있는 목표는 *오류 없이 상태를 쉽게 업데이트하는 것* 입니다. State에서 불필요하고 중복된 데이터를 제거하면 모든 데이터 조각이 동기화 상태를 유지하는 데 도움이 됩니다. 이는 데이터베이스 엔지니어가 [데이터베이스 구조를 "정규화"](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description)하여 버그 발생 가능성을 줄이는 것과 유사합니다. 알베르트 아인슈타인의 말을 빌리자면, **"당신의 state를 가능한 한 단순하게 만들어야 한다, 더 단순하게 가 아니라."**
+이러한 원칙 뒤에 있는 목표는 *오류 없이 상태를 쉽게 업데이트하는 것* 입니다. State에서 불필요하고 중복된 데이터를 제거하면 모든 데이터 조각이 동기화 상태를 유지하는 데 도움이 됩니다. 이는 데이터베이스 엔지니어가 [데이터베이스 구조를 "정규화"](https://learn.microsoft.com/ko-kr/office/troubleshoot/access/database-normalization-description)하여 버그 발생 가능성을 줄이는 것과 유사합니다. 알베르트 아인슈타인의 말을 빌리자면, **"당신의 state를 가능한 한 단순하게 만들어야 한다, 더 단순하게 가 아니라."**
 
 이제 이 원칙들이 실제로 어떻게 적용되는지 살펴보겠습니다.
 
@@ -98,7 +98,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 <Pitfall>
 
-State 변수가 객체인 경우에는 다른 필드를 명시적으로 복사하지 않고 [하나의 필드만 업데이트할 수 없다](/learn/updating-objects-in-state)는 것을 기억하세요. 예를 들어, 위의 예제에서는 `y` 속성이 전혀 없기 때문입니다 `setPosition({ x: 100 })`를 할 수 없습니다! 대신, `x`만 설정하려면 `setPosition({ ...position, x: 100 })`을 하거나 두 개의 state 변수로 나누고 `setX(100)`을 해야 합니다.
+State 변수가 객체인 경우에는 다른 필드를 명시적으로 복사하지 않고 [하나의 필드만 업데이트할 수 없다](/learn/updating-objects-in-state)는 것을 기억하세요. 예를 들어, 위의 예제에서는 `y` 속성이 전혀 없기 때문입니다. `setPosition({ x: 100 })`를 할 수 없습니다! 대신, `x`만 설정하려면 `setPosition({ ...position, x: 100 })`을 하거나 두 개의 state 변수로 나누고 `setX(100)`을 해야 합니다.
 
 </Pitfall>
 
