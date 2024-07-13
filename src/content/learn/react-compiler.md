@@ -341,7 +341,7 @@ function reactCompilerLoader(sourceCode, sourceMap) {
 
   this.callback(
     null,
-    result.code
+    result.code,
     result.map === null ? undefined : result.map
   );
 }
@@ -351,13 +351,21 @@ module.exports = reactCompilerLoader;
 
 ### Expo {/*usage-with-expo*/}
 
-Expo는 Metro를 통해 Babel을 사용하므로 설치 지침은 [Babel 사용법](#usage-with-babel) 섹션을 참조하세요.
+Expo 앱에서 React Compiler 를 활용하거나 사용하기 위해서는 [Expo's docs](https://docs.expo.dev/preview/react-compiler/) 를 참고해주세요.
 
 ### Metro (React Native) {/*usage-with-react-native-metro*/}
 
 React Native는 Metro를 통해 Babel을 사용하므로 설치 지침은 [Babel 사용법](#usage-with-babel) 섹션을 참조하세요.
 
-## 문제 해결 {/*troubleshooting*/}
+### Rspack {/*usage-with-rspack*/}
+
+Rspack 앱에서 React Compiler 를 활용하거나 사용하기 위해서는 [Rspack's docs](https://rspack.dev/guide/tech/react#react-compiler) 를 참고해주세요.
+
+### Rsbuild {/*usage-with-rsbuild*/}
+
+Rsbuild 앱에서 React Compiler 를 활용하거나 사용하기 위해서는 [Rsbuild's docs](https://rsbuild.dev/guide/framework/react#react-compiler) 를 참고해주세요.
+
+## Troubleshooting {/*troubleshooting*/}
 
 문제를 보고하려면 먼저 [React 컴파일러 플레이그라운드](https://playground.react.dev/)에서 최소한의 재현 사례를 만들어 버그 보고서에 포함하세요. [facebook/react](https://github.com/facebook/react/issues) 저장소에서 이슈를 열 수 있습니다.
 

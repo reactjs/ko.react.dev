@@ -1898,7 +1898,7 @@ export default function Counter() {
 }
 ```
 
-`useCounter.js` 에 커스텀 Hook을 작성하고 `Counter.js` 파일에 가져와야 합니다.
+`useCounter.js` 에 커스텀 Hook을 작성하고 `App.js` 파일에 가져와야 합니다.
 
 <Sandpack>
 
