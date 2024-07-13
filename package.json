@@ -20,7 +20,10 @@
     "start": "next start",
     "postinstall": "patch-package && (is-ci || husky install .husky)",
     "check-all": "npm-run-all prettier lint:fix tsc rss",
-    "rss": "node scripts/generateRss.js"
+    "rss": "node scripts/generateRss.js",
+    "textlint-test": "yarn mocha ./textlint/tests/utils && yarn mocha ./textlint/tests/rules",
+    "textlint-docs": "node ./textlint/generators/genTranslateGlossaryDocs.js",
+    "textlint-lint": "yarn textlint ./src/content --rulesdir ./textlint/rules -f pretty-error"
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "2.13.5",
@@ -77,6 +80,7 @@
     "lint-staged": ">=10",
     "mdast-util-to-string": "^1.1.0",
     "metro-cache": "0.72.2",
+    "mocha": "^10.6.0",
     "npm-run-all": "^4.1.5",
     "patch-package": "^6.2.2",
     "postcss": "^8.4.5",
@@ -94,6 +98,9 @@
     "retext-smartypants": "^4.0.0",
     "rss": "^1.2.2",
     "tailwindcss": "^3.4.1",
+    "textlint": "^14.0.4",
+    "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-tester": "^14.0.4",
     "typescript": "^4.0.2",
     "unist-util-visit": "^2.0.3",
     "webpack-bundle-analyzer": "^4.5.0"
