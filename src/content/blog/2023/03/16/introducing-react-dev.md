@@ -57,7 +57,7 @@ description: 오늘 React와 React 문서의 새로운 보금자리인 react.dev
 
 학습 섹션은 [빠르게 시작하기](/learn) 페이지로 시작됩니다. 이는 React를 짧게 소개하는 여정입니다. 컴포넌트, props, state 같은 개념에 대한 문법을 소개하지만, 그들을 어떻게 사용하는지에 대한 세부 내용을 다루진 않습니다.
 
-직접 해보며 배우고 싶다면, 다음으로 [Tic-Tac-Toe 튜토리얼](/learn/tutorial-tic-tac-toe)을 확인하는 것을 추천합니다. React로 작은 게임을 구현하는 것을 자세히 설명하면서, 동시에 일상적으로 사용할 기술을 가르칩니다. 여기에 구현하게 될 내용이 있습니다.
+직접 해보며 배우고 싶다면, 다음으로 [Tic-Tac-Toe 자습서](/learn/tutorial-tic-tac-toe)를 확인하는 것을 추천합니다. React로 작은 게임을 구현하는 것을 자세히 설명하면서, 동시에 일상적으로 사용할 기술을 가르칩니다. 여기에 구현하게 될 내용이 있습니다.
 
 <Sandpack>
 
@@ -226,7 +226,7 @@ body {
 
 </Sandpack>
 
-또한 많은 사람에게 React를 "완전히 이해시켜 준" 튜토리얼인 [React로 사고하기](/learn/thinking-in-react)도 강조하고 싶습니다. **두 가지 클래식 튜토리얼 모두 함수 컴포넌트와 Hooks를 사용하도록 업데이트했고,** 따라서 새 튜토리얼만큼 좋습니다.
+또한 많은 사람에게 React를 "완전히 이해시켜 준" 자습서인 [React로 사고하기](/learn/thinking-in-react)도 강조하고 싶습니다. **두 가지 클래식 자습서 모두 함수 컴포넌트와 Hooks를 사용하도록 업데이트했고,** 따라서 새 자습서만큼 좋습니다.
 
 <Note>
 
@@ -536,7 +536,7 @@ export default function MyInput() {
 
 #### 체크박스 (불리언) {/*checkbox-boolean*/}
 
-이 예시에서 `liked` state 변수는 불리언을 저장합니다. input 요소를 클릭할 때, `setLiked`가 브라우저 체크박스의 선택 여부에 따라 `liked` state 변수를 업데이트합니다. `liked`는 체크박스 아래에 있는 문구를 렌더링하는 데 사용됩니다. 
+이 예시에서 `liked` state 변수는 불리언을 저장합니다. input 요소를 클릭할 때, `setLiked`가 브라우저 체크박스의 선택 여부에 따라 `liked` state 변수를 업데이트합니다. `liked`는 체크박스 아래에 있는 문구를 렌더링하는 데 사용됩니다.
 
 <Sandpack>
 
@@ -626,7 +626,7 @@ button { display: block; margin-top: 10px; }
 - 새로운 문서가 번역되도록 전 세계 커뮤니티와 협업하기 
 - 새로운 웹 사이트에 놓친 기능 추가하기 (예를 들어, 이 블로그를 위한 RSS)
 
-이제 [react.dev](https://react.dev/)가 출시되었으니, 제삼자 React 교육 자료를 "따라잡는" 데서 벗어나 새로운 정보를 추가하고 새 웹 사이트를 더욱 개선하는 데 집중할 수 있게 되었습니다. 
+이제 [react.dev](https://react.dev/)가 출시되었으니, 제삼자 React 교육 자료를 "따라잡는" 데서 벗어나 새로운 정보를 추가하고 새 웹 사이트를 더욱 개선하는 데 집중할 수 있게 되었습니다.
 
 React를 배우기에 가장 좋은 시기가 왔다고 생각합니다.
 
@@ -642,8 +642,8 @@ React 팀에서 [Rachel Nabors](https://twitter.com/rachelnabors/)는 프로젝�
 
 웹 사이트 디자인을 해주신 [Dan Lebowitz](https://twitter.com/lebo)와 샌드박스 디자인을 해주신 [Razvan Gradinar](https://dribbble.com/GradinarRazvan)에게 감사드립니다.
 
-프론트엔드 개발에서는, 프로토타입 개발을 해주신 [Jared Palmer](https://twitter.com/jaredpalmer)에게 감사드립니다. UI 개발에 도움을 주신 [ThisDotLabs](https://www.thisdot.co/)의 [Dane Grant](https://twitter.com/danecando)와 [Dustin Goodman](https://twitter.com/dustinsgoodman)에게 감사드립니다. 샌드박스 통합 작업을 진행해 주신 [CodeSandbox](https://codesandbox.io/)의 [Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), [Danilo Woznica](https://twitter.com/danilowoz)에게 감사드립니다. 세부 개발과 색상 및 미세한 세부 사항을 다듬는 디자인 작업을 해주신 [Rick Hanlon](https://twitter.com/rickhanlonii)에게 감사드립니다. 웹 사이트에 새로운 기능을 추가하고 유지하는 데 도움 주신 [Harish Kumar](https://www.strek.in/)와 [Luna Ruan](https://twitter.com/lunaruan)에게 감사드립니다. 
+프론트엔드 개발에서는, 프로토타입 개발을 해주신 [Jared Palmer](https://twitter.com/jaredpalmer)에게 감사드립니다. UI 개발에 도움을 주신 [ThisDotLabs](https://www.thisdot.co/)의 [Dane Grant](https://twitter.com/danecando)와 [Dustin Goodman](https://twitter.com/dustinsgoodman)에게 감사드립니다. 샌드박스 통합 작업을 진행해 주신 [CodeSandbox](https://codesandbox.io/)의 [Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), [Danilo Woznica](https://twitter.com/danilowoz)에게 감사드립니다. 세부 개발과 색상 및 미세한 세부 사항을 다듬는 디자인 작업을 해주신 [Rick Hanlon](https://twitter.com/rickhanlonii)에게 감사드립니다. 웹 사이트에 새로운 기능을 추가하고 유지하는 데 도움 주신 [Harish Kumar](https://www.strek.in/)와 [Luna Ruan](https://twitter.com/lunaruan)에게 감사드립니다.
 
-알파, 베타 테스트에 참여하기 위해 자발적으로 시간 내어 주신 분들께 큰 감사를 드립니다. 여러분의 열정과 소중한 피드백 덕분에 이 문서를 만들어 낼 수 있었습니다. 특별한 인사를 드리고 싶은 분은 React Conf 2021에서 React 문서를 이용했던 경험을 이야기해 주신 베타 테스터, [Debbie O'Brien](https://twitter.com/debs_obrien) 입니다. 
+알파, 베타 테스트에 참여하기 위해 자발적으로 시간 내어 주신 분들께 큰 감사를 드립니다. 여러분의 열정과 소중한 피드백 덕분에 이 문서를 만들어 낼 수 있었습니다. 특별한 인사를 드리고 싶은 분은 React Conf 2021에서 React 문서를 이용했던 경험을 이야기해 주신 베타 테스터, [Debbie O'Brien](https://twitter.com/debs_obrien) 입니다.
 
 끝으로, 이 노력의 영감이 된 React 커뮤니티에 감사드립니다. 여러분은 우리가 이 일을 하는 이유이며, 새로운 문서가 여러분이 원하는 어떤 사용자 인터페이스든 React를 사용하여 구현하는 데 도움이 되길 바랍니다.
