@@ -119,7 +119,7 @@ label {
 
 **실제로 몇가지 원칙을 따르면 memoization가 불필요할 수 있습니다.**
 
-1. 컴포넌트가 다른 컴포넌트를 시각적으로 감쌀 때 [JSX를 자식으로 받아들이도록 하세요.](/learn/passing-props-to-a-component#passing-jsx-as-children) 이렇게 하면 wrapper 컴포넌트가 자신의 state를 업데이트할 때 React는 그 자식 컴포넌트가 리렌더링 될 필요가 없다는 것을 알 수 있습니다.
+1. 컴포넌트가 다른 컴포넌트를 시각적으로 감쌀 때 [JSX를 자식으로 받아들이도록 하세요.](/learn/passing-props-to-a-component#passing-jsx-as-children) 이렇게 하면 래퍼 컴포넌트가 자신의 state를 업데이트할 때 React는 그 자식 컴포넌트가 리렌더링 될 필요가 없다는 것을 알 수 있습니다.
 2. 지역 state를 선호하고 필요 이상으로 [state를 끌어올리기](/learn/sharing-state-between-components)를 하지 마세요. 예를 들어, 최상위 트리나 전역 state 라이브러리에 폼이나 아이템이 호버되었는지와 같은 일시적인 state를 두지 마세요.
 3. [렌더링 로직을 순수하게](/learn/keeping-components-pure) 유지하세요. 컴포넌트를 렌더링했을 때 문제가 발생하거나 눈에 띄는 시각적 아티팩트가 생성된다면 컴포넌트에 버그가 있는 것입니다! memoization 하는 대신 버그를 수정하세요.
 4. [state를 업데이트하는 불필요한 Effect](/learn/you-might-not-need-an-effect)를 피하세요. React 앱에서 대부분의 성능 문제는 컴포넌트를 반복해서 렌더링하게 만드는 Effect에서 발생하는 일련의 업데이트로 인해 발생합니다.
