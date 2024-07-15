@@ -98,7 +98,7 @@ Next.js는 [Vercel](https://vercel.com/)이 관리합니다. 어느 Node.js 서�
 
 #### React 팀의 풀스택 아키텍쳐 비전을 구현한 기능은 무엇인가요? {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
 
-Next.js의 App Router 번들러는 공식 [React Server Components 명세](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md) 전체를 구현했습니다. 이를 통해 빌드 시간, 서버 전용, 대화형 컴포넌트를 하나의 React 트리에서 혼합할 수 있습니다.
+Next.js의 App Router 번들러는 공식 [React Server 컴포넌트 명세](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md) 전체를 구현했습니다. 이를 통해 빌드 시간, 서버 전용, 대화형 컴포넌트를 하나의 React 트리에서 혼합할 수 있습니다.
 
 예를 들어, 데이터베이스나 파일을 읽는 `async` 함수로 서버 전용 React 컴포넌트를 작성할 수 있습니다. 그런 다음 이를 통해 데이터를 대화형 컴포넌트로 전달할 수 있습니다.
 
@@ -124,6 +124,6 @@ Next.js의 App Router는 또한 Suspense를 사용하는 데이터 통신과도 
 </Suspense>
 ```
 
-Server Component와 Suspense는 Next.js의 기능이 아닌 React의 기능입니다. 하지만 프레임워크 수준에서 이를 채택하려면 많은 노력과 비교적 복잡한 구현 작업이 필요합니다. 현재 기준으로는 Next.js의 App Router가 가장 완벽한 구현입니다. React 팀은 차세대 프레임워크에서는 이러한 기능을 구현하기 쉽도록 번들러 개발자와 공동으로 노력하고 있습니다.
+Server 컴포넌트와 Suspense는 Next.js의 기능이 아닌 React의 기능입니다. 하지만 프레임워크 수준에서 이를 채택하려면 많은 노력과 비교적 복잡한 구현 작업이 필요합니다. 현재 기준으로는 Next.js의 App Router가 가장 완벽한 구현입니다. React 팀은 차세대 프레임워크에서는 이러한 기능을 구현하기 쉽도록 번들러 개발자와 공동으로 노력하고 있습니다.
 
 </DeepDive>
