@@ -96,7 +96,7 @@ Next.js는 [Vercel](https://vercel.com/)이 관리합니다. 어느 Node.js 서�
 
 <DeepDive>
 
-#### React 팀의 풀스택 아키텍쳐 비전을 구현한 기능은 무엇인가요? {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
+#### React 팀의 풀스택 아키텍처 비전을 구현한 기능은 무엇인가요? {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
 
 Next.js의 App Router 번들러는 공식 [React Server 컴포넌트 명세](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md) 전체를 구현했습니다. 이를 통해 빌드 시간, 서버 전용, 대화형 컴포넌트를 하나의 React 트리에서 혼합할 수 있습니다.
 
