@@ -39,7 +39,7 @@ Effect에 대해 자세히 알아보기 전에, 컴포넌트 내부의 2가지 �
 
 ## Effect가 필요 없을지도 모릅니다 {/*you-might-not-need-an-effect*/}
 
-**컴포넌트에 Effect를 무작정 추가하지 마세요.** Effect는 주로 React 코드를 벗어난 특정 *외부* 시스템과 동기화하기 위해 사용됩니다. 이는 브라우저 API, 써드파티 위젯, 네트워크 등을 포함합니다. 만약 당신의 Effect가 단순히 다른 상태에 기반하여 일부 상태를 조정하는 경우에는 [Effect가 필요하지 않을 수 있습니다.](/learn/you-might-not-need-an-effect)
+**컴포넌트에 Effect를 무작정 추가하지 마세요.** Effect는 주로 React 코드를 벗어난 특정 *외부* 시스템과 동기화하기 위해 사용됩니다. 이는 브라우저 API, 서드 파티 위젯, 네트워크 등을 포함합니다. 만약 당신의 Effect가 단순히 다른 상태에 기반하여 일부 상태를 조정하는 경우에는 [Effect가 필요하지 않을 수 있습니다.](/learn/you-might-not-need-an-effect)
 
 ## Effect를 작성하는 법 {/*how-to-write-an-effect*/}
 

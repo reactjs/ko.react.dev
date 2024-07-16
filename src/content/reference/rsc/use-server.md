@@ -98,7 +98,7 @@ Server Action에서 중요한 데이터를 전송하지 않도록 하기 위해,
 
 ### Server Action 형식 {/*server-actions-in-forms*/}
 
-Server Action의 가장 일반적인 사용 사례는, 데이터를 변경하는 Server Function을 호출하는 것입니다. 브라우저에서 [HTML 폼 엘리먼트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form)는 사용자가 mutation을 제출하는 전통적인 접근 방식입니다. React 서버 컴포넌트로, React는 [forms](/reference/react-dom/components/form)에서 Server Action에 대한 최상의 지원을 제공합니다.
+Server Action의 가장 일반적인 사용 사례는, 데이터를 변경하는 서버 함수를 호출하는 것입니다. 브라우저에서 [HTML 폼 엘리먼트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form)는 사용자가 mutation을 제출하는 전통적인 접근 방식입니다. React 서버 컴포넌트로, React는 [forms](/reference/react-dom/components/form)에서 Server Action에 대한 최상의 지원을 제공합니다.
 
 사용자가 사용자 이름을 요청할 수 있는 양식이 있습니다.
 

@@ -67,7 +67,7 @@ export default function Avatar() {
 
 </Sandpack>
 
-이미지를 둥글게 만드는 `"avatar"` CSS class 이름을 지정하는 `className="avatar"`와 `avatar`라는 JavaScript 변수의 값을 읽는 `src={avatar}`의 차이점에 주목해야 합니다. 중괄호를 사용하면 마크업에서 바로 JavaScript를 사용할 수 있기 때문입니다.
+이미지를 둥글게 만드는 `"avatar"` CSS 클래스 이름을 지정하는 `className="avatar"`와 `avatar`라는 JavaScript 변수의 값을 읽는 `src={avatar}`의 차이점에 주목해야 합니다. 중괄호를 사용하면 마크업에서 바로 JavaScript를 사용할 수 있기 때문입니다.
 
 ## 중괄호 사용하기: JavaScript 세계로 연결하는 창 {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
