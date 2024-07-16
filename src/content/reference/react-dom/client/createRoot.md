@@ -74,7 +74,7 @@ React는 `root`에 `<App />`을 표시하고 그 안에 있는 DOM을 관리합�
 
 #### 매개변수 {/*root-render-parameters*/}
 
-* `reactNode`: 표시하려는 *React 노드*. 일반적으로 `<App />`과 같은 JSX 조각이 되지만, [`createElement()`](/reference/react/createElement)로 작성한 React 엘리먼트, 문자열, 숫자, `null`, `undefined` 등을 전달할 수도 있습니다.
+* `reactNode`: 표시하려는 *React 노드* 입니다. 일반적으로 `<App />`과 같은 JSX 조각이지만, [`createElement()`](/reference/react/createElement)로 작성한 React 엘리먼트, 문자열, 숫자, `null`, `undefined` 등일 수도 있습니다.
 
 
 #### 반환값 {/*root-render-returns*/}
@@ -113,7 +113,7 @@ root.unmount();
 
 #### 반환값 {/*root-unmount-returns*/}
 
-`root.unmount` returns `undefined`.
+`root.unmount`는 `undefined` 를 반환합니다.
 
 #### 주의사항 {/*root-unmount-caveats*/}
 
@@ -127,7 +127,7 @@ root.unmount();
 
 ### 온전히 React만으로 작성된 앱 렌더링하기 {/*rendering-an-app-fully-built-with-react*/}
 
-앱이 온전히 React만으로 작성된 경우, 전체 앱에 대해 단일 루트를 생성하세요.
+앱이 온전히 React만으로 작성된 경우 전체 앱에 대해 단일 루트를 생성하세요.
 
 ```js [[1, 3, "document.getElementById('root')"], [2, 4, "<App />"]]
 import { createRoot } from 'react-dom/client';
@@ -210,11 +210,11 @@ HTML이 비어있으면, 앱의 자바스크립트 코드가 로드되고 실행
 
 ---
 
-### React로 부분적으로 작성된 페이지 렌더링하기 {/*rendering-a-page-partially-built-with-react*/}
+### 부분적으로 React에 의해 작성된 페이지 렌더링하기 {/*rendering-a-page-partially-built-with-react*/}
 
-페이지가 [React만으로 작성되지 않은 경우](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page), React가 관리하는 각 최상위 UI에 대한 루트를 생성하기 위해 `createRoot`를 여러 번 호출할 수 있습니다. 루트마다 [`root.render`](#root-render)를 호출함으로써 각각 다른 콘텐츠를 표시할 수 있습니다.
+페이지가 [React로만 작성되지 않은 경우](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page), React가 관리하는 각 최상위 UI에 대한 루트를 생성하기 위해 `createRoot`를 여러 번 호출할 수 있습니다. 루트마다 [`root.render`](#root-render)를 호출함으로써 각각 다른 콘텐츠를 표시할 수 있습니다.
 
-다음 예시에서는 서로 다른 두 개의 React 컴포넌트가 `index.html` 파일에 정의된 두 개의 DOM 노드에 렌더링합니다.
+여기, 서로 다른 두 개의 React 컴포넌트가 `index.html` 파일에 정의된 두 개의 DOM 노드에 렌더링됩니다.
 
 <Sandpack>
 
@@ -307,9 +307,9 @@ root.unmount();
 
 ---
 
-### Updating a root component {/*updating-a-root-component*/}
+### 루트 컴포넌트를 업데이트 하기 {/*updating-a-root-component*/}
 
-같은 루트에서 `render`를 두 번 이상 호출할 수도 있습니다. 컴포넌트 트리 구조가 이전 렌더링과 일치하는 한, React는 [기존 state를 유지](/learn/preserving-and-resetting-state)합니다. 다음 예제에서 input에 어떻게 타이핑하든 관계없이, 매 초 반복되는 `render` 호출로 인한 업데이트가 아무런 문제를 일으키지 않음을 주목하세요.
+같은 루트에서 `render`를 두 번 이상 호출할 수도 있습니다. 컴포넌트의 트리 구조가 이전 렌더링과 일치하는 한 React는 [기존 state를 유지](/learn/preserving-and-resetting-state)합니다. 다음 예제에서 input에 어떻게 타이핑하는지와 무관하게, 매초 반복되는 `render` 호출로 인한 업데이트가 아무런 문제를 일으키지 않음을 주목하세요.
 
 <Sandpack>
 
@@ -340,9 +340,9 @@ export default function App({counter}) {
 
 </Sandpack>
 
-`render`를 여러 번 호출하는 경우는 흔하지 않습니다. 일반적으로는, 컴포넌트가 [state를 업데이트](/reference/react/useState)합니다.
+`render`를 여러 번 호출하는 경우는 흔하지 않습니다. 일반적으로는 컴포넌트가 [state를 업데이트](/reference/react/useState)합니다.
 
-### 처리되지 않은 에러에 대한 대화 상자 표시하기 {/*show-a-dialog-for-uncaught-errors*/}
+### 처리되지 않은 에러에 대한 대화상자 표시하기 {/*show-a-dialog-for-uncaught-errors*/}
 
 <Canary>
 
@@ -350,7 +350,7 @@ export default function App({counter}) {
 
 </Canary>
 
-기본적으로 React는 처리되지 않은 모든 오류를 콘솔에 로그로 표시할 것입니다. 자체 오류 보고를 구현하려면 선택적인  `onUncaughtError` 루트 옵션을 제공할 수 있습니다:
+기본적으로 React는 처리되지 않은 모든 오류를 콘솔에 로그로 표시할 것입니다. 자체 오류 보고를 구현하려면 선택적인 `onUncaughtError` 루트 옵션을 제공할 수 있습니다.
 
 ```js [[1, 6, "onUncaughtError"], [2, 6, "error", 1], [3, 6, "errorInfo"], [4, 10, "componentStack"]]
 import { createRoot } from 'react-dom/client';
@@ -372,10 +372,10 @@ root.render(<App />);
 
 <CodeStep step={1}>onUncaughtError</CodeStep> 옵션은 두 개의 인자를 받는 함수입니다.
 
-1. 발생한 <CodeStep step={2}>에러</CodeStep>.
-2. 에러의 <CodeStep step={4}>componentStack</CodeStep>을 포함하는 <CodeStep step={3}>errorInfo</CodeStep> 객체.
+1. 발생한 <CodeStep step={2}>error</CodeStep> 자체.
+2. 그 에러의 <CodeStep step={4}>componentStack</CodeStep>을 포함하는 <CodeStep step={3}>errorInfo</CodeStep> 객체.
 
-`onUncaughtError` root 옵션을 사용해 에러 대화 상자를 표시할 수 있습니다.
+`onUncaughtError` 루트 옵션을 사용해 에러 대화상자를 표시할 수 있습니다.
 
 <Sandpack>
 
@@ -388,7 +388,7 @@ root.render(<App />);
 <body>
 <!--
   React 앱의 오류로 인해 충돌이 발생할 수 있으므로, 
-  기본 HTML의 에러 대화 상자를 사용하였습니다.
+  기본 HTML의 에러 대화상자를 사용하였습니다.
 -->
 <div id="error-dialog" class="hidden">
   <h1 id="error-title" class="text-red"></h1>
@@ -620,10 +620,10 @@ root.render(<App />);
 
 <CodeStep step={1}>onCaughtError</CodeStep> 옵션은 두개의 인수를 받는 함수입니다.
 
-1. Error Boundary에 의해 포착된 <CodeStep step={2}>에러</CodeStep>
-2. 에러의 <CodeStep step={4}>componentStack</CodeStep>을 포함하는 <CodeStep step={3}>errorInfo</CodeStep>.
+1. Error Boundary에 의해 포착된 <CodeStep step={2}>error</CodeStep>.
+2. 그 에러의 <CodeStep step={4}>componentStack</CodeStep>을 포함하는 <CodeStep step={3}>errorInfo</CodeStep>.
 
-`onCaughtError` 루트 옵션을 사용해 에러 대화 상자를 표시하거나 로그에 기록된 에러 중 알고있는 것을 필터링 할 수 있습니다.
+`onCaughtError` 루트 옵션을 사용해 에러 대화상자를 표시하거나 로그에 기록된 에러 중 알고있는 것을 필터링 할 수 있습니다.
 
 <Sandpack>
 
@@ -766,7 +766,7 @@ function reportError({ title, error, componentStack, dismissable }) {
     errorClose.classList.add("hidden");
   }
 
-  // 대화 상자를 표시합니다.
+  // 대화상자를 표시합니다.
   errorDialog.classList.remove("hidden");
 }
 
@@ -874,9 +874,9 @@ function Throw({error}) {
 
 </Sandpack>
 
-### 복구 가능한 에러에 대한 대화 상자 표시하기 {/*displaying-a-dialog-for-recoverable-errors*/}
+### 복구 가능한 에러에 대한 대화상자 표시하기 {/*displaying-a-dialog-for-recoverable-errors*/}
 
-React는 렌더링 중에 발생한 에러를 복구하기 위해 컴포넌트를 자동으로 두번 렌더링할 수 있습니다. 성공적으로 복구되면 React는 콘솔에 복구 가능한 에러를 로그로 남겨 개발자에게 알립니다. 이 동작을 재정의하려면 선택적인 `onRecoverableError` 루트 옵션을 제공할 수 있습니다.
+React는 렌더링 중 발생한 에러를 복구하기 위해 컴포넌트를 자동으로 두번 렌더링할 수 있습니다. 성공적으로 복구되면 React는 콘솔에 복구 가능한 에러를 로그로 남겨 개발자에게 알립니다. 이 동작을 override 하려면 선택적인 `onRecoverableError` 루트 옵션을 제공할 수 있습니다.
 
 ```js [[1, 6, "onRecoverableError"], [2, 6, "error", 1], [3, 10, "error.cause"], [4, 6, "errorInfo"], [5, 11, "componentStack"]]
 import { createRoot } from 'react-dom/client';
@@ -902,7 +902,7 @@ root.render(<App />);
 1. React가 발생시킨 <CodeStep step={2}>error</CodeStep>. 일부 에러는 기존 원인을 <CodeStep step={3}>error.cause</CodeStep>에 포함하기도 합니다.
 2. 에러의 <CodeStep step={5}>componentStack</CodeStep>을 포함하는 <CodeStep step={4}>errorInfo</CodeStep> 객체.
 
-에러 대화 상자를 표시하기 위해 `onRecoverableError` 루트 옵션을 사용할 수 있습니다.
+에러 대화상자를 표시하기 위해 `onRecoverableError` 루트 옵션을 사용할 수 있습니다.
 
 <Sandpack>
 
@@ -1045,7 +1045,7 @@ function reportError({ title, error, componentStack, dismissable }) {
     errorClose.classList.add("hidden");
   }
 
-  // 대화 상자를 표시합니다.
+  // 대화상자를 표시합니다.
   errorDialog.classList.remove("hidden");
 }
 
@@ -1136,7 +1136,7 @@ function Throw({error}) {
 ---
 ## 문제 해결 {/*troubleshooting*/}
 
-### 루트를 생성했는데 아무것도 표시되지 않습니다 {/*ive-created-a-root-but-nothing-is-displayed*/}
+### 루트를 생성했지만 무엇도 표시되지 않습니다 {/*ive-created-a-root-but-nothing-is-displayed*/}
 
 실제로 앱을 루트에 **렌더링**하는 것을 잊지 않았는지 확인하세요.
 
@@ -1152,7 +1152,7 @@ root.render(<App />);
 
 ---
 
-### "대상 컨테이너가 DOM 엘리먼트가 아닙니다" 라는 오류가 발생합니다. {/*im-getting-an-error-target-container-is-not-a-dom-element*/}
+### 다음과 같은 에러가 발생합니다: "대상 컨테이너가 DOM 엘리먼트가 아닙니다" {/*im-getting-an-error-target-container-is-not-a-dom-element*/}
 
 `createRoot` 옵션을 `root.render(...)`에 전달하는 것은 일반적인 실수입니다.
 
@@ -1181,7 +1181,7 @@ root.render(<App />);
 
 ---
 
-### "함수가 React 자식으로 유효하지 않습니다" 오류가 발생합니다. {/*im-getting-an-error-functions-are-not-valid-as-a-react-child*/}
+### 다음과 같은 에러가 발생합니다: "함수가 React 자식으로 유효하지 않습니다" {/*im-getting-an-error-functions-are-not-valid-as-a-react-child*/}
 
 이 오류는 `root.render`에 전달하는 것이 React 컴포넌트가 아님을 의미합니다.
 
