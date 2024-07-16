@@ -35,7 +35,7 @@ React는 `domNode` 내부의 HTML에 붙어, 내부 DOM을 직접 관리할 것�
 
 #### Parameters {/*parameters*/}
 
-* `domNode`: 서버에서 root element로 렌더링된 [DOM element](https://developer.mozilla.org/en-US/docs/Web/API/Element)
+* `domNode`: 서버에서 root 엘리먼트로 렌더링된 [DOM 엘리먼트](https://developer.mozilla.org/en-US/docs/Web/API/Element)
 
 * `reactNode`: 앞서 존재하는 HTML에 렌더링하기 위한 "React 노드" 입니다. 주로 `ReactDOM Server`의 `renderToPipeableStream(<App />)`와 같은 메소드로 렌더링된  `<App />`같은 JSX 조각들입니다.
 
@@ -195,7 +195,7 @@ function Counter() {
 * [`window.matchMedia`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)같은 브라우저에서만 사용가능한 API를 렌더링 로직에 사용함.
 * 서버와 클라이언트에서 서로 다른 데이터를 렌더링함.
 
-React는 hydration 에러에서 복구됩니다, 하지만 **다른 버그들과 같이 반드시 고쳐줘야 합니다.** 가장 나은 경우는 그저 느려지기만 할 뿐이지만, 최악의 경우엔 이벤트 핸들러가 다른 element에 붙어버립니다.
+React는 hydration 에러에서 복구됩니다, 하지만 **다른 버그들과 같이 반드시 고쳐줘야 합니다.** 가장 나은 경우는 그저 느려지기만 할 뿐이지만, 최악의 경우엔 이벤트 핸들러가 다른 엘리먼트에 붙어버립니다.
 
 </Pitfall>
 
@@ -236,9 +236,9 @@ hydrateRoot(document, <App />);
 
 ### 어쩔 수 없는 hydration 불일치 에러 억제하기 {/*suppressing-unavoidable-hydration-mismatch-errors*/}
 
-어떤 element의 속성이나 text content가 서버와 클라이언트에서 어쩔 수 없이 다를 땐(예를 들어, timestamp를 이용했다거나), hydration 불일치 경고를 안보이게 할 수 있습니다.
+어떤 엘리먼트의 속성이나 text content가 서버와 클라이언트에서 어쩔 수 없이 다를 땐(예를 들어, timestamp를 이용했다거나), hydration 불일치 경고를 안보이게 할 수 있습니다.
 
-해당 element에서 hydration 경고를 끄기 위해선 `suppressHydrationWarning={true}`를 추가하면 됩니다.
+해당 엘리먼트에서 hydration 경고를 끄기 위해선 `suppressHydrationWarning={true}`를 추가하면 됩니다.
 
 <Sandpack>
 
