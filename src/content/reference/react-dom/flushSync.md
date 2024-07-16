@@ -59,9 +59,9 @@ flushSync(() => {
 
 ## 사용법 {/*usage*/}
 
-### 써드파티 통합을 위한 업데이트 flushing {/*flushing-updates-for-third-party-integrations*/}
+### 서드 파티 통합을 위한 업데이트 flushing {/*flushing-updates-for-third-party-integrations*/}
 
-브라우저 API 또는 UI 라이브러리와 같은 써드파티 코드를 통합할 때 React가 업데이트를 처리하도록 강제할 필요가 있을 수 있습니다. `flushSync`를 사용해서 React가 콜백 내부의 모든 <CodeStep step={1}>state updates</CodeStep>를 동기적으로 처리하도록 할 수 있습니다. 
+브라우저 API 또는 UI 라이브러리와 같은 서드 파티 코드를 통합할 때 React가 업데이트를 처리하도록 강제할 필요가 있을 수 있습니다. `flushSync`를 사용해서 React가 콜백 내부의 모든 <CodeStep step={1}>state updates</CodeStep>를 동기적으로 처리하도록 할 수 있습니다. 
 
 ```js [[1, 2, "setSomething(123)"]]
 flushSync(() => {
@@ -72,9 +72,9 @@ flushSync(() => {
 
 이렇게 함으로써 React가 DOM을 이미 업데이트한 후에 다음 줄의 코드를 실행하는 것을 보장합니다.
 
-**`flushSync`를 사용하는 것은 일반적이지 않고 자주 사용하면 애플리케이션의 성능이 크게 저하될 수 있습니다.** 애플리케이션이 React API만 사용하고 써드파티 라이브러리와 통합하지 않는다면 `flushSync`는 필요하지 않습니다.
+**`flushSync`를 사용하는 것은 일반적이지 않고 자주 사용하면 애플리케이션의 성능이 크게 저하될 수 있습니다.** 애플리케이션이 React API만 사용하고 서드 파티 라이브러리와 통합하지 않는다면 `flushSync`는 필요하지 않습니다.
 
-그러나 브라우저 API와 같은 써드파티 코드와 통합할 때 유용할 수 있습니다.
+그러나 브라우저 API와 같은 서드 파티 코드와 통합할 때 유용할 수 있습니다.
 
 일부 브라우저 API는 콜백 내부의 결과가 DOM에서 동기적으로 사용될 것으로 예상하므로 콜백이 완료될 때까지 렌더링된 DOM을 사용해서 브라우저가 작업할 수 있습니다. 대부분의 경우 React가 이를 자동으로 처리하지만, 때에 따라 강제로 동기적 업데이트를 해야 할 수 있습니다.
 

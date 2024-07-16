@@ -70,7 +70,7 @@ select box를 표시하려면 [`<select>` 내장 컴포넌트](https://developer
 - HTML과는 달리, `selected` 어트리뷰트를 `<option>`에 전달하는 것은 지원하지 않습니다. 대신, [제어되지 않는 select box](#controlling-a-select-box-with-a-state-variable)인 경우 [`<select defaultValue>`](#providing-an-initially-selected-option)를 사용하고, [제어되어야 하는 select box](#controlling-a-select-box-with-a-state-variable)인 경우 [`<select value>`](#controlling-a-select-box-with-a-state-variable)를 사용해야 합니다.
 - `<select>`에 `value` prop이 전달된다면, [제어되는 것으로 간주합니다.](#controlling-a-select-box-with-a-state-variable)
 - select box는 제어 상태와 비제어 상태를 동시에 행할 수 없습니다. 둘 중 하나의 상태만 가질 수 있습니다.
-- select box는 생명 주기 동안 처음 설정한 제어 상태를 변경할 수 없습니다.
+- select box는 생명주기 동안 처음 설정한 제어 상태를 변경할 수 없습니다.
 - 제어되는 모든 select box는 제공되는 값을 동기적으로 업데이트하는 `onChange` 이벤트 핸들러가 필요합니다.
 
 ---
