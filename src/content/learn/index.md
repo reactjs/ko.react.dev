@@ -96,7 +96,7 @@ JSX로 변환할 HTML이 많은 경우 [온라인 변환기](https://transform.t
 
 ## 스타일 추가하기 {/*adding-styles*/}
 
-React에서는 `className`으로 CSS class를 지정합니다. 이것은 HTML의 [`class`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/class) 어트리뷰트와 동일한 방식으로 동작합니다.
+React에서는 `className`으로 CSS 클래스를 지정합니다. 이것은 HTML의 [`class`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/class) 어트리뷰트와 동일한 방식으로 동작합니다.
 
 ```js
 <img className="avatar" />
