@@ -29,7 +29,7 @@ Breaking Changes는 모두에게 불편하기에 우리는 메이저 릴리즈�
 
 ### 안정성에 기여하기 {/*commitment-to-stability*/}
 
-시간이 지남에 따라 React를 변경할 때, 새로운 기능을 활용하는 데 필요한 노력을 최소화하려고 노력합니다. 가능한 경우, 오래된 API를 별개의 패키지에 넣는 한이 있더라도 작동하도록 합니다. 예를 들어, [믹스인은 몇 년 동안 권장되지 않았지만](https://legacy.reactjs.org/blog/2016/07/13/mixins-considered-harmful.html) [create-react-class를 통해](https://legacy.reactjs.org/docs/react-without-es6.html#mixins) 지금까지 지원되고 있으며, 많은 코드베이스가 이를 안정적인 레거시 코드로 계속 사용하고 있습니다.
+시간이 지남에 따라 React를 변경할 때, 새로운 기능을 활용하는 데 필요한 노력을 최소화하려고 노력합니다. 가능한 경우, 오래된 API를 별개의 패키지에 넣는 한이 있더라도 작동하도록 합니다. 예를 들어, [믹스인은 몇 년 동안 권장되지 않았지만](https://legacy.reactjs.org/blog/2016/07/13/mixins-considered-harmful.html) [`create-react-class`를 통해](https://legacy.reactjs.org/docs/react-without-es6.html#mixins) 지금까지 지원되고 있으며, 많은 코드베이스가 이를 안정적인 레거시 코드로 계속 사용하고 있습니다.
 
 100만 명 이상의 개발자가 React를 사용하며 수백만 개의 컴포넌트를 일괄적으로 유지 관리합니다. 페이스북 코드베이스에만 5만개가 넘는 React 컴포넌트가 있습니다. 이는 우리가 새로운 React 버전으로 업그레이드하는 것을 가능한 한 쉽게 만들어야 한다는 것을 의미합니다. 만약 마이그레이션 과정 없이 큰 변화를 만든다면, 사람들은 오래된 버전에 갇히게 될 것입니다. 페이스북에서는 이러한 업그레이드 과정을 테스트합니다. 10 명이 되지 않는 우리 팀이 5만 개가 넘는 컴포넌트를 업데이트할 수 있다면, React를 사용하는 사람이라면 누구나 업그레이드를 관리할 수 있을 것입니다. 대부분의 경우, 우리는 컴포넌트 문법을 업그레이드하기 위해 [자동화된 명령문](https://github.com/reactjs/react-codemod)을 작성하고, 이를 오픈소스 릴리즈에 포함해 모두가 사용할 수 있도록 합니다.
 

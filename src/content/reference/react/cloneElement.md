@@ -10,7 +10,7 @@ title: cloneElement
 
 <Intro>
 
-`cloneElement`를 사용하면 element를 기준으로 새로운 React 엘리먼트를 만들 수 있습니다.
+`cloneElement`를 사용하면 엘리먼트를 기준으로 새로운 React 엘리먼트를 만들 수 있습니다.
 
 ```js
 const clonedElement = cloneElement(element, props, ...children)
