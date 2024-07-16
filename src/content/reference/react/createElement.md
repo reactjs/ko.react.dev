@@ -71,7 +71,7 @@ function Greeting({ name }) {
 
 [JSX](/learn/writing-markup-with-jsx)가 마음에 들지 않거나 프로젝트에서 사용할 수 없는 경우, `createElement`를 대안으로 사용할 수 있습니다.
 
-JSX 없이 엘리먼트를 생성하려면  <CodeStep step={1}>type</CodeStep>, <CodeStep step={2}>props</CodeStep>,  <CodeStep step={3}>children</CodeStep>와 함께 createElement를 호출합니다
+JSX 없이 엘리먼트를 생성하려면  <CodeStep step={1}>type</CodeStep>, <CodeStep step={2}>props</CodeStep>,  <CodeStep step={3}>children</CodeStep>와 함께 `createElement`를 호출합니다
 
 ```js [[1, 5, "'h1'"], [2, 6, "{ className: 'greeting' }"], [3, 7, "'Hello ',"], [3, 8, "createElement('i', null, name),"], [3, 9, "'. Welcome!'"]]
 import { createElement } from 'react';
