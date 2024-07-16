@@ -40,7 +40,7 @@ function Greeting({ name }) {
 
 * `type`: `type` 인수는 유효한 React 컴포넌트여야 합니다. 예를 들어 태그 이름 문자열 (예: 'div', 'span') 또는 React 컴포넌트(함수, 클래스, [`Fragment`](/reference/react/Fragment) 같은 특수 컴포넌트)가 될 수 있습니다.
  
-* `props`: `props` 인수는 객체 또는 `null`이어야 합니다. null을 전달하면 빈 객체와 동일하게 처리됩니다. React는 전달한 `props`와 일치하는 프로퍼티를 가진 엘리먼트를 생성합니다. 전달한 `props` 객체의 `ref`와 `key`는 특수하기 때문에 생성한 `엘리먼트`에서 `element.props.ref` 와 `element.props.key`는 사용할 수 *없다*는 점에 유의하세요. `element.ref` 또는 `element.key`로 사용할 수 있습니다.
+* `props`: `props` 인수는 객체 또는 `null`이어야 합니다. `null`을 전달하면 빈 객체와 동일하게 처리됩니다. React는 전달한 `props`와 일치하는 프로퍼티를 가진 엘리먼트를 생성합니다. 전달한 `props` 객체의 `ref`와 `key`는 특수하기 때문에 생성한 `element`에서 `element.props.ref` 와 `element.props.key`는 사용할 수 *없다*는 점에 유의하세요. `element.ref` 또는 `element.key`로 사용할 수 있습니다.
 
 * **선택사항** `...children`: 0개 이상의 자식 노드. React 엘리먼트, 문자열, 숫자, [포탈](/reference/react-dom/createPortal), 빈 노드(`null`, `undefined`, `true`, `false`) 그리고 React 노드 배열을 포함한 모든 React 노드가 될 수 있습니다.
 
@@ -61,7 +61,7 @@ function Greeting({ name }) {
 
 * JSX를 사용한다면 **태그를 대문자로 시작해야만 사용자 컴포넌트를 렌더링할 수 있습니다.** 즉, `<Something />`은 `createElement(Something)`과 동일하지만 `<something />`(소문자) 은 `createElement('something')`와 동일합니다. (문자열임을 주의하세요. 내장된 HTML 태그로 취급됩니다.)
 
-* `createElement('h1', {}, child1, child2, child3)`와 같이 **children이 모두 정적인 경우에만 `createElement`에 여러 인수로 전달해야 합니다.** children이 동적이라면 전체 배열을 세 번째 인수로 전달해야 합니다. 이렇게 하면 React는 [누락된 `키`에 대한 경고](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 표시합니다. 정적 목록인 경우 재정렬하지 않기 때문에 작업이 필요하지 않습니다.
+* `createElement('h1', {}, child1, child2, child3)`와 같이 **`children`이 모두 정적인 경우에만 `createElement`에 여러 인수로 전달해야 합니다.** `children`이 동적이라면 전체 배열을 세 번째 인수로 전달해야 합니다. 이렇게 하면 React는 [누락된 `키`에 대한 경고](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 표시합니다. 정적 목록인 경우 재정렬하지 않기 때문에 작업이 필요하지 않습니다.
 
 ---
 
