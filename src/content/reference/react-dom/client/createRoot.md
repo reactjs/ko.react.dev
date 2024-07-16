@@ -44,10 +44,10 @@ root.render(<App />);
 
 * **optional** `options`: React 루트에 대한 옵션을 가진 객체입니다.
 
-  * <CanaryBadge title="This feature is only available in the Canary channel" /> **optional** `onCaughtError`: Callback called when React catches an error in an Error Boundary. Called with the `error` caught by the Error Boundary, and an `errorInfo` object containing the `componentStack`.
-  * <CanaryBadge title="This feature is only available in the Canary channel" /> **optional** `onUncaughtError`: Callback called when an error is thrown and not caught by an Error Boundary. Called with the `error` that was thrown, and an `errorInfo` object containing the `componentStack`.
-  * **optional**  `onRecoverableError`: React가 오류로부터 자동으로 복구될 때 호출되는 콜백.
-  * **optional** `identifierPrefix` : React가 [`useId`](/reference/react/useId)에 의해 생성된 ID에 사용하는 문자열 접두사. 같은 페이지에서 여러개의 루트를 사용할 때 충돌을 피하는 데 유용합니다.
+  * <CanaryBadge title="This feature is only available in the Canary channel" /> **optional** `onCaughtError`: Error Boundary에서 React가 에러를 잡았을 때 호출되는 콜백입니다. `componentStack`을 포함한 `errorInfo` 객체 및 Error Boundary에서 포착된 `error`가 함께 호출됩니다.
+  * <CanaryBadge title="This feature is only available in the Canary channel" /> **optional** `onUncaughtError`: Error Boundary에서 잡히지 않은 에러가 발생했을 때 호출되는 콜백입니다. `componentStack`을 포함한 `errorInfo` 객체 및 발생한 `error`가 함께 호출됩니다.
+  * **optional**  `onRecoverableError`: React가 에러로부터 자동으로 복구될 때 호출되는 콜백입니다.
+  * **optional** `identifierPrefix` : React가 [`useId`](/reference/react/useId)에 의해 생성된 ID에 사용하는 문자열 접두사입니다. 같은 페이지에서 여러개의 루트를 사용할 때 충돌을 피하는 데 유용합니다.
 
 #### 반환값 {/*returns*/}
 
@@ -342,15 +342,15 @@ export default function App({counter}) {
 
 `render`를 여러 번 호출하는 경우는 흔하지 않습니다. 일반적으로는, 컴포넌트가 [state를 업데이트](/reference/react/useState)합니다.
 
-### Show a dialog for uncaught errors {/*show-a-dialog-for-uncaught-errors*/}
+### 처리되지 않은 에러에 대한 대화 상자 표시하기 {/*show-a-dialog-for-uncaught-errors*/}
 
 <Canary>
 
-`onUncaughtError` is only available in the latest React Canary release.
+`onUncaughtError`는 오직 최신 버전의 React Canary 릴리스에서만 사용할 수 있습니다.
 
 </Canary>
 
-By default, React will log all uncaught errors to the console. To implement your own error reporting, you can provide the optional `onUncaughtError` root option:
+기본적으로 React는 처리되지 않은 모든 오류를 콘솔에 로그로 표시할 것입니다. 자체 오류 보고를 구현하려면 선택적인  `onUncaughtError` 루트 옵션을 제공할 수 있습니다:
 
 ```js [[1, 6, "onUncaughtError"], [2, 6, "error", 1], [3, 6, "errorInfo"], [4, 10, "componentStack"]]
 import { createRoot } from 'react-dom/client';
@@ -370,12 +370,12 @@ const root = createRoot(
 root.render(<App />);
 ```
 
-The <CodeStep step={1}>onUncaughtError</CodeStep> option is a function called with two arguments:
+<CodeStep step={1}>onUncaughtError</CodeStep> 옵션은 두 개의 인자를 받는 함수입니다.
 
-1. The <CodeStep step={2}>error</CodeStep> that was thrown.
-2. An <CodeStep step={3}>errorInfo</CodeStep> object that contains the <CodeStep step={4}>componentStack</CodeStep> of the error.
+1. 발생한 <CodeStep step={2}>에러</CodeStep>.
+2. 에러의 <CodeStep step={4}>componentStack</CodeStep>을 포함하는 <CodeStep step={3}>errorInfo</CodeStep> 객체.
 
-You can use the `onUncaughtError` root option to display error dialogs:
+`onUncaughtError` root 옵션을 사용해 에러 대화 상자를 표시할 수 있습니다.
 
 <Sandpack>
 
@@ -387,8 +387,8 @@ You can use the `onUncaughtError` root option to display error dialogs:
 </head>
 <body>
 <!--
-  Error dialog in raw HTML
-  since an error in the React app may crash.
+  React 앱의 오류로 인해 충돌이 발생할 수 있으므로, 
+  기본 HTML의 에러 대화 상자를 사용하였습니다.
 -->
 <div id="error-dialog" class="hidden">
   <h1 id="error-title" class="text-red"></h1>
@@ -482,10 +482,10 @@ function reportError({ title, error, componentStack, dismissable }) {
   const errorCauseStack = document.getElementById("error-cause-stack");
   const errorNotDismissible = document.getElementById("error-not-dismissible");
   
-  // Set the title
+  // 제목을 설정합니다.
   errorTitle.innerText = title;
   
-  // Display error message and body
+  // 에러 메시지와 본문을 표시합니다.
   const [heading, body] = error.message.split(/\n(.*)/s);
   errorMessage.innerText = heading;
   if (body) {
@@ -494,14 +494,14 @@ function reportError({ title, error, componentStack, dismissable }) {
     errorBody.innerText = '';
   }
 
-  // Display component stack
+  // 컴포넌트 스택을 표시합니다.
   errorComponentStack.innerText = componentStack;
 
-  // Display the call stack
-  // Since we already displayed the message, strip it, and the first Error: line.
+  // 콜 스택을 표시합니다.
+  // 이미 메시지를 표시했으므로 이를 제거하고 첫 번째 'Error:' 줄도 제거합니다.
   errorStack.innerText = error.stack.replace(error.message, '').split(/\n(.*)/s)[1];
   
-  // Display the cause, if available
+  // 가능하다면 원인을 표시합니다.
   if (error.cause) {
     errorCauseMessage.innerText = error.cause.message;
     errorCauseStack.innerText = error.cause.stack;
@@ -509,7 +509,7 @@ function reportError({ title, error, componentStack, dismissable }) {
   } else {
     errorCause.classList.add('hidden');
   }
-  // Display the close button, if dismissible
+  // 닫을 수 있는 경우 닫기버튼을 표시합니다.
   if (dismissable) {
     errorNotDismissible.classList.add('hidden');
     errorClose.classList.remove("hidden");
@@ -518,7 +518,7 @@ function reportError({ title, error, componentStack, dismissable }) {
     errorClose.classList.add("hidden");
   }
   
-  // Show the dialog
+  // 대화상자를 표시합니다.
   errorDialog.classList.remove("hidden");
 }
 
@@ -590,15 +590,15 @@ export default function App() {
 </Sandpack>
 
 
-### Displaying Error Boundary errors {/*displaying-error-boundary-errors*/}
+### Error Boundary 에러 표시하기 {/*displaying-error-boundary-errors*/}
 
 <Canary>
 
-`onCaughtError` is only available in the latest React Canary release.
+`onCaughtError`는 최신 React Canary 릴리스에서만 사용할 수 있습니다.
 
 </Canary>
 
-By default, React will log all errors caught by an Error Boundary to `console.error`. To override this behavior, you can provide the optional `onCaughtError` root option to handle errors caught by an [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary):
+기본적으로 React는 Error Boundary에 의해 잡힌 모든 에러를 `console.error`에 기록합니다. 이 동작을 변경하려면 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)에서 포착된 오류를 처리하기 위해 선택적인 `onCaughtError` 루트 옵션을 제공할 수 있습니다.
 
 ```js [[1, 6, "onCaughtError"], [2, 6, "error", 1], [3, 6, "errorInfo"], [4, 10, "componentStack"]]
 import { createRoot } from 'react-dom/client';
@@ -618,12 +618,12 @@ const root = createRoot(
 root.render(<App />);
 ```
 
-The <CodeStep step={1}>onCaughtError</CodeStep> option is a function called with two arguments:
+<CodeStep step={1}>onCaughtError</CodeStep> 옵션은 두개의 인수를 받는 함수입니다.
 
-1. The <CodeStep step={2}>error</CodeStep> that was caught by the boundary.
-2. An <CodeStep step={3}>errorInfo</CodeStep> object that contains the <CodeStep step={4}>componentStack</CodeStep> of the error.
+1. Error Boundary에 의해 포착된 <CodeStep step={2}>에러</CodeStep>
+2. 에러의 <CodeStep step={4}>componentStack</CodeStep>을 포함하는 <CodeStep step={3}>errorInfo</CodeStep>.
 
-You can use the `onCaughtError` root option to display error dialogs or filter known errors from logging:
+`onCaughtError` 루트 옵션을 사용해 에러 대화 상자를 표시하거나 로그에 기록된 에러 중 알고있는 것을 필터링 할 수 있습니다.
 
 <Sandpack>
 
@@ -730,10 +730,10 @@ function reportError({ title, error, componentStack, dismissable }) {
   const errorCauseStack = document.getElementById("error-cause-stack");
   const errorNotDismissible = document.getElementById("error-not-dismissible");
 
-  // Set the title
+  // 제목을 설정합니다.
   errorTitle.innerText = title;
 
-  // Display error message and body
+  // 에러 메시지와 본문을 표시합니다.
   const [heading, body] = error.message.split(/\n(.*)/s);
   errorMessage.innerText = heading;
   if (body) {
@@ -742,14 +742,14 @@ function reportError({ title, error, componentStack, dismissable }) {
     errorBody.innerText = '';
   }
 
-  // Display component stack
+  // 컴포넌트 스택을 표시합니다.
   errorComponentStack.innerText = componentStack;
 
-  // Display the call stack
-  // Since we already displayed the message, strip it, and the first Error: line.
+  // 콜 스택을 표시합니다.
+  // 이미 메시지를 표시했으므로 이를 제거하고 첫 번째 "Error:" 줄도 제거합니다.
   errorStack.innerText = error.stack.replace(error.message, '').split(/\n(.*)/s)[1];
 
-  // Display the cause, if available
+  // 가능하면 원인을 표시합니다.
   if (error.cause) {
     errorCauseMessage.innerText = error.cause.message;
     errorCauseStack.innerText = error.cause.stack;
@@ -757,7 +757,7 @@ function reportError({ title, error, componentStack, dismissable }) {
   } else {
     errorCause.classList.add('hidden');
   }
-  // Display the close button, if dismissible
+  // 닫을 수 있는 경우 닫기 버튼을 표시합니다.
   if (dismissable) {
     errorNotDismissible.classList.add('hidden');
     errorClose.classList.remove("hidden");
@@ -766,7 +766,7 @@ function reportError({ title, error, componentStack, dismissable }) {
     errorClose.classList.add("hidden");
   }
 
-  // Show the dialog
+  // 대화 상자를 표시합니다.
   errorDialog.classList.remove("hidden");
 }
 
@@ -874,9 +874,9 @@ function Throw({error}) {
 
 </Sandpack>
 
-### Displaying a dialog for recoverable errors {/*displaying-a-dialog-for-recoverable-errors*/}
+### 복구 가능한 에러에 대한 대화 상자 표시하기 {/*displaying-a-dialog-for-recoverable-errors*/}
 
-React may automatically render a component a second time to attempt to recover from an error thrown in render. If successful, React will log a recoverable error to the console to notify the developer. To override this behavior, you can provide the optional `onRecoverableError` root option:
+React는 렌더링 중에 발생한 에러를 복구하기 위해 컴포넌트를 자동으로 두번 렌더링할 수 있습니다. 성공적으로 복구되면 React는 콘솔에 복구 가능한 에러를 로그로 남겨 개발자에게 알립니다. 이 동작을 재정의하려면 선택적인 `onRecoverableError` 루트 옵션을 제공할 수 있습니다.
 
 ```js [[1, 6, "onRecoverableError"], [2, 6, "error", 1], [3, 10, "error.cause"], [4, 6, "errorInfo"], [5, 11, "componentStack"]]
 import { createRoot } from 'react-dom/client';
@@ -897,12 +897,12 @@ const root = createRoot(
 root.render(<App />);
 ```
 
-The <CodeStep step={1}>onRecoverableError</CodeStep> option is a function called with two arguments:
+<CodeStep step={1}>onRecoverableError</CodeStep> 옵션은 두 개의 인자를 받는 함수입니다.
 
-1. The <CodeStep step={2}>error</CodeStep> that React throws. Some errors may include the original cause as <CodeStep step={3}>error.cause</CodeStep>. 
-2. An <CodeStep step={4}>errorInfo</CodeStep> object that contains the <CodeStep step={5}>componentStack</CodeStep> of the error.
+1. React가 발생시킨 <CodeStep step={2}>error</CodeStep>. 일부 에러는 기존 원인을 <CodeStep step={3}>error.cause</CodeStep>에 포함하기도 합니다.
+2. 에러의 <CodeStep step={5}>componentStack</CodeStep>을 포함하는 <CodeStep step={4}>errorInfo</CodeStep> 객체.
 
-You can use the `onRecoverableError` root option to display error dialogs:
+에러 대화 상자를 표시하기 위해 `onRecoverableError` 루트 옵션을 사용할 수 있습니다.
 
 <Sandpack>
 
@@ -1009,10 +1009,10 @@ function reportError({ title, error, componentStack, dismissable }) {
   const errorCauseStack = document.getElementById("error-cause-stack");
   const errorNotDismissible = document.getElementById("error-not-dismissible");
 
-  // Set the title
+  // 제목을 설정 합니다.
   errorTitle.innerText = title;
 
-  // Display error message and body
+  // 에러 메시지와 본문을 표시합니다.
   const [heading, body] = error.message.split(/\n(.*)/s);
   errorMessage.innerText = heading;
   if (body) {
@@ -1021,14 +1021,14 @@ function reportError({ title, error, componentStack, dismissable }) {
     errorBody.innerText = '';
   }
 
-  // Display component stack
+  // 컴포넌트 스택을 표시합니다.
   errorComponentStack.innerText = componentStack;
 
-  // Display the call stack
-  // Since we already displayed the message, strip it, and the first Error: line.
+  // 콜 스택을 표시합니다.
+  // 이미 메시지를 표시했으므로 이를 제거하고 첫 번째 "Error:" 줄도 제거합니다.
   errorStack.innerText = error.stack.replace(error.message, '').split(/\n(.*)/s)[1];
 
-  // Display the cause, if available
+  // 가능하면 원인을 표시합니다.
   if (error.cause) {
     errorCauseMessage.innerText = error.cause.message;
     errorCauseStack.innerText = error.cause.stack;
@@ -1036,7 +1036,7 @@ function reportError({ title, error, componentStack, dismissable }) {
   } else {
     errorCause.classList.add('hidden');
   }
-  // Display the close button, if dismissible
+  // 닫을 수 있는 경우 닫기 버튼을 표시합니다.
   if (dismissable) {
     errorNotDismissible.classList.add('hidden');
     errorClose.classList.remove("hidden");
@@ -1045,7 +1045,7 @@ function reportError({ title, error, componentStack, dismissable }) {
     errorClose.classList.add("hidden");
   }
 
-  // Show the dialog
+  // 대화 상자를 표시합니다.
   errorDialog.classList.remove("hidden");
 }
 
@@ -1154,11 +1154,11 @@ root.render(<App />);
 
 ### "대상 컨테이너가 DOM 엘리먼트가 아닙니다" 라는 오류가 발생합니다. {/*im-getting-an-error-target-container-is-not-a-dom-element*/}
 
-A common mistake is to pass the options for `createRoot` to `root.render(...)`:
+`createRoot` 옵션을 `root.render(...)`에 전달하는 것은 일반적인 실수입니다.
 
 <ConsoleBlock level="error">
 
-Warning: You passed a second argument to root.render(...) but it only accepts one argument.
+경고: root.render(...)에 두 번째 인자를 전달했지만, 이 함수는 하나의 인자만 허용합니다.
 
 </ConsoleBlock>
 
