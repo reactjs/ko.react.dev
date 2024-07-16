@@ -60,7 +60,7 @@ effect의 본문에는 **동기화 시작** 방법이 명시되어 있습니다.
     // ...
 ```
 
-effect에서 반환되는 cleanup function는 **동기화를 중지**하는 방법을 지정합니다.
+effect에서 반환되는 cleanup 함수는 **동기화를 중지**하는 방법을 지정합니다.
 
 ```js {5}
     // ...
@@ -78,7 +78,7 @@ effect에서 반환되는 cleanup function는 **동기화를 중지**하는 방�
 
 <Note>
 
-일부 effects는 cleanup function를 전혀 반환하지 않습니다. [대부분의 경우]((/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)) 함수를 반환하고 싶겠지만, 그렇지 않은 경우 React는 빈 cleanup function를 반환한 것처럼 동작합니다.
+일부 effects는 cleanup 함수를 전혀 반환하지 않습니다. [대부분의 경우]((/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)) 함수를 반환하고 싶겠지만, 그렇지 않은 경우 React는 빈 cleanup 함수를 반환한 것처럼 동작합니다.
 
 </Note>
 
@@ -127,13 +127,13 @@ function ChatRoom({ roomId /* "travel" */ }) {
 1. 이전 roomId와의 동기화를 중지합니다(`"general"` 방에서 연결 끊기).
 2. 새 roomId와 동기화 시작(`"travel"` 방에 연결)
 
-**다행히도, 여러분은 이미 이 두 가지를 수행하는 방법을 React에 가르쳤습니다!** effect의 본문에는 동기화를 시작하는 방법이 명시되어 있고, cleanup function에는 동기화를 중지하는 방법이 명시되어 있습니다. 이제 React가 해야 할 일은 올바른 순서로 올바른 props와 state로 호출하기만 하면 됩니다. 정확히 어떻게 일어나는지 살펴보겠습니다.
+**다행히도, 여러분은 이미 이 두 가지를 수행하는 방법을 React에 가르쳤습니다!** effect의 본문에는 동기화를 시작하는 방법이 명시되어 있고, cleanup 함수에는 동기화를 중지하는 방법이 명시되어 있습니다. 이제 React가 해야 할 일은 올바른 순서로 올바른 props와 state로 호출하기만 하면 됩니다. 정확히 어떻게 일어나는지 살펴보겠습니다.
 
 ### React가 effect를 재동기화하는 방법 {/*how-react-re-synchronizes-your-effect*/}
 
 `ChatRoom` 컴포넌트가 `roomId` prop에 새로운 값을 받았다는 것을 기억하세요. 이전에는 `"general"`이었지만 이제는 `"travel"`입니다. 다른 방에 다시 연결하려면 React가 effect를 다시 동기화해야 합니다.
 
-**동기화를 중지**하기 위해 React는 `"general"` 방에 연결한 후 effect가 반환한 cleanup function를 호출합니다. `roomId`가 `"general"`이었기 때문에, cleanup function는 `"general"` 방에서 연결을 끊습니다.
+**동기화를 중지**하기 위해 React는 `"general"` 방에 연결한 후 effect가 반환한 cleanup 함수를 호출합니다. `roomId`가 `"general"`이었기 때문에, cleanup 함수는 `"general"` 방에서 연결을 끊습니다.
 
 ```js {6}
 function ChatRoom({ roomId /* "general" */ }) {
@@ -146,7 +146,7 @@ function ChatRoom({ roomId /* "general" */ }) {
     // ...
 ```
 
-그러면 React는 이 렌더링 중에 여러분이 제공한 effect를 실행합니다. 이번에는 `roomId`가 `"travel"`이므로 `"travel"` 채팅방과 **동기화되기 시작**합니다(결국 cleanup function도 호출될 때까지).
+그러면 React는 이 렌더링 중에 여러분이 제공한 effect를 실행합니다. 이번에는 `roomId`가 `"travel"`이므로 `"travel"` 채팅방과 **동기화되기 시작**합니다(결국 cleanup 함수도 호출될 때까지).
 
 ```js {3,4}
 function ChatRoom({ roomId /* "travel" */ }) {
@@ -158,7 +158,7 @@ function ChatRoom({ roomId /* "travel" */ }) {
 
 덕분에 이제 사용자가 UI에서 선택한 방과 동일한 방에 연결됩니다. 재앙을 피했습니다!
 
-컴포넌트가 다른 `roomId`로 다시 렌더링할 때마다 effect가 다시 동기화됩니다. 예를 들어 사용자가 `roomId`를 `"travel"`에서 `"music"`으로 변경한다고 가정해 봅시다. React는 다시 cleanup function를 호출하여 effect **동기화를 중지**합니다(`"travel"` 방에서 연결을 끊습니다). 그런 다음 새 `roomId` prop로 본문을 실행하여 **동기화를 다시 시작**합니다(`"music"` 방에 연결).
+컴포넌트가 다른 `roomId`로 다시 렌더링할 때마다 effect가 다시 동기화됩니다. 예를 들어 사용자가 `roomId`를 `"travel"`에서 `"music"`으로 변경한다고 가정해 봅시다. React는 다시 cleanup 함수를 호출하여 effect **동기화를 중지**합니다(`"travel"` 방에서 연결을 끊습니다). 그런 다음 새 `roomId` prop로 본문을 실행하여 **동기화를 다시 시작**합니다(`"music"` 방에 연결).
 
 마지막으로 사용자가 다른 화면으로 이동하면 `ChatRoom`이 마운트를 해제합니다. 이제 연결 상태를 유지할 필요가 전혀 없습니다. React는 마지막으로 effect **동기화를 중지**하고 `"music"` 채팅방에서 연결을 끊습니다.
 
@@ -764,7 +764,7 @@ useEffect(() => {
 <Recap>
 
 - 컴포넌트는 마운트, 업데이트, 마운트 해제할 수 있습니다.
-- 각 effect는 주변 컴포넌트와 별도의 라이프사이클을 가집니다.
+- 각 effect는 주변 컴포넌트와 별도의 생명주기를 가집니다.
 - 각 effect는 시작 및 중지할 수 있는 별도의 동기화 프로세스를 설명합니다.
 - effect를 작성하고 읽을 때는 컴포넌트의 관점(마운트, 업데이트 또는 마운트 해제 방법)이 아닌 개별 effect의 관점(동기화 *시작* 및 *중지* 방법)에서 생각하세요.
 - 컴포넌트 본문 내부에 선언된 값은 "반응형"입니다.

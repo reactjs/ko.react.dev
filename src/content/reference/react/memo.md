@@ -111,7 +111,7 @@ label {
 
 #### 모든 곳에 memo를 추가해야할까요? {/*should-you-add-memo-everywhere*/}
 
-이 사이트와 같이 대부분의 인터랙션이 투박한 앱의 경우(페이지 또는 전체 섹션 교체 등) 일반적으로 memoization는 불필요합니다. 반면 앱이 그림 편집기이고 도형 이동과 같이 대부분의 인터랙션이 세분되어 있다면, memoization가 유용할 수 있습니다.
+이 사이트와 같이 대부분의 상호작용이 투박한 앱의 경우(페이지 또는 전체 섹션 교체 등) 일반적으로 memoization는 불필요합니다. 반면 앱이 그림 편집기이고 도형 이동과 같이 대부분의 상호작용이 세분되어 있다면, memoization가 유용할 수 있습니다.
 
 `memo`로 최적화하는 것은 컴포넌트가 정확히 동일한 props로 자주 리렌더링 되고, 리렌더링 로직이 비용이 많이 드는 경우에만 유용합니다. 컴포넌트가 리렌더링 될 때 인지할 수 있을 만큼의 지연이 없다면 `memo`가 필요하지 않습니다. `memo`는 객체 또는 렌더링 중에 정의된 일반 함수처럼 *항상 다른* props가 컴포넌트에 전달되는 경우에 완전히 무용지물입니다. 따라서 `memo`와 함께 [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components)와 [`useCallback`](/reference/react/useCallback#skipping-re-rendering-of-components)이 종종 필요합니다.
 
@@ -125,7 +125,7 @@ label {
 4. [state를 업데이트하는 불필요한 Effect](/learn/you-might-not-need-an-effect)를 피하세요. React 앱에서 대부분의 성능 문제는 컴포넌트를 반복해서 렌더링하게 만드는 Effect에서 발생하는 일련의 업데이트로 인해 발생합니다.
 5. [Effect에서 불필요한 의존성을 제거](/learn/removing-effect-dependencies)하세요. 예를 들어, memoization 대신에 일부 객체나 함수를 Effect 내부나 컴포넌트 외부로 이동하는 것이 더 간단할 때가 많습니다.
 
-특정 인터랙션이 여전히 느리게 느껴진다면 [React 개발자 도구 profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)를 사용해 어떤 컴포넌트가 memoization를 통해 가장 큰 이점을 얻을 수 있는지 확인하고 필요한 경우에 memoization 하세요. 이러한 원칙은 컴포넌트를 더 쉽게 디버깅하고 이해할 수 있게 해주므로 어떤 경우든 이 원칙을 따르는 것이 좋습니다. 장기적으로는 이 문제를 완전히 해결하기 위해 [세분된 memoization를 자동으로 수행하는 방법](https://www.youtube.com/watch?v=lGEMwh32soc)을 연구하고 있습니다.
+특정 상호작용이 여전히 느리게 느껴진다면 [React 개발자 도구 profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)를 사용해 어떤 컴포넌트가 memoization를 통해 가장 큰 이점을 얻을 수 있는지 확인하고 필요한 경우에 memoization 하세요. 이러한 원칙은 컴포넌트를 더 쉽게 디버깅하고 이해할 수 있게 해주므로 어떤 경우든 이 원칙을 따르는 것이 좋습니다. 장기적으로는 이 문제를 완전히 해결하기 위해 [세분된 memoization를 자동으로 수행하는 방법](https://www.youtube.com/watch?v=lGEMwh32soc)을 연구하고 있습니다.
 
 </DeepDive>
 
