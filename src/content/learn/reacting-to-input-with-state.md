@@ -499,9 +499,9 @@ function submitForm(answer) {
 
 <Challenges>
 
-#### CSS class를 추가하고 제거하기 {/*add-and-remove-a-css-class*/}
+#### CSS 클래스를 추가하고 제거하기 {/*add-and-remove-a-css-class*/}
 
-사진을 클릭하면 바깥에 있는 `<div>`의 `background--active` CSS class를 *제거*하고 `<img>`에 `picture--active` class를 추가합니다. 그리고 배경을 다시 클릭하면 원래 CSS class로 돌아와야 합니다.
+사진을 클릭하면 바깥에 있는 `<div>`의 `background--active` CSS 클래스를 *제거*하고 `<img>`에 `picture--active` 클래스를 추가합니다. 그리고 배경을 다시 클릭하면 원래 CSS 클래스로 돌아와야 합니다.
 
 화면상으로는 사진을 클릭하면 보라색 배경은 제거되고 사진의 테두리는 강조 표시됩니다. 사진 외부를 클릭하면 배경이 강조 표시되고 사진의 테두리 강조 표시는 제거됩니다.
 
@@ -555,10 +555,10 @@ body { margin: 0; padding: 0; height: 250px; }
 
 이 컴포넌트는 두 가지 시각적 state를 가지고 있습니다. 이미지가 활성화되었을 때와 비활성화되었을 때입니다.
 
-* 이미지가 활성화되었을 때 CSS class는 `background`와 `picture picture--active`가 됩니다.
-* 이미지가 비활성화되었을 때 CSS class는 `background background--active`와 `picture`가 됩니다.
+* 이미지가 활성화되었을 때 CSS 클래스는 `background`와 `picture picture--active`가 됩니다.
+* 이미지가 비활성화되었을 때 CSS 클래스는 `background background--active`와 `picture`가 됩니다.
 
-이미지의 활성화 state를 기억하기 위해서는 하나의 boolean state 변수로 충분합니다. 원래 하려고 했던 것은 CSS class를 제거하거나 추가하는 것이었습니다. 하지만 리액트에서는 UI 요소를 *조작하는 것* 보다는 무엇을 보여주길 원하는지 *묘사하는 것*이 필요합니다. 그렇기 때문에 현재 state를 기반으로 두 CSS class 모두를 계산해야 합니다. 그리고 이미지를 클릭했을 때 배경이 클릭되지 않도록 이벤트의 [전파를 막을](/learn/responding-to-events#stopping-propagation) 필요가 있습니다.
+이미지의 활성화 state를 기억하기 위해서는 하나의 boolean state 변수로 충분합니다. 원래 하려고 했던 것은 CSS 클래스를 제거하거나 추가하는 것이었습니다. 하지만 리액트에서는 UI 요소를 *조작하는 것* 보다는 무엇을 보여주길 원하는지 *묘사하는 것*이 필요합니다. 그렇기 때문에 현재 state를 기반으로 두 CSS 클래스 모두를 계산해야 합니다. 그리고 이미지를 클릭했을 때 배경이 클릭되지 않도록 이벤트의 [전파를 막을](/learn/responding-to-events#stopping-propagation) 필요가 있습니다.
 
 이미지를 클릭한 다음 이미지 외부도 클릭해 잘 작동하는지 확인해봅시다.
 
