@@ -100,7 +100,7 @@ root.unmount();
 
 주로 React root부터 혹은 그 상위에서부터 시작된 DOM node들을 다른 코드에 의해 DOM에서 삭제되어야 하는 경우 유용합니다. 예를 들어, jQuery 탭 패널이 활성화 되어 있지 않은 탭을 DOM에서 지운다고 가정해봅시다. 탭이 지워지면, React root와 그 내부를 포함해 그 안의 모든 것이 지워지게 되고 DOM에서 또한 지워지게 됩니다. `root.unmount`를 호출해 React에게 삭제된 컨텐츠들을 "그만" 다루라고 알려주어야 합니다. 그렇지 않으면 삭제되어버린 React root 내부의 컴포넌트들은 삭제되지 않을 것이며, "구독"처럼 컴퓨팅 자원을 자유롭게 놓아주지 못하게 됩니다.
 
-`root.unmount`를 호출하면 root 내부의 모든 컴포넌트를 unmount하고 root DOM node에서 React를 "떼어"냅니다. root 내부의 event handler와 state까지 모두 포함해 unmount 및 삭제됩니다.
+`root.unmount`를 호출하면 root 내부의 모든 컴포넌트를 마운트 해제하고 root DOM node에서 React를 "떼어"냅니다. root 내부의 event handler와 state까지 모두 포함해 마운트 해제 및 삭제됩니다.
 
 #### Parameters {/*root-unmount-parameters*/}
 
@@ -113,9 +113,9 @@ root.unmount();
 
 #### Caveats {/*root-unmount-caveats*/}
 
-* `root.unmount`를 호출하면 root부터 그 안의 모든 컴포넌트가 unmount되고 root DOM node에서 React를 떼어냅니다.
+* `root.unmount`를 호출하면 root부터 그 안의 모든 컴포넌트가 마운트 해제되고 root DOM node에서 React를 떼어냅니다.
 
-* `root.unmount`를 한번 호출한 이후엔 `root.render`를 root에 다시 사용할 수 없습니다. unmount된 root에 다시 `root.render`를 호출하려고 한다면 "Cannot update an unmounted root" 에러를 throw하게 됩니다.
+* `root.unmount`를 한번 호출한 이후엔 `root.render`를 root에 다시 사용할 수 없습니다. 마운트 해제된 root에 다시 `root.render`를 호출하려고 한다면 "Cannot update an unmounted root" 에러를 throw하게 됩니다.
 
 ---
 
