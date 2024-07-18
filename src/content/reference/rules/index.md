@@ -24,7 +24,7 @@ React를 사용하여 UI를 표현하는 방법에 대해 더 알고 싶다면 [
 
 ## 컴포넌트와 Hook은 순수해야 합니다 {/*components-and-hooks-must-be-pure*/}
 
-[컴포넌트와 훅의 순수성](/reference/rules/components-and-hooks-must-be-pure)은 React의 주요 규칙으로 이를 통해 앱의 예측 가능하고 디버깅이 쉬워지며 React가 코드를 자동으로 최적화할 수 있습니다.
+[컴포넌트와 Hook의 순수성](/reference/rules/components-and-hooks-must-be-pure)은 React의 주요 규칙으로 이를 통해 앱의 예측 가능하고 디버깅이 쉬워지며 React가 코드를 자동으로 최적화할 수 있습니다.
 
 * [컴포넌트는 멱등해야 합니다](/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent) – React 컴포넌트는 항상 입력 값(props, state, context)에 따라 동일한 출력을 반환한다고 가정합니다.
 * [사이드 이펙트는 렌더링 외부에서 실행되어야 합니다](/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render) – [사이드 이펙트](/learn/keeping-components-pure#side-effects-unintended-consequences)는 React가 최상의 사용자 경험을 제공하기 위해 컴포넌트를 여러 번 렌더링할 수 있기 때문에 렌더링 중에 실행되어서는 안 됩니다.
