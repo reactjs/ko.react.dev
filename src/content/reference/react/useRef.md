@@ -512,7 +512,7 @@ function Video() {
 
 <DeepDive>
 
-#### useRef를 초기화할 때 null 검사를 피하는 방법 {/*how-to-avoid-null-checks-when-initializing-use-ref-later*/}
+#### `useRef`를 초기화할 때 null 검사를 피하는 방법 {/*how-to-avoid-null-checks-when-initializing-use-ref-later*/}
 
 타입 검사기를 사용하면서 항상 `null`을 검사하고 싶지 않다면 다음과 같은 패턴을 대신 사용해 볼 수 있습니다:
 

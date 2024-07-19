@@ -62,7 +62,7 @@ export default function App() {
 
 ### 팩토리 함수로 React 엘리먼트 만들기 {/*creating-react-elements-with-a-factory*/}
 
-비록 대부분의 React 프로젝트들은 [JSX](/learn/writing-markup-with-jsx)를 사용하여 유저 인터페이스를 표현하지만, JSX가 필수는 아닙니다. 과거에는 `createFactory`를 JSX 없이 유저 인터페이스를 표현하는 방법의 하나로 사용하였습니다.
+비록 대부분의 React 프로젝트들은 [JSX](/learn/writing-markup-with-jsx)를 사용하여 사용자 인터페이스를 표현하지만, JSX가 필수는 아닙니다. 과거에는 `createFactory`를 JSX 없이 사용자 인터페이스를 표현하는 방법의 하나로 사용하였습니다.
 
 `button`과 같이 특정 엘리먼트 type을 반환하는 *팩토리 함수*를 생성하기 위해 `createFactory`를 호출합니다.
 
