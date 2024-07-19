@@ -19,7 +19,7 @@ React는 `useState`, `useContext`, 그리고 `useEffect`같이 몇몇 내재하�
 
 ## 커스텀 Hook: 컴포넌트간 로직 공유하기 {/*custom-hooks-sharing-logic-between-components*/}
 
-네트워크에 크게 의존하는 앱 (대부분의 앱이 그렇듯)을 개발 중이라고 생각해 보세요. 유저가 앱을 사용하는 동안 네트워크가 갑자기 사라진다면, 유저에게 경고하고 싶을 겁니다. 이런 경우 어떻게 하실 건가요? 컴포넌트에는 다음 두 가지가 필요할 것입니다.
+네트워크에 크게 의존하는 앱 (대부분의 앱이 그렇듯)을 개발 중이라고 생각해 보세요. 사용자가 앱을 사용하는 동안 네트워크가 갑자기 사라진다면, 사용자에게 경고하고 싶을 겁니다. 이런 경우 어떻게 하실 건가요? 컴포넌트에는 다음 두 가지가 필요할 것입니다.
 
 1. 네트워크가 온라인 상태인지 아닌지 추적하는 하나의 state
 2. 전역 [`online (온라인)`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event), [`offline (오프라인)`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event) 이벤트를 구독하고, 이에 맞춰 state를 업데이트하는 Effect
@@ -1898,7 +1898,7 @@ export default function Counter() {
 }
 ```
 
-`useCounter.js` 에 커스텀 Hook을 작성하고 `Counter.js` 파일에 가져와야 합니다.
+`useCounter.js` 에 커스텀 Hook을 작성하고 `App.js` 파일에 가져와야 합니다.
 
 <Sandpack>
 

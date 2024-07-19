@@ -140,9 +140,9 @@ function UpdateName() {
 
 ### Server Actions를 사용한 폼 액션 {/*form-actions-with-server-actions*/}
 
-Server Actions는 React 19의 새로운 Form 기능과 함께 작동합니다.
+Server Actions는 React 19의 새로운 폼 기능과 함께 작동합니다.
 
-Server Action을 Form에 전달하여 폼을 서버에 자동으로 제출할 수 있습니다.
+Server Action을 폼에 전달하여 폼을 서버에 자동으로 제출할 수 있습니다.
 
 
 ```js [[1, 3, "updateName"], [1, 7, "updateName"]]
@@ -159,7 +159,7 @@ function UpdateName() {
 }
 ```
 
-Form 제출이 성공하면, React는 자동으로 폼을 재설정합니다. 보류 상태, 마지막 응답에 액세스하거나 점진적인 향상을 지원하기 위해 `useActionState`를 추가할 수 있습니다.
+폼 제출이 성공하면, React는 자동으로 폼을 재설정합니다. 보류 상태, 마지막 응답에 액세스하거나 점진적인 향상을 지원하기 위해 `useActionState`를 추가할 수 있습니다.
 
 자세한 내용은 [Server Actions 형식](/reference/rsc/use-server#server-actions-in-forms) 문서를 참조하세요.
 

@@ -236,7 +236,7 @@ export default function Counter() {
 
 <DeepDive>
 
-#### useRef는 내부적으로 어떻게 동작하나요? {/*how-does-useref-work-inside*/}
+#### `useRef`는 내부적으로 어떻게 동작하나요? {/*how-does-useref-work-inside*/}
 
 `useState`와 `useRef`가 모두 React에 의해 제공되지만, 원칙적으로 `useRef`는 `useState` 위에 구현될 수 있습니다. React 내부에서 `useRef`가 이렇게 구현되는 것을 상상할 수 있습니다.
 

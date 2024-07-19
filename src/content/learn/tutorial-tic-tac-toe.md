@@ -327,7 +327,7 @@ export default function Square() {
 두 번째 줄은 버튼을 반환합니다. JavaScript의 `return` 키워드는 해당 키워드 뒤에 오는 모든 것이 함수 호출자에게 값으로 반환됨을 의미합니다. `<button>`은 *JSX 엘리먼트*입니다. JSX 엘리먼트는 JavaScript 코드와 HTML 태그의 조합으로 표시할 내용을 설명합니다. `className="square"`는 버튼 *prop* 또는 프로퍼티로, CSS에 버튼의 스타일을 지정하는 방법을 알려줍니다. `X`는 버튼 내부에 표시되는 텍스트이며, `</button>`은 JSX 엘리먼트를 닫아 버튼 내부에 다음 콘텐츠를 배치해서는 안 됨을 나타냅니다.
 #### `styles.css` {/*stylescss*/}
 
-CodeSandBox의 _파일_ 구역에서 `styles.css` 파일을 여세요. 이 파일은 React 앱의 스타일을 정의합니다. 처음 두 개의 _CSS 선택자_ 인 `*`와 `body`는 앱 대부분의 스타일을 정의하고, `.square` 선택자는 className 프로퍼티가 `square`로 설정된 모든 컴포넌트의 스타일을 정의합니다. 초기 코드에서는 `App.js` 파일의 Square 컴포넌트의 버튼과 매치됩니다.
+CodeSandBox의 _파일_ 구역에서 `styles.css` 파일을 여세요. 이 파일은 React 앱의 스타일을 정의합니다. 처음 두 개의 _CSS 선택자_ 인 `*`와 `body`는 앱 대부분의 스타일을 정의하고, `.square` 선택자는 `className` 프로퍼티가 `square`로 설정된 모든 컴포넌트의 스타일을 정의합니다. 초기 코드에서는 `App.js` 파일의 Square 컴포넌트의 버튼과 매치됩니다.
 
 #### `index.js` {/*indexjs*/}
 
