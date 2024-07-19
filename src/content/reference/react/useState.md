@@ -441,7 +441,7 @@ setForm({
 
 #### 폼 (객체) {/*form-object*/}
 
-이 예시에서 `form` state 변수는 객체를 받습니다. 각 input에는 전체 form의 다음 state로 `setForm`을 호출하는 change 핸들러가 있습니다. 전개 구문인 `{ ...form }`은 state 객체를 변경하지 않고 교체합니다.
+이 예시에서 `form` state 변수는 객체를 받습니다. 각 input에는 전체 `form`의 다음 state로 `setForm`을 호출하는 change 핸들러가 있습니다. 전개 구문인 `{ ...form }`은 state 객체를 변경하지 않고 교체합니다.
 
 <Sandpack>
 

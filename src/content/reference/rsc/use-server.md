@@ -98,7 +98,7 @@ Server Action에서 중요한 데이터를 전송하지 않도록 하기 위해,
 
 ### Server Action 형식 {/*server-actions-in-forms*/}
 
-Server Action의 가장 일반적인 사용 사례는, 데이터를 변경하는 Server 함수를 호출하는 것입니다. 브라우저에서 [HTML form 엘리먼트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form)는 사용자가 mutation을 제출하는 전통적인 접근 방식입니다. React 서버 컴포넌트로, React는 [forms](/reference/react-dom/components/form)에서 Server Action에 대한 최상의 지원을 제공합니다.
+Server Action의 가장 일반적인 사용 사례는, 데이터를 변경하는 서버 함수를 호출하는 것입니다. 브라우저에서 [HTML 폼 엘리먼트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form)는 사용자가 mutation을 제출하는 전통적인 접근 방식입니다. React 서버 컴포넌트로, React는 [forms](/reference/react-dom/components/form)에서 Server Action에 대한 최상의 지원을 제공합니다.
 
 사용자가 사용자 이름을 요청할 수 있는 양식이 있습니다.
 
@@ -121,12 +121,12 @@ export default function App() {
 }
 ```
 
-예시에서 `requestUsername`는 `<form>`을 통한 Server Action입니다. 사용자가 이 양식을 제출하면 서버 함수인 `requestUsername`에 네트워크 요청이 있습니다. form에서 Server Action을 호출할 때 React는 form의 <CodeStep step={1}>[FormData](https://developer.mozilla.org/ko/docs/Web/API/FormData)</CodeStep>를 Server Action의 첫 번째 인자로 제공합니다.
+예시에서 `requestUsername`는 `<form>`을 통한 Server Action입니다. 사용자가 이 양식을 제출하면 서버 함수인 `requestUsername`에 네트워크 요청이 있습니다. 폼에서 Server Action을 호출할 때 React는 폼의 <CodeStep step={1}>[FormData](https://developer.mozilla.org/ko/docs/Web/API/FormData)</CodeStep>를 Server Action의 첫 번째 인자로 제공합니다.
 
-Server Action을 form `action`에 전달하여, React는 form을 [점진적 향상](https://developer.mozilla.org/ko/docs/Glossary/Progressive_Enhancement)할 수 있습니다. 이것은 자바스크립트 번들이 로드되기 전에 양식을 제출할 수 있다는 것을 의미합니다.
+Server Action을 폼 `action`에 전달하여, React는 폼을 [점진적 향상](https://developer.mozilla.org/ko/docs/Glossary/Progressive_Enhancement)할 수 있습니다. 이것은 자바스크립트 번들이 로드되기 전에 양식을 제출할 수 있다는 것을 의미합니다.
 
 
-#### form에서 반환 값 처리 {/*handling-return-values*/}
+#### 폼에서 반환 값 처리 {/*handling-return-values*/}
 
 점진적 향상을 지원하며 Server Action의 결과를 기반으로 UI를 업데이트하려면, [`useActionState`](/reference/react/useActionState)를 사용하세요.
 
@@ -172,7 +172,7 @@ function UsernameForm() {
 
 Server Action은 노출된 서버 엔드포인트이며 클라이언트 코드 어디에서나 호출할 수 있습니다.
 
-[form](/reference/react-dom/components/form) 외부에서 Server Action을 사용할 때, [Transition](/reference/react/useTransition)에서 서버 액션을 호출하면 로딩 인디케이터를 표시하고, [낙관적 상태 업데이트](/reference/react/useOptimistic)를 표시하며 예기치 않은 오류를 처리할 수 있습니다. Form은 transition의 Server Action을 자동으로 래핑합니다.
+[form](/reference/react-dom/components/form) 외부에서 Server Action을 사용할 때, [Transition](/reference/react/useTransition)에서 서버 액션을 호출하면 로딩 인디케이터를 표시하고, [낙관적 상태 업데이트](/reference/react/useOptimistic)를 표시하며 예기치 않은 오류를 처리할 수 있습니다. 폼은 transition의 Server Action을 자동으로 래핑합니다.
 
 ```js {9-12}
 import incrementLike from './actions';
