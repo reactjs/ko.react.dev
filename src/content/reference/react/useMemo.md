@@ -156,7 +156,7 @@ console.timeEnd('filter array');
 **실제로 몇 가지 원칙을 지키면 많은 메모이제이션을 불필요하게 만들 수 있습니다.**
 
 1. 컴포넌트가 다른 컴포넌트를 시각적으로 감쌀 때 [JSX를 자식처럼 받아들이도록 하세요.](/learn/passing-props-to-a-component#passing-jsx-as-children) 이렇게 하면 감싸는 구성 요소가 자신의 상태를 업데이트하더라도 React는 자식을 다시 렌더링할 필요가 없습니다.
-1. 지역 상태를 선호하고 필요 이상으로 [상태를 위로 올리지](/learn/sharing-state-between-components) 마세요. 예를 들어, forms와 같이 일시적인 상태나 어떤 항목이 트리의 맨 위에 위치하거나, 전역 상태 라이브러리에 있게 하지 마세요.
+1. 지역 상태를 선호하고 필요 이상으로 [상태를 위로 올리지](/learn/sharing-state-between-components) 마세요. 예를 들어, 폼과 같이 일시적인 상태나 어떤 항목이 트리의 맨 위에 위치하거나, 전역 상태 라이브러리에 있게 하지 마세요.
 1. [순수한 렌더링 로직](/learn/keeping-components-pure)을 유지하세요. 컴포넌트를 다시 렌더링할 때 문제가 발생하거나 눈에 띄는 시각적인 부작용이 발생하면 컴포넌트에 버그가 있는 것입니다! 메모이제이션을 하는 대신 버그를 수정하세요.
 1. [상태를 업데이트하는 불필요한 Effect](/learn/you-might-not-need-an-effect)를 피하세요. React 앱의 대부분의 성능 문제는 컴포넌트를 반복적으로 렌더링하게 만드는 Effect의 업데이트 체인으로부터 발생합니다.
 1. [Effects에서 불필요한 종속성을 제거하세요.](/learn/removing-effect-dependencies) 예를 들어, 메모이제이션을 하는 대신 일부 객체나 함수를 Effect 내부 또는 컴포넌트 외부로 이동하는 것이 더 간단할 때가 있습니다.

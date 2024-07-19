@@ -232,7 +232,7 @@ async function Profile({id}) {
 }
 
 function Page({id}) {
-  // ✅ Good: 유저 데이터 가져오기를 시작합니다.
+  // ✅ Good: 사용자 데이터 가져오기를 시작합니다.
   getUser(id);
   // ... 몇몇의 계산 작업들
   return (
@@ -245,7 +245,7 @@ function Page({id}) {
 
 `Page`를 렌더링할 때, 컴포넌트는 <CodeStep step={1}>`getUser`</CodeStep>를 호출하지만, 반환된 데이터를 사용하지 않는다는 점에 유의하세요. 이 초기 <CodeStep step={1}>`getUser`</CodeStep> 호출은 페이지가 다른 계산 작업을 수행하고 자식을 렌더링하는 동안 발생하는, 비동기 데이터베이스 쿼리를 시작합니다. 
 
-`Profile`을 렌더링할 때, <CodeStep step={2}>`getUser`</CodeStep>를 다시 호출합니다. 초기 <CodeStep step={1}>`getUser`</CodeStep> 호출이 이미 유저 데이터에 반환되고 캐싱 되었다면, `Profile`이 <CodeStep step={2}>해당 데이터를 요청하고 기다릴 때</CodeStep>, 다른 원격 프로시저 호출 없이 쉽게 캐시에서 읽어올 수 있습니다. <CodeStep step={1}> 초기 데이터 요청</CodeStep>이 완료되지 않은 경우, 이 패턴으로 데이터를 미리 로드하면 데이터를 받아올 때 생기는 지연이 줄어듭니다.
+`Profile`을 렌더링할 때, <CodeStep step={2}>`getUser`</CodeStep>를 다시 호출합니다. 초기 <CodeStep step={1}>`getUser`</CodeStep> 호출이 이미 사용자 데이터에 반환되고 캐싱 되었다면, `Profile`이 <CodeStep step={2}>해당 데이터를 요청하고 기다릴 때</CodeStep>, 다른 원격 프로시저 호출 없이 쉽게 캐시에서 읽어올 수 있습니다. <CodeStep step={1}> 초기 데이터 요청</CodeStep>이 완료되지 않은 경우, 이 패턴으로 데이터를 미리 로드하면 데이터를 받아올 때 생기는 지연이 줄어듭니다.
 
 <DeepDive>
 

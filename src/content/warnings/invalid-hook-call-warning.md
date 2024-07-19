@@ -103,7 +103,7 @@ class Bad extends React.Component {
 }
 ```
 
-이러한 실수를 잡기 위해 [eslint-plugin-react-hooks 플러그인](https://www.npmjs.com/package/eslint-plugin-react-hooks)을 사용할 수 있습니다.
+이러한 실수를 잡기 위해 [`eslint-plugin-react-hooks` 플러그인](https://www.npmjs.com/package/eslint-plugin-react-hooks)을 사용할 수 있습니다.
 
 <Note>
 

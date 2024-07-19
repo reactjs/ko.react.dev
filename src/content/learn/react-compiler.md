@@ -104,7 +104,7 @@ React 컴파일러는 다음과 같이 가정합니다.
 2. nullable/optional 값과 속성에 접근하기 전에 그 값이 정의되어 있는지 테스트합니다. TypeScript를 사용하는 경우 [`strictNullChecks`](https://www.typescriptlang.org/ko/tsconfig/#strictNullChecks)을 활성화하여 수행합니다. 예를 들어 `if (object.nullableProperty) { object.nullableProperty.foo }`와 같이 처리하거나, 옵셔널 체이닝을 사용하여 `object.nullableProperty?.foo`와 같이 처리합니다.
 3. [React의 규칙](https://ko.react.dev/reference/rules)을 따릅니다.
 
-React 컴파일러는 React의 많은 규칙을 정적으로 검증할 수 있으며, 에러가 감지되면 안전하게 컴파일을 건너뜁니다. 에러를 확인하려면 [eslint-plugin-react-compiler](https://www.npmjs.com/package/eslint-plugin-react-compiler)의 설치를 권장합니다.
+React 컴파일러는 React의 많은 규칙을 정적으로 검증할 수 있으며, 에러가 감지되면 안전하게 컴파일을 건너뜁니다. 에러를 확인하려면 [`eslint-plugin-react-compiler`](https://www.npmjs.com/package/eslint-plugin-react-compiler)의 설치를 권장합니다.
 
 ### 컴파일러를 시도해 봐야 하나요? {/*should-i-try-out-the-compiler*/}
 
@@ -138,7 +138,7 @@ StrictMode usage not found.
 Found no usage of incompatible libraries.
 </TerminalBlock>
 
-### eslint-plugin-react-compiler 설치 {/*installing-eslint-plugin-react-compiler*/}
+### `eslint-plugin-react-compiler` 설치 {/*installing-eslint-plugin-react-compiler*/}
 
 React 컴파일러는 eslint 플러그인도 지원합니다. eslint 플러그인은 컴파일러와 **독립적으로** 사용할 수 있습니다. 즉 컴파일러를 사용하지 않더라도 eslint 플러그인을 사용할 수 있습니다.
 
@@ -228,7 +228,7 @@ module.exports = function () {
 
 ### Vite {/*usage-with-vite*/}
 
-Vite를 사용하고 있다면, vite-plugin-react에 플러그인을 추가할 수 있습니다.
+Vite를 사용하고 있다면, `vite-plugin-react`에 플러그인을 추가할 수 있습니다.
 
 ```js {10}
 // vite.config.js
@@ -382,7 +382,7 @@ React 19로 업그레이드할 수 없는 경우, [워킹 그룹](https://github
 [React Devtools](/learn/react-developer-tools) (v5.0+)에는 React 컴파일러를 내장 지원하며, 컴파일러에 의해 최적화된 컴포넌트 옆에 "Memo ✨" 배지를 표시합니다.
 
 ### 컴파일 후 작동하지 않는 문제 {/*something-is-not-working-after-compilation*/}
-eslint-plugin-react-compiler을 설치한 경우, 컴파일러는 에디터에서 React 규칙 위반 사항을 표시합니다. 이 경우 컴파일러가 해당 컴포넌트나 Hook의 최적화를 건너뛰었음을 의미합니다. 이것은 완전히 정상적인 동작이며, 컴파일러는 이를 복구하고 코드베이스의 다른 컴포넌트를 계속해서 최적화할 수 있습니다. **모든 eslint 위반 사항을 즉시 수정할 필요는 없습니다.** 자신의 속도에 맞춰 해결하면서 최적화되는 컴포넌트와 Hooks의 수를 점진적으로 늘릴 수 있습니다.
+`eslint-plugin-react-compiler`을 설치한 경우, 컴파일러는 에디터에서 React 규칙 위반 사항을 표시합니다. 이 경우 컴파일러가 해당 컴포넌트나 Hook의 최적화를 건너뛰었음을 의미합니다. 이것은 완전히 정상적인 동작이며, 컴파일러는 이를 복구하고 코드베이스의 다른 컴포넌트를 계속해서 최적화할 수 있습니다. **모든 eslint 위반 사항을 즉시 수정할 필요는 없습니다.** 자신의 속도에 맞춰 해결하면서 최적화되는 컴포넌트와 Hooks의 수를 점진적으로 늘릴 수 있습니다.
 
 그러나 JavaScript의 유연하고 동적인 특성 때문에 모든 경우를 철저하게 감지하는 것은 불가능합니다. 이러면 버그나 무한 루프와 같은 정의되지 않은 동작이 발생할 수 있습니다.
 

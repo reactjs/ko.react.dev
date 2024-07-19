@@ -22,7 +22,7 @@ const stream = renderToNodeStream(reactNode, options?)
 
 ---
 
-## 래퍼런스 {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `renderToNodeStream(reactNode, options?)` {/*rendertonodestream*/}
 

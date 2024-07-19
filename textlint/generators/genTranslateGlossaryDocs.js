@@ -3,7 +3,7 @@ const path = require('path');
 const data = require('../data/rules/translateGlossary');
 
 const urlIssues = 'https://github.com/reactjs/ko.react.dev/issues/';
-const pathExport = '../../wiki/textlint/translate-glossary.md';
+const pathExport = '../../wiki/translate-glossary.md';
 
 class Markdown {
   // Property
@@ -29,6 +29,9 @@ class Markdown {
   }
   h3(text) {
     this.#add(`### ${text}\n\n`);
+  }
+  blockQuote(text) {
+    this.#add(`> ${text}\n\n`);
   }
   tableHeader(...headers) {
     headers.forEach((header) => {
@@ -71,6 +74,10 @@ class Utils {
 
 const genTranslateGlossaryDocs = () => {
   const md = new Markdown('Translate Glossary');
+
+  md.blockQuote(
+    `해당 문서는 \`textlint/data/rules/translateGlossary.js\` 파일을 기반으로 자동 생성되므로, 임의 수정을 금지합니다.`
+  );
 
   Object.keys(data).forEach((key1) => {
     md.h2(Utils.keyToStr(key1));

@@ -4,7 +4,7 @@ title: "<input>"
 
 <Intro>
 
-[`<input>` 브라우저 내장 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) 를 사용하면 여러 종류의 form input 을 렌더링 할 수 있습니다.
+[`<input>` 브라우저 내장 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) 를 사용하면 여러 종류의 폼 input 을 렌더링 할 수 있습니다.
 
 ```js
 <input />

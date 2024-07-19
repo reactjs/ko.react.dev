@@ -14,7 +14,7 @@ title: "Legacy React APIs"
 
 * [`Children`](/reference/react/Children)은 `children` prop으로 받은 JSX를 조작하고 변형할 수 있습니다. [대안 확인하기](/reference/react/Children#alternatives)
 * [`cloneElement`](/reference/react/cloneElement)를 통해 다른 엘리먼트를 시작점으로 사용하여 React 엘리먼트를 생성할 수 있습니다. [대안 확인하기](/reference/react/cloneElement#alternatives)
-* [`Component`](/reference/react/Component)는 Javascript Class로써 React 컴포넌트를 정의합니다. [대안 확인하기](/reference/react/Component#alternatives)
+* [`Component`](/reference/react/Component)는 Javascript 클래스로써 React 컴포넌트를 정의합니다. [대안 확인하기](/reference/react/Component#alternatives)
 * [`createElement`](/reference/react/createElement)로 React 엘리먼트를 생성합니다. 일반적으로 JSX를 대신 사용합니다.
 * [`createRef`](/reference/react/createRef)는 임의의 값을 포함할 수 있는 참조 객체를 생성합니다. [대안 확인하기](/reference/react/createRef#alternatives)
 * [`isValidElement`](/reference/react/isValidElement)는 값의 React 엘리먼트 여부를 확인합니다. 일반적으로 [`cloneElement`](/reference/react/cloneElement)와 함께 사용합니다.
