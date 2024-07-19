@@ -29,7 +29,7 @@ const domNode = document.getElementById('root');
 const root = hydrateRoot(domNode, reactNode);
 ```
 
-React는 `domNode` 내부의 HTML에 붙어, 내부 DOM을 직접 관리할 것입니다. App을 React로 전부 만들었다면 보통은 단 하나의 root component와 함께 `hydrateRoot`를 한 번 호출할 것입니다.
+React는 `domNode` 내부의 HTML에 붙어, 내부 DOM을 직접 관리할 것입니다. App을 React로 전부 만들었다면 보통은 단 하나의 root 컴포넌트와 함께 `hydrateRoot`를 한 번 호출할 것입니다.
 
 [아래 여러 예시를 확인해보세요.](#usage)
 
