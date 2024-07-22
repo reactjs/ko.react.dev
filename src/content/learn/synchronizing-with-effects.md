@@ -908,7 +908,7 @@ export default function ChatRoom({ roomId }) {
 
 React는 이 Effect를 실행하며, `'general'` 채팅방에 연결합니다.
 
-#### 같은 의존성 사이에서의 재랜더링 {/*re-render-with-same-dependencies*/}
+#### 같은 의존성 사이에서의 재렌더링 {/*re-render-with-same-dependencies*/}
 
 `<ChatRoom roomId="general" />`가 다시 렌더링된다고 가정해봅시다. JSX 결과물은 동일합니다.
 

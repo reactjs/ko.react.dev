@@ -794,7 +794,7 @@ JSX로 자식 요소를 전달할 때와 달리 이런 방식은 각 아이템�
 
 ---
 
-### render prop로 렌더링 커스텀하기 {/*calling-a-render-prop-to-customize-rendering*/}
+### 렌더링 prop로 렌더링 커스텀하기 {/*calling-a-render-prop-to-customize-rendering*/}
 
 모든 개별 항목에 대해 JSX를 생성하는 대신 JSX를 반환하는 함수를 전달하고 필요할 때 해당 함수를 호출할 수도 있습니다. 아래 예시에서 `App` 컴포넌트는 `renderContent` 함수를 `TabSwitcher` 컴포넌트에 전달합니다. `TabSwitcher` 컴포넌트는 선택된 탭에 대해서만 `renderContent`를 호출합니다.
 
@@ -845,10 +845,10 @@ export default function TabSwitcher({ tabIds, getHeader, renderContent }) {
 
 </Sandpack>
 
-`renderContent`와 같이 사용자 인터페이스의 일부를 어떻게 렌더링할지 정의하는 prop를 *render prop*라고 합니다. 하지만 특별한 것은 아닙니다. 단지 일반적인 함수의 prop일 뿐입니다.
+`renderContent`와 같이 사용자 인터페이스의 일부를 어떻게 렌더링할지 정의하는 prop를 *렌더링 prop*라고 합니다. 하지만 특별한 것은 아닙니다. 단지 일반적인 함수의 prop일 뿐입니다.
 
-Render props는 함수이므로 정보를 전달할 수 있습니다.
-아래 예시에서 `RowList` 컴포넌트는 각 row의 `id`와 `index`를 `renderRow`에 render prop로 전달하고, `index`가 짝수인 row를 강조합니다.
+렌더링 props는 함수이므로 정보를 전달할 수 있습니다.
+아래 예시에서 `RowList` 컴포넌트는 각 row의 `id`와 `index`를 `renderRow`에 렌더링 prop로 전달하고, `index`가 짝수인 row를 강조합니다.
 
 <Sandpack>
 

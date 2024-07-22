@@ -1178,7 +1178,7 @@ function Throw({error}) {
 
 <ConsoleBlock level="error">
 
-경고: root.render(...)에 두 번째 인자를 전달했지만, 이 함수는 하나의 인자만 허용합니다.
+경고: `root.render(...)`에 두 번째 인자를 전달했지만, 이 함수는 하나의 인자만 허용합니다.
 
 </ConsoleBlock>
 
