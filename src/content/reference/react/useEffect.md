@@ -1723,9 +1723,9 @@ function Page({ url, shoppingCart }) {
 }
 ```
 
-**Effect Event는 반응적이지 않으며 Effect의 의존성에서 배제되어야 합니다.** Effect Event에는 비 반응형 코드(Effect Event 로직은 최신 props와 state를 읽을 수 있음)를 배치할 수 있습니다. `onVisit`내의 `shoppingCart`를 읽음으로써 `shoppingCart`의 변경으로 인한 Effect의 재실행을 방지합니다.
+**Effect 이벤트는 반응적이지 않으며 Effect의 의존성에서 배제되어야 합니다.** Effect 이벤트에는 비 반응형 코드(Effect 이벤트 로직은 최신 props와 state를 읽을 수 있음)를 배치할 수 있습니다. `onVisit`내의 `shoppingCart`를 읽음으로써 `shoppingCart`의 변경으로 인한 Effect의 재실행을 방지합니다.
 
-[Effect Event가 어떻게 반응형 및 비 반응형 코드를 분리하는 데 도움이 되는지에 대한 자세한 내용은 여기를 읽어보세요.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
+[Effect 이벤트가 어떻게 반응형 및 비 반응형 코드를 분리하는 데 도움이 되는지에 대한 자세한 내용은 여기를 읽어보세요.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
 
 
 ---
