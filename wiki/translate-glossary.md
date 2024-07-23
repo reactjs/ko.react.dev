@@ -56,3 +56,21 @@ Browser|`/Browser/`|브라우저|[#610](https://github.com/reactjs/ko.react.dev/
 Extension|`/Extension/`, `/확장프로그램/`|확장 프로그램|[#610](https://github.com/reactjs/ko.react.dev/issues/610)|
 Escape Hatches|`/Escape[-\s]?Hatches/`|탈출구|[#738](https://github.com/reactjs/ko.react.dev/issues/738)|
 
+### Others
+
+용어 `term`|정규표현식 `sources`|번역 `target`|논의 `discussions`|
+---|---|---|---|
+Tip|`/\bTips?\b/`|팁|[#2](https://github.com/reactjs/ko.react.dev/issues/2)|
+Example|`/\bExamples?\b/`, `/예제/`|예시|[#2](https://github.com/reactjs/ko.react.dev/issues/2)|
+Chapter|`/\bChapters?\b/`, `/[챕쳅]터/`|장|[#2](https://github.com/reactjs/ko.react.dev/issues/2)|
+Spec, Specification|`/\bSpec(?:ification)?s?\b/`, `/스[펙팩]/`|명세|[#2](https://github.com/reactjs/ko.react.dev/issues/2)|
+camelCase|`/\bcamel\s?Case\b/`, `/[캐카][맬멜]\s?케이스/`|캐멀 케이스|[#2](https://github.com/reactjs/ko.react.dev/issues/2)|
+Parameter|`/\bParam(?:eter)?s?\b/`, `/[파패][라러]미터/`, `/매개 변수/`|매개변수|[#614](https://github.com/reactjs/ko.react.dev/issues/614)|
+Deprecated|`/\bDeprecated\b/`|더 이상 사용되지 않습니다.|[#632](https://github.com/reactjs/ko.react.dev/issues/632)|
+Pitfall|`/\bPitfall\b/`|주의하세요!|[#632](https://github.com/reactjs/ko.react.dev/issues/632)|
+Note|`/\bNote\b/`|중요합니다!|[#632](https://github.com/reactjs/ko.react.dev/issues/632)|
+Wip|`/\bWip\b/`|개발중이에요|[#632](https://github.com/reactjs/ko.react.dev/issues/632)|
+Returns(제목에 사용된 경우)|`/\bReturns\b/`, `/반환\s+(?:값\s+)?{\//`|반환값|[#725](https://github.com/reactjs/ko.react.dev/issues/725)|
+Logic|`/\bLogic\b/`|로직|[#695](https://github.com/reactjs/ko.react.dev/issues/695)|
+Dependency|`/\bDependenc(?:y\|ies)\b/`|의존성|[#841](https://github.com/reactjs/ko.react.dev/issues/841)|
+
