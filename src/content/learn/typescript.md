@@ -375,9 +375,9 @@ export default function Form() {
 
 `@types/react` package에는 상당히 광범위한 타입 집합이 있으며, React와 TypeScript가 상호작용하는 방식에 익숙하다면 읽어볼 가치가 있습니다. [DefinitelyTyped에 있는 React 폴더에서](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts) 찾을 수 있습니다. 여기에서는 좀 더 일반적인 타입 몇 가지를 다루겠습니다.
 
-### DOM Events {/*typing-dom-events*/}
+### DOM 이벤트 {/*typing-dom-events*/}
 
-React에서 DOM events로 작업할 때, 종종 이벤트 핸들러로부터 이벤트의 타입을 추론할 수 있습니다. 하지만, 이벤트 핸들러에 전달할 함수를 추출하고 싶을 때는 이벤트 타입을 명시적으로 설정해야 합니다.
+React에서 DOM 이벤트로 작업할 때, 종종 이벤트 핸들러로부터 이벤트의 타입을 추론할 수 있습니다. 하지만, 이벤트 핸들러에 전달할 함수를 추출하고 싶을 때는 이벤트 타입을 명시적으로 설정해야 합니다.
 
 <Sandpack>
 
