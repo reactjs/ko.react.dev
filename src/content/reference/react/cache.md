@@ -133,7 +133,7 @@ export function Precipitation({cityData}) {
 }
 ```
 
-위의 예시에서, <CodeStep step={2}>`Precipitation`</CodeStep>와 <CodeStep step={1}>`Temperature`</CodeStep>는 각각 `cache`를 호출하여 자체 캐시 조회를 통해 새로운 메모화된 함수를 만들어 냅니다. 두 컴포넌트가 같은 `cityData`를 렌더한다면, `calculateWeekReport`를 호출하는 반복 작업을 하게 됩니다.
+위의 예시에서, <CodeStep step={2}>`Precipitation`</CodeStep>와 <CodeStep step={1}>`Temperature`</CodeStep>는 각각 `cache`를 호출하여 자체 캐시 조회를 통해 새로운 메모화된 함수를 만들어 냅니다. 두 컴포넌트가 같은 `cityData`를 렌더링한다면, `calculateWeekReport`를 호출하는 반복 작업을 하게 됩니다.
 
 게다가, `Temperature`는 컴포넌트가 렌더될 때마다 어떤 캐시 공유도 허용하지 않는 <CodeStep step={1}>새로운 메모화된 함수</CodeStep>를 생성하게 됩니다.
 
@@ -208,7 +208,7 @@ async function AnimatedWeatherCard({city}) {
 	// ...
 }
 ```
-클라이언트 컴포넌트에서 비동기 데이터를 사용하는 컴포넌트를 렌더하고 싶다면 [`use`](/reference/react/use) 문서를 참고하세요.
+클라이언트 컴포넌트에서 비동기 데이터를 사용하는 컴포넌트를 렌더링하고 싶다면 [`use`](/reference/react/use) 문서를 참고하세요.
 
 </Note>
 

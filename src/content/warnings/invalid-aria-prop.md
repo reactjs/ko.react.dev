@@ -2,7 +2,7 @@
 title: 유효하지 않은 ARIA Prop 경고
 ---
 
-이 경고는 Web Accessibility Initiative (WAI) Accessible Rich Internet Application (ARIA) [명세](https://www.w3.org/TR/wai-aria-1.1/#states_and_properties)에 존재하지 않는 `aria-*` 프로퍼티를 가진 DOM 요소를 렌더링하려고 할 때 발생합니다.
+이 경고는 WAI-ARIA(Web Accessibility Initiative - Accessible Rich Internet Application) [명세](https://www.w3.org/TR/wai-aria-1.1/#states_and_properties)에 존재하지 않는 `aria-*` 프로퍼티를 가진 DOM 요소를 렌더링하려고 할 때 발생합니다.
 
 1. 유효한 prop을 사용하고 있다고 생각하는 경우 철자를 주의 깊게 확인해 보세요. `aria-labelledby`와 `aria-activedescendant`는 철자 실수가 잦습니다.
 
