@@ -88,13 +88,13 @@ function extractHeaders(children, depth, out) {
         header = {
           url: '#challenges',
           depth: 2,
-          text: 'Challenges',
+          text: '챌린지 도전하기',
         };
       } else if (child.type === 'Recap') {
         header = {
           url: '#recap',
           depth: 2,
-          text: 'Recap',
+          text: '요약',
         };
       } else if (child.type === 'TeamMember') {
         header = {
