@@ -37,7 +37,7 @@ React로 UI를 구현하기 위해서 일반적으로 다섯 가지 단계를 �
 어떤 배경을 가지고 있냐에 따라, 디자인을 컴포넌트로 나누는 방법에 대한 관점이 달라질 수 있습니다.
 
 * **Programming**--새로운 함수나 객체를 만드는 방식과 같은 방법으로 해봅시다. 이 중 [단일책임 원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99)을 반영하고자 한다면 컴포넌트는 이상적으로는 한 번에 한 가지 일만 해야 합니다. 만약 컴포넌트가 점점 커진다면 작은 하위 컴포넌트로 쪼개져야 하겠죠.
-* **CSS**--class 선택자를 무엇으로 만들지 생각해 봅시다. (실제 컴포넌트들은 약간 좀 더 세분되어 있습니다.)
+* **CSS**--클래스 선택자를 무엇으로 만들지 생각해 봅시다. (실제 컴포넌트들은 약간 좀 더 세분되어 있습니다.)
 * **Design**--디자인 계층을 어떤 식으로 구성할 지 생각해 봅시다.
 
 JSON이 잘 구조화 되어있다면, 종종 이것이 UI의 컴포넌트 구조가 자연스럽게 데이터 모델에 대응된다는 것을 발견할 수 있습니다. 이는 UI와 데이터 모델은 보통 같은 정보 아키텍처, 즉 같은 구조를 가지기 때문입니다. UI를 컴포넌트로 분리하고, 각 컴포넌트가 데이터 모델에 매칭될 수 있도록 하세요.
@@ -441,7 +441,7 @@ You provided a \`value\` prop to a form field without an \`onChange\` handler. T
 
 </ConsoleBlock>
 
-위에 있는 샌드박스를 보면, `ProductTable`와 `SearchBar`가 `filterText`와 `inStockOnly` props를 table, input과 체크 박스를 렌더하기 위해서 읽고 있습니다. 예를 들면, `SearchBar` input의 value를 아래와 같이 채우고 있습니다.
+위에 있는 샌드박스를 보면, `ProductTable`와 `SearchBar`가 `filterText`와 `inStockOnly` props를 table, input과 체크 박스를 렌더링하기 위해서 읽고 있습니다. 예를 들면, `SearchBar` input의 value를 아래와 같이 채우고 있습니다.
 
 ```js {1,6}
 function SearchBar({ filterText, inStockOnly }) {

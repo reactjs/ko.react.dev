@@ -9,7 +9,7 @@ React를 전체적으로 적용한 애플리케이션이나 사이트를 새롭�
 </Intro>
 
 
-프레임워크 없이 React 를 사용할 수 있습니다. 그러나 대부분에 애플리케이션이나 사이트들이 결국에는 code-splitting, routing, data fetching, 그리고 HTML 생성에 대한 해결책을 찾고 있다는것을 발견했습니다. 이러한 문제들은 UI 라이브러리들의 기본적인 문제이며 React 만의 문제는 아닙니다.
+프레임워크 없이 React를 사용할 수 있습니다. 그러나 대부분에 애플리케이션이나 사이트들이 결국에는 코드 분할, routing, 데이터 fetching, 그리고 HTML 생성에 대한 해결책을 찾고 있다는것을 발견했습니다. 이러한 문제들은 UI 라이브러리들의 기본적인 문제이며 React 만의 문제는 아닙니다.
 
 프레임워크로 시작하면 React를 빠르게 시작할 수 있고, 나중에 자체 프레임워크를 구축하는 것을 피할 수 있습니다.
 
@@ -83,7 +83,7 @@ Expo는 [Expo (기업)](https://expo.dev/about)이 관리합니다. Expo를 사�
 
 ## Bleeding-edge React frameworks {/*bleeding-edge-react-frameworks*/}
 
-React를 지속적으로 개선할 방법을 찾아가는 과정에서, 우리는 React를 프레임워크(특히 라우팅, 번들링, 서버 기술)와 더 밀접하게 통합하는 것이 React 사용자가 더 나은 앱을 만드는 데 도움을 줄 수 있는 가장 큰 기회라는 것을 깨달았습니다. Next.js 팀은 [React Server Component](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)와 같은 가장 최신의 React 기능을 프레임워크에 구애받지 않는 형태로 연구, 개발, 통합, 테스트하는 데에 협력하기로 합의했습니다.
+React를 지속적으로 개선할 방법을 찾아가는 과정에서, 우리는 React를 프레임워크(특히 라우팅, 번들링, 서버 기술)와 더 밀접하게 통합하는 것이 React 사용자가 더 나은 앱을 만드는 데 도움을 줄 수 있는 가장 큰 기회라는 것을 깨달았습니다. Next.js 팀은 [React 서버 컴포넌트](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)와 같은 가장 최신의 React 기능을 프레임워크에 구애받지 않는 형태로 연구, 개발, 통합, 테스트하는 데에 협력하기로 합의했습니다.
 
 이러한 기능들은 매일 프로덕션 수준에 근접하고 있으며 다른 번들러 및 프레임워크 개발자들과 이를 통합하기 위해 협의 중입니다. 희망으로는 1, 2년 후에 이 페이지에 나열된 모든 프레임워크가 이러한 기능을 지원했으면 합니다. (이러한 기능을 실험해 보기 위해 우리와 협력하고 싶은 프레임워크 개발자가 있다면 알려주세요!)
 
@@ -96,9 +96,9 @@ Next.js는 [Vercel](https://vercel.com/)이 관리합니다. 어느 Node.js 서�
 
 <DeepDive>
 
-#### React 팀의 풀스택 아키텍쳐 비전을 구현한 기능은 무엇인가요? {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
+#### React 팀의 풀스택 아키텍처 비전을 구현한 기능은 무엇인가요? {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
 
-Next.js의 App Router 번들러는 공식 [React Server Components 명세](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md) 전체를 구현했습니다. 이를 통해 빌드 시간, 서버 전용, 대화형 컴포넌트를 하나의 React 트리에서 혼합할 수 있습니다.
+Next.js의 App Router 번들러는 공식 [React 서버 컴포넌트 명세](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md) 전체를 구현했습니다. 이를 통해 빌드 시간, 서버 전용, 대화형 컴포넌트를 하나의 React 트리에서 혼합할 수 있습니다.
 
 예를 들어, 데이터베이스나 파일을 읽는 `async` 함수로 서버 전용 React 컴포넌트를 작성할 수 있습니다. 그런 다음 이를 통해 데이터를 대화형 컴포넌트로 전달할 수 있습니다.
 
@@ -124,6 +124,6 @@ Next.js의 App Router는 또한 Suspense를 사용하는 데이터 통신과도 
 </Suspense>
 ```
 
-Server Component와 Suspense는 Next.js의 기능이 아닌 React의 기능입니다. 하지만 프레임워크 수준에서 이를 채택하려면 많은 노력과 비교적 복잡한 구현 작업이 필요합니다. 현재 기준으로는 Next.js의 App Router가 가장 완벽한 구현입니다. React 팀은 차세대 프레임워크에서는 이러한 기능을 구현하기 쉽도록 번들러 개발자와 공동으로 노력하고 있습니다.
+서버 컴포넌트와 Suspense는 Next.js의 기능이 아닌 React의 기능입니다. 하지만 프레임워크 수준에서 이를 채택하려면 많은 노력과 비교적 복잡한 구현 작업이 필요합니다. 현재 기준으로는 Next.js의 App Router가 가장 완벽한 구현입니다. React 팀은 차세대 프레임워크에서는 이러한 기능을 구현하기 쉽도록 번들러 개발자와 공동으로 노력하고 있습니다.
 
 </DeepDive>

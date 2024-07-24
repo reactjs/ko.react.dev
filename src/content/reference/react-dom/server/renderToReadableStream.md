@@ -322,7 +322,7 @@ function ProfilePage() {
 }
 ```
 
-이는 유저가 보는 최초의 로딩 상태를 정해줍니다:
+이는 사용자가 보는 최초의 로딩 상태를 정해줍니다:
 
 ```js {3-5,13}
 <ProfileLayout>
@@ -441,7 +441,7 @@ function ProfilePage() {
 2. 서버에서 더이상의 `Posts`와 그 내부를 렌더링하는 것을 "포기"합니다.
 3. 클라이언트에서 자바스크립트 코드가 로딩되었을 때, React는 `Posts`를 다시 렌더링하려고 시도할 것입니다.
 
-만약 클라이언트에서도 `Posts` 렌더링 재시도가 실패한다면, React는 클라이언트에서 에러를 던지게 됩니다. 렌더링 중에 일어난 모든 에러과 함께, [가장 가까운 부모 에러 경계](/reference/react/Component#static-getderivedstatefromerror)로 유저에게 어떤 에러를 보여줘야할 지를 결정하게 됩니다. 실제로는, 사용자가 에러가 복구될 수 없다는 것이 확실시 될 때까지 로딩 표시기를 보고있어야 한 다는 것을 의미합니다.
+만약 클라이언트에서도 `Posts` 렌더링 재시도가 실패한다면, React는 클라이언트에서 에러를 던지게 됩니다. 렌더링 중에 일어난 모든 에러과 함께, [가장 가까운 부모 에러 경계](/reference/react/Component#static-getderivedstatefromerror)로 사용자에게 어떤 에러를 보여줘야할 지를 결정하게 됩니다. 실제로는, 사용자가 에러가 복구될 수 없다는 것이 확실시 될 때까지 로딩 표시기를 보고있어야 한 다는 것을 의미합니다.
 
 클라이언트에서 `Posts` 렌더링 재시도가 성공하면, 서버에서 온 로딩 대체 HTML이 클라이언트에서 렌더링된 결과로 교체됩니다. 사용자는 서버에서 에러가 있었는지 모를 것입니다. 하지만, 서버의 `onError` 콜백과 클라이언트의 [`onRecoverableError`](/reference/react-dom/client/hydrateRoot#hydrateroot) 콜백은 그대로 실행됩니다. 이를 통해 에러 내용을 받아서 로깅할 수 있습니다.
 

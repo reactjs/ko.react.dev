@@ -103,7 +103,7 @@ root.unmount();
 
 이 함수는 주로 React 루트의 DOM 노드(또는 그 조상 노드)가 다른 코드에 의해 DOM에서 제거될 수 있는 경우에 유용합니다. 예를 들어 DOM에서 비활성 탭을 제거하는 jQuery 탭 패널을 상상해 보세요. 탭이 제거되면 그 안에 있는 모든 것(내부의 React 루트를 포함)이 DOM에서 제거됩니다. 이 경우 `root.unmount`를 호출하여 제거된 루트의 콘텐츠 관리를 "중지"하도록 React에 지시해야 합니다. 그렇지 않으면 제거된 루트 내부의 컴포넌트는 구독과 같은 전역 리소스를 정리하고 확보하는 법을 모르는 채로 있게 됩니다.
 
-`root.unmount`를 호출하면 루트에 있는 모든 컴포넌트가 unmount 되고, 트리상의 이벤트 핸들러나 state가 제거되며, 루트 DOM 노드에서 React가 "분리"됩니다.
+`root.unmount`를 호출하면 루트에 있는 모든 컴포넌트가 마운트 해제되고, 트리상의 이벤트 핸들러나 state가 제거되며, 루트 DOM 노드에서 React가 "분리"됩니다.
 
 
 #### 매개변수 {/*root-unmount-parameters*/}
@@ -117,9 +117,9 @@ root.unmount();
 
 #### 주의사항 {/*root-unmount-caveats*/}
 
-* `root.unmount`를 호출하면 트리의 모든 컴포넌트가 unmount 되고 루트 DOM 노드에서 React가 "분리"됩니다.
+* `root.unmount`를 호출하면 트리의 모든 컴포넌트가 마운트 해제되고 루트 DOM 노드에서 React가 "분리"됩니다.
 
-* `root.unmount`를 한 번 호출한 후에는 같은 루트에서 `root.render`를 다시 호출할 수 없습니다. unmount 된 루트에서 `root.render`를 호출하려고 하면 "unmount 된 root를 업데이트할 수 없습니다." 오류가 발생합니다. 그러나 해당 노드의 이전 루트가 unmount 된 후 동일한 DOM 노드에 새로운 루트를 만들 수는 있습니다.
+* `root.unmount`를 한 번 호출한 후에는 같은 루트에서 `root.render`를 다시 호출할 수 없습니다. 마운트 해제된 루트에서 `root.render`를 호출하려고 하면 "마운트 해제된 root를 업데이트할 수 없습니다." 오류가 발생합니다. 그러나 해당 노드의 이전 루트가 마운트 해제된 후 동일한 DOM 노드에 새로운 루트를 만들 수는 있습니다.
 
 ---
 

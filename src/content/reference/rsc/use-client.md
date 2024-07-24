@@ -268,7 +268,7 @@ React 앱에서와 같이 부모 컴포넌트는 자식 컴포넌트에 데이�
 	* [Set](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set)
 	* [TypedArray](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) 및 [ArrayBuffer](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
 * [Date](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date)
-* 일반 [객체](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object) (직렬화할 수 있는 properties를 사용하여 [객체 이니셜라이저](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer)로 생성된 객체)
+* 일반 [객체](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object) (직렬화할 수 있는 프로퍼티를 사용하여 [객체 이니셜라이저](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer)로 생성된 객체)
 * [서버 액션](/reference/react/use-server)으로서의 함수
 * 클라이언트 또는 서버 컴포넌트 요소(JSX)
 * [Promises](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)

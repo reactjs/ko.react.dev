@@ -29,13 +29,13 @@ const domNode = document.getElementById('root');
 const root = hydrateRoot(domNode, reactNode);
 ```
 
-React는 `domNode` 내부의 HTML에 붙어, 내부 DOM을 직접 관리할 것입니다. App을 React로 전부 만들었다면 보통은 단 하나의 root component와 함께 `hydrateRoot`를 한 번 호출할 것입니다.
+React는 `domNode` 내부의 HTML에 붙어, 내부 DOM을 직접 관리할 것입니다. App을 React로 전부 만들었다면 보통은 단 하나의 root 컴포넌트와 함께 `hydrateRoot`를 한 번 호출할 것입니다.
 
 [아래 여러 예시를 확인해보세요.](#usage)
 
 #### Parameters {/*parameters*/}
 
-* `domNode`: 서버에서 root element로 렌더링된 [DOM element](https://developer.mozilla.org/en-US/docs/Web/API/Element)
+* `domNode`: 서버에서 root 엘리먼트로 렌더링된 [DOM 엘리먼트](https://developer.mozilla.org/en-US/docs/Web/API/Element)
 
 * `reactNode`: 앞서 존재하는 HTML에 렌더링하기 위한 "React 노드" 입니다. 주로 `ReactDOM Server`의 `renderToPipeableStream(<App />)`와 같은 메소드로 렌더링된  `<App />`같은 JSX 조각들입니다.
 
@@ -56,7 +56,7 @@ React는 `domNode` 내부의 HTML에 붙어, 내부 DOM을 직접 관리할 것�
 #### Caveats {/*caveats*/}
 
 * `hydrateRoot()`는 서버에서 렌더링된 내용과 후에 렌더링된 내용이 동일할 것을 기대합니다. 따라서 동일하지 않은 부분들은 직접 버그로 취급해주거나 고쳐줘야 합니다.
-* 개발 모드에선, React가 hydration 중에 동일하지 않은 부분에 대해 경고해줍니다. 속성이 동일하지 않을 경우에 해당 속성이 올바르게 적용될 것이라고 보장할 수 없습니다. 모든 markup을 보장하지 않는 것은 성능면에서 중요하기 때문입니다. markup이 동일하지 않는 경우는 드물기 때문에 모든 markup을 검증하는 비용은 굉장히 비쌉니다.
+* 개발 모드에선, React가 hydration 중에 동일하지 않은 부분에 대해 경고해줍니다. 속성이 동일하지 않을 경우에 해당 속성이 올바르게 적용될 것이라고 보장할 수 없습니다. 모든 마크업을 보장하지 않는 것은 성능면에서 중요하기 때문입니다. 마크업이 동일하지 않는 경우는 드물기 때문에 모든 마크업을 검증하는 비용은 굉장히 비쌉니다.
 * 여러분은 App에서 `hydrateRoot`를 단 한 번만 호출하게 될 것입니다. 만약 프레임워크를 사용한다면, 프레임워크가 대신 호출해 줄 것입니다.
 * App을 사전에 렌더링된 HTML 없이 클라이언트에서 직접 렌더링을 한다면 `hydrateRoot()`은 지원되지 않습니다. [`createRoot()`](/reference/react-dom/client/createRoot)를 대신 사용해주세요.
 
@@ -100,7 +100,7 @@ root.unmount();
 
 주로 React root부터 혹은 그 상위에서부터 시작된 DOM node들을 다른 코드에 의해 DOM에서 삭제되어야 하는 경우 유용합니다. 예를 들어, jQuery 탭 패널이 활성화 되어 있지 않은 탭을 DOM에서 지운다고 가정해봅시다. 탭이 지워지면, React root와 그 내부를 포함해 그 안의 모든 것이 지워지게 되고 DOM에서 또한 지워지게 됩니다. `root.unmount`를 호출해 React에게 삭제된 컨텐츠들을 "그만" 다루라고 알려주어야 합니다. 그렇지 않으면 삭제되어버린 React root 내부의 컴포넌트들은 삭제되지 않을 것이며, "구독"처럼 컴퓨팅 자원을 자유롭게 놓아주지 못하게 됩니다.
 
-`root.unmount`를 호출하면 root 내부의 모든 컴포넌트를 unmount하고 root DOM node에서 React를 "떼어"냅니다. root 내부의 event handler와 state까지 모두 포함해 unmount 및 삭제됩니다.
+`root.unmount`를 호출하면 root 내부의 모든 컴포넌트를 마운트 해제하고 root DOM node에서 React를 "떼어"냅니다. root 내부의 이벤트 핸들러와 state까지 모두 포함해 마운트 해제 및 삭제됩니다.
 
 #### Parameters {/*root-unmount-parameters*/}
 
@@ -113,9 +113,9 @@ root.unmount();
 
 #### Caveats {/*root-unmount-caveats*/}
 
-* `root.unmount`를 호출하면 root부터 그 안의 모든 컴포넌트가 unmount되고 root DOM node에서 React를 떼어냅니다.
+* `root.unmount`를 호출하면 root부터 그 안의 모든 컴포넌트가 마운트 해제되고 root DOM node에서 React를 떼어냅니다.
 
-* `root.unmount`를 한번 호출한 이후엔 `root.render`를 root에 다시 사용할 수 없습니다. unmount된 root에 다시 `root.render`를 호출하려고 한다면 "Cannot update an unmounted root" 에러를 throw하게 됩니다.
+* `root.unmount`를 한번 호출한 이후엔 `root.render`를 root에 다시 사용할 수 없습니다. 마운트 해제된 root에 다시 `root.render`를 호출하려고 한다면 "Cannot update an unmounted root" 에러를 throw하게 됩니다.
 
 ---
 
@@ -186,7 +186,7 @@ function Counter() {
 
 `hydrateRoot`에 전달한 React 트리는 서버에서 만들었던 React 트리 결과물과 동일해야 합니다.
 
-이는 사용자 경험을 위해서 중요합니다. 유저는 서버에서 만들어진 HTML을 JavaScript 코드가 로드될 때까지 둘러보게 됩니다. 앱의 로딩을 더 빠르게 하기 위해 서버는 일종의 신기루로서 React 결과물인 HTML 스냅샷을 만들어 보여줍니다. 갑자기 다른 컨텐츠를 보여주게 되면 신기루가 깨져버리게 됩니다. 이런 이유로 서버에서 렌더링한 결과물과 클라이언트에서 최초로 렌더링한 결과물이 같아야 합니다.
+이는 사용자 경험을 위해서 중요합니다. 사용자는 서버에서 만들어진 HTML을 JavaScript 코드가 로드될 때까지 둘러보게 됩니다. 앱의 로딩을 더 빠르게 하기 위해 서버는 일종의 신기루로서 React 결과물인 HTML 스냅샷을 만들어 보여줍니다. 갑자기 다른 컨텐츠를 보여주게 되면 신기루가 깨져버리게 됩니다. 이런 이유로 서버에서 렌더링한 결과물과 클라이언트에서 최초로 렌더링한 결과물이 같아야 합니다.
 
 주로 아래와 같은 원인으로 hydration 에러가 일어납니다.
 
@@ -195,7 +195,7 @@ function Counter() {
 * [`window.matchMedia`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)같은 브라우저에서만 사용가능한 API를 렌더링 로직에 사용함.
 * 서버와 클라이언트에서 서로 다른 데이터를 렌더링함.
 
-React는 hydration 에러에서 복구됩니다, 하지만 **다른 버그들과 같이 반드시 고쳐줘야 합니다.** 가장 나은 경우는 그저 느려지기만 할 뿐이지만, 최악의 경우엔 이벤트 핸들러가 다른 element에 붙어버립니다.
+React는 hydration 에러에서 복구됩니다, 하지만 **다른 버그들과 같이 반드시 고쳐줘야 합니다.** 가장 나은 경우는 그저 느려지기만 할 뿐이지만, 최악의 경우엔 이벤트 핸들러가 다른 엘리먼트에 붙어버립니다.
 
 </Pitfall>
 
@@ -236,9 +236,9 @@ hydrateRoot(document, <App />);
 
 ### 어쩔 수 없는 hydration 불일치 에러 억제하기 {/*suppressing-unavoidable-hydration-mismatch-errors*/}
 
-어떤 element의 속성이나 text content가 서버와 클라이언트에서 어쩔 수 없이 다를 땐(예를 들어, timestamp를 이용했다거나), hydration 불일치 경고를 안보이게 할 수 있습니다.
+어떤 엘리먼트의 속성이나 text content가 서버와 클라이언트에서 어쩔 수 없이 다를 땐(예를 들어, timestamp를 이용했다거나), hydration 불일치 경고를 안보이게 할 수 있습니다.
 
-해당 element에서 hydration 경고를 끄기 위해선 `suppressHydrationWarning={true}`를 추가하면 됩니다.
+해당 엘리먼트에서 hydration 경고를 끄기 위해선 `suppressHydrationWarning={true}`를 추가하면 됩니다.
 
 <Sandpack>
 
@@ -320,7 +320,7 @@ export default function App() {
 
 <Pitfall>
 
-이 방법은 2번 렌더링해야 하기 때문에 hydration을 느리게 합니다. 느린 통신 상태일 경우에 사용자 경험을 염두하세요. 초기 HTML이 렌더된 한참 이후에야 JavaScript 코드를 불러오게 됩니다. 따라서 hydration 이후에 바로 다른 UI를 렌더링하는 것은 유저에게 UI가 삐걱거리는 것처럼 보일 수 있습니다.
+이 방법은 2번 렌더링해야 하기 때문에 hydration을 느리게 합니다. 느린 통신 상태일 경우에 사용자 경험을 염두하세요. 초기 HTML이 렌더된 한참 이후에야 JavaScript 코드를 불러오게 됩니다. 따라서 hydration 이후에 바로 다른 UI를 렌더링하는 것은 사용자에게 UI가 삐걱거리는 것처럼 보일 수 있습니다.
 
 </Pitfall>
 
@@ -1178,7 +1178,7 @@ function Throw({error}) {
 
 <ConsoleBlock level="error">
 
-경고: root.render(...)에 두 번째 인자를 전달했지만, 이 함수는 하나의 인자만 허용합니다.
+경고: `root.render(...)`에 두 번째 인자를 전달했지만, 이 함수는 하나의 인자만 허용합니다.
 
 </ConsoleBlock>
 

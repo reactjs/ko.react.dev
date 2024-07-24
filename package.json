@@ -22,7 +22,7 @@
     "check-all": "npm-run-all prettier lint:fix tsc rss",
     "rss": "node scripts/generateRss.js",
     "textlint-test": "yarn mocha ./textlint/tests/utils && yarn mocha ./textlint/tests/rules",
-    "textlint-docs": "node ./textlint/generators/genTranslateGlossaryDocs.js",
+    "textlint-docs": "node ./textlint/generators/genTranslateGlossaryDocs.js && git add wiki/translate-glossary.md",
     "textlint-lint": "yarn textlint ./src/content --rulesdir ./textlint/rules -f pretty-error"
   },
   "dependencies": {
@@ -115,6 +115,8 @@
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx,css}": "yarn prettier",
-    "src/**/*.md": "yarn fix-headings"
+    "src/**/*.md": "yarn fix-headings",
+    "textlint/data/rules/translateGlossary.js": "yarn textlint-docs",
+    "textlint/generators/genTranslateGlossaryDocs.js": "yarn textlint-docs"
   }
 }

@@ -38,7 +38,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 #### 매개변수 {/*parameters*/}
 
-* `ref`: [`forwardRef` 렌더 함수](/reference/react/forwardRef#render-function)에서 두 번째 인자로 받은 ref입니다.
+* `ref`: [`forwardRef` 렌더링 함수](/reference/react/forwardRef#render-function)에서 두 번째 인자로 받은 ref입니다.
 
 * `createHandle`: 인자가 없고 노출하려는 ref 핸들을 반환하는 함수입니다. 해당 ref 핸들은 어떠한 유형이든 될 수 있습니다. 일반적으로 노출하려는 메서드가 있는 객체를 반환합니다.
 

@@ -194,7 +194,7 @@ export default function ReversedList({ children }) {
 
 ## 사용법 {/*usage*/}
 
-### children 변환하기 {/*transforming-children*/}
+### `children` 변환하기 {/*transforming-children*/}
 
 `Children.map`은 [`children` prop로 받은](/learn/passing-props-to-a-component#passing-jsx-as-children) JSX를 변환합니다.
 
@@ -293,7 +293,7 @@ export default function RowList({ children }) {
 
 <DeepDive>
 
-#### children prop는 왜 항상 배열이 아닌가요? {/*why-is-the-children-prop-not-always-an-array*/}
+#### `children` prop는 왜 항상 배열이 아닌가요? {/*why-is-the-children-prop-not-always-an-array*/}
 
 React에서 `children` prop는 *불분명한* 데이터 구조로 취급됩니다. `children`이 구조화된 방식에 의존할 수 없다는 의미입니다. 변환하거나 필터링하거나 개수를 세기 위해서는 `Children` 메서드를 사용해야 합니다.
 
@@ -419,7 +419,7 @@ export default function SeparatorList({ children }) {
 
 ---
 
-### children 카운팅하기 {/*counting-children*/}
+### `children` 카운팅하기 {/*counting-children*/}
 
 `Children.count(children)`는 자식 요소의 수를 계산합니다.
 
@@ -490,7 +490,7 @@ export default function RowList({ children }) {
 
 ---
 
-### children 배열로 병합하기 {/*converting-children-to-an-array*/}
+### `children` 배열로 병합하기 {/*converting-children-to-an-array*/}
 
 `Children.toArray(children)`는 `children` 데이터 구조를 일반적인 JavaScript 배열로 변경합니다. 이것을 사용해서 [`filter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [`sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort), [`reverse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)와 같은 배열의 내장 메서드를 조작할 수 있습니다.
 
@@ -794,7 +794,7 @@ JSX로 자식 요소를 전달할 때와 달리 이런 방식은 각 아이템�
 
 ---
 
-### render prop로 렌더링 커스텀하기 {/*calling-a-render-prop-to-customize-rendering*/}
+### 렌더링 prop로 렌더링 커스텀하기 {/*calling-a-render-prop-to-customize-rendering*/}
 
 모든 개별 항목에 대해 JSX를 생성하는 대신 JSX를 반환하는 함수를 전달하고 필요할 때 해당 함수를 호출할 수도 있습니다. 아래 예시에서 `App` 컴포넌트는 `renderContent` 함수를 `TabSwitcher` 컴포넌트에 전달합니다. `TabSwitcher` 컴포넌트는 선택된 탭에 대해서만 `renderContent`를 호출합니다.
 
@@ -845,10 +845,10 @@ export default function TabSwitcher({ tabIds, getHeader, renderContent }) {
 
 </Sandpack>
 
-`renderContent`와 같이 사용자 인터페이스의 일부를 어떻게 렌더링할지 정의하는 prop를 *render prop*라고 합니다. 하지만 특별한 것은 아닙니다. 단지 일반적인 함수의 prop일 뿐입니다.
+`renderContent`와 같이 사용자 인터페이스의 일부를 어떻게 렌더링할지 정의하는 prop를 *렌더링 prop*라고 합니다. 하지만 특별한 것은 아닙니다. 단지 일반적인 함수의 prop일 뿐입니다.
 
-Render props는 함수이므로 정보를 전달할 수 있습니다.
-아래 예시에서 `RowList` 컴포넌트는 각 row의 `id`와 `index`를 `renderRow`에 render prop로 전달하고, `index`가 짝수인 row를 강조합니다.
+렌더링 props는 함수이므로 정보를 전달할 수 있습니다.
+아래 예시에서 `RowList` 컴포넌트는 각 row의 `id`와 `index`를 `renderRow`에 렌더링 prop로 전달하고, `index`가 짝수인 row를 강조합니다.
 
 <Sandpack>
 

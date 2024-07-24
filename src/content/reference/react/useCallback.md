@@ -101,7 +101,7 @@ function ProductPage({ productId, referrer, theme }) {
 
 `theme` prop을 토글 하면 앱이 잠시 멈춘다는 것을 알게 되었는데, JSX에서 `<ShippingForm />`을 제거하면 앱이 빨라진 것처럼 느껴집니다. 이것은 `<ShippingForm />` 컴포넌트의 최적화를 시도해 볼 가치가 있다는 것을 나타냅니다.
 
-**기본적으로, 컴포넌트가 리렌더링할 때 React는 이것의 모든 자식을 재귀적으로 재랜더링합니다.** 이것이 `ProductPage`가 다른 `theme` 값으로 리렌더링 할 때, `ShippingForm` 컴포넌트 **또한** 리렌더링 하는 이유입니다. 이 것은 리렌더링에 많은 계산을 요구하지 않는 컴포넌트에서는 괜찮습니다. 하지만 리렌더링이 느린 것을 확인한 경우, `ShippingForm`을 [`memo`](/reference/react/memo)로 감싸면 마지막 렌더링과 동일한 props일 때 리렌더링을 건너뛰도록 할 수 있습니다.
+**기본적으로, 컴포넌트가 리렌더링할 때 React는 이것의 모든 자식을 재귀적으로 재렌더링합니다.** 이것이 `ProductPage`가 다른 `theme` 값으로 리렌더링 할 때, `ShippingForm` 컴포넌트 **또한** 리렌더링 하는 이유입니다. 이 것은 리렌더링에 많은 계산을 요구하지 않는 컴포넌트에서는 괜찮습니다. 하지만 리렌더링이 느린 것을 확인한 경우, `ShippingForm`을 [`memo`](/reference/react/memo)로 감싸면 마지막 렌더링과 동일한 props일 때 리렌더링을 건너뛰도록 할 수 있습니다.
 
 ```js {3,5}
 import { memo } from 'react';
@@ -163,7 +163,7 @@ function ProductPage({ productId, referrer, theme }) {
 
 <DeepDive>
 
-#### useCallback과 useMemo는 어떤 연관이 있나요? {/*how-is-usecallback-related-to-usememo*/}
+#### `useCallback`과 `useMemo`는 어떤 연관이 있나요? {/*how-is-usecallback-related-to-usememo*/}
 
 [`useMemo`](/reference/react/useMemo)가 `useCallback`과 함께 쓰이는 것을 자주 봤을 것입니다. 두 hook은 모두 자식 컴포넌트를 최적화할 때 유용합니다. 무언가를 전달할 때 [memoization](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98)(다른 말로는 캐싱)을 할 수 있도록 해줍니다.
 
@@ -212,7 +212,7 @@ function useCallback(fn, dependencies) {
 
 <DeepDive>
 
-#### 항상 useCallback을 사용해야 할까요? {/*should-you-add-usecallback-everywhere*/}
+#### 항상 `useCallback`을 사용해야 할까요? {/*should-you-add-usecallback-everywhere*/}
 
 이 사이트처럼 대부분의 상호작용이 (페이지 전체나 전체 부문을 교체하는 것처럼) 굵직한 경우, 보통 memoization이 필요하지 않습니다. 반면에 앱이 (도형을 이동하는 것과 같이) 미세한 상호작용을 하는 그림 편집기 같은 경우, memoization이 매우 유용할 수 있습니다.
 

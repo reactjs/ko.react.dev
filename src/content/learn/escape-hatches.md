@@ -197,7 +197,7 @@ Effect는 React 패러다임에서 벗어날 수 있는 탈출구입니다. Effe
 
 Effect가 필요하지 않은 두 가지 일반적인 경우가 있습니다.
 - **렌더링을 위해 데이터를 변환하는 데 Effect가 필요하지 않습니다.**
-- **사용자 이벤트를 핸들링하는 데 Effect가 필요하지 않습니다.**
+- **사용자 이벤트를 처리하는 데 Effect가 필요하지 않습니다.**
 
 예를 들어 다른 state에 따라 일부 state를 조정하는 데는 Effect가 필요하지 않습니다.
 
@@ -237,7 +237,7 @@ function Form() {
 
 ## React Effect의 생명주기 {/*lifecycle-of-reactive-effects*/}
 
-Effect는 컴포넌트와 다른 생명주기를 가집니다. 컴포넌트는 마운트, 업데이트 또는 언마운트할 수 있습니다. 반면 Effect는 동기화를 시작하거나 후에 동기화를 중지하는 두 가지 작업만 할 수 있습니다. Effect가 시간에 따라 변하는 props와 state에 의존하는 경우 이 주기는 여러 번 발생할 수 있습니다.
+Effect는 컴포넌트와 다른 생명주기를 가집니다. 컴포넌트는 마운트, 업데이트 또는 마운트 해제할 수 있습니다. 반면 Effect는 동기화를 시작하거나 후에 동기화를 중지하는 두 가지 작업만 할 수 있습니다. Effect가 시간에 따라 변하는 props와 state에 의존하는 경우 이 주기는 여러 번 발생할 수 있습니다.
 
 다음 Effect는 `roomId` prop의 값에 의존합니다. Props는 다시 렌더링할 때 변할 수 있는 *반응형 값* 입니다. `roomId`가 변경되면 Effect가 *다시 동기화* (및 서버에 다시 연결)합니다.
 
@@ -581,7 +581,7 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-Effect Event 내부의 코드는 반응이 아니므로 `theme`를 변경해도 더 이상 Effect가 다시 연결하지 않습니다.
+Effect 이벤트 내부의 코드는 반응이 아니므로 `theme`를 변경해도 더 이상 Effect가 다시 연결하지 않습니다.
 
 <LearnMore path="/learn/separating-events-from-effects">
 

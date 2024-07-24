@@ -39,6 +39,3 @@ public/fonts/**/Optimistic_*.woff2
 
 # rss
 public/rss.xml
-
-# textlint
-wiki/textlint/translate-glossary.md

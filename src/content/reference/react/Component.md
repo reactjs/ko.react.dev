@@ -4,13 +4,13 @@ title: Component
 
 <Pitfall>
 
-컴포넌트를 class 대신 함수로 정의하는 것을 추천합니다. [마이그레이션 방법을 확인하세요.](#alternatives)
+컴포넌트를 클래스 대신 함수로 정의하는 것을 추천합니다. [마이그레이션 방법을 확인하세요.](#alternatives)
 
 </Pitfall>
 
 <Intro>
 
-`Component`는 [자바스크립트 class](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes)로 정의된 React 컴포넌트의 기본 class입니다. React에서 클래스 컴포넌트를 계속 지원하지만, 새 코드에서는 사용하지 않는 것을 추천합니다.
+`Component`는 [자바스크립트 클래스](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes)로 정의된 React 컴포넌트의 기본 클래스입니다. React에서 클래스 컴포넌트를 계속 지원하지만, 새 코드에서는 사용하지 않는 것을 추천합니다.
 
 ```js
 class Greeting extends Component {
@@ -30,7 +30,7 @@ class Greeting extends Component {
 
 ### `Component` {/*component*/}
 
-React 컴포넌트를 class로 정의하려면, 내장 `Component` class를 확장하고 [`render` 메서드](#render)를 정의하세요.
+React 컴포넌트를 클래스로 정의하려면, 내장 `Component` 클래스를 확장하고 [`render` 메서드](#render)를 정의하세요.
 
 ```js
 import { Component } from 'react';
@@ -158,7 +158,7 @@ class Counter extends Component {
 
 ### `constructor(props)` {/*constructor*/}
 
-클래스 컴포넌트가 *마운트*(화면에 추가됨)되기 전에 [constructor](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes/constructor)가 실행됩니다. 일반적으로 constructor는 React에서 두 가지 목적으로만 사용됩니다. state를 선언하고 class 메서드를 class 인스턴스에 [바인딩](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_objects/Function/bind)할 수 있습니다.
+클래스 컴포넌트가 *마운트*(화면에 추가됨)되기 전에 [constructor](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes/constructor)가 실행됩니다. 일반적으로 constructor는 React에서 두 가지 목적으로만 사용됩니다. state를 선언하고 클래스 메서드를 클래스 인스턴스에 [바인딩](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_objects/Function/bind)할 수 있습니다.
 
 ```js {2-6}
 class Counter extends Component {
@@ -173,7 +173,7 @@ class Counter extends Component {
   }
 ```
 
-최신 자바스크립트 문법을 사용한다면 constructor는 거의 필요하지 않습니다. 대신 최신 브라우저와 [Babel](https://babeljs.io/)과 같은 도구에서 모두 지원되는 [공용 class 필드 문법](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes/Public_class_fields)을 사용하여 위의 코드를 다시 작성할 수 있습니다.
+최신 자바스크립트 문법을 사용한다면 constructor는 거의 필요하지 않습니다. 대신 최신 브라우저와 [Babel](https://babeljs.io/)과 같은 도구에서 모두 지원되는 [공용 클래스 필드 문법](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes/Public_class_fields)을 사용하여 위의 코드를 다시 작성할 수 있습니다.
 
 ```js {2,4}
 class Counter extends Component {
@@ -770,7 +770,7 @@ React에 재렌더링을 건너뛸 수 있음을 알리려면 `false`를 반환�
 
 `UNSAFE_componentWillMount`를 정의하면 React는 [`constructor`](#constructor) 바로 뒤에 이를 호출합니다. 이 메서드는 역사적인 이유로만 존재하며 새로운 코드에서 사용하면 안 됩니다. 대신 다른 대안을 사용하세요.
 
-- state를 초기화하려면 [`state`](#state)를 class 필드로 선언하거나 [`constructor`](#constructor) 내에서 `this.state`를 설정하세요.
+- state를 초기화하려면 [`state`](#state)를 클래스 필드로 선언하거나 [`constructor`](#constructor) 내에서 `this.state`를 설정하세요.
 - 부수 효과를 실행하거나 구독을 설정해야 하는 경우 해당 로직을 [`componentDidMount`](#componentdidmount)로 옮기세요.
 
 [안전하지 않은 생명주기에서 벗어나 마이그레이션한 사례를 확인하세요.](https://ko.legacy.reactjs.org/blog/2018/03/27/update-on-async-rendering.html#examples)
@@ -934,7 +934,7 @@ class Button extends Component {
 
 ### `static defaultProps` {/*static-defaultprops*/}
 
-`static defaultProps`를 정의하여 class의 기본 props을 설정할 수 있습니다. `undefined`와 누락된 props에는 사용되지만 `null` props에는 사용되지 않습니다.
+`static defaultProps`를 정의하여 클래스의 기본 props을 설정할 수 있습니다. `undefined`와 누락된 props에는 사용되지만 `null` props에는 사용되지 않습니다.
 
 예를 들어, `color` prop의 기본값을 `'blue'`로 정의하는 방법은 다음과 같습니다.
 
@@ -1087,7 +1087,7 @@ state를 파생하면 코드가 장황해지고 컴포넌트에 대해 생각하
 
 - 이 메서드는 원인에 관계없이 *모든* 렌더링에서 호출됩니다. 이는 부모가 다시 렌더링을 일으킬 때만 발동하고 로컬 `setState`의 결과가 아닐 때만 발동하는 [`UNSAFE_componentWillReceiveProps`](#unsafe_cmoponentwillreceiveprops)와는 다릅니다.
 
-- 이 메서드에는 컴포넌트 인스턴스에 대한 액세스 권한이 없습니다. 원하는 경우 class 정의 외부 컴포넌트 props 및 state의 순수 함수를 추출하여 `static getDerivedStateFromProps`와 다른 class 메서드 사이에 일부 코드를 재사용할 수 있습니다.
+- 이 메서드에는 컴포넌트 인스턴스에 대한 액세스 권한이 없습니다. 원하는 경우 클래스 정의 외부 컴포넌트 props 및 state의 순수 함수를 추출하여 `static getDerivedStateFromProps`와 다른 클래스 메서드 사이에 일부 코드를 재사용할 수 있습니다.
 
 <Note>
 
@@ -1101,7 +1101,7 @@ state를 파생하면 코드가 장황해지고 컴포넌트에 대해 생각하
 
 ### 클래스 컴포넌트 정의하기 {/*defining-a-class-component*/}
 
-React 컴포넌트를 class로 정의하려면 기본 제공 `Component` class를 확장하고 [`render` 메서드](#render)를 정의합니다,
+React 컴포넌트를 클래스로 정의하려면 기본 제공 `Component` 클래스를 확장하고 [`render` 메서드](#render)를 정의합니다,
 
 ```js
 import { Component } from 'react';
@@ -1145,7 +1145,7 @@ export default function App() {
 
 <Pitfall>
 
-컴포넌트를 class 대신 함수로 정의하는 것을 추천합니다. [마이그레이션 방법을 확인하세요.](#migrating-a-simple-component-from-a-class-to-a-function)
+컴포넌트를 클래스 대신 함수로 정의하는 것을 추천합니다. [마이그레이션 방법을 확인하세요.](#migrating-a-simple-component-from-a-class-to-a-function)
 
 </Pitfall>
 
@@ -1153,7 +1153,7 @@ export default function App() {
 
 ### 클래스 컴포넌트에 state 추가하기 {/*adding-state-to-a-class-component*/}
 
-class에 [state](/learn/state-a-components-memory)를 추가하려면 [`state`](#state)라는 프로퍼티에 객체를 할당합니다. state를 업데이트하려면 [`this.setState`](#setstate)를 호출합니다.
+클래스에 [state](/learn/state-a-components-memory)를 추가하려면 [`state`](#state)라는 프로퍼티에 객체를 할당합니다. state를 업데이트하려면 [`this.setState`](#setstate)를 호출합니다.
 
 <Sandpack>
 
@@ -1203,7 +1203,7 @@ button { display: block; margin-top: 10px; }
 
 <Pitfall>
 
-컴포넌트를 class 대신 함수로 정의하는 것을 추천합니다. [마이그레이션 방법을 확인하세요.](#migrating-a-component-with-state-from-a-class-to-a-function)
+컴포넌트를 클래스 대신 함수로 정의하는 것을 추천합니다. [마이그레이션 방법을 확인하세요.](#migrating-a-component-with-state-from-a-class-to-a-function)
 
 </Pitfall>
 
@@ -1211,7 +1211,7 @@ button { display: block; margin-top: 10px; }
 
 ### 클래스 컴포넌트에 생명주기 메서드 추가하기 {/*adding-lifecycle-methods-to-a-class-component*/}
 
-class에서 정의할 수 있는 몇 가지 특별한 메서드가 있습니다.
+클래스에서 정의할 수 있는 몇 가지 특별한 메서드가 있습니다.
 
 [`componentDidMount`](#componentdidmount) 메서드를 정의하면 컴포넌트가 화면에 추가 *(마운트)* 될 때 React가 이를 호출합니다. 컴포넌트가 props나 state 변경으로 인해 다시 렌더링되면 React는 [`componentDidUpdate`](#componentdidupdate)를 호출합니다. 컴포넌트가 화면에서 제거 *(마운트 해제)* 된 후 React는 [`componentWillUnmount`](#componentwillunmount)를 호출합니다.
 
@@ -1337,7 +1337,7 @@ button { margin-left: 10px; }
 
 <Pitfall>
 
-컴포넌트를 class 대신 함수로 정의하는 것을 추천합니다. [마이그레이션 방법을 확인하세요.](#migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function)
+컴포넌트를 클래스 대신 함수로 정의하는 것을 추천합니다. [마이그레이션 방법을 확인하세요.](#migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function)
 
 </Pitfall>
 
@@ -1395,7 +1395,7 @@ class ErrorBoundary extends React.Component {
 
 <Note>
 
-현재 error boundary를 함수 컴포넌트로 작성할 수 있는 방법은 없습니다. 하지만 error boundary class를 직접 작성할 필요는 없습니다. 예를 들어 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary)를 대신 사용할 수 있습니다.
+현재 error boundary를 함수 컴포넌트로 작성할 수 있는 방법은 없습니다. 하지만 error boundary 클래스를 직접 작성할 필요는 없습니다. 예를 들어 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary)를 대신 사용할 수 있습니다.
 
 </Note>
 
@@ -1403,7 +1403,7 @@ class ErrorBoundary extends React.Component {
 
 ## 대안 {/*alternatives*/}
 
-### class에서 함수로 간단한 컴포넌트 마이그레이션하기 {/*migrating-a-simple-component-from-a-class-to-a-function*/}
+### 클래스에서 함수로 간단한 컴포넌트 마이그레이션하기 {/*migrating-a-simple-component-from-a-class-to-a-function*/}
 
 일반적으로 [컴포넌트를 함수로 대신 정의합니다.](/learn/your-first-component#defining-a-component)
 
@@ -1473,7 +1473,7 @@ export default function App() {
 
 ---
 
-### state가 있는 컴포넌트를 class에서 함수로 마이그레이션하기 {/*migrating-a-component-with-state-from-a-class-to-a-function*/}
+### state가 있는 컴포넌트를 클래스에서 함수로 마이그레이션하기 {/*migrating-a-component-with-state-from-a-class-to-a-function*/}
 
 이 `Counter` 클래스 컴포넌트를 함수로 변환한다고 가정해 봅시다.
 
@@ -1595,7 +1595,7 @@ button { display: block; margin-top: 10px; }
 
 ---
 
-### 생명주기 메서드가 있는 컴포넌트를 class에서 함수로 마이그레이션하기 {/*migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function*/}
+### 생명주기 메서드가 있는 컴포넌트를 클래스에서 함수로 마이그레이션하기 {/*migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function*/}
 
 생명주기 메서드가 있는 `ChatRoom` 클래스 컴포넌트를 함수로 변환한다고 가정해 보겠습니다.
 
@@ -1830,7 +1830,7 @@ button { margin-left: 10px; }
 
 ---
 
-### context가 있는 컴포넌트를 class에서 함수로 마이그레이션하기 {/*migrating-a-component-with-context-from-a-class-to-a-function*/}
+### context가 있는 컴포넌트를 클래스에서 함수로 마이그레이션하기 {/*migrating-a-component-with-context-from-a-class-to-a-function*/}
 
 이 예제에서 `Panel` 및 `Button` 클래스 컴포넌트는 [`this.context`](#context)에서 [context](/learn/passing-data-deeply-with-context)를 읽습니다:
 

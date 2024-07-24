@@ -330,7 +330,7 @@ function subscribe(callback) {
 React 앱이 [server rendering](/reference/react-dom/server)을 사용하는 경우 React 컴포넌트는 브라우저 환경 외부에서도 실행되어 초기 HTML을 생성합니다. 이로 인해 외부 store에 연결할 때 몇 가지 문제가 발생합니다.
 
 - 브라우저 전용 API에 연결하는 경우 서버에 해당 API가 존재하지 않으므로 작동하지 않습니다.
-- third-party 데이터 저장소에 연결하는 경우 서버와 클라이언트 간에 일치하는 데이터가 필요합니다.
+- 서드 파티 데이터 저장소에 연결하는 경우 서버와 클라이언트 간에 일치하는 데이터가 필요합니다.
 
 이러한 문제를 해결하려면 `getServerSnapshot` 함수를 `useSyncExternalStore`의 세 번째 인수로 전달하세요.
 

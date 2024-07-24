@@ -18,14 +18,14 @@ title: State를 사용해 Input 다루기
 
 ## 선언형 UI와 명령형 UI 비교 {/*how-declarative-ui-compares-to-imperative*/}
 
-UI 인터랙션을 디자인할 때 유저가 액션을 하면 어떻게 UI를 *변경* 해야 할지 고민해본 적이 있을 것입니다. 유저가 폼을 제출한다고 생각해봅시다.
+UI 상호작용을 디자인할 때 사용자가 액션을 하면 어떻게 UI를 *변경* 해야 할지 고민해본 적이 있을 것입니다. 사용자가 폼을 제출한다고 생각해봅시다.
 
 * 폼에 무언가를 입력하면 "제출" 버튼이 **활성화될** 것입니다.
 * "제출" 버튼을 누르면 폼과 버튼이 **비활성화되고** 스피너가 **나타날** 것입니다.
 * 네트워크 요청이 성공하면 폼은 **숨겨질** 것이고 "감사합니다." 메시지가 **나타날** 것입니다.
 * 네트워크 요청이 실패하면 오류 메시지가 **보일** 것이고 폼은 다시 **활성화될** 것입니다.
 
-위 내용은 **명령형 프로그래밍**에서 인터랙션을 구현하는 방법입니다. UI를 조작하기 위해서는 발생한 상황에 따라 정확한 지침을 작성해야만 합니다. 다른 방법을 한번 생각해봅시다. 옆에 누군가를 태우고 차례대로 어디를 가야 할지 말해준다고 상상해보세요.
+위 내용은 **명령형 프로그래밍**에서 상호작용을 구현하는 방법입니다. UI를 조작하기 위해서는 발생한 상황에 따라 정확한 지침을 작성해야만 합니다. 다른 방법을 한번 생각해봅시다. 옆에 누군가를 태우고 차례대로 어디를 가야 할지 말해준다고 상상해보세요.
 
 <Illustration src="/images/docs/illustrations/i_imperative-ui-programming.png"  alt="In a car driven by an anxious-looking person representing JavaScript, a passenger orders the driver to execute a sequence of complicated turn by turn navigations." />
 
@@ -131,7 +131,7 @@ body { font-family: sans-serif; margin: 20px; padding: 0; }
 
 </Sandpack>
 
-위의 예시에서는 문제가 없겠지만 위와 같이 UI를 조작하면 더 복잡한 시스템에서는 난이도가 기하급수적으로 올라갑니다. 여러 다른 폼으로 가득 찬 페이지를 업데이트해야 한다고 생각해보세요. 새로운 UI 요소나 새로운 인터랙션을 추가하려면 버그의 발생을 막기 위해 기존의 모든 코드를 주의 깊게 살펴봐야만 할 겁니다. (예를 들면 어떤 것을 보여주거나 숨기거나 하는 것을 잊을지도 모릅니다).
+위의 예시에서는 문제가 없겠지만 위와 같이 UI를 조작하면 더 복잡한 시스템에서는 난이도가 기하급수적으로 올라갑니다. 여러 다른 폼으로 가득 찬 페이지를 업데이트해야 한다고 생각해보세요. 새로운 UI 요소나 새로운 상호작용을 추가하려면 버그의 발생을 막기 위해 기존의 모든 코드를 주의 깊게 살펴봐야만 할 겁니다. (예를 들면 어떤 것을 보여주거나 숨기거나 하는 것을 잊을지도 모릅니다).
 
 리액트는 이러한 문제점을 해결하기 위해 만들어졌습니다.
 
@@ -481,7 +481,7 @@ function submitForm(answer) {
 
 </Sandpack>
 
-이러한 코드가 기존의 명령형 프로그래밍 예제보다는 길지만 그래도 조금 더 견고합니다. 모든 인터랙션을 state로 표현하게 되면 이후에 새로운 시각적 state가 추가되더라도 기존의 로직이 손상되는 것을 막을 수 있습니다. 또한 인터랙션 자체의 로직을 변경하지 않고도 각각의 state에 표시되는 항목을 변경할 수 있습니다.
+이러한 코드가 기존의 명령형 프로그래밍 예제보다는 길지만 그래도 조금 더 견고합니다. 모든 상호작용을 state로 표현하게 되면 이후에 새로운 시각적 state가 추가되더라도 기존의 로직이 손상되는 것을 막을 수 있습니다. 또한 상호작용 자체의 로직을 변경하지 않고도 각각의 state에 표시되는 항목을 변경할 수 있습니다.
 
 <Recap>
 
@@ -499,9 +499,9 @@ function submitForm(answer) {
 
 <Challenges>
 
-#### CSS class를 추가하고 제거하기 {/*add-and-remove-a-css-class*/}
+#### CSS 클래스를 추가하고 제거하기 {/*add-and-remove-a-css-class*/}
 
-사진을 클릭하면 바깥에 있는 `<div>`의 `background--active` CSS class를 *제거*하고 `<img>`에 `picture--active` class를 추가합니다. 그리고 배경을 다시 클릭하면 원래 CSS class로 돌아와야 합니다.
+사진을 클릭하면 바깥에 있는 `<div>`의 `background--active` CSS 클래스를 *제거*하고 `<img>`에 `picture--active` 클래스를 추가합니다. 그리고 배경을 다시 클릭하면 원래 CSS 클래스로 돌아와야 합니다.
 
 화면상으로는 사진을 클릭하면 보라색 배경은 제거되고 사진의 테두리는 강조 표시됩니다. 사진 외부를 클릭하면 배경이 강조 표시되고 사진의 테두리 강조 표시는 제거됩니다.
 
@@ -555,10 +555,10 @@ body { margin: 0; padding: 0; height: 250px; }
 
 이 컴포넌트는 두 가지 시각적 state를 가지고 있습니다. 이미지가 활성화되었을 때와 비활성화되었을 때입니다.
 
-* 이미지가 활성화되었을 때 CSS class는 `background`와 `picture picture--active`가 됩니다.
-* 이미지가 비활성화되었을 때 CSS class는 `background background--active`와 `picture`가 됩니다.
+* 이미지가 활성화되었을 때 CSS 클래스는 `background`와 `picture picture--active`가 됩니다.
+* 이미지가 비활성화되었을 때 CSS 클래스는 `background background--active`와 `picture`가 됩니다.
 
-이미지의 활성화 state를 기억하기 위해서는 하나의 boolean state 변수로 충분합니다. 원래 하려고 했던 것은 CSS class를 제거하거나 추가하는 것이었습니다. 하지만 리액트에서는 UI 요소를 *조작하는 것* 보다는 무엇을 보여주길 원하는지 *묘사하는 것*이 필요합니다. 그렇기 때문에 현재 state를 기반으로 두 CSS class 모두를 계산해야 합니다. 그리고 이미지를 클릭했을 때 배경이 클릭되지 않도록 이벤트의 [전파를 막을](/learn/responding-to-events#stopping-propagation) 필요가 있습니다.
+이미지의 활성화 state를 기억하기 위해서는 하나의 boolean state 변수로 충분합니다. 원래 하려고 했던 것은 CSS 클래스를 제거하거나 추가하는 것이었습니다. 하지만 리액트에서는 UI 요소를 *조작하는 것* 보다는 무엇을 보여주길 원하는지 *묘사하는 것*이 필요합니다. 그렇기 때문에 현재 state를 기반으로 두 CSS 클래스 모두를 계산해야 합니다. 그리고 이미지를 클릭했을 때 배경이 클릭되지 않도록 이벤트의 [전파를 막을](/learn/responding-to-events#stopping-propagation) 필요가 있습니다.
 
 이미지를 클릭한 다음 이미지 외부도 클릭해 잘 작동하는지 확인해봅시다.
 

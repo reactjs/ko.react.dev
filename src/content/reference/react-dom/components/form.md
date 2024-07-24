@@ -31,7 +31,7 @@ React의 익스텐션인 `<form>`은 현재 React Canary(카나리)와 실험적
 
 ### `<form>` {/*form*/}
 
-정보 제출을 위한 대화형 컨트롤을 생성하기 위해, [내장된 브라우저 `<form>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)를 렌더하세요.
+정보 제출을 위한 대화형 컨트롤을 생성하기 위해, [내장된 브라우저 `<form>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)를 렌더링하세요.
 
 ```js
 <form action={search}>
@@ -94,9 +94,9 @@ export default function Search() {
 
 ### Server Action에서 폼 제출 처리하기 {/*handle-form-submission-with-a-server-action*/}
 
-입력과 제출 버튼과 함께 `<form>`을 렌더하세요. 폼이 제출될 때 해당 함수를 실행하기 위해 Server Action([`'use server'`](/reference/rsc/use-server)가 표시된 함수)를 폼의 `action`의 프로퍼티로 전달하세요.
+입력과 제출 버튼과 함께 `<form>`을 렌더링하세요. 폼이 제출될 때 해당 함수를 실행하기 위해 Server Action([`'use server'`](/reference/rsc/use-server)가 표시된 함수)를 폼의 `action`의 프로퍼티로 전달하세요.
 
-`<form action>`에 Server Action을 전달하면 자바스크립트가 활성화되기 전이나 코드가 로드되기 전에 유저가 폼을 제출할 수 있습니다. 이는 연결 상태나 기계가 느리거나 자바스크립트가 비활성화된 유저에게 유용하고, `action` 프로퍼티에 URL이 전달될 때와 폼이 동작하는 방식은 비슷합니다.
+`<form action>`에 Server Action을 전달하면 자바스크립트가 활성화되기 전이나 코드가 로드되기 전에 사용자가 폼을 제출할 수 있습니다. 이는 연결 상태나 기계가 느리거나 자바스크립트가 비활성화된 사용자에게 유용하고, `action` 프로퍼티에 URL이 전달될 때와 폼이 동작하는 방식은 비슷합니다.
 
 `<form>`의 액션에 데이터를 제공하기 위해 폼 필드의 `hidden`을 사용할 수 있습니다. Server Action은 [`formData`](https://developer.mozilla.org/ko/docs/Web/API/FormData) 대신 `hidden`이 적용된 폼 필드 데이터를 불러 올 수 있습니다.
 
@@ -198,9 +198,9 @@ export async function submitForm(query) {
 
 ### 낙관적으로 폼 데이터 업데이트하기 {/*optimistically-updating-form-data*/}
 
-`useOptimistic` hook은 네트워크 요청과 같은 백그라운드의 작업이 끝나기 전에 유저 인터페이스에 낙관적으로 업데이트하는 방법을 제공합니다. 폼의 맥락에서 이 기술은 앱을 더욱 반응형으로 느끼게 해줍니다. 유저가 폼을 제출하면 인터페이스는 유저가 기대하는 결과물로 즉시 업데이트됩니다. 
+`useOptimistic` hook은 네트워크 요청과 같은 백그라운드의 작업이 끝나기 전에 사용자 인터페이스에 낙관적으로 업데이트하는 방법을 제공합니다. 폼의 맥락에서 이 기술은 앱을 더욱 반응형으로 느끼게 해줍니다. 사용자가 폼을 제출하면 인터페이스는 사용자가 기대하는 결과물로 즉시 업데이트됩니다. 
 
-예를 들어, 유저가 폼에 메시지를 입력하고 "제출" 버튼을 클릭하면 `useOptimistic` hook은 "제출중..." 라벨과 함께 메시지가 서버에 보내지기 전에 리스트에 즉시 보입니다. 이러한 '낙관적인' 접근 방식은 속도와 반응성이 뛰어나다는 인상을 줍니다. 그다음 폼은 실제로 백그라운드에 메시지 보내기를 시도합니다. 서버에 메시지가 잘 도착하면, "제출중..." 라벨은 사라집니다.
+예를 들어, 사용자가 폼에 메시지를 입력하고 "제출" 버튼을 클릭하면 `useOptimistic` hook은 "제출중..." 라벨과 함께 메시지가 서버에 보내지기 전에 리스트에 즉시 보입니다. 이러한 '낙관적인' 접근 방식은 속도와 반응성이 뛰어나다는 인상을 줍니다. 그다음 폼은 실제로 백그라운드에 메시지 보내기를 시도합니다. 서버에 메시지가 잘 도착하면, "제출중..." 라벨은 사라집니다.
 
 
 <Sandpack>

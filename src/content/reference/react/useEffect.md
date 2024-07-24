@@ -790,7 +790,7 @@ export function useIntersectionObserver(ref) {
 
 가끔은 컴포넌트의 prop 또는 state를 외부 시스템과 동기화해야할 때가 있습니다.
 
-예를 들어 React 없이 작성된 third-party 지도 위젯이나 비디오 플레이어 컴포넌트가 있다면 이 컴포넌트의 state를 현재 React 컴포넌트의 state와 일치하도록 하기 위해 Effect를 사용할 수 있습니다. 이 Effect는 `map-widget.js`에 정의된 `MapWidget` 클래스의 인스턴스를 생성합니다. `Map` 컴포넌트의 `zoomLevel` prop을 변경할 때, Effect는 해당 클래스 인스턴스의 `setZoom()`을 호출하여 동기화를 유지합니다.
+예를 들어 React 없이 작성된 서드 파티 지도 위젯이나 비디오 플레이어 컴포넌트가 있다면 이 컴포넌트의 state를 현재 React 컴포넌트의 state와 일치하도록 하기 위해 Effect를 사용할 수 있습니다. 이 Effect는 `map-widget.js`에 정의된 `MapWidget` 클래스의 인스턴스를 생성합니다. `Map` 컴포넌트의 `zoomLevel` prop을 변경할 때, Effect는 해당 클래스 인스턴스의 `setZoom()`을 호출하여 동기화를 유지합니다.
 
 <Sandpack>
 
@@ -1723,9 +1723,9 @@ function Page({ url, shoppingCart }) {
 }
 ```
 
-**Effect Event는 반응적이지 않으며 Effect의 의존성에서 배제되어야 합니다.** Effect Event에는 비 반응형 코드(Effect Event 로직은 최신 props와 state를 읽을 수 있음)를 배치할 수 있습니다. `onVisit`내의 `shoppingCart`를 읽음으로써 `shoppingCart`의 변경으로 인한 Effect의 재실행을 방지합니다.
+**Effect 이벤트는 반응적이지 않으며 Effect의 의존성에서 배제되어야 합니다.** Effect 이벤트에는 비 반응형 코드(Effect 이벤트 로직은 최신 props와 state를 읽을 수 있음)를 배치할 수 있습니다. `onVisit`내의 `shoppingCart`를 읽음으로써 `shoppingCart`의 변경으로 인한 Effect의 재실행을 방지합니다.
 
-[Effect Event가 어떻게 반응형 및 비 반응형 코드를 분리하는 데 도움이 되는지에 대한 자세한 내용은 여기를 읽어보세요.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
+[Effect 이벤트가 어떻게 반응형 및 비 반응형 코드를 분리하는 데 도움이 되는지에 대한 자세한 내용은 여기를 읽어보세요.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
 
 
 ---
