@@ -118,7 +118,7 @@ export default function Page() {
 
 ### 인라인 스크립트 렌더링 {/*rendering-an-inline-script*/}
 
-인라인 script 를 포함하려면 render the `<script>` 컴포넌트를 자식으로 스크립트 소스 코드와 함께 렌더링하세요. 인라인 스크립트는 중복 처리되거나 문서 `<head>`로 이동되지 않습니다.
+인라인 script 를 포함하려면 `<script>` 컴포넌트를 자식으로 스크립트 소스 코드와 함께 렌더링하세요. 인라인 스크립트는 중복 처리되거나 문서 `<head>`로 이동되지 않습니다.
 
 <SandpackWithHTMLOutput>
 

@@ -441,7 +441,7 @@ You provided a \`value\` prop to a form field without an \`onChange\` handler. T
 
 </ConsoleBlock>
 
-위에 있는 샌드박스를 보면, `ProductTable`와 `SearchBar`가 `filterText`와 `inStockOnly` props를 table, input과 체크 박스를 렌더하기 위해서 읽고 있습니다. 예를 들면, `SearchBar` input의 value를 아래와 같이 채우고 있습니다.
+위에 있는 샌드박스를 보면, `ProductTable`와 `SearchBar`가 `filterText`와 `inStockOnly` props를 table, input과 체크 박스를 렌더링하기 위해서 읽고 있습니다. 예를 들면, `SearchBar` input의 value를 아래와 같이 채우고 있습니다.
 
 ```js {1,6}
 function SearchBar({ filterText, inStockOnly }) {
