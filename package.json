@@ -21,7 +21,7 @@
     "postinstall": "patch-package && (is-ci || husky install .husky)",
     "check-all": "npm-run-all prettier lint:fix tsc rss",
     "rss": "node scripts/generateRss.js",
-    "reset": "rm -rf node_modules/.cache && rm -rf .next && yarn cache clean",
+    "cache-reset": "rm -rf node_modules/.cache && rm -rf .next && yarn cache clean",
     "textlint-test": "yarn mocha ./textlint/tests/utils && yarn mocha ./textlint/tests/rules",
     "textlint-docs": "node ./textlint/generators/genTranslateGlossaryDocs.js && git add wiki/translate-glossary.md",
     "textlint-lint": "yarn textlint ./src/content --rulesdir ./textlint/rules -f pretty-error"
