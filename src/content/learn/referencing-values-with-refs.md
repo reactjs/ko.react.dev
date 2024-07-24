@@ -168,11 +168,11 @@ export default function Stopwatch() {
 
 </Sandpack>
 
-렌더링에 정보를 사용할 때 해당 정보를 state로 유지합니다. event handler에게만 필요한 정보이고 변경이 일어날 때 리렌더가 필요하지 않다면, ref를 사용하는 것이 더 효율적일 수 있습니다.
+렌더링에 정보를 사용할 때 해당 정보를 state로 유지합니다. 이벤트 핸들러에게만 필요한 정보이고 변경이 일어날 때 리렌더링이 필요하지 않다면, ref를 사용하는 것이 더 효율적일 수 있습니다.
 
 ## ref와 state의 차이 {/*differences-between-refs-and-state*/}
 
-ref가 state보다 덜 "엄격한" 것으로 생각될 수 있습니다-예를 들어, 항상 state 설정 함수를 사용하지 않고 변경할 수 있습니다. 하지만 대부분은 state를 사용하고 싶을 것입니다. ref는 자주 필요하지 않은 "escape hatch"입니다. state와 ref를 비교한 것은 다음과 같습니다.
+ref가 state보다 덜 "엄격한" 것으로 생각될 수 있습니다-예를 들어, 항상 state 설정 함수를 사용하지 않고 변경할 수 있습니다. 하지만 대부분은 state를 사용하고 싶을 것입니다. ref는 자주 필요하지 않은 "탈출구"입니다. state와 ref를 비교한 것은 다음과 같습니다.
 
 | refs                                                          | state                                                                                              |
 |---------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
@@ -232,7 +232,7 @@ export default function Counter() {
 
 </Sandpack>
 
-이것이 render 중에 `ref.current`를 출력하면 신뢰할 수 없는 코드가 나오는 이유입니다. 이 부분이 필요하면 state를 대신 사용해야 합니다..
+이것이 렌더링 중에 `ref.current`를 출력하면 신뢰할 수 없는 코드가 나오는 이유입니다. 이 부분이 필요하면 state를 대신 사용해야 합니다.
 
 <DeepDive>
 
@@ -271,7 +271,7 @@ React는 `useRef`가 실제로 충분히 일반적이기 때문에 built-in 버�
 - **refs를 escape hatch로 간주합니다.** Refs는 외부 시스템이나 브라우저 API로 작업할 때 유용합니다. 애플리케이션 로직과 데이터 흐름의 상당 부분이 refs에 의존한다면 접근 방식을 재고해 보는 것이 좋습니다.
 - **렌더링 중에 `ref.current`를 읽거나 쓰지 마세요.** 렌더링 중에 일부 정보가 필요한 경우 [state](/learn/state-a-components-memory)를 대신 사용하세요. `ref.current`가 언제 변하는지 React는 모르기 때문에 렌더링할 때 읽어도 컴포넌트의 동작을 예측하기 어렵습니다. (`if (!ref.current) ref.current = new Thing()` 과 같은 코드는 첫 번째 렌더 중에 ref를 한 번만 설정하는 경우가 예외입니다.)
 
-React state의 제한은 refs에 적용되지 않습니다. 예를 들어 state는 [모든 render에 대한 snapshot](/learn/state-as-a-snapshot) 및 [동기적으로 업데이트되지 않는 것](/learn/queueing-a-series-of-state-updates)과 같이 작동합니다. 그러나 ref의 current 값을 변조하면 다음과 같이 즉시 변경됩니다.
+React state의 제한은 refs에 적용되지 않습니다. 예를 들어 state는 [모든 렌더링에 대한 snapshot](/learn/state-as-a-snapshot) 및 [동기적으로 업데이트되지 않는 것](/learn/queueing-a-series-of-state-updates)과 같이 작동합니다. 그러나 ref의 current 값을 변조하면 다음과 같이 즉시 변경됩니다.
 
 ```js
 ref.current = 5;

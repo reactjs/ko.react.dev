@@ -581,7 +581,7 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-Effect Event 내부의 코드는 반응이 아니므로 `theme`를 변경해도 더 이상 Effect가 다시 연결하지 않습니다.
+Effect 이벤트 내부의 코드는 반응이 아니므로 `theme`를 변경해도 더 이상 Effect가 다시 연결하지 않습니다.
 
 <LearnMore path="/learn/separating-events-from-effects">
 
