@@ -49,7 +49,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 ### `render` 함수 {/*render-function*/}
 
-`forwardRef`는 render 함수를 인수로 받습니다. React는 `props`와 `ref`와 함께 이 함수를 호출합니다.
+`forwardRef`는 `render` 함수를 인수로 받습니다. React는 `props`와 `ref`와 함께 이 함수를 호출합니다.
 
 ```js
 const MyInput = forwardRef(function MyInput(props, ref) {
