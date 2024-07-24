@@ -31,7 +31,7 @@ React의 익스텐션인 `<form>`은 현재 React Canary(카나리)와 실험적
 
 ### `<form>` {/*form*/}
 
-정보 제출을 위한 대화형 컨트롤을 생성하기 위해, [내장된 브라우저 `<form>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)를 렌더하세요.
+정보 제출을 위한 대화형 컨트롤을 생성하기 위해, [내장된 브라우저 `<form>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)를 렌더링하세요.
 
 ```js
 <form action={search}>
@@ -94,7 +94,7 @@ export default function Search() {
 
 ### Server Action에서 폼 제출 처리하기 {/*handle-form-submission-with-a-server-action*/}
 
-입력과 제출 버튼과 함께 `<form>`을 렌더하세요. 폼이 제출될 때 해당 함수를 실행하기 위해 Server Action([`'use server'`](/reference/rsc/use-server)가 표시된 함수)를 폼의 `action`의 프로퍼티로 전달하세요.
+입력과 제출 버튼과 함께 `<form>`을 렌더링하세요. 폼이 제출될 때 해당 함수를 실행하기 위해 Server Action([`'use server'`](/reference/rsc/use-server)가 표시된 함수)를 폼의 `action`의 프로퍼티로 전달하세요.
 
 `<form action>`에 Server Action을 전달하면 자바스크립트가 활성화되기 전이나 코드가 로드되기 전에 사용자가 폼을 제출할 수 있습니다. 이는 연결 상태나 기계가 느리거나 자바스크립트가 비활성화된 사용자에게 유용하고, `action` 프로퍼티에 URL이 전달될 때와 폼이 동작하는 방식은 비슷합니다.
 
