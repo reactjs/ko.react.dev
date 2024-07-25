@@ -382,7 +382,112 @@ module.exports = {
         },
       },
     ],
-    // others: [],
+    others: [
+      {
+        sources: [/\bTips?\b/],
+        target: '팁',
+        meta: {
+          term: 'Tip',
+          discussions: [2],
+        },
+      },
+      {
+        sources: [/\bExamples?\b/, /예제/],
+        target: '예시',
+        meta: {
+          term: 'Example',
+          discussions: [2],
+        },
+      },
+      {
+        sources: [/\bChapters?\b/, /[챕쳅]터/],
+        target: '장',
+        meta: {
+          term: 'Chapter',
+          discussions: [2],
+        },
+      },
+      {
+        sources: [/\bSpec(?:ification)?s?\b/, /스[펙팩]/],
+        target: '명세',
+        meta: {
+          term: 'Spec, Specification',
+          discussions: [2],
+        },
+      },
+      {
+        sources: [/\bcamel\s?Case\b/, /[캐카][맬멜]\s?케이스/],
+        target: '캐멀 케이스',
+        meta: {
+          term: 'camelCase',
+          discussions: [2],
+        },
+      },
+      {
+        sources: [/\bParam(?:eter)?s?\b/, /[파패][라러]미터/, /매개 변수/],
+        target: '매개변수',
+        meta: {
+          term: 'Parameter',
+          discussions: [614],
+        },
+      },
+      {
+        sources: [/\bDeprecated\b/],
+        target: '더 이상 사용되지 않습니다.',
+        meta: {
+          term: 'Deprecated',
+          discussions: [632],
+        },
+      },
+      {
+        sources: [/\bPitfall\b/],
+        target: '주의하세요!',
+        meta: {
+          term: 'Pitfall',
+          discussions: [632],
+        },
+      },
+      {
+        sources: [/\bNote\b/],
+        target: '중요합니다!',
+        meta: {
+          term: 'Note',
+          discussions: [632],
+        },
+      },
+      {
+        sources: [/\bWip\b/],
+        target: '개발중이에요',
+        meta: {
+          term: 'Wip',
+          discussions: [632],
+        },
+      },
+      {
+        sources: [/\bReturns\b/, /반환\s+(?:값\s+)?{\//],
+        target: '반환값',
+        meta: {
+          term: 'Returns(제목에 사용된 경우)',
+          discussions: [725],
+        },
+      },
+      {
+        sources: [/\bLogic\b/],
+        target: '로직',
+        meta: {
+          term: 'Logic',
+          discussions: [695],
+        },
+      },
+      {
+        sources: [/\bDependenc(?:y|ies)\b/],
+        target: '의존성',
+        meta: {
+          term: 'Dependency',
+          discussions: [841],
+        },
+      },
+    ],
   },
   // untranslated: {
   //   react: [],
