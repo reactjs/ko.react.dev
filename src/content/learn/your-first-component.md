@@ -172,7 +172,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 ### 컴포넌트 중첩 및 구성 {/*nesting-and-organizing-components*/}
 
-컴포넌트는 일반 JavaScript함수이므로 같은 파일에 여러 컴포넌트를 포함할 수 있습니다. 컴포넌트가 상대적으로 작거나 서로 밀접하게 관련되어 있을 때 편리합니다. 이 파일이 복잡해지면 언제든지 `Profile`을 별도의 파일로 옮길 수 있습니다. 이 방법은 바로 다음 챕터인 [컴포넌트의 importing과 exporting](/learn/importing-and-exporting-components) 페이지에서 확인할 수 있습니다.
+컴포넌트는 일반 JavaScript함수이므로 같은 파일에 여러 컴포넌트를 포함할 수 있습니다. 컴포넌트가 상대적으로 작거나 서로 밀접하게 관련되어 있을 때 편리합니다. 이 파일이 복잡해지면 언제든지 `Profile`을 별도의 파일로 옮길 수 있습니다. 이 방법은 바로 다음 장인 [컴포넌트의 importing과 exporting](/learn/importing-and-exporting-components) 페이지에서 확인할 수 있습니다.
 
 `Profile` 컴포넌트는 `Gallery`안에서 렌더링되기 때문에(심지어 여러번 렌더링됩니다!), `Gallery`는 각 `Profile`을 "자식"으로 렌더링하는 **부모 컴포넌트**라고 말할 수 있습니다. 컴포넌트를 한 번 정의한 다음 원하는 곳에서 원하는 만큼 여러 번 사용할 수 있다는 점이 바로 React의 마법입니다.
 

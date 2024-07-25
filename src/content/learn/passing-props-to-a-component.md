@@ -192,7 +192,7 @@ function Avatar({ person, size }) {
 }
 ```
 
-이 문법을 [“구조 분해 할당”](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter)이라고 부르며 함수 매개 변수의 속성과 동등합니다.
+이 문법을 [“구조 분해 할당”](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter)이라고 부르며 함수 매개변수의 속성과 동등합니다.
 
 ```js
 function Avatar(props) {

@@ -32,7 +32,7 @@ const html = renderToStaticMarkup(<Page />);
 
 [아래 예시를 참고하세요.](#usage)
 
-#### 파라미터 {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
 * `reactNode`: HTML로 렌더링할 React 노드입니다. 예를 들어, `<Page />`와 같은 JSX 노드입니다.
 * **optional** `options`: 서버 렌더링을 위한 객체입니다.
