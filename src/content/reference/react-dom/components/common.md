@@ -263,7 +263,7 @@ React는 *다른* `ref` 콜백을 전달할 때 마다 `ref` 콜백을 호출합
 
 <Canary>
 
-#### 반환 값 {/*returns*/}
+#### 반환값 {/*returns*/}
 
 *  **optional** `cleanup function`: When the `ref` is detached, React will call the cleanup function. If a function is not returned by the `ref` callback, React will call the callback again with `null` as the argument when the `ref` gets detached.
 

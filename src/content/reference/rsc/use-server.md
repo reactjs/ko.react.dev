@@ -61,7 +61,7 @@ Server Action에서 중요한 데이터를 전송하지 않도록 하기 위해,
 
 </Wip>
 
-### 직렬화 가능 인수와 반환 값 {/*serializable-parameters-and-return-values*/}
+### 직렬화 가능 인수와 반환값 {/*serializable-parameters-and-return-values*/}
 
 클라이언트 코드가 네트워크를 통해 서버 작업을 호출할 때 전달된 인수는 모두 직렬화되어야 합니다.
 

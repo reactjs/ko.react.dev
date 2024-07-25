@@ -48,7 +48,7 @@ React는 `domNode`에 있는 HTML에 연결되고, 그 내부의 DOM 관리를 �
 
 * **optional**: `callback`: 컴포넌트가 hydrate 된 후 호출되는 함수입니다.
 
-#### 반환 값 {/*returns*/}
+#### 반환값 {/*returns*/}
 
 `hydrate`는 null을 반환합니다.
 
