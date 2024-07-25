@@ -18,7 +18,7 @@ React와 React 에코시스템에 대한 토론을 위한 영상들입니다.
 
 <YouTubeIframe src="https://www.youtube.com/embed/FZ0cG47msEk" title="YouTube video player" />
 
-### 어플리케이션 개발자를 위한 React 18 {/*react-18-for-application-developers*/}
+### 애플리케이션 개발자를 위한 React 18 {/*react-18-for-application-developers*/}
 
 React 18로 업그레이드하는 데모는 여기에서 [Shruti Kapoor](https://twitter.com/shrutikapoor08)의 강연을 참조하세요:
 
@@ -114,7 +114,7 @@ React.js Conf 2015의 영상 플레이리스트.
 
 ### Best Practices 다시 생각해 보기 {/*rethinking-best-practices*/}
 
-JSConf EU 2013에서 Pete Hunt의 강연: 템플릿 개념을 버리고 JavaScript를 사용하여 view를 구축하는 방법, 데이터가 변경될 때 전체 애플리케이션을 "re-rendering"하는 방법, DOM 및 event를 경량으로 구현하는 방법 등 세 가지 주제를 다루고 있습니다. - (2013 - 0h30m).
+JSConf EU 2013에서 Pete Hunt의 강연: 템플릿 개념을 버리고 JavaScript를 사용하여 view를 구축하는 방법, 데이터가 변경될 때 전체 애플리케이션을 "re-rendering"하는 방법, DOM 및 이벤트를 경량으로 구현하는 방법 등 세 가지 주제를 다루고 있습니다. - (2013 - 0h30m).
 <YouTubeIframe title="Pete Hunt: React: Rethinking Best Practices - JSConf EU 2013" src="https://www.youtube-nocookie.com/embed/x7cQ3mrcKaY" />
 
 ### React 소개하기 {/*introduction-to-react*/}

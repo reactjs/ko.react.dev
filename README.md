@@ -3,6 +3,7 @@
 [![](https://dcbadge.vercel.app/api/server/YXdTyCh5KF)](https://discord.gg/YXdTyCh5KF)
 
 ## 한국어 번역 정보
+
 ### 가이드
 
 번역을 진행할 때에 다음의 가이드를 따라주세요.
@@ -69,7 +70,7 @@
 
 ## 문제 해결하기
 
-`yarn reset` 명령어를 사용하여 로컬 캐시를 초기화합니다.
+`yarn cache-reset` 명령어를 사용하여 로컬 캐시를 초기화합니다.
 
 ## 번역
 
@@ -78,4 +79,5 @@
 번역하려는 언어가 아직 진행되지 않았다면, 해당 언어에 대해 새롭게 만들 수 있습니다. [translations.react.dev repo](https://github.com/reactjs/translations.react.dev)를 참고해주세요.
 
 ## 저작권
+
 위 내용에 대한 저작권은 [react.dev](https://react.dev)가 가지고 있으며, [LICENSE-DOCS.md](LICENSE-DOCS.md)에서 볼 수 있는 CC-BY-4.0 라이센스를 따릅니다.
