@@ -25,7 +25,7 @@ React 18의 많은 기능은 강력한 새 기능들을 제공하는 배후의 �
 
 놓치신 분들을 위해 React Conf 2021에서 많은 부분을 공유했습니다.
 
-* [이 연설]((https://www.youtube.com/watch?v=FZ0cG47msEk&list=PLNG_1j3cPCaZZ7etkzWA7JfdmKWT0pMsa))에서는 개발자들이 훌륭한 사용자 경험을 쉽게 구축할 수 있도록 돕는 우리의 임무에 React 18이 어떻게 부합하는지 설명했습니다.
+* [이 연설](https://www.youtube.com/watch?v=FZ0cG47msEk&list=PLNG_1j3cPCaZZ7etkzWA7JfdmKWT0pMsa)에서는 개발자들이 훌륭한 사용자 경험을 쉽게 구축할 수 있도록 돕는 우리의 임무에 React 18이 어떻게 부합하는지 설명했습니다.
 * [Shruti Kapoor](https://twitter.com/shrutikapoor08)가 [React 18의 새로운 기능을 사용하는 방법을 시연](https://www.youtube.com/watch?v=ytudH8je5ko&list=PLNG_1j3cPCaZZ7etkzWA7JfdmKWT0pMsa&index=2)했습니다.
 * [Shaundai Person](https://twitter.com/shaundai)이 [Suspense를 사용한 스트리밍 서버 렌더링](https://www.youtube.com/watch?v=pj5N-Khihgc&list=PLNG_1j3cPCaZZ7etkzWA7JfdmKWT0pMsa&index=3)에 대한 개요를 설명했습니다.
 
