@@ -194,7 +194,7 @@ function Profile({ userId }) {
 
 일반적으로 React는 동일한 컴포넌트가 같은 위치에 렌더링 될 때 state를 보존합니다. **`Profile` 컴포넌트에 `userId`를 `key`로 전달하면 React가 `userId`가 다른 두 개의 `Profile` 컴포넌트를 state를 공유해서는 안 되는 두 개의 다른 컴포넌트로 취급하도록 요청하는 것입니다.** `userId`로 설정한 key가 변경될 때마다 React는 DOM을 다시 생성하고 `Profile` 컴포넌트와 그 모든 자식의 [state를 재설정](/learn/preserving-and-resetting-state#option-2-resetting-state-with-a-key)합니다. 이제 프로필 사이를 탐색할 때 `comment` 필드가 자동으로 비워집니다.
 
-이 예제에서는 외부 `ProfilePage` 컴포넌트만 내보내 프로젝트의 다른 파일에 표시된다는 점에 유의하세요. `ProfilePage`를 렌더링 하는 컴포넌트는 key를 전달할 필요 없이 일반적인 prop로 `userId`를 전달합니다. `ProfilePage`가 이를 내부 `Profile` 컴포넌트에 `key`로 전달한다는 사실은 구현 세부 사항입니다.
+이 예시에서는 외부 `ProfilePage` 컴포넌트만 내보내 프로젝트의 다른 파일에 표시된다는 점에 유의하세요. `ProfilePage`를 렌더링하는 컴포넌트는 key를 전달할 필요 없이 일반적인 prop로 `userId`를 전달합니다. `ProfilePage`가 이를 내부 `Profile` 컴포넌트에 `key`로 전달한다는 사실은 구현 세부 사항입니다.
 
 ### prop이 변경될 때 일부 state 조정하기 {/*adjusting-some-state-when-a-prop-changes*/}
 
@@ -279,7 +279,7 @@ function ProductPage({ product, addToCart }) {
 
 이 Effect는 불필요합니다. 또한 버그를 유발할 가능성이 높습니다. 예를 들어 페이지가 리로드 될 때마다 앱이 장바구니를 "기억"한다고 가정해 보겠습니다. 카트에 제품을 한 번 추가하고 페이지를 새로 고치면 알림이 다시 표시됩니다. 해당 제품 페이지를 새로 고칠 때마다 알림이 계속 표시됩니다. 이는 페이지 로드 시 `product.isInCart`가 이미 `true`이므로 위의 Effect는 `showNotification()`을 호출하기 때문입니다.
 
-**어떤 코드가 Effect에 있어야 하는지 이벤트 핸들러에 있어야 하는지 확실하지 않은 경우 이 코드가 실행되어야 하는 *이유*를 자문해 보세요. 컴포넌트가 사용자에게 표시되었기 *때문에* 실행되어야 하는 코드에만 Effect를 사용하세요.** 이 예제에서는 페이지가 표시되었기 때문이 아니라 사용자가 *버튼을 눌렀기* 때문에 알림이 표시되어야 합니다! Effect를 삭제하고 공유 로직을 두 이벤트 핸들러에서 호출되는 함수에 넣으세요.
+**어떤 코드가 Effect에 있어야 하는지 이벤트 핸들러에 있어야 하는지 확실하지 않은 경우 이 코드가 실행되어야 하는 *이유*를 자문해 보세요. 컴포넌트가 사용자에게 표시되었기 *때문에* 실행되어야 하는 코드에만 Effect를 사용하세요.** 이 예시에서는 페이지가 표시되었기 때문이 아니라 사용자가 *버튼을 눌렀기* 때문에 알림이 표시되어야 합니다! Effect를 삭제하고 공유 로직을 두 이벤트 핸들러에서 호출되는 함수에 넣으세요.
 
 ```js {2-6,9,13}
 function ProductPage({ product, addToCart }) {
@@ -717,7 +717,7 @@ function SearchResults({ query }) {
 
 데이터 가져오기를 이벤트 핸들러로 옮길 필요는 *없습니다*.
 
-이벤트 핸들러에 로직을 넣어야 했던 앞선 예제와 모순되는 것처럼 보일 수 있습니다! 하지만 데이터 가져오기를 해야 하는 주된 이유가 *입력 이벤트*가 아니라는 점을 고려하세요. 검색 입력은 URL에서 미리 채워지는 경우가 많으며 사용자는 입력을 건드리지 않고 뒤로 앞으로 탐색할 수도 있습니다.
+이벤트 핸들러에 로직을 넣어야 했던 앞선 예시와 모순되는 것처럼 보일 수 있습니다! 하지만 데이터 가져오기를 해야 하는 주된 이유가 *입력 이벤트*가 아니라는 점을 고려하세요. 검색 입력은 URL에서 미리 채워지는 경우가 많으며 사용자는 입력을 건드리지 않고 뒤로 앞으로 탐색할 수도 있습니다.
 
 `page`와 `query`의 출처가 어디인지는 중요하지 않습니다. 이 컴포넌트가 표시되는 동안에는 현재 `page` 및 `query`에 대한 네트워크의 데이터와 `results`를 [동기화](/learn/synchronizing-with-effects)하고 싶을 것입니다. 이것이 바로 Effect의 이유입니다.
 
@@ -916,7 +916,7 @@ input { margin-top: 10px; }
 
 <Solution>
 
-이 예제에서는 `todos` 목록과 체크박스의 체크 여부를 나타내는 `showActive` state 변수의 두 가지 필수 state만 있습니다. 다른 모든 state 변수는 [불필요하며](/learn/choosing-the-state-structure#avoid-redundant-state) 렌더링 중에 대신 계산할 수 있습니다. 여기에는 주변 JSX로 바로 이동할 수 있는 `footer`가 포함됩니다.
+이 예시에서는 `todos` 목록과 체크박스의 체크 여부를 나타내는 `showActive` state 변수의 두 가지 필수 state만 있습니다. 다른 모든 state 변수는 [불필요하며](/learn/choosing-the-state-structure#avoid-redundant-state) 렌더링 중에 대신 계산할 수 있습니다. 여기에는 주변 JSX로 바로 이동할 수 있는 `footer`가 포함됩니다.
 
 결과는 다음과 같아야 합니다.
 
@@ -1005,7 +1005,7 @@ input { margin-top: 10px; }
 
 #### Effect 없이 계산 캐시하기 {/*cache-a-calculation-without-effects*/}
 
-이 예제에서는 todos 필터링이 `getVisibleTodos()`라는 별도의 함수로 추출되었습니다. 이 함수 안에는 언제 호출되는지 알 수 있도록 `console.log()` 호출이 포함되어 있습니다. "Show only active todos"를 토글하면 `getVisibleTodos()`가 다시 실행되는 것을 확인할 수 있습니다. 이는 표시할 todos를 토글하면 표시되는 todos가 변경되기 때문에 예상되는 현상입니다.
+이 예시에서는 todos 필터링이 `getVisibleTodos()`라는 별도의 함수로 추출되었습니다. 이 함수 안에는 언제 호출되는지 알 수 있도록 `console.log()` 호출이 포함되어 있습니다. "Show only active todos"를 토글하면 `getVisibleTodos()`가 다시 실행되는 것을 확인할 수 있습니다. 이는 표시할 todos를 토글하면 표시되는 todos가 변경되기 때문에 예상되는 현상입니다.
 
 여러분이 해야 할 일은 `TodoList` 컴포넌트에서 `visibleTodos` 목록을 다시 계산하는 Effect를 제거하는 것입니다. 그러나 input에 입력할 때 `getVisibleTodos()`가 다시 실행되지 않도록(따라서 로그를 출력하지 *않도록*) 해야 합니다.
 

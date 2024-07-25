@@ -48,7 +48,7 @@ const [y, setY] = useState(0);
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-기술적으로 이 두 가지 접근 방식 모두 사용할 수 있습니다. 하지만 **두 개의 state 변수가 항상 함께 변경된다면, 단일 state 변수로 통합하는 것이 좋습니다.** 그러면 마우스 커서를 움직이면 빨간 점의 두 좌표가 모두 업데이트되는 이 예제처럼 항상 동기화를 유지하는 것을 잊지 않을 것입니다.
+기술적으로 이 두 가지 접근 방식 모두 사용할 수 있습니다. 하지만 **두 개의 state 변수가 항상 함께 변경된다면, 단일 state 변수로 통합하는 것이 좋습니다.** 그러면 마우스 커서를 움직이면 빨간 점의 두 좌표가 모두 업데이트되는 이 예시처럼 항상 동기화를 유지하는 것을 잊지 않을 것입니다.
 
 <Sandpack>
 
@@ -98,7 +98,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 <Pitfall>
 
-State 변수가 객체인 경우에는 다른 필드를 명시적으로 복사하지 않고 [하나의 필드만 업데이트할 수 없다](/learn/updating-objects-in-state)는 것을 기억하세요. 예를 들어, 위의 예제에서는 `y` 속성이 전혀 없기 때문입니다. `setPosition({ x: 100 })`를 할 수 없습니다! 대신, `x`만 설정하려면 `setPosition({ ...position, x: 100 })`을 하거나 두 개의 state 변수로 나누고 `setX(100)`을 해야 합니다.
+State 변수가 객체인 경우에는 다른 필드를 명시적으로 복사하지 않고 [하나의 필드만 업데이트할 수 없다](/learn/updating-objects-in-state)는 것을 기억하세요. 예를 들어, 위의 예시에서는 `y` 속성이 전혀 없기 때문입니다. `setPosition({ x: 100 })`를 할 수 없습니다! 대신, `x`만 설정하려면 `setPosition({ ...position, x: 100 })`을 하거나 두 개의 state 변수로 나누고 `setX(100)`을 해야 합니다.
 
 </Pitfall>
 
@@ -571,7 +571,7 @@ State는 다음과 같이 중복되었습니다.
 
 ## 깊게 중첩된 state 피하기 {/*avoid-deeply-nested-state*/}
 
-행성, 대륙, 국가로 구성된 여행 계획을 상상해 보세요. 이 예제처럼 중첩된 객체와 배열을 사용하여 여행 계획의 state를 구성하고 싶을 수 있습니다.
+행성, 대륙, 국가로 구성된 여행 계획을 상상해 보세요. 이 예시처럼 중첩된 객체와 배열을 사용하여 여행 계획의 state를 구성하고 싶을 수 있습니다.
 
 <Sandpack>
 
@@ -2003,7 +2003,7 @@ export default function App() {
 
 <Hint>
 
-이 예제에 불필요한 state가 있나요?
+이 예시에 불필요한 state가 있나요?
 
 </Hint>
 
@@ -2503,7 +2503,7 @@ li { border-radius: 5px; }
 
 #### 다중 선택 구현 {/*implement-multiple-selection*/}
 
-이 예제에서 각 `Letter`는 `isSelected` prop와 선택된 것으로 표시하는 `onToggle` 핸들러를 갖고 있습니다. 이는 작동하지만 state는 `selectedId` (`null` 또는 ID)로 저장되므로 한 번에 하나의 문자만 선택할 수 있습니다.
+이 예시에서 각 `Letter`는 `isSelected` prop와 선택된 것으로 표시하는 `onToggle` 핸들러를 갖고 있습니다. 이는 작동하지만 state는 `selectedId` (`null` 또는 ID)로 저장되므로 한 번에 하나의 문자만 선택할 수 있습니다.
 
 다중 선택을 지원하도록 state 구조를 변경하세요. (어떻게 구조화할까요? 코드를 작성하기 전에 이에 대해 생각해 보세요.) 각 체크박스는 다른 체크박스와 독립적이어야 합니다. 선택된 문자를 클릭하면 선택이 해제되어야 합니다. 마지막으로, 푸터는 선택된 항목의 올바른 수를 보여야 합니다.
 

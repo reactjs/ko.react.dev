@@ -78,7 +78,7 @@ export function Challenges({
   children,
   isRecipes,
   noTitle,
-  titleText = isRecipes ? '예제 살펴보기' : '챌린지 도전하기',
+  titleText = isRecipes ? '예시 살펴보기' : '챌린지 도전하기',
   titleId = isRecipes ? 'examples' : 'challenges',
 }: ChallengesProps) {
   const challenges = parseChallengeContents(children);

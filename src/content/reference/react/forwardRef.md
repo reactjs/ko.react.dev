@@ -520,7 +520,7 @@ const MyInput = forwardRef(function MyInput({ label, showInput }, ref) {
 });
 ```
 
-`showInput`이 `false`이면 ref가 어떤 노드로도 전달되지 않으며 `MyInput`의 ref는 비어 있게 됩니다. 이 예제의 `Panel`과 같이 조건이 다른 컴포넌트 안에 숨겨져 있는 경우 특히 이 점을 놓치기 쉽습니다.
+`showInput`이 `false`이면 ref가 어떤 노드로도 전달되지 않으며 `MyInput`의 ref는 비어 있게 됩니다. 이 예시의 `Panel`과 같이 조건이 다른 컴포넌트 안에 숨겨져 있는 경우 특히 이 점을 놓치기 쉽습니다.
 
 ```js {5,7}
 const MyInput = forwardRef(function MyInput({ label, showInput }, ref) {

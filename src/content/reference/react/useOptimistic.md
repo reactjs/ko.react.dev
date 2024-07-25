@@ -46,7 +46,7 @@ function AppContainer() {
 }
 ```
 
-[아래에 더 많은 예제를 참조하세요.](#usage)
+[아래에 더 많은 예시를 참조하세요.](#usage)
 
 #### 매개변수 {/*parameters*/}
 

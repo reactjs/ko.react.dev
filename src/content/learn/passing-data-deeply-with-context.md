@@ -442,9 +442,9 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-이 예제는 아직 잘 작동하지 않습니다! **Context를 *사용하고* 있지만, 아직 *제공하지* 않았기 때문에** 모든 제목의 크기가 동일합니다. React가 어디서 값을 가져와야 할지 모르기 때문이죠.
+이 예시는 아직 잘 작동하지 않습니다! **Context를 *사용하고* 있지만, 아직 *제공하지* 않았기 때문에** 모든 제목의 크기가 동일합니다. React가 어디서 값을 가져와야 할지 모르기 때문이죠.
 
-Context를 제공하지 않으면 React는 이전 단계에서 지정한 기본값을 사용합니다. 이 예제에서는 `1`을 `createContext`의 인수로 지정했으므로 `useContext(LevelContext)`가 `1`을 반환하고 모든 제목을 `<h1>`로 설정합니다. 이 문제를 각각의 `Section`이 고유한 context를 제공하도록 해 해결합시다.
+Context를 제공하지 않으면 React는 이전 단계에서 지정한 기본값을 사용합니다. 이 예시에서는 `1`을 `createContext`의 인수로 지정했으므로 `useContext(LevelContext)`가 `1`을 반환하고 모든 제목을 `<h1>`로 설정합니다. 이 문제를 각각의 `Section`이 고유한 context를 제공하도록 해 해결합시다.
 
 ### 3단계: Context 제공하기 {/*step-3-provide-the-context*/}
 

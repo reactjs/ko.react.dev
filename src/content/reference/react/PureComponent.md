@@ -64,7 +64,7 @@ class Greeting extends PureComponent {
 
 리액트 컴포넌트에는 항상 [순수한 렌더링 로직](/learn/keeping-components-pure)이 있어야 합니다. 즉, props, state 및 context가 변경되지 않은 경우 같은 출력을 반환해야 합니다. `PureComponent`를 사용하면 컴포넌트가 이 요구 사항을 준수한다고 리액트에게 알리므로 props 및 state가 변경되지 않는 한 React는 다시 렌더링하지 않습니다. 그러나 사용 중인 context가 변경된다면 컴포넌트는 다시 렌더링 됩니다.
 
-이 예제에서 `Greeting` 컴포넌트는 `name`이 변경될 때마다 다시 렌더링 되지만 (props 중 하나이기 때문에) `address`가 변경될 때에는 다시 렌더링 되지 않습니다 (`Greeting`에 prop으로 전달되지 않기 때문에).
+이 예시에서 `Greeting` 컴포넌트는 `name`이 변경될 때마다 다시 렌더링 되지만 (props 중 하나이기 때문에) `address`가 변경될 때에는 다시 렌더링 되지 않습니다 (`Greeting`에 prop으로 전달되지 않기 때문에).
 
 <Sandpack>
 

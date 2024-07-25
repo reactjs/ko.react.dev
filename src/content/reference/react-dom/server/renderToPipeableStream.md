@@ -276,7 +276,7 @@ function ProfilePage() {
 }
 ```
 
-이 예제에서 React는 페이지 스트리밍을 더 일찍 시작할 수 있습니다. `ProfileLayout`과 `ProfileCover`만 `<Suspense>` 경계로 둘러싸여 있지 않기 때문에 먼저 렌더링을 완료해야 합니다. 하지만 `Sidebar`, `Friends`, `Photos`이 일부 데이터를 로드해야 하는 경우 React는 대신 `BigSpinner` 폴백을 위한 HTML을 전송합니다. 그러면 더 많은 데이터를 사용할 수 있게 되면 모든 데이터가 표시될 때까지 더 많은 콘텐츠가 계속 표시됩니다.
+이 예시에서 React는 페이지 스트리밍을 더 일찍 시작할 수 있습니다. `ProfileLayout`과 `ProfileCover`만 `<Suspense>` 경계로 둘러싸여 있지 않기 때문에 먼저 렌더링을 완료해야 합니다. 하지만 `Sidebar`, `Friends`, `Photos`이 일부 데이터를 로드해야 하는 경우 React는 대신 `BigSpinner` 폴백을 위한 HTML을 전송합니다. 그러면 더 많은 데이터를 사용할 수 있게 되면 모든 데이터가 표시될 때까지 더 많은 콘텐츠가 계속 표시됩니다.
 
 스트리밍은 브라우저에서 React 자체가 로드되거나 앱이 상호작용 가능해질 때까지 기다릴 필요가 없습니다. 서버의 HTML 콘텐츠는 `<script>` 태그가 로드되기 전에 점진적으로 표시됩니다.
 
@@ -374,7 +374,7 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 ### 셸 내부의 오류로부터 복구하기 {/*recovering-from-errors-inside-the-shell*/}
 
-이 예제에서는 셸에 `ProfileLayout`, `ProfileCover`, `PostsGlimmer`가 포함되어 있습니다.
+이 예시에서는 셸에 `ProfileLayout`, `ProfileCover`, `PostsGlimmer`가 포함되어 있습니다.
 
 ```js {3-5,7-8}
 function ProfilePage() {
@@ -416,7 +416,7 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 ### 셸 외부의 오류로부터 복구하기 {/*recovering-from-errors-outside-the-shell*/}
 
-이 예제에서는 `<Posts />` 컴포넌트가 `<Suspense>`로 래핑되어 있으므로 셸의 일부가 *아닙니다.*
+이 예시에서는 `<Posts />` 컴포넌트가 `<Suspense>`로 래핑되어 있으므로 셸의 일부가 *아닙니다.*
 
 ```js {6}
 function ProfilePage() {

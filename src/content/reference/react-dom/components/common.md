@@ -921,7 +921,7 @@ export default function Form() {
 
 </Sandpack>
 
-[refs를 사용한 DOM 조작하기](/learn/manipulating-the-dom-with-refs) 및 [더 많은 예제](/reference/react/useRef#examples-dom)에 대해 더 자세히 읽어보세요.
+[refs를 사용한 DOM 조작하기](/learn/manipulating-the-dom-with-refs) 및 [더 많은 예시](/reference/react/useRef#examples-dom)에 대해 더 자세히 읽어보세요.
 
 고급 사용 사례의 경우 `ref` 어트리뷰트는 [콜백 함수](#ref-callback)도 허용합니다.
 

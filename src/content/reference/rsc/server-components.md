@@ -195,7 +195,7 @@ async function Author({id}) {
 </Note>
 
 
-다음 예제에서는 `Notes` 서버 컴포넌트가 상태를 사용하여 `expanded` 상태를 토글하는 `Expandable` 클라이언트 컴포넌트를 가져옵니다.
+다음 예시에서는 `Notes` 서버 컴포넌트가 상태를 사용하여 `expanded` 상태를 토글하는 `Expandable` 클라이언트 컴포넌트를 가져옵니다.
 ```js
 // Server Component
 import Expandable from './Expandable';
@@ -232,7 +232,7 @@ export default function Expandable({children}) {
 }
 ```
 
-이 예제는 먼저 `Notes`를 서버 컴포넌트로 렌더링한 다음 번들러에 `Expandable` 클라이언트 컴포넌트의 번들을 생성하도록 지시합니다. 브라우저에서는 클라이언트 컴포넌트가 서버 컴포넌트의 출력을 props로 받게 됩니다.
+이 예시는 먼저 `Notes`를 서버 컴포넌트로 렌더링한 다음 번들러에 `Expandable` 클라이언트 컴포넌트의 번들을 생성하도록 지시합니다. 브라우저에서는 클라이언트 컴포넌트가 서버 컴포넌트의 출력을 props로 받게 됩니다.
 
 ```js
 <head>

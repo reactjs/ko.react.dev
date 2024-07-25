@@ -48,7 +48,7 @@ React 컴파일러의 초기 릴리즈는 주로 **업데이트 성능 개선**(
 
 #### 리렌더링 최적화 {/*optimizing-re-renders*/}
 
-React는 props, state, context와 같은 현재 state에 대한 함수로 UI를 표현할 수 있도록 해줍니다. `useMemo()`, `useCallback()`, `React.memo()`로 수동 메모이제이션을 적용하지 않은 경우에 현재 구현에서 컴포넌트의 state가 변경되면, React는 해당 컴포넌트와 _하위 모든 자식 컴포넌트_ 를 리렌더링합니다. 예를 들어 다음 예제에서는 `<FriendList>`의 state가 변경될 때마다 `<MessageButton>`이 리렌더링됩니다.
+React는 props, state, context와 같은 현재 state에 대한 함수로 UI를 표현할 수 있도록 해줍니다. `useMemo()`, `useCallback()`, `React.memo()`로 수동 메모이제이션을 적용하지 않은 경우에 현재 구현에서 컴포넌트의 state가 변경되면, React는 해당 컴포넌트와 _하위 모든 자식 컴포넌트_ 를 리렌더링합니다. 예를 들어 다음 예시에서는 `<FriendList>`의 state가 변경될 때마다 `<MessageButton>`이 리렌더링됩니다.
 
 ```javascript
 function FriendList({ friends }) {
@@ -67,9 +67,9 @@ function FriendList({ friends }) {
   );
 }
 ```
-[_React 컴파일러 플레이그라운드에서 이 예제를 확인하세요_](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAYjHgpgCYAyeYOAFMEWuZVWEQL4CURwADrEicQgyKEANnkwIAwtEw4iAXiJQwCMhWoB5TDLmKsTXgG5hRInjRFGbXZwB0UygHMcACzWr1ABn4hEWsYBBxYYgAeADkIHQ4uAHoAPksRbisiMIiYYkYs6yiqPAA3FMLrIiiwAAcAQ0wU4GlZBSUcbklDNqikusaKkKrgR0TnAFt62sYHdmp+VRT7SqrqhOo6Bnl6mCoiAGsEAE9VUfmqZzwqLrHqM7ubolTVol5eTOGigFkEMDB6u4EAAhKA4HCEZ5DNZ9ErlLIWYTcEDcIA)
+[_React 컴파일러 플레이그라운드에서 이 예시를 확인하세요_](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAYjHgpgCYAyeYOAFMEWuZVWEQL4CURwADrEicQgyKEANnkwIAwtEw4iAXiJQwCMhWoB5TDLmKsTXgG5hRInjRFGbXZwB0UygHMcACzWr1ABn4hEWsYBBxYYgAeADkIHQ4uAHoAPksRbisiMIiYYkYs6yiqPAA3FMLrIiiwAAcAQ0wU4GlZBSUcbklDNqikusaKkKrgR0TnAFt62sYHdmp+VRT7SqrqhOo6Bnl6mCoiAGsEAE9VUfmqZzwqLrHqM7ubolTVol5eTOGigFkEMDB6u4EAAhKA4HCEZ5DNZ9ErlLIWYTcEDcIA)
 
-React 컴파일러는 상태 변경 시 앱에서 관련된 부분만 리렌더링되도록 수동 메모이제이션과 동등한 기능을 자동으로 적용합니다. 이를 "세분화된 반응성(fine-grained reactivity)"이라고도 부릅니다. 위 예제에서 React 컴파일러는 `friends`가 변경되더라도 `<FriendListCard />`의 반환 값이 재사용될 수 있음을 결정하고, JSX를 재생성하지 않고 `<MessageButton>`의 리렌더링도 피할 수 있습니다.
+React 컴파일러는 상태 변경 시 앱에서 관련된 부분만 리렌더링되도록 수동 메모이제이션과 동등한 기능을 자동으로 적용합니다. 이를 "세분화된 반응성(fine-grained reactivity)"이라고도 부릅니다. 위 예시에서 React 컴파일러는 `friends`가 변경되더라도 `<FriendListCard />`의 반환 값이 재사용될 수 있음을 결정하고, JSX를 재생성하지 않고 `<MessageButton>`의 리렌더링도 피할 수 있습니다.
 
 #### 비용이 많이 드는 계산 메모이제이션 {/*expensive-calculations-also-get-memoized*/}
 
@@ -86,7 +86,7 @@ function TableContainer({ items }) {
   // ...
 }
 ```
-[_React 컴파일러 플레이그라운드에서 이 예제를 확인하세요_](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAejQAgFTYHIQAuumAtgqRAJYBeCAJpgEYCemASggIZyGYDCEUgAcqAGwQwANJjBUAdokyEAFlTCZ1meUUxdMcIcIjyE8vhBiYVECAGsAOvIBmURYSonMCAB7CzcgBuCGIsAAowEIhgYACCnFxioQAyXDAA5gixMDBcLADyzvlMAFYIvGAAFACUmMCYaNiYAHStOFgAvk5OGJgAshTUdIysHNy8AkbikrIKSqpaWvqGIiZmhE6u7p7ymAAqXEwSguZcCpKV9VSEFBodtcBOmAYmYHz0XIT6ALzefgFUYKhCJRBAxeLcJIsVIZLI5PKFYplCqVa63aoAbm6u0wMAQhFguwAPPRAQA+YAfL4dIloUmBMlODogDpAA)
+[_React 컴파일러 플레이그라운드에서 이 예시를 확인하세요_](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAejQAgFTYHIQAuumAtgqRAJYBeCAJpgEYCemASggIZyGYDCEUgAcqAGwQwANJjBUAdokyEAFlTCZ1meUUxdMcIcIjyE8vhBiYVECAGsAOvIBmURYSonMCAB7CzcgBuCGIsAAowEIhgYACCnFxioQAyXDAA5gixMDBcLADyzvlMAFYIvGAAFACUmMCYaNiYAHStOFgAvk5OGJgAshTUdIysHNy8AkbikrIKSqpaWvqGIiZmhE6u7p7ymAAqXEwSguZcCpKV9VSEFBodtcBOmAYmYHz0XIT6ALzefgFUYKhCJRBAxeLcJIsVIZLI5PKFYplCqVa63aoAbm6u0wMAQhFguwAPPRAQA+YAfL4dIloUmBMlODogDpAA)
 
 그러나 `expensivelyProcessAReallyLargeArrayOfObjects`가 실제로 비용이 많이 드는 함수라면 다음과 같은 이유로 React 외부에서 해당 함수의 별도 메모이제이션을 고려해야 할 수도 있습니다.
 
@@ -403,7 +403,7 @@ function SuspiciousComponent() {
 이 지시어는 필요한 경우가 아니면 사용을 권장하지 않습니다. 한 번 컴포넌트나 Hook을 제외하면 해당 지시어가 제거될 때까지 영구적으로 컴파일에서 제외합니다. 이는 코드를 수정해도 컴파일러가 해당 부분을 여전히 건너뛸 것을 의미합니다.
 </Note>
 
-문제를 해결했을 때 지시어를 제거하면 문제가 다시 발생하는지 확인하세요. 그런 다음 [React 컴파일러 플레이그라운드](https://playground.react.dev)를 활용하여 문제를 최소한의 재현 가능한 예제로 단순화해 보거나, 오픈 소스 코드라면 전체 소스 코드를 붙여 넣어 버그 보고서를 공유해주세요. 이를 통해 문제를 파악하고 해결하는 데 도움을 드릴 수 있습니다.
+문제를 해결했을 때 지시어를 제거하면 문제가 다시 발생하는지 확인하세요. 그런 다음 [React 컴파일러 플레이그라운드](https://playground.react.dev)를 활용하여 문제를 최소한의 재현 가능한 예시로 단순화해 보거나, 오픈 소스 코드라면 전체 소스 코드를 붙여 넣어 버그 보고서를 공유해주세요. 이를 통해 문제를 파악하고 해결하는 데 도움을 드릴 수 있습니다.
 
 ### 기타 문제 {/*other-issues*/}
 

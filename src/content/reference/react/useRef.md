@@ -135,7 +135,7 @@ JSX에 `{ref.current}`를 표시하면 클릭 시 번호가 업데이트되지 �
 
 #### 스톱워치 {/*a-stopwatch*/}
 
-예제에서는 state와 ref의 조합을 사용합니다. `startTime`과 `now`는 모두 렌더링에 사용되기 때문에 state 변수입니다. 그러나 버튼을 누를 때 interval을 멈출 수 있게 하기 위해선 [interval ID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)도 보유해야 합니다. interval ID는 렌더링에 사용되지 않으므로 ref에 보관하고 수동으로 업데이트하는 것이 적절합니다.
+예시에서는 state와 ref의 조합을 사용합니다. `startTime`과 `now`는 모두 렌더링에 사용되기 때문에 state 변수입니다. 그러나 버튼을 누를 때 interval을 멈출 수 있게 하기 위해선 [interval ID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)도 보유해야 합니다. interval ID는 렌더링에 사용되지 않으므로 ref에 보관하고 수동으로 업데이트하는 것이 적절합니다.
 
 <Sandpack>
 
@@ -271,7 +271,7 @@ React가 DOM 노드를 생성하고 화면에 그린 후, React는 ref 객체의
 
 #### 텍스트 input에 초점 맞추기 {/*focusing-a-text-input*/}
 
-이 예제에서는 버튼을 클릭하면 입력에 초점이 맞춰집니다:
+이 예시에서는 버튼을 클릭하면 입력에 초점이 맞춰집니다.
 
 <Sandpack>
 
@@ -302,7 +302,7 @@ export default function Form() {
 
 #### 이미지 스크롤하기 {/*scrolling-an-image-into-view*/}
 
-이 예제에서는 버튼을 클릭하면 이미지가 스크롤됩니다. 목록 DOM 노드에 대한 ref를 사용한 다음 DOM [`querySelectorAll`](https://developer.mozilla.org/ko/docs/Web/API/Document/querySelectorAll) API를 호출하여 스크롤하려는 이미지를 찾습니다.
+이 예시에서는 버튼을 클릭하면 이미지가 스크롤됩니다. 목록 DOM 노드에 대한 ref를 사용한 다음 DOM [`querySelectorAll`](https://developer.mozilla.org/ko/docs/Web/API/Document/querySelectorAll) API를 호출하여 스크롤하려는 이미지를 찾습니다.
 
 <Sandpack>
 
@@ -395,7 +395,7 @@ li {
 
 #### 비디오 재생 및 정지하기 {/*playing-and-pausing-a-video*/}
 
-이 예제에서는 ref를 사용하여 `<video>` DOM 노드에서 [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) 및 [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause)를 호출합니다.
+이 예시에서는 ref를 사용하여 `<video>` DOM 노드에서 [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) 및 [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause)를 호출합니다.
 
 <Sandpack>
 

@@ -252,7 +252,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 </Sandpack>
 
- `Tooltip` 컴포넌트는 두 번의 렌더링을 거치지만 (처음은 `0`으로 초기화된 `tooltipHeight`로 렌더링 되고, 그다음 실제로 계산된 높이로 렌더링 됨), 실제로 보이는 건 최종 결과뿐입니다. 이 예제에서 [`useEffect`](/reference/react/useEffect) 대신 `useLayoutEffect`가 필요한 이유입니다. 아래에서 차이점을 자세하게 살펴봅시다.
+`Tooltip` 컴포넌트는 두 번의 렌더링을 거치지만 (처음은 `0`으로 초기화된 `tooltipHeight`로 렌더링 되고, 그다음 실제로 계산된 높이로 렌더링 됨), 실제로 보이는 건 최종 결과뿐입니다. 이 예시에서 [`useEffect`](/reference/react/useEffect) 대신 `useLayoutEffect`가 필요한 이유입니다. 아래에서 차이점을 자세하게 살펴봅시다.
 
 <Recipes titleText="useLayoutEffect vs useEffect" titleId="examples">
 
@@ -405,7 +405,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 #### `useEffect` 는 브라우저를 막지 않습니다 {/*useeffect-does-not-block-the-browser*/}
 
- `useLayoutEffect` 대신 [`useEffect`](/reference/react/useEffect)를 사용한 동일한 예제입니다. 더 느린 디바이스 환경이라면 가끔 툴팁이 "깜빡"일 수 있고 수정되기 전의 초기 위치를 잠깐 보게 될 수 있습니다.
+`useLayoutEffect` 대신 [`useEffect`](/reference/react/useEffect)를 사용한 동일한 예시입니다. 더 느린 디바이스 환경이라면 가끔 툴팁이 "깜빡"일 수 있고 수정되기 전의 초기 위치를 잠깐 보게 될 수 있습니다.
 
 <Sandpack>
 
@@ -697,7 +697,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 </Sandpack>
 
-이 예제를 `useLayoutEffect`로 고쳐서 렌더링은 느려지더라도 브라우저가 화면을 그리는 것을 막는 것을 확인하세요.
+이 예시를 `useLayoutEffect`로 고쳐서 렌더링은 느려지더라도 브라우저가 화면을 그리는 것을 막는 것을 확인하세요.
 
 <Solution />
 
@@ -725,7 +725,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 문제는 서버에는 레이아웃 정보가 없다는 것입니다.
 
-[앞선 예제](#measuring-layout-before-the-browser-repaints-the-screen)에선 `Tooltip` 컴포넌트에서 `useLayoutEffect`를 호출하여 툴팁을 콘텐츠의 높이에 따라 (콘텐츠의 위쪽과 아래쪽 중) 올바른 위치에 배치합니다. 초기 서버 HTML의 일부로 `Tooltip`을 렌더링하려 하면, 이때는 툴팁의 위치를 올바르게 결정할 수 없을 것입니다. 서버에서는 아직 레이아웃 정보가 없으니까요! 따라서 툴팁을 서버에서 렌더링하기를 원하더라도, 클라이언트로 옮겨서 자바스크립트가 로드되고 실행된 후에 렌더링해야 합니다.
+[앞선 예시](#measuring-layout-before-the-browser-repaints-the-screen)에선 `Tooltip` 컴포넌트에서 `useLayoutEffect`를 호출하여 툴팁을 콘텐츠의 높이에 따라 (콘텐츠의 위쪽과 아래쪽 중) 올바른 위치에 배치합니다. 초기 서버 HTML의 일부로 `Tooltip`을 렌더링하려 하면, 이때는 툴팁의 위치를 올바르게 결정할 수 없을 것입니다. 서버에서는 아직 레이아웃 정보가 없으니까요! 따라서 툴팁을 서버에서 렌더링하기를 원하더라도, 클라이언트로 옮겨서 자바스크립트가 로드되고 실행된 후에 렌더링해야 합니다.
 
 일반적으로 레이아웃 정보에 의존하는 컴포넌트는 어차피 서버에서 렌더링할 필요가 없습니다. 예를 들면, 초기 렌더링 중에 `Tooltip`이 보이는 것은 말이 안 됩니다. `Tooltip`은 클라이언트 상호작용에 의해서 보이는 것이니까요.
 
