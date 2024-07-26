@@ -619,7 +619,7 @@ React에서 데이터는 부모 컴포넌트에서 자식 컴포넌트로 흐릅
 function Parent() {
   const data = useSomeAPI();
   // ...
-  // ✅ 좋습니다: 자식에서 데이터를 전달
+  // ✅ 좋습니다: 자식에게 데이터 전달하기
   return <Child data={data} />;
 }
 
