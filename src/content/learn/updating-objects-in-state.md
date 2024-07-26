@@ -672,7 +672,7 @@ Immer가 제공하는 `draft`는 [Proxy](https://developer.mozilla.org/en-US/doc
 
 Immer를 사용하기 위해서는,
 
-1. `package.json`에 dependency로 `use-immer`를 추가하세요
+1. `package.json`에 `dependencies`로 `use-immer`를 추가하세요
 2. `npm install`을 실행하세요
 3. `import { useState } from 'react'`를 `import { useImmer } from 'use-immer'`로 교체하세요.
 
