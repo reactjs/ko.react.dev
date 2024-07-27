@@ -52,7 +52,7 @@ Portal은 DOM 노드의 물리적 배치만 변경합니다.
 
 * **optional** `key`: Portal의 [key](/learn/rendering-lists/#keeping-list-items-in-order-with-key)로 사용할 고유한 문자열 또는 숫자입니다. 
 
-#### 반환 값 {/*returns*/}
+#### 반환값 {/*returns*/}
 
 `createPortal`은 JSX에 포함하거나 React 컴포넌트에서 반환할 수 있는 React 노드를 반환합니다. React가 렌더링 출력에서 이를 발견하면, 제공된 `children`을 제공된 `domNode` 안에 배치합니다. 
 

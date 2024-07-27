@@ -52,7 +52,7 @@ export default function App() {
 
 * `type`: `type`은 반드시 유효한 React 컴포넌트 type이어야 합니다. 예를 들어 태그 이름 문자열(`'div'` 나 `'span'`) 혹은 React 컴포넌트(함수 컴포넌트, 클래스 컴포넌트, [`Fragment`](/reference/react/Fragment)와 같은 특별한 컴포넌트)가 될 수 있습니다.
 
-#### 반환 값 {/*returns*/}
+#### 반환값 {/*returns*/}
 
 팩토리 함수를 반환합니다. 이 함수는 자식 인수의 리스트에 뒤이어, 첫 번째 인수로 `props` 객체를 받으며, 주어진 `types`, `props` 그리고 `자식`을 가진 React 엘리먼트를 반환합니다. 
 

@@ -41,7 +41,7 @@ const domNode = findDOMNode(componentInstance);
 * `componentInstance`: [`컴포넌트`](/reference/react/Component) 하위 클래스의 인스턴스입니다. 예를 들어 클래스 컴포넌트의 경우 `this`가 포함되어 있습니다.
 
 
-#### 반환 {/*returns*/}
+#### 반환값 {/*returns*/}
 
 `findDOMNode`는 주어진 `componentInstance`에서 가장 처음 등장하는 브라우저 DOM 노드를 반환합니다. 컴포넌트가 `null`이나 `false`를 렌더링할 경우 `findDOMNode`는 `null`을 반환합니다. 컴포넌트가 문자열을 렌더링하면 `findDOMNode`는 그 값을 포함한 텍스트 DOM 노드를 반환합니다.
 
