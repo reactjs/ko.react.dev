@@ -97,7 +97,7 @@ React가 컴포넌트를 다시 렌더링할 때.
   <Illustration caption="React는 상태 값의 스냅샷을 컴포넌트에 전달합니다" src="/images/docs/illustrations/i_state-snapshot3.png" />
 </IllustrationBlock>
 
-다음은 이것이 어떻게 작동하는지 보여주는 간단한 실험입니다. 이 예제에서는 ‘+3’ 버튼을 클릭하면 `setNumber(number + 1)`를 세 번 호출하므로 카운터가 세 번 증가할 것으로 예상할 수 있습니다.
+다음은 이것이 어떻게 작동하는지 보여주는 간단한 실험입니다. 이 예시에서는 ‘+3’ 버튼을 클릭하면 `setNumber(number + 1)`를 세 번 호출하므로 카운터가 세 번 증가할 것으로 예상할 수 있습니다.
 
 "+3" 버튼을 클릭하면 어떻게 되는지 확인해 봅시다.
 

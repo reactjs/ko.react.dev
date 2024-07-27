@@ -1048,7 +1048,7 @@ class Form extends Component {
   static getDerivedStateFromProps(props, state) {
     // 현재 사용자가 변경될 때마다,
     // 해당 사용자와 연결된 state의 모든 부분을 재설정합니다.
-    // 이 간단한 예제에서는 이메일만 해당됩니다.
+    // 이 간단한 예시에서는 이메일만 해당됩니다.
     if (props.userID !== state.prevUserID) {
       return {
         prevUserID: props.userID,
@@ -1449,7 +1449,7 @@ function Greeting({ name }) {
 }
 ```
 
-다음은 전체 예제입니다.
+다음은 전체 예시입니다.
 
 <Sandpack>
 
@@ -1737,7 +1737,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-이 [`useEffect`](/reference/react/useEffect) 호출은 위의 생명주기 메서드의 로직과 동일합니다. 생명주기 메서드가 서로 관련이 없는 여러 가지 작업을 수행하는 경우, [이를 여러 개의 독립적인 Effect로 분할하세요.](/learn/removing-effect-dependencies#is-your-effect-doing-several-unrelated-things) 다음은 완전한 예제입니다.
+이 [`useEffect`](/reference/react/useEffect) 호출은 위의 생명주기 메서드의 로직과 동일합니다. 생명주기 메서드가 서로 관련이 없는 여러 가지 작업을 수행하는 경우, [이를 여러 개의 독립적인 Effect로 분할하세요.](/learn/removing-effect-dependencies#is-your-effect-doing-several-unrelated-things) 다음은 완전한 예시입니다.
 
 <Sandpack>
 
@@ -1832,7 +1832,7 @@ button { margin-left: 10px; }
 
 ### context가 있는 컴포넌트를 클래스에서 함수로 마이그레이션하기 {/*migrating-a-component-with-context-from-a-class-to-a-function*/}
 
-이 예제에서 `Panel` 및 `Button` 클래스 컴포넌트는 [`this.context`](#context)에서 [context](/learn/passing-data-deeply-with-context)를 읽습니다:
+이 예시에서 `Panel` 및 `Button` 클래스 컴포넌트는 [`this.context`](#context)에서 [context](/learn/passing-data-deeply-with-context)를 읽습니다.
 
 <Sandpack>
 

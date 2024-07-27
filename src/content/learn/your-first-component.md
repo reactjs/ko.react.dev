@@ -211,7 +211,7 @@ function Profile() {
 
 #### 컴포넌트의 모든 것 {/*components-all-the-way-down*/}
 
-React 애플리케이션은 "root"컴포넌트에서 시작됩니다. 보통 새 프로젝트를 시작할 때 자동으로 생성됩니다. 예를 들어, [CodeSandbox](https://codesandbox.io/) 또는 [Next.js](https://nextjs.org/)를 사용하는 경우, root 컴포넌트는 `pages/index.js`에 정의됩니다. 이 예제에서는 root 컴포넌트를 내보내고 있습니다.
+React 애플리케이션은 "root"컴포넌트에서 시작됩니다. 보통 새 프로젝트를 시작할 때 자동으로 생성됩니다. 예를 들어, [CodeSandbox](https://codesandbox.io/) 또는 [Next.js](https://nextjs.org/)를 사용하는 경우, root 컴포넌트는 `pages/index.js`에 정의됩니다. 이 예시에서는 root 컴포넌트를 내보내고 있습니다.
 
 대부분의 React 앱은 모든 부분에서 컴포넌트를 사용합니다. 즉, 버튼과 같이 재사용 가능한 부분뿐만 아니라 사이드바, 목록, 그리고 궁극적으로 전체 페이지와 같은 큰 부분에도 컴포넌트를 사용하게 됩니다! 컴포넌트는 한 번만 사용되더라도 UI 코드와 마크업을 정리하는 편리한 방법입니다.
 
@@ -286,7 +286,7 @@ img { height: 181px; }
 
 </Sandpack>
 
-이 예제에서 왜 'export'만으로 해결되지 않는지 궁금할 것입니다. [컴포넌트의 importing과 exporting](/learn/importing-and-exporting-components)에서 'export'와 'export default'의 차이점을 배울 수 있습니다.
+이 예시에서 왜 'export'만으로 해결되지 않는지 궁금할 것입니다. [컴포넌트의 importing과 exporting](/learn/importing-and-exporting-components)에서 'export'와 'export default'의 차이점을 배울 수 있습니다.
 
 </Solution>
 

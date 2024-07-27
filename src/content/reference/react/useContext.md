@@ -564,7 +564,7 @@ label {
 
 #### 컴포넌트로 providers 분리 {/*extracting-providers-to-a-component*/}
 
-앱이 성장함에 따라 앱의 루트에 더 가까운 context의 "피라미드"를 갖게 될 것입니다. 이는 잘못된 것이 아닙니다. 하지만 중첩이 보기에 좋지 않다면 provider들을 단일 컴포넌트로 분리할 수 있습니다. 이 예제에서 `MyProviders`는 "context들"을 숨기고 필요한 provider들의 내부에 전달된 자식을 렌더링합니다. `theme` 및 `setTheme` 상태는 `MyApp` 자체에 필요하므로 `MyApp`이 여전히 해당 상태를 소유하고 있습니다.
+앱이 성장함에 따라 앱의 루트에 더 가까운 context의 "피라미드"를 갖게 될 것입니다. 이는 잘못된 것이 아닙니다. 하지만 중첩이 보기에 좋지 않다면 provider들을 단일 컴포넌트로 분리할 수 있습니다. 이 예시에서 `MyProviders`는 "context들"을 숨기고 필요한 provider들의 내부에 전달된 자식을 렌더링합니다. `theme` 및 `setTheme` 상태는 `MyApp` 자체에 필요하므로 `MyApp`이 여전히 해당 상태를 소유하고 있습니다.
 
 <Sandpack>
 
@@ -739,9 +739,9 @@ label {
 
 #### context 와 reducer를 통한 확장 {/*scaling-up-with-context-and-a-reducer*/}
 
-규모가 큰 앱에서는 컨텍스트와 [reducer](/reference/react/useReducer)를 결합하여 컴포넌트에서 특정 상태와 관련된 로직을 분리하는 것이 일반적입니다. 이 예제에서는 모든 "wiring"이 reducer와 두 개의 개별 contexts가 포함된 `TasksContext.js`에 숨겨져 있습니다.
+규모가 큰 앱에서는 컨텍스트와 [reducer](/reference/react/useReducer)를 결합하여 컴포넌트에서 특정 상태와 관련된 로직을 분리하는 것이 일반적입니다. 이 예시에서는 모든 "wiring"이 reducer와 두 개의 개별 contexts가 포함된 `TasksContext.js`에 숨겨져 있습니다.
 
-이 예제에 대한 [전체 안내](/learn/scaling-up-with-reducer-and-context)를 읽어보세요.
+이 예시에 대한 [전체 안내](/learn/scaling-up-with-reducer-and-context)를 읽어보세요.
 
 <Sandpack>
 
@@ -965,7 +965,7 @@ const ThemeContext = createContext('light');
 
 이렇게 하면 실수로 해당 provider 없이 일부 컴포넌트를 렌더링해도 깨지지 않습니다. 또한 테스트 환경에서 많은 provider를 설정하지 않고도 컴포넌트가 테스트 환경에서 잘 작동하는 데 도움이 됩니다.
 
-아래 예제에서 "Toggle theme" 버튼은 **테마 context provider의 외부** 에 있고 기본 컨텍스트 테마 값이 `'light'`이기 때문에 항상 밝게 표시되어 있습니다. 기본 테마를 `'dark'`로 변경해 보세요.
+아래 예시에서 "Toggle theme" 버튼은 **테마 context provider의 외부** 에 있고 기본 컨텍스트 테마 값이 `'light'`이기 때문에 항상 밝게 표시되어 있습니다. 기본 테마를 `'dark'`로 변경해 보세요.
 
 <Sandpack>
 
@@ -1190,7 +1190,7 @@ footer {
 
 context provider를 중첩할 때 정보를 "누적"할 수 있습니다. 이 예시에서 `Section` 컴포넌트는 섹션 중첩의 깊이를 지정하는 `LevelContext`를 추적합니다. 이 컴포넌트는 부모 섹션에서 `LevelContext`를 읽은 다음 1씩 증가한 `LevelContext` 숫자를 자식에게 제공합니다. 그 결과 `Heading`  컴포넌트는 얼마나 많은 `Section` 컴포넌트가 중첩되어 있는지에 따라 `<h1>`, `<h2>`, `<h3>`, ...,  태그 중 어떤 태그를 사용할지 자동으로 결정할 수 있습니다.
 
-이 예제에 대한 [자세한 안내](/learn/passing-data-deeply-with-context)를 읽어보세요.
+이 예시에 대한 [자세한 안내](/learn/passing-data-deeply-with-context)를 읽어보세요.
 
 <Sandpack>
 

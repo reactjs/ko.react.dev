@@ -145,7 +145,7 @@ export default [
 
 </Sandpack>
 
-예제 앱의 모듈 의존성 트리에서 `InspirationGenerator.js`의 `'use client'` 지시어는 해당 모듈과 모든 전이적 의존성을 클라이언트 모듈로 표시합니다. 이제 `InspirationGenerator.js`에서 시작하는 하위 트리는 클라이언트 모듈로 표시됩니다.
+예시 앱의 모듈 의존성 트리에서 `InspirationGenerator.js`의 `'use client'` 지시어는 해당 모듈과 모든 전이적 의존성을 클라이언트 모듈로 표시합니다. 이제 `InspirationGenerator.js`에서 시작하는 하위 트리는 클라이언트 모듈로 표시됩니다.
 
 <Diagram name="use_client_module_dependency" height={250} width={545} alt="A tree graph with the top node representing the module 'App.js'. 'App.js' has three children: 'Copyright.js', 'FancyText.js', and 'InspirationGenerator.js'. 'InspirationGenerator.js' has two children: 'FancyText.js' and 'inspirations.js'. The nodes under and including 'InspirationGenerator.js' have a yellow background color to signify that this sub-graph is client-rendered due to the 'use client' directive in 'InspirationGenerator.js'.">
 `'use client'`는 React 서버 컴포넌트 앱의 모듈 의존성 트리를 분할하여 `InspirationGenerator.js`와 모든 의존성을 클라이언트-렌더링으로 표시합니다.
@@ -164,7 +164,7 @@ React 서버 컴포넌트 앱을 위한 렌더 트리에서 `InspirationGenerato
 * **클라이언트 컴포넌트**는 클라이언트에서 렌더링되는 렌더 트리의 컴포넌트입니다.
 * **서버 컴포넌트**는 서버에서 렌더링 되는 렌더 트리의 컴포넌트입니다.
 
-예제 앱이 실행되는 동안 `App`, `FancyText` 및 `Copyright`는 모두 서버에서 렌더링 되며 서버 컴포넌트로 간주합니다. `InspirationGenerator.js`와 그 전이적 의존성이 클라이언트 코드로 표시되므로 컴포넌트 `InspirationGenerator`와 그 자식 컴포넌트 `FancyText`는 클라이언트 컴포넌트입니다.
+예시 앱이 실행되는 동안 `App`, `FancyText` 및 `Copyright`는 모두 서버에서 렌더링 되며 서버 컴포넌트로 간주합니다. `InspirationGenerator.js`와 그 전이적 의존성이 클라이언트 코드로 표시되므로 컴포넌트 `InspirationGenerator`와 그 자식 컴포넌트 `FancyText`는 클라이언트 컴포넌트입니다.
 
 <DeepDive>
 #### 어떻게 `FancyText`는 서버 컴포넌트이면서 클라이언트 컴포넌트인가요? {/*how-is-fancytext-both-a-server-and-a-client-component*/}
@@ -333,7 +333,7 @@ export default function FancyText({title, text}) {
 }
 ```
 
-이 경우 `'use client'` 지시어를 추가하지 않으면 `FancyText`의 _산출물_(소스 코드가 아닌)이 서버 컴포넌트에서 참조될 때 브라우저로 전송됩니다. 앞서 Inspirations 앱 예제에서 보여준 것처럼 `FancyText`는 가져오고 사용되는 위치에 따라 서버 또는 클라이언트 컴포넌트로 사용됩니다.
+이 경우 `'use client'` 지시어를 추가하지 않으면 `FancyText`의 _산출물_(소스 코드가 아닌)이 서버 컴포넌트에서 참조될 때 브라우저로 전송됩니다. 앞서 Inspirations 앱 예시에서 보여준 것처럼 `FancyText`는 가져오고 사용되는 위치에 따라 서버 또는 클라이언트 컴포넌트로 사용됩니다.
 
 하지만 `FancyText`의 HTML 출력이 의존성을 포함한 소스 코드에 비해 크다면, 항상 클라이언트 컴포넌트로 강제하는 것이 더 효율적일 수 있습니다. 한 예로 긴 SVG 경로 문자열을 반환하는 컴포넌트를 클라이언트 컴포넌트로 강제하는 것이 더 효율적일 수 있는 것처럼 말입니다.
 
@@ -341,7 +341,7 @@ export default function FancyText({title, text}) {
 
 React 앱에서는 웹 스토리지, 오디오 및 비디오 조작, 하드웨어 장치 등과 같은 [브라우저의 API](https://developer.mozilla.org/ko/docs/Web/API)를 포함한 클라이언트 특정 API를 사용할 수 있습니다.
 
-이 예제에서 컴포넌트는 [DOM API](https://developer.mozilla.org/ko/docs/Glossary/DOM)를 사용해 [`canvas`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/canvas) 요소를 조작합니다. 이러한 API는 브라우저에서만 사용할 수 있으므로 클라이언트 컴포넌트로 표시되어야 합니다.
+이 예시에서 컴포넌트는 [DOM API](https://developer.mozilla.org/ko/docs/Glossary/DOM)를 사용해 [`canvas`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/canvas) 요소를 조작합니다. 이러한 API는 브라우저에서만 사용할 수 있으므로 클라이언트 컴포넌트로 표시되어야 합니다.
 
 ```js
 'use client';

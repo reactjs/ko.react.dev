@@ -2075,7 +2075,7 @@ button {
 
 <Solution>
 
-이 예제에서는 배열의 인덱스를 `key`로 사용해서 문제가 발생합니다.
+이 예시에서는 배열의 인덱스를 `key`로 사용해서 문제가 발생합니다.
 
 ```js
 {displayedContacts.map((contact, i) =>

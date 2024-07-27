@@ -94,7 +94,7 @@ function SearchPage() {
 
 <Note>
 
-이 예제에서는 Suspense 지원 데이터 소스 중 하나를 사용한다고 가정합니다
+이 예시에서는 Suspense 지원 데이터 소스 중 하나를 사용한다고 가정합니다
 
 - [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/getting-started/react-essentials) 같이 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기
 - [`lazy`](/reference/react/lazy)를 활용한 지연 로딩 컴포넌트

@@ -156,7 +156,7 @@ export default function PackingList() {
 
 ## 조건부로 JSX 포함시키기 {/*conditionally-including-jsx*/}
 
-이전 예제에서는 어떤 항목(있는 경우)을 제어했습니다. 컴포넌트에 의해 JSX 트리가 반환되었습니다. 렌더링 된 출력 결과에서 이미 일부 중복이 발견되었을 수 있습니다.
+이전 예시에서는 어떤 항목(있는 경우)을 제어했습니다. 컴포넌트에 의해 JSX 트리가 반환되었습니다. 렌더링된 출력 결과에서 이미 일부 중복이 발견되었을 수 있습니다.
 
 ```js
 <li className="item">{name} ✔</li>
@@ -206,7 +206,7 @@ return (
 
 <DeepDive>
 
-#### 두 예제는 완전히 동일할까요? {/*are-these-two-examples-fully-equivalent*/}
+#### 두 예시는 완전히 동일할까요? {/*are-these-two-examples-fully-equivalent*/}
 
 `<li>`의 두 가지 다른 "인스턴스"를 만들 수 있기 때문에 객체 지향 프로그래밍에서는 위의 두 예가 미묘하게 다르다고 생각할 수 있습니다. 그러나 JSX 엘리먼트는 내부 상태를 보유하지 않으며 실제 DOM 노드가 아니기 때문에 "인스턴스"가 아닙니다. 이것은 청사진처럼 간단한 설명입니다. 따라서 위의 두 가지 예시 코드는 실제로 완전히 *동일합니다*. [상태를 보존하고 초기화하기](/learn/preserving-and-resetting-state)에서는 이 기능이 어떻게 작동하는지 자세히 설명합니다.
 

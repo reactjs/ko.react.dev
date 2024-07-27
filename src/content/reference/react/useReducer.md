@@ -249,11 +249,11 @@ function reducer(state, action) {
 
 </Pitfall>
 
-<Recipes titleText="기본적인 useReducer 예제" titleId="examples-basic">
+<Recipes titleText="기본적인 useReducer 예시" titleId="examples-basic">
 
 #### 폼 (객체) {/*form-object*/}
 
-이 예제에서는 reducer를 이용해 `name`과 `age` 필드를 가진 객체를 state로 관리합니다.
+이 예시에서는 reducer를 이용해 `name`과 `age` 필드를 가진 객체를 state로 관리합니다.
 
 <Sandpack>
 
@@ -319,7 +319,7 @@ button { display: block; margin-top: 10px; }
 
 #### 투두 리스트 (배열) {/*todo-list-array*/}
 
-이 예제에서는 리듀서를 이용해 할 일 목록들을 배열로 관리합니다. 배열의 업데이트는 [mutation이 없이](/learn/updating-arrays-in-state) 이루어져야 합니다.
+이 예시에서는 리듀서를 이용해 할 일 목록들을 배열로 관리합니다. 배열의 업데이트는 [mutation이 없이](/learn/updating-arrays-in-state) 이루어져야 합니다.
 
 <Sandpack>
 
@@ -754,13 +754,13 @@ function TodoList({ username }) {
 
 `createInitialState()`처럼 함수를 호출해서 전달하는 것이 아니라, `createInitialState` *함수 자체*를 전달해야 한다는 것을 기억하세요. 이 방법을 이용하면 초기화 이후에 초기 state가 다시 생성되는 일은 발생하지 않습니다.
 
-위의 예제에서는 `createInitialState` 함수가 `username`을 인수로 받습니다. 만약 초기화 함수가 초기 state를 계산하는 것에 어떤 인수도 필요하지 않다면, `useReducer`의 두번째 인수에 null을 전달할 수 있습니다.
+위의 예시에서는 `createInitialState` 함수가 `username`을 인수로 받습니다. 만약 초기화 함수가 초기 state를 계산하는 것에 어떤 인수도 필요하지 않다면, `useReducer`의 두번째 인수에 `null`을 전달할 수 있습니다.
 
 <Recipes titleText="초기화 함수를 전달하는 것과 초기 state를 직접 전달하는 것의 차이점" titleId="examples-initializer">
 
 #### 초기화 함수 전달 {/*passing-the-initializer-function*/}
 
-이 예제에서는 초기화 단계에서만 동작하는 함수인 `createInitialState`를 초기화 함수로 전달합니다. 이 함수는 인풋에 입력 할 때 발생하는 리렌더링 상황 등에서는 호출되지 않습니다. 
+이 예시에서는 초기화 단계에서만 동작하는 함수인 `createInitialState`를 초기화 함수로 전달합니다. 이 함수는 인풋에 입력 할 때 발생하는 리렌더링 상황 등에서는 호출되지 않습니다. 
 
 <Sandpack>
 
@@ -848,7 +848,7 @@ export default function TodoList({ username }) {
 
 #### 초기 state 직접 전달 {/*passing-the-initial-state-directly*/}
 
-이 예제에서는 초기화 함수를 **전달하지 않으므로**, `createInitialState` 함수는 인풋에 입력을 할때 발생하는 리렌더링에서도 매번 호출됩니다. 이 코드는 동작에는 큰 차이가 없을 수 있지만, 효율성이 떨어집니다.
+이 예시에서는 초기화 함수를 **전달하지 않으므로**, `createInitialState` 함수는 인풋에 입력을 할때 발생하는 리렌더링에서도 매번 호출됩니다. 이 코드는 동작에는 큰 차이가 없을 수 있지만, 효율성이 떨어집니다.
 
 <Sandpack>
 

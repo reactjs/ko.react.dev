@@ -40,7 +40,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-[아래에서 더 많은 예제를 보세요.](#usage)
+[아래에서 더 많은 예시를 보세요.](#usage)
 
 #### 매개변수 {/*parameters*/}
 
@@ -110,7 +110,7 @@ function ChatRoom({ roomId }) {
    - 이후, <CodeStep step={1}>설정 코드</CodeStep>가 새로운 props와 state와 함께 실행됩니다.
 3. 컴포넌트가 화면에서 제거된 이후에 <CodeStep step={2}>정리 코드</CodeStep>가 마지막으로 실행됩니다 *(마운트 해제 시)*.
 
-**위의 예제를 통해 순서를 설명해 보겠습니다.**
+**위의 예시를 통해 순서를 설명해 보겠습니다.**
 
 위의 `ChatRoom` 컴포넌트가 화면에 추가되면 초기 `serverUrl`과 `roomId`를 이용해 채팅방과 연결될 것입니다. 리렌더링에 의해 `serverUrl` 또는 `roomId`가 변경된다면 (예를 들어 사용자가 드롭다운 메뉴를 이용해 다른 채팅방을 선택할 경우) *Effect는 이전 채팅방과의 연결을 해제하고 다음 채팅방과 연결합니다.* `ChatRoom` 컴포넌트가 화면에서 제거된다면 Effect는 마지막 채팅방과 이뤄진 연결을 해제할 것입니다. 
 
@@ -219,7 +219,7 @@ button { margin-left: 10px; }
 
 #### 전역 브라우저 이벤트 감시하기 {/*listening-to-a-global-browser-event*/}
 
-이 예시에서는 DOM 자체를 외부 시스템으로 사용합니다. 일반적으로 JSX와 함께 이벤트 리스너를 명시하지만 이 예제에서 외부 시스템은 브라우저 DOM 자체입니다. 일반적으로 JSX를 이용해 이벤트 리스너를 지정하지만 이 방식만으로는 전역 window 객체를 감시할 수 없습니다. Effect을 이용해 React를 window 객체와 연결해서 이벤트를 감시할 수 있습니다. `pointermove` 이벤트를 감시할 경우, 커서(또는 손가락)의 위치를 추적하고 빨간 점을 해당 위치로 이동시킬 수 있습니다.
+이 예시에서는 DOM 자체를 외부 시스템으로 사용합니다. 일반적으로 JSX와 함께 이벤트 리스너를 명시하지만 이 예시에서 외부 시스템은 브라우저 DOM 자체입니다. 일반적으로 JSX를 이용해 이벤트 리스너를 지정하지만 이 방식만으로는 전역 window 객체를 감시할 수 없습니다. Effect을 이용해 React를 window 객체와 연결해서 이벤트를 감시할 수 있습니다. `pointermove` 이벤트를 감시할 경우, 커서(또는 손가락)의 위치를 추적하고 빨간 점을 해당 위치로 이동시킬 수 있습니다.
 
 <Sandpack>
 
@@ -539,11 +539,11 @@ function ChatRoom({ roomId }) {
 
 [이 링크를 통해 커스텀 Hook에 대해 더 많이 공부해보세요.](/learn/reusing-logic-with-custom-hooks)
 
-<Recipes titleText="커스텀 Hook에서 Effect를 활용하는 예제" titleId="examples-custom-hooks">
+<Recipes titleText="커스텀 Hook에서 Effect를 활용하는 예시" titleId="examples-custom-hooks">
 
 #### 커스텀 `useChatRoom` Hook {/*custom-usechatroom-hook*/}
 
-이 예제는 [이전 예제](#examples-connecting) 중 하나와 동일하지만 로직이 커스텀 Hook으로 추출되었습니다.
+이 예시는 [이전 예시](#examples-connecting) 중 하나와 동일하지만 로직이 커스텀 Hook으로 추출되었습니다.
 
 <Sandpack>
 
@@ -639,7 +639,7 @@ button { margin-left: 10px; }
 
 #### 커스텀 `useWindowListener` Hook {/*custom-usewindowlistener-hook*/}
 
-이 예제는 [이전 예제](#examples-connecting) 중 하나와 동일하지만 로직이 커스텀 Hook으로 추출되었습니다.
+이 예시는 [이전 예시](#examples-connecting) 중 하나와 동일하지만 로직이 커스텀 Hook으로 추출되었습니다.
 
 <Sandpack>
 
@@ -696,7 +696,7 @@ body {
 
 #### 커스텀 `useIntersectionObserver` Hook {/*custom-useintersectionobserver-hook*/}
 
-이 예제는 [이전 예제](#examples-connecting) 중 하나와 동일하지만 로직이 부분적으로 커스텀 Hook으로 추출되었습니다.
+이 예시는 [이전 예시](#examples-connecting) 중 하나와 동일하지만 로직이 부분적으로 커스텀 Hook으로 추출되었습니다.
 
 <Sandpack>
 
@@ -890,7 +890,7 @@ button { margin: 5px; }
 
 </Sandpack>
 
-이 예제에서는 정리 함수가 필요하지 않습니다. 이는 `MapWidget` 클래스가 클래스에 전달된 DOM 노드만 관리하기 때문입니다. `Map` 컴포넌트가 트리에서 제거된 후, 브라우저의 자바스크립트 엔진에 의해 DOM 노드와 `MapWidget` 클래스 인스턴스 모두가 자동으로 가비지 컬렉션에 의해 정리됩니다.
+이 예시에서는 정리 함수가 필요하지 않습니다. 이는 `MapWidget` 클래스가 클래스에 전달된 DOM 노드만 관리하기 때문입니다. `Map` 컴포넌트가 트리에서 제거된 후, 브라우저의 자바스크립트 엔진에 의해 DOM 노드와 `MapWidget` 클래스 인스턴스 모두가 자동으로 가비지 컬렉션에 의해 정리됩니다.
 
 ---
 
@@ -1140,7 +1140,7 @@ useEffect(() => {
 
 </Pitfall>
 
-<Recipes titleText="반응형 값을 의존성으로 추가하는 예제" titleId="examples-dependencies">
+<Recipes titleText="반응형 값을 의존성으로 추가하는 예시" titleId="examples-dependencies">
 
 #### 의존성 배열 전달 {/*passing-a-dependency-array*/}
 
@@ -1152,7 +1152,7 @@ useEffect(() => {
 }, [a, b]); // a나 b가 다르면 다시 실행됨
 ```
 
-아래 예제에서는 `serverUrl`와 `roomId`은 [반응형 값](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)이므로 둘 다 의존성으로 지정해야 합니다. 결과적으로 드롭다운에서 다른 방을 선택하거나 서버 URL 입력을 편집하면 채팅이 다시 연결됩니다. 그러나 `message`는 Effect에서 사용되지 않으므로(의존성이 아니므로), 메세지를 편집해도 대화가 다시 연결되지 않습니다.
+아래 예시에서는 `serverUrl`와 `roomId`은 [반응형 값](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)이므로 둘 다 의존성으로 지정해야 합니다. 결과적으로 드롭다운에서 다른 방을 선택하거나 서버 URL 입력을 편집하면 채팅이 다시 연결됩니다. 그러나 `message`는 Effect에서 사용되지 않으므로(의존성이 아니므로), 메세지를 편집해도 대화가 다시 연결되지 않습니다.
 
 <Sandpack>
 
@@ -1251,7 +1251,7 @@ useEffect(() => {
 
 **개발 환경에서는 빈 의존성 배열이 있더라도 버그를 찾기 위해 설정과 정리가 [한번 더 실행됩니다.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)**
 
-이 예제에서 `serverUrl`와 `roomId`는 모두 하드코딩되어 있습니다. 컴포넌트 외부에서 선언되었으므로 반응형 값이 아니며, 따라서 의존성이 아닙니다. 의존성 배열이 비어있으므로 Effect는 리렌더링될 때까지 실행되지 않습니다.
+이 예시에서 `serverUrl`와 `roomId`는 모두 하드코딩되어 있습니다. 컴포넌트 외부에서 선언되었으므로 반응형 값이 아니며, 따라서 의존성이 아닙니다. 의존성 배열이 비어있으므로 Effect는 리렌더링될 때까지 실행되지 않습니다.
 
 <Sandpack>
 
@@ -1325,7 +1325,7 @@ useEffect(() => {
 }); // 항상 다시 실행됨
 ```
 
-이 예제에서 Effect는 `serverUrl`과 `roomId`를 변경할 때 다시 실행하는 것은 합리적입니다. 그러나 `message`를 변경할때도 다시 실행되므로 바람직하지 않습니다. 보통은 이런 이슈를 방지하고자 의존성 배열을 명시합니다.
+이 예시에서 Effect는 `serverUrl`과 `roomId`를 변경할 때 다시 실행하는 것은 합리적입니다. 그러나 `message`를 변경할때도 다시 실행되므로 바람직하지 않습니다. 보통은 이런 이슈를 방지하고자 의존성 배열을 명시합니다.
 
 <Sandpack>
 

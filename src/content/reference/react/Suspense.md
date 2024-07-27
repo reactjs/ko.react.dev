@@ -925,7 +925,7 @@ Suspense를 사용하면 UI의 어떤 부분이 항상 동시에 그려져야 �
 
 ### 새 콘텐츠가 로드되는 동안 이전 콘텐츠 보여주기 {/*showing-stale-content-while-fresh-content-is-loading*/}
 
-이 예제에서는 검색 결과를 가져오는 동안 `SearchResults` 컴포넌트가 지연됩니다. `"a"`를 입력하고 결과를 기다린 다음 `"ab"`로 바꿔보세요. `"a"`에 대한 결과는 로딩 Fallback으로 바뀝니다.
+이 예시에서는 검색 결과를 가져오는 동안 `SearchResults` 컴포넌트가 지연됩니다. `"a"`를 입력하고 결과를 기다린 다음 `"ab"`로 바꿔보세요. `"a"`에 대한 결과는 로딩 Fallback으로 바뀝니다.
 
 <Sandpack>
 

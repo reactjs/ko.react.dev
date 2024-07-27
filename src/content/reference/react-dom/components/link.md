@@ -158,7 +158,7 @@ export default function SiteMapPage() {
 
 ### 스타일시트 우선순위 제어하기 {/*controlling-stylesheet-precedence*/}
 
-스타일시트는 서로 충돌할 수 있으며, 이 경우 브라우저는 문서에서 나중에 오는 스타일시트를 적용합니다. React는 `precedence` 속성을 사용하여 스타일시트의 순서를 제어할 수 있도록 합니다. 이 예제에서는 두 개의 컴포넌트가 스타일시트를 렌더링하며, 더 높은 우선순위를 가진 스타일시트는 해당 컴포넌트를 더 먼저 렌더링하더라도 문서에서 나중에 배치됩니다.
+스타일시트는 서로 충돌할 수 있으며, 이 경우 브라우저는 문서에서 나중에 오는 스타일시트를 적용합니다. React는 `precedence` 속성을 사용하여 스타일시트의 순서를 제어할 수 있도록 합니다. 이 예시에서는 두 개의 컴포넌트가 스타일시트를 렌더링하며, 더 높은 우선순위를 가진 스타일시트는 해당 컴포넌트를 더 먼저 렌더링하더라도 문서에서 나중에 배치됩니다.
 
 {/*FIXME: this doesn't appear to actually work -- I guess precedence isn't implemented yet?*/}
 
