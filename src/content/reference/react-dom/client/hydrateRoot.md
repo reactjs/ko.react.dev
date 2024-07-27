@@ -76,7 +76,7 @@ React는 hydrate된 `root`부터 내부를 `<App />`으로 갱신합니다.
 
 #### Parameters {/*root-render-parameters*/}
 
-* `reactNode`: 갱신하고 싶은 "React 노드"입니다. 주로 `<App />`같은 JSX를 파라미터로 넘기지만, [`createElement()`](/reference/react/createElement)로 만든 React 엘리먼트를 넘겨도 되고 문자열이나 숫자, `null`, 혹은 `undefined`를 넘겨도 됩니다.
+* `reactNode`: 갱신하고 싶은 "React 노드"입니다. 주로 `<App />`같은 JSX를 매개변수로 넘기지만, [`createElement()`](/reference/react/createElement)로 만든 React 엘리먼트를 넘겨도 되고 문자열이나 숫자, `null`, 혹은 `undefined`를 넘겨도 됩니다.
 
 #### Returns {/*root-render-returns*/}
 
@@ -104,7 +104,7 @@ root.unmount();
 
 #### Parameters {/*root-unmount-parameters*/}
 
-`root.unmount`는 그 어떤 파라미터도 받지 않습니다.
+`root.unmount`는 그 어떤 매개변수도 받지 않습니다.
 
 
 #### Returns {/*root-unmount-returns*/}
