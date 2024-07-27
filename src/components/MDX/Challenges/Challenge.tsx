@@ -50,7 +50,7 @@ export function Challenge({
           className="text-xl text-primary dark:text-primary-dark mb-2 mt-0 font-medium"
           id={currentChallenge.id}>
           <div className="font-bold block md:inline">
-            {isRecipes ? '예제' : '챌린지'} {currentChallenge.order} of{' '}
+            {isRecipes ? '예시' : '챌린지'} {currentChallenge.order} of{' '}
             {totalChallenges}
             <span className="text-primary dark:text-primary-dark">: </span>
           </div>
@@ -94,7 +94,7 @@ export function Challenge({
             )}
             onClick={handleClickNextChallenge}
             active>
-            다음 {isRecipes ? '예제' : '챌린지'}
+            다음 {isRecipes ? '예시' : '챌린지'}
             <IconArrowSmall displayDirection="end" className="block ms-1.5" />
           </Button>
         )}

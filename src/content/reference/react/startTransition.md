@@ -43,7 +43,7 @@ function TabContainer() {
 
 * `scope`: 하나 이상의 [`set` 함수](/reference/react/useState#setstate)를 호출하여 일부 state를 업데이트하는 함수입니다. React는 매개변수 없이 `scope`를 즉시 호출하고 `scope` 함수를 호출하는 동안 동기적으로 예약된 모든 state 업데이트를 Transition 으로 표시합니다. 이는 [non-blocking](/reference/react/useTransition#marking-a-state-update-as-a-non-blocking-transition)이며 [원치 않는 로딩을 표시하지 않습니다.](/reference/react/useTransition#preventing-unwanted-loading-indicators)
 
-#### 반환 값 {/*returns*/}
+#### 반환값 {/*returns*/}
 
 `startTransition`은 아무것도 반환하지 않습니다.
 
@@ -92,7 +92,7 @@ Transition을 사용하면 UI가 리렌더링 도중에도 반응성을 유지�
 
 `startTransition`은 [`useTransition`](/reference/react/useTransition)과 매우 유사하지만, Transition 이 진행 중인지 추적하는 `isPending` 플래그를 제공하지 않습니다. `useTransition`을 사용할 수 없을 때 `startTransition`을 호출할 수 있습니다. 예를 들어, `startTransition`은 데이터 라이브러리에서와 같이 컴포넌트 외부에서 작동합니다.
 
-[Transition에 대한 학습 및 예제는 `useTransition` 페이지에서 확인하세요.](/reference/react/useTransition)
+[Transition에 대한 학습 및 예시는 `useTransition` 페이지에서 확인하세요.](/reference/react/useTransition)
 
 
 </Note>

@@ -15,7 +15,7 @@ title: 컴포넌트 간 State 공유하기
 
 </YouWillLearn>
 
-## State 끌어올리기 예제 {/*lifting-state-up-by-example*/}
+## State 끌어올리기 예시 {/*lifting-state-up-by-example*/}
 
 예시에서는 부모 컴포넌트인 `Accordion`이 두 개의 `Panel`을 렌더링합니다.
 

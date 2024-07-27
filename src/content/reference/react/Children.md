@@ -48,7 +48,7 @@ function RowList({ children }) {
 
 [아래 예시 보기](#counting-children)
 
-#### 파라미터 {/*children-count-parameters*/}
+#### 매개변수 {/*children-count-parameters*/}
 
 * `children`: 컴포넌트에서 받은 [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
 
@@ -80,7 +80,7 @@ function SeparatorList({ children }) {
 
 [아래 예시 보기](#running-some-code-for-each-child)
 
-#### 파라미터 {/*children-foreach-parameters*/}
+#### 매개변수 {/*children-foreach-parameters*/}
 
 * `children`: 컴포넌트에서 받은 [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
 * `fn`: [배열의`forEach` 메서드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) 콜백처럼 각 자식 요소에서 실행할 함수. 자식 요소를 첫 번째 인수로, 인덱스를 두 번째 인수로 받습니다. 인덱스는 0에서 시작해서 호출할 때마다 증가합니다.
@@ -118,7 +118,7 @@ function RowList({ children }) {
 
 [아래 예시 보기](#transforming-children)
 
-#### 파라미터 {/*children-map-parameters*/}
+#### 매개변수 {/*children-map-parameters*/}
 
 * `children`: 컴포넌트에서 받은 [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
 * `fn`: [베열의 `map` 메서드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 콜백같은 매핑 함수. 자식 요소를 첫 번째 인수로, 인덱스를 두 번째 인수로 받습니다. 인덱스는 0에서 시작해서 호출할 때마다 증가합니다. 함수는 빈 노드(`null`, `undefined` 혹은 Boolean), 문자열, 숫자, React 엘리먼트 혹은 다른 React 노드의 배열과 같은 React 노드를 반환해야 합니다.
@@ -149,7 +149,7 @@ function Box({ children }) {
   // ...
 ```
 
-#### 파라미터 {/*children-only-parameters*/}
+#### 매개변수 {/*children-only-parameters*/}
 
 * `children`: 컴포넌트에서 받은 [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
 
@@ -177,7 +177,7 @@ export default function ReversedList({ children }) {
   // ...
 ```
 
-#### 파라미터 {/*children-toarray-parameters*/}
+#### 매개변수 {/*children-toarray-parameters*/}
 
 * `children`: 컴포넌트에서 받은 [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
 

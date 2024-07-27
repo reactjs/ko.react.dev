@@ -46,7 +46,7 @@ function AppContainer() {
 }
 ```
 
-[아래에 더 많은 예제를 참조하세요.](#usage)
+[아래에 더 많은 예시를 참조하세요.](#usage)
 
 #### 매개변수 {/*parameters*/}
 
@@ -54,7 +54,7 @@ function AppContainer() {
 * `updateFn(currentState, optimisticValue)`: 현재 상태와 addOptimistic에 전달된 낙관적인 값을 취하는 함수로, 결과적인 낙관적인 상태를 반환합니다. 순수 함수여야 합니다. `updateFn`은 두 개의 매개변수를 취합니다. `currentState`와 `optimisticValue`. 반환 값은 `currentState`와 `optimisticValue`의 병합된 값입니다.
 
 
-#### 반환 {/*returns*/}
+#### 반환값 {/*returns*/}
 
 * `optimisticState`: 결과적인 낙관적인 상태입니다. 작업이 대기 중이지 않을 때는 `state`와 동일하며, 그렇지 않은 경우 `updateFn`에서 반환된 값과 동일합니다.
 * `addOptimistic`: `addOptimistic`는 낙관적인 업데이트가 있을 때 호출하는 디스패치 함수입니다. 어떠한 타입의 `optimisticValue`라는 하나의 인자를 취하며, `state`와 `optimisticValue`로 `updateFn`을 호출합니다.

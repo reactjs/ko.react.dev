@@ -51,7 +51,7 @@ experimental_taintUniqueValue(
 );
 ```
 
-[더 많은 예제를 아래에서 볼 수 있습니다.](#usage)
+[더 많은 예시를 아래에서 볼 수 있습니다.](#usage)
 
 #### 매개변수 {/*parameters*/}
 

@@ -52,7 +52,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-이 예제의 컴포넌트들은 모두 `App.js`라는 **root 컴포넌트 파일**에 존재합니다. 설정에 따라 root 컴포넌트가 다른 파일에 위치할 수도 있습니다. Next.js처럼 파일 기반으로 라우팅하는 프레임워크일 경우 페이지별로 root 컴포넌트가 다를 수 있습니다.
+이 예시의 컴포넌트들은 모두 `App.js`라는 **root 컴포넌트 파일**에 존재합니다. 설정에 따라 root 컴포넌트가 다른 파일에 위치할 수도 있습니다. Next.js처럼 파일 기반으로 라우팅하는 프레임워크일 경우 페이지별로 root 컴포넌트가 다를 수 있습니다.
 
 ## 컴포넌트를 import 하거나 export 하는 방법 {/*exporting-and-importing-a-component*/}
 
@@ -62,7 +62,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 2. 새로 만든 파일에서 함수 컴포넌트를 **export** 합니다. ([default](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_the_default_export) 또는 [named](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_named_exports) export 방식을 사용합니다)
 3. 컴포넌트를 사용할 파일에서 **import** 합니다. (적절한 방식을 선택해서 [default](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import#importing_defaults) 또는 [named](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import#import_a_single_export_from_a_module)로 import 합니다)
 
-아래 예제를 보면 `App.js` 파일에서 `Profile`과 `Gallery` 컴포넌트를 빼서 새로운 `Gallery.js` 파일로 옮겼습니다. 이제 `Gallery`는 `Gallery.js`에서 import 해서 사용할 수 있습니다.
+아래 예시를 보면 `App.js` 파일에서 `Profile`과 `Gallery` 컴포넌트를 빼서 새로운 `Gallery.js` 파일로 옮겼습니다. 이제 `Gallery`는 `Gallery.js`에서 import 해서 사용할 수 있습니다.
 
 
 <Sandpack>
@@ -105,7 +105,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-이제 이 예제에서는 컴포넌트들이 두 파일로 나뉘게 되었습니다.
+이제 이 예시에서는 컴포넌트들이 두 파일로 나뉘게 되었습니다.
 
 1. `Gallery.js`:
      - `Profile` 컴포넌트를 정의하고 해당 파일에서만 사용되기 때문에 export 되지 않습니다.
@@ -131,7 +131,7 @@ React에서는 `'./Gallery.js'` 또는 `'./Gallery'` 둘 다 사용할 수 있�
 
 #### Default와 Named Exports {/*default-vs-named-exports*/}
 
-보통 JavaScript에서는 default와 named export라는 두 가지 방법으로 값을 export 합니다. 지금까지의 예제에서는 default export만 사용했지만 두 방법 다 한 파일에서 사용할 수도 있습니다. **다만 한 파일에서는 하나의 _default_ export만 존재할 수 있고 _named_ export는 여러 개가 존재할 수 있습니다.**
+보통 JavaScript에서는 default와 named export라는 두 가지 방법으로 값을 export 합니다. 지금까지의 예시에서는 default export만 사용했지만 두 방법 다 한 파일에서 사용할 수도 있습니다. **다만 한 파일에서는 하나의 _default_ export만 존재할 수 있고 _named_ export는 여러 개가 존재할 수 있습니다.**
 
 ![Default and named exports](/images/docs/illustrations/i_import-export.svg)
 
@@ -175,7 +175,7 @@ export default function App() {
 }
 ```
 
-이제 `Gallery.js`에는 default `Gallery` export랑 named `Profile` export라는 두 가지의 export가 존재합니다. `App.js`에서는 두 컴포넌트를 import 해서 사용합니다. 아래의 예제에서 `<Profile />`과 `<Gallery />`를 교차해서 사용해 보세요.
+이제 `Gallery.js`에는 default `Gallery` export랑 named `Profile` export라는 두 가지의 export가 존재합니다. `App.js`에서는 두 컴포넌트를 import 해서 사용합니다. 아래의 예시에서 `<Profile />`과 `<Gallery />`를 교차해서 사용해 보세요.
 
 <Sandpack>
 

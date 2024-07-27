@@ -131,7 +131,7 @@ React의 모든 변경 사항은 대중에게 공개되기 전에 광범위한 �
 - 테스트가 모두 통과하면, 당신의 프로젝트는 다음 마이너 React 릴리즈와 함께 정상 작동할 것입니다.
 - 예상치 못한 문제가 발생하면, [이슈를 제출](https://github.com/facebook/react/issues)해 주세요.
 
-Next.js는 이 워크플로우를 사용하는 프로젝트입니다. 예제로 Next.js의 [CircleCI 설정](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml)을 참조할 수 있습니다.
+Next.js는 이 워크플로우를 사용하는 프로젝트입니다. 예시로 Next.js의 [CircleCI 설정](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml)을 참조할 수 있습니다.
 
 ### 실험적 채널 {/*experimental-channel*/}
 

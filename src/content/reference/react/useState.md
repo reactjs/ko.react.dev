@@ -68,7 +68,7 @@ function handleClick() {
   // ...
 ```
 
-#### 파라미터 {/*setstate-parameters*/}
+#### 매개변수 {/*setstate-parameters*/}
 
 * `nextState`: state가 될 값입니다. 값은 모든 데이터 타입이 허용되지만, 함수에 대해서는 특별한 동작이 있습니다.
   * 함수를 `nextState`로 전달하면 *업데이터 함수*로 취급합니다. 이 함수는 순수해야 하고, 대기 중인 state를 유일한 인수로 사용해야 하며, 다음 state를 반환해야 합니다. React는 업데이터 함수를 대기열에 넣고 컴포넌트를 리렌더링 합니다. 다음 렌더링 중에 React는 대기열에 있는 모든 업데이터를 이전 state에 적용하여 다음 state를 계산합니다. [아래 예시를 참고하세요.](#updating-state-based-on-the-previous-state)

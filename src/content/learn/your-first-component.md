@@ -172,7 +172,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 ### 컴포넌트 중첩 및 구성 {/*nesting-and-organizing-components*/}
 
-컴포넌트는 일반 JavaScript함수이므로 같은 파일에 여러 컴포넌트를 포함할 수 있습니다. 컴포넌트가 상대적으로 작거나 서로 밀접하게 관련되어 있을 때 편리합니다. 이 파일이 복잡해지면 언제든지 `Profile`을 별도의 파일로 옮길 수 있습니다. 이 방법은 바로 다음 챕터인 [컴포넌트의 importing과 exporting](/learn/importing-and-exporting-components) 페이지에서 확인할 수 있습니다.
+컴포넌트는 일반 JavaScript함수이므로 같은 파일에 여러 컴포넌트를 포함할 수 있습니다. 컴포넌트가 상대적으로 작거나 서로 밀접하게 관련되어 있을 때 편리합니다. 이 파일이 복잡해지면 언제든지 `Profile`을 별도의 파일로 옮길 수 있습니다. 이 방법은 바로 다음 장인 [컴포넌트의 importing과 exporting](/learn/importing-and-exporting-components) 페이지에서 확인할 수 있습니다.
 
 `Profile` 컴포넌트는 `Gallery`안에서 렌더링되기 때문에(심지어 여러번 렌더링됩니다!), `Gallery`는 각 `Profile`을 "자식"으로 렌더링하는 **부모 컴포넌트**라고 말할 수 있습니다. 컴포넌트를 한 번 정의한 다음 원하는 곳에서 원하는 만큼 여러 번 사용할 수 있다는 점이 바로 React의 마법입니다.
 
@@ -211,7 +211,7 @@ function Profile() {
 
 #### 컴포넌트의 모든 것 {/*components-all-the-way-down*/}
 
-React 애플리케이션은 "root"컴포넌트에서 시작됩니다. 보통 새 프로젝트를 시작할 때 자동으로 생성됩니다. 예를 들어, [CodeSandbox](https://codesandbox.io/) 또는 [Next.js](https://nextjs.org/)를 사용하는 경우, root 컴포넌트는 `pages/index.js`에 정의됩니다. 이 예제에서는 root 컴포넌트를 내보내고 있습니다.
+React 애플리케이션은 "root"컴포넌트에서 시작됩니다. 보통 새 프로젝트를 시작할 때 자동으로 생성됩니다. 예를 들어, [CodeSandbox](https://codesandbox.io/) 또는 [Next.js](https://nextjs.org/)를 사용하는 경우, root 컴포넌트는 `pages/index.js`에 정의됩니다. 이 예시에서는 root 컴포넌트를 내보내고 있습니다.
 
 대부분의 React 앱은 모든 부분에서 컴포넌트를 사용합니다. 즉, 버튼과 같이 재사용 가능한 부분뿐만 아니라 사이드바, 목록, 그리고 궁극적으로 전체 페이지와 같은 큰 부분에도 컴포넌트를 사용하게 됩니다! 컴포넌트는 한 번만 사용되더라도 UI 코드와 마크업을 정리하는 편리한 방법입니다.
 
@@ -286,7 +286,7 @@ img { height: 181px; }
 
 </Sandpack>
 
-이 예제에서 왜 'export'만으로 해결되지 않는지 궁금할 것입니다. [컴포넌트의 importing과 exporting](/learn/importing-and-exporting-components)에서 'export'와 'export default'의 차이점을 배울 수 있습니다.
+이 예시에서 왜 'export'만으로 해결되지 않는지 궁금할 것입니다. [컴포넌트의 importing과 exporting](/learn/importing-and-exporting-components)에서 'export'와 'export default'의 차이점을 배울 수 있습니다.
 
 </Solution>
 

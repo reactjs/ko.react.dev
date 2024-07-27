@@ -303,7 +303,7 @@ import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
-// TODO: 이 예제를 업데이트하여 작성한 후 Codesandbox Server Component 데모 환경을 사용합니다
+// TODO: 이 예시를 업데이트하여 작성한 후 Codesandbox Server Component 데모 환경을 사용합니다
 import App from './App';
 
 const root = createRoot(document.getElementById('root'));
@@ -421,7 +421,7 @@ import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
-// TODO: 이 예제를 업데이트하여 작성한 후 Codesandbox Server Component 데모 환경을 사용합니다
+// TODO: 이 예시를 업데이트하여 작성한 후 Codesandbox Server Component 데모 환경을 사용합니다
 import App from './App';
 
 const root = createRoot(document.getElementById('root'));

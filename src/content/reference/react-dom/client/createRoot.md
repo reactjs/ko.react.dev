@@ -309,7 +309,7 @@ root.unmount();
 
 ### 루트 컴포넌트를 업데이트 하기 {/*updating-a-root-component*/}
 
-같은 루트에서 `render`를 두 번 이상 호출할 수도 있습니다. 컴포넌트의 트리 구조가 이전 렌더링과 일치하는 한 React는 [기존 state를 유지](/learn/preserving-and-resetting-state)합니다. 다음 예제에서 input에 어떻게 타이핑하는지와 무관하게, 매초 반복되는 `render` 호출로 인한 업데이트가 아무런 문제를 일으키지 않음을 주목하세요.
+같은 루트에서 `render`를 두 번 이상 호출할 수도 있습니다. 컴포넌트 트리 구조가 이전 렌더링과 일치하는 한, React는 [기존 state를 유지](/learn/preserving-and-resetting-state)합니다. 다음 예시에서 input에 어떻게 타이핑하든지 무관하게, 매초 반복되는 `render` 호출로 인한 업데이트가 아무런 문제를 일으키지 않음을 주목하세요.
 
 <Sandpack>
 

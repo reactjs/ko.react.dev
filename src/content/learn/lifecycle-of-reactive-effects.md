@@ -572,7 +572,7 @@ function ChatRoom({ roomId, selectedServerUrl }) { // roomId는 반응형입니�
 }
 ```
 
-이 예제에서 `serverUrl`은 prop이나 state 변수가 아닙니다. 렌더링 중에 계산하는 일반 변수입니다. 하지만 렌더링 중에 계산되므로 재 렌더링으로 인해 변경될 수 있습니다. 이것이 바로 반응형인 이유입니다.
+이 예시에서 `serverUrl`은 prop이나 state 변수가 아닙니다. 렌더링 중에 계산하는 일반 변수입니다. 하지만 렌더링 중에 계산되므로 재 렌더링으로 인해 변경될 수 있습니다. 이것이 바로 반응형인 이유입니다.
 
 **컴포넌트 내부의 모든 값(컴포넌트 본문의 props, state, 변수 포함)은 반응형입니다. 모든 반응형 값은 다시 렌더링할 때 변경될 수 있으므로 반응형 값을 effect의 종속 요소로 포함해야 합니다.**
 
@@ -696,7 +696,7 @@ function ChatRoom({ roomId }) { // roomId는 반응형입니다.
 
 ### 다시 동기화하지 않으려는 경우 어떻게 해야 하나요? {/*what-to-do-when-you-dont-want-to-re-synchronize*/}
 
-이전 예제에서는 `roomId`와 `serverUrl`을 종속성으로 나열하여 린트 오류를 수정했습니다.
+이전 예시에서는 `roomId`와 `serverUrl`을 종속성으로 나열하여 린트 오류를 수정했습니다.
 
 **그러나 대신 이러한 값이 반응형 값이 아니라는 것, 즉 재 렌더링의 결과로 변경*될 수 없다*는 것을 린터에 "증명"할 수 있습니다.** 예를 들어 `serverUrl`과 `roomId`가 렌더링에 의존하지 않고 항상 같은 값을 갖는다면 컴포넌트 외부로 옮길 수 있습니다. 이제 종속성이 될 필요가 없습니다.
 
@@ -778,7 +778,7 @@ useEffect(() => {
 
 #### 모든 키 입력 시 재연결 문제 수정 {/*fix-reconnecting-on-every-keystroke*/}
 
-이 예제에서 `ChatRoom` 컴포넌트는 컴포넌트가 마운트될 때 채팅방에 연결되고, 마운트가 해제되면 연결이 끊어지며, 다른 채팅방을 선택하면 다시 연결됩니다. 이 동작은 올바른 것이므로 계속 작동하도록 해야 합니다.
+이 예시에서 `ChatRoom` 컴포넌트는 컴포넌트가 마운트될 때 채팅방에 연결되고, 마운트가 해제되면 연결이 끊어지며, 다른 채팅방을 선택하면 다시 연결됩니다. 이 동작은 올바른 것이므로 계속 작동하도록 해야 합니다.
 
 하지만 문제가 있습니다. 하단의 메시지 상자 입력란에 입력할 때마다 `ChatRoom`*도* 채팅에 다시 연결됩니다. (콘솔을 지우고 입력란에 입력하면 이 문제를 확인할 수 있습니다) 이런 일이 발생하지 않도록 문제를 해결하세요.
 
@@ -938,7 +938,7 @@ button { margin-left: 10px; }
 
 #### 동기화 켜기 및 끄기 {/*switch-synchronization-on-and-off*/}
 
-이 예제에서 effect는 창 [`pointermove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointermove_event) 이벤트를 구독하여 화면에서 분홍색 점을 이동합니다. 미리 보기 영역 위로 마우스를 가져가서(또는 모바일 장치에서 화면을 터치하여) 분홍색 점이 어떻게 움직이는지 확인해 보세요.
+이 예시에서 effect는 창 [`pointermove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointermove_event) 이벤트를 구독하여 화면에서 분홍색 점을 이동합니다. 미리 보기 영역 위로 마우스를 가져가서(또는 모바일 장치에서 화면을 터치하여) 분홍색 점이 어떻게 움직이는지 확인해 보세요.
 
 체크박스도 있습니다. 체크 박스를 선택하면 `canMove` state 변수가 토글되지만 이 state 변수는 코드의 어느 곳에서도 사용되지 않습니다. 여러분의 임무는 `canMove`가 `false`일 때(체크박스가 체크된 상태) 점의 이동이 중지되도록 코드를 변경하는 것입니다. 체크 박스를 다시 켜고 `canMove`를 `true`로 설정하면 상자가 다시 움직여야 합니다. 즉, 점이 움직일 수 있는지는 체크 박스의 체크 여부와 동기화 state를 유지해야 합니다.
 
@@ -1120,7 +1120,7 @@ body {
 
 #### 오래된 값 버그 조사하기 {/*investigate-a-stale-value-bug*/}
 
-이 예제에서는 체크박스가 켜져 있으면 분홍색 점이 움직여야 하고 체크박스가 꺼져 있으면 움직임을 멈춰야 합니다. 이를 위한 로직은 이미 구현되어 있습니다. `handleMove` 이벤트 핸들러는 `canMove` state 변수를 확인합니다.
+이 예시에서는 체크박스가 켜져 있으면 분홍색 점이 움직여야 하고 체크박스가 꺼져 있으면 움직임을 멈춰야 합니다. 이를 위한 로직은 이미 구현되어 있습니다. `handleMove` 이벤트 핸들러는 `canMove` state 변수를 확인합니다.
 
 그러나 어떤 이유에서인지 `handleMove` 내부의 `canMove` state 변수는 체크박스를 체크한 후에도 항상 `true`인 "오래된" state인 것처럼 보입니다. 어떻게 이런 일이 가능할까요? 코드에서 실수를 찾아서 수정하세요.
 
@@ -1318,7 +1318,7 @@ effect 본문에 `console.log('Resubscribing')`를 추가하면 이제 체크 �
 
 #### 연결 스위치 수정 {/*fix-a-connection-switch*/}
 
-이 예제에서 `chat.js`의 채팅 서비스는 `createEncryptedConnection`과 `createUnencryptedConnection`이라는 두 개의 서로 다른 API를 노출합니다. 루트 `App` 컴포넌트는 사용자가 암호화 사용 여부를 선택할 수 있도록 한 다음, 해당 API 메서드를 하위 `ChatRoom` 컴포넌트에 `createConnection` prop으로 전달합니다.
+이 예시에서 `chat.js`의 채팅 서비스는 `createEncryptedConnection`과 `createUnencryptedConnection`이라는 두 개의 서로 다른 API를 노출합니다. 루트 `App` 컴포넌트는 사용자가 암호화 사용 여부를 선택할 수 있도록 한 다음, 해당 API 메서드를 하위 `ChatRoom` 컴포넌트에 `createConnection` prop으로 전달합니다.
 
 처음에는 콘솔 로그에 연결이 암호화되지 않았다고 표시됩니다. 체크 박스를 켜면 아무 일도 일어나지 않습니다. 그러나 그 후에 선택한 대화방을 변경하면 채팅이 다시 연결*되고* 콘솔 메시지에서 볼 수 있듯이 암호화가 활성화됩니다. 이것은 버그입니다. 체크 박스를 토글해*도* 채팅이 다시 연결되도록 버그를 수정했습니다.
 
@@ -1620,7 +1620,7 @@ label { display: block; margin-bottom: 10px; }
 
 #### select box 체인 채우기 {/*populate-a-chain-of-select-boxes*/}
 
-이 예제에는 두 개의 select box가 있습니다. 하나의 select box에서 사용자는 행성을 선택할 수 있습니다. 다른 select box는 사용자가 해당 *행성의* 장소를 선택할 수 있도록 합니다. 두 번째 상자는 아직 작동하지 않습니다. 여러분의 임무는 선택한 행성의 장소를 표시하도록 만드는 것입니다.
+이 예시에는 두 개의 select box가 있습니다. 하나의 select box에서 사용자는 행성을 선택할 수 있습니다. 다른 select box는 사용자가 해당 *행성의* 장소를 선택할 수 있도록 합니다. 두 번째 상자는 아직 작동하지 않습니다. 여러분의 임무는 선택한 행성의 장소를 표시하도록 만드는 것입니다.
 
 첫 번째 select box의 작동 방식을 살펴보겠습니다. 이 상자는 `"/planets"` API 호출의 결과로 `planetList` state를 채웁니다. 현재 선택된 행성의 ID는 `planetId` state 변수에 보관됩니다. `placeList` state 변수가 `"/planets/" + planetId + "/places"` API 호출의 결과로 채워지도록 몇 가지 추가 코드를 추가할 위치를 찾아야 합니다.
 

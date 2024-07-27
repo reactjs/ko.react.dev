@@ -43,7 +43,7 @@ const clonedElement = cloneElement(
 console.log(clonedElement); // <Row title="Cabbage" isHighlighted={true}>Goodbye</Row>
 ```
 
-[아래에서 더 많은 예제를 볼 수 있습니다.](#usage)
+[아래에서 더 많은 예시를 볼 수 있습니다.](#usage)
 
 #### 매개변수 {/*parameters*/}
 
@@ -92,7 +92,7 @@ const clonedElement = cloneElement(
 
 <CodeStep step={3}>clonedElement</CodeStep>의 결과는 `<Row title="Cabbage" isHighlighted={true} />`가 됩니다.
 
-**어떤 경우에 유용한지 예제를 통해 알아보도록 하겠습니다.**
+**어떤 경우에 유용한지 예시를 통해 알아보도록 하겠습니다.**
 
 [`children`](/learn/passing-props-to-a-component#passing-jsx-as-children)을 선택할 수 있는 행 목록으로 렌더링하고, 선택된 행을 변경하는 "다음" 버튼이 있는 `List` 컴포넌트를 상상해 보세요. `List` 컴포넌트는 선택된 행을 다르게 렌더링해야 하므로 전달받은 모든 `<Row>` 자식 요소를 복제합니다. 그리고 `isHighlighted: true` 또는 `isHighlighted: false`인 `prop`을 추가합니다.
 
@@ -246,7 +246,7 @@ button {
 
 ### 렌더링 prop으로 데이터를 전달하기 {/*passing-data-with-a-render-prop*/}
 
-`cloneElement`를 사용하는 대신에 `renderItem`과 같은 *렌더링 prop*을 사용하는 것을 고려해 보세요. 다음 예제의 `List`는 `renderItem`을 prop으로 받습니다. `List`는 모든 item에 대해 `renderItem`을 호출하고 `isHighlighted`를 인자로 전달합니다.
+`cloneElement`를 사용하는 대신에 `renderItem`과 같은 *렌더링 prop*을 사용하는 것을 고려해 보세요. 다음 예시의 `List`는 `renderItem`을 prop으로 받습니다. `List`는 모든 item에 대해 `renderItem`을 호출하고 `isHighlighted`를 인자로 전달합니다.
 
 ```js {1,7}
 export default function List({ items, renderItem }) {

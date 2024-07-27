@@ -361,7 +361,7 @@ function App() {
   );
 }
 ```
-이전 예제를 `cache`를 이용해 재작성하면, 이 경우에 <CodeStep step={3}>`WeatherReport`의 두 번째 인스턴스</CodeStep>는 중복 작업을 생략하고 <CodeStep step={1}>첫 번째 `WeatherReport`</CodeStep>와 같은 캐시를 읽게 됩니다. 이전 예제와 다른 점은 계산에만 사용되는 `useMemo`와 달리 `cache`는 <CodeStep step={2}>데이터 가져오기를 메모화하는 데</CodeStep>도 권장된다는 점입니다.
+이전 예시를 `cache`를 이용해 재작성하면, 이 경우에 <CodeStep step={3}>`WeatherReport`의 두 번째 인스턴스</CodeStep>는 중복 작업을 생략하고 <CodeStep step={1}>첫 번째 `WeatherReport`</CodeStep>와 같은 캐시를 읽게 됩니다. 이전 예시와 다른 점은 계산에만 사용되는 `useMemo`와 달리 `cache`는 <CodeStep step={2}>데이터 가져오기를 메모화하는 데</CodeStep>도 권장된다는 점입니다.
 
 이때, `cache`는 서버 컴포넌트에서만 사용해야 하며 캐시는 서버 요청 전체에서 무효화가 됩니다.
 
@@ -390,7 +390,7 @@ function App() {
 }
 ```
 
-예제에서 `MemoWeatherReport` 컴포넌트 모두 첫 번째 렌더에서 `calculateAvg`를 호출합니다. 하지만 `App`이 재 렌더링 될 때 `record`의 변경이 없다면 프로퍼티의 변경이 없기 때문에 `MemoWeatherReport`가 다시 렌더링 되지 않습니다.
+예시에서 `MemoWeatherReport` 컴포넌트 모두 첫 번째 렌더에서 `calculateAvg`를 호출합니다. 하지만 `App`이 재 렌더링 될 때 `record`의 변경이 없다면 프로퍼티의 변경이 없기 때문에 `MemoWeatherReport`가 다시 렌더링 되지 않습니다.
 
 `useMemo`와 비교하면 `memo`는 프로퍼티와 특정 계산을 기반으로 컴포넌트 렌더링을 메모화합니다. `useMemo`와 유사하게, 메모화된 컴포넌트는 마지막 프로퍼티 값에 대한 마지막 렌더링을 캐싱합니다. 프로퍼티가 변경되면, 캐쉬는 무효화되고 컴포넌트는 재 렌더링 됩니다.
 

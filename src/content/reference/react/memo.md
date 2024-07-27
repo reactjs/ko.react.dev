@@ -38,7 +38,7 @@ const SomeComponent = memo(function SomeComponent(props) {
 
 * **optional** `arePropsEqual`: 컴포넌트의 이전 props와 새로운 props의 두 가지 인수를 받는 함수입니다. 이전 props와 새로운 props가 동일한 경우, 즉 컴포넌트가 이전 props와 동일한 결과를 렌더링하고 새로운 props에서도 이전 props와 동일한 방식으로 동작하는 경우 `true`를 반환해야 합니다. 그렇지 않으면 `false`를 반환해야 합니다. 일반적으로 이 함수를 지정하지 않습니다. React는 기본적으로 [`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is)로 각 props를 비교합니다.
 
-#### 반환 {/*returns*/}
+#### 반환값 {/*returns*/}
 
 `memo`는 새로운 React 컴포넌트를 반환합니다. `memo`에 제공한 컴포넌트와 동일하게 동작하지만, 부모가 리렌더링되더라도 props가 변경되지 않는 한 React는 이를 리렌더링하지 않습니다.
 
@@ -61,7 +61,7 @@ export default Greeting;
 ```
 React 컴포넌트는 항상 [순수한 렌더링 로직](/learn/keeping-components-pure)을 가져야 합니다. 이는 props, state 그리고 context가 변경되지 않으면 항상 동일한 결과를 반환해야 함을 의미합니다. `memo`를 사용하면 컴포넌트가 이 요구 사항을 준수한다고 알리므로, props가 변경되지 않는 한 React는 리렌더링 될 필요가 없습니다. `memo`를 사용하더라도 컴포넌트의 state가 변경되거나 사용 중인 context가 변경되면 리렌더링 됩니다.
 
-아래 예제에서 `Greeting` 컴포넌트는 `name`이 props 중 하나이기 때문에 `name`이 변경될 때마다 리렌더링 됩니다. 하지만 `address`는 `Greeting`의 props가 아니기 때문에 `address`가 변경될 때는 리렌더링 되지 않습니다.
+아래 예시에서 `Greeting` 컴포넌트는 `name`이 props 중 하나이기 때문에 `name`이 변경될 때마다 리렌더링 됩니다. 하지만 `address`는 `Greeting`의 props가 아니기 때문에 `address`가 변경될 때는 리렌더링 되지 않습니다.
 
 <Sandpack>
 

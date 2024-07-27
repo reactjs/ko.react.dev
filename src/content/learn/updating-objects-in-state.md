@@ -377,7 +377,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 #### 여러 필드에 단일 이벤트 핸들러 사용하기 {/*using-a-single-event-handler-for-multiple-fields*/}
 
-`[` 와 `]` 괄호를 객체 정의 안에 사용하여 동적 이름을 가진 프로퍼티를 명시할 수 있습니다. 아래에는 이전 예제와 같지만, 세 개의 다른 이벤트 핸들러 대신 하나의 이벤트 핸들러를 사용하는 예제가 있습니다.
+`[` 와 `]` 괄호를 객체 정의 안에 사용하여 동적 이름을 가진 프로퍼티를 명시할 수 있습니다. 아래에는 이전 예시와 같지만, 세 개의 다른 이벤트 핸들러 대신 하나의 이벤트 핸들러를 사용하는 예시가 있습니다.
 
 <Sandpack>
 
@@ -676,7 +676,7 @@ Immer를 사용하기 위해서는,
 2. `npm install`을 실행하세요
 3. `import { useState } from 'react'`를 `import { useImmer } from 'use-immer'`로 교체하세요.
 
-위의 예제를 Immer로 바꾼 코드입니다.
+위의 예시를 Immer로 바꾼 코드입니다.
 
 <Sandpack>
 
@@ -1288,7 +1288,7 @@ select { margin-bottom: 10px; }
 
 #### Immer로 객체 업데이트하기 {/*update-an-object-with-immer*/}
 
-이것은 이전 챌린지와 비슷한, 버그가 있는 예제입니다. 이번에는 Immer를 사용해서 변경을 고쳐 보세요. 편의를 위해 `useImmer`는 이미 포함되어 있으므로 사용하기 위해서는 `shape` state 변수를 바꿔야 합니다.
+이것은 이전 챌린지와 비슷한, 버그가 있는 예시입니다. 이번에는 Immer를 사용해서 변경을 고쳐 보세요. 편의를 위해 `useImmer`는 이미 포함되어 있으므로 사용하기 위해서는 `shape` state 변수를 바꿔야 합니다.
 
 <Sandpack>
 

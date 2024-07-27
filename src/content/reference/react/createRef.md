@@ -40,7 +40,7 @@ class MyComponent extends Component {
   // ...
 ```
 
-[아래에서 더 많은 예제를 볼 수 있습니다.](#usage)
+[아래에서 더 많은 예시를 볼 수 있습니다.](#usage)
 
 #### 매개변수 {/*parameters*/}
 

@@ -41,7 +41,7 @@ console.log(isValidElement({ age: 42 })); // false
 
 `value`: 확인하려는 `value`입니다. 모든 종류의 값이 될 수 있습니다.
 
-#### 반환 {/*returns*/}
+#### 반환값 {/*returns*/}
 
 `isValidElement`는 `value`가 React 엘리먼트인 경우 `true`를 반환합니다. 그렇지 않으면 `false`를 반환합니다.
 

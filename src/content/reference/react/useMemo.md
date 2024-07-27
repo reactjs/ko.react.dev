@@ -169,7 +169,7 @@ console.timeEnd('filter array');
 
 #### `useMemo`로 재계산 건너뛰기 {/*skipping-recalculation-with-usememo*/}
 
-이 예제에서는 렌더링 중에 호출하는 자바스크립트 함수가 실제로 느릴 때 어떤 일이 발생하는지 확인할 수 있도록 `filterTodos`을 **인위적으로 느리게** 만들었습니다. 탭을 전환하고 테마를 토글해 보세요.
+이 예시에서는 렌더링 중에 호출하는 자바스크립트 함수가 실제로 느릴 때 어떤 일이 발생하는지 확인할 수 있도록 `filterTodos`을 **인위적으로 느리게** 만들었습니다. 탭을 전환하고 테마를 토글해 보세요.
 
 탭을 전환하면 느려진 `filterTodos`가 다시 실행되므로 느리게 느껴집니다. 이는 `tab`이 변경되었으므로 전체 계산이 *필수적으로* 다시 실행되기 때문에 나타나는 현상입니다. (왜 두 번 실행되는지 궁금하다면 [여기](#my-calculation-runs-twice-on-every-re-render)를 클릭해서 설명을 확인하세요.)
 
@@ -301,9 +301,9 @@ label {
 
 #### 항상 값을 재계산하기 {/*always-recalculating-a-value*/}
 
-이 예제에서는 렌더링 중에 호출하는 자바스크립트 함수가 실제로 느릴 때 어떤 일이 발생하는지 확인할 수 있도록 `filterTodos`을 **인위적으로 느리게** 만들었습니다. 탭을 전환하고 테마를 토글해 보세요.
+이 예시에서는 렌더링 중에 호출하는 자바스크립트 함수가 실제로 느릴 때 어떤 일이 발생하는지 확인할 수 있도록 `filterTodos`을 **인위적으로 느리게** 만들었습니다. 탭을 전환하고 테마를 토글해 보세요.
 
-이전 예제와 달리 테마 전환도 이제 느려졌습니다! **이 예제에는 `useMemo` 호출이 없기 때문에** 렌더링마다 느려진 `filterTodos`가 호출되기 때문입니다. 이는 `theme`만 변경하는 경우에도 호출됩니다.
+이전 예시와 달리 테마 전환도 이제 느려졌습니다! **이 예시에는 `useMemo` 호출이 없기 때문에** 렌더링마다 느려진 `filterTodos`가 호출되기 때문입니다. 이는 `theme`만 변경하는 경우에도 호출됩니다.
 
 <Sandpack>
 
@@ -609,7 +609,7 @@ export default function TodoList({ todos, tab, theme }) {
 ```
 
 
-**`visibleTodos`연산을 `useMemo`로 감싸면 다시 렌더링 될 때마다 *같은* 값을 갖게 할 수 있습니다** (종속성이 변경되기 전까지). *특별한 이유가 없는 한* 연산을 `useMemo`로 감싸지 않아도 됩니다. 이 예제에서는 [`memo`](/reference/react/memo)로 감싸진 컴포넌트에 전달하면 재렌더링을 건너뛸 수 있기 때문입니다. 이 페이지에서 자세히 설명하는 `useMemo`를 추가해야 하는 몇 가지 다른 이유가 있습니다. 
+**`visibleTodos`연산을 `useMemo`로 감싸면 다시 렌더링 될 때마다 *같은* 값을 갖게 할 수 있습니다** (종속성이 변경되기 전까지). *특별한 이유가 없는 한* 연산을 `useMemo`로 감싸지 않아도 됩니다. 이 예시에서는 [`memo`](/reference/react/memo)로 감싸진 컴포넌트에 전달하면 재렌더링을 건너뛸 수 있기 때문입니다. 이 페이지에서 자세히 설명하는 `useMemo`를 추가해야 하는 몇 가지 다른 이유가 있습니다. 
 
 <DeepDive>
 
@@ -633,7 +633,7 @@ export default function TodoList({ todos, tab, theme }) {
 
 `<List items={visibleTodos} />`와 같은 JSX 노드는 `{ type: List, props: { items: visibleTodos } }`와 같은 객체입니다. 이 객체를 생성하는 것은 매우 저렴하지만, React는 그 내용이 지난번과 동일한지 알 수 없습니다. 그래서 기본적으로 React는 `List` 컴포넌트를 다시 렌더링합니다.
 
-하지만 React가 이전 렌더링과 동일한 JSX를 발견하면 컴포넌트를 다시 렌더링하려고 시도하지 않습니다. JSX 노드는 [불변](https://en.wikipedia.org/wiki/Immutable_object)하기 때문입니다. JSX 노드 객체는 시간이 지나도 변경되지 않으므로 React는 재렌더링을 생략해도 안전하다는 것을 알고 있습니다. 그러나 이것이 동작하려면 노드가 단순히 코드적으로 동일해 보이는 것이 아닌 *실제로 동일한 객체*여야 합니다. 이 예제에서는 `useMemo`가 해당 일을 수행합니다.
+하지만 React가 이전 렌더링과 동일한 JSX를 발견하면 컴포넌트를 다시 렌더링하려고 시도하지 않습니다. JSX 노드는 [불변](https://en.wikipedia.org/wiki/Immutable_object)하기 때문입니다. JSX 노드 객체는 시간이 지나도 변경되지 않으므로 React는 재렌더링을 생략해도 안전하다는 것을 알고 있습니다. 그러나 이것이 동작하려면 노드가 단순히 코드적으로 동일해 보이는 것이 아닌 *실제로 동일한 객체*여야 합니다. 이 예시에서는 `useMemo`가 해당 일을 수행합니다.
 
 JSX 노드를 `useMemo`로 수동으로 감싸는 것은 편리한 방법은 아닙니다. 예를 들어, 조건부로는 이 작업을 수행할 수 없습니다. 그래서 보통 JSX 노드를 감싸는 대신 컴포넌트를 [`memo`](/reference/react/memo)로 감쌉니다.
 
@@ -643,7 +643,7 @@ JSX 노드를 `useMemo`로 수동으로 감싸는 것은 편리한 방법은 아
 
 #### `useMemo` 및 `memo`로 재렌더링 건너뛰기 {/*skipping-re-rendering-with-usememo-and-memo*/}
 
-이 예제에서는 `List` 컴포넌트를 **인위적으로 느리게 만들어** 렌더링 중인 React 컴포넌트가 실제로 느려질 때 어떤 일이 발생하는 지를 확인할 수 있습니다. 탭을 전환하고 테마를 토글해 보세요.
+이 예시에서는 `List` 컴포넌트를 **인위적으로 느리게 만들어** 렌더링 중인 React 컴포넌트가 실제로 느려질 때 어떤 일이 발생하는 지를 확인할 수 있습니다. 탭을 전환하고 테마를 토글해 보세요.
 
 탭을 전환하면 느려진 `List`가 다시 렌더링 되기 때문에 느리게 느껴집니다. 이는 `tab`이 변경되었으므로 사용자의 새로운 선택 사항을 화면에 반영해야 하기 때문에 예상되는 현상입니다.
 
@@ -787,9 +787,9 @@ label {
 
 #### 항상 컴포넌트 재렌더링 하기 {/*always-re-rendering-a-component*/}
 
-이 예제에서는 `List` 컴포넌트를 **인위적으로 느리게 만들어** 렌더링 중인 React 컴포넌트가 실제로 느려질 때 어떤 일이 발생하는 지를 확인할 수 있습니다. 탭을 전환하고 테마를 토글해 보세요.
+이 예시에서는 `List` 컴포넌트를 **인위적으로 느리게 만들어** 렌더링 중인 React 컴포넌트가 실제로 느려질 때 어떤 일이 발생하는 지를 확인할 수 있습니다. 탭을 전환하고 테마를 토글해 보세요.
 
-이전 예제와 다르게 이제는 테마 전환도 느려졌습니다! **이 버전에는 `useMemo` 호출이 없기 때문에** `visibleTodos`는 항상 다른 배열이 되고 `List` 컴포넌트는 재렌더링을 생략할 수 없기 때문입니다.
+이전 예시와 다르게 이제는 테마 전환도 느려졌습니다! **이 버전에는 `useMemo` 호출이 없기 때문에** `visibleTodos`는 항상 다른 배열이 되고 `List` 컴포넌트는 재렌더링을 생략할 수 없기 때문입니다.
 
 <Sandpack>
 
@@ -1086,7 +1086,7 @@ function Dropdown({ allItems, text }) {
   // ...
 ```
 
-위의 예제에서 `text`가 변경되지 않았다면 `searchOptions` 객체도 변경되지 않습니다. 그러나 이보다 더 나은 방법은 `searchOptions`를 `useMemo` 계산 함수의 *내부에* 선언하는 것입니다.
+위의 예시에서 `text`가 변경되지 않았다면 `searchOptions` 객체도 변경되지 않습니다. 그러나 이보다 더 나은 방법은 `searchOptions`를 `useMemo` 계산 함수의 *내부에* 선언하는 것입니다.
 
 ```js {3}
 function Dropdown({ allItems, text }) {
@@ -1137,7 +1137,7 @@ export default function Page({ productId, referrer }) {
 }
 ```
 
-위 예제는 투박해 보입니다! **함수를 메모하는 것은 충분히 일반적이기 때문에 React에는 이를 위한 Hook이 내장되어 있습니다. `useMemo` 대신 [`useCallback`](/reference/react/useCallback)으로 함수를 감싸서** 중첩된 함수를 추가로 작성하지 않도록 하세요.
+위 예시는 투박해 보입니다! **함수를 메모하는 것은 충분히 일반적이기 때문에 React에는 이를 위한 Hook이 내장되어 있습니다. `useMemo` 대신 [`useCallback`](/reference/react/useCallback)으로 함수를 감싸서** 중첩된 함수를 추가로 작성하지 않도록 하세요.
 
 ```js {2,7}
 export default function Page({ productId, referrer }) {
@@ -1152,7 +1152,7 @@ export default function Page({ productId, referrer }) {
 }
 ```
 
-위 두 예제는 완전히 동일하게 동작합니다. `useCallback`의 유일한 장점은 내부에 중첩된 함수를 추가로 작성하지 않아도 된다는 것입니다. 그 외에는 아무것도 하지 않습니다. [`useCallback`에 대해 더 읽어보세요.](/reference/react/useCallback)
+위 두 예시는 완전히 동일하게 동작합니다. `useCallback`의 유일한 장점은 내부에 중첩된 함수를 추가로 작성하지 않아도 된다는 것입니다. 그 외에는 아무것도 하지 않습니다. [`useCallback`에 대해 더 읽어보세요.](/reference/react/useCallback)
 
 ---
 
@@ -1266,7 +1266,7 @@ function TodoList({ todos, tab }) {
   // ...
 ```
 
-만일 위의 예제가 도움이 되지 않았다면, 종속성 중 하나 이상이 이전 렌더링과 달라졌다는 문제일 수 있습니다. 종속성 들을 콘솔에 수동으로 로깅하여 이 문제를 디버그할 수 있습니다.
+만일 위의 예시가 도움이 되지 않았다면, 종속성 중 하나 이상이 이전 렌더링과 달라졌다는 문제일 수 있습니다. 종속성 들을 콘솔에 수동으로 로깅하여 이 문제를 디버그할 수 있습니다.
 
 ```js
   const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);

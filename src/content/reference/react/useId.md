@@ -77,7 +77,7 @@ function PasswordField() {
 </>
 ```
 
-**예제를 통해 유용한 상황에 대해 알아보겠습니다.**
+**예시를 통해 유용한 상황에 대해 알아보겠습니다.**
 
 [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby)와 같은 [HTML 접근성 어트리뷰트](https://developer.mozilla.org/ko/docs/Web/Accessibility/ARIA)를 사용하면 두 개의 태그가 서로 연관되어 있다는 것을 명시할 수 있습니다. 예를 들어 엘리먼트(input)를 다른 엘리먼트(paragraph)에서 설명하도록 명시할 수 있습니다.
 
