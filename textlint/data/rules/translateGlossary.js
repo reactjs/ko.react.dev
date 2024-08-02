@@ -7,6 +7,7 @@ module.exports = {
         meta: {
           term: 'Tutorial',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -15,6 +16,7 @@ module.exports = {
         meta: {
           term: 'Declarative',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -23,6 +25,7 @@ module.exports = {
         meta: {
           term: 'Component',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -31,6 +34,7 @@ module.exports = {
         meta: {
           term: 'Stateful',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -39,6 +43,7 @@ module.exports = {
         meta: {
           term: 'Stateless',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -51,6 +56,7 @@ module.exports = {
         meta: {
           term: 'Render',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -59,6 +65,7 @@ module.exports = {
         meta: {
           term: 'Data',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -67,6 +74,7 @@ module.exports = {
         meta: {
           term: 'Application',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -75,6 +83,7 @@ module.exports = {
         meta: {
           term: 'External',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -83,6 +92,7 @@ module.exports = {
         meta: {
           term: 'Plugin',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -91,6 +101,7 @@ module.exports = {
         meta: {
           term: 'Third',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -99,6 +110,7 @@ module.exports = {
         meta: {
           term: 'Syntax',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -107,6 +119,7 @@ module.exports = {
         meta: {
           term: 'Embedding Expression',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -115,6 +128,7 @@ module.exports = {
         meta: {
           term: 'Attribute',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -123,6 +137,7 @@ module.exports = {
         meta: {
           term: 'Element',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -131,6 +146,7 @@ module.exports = {
         meta: {
           term: 'Function',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -139,6 +155,7 @@ module.exports = {
         meta: {
           term: 'Class',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -147,6 +164,7 @@ module.exports = {
         meta: {
           term: 'Composition',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -155,6 +173,7 @@ module.exports = {
         meta: {
           term: 'Inheritance',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -163,6 +182,7 @@ module.exports = {
         meta: {
           term: 'Lifecycle',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -171,6 +191,7 @@ module.exports = {
         meta: {
           term: 'Handling',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -179,6 +200,7 @@ module.exports = {
         meta: {
           term: 'Conditional',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -187,6 +209,7 @@ module.exports = {
         meta: {
           term: 'Operator',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -195,6 +218,7 @@ module.exports = {
         meta: {
           term: 'Reuse',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -203,6 +227,7 @@ module.exports = {
         meta: {
           term: 'Mock',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -211,6 +236,7 @@ module.exports = {
         meta: {
           term: 'Callback',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -219,6 +245,7 @@ module.exports = {
         meta: {
           term: 'Synthetic',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -227,6 +254,7 @@ module.exports = {
         meta: {
           term: 'Event',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -235,6 +263,7 @@ module.exports = {
         meta: {
           term: 'Higher Order',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -243,6 +272,7 @@ module.exports = {
         meta: {
           term: 'Mount',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -251,6 +281,7 @@ module.exports = {
         meta: {
           term: 'Unmount',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -259,6 +290,7 @@ module.exports = {
         meta: {
           term: 'Form',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -267,6 +299,7 @@ module.exports = {
         meta: {
           term: 'Wrapper',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -275,6 +308,7 @@ module.exports = {
         meta: {
           term: 'Children',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -283,6 +317,7 @@ module.exports = {
         meta: {
           term: 'Code-Splitting',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -291,6 +326,7 @@ module.exports = {
         meta: {
           term: 'Reconciliation',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -299,6 +335,7 @@ module.exports = {
         meta: {
           term: 'Property',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -307,6 +344,7 @@ module.exports = {
         meta: {
           term: 'Reference',
           discussions: [569],
+          note: '',
         },
       },
       {
@@ -315,6 +353,7 @@ module.exports = {
         meta: {
           term: 'User',
           discussions: [569],
+          note: '',
         },
       },
       {
@@ -323,6 +362,7 @@ module.exports = {
         meta: {
           term: 'Interface',
           discussions: [569],
+          note: '',
         },
       },
       {
@@ -331,6 +371,7 @@ module.exports = {
         meta: {
           term: 'Markup',
           discussions: [569],
+          note: '',
         },
       },
       {
@@ -339,6 +380,7 @@ module.exports = {
         meta: {
           term: 'Interactivity',
           discussions: [569],
+          note: '',
         },
       },
       {
@@ -347,6 +389,7 @@ module.exports = {
         meta: {
           term: 'Architecture',
           discussions: [569],
+          note: '',
         },
       },
       {
@@ -355,6 +398,7 @@ module.exports = {
         meta: {
           term: 'Full-Stack',
           discussions: [569],
+          note: '',
         },
       },
       {
@@ -363,6 +407,7 @@ module.exports = {
         meta: {
           term: 'Browser',
           discussions: [610],
+          note: '',
         },
       },
       {
@@ -371,6 +416,7 @@ module.exports = {
         meta: {
           term: 'Extension',
           discussions: [610],
+          note: '',
         },
       },
       {
@@ -379,6 +425,7 @@ module.exports = {
         meta: {
           term: 'Escape Hatches',
           discussions: [738],
+          note: '',
         },
       },
     ],
@@ -389,6 +436,7 @@ module.exports = {
         meta: {
           term: 'Tip',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -397,6 +445,7 @@ module.exports = {
         meta: {
           term: 'Example',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -405,14 +454,16 @@ module.exports = {
         meta: {
           term: 'Chapter',
           discussions: [2],
+          note: '',
         },
       },
       {
         sources: [/\bSpec(?:ification)?s?\b/, /스[펙팩]/],
         target: '명세',
         meta: {
-          term: 'Spec, Specification',
+          term: 'Specification',
           discussions: [2],
+          note: 'Spec도 동일하게 번역',
         },
       },
       {
@@ -421,6 +472,7 @@ module.exports = {
         meta: {
           term: 'camelCase',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -429,6 +481,7 @@ module.exports = {
         meta: {
           term: 'Parameter',
           discussions: [614],
+          note: '',
         },
       },
       {
@@ -437,6 +490,7 @@ module.exports = {
         meta: {
           term: 'Deprecated',
           discussions: [632],
+          note: '',
         },
       },
       {
@@ -445,6 +499,7 @@ module.exports = {
         meta: {
           term: 'Pitfall',
           discussions: [632],
+          note: '',
         },
       },
       {
@@ -453,6 +508,7 @@ module.exports = {
         meta: {
           term: 'Note',
           discussions: [632],
+          note: '',
         },
       },
       {
@@ -461,14 +517,16 @@ module.exports = {
         meta: {
           term: 'Wip',
           discussions: [632],
+          note: '',
         },
       },
       {
         sources: [/\bReturns\b/, /반환\s+(?:값\s+)?{\//],
         target: '반환값',
         meta: {
-          term: 'Returns(제목에 사용된 경우)',
+          term: 'Returns',
           discussions: [725],
+          note: '제목에 사용된 경우',
         },
       },
       {
@@ -477,6 +535,7 @@ module.exports = {
         meta: {
           term: 'Logic',
           discussions: [695],
+          note: '',
         },
       },
       {
@@ -485,6 +544,7 @@ module.exports = {
         meta: {
           term: 'Dependency',
           discussions: [841],
+          note: '',
         },
       },
     ],

@@ -89,7 +89,8 @@ const genTranslateGlossaryDocs = () => {
         '용어 `term`',
         '정규표현식 `sources`',
         '번역 `target`',
-        '논의 `discussions`'
+        '논의 `discussions`',
+        '비고 `note`'
       );
       data[key1][key2].forEach(({sources, target, meta}) => {
         md.tableBody(
@@ -100,7 +101,8 @@ const genTranslateGlossaryDocs = () => {
           target,
           meta.discussions
             .map((discussion) => `[#${discussion}](${urlIssues}${discussion})`)
-            .join(', ')
+            .join(', '),
+          meta.note
         );
       });
       md.tableEnd();
