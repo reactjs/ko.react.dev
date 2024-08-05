@@ -265,7 +265,11 @@ setCount(count + 1); // Request a re-render with 1
 console.log(count);  // Still 0!
 ```
 
+<<<<<<< HEAD
 이 동작은 미묘한 버그를 피하는 데 도움이 됩니다. 간단한 채팅 앱을 예시로 들겠습니다. "Send"를 먼저 누른 *다음* 수신자를 Bob으로 변경하면 어떻게 될지 추측해 보세요. 5초 후에 `alert`에 어떤 이름이 나타날까요?
+=======
+This behavior helps you avoid subtle bugs. Here is a little chat app. Try to guess what happens if you press "Send" first and *then* change the recipient to Bob. Whose name will appear in the `alert` five seconds later?
+>>>>>>> 6274d4faf5afcef74357871d06191558050e23d3
 
 <Sandpack>
 
