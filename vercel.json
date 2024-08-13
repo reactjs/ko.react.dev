@@ -91,11 +91,7 @@
     },
     {
       "source": "/link/legacy-context",
-<<<<<<< HEAD
       "destination": "https://ko.react.dev/blog/2024/04/25/react-19-upgrade-guide#removed-removing-legacy-context",
-=======
-      "destination": "https://react.dev/blog/2024/04/25/react-19-upgrade-guide#removed-removing-legacy-context",
->>>>>>> 2bfa7a628b0534bb0d437ff7520a72010ab970c3
       "permanent": false
     },
     {
