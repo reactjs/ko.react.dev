@@ -121,7 +121,7 @@ React 컴파일러는 React의 많은 규칙을 정적으로 검증할 수 있�
 컴파일러를 설치하기 전에, 먼저 코드베이스가 호환되는지 확인할 수 있습니다.
 
 <TerminalBlock>
-npx react-compiler-healthcheck@latest
+npx react-compiler-healthcheck@experimental
 </TerminalBlock>
 
 이 스크립트는 다음 작업을 수행합니다.
@@ -143,7 +143,7 @@ Found no usage of incompatible libraries.
 React 컴파일러는 eslint 플러그인도 지원합니다. eslint 플러그인은 컴파일러와 **독립적으로** 사용할 수 있습니다. 즉 컴파일러를 사용하지 않더라도 eslint 플러그인을 사용할 수 있습니다.
 
 <TerminalBlock>
-npm install eslint-plugin-react-compiler
+npm install eslint-plugin-react-compiler@experimental
 </TerminalBlock>
 
 그런 다음, eslint 구성 파일에 추가하세요.
@@ -203,7 +203,7 @@ export default function App() {
 ### Babel {/*usage-with-babel*/}
 
 <TerminalBlock>
-npm install babel-plugin-react-compiler
+npm install babel-plugin-react-compiler@experimental
 </TerminalBlock>
 
 컴파일러에는 빌드 파이프라인에서 사용할 수 있는 Babel 플러그인이 포함되어 있습니다.
@@ -258,7 +258,7 @@ Next.js에는 React 컴파일러를 활성화하는 실험적인 구성이 있�
 - `babel-plugin-react-compiler`를 설치하세요.
 
 <TerminalBlock>
-npm install next@canary babel-plugin-react-compiler
+npm install next@canary babel-plugin-react-compiler@experimental
 </TerminalBlock>
 
 그런 다음 `next.config.js`에서 실험적 옵션을 설정하세요.
