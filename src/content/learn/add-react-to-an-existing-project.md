@@ -153,4 +153,4 @@ root.render(<NavigationBar />);
 
 ## 기존 네이티브 모바일 앱에서 React Native 사용하기 {/*using-react-native-in-an-existing-native-mobile-app*/}
 
-[React Native](https://reactnative.dev/) 역시 기존 네이티브 앱에 점진적으로 통합할 수 있습니다. 안드로이드(Java 또는 Kotlin)나 iOS(Objective-C 또는 Swift) 앱을 개발하고 있다면,[이 가이드를 참고하여](https://reactnative.dev/docs/integration-with-ex요isting-apps) React Native 화면을 추가해보세요.
+[React Native](https://reactnative.dev/) 역시 기존 네이티브 앱에 점진적으로 통합할 수 있습니다. 안드로이드(Java 또는 Kotlin)나 iOS(Objective-C 또는 Swift) 앱을 개발하고 있다면,[이 가이드를 참고하여](https://reactnative.dev/docs/integration-with-existing-apps) React Native 화면을 추가해보세요.

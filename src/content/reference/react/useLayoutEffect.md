@@ -68,6 +68,8 @@ function Tooltip() {
 
 *  `useLayoutEffect` 내부의 코드와 이로 인한 모든 state 업데이트는 **브라우저가 화면을 다시 그리는 것을 막습니다.** 과도하게 사용하면 앱이 느려집니다. 가능하면 [`useEffect`](/reference/react/useEffect)를 사용하세요.
 
+* If you trigger a state update inside `useLayoutEffect`, React will execute all remaining Effects immediately including `useEffect`.
+
 ---
 
 ## 사용법 {/*usage*/}
