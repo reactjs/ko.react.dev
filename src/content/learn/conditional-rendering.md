@@ -52,11 +52,7 @@ export default function PackingList() {
 
 </Sandpack>
 
-<<<<<<< HEAD
-`Item` 컴포넌트 중 일부는 `isPacked` prop이 `false`가 아닌 `true`로 설정되어 있습니다. `isPacked={true}`인 경우 짐을 챙긴 항목에 체크 표시(✔)를 추가하려고 합니다.
-=======
-Notice that some of the `Item` components have their `isPacked` prop set to `true` instead of `false`. You want to add a checkmark (✅) to packed items if `isPacked={true}`.
->>>>>>> 7d50c3ffd4df2dc7903f4e41069653a456a9c223
+`Item` 컴포넌트 중 일부는 `isPacked` prop이 `false`가 아닌 `true`로 설정되어 있습니다. `isPacked={true}`인 경우 짐을 챙긴 항목에 체크 표시(✅)를 추가하려고 합니다.
 
 다음과 같이 [`if`/`else` 문](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/if...else)으로 작성할 수 있습니다.
 
@@ -206,11 +202,7 @@ return (
 );
 ```
 
-<<<<<<< HEAD
-*“`isPacked`가 참이면 (`?`) `name + ' ✔'`을 렌더링하고, 그렇지 않으면 (`:`) `name`을 렌더링 한다."* 라고 읽을 수 있습니다.
-=======
-You can read it as *"if `isPacked` is true, then (`?`) render `name + ' ✅'`, otherwise (`:`) render `name`"*.
->>>>>>> 7d50c3ffd4df2dc7903f4e41069653a456a9c223
+*"`isPacked`가 참이면 (`?`) `name + ' ✔'`을 렌더링하고, 그렇지 않으면 (`:`) `name`을 렌더링한다."* 라고 읽을 수 있습니다.
 
 <DeepDive>
 
