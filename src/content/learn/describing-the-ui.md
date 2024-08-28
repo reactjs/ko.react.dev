@@ -326,7 +326,7 @@ Props를 전달하고 활용하는 방법을 배우려면 **[컴포넌트에 Pro
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked && '✔'}
+      {name} {isPacked && '✅'}
     </li>
   );
 }
