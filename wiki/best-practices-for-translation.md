@@ -4,7 +4,7 @@
 
 ## 쌍점은 거의 사용하지 않습니다
 
-한국어 맞춤법에서는 쌍점(colon, 콜론)을 사용하는 경우를 규정하고 있는데 항목의 열거나 희곡 대사 등에서만 제한적으로 사용합니다([참고](https://www.korean.go.kr/front/page/pageView.do?page_id=P000197&mn_id=30)). 특히 영어처럼 문장 끝에 쌍점을 붙이는 경우는 없으므로 주의하세요.
+한국어 맞춤법에서는 쌍점(colon, 콜론)을 사용하는 경우를 규정하고 있는데 항목의 열거나 희곡 대사 등에서만 제한적으로 사용합니다([참고](https://korean.go.kr/kornorms/regltn/regltnView.do?regltn_code=0001&regltn_no=753#a753)). 특히 영어처럼 문장 끝에 쌍점을 붙이는 경우는 없으므로 주의하세요.
 
 ```text
 👍모범 사례
@@ -31,7 +31,7 @@
 
 ## 쉼표를 모두 옮길 필요는 없습니다
 
-영어와 우리말에서 쉼표를 사용하는 사례가 다릅니다. 우리말에서 쉼표를 사용하는 몇 가지 경우는 [맞춤법](https://www.korean.go.kr/front/page/pageView.do?page_id=P000195&mn_id=30)에 규정되어 있습니다. 꼭 필요할 때만 사용하고 그 외에는 제한하는 편이 좋을 것 같습니다.
+영어와 우리말에서 쉼표를 사용하는 사례가 다릅니다. 우리말에서 쉼표를 사용하는 몇 가지 경우는 [맞춤법](https://korean.go.kr/kornorms/regltn/regltnView.do?regltn_code=0001&regltn_no=732#a732)에 규정되어 있습니다. 꼭 필요할 때만 사용하고 그 외에는 제한하는 편이 좋을 것 같습니다.
 
 ```text
 🇬🇧For example, if `id` is the row ID, either of the following would work
