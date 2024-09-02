@@ -34,11 +34,7 @@ React는 브라우저에 내장된 모든 [HTML](https://developer.mozilla.org/e
 
 ## Resource and Metadata Components {/*resource-and-metadata-components*/}
 
-<<<<<<< HEAD
-다음 브라우저 컴포넌트들을 사용하면 외부 리소스를 로드하거나 메타데이터로 문서에 주석을 달 수 있습니다:
-=======
-These built-in browser components let you load external resources or annotate the document with metadata:
->>>>>>> c2d61310664cc0d94f89ca21fc1d44e674329799
+다음 브라우저 컴포넌트들을 사용하면 외부 리소스를 로드하거나 메타데이터로 문서에 주석을 달 수 있습니다.
 
 * [`<link>`](/reference/react-dom/components/link)
 * [`<meta>`](/reference/react-dom/components/meta)
