@@ -18,7 +18,7 @@ React는 사용자 인터페이스(UI)를 렌더링하기 위한 JavaScript 라�
 * [조건부 렌더링을 하는 방법](/learn/conditional-rendering)
 * [여러 개의 컴포넌트를 한 번에 렌더링하는 방법](/learn/rendering-lists)
 * [컴포넌트를 순수하게 유지하여 혼란스러운 버그를 피하는 방법](/learn/keeping-components-pure)
-* [Why understanding your UI as trees is useful](/learn/understanding-your-ui-as-a-tree)
+* [UI를 트리로 이해하는 것이 유용한 이유](/learn/understanding-your-ui-as-a-tree)
 
 </YouWillLearn>
 
