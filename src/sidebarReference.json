@@ -11,7 +11,7 @@
       "path": "/reference/react"
     },
     {
-      "title": "훅",
+      "title": "Hooks",
       "path": "/reference/react/hooks",
       "routes": [
         {
@@ -163,7 +163,7 @@
       "sectionHeader": "react-dom@{{version}}"
     },
     {
-      "title": "훅",
+      "title": "Hooks",
       "path": "/reference/react-dom/hooks",
       "routes": [
         {
