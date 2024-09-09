@@ -5,14 +5,14 @@ canary: true
 
 <Canary>
 
-React's extensions to `<meta>` are currently only available in React's canary and experimental channels. In stable releases of React `<meta>` works only as a [built-in browser HTML component](https://react.dev/reference/react-dom/components#all-html-components). Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+React의 `<meta>` 확장은 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. React의 안정적인 릴리즈에서는 `<meta>`가 [내장 브라우저 HTML 컴포넌트](/reference/react-dom/components#all-html-components)로만 작동합니다. 여기에서 [React의 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
 
 </Canary>
 
 
 <Intro>
 
-The [built-in browser `<meta>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta) lets you add metadata to the document.
+[내장 브라우저 `<meta>` 컴포넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/meta)를 사용하면 문서에 메타데이터를 추가할 수 있습니다.
 
 ```js
 <meta name="keywords" content="React, JavaScript, semantic markup, html" />
@@ -24,43 +24,45 @@ The [built-in browser `<meta>` component](https://developer.mozilla.org/en-US/do
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `<meta>` {/*meta*/}
 
-To add document metadata, render the [built-in browser `<meta>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta). You can render `<meta>` from any component and React will always place the corresponding DOM element in the document head.
+문서 메타데이터를 추가하려면 [내장 브라우저 `<meta>` 컴퍼넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/meta)를 렌더링하십시오. 어느 컴포넌트에서나 `<meta>`를 렌더링할 수 있으며, React는 항상 해당 DOM 요소를 문서의 head에 배치합니다.
 
 ```js
 <meta name="keywords" content="React, JavaScript, semantic markup, html" />
 ```
 
-[See more examples below.](#usage)
+[아래에서 더 많은 예시를 확인하세요.](#usage)
 
 #### Props {/*props*/}
 
-`<meta>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<meta>`는 [모든 컴포넌트 속성](/reference/react-dom/components/common#props)을 지원합니다.
 
-It should have *exactly one* of the following props: `name`, `httpEquiv`, `charset`, `itemProp`. The `<meta>` component does something different depending on which of these props is specified.
+다음 속성 중 _하나만_ 가져야 합니다. `name`, `httpEquiv`, `charset`, `itemProp`. 
 
-* `name`: a string. Specifies the [kind of metadata](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name) to be attached to the document. 
-* `charset`: a string. Specifies the character set used by the document. The only valid value is `"utf-8"`.
-* `httpEquiv`: a string. Specifies a directive for processing the document.
-* `itemProp`: a string. Specifies metadata about a particular item within the document rather than the document as a whole.
-* `content`: a string. Specifies the metadata to be attached when used with the `name` or `itemProp` props or the behavior of the directive when used with the `httpEquiv` prop.
+`<meta>` 컴포넌트는 지정된 속성에 따라 각각 다른 동작을 합니다.
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+* `name`: 문자열. 문서에 첨부될 [메타데이터 종류](https://developer.mozilla.org/ko/docs/Web/HTML/Element/meta/name)를 지정합니다.
+* `charset`: 문자열. 문서에서 사용되는 문자 인코딩을 지원합니다. 유효한 값은 `"utf-8"` 뿐 입니다.
+* `httpEquiv`: 문자열. 문서를 처리할 지시 사항을 지정합니다.
+* `itemProp`: 문자열. 문서 전체가 아닌 문서 내 특정 항목에 대한 메타데이터를 지정합니다.
+* `content`: 문자열. `name` 또는 `itemProp` props와 함께 사용 시 첨부될 메타데이터를 지정하거나, `httpEquiv` props와 함께 사용 시 지시 사항의 동작을 지정합니다.
 
-React will always place the DOM element corresponding to the `<meta>` component within the document’s `<head>`, regardless of where in the React tree it is rendered. The `<head>` is the only valid place for `<meta>` to exist within the DOM, yet it’s convenient and keeps things composable if a component representing a specific page can render `<meta>` components itself. 
+#### 특수 렌더링 동작 {/*special-rendering-behavior*/}
 
-There is one exception to this: if `<meta>` has an [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) prop, there is no special behavior, because in this case it doesn’t represent metadata about the document but rather metadata about a specific part of the page. 
+React는 `<meta>` 컴포넌트가 React 트리 어디에서 렌더링되든 상관없이 해당하는 DOM 요소를 항상 문서의 `<head>` 내에 배치합니다. DOM 내에서 `<head>`는 `<meta>`가 존재할 수 있는 유일한 유효한 위치이지만, 특정 페이지를 나타내는 컴포넌트가 `<meta>` 컴포넌트를 자체적으로 렌더링할 수 있다는 점이 편리하고, 구성 가능성을 유지해 줍니다.
+
+단, `<meta>`에 [`itemProp`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/itemprop) props가 있는 경우에는 예외입니다. 이 경우에는 문서에 대한 메타데이터가 아닌 페이지의 특정 부분에 대한 메타데이터를 나타내므로 특수한 동작이 적용되지 않습니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Annotating the document with metadata {/*annotating-the-document-with-metadata*/}
+### 문서에 메타데이터 추가하기 {/*annotating-the-document-with-metadata*/}
 
-You can annotate the document with metadata such as keywords, a summary, or the author’s name. React will place this metadata within the document `<head>` regardless of where in the React tree it is rendered. 
+키워드, 요약 또는 저자의 이름과 같은 메타데이터를 문서에 추가할 수 있습니다. React는 해당 메타데이터를 문서 `<head>`에 배치하며, React 트리 내에서 어디에 렌더링되든 상관없이 해당 작업이 이루어집니다.
 
 ```html
 <meta name="author" content="John Smith" />
@@ -68,7 +70,7 @@ You can annotate the document with metadata such as keywords, a summary, or the 
 <meta name="description" content="API reference for the <meta> component in React DOM" />
 ```
 
-You can render the `<meta>` component from any component. React will put a `<meta>` DOM node in the document `<head>`.
+어느 컴포넌트에서나 `<meta>` 컴포넌트를 렌더링할 수 있습니다. React는 문서 `<head>`에 `<meta>` DOM 노드를 배치합니다.
 
 <SandpackWithHTMLOutput>
 
@@ -89,9 +91,9 @@ export default function SiteMapPage() {
 
 </SandpackWithHTMLOutput>
 
-### Annotating specific items within the document with metadata {/*annotating-specific-items-within-the-document-with-metadata*/}
+### 문서 내 특정 항목에 메타데이터 추가하기 {/*annotating-specific-items-within-the-document-with-metadata*/}
 
-You can use the `<meta>` component with the `itemProp` prop to annotate specific items within the document with metadata. In this case, React will *not* place these annotations within the document `<head>` but will place them like any other React component. 
+`itemProp` props와 함께 `<meta>` 컴포넌트를 사용하여 문서 내 특정 항목에 메타데이터를 추가할 수 있습니다. 이 경우, React는 이러한 주석을 문서내 `<head>`에 배치하지 않고, 다른 React 컴포넌트처럼 배치합니다.
 
 ```js
 <section itemScope>
