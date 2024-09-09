@@ -28,7 +28,7 @@ React의 `<meta>` 확장은 현재 React의 카나리(Canary) 버전 및 실험 
 
 ### `<meta>` {/*meta*/}
 
-문서 메타데이터를 추가하려면 [내장 브라우저 `<meta>` 컴퍼넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/meta)를 렌더링하십시오. 어느 컴포넌트에서나 `<meta>`를 렌더링할 수 있으며, React는 항상 해당 DOM 요소를 문서의 head에 배치합니다.
+문서 메타데이터를 추가하려면 [내장 브라우저 `<meta>` 컴포넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/meta)를 렌더링하십시오. 어느 컴포넌트에서나 `<meta>`를 렌더링할 수 있으며, React는 항상 해당 DOM 요소를 문서의 head에 배치합니다.
 
 ```js
 <meta name="keywords" content="React, JavaScript, semantic markup, html" />
