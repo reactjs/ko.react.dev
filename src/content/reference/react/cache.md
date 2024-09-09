@@ -219,7 +219,7 @@ async function AnimatedWeatherCard({city}) {
 ```jsx [[2, 6, "await getUser(id)"], [1, 17, "getUser(id)"]]
 const getUser = cache(async (id) => {
   return await db.user.query(id);
-})
+});
 
 async function Profile({id}) {
   const user = await getUser(id);
@@ -320,7 +320,7 @@ React는 컴포넌트에서 메모화된 함수의 캐시 접근만 제공합니
 'use client';
 
 function WeatherReport({record}) {
-  const avgTemp = useMemo(() => calculateAvg(record)), record);
+  const avgTemp = useMemo(() => calculateAvg(record), record);
   // ...
 }
 
