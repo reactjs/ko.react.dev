@@ -78,7 +78,7 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 <Suspense fallback={<Loading />}>
   <h2>Preview</h2>
   <MarkdownPreview />
- </Suspense>
+</Suspense>
 ```
 
 이 예시에서 `MarkdownPreview` 코드는 렌더링을 시도할 때까지 로드되지 않습니다. `MarkdownPreview`가 아직 로딩되지 않는 경우에는 그 자리에 `Loading` 코드가 대신 표시됩니다. 체크박스를 선택해 보세요.
