@@ -1,26 +1,24 @@
-name: textlint_lint
+name: Textlint Lint
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
       - 'src/**/*.md'
       - '.github/workflows/textlint_lint.yml'
 
   pull_request:
-    branches: [main]
-    paths:
-      - 'src/**/*.md'
-      - '.github/workflows/textlint_lint.yml'
-
-  pull_request_target:
-    branches: [main]
+    types:
+      - opened
+      - synchronize
+      - reopened
     paths:
       - 'src/**/*.md'
       - '.github/workflows/textlint_lint.yml'
 
 jobs:
-  textlint_lint:
+  Lint:
     runs-on: ubuntu-latest
 
     steps:
