@@ -7,6 +7,12 @@ on:
       - 'src/**/*.md'
       - '.github/workflows/textlint_lint.yml'
 
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/**/*.md'
+      - '.github/workflows/textlint_lint.yml'
+
   pull_request_target:
     branches: [main]
     paths:
