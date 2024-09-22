@@ -11,7 +11,7 @@
 1. 다음과 같은 [공통 스타일 가이드 확인 (Check the common style guide)](/wiki/universal-style-guide.md) 을 따르고 있습니다.
 2. [모범사례 확인 (Check best practices)](/wiki/best-practices-for-translation.md) 을 확인해주세요.
 3. 공통된 단어 번역을 위해 [용어 확인 (Check the term)](/wiki/translate-glossary.md) 을 참고해주세요.
-4. 마지막으로 [맞춤법 검사 (Spelling check)](http://speller.cs.pusan.ac.kr/) 를 진행해주세요.
+4. 마지막으로 [맞춤법 검사 (Spelling check)](https://nara-speller.co.kr/speller/) 를 진행해주세요.
 
 이 저장소는 [ko.react.dev](https://ko.react.dev/)의 소스 코드와 개발 문서를 포함하고 있습니다.
 
