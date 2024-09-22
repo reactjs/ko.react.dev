@@ -1,0 +1,47 @@
+name: Textlint Lint
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**/*.md'
+      - 'textlint/**/*.js'
+      - '.github/workflows/textlint_lint.yml'
+
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - 'src/**/*.md'
+      - 'textlint/**/*.js'
+      - '.github/workflows/textlint_lint.yml'
+
+jobs:
+  Lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up checkout
+        uses: actions/checkout@v4
+
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: yarn
+
+      - name: Set up cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.yarn-cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        # The `--frozen-lockfile` flag in Yarn ensures that dependencies are installed without modifying the `yarn.lock` file. It is useful for maintaining consistency in CI/CD environments by preventing unexpected changes to the lock file and ensuring that the same versions of dependencies are installed.
+
+      - name: Lint
+        run: yarn textlint-lint
