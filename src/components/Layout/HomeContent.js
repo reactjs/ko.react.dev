@@ -66,8 +66,12 @@ function Para({children}) {
   );
 }
 
-function Br() {
-  return <br />;
+function Br({breakPointPrefix = 'lg'}) {
+  const breakPointClass = {
+    lg: 'lg:inline',
+    xl: 'xl:inline',
+  }[breakPointPrefix];
+  return <br className={cn('hidden', breakPointClass)} />;
 }
 
 function Center({children}) {
@@ -165,7 +169,8 @@ export function HomeContent() {
         <Section background="left-card">
           <Center>
             <Header>
-              컴포넌트를 사용하여 <Br /> 사용자 인터페이스 만들기
+              컴포넌트를 사용하여
+              <Br /> 사용자 인터페이스 만들기
             </Header>
             <Para>
               React를 사용하면 컴포넌트라고 불리는 조각들을 사용하여 사용자
@@ -432,7 +437,7 @@ export function HomeContent() {
               <div className="w-full max-w-3xl flex flex-col items-start justify-start lg:ps-5 lg:pe-10">
                 <Header>
                   새로운 기능에 맞춰
-                  <Br /> 업그레이드 하기
+                  <Br breakPointPrefix="xl" /> 업그레이드 하기
                 </Header>
                 <Para>
                   React는 변화에 신중하게 접근합니다. 모든 React 커밋은 10억 명
