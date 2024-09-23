@@ -709,7 +709,7 @@ function ChatRoom({ roomId }) {
 
   useEffect(() => {
     const options = createOptions();
-    const connection = createConnection();
+    const connection = createConnection(options);
     connection.connect();
     // ...
 ```
@@ -720,7 +720,7 @@ function ChatRoom({ roomId }) {
 ```js {6}
   useEffect(() => {
     const options = createOptions();
-    const connection = createConnection();
+    const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
   }, [createOptions]); // 🔴 문제점: 이 의존성은 매 렌더링마다 변경됩니다.
@@ -742,7 +742,7 @@ function ChatRoom({ roomId }) {
 
   useEffect(() => {
     const options = createOptions();
-    const connection = createConnection();
+    const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
   }, [createOptions]); // ✅ createOptions가 변경될 때만 변경됩니다.
@@ -764,7 +764,7 @@ function ChatRoom({ roomId }) {
     }
 
     const options = createOptions();
-    const connection = createConnection();
+    const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
   }, [roomId]); // ✅ roomId가 변경될 때만 변경됩니다.
