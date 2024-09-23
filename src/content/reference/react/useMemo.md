@@ -1056,9 +1056,6 @@ label {
 
 ---
 
-<<<<<<< HEAD
-### 다른 Hook의 종속성 메모화 {/*memoizing-a-dependency-of-another-hook*/}
-=======
 ### Preventing an Effect from firing too often {/*preventing-an-effect-from-firing-too-often*/}
 
 Sometimes, you might want to use a value inside an [Effect:](/learn/synchronizing-with-effects)
@@ -1135,9 +1132,7 @@ function ChatRoom({ roomId }) {
 
 Now your code is simpler and doesn't need `useMemo`. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
-
-### Memoizing a dependency of another Hook {/*memoizing-a-dependency-of-another-hook*/}
->>>>>>> c003ac4eb130fca70b88cf3a1b80ce5f76c51ae3
+### 다른 Hook의 종속성 메모화 {/*memoizing-a-dependency-of-another-hook*/}
 
 컴포넌트 본문에서 직접 생성된 객체에 의존하는 연산이 있다고 가정하겠습니다.
 
