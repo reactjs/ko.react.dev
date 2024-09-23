@@ -67,7 +67,7 @@ function Para({children}) {
 }
 
 function Br() {
-  return <br className="hidden lg:inline" />;
+  return <br />;
 }
 
 function Center({children}) {
@@ -165,9 +165,7 @@ export function HomeContent() {
         <Section background="left-card">
           <Center>
             <Header>
-              컴포넌트를 사용하여
-              <Br />
-              사용자 인터페이스 만들기
+              컴포넌트를 사용하여 <Br /> 사용자 인터페이스 만들기
             </Header>
             <Para>
               React를 사용하면 컴포넌트라고 불리는 조각들을 사용하여 사용자
@@ -193,8 +191,7 @@ export function HomeContent() {
           <Center>
             <Header>
               코드와 마크업으로
-              <Br />
-              컴포넌트 작성하기
+              <Br /> 컴포넌트 작성하기
             </Header>
             <Para>
               React 컴포넌트는 JavaScript 함수입니다. 조건부로 내용을 표시하려면{' '}
@@ -220,8 +217,7 @@ export function HomeContent() {
           <Center>
             <Header>
               필요한 곳에
-              <Br />
-              상호작용 요소 추가하기
+              <Br /> 상호작용 요소 추가하기
             </Header>
             <Para>
               React 컴포넌트는 데이터를 받고 화면에 표시할 내용을 반환합니다.
@@ -254,8 +250,7 @@ export function HomeContent() {
           <Center>
             <Header>
               프레임워크를 통해서
-              <Br />
-              풀스택으로 만들기
+              <Br /> 풀스택으로 만들기
             </Header>
             <Para>
               React는 라이브러리입니다. 컴포넌트를 함께 묶을 수 있지만, 라우팅과
@@ -434,11 +429,10 @@ export function HomeContent() {
         <Section background="right-card">
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row px-5">
             <div className="max-w-3xl lg:max-w-7xl gap-5 flex flex-col lg:flex-row lg:px-5">
-              <div className="w-full lg:w-6/12 max-w-3xl flex flex-col items-start justify-start lg:ps-5 lg:pe-10">
+              <div className="w-full max-w-3xl flex flex-col items-start justify-start lg:ps-5 lg:pe-10">
                 <Header>
                   새로운 기능에 맞춰
-                  <Br />
-                  업그레이드 하기
+                  <Br /> 업그레이드 하기
                 </Header>
                 <Para>
                   React는 변화에 신중하게 접근합니다. 모든 React 커밋은 10억 명
@@ -528,8 +522,7 @@ export function HomeContent() {
             <Logo className="uwu-hidden text-brand dark:text-brand-dark w-24 lg:w-28 mb-10 lg:mb-8 mt-12 h-auto mx-auto self-start" />
             <Header>
               React 커뮤니티에
-              <Br />
-              오신 것을 환영합니다.
+              <Br /> 오신 것을 환영합니다.
             </Header>
             <ButtonLink
               href={'/learn'}
