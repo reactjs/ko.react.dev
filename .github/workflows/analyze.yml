@@ -41,11 +41,7 @@ jobs:
         run: npx -p nextjs-bundle-analysis@0.5.0 report
 
       - name: Upload bundle
-<<<<<<< HEAD
         uses: actions/upload-artifact@v4
-=======
-        uses: actions/upload-artifact@v3
->>>>>>> c003ac4eb130fca70b88cf3a1b80ce5f76c51ae3
         with:
           path: .next/analyze/__bundle_analysis.json
           name: bundle_analysis.json
@@ -77,11 +73,7 @@ jobs:
         run: ls -laR .next/analyze/base && npx -p nextjs-bundle-analysis compare
 
       - name: Upload analysis comment
-<<<<<<< HEAD
         uses: actions/upload-artifact@v4
-=======
-        uses: actions/upload-artifact@v3
->>>>>>> c003ac4eb130fca70b88cf3a1b80ce5f76c51ae3
         with:
           name: analysis_comment.txt
           path: .next/analyze/__bundle_analysis_comment.txt
@@ -90,11 +82,7 @@ jobs:
         run: echo ${{ github.event.number }} > ./pr_number
 
       - name: Upload PR number
-<<<<<<< HEAD
         uses: actions/upload-artifact@v4
-=======
-        uses: actions/upload-artifact@v3
->>>>>>> c003ac4eb130fca70b88cf3a1b80ce5f76c51ae3
         with:
           name: pr_number
           path: ./pr_number
