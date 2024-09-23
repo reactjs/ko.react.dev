@@ -53,7 +53,7 @@ React가 `EmptyNote` 서버 컴포넌트를 렌더링할 때, `createNoteAction`
 export default function Button({onClick}) { 
   console.log(onClick); 
   // {$$typeof: Symbol.for("react.server.reference"), $$id: 'createNoteAction'}
-  return <button onClick={onClick}>Create Empty Note</button>
+  return <button onClick={() => onClick()}>Create Empty Note</button>
 }
 ```
 
