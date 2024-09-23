@@ -85,6 +85,8 @@ function handleClick() {
 
 * React는 [state 업데이트를 batch 합니다. ](/learn/queueing-a-series-of-state-updates) **모든 이벤트 핸들러가 실행되고** `set` 함수를 호출한 후에 화면을 업데이트합니다. 이렇게 하면 단일 이벤트 중에 여러 번 리렌더링 하는 것을 방지할 수 있습니다. 드물지만 DOM에 접근하기 위해 React가 화면을 더 일찍 업데이트하도록 강제해야 하는 경우, [`flushSync`](/reference/react-dom/flushSync)를 사용할 수 있습니다.
 
+* The `set` function has a stable identity, so you will often see it omitted from effect dependencies, but including it will not cause the effect to fire. If the linter lets you omit a dependency without errors, it is safe to do. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+
 * *렌더링 도중* `set` 함수를 호출하는 것은 현재 렌더링 중인 컴포넌트 내에서만 허용됩니다. React는 해당 출력을 버리고 즉시 새로운 state로 다시 렌더링을 시도합니다. 이 패턴은 거의 필요하지 않지만 **이전 렌더링의 정보를 저장하는 데 사용할 수 있습니다**. [아래 예시를 참고하세요.](#storing-information-from-previous-renders)
 
 * Strict Mode에서 React는 [의도치않은 불순물을 찾기 위해](#my-initializer-or-updater-function-runs-twice) **업데이터 함수를 두 번 호출합니다**. 이는 개발 환경 전용 동작이며 프로덕션 환경에는 영향을 미치지 않습니다. 만약 업데이터 함수가 순수하다면(그래야 합니다) 동작에 영향을 미치지 않습니다. 호출 중 하나의 결과는 무시됩니다.
