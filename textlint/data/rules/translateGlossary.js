@@ -2,7 +2,7 @@ module.exports = {
   translated: {
     react: [
       {
-        sources: [/Tutorial/, /[듀튜]토리얼/],
+        sources: [/\bTutorial\b/, /[듀튜]토리얼/],
         target: '자습서',
         meta: {
           term: 'Tutorial',
@@ -11,7 +11,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Declarative/],
+        sources: [/\bDeclarative\b/],
         target: '선언적인',
         meta: {
           term: 'Declarative',
@@ -20,7 +20,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Component/, /컴퍼넌트/, /컴포넌츠/],
+        sources: [/\bComponent\b/, /컴퍼넌트/, /컴포넌츠/],
         target: '컴포넌트',
         meta: {
           term: 'Component',
@@ -29,7 +29,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Stateful/],
+        sources: [/\bStateful\b/],
         target: '유상태',
         meta: {
           term: 'Stateful',
@@ -38,7 +38,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Stateless/],
+        sources: [/\bStateless\b/],
         target: '무상태',
         meta: {
           term: 'Stateless',
@@ -48,7 +48,7 @@ module.exports = {
       },
       {
         sources: [
-          /Render(?!er)(?:ing)?/,
+          /\bRender(?!er)(?:ing)?\b/,
           /랜더링/,
           /[렌랜]더(?!링)\s?[하한할함합]/,
         ],
@@ -60,7 +60,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Data/, /대이터/],
+        sources: [/\bData\b/, /대이터/],
         target: '데이터',
         meta: {
           term: 'Data',
@@ -69,7 +69,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Application/, /어플리케이[선션]/, /응용\s?프로그램/],
+        sources: [/\bApplication\b/, /어플리케이[선션]/, /응용\s?프로그램/],
         target: '애플리케이션',
         meta: {
           term: 'Application',
@@ -78,7 +78,7 @@ module.exports = {
         },
       },
       {
-        sources: [/External/],
+        sources: [/\bExternal\b/],
         target: '외부',
         meta: {
           term: 'External',
@@ -87,7 +87,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Plugin/],
+        sources: [/\bPlugin\b/],
         target: '플러그인',
         meta: {
           term: 'Plugin',
@@ -96,7 +96,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Third/, /써드/],
+        sources: [/\bThird\b/, /써드/],
         target: '서드',
         meta: {
           term: 'Third',
@@ -105,7 +105,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Syntax/, /[신씬]택스/],
+        sources: [/\bSyntax\b/, /[신씬]택스/],
         target: '문법',
         meta: {
           term: 'Syntax',
@@ -114,7 +114,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Embedding\s?Expression/],
+        sources: [/\bEmbedding\s?Expression\b/],
         target: '표현식 포함하기',
         meta: {
           term: 'Embedding Expression',
@@ -123,7 +123,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Attribute/, /애트리뷰트/],
+        sources: [/\bAttribute\b/, /애트리뷰트/],
         target: '어트리뷰트',
         meta: {
           term: 'Attribute',
@@ -132,7 +132,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Element/, /[엘앨]리먼츠/, /앨리먼트/],
+        sources: [/\bElement\b/, /[엘앨]리먼츠/, /앨리먼트/],
         target: '엘리먼트',
         meta: {
           term: 'Element',
@@ -141,7 +141,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Function/, /Functional/],
+        sources: [/\bFunction(?:al)?\b/],
         target: '함수',
         meta: {
           term: 'Function',
@@ -150,7 +150,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Class/],
+        sources: [/\bClass\b/],
         target: '클래스',
         meta: {
           term: 'Class',
@@ -159,7 +159,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Composition/, /[컴콤][퍼포]지[선션]/],
+        sources: [/\bComposition\b/, /[컴콤][퍼포]지[선션]/],
         target: '합성',
         meta: {
           term: 'Composition',
@@ -168,7 +168,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Inheritance/],
+        sources: [/\bInheritance\b/],
         target: '상속',
         meta: {
           term: 'Inheritance',
@@ -177,7 +177,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Life\s?Cycle/, /라이프\s?사이클/, /생명 주기/],
+        sources: [/\bLife\s?Cycle\b/, /라이프\s?사이클/, /생명 주기/],
         target: '생명주기',
         meta: {
           term: 'Lifecycle',
@@ -186,7 +186,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Handling/, /핸들링/],
+        sources: [/\bHandling\b/, /핸들링/],
         target: '처리',
         meta: {
           term: 'Handling',
@@ -195,7 +195,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Conditional/, /컨디[서셔][날널]/],
+        sources: [/\bConditional\b/, /컨디[서셔][날널]/],
         target: '조건부',
         meta: {
           term: 'Conditional',
@@ -204,7 +204,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Operator/, /오퍼[레래]이터/],
+        sources: [/\bOperator\b/, /오퍼[레래]이터/],
         target: '연산자',
         meta: {
           term: 'Operator',
@@ -213,7 +213,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Reuse/],
+        sources: [/\bReuse\b/],
         target: '재사용',
         meta: {
           term: 'Reuse',
@@ -222,7 +222,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Mock/],
+        sources: [/\bMock\b/],
         target: '모의',
         meta: {
           term: 'Mock',
@@ -231,7 +231,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Callback/],
+        sources: [/\bCallback\b/],
         target: '콜백',
         meta: {
           term: 'Callback',
@@ -240,7 +240,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Synthetic/],
+        sources: [/\bSynthetic\b/],
         target: '합성',
         meta: {
           term: 'Synthetic',
@@ -249,7 +249,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Event/],
+        sources: [/\bEvent\b/],
         target: '이벤트',
         meta: {
           term: 'Event',
@@ -258,7 +258,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Higher\s?Order/],
+        sources: [/\bHigher\s?Order\b/],
         target: '고차',
         meta: {
           term: 'Higher Order',
@@ -267,7 +267,7 @@ module.exports = {
         },
       },
       {
-        sources: [/(?<!Un)Mount/],
+        sources: [/\b(?<!Un)Mount\b/],
         target: '마운트',
         meta: {
           term: 'Mount',
@@ -276,7 +276,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Unmount/, /언마운트/],
+        sources: [/\bUnmount\b/, /언마운트/],
         target: '마운트 해제',
         meta: {
           term: 'Unmount',
@@ -285,7 +285,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Form/],
+        sources: [/\bForm\b/],
         target: '폼',
         meta: {
           term: 'Form',
@@ -294,7 +294,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Wrapper/],
+        sources: [/\bWrapper\b/],
         target: '래퍼',
         meta: {
           term: 'Wrapper',
@@ -303,7 +303,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Child(?:ren)?/],
+        sources: [/\bChild(?:ren)?\b/],
         target: '자식',
         meta: {
           term: 'Children',
@@ -312,7 +312,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Code[-\s]?Splitting/],
+        sources: [/\bCode[-\s]?Splitting\b/],
         target: '코드 분할',
         meta: {
           term: 'Code-Splitting',
@@ -321,7 +321,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Reconciliation/],
+        sources: [/\bReconciliation\b/],
         target: '재조정',
         meta: {
           term: 'Reconciliation',
@@ -330,7 +330,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Propert(?:y|ies)/],
+        sources: [/\bPropert(?:y|ies)\b/],
         target: '프로퍼티',
         meta: {
           term: 'Property',
@@ -339,7 +339,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Reference/, /래퍼런스/],
+        sources: [/\bReference\b/, /래퍼런스/],
         target: '레퍼런스',
         meta: {
           term: 'Reference',
@@ -348,7 +348,7 @@ module.exports = {
         },
       },
       {
-        sources: [/User/, /유저/],
+        sources: [/\bUser\b/, /유저/],
         target: '사용자',
         meta: {
           term: 'User',
@@ -357,7 +357,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Interface/],
+        sources: [/\bInterface\b/],
         target: '인터페이스',
         meta: {
           term: 'Interface',
@@ -366,7 +366,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Markup/, /마크 업/],
+        sources: [/\bMarkup\b/, /마크 업/],
         target: '마크업',
         meta: {
           term: 'Markup',
@@ -375,7 +375,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Interacti(?:vity|on)/, /인터[랙렉][선션]/],
+        sources: [/\bInteracti(?:vity|on)\b/, /인터[랙렉][선션]/],
         target: '상호작용',
         meta: {
           term: 'Interactivity',
@@ -384,7 +384,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Architecture/, /아키택처/, /아키[택텍]쳐/],
+        sources: [/\bArchitecture\b/, /아키택처/, /아키[택텍]쳐/],
         target: '아키텍처',
         meta: {
           term: 'Architecture',
@@ -393,7 +393,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Full[-\s]?Stack/],
+        sources: [/\bFull[-\s]?Stack\b/],
         target: '풀스택',
         meta: {
           term: 'Full-Stack',
@@ -402,7 +402,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Browser/],
+        sources: [/\bBrowser\b/],
         target: '브라우저',
         meta: {
           term: 'Browser',
@@ -411,7 +411,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Extension/, /확장프로그램/],
+        sources: [/\bExtension\b/, /확장프로그램/],
         target: '확장 프로그램',
         meta: {
           term: 'Extension',
@@ -420,7 +420,7 @@ module.exports = {
         },
       },
       {
-        sources: [/Escape[-\s]?Hatches/],
+        sources: [/\bEscape[-\s]?Hatches\b/],
         target: '탈출구',
         meta: {
           term: 'Escape Hatches',

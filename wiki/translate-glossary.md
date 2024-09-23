@@ -8,53 +8,53 @@
 
 용어 `term`|정규표현식 `sources`|번역 `target`|논의 `discussions`|비고 `note`|
 ---|---|---|---|---|
-Tutorial|`/Tutorial/`, `/[듀튜]토리얼/`|자습서|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Declarative|`/Declarative/`|선언적인|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Component|`/Component/`, `/컴퍼넌트/`, `/컴포넌츠/`|컴포넌트|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Stateful|`/Stateful/`|유상태|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Stateless|`/Stateless/`|무상태|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Render|`/Render(?!er)(?:ing)?/`, `/랜더링/`, `/[렌랜]더(?!링)\s?[하한할함합]/`|렌더링(하다)|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Data|`/Data/`, `/대이터/`|데이터|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Application|`/Application/`, `/어플리케이[선션]/`, `/응용\s?프로그램/`|애플리케이션|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-External|`/External/`|외부|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Plugin|`/Plugin/`|플러그인|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Third|`/Third/`, `/써드/`|서드|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Syntax|`/Syntax/`, `/[신씬]택스/`|문법|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Embedding Expression|`/Embedding\s?Expression/`|표현식 포함하기|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Attribute|`/Attribute/`, `/애트리뷰트/`|어트리뷰트|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Element|`/Element/`, `/[엘앨]리먼츠/`, `/앨리먼트/`|엘리먼트|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Function|`/Function/`, `/Functional/`|함수|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Class|`/Class/`|클래스|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Composition|`/Composition/`, `/[컴콤][퍼포]지[선션]/`|합성|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Inheritance|`/Inheritance/`|상속|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Lifecycle|`/Life\s?Cycle/`, `/라이프\s?사이클/`, `/생명 주기/`|생명주기|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Handling|`/Handling/`, `/핸들링/`|처리|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Conditional|`/Conditional/`, `/컨디[서셔][날널]/`|조건부|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Operator|`/Operator/`, `/오퍼[레래]이터/`|연산자|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Reuse|`/Reuse/`|재사용|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Mock|`/Mock/`|모의|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Callback|`/Callback/`|콜백|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Synthetic|`/Synthetic/`|합성|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Event|`/Event/`|이벤트|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Higher Order|`/Higher\s?Order/`|고차|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Mount|`/(?<!Un)Mount/`|마운트|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Unmount|`/Unmount/`, `/언마운트/`|마운트 해제|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Form|`/Form/`|폼|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Wrapper|`/Wrapper/`|래퍼|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Children|`/Child(?:ren)?/`|자식|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Code-Splitting|`/Code[-\s]?Splitting/`|코드 분할|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Reconciliation|`/Reconciliation/`|재조정|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Property|`/Propert(?:y\|ies)/`|프로퍼티|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
-Reference|`/Reference/`, `/래퍼런스/`|레퍼런스|[#569](https://github.com/reactjs/ko.react.dev/issues/569)||
-User|`/User/`, `/유저/`|사용자|[#569](https://github.com/reactjs/ko.react.dev/issues/569)||
-Interface|`/Interface/`|인터페이스|[#569](https://github.com/reactjs/ko.react.dev/issues/569)||
-Markup|`/Markup/`, `/마크 업/`|마크업|[#569](https://github.com/reactjs/ko.react.dev/issues/569)||
-Interactivity|`/Interacti(?:vity\|on)/`, `/인터[랙렉][선션]/`|상호작용|[#569](https://github.com/reactjs/ko.react.dev/issues/569)||
-Architecture|`/Architecture/`, `/아키택처/`, `/아키[택텍]쳐/`|아키텍처|[#569](https://github.com/reactjs/ko.react.dev/issues/569)||
-Full-Stack|`/Full[-\s]?Stack/`|풀스택|[#569](https://github.com/reactjs/ko.react.dev/issues/569)||
-Browser|`/Browser/`|브라우저|[#610](https://github.com/reactjs/ko.react.dev/issues/610)||
-Extension|`/Extension/`, `/확장프로그램/`|확장 프로그램|[#610](https://github.com/reactjs/ko.react.dev/issues/610)||
-Escape Hatches|`/Escape[-\s]?Hatches/`|탈출구|[#738](https://github.com/reactjs/ko.react.dev/issues/738)||
+Tutorial|`/\bTutorial\b/`, `/[듀튜]토리얼/`|자습서|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Declarative|`/\bDeclarative\b/`|선언적인|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Component|`/\bComponent\b/`, `/컴퍼넌트/`, `/컴포넌츠/`|컴포넌트|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Stateful|`/\bStateful\b/`|유상태|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Stateless|`/\bStateless\b/`|무상태|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Render|`/\bRender(?!er)(?:ing)?\b/`, `/랜더링/`, `/[렌랜]더(?!링)\s?[하한할함합]/`|렌더링(하다)|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Data|`/\bData\b/`, `/대이터/`|데이터|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Application|`/\bApplication\b/`, `/어플리케이[선션]/`, `/응용\s?프로그램/`|애플리케이션|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+External|`/\bExternal\b/`|외부|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Plugin|`/\bPlugin\b/`|플러그인|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Third|`/\bThird\b/`, `/써드/`|서드|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Syntax|`/\bSyntax\b/`, `/[신씬]택스/`|문법|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Embedding Expression|`/\bEmbedding\s?Expression\b/`|표현식 포함하기|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Attribute|`/\bAttribute\b/`, `/애트리뷰트/`|어트리뷰트|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Element|`/\bElement\b/`, `/[엘앨]리먼츠/`, `/앨리먼트/`|엘리먼트|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Function|`/\bFunction(?:al)?\b/`|함수|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Class|`/\bClass\b/`|클래스|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Composition|`/\bComposition\b/`, `/[컴콤][퍼포]지[선션]/`|합성|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Inheritance|`/\bInheritance\b/`|상속|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Lifecycle|`/\bLife\s?Cycle\b/`, `/라이프\s?사이클/`, `/생명 주기/`|생명주기|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Handling|`/\bHandling\b/`, `/핸들링/`|처리|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Conditional|`/\bConditional\b/`, `/컨디[서셔][날널]/`|조건부|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Operator|`/\bOperator\b/`, `/오퍼[레래]이터/`|연산자|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Reuse|`/\bReuse\b/`|재사용|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Mock|`/\bMock\b/`|모의|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Callback|`/\bCallback\b/`|콜백|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Synthetic|`/\bSynthetic\b/`|합성|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Event|`/\bEvent\b/`|이벤트|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Higher Order|`/\bHigher\s?Order\b/`|고차|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Mount|`/\b(?<!Un)Mount\b/`|마운트|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Unmount|`/\bUnmount\b/`, `/언마운트/`|마운트 해제|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Form|`/\bForm\b/`|폼|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Wrapper|`/\bWrapper\b/`|래퍼|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Children|`/\bChild(?:ren)?\b/`|자식|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Code-Splitting|`/\bCode[-\s]?Splitting\b/`|코드 분할|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Reconciliation|`/\bReconciliation\b/`|재조정|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Property|`/\bPropert(?:y\|ies)\b/`|프로퍼티|[#2](https://github.com/reactjs/ko.react.dev/issues/2)||
+Reference|`/\bReference\b/`, `/래퍼런스/`|레퍼런스|[#569](https://github.com/reactjs/ko.react.dev/issues/569)||
+User|`/\bUser\b/`, `/유저/`|사용자|[#569](https://github.com/reactjs/ko.react.dev/issues/569)||
+Interface|`/\bInterface\b/`|인터페이스|[#569](https://github.com/reactjs/ko.react.dev/issues/569)||
+Markup|`/\bMarkup\b/`, `/마크 업/`|마크업|[#569](https://github.com/reactjs/ko.react.dev/issues/569)||
+Interactivity|`/\bInteracti(?:vity\|on)\b/`, `/인터[랙렉][선션]/`|상호작용|[#569](https://github.com/reactjs/ko.react.dev/issues/569)||
+Architecture|`/\bArchitecture\b/`, `/아키택처/`, `/아키[택텍]쳐/`|아키텍처|[#569](https://github.com/reactjs/ko.react.dev/issues/569)||
+Full-Stack|`/\bFull[-\s]?Stack\b/`|풀스택|[#569](https://github.com/reactjs/ko.react.dev/issues/569)||
+Browser|`/\bBrowser\b/`|브라우저|[#610](https://github.com/reactjs/ko.react.dev/issues/610)||
+Extension|`/\bExtension\b/`, `/확장프로그램/`|확장 프로그램|[#610](https://github.com/reactjs/ko.react.dev/issues/610)||
+Escape Hatches|`/\bEscape[-\s]?Hatches\b/`|탈출구|[#738](https://github.com/reactjs/ko.react.dev/issues/738)||
 
 ### Others
 
