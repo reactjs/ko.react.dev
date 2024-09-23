@@ -52,10 +52,14 @@ function Section({children, background = null}) {
 
 function Header({children}) {
   return (
-    <h2 className="leading-xl font-display text-primary dark:text-primary-dark font-semibold text-5xl lg:text-6xl -mt-4 mb-7 w-full max-w-3xl lg:max-w-xl">
+    <h2 className="leading-xl font-display text-primary dark:text-primary-dark font-semibold text-5xl lg:text-6xl -mt-4 mb-7 w-full max-w-3xl">
       {children}
     </h2>
   );
+}
+
+function Br() {
+  return <br className="hidden lg:inline" />;
 }
 
 function Para({children}) {
@@ -160,7 +164,10 @@ export function HomeContent() {
 
         <Section background="left-card">
           <Center>
-            <Header>컴포넌트를 사용하여 사용자 인터페이스 만들기</Header>
+            <Header>
+              컴포넌트를 사용하여
+              <Br /> 사용자 인터페이스 만들기
+            </Header>
             <Para>
               React를 사용하면 컴포넌트라고 불리는 조각들을 사용하여 사용자
               인터페이스를 만들 수 있습니다. <Code>Thumbnail</Code>,{' '}
@@ -183,7 +190,10 @@ export function HomeContent() {
 
         <Section background="right-card">
           <Center>
-            <Header>코드와 마크업으로 컴포넌트 작성하기</Header>
+            <Header>
+              코드와 마크업으로
+              <Br /> 컴포넌트 작성하기
+            </Header>
             <Para>
               React 컴포넌트는 JavaScript 함수입니다. 조건부로 내용을 표시하려면{' '}
               <Code>if</Code> 문을 사용할 수 있습니다. 목록을 표시하려면 배열에{' '}
@@ -206,7 +216,10 @@ export function HomeContent() {
 
         <Section background="left-card">
           <Center>
-            <Header>필요한 곳에 상호작용 요소 추가하기</Header>
+            <Header>
+              필요한 곳에
+              <Br /> 상호작용 요소 추가하기
+            </Header>
             <Para>
               React 컴포넌트는 데이터를 받고 화면에 표시할 내용을 반환합니다.
               사용자가 입력란에 입력하는 것과 같이 상호작용에 응답하여 새
@@ -236,7 +249,10 @@ export function HomeContent() {
 
         <Section background="right-card">
           <Center>
-            <Header>프레임워크를 통해서 풀스택으로 만들기</Header>
+            <Header>
+              프레임워크를 통해서
+              <Br /> 풀스택으로 만들기
+            </Header>
             <Para>
               React는 라이브러리입니다. 컴포넌트를 함께 묶을 수 있지만, 라우팅과
               데이터를 가져오는 방법을 규정하지는 않습니다. React로 앱을
