@@ -71,6 +71,7 @@ function Br({breakPointPrefix = 'lg'}) {
     lg: 'lg:inline',
     xl: 'xl:inline',
   }[breakPointPrefix];
+
   return <br className={cn('hidden', breakPointClass)} />;
 }
 
