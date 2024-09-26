@@ -29,13 +29,13 @@ React DOM은 브라우저 DOM 환경에서 실행되는 웹 애플리케이션�
 * [Client APIs](/reference/react-dom/client) - `react-dom/client` API를 사용하면 브라우저에서 React 컴포넌트를 렌더링할 수 있습니다.
 * [Server APIs](/reference/react-dom/server) - `react-dom/server` API를 사용하면 서버에서 React 컴포넌트를 HTML로 렌더링할 수 있습니다.
 
-## Rules of React {/*rules-of-react*/}
+## React의 규칙 {/*rules-of-react*/}
 
-React has idioms — or rules — for how to express patterns in a way that is easy to understand and yields high-quality applications:
+React에는 패턴을 이해하기 쉽게 하며 고품질의 애플리케이션을 만들 수 있게 하는 일종의 규칙 혹은 모범적인 방식이 있습니다.
 
-* [Components and Hooks must be pure](/reference/rules/components-and-hooks-must-be-pure) – Purity makes your code easier to understand, debug, and allows React to automatically optimize your components and hooks correctly.
-* [React calls Components and Hooks](/reference/rules/react-calls-components-and-hooks) – React is responsible for rendering components and hooks when necessary to optimize the user experience.
-* [Rules of Hooks](/reference/rules/rules-of-hooks) – Hooks are defined using JavaScript functions, but they represent a special type of reusable UI logic with restrictions on where they can be called.
+* [컴포넌트와 Hook은 순수해야 합니다](/reference/rules/components-and-hooks-must-be-pure) – 순수성은 코드를 더 쉽게 이해하고 디버그할 수 있도록 하며, React가 올바르게 컴포넌트와 Hook을 자동으로 최적화할 수 있도록 합니다.
+* [React가 컴포넌트와 Hook을 호출하는 방식](/reference/rules/react-calls-components-and-hooks) – React는 사용자 경험을 최적화하기 위해 필요할 때마다 컴포넌트와 Hook을 렌더링합니다.
+* [Hook의 규칙](/reference/rules/rules-of-hooks) – Hook은 JavaScript 함수로 정의되지만 호출 위치에 제약이 있는 특별한 유형의 재사용 가능한 UI 로직입니다.
 
 ## Legacy APIs {/*legacy-apis*/}
 
