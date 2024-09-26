@@ -33,7 +33,7 @@ React DOM은 브라우저 DOM 환경에서 실행되는 웹 애플리케이션�
 
 React에는 패턴을 이해하기 쉽게 하며 고품질의 애플리케이션을 만들 수 있게 하는 일종의 규칙 혹은 모범적인 방식이 있습니다.
 
-* [컴포넌트와 Hook은 순수해야 합니다](/reference/rules/components-and-hooks-must-be-pure) – 코드의 순수성은 코드를 더 쉽게 이해하고 디버그할 수 있도록 하며, React가 바르게 컴포넌트와 훅을 자동으로 최적화할 수 있도록 합니다.
+* [컴포넌트와 Hook은 순수해야 합니다](/reference/rules/components-and-hooks-must-be-pure) – 순수성은 코드를 더 쉽게 이해하고 디버그할 수 있도록 하며, React가 올바르게 컴포넌트와 Hook을 자동으로 최적화할 수 있도록 합니다.
 * [React가 컴포넌트와 Hook을 호출하는 방식](/reference/rules/react-calls-components-and-hooks) – React는 사용자 경험을 최적화하기 위해 필요할 때마다 컴포넌트와 Hook을 렌더링합니다.
 * [Hook의 규칙](/reference/rules/rules-of-hooks) – Hook은 JavaScript 함수로 정의되지만 호출 위치에 제약이 있는 특별한 유형의 재사용 가능한 UI 로직입니다.
 
