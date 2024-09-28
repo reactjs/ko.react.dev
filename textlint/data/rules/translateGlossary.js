@@ -1,3 +1,5 @@
+// `sources`에 속한 단어들은 특수한 경우를 제외하고는 기본적으로 '원자성'을 유지해야 합니다. ex) 'stateless component'(x) -> 'stateless'(O), 'component'(O)
+// 단, `-`(dash)로 이어진 단어 ex) 'full-stack'은 한개의 단어로 취급합니다.
 module.exports = {
   translated: {
     react: [
