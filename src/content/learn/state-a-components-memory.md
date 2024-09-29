@@ -530,7 +530,7 @@ button {
 
 대신 간결한 구문을 구현하기 위해 훅은 **동일한 컴포넌트의 모든 렌더링에서 안정적인 호출 순서에 의존합니다.** 위의 규칙("최상위 수준에서만 훅 호출")을 따르면, 훅은 항상 같은 순서로 호출되기 때문에 실제로 잘 작동합니다. 또한, [린터 플러그인](https://www.npmjs.com/package/eslint-plugin-react-hooks)은 대부분의 실수를 잡아줍니다.
 
-내부적으로 React는 모든 컴포넌트에 대해 한 쌍의 state 배열을 가집니다. 또한 렌더링 전에 `0`으로 설정된 현재 인덱스 쌍을 유지합니다. `useState`를 호출할 때마다, React는 다음 state 쌍을 제공하고 인덱스를 증가시킵니다. 이 메커니즘에 대한 자세한 내용은 [리액트 훅: 마법이 아닌 배열](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)에서 확인할 수 있습니다.
+내부적으로 React는 모든 컴포넌트에 대해 한 쌍의 state 배열을 가집니다. 또한 렌더링 전에 `0`으로 설정된 현재 인덱스 쌍을 유지합니다. `useState`를 호출할 때마다, React는 다음 state 쌍을 제공하고 인덱스를 증가시킵니다. 이 메커니즘에 대한 자세한 내용은 [React 훅: 마법이 아닌 배열](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)에서 확인할 수 있습니다.
 
 이 예시에서는 **React를 사용하지 않지만,** 내부적으로 `useState`가 어떻게 작동하는지에 대한 아이디어를 제공합니다.
 

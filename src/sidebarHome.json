@@ -1,5 +1,5 @@
 {
-  "title": "리액트 문서",
+  "title": "React 문서",
   "path": "/",
   "routes": [
     {
@@ -79,7 +79,7 @@
       "sectionHeader": "GET INVOLVED"
     },
     {
-      "title": "리액트 커뮤니티",
+      "title": "React 커뮤니티",
       "path": "/community"
     },
     {
@@ -87,7 +87,7 @@
       "sectionHeader": "STAY INFORMED"
     },
     {
-      "title": "리액트 블로그",
+      "title": "React 블로그",
       "path": "/blog"
     }
   ]
