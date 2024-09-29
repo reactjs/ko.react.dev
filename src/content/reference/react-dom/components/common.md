@@ -761,7 +761,7 @@ CSS 전환 이벤트에 대한 이벤트 핸들러 유형입니다.
 
 ### CSS 스타일 적용하기 {/*applying-css-styles*/}
 
-리액트는 [`className`](https://developer.mozilla.org/ko/docs/Web/API/Element/className)을 사용하여 CSS 클래스를 지정합니다. 이것은 HTML의 클래스 속성처럼 작동합니다.
+React는 [`className`](https://developer.mozilla.org/ko/docs/Web/API/Element/className)을 사용하여 CSS 클래스를 지정합니다. 이것은 HTML의 클래스 속성처럼 작동합니다.
 
 ```js
 <img className="avatar" />
