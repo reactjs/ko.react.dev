@@ -339,7 +339,7 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "React 의 규칙"
+      "sectionHeader": "React의 규칙"
     },
     {
       "title": "개요",
@@ -361,7 +361,7 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "React Server Components"
+      "sectionHeader": "React 서버 컴포넌트"
     },
     {
       "title": "서버 컴포넌트",

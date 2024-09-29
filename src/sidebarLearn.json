@@ -11,7 +11,7 @@
       "path": "/learn",
       "routes": [
         {
-          "title": "자습서: Tic-Tac-Toe",
+          "title": "자습서: 틱택토 게임",
           "path": "/learn/tutorial-tic-tac-toe"
         },
         {
