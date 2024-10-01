@@ -53,11 +53,10 @@ function AppContainer() {
 * `state`: 작업이 대기 중이지 않을 때 초기에 반환될 값입니다.
 * `updateFn(currentState, optimisticValue)`: 현재 상태와 addOptimistic에 전달된 낙관적인 값을 취하는 함수로, 결과적인 낙관적인 상태를 반환합니다. 순수 함수여야 합니다. `updateFn`은 두 개의 매개변수를 취합니다. `currentState`와 `optimisticValue`. 반환 값은 `currentState`와 `optimisticValue`의 병합된 값입니다.
 
-
 #### 반환값 {/*returns*/}
 
 * `optimisticState`: 결과적인 낙관적인 상태입니다. 작업이 대기 중이지 않을 때는 `state`와 동일하며, 그렇지 않은 경우 `updateFn`에서 반환된 값과 동일합니다.
-* `addOptimistic`: `addOptimistic`는 낙관적인 업데이트가 있을 때 호출하는 디스패치 함수입니다. 어떠한 타입의 `optimisticValue`라는 하나의 인자를 취하며, `state`와 `optimisticValue`로 `updateFn`을 호출합니다.
+* `addOptimistic`: `addOptimistic`는 낙관적인 업데이트가 있을 때 호출하는 Dispatch 함수입니다. 어떠한 타입의 `optimisticValue`라는 하나의 인자를 취하며, `state`와 `optimisticValue`로 `updateFn`을 호출합니다.
 
 ---
 
@@ -70,7 +69,6 @@ function AppContainer() {
 예를 들어, 사용자가 폼에 메시지를 입력하고 "전송" 버튼을 누르면, `useOptimistic` Hook은 메시지가 실제로 서버로 전송되기 전에 "전송 중..." 라벨이 있는 목록에 메시지가 즉시 나타나도록 합니다. 이 "낙관적" 접근법은 속도와 반응성의 느낌을 줍니다. 그런 다음 폼은 백그라운드에서 메시지를 실제로 전송하려고 시도합니다. 서버가 메시지를 받았음을 확인하면, "전송 중..." 라벨이 제거됩니다.
 
 <Sandpack>
-
 
 ```js src/App.js
 import { useOptimistic, useState, useRef } from "react";
