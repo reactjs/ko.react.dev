@@ -190,7 +190,7 @@ async function Author({id}) {
 
 서버 컴포넌트는 `"use server"`로 표시된다는 오해가 있지만, 서버 컴포넌트에 대한 지시어은 없습니다. `"use server"` 지시어은 서버 액션에 사용됩니다.
 
-자세한 내용은 [Directives](/reference/rsc/directives) 참조하세요.
+자세한 내용은 [지시어](/reference/rsc/directives) 참조하세요.
 
 </Note>
 
