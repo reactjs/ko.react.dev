@@ -52,12 +52,12 @@ function AppRoot() {
 #### 매개변수 {/*parameters*/}
 
 * `href`: 문자열입니다. 다운로드하려는 모듈의 URL입니다.
-* `options`: 객체입니다. 여기에는 다음과 같은 속성이 포함되어 있습니다:
+* `options`: 객체입니다. 여기에는 다음과 같은 속성들이 포함되어 있습니다.
   *  `as`: 필수 문자열입니다. `'script'`여야 합니다.
   *  `crossOrigin`: 문자열입니다. 사용할 [CORS 정책](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)입니다. 가능한 값은 `anonymous`와 `use-credentials`입니다.
-  *  `integrity`: 문자열입니다. 모듈의 [진위 확인](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)을 위한
+  *  `integrity`: 문자열입니다. 모듈의 [신뢰성 확인](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)을 위한
   모듈의 암호화 해시입니다.
-  *  `nonce`: 문자열입니다. 엄격한 컨텐츠 보안 정책을 사용할 때 [모듈을 허용하기 위한 암호화 논스](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
+  *  `nonce`: 문자열입니다. 엄격한 컨텐츠 보안 정책을 사용할 때 [모듈을 허용하기 위한 암호화 논스(Nonce)](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
 
 
 #### 반환값 {/*returns*/}
@@ -68,7 +68,7 @@ function AppRoot() {
 
 * 동일한 `href`로 `preloadModule`을 여러 번 호출하는 것은 한 번 호출하는 것과 동일한 효과가 있습니다.
 * 브라우저에서는 컴포넌트를 렌더링하는 중이거나, Effect, 이벤트 핸들러 등 어떤 상황에서도 `preloadModule`을 호출할 수 있습니다. 
-* 서버 사이드 렌더링이나 서버 컴포넌트를 렌더링할 때, `preloadModule`은 컴포넌트를 렌더링하는 동안 호출하거나, 컴포넌트 렌더링에서 시작된 비동기 컨텍스트 내에서 호출할 때만 효과가 있습니다. 그 외의 호출은 무시됩니다.
+* 서버 측 렌더링이나 서버 컴포넌트를 렌더링할 때, `preloadModule`은 컴포넌트를 렌더링하는 동안 호출하거나, 컴포넌트 렌더링에서 시작된 비동기 컨텍스트 내에서 호출할 때만 효과가 있습니다. 그 외의 호출은 무시됩니다.
 
 ---
 
@@ -91,7 +91,7 @@ function AppRoot() {
 
 ### 이벤트 핸들러에서 미리 불러오기 {/*preloading-in-an-event-handler*/}
 
-모듈이 필요한 페이지나 상태로 전환되기 전에 이벤트 핸들러에서 `preloadModule`을 호출하세요. 이렇게 하면 새로운 페이지나 상태를 렌더링할 때 호출하는 것보다 더 일찍 프로세스를 시작할 수 있습니다.
+모듈이 필요한 페이지나 State로 전환되기 전에 이벤트 핸들러에서 `preloadModule`을 호출하세요. 이렇게 하면 새로운 페이지나 상태를 렌더링할 때 호출하는 것보다 더 일찍 프로세스를 시작할 수 있습니다.
 
 ```js
 import { preloadModule } from 'react-dom';
