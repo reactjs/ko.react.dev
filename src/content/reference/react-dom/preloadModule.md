@@ -5,19 +5,19 @@ canary: true
 
 <Canary>
 
-The `preloadModule` function is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+`preloadModule`는 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. 여기에서 [React의 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보세요.
 
 </Canary>
 
 <Note>
 
-[React-based frameworks](/learn/start-a-new-react-project) frequently handle resource loading for you, so you might not have to call this API yourself. Consult your framework's documentation for details.
+[React 기반 프레임워크](/learn/start-a-new-react-project)는 리소스 로딩을 대신 처리하는 경우가 많으므로 이 API를 직접 호출할 필요가 없을 수도 있습니다. 자세한 내용은 해당 프레임워크의 문서를 참조하세요.
 
 </Note>
 
 <Intro>
 
-`preloadModule` lets you eagerly fetch an ESM module that you expect to use.
+`preloadModule`을 사용하면 사용할 ESM 모듈을 미리 가져올 수 있습니다.
 
 ```js
 preloadModule("https://example.com/module.js", {as: "script"});
@@ -29,11 +29,11 @@ preloadModule("https://example.com/module.js", {as: "script"});
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `preloadModule(href, options)` {/*preloadmodule*/}
 
-To preload an ESM module, call the `preloadModule` function from `react-dom`.
+ESM 모듈을 미리 불러오려면 `react-dom`에서 `preloadModule` 함수를 호출합니다.
 
 ```js
 import { preloadModule } from 'react-dom';
@@ -45,37 +45,38 @@ function AppRoot() {
 
 ```
 
-[See more examples below.](#usage)
+[아래에서 더 많은 예시를 확인하세요.](#usage)
 
-The `preloadModule` function provides the browser with a hint that it should start downloading the given module, which can save time.
+`preloadModule` 기능은 브라우저에 주어진 모듈 다운로드를 시작해야 한다는 힌트를 제공하여 시간을 절약할 수 있습니다.
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `href`: a string. The URL of the module you want to download.
-* `options`: an object. It contains the following properties:
-  *  `as`: a required string. It must be `'script'`.
-  *  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
-  *  `integrity`: a string. A cryptographic hash of the module, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-  *  `nonce`: a string. A cryptographic [nonce to allow the module](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy. 
+* `href`: 문자열입니다. 다운로드하려는 모듈의 URL입니다.
+* `options`: 객체입니다. 여기에는 다음과 같은 속성이 포함되어 있습니다:
+  *  `as`: 필수 문자열입니다. `'script'`여야 합니다.
+  *  `crossOrigin`: 문자열입니다. 사용할 [CORS 정책](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)입니다. 가능한 값은 `anonymous`와 `use-credentials`입니다.
+  *  `integrity`: 문자열입니다. 모듈의 [진위 확인](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)을 위한
+  모듈의 암호화 해시입니다.
+  *  `nonce`: 문자열입니다. 엄격한 컨텐츠 보안 정책을 사용할 때 [모듈을 허용하기 위한 암호화 논스](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
 
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-`preloadModule` returns nothing.
+`preloadModule`는 아무것도 반환하지 않습니다.
 
-#### Caveats {/*caveats*/}
+#### 주의사항 {/*caveats*/}
 
-* Multiple calls to `preloadModule` with the same `href` have the same effect as a single call.
-* In the browser, you can call `preloadModule` in any situation: while rendering a component, in an Effect, in an event handler, and so on.
-* In server-side rendering or when rendering Server Components, `preloadModule` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
+* 동일한 `href`로 `preloadModule`을 여러 번 호출하는 것은 한 번 호출하는 것과 동일한 효과가 있습니다.
+* 브라우저에서는 컴포넌트를 렌더링하는 중이거나, Effect, 이벤트 핸들러 등 어떤 상황에서도 `preloadModule`을 호출할 수 있습니다. 
+* 서버 사이드 렌더링이나 서버 컴포넌트를 렌더링할 때, `preloadModule`은 컴포넌트를 렌더링하는 동안 호출하거나, 컴포넌트 렌더링에서 시작된 비동기 컨텍스트 내에서 호출할 때만 효과가 있습니다. 그 외의 호출은 무시됩니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Preloading when rendering {/*preloading-when-rendering*/}
+### 렌더링 시 미리 불러오기 {/*preloading-when-rendering*/}
 
-Call `preloadModule` when rendering a component if you know that it or its children will use a specific module.
+컴포넌트 또는 그 자식 컴포넌트가 특정 모듈을 사용한다는 것을 알고 있다면, 컴포넌트를 렌더링할 때 `preloadModule`을 호출하세요.
 
 ```js
 import { preloadModule } from 'react-dom';
@@ -86,11 +87,11 @@ function AppRoot() {
 }
 ```
 
-If you want the browser to start executing the module immediately (rather than just downloading it), use [`preinitModule`](/reference/react-dom/preinitModule) instead. If you want to load a script that isn't an ESM module, use [`preload`](/reference/react-dom/preload).
+브라우저에서 모듈을 즉시 실행하려면(단순히 다운로드하는 것 대신) [`preinitModule`](/reference/react-dom/preinitModule)을 대신 사용하세요. ESM 모듈이 아닌 스크립트를 로드하려면 [`preload`](/reference/react-dom/preload)를 사용하세요.
 
-### Preloading in an event handler {/*preloading-in-an-event-handler*/}
+### 이벤트 핸들러에서 미리 불러오기 {/*preloading-in-an-event-handler*/}
 
-Call `preloadModule` in an event handler before transitioning to a page or state where the module will be needed. This gets the process started earlier than if you call it during the rendering of the new page or state.
+모듈이 필요한 페이지나 상태로 전환되기 전에 이벤트 핸들러에서 `preloadModule`을 호출하세요. 이렇게 하면 새로운 페이지나 상태를 렌더링할 때 호출하는 것보다 더 일찍 프로세스를 시작할 수 있습니다.
 
 ```js
 import { preloadModule } from 'react-dom';
