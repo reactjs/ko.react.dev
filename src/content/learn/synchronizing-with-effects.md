@@ -627,7 +627,11 @@ See the examples below for how to handle common patterns.
 
 ### React로 작성되지 않은 위젯 제어하기 {/*controlling-non-react-widgets*/}
 
+<<<<<<< HEAD
 가끔씩 React로 작성되지 않은 UI 위젯을 추가해야 할 때가 있습니다. 예를 들어, 페이지에 지도 컴포넌트를 추가한다고 가정해 보겠습니다. 이 지도 컴포넌트에는 `setZoomLevel()` 메서드가 있으며, `zoomLevel` state 변수와 동기화하려고 할 것입니다. Effect는 다음과 비슷할 것입니다.
+=======
+Sometimes you need to add UI widgets that aren't written in React. For example, let's say you're adding a map component to your page. It has a `setZoomLevel()` method, and you'd like to keep the zoom level in sync with a `zoomLevel` state variable in your React code. Your Effect would look similar to this:
+>>>>>>> 1697ae89a3bbafd76998dd7496754e5358bc1e9a
 
 ```js
 useEffect(() => {

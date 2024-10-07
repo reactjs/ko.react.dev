@@ -1137,7 +1137,11 @@ export default function Board() {
 
 <Note>
 
+<<<<<<< HEAD
 JavaScript는 [클로저](https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures)를 지원하므로 내부 함수가(예: `handleClick`) 외부 함수(예: `Board`)에 정의된 변수 및 함수에 접근할 수 있습니다. `handleClick` 함수는 `squares`의 state를 읽고 `setSquares` 메서드를 호출할 수 있는데, 이 두 함수는 `Board` 함수 내부에 정의되어 있기 때문입니다.
+=======
+JavaScript supports [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) which means an inner function (e.g. `handleClick`) has access to variables and functions defined in an outer function (e.g. `Board`). The `handleClick` function can read the `squares` state and call the `setSquares` method because they are both defined inside of the `Board` function.
+>>>>>>> 1697ae89a3bbafd76998dd7496754e5358bc1e9a
 
 </Note>
 

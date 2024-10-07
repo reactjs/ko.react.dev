@@ -264,11 +264,19 @@ props와 state는 다르지만, 함께 동작합니다. state는 보통 부모 �
 
 이제 이 전략을 애플리케이션에 적용해 봅시다.
 
+<<<<<<< HEAD
 1. **state를 쓰는 컴포넌트를 찾아봅시다**:
    - `ProductTable`은 state에 기반한 상품 리스트를 필터링해야 합니다 (검색어와 체크 박스의 값)
    - `SearchBar`는 state를 표시해 주어야 합니다. (검색어와 체크 박스의 값)
 2. **공통 부모를 찾아봅시다**: 둘 모두가 공유하는 첫 번째 부모는 `FilterableProductTable`입니다
 3. **어디에 state가 존재해야 할지 정해봅시다**: 우리는`FilterableProductTable`에 검색어와 체크 박스 값을 state로 둘 겁니다.
+=======
+1. **Identify components that use state:**
+    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value). 
+    * `SearchBar` needs to display that state (search text and checkbox value).
+2. **Find their common parent:** The first parent component both components share is `FilterableProductTable`.
+3. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
+>>>>>>> 1697ae89a3bbafd76998dd7496754e5358bc1e9a
 
 이제 state 값은 `FilterableProductTable`안에 있습니다.
 
