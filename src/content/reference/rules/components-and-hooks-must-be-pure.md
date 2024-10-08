@@ -190,7 +190,7 @@ function ExpenseForm() {
 
 ```js {2}
 function ProductDetailPage({ product }) {
-  document.window.title = product.title; // 🔴 Bad: DOM을 변경함
+  document.title = product.title; // 🔴 Bad: DOM을 변경함
 }
 ```
 
