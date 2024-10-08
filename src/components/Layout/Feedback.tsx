@@ -63,7 +63,7 @@ function SendFeedback({onSubmit}: {onSubmit: () => void}) {
   return (
     <div
       className={cn(
-        'max-w-custom-xs w-80 lg:w-auto py-3 shadow-lg rounded-lg m-4 bg-wash dark:bg-gray-95 px-4 flex',
+        'max-w-96 w-80 lg:w-auto py-3 shadow-lg rounded-lg m-4 bg-wash dark:bg-gray-95 px-4 flex',
         {exit: isSubmitted}
       )}>
       <p className="w-full text-lg font-bold text-primary dark:text-primary-dark me-4">
