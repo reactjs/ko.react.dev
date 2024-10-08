@@ -379,11 +379,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 #### 여러 필드에 단일 이벤트 핸들러 사용하기 {/*using-a-single-event-handler-for-multiple-fields*/}
 
-<<<<<<< HEAD
 `[` 와 `]` 괄호를 객체 정의 안에 사용하여 동적 이름을 가진 프로퍼티를 명시할 수 있습니다. 아래에는 이전 예시와 같지만, 세 개의 다른 이벤트 핸들러 대신 하나의 이벤트 핸들러를 사용하는 예시가 있습니다.
-=======
-You can also use the `[` and `]` braces inside your object definition to specify a property with a dynamic name. Here is the same example, but with a single event handler instead of three different ones:
->>>>>>> 1697ae89a3bbafd76998dd7496754e5358bc1e9a
 
 <Sandpack>
 
