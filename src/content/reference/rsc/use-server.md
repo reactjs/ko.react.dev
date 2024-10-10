@@ -1,6 +1,6 @@
 ---
 title: "'use server'"
-titleForTitleTag: "'use server' directive"
+titleForTitleTag: "'use server' 지시어"
 canary: true
 ---
 

@@ -549,6 +549,15 @@ module.exports = {
           note: '',
         },
       },
+      {
+        sources: [/\bDirectives?\b/],
+        target: '지시어',
+        meta: {
+          term: 'Directive',
+          discussions: [819],
+          note: '',
+        },
+      },
     ],
   },
   // untranslated: {
