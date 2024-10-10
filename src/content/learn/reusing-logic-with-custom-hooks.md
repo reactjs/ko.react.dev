@@ -1267,7 +1267,7 @@ function ChatRoom({ roomId }) {
 
 ### 커스텀 Hook은 더 나은 패턴으로 변경할 수 있도록 도와줍니다. {/*custom-hooks-help-you-migrate-to-better-patterns*/}
 
-Effect는 [도피구](/learn/escape-hatches) 입니다. "React에서 벗어나"는 것이 필요할 때나 사용 시에 괜찮은 내장된 해결 방법이 없는 경우, 사용합니다. React 팀의 목표는 더 구체적인 문제에 더 구체적인 해결 방법을 제공해 앱에 있는 Effect의 숫자를 점차 최소한으로 줄이는 것입니다. 커스텀 Hook으로 Effect를 감싸는 것은 이런 해결 방법들이 가능해질 때 코드를 쉽게 업그레이드할 수 있게 해줍니다.
+Effect는 [탈출구](/learn/escape-hatches) 입니다. "React에서 벗어나"는 것이 필요할 때나 사용 시에 괜찮은 내장된 해결 방법이 없는 경우, 사용합니다. React 팀의 목표는 더 구체적인 문제에 더 구체적인 해결 방법을 제공해 앱에 있는 Effect의 숫자를 점차 최소한으로 줄이는 것입니다. 커스텀 Hook으로 Effect를 감싸는 것은 이런 해결 방법들이 가능해질 때 코드를 쉽게 업그레이드할 수 있게 해줍니다.
 
 예시로 돌아가 봅시다.
 
