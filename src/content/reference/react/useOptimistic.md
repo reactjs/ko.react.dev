@@ -56,7 +56,7 @@ function AppContainer() {
 #### 반환값 {/*returns*/}
 
 * `optimisticState`: 결과적인 낙관적인 상태입니다. 작업이 대기 중이지 않을 때는 `state`와 동일하며, 그렇지 않은 경우 `updateFn`에서 반환된 값과 동일합니다.
-* `addOptimistic`: `addOptimistic`는 낙관적인 업데이트가 있을 때 호출하는 Dispatch 함수입니다. 어떠한 타입의 `optimisticValue`라는 하나의 인자를 취하며, `state`와 `optimisticValue`로 `updateFn`을 호출합니다.
+* `addOptimistic`: `addOptimistic`는 낙관적인 업데이트가 있을 때 호출하는 dispatch 함수입니다. 어떠한 타입의 `optimisticValue`라는 하나의 인자를 취하며, `state`와 `optimisticValue`로 `updateFn`을 호출합니다.
 
 ---
 
