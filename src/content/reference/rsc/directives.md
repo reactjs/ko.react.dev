@@ -1,5 +1,5 @@
 ---
-title: "Directives"
+title: "지시어"
 canary: true
 ---
 
