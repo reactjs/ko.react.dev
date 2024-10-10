@@ -5,7 +5,6 @@ title: <Fragment> (<>...</>)
 <Intro>
 `<Fragment>`는 종종 `<>...</>` 구문으로 사용되고, 래퍼 노드 없이 엘리먼트를 그룹화할 수 있습니다.
 
-
 ```js
 <>
   <OneChild />
@@ -32,7 +31,7 @@ title: <Fragment> (<>...</>)
 
 - Fragment에 `key`를 사용하려면 `<>...</>` 구문을 사용할 수 없습니다. 명시적으로 `react`에서 `Fragment`를 import하고 `<Fragment key={yourKey}>...</Fragment>`를 렌더링해야 합니다.
 
-- React는 `<><Child /></>`에서 `[<Child />]`로 렌더링하거나 (또는 반대의 경우), 혹은 `<><Child /></>` 에서 `<Child />` 렌더링하거나 (또는 반대의 경우) [state를 초기화](/learn/preserving-and-resetting-state)하지 않습니다. 이는 오직 single level까지 적용됩니다. 예를 들어 `<><><Child /></></>` 에서 `<Child />`로 렌더링하는 것은 state가 초기화됩니다. 정확한 semantics는 [여기](https://gist.github.com/clemmy/b3ef00f9507909429d8aa0d3ee4f986b)서 참조하실 수 있습니다.
+- React는 `<><Child /></>`에서 `[<Child />]`로 렌더링하거나 (또는 반대의 경우), 혹은 `<><Child /></>` 에서 `<Child />` 렌더링하거나 (또는 반대의 경우) [state를 초기화](/learn/preserving-and-resetting-state)하지 않습니다. 이는 오직 단일 레벨 깊이(Single Level Deep)까지만 적용됩니다. 예를 들어 `<><><Child /></></>` 에서 `<Child />`로 렌더링하는 것은 state가 초기화됩니다. 정확한 semantics는 [여기](https://gist.github.com/clemmy/b3ef00f9507909429d8aa0d3ee4f986b)서 참조하실 수 있습니다.
 
 ---
 
@@ -41,7 +40,6 @@ title: <Fragment> (<>...</>)
 ### 여러 엘리먼트 반환하기 {/*returning-multiple-elements*/}
 
 여러 엘리먼트를 함께 그룹화하기 위해 `Fragment`나 `<>...</>` 문법을 사용하세요. 한 개의 엘리먼트가 존재할 수 있는 곳에 여러 엘리먼트를 넣을 수 있습니다. 예를 들어 컴포넌트는 한 개의 엘리먼트만 반환할 수 있지만 Fragment를 사용하여 여러 엘리먼트를 함께 그룹화하여 반환할 수 있습니다.
-
 
 ```js {3,6}
 function Post() {
@@ -54,7 +52,7 @@ function Post() {
 }
 ```
 
-Fragment로 엘리먼트를 그룹화하면 DOM 엘리먼트와 같은 다른 컨테이너로 엘리먼트를 감싸는 경우와는 달리 레이아웃이나 스타일에 영향을 주지 않기 때문에 Fragment는 효과적입니다. 브라우저로 아래 예시를 검사하면 모든 `<h1>`, `<article>` DOM 노드가 래퍼 없이 형제 노드로 나타나는 것을 볼 수 있습니다. 
+Fragment로 엘리먼트를 그룹화하면 DOM 엘리먼트와 같은 다른 컨테이너로 엘리먼트를 감싸는 경우와는 달리 레이아웃이나 스타일에 영향을 주지 않기 때문에 Fragment는 효과적입니다. 브라우저로 아래 예시를 검사하면 모든 `<h1>`, `<article>` DOM 노드가 래퍼 없이 형제 노드로 나타나는 것을 볼 수 있습니다.
 
 <Sandpack>
 
