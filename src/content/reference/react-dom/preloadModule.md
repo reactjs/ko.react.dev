@@ -91,7 +91,7 @@ function AppRoot() {
 
 ### 이벤트 핸들러에서 미리 불러오기 {/*preloading-in-an-event-handler*/}
 
-모듈이 필요한 페이지나 State를 전환되기 전에 이벤트 핸들러에서 `preloadModule`을 호출하세요. 이렇게 하면 새로운 페이지나 상태를 렌더링할 때 호출하는 것보다 더 일찍 프로세스를 시작할 수 있습니다.
+모듈이 필요한 페이지나 State를 전환되기 전에 이벤트 핸들러에서 `preloadModule`을 호출하세요. 이렇게 하면 새로운 페이지나 State를 렌더링할 때 호출하는 것보다 더 일찍 프로세스를 시작할 수 있습니다.
 
 ```js
 import { preloadModule } from 'react-dom';
