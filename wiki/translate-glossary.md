@@ -74,4 +74,7 @@ Returns|`/\bReturns\b/`, `/반환\s+(?:값\s+)?{\//`|반환값|[#725](https://gi
 Logic|`/\bLogic\b/`|로직|[#695](https://github.com/reactjs/ko.react.dev/issues/695)||
 Dependency|`/\bDependenc(?:y\|ies)\b/`|의존성|[#841](https://github.com/reactjs/ko.react.dev/issues/841)||
 Directive|`/\bDirectives?\b/`|지시어|[#819](https://github.com/reactjs/ko.react.dev/issues/819)||
+Bundle|`/\bBundles?\b/`|번들|[#829](https://github.com/reactjs/ko.react.dev/issues/829)||
+Bundler|`/\bBundlers?\b/`|번들러|[#829](https://github.com/reactjs/ko.react.dev/issues/829)||
+Bundling|`/\bBundling\b/`|번들링|[#829](https://github.com/reactjs/ko.react.dev/issues/829)||
 

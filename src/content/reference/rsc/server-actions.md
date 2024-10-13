@@ -15,9 +15,9 @@ Server Actions를 사용하면 클라이언트 컴포넌트가 서버에서 실�
 
 #### Server Actions에 대한 지원은 어떻게 구축하나요? {/*how-do-i-build-support-for-server-actions*/}
 
-React 19의 Server Actions는 안정적이고 주요 버전 간에 중단되지 않지만, React 서버 컴포넌트 bundler 또는 프레임워크에서 Server Actions를 구현하는 데 사용되는 API는 semver를 따르지 않으며 React 19.x의 마이너 버전에서는 중단될 수 있습니다.
+React 19의 Server Actions는 안정적이고 주요 버전 간에 중단되지 않지만, React 서버 컴포넌트 번들러 또는 프레임워크에서 Server Actions를 구현하는 데 사용되는 API는 semver를 따르지 않으며 React 19.x의 마이너 버전에서는 중단될 수 있습니다.
 
-Server Actions를 bundler 또는 프레임워크로 지원하려면, 특정 React 버전에 고정하거나 카나리(Canary) 릴리즈를 사용하는 것이 좋습니다. 향후 Server Actions를 구현하는 데 사용되는 API를 안정화하기 위해 bundler 및 프레임워크와 계속 협력할 예정입니다.
+Server Actions를 번들러 또는 프레임워크로 지원하려면, 특정 React 버전에 고정하거나 카나리(Canary) 릴리즈를 사용하는 것이 좋습니다. 향후 Server Actions를 구현하는 데 사용되는 API를 안정화하기 위해 번들러 및 프레임워크와 계속 협력할 예정입니다.
 
 </Note>
 
@@ -73,7 +73,7 @@ export async function createNoteAction() {
 
 ```
 
-bundler가 `EmptyNote` 클라이언트 컴포넌트를 빌드할 때, bundle에서 `createNoteAction` 함수에 대한 참조를 생성합니다. 버튼이 클릭 되면, React는 제공된 참조를 사용해 `createNoteAction` 함수를 실행하도록 서버에 요청을 보냅니다.
+번들러가 `EmptyNote` 클라이언트 컴포넌트를 빌드할 때, 번들에서 `createNoteAction` 함수에 대한 참조를 생성합니다. 버튼이 클릭 되면, React는 제공된 참조를 사용해 `createNoteAction` 함수를 실행하도록 서버에 요청을 보냅니다.
 
 ```js [[1, 2, "createNoteAction"], [1, 5, "createNoteAction"], [1, 7, "createNoteAction"]]
 "use client";
@@ -208,6 +208,6 @@ function UpdateName() {
 }
 ```
 
-<CodeStep step={2}>permalink</CodeStep>가 `useActionState`에 제공될 때, 자바스크립트 bundle이 로드되기 전에 폼이 제출되면 React는 제공된 URL로 리디렉션합니다.
+<CodeStep step={2}>permalink</CodeStep>가 `useActionState`에 제공될 때, 자바스크립트 번들이 로드되기 전에 폼이 제출되면 React는 제공된 URL로 리디렉션합니다.
 
 자세한 내용은 [`useActionState`](/reference/react-dom/hooks/useFormState) 문서를 참조하세요.
