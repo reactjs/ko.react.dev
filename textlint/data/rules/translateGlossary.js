@@ -430,6 +430,33 @@ module.exports = {
           note: '',
         },
       },
+      {
+        sources: [/\bBundles?\b/],
+        target: '번들',
+        meta: {
+          term: 'Bundle',
+          discussions: [829],
+          note: '',
+        },
+      },
+      {
+        sources: [/\bBundlers?\b/],
+        target: '번들러',
+        meta: {
+          term: 'Bundler',
+          discussions: [829],
+          note: '',
+        },
+      },
+      {
+        sources: [/\bBundling\b/],
+        target: '번들링',
+        meta: {
+          term: 'Bundling',
+          discussions: [829],
+          note: '',
+        },
+      },
     ],
     others: [
       {
@@ -555,33 +582,6 @@ module.exports = {
         meta: {
           term: 'Directive',
           discussions: [819],
-          note: '',
-        },
-      },
-      {
-        sources: [/\bBundles?\b/],
-        target: '번들',
-        meta: {
-          term: 'Bundle',
-          discussions: [829],
-          note: '',
-        },
-      },
-      {
-        sources: [/\bBundlers?\b/],
-        target: '번들러',
-        meta: {
-          term: 'Bundler',
-          discussions: [829],
-          note: '',
-        },
-      },
-      {
-        sources: [/\bBundling\b/],
-        target: '번들링',
-        meta: {
-          term: 'Bundling',
-          discussions: [829],
           note: '',
         },
       },
