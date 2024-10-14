@@ -17,7 +17,7 @@ React의 프로그래밍 기능.
 * [Hooks](/reference/react/hooks) - 컴포넌트에서 다양한 React 기능을 사용하세요.
 * [컴포넌트](/reference/react/components) - JSX에서 사용할 수 있는 내장 컴포넌트입니다.
 * [API](/reference/react/apis) - 컴포넌트 정의에 유용한 API들을 다룹니다.
-* [지시어](/reference/rsc/directives) - React 서버 컴포넌트와 호환되는 Bundler에게 지시를 제공합니다.
+* [지시어](/reference/rsc/directives) - React 서버 컴포넌트와 호환되는 번들러에게 지시를 제공합니다.
 
 ## React DOM {/*react-dom*/}
 
