@@ -550,7 +550,7 @@ React 렌더 트리 예시
 
 <LearnMore path="/learn/understanding-your-ui-as-a-tree">
 
- React 앱을 위한 렌더, 모듈 의존성 트리를 생성하는 법과 사용자 경험과 성능을 향상하기 위한 유용한 사고방식을 알고 싶은 경우 **[트리로서의 UI](/learn/understanding-your-ui-as-a-tree)**을 읽어보세요.
+ React 앱을 위한 렌더, 모듈 의존성 트리를 생성하는 법과 사용자 경험과 성능을 향상하기 위한 유용한 사고방식을 알고 싶은 경우 **[트리로서의 UI](/learn/understanding-your-ui-as-a-tree)** 을 읽어보세요.
 
 </LearnMore>
 
