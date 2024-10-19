@@ -19,13 +19,9 @@ title: React 컴파일러
 </YouWillLearn>
 
 <Note>
-<<<<<<< HEAD
-React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 오픈소스로 공개된 새로운 실험적 컴파일러입니다. 아직 안정적이지 않으며 프로덕션 환경에서는 완전히 준비되지 않았습니다.
+React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 오픈소스로 공개한 새로운 실험적 컴파일러입니다. 아직 안정적이지 않으며 프로덕션 환경에서는 완전히 준비되지 않았습니다.
 
 React 컴파일러는 React 19 RC를 필요로 합니다. React 19로 업그레이드할 수 없는 경우 [워킹 그룹](https://github.com/reactwg/react-compiler/discussions/6)에 설명된 대로 사용자 공간 캐시 함수 구현을 시도해 볼 수 있습니다. 그러나 이 방법은 권장하지 않으며 가능한 한 React 19로 업그레이드하는 것이 좋습니다.
-=======
-React Compiler is a new experimental compiler that we've open sourced to get early feedback from the community. It still has rough edges and is not yet fully ready for production.
->>>>>>> 2b2d0f2309f49c82cf5bb88ea62fb2e44661c634
 </Note>
 
 React 컴파일러는 빌드 타임 전용 도구로 React 앱을 자동으로 최적화합니다. 순수 JavaScript로 동작하며 [React의 규칙](/reference/rules)을 이해하므로 코드를 다시 작성할 필요가 없습니다.
