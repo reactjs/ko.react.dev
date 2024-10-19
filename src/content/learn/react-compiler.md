@@ -19,7 +19,7 @@ title: React 컴파일러
 </YouWillLearn>
 
 <Note>
-React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 오픈소스로 공개된 새로운 실험적 컴파일러입니다. 아직 안정적이지 않으며 프로덕션 환경에서는 완전히 준비되지 않았습니다.
+React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 오픈소스로 공개한 새로운 실험적 컴파일러입니다. 아직 안정적이지 않으며 프로덕션 환경에서는 완전히 준비되지 않았습니다.
 
 React 컴파일러는 React 19 RC를 필요로 합니다. React 19로 업그레이드할 수 없는 경우 [워킹 그룹](https://github.com/reactwg/react-compiler/discussions/6)에 설명된 대로 사용자 공간 캐시 함수 구현을 시도해 볼 수 있습니다. 그러나 이 방법은 권장하지 않으며 가능한 한 React 19로 업그레이드하는 것이 좋습니다.
 </Note>
@@ -225,6 +225,29 @@ module.exports = function () {
 ```
 
 `babel-plugin-react-compiler`는 다른 Babel 플러그인보다 먼저 실행되어야 합니다. 이는 컴파일러가 사운드 분석(sound analysis)을 위해 입력 소스 정보를 필요로 하기 때문입니다.
+
+React Compiler works best with React 19 RC. If you are unable to upgrade, you can install the extra `react-compiler-runtime` package which will allow the compiled code to run on versions prior to 19. However, note that the minimum supported version is 17.
+
+<TerminalBlock>
+npm install react-compiler-runtime@experimental
+</TerminalBlock>
+
+You should also add the correct `target` to your compiler config, where `target` is the major version of React you are targeting:
+
+```js {3}
+// babel.config.js
+const ReactCompilerConfig = {
+  target: '18' // '17' | '18' | '19'
+};
+
+module.exports = function () {
+  return {
+    plugins: [
+      ['babel-plugin-react-compiler', ReactCompilerConfig],
+    ],
+  };
+};
+```
 
 ### Vite {/*usage-with-vite*/}
 

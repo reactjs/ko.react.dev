@@ -20,7 +20,7 @@ React Canary 버전에서 `useActionState` 라고 불리는 이 API 는 React DO
 `useActionState`는 폼 액션의 결과를 기반으로 state를 업데이트할 수 있도록 제공하는 Hook 입니다.
 
 ```js
-const [state, formAction] = useActionState(fn, initialState, permalink?);
+const [state, formAction, isPending] = useActionState(fn, initialState, permalink?);
 ```
 
 </Intro>
@@ -35,7 +35,7 @@ const [state, formAction] = useActionState(fn, initialState, permalink?);
 
 {/* TODO T164397693: link to actions documentation once it exists */}
 
-컴포넌트 최상위 레벨에서 `useActionState`를 호출하여 [폼 액션이 실행될 때](/reference/react-dom/components/form) 업데이트되는 컴포넌트 state를 생성합니다. `useActionState`에 기존의 폼 작업 함수와 초기 state를 전달하면, 최신 폼 state와 함께 폼에서 사용하는 새로운 액션을 반환합니다. 최신 폼 state 또한 제공된 함수에 전달됩니다.
+컴포넌트 최상위 레벨에서 `useActionState`를 호출하여 [폼 액션이 실행될 때](/reference/react-dom/components/form) 업데이트되는 컴포넌트 state를 생성합니다. `useActionState`는 기존의 폼 액션 함수와 초기 state를 전달받고, 폼에서 사용할 새로운 액션을 반환합니다. 이와 함께 최신 폼 state와 액션이 여전히 진행(Pending) 중인지 여부도 반환합니다. 최신 폼 State는 제공된 함수에도 전달됩니다.
 
 ```js
 import { useActionState } from "react";
@@ -71,10 +71,11 @@ Server Action과 함께 사용하는 경우, `useActionState`를 사용하여 hy
 
 #### 반환값 {/*returns*/}
 
-`useActionState`는 정확히 두 개의 값이 담긴 배열을 반환합니다.
+`useActionState`는 다음 3가지 값들이 포함된 배열을 반환합니다.
 
 1. 현재 state입니다. 첫 번째 렌더링에서는 전달한 `initialState`와 일치합니다. 액션이 실행된 이후에는 액션에서 반환한 값과 일치합니다.
 2. `form` 컴포넌트의 `action` prop에 전달하거나 폼 내부 `button` 컴포넌트의 `formAction` prop에 전달할 수 있는 새로운 액션입니다.
+3. 대기 중인 전환(Pending Transition)이 있는지 여부를 알려주는 `isPending` 플래그입니다.
 
 #### 주의 사항 {/*caveats*/}
 
@@ -104,10 +105,11 @@ function MyComponent() {
 }
 ```
 
-`useActionState`는 정확히 두 개의 항목으로 구성된 배열을 반환합니다.
+`useActionState`는 다음 3가지 항목들이 포함된 배열을 반환합니다.
 
-1. 폼의 <CodeStep step={1}>현재 state</CodeStep>입니다. 처음에는 제공한 <CodeStep step={4}>초기 state</CodeStep>로 설정되며, 폼이 제출된 후에는 전달한 <CodeStep step={3}>액션</CodeStep>의 반환값으로 설정됩니다.
-2. `<form>`의 `action` prop에 전달할 <CodeStep step={2}>새로운 action</CodeStep>입니다.
+1. 폼의 <CodeStep step={1}>현재 state</CodeStep>입니다. 처음에는 전달한 <CodeStep step={4}>초기 state</CodeStep>로 설정되며, 폼이 제출된 후에는 전달한 <CodeStep step={3}>액션</CodeStep>의 반환값으로 설정됩니다.
+2. `<form>`의 `action` prop에 전달할 <CodeStep step={2}>새로운 액션</CodeStep>입니다.
+3. 액션이 처리되는 동안 사용할 수 있는 <CodeStep step={1}>대기(Pending) state</CodeStep>입니다.
 
 폼을 제출하면 전달한 <CodeStep step={3}>액션</CodeStep> 함수가 호출됩니다. 액션의 반환값은 폼의 새로운 <CodeStep step={1}>현재 state</CodeStep>가 됩니다.
 
@@ -133,13 +135,13 @@ import { useActionState, useState } from "react";
 import { addToCart } from "./actions.js";
 
 function AddToCartForm({itemID, itemTitle}) {
-  const [message, formAction] = useActionState(addToCart, null);
+  const [message, formAction, isPending] = useActionState(addToCart, null);
   return (
     <form action={formAction}>
       <h2>{itemTitle}</h2>
       <input type="hidden" name="itemID" value={itemID} />
       <button type="submit">Add to Cart</button>
-      {message}
+      {isPending ? "Loading..." : message}
     </form>
   );
 }
@@ -162,6 +164,10 @@ export async function addToCart(prevState, queryData) {
   if (itemID === "1") {
     return "Added to cart";
   } else {
+    // Add a fake delay to make waiting noticeable.
+    await new Promise(resolve => {
+      setTimeout(resolve, 2000);
+    });
     return "Couldn't add to cart: the item is sold out.";
   }
 }
