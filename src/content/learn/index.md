@@ -115,7 +115,7 @@ React는 CSS 파일을 추가하는 방법을 규정하지 않습니다. 가장 
 
 ## 데이터 표시하기 {/*displaying-data*/}
 
-JSX를 사용하면 자바스크립트에 마크업을 넣을 수 있습니다. 중괄호를 사용하면 코드에서 일부 변수를 삽입하여 사용자에게 표시할 수 있도록 자바스크립트로 "이스케이프 백" 할 수 있습니다. 아래의 예시는 `user.name`을 표시합니다.
+JSX를 사용하면 자바스크립트에 마크업을 넣을 수 있습니다. 중괄호를 사용하면 코드에서 일부 변수를 삽입하여 사용자에게 표시할 수 있도록 자바스크립트로 "이스케이프 백(Escape Back)" 할 수 있습니다. 아래의 예시는 `user.name`을 표시합니다.
 
 ```js {3}
 return (
@@ -125,7 +125,7 @@ return (
 );
 ```
 
-JSX 어트리뷰트에서 따옴표 *대신* 중괄호를 사용하여 "자바스크립트로 이스케이프" 할 수도 있습니다. 예를 들어 `className="avatar"`는 `"avatar"` 문자열을 CSS로 전달하지만 `src={user.imageUrl}`는 자바스크립트 `user.imageUrl` 변수 값을 읽은 다음 해당 값을 `src` 어트리뷰트로 전달합니다.
+JSX 어트리뷰트에서 따옴표 *대신* 중괄호를 사용하여 "자바스크립트로 이스케이프(Escape Into JavaScript)" 할 수도 있습니다. 예를 들어 `className="avatar"`는 `"avatar"` 문자열을 CSS로 전달하지만 `src={user.imageUrl}`는 자바스크립트 `user.imageUrl` 변수 값을 읽은 다음 해당 값을 `src` 어트리뷰트로 전달합니다.
  
 ```js {3,4}
 return (
@@ -177,7 +177,7 @@ export default function Profile() {
 
 </Sandpack>
 
-위의 예시에서 `style={{}}` 은 특별한 문법이 아니라 `style={ }` JSX 중괄호 안에 있는 일반 `{}` 객체입니다. 스타일이 자바스크립트 변수에 의존하는 경우 `style` 어트리뷰트를 사용할 수 있습니다.
+위의 예시에서 `style={{}}`은 특별한 문법이 아니라 `style={ }` JSX 중괄호 안에 있는 일반 `{}` 객체입니다. 스타일이 자바스크립트 변수에 의존하는 경우 `style` 어트리뷰트를 사용할 수 있습니다.
 
 ## 조건부 렌더링 {/*conditional-rendering*/}
 
@@ -197,7 +197,7 @@ return (
 );
 ```
 
-더욱 간결한 코드를 원한다면 [조건부 삼항 연산자](https://developer.mozilla.org/ko-KR/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)를 사용할 수 있습니다. 이것은 `if` 문과 달리 JSX 내부에서 작동합니다.
+더욱 간결한 코드를 원한다면 [조건부 삼항 연산자](https://developer.mozilla.org/ko-KR/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)를 사용할 수 있습니다. 이것은 `if` 문과 달리 JSX 내부에서 동작합니다.
 
 ```js
 <div>
@@ -223,7 +223,7 @@ return (
 
 컴포넌트 리스트를 렌더링하기 위해서는 [`for` 문](https://developer.mozilla.org/ko-KR/docs/Web/JavaScript/Reference/Statements/for) 및 [`map()` 함수](https://developer.mozilla.org/ko-KR/docs/Web/JavaScript/Reference/Global_Objects/Array/map)와 같은 자바스크립트 기능을 사용합니다.
 
-예를 들어 여러 제품이 있다고 가정해 보겠습니다.
+예를 들어 여러 제품이 있다고 가정하겠습니다.
 
 ```js
 const products = [
@@ -246,7 +246,7 @@ return (
 );
 ```
 
-`<li>`에 `key` 어트리뷰트가 있는 것을 주목하세요. 목록의 각 항목에 대해, 형제 항목 사이에서 해당 항목을 고유하게 식별하는 문자열 또는 숫자를 전달해야 합니다. React는 나중에 항목을 삽입, 삭제 또는 재정렬할 때 어떤 일이 일어났는지 알기 위해 key를 사용합니다.
+`<li>`에 `key` 어트리뷰트가 있는 것을 주목하세요. 목록의 각 항목에 대해, 형제 항목 사이에서 해당 항목을 고유하게 식별하는 문자열 또는 숫자를 전달해야 합니다. React는 나중에 항목을 삽입, 삭제 또는 재정렬할 때 어떤 일이 일어났는지 알기 위해 `key`를 사용합니다.
 
 <Sandpack>
 
@@ -295,7 +295,7 @@ function MyButton() {
 }
 ```
 
-`onClick={handleClick}`의 끝에 소괄호가 없는 것을 주목하세요! 이벤트 핸들러 함수를 *호출*하지 않고 *전달*만 하면 됩니다. React는 사용자가 버튼을 클릭할 때 이벤트 핸들러를 호출합니다.
+`onClick={handleClick}`의 끝에 소괄호(`()`)가 없는 것을 주목하세요! 이벤트 핸들러 함수를 *호출*하지 않고 *전달*만 하면 됩니다. React는 사용자가 버튼을 클릭할 때 이벤트 핸들러를 호출합니다.
 
 ## 화면 업데이트하기 {/*updating-the-screen*/}
 
@@ -380,11 +380,11 @@ button {
 
 각 버튼이 고유한 `count` state를 "기억"하고 다른 버튼에 영향을 주지 않는 방식에 주목해 주세요.
 
-## Hooks 사용하기 {/*using-hooks*/}
+## Hook 사용하기 {/*using-hooks*/}
 
-`use`로 시작하는 함수를 *Hooks*라고 합니다. `useState`는 React에서 제공하는 내장 Hook입니다. 다른 내장 Hooks는 [API 레퍼런스](/reference/react)에서 찾아볼 수 있습니다. 또한 기존의 것들을 조합하여 자신만의 Hooks를 작성할 수도 있습니다.
+`use`로 시작하는 함수를 *Hook*이라고 합니다. `useState`는 React에서 제공하는 내장 Hook입니다. 다른 내장 Hook은 [API 레퍼런스](/reference/react)에서 찾아볼 수 있습니다. 또한 기존의 것들을 조합하여 자신만의 Hook을 작성할 수도 있습니다.
 
-Hooks는 다른 함수보다 더 제한적입니다. 컴포넌트(또는 다른 Hooks)의 *상단*에서만 Hooks를 호출할 수 있습니다. 조건이나 반복에서 `useState`를 사용하고 싶다면 새 컴포넌트를 추출하여 그곳에 넣으세요.
+Hook은 다른 함수보다 더 제한적입니다. 컴포넌트(또는 다른 Hook)의 *상단*에서만 Hook을 호출할 수 있습니다. 조건이나 반복에서 `useState`를 사용하고 싶다면 새 컴포넌트를 추출하여 그곳에 넣으세요.
 
 ## 컴포넌트 간에 데이터 공유하기 {/*sharing-data-between-components*/}
 
@@ -394,7 +394,7 @@ Hooks는 다른 함수보다 더 제한적입니다. 컴포넌트(또는 다른 
 
 <Diagram name="sharing_data_child" height={367} width={407} alt="Diagram showing a tree of three components, one parent labeled MyApp and two children labeled MyButton. Both MyButton components contain a count with value zero.">
 
-처음에 `MyButton`의 `count` 각 state는 `0`입니다.
+처음에 각 `MyButton`의 `count` State는 `0`입니다.
 
 </Diagram>
 
@@ -455,7 +455,7 @@ function MyButton() {
 
 ```
 
-그 다음 공유된 클릭 핸들러와 함께 `MyApp`에서 각 `MyButton`으로 *state를 전달합니다*. 이전에 `<img>`와 같은 기본 제공 태그를 사용했던 것처럼 JSX 중괄호를 사용하여 `MyButton`에 정보를 전달할 수 있습니다:
+그 다음 공유된 클릭 핸들러와 함께 `MyApp`에서 각 `MyButton`으로 *state를 전달합니다*. 이전에 `<img>`와 같은 기본 제공 태그를 사용했던 것처럼 JSX 중괄호를 사용하여 `MyButton`에 정보를 전달할 수 있습니다.
 
 ```js {11-12}
 export default function MyApp() {
@@ -477,7 +477,7 @@ export default function MyApp() {
 
 이렇게 전달한 정보를 *props*라고 합니다. 이제 `MyApp` 컴포넌트는 `count` state와 `handleClick` 이벤트 핸들러를 포함하며, *이 두 가지를 각 버튼에  props로 전달합니다*.
 
-마지막으로 부모 컴포넌트에서 전달한 props를 *읽도록* `MyButton`을 변경합니다:
+마지막으로 부모 컴포넌트에서 전달한 props를 *읽도록* `MyButton`을 변경합니다.
 
 
 ```js {1,3}
@@ -490,7 +490,7 @@ function MyButton({ count, onClick }) {
 }
 ```
 
-버튼을 클릭하면 `onClick` 핸들러가 실행됩니다. 각 버튼의 `onClick` prop는 `MyApp` 내부의 `handleClick` 함수로 설정되었으므로 그 안에 있는 코드가 실행됩니다. 이 코드는 `setCount(count + 1)`를 실행하여 `count` state 변수를 증가시킵니다. 새로운 `count` 값은 각 버튼에 prop로 전달되므로 모든 버튼에는 새로운 값이 표시됩니다. 이를 "state 올리기"라고 합니다. state를 위로 이동함으로써 컴포넌트 간에 state를 공유하게 됩니다.
+버튼을 클릭하면 `onClick` 핸들러가 실행됩니다. 각 버튼의 `onClick` prop는 `MyApp` 내부의 `handleClick` 함수로 설정되었으므로 그 안에 있는 코드가 실행됩니다. 이 코드는 `setCount(count + 1)`를 실행하여 `count` state 변수를 증가시킵니다. 새로운 `count` 값은 각 버튼에 prop로 전달되므로 모든 버튼에는 새로운 값이 표시됩니다. 이를 "state 끌어올리기"라고 합니다. state를 위로 이동함으로써 컴포넌트 간에 state를 공유하게 됩니다.
 
 <Sandpack>
 
@@ -535,4 +535,4 @@ button {
 
 이제 React 코드를 작성하는 기본적인 방법을 알았습니다!
 
-[자습서](/learn/tutorial-tic-tac-toe)를 확인하여 실습하고 React로 첫 번째 미니 앱을 만들어보세요.
+[자습서](/learn/tutorial-tic-tac-toe)를 확인하여 이를 실습하고 React로 첫 번째 미니 앱을 만들어보세요.
