@@ -123,11 +123,11 @@ const people = [{
 }];
 ```
 
-직업이 `'chemist'`인 사람들만 표시하고 싶다고 가정해 봅시다. JavaScript의 `filter()` 메서드를 사용하여 해당하는 사람만 반환할 수 있습니다. 이 메서드는 항목 배열을 받아 “test”(`true` 혹은 `false`를 반환하는 함수)를 통과한 후 테스트에 통과된 항목(`true`가 반환된 항목)만 있는 새로운 배열을 반환합니다.
+직업이 `'chemist'`인 사람들만 표시하고 싶다고 가정해 봅시다. JavaScript의 `filter()` 메서드를 사용하여 해당하는 사람만 반환할 수 있습니다. 이 메서드는 항목 배열을 받아 "test"(`true` 혹은 `false`를 반환하는 함수)를 통과한 후 테스트에 통과된 항목(`true`가 반환된 항목)만 있는 새로운 배열을 반환합니다.
 
-`직업`이 `'chemist'`인 항목만 필요합니다. 이를 위한 “test” 함수는 `(person) => person.profession === 'chemist'`와 같습니다. 이를 적용하는 과정은 다음과 같습니다.
+`직업`이 `'chemist'`인 항목만 필요합니다. 이를 위한 "test" 함수는 `(person) => person.profession === 'chemist'`와 같습니다. 이를 적용하는 과정은 다음과 같습니다.
 
-1. `people`에서 `filter()`를 호출해 `person.profession === 'chemist'`로 필터링해서 “chemist”로만 구성된 새로운 배열 `chemists`를 **생성**합니다.
+1. `people`에서 `filter()`를 호출해 `person.profession === 'chemist'`로 필터링해서 "chemist"로만 구성된 새로운 배열 `chemists`를 **생성**합니다.
 
 ```js
 const chemists = people.filter(person =>
@@ -262,7 +262,7 @@ const listItems = chemists.map(person => { // 중괄호
 });
 ```
 
-`=> {` 를 표현하는 화살표 함수를 [“block body”](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#function_body)를 가지고 있다고 말합니다. 이 함수를 사용하면 한 줄 이상의 코드를 작성할 수 있지만 `return` 문을 *반드시* 작성해야 합니다. 그렇지 않으면 아무것도 반환되지 않습니다!
+`=> {` 를 표현하는 화살표 함수를 ["block body"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#function_body)를 가지고 있다고 말합니다. 이 함수를 사용하면 한 줄 이상의 코드를 작성할 수 있지만 `return` 문을 *반드시* 작성해야 합니다. 그렇지 않으면 아무것도 반환되지 않습니다!
 
 </Pitfall>
 
@@ -1080,7 +1080,7 @@ export const recipes = [{
 
 </Sandpack>
 
-여기서 `<Recipe {...recipe} key={recipe.id} />`는 “`recipe` 객체의 모든 속성을 props로 `Recipe` 컴포넌트로 전달”하는 손쉬운 구문입니다. `<Recipe id={recipe.id} name={recipe.name} ingredients={recipe.ingredients} key={recipe.id} />` 처럼 각 prop을 명시적으로 작성할 수도 있습니다.
+여기서 `<Recipe {...recipe} key={recipe.id} />`는 "`recipe` 객체의 모든 속성을 props로 `Recipe` 컴포넌트로 전달"하는 손쉬운 구문입니다. `<Recipe id={recipe.id} name={recipe.name} ingredients={recipe.ingredients} key={recipe.id} />` 처럼 각 prop을 명시적으로 작성할 수도 있습니다.
 
 **`key`는 `Recipe`에서 반환된 루트 `<div>`가 아니라 `<Recipe>` 자체에 지정된다는 점에 유의하세요.** 이는 이 `key`가 주변 배열의 context 내에서 직접 필요하기 때문입니다. 이전에는 `<div>` 배열이 있었기 때문에 각 배열에 `key`가 필요했지만, 지금은 `<Recipe>` 배열이 있습니다. 즉, 컴포넌트를 추출할 때 복사하여 붙여넣은 JSX 외부에 `key`를 남겨두는 것을 잊지 마세요.
 

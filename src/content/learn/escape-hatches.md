@@ -23,7 +23,7 @@ title: 탈출구
 
 ## Ref로 값 참조하기 {/*referencing-values-with-refs*/}
 
-컴포넌트가 일부 정보를 “기억”하고 싶지만, 해당 정보가 [렌더링을 유발](/learn/render-and-commit)하지 않도록 하려면 ref를 사용하세요.
+컴포넌트가 일부 정보를 "기억"하고 싶지만, 해당 정보가 [렌더링을 유발](/learn/render-and-commit)하지 않도록 하려면 ref를 사용하세요.
 
 ```js
 const ref = useRef(0);
@@ -193,7 +193,7 @@ input { display: block; margin-bottom: 20px; }
 
 ## Effect가 필요하지 않은 경우 {/*you-might-not-need-an-effect*/}
 
-Effect는 React 패러다임에서 벗어날 수 있는 탈출구입니다. Effect를 사용하면 React를 “벗어나” 컴포넌트를 외부 시스템과 동기화할 수 있습니다. 외부 시스템이 관여하지 않는 경우 (예를 들어 일부 props 또는 state가 변경될 때 컴포넌트의 state를 업데이트하려는 경우) Effect가 필요하지 않습니다. 불필요한 Effect를 제거하면 코드를 더 쉽게 따라갈 수 있고, 실행 속도가 빨라지며, 에러 발생 가능성이 줄어듭니다.
+Effect는 React 패러다임에서 벗어날 수 있는 탈출구입니다. Effect를 사용하면 React를 "벗어나" 컴포넌트를 외부 시스템과 동기화할 수 있습니다. 외부 시스템이 관여하지 않는 경우 (예를 들어 일부 props 또는 state가 변경될 때 컴포넌트의 state를 업데이트하려는 경우) Effect가 필요하지 않습니다. 불필요한 Effect를 제거하면 코드를 더 쉽게 따라갈 수 있고, 실행 속도가 빨라지며, 에러 발생 가능성이 줄어듭니다.
 
 Effect가 필요하지 않은 두 가지 일반적인 경우가 있습니다.
 - **렌더링을 위해 데이터를 변환하는 데 Effect가 필요하지 않습니다.**
