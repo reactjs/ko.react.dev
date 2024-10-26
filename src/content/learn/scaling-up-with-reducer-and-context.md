@@ -18,7 +18,7 @@ Reducer를 사용하면 컴포넌트의 state 업데이트 로직을 통합할 �
 
 ## Reducer와 context를 결합하기 {/*combining-a-reducer-with-context*/}
 
-[Reducer의 개요](/learn/extracting-state-logic-into-a-reducer)의 예시에서 reducer로 state를 관리하는 방법을 알아보았습니다. 해당 예시에서 state 업데이트 로직을 모두 포함하는 reducer 함수를 App.js 파일의 맨 아래에 선언했습니다.
+[Reducer의 개요](/learn/extracting-state-logic-into-a-reducer)의 예시에서 reducer로 state를 관리하는 방법을 알아보았습니다. 해당 예시에서 state 업데이트 로직을 모두 포함하는 reducer 함수를 `App.js` 파일의 맨 아래에 선언했습니다.
 
 <Sandpack>
 
@@ -209,7 +209,7 @@ ul, li { margin: 0; padding: 0; }
 
 Reducer는 이벤트 핸들러를 짧고 간결하게 유지하는 데 도움이 됩니다. 그러나 앱이 커지면 다른 어려움에 부딪힐지도 모릅니다. **현재 `tasks` state 및 `dispatch` 함수는 최상위 `TaskApp` 컴포넌트에서만 사용할 수 있습니다.** 다른 컴포넌트가 작업 목록을 읽거나 변경하려면 현재 state와 해당 state를 변경하는 이벤트 핸들러를 명시적으로 [props로 전달](/learn/passing-props-to-a-component)해야 합니다.
 
-예를 들어, `TaskApp`은 tasks 리스트와 이벤트 핸들러를 `TaskList`에 전달합니다.
+예를 들어, `TaskApp`은 `tasks` 리스트와 이벤트 핸들러를 `TaskList`에 전달합니다.
 
 ```js
 <TaskList
@@ -235,9 +235,9 @@ Reducer는 이벤트 핸들러를 짧고 간결하게 유지하는 데 도움이
 
 Reducer와 context를 결합하는 방법은 아래와 같습니다.
 
-1. Context를 **생성한다**.
-2. State과 dispatch 함수를 context에 **넣는다**.
-3. 트리 안에서 context를 **사용한다**.
+1. Context를 **생성합니다**.
+2. State와 dispatch 함수를 context에 **넣습니다**.
+3. 트리 안에서 context를 **사용합니다**.
 
 ### 1단계: Context 생성 {/*step-1-create-the-context*/}
 
@@ -249,7 +249,7 @@ const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 
 트리를 통해 전달하려면, 두 개의 별개의 context를 [생성](/learn/passing-data-deeply-with-context#step-2-use-the-context)해야 합니다.
 
-- `TasksContext`는 현재 tasks 리스트를 제공합니다.
+- `TasksContext`는 현재 `tasks` 리스트를 제공합니다.
 - `TasksDispatchContext`는 컴포넌트에서 action을 dispatch 하는 함수를 제공합니다.
 
 두 context는 나중에 다른 파일에서 가져올 수 있도록 별도의 파일에서 내보냅니다.
@@ -673,7 +673,7 @@ ul, li { margin: 0; padding: 0; }
 
 ### 3단계: 트리 안에서 context 사용하기 {/*step-3-use-context-anywhere-in-the-tree*/}
 
-이제 tasks 리스트나 이벤트 핸들러를 트리 아래로 전달할 필요가 없습니다.
+이제 `tasks` 리스트나 이벤트 핸들러를 트리 아래로 전달할 필요가 없습니다.
 
 ```js {4-5}
 <TasksContext.Provider value={tasks}>
@@ -685,7 +685,7 @@ ul, li { margin: 0; padding: 0; }
 </TasksContext.Provider>
 ```
 
-대신 필요한 컴포넌트에서는 `TaskContext`에서 tasks 리스트를 읽을 수 있습니다.
+대신 필요한 컴포넌트에서는 `TaskContext`에서 `tasks` 리스트를 읽을 수 있습니다.
 
 ```js {2}
 export default function TaskList() {
@@ -693,7 +693,7 @@ export default function TaskList() {
   // ...
 ```
 
-tasks 리스트를 업데이트하기 위해서 컴포넌트에서 context의 `dispatch` 함수를 읽고 호출할 수 있습니다.
+`tasks` 리스트를 업데이트하기 위해서 컴포넌트에서 context의 `dispatch` 함수를 읽고 호출할 수 있습니다.
 
 ```js {3,9-13}
 export default function AddTask({ onAddTask }) {
