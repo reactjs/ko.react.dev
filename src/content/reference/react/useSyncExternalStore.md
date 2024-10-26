@@ -372,7 +372,7 @@ function subscribe(callback) {
 
 ## 트러블 슈팅 {/*troubleshooting*/}
 
-### 오류가 발생했습니다: "`getSnapshot`의 결과를 캐시해야 합니다.” {/*오류가-발생했습니다-getsnapshot의-결과를-캐시해야-합니다*/}
+### 오류가 발생했습니다: "`getSnapshot`의 결과를 캐시해야 합니다." {/*오류가-발생했습니다-getsnapshot의-결과를-캐시해야-합니다*/}
 
 이 오류가 발생하면 `getSnapshot` 함수가 호출될 때마다 새 객체를 반환한다는 의미입니다.
 
