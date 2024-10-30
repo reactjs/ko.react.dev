@@ -44,7 +44,7 @@ title: "<option>"
 * [`label`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/option#label): 문자열 타입. 옵션의 의미를 지정합니다. 지정하지 않으면 옵션 내부의 텍스트가 사용됩니다.
 * [`value`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/option#value): 이 옵션을 선택한 경우 [폼에서 상위 `<select>` 를 제출할 때](/reference/react-dom/components/select#reading-the-select-box-value-when-submitting-a-form) 사용할 값입니다.
 
-#### 유의 사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * React는 `<option>`에서 `selected` 속성을 지원하지 않습니다. 대신, 이 옵션의 `value`를 제어되지 않은 select box의 경우 상위 [`<select defaultValue>`](/reference/react-dom/components/select#providing-an-initially-selected-option) 에 전달하거나, 제어되는 select box의 경우 [`<select value>`](/reference/react-dom/components/select#controlling-a-select-box-with-a-state-variable) 에 전달하세요.
 

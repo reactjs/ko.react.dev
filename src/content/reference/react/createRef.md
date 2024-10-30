@@ -52,7 +52,7 @@ createRef`는 단일 속성을 가진 객체를 반환합니다.
 
 * `current`: 처음에는 `null`로 설정됩니다. 이를 나중에 다른 것으로 설정할 수 있습니다. ref 객체를 JSX 노드의 `ref` 어트리뷰트로 React에 전달하면 React는 이를 `current` 프로퍼티로 설정합니다.
 
-#### 주의 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * `createRef`는 항상 *다른* 객체를 반환합니다. 이는 `{ current: null }`을 직접 작성하는 것과 같습니다.
 * 함수 컴포넌트에서는 항상 동일한 객체를 반환하는 [`useRef`](/reference/react/useRef)를 대신 사용할 수 있습니다.

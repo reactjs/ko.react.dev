@@ -48,7 +48,7 @@ function MyComponent() {
 1. 현재 state입니다. 첫 번째 렌더링 중에는 전달한 `initialState`와 일치합니다.
 2. state를 다른 값으로 업데이트하고 리렌더링을 촉발할 수 있는 [`set` 함수](#setstate)입니다.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * `useState`는 Hook이므로 **컴포넌트의 최상위 레벨**이나 직접 만든 Hook에서만 호출할 수 있습니다. 반복문이나 조건문 안에서는 호출할 수 없습니다. 필요한 경우 새 컴포넌트를 추출하고 state를 그 안으로 옮기세요.
 * Strict Mode에서 React는 [의도치 않은 불순물을 찾기 위해](#my-initializer-or-updater-function-runs-twice) **초기화 함수를 두 번 호출합니다.** 이는 개발 환경 전용 동작이며 프로덕션 환경에는 영향을 미치지 않습니다. 초기화 함수가 순수하다면(그래야 합니다) 동작에 영향을 미치지 않습니다. 호출 중 하나의 결과는 무시됩니다.
@@ -77,7 +77,7 @@ function handleClick() {
 
 `set` 함수는 반환값이 없습니다.
 
-#### 주의사항 {/*setstate-caveats*/}
+#### 주의 사항 {/*setstate-caveats*/}
 
 * `set` 함수는 ***다음* 렌더링에 대한 state 변수만 업데이트합니다.** `set` 함수를 호출한 후에도 state 변수에는 여전히 호출 전 화면에 있던 [이전 값이 담겨 있습니다.](#ive-updated-the-state-but-logging-gives-me-the-old-value) 
 

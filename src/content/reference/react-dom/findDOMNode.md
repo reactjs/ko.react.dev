@@ -45,7 +45,7 @@ const domNode = findDOMNode(componentInstance);
 
 `findDOMNode`는 주어진 `componentInstance`에서 가장 처음 등장하는 브라우저 DOM 노드를 반환합니다. 컴포넌트가 `null`이나 `false`를 렌더링할 경우 `findDOMNode`는 `null`을 반환합니다. 컴포넌트가 문자열을 렌더링하면 `findDOMNode`는 그 값을 포함한 텍스트 DOM 노드를 반환합니다.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * 컴포넌트가 배열이나 다수의 자식을 가진 [Fragment](/reference/react/Fragment)를 반환할 수 있습니다. 이런 경우 `findDOMNode`는 해당하는 DOM 노드 중 비어있지 않은 첫 번째 자식을 반환합니다.
 

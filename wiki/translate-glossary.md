@@ -74,6 +74,7 @@ Pitfall|`/\bPitfall\b/`|주의하세요!|[#632](https://github.com/reactjs/ko.re
 Note|`/\bNote\b/`|중요합니다!|[#632](https://github.com/reactjs/ko.react.dev/issues/632)||
 Wip|`/\bWip\b/`|개발중이에요|[#632](https://github.com/reactjs/ko.react.dev/issues/632)||
 Returns|`/\bReturns\b/`, `/반환\s+(?:값\s+)?{\//`|반환값|[#725](https://github.com/reactjs/ko.react.dev/issues/725)|제목에 사용된 경우|
+Caveats|`/\bCaveats?\b/`, `/주의사항/`|주의 사항|[#1095](https://github.com/reactjs/ko.react.dev/issues/1095)||
 Logic|`/\bLogic\b/`|로직|[#695](https://github.com/reactjs/ko.react.dev/issues/695)||
 Dependency|`/\bDependenc(?:y\|ies)\b/`|의존성|[#841](https://github.com/reactjs/ko.react.dev/issues/841)||
 Directive|`/\bDirectives?\b/`|지시어|[#819](https://github.com/reactjs/ko.react.dev/issues/819)||

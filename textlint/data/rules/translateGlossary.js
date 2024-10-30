@@ -559,6 +559,15 @@ module.exports = {
         },
       },
       {
+        sources: [/\bCaveats?\b/, /주의사항/],
+        target: '주의 사항',
+        meta: {
+          term: 'Caveats',
+          discussions: [1095],
+          note: '',
+        },
+      },
+      {
         sources: [/\bLogic\b/],
         target: '로직',
         meta: {

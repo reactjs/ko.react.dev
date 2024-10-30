@@ -47,7 +47,8 @@ export default function ProductPage({ productId, referrer, theme }) {
 최초 렌더링에서는 `useCallback`은 전달한 `fn`함수를 그대로 반환합니다.
 
 후속 렌더링에서는 이전 렌더링에서 이미 저장해 두었던 `fn`함수를 반환하거나 (의존성이 변하지 않았을 때), 현재 렌더링 중에 전달한 `fn`함수를 그대로 반환합니다.
-#### 주의사항 {/*caveats*/}
+
+#### 주의 사항 {/*caveats*/}
 
 * `useCallback`은 Hook이므로, **컴포넌트의 최상위 레벨** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문 내에서 호출할 수 없습니다. 이 작업이 필요하다면 새로운 컴포넌트로 분리해서 state를 새 컴포넌로 옮기세요.
 * React는 **특별한 이유가 없는 한 캐시 된 함수를 삭제하지 않습니다.** 예를 들어 개발 환경에서는 컴포넌트 파일을 편집할 때 React가 캐시를 삭제합니다. 개발 환경과 프로덕션 환경 모두에서, 초기 마운트 중에 컴포넌트가 일시 중단되면 React는 캐시를 삭제합니다. 앞으로 React는 캐시 삭제를 활용하는 더 많은 기능을 추가할 수 있습니다. 예를 들어, React에 가상화된 목록에 대한 빌트인 지원이 추가한다면, 가상화된 테이블 뷰포트에서 스크롤 밖의 항목에 대해 캐시를 삭제하는것이 적절할 것 입니다. 이는 `useCallback`을 성능 최적화 방법으로 의존하는 경우에 개발자의 예상과 일치해야 합니다. 그렇지 않다면 [state 변수](/reference/react/useState#im-trying-to-set-state-to-a-function-but-it-gets-called-instead) 나 [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents)가 더 적절할 수 있습니다.
