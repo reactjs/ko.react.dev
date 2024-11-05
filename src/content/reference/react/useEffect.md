@@ -52,7 +52,7 @@ function ChatRoom({ roomId }) {
 
 `useEffect`는 `undefined`를 반환합니다.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * `useEffect`는 Hook이므로 컴포넌트의 최상위 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문에서는 사용할 수 없습니다. 필요한 경우 새로운 컴포넌트를 추출하고 해당 컴포넌트로 state를 이동해서 사용할 수 있습니다.
 

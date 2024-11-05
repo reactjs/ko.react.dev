@@ -47,7 +47,7 @@ function TabContainer() {
 
 `startTransition`은 아무것도 반환하지 않습니다.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * `startTransition`은 Transition 이 진행 중인지 추적할 수 있는 방법을 제공하지 않습니다. 진행 중인 Transition 을 표시하려면 [`useTransition`](/reference/react/useTransition)이 필요합니다.
 

@@ -52,7 +52,7 @@ function useCSS(rule) {
 
 `useInsertionEffect`는 `undefined`를 반환합니다.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * 이펙트는 클라이언트에서만 실행됩니다. 서버 렌더링 중에는 실행되지 않습니다.
 * `useInsertionEffect` 내부에서는 상태를 업데이트할 수 없습니다.

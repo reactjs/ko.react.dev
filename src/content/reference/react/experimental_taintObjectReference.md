@@ -61,7 +61,7 @@ experimental_taintObjectReference(
 
 `experimental_taintObjectReference`는 `undefined`를 반환합니다.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 - 오염된 객체를 다시 작성하거나 복제하면 오염되지 않은 객체가 새로 만들어집니다. 새로 만들어진 객체는 민감한 데이터를 포함할 수 있습니다. 예를 들어, 오염된 `user` 객체가 있다고 할 때, `const userInfo = {name: user.name, ssn: user.ssn}` 혹은 `{...user}`를 실행하면 오염되지 않은 새로운 객체를 작성합니다. `taintObjectReference`는 객체가 변경되지 않은 상태에서 클라이언트 컴포넌트로 그대로 전달되는 것만 방지합니다.
 

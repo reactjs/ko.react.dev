@@ -48,7 +48,7 @@ const html = renderToString(<App />);
 
 HTML 문자열.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * `renderToString`는 Suspense 지원에 한계가 있습니다. 컴포넌트가 중단된다면 `renderToString`는 즉시 해당 폴백을 HTML로 보냅니다.
 
