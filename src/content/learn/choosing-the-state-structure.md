@@ -98,7 +98,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 <Pitfall>
 
-State 변수가 객체인 경우에는 다른 필드를 명시적으로 복사하지 않고 [하나의 필드만 업데이트할 수 없다](/learn/updating-objects-in-state)는 것을 기억하세요. 예를 들어, 위의 예시에서는 `y` 속성이 전혀 없기 때문입니다. `setPosition({ x: 100 })`를 할 수 없습니다! 대신, `x`만 설정하려면 `setPosition({ ...position, x: 100 })`을 하거나 두 개의 state 변수로 나누고 `setX(100)`을 해야 합니다.
+State 변수가 객체인 경우에는 다른 필드를 명시적으로 복사하지 않고 [하나의 필드만 업데이트할 수 없다](/learn/updating-objects-in-state)는 것을 기억하세요. 예를 들어 위의 예시에서 `setPosition({ x: 100 })`은 `y` 속성이 존재하지 않기 때문에 사용할 수 없습니다! 대신, `x`만 설정하려면 `setPosition({ ...position, x: 100 })`을 하거나 두 개의 state 변수로 나누고 `setX(100)`을 해야 합니다.
 
 </Pitfall>
 

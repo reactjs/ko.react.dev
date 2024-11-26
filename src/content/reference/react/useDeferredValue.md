@@ -43,7 +43,7 @@ function SearchPage() {
 #### 반환값 {/*returns*/}
 
 
-- `currentValue`: 초기 렌더링 중에는 반환된 ‘지연된 값’은 사용자가 제공한 값과 같습니다. 업데이트가 발생하면 React는 먼저 이전 값으로 리렌더링을 시도(반환값이 이전 값과 일치하도록)하고, 그다음 백그라운드에서 다시 새 값으로 리렌더링을 시도(반환값이 업데이트된 새 값과 일치하도록)합니다.
+- `currentValue`: 초기 렌더링 중에는 반환된 '지연된 값'은 사용자가 제공한 값과 같습니다. 업데이트가 발생하면 React는 먼저 이전 값으로 리렌더링을 시도(반환값이 이전 값과 일치하도록)하고, 그다음 백그라운드에서 다시 새 값으로 리렌더링을 시도(반환값이 업데이트된 새 값과 일치하도록)합니다.
 
 <Canary>
 
@@ -51,7 +51,7 @@ In the latest React Canary versions, `useDeferredValue` returns the `initialValu
 
 </Canary>
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 - `useDeferredValue`에 전달하는 값은 문자열 및 숫자와 같은 원시값이거나, 컴포넌트의 외부에서 생성된 객체여야 합니다. 렌더링 중에 새 객체를 생성하고 즉시 `useDeferredValue`에 전달하면 렌더링할 때마다 값이 달라져 불필요한 백그라운드 리렌더링이 발생할 수 있습니다.
 
@@ -865,7 +865,7 @@ export default SlowList;
 
 #### 목록의 최적화되지 않은 리렌더링 {/*unoptimized-re-rendering-of-the-list*/}
 
-이 예시에서는 `SlowList` 컴포넌트의 각 항목이 인위적으로 느려지도록 하여 `useDeferredValue`를 통해 입력 반응성을 유지하는 방법을 확인할 수 있습니다. input에 타이핑하면 입력은 빠르게 느껴지는 반면 목록은 “지연”되는 것을 확인할 수 있습니다.
+이 예시에서는 `SlowList` 컴포넌트의 각 항목이 인위적으로 느려지도록 하여 `useDeferredValue`를 통해 입력 반응성을 유지하는 방법을 확인할 수 있습니다. input에 타이핑하면 입력은 빠르게 느껴지는 반면 목록은 "지연"되는 것을 확인할 수 있습니다.
 
 <Sandpack>
 

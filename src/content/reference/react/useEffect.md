@@ -52,7 +52,7 @@ function ChatRoom({ roomId }) {
 
 `useEffect`는 `undefined`를 반환합니다.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * `useEffect`는 Hook이므로 컴포넌트의 최상위 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문에서는 사용할 수 없습니다. 필요한 경우 새로운 컴포넌트를 추출하고 해당 컴포넌트로 state를 이동해서 사용할 수 있습니다.
 
@@ -62,9 +62,11 @@ function ChatRoom({ roomId }) {
 
 * 만약 의존성이 객체이거나 컴포넌트 내부에 선언된 함수일 경우에는 Effect가 필요 이상으로 재실행될 수 있습니다. 이를 수정하려면 불필요한 [객체 의존성](#removing-unnecessary-object-dependencies)이나 [함수 의존성](#updating-state-based-on-previous-state-from-an-effect)을 제거하세요. 또는 [state 업데이트를 추출](#updating-state-based-on-previous-state-from-an-effect)하거나 Effect 밖으로 [비 반응형 로직](#reading-the-latest-props-and-state-from-an-effect)을 빼낼 수 있습니다.
 
-* If your Effect is caused by an interaction (like a click), **React may run your Effect before the browser paints the updated screen**. This ensures that the result of the Effect can be observed by the event system. Usually, this works as expected. However, if you must defer the work until after paint, such as an `alert()`, you can use `setTimeout`. See [reactwg/react-18/128](https://github.com/reactwg/react-18/discussions/128) for more information.
+* Effect가 사용자 상호작용(클릭 등)에 의해 발생하지 않았다면, React는 일반적으로 **Effect를 실행하기 전에 브라우저가 업데이트된 화면을 먼저 렌더링하도록 합니다.** 만약 Effect가 시각적인 작업을 수행하고 (예: 툴팁의 위치 조정), 이에 따라 지연이 눈에 띄게 나타난다면 (예: 깜빡임 현상), `useEffect` 대신 [`useLayoutEffect`](/reference/react/useLayoutEffect)를 사용하세요.
 
-* Even if your Effect was caused by an interaction (like a click), **React may allow the browser to repaint the screen before processing the state updates inside your Effect.** Usually, this works as expected. However, if you must block the browser from repainting the screen, you need to replace `useEffect` with [`useLayoutEffect`.](/reference/react/useLayoutEffect)
+* Effect가 사용자 상호작용(클릭 등)으로 인해 발생한 경우, **React는 화면이 업데이트되어 브라우저가 화면을 그리기 전에 Effect를 실행할 수 있습니다.** 이것이 Effect의 결과를 이벤트 시스템이 관찰할 수 있도록 보장합니다. 이는 대개 예상대로 작동하지만, `alert()`와 같이 작업을 브라우저가 화면을 그린 후로 미뤄야 하는 경우 `setTimeout`을 활용할 수 있습니다. 자세한 내용은 [reactwg/react-18/128](https://github.com/reactwg/react-18/discussions/128)을 참조하세요.
+
+* Effect가 사용자 상호작용(클릭 등)에 의해 발생했더라도, **React는 때로 Effect 내부의 상태 업데이트를 처리하기 전에 브라우저가 화면을 다시 그리도록 허용할 수 있습니다.** 이는 대개 예상대로 작동하지만, 브라우저가 화면을 다시 그리지 않도록 막아야 하는 상황이라면 `useEffect` 대신 [`useLayoutEffect`](/reference/react/useLayoutEffect)를 사용해야 합니다.
 
 * Effect는 **client 환경에서만 동작합니다.** 서버 렌더링에서는 동작하지 않습니다.
 

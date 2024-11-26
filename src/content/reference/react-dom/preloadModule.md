@@ -64,7 +64,7 @@ function AppRoot() {
 
 `preloadModule`는 아무것도 반환하지 않습니다.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * 동일한 `href`로 `preloadModule`을 여러 번 호출하는 것은 한 번 호출하는 것과 동일한 효과가 있습니다.
 * 브라우저에서는 컴포넌트를 렌더링하는 중이거나, Effect, 이벤트 핸들러 등 어떤 상황에서도 `preloadModule`을 호출할 수 있습니다. 

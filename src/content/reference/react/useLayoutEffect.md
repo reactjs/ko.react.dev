@@ -56,7 +56,7 @@ function Tooltip() {
 
 `useLayoutEffect`는 `undefined`를 반환합니다.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * `useLayoutEffect`는 Hook이므로, **컴포넌트의 최상위 레벨** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문 내에서 호출할 수 없습니다. 이 작업이 필요하다면 새로운 컴포넌트로 분리해서 Effect를 새 컴포넌트로 옮기세요.
  

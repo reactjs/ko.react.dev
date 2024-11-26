@@ -94,7 +94,7 @@ You can [make an input controlled](#controlling-an-input-with-a-state-variable) 
 * [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#type): 문자열 타입.  [input types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types) 중의 하나
 * [`width`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#width): 문자열 타입. `type="image"` input의 이미지 너비를 지정합니다.
 
-#### 경고 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 - 체크박스에는 `value` (또는 `defaultValue`)가 아닌 `checked` (또는 `defaultChecked`)가 필요합니다.
 - 텍스트 input 영역은 문자열 `value` prop을 받을 경우 [제어되는 것으로 취급](#controlling-an-input-with-a-state-variable)됩니다.

@@ -53,7 +53,7 @@ React는 `domNode` 내부의 HTML에 붙어, 내부 DOM을 직접 관리할 것�
 
 `hydrateRoot`는 2가지 메소드가 포함된 객체를 반환합니다 : [`render`](#root-render) 그리고 [`unmount`.](#root-unmount)
 
-#### Caveats {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * `hydrateRoot()`는 서버에서 렌더링된 내용과 후에 렌더링된 내용이 동일할 것을 기대합니다. 따라서 동일하지 않은 부분들은 직접 버그로 취급해주거나 고쳐줘야 합니다.
 * 개발 모드에선, React가 hydration 중에 동일하지 않은 부분에 대해 경고해줍니다. 속성이 동일하지 않을 경우에 해당 속성이 올바르게 적용될 것이라고 보장할 수 없습니다. 모든 마크업을 보장하지 않는 것은 성능면에서 중요하기 때문입니다. 마크업이 동일하지 않는 경우는 드물기 때문에 모든 마크업을 검증하는 비용은 굉장히 비쌉니다.
@@ -82,7 +82,7 @@ React는 hydrate된 `root`부터 내부를 `<App />`으로 갱신합니다.
 
 `root.render`는 `undefined`를 반환합니다.
 
-#### Caveats {/*root-render-caveats*/}
+#### 주의 사항 {/*root-render-caveats*/}
 
 * hydrate가 끝나기 전에 `root.render`를 호출하면 React는 서버에서 렌더링된 HTML을 모두 없애고 클라이언트에서 렌더링된 컴포넌트들로 완전히 교체합니다.
 
@@ -111,7 +111,7 @@ root.unmount();
 
 `root.unmount` returns `undefined`.
 
-#### Caveats {/*root-unmount-caveats*/}
+#### 주의 사항 {/*root-unmount-caveats*/}
 
 * `root.unmount`를 호출하면 root부터 그 안의 모든 컴포넌트가 마운트 해제되고 root DOM node에서 React를 떼어냅니다.
 
