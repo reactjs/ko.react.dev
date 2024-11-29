@@ -335,7 +335,7 @@ root.render(
 
 <DeepDive>
 
-#### 서버 또는 클라이언트 컴포넌트에서 프로미스를 리졸브해만 하나요? {/*resolve-promise-in-server-or-client-component*/}
+#### 서버 또는 클라이언트 컴포넌트에서 프로미스를 리졸브해야 하나요? {/*resolve-promise-in-server-or-client-component*/}
 
 Promise는 서버 컴포넌트에서 클라이언트 컴포넌트로 전달할 수 있으며 `use` API 를 통해 클라이언트 컴포넌트에서 리졸브됩니다. 또한 서버 컴포넌트에서 `await` 을 사용하여 Promise를 리졸브하고 데이터를 클라이언트 컴포넌트에 `prop`으로 전달하는 방법도 존재합니다.
 
