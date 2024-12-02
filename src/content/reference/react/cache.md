@@ -192,11 +192,11 @@ async function MinimalWeatherCard({city}) {
 }
 ```
 
-`AnimatedWeatherCard`와 `MinimalWeatherCard`가 같은 <CodeStep step={1}>도시</CodeStep>를 렌더링할 때, <CodeStep step={2}>메모화된 함수</CodeStep>로 부터 같은 데이터의 스냅샷을 받게 됩니다.
+`AnimatedWeatherCard`와 `MinimalWeatherCard`가 같은 <CodeStep step={1}>city</CodeStep>를 렌더링할 때, <CodeStep step={2}>메모화된 함수</CodeStep>로 부터 같은 데이터의 스냅샷을 받게 됩니다.
 
-`AnimatedWeatherCard`와 `MinimalWeatherCard`가 다른 <CodeStep step={1}>도시</CodeStep>를 <CodeStep step={2}>`getTemperature`</CodeStep>의 인자로 받게 된다면, `fetchTemperature`는 두 번 호출되고 호출마다 다른 데이터를 받게 됩니다. 
+`AnimatedWeatherCard`와 `MinimalWeatherCard`가 다른 <CodeStep step={1}>city</CodeStep>를 <CodeStep step={2}>`getTemperature`</CodeStep>의 인자로 받게 된다면, `fetchTemperature`는 두 번 호출되고 호출마다 다른 데이터를 받게 됩니다. 
 
-<CodeStep step={1}>도시</CodeStep>가 캐시 키처럼 동작하게 됩니다.
+<CodeStep step={1}>city</CodeStep>가 캐시 키처럼 동작하게 됩니다.
 
 <Note>
 
