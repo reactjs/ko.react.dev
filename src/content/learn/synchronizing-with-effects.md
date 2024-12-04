@@ -600,7 +600,7 @@ React는 마지막 예시와 같은 버그를 찾기 위해 개발 중에 컴포
 
 <Pitfall>
 
-#### Don't use refs to prevent Effects from firing {/*dont-use-refs-to-prevent-effects-from-firing*/}
+#### Effect가 두 번 실행되는 것을 막기위해 ref를 사용하지 마세요 {/*dont-use-refs-to-prevent-effects-from-firing*/}
 
 Effect가 개발 모드에서 두 번 실행되는 것을 막으려다 흔히 빠지는 함정은 `ref`를 사용해 Effect가 한 번만 실행되도록 하는 것입니다. 예를 들어 위의 버그를 `useRef`를 사용하여 "수정"하려고 할 수도 있습니다:
 
