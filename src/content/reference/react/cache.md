@@ -3,11 +3,19 @@ title: cache
 canary: true
 ---
 
+<<<<<<< HEAD
 <Canary>
 * `cache`는 오직 [React 서버 컴포넌트](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)와 함께 사용됩니다. React 서버 컴포넌트를 지원하는 [프레임워크](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)를 확인해 보세요.
 
 * `cache`는 [Canary](/community/versioning-policy#canary-channel)와 [실험](/community/versioning-policy#experimental-channel) 채널에서만 사용할 수 있습니다. 프로덕션 환경에서 `cache`를 사용하기 전에 이 한계점에 대해 인지하고 있어야 합니다. React의 릴리즈 채널에 대한 자세한 내용은 [여기](/community/versioning-policy#all-release-channels)를 참조하세요.
 </Canary>
+=======
+<RSC>
+
+`cache` is only for use with [React Server Components](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components).
+
+</RSC>
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 <Intro>
 

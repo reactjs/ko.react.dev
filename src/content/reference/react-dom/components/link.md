@@ -1,14 +1,16 @@
 ---
 link: "<link>"
-canary: true
 ---
 
+<<<<<<< HEAD
 <Canary>
 
 React의 `<link>` 확장은 현재 React의 카나리(Canary) 채널과 실험 채널에서만 사용할 수 있습니다. React의 안정적인 릴리즈에서는 `<link>`가 [내장 브라우저 HTML 컴포넌트](https://react.dev/reference/react-dom/components#all-html-components)로만 작동합니다. 자세한 내용은 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
 
 </Canary>
 
+=======
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 <Intro>
 
 [브라우저 내장 `<link>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)는 스타일시트와 같은 외부 리소스를 사용하거나 링크 메타데이터로 문서를 주석 처리할 수 있게 해줍니다. 

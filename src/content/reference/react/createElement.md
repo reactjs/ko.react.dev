@@ -53,7 +53,14 @@ function Greeting({ name }) {
 * `ref`: 전달받은 `ref`. 누락된 경우 `null`.
 * `key`: 전달받은 `key`를 강제 변환한 문자열. 누락된 경우 `null`.
 
+<<<<<<< HEAD
 일반적으로 엘리먼트는 컴포넌트에서 반환되거나 다른 엘리먼트의 자식으로 만듭니다. 엘리먼트의 프로퍼티에는 접근할 수 있지만, 엘리먼트 생성 후에는 모든 엘리먼트에 접근할 수 없는 것처럼 대하고 렌더링만 하는 것이 좋습니다.
+=======
+* `type`: The `type` you have passed.
+* `props`: The `props` you have passed except for `ref` and `key`.
+* `ref`: The `ref` you have passed. If missing, `null`.
+* `key`: The `key` you have passed, coerced to a string. If missing, `null`.
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 #### 주의 사항 {/*caveats*/}
 

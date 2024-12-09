@@ -1,14 +1,16 @@
 ---
 title: preloadModule
-canary: true
 ---
 
+<<<<<<< HEAD
 <Canary>
 
 `preloadModule`는 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. 여기에서 [React의 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보세요.
 
 </Canary>
 
+=======
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 <Note>
 
 [React 기반 프레임워크](/learn/start-a-new-react-project)는 리소스 로딩을 대신 처리하는 경우가 많으므로 이 API를 직접 호출할 필요가 없을 수도 있습니다. 자세한 내용은 해당 프레임워크의 문서를 참조하세요.
