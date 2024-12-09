@@ -4,10 +4,14 @@ title: startTransition
 
 <Intro>
 
+<<<<<<< HEAD
 `startTransition`은 UI를 Blocking 않고 상태를 업데이트할 수 있게 해줍니다.
+=======
+`startTransition` lets you render a part of the UI in the background.
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 ```js
-startTransition(scope)
+startTransition(action)
 ```
 
 </Intro>
@@ -18,7 +22,7 @@ startTransition(scope)
 
 ## 레퍼런스 {/*reference*/}
 
-### `startTransition(scope)` {/*starttransitionscope*/}
+### `startTransition(action)` {/*starttransition*/}
 
 `startTransition` 함수는 상태 업데이트를 Transition 으로 표시할 수 있게 해줍니다.
 
@@ -41,7 +45,11 @@ function TabContainer() {
 
 #### 매개변수 {/*parameters*/}
 
+<<<<<<< HEAD
 * `scope`: 하나 이상의 [`set` 함수](/reference/react/useState#setstate)를 호출하여 일부 state를 업데이트하는 함수입니다. React는 매개변수 없이 `scope`를 즉시 호출하고 `scope` 함수를 호출하는 동안 동기적으로 예약된 모든 state 업데이트를 Transition 으로 표시합니다. 이는 [non-blocking](/reference/react/useTransition#marking-a-state-update-as-a-non-blocking-transition)이며 [원치 않는 로딩을 표시하지 않습니다.](/reference/react/useTransition#preventing-unwanted-loading-indicators)
+=======
+* `action`: A function that updates some state by calling one or more [`set` functions](/reference/react/useState#setstate). React calls `action` immediately with no parameters and marks all state updates scheduled synchronously during the `action` function call as Transitions. Any async calls awaited in the `action` will be included in the transition, but currently require wrapping any `set` functions after the `await` in an additional `startTransition` (see [Troubleshooting](#react-doesnt-treat-my-state-update-after-await-as-a-transition)). State updates marked as Transitions will be [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) and [will not display unwanted loading indicators.](#preventing-unwanted-loading-indicators).
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 #### 반환값 {/*returns*/}
 
@@ -53,13 +61,23 @@ function TabContainer() {
 
 * 해당 state의 `set` 함수에 접근할 수 있는 경우에만 업데이트를 Transition 으로 래핑할 수 있습니다. 일부 props 이나 custom Hook 반환 값에 대한 응답으로 Transition 을 시작하려면 [`useDeferredValue`](/reference/react/useDeferredValue)를 대신 사용하세요.
 
+<<<<<<< HEAD
 * `startTransition` 에 전달하는 함수는 동기식이어야 합니다. React는 이 함수를 즉시 실행하여 실행하는 동안 발생하는 모든 state 업데이트를 Transition 으로 표시합니다. 나중에 더 많은 state 업데이트를 수행하려고 하면(예시: timeout), Transition 으로 표시되지 않습니다.
+=======
+* The function you pass to the of `startTransition` is called immediately, marking all state updates that happen while it executes as Transitions. If you try to perform state updates in a `setTimeout`, for example, they won't be marked as Transitions.
+
+* You must wrap any state updates after any async requests in another `startTransition` to mark them as Transitions. This is a known limitation that we will fix in the future (see [Troubleshooting](#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 * Transition 으로 표시된 state 업데이트는 다른 state 업데이트에 의해 중단됩니다. 예를 들어, Transition 내에서 차트 컴포넌트를 업데이트하지만 차트가 다시 렌더링되는 동안 입력을 시작하면 React는 입력 state 업데이트를 처리한 후 차트 컴포넌트에서 렌더링 작업을 다시 시작합니다.
 
 * Transition 업데이트는 텍스트 입력을 제어하는 데 사용할 수 없습니다.
 
+<<<<<<< HEAD
 * 만약 진행 중인 Transition 이 여러 개 있는 경우, React에서는 함께 일괄 처리 합니다. 이는 향후 릴리즈에서 제거될 가능성이 높은 제한 사항입니다.
+=======
+* If there are multiple ongoing Transitions, React currently batches them together. This is a limitation that may be removed in a future release.
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 ---
 
