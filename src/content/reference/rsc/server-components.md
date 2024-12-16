@@ -1,7 +1,17 @@
 ---
+<<<<<<< HEAD
 title: React 서버 컴포넌트
 canary: true
+=======
+title: Server Components
+>>>>>>> 3b02f828ff2a4f9d2846f077e442b8a405e2eb04
 ---
+
+<RSC>
+
+Sever Components are for use in [React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
+
+</RSC>
 
 <Intro>
 
@@ -188,7 +198,11 @@ async function Author({id}) {
 
 #### 서버 컴포넌트에 대한 지시어는 없습니다. {/*there-is-no-directive-for-server-components*/}
 
+<<<<<<< HEAD
 서버 컴포넌트는 `"use server"`로 표시된다는 오해가 있지만, 서버 컴포넌트에 대한 지시어는 없습니다. `"use server"` 지시어는 서버 액션에 사용됩니다.
+=======
+A common misunderstanding is that Server Components are denoted by `"use server"`, but there is no directive for Server Components. The `"use server"` directive is used for Server Functions.
+>>>>>>> 3b02f828ff2a4f9d2846f077e442b8a405e2eb04
 
 자세한 내용은 [지시어](/reference/rsc/directives)를 참조하세요.
 

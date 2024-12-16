@@ -85,9 +85,15 @@ app.use('/', (request, response) => {
 
 ## 대안 {/*alternatives*/}
 
+<<<<<<< HEAD
 ### 서버에서 `renderToString`을 스트리밍 함수로 마이그레이션 {/*migrating-from-rendertostring-to-a-streaming-method-on-the-server*/}
 
 `renderToString`은 문자열을 즉시 반환하므로 스트리밍이나 데이터 대기를 지원하지 않습니다.
+=======
+### Migrating from `renderToString` to a streaming render on the server {/*migrating-from-rendertostring-to-a-streaming-method-on-the-server*/}
+
+`renderToString` returns a string immediately, so it does not support streaming content as it loads.
+>>>>>>> 3b02f828ff2a4f9d2846f077e442b8a405e2eb04
 
 가능하면 다음과 같은 완전한 기능을 갖춘 대안을 사용하는 것을 권장합니다:
 
@@ -98,7 +104,24 @@ app.use('/', (request, response) => {
 
 ---
 
+<<<<<<< HEAD
 ### 클라이언트 코드에서 `renderToString` 제거하기 {/*removing-rendertostring-from-the-client-code*/}
+=======
+### Migrating from `renderToString` to a static prerender on the server {/*migrating-from-rendertostring-to-a-static-prerender-on-the-server*/}
+
+`renderToString` returns a string immediately, so it does not support waiting for data to load for static HTML generation.
+
+We recommend using these fully-featured alternatives:
+
+* If you use Node.js, use [`prerenderToNodeStream`.](/reference/react-dom/static/prerenderToNodeStream)
+* If you use Deno or a modern edge runtime with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), use [`prerender`.](/reference/react-dom/static/prerender)
+
+You can continue using `renderToString` if your static site generation environment does not support streams.
+
+---
+
+### Removing `renderToString` from the client code {/*removing-rendertostring-from-the-client-code*/}
+>>>>>>> 3b02f828ff2a4f9d2846f077e442b8a405e2eb04
 
 클라이언트에서 일부 컴포넌트를 HTML로 변환하기 위해 `renderToString`을 사용하기도 합니다.
 
@@ -134,6 +157,12 @@ console.log(div.innerHTML); // 예를 들어, "<svg>...</svg>"
 
 `renderToString`은 Suspense를 완벽하게 지원하지 않습니다.
 
+<<<<<<< HEAD
 일부 컴포넌트가 일시 중단되거나 (예를 들어, [`lazy`](/reference/react/lazy)와 함께 정의되거나 데이터를 가져올 때) `renderToString`은 콘텐츠가 해결될 때까지 기다리지 않습니다. `renderToString`는 그 위에 가장 가까운 [`<Suspense>`](/reference/react/Suspense) 경계를 찾아 `fallback` 프로퍼티를 HTML에 렌더링합니다. 내용은 클라이언트 코드가 로드될 때까지 나타나지 않습니다.
+=======
+If some component suspends (for example, because it's defined with [`lazy`](/reference/react/lazy) or fetches data), `renderToString` will not wait for its content to resolve. Instead, `renderToString` will find the closest [`<Suspense>`](/reference/react/Suspense) boundary above it and render its `fallback` prop in the HTML. The content will not appear until the client code loads.
+
+To solve this, use one of the [recommended streaming solutions.](#alternatives) For server side rendering, they can stream content in chunks as it resolves on the server so that the user sees the page being progressively filled in before the client code loads. For static site generation, they can wait for all the content to resolve before generating the static HTML.
+>>>>>>> 3b02f828ff2a4f9d2846f077e442b8a405e2eb04
 
 이를 해결하기 위해 [권장하는 스트리밍 솔루션](#migrating-from-rendertostring-to-a-streaming-method-on-the-server) 중 하나를 사용하세요. 사용자가 클라이언트 코드가 로드되기 전에 페이지가 점진적으로 채워지는 것을 볼 수 있도록 서버에서 해결할 때 컨텐츠를 청크로 스트리밍할 수 있습니다.
