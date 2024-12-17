@@ -36,12 +36,18 @@ function SearchPage() {
 
 #### 매개변수 {/*parameters*/}
 
+<<<<<<< HEAD
 * `value`: 지연시키려는 값입니다. 모든 타입을 가질 수 있습니다.
 * <CanaryBadge title="This feature is only available in the Canary channel" /> **optional** `initialValue`: A value to use during the initial render of a component. If this option is omitted, `useDeferredValue` will not defer during the initial render, because there's no previous version of `value` that it can render instead.
+=======
+* `value`: The value you want to defer. It can have any type.
+* **optional** `initialValue`: A value to use during the initial render of a component. If this option is omitted, `useDeferredValue` will not defer during the initial render, because there's no previous version of `value` that it can render instead.
+>>>>>>> 3b02f828ff2a4f9d2846f077e442b8a405e2eb04
 
 
 #### 반환값 {/*returns*/}
 
+<<<<<<< HEAD
 
 - `currentValue`: 초기 렌더링 중에는 반환된 '지연된 값'은 사용자가 제공한 값과 같습니다. 업데이트가 발생하면 React는 먼저 이전 값으로 리렌더링을 시도(반환값이 이전 값과 일치하도록)하고, 그다음 백그라운드에서 다시 새 값으로 리렌더링을 시도(반환값이 업데이트된 새 값과 일치하도록)합니다.
 
@@ -50,6 +56,9 @@ function SearchPage() {
 In the latest React Canary versions, `useDeferredValue` returns the `initialValue` on initial render, and schedules a re-render in the background with the `value` returned.
 
 </Canary>
+=======
+- `currentValue`: During the initial render, the returned deferred value will be the `initialValue`, or the same as the value you provided. During updates, React will first attempt a re-render with the old value (so it will return the old value), and then try another re-render in the background with the new value (so it will return the updated value).
+>>>>>>> 3b02f828ff2a4f9d2846f077e442b8a405e2eb04
 
 #### 주의 사항 {/*caveats*/}
 
@@ -107,21 +116,6 @@ function SearchPage() {
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState } from 'react';
 import SearchResults from './SearchResults.js';
@@ -142,14 +136,9 @@ export default function App() {
 }
 ```
 
-```js src/SearchResults.js hidden
+```js src/SearchResults.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -168,31 +157,6 @@ export default function SearchResults({ query }) {
       ))}
     </ul>
   );
-}
-
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
-function use(promise) {
-  if (promise.status === 'fulfilled') {
-    return promise.value;
-  } else if (promise.status === 'rejected') {
-    throw promise.reason;
-  } else if (promise.status === 'pending') {
-    throw promise;
-  } else {
-    promise.status = 'pending';
-    promise.then(
-      result => {
-        promise.status = 'fulfilled';
-        promise.value = result;
-      },
-      reason => {
-        promise.status = 'rejected';
-        promise.reason = reason;
-      },      
-    );
-    throw promise;
-  }
 }
 ```
 
@@ -221,7 +185,7 @@ async function getData(url) {
 async function getSearchResults(query) {
   // Add a fake delay to make waiting noticeable.
   await new Promise(resolve => {
-    setTimeout(resolve, 500);
+    setTimeout(resolve, 1000);
   });
 
   const allAlbums = [{
@@ -320,6 +284,7 @@ export default function App() {
 아래 예시에서 `"a"`를 입력하고 결과가 로딩될 때까지 기다린 다음, 입력값을 `"ab"`로 수정해보세요. 이제 새 결과가 로딩될 때까지 Suspense 폴백 대신 오래된 결과 목록이 표시되는 것을 확인할 수 있습니다:
 
 <Sandpack>
+<<<<<<< HEAD
 ```json package.json hidden
 {
   "dependencies": {
@@ -334,6 +299,8 @@ export default function App() {
   }
 }
 ```
+=======
+>>>>>>> 3b02f828ff2a4f9d2846f077e442b8a405e2eb04
 
 ```js src/App.js
 import { Suspense, useState, useDeferredValue } from 'react';
@@ -356,14 +323,9 @@ export default function App() {
 }
 ```
 
-```js src/SearchResults.js hidden
+```js src/SearchResults.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -382,31 +344,6 @@ export default function SearchResults({ query }) {
       ))}
     </ul>
   );
-}
-
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
-function use(promise) {
-  if (promise.status === 'fulfilled') {
-    return promise.value;
-  } else if (promise.status === 'rejected') {
-    throw promise.reason;
-  } else if (promise.status === 'pending') {
-    throw promise;
-  } else {
-    promise.status = 'pending';
-    promise.then(
-      result => {
-        promise.status = 'fulfilled';
-        promise.value = result;
-      },
-      reason => {
-        promise.status = 'rejected';
-        promise.reason = reason;
-      },      
-    );
-    throw promise;
-  }
 }
 ```
 
@@ -435,7 +372,7 @@ async function getData(url) {
 async function getSearchResults(query) {
   // Add a fake delay to make waiting noticeable.
   await new Promise(resolve => {
-    setTimeout(resolve, 500);
+    setTimeout(resolve, 1000);
   });
 
   const allAlbums = [{
@@ -543,21 +480,6 @@ input { margin: 10px; }
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState, useDeferredValue } from 'react';
 import SearchResults from './SearchResults.js';
@@ -585,14 +507,9 @@ export default function App() {
 }
 ```
 
-```js src/SearchResults.js hidden
+```js src/SearchResults.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -611,31 +528,6 @@ export default function SearchResults({ query }) {
       ))}
     </ul>
   );
-}
-
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
-function use(promise) {
-  if (promise.status === 'fulfilled') {
-    return promise.value;
-  } else if (promise.status === 'rejected') {
-    throw promise.reason;
-  } else if (promise.status === 'pending') {
-    throw promise;
-  } else {
-    promise.status = 'pending';
-    promise.then(
-      result => {
-        promise.status = 'fulfilled';
-        promise.value = result;
-      },
-      reason => {
-        promise.status = 'rejected';
-        promise.reason = reason;
-      },      
-    );
-    throw promise;
-  }
 }
 ```
 
@@ -664,7 +556,7 @@ async function getData(url) {
 async function getSearchResults(query) {
   // Add a fake delay to make waiting noticeable.
   await new Promise(resolve => {
-    setTimeout(resolve, 500);
+    setTimeout(resolve, 1000);
   });
 
   const allAlbums = [{

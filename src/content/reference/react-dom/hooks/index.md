@@ -12,6 +12,7 @@ title: "Built-in React DOM Hooks"
 
 ## 폼 Hooks {/*form-hooks*/}
 
+<<<<<<< HEAD
 <Canary>
 
 폼 Hook은 현재 React의 Canary 채널과 실험적인 채널에서만 사용할 수 있습니다. 자세한 내용은 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
@@ -19,6 +20,9 @@ title: "Built-in React DOM Hooks"
 </Canary>
 
 *폼*은 정보 제출을 위한 상호 작용형 제어를 만들 수 있도록 해줍니다. 컴포넌트에 있는 폼을 관리하기 위해 다음과 같은 훅 중 하나를 사용할 수 있습니다.
+=======
+*Forms* let you create interactive controls for submitting information.  To manage forms in your components, use one of these Hooks:
+>>>>>>> 3b02f828ff2a4f9d2846f077e442b8a405e2eb04
 
 * [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 폼의 상태에 따라 UI를 업데이트할 수 있게 해줍니다.
 

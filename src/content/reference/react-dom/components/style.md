@@ -1,14 +1,16 @@
 ---
 style: "<style>"
-canary: true
 ---
 
+<<<<<<< HEAD
 <Canary>
 
 React의 `<title>` 확장은 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. React의 안정적인 릴리즈에서는 `<title>`이 [내장 브라우저 HTML 컴포넌트](/reference/react-dom/components#all-html-components)로만 작동합니다. 여기에서 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
 
 </Canary>
 
+=======
+>>>>>>> 3b02f828ff2a4f9d2846f077e442b8a405e2eb04
 <Intro>
 
 [내장된 브라우저 `<style>` 컴포넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/style)를 사용하면 문서에 인라인 CSS 스타일시트를 추가할 수 있습니다. 
