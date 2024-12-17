@@ -21,7 +21,7 @@
 ### 사전 준비
 
 1. Git
-1. Node: 12.0.0 이상으로 시작하는 모든 12.x 버전
+1. Node: v16.8.0 이상의 모든 버전
 1. Yarn v1: [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/) 참고
 1. 포크한 개인 저장소
 1. 로컬에 클론(Clone)한 [ko.react.dev repo](https://github.com/reactjs/ko.react.dev) 개인 저장소
