@@ -41,8 +41,9 @@ These APIs can be used to make apps faster by pre-loading resources such as scri
 
 ---
 
-## Deprecated APIs {/*deprecated-apis*/}
+## Removed APIs {/*removed-apis*/}
 
+<<<<<<< HEAD
 <Deprecated>
 
 이 API는 향후 React의 메이저 버전에서 제거될 예정입니다.
@@ -53,4 +54,13 @@ These APIs can be used to make apps faster by pre-loading resources such as scri
 * [`hydrate`](/reference/react-dom/hydrate)는 트리를 서버 HTML에서 생성된 DOM으로 마운트합니다. 더 이상 사용되지 않으며 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 권장합니다.
 * [`render`](/reference/react-dom/render)는 트리를 DOM으로 마운트합니다. 더 이상 사용되지 않으며 [`createRoot`](/reference/react-dom/client/createRoot)를 권장합니다.
 * [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode)는 트리를 DOM에서 마운트 해제합니다. 더 이상 사용되지 않으며 [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount)를 권장합니다.
+=======
+These APIs were removed in React 19:
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
+* [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode): see [alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives).
+* [`hydrate`](https://18.react.dev/reference/react-dom/hydrate): use [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) instead.
+* [`render`](https://18.react.dev/reference/react-dom/render): use [`createRoot`](/reference/react-dom/client/createRoot) instead.
+* [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode): use [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) instead.
+* [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
+* [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.

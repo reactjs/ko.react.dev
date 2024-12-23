@@ -1,14 +1,16 @@
 ---
 style: "<style>"
-canary: true
 ---
 
+<<<<<<< HEAD
 <Canary>
 
 React의 `<title>` 확장은 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. React의 안정적인 릴리즈에서는 `<title>`이 [내장 브라우저 HTML 컴포넌트](/reference/react-dom/components#all-html-components)로만 작동합니다. 여기에서 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
 
 </Canary>
 
+=======
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 <Intro>
 
 [내장된 브라우저 `<style>` 컴포넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/style)를 사용하면 문서에 인라인 CSS 스타일시트를 추가할 수 있습니다. 
@@ -70,7 +72,15 @@ React는 `<style>` 컴포넌트를 문서의 `<head>`로 이동시키고, 동일
 
 컴포넌트가 올바르게 표시되기 위해 특정 CSS 스타일에 의존하는 경우, 컴포넌트 내에서 인라인 스타일시트를 렌더링할 수 있습니다.
 
+<<<<<<< HEAD
 `href`와 `precedence` 속성을 제공하면 스타일시트가 로딩되는 동안 컴포넌트가 일시 중지됩니다. (인라인 스타일시트의 경우에도 스타일시트가 참조하는 폰트와 이미지로 인해 로딩 시간이 발생할 수 있습니다.) `href` 속성은 스타일시트를 고유하게 식별해야 하며, 이를 통해 React는 동일한 href를 가진 스타일시트의 중복을 제거할 수 있습니다.
+=======
+The `href` prop should uniquely identify the stylesheet, because React will de-duplicate stylesheets that have the same `href`.
+If you supply a `precedence` prop, React will reorder inline stylesheets based on the order these values appear in the component tree.
+
+Inline stylesheets will not trigger Suspense boundaries while they're loading.
+Even if they load async resources like fonts or images.
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
 <SandpackWithHTMLOutput>
 

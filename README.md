@@ -21,10 +21,17 @@
 ### 사전 준비
 
 1. Git
+<<<<<<< HEAD
 1. Node: v16.8.0 이상의 모든 버전
 1. Yarn v1: [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/) 참고
 1. 포크한 개인 저장소
 1. 로컬에 클론(Clone)한 [ko.react.dev repo](https://github.com/reactjs/ko.react.dev) 개인 저장소
+=======
+1. Node: any version starting with v16.8.0 or greater
+1. Yarn: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
+1. A fork of the repo (for any contributions)
+1. A clone of the [react.dev repo](https://github.com/reactjs/react.dev) on your local machine
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
 ### 설치
 

@@ -1,13 +1,23 @@
 ---
 title: "'use client'"
+<<<<<<< HEAD
 titleForTitleTag: "'use client' 지시어"
 canary: true
+=======
+titleForTitleTag: "'use client' directive"
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 ---
 
-<Canary>
+<RSC>
 
+<<<<<<< HEAD
 `'use client'`는 [React 서버 컴포넌트를 사용](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)하거나 그와 호환되는 라이브러리를 만들 때만 사용합니다.
 </Canary>
+=======
+`'use client'` is for use with [React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
+
+</RSC>
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
 
 <Intro>
@@ -252,6 +262,7 @@ React 앱에서와 같이 부모 컴포넌트는 자식 컴포넌트에 데이�
 
 서버 컴포넌트에서 클라이언트 컴포넌트로 전달되는 prop 값은 직렬화할 수 있어야 합니다.
 
+<<<<<<< HEAD
 직렬화할 수 있는 props는 다음과 같습니다.
 * 원시 자료형
 	* [string](https://developer.mozilla.org/ko/docs/Glossary/String)
@@ -272,6 +283,28 @@ React 앱에서와 같이 부모 컴포넌트는 자식 컴포넌트에 데이�
 * [서버 액션](/reference/react/use-server)으로서의 함수
 * 클라이언트 또는 서버 컴포넌트 요소(JSX)
 * [Promises](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+=======
+Serializable props include:
+* Primitives
+	* [string](https://developer.mozilla.org/en-US/docs/Glossary/String)
+	* [number](https://developer.mozilla.org/en-US/docs/Glossary/Number)
+	* [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
+	* [boolean](https://developer.mozilla.org/en-US/docs/Glossary/Boolean)
+	* [undefined](https://developer.mozilla.org/en-US/docs/Glossary/Undefined)
+	* [null](https://developer.mozilla.org/en-US/docs/Glossary/Null)
+	* [symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), only symbols registered in the global Symbol registry via [`Symbol.for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)
+* Iterables containing serializable values
+	* [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+	* [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+	* [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+	* [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
+	* [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) and [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
+* [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+* Plain [objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object): those created with [object initializers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer), with serializable properties
+* Functions that are [Server Functions](/reference/rsc/server-functions)
+* Client or Server Component elements (JSX)
+* [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
 단, 다음은 지원되지 않습니다.
 * 클라이언트로 표시된 모듈에서 내보내지 않았거나 [`'use server'`](/reference/rsc/use-server)로 표시된 [함수](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function)

@@ -4,7 +4,11 @@ title: 빠르게 시작하기
 
 <Intro>
 
+<<<<<<< HEAD
 React 문서에 오신 것을 환영합니다! 이 페이지에서는 여러분이 매일 사용하게 될 React 개념의 80%를 소개합니다.
+=======
+Welcome to the React documentation! This page will give you an introduction to 80% of the React concepts that you will use on a daily basis.
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
 </Intro>
 

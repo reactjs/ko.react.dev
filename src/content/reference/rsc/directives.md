@@ -1,13 +1,21 @@
 ---
+<<<<<<< HEAD
 title: "지시어"
 canary: true
+=======
+title: Directives
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 ---
 
-<Canary>
+<RSC>
 
+<<<<<<< HEAD
 이 지시어는 [React 서버 컴포넌트를 사용하거나](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 이와 호환되는 라이브러리를 빌드하는 경우에만 필요합니다.
+=======
+Directives are for use in [React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
-</Canary>
+</RSC>
 
 <Intro>
 
