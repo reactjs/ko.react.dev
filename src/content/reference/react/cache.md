@@ -192,11 +192,11 @@ async function MinimalWeatherCard({city}) {
 }
 ```
 
-`AnimatedWeatherCard`와 `MinimalWeatherCard`가 같은 <CodeStep step={1}>도시</CodeStep>를 렌더링할 때, <CodeStep step={2}>메모화된 함수</CodeStep>로 부터 같은 데이터의 스냅샷을 받게 됩니다.
+`AnimatedWeatherCard`와 `MinimalWeatherCard`가 같은 <CodeStep step={1}>city</CodeStep>를 렌더링할 때, <CodeStep step={2}>메모화된 함수</CodeStep>로 부터 같은 데이터의 스냅샷을 받게 됩니다.
 
-`AnimatedWeatherCard`와 `MinimalWeatherCard`가 다른 <CodeStep step={1}>도시</CodeStep>를 <CodeStep step={2}>`getTemperature`</CodeStep>의 인자로 받게 된다면, `fetchTemperature`는 두 번 호출되고 호출마다 다른 데이터를 받게 됩니다. 
+`AnimatedWeatherCard`와 `MinimalWeatherCard`가 다른 <CodeStep step={1}>city</CodeStep>를 <CodeStep step={2}>`getTemperature`</CodeStep>의 인자로 받게 된다면, `fetchTemperature`는 두 번 호출되고 호출마다 다른 데이터를 받게 됩니다. 
 
-<CodeStep step={1}>도시</CodeStep>가 캐시 키처럼 동작하게 됩니다.
+<CodeStep step={1}>city</CodeStep>가 캐시 키처럼 동작하게 됩니다.
 
 <Note>
 
@@ -274,7 +274,7 @@ async function MyComponent() {
 
 첫 번째 <CodeStep step={2}>`getData`</CodeStep> 호출은 `기다리지 않지만(await)` <CodeStep step={3}>두 번째</CodeStep>는 기다립니다. [`await`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/await) 는 자바스크립트 연산자로, 기다렸다가 확정된 Promise의 결과를 반환합니다. 첫 번째 <CodeStep step={2}>`getData`</CodeStep>은 단순히 조회할 두 번째 <CodeStep step={3}>`getData`</CodeStep>에 대한 Promise를 캐싱하기 위해 `fetch`를 실행합니다.
 
-<CodeStep step={3}>두 번째 호출</CodeStep>에서 Promise가 여전히 _보류 중_이면, 결과를 기다리는 동안 `await`가 일시 중지됩니다. 이 최적화는 데이터 불러오기를 기다리는 동안 React가 계산 작업을 계속할 수 있게 해 <CodeStep step={3}>두 번째 호출</CodeStep>에 대한 대기 시간을 줄일 수 있게 합니다. 
+<CodeStep step={3}>두 번째 호출</CodeStep>에서 Promise가 여전히 <em>보류 중</em>이면, 결과를 기다리는 동안 `await`가 일시 중지됩니다. 이 최적화는 데이터 불러오기를 기다리는 동안 React가 계산 작업을 계속할 수 있게 해 <CodeStep step={3}>두 번째 호출</CodeStep>에 대한 대기 시간을 줄일 수 있게 합니다. 
 
 _완료된_ 결과나 에러에 대한 Promise가 이미 정해진 경우, `await`는 즉시 값을 반환합니다. 두 결과 모두 성능상의 이점이 있습니다.
 </DeepDive>
