@@ -2,7 +2,7 @@
 title: "React v18.0"
 author: The React Team
 date: 2022/03/08
-description: React 18 is now available on npm! In our last post, we shared step-by-step instructions for upgrading your app to React 18. In this post, we'll give an overview of what's new in React 18, and what it means for the future.
+description: 이제 npm에서 React 18을 사용할 수 있습니다! 지난 포스팅에서는 앱을 React 18로 업그레이드하는 방법을 단계별로 공유했습니다. 이번 포스팅에서는 React 18의 새로운 기능과 미래에 어떤 의미를 갖는지에 대해 설명하겠습니다.
 ---
 
 2022년 3월 29일, [The React Team](/community/team)
