@@ -1,8 +1,6 @@
 {
-  "name": "react-dev",
-  "version": "1.0.0",
-  "packageManager": "yarn@1.22.22",
   "private": true,
+  "packageManager": "yarn@1.22.22",
   "license": "CC",
   "scripts": {
     "analyze": "ANALYZE=true next build",
