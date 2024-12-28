@@ -49,7 +49,7 @@ React의 익스텐션인 `<form>`은 현재 React Canary(카나리)와 실험적
 [`action`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action): URL 혹은 함수.
 URL이 `action`을 통해 전달되면, 폼은 HTML 폼 컴포넌트처럼 행동합니다. 함수가 action을 통해 전달되면, 해당 함수는 폼 제출처럼 동작합니다. `action`을 통한 함수는 비동기로 동작할 수 있으며, 폼을 통해 제출된 [formData](https://developer.mozilla.org/ko/docs/Web/API/FormData)를 포함한 단일 인수로 호출됩니다. `action`의 프로퍼티는 `formAction`의 속성인 `<button>`, `<input type="submit">`, 혹은 `<input type="image">`로 재정의될 수 있습니다.
 
-#### 주의 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * 함수가 `action`이나 `formAction`에 전달되면, HTTP 메서드는 `method` 프로퍼티의 값과 관계없이 POST로 처리됩니다.
 

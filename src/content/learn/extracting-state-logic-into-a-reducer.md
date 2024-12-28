@@ -4,14 +4,14 @@ title: state 로직을 reducer로 작성하기
 
 <Intro>
 
-한 컴포넌트에서 state 업데이트가 여러 이벤트 핸들러로 분산되는 경우가 있습니다. 이 경우 컴포넌트를 관리하기 어려워집니다. 따라서, 이 문제 해결을 위해 state를 업데이트하는 모든 로직을 *reducer*를 사용해 컴포넌트 외부로 단일 함수로 통합해 관리할 수 있습니다.
+한 컴포넌트에서 state 업데이트가 여러 이벤트 핸들러로 분산되는 경우가 있습니다. 이 경우 컴포넌트를 관리하기 어려워집니다. 따라서, 문제 해결을 위해 state를 업데이트하는 모든 로직을 *reducer*를 사용해 컴포넌트 외부의 단일 함수로 통합해 관리할 수 있습니다.
 
 </Intro>
 
 <YouWillLearn>
 
 - reducer 함수란 무엇인가
-- `useState`에서 `useReducer`로 리펙토링 하는 방법
+- `useState`에서 `useReducer`로 리팩토링 하는 방법
 - reducer를 언제 사용할 수 있는지
 - reducer를 잘 작성하는 방법
 
@@ -19,7 +19,7 @@ title: state 로직을 reducer로 작성하기
 
 ## reducer를 사용하여 state 로직 통합하기 {/*consolidate-state-logic-with-a-reducer*/}
 
-컴포넌트가 복잡해지면 컴포넌트의 state가 업데이트되는 다양한 경우를 한눈에 파악하기 어려워질 수 있습니다. 예를 들어, 아래의 `TaskApp` 컴포넌트는 state에 `tasks` 배열을 보유하고 있으며, 세 가지의 이벤트 핸들러를 사용하여 task를 추가, 제거 및 수정합니다:
+컴포넌트가 복잡해지면 컴포넌트의 state가 업데이트되는 다양한 경우를 한눈에 파악하기 어려워질 수 있습니다. 예를 들어, 아래의 `TaskApp` 컴포넌트는 state에 `tasks` 배열을 보유하고 있으며, 세 가지의 이벤트 핸들러를 사용하여 task를 추가, 제거 및 수정합니다.
 
 <Sandpack>
 
@@ -180,7 +180,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-각 이벤트 핸들러는 state를 업데이트하기 위해 `setTasks`를 호출합니다. 컴포넌트가 커질수록 그 안에서 state를 다루는 로직의 양도 늘어나게 됩니다. 복잡성를 줄이고 접근성을 높이기 위해서, 컴포넌트 내부에 있는 state 로직을 컴포넌트 외부의 **"reducer"라고 하는** 단일 함수로 옮길 수 있습니다.
+각 이벤트 핸들러는 state를 업데이트하기 위해 `setTasks`를 호출합니다. 컴포넌트가 커질수록 그 안에서 state를 다루는 로직의 양도 늘어나게 됩니다. 복잡성은 줄이고 접근성을 높이기 위해서, 컴포넌트 내부에 있는 state 로직을 컴포넌트 외부의 **"reducer"라고 하는** 단일 함수로 옮길 수 있습니다.
 
 reducer는 state를 다루는 다른 방법입니다. 다음과 같은 세가지 단계에 걸쳐 `useState`에서 `useReducer`로 바꿀 수 있습니다.
 
@@ -220,11 +220,11 @@ function handleDeleteTask(taskId) {
 
 위 코드에서 state 설정 관련 로직을 전부 지워보세요. 다음과 같이 세가지 이벤트 핸들러가 남습니다.
 
-- 사용자가 "Add" 를 눌렀을 때 호출되는 `handleAddTask(text)`
-- 사용자가 task를 토글하거나 "저장"을 누르면 호출되는 `handleChangeTask(task)`
-- 사용자가 "Delete" 를 누르면 호출되는 `handleDeleteTask(taskId)`
+- 사용자가 "Add"를 눌렀을 때 호출되는 `handleAddTask(text)`.
+- 사용자가 task를 토글하거나 "Save"를 누르면 호출되는 `handleChangeTask(task)`.
+- 사용자가 "Delete"를 누르면 호출되는 `handleDeleteTask(taskId)`.
 
-reducer를 사용한 state 관리는 state 직접 설정하는 것과 약간 다릅니다. state를 설정하여 React에게 “무엇을 할 지”를 지시하는 대신, 이벤트 핸들러에서 “action”을 전달하여 “사용자가 방금 한 일”을 지정합니다. (state 업데이트 로직은 다른 곳에 있습니다!) 즉, 이벤트 핸들러를 통해 ”`tasks`를 설정”하는 대신 “task를 추가/변경/삭제”하는 action을 전달하는 것입니다. 이러한 방식이 사용자의 의도를 더 명확하게 설명합니다.
+reducer를 사용한 state 관리는 state를 직접 설정하는 것과 약간 다릅니다. state를 설정하여 React에게 "무엇을 할 지"를 지시하는 대신, 이벤트 핸들러에서 "action"을 전달하여 "사용자가 방금 한 일"을 지정합니다. (state 업데이트 로직은 다른 곳에 있습니다!) 즉, 이벤트 핸들러를 통해 "`tasks`를 설정"하는 대신 "task를 추가/변경/삭제"하는 action을 전달하는 것입니다. 이러한 방식이 사용자의 의도를 더 명확하게 설명합니다.
 
 ```js
 function handleAddTask(text) {
@@ -282,7 +282,7 @@ dispatch({
 
 ### 2단계: reducer 함수 작성하기 {/*step-2-write-a-reducer-function*/}
 
-reducer 함수는 state에 대한 로직을 넣는 곳 입니다. 이 함수는 현재의 state 값과 action 객체, 이렇게 두 개의 인자를 받고 다음 state 값을 반환합니다.
+reducer 함수는 state에 대한 로직을 넣는 곳입니다. 이 함수는 현재의 state 값과 action 객체, 이렇게 두 개의 인자를 받고 다음 state 값을 반환합니다.
 
 ```js
 function yourReducer(state, action) {
@@ -296,7 +296,7 @@ React는 reducer에서 반환한 값을 state에 설정합니다.
 
 1. 첫 번째 인자에 현재 state (`tasks`) 선언하기.
 2. 두 번째 인자에 `action` 객체 선언하기.
-3. reducer에서 *다음* state 반환하기. (React가 state에 설정하게 될 값)
+3. reducer에서 *다음* state 반환하기 (React가 state에 설정하게 될 값).
 
 다음은 state 설정과 관련 모든 로직을 reducer 함수로 마이그레이션한 코드입니다.
 
@@ -359,7 +359,7 @@ function tasksReducer(tasks, action) {
 }
 ```
 
-각자 다른 `case` 속에서 선언된 변수들이 서로 충돌하지 않도록 `case` 블록을 중괄호인 `{`와 `}`로 감싸는 걸 추천합니다. 또 `case`는 일반적인 경우라면 `return`으로 끝나야합니다. `return` 하는 것을 잊으면 코드가 다음 case로 "떨어져" 실수할 수 있습니다!
+각자 다른 `case` 속에서 선언된 변수들이 서로 충돌하지 않도록 `case` 블록을 중괄호인 `{`와 `}`로 감싸는 걸 추천합니다. 또 `case`는 일반적인 경우라면 `return`으로 끝나야합니다. `return` 하는 것을 잊으면 코드가 다음 `case`로 "떨어져" 실수할 수 있습니다!
 
 아직 switch 문에 익숙하지 않다면, if/else 문을 사용해도 괜찮습니다.
 
@@ -469,9 +469,9 @@ const [tasks, setTasks] = useState(initialTasks);
 const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 ```
 
-`useReducer` 훅은 초기 state 값을 입력받아 유상태(stateful) 값을 반환한다는 점과 state를 설정하는 함수(useReducer의 경우는 dispatch 함수를 의미)의 원리를 보면 `useState`와 비슷합니다. 하지만 조금 다른 점이 있습니다.
+`useReducer` hook은 초기 state 값을 입력받아 유상태(stateful) 값을 반환한다는 점과 state를 설정하는 함수(`useReducer`의 경우는 dispatch 함수를 의미)의 원리를 보면 `useState`와 비슷합니다. 하지만 조금 다른 점이 있습니다.
 
-`useReducer` 훅은 두 개의 인자를 넘겨받습니다.
+`useReducer` hook은 두 개의 인자를 넘겨받습니다.
 
 1. reducer 함수
 2. 초기 state 값
@@ -670,7 +670,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-아래 처럼 reducer를 다른 파일로 분리하는 것도 가능합니다.
+아래처럼 reducer를 다른 파일로 분리하는 것도 가능합니다.
 
 <Sandpack>
 
@@ -884,9 +884,9 @@ reducer가 좋은 점만 있는 것은 아닙니다! 아래에서 `useState`와 
 
 reducer를 작성할 때, 다음과 같은 두 가지 팁을 명심하세요.
 
-- **Reducers는 반드시 순수해야 합니다.** [state updater functions](/learn/queueing-a-series-of-state-updates)와 비슷하게, reducer는 렌더링 중에 실행됩니다! (action은 다음 렌더링까지 대기합니다.) 이것은 reducer는 [반드시 순수](/learn/keeping-components-pure)해야한다는 걸 의미합니다.—즉, 입력 값이 같다면 결과 값도 항상 같아야 합니다. 요청을 보내거나 timeout을 스케쥴링하거나 사이드 이펙트(컴포넌트 외부에 영향을 미치는 작업)을 수행해서는 안 됩니다. reducer는 [objects](/learn/updating-objects-in-state)와 [arrays](/learn/updating-arrays-in-state)을 변이 없이 업데이트해야 합니다.
+- **Reducer는 반드시 순수해야 합니다.** [state 업데이트 함수](/learn/queueing-a-series-of-state-updates)와 비슷하게, reducer는 렌더링 중에 실행됩니다! (action은 다음 렌더링까지 대기합니다.) 이것은 reducer는 [반드시 순수](/learn/keeping-components-pure)해야한다는 걸 의미합니다. 즉, 입력 값이 같다면 결과 값도 항상 같아야 합니다. 요청을 보내거나 timeout을 스케쥴링하거나 사이드 이펙트(컴포넌트 외부에 영향을 미치는 작업)를 수행해서는 안 됩니다. reducer는 [객체](/learn/updating-objects-in-state)와 [배열](/learn/updating-arrays-in-state)을 변경하지 않고 업데이트해야 합니다.
 
-- **각 action은 데이터 안에서 여러 변경들이 있더라도 하나의 사용자 상호작용을 설명해야 합니다.** 예를 들어, 사용자가 reducer가 관리하는 5개의 필드가 있는 양식에서 ‘재설정’을 누른 경우, 5개의 개별 `set_field` action보다는 하나의 `reset_form` action을 전송하는 것이 더 합리적입니다. 모든 action을 reducer에 기록하면 어떤 상호작용이나 응답이 어떤 순서로 일어났는지 재구성할 수 있을 만큼 로그가 명확해야 합니다. 이는 디버깅에 도움이 됩니다!
+- **각 action은 데이터 안에서 여러 변경들이 있더라도 하나의 사용자 상호작용을 설명해야 합니다.** 예를 들어, 사용자가 reducer가 관리하는 5개의 필드가 있는 양식에서 '재설정'을 누른 경우, 5개의 개별 `set_field` action보다는 하나의 `reset_form` action을 전송하는 것이 더 합리적입니다. 모든 action을 reducer에 기록하면 어떤 상호작용이나 응답이 어떤 순서로 일어났는지 재구성할 수 있을 만큼 로그가 명확해야 합니다. 이는 디버깅에 도움이 됩니다!
 
 ## Immer로 간결한 reducer 작성하기 {/*writing-concise-reducers-with-immer*/}
 
@@ -1096,30 +1096,30 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-reducer는 순수해야 하기 때문에, 이 안에서는 state를 변형할 수 없습니다. 그러나, Immer에서 제공하는 특별한 `draft`객체를 사용하면 안전하게 state를 변형할 수 있습니다. 내부적으로, Immer는 변경 사항이 반영된 `초안(draft)`으로 state의 복사본을 생성합니다. 이것이 `useImmerReducer` 가 관리하는 reducer가 첫 번째 인수인 state를 변형할 수 있고 새로운 state 값을 반환할 필요가 없는 이유입니다.
+reducer는 순수해야 하기 때문에, 이 안에서는 state를 변경할 수 없습니다. 그러나, Immer에서 제공하는 특별한 `draft` 객체를 사용하면 안전하게 state를 변경할 수 있습니다. 내부적으로, Immer는 변경 사항이 반영된 `draft`로 state의 복사본을 생성합니다. 이것이 `useImmerReducer`가 관리하는 reducer가 첫 번째 인수인 state를 변형할 수 있고 새로운 state 값을 반환할 필요가 없는 이유입니다.
 
 ## 요약 {/*요약*/}
 
-- `useState`에서 `useReducer`로 변환하려면:
+- `useState`에서 `useReducer`로 변환하려면
   1. 이벤트 핸들러에서 action을 전달합니다.
   2. 주어진 state와 action에 대해 다음 state를 반환하는 reducer 함수를 작성합니다.
   3. `useState`를 `useReducer`로 바꿉니다.
 - reducer를 사용하면 코드를 조금 더 작성해야 하지만 디버깅과 테스트에 도움이 됩니다.
 - reducer는 반드시 순수해야 합니다.
 - 각 action은 단일 사용자 상호작용을 설명해야 합니다.
-- 객체와 배열을 변이하는 스타일로 reducer를 작성하려면 Immer 라이브러리를 사용하세요.
+- 객체와 배열을 변경하는 스타일로 reducer를 작성하려면 Immer 라이브러리를 사용하세요.
 
 <Challenges>
 
 #### 이벤트 핸들러에서 action 전달하기 {/*dispatch-actions-from-event-handlers*/}
 
-현재 `ContactList.js`와 `Chat.js`의 이벤트 핸들러 안에는 `// TODO` 주석이 있습니다. 이 때문에 input에 값을 입력해도 동작하지 않고 탭 버튼을 클릭해도 선택된 수신인이 변경할 수 없습니다.
+현재 `ContactList.js`와 `Chat.js`의 이벤트 핸들러 안에는 `// TODO` 주석이 있습니다. 이 때문에 input에 값을 입력해도 동작하지 않고 탭 버튼을 클릭해도 선택된 수신인을 변경할 수 없습니다.
 
-`// TODO` 주석이 있는 부분을 지우고 상황에 맞는 action을 `전달(dispatch)`하는 코드를 작성해보세요. action에 대한 힌트를 얻고 싶다면 `messengerReducer.js`에 구현된 reducer를 확인해보세요. 이 reducer는 이미 작성되어있기 때문에 변경할 필요가 없습니다. 여러분은 `ContactList.js`와 `Chat.js`에 action을 담아 전달하는 코드를 작성하기만 하면 됩니다.
+`// TODO` 주석이 있는 부분을 지우고 상황에 맞는 action을 `dispatch`하는 코드를 작성해보세요. action에 대한 힌트를 얻고 싶다면 `messengerReducer.js`에 구현된 reducer를 확인해보세요. 이 reducer는 이미 작성되어있기 때문에 변경할 필요가 없습니다. 여러분은 `ContactList.js`와 `Chat.js`에 action을 담아 전달하는 코드를 작성하기만 하면 됩니다.
 
 <Hint>
 
-`dispatch` 함수는 컴포넌트의 prop으로 전달되기 때문에 이미 두 컴포넌트 모두에서 사용할 수 있습니다. 따라서 알맞은 action 객체를 담아 `dispatch` 를 호출하면 됩니다.
+`dispatch` 함수는 컴포넌트의 prop으로 전달되기 때문에 이미 두 컴포넌트 모두에서 사용할 수 있습니다. 따라서 알맞은 action 객체를 담아 `dispatch`를 호출하면 됩니다.
 
 action 객체를 어떻게 작성해야하는지 확인하고 싶다면, reducer를 보고 어떤 `action` 필드가 들어갈지 유추할 수 있습니다. reducer에 정의된 `changed_selection`의 경우를 예를 들어 보겠습니다.
 

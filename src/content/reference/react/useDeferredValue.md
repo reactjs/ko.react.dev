@@ -43,7 +43,7 @@ function SearchPage() {
 #### 반환값 {/*returns*/}
 
 
-- `currentValue`: 초기 렌더링 중에는 반환된 ‘지연된 값’은 사용자가 제공한 값과 같습니다. 업데이트가 발생하면 React는 먼저 이전 값으로 리렌더링을 시도(반환값이 이전 값과 일치하도록)하고, 그다음 백그라운드에서 다시 새 값으로 리렌더링을 시도(반환값이 업데이트된 새 값과 일치하도록)합니다.
+- `currentValue`: 초기 렌더링 중에는 반환된 '지연된 값'은 사용자가 제공한 값과 같습니다. 업데이트가 발생하면 React는 먼저 이전 값으로 리렌더링을 시도(반환값이 이전 값과 일치하도록)하고, 그다음 백그라운드에서 다시 새 값으로 리렌더링을 시도(반환값이 업데이트된 새 값과 일치하도록)합니다.
 
 <Canary>
 
@@ -51,11 +51,9 @@ In the latest React Canary versions, `useDeferredValue` returns the `initialValu
 
 </Canary>
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 - `useDeferredValue`에 전달하는 값은 문자열 및 숫자와 같은 원시값이거나, 컴포넌트의 외부에서 생성된 객체여야 합니다. 렌더링 중에 새 객체를 생성하고 즉시 `useDeferredValue`에 전달하면 렌더링할 때마다 값이 달라져 불필요한 백그라운드 리렌더링이 발생할 수 있습니다.
-
-- The values you pass to `useDeferredValue` should either be primitive values (like strings and numbers) or objects created outside of rendering. If you create a new object during rendering and immediately pass it to `useDeferredValue`, it will be different on every render, causing unnecessary background re-renders.
 
 - `useDeferredValue`가 현재 렌더링(여전히 이전 값을 사용하는 경우) 외에 다른 값([`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is)로 비교)을 받으면 백그라운드에서 새 값으로 리렌더링하도록 예약합니다. `값`에 대한 또 다른 업데이트가 있으면 백그라운드 리렌더링은 중단될 수 있습니다. React는 백그라운드 리렌더링을 처음부터 다시 시작할 것입니다. 예를 들어 차트가 리렌더링 가능한 지연된 값을 받는 속도보다 사용자가 input에 값을 입력하는 속도가 더 빠른 경우, 차트는 사용자가 입력을 멈춘 후에만 리렌더링됩니다.
 
@@ -867,7 +865,7 @@ export default SlowList;
 
 #### 목록의 최적화되지 않은 리렌더링 {/*unoptimized-re-rendering-of-the-list*/}
 
-이 예시에서는 `SlowList` 컴포넌트의 각 항목이 인위적으로 느려지도록 하여 `useDeferredValue`를 통해 입력 반응성을 유지하는 방법을 확인할 수 있습니다. input에 타이핑하면 입력은 빠르게 느껴지는 반면 목록은 “지연”되는 것을 확인할 수 있습니다.
+이 예시에서는 `SlowList` 컴포넌트의 각 항목이 인위적으로 느려지도록 하여 `useDeferredValue`를 통해 입력 반응성을 유지하는 방법을 확인할 수 있습니다. input에 타이핑하면 입력은 빠르게 느껴지는 반면 목록은 "지연"되는 것을 확인할 수 있습니다.
 
 <Sandpack>
 

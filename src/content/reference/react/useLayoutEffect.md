@@ -56,7 +56,7 @@ function Tooltip() {
 
 `useLayoutEffect`는 `undefined`를 반환합니다.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * `useLayoutEffect`는 Hook이므로, **컴포넌트의 최상위 레벨** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문 내에서 호출할 수 없습니다. 이 작업이 필요하다면 새로운 컴포넌트로 분리해서 Effect를 새 컴포넌트로 옮기세요.
  
@@ -67,6 +67,8 @@ function Tooltip() {
 * Effect는 **클라이언트 환경에서만 동작합니다.** 서버 렌더링 중에는 실행되지 않습니다.
 
 *  `useLayoutEffect` 내부의 코드와 이로 인한 모든 state 업데이트는 **브라우저가 화면을 다시 그리는 것을 막습니다.** 과도하게 사용하면 앱이 느려집니다. 가능하면 [`useEffect`](/reference/react/useEffect)를 사용하세요.
+
+* If you trigger a state update inside `useLayoutEffect`, React will execute all remaining Effects immediately including `useEffect`.
 
 ---
 

@@ -236,7 +236,7 @@ capture-phase-events)
 * [`onWaiting`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/waiting_event): [`이벤트` 핸들러](#event-handler) 함수입니다. 일시적인 데이터 부족으로 인해 재생이 중지된 경우 발생합니다.
 * `onWaitingCapture`: `onWaiting`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 발생하는 버전입니다. 
 
-#### 주의사항 {/*common-caveats*/}
+#### 주의 사항 {/*common-caveats*/}
 
 - `children`과 `dangerouslySetInnerHTML`을 동시에 전달할 수 없습니다.
 - 일부 이벤트(예시: `onAbort`, `onLoad`)는 브라우저에서 버블링이 발생하지 않지만, React에서는 버블링이 발생합니다.
@@ -334,7 +334,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
 * `persist()`: React DOM에서는 사용되지 않습니다. React Native에서는 이벤트가 발생한 후 이벤트의 프로퍼티를 읽으려면 해당 함수를 호출해야 합니다.
 * `isPersistent()`: React DOM에서는 사용되지 않습니다. React Native에서는 `persist`가 호출되었는지 여부를 반환합니다.
 
-#### 주의사항 {/*react-event-object-caveats*/}
+#### 주의 사항 {/*react-event-object-caveats*/}
 
 * `currentTarget`, `eventPhase`, `target`, `type`의 값은 React 코드가 예상하는 값을 반영합니다. 내부적으로는 React는 이벤트 핸들러를 루트에 첨부하지만, React 이벤트 객체에는 반영되지 않습니다. 예를 들어 `e.currentTarget`은 기본`e.nativeEvent.currentTarget`과 동일하지 않을 수 있습니다. 폴리필 된 이벤트의 경우 `e.type` (React 이벤트 타입)이 `e.nativeEvent.type` (기본 타입)과 다를 수 있습니다.
 
@@ -761,7 +761,7 @@ CSS 전환 이벤트에 대한 이벤트 핸들러 유형입니다.
 
 ### CSS 스타일 적용하기 {/*applying-css-styles*/}
 
-리액트는 [`className`](https://developer.mozilla.org/ko/docs/Web/API/Element/className)을 사용하여 CSS 클래스를 지정합니다. 이것은 HTML의 클래스 속성처럼 작동합니다.
+React는 [`className`](https://developer.mozilla.org/ko/docs/Web/API/Element/className)을 사용하여 CSS 클래스를 지정합니다. 이것은 HTML의 클래스 속성처럼 작동합니다.
 
 ```js
 <img className="avatar" />

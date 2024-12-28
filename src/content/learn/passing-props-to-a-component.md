@@ -192,7 +192,7 @@ function Avatar({ person, size }) {
 }
 ```
 
-이 문법을 [“구조 분해 할당”](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter)이라고 부르며 함수 매개변수의 속성과 동등합니다.
+이 문법을 ["구조 분해 할당"](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter)이라고 부르며 함수 매개변수의 속성과 동등합니다.
 
 ```js
 function Avatar(props) {
@@ -350,9 +350,9 @@ export function getImageUrl(person, size = 's') {
 
 </Sandpack>
 
-`<Card>` 내부의 `<Avatar>`를 텍스트로 바꾸어 `<Card>` 컴포넌트가 중첩된 콘텐츠를 어떻게 감싸는지 확인해 보세요. 그 내부에서 무엇이 렌더링 되는지 “알” 필요는 없습니다. 이 유연한 패턴은 많은 곳에서 볼 수 있습니다.
+`<Card>` 내부의 `<Avatar>`를 텍스트로 바꾸어 `<Card>` 컴포넌트가 중첩된 콘텐츠를 어떻게 감싸는지 확인해 보세요. 그 내부에서 무엇이 렌더링 되는지 "알" 필요는 없습니다. 이 유연한 패턴은 많은 곳에서 볼 수 있습니다.
 
-`children` prop을 가지고 있는 컴포넌트는 부모 컴포넌트가 임의의 JSX로 “채울” 수 있는 “구멍”이 있는 것으로 생각할 수 있습니다. 패널, 그리드 등의 시각적 래퍼에 종종 `children` prop를 사용합니다.
+`children` prop을 가지고 있는 컴포넌트는 부모 컴포넌트가 임의의 JSX로 "채울" 수 있는 "구멍"이 있는 것으로 생각할 수 있습니다. 패널, 그리드 등의 시각적 래퍼에 종종 `children` prop를 사용합니다.
 
 <Illustration src="/images/docs/illustrations/i_children-prop.png" alt='A puzzle-like Card tile with a slot for "children" pieces like text and Avatar' />
 
@@ -416,7 +416,7 @@ export default function App() {
 그러나 props는 컴퓨터 과학에서 "변경할 수 없다"라는 의미의 [불변성](https://en.wikipedia.org/wiki/Immutable_object)을 가지고 있습니다. 컴포넌트가 props를 변경해야 하는 경우(예: 사용자의 상호작용이나 새로운 데이터에 대한 응답), 부모 컴포넌트에 *다른 props*, 즉 새로운 객체를 전달하도록 "요청"해야 합니다! 그러면 이전의 props는 버려지고, 결국 자바스크립트 엔진은 기존 props가 차지했던 메모리를 회수하게 됩니다.
 
 
-**“props 변경”을 시도하지 마세요.** 선택한 색을 변경하는 등 사용자 입력에 반응해야 하는 경우에는 [State: 컴포넌트의 메모리](/learn/state-a-components-memory)에서 배울 “set state”가 필요할 것입니다.
+**"props 변경"을 시도하지 마세요.** 선택한 색을 변경하는 등 사용자 입력에 반응해야 하는 경우에는 [State: 컴포넌트의 메모리](/learn/state-a-components-memory)에서 배울 "set state"가 필요할 것입니다.
 
 <Recap>
 
@@ -740,7 +740,7 @@ JSX 어트리뷰트의 컬렉션이 아닌 JavaScript 객체의 속성으로 구
 
 이번 예시에서는 `Avatar` 가 `<img>`의 넓이와 높이를 결정하는 숫자 `size` prop를 받습니다. `size` prop은 `40`으로 설정되어 있습니다. 그러나 새 탭에서 이미지를 열면, 이미지가 `160픽셀`로 커져 있을 것입니다. 실제 이미지 크기는 요청하는 썸네일 크기에 따라 결정됩니다.
 
-`size` prop에 따라 가장 가까운 이미지 크기를 요청하도록 `Avatar` 컴포넌트를 변경하세요. 특히 `size` 가 `90`보다 작으면 `'s'`(”small”)을, 아니면 `'b'`(”big”)을 `getImageUrl` 함수에 전달하세요. `size` prop를 다른 값들을 전달해 보고, 아바타를 렌더링 하는지, 새 탭에서 이미지를 열어 변경사항이 제대로 반영되는지 확인해 보세요.
+`size` prop에 따라 가장 가까운 이미지 크기를 요청하도록 `Avatar` 컴포넌트를 변경하세요. 특히 `size` 가 `90`보다 작으면 `'s'`("small")을, 아니면 `'b'`("big")을 `getImageUrl` 함수에 전달하세요. `size` prop를 다른 값들을 전달해 보고, 아바타를 렌더링 하는지, 새 탭에서 이미지를 열어 변경사항이 제대로 반영되는지 확인해 보세요.
 <Sandpack>
 
 ```js src/App.js

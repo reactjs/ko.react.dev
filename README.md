@@ -8,10 +8,11 @@
 
 번역을 진행할 때에 다음의 가이드를 따라주세요.
 
-1. 다음과 같은 [공통 스타일 가이드 확인 (Check the common style guide)](https://github.com/reactjs/ko.reactjs.org/blob/master/UNIVERSAL-STYLE-GUIDE.md) 을 따르고 있습니다.
-2. [모범사례 확인 (Check best practices)](https://github.com/reactjs/ko.reactjs.org/wiki/Best-practices-for-translation) 을 확인해주세요.
-3. 공통된 단어 번역을 위해 [용어 확인 (Check the term)](https://github.com/reactjs/ko.reactjs.org/wiki/Translate-Glossary) 을 참고해주세요.
-4. 마지막으로 [맞춤법 검사 (Spelling check)](http://speller.cs.pusan.ac.kr/) 를 진행해주세요.
+1. 다음과 같은 [공통 스타일 가이드 확인 (Check the common style guide)](/wiki/universal-style-guide.md)을 따르고 있습니다.
+2. [모범 사례 확인 (Check best practices)](/wiki/best-practices-for-translation.md)을 따라주세요.
+3. 공통된 단어 번역을 위해 [용어 확인 (Check the term)](/wiki/translate-glossary.md)을 참고해주세요.
+4. 끌어오기(Pull Request) 요청 시 테스트를 통과하지 못할 경우 [Textlint 가이드 확인 (Check the textlint guide)](https://github.com/reactjs/ko.react.dev/blob/main/wiki/textlint/what-is-textlint.md)을 참고해주세요.
+5. 마지막으로 [맞춤법 검사 (Spelling check)](https://nara-speller.co.kr/speller/)를 진행해주세요.
 
 이 저장소는 [ko.react.dev](https://ko.react.dev/)의 소스 코드와 개발 문서를 포함하고 있습니다.
 
@@ -20,7 +21,7 @@
 ### 사전 준비
 
 1. Git
-1. Node: 12.0.0 이상으로 시작하는 모든 12.x 버전
+1. Node: v16.8.0 이상의 모든 버전
 1. Yarn v1: [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/) 참고
 1. 포크한 개인 저장소
 1. 로컬에 클론(Clone)한 [ko.react.dev repo](https://github.com/reactjs/ko.react.dev) 개인 저장소
@@ -39,7 +40,7 @@
 
 ### 가이드라인
 
-이 문서는 목적이 다른 여러 섹션으로 나뉘게 됩니다. 문장을 추가할 계획이라면, 적절한 섹션에 대한 [contributing guidelines](https://github.com/reactjs/reactjs.org/blob/main/CONTRIBUTING.md#guidelines-for-text)을 숙지하는 것이 도움이 될 것입니다.
+이 문서는 목적이 다른 여러 섹션으로 나뉘게 됩니다. 문장을 추가할 계획이라면, 적절한 섹션에 대한 [contributing guidelines](/CONTRIBUTING.md)을 숙지하는 것이 도움이 될 것입니다.
 
 ### 브랜치(branch) 만들기
 
@@ -65,7 +66,7 @@
 1. `git add -A && git commit -m "My message"` (`My message` 부분을 `Fix header logo on Android` 같은 커밋 메시지로 교체)를 실행하여 변경한 파일들을 commit 해주세요.
 1. `git push my-fork-name the-name-of-my-branch`
 1. [ko.react.dev repo](https://github.com/reactjs/ko.react.dev)에서 최근에 푸시된 브랜치를 볼 수 있습니다.
-1. Github 지침을 따라주세요.
+1. GitHub 지침을 따라주세요.
 1. 가능하다면 시각적으로 변화된 부분의 스크린샷을 첨부해주세요. PR을 만들고 다른사람들이 수정사항을 볼 수 있게되면 자동으로 빌드할 것입니다.
 
 ## 문제 해결하기
@@ -80,4 +81,4 @@
 
 ## 저작권
 
-위 내용에 대한 저작권은 [react.dev](https://react.dev)가 가지고 있으며, [LICENSE-DOCS.md](LICENSE-DOCS.md)에서 볼 수 있는 CC-BY-4.0 라이센스를 따릅니다.
+위 내용에 대한 저작권은 [react.dev](https://react.dev)가 가지고 있으며, [LICENSE-DOCS.md](/LICENSE-DOCS.md)에서 볼 수 있는 CC-BY-4.0 라이센스를 따릅니다.

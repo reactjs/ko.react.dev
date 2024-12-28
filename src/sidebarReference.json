@@ -7,7 +7,7 @@
       "sectionHeader": "react@{{version}}"
     },
     {
-      "title": "Overview",
+      "title": "개요",
       "path": "/reference/react"
     },
     {
@@ -163,7 +163,7 @@
       "sectionHeader": "react-dom@{{version}}"
     },
     {
-      "title": "훅",
+      "title": "Hooks",
       "path": "/reference/react-dom/hooks",
       "routes": [
         {
@@ -339,10 +339,10 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "React 의 규칙"
+      "sectionHeader": "React의 규칙"
     },
     {
-      "title": "Overview",
+      "title": "개요",
       "path": "/reference/rules",
       "routes": [
         {
@@ -361,20 +361,20 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "React Server Components"
+      "sectionHeader": "React 서버 컴포넌트"
     },
     {
-      "title": "Server Components",
+      "title": "서버 컴포넌트",
       "path": "/reference/rsc/server-components",
       "canary": true
     },
     {
-      "title": "Server Actions",
+      "title": "서버 액션",
       "path": "/reference/rsc/server-actions",
       "canary": true
     },
     {
-      "title": "Directives",
+      "title": "지시어",
       "path": "/reference/rsc/directives",
       "canary": true,
       "routes": [

@@ -19,7 +19,7 @@ title: React 컴파일러
 </YouWillLearn>
 
 <Note>
-React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 오픈소스로 공개된 새로운 실험적 컴파일러입니다. 아직 안정적이지 않으며 프로덕션 환경에서는 완전히 준비되지 않았습니다.
+React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 오픈소스로 공개한 새로운 실험적 컴파일러입니다. 아직 안정적이지 않으며 프로덕션 환경에서는 완전히 준비되지 않았습니다.
 
 React 컴파일러는 React 19 RC를 필요로 합니다. React 19로 업그레이드할 수 없는 경우 [워킹 그룹](https://github.com/reactwg/react-compiler/discussions/6)에 설명된 대로 사용자 공간 캐시 함수 구현을 시도해 볼 수 있습니다. 그러나 이 방법은 권장하지 않으며 가능한 한 React 19로 업그레이드하는 것이 좋습니다.
 </Note>
@@ -121,7 +121,7 @@ React 컴파일러는 React의 많은 규칙을 정적으로 검증할 수 있�
 컴파일러를 설치하기 전에, 먼저 코드베이스가 호환되는지 확인할 수 있습니다.
 
 <TerminalBlock>
-npx react-compiler-healthcheck@latest
+npx react-compiler-healthcheck@experimental
 </TerminalBlock>
 
 이 스크립트는 다음 작업을 수행합니다.
@@ -143,7 +143,7 @@ Found no usage of incompatible libraries.
 React 컴파일러는 eslint 플러그인도 지원합니다. eslint 플러그인은 컴파일러와 **독립적으로** 사용할 수 있습니다. 즉 컴파일러를 사용하지 않더라도 eslint 플러그인을 사용할 수 있습니다.
 
 <TerminalBlock>
-npm install eslint-plugin-react-compiler
+npm install eslint-plugin-react-compiler@experimental
 </TerminalBlock>
 
 그런 다음, eslint 구성 파일에 추가하세요.
@@ -203,7 +203,7 @@ export default function App() {
 ### Babel {/*usage-with-babel*/}
 
 <TerminalBlock>
-npm install babel-plugin-react-compiler
+npm install babel-plugin-react-compiler@experimental
 </TerminalBlock>
 
 컴파일러에는 빌드 파이프라인에서 사용할 수 있는 Babel 플러그인이 포함되어 있습니다.
@@ -225,6 +225,29 @@ module.exports = function () {
 ```
 
 `babel-plugin-react-compiler`는 다른 Babel 플러그인보다 먼저 실행되어야 합니다. 이는 컴파일러가 사운드 분석(sound analysis)을 위해 입력 소스 정보를 필요로 하기 때문입니다.
+
+React Compiler works best with React 19 RC. If you are unable to upgrade, you can install the extra `react-compiler-runtime` package which will allow the compiled code to run on versions prior to 19. However, note that the minimum supported version is 17.
+
+<TerminalBlock>
+npm install react-compiler-runtime@experimental
+</TerminalBlock>
+
+You should also add the correct `target` to your compiler config, where `target` is the major version of React you are targeting:
+
+```js {3}
+// babel.config.js
+const ReactCompilerConfig = {
+  target: '18' // '17' | '18' | '19'
+};
+
+module.exports = function () {
+  return {
+    plugins: [
+      ['babel-plugin-react-compiler', ReactCompilerConfig],
+    ],
+  };
+};
+```
 
 ### Vite {/*usage-with-vite*/}
 
@@ -258,7 +281,7 @@ Next.js에는 React 컴파일러를 활성화하는 실험적인 구성이 있�
 - `babel-plugin-react-compiler`를 설치하세요.
 
 <TerminalBlock>
-npm install next@canary babel-plugin-react-compiler
+npm install next@canary babel-plugin-react-compiler@experimental
 </TerminalBlock>
 
 그런 다음 `next.config.js`에서 실험적 옵션을 설정하세요.

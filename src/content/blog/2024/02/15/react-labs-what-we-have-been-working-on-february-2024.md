@@ -75,7 +75,7 @@ Canary는 React의 개발 방식을 변경하는 것입니다. 이전에는 기�
 
 React 서버 컴포넌트, 에셋 불러오기, 문서 메타데이터 및 액션 모두 React Canary에 도입되었으며, 이러한 기능에 대한 문서를 react.dev에 추가했습니다.
 
-- **지시어**: [`"use client"`](/reference/rsc/use-client)와 [`"use server"`](/reference/rsc/use-server)는 풀스택 React 프레임워크를 위해 설계한 bundler 기능입니다. 이들은 두 환경 사이의 "분할점"을 나타냅니다. "use client"는 [Astro Islands](https://docs.astro.build/en/concepts/islands/#creating-an-island)처럼 bundler에 `<script>` 태그를 생성하도록 지시합니다. 반면 `"use server"`는 [tRPC Mutations](https://trpc.io/docs/concepts)처럼 bundler에 POST 엔드포인트를 생성하도록 지시합니다. 두 지시어를 함께 사용하여 클라이이언트 측의 상호작용을 서버 측의 로직과 결합하는 재사용 가능한 컴포넌트를 작성할 수 있습니다.
+- **지시어**: [`"use client"`](/reference/rsc/use-client)와 [`"use server"`](/reference/rsc/use-server)는 풀스택 React 프레임워크를 위해 설계한 번들러 기능입니다. 이들은 두 환경 사이의 "분할점"을 나타냅니다. "use client"는 [Astro Islands](https://docs.astro.build/en/concepts/islands/#creating-an-island)처럼 번들러에 `<script>` 태그를 생성하도록 지시합니다. 반면 `"use server"`는 [tRPC Mutations](https://trpc.io/docs/concepts)처럼 번들러에 POST 엔드포인트를 생성하도록 지시합니다. 두 지시어를 함께 사용하여 클라이이언트 측의 상호작용을 서버 측의 로직과 결합하는 재사용 가능한 컴포넌트를 작성할 수 있습니다.
 
 - **문서 메타데이터**: 우리는 컴포넌트 트리 어디에서든 [`<title>`](/reference/react-dom/components/title), [`<meta>`](/reference/react-dom/components/meta) 및 메타데이터 [`<link>`](/reference/react-dom/components/link) 태그를 렌더링하는 내장 지원을 추가했습니다. 이는 완전한 클라이언트 측 코드, SSR 및 RSC를 포함한 모든 환경에서 동일하게 작동합니다. 이는 [React Helmet](https://github.com/nfl/react-helmet)과 같은 라이브러리가 이미 제공하던 기능을 내장 지원으로 제공합니다.
 
@@ -109,7 +109,7 @@ Activity는 여전히 연구 중이며, 라이브러리 개발자에게 노출�
 
 - [Sathya Gunasekaran](/community/team#sathya-gunasekaran)은 [React India](https://www.youtube.com/watch?v=kjOacmVsLSE) 콘퍼런스에서 React 컴파일러에 관해 이야기했습니다.
 
-- [Dan Abramov](/community/team#dan-abramov)은 [RemixConf](https://www.youtube.com/watch?v=zMf_xeGPn6s)에서 “다른 차원의 React”를 주제로 강연했습니다. 이곳에서 React 서버 컴포넌트와 액션을 어떻게 만들었는지에 관한 대안적인 역사를 탐구했습니다.
+- [Dan Abramov](/community/team#dan-abramov)은 [RemixConf](https://www.youtube.com/watch?v=zMf_xeGPn6s)에서 "다른 차원의 React"를 주제로 강연했습니다. 이곳에서 React 서버 컴포넌트와 액션을 어떻게 만들었는지에 관한 대안적인 역사를 탐구했습니다.
 
 - [Dan Abramov](/community/team#dan-abramov)은 [Changelog의 JS Party 팟캐스트](https://changelog.com/jsparty/311)에서 React 서버 컴포넌트에 대한 인터뷰를 받았습니다.
 

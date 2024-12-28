@@ -1,6 +1,6 @@
 ---
 title: "'use client'"
-titleForTitleTag: "'use client' directive"
+titleForTitleTag: "'use client' 지시어"
 canary: true
 ---
 
@@ -45,7 +45,7 @@ export default function RichTextEditor({ timestamp, text }) {
 
 `RichTextEditor`의 의존성으로 `formatDate`와 `Button`도 해당 모듈에 `'use client'` 지시어가 포함되어 있지 않더라도 클라이언트에서 평가됩니다. 하나의 모듈이 서버 코드에서 가져올 때는 서버에서, 클라이언트 코드에서 가져올 때는 클라이언트에서 평가될 수 있음을 유의해야 합니다.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * `'use client'`는 파일의 맨 처음에 있어야 하며, 다른 코드나 import 문보다 위에 있어야 합니다(주석은 괜찮습니다). 작은따옴표나 큰따옴표로 작성해야 하며 백틱은 사용할 수 없습니다.
 * `'use client'` 모듈을 다른 클라이언트 렌더링 모듈에서 가져오면 지시어가 동작하지 않습니다.

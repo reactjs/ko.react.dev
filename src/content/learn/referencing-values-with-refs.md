@@ -41,7 +41,7 @@ const ref = useRef(0);
 
 <Illustration src="/images/docs/illustrations/i_ref.png" alt="An arrow with 'current' written on it stuffed into a pocket with 'ref' written on it." />
 
-`ref.current` 프로퍼티를 통해 해당 ref의 current 값에 접근할 수 있습니다. 이 값은 의도적으로 변경할 수 있으므로 읽고 쓸 수 있습니다. React가 추적하지 않는 구성 요소의 비밀 주머니라 할 수 있습니다. (이것이 바로 React의 단방향 데이터 흐름에서 "escape hatch"가 되는 것입니다--아래에서 자세히 설명하고 있습니다!)
+`ref.current` 프로퍼티를 통해 해당 ref의 current 값에 접근할 수 있습니다. 이 값은 의도적으로 변경할 수 있으므로 읽고 쓸 수 있습니다. React가 추적하지 않는 구성 요소의 비밀 주머니라 할 수 있습니다. (이것이 바로 React의 단방향 데이터 흐름에서 "탈출구"가 되는 것입니다--아래에서 자세히 설명하고 있습니다!)
 
 여기서 버튼은 클릭할 때마다 `ref.current`를 증가시킵니다.
 
@@ -268,7 +268,7 @@ React는 `useRef`가 실제로 충분히 일반적이기 때문에 built-in 버�
 
 다음 원칙을 따르면 컴포넌트를 보다 쉽게 예측할 수 있습니다.
 
-- **refs를 escape hatch로 간주합니다.** Refs는 외부 시스템이나 브라우저 API로 작업할 때 유용합니다. 애플리케이션 로직과 데이터 흐름의 상당 부분이 refs에 의존한다면 접근 방식을 재고해 보는 것이 좋습니다.
+- **refs를 탈출구로 간주합니다.** Refs는 외부 시스템이나 브라우저 API로 작업할 때 유용합니다. 애플리케이션 로직과 데이터 흐름의 상당 부분이 refs에 의존한다면 접근 방식을 재고해 보는 것이 좋습니다.
 - **렌더링 중에 `ref.current`를 읽거나 쓰지 마세요.** 렌더링 중에 일부 정보가 필요한 경우 [state](/learn/state-a-components-memory)를 대신 사용하세요. `ref.current`가 언제 변하는지 React는 모르기 때문에 렌더링할 때 읽어도 컴포넌트의 동작을 예측하기 어렵습니다. (`if (!ref.current) ref.current = new Thing()` 과 같은 코드는 첫 번째 렌더 중에 ref를 한 번만 설정하는 경우가 예외입니다.)
 
 React state의 제한은 refs에 적용되지 않습니다. 예를 들어 state는 [모든 렌더링에 대한 snapshot](/learn/state-as-a-snapshot) 및 [동기적으로 업데이트되지 않는 것](/learn/queueing-a-series-of-state-updates)과 같이 작동합니다. 그러나 ref의 current 값을 변조하면 다음과 같이 즉시 변경됩니다.
@@ -288,7 +288,7 @@ console.log(ref.current); // 5
 
 <Recap>
 
-- Refs는 렌더링에 사용되지 않는 값을 고정하기 위한 escape hatch이며, 자주 필요하지는 않습니다.
+- Refs는 렌더링에 사용되지 않는 값을 고정하기 위한 탈출구이며, 자주 필요하지는 않습니다.
 - ref는 읽거나 설정할 수 있는 `current`라는 프로퍼티를 호출할 수 있는 자바스크립트 순수객체입니다.
 - `useRef` Hook을 호출해 ref를 달라고 React에 요청할 수 있습니다.
 - state와 마찬가지로 ref는 컴포넌트의 렌더링 간에 정보를 유지할 수 있습니다.
@@ -581,7 +581,7 @@ button { display: block; margin: 10px; }
 
 이 예시에서는 "보내기"를 누른 후 메시지가 표시되기 전에 약간의 지연이 발생합니다. "hello"를 입력하고 보내기를 누른 다음 입력을 빠르게 다시 편집합니다. 편집한 내용에도 불구하고 경고창(alert)에는 여전히 "hello"([그 당시](/learn/state-as-a-snapshot#state-over-time) state 값 버튼이 클릭 됨)가 표시됩니다.
 
-보통 이런 행동은 앱에서 원하는 것입니다. 그러나 일부 비동기 코드가 일부 state의 *최신* 버전을 읽기를 원하는 경우가 있습니다. 클릭 당시가 아니라 *현제* 입력 텍스트를 경고창(alert)에 표시하도록 할 수 있는 방법이 있을까요?
+보통 이런 행동은 앱에서 원하는 것입니다. 그러나 일부 비동기 코드가 일부 state의 *최신* 버전을 읽기를 원하는 경우가 있습니다. 클릭 당시가 아니라 *현재* 입력 텍스트를 경고창(alert)에 표시하도록 할 수 있는 방법이 있을까요?
 
 <Sandpack>
 

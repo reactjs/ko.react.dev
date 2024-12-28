@@ -45,7 +45,7 @@ console.log(isValidElement({ age: 42 })); // false
 
 `isValidElement`는 `value`가 React 엘리먼트인 경우 `true`를 반환합니다. 그렇지 않으면 `false`를 반환합니다.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * **[`createElement`](/reference/react/createElement)가 반환한 [JSX 태그](/learn/writing-markup-with-jsx)와 객체는 React 엘리먼트로 간주합니다.** 예를 들어, `42`와 같은 숫자는 유효한 React *노드* (컴포넌트에서 반환될 수 있지만)이지만, 유효한 React 엘리먼트는 아닙니다. [`createPortal`](/reference/react-dom/createPortal)로 만들어진 배열과 portal도 React 엘리먼트로 간주하지 *않습니다*.
 

@@ -67,7 +67,7 @@ title: "<textarea>"
 * [`rows`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-rows): 숫자 타입. 평균 문자 높이의 기본 높이를 지정하세요. 기본값은 `2`입니다.
 * [`wrap`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-wrap): `'hard'`, `'soft'`, `'off'` 중 하나. 폼 제출 시 텍스트를 감싸는 방식을 지정합니다.
 
-#### 경고 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 - `<textarea>something</textarea>`와 같이 자식을 전달하는 것은 허용되지 않습니다. [초기 콘텐츠로 `defaultValue`를 사용하세요.](#providing-an-initial-value-for-a-text-area)
 - 텍스트 영역은 문자열 `value` prop을 받을 경우 [제어되는 것으로 취급](#controlling-a-text-area-with-a-state-variable)됩니다.

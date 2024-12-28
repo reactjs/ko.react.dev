@@ -4,7 +4,7 @@ title: Context를 사용해 데이터를 깊게 전달하기
 
 <Intro>
 
-보통의 경우 부모 컴포넌트에서 자식 컴포넌트로 props를 통해 정보를 전달합니다. 그러나 중간에 많은 컴포넌트를 거쳐야 하거나, 애플리케이션의 많은 컴포넌트에서 동일한 정보가 필요한 경우에는 props를 전달하는 것이 번거롭고 불편할 수 있습니다. *Context*를 사용하면  명시적으로 props를 전달해주지 않아도 부모 컴포넌트가 트리에 있는 어떤 자식 컴포넌트에서나 (얼마나 깊게 있든지 간에) 정보를 사용할 수 있습니다.
+보통의 경우 부모 컴포넌트에서 자식 컴포넌트로 props를 통해 정보를 전달합니다. 그러나 중간에 많은 컴포넌트를 거쳐야 하거나, 애플리케이션의 많은 컴포넌트에서 동일한 정보가 필요한 경우에는 props를 전달하는 것이 번거롭고 불편할 수 있습니다. *Context*는 부모 컴포넌트가 트리 아래에 있는 모든 컴포넌트에 깊이에 상관없이 정보를 명시적으로 props를 통해 전달하지 않고도 사용할 수 있게 해줍니다.
 
 </Intro>
 
@@ -19,7 +19,7 @@ title: Context를 사용해 데이터를 깊게 전달하기
 
 ## Props 전달하기의 문제점 {/*the-problem-with-passing-props*/}
 
-[Props 전달하기](/learn/passing-props-to-a-component)는 UI 트리를 통해 명시적으로 데이터를 사용하는 컴포넌트에 전달하는 훌륭한 방법입니다.
+[Props 전달하기](/learn/passing-props-to-a-component)는 UI 트리를 통해 해당 데이터를 사용하는 컴포넌트에 명시적으로 데이터를 전달하는 훌륭한 방법입니다.
 
 하지만 이 방식은 어떤 prop을 트리를 통해 깊이 전해줘야 하거나, 많은 컴포넌트에서 같은 prop이 필요한 경우에 장황하고 불편할 수 있습니다. 데이터가 필요한 여러 컴포넌트의 가장 가까운 공통 조상은 트리 상 높이 위치할 수 있고 그렇게 높게까지 [state를 끌어올리는 것](/learn/sharing-state-between-components)은 "Prop drilling"이라는 상황을 초래할 수 있습니다.
 
@@ -38,7 +38,7 @@ Prop drilling
 
 </DiagramGroup>
 
-데이터를 사용할 트리안의 컴포넌트에 props를 전달하는 대신 "순간이동"시킬 방법이 있다면 좋지 않을까요? React의 context를 사용하면 됩니다!
+데이터를 사용할 트리의 내부 컴포넌트에 props를 전달하는 대신 "순간이동"시킬 방법이 있다면 좋지 않을까요? React의 context를 사용하면 됩니다!
 
 ## Context: Props 전달하기의 대안 {/*context-an-alternative-to-passing-props*/}
 
@@ -190,7 +190,7 @@ export default function Heading({ level, children }) {
 </Section>
 ```
 
-`<Section>` 컴포넌트에 `level` prop을 전달해 `<Heading>` 에서 제거할 수 있으면 좋겠네요. 이렇게 하면 같은 섹션의 모든 제목이 동일한 크기를 갖도록 지정할 수 있습니다.
+`<Section>` 컴포넌트에 `level` prop을 전달해 이를 `<Heading>`에서 제거할 수 있으면 좋겠네요. 이렇게 하면 같은 섹션의 모든 제목이 동일한 크기를 갖도록 지정할 수 있습니다.
 
 ```js
 <Section level={3}>
@@ -204,9 +204,9 @@ export default function Heading({ level, children }) {
 
 Props만으로는 불가능합니다. 여기서부터 context가 활약하기 시작합니다. 다음의 세 단계로 진행됩니다.
 
-1. Context를 **생성하세요**. (제목 레벨을 위한 것이므로 `LevelContext`라고 이름 지어봅시다)
-2. 데이터가 필요한 컴포넌트에서 context를 **사용하세요**. (`Heading`에서는 `LevelContext`를 사용합니다)
-3. 데이터를 지정하는 컴포넌트에서 context를 **제공하세요.** (`Section`에서는 `LevelContext`를 제공합니다)
+1. Context를 **생성하세요**. (제목 레벨을 위한 것이므로 `LevelContext`라고 이름 지어봅시다.)
+2. 데이터가 필요한 컴포넌트에서 context를 **사용하세요**. (`Heading`에서는 `LevelContext`를 사용합니다.)
+3. 데이터를 지정하는 컴포넌트에서 context를 **제공하세요**. (`Section`에서는 `LevelContext`를 제공합니다.)
 
 Context는 부모가 트리 내부 전체에, 심지어 멀리 떨어진 컴포넌트에조차 어떤 데이터를 제공할 수 있도록 합니다.
 
@@ -308,7 +308,7 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-`createContext` 의 유일한 인자는 기본값입니다. 여기서 `1`은 가장 큰 제목 레벨을 나타내지만 모든 종류의 값을(객체까지) 전달할 수 있습니다. 다음 단계에서 기본값이 얼마나 중요한지 알게 됩니다.
+`createContext`의 유일한 인자는 기본값입니다. 여기서 `1`은 가장 큰 제목 레벨을 나타내지만 모든 종류의 값을(객체까지) 전달할 수 있습니다. 다음 단계에서 기본값이 얼마나 중요한지 알게 됩니다.
 
 ### 2단계: Context 사용하기 {/*step-2-use-the-context*/}
 
@@ -327,7 +327,7 @@ export default function Heading({ level, children }) {
 }
 ```
 
-`level`prop을 제거하고 대신 위에서 가져온 context인 `LevelContext` 에서 값을 읽도록 합니다.
+`level`prop을 제거하고 대신 위에서 가져온 context인 `LevelContext`에서 값을 읽도록 합니다.
 
 ```js {2}
 export default function Heading({ children }) {
@@ -336,9 +336,9 @@ export default function Heading({ children }) {
 }
 ```
 
-`useContext`는 Hook입니다. `useState`, `useReducer` 와 같이 Hook은 React 컴포넌트의 바로 안에서만 호출할 수 있습니다. (반복문이나 조건문 내부가 아닙니다.) **`useContext`는 React에게 `Heading` 컴포넌트가 `LevelContext`를 읽으려 한다고 알려줍니다.**
+`useContext`는 Hook입니다. `useState`, `useReducer`와 같이 Hook은 React 컴포넌트의 바로 안에서만 호출할 수 있습니다. (반복문이나 조건문 내부가 아닙니다.) **`useContext`는 React에게 `Heading` 컴포넌트가 `LevelContext`를 읽으려 한다고 알려줍니다.**
 
-이제 `Heading` 컴포넌트는 `level` prop을 갖지 않습니다. 이제는 JSX에서 다음과 같이 `Heading`에 레벨 prop을 전달할 필요가 없습니다.
+이제 `Heading` 컴포넌트는 `level` prop을 갖지 않습니다. 이제는 JSX에서 다음과 같이 `Heading`에 `level` prop을 전달할 필요가 없습니다.
 
 ```js
 <Section>
@@ -348,7 +348,7 @@ export default function Heading({ children }) {
 </Section>
 ```
 
-`Section`이 대신 레벨을 받도록 JSX를 업데이트합니다.
+`Section`이 대신 `level`을 받도록 JSX를 업데이트합니다.
 
 ```jsx
 <Section level={4}>
@@ -444,7 +444,7 @@ export const LevelContext = createContext(1);
 
 이 예시는 아직 잘 작동하지 않습니다! **Context를 *사용하고* 있지만, 아직 *제공하지* 않았기 때문에** 모든 제목의 크기가 동일합니다. React가 어디서 값을 가져와야 할지 모르기 때문이죠.
 
-Context를 제공하지 않으면 React는 이전 단계에서 지정한 기본값을 사용합니다. 이 예시에서는 `1`을 `createContext`의 인수로 지정했으므로 `useContext(LevelContext)`가 `1`을 반환하고 모든 제목을 `<h1>`로 설정합니다. 이 문제를 각각의 `Section`이 고유한 context를 제공하도록 해 해결합시다.
+Context를 제공하지 않으면 React는 이전 단계에서 지정한 기본값을 사용합니다. 이 예시에서는 `1`을 `createContext`의 인수로 지정했으므로 `useContext(LevelContext)`가 `1`을 반환하고 모든 제목을 `<h1>`로 설정합니다. 이 문제를 각각의 `Section`이 고유한 context를 제공하도록 하여 해결합시다.
 
 ### 3단계: Context 제공하기 {/*step-3-provide-the-context*/}
 
@@ -699,7 +699,7 @@ export const LevelContext = createContext(0);
 
 <Note>
 
-이 예에서는 하위 컴포넌트가 context를 오버라이드 할 수 있는 방법을 시각적으로 보여주기 때문에 제목 레벨을 사용합니다. 하지만 context는 다른 많은 상황에서도 유용합니다. 현재 색상 테마, 현재 로그인된 사용자 등 전체 하위 트리에 필요한 정보를 전달할 수 있습니다.
+이 예시에서는 하위 컴포넌트가 context를 오버라이드 할 수 있는 방법을 시각적으로 보여주기 때문에 제목 레벨을 사용합니다. 하지만 context는 다른 많은 상황에서도 유용합니다. 현재 색상 테마, 현재 로그인된 사용자 등 전체 하위 트리에 필요한 정보를 전달할 수 있습니다.
 
 </Note>
 
@@ -707,7 +707,7 @@ export const LevelContext = createContext(0);
 
 Context를 제공하는 컴포넌트와 context를 사용하는 컴포넌트 사이에 원하는 만큼의 컴포넌트를 삽입할 수 있습니다. 여기에는 `<div>`와 같은 기본 컴포넌트와 직접 만들 수 있는 컴포넌트가 모두 포함됩니다.
 
-이 예시에서는 점선 테두리를 가진 동일한 `Post` 컴포넌트가 두 가지 다른 네스팅 레벨로 렌더링 됩니다. 내부의 `<Heading>`이 가장 가까운 `<Section>`에서 자동으로 레벨을 가져오는 것에 주목하세요.
+이 예시에서는 점선 테두리를 가진 동일한 `Post` 컴포넌트가 두 가지 다른 중첩 레벨로 렌더링 됩니다. 내부의 `<Heading>`이 가장 가까운 `<Section>`에서 자동으로 레벨을 가져오는 것에 주목하세요.
 
 <Sandpack>
 
@@ -842,7 +842,7 @@ CSS에서 `color`와 `background-color` 같이 다른 속성들은 서로 영향
 
 ## Context를 사용하기 전에 고려할 것 {/*before-you-use-context*/}
 
-Context는 사용하기에 꽤 유혹적입니다. 그러나 이는 또한 남용하기 쉽다는 의미이기도 합니다. **어떤 props를 여러 레벨 깊이 전달해야 한다고 해서 해당 정보를 context에 넣어야 하는 것은 아닙니다.**
+Context는 사용하기에 꽤 유혹적입니다. 그러나 이는 또한 남용하기 쉽다는 의미이기도 합니다. **어떤 props를 여러 레벨 깊이로 전달해야 한다고 해서 해당 정보를 context에 넣어야 하는 것은 아닙니다.**
 
 다음은 context를 사용하기 전 고려해볼 몇 가지 대안들입니다.
 
@@ -854,9 +854,9 @@ Context는 사용하기에 꽤 유혹적입니다. 그러나 이는 또한 남�
 ## Context 사용 예시 {/*use-cases-for-context*/}
 
 - **테마 지정하기:** 사용자가 모양을 변경할 수 있는 애플리케이션의 경우에 (e.g. 다크 모드) context provider를 앱 최상단에 두고 시각적으로 조정이 필요한 컴포넌트에서 context를 사용할 수 있습니다.
-- **현재 계정:** 로그인한 사용자를 알아야 하는 컴포넌트가 많을 수 있습니다. Context에 놓으면 트리 어디에서나 편하게 알아낼 수 있습니다. 일부 애플리케이션에서는 동시에 여러 계정을 운영할 수도 있습니다(e.g. 다른 사용자로 댓글을 남기는 경우). 이런 경우에는 UI의 일부를 서로 다른 현재 계정 값을 가진 provider로 감싸 주는 것이 편리합니다.
+- **현재 계정:** 로그인한 사용자를 알아야 하는 컴포넌트가 많을 수 있습니다. Context에 놓으면 트리 어디에서나 편하게 알아낼 수 있습니다. 일부 애플리케이션에서는 동시에 여러 계정을 운영할 수도 있습니다. (e.g. 다른 사용자로 댓글을 남기는 경우.) 이런 경우에는 UI의 일부를 서로 다른 현재 계정 값을 가진 provider로 감싸 주는 것이 편리합니다.
 - **라우팅:** 대부분의 라우팅 솔루션은 현재 경로를 유지하기 위해 내부적으로 context를 사용합니다. 이것이 모든 링크의 활성화 여부를 "알 수 있는" 방법입니다. 라우터를 만든다면 같은 방식으로 하고 싶을 것입니다.
-- **상태 관리:** 애플리케이션이 커지면 결국 앱 상단에 수많은 state가 생기게 됩니다. 아래 멀리 떨어진 많은 컴포넌트가 그 값을 변경하고싶어할 수 있습니다. 흔히 [reducer를 context와 함께 사용하는 것](/learn/scaling-up-with-reducer-and-context)은 복잡한 state를 관리하고 번거로운 작업 없이 멀리 있는 컴포넌트까지 값을 전달하는 방법입니다.
+- **상태 관리:** 애플리케이션이 커지면 결국 앱 상단에 수많은 state가 생기게 됩니다. 아래 멀리 떨어진 많은 컴포넌트가 그 값을 변경하고 싶어할 수 있습니다. 흔히 [reducer를 context와 함께 사용하는 것](/learn/scaling-up-with-reducer-and-context)은 복잡한 state를 관리하고 번거로운 작업 없이 멀리 있는 컴포넌트까지 값을 전달하는 방법입니다.
 
 Context는 정적인 값으로 제한되지 않습니다. 다음 렌더링 시 다른 값을 준다면 React는 아래의 모든 컴포넌트에서 그 값을 갱신합니다. 이것은 context와 state가 자주 조합되는 이유입니다.
 

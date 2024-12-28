@@ -1,49 +1,56 @@
+// `sources`에 속한 단어들은 특수한 경우를 제외하고는 기본적으로 '원자성'을 유지해야 합니다. ex) 'stateless component'(x) -> 'stateless'(O), 'component'(O)
+// 단, `-`(dash)로 이어진 단어 ex) 'full-stack'은 한개의 단어로 취급합니다.
 module.exports = {
   translated: {
     react: [
       {
-        sources: [/Tutorial/, /[듀튜]토리얼/],
+        sources: [/\bTutorial\b/, /[듀튜]토리얼/],
         target: '자습서',
         meta: {
           term: 'Tutorial',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Declarative/],
+        sources: [/\bDeclarative\b/],
         target: '선언적인',
         meta: {
           term: 'Declarative',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Component/, /컴퍼넌트/, /컴포넌츠/],
+        sources: [/\bComponent\b/, /컴퍼넌트/, /컴포넌츠/],
         target: '컴포넌트',
         meta: {
           term: 'Component',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Stateful/],
+        sources: [/\bStateful\b/],
         target: '유상태',
         meta: {
           term: 'Stateful',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Stateless/],
+        sources: [/\bStateless\b/],
         target: '무상태',
         meta: {
           term: 'Stateless',
           discussions: [2],
+          note: '',
         },
       },
       {
         sources: [
-          /Render(?!er)(?:ing)?/,
+          /\bRender(?!er)(?:ing)?\b/,
           /랜더링/,
           /[렌랜]더(?!링)\s?[하한할함합]/,
         ],
@@ -51,334 +58,403 @@ module.exports = {
         meta: {
           term: 'Render',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Data/, /대이터/],
+        sources: [/\bData\b/, /대이터/],
         target: '데이터',
         meta: {
           term: 'Data',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Application/, /어플리케이[선션]/, /응용\s?프로그램/],
+        sources: [/\bApplication\b/, /어플리케이[선션]/, /응용\s?프로그램/],
         target: '애플리케이션',
         meta: {
           term: 'Application',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/External/],
+        sources: [/\bExternal\b/],
         target: '외부',
         meta: {
           term: 'External',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Plugin/],
+        sources: [/\bPlugin\b/],
         target: '플러그인',
         meta: {
           term: 'Plugin',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Third/, /써드/],
+        sources: [/\bThird\b/, /써드/],
         target: '서드',
         meta: {
           term: 'Third',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Syntax/, /[신씬]택스/],
+        sources: [/\bSyntax\b/, /[신씬]택스/],
         target: '문법',
         meta: {
           term: 'Syntax',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Embedding\s?Expression/],
+        sources: [/\bEmbedding\s?Expression\b/],
         target: '표현식 포함하기',
         meta: {
           term: 'Embedding Expression',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Attribute/, /애트리뷰트/],
+        sources: [/\bAttribute\b/, /애트리뷰트/],
         target: '어트리뷰트',
         meta: {
           term: 'Attribute',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Element/, /[엘앨]리먼츠/, /앨리먼트/],
+        sources: [/\bElement\b/, /[엘앨]리먼츠/, /앨리먼트/],
         target: '엘리먼트',
         meta: {
           term: 'Element',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Function/, /Functional/],
+        sources: [/\bFunction(?:al)?\b/],
         target: '함수',
         meta: {
           term: 'Function',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Class/],
+        sources: [/\bClass\b/],
         target: '클래스',
         meta: {
           term: 'Class',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Composition/, /[컴콤][퍼포]지[선션]/],
+        sources: [/\bComposition\b/, /[컴콤][퍼포]지[선션]/],
         target: '합성',
         meta: {
           term: 'Composition',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Inheritance/],
+        sources: [/\bInheritance\b/],
         target: '상속',
         meta: {
           term: 'Inheritance',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Life\s?Cycle/, /라이프\s?사이클/, /생명 주기/],
+        sources: [/\bLife\s?Cycle\b/, /라이프\s?사이클/, /생명 주기/],
         target: '생명주기',
         meta: {
           term: 'Lifecycle',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Handling/, /핸들링/],
+        sources: [/\bHandling\b/, /핸들링/],
         target: '처리',
         meta: {
           term: 'Handling',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Conditional/, /컨디[서셔][날널]/],
+        sources: [/\bConditional\b/, /컨디[서셔][날널]/],
         target: '조건부',
         meta: {
           term: 'Conditional',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Operator/, /오퍼[레래]이터/],
+        sources: [/\bOperator\b/, /오퍼[레래]이터/],
         target: '연산자',
         meta: {
           term: 'Operator',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Reuse/],
+        sources: [/\bReuse\b/],
         target: '재사용',
         meta: {
           term: 'Reuse',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Mock/],
+        sources: [/\bMock\b/],
         target: '모의',
         meta: {
           term: 'Mock',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Callback/],
+        sources: [/\bCallback\b/],
         target: '콜백',
         meta: {
           term: 'Callback',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Synthetic/],
+        sources: [/\bSynthetic\b/],
         target: '합성',
         meta: {
           term: 'Synthetic',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Event/],
+        sources: [/\bEvent\b/],
         target: '이벤트',
         meta: {
           term: 'Event',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Higher\s?Order/],
+        sources: [/\bHigher\s?Order\b/],
         target: '고차',
         meta: {
           term: 'Higher Order',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/(?<!Un)Mount/],
+        sources: [/\b(?<!Un)Mount\b/],
         target: '마운트',
         meta: {
           term: 'Mount',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Unmount/, /언마운트/],
+        sources: [/\bUnmount\b/, /언마운트/],
         target: '마운트 해제',
         meta: {
           term: 'Unmount',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Form/],
+        sources: [/\bForm\b/],
         target: '폼',
         meta: {
           term: 'Form',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Wrapper/],
+        sources: [/\bWrapper\b/],
         target: '래퍼',
         meta: {
           term: 'Wrapper',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Child(?:ren)?/],
+        sources: [/\bChild(?:ren)?\b/],
         target: '자식',
         meta: {
           term: 'Children',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Code[-\s]?Splitting/],
+        sources: [/\bCode[-\s]?Splitting\b/],
         target: '코드 분할',
         meta: {
           term: 'Code-Splitting',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Reconciliation/],
+        sources: [/\bReconciliation\b/],
         target: '재조정',
         meta: {
           term: 'Reconciliation',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Propert(?:y|ies)/],
+        sources: [/\bPropert(?:y|ies)\b/],
         target: '프로퍼티',
         meta: {
           term: 'Property',
           discussions: [2],
+          note: '',
         },
       },
       {
-        sources: [/Reference/, /래퍼런스/],
+        sources: [/\bReference\b/, /래퍼런스/],
         target: '레퍼런스',
         meta: {
           term: 'Reference',
           discussions: [569],
+          note: '',
         },
       },
       {
-        sources: [/User/, /유저/],
+        sources: [/\bUser\b/, /유저/],
         target: '사용자',
         meta: {
           term: 'User',
           discussions: [569],
+          note: '',
         },
       },
       {
-        sources: [/Interface/],
+        sources: [/\bInterface\b/],
         target: '인터페이스',
         meta: {
           term: 'Interface',
           discussions: [569],
+          note: '',
         },
       },
       {
-        sources: [/Markup/, /마크 업/],
+        sources: [/\bMarkup\b/, /마크 업/],
         target: '마크업',
         meta: {
           term: 'Markup',
           discussions: [569],
+          note: '',
         },
       },
       {
-        sources: [/Interacti(?:vity|on)/, /인터[랙렉][선션]/],
+        sources: [/\bInteracti(?:vity|on)\b/, /인터[랙렉][선션]/],
         target: '상호작용',
         meta: {
           term: 'Interactivity',
           discussions: [569],
+          note: '',
         },
       },
       {
-        sources: [/Architecture/, /아키택처/, /아키[택텍]쳐/],
+        sources: [/\bArchitecture\b/, /아키택처/, /아키[택텍]쳐/],
         target: '아키텍처',
         meta: {
           term: 'Architecture',
           discussions: [569],
+          note: '',
         },
       },
       {
-        sources: [/Full[-\s]?Stack/],
+        sources: [/\bFull[-\s]?Stack\b/],
         target: '풀스택',
         meta: {
           term: 'Full-Stack',
           discussions: [569],
+          note: '',
         },
       },
       {
-        sources: [/Browser/],
+        sources: [/\bBrowser\b/],
         target: '브라우저',
         meta: {
           term: 'Browser',
           discussions: [610],
+          note: '',
         },
       },
       {
-        sources: [/Extension/, /확장프로그램/],
+        sources: [/\bExtension\b/, /확장프로그램/],
         target: '확장 프로그램',
         meta: {
           term: 'Extension',
           discussions: [610],
+          note: '',
         },
       },
       {
-        sources: [/Escape[-\s]?Hatches/],
+        sources: [/\bEscape[-\s]?Hatches\b/],
         target: '탈출구',
         meta: {
           term: 'Escape Hatches',
           discussions: [738],
+          note: '',
+        },
+      },
+      {
+        sources: [/\bBundles?\b/],
+        target: '번들',
+        meta: {
+          term: 'Bundle',
+          discussions: [829],
+          note: '',
+        },
+      },
+      {
+        sources: [/\bBundlers?\b/],
+        target: '번들러',
+        meta: {
+          term: 'Bundler',
+          discussions: [829],
+          note: '',
+        },
+      },
+      {
+        sources: [/\bBundling\b/],
+        target: '번들링',
+        meta: {
+          term: 'Bundling',
+          discussions: [829],
+          note: '',
         },
       },
     ],
@@ -389,6 +465,7 @@ module.exports = {
         meta: {
           term: 'Tip',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -397,6 +474,7 @@ module.exports = {
         meta: {
           term: 'Example',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -405,14 +483,16 @@ module.exports = {
         meta: {
           term: 'Chapter',
           discussions: [2],
+          note: '',
         },
       },
       {
         sources: [/\bSpec(?:ification)?s?\b/, /스[펙팩]/],
         target: '명세',
         meta: {
-          term: 'Spec, Specification',
+          term: 'Specification',
           discussions: [2],
+          note: 'Spec도 동일하게 번역',
         },
       },
       {
@@ -421,6 +501,7 @@ module.exports = {
         meta: {
           term: 'camelCase',
           discussions: [2],
+          note: '',
         },
       },
       {
@@ -429,6 +510,7 @@ module.exports = {
         meta: {
           term: 'Parameter',
           discussions: [614],
+          note: '',
         },
       },
       {
@@ -437,6 +519,7 @@ module.exports = {
         meta: {
           term: 'Deprecated',
           discussions: [632],
+          note: '',
         },
       },
       {
@@ -445,6 +528,7 @@ module.exports = {
         meta: {
           term: 'Pitfall',
           discussions: [632],
+          note: '',
         },
       },
       {
@@ -453,6 +537,7 @@ module.exports = {
         meta: {
           term: 'Note',
           discussions: [632],
+          note: '',
         },
       },
       {
@@ -461,14 +546,25 @@ module.exports = {
         meta: {
           term: 'Wip',
           discussions: [632],
+          note: '',
         },
       },
       {
         sources: [/\bReturns\b/, /반환\s+(?:값\s+)?{\//],
         target: '반환값',
         meta: {
-          term: 'Returns(제목에 사용된 경우)',
+          term: 'Returns',
           discussions: [725],
+          note: '제목에 사용된 경우',
+        },
+      },
+      {
+        sources: [/\bCaveats?\b/, /주의사항/],
+        target: '주의 사항',
+        meta: {
+          term: 'Caveats',
+          discussions: [1095],
+          note: '',
         },
       },
       {
@@ -477,6 +573,7 @@ module.exports = {
         meta: {
           term: 'Logic',
           discussions: [695],
+          note: '',
         },
       },
       {
@@ -485,6 +582,16 @@ module.exports = {
         meta: {
           term: 'Dependency',
           discussions: [841],
+          note: '',
+        },
+      },
+      {
+        sources: [/\bDirectives?\b/],
+        target: '지시어',
+        meta: {
+          term: 'Directive',
+          discussions: [819],
+          note: '',
         },
       },
     ],

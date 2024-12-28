@@ -18,7 +18,7 @@ React는 사용자 인터페이스(UI)를 렌더링하기 위한 JavaScript 라�
 * [조건부 렌더링을 하는 방법](/learn/conditional-rendering)
 * [여러 개의 컴포넌트를 한 번에 렌더링하는 방법](/learn/rendering-lists)
 * [컴포넌트를 순수하게 유지하여 혼란스러운 버그를 피하는 방법](/learn/keeping-components-pure)
-* [Why understanding your UI as trees is useful](/learn/understanding-your-ui-as-a-tree)
+* [트리로서 UI를 이해하는 것이 유용한 이유](/learn/understanding-your-ui-as-a-tree)
 
 </YouWillLearn>
 
@@ -326,7 +326,7 @@ Props를 전달하고 활용하는 방법을 배우려면 **[컴포넌트에 Pro
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked && '✔'}
+      {name} {isPacked && '✅'}
     </li>
   );
 }
@@ -546,11 +546,11 @@ React 렌더 트리 예시
 
 </Diagram>
 
-의존성 트리는 종종 빌드 도구에 의해 클라이언트가 다운로드하고 렌더링하는 데 필요한 모든 관련 자바스크립트 코드를 bundle 하는 데에 사용됩니다. 큰 bundle 크기는 리액트 앱의 사용자 경험을 저하합니다. 모듈 의존성 트리를 이해하는 것은 이러한 문제를 디버깅하는 데 도움이 됩니다.
+의존성 트리는 종종 빌드 도구에 의해 클라이언트가 다운로드하고 렌더링하는 데 필요한 모든 관련 자바스크립트 코드를 번들하는 데에 사용됩니다. 큰 번들 크기는 React 앱의 사용자 경험을 저하합니다. 모듈 의존성 트리를 이해하는 것은 이러한 문제를 디버깅하는 데 도움이 됩니다.
 
 <LearnMore path="/learn/understanding-your-ui-as-a-tree">
 
- React 앱을 위한 렌더, 모듈 의존성 트리를 생성하는 법과 사용자 경험과 성능을 향상하기 위한 유용한 사고방식을 알고 싶은 경우 **[트리로서의 UI](/learn/understanding-your-ui-as-a-tree)**을 읽어보세요.
+ React 앱을 위한 렌더, 모듈 의존성 트리를 생성하는 법과 사용자 경험과 성능을 향상하기 위한 유용한 사고방식을 알고 싶은 경우 <strong>[트리로서의 UI](/learn/understanding-your-ui-as-a-tree)</strong>를 읽어보세요.
 
 </LearnMore>
 
