@@ -459,7 +459,7 @@ export default function Menu() {
 
   return (
     <>
-      <h2>What's your travel snack?</h2> 
+      <h2>What's your travel snack?</h2>
       <ul>
         {items.map((item, index) => (
           <li key={item.id}>
@@ -805,7 +805,7 @@ export const initialTravelPlan = {
     }, {
       id: 48,
       title: 'Green Hill',
-      childPlaces: []      
+      childPlaces: []
     }]
   }]
 };
@@ -883,7 +883,7 @@ export const initialTravelPlan = {
     id: 2,
     title: 'Africa',
     childIds: [3, 4, 5, 6 , 7, 8, 9]
-  }, 
+  },
   3: {
     id: 3,
     title: 'Botswana',
@@ -903,7 +903,7 @@ export const initialTravelPlan = {
     id: 6,
     title: 'Madagascar',
     childIds: []
-  }, 
+  },
   7: {
     id: 7,
     title: 'Morocco',
@@ -922,7 +922,7 @@ export const initialTravelPlan = {
   10: {
     id: 10,
     title: 'Americas',
-    childIds: [11, 12, 13, 14, 15, 16, 17, 18],   
+    childIds: [11, 12, 13, 14, 15, 16, 17, 18],
   },
   11: {
     id: 11,
@@ -938,7 +938,7 @@ export const initialTravelPlan = {
     id: 13,
     title: 'Barbados',
     childIds: []
-  }, 
+  },
   14: {
     id: 14,
     title: 'Canada',
@@ -967,7 +967,7 @@ export const initialTravelPlan = {
   19: {
     id: 19,
     title: 'Asia',
-    childIds: [20, 21, 22, 23, 24, 25],   
+    childIds: [20, 21, 22, 23, 24, 25],
   },
   20: {
     id: 20,
@@ -1002,7 +1002,7 @@ export const initialTravelPlan = {
   26: {
     id: 26,
     title: 'Europe',
-    childIds: [27, 28, 29, 30, 31, 32, 33],   
+    childIds: [27, 28, 29, 30, 31, 32, 33],
   },
   27: {
     id: 27,
@@ -1042,7 +1042,7 @@ export const initialTravelPlan = {
   34: {
     id: 34,
     title: 'Oceania',
-    childIds: [35, 36, 37, 38, 39, 40, 41],   
+    childIds: [35, 36, 37, 38, 39, 40, 41],
   },
   35: {
     id: 35,
@@ -1219,7 +1219,7 @@ export const initialTravelPlan = {
     id: 2,
     title: 'Africa',
     childIds: [3, 4, 5, 6 , 7, 8, 9]
-  }, 
+  },
   3: {
     id: 3,
     title: 'Botswana',
@@ -1239,7 +1239,7 @@ export const initialTravelPlan = {
     id: 6,
     title: 'Madagascar',
     childIds: []
-  }, 
+  },
   7: {
     id: 7,
     title: 'Morocco',
@@ -1258,7 +1258,7 @@ export const initialTravelPlan = {
   10: {
     id: 10,
     title: 'Americas',
-    childIds: [11, 12, 13, 14, 15, 16, 17, 18],   
+    childIds: [11, 12, 13, 14, 15, 16, 17, 18],
   },
   11: {
     id: 11,
@@ -1274,7 +1274,7 @@ export const initialTravelPlan = {
     id: 13,
     title: 'Barbados',
     childIds: []
-  }, 
+  },
   14: {
     id: 14,
     title: 'Canada',
@@ -1303,7 +1303,7 @@ export const initialTravelPlan = {
   19: {
     id: 19,
     title: 'Asia',
-    childIds: [20, 21, 22, 23, 24, 25],   
+    childIds: [20, 21, 22, 23, 24, 25],
   },
   20: {
     id: 20,
@@ -1338,7 +1338,7 @@ export const initialTravelPlan = {
   26: {
     id: 26,
     title: 'Europe',
-    childIds: [27, 28, 29, 30, 31, 32, 33],   
+    childIds: [27, 28, 29, 30, 31, 32, 33],
   },
   27: {
     id: 27,
@@ -1378,7 +1378,7 @@ export const initialTravelPlan = {
   34: {
     id: 34,
     title: 'Oceania',
-    childIds: [35, 36, 37, 38, 39, 40, 41],   
+    childIds: [35, 36, 37, 38, 39, 40, 41],
   },
   35: {
     id: 35,
@@ -1558,7 +1558,7 @@ export const initialTravelPlan = {
     id: 2,
     title: 'Africa',
     childIds: [3, 4, 5, 6 , 7, 8, 9]
-  }, 
+  },
   3: {
     id: 3,
     title: 'Botswana',
@@ -1578,7 +1578,7 @@ export const initialTravelPlan = {
     id: 6,
     title: 'Madagascar',
     childIds: []
-  }, 
+  },
   7: {
     id: 7,
     title: 'Morocco',
@@ -1597,7 +1597,7 @@ export const initialTravelPlan = {
   10: {
     id: 10,
     title: 'Americas',
-    childIds: [11, 12, 13, 14, 15, 16, 17, 18],   
+    childIds: [11, 12, 13, 14, 15, 16, 17, 18],
   },
   11: {
     id: 11,
@@ -1613,7 +1613,7 @@ export const initialTravelPlan = {
     id: 13,
     title: 'Barbados',
     childIds: []
-  }, 
+  },
   14: {
     id: 14,
     title: 'Canada',
@@ -1642,7 +1642,7 @@ export const initialTravelPlan = {
   19: {
     id: 19,
     title: 'Asia',
-    childIds: [20, 21, 22, 23, 24, 25,],   
+    childIds: [20, 21, 22, 23, 24, 25,],
   },
   20: {
     id: 20,
@@ -1677,7 +1677,7 @@ export const initialTravelPlan = {
   26: {
     id: 26,
     title: 'Europe',
-    childIds: [27, 28, 29, 30, 31, 32, 33],   
+    childIds: [27, 28, 29, 30, 31, 32, 33],
   },
   27: {
     id: 27,
@@ -1717,7 +1717,7 @@ export const initialTravelPlan = {
   34: {
     id: 34,
     title: 'Oceania',
-    childIds: [35, 36, 37, 38, 39, 40,, 41],   
+    childIds: [35, 36, 37, 38, 39, 40,, 41],
   },
   35: {
     id: 35,
@@ -2061,7 +2061,7 @@ export default function TravelPlan() {
   }
 
   return (
-    <>  
+    <>
       <AddItem
         onAddItem={handleAddItem}
       />
@@ -2196,7 +2196,7 @@ export default function TravelPlan() {
   }
 
   return (
-    <>  
+    <>
       <AddItem
         onAddItem={handleAddItem}
       />
@@ -2349,7 +2349,7 @@ export default function Letter({
         isHighlighted ? 'highlighted' : ''
       }
       onFocus={() => {
-        onHover(letter);        
+        onHover(letter);
       }}
       onPointerMove={() => {
         onHover(letter);
@@ -2392,7 +2392,7 @@ li { border-radius: 5px; }
 
 <Solution>
 
-문제는 `highlightedLetter`에 문자 객체를 보관하고 있다는 것입니다. 그러나 `letters` 배열에서도 동일한 정보를 보관하고 있습니다. 그래서 state에 중복이 있습니다! 버튼 클릭 후 `letters` 배열을 업데이트하면 `highlightedLetter`와 다른 새 문자 객체가 생성됩니다. 이것이 `highlightedLetter === letter` 검사가 `false`가 되고 하이라이트가 사라지는 이유입니다. 포인터가 움직일 때 `setHighlightedLetter`를 호출하면 다시 나타납니다. 
+문제는 `highlightedLetter`에 문자 객체를 보관하고 있다는 것입니다. 그러나 `letters` 배열에서도 동일한 정보를 보관하고 있습니다. 그래서 state에 중복이 있습니다! 버튼 클릭 후 `letters` 배열을 업데이트하면 `highlightedLetter`와 다른 새 문자 객체가 생성됩니다. 이것이 `highlightedLetter === letter` 검사가 `false`가 되고 하이라이트가 사라지는 이유입니다. 포인터가 움직일 때 `setHighlightedLetter`를 호출하면 다시 나타납니다.
 
 문제를 해결하기 위해 state에서 중복을 제거하세요. 두 곳에 *문자 자체* 를 저장하는 대신 `highlightedId`를 저장하세요. 그런 다음 `letter.id === highlightedId`로 각 문자에 대해 `isHighlighted`를 확인할 수 있으며, 이는 마지막 렌더링 이후 `letter` 객체가 변경되었더라도 작동합니다.
 
@@ -2458,7 +2458,7 @@ export default function Letter({
         isHighlighted ? 'highlighted' : ''
       }
       onFocus={() => {
-        onHover(letter.id);        
+        onHover(letter.id);
       }}
       onPointerMove={() => {
         onHover(letter.id);

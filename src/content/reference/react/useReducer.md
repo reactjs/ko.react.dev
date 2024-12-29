@@ -69,7 +69,7 @@ function handleClick() {
   // ...
 ```
 
-React는 현재 `state`와 `dispatch`를 통해 전달된 action을 제공받아 호출된 `reducer`의 반환값을 통해 다음 state값을 설정합니다. 
+React는 현재 `state`와 `dispatch`를 통해 전달된 action을 제공받아 호출된 `reducer`의 반환값을 통해 다음 state값을 설정합니다.
 
 #### 매개변수 {/*dispatch-parameters*/}
 
@@ -199,7 +199,7 @@ Actions은 다양한 형태가 될 수 있습니다. 하지만 컨벤션에 따�
 ```js {5,9-12}
 function Form() {
   const [state, dispatch] = useReducer(reducer, { name: 'Taylor', age: 42 });
-  
+
   function handleButtonClick() {
     dispatch({ type: 'incremented_age' });
   }
@@ -292,7 +292,7 @@ export default function Form() {
     dispatch({
       type: 'changed_name',
       nextName: e.target.value
-    }); 
+    });
   }
 
   return (
@@ -761,7 +761,7 @@ function TodoList({ username }) {
 
 #### 초기화 함수 전달 {/*passing-the-initializer-function*/}
 
-이 예시에서는 초기화 단계에서만 동작하는 함수인 `createInitialState`를 초기화 함수로 전달합니다. 이 함수는 인풋에 입력 할 때 발생하는 리렌더링 상황 등에서는 호출되지 않습니다. 
+이 예시에서는 초기화 단계에서만 동작하는 함수인 `createInitialState`를 초기화 함수로 전달합니다. 이 함수는 인풋에 입력 할 때 발생하는 리렌더링 상황 등에서는 호출되지 않습니다.
 
 <Sandpack>
 

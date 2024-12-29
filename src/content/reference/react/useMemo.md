@@ -143,13 +143,13 @@ console.timeEnd('filter array');
 
 #### 모든 곳에 useMemo를 추가해야 하나요? {/*should-you-add-usememo-everywhere*/}
 
-이 사이트와 같이 대부분의 상호 작용이 거친 경우(페이지 또는 전체 섹션이 교체되는 것과 같이) 메모이제이션이 필요하지 않습니다. 반면, 앱이 그림 편집기와 비슷하고 대부분의 상호 작용이 세분화된 경우(도형 이동과 같은) 메모이제이션이 매우 유용할 수 있습니다. 
+이 사이트와 같이 대부분의 상호 작용이 거친 경우(페이지 또는 전체 섹션이 교체되는 것과 같이) 메모이제이션이 필요하지 않습니다. 반면, 앱이 그림 편집기와 비슷하고 대부분의 상호 작용이 세분화된 경우(도형 이동과 같은) 메모이제이션이 매우 유용할 수 있습니다.
 
 `useMemo`로 최적화하는 것은 몇몇 경우에만 유용합니다.
 
 - `useMemo`에 입력하는 계산이 눈에 띄게 느리고 종속성이 거의 변경되지 않는 경우.
 - [`memo`](/reference/react/memo)로 감싸진 컴포넌트에 prop로 전달할 경우. 값이 변경되지 않았다면 렌더링을 건너뛰고 싶을 것입니다. 메모이제이션을 사용하면 의존성이 동일하지 않은 경우에만 컴포넌트를 다시 렌더링할 수 있습니다.
-- 전달한 값을 나중에 일부 Hook의 종속성으로 이용할 경우. 예를 들어, 다른 `useMemo`의 계산 값이 여기에 종속되어 있을 수 있습니다. 또는 [`useEffect`](/reference/react/useEffect)의 값에 종속되어 있을 수 있습니다. 
+- 전달한 값을 나중에 일부 Hook의 종속성으로 이용할 경우. 예를 들어, 다른 `useMemo`의 계산 값이 여기에 종속되어 있을 수 있습니다. 또는 [`useEffect`](/reference/react/useEffect)의 값에 종속되어 있을 수 있습니다.
 
 이 외는 계산을 `useMemo`로 감싸는 것에 대한 이득이 없습니다. 그러나 그렇게 한다고 해서 크게 문제가 되는 것도 아니므로 일부 팀에서는 개별 사례에 대해 생각하지 않고 가능한 한 많이 메모하는 방식을 선택합니다. 이 접근 방식의 단점은 코드 가독성이 떨어진다는 것입니다. 또한, 모든 메모이제이션이 효과적인 것은 아닙니다. "항상 새로운" 단일 값만으로도 전체 컴포넌트에 대한 메모화가 깨질 수 있기 때문입니다.
 
@@ -173,7 +173,7 @@ console.timeEnd('filter array');
 
 탭을 전환하면 느려진 `filterTodos`가 다시 실행되므로 느리게 느껴집니다. 이는 `tab`이 변경되었으므로 전체 계산이 *필수적으로* 다시 실행되기 때문에 나타나는 현상입니다. (왜 두 번 실행되는지 궁금하다면 [여기](#my-calculation-runs-twice-on-every-re-render)를 클릭해서 설명을 확인하세요.)
 
-테마를 전환합니다. **인위적인 속도 저하에도 불구하고 빠른 이유는 `useMemo` 덕분입니다!** 느린 속도의 `filterTodos`는 마지막 렌더링 이후 (`useMemo`에 종속성으로 전달한)`todos`와 `tab`이 모두 변경되지 않았기 때문에 호출을 건너뛰었습니다. 
+테마를 전환합니다. **인위적인 속도 저하에도 불구하고 빠른 이유는 `useMemo` 덕분입니다!** 느린 속도의 `filterTodos`는 마지막 렌더링 이후 (`useMemo`에 종속성으로 전달한)`todos`와 `tab`이 모두 변경되지 않았기 때문에 호출을 건너뛰었습니다.
 
 <Sandpack>
 
@@ -609,7 +609,7 @@ export default function TodoList({ todos, tab, theme }) {
 ```
 
 
-**`visibleTodos`연산을 `useMemo`로 감싸면 다시 렌더링 될 때마다 *같은* 값을 갖게 할 수 있습니다** (종속성이 변경되기 전까지). *특별한 이유가 없는 한* 연산을 `useMemo`로 감싸지 않아도 됩니다. 이 예시에서는 [`memo`](/reference/react/memo)로 감싸진 컴포넌트에 전달하면 재렌더링을 건너뛸 수 있기 때문입니다. 이 페이지에서 자세히 설명하는 `useMemo`를 추가해야 하는 몇 가지 다른 이유가 있습니다. 
+**`visibleTodos`연산을 `useMemo`로 감싸면 다시 렌더링 될 때마다 *같은* 값을 갖게 할 수 있습니다** (종속성이 변경되기 전까지). *특별한 이유가 없는 한* 연산을 `useMemo`로 감싸지 않아도 됩니다. 이 예시에서는 [`memo`](/reference/react/memo)로 감싸진 컴포넌트에 전달하면 재렌더링을 건너뛸 수 있기 때문입니다. 이 페이지에서 자세히 설명하는 `useMemo`를 추가해야 하는 몇 가지 다른 이유가 있습니다.
 
 <DeepDive>
 
@@ -1122,7 +1122,7 @@ function ChatRoom({ roomId }) {
       serverUrl: 'https://localhost:1234',
       roomId: roomId
     }
-    
+
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
@@ -1278,7 +1278,7 @@ React가 함수를 두 번 호출하므로 todo가 두 번 추가됩니다. 계�
 
 순수성에 대해 자세히 알아보려면 [컴포넌트 순수하게 유지하기](/learn/keeping-components-pure)를 읽어보세요.
 
-또한 변경사항이 없는 [객체 업데이트](/learn/updating-objects-in-state) 및 [배열 업데이트](/learn/updating-arrays-in-state)에 대한 가이드도 확인해보세요. 
+또한 변경사항이 없는 [객체 업데이트](/learn/updating-objects-in-state) 및 [배열 업데이트](/learn/updating-arrays-in-state)에 대한 가이드도 확인해보세요.
 
 ---
 
@@ -1363,7 +1363,7 @@ Object.is(temp1[2], temp2[2]); // ... 그리고 기타 모든 종속성들이 �
 
 ### 반복문에서 각 목록 항목에 대해 `useMemo`를 호출해야 하는데 허용되지 않습니다. {/*i-need-to-call-usememo-for-each-list-item-in-a-loop-but-its-not-allowed*/}
 
-`Chart` 컴포넌트가 [`memo`](/reference/react/memo)로 감싸져 있다고 가정해보겠습니다. `ReportList` 컴포넌트가 다시 렌더링 될 때 목록의 모든 `Chart`를 다시 렌더링하는 것을 생략하고 싶을 것입니다. 그러나 반복문에서 `useMemo`를 호출할 수 없습니다. 
+`Chart` 컴포넌트가 [`memo`](/reference/react/memo)로 감싸져 있다고 가정해보겠습니다. `ReportList` 컴포넌트가 다시 렌더링 될 때 목록의 모든 `Chart`를 다시 렌더링하는 것을 생략하고 싶을 것입니다. 그러나 반복문에서 `useMemo`를 호출할 수 없습니다.
 
 ```js {5-11}
 function ReportList({ items }) {

@@ -17,7 +17,7 @@ description: 이제 npm에서 React 18을 사용할 수 있습니다! 지난 포
 
 ---
 
-최신 메이저 버전에는 자동 batching, startTransition과 같은 새로운 API, Suspense를 지원하는 스트리밍 서버 사이드 렌더링과 같은 즉각적인 개선 사항이 포함되어 있습니다. 
+최신 메이저 버전에는 자동 batching, startTransition과 같은 새로운 API, Suspense를 지원하는 스트리밍 서버 사이드 렌더링과 같은 즉각적인 개선 사항이 포함되어 있습니다.
 
 React 18의 많은 기능은 강력한 새 기능들을 제공하는 배후의 변경 사항인 concurrent 렌더러를 기반으로 구축되었습니다. concurrent 렌더러는 선택 사항으로, concurrent 기능을 사용할 때만 활성화할 수 있지만 사람들이 애플리케이션을 빌드하는 방식에 큰 영향을 미칠 것으로 예상됩니다.
 

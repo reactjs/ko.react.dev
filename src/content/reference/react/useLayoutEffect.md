@@ -48,8 +48,8 @@ function Tooltip() {
 
 #### 매개변수 {/*parameters*/}
 
-* `setup`: Effect의 로직이 포함된 함수입니다. setup 함수는 선택적으로 *cleanup* 함수를 반환할 수도 있습니다. 컴포넌트가 DOM에 추가되기 전에 React는 setup 함수를 실행합니다. `dependencies`가 변경되어 다시 렌더링 될 때마다, React는 (cleanup 함수를 제공했다면) 먼저 이전 값으로 cleanup 함수를 실행한 다음, 새로운 값으로 setup 함수를 실행합니다. 컴포넌트가 DOM에서 제거되기 전에 React는 cleanup 함수를 한 번 더 실행합니다. 
- 
+* `setup`: Effect의 로직이 포함된 함수입니다. setup 함수는 선택적으로 *cleanup* 함수를 반환할 수도 있습니다. 컴포넌트가 DOM에 추가되기 전에 React는 setup 함수를 실행합니다. `dependencies`가 변경되어 다시 렌더링 될 때마다, React는 (cleanup 함수를 제공했다면) 먼저 이전 값으로 cleanup 함수를 실행한 다음, 새로운 값으로 setup 함수를 실행합니다. 컴포넌트가 DOM에서 제거되기 전에 React는 cleanup 함수를 한 번 더 실행합니다.
+
 * **선택사항** `dependencies`: `setup`코드 내에서 참조된 모든 반응형 값의 목록입니다. 반응형 값에는 props, state, 그리고 컴포넌트 본문에 직접 선언된 모든 변수와 함수가 포함됩니다. linter가 [React용으로 설정된](/learn/editor-setup#linting) 경우, 모든 반응형 값이 의존성으로 올바르게 지정되었는지 확인합니다. 의존성 목록에는 일정한 수의 항목이 있어야 하며 `[dep1, dep2, dep3]`와 같이 작성해야 합니다. React는 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교 알고리즘을 사용하여 각 의존성을 이전 값과 비교합니다. 의존성을 전혀 지정하지 않으면 컴포넌트를 다시 렌더링할 때마다 Effect가 다시 실행됩니다.
 
 #### 반환값 {/*returns*/}
@@ -59,7 +59,7 @@ function Tooltip() {
 #### 주의 사항 {/*caveats*/}
 
 * `useLayoutEffect`는 Hook이므로, **컴포넌트의 최상위 레벨** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문 내에서 호출할 수 없습니다. 이 작업이 필요하다면 새로운 컴포넌트로 분리해서 Effect를 새 컴포넌트로 옮기세요.
- 
+
 * Strict Mode가 켜져 있으면, React는 실제 첫 번째 setup 함수가 실행되기 이전에 **개발 모드에만 한정하여 한 번의 추가적인 setup + cleanup 사이클을 실행합니다.** 이는 cleanup 로직이 setup 로직을 완벽히 "반영"하고, setup 로직이 수행하는 작업을 중단하거나 되돌리는 지를 확인하는 스트레스 테스트입니다. 이로 인해 문제가 발생하면 [cleanup 함수를 구현하세요.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
 
 * 의존성 중에 컴포넌트 내부에서 정의된 객체나 함수가 있는 경우, **Effect 가 필요 이상으로 다시 실행될 위험이 있습니다.** 이를 해결하려면 불필요한 [객체 의존성](/reference/react/useEffect#removing-unnecessary-object-dependencies)이나 [함수 의존성](/reference/react/useEffect#removing-unnecessary-function-dependencies)을 제거하세요. [State 업데이트](/reference/react/useEffect#updating-state-based-on-previous-state-from-an-effect)나  [비 반응형 로직](/reference/react/useEffect#reading-the-latest-props-and-state-from-an-effect)을 effect 밖으로 빼낼 수 도 있습니다.
@@ -720,7 +720,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 `useLayoutEffect`의 목적은 [레이아웃 정보를 사용해서](#measuring-layout-before-the-browser-repaints-the-screen) 컴포넌트를 렌더링하는 것입니다.
 
 1. 초기 콘텐츠를 렌더링합니다.
-2. *브라우저가 화면을 다시 그리기 전에* 레이아웃을 계산합니다. 
+2. *브라우저가 화면을 다시 그리기 전에* 레이아웃을 계산합니다.
 3. 읽은 레이아웃 정보를 사용해서 최종 콘텐츠를 렌더링합니다.
 
 [서버 렌더링](/reference/react-dom/server)을 직접 사용하거나 프레임워크에서 사용하는 경우라면, React 앱은 서버에서 초기 렌더링을 해서 HTML을 만듭니다. 이를 통해 JavaScript 코드가 로드되기 전에 초기 HTML을 보여주게 됩니다.
@@ -737,6 +737,6 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 - 또는 [해당 컴포넌트를 클라이언트 전용으로 만드세요.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content) React가 가장 가까운 [`<Suspense>`](/reference/react/Suspense) 경계 안의 콘텐츠를 서버렌더링 동안 (스피너나 글리머같은) loading fallbck으로 대체 하게 합니다.
 
-- 또는 `useLayoutEffect`가 있는 컴포넌트를 hydration 이후에만 렌더링할 수도 있습니다. 불리언 타입인 `isMounted` state를 초깃값인 `false`로 유지하다가, `useEffect` 호출되면 거기서 `true`로 값을 변경하세요. 그러면 렌더링 로직은 `return isMounted ? <RealContent /> : <FallbackContent />` 처럼 될 수 있습니다. 서버에서 렌더링하는 중이거나 hydration 동안 사용자는 `FallbackContent`를 볼 것이고 `FallbackContent`는 `useLayoutEffect`를 호출하지 않아야 합니다. 그 후에 React가 `FallbackContent`를 클라이언트 전용이면서 `useLayoutEffect`를 호출하는 `RealContent`로 변경할 겁니다. 
+- 또는 `useLayoutEffect`가 있는 컴포넌트를 hydration 이후에만 렌더링할 수도 있습니다. 불리언 타입인 `isMounted` state를 초깃값인 `false`로 유지하다가, `useEffect` 호출되면 거기서 `true`로 값을 변경하세요. 그러면 렌더링 로직은 `return isMounted ? <RealContent /> : <FallbackContent />` 처럼 될 수 있습니다. 서버에서 렌더링하는 중이거나 hydration 동안 사용자는 `FallbackContent`를 볼 것이고 `FallbackContent`는 `useLayoutEffect`를 호출하지 않아야 합니다. 그 후에 React가 `FallbackContent`를 클라이언트 전용이면서 `useLayoutEffect`를 호출하는 `RealContent`로 변경할 겁니다.
 
 - 컴포넌트를 외부 데이터 저장소와 동기화하고, 레이아웃 계산 외에 다른 이유로 `useLayoutEffect`에 의존하는 경우라면, 대신 [`useSyncExternalStore`](/reference/react/useSyncExternalStore)를 고려해 보세요. 이 Hook은 [서버 렌더링을 지원합니다.](/reference/react/useSyncExternalStore#adding-support-for-server-rendering)
