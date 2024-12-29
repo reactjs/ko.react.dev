@@ -8,7 +8,7 @@
 
 번역 혹은 기여를 진행할 때, 아래 가이드를 따라주세요.
 
-1. [기여 가이드라인<sup>Contributing</sup>](/CONTRIBUTING.md)을 따르고 있습니다.
+1. [기여 가이드라인<sup>Contributing</sup>](/CONTRIBUTING.md) 및 [기여자 행동 강령 규약<sup>Code of Conduct</sup>](/CODE_OF_CONDUCT.md)을 따르고 있습니다.
 1. [공통 스타일 가이드<sup>Universal Style Guide</sup>](/wiki/universal-style-guide.md)를 확인해주세요.
 1. [번역을 위한 모범 사례<sup>Best Practices for Translation</sup>](/wiki/best-practices-for-translation.md)를 따라주세요.
 1. 공통된 단어 번역을 위해 [번역 용어 정리<sup>Translate Glossary</sup>](/wiki/translate-glossary.md)를 참고해주세요.
