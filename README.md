@@ -8,11 +8,12 @@
 
 번역 혹은 기여를 진행할 때, 아래 가이드를 따라주세요.
 
-1. [공통 스타일 가이드<sup>Universal Style Guide</sup>](/wiki/universal-style-guide.md)를 따르고 있습니다.
-2. [번역을 위한 모범 사례<sup>Best Practices for Translation</sup>](/wiki/best-practices-for-translation.md)를 따라주세요.
-3. 공통된 단어 번역을 위해 [번역 용어 정리<sup>Translate Glossary</sup>](/wiki/translate-glossary.md)를 참고해주세요.
-4. 끌어오기 요청<sup>Pull Request</sup>시 테스트를 통과하지 못할 경우, [`textlint` 가이드<sup>What is Textlint</sup>](/wiki/textlint/what-is-textlint.md)를 참고해주세요.
-5. 마지막으로 [맞춤법 검사<sup>Spelling Check</sup>](https://nara-speller.co.kr/speller/)를 진행해주세요.
+1. [기여 가이드라인<sup>Contributing</sup>](/CONTRIBUTING.md)을 따르고 있습니다.
+1. [공통 스타일 가이드<sup>Universal Style Guide</sup>](/wiki/universal-style-guide.md)를 확인해주세요.
+1. [번역을 위한 모범 사례<sup>Best Practices for Translation</sup>](/wiki/best-practices-for-translation.md)를 따라주세요.
+1. 공통된 단어 번역을 위해 [번역 용어 정리<sup>Translate Glossary</sup>](/wiki/translate-glossary.md)를 참고해주세요.
+1. 끌어오기 요청<sup>Pull Request</sup>시 테스트를 통과하지 못할 경우, [`textlint` 가이드<sup>What is Textlint</sup>](/wiki/textlint/what-is-textlint.md)를 참고해주세요.
+1. 마지막으로 [맞춤법 검사<sup>Spelling Check</sup>](https://nara-speller.co.kr/speller/)를 진행해주세요.
 
 이 저장소<sup>Repository</sup>는 [ko.react.dev](https://ko.react.dev/)의 소스 코드와 개발 문서를 포함하고 있습니다.
 
@@ -33,14 +34,14 @@
 
 ### 개발 서버 실행하기
 
-1. `yarn dev` 명령어를 사용하여 개발 서버를 시작합니다. (powered by [Next.js](https://nextjs.org))
+1. `yarn dev` 명령어를 사용하여 개발 서버를 시작합니다. (powered by [Next.js](https://nextjs.org).)
 1. `open http://localhost:3000` 명령어를 사용하여 선호하는 브라우저로 접속하세요.
 
 ## 기여 방법
 
 ### 가이드라인
 
-이 문서는 목적이 다른 여러 섹션으로 나뉩니다. 문장을 추가할 계획이라면, 적절한 섹션에 대한 [기여 가이드라인<sup>Contributing Guidelines</sup>](/CONTRIBUTING.md)을 숙지하는 것이 도움이 될 것입니다.
+이 문서는 목적이 다른 여러 섹션으로 나뉩니다. 문장을 추가할 계획이라면, 적절한 섹션에 대한 [기여 가이드라인<sup>Contributing</sup>](/CONTRIBUTING.md)을 숙지하는 것이 도움이 될 것입니다.
 
 ### 분기<sup>Branch</sup> 만들기
 
