@@ -16,6 +16,6 @@ If your PR references an existing issue, please add the issue number below
 - [ ] [공통 스타일 가이드 확인 (Check the common style guide)](https://github.com/reactjs/ko.react.dev/blob/main/wiki/universal-style-guide.md)
 - [ ] [모범 사례 확인 (Check best practices)](https://github.com/reactjs/ko.react.dev/blob/main/wiki/best-practices-for-translation.md)
 - [ ] [용어 확인 (Check the term)](https://github.com/reactjs/ko.react.dev/blob/main/wiki/translate-glossary.md)
-- [ ] [Textlint 가이드 확인 (Check the textlint guide)](https://github.com/reactjs/ko.react.dev/blob/main/wiki/textlint/what-is-textlint.md)
+- [ ] [Textlint 가이드 확인 (Check the textlint guide)](https://github.com/reactjs/ko.react.dev/blob/main/wiki/textlint-guide.md)
 - [ ] [맞춤법 검사 (Spelling check)](https://nara-speller.co.kr/speller/)
 - [ ] 리뷰 반영 (Resolve reviews)

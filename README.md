@@ -12,7 +12,7 @@
 1. [공통 스타일 가이드<sup>Universal Style Guide</sup>](/wiki/universal-style-guide.md)를 확인해주세요.
 1. [번역을 위한 모범 사례<sup>Best Practices for Translation</sup>](/wiki/best-practices-for-translation.md)를 따라주세요.
 1. 공통된 단어 번역을 위해 [번역 용어 정리<sup>Translate Glossary</sup>](/wiki/translate-glossary.md)를 참고해주세요.
-1. 끌어오기 요청<sup>Pull Request</sup>시 테스트를 통과하지 못할 경우, [`textlint` 가이드<sup>What is Textlint</sup>](/wiki/textlint/what-is-textlint.md)를 참고해주세요.
+1. 끌어오기 요청<sup>Pull Request</sup>시 테스트를 통과하지 못할 경우, [`textlint` 가이드<sup>Textlint Guide</sup>](/wiki/textlint-guide.md)를 참고해주세요.
 1. 마지막으로 [맞춤법 검사<sup>Spelling Check</sup>](https://nara-speller.co.kr/speller/)를 진행해주세요.
 
 이 저장소<sup>Repository</sup>는 [ko.react.dev](https://ko.react.dev/)의 소스 코드와 개발 문서를 포함하고 있습니다.
