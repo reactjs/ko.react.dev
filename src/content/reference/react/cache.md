@@ -152,7 +152,7 @@ export default cache(calculateWeekReport);
 import getWeekReport from './getWeekReport';
 
 export default function Temperature({cityData}) {
-	const report = getWeekReport(cityData);
+  const report = getWeekReport(cityData);
   // ...
 }
 ```
@@ -178,17 +178,17 @@ import {cache} from 'react';
 import {fetchTemperature} from './api.js';
 
 const getTemperature = cache(async (city) => {
-	return await fetchTemperature(city);
+  return await fetchTemperature(city);
 });
 
 async function AnimatedWeatherCard({city}) {
-	const temperature = await getTemperature(city);
-	// ...
+  const temperature = await getTemperature(city);
+  // ...
 }
 
 async function MinimalWeatherCard({city}) {
-	const temperature = await getTemperature(city);
-	// ...
+  const temperature = await getTemperature(city);
+  // ...
 }
 ```
 
@@ -204,8 +204,8 @@ async function MinimalWeatherCard({city}) {
 
 ```js [[3, 1, "async"], [3, 2, "await"]]
 async function AnimatedWeatherCard({city}) {
-	const temperature = await getTemperature(city);
-	// ...
+  const temperature = await getTemperature(city);
+  // ...
 }
 ```
 클라이언트 컴포넌트에서 비동기 데이터를 사용하는 컴포넌트를 렌더링하고 싶다면 [`use`](/reference/react/use) 문서를 참고하세요.

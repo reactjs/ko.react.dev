@@ -88,11 +88,11 @@ function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
   useEffect(() => {
-  	const connection = createConnection(serverUrl, roomId);
+    const connection = createConnection(serverUrl, roomId);
     connection.connect();
-  	return () => {
+    return () => {
       connection.disconnect();
-  	};
+    };
   }, [serverUrl, roomId]);
   // ...
 }

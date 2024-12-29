@@ -68,19 +68,19 @@ Server Action에서 중요한 데이터를 전송하지 않도록 하기 위해,
 다음은 지원되는 Server Action 인자의 타입입니다.
 
 * Primitives
-	* [string](https://developer.mozilla.org/ko/docs/Glossary/String)
-	* [number](https://developer.mozilla.org/ko/docs/Glossary/Number)
-	* [bigint](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
-	* [boolean](https://developer.mozilla.org/ko/docs/Glossary/Boolean)
-	* [undefined](https://developer.mozilla.org/ko/docs/Glossary/Undefined)
-	* [null](https://developer.mozilla.org/ko/docs/Glossary/Null)
-	* [symbol](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol), [`Symbol.for`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)를 통해 전역 Symbol로 등록된 Symbol 한정
+  * [string](https://developer.mozilla.org/ko/docs/Glossary/String)
+  * [number](https://developer.mozilla.org/ko/docs/Glossary/Number)
+  * [bigint](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
+  * [boolean](https://developer.mozilla.org/ko/docs/Glossary/Boolean)
+  * [undefined](https://developer.mozilla.org/ko/docs/Glossary/Undefined)
+  * [null](https://developer.mozilla.org/ko/docs/Glossary/Null)
+  * [symbol](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol), [`Symbol.for`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)를 통해 전역 Symbol로 등록된 Symbol 한정
 * 직렬화 가능한 값을 포함한 Iterables
-	* [String](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String)
-	* [Array](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array)
-	* [Map](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map)
-	* [Set](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set)
-	* [TypedArray](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)와 [ArrayBuffer](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
+  * [String](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String)
+  * [Array](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array)
+  * [Map](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map)
+  * [Set](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set)
+  * [TypedArray](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)와 [ArrayBuffer](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
 * [Date](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date)
 * [FormData](https://developer.mozilla.org/ko/docs/Web/API/FormData) 인스턴스
 * [object initializers](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer)로 직렬화 가능한 속성과 함께 생성된 일반 [objects](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object)
