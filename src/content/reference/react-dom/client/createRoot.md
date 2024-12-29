@@ -245,11 +245,11 @@ import { createRoot } from 'react-dom/client';
 import { Comments, Navigation } from './Components.js';
 
 const navDomNode = document.getElementById('navigation');
-const navRoot = createRoot(navDomNode); 
+const navRoot = createRoot(navDomNode);
 navRoot.render(<Navigation />);
 
 const commentDomNode = document.getElementById('comments');
-const commentRoot = createRoot(commentDomNode); 
+const commentRoot = createRoot(commentDomNode);
 commentRoot.render(<Comments />);
 ```
 
@@ -299,7 +299,7 @@ nav ul li { display: inline-block; margin-right: 20px; }
 
 ```js
 const domNode = document.createElement('div');
-const root = createRoot(domNode); 
+const root = createRoot(domNode);
 root.render(<Comment />);
 document.body.appendChild(domNode); // You can add it anywhere in the document
 ```
@@ -465,7 +465,7 @@ pre.nowrap {
 }
 
 .hidden {
- display: none;  
+ display: none;
 }
 ```
 
@@ -482,10 +482,10 @@ function reportError({ title, error, componentStack, dismissable }) {
   const errorCauseMessage = document.getElementById("error-cause-message");
   const errorCauseStack = document.getElementById("error-cause-stack");
   const errorNotDismissible = document.getElementById("error-not-dismissible");
-  
+
   // Set the title
   errorTitle.innerText = title;
-  
+
   // Display error message and body
   const [heading, body] = error.message.split(/\n(.*)/s);
   errorMessage.innerText = heading;
@@ -501,7 +501,7 @@ function reportError({ title, error, componentStack, dismissable }) {
   // Display the call stack
   // Since we already displayed the message, strip it, and the first Error: line.
   errorStack.innerText = error.stack.replace(error.message, '').split(/\n(.*)/s)[1];
-  
+
   // Display the cause, if available
   if (error.cause) {
     errorCauseMessage.innerText = error.cause.message;
@@ -518,7 +518,7 @@ function reportError({ title, error, componentStack, dismissable }) {
     errorNotDismissible.classList.remove('hidden');
     errorClose.classList.add("hidden");
   }
-  
+
   // Show the dialog
   errorDialog.classList.remove("hidden");
 }
@@ -561,11 +561,11 @@ import { useState } from 'react';
 
 export default function App() {
   const [throwError, setThrowError] = useState(false);
-  
+
   if (throwError) {
     foo.bar = 'baz';
   }
-  
+
   return (
     <div>
       <span>This error shows the error dialog:</span>
@@ -696,7 +696,7 @@ pre.nowrap {
 }
 
 .hidden {
- display: none;  
+ display: none;
 }
 ```
 
@@ -778,7 +778,7 @@ const root = createRoot(container, {
   onCaughtError: (error, errorInfo) => {
     if (error.message !== 'Known error') {
       reportCaughtError({
-        error, 
+        error,
         componentStack: errorInfo.componentStack,
       });
     }
@@ -793,7 +793,7 @@ import { ErrorBoundary } from "react-error-boundary";
 
 export default function App() {
   const [error, setError] = useState(null);
-  
+
   function handleUnknown() {
     setError("unknown");
   }
@@ -801,7 +801,7 @@ export default function App() {
   function handleKnown() {
     setError("known");
   }
-  
+
   return (
     <>
       <ErrorBoundary
@@ -820,7 +820,7 @@ export default function App() {
           Throw unknown error
         </button>
       </ErrorBoundary>
-      
+
     </>
   );
 }
@@ -883,7 +883,7 @@ root.render(<App />);
 
 The <CodeStep step={1}>onRecoverableError</CodeStep> option is a function called with two arguments:
 
-1. The <CodeStep step={2}>error</CodeStep> that React throws. Some errors may include the original cause as <CodeStep step={3}>error.cause</CodeStep>. 
+1. The <CodeStep step={2}>error</CodeStep> that React throws. Some errors may include the original cause as <CodeStep step={3}>error.cause</CodeStep>.
 2. An <CodeStep step={4}>errorInfo</CodeStep> object that contains the <CodeStep step={5}>componentStack</CodeStep> of the error.
 
 You can use the `onRecoverableError` root option to display error dialogs:
@@ -975,7 +975,7 @@ pre.nowrap {
 }
 
 .hidden {
- display: none;  
+ display: none;
 }
 ```
 
@@ -1081,7 +1081,7 @@ export default function App() {
         <p>This component threw an error, but recovered during a second render.</p>
         <p>Since it recovered, no Error Boundary was shown, but <code>onRecoverableError</code> was used to show an error dialog.</p>
       </ErrorBoundary>
-      
+
     </>
   );
 }
@@ -1152,7 +1152,7 @@ To fix, pass the root options to `createRoot(...)`, not `root.render(...)`:
 root.render(App, {onUncaughtError});
 
 // ✅ Correct: pass options to createRoot.
-const root = createRoot(container, {onUncaughtError}); 
+const root = createRoot(container, {onUncaughtError});
 root.render(<App />);
 ```
 

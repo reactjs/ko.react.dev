@@ -56,6 +56,3 @@ The `react-dom/server` APIs let you server-side render React components to HTML.
 </Deprecated>
 
 * [`renderToNodeStream`](/reference/react-dom/server/renderToNodeStream)은 React 트리를 [Node.js Readable Stream](https://nodejs.org/api/stream.html#readable-streams)으로 렌더링합니다. (Deprecated.)
-=======
-They have limited functionality compared to the streaming APIs.
->>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682

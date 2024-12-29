@@ -22,7 +22,7 @@ State 변수는 읽고 쓸 수 있는 일반 자바스크립트 변수처럼 보
 클릭과 같은 사용자 이벤트에 반응하여 사용자 인터페이스가 직접 변경된다고 생각할 수 있습니다. React에서는 이 멘탈 모델과는 조금 다르게 작동합니다. 이전 페이지에서 [state를 설정하면 React에 리렌더링을 요청](/learn/render-and-commit#step-1-trigger-a-render)하는 것을 보았습니다. 즉, 인터페이스가 이벤트에 반응하려면 state를 업데이트해야 합니다.
 
 
-이 예시에서는 "send"를 누르면 `setIsSent(true)`는 React에 UI를 다시 렌더링하도록 지시합니다. 
+이 예시에서는 "send"를 누르면 `setIsSent(true)`는 React에 UI를 다시 렌더링하도록 지시합니다.
 
 <Sandpack>
 

@@ -42,7 +42,7 @@ React의 `<meta>` 확장은 현재 React의 카나리(Canary) 버전 및 실험 
 
 `<meta>`는 [모든 컴포넌트 속성](/reference/react-dom/components/common#props)을 지원합니다.
 
-다음 속성 중 _하나만_ 가져야 합니다. `name`, `httpEquiv`, `charset`, `itemProp`. 
+다음 속성 중 _하나만_ 가져야 합니다. `name`, `httpEquiv`, `charset`, `itemProp`.
 
 `<meta>` 컴포넌트는 지정된 속성에 따라 각각 다른 동작을 합니다.
 

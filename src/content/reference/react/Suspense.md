@@ -24,7 +24,7 @@ title: <Suspense>
 ### `<Suspense>` {/*suspense*/}
 
 #### Props {/*props*/}
-* `children`: 궁극적으로 렌더링하려는 실제 UI입니다. `children`의 렌더링이 지연되면, Suspense는 `fallback`을 대신 렌더링합니다. 
+* `children`: 궁극적으로 렌더링하려는 실제 UI입니다. `children`의 렌더링이 지연되면, Suspense는 `fallback`을 대신 렌더링합니다.
 * `fallback`: 실제 UI가 로드되기 전까지 대신 렌더링 되는 대체 UI입니다. 올바른 React node 형식은 무엇이든 대체 UI로 활용할 수 있지만, 실제로는 보통 로딩 스피너나 스켈레톤처럼 간단한 placeholder를 활용합니다. Suspense는 `children`의 렌더링이 지연되면 자동으로 `fallback`으로 전환하고, 데이터가 준비되면 `children`으로 다시 전환합니다. 만약 `fallback`의 렌더링이 지연되면, 가장 가까운 부모 Suspense가 활성화됩니다.
 
 #### 주의 사항 {/*caveats*/}
@@ -114,6 +114,31 @@ export default function Albums({ artistId }) {
       ))}
     </ul>
   );
+}
+
+// This is a workaround for a bug to get the demo running.
+// TODO: replace with real implementation when the bug is fixed.
+function use(promise) {
+  if (promise.status === 'fulfilled') {
+    return promise.value;
+  } else if (promise.status === 'rejected') {
+    throw promise.reason;
+  } else if (promise.status === 'pending') {
+    throw promise;
+  } else {
+    promise.status = 'pending';
+    promise.then(
+      result => {
+        promise.status = 'fulfilled';
+        promise.value = result;
+      },
+      reason => {
+        promise.status = 'rejected';
+        promise.reason = reason;
+      },
+    );
+    throw promise;
+  }
 }
 ```
 
@@ -318,10 +343,34 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
+
+// This is a workaround for a bug to get the demo running.
+// TODO: replace with real implementation when the bug is fixed.
+function use(promise) {
+  if (promise.status === 'fulfilled') {
+    return promise.value;
+  } else if (promise.status === 'rejected') {
+    throw promise.reason;
+  } else if (promise.status === 'pending') {
+    throw promise;
+  } else {
+    promise.status = 'pending';
+    promise.then(
+      result => {
+        promise.status = 'fulfilled';
+        promise.value = result;
+      },
+      reason => {
+        promise.status = 'rejected';
+        promise.reason = reason;
+      },
+    );
+    throw promise;
+  }
+}
 ```
 
-```js src/Albums.js
-import {use} from 'react';
+```js src/Albums.js hidden
 import { fetchData } from './data.js';
 
 export default function Albums({ artistId }) {
@@ -335,6 +384,31 @@ export default function Albums({ artistId }) {
       ))}
     </ul>
   );
+}
+
+// This is a workaround for a bug to get the demo running.
+// TODO: replace with real implementation when the bug is fixed.
+function use(promise) {
+  if (promise.status === 'fulfilled') {
+    return promise.value;
+  } else if (promise.status === 'rejected') {
+    throw promise.reason;
+  } else if (promise.status === 'pending') {
+    throw promise;
+  } else {
+    promise.status = 'pending';
+    promise.then(
+      result => {
+        promise.status = 'fulfilled';
+        promise.value = result;
+      },
+      reason => {
+        promise.status = 'rejected';
+        promise.reason = reason;
+      },
+    );
+    throw promise;
+  }
 }
 ```
 
@@ -368,9 +442,9 @@ async function getBio() {
     setTimeout(resolve, 1500);
   });
 
-  return `The Beatles were an English rock band, 
-    formed in Liverpool in 1960, that comprised 
-    John Lennon, Paul McCartney, George Harrison 
+  return `The Beatles were an English rock band,
+    formed in Liverpool in 1960, that comprised
+    John Lennon, Paul McCartney, George Harrison
     and Ringo Starr.`;
 }
 
@@ -587,10 +661,34 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
+
+// This is a workaround for a bug to get the demo running.
+// TODO: replace with real implementation when the bug is fixed.
+function use(promise) {
+  if (promise.status === 'fulfilled') {
+    return promise.value;
+  } else if (promise.status === 'rejected') {
+    throw promise.reason;
+  } else if (promise.status === 'pending') {
+    throw promise;
+  } else {
+    promise.status = 'pending';
+    promise.then(
+      result => {
+        promise.status = 'fulfilled';
+        promise.value = result;
+      },
+      reason => {
+        promise.status = 'rejected';
+        promise.reason = reason;
+      },
+    );
+    throw promise;
+  }
+}
 ```
 
-```js src/Albums.js
-import {use} from 'react';
+```js src/Albums.js hidden
 import { fetchData } from './data.js';
 
 export default function Albums({ artistId }) {
@@ -604,6 +702,31 @@ export default function Albums({ artistId }) {
       ))}
     </ul>
   );
+}
+
+// This is a workaround for a bug to get the demo running.
+// TODO: replace with real implementation when the bug is fixed.
+function use(promise) {
+  if (promise.status === 'fulfilled') {
+    return promise.value;
+  } else if (promise.status === 'rejected') {
+    throw promise.reason;
+  } else if (promise.status === 'pending') {
+    throw promise;
+  } else {
+    promise.status = 'pending';
+    promise.then(
+      result => {
+        promise.status = 'fulfilled';
+        promise.value = result;
+      },
+      reason => {
+        promise.status = 'rejected';
+        promise.reason = reason;
+      },
+    );
+    throw promise;
+  }
 }
 ```
 
@@ -637,9 +760,9 @@ async function getBio() {
     setTimeout(resolve, 500);
   });
 
-  return `The Beatles were an English rock band, 
-    formed in Liverpool in 1960, that comprised 
-    John Lennon, Paul McCartney, George Harrison 
+  return `The Beatles were an English rock band,
+    formed in Liverpool in 1960, that comprised
+    John Lennon, Paul McCartney, George Harrison
     and Ringo Starr.`;
 }
 
@@ -789,6 +912,31 @@ export default function SearchResults({ query }) {
     </ul>
   );
 }
+
+// This is a workaround for a bug to get the demo running.
+// TODO: replace with real implementation when the bug is fixed.
+function use(promise) {
+  if (promise.status === 'fulfilled') {
+    return promise.value;
+  } else if (promise.status === 'rejected') {
+    throw promise.reason;
+  } else if (promise.status === 'pending') {
+    throw promise;
+  } else {
+    promise.status = 'pending';
+    promise.then(
+      result => {
+        promise.status = 'fulfilled';
+        promise.value = result;
+      },
+      reason => {
+        promise.status = 'rejected';
+        promise.reason = reason;
+      },
+    );
+    throw promise;
+  }
+}
 ```
 
 ```js src/data.js hidden
@@ -916,7 +1064,7 @@ export default function App() {
 
 ```js {2}
 <div style={{
-  opacity: query !== deferredQuery ? 0.5 : 1 
+  opacity: query !== deferredQuery ? 0.5 : 1
 }}>
   <SearchResults query={deferredQuery} />
 </div>
@@ -971,6 +1119,31 @@ export default function SearchResults({ query }) {
       ))}
     </ul>
   );
+}
+
+// This is a workaround for a bug to get the demo running.
+// TODO: replace with real implementation when the bug is fixed.
+function use(promise) {
+  if (promise.status === 'fulfilled') {
+    return promise.value;
+  } else if (promise.status === 'rejected') {
+    throw promise.reason;
+  } else if (promise.status === 'pending') {
+    throw promise;
+  } else {
+    promise.status = 'pending';
+    promise.then(
+      result => {
+        promise.status = 'fulfilled';
+        promise.value = result;
+      },
+      reason => {
+        promise.status = 'rejected';
+        promise.reason = reason;
+      },
+    );
+    throw promise;
+  }
 }
 ```
 
@@ -1207,10 +1380,34 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+
+// This is a workaround for a bug to get the demo running.
+// TODO: replace with real implementation when the bug is fixed.
+function use(promise) {
+  if (promise.status === 'fulfilled') {
+    return promise.value;
+  } else if (promise.status === 'rejected') {
+    throw promise.reason;
+  } else if (promise.status === 'pending') {
+    throw promise;
+  } else {
+    promise.status = 'pending';
+    promise.then(
+      result => {
+        promise.status = 'fulfilled';
+        promise.value = result;
+      },
+      reason => {
+        promise.status = 'rejected';
+        promise.reason = reason;
+      },
+    );
+    throw promise;
+  }
+}
 ```
 
-```js src/Biography.js
-import {use} from 'react';
+```js src/Biography.js hidden
 import { fetchData } from './data.js';
 
 export default function Biography({ artistId }) {
@@ -1220,6 +1417,31 @@ export default function Biography({ artistId }) {
       <p className="bio">{bio}</p>
     </section>
   );
+}
+
+// This is a workaround for a bug to get the demo running.
+// TODO: replace with real implementation when the bug is fixed.
+function use(promise) {
+  if (promise.status === 'fulfilled') {
+    return promise.value;
+  } else if (promise.status === 'rejected') {
+    throw promise.reason;
+  } else if (promise.status === 'pending') {
+    throw promise;
+  } else {
+    promise.status = 'pending';
+    promise.then(
+      result => {
+        promise.status = 'fulfilled';
+        promise.value = result;
+      },
+      reason => {
+        promise.status = 'rejected';
+        promise.reason = reason;
+      },
+    );
+    throw promise;
+  }
 }
 ```
 
@@ -1263,9 +1485,9 @@ async function getBio() {
     setTimeout(resolve, 500);
   });
 
-  return `The Beatles were an English rock band, 
-    formed in Liverpool in 1960, that comprised 
-    John Lennon, Paul McCartney, George Harrison 
+  return `The Beatles were an English rock band,
+    formed in Liverpool in 1960, that comprised
+    John Lennon, Paul McCartney, George Harrison
     and Ringo Starr.`;
 }
 
@@ -1387,7 +1609,7 @@ function Router() {
 
   function navigate(url) {
     startTransition(() => {
-      setPage(url);      
+      setPage(url);
     });
   }
   // ...
@@ -1519,10 +1741,34 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+
+// This is a workaround for a bug to get the demo running.
+// TODO: replace with real implementation when the bug is fixed.
+function use(promise) {
+  if (promise.status === 'fulfilled') {
+    return promise.value;
+  } else if (promise.status === 'rejected') {
+    throw promise.reason;
+  } else if (promise.status === 'pending') {
+    throw promise;
+  } else {
+    promise.status = 'pending';
+    promise.then(
+      result => {
+        promise.status = 'fulfilled';
+        promise.value = result;
+      },
+      reason => {
+        promise.status = 'rejected';
+        promise.reason = reason;
+      },
+    );
+    throw promise;
+  }
+}
 ```
 
-```js src/Biography.js
-import {use} from 'react';
+```js src/Biography.js hidden
 import { fetchData } from './data.js';
 
 export default function Biography({ artistId }) {
@@ -1532,6 +1778,31 @@ export default function Biography({ artistId }) {
       <p className="bio">{bio}</p>
     </section>
   );
+}
+
+// This is a workaround for a bug to get the demo running.
+// TODO: replace with real implementation when the bug is fixed.
+function use(promise) {
+  if (promise.status === 'fulfilled') {
+    return promise.value;
+  } else if (promise.status === 'rejected') {
+    throw promise.reason;
+  } else if (promise.status === 'pending') {
+    throw promise;
+  } else {
+    promise.status = 'pending';
+    promise.then(
+      result => {
+        promise.status = 'fulfilled';
+        promise.value = result;
+      },
+      reason => {
+        promise.status = 'rejected';
+        promise.reason = reason;
+      },
+    );
+    throw promise;
+  }
 }
 ```
 
@@ -1575,9 +1846,9 @@ async function getBio() {
     setTimeout(resolve, 500);
   });
 
-  return `The Beatles were an English rock band, 
-    formed in Liverpool in 1960, that comprised 
-    John Lennon, Paul McCartney, George Harrison 
+  return `The Beatles were an English rock band,
+    formed in Liverpool in 1960, that comprised
+    John Lennon, Paul McCartney, George Harrison
     and Ringo Starr.`;
 }
 
@@ -1830,10 +2101,34 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+
+// This is a workaround for a bug to get the demo running.
+// TODO: replace with real implementation when the bug is fixed.
+function use(promise) {
+  if (promise.status === 'fulfilled') {
+    return promise.value;
+  } else if (promise.status === 'rejected') {
+    throw promise.reason;
+  } else if (promise.status === 'pending') {
+    throw promise;
+  } else {
+    promise.status = 'pending';
+    promise.then(
+      result => {
+        promise.status = 'fulfilled';
+        promise.value = result;
+      },
+      reason => {
+        promise.status = 'rejected';
+        promise.reason = reason;
+      },
+    );
+    throw promise;
+  }
+}
 ```
 
-```js src/Biography.js
-import {use} from 'react';
+```js src/Biography.js hidden
 import { fetchData } from './data.js';
 
 export default function Biography({ artistId }) {
@@ -1843,6 +2138,31 @@ export default function Biography({ artistId }) {
       <p className="bio">{bio}</p>
     </section>
   );
+}
+
+// This is a workaround for a bug to get the demo running.
+// TODO: replace with real implementation when the bug is fixed.
+function use(promise) {
+  if (promise.status === 'fulfilled') {
+    return promise.value;
+  } else if (promise.status === 'rejected') {
+    throw promise.reason;
+  } else if (promise.status === 'pending') {
+    throw promise;
+  } else {
+    promise.status = 'pending';
+    promise.then(
+      result => {
+        promise.status = 'fulfilled';
+        promise.value = result;
+      },
+      reason => {
+        promise.status = 'rejected';
+        promise.reason = reason;
+      },
+    );
+    throw promise;
+  }
 }
 ```
 
@@ -1886,9 +2206,9 @@ async function getBio() {
     setTimeout(resolve, 500);
   });
 
-  return `The Beatles were an English rock band, 
-    formed in Liverpool in 1960, that comprised 
-    John Lennon, Paul McCartney, George Harrison 
+  return `The Beatles were an English rock band,
+    formed in Liverpool in 1960, that comprised
+    John Lennon, Paul McCartney, George Harrison
     and Ringo Starr.`;
 }
 

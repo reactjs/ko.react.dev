@@ -102,7 +102,7 @@ export default function FruitPicker() {
 select { margin: 5px; }
 ```
 
-</Sandpack>  
+</Sandpack>
 
 ---
 
@@ -177,7 +177,7 @@ export default function FruitPicker() {
 select { margin: 5px; }
 ```
 
-</Sandpack>  
+</Sandpack>
 
 <Pitfall>
 
@@ -299,7 +299,7 @@ label { margin-bottom: 20px; }
 
 ### state 변수와 함께 select box 제어 {/*controlling-a-select-box-with-a-state-variable*/}
 
-`<select>`와 같은 select box는 *제어되지 않습니다.* `<select defaultValue="orange" />`와 같이 [처음에 선택한 값](#providing-an-initially-selected-option)을 전달하더라도 JSX는 현재 값이 아닌 초기 값만 지정합니다. 
+`<select>`와 같은 select box는 *제어되지 않습니다.* `<select defaultValue="orange" />`와 같이 [처음에 선택한 값](#providing-an-initially-selected-option)을 전달하더라도 JSX는 현재 값이 아닌 초기 값만 지정합니다.
 
 **제어된 select box를 렌더링하려면 `value` prop을 전달해야 합니다.** React는 select box가 항상 전달한 `value`를 갖도록 강제합니다. 보통 [state 변수로 선언](/reference/react/useState)하여 선택 상자를 제어합니다.
 

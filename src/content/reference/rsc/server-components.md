@@ -54,7 +54,7 @@ function Page({page}) {
       setContent(data.content);
     });
   }, [page]);
-  
+
   return <div>{sanitizeHtml(marked(content))}</div>;
 }
 ```
@@ -78,7 +78,7 @@ import sanitizeHtml from 'sanitize-html'; // Not included in bundle
 async function Page({page}) {
   // NOTE: loads *during* render, when the app is built.
   const content = await file.readFile(`${page}.md`);
-  
+
   return <div>{sanitizeHtml(marked(content))}</div>;
 }
 ```
@@ -122,7 +122,7 @@ function Note({id}) {
       setNote(data.note);
     });
   }, [id]);
-  
+
   return (
     <div>
       <Author id={note.authorId} />
@@ -266,7 +266,7 @@ export default function Expandable({children}) {
       <p>this is the second note</p>
     </Expandable>
     <!--...-->
-  </div> 
+  </div>
 </body>
 ```
 
@@ -283,8 +283,8 @@ import db from './database';
 async function Page({id}) {
   // Will suspend the Server Component.
   const note = await db.notes.get(id);
-  
-  // NOTE: not awaited, will start here and await on the client. 
+
+  // NOTE: not awaited, will start here and await on the client.
   const commentsPromise = db.comments.get(note.id);
   return (
     <div>

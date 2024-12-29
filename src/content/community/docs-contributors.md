@@ -10,7 +10,7 @@ React 문서는  [React 팀](/community/team) 과 [외부 기여자](https://git
 
 ## 내용 {/*content*/}
 
-* [Rachel Nabors](https://twitter.com/RachelNabors): 편집, 글쓰기, 그림 그리기  
+* [Rachel Nabors](https://twitter.com/RachelNabors): 편집, 글쓰기, 그림 그리기
 * [Dan Abramov](https://twitter.com/dan_abramov): 글쓰기, 커리큘럼 설계
 * [Sylwia Vargas](https://twitter.com/SylwiaVargas): 예시 코드
 * [Rick Hanlon](https://twitter.com/rickhanlonii): 글쓰기

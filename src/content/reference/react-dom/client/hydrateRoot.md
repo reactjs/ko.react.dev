@@ -501,7 +501,7 @@ pre.nowrap {
 }
 
 .hidden {
- display: none;  
+ display: none;
 }
 ```
 
@@ -518,10 +518,10 @@ function reportError({ title, error, componentStack, dismissable }) {
   const errorCauseMessage = document.getElementById("error-cause-message");
   const errorCauseStack = document.getElementById("error-cause-stack");
   const errorNotDismissible = document.getElementById("error-not-dismissible");
-  
+
   // 제목 설정
   errorTitle.innerText = title;
-  
+
   // 에러 메시지 및 본문 표시
   const [heading, body] = error.message.split(/\n(.*)/s);
   errorMessage.innerText = heading;
@@ -537,7 +537,7 @@ function reportError({ title, error, componentStack, dismissable }) {
   // 콜 스택 표시
   // 이미 메시지와 첫 번째 'Error:' 줄을 표시했으므로, 이를 제거.
   errorStack.innerText = error.stack.replace(error.message, '').split(/\n(.*)/s)[1];
-  
+
   // 원인이 있는 경우 표시
   if (error.cause) {
     errorCauseMessage.innerText = error.cause.message;
@@ -554,7 +554,7 @@ function reportError({ title, error, componentStack, dismissable }) {
     errorNotDismissible.classList.remove('hidden');
     errorClose.classList.add("hidden");
   }
-  
+
   // 대화 상자 표시
   errorDialog.classList.remove("hidden");
 }
@@ -597,11 +597,11 @@ import { useState } from 'react';
 
 export default function App() {
   const [throwError, setThrowError] = useState(false);
-  
+
   if (throwError) {
     foo.bar = 'baz';
   }
-  
+
   return (
     <div>
       <span>This error shows the error dialog:</span>
@@ -744,7 +744,7 @@ pre.nowrap {
 }
 
 .hidden {
- display: none;  
+ display: none;
 }
 ```
 
@@ -761,10 +761,10 @@ function reportError({ title, error, componentStack, dismissable }) {
   const errorCauseMessage = document.getElementById("error-cause-message");
   const errorCauseStack = document.getElementById("error-cause-stack");
   const errorNotDismissible = document.getElementById("error-not-dismissible");
-  
+
   // 제목 설정
   errorTitle.innerText = title;
-  
+
   // Display error message and body
   // 에러 메시지 및 본문 표시
   const [heading, body] = error.message.split(/\n(.*)/s);
@@ -781,7 +781,7 @@ function reportError({ title, error, componentStack, dismissable }) {
   // 콜 스택 표시
   // 이미 메시지와 첫 번째 'Error:' 줄을 표시했으므로, 이를 제거.
   errorStack.innerText = error.stack.replace(error.message, '').split(/\n(.*)/s)[1];
-  
+
   // 원인이 있는 경우 표시
   if (error.cause) {
     errorCauseMessage.innerText = error.cause.message;
@@ -798,7 +798,7 @@ function reportError({ title, error, componentStack, dismissable }) {
     errorNotDismissible.classList.remove('hidden');
     errorClose.classList.add("hidden");
   }
-  
+
   // 대화 상자 표시
   errorDialog.classList.remove("hidden");
 }
@@ -841,7 +841,7 @@ import { ErrorBoundary } from "react-error-boundary";
 
 export default function App() {
   const [error, setError] = useState(null);
-  
+
   function handleUnknown() {
     setError("unknown");
   }
@@ -849,7 +849,7 @@ export default function App() {
   function handleKnown() {
     setError("known");
   }
-  
+
   return (
     <>
       <ErrorBoundary
@@ -868,7 +868,7 @@ export default function App() {
           Throw unknown error
         </button>
       </ErrorBoundary>
-      
+
     </>
   );
 }
@@ -1024,7 +1024,7 @@ pre.nowrap {
 }
 
 .hidden {
- display: none;  
+ display: none;
 }
 ```
 
@@ -1041,10 +1041,10 @@ function reportError({ title, error, componentStack, dismissable }) {
   const errorCauseMessage = document.getElementById("error-cause-message");
   const errorCauseStack = document.getElementById("error-cause-stack");
   const errorNotDismissible = document.getElementById("error-not-dismissible");
-  
+
   // 제목 설정
   errorTitle.innerText = title;
-  
+
   // 에러 메시지 및 본문 표시
   const [heading, body] = error.message.split(/\n(.*)/s);
   errorMessage.innerText = heading;
@@ -1060,7 +1060,7 @@ function reportError({ title, error, componentStack, dismissable }) {
   // 콜 스택 표시
   // 이미 메시지와 첫 번째 'Error:' 줄을 표시했으므로, 이를 제거.
   errorStack.innerText = error.stack.replace(error.message, '').split(/\n(.*)/s)[1];
-  
+
   // 원인이 있는 경우 표시
   if (error.cause) {
     errorCauseMessage.innerText = error.cause.message;
@@ -1077,7 +1077,7 @@ function reportError({ title, error, componentStack, dismissable }) {
     errorNotDismissible.classList.remove('hidden');
     errorClose.classList.add("hidden");
   }
-  
+
   // 대화 상자 표시
   errorDialog.classList.remove("hidden");
 }
@@ -1119,7 +1119,7 @@ import { ErrorBoundary } from "react-error-boundary";
 
 export default function App() {
   const [error, setError] = useState(null);
-  
+
   function handleUnknown() {
     setError("unknown");
   }
@@ -1127,7 +1127,7 @@ export default function App() {
   function handleKnown() {
     setError("known");
   }
-  
+
   return (
     <span>{typeof window !== 'undefined' ? 'Client' : 'Server'}</span>
   );

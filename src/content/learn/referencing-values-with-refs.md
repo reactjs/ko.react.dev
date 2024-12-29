@@ -35,7 +35,7 @@ const ref = useRef(0);
 
 ```js
 {
-  current: 0 // useRef에 전달한 값 
+  current: 0 // useRef에 전달한 값
 }
 ```
 
@@ -98,7 +98,7 @@ export default function Stopwatch() {
     setNow(Date.now());
 
     setInterval(() => {
-      // 10ms 마다 현재 시간을 업데이트 합니다. 
+      // 10ms 마다 현재 시간을 업데이트 합니다.
       setNow(Date.now());
     }, 10);
   }
@@ -179,7 +179,7 @@ ref가 state보다 덜 "엄격한" 것으로 생각될 수 있습니다-예를 �
 | `useRef(initialValue)` 는 `{ current: initialValue }` 을 반환합니다. | `useState(initialValue)` 은 state 변수의 현재 값과 setter 함수 `[value, setValue]` 를 반환합니다.                  |
 | state를 바꿔도 리렌더 되지 않습니다.                                       | state를 바꾸면 리렌더 됩니다.                                                                                |
 | Mutable-렌더링 프로세스 외부에서 `current` 값을 수정 및 업데이트할 수 있습니다.         | "Immutable"—state 를 수정하기 위해서는 state 설정 함수를 반드시 사용하여 리렌더 대기열에 넣어야 합니다.                              |
-| 렌더링 중에는 `current` 값을 읽거나 쓰면 안 됩니다.                            | 언제든지 state를 읽을 수 있습니다. 그러나 각 렌더마다 변경되지 않는 자체적인 state의 [snapshot](/learn/state-as-a-snapshot)이 있습니다. 
+| 렌더링 중에는 `current` 값을 읽거나 쓰면 안 됩니다.                            | 언제든지 state를 읽을 수 있습니다. 그러나 각 렌더마다 변경되지 않는 자체적인 state의 [snapshot](/learn/state-as-a-snapshot)이 있습니다.
 
 다음은 state와 함께 구현되는 카운터 버튼입니다.
 

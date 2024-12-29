@@ -123,7 +123,7 @@ function ProductPage({ productId, referrer, theme }) {
       orderDetails,
     });
   }
-  
+
   return (
     <div className={theme}>
       {/* ... 그래서 ShippingForm의 props는 같은 값이 아니므로 매번 리렌더링 할 것입니다.*/}
@@ -158,7 +158,7 @@ function ProductPage({ productId, referrer, theme }) {
 
 <Note>
 
-**`useCallback`은 성능 최적화를 위한 용도로만 사용해야 합니다.** 만약 코드가 `useCallback` 없이 작동하지 않는다면 먼저 근본적인 문제를 찾아 해결해야 합니다. 그다음에 `useCallback`을 다시 추가할 수 있습니다. 
+**`useCallback`은 성능 최적화를 위한 용도로만 사용해야 합니다.** 만약 코드가 `useCallback` 없이 작동하지 않는다면 먼저 근본적인 문제를 찾아 해결해야 합니다. 그다음에 `useCallback`을 다시 추가할 수 있습니다.
 
 </Note>
 
@@ -219,7 +219,7 @@ function useCallback(fn, dependencies) {
 
 `useCallback`으로 함수를 캐싱하는 것은 몇 가지 경우에만 가치 있습니다.
 
-- [`memo`](/reference/react/memo)로 감싸진 컴포넌트에 prop으로 넘깁니다. 이 값이 변하지 않으면 리렌더링을 건너뛰고 싶습니다. memoization은 의존성이 변했을 때만 컴포넌트가 리렌더링하도록 합니다. 
+- [`memo`](/reference/react/memo)로 감싸진 컴포넌트에 prop으로 넘깁니다. 이 값이 변하지 않으면 리렌더링을 건너뛰고 싶습니다. memoization은 의존성이 변했을 때만 컴포넌트가 리렌더링하도록 합니다.
 - 넘긴 함수가 나중에 어떤 Hook의 의존성으로 사용됩니다. 예를 들어, `useCallback`으로 감싸진 다른 함수가 이 함수에 의존하거나, [`useEffect`](/reference/react/useEffect)에서 이 함수에 의존합니다.
 
 다른 경우에서 `useCallback`으로 함수를 감싸는 것은 아무런 이익이 없습니다. 또한 이렇게 하는 것이 큰 불이익을 가져오지도 않으므로  일부 팀은 개별적인 경우를 따로 생각하지 않고, 가능한 한 많이 memoization하는 방식을 택합니다. 단점은 코드의 가독성이 떨어지는 것입니다. 또한, 모든 memoization이 효과적인 것은 아닙니다. "항상 새로운" 하나의 값이 있다면 전체 컴포넌트의 memoization을 깨기에 충분합니다.
@@ -316,7 +316,7 @@ const ShippingForm = memo(function ShippingForm({ onSubmit }) {
   }
 
   function handleSubmit(e) {
-    e.preventDefault(); 
+    e.preventDefault();
     const formData = new FormData(e.target);
     const orderDetails = {
       ...Object.fromEntries(formData),
@@ -386,7 +386,7 @@ button[type="button"] {
 
 이 예시에서 `ShippingForm` 컴포넌트 또한 **인위적으로 느리게 만들었기 때문에** 렌더링하는 React 컴포넌트가 실제로 느릴 때 어떤 일이 일어나는 지 볼 수 있습니다. 카운터를 증가시키고 테마를 토글 해보세요.
 
-이전 예시와 다르게 지금은 테마를 토글 하는 것도 느립니다! **이 버전에서는 `useCallback`을 호출하고 있지 않기** 때문에 `handleSubmit`은 항상 새로운 함수이고, 느려진 `ShippingForm` 컴포넌트는 리렌더링을 건너뛸 수 없습니다. 
+이전 예시와 다르게 지금은 테마를 토글 하는 것도 느립니다! **이 버전에서는 `useCallback`을 호출하고 있지 않기** 때문에 `handleSubmit`은 항상 새로운 함수이고, 느려진 `ShippingForm` 컴포넌트는 리렌더링을 건너뛸 수 없습니다.
 
 <Sandpack>
 
@@ -663,7 +663,7 @@ button[type="button"] {
 
 때때로 memoized 콜백에서 이전 상태를 기반으로 상태를 업데이트해야 할 때가 있습니다.
 
-`handleAddTodo` 함수는 `todos`로부터 다음 할 일을 계산하기 때문에 이를 의존성으로 명시했습니다. 
+`handleAddTodo` 함수는 `todos`로부터 다음 할 일을 계산하기 때문에 이를 의존성으로 명시했습니다.
 
 ```js {6,7}
 function TodoList() {

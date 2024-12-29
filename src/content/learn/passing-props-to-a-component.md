@@ -126,21 +126,21 @@ export default function Profile() {
     <div>
       <Avatar
         size={100}
-        person={{ 
-          name: 'Katsuko Saruhashi', 
+        person={{
+          name: 'Katsuko Saruhashi',
           imageId: 'YfeOqp2'
         }}
       />
       <Avatar
         size={80}
         person={{
-          name: 'Aklilu Lemma', 
+          name: 'Aklilu Lemma',
           imageId: 'OKS67lh'
         }}
       />
       <Avatar
         size={50}
-        person={{ 
+        person={{
           name: 'Lin Lanying',
           imageId: '1bX5QH6'
         }}
@@ -237,7 +237,7 @@ function Profile({ person, size, isSepia, thickBorder }) {
 }
 ```
 
-반복적인 코드는 가독성을 높일 수 있다는 점에서 잘못된 것은 아닙니다. 하지만 때로는 간결함이 중요할 때도 있습니다. `Profile`이 `Avatar`에서 하는 것처럼, 일부 컴포넌트는 그들의 모든 props를 자식 컴포넌트에 전달합니다. 
+반복적인 코드는 가독성을 높일 수 있다는 점에서 잘못된 것은 아닙니다. 하지만 때로는 간결함이 중요할 때도 있습니다. `Profile`이 `Avatar`에서 하는 것처럼, 일부 컴포넌트는 그들의 모든 props를 자식 컴포넌트에 전달합니다.
 props를 직접 사용하지 않기 때문에 보다 간결한 "spread" 문법을 사용하는 것이 합리적일 수 있습니다.
 
 
@@ -294,7 +294,7 @@ export default function Profile() {
     <Card>
       <Avatar
         size={100}
-        person={{ 
+        person={{
           name: 'Katsuko Saruhashi',
           imageId: 'YfeOqp2'
         }}
@@ -458,11 +458,11 @@ export default function Gallery() {
         />
         <ul>
           <li>
-            <b>Profession: </b> 
+            <b>Profession: </b>
             physicist and chemist
           </li>
           <li>
-            <b>Awards: 4 </b> 
+            <b>Awards: 4 </b>
             (Nobel Prize in Physics, Nobel Prize in Chemistry, Davy Medal, Matteucci Medal)
           </li>
           <li>
@@ -482,11 +482,11 @@ export default function Gallery() {
         />
         <ul>
           <li>
-            <b>Profession: </b> 
+            <b>Profession: </b>
             geochemist
           </li>
           <li>
-            <b>Awards: 2 </b> 
+            <b>Awards: 2 </b>
             (Miyake Prize for geochemistry, Tanaka Prize)
           </li>
           <li>
@@ -762,8 +762,8 @@ export default function Profile() {
   return (
     <Avatar
       size={40}
-      person={{ 
-        name: 'Gregorio Y. Zara', 
+      person={{
+        name: 'Gregorio Y. Zara',
         imageId: '7vQD0fP'
       }}
     />
@@ -818,15 +818,15 @@ export default function Profile() {
     <>
       <Avatar
         size={40}
-        person={{ 
-          name: 'Gregorio Y. Zara', 
+        person={{
+          name: 'Gregorio Y. Zara',
           imageId: '7vQD0fP'
         }}
       />
       <Avatar
         size={120}
-        person={{ 
-          name: 'Gregorio Y. Zara', 
+        person={{
+          name: 'Gregorio Y. Zara',
           imageId: '7vQD0fP'
         }}
       />
@@ -882,22 +882,22 @@ export default function Profile() {
     <>
       <Avatar
         size={40}
-        person={{ 
-          name: 'Gregorio Y. Zara', 
+        person={{
+          name: 'Gregorio Y. Zara',
           imageId: '7vQD0fP'
         }}
       />
       <Avatar
         size={70}
-        person={{ 
-          name: 'Gregorio Y. Zara', 
+        person={{
+          name: 'Gregorio Y. Zara',
           imageId: '7vQD0fP'
         }}
       />
       <Avatar
         size={120}
-        person={{ 
-          name: 'Gregorio Y. Zara', 
+        person={{
+          name: 'Gregorio Y. Zara',
           imageId: '7vQD0fP'
         }}
       />

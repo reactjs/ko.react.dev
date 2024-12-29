@@ -195,7 +195,7 @@ export async function submitForm(query) {
 
 ### 낙관적으로 폼 데이터 업데이트하기 {/*optimistically-updating-form-data*/}
 
-`useOptimistic` hook은 네트워크 요청과 같은 백그라운드의 작업이 끝나기 전에 사용자 인터페이스에 낙관적으로 업데이트하는 방법을 제공합니다. 폼의 맥락에서 이 기술은 앱을 더욱 반응형으로 느끼게 해줍니다. 사용자가 폼을 제출하면 인터페이스는 사용자가 기대하는 결과물로 즉시 업데이트됩니다. 
+`useOptimistic` hook은 네트워크 요청과 같은 백그라운드의 작업이 끝나기 전에 사용자 인터페이스에 낙관적으로 업데이트하는 방법을 제공합니다. 폼의 맥락에서 이 기술은 앱을 더욱 반응형으로 느끼게 해줍니다. 사용자가 폼을 제출하면 인터페이스는 사용자가 기대하는 결과물로 즉시 업데이트됩니다.
 
 예를 들어, 사용자가 폼에 메시지를 입력하고 "제출" 버튼을 클릭하면 `useOptimistic` hook은 "제출중..." 라벨과 함께 메시지가 서버에 보내지기 전에 리스트에 즉시 보입니다. 이러한 '낙관적인' 접근 방식은 속도와 반응성이 뛰어나다는 인상을 줍니다. 그다음 폼은 실제로 백그라운드에 메시지 보내기를 시도합니다. 서버에 메시지가 잘 도착하면, "제출중..." 라벨은 사라집니다.
 
@@ -315,14 +315,7 @@ export default function Search() {
 2. `<form>`의 `action` 프로퍼티로 전달된 함수가 [Server Action](/reference/rsc/use-server).
 3. `useActionState` hook이 에러메시지를 보여주기 위해 사용.
 
-`useActionState`는 [Server Action](/reference/rsc/use-server)과 초기 상태 값이라는 두 개의 매개변수를 가집니다. `useActionState`는 상태 변수와 액션이라는 두 개의 값을 반환합니다. `useActionState`를 통해 반환된 액션은 폼의 `action` 프로퍼티에 전달될 수 있습니다. `useActionState`를 통해 반환된 상태 변수는 에러 메시지를 보여주는 데 사용됩니다. `useActionState`에 전달된 [Server Action](/reference/rsc/use-server)에서 반환된 값은 상태 변수를 업데이트하는 데 사용됩니다. 
-=======
-1. `<form>` be rendered by a [Server Component](/reference/rsc/use-client)
-1. the function passed to the `<form>`'s `action` prop be a [Server Function](/reference/rsc/server-functions)
-1. the `useActionState` Hook be used to display the error message
-
-`useActionState` takes two parameters: a [Server Function](/reference/rsc/server-functions) and an initial state. `useActionState` returns two values, a state variable and an action. The action returned by `useActionState` should be passed to the `action` prop of the form. The state variable returned by `useActionState` can be used to display an error message. The value returned by the Server Function passed to `useActionState` will be used to update the state variable.
->>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
+`useActionState`는 [Server Action](/reference/rsc/use-server)과 초기 상태 값이라는 두 개의 매개변수를 가집니다. `useActionState`는 상태 변수와 액션이라는 두 개의 값을 반환합니다. `useActionState`를 통해 반환된 액션은 폼의 `action` 프로퍼티에 전달될 수 있습니다. `useActionState`를 통해 반환된 상태 변수는 에러 메시지를 보여주는 데 사용됩니다. `useActionState`에 전달된 [Server Action](/reference/rsc/use-server)에서 반환된 값은 상태 변수를 업데이트하는 데 사용됩니다.
 
 <Sandpack>
 

@@ -11,7 +11,7 @@ title: 컴포넌트 import 및 export 하기
 <YouWillLearn>
 
 * Root 컴포넌트란
-* 컴포넌트를 import 하거나 export 하는 방법 
+* 컴포넌트를 import 하거나 export 하는 방법
 * 언제 default 또는 named imports와 exports를 사용할지
 * 한 파일에서 여러 컴포넌트를 import 하거나 export 하는 방법
 * 여러 컴포넌트를 여러 파일로 분리하는 방법
@@ -119,7 +119,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 가끔 `.js`와 같은 파일 확장자가 없을 때도 있습니다.
 
-```js 
+```js
 import Gallery from './Gallery';
 ```
 
@@ -233,7 +233,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 이 페이지에서 배우게 된 것들입니다.
 
 * Root 컴포넌트란 무엇인지
-* 컴포넌트를 import 하거나 export 하는 방법 
+* 컴포넌트를 import 하거나 export 하는 방법
 * 언제 default 또는 named imports와 exports를 사용할지
 * 한 파일에서 여러 컴포넌트를 export 하는 방법
 

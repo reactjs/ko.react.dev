@@ -101,7 +101,7 @@ export default function Game() {
     if (currentMove === nextMove) {
       return;
     }
-    
+
     setCurrentMove(nextMove);
   }
 
@@ -571,7 +571,7 @@ function Square({ value }) {
 }
 ```
 
-`function Square({ value })`는 사각형 컴포넌트에 `value` prop를 전달할 수 있음을 나타냅니다. 
+`function Square({ value })`는 사각형 컴포넌트에 `value` prop를 전달할 수 있음을 나타냅니다.
 
 이제 모든 사각형에 `1` 대신 `value`를 표시하겠습니다. 아래와 같이 해보세요.
 
@@ -2082,7 +2082,7 @@ export default function Game() {
 <ConsoleBlock level="warning">
 경고: 배열 또는 반복자의 각 자식 요소는 고유한 "key" 속성을 가져야 합니다. &#96;Game&#96;의 렌더 메서드를 확인하세요.
 </ConsoleBlock>
-  
+
 다음 부문에서 이 오류를 수정하겠습니다.
 
 <Sandpack>

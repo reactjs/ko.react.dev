@@ -119,7 +119,7 @@ export async function submitForm(query) {
     await new Promise((res) => setTimeout(res, 1000));
 }
 ```
-</Sandpack>  
+</Sandpack>
 
 <Pitfall>
 
@@ -141,7 +141,7 @@ function Form() {
 ```js
 function Submit() {
   // ✅ `pending`은 Submit 컴포넌트를 감싸는 폼에서 파생됩니다
-  const { pending } = useFormStatus(); 
+  const { pending } = useFormStatus();
   return <button disabled={pending}>...</button>;
 }
 
@@ -224,7 +224,18 @@ button {
 
 ```
 
-</Sandpack>  
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "canary",
+    "react-dom": "canary",
+    "react-scripts": "^5.0.0"
+  },
+  "main": "/index.js",
+  "devDependencies": {}
+}
+```
+</Sandpack>
 
 ---
 

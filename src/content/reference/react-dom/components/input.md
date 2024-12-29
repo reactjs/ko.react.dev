@@ -70,7 +70,7 @@ You can [make an input controlled](#controlling-an-input-with-a-state-variable) 
 * [`minLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#minlength): 숫자 타입. 텍스트와 다른 input들의 최소 길이를 지정합니다.
 * [`multiple`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#multiple): 불리언 타입. `type="file"` 과 `type="email"` 에 대해 여러 값을 허용할지 여부를 지정합니다.
 * [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name): 문자열 타입. [폼과 제출](#reading-the-input-values-when-submitting-a-form) 되는 input의 이름을 지정합니다.
-* `onChange`: [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. [제어되는 input](#controlling-an-input-with-a-state-variable) 필수 요소로 가령 사용자가 키보드를 누를 때마다 실행되는 방식으로 input 값을 변경하는 즉시 실행되며 브라우저 [`input` 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)처럼 동작합니다. 
+* `onChange`: [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. [제어되는 input](#controlling-an-input-with-a-state-variable) 필수 요소로 가령 사용자가 키보드를 누를 때마다 실행되는 방식으로 input 값을 변경하는 즉시 실행되며 브라우저 [`input` 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)처럼 동작합니다.
 * `onChangeCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onChange`
 * [`onInput`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event): [`이벤트` 핸들러](/reference/react-dom/components/common#event-handler) 함수. 사용자가 값을 변경하는 즉시 실행됩니다. 지금까지의 용법에 비춰봤을 때 React에서는 유사하게 동작하는 `onChange`를 사용하는 것이 관습적입니다.
 * `onInputCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onInput`
@@ -212,7 +212,7 @@ export default function MyForm() {
             type="radio"
             name="myRadio"
             value="option2"
-            defaultChecked={true} 
+            defaultChecked={true}
           />
           Option 2
         </label>

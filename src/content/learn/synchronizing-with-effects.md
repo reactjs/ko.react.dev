@@ -1005,7 +1005,7 @@ export default function MyInput({ value, onChange }) {
   const ref = useRef(null);
 
   // TODO: 작동하지 않는다. 고쳐야함
-  // ref.current.focus()    
+  // ref.current.focus()
 
   return (
     <input

@@ -99,7 +99,7 @@ If used with a Server Function, `useActionState` allows the server's response fr
 #### 주의 사항 {/*caveats*/}
 
 * React 서버 컴포넌트를 지원하는 프레임워크와 함께 사용할 때, `useActionState`는 클라이언트에서 자바스크립트가 실행되기 이전에도 폼을 상호작용하도록 만들 수 있습니다. 서버 컴포넌트를 사용하지 않는다면 컴포넌트 지역 state와 동일합니다.
-* `useActionState`에 전달한 함수는 첫 번째 인수로 이전 혹은 초기 state를 추가로 받습니다. 이를 통해 `useActionState`를 사용하지 않고 직접 폼 액션을 사용했을 경우와는 다른 시그니처를 가지게 됩니다. 
+* `useActionState`에 전달한 함수는 첫 번째 인수로 이전 혹은 초기 state를 추가로 받습니다. 이를 통해 `useActionState`를 사용하지 않고 직접 폼 액션을 사용했을 경우와는 다른 시그니처를 가지게 됩니다.
 
 ---
 

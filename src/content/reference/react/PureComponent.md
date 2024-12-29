@@ -204,6 +204,6 @@ label {
 
 <Note>
 
-`PureComponent`와 달리 [`memo`](/reference/react/memo)는 새 state와 이전 state를 비교하지 않습니다. 함수 컴포넌트에서 동일한 state로 [`set` 함수](/reference/react/useState#setstate)를 호출하면 [기본적으로 `memo` 없이도 다시 렌더링 되지 않습니다.](/reference/react/memo#updating-a-memoized-component-using-state) 
+`PureComponent`와 달리 [`memo`](/reference/react/memo)는 새 state와 이전 state를 비교하지 않습니다. 함수 컴포넌트에서 동일한 state로 [`set` 함수](/reference/react/useState#setstate)를 호출하면 [기본적으로 `memo` 없이도 다시 렌더링 되지 않습니다.](/reference/react/memo#updating-a-memoized-component-using-state)
 
 </Note>
