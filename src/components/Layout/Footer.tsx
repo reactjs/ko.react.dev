@@ -347,9 +347,7 @@ export function Footer() {
         <div className="flex flex-col">
           <FooterLink isHeader={true}>더 보기</FooterLink>
           <FooterLink href="/blog">블로그</FooterLink>
-          <FooterLink href="https://reactnative.dev/">
-            React 네이티브
-          </FooterLink>
+          <FooterLink href="https://reactnative.dev/">React Native</FooterLink>
           <FooterLink href="https://opensource.facebook.com/legal/privacy">
             개인 정보 보호
           </FooterLink>
