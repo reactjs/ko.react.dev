@@ -1,4 +1,4 @@
-# 모범사례
+# 번역을 위한 모범 사례
 
 <https://github.com/reactjs/ko.react.dev/issues/27>
 
@@ -34,7 +34,7 @@
 영어와 우리말에서 쉼표를 사용하는 사례가 다릅니다. 우리말에서 쉼표를 사용하는 몇 가지 경우는 [맞춤법](https://korean.go.kr/kornorms/regltn/regltnView.do?regltn_code=0001&regltn_no=732#a732)에 규정되어 있습니다. 꼭 필요할 때만 사용하고 그 외에는 제한하는 편이 좋을 것 같습니다.
 
 ```text
-🇬🇧For example, if `id` is the row ID, either of the following would work
+🇬🇧 For example, if `id` is the row ID, either of the following would work
 
 👍모범 사례
 예를 들어 `id`가 행의 ID일 경우 다음 코드가 모두 작동합니다.
@@ -79,13 +79,13 @@ DOM 엘리먼트에 "Hello, World"를 표현한다고 생각해봅시다.
 사실 원칙대로라면 `~되다`같은 수동태도 가능하면 억제하는 편이 좋지만 실제로 작업을 하다 보면 써야 문장이 자연스러울 때도 있습니다. 다만 `보여지다`, `생각되다`와 같은 불필요한 피동형 문장은 자제하는 편이 좋습니다.
 
 ```text
-🇬🇧 Elements appeared on the screen
+🇬🇧 Elements appeared on the screen.
 
 👍모범 사례
-화면에 보이는 엘리먼트
+화면에 보이는 엘리먼트.
 
 👎잘못된 사례
-화면에 보여지는 엘리먼트
+화면에 보여지는 엘리먼트.
 ```
 
 ## 똑같은 표현은 비슷한 표현으로 대체하면 문장이 더 유려해집니다
