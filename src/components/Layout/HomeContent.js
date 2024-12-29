@@ -174,7 +174,7 @@ export function HomeContent() {
               <Br /> 사용자 인터페이스 만들기
             </Header>
             <Para>
-              React를 사용하면 컴포넌트라고 불리는 조각들을 사용하여 사용자
+              React를 사용하면 컴포넌트라 불리는 조각들을 사용하여 사용자
               인터페이스를 만들 수 있습니다. <Code>Thumbnail</Code>,{' '}
               <Code>LikeButton</Code>, 그리고 <Code>Video</Code> 같은 컴포넌트를
               만들 수 있습니다. 그런 다음 전체 화면, 페이지 및 앱에서 이들을

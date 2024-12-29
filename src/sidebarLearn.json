@@ -1,5 +1,5 @@
 {
-  "title": "React 학습",
+  "title": "React 학습하기",
   "path": "/learn",
   "routes": [
     {
@@ -53,7 +53,7 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "React 학습"
+      "sectionHeader": "React 학습하기"
     },
     {
       "title": "UI 표현하기",
