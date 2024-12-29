@@ -336,7 +336,7 @@ export function Footer() {
             커뮤니티
           </FooterLink>
           <FooterLink href="https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md">
-            Code of Conduct
+            행동 강령
           </FooterLink>
           <FooterLink href="/community/team">팀 소개</FooterLink>
           <FooterLink href="/community/docs-contributors">
@@ -347,7 +347,9 @@ export function Footer() {
         <div className="flex flex-col">
           <FooterLink isHeader={true}>더 보기</FooterLink>
           <FooterLink href="/blog">블로그</FooterLink>
-          <FooterLink href="https://reactnative.dev/">React Native</FooterLink>
+          <FooterLink href="https://reactnative.dev/">
+            React 네이티브
+          </FooterLink>
           <FooterLink href="https://opensource.facebook.com/legal/privacy">
             개인 정보 보호
           </FooterLink>

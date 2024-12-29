@@ -18,7 +18,7 @@ React 문서 기여에 관심을 가져주셔서 감사합니다!
 
 **[React 학습하기](https://ko.react.dev/learn)** 섹션은 기초 개념을 단계별로 소개하기 위해 만들어졌습니다. 여기서 제공되는 글들은 이전에 설명된 지식을 바탕으로 하므로, 글 간 앞뒤 개념이 중복되거나 꼬이지 않도록 주의하세요. 독자는 첫 번째 글부터 마지막 글까지 순서대로 읽으며 개념을 익힐 수 있어야 하며, 추가 설명을 위해 미리 앞선 개념들을 살펴보지 않도록 해야 합니다. 이런 이유로 상태<sup>State</sup>는 이벤트<sup>Event</sup>보다 먼저 설명되고, 'React로 사고하기' 파트에서 `ref`를 사용하지 않는 등 특정 순서가 정해져 있습니다. 동시에 'React 학습하기'는 React 개념에 대한 참고 자료 역할을 하므로, 개념들에 대한 정의와 상호 관계를 엄격하게 다루어야 합니다.
 
-**[API 레퍼런스](https://ko.react.dev/reference/react)** 섹션은 개념이 아닌 API별로 정리되어 있으며, 가능한 한 모든 경우를 포함하는 것을 목표로 합니다. 'React 학습하기'에서 간단히 다뤘거나 생략한 예외 사항<sup>Edge Cases</sup> 혹은 권장 사항<sup>Recommendations</sup>은 해당 API의 레퍼런스 문서에 추가로 언급해야 합니다.
+**[API 참고서](https://ko.react.dev/reference/react)** 섹션은 개념이 아닌 API별로 정리되어 있으며, 가능한 한 모든 경우를 포함하는 것을 목표로 합니다. 'React 학습하기'에서 간단히 다뤘거나 생략한 예외 사항<sup>Edge Cases</sup> 혹은 권장 사항<sup>Recommendations</sup>은 해당 API의 레퍼런스 문서에 추가로 언급해야 합니다.
 
 **스스로 작성한 지침<sup>Instructions</sup>을 실천해 보세요.**
 
