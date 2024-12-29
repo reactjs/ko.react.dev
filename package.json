@@ -102,6 +102,7 @@
     "tailwindcss": "^3.4.1",
     "textlint": "^14.0.4",
     "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-rule-allowed-uris": "^1.0.7",
     "textlint-tester": "^14.0.4",
     "typescript": "^4.0.2",
     "unist-util-visit": "^2.0.3",

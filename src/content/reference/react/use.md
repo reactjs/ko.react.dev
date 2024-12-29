@@ -67,7 +67,7 @@ Promise와 함께 호출될 때 `use` Hook은 [`Suspense`](/reference/react/Susp
 
 ### `use`를 사용하여 context 참조하기 {/*reading-context-with-use*/}
 
-[context](/learn/passing-data-deeply-with-context)가 `use`에 전달되면 [`useContext`](https://ko.react.dev/reference/react/useContext)와 유사하게 작동합니다. `useContext`는 컴포넌트의 최상위 수준에서 호출해야 하지만, `use`는 `if`와 같은 조건문이나 `for`와 같은 반복문 내부에서 호출할 수 있습니다. `use`는 유연하므로 `useContext`보다 선호됩니다.
+[context](/learn/passing-data-deeply-with-context)가 `use`에 전달되면 [`useContext`](/reference/react/useContext)와 유사하게 작동합니다. `useContext`는 컴포넌트의 최상위 수준에서 호출해야 하지만, `use`는 `if`와 같은 조건문이나 `for`와 같은 반복문 내부에서 호출할 수 있습니다. `use`는 유연하므로 `useContext`보다 선호됩니다.
 
 ```js [[2, 4, "theme"], [1, 4, "ThemeContext"]]
 import { use } from 'react';
@@ -97,7 +97,7 @@ function Form() {
 
 provider와 `Button` 사이에 얼마나 많은 컴포넌트가 있는지는 중요하지 않습니다. `Form` 내부의 *어느 곳이든* `Button`이 `use(ThemeContext)`를 호출하면 `"dark"`를 값으로 받습니다.
 
-[`useContext`](https://ko.react.dev/reference/react/useContext)와 달리, <CodeStep step={2}>`use`</CodeStep>는 <CodeStep step={1}>`if`</CodeStep>와 같은 조건문과 반복문 내부에서 호출할 수 있습니다.
+[`useContext`](/reference/react/useContext)와 달리, <CodeStep step={2}>`use`</CodeStep>는 <CodeStep step={1}>`if`</CodeStep>와 같은 조건문과 반복문 내부에서 호출할 수 있습니다.
 
 
 ```js [[1, 2, "if"], [2, 3, "use"]]
@@ -346,7 +346,7 @@ export default async function App() {
 }
 ```
 
-하지만 [서버 컴포넌트](https://ko.react.dev/reference/react/use-server)에서 `await`을 사용하면 `await` 문이 완료될 때까지 렌더링이 차단됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 Promise를 prop으로 전달하면 Promise가 서버 컴포넌트의 렌더링을 차단하는 것을 방지할 수 있습니다.
+하지만 [서버 컴포넌트](/reference/react/use-server)에서 `await`을 사용하면 `await` 문이 완료될 때까지 렌더링이 차단됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 Promise를 prop으로 전달하면 Promise가 서버 컴포넌트의 렌더링을 차단하는 것을 방지할 수 있습니다.
 
 </DeepDive>
 
