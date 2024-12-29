@@ -11,7 +11,7 @@ React의 `<link>` 확장은 현재 React의 카나리(Canary) 채널과 실험 �
 
 <Intro>
 
-[브라우저 내장 `<link>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)는 스타일시트와 같은 외부 리소스를 사용하거나 링크 메타데이터로 문서를 주석 처리할 수 있게 해줍니다. 
+[브라우저 내장 `<link>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)는 스타일시트와 같은 외부 리소스를 사용하거나 링크 메타데이터로 문서를 주석 처리할 수 있게 해줍니다.
 
 ```js
 <link rel="icon" href="favicon.ico" />

@@ -189,7 +189,7 @@ function use(promise) {
       reason => {
         promise.status = 'rejected';
         promise.reason = reason;
-      },      
+      },
     );
     throw promise;
   }
@@ -403,7 +403,7 @@ function use(promise) {
       reason => {
         promise.status = 'rejected';
         promise.reason = reason;
-      },      
+      },
     );
     throw promise;
   }
@@ -632,7 +632,7 @@ function use(promise) {
       reason => {
         promise.status = 'rejected';
         promise.reason = reason;
-      },      
+      },
     );
     throw promise;
   }

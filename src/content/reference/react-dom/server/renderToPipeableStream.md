@@ -401,7 +401,7 @@ const { pipe } = renderToPipeableStream(<App />, {
   onShellError(error) {
     response.statusCode = 500;
     response.setHeader('content-type', 'text/html');
-    response.send('<h1>Something went wrong</h1>'); 
+    response.send('<h1>Something went wrong</h1>');
   },
   onError(error) {
     console.error(error);
@@ -433,8 +433,8 @@ function ProfilePage() {
 
 `Posts` 컴포넌트 또는 그 내부 어딘가에서 오류가 발생하면 React는 [이를 복구하려고 시도합니다.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content)
 
-1. 가장 가까운 `<Suspense>` 경계(`PostsGlimmer`)에 대한 로딩 폴백을 HTML로 방출합니다. 
-2. 더 이상 서버에서 `Posts` 콘텐츠를 렌더링하는 것을 "포기"합니다. 
+1. 가장 가까운 `<Suspense>` 경계(`PostsGlimmer`)에 대한 로딩 폴백을 HTML로 방출합니다.
+2. 더 이상 서버에서 `Posts` 콘텐츠를 렌더링하는 것을 "포기"합니다.
 3. 자바스크립트 코드가 클라이언트에서 로드되면 React는 클라이언트에서 `Posts` 렌더링을 *재시도*합니다.
 
 클라이언트에서 `Posts` 렌더링을 *다시 시도해도* 실패하면 React는 클라이언트에서 에러를 던집니다. 렌더링 중에 발생하는 모든 에러와 마찬가지로, [가장 가까운 부모 에러 경계](/reference/react/Component#static-getderivedstatefromerror)에 따라 사용자에게 에러를 표시하는 방법이 결정됩니다. 실제로는 오류를 복구할 수 없다는 것이 확실해질 때까지 사용자에게 로딩 표시기가 표시된다는 의미입니다.
@@ -460,7 +460,7 @@ const { pipe } = renderToPipeableStream(<App />, {
   onShellError(error) {
     response.statusCode = 500;
     response.setHeader('content-type', 'text/html');
-    response.send('<h1>Something went wrong</h1>'); 
+    response.send('<h1>Something went wrong</h1>');
   },
   onError(error) {
     console.error(error);
@@ -486,7 +486,7 @@ const { pipe } = renderToPipeableStream(<App />, {
   onShellError(error) {
     response.statusCode = 500;
     response.setHeader('content-type', 'text/html');
-    response.send('<h1>Something went wrong</h1>'); 
+    response.send('<h1>Something went wrong</h1>');
   },
   onError(error) {
     didError = true;
@@ -531,7 +531,7 @@ const { pipe } = renderToPipeableStream(<App />, {
   onShellError(error) {
    response.statusCode = getStatusCode();
    response.setHeader('content-type', 'text/html');
-   response.send('<h1>Something went wrong</h1>'); 
+   response.send('<h1>Something went wrong</h1>');
   },
   onError(error) {
     didError = true;
@@ -570,13 +570,13 @@ const { pipe } = renderToPipeableStream(<App />, {
   onShellError(error) {
     response.statusCode = 500;
     response.setHeader('content-type', 'text/html');
-    response.send('<h1>Something went wrong</h1>'); 
+    response.send('<h1>Something went wrong</h1>');
   },
   onAllReady() {
     if (isCrawler) {
       response.statusCode = didError ? 500 : 200;
       response.setHeader('content-type', 'text/html');
-      pipe(response);      
+      pipe(response);
     }
   },
   onError(error) {

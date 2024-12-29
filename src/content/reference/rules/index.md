@@ -28,7 +28,7 @@ React를 사용하여 UI를 표현하는 방법에 대해 더 알고 싶다면 [
 
 * [컴포넌트는 멱등해야 합니다](/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent) – React 컴포넌트는 항상 입력 값(props, state, context)에 따라 동일한 출력을 반환한다고 가정합니다.
 * [사이드 이펙트는 렌더링 외부에서 실행되어야 합니다](/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render) – [사이드 이펙트](/learn/keeping-components-pure#side-effects-unintended-consequences)는 React가 최상의 사용자 경험을 제공하기 위해 컴포넌트를 여러 번 렌더링할 수 있기 때문에 렌더링 중에 실행되어서는 안 됩니다.
-* [Props와 state는 불변입니다](/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable) – 컴포넌트의 props와 state는 단일 렌더링에 대해 불변의 [스냅샷](https://ko.react.dev/learn/state-as-a-snapshot)입니다. 절대 이를 직접 변경하지 마세요.
+* [Props와 state는 불변입니다](/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable) – 컴포넌트의 props와 state는 단일 렌더링에 대해 불변의 [스냅샷](/learn/state-as-a-snapshot)입니다. 절대 이를 직접 변경하지 마세요.
 * [Hook의 반환값과 인수는 불변입니다](/reference/rules/components-and-hooks-must-be-pure#return-values-and-arguments-to-hooks-are-immutable) – 값이 Hook에 전달되면 이를 수정해서는 안 됩니다. JSX의 props와 마찬가지로 Hook에 전달된 값도 불변입니다.
 * [JSX로 전달된 값은 불변입니다](/reference/rules/components-and-hooks-must-be-pure#values-are-immutable-after-being-passed-to-jsx) – JSX에 사용된 후에는 값을 변경하지 마세요. JSX가 생성되기 전에 변경을 수행하세요.
 

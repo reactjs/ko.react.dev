@@ -43,7 +43,7 @@ function MyComponent() {
 #### 주의 사항 {/*caveats*/}
 
 * 컴포넌트 내의 `useContext()` 호출은 **동일한** 컴포넌트에서 반환된 provider에 영향을 받지 않습니다. 해당하는 `<Context.Provider>` 는 `useContext()` 호출을 하는 컴포넌트 ***위에* 배치되어야 합니다.**
-* React는 다른 `value`을 받는 provider로부터 시작해서 특정 context를 사용하는 모든 자식들을 **자동으로 리렌더링**합니다. 이전 값과 다음 값은 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 통해 비교됩니다. [`memo`](/reference/react/memo)로 리렌더링을 건너뛰어도 자식들이 새로운 context 값을 받는 것을 막지는 못합니다. 
+* React는 다른 `value`을 받는 provider로부터 시작해서 특정 context를 사용하는 모든 자식들을 **자동으로 리렌더링**합니다. 이전 값과 다음 값은 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 통해 비교됩니다. [`memo`](/reference/react/memo)로 리렌더링을 건너뛰어도 자식들이 새로운 context 값을 받는 것을 막지는 못합니다.
 * 빌드 시스템이 결과물에 중복 모듈을 생성하는 경우(심볼릭 링크에서 발생할 수 있음) context가 손상될 수 있습니다.  context를 통해 무언가를 전달하는 것은 `===` 비교에 의해 결정되는 것처럼 컨텍스트를 제공하는 데 사용하는 `SomeContext`와 context를 읽는 데 사용하는 `SomeContext`가 ***정확하게* 동일한 객체**인 경우에만 작동합니다.
 
 ---
@@ -60,7 +60,7 @@ import { useContext } from 'react';
 
 function Button() {
   const theme = useContext(ThemeContext);
-  // ... 
+  // ...
 ```
 
 `useContext`는 전달한 <CodeStep step={1}>context</CodeStep> 에 대한 <CodeStep step={2}>context value </CodeStep>를 반환합니다. context 값을 결정하기 위해 React는 컴포넌트 트리를 검색하고 특정 context에 대해 **상위에서 가장 가까운 context provider**를 찾습니다.
@@ -85,7 +85,7 @@ provider와 `Button`사이에 얼마나 많은 컴포넌트 레이어가 있는�
 
 <Pitfall>
 
-`useContext()` 는 항상 호출하는 컴포넌트 *상위*에서 가장 가까운 provider를 찾습니다. 위쪽으로 찾고 `useContext()`를 호출하는 컴포넌트 안의 provider는 **고려하지 않습니다.** 
+`useContext()` 는 항상 호출하는 컴포넌트 *상위*에서 가장 가까운 provider를 찾습니다. 위쪽으로 찾고 `useContext()`를 호출하는 컴포넌트 안의 provider는 **고려하지 않습니다.**
 
 </Pitfall>
 
@@ -845,7 +845,7 @@ export default function AddTask() {
           type: 'added',
           id: nextId++,
           text: text,
-        }); 
+        });
       }}>Add</button>
     </>
   );
@@ -1292,7 +1292,7 @@ export const LevelContext = createContext(0);
 
 context를 통해 객체와 함수를 포함한 모든 값을 전달할 수 있습니다.
 
-```js [[2, 10, "{ currentUser, login }"]] 
+```js [[2, 10, "{ currentUser, login }"]]
 function MyApp() {
   const [currentUser, setCurrentUser] = useState(null);
 

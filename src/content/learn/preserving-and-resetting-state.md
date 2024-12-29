@@ -185,7 +185,7 @@ export default function App() {
   return (
     <div>
       <Counter />
-      {showB && <Counter />} 
+      {showB && <Counter />}
       <label>
         <input
           type="checkbox"
@@ -287,9 +287,9 @@ export default function App() {
   return (
     <div>
       {isFancy ? (
-        <Counter isFancy={true} /> 
+        <Counter isFancy={true} />
       ) : (
-        <Counter isFancy={false} /> 
+        <Counter isFancy={false} />
       )}
       <label>
         <input
@@ -495,9 +495,9 @@ export default function App() {
   return (
     <div>
       {isPaused ? (
-        <p>See you later!</p> 
+        <p>See you later!</p>
       ) : (
-        <Counter /> 
+        <Counter />
       )}
       <label>
         <input
@@ -595,7 +595,7 @@ export default function App() {
     <div>
       {isFancy ? (
         <div>
-          <Counter isFancy={true} /> 
+          <Counter isFancy={true} />
         </div>
       ) : (
         <section>
@@ -1390,7 +1390,7 @@ textarea { display: block; margin: 10px 0; }
 
 </Sandpack>
 
-이 방법에서 `Form`은 항상 두 번째 자식이기 때문에 같은 위치를 유지하고 state를 유지합니다. 하지만 이 접근 방식은 훨씬 애매하고 다른 사람이 `null`을 지워버릴 리스크를 남깁니다. 
+이 방법에서 `Form`은 항상 두 번째 자식이기 때문에 같은 위치를 유지하고 state를 유지합니다. 하지만 이 접근 방식은 훨씬 애매하고 다른 사람이 `null`을 지워버릴 리스크를 남깁니다.
 
 </Solution>
 
@@ -1426,7 +1426,7 @@ export default function App() {
   if (reverse) {
     return (
       <>
-        <Field label="Last name" /> 
+        <Field label="Last name" />
         <Field label="First name" />
         {checkbox}
       </>
@@ -1434,11 +1434,11 @@ export default function App() {
   } else {
     return (
       <>
-        <Field label="First name" /> 
+        <Field label="First name" />
         <Field label="Last name" />
         {checkbox}
       </>
-    );    
+    );
   }
 }
 
@@ -1488,7 +1488,7 @@ export default function App() {
   if (reverse) {
     return (
       <>
-        <Field key="lastName" label="Last name" /> 
+        <Field key="lastName" label="Last name" />
         <Field key="firstName" label="First name" />
         {checkbox}
       </>
@@ -1496,11 +1496,11 @@ export default function App() {
   } else {
     return (
       <>
-        <Field key="firstName" label="First name" /> 
+        <Field key="firstName" label="First name" />
         <Field key="lastName" label="Last name" />
         {checkbox}
       </>
-    );    
+    );
   }
 }
 

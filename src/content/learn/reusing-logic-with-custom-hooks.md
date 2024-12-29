@@ -238,7 +238,7 @@ linter가 [React에 맞춰있다면](/learn/editor-setup#linting), 작명 규칙
 
 아닙니다. Hook을 *호출*하지 않는 함수는 *Hook일* 필요가 없습니다.
 
-함수가 어떤 Hook도 호출하지 않는다면, `use`를 이름 앞에 작성하는 것을 피하세요. 대신, `use` 없이 일반적인 함수로 작성하세요. 예를 들어 `useSorted`가 Hook을 호출하지 않는다면 `getSorted`로 변경할 수 있습니다. 
+함수가 어떤 Hook도 호출하지 않는다면, `use`를 이름 앞에 작성하는 것을 피하세요. 대신, `use` 없이 일반적인 함수로 작성하세요. 예를 들어 `useSorted`가 Hook을 호출하지 않는다면 `getSorted`로 변경할 수 있습니다.
 
 ```js
 // 🔴 안 좋은 예시 : Hook을 사용하고 있지 않는 Hook.
@@ -258,7 +258,7 @@ function getSorted(items) {
 function List({ items, shouldSort }) {
   let displayedItems = items;
   if (shouldSort) {
-    // ✅ getSorted()가 Hook이 아니기 때문에 조건에 따라 호출할 수 있습니다. 
+    // ✅ getSorted()가 Hook이 아니기 때문에 조건에 따라 호출할 수 있습니다.
     displayedItems = getSorted(items);
   }
   // ...
@@ -372,7 +372,7 @@ input { margin-left: 10px; }
 
 1. state가 존재합니다. (`firstName`와 `lastName`)
 2. 변화를 다루는 함수가 존재합니다. (`handleFirstNameChange`와 `handleLastNameChange`).
-3. 해당 입력에 대한 `value`와 `onChange`의 속성을 지정하는 JSX가 존재합니다. 
+3. 해당 입력에 대한 `value`와 `onChange`의 속성을 지정하는 JSX가 존재합니다.
 
 `useFormInput` 커스텀 Hook을 통해 반복되는 로직을 추출할 수 있습니다.
 
@@ -598,7 +598,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-`serverUrl`나 `roomId`를 변경할 때, Effect는 [변화에 "반응"](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)하며 재동기화합니다. Effect의 의존성이 변경될 때마다 채팅방을 재연결하는 콘솔 메시지를 보낼 수 있습니다. 
+`serverUrl`나 `roomId`를 변경할 때, Effect는 [변화에 "반응"](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)하며 재동기화합니다. Effect의 의존성이 변경될 때마다 채팅방을 재연결하는 콘솔 메시지를 보낼 수 있습니다.
 
 이제 Effect 코드를 커스텀 Hook 안에 넣어봅시다.
 

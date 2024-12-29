@@ -5,7 +5,7 @@ title: "<progress>"
 <Intro>
 
 [브라우저 내장 컴포넌트 `<progress>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress)를 사용하면 진행률 표시기를 렌더링할 수 있습니다.
- 
+
 ```js
 <progress value={0.5} />
 ```

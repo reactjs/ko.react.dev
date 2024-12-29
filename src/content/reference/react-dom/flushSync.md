@@ -61,7 +61,7 @@ flushSync(() => {
 
 ### 서드 파티 통합을 위한 업데이트 flushing {/*flushing-updates-for-third-party-integrations*/}
 
-브라우저 API 또는 UI 라이브러리와 같은 서드 파티 코드를 통합할 때 React가 업데이트를 처리하도록 강제할 필요가 있을 수 있습니다. `flushSync`를 사용해서 React가 콜백 내부의 모든 <CodeStep step={1}>state updates</CodeStep>를 동기적으로 처리하도록 할 수 있습니다. 
+브라우저 API 또는 UI 라이브러리와 같은 서드 파티 코드를 통합할 때 React가 업데이트를 처리하도록 강제할 필요가 있을 수 있습니다. `flushSync`를 사용해서 React가 콜백 내부의 모든 <CodeStep step={1}>state updates</CodeStep>를 동기적으로 처리하도록 할 수 있습니다.
 
 ```js [[1, 2, "setSomething(123)"]]
 flushSync(() => {

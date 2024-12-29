@@ -863,7 +863,7 @@ export default function App() {
         return (
           <Row isHighlighted={index % 2 === 0}>
             <p>This is the {id} item.</p>
-          </Row> 
+          </Row>
         );
       }}
     />

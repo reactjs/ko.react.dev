@@ -600,14 +600,14 @@ React는 마지막 예시와 같은 버그를 찾기 위해 개발 중에 컴포
 
 <Pitfall>
 
-#### Don't use refs to prevent Effects from firing {/*dont-use-refs-to-prevent-effects-from-firing*/}
+#### Effect가 두 번 실행되는 것을 막기위해 ref를 사용하지 마세요 {/*dont-use-refs-to-prevent-effects-from-firing*/}
 
-A common pitfall for preventing Effects firing twice in development is to use a `ref` to prevent the Effect from running more than once. For example, you could "fix" the above bug with a `useRef`:
+Effect가 개발 모드에서 두 번 실행되는 것을 막으려다 흔히 빠지는 함정은 `ref`를 사용해 Effect가 한 번만 실행되도록 하는 것입니다. 예를 들어 위의 버그를 `useRef`를 사용하여 "수정"하려고 할 수도 있습니다:
 
 ```js {1,3-4}
   const connectionRef = useRef(null);
   useEffect(() => {
-    // 🚩 This wont fix the bug!!!
+    // 🚩 버그를 수정하지 않습니다!!!
     if (!connectionRef.current) {
       connectionRef.current = createConnection();
       connectionRef.current.connect();
@@ -615,13 +615,13 @@ A common pitfall for preventing Effects firing twice in development is to use a 
   }, []);
 ```
 
-This makes it so you only see `"✅ Connecting..."` once in development, but it doesn't fix the bug.
+이렇게 하면 개발 모드에서 `"✅ 연결 중..."`이 한 번만 보이지만 버그가 수정된 건 아닙니다.
 
-When the user navigates away, the connection still isn't closed and when they navigate back, a new connection is created. As the user navigates across the app, the connections would keep piling up, the same as it would before the "fix". 
+사용자가 다른 곳에 가더라도 연결이 끊어지지 않고 사용자가 다시 돌아왔을 때 새로운 연결이 생성됩니다. 사용자가 앱을 탐색하면 버그가 수정되기 전처럼 연결이 계속 쌓이게 됩니다.
 
-To fix the bug, it is not enough to just make the Effect run once. The effect needs to work after re-mounting, which means the connection needs to be cleaned up like in the solution above.
+버그를 수정하기 위해선 Effect를 단순히 한 번만 실행되도록 만드는 것으로는 부족합니다. Effect는 위에 있는 예시가 연결을 클린업 한것처럼 다시 마운트된 이후에도 제대로 동작해야 합니다.
 
-See the examples below for how to handle common patterns.
+아래에 있는 일반적인 패턴을 다루는 예시를 살펴보세요.
 
 </Pitfall>
 
@@ -1005,7 +1005,7 @@ export default function MyInput({ value, onChange }) {
   const ref = useRef(null);
 
   // TODO: 작동하지 않는다. 고쳐야함
-  // ref.current.focus()    
+  // ref.current.focus()
 
   return (
     <input

@@ -103,7 +103,7 @@ export default function List({ children }) {
     <div className="List">
       {Children.map(children, (child, index) =>
         cloneElement(child, {
-          isHighlighted: index === selectedIndex 
+          isHighlighted: index === selectedIndex
         })
       )}
 ```
@@ -124,15 +124,15 @@ export default function List({ children }) {
 <List>
   <Row
     title="Cabbage"
-    isHighlighted={true} 
+    isHighlighted={true}
   />
   <Row
     title="Garlic"
-    isHighlighted={false} 
+    isHighlighted={false}
   />
   <Row
     title="Apple"
-    isHighlighted={false} 
+    isHighlighted={false}
   />
 </List>
 ```
@@ -152,7 +152,7 @@ export default function App() {
       {products.map(product =>
         <Row
           key={product.id}
-          title={product.title} 
+          title={product.title}
         />
       )}
     </List>
@@ -169,7 +169,7 @@ export default function List({ children }) {
     <div className="List">
       {Children.map(children, (child, index) =>
         cloneElement(child, {
-          isHighlighted: index === selectedIndex 
+          isHighlighted: index === selectedIndex
         })
       )}
       <hr />
@@ -280,15 +280,15 @@ export default function List({ items, renderItem }) {
 <List>
   <Row
     title="Cabbage"
-    isHighlighted={true} 
+    isHighlighted={true}
   />
   <Row
     title="Garlic"
-    isHighlighted={false} 
+    isHighlighted={false}
   />
   <Row
     title="Apple"
-    isHighlighted={false} 
+    isHighlighted={false}
   />
 </List>
 ```

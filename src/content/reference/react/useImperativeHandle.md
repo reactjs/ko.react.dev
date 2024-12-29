@@ -4,7 +4,7 @@ title: useImperativeHandle
 
 <Intro>
 
-`useImperativeHandle`은 [ref](/learn/manipulating-the-dom-with-refs)로 노출되는 핸들을 사용자가 직접 정의할 수 있게 해주는 React 훅입니다. 
+`useImperativeHandle`은 [ref](/learn/manipulating-the-dom-with-refs)로 노출되는 핸들을 사용자가 직접 정의할 수 있게 해주는 React 훅입니다.
 
 ```js
 useImperativeHandle(ref, createHandle, dependencies?)

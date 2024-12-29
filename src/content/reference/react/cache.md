@@ -152,7 +152,7 @@ export default cache(calculateWeekReport);
 import getWeekReport from './getWeekReport';
 
 export default function Temperature({cityData}) {
-	const report = getWeekReport(cityData);
+  const report = getWeekReport(cityData);
   // ...
 }
 ```
@@ -178,25 +178,25 @@ import {cache} from 'react';
 import {fetchTemperature} from './api.js';
 
 const getTemperature = cache(async (city) => {
-	return await fetchTemperature(city);
+  return await fetchTemperature(city);
 });
 
 async function AnimatedWeatherCard({city}) {
-	const temperature = await getTemperature(city);
-	// ...
+  const temperature = await getTemperature(city);
+  // ...
 }
 
 async function MinimalWeatherCard({city}) {
-	const temperature = await getTemperature(city);
-	// ...
+  const temperature = await getTemperature(city);
+  // ...
 }
 ```
 
-`AnimatedWeatherCard`와 `MinimalWeatherCard`가 같은 <CodeStep step={1}>도시</CodeStep>를 렌더링할 때, <CodeStep step={2}>메모화된 함수</CodeStep>로 부터 같은 데이터의 스냅샷을 받게 됩니다.
+`AnimatedWeatherCard`와 `MinimalWeatherCard`가 같은 <CodeStep step={1}>city</CodeStep>를 렌더링할 때, <CodeStep step={2}>메모화된 함수</CodeStep>로 부터 같은 데이터의 스냅샷을 받게 됩니다.
 
-`AnimatedWeatherCard`와 `MinimalWeatherCard`가 다른 <CodeStep step={1}>도시</CodeStep>를 <CodeStep step={2}>`getTemperature`</CodeStep>의 인자로 받게 된다면, `fetchTemperature`는 두 번 호출되고 호출마다 다른 데이터를 받게 됩니다. 
+`AnimatedWeatherCard`와 `MinimalWeatherCard`가 다른 <CodeStep step={1}>city</CodeStep>를 <CodeStep step={2}>`getTemperature`</CodeStep>의 인자로 받게 된다면, `fetchTemperature`는 두 번 호출되고 호출마다 다른 데이터를 받게 됩니다.
 
-<CodeStep step={1}>도시</CodeStep>가 캐시 키처럼 동작하게 됩니다.
+<CodeStep step={1}>city</CodeStep>가 캐시 키처럼 동작하게 됩니다.
 
 <Note>
 
@@ -204,8 +204,8 @@ async function MinimalWeatherCard({city}) {
 
 ```js [[3, 1, "async"], [3, 2, "await"]]
 async function AnimatedWeatherCard({city}) {
-	const temperature = await getTemperature(city);
-	// ...
+  const temperature = await getTemperature(city);
+  // ...
 }
 ```
 클라이언트 컴포넌트에서 비동기 데이터를 사용하는 컴포넌트를 렌더링하고 싶다면 [`use`](/reference/react/use) 문서를 참고하세요.
@@ -243,7 +243,7 @@ function Page({id}) {
 }
 ```
 
-`Page`를 렌더링할 때, 컴포넌트는 <CodeStep step={1}>`getUser`</CodeStep>를 호출하지만, 반환된 데이터를 사용하지 않는다는 점에 유의하세요. 이 초기 <CodeStep step={1}>`getUser`</CodeStep> 호출은 페이지가 다른 계산 작업을 수행하고 자식을 렌더링하는 동안 발생하는, 비동기 데이터베이스 쿼리를 시작합니다. 
+`Page`를 렌더링할 때, 컴포넌트는 <CodeStep step={1}>`getUser`</CodeStep>를 호출하지만, 반환된 데이터를 사용하지 않는다는 점에 유의하세요. 이 초기 <CodeStep step={1}>`getUser`</CodeStep> 호출은 페이지가 다른 계산 작업을 수행하고 자식을 렌더링하는 동안 발생하는, 비동기 데이터베이스 쿼리를 시작합니다.
 
 `Profile`을 렌더링할 때, <CodeStep step={2}>`getUser`</CodeStep>를 다시 호출합니다. 초기 <CodeStep step={1}>`getUser`</CodeStep> 호출이 이미 사용자 데이터에 반환되고 캐싱 되었다면, `Profile`이 <CodeStep step={2}>해당 데이터를 요청하고 기다릴 때</CodeStep>, 다른 원격 프로시저 호출 없이 쉽게 캐시에서 읽어올 수 있습니다. <CodeStep step={1}> 초기 데이터 요청</CodeStep>이 완료되지 않은 경우, 이 패턴으로 데이터를 미리 로드하면 데이터를 받아올 때 생기는 지연이 줄어듭니다.
 
@@ -264,7 +264,7 @@ const getData = cache(fetchData);
 
 async function MyComponent() {
   getData();
-  // ... some computational work  
+  // ... some computational work
   await getData();
   // ...
 }
@@ -274,7 +274,7 @@ async function MyComponent() {
 
 첫 번째 <CodeStep step={2}>`getData`</CodeStep> 호출은 `기다리지 않지만(await)` <CodeStep step={3}>두 번째</CodeStep>는 기다립니다. [`await`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/await) 는 자바스크립트 연산자로, 기다렸다가 확정된 Promise의 결과를 반환합니다. 첫 번째 <CodeStep step={2}>`getData`</CodeStep>은 단순히 조회할 두 번째 <CodeStep step={3}>`getData`</CodeStep>에 대한 Promise를 캐싱하기 위해 `fetch`를 실행합니다.
 
-<CodeStep step={3}>두 번째 호출</CodeStep>에서 Promise가 여전히 _보류 중_이면, 결과를 기다리는 동안 `await`가 일시 중지됩니다. 이 최적화는 데이터 불러오기를 기다리는 동안 React가 계산 작업을 계속할 수 있게 해 <CodeStep step={3}>두 번째 호출</CodeStep>에 대한 대기 시간을 줄일 수 있게 합니다. 
+<CodeStep step={3}>두 번째 호출</CodeStep>에서 Promise가 여전히 <em>보류 중</em>이면, 결과를 기다리는 동안 `await`가 일시 중지됩니다. 이 최적화는 데이터 불러오기를 기다리는 동안 React가 계산 작업을 계속할 수 있게 해 <CodeStep step={3}>두 번째 호출</CodeStep>에 대한 대기 시간을 줄일 수 있게 합니다.
 
 _완료된_ 결과나 에러에 대한 Promise가 이미 정해진 경우, `await`는 즉시 값을 반환합니다. 두 결과 모두 성능상의 이점이 있습니다.
 </DeepDive>
@@ -373,7 +373,7 @@ function App() {
 'use client';
 
 function WeatherReport({record}) {
-  const avgTemp = calculateAvg(record); 
+  const avgTemp = calculateAvg(record);
   // ...
 }
 

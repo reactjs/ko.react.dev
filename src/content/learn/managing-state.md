@@ -169,7 +169,7 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-컴포넌트가 렌더링 되는 동안 `fullName` 을 계산해 이를 제거하고 코드를 단순화할 수 있습니다. 
+컴포넌트가 렌더링 되는 동안 `fullName` 을 계산해 이를 제거하고 코드를 단순화할 수 있습니다.
 
 <Sandpack>
 
@@ -803,7 +803,7 @@ Props 전달하기의 대안으로 context를 사용하는 방법을 배우려�
 
 Reducer를 사용하면 컴포넌트의 state 업데이트 로직을 통합할 수 있습니다. Context를 사용하면 다른 컴포넌트에 정보를 깊숙이 전달할 수 있습니다. Reducer와 Context를 함께 사용하여 복잡한 화면의 state를 관리할 수 있습니다.
 
-이 접근 방식을 사용하면 상위 컴포넌트가 Reducer로 복잡한 state를 관리합니다. 트리 깊은 곳에 있는 다른 컴포넌트는 Context를 통해 상위 컴포넌트의 state를 읽을 수 있습니다. 또한 해당 state를 업데이트하기 위해 action을 dispatch 할 수도 있습니다. 
+이 접근 방식을 사용하면 상위 컴포넌트가 Reducer로 복잡한 state를 관리합니다. 트리 깊은 곳에 있는 다른 컴포넌트는 Context를 통해 상위 컴포넌트의 state를 읽을 수 있습니다. 또한 해당 state를 업데이트하기 위해 action을 dispatch 할 수도 있습니다.
 
 <Sandpack>
 
