@@ -30,7 +30,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  	// ...
+    // ...
 }
 ```
 
@@ -311,7 +311,7 @@ export default function Timer() {
   const [increment, setIncrement] = useState(1);
 
   function onTick() {
-	setCount(count + increment);
+    setCount(count + increment);
   }
 
   useEffect(() => {
@@ -411,7 +411,7 @@ function Form() {
 
   function handleSubmit() {
     setSubmitted(true);
-  }  
+  }
 
   // ...
 }
@@ -429,7 +429,7 @@ function Form() {
     // ✅ Good: Event-specific logic is called from event handlers
     post('/api/register');
     showNotification('Successfully registered!', theme);
-  }  
+  }
 
   // ...
 }

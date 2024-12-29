@@ -129,7 +129,7 @@ export async function submitForm(query) {
   "devDependencies": {}
 }
 ```
-</Sandpack>  
+</Sandpack>
 
 <Pitfall>
 
@@ -151,7 +151,7 @@ function Form() {
 ```js
 function Submit() {
   // ✅ `pending`은 Submit 컴포넌트를 감싸는 폼에서 파생됩니다
-  const { pending } = useFormStatus(); 
+  const { pending } = useFormStatus();
   return <button disabled={pending}>...</button>;
 }
 
@@ -245,7 +245,7 @@ button {
   "devDependencies": {}
 }
 ```
-</Sandpack>  
+</Sandpack>
 
 ---
 

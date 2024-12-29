@@ -1,6 +1,6 @@
-# `textlint` for ko.react.dev
+# `textlint` 가이드
 
-React 공식 페이지 한국어 번역 시 활용하는 [`textlint`](https://textlint.github.io/)에 대해 설명합니다.
+React 공식 문서 한국어 번역 시 활용하는 [`textlint`](https://textlint.github.io/)에 대해 설명합니다.
 
 ## 무엇인가요?
 
@@ -23,11 +23,11 @@ ko.react.dev/src/content/blog/2023/03/16/introducing-react-dev.md:60:35
                                                        ^
 ```
 
-`textlint`는 텍스트(`.txt`)와 마크다운(`.md`, `.mdx`)을 위한 Linter이며 JavaScript로 구현되어 있습니다. [ESLint](https://eslint.org/)가 JavaScript에 가지는 역할과 같습니다.
+`textlint`는 텍스트(`.txt`)와 마크다운(`.md`, `.mdx`)을 위한 린터<sup>Linter</sup>이며 자바스크립트<sup>JavaScript</sup>로 구현되어 있습니다. [ESLint](https://eslint.org/)가 자바스크립트에 가지는 역할과 같습니다.
 
 ## 어떻게 실행할 수 있나요?
 
-[`package.json`](/package.json)상에 `scripts`로 등록해 두었기에, 아래와 같은 커맨드로 실행할 수 있습니다.
+[`package.json`](/package.json) 상에 `scripts`로 등록해 두었기에, 아래와 같은 커맨드로 실행할 수 있습니다.
 
 ### 1. 규칙 검사
 
@@ -57,7 +57,7 @@ yarn textlint-docs
 
 > [!NOTE]
 >
-> - `textlint`는 마크다운 문서를 AST Tree로 파싱(Parsing) 합니다. ko.react.dev에서 구현한 규칙은 `@textlint/text-to-ast-14.0.5` 패키지에 의해 AST Tree로 파싱 된 노드(Node)들 중 `Str` 노드만을 검사합니다. ([`/textlint/rules/translateGlossary.js` 참고](/textlint/rules/translateGlossary.js))
+> - `textlint`는 마크다운 문서를 AST Tree로 파싱<sup>Parsing</sup> 합니다. ko.react.dev에서 구현한 규칙은 `@textlint/text-to-ast-14.0.5` 패키지에 의해 AST Tree로 파싱 된 노드<sup>Node</sup>들 중 `Str` 노드만을 검사합니다. ([`/textlint/rules/translateGlossary.js` 참고](/textlint/rules/translateGlossary.js))
 >
 > - 또한, 모든 `Str` 노드를 검사하는 것은 아닙니다. 영어 원문 번역본이 계속해서 추가되기에, 오직 영어만으로 구성된 `Str` 노드는 검사에서 제외합니다. 즉, 파싱된 `Str` 노드 중 한글이 하나라도 포함된 문장만을 검사합니다. ([`/textlint/utils/is.js` 참고](/textlint/utils/is.js))
 >
@@ -66,7 +66,7 @@ yarn textlint-docs
 #### 1. 코드 블럭
 
 ````md
-```javascript
+```js
 const hello = 'world';
 ```
 ````

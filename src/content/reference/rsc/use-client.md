@@ -50,7 +50,7 @@ export default function RichTextEditor({ timestamp, text }) {
 * `'use client'`는 파일의 맨 처음에 있어야 하며, 다른 코드나 import 문보다 위에 있어야 합니다(주석은 괜찮습니다). 작은따옴표나 큰따옴표로 작성해야 하며 백틱은 사용할 수 없습니다.
 * `'use client'` 모듈을 다른 클라이언트 렌더링 모듈에서 가져오면 지시어가 동작하지 않습니다.
 * 컴포넌트 모듈에 `'use client'` 지시어가 포함된 경우 해당 컴포넌트의 사용은 클라이언트 컴포넌트임이 보장됩니다. 하지만 컴포넌트에 `'use client'` 지시어가 없더라도 클라이언트에서 평가될 수 있습니다.
-	* 컴포넌트 사용은 `'use client'` 지시어가 포함된 모듈에 정의되어 있거나 `'use client'` 지시어를 포함한 모듈의 전이적 의존성일 경우 클라이언트 컴포넌트로 간주합니다. 그렇지 않으면 서버 컴포넌트로 간주합니다.
+  * 컴포넌트 사용은 `'use client'` 지시어가 포함된 모듈에 정의되어 있거나 `'use client'` 지시어를 포함한 모듈의 전이적 의존성일 경우 클라이언트 컴포넌트로 간주합니다. 그렇지 않으면 서버 컴포넌트로 간주합니다.
 * 클라이언트 평가로 표시된 코드는 컴포넌트에만 국한되지 않습니다. 클라이언트 모듈 하위 트리의 모든 코드는 클라이언트에 전송되어 클라이언트에서 실행됩니다.
 * 서버 평가 모듈이 `'use client'` 모듈에서 값을 가져올 때, 그 값은 React 컴포넌트이거나 클라이언트 컴포넌트에 전달될 수 있는 [지원되는 직렬화 가능한 prop 값](#passing-props-from-server-to-client-components)이어야 합니다.
 
@@ -254,19 +254,19 @@ React 앱에서와 같이 부모 컴포넌트는 자식 컴포넌트에 데이�
 
 직렬화할 수 있는 props는 다음과 같습니다.
 * 원시 자료형
-	* [string](https://developer.mozilla.org/ko/docs/Glossary/String)
-	* [number](https://developer.mozilla.org/ko/docs/Glossary/Number)
-	* [bigint](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
-	* [boolean](https://developer.mozilla.org/ko/docs/Glossary/Boolean)
-	* [undefined](https://developer.mozilla.org/ko/docs/Glossary/Undefined)
-	* [null](https://developer.mozilla.org/ko/docs/Glossary/Null)
-	* [symbol](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol) ( [`Symbol.for`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)을 통해 글로벌 심볼 레지스트리에 등록된 심볼만 해당 )
+  * [string](https://developer.mozilla.org/ko/docs/Glossary/String)
+  * [number](https://developer.mozilla.org/ko/docs/Glossary/Number)
+  * [bigint](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
+  * [boolean](https://developer.mozilla.org/ko/docs/Glossary/Boolean)
+  * [undefined](https://developer.mozilla.org/ko/docs/Glossary/Undefined)
+  * [null](https://developer.mozilla.org/ko/docs/Glossary/Null)
+  * [symbol](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol) ( [`Symbol.for`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)을 통해 글로벌 심볼 레지스트리에 등록된 심볼만 해당 )
 * 직렬화할 수 있는 값을 포함하는 이터러블
-	* [String](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String)
-	* [Array](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array)
-	* [Map](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map)
-	* [Set](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set)
-	* [TypedArray](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) 및 [ArrayBuffer](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
+  * [String](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String)
+  * [Array](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array)
+  * [Map](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map)
+  * [Set](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set)
+  * [TypedArray](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) 및 [ArrayBuffer](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
 * [Date](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date)
 * 일반 [객체](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object) (직렬화할 수 있는 프로퍼티를 사용하여 [객체 이니셜라이저](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer)로 생성된 객체)
 * [서버 액션](/reference/react/use-server)으로서의 함수

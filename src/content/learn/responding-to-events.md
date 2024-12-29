@@ -313,11 +313,11 @@ button { margin-right: 10px; }
 </Sandpack>
 
 `App` 컴포넌트는 `Toolbar`가 `onPlayMovie` 또는 `onUploadImage`를 가지고 *무엇*을 할 것인지 알 필요가 없음에 유의하세요. 이 `Toolbar` 구현의 특별한 부분입니다. 지금 `Toolbar`는 위 요소들을 `Button`의 `onClick` 핸들러 요소로 내려보내지만, 추후에는 키보드 바로가기 키 입력을 통해 이들을 활성화할 수도 있을 것입니다. `onPlayMovie`와 같이 prop 이름을 애플리케이션별 상호작용에 기반하여 명명한다면 나중에 어떻게 이를 이용하게 될지에 대한 유연성을 제공할 것입니다.
-  
+
 <Note>
 
 이벤트 핸들러에 적절한 HTML 태그를 사용하고 있는지 확인하세요. 예를 들어 클릭을 처리하기 위해서는 `<div onClick={handleClick}>` 대신 [`<button onClick={handleClick}>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/button)을 사용하세요. 실제 브라우저에서 `<button>`은 키보드 내비게이션과 같은 빌트인 브라우저 동작을 활성화 합니다. 만일 버튼의 기본 브라우저 스타일링이 싫어서 링크나 다른 UI 요소처럼 보이도록 하고 싶다면 CSS를 통해 그 목적을 이룰 수 있습니다. [접근성을 위한 마크업 작성법에 대해 더 알아보세요.](https://developer.mozilla.org/ko/docs/Learn/Accessibility/HTML)
-  
+
 </Note>
 
 ## 이벤트 전파 {/*event-propagation*/}

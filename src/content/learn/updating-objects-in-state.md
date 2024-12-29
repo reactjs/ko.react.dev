@@ -19,7 +19,7 @@ State는 객체를 포함한 모든 종류의 자바스크립트 값을 가질 �
 
 ## 변경이란? {/*whats-a-mutation*/}
 
-State에는 모든 종류의 자바스크립트 값을 저장할 수 있습니다. 
+State에는 모든 종류의 자바스크립트 값을 저장할 수 있습니다.
 
 ```js
 const [x, setX] = useState(0);
@@ -199,7 +199,7 @@ setPosition({
 
 변경은 이미 state에 *존재하는* 객체를 변경할 때만 문제가 됩니다. 방금 만든 객체를 수정하는 것은 *아직 다른 코드가 해당 객체를 참조하지 않기 때문에* 괜찮습니다. 그 객체를 변경하는 것은 해당 객체에 의존하는 무언가에 우연히 영향을 주지 않습니다. 이것은 "지역 변경 local mutation" 이라고 합니다. [렌더링하는 동안](/learn/keeping-components-pure#local-mutation-your-components-little-secret) 지역 변경을 할 수도 있으며, 이는 아주 편리합니다!
 
-</DeepDive>  
+</DeepDive>
 
 ## 전개 문법으로 객체 복사하기 {/*copying-objects-with-the-spread-syntax*/}
 
@@ -579,8 +579,8 @@ export default function Form() {
         <br />
         (located in {person.artwork.city})
       </p>
-      <img 
-        src={person.artwork.image} 
+      <img
+        src={person.artwork.image}
         alt={person.artwork.title}
       />
     </>
@@ -650,7 +650,7 @@ let obj3 = {
 
 `obj3.artwork.city`을 변경하려 했다면, `obj2.artwork.city`와 `obj1.city` 둘 다에 영향을 미칠 것입니다. 이는 `obj3.artwork`, `obj2.artwork`와 `obj1`이 같은 객체이기 때문입니다. 객체를 "중첩된" 것으로 생각하면 이해하기 어려울 수 있습니다. 그것들은 프로퍼티를 통해 서로를 "가리키는" 각각의 객체들입니다.
 
-</DeepDive>  
+</DeepDive>
 
 ### Immer로 간결한 갱신 로직 작성하기 {/*write-concise-update-logic-with-immer*/}
 
@@ -756,8 +756,8 @@ export default function Form() {
         <br />
         (located in {person.artwork.city})
       </p>
-      <img 
-        src={person.artwork.image} 
+      <img
+        src={person.artwork.image}
         alt={person.artwork.title}
       />
     </>
@@ -801,9 +801,9 @@ img { width: 200px; height: 200px; }
 
 * **디버깅:** 만약 `console.log`를 사용하고 state를 변경하지 않는다면, 과거 로그들은 가장 최근 state 변경 사항들에 의해 지워지지 않습니다. 따라서 state가 렌더링 사이에 어떻게 바뀌었는지 명확하게 알 수 있습니다.
 * **최적화:** 보편적인 React [최적화 전략](/reference/react/memo)은 이전 props 또는 state가 다음 것과 동일할 때 일을 건너뛰는 것에 의존합니다. state를 절대 변경하지 않는다면 변경사항이 있었는지 확인하는 작업이 매우 빨라집니다. `prevObj === obj`를 통해 내부적으로 아무것도 바뀌지 않았음을 확인할 수 있습니다.
-* **새로운 기능:** 우리가 만드는 새로운 React 기능들은 [스냅샷처럼 다루어지는 것](/learn/state-as-a-snapshot)에 의존합니다. 만약 state의 과거 버전을 변경한다면, 새로운 기능을 사용하지 못할 수 있습니다. 
+* **새로운 기능:** 우리가 만드는 새로운 React 기능들은 [스냅샷처럼 다루어지는 것](/learn/state-as-a-snapshot)에 의존합니다. 만약 state의 과거 버전을 변경한다면, 새로운 기능을 사용하지 못할 수 있습니다.
 * **요구사항 변화:** 취소/복원 구현, 변화 내역 조회, 사용자가 이전 값으로 폼을 재설정하기 등의 기능은 아무것도 변경되지 않았을 때 더 쉽습니다. 왜냐하면 당신은 메모리에 state의 이전 복사본을 저장하여 적절한 상황에 다시 사용할 수 있기 때문입니다. 변경하는 것으로 시작하게 되면 이러한 기능들은 나중에 추가하기 어려울 수 있습니다.
-* **더 간단한 구현:** React는 변경에 의존하지 않기 때문에 객체로 뭔가 특별한 것을 할 필요가 없습니다. 프로퍼티를 가져오거나, 항상 프록시로 감싸거나, 다른 많은 "반응형" 솔루션이 그러듯 초기화 시에 다른 작업을 하지 않아도 됩니다. 이것은 React가 state에 --얼마나 크던-- 추가적인 성능 또는 정확성 함정 없이 아무 객체나 넣을 수 있게 해주는 이유이기도 합니다. 
+* **더 간단한 구현:** React는 변경에 의존하지 않기 때문에 객체로 뭔가 특별한 것을 할 필요가 없습니다. 프로퍼티를 가져오거나, 항상 프록시로 감싸거나, 다른 많은 "반응형" 솔루션이 그러듯 초기화 시에 다른 작업을 하지 않아도 됩니다. 이것은 React가 state에 --얼마나 크던-- 추가적인 성능 또는 정확성 함정 없이 아무 객체나 넣을 수 있게 해주는 이유이기도 합니다.
 
 실제로, React에서 state를 변경하는 것으로 "도망"쳐버릴수도 있지만, 우리는 그렇게 하지 않기를 강하게 권장함으로써 당신이 이러한 접근법을 바탕으로 개발된 새로운 React 기능들을 사용할 수 있기를 바랍니다. 미래의 기여자들과 어쩌면 미래의 당신 스스로까지 고마워할 것입니다!
 

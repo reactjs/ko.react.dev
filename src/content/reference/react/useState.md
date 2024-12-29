@@ -20,7 +20,7 @@ const [state, setState] = useState(initialState)
 
 ### `useState(initialState)` {/*usestate*/}
 
-컴포넌트의 최상위 레벨에서 `useState`를 호출하여 [state 변수](/learn/state-a-components-memory)를 선언합니다. 
+컴포넌트의 최상위 레벨에서 `useState`를 호출하여 [state 변수](/learn/state-a-components-memory)를 선언합니다.
 
 ```js
 import { useState } from 'react';
@@ -79,7 +79,7 @@ function handleClick() {
 
 #### 주의 사항 {/*setstate-caveats*/}
 
-* `set` 함수는 ***다음* 렌더링에 대한 state 변수만 업데이트합니다.** `set` 함수를 호출한 후에도 state 변수에는 여전히 호출 전 화면에 있던 [이전 값이 담겨 있습니다.](#ive-updated-the-state-but-logging-gives-me-the-old-value) 
+* `set` 함수는 ***다음* 렌더링에 대한 state 변수만 업데이트합니다.** `set` 함수를 호출한 후에도 state 변수에는 여전히 호출 전 화면에 있던 [이전 값이 담겨 있습니다.](#ive-updated-the-state-but-logging-gives-me-the-old-value)
 
 * 사용자가 제공한 새로운 값이 [`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is)에 의해 현재 `state`와 동일하다고 판정되면, React는 **컴포넌트와 그 자식들을 리렌더링하지 않습니다.** 이것이 바로 최적화입니다. 경우에 따라 React가 자식을 건너뛰기 전에 컴포넌트를 호출해야 할 수도 있지만, 코드에 영향을 미치지는 않습니다.
 
@@ -607,8 +607,8 @@ export default function Form() {
         <br />
         (located in {person.artwork.city})
       </p>
-      <img 
-        src={person.artwork.image} 
+      <img
+        src={person.artwork.image}
         alt={person.artwork.title}
       />
     </>
@@ -1157,7 +1157,7 @@ function handleClick() {
   console.log(count);  // 0
 
   setCount(count + 1); // 1로 리렌더링 요청합니다.
-  console.log(count);  // 아직 0입니다! 
+  console.log(count);  // 아직 0입니다!
 
   setTimeout(() => {
     console.log(count); // 여기도 0이고요!
@@ -1225,16 +1225,16 @@ return <button onClick={(e) => handleClick(e)}>Click me</button>
 
 ```js {2,5-6,11-12}
 function TodoList() {
-  // 해당 함수형 컴포넌트는 렌더링 될 때마다 두 번 호출됩니다. 
+  // 해당 함수형 컴포넌트는 렌더링 될 때마다 두 번 호출됩니다.
 
   const [todos, setTodos] = useState(() => {
-    // 해당 초기화 함수는 초기화 동안 두 번 호출됩니다. 
+    // 해당 초기화 함수는 초기화 동안 두 번 호출됩니다.
     return createTodos();
   });
 
   function handleClick() {
     setTodos(prevTodos => {
-      // 해당 업데이터 함수는 클릭할 때마다 두 번 호출됩니다. 
+      // 해당 업데이터 함수는 클릭할 때마다 두 번 호출됩니다.
       return [...prevTodos, createTodo()];
     });
   }

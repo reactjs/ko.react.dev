@@ -49,7 +49,7 @@ async function handleFormSubmit(e) {
   } catch (err) {
     show(errorMessage);
     errorMessage.textContent = err.message;
-  } finally {  
+  } finally {
     hide(loadingMessage);
     enable(textarea);
     enable(button);
@@ -577,7 +577,7 @@ export default function Picture() {
   } else {
     backgroundClassName += ' background--active';
   }
-  
+
   return (
     <div
       className={backgroundClassName}
@@ -769,7 +769,7 @@ lastNameInput.oninput = handleLastNameChange;
 ```html public/index.html
 <form id="form">
   <label>
-    First name: 
+    First name:
     <b id="firstNameText">Jane</b>
     <input
       id="firstNameInput"
@@ -777,7 +777,7 @@ lastNameInput.oninput = handleLastNameChange;
       style="display: none">
   </label>
   <label>
-    Last name: 
+    Last name:
     <b id="lastNameText">Jacobs</b>
     <input
       id="lastNameInput"
@@ -971,7 +971,7 @@ lastNameInput.oninput = handleLastNameChange;
 ```html public/index.html
 <form id="form">
   <label>
-    First name: 
+    First name:
     <b id="firstNameText">Jane</b>
     <input
       id="firstNameInput"
@@ -979,7 +979,7 @@ lastNameInput.oninput = handleLastNameChange;
       style="display: none">
   </label>
   <label>
-    Last name: 
+    Last name:
     <b id="lastNameText">Jacobs</b>
     <input
       id="lastNameInput"
@@ -1078,7 +1078,7 @@ lastNameInput.oninput = handleLastNameChange;
 ```html public/index.html
 <form id="form">
   <label>
-    First name: 
+    First name:
     <b id="firstNameText">Jane</b>
     <input
       id="firstNameInput"
@@ -1086,7 +1086,7 @@ lastNameInput.oninput = handleLastNameChange;
       style="display: none">
   </label>
   <label>
-    Last name: 
+    Last name:
     <b id="lastNameText">Jacobs</b>
     <input
       id="lastNameInput"
@@ -1197,7 +1197,7 @@ lastNameInput.oninput = handleLastNameChange;
 ```html public/index.html
 <form id="form">
   <label>
-    First name: 
+    First name:
     <b id="firstNameText">Jane</b>
     <input
       id="firstNameInput"
@@ -1205,7 +1205,7 @@ lastNameInput.oninput = handleLastNameChange;
       style="display: none">
   </label>
   <label>
-    Last name: 
+    Last name:
     <b id="lastNameText">Jacobs</b>
     <input
       id="lastNameInput"

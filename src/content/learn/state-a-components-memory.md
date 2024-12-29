@@ -40,14 +40,14 @@ export default function Gallery() {
         Next
       </button>
       <h2>
-        <i>{sculpture.name} </i> 
+        <i>{sculpture.name} </i>
         by {sculpture.artist}
       </h2>
-      <h3>  
+      <h3>
         ({index + 1} of {sculptureList.length})
       </h3>
-      <img 
-        src={sculpture.url} 
+      <img
+        src={sculpture.url}
         alt={sculpture.alt}
       />
       <p>
@@ -64,7 +64,7 @@ export const sculptureList = [{
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
   url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
   artist: 'Eduardo Catalano',
@@ -159,9 +159,9 @@ button {
 컴포넌트를 새로운 데이터로 업데이트하기 위해선 다음 두 가지가 필요합니다.
 
 1. 렌더링 사이에 데이터를 **유지**합니다.
-2. React가 새로운 데이터로 컴포넌트를 렌더링하도록 **유발**합니다. 
+2. React가 새로운 데이터로 컴포넌트를 렌더링하도록 **유발**합니다.
 
-[`useState`](/reference/react/useState) 훅은 이 두 가지를 제공합니다. 
+[`useState`](/reference/react/useState) 훅은 이 두 가지를 제공합니다.
 
 1. 렌더링 간에 데이터를 유지하기 위한 **state 변수**.
 2. 변수를 업데이트하고 React가 컴포넌트를 다시 렌더링하도록 유발하는 **state setter 함수**
@@ -174,7 +174,7 @@ state 변수를 추가하려면 파일 상단의 React에서 `useState`를 가�
 import { useState } from 'react';
 ```
 
-그런 다음 이 줄을 
+그런 다음 이 줄을
 
 ```js
 let index = 0;
@@ -198,7 +198,7 @@ function handleClick() {
 }
 ```
 
-이제 "Next" 버튼을 클릭하면 현재 조각상을 전환합니다. 
+이제 "Next" 버튼을 클릭하면 현재 조각상을 전환합니다.
 
 <Sandpack>
 
@@ -220,14 +220,14 @@ export default function Gallery() {
         Next
       </button>
       <h2>
-        <i>{sculpture.name} </i> 
+        <i>{sculpture.name} </i>
         by {sculpture.artist}
       </h2>
-      <h3>  
+      <h3>
         ({index + 1} of {sculptureList.length})
       </h3>
-      <img 
-        src={sculpture.url} 
+      <img
+        src={sculpture.url}
         alt={sculpture.alt}
       />
       <p>
@@ -244,7 +244,7 @@ export const sculptureList = [{
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
   url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
   artist: 'Eduardo Catalano',
@@ -408,18 +408,18 @@ export default function Gallery() {
         Next
       </button>
       <h2>
-        <i>{sculpture.name} </i> 
+        <i>{sculpture.name} </i>
         by {sculpture.artist}
       </h2>
-      <h3>  
+      <h3>
         ({index + 1} of {sculptureList.length})
       </h3>
       <button onClick={handleMoreClick}>
         {showMore ? 'Hide' : 'Show'} details
       </button>
       {showMore && <p>{sculpture.description}</p>}
-      <img 
-        src={sculpture.url} 
+      <img
+        src={sculpture.url}
         alt={sculpture.alt}
       />
     </>
@@ -433,7 +433,7 @@ export const sculptureList = [{
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
   url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
   artist: 'Eduardo Catalano',
@@ -629,7 +629,7 @@ let sculptureList = [{
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
   url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
   artist: 'Eduardo Catalano',
@@ -772,18 +772,18 @@ export default function Gallery() {
         Next
       </button>
       <h2>
-        <i>{sculpture.name} </i> 
+        <i>{sculpture.name} </i>
         by {sculpture.artist}
       </h2>
-      <h3>  
+      <h3>
         ({index + 1} of {sculptureList.length})
       </h3>
       <button onClick={handleMoreClick}>
         {showMore ? 'Hide' : 'Show'} details
       </button>
       {showMore && <p>{sculpture.description}</p>}
-      <img 
-        src={sculpture.url} 
+      <img
+        src={sculpture.url}
         alt={sculpture.alt}
       />
     </section>
@@ -797,7 +797,7 @@ export const sculptureList = [{
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
   url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
   artist: 'Eduardo Catalano',
@@ -943,18 +943,18 @@ export default function Gallery() {
         Next
       </button>
       <h2>
-        <i>{sculpture.name} </i> 
+        <i>{sculpture.name} </i>
         by {sculpture.artist}
       </h2>
-      <h3>  
+      <h3>
         ({index + 1} of {sculptureList.length})
       </h3>
       <button onClick={handleMoreClick}>
         {showMore ? 'Hide' : 'Show'} details
       </button>
       {showMore && <p>{sculpture.description}</p>}
-      <img 
-        src={sculpture.url} 
+      <img
+        src={sculpture.url}
         alt={sculpture.alt}
       />
     </>
@@ -968,7 +968,7 @@ export const sculptureList = [{
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
   url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
   artist: 'Eduardo Catalano',
@@ -1105,18 +1105,18 @@ export default function Gallery() {
         Next
       </button>
       <h2>
-        <i>{sculpture.name} </i> 
+        <i>{sculpture.name} </i>
         by {sculpture.artist}
       </h2>
-      <h3>  
+      <h3>
         ({index + 1} of {sculptureList.length})
       </h3>
       <button onClick={handleMoreClick}>
         {showMore ? 'Hide' : 'Show'} details
       </button>
       {showMore && <p>{sculpture.description}</p>}
-      <img 
-        src={sculpture.url} 
+      <img
+        src={sculpture.url}
         alt={sculpture.alt}
       />
     </>
@@ -1130,7 +1130,7 @@ export const sculptureList = [{
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
   url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
   artist: 'Eduardo Catalano',
@@ -1265,7 +1265,7 @@ export default function Form() {
 }
 ```
 
-```css 
+```css
 h1 { margin-top: 10px; }
 ```
 
@@ -1315,7 +1315,7 @@ export default function Form() {
 }
 ```
 
-```css 
+```css
 h1 { margin-top: 10px; }
 ```
 

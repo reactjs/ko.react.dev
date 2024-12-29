@@ -42,7 +42,7 @@ title: "공통 컴포넌트 (예시: <div>)"
 
 * [`accessKey`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/accesskey): 문자열 타입입니다. 엘리먼트의 바로 가기 키를 지정합니다. [일반적으로 권장되지 않습니다.](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/accesskey)
 * [`aria-*`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes): ARIA 속성을 사용하면 이 엘리먼트에 대한 접근성 트리 정보를 지정할 수 있습니다. 전체적인 레퍼런스는 [ARIA 어트리뷰트](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes)를 참조하세요. React에서 모든 ARIA 어트리뷰트의 이름은 HTML에서의 이름과 완전히 동일합니다.
-* [`autoCapitalize`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/autocapitalize): 문자열 타입입니다. 사용자의 입력을 대문자로 표시할지 여부와 방법을 지정합니다. 
+* [`autoCapitalize`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/autocapitalize): 문자열 타입입니다. 사용자의 입력을 대문자로 표시할지 여부와 방법을 지정합니다.
 * [`className`](https://developer.mozilla.org/ko/docs/Web/API/Element/className): 문자열 타입입니다. 엘리먼트의 CSS 클래스 이름을 지정합니다. [CSS 스타일 적용에 대해 자세히 알아보기.](#applying-css-styles)
 * [`contentEditable`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/contenteditable): 불리언 타입입니다. `true`일 때 브라우저는 사용자가 렌더링 된 엘리먼트를 직접 편집할 수 있도록 합니다. 이는 [Lexical](https://lexical.dev/)과 같은 서식이 있는 텍스트 입력 라이브러리를 구현하는 데 사용됩니다. React는 사용자가 편집한 후에 React가 그 내용을 업데이트할 수 없기 때문에 `contentEditable={true}`가 있는 엘리먼트에 React의 자식을 전달하려고 하면 경고를 표시합니다.
 * [`data-*`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/data-*): 데이터 속성을 사용하면 엘리먼트에 일부 문자열 데이터를 첨부할 수 있습니다.(예시: `data-fruit="banana"`) React에서는 일반적으로 프로퍼티나 state에서 데이터를 읽어오기 때문에 일반적으로 사용되지는 않습니다.
@@ -59,7 +59,7 @@ title: "공통 컴포넌트 (예시: <div>)"
 * [`onAnimationEnd`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationend_event): [`AnimationEvent` 핸들러](#animationevent-handler) 함수입니다. CSS 애니메이션이 완료될 때 발생합니다.
 * `onAnimationEndCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onAnimationEnd`의 버전입니다.
 * [`onAnimationIteration`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationiteration_event): [`AnimationEvent` 핸들러](#animationevent-handler) 함수입니다. CSS 애니메이션의 반복이 끝나고 다른 애니메이션이 시작될 때 발생합니다.
-* `onAnimationIterationCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onAnimationIteration`의 버전입니다. 
+* `onAnimationIterationCapture`: [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 `onAnimationIteration`의 버전입니다.
 * [`onAnimationStart`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationstart_event): [`AnimationEvent` 핸들러](#animationevent-handler) 함수입니다. CSS 애니메이션이 시작될 때 발생합니다.
 * `onAnimationStartCapture`: `onAnimationStart`입니다. 그러나 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행됩니다.
 * [`onAuxClick`](https://developer.mozilla.org/en-US/docs/Web/API/Element/auxclick_event): [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 기본 포인터가 아닌 버튼을 클릭했을 때 발생합니다
@@ -84,11 +84,11 @@ title: "공통 컴포넌트 (예시: <div>)"
 * `onCutCapture`: `onCut`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * `onDoubleClick`: [`MouseEvent` 핸들러](#mouseevent-handler) 함수입니다. 두 번 클릭하면 발생합니다. 브라우저의 [`dblclick` 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/Element/dblclick_event)에 해당합니다.
 * `onDoubleClickCapture`: `onDoubleClick`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onDrag`](https://developer.mozilla.org/ko/docs/Web/API/HTMLElement/drag_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 무언가를 드래그하는 동안 실행됩니다. 
+* [`onDrag`](https://developer.mozilla.org/ko/docs/Web/API/HTMLElement/drag_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 무언가를 드래그하는 동안 실행됩니다.
 * `onDragCapture`: `onDrag`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onDragEnd`](https://developer.mozilla.org/ko/docs/Web/API/HTMLElement/dragend_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 드래그를 멈추면 발생합니다. 
+* [`onDragEnd`](https://developer.mozilla.org/ko/docs/Web/API/HTMLElement/dragend_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 드래그를 멈추면 발생합니다.
 * `onDragEndCapture`: `onDragEnd`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onDragEnter`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dragenter_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 드래그한 콘텐츠가 유효한 드롭 대상에 들어가면 발생합니다. 
+* [`onDragEnter`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dragenter_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 드래그한 콘텐츠가 유효한 드롭 대상에 들어가면 발생합니다.
 * `onDragEnterCapture`: `onDragEnter`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onDragOver`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dragover_event): [`DragEvent` 핸들러](#dragevent-handler) 함수입니다. 드래그된 콘텐츠를 드래그하는 동안 유효한 드롭 대상에서 발생합니다. 드롭을 허용하려면 여기서 `e.preventDefault()`를 호출해야 합니다.
 * `onDragOverCapture`: `onDragOver`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
@@ -126,7 +126,7 @@ title: "공통 컴포넌트 (예시: <div>)"
 * [`onPointerLeave`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerleave_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터가 엘리먼트 내부로 이동할 때 발생합니다. 캡처 단계가 없습니다. 대신 `onPointerLeave`와 `onPointerEnter`는 떠나는 엘리먼트에서 입력되는 엘리먼트로 전파됩니다.
 * [`onPointerMove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointermove_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터의 좌표를 변경할 때 발생합니다.
 * `onPointerMoveCapture`: `onPointerMove`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
-* [`onPointerOut`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerout_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터가 엘리먼트 외부로 이동하거나 포인터 상호 작용이 취소되는 경우, 그리고 [그 외 몇 가지 이유](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerout_event)로 인해 발생합니다. 
+* [`onPointerOut`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerout_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터가 엘리먼트 외부로 이동하거나 포인터 상호 작용이 취소되는 경우, 그리고 [그 외 몇 가지 이유](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerout_event)로 인해 발생합니다.
 * `onPointerOutCapture`: `onPointerOut`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onPointerUp`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointerup_event): [`PointerEvent` 핸들러](#pointerevent-handler) 함수입니다. 포인터가 더 이상 활성화되지 않을 때 발생합니다.
 * `onPointerUpCapture`: `onPointerUp`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
@@ -234,7 +234,7 @@ capture-phase-events)
 * [`onVolumeChange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/volumechange_event): [`이벤트` 핸들러](#event-handler) 함수입니다. 볼륨이 변경되었을 때 발생합니다.
 * `onVolumeChangeCapture`: `onVolumeChange`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 실행되는 버전입니다.
 * [`onWaiting`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/waiting_event): [`이벤트` 핸들러](#event-handler) 함수입니다. 일시적인 데이터 부족으로 인해 재생이 중지된 경우 발생합니다.
-* `onWaitingCapture`: `onWaiting`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 발생하는 버전입니다. 
+* `onWaitingCapture`: `onWaiting`의 [캡처 단계](/learn/responding-to-events#capture-phase-events)에서 발생하는 버전입니다.
 
 #### 주의 사항 {/*common-caveats*/}
 
@@ -298,21 +298,21 @@ React는 *다른* `ref` 콜백을 전달할 때 마다 `ref` 콜백을 호출합
 }} />
 ```
 
-이것은 기본 DOM 이벤트와 같은 표준을 준수하지만 일부 브라우저의 불일치를 수정합니다. 
+이것은 기본 DOM 이벤트와 같은 표준을 준수하지만 일부 브라우저의 불일치를 수정합니다.
 
 
-일부 React의 이벤트는 브라우저의 네이티브 이벤트에 직접 매핑되지 않습니다. 예를 들어 `onMouseLeave`에서 `e.nativeEvent`는 `mouseout` 이벤트를 가리킵니다. 특정 매핑은 퍼블릭 API의 일부가 아니며 추후 변경될 수 있습니다. 어떠한 이유로 기본 브라우저 이벤트가 필요한 경우 `e.nativeEvent`에서 읽어와야 합니다.  
+일부 React의 이벤트는 브라우저의 네이티브 이벤트에 직접 매핑되지 않습니다. 예를 들어 `onMouseLeave`에서 `e.nativeEvent`는 `mouseout` 이벤트를 가리킵니다. 특정 매핑은 퍼블릭 API의 일부가 아니며 추후 변경될 수 있습니다. 어떠한 이유로 기본 브라우저 이벤트가 필요한 경우 `e.nativeEvent`에서 읽어와야 합니다.
 
 #### 프로퍼티 {/*react-event-object-properties*/}
 
 React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs/Web/API/Event) 프로퍼티의 일부를 구현했습니다.
 
-* [`bubbles`](https://developer.mozilla.org/ko/docs/Web/API/Event/bubbles): 불리언 타입입니다. 이벤트가 DOM을 통해 버블링되는지 여부를 반환합니다. 
+* [`bubbles`](https://developer.mozilla.org/ko/docs/Web/API/Event/bubbles): 불리언 타입입니다. 이벤트가 DOM을 통해 버블링되는지 여부를 반환합니다.
 * [`cancelable`](https://developer.mozilla.org/ko/docs/Web/API/Event/cancelable): 불리언 타입입니다. 이벤트를 취소할 수 있는지를 반환합니다.
 * [`currentTarget`](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget): DOM 노드입니다. React 트리에서 현재 핸들러가 연결된 노드를 반환합니다.
 * [`defaultPrevented`](https://developer.mozilla.org/ko/docs/Web/API/Event/defaultPrevented): 불리언 타입입니다. `preventDefault`가 호출되었는지 여부를 반환합니다.
 * [`eventPhase`](https://developer.mozilla.org/ko/docs/Web/API/Event/eventPhase): 숫자 타입입니다. 이벤트가 현재 어느 단계에 있는지 반환합니다.
-* [`isTrusted`](https://developer.mozilla.org/ko/docs/Web/API/Event/isTrusted): 불리언 타입입니다. 사용자에 의해 이벤트가 시작되었는지에 대한 여부를 반환합니다. 
+* [`isTrusted`](https://developer.mozilla.org/ko/docs/Web/API/Event/isTrusted): 불리언 타입입니다. 사용자에 의해 이벤트가 시작되었는지에 대한 여부를 반환합니다.
 * [`target`](https://developer.mozilla.org/ko/docs/Web/API/Event/target): DOM 노드입니다. (멀리 있는 자식일 수도 있는)이벤트가 발생한 노드를 반환합니다.
 * [`timeStamp`](https://developer.mozilla.org/ko/docs/Web/API/Event/timeStamp): 숫자 타입입니다. 이벤트가 발생한 시간을 반환합니다.
 
@@ -375,7 +375,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
 
 #### 매개변수 {/*clipboadevent-handler-parameters*/}
 
-* `e`: 다음과 같은 추가 [`ClipboardEvent`](https://developer.mozilla.org/ko/docs/Web/API/ClipboardEvent) 프로퍼티가 있는 [React 이벤트 객체](#react-event-object)입니다. 
+* `e`: 다음과 같은 추가 [`ClipboardEvent`](https://developer.mozilla.org/ko/docs/Web/API/ClipboardEvent) 프로퍼티가 있는 [React 이벤트 객체](#react-event-object)입니다.
 
   * [`clipboardData`](https://developer.mozilla.org/ko/docs/Web/API/ClipboardEvent/clipboardData)
 
@@ -427,7 +427,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
 
 #### 매개변수 {/*dragevent-handler-parameters*/}
 
-* `e`: 다음과 같은 추가 [`DragEvent`](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent) 프로퍼티가 있는 [React 이벤트 객체](#react-event-object)입니다. 
+* `e`: 다음과 같은 추가 [`DragEvent`](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent) 프로퍼티가 있는 [React 이벤트 객체](#react-event-object)입니다.
   * [`dataTransfer`](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent/dataTransfer)
 
   이는 상속된 [`MouseEvent`](https://developer.mozilla.org/ko/docs/Web/API/MouseEvent)의 프로퍼티도 포함합니다.
@@ -471,7 +471,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
 
 #### 매개변수 {/*focusevent-handler-parameters*/}
 
-* `e`: 다음과 같은 추가 [`FocusEvent`](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent) 프로퍼티가 있는 [React 이벤트 객체](#react-event-object)입니다. 
+* `e`: 다음과 같은 추가 [`FocusEvent`](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent) 프로퍼티가 있는 [React 이벤트 객체](#react-event-object)입니다.
   * [`relatedTarget`](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/relatedTarget)
 
   또한 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함합니다.
@@ -501,7 +501,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
 
 #### 매개변수 {/*inputevent-handler-parameters*/}
 
-* `e`: 다음과 같은 추가 [`InputEvent`](https://developer.mozilla.org/ko/docs/Web/API/InputEvent) 프로퍼티가 있는 [React 이벤트 객체](#react-event-object)입니다. 
+* `e`: 다음과 같은 추가 [`InputEvent`](https://developer.mozilla.org/ko/docs/Web/API/InputEvent) 프로퍼티가 있는 [React 이벤트 객체](#react-event-object)입니다.
   * [`data`](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/data)
 
 ---
@@ -667,7 +667,7 @@ React 이벤트 객체는 표준 [`Event`](https://developer.mozilla.org/ko/docs
   * [`shiftKey`](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/shiftKey)
   * [`touches`](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches)
   * [`targetTouches`](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/targetTouches)
-  
+
   또한 상속된 [`UIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent)의 프로퍼티도 포함합니다.
 
   * [`detail`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail)
@@ -879,7 +879,7 @@ function Row({ isSelected, size }) {
 
 ### ref를 사용하여 DOM 노드 조작하기 {/*manipulating-a-dom-node-with-a-ref*/}
 
-때로는 JSX에서 태그와 연결된 브라우저 DOM 노드를 가져와야 하는 경우가 있습니다. 예를 들어 버튼이 클릭 될 때 `<input>` 에 포커싱을 맞추려면 브라우저의 `<input>` DOM 노드에서 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)를 호출하면 됩니다. 
+때로는 JSX에서 태그와 연결된 브라우저 DOM 노드를 가져와야 하는 경우가 있습니다. 예를 들어 버튼이 클릭 될 때 `<input>` 에 포커싱을 맞추려면 브라우저의 `<input>` DOM 노드에서 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)를 호출하면 됩니다.
 
 태그에 대한 브라우저의 DOM 노드를 가져오려면 [ref를 선언](/reference/react/useRef)하고 해당 태그에 `ref` 어트리뷰트로 전달합니다.
 
@@ -971,7 +971,7 @@ const md = new Remarkable();
 
 function renderMarkdownToHTML(markdown) {
   // 출력되는 HTML이 동일한 사용자에게 표시되고,
-  // 이 마크다운 파서에 버그가 없다고 
+  // 이 마크다운 파서에 버그가 없다고
   // 신뢰하기 때문에 안전합니다.
   const renderedHTML = md.render(markdown);
   return {__html: renderedHTML};

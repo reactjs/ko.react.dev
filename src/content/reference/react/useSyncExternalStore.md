@@ -407,8 +407,8 @@ subscribe 함수는 컴포넌트 내부에 정의되므로 리렌더링할 때�
 ```js {4-7}
 function ChatIndicator() {
   const isOnline = useSyncExternalStore(subscribe, getSnapshot);
-  
-  // 🚩항상 다른 함수를 사용하므로 React는 렌더링할 때마다 다시 구독합니다. 
+
+  // 🚩항상 다른 함수를 사용하므로 React는 렌더링할 때마다 다시 구독합니다.
   function subscribe() {
     // ...
   }
