@@ -326,7 +326,7 @@ export default function TopNav({
                 <NavItem
                   isActive={section === 'reference'}
                   url="/reference/react">
-                  레퍼런스
+                  API 참고서
                 </NavItem>
                 <NavItem isActive={section === 'community'} url="/community">
                   커뮤니티
@@ -408,20 +408,20 @@ export default function TopNav({
                 <Suspense fallback={null}>
                   <div className="ps-3 xs:ps-5 xs:gap-0.5 xs:text-base overflow-x-auto flex flex-row lg:hidden text-base font-bold text-secondary dark:text-secondary-dark">
                     <NavItem isActive={section === 'learn'} url="/learn">
-                      Learn
+                      학습하기
                     </NavItem>
                     <NavItem
                       isActive={section === 'reference'}
                       url="/reference/react">
-                      Reference
+                      API 참고서
                     </NavItem>
                     <NavItem
                       isActive={section === 'community'}
                       url="/community">
-                      Community
+                      커뮤니티
                     </NavItem>
                     <NavItem isActive={section === 'blog'} url="/blog">
-                      Blog
+                      블로그
                     </NavItem>
                   </div>
                   <div

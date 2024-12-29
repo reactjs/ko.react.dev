@@ -194,7 +194,7 @@ function ProductDetailPage({ product }) {
 }
 ```
 
-`window.title`을 렌더링 외부에서 업데이트하는 한 가지 방법은 [컴포넌트를 `window`와 동기화하는 것](/learn/synchronizing-with-effects)입니다.
+원하는 결과를 얻기 위해 렌더링 외부에서 `document.title`을 업데이트하는 한 가지 방법은 [컴포넌트를 `document`와 동기화하는 것](/learn/synchronizing-with-effects)입니다.
 
 컴포넌트를 여러 번 호출해도 안전하고 다른 컴포넌트의 렌더링에 영향을 주지 않는 한, React는 엄격한 함수형 프로그래밍의 의미에서 100% 순수하지 않아도 상관하지 않습니다. 더 중요한 것은 [컴포넌트가 반드시 멱등해야 한다는 것](/reference/rules/components-and-hooks-must-be-pure)입니다.
 

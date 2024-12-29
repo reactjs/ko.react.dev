@@ -162,7 +162,7 @@ export function HomeContent() {
               size="lg"
               className="w-full sm:w-auto justify-center"
               label="API Reference">
-              API 레퍼런스
+              API 참고서
             </ButtonLink>
           </div>
         </div>
@@ -174,11 +174,11 @@ export function HomeContent() {
               <Br /> 사용자 인터페이스 만들기
             </Header>
             <Para>
-              React를 사용하면 컴포넌트라고 불리는 조각들을 사용하여 사용자
+              React를 사용하면 컴포넌트라 불리는 조각들을 사용하여 사용자
               인터페이스를 만들 수 있습니다. <Code>Thumbnail</Code>,{' '}
               <Code>LikeButton</Code>, 그리고 <Code>Video</Code> 같은 컴포넌트를
-              만들 수 있습니다. 그런 다음 전체 화면, 페이지 및 앱에서 이들을
-              결합할 수 있습니다.
+              만들어 보세요. 그런 다음 전체 화면, 페이지 및 앱에서 이들을 결합할
+              수 있습니다.
             </Para>
           </Center>
           <FullBleed>
@@ -200,10 +200,10 @@ export function HomeContent() {
               <Br /> 컴포넌트 작성하기
             </Header>
             <Para>
-              React 컴포넌트는 JavaScript 함수입니다. 조건부로 내용을 표시하려면{' '}
-              <Code>if</Code> 문을 사용할 수 있습니다. 목록을 표시하려면 배열에{' '}
-              <Code>map()</Code>을 사용할 수 있습니다. React를 배우는 것은
-              프로그래밍을 배우는 것입니다.
+              React 컴포넌트는 자바스크립트 함수입니다. 조건부로 내용을
+              표시하려면 <Code>if</Code> 문을 사용할 수 있습니다. 목록을
+              표시하려면 배열에 <Code>map()</Code>을 사용할 수 있습니다. React를
+              배우는 것은 프로그래밍을 배우는 것입니다.
             </Para>
           </Center>
           <FullBleed>
@@ -211,9 +211,9 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              이 마크업 구문을 JSX 라고 부릅니다. 이것은 React에 의해서 대중화된
-              JavaScript 구문의 확장입니다. JSX 마크업을 관련된 렌더링 로직과
-              가까이 두면, React 컴포넌트를 쉽게 만들고 유지하고 삭제할 수
+              이 마크업 구문을 JSX라 부릅니다. 이것은 React에 의해서 대중화된
+              자바스크립트 구문의 확장입니다. JSX 마크업을 관련된 렌더링 로직과
+              가까이 두면, React 컴포넌트를 쉽게 만들고 관리하고 삭제할 수
               있습니다.
             </Para>
           </Center>
@@ -238,7 +238,7 @@ export function HomeContent() {
           <Center>
             <Para>
               전체 페이지를 React로 빌드할 필요는 없습니다. React를 기존 HTML
-              페이지에 추가하고, 어디에서나 상호작용하는 React 컴포넌트를
+              페이지에 추가하고, 페이지 어디에서나 상호작용하는 React 컴포넌트를
               렌더링할 수 있습니다.
             </Para>
             <div className="flex justify-start w-full lg:justify-center">
@@ -255,13 +255,14 @@ export function HomeContent() {
         <Section background="right-card">
           <Center>
             <Header>
-              프레임워크를 통해서
+              프레임워크를 통해
               <Br /> 풀스택으로 만들기
             </Header>
             <Para>
-              React는 라이브러리입니다. 컴포넌트를 함께 묶을 수 있지만, 라우팅과
-              데이터를 가져오는 방법을 규정하지는 않습니다. React로 앱을
-              만들려면, <Link href="https://nextjs.org">Next.js</Link> 또는{' '}
+              React는 라이브러리입니다. 컴포넌트를 조합할 수 있도록 도와주지만,
+              라우팅이나 데이터를 가져오는 방법을 규정하지는 않습니다. React로
+              완전한 앱을 만들려면,{' '}
+              <Link href="https://nextjs.org">Next.js</Link> 또는{' '}
               <Link href="https://remix.run">Remix</Link> 같은 풀스택 React
               프레임워크를 추천합니다.
             </Para>
@@ -271,10 +272,11 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              React는 아키텍처이기도 합니다. 이를 구현하는 프레임워크를 사용하면
-              서버에서 실행되는 비동기 컴포넌트에서 또는 빌드 도중에 데이터를
-              가져올 수 있습니다. 파일이나 데이터베이스에서 데이터를 읽고, 이를
-              상호작용하는 컴포넌트로 전달할 수 있습니다.
+              React는 아키텍처이기도 합니다. 이를 구현하는 프레임워크는 서버에서
+              실행되는 비동기 컴포넌트 혹은 빌드 중에 실행되는 비동기
+              컴포넌트에서 데이터를 가져올 수 있도록 합니다. 파일이나
+              데이터베이스에서 데이터를 읽고, 이를 상호작용하는 컴포넌트에
+              전달할 수 있습니다.
             </Para>
             <div className="flex justify-start w-full lg:justify-center">
               <CTA
@@ -293,7 +295,7 @@ export function HomeContent() {
               <Para>
                 사람들은 다양한 이유로 웹과 네이티브 앱을 좋아합니다. React는
                 동일한 기술을 사용하여 웹 앱과 네이티브 앱을 모두 만들 수
-                있습니다. 각 플랫폼에 강점을 활용하여 모든 플랫폼에서 적합한
+                있습니다. 각 플랫폼의 장점을 활용하여 모든 플랫폼에서 적합한
                 인터페이스를 구현할 수 있습니다.
               </Para>
             </div>
@@ -311,12 +313,12 @@ export function HomeContent() {
                         웹에 충실하기
                       </h4>
                       <p className="lg:text-xl leading-normal text-secondary">
-                        사람들은 웹이 빠르게 로드되길 기대합니다. 서버에서
+                        사람들은 웹 앱이 빠르게 로드되길 기대합니다. 서버에서
                         React를 사용하면 데이터를 가져오는 동안 HTML을
-                        스트리밍하여 JavaScript 코드가 로드되기 전에 남은 내용을
-                        점진적으로 채울 수 있습니다. 클라이언트에서 React는 표준
-                        web API를 사용하여 렌더링 중에도 UI를 반응적으로 유지할
-                        수 있습니다.
+                        스트리밍하여 자바스크립트 코드가 로드되기 전에 남은
+                        내용을 점진적으로 채울 수 있습니다. 클라이언트에서
+                        React는 표준 웹 API를 사용하여 렌더링 중에도 UI를
+                        반응하도록 유지할 수 있습니다.
                       </p>
                     </div>
                   </div>
@@ -394,21 +396,22 @@ export function HomeContent() {
                       </div>
                       <div className="flex flex-col items-start justify-center pt-0 gap-3 px-2.5 lg:pt-8 lg:px-8">
                         <h4 className="leading-tight text-primary dark:text-primary-dark font-semibold text-3xl lg:text-4xl">
-                          네이티브에서 사용하기
+                          진정한 네이티브에서 사용하기
                         </h4>
                         <p className="h-full lg:text-xl text-secondary dark:text-secondary-dark leading-normal">
-                          사람들은 네이티브 앱이 플랫폼과 같은 모양처럼
-                          느껴지기를 원합니다.{' '}
+                          사람들은 네이티브<sup>Native</sup> 앱이 해당 플랫폼의
+                          모습과 느낌을 갖기를 기대합니다.{' '}
                           <Link href="https://reactnative.dev">
                             React Native
                           </Link>
                           와{' '}
                           <Link href="https://github.com/expo/expo">Expo</Link>
-                          를 사용하면 React를 통하여 Android, iOS 등을 위한 앱을
-                          빌드할 수 있습니다. UI들이 native이기 때문에 진짜
-                          native처럼 보입니다. 이것은 web view가 아닙니다. React
-                          컴포넌트들은 실제 Android, iOS 플랫폼에서 제공하는
-                          view를 렌더링합니다.
+                          를 사용하면 React를 통해 Android, iOS 등을 위한 앱을
+                          빌드할 수 있습니다. UI가 진정한 네이티브이기 때문에
+                          네이티브처럼 보이고 느껴집니다. 이것은 웹 뷰
+                          <sup>Web View</sup>가 아닙니다. React 컴포넌트들은
+                          실제 Android, iOS 플랫폼에서 제공하는 뷰
+                          <sup>View</sup>를 렌더링합니다.
                         </p>
                       </div>
                     </div>
@@ -441,9 +444,9 @@ export function HomeContent() {
                   <Br breakPointPrefix="xl" /> 업그레이드 하기
                 </Header>
                 <Para>
-                  React는 변화에 신중하게 접근합니다. 모든 React 커밋은 10억 명
-                  이상의 사용자가 있는 비즈니스에 크리티컬한 영역에서 테스트
-                  됩니다. Meta에서는 10만 개 이상의 React 컴포넌트가 모든
+                  React는 변화에 신중하게 접근합니다. 모든 React 커밋은 10억명
+                  이상의 사용자가 있는 비즈니스의 크리티컬한 영역에서 테스트를
+                  진행합니다. Meta에서는 10만 개 이상의 React 컴포넌트가 모든
                   마이그레이션 전략을 검증합니다.
                 </Para>
                 <div className="order-last pt-5">
@@ -495,9 +498,9 @@ export function HomeContent() {
               <Center>
                 <Header>수백만 명이 있는 커뮤니티</Header>
                 <Para>
-                  여러분은 혼자가 아닙니다. 200만 명이 넘는 개발자들이 React
-                  문서를 매달 방문합니다. React는 사람들과 팀이 동의할 수 있는
-                  것입니다.
+                  여러분은 혼자가 아닙니다. 전세계의 200만 명이 넘는 개발자들이
+                  React 문서를 매달 방문합니다. React는 사람들과 팀이 동의할 수
+                  있는 것입니다.
                 </Para>
               </Center>
             </div>
@@ -505,12 +508,12 @@ export function HomeContent() {
             <div className="mx-auto flex flex-col max-w-4xl">
               <Center>
                 <Para>
-                  이것이 바로 React가 라이브러리를 넘어 아키텍처, 심지어
-                  에코시스템 그 이상인 이유입니다. React는 커뮤니티입니다.
-                  도움을 요청하고, 기회를 찾고, 새로운 친구를 만날 수 있는
-                  곳입니다. 개발자와 디자이너, 초보자와 전문가, 연구원과 예술가,
-                  교사와 학생을 만날 수 있습니다. 모두의 배경은 다를 수 있지만,
-                  React를 통해 함께 사용자 인터페이스를 만들 수 있습니다.
+                  이것이 바로 React가 단순한 라이브러리, 아키텍처, 혹은 생태계
+                  그 이상인 이유입니다. React는 바로 커뮤니티입니다. 도움을
+                  요청하고, 기회를 찾고, 새로운 친구를 만날 수 있는 곳입니다.
+                  개발자와 디자이너, 초보자와 전문가, 연구원과 예술가, 교사와
+                  학생을 만날 수 있습니다. 배경은 모두 다를 수 있지만, React를
+                  통해 함께 사용자 인터페이스를 만들 수 있습니다.
                 </Para>
               </Center>
             </div>
@@ -528,7 +531,7 @@ export function HomeContent() {
             <Logo className="uwu-hidden text-brand dark:text-brand-dark w-24 lg:w-28 mb-10 lg:mb-8 mt-12 h-auto mx-auto self-start" />
             <Header>
               React 커뮤니티에
-              <Br /> 오신 것을 환영합니다.
+              <Br /> 오신 것을 환영합니다
             </Header>
             <ButtonLink
               href={'/learn'}

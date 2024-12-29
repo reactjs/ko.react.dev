@@ -382,7 +382,7 @@ button {
 
 ## Hook 사용하기 {/*using-hooks*/}
 
-`use`로 시작하는 함수를 *Hook*이라고 합니다. `useState`는 React에서 제공하는 내장 Hook입니다. 다른 내장 Hook은 [API 레퍼런스](/reference/react)에서 찾아볼 수 있습니다. 또한 기존의 것들을 조합하여 자신만의 Hook을 작성할 수도 있습니다.
+`use`로 시작하는 함수를 *Hook*이라고 합니다. `useState`는 React에서 제공하는 내장 Hook입니다. 다른 내장 Hook은 [API 참고서](/reference/react)에서 찾아볼 수 있습니다. 또한 기존의 것들을 조합하여 자신만의 Hook을 작성할 수도 있습니다.
 
 Hook은 다른 함수보다 더 제한적입니다. 컴포넌트(또는 다른 Hook)의 *상단*에서만 Hook을 호출할 수 있습니다. 조건이나 반복에서 `useState`를 사용하고 싶다면 새 컴포넌트를 추출하여 그곳에 넣으세요.
 

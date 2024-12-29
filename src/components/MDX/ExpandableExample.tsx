@@ -71,7 +71,7 @@ function ExpandableExample({children, excerpt, type}: ExpandableExampleProps) {
           {isDeepDive && (
             <>
               <IconDeepDive className="inline me-2 dark:text-purple-30 text-purple-40" />
-              Deep Dive
+              자세히 살펴보기
             </>
           )}
           {isExample && (

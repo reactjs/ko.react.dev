@@ -4,7 +4,7 @@ title: 감사의 말
 
 <Intro>
 
-React는 원래 [Jordan Walke](https://github.com/jordwalke)에 의해 만들어졌습니다. 오늘날 React에는 [작업을 전담하는 전임 팀](/community/team)과 천여 명이 넘는 [오픈 소스 기여자들](https://github.com/facebook/react/blob/main/AUTHORS)이 있습니다.
+React는 원래 [Jordan Walke](https://github.com/jordwalke)에 의해 만들어졌습니다. 오늘날 React에는 [작업을 전담하는 전임 팀](/community/team)과 천여 명이 넘는 [오픈 소스 기여자들](https://github.com/facebook/react/graphs/contributors)이 있습니다.
 
 </Intro>
 
