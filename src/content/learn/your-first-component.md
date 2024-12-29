@@ -178,7 +178,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Pitfall>
 
-컴포넌트는 다른 컴포넌트를 렌더링할 수 있지만, **그 정의를 중첩해서는 안 됩니다.** 
+컴포넌트는 다른 컴포넌트를 렌더링할 수 있지만, **그 정의를 중첩해서는 안 됩니다.**
 
 ```js {2-5}
 export default function Gallery() {
@@ -341,9 +341,9 @@ img { height: 180px; }
 ```js
 export default function Profile() {
   return (
-    <img 
-      src="https://i.imgur.com/jA8hHMpm.jpg" 
-      alt="Katsuko Saruhashi" 
+    <img
+      src="https://i.imgur.com/jA8hHMpm.jpg"
+      alt="Katsuko Saruhashi"
     />
   );
 }

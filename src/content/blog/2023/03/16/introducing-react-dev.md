@@ -240,12 +240,12 @@ body {
 
 이것이 학습 섹션이 여러 개의 장으로 구분된 자기 주도 학습 과정으로 구성된 이유입니다. 처음 두 장은 React의 기초에 관해서 설명합니다. React가 처음이거나 기억을 되살리고 싶다면, 여기서부터 시작하세요.
 
-- **[UI 표현하기](/learn/describing-the-ui)**에서는 컴포넌트로 어떻게 정보를 표시하는지 가르칩니다. 
-- **[상호작용 추가하기](/learn/adding-interactivity)**에서는 사용자 입력에 대한 응답으로 화면을 어떻게 업데이트하는지 가르칩니다. 
+- **[UI 표현하기](/learn/describing-the-ui)**에서는 컴포넌트로 어떻게 정보를 표시하는지 가르칩니다.
+- **[상호작용 추가하기](/learn/adding-interactivity)**에서는 사용자 입력에 대한 응답으로 화면을 어떻게 업데이트하는지 가르칩니다.
 
-다음 두 장은 더욱 고급 내용을 다루며, 더 복잡한 부분에 대해서 깊은 통찰을 줄 것입니다. 
+다음 두 장은 더욱 고급 내용을 다루며, 더 복잡한 부분에 대해서 깊은 통찰을 줄 것입니다.
 
-- **[State 관리하기](/learn/managing-state)**에서는 앱의 복잡성이 증가함에 따라 어떻게 로직을 조직화하는지 가르칩니다. 
+- **[State 관리하기](/learn/managing-state)**에서는 앱의 복잡성이 증가함에 따라 어떻게 로직을 조직화하는지 가르칩니다.
 - **[탈출구](/learn/escape-hatches)**에서는 React "외부로 탈출"할 방법과, 이를 수행하기에 가장 적절한 시기를 가르칩니다.
 
 모든 장은 여러 개의 관련된 페이지로 구성되어 있습니다. 대부분의 페이지는 특정 기술이나 기법을 가르칩니다-예를 들어, [JSX로 마크업 작성하기](/learn/writing-markup-with-jsx), [State에 있는 객체 업데이트하기](/learn/updating-objects-in-state)나 [컴포넌트 간 State 공유하기](/learn/sharing-state-between-components) 같은 것들이 있습니다. [렌더와 커밋](/learn/render-and-commit), [스냅샷으로서의 State](/learn/state-as-a-snapshot)와 같은 몇몇 페이지들은 아이디어를 설명하는 것에 집중합니다. 그리고 지난 몇 년 동안의 경험을 기반으로 제안을 공유하는 [Effect가 필요하지 않을 수 있습니다](/learn/you-might-not-need-an-effect) 같은 페이지도 몇 개 있습니다.
@@ -280,17 +280,17 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride's Packing List</h1>
       <ul>
-        <Item 
-          isPacked={true} 
-          name="Space suit" 
+        <Item
+          isPacked={true}
+          name="Space suit"
         />
-        <Item 
-          isPacked={true} 
-          name="Helmet with a golden leaf" 
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
         />
-        <Item 
-          isPacked={false} 
-          name="Photo of Tam" 
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
         />
       </ul>
     </section>
@@ -318,17 +318,17 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride's Packing List</h1>
       <ul>
-        <Item 
-          isPacked={true} 
-          name="Space suit" 
+        <Item
+          isPacked={true}
+          name="Space suit"
         />
-        <Item 
-          isPacked={true} 
-          name="Helmet with a golden leaf" 
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
         />
-        <Item 
-          isPacked={false} 
-          name="Photo of Tam" 
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
         />
       </ul>
     </section>
@@ -366,17 +366,17 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride's Packing List</h1>
       <ul>
-        <Item 
-          importance={9} 
-          name="Space suit" 
+        <Item
+          importance={9}
+          name="Space suit"
         />
-        <Item 
-          importance={0} 
-          name="Helmet with a golden leaf" 
+        <Item
+          importance={0}
+          name="Helmet with a golden leaf"
         />
-        <Item 
-          importance={6} 
-          name="Photo of Tam" 
+        <Item
+          importance={6}
+          name="Photo of Tam"
         />
       </ul>
     </section>
@@ -410,17 +410,17 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride's Packing List</h1>
       <ul>
-        <Item 
-          importance={9} 
-          name="Space suit" 
+        <Item
+          importance={9}
+          name="Space suit"
         />
-        <Item 
-          importance={0} 
-          name="Helmet with a golden leaf" 
+        <Item
+          importance={0}
+          name="Helmet with a golden leaf"
         />
-        <Item 
-          importance={6} 
-          name="Photo of Tam" 
+        <Item
+          importance={6}
+          name="Photo of Tam"
         />
       </ul>
     </section>
@@ -620,10 +620,10 @@ button { display: block; margin-top: 10px; }
 
 웹 사이트의 내용과 기능을 확장해달라는 많은 요청을 들었습니다. 예를 들어,
 
-- 모든 예시에 대한 TypeScript 버전을 제공하기 
-- 업데이트된 성능, 테스트, 접근성 가이드 만들기 
-- React 서버 컴포넌트를 지원하는 프레임워크로부터 독립적으로 문서화하기 
-- 새로운 문서가 번역되도록 전 세계 커뮤니티와 협업하기 
+- 모든 예시에 대한 TypeScript 버전을 제공하기
+- 업데이트된 성능, 테스트, 접근성 가이드 만들기
+- React 서버 컴포넌트를 지원하는 프레임워크로부터 독립적으로 문서화하기
+- 새로운 문서가 번역되도록 전 세계 커뮤니티와 협업하기
 - 새로운 웹 사이트에 놓친 기능 추가하기 (예를 들어, 이 블로그를 위한 RSS)
 
 이제 [react.dev](https://react.dev/)가 출시되었으니, 제삼자 React 교육 자료를 "따라잡는" 데서 벗어나 새로운 정보를 추가하고 새 웹 사이트를 더욱 개선하는 데 집중할 수 있게 되었습니다.

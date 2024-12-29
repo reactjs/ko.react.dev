@@ -17,7 +17,7 @@ React를 전체적으로 적용한 애플리케이션이나 사이트를 새롭�
 
 #### 프레임워크 없이 React 를 사용할 수 있나요? {/*can-i-use-react-without-a-framework*/}
 
-물론 React를 프레임워크 없이 사용할 수 있습니다. [기존 페이지의 일부분에 React 사용하기](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page)를 활용해 보세요. **하지만, 새로운 애플리케이션이나 사이트 전체를 React로 구축하는 경우에는 프레임워크 사용을 권장합니다.** 
+물론 React를 프레임워크 없이 사용할 수 있습니다. [기존 페이지의 일부분에 React 사용하기](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page)를 활용해 보세요. **하지만, 새로운 애플리케이션이나 사이트 전체를 React로 구축하는 경우에는 프레임워크 사용을 권장합니다.**
 
 이유가 여기 있습니다.
 

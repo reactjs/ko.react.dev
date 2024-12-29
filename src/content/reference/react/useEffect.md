@@ -45,7 +45,7 @@ function ChatRoom({ roomId }) {
 #### 매개변수 {/*parameters*/}
 
 + `setup(설정)`: Effect의 로직이 포함된 함수입니다. 설정 함수는 선택적으로 *clean up(정리)* 함수를 반환할 수 있습니다. React는 컴포넌트가 DOM에 추가된 이후에 설정 함수를 실행합니다. 의존성의 변화에 따라 컴포넌트가 리렌더링이 되었을 경우, (설정 함수에 정리 함수를 추가했었다면) React는 이전 렌더링에 사용된 값으로 정리 함수를 실행한 후 새로운 값으로 설정 함수를 실행합니다. 컴포넌트가 DOM에서 제거된 경우에도 정리 함수를 실행합니다.
- 
+
 + `dependencies` **선택사항** : `설정` 함수의 코드 내부에서 참조되는 모든 반응형 값들이 포함된 배열로 구성됩니다. 반응형 값에는 props와 state, 모든 변수 및 컴포넌트 body에 직접적으로 선언된 함수들이 포함됩니다. 린터가 [React 환경에 맞게 설정되어 있을 경우](/learn/editor-setup#linting), 린터는 모든 반응형 값들이 의존성에 제대로 명시되어 있는지 검증할 것입니다. 의존성 배열은 항상 일정한 수의 항목을 가지고 있어야 하며 `[dep1, dep2, dep3]`과 같이 작성되어야 합니다. React는 각각의 의존성들을 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교법을 통해 이전 값과 비교합니다. 의존성을 생략할 경우, Effect는 컴포넌트가 리렌더링될 때마다 실행됩니다. [인수에 의존성 배열을 추가했을 때, 빈 배열을 추가했을 때, 의존성을 추가하지 않았을 때의 차이를 확인해 보세요.](#examples-dependencies)
 
 #### 반환값 {/*returns*/}
@@ -114,7 +114,7 @@ function ChatRoom({ roomId }) {
 
 **위의 예시를 통해 순서를 설명해 보겠습니다.**
 
-위의 `ChatRoom` 컴포넌트가 화면에 추가되면 초기 `serverUrl`과 `roomId`를 이용해 채팅방과 연결될 것입니다. 리렌더링에 의해 `serverUrl` 또는 `roomId`가 변경된다면 (예를 들어 사용자가 드롭다운 메뉴를 이용해 다른 채팅방을 선택할 경우) *Effect는 이전 채팅방과의 연결을 해제하고 다음 채팅방과 연결합니다.* `ChatRoom` 컴포넌트가 화면에서 제거된다면 Effect는 마지막 채팅방과 이뤄진 연결을 해제할 것입니다. 
+위의 `ChatRoom` 컴포넌트가 화면에 추가되면 초기 `serverUrl`과 `roomId`를 이용해 채팅방과 연결될 것입니다. 리렌더링에 의해 `serverUrl` 또는 `roomId`가 변경된다면 (예를 들어 사용자가 드롭다운 메뉴를 이용해 다른 채팅방을 선택할 경우) *Effect는 이전 채팅방과의 연결을 해제하고 다음 채팅방과 연결합니다.* `ChatRoom` 컴포넌트가 화면에서 제거된다면 Effect는 마지막 채팅방과 이뤄진 연결을 해제할 것입니다.
 
 React는 **[버그를 발견하기 위해](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) 개발모드에서 <CodeStep step={1}>설정</CodeStep>이 실행되기 전에 <CodeStep step={1}>설정</CodeStep>과 <CodeStep step={2}>정리</CodeStep>를 한 번 더 실행시킵니다.** 이는 스트레스 테스트의 하나로써 Effect의 로직이 정확하게 수행되고 있는지를 검증합니다. 만약 가시적인 이슈가 보인다면 정리 함수의 로직에 놓친 부분이 있는 것입니다. 정리 함수는 설정 함수의 어떠한 동작이라도 중지하거나 실행 취소를 할 수 있어야 하며, 사용자는 *설정* 함수가 한 번 호출될 때와 *설정* → *정리* → *설정* 순서로 호출될 때의 차이를 느낄 수 없어야 합니다.
 
@@ -137,7 +137,7 @@ An Effect lets you [keep your component synchronized](/learn/synchronizing-with-
 
 #### 채팅 서버와 연결 {/*connecting-to-a-chat-server*/}
 
-이 예시에서는 `ChatRoom` 컴포넌트의 Effect를 통해 `chat.js`로 정의된 외부 시스템과 연결을 유지합니다. "Open chat"을 누르면 `ChatRoom` 컴포넌트가 나타납니다. 이 샌드박스는 개발 모드에서 동작하므로 [추가적인 연결-연결해제 사이클](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed)이 동작합니다. 드롭다운 메뉴나 input을 이용해 `roomId` 또는 `serverUrl`를 변경하고 어떻게 Effect가 chat을 재연결하는지 확인해 보세요. "Close chat"을 눌러 Effect가 마지막에 연결되었던 chat을 연결 해제하는 것도 확인해 보세요. 
+이 예시에서는 `ChatRoom` 컴포넌트의 Effect를 통해 `chat.js`로 정의된 외부 시스템과 연결을 유지합니다. "Open chat"을 누르면 `ChatRoom` 컴포넌트가 나타납니다. 이 샌드박스는 개발 모드에서 동작하므로 [추가적인 연결-연결해제 사이클](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed)이 동작합니다. 드롭다운 메뉴나 input을 이용해 `roomId` 또는 `serverUrl`를 변경하고 어떻게 Effect가 chat을 재연결하는지 확인해 보세요. "Close chat"을 눌러 Effect가 마지막에 연결되었던 chat을 연결 해제하는 것도 확인해 보세요.
 
 <Sandpack>
 
@@ -1083,7 +1083,7 @@ function ChatRoom({ roomId }) { // 이것은 반응형 값입니다
 ```js {8}
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
-  
+
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();

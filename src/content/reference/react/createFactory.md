@@ -34,7 +34,7 @@ import { createFactory } from 'react';
 const button = createFactory('button');
 ```
 
-이후 JSX 없이 React 엘리먼트를 만들기 위해, 해당 함수를 사용할 수 있습니다. 
+이후 JSX 없이 React 엘리먼트를 만들기 위해, 해당 함수를 사용할 수 있습니다.
 
 ```js
 export default function App() {
@@ -54,7 +54,7 @@ export default function App() {
 
 #### 반환값 {/*returns*/}
 
-팩토리 함수를 반환합니다. 이 함수는 자식 인수의 리스트에 뒤이어, 첫 번째 인수로 `props` 객체를 받으며, 주어진 `types`, `props` 그리고 `자식`을 가진 React 엘리먼트를 반환합니다. 
+팩토리 함수를 반환합니다. 이 함수는 자식 인수의 리스트에 뒤이어, 첫 번째 인수로 `props` 객체를 받으며, 주어진 `types`, `props` 그리고 `자식`을 가진 React 엘리먼트를 반환합니다.
 
 ---
 
@@ -134,7 +134,7 @@ export function createFactory(type) {
 
 ### `createFactory`를 `createElement`로 대체하기 {/*replacing-createfactory-with-createelement*/}
 
-직접 옮겨와도 무방할 정도로 `createFactory`를 몇 개만 호출하고 있고 JSX를 사용하고 싶지 않다면, [`createElement`](/reference/react/createElement)를 실행하여 팩토리 함수를 대체할 수 있습니다. 예를 들어 이 코드는, 
+직접 옮겨와도 무방할 정도로 `createFactory`를 몇 개만 호출하고 있고 JSX를 사용하고 싶지 않다면, [`createElement`](/reference/react/createElement)를 실행하여 팩토리 함수를 대체할 수 있습니다. 예를 들어 이 코드는,
 
 
 ```js {1,3,6}
