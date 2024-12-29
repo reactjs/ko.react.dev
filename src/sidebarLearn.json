@@ -65,7 +65,7 @@
           "path": "/learn/your-first-component"
         },
         {
-          "title": "컴포넌트 import 및 export하기",
+          "title": "컴포넌트 Import 및 Export하기",
           "path": "/learn/importing-and-exporting-components"
         },
         {
@@ -77,7 +77,7 @@
           "path": "/learn/javascript-in-jsx-with-curly-braces"
         },
         {
-          "title": "컴포넌트에 props 전달하기",
+          "title": "컴포넌트에 Props 전달하기",
           "path": "/learn/passing-props-to-a-component"
         },
         {
@@ -116,7 +116,7 @@
           "path": "/learn/render-and-commit"
         },
         {
-          "title": "스냅샷으로서의 state",
+          "title": "스냅샷으로서의 State",
           "path": "/learn/state-as-a-snapshot"
         },
         {
@@ -124,11 +124,11 @@
           "path": "/learn/queueing-a-series-of-state-updates"
         },
         {
-          "title": "객체 state 업데이트하기",
+          "title": "객체 State 업데이트하기",
           "path": "/learn/updating-objects-in-state"
         },
         {
-          "title": "배열 state 업데이트하기",
+          "title": "배열 State 업데이트하기",
           "path": "/learn/updating-arrays-in-state"
         }
       ]
