@@ -1,8 +1,8 @@
 ---
 title: "<title>"
-canary: true
 ---
 
+<<<<<<< HEAD
 <Canary>
 
 React의 `<title>` 확장은 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. React의 안정적인 릴리즈에서는 `<title>`이 [내장 브라우저 HTML 컴포넌트](https://react.dev/reference/react-dom/components#all-html-components)로만 작동합니다. 여기에서 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
@@ -10,6 +10,8 @@ React의 `<title>` 확장은 현재 React의 카나리(Canary) 버전 및 실험
 </Canary>
 
 
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 <Intro>
 
 [내장된 브라우저 `<title>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title)를 사용하면 문서의 제목을 지정할 수 있습니다.

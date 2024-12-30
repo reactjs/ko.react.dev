@@ -1,7 +1,17 @@
 ---
+<<<<<<< HEAD
 title: React 서버 컴포넌트
 canary: true
+=======
+title: Server Components
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ---
+
+<RSC>
+
+Server Components are for use in [React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
+
+</RSC>
 
 <Intro>
 
@@ -17,7 +27,11 @@ canary: true
 
 #### 서버 컴포넌트를 지원하려면 어떻게 해야 하나요? {/*how-do-i-build-support-for-server-components*/}
 
+<<<<<<< HEAD
 React 19의 서버 컴포넌트는 안정적이며 메이저(Major) 버전 간에는 변경되지 않습니다. 그러나 React 서버 컴포넌트 번들러나 프레임워크를 구현하는 데 사용되는 기본 API는 시맨틱 버전(semver)을 따르지 않으며 React 19.x의 마이너(Minor) 버전 간에 변경될 수 있습니다.
+=======
+While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x. 
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 React 서버 컴포넌트를 번들러나 프레임워크로 지원하려면, 특정 React 버전에 고정하거나 Canary 릴리즈를 사용하는 것을 권장합니다. 향후 React 서버 컴포넌트를 구현하는 데 사용되는 API를 안정화하기 위해 번들러 및 프레임워크와 계속 협력할 것입니다.
 
@@ -188,7 +202,11 @@ async function Author({id}) {
 
 #### 서버 컴포넌트에 대한 지시어는 없습니다. {/*there-is-no-directive-for-server-components*/}
 
+<<<<<<< HEAD
 서버 컴포넌트는 `"use server"`로 표시된다는 오해가 있지만, 서버 컴포넌트에 대한 지시어는 없습니다. `"use server"` 지시어는 서버 액션에 사용됩니다.
+=======
+A common misunderstanding is that Server Components are denoted by `"use server"`, but there is no directive for Server Components. The `"use server"` directive is used for Server Functions.
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 자세한 내용은 [지시어](/reference/rsc/directives)를 참조하세요.
 

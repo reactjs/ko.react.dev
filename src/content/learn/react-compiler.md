@@ -349,7 +349,11 @@ React 컴파일러는 React의 많은 규칙을 정적으로 검증할 수 있�
 
 ### 컴포넌트가 최적화되었는지 어떻게 알 수 있을까요? {/*how-do-i-know-my-components-have-been-optimized*/}
 
+<<<<<<< HEAD
 [React Devtools](/learn/react-developer-tools) (v5.0+)에는 React 컴파일러를 내장 지원하며, 컴파일러에 의해 최적화된 컴포넌트 옆에 "Memo ✨" 배지를 표시합니다.
+=======
+[React DevTools](/learn/react-developer-tools) (v5.0+) and [React Native DevTools](https://reactnative.dev/docs/react-native-devtools) have built-in support for React Compiler and will display a "Memo ✨" badge next to components that have been optimized by the compiler.
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 ### 컴파일 후 작동하지 않는 문제 {/*something-is-not-working-after-compilation*/}
 

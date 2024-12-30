@@ -48,10 +48,17 @@ function Greeting({ name }) {
 
 `createElement`는 아래 프로퍼티를 가지는 React 엘리먼트 객체를 반환합니다.
 
+<<<<<<< HEAD
 * `type`: 전달받은 `type`.
 * `props`: `ref`와 `key`를 제외한 전달받은 `props`. `type`이 레거시 `type.defaultProps`를 가지는 컴포넌트라면, 누락되거나 정의되지 않은 `props`는 `type.defaultProps` 값을 가져옵니다.
 * `ref`: 전달받은 `ref`. 누락된 경우 `null`.
 * `key`: 전달받은 `key`를 강제 변환한 문자열. 누락된 경우 `null`.
+=======
+* `type`: The `type` you have passed.
+* `props`: The `props` you have passed except for `ref` and `key`.
+* `ref`: The `ref` you have passed. If missing, `null`.
+* `key`: The `key` you have passed, coerced to a string. If missing, `null`.
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 일반적으로 엘리먼트는 컴포넌트에서 반환되거나 다른 엘리먼트의 자식으로 만듭니다. 엘리먼트의 프로퍼티에는 접근할 수 있지만, 엘리먼트 생성 후에는 모든 엘리먼트에 접근할 수 없는 것처럼 대하고 렌더링만 하는 것이 좋습니다.
 
