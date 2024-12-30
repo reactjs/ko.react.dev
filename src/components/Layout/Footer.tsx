@@ -8,6 +8,7 @@ import cn from 'classnames';
 import {ExternalLink} from 'components/ExternalLink';
 import {IconFacebookCircle} from 'components/Icon/IconFacebookCircle';
 import {IconTwitter} from 'components/Icon/IconTwitter';
+import {IconBsky} from 'components/Icon/IconBsky';
 import {IconGitHub} from 'components/Icon/IconGitHub';
 
 export function Footer() {
@@ -335,7 +336,7 @@ export function Footer() {
             커뮤니티
           </FooterLink>
           <FooterLink href="https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md">
-            Code of Conduct
+            행동 강령
           </FooterLink>
           <FooterLink href="/community/team">팀 소개</FooterLink>
           <FooterLink href="/community/docs-contributors">
@@ -365,6 +366,12 @@ export function Footer() {
               href="https://twitter.com/reactjs"
               className={socialLinkClasses}>
               <IconTwitter />
+            </ExternalLink>
+            <ExternalLink
+              aria-label="React on Bluesky"
+              href="https://bsky.app/profile/react.dev"
+              className={socialLinkClasses}>
+              <IconBsky />
             </ExternalLink>
             <ExternalLink
               aria-label="React on Github"

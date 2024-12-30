@@ -51,9 +51,9 @@ function MyComponent() {
 
 #### 주의 사항 {/*caveats*/}
 
-* `useReducer`는 Hook이므로 **컴포넌트의 최상위** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문에서는 사용할 수 없습니다. 필요한 경우 새로운 컴포넌트를 추출하고 해당 컴포넌트로 state를 옮겨서 사용할 수 있습니다.
-* The `dispatch` function has a stable identity, so you will often see it omitted from effect dependencies, but including it will not cause the effect to fire. If the linter lets you omit a dependency without errors, it is safe to do. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
-* Strict Mode에서는 [우연한 비순수성](#my-reducer-or-initializer-function-runs-twice)을 찾아내기 위해 reducer와 init 함수를 두번 호출합니다. 개발 환경에서만 한정된 동작이며, 배포 모드에는 영향을 미치지 않습니다. reducer와 init 함수가 순수 함수라면(그래야만 하듯이) 로직에 어떠한 영향도 미치지 않습니다. 호출 중 하나의 결과는 무시합니다.
+* `useReducer`는 Hook이므로 **컴포넌트의 최상위** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문에서는 사용할 수 없습니다. 필요한 경우 새로운 컴포넌트를 추출하고 해당 컴포넌트로 State를 옮겨서 사용할 수 있습니다.
+* The `dispatch` function has a stable identity, so you will often see it omitted from effect dependencies, but including it will not cause the Effect to fire. If the linter lets you omit a dependency without errors, it is safe to do. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+* Strict Mode에서는 [우연한 비순수성](#my-reducer-or-initializer-function-runs-twice)을 찾아내기 위해 Reducer와 `init` 함수를 두번 호출합니다. 개발 환경에서만 한정된 동작이며, 배포<sup>Production</sup> 환경에는 영향을 미치지 않습니다. Reducer와 `init` 함수가 순수 함수라면(그래야만 하듯이) 로직에 어떠한 영향도 미치지 않습니다. 호출 중 하나의 결과는 무시합니다.
 
 ---
 
