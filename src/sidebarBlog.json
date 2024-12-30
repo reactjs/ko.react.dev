@@ -110,7 +110,7 @@
           "path": "/blog/2021/06/08/the-plan-for-react-18"
         },
         {
-          "title": "제로 번들 사이즈 React 서버 컴포넌트 소개",
+          "title": "제로 번들 사이즈 React 서버 컴포넌트를 소개합니다",
           "titleForHomepage": "서버 컴포넌트 소개",
           "icon": "labs",
           "date": "2020.12.21",
