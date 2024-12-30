@@ -304,7 +304,6 @@
           "title": "prerenderToNodeStream",
           "path": "/reference/react-dom/static/prerenderToNodeStream"
         }
-        
       ]
     },
     {
@@ -334,23 +333,12 @@
       "sectionHeader": "React 서버 컴포넌트"
     },
     {
-<<<<<<< HEAD
       "title": "서버 컴포넌트",
-      "path": "/reference/rsc/server-components",
-      "canary": true
-    },
-    {
-      "title": "서버 액션",
-      "path": "/reference/rsc/server-actions",
-      "canary": true
-=======
-      "title": "Server Components",
       "path": "/reference/rsc/server-components"
     },
     {
-      "title": "Server Functions",
-      "path": "/reference/rsc/server-functions"
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+      "title": "서버 액션",
+      "path": "/reference/rsc/server-actions"
     },
     {
       "title": "지시어",
