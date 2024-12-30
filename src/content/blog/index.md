@@ -69,7 +69,7 @@ React 18은 릴리스 노트에서 언급한 대로, 새로운 동시성 렌더�
 </BlogCard>
 
 <BlogCard title="React Conf 2021 요약" date="2021년 12월 17일" url="/blog/2021/12/17/react-conf-2021-recap">
-지난주, 우리는 6번째 React Conf를 개최했습니다. 지난 몇 년 동안 우리는 React Conf 무대를 통해 React Native, React Hooks와 같은 업계 변화를 알리는 발표를 해왔습니다. 올해는 React 18의 출시와 동시 기능의 점진적인 도입을 시작으로 React의 멀티 플랫폼 비전을 공유했습니다.
+지난주, 6번째 React Conf를 개최했습니다. 지난 몇 년 동안 React Conf 무대를 통해 React Native, React Hook과 같은 업계 변화를 알리는 발표를 했습니다. 올해는 React 18의 출시 및 동시성 기능의 점진적 도입을 시작으로 React의 멀티 플랫폼 비전을 공유했습니다.
 </BlogCard>
 
 <BlogCard title="React 18에 대한 계획" date="2021년 6월 8일" url="/blog/2021/06/08/the-plan-for-react-18">
