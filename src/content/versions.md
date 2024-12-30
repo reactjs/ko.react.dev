@@ -1,27 +1,22 @@
 ---
-title: React Versions
+title: React 버전
 ---
 
 <Intro>
 
-[react.dev](https://react.dev)의 React 문서는 최신 버전의 React에 대한 문서를 제공합니다.
+[ko.react.dev](/)의 React 문서는 최신 버전의 React에 대한 문서를 제공합니다.
 
 </Intro>
 
-주요 버전 내에서 문서를 최신 상태로 유지하기 위해 노력하며 각 소규모 또는 패치 버전에 대한 문서는 게시하지 않습니다. 새로운 주요 버전이 출시되면 이전 버전의 문서는 `x.react.dev`로 보관합니다. 자세한 내용은 [버전 관리 정책](/community/versioning-policy)을 참고하세요.
+주<sup>Major, 主</sup> 버전 내에서 문서를 최신 상태로 유지하기 위해 노력하며, 부<sup>Minor, 部</sup> 또는 수<sup>Patch, 修</sup> 버전에 대한 문서는 게시하지 않습니다. 새로운 주<sup>Major, 主</sup> 버전이 출시되면 이전 버전의 문서는 `x.react.dev`로 보관합니다. 자세한 내용은 [버전 관리 정책](/community/versioning-policy)을 참고하세요.
 
-이전 주요 버전의 기록은 아래에서 찾을 수 있습니다.
+이전의 주<sup>Major, 主</sup> 버전에 대한 기록은 아래에서 찾을 수 있습니다.
 
-<<<<<<< HEAD
-## Future versions {/*future-versions*/}
-=======
-You can find an archive of previous major versions below.
-## Latest version: 19.0 {/*latest-version*/}
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+## 최신 버전: 19.0 {/*latest-version*/}
 
 - [react.dev](https://react.dev) {/*docs-19*/}
 
-## Previous versions {/*previous-versions*/}
+## 이전 버전 {/*previous-versions*/}
 
 - [18.react.dev](https://18.react.dev) {/*docs-18*/}
 - [17.react.dev](https://17.react.dev) {/*docs-17*/}
@@ -32,7 +27,7 @@ You can find an archive of previous major versions below.
 
 #### 이전 문서들 {/*legacy-docs*/}
 
-2023년, React 18에 대한 [새로운 문서](/blog/2023/03/16/introducing-react-dev)를 [react.dev](https://react.dev)로 출시했습니다. 기존 React 18 문서는 [legacy.reactjs.org](https://legacy.reactjs.org)에서 볼 수 있습니다. 버전 17 이하의 문서는 기존 사이트에 호스팅됩니다.
+2023년, React 18에 대한 [새로운 문서](/blog/2023/03/16/introducing-react-dev)를 [react.dev](https://react.dev)로 출시했습니다. 이전의 React 18 문서는 [legacy.reactjs.org](https://legacy.reactjs.org)에서 볼 수 있습니다. 버전 17 이하의 문서는 이전 사이트에 호스팅됩니다.
 
 React 15 이전 버전의 경우, [15.react.dev](https://15.react.dev)를 참고하세요.
 
@@ -296,12 +291,12 @@ React 15 이전 버전의 경우, [15.react.dev](https://15.react.dev)를 참고
 - [v0.3.1 (May 2013)](https://github.com/facebook/react/blob/main/CHANGELOG.md#031-may-30-2013)
 - [v0.3.0 (May 2013)](https://github.com/facebook/react/blob/main/CHANGELOG.md#031-may-30-2013)
 
-### 초기 커밋 {/*initial-commit*/}
+### 최초의 커밋 {/*initial-commit*/}
 
-React는 2013년 5월 29일에 오픈소스로 공개되었습니다. 초기 커밋은 다음과 같습니다. [`75897c`: 최초 공개 릴리즈](https://github.com/facebook/react/commit/75897c2dcd1dd3a6ca46284dd37e13d22b4b16b4)
+React는 2013년 5월 29일에 오픈소스로 공개되었습니다. 최초의 커밋은 [`75897c`: 최초 공개 릴리즈](https://github.com/facebook/react/commit/75897c2dcd1dd3a6ca46284dd37e13d22b4b16b4)입니다.
 
 첫 블로그 게시글을 참고하세요. [왜 우리는 React를 만들었는가?](https://legacy.reactjs.org/blog/2013/06/05/why-react.html)
 
-React는 2013년에 Facebook 시애틀에서 오픈소스로 공개되었습니다.
+React는 2013년에 페이스북<sup>Facebook</sup> 시애틀에서 오픈소스로 공개되었습니다.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XxVg_s8xAms?si=466vSJrnXTn05j9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
