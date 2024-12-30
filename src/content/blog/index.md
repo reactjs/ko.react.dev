@@ -72,12 +72,12 @@ React 18은 릴리스 노트에서 언급한 대로, 새로운 동시성 렌더�
 지난주, 우리는 6번째 React Conf를 개최했습니다. 지난 몇 년 동안 우리는 React Conf 무대를 통해 React Native, React Hooks와 같은 업계 변화를 알리는 발표를 해왔습니다. 올해는 React 18의 출시와 동시 기능의 점진적인 도입을 시작으로 React의 멀티 플랫폼 비전을 공유했습니다.
 </BlogCard>
 
-<BlogCard title="React 18 계획" date="2021년 6월 8일" url="/blog/2021/06/08/the-plan-for-react-18">
+<BlogCard title="React 18에 대한 계획" date="2021년 6월 8일" url="/blog/2021/06/08/the-plan-for-react-18">
 React 팀은 몇 가지 업데이트를 공유하게 되어 기쁩니다.
 
 - 다음 주요 버전이 될 React 18 릴리즈에 대한 작업을 시작했습니다.
 - 커뮤니티가 React 18의 새로운 기능을 점진적으로 채택할 수 있도록 준비하기 위해 워킹 그룹을 만들었습니다.
-- 라이브러리 작성자가 사용해 보고 피드백을 제공할 수 있도록 React 18 알파를 게시했습니다.
+- 라이브러리 작성자가 사용해 보고 피드백을 제공할 수 있도록 React 18 Alpha를 게시했습니다.
 </BlogCard>
 
 <BlogCard title="제로 번들 사이즈 React 서버 컴포넌트를 소개합니다" date="2020년 12월 21일" url="/blog/2020/12/21/data-fetching-with-react-server-components">
