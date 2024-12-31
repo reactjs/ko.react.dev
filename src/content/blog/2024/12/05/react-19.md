@@ -330,7 +330,7 @@ We've added two new APIs to `react-dom/static` for static site generation:
 - [`prerender`](/reference/react-dom/static/prerender)
 - [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream)
 
-These new APIs improve on `renderToString` by waiting for data to load for static HTML generation. They are designed to work with streaming environments like Node.js Streams and Web Streams. For example, in a Web Stream environment, you can prerender a React tree to static HTML with `prerender`: 
+These new APIs improve on `renderToString` by waiting for data to load for static HTML generation. They are designed to work with streaming environments like Node.js Streams and Web Streams. For example, in a Web Stream environment, you can prerender a React tree to static HTML with `prerender`:
 
 ```js
 import { prerender } from 'react-dom/static';
@@ -362,11 +362,7 @@ React 19 includes all of the React Server Components features included from the 
 
 #### How do I build support for Server Components? {/*how-do-i-build-support-for-server-components*/}
 
-<<<<<<< HEAD:src/content/blog/2024/04/25/react-19.md
-While React Server Components in React 19 are stable and will not break between major versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x.
-=======
-While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x. 
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc:src/content/blog/2024/12/05/react-19.md
+While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x.
 
 To support React Server Components as a bundler or framework, we recommend pinning to a specific React version, or using the Canary release. We will continue working with bundlers and frameworks to stabilize the APIs used to implement React Server Components in the future.
 
