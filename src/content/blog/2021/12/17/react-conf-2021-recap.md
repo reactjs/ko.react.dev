@@ -27,9 +27,9 @@ React Conf가 온라인으로 개최된 것은 이번이 처음이며, 8개 언�
 
 기조연설에서 React 18을 시작으로 React의 미래에 대한 비전을 공유했습니다.
 
-React 18은 오랫동안 기다려온 동시 렌더러<sup>Concurrent Renderer</sup>를 추가하고 Suspense를 주<sup>Major, 主</sup><sub>(역자. Breaking Change를 일으키는)</sub> 변경 없이 업데이트했습니다. 앱은 React 18로 업그레이드하여 다른 주<sup>Major, 主</sup> 릴리즈와 동등한 수준의 노력으로 동시성 기능을 점진적으로 도입할 수 있습니다.
+React 18은 오랫동안 기다려온 동시성 렌더러<sup>Concurrent Renderer</sup>를 추가하고 Suspense를 주<sup>Major, 主</sup><sub>(역자. Breaking Change를 일으키는)</sub> 변경 없이 업데이트했습니다. 앱은 React 18로 업그레이드하여 다른 주<sup>Major, 主</sup> 릴리즈와 동등한 수준의 노력으로 동시성 기능을 점진적으로 도입할 수 있습니다.
 
-**이는 동시 모드가 없고 동시성 기능만 있음을 의미합니다.**
+**이는 동시성 모드가 없고 동시성 기능만 있음을 의미합니다.**
 
 기조연설에서는 Suspense, 서버 컴포넌트, 새로운 React 워킹 그룹에 대한 비전과 React Native에 대한 장기적인 멀티플랫폼 비전도 공유했습니다.
 

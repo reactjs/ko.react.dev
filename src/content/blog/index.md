@@ -65,7 +65,7 @@ React 18은 수년간의 준비 끝에 탄생한 버전으로 React 팀에게 �
 </BlogCard>
 
 <BlogCard title="React 18로 업그레이드하는 방법" date="2022년 3월 8일" url="/blog/2022/03/08/react-18-upgrade-guide">
-React 18은 릴리스 노트에서 언급한 대로, 새로운 동시 렌더러를 도입하여 기존 애플리케이션에 점진적으로 적용할 계획입니다. 이 글에서는 React 18로 업그레이드하는 방법을 단계별로 소개하겠습니다.
+React 18은 릴리스 노트에서 언급한 대로, 새로운 동시성 렌더러를 도입하여 기존 애플리케이션에 점진적으로 적용할 계획입니다. 이 글에서는 React 18로 업그레이드하는 방법을 단계별로 소개하겠습니다.
 </BlogCard>
 
 <BlogCard title="React Conf 2021 요약" date="2021년 12월 17일" url="/blog/2021/12/17/react-conf-2021-recap">

@@ -27,9 +27,9 @@ React 팀은 몇 가지 업데이트를 공유하게 되어 기쁩니다.
 
 React 18이 출시되면 [자동 일괄 처리<sup>Automatic Batching</sup>](https://github.com/reactwg/react-18/discussions/21)와 같은 기본 개선 사항 및 [`startTransition`](https://github.com/reactwg/react-18/discussions/41)과 같은 새로운 API, `React.lazy`를 기본적으로 지원하는 [새로운 스트리밍 서버 렌더러<sup>Streaming Server Renderer</sup>](https://github.com/reactwg/react-18/discussions/37)가 포함될 예정입니다.
 
-이러한 기능들은 React 18에 추가될 새로운 선택적<sup>Opt-In</sup> 메커니즘 덕분에 가능해졌습니다. 이를 "동시 렌더링<sup>Concurrent Rendering</sup>"이라고 하며, 이 기능을 통해 React는 동시에 여러 버전의 UI를 준비할 수 있습니다. 이러한 변경 사항들은 대부분 직접 볼 수는 없지만, 앱의 실제 성능과 체감 성능을 모두 개선할 수 있는 새로운 가능성을 열어줍니다.
+이러한 기능들은 React 18에 추가될 새로운 선택적<sup>Opt-In</sup> 메커니즘 덕분에 가능해졌습니다. 이를 "동시성 렌더링<sup>Concurrent Rendering</sup>"이라고 하며, 이 기능을 통해 React는 동시에 여러 버전의 UI를 준비할 수 있습니다. 이러한 변경 사항들은 대부분 직접 볼 수는 없지만, 앱의 실제 성능과 체감 성능을 모두 개선할 수 있는 새로운 가능성을 열어줍니다.
 
-React의 미래에 대한 저희들의 연구를 계속 지켜보셨다면(물론, 그럴 필요는 없습니다!), "동시 모드<sup>Concurrent Mode</sup>"라는 기능에 대해 들어보셨거나, 그것이 여러분들의 앱을 망칠 수 있다는 이야기를 들으셨을 수도 있습니다. 이러한 커뮤니티의 피드백을 반영하여 점진적인 도입을 위한 업그레이드 전략을 재설계했습니다. "모드"를 모두 사용하거나 사용하지 않는 대신, 동시 렌더링<sup>Concurrent Rendering</sup>은 새로운 기능 중 하나에 의해 트리거되는 업데이트에 대해서만 활성화됩니다. 즉, **재작성 없이 React 18을 도입하고 자신의 속도에 맞춰 새로운 기능들을 사용해 볼 수 있습니다**.
+React의 미래에 대한 저희들의 연구를 계속 지켜보셨다면(물론, 그럴 필요는 없습니다!), "동시성 모드<sup>Concurrent Mode</sup>"라는 기능에 대해 들어보셨거나, 그것이 여러분들의 앱을 망칠 수 있다는 이야기를 들으셨을 수도 있습니다. 이러한 커뮤니티의 피드백을 반영하여 점진적인 도입을 위한 업그레이드 전략을 재설계했습니다. "모드"를 모두 사용하거나 사용하지 않는 대신, 동시성 렌더링<sup>Concurrent Rendering</sup>은 새로운 기능 중 하나에 의해 트리거되는 업데이트에 대해서만 활성화됩니다. 즉, **재작성 없이 React 18을 도입하고 자신의 속도에 맞춰 새로운 기능들을 사용해 볼 수 있습니다**.
 
 ## 점진적인 도입 전략 {/*a-gradual-adoption-strategy*/}
 
