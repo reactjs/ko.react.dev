@@ -112,13 +112,8 @@ This will run the following codemods from `react-codemod`:
 - [`replace-reactdom-render`](https://github.com/reactjs/react-codemod?tab=readme-ov-file#replace-reactdom-render)
 - [`replace-string-ref`](https://github.com/reactjs/react-codemod?tab=readme-ov-file#replace-string-ref)
 - [`replace-act-import`](https://github.com/reactjs/react-codemod?tab=readme-ov-file#replace-act-import)
-<<<<<<< HEAD
 - [`replace-use-form-state`](https://github.com/reactjs/react-codemod?tab=readme-ov-file#replace-use-form-state)
-- [`prop-types-typescript`](TODO)
-=======
-- [`replace-use-form-state`](https://github.com/reactjs/react-codemod?tab=readme-ov-file#replace-use-form-state) 
 - [`prop-types-typescript`](https://codemod.com/registry/react-prop-types-typescript)
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 This does not include the TypeScript changes. See [TypeScript changes](#typescript-changes) below.
 
@@ -396,7 +391,7 @@ npx codemod@latest react/19/replace-act-import
 
 #### Removed: `ReactDOM.render` {/*removed-reactdom-render*/}
 
-`ReactDOM.render` was deprecated in [March 2022 (v18.0.0)](https://react.dev/blog/2022/03/08/react-18-upgrade-guide). In React 19, we're removing `ReactDOM.render` and you'll need to migrate to using [`ReactDOM.createRoot`](https://react.dev/reference/react-dom/client/createRoot):
+`ReactDOM.render` was deprecated in [March 2022 (v18.0.0)](/blog/2022/03/08/react-18-upgrade-guide). In React 19, we're removing `ReactDOM.render` and you'll need to migrate to using [`ReactDOM.createRoot`](/reference/react-dom/client/createRoot):
 
 ```js
 // Before
@@ -421,7 +416,7 @@ npx codemod@latest react/19/replace-reactdom-render
 
 #### Removed: `ReactDOM.hydrate` {/*removed-reactdom-hydrate*/}
 
-`ReactDOM.hydrate` was deprecated in [March 2022 (v18.0.0)](https://react.dev/blog/2022/03/08/react-18-upgrade-guide). In React 19, we're removing `ReactDOM.hydrate` you'll need to migrate to using [`ReactDOM.hydrateRoot`](https://react.dev/reference/react-dom/client/hydrateRoot),
+`ReactDOM.hydrate` was deprecated in [March 2022 (v18.0.0)](/blog/2022/03/08/react-18-upgrade-guide). In React 19, we're removing `ReactDOM.hydrate` you'll need to migrate to using [`ReactDOM.hydrateRoot`](/reference/react-dom/client/hydrateRoot),
 
 ```js
 // Before
