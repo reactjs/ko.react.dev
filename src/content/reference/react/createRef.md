@@ -60,7 +60,7 @@ createRef`는 단일 속성을 가진 객체를 반환합니다.
 
 ---
 
-## 사용 {/*usage*/}
+## 사용법 {/*usage*/}
 
 ### 클래스 컴포넌트에서 ref 선언하기 {/*declaring-a-ref-in-a-class-component*/}
 
