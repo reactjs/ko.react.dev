@@ -50,11 +50,7 @@ class Greeting extends Component {
 
 ### `context` {/*context*/}
 
-<<<<<<< HEAD
-클래스 컴포넌트의 [context](/learn/passing-data-deeply-with-context)는 `this.context`로 사용할 수 있습니다. [`static contextType`](#static-contexttype)(modern) 또는 [`static contextTypes`](#static-contexttypes)(deprecated)를 사용하여 *어떤* context를 받길 원하는지 지정해야만 사용할 수 있습니다.
-=======
-The [context](/learn/passing-data-deeply-with-context) of a class component is available as `this.context`. It is only available if you specify *which* context you want to receive using [`static contextType`](#static-contexttype).
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+클래스 컴포넌트의 [context](/learn/passing-data-deeply-with-context)는 `this.context`로 사용할 수 있습니다. [`static contextType`](#static-contexttype)를 사용하여 *어떤* context를 받을지 지정해야만 사용할 수 있습니다.
 
 클래스 컴포넌트는 한 번에 하나의 context만 읽을 수 있습니다.
 
@@ -109,21 +105,6 @@ class Greeting extends Component {
 
 ---
 
-<<<<<<< HEAD
-### `refs` {/*refs*/}
-
-<Deprecated>
-
-이 API는 React의 향후 주요 버전에서 제거될 예정입니다. [대신 `createRef`를 사용하세요.](/reference/react/createRef)
-
-</Deprecated>
-
-컴포넌트에 대한 [legacy string refs](https://ko.reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs)에 액세스할 수 있습니다.
-
----
-
-=======
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ### `state` {/*state*/}
 
 클래스 컴포넌트의 state는 `this.state`로 사용할 수 있습니다. `state` 필드는 반드시 객체여야합니다. state를 직접 변경하지 마세요. state를 변경하려면 새 state로 `setState`를 호출하세요.
@@ -501,21 +482,6 @@ class ChatRoom extends Component {
 
 ---
 
-<<<<<<< HEAD
-### `getChildContext()` {/*getchildcontext*/}
-
-<Deprecated>
-
-이 API는 향후 React의 주요 버전에서 제거될 예정입니다. [대신 `Context.Provider`를 사용하세요.](/reference/react/createContext#provider)
-
-</Deprecated>
-
-이 컴포넌트가 제공하는 [legacy context](https://ko.reactjs.org/docs/legacy-context.html)에 대한 값을 지정할 수 있습니다.
-
----
-
-=======
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ### `getSnapshotBeforeUpdate(prevProps, prevState)` {/*getsnapshotbeforeupdate*/}
 
 `getSnapshotBeforeUpdate`를 구현하면 React가 DOM을 업데이트하기 바로 전에 호출합니다. 이를 통해 컴포넌트가 잠재적으로 변경되기 전에 DOM에서 일부 정보(예: 스크롤 위치)를 캡처할 수 있습니다. 이 생명주기 메서드가 반환하는 모든 값은 [`componentDidUpdate`](#componentdidupdate)에 매개변수로 전달됩니다.
@@ -746,15 +712,9 @@ class Rectangle extends Component {
 
 #### 매개변수 {/*shouldcomponentupdate-parameters*/}
 
-<<<<<<< HEAD
 - `nextProps`: 컴포넌트가 렌더링할 다음 props입니다. `nextProps`와 [`this.props`](#props)를 비교하여 무엇이 변경되었는지 확인합니다.
 - `nextState`: 컴포넌트가 렌더링할 다음 state입니다. `nextState`와 [`this.state`](#props)를 비교하여 무엇이 변경되었는지 확인합니다.
-- `nextContext`: 컴포넌트가 렌더링할 다음 context입니다. `nextContext`를 [`this.context`](#context)와 비교하여 변경된 내용을 확인합니다. [`static contextType`](#static-contexttype)(modern) 또는 [`static contextTypes`](#static-contexttypes)(legacy)를 지정한 경우에만 사용할 수 있습니다.
-=======
-- `nextProps`: The next props that the component is about to render with. Compare `nextProps` to [`this.props`](#props) to determine what changed.
-- `nextState`: The next state that the component is about to render with. Compare `nextState` to [`this.state`](#props) to determine what changed.
-- `nextContext`: The next context that the component is about to render with. Compare `nextContext` to [`this.context`](#context) to determine what changed. Only available if you specify [`static contextType`](#static-contexttype).
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+- `nextContext`: 컴포넌트가 렌더링할 다음 context입니다. `nextContext`를 [`this.context`](#context)와 비교하여 변경된 내용을 확인합니다. [`static contextType`](#static-contexttype)(modern)을 지정한 경우에만 사용할 수 있습니다.
 
 #### 반환값 {/*shouldcomponentupdate-returns*/}
 
@@ -828,13 +788,8 @@ React에 재렌더링을 건너뛸 수 있음을 알리려면 `false`를 반환�
 
 #### 매개변수 {/*unsafe_componentwillreceiveprops-parameters*/}
 
-<<<<<<< HEAD
 - `nextProps`: 컴포넌트가 부모 컴포넌트로부터 받으려는 다음 props입니다. `nextProps`와 [`this.props`](#props)를 비교하여 무엇이 변경되었는지 확인합니다.
-- `nextContext`: 컴포넌트가 가장 가까운 공급자(provider)로부터 받으려는 다음 props입니다. `nextContext`를 [`this.context`](#context)와 비교하여 변경된 내용을 확인합니다. [`static contextType`](#static-contexttype)(modern) 또는 [`static contextTypes`](#static-contexttypes)(legacy)를 지정한 경우에만 사용할 수 있습니다.
-=======
-- `nextProps`: The next props that the component is about to receive from its parent component. Compare `nextProps` to [`this.props`](#props) to determine what changed.
-- `nextContext`: The next context that the component is about to receive from the closest provider. Compare `nextContext` to [`this.context`](#context) to determine what changed. Only available if you specify [`static contextType`](#static-contexttype).
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+- `nextContext`: 컴포넌트가 가장 가까운 공급자(provider)로부터 받으려는 다음 props입니다. `nextContext`를 [`this.context`](#context)와 비교하여 변경된 내용을 확인합니다. [`static contextType`](#static-contexttype)(modern)을 지정한 경우에만 사용할 수 있습니다.
 
 #### 반환값 {/*unsafe_componentwillreceiveprops-returns*/}
 
@@ -899,33 +854,6 @@ React에 재렌더링을 건너뛸 수 있음을 알리려면 `false`를 반환�
 
 ---
 
-<<<<<<< HEAD
-### `static childContextTypes` {/*static-childcontexttypes*/}
-
-<Deprecated>
-
-이 API는 향후 React의 주요 버전에서 제거될 예정입니다. [대신 `static contextType`을 사용하세요.](#static-contexttype)
-
-</Deprecated>
-
-이 컴포넌트가 제공하는 [legacy context](https://ko.reactjs.org/docs/legacy-context.html)를 지정할 수 있습니다.
-
----
-
-### `static contextTypes` {/*static-contexttypes*/}
-
-<Deprecated>
-
-이 API는 향후 React의 주요 버전에서 제거될 예정입니다. [대신 `static contextType`을 사용하세요.](#static-contexttype)
-
-</Deprecated>
-
-이 컴포넌트가 사용할 [legacy context](https://ko.reactjs.org/docs/legacy-context.html)를 지정할 수 있습니다.
-
----
-
-=======
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ### `static contextType` {/*static-contexttype*/}
 
 클래스 컴포넌트에서 [`this.context`](#context-instance-field) 를 읽으려면 읽어야 하는 context를 지정해야 합니다. `static contextType`으로 지정하는 context는 이전에 [`createContext`](/reference/react/createContext)로 생성한 값이어야 합니다.
@@ -1000,37 +928,6 @@ class Button extends Component {
 
 ---
 
-<<<<<<< HEAD
-### `static propTypes` {/*static-proptypes*/}
-
-[`prop-types`](https://www.npmjs.com/package/prop-types) 라이브러리와 함께 `static propTypes`를 정의하여 컴포넌트에서 허용되는 props의 유형을 선언할 수 있습니다. 이러한 유형은 렌더링 중과 개발 중에만 확인됩니다.
-
-```js
-import PropTypes from 'prop-types';
-
-class Greeting extends React.Component {
-  static propTypes = {
-    name: PropTypes.string
-  };
-
-  render() {
-    return (
-      <h1>Hello, {this.props.name}</h1>
-    );
-  }
-}
-```
-
-<Note>
-
-런타임에 prop 타입을 확인하는 대신 [TypeScript](https://www.typescriptlang.org/ko/)를 사용하는 것을 추천합니다.
-
-</Note>
-
----
-
-=======
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ### `static getDerivedStateFromError(error)` {/*static-getderivedstatefromerror*/}
 
 `static getDerivedStateFromError`를 정의하면 렌더링 도중 자식 컴포넌트(멀리 떨어진 자식 포함)가 에러를 throw 할 때 React가 이를 호출합니다. 이렇게 하면 UI를 지우는 대신 오류 메시지를 표시할 수 있습니다.
