@@ -4,13 +4,13 @@ title: Children
 
 <Pitfall>
 
-`Children`을 사용하는 것은 일반적이지 않고 취약한 코드가 될 수 있습니다. [일반적으로 사용하는 대안을 살펴보세요.](#alternatives)
+`Children`을 사용하는 것은 일반적이지 않고 불안정한 코드를 만들 수 있습니다. [일반적으로 사용하는 대안을 살펴보세요.](#alternatives)
 
 </Pitfall>
 
 <Intro>
 
-`Children`을 사용해서 [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children)로 받은 JSX를 조작하고 변환할 수 있습니다.
+`Children`을 사용해서 [`children` Prop](/learn/passing-props-to-a-component#passing-jsx-as-children)로 받은 JSX를 조작하고 변환할 수 있습니다.
 
 ```js
 const mappedChildren = Children.map(children, child =>
@@ -46,11 +46,11 @@ function RowList({ children }) {
 }
 ```
 
-[아래 예시 보기](#counting-children)
+[아래 예시 보기](#counting-children).
 
 #### 매개변수 {/*children-count-parameters*/}
 
-* `children`: 컴포넌트에서 받은 [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
+* `children`: 컴포넌트에서 받은 [`children` Prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
 
 #### 반환값 {/*children-count-returns*/}
 
@@ -58,7 +58,7 @@ function RowList({ children }) {
 
 #### 주의 사항 {/*children-count-caveats*/}
 
-- 빈 노드(`null`, `undefined` 혹은 Boolean), 문자열, 숫자, [React 엘리먼트](/reference/react/createElement)는 개별 노드로 간주합니다. 배열 자체는 개별 노드가 아니지만 배열의 자식 요소는 개별 노드로 간주합니다. **React 엘리먼트의 하위 요소는 순회하지 않습니다.** React 엘리먼트는 렌더링 되지 않으며 자식 요소를 순회하지 않습니다. [Fragments](/reference/react/Fragment) 역시 순회하지 않습니다.
+- 빈 노드(`null`, `undefined` 혹은 Boolean), 문자열, 숫자, [React 엘리먼트](/reference/react/createElement)는 개별 노드로 간주합니다. 배열 자체는 개별 노드가 아니지만 배열의 자식 요소는 개별 노드로 간주합니다. **React 엘리먼트의 하위 요소는 순회하지 않습니다.** React 엘리먼트는 렌더링 되지 않으며 자식 요소를 순회하지 않습니다. [Fragment](/reference/react/Fragment) 역시 순회하지 않습니다.
 
 ---
 
@@ -78,11 +78,11 @@ function SeparatorList({ children }) {
   // ...
 ```
 
-[아래 예시 보기](#running-some-code-for-each-child)
+[아래 예시 보기](#running-some-code-for-each-child).
 
 #### 매개변수 {/*children-foreach-parameters*/}
 
-* `children`: 컴포넌트에서 받은 [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
+* `children`: 컴포넌트에서 받은 [`children` Prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
 * `fn`: [배열의`forEach` 메서드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) 콜백처럼 각 자식 요소에서 실행할 함수. 자식 요소를 첫 번째 인수로, 인덱스를 두 번째 인수로 받습니다. 인덱스는 0에서 시작해서 호출할 때마다 증가합니다.
 * **optional** `thisArg`: `fn` 함수가 호출될 때 사용될 [`this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)의 값. 생략 시 `undefined`로 간주합니다.
 
@@ -116,11 +116,11 @@ function RowList({ children }) {
 }
 ```
 
-[아래 예시 보기](#transforming-children)
+[아래 예시 보기](#transforming-children).
 
 #### 매개변수 {/*children-map-parameters*/}
 
-* `children`: 컴포넌트에서 받은 [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
+* `children`: 컴포넌트에서 받은 [`children` Prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
 * `fn`: [베열의 `map` 메서드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 콜백같은 매핑 함수. 자식 요소를 첫 번째 인수로, 인덱스를 두 번째 인수로 받습니다. 인덱스는 0에서 시작해서 호출할 때마다 증가합니다. 함수는 빈 노드(`null`, `undefined` 혹은 Boolean), 문자열, 숫자, React 엘리먼트 혹은 다른 React 노드의 배열과 같은 React 노드를 반환해야 합니다.
 * **optional** `thisArg`: `fn` 함수가 호출될 때 사용될 [`this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)의 값. 생략시 `undefined`로 간주합니다.
 
@@ -151,12 +151,12 @@ function Box({ children }) {
 
 #### 매개변수 {/*children-only-parameters*/}
 
-* `children`: 컴포넌트에서 받은 [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
+* `children`: 컴포넌트에서 받은 [`children` Prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
 
 #### 반환값 {/*children-only-returns*/}
 
 `children`이 [유효한 엘리먼트](/reference/react/isValidElement)라면 그 엘리먼트를 반환합니다.
-그렇지 않다면, 에러를 throw합니다.
+그렇지 않다면, 에러를 던집니다.
 
 #### 주의 사항 {/*children-only-caveats*/}
 
@@ -179,7 +179,7 @@ export default function ReversedList({ children }) {
 
 #### 매개변수 {/*children-toarray-parameters*/}
 
-* `children`: 컴포넌트에서 받은 [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
+* `children`: 컴포넌트에서 받은 [`children` Prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
 
 #### 반환값 {/*children-toarray-returns*/}
 
@@ -188,7 +188,7 @@ export default function ReversedList({ children }) {
 #### 주의 사항 {/*children-toarray-caveats*/}
 
 
-- 빈 노드(`null`, `undefined`, 혹은 Booleans)는 반환된 배열에서 생략됩니다. **반환된 엘리먼트의 key는 기존 엘리먼트의 key, 중첩 수준과 위치를 기준으로 계산되므로** 배열을 평면화하더라도 동작이 변경되지 않습니다.
+- 빈 노드(`null`, `undefined`, 혹은 Boolean)는 반환된 배열에서 생략됩니다. **반환된 엘리먼트의 key는 기존 엘리먼트의 key, 중첩 수준과 위치를 기준으로 계산되므로** 배열을 평면화하더라도 동작이 변경되지 않습니다.
 
 ---
 
@@ -196,7 +196,7 @@ export default function ReversedList({ children }) {
 
 ### `children` 변환하기 {/*transforming-children*/}
 
-`Children.map`은 [`children` prop로 받은](/learn/passing-props-to-a-component#passing-jsx-as-children) JSX를 변환합니다.
+`Children.map`은 [`children` Prop로 받은](/learn/passing-props-to-a-component#passing-jsx-as-children) JSX를 변환합니다.
 
 ```js {6,10}
 import { Children } from 'react';
@@ -214,7 +214,7 @@ function RowList({ children }) {
 }
 ```
 
-위 예시에서 `RowList`는 모든 자식 요소를 `<div className="Row">`로 감싸줍니다. 부모 컴포넌트가 `RowList`에 세 개의 `<p>` 태그를 `children` prop로 넘겨준다고 가정해 봅시다.
+위 예시에서 `RowList`는 모든 자식 요소를 `<div className="Row">`로 감싸줍니다. 부모 컴포넌트가 `RowList`에 세 개의 `<p>` 태그를 `children` Prop로 넘겨준다고 가정해 봅시다.
 
 ```js
 <RowList>
@@ -293,11 +293,11 @@ export default function RowList({ children }) {
 
 <DeepDive>
 
-#### `children` prop는 왜 항상 배열이 아닌가요? {/*why-is-the-children-prop-not-always-an-array*/}
+#### `children` Prop는 왜 항상 배열이 아닌가요? {/*why-is-the-children-prop-not-always-an-array*/}
 
-React에서 `children` prop는 *불분명한* 데이터 구조로 취급됩니다. `children`이 구조화된 방식에 의존할 수 없다는 의미입니다. 변환하거나 필터링하거나 개수를 세기 위해서는 `Children` 메서드를 사용해야 합니다.
+React에서 `children` Prop는 *불분명한* 데이터 구조로 취급됩니다. `children`이 구조화된 방식에 의존할 수 없다는 의미입니다. 변환하거나 필터링하거나 개수를 세기 위해서는 `Children` 메서드를 사용해야 합니다.
 
-실제로 `children` 데이터 구조는 내부적으로 배열로 표현되고는 합니다. 그러나 만약 하나의 자식만 있다면 React는 불필요한 메모리 오버헤드를 방지하기 위해 배열을 추가로 생성하지 않습니다. `children` prop에 직접 접근하지 않고 `Children` 메서드를 사용한다면, 실제로 React가 데이터 구조를 어떻게 구현했더라도 코드는 깨지지 않습니다.
+실제로 `children` 데이터 구조는 내부적으로 배열로 표현되고는 합니다. 그러나 만약 하나의 자식만 있다면 React는 불필요한 메모리 오버헤드를 방지하기 위해 배열을 추가로 생성하지 않습니다. `children` Prop에 직접 접근하지 않고 `Children` 메서드를 사용한다면, 실제로 React가 데이터 구조를 어떻게 구현했더라도 코드는 깨지지 않습니다.
 
 `children`이 배열이더라도 `Children.map`을 유용하게 쓸 수 있습니다. 예를 들어 `Children.map`은 반환된 엘리먼트의 [key](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 전달받은 `children`의 key와 병합합니다. 이를 통해 위 예시처럼 감싸지더라도 원본 JSX 자식 요소는 key를 잃어버리지 않습니다.
 
@@ -305,12 +305,12 @@ React에서 `children` prop는 *불분명한* 데이터 구조로 취급됩니�
 
 <Pitfall>
 
-`children` 데이터 구조는 JSX로 전달된 컴포넌트의 **렌더링 결과를 포함하지 않습니다.** 아래 예시에서 `RowList`가 받은 `children`에는 세 개가 아닌 두 개의 아이템만 포함됩니다.
+`children` 데이터 구조는 JSX로 전달된 컴포넌트의 **렌더링 결과를 포함하지 않습니다.** 아래 예시에서 `RowList`가 받은 `children`에는 세 개가 아닌 두 개의 아이템만 포함합니다.
 
 1. `<p>This is the first item.</p>`
 2. `<MoreRows />`
 
-그렇기 때문에 아래 예시에서는 두 개의 래퍼만 생성됩니다.
+그렇기 때문에 아래 예시에서는 두 개의 래퍼만 생성합니다.
 
 <Sandpack>
 
@@ -492,7 +492,7 @@ export default function RowList({ children }) {
 
 ### `children` 배열로 병합하기 {/*converting-children-to-an-array*/}
 
-`Children.toArray(children)`는 `children` 데이터 구조를 일반적인 JavaScript 배열로 변경합니다. 이것을 사용해서 [`filter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [`sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort), [`reverse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)와 같은 배열의 내장 메서드를 조작할 수 있습니다.
+`Children.toArray(children)`는 `children` 데이터 구조를 일반적인 자바스크립트 배열로 변경합니다. 이것을 사용해서 [`filter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [`sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort), [`reverse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)와 같은 배열의 내장 메서드를 조작할 수 있습니다.
 
 <Sandpack>
 
@@ -540,7 +540,7 @@ export default function ReversedList({ children }) {
 import { Children } from 'react';
 ```
 
-소문자 `c`인 [`children`prop](/learn/passing-props-to-a-component#passing-jsx-as-children)와 혼동해서는 안 됩니다. [`children`prop](/learn/passing-props-to-a-component#passing-jsx-as-children)는 좋은 방법이고 권장되는 방식입니다.
+소문자 `c`인 [`children` Prop](/learn/passing-props-to-a-component#passing-jsx-as-children)와 혼동해서는 안 됩니다. [`children` Prop](/learn/passing-props-to-a-component#passing-jsx-as-children)는 좋은 방법이고 권장되는 방식입니다.
 
 </Note>
 
@@ -679,9 +679,9 @@ export function Row({ children }) {
 
 ---
 
-### prop로 객체 배열 받기 {/*accepting-an-array-of-objects-as-a-prop*/}
+### Prop로 객체 배열 받기 {/*accepting-an-array-of-objects-as-a-prop*/}
 
-prop로 명시적으로 배열을 전달할 수 있습니다. 예를 들어, 아래 예시에서 `RowList`는 `rows` 배열을 prop로 받습니다.
+Prop로 명시적으로 배열을 전달할 수 있습니다. 예를 들어, 아래 예시에서 `RowList`는 `rows` 배열을 Prop로 받습니다.
 
 <Sandpack>
 
@@ -730,9 +730,9 @@ export function RowList({ rows }) {
 
 </Sandpack>
 
-`rows`는 일반적인 JavaScript 배열이기 때문에, `RowList` 컴포넌트는 [`map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)과 같은 내장 배열 메서드를 사용할 수 있습니다.
+`rows`는 일반적인 자바스크립트 배열이기 때문에, `RowList` 컴포넌트는 [`map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)과 같은 내장 배열 메서드를 사용할 수 있습니다.
 
-이 패턴은 구조화된 데이터를 자식 요소와 함께 전달할 때 더 유용합니다. 아래 예시에서 `TabSwitcher` 컴포넌트는 `tabs` prop로 객체 배열을 받습니다.
+이 패턴은 구조화된 데이터를 자식 요소와 함께 전달할 때 더 유용합니다. 아래 예시에서 `TabSwitcher` 컴포넌트는 `tabs` Prop로 객체 배열을 받습니다.
 
 <Sandpack>
 
@@ -794,7 +794,7 @@ JSX로 자식 요소를 전달할 때와 달리 이런 방식은 각 아이템�
 
 ---
 
-### 렌더링 prop로 렌더링 커스텀하기 {/*calling-a-render-prop-to-customize-rendering*/}
+### 렌더링 Prop로 렌더링 커스텀하기 {/*calling-a-render-prop-to-customize-rendering*/}
 
 모든 개별 항목에 대해 JSX를 생성하는 대신 JSX를 반환하는 함수를 전달하고 필요할 때 해당 함수를 호출할 수도 있습니다. 아래 예시에서 `App` 컴포넌트는 `renderContent` 함수를 `TabSwitcher` 컴포넌트에 전달합니다. `TabSwitcher` 컴포넌트는 선택된 탭에 대해서만 `renderContent`를 호출합니다.
 
@@ -845,10 +845,10 @@ export default function TabSwitcher({ tabIds, getHeader, renderContent }) {
 
 </Sandpack>
 
-`renderContent`와 같이 사용자 인터페이스의 일부를 어떻게 렌더링할지 정의하는 prop를 *렌더링 prop*라고 합니다. 하지만 특별한 것은 아닙니다. 단지 일반적인 함수의 prop일 뿐입니다.
+`renderContent`와 같이 사용자 인터페이스의 일부를 어떻게 렌더링할지 정의하는 Prop를 *렌더링 Prop*라고 합니다. 하지만 특별한 것은 아닙니다. 단지 일반적인 함수의 Prop일 뿐입니다.
 
-렌더링 props는 함수이므로 정보를 전달할 수 있습니다.
-아래 예시에서 `RowList` 컴포넌트는 각 row의 `id`와 `index`를 `renderRow`에 렌더링 prop로 전달하고, `index`가 짝수인 row를 강조합니다.
+렌더링 Prop은은 함수이므로 정보를 전달할 수 있습니다.
+아래 예시에서 `RowList` 컴포넌트는 각 row의 `id`와 `index`를 `renderRow`에 렌더링 Prop로 전달하고, `index`가 짝수인 row를 강조합니다.
 
 <Sandpack>
 
