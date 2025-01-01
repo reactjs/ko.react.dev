@@ -35,6 +35,7 @@ React는 원래 [Jordan Walke](https://github.com/jordwalke)에 의해 만들어
 * [Josh Duck](https://github.com/joshduck)
 * [Joe Critchley](https://github.com/joecritch)
 * [Jeff Morrison](https://github.com/jeffmo)
+* [LuMir](https://github.com/lumirlumir)
 * [Luna Ruan](https://github.com/lunaruan)
 * [Kathryn Middleton](https://github.com/kmiddleton14)
 * [Keyan Zhang](https://github.com/keyz)
@@ -59,7 +60,7 @@ React는 원래 [Jordan Walke](https://github.com/jordwalke)에 의해 만들어
 
 이 목록이 전체 목록은 아닙니다.
 
-수년간 지도와 지원을 주신 [Tom Occhino](https://github.com/tomocchino)와 [Adam Wolff](https://github.com/wolffiex)에게 특별한 감사를 드립니다. [React를 다른 언어로 번역한](https://translations.react.dev/) 모든 자원봉사자에게도 감사합니다.
+수년간 지도와 지원을 주신 [Tom Occhino](https://github.com/tomocchino)와 [Adam Wolff](https://github.com/wolffiex)에게 특별한 감사를 드립니다. [React를 다른 언어로 번역한](https://translations.react.dev/) [루밀(LuMir)](https://github.com/lumirlumir) 및 모든 자원봉사자에게도 감사드립니다.
 
 ## 특별한 감사 인사 {/*additional-thanks*/}
 
