@@ -4,7 +4,7 @@
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET STARTED"
+      "sectionHeader": "시작하기"
     },
     {
       "title": "빠르게 시작하기",
@@ -16,7 +16,7 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "LEARN REACT"
+      "sectionHeader": "React 학습하기"
     },
     {
       "title": "UI 표현하기",
@@ -76,7 +76,7 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET INVOLVED"
+      "sectionHeader": "참여하기"
     },
     {
       "title": "React 커뮤니티",
@@ -84,7 +84,7 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "STAY INFORMED"
+      "sectionHeader": "최신 소식"
     },
     {
       "title": "React 블로그",
