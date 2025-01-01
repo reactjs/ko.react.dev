@@ -39,4 +39,4 @@ React에는 패턴 이해를 쉽게 하며 고품질의 애플리케이션을 �
 
 ## 레거시 API {/*legacy-apis*/}
 
-* [레거시 API](/reference/react/legacy) - `react` 패키지에서 내보낸 것이지만 새로 작성하는 코드에서는 권장하지 않습니다.
+* [레거시 API](/reference/react/legacy) - `react` 패키지에서 내보냈지만<sup>Exported</sup> 새로 작성할 코드에서는 권장하지 않습니다.
