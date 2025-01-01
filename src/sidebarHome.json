@@ -23,11 +23,11 @@
       "path": "/learn/describing-the-ui"
     },
     {
-      "title": "상호작용성 더하기",
+      "title": "상호작용 추가하기",
       "path": "/learn/adding-interactivity"
     },
     {
-      "title": "State 다루기",
+      "title": "State 관리하기",
       "path": "/learn/managing-state"
     },
     {
@@ -39,7 +39,7 @@
       "sectionHeader": "REACT API"
     },
     {
-      "title": "훅",
+      "title": "Hook",
       "path": "/reference/react"
     },
     {

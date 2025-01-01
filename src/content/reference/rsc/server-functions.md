@@ -1,5 +1,5 @@
 ---
-title: Server Functions
+title: 서버 함수
 ---
 
 <RSC>
@@ -12,7 +12,7 @@ Server Functions are for use in [React Server Components](/learn/start-a-new-rea
 
 <Intro>
 
-Server Functions allow Client Components to call async functions executed on the server.
+서버 함수<sup>Server Functions</sup>를 사용하면 클라이언트 컴포넌트가 서버에서 실행되는 비동기 함수를 호출할 수 있습니다.
 
 </Intro>
 
@@ -20,58 +20,58 @@ Server Functions allow Client Components to call async functions executed on the
 
 <Note>
 
-#### How do I build support for Server Functions? {/*how-do-i-build-support-for-server-functions*/}
+#### 서버 함수를 지원하려면 어떻게 해야 하나요? {/*how-do-i-build-support-for-server-functions*/}
 
-While Server Functions in React 19 are stable and will not break between minor versions, the underlying APIs used to implement Server Functions in a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x. 
+React 19의 서버 함수는 안정적이며 마이너<sup>Minor</sup> 버전 간에는 변경되지 않습니다. 그러나 React 서버 컴포넌트 번들러나 프레임워크에서 서버 함수를 구현하는 데 사용되는 기본 API는 시맨틱 버전(semver)을 따르지 않으며 React 19.x의 마이너<sup>Minor</sup> 버전 간에 변경될 수 있습니다.
 
-To support Server Functions as a bundler or framework, we recommend pinning to a specific React version, or using the Canary release. We will continue working with bundlers and frameworks to stabilize the APIs used to implement Server Functions in the future.
+서버 함수를 번들러나 프레임워크로 지원하려면, 특정 React 버전에 고정하거나 Canary 릴리즈를 사용하는 것을 권장합니다. 향후 서버 함수를 구현하는 데 사용되는 API를 안정화하기 위해 번들러 및 프레임워크와 계속 협력할 것입니다.
 
 </Note>
 
-When a Server Functions is defined with the [`"use server"`](/reference/rsc/use-server) directive, your framework will automatically create a reference to the server function, and pass that reference to the Client Component. When that function is called on the client, React will send a request to the server to execute the function, and return the result.
+서버 함수가 [`"use server"`](/reference/rsc/use-server) 지시어로 정의되면, 프레임워크는 자동으로 서버 함수에 대한 참조를 생성하고 해당 참조를 클라이언트 컴포넌트에 전달합니다. 클라이언트에서 해당 함수가 호출되면, React는 서버에 함수를 실행하라는 요청<sup>Request</sup>을 보내고 결과를 반환합니다.
 
-Server Functions can be created in Server Components and passed as props to Client Components, or they can be imported and used in Client Components.
+서버 함수는 서버 컴포넌트에서 생성하여 클라이언트 컴포넌트에 Props로 전달할 수 있으며, 클라이언트 컴포넌트에서 가져와서 사용할 수도 있습니다.
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Creating a Server Function from a Server Component {/*creating-a-server-function-from-a-server-component*/}
+### 서버 컴포넌트에서 서버 함수 만들기 {/*creating-a-server-function-from-a-server-component*/}
 
-Server Components can define Server Functions with the `"use server"` directive:
+서버 컴포넌트는 `"use server"` 지시어로 서버 함수를 정의할 수 있습니다.
 
-```js [[2, 7, "'use server'"], [1, 5, "createNoteAction"], [1, 12, "createNoteAction"]]
+```js [[2, 7, "'use server'"], [1, 5, "createNote"], [1, 12, "createNote"]]
 // Server Component
 import Button from './Button';
 
 function EmptyNote () {
-  async function createNoteAction() {
+  async function createNote() {
     // Server Function
     'use server';
-    
+
     await db.notes.create();
   }
 
-  return <Button onClick={createNoteAction}/>;
+  return <Button onClick={createNote}/>;
 }
 ```
 
-When React renders the `EmptyNote` Server Function, it will create a reference to the `createNoteAction` function, and pass that reference to the `Button` Client Component. When the button is clicked, React will send a request to the server to execute the `createNoteAction` function with the reference provided:
+React가 `EmptyNote` 서버 컴포넌트를 렌더링할 때, `createNote` 함수에 대한 참조를 생성하고, 그 참조를 `Button` 클라이언트 컴포넌트에 전달합니다. 버튼을 클릭하면, React는 제공된 참조를 통해 `createNote` 함수를 실행하도록 서버에 요청<sup>Request</sup>을 보냅니다.
 
 ```js {5}
 "use client";
 
-export default function Button({onClick}) { 
-  console.log(onClick); 
+export default function Button({onClick}) {
+  console.log(onClick);
   // {$$typeof: Symbol.for("react.server.reference"), $$id: 'createNoteAction'}
   return <button onClick={() => onClick()}>Create Empty Note</button>
 }
 ```
 
-For more, see the docs for [`"use server"`](/reference/rsc/use-server).
+자세한 내용은 [`"use server"`](/reference/rsc/use-server) 문서를 참조하세요.
 
 
-### Importing Server Functions from Client Components {/*importing-server-functions-from-client-components*/}
+### 클라이언트 컴포넌트에서 서버 함수 가져오기 {/*importing-server-functions-from-client-components*/}
 
-Client Components can import Server Functions from files that use the `"use server"` directive:
+클라이언트 컴포넌트는 `"use server"` 지시어를 사용하는 파일에서 서버 함수를 가져올 수 있습니다.
 
 ```js [[1, 3, "createNote"]]
 "use server";
@@ -82,10 +82,11 @@ export async function createNote() {
 
 ```
 
-When the bundler builds the `EmptyNote` Client Component, it will create a reference to the `createNoteAction` function in the bundle. When the `button` is clicked, React will send a request to the server to execute the `createNoteAction` function using the reference provided:
+번들러가 `EmptyNote` 클라이언트 컴포넌트를 빌드할 때, 번들에서 `createNote` 함수에 대한 참조를 생성합니다. 버튼을 클릭하면, React는 제공된 참조를 통해 `createNote` 함수를 실행하도록 서버에 요청<sup>Request</sup>을 보냅니다.
 
-```js [[1, 2, "createNote"], [1, 5, "createNote"], [1, 7, "createNote"]]
+```js [[1, 3, "createNote"], [1, 6, "createNote"], [1, 8, "createNote"]]
 "use client";
+
 import {createNote} from './actions';
 
 function EmptyNote() {
@@ -95,11 +96,11 @@ function EmptyNote() {
 }
 ```
 
-For more, see the docs for [`"use server"`](/reference/rsc/use-server).
+자세한 내용은 [`"use server"`](/reference/rsc/use-server) 문서를 참조하세요.
 
-### Server Functions with Actions {/*server-functions-with-actions*/}
+### 액션으로 서버 함수 구성하기 {/*server-functions-with-actions*/}
 
-Server Functions can be called from Actions on the client:
+서버 함수는 클라이언트의 액션<sup>Action</sup>과 함께 구성할 수 있습니다.
 
 ```js [[1, 3, "updateName"]]
 "use server";
@@ -133,7 +134,7 @@ function UpdateName() {
       }
     })
   }
-  
+
   return (
     <form action={submitAction}>
       <input type="text" name="name" disabled={isPending}/>
@@ -143,15 +144,15 @@ function UpdateName() {
 }
 ```
 
-This allows you to access the `isPending` state of the Server Function by wrapping it in an Action on the client.
+이렇게 하면 클라이언트의 액션으로 래핑하여 서버 함수의 `isPending` 상태에 접근할 수 있습니다.
 
-For more, see the docs for [Calling a Server Function outside of `<form>`](/reference/rsc/use-server#calling-a-server-function-outside-of-form)
+자세한 내용은 [`<form>` 외부에서 서버 함수 호출하기](/reference/rsc/use-server#calling-a-server-action-outside-of-form) 문서를 참조하세요.
 
-### Server Functions with Form Actions {/*using-server-functions-with-form-actions*/}
+### 서버 함수를 사용한 폼 액션 {/*using-server-functions-with-form-actions*/}
 
-Server Functions work with the new Form features in React 19.
+서버 함수는 React 19의 새로운 폼<sup>Form</sup> 기능과 함께 동작합니다.
 
-You can pass a Server Function to a Form to automatically submit the form to the server:
+서버 함수를 폼에 전달하여 폼을 서버에 자동으로 제출할 수 있습니다.
 
 
 ```js [[1, 3, "updateName"], [1, 7, "updateName"]]
@@ -168,13 +169,13 @@ function UpdateName() {
 }
 ```
 
-When the Form submission succeeds, React will automatically reset the form. You can add `useActionState` to access the pending state, last response, or to support progressive enhancement.
+폼 제출이 성공하면, React는 자동으로 폼을 재설정합니다. `useActionState`를 추가하여 대기<sup>Pending</sup> 상태 혹은 마지막 응답<sup>Response</sup>에 접근하거나, 점진적 향상을 지원할 수 있습니다.
 
-For more, see the docs for [Server Functions in Forms](/reference/rsc/use-server#server-functions-in-forms).
+자세한 내용은 [폼<sup>Form</sup>에서의 서버 함수](/reference/rsc/use-server#server-functions-in-forms) 문서를 참조하세요.
 
-### Server Functions with `useActionState` {/*server-functions-with-use-action-state*/}
+### `useActionState`를 사용한 서버 함수 {/*server-functions-with-use-action-state*/}
 
-You can call Server Functions with `useActionState` for the common case where you just need access to the action pending state and last returned response:
+액션 대기<sup>Pending</sup> 상태와 마지막으로 반환된 응답<sup>Response</sup>에 접근하는 일반적인 경우에는 `useActionState`를 사용하여 서버 함수를 호출할 수 있습니다.
 
 ```js [[1, 3, "updateName"], [1, 6, "updateName"], [2, 6, "submitAction"], [2, 9, "submitAction"]]
 "use client";
@@ -193,13 +194,13 @@ function UpdateName() {
 }
 ```
 
-When using `useActionState` with Server Functions, React will also automatically replay form submissions entered before hydration finishes. This means users can interact with your app even before the app has hydrated.
+서버 함수 함께 `useActionState`를 사용하는 경우, React는 Hydration이 완료되기 전에 입력된 폼 제출을 자동으로 다시 실행합니다. 즉, 사용자는 앱이 Hydration 되기 전에도 앱과 상호작용을 할 수 있습니다.
 
-For more, see the docs for [`useActionState`](/reference/react-dom/hooks/useFormState).
+자세한 내용은 [`useActionState`](/reference/react/useActionState) 문서를 참조하세요.
 
-### Progressive enhancement with `useActionState` {/*progressive-enhancement-with-useactionstate*/}
+### `useActionState`를 통한 점진적 향상 {/*progressive-enhancement-with-useactionstate*/}
 
-Server Functions also support progressive enhancement with the third argument of `useActionState`.
+서버 함수는 `useActionState`의 세 번째 인수를 통한 점진적 향상도 지원합니다.
 
 ```js [[1, 3, "updateName"], [1, 6, "updateName"], [2, 6, "/name/update"], [3, 6, "submitAction"], [3, 9, "submitAction"]]
 "use client";
@@ -217,6 +218,6 @@ function UpdateName() {
 }
 ```
 
-When the <CodeStep step={2}>permalink</CodeStep> is provided to `useActionState`, React will redirect to the provided URL if the form is submitted before the JavaScript bundle loads.
+<CodeStep step={2}>permalink</CodeStep>가 `useActionState`에 제공될 때, 자바스크립트 번들이 로드되기 전에 폼이 제출되면 React는 제공된 URL로 리디렉션합니다.
 
-For more, see the docs for [`useActionState`](/reference/react-dom/hooks/useFormState).
+자세한 내용은 [`useActionState`](/reference/react/useActionState) 문서를 참조하세요.

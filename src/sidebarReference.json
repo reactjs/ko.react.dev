@@ -11,7 +11,7 @@
       "path": "/reference/react"
     },
     {
-      "title": "Hooks",
+      "title": "Hook",
       "path": "/reference/react/hooks",
       "routes": [
         {
@@ -155,7 +155,7 @@
       "sectionHeader": "react-dom@{{version}}"
     },
     {
-      "title": "Hooks",
+      "title": "Hook",
       "path": "/reference/react-dom/hooks",
       "routes": [
         {
@@ -293,7 +293,7 @@
       ]
     },
     {
-      "title": "Static APIs",
+      "title": "정적 API",
       "path": "/reference/react-dom/static",
       "routes": [
         {
@@ -337,8 +337,8 @@
       "path": "/reference/rsc/server-components"
     },
     {
-      "title": "서버 액션",
-      "path": "/reference/rsc/server-actions"
+      "title": "서버 함수",
+      "path": "/reference/rsc/server-functions"
     },
     {
       "title": "지시어",
