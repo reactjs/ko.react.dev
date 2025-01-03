@@ -54,21 +54,6 @@ React는 <CodeStep step={2}>children</CodeStep>에 필요한 모든 코드와 �
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js hidden
 import { useState } from 'react';
 import ArtistPage from './ArtistPage.js';
@@ -114,14 +99,9 @@ function Loading() {
 }
 ```
 
-```js src/Albums.js hidden
+```js src/Albums.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -135,6 +115,7 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // This is a workaround for a bug to get the demo running.
 // TODO: replace with real implementation when the bug is fixed.
@@ -160,6 +141,8 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ```
 
 ```js src/data.js hidden
@@ -252,9 +235,15 @@ async function getAlbums() {
 
 **Suspense가 가능한 데이터만이 Suspense 컴포넌트를 활성화합니다.** 아래와 같은 것들이 해당됩니다.
 
+<<<<<<< HEAD
 - [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/getting-started/react-essentials) 같이 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기
 - [`lazy`](/reference/react/lazy)를 활용한 지연 로딩 컴포넌트
 - [`use`](/reference/react/use)를 사용해서 Promise 값 읽기
+=======
+- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense)
+- Lazy-loading component code with [`lazy`](/reference/react/lazy)
+- Reading the value of a cached Promise with [`use`](/reference/react/use)
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 Suspense는 Effect 또는 이벤트 핸들러 내부에서 가져오는 데이터를 감지하지 **않습니다**.
 
@@ -284,21 +273,6 @@ Suspense는 Effect 또는 이벤트 핸들러 내부에서 가져오는 데이�
 아래 예시에서는 `Biography`와 `Albums` 모두 어떤 데이터를 가져옵니다. 하지만 두 구성 요소는 같은 단일 Suspense 아래에 그룹화되어 있기 때문에 항상 동시에 함께 그려지게 됩니다.
 
 <Sandpack>
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
 ```js src/App.js hidden
 import { useState } from 'react';
@@ -360,14 +334,9 @@ export default function Panel({ children }) {
 }
 ```
 
-```js src/Biography.js hidden
+```js src/Biography.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -377,6 +346,7 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
+<<<<<<< HEAD
 
 // This is a workaround for a bug to get the demo running.
 // TODO: replace with real implementation when the bug is fixed.
@@ -402,16 +372,13 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ```
 
-```js src/Albums.js hidden
+```js src/Albums.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -425,6 +392,7 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // This is a workaround for a bug to get the demo running.
 // TODO: replace with real implementation when the bug is fixed.
@@ -450,6 +418,8 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ```
 
 ```js src/data.js hidden
@@ -603,27 +573,19 @@ function Details({ artistId }) {
 
 순서는 다음과 같습니다.
 
+<<<<<<< HEAD
 1. `Biography`가 아직 로드되지 않은 경우, 전체 콘텐츠 영역 대신 `BigSpinner`가 표시됩니다.
 1. `Biography`의 로딩이 완료되면 `BigSpinner`가 콘텐츠로 대체됩니다.
 1. `Albums`가 아직 로드되지 않으면 `Albums`와 그 상위 `Panel` 대신 `AlbumsGlimmer`가 표시됩니다.
 1. 마지막으로 `Albums`가 로딩을 완료하면 `AlbumsGlimmer`를 대체합니다.
+=======
+1. If `Biography` hasn't loaded yet, `BigSpinner` is shown in place of the entire content area.
+2. Once `Biography` finishes loading, `BigSpinner` is replaced by the content.
+3. If `Albums` hasn't loaded yet, `AlbumsGlimmer` is shown in place of `Albums` and its parent `Panel`.
+4. Finally, once `Albums` finishes loading, it replaces `AlbumsGlimmer`.
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 <Sandpack>
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
 ```js src/App.js hidden
 import { useState } from 'react';
@@ -697,14 +659,9 @@ export default function Panel({ children }) {
 }
 ```
 
-```js src/Biography.js hidden
+```js src/Biography.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -714,6 +671,7 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
+<<<<<<< HEAD
 
 // This is a workaround for a bug to get the demo running.
 // TODO: replace with real implementation when the bug is fixed.
@@ -739,16 +697,13 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ```
 
-```js src/Albums.js hidden
+```js src/Albums.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -762,6 +717,7 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // This is a workaround for a bug to get the demo running.
 // TODO: replace with real implementation when the bug is fixed.
@@ -787,6 +743,8 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ```
 
 ```js src/data.js hidden
@@ -929,21 +887,6 @@ Suspense를 사용하면 UI의 어떤 부분이 항상 동시에 그려져야 �
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState } from 'react';
 import SearchResults from './SearchResults.js';
@@ -964,14 +907,9 @@ export default function App() {
 }
 ```
 
-```js src/SearchResults.js hidden
+```js src/SearchResults.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -991,6 +929,7 @@ export default function SearchResults({ query }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // This is a workaround for a bug to get the demo running.
 // TODO: replace with real implementation when the bug is fixed.
@@ -1016,6 +955,8 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ```
 
 ```js src/data.js hidden
@@ -1153,21 +1094,6 @@ export default function App() {
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState, useDeferredValue } from 'react';
 import SearchResults from './SearchResults.js';
@@ -1193,13 +1119,8 @@ export default function App() {
 ```
 
 ```js src/SearchResults.js hidden
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -1219,6 +1140,7 @@ export default function SearchResults({ query }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // This is a workaround for a bug to get the demo running.
 // TODO: replace with real implementation when the bug is fixed.
@@ -1244,6 +1166,8 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ```
 
 ```js src/data.js hidden
@@ -1359,21 +1283,6 @@ input { margin: 10px; }
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState } from 'react';
 import IndexPage from './IndexPage.js';
@@ -1478,14 +1387,9 @@ function AlbumsGlimmer() {
 }
 ```
 
-```js src/Albums.js hidden
+```js src/Albums.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -1499,6 +1403,7 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // This is a workaround for a bug to get the demo running.
 // TODO: replace with real implementation when the bug is fixed.
@@ -1524,16 +1429,13 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ```
 
-```js src/Biography.js hidden
+```js src/Biography.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -1543,6 +1445,7 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
+<<<<<<< HEAD
 
 // This is a workaround for a bug to get the demo running.
 // TODO: replace with real implementation when the bug is fixed.
@@ -1568,9 +1471,11 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ```
 
-```js src/Panel.js hidden
+```js src/Panel.js
 export default function Panel({ children }) {
   return (
     <section className="panel">
@@ -1744,21 +1649,6 @@ function Router() {
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, startTransition, useState } from 'react';
 import IndexPage from './IndexPage.js';
@@ -1865,14 +1755,9 @@ function AlbumsGlimmer() {
 }
 ```
 
-```js src/Albums.js hidden
+```js src/Albums.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -1886,6 +1771,7 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // This is a workaround for a bug to get the demo running.
 // TODO: replace with real implementation when the bug is fixed.
@@ -1911,16 +1797,13 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ```
 
-```js src/Biography.js hidden
+```js src/Biography.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -1930,6 +1813,7 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
+<<<<<<< HEAD
 
 // This is a workaround for a bug to get the demo running.
 // TODO: replace with real implementation when the bug is fixed.
@@ -1955,9 +1839,11 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ```
 
-```js src/Panel.js hidden
+```js src/Panel.js
 export default function Panel({ children }) {
   return (
     <section className="panel">
@@ -2127,21 +2013,6 @@ Suspense를 지원하는 Router는 기본적으로 Navigation 업데이트를 Tr
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState, useTransition } from 'react';
 import IndexPage from './IndexPage.js';
@@ -2251,14 +2122,9 @@ function AlbumsGlimmer() {
 }
 ```
 
-```js src/Albums.js hidden
+```js src/Albums.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -2272,6 +2138,7 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // This is a workaround for a bug to get the demo running.
 // TODO: replace with real implementation when the bug is fixed.
@@ -2297,16 +2164,13 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ```
 
-```js src/Biography.js hidden
+```js src/Biography.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -2316,6 +2180,7 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
+<<<<<<< HEAD
 
 // This is a workaround for a bug to get the demo running.
 // TODO: replace with real implementation when the bug is fixed.
@@ -2341,9 +2206,11 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 ```
 
-```js src/Panel.js hidden
+```js src/Panel.js
 export default function Panel({ children }) {
   return (
     <section className="panel">

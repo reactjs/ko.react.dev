@@ -4,7 +4,7 @@
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET STARTED"
+      "sectionHeader": "시작하기"
     },
     {
       "title": "빠르게 시작하기",
@@ -16,18 +16,18 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "LEARN REACT"
+      "sectionHeader": "React 학습하기"
     },
     {
       "title": "UI 표현하기",
       "path": "/learn/describing-the-ui"
     },
     {
-      "title": "상호작용성 더하기",
+      "title": "상호작용 추가하기",
       "path": "/learn/adding-interactivity"
     },
     {
-      "title": "State 다루기",
+      "title": "State 관리하기",
       "path": "/learn/managing-state"
     },
     {
@@ -39,7 +39,7 @@
       "sectionHeader": "REACT API"
     },
     {
-      "title": "훅",
+      "title": "Hook",
       "path": "/reference/react"
     },
     {
@@ -76,7 +76,7 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET INVOLVED"
+      "sectionHeader": "참여하기"
     },
     {
       "title": "React 커뮤니티",
@@ -84,7 +84,7 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "STAY INFORMED"
+      "sectionHeader": "최신 소식"
     },
     {
       "title": "React 블로그",

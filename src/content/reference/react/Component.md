@@ -50,7 +50,7 @@ class Greeting extends Component {
 
 ### `context` {/*context*/}
 
-클래스 컴포넌트의 [context](/learn/passing-data-deeply-with-context)는 `this.context`로 사용할 수 있습니다. [`static contextType`](#static-contexttype)(modern) 또는 [`static contextTypes`](#static-contexttypes)(deprecated)를 사용하여 *어떤* context를 받길 원하는지 지정해야만 사용할 수 있습니다.
+클래스 컴포넌트의 [context](/learn/passing-data-deeply-with-context)는 `this.context`로 사용할 수 있습니다. [`static contextType`](#static-contexttype)를 사용하여 *어떤* context를 받을지 지정해야만 사용할 수 있습니다.
 
 클래스 컴포넌트는 한 번에 하나의 context만 읽을 수 있습니다.
 
@@ -102,18 +102,6 @@ class Greeting extends Component {
 [마이그레이션 방법을 확인하세요.](#migrating-a-simple-component-from-a-class-to-a-function)
 
 </Note>
-
----
-
-### `refs` {/*refs*/}
-
-<Deprecated>
-
-이 API는 React의 향후 주요 버전에서 제거될 예정입니다. [대신 `createRef`를 사용하세요.](/reference/react/createRef)
-
-</Deprecated>
-
-컴포넌트에 대한 [legacy string refs](https://ko.reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs)에 액세스할 수 있습니다.
 
 ---
 
@@ -494,18 +482,6 @@ class ChatRoom extends Component {
 
 ---
 
-### `getChildContext()` {/*getchildcontext*/}
-
-<Deprecated>
-
-이 API는 향후 React의 주요 버전에서 제거될 예정입니다. [대신 `Context.Provider`를 사용하세요.](/reference/react/createContext#provider)
-
-</Deprecated>
-
-이 컴포넌트가 제공하는 [legacy context](https://ko.reactjs.org/docs/legacy-context.html)에 대한 값을 지정할 수 있습니다.
-
----
-
 ### `getSnapshotBeforeUpdate(prevProps, prevState)` {/*getsnapshotbeforeupdate*/}
 
 `getSnapshotBeforeUpdate`를 구현하면 React가 DOM을 업데이트하기 바로 전에 호출합니다. 이를 통해 컴포넌트가 잠재적으로 변경되기 전에 DOM에서 일부 정보(예: 스크롤 위치)를 캡처할 수 있습니다. 이 생명주기 메서드가 반환하는 모든 값은 [`componentDidUpdate`](#componentdidupdate)에 매개변수로 전달됩니다.
@@ -738,7 +714,7 @@ class Rectangle extends Component {
 
 - `nextProps`: 컴포넌트가 렌더링할 다음 props입니다. `nextProps`와 [`this.props`](#props)를 비교하여 무엇이 변경되었는지 확인합니다.
 - `nextState`: 컴포넌트가 렌더링할 다음 state입니다. `nextState`와 [`this.state`](#props)를 비교하여 무엇이 변경되었는지 확인합니다.
-- `nextContext`: 컴포넌트가 렌더링할 다음 context입니다. `nextContext`를 [`this.context`](#context)와 비교하여 변경된 내용을 확인합니다. [`static contextType`](#static-contexttype)(modern) 또는 [`static contextTypes`](#static-contexttypes)(legacy)를 지정한 경우에만 사용할 수 있습니다.
+- `nextContext`: 컴포넌트가 렌더링할 다음 context입니다. `nextContext`를 [`this.context`](#context)와 비교하여 변경된 내용을 확인합니다. [`static contextType`](#static-contexttype)(modern)을 지정한 경우에만 사용할 수 있습니다.
 
 #### 반환값 {/*shouldcomponentupdate-returns*/}
 
@@ -813,7 +789,7 @@ React에 재렌더링을 건너뛸 수 있음을 알리려면 `false`를 반환�
 #### 매개변수 {/*unsafe_componentwillreceiveprops-parameters*/}
 
 - `nextProps`: 컴포넌트가 부모 컴포넌트로부터 받으려는 다음 props입니다. `nextProps`와 [`this.props`](#props)를 비교하여 무엇이 변경되었는지 확인합니다.
-- `nextContext`: 컴포넌트가 가장 가까운 공급자(provider)로부터 받으려는 다음 props입니다. `nextContext`를 [`this.context`](#context)와 비교하여 변경된 내용을 확인합니다. [`static contextType`](#static-contexttype)(modern) 또는 [`static contextTypes`](#static-contexttypes)(legacy)를 지정한 경우에만 사용할 수 있습니다.
+- `nextContext`: 컴포넌트가 가장 가까운 공급자(provider)로부터 받으려는 다음 props입니다. `nextContext`를 [`this.context`](#context)와 비교하여 변경된 내용을 확인합니다. [`static contextType`](#static-contexttype)(modern)을 지정한 경우에만 사용할 수 있습니다.
 
 #### 반환값 {/*unsafe_componentwillreceiveprops-returns*/}
 
@@ -875,30 +851,6 @@ React에 재렌더링을 건너뛸 수 있음을 알리려면 `false`를 반환�
 함수 컴포넌트에는 `UNSAFE_componentWillUpdate`와 직접적으로 대응하는 것이 없습니다.
 
 </Note>
-
----
-
-### `static childContextTypes` {/*static-childcontexttypes*/}
-
-<Deprecated>
-
-이 API는 향후 React의 주요 버전에서 제거될 예정입니다. [대신 `static contextType`을 사용하세요.](#static-contexttype)
-
-</Deprecated>
-
-이 컴포넌트가 제공하는 [legacy context](https://ko.reactjs.org/docs/legacy-context.html)를 지정할 수 있습니다.
-
----
-
-### `static contextTypes` {/*static-contexttypes*/}
-
-<Deprecated>
-
-이 API는 향후 React의 주요 버전에서 제거될 예정입니다. [대신 `static contextType`을 사용하세요.](#static-contexttype)
-
-</Deprecated>
-
-이 컴포넌트가 사용할 [legacy context](https://ko.reactjs.org/docs/legacy-context.html)를 지정할 수 있습니다.
 
 ---
 
@@ -971,34 +923,6 @@ class Button extends Component {
 <Note>
 
 클래스 컴포넌트에서 `defaultProps`를 정의하는 것은 함수 컴포넌트에서 [default values](/learn/passing-props-to-a-component#specifying-a-default-value-for-a-prop)를 사용하는 것과 유사합니다.
-
-</Note>
-
----
-
-### `static propTypes` {/*static-proptypes*/}
-
-[`prop-types`](https://www.npmjs.com/package/prop-types) 라이브러리와 함께 `static propTypes`를 정의하여 컴포넌트에서 허용되는 props의 유형을 선언할 수 있습니다. 이러한 유형은 렌더링 중과 개발 중에만 확인됩니다.
-
-```js
-import PropTypes from 'prop-types';
-
-class Greeting extends React.Component {
-  static propTypes = {
-    name: PropTypes.string
-  };
-
-  render() {
-    return (
-      <h1>Hello, {this.props.name}</h1>
-    );
-  }
-}
-```
-
-<Note>
-
-런타임에 prop 타입을 확인하는 대신 [TypeScript](https://www.typescriptlang.org/ko/)를 사용하는 것을 추천합니다.
 
 </Note>
 

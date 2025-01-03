@@ -49,7 +49,7 @@ function Greeting({ name }) {
 `createElement`는 아래 프로퍼티를 가지는 React 엘리먼트 객체를 반환합니다.
 
 * `type`: 전달받은 `type`.
-* `props`: `ref`와 `key`를 제외한 전달받은 `props`. `type`이 레거시 `type.defaultProps`를 가지는 컴포넌트라면, 누락되거나 정의되지 않은 `props`는 `type.defaultProps` 값을 가져옵니다.
+* `props`: `ref`와 `key`를 제외한 전달받은 `props`.
 * `ref`: 전달받은 `ref`. 누락된 경우 `null`.
 * `key`: 전달받은 `key`를 강제 변환한 문자열. 누락된 경우 `null`.
 

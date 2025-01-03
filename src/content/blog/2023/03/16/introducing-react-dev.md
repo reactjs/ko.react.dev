@@ -20,29 +20,29 @@ description: 오늘 React와 React 문서의 새로운 보금자리인 react.dev
 
 ## 요약 {/*tldr*/}
 
-* 새로운 React 사이트 ([react.dev](https://react.dev)) 는 함수 컴포넌트와 Hooks를 사용한 현대적인 React를 가르칩니다.
-* 다이어그램, 삽화, 도전 과제, 그리고 600개 이상의 새로운 상호 작용하는 예시를 포함했습니다.
+* 새로운 React 사이트 ([react.dev](https://react.dev))는 함수 컴포넌트와 Hook을 사용한 현대적인 React를 가르칩니다.
+* 다이어그램, 삽화, 도전 과제, 그리고 600개 이상의 새로운 상호 작용 예시를 포함했습니다.
 * 예전 React 문서 사이트는 이제 [legacy.reactjs.org](https://legacy.reactjs.org)로 이전되었습니다.
 
 ## 새로운 사이트, 새로운 도메인, 새로운 홈페이지 {/*new-site-new-domain-new-homepage*/}
 
 우선, 조금의 정리를 진행하겠습니다.
 
-새로운 문서의 출시를 축하하고, 더욱 중요한 것은 오래된 내용과 새로운 내용을 명확하게 구분하기 위해, 더 짧은 [react.dev](https://react.dev) 도메인으로 이전했습니다. 예전 [reactjs.org](https://reactjs.org) 도메인은 이제 이곳으로 리다이렉트할 것입니다.
+새로운 문서의 출시를 축하하고, 더욱 중요한 것은 오래된 내용과 새로운 내용을 명확하게 구분하기 위해, 더 짧은 [react.dev](https://react.dev) 도메인으로 이전했습니다. 예전 [reactjs.org](https://reactjs.org) 도메인을 이제 이곳으로 리다이렉트할 것입니다.
 
-예전 React 문서는 이제 [legacy.reactjs.org](https://legacy.reactjs.org)에 보관되었습니다. 예전 내용으로 가는 모든 기존 링크는 "웹을 망가트리는 것"을 방지하기 위해 자동으로 해당 위치로 리다이렉트할 것이지만, 레거시 사이트는 더 이상 업데이트 받지 않을 것입니다.
+예전 React 문서는 이제 [legacy.reactjs.org](https://legacy.reactjs.org)에 보관되었습니다. 예전 내용으로 통하는 모든 기존 링크는 "웹을 망가트리는 것"을 방지하기 위해 자동으로 해당 위치로 리다이렉트할 것이지만, 레거시 사이트에는 더 이상 업데이트 받지 않을 것입니다.
 
-믿기 힘들겠지만, React는 곧 10살이 됩니다. JavaScript 시대에, 이건 마치 한 세기와 같습니다! 오늘날 React가 사용자 인터페이스를 만들기 위한 훌륭한 방법인 이유를 반영하기 위해 [React 홈페이지를 갱신하고](https://react.dev), 현대적인 React 기반 프레임워크를 더욱 명확하게 언급하기 위해 시작 가이드를 업데이트했습니다.
+믿기 힘들겠지만, React는 곧 10살이 됩니다. 자바스크립트 시대에, 이건 마치 한 세기와 같습니다! 오늘날 React가 사용자 인터페이스를 만들기 위한 훌륭한 방법인 이유를 반영하기 위해 [React 홈페이지를 갱신하고](https://react.dev), 현대적인 React 기반 프레임워크를 더욱 명확하게 언급하기 위해 시작 가이드를 업데이트했습니다.
 
 아직 새로운 홈페이지를 보지 않았다면, 꼭 확인해 보세요!
 
-## Hooks를 사용한 현대적인 React에 전념하기 {/*going-all-in-on-modern-react-with-hooks*/}
+## Hook을 사용한 현대적인 React에 전념하기 {/*going-all-in-on-modern-react-with-hooks*/}
 
-2018년에 React Hooks를 발표했을 때, Hooks 문서는 클래스 컴포넌트에 익숙한 독자를 가정했습니다. 이는 커뮤니티가 Hooks를 매우 빠르게 채택하는 데 도움이 되었지만, 시간이 지나면서 예전 문서는 새로운 독자에게 적합하지 않았습니다. 새로운 독자는 클래스 컴포넌트와 Hooks를 사용한 것으로 React를 두 번 배워야만 했습니다.
+2018년에 React Hook을 발표했을 때, Hook 문서는 클래스 컴포넌트에 익숙한 독자를 가정했습니다. 이는 커뮤니티가 Hook을 매우 빠르게 채택하는 데 도움이 되었지만, 시간이 지나면서 예전 문서는 새로운 독자에게 적합하지 않았습니다. 새로운 독자는 클래스 컴포넌트와 Hook을 사용한 것으로 React를 두 번 배워야만 했습니다.
 
-**새로운 문서는 Hooks를 사용한 React를 처음부터 가르칩니다.** 문서는 두 가지 주요 섹션으로 나뉘어져 있습니다.
+**새로운 문서는 Hook을 사용한 React를 처음부터 가르칩니다.** 문서는 두 가지 주요 섹션으로 나뉘어져 있습니다.
 
-* **[React 배우기](/learn)** 는 React를 기초부터 스스로 학습할 수 있는 과정입니다.
+* **[React 학습하기](/learn)** 는 React를 기초부터 스스로 학습할 수 있는 과정입니다.
 * **[API 참고서](/reference)** 는 모든 React API에 대한 세부 내용과 사용 예시를 제공합니다.
 
 각 섹션에서 무슨 내용을 알 수 있는지 자세히 살펴보겠습니다.
@@ -55,9 +55,9 @@ description: 오늘 React와 React 문서의 새로운 보금자리인 react.dev
 
 ## 빠르게 시작하기 {/*quick-start*/}
 
-학습 섹션은 [빠르게 시작하기](/learn) 페이지로 시작됩니다. 이는 React를 짧게 소개하는 여정입니다. 컴포넌트, props, state 같은 개념에 대한 문법을 소개하지만, 그들을 어떻게 사용하는지에 대한 세부 내용을 다루진 않습니다.
+학습 섹션은 [빠르게 시작하기](/learn) 페이지로 시작합니다. 이는 React를 짧게 소개하는 여정입니다. 컴포넌트, Props, State 같은 개념에 대한 문법을 소개하지만, 그들을 어떻게 사용하는지에 대한 세부 내용을 다루진 않습니다.
 
-직접 해보며 배우고 싶다면, 다음으로 [Tic-Tac-Toe 자습서](/learn/tutorial-tic-tac-toe)를 확인하는 것을 추천합니다. React로 작은 게임을 구현하는 것을 자세히 설명하면서, 동시에 일상적으로 사용할 기술을 가르칩니다. 여기에 구현하게 될 내용이 있습니다.
+직접 해보며 배우고 싶다면, 다음으로 [자습서: 틱택토 게임](/learn/tutorial-tic-tac-toe)을 확인하는 것을 추천합니다. React로 작은 게임을 구현하는 것을 자세히 설명하면서, 동시에 일상적으로 사용할 기술을 가르칩니다. 여기에 구현하게 될 내용이 있습니다.
 
 <Sandpack>
 
@@ -226,11 +226,11 @@ body {
 
 </Sandpack>
 
-또한 많은 사람에게 React를 "완전히 이해시켜 준" 자습서인 [React로 사고하기](/learn/thinking-in-react)도 강조하고 싶습니다. **두 가지 클래식 자습서 모두 함수 컴포넌트와 Hooks를 사용하도록 업데이트했고,** 따라서 새 자습서만큼 좋습니다.
+또한 많은 사람에게 React를 "완전히 이해시켜 준" 자습서인 [React로 사고하기](/learn/thinking-in-react)도 강조하고 싶습니다. **두 가지 클래식 자습서 모두 함수 컴포넌트와 Hook을 사용하도록 업데이트했기에**, 새 자습서만큼 훌륭합니다.
 
 <Note>
 
-위쪽에 있는 예시는 *샌드박스*입니다. 우리는 600개 이상의 많은 샌드박스를 사이트 전체 모든 곳에 추가했습니다. 아무 샌드박스나 편집할 수 있고, 우측 상단에 있는 "Fork"를 눌러 별도의 탭에서 열 수 있습니다. 샌드박스는 React API를 빠르게 갖고 놀면서, 아이디어를 탐구하고, 이해를 확인하게 해줍니다.
+위쪽에 있는 예시는 *샌드박스*입니다. 우리는 600개 이상의 많은 샌드박스를 사이트 전체에 추가했습니다. 모든 샌드박스를 편집할 수 있고, 우측 상단에 있는 "Fork"를 눌러 별도의 탭에서 열 수 있습니다. 샌드박스는 React API를 빠르게 갖고 놀면서, 아이디어를 탐구하고, 이해를 확인하게 해줍니다.
 
 </Note>
 
@@ -240,15 +240,15 @@ body {
 
 이것이 학습 섹션이 여러 개의 장으로 구분된 자기 주도 학습 과정으로 구성된 이유입니다. 처음 두 장은 React의 기초에 관해서 설명합니다. React가 처음이거나 기억을 되살리고 싶다면, 여기서부터 시작하세요.
 
-- **[UI 표현하기](/learn/describing-the-ui)**에서는 컴포넌트로 어떻게 정보를 표시하는지 가르칩니다.
-- **[상호작용 추가하기](/learn/adding-interactivity)**에서는 사용자 입력에 대한 응답으로 화면을 어떻게 업데이트하는지 가르칩니다.
+- <strong>[UI 표현하기](/learn/describing-the-ui)</strong>에서는 컴포넌트로 어떻게 정보를 표시하는지 가르칩니다.
+- <strong>[상호작용 추가하기](/learn/adding-interactivity)</strong>에서는 사용자 입력에 대한 응답으로 화면을 어떻게 업데이트하는지 가르칩니다.
 
 다음 두 장은 더욱 고급 내용을 다루며, 더 복잡한 부분에 대해서 깊은 통찰을 줄 것입니다.
 
-- **[State 관리하기](/learn/managing-state)**에서는 앱의 복잡성이 증가함에 따라 어떻게 로직을 조직화하는지 가르칩니다.
-- **[탈출구](/learn/escape-hatches)**에서는 React "외부로 탈출"할 방법과, 이를 수행하기에 가장 적절한 시기를 가르칩니다.
+- <strong>[State 관리하기](/learn/managing-state)</strong>에서는 앱의 복잡성이 증가함에 따라 어떻게 로직을 조직화하는지 가르칩니다.
+- <strong>[탈출구](/learn/escape-hatches)</strong>에서는 React "외부로 탈출"할 방법과, 이를 수행하기에 가장 적절한 시기를 가르칩니다.
 
-모든 장은 여러 개의 관련된 페이지로 구성되어 있습니다. 대부분의 페이지는 특정 기술이나 기법을 가르칩니다-예를 들어, [JSX로 마크업 작성하기](/learn/writing-markup-with-jsx), [State에 있는 객체 업데이트하기](/learn/updating-objects-in-state)나 [컴포넌트 간 State 공유하기](/learn/sharing-state-between-components) 같은 것들이 있습니다. [렌더와 커밋](/learn/render-and-commit), [스냅샷으로서의 State](/learn/state-as-a-snapshot)와 같은 몇몇 페이지들은 아이디어를 설명하는 것에 집중합니다. 그리고 지난 몇 년 동안의 경험을 기반으로 제안을 공유하는 [Effect가 필요하지 않을 수 있습니다](/learn/you-might-not-need-an-effect) 같은 페이지도 몇 개 있습니다.
+모든 장은 여러 개의 관련된 페이지로 구성되어 있습니다. 대부분의 페이지는 특정 기술이나 기법을 가르칩니다. 예를 들어, [JSX로 마크업 작성하기](/learn/writing-markup-with-jsx), [State에 있는 객체 업데이트하기](/learn/updating-objects-in-state)나 [컴포넌트 간 State 공유하기](/learn/sharing-state-between-components) 같은 것들이 있습니다. [렌더링 그리고 커밋](/learn/render-and-commit), [스냅샷으로서의 State](/learn/state-as-a-snapshot)와 같은 몇몇 페이지들은 아이디어를 설명하는 것에 집중합니다. 그리고 지난 몇 년 동안의 경험을 기반으로 제안을 공유하는 [Effect가 필요하지 않을 수도 있습니다](/learn/you-might-not-need-an-effect) 같은 페이지도 몇 개 있습니다.
 
 이러한 장들을 순서대로 읽을 필요는 없습니다. 누가 그런 시간이 있을까요?! 하지만 읽을 수도 있습니다. 학습 섹션에 있는 페이지는 오로지 이전 페이지에 소개된 개념에만 의존합니다. 책처럼 읽고 싶다면, 도전해 보세요!
 
@@ -342,7 +342,7 @@ export default function PackingList() {
 
 #### `&&`로 항목의 중요성을 보여주세요 {/*show-the-item-importance-with-*/}
 
-이 예시에서는, 각 `Item`이 숫자로 된 `importance` prop을 받습니다. 오직 중요도가 0이 아닌 항목만 "_(중요도: X)_"을 이탤릭체로 렌더링하기 위해 `&&` 연산자를 사용하세요. 아이템 목록은 최종적으로 이렇게 되어야 합니다:
+이 예시에서는, 각 `Item`이 숫자로 된 `importance` prop을 받습니다. 오직 중요도가 `0`이 아닌 항목만 "_(중요도: X)_"을 이탤릭체로 렌더링하기 위해 `&&` 연산자를 사용하세요. 아이템 목록은 최종적으로 이렇게 되어야 합니다:
 
 * 우주복 _(중요도: 9)_
 * 금색 잎사귀가 달린 헬멧
@@ -442,7 +442,7 @@ export default function PackingList() {
 
 ### 다이어그램과 삽화로 직관력을 높여보세요 {/*build-an-intuition-with-diagrams-and-illustrations*/}
 
-코드와 단어만으로 어떤 것을 설명하기 어려운 경우, 직관적으로 도움을 주는 다이어그램을 추가했습니다. 예를 들어, 여기 [State를 보장하고 재설정하기](/learn/preserving-and-resetting-state)에 있는 다이어그램 중 하나가 있습니다.
+코드와 단어만으로 어떤 것을 설명하기 어려운 경우, 직관적으로 도움을 주는 다이어그램을 추가했습니다. 예를 들어, 여기 [State를 보존하고 초기화하기](/learn/preserving-and-resetting-state)에 있는 다이어그램 중 하나가 있습니다.
 
 <Diagram name="preserving_state_diff_same_pt1" height={350} width={794} alt="다이어그램에는 세 개의 섹션이 있으며, 각 섹션 사이에 전환되는 화살표가 있습니다. 첫 번째 섹션에는 'div'로 레이블 된 React 컴포넌트가 있습니다. 이 컴포넌트의 단일 자식으로 'section'이라고 레이블 된 섹션이 있으며, 그 안에 'Counter'라고 레이블 된 컴포넌트가 있습니다. 이 컴포넌트 안에는 'count'라고 레이블 된 state 버블이 있으며 값은 3입니다. 중간 섹션에는 동일한 'div' 부모가 있지만, 이제는 하위 컴포넌트들이 삭제되었습니다. 이를 노란색 'proof' 이미지로 표시합니다. 세 번째 섹션에는 다시 동일한 'div' 부모가 있으며, 이번에는 'div'라고 레이블 된 새로운 하위 컴포넌트가 추가되었습니다. 이 컴포넌트 안에는 'Counter'라고 레이블 된 컴포넌트가 있으며, 그 안에 'count'라고 레이블 된 state 버블이 있습니다. 이번에는 값이 0으로 표시됩니다. 모든 부분이 노란색으로 강조되어 있습니다.">
 
@@ -450,7 +450,7 @@ export default function PackingList() {
 
 </Diagram>
 
-또한 문서 곳곳에서 몇몇 삽화를 보게 될 것입니다--여기 [화면을 그리는 브라우저](/learn/render-and-commit#epilogue-browser-paint) 중 하나가 있습니다.
+또한 문서 곳곳에서 몇몇 삽화를 보게 될 것입니다. 여기 [화면을 그리는 브라우저](/learn/render-and-commit#epilogue-browser-paint) 중 하나가 있습니다.
 
 <Illustration alt="'카드 요소가 있는 정물화'를 그리는 브라우저" src="/images/docs/illustrations/i_browser-paint.png" />
 
@@ -460,23 +460,23 @@ export default function PackingList() {
 
 [API 참고서](/reference/react)에서, 이제 모든 React API는 전용 페이지를 가집니다. 모든 종류의 API들이 포함됩니다.
 
-- [`useState`](/reference/react/useState) 같은 내장 Hooks
+- [`useState`](/reference/react/useState) 같은 내장 Hook
 - [`<Suspense>`](/reference/react/Suspense) 같은 내장 컴포넌트
 - [`<input>`](/reference/react-dom/components/input) 같은 브라우저 내장 컴포넌트
 - [`renderToPipeableStream`](/reference/react-dom/server/renderToReadableStream) 같은 프레임워크 지향 API
 - [`memo`](/reference/react/memo) 같은 그 밖의 React API
-
+r
 모든 API 페이지가 *레퍼런스* 와 *사용법*을 포함하는 최소 두 개의 세그먼트로 나뉘어 있다는 것을 알 수 있습니다.
 
 [레퍼런스](/reference/react/useState#reference)는 인자와 반환 값을 나열하여 형식적인 API 서명을 설명합니다. 이는 간결하지만, 해당 API에 익숙하지 않다면 약간 추상적으로 느껴질 수 있습니다. 이것은 API를 어떻게 사용하는지가 아닌, API가 무엇을 하는지를 설명합니다.
 
 [사용법](/reference/react/useState#usage)은 동료나 친구가 설명하는 것처럼 실제로 API를 사용하는 이유와 방법을 보여줍니다. **이는 React 팀에서 각 API가 어떻게 사용되기를 의도한 것인지에 대한 표준적인 시나리오**를 보여줍니다. 색상 있는 코드 스니펫, 서로 다른 API들을 함께 사용하는 예시, 복사 및 붙여넣기 할 수 있는 레시피를 추가했습니다.
 
-<Recipes titleText="Basic useState examples" titleId="examples-basic">
+<Recipes titleText="기본 useState 예시" titleId="examples-basic">
 
 #### 카운터 (숫자) {/*counter-number*/}
 
-이 예시에서 `count` state 변수는 숫자를 저장합니다. 버튼을 누르면 숫자가 증가합니다.
+이 예시에서 `count` State 변수는 숫자를 저장합니다. 버튼을 누르면 숫자가 증가합니다.
 
 <Sandpack>
 
@@ -504,7 +504,7 @@ export default function Counter() {
 
 #### 텍스트 필드 (문자열) {/*text-field-string*/}
 
-이 예시에서 `text` state 변수는 문자열을 저장합니다. 문자를 입력할 때, `handleChange`가 브라우저의 input DOM 요소로부터 가장 최근에 입력된 값을 읽고 state를 업데이트하기 위해 `setText`를 호출합니다. 이에 따라 현재의 `text`를 아래에 표시할 수 있습니다.
+이 예시에서 `text` State 변수는 문자열을 저장합니다. 문자를 입력할 때, `handleChange`가 브라우저의 Input DOM 요소로부터 가장 최근에 입력된 값을 읽고 State를 업데이트하기 위해 `setText`를 호출합니다. 이에 따라 현재의 `text`를 아래에 표시할 수 있습니다.
 
 <Sandpack>
 
@@ -536,7 +536,7 @@ export default function MyInput() {
 
 #### 체크박스 (불리언) {/*checkbox-boolean*/}
 
-이 예시에서 `liked` state 변수는 불리언을 저장합니다. input 요소를 클릭할 때, `setLiked`가 브라우저 체크박스의 선택 여부에 따라 `liked` state 변수를 업데이트합니다. `liked`는 체크박스 아래에 있는 문구를 렌더링하는 데 사용됩니다.
+이 예시에서 `liked` State 변수는 불리언을 저장합니다. Input 요소를 클릭할 때, `setLiked`가 브라우저 체크박스의 선택 여부에 따라 `liked` state 변수를 업데이트합니다. `liked`는 체크박스 아래에 있는 문구를 렌더링하는 데 사용됩니다.
 
 <Sandpack>
 
@@ -572,7 +572,7 @@ export default function MyCheckbox() {
 
 #### 양식 (두 가지 변수) {/*form-two-variables*/}
 
-하나의 컴포넌트에서 여러 개의 state 변수를 선언할 수 있습니다. 각각의 state 변수는 완전히 독립적입니다.
+하나의 컴포넌트에서 여러 개의 State 변수를 선언할 수 있습니다. 각각의 State 변수는 완전히 독립적입니다.
 
 <Sandpack>
 
@@ -626,7 +626,7 @@ button { display: block; margin-top: 10px; }
 - 새로운 문서가 번역되도록 전 세계 커뮤니티와 협업하기
 - 새로운 웹 사이트에 놓친 기능 추가하기 (예를 들어, 이 블로그를 위한 RSS)
 
-이제 [react.dev](https://react.dev/)가 출시되었으니, 제삼자 React 교육 자료를 "따라잡는" 데서 벗어나 새로운 정보를 추가하고 새 웹 사이트를 더욱 개선하는 데 집중할 수 있게 되었습니다.
+이제 [react.dev](https://react.dev/)가 출시되었으니, 제 삼자 React 교육 자료를 "따라잡는" 데서 벗어나 새로운 정보를 추가하고 새 웹 사이트를 더욱 개선하는 데 집중할 수 있게 되었습니다.
 
 React를 배우기에 가장 좋은 시기가 왔다고 생각합니다.
 

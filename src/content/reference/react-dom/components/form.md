@@ -1,8 +1,8 @@
 ---
 title: "<form>"
-canary: true
 ---
 
+<<<<<<< HEAD
 <Canary>
 
 React의 익스텐션인 `<form>`은 현재 React Canary(카나리)와 실험적 채널에서만 사용할 수 있습니다. React에서의 안정적인 배포를 위해 `<form>`은 [내장 브라우저 HTML 컴포넌트](https://react.dev/reference/react-dom/components#all-html-components)로서만 동작합니다. 더 자세한 사항은 [React 배포 채널](/community/versioning-policy#all-release-channels)을 확인하세요.
@@ -10,6 +10,8 @@ React의 익스텐션인 `<form>`은 현재 React Canary(카나리)와 실험적
 </Canary>
 
 
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 <Intro>
 
 [내장 브라우저 `<form>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)는 정보 제출을 위한 대화형 컨트롤을 만들 수 있습니다.
@@ -59,7 +61,11 @@ URL이 `action`을 통해 전달되면, 폼은 HTML 폼 컴포넌트처럼 행�
 
 ### 클라이언트에서 폼 제출 처리하기 {/*handle-form-submission-on-the-client*/}
 
+<<<<<<< HEAD
 폼이 제출될 때 함수를 실행하기 위해, 폼의 `action` 프로퍼티에 함수를 전달하세요. [`formData`](https://developer.mozilla.org/ko/docs/Web/API/FormData)가 함수에 인자로 전달되어, 폼에서 전달된 데이터에 접근할 수 있습니다. 이 점이 URL만 받던 기존 [HTML action](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form)과의 차이점입니다.
+=======
+Pass a function to the `action` prop of form to run the function when the form is submitted. [`formData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) will be passed to the function as an argument so you can access the data submitted by the form. This differs from the conventional [HTML action](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action), which only accepts URLs. After the `action` function succeeds, all uncontrolled field elements in the form are reset.
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 <Sandpack>
 
@@ -78,20 +84,9 @@ export default function Search() {
 }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "18.3.0-canary-6db7f4209-20231021",
-    "react-dom": "18.3.0-canary-6db7f4209-20231021",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
-
 </Sandpack>
 
+<<<<<<< HEAD
 ### Server Action에서 폼 제출 처리하기 {/*handle-form-submission-with-a-server-action*/}
 
 입력과 제출 버튼과 함께 `<form>`을 렌더링하세요. 폼이 제출될 때 해당 함수를 실행하기 위해 Server Action([`'use server'`](/reference/rsc/use-server)가 표시된 함수)를 폼의 `action`의 프로퍼티로 전달하세요.
@@ -100,6 +95,15 @@ export default function Search() {
 
 `<form>`의 액션에 데이터를 제공하기 위해 폼 필드의 `hidden`을 사용할 수 있습니다. Server Action은 [`formData`](https://developer.mozilla.org/ko/docs/Web/API/FormData) 대신 `hidden`이 적용된 폼 필드 데이터를 불러 올 수 있습니다.
 
+=======
+### Handle form submission with a Server Function {/*handle-form-submission-with-a-server-function*/}
+
+Render a `<form>` with an input and submit button. Pass a Server Function (a function marked with [`'use server'`](/reference/rsc/use-server)) to the `action` prop of form to run the function when the form is submitted.
+
+Passing a Server Function to `<form action>` allow users to submit forms without JavaScript enabled or before the code has loaded. This is beneficial to users who have a slow connection, device, or have JavaScript disabled and is similar to the way forms work when a URL is passed to the `action` prop.
+
+You can use hidden form fields to provide data to the `<form>`'s action. The Server Function will be called with the hidden form field data as an instance of [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData).
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 ```jsx
 import { updateCart } from './lib.js';
@@ -139,7 +143,11 @@ function AddToCart({productId}) {
 }
 ```
 
+<<<<<<< HEAD
 `<form>`이 [서버컴포넌트](/reference/rsc/use-client)에 의해 렌더링되고 [Server Action](/reference/rsc/use-server)이 `<form>`의 `action` 프로퍼티에 전달 되면, 폼은 [점진적으로 향상](https://developer.mozilla.org/ko/docs/Glossary/Progressive_Enhancement)됩니다.
+=======
+When `<form>` is rendered by a [Server Component](/reference/rsc/use-client), and a [Server Function](/reference/rsc/server-functions) is passed to the `<form>`'s `action` prop, the form is [progressively enhanced](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement).
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 ### 폼이 제출되는 동안 pending 상태 보여주기 {/*display-a-pending-state-during-form-submission*/}
 
@@ -181,17 +189,6 @@ export async function submitForm(query) {
 }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
 </Sandpack>
 
 `useFormStatus` hook에 대해 더 알고 싶다면, [참고 문서](/reference/react-dom/hooks/useFormStatus)를 확인하세요.
@@ -263,19 +260,6 @@ export async function deliverMessage(message) {
 }
 ```
 
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "18.3.0-canary-6db7f4209-20231021",
-    "react-dom": "18.3.0-canary-6db7f4209-20231021",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
-
 </Sandpack>
 
 `useOptimistic` hook에 대해 더 알고 싶다면 [참고 문서](/reference/react/hooks/useOptimistic)를 확인해 보세요.
@@ -310,8 +294,8 @@ export default function Search() {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "18.3.0-canary-6db7f4209-20231021",
-    "react-dom": "18.3.0-canary-6db7f4209-20231021",
+    "react": "19.0.0-rc-3edc000d-20240926",
+    "react-dom": "19.0.0-rc-3edc000d-20240926",
     "react-scripts": "^5.0.0",
     "react-error-boundary": "4.0.3"
   },
@@ -326,11 +310,19 @@ export default function Search() {
 
 점진적 향상을 위해 자바스크립트 번들이 로드되기 전 에러 메시지를 보여주기 위해 다음 요소들이 지켜져야 합니다.
 
+<<<<<<< HEAD
 1. `<form>`이 [서버 컴포넌트](/reference/rsc/use-client)에서 렌더.
 2. `<form>`의 `action` 프로퍼티로 전달된 함수가 [Server Action](/reference/rsc/use-server).
 3. `useActionState` hook이 에러메시지를 보여주기 위해 사용.
 
 `useActionState`는 [Server Action](/reference/rsc/use-server)과 초기 상태 값이라는 두 개의 매개변수를 가집니다. `useActionState`는 상태 변수와 액션이라는 두 개의 값을 반환합니다. `useActionState`를 통해 반환된 액션은 폼의 `action` 프로퍼티에 전달될 수 있습니다. `useActionState`를 통해 반환된 상태 변수는 에러 메시지를 보여주는 데 사용됩니다. `useActionState`에 전달된 [Server Action](/reference/rsc/use-server)에서 반환된 값은 상태 변수를 업데이트하는 데 사용됩니다.
+=======
+1. `<form>` be rendered by a [Server Component](/reference/rsc/use-client)
+1. the function passed to the `<form>`'s `action` prop be a [Server Function](/reference/rsc/server-functions)
+1. the `useActionState` Hook be used to display the error message
+
+`useActionState` takes two parameters: a [Server Function](/reference/rsc/server-functions) and an initial state. `useActionState` returns two values, a state variable and an action. The action returned by `useActionState` should be passed to the `action` prop of the form. The state variable returned by `useActionState` can be used to display an error message. The value returned by the Server Function passed to `useActionState` will be used to update the state variable.
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 <Sandpack>
 
@@ -376,18 +368,6 @@ export async function signUpNewUser(newEmail) {
 }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
-
 </Sandpack>
 
 [`useActionState`](/reference/react/useActionState)문서를 통해 폼 작업에서 상태를 업데이트하는 방법에 대해 자세히 알아보세요.
@@ -421,18 +401,6 @@ export default function Search() {
       <button formAction={save}>Save draft</button>
     </form>
   );
-}
-```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "18.3.0-canary-6db7f4209-20231021",
-    "react-dom": "18.3.0-canary-6db7f4209-20231021",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
 }
 ```
 

@@ -4,7 +4,7 @@ title: cloneElement
 
 <Pitfall>
 
-`cloneElement`를 사용하는 것은 흔하지 않으며, 불안정한 코드를 만들 수 있습니다. [일반적인 대안을 확인하세요.](#alternatives)
+`cloneElement`사용하는 것은 일반적이지 않고 불안정한 코드를 만들 수 있습니다. [일반적으로 사용하는 대안을 살펴보세요.](#alternatives)
 
 </Pitfall>
 
@@ -554,9 +554,9 @@ button {
 
 ---
 
-### Custom Hook으로 로직 추출하기 {/*extracting-logic-into-a-custom-hook*/}
+### 커스텀 Hook으로 로직 추출하기 {/*extracting-logic-into-a-custom-hook*/}
 
-다른 접근 방식으로는 자체 hook을 통해 "비시각적인" 로직을 추출하는 것을 시도해 볼 수 있습니다. 그리고 hook에 의해서 반환된 정보를 사용하여 렌더링할 내용을 정합니다. 예를 들어 다음과 같이 `useList` 같은 custom hook을 작성할 수 있습니다.
+다른 접근 방식으로는 자체 hook을 통해 "비시각적인" 로직을 추출하는 것을 시도해 볼 수 있습니다. 그리고 hook에 의해서 반환된 정보를 사용하여 렌더링할 내용을 정합니다. 예를 들어 다음과 같이 `useList` 같은 커스텀 hook을 작성할 수 있습니다.
 
 ```js
 import { useState } from 'react';

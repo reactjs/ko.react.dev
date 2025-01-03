@@ -1,14 +1,16 @@
 ---
 title: useFormStatus
-canary: true
 ---
 
+<<<<<<< HEAD
 <Canary>
 
 `useFormStatus` Hook은 현재 React의 Canary 채널과 실험적인 채널에서만 사용할 수 있습니다. 자세한 내용은 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
 
 </Canary>
 
+=======
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 <Intro>
 
 `useFormStatus`는 마지막 폼 제출의 상태 정보를 제공하는 Hook입니다.
@@ -117,6 +119,7 @@ export async function submitForm(query) {
     await new Promise((res) => setTimeout(res, 1000));
 }
 ```
+<<<<<<< HEAD
 
 ```json package.json hidden
 {
@@ -130,6 +133,9 @@ export async function submitForm(query) {
 }
 ```
 </Sandpack>
+=======
+</Sandpack>  
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 <Pitfall>
 
@@ -234,6 +240,7 @@ button {
 
 ```
 
+<<<<<<< HEAD
 ```json package.json hidden
 {
   "dependencies": {
@@ -246,6 +253,9 @@ button {
 }
 ```
 </Sandpack>
+=======
+</Sandpack>  
+>>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 ---
 
