@@ -73,7 +73,7 @@ On the client, call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to 
 
 ### When should I use `prerender`? {/*when-to-use-prerender*/}
 
-The static `prerender` API is used for static server-side generation (SSG). Unlike `renderToString`, `prerender` waits for all data to load before resolving. This makes it suitable for generating static HTML for a full page, including data that needs to be fetched using Suspense. To stream content as it loads, use a streaming server-side render (SSR) API like [renderToReadableStream](/reference/react-dom/server/renderToReadableStream).
+The static `prerender` API is used for static server-side generation (SSG). Unlike `renderToString`, `prerender` waits for all data to load before resolving. This makes it suitable for generating static HTML for a full page, including data that needs to be fetched using Suspense. To stream content as it loads, use a streaming server-side render (SSR) API like [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream).
 
 </Note>
 
@@ -83,7 +83,7 @@ The static `prerender` API is used for static server-side generation (SSG). Unli
 
 ### Rendering a React tree to a stream of static HTML {/*rendering-a-react-tree-to-a-stream-of-static-html*/}
 
-Call `prerender` to render your React tree to static HTML into a [Readable Web Stream:](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream):
+Call `prerender` to render your React tree to static HTML into a [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream):
 
 ```js [[1, 4, "<App />"], [2, 5, "['/main.js']"]]
 import { prerender } from 'react-dom/static';
@@ -229,7 +229,7 @@ async function renderToString() {
   const {prelude} = await prerender(<App />, {
     bootstrapScripts: ['/main.js']
   });
-  
+
   const reader = stream.getReader();
   let content = '';
   while (true) {
@@ -291,7 +291,6 @@ Suspense-enabled data fetching without the use of an opinionated framework is no
 
 ### My stream doesn't start until the entire app is rendered {/*my-stream-doesnt-start-until-the-entire-app-is-rendered*/}
 
-The `prerender` response waits for the entire app to finish rendering, including waiting for all suspense boundaries to resolve, before resolving. It is designed for static site generation (SSG) ahead of time and does not support streaming more content as it loads. 
+The `prerender` response waits for the entire app to finish rendering, including waiting for all suspense boundaries to resolve, before resolving. It is designed for static site generation (SSG) ahead of time and does not support streaming more content as it loads.
 
-To stream content as it loads, use a streaming server render API like [renderToReadableStream](/reference/react-dom/server/renderToReadableStream).
- 
+To stream content as it loads, use a streaming server render API like [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream).
