@@ -4,7 +4,7 @@ title: prerenderToNodeStream
 
 <Intro>
 
-`prerenderToNodeStream` renders a React tree to a static HTML string using a [Node.js Stream.](https://nodejs.org/api/stream.html).
+`prerenderToNodeStream` renders a React tree to a static HTML string using a [Node.js Stream](https://nodejs.org/api/stream.html).
 
 ```js
 const {prelude} = await prerenderToNodeStream(reactNode, options?)
@@ -63,7 +63,7 @@ On the client, call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to 
 #### Returns {/*returns*/}
 
 `prerenderToNodeStream` returns a Promise:
-- If rendering the is successful, the Promise will resolve to an object containing:
+- If rendering is successful, the Promise will resolve to an object containing:
   - `prelude`: a [Node.js Stream.](https://nodejs.org/api/stream.html) of HTML. You can use this stream to send a response in chunks, or you can read the entire stream into a string.
 - If rendering fails, the Promise will be rejected. [Use this to output a fallback shell.](#recovering-from-errors-inside-the-shell)
 
@@ -71,7 +71,7 @@ On the client, call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to 
 
 ### When should I use `prerenderToNodeStream`? {/*when-to-use-prerender*/}
 
-The static `prerenderToNodeStream` API is used for static server-side generation (SSG). Unlike `renderToString`, `prerenderToNodeStream` waits for all data to load before resolving. This makes it suitable for generating static HTML for a full page, including data that needs to be fetched using Suspense. To stream content as it loads, use a streaming server-side render (SSR) API like [renderToReadableStream](/reference/react-dom/server/renderToReadableStream).
+The static `prerenderToNodeStream` API is used for static server-side generation (SSG). Unlike `renderToString`, `prerenderToNodeStream` waits for all data to load before resolving. This makes it suitable for generating static HTML for a full page, including data that needs to be fetched using Suspense. To stream content as it loads, use a streaming server-side render (SSR) API like [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream).
 
 </Note>
 
@@ -81,7 +81,7 @@ The static `prerenderToNodeStream` API is used for static server-side generation
 
 ### Rendering a React tree to a stream of static HTML {/*rendering-a-react-tree-to-a-stream-of-static-html*/}
 
-Call `prerenderToNodeStream` to render your React tree to static HTML into a [Node.js Stream.](https://nodejs.org/api/stream.html):
+Call `prerenderToNodeStream` to render your React tree to static HTML into a [Node.js Stream](https://nodejs.org/api/stream.html):
 
 ```js [[1, 5, "<App />"], [2, 6, "['/main.js']"]]
 import { prerenderToNodeStream } from 'react-dom/static';
@@ -91,7 +91,7 @@ app.use('/', async (request, response) => {
   const { prelude } = await prerenderToNodeStream(<App />, {
     bootstrapScripts: ['/main.js'],
   });
-  
+
   response.setHeader('Content-Type', 'text/plain');
   prelude.pipe(response);
 });
@@ -228,7 +228,7 @@ async function renderToString() {
   const {prelude} = await prerenderToNodeStream(<App />, {
     bootstrapScripts: ['/main.js']
   });
-  
+
   return new Promise((resolve, reject) => {
     let data = '';
     prelude.on('data', chunk => {
@@ -291,5 +291,5 @@ Suspense-enabled data fetching without the use of an opinionated framework is no
 
 The `prerenderToNodeStream` response waits for the entire app to finish rendering, including waiting for all suspense boundaries to resolve, before resolving. It is designed for static site generation (SSG) ahead of time and does not support streaming more content as it loads.
 
-To stream content as it loads, use a streaming server render API like [renderToPipeableStream](/reference/react-dom/server/renderToPipeableStream).
- 
+To stream content as it loads, use a streaming server render API like [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream).
+
