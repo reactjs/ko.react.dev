@@ -94,7 +94,7 @@ app.use('/', (request, response) => {
 
 <CodeStep step={1}>루트 컴포넌트</CodeStep>와 함께 <CodeStep step={2}>부트스트랩 `<script>` 경로 목록</CodeStep>을 제공해야 합니다. 루트 컴포넌트는 **루트 `<html>` 태그를 포함한 전체 문서를 반환해야 합니다.**
 
-예를 들어 다음과 같이 표시될 수 있습니다.
+예를 들어 다음과 같이 표시할 수 있습니다.
 
 ```js [[1, 1, "App"]]
 export default function App() {
@@ -200,7 +200,7 @@ app.use('/', (request, response) => {
 });
 ```
 
-위 예시에서 `bootstrapScriptContent` 옵션은 클라이언트에서 전역 `window.assetMap` 변수를 설정하는 추가 인라인 `<script>` 태그를 추가합니다. 이렇게 하면 클라이언트 코드가 동일한 `assetMap`을 읽을 수 있습니다:
+위 예시에서 `bootstrapScriptContent` 옵션은 클라이언트에서 전역 `window.assetMap` 변수를 설정하는 추가 인라인 `<script>` 태그를 추가합니다. 이렇게 하면 클라이언트 코드가 동일한 `assetMap`을 읽을 수 있습니다.
 
 ```js {4}
 import { hydrateRoot } from 'react-dom/client';
@@ -276,7 +276,7 @@ function ProfilePage() {
 }
 ```
 
-이 예시에서 React는 페이지 스트리밍을 더 일찍 시작할 수 있습니다. `ProfileLayout`과 `ProfileCover`만 `<Suspense>` 경계로 둘러싸여 있지 않기 때문에 먼저 렌더링을 완료해야 합니다. 하지만 `Sidebar`, `Friends`, `Photos`이 일부 데이터를 로드해야 하는 경우 React는 대신 `BigSpinner` 폴백을 위한 HTML을 전송합니다. 그러면 더 많은 데이터를 사용할 수 있게 되면 모든 데이터가 표시될 때까지 더 많은 콘텐츠가 계속 표시됩니다.
+이 예시에서 React는 페이지 스트리밍을 더 일찍 시작할 수 있습니다. `ProfileLayout`과 `ProfileCover`만 `<Suspense>` 경계로 둘러싸여 있지 않기 때문에 먼저 렌더링을 완료해야 합니다. 하지만 `Sidebar`, `Friends`, `Photos`가 일부 데이터를 로드해야 하는 경우, React는 대신 `BigSpinner` 폴백을 위한 HTML을 전송합니다. 그러면 더 많은 데이터를 사용할 수 있게 되면 모든 데이터가 표시될 때까지 더 많은 콘텐츠가 계속 표시됩니다.
 
 스트리밍은 브라우저에서 React 자체가 로드되거나 앱이 상호작용 가능해질 때까지 기다릴 필요가 없습니다. 서버의 HTML 콘텐츠는 `<script>` 태그가 로드되기 전에 점진적으로 표시됩니다.
 
@@ -284,17 +284,17 @@ function ProfilePage() {
 
 <Note>
 
-**Suspense 가 활성화된 데이터 소스만 Suspense 컴포넌트를 활성화합니다.** 여기에는 다음이 포함됩니다.
+**Suspense가 활성화된 데이터 소스만 Suspense 컴포넌트를 활성화합니다.** 여기에는 다음이 포함됩니다.
 
-- [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/getting-started/react-essentials) 같이 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기
-- [`lazy`](/reference/react/lazy)를 활용한 지연 로딩 컴포넌트
-- [`use`](/reference/react/use)를 사용해서 Promise 값 읽기
+- [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/getting-started/react-essentials) 같은 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기.
+- [`lazy`](/reference/react/lazy)를 활용한 지연 로딩 컴포넌트.
+- [`use`](/reference/react/use)를 사용해서 Promise 값 읽기.
 
-Suspense 는 이펙트 또는 이벤트 핸들러 내부에서 데이터를 가져올 때를 감지하지 **않습니다.**
+Suspense는 이펙트 또는 이벤트 핸들러 내부에서 데이터를 가져올 때를 감지하지 **않습니다.**
 
 위의 `Posts` 컴포넌트에서 데이터를 로드하는 정확한 방법은 프레임워크에 따라 다릅니다. Suspense 지원 프레임워크를 사용하는 경우 해당 데이터 가져오기 문서에서 자세한 내용을 확인할 수 있습니다.
 
-독자적인 프레임워크를 사용하지 않는 Suspense 가능한 데이터 가져오기는 아직 지원되지 않습니다. Suspense 가능한 데이터 소스를 구현하기 위한 요구 사항은 불안정하고 문서화되지 않았습니다. 데이터 소스를 Suspense 와 통합하기 위한 공식 API는 향후 React 버전에서 출시될 예정입니다.
+독자적인 프레임워크를 사용하지 않는 Suspense 가능한 데이터 가져오기는 아직 지원되지 않습니다. Suspense 가능한 데이터 소스를 구현하기 위한 요구 사항은 불안정하고 문서화되지 않았습니다. 데이터 소스를 Suspense와 통합하기 위한 공식 API는 향후 React 버전에서 출시될 예정입니다.
 
 </Note>
 
@@ -502,8 +502,7 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 ### 다양한 오류를 서로 다른 방식으로 처리하기 {/*handling-different-errors-in-different-ways*/}
 
-[자신만의 `Error` 서브 클래스를 생성](https://ko.javascript.info/custom-errors)하고 [`instanceof`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/instanceof) 연산자를 사용해 어떤 에러가 발생하는지 확인할 수 있습니다.
-예를 들어 사용자 정의 `NotFoundError`를 정의하고 컴포넌트에서 이를 던질 수 있습니다. 그러면 오류 유형에 따라 `onError`, `onShellReady`, `onShellError` 콜백이 다른 작업을 수행할 수 있습니다.
+[자신만의 `Error` 서브 클래스를 생성](https://ko.javascript.info/custom-errors)하고 [`instanceof`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/instanceof) 연산자를 사용해 어떤 에러가 발생하는지 확인할 수 있습니다. 예를 들어, 사용자 정의 `NotFoundError`를 정의하고 컴포넌트에서 이를 던질 수 있습니다. 그러면 오류 유형에 따라 `onError`, `onShellReady`, `onShellError` 콜백이 다른 작업을 수행할 수 있습니다.
 
 ```js {2,4-14,19,24,30}
 let didError = false;
