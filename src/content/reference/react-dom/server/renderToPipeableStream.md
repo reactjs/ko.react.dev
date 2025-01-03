@@ -16,7 +16,7 @@ const { pipe, abort } = renderToPipeableStream(reactNode, options?)
 
 <Note>
 
-이 API는 Node.js 전용입니다. Deno 및 최신 엣지 런타임과 같은 [Web 스트림](https://developer.mozilla.org/ko/docs/Web/API/Streams_API)이 있는 환경에서는 대신 [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)을 사용해야 합니다.
+이 API는 Node.js 전용입니다. Deno 및 최신 엣지 런타임과 같은 [Web 스트림](https://developer.mozilla.org/ko/docs/Web/API/Streams_API)이 있는 환경에서는 [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)을 대신 사용하세요.
 
 </Note>
 
@@ -284,17 +284,17 @@ function ProfilePage() {
 
 <Note>
 
-**Suspense가 활성화된 데이터 소스만 Suspense 컴포넌트를 활성화합니다.** 여기에는 다음이 포함됩니다.
+**Suspense를 지원하는 데이터 소스만 Suspense 컴포넌트를 활성화합니다.** 이는 다음과 같습니다.
 
 - [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/getting-started/react-essentials) 같은 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기.
 - [`lazy`](/reference/react/lazy)를 활용한 지연 로딩 컴포넌트.
 - [`use`](/reference/react/use)를 사용해서 Promise 값 읽기.
 
-Suspense는 이펙트 또는 이벤트 핸들러 내부에서 데이터를 가져올 때를 감지하지 **않습니다.**
+Suspense는 Effect 또는 이벤트 핸들러 내부에서 데이터를 가져올 경우, **이를 감지하지 못합니다.**
 
-위의 `Posts` 컴포넌트에서 데이터를 로드하는 정확한 방법은 프레임워크에 따라 다릅니다. Suspense 지원 프레임워크를 사용하는 경우 해당 데이터 가져오기 문서에서 자세한 내용을 확인할 수 있습니다.
+`Posts` 컴포넌트에서 데이터를 불러오는 정확한 방법은 앞서 설명한 프레임워크에 따라 다릅니다. Suspense를 지원하는 프레임워크를 사용하는 경우, 데이터를 가져오는 자세한 방법은 해당 프레임워크 문서에서 찾을 수 있습니다.
 
-독자적인 프레임워크를 사용하지 않는 Suspense 가능한 데이터 가져오기는 아직 지원되지 않습니다. Suspense 가능한 데이터 소스를 구현하기 위한 요구 사항은 불안정하고 문서화되지 않았습니다. 데이터 소스를 Suspense와 통합하기 위한 공식 API는 향후 React 버전에서 출시될 예정입니다.
+독자적인 프레임워크를 사용하지 않는 Suspense 지원 데이터 가져오기는 아직 지원하지 않습니다. Suspense를 지원하는 데이터 소스를 구현하기 위한 요구 사항은 불안정하고 문서화되지 않았습니다. 데이터 소스를 Suspense와 통합하기 위한 공식 API는 React의 향후 버전에서 출시할 예정입니다.
 
 </Note>
 
@@ -350,9 +350,9 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 ---
 
-### 서버에서 크래시 로깅하기 {/*logging-crashes-on-the-server*/}
+### 서버에서의 충돌을 기록하기 {/*logging-crashes-on-the-server*/}
 
-기본적으로 서버의 모든 오류는 콘솔에 기록됩니다. 이 동작을 재정의하여 크래시 보고서를 기록할 수 있습니다.
+기본적으로 서버의 모든 오류는 콘솔에 기록<sup>Logging</sup>됩니다. 이 동작을 재정의하여 충돌<sup>Crash</sup> 보고서를 기록할 수 있습니다.
 
 ```js {7-10}
 const { pipe } = renderToPipeableStream(<App />, {
@@ -437,7 +437,7 @@ function ProfilePage() {
 2. 더 이상 서버에서 `Posts` 콘텐츠를 렌더링하는 것을 "포기"합니다.
 3. 자바스크립트 코드가 클라이언트에서 로드되면 React는 클라이언트에서 `Posts` 렌더링을 *재시도*합니다.
 
-클라이언트에서 `Posts` 렌더링을 *다시 시도해도* 실패하면 React는 클라이언트에서 에러를 던집니다. 렌더링 중에 발생하는 모든 에러와 마찬가지로, [가장 가까운 부모 에러 경계](/reference/react/Component#static-getderivedstatefromerror)에 따라 사용자에게 에러를 표시하는 방법이 결정됩니다. 실제로는 오류를 복구할 수 없다는 것이 확실해질 때까지 사용자에게 로딩 표시기가 표시된다는 의미입니다.
+클라이언트에서 `Posts` 렌더링을 *다시 시도해도* 실패하면 React는 클라이언트에서 오류를 던집니다. 렌더링 중에 발생하는 모든 오류와 마찬가지로, [가장 가까운 부모 오류 경계](/reference/react/Component#static-getderivedstatefromerror)에 따라 사용자에게 오류를 표시하는 방법이 결정됩니다. 실제로는 오류를 복구할 수 없다는 것이 확실해질 때까지 사용자에게 로딩 표시기가 표시된다는 의미입니다.
 
 클라이언트에서 `Posts` 렌더링을 다시 시도하여 성공하면 서버의 로딩 폴백이 클라이언트 렌더링 출력으로 대체됩니다. 사용자는 서버 오류가 발생했다는 사실을 알 수 없습니다. 그러나 서버 `onError` 콜백 및 클라이언트 [`onRecoverableError`](/reference/react-dom/client/hydrateRoot#hydrateroot) 콜백이 실행되어 오류에 대한 알림을 받을 수 있습니다.
 
@@ -469,7 +469,7 @@ const { pipe } = renderToPipeableStream(<App />, {
 });
 ```
 
-셸 *외부*(즉, `<Suspense>` 경계 안쪽)에 있는 컴포넌트가 에러를 던져도 React는 렌더링을 멈추지 않습니다. 즉, `onError` 콜백이 실행되지만 `onShellError` 대신 `onShellReady`가 반환됩니다. 이는 [위에서 설명한 것처럼](#recovering-from-errors-outside-the-shell) React가 클라이언트에서 해당 오류를 복구하려고 시도하기 때문입니다.
+셸 *외부*(즉, `<Suspense>` 경계 안쪽)에 있는 컴포넌트가 오류를 던져도 React는 렌더링을 멈추지 않습니다. 즉, `onError` 콜백이 실행되지만 `onShellError` 대신 `onShellReady`가 반환됩니다. 이는 [위에서 설명한 것처럼](#recovering-from-errors-outside-the-shell) React가 클라이언트에서 해당 오류를 복구하려고 시도하기 때문입니다.
 
 그러나 원하는 경우 오류가 발생했다는 사실을 사용하여 상태 코드를 설정할 수 있습니다.
 
@@ -502,7 +502,7 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 ### 다양한 오류를 서로 다른 방식으로 처리하기 {/*handling-different-errors-in-different-ways*/}
 
-[자신만의 `Error` 서브 클래스를 생성](https://ko.javascript.info/custom-errors)하고 [`instanceof`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/instanceof) 연산자를 사용해 어떤 에러가 발생하는지 확인할 수 있습니다. 예를 들어, 사용자 정의 `NotFoundError`를 정의하고 컴포넌트에서 이를 던질 수 있습니다. 그러면 오류 유형에 따라 `onError`, `onShellReady`, `onShellError` 콜백이 다른 작업을 수행할 수 있습니다.
+[자신만의 `Error` 서브 클래스를 생성](https://ko.javascript.info/custom-errors)하고 [`instanceof`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/instanceof) 연산자를 사용해 어떤 오류가 발생하는지 확인할 수 있습니다. 예를 들어, 사용자 정의 `NotFoundError`를 정의하고 컴포넌트에서 이를 던질 수 있습니다. 그러면 오류 유형에 따라 `onError`, `onShellReady`, `onShellError` 콜백이 다른 작업을 수행할 수 있습니다.
 
 ```js {2,4-14,19,24,30}
 let didError = false;
