@@ -105,7 +105,7 @@ function TableContainer({ items }) {
   // ...
 }
 ```
-[_React 컴파일러 플레이그라운드에서 이 예시를 확인하세요_](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAejQAgFTYHIQAuumAtgqRAJYBeCAJpgEYCemASggIZyGYDCEUgAcqAGwQwANJjBUAdokyEAFlTCZ1meUUxdMcIcIjyE8vhBiYVECAGsAOvIBmURYSonMCAB7CzcgBuCGIsAAowEIhgYACCnFxioQAyXDAA5gixMDBcLADyzvlMAFYIvGAAFACUmMCYaNiYAHStOFgAvk5OGJgAshTUdIysHNy8AkbikrIKSqpaWvqGIiZmhE6u7p7ymAAqXEwSguZcCpKV9VSEFBodtcBOmAYmYHz0XIT6ALzefgFUYKhCJRBAxeLcJIsVIZLI5PKFYplCqVa63aoAbm6u0wMAQhFguwAPPRAQA+YAfL4dIloUmBMlODogDpAA)
+[_React 컴파일러 플레이그라운드에서 이 예시를 확인하세요_](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAejQAgFTYHIQAuumAtgqRAJYBeCAJpgEYCemASggIZyGYDCEUgAcqAGwQwANJjBUAdokyEAFlTCZ1meUUxdMcIcIjyE8vhBiYVECAGsAOvIBmURYSonMCAB7CzcgBuCGIsAAowEIhgYACCnFxioQAyXDAA5gixMDBcLADyzvlMAFYIvGAAFACUmMCYaNiYAHStOFgAvk5OGJgAshTUdIysHNy8AkbikrIKSqpaWvqGIiZmhE6u7p7ymAAqXEwSguZcCpKV9VSEFBodtcBOmAYmYHz0XIT6ALzefgFUYKhCJRBAxeLcJIsVIZLI5PKFYplCqVa63aoAbm6u0wMAQhFguwAPPRAQA+YAfL4dIloUmBMlODogDpAA).
 
 그러나 `expensivelyProcessAReallyLargeArrayOfObjects`가 실제로 비용이 많이 드는 함수라면 다음과 같은 이유로 React 외부에서 해당 함수의 별도 메모이제이션을 고려해야 할 수도 있습니다.
 
@@ -349,7 +349,7 @@ React 컴파일러는 React의 많은 규칙을 정적으로 검증할 수 있�
 
 ### 컴포넌트가 최적화되었는지 어떻게 알 수 있을까요? {/*how-do-i-know-my-components-have-been-optimized*/}
 
-[React Devtools](/learn/react-developer-tools) (v5.0+)에는 React 컴파일러를 내장 지원하며, 컴파일러에 의해 최적화된 컴포넌트 옆에 "Memo ✨" 배지를 표시합니다.
+[React DevTools](/learn/react-developer-tools) (v5.0+)와 [React Native DevTools](https://reactnative.dev/docs/react-native-devtools)는 React 컴파일러를 내장 지원하며, 컴파일러에 의해 최적화된 컴포넌트 옆에 "Memo ✨" 배지를 표시합니다.
 
 ### 컴파일 후 작동하지 않는 문제 {/*something-is-not-working-after-compilation*/}
 

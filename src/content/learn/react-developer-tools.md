@@ -52,25 +52,10 @@ react-devtools
 
 ![React Developer Tools standalone](/images/docs/react-devtools-standalone.png)
 
-## 모바일 (React Native) {/*mobile-react-native*/}
-React Developer Tools는 [React Native](https://reactnative.dev/)로 만들어진 앱에서도 잘 동작합니다.
+## Mobile (React Native) {/*mobile-react-native*/}
 
-React Developer Tools를 사용하는 가장 쉬운 방법은 전역적으로 설치하는 것입니다.
-```bash
-# Yarn
-yarn global add react-devtools
+To inspect apps built with [React Native](https://reactnative.dev/), you can use [React Native DevTools](https://reactnative.dev/docs/react-native-devtools), the built-in debugger that deeply integrates React Developer Tools. All features work identically to the browser extension, including native element highlighting and selection.
 
-# Npm
-npm install -g react-devtools
-```
+[Learn more about debugging in React Native.](https://reactnative.dev/docs/debugging)
 
-다음으로 터미널에서 개발자 도구를 여십시오.
-```bash
-react-devtools
-```
-
-실행 중인 로컬 React Native 앱에 연결해야 합니다.
-
-> 개발자 도구가 몇 초 후에 연결되지 않으면 앱을 다시 로드해 보십시오.
-
-[React Native 디버깅에 대하여 더 알아보기](https://reactnative.dev/docs/debugging)
+> For versions of React Native earlier than 0.76, please use the standalone build of React DevTools by following the [Safari and other browsers](#safari-and-other-browsers) guide above.
