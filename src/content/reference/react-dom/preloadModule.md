@@ -2,15 +2,6 @@
 title: preloadModule
 ---
 
-<<<<<<< HEAD
-<Canary>
-
-`preloadModule`는 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. 여기에서 [React의 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보세요.
-
-</Canary>
-
-=======
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 <Note>
 
 [React 기반 프레임워크](/learn/start-a-new-react-project)는 리소스 로딩을 대신 처리하는 경우가 많으므로 이 API를 직접 호출할 필요가 없을 수도 있습니다. 자세한 내용은 해당 프레임워크의 문서를 참조하세요.
@@ -47,7 +38,7 @@ function AppRoot() {
 
 ```
 
-[아래에서 더 많은 예시를 확인하세요.](#usage)
+[아래 예시를 참조하세요.](#usage)
 
 `preloadModule` 기능은 브라우저에 주어진 모듈 다운로드를 시작해야 한다는 힌트를 제공하여 시간을 절약할 수 있습니다.
 

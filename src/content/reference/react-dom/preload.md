@@ -10,7 +10,7 @@ title: preload
 
 <Intro>
 
-`preload`를 사용하면 사용할 스타일시트, 글꼴 또는 외부 스크립트와 같은 리소스를 미리 불러올 수 있습니다.
+`preload`를 사용하면 사용할 스타일시트, 글꼴 또는 외부 스크립트와 같은 리소스를 미리 가져올 수 있습니다.
 
 ```js
 preload("https://example.com/font.woff2", {as: "font"});
@@ -45,7 +45,7 @@ function AppRoot() {
 #### 매개변수 {/*parameters*/}
 
 * `href`: 문자열입니다. 다운로드하려는 리소스의 URL입니다.
-* `options`: 객체입니다. 여기에는 다음과 같은 속성이 포함되어 있습니다:
+* `options`: 객체입니다. 여기에는 다음과 같은 속성이 포함되어 있습니다.
   *  `as`: 필수 문자열입니다. 리소스의 타입입니다. [가능한 값](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#as)은 `audio`, `document`, `embed`, `fetch`, `font`, `image`, `object`, `script`, `style`, `track`, `video`, `worker`입니다.
   *  `crossOrigin`: 문자열입니다. 사용할 [CORS 정책](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)입니다. 가능한 값은 `anonymous`와 `use-credentials`입니다. `as`가 `"fetch"`로 설정된 경우 필수입니다.
   *  `referrerPolicy`: 문자열입니다. 가져오기<sup>Fetching</sup>할 때 전송할 [Referrer 헤더](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#referrerpolicy)입니다. 사용할 수 있는 값은 `no-referrer-when-downgrade` (기본값), `no-referrer`, `origin`, `origin-when-cross-origin` 그리고 `unsafe-url`입니다.
