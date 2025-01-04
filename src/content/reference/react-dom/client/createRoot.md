@@ -50,11 +50,11 @@ root.render(<App />);
 
 #### 반환값 {/*returns*/}
 
-`createRoot`는 [`render`](#root-render)와 [`unmount`](#root-unmount) 두 가지 메서드가 있는 객체를 반환합니다.
+`createRoot`는 [`render`](#root-render)와 [`unmount`](#root-unmount) 두 가지 메서드를 포함한 객체를 반환합니다.
 
 #### 주의 사항 {/*caveats*/}
 * 앱이 서버에서 렌더링 되는 경우 `createRoot()`는 사용할 수 없습니다. 대신 [`hydrateRoot()`](/reference/react-dom/client/hydrateRoot)를 사용하세요.
-* 앱에 `createRoot` 호출이 단 하나만 있을 가능성이 높습니다. 프레임워크를 사용하는 경우 프레임워크가 이 호출을 대신 수행할 수도 있습니다.
+* 앱에서 `createRoot` 호출이 단 한번만 있을 가능성이 높습니다. 프레임워크를 사용하는 경우 프레임워크가 이 호출을 대신 수행할 수도 있습니다.
 * 컴포넌트의 자식이 아닌 DOM 트리의 다른 부분(예: 모달 또는 툴팁)에 JSX 조각을 렌더링하려는 경우, `createRoot` 대신 [`createPortal`](/reference/react-dom/createPortal)을 사용하세요.
 
 ---
@@ -92,7 +92,7 @@ React는 `root`에 `<App />`을 표시하고 그 안에 있는 DOM을 관리합�
 
 ### `root.unmount()` {/*root-unmount*/}
 
-`root.unmount`를 호출하면 React 루트 내부에서 렌더링 된 트리를 삭제합니다.
+`root.unmount`를 호출하면 React 루트 내부에서 렌더링된 트리를 삭제합니다.
 
 ```js
 root.unmount();
@@ -118,7 +118,7 @@ root.unmount();
 
 * `root.unmount`를 호출하면 트리의 모든 컴포넌트가 마운트 해제되고 루트 DOM 노드에서 React가 "분리"됩니다.
 
-* `root.unmount`를 한 번 호출한 후에는 같은 루트에서 `root.render`를 다시 호출할 수 없습니다. 마운트 해제된 루트에서 `root.render`를 호출하려고 하면 "마운트 해제된 root를 업데이트할 수 없습니다.<sup>Cannot update an unmounted root</sup>" 오류가 발생합니다. 그러나 해당 노드의 이전 루트가 마운트 해제된 후 동일한 DOM 노드에 새로운 루트를 만들 수는 있습니다.
+* `root.unmount`를 한 번 호출한 후에는 같은 루트에서 `root.render`를 다시 호출할 수 없습니다. 마운트 해제된 루트에서 `root.render`를 호출하려고 하면 "마운트 해제된 루트를 업데이트할 수 없습니다.<sup>Cannot update an unmounted root</sup>" 오류가 발생합니다. 그러나 해당 노드의 이전 루트가 마운트 해제된 후 동일한 DOM 노드에 새로운 루트를 만들 수는 있습니다.
 
 ---
 
