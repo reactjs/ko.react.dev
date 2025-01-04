@@ -272,7 +272,7 @@ props와 state는 다르지만, 함께 동작합니다. state는 보통 부모 �
 
 이제 state 값은 `FilterableProductTable`안에 있습니다.
 
-[`useState()` Hook](/apis/usestate)을 이용해서 state를 컴포넌트에 추가하세요. Hooks는 React 기능에 "연결할 수(hook into)" 있게 해주는 특별한 함수입니다. `FilterableProductTable`의 상단에 두 개의 state 변수를 추가해서 초깃값을 명확하게 보여주세요.
+[`useState()` Hook](/reference/react/useState)을 이용해서 state를 컴포넌트에 추가하세요. Hooks는 React 기능에 "연결할 수(hook into)" 있게 해주는 특별한 함수입니다. `FilterableProductTable`의 상단에 두 개의 state 변수를 추가해서 초깃값을 명확하게 보여주세요.
 
 ```js
 function FilterableProductTable({ products }) {
