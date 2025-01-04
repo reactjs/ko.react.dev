@@ -2,15 +2,6 @@
 script: "<script>"
 ---
 
-<<<<<<< HEAD
-<Canary>
-
-React의 `<script>` 확장은 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. React의 안정적인 릴리즈에서는 `<script>`가 [내장 브라우저 HTML 컴포넌트](https://react.dev/reference/react-dom/components#all-html-components)로만 작동합니다. 여기에서 [React의 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
-
-</Canary>
-
-=======
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 <Intro>
 
 [내장 브라우저 `<script>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)를 사용하면 문서에 스크립트를 추가할 수 있습니다.

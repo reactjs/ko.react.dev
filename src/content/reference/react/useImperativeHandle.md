@@ -38,27 +38,21 @@ function MyInput({ ref }) {
 
 #### 매개변수 {/*parameters*/}
 
-<<<<<<< HEAD
 * `ref`: [`forwardRef` 렌더링 함수](/reference/react/forwardRef#render-function)에서 두 번째 인자로 받은 ref입니다.
-=======
-* `ref`: The `ref` you received as a prop to the `MyInput` component.
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+
+* `ref`: The `ref` you received as a prop to the `MyInput` component. {/*TODO*/}
 
 * `createHandle`: 인자가 없고 노출하려는 ref 핸들을 반환하는 함수입니다. 해당 ref 핸들은 어떠한 유형이든 될 수 있습니다. 일반적으로 노출하려는 메서드가 있는 객체를 반환합니다.
 
 * **(선택적)** `dependencies`: `createHandle` 코드 내에서 참조하는 모든 반응형 값을 나열한 목록입니다. 반응형 값은 props, state 및 컴포넌트 내에서 직접 선언한 모든 변수와 함수를 포함합니다. [React에 대한 린터를 구성한 경우](/learn/editor-setup#linting) 모든 반응형 값이 올바르게 의존성으로 지정되었는지 확인합니다. 의존성 목록은 항상 일정한 수의 항목을 가지고 `[dep1, dep2, dep3]`와 같이 인라인으로 작성되어야 합니다. React는 각 의존성을 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 사용하여 이전 값과 비교합니다. 리렌더링으로 인해 일부 의존성이 변경되거나 이 인수를 생략한 경우 `createHandle`함수가 다시 실행되고 새로 생성된 핸들이 ref에 할당됩니다.
 
-<<<<<<< HEAD
-#### 반환값 {/*returns*/}
-=======
 <Note>
 
-Starting with React 19, [`ref` is available a prop.](/blog/2024/12/05/react-19#ref-as-a-prop) In React 18 and earlier, it was necessary to get the `ref` from [`forwardRef`.](/reference/react/forwardRef) 
+Starting with React 19, [`ref` is available a prop.](/blog/2024/12/05/react-19#ref-as-a-prop) In React 18 and earlier, it was necessary to get the `ref` from [`forwardRef`.](/reference/react/forwardRef)
 
 </Note>
 
-#### Returns {/*returns*/}
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+#### 반환값 {/*returns*/}
 
 `useImperativeHandle`은 `undefined`를 반환합니다.
 
@@ -68,11 +62,9 @@ Starting with React 19, [`ref` is available a prop.](/blog/2024/12/05/react-19#r
 
 ### 부모 컴포넌트에 커스텀 ref핸들 노출 {/*exposing-a-custom-ref-handle-to-the-parent-component*/}
 
-<<<<<<< HEAD
 기본적으로 컴포넌트는 자식 컴포넌트의 DOM 노드를 부모 컴포넌트에 노출하지 않습니다. 예를 들어 `MyInput`의 부모 컴포넌트가 `<input>` DOM 노드에 [접근하려면](/learn/manipulating-the-dom-with-refs) [`forwardRef`](/reference/react/forwardRef)를 사용하여 선택적으로 참조에 포함해야 합니다.
-=======
-To expose a DOM node to the parent element, pass in the `ref` prop to the node.
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+
+To expose a DOM node to the parent element, pass in the `ref` prop to the node. {/*TODO*/}
 
 ```js {2}
 function MyInput({ ref }) {
@@ -80,11 +72,9 @@ function MyInput({ ref }) {
 };
 ```
 
-<<<<<<< HEAD
 위의 코드에서 [`MyInput`에 대한 ref는 `<input>` DOM 노드를 받게 됩니다.](/reference/react/forwardRef#exposing-a-dom-node-to-the-parent-component) 그러나 대신 사용자 지정 값을 노출할 수 있습니다. 노출된 핸들을 사용자 정의하려면 컴포넌트의 최상위 레벨에서 `useImperativeHandle`을 호출하세요.
-=======
+
 With the code above, [a ref to `MyInput` will receive the `<input>` DOM node.](/learn/manipulating-the-dom-with-refs) However, you can expose a custom value instead. To customize the exposed handle, call `useImperativeHandle` at the top level of your component:
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 ```js {4-8}
 import { useImperativeHandle } from 'react';
@@ -100,11 +90,9 @@ function MyInput({ ref }) {
 };
 ```
 
-<<<<<<< HEAD
 위의 코드에서 `<input>`에 대한 `ref`는 더이상 전달되지 않습니다.
-=======
-Note that in the code above, the `ref` is no longer passed to the `<input>`.
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+
+Note that in the code above, the `ref` is no longer passed to the `<input>`. {/*TODO*/}
 
 예를 들어 전체 `<input>` DOM 노드를 노출하지 않고 `focus`와 `scrollIntoView`의 두 메서드만을 노출하고 싶다고 가정해 봅시다. 그러기 위해서는 실제 브라우저 DOM을 별도의 ref에 유지해야 합니다. 그리고 `useImperativeHandle`을 사용하여 부모 컴포넌트에서 호출할 메서드만 있는 핸들을 노출합니다.
 

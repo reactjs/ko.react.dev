@@ -42,16 +42,15 @@ root.render(
 
 Strict Mode는 다음과 같은 개발 전용 동작을 활성화합니다.
 
-<<<<<<< HEAD
 - 순수하지 않은 렌더링으로 인해 발생하는 버그를 찾기 위해 컴포넌트가 [추가로 다시 렌더링됩니다.](#fixing-bugs-found-by-double-rendering-in-development)
 - Effect 클린업이 누락되어 발생하는 버그를 찾기 위해 컴포넌트가 [추가로 Effect를 다시 실행합니다.](#fixing-bugs-found-by-re-running-effects-in-development)
 - [더 이상 사용되지 않는 API의 사용 여부를 확인](#fixing-deprecation-warnings-enabled-by-strict-mode)하기 위해 컴포넌트를 검사합니다.
-=======
+
+
 - Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
 - Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
 - Your components will [re-run refs callbacks an extra time](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) to find bugs caused by missing ref cleanup.
-- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode) {/*TODO*/}
 
 #### Props {/*props*/}
 
@@ -92,16 +91,14 @@ Strict Mode 검사는 **개발 환경에서만 실행되지만**, 이미 코드�
 
 Strict Mode에서는 개발 시 다음과 같은 검사를 가능하게 합니다.
 
-<<<<<<< HEAD
 - 컴포넌트가 순수하지 않은 렌더링으로 인한 버그를 찾기 위해 [추가로 다시 렌더링합니다.](#fixing-bugs-found-by-double-rendering-in-development)
 - 컴포넌트가 Effect 클린업이 누락되어 발생한 버그를 찾기 위해 [Effect를 다시 실행합니다.](#fixing-bugs-found-by-re-running-effects-in-development)
 - 컴포넌트가 [더 이상 사용되지 않는 API를 사용하는지 확인합니다.](#fixing-deprecation-warnings-enabled-by-strict-mode)
-=======
+
 - Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
 - Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
 - Your components will [re-run ref callbacks an extra time](#fixing-bugs-found-by-cleaning-up-and-re-attaching-dom-refs-in-development) to find bugs caused by missing ref cleanup.
-- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode) {/*TODO*/}
 
 **이러한 모든 검사는 개발 전용이며 프로덕션 빌드에는 영향을 미치지 않습니다.**
 
@@ -841,9 +838,6 @@ Strict Mode가 없으면 Effect를 클린업해야 한다는 사실을 놓치기
 ---
 ### Fixing bugs found by re-running ref callbacks in development {/*fixing-bugs-found-by-re-running-ref-callbacks-in-development*/}
 
-<<<<<<< HEAD
-### Strict Mode에 의해 활성화된 사용 중단 경고 수정 {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
-=======
 Strict Mode can also help find bugs in [callbacks refs.](/learn/manipulating-the-dom-with-refs)
 
 Every callback `ref` has some setup code and may have some cleanup code. Normally, React calls setup when the element is *created* (is added to the DOM) and calls cleanup when the element is *removed* (is removed from the DOM).
@@ -882,9 +876,9 @@ export default function AnimalFriends() {
       inline: "center",
     });
   }
-  
+
   const animals = animalList.filter(a => a.type === animal)
-  
+
   return (
     <>
       <nav>
@@ -906,7 +900,7 @@ export default function AnimalFriends() {
                 key={animal.src}
                 ref={(node) => {
                   const list = itemsRef.current;
-                  const item = {animal: animal, node}; 
+                  const item = {animal: animal, node};
                   list.push(item);
                   console.log(`✅ Adding animal to the map. Total animals: ${list.length}`);
                   if (list.length > 10) {
@@ -920,7 +914,7 @@ export default function AnimalFriends() {
                 <img src={animal.src} />
               </li>
             ))}
-          
+
         </ul>
       </div>
     </>
@@ -1024,9 +1018,9 @@ export default function AnimalFriends() {
       inline: "center",
     });
   }
-  
+
   const animals = animalList.filter(a => a.type === animal)
-  
+
   return (
     <>
       <nav>
@@ -1048,7 +1042,7 @@ export default function AnimalFriends() {
                 key={animal.src}
                 ref={(node) => {
                   const list = itemsRef.current;
-                  const item = {animal: animal, node} 
+                  const item = {animal: animal, node}
                   list.push(item);
                   console.log(`✅ Adding animal to the map. Total animals: ${list.length}`);
                   if (list.length > 10) {
@@ -1062,7 +1056,7 @@ export default function AnimalFriends() {
                 <img src={animal.src} />
               </li>
             ))}
-          
+
         </ul>
       </div>
     </>
@@ -1150,9 +1144,9 @@ export default function AnimalFriends() {
       inline: "center",
     });
   }
-  
+
   const animals = animalList.filter(a => a.type === animal)
-  
+
   return (
     <>
       <nav>
@@ -1189,7 +1183,7 @@ export default function AnimalFriends() {
                 <img src={animal.src} />
               </li>
             ))}
-          
+
         </ul>
       </div>
     </>
@@ -1253,19 +1247,16 @@ Now on inital mount in StrictMode, the ref callbacks are all setup, cleaned up, 
 
 Without Strict Mode, it was easy to miss the bug until you clicked around to app to notice broken features. Strict Mode made the bugs appear right away, before you push them to production.
 
---- 
+---
 ### Fixing deprecation warnings enabled by Strict Mode {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 
 React는 `<StrictMode>` 트리 내부의 컴포넌트가 더 이상 사용되지 않는 다음 API 중 하나를 사용하는 경우 경고를 표시합니다.
 
-<<<<<<< HEAD
 * [`findDOMNode`](/reference/react-dom/findDOMNode). [대안 보기](https://reactjs.org/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
 * [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount)와 같은 `UNSAFE_` 클래스 생명주기 메서드. [대안 보기](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles)
 * 레거시 context ([`childContextTypes`](/reference/react/Component#static-childcontexttypes), [`contextTypes`](/reference/react/Component#static-contexttypes), 및 [`getChildContext`](/reference/react/Component#getchildcontext)). [대안 보기](/reference/react/createContext)
 * 레거시 문자열 refs ([`this.refs`](/reference/react/Component#refs)). [대안 보기](https://ko.legacy.reactjs.org/docs/strict-mode.html#warning-about-legacy-string-ref-api-usage)
-=======
-* `UNSAFE_` class lifecycle methods like [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount). [See alternatives.](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles)
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+
+* `UNSAFE_` class lifecycle methods like [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount). [See alternatives.](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles) {/*TODO*/}
 
 이러한 API는 주로 이전 [클래스 컴포넌트](/reference/react/Component)에서 사용되므로 최신 앱에서는 거의 나타나지 않습니다.

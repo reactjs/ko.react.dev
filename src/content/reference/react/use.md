@@ -2,15 +2,6 @@
 title: use
 ---
 
-<<<<<<< HEAD
-<Canary>
-
-`use` Hook은 현재 React의 Canary 채널과 실험 채널에서만 사용할 수 있습니다. 자세한 내용은 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
-
-</Canary>
-
-=======
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 <Intro>
 
 `use`는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](/learn/passing-data-deeply-with-context)와 같은 데이터를 참조하는 React Hook입니다.
@@ -62,12 +53,9 @@ Promise와 함께 호출될 때 `use` Hook은 [`Suspense`](/reference/react/Susp
 * [서버 컴포넌트](/reference/rsc/use-server)에서 데이터를 fetch 할 때는 `use`보다 `async` 및 `await`을 사용합니다. `async` 및 `await`은 `await`이 호출된 시점부터 렌더링을 시작하는 반면, `use`는 데이터가 리졸브된 후 컴포넌트를 리렌더링합니다.
 * [클라이언트 컴포넌트](/reference/rsc/use-clientt)에서 Promise를 생성하는 것보다 [서버 컴포넌트](/reference/rsc/use-server)에서 Promise를 생성하여 클라이언트 컴포넌트에 전달하는 것이 좋습니다. 클라이언트 컴포넌트에서 생성된 Promise는 렌더링할 때마다 다시 생성됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 전달된 Promise는 리렌더링 전반에 걸쳐 안정적입니다. [예시 확인하기](#streaming-data-from-server-to-client).
 
-<<<<<<< HEAD
-=======
 * The `use` API must be called inside a Component or a Hook.
 * When fetching data in a [Server Component](/reference/rsc/server-components), prefer `async` and `await` over `use`. `async` and `await` pick up rendering from the point where `await` was invoked, whereas `use` re-renders the component after the data is resolved.
-* Prefer creating Promises in [Server Components](/reference/rsc/server-components) and passing them to [Client Components](/reference/rsc/use-client) over creating Promises in Client Components. Promises created in Client Components are recreated on every render. Promises passed from a Server Component to a Client Component are stable across re-renders. [See this example](#streaming-data-from-server-to-client).
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+* Prefer creating Promises in [Server Components](/reference/rsc/server-components) and passing them to [Client Components](/reference/rsc/use-client) over creating Promises in Client Components. Promises created in Client Components are recreated on every render. Promises passed from a Server Component to a Client Component are stable across re-renders. [See this example](#streaming-data-from-server-to-client). {/*TODO*/}
 
 ---
 
@@ -295,10 +283,6 @@ export default function App() {
 ```
 
 ```js src/index.js hidden
-<<<<<<< HEAD
-// TODO: `use` API가 안정적으로 릴리즈되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
-=======
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -406,10 +390,6 @@ export default function App() {
 ```
 
 ```js src/index.js hidden
-<<<<<<< HEAD
-// TODO: `use` API 가 안정적으로 릴리즈되면 canary 대신 안정적인 React에서 가져올 수 있도록 업데이트
-=======
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';

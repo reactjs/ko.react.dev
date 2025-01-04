@@ -448,11 +448,9 @@ button { display: block; margin-bottom: 20px; }
 
 #### 컴포넌트에 ref 노출하기 {/*exposing-a-ref-to-your-own-component*/}
 
-<<<<<<< HEAD
 때로는 부모 컴포넌트가 컴포넌트 내부의 DOM을 조작할 수 있도록 하고 싶을 때가 있습니다. 예를 들어 `MyInput` 컴포넌트를 작성하는 중인데, 부모 컴포넌트가 (부모가 접근할 수 없는) `MyInput`의 input에 포커스를 맞출 수 있게 하고 싶을 수 있습니다. `useRef`로 input을 붙잡고 [`forwardRef`](/reference/react/forwardRef)로 이를 부모 컴포넌트에 노출시킬 수 있습니다. [자세한 내용은 여기에서 확인하세요.](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)
-=======
-Sometimes, you may want to let the parent component manipulate the DOM inside of your component. For example, maybe you're writing a `MyInput` component, but you want the parent to be able to focus the input (which the parent has no access to). You can create a `ref` in the parent and pass the `ref` as prop to the child component. Read a [detailed walkthrough](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) here.
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+
+Sometimes, you may want to let the parent component manipulate the DOM inside of your component. For example, maybe you're writing a `MyInput` component, but you want the parent to be able to focus the input (which the parent has no access to). You can create a `ref` in the parent and pass the `ref` as prop to the child component. Read a [detailed walkthrough](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) here. {/*TODO*/}
 
 <Sandpack>
 
@@ -558,11 +556,9 @@ return <MyInput ref={inputRef} />;
 
 <ConsoleBlock level="error">
 
-<<<<<<< HEAD
 경고: 함수 컴포넌트에는 ref를 지정할 수 없습니다. 이 ref에 접근하려는 시도는 실패합니다. React.forwardRef()를 사용하려고 하셨나요?
-=======
-TypeError: Cannot read properties of null
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+
+TypeError: Cannot read properties of null {/*TODO*/}
 
 </ConsoleBlock>
 
@@ -581,11 +577,9 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
-<<<<<<< HEAD
-그런 다음 아래와 같이 [`forwardRef`](/reference/react/forwardRef)로 감싸세요:
-=======
-And then add `ref` to the list of props your component accepts and pass `ref` as a prop to the relevent child [built-in component](/reference/react-dom/components/common) like this:
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+그런 다음 아래와 같이 [`forwardRef`](/reference/react/forwardRef)로 감싸세요.
+
+And then add `ref` to the list of props your component accepts and pass `ref` as a prop to the relevent child [built-in component](/reference/react-dom/components/common) like this: {/*TODO*/}
 
 ```js {1,6}
 function MyInput({ value, onChange, ref }) {
