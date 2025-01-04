@@ -1,17 +1,10 @@
 ---
 title: preconnect
-canary: true
 ---
-
-<Canary>
-
-`preconnect`는 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. 여기에서 [React의 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
-
-</Canary>
 
 <Intro>
 
-'preconnect'를 사용하면 리소스를 가져올 것으로 예상하는 서버에 연결할 수 있습니다.
+`preconnect`를 사용하면 리소스를 가져올 것으로 예상하는 서버에 연결할 수 있습니다.
 
 ```js
 preconnect("https://example.com");
@@ -39,9 +32,9 @@ function AppRoot() {
 
 ```
 
-[아래에서 더 많은 예시를 확인하세요.](#usage)
+[아래 예시를 참고하세요.](#usage)
 
-`preconnect`는 브라우저가 해당 서버와 연결을 맺어야 한다는 힌트를 제공합니다. 브라우저가 해당 서버를 선택하면, 해당 서버에서 리소스를 로드하는 속도가 빨라질 수 있습니다.
+`preconnect`는 브라우저가 해당 서버와 연결을 맺어야 한다는 힌트를 제공합니다. 브라우저가 해당 서버를 선택하면, 해당 서버에서 리소스를 불러오는 속도가 빨라질 수 있습니다.
 
 #### 매개변수 {/*parameters*/}
 
@@ -79,7 +72,7 @@ function AppRoot() {
 
 ### 이벤트 핸들러에서 사전 연결 {/*preconnecting-in-an-event-handler*/}
 
-외부 리소스가 필요한 페이지나 state로 전환하기 전에 이벤트 핸들러에서 `preconnect`를 호출하세요. 이렇게 하면 새로운 페이지나 state를 렌더링할 때 호출하는 것보다 더 일찍 프로세스를 시작할 수 있습니다.
+외부 리소스가 필요한 페이지나 State로 전환하기 전에 이벤트 핸들러에서 `preconnect`를 호출하세요. 이렇게 하면 새로운 페이지나 State를 렌더링할 때 호출하는 것보다 더 일찍 프로세스를 시작할 수 있습니다.
 
 ```js
 import { preconnect } from 'react-dom';

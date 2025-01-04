@@ -2,7 +2,7 @@
 title: "React Conf 2021 요약"
 author: Jesslyn Tannady and Rick Hanlon
 date: 2021/12/17
-description: 지난주, 우리는 6번째 React Conf를 개최했습니다. 지난 몇 년 동안 우리는 React Conf 무대를 통해 React Native, React Hooks 와 같은 업계 변화를 알리는 발표를 해왔습니다. 올해는 React 18의 출시와 동시 기능의 점진적인 도입을 시작으로 React의 멀티 플랫폼 비전을 공유했습니다.
+description: 지난주, 6번째 React Conf를 개최했습니다. 지난 몇 년 동안 React Conf 무대를 통해 React Native, React Hook과 같은 업계 변화를 알리는 발표를 했습니다. 올해는 React 18의 출시 및 동시성 기능의 점진적 도입을 시작으로 React의 멀티 플랫폼 비전을 공유했습니다.
 ---
 
 2021년 12월 17일, [Jesslyn Tannady](https://twitter.com/jtannady), [Rick Hanlon](https://twitter.com/rickhanlonii)
@@ -11,29 +11,29 @@ description: 지난주, 우리는 6번째 React Conf를 개최했습니다. 지�
 
 <Intro>
 
-지난주, 우리는 6번째 React Conf를 개최했습니다. 지난 몇 년 동안 우리는 React Conf 무대를 통해 [_React Native_](https://engineering.fb.com/2015/03/26/android/react-native-bringing-modern-web-techniques-to-mobile/), [_React Hooks_](https://reactjs.org/docs/hooks-intro.html)와 같은 업계 변화를 알리는 발표를 해왔습니다. 올해는 React 18의 출시와 동시 기능의 점진적인 도입을 시작으로 React의 멀티 플랫폼 비전을 공유했습니다.
+지난주, 6번째 React Conf를 개최했습니다. 지난 몇 년 동안 React Conf 무대를 통해 [_React Native_](https://engineering.fb.com/2015/03/26/android/react-native-bringing-modern-web-techniques-to-mobile/), [_React Hook_](https://reactjs.org/docs/hooks-intro.html)과 같은 업계 변화를 알리는 발표를 했습니다. 올해는 React 18의 출시 및 동시성 기능의 점진적 도입을 시작으로 React의 멀티 플랫폼 비전을 공유했습니다.
 
 </Intro>
 
 ---
 
-React Conf가 온라인으로 개최된 것은 이번이 처음이며, 8개 언어로 번역되어 무료로 스트리밍되었습니다. 전 세계의 참가자들은 모든 시간대에서 접근성을 위해 컨퍼런스 Discord와 리플레이 이벤트에 참여했습니다. 50,000명 이상이 등록했으며, 19개 강연의 조회수는 60,000회를 넘었고, 두 이벤트에 걸쳐 5,000명이 Discord에 참여했습니다.
+React Conf가 온라인으로 개최된 것은 이번이 처음이며, 8개 언어로 번역되어 무료로 스트리밍되었습니다. 전 세계의 참가자들은 다양한 시간대에서의 참여를 위해 컨퍼런스 Discord와 리플레이 이벤트를 이용했습니다. 50,000명 이상이 등록했으며, 19개 강연의 조회수는 60,000회를 넘었고, 두 이벤트에 걸쳐 5,000명이 Discord에 참여했습니다.
 
-모든 강연은 [온라인으로 스트리밍 가능](https://www.youtube.com/watch?v=FZ0cG47msEk&list=PLNG_1j3cPCaZZ7etkzWA7JfdmKWT0pMsa)합니다.
+모든 강연은 [온라인 스트리밍이 가능](https://www.youtube.com/watch?v=FZ0cG47msEk&list=PLNG_1j3cPCaZZ7etkzWA7JfdmKWT0pMsa)합니다.
 
-무대에서 공유된 내용을 요약해 보았습니다:
+무대에서 공유된 내용을 요약하였습니다.
 
-## React 18 및 동시 기능 {/*react-18-and-concurrent-features*/}
+## React 18 및 동시성 기능 {/*react-18-and-concurrent-features*/}
 
-기조연설에서 저희는 React 18을 시작으로 React의 미래에 대한 비전을 공유했습니다.
+기조연설에서 React 18을 시작으로 React의 미래에 대한 비전을 공유했습니다.
 
-React 18은 오랫동안 기다려온 동시 renderer를 추가하고 Suspense를 큰 변경 없이 업데이트했습니다. 앱은 React 18로 업그레이드하여 다른 주요 출시와 동등한 수준의 노력으로 동시 기능을 점진적으로 도입할 수 있습니다.
+React 18은 오랫동안 기다려온 동시성 렌더러<sup>Concurrent Renderer</sup>를 추가하고 Suspense를 주<sup>Major, 主</sup><sub>(역자. Breaking Change를 일으키는)</sub> 변경 없이 업데이트했습니다. 앱은 React 18로 업그레이드하여 다른 주<sup>Major, 主</sup> 릴리즈와 동등한 수준의 노력으로 동시성 기능을 점진적으로 도입할 수 있습니다.
 
-**이는 동시 모드가 없고 동시 기능만 있음을 의미합니다.**
+**이는 동시성 모드가 없고 동시성 기능만 있음을 의미합니다.**
 
 기조연설에서는 Suspense, 서버 컴포넌트, 새로운 React 워킹 그룹에 대한 비전과 React Native에 대한 장기적인 멀티플랫폼 비전도 공유했습니다.
 
-[Andrew Clark](https://twitter.com/acdlite), [Juan Tejada](https://twitter.com/_jstejada), [Lauren Tan](https://twitter.com/potetotes), [Rick Hanlon](https://twitter.com/rickhanlonii)의 기조연설 전문을 여기에서 시청하세요:
+[Andrew Clark](https://twitter.com/acdlite), [Juan Tejada](https://twitter.com/_jstejada), [Lauren Tan](https://twitter.com/potetotes), [Rick Hanlon](https://twitter.com/rickhanlonii)의 기조연설 전문을 아래에서 시청하세요.
 
 <YouTubeIframe src="https://www.youtube.com/embed/FZ0cG47msEk" />
 
@@ -41,13 +41,13 @@ React 18은 오랫동안 기다려온 동시 renderer를 추가하고 Suspense�
 
 기조연설에서는 React 18 RC를 지금 바로 사용해볼 수 있다는 사실도 발표했습니다. 추가 피드백을 기다리는 중이며, 내년 초에 정식 버전으로 출시할 예정입니다.
 
-React 18 RC를 사용해 보려면 의존성을 업그레이드하세요:
+React 18 RC를 사용해 보려면 의존성<sup>Dependencies</sup>을 업그레이드하세요.
 
 ```bash
 npm install react@rc react-dom@rc
 ```
 
-를 클릭하고 새로운 `createRoot` API로 전환하세요:
+그리고 새로운 `createRoot` API로 전환하세요.
 
 ```js
 // before
@@ -60,15 +60,15 @@ const root = ReactDOM.createRoot(container);
 root.render(<App/>);
 ```
 
-React 18로 업그레이드하는 데모는 여기에서 [Shruti Kapoor](https://twitter.com/shrutikapoor08)의 강연을 참조하세요:
+React 18 업그레이드 데모는 아래의 [Shruti Kapoor](https://twitter.com/shrutikapoor08)의 강연을 참조하세요.
 
 <YouTubeIframe src="https://www.youtube.com/embed/ytudH8je5ko" />
 
 ## Suspense가 있는 스트리밍 서버 렌더링 {/*streaming-server-rendering-with-suspense*/}
 
-React 18에는 Suspense를 사용한 서버 측 렌더링 성능 개선 사항도 포함되어 있습니다.
+React 18에는 Suspense를 사용한 서버 측 렌더링<sup>SSR, Server Side Rendering</sup> 성능 개선 사항도 포함되어 있습니다.
 
-스트리밍 서버 렌더링을 사용하면 서버의 React 컴포넌트에서 HTML을 생성하고 해당 HTML을 사용자에게 스트리밍할 수 있습니다. React 18에서는 'Suspense'를 사용하여 앱을 더 작은 독립 단위로 분해하여 나머지 앱을 차단하지 않고 서로 독립적으로 스트리밍할 수 있습니다. 이는 사용자가 콘텐츠를 더 빨리 보고 훨씬 빠르게 상호작용을 시작할 수 있다는 것을 의미합니다.
+스트리밍 서버 렌더링을 사용하면, 서버의 React 컴포넌트에서 HTML을 생성하고 해당 HTML을 사용자에게 스트리밍할 수 있습니다. React 18에서는 `Suspense`를 사용하여 앱을 더 작은 독립 단위로 분해하여, 나머지 앱을 차단하지 않고 서로 독립적으로 스트리밍할 수 있습니다. 이는 사용자가 콘텐츠를 더 빨리 보고 훨씬 빠르게 상호작용할 수 있다는 것을 의미합니다.
 
 더 자세히 알아보려면 [Shaundai Person](https://twitter.com/shaundai)의 강연을 참조하세요:
 
@@ -76,48 +76,48 @@ React 18에는 Suspense를 사용한 서버 측 렌더링 성능 개선 사항�
 
 ## 첫 번째 React 워킹 그룹 {/*the-first-react-working-group*/}
 
-React 18에서는 전문가, 개발자, 라이브러리 관리자, 교육자들로 구성된 패널과 협력하기 위해 첫 번째 워킹 그룹을 만들었습니다. 우리는 함께 점진적인 채택 전략을 세우고 `useId`, `useSyncExternalStore`, `useInsertionEffect`와 같은 새로운 API를 개선하기 위해 노력했습니다.
+React 18에서는 전문가, 개발자, 라이브러리 관리자, 교육자들로 구성된 패널과 협력하기 위한 첫 번째 워킹 그룹을 만들었습니다. 저희는 함께 점진적인 채택 전략을 세우고 `useId`, `useSyncExternalStore`, `useInsertionEffect`와 같은 새로운 API를 개선하기 위해 노력했습니다.
 
-이 작업에 대한 개요는 [Aakansha' Doshi](https://twitter.com/aakansha1216)의 강연을 참조하세요:
+해당 작업에 대한 개요는 [Aakansha' Doshi](https://twitter.com/aakansha1216)의 강연을 참조하세요.
 
 <YouTubeIframe src="https://www.youtube.com/embed/qn7gRClrC9U" />
 
 ## React 개발자 도구 {/*react-developer-tooling*/}
 
-이번 릴리즈의 새로운 기능을 지원하기 위해 새로 구성된 React 개발자 도구 팀과 개발자가 React 앱을 디버깅하는 데 도움이 되는 새로운 타임라인 프로파일러도 발표했습니다.
+이번 릴리즈의 새로운 기능을 지원하기 위해 새로 구성된 React 개발자 도구 팀과 개발자가 React 앱 디버깅에 도움이 되는 새로운 타임라인 프로파일러<sup>Timeline Profiler</sup>도 발표했습니다.
 
-새로운 개발자 도구 기능에 대한 자세한 내용과 데모는 [Brian Vaughn](https://twitter.com/brian_d_vaughn)의 강연을 참조하세요:
+새로운 개발자 도구 기능에 대한 자세한 내용과 데모는 [Brian Vaughn](https://twitter.com/brian_d_vaughn)의 강연을 참조하세요.
 
 <YouTubeIframe src="https://www.youtube.com/embed/oxDfrke8rZg" />
 
 ## memo 없는 React {/*react-without-memo*/}
 
-미래를 내다보며, [Xuan Huang(黄玄)](https://twitter.com/Huxpro)이 자동 메모화 컴파일러에 대한 React Labs 연구의 업데이트를 공유했습니다. 이 강연에서 자세한 정보와 컴파일러 프로토타입 데모를 확인하세요:
+미래를 내다보며, [Xuan Huang(黄玄)](https://twitter.com/Huxpro)이 자동 메모화 컴파일러에 대한 React Labs 연구의 업데이트를 공유했습니다. 이 강연에서 자세한 정보와 컴파일러 프로토타입 데모를 확인하세요.
 
 <YouTubeIframe src="https://www.youtube.com/embed/lGEMwh32soc" />
 
 ## React 문서 기조연설 {/*react-docs-keynote*/}
 
-[Rachel Nabors](https://twitter.com/rachelnabors)가 React의 새로운 문서에 대한 투자에 대한 기조연설로 React로 학습하고 디자인하는 방법에 대한 강연을 시작했습니다([현재 react.dev로 제공됨](/blog/2023/03/16/introducing-react-dev)):
+[Rachel Nabors](https://twitter.com/rachelnabors)가 React의 새로운 문서에 대한 투자와 관련한 기조연설로, React로 학습하고 디자인하는 방법에 대한 강연을 했습니다. ([현재 react.dev로 배포되었습니다.](/blog/2023/03/16/introducing-react-dev))
 
 <YouTubeIframe src="https://www.youtube.com/embed/mneDaMYOKP8" />
 
 ## 그리고... {/*and-more*/}
 
-**React로 학습하고 디자인하는 방법에 대한 강연:**
+**React로 학습하고 디자인하는 방법에 대한 강연**
 
 * Debbie O'Brien: [새로운 React 문서에서 배운 것들](https://youtu.be/-7odLW_hG7s).
 * Sarah Rainsberger: [브라우저에서 학습하기](https://youtu.be/5X-WEQflCL0).
-* Linton Ye: [React로 디자인함에서의 ROI](https://youtu.be/7cPWmID5XAk).
-* Delba de Oliveira: [React를 이용한 인터랙티브 놀이터](https://youtu.be/zL8cz2W0z34).
+* Linton Ye: [React 디자인에서의 ROI](https://youtu.be/7cPWmID5XAk).
+* Delba de Oliveira: [React를 이용한 상호작용 놀이터](https://youtu.be/zL8cz2W0z34).
 
-**Relay, React Native, PyTorch 팀의 강연:**
+**Relay, React Native, PyTorch 팀의 강연**
 
-* Robert Balicki: [Relay 다시 소개](https://youtu.be/lhVGdErZuN4).
+* Robert Balicki: [Relay 재소개](https://youtu.be/lhVGdErZuN4).
 * Eric Rozell과 Steven Moyes: [React Native 데스크톱](https://youtu.be/9L4FFrvwJwY).
-* Roman Rädle: [React Native를 위한 온디바이스 머신러닝](https://youtu.be/NLj73vrc2I8)
+* Roman Rädle: [React Native를 위한 온디바이스 머신러닝](https://youtu.be/NLj73vrc2I8).
 
-**접근성, 툴링 및 서버 컴포넌트에 대한 커뮤니티 강연:**
+**접근성, 툴링 및 서버 컴포넌트에 대한 커뮤니티 강연**
 
 * Daishi Kato: [외부 스토어 라이브러리를 위한 React 18](https://youtu.be/oPfSC5bQPR8).
 * Diego Haz: [React 18에서 접근 가능한 컴포넌트 구축하기](https://youtu.be/dcm8fjBfro8).

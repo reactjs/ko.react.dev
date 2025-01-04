@@ -1,13 +1,6 @@
 ---
 link: "<link>"
-canary: true
 ---
-
-<Canary>
-
-React의 `<link>` 확장은 현재 React의 카나리(Canary) 채널과 실험 채널에서만 사용할 수 있습니다. React의 안정적인 릴리즈에서는 `<link>`가 [내장 브라우저 HTML 컴포넌트](https://react.dev/reference/react-dom/components#all-html-components)로만 작동합니다. 자세한 내용은 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
-
-</Canary>
 
 <Intro>
 
@@ -158,9 +151,9 @@ export default function SiteMapPage() {
 
 ### 스타일시트 우선순위 제어하기 {/*controlling-stylesheet-precedence*/}
 
-스타일시트는 서로 충돌할 수 있으며, 이 경우 브라우저는 문서에서 나중에 오는 스타일시트를 적용합니다. React는 `precedence` 속성을 사용하여 스타일시트의 순서를 제어할 수 있도록 합니다. 이 예시에서는 두 개의 컴포넌트가 스타일시트를 렌더링하며, 더 높은 우선순위를 가진 스타일시트는 해당 컴포넌트를 더 먼저 렌더링하더라도 문서에서 나중에 배치됩니다.
+스타일시트는 서로 충돌할 수 있으며, 이 경우 브라우저는 문서에서 나중에 오는 스타일시트를 적용합니다. React는 `precedence` 속성을 사용하여 스타일시트의 순서를 제어할 수 있도록 합니다. 이 예시에서는 세 개의 컴포넌트가 스타일시트를 렌더링하며, 더 높은 우선순위를 가진 스타일시트는 해당 컴포넌트를 더 먼저 렌더링하더라도 문서에서 나중에 배치됩니다.
 
-{/*FIXME: this doesn't appear to actually work -- I guess precedence isn't implemented yet?*/}
+Stylesheets can conflict with each other, and when they do, the browser goes with the one that comes later in the document. React lets you control the order of stylesheets with the `precedence` prop. In this example, three components render stylesheets, and the ones with the same precedence are grouped together in the `<head>`. {/*TODO*/}
 
 <SandpackWithHTMLOutput>
 
@@ -172,22 +165,29 @@ export default function HomePage() {
     <ShowRenderedHTML>
       <FirstComponent />
       <SecondComponent />
+      <ThirdComponent/>
       ...
     </ShowRenderedHTML>
   );
 }
 
 function FirstComponent() {
-  return <link rel="stylesheet" href="first.css" precedence="high" />;
+  return <link rel="stylesheet" href="first.css" precedence="first" />;
 }
 
 function SecondComponent() {
-  return <link rel="stylesheet" href="second.css" precedence="low" />;
+  return <link rel="stylesheet" href="second.css" precedence="second" />;
+}
+
+function ThirdComponent() {
+  return <link rel="stylesheet" href="third.css" precedence="first" />;
 }
 
 ```
 
 </SandpackWithHTMLOutput>
+
+Note the `precedence` values themselves are arbitrary and their naming is up to you. React will infer that precedence values it discovers first are "lower" and precedence values it discovers later are "higher".
 
 ### 중복으로 제거된 스타일시트 렌더링 {/*deduplicated-stylesheet-rendering*/}
 

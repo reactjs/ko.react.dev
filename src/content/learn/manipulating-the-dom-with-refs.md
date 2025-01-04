@@ -256,11 +256,11 @@ export default function CatFriends() {
               key={cat}
               ref={(node) => {
                 const map = getMap();
-                if (node) {
-                  map.set(cat, node);
-                } else {
+                map.set(cat, node);
+
+                return () => {
                   map.delete(cat);
-                }
+                };
               }}
             >
               <img src={cat} />
@@ -309,41 +309,9 @@ li {
 }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  }
-}
-```
-
 </Sandpack>
 
 이 예시에서 `itemsRef`는 하나의 DOM 노드를 가지고 있지 않습니다. 대신에 식별자와 DOM 노드로 연결된 [Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)을 가지고 있습니다. ([Ref는 어떤 값이든 가질 수 있습니다!](/learn/referencing-values-with-refs)) 모든 리스트 아이템에 있는 [`ref` 콜백](/reference/react-dom/components/common#ref-callback)은 Map 변경을 처리합니다.
-
-```js
-<li
-  key={cat.id}
-  ref={node => {
-    const map = getMap();
-    if (node) {
-      // Map에 노드를 추가합니다
-      map.set(cat, node);
-    } else {
-      // Map에서 노드를 제거합니다
-      map.delete(cat);
-    }
-  }}
->
-```
-
-위 방법으로 이후 Map에서 개별적인 DOM 노드를 읽을 수 있습니다.
-
-<Canary>
-
-This example shows another approach for managing the Map with a `ref` callback cleanup function.
 
 ```js
 <li
@@ -361,7 +329,15 @@ This example shows another approach for managing the Map with a `ref` callback c
 >
 ```
 
-</Canary>
+This lets you read individual DOM nodes from the Map later.
+
+<Note>
+
+When Strict Mode is enabled, ref callbacks will run twice in development.
+
+Read more about [how this helps find bugs](/reference/react/StrictMode#fixing-bugs-found-by-re-running-ref-callbacks-in-development) in callback refs.
+
+</Note>
 
 </DeepDive>
 
@@ -371,13 +347,36 @@ This example shows another approach for managing the Map with a `ref` callback c
 
 하지만 `<MyInput />` 같이 **직접 만든** 컴포넌트에 ref를 주입할 때는 `null`이 기본적으로 주어집니다. 여기 앞서 말한 내용을 설명하는 예시가 있습니다. 버튼을 클릭할 때 input 요소에 포커스 **되지 않는 것을** 주목하세요.
 
+<Pitfall>
+Refs are an escape hatch. Manually manipulating _another_ component's DOM nodes can make your code fragile.
+</Pitfall>
+
+You can pass refs from parent component to child components [just like any other prop](/learn/passing-props-to-a-component).
+
+```js {3-4,9}
+import { useRef } from 'react';
+
+function MyInput({ ref }) {
+  return <input ref={ref} />;
+}
+
+function MyForm() {
+  const inputRef = useRef(null);
+  return <MyInput ref={inputRef} />
+}
+```
+
+In the above example, a ref is created in the parent component, `MyForm`, and is passed to the child component, `MyInput`. `MyInput` then passes the ref to `<input>`. Because `<input>` is a [built-in component](/reference/react-dom/components/common) React sets the `.current` property of the ref to the `<input>` DOM element.
+
+The `inputRef` created in `MyForm` now points to the `<input>` DOM element returned by `MyInput`. A click handler created in `MyForm` can access `inputRef` and call `focus()` to set the focus on `<input>`.
+
 <Sandpack>
 
 ```js
 import { useRef } from 'react';
 
-function MyInput(props) {
-  return <input {...props} />;
+function MyInput({ ref }) {
+  return <input ref={ref} />;
 }
 
 export default function MyForm() {
@@ -400,79 +399,20 @@ export default function MyForm() {
 
 </Sandpack>
 
-문제를 인지할 수 있도록, React는 콘솔에 오류 메시지를 출력합니다.
-
-<ConsoleBlock level="error">
-
-Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
-
-</ConsoleBlock>
-
-React는 기본적으로 다른 컴포넌트의 DOM 노드에 접근하는 것을 허용하지 않습니다. 컴포넌트의 자식도 예외는 아닙니다! 이것은 의도적인 설계입니다. Ref는 자제해서 사용해야 하는 탈출구입니다. 직접 다른 컴포넌트의 DOM 노드를 조작하는 것은 코드가 쉽게 깨지게 만듭니다.
-
-대신 특정 컴포넌트에서 소유한 DOM 노드를 선택적으로 노출할 수 있습니다. 컴포넌트는 자식 중 하나에 ref를 "전달"하도록 지정할 수 있습니다. 여기 `MyInput`이 어떻게 `forwardRef` API를 사용할 수 있는지 살펴보세요.
-
-```js
-const MyInput = forwardRef((props, ref) => {
-  return <input {...props} ref={ref} />;
-});
-```
-
-작동하는 원리는 다음과 같습니다.
-
-1. `<MyInput ref={inputRef} />`으로 React가 대응되는 DOM 노드를 `inputRef.current`에 대입하도록 설정합니다. 하지만 이것은 전적으로 `MyInput` 컴포넌트의 선택에 달려 있습니다, 기본적으로는 이렇게 동작하지 않습니다.
-2. `MyInput` 컴포넌트는 `forwardRef`를 통해 선언되었습니다. 이것은 `props` 다음에 선언된 **두 번째 `ref` 인수를 통해 상위의 `inputRef`를 받을 수 있도록 합니다.**
-3. `MyInput`은 자체적으로 수신받은 `ref`를 컴포넌트 내부의 `<input>`으로 전달합니다.
-
-이제 버튼을 클릭하면 input 요소로 포커스가 잘 이동합니다.
-
-<Sandpack>
-
-```js
-import { forwardRef, useRef } from 'react';
-
-const MyInput = forwardRef((props, ref) => {
-  return <input {...props} ref={ref} />;
-});
-
-export default function Form() {
-  const inputRef = useRef(null);
-
-  function handleClick() {
-    inputRef.current.focus();
-  }
-
-  return (
-    <>
-      <MyInput ref={inputRef} />
-      <button onClick={handleClick}>
-        Focus the input
-      </button>
-    </>
-  );
-}
-```
-
-</Sandpack>
-
-이 패턴은 디자인 시스템에서 버튼, 입력 요소 등의 저수준 컴포넌트에서 DOM 노드를 전달하기 위해 매우 흔하게 사용됩니다. 반면 폼, 목록 혹은 페이지 섹션 등의 고수준 컴포넌트에서는 의도하지 않은 DOM 구조 의존성 문제를 피하고자 일반적으로 DOM 노드를 노출하지 않습니다.
-
 <DeepDive>
 
 #### 명령형 처리방식으로 하위 API 노출하기 {/*exposing-a-subset-of-the-api-with-an-imperative-handle*/}
 
 위 예시에서 `MyInput` 컴포넌트는 DOM 입력 요소를 그대로 노출했습니다. 그리고 부모 컴포넌트에서 DOM 노드의 `focus()`를 호출할 수 있게 되었습니다. 하지만 이에 따라 부모 컴포넌트에서 DOM 노드의 CSS 스타일을 직접 변경하는 등의 예상치 못 한 작업을 할 수 있습니다. 몇몇 상황에서는 노출된 기능을 제한하고 싶을 수 있는데, 이 때  `useImperativeHandle`을 사용합니다.
 
+In the above example, the ref passed to `MyInput` is passed on to the original DOM input element. This lets the parent component call `focus()` on it. However, this also lets the parent component do something else--for example, change its CSS styles. In uncommon cases, you may want to restrict the exposed functionality. You can do that with [`useImperativeHandle`](/reference/react/useImperativeHandle): {/*TODO*/}
+
 <Sandpack>
 
 ```js
-import {
-  forwardRef,
-  useRef,
-  useImperativeHandle
-} from 'react';
+import { useRef, useImperativeHandle } from "react";
 
-const MyInput = forwardRef((props, ref) => {
+function MyInput({ ref }) {
   const realInputRef = useRef(null);
   useImperativeHandle(ref, () => ({
     // 오직 focus만 노출합니다.
@@ -480,8 +420,8 @@ const MyInput = forwardRef((props, ref) => {
       realInputRef.current.focus();
     },
   }));
-  return <input {...props} ref={realInputRef} />;
-});
+  return <input ref={realInputRef} />;
+};
 
 export default function Form() {
   const inputRef = useRef(null);
@@ -493,9 +433,7 @@ export default function Form() {
   return (
     <>
       <MyInput ref={inputRef} />
-      <button onClick={handleClick}>
-        Focus the input
-      </button>
+      <button onClick={handleClick}>Focus the input</button>
     </>
   );
 }
@@ -503,7 +441,9 @@ export default function Form() {
 
 </Sandpack>
 
-여기 `MyInput` 내부의 `realInputRef`는 실제 input DOM 노드를 가지고 있습니다. 하지만 `useImperativeHandle`을 사용하여 React가 ref를 참조하는 부모 컴포넌트에 직접 구성한 객체를 전달하도록 지시합니다. 따라서 `Form` 컴포넌트 안쪽의 `inputRef.current`는 `foucs` 메서드만 가지고 있습니다. 이 경우 ref는 DOM 노드가 아니라 `useImperativeHandle` 호출에서 직접 구성한 객체가 됩니다.
+여기 `MyInput` 내부의 `realInputRef`는 실제 input DOM 노드를 가지고 있습니다. 하지만 [`useImperativeHandle`](/reference/react/useImperativeHandle)을 사용하여 React가 ref를 참조하는 부모 컴포넌트에 직접 구성한 객체를 전달하도록 지시합니다. 따라서 `Form` 컴포넌트 안쪽의 `inputRef.current`는 `foucs` 메서드만 가지고 있습니다. 이 경우 ref는 DOM 노드가 아니라 [`useImperativeHandle`](/reference/react/useImperativeHandle) 호출에서 직접 구성한 객체가 됩니다.
+
+Here, `realInputRef` inside `MyInput` holds the actual input DOM node. However, [`useImperativeHandle`](/reference/react/useImperativeHandle) instructs React to provide your own special object as the value of a ref to the parent component. So `inputRef.current` inside the `Form` component will only have the `focus` method. In this case, the ref "handle" is not the DOM node, but the custom object you create inside [`useImperativeHandle`](/reference/react/useImperativeHandle) call. {/*TODO*/}
 
 </DeepDive>
 

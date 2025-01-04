@@ -4,7 +4,7 @@ title: "React DOM 컴포넌트"
 
 <Intro>
 
-React는 브라우저에 내장된 모든 [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)과 [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Element)를 지원합니다.
+React는 브라우저에 내장된 모든 [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)과 [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Element) 컴포넌트를 지원합니다.
 
 </Intro>
 
@@ -12,15 +12,15 @@ React는 브라우저에 내장된 모든 [HTML](https://developer.mozilla.org/e
 
 ## 공통 컴포넌트 {/*common-components*/}
 
-브라우저에 내장된 모든 컴포넌트는 일부 props와 이벤트를 지원합니다.
+브라우저에 내장된 모든 컴포넌트는 일부 Props와 이벤트를 지원합니다.
 
 * [공통 컴포넌트 (예: `<div>`)](/reference/react-dom/components/common)
 
-`ref`와 `dangerouslySetInnerHTML`같은 React 고유의 props를 포함합니다.
+`ref`와 `dangerouslySetInnerHTML`같은 React 고유의 Props를 포함합니다.
 
 ---
 
-## 폼 컴포넌트 {/*form-components*/}
+## 폼<sup>Form</sup> 컴포넌트 {/*form-components*/}
 
 다음과 같은 브라우저에 내장된 컴포넌트는 사용자 입력을 받습니다.
 
@@ -28,7 +28,7 @@ React는 브라우저에 내장된 모든 [HTML](https://developer.mozilla.org/e
 * [`<select>`](/reference/react-dom/components/select)
 * [`<textarea>`](/reference/react-dom/components/textarea)
 
-`value` 프로퍼티를 전달하면 *[제어](/reference/react-dom/components/input#controlling-an-input-with-a-state-variable)* 할 수 있기 때문에 React에서 특별합니다.
+`value` 프로퍼티를 전달하여 <em>[제어](/reference/react-dom/components/input#controlling-an-input-with-a-state-variable)</em>할 수 있기 때문에 React에서 특별합니다.
 
 ---
 
@@ -42,13 +42,13 @@ React는 브라우저에 내장된 모든 [HTML](https://developer.mozilla.org/e
 * [`<style>`](/reference/react-dom/components/style)
 * [`<title>`](/reference/react-dom/components/title)
 
-위의 컴포넌트들은 React 에서 특별하게 다뤄집니다. React 에서는 위의 컴포넌트들을 document head 내부에 렌더링하고, 리소스가 로딩 될 동안 일시 중단하고, 각 특정 구성 요소의 참조 페이지에 설명된 다른 동작을 시행합니다.
+위 컴포넌트들은 React에서 특별하게 다뤄집니다. React는 위 컴포넌트들을 document head 내부에 렌더링하고, 리소스를 불러올 동안 일시 중단하고, 각 특정 구성 요소의 참조 페이지에 설명된 다른 동작을 시행합니다.
 
 ---
 
 ## 모든 HTML 컴포넌트 {/*all-html-components*/}
 
-React는 브라우저에 내장된 모든 HTML 컴포넌트를 지원합니다. 이는 다음과 같은 컴포넌트를 포함합니다.
+React는 브라우저에 내장된 모든 HTML 컴포넌트를 지원합니다. 이는 다음과 같은 컴포넌트들을 포함합니다.
 
 * [`<aside>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside)
 * [`<audio>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
@@ -154,26 +154,26 @@ React는 브라우저에 내장된 모든 HTML 컴포넌트를 지원합니다. 
 
 <Note>
 
-[DOM 표준](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)과 유사하게 React는 프로퍼티에 `캐멀 케이스` 표기법을 사용합니다. 예를 들어 `tabindex` 대신 `tabIndex`로 작성합니다. [온라인 변환기](https://transform.tools/html-to-jsx)를 사용하여 기존 HTML을 JSX로 변환할 수 있습니다.
+[DOM 표준](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)과 유사하게 React는 프로퍼티에 `camelCase` 표기법을 사용합니다. 예를 들어 `tabindex` 대신 `tabIndex`로 작성합니다. [온라인 변환기](https://transform.tools/html-to-jsx)를 사용하여 기존 HTML을 JSX로 변환할 수 있습니다.
 
 </Note>
 
 ---
 
-### 커스텀 HTML 엘리먼트 {/*custom-html-elements*/}
+### 커스텀 HTML 요소 {/*custom-html-elements*/}
 
-`<my-element>`같이 대시가 포함된 태그를 렌더링하면 React는 [커스텀 HTML 엘리먼트](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)를 렌더링한다고 가정합니다. React에서 커스텀 엘리먼트를 렌더링하는 방법은 브라우저 내장 태그를 렌더링하는 방법과 다릅니다.
+`<my-element>`같이 대시<sup>Dash</sup>가 포함된 태그를 렌더링하면 React는 [커스텀 HTML 요소](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)를 렌더링한다고 가정합니다. React에서 커스텀 요소를 렌더링하는 방법은 브라우저 내장 태그를 렌더링하는 방법과 다릅니다.
 
-- 모든 커스텀 엘리먼트 props는 문자열로 직렬화되며 항상 어트리뷰트를 사용하여 설정됩니다.
+- 모든 커스텀 요소 Props는 문자열로 직렬화되며 항상 어트리뷰트를 사용하여 설정됩니다.
 - 커스텀 엘리먼트는 `class` 대신 `className`을 사용하고 `for` 대신 `htmlFor`를 사용합니다.
 
-[`is`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/is) 어트리뷰트를 사용하여 브라우저 내장 HTML 엘리먼트를 렌더링하면 커스텀 엘리먼트로 취급됩니다.
+[`is`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/is) 어트리뷰트를 사용하여 브라우저 내장 HTML 요소를 렌더링하면 커스텀 엘리먼트로 취급됩니다.
 
 <Note>
 
-[향후 React 버전에는 커스텀 엘리먼트에 대한 더 포괄적인 지원이 제공될 예정입니다.](https://github.com/facebook/react/issues/11347#issuecomment-1122275286)
+[향후 React 버전에는 커스텀 엘리먼트에 대한 더 포괄적인 지원을 제공할 예정입니다.](https://github.com/facebook/react/issues/11347#issuecomment-1122275286)
 
-React package를 최신 실험 버전으로 업그레이드하여 사용해 볼 수 있습니다.
+React 패키지를 최신 실험 버전으로 업그레이드하여 사용해 볼 수 있습니다.
 
 - `react@experimental`
 - `react-dom@experimental`
@@ -256,7 +256,7 @@ React는 브라우저에 내장된 모든 SVG 엘리먼트를 지원합니다. �
 
 <Note>
 
-[DOM 표준](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)과 유사하게 React는 프로퍼티에 `캐멀 케이스` 표기법을 사용합니다. 예를 들어 `tabindex` 대신 `tabIndex`를 작성합니다. [온라인 변환기](https://transform.tools/)를 사용하여 기존 SVG를 JSX로 변환할 수 있습니다.
+[DOM 표준](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)과 유사하게 React는 프로퍼티에 `camelCase` 표기법을 사용합니다. 예를 들어 `tabindex` 대신 `tabIndex`를 작성합니다. [온라인 변환기](https://transform.tools/)를 사용하여 기존 SVG를 JSX로 변환할 수 있습니다.
 
 네임스페이스 어트리뷰트 또한 콜론 없이 작성해야 합니다.
 

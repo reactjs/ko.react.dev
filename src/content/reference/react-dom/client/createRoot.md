@@ -36,33 +36,32 @@ root.render(<App />);
 
 온전히 React만으로 작성된 앱에서는 일반적으로 루트 컴포넌트에 대한 `createRoot` 호출이 하나만 있습니다. 페이지의 일부에 React를 "뿌려서" 사용하는 페이지의 경우에는 루트를 필요로 하는 만큼 작성할 수 있습니다.
 
-[아래에서 더 많은 예시를 확인하세요.](#usage)
+[아래 예시를 참고하세요.](#usage)
 
 #### 매개변수 {/*parameters*/}
 
-* `domNode`: [DOM 엘리먼트.](https://developer.mozilla.org/en-US/docs/Web/API/Element) React는 DOM 엘리먼트에 대한 루트를 생성하고 렌더링된 React 콘텐츠를 표시하는 `render`와 같은 함수를 루트에서 호출할 수 있도록 합니다.
+* `domNode`: [DOM 엘리먼트](https://developer.mozilla.org/en-US/docs/Web/API/Element). React는 DOM 엘리먼트에 대한 루트를 생성하고 렌더링된 React 콘텐츠를 표시하는 `render`와 같은 함수를 루트에서 호출할 수 있도록 합니다.
 
 * **optional** `options`: React 루트에 대한 옵션을 가진 객체입니다.
-
-  * <CanaryBadge title="This feature is only available in the Canary channel" /> **optional** `onCaughtError`: Callback called when React catches an error in an Error Boundary. Called with the `error` caught by the Error Boundary, and an `errorInfo` object containing the `componentStack`.
-  * <CanaryBadge title="This feature is only available in the Canary channel" /> **optional** `onUncaughtError`: Callback called when an error is thrown and not caught by an Error Boundary. Called with the `error` that was thrown, and an `errorInfo` object containing the `componentStack`.
-  * **optional**  `onRecoverableError`: React가 오류로부터 자동으로 복구될 때 호출되는 콜백.
-  * **optional** `identifierPrefix` : React가 [`useId`](/reference/react/useId)에 의해 생성된 ID에 사용하는 문자열 접두사. 같은 페이지에서 여러개의 루트를 사용할 때 충돌을 피하는 데 유용합니다.
+  * **optional** `onCaughtError`: Callback called when React catches an error in an Error Boundary. Called with the `error` caught by the Error Boundary, and an `errorInfo` object containing the `componentStack`.
+  * **optional** `onUncaughtError`: Callback called when an error is thrown and not caught by an Error Boundary. Called with the `error` that was thrown, and an `errorInfo` object containing the `componentStack`.
+  * **optional** `onRecoverableError`: React가 오류로부터 자동으로 복구될 때 호출되는 콜백. Called with an `error` React throws, and an `errorInfo` object containing the `componentStack`. Some recoverable errors may include the original error cause as `error.cause`.
+  * **optional** `identifierPrefix`: React가 [`useId`](/reference/react/useId)에 의해 생성된 ID에 사용하는 문자열 접두사. 같은 페이지에서 여러개의 루트를 사용할 때 충돌을 피하는 데 유용합니다.
 
 #### 반환값 {/*returns*/}
 
-`createRoot`는 [`render`](#root-render)와 [`unmount`](#root-unmount) 두 가지 메서드가 있는 객체를 반환합니다.
+`createRoot`는 [`render`](#root-render)와 [`unmount`](#root-unmount) 두 가지 메서드를 포함한 객체를 반환합니다.
 
 #### 주의 사항 {/*caveats*/}
 * 앱이 서버에서 렌더링 되는 경우 `createRoot()`는 사용할 수 없습니다. 대신 [`hydrateRoot()`](/reference/react-dom/client/hydrateRoot)를 사용하세요.
-* 앱에 `createRoot` 호출이 단 하나만 있을 가능성이 높습니다. 프레임워크를 사용하는 경우 프레임워크가 이 호출을 대신 수행할 수도 있습니다.
+* 앱에서 `createRoot` 호출이 단 한번만 있을 가능성이 높습니다. 프레임워크를 사용하는 경우 프레임워크가 이 호출을 대신 수행할 수도 있습니다.
 * 컴포넌트의 자식이 아닌 DOM 트리의 다른 부분(예: 모달 또는 툴팁)에 JSX 조각을 렌더링하려는 경우, `createRoot` 대신 [`createPortal`](/reference/react-dom/createPortal)을 사용하세요.
 
 ---
 
 ### `root.render(reactNode)` {/*root-render*/}
 
-`root.render`를 호출하여 [JSX](/learn/writing-markup-with-jsx)조각("React 노드")을 React 루트의 브라우저 DOM 노드에 표시합니다.
+`root.render`를 호출하여 [JSX](/learn/writing-markup-with-jsx) 조각("React 노드")을 React 루트의 브라우저 DOM 노드에 표시합니다.
 
 ```js
 root.render(<App />);
@@ -70,7 +69,7 @@ root.render(<App />);
 
 React는 `root`에 `<App />`을 표시하고 그 안에 있는 DOM을 관리합니다.
 
-[아래에서 더 많은 예시를 확인하세요.](#usage)
+[아래 예시를 참고하세요.](#usage)
 
 #### 매개변수 {/*root-render-parameters*/}
 
@@ -93,7 +92,7 @@ React는 `root`에 `<App />`을 표시하고 그 안에 있는 DOM을 관리합�
 
 ### `root.unmount()` {/*root-unmount*/}
 
-`root.unmount`를 호출하면 React 루트 내부에서 렌더링 된 트리를 삭제합니다.
+`root.unmount`를 호출하면 React 루트 내부에서 렌더링된 트리를 삭제합니다.
 
 ```js
 root.unmount();
@@ -103,7 +102,7 @@ root.unmount();
 
 이 함수는 주로 React 루트의 DOM 노드(또는 그 조상 노드)가 다른 코드에 의해 DOM에서 제거될 수 있는 경우에 유용합니다. 예를 들어 DOM에서 비활성 탭을 제거하는 jQuery 탭 패널을 상상해 보세요. 탭이 제거되면 그 안에 있는 모든 것(내부의 React 루트를 포함)이 DOM에서 제거됩니다. 이 경우 `root.unmount`를 호출하여 제거된 루트의 콘텐츠 관리를 "중지"하도록 React에 지시해야 합니다. 그렇지 않으면 제거된 루트 내부의 컴포넌트는 구독과 같은 전역 리소스를 정리하고 확보하는 법을 모르는 채로 있게 됩니다.
 
-`root.unmount`를 호출하면 루트에 있는 모든 컴포넌트가 마운트 해제되고, 트리상의 이벤트 핸들러나 state가 제거되며, 루트 DOM 노드에서 React가 "분리"됩니다.
+`root.unmount`를 호출하면 루트에 있는 모든 컴포넌트가 마운트 해제되고, 트리상의 이벤트 핸들러나 State가 제거되며, 루트 DOM 노드에서 React가 "분리"됩니다.
 
 
 #### 매개변수 {/*root-unmount-parameters*/}
@@ -119,7 +118,7 @@ root.unmount();
 
 * `root.unmount`를 호출하면 트리의 모든 컴포넌트가 마운트 해제되고 루트 DOM 노드에서 React가 "분리"됩니다.
 
-* `root.unmount`를 한 번 호출한 후에는 같은 루트에서 `root.render`를 다시 호출할 수 없습니다. 마운트 해제된 루트에서 `root.render`를 호출하려고 하면 "마운트 해제된 root를 업데이트할 수 없습니다." 오류가 발생합니다. 그러나 해당 노드의 이전 루트가 마운트 해제된 후 동일한 DOM 노드에 새로운 루트를 만들 수는 있습니다.
+* `root.unmount`를 한 번 호출한 후에는 같은 루트에서 `root.render`를 다시 호출할 수 없습니다. 마운트 해제된 루트에서 `root.render`를 호출하려고 하면 "마운트 해제된 루트를 업데이트할 수 없습니다.<sup>Cannot update an unmounted root</sup>" 오류가 발생합니다. 그러나 해당 노드의 이전 루트가 마운트 해제된 후 동일한 DOM 노드에 새로운 루트를 만들 수는 있습니다.
 
 ---
 
@@ -189,7 +188,7 @@ function Counter() {
 
 **앱이 온전히 React만으로 작성된 경우, 추가적으로 루트를 더 만들거나 [`root.render`](#root-render)를 다시 호출할 필요가 없습니다.**
 
-이 시점부터 React는 전체 앱의 DOM을 관리합니다. 컴포넌트를 더 추가하려면 [ `App` 컴포넌트 안에 중첩](/learn/importing-and-exporting-components)시키세요. UI 업데이트는 각 컴포넌트의 [state를 통해](/reference/react/useState) 수행할 수 있습니다. 모달이나 툴팁과 같은 추가 콘텐츠를 DOM 노드 외부에 표시해야 하는 경우 [portal로 렌더링](/reference/react-dom/createPortal)하세요.
+이 시점부터 React는 전체 앱의 DOM을 관리합니다. 컴포넌트를 더 추가하려면 [ `App` 컴포넌트 안에 중첩](/learn/importing-and-exporting-components)시키세요. UI 업데이트는 각 컴포넌트의 [State를 통해](/reference/react/useState) 수행할 수 있습니다. 모달이나 툴팁과 같은 추가 콘텐츠를 DOM 노드 외부에 표시해야 하는 경우 [Portal로 렌더링](/reference/react-dom/createPortal)하세요.
 
 <Note>
 
@@ -199,13 +198,13 @@ HTML이 비어있으면, 앱의 자바스크립트 코드가 로드되고 실행
 <div id="root"></div>
 ```
 
-이것은 매우 느리게 느껴질 수 있습니다! 이 문제를 해결하기 위해 [서버에서 또는 빌드 중에](/reference/react-dom/server) 컴포넌트로부터 초기 HTML을 생성할 수 있습니다. 그러면 방문자는 자바스크립트 코드가 로드되기 전에 텍스트를 읽고, 이미지를 보고, 링크를 클릭할 수 있습니다. 이 최적화를 기본적으로 수행하는 [프레임워크를 사용](/learn/start-a-new-react-project#production-grade-react-frameworks)하는 것이 좋습니다. 실행 시점에 따라 이를 *서버 측 렌더링(SSR)* 또는 *정적 사이트 생성(SSG)* 이라고 합니다.
+이것은 매우 느리게 느껴질 수 있습니다! 이 문제를 해결하기 위해 [서버에서 또는 빌드 중에](/reference/react-dom/server) 컴포넌트로부터 초기 HTML을 생성할 수 있습니다. 그러면 방문자는 자바스크립트 코드가 로드되기 전에 텍스트를 읽고, 이미지를 보고, 링크를 클릭할 수 있습니다. 이 최적화를 기본적으로 수행하는 [프레임워크를 사용](/learn/start-a-new-react-project#production-grade-react-frameworks)하는 것이 좋습니다. 실행 시점에 따라 이를 *서버 측 렌더링<sup>SSR</sup>* 또는 *정적 사이트 생성<sup>SSG</sup>* 이라고 합니다.
 
 </Note>
 
 <Pitfall>
 
-**서버 렌더링이나 정적 생성을 사용하는 앱은 `createRoot` 대신 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 호출해야 합니다.** 그러면 React는 DOM 노드를 파괴하고 다시 생성하는 대신 HTML으로부터 *hydrate*(재사용)합니다.
+**서버 측 렌더링이나 정적 사이트 생성을 사용하는 앱은 `createRoot` 대신 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 호출해야 합니다.** 그러면 React는 DOM 노드를 파괴하고 다시 생성하는 대신 HTML으로부터 *Hydrate*(재사용)합니다.
 </Pitfall>
 
 ---
@@ -214,7 +213,7 @@ HTML이 비어있으면, 앱의 자바스크립트 코드가 로드되고 실행
 
 페이지가 [React만으로 작성되지 않은 경우](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page), React가 관리하는 각 최상위 UI에 대한 루트를 생성하기 위해 `createRoot`를 여러 번 호출할 수 있습니다. 루트마다 [`root.render`](#root-render)를 호출함으로써 각각 다른 콘텐츠를 표시할 수 있습니다.
 
-다음 예시에서는 서로 다른 두 개의 React 컴포넌트가 `index.html` 파일에 정의된 두 개의 DOM 노드에 렌더링합니다.
+다음 예시에서는 서로 다른 두 개의 React 컴포넌트를 `index.html` 파일에 정의된 두 개의 DOM 노드에 렌더링합니다.
 
 <Sandpack>
 
@@ -309,7 +308,7 @@ root.unmount();
 
 ### Updating a root component {/*updating-a-root-component*/}
 
-같은 루트에서 `render`를 두 번 이상 호출할 수도 있습니다. 컴포넌트 트리 구조가 이전 렌더링과 일치하는 한, React는 [기존 state를 유지](/learn/preserving-and-resetting-state)합니다. 다음 예시에서 input에 어떻게 타이핑하든 관계없이, 매 초 반복되는 `render` 호출로 인한 업데이트가 아무런 문제를 일으키지 않음을 주목하세요.
+같은 루트에서 `render`를 두 번 이상 호출할 수도 있습니다. 컴포넌트 트리 구조가 이전 렌더링과 일치하는 한, React는 [기존 State를 유지](/learn/preserving-and-resetting-state)합니다. 다음 예시에서 입력 창에 어떻게 타이핑하든 관계없이, 매 초 반복되는 `render` 호출로 인한 업데이트가 아무런 문제를 일으키지 않음을 주목하세요.
 
 <Sandpack>
 
@@ -340,15 +339,9 @@ export default function App({counter}) {
 
 </Sandpack>
 
-`render`를 여러 번 호출하는 경우는 흔하지 않습니다. 일반적으로는, 컴포넌트가 [state를 업데이트](/reference/react/useState)합니다.
+`render`를 여러 번 호출하는 경우는 흔하지 않습니다. 일반적으로는, 컴포넌트가 [State를 업데이트](/reference/react/useState)합니다.
 
 ### Show a dialog for uncaught errors {/*show-a-dialog-for-uncaught-errors*/}
-
-<Canary>
-
-`onUncaughtError` is only available in the latest React Canary release.
-
-</Canary>
 
 By default, React will log all uncaught errors to the console. To implement your own error reporting, you can provide the optional `onUncaughtError` root option:
 
@@ -576,27 +569,10 @@ export default function App() {
 }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js"
-}
-```
-
 </Sandpack>
 
 
 ### Displaying Error Boundary errors {/*displaying-error-boundary-errors*/}
-
-<Canary>
-
-`onCaughtError` is only available in the latest React Canary release.
-
-</Canary>
 
 By default, React will log all errors caught by an Error Boundary to `console.error`. To override this behavior, you can provide the optional `onCaughtError` root option to handle errors caught by an [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary):
 
@@ -863,8 +839,8 @@ function Throw({error}) {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "19.0.0-rc-3edc000d-20240926",
+    "react-dom": "19.0.0-rc-3edc000d-20240926",
     "react-scripts": "^5.0.0",
     "react-error-boundary": "4.0.3"
   },
@@ -1121,8 +1097,8 @@ function Throw({error}) {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "19.0.0-rc-3edc000d-20240926",
+    "react-dom": "19.0.0-rc-3edc000d-20240926",
     "react-scripts": "^5.0.0",
     "react-error-boundary": "4.0.3"
   },
@@ -1152,7 +1128,7 @@ root.render(<App />);
 
 ---
 
-### "대상 컨테이너가 DOM 엘리먼트가 아닙니다" 라는 오류가 발생합니다. {/*im-getting-an-error-target-container-is-not-a-dom-element*/}
+### I'm getting an error: "You passed a second argument to root.render" {/*im-getting-an-error-you-passed-a-second-argument-to-root-render*/}
 
 A common mistake is to pass the options for `createRoot` to `root.render(...)`:
 
@@ -1172,6 +1148,21 @@ const root = createRoot(container, {onUncaughtError});
 root.render(<App />);
 ```
 
+---
+
+### "대상 컨테이너가 DOM 엘리먼트가 아닙니다" 라는 오류가 발생합니다. {/*im-getting-an-error-target-container-is-not-a-dom-element*/}
+
+This error means that whatever you're passing to `createRoot` is not a DOM node.
+
+If you're not sure what's happening, try logging it:
+
+```js {2}
+const domNode = document.getElementById('root');
+console.log(domNode); // ???
+const root = createRoot(domNode);
+root.render(<App />);
+```
+
 예를 들어 `domNode`가 `null`이면 [`getElementById`](https://developer.mozilla.org/ko/docs/Web/API/Document/getElementById) 가 `null`을 반환했음을 의미합니다. 이는 호출 시점에 문서에 지정된 ID를 가진 노드가 없는 경우에 발생합니다. 여기에는 몇 가지 이유가 있을 수 있습니다.
 
 1. 찾고자 하는 ID가 HTML 파일에서 사용한 ID와 다를 수 있습니다. 오타가 있는지 확인하세요!
@@ -1185,7 +1176,7 @@ root.render(<App />);
 
 이 오류는 `root.render`에 전달하는 것이 React 컴포넌트가 아님을 의미합니다.
 
-이 오류는 `<Component />` 대신 `Component`로 `root.render`를 호출할 때 발생할 수 있습니다
+이 오류는 `<Component />` 대신 `Component`로 `root.render`를 호출할 때 발생할 수 있습니다.
 
 ```js {2,5}
 // 🚩 Wrong: App is a function, not a Component.
@@ -1209,7 +1200,7 @@ root.render(createApp());
 
 ### 서버에서 렌더링된 HTML이 처음부터 다시 생성됩니다 {/*my-server-rendered-html-gets-re-created-from-scratch*/}
 
-앱이 서버에서 렌더링 되고 React의 초기 HTML을 포함하는 경우에, 루트를 생성해서 `root.render`를 호출하면, 모든 HTML이 삭제되고 모든 DOM 노드가 처음부터 다시 생성되는 것을 볼 수 있습니다. 이렇게 하면 속도가 느려지고, 포커스와 스크롤 위치가 재설정되며, 그 밖의 다른 사용자 입력들이 손실될 수 있습니다.
+앱이 서버에서 렌더링되고 React의 초기 HTML을 포함하는 경우에, 루트를 생성해서 `root.render`를 호출하면, 모든 HTML이 삭제되고 모든 DOM 노드가 처음부터 다시 생성되는 것을 볼 수 있습니다. 이렇게 하면 속도가 느려지고, 포커스와 스크롤 위치가 재설정되며, 그 밖의 다른 사용자 입력들이 손실될 수 있습니다.
 
 서버에서 렌더링된 앱은 `createRoot` 대신 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 사용해야 합니다.
 

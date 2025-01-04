@@ -1,13 +1,6 @@
 ---
 title: useFormStatus
-canary: true
 ---
-
-<Canary>
-
-`useFormStatus` Hook은 현재 React의 Canary 채널과 실험적인 채널에서만 사용할 수 있습니다. 자세한 내용은 [React 릴리즈 채널](/community/versioning-policy#all-release-channels)에서 확인할 수 있습니다.
-
-</Canary>
 
 <Intro>
 
@@ -117,18 +110,6 @@ export async function submitForm(query) {
     await new Promise((res) => setTimeout(res, 1000));
 }
 ```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
 </Sandpack>
 
 <Pitfall>
@@ -234,17 +215,6 @@ button {
 
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
 </Sandpack>
 
 ---

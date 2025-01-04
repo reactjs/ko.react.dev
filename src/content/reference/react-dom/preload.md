@@ -1,13 +1,6 @@
 ---
 title: preload
-canary: true
 ---
-
-<Canary>
-
-`preload` 는 현재 React의 카나리(Canary) 버전 및 실험 채널에서만 사용할 수 있습니다. 여기에서 [React의 릴리즈 채널](/community/versioning-policy#all-release-channels)에 대해 자세히 알아보십시오.
-
-</Canary>
 
 <Note>
 
@@ -33,7 +26,7 @@ preload("https://example.com/font.woff2", {as: "font"});
 
 ### `preload(href, options)` {/*preload*/}
 
-리소스를 미리 로드하려면 `react-dom`에서 `preload` 함수를 호출합니다.
+리소스를 미리 불러오려면 `react-dom`에서 `preload` 함수를 호출합니다.
 
 ```js
 import { preload } from 'react-dom';
@@ -45,17 +38,17 @@ function AppRoot() {
 
 ```
 
-[아래에서 더 많은 예시를 확인하세요.](#usage)
+[아래 예시를 참조하세요.](#usage)
 
 `preload` 기능은 브라우저에 주어진 리소스 다운로드를 시작해야 한다는 힌트를 제공하여 시간을 절약할 수 있습니다.
 
 #### 매개변수 {/*parameters*/}
 
 * `href`: 문자열입니다. 다운로드하려는 리소스의 URL입니다.
-* `options`: 객체입니다. 여기에는 다음과 같은 속성이 포함되어 있습니다:
+* `options`: 객체입니다. 여기에는 다음과 같은 속성이 포함되어 있습니다.
   *  `as`: 필수 문자열입니다. 리소스의 타입입니다. [가능한 값](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#as)은 `audio`, `document`, `embed`, `fetch`, `font`, `image`, `object`, `script`, `style`, `track`, `video`, `worker`입니다.
   *  `crossOrigin`: 문자열입니다. 사용할 [CORS 정책](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)입니다. 가능한 값은 `anonymous`와 `use-credentials`입니다. `as`가 `"fetch"`로 설정된 경우 필수입니다.
-  *  `referrerPolicy`: 문자열입니다. 페칭할 때 전송할 [Referrer 헤더](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#referrerpolicy)입니다. 사용할 수 있는 값은 `no-referrer-when-downgrade` (기본값), `no-referrer`, `origin`, `origin-when-cross-origin` 그리고 `unsafe-url`입니다.
+  *  `referrerPolicy`: 문자열입니다. 가져오기<sup>Fetching</sup>할 때 전송할 [Referrer 헤더](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#referrerpolicy)입니다. 사용할 수 있는 값은 `no-referrer-when-downgrade` (기본값), `no-referrer`, `origin`, `origin-when-cross-origin` 그리고 `unsafe-url`입니다.
   *  `integrity`: 문자열입니다. 리소스의 [진위 확인](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)을 위한 리소스의 암호화 해시입니다.
   *  `type`: 문자열입니다. 리소스의 MIME 타입입니다.
   *  `nonce`: 문자열입니다. 엄격한 콘텐츠 보안 정책을 사용할 때 [리소스를 허용하기 위한 암호화 논스](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
@@ -69,23 +62,23 @@ function AppRoot() {
 
 #### 주의 사항 {/*caveats*/}
 
-* `preload`에 대한 여러 번의 동등한 호출은 한 번의 호출과 동일한 효과를 갖습니다. `preload`에 대한 호출은 다음 규칙에 따라 동등한 것으로 간주합니다:
-  * 다음의 경우를 제외하고 두 호출의 `href`가 같으면 두 호출은 동일합니다:
+* `preload`에 대한 여러 번의 동등한 호출은 한 번의 호출과 동일한 효과를 갖습니다. `preload`에 대한 호출은 다음 규칙에 따라 동등한 것으로 간주합니다.
+  * 아래 경우를 제외하고 두 호출의 `href`가 같으면 두 호출은 동일합니다.
   * `as`가 `image`로 설정된 경우 두 호출의 `href`, `imageSrcSet` 및 `imageSizes`가 같으면 두 호출은 동일합니다.
 * 브라우저에서는 컴포넌트 렌더링 중, Effect, 이벤트 핸들러 등 어떤 상황에서도 `preload`를 호출할 수 있습니다.
-* 서버 사이드 렌더링 또는 서버 컴포넌트를 렌더링할 때 `preload`는 컴포넌트를 렌더링하는 동안 또는 컴포넌트 렌더링에서 발생하는 비동기 context에서 호출하는 경우에만 영향을 미칩니다. 다른 호출은 무시됩니다.
+* 서버 사이드 렌더링 또는 서버 컴포넌트를 렌더링할 때 `preload`는 컴포넌트를 렌더링하는 동안 또는 컴포넌트 렌더링에서 발생하는 비동기 컨텍스트에서 호출하는 경우에만 영향을 미칩니다. 다른 호출은 무시됩니다.
 
 ---
 
 ## 사용법 {/*usage*/}
 
-### 렌더링 시 프리로딩 {/*preloading-when-rendering*/}
+### 렌더링 시 미리 불러오기 {/*preloading-when-rendering*/}
 
 컴포넌트 또는 그 자식 컴포넌트가 특정 리소스를 사용한다는 것을 알고 있다면 컴포넌트를 렌더링할 때 `preload`를 호출하세요.
 
-<Recipes titleText="프리로딩 예시">
+<Recipes titleText="미리 불러오기 예시">
 
-#### 외부 스크립트 프리로드하기 {/*preloading-an-external-script*/}
+#### 외부 스크립트 미리 불러오기 {/*preloading-an-external-script*/}
 
 ```js
 import { preload } from 'react-dom';
@@ -100,7 +93,7 @@ function AppRoot() {
 
 <Solution />
 
-#### 스타일시트 프리로드하기 {/*preloading-a-stylesheet*/}
+#### 스타일시트 미리 불러오기 {/*preloading-a-stylesheet*/}
 
 ```js
 import { preload } from 'react-dom';
@@ -115,7 +108,7 @@ function AppRoot() {
 
 <Solution />
 
-#### 글꼴 프리로드하기 {/*preloading-a-font*/}
+#### 글꼴 미리 불러오기 {/*preloading-a-font*/}
 
 ```js
 import { preload } from 'react-dom';
@@ -127,11 +120,11 @@ function AppRoot() {
 }
 ```
 
-스타일시트를 프리로드하는 경우 스타일시트가 참조하는 모든 글꼴도 프리로드하는 것이 좋습니다. 이렇게 하면 브라우저가 스타일시트를 다운로드하고 구문 분석하기 전에 글꼴 다운로드를 시작할 수 있습니다.
+스타일시트를 미리 불러오는 경우 스타일시트가 참조하는 모든 글꼴도 미리 불러오는 것이 좋습니다. 이렇게 하면 브라우저가 스타일시트를 다운로드하고 구문 분석하기 전에 글꼴 다운로드를 시작할 수 있습니다.
 
 <Solution />
 
-#### 이미지 프리로드하기 {/*preloading-an-image*/}
+#### 이미지 미리 불러오기 {/*preloading-an-image*/}
 
 ```js
 import { preload } from 'react-dom';
@@ -146,15 +139,15 @@ function AppRoot() {
 }
 ```
 
-이미지를 프리로드할 때 `imageSrcSet` 과 `imageSizes` 옵션은 브라우저가 [화면 크기에 맞는 올바른 크기의 이미지를 가져오는 데](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) 도움이 됩니다.
+이미지를 미리 불러올 때 `imageSrcSet` 과 `imageSizes` 옵션은 브라우저가 [화면 크기에 맞는 올바른 크기의 이미지를 가져오는 데](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) 도움이 됩니다.
 
 <Solution />
 
 </Recipes>
 
-### 이벤트 핸들러에서 프리로드하기 {/*preloading-in-an-event-handler*/}
+### 이벤트 핸들러에서 미리 불러오기 {/*preloading-in-an-event-handler*/}
 
-외부 리소스가 필요한 페이지나 state로 전환하기 전에 이벤트 핸들러에서 `preload`를 호출하세요. 이렇게 하면 새 페이지나 state를 렌더링하는 동안 호출하는 것보다 프로세스가 더 빨리 시작됩니다.
+외부 리소스가 필요한 페이지나 State로 전환하기 전에 이벤트 핸들러에서 `preload`를 호출하세요. 이렇게 하면 새 페이지나 State를 렌더링하는 동안 호출하는 것보다 프로세스가 더 빨리 시작됩니다.
 
 ```js
 import { preload } from 'react-dom';
