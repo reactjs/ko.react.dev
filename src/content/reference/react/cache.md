@@ -11,7 +11,7 @@ canary: true
 
 <Intro>
 
-`cache`는 가져온 데이터나 연산의 결과를 캐싱하게 해줍니다.
+`cache`를 통해 가져온 데이터나 연산의 결과를 캐싱합니다.
 
 ```js
 const cachedFn = cache(fn);
