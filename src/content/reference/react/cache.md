@@ -52,7 +52,7 @@ function Chart({data}) {
 
 `cache`는 같은 타입 시그니처를 가진 `fn`의 캐싱된 버전을 반환합니다. 이 과정에서 `fn`을 호출하지 않습니다.
 
-주어진 인자값과 함께 `cachedFn`를 호출할 때, 캐시에 캐싱된 데이터가 있는지 먼저 확인합니다. 만약 캐싱된 데이터가 있다면, 그 결과를 반환합니다. 만약 없다면, 매개변수와 함께 `fn`을 호출하고 결과를 캐시에 저장하고 값을 반환합니다. `fn`이 유일하게 호출되는 경우는 캐싱된 데이터가 없는 경우입니다.
+주어진 인수와 함께 `cachedFn`을 호출할 때, 캐시에 캐싱된 데이터가 있는지 먼저 확인합니다. 만약 캐싱된 데이터가 있다면, 그 결과를 반환합니다. 만약 없다면, 매개변수와 함께 `fn`을 호출하고 결과를 캐시에 저장하고 값을 반환합니다. `fn`이 유일하게 호출되는 경우는 캐싱된 데이터가 없는 경우입니다.
 
 <Note>
 
@@ -166,7 +166,7 @@ export default function Precipitation({cityData}) {
   // ...
 }
 ```
-여기 두 컴포넌트가 같은 캐시를 읽고 쓰기 위해 `./getWeekReport.js`로 부터 export해 온 <CodeStep step={3}>같은 메모화된 함수</CodeStep>를 호출했습니다.
+여기 두 컴포넌트가 같은 캐시를 읽고 쓰기 위해 `./getWeekReport.js`로 부터 `export`해 온 <CodeStep step={3}>같은 메모화된 함수</CodeStep>를 호출했습니다.
 </Pitfall>
 
 ### 데이터의 스냅샷 공유하기 {/*take-and-share-snapshot-of-data*/}
@@ -196,7 +196,7 @@ async function MinimalWeatherCard({city}) {
 
 `AnimatedWeatherCard`와 `MinimalWeatherCard`가 다른 <CodeStep step={1}>city</CodeStep>를 <CodeStep step={2}>`getTemperature`</CodeStep>의 인수로 받게 된다면, `fetchTemperature`는 두 번 호출되고 호출마다 다른 데이터를 받게됩니다.
 
-<CodeStep step={1}>city</CodeStep>가 캐시 키처럼 동작하게 됩니다.
+<CodeStep step={1}>city</CodeStep>가 캐시 키<sup>Key</sup>처럼 동작하게 됩니다.
 
 <Note>
 
@@ -214,7 +214,7 @@ async function AnimatedWeatherCard({city}) {
 
 ### 사전에 데이터 받아두기 {/*preload-data*/}
 
-장시간 실행되는 데이터 가져오기를 캐싱하면, 컴포넌트를 렌더링하기 전에 비동기 작업을 시작할 수 있습니다.
+긴 실행 시간이 소요되는 데이터 가져오기를 캐싱하면, 컴포넌트를 렌더링하기 전에 비동기 작업을 시작할 수 있습니다.
 
 ```jsx [[2, 6, "await getUser(id)"], [1, 17, "getUser(id)"]]
 const getUser = cache(async (id) => {
@@ -245,7 +245,7 @@ function Page({id}) {
 
 `Page`를 렌더링할 때, 컴포넌트는 <CodeStep step={1}>`getUser`</CodeStep>를 호출하지만, 반환된 데이터를 사용하지 않는다는 점에 유의하세요. 이 초기 <CodeStep step={1}>`getUser`</CodeStep> 호출은 페이지가 다른 계산 작업을 수행하고 자식을 렌더링하는 동안 발생하는, 비동기 데이터베이스 쿼리를 시작합니다.
 
-`Profile`을 렌더링할 때, <CodeStep step={2}>`getUser`</CodeStep>를 다시 호출합니다. 초기 <CodeStep step={1}>`getUser`</CodeStep> 호출이 이미 사용자 데이터에 반환되고 캐싱 되었다면, `Profile`이 <CodeStep step={2}>해당 데이터를 요청하고 기다릴 때</CodeStep>, 다른 원격 프로시저 호출 없이 쉽게 캐시에서 읽어올 수 있습니다. <CodeStep step={1}> 초기 데이터 요청</CodeStep>이 완료되지 않은 경우, 이 패턴으로 데이터를 미리 로드하면 데이터를 받아올 때 생기는 지연이 줄어듭니다.
+`Profile`을 렌더링할 때, <CodeStep step={2}>`getUser`</CodeStep>를 다시 호출합니다. 초기 <CodeStep step={1}>`getUser`</CodeStep> 호출이 이미 사용자 데이터에 반환되고 캐싱되었다면, `Profile`이 <CodeStep step={2}>해당 데이터를 요청하고 기다릴 때</CodeStep>, 다른 원격 프로시저 호출 없이 쉽게 캐시에서 읽어올 수 있습니다. <CodeStep step={1}> 초기 데이터 요청</CodeStep>이 완료되지 않은 경우, 이 패턴으로 데이터를 미리 로드하면 데이터를 받아올 때 생기는 지연이 줄어듭니다.
 
 <DeepDive>
 
@@ -270,9 +270,9 @@ async function MyComponent() {
 }
 ```
 
-<CodeStep step={2}>`getData`</CodeStep>를 처음 호출할 때, <CodeStep step={1}>`fetchData`</CodeStep>에서 반환된 Promise가 캐싱 됩니다. 이후 조회 시, 같은 Promise를 반환합니다.
+<CodeStep step={2}>`getData`</CodeStep>를 처음 호출할 때, <CodeStep step={1}>`fetchData`</CodeStep>에서 반환된 Promise가 캐싱됩니다. 이후 조회 시, 같은 Promise를 반환합니다.
 
-첫 번째 <CodeStep step={2}>`getData`</CodeStep> 호출은 기다리지 않지만(`await`) <CodeStep step={3}>두 번째</CodeStep>는 기다립니다. [`await`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/await)은 자바스크립트 연산자로, 기다렸다가 확정된 Promise의 결과를 반환합니다. 첫 번째 <CodeStep step={2}>`getData`</CodeStep>는 단순히 조회할 두 번째 <CodeStep step={3}>`getData`</CodeStep>에 대한 Promise를 캐싱하기 위해 `fetch`를 실행합니다.
+첫 번째 <CodeStep step={2}>`getData`</CodeStep> 호출은 기다리지<sup>`await`</sup> 않지만 <CodeStep step={3}>두 번째</CodeStep>는 기다립니다. [`await`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/await)은 자바스크립트 연산자로, 기다렸다가 확정된 Promise의 결과를 반환합니다. 첫 번째 <CodeStep step={2}>`getData`</CodeStep>는 단순히 조회할 두 번째 <CodeStep step={3}>`getData`</CodeStep>에 대한 Promise를 캐싱하기 위해 `fetch`를 실행합니다.
 
 <CodeStep step={3}>두 번째 호출</CodeStep>에서 Promise가 여전히 <em>대기 중</em>이면, 결과를 기다리는 동안 `await`이 일시 중지됩니다. 이 최적화는 데이터 불러오기를 기다리는 동안 React가 계산 작업을 계속할 수 있게 해 <CodeStep step={3}>두 번째 호출</CodeStep>에 대한 대기 시간을 줄일 수 있게 합니다.
 
@@ -302,7 +302,7 @@ async function DemoProfile() {
 
 React는 컴포넌트에서 메모화된 함수의 캐시 접근만 제공합니다. 컴포넌트 외부에서 <CodeStep step={1}>`getUser`</CodeStep>를 호출하면 여전히 함수를 실행하지만, 캐시를 읽거나 업데이트하지는 않습니다.
 
-이는 컴포넌트에서만 접근할 수 있는 [컨텍스트](/learn/passing-data-deeply-with-context)를 통해 캐시 접근이 제공되기 때문입니다.
+이는 컴포넌트에서만 접근할 수 있는 [Context](/learn/passing-data-deeply-with-context)를 통해 캐시 접근이 제공되기 때문입니다.
 
 </Pitfall>
 
@@ -335,9 +335,9 @@ function App() {
 }
 ```
 
-이 예시에서 `App`은 두 개의 `WeatherReport`를 같은 데이터와 함께 렌더했습니다. 두 컴포넌트가 같은 작업을 수행했음에도 불구하고 서로 작업을 공유하지 않습니다. `useMemo`의 캐시는 해당 컴포넌트 내부에만 있습니다.
+이 예시에서 `App`은 두 개의 `WeatherReport`를 같은 데이터와 함께 렌더링했습니다. 두 컴포넌트가 같은 작업을 수행했음에도 불구하고 서로 작업을 공유하지 않습니다. `useMemo`의 캐시는 해당 컴포넌트 내부에만 있습니다.
 
-하지만 `useMemo`는 `App`이 다시 렌더링 되고 `record` 객체가 변경되지 않는 경우, 각 컴포넌트 인스턴스가 작업을 건너뛰고 메모화된 `avgTemp`의 값을 사용합니다. `useMemo`는 주어진 종속성을 가진 `avgTemp`의 마지막 계산만 캐싱합니다.
+하지만 `useMemo`는 `App`이 다시 렌더링되고 `record` 객체가 변경되지 않는 경우, 각 컴포넌트 인스턴스가 작업을 건너뛰고 메모화된 `avgTemp`의 값을 사용합니다. `useMemo`는 주어진 종속성을 가진 `avgTemp`의 마지막 계산만 캐싱합니다.
 
 #### `cache` {/*deep-dive-cache*/}
 
@@ -367,7 +367,7 @@ function App() {
 
 #### `memo` {/*deep-dive-memo*/}
 
-[`memo`](reference/react/memo)는 프로퍼티가 변경되지 않았을 때 컴포넌트가 다시 렌더링 되는 것을 막기 위해 사용합니다.
+[`memo`](reference/react/memo)는 프로퍼티가 변경되지 않았을 때 컴포넌트가 다시 렌더링되는 것을 막기 위해 사용합니다.
 
 ```js
 'use client';
@@ -390,7 +390,7 @@ function App() {
 }
 ```
 
-예시에서 `MemoWeatherReport` 컴포넌트 모두 첫 번째 렌더링에서 `calculateAvg`를 호출합니다. 하지만 `App`이 다시 렌더링 될 때 `record`의 변경이 없다면 프로퍼티의 변경이 없기 때문에 `MemoWeatherReport`가 다시 렌더링되지 않습니다.
+예시에서 `MemoWeatherReport` 컴포넌트 모두 첫 번째 렌더링에서 `calculateAvg`를 호출합니다. 하지만 `App`이 다시 렌더링될 때 `record`의 변경이 없다면 프로퍼티의 변경이 없기 때문에 `MemoWeatherReport`가 다시 렌더링되지 않습니다.
 
 `useMemo`와 비교하면 `memo`는 프로퍼티와 특정 계산을 기반으로 컴포넌트 렌더링을 메모화합니다. `useMemo`와 유사하게, 메모화된 컴포넌트는 마지막 프로퍼티 값에 대한 마지막 렌더링을 캐싱합니다. 프로퍼티가 변경되면, 캐시는 무효화되고 컴포넌트는 다시 렌더링됩니다.
 
@@ -400,7 +400,7 @@ function App() {
 
 ## 문제 해결 {/*troubleshooting*/}
 
-### 동일한 인수로 함수를 호출해도 메모된 함수가 계속 실행됩니다. {/*memoized-function-still-runs*/}
+### 동일한 인수로 함수를 호출해도 메모된 함수가 계속 실행됩니다 {/*memoized-function-still-runs*/}
 
 앞서 언급된 주의 사항들을 확인하세요.
 * [다른 메모화된 함수를 호출하면 다른 캐시에서 읽습니다.](#pitfall-different-memoized-functions)
@@ -410,7 +410,7 @@ function App() {
 
 인자가 [원시 값](https://developer.mozilla.org/ko/docs/Glossary/Primitive)(객체, 함수, 배열 등)이 아니라면, 같은 객체 참조를 넘겼는지 확인하세요.
 
-메모화된 함수 호출 시, React는 입력된 인자값을 조회해 결과가 이미 캐싱되어 있는지 확인합니다. React는 인수의 얕은 동등성을 사용해 캐시 히트가 있는지를 결정합니다.
+메모화된 함수 호출 시, React는 입력된 인자값을 조회해 결과가 이미 캐싱되어 있는지 확인합니다. React는 인수들의 얕은 동등성을 사용해 캐시 히트가 있는지를 결정합니다.
 
 ```js
 import {cache} from 'react';
