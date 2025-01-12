@@ -19,7 +19,7 @@ const SomeContext = createContext(defaultValue)
 
 ## 레퍼런스 {/*reference*/}
 
-### `createContext(기본값)` {/*createcontext*/}
+### `createContext(defaultValue)` {/*createcontext*/}
 
 컴포넌트 외부에서 `createContext`를 호출하여 컨텍스트를 생성합니다.
 
@@ -29,11 +29,11 @@ import { createContext } from 'react';
 const ThemeContext = createContext('light');
 ```
 
-[아래에서 더 많은 예시를 확인하세요.](#usage)
+[아래 예시를 참고하세요.](#usage)
 
 #### 매개변수 {/*parameters*/}
 
-* `기본값`: 컴포넌트가 컨텍스트를 읽을 때 상위에 일치하는 컨텍스트 제공자가 없는 경우 컨텍스트가 가져야 할 값입니다. 의미 있는 기본값이 없으면 `null`을 지정하세요. 기본값은 "최후의 수단"으로 사용됩니다. 이 값은 정적이며 시간이 지나도 변경되지 않습니다.
+* `defaultValue`: 컴포넌트가 컨텍스트를 읽을 때 상위에 일치하는 컨텍스트 제공자가 없는 경우 컨텍스트가 가져야 할 값입니다. 의미 있는 기본값이 없으면 `null`을 지정하세요. 기본값은 "최후의 수단"으로 사용됩니다. 이 값은 정적이며 시간이 지나도 변경되지 않습니다.
 
 #### 반환값 {/*returns*/}
 
@@ -41,8 +41,8 @@ const ThemeContext = createContext('light');
 
 **컨텍스트 객체 자체는 어떠한 정보도 가지고 있지 않습니다.** 다른 컴포넌트가 읽거나 제공하는 어떤 컨텍스트를 나타냅니다. 일반적으로 상위 컴포넌트에서 컨텍스트 값을 지정하기 위해 [`SomeContext.Provider`](#provider)를 사용하고, 아래 컴포넌트에서 읽기 위해 [`useContext(SomeContext)`](/reference/react/useContext)를 호출합니다. 컨텍스트 객체에는 몇 가지 속성이 있습니다.
 
-* `SomeContext.Provider`는 컴포넌트에 컨텍스트 값을 제공하게 해줍니다.
-* `SomeContext.Consumer`는 컨텍스트 값을 읽는 대안적이며 드물게 사용되는 방법입니다.
+* `SomeContext.Provider`는 컴포넌트에 컨텍스트 값을 제공합니다.
+* `SomeContext.Consumer`는 컨텍스트 값을 읽는 대안이며 드물게 사용됩니다.
 
 ---
 
@@ -70,7 +70,7 @@ function App() {
 
 ### `SomeContext.Consumer` {/*consumer*/}
 
-`useContext`가 존재하기 전에는 컨텍스트를 읽는 더 오래된 방법이 있습니다.
+`useContext`가 등장하기 전에 컨텍스트를 읽는 이전 방식이 있었습니다.
 
 ```js
 function Button() {
@@ -85,11 +85,11 @@ function Button() {
 }
 ```
 
-이 오래된 방법은 여전히 작동하지만, **새로 작성된 코드는 대신 [`useContext()`](/reference/react/useContext)로 컨텍스트를 읽어야 합니다:**
+이 예전 방식은 여전히 작동하지만, **새로 작성된 코드는 대신 [`useContext()`](/reference/react/useContext)로 컨텍스트를 읽어야 합니다**.
 
 ```js
 function Button() {
-  // ✅ 권장되는 방법
+  // ✅ 권장하는 방법
   const theme = useContext(ThemeContext);
   return <button className={theme} />;
 }
@@ -154,13 +154,13 @@ function App() {
 
 이제 `Page` 컴포넌트와 그 안의 모든 컴포넌트, 얼마나 깊든지 간에 전달된 컨텍스트 값을 "볼" 수 있습니다. 전달된 컨텍스트 값이 변경되면, React는 컨텍스트를 읽는 컴포넌트를 다시 렌더링합니다.
 
-[컨텍스트 읽기와 제공에 대해 더 알아보고 예시를 확인하세요.](/reference/react/useContext)
+[컨텍스트를 읽고 제공하는 방법에 대해 더 알아보고 예시를 확인하세요.](/reference/react/useContext)
 
 ---
 
 ### 파일에서 컨텍스트 가져오기 및 내보내기 {/*importing-and-exporting-context-from-a-file*/}
 
-다른 파일의 컴포넌트가 동일한 컨텍스트에 액세스해야 할 필요가 종종 있습니다. 이것이 별도의 파일에서 컨텍스트를 선언하는 것이 일반적인 이유입니다. 그런 다음 [`export` 문](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export)을 사용하여 다른 파일에서 사용할 수 있도록 컨텍스트를 사용할 수 있습니다.
+종종 서로 다른 파일에 있는 컴포넌트들이 동일한 컨텍스트에 접근해야 할 때가 있습니다. 이것이 별도의 파일에서 컨텍스트를 선언하는 것이 일반적인 이유입니다. 그런 다음 [`export` 문](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export)을 사용하여 다른 파일에서 사용할 수 있도록 컨텍스트를 사용할 수 있습니다.
 
 ```js {4-5}
 // Contexts.js
@@ -198,7 +198,7 @@ function App() {
 }
 ```
 
-이것은 [컴포넌트를 가져오고 내보내기](/learn/importing-and-exporting-components)와 유사하게 작동합니다.
+이것은 [컴포넌트 `import` 및 `export`하기](/learn/importing-and-exporting-components)와 유사하게 동작합니다.
 
 ---
 
@@ -212,6 +212,6 @@ function App() {
 const ThemeContext = createContext('light');
 ```
 
-이 값은 절대 변경되지 않습니다. React는 일치하는 제공자가 위에 없는 경우 이 값을 대체로 사용합니다.
+이 값은 절대 변경되지 않습니다. React는 상위에 일치하는 제공자를 찾을 수 없는 경우에만 이 값을 기본값으로 사용합니다.
 
-시간이 지나면서 컨텍스트를 변경하려면, [상태를 추가하고 컴포넌트를 컨텍스트 제공자로 감싸세요.](/reference/react/useContext#updating-data-passed-via-context)
+컨텍스트가 시간에 따라 변경되도록 만들려면, [State를 추가하고 컴포넌트를 컨텍스트 제공자로 감싸세요.](/reference/react/useContext#updating-data-passed-via-context)
