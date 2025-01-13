@@ -20,9 +20,15 @@ title: 기존 프로젝트에 React 추가하기
 
 다음과 같이 설정하는 것을 추천합니다.
 
+<<<<<<< HEAD
 1. [React 기반 프레임워크](/learn/start-a-new-react-project) 중 하나를 사용하여 **앱의 React 부분을 빌드하세요.**
 2. 사용하는 프레임워크 설정에서 **`/some-app` 을 *기본 경로*<sup>*Base Path*</sup>로 명시하세요**. (이때, [Next.js](https://nextjs.org/docs/api-reference/next.config.js/basepath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)를 사용하세요!)
 3. **서버 또는 프록시를 구성**하여 `/some-app/` 하위의 모든 요청이 React 애플리케이션에서 처리되도록 하세요.
+=======
+1. **Build the React part of your app** using one of the [React-based frameworks](/learn/start-a-new-react-project).
+2. **Specify `/some-app` as the *base path*** in your framework's configuration (here's how: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
+3. **Configure your server or a proxy** so that all requests under `/some-app/` are handled by your React app.
+>>>>>>> 9000e6e003854846c4ce5027703b5ce6f81aad80
 
 이는 앱의 React 부분이 이러한 프레임워크에 내장된 [최고의 사례들<sup>Best Practices</sup>로부터 이점을 얻을 수 있습니다.](/learn/start-a-new-react-project#can-i-use-react-without-a-framework)
 
