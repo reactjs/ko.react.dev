@@ -44,7 +44,7 @@ export default function App() {
 
 위의 예시에서 `Submit` 컴포넌트는 폼이 제출 중일 때 `<button>`을 누를 수 없도록 하기 위해 이 정보를 활용합니다.
 
-[아래에서 더 많은 예시를 확인해 보세요.](#usage)
+[아래 예시를 참고하세요.](#usage)
 
 #### 매개변수 {/*parameters*/}
 
@@ -52,16 +52,16 @@ export default function App() {
 
 #### 반환값 {/*returns*/}
 
-다음의 프로퍼티를 가지는 `status` 객체를 반환합니다:
+다음의 프로퍼티를 가지는 `status` 객체를 반환합니다.
 
 * `pending`: 불리언 값입니다. `true`라면 상위 `<form>`이 아직 제출 중이라는 것을 의미합니다. 그렇지 않으면 `false`입니다.
 
-* `data`: [`FormData 인터페이스`](https://developer.mozilla.org/ko/docs/Web/API/FormData)를 구현한 객체로, 상위 `<form>`이 제출하는 데이터를 포함합니다. 활성화된 제출이 없거나 상위에 `<form>`이 없는 경우에는 `null`입니다.
+* `data`: [`FormData` 인터페이스](https://developer.mozilla.org/ko/docs/Web/API/FormData)를 구현한 객체로, 상위 `<form>`이 제출하는 데이터를 포함합니다. 활성화된 제출이 없거나 상위에 `<form>`이 없는 경우에는 `null`입니다.
 
 * `method`: `'get'` 또는 `'post'` 중 하나의 문자열 값입니다. 이 프로퍼티는 상위 `<form>`이 `GET` 또는 `POST` [HTTP 메서드](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods)를 사용하여 제출되는지를 나타냅니다. 기본적으로 `<form>`은 `GET` 메서드를 사용하며 [`method`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form#method) 프로퍼티를 통해 지정할 수 있습니다.
 
 [//]: # (Link to `<form>` documentation. "Read more on the `action` prop on `<form>`.")
-* `action`: 상위 `<form>`의 `action` prop에 전달한 함수의 레퍼런스입니다. 상위 `<form>`이 없는 경우에는 이 프로퍼티는 `null`입니다. `action` prop에 URI 값이 제공되었거나 `action` prop를 지정하지 않았을 경우에는 `status.action`은 `null`입니다.
+* `action`: 상위 `<form>`의 `action` Prop에 전달한 함수의 레퍼런스입니다. 상위 `<form>`이 없는 경우에는 이 프로퍼티는 `null`입니다. `action` Prop에 URI 값이 제공되었거나 `action` prop를 지정하지 않았을 경우에는 `status.action`은 `null`입니다.
 
 #### 주의 사항 {/*caveats*/}
 
@@ -72,8 +72,8 @@ export default function App() {
 
 ## 사용법 {/*usage*/}
 
-### 폼을 제출하는 동안 보류 중인 상태로 표시하기 {/*display-a-pending-state-during-form-submission*/}
-폼을 제출하는 동안 보류 상태를 표시하려면 `<form>` 내에서 렌더링한 컴포넌트에서 `useFormStatus` Hook을 호출하고 반환된 `pending` 프로퍼티를 확인하세요.
+### 폼을 제출하는 동안 대기 중인 상태로 표시하기 {/*display-a-pending-state-during-form-submission*/}
+폼을 제출하는 동안 대기<sup>Pending</sup> 상태를 표시하려면 `<form>` 내에서 렌더링한 컴포넌트에서 `useFormStatus` Hook을 호출하고 반환된 `pending` 프로퍼티를 확인하세요.
 
 여기서는 `pending` 프로퍼티를 사용하여 폼이 제출 중인지를 나타냅니다.
 
@@ -227,5 +227,5 @@ button {
 
 `useFormStatus`를 호출하는 컴포넌트가 `<form>`에 감싸져 있지 않다면, `status.pending`은 항상 `false`를 반환합니다. `useFormStatus`가 `<form>` 엘리먼트의 자식 컴포넌트에서 호출되는지 확인하세요.
 
-`useFormStatus`는 동일한 컴포넌트에서 렌더링한 `<form>`의 상태를 추적하지 않습니다. 자세한 내용은 [주의하세요!](#useformstatus-will-not-return-status-information-for-a-form-rendered-in-the-same-component) 에서 확인할 수 있습니다.
+`useFormStatus`는 동일한 컴포넌트에서 렌더링한 `<form>`의 상태를 추적하지 않습니다. 자세한 내용은 ['주의하세요!'](#useformstatus-will-not-return-status-information-for-a-form-rendered-in-the-same-component)에서 확인할 수 있습니다.
 

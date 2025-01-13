@@ -4,8 +4,7 @@ title: use
 
 <Intro>
 
-`use`는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](/learn/passing-data-deeply-with-context)와 같은 데이터를 참조하는 React Hook입니다.
-
+`use`는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [Context](/learn/passing-data-deeply-with-context)와 같은 데이터를 참조하는 React API입니다.
 
 ```js
 const value = use(resource);
@@ -21,8 +20,7 @@ const value = use(resource);
 
 ### `use(resource)` {/*use*/}
 
-컴포넌트에서 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](/learn/passing-data-deeply-with-context)와 같은 데이터를 참조하려면 `use`를 사용합니다.
-
+컴포넌트에서 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [Context](/learn/passing-data-deeply-with-context)와 같은 데이터를 참조하려면 `use`를 사용하세요.
 
 ```jsx
 import { use } from 'react';
@@ -35,35 +33,31 @@ function MessageComponent({ messagePromise }) {
 
 다른 React Hook과 달리 `use`는 `if`와 같은 조건문과 반복문 내부에서 호출할 수 있습니다. 다만, 다른 React Hook과 같이 `use`는 컴포넌트 또는 Hook에서만 호출해야 합니다.
 
-Promise와 함께 호출될 때 `use` Hook은 [`Suspense`](/reference/react/Suspense) 및 [error boundaries](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)와 통합됩니다. `use`에 전달된 Promise가 pending되는 동안 `use`를 호출하는 컴포넌트는 *suspend*됩니다. `use`를 호출하는 컴포넌트가 Suspense 경계로 둘러싸여 있으면 fallback이 표시됩니다. Promise가 리졸브되면 Suspense fallback은 `use` Hook이 반환한 컴포넌트로 대체됩니다. `use`에 전달된 Promise가 reject되면 가장 가까운 Error Boundary의 fallback이 표시됩니다.
+Promise와 함께 호출될 때 `use` Hook은 [`Suspense`](/reference/react/Suspense) 및 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)와 통합됩니다. `use`에 전달된 Promise가 대기<sup>Pending</sup>하는 동안 `use`를 호출하는 컴포넌트는 *Suspend*됩니다. `use`를 호출하는 컴포넌트가 Suspense 경계로 둘러싸여 있으면 Fallback이 표시됩니다. Promise가 리졸브되면 Suspense Fallback은 `use` Hook이 반환한 컴포넌트로 대체됩니다. `use`에 전달된 Promise가 Reject되면 가장 가까운 Error Boundary의 Fallback이 표시됩니다.
 
-[아래에서 더 많은 예시를 확인하세요](#usage).
+[아래 예시를 참고하세요.](#usage)
 
 #### 매개변수 {/*parameters*/}
 
-* `resource`: 참조하려는 데이터입니다. 데이터는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](/learn/passing-data-deeply-with-context)일 수 있습니다.
+* `resource`: 참조하려는 데이터입니다. 데이터는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [Context](/learn/passing-data-deeply-with-context)일 수 있습니다.
 
 #### 반환값 {/*returns*/}
 
-`use` Hook은 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [context](/learn/passing-data-deeply-with-context)에서 참조한 값을 반환합니다.
+`use` Hook은 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [Context](/learn/passing-data-deeply-with-context)에서 참조한 값을 반환합니다.
 
 #### 주의 사항 {/*caveats*/}
 
-* `use` Hook은 컴포넌트나 Hook 내부에서 호출되어야 합니다.
-* [서버 컴포넌트](/reference/rsc/use-server)에서 데이터를 fetch 할 때는 `use`보다 `async` 및 `await`을 사용합니다. `async` 및 `await`은 `await`이 호출된 시점부터 렌더링을 시작하는 반면, `use`는 데이터가 리졸브된 후 컴포넌트를 리렌더링합니다.
-* [클라이언트 컴포넌트](/reference/rsc/use-clientt)에서 Promise를 생성하는 것보다 [서버 컴포넌트](/reference/rsc/use-server)에서 Promise를 생성하여 클라이언트 컴포넌트에 전달하는 것이 좋습니다. 클라이언트 컴포넌트에서 생성된 Promise는 렌더링할 때마다 다시 생성됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 전달된 Promise는 리렌더링 전반에 걸쳐 안정적입니다. [예시 확인하기](#streaming-data-from-server-to-client).
-
-* The `use` API must be called inside a Component or a Hook.
-* When fetching data in a [Server Component](/reference/rsc/server-components), prefer `async` and `await` over `use`. `async` and `await` pick up rendering from the point where `await` was invoked, whereas `use` re-renders the component after the data is resolved.
-* Prefer creating Promises in [Server Components](/reference/rsc/server-components) and passing them to [Client Components](/reference/rsc/use-client) over creating Promises in Client Components. Promises created in Client Components are recreated on every render. Promises passed from a Server Component to a Client Component are stable across re-renders. [See this example](#streaming-data-from-server-to-client). {/*TODO*/}
+* `use` API는 컴포넌트나 Hook 내부에서 호출되어야 합니다.
+* [서버 컴포넌트](/reference/rsc/use-server)에서 데이터를 가져올 때는 `use`보다 `async` 및 `await`을 사용합니다. `async` 및 `await`은 `await`이 호출된 시점부터 렌더링을 시작하는 반면, `use`는 데이터가 리졸브된 후 컴포넌트를 리렌더링합니다.
+* [클라이언트 컴포넌트](/reference/rsc/use-clientt)에서 Promise를 생성하는 것보다 [서버 컴포넌트](/reference/rsc/use-server)에서 Promise를 생성하여 클라이언트 컴포넌트에 전달하는 것이 좋습니다. 클라이언트 컴포넌트에서 생성된 Promise는 렌더링할 때마다 다시 생성됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 전달된 Promise는 리렌더링 전반에 걸쳐 안정적입니다. [예시를 확인하세요](#streaming-data-from-server-to-client).
 
 ---
 
 ## 사용법 {/*usage*/}
 
-### `use`를 사용하여 context 참조하기 {/*reading-context-with-use*/}
+### `use`를 사용하여 Context 참조하기 {/*reading-context-with-use*/}
 
-[context](/learn/passing-data-deeply-with-context)가 `use`에 전달되면 [`useContext`](/reference/react/useContext)와 유사하게 작동합니다. `useContext`는 컴포넌트의 최상위 수준에서 호출해야 하지만, `use`는 `if`와 같은 조건문이나 `for`와 같은 반복문 내부에서 호출할 수 있습니다. `use`는 유연하므로 `useContext`보다 선호됩니다.
+[Context](/learn/passing-data-deeply-with-context)가 `use`에 전달되면 [`useContext`](/reference/react/useContext)와 유사하게 작동합니다. `useContext`는 컴포넌트의 최상위 수준에서 호출해야 하지만, `use`는 `if`와 같은 조건문이나 `for`와 같은 반복문 내부에서 호출할 수 있습니다. `use`는 유연하므로 `useContext`보다 선호됩니다.
 
 ```js [[2, 4, "theme"], [1, 4, "ThemeContext"]]
 import { use } from 'react';
@@ -73,9 +67,9 @@ function Button() {
   // ...
 ```
 
-`use`는 전달한 <CodeStep step={1}>context</CodeStep>의 <CodeStep step={2}>context 값</CodeStep>을 반환합니다. context 값을 결정하기 위해 React는 컴포넌트 트리를 탐색하고 **위에서 가장 가까운 context provider**를 찾습니다.
+`use`는 전달한 <CodeStep step={1}>Context</CodeStep>의 <CodeStep step={2}>Context Value</CodeStep>를 반환합니다. Context 값을 결정하기 위해 React는 컴포넌트 트리를 탐색하고 **위에서 가장 가까운 Context Provider**를 찾습니다.
 
-context를 `Button`에 전달하려면 `Button` 또는 상위 컴포넌트 중 하나를 context provider로 래핑합니다.
+Context를 `Button`에 전달하려면 `Button` 또는 상위 컴포넌트 중 하나를 Context Provider로 래핑합니다.
 
 ```js [[1, 3, "ThemeContext"], [2, 3, "\\"dark\\""], [1, 5, "ThemeContext"]]
 function MyPage() {
@@ -91,10 +85,9 @@ function Form() {
 }
 ```
 
-provider와 `Button` 사이에 얼마나 많은 컴포넌트가 있는지는 중요하지 않습니다. `Form` 내부의 *어느 곳이든* `Button`이 `use(ThemeContext)`를 호출하면 `"dark"`를 값으로 받습니다.
+Provider와 `Button` 사이에 얼마나 많은 컴포넌트가 있는지는 중요하지 않습니다. `Form` 내부의 *어느 곳이든* `Button`이 `use(ThemeContext)`를 호출하면 `"dark"`를 값으로 받습니다.
 
 [`useContext`](/reference/react/useContext)와 달리, <CodeStep step={2}>`use`</CodeStep>는 <CodeStep step={1}>`if`</CodeStep>와 같은 조건문과 반복문 내부에서 호출할 수 있습니다.
-
 
 ```js [[1, 2, "if"], [2, 3, "use"]]
 function HorizontalRule({ show }) {
@@ -106,12 +99,11 @@ function HorizontalRule({ show }) {
 }
 ```
 
-<CodeStep step={2}>`use`</CodeStep>는 <CodeStep step={1}>`if`</CodeStep> 내부에서 호출되므로 context에서 조건부로 값을 참조할 수 있습니다.
-
+<CodeStep step={2}>`use`</CodeStep>는 <CodeStep step={1}>`if`</CodeStep> 내부에서 호출되므로 Context에서 조건부로 값을 참조할 수 있습니다.
 
 <Pitfall>
 
-`useContext`와 마찬가지로, `use(context)`는 항상 이를 호출하는 컴포넌트의 **위쪽에서** 가장 가까운 context provider를 찾습니다. 위쪽으로 탐색하며, `use(context)`를 호출하는 컴포넌트 내부의 context provider는 고려하지 **않습니다**.
+`useContext`와 마찬가지로, `use(context)`는 항상 이를 호출하는 컴포넌트의 **위쪽에서** 가장 가까운 Context Provider를 찾습니다. 위쪽으로 탐색하며, `use(context)`를 호출하는 컴포넌트 내부의 Context Provider는 고려하지 **않습니다**.
 
 </Pitfall>
 
@@ -204,7 +196,7 @@ function Button({ show, children }) {
 
 ### 서버에서 클라이언트로 데이터 스트리밍하기 {/*streaming-data-from-server-to-client*/}
 
-<CodeStep step={1}>서버 컴포넌트</CodeStep>에서 <CodeStep step={2}>클라이언트 컴포넌트</CodeStep>로 Promise prop을 전달하여 서버에서 클라이언트로 데이터를 스트리밍할 수 있습니다.
+<CodeStep step={1}>서버 컴포넌트</CodeStep>에서 <CodeStep step={2}>클라이언트 컴포넌트</CodeStep>로 Promise Prop을 전달하여 서버에서 클라이언트로 데이터를 스트리밍할 수 있습니다.
 
 ```js [[1, 4, "App"], [2, 2, "Message"], [3, 7, "Suspense"], [4, 8, "messagePromise", 30], [4, 5, "messagePromise"]]
 import { fetchMessage } from './lib.js';
@@ -220,8 +212,7 @@ export default function App() {
 }
 ```
 
-<CodeStep step={2}>클라이언트 컴포넌트</CodeStep>는 <CodeStep step={4}>prop으로 받은 Promise</CodeStep>를 <CodeStep step={5}>`use`</CodeStep> API 에 전달합니다.
-<CodeStep step={2}>클라이언트 컴포넌트</CodeStep>는 서버 컴포넌트가 처음에 생성한 <CodeStep step={4}>Promise</CodeStep>에서 값을 읽을 수 있습니다.
+<CodeStep step={2}>클라이언트 컴포넌트</CodeStep>는 <CodeStep step={4}> Prop으로 받은 Promise</CodeStep>를 <CodeStep step={5}>`use`</CodeStep> API에 전달합니다. <CodeStep step={2}>클라이언트 컴포넌트</CodeStep>는 서버 컴포넌트가 처음에 생성한 <CodeStep step={4}>Promise</CodeStep>에서 값을 읽을 수 있습니다.
 
 ```js [[2, 6, "Message"], [4, 6, "messagePromise"], [4, 7, "messagePromise"], [5, 7, "use"]]
 // message.js
@@ -234,8 +225,7 @@ export function Message({ messagePromise }) {
   return <p>Here is the message: {messageContent}</p>;
 }
 ```
-
-<CodeStep step={2}>`Message`</CodeStep>는 <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep>로 래핑되어 있으므로 Promise가 리졸브될 때까지 fallback이 표시됩니다. Promise가 리졸브되면 <CodeStep step={5}>`use`</CodeStep> Hook이 값을 참조하고 <CodeStep step={2}>`Message`</CodeStep> 컴포넌트가 Suspense fallback을 대체합니다.
+<CodeStep step={2}>`Message`</CodeStep>는 <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep>로 래핑되어 있으므로 Promise가 리졸브될 때까지 Fallback이 표시됩니다. Promise가 리졸브되면 <CodeStep step={5}>`use`</CodeStep> Hook이 값을 참조하고 <CodeStep step={2}>`Message`</CodeStep> 컴포넌트가 Suspense Fallback을 대체합니다.
 
 <Sandpack>
 
@@ -309,9 +299,9 @@ root.render(
 
 <DeepDive>
 
-#### 서버 또는 클라이언트 컴포넌트에서 프로미스를 리졸브해야 하나요? {/*resolve-promise-in-server-or-client-component*/}
+#### Promise를 서버 컴포넌트에서 처리해야 하나요, 아니면 클라이언트 컴포넌트에서 처리해야 하나요? {/*resolve-promise-in-server-or-client-component*/}
 
-Promise는 서버 컴포넌트에서 클라이언트 컴포넌트로 전달할 수 있으며 `use` API 를 통해 클라이언트 컴포넌트에서 리졸브됩니다. 또한 서버 컴포넌트에서 `await` 을 사용하여 Promise를 리졸브하고 데이터를 클라이언트 컴포넌트에 `prop`으로 전달하는 방법도 존재합니다.
+Promise는 서버 컴포넌트에서 클라이언트 컴포넌트로 전달할 수 있으며 `use` API를 통해 클라이언트 컴포넌트에서 리졸브됩니다. 또한 서버 컴포넌트에서 `await`을 사용하여 Promise를 리졸브하고 데이터를 클라이언트 컴포넌트에 Prop으로 전달하는 방법도 존재합니다.
 
 ```js
 export default async function App() {
@@ -320,7 +310,7 @@ export default async function App() {
 }
 ```
 
-하지만 [서버 컴포넌트](/reference/react/use-server)에서 `await`을 사용하면 `await` 문이 완료될 때까지 렌더링이 차단됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 Promise를 prop으로 전달하면 Promise가 서버 컴포넌트의 렌더링을 차단하는 것을 방지할 수 있습니다.
+하지만 [서버 컴포넌트](/reference/react/use-server)에서 `await`을 사용하면 `await` 문이 완료될 때까지 렌더링이 차단됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 Promise를 Prop으로 전달하면 Promise가 서버 컴포넌트의 렌더링을 차단하는 것을 방지할 수 있습니다.
 
 </DeepDive>
 
@@ -328,18 +318,18 @@ export default async function App() {
 
 경우에 따라 `use`에 전달된 Promise가 거부될 수 있습니다. 거부된 프로미스를 처리하는 방법은 2가지가 존재합니다.
 
-1. [error boundary를 사용하여 오류 표시하기](#displaying-an-error-to-users-with-error-boundary)
+1. [Error Boundary를 사용하여 오류 표시하기](#displaying-an-error-to-users-with-error-boundary)
 2. [`Promise.catch`로 대체 값 제공하기](#providing-an-alternative-value-with-promise-catch)
 
 <Pitfall>
 
-`use`는 try-catch 블록에서 호출할 수 없습니다. try-catch 블록 대신 [컴포넌트를 Error Boundary로 래핑]((#displaying-an-error-to-users-with-error-boundary))하거나, Promise의 [`catch` 메서드를 사용하여 대체 값을 제공해야 합니다.]((#providing-an-alternative-value-with-promise-catch))
+`use`는 `try`-`catch` 블록에서 호출할 수 없습니다. `try`-`catch` 블록 대신 [컴포넌트를 Error Boundary로 래핑]((#displaying-an-error-to-users-with-error-boundary))하거나, Promise의 [`catch` 메서드를 사용하여 대체 값을 제공해야 합니다.]((#providing-an-alternative-value-with-promise-catch))
 </Pitfall>
 
-####  error boundary를 사용하여 오류 표시하기 {/*error-boundary를-사용하여-오류-표시하기*/}
+#### Error Boundary를 사용하여 오류 표시하기 {/*error-boundary를-사용하여-오류-표시하기*/}
  {/*displaying-an-error-to-users-with-error-boundary*/}
 
-Promise가 reject 될 때 오류를 표시하고 싶다면 [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용합니다. error boundary를 사용하려면 `use` API 를 호출하는 컴포넌트를 error boundary로 래핑합니다. `use`에 전달된 Promise가 reject 되면 error boundary에 대한 fallback이 표시됩니다.
+Promise가 거부될 때 오류를 표시하고 싶다면 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용합니다. Error Boundary를 사용하려면 `use` API 를 호출하는 컴포넌트를 Error Boundary로 래핑합니다. `use`에 전달된 Promise가 거부되면 Error Boundary에 대한 Fallback이 표시됩니다.
 
 <Sandpack>
 
@@ -444,12 +434,12 @@ Promise의 <CodeStep step={1}>`catch`</CodeStep> 메서드를 사용하려면 Pr
 
 ---
 
-## 트러블슈팅 {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
 
 ### "Suspense Exception: This is not a real error!" {/*suspense-exception-error*/}
 
-React 컴포넌트 또는 hook 함수 외부에서, 혹은 try-catch 블록에서 `use`를 호출하고 있는 경우입니다. try-catch 블록 내에서 `use`를 호출하는 경우 컴포넌트를 error boundary로 래핑하거나 Promise의 `catch`를 호출하여 에러를 발견하고 Promise를 다른 값으로 리졸브합니다. [이러한 예시들 확인하기](#dealing-with-rejected-promises).
+React 컴포넌트 또는 Hook 함수 외부에서, 혹은 `try`-`catch` 블록에서 `use`를 호출하고 있는 경우입니다. `try`-`catch` 블록 내에서 `use`를 호출하는 경우 컴포넌트를 Error Boundary로 래핑하거나 Promise의 `catch`를 호출하여 오류를 발견하고 Promise를 다른 값으로 리졸브합니다. [이러한 예시들을 확인하세요](#dealing-with-rejected-promises).
 
 React 컴포넌트나 Hook 함수 외부에서 `use`를 호출하는 경우 `use` 호출을 React 컴포넌트나 Hook 함수로 이동합니다.
 
@@ -457,7 +447,7 @@ React 컴포넌트나 Hook 함수 외부에서 `use`를 호출하는 경우 `use
 ```jsx
 function MessageComponent({messagePromise}) {
   function download() {
-    // ❌ `use`를 호출하는 함수가 컴포넌트나 hook이 아닙니다.
+    // ❌ `use`를 호출하는 함수가 컴포넌트나 Hook이 아닙니다.
     const message = use(messagePromise);
     // ...
 ```

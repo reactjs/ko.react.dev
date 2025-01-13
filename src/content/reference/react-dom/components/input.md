@@ -4,7 +4,7 @@ title: "<input>"
 
 <Intro>
 
-[내장 브라우저 `<input>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)를 사용하면 여러 종류의 폼 입력<sup>Input</sup>을 렌더링 할 수 있습니다.
+[내장 브라우저 `<input>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)를 사용하면 여러 종류의 폼 입력<sup>Input</sup>을 렌더링할 수 있습니다.
 
 ```js
 <input />
@@ -91,8 +91,8 @@ You can [make an input controlled](#controlling-an-input-with-a-state-variable) 
 #### 주의 사항 {/*caveats*/}
 
 - 체크박스에는 `value` (또는 `defaultValue`)가 아닌 `checked` (또는 `defaultChecked`)가 필요합니다.
-- 텍스트 입력 영역은 문자열 `value` prop을 받을 경우 [제어되는 것으로 취급](#controlling-an-input-with-a-state-variable)됩니다.
-- 체크박스 또는 라디오 버튼이 불리언 `checked` prop을 받을 경우 [제어되는 것으로 취급](#controlling-an-input-with-a-state-variable)됩니다.
+- 텍스트 입력 영역은 문자열 `value` Prop을 받을 경우 [제어되는 것으로 취급](#controlling-an-input-with-a-state-variable)됩니다.
+- 체크박스 또는 라디오 버튼이 불리언 `checked` Prop을 받을 경우 [제어되는 것으로 취급](#controlling-an-input-with-a-state-variable)됩니다.
 - 입력은 제어되면서 동시에 비제어될 수 없습니다.
 - 입력은 생명주기 동안 제어 또는 비제어 상태를 오갈 수 없습니다.
 - 제어되는 입력엔 모두 백업 값을 동기적으로 업데이트하는 `onChange` 이벤트 핸들러가 필요합니다.
@@ -103,7 +103,7 @@ You can [make an input controlled](#controlling-an-input-with-a-state-variable) 
 
 ### 다양한 유형의 입력 표시 {/*displaying-inputs-of-different-types*/}
 
-입력을 표시하기 위해 `<input>` 컴포넌트를 렌더링 하세요. 기본적으로 텍스트 입력이 됩니다. 체크박스에는 `type="checkbox"`를, 라디오 버튼에는 `type="radio"` 전달하거나 [다른 입력 타입들 중의 하나](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types)를 전달할 수 있습니다.
+입력을 표시하기 위해 `<input>` 컴포넌트를 렌더링하세요. 기본적으로 텍스트로 입력됩니다. 체크박스에는 `type="checkbox"`, 라디오 버튼에는 `type="radio"`를 전달하거나 [다른 입력 유형들 중 하나](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types)를 전달할 수 있습니다.
 
 <Sandpack>
 
@@ -148,11 +148,11 @@ input { margin: 5px; }
 
 ---
 
-### 입력에 라벨 제공하기 {/*providing-a-label-for-an-input*/}
+### 입력에 레이블 제공하기 {/*providing-a-label-for-an-input*/}
 
-일반적으로 모든 `<input>` 은 [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) 태그 안에 두게 되는데 이렇게 하면 해당 라벨이 해당 입력과 연관됨을 브라우저가 알 수 있습니다. 사용자가 라벨을 클릭하면 브라우저는 입력에 자동적으로 포커스를 맞춥니다. 스크린 리더는 사용자가 연관된 입력에 포커스를 맞출 때 라벨 캡션을 읽게 되므로 이 방식은 접근성을 위해서도 필수입니다.
+일반적으로 모든 `<input>`은 [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) 태그 안에 존재하는데, 이렇게 하면 해당 레이블이 해당 입력과 연관됨을 브라우저가 알 수 있습니다. 사용자가 레이블을 클릭하면 브라우저는 입력에 자동적으로 포커스를 맞춥니다. 스크린 리더는 사용자가 연관된 입력에 포커스를 맞출 때 레이블 캡션을 읽게 되므로 이 방식은 접근성을 위해서도 필수입니다.
 
-`<label>` 안에 `<input>` 을 감쌀 수 없다면, `<input id>` 와 [`<label htmlFor>`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor)에 동일한 ID를 전달해서 연관성을 부여하세요. 한 컴포넌트의 여러 인스턴스 간 충돌을 피하려면 [`useId`](/reference/react/useId)로 그러한 ID를 생성하세요.
+`<label>` 안에 `<input>`을 감쌀 수 없다면, `<input id>` 와 [`<label htmlFor>`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor)에 동일한 ID를 전달해서 연관성을 부여하세요. 한 컴포넌트의 여러 인스턴스 간 충돌을 피하려면 [`useId`](/reference/react/useId)로 그러한 ID를 생성하세요.
 
 <Sandpack>
 
@@ -183,9 +183,9 @@ input { margin: 5px; }
 
 ---
 
-### 입력에 초깃값 제공하기 {/*providing-an-initial-value-for-an-input*/}
+### 입력에 초기값 제공하기 {/*providing-an-initial-value-for-an-input*/}
 
-입력의 초깃값은 선택적으로 지정할 수 있습니다. 텍스트 입력을 위한 `defaultValue` 문자열로 전달하세요. 대신 체크박스와 라디오 버튼은 `defaultChecked` 불리언으로 초깃값을 지정해야 합니다.
+입력의 초기값은 선택적으로 지정할 수 있습니다. 텍스트 입력을 위한 `defaultValue` 문자열을 전달하세요. 대신 체크박스와 라디오 버튼은 `defaultChecked` 불리언으로 초기값을 지정해야 합니다.
 
 <Sandpack>
 
@@ -237,7 +237,7 @@ input { margin: 5px; }
 
 ### 폼 제출 시 입력 값 읽기 {/*reading-the-input-values-when-submitting-a-form*/}
 
-입력과 [`<button type="submit">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) 바깥을 [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) 으로 감싸면 버튼을 클릭했을 때 `<form onSubmit>` 이벤트 핸들러가 호출됩니다. 기본적으로 브라우저는 현재 URL에 폼 데이터를 전송한 후 페이지를 새로고침하며 이러한 동작은 `e.preventDefault()`를 호출하여 덮어쓸 수 있습니다. 폼 데이터는 [`new FormData(e.target)`](https://developer.mozilla.org/en-US/docs/Web/API/FormData)로 읽으세요.
+입력과 [`<button type="submit">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) 바깥을 [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)으로 감싸면 버튼을 클릭했을 때 `<form onSubmit>` 이벤트 핸들러가 호출됩니다. 기본적으로 브라우저는 현재 URL에 폼 데이터를 전송한 후 페이지를 새로고침하며, 이러한 동작은 `e.preventDefault()`를 호출하여 덮어쓸 수 있습니다. 폼 데이터는 [`new FormData(e.target)`](https://developer.mozilla.org/en-US/docs/Web/API/FormData)로 읽으세요.
 <Sandpack>
 
 ```js
@@ -297,7 +297,7 @@ input { margin: 5px; }
 
 <Pitfall>
 
-기본적으로 `<form>` 내부의 *어느* `<button>`이든 폼을 제출합니다. 뜻밖인가요? 커스텀 Button React 컴포넌트의 경우 `<button>` 대신 [`<button type="button">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/button) 반환을 고려하세요. 명시성을 부여하기 위해 폼 제출용 버튼으로는 `<button type="submit">`을 사용하세요.
+기본적으로 `<form>` 내부의 *어느* `<button>`이든 폼을 제출합니다. 뜻밖인가요? 커스텀 `Button` React 컴포넌트의 경우 `<button>` 대신 [`<button type="button">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/button) 반환을 고려하세요. 명시성을 부여하기 위해 폼 제출용 버튼으로는 `<button type="submit">`을 사용하세요.
 
 </Pitfall>
 
@@ -305,18 +305,18 @@ input { margin: 5px; }
 
 ### State 변수로 입력 제어하기 {/*controlling-an-input-with-a-state-variable*/}
 
-`<input />` 과 같은 입력은 *제어되지 않습니다.* `<input defaultValue="Initial text" />`와 같은 [초기값을 전달](#providing-an-initial-value-for-an-input)한대도 JSX는 당장의 값을 제어하지 않고 초깃값만을 지정합니다.
+`<input />`과 같은 입력은 *제어되지 않습니다.* `<input defaultValue="Initial text" />`와 같은 [초기값을 전달](#providing-an-initial-value-for-an-input)한대도 JSX는 당장의 값을 제어하지 않고 초기값만을 지정합니다.
 
 **_제어되는_ 입력을 렌더링하려면, `value` (또는 체크박스와 라디오에는 `checked`) Prop 을 전달하세요.** React는 전달한 `value`를 항상 갖도록 입력에 강제합니다. 일반적으로 [State 변수](/reference/react/useState)를 선언하여 할 수 있습니다.
 
 ```js {2,6,7}
 function Form() {
-  const [firstName, setFirstName] = useState(''); // state 변수를 선언합니다.
+  const [firstName, setFirstName] = useState(''); // State 변수를 선언합니다.
   // ...
   return (
     <input
-      value={firstName} // 입력 값이 state 변수와 일치하도록 강제합니다.
-      onChange={e => setFirstName(e.target.value)} // input을 편집할 때마다 state 변수를 업데이트합니다.
+      value={firstName} // 입력 값이 State 변수와 일치하도록 강제합니다.
+      onChange={e => setFirstName(e.target.value)} // 입력을 편집할 때마다 State 변수를 업데이트합니다.
     />
   );
 }
@@ -358,7 +358,7 @@ function Form() {
         </button>
 ```
 
-제어되는 컴포넌트에 전달되는 `value`는 `undefined` 나 `null`이 되어서는 안됩니다. 아래의 `firstName` 필드처럼 초깃값을 비워두어야 하는 경우 state 변수를 빈 문자열(`''`)로 초기화 하세요.
+제어되는 컴포넌트에 전달되는 `value`는 `undefined`나 `null`이 되어서는 안됩니다. 아래의 `firstName` 필드처럼 초기값을 비워두어야 하는 경우 State 변수를 빈 문자열(`''`)로 초기화 하세요.
 
 <Sandpack>
 
@@ -410,7 +410,7 @@ p { font-weight: bold; }
 
 <Pitfall>
 
-**입력에 `onChange` 없이 `value`를 전달하면 해당 입력에 타이핑을 할 수 없게 됩니다.** `value`를 전달하여 입력을 제어하면 항상 해당 value를 가지도록 *강제합니다*. 그러므로 state 변수를 `value`로 전달해도 `onChange` 이벤트 핸들러 내에서 해당 state 변수를 동기적으로 업데이트하지 않으면 React는 키보드를 누를 때마다 입력을 처음 지정한 `value`로 되돌리게 됩니다.
+**입력에 `onChange` 없이 `value`를 전달하면 해당 입력에 타이핑을 할 수 없게 됩니다.** `value`를 전달하여 입력을 제어하면 항상 해당 값을 가지도록 *강제합니다*. 그러므로 State 변수를 `value`로 전달해도 `onChange` 이벤트 핸들러 내에서 해당 State 변수를 동기적으로 업데이트하지 않으면 React는 키보드를 누를 때마다 입력을 처음 지정한 `value`로 되돌리게 됩니다.
 
 </Pitfall>
 
@@ -468,7 +468,7 @@ function SignupForm() {
 
 ### 텍스트 입력에 타이핑을 해도 업데이트되지 않습니다 {/*my-text-input-doesnt-update-when-i-type-into-it*/}
 
-`onChange` 없이 `value`만 전달하여 입력을 렌더링하면 콘솔에 에러가 나타납니다.
+`onChange` 없이 `value`만 전달하여 입력을 렌더링하면 콘솔에 오류가 나타납니다.
 
 ```js
 // 🔴 버그: 제어되는 `<input>`에 `onChange` 핸들러가 없습니다.
@@ -477,25 +477,25 @@ function SignupForm() {
 
 <ConsoleBlock level="error">
 
-폼 필드에 `onChange` 핸들러 없이 `value` prop만 전달했습니다. 이렇게 하면 읽기 전용 필드를 렌더링하게 됩니다. 필드가 변경 가능해야 하는 경우 `defaultValue`를 사용하고 그렇지 않은 경우 `onChange` 또는 `readOnly`를 설정하세요.
+폼 필드에 `onChange` 핸들러 없이 `value` Prop만 전달했습니다. 이렇게 하면 읽기 전용 필드를 렌더링하게 됩니다. 필드가 변경 가능해야 하는 경우 `defaultValue`를 사용하고 그렇지 않은 경우 `onChange` 또는 `readOnly`를 설정하세요.
 
 </ConsoleBlock>
 
-에러 메시지가 제안하듯 [*초깃값*만 지정](#providing-an-initial-value-for-an-input)하려면 `defaultVallue`를 대신 전달하세요.
+오류 메시지가 제안하듯 [*초기값*만 지정](#providing-an-initial-value-for-an-input)하려면 `defaultValue`를 대신 전달하세요.
 
 ```js
-// ✅ 좋은 예: 제어되지 않는 `<input>`에 초깃값 전달
+// ✅ 좋은 예: 제어되지 않는 `<input>`에 초기값 전달
 <input defaultValue={something} />
 ```
 
-[input을 state 변수로 제어](#controlling-an-input-with-a-state-variable)하려면 `onChange` 핸들러를 지정하세요.
+[입력을 State 변수로 제어](#controlling-an-input-with-a-state-variable)하려면 `onChange` 핸들러를 지정하세요.
 
 ```js
 // ✅ 좋은 예: 제어되는 `<input>`에 `onChange` 전달
 <input value={something} onChange={e => setSomething(e.target.value)} />
 ```
 
-값이 의도적으로 읽기 전용이라면 에러를 막기 위해 `readOnly` prop을 추가하세요.
+값이 의도적으로 읽기 전용이라면 오류를 막기 위해 `readOnly` Prop을 추가하세요.
 
 ```js
 // ✅ 좋은 예: 제어되는 읽기 전용 `<input>`에 `onChange` 생략
@@ -515,18 +515,18 @@ function SignupForm() {
 
 <ConsoleBlock level="error">
 
-폼 필드에 `onChange` 핸들러 없이 `checked` prop을 전달했습니다. 이렇게 하면 읽기 전용 필드를 렌더링하게 됩니다. 필드가 변경 가능해야 하는 경우 `defaultChecked`를 사용하고 그렇지 않은 경우 `onChange` 또는 `readOnly`를 설정하세요.
+폼 필드에 `onChange` 핸들러 없이 `checked` Prop을 전달했습니다. 이렇게 하면 읽기 전용 필드를 렌더링하게 됩니다. 필드가 변경 가능해야 하는 경우 `defaultChecked`를 사용하고 그렇지 않은 경우 `onChange` 또는 `readOnly`를 설정하세요.
 
 </ConsoleBlock>
 
-에러 메시지가 제안하듯 [*초깃값*만 지정](#providing-an-initial-value-for-an-input)하려면 `defaultChecked`를 대신 전달하세요.
+오류 메시지가 제안하듯 [*초기값*만 지정](#providing-an-initial-value-for-an-input)하려면 `defaultChecked`를 대신 전달하세요.
 
 ```js
-// ✅ 좋은 예: 제어되지 않는 체크박스에 초깃값 전달
+// ✅ 좋은 예: 제어되지 않는 체크박스에 초기값 전달
 <input type="checkbox" defaultChecked={something} />
 ```
 
-[체크박스를 state 변수로 제어](#controlling-an-input-with-a-state-variable)하려면 `onChange` 핸들러를 지정하세요.
+[체크박스를 State 변수로 제어](#controlling-an-input-with-a-state-variable)하려면 `onChange` 핸들러를 지정하세요.
 
 ```js
 // ✅ 좋은 예: 제어되는 체크박스에 onChange 전달
@@ -539,7 +539,7 @@ function SignupForm() {
 
 </Pitfall>
 
-체크박스가 의도적으로 읽기 전용이라면 에러를 막기 위해 `readOnly` prop을 추가하세요.
+체크박스가 의도적으로 읽기 전용이라면 오류를 막기 위해 `readOnly` Prop을 추가하세요.
 
 ```js
 // ✅ 좋은 예: 제어되는 읽기 전용 input에 onChange 생략
@@ -548,15 +548,15 @@ function SignupForm() {
 
 ---
 
-### 키보드를 누를 때마다 입력 커서가 input의 처음으로 돌아갑니다 {/*my-input-caret-jumps-to-the-beginning-on-every-keystroke*/}
+### 키보드를 누를 때마다 입력 커서가 입력의 처음으로 돌아갑니다 {/*my-input-caret-jumps-to-the-beginning-on-every-keystroke*/}
 
-[input을 제어](#controlling-an-input-with-a-state-variable)할 경우 `onChange` 안에서 state 변수를 DOM에서 받아온 input 값으로 업데이트해야 합니다.
+[입력을 제어](#controlling-an-input-with-a-state-variable)할 경우 `onChange` 안에서 State 변수를 DOM에서 받아온 입력 값으로 업데이트해야 합니다.
 
-state 변수는 `e.target.value` (혹은 체크박스에서는 `e.target.checked`) 외의 값으로 업데이트할 수 없습니다.
+State 변수는 `e.target.value` (혹은 체크박스에서는 `e.target.checked`) 외의 값으로 업데이트할 수 없습니다.
 
 ```js
 function handleChange(e) {
-  // 🔴 버그: input을 e.target.value 외의 값으로 업데이트합니다.
+  // 🔴 버그: 입력을 `e.target.value` 외의 값으로 업데이트합니다.
   setFirstName(e.target.value.toUpperCase());
 }
 ```
@@ -565,7 +565,7 @@ function handleChange(e) {
 
 ```js
 function handleChange(e) {
-  // 🔴 버그: input을 비동기로 업데이트합니다.
+  // 🔴 버그: 입력을 비동기로 업데이트합니다.
   setTimeout(() => {
     setFirstName(e.target.value);
   }, 100);
@@ -576,22 +576,22 @@ function handleChange(e) {
 
 ```js
 function handleChange(e) {
-  // ✅ 제어되는 input을 e.target.value로 동기 업데이트합니다.
+  // ✅ 제어되는 입력을 `e.target.value`로 동기 업데이트합니다.
   setFirstName(e.target.value);
 }
 ```
 
-이 방법으로 문제가 해결되지 않을 경우 키보드를 누를 때마다 input이 DOM에서 제거된 후 다시 추가되고 있을 가능성이 있습니다. 실수로 리렌더링마다 [state를 재설정](/learn/preserving-and-resetting-state)하고 있다면 나타날 수 있는 현상입니다. 가령 input이나 input의 부모 중 하나가 매번 다른 `key` 어트리뷰트를 받거나 컴포넌트 함수 정의를 중첩시키는 경우(이는 지원되지 않으며 '내부' 컴포넌트가 항상 다른 트리로 간주되도록 합니다)에 해당 문제가 발생할 수 있습니다.
+이 방법으로 문제가 해결되지 않을 경우 키보드를 누를 때마다 입력이 DOM에서 제거된 후 다시 추가되고 있을 가능성이 있습니다. 실수로 리렌더링마다 [State를 재설정](/learn/preserving-and-resetting-state)하고 있다면 나타날 수 있는 현상입니다. 가령 입력이나 입력의 부모 중 하나가 매번 다른 `key` 어트리뷰트를 받거나 컴포넌트 함수 정의를 중첩시키는 경우(이는 지원되지 않으며 '내부' 컴포넌트가 항상 다른 트리로 간주되도록 합니다)에 해당 문제가 발생할 수 있습니다.
 
 ---
 
-### 다음과 같은 에러가 납니다. "A component is changing an uncontrolled input to be controlled(컴포넌트가 제어되지 않는 input을 제어 상태로 변경합니다)" {/*im-getting-an-error-a-component-is-changing-an-uncontrolled-input-to-be-controlled*/}
+### 다음과 같은 에러가 납니다. "A component is changing an uncontrolled input to be controlled(컴포넌트가 제어되지 않는 입력을 제어 상태로 변경합니다)" {/*im-getting-an-error-a-component-is-changing-an-uncontrolled-input-to-be-controlled*/}
 
 
 컴포넌트에 `value`를 제공할 경우 반드시 생명주기 내내 문자열 타입으로 남아야 합니다.
 
 React는 컴포넌트를 비제어할 것인지 제어할 것인지 의도를 알 수 없기 때문에 처음엔 `value={undefined}`를 전달했다가 나중에 다시 `value="some string"`을 전달할 수는 없습니다. 제어되는 컴포넌트는 항상 `null`이나 `undefined`가 아닌 문자열 `value`를 받아야 합니다.
 
-value가 API나 state 변수에서 온다면 `null`이나 `undefined`로 초기화될 수 있습니다. 그럴 경우 빈 문자열(`''`)을 초깃값으로 설정하거나 `value`가 문자열임을 보장하기 위해 `value={someValue ?? ''}`를 전달하세요.
+`value`가 API나 state 변수에서 온다면 `null`이나 `undefined`로 초기화할 수 있습니다. 그럴 경우 빈 문자열(`''`)을 초기값으로 설정하거나 `value`가 문자열임을 보장하기 위해 `value={someValue ?? ''}`를 전달하세요.
 
 마찬가지로 체크박스에 `checked`를 전달하는 경우 불리언임을 보장하세요.

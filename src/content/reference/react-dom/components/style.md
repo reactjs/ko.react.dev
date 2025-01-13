@@ -4,7 +4,7 @@ style: "<style>"
 
 <Intro>
 
-[내장된 브라우저 `<style>` 컴포넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/style)를 사용하면 문서에 인라인 CSS 스타일시트를 추가할 수 있습니다.
+[내장 브라우저 `<style>` 컴포넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/style)를 사용하면 문서에 인라인 CSS 스타일시트를 추가할 수 있습니다.
 
 ```js
 <style>{` p { color: red; } `}</style>
@@ -20,17 +20,17 @@ style: "<style>"
 
 ### `<style>` {/*style*/}
 
-문서에 인라인 스타일을 추가하려면, [내장된 브라우저 `<style>` 컴포넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/style)를 렌더링하세요. 어떤 컴포넌트에서든 `<style>`을 렌더링할 수 있으며, React는 [특정 경우](#special-rendering-behavior)에 해당 DOM 요소를 문서의 head에 배치하고 동일한 스타일을 중복 제거합니다.
+문서에 인라인 스타일을 추가하려면, [내장 브라우저 `<style>` 컴포넌트](https://developer.mozilla.org/ko/docs/Web/HTML/Element/style)를 렌더링하세요. 어떤 컴포넌트에서든 `<style>`을 렌더링할 수 있으며, React는 [특정 경우](#special-rendering-behavior)에 해당 DOM 요소를 문서의 `<head>`에 배치하고 동일한 스타일을 중복 제거합니다.
 
 ```js
 <style>{` p { color: red; } `}</style>
 ```
 
-[아래에 더 많은 예시를 확인하세요.](#usage)
+[아래 예시를 참고하세요.](#usage)
 
 #### Props {/*props*/}
 
-`<style>`은 [모든 컴포넌트 속성](/reference/react-dom/components/common#props)을 지원합니다.
+`<style>`은 [공통 컴포넌트 속성](/reference/react-dom/components/common#props)을 지원합니다.
 
 * `children`: 문자열 타입. 필수 항목. 스타일시트의 내용.
 * `precedence`: 문자열 타입. 문서의 `<head>` 내 다른 요소들에 비해 `<style>` DOM 노드의 순위를 지정하여, 어떤 스타일시트가 다른 스타일시트를 덮어쓸 수 있는지를 결정합니다. React는 먼저 발견한 우선순위를 "낮게", 나중에 발견한 우선순위를 "높게" 추론합니다. 많은 스타일 시스템은 스타일 규칙이 원자적이기 때문에 단일 우선순위 값을 사용해도 잘 작동할 수 있습니다. 동일한 우선순위를 가지는 스타일시트는 `<link>` 태그인지 인라인 `<style>` 태그인지 [`preinit`](/reference/react-dom/preinit) 함수로 로드된 것인지와 무관하게 함께 적용됩니다.
@@ -47,7 +47,7 @@ style: "<style>"
 
 React는 `<style>` 컴포넌트를 문서의 `<head>`로 이동시키고, 동일한 스타일시트의 중복을 제거하며, 스타일시트가 로딩되는 동안 [서스펜스](/reference/react/Suspense)할 수 있습니다.
 
-이 동작을 사용하려면 `href`와 `precedence` 속성을 제공하세요. React는 동일한 `href`를 가진 스타일의 중복을 제거합니다. precedence 속성은 문서의 `<head>` 내 다른 요소에 비해 `<style>` DOM 노드의 순위를 지정하며, 어떤 스타일시트가 다른 스타일시트를 덮어쓸 수 있는지를 결정합니다.
+이 동작을 사용하려면 `href`와 `precedence` 속성을 제공하세요. React는 동일한 `href`를 가진 스타일의 중복을 제거합니다. `precedence` 속성은 문서의 `<head>` 내 다른 요소에 비해 `<style>` DOM 노드의 순위를 지정하며, 어떤 스타일시트가 다른 스타일시트를 덮어쓸 수 있는지를 결정합니다.
 
 이러한 처리는 두 가지 주의 사항이 있습니다.
 
@@ -63,13 +63,11 @@ React는 `<style>` 컴포넌트를 문서의 `<head>`로 이동시키고, 동일
 
 컴포넌트가 올바르게 표시되기 위해 특정 CSS 스타일에 의존하는 경우, 컴포넌트 내에서 인라인 스타일시트를 렌더링할 수 있습니다.
 
-`href`와 `precedence` 속성을 제공하면 스타일시트가 로딩되는 동안 컴포넌트가 일시 중지됩니다. (인라인 스타일시트의 경우에도 스타일시트가 참조하는 폰트와 이미지로 인해 로딩 시간이 발생할 수 있습니다.) `href` 속성은 스타일시트를 고유하게 식별해야 하며, 이를 통해 React는 동일한 href를 가진 스타일시트의 중복을 제거할 수 있습니다.
-
 The `href` prop should uniquely identify the stylesheet, because React will de-duplicate stylesheets that have the same `href`.
 If you supply a `precedence` prop, React will reorder inline stylesheets based on the order these values appear in the component tree.
 
 Inline stylesheets will not trigger Suspense boundaries while they're loading.
-Even if they load async resources like fonts or images. {/*TODO*/}
+Even if they load async resources like fonts or images.
 
 <SandpackWithHTMLOutput>
 

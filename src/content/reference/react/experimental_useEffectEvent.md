@@ -19,7 +19,7 @@ React 패키지를 최신 실험 버전으로 업그레이드하여 API를 사�
 
 <Intro>
 
-`useEffectEvent`는 [Effect Event.](/learn/separating-events-from-effects#declaring-an-effect-event) 에 반응하지 않는 로직을 추출하는 React 훅입니다.
+`useEffectEvent`는 [Effect Event](/learn/separating-events-from-effects#declaring-an-effect-event)에 반응하지 않는 로직을 추출하는 React Hook입니다.
 
 ```js
 const onSomething = useEffectEvent(callback)
