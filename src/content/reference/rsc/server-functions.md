@@ -22,7 +22,7 @@ Server Functions are for use in [React Server Components](/learn/start-a-new-rea
 
 #### 서버 함수를 지원하려면 어떻게 해야 하나요? {/*how-do-i-build-support-for-server-functions*/}
 
-React 19의 서버 함수는 안정적이며 마이너<sup>Minor</sup> 버전 간에는 변경되지 않습니다. 그러나 React 서버 컴포넌트 번들러나 프레임워크에서 서버 함수를 구현하는 데 사용되는 기본 API는 시맨틱 버전(semver)을 따르지 않으며 React 19.x의 마이너<sup>Minor</sup> 버전 간에 변경될 수 있습니다.
+React 19의 서버 함수는 안정적이며 마이너<sup>Minor</sup> 버전 간에는 변경되지 않습니다. 그러나 React 서버 컴포넌트 번들러나 프레임워크에서 서버 함수를 구현하는 데 사용되는 기본 API는 유의적 버전<sup>SemVer</sup>을 따르지 않으며 React 19.x의 마이너<sup>Minor</sup> 버전 간에 변경될 수 있습니다.
 
 서버 함수를 번들러나 프레임워크로 지원하려면, 특정 React 버전에 고정하거나 Canary 릴리즈를 사용하는 것을 권장합니다. 향후 서버 함수를 구현하는 데 사용되는 API를 안정화하기 위해 번들러 및 프레임워크와 계속 협력할 것입니다.
 
@@ -39,12 +39,12 @@ React 19의 서버 함수는 안정적이며 마이너<sup>Minor</sup> 버전 �
 서버 컴포넌트는 `"use server"` 지시어로 서버 함수를 정의할 수 있습니다.
 
 ```js [[2, 7, "'use server'"], [1, 5, "createNote"], [1, 12, "createNote"]]
-// Server Component
+// 서버 컴포넌트
 import Button from './Button';
 
 function EmptyNote () {
   async function createNote() {
-    // Server Function
+    // 서버 함수
     'use server';
 
     await db.notes.create();
@@ -82,11 +82,7 @@ export async function createNote() {
 
 ```
 
-<<<<<<< HEAD
 번들러가 `EmptyNote` 클라이언트 컴포넌트를 빌드할 때, 번들에서 `createNote` 함수에 대한 참조를 생성합니다. 버튼을 클릭하면, React는 제공된 참조를 통해 `createNote` 함수를 실행하도록 서버에 요청<sup>Request</sup>을 보냅니다.
-=======
-When the bundler builds the `EmptyNote` Client Component, it will create a reference to the `createNote` function in the bundle. When the `button` is clicked, React will send a request to the server to execute the `createNote` function using the reference provided:
->>>>>>> 9000e6e003854846c4ce5027703b5ce6f81aad80
 
 ```js [[1, 3, "createNote"], [1, 6, "createNote"], [1, 8, "createNote"]]
 "use client";
