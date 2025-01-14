@@ -24,13 +24,13 @@ title: <Suspense>
 ### `<Suspense>` {/*suspense*/}
 
 #### Props {/*props*/}
-* `children`: 궁극적으로 렌더링하려는 실제 UI입니다. `children`의 렌더링이 지연되면, Suspense는 `Fallback`을 대신 렌더링합니다.
-* `fallback`: 실제 UI가 로드되기 전까지 대신 렌더링 되는 대체 UI입니다. 올바른 React node 형식은 무엇이든 대체 UI로 활용할 수 있지만, 실제로는 보통 로딩 스피너나 스켈레톤처럼 간단한 placeholder를 활용합니다. Suspense는 `children`의 렌더링이 지연되면 자동으로 `Fallback`으로 전환하고, 데이터가 준비되면 `children`으로 다시 전환합니다. 만약 `Fallback`의 렌더링이 지연되면, 가장 가까운 부모 Suspense가 활성화됩니다.
+* `children`: 궁극적으로 렌더링하려는 실제 UI입니다. `children`의 렌더링이 지연되면, Suspense는 `fallback`을 대신 렌더링합니다.
+* `fallback`: 실제 UI가 로드되기 전까지 대신 렌더링 되는 대체 UI입니다. 올바른 React node 형식은 무엇이든 대체 UI로 활용할 수 있지만, 실제로는 보통 로딩 스피너나 스켈레톤처럼 간단한 placeholder를 활용합니다. Suspense는 `children`의 렌더링이 지연되면 자동으로 `fallback`으로 전환하고, 데이터가 준비되면 `children`으로 다시 전환합니다. 만약 `fallback`의 렌더링이 지연되면, 가장 가까운 부모 Suspense가 활성화됩니다.
 
 #### 주의 사항 {/*caveats*/}
 
 - React는 컴포넌트가 처음으로 마운트 되기 전에 지연된 렌더링을 하는 동안의 어떤 state도 유지하지 않습니다. 컴포넌트가 로드되면 React는 일시 중지된 트리를 처음부터 다시 렌더링합니다.
-- Suspense가 트리의 콘텐츠를 보여주고 있을 때 또다시 지연되면 [`startTransition`](/reference/react/startTransition)나 [`useDeferredValue`](/reference/react/useDeferredValue)로 인한 업데이트가 아닌 한, `Fallback`이 다시 보입니다.
+- Suspense가 트리의 콘텐츠를 보여주고 있을 때 또다시 지연되면 [`startTransition`](/reference/react/startTransition)나 [`useDeferredValue`](/reference/react/useDeferredValue)로 인한 업데이트가 아닌 한, `fallback`이 다시 보입니다.
 - React가 다시 일시 중지되어 보이는 콘텐츠를 숨겨야 하는 경우, 콘텐츠 트리에서 [Layout Effect](/reference/react/useLayoutEffect)들을 정리합니다. 콘텐츠가 다시 보일 준비가 되면 React는 Layout Effect들을 다시 실행합니다. 이로써 DOM 레이아웃을 측정하는 Effect가 콘텐츠가 숨겨져 있는 동안 동작하지 않도록 보장합니다.
 - React는 Suspense와 통합된 *Streaming Server Rendering*과 *Selective Hydration* 같은 내부 최적화를 포함하고 있습니다. [아키텍처 개요](https://github.com/reactwg/react-18/discussions/37)를 읽고 [기술 강연](https://www.youtube.com/watch?v=pj5N-Khihgc)을 시청하여 더 자세히 알아보세요.
 
