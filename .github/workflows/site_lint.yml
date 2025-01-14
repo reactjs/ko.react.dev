@@ -6,6 +6,8 @@ on:
       - main # change this if your default branch is named differently
   pull_request:
     types: [opened, synchronize, reopened]
+  pull_request_target:
+    types: [opened, synchronize, reopened]
 
 jobs:
   lint:
