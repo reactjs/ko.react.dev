@@ -38,15 +38,15 @@ function MyInput({ ref }) {
 
 #### 매개변수 {/*parameters*/}
 
-* `ref`: `MyInput` 컴포넌트의 prop으로 받은 ref입니다.
+* `ref`: `MyInput` 컴포넌트의 prop으로 받은 `ref`입니다.
 
 * `createHandle`: 인자가 없고 노출하려는 ref 핸들을 반환하는 함수입니다. 해당 ref 핸들은 어떠한 유형이든 될 수 있습니다. 일반적으로 노출하려는 메서드가 있는 객체를 반환합니다.
 
 * **(선택적)** `dependencies`: `createHandle` 코드 내에서 참조하는 모든 반응형 값을 나열한 목록입니다. 반응형 값은 props, state 및 컴포넌트 내에서 직접 선언한 모든 변수와 함수를 포함합니다. [React에 대한 린터를 구성한 경우](/learn/editor-setup#linting) 모든 반응형 값이 올바르게 의존성으로 지정되었는지 확인합니다. 의존성 목록은 항상 일정한 수의 항목을 가지고 `[dep1, dep2, dep3]`와 같이 인라인으로 작성되어야 합니다. React는 각 의존성을 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 사용하여 이전 값과 비교합니다. 리렌더링으로 인해 일부 의존성이 변경되거나 이 인수를 생략한 경우 `createHandle`함수가 다시 실행되고 새로 생성된 핸들이 ref에 할당됩니다.
 
 <Note>
-  
-React 19부터 [`ref`를 prop으로 받을 수 있습니다.](/blog/2024/12/05/react-19#ref-as-a-prop) React 18또는 그 이전 버전에서는 `ref`를 받기위해 [`forwardRef`](/reference/react/forwardRef)를 사용해야 합니다.
+
+React 19 부터 [`ref`를 prop으로 받을 수 있습니다.](/blog/2024/12/05/react-19#ref-as-a-prop) React 18 또는 그 이전 버전에서는 `ref`를 받기위해 [`forwardRef`](/reference/react/forwardRef)를 사용해야 합니다.
 
 </Note>
 
