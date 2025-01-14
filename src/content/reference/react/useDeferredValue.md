@@ -37,15 +37,16 @@ function SearchPage() {
 #### 매개변수 {/*parameters*/}
 
 * `value`: 지연시키려는 값입니다. 모든 타입을 가질 수 있습니다.
-* **optional** `initialValue`: A value to use during the initial render of a component. If this option is omitted, `useDeferredValue` will not defer during the initial render, because there's no previous version of `value` that it can render instead.
+* **선택사항** `initialValue`: 컴포넌트 초기 렌더링 시 사용할 값입니다. 이 옵션을 생략하면 초기 렌더링 동안 `useDeferredValue`는 값을 지연시키지 않습니다. 이는 대신 렌더링할 `value`의 이전 버전이 없기 때문입니다.
 
 #### 반환값 {/*returns*/}
 
 - `currentValue`: 초기 렌더링 중 반환된 '지연된 값'은 사용자가 제공한 값과 같습니다. 업데이트가 발생하면 React는 먼저 이전 값으로 리렌더링을 시도(반환값이 이전 값과 일치하도록)하고, 그 다음 백그라운드에서 다시 새 값으로 리렌더링을 시도(반환값이 업데이트된 새 값과 일치하도록)합니다.
 
+
 #### 주의 사항 {/*caveats*/}
 
-- When an update is inside a Transition, `useDeferredValue` always returns the new `value` and does not spawn a deferred render, since the update is already deferred.
+- Transition 내에서 업데이트할 때 `useDeferredValue`는 항상 새로운 `value`를 반환하며 지연된 렌더링을 생성하지 않습니다. 이미 업데이트가 지연되었기 때문입니다.
 
 - `useDeferredValue`에 전달하는 값은 문자열 및 숫자와 같은 원시값이거나, 컴포넌트의 외부에서 생성된 객체여야 합니다. 렌더링 중에 새 객체를 생성하고 즉시 `useDeferredValue`에 전달하면 렌더링할 때마다 값이 달라져 불필요한 백그라운드 리렌더링이 발생할 수 있습니다.
 
