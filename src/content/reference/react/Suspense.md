@@ -50,7 +50,7 @@ title: <Suspense>
 
 React는 <CodeStep step={2}>children</CodeStep>에 필요한 모든 코드와 데이터가 로드될 때까지 <CodeStep step={1}>loading fallback</CodeStep>을 보여줍니다.
 
-아래 예시에서는 앨범 목록을 가져오는 동안 `Albums` 컴포넌트가 *지연(Suspend)*됩니다. 렌더링할 준비가 될 때까지 가장 가까운 Suspense는 fallback, 즉 `Loading` 컴포넌트를 표시합니다. 데이터가 모두 로드되면 React는 `Loading` fallback을 숨기고 로드된 데이터로 `Albums` 컴포넌트를 렌더링합니다.
+아래 예시에서는 앨범 목록을 가져오는 동안 `Albums` 컴포넌트가 <em>지연(Suspend)</em>됩니다. 렌더링할 준비가 될 때까지 가장 가까운 Suspense는 Fallback, 즉 `Loading` 컴포넌트를 표시합니다. 데이터가 모두 로드되면 React는 `Loading` Fallback을 숨기고 로드된 데이터로 `Albums` 컴포넌트를 렌더링합니다.
 
 <Sandpack>
 
@@ -207,13 +207,9 @@ async function getAlbums() {
 
 **Suspense가 가능한 데이터만이 Suspense 컴포넌트를 활성화합니다.** 아래와 같은 것들이 해당됩니다.
 
-- [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/getting-started/react-essentials) 같이 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기
+- [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense) 같이 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기
 - [`lazy`](/reference/react/lazy)를 활용한 지연 로딩 컴포넌트
-- [`use`](/reference/react/use)를 사용해서 Promise 값 읽기
-
-- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense)
-- Lazy-loading component code with [`lazy`](/reference/react/lazy)
-- Reading the value of a cached Promise with [`use`](/reference/react/use) {/*TODO*/}
+- [`use`](/reference/react/use)를 사용해서 캐시된 Promise 값 읽기
 
 Suspense는 Effect 또는 이벤트 핸들러 내부에서 가져오는 데이터를 감지하지 **않습니다**.
 
@@ -886,7 +882,7 @@ input { margin: 10px; }
 
 </Sandpack>
 
-일반적인 대체 UI 패턴은 목록들에 대한 업데이트를 *연기(Defer)*하고 새 결과가 준비될 때까지 이전 결과를 계속 보여주는 것입니다. [`useDeferredValue`](/reference/react/useDeferredValue) Hook을 사용하면 쿼리의 지연된 버전을 아래로 전달할 수 있습니다.
+일반적인 대체 UI 패턴은 목록들에 대한 업데이트를 <em>연기(defer)</em>하고 새 결과가 준비될 때까지 이전 결과를 계속 보여주는 것입니다. [`useDeferredValue`](/reference/react/useDeferredValue) Hook을 사용하면 쿼리의 지연된 버전을 아래로 전달할 수 있습니다.
 
 ```js {3,11}
 export default function App() {
