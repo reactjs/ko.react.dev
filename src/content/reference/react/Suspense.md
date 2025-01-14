@@ -50,7 +50,7 @@ title: <Suspense>
 
 React는 <CodeStep step={2}>children</CodeStep>에 필요한 모든 코드와 데이터가 로드될 때까지 <CodeStep step={1}>loading fallback</CodeStep>을 보여줍니다.
 
-아래 예시에서는 앨범 목록을 가져오는 동안 `Albums` 컴포넌트가 *지연(Suspend)*됩니다. 렌더링할 준비가 될 때까지 가장 가까운 Suspense는 fallback, 즉 `Loading` 컴포넌트를 표시합니다. 데이터가 모두 로드되면 React는 `Loading` fallback을 숨기고 로드된 데이터로 `Albums` 컴포넌트를 렌더링합니다.
+아래 예시에서는 앨범 목록을 가져오는 동안 `Albums` 컴포넌트가 <em>지연(Suspend)</em>됩니다. 렌더링할 준비가 될 때까지 가장 가까운 Suspense는 fallback, 즉 `Loading` 컴포넌트를 표시합니다. 데이터가 모두 로드되면 React는 `Loading` fallback을 숨기고 로드된 데이터로 `Albums` 컴포넌트를 렌더링합니다.
 
 <Sandpack>
 
@@ -209,11 +209,7 @@ async function getAlbums() {
 
 - [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/getting-started/react-essentials) 같이 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기
 - [`lazy`](/reference/react/lazy)를 활용한 지연 로딩 컴포넌트
-- [`use`](/reference/react/use)를 사용해서 Promise 값 읽기
-
-- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense)
-- Lazy-loading component code with [`lazy`](/reference/react/lazy)
-- Reading the value of a cached Promise with [`use`](/reference/react/use) {/*TODO*/}
+- [`use`](/reference/react/use)를 사용해서 캐시된 Promise 값 읽기
 
 Suspense는 Effect 또는 이벤트 핸들러 내부에서 가져오는 데이터를 감지하지 **않습니다**.
 
@@ -470,7 +466,7 @@ function Details({ artistId }) {
 
 ### 중첩된 콘텐츠가 로드될 때 보여주기 {/*revealing-nested-content-as-it-loads*/}
 
-컴포넌트가 일시 중단되면 가장 가까운 상위 Suspense 컴포넌트가 Fallback을 보여줍니다. 이를 통해 여러 Suspense 컴포넌트를 중첩하여 로딩 순서를 만들 수 있습니다. 각 Suspense의 Fallback은 다음 레벨의 콘텐츠를 사용할 수 있게 되면 채워집니다. 예를 들어 앨범 목록에 자체 Fallback을 지정할 수 있습니다.
+컴포넌트가 일시 중단되면 가장 가까운 상위 Suspense 컴포넌트가 fallback을 보여줍니다. 이를 통해 여러 Suspense 컴포넌트를 중첩하여 로딩 순서를 만들 수 있습니다. 각 Suspense의 fallback은 다음 레벨의 콘텐츠를 사용할 수 있게 되면 채워집니다. 예를 들어 앨범 목록에 자체 fallback을 지정할 수 있습니다.
 
 ```js {3,7}
 <Suspense fallback={<BigSpinner />}>
@@ -739,7 +735,7 @@ Suspense를 사용하면 UI의 어떤 부분이 항상 동시에 그려져야 �
 
 ### 새 콘텐츠가 로드되는 동안 이전 콘텐츠 보여주기 {/*showing-stale-content-while-fresh-content-is-loading*/}
 
-이 예시에서는 검색 결과를 가져오는 동안 `SearchResults` 컴포넌트가 지연됩니다. `"a"`를 입력하고 결과를 기다린 다음 `"ab"`로 바꿔보세요. `"a"`에 대한 결과는 로딩 Fallback으로 바뀝니다.
+이 예시에서는 검색 결과를 가져오는 동안 `SearchResults` 컴포넌트가 지연됩니다. `"a"`를 입력하고 결과를 기다린 다음 `"ab"`로 바꿔보세요. `"a"`에 대한 결과는 로딩 fallback으로 바뀝니다.
 
 <Sandpack>
 
@@ -886,7 +882,7 @@ input { margin: 10px; }
 
 </Sandpack>
 
-일반적인 대체 UI 패턴은 목록들에 대한 업데이트를 *연기(Defer)*하고 새 결과가 준비될 때까지 이전 결과를 계속 보여주는 것입니다. [`useDeferredValue`](/reference/react/useDeferredValue) Hook을 사용하면 쿼리의 지연된 버전을 아래로 전달할 수 있습니다.
+일반적인 대체 UI 패턴은 목록들에 대한 업데이트를 <em>연기(defer)</em>하고 새 결과가 준비될 때까지 이전 결과를 계속 보여주는 것입니다. [`useDeferredValue`](/reference/react/useDeferredValue) Hook을 사용하면 쿼리의 지연된 버전을 아래로 전달할 수 있습니다.
 
 ```js {3,11}
 export default function App() {
@@ -918,7 +914,7 @@ export default function App() {
 </div>
 ```
 
-아래 예시에서 `"a"`를 입력하고 결과가 로드될 때까지 기다린 다음 입력을 `"ab"`로 편집해보세요. 이제 새 결과가 로드될 때까지 Suspense Fallback 대신 희미한 이전 결과 목록이 표시되는 것을 확인할 수 있습니다.
+아래 예시에서 `"a"`를 입력하고 결과가 로드될 때까지 기다린 다음 입력을 `"ab"`로 편집해보세요. 이제 새 결과가 로드될 때까지 Suspense fallback 대신 희미한 이전 결과 목록이 표시되는 것을 확인할 수 있습니다.
 
 <Sandpack>
 
@@ -1071,7 +1067,7 @@ input { margin: 10px; }
 
 <Note>
 
-지연된 값(Deferred Value)과 [Transitions](#preventing-already-revealed-content-from-hiding)를 사용하면 Suspense Fallback을 표시하지 않을 수 있습니다. Transitions는 전체 업데이트를 긴급하지 않은 것으로 처리하므로 일반적으로 프레임워크와 Router 라이브러리에서 Navigation을 위해 사용합니다. 반면에 지연된 값(Deferred Value)은 UI의 일부를 긴급하지 않은 것으로 처리하고 나머지 UI보다 "지연"시키려는 목적의 애플리케이션 코드에서 유용합니다.
+지연된 값(Deferred Value)과 [Transitions](#preventing-already-revealed-content-from-hiding)를 사용하면 Suspense fallback을 표시하지 않을 수 있습니다. Transitions는 전체 업데이트를 긴급하지 않은 것으로 처리하므로 일반적으로 프레임워크와 Router 라이브러리에서 Navigation을 위해 사용합니다. 반면에 지연된 값(Deferred Value)은 UI의 일부를 긴급하지 않은 것으로 처리하고 나머지 UI보다 "지연"시키려는 목적의 애플리케이션 코드에서 유용합니다.
 
 </Note>
 
@@ -1079,7 +1075,7 @@ input { margin: 10px; }
 
 ### 이미 보인 콘텐츠가 숨겨지지 않도록 방지 {/*preventing-already-revealed-content-from-hiding*/}
 
-컴포넌트가 지연되면 가장 가까운 상위 Suspense가 Fallback을 보여주도록 전환합니다. 이미 일부 콘텐츠가 보이는 경우 사용자 경험이 끊길 수 있습니다. 이 버튼을 눌러 보세요.
+컴포넌트가 지연되면 가장 가까운 상위 Suspense가 fallback을 보여주도록 전환합니다. 이미 일부 콘텐츠가 보이는 경우 사용자 경험이 끊길 수 있습니다. 이 버튼을 눌러 보세요.
 
 <Sandpack>
 
@@ -1373,7 +1369,7 @@ main {
 
 </Sandpack>
 
-버튼을 눌렀을 때 `Router` 컴포넌트가 `IndexPage` 대신 `ArtistPage`를 렌더링했습니다. `ArtistPage` 내부의 컴포넌트가 지연됐기 때문에 가장 가까운 Suspense가 Fallback을 보여주기 시작했습니다. 가장 가까운 Suspense가 Root 근처에 있었기 때문에 전체 사이트 레이아웃이 `BigSpinner`로 대체되었습니다.
+버튼을 눌렀을 때 `Router` 컴포넌트가 `IndexPage` 대신 `ArtistPage`를 렌더링했습니다. `ArtistPage` 내부의 컴포넌트가 지연됐기 때문에 가장 가까운 Suspense가 fallback을 보여주기 시작했습니다. 가장 가까운 Suspense가 Root 근처에 있었기 때문에 전체 사이트 레이아웃이 `BigSpinner`로 대체되었습니다.
 
 이를 방지하려면 [`startTransition`](/reference/react/startTransition)을 사용하여 Navigation State 업데이트를 *Transition*으로 처리할 수 있습니다.
 
@@ -2006,19 +2002,19 @@ Transition이 진행되는 동안 React는 이미 보인 콘텐츠를 숨기지 
 <ProfilePage key={queryParams.id} />
 ```
 
-사용자의 프로필 페이지 내에서 이동 중인데 무언가가 지연되었다고 가정해 보세요. 해당 업데이트가 Transition으로 감싸져 있으면 이미 표시된 콘텐츠에 대한 Fallback이 트리거되지 않습니다. 이것이 예상되는 동작입니다.
+사용자의 프로필 페이지 내에서 이동 중인데 무언가가 지연되었다고 가정해 보세요. 해당 업데이트가 Transition으로 감싸져 있으면 이미 표시된 콘텐츠에 대한 fallback이 트리거되지 않습니다. 이것이 예상되는 동작입니다.
 
-하지만 이제 두 개의 서로 다른 사용자 프로필 사이를 이동한다고 가정해 보겠습니다. 이 경우 Fallback을 표시하는 것이 좋습니다. 예를 들어 한 사용자의 타임라인이 다른 사용자의 타임라인과 *다른 콘텐츠*라고, 가정해 보겠습니다. `key`를 지정하면 React가 서로 다른 사용자의 프로필을 서로 다른 컴포넌트로 취급하고 탐색하는 동안 Suspense를 재설정하도록 할 수 있습니다. Suspense 통합 라우터는 이 동작을 자동으로 수행해야 합니다.
+하지만 이제 두 개의 서로 다른 사용자 프로필 사이를 이동한다고 가정해 보겠습니다. 이 경우 fallback을 표시하는 것이 좋습니다. 예를 들어 한 사용자의 타임라인이 다른 사용자의 타임라인과 *다른 콘텐츠*라고, 가정해 보겠습니다. `key`를 지정하면 React가 서로 다른 사용자의 프로필을 서로 다른 컴포넌트로 취급하고 탐색하는 동안 Suspense를 재설정하도록 할 수 있습니다. Suspense 통합 라우터는 이 동작을 자동으로 수행해야 합니다.
 
 ---
 
-### 서버 에러 및 서버 전용 콘텐츠에 대한 Fallback 제공 {/*providing-a-fallback-for-server-errors-and-client-only-content*/}
+### 서버 에러 및 서버 전용 콘텐츠에 대한 fallback 제공 {/*providing-a-fallback-for-server-errors-and-client-only-content*/}
 
-[스트리밍 서버 렌더링 API](/reference/react-dom/server) 중 하나(또는 이에 의존하는 프레임워크)를 사용하는 경우, React는 서버의 에러를 처리하기 위해 `<Suspense>` 경계도 사용할 것입니다. 컴포넌트가 서버에서 에러를 발생시키더라도 React는 서버 렌더링을 중단하지 않습니다. 대신, 그 위에 있는 가장 가까운 `<Suspense>` 컴포넌트를 찾아서 그 Fallback(예: 스피너)을 생성된 서버 HTML에 포함합니다. 사용자는 처음에는 스피너를 보게 됩니다.
+[스트리밍 서버 렌더링 API](/reference/react-dom/server) 중 하나(또는 이에 의존하는 프레임워크)를 사용하는 경우, React는 서버의 에러를 처리하기 위해 `<Suspense>` 경계도 사용할 것입니다. 컴포넌트가 서버에서 에러를 발생시키더라도 React는 서버 렌더링을 중단하지 않습니다. 대신, 그 위에 있는 가장 가까운 `<Suspense>` 컴포넌트를 찾아서 그 fallback(예: 스피너)을 생성된 서버 HTML에 포함합니다. 사용자는 처음에는 스피너를 보게 됩니다.
 
 클라이언트에서 React는 동일한 컴포넌트를 다시 렌더링하려고 시도합니다. 클라이언트에서도 에러가 발생하면 React는 에러를 던지고 가장 가까운 [Error Boundary](/reference/react/Component#static-getderivedstatefromerror)를 표시합니다. 그러나 클라이언트에서 에러가 발생하지 않으면 콘텐츠가 결국 성공적으로 보였기 때문에 React는 사용자에게 에러를 보여주지 않습니다.
 
-이를 사용하여 일부 컴포넌트를 서버에서 렌더링하지 않도록 선택할 수 있습니다. 이렇게 하려면 서버 환경에서 에러를 발생시킨 다음 `<Suspense>` 경계로 감싸서 해당 HTML을 Fallback으로 대체합니다.
+이를 사용하여 일부 컴포넌트를 서버에서 렌더링하지 않도록 선택할 수 있습니다. 이렇게 하려면 서버 환경에서 에러를 발생시킨 다음 `<Suspense>` 경계로 감싸서 해당 HTML을 fallback으로 대체합니다.
 
 ```js
 <Suspense fallback={<Loading />}>
@@ -2039,11 +2035,11 @@ function Chat() {
 
 ## 문제 해결 {/*troubleshooting*/}
 
-### 업데이트 중에 UI가 Fallback으로 대체되는 것을 방지하려면 어떻게 해야 하나요? {/*preventing-unwanted-fallbacks*/}
+### 업데이트 중에 UI가 fallback으로 대체되는 것을 방지하려면 어떻게 해야 하나요? {/*preventing-unwanted-fallbacks*/}
 
-표시되는 UI를 Fallback으로 대체하면 사용자 환경이 불안정해집니다. 이는 업데이트로 인해 컴포넌트가 지연되고 가장 가까운 Suspense가 이미 사용자에게 콘텐츠를 보여주고 있을 때 발생할 수 있습니다.
+표시되는 UI를 fallback으로 대체하면 사용자 환경이 불안정해집니다. 이는 업데이트로 인해 컴포넌트가 지연되고 가장 가까운 Suspense가 이미 사용자에게 콘텐츠를 보여주고 있을 때 발생할 수 있습니다.
 
-이런 일이 발생하지 않도록 하려면, [`startTransition`](#preventing-already-revealed-content-from-hiding)을 사용하여 업데이트를 긴급하지 않은 것으로 처리하세요. Transition이 진행되는 동안 React는 원치 않는 Fallback이 나타나지 않도록 충분한 데이터가 로드될 때까지 기다립니다.
+이런 일이 발생하지 않도록 하려면, [`startTransition`](#preventing-already-revealed-content-from-hiding)을 사용하여 업데이트를 긴급하지 않은 것으로 처리하세요. Transition이 진행되는 동안 React는 원치 않는 fallback이 나타나지 않도록 충분한 데이터가 로드될 때까지 기다립니다.
 
 ```js {2-3,5}
 function handleNextPageClick() {
@@ -2054,8 +2050,8 @@ function handleNextPageClick() {
 }
 ```
 
-이렇게 하면 기존 콘텐츠가 숨겨지지 않습니다. 그러나 새로 렌더링 된 `Suspense`는 여전히 즉시 Fallback을 보여줘서 UI를 차단하지 않고 사용자가 콘텐츠를 이용할 수 있게 합니다.
+이렇게 하면 기존 콘텐츠가 숨겨지지 않습니다. 그러나 새로 렌더링 된 `Suspense`는 여전히 즉시 fallback을 보여줘서 UI를 차단하지 않고 사용자가 콘텐츠를 이용할 수 있게 합니다.
 
-**React는 긴급하지 않은 업데이트 중에만 원치 않는 Fallback을 방지합니다**. 긴급한 업데이트의 결과인 경우 렌더링을 지연시키지 않습니다. [`startTransition`](/reference/react/startTransition) 또는 [`useDeferredValue`](/reference/react/useDeferredValue)와 같은 API를 사용해야 합니다.
+**React는 긴급하지 않은 업데이트 중에만 원치 않는 fallback을 방지합니다**. 긴급한 업데이트의 결과인 경우 렌더링을 지연시키지 않습니다. [`startTransition`](/reference/react/startTransition) 또는 [`useDeferredValue`](/reference/react/useDeferredValue)와 같은 API를 사용해야 합니다.
 
 Router가 Suspense와 통합된 경우, Router는 업데이트를 자동으로 [`startTransition`](/reference/react/startTransition)에 래핑해야 합니다.
