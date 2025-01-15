@@ -18,7 +18,7 @@ title: React 버전
 
 ## 이전 버전 {/*previous-versions*/}
 
-- [18.react.dev](https://18.react.dev) {/*docs-18*/}
+- [18.react.dev](https://18.react.dev) {/*docs-18*/} ([React v18 한글](https://ko-react-exy5xcwjj-fbopensource.vercel.app/))
 - [17.react.dev](https://17.react.dev) {/*docs-17*/}
 - [16.react.dev](https://16.react.dev) {/*docs-16*/}
 - [15.react.dev](https://15.react.dev) {/*docs-15*/}
