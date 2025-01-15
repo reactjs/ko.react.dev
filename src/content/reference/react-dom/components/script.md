@@ -27,7 +27,7 @@ script: "<script>"
 <script src="script.js" />
 ```
 
-[아래에서 더 많은 예시를 확인하세요.](#usage)
+[아래 예시를 참고하세요.](#usage)
 
 #### Props {/*props*/}
 
@@ -44,7 +44,7 @@ script: "<script>"
 *  `crossOrigin`: 문자열. 사용할 [CORS 정책](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)입니다. 가능한 값은 `anonymous`와 `use-credentials`입니다.
 * `fetchPriority`: 문자열. 여러 스크립트를 동시에 가져올 때 브라우저가 스크립트를 우선순위로 순위 지정할 수 있도록 합니다. `"high"`, `"low"`, 또는 `"auto"` (기본값)일 수 있습니다.
 * `integrity`: 문자열. 스크립트의 암호화 해시로, [진위성을 검증](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)합니다.
-* `noModule`: 불리언 값. ES 모듈을 지원하는 브라우저에서 스크립트를 비활성화합니다. — ES 모듈을 지원하지 않는 브라우저에 대한 대체 스크립트를 허용합니다.
+* `noModule`: 불리언 값. ES 모듈을 지원하는 브라우저에서 스크립트를 비활성화합니다. ES 모듈을 지원하지 않는 브라우저에 대한 대체 스크립트를 허용합니다.
 * `nonce`: 문자열. 엄격한 콘텐츠 보안 정책을 사용할 때 [리소스를 허용하기 위해](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) 사용하는 암호화된 nonce입니다.
 * `referrer`: 문자열. 스크립트를 가져오고 스크립트가 다시 가져온 리소스를 가져올 때 보낼 [Referer 헤더를 지정합니다.](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#referrerpolicy)
 * `type`: 문자열. 스크립트가 [전통적인 스크립트, ES 모듈 또는 import 맵](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type)인지를 나타냅니다.
@@ -77,7 +77,7 @@ React는 `<script>` 컴포넌트를 문서의 `<head>`로 이동시키고, 중�
 ### 외부 스크립트 렌더링 {/*rendering-an-external-script*/}
 
 특정 스크립트에 의존하여 컴포넌트를 올바르게 표시해야 한다면, 컴포넌트 내에서 `<script>`를 렌더링할 수 있습니다.
-그러나 script 로딩이 완료되기 전에 컴포넌트가 커밋될 수 있습니다.
+그러나 스크립트 로딩이 완료되기 전에 컴포넌트가 커밋될 수 있습니다.
 `load` 이벤트가 발생하면 스크립트 내용에 따라 시작할 수 있습니다. 예를 들어 `onLoad` prop 을 이용할 수 있습니다.
 
 React는 동일한 `src`를 가진 중복된 스크립트를 제거하여 여러 컴포넌트를 렌더링하더라도 그 중 하나만 DOM에 삽입합니다.
