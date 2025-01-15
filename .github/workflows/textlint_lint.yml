@@ -19,16 +19,6 @@ on:
       - 'textlint/**/*.js'
       - '.github/workflows/textlint_lint.yml'
 
-  pull_request_target:
-    types:
-      - opened
-      - synchronize
-      - reopened
-    paths:
-      - 'src/**/*.md'
-      - 'textlint/**/*.js'
-      - '.github/workflows/textlint_lint.yml'
-
 jobs:
   Lint:
     runs-on: ubuntu-latest

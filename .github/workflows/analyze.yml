@@ -2,7 +2,6 @@ name: Analyze Bundle
 
 on:
   pull_request:
-  pull_request_target:
   push:
     branches:
       - main # change this if your default branch is named differently

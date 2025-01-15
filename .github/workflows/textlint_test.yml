@@ -17,15 +17,6 @@ on:
       - 'textlint/**/*.js'
       - '.github/workflows/textlint_test.yml'
 
-  pull_request_target:
-    types:
-      - opened
-      - synchronize
-      - reopened
-    paths:
-      - 'textlint/**/*.js'
-      - '.github/workflows/textlint_test.yml'
-
 jobs:
   Test:
     runs-on: ubuntu-latest
