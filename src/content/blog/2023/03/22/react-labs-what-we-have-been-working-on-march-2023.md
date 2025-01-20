@@ -97,9 +97,16 @@ React 컴포넌트의 순수한 자바스크립트를 반응형으로 만들기 
 * * *
 이번 업데이트 외에도 최근 우리 팀은 커뮤니티 팟캐스트와 라이브스트림에 초청자로 출연하여 우리의 작업에 대해 더 많은 이야기를 나누고 질문에 답변했습니다.
 
+<<<<<<< HEAD
 * [Dan Abramov](https://twitter.com/dan_abramov)와 [Joe Savona](https://twitter.com/en_JS)는 [Kent C. Dodds의 YouTube 채널](https://www.youtube.com/watch?v=h7tur48JSaw)에서 인터뷰를 통해 React 서버 컴포넌트를 둘러싼 우려 사항들을 논의했습니다.
 * [Dan Abramov](https://twitter.com/dan_abramov)와 [Joe Savona](https://twitter.com/en_JS)는 [JSParty 팟캐스트](https://jsparty.fm/267)의 초청자로서 React의 미래에 대한 생각을 공유했습니다.
 
 이 게시글을 검토해 준 [Andrew Clark](https://twitter.com/acdlite), [Dan Abramov](https://twitter.com/dan_abramov), [Dave McCabe](https://twitter.com/mcc_abe), [Luna Wei](https://twitter.com/lunaleaps), [Matt Carroll](https://twitter.com/mattcarrollcode), [Sean Keegan](https://twitter.com/DevRelSean), [Sebastian Silbermann](https://twitter.com/sebsilbermann), [Seth Webster](https://twitter.com/sethwebster), 그리고 [Sophie Alpert](https://twitter.com/sophiebits)에 감사를 전합니다.
+=======
+* [Dan Abramov](https://bsky.app/profile/danabra.mov) and [Joe Savona](https://twitter.com/en_JS) were interviewed by [Kent C. Dodds on his YouTube channel](https://www.youtube.com/watch?v=h7tur48JSaw), where they discussed concerns around React Server Components.
+* [Dan Abramov](https://bsky.app/profile/danabra.mov) and [Joe Savona](https://twitter.com/en_JS) were guests on the [JSParty podcast](https://jsparty.fm/267) and shared their thoughts about the future of React.
+
+Thanks to [Andrew Clark](https://twitter.com/acdlite), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Dave McCabe](https://twitter.com/mcc_abe), [Luna Wei](https://twitter.com/lunaleaps), [Matt Carroll](https://twitter.com/mattcarrollcode), [Sean Keegan](https://twitter.com/DevRelSean), [Sebastian Silbermann](https://twitter.com/sebsilbermann), [Seth Webster](https://twitter.com/sethwebster), and [Sophie Alpert](https://twitter.com/sophiebits) for reviewing this post.
+>>>>>>> b22cbc3fed310b39c99fdd0f01621ac1903d1e8e
 
 읽어주셔서 감사합니다. 다음 업데이트에서 만나요!
