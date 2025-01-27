@@ -4,7 +4,7 @@ title: useTransition
 
 <Intro>
 
-`useTransition`은 UI의 일부를 백그라운드에서 렌더링 할 수 있도록 해주는 리액트 Hook입니다.
+`useTransition`은 UI의 일부를 백그라운드에서 렌더링 할 수 있도록 해주는 React Hook입니다.
 
 ```js
 const [isPending, startTransition] = useTransition()
