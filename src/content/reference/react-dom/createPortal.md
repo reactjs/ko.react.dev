@@ -251,7 +251,7 @@ Portal은 React 루트가 React로 빌드되지 않은 정적 또는 서버 렌�
 
 <Sandpack>
 
-```html index.html
+```html public/index.html
 <!DOCTYPE html>
 <html>
   <head><title>My app</title></head>

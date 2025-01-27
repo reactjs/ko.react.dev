@@ -5,7 +5,11 @@ date: 2023/05/03
 description: Meta가 오랫동안 내부적으로 최첨단 버전의 React를 사용해 온 것과 유사하게, 새로운 기능이 안정된 버전으로 출시되기 전에 디자인이 거의 완성되는 즉시 개별적인 새로운 기능을 채택할 수 있는 옵션을 React 커뮤니티에 제공하고자 합니다. 공식적으로 지원하는 새로운 Canary 릴리즈 채널을 소개합니다. 프레임워크와 같이 엄선된 설정을 통해 개별 React 기능의 채택을 React 릴리즈 일정에서 분리할 수 있습니다.
 ---
 
+<<<<<<< HEAD
 2023년 5월 3일, [Dan Abramov](https://twitter.com/dan_abramov), [Sophie Alpert](https://twitter.com/sophiebits), [Rick Hanlon](https://twitter.com/rickhanlonii), [Sebastian Markbåge](https://twitter.com/sebmarkbage), [Andrew Clark](https://twitter.com/acdlite)
+=======
+May 3, 2023 by [Dan Abramov](https://bsky.app/profile/danabra.mov), [Sophie Alpert](https://twitter.com/sophiebits), [Rick Hanlon](https://twitter.com/rickhanlonii), [Sebastian Markbåge](https://twitter.com/sebmarkbage), and [Andrew Clark](https://twitter.com/acdlite)
+>>>>>>> a5aad0d5e92872ef715b462b1dd6dcbeb45cf781
 
 ---
 

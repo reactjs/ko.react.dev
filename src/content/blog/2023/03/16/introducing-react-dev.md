@@ -6,7 +6,11 @@ description: 오늘 React와 React 문서의 새로운 보금자리인 react.dev
 
 ---
 
+<<<<<<< HEAD
 2023년 3월 16일 [Dan Abramov](https://twitter.com/dan_abramov)와 [Rachel Nabors](https://twitter.com/rachelnabors)가 작성함
+=======
+March 16, 2023 by [Dan Abramov](https://bsky.app/profile/danabra.mov) and [Rachel Nabors](https://twitter.com/rachelnabors)
+>>>>>>> a5aad0d5e92872ef715b462b1dd6dcbeb45cf781
 
 ---
 
@@ -632,7 +636,11 @@ React를 배우기에 가장 좋은 시기가 왔다고 생각합니다.
 
 ## 누가 작업하고 있나요? {/*who-worked-on-this*/}
 
+<<<<<<< HEAD
 React 팀에서 [Rachel Nabors](https://twitter.com/rachelnabors/)는 프로젝트를 이끌고 (삽화도 제공했습니다), [Dan Abramov](https://twitter.com/dan_abramov)는 커리큘럼을 설계했습니다. 또한 두 사람은 대부분의 내용을 함께 저술했습니다.
+=======
+On the React team, [Rachel Nabors](https://twitter.com/rachelnabors/) led the project (and provided the illustrations), and [Dan Abramov](https://bsky.app/profile/danabra.mov) designed the curriculum. They co-authored most of the content together as well.
+>>>>>>> a5aad0d5e92872ef715b462b1dd6dcbeb45cf781
 
 물론, 이렇게 큰 프로젝트는 혼자서 진행되는 것이 아닙니다. 감사할 분들이 많습니다!
 
