@@ -38,8 +38,7 @@ export function ConsoleBlock({level = 'error', children}: ConsoleBlockProps) {
   if (typeof children === 'string') {
     message = children;
   } else if (isValidElement(children)) {
-    message = (children as React.ReactElement<{children?: React.ReactNode}>)
-      .props.children;
+    message = children.props.children;
   }
 
   return (
@@ -114,8 +113,7 @@ export function ConsoleLogLine({children, level}: ConsoleBlockProps) {
   if (typeof children === 'string') {
     message = children;
   } else if (isValidElement(children)) {
-    message = (children as React.ReactElement<{children?: React.ReactNode}>)
-      .props.children;
+    message = children.props.children;
   } else if (Array.isArray(children)) {
     message = children.reduce((result, child) => {
       if (typeof child === 'string') {

@@ -3,7 +3,6 @@
  */
 
 import type {SandpackFile} from '@codesandbox/sandpack-react/unstyled';
-import type {PropsWithChildren, ReactElement, HTMLAttributes} from 'react';
 
 export const AppJSPath = `/src/App.js`;
 export const StylesCSSPath = `/src/styles.css`;
@@ -18,13 +17,7 @@ export const createFileMap = (codeSnippets: any) => {
       ) {
         return result;
       }
-      const {props} = (
-        codeSnippet.props as PropsWithChildren<{
-          children: ReactElement<
-            HTMLAttributes<HTMLDivElement> & {meta?: string}
-          >;
-        }>
-      ).children;
+      const {props} = codeSnippet.props.children;
       let filePath; // path in the folder structure
       let fileHidden = false; // if the file is available as a tab
       let fileActive = false; // if the file tab is shown by default

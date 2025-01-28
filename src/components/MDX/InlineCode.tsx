@@ -3,7 +3,6 @@
  */
 
 import cn from 'classnames';
-import type {HTMLAttributes} from 'react';
 
 interface InlineCodeProps {
   isLink?: boolean;
@@ -12,7 +11,7 @@ interface InlineCodeProps {
 function InlineCode({
   isLink,
   ...props
-}: HTMLAttributes<HTMLElement> & InlineCodeProps) {
+}: JSX.IntrinsicElements['code'] & InlineCodeProps) {
   return (
     <code
       dir="ltr" // This is needed to prevent the code from inheriting the RTL direction of <html> in case of RTL languages to avoid like `()console.log` to be rendered as `console.log()`

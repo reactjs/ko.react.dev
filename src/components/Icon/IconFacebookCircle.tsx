@@ -3,9 +3,8 @@
  */
 
 import {memo} from 'react';
-import type {SVGProps} from 'react';
 
-export const IconFacebookCircle = memo<SVGProps<SVGSVGElement>>(
+export const IconFacebookCircle = memo<JSX.IntrinsicElements['svg']>(
   function IconFacebookCircle(props) {
     return (
       <svg

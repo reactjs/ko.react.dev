@@ -5,7 +5,6 @@
 import {Children, useContext, useMemo} from 'react';
 import * as React from 'react';
 import cn from 'classnames';
-import type {HTMLAttributes} from 'react';
 
 import CodeBlock from './CodeBlock';
 import {CodeDiagram} from './CodeDiagram';
@@ -60,21 +59,21 @@ function CodeStep({children, step}: {children: any; step: number}) {
   );
 }
 
-const P = (p: HTMLAttributes<HTMLParagraphElement>) => (
+const P = (p: JSX.IntrinsicElements['p']) => (
   <p className="whitespace-pre-wrap my-4" {...p} />
 );
 
-const Strong = (strong: HTMLAttributes<HTMLElement>) => (
+const Strong = (strong: JSX.IntrinsicElements['strong']) => (
   <strong className="font-bold" {...strong} />
 );
 
-const OL = (p: HTMLAttributes<HTMLOListElement>) => (
+const OL = (p: JSX.IntrinsicElements['ol']) => (
   <ol className="ms-6 my-3 list-decimal" {...p} />
 );
-const LI = (p: HTMLAttributes<HTMLLIElement>) => (
+const LI = (p: JSX.IntrinsicElements['li']) => (
   <li className="leading-relaxed mb-1" {...p} />
 );
-const UL = (p: HTMLAttributes<HTMLUListElement>) => (
+const UL = (p: JSX.IntrinsicElements['ul']) => (
   <ul className="ms-6 my-3 list-disc" {...p} />
 );
 
@@ -140,7 +139,10 @@ const RSCBadge = ({title}: {title: string}) => (
   </span>
 );
 
-const Blockquote = ({children, ...props}: HTMLAttributes<HTMLQuoteElement>) => {
+const Blockquote = ({
+  children,
+  ...props
+}: JSX.IntrinsicElements['blockquote']) => {
   return (
     <blockquote
       className="mdx-blockquote py-4 px-8 my-8 shadow-inner-border dark:shadow-inner-border-dark bg-highlight dark:bg-highlight-dark bg-opacity-50 rounded-2xl leading-6 flex relative"

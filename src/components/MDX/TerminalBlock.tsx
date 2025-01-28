@@ -31,11 +31,9 @@ function TerminalBlock({level = 'info', children}: TerminalBlockProps) {
     message = children;
   } else if (
     isValidElement(children) &&
-    typeof (children as React.ReactElement<{children: string}>).props
-      .children === 'string'
+    typeof children.props.children === 'string'
   ) {
-    message = (children as React.ReactElement<{children: string}>).props
-      .children;
+    message = children.props.children;
   } else {
     throw Error('Expected TerminalBlock children to be a plain string.');
   }

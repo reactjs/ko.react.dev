@@ -3,9 +3,10 @@
  */
 
 import {memo} from 'react';
-import type {SVGProps} from 'react';
 
-export const IconRss = memo<SVGProps<SVGSVGElement>>(function IconRss(props) {
+export const IconRss = memo<JSX.IntrinsicElements['svg']>(function IconRss(
+  props
+) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

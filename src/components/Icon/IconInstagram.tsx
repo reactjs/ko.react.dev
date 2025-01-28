@@ -3,9 +3,8 @@
  */
 
 import {memo} from 'react';
-import type {SVGProps} from 'react';
 
-export const IconInstagram = memo<SVGProps<SVGSVGElement>>(
+export const IconInstagram = memo<JSX.IntrinsicElements['svg']>(
   function IconInstagram(props) {
     return (
       <svg

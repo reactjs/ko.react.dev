@@ -3,9 +3,8 @@
  */
 
 import {memo} from 'react';
-import type {SVGProps} from 'react';
 
-export const IconClose = memo<SVGProps<SVGSVGElement>>(function IconClose(
+export const IconClose = memo<JSX.IntrinsicElements['svg']>(function IconClose(
   props
 ) {
   return (
