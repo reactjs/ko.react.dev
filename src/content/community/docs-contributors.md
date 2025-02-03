@@ -10,6 +10,7 @@ React 문서는 [React 팀](/community/team)과 [외부 기여자](https://githu
 
 ## 내용 {/*content*/}
 
+<<<<<<< HEAD
 * [Rachel Nabors](https://twitter.com/RachelNabors): 편집, 글쓰기, 그림 그리기
 * [Dan Abramov](https://twitter.com/dan_abramov): 글쓰기, 커리큘럼 설계
 * [Sylwia Vargas](https://twitter.com/SylwiaVargas): 예시 코드
@@ -21,6 +22,19 @@ React 문서는 [React 팀](/community/team)과 [외부 기여자](https://githu
 * [Matt Carroll](https://twitter.com/mattcarrollcode): 편집, 글쓰기
 * [Natalia Tepluhina](https://twitter.com/n_tepluhina): 리뷰, 조언
 * [Sebastian Markbåge](https://twitter.com/sebmarkbage): 피드백
+=======
+* [Rachel Nabors](https://twitter.com/RachelNabors): editing, writing, illustrating
+* [Dan Abramov](https://bsky.app/profile/danabra.mov): writing, curriculum design
+* [Sylwia Vargas](https://twitter.com/SylwiaVargas): example code
+* [Rick Hanlon](https://twitter.com/rickhanlonii): writing
+* [David McCabe](https://twitter.com/mcc_abe): writing
+* [Sophie Alpert](https://twitter.com/sophiebits): writing
+* [Pete Hunt](https://twitter.com/floydophone): writing
+* [Andrew Clark](https://twitter.com/acdlite): writing
+* [Matt Carroll](https://twitter.com/mattcarrollcode): editing, writing
+* [Natalia Tepluhina](https://twitter.com/n_tepluhina): reviews, advice
+* [Sebastian Markbåge](https://twitter.com/sebmarkbage): feedback
+>>>>>>> 6fc98fffdaad3b84e6093d1eb8def8f2cedeee16
 
 ## 디자인 {/*design*/}
 
@@ -31,6 +45,7 @@ React 문서는 [React 팀](/community/team)과 [외부 기여자](https://githu
 
 ## 개발 {/*development*/}
 
+<<<<<<< HEAD
 * [Jared Palmer](https://twitter.com/jaredpalmer): 사이트 개발
 * [ThisDotLabs](https://www.thisdot.co/) ([Dane Grant](https://twitter.com/danecando), [Dustin Goodman](https://twitter.com/dustinsgoodman)): 사이트 개발
 * [CodeSandbox](https://codesandbox.io/) ([Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), [Danilo Woznica](https://twitter.com/danilowoz)): Sandbox 통합
@@ -38,6 +53,15 @@ React 문서는 [React 팀](/community/team)과 [외부 기여자](https://githu
 * [Rick Hanlon](https://twitter.com/rickhanlonii): 사이트 개발
 * [Harish Kumar](https://www.strek.in/): 개발과 유지보수
 * [Luna Ruan](https://twitter.com/lunaruan): Sandbox 개선
+=======
+* [Jared Palmer](https://twitter.com/jaredpalmer): site development
+* [ThisDotLabs](https://www.thisdot.co/) ([Dane Grant](https://twitter.com/danecando), [Dustin Goodman](https://twitter.com/dustinsgoodman)): site development
+* [CodeSandbox](https://codesandbox.io/) ([Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), [Danilo Woznica](https://twitter.com/danilowoz)): sandbox integration
+* [Dan Abramov](https://bsky.app/profile/danabra.mov): site development
+* [Rick Hanlon](https://twitter.com/rickhanlonii): site development
+* [Harish Kumar](https://www.strek.in/): development and maintenance
+* [Luna Ruan](https://twitter.com/lunaruan): sandbox improvements
+>>>>>>> 6fc98fffdaad3b84e6093d1eb8def8f2cedeee16
 
 ## 한국어 번역 {/*korean-translations*/}
 
