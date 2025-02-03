@@ -122,8 +122,7 @@ React는 **[버그를 발견하기 위해](/learn/synchronizing-with-effects#ste
 
 <Note>
 
-Effect는 [컴포넌트가 외부 시스템과 동기화를 유지](/learn/synchronizing-with-effects)할 수 있도록 합니다. *외부 시스템*은 React에 의해 컨트롤되지 않는 모든 코드를 의미합니다. 예를 들어:
-An Effect lets you [keep your component synchronized](/learn/synchronizing-with-effects) with some external system (like a chat service). Here, *external system* means any piece of code that's not controlled by React, such as:
+Effect는 (채팅 시스템과 같은) 외부 시스템과 [컴포넌트가 동기화를 유지](/learn/synchronizing-with-effects)할 수 있도록 합니다. *외부 시스템*은 React에 의해 컨트롤되지 않는 모든 코드를 의미합니다. 예를 들어:
 
 * <CodeStep step={1}>[`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)</CodeStep>에 의해 관리되는 타이머 또는 <CodeStep step={2}>[`clearInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval)</CodeStep>.
 * <CodeStep step={1}>[`window.addEventListener()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)</CodeStep>을 이용한 이벤트 구독 또는 <CodeStep step={2}>[`window.removeEventListener()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)</CodeStep>.
