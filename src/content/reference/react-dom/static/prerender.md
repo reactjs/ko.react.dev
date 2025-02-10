@@ -229,8 +229,13 @@ async function renderToString() {
   const {prelude} = await prerender(<App />, {
     bootstrapScripts: ['/main.js']
   });
+<<<<<<< HEAD
 
   const reader = stream.getReader();
+=======
+  
+  const reader = prelude.getReader();
+>>>>>>> 91614a51a1be9078777bc337ba83fc62e606cc14
   let content = '';
   while (true) {
     const {done, value} = await reader.read();
@@ -291,6 +296,10 @@ Suspense-enabled data fetching without the use of an opinionated framework is no
 
 ### My stream doesn't start until the entire app is rendered {/*my-stream-doesnt-start-until-the-entire-app-is-rendered*/}
 
+<<<<<<< HEAD
 The `prerender` response waits for the entire app to finish rendering, including waiting for all suspense boundaries to resolve, before resolving. It is designed for static site generation (SSG) ahead of time and does not support streaming more content as it loads.
+=======
+The `prerender` response waits for the entire app to finish rendering, including waiting for all Suspense boundaries to resolve, before resolving. It is designed for static site generation (SSG) ahead of time and does not support streaming more content as it loads. 
+>>>>>>> 91614a51a1be9078777bc337ba83fc62e606cc14
 
 To stream content as it loads, use a streaming server render API like [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream).

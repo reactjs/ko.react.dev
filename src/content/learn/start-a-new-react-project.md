@@ -26,7 +26,11 @@ React로 새로운 앱이나 새로운 웹사이트를 완전히 작성하고 �
 
 **현재 페이지의 React 프레임워크들은 추가 작업 없이도 기본적으로 이러한 문제들을 해결합니다.** 이들은 매우 간소화된 상태로 시작할 수 있고 애플리케이션의 필요에 따라 확장이 가능합니다. 각각의 React 프레임워크들은 커뮤니티가 있어 질문에 대한 답을 얻고 도구를 업그레이드하는 것이 더 쉬워집니다. 또한 프레임워크들은 코드에 구조를 제공하며, 다른 프로젝트들간의 맥락과 스킬을 유지하는 데에 도움이 됩니다. 반대로, 맞춤 설정을 사용하면 지원되지 않는 의존성<sup>Dependency</sup> 버전에 빠질 수 있으며, 결국엔 커뮤니티나 업그레이드 경로가 없는 자체 프레임워크를 만들게 될 수도 있습니다. (그리고 만약 이전에 우리가 만든 것들과 비슷하다면, 더 엉성하게 설계된 것일 수 있습니다.)
 
+<<<<<<< HEAD
 애플리케이션이 이러한 프레임워크들의 지원을 잘 받지 못하는 특수한 제약에 놓여 있거나, 스스로 이러한 문제들을 해결하고 싶다면 React를 사용하여 자체 맞춤 설정을 적용할 수 있습니다. npm에서 `react` 와 `react-dom`을 설치하고, [Vite](https://vitejs.dev/) 나 [Parcel](https://parceljs.org/) 같은 번들러를 활용하여 맞춤 빌드 프로세스를 정립한 다음, 라우팅<sup>Routing</sup>, 정적 생성<sup>Static Generation</sup> 혹은 서버 사이드 렌더링<sup>SSR, Server Side Rendering</sup> 등 필요에 따라 다른 도구들을 추가할 수 있습니다.
+=======
+If your app has unusual constraints not served well by these frameworks, or you prefer to solve these problems yourself, you can roll your own custom setup with React. Grab `react` and `react-dom` from npm, set up your custom build process with a bundler like [Vite](https://vite.dev/) or [Parcel](https://parceljs.org/), and add other tools as you need them for routing, static generation or server-side rendering, and more.
+>>>>>>> 91614a51a1be9078777bc337ba83fc62e606cc14
 
 </DeepDive>
 
