@@ -401,7 +401,7 @@ root.render(<App />);
 
 <Sandpack>
 
-```html index.html hidden
+```html public/index.html hidden
 <!DOCTYPE html>
 <html>
 <head>
@@ -634,7 +634,7 @@ root.render(<App />);
 
 <Sandpack>
 
-```html index.html hidden
+```html public/index.html hidden
 <!DOCTYPE html>
 <html>
 <head>
@@ -914,7 +914,7 @@ Hydration 불일치에 대한 대화 상자를 표시하려면 `onRecoverableErr
 
 <Sandpack>
 
-```html index.html hidden
+```html public/index.html hidden
 <!DOCTYPE html>
 <html>
 <head>
