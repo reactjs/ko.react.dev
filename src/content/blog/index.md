@@ -4,11 +4,23 @@ title: React 블로그
 
 <Intro>
 
+<<<<<<< HEAD
 이 블로그는 React 팀의 업데이트에 대한 공식 출처입니다. 릴리스 노트 및 더 이상 사용되지 않는 기능들에 대한 공지<sup>Deprecation Notice</sup>를 비롯한 중요 내용들이 이곳에 먼저 공유됩니다. 트위터에서 [@reactjs](https://twitter.com/reactjs) 계정을 팔로우해도 좋지만, 이 블로그만으로도 모든 정보를 얻을 수 있습니다.
+=======
+This blog is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted here first. 
+
+You can also follow the [@react.dev](https://bsky.app/profiles/react.js) account on Bluesky, or [@reactjs](https://twitter.com/reactjs) account on Twitter, but you won’t miss anything essential if you only read this blog.
+>>>>>>> 49284218b1f5c94f930f8a9b305040dbe7d3dd48
 
 </Intro>
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
+
+<BlogCard title="Sunsetting Create React App" date="February 13, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
+
+Today, we’re deprecating Create React App for new apps, and encouraging existing apps to migrate to a framework. We’re also providing docs for when a framework isn’t a good fit for your project, or you prefer to start by building a framework.
+
+</BlogCard>
 
 <BlogCard title="React v19 " date="December 5, 2024" url="/blog/2024/12/05/react-19">
 

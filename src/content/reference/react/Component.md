@@ -1273,7 +1273,11 @@ button { margin-left: 10px; }
 
 error boundary 컴포넌트를 구현하려면 오류에 대한 응답으로 state를 업데이트하고 사용자에게 오류 메시지를 표시할 수 있는 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)를 제공해야 합니다. 또한 선택적으로 [`componentDidCatch`](#componentdidcatch)를 구현하여 분석 서비스에 오류를 기록하는 등의 추가 로직을 추가할 수도 있습니다.
 
-```js {7-10,12-19}
+<CanaryBadge /> With [`captureOwnerStack`](/reference/react/captureOwnerStack) you can include the Owner Stack during development.
+
+```js {9-12,14-27}
+import * as React from 'react';
+
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -1286,12 +1290,18 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, info) {
-    // Example "componentStack":
-    //   in ComponentThatThrows (created by App)
-    //   in ErrorBoundary (created by App)
-    //   in div (created by App)
-    //   in App
-    logErrorToMyService(error, info.componentStack);
+    logErrorToMyService(
+      error,
+      // Example "componentStack":
+      //   in ComponentThatThrows (created by App)
+      //   in ErrorBoundary (created by App)
+      //   in div (created by App)
+      //   in App
+      info.componentStack,
+      // Only available in react@canary.
+      // Warning: Owner Stack is not available in production.
+      React.captureOwnerStack(),
+    );
   }
 
   render() {
