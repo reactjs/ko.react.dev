@@ -556,9 +556,7 @@ return <MyInput ref={inputRef} />;
 
 <ConsoleBlock level="error">
 
-경고: 함수 컴포넌트에는 ref를 지정할 수 없습니다. 이 ref에 접근하려는 시도는 실패합니다. React.forwardRef()를 사용하려고 하셨나요?
-
-TypeError: Cannot read properties of null {/*TODO*/}
+TypeError: Cannot read properties of null
 
 </ConsoleBlock>
 
@@ -577,9 +575,7 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
-그런 다음 아래와 같이 [`forwardRef`](/reference/react/forwardRef)로 감싸세요.
-
-And then add `ref` to the list of props your component accepts and pass `ref` as a prop to the relevent child [built-in component](/reference/react-dom/components/common) like this: {/*TODO*/}
+그리고 `ref`를 컴포넌트가 받아들이는 props 목록에 추가한 뒤, 아래처럼 해당 자식 [내장 컴포넌트](/reference/react-dom/components/common)에 prop으로 `ref`를 전달하세요.
 
 ```js {1,6}
 function MyInput({ value, onChange, ref }) {
