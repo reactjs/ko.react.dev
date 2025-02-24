@@ -297,7 +297,11 @@ input { margin: 5px; }
 
 <Pitfall>
 
+<<<<<<< HEAD
 기본적으로 `<form>` 내부의 *어느* `<button>`이든 폼을 제출합니다. 뜻밖인가요? 커스텀 `Button` React 컴포넌트의 경우 `<button>` 대신 [`<button type="button">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/button) 반환을 고려하세요. 명시성을 부여하기 위해 폼 제출용 버튼으로는 `<button type="submit">`을 사용하세요.
+=======
+By default, a `<button>` inside a `<form>` without a `type` attribute will submit it. This can be surprising! If you have your own custom `Button` React component, consider using [`<button type="button">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) instead of `<button>` (with no type). Then, to be explicit, use `<button type="submit">` for buttons that *are* supposed to submit the form.
+>>>>>>> fc29603434ec04621139738f4740caed89d659a7
 
 </Pitfall>
 
