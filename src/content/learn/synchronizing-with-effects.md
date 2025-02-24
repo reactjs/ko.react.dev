@@ -590,7 +590,7 @@ input { display: block; margin-bottom: 20px; }
 
 **배포 환경에서는 `"✅ 연결 중..."`이 한 번만 출력됩니다.** 컴포넌트를 다시 마운트하는 것은 개발 중에만 발생하며 클린업이 필요한 Effect를 찾아주는 데 도움을 줍니다. 개발 동작에서 벗어나려면 [Strict Mode](/reference/react/StrictMode)를 끄는 것도 가능하지만, 켜둘 것을 권장합니다. 이렇게 하면 위와 같은 많은 버그를 찾을 수 있습니다.
 
-## 개발 중에 Effect가 두 번 실행되는 경우를 다루는 방법 {/*개발-중에-effect가-두-번-실행되는-경우를-다루는-방법*/}
+## 개발 중에 Effect가 두 번 실행되는 경우를 다루는 방법 {/*how-to-handle-the-effect-firing-twice-in-development*/}
 
 React는 마지막 예시와 같은 버그를 찾기 위해 개발 중에 컴포넌트를 명시적으로 다시 마운트합니다. **"Effect를 한 번 실행하는 방법"이 아니라 "어떻게 Effect가 다시 마운트된 후에도 작동하도록 고칠 것인가"라는 것이 옳은 질문입니다.**
 
