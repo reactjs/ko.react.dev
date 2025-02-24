@@ -329,13 +329,13 @@ li {
 >
 ```
 
-This lets you read individual DOM nodes from the Map later.
+이렇게 하면 나중에 Map에서 개별 DOM 노드를 읽을 수 있습니다.
 
 <Note>
 
-When Strict Mode is enabled, ref callbacks will run twice in development.
+Strict Mode가 활성화되어 있다면 개발 모드에서 ref 콜백이 두 번 실행됩니다.
 
-Read more about [how this helps find bugs](/reference/react/StrictMode#fixing-bugs-found-by-re-running-ref-callbacks-in-development) in callback refs.
+ref 콜백에서 [이 방식이 버그를 찾는데 어떻게 도움이 되는지](/reference/react/StrictMode#fixing-bugs-found-by-re-running-ref-callbacks-in-development) 자세히 알아보세요.
 
 </Note>
 
@@ -348,10 +348,10 @@ Read more about [how this helps find bugs](/reference/react/StrictMode#fixing-bu
 하지만 `<MyInput />` 같이 **직접 만든** 컴포넌트에 ref를 주입할 때는 `null`이 기본적으로 주어집니다. 여기 앞서 말한 내용을 설명하는 예시가 있습니다. 버튼을 클릭할 때 input 요소에 포커스 **되지 않는 것을** 주목하세요.
 
 <Pitfall>
-Refs are an escape hatch. Manually manipulating _another_ component's DOM nodes can make your code fragile.
+Ref는 일종의 탈출구입니다. 다른 컴포넌트의 DOM 노드를 수동으로 조작하면 코드를 불안정하게 만들 수 있습니다.
 </Pitfall>
 
-You can pass refs from parent component to child components [just like any other prop](/learn/passing-props-to-a-component).
+부모 컴포넌트에서 자식 컴포넌트로 ref를 [prop 처럼](/learn/passing-props-to-a-component) 전달할 수 있습니다.
 
 ```js {3-4,9}
 import { useRef } from 'react';
@@ -366,9 +366,10 @@ function MyForm() {
 }
 ```
 
-In the above example, a ref is created in the parent component, `MyForm`, and is passed to the child component, `MyInput`. `MyInput` then passes the ref to `<input>`. Because `<input>` is a [built-in component](/reference/react-dom/components/common) React sets the `.current` property of the ref to the `<input>` DOM element.
+위 예시에서, 부모 컴포넌트인 `MyForm`에서 ref를 생성하고, 이를 자식 컴포넌트인 `MyInput`으로 전달합니다. 그리고 `MyInput`은 그 ref를 `<input>`에 넘겨줍니다. `<input>`은 [내장 컴포넌트](/reference/react-dom/components/common)이므로, React는 해당 ref의 `.current` 속성을 `<input>` DOM 요소로 설정합니다.
 
-The `inputRef` created in `MyForm` now points to the `<input>` DOM element returned by `MyInput`. A click handler created in `MyForm` can access `inputRef` and call `focus()` to set the focus on `<input>`.
+`MyForm`에서 생성된 `inputRef`는 이제 `MyInput`이 반환한 `<input>` DOM 요소를 가리킵니다. 그리고 `MyForm`에서 생성한 클릭 핸들러는 `inputRef`에 접근하여 `focus()`를 호출함으로써 `<input>`에 포커스를 설정할 수 있습니다.
+
 
 <Sandpack>
 
@@ -403,9 +404,7 @@ export default function MyForm() {
 
 #### 명령형 처리방식으로 하위 API 노출하기 {/*exposing-a-subset-of-the-api-with-an-imperative-handle*/}
 
-위 예시에서 `MyInput` 컴포넌트는 DOM 입력 요소를 그대로 노출했습니다. 그리고 부모 컴포넌트에서 DOM 노드의 `focus()`를 호출할 수 있게 되었습니다. 하지만 이에 따라 부모 컴포넌트에서 DOM 노드의 CSS 스타일을 직접 변경하는 등의 예상치 못 한 작업을 할 수 있습니다. 몇몇 상황에서는 노출된 기능을 제한하고 싶을 수 있는데, 이 때  `useImperativeHandle`을 사용합니다.
-
-In the above example, the ref passed to `MyInput` is passed on to the original DOM input element. This lets the parent component call `focus()` on it. However, this also lets the parent component do something else--for example, change its CSS styles. In uncommon cases, you may want to restrict the exposed functionality. You can do that with [`useImperativeHandle`](/reference/react/useImperativeHandle): {/*TODO*/}
+위 예시에서 `MyInput` 컴포넌트는 DOM 입력 요소를 그대로 노출했습니다. 그리고 부모 컴포넌트에서 DOM 노드의 `focus()`를 호출할 수 있게 되었습니다. 하지만 이에 따라 부모 컴포넌트에서 DOM 노드의 CSS 스타일을 직접 변경하는 등의 예상치 못 한 작업을 할 수 있습니다. 몇몇 상황에서는 노출된 기능을 제한하고 싶을 수 있는데, 이 때  [`useImperativeHandle`](/reference/react/useImperativeHandle)을 사용합니다.
 
 <Sandpack>
 
@@ -442,8 +441,6 @@ export default function Form() {
 </Sandpack>
 
 여기 `MyInput` 내부의 `realInputRef`는 실제 input DOM 노드를 가지고 있습니다. 하지만 [`useImperativeHandle`](/reference/react/useImperativeHandle)을 사용하여 React가 ref를 참조하는 부모 컴포넌트에 직접 구성한 객체를 전달하도록 지시합니다. 따라서 `Form` 컴포넌트 안쪽의 `inputRef.current`는 `foucs` 메서드만 가지고 있습니다. 이 경우 ref는 DOM 노드가 아니라 [`useImperativeHandle`](/reference/react/useImperativeHandle) 호출에서 직접 구성한 객체가 됩니다.
-
-Here, `realInputRef` inside `MyInput` holds the actual input DOM node. However, [`useImperativeHandle`](/reference/react/useImperativeHandle) instructs React to provide your own special object as the value of a ref to the parent component. So `inputRef.current` inside the `Form` component will only have the `focus` method. In this case, the ref "handle" is not the DOM node, but the custom object you create inside [`useImperativeHandle`](/reference/react/useImperativeHandle) call. {/*TODO*/}
 
 </DeepDive>
 
