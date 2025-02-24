@@ -404,7 +404,7 @@ export default function MyForm() {
 
 #### 명령형 처리방식으로 하위 API 노출하기 {/*exposing-a-subset-of-the-api-with-an-imperative-handle*/}
 
-위 예시에서 `MyInput` 컴포넌트는 DOM 입력 요소를 그대로 노출했습니다. 그리고 부모 컴포넌트에서 DOM 노드의 `focus()`를 호출할 수 있게 되었습니다. 하지만 이에 따라 부모 컴포넌트에서 DOM 노드의 CSS 스타일을 직접 변경하는 등의 예상치 못 한 작업을 할 수 있습니다. 몇몇 상황에서는 노출된 기능을 제한하고 싶을 수 있는데, 이 때  [`useImperativeHandle`](/reference/react/useImperativeHandle)을 사용합니다.
+위 예시에서 `MyInput`에 전달된 ref는 DOM 입력 요소로 전달됩니다. 그리고 부모 컴포넌트에서 DOM 노드의 `focus()`를 호출할 수 있게 되었습니다. 하지만 이에 따라 부모 컴포넌트에서 DOM 노드의 CSS 스타일을 직접 변경하는 등의 예상치 못 한 작업을 할 수 있습니다. 몇몇 상황에서는 노출된 기능을 제한하고 싶을 수 있는데, 이 때  [`useImperativeHandle`](/reference/react/useImperativeHandle)을 사용합니다.
 
 <Sandpack>
 
