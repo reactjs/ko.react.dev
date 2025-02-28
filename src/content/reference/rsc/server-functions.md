@@ -4,9 +4,9 @@ title: 서버 함수
 
 <RSC>
 
-Server Functions are for use in [React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
+서버 함수는 [React 서버 컴포넌트](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)에서 사용합니다.
 
-**Note:** Until September 2024, we referred to all Server Functions as "Server Actions". If a Server Function is passed to an action prop or called from inside an action then it is a Server Action, but not all Server Functions are Server Actions. The naming in this documentation has been updated to reflect that Server Functions can be used for multiple purposes.
+**참고:** 2024년 9월까지, 우리는 모든 서버 함수를 "서버 액션"으로 불렀습니다. 만약 서버 함수를 action prop으로 전달하거나 action 내부에서 호출된다면 이는 서버 액션이지만, 모든 서버 함수가 서버 액션은 아닙니다. 이 문서의 명명 규칙은 서버 함수가 여러 용도로 사용될 수 있다는 점을 반영하여 업데이트했습니다.
 
 </RSC>
 

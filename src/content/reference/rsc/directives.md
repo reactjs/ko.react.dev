@@ -4,7 +4,7 @@ title: "지시어"
 
 <RSC>
 
-Directives are for use in [React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
+지시어는 [React 서버 컴포넌트](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)에서 사용합니다.
 
 </RSC>
 
