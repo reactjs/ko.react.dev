@@ -649,12 +649,21 @@ DOM 요소를 직접 삭제한 뒤 `setState`를 사용하여 다시 DOM 노드�
 
 <Recap>
 
+<<<<<<< HEAD
 - Ref는 범용적인 개념이지만 많은 경우 DOM 요소를 참조하기 위해 사용합니다.
 - `<div ref={myRef}>`로 React가 myRef.current에 DOM Node를 대입하도록 지시할 수 있습니다.
 - 많은 경우 ref는 포커싱, 스크롤링, DOM 요소 크기 혹은 위치 측정 등 비 파괴적인 행동을 위해 사용됩니다.
 - 컴포넌트는 기본적으로 DOM 노드를 노출하지 않습니다. `forwardRef`와 두 번째 `ref` 인자를 특정 노드에 전달하는 것으로 선택적으로 노출할 수 있습니다.
 - React가 관리하는 DOM 노드를 직접 바꾸려 하지 마세요.
 - React가 관리하는 DOM 노드를 수정하려 한다면, React가 변경할 이유가 없는 부분만 수정하세요.
+=======
+- Refs are a generic concept, but most often you'll use them to hold DOM elements.
+- You instruct React to put a DOM node into `myRef.current` by passing `<div ref={myRef}>`.
+- Usually, you will use refs for non-destructive actions like focusing, scrolling, or measuring DOM elements.
+- A component doesn't expose its DOM nodes by default. You can opt into exposing a DOM node by using the `ref` prop.
+- Avoid changing DOM nodes managed by React.
+- If you do modify DOM nodes managed by React, modify parts that React has no reason to update.
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 
 </Recap>
 
@@ -1052,7 +1061,11 @@ img {
 
 <Hint>
 
+<<<<<<< HEAD
 `SearchInput`같은 컴포넌트에서 `forwardRef`를 사용해서 DOM 노드를 노출할 필요가 있습니다.
+=======
+You'll need to pass `ref` as a prop to opt into exposing a DOM node from your own component like `SearchInput`.
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 
 </Hint>
 
@@ -1137,18 +1150,14 @@ export default function SearchButton({ onClick }) {
 ```
 
 ```js src/SearchInput.js
-import { forwardRef } from 'react';
-
-export default forwardRef(
-  function SearchInput(props, ref) {
-    return (
-      <input
-        ref={ref}
-        placeholder="Looking for something?"
-      />
-    );
-  }
-);
+export default function SearchInput({ ref }) {
+  return (
+    <input
+      ref={ref}
+      placeholder="Looking for something?"
+    />
+  );
+}
 ```
 
 ```css

@@ -25,13 +25,28 @@
       "path": "/learn/installation",
       "routes": [
         {
+<<<<<<< HEAD
           "title": "새로운 React 프로젝트 시작하기",
           "path": "/learn/start-a-new-react-project"
+=======
+          "title": "Creating a React App",
+          "path": "/learn/creating-a-react-app"
+        },
+        {
+          "title": "Build a React App from Scratch",
+          "path": "/learn/build-a-react-app-from-scratch"
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
         },
         {
           "title": "기존 프로젝트에 React 추가하기",
           "path": "/learn/add-react-to-an-existing-project"
-        },
+        }
+      ]
+    },
+    {
+      "title": "Setup",
+      "path": "/learn/setup",
+      "routes": [
         {
           "title": "에디터 설정하기",
           "path": "/learn/editor-setup"
