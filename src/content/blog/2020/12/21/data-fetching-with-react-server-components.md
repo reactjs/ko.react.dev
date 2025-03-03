@@ -5,7 +5,11 @@ date: 2020/12/21
 description: 2020년은 긴 한 해였습니다. 연말이 다가옴에 따라 제로 번들 사이즈의 React 서버 컴포넌트 연구에 대한 특별 연휴 업데이트를 공유하고자 합니다.
 ---
 
+<<<<<<< HEAD
 2020년 12월 21일, [Dan Abramov](https://twitter.com/dan_abramov), [Lauren Tan](https://twitter.com/potetotes), [Joseph Savona](https://twitter.com/en_JS), [Sebastian Markbåge](https://twitter.com/sebmarkbage)
+=======
+December 21, 2020 by [Dan Abramov](https://bsky.app/profile/danabra.mov), [Lauren Tan](https://twitter.com/potetotes), [Joseph Savona](https://twitter.com/en_JS), and [Sebastian Markbåge](https://twitter.com/sebmarkbage)
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 
 ---
 

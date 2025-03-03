@@ -5,7 +5,11 @@ date: 2022/06/15
 description: React 18 은 수년간의 준비 끝에 탄생한 버전으로 React 팀에게 귀중한 교훈을 가져다주었습니다. 수년간의 연구와 다양한 경로를 모색한 끝에 출시된 제품입니다. 그 경로 중 일부는 성공적이었지만 더 많은 경로가 막다른 골목에서 새로운 인사이트로 이어졌습니다. 우리가 얻은 한 가지 교훈은 우리가 탐색하고 있는 경로에 대한 인사이트를 공유받지 못한 채 새로운 기능을 기다리는 것은 커뮤니티에 실망감을 준다는 것입니다.
 ---
 
+<<<<<<< HEAD
 2022년 6월 15일, [Andrew Clark](https://twitter.com/acdlite), [Dan Abramov](https://twitter.com/dan_abramov), [Jan Kassens](https://twitter.com/kassens), [Joseph Savona](https://twitter.com/en_JS), [Josh Story](https://twitter.com/joshcstory), [Lauren Tan](https://twitter.com/potetotes), [Luna Ruan](https://twitter.com/lunaruan), [Mengdi Chen](https://twitter.com/mengdi_en), [Rick Hanlon](https://twitter.com/rickhanlonii), [Robert Zhang](https://twitter.com/jiaxuanzhang01), [Sathya Gunasekaran](https://twitter.com/_gsathya), [Sebastian Markbåge](https://twitter.com/sebmarkbage), [Xuan Huang](https://twitter.com/Huxpro)
+=======
+June 15, 2022 by [Andrew Clark](https://twitter.com/acdlite), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Jan Kassens](https://twitter.com/kassens), [Joseph Savona](https://twitter.com/en_JS), [Josh Story](https://twitter.com/joshcstory), [Lauren Tan](https://twitter.com/potetotes), [Luna Ruan](https://twitter.com/lunaruan), [Mengdi Chen](https://twitter.com/mengdi_en), [Rick Hanlon](https://twitter.com/rickhanlonii), [Robert Zhang](https://twitter.com/jiaxuanzhang01), [Sathya Gunasekaran](https://twitter.com/_gsathya), [Sebastian Markbåge](https://twitter.com/sebmarkbage), and [Xuan Huang](https://twitter.com/Huxpro)
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 
 ---
 
@@ -27,7 +31,11 @@ description: React 18 은 수년간의 준비 끝에 탄생한 버전으로 Reac
 
 특히, 우리는 포크된 I/O 라이브러리(예: react-fetch)를 사용하는 아이디어를 포기하고 대신 호환성 향상을 위해 async/await 모델을 채택하고 있습니다. 데이터 불러오기에 라우터를 사용할 수도 있기 때문에 기술적으로 RSC의 릴리스에 지장을 주지는 않습니다. 또 다른 변화는 파일 확장자 방식에서 벗어나 [경계를 주석](https://github.com/reactjs/rfcs/pull/189#issuecomment-1116482278)으로 처리하는 방식을 채택하고 있다는 점입니다.
 
+<<<<<<< HEAD
 Vercel 및 Shopify와 협력하여 Webpack 및 Vite 모두에서 공유 시맨틱에 대한 번들러 지원을 통합하고 있습니다. 출시 전에 전체 React 생태계에서 RSC의 의미가 동일한지 확인하고자 합니다. 이것은 안정에 도달하는 데 주요 장애물입니다.
+=======
+We’re working together with Vercel and Shopify to unify bundler support for shared semantics in both webpack and Vite. Before launch, we want to make sure that the semantics of RSCs are the same across the whole React ecosystem. This is the major blocker for reaching stable.
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 
 ## 자산<sup>Asset</sup> 로딩 {/*asset-loading*/}
 

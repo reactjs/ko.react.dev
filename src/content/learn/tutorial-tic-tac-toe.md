@@ -300,7 +300,11 @@ export default function Square() {
 }
 ```
 
+<<<<<<< HEAD
 _브라우저_ 구역에 아래와 같이 X가 있는 사각형이 표시되어야 합니다.
+=======
+The _browser_ section should be displaying a square with an X in it like this:
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 
 ![x가 채워진 사각형](../images/tutorial/x-filled-square.png)
 
@@ -1329,7 +1333,11 @@ body {
 1. `handleClick`은 인수 `0`을 사용하여 `squares` 배열의 첫 번째 엘리먼트를 `null`에서 `X`로 업데이트합니다.
 1. `Board` 컴포넌트의 `squares` state가 업데이트되어 `Board`와 그 모든 자식이 다시 렌더링 됩니다. 이에 따라 인덱스가 `0`인 `Square` 컴포넌트의 `value` prop가 `null`에서 `X`로 변경됩니다.
 
+<<<<<<< HEAD
 최종적으로 사용자는 왼쪽 위 사각형을 클릭한 후 비어있는 사각형이 `X`로 변경된 것을 확인할 수 있습니다.
+=======
+In the end the user sees that the upper left square has changed from empty to having an `X` after clicking it.
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 
 <Note>
 
@@ -1410,7 +1418,11 @@ export default function Board() {
 
 `O`가 `X`를 덮어씌웁니다! 이렇게 하면 게임이 좀 더 흥미로워질 수 있지만 지금은 원래의 규칙을 유지하겠습니다.
 
+<<<<<<< HEAD
 지금은 `X`와 `O`로 사각형을 표시할 때 먼저 해당 사각형에 이미 `X` 또는 `O`값이 있는지 확인하고 있지 않습니다. *일찍이 돌아와서* 이 문제를 해결하기 위해 사각형에 이미 `X`와 `O`가 있는지 확인하겠습니다. 사각형이 이미 채워져 있는 경우 보드의 state를 업데이트하기 전에 `handleClick` 함수에서 조기에 `return` 하겠습니다.
+=======
+When you mark a square with an `X` or an `O` you aren't first checking to see if the square already has an `X` or `O` value. You can fix this by *returning early*. You'll check to see if the square already has an `X` or an `O`. If the square is already filled, you will `return` in the `handleClick` function early--before it tries to update the board state.
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 
 ```js {2,3,4}
 function handleClick(i) {
@@ -1560,7 +1572,11 @@ function calculateWinner(squares) {
 
 </Note>
 
+<<<<<<< HEAD
 `Board` 컴포넌트의 `handleClick` 함수에서 `calculateWinner(squares)`를 호출하여 플레이어가 이겼는지 확인하세요. 이 검사는 사용자가 이미 `X` 또는 `O`가 있는 사각형을 클릭했는지를 확인하는 것과 동시에 수행할 수 있습니다. 두 경우 모두 함수를 조기 반환하겠습니다.
+=======
+You will call `calculateWinner(squares)` in the `Board` component's `handleClick` function to check if a player has won. You can perform this check at the same time you check if a user has clicked a square that already has an `X` or an `O`. We'd like to return early in both cases:
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 
 ```js {2}
 function handleClick(i) {
