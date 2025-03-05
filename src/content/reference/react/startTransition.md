@@ -55,7 +55,7 @@ function TabContainer() {
 
 * `startTransition`에 전달하는 함수는 즉시 호출되며, 실행 중 발생하는 모든 상태 업데이트를 Transition으로 표시합니다. 예를 들어 `setTimeout` 내에서 상태를 업데이트하려고 하면, 해당 업데이트는 Transition으로 표시되지 않습니다.
 
-* 비동기 요청 이후의 상태 업데이트를 전환으로 표시하려면, 반드시 또 다른 `startTransition`으로 감싸야 합니다. 이는 알려진 제한 사항으로 향후 수정될 예정입니다. ([문제 해결 참조](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition))
+* 비동기 요청 이후의 상태 업데이트를 Transition으로 표시하려면, 반드시 또 다른 `startTransition`으로 감싸야 합니다. 이는 알려진 제한 사항으로 향후 수정될 예정입니다. ([문제 해결 참조](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition))
 
 * Transition으로 표시된 State 업데이트는 다른 State 업데이트에 의해 중단됩니다. 예를 들어, Transition 내에서 차트 컴포넌트를 업데이트하지만 차트가 다시 렌더링되는 동안 입력을 시작하면 React는 입력 State 업데이트를 처리한 후 차트 컴포넌트에서 렌더링 작업을 다시 시작합니다.
 
