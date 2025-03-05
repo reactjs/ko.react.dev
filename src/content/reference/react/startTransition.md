@@ -41,7 +41,7 @@ function TabContainer() {
 
 #### 매개변수 {/*parameters*/}
 
-* `action`: 하나 이상의 [`set` 함수](/reference/react/useState#setstate)를 호출하여 일부 State를 업데이트하는 함수입니다. React는 매개변수 없이 `action`을 즉시 호출하고 `action` 함수를 호출하는 동안 동기적으로 예약된 모든 State 업데이트를 Transition으로 표시합니다. `action`에서 await된 비동기 호출은 Transition에 포함되지만, 현재로서는 `await` 이후의 `set` 함수 호출을 추가적인 `startTransition`으로 감싸야 합니다([문제 해결 참조](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition)). Transitions으로 표시된 상태 업데이트는 [non-blocking](/reference/react/startTransition#marking-a-state-update-as-a-non-blocking-transition) 방식으로 처리되며, [불필요한 로딩 표시가 나타나지 않습니다](/reference/react/useTransition#preventing-unwanted-loading-indicators).
+* `action`: 하나 이상의 [`set` 함수](/reference/react/useState#setstate)를 호출하여 일부 State를 업데이트하는 함수입니다. React는 매개변수 없이 `action`을 즉시 호출하고 `action` 함수를 호출하는 동안 동기적으로 예약된 모든 State 업데이트를 Transition으로 표시합니다. `action`에서 await된 비동기 호출은 Transition에 포함되지만, 현재로서는 `await` 이후의 `set` 함수 호출을 추가적인 `startTransition`으로 감싸야 합니다([문제 해결 참조](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition)). Transitions으로 표시된 상태 업데이트는 [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) 방식으로 처리되며, [불필요한 로딩 표시가 나타나지 않습니다](/reference/react/useTransition#preventing-unwanted-loading-indicators).
 
 #### 반환값 {/*returns*/}
 
