@@ -2,11 +2,22 @@ name: Discord Notify
 
 on:
   pull_request_target:
+<<<<<<< HEAD
     types: [labeled]
+=======
+    types: [opened, ready_for_review]
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 jobs:
+  check_maintainer:
+    uses: facebook/react/.github/workflows/shared_check_maintainer.yml@main
+    with:
+      actor: ${{ github.event.pull_request.user.login }}
+      is_remote: true
+
   notify:
-    if: ${{ github.event.label.name == 'React Core Team' }}
+    if: ${{ needs.check_maintainer.outputs.is_core_team == 'true' }}
+    needs: check_maintainer
     runs-on: ubuntu-latest
     steps:
       - name: Discord Webhook Action

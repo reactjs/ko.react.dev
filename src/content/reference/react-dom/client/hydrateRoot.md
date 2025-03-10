@@ -96,7 +96,11 @@ root.unmount();
 
 이 함수는 주로 React 루트의 DOM 노드(또는 그 조상 노드)가 다른 코드에 의해 DOM에서 제거될 수 있는 경우에 유용합니다. 예를 들어 DOM에서 비활성 탭을 제거하는 jQuery 탭 패널을 상상해 보세요. 탭이 제거되면 그 안에 있는 모든 것(내부의 React 루트를 포함)이 DOM에서 제거됩니다. 이 경우 `root.unmount`를 호출하여 제거된 루트의 콘텐츠 관리를 "중지"하도록 React에 지시해야 합니다. 그렇지 않으면 제거된 루트 내부의 컴포넌트는 구독과 같은 전역 리소스를 정리하고 확보하는 법을 모르는 채로 있게 됩니다.
 
+<<<<<<< HEAD
 `root.unmount`를 호출하면 루트에 있는 모든 컴포넌트가 마운트 해제되고, 트리상의 이벤트 핸들러나 State가 제거되며, 루트 DOM 노드에서 React가 "분리"됩니다.
+=======
+Calling `root.unmount` will unmount all the components in the root and "detach" React from the root DOM node, including removing any event handlers or state in the tree.
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 #### 매개변수 {/*root-unmount-parameters*/}
 
@@ -266,7 +270,11 @@ export default function App() {
 
 </Sandpack>
 
+<<<<<<< HEAD
 이것은 한 단계 아래까지만 적용되며 탈출구<sup>Escape Hatch</sup>를 의도한 것입니다. 남용하지 마세요. 텍스트 컨텐츠가 아닌 한 React는 잘못된 부분을 수정하지 않을 것이며, 갱신이 일어나기 전까지는 불일치 상태로 남아있을 것입니다.
+=======
+This only works one level deep, and is intended to be an escape hatch. Don’t overuse it. React will **not** attempt to patch mismatched text content.
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 ---
 
@@ -369,6 +377,7 @@ export default function App({counter}) {
 
 Hydration된 루트에서 [`root.render`](#root-render)를 호출하는 것은 흔한 일은 아닙니다. 내부 컴포넌트 중 한 곳에서 [useState](/reference/react/useState)를 사용하는 것이 일반적입니다.
 
+<<<<<<< HEAD
 ### 처리되지 않은 오류에 대한 대화 상자 표시하기 {/*show-a-dialog-for-uncaught-errors*/}
 
 기본적으로 React는 처리되지 않은 모든 오류를 콘솔에 기록합니다. 자체적인 오류 보고 기능을 구현하려면 선택적 루트 옵션인 `onUncaughtError`를 사용할 수 있습니다.
@@ -559,25 +568,30 @@ export function reportRecoverableError({error, cause, componentStack}) {
 ```
 
 ```js src/index.js active
+=======
+### Error logging in production {/*error-logging-in-production*/}
+
+By default, React will log all errors to the console. To implement your own error reporting, you can provide the optional error handler root options `onUncaughtError`, `onCaughtError` and `onRecoverableError`:
+
+```js [[1, 6, "onCaughtError"], [2, 6, "error", 1], [3, 6, "errorInfo"], [4, 10, "componentStack", 15]]
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 import { hydrateRoot } from "react-dom/client";
-import App from "./App.js";
-import {reportUncaughtError} from "./reportError";
-import "./styles.css";
-import {renderToString} from 'react-dom/server';
+import { reportCaughtError } from "./reportError";
 
 const container = document.getElementById("root");
-const root = hydrateRoot(container, <App />, {
-  onUncaughtError: (error, errorInfo) => {
-    if (error.message !== 'Known error') {
-      reportUncaughtError({
+const root = hydrateRoot(container, {
+  onCaughtError: (error, errorInfo) => {
+    if (error.message !== "Known error") {
+      reportCaughtError({
         error,
-        componentStack: errorInfo.componentStack
+        componentStack: errorInfo.componentStack,
       });
     }
-  }
+  },
 });
 ```
 
+<<<<<<< HEAD
 ```js src/App.js
 import { useState } from 'react';
 
@@ -777,45 +791,84 @@ function reportError({ title, error, componentStack, dismissable }) {
 
   // 대화 상자 표시
   errorDialog.classList.remove("hidden");
+=======
+The <CodeStep step={1}>onCaughtError</CodeStep> option is a function called with two arguments:
+
+1. The <CodeStep step={2}>error</CodeStep> that was thrown.
+2. An <CodeStep step={3}>errorInfo</CodeStep> object that contains the <CodeStep step={4}>componentStack</CodeStep> of the error.
+
+Together with `onUncaughtError` and `onRecoverableError`, you can implement your own error reporting system:
+
+<Sandpack>
+
+```js src/reportError.js
+function reportError({ type, error, errorInfo }) {
+  // The specific implementation is up to you.
+  // `console.error()` is only used for demonstration purposes.
+  console.error(type, error, "Component Stack: ");
+  console.error("Component Stack: ", errorInfo.componentStack);
 }
 
-export function reportCaughtError({error, cause, componentStack}) {
-  reportError({ title: "Caught Error", error, componentStack,  dismissable: true});
+export function onCaughtErrorProd(error, errorInfo) {
+  if (error.message !== "Known error") {
+    reportError({ type: "Caught", error, errorInfo });
+  }
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 }
 
-export function reportUncaughtError({error, cause, componentStack}) {
-  reportError({ title: "Uncaught Error", error, componentStack, dismissable: false });
+export function onUncaughtErrorProd(error, errorInfo) {
+  reportError({ type: "Uncaught", error, errorInfo });
 }
 
-export function reportRecoverableError({error, cause, componentStack}) {
-  reportError({ title: "Recoverable Error", error, componentStack,  dismissable: true });
+export function onRecoverableErrorProd(error, errorInfo) {
+  reportError({ type: "Recoverable", error, errorInfo });
 }
 ```
 
 ```js src/index.js active
 import { hydrateRoot } from "react-dom/client";
 import App from "./App.js";
-import {reportCaughtError} from "./reportError";
-import "./styles.css";
+import {
+  onCaughtErrorProd,
+  onRecoverableErrorProd,
+  onUncaughtErrorProd,
+} from "./reportError";
 
 const container = document.getElementById("root");
-const root = hydrateRoot(container, <App />, {
-  onCaughtError: (error, errorInfo) => {
-    if (error.message !== 'Known error') {
-      reportCaughtError({
-        error,
-        componentStack: errorInfo.componentStack
-      });
-    }
-  }
+hydrateRoot(container, <App />, {
+  // Keep in mind to remove these options in development to leverage
+  // React's default handlers or implement your own overlay for development.
+  // The handlers are only specfied unconditionally here for demonstration purposes.
+  onCaughtError: onCaughtErrorProd,
+  onRecoverableError: onRecoverableErrorProd,
+  onUncaughtError: onUncaughtErrorProd,
 });
 ```
 
 ```js src/App.js
-import { useState } from 'react';
-import { ErrorBoundary } from "react-error-boundary";
+import { Component, useState } from "react";
+
+function Boom() {
+  foo.bar = "baz";
+}
+
+class ErrorBoundary extends Component {
+  state = { hasError: false };
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong.</h1>;
+    }
+    return this.props.children;
+  }
+}
 
 export default function App() {
+<<<<<<< HEAD
   const [error, setError] = useState(null);
 
   function handleUnknown() {
@@ -845,29 +898,31 @@ export default function App() {
         </button>
       </ErrorBoundary>
 
+=======
+  const [triggerUncaughtError, settriggerUncaughtError] = useState(false);
+  const [triggerCaughtError, setTriggerCaughtError] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => settriggerUncaughtError(true)}>
+        Trigger uncaught error
+      </button>
+      {triggerUncaughtError && <Boom />}
+      <button onClick={() => setTriggerCaughtError(true)}>
+        Trigger caught error
+      </button>
+      {triggerCaughtError && (
+        <ErrorBoundary>
+          <Boom />
+        </ErrorBoundary>
+      )}
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
     </>
   );
 }
-
-function fallbackRender({ resetErrorBoundary }) {
-  return (
-    <div role="alert">
-      <h3>Error Boundary</h3>
-      <p>Something went wrong.</p>
-      <button onClick={resetErrorBoundary}>Reset</button>
-    </div>
-  );
-}
-
-function Throw({error}) {
-  if (error === "known") {
-    throw new Error('Known error')
-  } else {
-    foo.bar = 'baz';
-  }
-}
 ```
 
+<<<<<<< HEAD
 ```json package.json hidden
 {
   "dependencies": {
@@ -915,6 +970,9 @@ Hydration 불일치에 대한 대화 상자를 표시하려면 `onRecoverableErr
 <Sandpack>
 
 ```html index.html hidden
+=======
+```html public/index.html hidden
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 <!DOCTYPE html>
 <html>
 <head>
@@ -922,6 +980,7 @@ Hydration 불일치에 대한 대화 상자를 표시하려면 `onRecoverableErr
 </head>
 <body>
 <!--
+<<<<<<< HEAD
   React 앱의 오류로 인해 충돌이 발생할 수 있으므로, HTML의 기본 오류 대화 상자를 사용하였습니다.
 -->
 <div id="error-dialog" class="hidden">
@@ -1140,6 +1199,14 @@ function Throw({error}) {
 }
 ```
 
+=======
+  Purposefully using HTML content that differs from the server-rendered content to trigger recoverable errors.
+-->
+<div id="root">Server content before hydration.</div>
+</body>
+</html>
+```
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 </Sandpack>
 
 ## 문제 해결 {/*troubleshooting*/}
