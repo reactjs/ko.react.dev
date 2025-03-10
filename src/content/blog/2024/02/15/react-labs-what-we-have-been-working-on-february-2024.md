@@ -5,7 +5,11 @@ date: 2024/02/15
 description: React Labs 게시글에는 활발히 연구 개발 중인 프로젝트에 대한 내용을 작성합니다. 우리의 지난 업데이트 이후 상당한 발전을 이루었고, 이러한 진전 사항을 공유하려고 합니다.
 ---
 
+<<<<<<< HEAD
 2024년 2월 15일, [Joseph Savona](https://twitter.com/en_JS), [Ricky Hanlon](https://twitter.com/rickhanlonii), [Andrew Clark](https://twitter.com/acdlite), [Matt Carroll](https://twitter.com/mattcarrollcode), [Dan Abramov](https://twitter.com/dan_abramov)
+=======
+February 15, 2024 by [Joseph Savona](https://twitter.com/en_JS), [Ricky Hanlon](https://twitter.com/rickhanlonii), [Andrew Clark](https://twitter.com/acdlite), [Matt Carroll](https://twitter.com/mattcarrollcode), and [Dan Abramov](https://bsky.app/profile/danabra.mov).
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 ---
 
