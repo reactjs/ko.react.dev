@@ -1075,7 +1075,6 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-
 이것은 문제를 일으킵니다. [모든 반응형 값은 Effect의 종속성으로 선언되어야 합니다.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) 그러나 만약 `options`을 종속성으로 선언한다면, 이것은 Effect가 chat room과 계속해서 재연결되도록 할 것입니다.
 
 ```js {5}
