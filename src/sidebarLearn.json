@@ -25,17 +25,12 @@
       "path": "/learn/installation",
       "routes": [
         {
-<<<<<<< HEAD
-          "title": "새로운 React 프로젝트 시작하기",
-          "path": "/learn/start-a-new-react-project"
-=======
-          "title": "Creating a React App",
+          "title": "새로운 React 앱 만들기",
           "path": "/learn/creating-a-react-app"
         },
         {
           "title": "Build a React App from Scratch",
           "path": "/learn/build-a-react-app-from-scratch"
->>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
         },
         {
           "title": "기존 프로젝트에 React 추가하기",
