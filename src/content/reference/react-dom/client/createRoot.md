@@ -43,9 +43,9 @@ root.render(<App />);
 * `domNode`: [DOM 엘리먼트](https://developer.mozilla.org/en-US/docs/Web/API/Element). React는 DOM 엘리먼트에 대한 루트를 생성하고 렌더링된 React 콘텐츠를 표시하는 `render`와 같은 함수를 루트에서 호출할 수 있도록 합니다.
 
 * **optional** `options`: React 루트에 대한 옵션을 가진 객체입니다.
-  * **optional** `onCaughtError`: Callback called when React catches an error in an Error Boundary. Called with the `error` caught by the Error Boundary, and an `errorInfo` object containing the `componentStack`.
-  * **optional** `onUncaughtError`: Callback called when an error is thrown and not caught by an Error Boundary. Called with the `error` that was thrown, and an `errorInfo` object containing the `componentStack`.
-  * **optional** `onRecoverableError`: React가 오류로부터 자동으로 복구될 때 호출되는 콜백. Called with an `error` React throws, and an `errorInfo` object containing the `componentStack`. Some recoverable errors may include the original error cause as `error.cause`.
+  * **optional** `onCaughtError`: React가 Error Boundary에서 오류를 잡을 때 호출되는 콜백. Error Boundary에서 잡은 `error`와 `componentStack`을 포함하는 `errorInfo` 객체와 함께 호출됩니다.
+  * **optional** `onUncaughtError`: 오류가 Error Boundary에 의해 잡히지 않을 때 호출되는 콜백. 오류가 발생한 `error`와 `componentStack`을 포함하는 `errorInfo` 객체와 함께 호출됩니다.
+  * **optional** `onRecoverableError`: React가 오류로부터 자동으로 복구될 때 호출되는 콜백. React가 던지는 `error`와 `componentStack`을 포함하는 `errorInfo` 객체와 함께 호출됩니다. 복구 가능한 오류는 원본 오류 원인을 `error.cause`로 포함할 수 있습니다.
   * **optional** `identifierPrefix`: React가 [`useId`](/reference/react/useId)에 의해 생성된 ID에 사용하는 문자열 접두사. 같은 페이지에서 여러개의 루트를 사용할 때 충돌을 피하는 데 유용합니다.
 
 #### 반환값 {/*returns*/}

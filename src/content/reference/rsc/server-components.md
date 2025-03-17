@@ -4,7 +4,7 @@ title: 서버 컴포넌트
 
 <RSC>
 
-Server Components are for use in [React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
+서버 컴포넌트는 [React 서버 컴포넌트](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)에서 사용합니다.
 
 </RSC>
 

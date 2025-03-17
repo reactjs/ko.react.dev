@@ -4,9 +4,7 @@ title: useTransition
 
 <Intro>
 
-`useTransition`은 UI를 차단하지 않고 상태를 업데이트할 수 있는 React Hook입니다.
-
-`useTransition` is a React Hook that lets you render a part of the UI in the background. {/*TODO*/}
+`useTransition`은 UI의 일부를 백그라운드에서 렌더링 할 수 있도록 해주는 React Hook입니다.
 
 ```js
 const [isPending, startTransition] = useTransition()
@@ -48,16 +46,9 @@ function TabContainer() {
 
 ---
 
-`useTransition`이 반환하는 `startTransition` 함수를 사용하면 state 업데이트를 Transition 으로 표시할 수 있습니다.
-
-1. The `isPending` flag that tells you whether there is a pending Transition.
-2. The [`startTransition` function](#starttransition) that lets you mark updates as a Transition.
-
----
-
 ### `startTransition(action)` {/*starttransition*/}
 
-The `startTransition` function returned by `useTransition` lets you mark an update as a Transition. {/*TODO*/}
+`useTransition`이 반환하는 `startTransition` 함수를 사용하면 업데이트를 Transition으로 표시할 수 있습니다.
 
 ```js {6,8}
 function TabContainer() {
@@ -74,9 +65,9 @@ function TabContainer() {
 ```
 
 <Note>
-#### Functions called in `startTransition` are called "Actions". {/*functions-called-in-starttransition-are-called-actions*/}
+#### startTransition 내에서 호출되는 함수를 "Actions"이라고 합니다. {/*functions-called-in-starttransition-are-called-actions*/}
 
-The function passed to `startTransition` is called an "Action". By convention, any callback called inside `startTransition` (such as a callback prop) should be named `action` or include the "Action" suffix:
+`startTransition`에 전달된 함수를 "Action"이라고 합니다. 따라서 시작 트랜지션 내에서 호출되는 모든 콜백(예: 콜백 프로퍼티)의 이름은 `action`이거나 "Action" 접미사를 포함해야 합니다.
 
 ```js {1,9}
 function SubmitButton({ submitAction }) {
@@ -102,10 +93,10 @@ function SubmitButton({ submitAction }) {
 
 
 
-#### Parameters {/*starttransition-parameters*/}
+#### 매개변수 {/*starttransition-parameters*/}
 
-* `action`: A function that updates some state by calling one or more [`set` functions](/reference/react/useState#setstate). React calls `action` immediately with no parameters and marks all state updates scheduled synchronously during the `action` function call as Transitions. Any async calls that are awaited in the `action` will be included in the Transition, but currently require wrapping any `set` functions after the `await` in an additional `startTransition` (see [Troubleshooting](#react-doesnt-treat-my-state-update-after-await-as-a-transition)). State updates marked as Transitions will be [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) and [will not display unwanted loading indicators](#preventing-unwanted-loading-indicators).
->>>>>>> b1a249d597016c6584e4c186daa28b180cc9aafc
+* `action`: 하나 이상의 [`set` 함수](/reference/react/useState#setstate)를 호출하여 일부 상태를 업데이트하는 함수입니다. React는 매개변수 없이 즉시 `action`을 호출하고 `action` 함수 호출 중에 동기적으로 예약된 모든 상태 업데이트를 Transitions으로 표시합니다. `action`에서 await된 비동기 호출은 Transition에 포함되지만, 현재로서는 `await` 이후의 `set` 함수 호출을 추가적인 `startTransition`으로 감싸야 합니다([문제 해결 참조](#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
+Transitions으로 표시된 상태 업데이트는 [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) 방식으로 처리되며, [불필요한 로딩 표시가 나타나지 않습니다](#preventing-unwanted-loading-indicators).
 
 #### 반환값 {/*starttransition-returns*/}
 
@@ -119,13 +110,13 @@ function SubmitButton({ submitAction }) {
 
 * `startTransition`에 전달하는 함수는 동기식이어야 합니다. React는 이 함수를 즉시 실행하여 실행하는 동안 발생하는 모든 state 업데이트를 Transition 으로 표시합니다. 나중에 더 많은 state 업데이트를 수행하려고 하면(예시: timeout), Transition 으로 표시되지 않습니다.
 
-* The function you pass to `startTransition` is called immediately, marking all state updates that happen while it executes as Transitions. If you try to perform state updates in a `setTimeout`, for example, they won't be marked as Transitions.
+* `startTransition`에 전달하는 함수는 즉시 호출되며, 실행 중 발생하는 모든 상태 업데이트를 Transition으로 표시합니다. 예를 들어 `setTimeout` 내에서 상태를 업데이트하려고 하면, 해당 업데이트는 Transition으로 표시되지 않습니다.
 
-* You must wrap any state updates after any async requests in another `startTransition` to mark them as Transitions. This is a known limitation that we will fix in the future (see [Troubleshooting](#react-doesnt-treat-my-state-update-after-await-as-a-transition)). {/*TODO*/}
+* 비동기 요청 이후의 상태 업데이트를 전환으로 표시하려면, 반드시 또 다른 `startTransition`으로 감싸야 합니다. 이는 알려진 제한 사항으로 향후 수정될 예정입니다([문제 해결 참조](#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
 
-* The `startTransition` function has a stable identity, so you will often see it omitted from Effect dependencies, but including it will not cause the Effect to fire. If the linter lets you omit a dependency without errors, it is safe to do. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+* `startTransition` 함수는 안정된 식별성(stable identity)을 가지므로 Effect 의존성에서 생략되는 경우가 많습니다. 하지만 포함해도 Effect가 실행되지는 않습니다. linter가 의존성을 생략해도 오류를 발생시키지 않는다면 생략해도 안전합니다. [자세한 내용은 Effect 의존성 제거에 대한 문서를 참고하세요.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
-* Transition으로 표시된 state 업데이트는 다른 state 업데이트에 의해 중단됩니다. 예를 들어, Transition 내에서 차트 컴포넌트를 업데이트한 다음 차트가 다시 렌더링 되는 도중에 입력을 시작하면 React는 입력 업데이트를 처리한 후 차트 컴포넌트에서 렌더링 작업을 다시 시작합니다.
+* Transition으로 표시된 state 업데이트는 다른 state 업데이트에 의해 중단됩니다. 예를 들어 Transition 내에서 차트 컴포넌트를 업데이트한 다음 차트가 다시 렌더링 되는 도중에 입력을 시작하면 React는 입력 업데이트를 처리한 후 차트 컴포넌트에서 렌더링 작업을 다시 시작합니다.
 
 * Transition 업데이트는 텍스트 입력을 제어하는 데 사용할 수 없습니다.
 
@@ -133,9 +124,9 @@ function SubmitButton({ submitAction }) {
 
 ## 사용법 {/*usage*/}
 
-### Perform non-blocking updates with Actions {/*perform-non-blocking-updates-with-actions*/}
+### Actions으로 non-blocking 업데이트 수행 {/*perform-non-blocking-updates-with-actions*/}
 
-Call `useTransition` at the top of your component to create Actions, and access the pending state:
+컴포넌트 상단에서 `useTransition`을 호출하여 Actions을 생성하고, 대기 상태에 접근하세요.
 
 ```js [[1, 4, "isPending"], [2, 4, "startTransition"]]
 import {useState, useTransition} from 'react';
@@ -148,16 +139,10 @@ function CheckoutForm() {
 
 `useTransition`은 정확히 두 개의 항목이 있는 배열을 반환합니다.
 
-1. 보류 중인 Transition 이 있는지를 알려주는 <CodeStep step={1}>`isPending` 플래그</CodeStep>입니다.
-2. state 업데이트를 Transition 으로 표시할 수 있는 <CodeStep step={2}>`startTransition` 함수</CodeStep>입니다.
+1. <CodeStep step={1}>`isPending` 플래그</CodeStep>는 대기 중인 Transition 이 있는지 알려줍니다.
+2. <CodeStep step={2}>`startTransition` 함수</CodeStep>는 상태 업데이트를 Transition으로 표시할 수 있게 해주는 함수입니다.
 
-그 후 다음과 같이 state 업데이트를 Transition 으로 표시할 수 있습니다.
-
-1. The <CodeStep step={1}>`isPending` flag</CodeStep> that tells you whether there is a pending Transition.
-2. The <CodeStep step={2}>`startTransition` function</CodeStep> that lets you create an Action.
-
-To start a Transition, pass a function to `startTransition` like this: {/*TODO*/}
-
+Transition을 시작하려면 다음과 같이 `startTransition`에 함수를 전달합니다.
 ```js
 import {useState, useTransition} from 'react';
 import {updateQuantity} from './api';
@@ -178,17 +163,17 @@ function CheckoutForm() {
 }
 ```
 
-The function passed to `startTransition` is called the "Action". You can update state and (optionally) perform side effects within an Action, and the work will be done in the background without blocking user interactions on the page. A Transition can include multiple Actions, and while a Transition is in progress, your UI stays responsive. For example, if the user clicks a tab but then changes their mind and clicks another tab, the second click will be immediately handled without waiting for the first update to finish.
+`startTransition` 내에서 호출되는 함수를 "Actions"이라고 합니다. Action 내에서 상태를 업데이트하고(선택적으로) 사이드 이펙트를 수행할 수 있으며, 작업은 페이지에서 사용자 상호 작용을 차단하지 않고 백그라운드에서 수행됩니다. 하나의 Transition은 여러 개의 Action을 포함할 수 있으며, Transition이 진행되는 동안 UI는 계속 반응합니다. 예를 들어 사용자가 탭을 클릭했다가 마음이 바뀌어 다른 탭을 클릭하면 첫 번째 업데이트가 완료될 때까지 기다리지 않고 두 번째 클릭이 즉시 처리됩니다.
 
-To give the user feedback about in-progress Transitions, to `isPending` state switches to `true` at the first call to `startTransition`, and stays `true` until all Actions complete and the final state is shown to the user. Transitions ensure side effects in Actions to complete in order to [prevent unwanted loading indicators](#preventing-unwanted-loading-indicators), and you can provide immediate feedback while the Transition is in progress with `useOptimistic`.
+진행 중인 Transition에 대해 사용자에게 피드백을 제공하기 위해 `isPending` 상태는 `startTransition`을 처음 호출할 때 `true`로 전환되며, 모든 Action이 완료되어 최종 상태가 사용자에게 표시될 때까지 `true` 상태를 유지합니다. Transition은 Action 내의 사이드 이펙트가 완료되도록 보장하여 [원치 않는 로딩 표시기가 표시되지 않도록 합니다.](#preventing-unwanted-loading-indicators) 또한, Transition이 진행 중일 때 `useOptimistic`을 사용하여 즉각적인 피드백을 제공할 수 있습니다.
 
-<Recipes titleText="The difference between Actions and regular event handling">
+<Recipes titleText="Action과 일반 이벤트 처리의 차이점">
 
-#### Updating the quantity in an Action {/*updating-the-quantity-in-an-action*/}
+#### Action에서 수량 업데이트 {/*updating-the-quantity-in-an-action*/}
 
-In this example, the `updateQuantity` function simulates a request to the server to update the item's quantity in the cart. This function is *artificially slowed down* so that it takes at least a second to complete the request.
+이 예시에서 `updateQuantity` 함수는 카트에 있는 품목의 수량을 업데이트하기 위해 서버에 요청하는 시뮬레이션을 수행합니다. 이 함수는 요청을 완료하는 데 최소 1초가 소요되도록 *인위적으로 속도가 늦춰져 있습니다*.
 
-Update the quantity multiple times quickly. Notice that the pending "Total" state is shown while any requests are in progress, and the "Total" updates only after the final request is complete. Because the update is in an Action, the "quantity" can continue to be updated while the request is in progress.
+수량을 빠르게 여러 번 업데이트하면, 요청이 진행 중인 동안에는 "Total" 상태가 대기 중으로 표시됩니다. 그리고 최종 요청이 완료된 후에만 "Total"이 업데이트됩니다. 업데이트가 Action 내에서 발생하기 때문에, 요청이 진행 중인 동안에도 "quantity"은 계속해서 업데이트될 수 있습니다.
 
 <Sandpack>
 
@@ -218,8 +203,8 @@ export default function App({}) {
   const [isPending, startTransition] = useTransition();
 
   const updateQuantityAction = async newQuantity => {
-    // To access the pending state of a transition,
-    // call startTransition again.
+    // transition의 보류 중인 상태에 액세스하려면,
+    // startTransition을 다시 호출하세요.
     startTransition(async () => {
       const savedQuantity = await updateQuantity(newQuantity);
       startTransition(() => {
@@ -244,7 +229,7 @@ import { startTransition } from "react";
 
 export default function Item({action}) {
   function handleChange(event) {
-    // To expose an action prop, call the callback in startTransition.
+    // startTransition 내부에서 콜백 함수를 실행하면 action 프로퍼티를 노출할 수 있습니다.
     startTransition(async () => {
       action(event.target.value);
     })
@@ -285,7 +270,7 @@ export default function Total({quantity, isPending}) {
 ```js src/api.js
 export async function updateQuantity(newQuantity) {
   return new Promise((resolve, reject) => {
-    // Simulate a slow network request.
+    // 네트워크 요청을 느리게 시뮬레이션합니다.
     setTimeout(() => {
       resolve(newQuantity);
     }, 2000);
@@ -322,22 +307,22 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-This is a basic example to demonstrate how Actions work, but this example does not handle requests completing out of order. When updating the quantity multiple times, it's possible for the previous requests to finish after later requests causing the quantity to update out of order. This is a known limitation that we will fix in the future (see [Troubleshooting](#my-state-updates-in-transitions-are-out-of-order) below).
+이 예시는 Actions의 작동 방식을 보여주기 위한 기본 예시이지만, 순서대로 완료되는 요청은 처리하지 않습니다. 수량을 여러 번 업데이트하는 경우 이전 요청이 완료된 후 나중에 요청이 완료되어 수량이 순서대로 업데이트되지 않을 수 있습니다. 이는 알려진 제한 사항으로 향후 수정될 예정입니다([문제 해결 참조](#my-state-updates-in-transitions-are-out-of-order)).
 
-For common use cases, React provides built-in abstractions such as:
+일반적인 사용 사례를 위해 React는 다음과 같은 내장 추상화 기능을 제공합니다.
 - [`useActionState`](/reference/react/useActionState)
 - [`<form>` actions](/reference/react-dom/components/form)
 - [Server Functions](/reference/rsc/server-functions)
 
-These solutions handle request ordering for you. When using Transitions to build your own custom hooks or libraries that manage async state transitions, you have greater control over the request ordering, but you must handle it yourself.
+이러한 솔루션은 요청 순서를 자동으로 처리합니다. Transitions를 사용하여 custom Hook 또는 라이브러리를 구축하여 비동기 상태 전환을 관리하는 경우, 요청 순서를 더욱 세밀하게 제어할 수 있지만, 직접 처리해야 합니다.
 
 <Solution />
 
-#### Updating the quantity without an Action {/*updating-the-users-name-without-an-action*/}
+#### Action 없이 수량 업데이트 {/*updating-the-users-name-without-an-action*/}
 
-In this example, the `updateQuantity` function also simulates a request to the server to update the item's quantity in the cart. This function is *artificially slowed down* so that it takes at least a second to complete the request.
+이 예시에서 `updateQuantity` 함수는 장바구니 내 아이템의 수량을 업데이트하기 위해 서버로 요청을 보내는 동작도 시뮬레이션합니다. 이 함수는 요청 완료에 최소 1초가 소요되도록 *인위적으로 속도가 늦춰져 있습니다*.
 
-Update the quantity multiple times quickly. Notice that the pending "Total" state is shown while any requests is in progress, but the "Total" updates multiple times for each time the "quantity" was clicked:
+수량을 빠르게 여러 번 업데이트하면, 요청이 진행 중인 동안에는 "Total" 상태가 대기 중으로 표시됩니다. 그러나 "quantity"을 클릭할 때마다 "Total"이 여러 번 업데이트됩니다.
 
 <Sandpack>
 
@@ -367,7 +352,7 @@ export default function App({}) {
   const [isPending, setIsPending] = useState(false);
 
   const onUpdateQuantity = async newQuantity => {
-    // Manually set the isPending State.
+    // isPending의 상태를 수동으로 설정합니다.
     setIsPending(true);
     const savedQuantity = await updateQuantity(newQuantity);
     setIsPending(false);
@@ -427,7 +412,7 @@ export default function Total({quantity, isPending}) {
 ```js src/api.js
 export async function updateQuantity(newQuantity) {
   return new Promise((resolve, reject) => {
-    // Simulate a slow network request.
+    // 네트워크 요청을 느리게 시뮬레이션합니다.
     setTimeout(() => {
       resolve(newQuantity);
     }, 2000);
@@ -464,7 +449,7 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-A common solution to this problem is to prevent the user from making changes while the quantity is updating:
+이 문제에 대한 일반적인 해결책은 수량이 업데이트되는 동안 사용자가 변경을 수행하지 못하도록 하는 것입니다.
 
 <Sandpack>
 
@@ -495,7 +480,7 @@ export default function App({}) {
 
   const onUpdateQuantity = async event => {
     const newQuantity = event.target.value;
-    // Manually set the isPending state.
+    // isPending의 상태를 수동으로 설정합니다.
     setIsPending(true);
     const savedQuantity = await updateQuantity(newQuantity);
     setIsPending(false);
@@ -553,7 +538,7 @@ export default function Total({quantity, isPending}) {
 ```js src/api.js
 export async function updateQuantity(newQuantity) {
   return new Promise((resolve, reject) => {
-    // Simulate a slow network request.
+    // 네트워크 요청을 느리게 시뮬레이션합니다.
     setTimeout(() => {
       resolve(newQuantity);
     }, 2000);
@@ -590,7 +575,7 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-This solution makes the app feel slow, because the user must wait each time they update the quantity. It's possible to add more complex handling manually to allow the user to interact with the UI while the quantity is updating, but Actions handle this case with a straight-forward built-in API.
+이 솔루션은 사용자가 수량을 업데이트할 때마다 기다려야 하므로 앱이 느리게 느껴질 수 있습니다. 수량이 업데이트되는 동안에도 사용자가 UI와 계속해서 상호 작용할 수 있도록 수동으로 더 복잡한 처리를 추가할 수 있지만, Actions은 이러한 경우를 간단하게 처리할 수 있는 내장 API를 제공합니다.
 
 <Solution />
 
@@ -598,12 +583,11 @@ This solution makes the app feel slow, because the user must wait each time they
 
 ---
 
-### Exposing `action` prop from components {/*exposing-action-props-from-components*/}
+### 컴포넌트에서 Action 프로퍼티를 노출하기 {/*exposing-action-props-from-components*/}
 
-You can expose an `action` prop from a component to allow a parent to call an Action.
+컴포넌트에서 `action` 프로퍼티를 노출시켜 부모 컴포넌트에서 Action을 호출할 수 있습니다.
 
-
-For example, this `TabButton` component wraps its `onClick` logic in an `action` prop:
+예를 들어, 이 `TabButton` 컴포넌트는 `onClick`에서 실행될 로직이 `action` prop으로 감싸져있습니다.
 
 ```js {8-10}
 export default function TabButton({ action, children, isActive }) {
@@ -623,9 +607,7 @@ export default function TabButton({ action, children, isActive }) {
 }
 ```
 
-부모 컴포넌트가 `onClick` 이벤트 핸들러 내에서 state를 업데이트하기 때문에 해당 state 업데이트는 Transition 으로 표시됩니다. 그렇기 때문에 앞의 예시에서처럼 "posts"을 클릭한 다음 바로 "Contact"를 클릭할 수 있습니다. 선택한 탭을 업데이트하는 것은 Transition 으로 표시되므로 사용자 상호작용을 차단하지 않습니다.
-
-Because the parent component updates its state inside the `action`, that state update gets marked as a Transition. This means you can click on "Posts" and then immediately click "Contact" and it does not block  user interactions: {/*TODO*/}
+부모 컴포넌트가 `action` 내부에서 상태를 업데이트하기 때문에, 해당 상태 업데이트는 Transition으로 표시됩니다. 그렇기 때문에 "Posts"을 클릭한 후 즉시 "Contact"를 클릭해도 사용자 상호작용이 차단되지 않습니다.
 
 <Sandpack>
 
@@ -754,7 +736,7 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-### Displaying a pending visual state {/*displaying-a-pending-visual-state*/}
+### 대기 상태를 시각적으로 표현하기 {/*displaying-a-pending-visual-state*/}
 
 `useTransition`이 반환하는 `isPending` boolean 값을 사용하여 transition이 진행 중임을 사용자에게 표시할 수 있습니다. 예를 들어 탭 버튼은 특별한 "pending" 시각적 상태를 가질 수 있습니다.
 
@@ -903,9 +885,7 @@ b { display: inline-block; margin-right: 10px; }
 
 ### 원치 않는 로딩 표시기 방지 {/*preventing-unwanted-loading-indicators*/}
 
-이 예시에서 `PostsTab` 컴포넌트는 [Suspense-enabled](/reference/react/Suspense) 데이터 소스를 사용하여 일부 데이터를 가져옵니다. "Posts" 탭을 클릭하면 `PostsTab` 컴포넌트가 *suspends* 되어 가장 가까운 로딩 폴백이 나타납니다.
-
-In this example, the `PostsTab` component fetches some data using [use](/reference/react/use). When you click the "Posts" tab, the `PostsTab` component *suspends*, causing the closest loading fallback to appear: {/*TODO*/}
+이 예시에서 `PostsTab` 컴포넌트는 [use](/reference/react/use)를 사용하여 데이터를 가져옵니다. "Posts" 탭을 클릭하면 `PostsTab` 컴포넌트가 *suspend* 되어 가장 가까운 로딩 Fallback이 나타납니다.
 
 <Sandpack>
 
@@ -1059,9 +1039,8 @@ b { display: inline-block; margin-right: 10px; }
 
 </Sandpack>
 
-로딩 표시기를 표시하기 위해 전체 탭 컨테이너를 숨기면 사용자 경험이 어색해집니다. `TabButton`에 `useTransition`을 추가하면 탭 버튼에 보류 중인 상태를 표시할 수 있습니다.
+로딩 표시기를 표시하기 위해 전체 탭 컨테이너를 숨기면 사용자 경험이 어색해집니다. `useTransition`을 `TabButton`에 추가하면 탭 버튼 내부에 대기 중인 상태를 표시할 수 있습니다.
 
-Hiding the entire tab container to show a loading indicator leads to a jarring user experience. If you add `useTransition` to `TabButton`, you can instead display the pending state in the tab button instead. {/*TODO*/}
 
 "Posts"을 클릭하면 더 이상 전체 탭 컨테이너가 스피너로 바뀌지 않습니다.
 
@@ -1231,8 +1210,6 @@ b { display: inline-block; margin-right: 10px; }
 
 Transition은 *이미 표시된* 콘텐츠(예시: 탭 컨테이너)를 숨기지 않을 만큼만 "대기"합니다. 만약 Posts 탭에 [중첩된 `<Suspense>` 경계](/reference/react/Suspense#revealing-nested-content-as-it-loads)가 있는 경우 Transition 은 이를 "대기"하지 않습니다.
 
-Transitions only "wait" long enough to avoid hiding *already revealed* content (like the tab container). If the Posts tab had a [nested `<Suspense>` boundary,](/reference/react/Suspense#revealing-nested-content-as-it-loads) the Transition would not "wait" for it. {/*TODO*/}
-
 </Note>
 
 ---
@@ -1254,20 +1231,13 @@ function Router() {
   // ...
 ```
 
-두 가지 이유로 이 방법을 권장합니다.
+세 가지 이유로 이 방법을 권장합니다.
 
 - [Transition은 중단할 수 있으므로](#marking-a-state-update-as-a-non-blocking-transition) 사용자는 리렌더링이 완료될 때까지 기다릴 필요 없이 바로 클릭할 수 있습니다.
 - [Transition은 원치 않는 로딩 표시기를 방지하므로](#preventing-unwanted-loading-indicators) 사용자가 탐색 시 갑작스러운 이동을 방지할 수 있습니다.
+- [Transition은 모든 보류 중인 작업을 대기하므로](#perform-non-blocking-updates-with-actions) 사용자는 사이드 이펙트가 완료된 후에 새로운 페이지를 볼 수 있습니다.
 
-다음은 탐색을 위해 Transition 을 사용하는 아주 간단한 라우터 예시입니다.
-
-This is recommended for three reasons:
-
-- [Transitions are interruptible,](#marking-a-state-update-as-a-non-blocking-transition) which lets the user click away without waiting for the re-render to complete.
-- [Transitions prevent unwanted loading indicators,](#preventing-unwanted-loading-indicators) which lets the user avoid jarring jumps on navigation.
-- [Transitions wait for all pending actions](#perform-non-blocking-updates-with-actions) which lets the user wait for side effects to complete before the new page is shown.
-
-Here is a simplified router example using Transitions for navigations. {/*TODO*/}
+다음은 navigation에 Transitions를 사용하는 간단한 라우터 예시입니다.
 
 <Sandpack>
 
@@ -1575,9 +1545,7 @@ main {
 
 ### Error boundary로 사용자에게 오류 표시하기 {/*displaying-an-error-to-users-with-error-boundary*/}
 
-startTransition에 전달된 함수가 오류를 발생시키면 [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용하여 사용자에게 오류를 표시할 수 있습니다. error boundary를 사용하려면 useTransition을 호출하는 컴포넌트를 error boundary로 래핑하세요. startTransition에 전달된 함수에서 오류가 발생하면, error boundary의 fallback이 표시됩니다.
-
-If a function passed to `startTransition` throws an error, you can display an error to your user with an [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). To use an error boundary, wrap the component where you are calling the `useTransition` in an error boundary. Once the function passed to `startTransition` errors, the fallback for the error boundary will be displayed. {/*TODO*/}
+startTransition에 전달된 함수에서 오류가 발생하면 [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용하여 사용자에게 오류를 표시할 수 있습니다. error boundary를 사용하려면 useTransition을 호출하는 컴포넌트를 error boundary로 감싸면 됩니다. startTransition에 전달된 함수에서 오류가 발생하면 error boundary의 Fallback이 표시됩니다.
 
 <Sandpack>
 
@@ -1718,14 +1686,14 @@ setTimeout(() => {
 
 ---
 
-### React doesn't treat my state update after `await` as a Transition {/*react-doesnt-treat-my-state-update-after-await-as-a-transition*/}
+### React는 `await` 이후의 상태 업데이트를 Transition으로 처리하지 않습니다. {/*react-doesnt-treat-my-state-update-after-await-as-a-transition*/}
 
-When you use `await` inside a `startTransition` function, the state updates that happen after the `await` are not marked as Transitions. You must wrap state updates after each `await` in a `startTransition` call:
+`startTransition` 함수 내부에서 `await`를 사용할 경우, `await` 이후에 발생하는 상태 업데이트는 Transition으로 처리되지 않습니다. 각 `await` 이후에 발생하는 상태 업데이트를 별도의 `startTransition` 호출로 감싸야 합니다.
 
 ```js
 startTransition(async () => {
   await someAsyncFunction();
-  // ❌ Not using startTransition after await
+  // ❌ await 이후에 startTransition을 사용하지 않음
   setPage('/about');
 });
 ```
@@ -1735,14 +1703,14 @@ startTransition(async () => {
 ```js
 startTransition(async () => {
   await someAsyncFunction();
-  // ✅ Using startTransition *after* await
+  // ✅ await *이후에* startTransition을 사용
   startTransition(() => {
     setPage('/about');
   });
 });
 ```
 
-This is a JavaScript limitation due to React losing the scope of the async context. In the future, when [AsyncContext](https://github.com/tc39/proposal-async-context) is available, this limitation will be removed.
+이는 JavaScript의 한계로 인해 React가 [AsyncContext](https://github.com/tc39/proposal-async-context)의 범위를 잃기 때문입니다. 향후 AsyncContext가 지원되면 이러한 제한 사항은 해결될 것입니다.
 
 ---
 
@@ -1787,13 +1755,13 @@ function setState() {
 }
 ```
 
-### My state updates in Transitions are out of order {/*my-state-updates-in-transitions-are-out-of-order*/}
+### Transitions에서 상태 업데이트가 순서대로 이루어지지 않아요 {/*my-state-updates-in-transitions-are-out-of-order*/}
 
-If you `await` inside `startTransition`, you might see the updates happen out of order.
+`startTransition` 내부에서 `await`를 사용하면 상태 업데이트가 순서대로 발생하지 않을 수 있습니다.
 
-In this example, the `updateQuantity` function simulates a request to the server to update the item's quantity in the cart. This function *artificially returns the every other request after the previous* to simulate race conditions for network requests.
+이 예시에서 `updateQuantity` 함수는 서버에 요청을 보내 장바구니에서 항목의 수량을 업데이트하는 동작을 시뮬레이션합니다. 이 함수는 *이전 요청 후마다 다른 요청을 인위적으로 반환*하여 네트워크 요청에 대한 경쟁 상태(race condition)를 시뮬레이션합니다.
 
-Try updating the quantity once, then update it quickly multiple times. You might see the incorrect total:
+수량을 한 번 업데이트한 후, 빠르게 여러 번 업데이트를 시도해 보세요. 그러면 잘못된 총합이 표시될 수 있습니다
 
 <Sandpack>
 
@@ -1821,14 +1789,13 @@ import Total from "./Total";
 export default function App({}) {
   const [quantity, setQuantity] = useState(1);
   const [isPending, startTransition] = useTransition();
-  // Store the actual quantity in separate state to show the mismatch.
+  // 실제 수량을 별도의 state에 저장하여 불일치를 표시합니다.
   const [clientQuantity, setClientQuantity] = useState(1);
 
   const updateQuantityAction = newQuantity => {
     setClientQuantity(newQuantity);
 
-    // Access the pending state of the transition,
-    // by wrapping in startTransition again.
+    // 트랜지션의 대기 상태에 접근하기 위해 startTransition을 다시 감쌉니다.
     startTransition(async () => {
       const savedQuantity = await updateQuantity(newQuantity);
       startTransition(() => {
@@ -1854,7 +1821,7 @@ import {startTransition} from 'react';
 
 export default function Item({action}) {
   function handleChange(e) {
-    // Update the quantity in an Action.
+    // 수량을 업데이트하는 Action입니다.
     startTransition(() => {
       action(e.target.value);
     });
@@ -1910,7 +1877,7 @@ export async function updateQuantity(newName) {
       setTimeout(() => {
         firstRequest = true;
         resolve(newName);
-        // Simulate every other request being slower
+        // 매번 다른 요청이 더 느리게 반환되도록 시뮬레이션합니다.
       }, 1000);
     } else {
       setTimeout(() => {
@@ -1960,9 +1927,7 @@ export async function updateQuantity(newName) {
 
 </Sandpack>
 
+여러 번 클릭하면 먼저 보낸 요청이 나중에 보낸 요청보다 먼저 처리될 수 있습니다. 이런 경우 React는 현재 의도한 순서를 알 수 있는 방법이 없습니다. 이는 업데이트가 비동기적으로 예약되고, React가 비동기 경계를 거쳐 순서에 대한 컨텍스트를 잃기 때문입니다.
 
-When clicking multiple times, it's possible for previous requests to finish after later requests. When this happens, React currently has no way to know the intended order. This is because the updates are scheduled asynchronously, and React loses context of the order across the async boundary.
-
-This is expected, because Actions within a Transition do not guarantee execution order. For common use cases, React provides higher-level abstractions like [`useActionState`](/reference/react/useActionState) and [`<form>` actions](/reference/react-dom/components/form) that handle ordering for you. For advanced use cases, you'll need to implement your own queuing and abort logic to handle this.
-
+이것은 예상된 동작입니다. Transition 내에서의 액션은 실행 순서를 보장하지 않기 때문입니다. 일반적인 사용 사례에서는 React가 [`useActionState`](/reference/react/useActionState)나 [`<form>` actions](/reference/react-dom/components/form)과 같은 더 높은 수준의 추상화를 제공하여 순서를 처리해 줍니다. 고급 사용 사례에서는 이 문제를 처리하기 위해 자체적인 큐잉(queuing) 및 취소 로직을 구현해야 합니다.
 

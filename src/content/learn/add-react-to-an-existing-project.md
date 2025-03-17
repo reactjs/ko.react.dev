@@ -63,12 +63,8 @@ npm install react react-dom
 <html>
   <head><title>My app</title></head>
   <body>
-<<<<<<< HEAD
     <!-- 기존 페이지 컨텐츠 (이 예시에서는 이 부분이 대체됩니다)-->
-=======
-    <!-- Your existing page content (in this example, it gets replaced) -->
     <div id="root"></div>
->>>>>>> b22cbc3fed310b39c99fdd0f01621ac1903d1e8e
   </body>
 </html>
 ```

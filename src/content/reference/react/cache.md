@@ -5,7 +5,7 @@ canary: true
 
 <RSC>
 
-`cache` is only for use with [React Server Components](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components).
+`cache`는 오직 [React 서버 컴포넌트](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)와 함께 사용합니다.
 
 </RSC>
 
