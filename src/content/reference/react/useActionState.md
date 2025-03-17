@@ -105,15 +105,12 @@ function MyComponent() {
 
 `useActionState`가 반환하는 배열은 다음과 같은 요소를 갖습니다.
 
-<<<<<<< HEAD
 1. 폼의 <CodeStep step={1}>현재 State</CodeStep>입니다. 처음에는 전달한 <CodeStep step={4}>초기 State</CodeStep>로 설정되며, 폼이 제출된 후에는 전달한 <CodeStep step={3}>액션</CodeStep>의 반환값으로 설정됩니다.
 2. `<form>`의 `action` Prop에 전달할 <CodeStep step={2}>새로운 액션</CodeStep>입니다.
 3. 액션이 처리되는 동안 사용할 수 있는 <CodeStep step={1}>대기<sup>Pending</sup> State</CodeStep>입니다.
-=======
 1. The <CodeStep step={1}>current state</CodeStep> of the form, which is initially set to the <CodeStep step={4}>initial state</CodeStep> you provided, and after the form is submitted is set to the return value of the <CodeStep step={3}>action</CodeStep> you provided.
 2. A <CodeStep step={2}>new action</CodeStep> that you pass to `<form>` as its `action` prop or call manually within `startTransition`.
 3. A <CodeStep step={1}>pending state</CodeStep> that you can utilise while your action is processing.
->>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 폼 제출 시, <CodeStep step={3}>액션</CodeStep> 함수가 호출되고 그 반환값이 폼의 새로운 <CodeStep step={1}>현재 State</CodeStep>가 됩니다.
 
