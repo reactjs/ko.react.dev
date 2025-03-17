@@ -27,11 +27,7 @@ description: React 18 은 수년간의 준비 끝에 탄생한 버전으로 Reac
 
 특히, 우리는 포크된 I/O 라이브러리(예: react-fetch)를 사용하는 아이디어를 포기하고 대신 호환성 향상을 위해 async/await 모델을 채택하고 있습니다. 데이터 불러오기에 라우터를 사용할 수도 있기 때문에 기술적으로 RSC의 릴리스에 지장을 주지는 않습니다. 또 다른 변화는 파일 확장자 방식에서 벗어나 [경계를 주석](https://github.com/reactjs/rfcs/pull/189#issuecomment-1116482278)으로 처리하는 방식을 채택하고 있다는 점입니다.
 
-<<<<<<< HEAD
 Vercel 및 Shopify와 협력하여 Webpack 및 Vite 모두에서 공유 시맨틱에 대한 번들러 지원을 통합하고 있습니다. 출시 전에 전체 React 생태계에서 RSC의 의미가 동일한지 확인하고자 합니다. 이것은 안정에 도달하는 데 주요 장애물입니다.
-=======
-We’re working together with Vercel and Shopify to unify bundler support for shared semantics in both webpack and Vite. Before launch, we want to make sure that the semantics of RSCs are the same across the whole React ecosystem. This is the major blocker for reaching stable.
->>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 ## 자산<sup>Asset</sup> 로딩 {/*asset-loading*/}
 
