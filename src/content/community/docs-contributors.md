@@ -31,7 +31,6 @@ React 문서는 [React 팀](/community/team)과 [외부 기여자](https://githu
 
 ## 개발 {/*development*/}
 
-<<<<<<< HEAD
 * [Jared Palmer](https://twitter.com/jaredpalmer): 사이트 개발
 * [ThisDotLabs](https://www.thisdot.co/) ([Dane Grant](https://twitter.com/danecando), [Dustin Goodman](https://twitter.com/dustinsgoodman)): 사이트 개발
 * [CodeSandbox](https://codesandbox.io/) ([Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), [Danilo Woznica](https://twitter.com/danilowoz)): Sandbox 통합
@@ -39,15 +38,6 @@ React 문서는 [React 팀](/community/team)과 [외부 기여자](https://githu
 * [Rick Hanlon](https://twitter.com/rickhanlonii): 사이트 개발
 * [Harish Kumar](https://www.strek.in/): 개발과 유지보수
 * [Luna Ruan](https://twitter.com/lunaruan): Sandbox 개선
-=======
-* [Jared Palmer](https://twitter.com/jaredpalmer): site development
-* [ThisDotLabs](https://www.thisdot.co/) ([Dane Grant](https://twitter.com/danecando), [Dustin Goodman](https://twitter.com/dustinsgoodman)): site development
-* [CodeSandbox](https://codesandbox.io/) ([Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), [Danilo Woznica](https://twitter.com/danilowoz)): sandbox integration
-* [Dan Abramov](https://bsky.app/profile/danabra.mov): site development
-* [Rick Hanlon](https://twitter.com/rickhanlonii): site development
-* [Harish Kumar](https://www.strek.in/): development and maintenance
-* [Luna Ruan](https://twitter.com/lunaruan): sandbox improvements
->>>>>>> b22cbc3fed310b39c99fdd0f01621ac1903d1e8e
 
 ## 한국어 번역 {/*korean-translations*/}
 
