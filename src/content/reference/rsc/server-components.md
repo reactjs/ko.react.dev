@@ -300,3 +300,4 @@ function Comments({commentsPromise}) {
 `note` 콘텐츠는 페이지 렌더링에 중요한 데이터이므로 서버에서 `await` 합니다. 댓글은 중요도가 낮아 페이지 아래에 표시되므로 서버에서 Promise를 시작하고 클라이언트에서 `use` API를 사용하여 기다립니다. 이는 클라이언트에서 지연되지만 `note` 콘텐츠가 렌더링되는 것을 차단하지 않습니다.
 
 비동기 컴포넌트는 [클라이언트에서 지원되지 않으므로](#why-cant-i-use-async-components-on-the-client) Promise를 `use`로 기다립니다.
+Since async components are not supported on the client, we await the promise with `use`.

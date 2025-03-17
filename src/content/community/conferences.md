@@ -21,6 +21,7 @@ April 3 (Reanimated Training) + April 4 (Conference), 2025. Paris, France.
 [Website](https://reactnativeconnection.io/) - [X](https://x.com/reactnativeconn) - [Bluesky](https://bsky.app/profile/reactnativeconnect.bsky.social)
 
 ### CityJS London 2025 {/*cityjs-london*/}
+
 April 23 - 25, 2025. In-person in London, UK
 
 [Website](https://london.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) -  [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)

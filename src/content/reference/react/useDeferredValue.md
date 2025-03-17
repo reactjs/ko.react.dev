@@ -92,6 +92,9 @@ function SearchPage() {
 - [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/getting-started/react-essentials) 같이 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기.
 - [`lazy`](/reference/react/lazy)를 활용한 지연 로딩 컴포넌트.
 - [`use`](/reference/react/use)를 사용해서 Promise 값 읽기.
+- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/app/getting-started/fetching-data#with-suspense)
+- Lazy-loading component code with [`lazy`](/reference/react/lazy)
+- Reading the value of a Promise with [`use`](/reference/react/use)
 
 [Suspense와 그 한계에 대해 자세히 알아보기](/reference/react/Suspense).
 
