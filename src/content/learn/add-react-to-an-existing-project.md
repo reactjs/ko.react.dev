@@ -44,7 +44,11 @@ title: 기존 프로젝트에 React 추가하기
 
 모듈 자바스크립트 환경은 모든 코드를 한 파일에 작성하는 것이 아닌, 각각의 React 컴포넌트를 개별 파일로 작성할 수 있게 합니다. 또한 (React 자체를 포함한) 다른 개발자들이 [npm](https://www.npmjs.com/) 레지스트리에 배포한 훌륭한 패키지들을 모두 사용할 수 있습니다. 이 작업을 수행하는 방법은 기존 설정에 따라 다릅니다.
 
+<<<<<<< HEAD
 * **이미 애플리케이션이 `import` 문을 이용해 파일로 분리하고 있다면** 기존에 가지고 있는 설정을 이용해 보세요. JS 코드에서 `<div />`를 작성하면 문법 오류가 발생하는지 확인해 보세요. 문법 오류가 발생한다면 [Babel을 이용한 자바스크립트 코드 변환](https://babeljs.io/setup)이 필요할 수 있으며, JSX를 사용하려면 [Babel React 프리셋](https://babeljs.io/docs/babel-preset-react)을 활성화해야 할 수도 있습니다.
+=======
+* **If your app doesn't have an existing setup for compiling JavaScript modules,** set it up with [Vite](https://vite.dev/). The Vite community maintains [many integrations with backend frameworks](https://github.com/vitejs/awesome-vite#integrations-with-backends), including Rails, Django, and Laravel. If your backend framework is not listed, [follow this guide](https://vite.dev/guide/backend-integration.html) to manually integrate Vite builds with your backend.
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 * **애플리케이션이 자바스크립트 모듈을 컴파일하기 위한 기존 설정이 없다면,** [Vite](https://vitejs.dev/)를 이용하여 설정하세요. Vite 커뮤니티는 Rails, Django, Laravel을 포함한 [다양한 백엔드 프레임워크와의 통합](https://github.com/vitejs/awesome-vite#integrations-with-backends)을 지원하고 있습니다. 사용 중인 백엔드 프레임워크가 목록에 없다면 [가이드를 참고하여](https://vitejs.dev/guide/backend-integration.html) Vite 빌드를 백엔드와 수동으로 통합하세요.
 
@@ -63,7 +67,11 @@ npm install react react-dom
 <html>
   <head><title>My app</title></head>
   <body>
+<<<<<<< HEAD
     <!-- 기존 페이지 컨텐츠 (이 예시에서는 이 부분이 대체됩니다)-->
+=======
+    <!-- Your existing page content (in this example, it gets replaced) -->
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
     <div id="root"></div>
   </body>
 </html>
@@ -86,7 +94,11 @@ root.render(<h1>Hello, world</h1>);
 
 <Note>
 
+<<<<<<< HEAD
 처음으로 기존 프로젝트에 모듈 자바스크립트 환경을 통합하기는 다소 어려워 보일 수 있으나, 그만한 가치가 있는 일입니다! 어려움을 겪는 부분이 있다면 [커뮤니티 리소스](/community)나 [Vite 채팅](https://chat.vitejs.dev/)을 이용해 보세요.
+=======
+Integrating a modular JavaScript environment into an existing project for the first time can feel intimidating, but it's worth it! If you get stuck, try our [community resources](/community) or the [Vite Chat](https://chat.vite.dev/).
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 </Note>
 
