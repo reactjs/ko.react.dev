@@ -50,13 +50,8 @@ Current members of the React team are listed in alphabetical order below.
     Josh majored in Mathematics and discovered programming while in college. His first professional developer job was to program insurance rate calculations in Microsoft Excel, the paragon of Reactive Programming which must be why he now works on React. In between that time Josh has been an IC, Manager, and Executive at a few startups. outside of work he likes to push his limits with cooking.
 </TeamMember>
 
-<<<<<<< HEAD
 <TeamMember name="Lauren Tan (나은)" permalink="lauren-tan" photo="/images/team/lauren.jpg" github="poteto" twitter="potetotes" threads="potetotes" bsky="no.lol" title="Engineer at Meta">
     나은은 `<marquee>`를 발견했을 때 개발의 전성기를 맞이했습니다. 그때부터 비슷한 느낌을 찾고 있습니다. 대학에서 컴퓨터과학 대신 재무금융을 전공하면서 엑셀로 코딩을 배웠습니다. 취미는 대화방에서 재미있는 밈을 공유하고, 남편과 함께 게임하고, 한국어를 배우고, 강아지 젤다와 노는 것입니다.
-=======
-<TeamMember name="Lauren Tan" permalink="lauren-tan" photo="/images/team/lauren.jpg" github="poteto" twitter="potetotes" threads="potetotes" bsky="no.lol" title="Engineer at Meta">
-    Lauren's programming career peaked when she first discovered the `<marquee>` tag. She’s been chasing that high ever since. She studied Finance instead of CS in college, so she learned to code using Excel. Lauren enjoys dropping cheeky memes in chat, playing video games with her partner, learning Korean, and petting her dog Zelda.
->>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 </TeamMember>
 
 <TeamMember name="Matt Carroll" permalink="matt-carroll" photo="/images/team/matt-carroll.png" github="mattcarrollcode" twitter="mattcarrollcode" threads="mattcarrollcode" title="Developer Advocate at Meta">

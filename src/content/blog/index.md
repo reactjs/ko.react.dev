@@ -4,13 +4,7 @@ title: React 블로그
 
 <Intro>
 
-<<<<<<< HEAD
 이 블로그는 React 팀의 업데이트에 대한 공식 출처입니다. 릴리스 노트 및 더 이상 사용되지 않는 기능들에 대한 공지<sup>Deprecation Notice</sup>를 비롯한 중요 내용들이 이곳에 먼저 공유됩니다. 트위터에서 [@reactjs](https://twitter.com/reactjs) 계정을 팔로우해도 좋지만, 이 블로그만으로도 모든 정보를 얻을 수 있습니다.
-=======
-This blog is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted here first. 
-
-You can also follow the [@react.dev](https://bsky.app/profile/react.dev) account on Bluesky, or [@reactjs](https://twitter.com/reactjs) account on Twitter, but you won’t miss anything essential if you only read this blog.
->>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 </Intro>
 

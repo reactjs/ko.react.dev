@@ -7,11 +7,7 @@ React의 모든 안정적인 빌드는 높은 수준의 테스트를 거치고 �
 
 </Intro>
 
-<<<<<<< HEAD
-지난 버전을 확인하려면, [React 버전](/versions) 페이지를 참고해주세요.
-=======
-This versioning policy describes our approach to version numbers for packages such as `react` and `react-dom`. For a list of previous releases, see the [Versions](/versions) page.
->>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
+This versioning policy describes our approach to version numbers for packages such as `react` and `react-dom`. 지난 버전을 확인하려면, [React 버전](/versions) 페이지를 참고해주세요.
 
 ## Stable releases {/*stable-releases*/}
 
