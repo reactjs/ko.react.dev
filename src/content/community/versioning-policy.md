@@ -7,7 +7,7 @@ React의 모든 안정적인 빌드는 높은 수준의 테스트를 거치고 �
 
 </Intro>
 
-지난 버전을 확인하려면, [React 버전](/versions) 페이지를 참고해주세요.
+This versioning policy describes our approach to version numbers for packages such as `react` and `react-dom`. 지난 버전을 확인하려면, [React 버전](/versions) 페이지를 참고해주세요.
 
 ## Stable releases {/*stable-releases*/}
 
@@ -23,7 +23,9 @@ Stable React releases (also known as “Latest” release channel) follow [seman
 
 마이너 릴리즈는 릴리즈의 가장 흔한 유형입니다.
 
-### Breaking Changes {/*breaking-changes*/}
+We know our users continue to use old versions of React in production. If we learn of a security vulnerability in React, we release a backported fix for all major versions that are affected by the vulnerability.
+
+### Breaking changes {/*breaking-changes*/}
 
 Breaking Changes는 모두에게 불편하기에 우리는 메이저 릴리즈의 수를 최소화하려고 노력합니다. 예를 들어, React 15는 2016년 4월에 릴리즈, React 16은 2017년 9월에 릴리즈, React 17은 2020년 10월에 릴리즈되었습니다.
 

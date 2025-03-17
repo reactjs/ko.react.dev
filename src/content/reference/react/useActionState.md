@@ -71,6 +71,10 @@ function StatefulForm({}) {
 2. `<form>` 컴포넌트의 `action` Prop이나 폼 내부 `<button>` 컴포넌트의 `formAction` Prop에 전달할 수 있는 새 액션입니다.
 3. 폼 액션이 대기 중인지 여부를 알려주는 `isPending` 플래그입니다.
 
+1. The current state. During the first render, it will match the `initialState` you have passed. After the action is invoked, it will match the value returned by the action.
+2. A new action that you can pass as the `action` prop to your `form` component or `formAction` prop to any `button` component within the form. The action can also be called manually within [`startTransition`](/reference/react/startTransition).
+3. The `isPending` flag that tells you whether there is a pending Transition.
+
 #### 주의 사항 {/*caveats*/}
 
 * React 서버 컴포넌트를 지원하는 프레임워크에서 `useActionState`를 사용하면, 클라이언트 자바스크립트 실행 전에도 폼과 상호작용할 수 있습니다. 만약 서버 컴포넌트를 사용하지 않는다면, 이는 단순히 컴포넌트 지역 State와 동일하게 동작합니다.
@@ -104,6 +108,9 @@ function MyComponent() {
 1. 폼의 <CodeStep step={1}>현재 State</CodeStep>입니다. 처음에는 전달한 <CodeStep step={4}>초기 State</CodeStep>로 설정되며, 폼이 제출된 후에는 전달한 <CodeStep step={3}>액션</CodeStep>의 반환값으로 설정됩니다.
 2. `<form>`의 `action` Prop에 전달할 <CodeStep step={2}>새로운 액션</CodeStep>입니다.
 3. 액션이 처리되는 동안 사용할 수 있는 <CodeStep step={1}>대기<sup>Pending</sup> State</CodeStep>입니다.
+1. The <CodeStep step={1}>current state</CodeStep> of the form, which is initially set to the <CodeStep step={4}>initial state</CodeStep> you provided, and after the form is submitted is set to the return value of the <CodeStep step={3}>action</CodeStep> you provided.
+2. A <CodeStep step={2}>new action</CodeStep> that you pass to `<form>` as its `action` prop or call manually within `startTransition`.
+3. A <CodeStep step={1}>pending state</CodeStep> that you can utilise while your action is processing.
 
 폼 제출 시, <CodeStep step={3}>액션</CodeStep> 함수가 호출되고 그 반환값이 폼의 새로운 <CodeStep step={1}>현재 State</CodeStep>가 됩니다.
 
