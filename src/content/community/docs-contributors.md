@@ -10,9 +10,8 @@ React 문서는 [React 팀](/community/team)과 [외부 기여자](https://githu
 
 ## 내용 {/*content*/}
 
-<<<<<<< HEAD
 * [Rachel Nabors](https://twitter.com/RachelNabors): 편집, 글쓰기, 그림 그리기
-* [Dan Abramov](https://twitter.com/dan_abramov): 글쓰기, 커리큘럼 설계
+* [Dan Abramov](https://bsky.app/profile/danabra.mov): 글쓰기, 커리큘럼 설계
 * [Sylwia Vargas](https://twitter.com/SylwiaVargas): 예시 코드
 * [Rick Hanlon](https://twitter.com/rickhanlonii): 글쓰기
 * [David McCabe](https://twitter.com/mcc_abe): 글쓰기
@@ -22,19 +21,6 @@ React 문서는 [React 팀](/community/team)과 [외부 기여자](https://githu
 * [Matt Carroll](https://twitter.com/mattcarrollcode): 편집, 글쓰기
 * [Natalia Tepluhina](https://twitter.com/n_tepluhina): 리뷰, 조언
 * [Sebastian Markbåge](https://twitter.com/sebmarkbage): 피드백
-=======
-* [Rachel Nabors](https://twitter.com/RachelNabors): editing, writing, illustrating
-* [Dan Abramov](https://bsky.app/profile/danabra.mov): writing, curriculum design
-* [Sylwia Vargas](https://twitter.com/SylwiaVargas): example code
-* [Rick Hanlon](https://twitter.com/rickhanlonii): writing
-* [David McCabe](https://twitter.com/mcc_abe): writing
-* [Sophie Alpert](https://twitter.com/sophiebits): writing
-* [Pete Hunt](https://twitter.com/floydophone): writing
-* [Andrew Clark](https://twitter.com/acdlite): writing
-* [Matt Carroll](https://twitter.com/mattcarrollcode): editing, writing
-* [Natalia Tepluhina](https://twitter.com/n_tepluhina): reviews, advice
-* [Sebastian Markbåge](https://twitter.com/sebmarkbage): feedback
->>>>>>> b22cbc3fed310b39c99fdd0f01621ac1903d1e8e
 
 ## 디자인 {/*design*/}
 
