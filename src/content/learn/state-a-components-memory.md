@@ -1450,11 +1450,9 @@ export default function FeedbackForm() {
 
 #### 불필요한 state 제거하기 {/*remove-unnecessary-state*/}
 
-<<<<<<< HEAD
 이 예시에서 버튼이 클릭 되면 사용자의 이름을 요청하고 그런 다음 환영 메시지를 표시해야 합니다. 이름을 유지하기 위해 state를 사용하려고 했지만, 어떤 이유로 항상 "Hello, !"라고 표시됩니다.
-=======
+
 When the button is clicked, this example should ask for the user's name and then display an alert greeting them. You tried to use state to keep the name, but for some reason the first time it shows "Hello, !", and then "Hello, [name]!" with the previous input every time after.
->>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 이 코드를 수정하려면 불필요한 state 변수를 제거하세요. ([왜 이것이 작동하지 않는지](/learn/state-as-a-snapshot)에 대해서는 나중에 설명하겠습니다.)
 
