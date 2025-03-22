@@ -97,6 +97,7 @@ root.unmount();
 이 함수는 주로 React 루트의 DOM 노드(또는 그 조상 노드)가 다른 코드에 의해 DOM에서 제거될 수 있는 경우에 유용합니다. 예를 들어 DOM에서 비활성 탭을 제거하는 jQuery 탭 패널을 상상해 보세요. 탭이 제거되면 그 안에 있는 모든 것(내부의 React 루트를 포함)이 DOM에서 제거됩니다. 이 경우 `root.unmount`를 호출하여 제거된 루트의 콘텐츠 관리를 "중지"하도록 React에 지시해야 합니다. 그렇지 않으면 제거된 루트 내부의 컴포넌트는 구독과 같은 전역 리소스를 정리하고 확보하는 법을 모르는 채로 있게 됩니다.
 
 `root.unmount`를 호출하면 루트에 있는 모든 컴포넌트가 마운트 해제되고, 트리상의 이벤트 핸들러나 State가 제거되며, 루트 DOM 노드에서 React가 "분리"됩니다.
+Calling `root.unmount` will unmount all the components in the root and "detach" React from the root DOM node, including removing any event handlers or state in the tree.
 
 #### 매개변수 {/*root-unmount-parameters*/}
 
@@ -267,6 +268,7 @@ export default function App() {
 </Sandpack>
 
 이것은 한 단계 아래까지만 적용되며 탈출구<sup>Escape Hatch</sup>를 의도한 것입니다. 남용하지 마세요. 텍스트 컨텐츠가 아닌 한 React는 잘못된 부분을 수정하지 않을 것이며, 갱신이 일어나기 전까지는 불일치 상태로 남아있을 것입니다.
+This only works one level deep, and is intended to be an escape hatch. Don’t overuse it. React will **not** attempt to patch mismatched text content.
 
 ---
 
@@ -369,552 +371,125 @@ export default function App({counter}) {
 
 Hydration된 루트에서 [`root.render`](#root-render)를 호출하는 것은 흔한 일은 아닙니다. 내부 컴포넌트 중 한 곳에서 [useState](/reference/react/useState)를 사용하는 것이 일반적입니다.
 
-### 처리되지 않은 오류에 대한 대화 상자 표시하기 {/*show-a-dialog-for-uncaught-errors*/}
+### Error logging in production {/*error-logging-in-production*/}
 
-기본적으로 React는 처리되지 않은 모든 오류를 콘솔에 기록합니다. 자체적인 오류 보고 기능을 구현하려면 선택적 루트 옵션인 `onUncaughtError`를 사용할 수 있습니다.
+By default, React will log all errors to the console. To implement your own error reporting, you can provide the optional error handler root options `onUncaughtError`, `onCaughtError` and `onRecoverableError`:
 
-```js [[1, 7, "onUncaughtError"], [2, 7, "error", 1], [3, 7, "errorInfo"], [4, 11, "componentStack"]]
-import { hydrateRoot } from 'react-dom/client';
-
-const root = hydrateRoot(
-  document.getElementById('root'),
-  <App />,
-  {
-    onUncaughtError: (error, errorInfo) => {
-      console.error(
-        'Uncaught error',
-        error,
-        errorInfo.componentStack
-      );
-    }
-  }
-);
-root.render(<App />);
-```
-
-<CodeStep step={1}>onUncaughtError</CodeStep> 옵션은 두 개의 인수를 받는 함수입니다.
-
-1. 발생한 <CodeStep step={2}>error</CodeStep>.
-2. 오류의 <CodeStep step={4}>componentStack</CodeStep>을 포함하는 <CodeStep step={3}>errorInfo</CodeStep> 객체.
-
-`onUncaughtError` 루트 옵션을 사용해 오류 대화 상자를 표시할 수 있습니다.
-
-<Sandpack>
-
-```html index.html hidden
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My app</title>
-</head>
-<body>
-<!--
-  React 앱의 오류로 인해 충돌이 발생할 수 있으므로, HTML의 기본 오류 대화 상자를 사용하였습니다.
--->
-<div id="error-dialog" class="hidden">
-  <h1 id="error-title" class="text-red"></h1>
-  <h3>
-    <pre id="error-message"></pre>
-  </h3>
-  <p>
-    <pre id="error-body"></pre>
-  </p>
-  <h4 class="-mb-20">This error occurred at:</h4>
-  <pre id="error-component-stack" class="nowrap"></pre>
-  <h4 class="mb-0">Call stack:</h4>
-  <pre id="error-stack" class="nowrap"></pre>
-  <div id="error-cause">
-    <h4 class="mb-0">Caused by:</h4>
-    <pre id="error-cause-message"></pre>
-    <pre id="error-cause-stack" class="nowrap"></pre>
-  </div>
-  <button
-    id="error-close"
-    class="mb-10"
-    onclick="document.getElementById('error-dialog').classList.add('hidden')"
-  >
-    Close
-  </button>
-  <h3 id="error-not-dismissible">This error is not dismissible.</h3>
-</div>
-<!--
-  "<div id="root">...</div>" 내부의 HTML 콘텐츠는 react-dom/server에 의해 App에서 생성되었습니다.
--->
-<div id="root"><div><span>This error shows the error dialog:</span><button>Throw error</button></div></div>
-</body>
-</html>
-```
-
-```css src/styles.css active
-label, button { display: block; margin-bottom: 20px; }
-html, body { min-height: 300px; }
-
-#error-dialog {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: white;
-  padding: 15px;
-  opacity: 0.9;
-  text-wrap: wrap;
-  overflow: scroll;
-}
-
-.text-red {
-  color: red;
-}
-
-.-mb-20 {
-  margin-bottom: -20px;
-}
-
-.mb-0 {
-  margin-bottom: 0;
-}
-
-.mb-10 {
-  margin-bottom: 10px;
-}
-
-pre {
-  text-wrap: wrap;
-}
-
-pre.nowrap {
-  text-wrap: nowrap;
-}
-
-.hidden {
- display: none;
-}
-```
-
-```js src/reportError.js hidden
-function reportError({ title, error, componentStack, dismissable }) {
-  const errorDialog = document.getElementById("error-dialog");
-  const errorTitle = document.getElementById("error-title");
-  const errorMessage = document.getElementById("error-message");
-  const errorBody = document.getElementById("error-body");
-  const errorComponentStack = document.getElementById("error-component-stack");
-  const errorStack = document.getElementById("error-stack");
-  const errorClose = document.getElementById("error-close");
-  const errorCause = document.getElementById("error-cause");
-  const errorCauseMessage = document.getElementById("error-cause-message");
-  const errorCauseStack = document.getElementById("error-cause-stack");
-  const errorNotDismissible = document.getElementById("error-not-dismissible");
-
-  // 제목 설정
-  errorTitle.innerText = title;
-
-  // 오류 메시지 및 본문 표시
-  const [heading, body] = error.message.split(/\n(.*)/s);
-  errorMessage.innerText = heading;
-  if (body) {
-    errorBody.innerText = body;
-  } else {
-    errorBody.innerText = '';
-  }
-
-  // 컴포넌트 스택 표시
-  errorComponentStack.innerText = componentStack;
-
-  // 콜 스택 표시
-  // 이미 메시지와 첫 번째 'Error:' 줄을 표시했으므로, 이를 제거.
-  errorStack.innerText = error.stack.replace(error.message, '').split(/\n(.*)/s)[1];
-
-  // 원인이 있는 경우 표시
-  if (error.cause) {
-    errorCauseMessage.innerText = error.cause.message;
-    errorCauseStack.innerText = error.cause.stack;
-    errorCause.classList.remove('hidden');
-  } else {
-    errorCause.classList.add('hidden');
-  }
-  // 취소할 수 있는 경우 닫기 버튼 표시
-  if (dismissable) {
-    errorNotDismissible.classList.add('hidden');
-    errorClose.classList.remove("hidden");
-  } else {
-    errorNotDismissible.classList.remove('hidden');
-    errorClose.classList.add("hidden");
-  }
-
-  // 대화 상자 표시
-  errorDialog.classList.remove("hidden");
-}
-
-export function reportCaughtError({error, cause, componentStack}) {
-  reportError({ title: "Caught Error", error, componentStack,  dismissable: true});
-}
-
-export function reportUncaughtError({error, cause, componentStack}) {
-  reportError({ title: "Uncaught Error", error, componentStack, dismissable: false });
-}
-
-export function reportRecoverableError({error, cause, componentStack}) {
-  reportError({ title: "Recoverable Error", error, componentStack,  dismissable: true });
-}
-```
-
-```js src/index.js active
+```js [[1, 6, "onCaughtError"], [2, 6, "error", 1], [3, 6, "errorInfo"], [4, 10, "componentStack", 15]]
 import { hydrateRoot } from "react-dom/client";
-import App from "./App.js";
-import {reportUncaughtError} from "./reportError";
-import "./styles.css";
-import {renderToString} from 'react-dom/server';
+import { reportCaughtError } from "./reportError";
 
 const container = document.getElementById("root");
-const root = hydrateRoot(container, <App />, {
-  onUncaughtError: (error, errorInfo) => {
-    if (error.message !== 'Known error') {
-      reportUncaughtError({
-        error,
-        componentStack: errorInfo.componentStack
-      });
-    }
-  }
-});
-```
-
-```js src/App.js
-import { useState } from 'react';
-
-export default function App() {
-  const [throwError, setThrowError] = useState(false);
-
-  if (throwError) {
-    foo.bar = 'baz';
-  }
-
-  return (
-    <div>
-      <span>This error shows the error dialog:</span>
-      <button onClick={() => setThrowError(true)}>
-        Throw error
-      </button>
-    </div>
-  );
-}
-```
-
-</Sandpack>
-
-
-### Error Boundary 오류 표시하기 {/*displaying-error-boundary-errors*/}
-
-기본적으로 React는 Error Boundary에 의해 잡힌 모든 오류를 `console.error`에 기록합니다. 이 동작을 재정의하려면 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)에서 잡힌 오류 처리에 대한 선택적 루트 옵션인 `onCaughtError`를 사용할 수 있습니다.
-
-```js [[1, 7, "onCaughtError"], [2, 7, "error", 1], [3, 7, "errorInfo"], [4, 11, "componentStack"]]
-import { hydrateRoot } from 'react-dom/client';
-
-const root = hydrateRoot(
-  document.getElementById('root'),
-  <App />,
-  {
-    onCaughtError: (error, errorInfo) => {
-      console.error(
-        'Caught error',
-        error,
-        errorInfo.componentStack
-      );
-    }
-  }
-);
-root.render(<App />);
-```
-
-<CodeStep step={1}>onCaughtError</CodeStep> 옵션은 두 개의 인수를 받는 함수입니다.
-
-1. Error Boundary에 의해 잡힌 <CodeStep step={2}>error</CodeStep>.
-2. 오류의 <CodeStep step={4}>componentStack</CodeStep>을 포함하는 <CodeStep step={3}>errorInfo</CodeStep>.
-
-`onCaughtError` 루트 옵션을 사용해 오류 대화 상자를 표시하거나 기록된 오류 중 알고 있는 오류를 필터링할 수 있습니다.
-
-<Sandpack>
-
-```html index.html hidden
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My app</title>
-</head>
-<body>
-<!--
-  React 앱의 오류로 인해 충돌이 발생할 수 있으므로, HTML의 기본 오류 대화 상자를 사용하였습니다.
--->
-<div id="error-dialog" class="hidden">
-  <h1 id="error-title" class="text-red"></h1>
-  <h3>
-    <pre id="error-message"></pre>
-  </h3>
-  <p>
-    <pre id="error-body"></pre>
-  </p>
-  <h4 class="-mb-20">This error occurred at:</h4>
-  <pre id="error-component-stack" class="nowrap"></pre>
-  <h4 class="mb-0">Call stack:</h4>
-  <pre id="error-stack" class="nowrap"></pre>
-  <div id="error-cause">
-    <h4 class="mb-0">Caused by:</h4>
-    <pre id="error-cause-message"></pre>
-    <pre id="error-cause-stack" class="nowrap"></pre>
-  </div>
-  <button
-    id="error-close"
-    class="mb-10"
-    onclick="document.getElementById('error-dialog').classList.add('hidden')"
-  >
-    Close
-  </button>
-  <h3 id="error-not-dismissible">This error is not dismissible.</h3>
-</div>
-<!--
-  "<div id="root">...</div>" 내부의 HTML 콘텐츠는 react-dom/server에 의해 App에서 생성되었습니다.
--->
-<div id="root"><span>This error will not show the error dialog:</span><button>Throw known error</button><span>This error will show the error dialog:</span><button>Throw unknown error</button></div>
-</body>
-</html>
-```
-
-```css src/styles.css active
-label, button { display: block; margin-bottom: 20px; }
-html, body { min-height: 300px; }
-
-#error-dialog {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: white;
-  padding: 15px;
-  opacity: 0.9;
-  text-wrap: wrap;
-  overflow: scroll;
-}
-
-.text-red {
-  color: red;
-}
-
-.-mb-20 {
-  margin-bottom: -20px;
-}
-
-.mb-0 {
-  margin-bottom: 0;
-}
-
-.mb-10 {
-  margin-bottom: 10px;
-}
-
-pre {
-  text-wrap: wrap;
-}
-
-pre.nowrap {
-  text-wrap: nowrap;
-}
-
-.hidden {
- display: none;
-}
-```
-
-```js src/reportError.js hidden
-function reportError({ title, error, componentStack, dismissable }) {
-  const errorDialog = document.getElementById("error-dialog");
-  const errorTitle = document.getElementById("error-title");
-  const errorMessage = document.getElementById("error-message");
-  const errorBody = document.getElementById("error-body");
-  const errorComponentStack = document.getElementById("error-component-stack");
-  const errorStack = document.getElementById("error-stack");
-  const errorClose = document.getElementById("error-close");
-  const errorCause = document.getElementById("error-cause");
-  const errorCauseMessage = document.getElementById("error-cause-message");
-  const errorCauseStack = document.getElementById("error-cause-stack");
-  const errorNotDismissible = document.getElementById("error-not-dismissible");
-
-  // 제목 설정
-  errorTitle.innerText = title;
-
-  // Display error message and body
-  // 오류 메시지 및 본문 표시
-  const [heading, body] = error.message.split(/\n(.*)/s);
-  errorMessage.innerText = heading;
-  if (body) {
-    errorBody.innerText = body;
-  } else {
-    errorBody.innerText = '';
-  }
-
-  // 컴포넌트 스택 표시
-  errorComponentStack.innerText = componentStack;
-
-  // 콜 스택 표시
-  // 이미 메시지와 첫 번째 'Error:' 줄을 표시했으므로, 이를 제거.
-  errorStack.innerText = error.stack.replace(error.message, '').split(/\n(.*)/s)[1];
-
-  // 원인이 있는 경우 표시
-  if (error.cause) {
-    errorCauseMessage.innerText = error.cause.message;
-    errorCauseStack.innerText = error.cause.stack;
-    errorCause.classList.remove('hidden');
-  } else {
-    errorCause.classList.add('hidden');
-  }
-  // 취소할 수 있는 경우 닫기 버튼 표시
-  if (dismissable) {
-    errorNotDismissible.classList.add('hidden');
-    errorClose.classList.remove("hidden");
-  } else {
-    errorNotDismissible.classList.remove('hidden');
-    errorClose.classList.add("hidden");
-  }
-
-  // 대화 상자 표시
-  errorDialog.classList.remove("hidden");
-}
-
-export function reportCaughtError({error, cause, componentStack}) {
-  reportError({ title: "Caught Error", error, componentStack,  dismissable: true});
-}
-
-export function reportUncaughtError({error, cause, componentStack}) {
-  reportError({ title: "Uncaught Error", error, componentStack, dismissable: false });
-}
-
-export function reportRecoverableError({error, cause, componentStack}) {
-  reportError({ title: "Recoverable Error", error, componentStack,  dismissable: true });
-}
-```
-
-```js src/index.js active
-import { hydrateRoot } from "react-dom/client";
-import App from "./App.js";
-import {reportCaughtError} from "./reportError";
-import "./styles.css";
-
-const container = document.getElementById("root");
-const root = hydrateRoot(container, <App />, {
+const root = hydrateRoot(container, {
   onCaughtError: (error, errorInfo) => {
-    if (error.message !== 'Known error') {
+    if (error.message !== "Known error") {
       reportCaughtError({
         error,
-        componentStack: errorInfo.componentStack
+        componentStack: errorInfo.componentStack,
       });
     }
+  },
+});
+```
+
+The <CodeStep step={1}>onCaughtError</CodeStep> option is a function called with two arguments:
+
+1. The <CodeStep step={2}>error</CodeStep> that was thrown.
+2. An <CodeStep step={3}>errorInfo</CodeStep> object that contains the <CodeStep step={4}>componentStack</CodeStep> of the error.
+
+Together with `onUncaughtError` and `onRecoverableError`, you can implement your own error reporting system:
+
+<Sandpack>
+
+```js src/reportError.js
+function reportError({ type, error, errorInfo }) {
+  // The specific implementation is up to you.
+  // `console.error()` is only used for demonstration purposes.
+  console.error(type, error, "Component Stack: ");
+  console.error("Component Stack: ", errorInfo.componentStack);
+}
+
+export function onCaughtErrorProd(error, errorInfo) {
+  if (error.message !== "Known error") {
+    reportError({ type: "Caught", error, errorInfo });
   }
+}
+
+export function onUncaughtErrorProd(error, errorInfo) {
+  reportError({ type: "Uncaught", error, errorInfo });
+}
+
+export function onRecoverableErrorProd(error, errorInfo) {
+  reportError({ type: "Recoverable", error, errorInfo });
+}
+```
+
+```js src/index.js active
+import { hydrateRoot } from "react-dom/client";
+import App from "./App.js";
+import {
+  onCaughtErrorProd,
+  onRecoverableErrorProd,
+  onUncaughtErrorProd,
+} from "./reportError";
+
+const container = document.getElementById("root");
+hydrateRoot(container, <App />, {
+  // Keep in mind to remove these options in development to leverage
+  // React's default handlers or implement your own overlay for development.
+  // The handlers are only specfied unconditionally here for demonstration purposes.
+  onCaughtError: onCaughtErrorProd,
+  onRecoverableError: onRecoverableErrorProd,
+  onUncaughtError: onUncaughtErrorProd,
 });
 ```
 
 ```js src/App.js
-import { useState } from 'react';
-import { ErrorBoundary } from "react-error-boundary";
+import { Component, useState } from "react";
+
+function Boom() {
+  foo.bar = "baz";
+}
+
+class ErrorBoundary extends Component {
+  state = { hasError: false };
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong.</h1>;
+    }
+    return this.props.children;
+  }
+}
 
 export default function App() {
-  const [error, setError] = useState(null);
-
-  function handleUnknown() {
-    setError("unknown");
-  }
-
-  function handleKnown() {
-    setError("known");
-  }
+  const [triggerUncaughtError, settriggerUncaughtError] = useState(false);
+  const [triggerCaughtError, setTriggerCaughtError] = useState(false);
 
   return (
     <>
-      <ErrorBoundary
-        fallbackRender={fallbackRender}
-        onReset={(details) => {
-          setError(null);
-        }}
-      >
-        {error != null && <Throw error={error} />}
-        <span>This error will not show the error dialog:</span>
-        <button onClick={handleKnown}>
-          Throw known error
-        </button>
-        <span>This error will show the error dialog:</span>
-        <button onClick={handleUnknown}>
-          Throw unknown error
-        </button>
-      </ErrorBoundary>
-
+      <button onClick={() => settriggerUncaughtError(true)}>
+        Trigger uncaught error
+      </button>
+      {triggerUncaughtError && <Boom />}
+      <button onClick={() => setTriggerCaughtError(true)}>
+        Trigger caught error
+      </button>
+      {triggerCaughtError && (
+        <ErrorBoundary>
+          <Boom />
+        </ErrorBoundary>
+      )}
     </>
   );
 }
-
-function fallbackRender({ resetErrorBoundary }) {
-  return (
-    <div role="alert">
-      <h3>Error Boundary</h3>
-      <p>Something went wrong.</p>
-      <button onClick={resetErrorBoundary}>Reset</button>
-    </div>
-  );
-}
-
-function Throw({error}) {
-  if (error === "known") {
-    throw new Error('Known error')
-  } else {
-    foo.bar = 'baz';
-  }
-}
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "19.0.0-rc-3edc000d-20240926",
-    "react-dom": "19.0.0-rc-3edc000d-20240926",
-    "react-scripts": "^5.0.0",
-    "react-error-boundary": "4.0.3"
-  },
-  "main": "/index.js"
-}
-```
-
-</Sandpack>
-
-### 복구 가능한 Hydration 불일치 오류에 대한 대화 상자 표시하기 {/*show-a-dialog-for-recoverable-hydration-mismatch-errors*/}
-
-React가 Hydration 불일치를 만나면 클라이언트에서 자동으로 렌더링을 시도합니다. 기본적으로 React는 Hydration 불일치 오류를 `console.error`에 기록합니다. 이 동작을 재정의하려면 선택적 루트 옵션인 `onRecoverableError`를 사용할 수 있습니다.
-
-```js [[1, 7, "onRecoverableError"], [2, 7, "error", 1], [3, 11, "error.cause", 1], [4, 7, "errorInfo"], [5, 12, "componentStack"]]
-import { hydrateRoot } from 'react-dom/client';
-
-const root = hydrateRoot(
-  document.getElementById('root'),
-  <App />,
-  {
-    onRecoverableError: (error, errorInfo) => {
-      console.error(
-        'Caught error',
-        error,
-        error.cause,
-        errorInfo.componentStack
-      );
-    }
-  }
-);
-```
-
-<CodeStep step={1}>onRecoverableError</CodeStep> 옵션은 두 개의 인수를 받는 함수입니다.
-
-1. React가 발생시킨 <CodeStep step={2}>error</CodeStep>. 일부 오류는 원래 원인을 <CodeStep step={3}>error.cause</CodeStep>에 포함하기도 합니다.
-2. 오류의 <CodeStep step={5}>componentStack</CodeStep>을 포함하는 <CodeStep step={4}>errorInfo</CodeStep> 객체.
-
-Hydration 불일치에 대한 대화 상자를 표시하려면 `onRecoverableError` 루트 옵션을 사용할 수 있습니다.
-
-<Sandpack>
-
-```html index.html hidden
+```html public/index.html hidden
 <!DOCTYPE html>
 <html>
 <head>
@@ -922,224 +497,12 @@ Hydration 불일치에 대한 대화 상자를 표시하려면 `onRecoverableErr
 </head>
 <body>
 <!--
-  React 앱의 오류로 인해 충돌이 발생할 수 있으므로, HTML의 기본 오류 대화 상자를 사용하였습니다.
+  Purposefully using HTML content that differs from the server-rendered content to trigger recoverable errors.
 -->
-<div id="error-dialog" class="hidden">
-  <h1 id="error-title" class="text-red"></h1>
-  <h3>
-    <pre id="error-message"></pre>
-  </h3>
-  <p>
-    <pre id="error-body"></pre>
-  </p>
-  <h4 class="-mb-20">This error occurred at:</h4>
-  <pre id="error-component-stack" class="nowrap"></pre>
-  <h4 class="mb-0">Call stack:</h4>
-  <pre id="error-stack" class="nowrap"></pre>
-  <div id="error-cause">
-    <h4 class="mb-0">Caused by:</h4>
-    <pre id="error-cause-message"></pre>
-    <pre id="error-cause-stack" class="nowrap"></pre>
-  </div>
-  <button
-    id="error-close"
-    class="mb-10"
-    onclick="document.getElementById('error-dialog').classList.add('hidden')"
-  >
-    Close
-  </button>
-  <h3 id="error-not-dismissible">This error is not dismissible.</h3>
-</div>
-<!--
-  "<div id="root">...</div>" 내부의 HTML 콘텐츠는 react-dom/server에 의해 App에서 생성되었습니다.
--->
-<div id="root"><span>Server</span></div>
+<div id="root">Server content before hydration.</div>
 </body>
 </html>
 ```
-
-```css src/styles.css active
-label, button { display: block; margin-bottom: 20px; }
-html, body { min-height: 300px; }
-
-#error-dialog {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: white;
-  padding: 15px;
-  opacity: 0.9;
-  text-wrap: wrap;
-  overflow: scroll;
-}
-
-.text-red {
-  color: red;
-}
-
-.-mb-20 {
-  margin-bottom: -20px;
-}
-
-.mb-0 {
-  margin-bottom: 0;
-}
-
-.mb-10 {
-  margin-bottom: 10px;
-}
-
-pre {
-  text-wrap: wrap;
-}
-
-pre.nowrap {
-  text-wrap: nowrap;
-}
-
-.hidden {
- display: none;
-}
-```
-
-```js src/reportError.js hidden
-function reportError({ title, error, componentStack, dismissable }) {
-  const errorDialog = document.getElementById("error-dialog");
-  const errorTitle = document.getElementById("error-title");
-  const errorMessage = document.getElementById("error-message");
-  const errorBody = document.getElementById("error-body");
-  const errorComponentStack = document.getElementById("error-component-stack");
-  const errorStack = document.getElementById("error-stack");
-  const errorClose = document.getElementById("error-close");
-  const errorCause = document.getElementById("error-cause");
-  const errorCauseMessage = document.getElementById("error-cause-message");
-  const errorCauseStack = document.getElementById("error-cause-stack");
-  const errorNotDismissible = document.getElementById("error-not-dismissible");
-
-  // 제목 설정
-  errorTitle.innerText = title;
-
-  // 오류 메시지 및 본문 표시
-  const [heading, body] = error.message.split(/\n(.*)/s);
-  errorMessage.innerText = heading;
-  if (body) {
-    errorBody.innerText = body;
-  } else {
-    errorBody.innerText = '';
-  }
-
-  // 컴포넌트 스택 표시
-  errorComponentStack.innerText = componentStack;
-
-  // 콜 스택 표시
-  // 이미 메시지와 첫 번째 'Error:' 줄을 표시했으므로, 이를 제거.
-  errorStack.innerText = error.stack.replace(error.message, '').split(/\n(.*)/s)[1];
-
-  // 원인이 있는 경우 표시
-  if (error.cause) {
-    errorCauseMessage.innerText = error.cause.message;
-    errorCauseStack.innerText = error.cause.stack;
-    errorCause.classList.remove('hidden');
-  } else {
-    errorCause.classList.add('hidden');
-  }
-  // 취소할 수 있는 경우 닫기 버튼 표시
-  if (dismissable) {
-    errorNotDismissible.classList.add('hidden');
-    errorClose.classList.remove("hidden");
-  } else {
-    errorNotDismissible.classList.remove('hidden');
-    errorClose.classList.add("hidden");
-  }
-
-  // 대화 상자 표시
-  errorDialog.classList.remove("hidden");
-}
-
-export function reportCaughtError({error, cause, componentStack}) {
-  reportError({ title: "Caught Error", error, componentStack,  dismissable: true});
-}
-
-export function reportUncaughtError({error, cause, componentStack}) {
-  reportError({ title: "Uncaught Error", error, componentStack, dismissable: false });
-}
-
-export function reportRecoverableError({error, cause, componentStack}) {
-  reportError({ title: "Recoverable Error", error, componentStack,  dismissable: true });
-}
-```
-
-```js src/index.js active
-import { hydrateRoot } from "react-dom/client";
-import App from "./App.js";
-import {reportRecoverableError} from "./reportError";
-import "./styles.css";
-
-const container = document.getElementById("root");
-const root = hydrateRoot(container, <App />, {
-  onRecoverableError: (error, errorInfo) => {
-    reportRecoverableError({
-      error,
-      cause: error.cause,
-      componentStack: errorInfo.componentStack
-    });
-  }
-});
-```
-
-```js src/App.js
-import { useState } from 'react';
-import { ErrorBoundary } from "react-error-boundary";
-
-export default function App() {
-  const [error, setError] = useState(null);
-
-  function handleUnknown() {
-    setError("unknown");
-  }
-
-  function handleKnown() {
-    setError("known");
-  }
-
-  return (
-    <span>{typeof window !== 'undefined' ? 'Client' : 'Server'}</span>
-  );
-}
-
-function fallbackRender({ resetErrorBoundary }) {
-  return (
-    <div role="alert">
-      <h3>Error Boundary</h3>
-      <p>Something went wrong.</p>
-      <button onClick={resetErrorBoundary}>Reset</button>
-    </div>
-  );
-}
-
-function Throw({error}) {
-  if (error === "known") {
-    throw new Error('Known error')
-  } else {
-    foo.bar = 'baz';
-  }
-}
-```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "19.0.0-rc-3edc000d-20240926",
-    "react-dom": "19.0.0-rc-3edc000d-20240926",
-    "react-scripts": "^5.0.0",
-    "react-error-boundary": "4.0.3"
-  },
-  "main": "/index.js"
-}
-```
-
 </Sandpack>
 
 ## 문제 해결 {/*troubleshooting*/}
