@@ -11,7 +11,7 @@ description: 우리는 새로운 앱에 대한 Create React App 사용을 중단
 
 <Intro>
 
-우리는 새로운 앱에 대한 [Create React App](https://create-react-app.dev/) 사용을 중단하며, 기존 앱은 프레임워크나 Vite, Parcel, RSBuild 같은 빌드 도구로의 [마이그레이션](#how-to-migrate-to-a-build-tool)을 권장합니다.
+우리는 새로운 앱에 대한 [Create React App](https://create-react-app.dev/) 사용을 중단하며, 기존 앱은 [프레임워크](#how-to-migrate-to-a-framework)나 Vite, Parcel, RSBuild 같은 빌드 도구로의 [마이그레이션](#how-to-migrate-to-a-build-tool)을 권장합니다.
 
 또한 프레임워크가 프로젝트와 맞지 않거나, 자신만의 프레임워크를 구축하고 싶거나, 혹은 React가 어떻게 동작하는지 직접 구축하며 배우고 싶은 사용자를 위한 [문서](https://react.dev/learn/build-a-react-app-from-scratch)를 제공합니다.
 
