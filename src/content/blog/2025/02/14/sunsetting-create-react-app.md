@@ -11,17 +11,17 @@ description: 우리는 새로운 앱에 대한 Create React App 사용을 중단
 
 <Intro>
 
-우리는 새로운 앱에 대한 [Create React App](https://create-react-app.dev/) 사용을 중단하며, 기존 앱은 프레임워크나 Vite, Parcel, RSBuild 같은 빌드 도구로의 마이그레이션을 권장합니다.
+우리는 새로운 앱에 대한 [Create React App](https://create-react-app.dev/) 사용을 중단하며, 기존 앱은 프레임워크나 Vite, Parcel, RSBuild 같은 빌드 도구로의 [마이그레이션](#how-to-migrate-to-a-build-tool)을 권장합니다.
 
 또한 프레임워크가 프로젝트와 맞지 않거나, 자신만의 프레임워크를 구축하고 싶거나, 혹은 React가 어떻게 동작하는지 직접 구축하며 배우고 싶은 사용자를 위한 [문서](https://react.dev/learn/build-a-react-app-from-scratch)를 제공합니다.
 
 </Intro>
 
----
+-----
 
 2016년 Create React App이 처음 출시되었을 때는 React 앱을 새로 구축할 명확한 방법이 없었습니다.
 
-당시 React 앱을 만들기 위해서는 JSX, linting, hot reloading과 같은 기본 기능을 지원하는 여러 도구를 직접 설치하고 연결해야 했습니다. 이는 올바르게 수행하기 매우 까다로웠기 때문에 커뮤니티에서는 [자주 사용](https://github.com/gaearon/react-hot-boilerplate) 되는 [설정](https://github.com/erikras/react-redux-universal-hot-example)에 대한 [보일러 플레이트](https://github.com/kriasoft/react-starter-kit)를 만들었습니다. 하지만 보일러 플레이트는 업데이트하기 어렵고 조각화로 인해 React 팀이 새로운 기능을 배포하는 데 어려움이 많았습니다.
+당시 React 앱을 만들기 위해서는 JSX, linting, hot reloading과 같은 기본 기능을 지원하는 여러 도구를 직접 설치하고 연결해야 했습니다. 이는 올바르게 수행하기 매우 까다로웠기 때문에 [커뮤니티](https://github.com/react-boilerplate/react-boilerplate)에서는 [자주 사용](https://github.com/gaearon/react-hot-boilerplate) 되는 [설정](https://github.com/erikras/react-redux-universal-hot-example)에 대한 [보일러 플레이트](https://github.com/petehunt/react-boilerplate)를 [만들었습니다.](https://github.com/kriasoft/react-starter-kit) 하지만 보일러 플레이트는 업데이트하기 어렵고 조각화로 인해 React 팀이 새로운 기능을 배포하는 데 어려움이 많았습니다.
 
 Create React App은 여러 도구를 하나의 권장 설정으로 통합하여 이러한 문제를 해결했습니다. 이로 인해 앱이 새로운 도구 기능으로 쉽게 업그레이드할 수 있게 되었으며, React 팀은 자명하지 않은 도구 변경(Fast Refresh 지원, React Hooks lint 규칙 등)를 가능한 많은 사용자에게 배포할 수 있었습니다.
 
@@ -51,14 +51,13 @@ This error message will only be shown once per install.
 Create React App [웹사이트](https://create-react-app.dev/)와 [GitHub 저장소](https://github.com/facebook/create-react-app)에도 사용 중단 안내를 추가했습니다. Create React App은 유지 보수 모드로 계속 동작하며, React 19와 호환되는 새로운 버전을 배포했습니다.
 
 ## 프레임워크로 마이그레이션하는 방법 {/*how-to-migrate-to-a-framework*/}
-
 React 앱을 프레임워크로 [새로 만들기](https://react.dev/learn/creating-a-react-app)를 권장합니다. 추천하는 모든 프레임워크는 클라이언트 측 렌더링([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR))과 단일 페이지 앱([SPA](https://developer.mozilla.org/ko/docs/Glossary/SPA))을 지원하며, CDN 또는 정적 호스팅 서비스에 서버 없이 배포 가능합니다.
 
 기존 앱의 경우 다음 안내서를 참고하여 클라이언트 전용 SPA로 마이그레이션할 수 있습니다.
 
-- [Next.js의 Create React App 마이그레이션 가이드](https://nextjs-ko.org/docs/app/building-your-application/upgrading/from-create-react-app)
-- [React Router의 프레임워크 도입 가이드](https://reactrouter.com/upgrading/component-routes)
-- [Expo 웹팩에서 Expo Router로의 마이그레이션 가이드](https://docs.expo.dev/router/migrate/from-expo-webpack/)
+* [Next.js의 Create React App 마이그레이션 가이드](https://nextjs-ko.org/docs/app/building-your-application/upgrading/from-create-react-app)
+* [React Router의 프레임워크 도입 가이드](https://reactrouter.com/upgrading/component-routes)
+* [Expo 웹팩에서 Expo Router로의 마이그레이션 가이드](https://docs.expo.dev/router/migrate/from-expo-webpack/)
 
 ## 빌드 도구로 마이그레이션하는 방법 {/*how-to-migrate-to-a-build-tool*/}
 
@@ -66,9 +65,9 @@ React 앱을 프레임워크로 [새로 만들기](https://react.dev/learn/creat
 
 기존 앱의 경우 다음 안내서를 참고하여 빌드 도구로 마이그레이션할 수 있습니다:
 
-- [Vite의 Create React App 마이그레이션 가이드](https://www.robinwieruch.de/vite-create-react-app/)
-- [Parcel의 Create React App 마이그레이션 가이드](https://parceljs.org/migration/cra/)
-- [RSBuild의 Create React App 마이그레이션 가이드](https://rsbuild.dev/guide/migration/cra)
+* [Vite의 Create React App 마이그레이션 가이드](https://www.robinwieruch.de/vite-create-react-app/)
+* [Parcel의 Create React App 마이그레이션 가이드](https://parceljs.org/migration/cra/)
+* [RSBuild의 Create React App 마이그레이션 가이드](https://rsbuild.dev/guide/migration/cra)
 
 Vite, Parcel 또는 RSBuild로 시작하는 데 도움을 주기 위해 [React 앱 구축하기](/learn/build-a-react-app-from-scratch)에 대한 새로운 문서를 추가했습니다.
 
@@ -76,11 +75,9 @@ Vite, Parcel 또는 RSBuild로 시작하는 데 도움을 주기 위해 [React �
 
 #### 프레임워크가 필요합니까? {/*do-i-need-a-framework*/}
 
-대부분의 앱은 프레임워크를 사용하는 것이 유리하지만, React 앱을 처음부터 직접 구축해야 하는 타당한 경우도 있습니다.  
-일반적인 기준으로, 만약 앱에서 라우팅이 필요하다면 프레임워크를 사용하는 것이 더 나을 가능성이 큽니다. 
+대부분의 앱은 프레임워크를 사용하는 것이 유리하지만, React 앱을 처음부터 직접 구축해야 하는 타당한 경우도 있습니다. 일반적인 기준으로, 만약 앱에서 라우팅이 필요하다면 프레임워크를 사용하는 것이 더 나을 가능성이 큽니다. 
 
-Svelte에는 SvelteKit, Vue에는 Nuxt 그리고 Solid에는 SolidStart가 있듯이, React도 기본적으로 라우팅을 포함한 데이터 가져오기, 코드 분할 등의 기능을 통합한 [프레임워크 사용을 권장합니다.](#why-we-recommend-frameworks)
-이렇게 하면 복잡한 설정을 직접 구성하거나, 사실상 자체 프레임워크를 만들어야 하는 부담을 피할 수 있습니다.
+Svelte에는 SvelteKit, Vue에는 Nuxt 그리고 Solid에는 SolidStart가 있듯이, React도 기본적으로 라우팅을 포함한 데이터 가져오기, 코드 분할 등의 기능을 통합한 [프레임워크 사용을 권장합니다.](#why-we-recommend-frameworks) 이렇게 하면 복잡한 설정을 직접 구성하거나, 사실상 자체 프레임워크를 만들어야 하는 부담을 피할 수 있습니다.
 
 하지만 여전히 Vite, Parcel, Rsbuild 같은 빌드 도구를 사용해 [React 앱을 처음부터 직접 구축하는 것](/learn/build-a-react-app-from-scratch)도 가능합니다.
 
@@ -100,7 +97,7 @@ export default function App() {
     <div>
       <h1>Welcome to the Admin Tool!</h1>
     </div>
-  );
+  )
 }
 ```
 
@@ -113,39 +110,41 @@ export default function App() {
 Create React App에는 특정 라우팅 솔루션이 포함되어 있지 않습니다. 처음 시작할 때는 useState를 사용하여 라우트 간 전환을 할 수 있습니다. 하지만 이렇게 하면 - 모든 링크가 동일한 페이지로 이동하게 되며 - 시간이 지남에 따라 앱 구조화가 어려워지면서 앱에 링크를 공유할 수 없습니다.
 
 ```js
-import { useState } from "react";
+import {useState} from 'react';
 
-import Home from "./Home";
-import Dashboard from "./Dashboard";
+import Home from './Home';
+import Dashboard from './Dashboard';
 
 export default function App() {
   // ❌ 라우팅은 상태 내에서 URL을 생성하지 않습니다.
-  const [route, setRoute] = useState("home");
+  const [route, setRoute] = useState('home');
   return (
     <div>
-      {route === "home" && <Home />}
-      {route === "dashboard" && <Dashboard />}
+      {route === 'home' && <Home />}
+      {route === 'dashboard' && <Dashboard />}
     </div>
-  );
+  )
 }
 ```
 
 이러한 이유로 Create React App을 사용하는 대부분의 앱은 [React Router](https://reactrouter.com/)나 [Tanstack Router](https://tanstack.com/router/latest)와 같은 라우팅 라이브러리를 추가로 사용합니다. 라우팅 라이브러리를 사용하면 앱에 추가적인 라우트를 정의할 수 있으며, 앱 구조에 대한 의견을 제공하며 라우트에 대한 링크를 공유할 수 있습니다. 예를 들어 React Router를 사용하면 다음과 같이 라우트를 정의할 수 있습니다.
 
 ```js
-import { RouterProvider, createBrowserRouter } from "react-router";
+import {RouterProvider, createBrowserRouter} from 'react-router';
 
-import Home from "./Home";
-import Dashboard from "./Dashboard";
+import Home from './Home';
+import Dashboard from './Dashboard';
 
 // ✅ 각각의 라우트는 자신만의 URL을 가지고 있습니다.
 const router = createBrowserRouter([
-  { path: "/", element: <Home /> },
-  { path: "/dashboard", element: <Dashboard /> },
+  {path: '/', element: <Home />},
+  {path: '/dashboard', element: <Dashboard />}
 ]);
 
 export default function App() {
-  return <RouterProvider value={router} />;
+  return (
+    <RouterProvider value={router} />
+  )
 }
 ```
 
@@ -165,18 +164,16 @@ export default function Dashboard() {
 
   // ❌ 컴포넌트 내에서 데이터를 가져오면 네트워크 폭포수를 일으킵니다.
   useEffect(() => {
-    fetch("/api/data")
-      .then((response) => response.json())
-      .then((data) => setData(data));
+    fetch('/api/data')
+      .then(response => response.json())
+      .then(data => setData(data));
   }, []);
 
   return (
     <div>
-      {data.map((item) => (
-        <div key={item.id}>{item.name}</div>
-      ))}
+      {data.map(item => <div key={item.id}>{item.name}</div>)}
     </div>
-  );
+  )
 }
 ```
 
@@ -192,14 +189,12 @@ export async function loader() {
 }
 
 // ✅ 코드가 다운로드 될 동안 데이터는 병렬로 가져옵니다.
-export default function Dashboard({ loaderData }) {
+export default function Dashboard({loaderData}) {
   return (
     <div>
-      {loaderData.map((item) => (
-        <div key={item.id}>{item.name}</div>
-      ))}
+      {loaderData.map(item => <div key={item.id}>{item.name}</div>)}
     </div>
-  );
+  )
 }
 ```
 
@@ -228,13 +223,13 @@ Create React App의 또 다른 일반적인 문제는 [코드 분할](https://ww
 코드 분할을 구현하는 한 가지 방법은 `React.lazy`를 사용하는 것입니다. 그러나 컴포넌트가 렌더링될 때까지 코드가 가져와지지 않는다는 것을 의미하므로 네트워크 폭포수가 발생할 수 있습니다. 더 최적화된 해결책은 코드가 다운로드되는 동안 병렬로 코드를 가져오는 라우터 기능을 사용하는 것입니다. 예를 들어, React Router는 라우트를 코드 분할을 해야 하며 로드 시점을 최적화해야 함을 지정하는 `lazy` 옵션을 제공합니다:
 
 ```js
-import Home from "./Home";
-import Dashboard from "./Dashboard";
+import Home from './Home';
+import Dashboard from './Dashboard';
 
 // ✅ 라우터는 렌더링되기 전에 다운로드 됩니다.
 const router = createBrowserRouter([
-  { path: "/", lazy: () => import("./Home") },
-  { path: "/dashboard", lazy: () => import("Dashboard") },
+  {path: '/', lazy: () => import('./Home')},
+  {path: '/dashboard', lazy: () => import('Dashboard')}
 ]);
 ```
 
@@ -289,7 +284,6 @@ Create React App, Vite, Parcel과 같은 빌드 도구에서 모든 요소를 �
 
 경우에 따라 CSR이 페이지에 적합한 선택일 수 있지만, 대부분은 그렇지 않습니다. 앱의 대부분이 클라이언트 사이드라 하더라도, 이용약관 페이지나 문서와 같이 [정적 사이트 생성(SSG)](https://developer.mozilla.org/en-US/docs/Glossary/SSG) 또는 [서버 사이드 렌더링(SSR)](https://developer.mozilla.org/en-US/docs/Glossary/SSR)과 같은 서버 렌더링 기능의 혜택을 받을 수 있는 개별 페이지들이 많이 있습니다.
 
-
 서버 렌더링은 일반적으로 클라이언트에 더 적은 JavaScript를 전송하고, 완전한 HTML 문서를 제공하여 [총 차단 시간(TBD)](https://web.dev/articles/tbt?hl=ko)을 줄임으로써 더 빠른 [최초 콘텐츠 페인트(FCP)](https://web.dev/articles/fcp?hl=ko)를 생성하며, 이는 [상호작용에서 다음 페인트까지(INP)](https://web.dev/articles/inp?hl=ko)도 낮출 수 있습니다. 이것이 Chrome 팀이 개발자들에게 최상의 성능을 달성하기 위해 완전한 클라이언트 사이드 접근 방식보다 정적 또는 서버 사이드 렌더링을 고려할 것을 [권장하는 이유](https://web.dev/articles/rendering-on-the-web?hl=ko)입니다.
 
 서버를 사용하는 데는 트레이드오프가 있으며, 모든 페이지에 항상 최선의 선택인 것은 아닙니다. 서버에서 페이지를 생성하는 것은 추가 비용이 발생하고 생성하는 데 시간이 걸리므로 [최초 바이트까지의 시간(TTFB)](https://web.dev/articles/ttfb?hl=ko)이 증가할 수 있습니다. 가장 성능이 좋은 앱은 각 전략의 트레이드오프를 기반으로 페이지별로 적절한 렌더링 전략을 선택할 수 있습니다.
@@ -323,4 +317,3 @@ Create React App, Vite, Parcel과 같은 빌드 도구에서 모든 요소를 �
 ---
 
 _[Dan Abramov](https://bsky.app/profile/danabra.mov)에게 Create React App을 만들어줘서 감사하며, [Joe Haddad](https://github.com/Timer), [Ian Schmitz](https://github.com/ianschmitz), [Brody McKee](https://github.com/mrmckeb), 그리고 [그 외 많은 분들](https://github.com/facebook/create-react-app/graphs/contributors)께 오랜 기간 Create React App을 유지보수해 주셔서 감사드립니다. 또한, [Brooks Lybrand](https://bsky.app/profile/brookslybrand.bsky.social), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Devon Govett](https://bsky.app/profile/devongovett.bsky.social), [Eli White](https://x.com/Eli_White), [Jack Herrington](https://bsky.app/profile/jherr.dev), [Joe Savona](https://x.com/en_JS), [Lauren Tan](https://bsky.app/profile/no.lol), [Lee Robinson](https://x.com/leeerob), [Mark Erikson](https://bsky.app/profile/acemarke.dev), [Ryan Florence](https://x.com/ryanflorence), [Sophie Alpert](https://bsky.app/profile/sophiebits.com), [Tanner Linsley](https://bsky.app/profile/tannerlinsley.com), 그리고 [Theo Browne](https://x.com/theo)에게 이 글을 검토하고 피드백을 제공해 주셔서 감사드립니다._
-
