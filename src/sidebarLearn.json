@@ -29,7 +29,7 @@
           "path": "/learn/creating-a-react-app"
         },
         {
-          "title": "Build a React App from Scratch",
+          "title": "처음부터 React 앱 만들기",
           "path": "/learn/build-a-react-app-from-scratch"
         },
         {
@@ -39,7 +39,7 @@
       ]
     },
     {
-      "title": "Setup",
+      "title": "설정하기",
       "path": "/learn/setup",
       "routes": [
         {
@@ -83,7 +83,7 @@
           "path": "/learn/writing-markup-with-jsx"
         },
         {
-          "title": "중괄호가 있는 JSX 안에서 자바스크립트 사용하기",
+          "title": "중괄호가 있는 JSX에서 자바스크립트 사용하기",
           "path": "/learn/javascript-in-jsx-with-curly-braces"
         },
         {
