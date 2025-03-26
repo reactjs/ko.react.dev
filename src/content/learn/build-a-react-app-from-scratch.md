@@ -1,5 +1,5 @@
 ---
-title: Build a React app from Scratch
+title: 처음부터 React 앱 만들기
 ---
 
 <Intro>
