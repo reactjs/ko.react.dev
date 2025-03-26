@@ -1,39 +1,39 @@
 ---
-title: "Sunsetting Create React App"
+title: "Create React App 지원 종료"
 author: Matt Carroll and Ricky Hanlon
 date: 2025/02/14
-description: Today, we’re deprecating Create React App for new apps, and encouraging existing apps to migrate to a framework, or to migrate to a build tool like Vite, Parcel, or RSBuild. We’re also providing docs for when a framework isn’t a good fit for your project, you want to build your own framework, or you just want to learn how React works by building a React app from scratch.
+description: 새로운 앱에 대한 Create React App 사용을 중단하며, 기존 앱은 프레임워크나 Vite, Parcel, RSBuild 같은 빌드 도구로의 마이그레이션을 권장합니다. 또한 프레임워크가 프로젝트와 맞지 않거나, 자신만의 프레임워크를 구축하고 싶거나, 혹은 React가 어떻게 작동하는지 배우기 위해 React 앱을 처음부터 만들어 보고 싶은 사용자들을을 위한 문서를 제공합니다.
 ---
 
-February 14, 2025 by [Matt Carroll](https://twitter.com/mattcarrollcode) and [Ricky Hanlon](https://bsky.app/profile/ricky.fm)
+2025년 02월 14일, by [Matt Carroll](https://twitter.com/mattcarrollcode) and [Ricky Hanlon](https://bsky.app/profile/ricky.fm)
 
 ---
 
 <Intro>
 
-Today, we’re deprecating [Create React App](https://create-react-app.dev/) for new apps, and encouraging existing apps to migrate to a [framework](#how-to-migrate-to-a-framework), or to [migrate to a build tool](#how-to-migrate-to-a-build-tool) like Vite, Parcel, or RSBuild. 
+새로운 앱에 대한 [Create React App](https://create-react-app.dev/) 사용을 중단하며, 기존 앱은 [프레임워크](#how-to-migrate-to-a-framework)나 Vite, Parcel, RSBuild 같은 빌드 도구로의 [마이그레이션](#how-to-migrate-to-a-build-tool)을 권장합니다.
 
-We’re also providing docs for when a framework isn’t a good fit for your project, you want to build your own framework, or you just want to learn how React works by [building a React app from scratch](/learn/build-a-react-app-from-scratch).
+또한 프레임워크가 프로젝트와 맞지 않거나, 자신만의 프레임워크를 구축하고 싶거나, 혹은 React가 어떻게 작동하는지 배우기 위해 React 앱을 처음부터 만들어 보고 싶은 사용자들을 위한 [문서](https://react.dev/learn/build-a-react-app-from-scratch)를 제공합니다.
 
 </Intro>
 
 -----
 
-When we released Create React App in 2016, there was no clear way to build a new React app.
+2016년 Create React App을 처음 출시하였을 때는 React 앱을 새로 구축할 명확한 방법이 없었습니다.
 
-To create a React app, you had to install a bunch of tools and wire them up together yourself to support basic features like JSX, linting, and hot reloading. This was very tricky to do correctly, so the [community](https://github.com/react-boilerplate/react-boilerplate) [created](https://github.com/kriasoft/react-starter-kit) [boilerplates](https://github.com/petehunt/react-boilerplate) for [common](https://github.com/gaearon/react-hot-boilerplate) [setups](https://github.com/erikras/react-redux-universal-hot-example). However, boilerplates were difficult to update and fragmentation made it difficult for React to release new features.
+당시 React 앱을 만들기 위해서는 JSX, Linting, Hot Reloading과 같은 기본 기능을 지원하는 여러 도구를 직접 설치하고 연결해야 했습니다. 이는 올바르게 수행하기 매우 까다로웠기 때문에, [커뮤니티](https://github.com/react-boilerplate/react-boilerplate)에서는 [자주 사용](https://github.com/gaearon/react-hot-boilerplate)하는 [설정](https://github.com/erikras/react-redux-universal-hot-example)에 대한 [보일러 플레이트](https://github.com/petehunt/react-boilerplate)를 [만들었습니다.](https://github.com/kriasoft/react-starter-kit) 하지만 보일러 플레이트는 업데이트하기 어렵고 조각화로 인해 React 팀이 새로운 기능을 배포하는 데 어려움이 많았습니다.
 
-Create React App solved these problems by combining several tools into a single recommended configuration. This allowed apps a simple way to upgrade to new tooling features, and allowed the React team to deploy non-trivial tooling changes (Fast Refresh support, React Hooks lint rules) to the broadest possible audience.
+Create React App은 여러 도구를 하나의 권장 설정으로 통합하여 이러한 문제를 해결했습니다. 이로 인해 앱이 새로운 도구 기능으로 쉽게 업그레이드할 수 있게 되었으며, React 팀은 자명하지 않은 도구 변경 (Fast Refresh 지원, React Hooks Lint 규칙 등)을 가능한 많은 사용자에게 배포할 수 있었습니다.
 
-This model became so popular that there's an entire category of tools working this way today.
+이 모델은 매우 인기를 끌었고, 오늘날 비슷한 방식으로 작동하는 도구들이 하나의 카테고리를 형성할 정도가 되었습니다.
 
-## Deprecating Create React App {/*deprecating-create-react-app*/}
+## Create React App의 지원 종료 {/*deprecating-create-react-app*/}
 
-Although Create React App makes it easy to get started, [there are several limitations](#limitations-of-build-tools) that make it difficult to build high performant production apps. In principle, we could solve these problems by essentially evolving it into a [framework](#why-we-recommend-frameworks).
+Create React App은 시작을 쉽게 해주지만, 고성능의 프로덕션 앱 구축을 어렵게 하는 [몇 가지 제한](#limitations-of-build-tools)이 있습니다. 원칙적으로는 이를 [프레임워크](#why-we-recommend-frameworks)로 발전시켜 해결할 수도 있습니다.
 
-However, since Create React App currently has no active maintainers, and there are many existing frameworks that solve these problems already, we’ve decided to deprecate Create React App.
+하지만 현재 Create React App은 적극적으로 관리하는 담당자가 없고, 이미 많은 기존 프레임워크들이 이러한 문제를 잘 해결하고 있기 때문에 사용을 중단하기로 결정했습니다.
 
-Starting today, if you install a new app, you will see a deprecation warning:
+오늘부터 새로운 앱 설치 시에는 지원 종료 경고 메시지가 표시됩니다.
 
 <ConsoleBlockMulti>
 <ConsoleLogLine level="error">
@@ -48,48 +48,48 @@ This error message will only be shown once per install.
 </ConsoleLogLine>
 </ConsoleBlockMulti>
 
-We've also added a deprecation notice to the Create React App [website](https://create-react-app.dev/) and GitHub [repo](https://github.com/facebook/create-react-app). Create React App will continue working in maintenance mode, and we've published a new version of Create React App to work with React 19.
+Create React App [웹사이트](https://create-react-app.dev/)와 [GitHub 저장소](https://github.com/facebook/create-react-app)에도 지원 종료 안내를 추가했습니다. Create React App은 유지 보수 모드로 계속 동작하며, React 19와 호환되는 새로운 버전을 배포했습니다.
 
-## How to Migrate to a Framework {/*how-to-migrate-to-a-framework*/}
-We recommend [creating new React apps](/learn/creating-a-react-app) with a framework. All the frameworks we recommend support client-side rendering ([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)) and single-page apps ([SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)), and can be deployed to a CDN or static hosting service without a server.
+## 프레임워크로 마이그레이션하는 방법 {/*how-to-migrate-to-a-framework*/}
+React 앱을 프레임워크로 [새로 만들기](https://react.dev/learn/creating-a-react-app)를 권장합니다. 추천하는 모든 프레임워크는 클라이언트 측 렌더링([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR))과 단일 페이지 앱([SPA](https://developer.mozilla.org/ko/docs/Glossary/SPA))을 지원하며, CDN 또는 정적 호스팅 서비스에 서버 없이 배포 가능합니다.
 
-For existing apps, these guides will help you migrate to a client-only SPA:
+기존 앱의 경우 다음 안내서를 참고하여 클라이언트 전용 SPA로 마이그레이션할 수 있습니다.
 
-* [Next.js’ Create React App migration guide](https://nextjs.org/docs/app/building-your-application/upgrading/from-create-react-app)
-* [React Router’s framework adoption guide](https://reactrouter.com/upgrading/component-routes).
-* [Expo webpack to Expo Router migration guide](https://docs.expo.dev/router/migrate/from-expo-webpack/)
+* [Next.js의 Create React App 마이그레이션 가이드](https://nextjs.org/docs/app/building-your-application/upgrading/from-create-react-app)
+* [React Router의 프레임워크 도입 가이드](https://reactrouter.com/upgrading/component-routes)
+* [Expo 웹팩에서 Expo Router로의 마이그레이션 가이드](https://docs.expo.dev/router/migrate/from-expo-webpack/)
 
-## How to Migrate to a Build Tool {/*how-to-migrate-to-a-build-tool*/}
+## 빌드 도구로 마이그레이션하는 방법 {/*how-to-migrate-to-a-build-tool*/}
 
-If your app has unusual constraints, or you prefer to solve these problems by building your own framework, or you just want to learn how react works from scratch, you can roll your own custom setup with React using Vite, Parcel or Rsbuild.
+앱이 특수한 제약 조건을 가지고 있거나, 자신만의 프레임워크를 구축하여 문제를 해결하고 싶은 경우, 혹은 React가 처음부터 어떻게 동작하는지 배우고 싶은 경우에는 Vite, Parcel, RSBuild 등을 이용하여 커스텀 설정을 직접 구축할 수 있습니다.
 
-For existing apps, these guides will help you migrate to a build tool:
+기존 앱의 경우 다음 안내서를 참고하여 빌드 도구로 마이그레이션할 수 있습니다.
 
-* [Vite Create React App migration guide](https://www.robinwieruch.de/vite-create-react-app/)
-* [Parcel Create React App migration guide](https://parceljs.org/migration/cra/)
-* [Rsbuild Create React App migration guide](https://rsbuild.dev/guide/migration/cra)
+* [Vite의 Create React App 마이그레이션 가이드](https://www.robinwieruch.de/vite-create-react-app/)
+* [Parcel의 Create React App 마이그레이션 가이드](https://parceljs.org/migration/cra/)
+* [RSBuild의 Create React App 마이그레이션 가이드](https://rsbuild.dev/guide/migration/cra)
 
-To help get started with Vite, Parcel or Rsbuild, we've added new docs for [Building a React App from Scratch](/learn/build-a-react-app-from-scratch).
+Vite, Parcel 또는 RSBuild로 시작하는 데 도움을 주기 위해 [React 앱 구축하기](/learn/build-a-react-app-from-scratch)에 대한 새로운 문서를 추가했습니다.
 
 <DeepDive>
 
-#### Do I need a framework? {/*do-i-need-a-framework*/}
+#### 프레임워크가 필요할까요? {/*do-i-need-a-framework*/}
 
-Most apps would benefit from a framework, but there are valid cases to build a React app from scratch. A good rule of thumb is if your app needs routing, you would probably benefit from a framework. 
+대부분의 앱은 프레임워크를 사용하는 것이 유리하지만, React 앱을 처음부터 직접 구축해야 하는 타당한 경우도 있습니다. 일반적인 기준으로, 만약 앱에서 라우팅이 필요하다면 프레임워크를 사용하는 것이 더 나을 가능성이 큽니다. 
 
-Just like Svelte has Sveltekit, Vue has Nuxt, and Solid has SolidStart, [React recommends using a framework](#why-we-recommend-frameworks) that fully integrates routing into features like data-fetching and code-splitting out of the box. This avoids the pain of needing to write your own complex configurations and essentially build a framework yourself.
+Svelte에는 SvelteKit, Vue에는 Nuxt 그리고 Solid에는 SolidStart가 있듯이, React도 기본적으로 라우팅을 포함한 데이터 가져오기, 코드 분할 등의 기능을 통합한 [프레임워크 사용을 권장합니다.](#why-we-recommend-frameworks) 이렇게 하면 복잡한 설정을 직접 구성하거나, 사실상 자체 프레임워크를 만들어야 하는 부담을 피할 수 있습니다.
 
-However, you can always [build a React app from scratch](/learn/build-a-react-app-from-scratch) using a build tool like Vite, Parcel, or Rsbuild.
+하지만 여전히 Vite, Parcel, Rsbuild 같은 빌드 도구를 사용해 [React 앱을 처음부터 직접 구축하는 것](/learn/build-a-react-app-from-scratch)도 가능합니다.
 
 </DeepDive>
 
-Continue reading to learn more about the [limitations of build tools](#limitations-of-build-tools) and [why we recommend frameworks](#why-we-recommend-frameworks).
+[빌드 도구의 한계](#limitations-of-build-tools)와 [프레임워크를 권장하는 이유](#why-we-recommend-frameworks)에 대해 자세히 알아보려면 계속 읽어보세요.
 
-## Limitations of Build Tools {/*limitations-of-build-tools*/}
+## 빌드 도구의 한계 {/*limitations-of-build-tools*/}
 
-Create React App and build tools like it make it easy to get started building a React app. After running `npx create-react-app my-app`, you get a fully configured React app with a development server, linting, and a production build.
+Create React App과 같은 빌드 도구는 React 앱을 시작하는 것을 쉽게 만듭니다. `npx create-react-app my-app`을 실행하면 개발 서버, Linting, 프로덕션 빌드가 완전히 설정된 React 앱을 얻을 수 있습니다.
 
-For example, if you're building an internal admin tool, you can start with a landing page:
+예를 들어, 내부 관리자 도구를 구축하는 경우 랜딩 페이지부터 시작할 수 있습니다.
 
 ```js
 export default function App() {
@@ -101,13 +101,13 @@ export default function App() {
 }
 ```
 
-This allows you to immediately start coding in React with features like JSX, default linting rules, and a bundler to run in both development and production. However, this setup is missing the tools you need to build a real production app.
+이를 통해 JSX, 기본 Lint 규칙, 개발 및 프로덕션에서 모두 실행할 번들러와 함께 바로 React 코딩을 시작할 수 있습니다. 그러나 이 설정에는 실제 프로덕션 앱을 구축하는 데 필요한 도구가 빠져 있습니다.
 
-Most production apps need solutions to problems like routing, data fetching, and code splitting.
+대부분의 프로덕션 앱은 라우팅, 데이터 가져오기, 코드 분할과 같은 문제에 대한 해결책이 필요합니다.
 
-### Routing {/*routing*/}
+### 라우팅 {/*routing*/}
 
-Create React App does not include a specific routing solution. If you're just getting started, one option is to use `useState` to switch between routes. But doing this means that you can't share links to your app - every link would go to the same page - and structuring your app becomes difficult over time:
+Create React App에는 특정 라우팅 솔루션이 포함되어 있지 않습니다. 처음 시작할 때는 `useState`를 사용하여 라우팅 간 전환을 할 수 있습니다. 하지만 이렇게 하면 모든 링크가 동일한 페이지로 이동하게 되며, 시간이 지남에 따라 앱 구조화가 어려워지면서 앱에 링크를 공유할 수 없습니다.
 
 ```js
 import {useState} from 'react';
@@ -116,7 +116,7 @@ import Home from './Home';
 import Dashboard from './Dashboard';
 
 export default function App() {
-  // ❌ Routing in state does not create URLs
+  // ❌ 라우팅은 State 내에서 URL을 생성하지 않습니다.
   const [route, setRoute] = useState('home');
   return (
     <div>
@@ -127,7 +127,7 @@ export default function App() {
 }
 ```
 
-This is why most apps that use Create React App solve add routing with a routing library like [React Router](https://reactrouter.com/) or [Tanstack Router](https://tanstack.com/router/latest). With a routing library, you can add additional routes to the app, which provides opinions on the structure of your app, and allows you to start sharing links to routes. For example, with React Router you can define routes:
+이러한 이유로 Create React App을 사용하는 대부분의 앱은 [React Router](https://reactrouter.com/)나 [Tanstack Router](https://tanstack.com/router/latest)와 같은 라우팅 라이브러리를 추가로 사용합니다. 라우팅 라이브러리를 사용하면 앱에 추가적인 라우트를 정의할 수 있으며, 앱 구조에 대한 의견을 제공하며 라우트에 대한 링크를 공유할 수 있습니다. 예를 들어 React Router를 사용하면 다음과 같이 라우트를 정의할 수 있습니다.
 
 ```js
 import {RouterProvider, createBrowserRouter} from 'react-router';
@@ -135,7 +135,7 @@ import {RouterProvider, createBrowserRouter} from 'react-router';
 import Home from './Home';
 import Dashboard from './Dashboard';
 
-// ✅ Each route has it's own URL
+// ✅ 각각의 라우트는 자신만의 URL을 가지고 있습니다.
 const router = createBrowserRouter([
   {path: '/', element: <Home />},
   {path: '/dashboard', element: <Dashboard />}
@@ -148,21 +148,21 @@ export default function App() {
 }
 ```
 
-With this change, you can share a link to `/dashboard` and the app will navigate to the dashboard page . Once you have a routing library, you can add additional features like nested routes, route guards, and route transitions, which are difficult to implement without a routing library.
+이 변경으로 인해 `/dashboard`로 링크를 공유할 수 있고, 앱이 대시보드 페이지로 이동합니다. 라우팅 라이브러리를 사용하면 중첩 라우트, 라우트 보호, 라우트 전환 등 추가 기능을 쉽게 구현할 수 있습니다.
 
-There's a tradeoff being made here: the routing library adds complexity to the app, but it also adds features that are difficult to implement without it.
+라우팅 라이브러리는 앱에 복잡성을 더해주지만, 앱 없이는 구현하기 어려운 기능도 추가하는 Trade-Off가 존재합니다.
 
-### Data Fetching {/*data-fetching*/}
+### 데이터 가져오기 {/*data-fetching*/}
 
-Another common problem in Create React App is data fetching. Create React App does not include a specific data fetching solution. If you're just getting started, a common option is to use `fetch` in an effect to load data.
+Create React App의 또 다른 일반적인 문제는 데이터를 가져오는 것입니다. Create React App은 특정 데이터를 가져오는 솔루션을 포함하지 않습니다. 처음 시작한다면, 일반적인 방법은 데이터를 로드하기 위해 Effect 내에서 `fetch`를 사용하는 것입니다.
 
-But doing this means that the data is fetched after the component renders, which can cause network waterfalls. Network waterfalls are caused by fetching data when your app renders instead of in parallel while the code is downloading:
+하지만 이 방법을 사용하면 컴포넌트를 렌더링한 후에 데이터를 가져오므로, 네트워크 폭포수<sup>Network Waterfalls</sup> 현상이 발생할 수 있습니다. 네트워크 폭포수 현상은 코드를 다운로드하는 동안 병렬로 처리하는 대신, 앱을 렌더링할 때 데이터를 가져오면서 발생합니다.
 
 ```js
 export default function Dashboard() {
   const [data, setData] = useState(null);
 
-  // ❌ Fetching data in a component causes network waterfalls
+  // ❌ 컴포넌트 내에서 데이터를 가져오면 네트워크 폭포수 현상을 일으킵니다.
   useEffect(() => {
     fetch('/api/data')
       .then(response => response.json())
@@ -177,9 +177,9 @@ export default function Dashboard() {
 }
 ```
 
-Fetching in an effect means the user has to wait longer to see the content, even though the data could have been fetched earlier. To solve this, you can use a data fetching library like [React Query](https://react-query.tanstack.com/), [SWR](https://swr.vercel.app/), [Apollo](https://www.apollographql.com/docs/react), or [Relay](https://relay.dev/) which provide options to prefetch data so the request is started before the component renders.
+Effect에서 데이터를 가져오는것은, 데이터를 더 일찍 가져올 수 있었음에도 불구하고, 사용자가 콘텐츠를 보기 위해 더 오래 기다려야 함을 의미합니다. 이 문제를 해결하기 위해 컴포넌트를 렌더링하기 전에 요청을 시작할 수 있도록 데이터 미리 가져오기 옵션을 제공하는 [React Query](https://react-query.tanstack.com/), [SWR](https://swr.vercel.app/ko), [Apollo](https://www.apollographql.com/docs/react) 또는 [Relay](https://relay.dev/)와 같은 라이브러리들을 사용할 수 있습니다. 
 
-These libraries work best when integrated with your routing "loader" pattern to specify data dependencies at the route level, which allows the router to optimize your data fetches:
+이러한 라이브러리들은 라우트 수준에서 데이터 의존성을 지정할 수 있는 라우팅 “로더" 패턴과 통합될 때 가장 효과적으로 작동하며, 이를 통해 라우터가 데이터 가져오기를 최적화할 수 있습니다.
 
 ```js
 export async function loader() {
@@ -188,7 +188,7 @@ export async function loader() {
   return data;
 }
 
-// ✅ Fetching data in parallel while the code is downloading
+// ✅ 코드를 다운로드 할 동안 데이터를 병렬로 가져옵니다.
 export default function Dashboard({loaderData}) {
   return (
     <div>
@@ -198,21 +198,21 @@ export default function Dashboard({loaderData}) {
 }
 ```
 
-On initial load, the router can fetch the data immediately before the route is rendered. As the user navigates around the app, the router is able to fetch both the data and the route at the same time, parallelizing the fetches. This reduces the time it takes to see the content on the screen, and can improve the user experience.
+초기 로드 시, 라우터는 라우트가 렌더링되기 전에 즉시 데이터를 가져올 수 있습니다. 사용자가 앱 내에서 이동할 때, 라우터는 데이터와 라우트를 동시에 병렬적으로 가져올 수 있습니다. 이는 화면에 콘텐츠가 표시되는 데 걸리는 시간을 줄이고 사용자 경험을 향상시킬 수 있습니다.
 
-However, this requires correctly configuring the loaders in your app and trades off complexity for performance.
+그러나 이를 위해서는 앱에서 로더를 올바르게 구성해야 하며, 성능을 위해 복잡성을 감수해야 합니다.
 
-### Code Splitting {/*code-splitting*/}
+### 코드 분할 {/*code-splitting*/}
 
-Another common problem in Create React App is [code splitting](https://www.patterns.dev/vanilla/bundle-splitting). Create React App does not include a specific code splitting solution. If you're just getting started, you might not consider code splitting at all.
+Create React App의 또 다른 일반적인 문제는 [코드 분할](https://www.patterns.dev/vanilla/bundle-splitting/)입니다. Create React App은 특정 코드 분할 솔루션을 포함하지 않습니다. 처음 시작한다면, 코드 분할을 전혀 고려하지 않을 수도 있습니다.
 
-This means your app is shipped as a single bundle:
+이는 앱이 하나의 번들로 제공되는 것을 의미합니다.
 
 ```txt
 - bundle.js    75kb
 ```
 
-But for ideal performance, you should "split" your code into separate bundles so the user only needs to download what they need. This decreases the time the user needs to wait to load your app, by only downloading the code they need to see the page they are on.
+하지만 최적의 성능을 위해서는 코드를 개별 번들로 "분할"하여 사용자가 필요한 것만 다운로드하도록 해야 합니다. 이렇게 하면 사용자가 현재 보고 있는 페이지에 필요한 코드만 다운로드하므로 앱 로딩 시간을 줄일 수 있습니다.
 
 ```txt
 - core.js      25kb
@@ -220,101 +220,101 @@ But for ideal performance, you should "split" your code into separate bundles so
 - dashboard.js 25kb
 ```
 
-One way to do code-splitting is with `React.lazy`. However, this means that the code is not fetched until the component renders, which can cause network waterfalls. A more optimal solution is to use a router feature that fetches the code in parallel while the code is downloading. For example, React Router provides a `lazy` option to specify that a route should be code split and optimize when it is loaded:
+코드 분할을 구현하는 한 가지 방법은 `React.lazy`를 사용하는 것입니다. 그러나 컴포넌트를 렌더링할 때까지 코드를 가져오지 못한다는 것을 의미하므로 네트워크 폭포수가 발생할 수 있습니다. 더 최적화된 해결책은 코드가 다운로드되는 동안 병렬로 코드를 가져오는 라우터 기능을 사용하는 것입니다. 예를 들어, React Router는 라우트를 코드 분할을 해야 하며 로드 시점을 최적화해야 함을 지정하는 `lazy` 옵션을 제공합니다.
 
 ```js
 import Home from './Home';
 import Dashboard from './Dashboard';
 
-// ✅ Routes are downloaded before rendering
+// ✅ 라우터는 렌더링되기 전에 다운로드 됩니다.
 const router = createBrowserRouter([
   {path: '/', lazy: () => import('./Home')},
   {path: '/dashboard', lazy: () => import('Dashboard')}
 ]);
 ```
 
-Optimized code-splitting is tricky to get right, and it's easy to make mistakes that can cause the user to download more code than they need. It works best when integrated with your router and data loading solutions to maximize caching, parallelize fetches, and support ["import on interaction"](https://www.patterns.dev/vanilla/import-on-interaction) patterns.
+최적화된 코드 분할은 올바르게 구현하기 까다롭고, 사용자가 필요 이상의 코드를 다운로드하게 만드는 실수를 쉽게 할 수 있습니다. 이는 캐싱을 최대화하고, 가져오기를 병렬화하며, ["상호작용 시 가져오기"](https://www.patterns.dev/vanilla/import-on-interaction) 패턴을 지원하기 위해 라우터 및 데이터 로딩 솔루션과 통합될 때 가장 효과적으로 작동합니다.
 
-### And more... {/*and-more*/}
+### 그리고... {/*and-more*/}
 
-These are just a few examples of the limitations of Create React App.
+이것들은 Create React App의 몇 가지 제한 사항 예시에 불과합니다.
 
-Once you've integrated routing, data-fetching, and code splitting, you now also need to consider pending states, navigation interruptions, error messages to the user, and revalidation of the data. There are entire categories of problems that users need to solve like:
+라우팅, 데이터 가져오기, 코드 분할을 통합한 후에는 보류 중인 상태, 내비게이션 중단, 사용자에게 보내는 오류 메시지, 데이터 재검증도 고려해야 합니다. 사용자가 해결해야 할 문제의 전체 범주는 다음과 같습니다.
 
 <div style={{display: 'flex', width: '100%', justifyContent: 'space-around'}}>
   <ul>
-    <li>Accessibility</li>
-    <li>Asset loading</li>
-    <li>Authentication</li>
-    <li>Caching</li>
+    <li>접근성</li>
+    <li>자산 로딩</li>
+    <li>인증</li>
+    <li>캐싱</li>
   </ul>
   <ul>
-    <li>Error handling</li>
-    <li>Mutating data</li>
-    <li>Navigations</li>
-    <li>Optimistic updates</li>
+    <li>오류 처리</li>
+    <li>데이터 변경</li>
+    <li>탐색</li>
+    <li>낙관적 업데이트</li>
   </ul>
   <ul>
-    <li>Progressive enhancement</li>
-    <li>Server-side rendering</li>
-    <li>Static site generation</li>
-    <li>Streaming</li>
+    <li>점진적 향상</li>
+    <li>서버 사이드 렌더링</li>
+    <li>정적 사이트 생성</li>
+    <li>스트리밍</li>
   </ul>
 </div>
 
-All of these work together to create the most optimal [loading sequence](https://www.patterns.dev/vanilla/loading-sequence).
+이 모든 것들이 함께 작동하여 가장 최적화된 [로딩 순서](https://www.patterns.dev/vanilla/loading-sequence/)를 만듭니다.
 
-Solving each of these problems individually in Create React App can be difficult as each problem is interconnected with the others and can require deep expertise in problem areas users may not be familiar with. In order to solve these problems, users end up building their own bespoke solutions on top of Create React App, which was the problem Create React App originally tried to solve.
+Create React App에서 이러한 문제들을 개별적으로 해결하는 것은 각 문제가 서로 연결되어 있고 사용자가 익숙하지 않은 문제 영역에 대한 깊은 전문 지식이 필요할 수 있기 때문에 어려울 수 있습니다. 이러한 문제들을 해결하기 위해 사용자들은 결국 Create React App 위에 자신만의 맞춤형 솔루션을 구축하게 되는데, 이는 Create React App이 원래 해결하려고 했던 문제입니다.
 
-## Why we Recommend Frameworks {/*why-we-recommend-frameworks*/}
+## 프레임워크를 권장하는 이유 {/*why-we-recommend-frameworks*/}
 
-Although you could solve all these pieces yourself in a build tool like Create React App, Vite, or Parcel, it is hard to do well. Just like when Create React App itself integrated several build tools together, you need a tool to integrate all of these features together to provide the best experience to users.
+Create React App, Vite, Parcel과 같은 빌드 도구에서 모든 요소를 직접 해결할 수 있지만, 이를 잘 수행 하기에는 어렵습니다. Create React App 자체가 여러 빌드 도구를 통합했던 것처럼, 이제는 모든 기능을 통합하여 사용자에게 최상의 경험을 제공할 수 있는 도구가 필요합니다.
 
-This category of tools that integrates build tools, rendering, routing, data fetching, and code splitting are known as "frameworks" -- or if you prefer to call React itself a framework, you might call them "metaframeworks".
+빌드 도구, 렌더링, 라우팅, 데이터 가져오기 및 코드 분할을 통합하는 이러한 종류의 도구들을 "프레임워크"라고 합니다. 또는 React 자체를 프레임워크라고 부르기도 하지만, 이들을 "메타프레임워크"라고 부를 수도 있습니다.
 
-Frameworks impose some opinions about structuring your app in order to provide a much better user experience, in the same way build tools impose some opinions to make tooling easier. This is why we started recommending frameworks like [Next.js](https://nextjs.org/), [React Router](https://reactrouter.com/), and [Expo](https://expo.dev/) for new projects.
+프레임워크는 빌드 도구가 도구 사용을 쉽게 하기 위해 일부 의견을 강제하는 것과 같은 방식으로, 훨씬 더 나은 사용자 경험을 제공하기 위해 앱 구조화에 대한 일부 의견을 강제합니다. 이것이 우리가 새 프로젝트에 [Next.js](https://nextjs.org/), [React Router](https://reactrouter.com/) 및 [Expo](https://expo.dev/)와 같은 프레임워크를 권장하기 시작한 이유입니다.
 
-Frameworks provide the same getting started experience as Create React App, but also provide solutions to problems users need to solve anyway in real production apps.
+프레임워크는 Create React App과 동일한 시작 경험을 제공하지만, 사용자가 실제 프로덕션 앱에서 결국에는 해결해야만 하는 문제에 대한 해결책도 제공합니다.
 
 <DeepDive>
 
-#### Server rendering is optional {/*server-rendering-is-optional*/}
+#### 서버 렌더링은 선택적입니다 {/*server-rendering-is-optional*/}
 
-The frameworks we recommend all provide the option to create a [client-side rendered (CSR)](https://developer.mozilla.org/en-US/docs/Glossary/CSR) app.
+저희가 추천하는 프레임워크들은 모두 [클라이언트 사이드 렌더링(CSR)](https://developer.mozilla.org/en-US/docs/Glossary/CSR) 앱을 만들 수 있는 옵션을 제공합니다.
 
-In some cases, CSR is the right choice for a page, but many times it's not. Even if most of your app is client-side, there are often individual pages that could benefit from server rendering features like [static-site generation (SSG)](https://developer.mozilla.org/en-US/docs/Glossary/SSG) or [server-side rendering (SSR)](https://developer.mozilla.org/en-US/docs/Glossary/SSR), for example a Terms of Service page, or documentation.
+경우에 따라 CSR이 페이지에 적합한 선택일 수 있지만, 대부분은 그렇지 않습니다. 앱의 대부분이 클라이언트 사이드라 하더라도, 이용약관 페이지나 문서와 같이 [정적 사이트 생성(SSG)](https://developer.mozilla.org/en-US/docs/Glossary/SSG) 또는 [서버 사이드 렌더링(SSR)](https://developer.mozilla.org/en-US/docs/Glossary/SSR)과 같은 서버 렌더링 기능의 혜택을 받을 수 있는 개별 페이지들이 많이 있습니다.
 
-Server rendering generally sends less JavaScript to the client, and a full HTML document which produces a faster [First Contentful Paint (FCP)](https://web.dev/articles/fcp) by reducing [Total Blocking Time (TBD)](https://web.dev/articles/tbt), which can also lower [Interaction to Next Paint (INP)](https://web.dev/articles/inp). This is why the [Chrome team has encouraged](https://web.dev/articles/rendering-on-the-web) developers to consider static or server-side render over a full client-side approach to achieve the best possible performance.
+서버 렌더링은 일반적으로 클라이언트에 더 적은 자바스크립트를 전송하고, 완전한 HTML 문서를 제공하여 [총 차단 시간(TBT)](https://web.dev/articles/tbt?hl=ko)을 줄임으로써 더 빠른 [최초 콘텐츠 페인트(FCP)](https://web.dev/articles/fcp?hl=ko)를 생성하며, 이는 [상호작용에서 다음 페인트까지(INP)](https://web.dev/articles/inp?hl=ko)도 낮출 수 있습니다. 이것이 Chrome 팀이 개발자들에게 최상의 성능을 달성하기 위해 완전한 클라이언트 사이드 접근 방식보다 정적 또는 서버 사이드 렌더링을 고려할 것을 [권장하는 이유](https://web.dev/articles/rendering-on-the-web?hl=ko)입니다.
 
-There are tradeoffs to using a server, and it is not always the best option for every page. Generating pages on the server incurs additional cost and takes time to generate which can increase [Time to First Byte (TTFB)](https://web.dev/articles/ttfb). The best performing apps are able to pick the right rendering strategy on a per-page basis, based on the tradeoffs of each strategy.
+서버를 사용하는 데는 트레이드 오프가 있으며, 모든 페이지에 항상 최선의 선택인 것은 아닙니다. 서버에서 페이지를 생성하는 것은 추가 비용이 발생하고 생성하는 데 시간이 걸리므로 [최초 바이트까지의 시간(TTFB)](https://web.dev/articles/ttfb?hl=ko)이 증가할 수 있습니다. 가장 성능이 좋은 앱은 각 전략의 트레이드오프를 기반으로 페이지별로 적절한 렌더링 전략을 선택할 수 있습니다.
 
-Frameworks provide the option to use a server on any page if you want to, but do not force you to use a server. This allows you to pick the right rendering strategy for each page in your app.
+프레임워크는 원하는 경우 모든 페이지에서 서버를 사용할 수 있는 옵션을 제공하지만, 서버 사용을 강제하지는 않습니다. 이를 통해 앱의 각 페이지에 맞는 렌더링 전략을 선택할 수 있습니다.
 
-#### What About Server Components {/*server-components*/}
+#### 서버 컴포넌트는 어떤가요 {/*server-components*/}
 
-The frameworks we recommend also include support for React Server Components.
+저희가 추천하는 프레임워크는 React 서버 컴포넌트도 지원합니다.
 
-Server Components help solve these problems by moving routing and data fetching to the server, and allowing code splitting to be done for client components based on the data you render, instead of just the route rendered, and reducing the amount of JavaScript shipped for the best possible [loading sequence](https://www.patterns.dev/vanilla/loading-sequence).
+서버 컴포넌트는 라우팅과 데이터 가져오기를 서버로 이동시키고, 렌더링되는 경로가 아닌 렌더링하는 데이터를 기반으로 클라이언트 컴포넌트에 대한 코드 분할이 가능하게 함으로써 이러한 문제를 해결하는 데 도움을 주며, 최상의 [로딩 시퀀스](https://www.patterns.dev/vanilla/loading-sequence)를 위해 전송되는 자바스크립트 양을 줄입니다.
 
-Server Components do not require a server. They can be run at build time on your CI server to create a static-site generated app (SSG) app, at runtime on a web server for a server-side rendered (SSR) app.
+서버 컴포넌트는 서버를 필요로 하지 않습니다. CI 서버에서 빌드 시점에 실행하여 정적 사이트 생성(SSG) 앱을 만들거나, 웹 서버에서 런타임에 실행하여 서버 사이드 렌더링(SSR) 앱을 만들 수 있습니다.
 
-See [Introducing zero-bundle size React Server Components](/blog/2020/12/21/data-fetching-with-react-server-components) and [the docs](/reference/rsc/server-components) for more info.
+자세한 내용은 [제로 번들 사이즈 React 서버 컴포넌트 소개](/blog/2020/12/21/data-fetching-with-react-server-components) 및 [문서](/reference/rsc/server-components)를 참조하세요.
 
 </DeepDive>
 
 <Note>
 
-#### Server Rendering is not just for SEO {/*server-rendering-is-not-just-for-seo*/}
+#### 서버 렌더링은 SEO만을 위한 것이 아닙니다 {/*server-rendering-is-not-just-for-seo*/}
 
-A common misunderstanding is that server rendering is only for [SEO](https://developer.mozilla.org/en-US/docs/Glossary/SEO).
+서버 렌더링이 [SEO](https://developer.mozilla.org/ko/docs/Glossary/SEO)만을 위한 것이라는 것은 흔한 오해입니다.
 
-While server rendering can improve SEO, it also improves performance by reducing the amount of JavaScript the user needs to download and parse before they can see the content on the screen.
+서버 렌더링은 SEO를 개선할 수 있지만, 사용자가 화면에서 콘텐츠를 보기 전에 다운로드하고 파싱해야 하는 자바스크립트의 양을 줄임으로써 성능도 향상시킵니다.
 
-This is why the Chrome team [has encouraged](https://web.dev/articles/rendering-on-the-web) developers to consider static or server-side render over a full client-side approach to achieve the best possible performance.
+이것이 Chrome 팀이 개발자들에게 최상의 성능을 달성하기 위해 완전한 클라이언트 사이드 접근 방식보다 정적 또는 서버 사이드 렌더링을 고려할 것을 [권장하는 이유](https://web.dev/articles/rendering-on-the-web?hl=ko)입니다.
 
 </Note>
 
 ---
 
-_Thank you to [Dan Abramov](https://bsky.app/profile/danabra.mov) for creating Create React App, and [Joe Haddad](https://github.com/Timer), [Ian Schmitz](https://github.com/ianschmitz), [Brody McKee](https://github.com/mrmckeb), and [many others](https://github.com/facebook/create-react-app/graphs/contributors) for maintaining Create React App over the years. Thank you to [Brooks Lybrand](https://bsky.app/profile/brookslybrand.bsky.social), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Devon Govett](https://bsky.app/profile/devongovett.bsky.social), [Eli White](https://x.com/Eli_White), [Jack Herrington](https://bsky.app/profile/jherr.dev), [Joe Savona](https://x.com/en_JS), [Lauren Tan](https://bsky.app/profile/no.lol), [Lee Robinson](https://x.com/leeerob), [Mark Erikson](https://bsky.app/profile/acemarke.dev), [Ryan Florence](https://x.com/ryanflorence), [Sophie Alpert](https://bsky.app/profile/sophiebits.com), [Tanner Linsley](https://bsky.app/profile/tannerlinsley.com), and [Theo Browne](https://x.com/theo) for reviewing and providing feedback on this post._
+_[Dan Abramov](https://bsky.app/profile/danabra.mov)에게 Create React App을 만들어줘서 감사하며, [Joe Haddad](https://github.com/Timer), [Ian Schmitz](https://github.com/ianschmitz), [Brody McKee](https://github.com/mrmckeb), 그리고 [그 외 많은 분들](https://github.com/facebook/create-react-app/graphs/contributors)께 오랜 기간 Create React App을 유지보수해 주셔서 감사드립니다. 또한, [Brooks Lybrand](https://bsky.app/profile/brookslybrand.bsky.social), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Devon Govett](https://bsky.app/profile/devongovett.bsky.social), [Eli White](https://x.com/Eli_White), [Jack Herrington](https://bsky.app/profile/jherr.dev), [Joe Savona](https://x.com/en_JS), [Lauren Tan](https://bsky.app/profile/no.lol), [Lee Robinson](https://x.com/leeerob), [Mark Erikson](https://bsky.app/profile/acemarke.dev), [Ryan Florence](https://x.com/ryanflorence), [Sophie Alpert](https://bsky.app/profile/sophiebits.com), [Tanner Linsley](https://bsky.app/profile/tannerlinsley.com), 그리고 [Theo Browne](https://x.com/theo)에게 이 글을 검토하고 피드백을 제공해 주셔서 감사드립니다._
 
