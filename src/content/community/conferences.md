@@ -369,7 +369,7 @@ June 8 - 10, 2022. In-person in Kraków, Poland + remote
 [Website](https://appjs.co) - [Twitter](https://twitter.com/appjsconf)
 
 ### React Day Bangalore 2022 {/*react-day-bangalore-2022*/}
-June 8 - 9, 2022.  Remote
+June 8 - 9, 2022. Remote
 
 [Website](https://reactday.in/) - [Twitter](https://twitter.com/ReactDayIn) - [Linkedin](https://www.linkedin.com/company/react-day/) - [YouTube](https://www.youtube.com/reactify_in)
 
@@ -473,7 +473,7 @@ April 14-16, 2021, 7am PST / 10am EST / 4pm CEST - remote event
 
 [Website](https://remote.reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://portal.gitnation.org/events/react-summit-remote-edition-2021)
 
-### React fwdays’21 {/*react-fwdays21*/}
+### React fwdays'21 {/*react-fwdays21*/}
 March 27, 2021 - remote event
 
 [Website](https://fwdays.com/en/event/react-fwdays-2021) - [Twitter](https://twitter.com/fwdays) - [Facebook](https://www.facebook.com/events/1133828147054286) - [LinkedIn](https://www.linkedin.com/events/reactfwdays-21onlineconference6758046347334582273) - [Meetup](https://www.meetup.com/ru-RU/Fwdays/events/275764431/)
