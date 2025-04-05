@@ -27,10 +27,10 @@ title: "Legacy React API"
 
 아래 API들은 React 19에서 제거되었습니다.
 
-* [`createFactory`](https://18.react.dev/reference/react/createFactory): JSX instead.
-* Class Components: [`static contextTypes`](https://18.react.dev//reference/react/Component#static-contexttypes): use [`static contextType`](#static-contexttype) instead.
-* Class Components: [`static childContextTypes`](https://18.react.dev//reference/react/Component#static-childcontexttypes): use [`static contextType`](#static-contexttype) instead.
-* Class Components: [`static getChildContext`](https://18.react.dev//reference/react/Component#getchildcontext): use [`Context.Provider`](/reference/react/createContext#provider) instead.
-* Class Components: [`static propTypes`](https://18.react.dev//reference/react/Component#static-proptypes): use a type system like [TypeScript](https://www.typescriptlang.org/) instead.
-* Class Components: [`this.refs`](https://18.react.dev//reference/react/Component#refs): use [`createRef`](/reference/react/createRef) instead.
+* [`createFactory`](https://18.react.dev/reference/react/createFactory): 대신 JSX를 사용하세요.
+* 클래스 컴포넌트: [`static contextTypes`](https://18.react.dev//reference/react/Component#static-contexttypes): 대신 [`static contextType`](#static-contexttype)를 사용하세요.
+* 클래스 컴포넌트: [`static childContextTypes`](https://18.react.dev//reference/react/Component#static-childcontexttypes): 대신 [`static contextType`](#static-contexttype)를 사용하세요.
+* 클래스 컴포넌트: [`static getChildContext`](https://18.react.dev//reference/react/Component#getchildcontext): 대신 [`Context.Provider`](/reference/react/createContext#provider)를 사용하세요.
+* 클래스 컴포넌트: [`static propTypes`](https://18.react.dev//reference/react/Component#static-proptypes): 대신 [TypeScript](https://www.typescriptlang.org/)같은 타입 시스템을 사용하세요.
+* 클래스 컴포넌트: [`this.refs`](https://18.react.dev//reference/react/Component#refs): 대신 [`createRef`](/reference/react/createRef)를 사용하세요.
 
