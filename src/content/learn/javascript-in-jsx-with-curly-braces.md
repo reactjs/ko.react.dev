@@ -118,7 +118,7 @@ JSX 안에서 중괄호는 두 가지 방법으로만 사용할 수 있습니다
 1. JSX 태그 안의 **문자**: `<h1>{name}'s To Do List</h1>`는 작동하지만, `<{tag}>Gregorio Y. Zara's To Do List</{tag}>`는 작동하지 않습니다.
 2. `=` 바로 뒤에 오는 **어트리뷰트**: `src={avatar}`는 `avatar` 변수를 읽지만 `src="{avatar}"`는 `"{avatar}"` 문자열을 전달합니다.
 
-## "이중 중괄호" 사용하기: JSX의 CSS와 다른 객체 {/*using-double-curlies-css-and-other-objects-in-jsx*/}
+## “이중 중괄호” 사용하기: JSX의 CSS와 다른 객체 {/*using-double-curlies-css-and-other-objects-in-jsx*/}
 
 JSX에는 문자열, 숫자 및 기타 JavaScript 표현식뿐만 아니라 객체를 전달할 수도 있습니다. 또한 객체는 `{ name: "Hedy Lamarr", inventions: 5 }`처럼 중괄호로 표시됩니다. 따라서 JSX에서 객체를 전달하려면 `person={{ name: "Hedy Lamarr", inventions: 5 }}`와 같이 다른 중괄호 쌍으로 객체를 감싸야 합니다.
 
