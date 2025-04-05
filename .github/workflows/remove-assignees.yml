@@ -1,0 +1,20 @@
+name: 'Remove Assignees for stale issue'
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  issues: write
+
+jobs:
+  remove-assignees:
+    if: github.event.label.name == 'stale'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 이슈 할당 해제
+        run: |
+          curl -X PATCH \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}" \
+            -d '{"assignees":[]}'
