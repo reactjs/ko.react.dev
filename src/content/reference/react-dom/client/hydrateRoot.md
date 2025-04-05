@@ -268,7 +268,6 @@ export default function App() {
 </Sandpack>
 
 이것은 한 단계 아래까지만 적용되며 탈출구<sup>Escape Hatch</sup>를 의도한 것입니다. 남용하지 마세요. 텍스트 컨텐츠가 아닌 한 React는 잘못된 부분을 수정하지 않을 것이며, 갱신이 일어나기 전까지는 불일치 상태로 남아있을 것입니다.
-This only works one level deep, and is intended to be an escape hatch. Don’t overuse it. React will **not** attempt to patch mismatched text content.
 
 ---
 
