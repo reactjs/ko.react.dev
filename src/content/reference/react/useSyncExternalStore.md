@@ -404,14 +404,20 @@ store 데이터가 변경 가능한 경우 `getSnapshot` 함수는 해당 데이
 
 subscribe 함수는 컴포넌트 내부에 정의되므로 리렌더링할 때마다 달라집니다.
 
-```js {4-7}
+```js {2-5}
 function ChatIndicator() {
+<<<<<<< HEAD
   const isOnline = useSyncExternalStore(subscribe, getSnapshot);
 
   // 🚩항상 다른 함수를 사용하므로 React는 렌더링할 때마다 다시 구독합니다.
+=======
+  // 🚩 Always a different function, so React will resubscribe on every re-render
+>>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
   function subscribe() {
     // ...
   }
+  
+  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
 
   // ...
 }
@@ -419,28 +425,39 @@ function ChatIndicator() {
 
 리렌더링 사이에 다른 `subscribe` 함수를 전달하면 React가 store를 다시 구독합니다. 이로 인해 성능 문제가 발생하고 store 재구독을 피하고 싶다면 `subscribe` 함수를 외부로 이동하세요.
 
-```js {6-9}
-function ChatIndicator() {
-  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
+```js {1-4}
+// ✅ Always the same function, so React won't need to resubscribe
+function subscribe() {
   // ...
 }
 
+<<<<<<< HEAD
 // ✅ 항상 동일한 함수이므로 React는 다시 구독할 필요가 없습니다.
 function subscribe() {
+=======
+function ChatIndicator() {
+  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
+>>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
   // ...
 }
 ```
 
 또는 일부 인수가 변경될 때만 다시 구독하도록 `subscribe`을 [`useCallback`](/reference/react/useCallback)으로 래핑합니다.
 
-```js {4-8}
+```js {2-5}
 function ChatIndicator({ userId }) {
+<<<<<<< HEAD
   const isOnline = useSyncExternalStore(subscribe, getSnapshot);
 
   // ✅ userId가 변경되지 않는 한 동일한 함수입니다.
+=======
+  // ✅ Same function as long as userId doesn't change
+>>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
   const subscribe = useCallback(() => {
     // ...
   }, [userId]);
+  
+  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
 
   // ...
 }

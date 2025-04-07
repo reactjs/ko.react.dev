@@ -87,10 +87,17 @@ Strict Mode 검사는 **개발 환경에서만 실행되지만**, 이미 코드�
 
 Strict Mode에서는 개발 시 다음과 같은 검사를 가능하게 합니다.
 
+<<<<<<< HEAD
 - 컴포넌트가 순수하지 않은 렌더링으로 인한 버그를 찾기 위해 [추가로 다시 렌더링합니다.](#fixing-bugs-found-by-double-rendering-in-development)
 - 컴포넌트가 Effect 클린업이 누락되어 발생한 버그를 찾기 위해 [Effect를 다시 실행합니다.](#fixing-bugs-found-by-re-running-effects-in-development)
 - Your components will [re-run ref callbacks an extra time](#fixing-bugs-found-by-cleaning-up-and-re-attaching-dom-refs-in-development) to find bugs caused by missing ref cleanup.
 - 컴포넌트가 [더 이상 사용되지 않는 API를 사용하는지 확인합니다.](#fixing-deprecation-warnings-enabled-by-strict-mode)
+=======
+- Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
+- Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
+- Your components will [re-run ref callbacks an extra time](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) to find bugs caused by missing ref cleanup.
+- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
+>>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
 
 
 **이러한 모든 검사는 개발 환경 전용이며 프로덕션 빌드에는 영향을 미치지 않습니다.**
@@ -123,6 +130,12 @@ function App() {
 ```
 
 이 예시에서 `Header`와 `Footer` 컴포넌트에서는 Strict Mode 검사가 실행되지 않습니다. 그러나 `Sidebar`와 `Content`, 그리고 그 자손 컴포넌트는 깊이에 상관없이 검사가 실행됩니다.
+
+<Note>
+
+When `StrictMode` is enabled for a part of the app, React will only enable behaviors that are possible in production. For example, if `<StrictMode>` is not enabled at the root of the app, it will not [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) on initial mount, since this would cause child effects to double fire without the parent effects, which cannot happen in production.
+
+</Note>
 
 ---
 

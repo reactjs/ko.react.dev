@@ -2254,7 +2254,11 @@ body {
 
 </Sandpack>
 
+<<<<<<< HEAD
 `map`으로 `history` 배열을 반복할 때 전달한 함수 내에서 `squares` 인수는 `history`의 각 엘리먼트를 통과하고, `move` 인수는 각 배열 인덱스를 통과합니다: `0`, `1`, `2`, … (대부분은 실제 배열 엘리먼트가 필요하지만, 이 경우에는 이동 목록을 렌더링하기 위해 인덱스만 있어도 됩니다.)
+=======
+As you iterate through the `history` array inside the function you passed to `map`, the `squares` argument goes through each element of `history`, and the `move` argument goes through each array index: `0`, `1`, `2`, …. (In most cases, you'd need the actual array elements, but to render a list of moves you will only need indexes.)
+>>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
 
 틱택토 게임 history의 각 이동에 대해 버튼 `<button>`이 포함된 목록 항목 `<li>`를 생성하세요. 버튼에는 (아직 구현하지 않은) `jumpTo`라는 함수를 호출하는 `onClick` 핸들러가 있습니다.
 
