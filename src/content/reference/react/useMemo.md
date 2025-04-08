@@ -84,7 +84,7 @@ function TodoList({ todos, tab, theme }) {
 
 초기 렌더링에서 `useMemo`에서 얻을 수 있는 <CodeStep step={3}>값</CodeStep>은 <CodeStep step={1}>계산 함수</CodeStep>를 호출한 결과값 입니다.
 
-이후 모든 렌더링에서 React는 <CodeStep step={2}>종속성 목록을</CodeStep> 마지막 렌더링 중에 전달한 종속성 목록과 비교합니다. 만일  ([`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)와 비교했을 때) 종속성이 변경되지 않았다면, `useMemo`는 이전에 이미 계산해둔 값을 반환합니다. 그렇지 않다면 React는 계산을 다시 실행하고 새로운 값을 반환합니다.
+이후 모든 렌더링에서 React는 <CodeStep step={2}>종속성 목록을</CodeStep> 마지막 렌더링 중에 전달한 종속성 목록과 비교합니다. 만일 ([`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)와 비교했을 때) 종속성이 변경되지 않았다면, `useMemo`는 이전에 이미 계산해둔 값을 반환합니다. 그렇지 않다면 React는 계산을 다시 실행하고 새로운 값을 반환합니다.
 
 즉, `useMemo`는 종속성이 변경되기 전까지 재렌더링 사이의 계산 결과를 캐싱합니다.
 

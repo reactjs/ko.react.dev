@@ -4,7 +4,7 @@ author: The React Team
 date: 2024/12/05
 description: React 19 is now available on npm! In this post, we'll give an overview of the new features in React 19, and how you can adopt them.
 ---
-
+<!-- eslint-disable mark/no-double-space -->
 December 05, 2024 by [The React Team](/community/team)
 
 ---

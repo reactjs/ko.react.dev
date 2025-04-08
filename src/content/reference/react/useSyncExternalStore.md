@@ -40,7 +40,7 @@ store에 있는 데이터의 스냅샷을 반환합니다. 두 개의 함수를 
 
 #### 매개변수 {/*parameters*/}
 
-* `subscribe`:  하나의 `callback` 인수를 받아 store에 구독하는 함수입니다. store가 변경될 때, 제공된 `callback`이 호출되어 React가 `getSnapshot`을 다시 호출하고 (필요한 경우) 컴포넌트를 다시 렌더링하도록 해야 합니다. `subscribe` 함수는 구독을 정리하는 함수를 반환해야 합니다.
+* `subscribe`: 하나의 `callback` 인수를 받아 store에 구독하는 함수입니다. store가 변경될 때, 제공된 `callback`이 호출되어 React가 `getSnapshot`을 다시 호출하고 (필요한 경우) 컴포넌트를 다시 렌더링하도록 해야 합니다. `subscribe` 함수는 구독을 정리하는 함수를 반환해야 합니다.
 
 * `getSnapshot`: 컴포넌트에 필요한 store 데이터의 스냅샷을 반환하는 함수입니다. store가 변경되지 않은 상태에서 `getSnapshot`을 반복적으로 호출하면 동일한 값을 반환해야 합니다. 저장소가 변경되어 반환된 값이 다르면 ([`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is)와 비교하여) React는 컴포넌트를 리렌더링합니다.
 

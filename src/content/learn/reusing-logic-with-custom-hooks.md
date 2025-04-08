@@ -922,7 +922,7 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
 }
 ```
 
-이제 `ChatRoom`가 재렌더링될 때마다 채팅방이 재연결되지 않습니다. 여기 커스텀 Hook에 이벤트 핸들러를 넘겨주는 직접 다뤄볼 수 있는  제대로 동작하는 예시가 있습니다.
+이제 `ChatRoom`가 재렌더링될 때마다 채팅방이 재연결되지 않습니다. 여기 커스텀 Hook에 이벤트 핸들러를 넘겨주는 직접 다뤄볼 수 있는 제대로 동작하는 예시가 있습니다.
 
 <Sandpack>
 

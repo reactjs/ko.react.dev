@@ -56,7 +56,7 @@ You can [make an input controlled](#controlling-an-input-with-a-state-variable) 
 * [`dirname`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#dirname): 문자열 타입. 엘리먼트 방향성에 대한 폼 필드 이름을 지정합니다.
 * [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#disabled): 불리언 타입. `true`일 경우, 입력은 상호작용이 불가능해지며 흐릿하게 보입니다.
 * `children`: `<input>` 은 자식을 받지 않습니다.
-* [`form`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#form): 문자열 타입.  입력이 속하는 `<form>`의 `id`를 지정합니다. 생략 시 가장 가까운 부모 폼으로 설정됩니다.
+* [`form`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#form): 문자열 타입. 입력이 속하는 `<form>`의 `id`를 지정합니다. 생략 시 가장 가까운 부모 폼으로 설정됩니다.
 * [`formAction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formaction): 문자열 타입. `type="submit"` 과 `type="image"`의 부모 `<form action>` 을 덮어씁니다.
 * [`formEnctype`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formenctype): 문자열 타입. `type="submit"` 과 `type="image"`의 부모 `<form enctype>` 을 덮어씁니다.
 * [`formMethod`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formmethod): 문자열 타입. `type="submit"` 과 `type="image"`의 부모 `<form method>` 를 덮어씁니다.

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import mark from 'eslint-plugin-mark';
 
 export default [
@@ -8,7 +9,7 @@ export default [
     ...mark.configs.baseGfm,
     files: ['src/content/**/*.md'],
     rules: {
-      'mark/no-double-spaces': 'error',
+      'mark/no-double-space': 'error',
     },
   },
 ];
