@@ -270,7 +270,7 @@ form button {
 
 ### 액션이 더 이상 제출된 폼 데이터를 읽을 수 없습니다 {/*my-action-can-no-longer-read-the-submitted-form-data*/}
 
-액션을 `useActionState`로 감싸면 *첫 번째 인수*로 “이전(또는 현재) State”가 추가됩니다. 따라서 일반적인 폼 액션과 달리, 제출된 폼 데이터는 *두 번째 인수*에서 확인해야 합니다.
+액션을 `useActionState`로 감싸면 *첫 번째 인수*로 "이전(또는 현재) State"가 추가됩니다. 따라서 일반적인 폼 액션과 달리, 제출된 폼 데이터는 *두 번째 인수*에서 확인해야 합니다.
 
 ```js
 function action(currentState, formData) {

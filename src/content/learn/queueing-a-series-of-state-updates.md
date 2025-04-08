@@ -126,7 +126,7 @@ React가 이벤트 핸들러를 수행하는 동안 여러 코드를 통해 작�
 
 React는 `3`을 최종 결과로 저장하고 `useState`에서 반환합니다.
 
-이것이 위 예시  "+3"을 클릭하면 값이 3씩 올바르게 증가하는 이유입니다.
+이것이 위 예시 "+3"을 클릭하면 값이 3씩 올바르게 증가하는 이유입니다.
 
 ### state를 교체한 후 업데이트하면 어떻게 되나요? {/*what-happens-if-you-update-state-after-replacing-it*/}
 
@@ -230,7 +230,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 1. `setNumber(number + 5)`: `number` 는 `0` 이므로 `setNumber(0 + 5)`입니다. React는 *"`5`로 바꾸기"* 를 큐에 추가합니다.
 2. `setNumber(n => n + 1)`: `n => n + 1` 는 업데이터 함수입니다. React는 *이 함수*를 큐에 추가합니다.
-3. `setNumber(42)`:  React는 *"`42`로 바꾸기"* 를 큐에 추가합니다.
+3. `setNumber(42)`: React는 *"`42`로 바꾸기"* 를 큐에 추가합니다.
 
 다음 렌더링하는 동안, React는 state 큐를 순회합니다.
 

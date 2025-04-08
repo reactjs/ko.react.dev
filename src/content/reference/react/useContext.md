@@ -1188,7 +1188,7 @@ footer {
 
 #### 자동으로 중첩된 제목 {/*automatically-nested-headings*/}
 
-Ccontext Provider를 중첩할 때 정보를 "누적"할 수 있습니다. 이 예시에서 `Section` 컴포넌트는 섹션 중첩의 깊이를 지정하는 `LevelContext`를 추적합니다. 이 컴포넌트는 부모 섹션에서 `LevelContext`를 읽은 다음 1씩 증가한 `LevelContext` 숫자를 자식에게 제공합니다. 그 결과 `Heading`  컴포넌트는 얼마나 많은 `Section` 컴포넌트가 중첩되어 있는지에 따라 `<h1>`, `<h2>`, `<h3>`, ...,  태그 중 어떤 태그를 사용할지 자동으로 결정할 수 있습니다.
+Ccontext Provider를 중첩할 때 정보를 "누적"할 수 있습니다. 이 예시에서 `Section` 컴포넌트는 섹션 중첩의 깊이를 지정하는 `LevelContext`를 추적합니다. 이 컴포넌트는 부모 섹션에서 `LevelContext`를 읽은 다음 1씩 증가한 `LevelContext` 숫자를 자식에게 제공합니다. 그 결과 `Heading`  컴포넌트는 얼마나 많은 `Section` 컴포넌트가 중첩되어 있는지에 따라 `<h1>`, `<h2>`, `<h3>`, ..., 태그 중 어떤 태그를 사용할지 자동으로 결정할 수 있습니다.
 
 이 예시에 대한 [자세한 안내](/learn/passing-data-deeply-with-context)를 읽어보세요.
 

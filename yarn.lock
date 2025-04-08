@@ -3912,10 +3912,10 @@ eslint-plugin-jsx-a11y@^6.4.1:
     safe-regex-test "^1.0.3"
     string.prototype.includes "^2.0.0"
 
-eslint-plugin-mark@^0.1.0-canary.1:
-  version "0.1.0-canary.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-mark/-/eslint-plugin-mark-0.1.0-canary.1.tgz#257057e4ef2e8068791b49ee7f99c013beb2b927"
-  integrity sha512-sbQlw+p36JxiyeVhQhOAPfGiKOM15ZMNXrhb9b2h8iH94HvKxIOYJBUPPObtX5cmHUU0F/KdCtJQ1vPE0D9B7A==
+eslint-plugin-mark@^0.1.0-canary.2:
+  version "0.1.0-canary.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-mark/-/eslint-plugin-mark-0.1.0-canary.2.tgz#b7b05eb6201aab0f3225c99f1c7274c4a0fde3e3"
+  integrity sha512-0I+AndOwAIkuX/qYthEGr3BfgW0nkIJSPfUAsdhoAXoWjJU60PUMgesPmvz512SEYNZ9T0ojibJqjpoUZIf+Kw==
   dependencies:
     "@eslint/markdown" "^6.3.0"
     "@types/mdast" "^4.0.4"

@@ -922,7 +922,7 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
 }
 ```
 
-이제 `ChatRoom`가 재렌더링될 때마다 채팅방이 재연결되지 않습니다. 여기 커스텀 Hook에 이벤트 핸들러를 넘겨주는 직접 다뤄볼 수 있는  제대로 동작하는 예시가 있습니다.
+이제 `ChatRoom`가 재렌더링될 때마다 채팅방이 재연결되지 않습니다. 여기 커스텀 Hook에 이벤트 핸들러를 넘겨주는 직접 다뤄볼 수 있는 제대로 동작하는 예시가 있습니다.
 
 <Sandpack>
 
@@ -1332,7 +1332,7 @@ export function useOnlineStatus() {
 
 위의 예시에서 `useOnlineStatus`는 한 쌍의 [`useState`](/reference/react/useState)와 [`useEffect`](/reference/react/useEffect)와 함께 실행됩니다. 하지만 이건 가장 좋은 해결 방법은 아닙니다. 이 해결 방법이 고려하지 못한 수많은 예외 상황이 존재합니다. 예를 들어, 이건 컴포넌트가 마운트됐을 때, `isOnline`이 이미 `true`라고 가정합니다. 하지만 이것은 네트워크가 이미 꺼졌을 때 틀린 가정이 됩니다. 이런 상황을 확인하기 위해 브라우저 [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API를 사용할 수도 있습니다. 하지만 이걸 직접적으로 사용하게 되면 초기 HTML을 생성하기 위한 서버에선 동작하지 않습니다. 짧게 말하면 코드는 보완되어야 합니다.
 
-운 좋게도 React 18은 이런 모든 문제를 신경 써주는 [`useSyncExternalStore`](/reference/react/useSyncExternalStore)라고 불리는 섬세한 API를 포함합니다. 여기 새 API의 장점을 가지고 다시 쓰인 `useOnlineStatus`이 있습니다.
+React는 이런 모든 문제를 신경 써주는 [`useSyncExternalStore`](/reference/react/useSyncExternalStore)라고 불리는 섬세한 API를 포함합니다. 여기 새 API의 장점을 가지고 다시 쓰인 `useOnlineStatus`이 있습니다.
 
 <Sandpack>
 
