@@ -10,6 +10,7 @@ export default [
     files: ['src/content/**/*.md'],
     rules: {
       'mark/no-double-space': 'error',
+      'mark/no-git-conflict-marker': ['error', {skipCode: false}],
     },
   },
 ];
