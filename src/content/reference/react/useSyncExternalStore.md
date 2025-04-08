@@ -406,13 +406,7 @@ subscribe 함수는 컴포넌트 내부에 정의되므로 리렌더링할 때�
 
 ```js {2-5}
 function ChatIndicator() {
-<<<<<<< HEAD
-  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
-
-  // 🚩항상 다른 함수를 사용하므로 React는 렌더링할 때마다 다시 구독합니다.
-=======
-  // 🚩 Always a different function, so React will resubscribe on every re-render
->>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
+  // 🚩 항상 다른 함수를 사용하므로 React는 렌더링할 때마다 다시 구독합니다.
   function subscribe() {
     // ...
   }
@@ -426,18 +420,13 @@ function ChatIndicator() {
 리렌더링 사이에 다른 `subscribe` 함수를 전달하면 React가 store를 다시 구독합니다. 이로 인해 성능 문제가 발생하고 store 재구독을 피하고 싶다면 `subscribe` 함수를 외부로 이동하세요.
 
 ```js {1-4}
-// ✅ Always the same function, so React won't need to resubscribe
+// ✅ 항상 동일한 함수이므로 React는 다시 구독할 필요가 없습니다.
 function subscribe() {
   // ...
 }
 
-<<<<<<< HEAD
-// ✅ 항상 동일한 함수이므로 React는 다시 구독할 필요가 없습니다.
-function subscribe() {
-=======
 function ChatIndicator() {
   const isOnline = useSyncExternalStore(subscribe, getSnapshot);
->>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
   // ...
 }
 ```
@@ -446,13 +435,7 @@ function ChatIndicator() {
 
 ```js {2-5}
 function ChatIndicator({ userId }) {
-<<<<<<< HEAD
-  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
-
   // ✅ userId가 변경되지 않는 한 동일한 함수입니다.
-=======
-  // ✅ Same function as long as userId doesn't change
->>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
   const subscribe = useCallback(() => {
     // ...
   }, [userId]);
