@@ -11,7 +11,7 @@ This versioning policy describes our approach to version numbers for packages su
 
 ## Stable releases {/*stable-releases*/}
 
-Stable React releases (also known as “Latest” release channel) follow [semantic versioning (semver)](https://semver.org/lang/ko/) principles.
+Stable React releases (also known as "Latest" release channel) follow [semantic versioning (semver)](https://semver.org/lang/ko/) principles.
 
 버전 번호 **x.y.z**를 사용할 때 다음과 같습니다.
 

@@ -1,5 +1,5 @@
 ---
-title: Setup
+title: 설정하기
 ---
 <Intro>
 

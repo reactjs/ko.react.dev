@@ -150,7 +150,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 3. `setNumber(number + 1)`: `number`는 `0`이므로 `setNumber(0 + 1)`입니다.
     - React는 다음 렌더링에서 `number`를 `1`로 변경할 준비를 합니다.
 
-`setNumber(number + 1)`를 세 번 호출했지만, 이 렌더링에서 이벤트 핸들러에서 `number`는 항상 `0`이므로 state를 `1`로 세 번 설정합니다. 이것이 이벤트 핸들러가 완료된 후 React가 컴포넌트 안의 `number` 를 `3`이 아닌 `1`로  다시 렌더링하는 이유입니다.
+`setNumber(number + 1)`를 세 번 호출했지만, 이 렌더링에서 이벤트 핸들러에서 `number`는 항상 `0`이므로 state를 `1`로 세 번 설정합니다. 이것이 이벤트 핸들러가 완료된 후 React가 컴포넌트 안의 `number` 를 `3`이 아닌 `1`로 다시 렌더링하는 이유입니다.
 
 코드에서 state 변수를 해당 값으로 대입하여 이를 시각화할 수도 있습니다. 이 렌더링에서 `number` state 변수는 `0`이므로 이벤트 핸들러는 다음과 같습니다.
 
