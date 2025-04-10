@@ -975,6 +975,7 @@ li {
 ```
 
 이제 원본 (버그가 있는) 코드를 `<StrictMode>`로 감싸봅시다.
+
 <Sandpack>
 
 ```js src/index.js
