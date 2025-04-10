@@ -47,6 +47,6 @@ React를 사용하여 UI를 표현하는 방법에 대해 더 알고 싶다면 [
 
 Hook은 자바스크립트 함수로 정의하지만, 호출 위치에 제약이 있는 특별한 유형의 재사용 가능한 UI 로직입니다. Hook을 사용할 때는 [Hook의 규칙](/reference/rules/rules-of-hooks)을 따라야 합니다.
 
-* [Hook을 최상위 레벨에서만 호출하세요](/reference/rules/rules-of-hooks#only-call-hooks-at-the-top-level) –  Hook을 반복문, 조건문, 또는 중첩된 함수 내부에서 호출하지 마세요. 대신 Hook을 항상 React 함수 최상위 레벨에서 호출하고, early return 이전에 사용해야 합니다.
+* [Hook을 최상위 레벨에서만 호출하세요](/reference/rules/rules-of-hooks#only-call-hooks-at-the-top-level) – Hook을 반복문, 조건문, 또는 중첩된 함수 내부에서 호출하지 마세요. 대신 Hook을 항상 React 함수 최상위 레벨에서 호출하고, early return 이전에 사용해야 합니다.
 * [Hook을 React 함수에서만 호출하세요 ](/reference/rules/rules-of-hooks#only-call-hooks-from-react-functions) – 일반 자바스크립트 함수에서 Hook을 호출하지 마세요.
 

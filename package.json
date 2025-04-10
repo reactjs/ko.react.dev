@@ -23,7 +23,7 @@
     "lint-editorconfig": "yarn editorconfig-checker",
     "textlint-test": "yarn mocha ./textlint/tests/utils && yarn mocha ./textlint/tests/rules",
     "textlint-docs": "node ./textlint/generators/genTranslateGlossaryDocs.js && git add wiki/translate-glossary.md",
-    "textlint-lint": "yarn textlint ./src/content --rulesdir ./textlint/rules -f pretty-error"
+    "textlint-lint": "yarn textlint ./src/content --rulesdir ./textlint/rules -f pretty-error && npx --yes eslint@9 -c eslint.config.mjs"
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "2.13.5",
@@ -72,7 +72,7 @@
     "eslint-plugin-flowtype": "4.x",
     "eslint-plugin-import": "2.x",
     "eslint-plugin-jsx-a11y": "6.x",
-    "eslint-plugin-mark": "^0.1.0-canary.1",
+    "eslint-plugin-mark": "^0.1.0-canary.2",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-compiler": "^19.0.0-beta-e552027-20250112",
     "eslint-plugin-react-hooks": "^0.0.0-experimental-fabef7a6b-20221215",

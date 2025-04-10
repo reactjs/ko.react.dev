@@ -68,7 +68,6 @@ If a framework is not a good fit for your project, you prefer to build your own 
 No. Create React App has been deprecated. For more information, see [Sunsetting Create React App](/blog/2025/02/14/sunsetting-create-react-app).
 
 </Note>
->>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 ## 다음 단계 {/*next-steps*/}
 

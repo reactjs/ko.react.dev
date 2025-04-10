@@ -944,7 +944,7 @@ export default function Board() {
 }
 ```
 
-`Array(9).fill(null)`은 9개의 엘리먼트로 배열을 생성하고 각 엘리먼트를 `null`로 설정합니다. 그 주위에 있는 `useState()` 호출은 처음에 해당 배열로 설정된  state 변수 `squares`를 선언합니다. 배열의 각 항목은 사각형의 값에 해당합니다. 나중에 보드를 채우면, `squares` 배열은 다음과 같은 모양이 됩니다.
+`Array(9).fill(null)`은 9개의 엘리먼트로 배열을 생성하고 각 엘리먼트를 `null`로 설정합니다. 그 주위에 있는 `useState()` 호출은 처음에 해당 배열로 설정된 state 변수 `squares`를 선언합니다. 배열의 각 항목은 사각형의 값에 해당합니다. 나중에 보드를 채우면, `squares` 배열은 다음과 같은 모양이 됩니다.
 
 ```jsx
 ['O', null, 'X', 'X', 'X', 'O', 'O', null, null]

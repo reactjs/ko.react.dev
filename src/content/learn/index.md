@@ -475,7 +475,7 @@ export default function MyApp() {
 }
 ```
 
-이렇게 전달한 정보를 *props*라고 합니다. 이제 `MyApp` 컴포넌트는 `count` state와 `handleClick` 이벤트 핸들러를 포함하며, *이 두 가지를 각 버튼에  props로 전달합니다*.
+이렇게 전달한 정보를 *props*라고 합니다. 이제 `MyApp` 컴포넌트는 `count` state와 `handleClick` 이벤트 핸들러를 포함하며, *이 두 가지를 각 버튼에 props로 전달합니다*.
 
 마지막으로 부모 컴포넌트에서 전달한 props를 *읽도록* `MyButton`을 변경합니다.
 
