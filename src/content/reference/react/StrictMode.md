@@ -835,15 +835,15 @@ Strict Mode가 없으면 Effect를 클린업해야 한다는 사실을 놓치기
 [Effect 클린업을 구현하는 방법에 대해 자세히 알아보세요.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
 
 ---
-### Fixing bugs found by re-running ref callbacks in development {/*fixing-bugs-found-by-re-running-ref-callbacks-in-development*/}
+### 개발 환경에서 ref 콜백을 다시 실행하여 발견된 버그 수정 {/*fixing-bugs-found-by-re-running-ref-callbacks-in-development*/}
 
-Strict Mode can also help find bugs in [callbacks refs.](/learn/manipulating-the-dom-with-refs)
+Strict Mode는 [callbacks refs](/learn/manipulating-the-dom-with-refs)의 버그를 찾는 데도 도움이 됩니다.
 
-Every callback `ref` has some setup code and may have some cleanup code. Normally, React calls setup when the element is *created* (is added to the DOM) and calls cleanup when the element is *removed* (is removed from the DOM).
+모든 콜백 `ref`에는 몇 가지 셋업 코드가 있고 어쩌면 클린업 코드가 있을 수 있습니다. 일반적으로 React는 엘리먼트가 생성(DOM에 추가)될 때 셋업 코드를 실행하고, 엘리먼트가 제거(DOM에서 삭제)될 때 셋업 코드를 실행합니다.
 
-When Strict Mode is on, React will also run **one extra setup+cleanup cycle in development for every callback `ref`.** This may feel surprising, but it helps reveal subtle bugs that are hard to catch manually.
+Strict Mode가 켜져 있으면 React는 **모든 콜백 `ref`에 대해 개발 환경에서 한 번 더 셋업+클린업 사이클을 실행합니다.** 이외로 느껴질 수도 있지만, 수동으로 파악하기 어려운 미묘한 버그를 드러내는 데 도움이 됩니다.
 
-Consider this example, which allows you to select an animal and then scroll to one of them. Notice when you switch from "Cats" to "Dogs", the console logs show that the number of animals in the list keeps growing, and the "Scroll to" buttons stop working:
+다음 예시를 살펴봅시다. 이 예시는 동물을 선택한 후 목록 중 하나로 스크롤 할 수 있게 해줍니다. "cats"에서 "dogs"로 전환할 때 콘솔 로그를 보면 목록에 있는 동물의 수가 계속 증가하고, "Scroll to" 버튼이 동작하지 않게 되는 점을 확인할 수 있습니다.
 
 <Sandpack>
 
@@ -901,9 +901,9 @@ export default function AnimalFriends() {
                   const list = itemsRef.current;
                   const item = {animal: animal, node};
                   list.push(item);
-                  console.log(`✅ Adding animal to the map. Total animals: ${list.length}`);
+                  console.log(`✅ 동물을 목록에 추가하는 중. 총 동물 수: ${list.length}`);
                   if (list.length > 10) {
-                    console.log('❌ Too many animals in the list!');
+                    console.log('❌ 목록에 동물이 너무 많습니다!');
                   }
                   return () => {
                     // 🚩 No cleanup, this is a bug!
@@ -963,9 +963,9 @@ li {
 </Sandpack>
 
 
-**This is a production bug!** Since the ref callback doesn't remove animals from the list in the cleanup, the list of animals keeps growing. This is a memory leak that can cause performance problems in a real app, and breaks the behavior of the app.
+**이것은 프로덕션 버그입니다!** ref 콜백이 클린업 과정에서 동물 목록을 제거하지 않으므로 동물 목록이 계속 증가합니다. 이는 메모리 누수를 일으켜 실제 앱에서 성능 문제를 유발할 수 있으며, 앱의 동작을 망가뜨립니다.
 
-The issue is the ref callback doesn't cleanup after itself:
+문제는 ref 콜백이 스스로 클린업을 하지 않는 점입니다.
 
 ```js {6-8}
 <li
@@ -980,7 +980,7 @@ The issue is the ref callback doesn't cleanup after itself:
 </li>
 ```
 
-Now let's wrap the original (buggy) code in `<StrictMode>`:
+이제 원본 (버그가 있는) 코드를 `<StrictMode>`로 감싸봅시다.
 
 <Sandpack>
 
@@ -1043,9 +1043,9 @@ export default function AnimalFriends() {
                   const list = itemsRef.current;
                   const item = {animal: animal, node}
                   list.push(item);
-                  console.log(`✅ Adding animal to the map. Total animals: ${list.length}`);
+                  console.log(`✅ 동물을 목록에 추가하는 중. 총 동물 수: ${list.length}`);
                   if (list.length > 10) {
-                    console.log('❌ Too many animals in the list!');
+                    console.log('❌ 목록에 동물이 너무 많습니다!');
                   }
                   return () => {
                     // 🚩 No cleanup, this is a bug!
@@ -1104,9 +1104,9 @@ li {
 
 </Sandpack>
 
-**With Strict Mode, you immediately see that there is a problem**. Strict Mode runs an extra setup+cleanup cycle for every callback ref. This callback ref has no cleanup logic, so it adds refs but doesn't remove them. This is a hint that you're missing a cleanup function.
+**Strict Mode를 사용하면 문제를 즉시 찾을 수 있습니다.** Strict Mode는 모든 콜백 ref에 대해 추가적인 셋업+클린업 사이클을 실행 실행합니다. 이 콜백 ref에는 클린업 로직이 없기 때문에 ref를 추가만 하고 제거하지 않습니다. 이는 클린업 함수가 누락되었다는 힌트입니다.
 
-Strict Mode lets you eagerly find mistakes in callback refs. When you fix your callback by adding a cleanup function in Strict Mode, you *also* fix many possible future production bugs like the "Scroll to" bug from before:
+Strict Mode를 통해 콜백 ref에서 발생하는 실수를 조기에 발견할 수 있습니다. Strict Mode에서 클린업 함수를 추가해 콜백을 수정하면, 이전에 발생했던 "Scroll to" 버그와 같은 많은 잠재적인 프로덕션 버그도 함께 해결할 수 있습니다.
 
 <Sandpack>
 
@@ -1169,13 +1169,13 @@ export default function AnimalFriends() {
                   const list = itemsRef.current;
                   const item = {animal, node};
                   list.push({animal: animal, node});
-                  console.log(`✅ Adding animal to the map. Total animals: ${list.length}`);
+                  console.log(`✅ 동물을 목록에 추가하는 중. 총 동물 수: ${list.length}`);
                   if (list.length > 10) {
-                    console.log('❌ Too many animals in the list!');
+                    console.log('❌ 목록에 동물이 너무 많습니다!');
                   }
                   return () => {
                     list.splice(list.indexOf(item));
-                    console.log(`❌ Removing animal from the map. Total animals: ${itemsRef.current.length}`);
+                    console.log(`❌ 목록에서 동물을 제거합니다. 전체 동물 수: ${itemsRef.current.length}`);
                   }
                 }}
               >
@@ -1231,23 +1231,23 @@ li {
 
 </Sandpack>
 
-Now on inital mount in StrictMode, the ref callbacks are all setup, cleaned up, and setup again:
+이제 StrictMode에서 초기 마운트 시, ref 콜백이 모두 셋업되고, 클린업 후, 다시 셋업 됩니다.
 
 ```
 ...
-✅ Adding animal to the map. Total animals: 10
+✅ 동물을 목록에 추가하는 중. 총 동물 수: 10
 ...
-❌ Removing animal from the map. Total animals: 0
+❌ 목록에서 동물을 제거합니다. 총 동물 수: 0
 ...
-✅ Adding animal to the map. Total animals: 10
+✅ 동물을 목록에 추가하는 중. 총 동물 수: 10
 ```
 
-**This is expected.** Strict Mode confirms that the ref callbacks are cleaned up correctly, so the size never grows above the expected amount. After the fix, there are no memory leaks, and all the features work as expected.
+**이것이 예상된 결과입니다.** Strict Mode는 ref 콜백이 올바르게 클린업 되었는지 확인해 주기 때문에 크기가 예상된 양을 초과하지 않습니다. 수정 후에는 메모리 누수가 발생하지 않으며, 모든 기능이 예상대로 작동합니다.
 
-Without Strict Mode, it was easy to miss the bug until you clicked around to app to notice broken features. Strict Mode made the bugs appear right away, before you push them to production.
+Strict Mode 없이는 고장 난 기능을 알아차릴 때까지 여기저기 클릭해야 하므로 버그를 놓치기 쉽습니다. Strict Mode는 버그를 즉시 드러나도록 하여 프로덕션에 배포하기 전에 문제를 발견할 수 있습니다.
 
 ---
-### Fixing deprecation warnings enabled by Strict Mode {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
+### Strict Mode에서 활성화된 더 이상 사용되지 않는 경고 수정하기 {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
 
 React는 `<StrictMode>` 트리 내부의 컴포넌트가 더 이상 사용되지 않는 다음 API 중 하나를 사용하는 경우 경고를 표시합니다.
 
