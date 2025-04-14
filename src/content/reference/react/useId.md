@@ -46,6 +46,8 @@ function PasswordField() {
 
 * `useId`를 리스트의 **key를 생성하기 위해 사용하면 안 됩니다**. [Key는 데이터로부터 생성해야 합니다.](/learn/rendering-lists#where-to-get-your-key)
 
+* `useId` currently cannot be used in [async Server Components](/reference/rsc/server-components#async-components-with-server-components).
+
 ---
 
 ## 사용법 {/*usage*/}
