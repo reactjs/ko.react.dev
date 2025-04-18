@@ -65,7 +65,7 @@ If a framework is not a good fit for your project, you prefer to build your own 
 
 #### Create React App을 사용해야 하나요? {/*should-i-use-create-react-app*/}
 
-Create React App은 더 이상 사용되지 않습니다. 자세한 정보는 [Create React App 지원 종료](/blog/2025/02/14/sunsetting-create-react-app)에서 확인할 수 있습니다.
+아니요. Create React App은 더 이상 사용되지 않습니다. 자세한 정보는 [Create React App 지원 종료](/blog/2025/02/14/sunsetting-create-react-app)에서 확인할 수 있습니다.
 
 </Note>
 
