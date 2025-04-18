@@ -31,7 +31,7 @@ The first step is to install a build tool like `vite`, `parcel`, or `rsbuild`. T
 
 ### Vite {/*vite*/}
 
-[Vite](https://vite.dev/) is a build tool that aims to provide a faster and leaner development experience for modern web projects.
+[Vite](https://vite.dev/)는 모던 웹 프로젝트에서 빠르고 간결한 개발 환경을 제공하는 것을 목표로 하는 빌드 도구입니다.
 
 <TerminalBlock>
 {`npm create vite@latest my-app -- --template react`}
