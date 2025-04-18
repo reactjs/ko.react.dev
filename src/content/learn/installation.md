@@ -47,7 +47,7 @@ React 문서의 대부분 페이지에는 이와 같은 샌드박스가 있습�
 
 React로 완전히 앱이나 웹사이트를 구축하고 싶다면, [새로운 React 프로젝트를 시작](/learn/start-a-new-react-project)하세요.
 
-To try React locally on your computer, [download this HTML page.](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html) Open it in your editor and in your browser!
+컴퓨터의 로컬 환경에서 React를 사용해 보고 싶다면, 이 [HTML 페이지를 다운로드](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html)하고 에디터와 브라우저에서 열어보세요!
 
 ## Creating a React App {/*creating-a-react-app*/}
 
@@ -63,9 +63,9 @@ If a framework is not a good fit for your project, you prefer to build your own 
 
 <Note>
 
-#### Should I use Create React App? {/*should-i-use-create-react-app*/}
+#### Create React App을 사용해야 하나요? {/*should-i-use-create-react-app*/}
 
-No. Create React App has been deprecated. For more information, see [Sunsetting Create React App](/blog/2025/02/14/sunsetting-create-react-app).
+아니요. Create React App은 더 이상 사용되지 않습니다. 자세한 정보는 [Create React App 지원 종료](/blog/2025/02/14/sunsetting-create-react-app)에서 확인할 수 있습니다.
 
 </Note>
 
