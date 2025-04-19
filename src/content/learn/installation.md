@@ -49,13 +49,13 @@ React로 완전히 앱이나 웹사이트를 구축하고 싶다면, [새로운 
 
 컴퓨터의 로컬 환경에서 React를 사용해 보고 싶다면, 이 [HTML 페이지를 다운로드](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html)하고 에디터와 브라우저에서 열어보세요!
 
-## Creating a React App {/*creating-a-react-app*/}
+## 새로운 React 앱 만들기 {/*creating-a-react-app*/}
 
-If you want to start a new React app, you can [create a React app](/learn/creating-a-react-app) using a recommended framework.
+새로운 React 앱을 만들고 싶다면, [새로운 React 앱 만들기](/learn/creating-a-react-app)에서 권장하는 프레임워크를 사용하여 만들 수 있습니다.
 
-## Build a React App from Scratch {/*build-a-react-app-from-scratch*/}
+## 처음부터 React 앱 만들기 {/*build-a-react-app-from-scratch*/}
 
-If a framework is not a good fit for your project, you prefer to build your own framework, or you just want to learn the basics of a React app you can [build a React app from scratch](/learn/build-a-react-app-from-scratch).
+프레임워크가 프로젝트에 맞지 않거나, 자신만의 프레임워크를 구축하고 싶거나, React 앱의 기본을 배우고 싶다면 [처음부터 React 앱 만들기](/learn/build-a-react-app-from-scratch)에서 확인할 수 있습니다.
 
 ## 기존 프로젝트에 React 추가하기 {/*add-react-to-an-existing-project*/}
 
