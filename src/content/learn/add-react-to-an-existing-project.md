@@ -46,7 +46,7 @@ title: 기존 프로젝트에 React 추가하기
 
 * **이미 애플리케이션이 `import` 문을 이용해 파일로 분리하고 있다면** 기존에 가지고 있는 설정을 이용해 보세요. JS 코드에서 `<div />`를 작성하면 문법 오류가 발생하는지 확인해 보세요. 문법 오류가 발생한다면 [Babel을 이용한 자바스크립트 코드 변환](https://babeljs.io/setup)이 필요할 수 있으며, JSX를 사용하려면 [Babel React 프리셋](https://babeljs.io/docs/babel-preset-react)을 활성화해야 할 수도 있습니다.
 
-* **애플리케이션이 자바스크립트 모듈을 컴파일하기 위한 기존 설정이 없다면,** [Vite](https://vite.dev/)를 이용하여 설정하세요. Vite 커뮤니티는 Rails, Django, Laravel을 포함한 [다양한 백엔드 프레임워크와의 통합](https://github.com/vite/awesome-vite#integrations-with-backends)을 지원하고 있습니다. 사용 중인 백엔드 프레임워크가 목록에 없다면 [가이드를 참고하여](https://vite.dev/guide/backend-integration.html) Vite 빌드를 백엔드와 수동으로 통합하세요.
+* **애플리케이션이 자바스크립트 모듈을 컴파일하기 위한 기존 설정이 없다면,** [Vite](https://vite.dev/)를 이용하여 설정하세요. Vite 커뮤니티는 Rails, Django, Laravel을 포함한 [다양한 백엔드 프레임워크와의 통합](https://github.com/vitejs/awesome-vite#integrations-with-backends)을 지원하고 있습니다. 사용 중인 백엔드 프레임워크가 목록에 없다면 [가이드를 참고하여](https://vite.dev/guide/backend-integration.html) Vite 빌드를 백엔드와 수동으로 통합하세요.
 
 설정이 제대로 동작하는지 확인하려면 프로젝트 폴더에서 아래 명령어를 실행하세요.
 
