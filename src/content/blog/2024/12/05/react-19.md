@@ -2,7 +2,7 @@
 title: "React v19"
 author: React 팀
 date: 2024/12/05
-description: React 19가 npm에서 이제 사용이 가능합니다! 이 포스트에서 React 19의 새로운 기능들에 대한 개요와 도입하는 방법에 대해 설명합니다.
+description: React 19가 npm에서 이제 사용이 가능합니다! 이 포스트에서 React 19의 새로운 기능들에 대한 개요와 도입하는 방법에 관해 설명합니다.
 ---
 {/*<!-- eslint-disable mark/no-double-space -->*/}
 2024년 12월 5일 by [React 팀](/community/team)
@@ -14,7 +14,7 @@ description: React 19가 npm에서 이제 사용이 가능합니다! 이 포스�
 
 React 19 RC가 4월에 처음 공유된 이후 다음이 추가되었습니다.
 
-- **중단된 트리의 사전 워밍**: [Suspense 개선사항](/blog/2024/04/25/react-19-upgrade-guide#improvements-to-suspense)을 참고하세요.
+- **중단된 트리의 사전 워밍**: [Suspense 개선 사항](/blog/2024/04/25/react-19-upgrade-guide#improvements-to-suspense)을 참고하세요.
 - **React DOM 정적 API들**: [새로운 React DOM 정적 API들](#new-react-dom-static-apis)을 참고하세요.
 
 _이 게시물의 날짜는 안정된 버전의 릴리즈 날짜를 반영하도록 업데이트되었습니다._
@@ -30,10 +30,10 @@ React v19가 이제 npm에서 사용 가능합니다!
 [React 19 업그레이드 가이드](/blog/2024/04/25/react-19-upgrade-guide)에서 React 19로 앱을 업그레이드하는 단계별 지침을 공유했습니다. 이 포스트에서 React 19의 새로운 기능들과 이를 도입하는 방법을 제공합니다.
 
 - [React 19의 새로운 기능](#whats-new-in-react-19)
-- [React 19의 개선사항](#improvements-in-react-19)
+- [React 19의 개선 사항](#improvements-in-react-19)
 - [업그레이드 방법](#how-to-upgrade)
 
-주요 변경사항 목록은 [업그레이드 가이드](/blog/2024/04/25/react-19-upgrade-guide)를 참고하세요.
+주요 변경 사항 목록은 [업그레이드 가이드](/blog/2024/04/25/react-19-upgrade-guide)를 참고하세요.
 
 ---
 
@@ -77,7 +77,7 @@ function UpdateName({}) {
 
 React 19에서는 비동기 함수를 사용하여 대기 상태, 에러, 폼, 낙관적 업데이트를 자동으로 처리할 수 있도록 지원을 추가했습니다.
 
-예를 들어, `useTransition`을 통해 대기 상태를 다룰수 있습니다.
+예를 들어, `useTransition`을 통해 대기 상태를 다룰 수 있습니다.
 
 ```js
 // 액션을 통해 대기 상태를 활용
@@ -117,9 +117,9 @@ function UpdateName({}) {
 
 액션은 데이터 제출을 자동으로 관리합니다.
 
-- **대기 상태**: 액션은 요청 시작 시 대기 상태를 활성화 시키고 최종 상태가 커밋되었을때 자동으로 초기화합니다.
+- **대기 상태**: 액션은 요청 시작 시 대기 상태를 활성화하고 최종 상태가 커밋되었을때 자동으로 초기화합니다.
 - **낙관적 업데이트**: 액션은 새로운 [`useOptimistic`](#new-hook-optimistic-updates)훅을 통해 사용자가 요청을 제출하는 동안 즉각적인 피드백을 표시할 수 있습니다.
-- **에러 처리**: 액션은 요청 실패 시 Error Boundaries를 보여주고 낙관적 업데이트를 원래 값으로 자동으로 돌려놓습니다.
+- **에러 처리**: 액션은 요청 실패 시 Error Boundaries를 보여주고 낙관적 업데이트를 원래 값으로, 자동으로 돌려놓습니다.
 - **폼**: `<form>` 엘리먼트는 `action` 및 `formAction` props에 함수를 전달하는 것을 지원합니다. `action` props에 함수가 전달되면 기본적으로 액션을 사용하며 제출 후 폼을 자동으로 초기화합니다.
 
 </Note>
@@ -153,7 +153,7 @@ function ChangeName({ name, setName }) {
 }
 ```
 
-다음 섹션에서 React 19의 새로운 기능들을 분석해보겠습니다.
+다음 섹션에서 React 19의 새로운 기능들을 분석해 보겠습니다.
 
 ### 새로운 훅 `useActionState` {/*new-hook-useactionstate*/}
 
@@ -176,7 +176,7 @@ const [error, submitAction, isPending] = useActionState(
 );
 ```
 
-`useActionState`는 함수 (액션)을 받아서 이를 호출하는 래핑된 액션을 반환합니다. 이것이 작동하는 이유는 액션들이 조합 가능하기 때문입니다. 래핑된 액션이 호출되면 `useActionState`는 액션의 마지막 결과를 `data`로 액션의 대기 상태를 `pending`으로 반환합니다.
+`useActionState`는 함수 (액션)을 받아서 이를 호출하는 래핑 된 액션을 반환합니다. 이것이 작동하는 이유는 액션들이 조합 가능하기 때문입니다. 래핑된 액션이 호출되면 `useActionState`는 액션의 마지막 결과를 `data`로 액션의 대기 상태를 `pending`으로 반환합니다.
 
 <Note>
 
@@ -219,7 +219,7 @@ function DesignButton() {
 
 ### 새로운 훅: `useOptimistic` {/*new-hook-optimistic-updates*/}
 
-데이터 변경을 수행할 떄 또 다른 일반적인 UI 패턴은 비동기 요청이 진행되는 동안 최종 상태를 낙관적으로 보여주는 것입니다. React 19에서는 이를 더 쉽게 만들기 위해 새로운 훅 `useOptimistic`를 추가했습니다.
+데이터 변경을 수행할 때 또 다른 일반적인 UI 패턴은 비동기 요청이 진행되는 동안 최종 상태를 낙관적으로 보여주는 것입니다. React 19에서는 이를 더 쉽게 만들기 위해 새로운 훅 `useOptimistic`를 추가했습니다.
 
 ```js {2,6,13,19}
 function ChangeName({currentName, onUpdateName}) {
@@ -248,7 +248,7 @@ function ChangeName({currentName, onUpdateName}) {
 }
 ```
 
-`useOptimistic`훅은 `updateName` 요청이 진행중일 때 `optimisticName`을 즉시 렌더링할 것 입니다. 업데이트가 끝나거나 에러가 발생했을때 React는 자동으로 `currentName` 값을 이전으로 되돌립니다.
+`useOptimistic`훅은 `updateName` 요청이 진행 중일 때 `optimisticName`을 즉시 렌더링할 것입니다. 업데이트가 끝나거나 에러가 발생했을 때 React는 자동으로 `currentName` 값을 이전으로 되돌립니다.
 
 더 많은 정보는 [`useOptimistic`](/reference/react/useOptimistic)문서를 참고하세요.
 
@@ -256,7 +256,7 @@ function ChangeName({currentName, onUpdateName}) {
 
 React 19에서 렌더링에서 resources를 읽기 위해 새로운 API `use`를 발표했습니다.
 
-예를 들어 `use`를 통해 promise를 읽을 수 있고 React는 promie를 처리할 때 까지 중단할 것입니다.
+예를 들어 `use`를 통해 promise를 읽을 수 있고 React는 promie를 처리할 때까지 중단할 것입니다.
 
 ```js {1,5}
 import {use} from 'react';
@@ -269,7 +269,7 @@ function Comments({commentsPromise}) {
 
 function Page({commentsPromise}) {
   // Comments 컴포넌트에서 `use`가 중단될 때
-  // Suspense boundary가 보여질것 입니다.
+  // Suspense boundary가 보일 것 입니다.
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Comments commentsPromise={commentsPromise} />
@@ -280,7 +280,7 @@ function Page({commentsPromise}) {
 
 <Note>
 
-#### `use`는 더이상 렌더링 중에 프로미스 생성을 지원하지 않습니다. {/*use-does-not-support-promises-created-in-render*/}
+#### `use`는 더 이상 렌더링 중에 프로미스 생성을 지원하지 않습니다. {/*use-does-not-support-promises-created-in-render*/}
 
 만약 렌더링 중에 프로미스를 생성해 `use`에 전달하려고 하면 React는 경고를 표시할 것입니다.
 
@@ -320,13 +320,13 @@ function Heading({children}) {
 }
 ```
 
-`use` API는 훅과 유사하게 오직 렌더링중 일때만 호출됩니다. 훅과 달리 `use`는 조건적으로 호출됩니다. 앞으로 `use`를 사용하여 렌더링 중일 때 리소스들을 소비하도록 더 많은 방법을 지원할 계획입니다.
+`use` API는 훅과 유사하게 오직 렌더링 중일때만 호출됩니다. 훅과 달리 `use`는 조건적으로 호출됩니다. 앞으로 `use`를 사용하여 렌더링 중일 때 리소스들을 소비하도록 더 많은 방법을 지원할 계획입니다.
 
 더 많은 정보는 [`use`](/reference/react/use)문서를 참고하세요.
 
 ## 새로운 React DOM의 Static APIs {/*new-react-dom-static-apis*/}
 
-정적 사이트 생성을 위해 `react-dom/static`에 새로운 두가지 API를 추가했습니다.
+정적 사이트 생성을 위해 `react-dom/static`에 새로운 두 가지 API를 추가했습니다.
 - [`prerender`](/reference/react-dom/static/prerender)
 - [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream)
 
@@ -362,7 +362,7 @@ React 19는 Canary 채널에서 포함된 모든 React 서버 컴포넌트 기�
 
 #### 서버 컴포넌트에 대한 지원을 어떻게 구축하나요? {/*how-do-i-build-support-for-server-components*/}
 
-React 19에서 React 서버 컴포넌트는 안정적이며 마이너 버전 간에는 깨지지 않지만 React 서버 컴포넌트 번들러나 프레임워크를 구현하는 데 사용되는 기본 API는 semver를 따르지 않고 React 19.x의 마이너 버전 간에는 변경될 수 있습니다.
+React 19에서 React 서버 컴포넌트는 안정적이며 마이너 버전 간에는 깨지지 않지만, React 서버 컴포넌트 번들러나 프레임워크를 구현하는 데 사용되는 기본 API는 semver를 따르지 않고 React 19.x의 마이너 버전 간에는 변경될 수 있습니다.
 
 React 서버 컴포넌트를 지원하기 위해, 특정 React 버전에 고정하거나 Canary 릴리스를 사용하는 것을 권장합니다. 우리는 앞으로 번들러와 프레임워크와 협력하여 React 서버 컴포넌트를 구현하는 데 사용되는 API를 안정화할 계획입니다.
 
@@ -406,7 +406,7 @@ function MyInput({placeholder, ref}) {
 <MyInput ref={ref} />
 ```
 
-새로운 함수 컴포넌트에서는 더 이상 forwardRef가 필요하지 않으며, 새로운 ref 프롭을 사용하도록 컴포넌트를 자동으로 업데이트하는 codemod를 배포할 예정입니다. 앞으로의 버전에서는 forwardRef를 사용하지 않도록 폐기하고 제거할 계획입니다.
+새로운 함수 컴포넌트에서는 더 이상 forwardRef가 필요하지 않으며, 새로운 ref 프롭을 사용하도록 컴포넌트를 자동으로 업데이트하는 codemod를 배포할 예정입니다. 앞으로의 버전에서는 forwardRef를 사용하지 않도록 제거하고 더 이상 사용하지 않을 계획입니다.
 
 <Note>
 
@@ -416,7 +416,7 @@ function MyInput({placeholder, ref}) {
 
 ### 하이드레이션 에러에 대한 차이 {/*diffs-for-hydration-errors*/}
 
-예를 들어, 일치 하지 않는 정보 없이 DEV 환경에서 여러 에러 로깅하는 대신 `react-dom`에서 하이드레이션 에러에 대한 오류 보고를 개선했습니다. 
+예를 들어, 일치하지 않는 정보 없이 DEV 환경에서 여러 에러 로깅하는 대신 `react-dom`에서 하이드레이션 에러에 대한 오류 보고를 개선했습니다. 
 
 <ConsoleBlockMulti>
 
@@ -501,11 +501,11 @@ function App({children}) {
 }
 ```
 
-새로운 Context 프로바이더는 `<Context>` 사용할 수 있고 기존 존재하는 프로바이더를 변환하기 위한 codemod를 배포할 예정입니다. 앞으로의 버전에서 `<Context.Provider>`를 중단할 계획입니다.
+새로운 Context 프로바이더는 `<Context>` 사용할 수 있고 기존 존재하는 프로바이더를 변환하기 위한 codemod를 배포할 예정입니다. 앞으로의 버전에서 `<Context.Provider>`를 더 이상 사용하지 않을 계획입니다.
 
 ### refs를 위한 클린업 함수 {/*cleanup-functions-for-refs*/}
 
-이제 `ref` 콜백에 클린업 함수를 반환하는것을 지원합니다.
+이제 `ref` 콜백에 클린업 함수를 반환하는 것을 지원합니다.
 
 ```js {7-9}
 <input
@@ -521,13 +521,13 @@ function App({children}) {
 />
 ```
 
-컴포넌트가 마운트 해제 될때, React는  `ref` 콜백으로부터 클린업 함수를 호출할 것입니다. 이는 DOM ref, 클래스 컴포넌트 ref 그리고 `useImperativeHandle` 모두 해당됩니다.
+컴포넌트가 마운트 해제될 때, React는  `ref` 콜백으로부터 클린업 함수를 호출할 것입니다. 이는 DOM ref, 클래스 컴포넌트 ref 그리고 `useImperativeHandle` 모두 해당합니다.
 
 <Note>
 
 이전에는 React가 컴포넌트를 마운트 해제될 때 `ref` 함수를 `null`과 함께 호출했습니다. 이제 만약 `ref`가 클린업 함수를 반환한다면, React는 이 단계를 건너뜁니다.
 
-앞으로의 버전에서는 컴포넌트를 마운트 해제될 때 `null`과 함께 ref를 호출하는 것을 폐기할 예정입니다.
+앞으로의 버전에서는 컴포넌트를 마운트 해제될 때 `null`과 함께 ref를 호출하는 것을 더 이상 사용하지 않을 예정입니다.
 
 </Note>
 
@@ -542,7 +542,7 @@ ref 클린업 함수의 도입으로 인해, TypeScript에서 `ref` 콜백에서
 
 이 패턴은 [`no-implicit-ref-callback-return`](https://github.com/eps1lon/types-react-codemod/#no-implicit-ref-callback-return)을 사용하여 codemod로 변환할 수 있습니다.
 
-### `useDeferredValue` 초기 값 {/*use-deferred-value-initial-value*/}
+### `useDeferredValue` 초깃값 {/*use-deferred-value-initial-value*/}
 
 `useDeferredValue`에 `initialValue` 옵션을 추가했습니다.
 
@@ -626,9 +626,9 @@ function ComponentTwo() {
 }
 ```
 
-서버 사이드 렌더링 중에 React는 스타일시트를 `<head>`에 포함시킵니다. 이는 브라우저가 스타일시트를 로드할 때까지 페인팅을 하지 않도록 보장합니다. 만약 스트리밍을 시작한 후 늦게 스타일시트가 발견된다면, React는 해당 스타일시트에 의존하는 Suspense 경계의 콘텐츠를 표시하기 전에 클라이언트에서 스타일시트가 `<head>`에 삽입되도록 보장합니다.
+서버 사이드 렌더링 중에 React는 스타일시트를 `<head>`에 포함합니다. 이는 브라우저가 스타일시트를 로드할 때까지 페인팅을 하지 않도록 보장합니다. 만약 스트리밍을 시작한 후 늦게 스타일시트가 발견된다면, React는 해당 스타일시트에 의존하는 Suspense 경계의 콘텐츠를 표시하기 전에 클라이언트에서 스타일시트가 `<head>`에 삽입되도록 보장합니다.
 
-클라이언트 사이드 렌더링 중에는 React가 렌더링을 커밋하기 전에 새로 렌더링된 스타일시트가 로드될 때까지 기다립니다. 애플리케이션의 여러 위치에서 이 컴포넌트를 렌더링하더라도 React는 문서에 스타일시트를 한 번만 포함시킵니다.
+클라이언트 사이드 렌더링 중에는 React가 렌더링을 커밋하기 전에 새로 렌더링된 스타일시트가 로드될 때까지 기다립니다. 애플리케이션의 여러 위치에서 이 컴포넌트를 렌더링하더라도 React는 문서에 스타일시트를 한 번만 포함합니다.
 
 ```js {5}
 function App() {
@@ -640,7 +640,7 @@ function App() {
 }
 ```
 
-스타일시트를 수동으로 로드하는 데 익숙한 사용자들에게 이것은 의존하는 컴포넌트 옆에 스타일시트를 배치할 수 있는 기회를 제공합니다. 이를 통해 더 나은 지역적 추론이 가능하고 실제로 의존하는 스타일시트만 로드하도록 보장하는 것이 더 쉬워집니다.
+스타일시트를 수동으로 로드하는 데 익숙한 사용자들에게 이것은 의존하는 컴포넌트 옆에 스타일시트를 배치할 기회를 제공합니다. 이를 통해 더 나은 지역적 추론이 가능하고 실제로 의존하는 스타일시트만 로드하도록 보장하는 것이 더 쉬워집니다.
 
 스타일 라이브러리와 번들러의 통합도 이 새로운 기능을 채택할 수 있으므로, 직접 스타일시트를 렌더링하지 않더라도 도구가 이 기능을 사용하도록 업그레이드되면 여전히 혜택을 받을 수 있습니다.
 
@@ -722,13 +722,13 @@ function MyComponent() {
 
 화면 새로고침 시, 클라이언트에서 렌더링되는 엘리먼트가 서버에서 제공된 HTML과 일치하지 않으면 React는 컨텐츠를 수정하기 위해 클라이언트에서 강제 리렌더링합니다. 이전에는 서드파티 스크립트나 브라우저 확장 프로그램에 의해 삽입된 엘리먼트는 불일치 오류와 클라이언트 리렌더링을 유발했습니다.
 
-React 19에서는 `<head>` 및 `<body>`에서 예상치 못한 태그가 발견되면 불일치 오류를 피하기 위해 이러한 태그들을 건너뜁니다. 또한, React가 관계 없는 불일치로 인해 전체 문서를 리렌더링해야 할 경우, 서드파티 스크립트와 브라우저 확장 프로그램에 의해 삽입된 스타일시트는 그대로 남겨집니다.
+React 19에서는 `<head>` 및 `<body>`에서 예상치 못한 태그가 발견되면 불일치 오류를 피하고자 이러한 태그들을 건너뜁니다. 또한, React가 관계없는 불일치로 인해 전체 문서를 리렌더링해야 할 경우, 서드파티 스크립트와 브라우저 확장 프로그램에 의해 삽입된 스타일시트는 그대로 남겨집니다.
 
 ### 더 나은 에러 리포팅 {/*error-handling*/}
 
 React 19에서는 오류 처리를 개선하여 중복을 줄이고 잡힌 오류와 잡히지 않은 오류를 처리할 수 있는 옵션을 제공했습니다. 예를 들어, 에러 바운더리에 의해 잡힌 렌더링 중 오류가 발생할 경우, 이전에는 React가 오류를 두 번 던졌습니다 (원래 오류와 자동 복구에 실패한 후에 다시). 그리고 `console.error`를 호출하여 오류가 발생한 위치에 대한 정보를 출력했습니다.
 
-이로 인해 잡힌 각 오류마다 세 개의 오류가 발생하는 문제가 있었습니다.
+이에 따라 잡힌 오류마다 세 개의 오류가 발생하는 문제가 있었습니다.
 
 <ConsoleBlockMulti>
 
