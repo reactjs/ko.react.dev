@@ -4,30 +4,31 @@ title: 처음부터 React 앱 만들기
 
 <Intro>
 
-If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, you can build a React app from scratch.
+기존 프레임워크로 해결하기 어려운 제약이 있거나, 직접 프레임워크를 만들어 보고 싶거나, 리액트 앱의 기본 구조를 배우고 싶다면 처음부터 직접 구성해볼 수도 있습니다.
 
 </Intro>
 
 <DeepDive>
 
-#### Consider using a framework {/*consider-using-a-framework*/}
+#### 프레임워크 사용을 고려해보세요 {/*consider-using-a-framework*/}
 
-Starting from scratch is an easy way to get started using React, but a major tradeoff to be aware of is that going this route is often the same as building your own adhoc framework. As your requirements evolve, you may need to solve more framework-like problems that our recommended frameworks already have well developed and supported solutions for. 
+처음부터 직접 구성하는 방식은 리액트를 시작하기에 쉬운 방법입니다. 하지만 이 방식은 결국 나만의 임시 프레임워크를 만들게 되는 것과 같다는 점에 유의해야 합니다. 요구 사항이 늘어나면서, 기존에 잘 정리된 프레임워크들이 이미 해결해둔 문제들을 직접 다뤄야 할 수도 있습니다.
 
-For example, if in the future your app needs support for server-side rendering (SSR), static site generation (SSG), and/or React Server Components (RSC), you will have to implement those on your own. Similarly, future React features that require integrating at the framework level will have to be implemented on your own if you want to use them.
+예를 들어, 나중에 서버 사이드 렌더링(SSR), 정적 사이트 생성(SSG), React 서버 컴포넌트(RSC) 등의 기능이 필요해지면, 이를 직접 구현해야 합니다. 또한 향후 React에서 프레임워크 수준의 통합이 필요한 기능이 추가될 경우에도, 이를 사용하고 싶다면 스스로 구현해야 합니다.
 
-Our recommended frameworks also help you build better performing apps. For example, reducing or eliminating waterfalls from network requests makes for a better user experience. This might not be a high priority when you are building a toy project, but if your app gains users you may want to improve its performance.
+공식적으로 권장하는 프레임워크들은 앱의 성능 향상에도 도움이 됩니다. 예를 들어, 네트워크 요청에서 워터폴 현상을 줄이거나 없애면 사용자 경험이 훨씬 좋아집니다. 간단한 프로젝트에서는 중요하지 않을 수 있지만, 앱에 실제 사용자가 생기면 성능을 개선하고 싶어질 수 있습니다.
 
-Going this route also makes it more difficult to get support, since the way you develop routing, data-fetching, and other features will be unique to your situation. You should only choose this option if you are comfortable tackling these problems on your own, or if you're confident that you will never need these features.
+이 방식은 라우팅, 데이터 패칭 등 여러 기능을 직접 구현해야 하므로, 도움을 받기도 더 어려워집니다. 이러한 문제들을 스스로 해결할 자신이 있거나, 해당 기능들이 앞으로도 필요하지 않을 거라 확신하는 경우에만 이 옵션을 선택하는 것이 좋습니다.
 
-For a list of recommended frameworks, check out [Creating a React App](/learn/creating-a-react-app).
+추천 프레임워크 목록은 리액트 앱 만들기에서 확인할 수 있습니다. [Creating a React App](/learn/creating-a-react-app).
 
 </DeepDive>
 
 
-## Step 1: Install a build tool {/*step-1-install-a-build-tool*/}
+## 1단계: 빌드 도구 설치하기 {/*step-1-install-a-build-tool*/}
 
-The first step is to install a build tool like `vite`, `parcel`, or `rsbuild`. These build tools provide features to package and run source code, provide a development server for local development and a build command to deploy your app to a production server.
+가장 먼저 해야 할 일은 `vite`, `parcel`, `rsbuild` 같은 빌드 도구를 설치하는 것입니다.
+이러한 도구는 소스 코드를 번들링하고 실행할 수 있게 해주며, 로컬 개발을 위한 개발 서버와 프로덕션 배포를 위한 빌드 명령도 제공합니다.
 
 ### Vite {/*vite*/}
 
@@ -37,107 +38,124 @@ The first step is to install a build tool like `vite`, `parcel`, or `rsbuild`. T
 {`npm create vite@latest my-app -- --template react`}
 </TerminalBlock>
 
-Vite is opinionated and comes with sensible defaults out of the box. Vite has a rich ecosystem of plugins to support fast refresh, JSX, Babel/SWC, and other common features. See Vite's [React plugin](https://vite.dev/plugins/#vitejs-plugin-react) or [React SWC plugin](https://vite.dev/plugins/#vitejs-plugin-react-swc) and [React SSR example project](https://vite.dev/guide/ssr.html#example-projects) to get started.
+Vite는 자체 철학을 갖고 고유하게 구현된 (opinionated) 기본 설정이 잘 갖춰진 빌드 도구입니다. 빠른 새로고침, JSX, Babel/SWC 등 자주 사용하는 기능들을 위한 플러그인 생태계도 잘 갖춰져 있습니다.
+시작하려면 Vite의 [React 플러그인](https://vite.dev/plugins/#vitejs-plugin-react) or [React SWC 플러그인](https://vite.dev/plugins/#vitejs-plugin-react-swc) and [React SSR 예시 프로젝트](https://vite.dev/guide/ssr.html#example-projects)를 참고해 보세요.
 
-Vite is already being used as a build tool in one of our [recommended frameworks](/learn/creating-a-react-app): [React Router](https://reactrouter.com/start/framework/installation).
+Vite는 이미 우리가 [추천하는 프레임워크](/learn/creating-a-react-app) 중 하나인 [React Router](https://reactrouter.com/start/framework/installation)에서 빌드 도구로 사용되고 있습니다.
 
 ### Parcel {/*parcel*/}
 
-[Parcel](https://parceljs.org/) combines a great out-of-the-box development experience with a scalable architecture that can take your project from just getting started to massive production applications.
+[Parcel](https://parceljs.org/)은 처음 시작할 때도 뛰어난 개발 경험을 제공하며, 대규모 프로덕션 앱까지 확장할 수 있는 구조를 갖춘 빌드 도구입니다.
 
 <TerminalBlock>
 {`npm install --save-dev parcel`}
 </TerminalBlock>
 
-Parcel supports fast refresh, JSX, TypeScript, Flow, and styling out of the box. See [Parcel's React recipe](https://parceljs.org/recipes/react/#getting-started) to get started.
+Parcel은 빠른 새로고침, JSX, TypeScript, Flow, 스타일링 등을 별도 설정 없이 바로 지원합니다.
+시작하려면 [Parcel의 React 자습서](https://parceljs.org/recipes/react/#getting-started)를 참고해 보세요.
 
 ### Rsbuild {/*rsbuild*/}
 
-[Rsbuild](https://rsbuild.dev/) is an Rspack-powered build tool that provides a seamless development experience for React applications. It comes with carefully tuned defaults and performance optimizations ready to use.
+[Rsbuild](https://rsbuild.dev/)는 Rspack 기반의 빌드 도구로, React 애플리케이션을 위한 매끄러운 개발 경험을 제공합니다. 신중하게 설정된 기본값과 성능 최적화가 기본으로 적용되어 있어 바로 사용할 수 있습니다.
+
 
 <TerminalBlock>
 {`npx create-rsbuild --template react`}
 </TerminalBlock>
 
-Rsbuild includes built-in support for React features like fast refresh, JSX, TypeScript, and styling. See [Rsbuild's React guide](https://rsbuild.dev/guide/framework/react) to get started.
+Rsbuild는 빠른 새로고침, JSX, TypeScript, 스타일링 등 React에서 자주 사용하는 기능들을 기본으로 지원합니다.
+시작하려면 [Rsbuild의 React 가이드](https://rsbuild.dev/guide/framework/react)를 참고해 보세요.
 
 <Note>
 
-#### Metro for React Native {/*react-native*/}
+#### React Native용 Metro {/*react-native*/}
 
-If you're starting from scratch with React Native you'll need to use [Metro](https://metrobundler.dev/), the JavaScript bundler for React Native. Metro supports bundling for platforms like iOS and Android, but lacks many features when compared to the tools here. We recommend starting with Vite, Parcel, or Rsbuild unless your project requires React Native support.
+React Native를 처음부터 시작한다면, [Metro](https://metrobundler.dev/)를 사용해야 합니다.
+Metro는 React Native를 위한 자바스크립트 번들러로, iOS나 Android 같은 플랫폼을 위한 번들링을 지원합니다.
+다만, 이 문서에서 소개한 다른 도구들과 비교하면 지원하는 기능이 부족합니다.
+React Native가 꼭 필요한 경우가 아니라면 Vite, Parcel, Rsbuild 중 하나로 시작하는 것을 권장합니다.
 
 </Note>
 
-## Step 2: Build Common Application Patterns {/*step-2-build-common-application-patterns*/}
+## 2단계: 공통 애플리케이션 패턴 구현하기 {/*step-2-build-common-application-patterns*/}
 
-The build tools listed above start off with a client-only, single-page app (SPA), but don't include any further solutions for common functionality like routing, data fetching, or styling.
+앞서 소개한 빌드 도구들은 기본적으로 클라이언트 전용 단일 페이지 애플리케이션(SPA) 구조로 시작하지만, 라우팅, 데이터 패칭, 스타일링과 같은 일반적인 기능에 대한 솔루션은 포함하고 있지 않습니다.
 
-The React ecosystem includes many tools for these problems. We've listed a few that are widely used as a starting point, but feel free to choose other tools if those work better for you.
+이러한 기능들은 리액트 생태계에 다양한 도구들이 마련되어 있습니다. 여기서는 많이 사용되는 몇 가지를 소개하지만, 더 잘 맞는 도구가 있다면 자유롭게 선택해도 괜찮습니다.
 
-### Routing {/*routing*/}
+### 라우팅 {/*routing*/}
 
-Routing determines what content or pages to display when a user visits a particular URL. You need to set up a router to map URLs to different parts of your app. You'll also need to handle nested routes, route parameters, and query parameters. Routers can be configured within your code, or defined based on your component folder and file structures.
+라우팅은 사용자가 특정 URL에 접근했을 때 어떤 페이지나 콘텐츠를 보여줄지를 결정하는 기능입니다.
+앱의 각 URL을 적절한 컴포넌트나 페이지에 연결하려면 라우터 설정이 필요하며, 중첩 라우트, 라우트 파라미터, 쿼리 파라미터 처리도 함께 고려해야 합니다. 라우터는 코드 안에서 직접 구성할 수도 있고, 폴더와 파일 구조를 기반으로 정의할 수도 있습니다.
 
-Routers are a core part of modern applications, and are usually integrated with data fetching (including prefetching data for a whole page for faster loading), code splitting (to minimize client bundle sizes), and page rendering approaches (to decide how each page gets generated).
+라우팅은 현대적인 애플리케이션에서 핵심적인 역할을 합니다. 대개는 데이터 패칭(페이지 단위로 미리 데이터를 불러오기), 코드 분할(번들 크기 최소화), 페이지 렌더링 방식 결정(페이지를 어떻게 생성할지)과 함께 통합되어 사용됩니다.
 
-We suggest using:
+추천 도구는 다음과 같습니다:
 
 - [React Router](https://reactrouter.com/start/data/custom)
 - [Tanstack Router](https://tanstack.com/router/latest)
 
 
-### Data Fetching {/*data-fetching*/}
+### 데이터 패칭 {/*data-fetching*/}
 
-Fetching data from a server or other data source is a key part of most applications. Doing this properly requires handling loading states, error states, and caching the fetched data, which can be complex.
+대부분의 애플리케이션에서 서버나 외부 데이터 소스로부터 데이터를 가져오는 작업은 핵심 기능입니다.
+이 작업을 제대로 처리하려면 로딩 상태, 오류 상태, 가져온 데이터의 캐싱 등을 함께 관리해야 하며, 이 과정은 꽤 복잡할 수 있습니다.
 
-Purpose-built data fetching libraries do the hard work of fetching and caching the data for you, letting you focus on what data your app needs and how to display it. These libraries are typically used directly in your components, but can also be integrated into routing loaders for faster pre-fetching and better performance, and in server rendering as well.
+데이터 패칭을 전문으로 하는 라이브러리를 사용하면, 데이터 가져오기와 캐싱 같은 복잡한 부분은 도구가 대신 처리해주고, 어떤 데이터를 가져올지와 어떻게 보여줄지에만 집중할 수 있습니다.
+이런 라이브러리는 일반적으로 컴포넌트 안에서 직접 사용하지만, 성능상 라우터의 로더에 통합해 미리 데이터를 가져오거나, 서버 렌더링과 함께 사용할 수도 있습니다.
 
-Note that fetching data directly in components can lead to slower loading times due to network request waterfalls, so we recommend prefetching data in router loaders or on the server as much as possible! This allows a page's data to be fetched all at once as the page is being displayed.
+참고로, 컴포넌트 안에서 직접 데이터를 가져오면 네트워크 요청이 연쇄적(waterfalls)으로 발생해 로딩이 느려질 수 있습니다. 가능하면 라우터 로더나 서버에서 미리 데이터를 패칭해 페이지가 렌더링될 때 한 번에 데이터를 불러오는 방식이 더 권장됩니다.
 
-If you're fetching data from most backends or REST-style APIs, we suggest using:
+REST 스타일 API나 일반적인 백엔드에서 데이터를 가져오는 경우, 다음 도구들을 추천합니다:
 
 - [React Query](https://react-query.tanstack.com/)
 - [SWR](https://swr.vercel.app/)
 - [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
 
-If you're fetching data from a GraphQL API, we suggest using:
+GraphQL API에서 데이터를 가져오는 경우에는 다음 도구들이 유용합니다:
 
 - [Apollo](https://www.apollographql.com/docs/react)
 - [Relay](https://relay.dev/)
 
 
-### Code-splitting {/*code-splitting*/}
+### 코드 분할 {/*code-splitting*/}
 
-Code-splitting is the process of breaking your app into smaller bundles that can be loaded on demand. An app's code size increases with every new feature and additional dependency. Apps can become slow to load because all of the code for the entire app needs to be sent before it can be used. Caching, reducing features/dependencies, and moving some code to run on the server can help mitigate slow loading but are incomplete solutions that can sacrifice functionality if overused.
+코드 분할은 앱을 더 작은 번들로 나누고, 필요한 시점에 해당 번들만 불러오도록 하는 기법입니다.
+앱의 기능이 늘어나고 의존성이 추가될수록 전체 코드 크기도 함께 커지게 됩니다. 이렇게 되면 앱을 사용하기 전에 모든 코드를 한 번에 받아야 하므로, 초기 로딩 속도가 느려질 수 있습니다.
+기능이나 의존성을 줄이거나, 일부 코드를 서버에서 실행하도록 옮기거나, 캐싱을 활용하는 방법도 있지만, 지나치게 사용하면 앱의 기능을 희생하게 되는 경우도 있습니다.
 
-Similarly, if you rely on the apps using your framework to split the code, you might encounter situations where loading becomes slower than if no code splitting were happening at all. For example, [lazily loading](/reference/react/lazy) a chart delays sending the code needed to render the chart, splitting the chart code from the rest of the app. [Parcel supports code splitting with React.lazy](https://parceljs.org/recipes/react/#code-splitting). However, if the chart loads its data *after* it has been initially rendered you are now waiting twice. This is a waterfall: rather than fetching the data for the chart and sending the code to render it simultaneously, you must wait for each step to complete one after the other.
+또한 프레임워크를 사용하는 쪽에서 직접 코드 분할을 처리하도록 맡기는 경우, 오히려 아무런 분할을 하지 않았을 때보다 느려지는 상황이 생길 수 있습니다. 예를 들어, 차트를 [지연 로딩](/reference/react/lazy)하면, 차트를 렌더링하는 데 필요한 코드는 앱의 나머지 코드와 분리되어 나중에 전송됩니다. [Parcel은 React.lazy를 통한 코드 분할을 지원](https://parceljs.org/recipes/react/#code-splitting)합니다. 그런데 차트가 렌더링된 후에야 데이터를 요청한다면, 데이터를 기다리는 시간이 코드 로딩 이후에 또 한 번 발생합니다. 이처럼 순차적으로 처리되어 전체 로딩 시간이 늘어나는 현상을 워터폴이라고 부릅니다. 코드를 불러오고 데이터를 패칭하는 작업이 동시에 일어나지 않기 때문에 발생합니다.
 
-Splitting code by route, when integrated with bundling and data fetching, can reduce the initial load time of your app and the time it takes for the largest visible content of the app to render ([Largest Contentful Paint](https://web.dev/articles/lcp)).
+라우트 단위로 코드를 나누고, 이를 번들링 및 데이터 패칭과 함께 통합하면 초기 로딩 시간과 앱의 주요 콘텐츠가 화면에 표시되는 시간([Largest Contentful Paint](https://web.dev/articles/lcp))을 줄일 수 있습니다.
 
-For code-splitting instructions, see your build tool docs:
+코드 분할 방법은 사용하는 빌드 도구 문서를 참고하세요:
 - [Vite build optimizations](https://v3.vitejs.dev/guide/features.html#build-optimizations)
 - [Parcel code splitting](https://parceljs.org/features/code-splitting/)
 - [Rsbuild code splitting](https://rsbuild.dev/guide/optimization/code-splitting)
 
-### Improving Application Performance {/*improving-application-performance*/}
+### 애플리케이션 성능 개선하기 {/*improving-application-performance*/}
 
-Since the build tool you select only support single page apps (SPAs) you'll need to implement other [rendering patterns](https://www.patterns.dev/vanilla/rendering-patterns) like server-side rendering (SSR), static site generation (SSG), and/or React Server Components (RSC). Even if you don't need these features at first, in the future there may be some routes that would benefit SSR, SSG or RSC.
+앞서 소개한 빌드 도구들은 기본적으로 단일 페이지 애플리케이션(SPA)만 지원하므로, 서버 사이드 렌더링(SSR), 정적 사이트 생성(SSG), React 서버 컴포넌트(RSC) 같은 [렌더링 패턴](https://www.patterns.dev/vanilla/rendering-patterns)을 직접 구현해야 합니다. 처음에는 이러한 기능이 필요하지 않을 수 있지만, 시간이 지나면서 일부 라우트에서는 SSR, SSG 또는 RSC가 더 적합한 경우가 생길 수 있습니다.
 
-* **Single-page apps (SPA)** load a single HTML page and dynamically updates the page as the user interacts with the app. SPAs are easier to get started with, but they can have slower initial load times. SPAs are the default architecture for most build tools.
+* **SPA(Single-page app)**는 하나의 HTML 페이지를 불러온 뒤, 사용자 상호작용에 따라 페이지를 동적으로 업데이트합니다. 시작하기는 쉽지만, 초기 로딩 속도가 느릴 수 있습니다. 대부분의 빌드 도구는 SPA를 기본 구조로 사용합니다.
 
-* **Streaming Server-side rendering (SSR)** renders a page on the server and sends the fully rendered page to the client. SSR can improve performance, but it can be more complex to set up and maintain than a single-page app. With the addition of streaming, SSR can be very complex to set up and maintain. See [Vite's SSR guide]( https://vite.dev/guide/ssr).
+* **스트리밍 서버 사이드 렌더링(SSR)**은 페이지를 서버에서 렌더링한 후 완성된 HTML을 클라이언트에 전달합니다. 성능을 개선할 수 있지만, SPA보다 설정과 유지 관리가 더 복잡합니다. 특히 스트리밍 기능이 추가되면 구현 난이도가 더 높아집니다. 자세한 내용은 [Vite의 SSR 가이드](https://vite.dev/guide/ssr)를 참고하세요.
 
-* **Static site generation (SSG)** generates static HTML files for your app at build time. SSG can improve performance, but it can be more complex to set up and maintain than server-side rendering. See [Vite's SSG guide](https://vite.dev/guide/ssr.html#pre-rendering-ssg).
+* **정적 사이트 생성(SSG)**은 앱의 HTML 파일을 빌드 시점에 미리 생성합니다. SSR보다도 빠를 수 있지만, 설정과 관리가 까다로울 수 있습니다. 자세한 내용은 [Vite의 SSG 가이드](https://vite.dev/guide/ssr.html#pre-rendering-ssg)를 참고하세요.
 
-* **React Server Components (RSC)** lets you mix build-time, server-only, and interactive components in a single React tree. RSC can improve performance, but it currently requires deep expertise to set up and maintain. See [Parcel's RSC examples](https://github.com/parcel-bundler/rsc-examples).
+* **React 서버 컴포넌트(RSC)**는 빌드 시점, 서버 전용, 클라이언트 상호작용 컴포넌트를 하나의 트리 안에서 함께 사용할 수 있도록 해줍니다. 성능 개선에 효과적이지만, 현재로서는 설정과 유지에 높은 수준의 전문성이 필요합니다. [Parcel의 RSC 예시](https://github.com/parcel-bundler/rsc-examples)를 참고해 보세요.
 
-Your rendering strategies need to integrate with your router so apps built with your framework can choose the rendering strategy on a per-route level. This will enable different rendering strategies without having to rewrite your whole app. For example, the landing page for your app might benefit from being statically generated (SSG), while a page with a content feed might perform best with server-side rendering. 
 
-Using the right rendering strategy for the right routes can decrease the time it takes for the first byte of content to be loaded ([Time to First Byte](https://web.dev/articles/ttfb)), the first piece of content to render ([First Contentful Paint](https://web.dev/articles/fcp)), and the largest visible content of the app to render ([Largest Contentful Paint](https://web.dev/articles/lcp)).
+렌더링 전략은 라우터와 통합되어야 각 라우트별로 적절한 렌더링 방식을 선택할 수 있습니다. 이렇게 하면 전체 앱을 다시 작성하지 않고도 라우트마다 다른 전략을 적용할 수 있습니다. 예를 들어, 랜딩 페이지는 정적 생성(SSG) 방식이 적합할 수 있고, 콘텐츠 피드가 있는 페이지는 서버 사이드 렌더링(SSR)이 더 나은 성능을 낼 수 있습니다.
 
-### And more... {/*and-more*/}
+라우트에 맞는 렌더링 전략을 적용하면 콘텐츠가 처음 도착하는 시간 ([Time to First Byte](https://web.dev/articles/ttfb)), 첫 번째 콘텐츠가 화면에 렌더링되는 시간 ([First Contentful Paint](https://web.dev/articles/fcp)), 가장 큰 콘텐츠가 화면에 표시되는 시간 ([Largest Contentful Paint](https://web.dev/articles/lcp))을 줄일 수 있습니다. 
 
-These are just a few examples of the features a new app will need to consider when building from scratch. Many limitations you'll hit can be difficult to solve as each problem is interconnected with the others and can require deep expertise in problem areas you may not be familiar with. 
 
-If you don't want to solve these problems on your own, you can [get started with a framework](/learn/creating-a-react-app) that provides these features out of the box. 
+
+### 그리고 더... {/*and-more*/}
+
+지금까지 소개한 내용은 새 앱을 처음부터 만들 때 고려해야 할 기능들 중 일부에 불과합니다.
+직접 개발하다 보면 여러 제약에 부딪히게 되며, 각각의 문제는 서로 얽혀 있어서 해결이 쉽지 않고, 익숙하지 않은 영역에 대한 깊은 이해가 필요할 수도 있습니다.
+
+이러한 문제들을 직접 해결하고 싶지 않다면, 필요한 기능들이 기본으로 포함된 [프레임워크로 시작](/learn/creating-a-react-app)해보는 것을 추천합니다.
+
