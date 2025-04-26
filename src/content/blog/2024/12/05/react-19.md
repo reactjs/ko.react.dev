@@ -2,7 +2,7 @@
 title: "React v19"
 author: React 팀
 date: 2024/12/05
-description: React 19가 npm에서 이제 사용이 가능합니다! 이 포스트에서 React 19의 새로운 기능들에 대한 개요와 도입하는 방법에 관해 설명합니다.
+description: React 19를 이제 npm에서 사용할 수 있습니다! 이 포스트에서 React 19의 새로운 기능들에 대한 개요와 도입하는 방법에 대해 설명합니다.
 ---
 {/*<!-- eslint-disable mark/no-double-space -->*/}
 2024년 12월 5일 by [React 팀](/community/team)
@@ -10,11 +10,11 @@ description: React 19가 npm에서 이제 사용이 가능합니다! 이 포스�
 ---
 <Note>
 
-### React 19는 이제 안정되었습니다! {/*react-19-is-now-stable*/}
+### React 19는 이제 안정적입니다! {/*react-19-is-now-stable*/}
 
 React 19 RC가 4월에 처음 공유된 이후 다음이 추가되었습니다.
 
-- **중단된 트리의 사전 워밍**: [Suspense 개선 사항](/blog/2024/04/25/react-19-upgrade-guide#improvements-to-suspense)을 참고하세요.
+- **지연된 트리의 사전 워밍**: [Suspense 개선 사항](/blog/2024/04/25/react-19-upgrade-guide#improvements-to-suspense)을 참고하세요.
 - **React DOM 정적 API들**: [새로운 React DOM 정적 API들](#new-react-dom-static-apis)을 참고하세요.
 
 _이 게시물의 날짜는 안정된 버전의 릴리즈 날짜를 반영하도록 업데이트되었습니다._
@@ -23,7 +23,7 @@ _이 게시물의 날짜는 안정된 버전의 릴리즈 날짜를 반영하도
 
 <Intro>
 
-React v19가 이제 npm에서 사용 가능합니다!
+React v19를 이제 npm에서 사용할 수 있습니다!
 
 </Intro>
 
@@ -39,7 +39,7 @@ React v19가 이제 npm에서 사용 가능합니다!
 
 ## React 19의 새로운 기능 {/*whats-new-in-react-19*/}
 
-## 액션 {/*actions*/}
+### 액션 {/*actions*/}
 
 React 앱에서 일반적인 사용 사례 중 하나는 데이터 변경을 수행한 뒤 응답에 따라 상태를 변경하는 것입니다. 예를 들어, 사용자가 이름을 변경하는 폼을 제출하면 API 요청을 보내고 그 응답을 처리해야 합니다. 이전에는 대기 상태, 에러, 낙관적 업데이트, 순차적 요청을 수동으로 처리해야 했습니다.
 
@@ -109,27 +109,27 @@ function UpdateName({}) {
 }
 ```
 
-비동기 전환은 즉시 `isPending` 상태를 true로 설정하고, 비동기 요청을 수행한 후, 모든 전환이 완료되면 `isPending`을 false로 변경합니다. 이를 통해 데이터가 변경되는 동안에도 현재 UI 반응성과 상호작용성을 유지할 수 있습니다.
+비동기 전환은 즉시 `isPending` 상태를 `true`로 설정하고, 비동기 요청을 수행한 후, 모든 전환이 완료되면 `isPending`을 `false`로 변경합니다. 이를 통해 데이터가 변경되는 동안에도 현재 UI 반응성과 상호작용성을 유지할 수 있습니다.
 
 <Note>
 
-#### 관습에 따르면 비동기 전환을 사용하는 함수들을 "액션"이라고 부릅니다. {/*by-convention-functions-that-use-async-transitions-are-called-actions*/}
+#### 관습에 따르면 비동기 전환을 사용하는 함수들을 "액션"이라 부릅니다. {/*by-convention-functions-that-use-async-transitions-are-called-actions*/}
 
 액션은 데이터 제출을 자동으로 관리합니다.
 
 - **대기 상태**: 액션은 요청 시작 시 대기 상태를 활성화하고 최종 상태가 커밋되었을때 자동으로 초기화합니다.
 - **낙관적 업데이트**: 액션은 새로운 [`useOptimistic`](#new-hook-optimistic-updates)훅을 통해 사용자가 요청을 제출하는 동안 즉각적인 피드백을 표시할 수 있습니다.
-- **에러 처리**: 액션은 요청 실패 시 Error Boundaries를 보여주고 낙관적 업데이트를 원래 값으로, 자동으로 돌려놓습니다.
+- **에러 처리**: 액션은 요청 실패 시 Error Boundary를 보여주고 낙관적 업데이트를 원래 값으로, 자동으로 돌려놓습니다.
 - **폼**: `<form>` 엘리먼트는 `action` 및 `formAction` props에 함수를 전달하는 것을 지원합니다. `action` props에 함수가 전달되면 기본적으로 액션을 사용하며 제출 후 폼을 자동으로 초기화합니다.
 
 </Note>
 
-액션을 기반으로, React 19는 낙관적 업데이트를 관리하는 [`useOptimistic`](#new-hook-optimistic-updates)와 액션을 위한 일반적인 케이스를 처리하는 [`React.useActionState`](#new-hook-useactionstate) 훅을 도입했습니다. `react-dom`에서는 폼 처리를 자동화하는 [`<form>` 액션](#form-actions)과 폼 내의 공통 케이스를 지원하는 [`useFormStatus`](#new-hook-useformstatus)를 추가했습니다.
+액션을 기반으로, React 19는 낙관적 업데이트를 관리하는 [`useOptimistic`](#new-hook-optimistic-updates)와 액션을 위한 일반적인 케이스를 처리하는 [`React.useActionState`](#new-hook-useactionstate) Hook을 도입했습니다. `react-dom`에서는 폼 처리를 자동화하는 [`<form>` 액션](#form-actions)과 폼 내의 공통 케이스를 지원하는 [`useFormStatus`](#new-hook-useformstatus)를 추가했습니다.
 
 React 19에서 간단한 예시가 있습니다.
 
 ```js
-// <form> 액션과 useActionState의 사용
+// `<form>` 액션과 `useActionState`의 사용
 function ChangeName({ name, setName }) {
   const [error, submitAction, isPending] = useActionState(
     async (previousState, formData) => {
@@ -157,15 +157,15 @@ function ChangeName({ name, setName }) {
 
 ### 새로운 훅 `useActionState` {/*new-hook-useactionstate*/}
 
-액션의 일반적인 경우를 더 쉽게 처리하기 위해 `useActionState`라는 새로운 훅을 추가했습니다.
+액션의 일반적인 경우를 더 쉽게 처리하기 위해 `useActionState`라는 새로운 Hook을 추가했습니다.
 
 ```js
 const [error, submitAction, isPending] = useActionState(
   async (previousState, newName) => {
     const error = await updateName(newName);
     if (error) {
-      // 액션에 대한 결과를 리턴할 수 있습니다.
-      // 여기서 에러를 리턴합니다.
+      // 액션에 대한 결과를 반환할 수 있습니다.
+      // 여기서 에러를 반환합니다.
       return error;
     }
 
@@ -176,11 +176,11 @@ const [error, submitAction, isPending] = useActionState(
 );
 ```
 
-`useActionState`는 함수 (액션)을 받아서 이를 호출하는 래핑 된 액션을 반환합니다. 이것이 작동하는 이유는 액션들이 조합 가능하기 때문입니다. 래핑된 액션이 호출되면 `useActionState`는 액션의 마지막 결과를 `data`로 액션의 대기 상태를 `pending`으로 반환합니다.
+`useActionState`는 함수(액션)를 받아서 이를 호출하는 래핑된 액션을 반환합니다. 이것이 작동하는 이유는, 액션들이 조합 가능하기 때문입니다. 래핑된 액션이 호출되면 `useActionState`는 액션의 마지막 결과를 `data`로 액션의 대기 상태를 `pending`으로 반환합니다.
 
 <Note>
 
-`React.useActionState` 는 Canary 릴리즈에서 `ReactDOM.useFormState` 불렸지만 이름이 변경되었고 `useFormState`는 폐기되었습니다.
+`React.useActionState` 는 Canary 릴리즈에서 `ReactDOM.useFormState`라 불렸지만 이름이 변경되었고 `useFormState`는 더 이상 사용되지 않습니다.
 
 더 많은 정보는 [#28491](https://github.com/facebook/react/pull/28491)을 참고하세요.
 
@@ -190,19 +190,19 @@ const [error, submitAction, isPending] = useActionState(
 
 ### React DOM: `<form>` 액션 {/*form-actions*/}
 
-액션은 또한 React 19의 새로운 `<form>`기능과 `react-dom`을 통합하였습니다. `<form>`, `<input>`, 그리고 `<button>` 엘리먼트의 `action`과 `formAction` 속성에 함수를 전달하여 Action으로 폼을 자동으로 제출할 수 있도록 지원이 추가되었습니다.
+액션은 또한 React 19의 새로운 `<form>`기능과 `react-dom`을 통합하였습니다. `<form>`, `<input>`, 그리고 `<button>` 엘리먼트의 `action`과 `formAction` 속성에 함수를 전달하여 액션으로 폼을 자동으로 제출할 수 있도록 지원을 추가하였습니다.
 
 ```js [[1,1,"actionFunction"]]
 <form action={actionFunction}>
 ```
 
-`<form>` 액션이 성공하면 React는 비제어 컴포넌트의 경우폼을 자동으로 재설정합니다. 만일 수동으로 `<form>`을 재설정해야 하는 경우, 새로운 React DOM API인 `requestFormReset`을 호출할 수 있습니다.
+`<form>` 액션이 성공하면 React는 비제어 컴포넌트의 경우, 폼을 자동으로 재설정합니다. 만일 수동으로 `<form>`을 재설정해야 하는 경우, 새로운 React DOM API인 `requestFormReset`을 호출할 수 있습니다.
 
 더 많은 정보는 [`<form>`](/reference/react-dom/components/form), [`<input>`](/reference/react-dom/components/input) 그리고 `<button>`을 위한 `react-dom` 문서를 참고하세요.
 
-### React DOM: 새로운 훅: `useFormStatus` {/*new-hook-useformstatus*/}
+### React DOM: 새로운 Hook: `useFormStatus` {/*new-hook-useformstatus*/}
 
-디자인 시스템에서는 컴포넌트로 props를 내려보내지 않고 `<form>` 내 정보에 접근해야 하는 디자인 컴포넌트를 작성하는 것이 일반적입니다. 이는 Context를 통해 수행할 수 있지만 일반적인 경우를 더 쉽게 만들기 위해 새로운 훅 `useFormStatus`을 추가했습니다.
+디자인 시스템에서는 컴포넌트로 Props를 내려보내지 않고 `<form>` 내 정보에 접근해야 하는 디자인 컴포넌트를 작성하는 것이 일반적입니다. 이는 Context를 통해 수행할 수 있지만 일반적인 경우를 더 쉽게 만들기 위해 새로운 훅 `useFormStatus`을 추가했습니다.
 
 ```js [[1, 4, "pending"], [1, 5, "pending"]]
 import {useFormStatus} from 'react-dom';
@@ -213,11 +213,11 @@ function DesignButton() {
 }
 ```
 
-`useFormStatus`는 마치 폼이 Context 프로바이더인 것처럼 부모 `<form>`의 상태를 읽습니다.
+`useFormStatus`는 마치 폼이 Context Provider인 것처럼 부모 `<form>`의 상태를 읽습니다.
 
 더 많은 정보는 `react-dom`의 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 문서를 참고하세요.
 
-### 새로운 훅: `useOptimistic` {/*new-hook-optimistic-updates*/}
+### 새로운 Hook: `useOptimistic` {/*new-hook-optimistic-updates*/}
 
 데이터 변경을 수행할 때 또 다른 일반적인 UI 패턴은 비동기 요청이 진행되는 동안 최종 상태를 낙관적으로 보여주는 것입니다. React 19에서는 이를 더 쉽게 만들기 위해 새로운 훅 `useOptimistic`를 추가했습니다.
 
@@ -248,28 +248,28 @@ function ChangeName({currentName, onUpdateName}) {
 }
 ```
 
-`useOptimistic`훅은 `updateName` 요청이 진행 중일 때 `optimisticName`을 즉시 렌더링할 것입니다. 업데이트가 끝나거나 에러가 발생했을 때 React는 자동으로 `currentName` 값을 이전으로 되돌립니다.
+`useOptimistic` Hook은 `updateName` 요청이 진행 중일 때 `optimisticName`을 즉시 렌더링할 것입니다. 업데이트가 끝나거나 에러가 발생했을 때 React는 자동으로 `currentName` 값을 이전으로 되돌립니다.
 
 더 많은 정보는 [`useOptimistic`](/reference/react/useOptimistic)문서를 참고하세요.
 
 ### 새로운 API: `use` {/*new-feature-use*/}
 
-React 19에서 렌더링에서 resources를 읽기 위해 새로운 API `use`를 발표했습니다.
+React 19에서 렌더링에서 Resource를 읽기 위해 새로운 API `use`를 발표했습니다.
 
-예를 들어 `use`를 통해 promise를 읽을 수 있고 React는 promie를 처리할 때까지 중단할 것입니다.
+예를 들어 `use`를 통해 Promise를 읽을 수 있고 React는 Promise를 처리할 때까지 중단할 것입니다.
 
 ```js {1,5}
 import {use} from 'react';
 
 function Comments({commentsPromise}) {
-  // `use`는 promise가 처리될때까지 중단될것입니다.
+  // `use`는 promise가 처리될 때까지 중단될 것입니다.
   const comments = use(commentsPromise);
   return comments.map(comment => <p key={comment.id}>{comment}</p>);
 }
 
 function Page({commentsPromise}) {
   // Comments 컴포넌트에서 `use`가 중단될 때
-  // Suspense boundary가 보일 것 입니다.
+  // Suspense Boundary가 보일 것 입니다.
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Comments commentsPromise={commentsPromise} />
@@ -309,8 +309,8 @@ function Heading({children}) {
     return null;
   }
 
-  // useContext는 동작하지 않습니다.
-  // 조기 반환으로 인해서
+  // 조기 반환으로 인하여,
+  // `useContext`는 동작하지 않습니다.
   const theme = use(ThemeContext);
   return (
     <h1 style={{color: theme.color}}>
@@ -320,11 +320,11 @@ function Heading({children}) {
 }
 ```
 
-`use` API는 훅과 유사하게 오직 렌더링 중일때만 호출됩니다. 훅과 달리 `use`는 조건적으로 호출됩니다. 앞으로 `use`를 사용하여 렌더링 중일 때 리소스들을 소비하도록 더 많은 방법을 지원할 계획입니다.
+`use` API는 Hook과 유사하게 오직 렌더링 중일때만 호출됩니다. 훅과 달리 `use`는 조건적으로 호출됩니다. 앞으로 `use`를 사용하여 렌더링 중일 때 리소스들을 소비하도록 더 많은 방법을 지원할 계획입니다.
 
 더 많은 정보는 [`use`](/reference/react/use)문서를 참고하세요.
 
-## 새로운 React DOM의 Static APIs {/*new-react-dom-static-apis*/}
+## 새로운 React DOM의 정적 API {/*new-react-dom-static-apis*/}
 
 정적 사이트 생성을 위해 `react-dom/static`에 새로운 두 가지 API를 추가했습니다.
 - [`prerender`](/reference/react-dom/static/prerender)
@@ -355,7 +355,7 @@ Prerender API는 정적 HTML 스트림이 반환되기 전에 데이터가 로�
 
 서버 컴포넌트는 번들링 전에 클라이언트 애플리케이션 또는 SSR 서버와 분리된 환경에서 컴포넌트를 미리 렌더링할 수 있는 새로운 옵션입니다. 이 별도의 환경이 React 서버 컴포넌트에서 "서버"입니다. 서버 컴포넌트는 CI 서버에서 빌드 시 한 번 실행하거나 웹 서버를 사용하여 각 요청에 대해 실행할 수 있습니다.
 
-React 19는 Canary 채널에서 포함된 모든 React 서버 컴포넌트 기능을 포함하고 있습니다. 이는 서버 컴포넌트가 포함된 라이브러리들이 이제 [풀스택 React 아키텍처](/learn/start-a-new-react-project#which-features-make-up-the-react-teams-full-stack-architecture-vision)를 지원하는 프레임워크에서 react-server [export 조건](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md#react-server-conditional-exports)을 사용하여 React 19를 향한 피어 종속성으로 지정할 수 있음을 의미합니다.
+React 19는 Canary 채널에서 포함된 모든 React 서버 컴포넌트 기능을 포함하고 있습니다. 이는 서버 컴포넌트가 포함된 라이브러리들이 이제 [풀스택 React 아키텍처](/learn/start-a-new-react-project#which-features-make-up-the-react-teams-full-stack-architecture-vision)를 지원하는 프레임워크에서 `react-server` [export 조건](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md#react-server-conditional-exports)을 사용하여 React 19를 향한 상호 의존성<sup>Peer Dependencies</sup>으로 지정할 수 있음을 의미합니다.
 
 
 <Note>
@@ -369,7 +369,7 @@ React 서버 컴포넌트를 지원하기 위해, 특정 React 버전에 고정�
 </Note>
 
 
-더 많은 정보는 [React Server Components](/reference/rsc/server-components) 문서를 참고하세요.
+더 많은 정보는 [React 서버 컴포넌트](/reference/rsc/server-components) 문서를 참고하세요.
 
 ### 서버 액션 {/*server-actions*/}
 
@@ -383,19 +383,19 @@ React 서버 컴포넌트를 지원하기 위해, 특정 React 버전에 고정�
 
 흔한 오해는 서버 컴포넌트는 `"use server"`로 표시되지만 이에 대한 지시어는 존재하지 않습니다. `"use server"`지시어는 서버 액션을 위해 사용됩니다.
 
-더 많은 정보는 [Directives](/reference/rsc/directives)문서를 참고하세요.
+더 많은 정보는 [지시어](/reference/rsc/directives)문서를 참고하세요.
 
 </Note>
 
 서버 액션은 서버 컴포넌트에서 생성되며 클라이언트 컴포넌트에 props를 전달되거나 클라이언트 컴포넌트에서 가져와 사용할 수 있습니다.
 
-더 많은 정보는 [React Server Actions](/reference/rsc/server-actions)를 참고하세요.
+더 많은 정보는 [React 서버 액션](/reference/rsc/server-actions)을 참고하세요.
 
-## React 19에서 개선 {/*improvements-in-react-19*/}
+## React 19에서 개선 사항 {/*improvements-in-react-19*/}
 
-### prop으로의 `ref` {/*ref-as-a-prop*/}
+### Prop으로의 `ref` {/*ref-as-a-prop*/}
 
-React 19부터 함수 컴포넌트의 prop을 ref에 접근할 수 있습니다.
+React 19부터 함수 컴포넌트의 Prop으로 `ref`에 접근할 수 있습니다.
 
 ```js [[1, 1, "ref"], [1, 2, "ref", 45], [1, 6, "ref", 14]]
 function MyInput({placeholder, ref}) {
@@ -406,15 +406,15 @@ function MyInput({placeholder, ref}) {
 <MyInput ref={ref} />
 ```
 
-새로운 함수 컴포넌트에서는 더 이상 forwardRef가 필요하지 않으며, 새로운 ref 프롭을 사용하도록 컴포넌트를 자동으로 업데이트하는 codemod를 배포할 예정입니다. 앞으로의 버전에서는 forwardRef를 사용하지 않도록 제거하고 더 이상 사용하지 않을 계획입니다.
+새로운 함수 컴포넌트에서는 더 이상 `forwardRef`이 필요하지 않으며, 새로운 `ref` Prop을 사용하도록 컴포넌트를 자동으로 업데이트하는 codemod를 배포할 예정입니다. 앞으로의 버전에서는 `forwardRef`를 사용하지 않도록 제거하고 더 이상 사용하지 않을 계획입니다.
 
 <Note>
 
-클래스에 전달된 ref는 컴포넌트 인스턴스를 참조하기 때문에 props로 전달되지 않습니다.
+클래스에 전달된 `ref`는 컴포넌트 인스턴스를 참조하기 때문에 Props로 전달되지 않습니다.
 
 </Note>
 
-### 하이드레이션 에러에 대한 차이 {/*diffs-for-hydration-errors*/}
+### 하이드레이션 에러에 대한 차이<sup>Diff</sup> {/*diffs-for-hydration-errors*/}
 
 예를 들어, 일치하지 않는 정보 없이 DEV 환경에서 여러 에러 로깅하는 대신 `react-dom`에서 하이드레이션 에러에 대한 오류 보고를 개선했습니다. 
 
@@ -484,9 +484,9 @@ https://react.dev/link/hydration-mismatch {'\n'}
 
 </ConsoleBlockMulti>
 
-### 프로바이더로 사용하는 `<Context>` {/*context-as-a-provider*/}
+### Provider로 사용하는 `<Context>` {/*context-as-a-provider*/}
 
-React 19에서는 `<Context.Provider>` 대신에 `<Context>` 프로바이더로 렌더링할 수 있습니다.
+React 19에서는 `<Context.Provider>` 대신에 `<Context>` Provider로 렌더링할 수 있습니다.
 
 
 ```js {5,7}
@@ -531,7 +531,7 @@ function App({children}) {
 
 </Note>
 
-ref 클린업 함수의 도입으로 인해, TypeScript에서 `ref` 콜백에서 다른 값을 반환하는 것이 거부될 것입니다. 일반적으로 해결 방법은 암시적 반환을 사용하지 않도록 하는 것입니다. 예시는 아래와 같습니다.
+`ref` 클린업 함수의 도입으로 인해, TypeScript에서 `ref` 콜백에서 다른 값을 반환하는 것이 거부될 것입니다. 일반적으로 해결 방법은 암시적 반환을 사용하지 않도록 하는 것입니다. 예시는 아래와 같습니다.
 
 ```diff [[1, 1, "("], [1, 1, ")"], [2, 2, "{", 15], [2, 2, "}", 1]]
 - <div ref={current => (instance = current)} />
@@ -542,7 +542,7 @@ ref 클린업 함수의 도입으로 인해, TypeScript에서 `ref` 콜백에서
 
 이 패턴은 [`no-implicit-ref-callback-return`](https://github.com/eps1lon/types-react-codemod/#no-implicit-ref-callback-return)을 사용하여 codemod로 변환할 수 있습니다.
 
-### `useDeferredValue` 초깃값 {/*use-deferred-value-initial-value*/}
+### `useDeferredValue` 초기값 {/*use-deferred-value-initial-value*/}
 
 `useDeferredValue`에 `initialValue` 옵션을 추가했습니다.
 
@@ -556,7 +556,7 @@ function Search({deferredValue}) {
     <Results query={value} />
   );
 }
-````
+```
 
 <CodeStep step={2}>initialValue</CodeStep>이 제공되면, `useDeferredValue`는 컴포넌트의 초기 렌더링에서 이를 `value`로 반환하고 백그라운드에서 <CodeStep step={1}>deferredValue</CodeStep>으로 리렌더링을 예약합니다.
 
@@ -589,7 +589,7 @@ React가 이 컴포넌트를 렌더링하면 `<title>` `<link>` 그리고 `<meta
 
 <Note>
 
-#### 여전히 메타데이터 라이브러리를 원한다. {/*you-may-still-want-a-metadata-library*/}
+#### 여전히 메타데이터 라이브러리를 원한다면 {/*you-may-still-want-a-metadata-library*/}
 
 간단한 사용 사례의 경우에 문서 메타 데이터를 태그로 렌더링하는 것이 적합할 수 있지만, 라이브러리는 현재 경로에 따라 일반 메타 데이터를 구체적인 메타 데이터로 덮어쓰는 등 더 강력한 기능을 제공할 수 있습니다. 이러한 기능들은 메타 데이터 태그를 대체하는 것보다 [`react-helmet`](https://github.com/nfl/react-helmet)와 같은 프레임워크나 라이브러리를 더 쉽게 할 수 있도록 합니다.
 
@@ -620,7 +620,7 @@ function ComponentTwo() {
   return (
     <div>
       <p>{...}</p>
-      <link rel="stylesheet" href="baz" precedence="default" />  <-- foo 와 bar 사이에 위치 될 것
+      <link rel="stylesheet" href="baz" precedence="default" />  <-- foo 와 bar 사이에 삽입될 것
     </div>
   )
 }
@@ -648,7 +648,7 @@ function App() {
 
 ### 비동기 스트립트 지원 {/*support-for-async-scripts*/}
 
-HTML 일반 스크립트 (`<script src="...">`)와 지연 스크립트 (`<script defer="" src="...">`)는 문서 순서대로 로드되어 컴포넌트 트리 깊숙한 곳에 이러한 종류의 스크립트를 렌더링하는 것을 어렵게 만듭니다. 그러나 비동기 스크립트 (`<script async="" src="...">`) 는 임의의 순서로 로드됩니다.
+HTML 일반 스크립트 (`<script src="...">`)와 지연 스크립트(`<script defer="" src="...">`)는 문서 순서대로 로드되어 컴포넌트 트리 깊숙한 곳에 이러한 종류의 스크립트를 렌더링하는 것을 어렵게 만듭니다. 그러나 비동기 스크립트 (`<script async="" src="...">`)는 임의의 순서로 로드됩니다.
 
 React 19에서는 비동기 스크립트에 대한 더 나은 지원을 포함하여, 스크립트 인스턴스의 재배치와 중복 제거를 관리하지 않아도 실제로 스크립트에 의존하는 컴포넌트 트리내 어디든 렌더링할 수 있도록 허용합니다.
 
@@ -696,10 +696,10 @@ function MyComponent() {
 }
 ```
 ```html
-<!-- 위 내용은 다음과 같은 DOM/HTML을 결과로 한다. -->
+<!-- 위 내용은 다음과 같은 DOM/HTML을 결과로 합니다. -->
 <html>
   <head>
-    <!-- links/scripts는 호출순서에 따라 정렬되지 않고 초기 로딩의 유용성에 따라 우선순위 결정 -->
+    <!-- link/script는 호출순서에 따라 정렬되지 않고 초기 로딩의 유용성에 따라 우선순위 결정 -->
     <link rel="prefetch-dns" href="https://...">
     <link rel="preconnect" href="https://...">
     <link rel="preload" as="font" href="https://.../path/to/font.woff">
@@ -714,7 +714,7 @@ function MyComponent() {
 
 이러한 API들은 초기 페이지 로드 최적화에 사용될 수 있으며, 스타일시트 로딩에서 폰트와 같은 추가 리소스의 발견을 완화시킬 수 있습니다. 또한, 예상된 네비게이션에서 사용되는 리소스 목록을 사전에 가져와 클릭 또는 호버 시 이러한 리소스를 즉시 사전로드하여 클라이언트 업데이트 속도를 높일 수 있습니다.
 
-더 자세한 내용은 [리소스 사전로드 APIs](/reference/react-dom#resource-preloading-apis)를 참고하세요.
+더 자세한 내용은 [리소스 사전 로드 API](/reference/react-dom#resource-preloading-apis)를 참고하세요.
 
 ### 서드파티 스크립트와 확장 프로그램의 호환성 {/*compatibility-with-third-party-scripts-and-extensions*/}
 
@@ -794,14 +794,14 @@ React will try to recreate this component tree from scratch using the error boun
 
 ### 커스텀 엘리먼트 지원 {/*support-for-custom-elements*/}
 
-React 19 는 커스텀 엘리먼트에 대한 모든 지원을 추가하고 [Custom Elements Everywhere](https://custom-elements-everywhere.com/)의 모든 테스트를 통과했습니다.
+React 19는 커스텀 엘리먼트에 대한 모든 지원을 추가하고 [Custom Elements Everywhere](https://custom-elements-everywhere.com/)의 모든 테스트를 통과했습니다.
 
 이전 버전에서는 React에서 인식되지 않는 props를 속성으로 처리하여 커스텀 엘리먼트 사용이 어려웠습니다. React 19에서는 클라이언트 및 SSR에서 속성을 지원하도록 아래와 같은 전략을 추가했습니다.
 
 - **서버 사이드 렌더링**: `string`, `number` 또는 한 값이 `true`인 원시 값일 경우 커스텀 엘리먼트에 전달된 props는 렌더링 될 것입니다. 비-원시 타입인 `object`, `symbol`, `function` 또는 값이 `false`인 props는 생략됩니다.
 - **클라이언트 사이드 렌더링**: 커스텀 엘리먼트 인스턴스의 속성과 일치하는 props는 프로퍼티로 할당됩니다. 그렇지 않은 경우에는 어트리뷰트로 할당됩니다.
 
-React의 Custom 엘리먼트 지원의 설계 및 구현을 주도해 주신 [Joey Arhar](https://github.com/josepharhar)에게 감사드립니다. 
+React의 Custom 엘리먼트 지원의 설계 및 구현을 주도해 주신 [Joey Arhar](https://github.com/josepharhar)에게 감사드립니다.
 
 
 #### 업그레이드 방법 {/*how-to-upgrade*/}
