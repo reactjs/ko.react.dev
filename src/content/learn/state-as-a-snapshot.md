@@ -72,8 +72,7 @@ state와 렌더링의 관계를 자세히 살펴보겠습니다.
 
 ## 렌더링은 그 시점의 스냅샷을 찍습니다. {/*rendering-takes-a-snapshot-in-time*/}
 
-["렌더링"](/learn/render-and-commit#step-2-react-renders-your-components)이란 React가 컴포넌트, 즉 함수를 호출한다는 뜻입니다. 해당 함수에서 반환하는 JSX는 시간상 UI의 스냅
-샷과 같습니다. prop, 이벤트 핸들러, 로컬 변수는 모두 **렌더링 당시의 state를 사용해** 계산됩니다.
+["렌더링"](/learn/render-and-commit#step-2-react-renders-your-components)이란 React가 컴포넌트, 즉 함수를 호출한다는 뜻입니다. 해당 함수에서 반환하는 JSX는 시간상 UI의 스냅샷과 같습니다. prop, 이벤트 핸들러, 로컬 변수는 모두 **렌더링 당시의 state를 사용해** 계산됩니다.
 
 사진이나 동영상 프레임과 달리 반환하는 UI "스냅샷"은 대화형입니다. 여기에는 입력에 대한 응답으로 어떤 일이 일어날지 지정하는 이벤트 핸들러와 같은 로직이 포함됩니다. 그러면 React는 이 스냅샷과 일치하도록 화면을 업데이트하고 이벤트 핸들러를 연결합니다. 결과적으로 버튼을 누르면 JSX의 클릭 핸들러가 발동됩니다.
 
