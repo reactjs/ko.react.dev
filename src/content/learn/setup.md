@@ -17,7 +17,7 @@ React는 에디터, 타입스크립트, 브라우저 확장 프로그램, 컴파
 
 ## React 개발자 도구 {/*react-developer-tools*/}
 
-React 개발자 도구는 React 컴포넌트를 검사하고, props와 state를 편집하고, 성능 문제를 식별할 수 있는 브라우저 확장 프로그램입니다. [여기](learn/react-developer-tools)에서 설치하는 방법을 확인해보세요.
+React 개발자 도구는 React 컴포넌트를 검사하고, Props와 State를 편집하고, 성능 문제를 식별할 수 있는 브라우저 확장 프로그램입니다. [여기](learn/react-developer-tools)에서 설치하는 방법을 확인해보세요.
 
 ## React 컴파일러 {/*react-compiler*/}
 
@@ -25,4 +25,4 @@ React 컴파일러는 React 앱을 자동으로 최적화하는 도구입니다.
 
 ## 다음 단계 {/*next-steps*/}
 
-[빠른시작](/learn)에서 자주 접하게 될 가장 중요한 React 개념들을 둘러보세요.
+[빠르게 시작하기](/learn)에서 자주 접하게 될 가장 중요한 React 개념들을 둘러보세요.
