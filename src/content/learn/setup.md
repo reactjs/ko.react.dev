@@ -3,26 +3,26 @@ title: 설정하기
 ---
 <Intro>
 
-React integrates with tools like editors, TypeScript, browser extensions, and compilers. This section will help you get your environment set up.
+React는 에디터, 타입스크립트, 브라우저 확장 프로그램, 컴파일러와 같은 도구와 연동됩니다. 이 섹션은 환경을 설정하는 데 도움이 될 것입니다.
 
 </Intro>
 
-## Editor Setup {/*editor-setup*/}
+## 에디터 설정하기 {/*editor-setup*/}
 
-See our [recommended editors](/learn/editor-setup) and learn how to set them up to work with React.
+[추천 에디터](/learn/editor-setup)를 살펴보고 React와 함께 작동하도록 설정하는 방법을 알아보세요.
 
-## Using TypeScript {/*using-typescript*/}
+## 타입스크립트 사용하기 {/*using-typescript*/}
 
-TypeScript is a popular way to add type definitions to JavaScript codebases. [Learn how to integrate TypeScript into your React projects](/learn/typescript).
+타입스크립트는 자바스크립트 코드베이스에 타입 정의를 추가하는 인기 있는 방법입니다. [React 프로젝트에 타입스크립트를 설정하는 방법을 알아보세요](/learn/typescript).
 
-## React Developer Tools {/*react-developer-tools*/}
+## React 개발자 도구 {/*react-developer-tools*/}
 
-React Developer Tools is a browser extension that can inspect React components, edit props and state, and identify performance problems. Learn how to install it [here](learn/react-developer-tools).
+React 개발자 도구는 React 컴포넌트를 검사하고, Props와 State를 편집하고, 성능 문제를 식별할 수 있는 브라우저 확장 프로그램입니다. [여기](learn/react-developer-tools)에서 설치하는 방법을 확인해보세요.
 
-## React Compiler {/*react-compiler*/}
+## React 컴파일러 {/*react-compiler*/}
 
-React Compiler is a tool that automatically optimizes your React app. [Learn more](/learn/react-compiler).
+React 컴파일러는 React 앱을 자동으로 최적화하는 도구입니다. [자세히 알아보세요](/learn/react-compiler).
 
-## Next steps {/*next-steps*/}
+## 다음 단계 {/*next-steps*/}
 
-Head to the [Quick Start](/learn) guide for a tour of the most important React concepts you will encounter every day.
+[빠르게 시작하기](/learn)에서 자주 접하게 될 가장 중요한 React 개념들을 둘러보세요.
