@@ -63,14 +63,14 @@ Expo는 [Expo (the company)](https://expo.dev/about)에서 유지 관리합니�
 
 풀스택 React 비전을 향해 나아가고 있는 또 다른 떠오르는 프레임워크가 있습니다.
 
-- [TanStack STart (Beta)](https://tanstack.com/): TanStack Start는 TanStack Router를 기반으로 하는 풀스택 React 프레임워크입니다. Nitro나 Vite와 같이 전체 문서 SSR, 스트리밍, 서버 함수, 번들링과 많은 유용한 도구를 제공합니다.
+- [TanStack Start (Beta)](https://tanstack.com/): TanStack Start는 TanStack Router를 기반으로 하는 풀스택 React 프레임워크입니다. Nitro나 Vite와 같이 전체 문서 SSR, 스트리밍, 서버 함수, 번들링과 많은 유용한 도구를 제공합니다.
 - [RedwoodJS](https://redwoodjs.com/): Redwood는 쉽게 풀스택 웹 애플리케이션을 만들 수 있도록 사전탑재된 패키지와 구성을 가진 풀스택 React 프레임워크입니다.
 
 <DeepDive>
 
 #### React 팀의 풀스택 아키텍처 비전을 구성하는 기능은 무엇인가요? {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
 
-Next.js의 App Router 번들러는 공식 [React Server Components 명세]((https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md))를 모두 구현합니다. 이를 통해 빌드 시간, 서버 전용 및 대화형 구성 요소를 단일 React 트리에 혼합할 수 있습니다.
+Next.js의 App Router 번들러는 공식 [React Server Components 명세](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md)를 모두 구현합니다. 이를 통해 빌드 시간, 서버 전용 및 대화형 구성 요소를 단일 React 트리에 혼합할 수 있습니다.
 
 예를 들어, 서버 전용 React 컴포넌트를 데이터베이스나 파일을 읽는 `비동기` 함수로 작성할 수 있습니다. 그런 다음 데이터를 대화형 컴포넌트로 전달할 수 있습니다.
 
