@@ -570,10 +570,6 @@ export const LevelContext = createContext(1);
 2. `Section`은 자식을 `<LevelContext.Provider value={level}>`로 감싸줍니다.
 3. `Heading`은 `useContext(LevelContext)`를 사용해 가장 근처의 `LevelContext`의 값을 요청합니다.
 
-1. You pass a `level` prop to the `<Section>`.
-2. `Section` wraps its children into `<LevelContext value={level}>`.
-3. `Heading` asks the closest value of `LevelContext` above with `useContext(LevelContext)`.
-
 ## 같은 컴포넌트에서 context를 사용하며 제공하기 {/*using-and-providing-context-from-the-same-component*/}
 
 지금은 각각의 섹션에 `level`을 수동으로 지정해야 합니다.
