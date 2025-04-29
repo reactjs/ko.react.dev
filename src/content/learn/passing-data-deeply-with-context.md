@@ -214,13 +214,13 @@ Context는 부모가 트리 내부 전체에, 심지어 멀리 떨어진 컴포�
 
 <Diagram name="passing_data_context_close" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in orange which projects down to the two children, each highlighted in orange." >
 
-Using context in close children
+Context를 가까운 자식 컴포넌트에서 사용하기
 
 </Diagram>
 
 <Diagram name="passing_data_context_far" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root parent node contains a bubble representing a value highlighted in orange. The value projects down directly to four leaves and one intermediate component in the tree, which are all highlighted in orange. None of the other intermediate components are highlighted.">
 
-Using context in distant children
+Context를 먼 자식 컴포넌트에서 사용하기
 
 </Diagram>
 
