@@ -478,8 +478,6 @@ export default function Section({ level, children }) {
 
 이것은 React에게 `Section` 내의 어떤 컴포넌트가 `LevelContext`를 요구하면 `level`을 주라고 알려줍니다. 컴포넌트는 그 위에 있는 UI 트리에서 가장 가까운 `<LevelContext.Provider>`의 값을 사용합니다.
 
-This tells React: "if any component inside this `<Section>` asks for `LevelContext`, give them this `level`." The component will use the value of the nearest `<LevelContext>` in the UI tree above it.
-
 <Sandpack>
 
 ```js
