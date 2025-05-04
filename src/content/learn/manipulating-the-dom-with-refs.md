@@ -656,12 +656,12 @@ DOM 요소를 직접 삭제한 뒤 `setState`를 사용하여 다시 DOM 노드�
 - React가 관리하는 DOM 노드를 직접 바꾸려 하지 마세요.
 - React가 관리하는 DOM 노드를 수정하려 한다면, React가 변경할 이유가 없는 부분만 수정하세요.
 
-- Refs are a generic concept, but most often you'll use them to hold DOM elements.
-- You instruct React to put a DOM node into `myRef.current` by passing `<div ref={myRef}>`.
-- Usually, you will use refs for non-destructive actions like focusing, scrolling, or measuring DOM elements.
-- A component doesn't expose its DOM nodes by default. You can opt into exposing a DOM node by using the `ref` prop.
-- Avoid changing DOM nodes managed by React.
-- If you do modify DOM nodes managed by React, modify parts that React has no reason to update.
+- Ref는 일반적인 개념이지만, 대부분의 경우 DOM 요소를 저장하는 데 사용됩니다.
+- React에 `<div ref={myRef}>`와 같이 작성하면, 해당 DOM 노드를 `myRef.current`에 넣도록 지시하는 것입니다.
+- 보통 ref는 DOM 요소에 포커스를 주거나, 스크롤하거나, 치수를 측정하는 등 DOM을 직접 변경하지 않고 상태를 유지하는 작업에 사용합니다.
+- 컴포넌트는 기본적으로 자신의 DOM 노드를 외부에 노출하지 않습니다. `ref` prop을 사용하여 DOM 노드를 노출하도록 선택할 수 있습니다.
+- React가 관리하는 DOM 노드를 직접 변경하는 것은 피하세요.
+- 꼭 React가 관리하는 DOM 노드를 수정해야 한다면, React가 업데이트할 이유가 없는 부분만 수정해야 합니다.
 
 </Recap>
 
