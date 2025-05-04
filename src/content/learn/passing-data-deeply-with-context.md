@@ -476,7 +476,7 @@ export default function Section({ level, children }) {
 }
 ```
 
-이것은 React에게 `Section` 내의 어떤 컴포넌트가 `LevelContext`를 요구하면 `level`을 주라고 알려줍니다. 컴포넌트는 그 위에 있는 UI 트리에서 가장 가까운 `<LevelContext.Provider>`의 값을 사용합니다.
+이것은 React에게 `<Section>` 내의 어떤 컴포넌트가 `LevelContext`를 요구하면 `level`을 주라고 알려줍니다. 컴포넌트는 그 위에 있는 UI 트리에서 가장 가까운 `<LevelContext>`의 값을 사용합니다.
 
 <Sandpack>
 
@@ -567,7 +567,7 @@ export const LevelContext = createContext(1);
 기존 코드와 동일한 결과이지만 `level` prop을 각 `Heading` 컴포넌트에 전달할 필요는 없습니다! 대신 위의 가장 가까운 `Section`에게 제목 레벨을 "확인"합니다.
 
 1. `level` prop 을 `<Section>`에 전달합니다.
-2. `Section`은 자식을 `<LevelContext.Provider value={level}>`로 감싸줍니다.
+2. `Section`은 자식을 `<LevelContext value={level}>`로 감싸줍니다.
 3. `Heading`은 `useContext(LevelContext)`를 사용해 가장 근처의 `LevelContext`의 값을 요청합니다.
 
 ## 같은 컴포넌트에서 context를 사용하며 제공하기 {/*using-and-providing-context-from-the-same-component*/}
@@ -868,7 +868,7 @@ Context는 정적인 값으로 제한되지 않습니다. 다음 렌더링 시 �
 - Context를 전달하려면 다음과 같습니다
   1. `export const MyContext = createContext(defaultValue)`로 context를 생성하고 내보내세요.
   2. `useContext(MyContext)` Hook에 전달해 얼마나 깊이 있든 자식 컴포넌트가 읽을 수 있도록 합니다.
-  3. 자식을 `<MyContext.Provider value={...}>`로 감싸 부모로부터 context를 받도록 합니다.
+  3. 자식을 `<MyContext value={...}>`로 감싸 부모로부터 context를 받도록 합니다.
 - Context는 중간의 어떤 컴포넌트도 지나갈 수 있습니다.
 - Context를 활용해 "주변에 적응하는" 컴포넌트를 작성할 수 있습니다.
 - Context를 사용하기 전에 props를 전달하거나 JSX를 `children`으로 전달하는 것을 먼저 시도해보세요.
