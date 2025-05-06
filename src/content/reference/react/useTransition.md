@@ -1927,7 +1927,7 @@ export async function updateQuantity(newName) {
 
 </Sandpack>
 
-여러 번 클릭하면 먼저 보낸 요청이 나중에 보낸 요청보다 먼저 처리될 수 있습니다. 이런 경우 React는 현재 의도한 순서를 알 수 있는 방법이 없습니다. 이는 업데이트가 비동기적으로 예약되고, React가 비동기 경계를 거쳐 순서에 대한 컨텍스트를 잃기 때문입니다.
+여러 번 클릭하면 먼저 보낸 요청이 나중에 보낸 요청보다 늦게 처리될 수 있습니다. 이런 경우 React는 현재 의도한 순서를 알 수 있는 방법이 없습니다. 이는 업데이트가 비동기적으로 예약되고, React가 비동기 경계를 거쳐 순서에 대한 컨텍스트를 잃기 때문입니다.
 
 이것은 예상된 동작입니다. Transition 내에서의 액션은 실행 순서를 보장하지 않기 때문입니다. 일반적인 사용 사례에서는 React가 [`useActionState`](/reference/react/useActionState)나 [`<form>` actions](/reference/react-dom/components/form)과 같은 더 높은 수준의 추상화를 제공하여 순서를 처리해 줍니다. 고급 사용 사례에서는 이 문제를 처리하기 위해 자체적인 큐잉(queuing) 및 취소 로직을 구현해야 합니다.
 
