@@ -38,7 +38,7 @@ function AppRoot() {
 
 ```
 
-[아래 예제에서 더 보기.](#usage)
+[아래 예시에서 더 보기.](#usage)
 
 `preinit` 함수는 브라우저에게 주어진 리소스를 다운로드하고 실행하라는 힌트를 제공하여 시간 절약에 도움을 줍니다. `preinit`한 스크립트는 다운로드가 완료되면 즉시 실행됩니다. 스타일시트는 문서에 삽입되어 곧바로 적용됩니다.
 
@@ -57,7 +57,7 @@ function AppRoot() {
 
 `preinit`은 아무것도 반환하지 않습니다.
 
-#### 주의사항 {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
 * 동일한 `href`로 `preinit`을 여러 번 호출해도, 한 번 호출한 것과 동일한 효과만 발생합니다.
 * 브라우저에서는 컴포넌트를 렌더링할 때, Effect 내부에서, 이벤트 핸들러 안에서 등 어떤 상황에서든 `preinit`을 호출할 수 있습니다.
@@ -73,7 +73,7 @@ function AppRoot() {
 
 특정 컴포넌트나 그 자식 컴포넌트가 특정 리소스를 사용할 것을 알고 있고, 해당 리소스가 다운로드되자마자 바로 실행되거나 적용되는 것이 괜찮다면, 컴포넌트를 렌더링할 때 `preinit`을 호출하세요.
 
-<Recipes titleText="preinit 사용 예제">
+<Recipes titleText="preinit 사용 예시">
 
 #### 외부 스크립트 preinit 하기 {/*preiniting-an-external-script*/}
 
