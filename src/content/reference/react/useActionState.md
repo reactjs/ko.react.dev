@@ -68,7 +68,7 @@ function StatefulForm({}) {
 `useActionState`는 다음 세 가지 값을 담은 배열을 반환합니다.
 
 1. 현재 State입니다. 첫 렌더링 시에는 `initialState`와 일치하며, 액션이 실행된 후에는 해당 액션이 반환한 값과 일치합니다.
-2. `<form>` 컴포넌트의 `action` Prop이나, 폼 내부 `<button>` 컴포넌트의 `formAction` Prop에 전달할 수 있는 새 액션입니다. 이 액션은 [startTransition](/reference/react/startTransition) 내에서 수동으로 호출할 수도 있습니다.
+2. `form` 컴포넌트의 `action` Prop이나, 폼 내부 `button` 컴포넌트의 `formAction` Prop에 전달할 수 있는 새 액션입니다. 이 액션은 [`startTransition`](/reference/react/startTransition) 내에서 수동으로 호출할 수도 있습니다.
 3. 현재 Transition이 대기 중인지 알려주는 `isPending` 플래그입니다.
 
 
