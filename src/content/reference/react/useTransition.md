@@ -77,8 +77,8 @@ function SubmitButton({ submitAction }) {
     <button
       disabled={isPending}
       onClick={() => {
-        startTransition(() => {
-          submitAction();
+        startTransition(async () => {
+          await submitAction();
         });
       }}
     >
@@ -229,9 +229,13 @@ import { startTransition } from "react";
 
 export default function Item({action}) {
   function handleChange(event) {
+<<<<<<< HEAD
     // startTransition 내부에서 콜백 함수를 실행하면 action 프로퍼티를 노출할 수 있습니다.
+=======
+    // To expose an action prop, await the callback in startTransition.
+>>>>>>> a3e9466dfeea700696211533a3570bc48d7bc3d3
     startTransition(async () => {
-      action(event.target.value);
+      await action(event.target.value);
     })
   }
   return (
@@ -587,9 +591,13 @@ export async function updateQuantity(newQuantity) {
 
 컴포넌트에서 `action` 프로퍼티를 노출시켜 부모 컴포넌트에서 Action을 호출할 수 있습니다.
 
+<<<<<<< HEAD
 예를 들어, 이 `TabButton` 컴포넌트는 `onClick`에서 실행될 로직이 `action` prop으로 감싸져있습니다.
+=======
+For example, this `TabButton` component wraps its `onClick` logic in an `action` prop:
+>>>>>>> a3e9466dfeea700696211533a3570bc48d7bc3d3
 
-```js {8-10}
+```js {8-12}
 export default function TabButton({ action, children, isActive }) {
   const [isPending, startTransition] = useTransition();
   if (isActive) {
@@ -597,8 +605,10 @@ export default function TabButton({ action, children, isActive }) {
   }
   return (
     <button onClick={() => {
-      startTransition(() => {
-        action();
+      startTransition(async () => {
+        // await the action that's passed in.
+        // This allows it to be either sync or async. 
+        await action();
       });
     }}>
       {children}
@@ -657,10 +667,15 @@ export default function TabButton({ action, children, isActive }) {
   if (isActive) {
     return <b>{children}</b>
   }
+  if (isPending) {
+    return <b className="pending">{children}</b>;
+  }
   return (
-    <button onClick={() => {
-      startTransition(() => {
-        action();
+    <button onClick={async () => {
+      startTransition(async () => {
+        // await the action that's passed in.
+        // This allows it to be either sync or async. 
+        await action();
       });
     }}>
       {children}
@@ -730,9 +745,18 @@ export default function ContactTab() {
 ```css
 button { margin-right: 10px }
 b { display: inline-block; margin-right: 10px; }
+.pending { color: #777; }
 ```
 
 </Sandpack>
+
+<Note>
+
+When exposing an `action` prop from a component, you should `await` it inside the transition. 
+
+This allows the `action` callback to be either synchronous or asynchronous without requiring an additional `startTransition` to wrap the `await` in the action.
+
+</Note>
 
 ---
 
@@ -805,8 +829,8 @@ export default function TabButton({ action, children, isActive }) {
   }
   return (
     <button onClick={() => {
-      startTransition(() => {
-        action();
+      startTransition(async () => {
+        await action();
       });
     }}>
       {children}
@@ -1097,8 +1121,8 @@ export default function TabButton({ action, children, isActive }) {
   }
   return (
     <button onClick={() => {
-      startTransition(() => {
-        action();
+      startTransition(async () => {
+        await action();
       });
     }}>
       {children}
@@ -1821,9 +1845,15 @@ import {startTransition} from 'react';
 
 export default function Item({action}) {
   function handleChange(e) {
+<<<<<<< HEAD
     // 수량을 업데이트하는 Action입니다.
     startTransition(() => {
       action(e.target.value);
+=======
+    // Update the quantity in an Action.
+    startTransition(async () => {
+      await action(e.target.value);
+>>>>>>> a3e9466dfeea700696211533a3570bc48d7bc3d3
     });
   }
   return (
