@@ -71,10 +71,6 @@ function StatefulForm({}) {
 2. `<form>` 컴포넌트의 `action` Prop이나 폼 내부 `<button>` 컴포넌트의 `formAction` Prop에 전달할 수 있는 새 액션입니다.
 3. 폼 액션이 대기 중인지 여부를 알려주는 `isPending` 플래그입니다.
 
-1. The current state. During the first render, it will match the `initialState` you have passed. After the action is invoked, it will match the value returned by the action.
-2. A new action that you can pass as the `action` prop to your `form` component or `formAction` prop to any `button` component within the form. The action can also be called manually within [`startTransition`](/reference/react/startTransition).
-3. The `isPending` flag that tells you whether there is a pending Transition.
-
 #### 주의 사항 {/*caveats*/}
 
 * React 서버 컴포넌트를 지원하는 프레임워크에서 `useActionState`를 사용하면, 클라이언트 자바스크립트 실행 전에도 폼과 상호작용할 수 있습니다. 만약 서버 컴포넌트를 사용하지 않는다면, 이는 단순히 컴포넌트 지역 State와 동일하게 동작합니다.
