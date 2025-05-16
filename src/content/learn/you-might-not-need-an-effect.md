@@ -1,5 +1,5 @@
 ---
-title: 'Effect가 필요하지 않을 수도 있습니다'
+title: 'Effect가 필요하지 않은 경우'
 ---
 
 <Intro>

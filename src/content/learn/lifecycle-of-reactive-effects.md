@@ -1,5 +1,5 @@
 ---
-title: '반응형 effects의 생명주기'
+title: 'React Effect의 생명주기'
 ---
 
 <Intro>

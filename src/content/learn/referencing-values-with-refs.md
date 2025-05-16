@@ -4,7 +4,7 @@ title: 'Ref로 값 참조하기'
 
 <Intro>
 
-컴포넌트가 일부 정보를 "기억"하고 싶지만, 해당 정보가 [렌더링을 유발](/learn/render-and-commit)하지 않도록 하려면 *ref*를 사용하세요.
+컴포넌트가 일부 정보를 "기억"하고 싶지만, 해당 정보가 [렌더링을 유발](/learn/render-and-commit)하지 않도록 하려면 *Ref*를 사용하세요.
 
 </Intro>
 
@@ -17,21 +17,21 @@ title: 'Ref로 값 참조하기'
 
 </YouWillLearn>
 
-## 컴포넌트에 ref를 추가하기 {/*adding-a-ref-to-your-component*/}
+## 컴포넌트에 Ref를 추가하기 {/*adding-a-ref-to-your-component*/}
 
-React에서 `useRef` Hook을 가져와 컴포넌트에 ref를 추가할 수 있습니다.
+React에서 `useRef` Hook을 가져와 컴포넌트에 Ref를 추가할 수 있습니다.
 
 ```js
 import { useRef } from 'react';
 ```
 
-컴포넌트 내에서 `useRef` Hook을 호출하고 참조할 초깃값을 유일한 인자로 전달합니다. 예를 들어 다음은 값 `0`에 대한 ref 입니다.
+컴포넌트 내에서 `useRef` Hook을 호출하고 참조할 초깃값을 유일한 인자로 전달합니다. 예를 들어 다음은 값 `0`에 대한 Ref 입니다.
 
 ```js
 const ref = useRef(0);
 ```
 
-`useRef` 는 다음과 같은 객체를 반환합니다.
+`useRef`는 다음과 같은 객체를 반환합니다.
 
 ```js
 {
@@ -41,7 +41,7 @@ const ref = useRef(0);
 
 <Illustration src="/images/docs/illustrations/i_ref.png" alt="An arrow with 'current' written on it stuffed into a pocket with 'ref' written on it." />
 
-`ref.current` 프로퍼티를 통해 해당 ref의 current 값에 접근할 수 있습니다. 이 값은 의도적으로 변경할 수 있으므로 읽고 쓸 수 있습니다. React가 추적하지 않는 구성 요소의 비밀 주머니라 할 수 있습니다. (이것이 바로 React의 단방향 데이터 흐름에서 "탈출구"가 되는 것입니다--아래에서 자세히 설명하고 있습니다!)
+`ref.current` 프로퍼티를 통해 해당 Ref의 `current` 값에 접근할 수 있습니다. 이 값은 의도적으로 변경할 수 있으므로 읽고 쓸 수 있습니다. React가 추적하지 않는 구성 요소의 비밀 주머니라 할 수 있습니다. (이것이 바로 React의 단방향 데이터 흐름에서 "탈출구"가 되는 것입니다. 아래에서 자세히 설명하고 있습니다!)
 
 여기서 버튼은 클릭할 때마다 `ref.current`를 증가시킵니다.
 
@@ -68,7 +68,7 @@ export default function Counter() {
 
 </Sandpack>
 
-ref는 숫자를 가리키지만, [state](/learn/state-a-components-memory)처럼 문자열, 객체, 심지어 함수 등 모든 것을 가리킬 수 있습니다. state와 달리 ref는 읽고 수정할 수 있는 `current` 프로퍼티를 가진 일반 자바스크립트 객체입니다.
+Ref는 숫자를 가리키지만, [State](/learn/state-a-components-memory)처럼 문자열, 객체, 심지어 함수 등 모든 것을 가리킬 수 있습니다. state와 달리 ref는 읽고 수정할 수 있는 `current` 프로퍼티를 가진 일반 자바스크립트 객체입니다.
 
 **컴포넌트는 모든 증가에 대하여 다시 렌더링 되지 않습니다.** state와 마찬가지로 ref도 React에 리렌더에 의해 유지됩니다. 그러나, state를 설정하면 컴포넌트가 다시 렌더링 됩니다. ref를 변경하면 다시 렌더링 되지 않습니다!
 
