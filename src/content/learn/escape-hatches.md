@@ -314,13 +314,13 @@ Effect의 생명주기가 컴포넌트와 어떻게 다른지를 배우려면 <s
 
 <Wip>
 
-이 섹션에서는 아직 안정된 버전의 React로 **출시되지 않은 실험적인 API**에 대해 설명합니다.
+이 섹션에서는 아직 안정된 버전의 React로 **출시하지 않은 실험적인 API**에 대해 설명합니다.
 
 </Wip>
 
-이벤트 핸들러는 같은 상호작용을 반복하는 경우에만 다시 실행됩니다. Effect는 이벤트 핸들러와 달리 prop이나 state 변수 등 읽은 값이 마지막 렌더링 때와 다르면 다시 동기화합니다. 때로는 두 동작이 섞여서 어떤 값에는 반응해 다시 실행되지만, 다른 값에는 그러지 않는 Effect를 원할 때도 있습니다. 이 페이지에서 그 방법을 알려드리겠습니다.
+이벤트 핸들러는 같은 상호작용을 반복하는 경우에만 다시 실행됩니다. Effect는 이벤트 핸들러와 달리 Prop이나 State 변수 등 읽은 값이 마지막 렌더링 때와 다르면 다시 동기화합니다. 때로는 두 동작이 섞여서 어떤 값에는 반응해 다시 실행되지만, 다른 값에는 그러지 않는 Effect를 원할 때도 있습니다. 이 페이지에서 그 방법을 알려드리겠습니다.
 
-Effect 내의 모든 코드는 *반응형* 이며, 읽은 반응형 값이 다시 렌더링되는 것으로 인해 변경되면 다시 실행됩니다. 예를 들어 다음의 Effect는 `roomId` 또는 `theme`이 변경되면 채팅에 다시 연결됩니다:
+Effect 내의 모든 코드는 <em>반응형</em>이며, 읽은 반응형 값이 다시 렌더링되는 것으로 인해 변경되면 다시 실행됩니다. 예를 들어 다음의 Effect는 `roomId` 또는 `theme`이 변경되면 채팅에 다시 연결됩니다.
 
 <Sandpack>
 
@@ -448,7 +448,7 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-이것은 이상적이지 않습니다. `roomId`가 변경된 경우에만 채팅에 다시 연결하고 싶습니다. `theme`를 전환해도 채팅에 다시 연결되지 않아야 합니다! `theme`를 읽는 코드를 Effect에서 *Effect Event* 로 옮기세요.
+이것은 이상적이지 않습니다. `roomId`가 변경된 경우에만 채팅에 다시 연결하고 싶습니다. `theme`을 전환해도 채팅에 다시 연결되지 않아야 합니다! `theme`를 읽는 코드를 Effect에서 *Effect Event*로 옮기세요.
 
 <Sandpack>
 
@@ -581,19 +581,19 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-Effect 이벤트 내부의 코드는 반응이 아니므로 `theme`를 변경해도 더 이상 Effect가 다시 연결하지 않습니다.
+Effect 이벤트 내부의 코드는 반응형이 아니므로 `theme`를 변경해도 더 이상 Effect를 다시 연결하지 않습니다.
 
 <LearnMore path="/learn/separating-events-from-effects">
 
-일부 값이 Effect를 다시 발생시키는 것을 막는 방법을 배우려면 **[Effect에서 이벤트 분리하기](/learn/separating-events-from-effects)** 를 읽어보세요.
+일부 값이 Effect를 다시 발생시키는 것을 막는 방법을 배우려면 <strong>[Effect에서 이벤트 분리하기](/learn/separating-events-from-effects)</strong>를 읽어보세요.
 
 </LearnMore>
 
 ## Effect의 의존성 제거하기 {/*removing-effect-dependencies*/}
 
-Effect를 작성하면 린터는 Effect의 의존성 목록에 Effect가 읽는 모든 반응형 값(예를 들어 props 및 State)을 포함했는지 확인합니다. 이렇게 하면 Effect가 컴포넌트의 최신 props 및 State와 동기화 상태를 유지할 수 있습니다. 불필요한 의존성으로 인해 Effect가 너무 자주 실행되거나 무한 루프를 생성할 수도 있습니다. 이 가이드를 따라 Effect에서 불필요한 의존성을 검토하고 제거하세요.
+Effect를 작성하면 린터는 Effect의 의존성 목록에 Effect가 읽는 모든 반응형 값(예를 들어 Props 및 State)을 포함했는지 확인합니다. 이렇게 하면 Effect가 컴포넌트의 최신 Props 및 State와 동기화 상태를 유지할 수 있습니다. 불필요한 의존성으로 인해 Effect가 너무 자주 실행되거나 무한 루프를 생성할 수도 있습니다. 이 가이드를 따라 Effect에서 불필요한 의존성을 검토하고 제거하세요.
 
-예를 들어 다음 Effect는 사용자가 input을 편집할 때마다 다시 생성되는 `options` 객체에 의존합니다.
+예를 들어 다음 Effect는 사용자가 Input을 편집할 때마다 다시 생성되는 `options` 객체에 의존합니다.
 
 <Sandpack>
 
@@ -742,11 +742,11 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-의존성 목록을 편집하여 `options` 의존성을 제거하지 않았음을 알 수 있습니다. 그것은 잘못된 방법일 것입니다. 대신 주변 코드를 변경함으로써 의존성을 *불필요* 하게 만들었습니다. 의존성 목록을 Effect의 코드에서 사용하는 모든 반응형 값의 목록으로 생각하세요. 이 목록에 무엇을 넣을 것인지 의도적으로 선택하는 것이 아닙니다. 이 목록은 당신의 코드를 설명합니다. 의존성 목록을 변경하려면, 코드를 변경하세요.
+의존성 목록을 편집하여 `options` 의존성을 제거하지 않았음을 알 수 있습니다. 그것은 잘못된 방법일 것입니다. 대신 주변 코드를 변경함으로써 의존성을 *불필요*하게 만들었습니다. 의존성 목록을 Effect의 코드에서 사용하는 모든 반응형 값의 목록으로 생각하세요. 이 목록에 무엇을 넣을 것인지 의도적으로 선택하는 것이 아닙니다. 이 목록은 당신의 코드를 설명합니다. 의존성 목록을 변경하려면, 코드를 변경하세요.
 
 <LearnMore path="/learn/removing-effect-dependencies">
 
-Effect 재실행을 줄이는 방법을 배우려면 **[Effect의 의존성 제거하기](/learn/removing-effect-dependencies)** 를 읽어보세요.
+Effect 재실행을 줄이는 방법을 배우려면 <strong>[Effect의 의존성 제거하기](/learn/removing-effect-dependencies)</strong>를 읽어보세요.
 
 </LearnMore>
 
@@ -839,7 +839,7 @@ body { min-height: 300px; }
 
 <LearnMore path="/learn/reusing-logic-with-custom-hooks">
 
-컴포넌트 간 로직을 공유하는 방법을 배우려면 **[커스텀 Hook으로 로직 재사용하기](/learn/reusing-logic-with-custom-hooks)** 를 읽어보세요.
+컴포넌트 간 로직을 공유하는 방법을 배우려면 <strong>[커스텀 Hook으로 로직 재사용하기](/learn/reusing-logic-with-custom-hooks)</strong>를 읽어보세요.
 
 </LearnMore>
 
