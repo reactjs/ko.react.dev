@@ -12,10 +12,10 @@ description: React 19를 이제 npm에서 사용할 수 있습니다! 이 포스
 
 ### React 19는 이제 안정적입니다! {/*react-19-is-now-stable*/}
 
-React 19 RC가 4월에 처음 공유된 이후 다음이 추가되었습니다.
+React 19 RC를 4월에 처음 공유한 이후 다음을 추가하였습니다.
 
 - **지연된 트리의 사전 워밍**: [Suspense 개선 사항](/blog/2024/04/25/react-19-upgrade-guide#improvements-to-suspense)을 참고하세요.
-- **React DOM 정적 API들**: [새로운 React DOM 정적 API들](#new-react-dom-static-apis)을 참고하세요.
+- **React DOM 정적 API들**: [새로운 React DOM의 정적 API](#new-react-dom-static-apis)를 참고하세요.
 
 _이 게시물의 날짜는 안정된 버전의 릴리즈 날짜를 반영하도록 업데이트되었습니다._
 
@@ -503,7 +503,7 @@ function App({children}) {
 
 새로운 Context 프로바이더는 `<Context>` 사용할 수 있고 기존 존재하는 프로바이더를 변환하기 위한 codemod를 배포할 예정입니다. 앞으로의 버전에서 `<Context.Provider>`를 더 이상 사용하지 않을 계획입니다.
 
-### refs를 위한 클린업 함수 {/*cleanup-functions-for-refs*/}
+### Ref를 위한 클린업 함수 {/*cleanup-functions-for-refs*/}
 
 이제 `ref` 콜백에 클린업 함수를 반환하는 것을 지원합니다.
 
@@ -521,13 +521,13 @@ function App({children}) {
 />
 ```
 
-컴포넌트가 마운트 해제될 때, React는  `ref` 콜백으로부터 클린업 함수를 호출할 것입니다. 이는 DOM ref, 클래스 컴포넌트 ref 그리고 `useImperativeHandle` 모두 해당합니다.
+컴포넌트가 마운트 해제될 때, React는 `ref` 콜백으로부터 클린업 함수를 호출할 것입니다. 이는 DOM Ref, 클래스 컴포넌트 Ref 그리고 `useImperativeHandle` 모두 해당합니다.
 
 <Note>
 
-이전에는 React가 컴포넌트를 마운트 해제될 때 `ref` 함수를 `null`과 함께 호출했습니다. 이제 만약 `ref`가 클린업 함수를 반환한다면, React는 이 단계를 건너뜁니다.
+이전에는 React가 컴포넌트를 마운트 해제할 때 `ref` 함수를 `null`과 함께 호출했습니다. 이제 만약 `ref`가 클린업 함수를 반환한다면, React는 이 단계를 건너뜁니다.
 
-앞으로의 버전에서는 컴포넌트를 마운트 해제될 때 `null`과 함께 ref를 호출하는 것을 더 이상 사용하지 않을 예정입니다.
+앞으로의 버전에서는 컴포넌트를 마운트 해제할 때 `null`과 함께 `ref`를 호출하는 것을 더 이상 사용하지 않을 예정입니다.
 
 </Note>
 
@@ -591,7 +591,7 @@ React가 이 컴포넌트를 렌더링하면 `<title>` `<link>` 그리고 `<meta
 
 #### 여전히 메타데이터 라이브러리를 원한다면 {/*you-may-still-want-a-metadata-library*/}
 
-간단한 사용 사례의 경우에 문서 메타 데이터를 태그로 렌더링하는 것이 적합할 수 있지만, 라이브러리는 현재 경로에 따라 일반 메타 데이터를 구체적인 메타 데이터로 덮어쓰는 등 더 강력한 기능을 제공할 수 있습니다. 이러한 기능들은 메타 데이터 태그를 대체하는 것보다 [`react-helmet`](https://github.com/nfl/react-helmet)와 같은 프레임워크나 라이브러리를 더 쉽게 할 수 있도록 합니다.
+간단한 사용 사례의 경우에 문서 메타 데이터를 태그로 렌더링하는 것이 적합할 수 있지만, 라이브러리는 현재 경로에 따라 일반 메타 데이터를 구체적인 메타 데이터로 덮어쓰는 등 더 강력한 기능을 제공할 수 있습니다. 이러한 기능들은 메타 데이터 태그를 대체하는 것보다 [`react-helmet`](https://github.com/nfl/react-helmet)과 같은 프레임워크나 라이브러리를 더 쉽게 할 수 있도록 합니다.
 
 </Note>
 

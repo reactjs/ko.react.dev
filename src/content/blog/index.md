@@ -18,7 +18,7 @@ title: React 블로그
 
 <BlogCard title="React v19 " date="December 5, 2024" url="/blog/2024/12/05/react-19">
 
-In the React 19 Upgrade Guide, we shared step-by-step instructions for upgrading your app to React 19. In this post, we'll give an overview of the new features in React 19, and how you can adopt them ...
+React 19 업그레이드 가이드에서 React 19로 앱을 업그레이드하는 단계별 지침을 공유했습니다. 이 포스트에서 React 19의 새로운 기능들과 이를 도입하는 방법을 제공합니다.
 
 </BlogCard>
 
