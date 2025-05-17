@@ -1,5 +1,5 @@
 ---
-title: Effect 의존성 제거하기
+title: Effect의 의존성 제거하기
 ---
 
 <Intro>
