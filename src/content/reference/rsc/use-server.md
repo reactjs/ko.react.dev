@@ -5,7 +5,11 @@ titleForTitleTag: "'use server' 지시어"
 
 <RSC>
 
+<<<<<<< HEAD
 `'use server'`는 [React 서버 컴포넌트](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)와 함께 사용합니다.
+=======
+`'use server'` is for use with [using React Server Components](/reference/rsc/server-components).
+>>>>>>> 65d297e93b36be5370e58ab7828d022c741ecbe2
 
 </RSC>
 

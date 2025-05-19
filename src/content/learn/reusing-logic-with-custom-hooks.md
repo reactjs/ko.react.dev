@@ -819,7 +819,11 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
+<<<<<<< HEAD
 그리고 반환 값을 다른 Hook에 입력해보세요.
+=======
+and passing it as an input to another Hook:
+>>>>>>> 65d297e93b36be5370e58ab7828d022c741ecbe2
 
 ```js {6}
 export default function ChatRoom({ roomId }) {
@@ -2081,7 +2085,6 @@ export function useCounter(delay) {
 <Sandpack>
 
 ```js
-import { useState } from 'react';
 import { useCounter } from './useCounter.js';
 
 export default function Counter() {

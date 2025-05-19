@@ -29,4 +29,8 @@ React의 베스트 프랙티스, 애플리케이션 아키텍처, 그리고 Reac
 
 ## 뉴스 {/*news*/}
 
+<<<<<<< HEAD
 React에 대한 최신 뉴스는 [Twitter의 **@reactjs**](https://twitter.com/reactjs)와 이 웹사이트의 [공식 React 블로그](/blog/)에서 확인하세요.
+=======
+For the latest news about React, [follow **@reactjs** on Twitter](https://twitter.com/reactjs), [**@react.dev** on Bluesky](https://bsky.app/profile/react.dev) and the [official React blog](/blog/) on this website.
+>>>>>>> 65d297e93b36be5370e58ab7828d022c741ecbe2
