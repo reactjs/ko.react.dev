@@ -100,9 +100,9 @@ function ProductPage({ productId, referrer, theme }) {
   );
 ```
 
-`theme` prop을 토글 하면 앱이 잠시 멈춘다는 것을 알게 되었는데, JSX에서 `<ShippingForm />`을 제거하면 앱이 빨라진 것처럼 느껴집니다. 이것은 `<ShippingForm />` 컴포넌트의 최적화를 시도해 볼 가치가 있다는 것을 나타냅니다.
+`theme` prop을 토글 하면 앱이 잠시 멈춘다는 것을 알게 되었는데, JSX에서 `<ShippingForm />`을 제거하면 앱이 빨라진 것처럼 느껴집니다. 이는 `<ShippingForm />` 컴포넌트의 최적화를 시도해 볼 가치가 있다는 것을 나타냅니다.
 
-**기본적으로, 컴포넌트가 리렌더링할 때 React는 이것의 모든 자식을 재귀적으로 재렌더링합니다.** 이것이 `ProductPage`가 다른 `theme` 값으로 리렌더링 할 때, `ShippingForm` 컴포넌트 **또한** 리렌더링 하는 이유입니다. 이 것은 리렌더링에 많은 계산을 요구하지 않는 컴포넌트에서는 괜찮습니다. 하지만 리렌더링이 느린 것을 확인한 경우, `ShippingForm`을 [`memo`](/reference/react/memo)로 감싸면 마지막 렌더링과 동일한 props일 때 리렌더링을 건너뛰도록 할 수 있습니다.
+**기본적으로, 컴포넌트가 리렌더링할 때 React는 해당 컴포넌트의 모든 자식을 재귀적으로 다시 렌더링합니다.** 이는 `ProductPage`가 다른 `theme` 값으로 리렌더링 할 때, `ShippingForm` 컴포넌트 **또한** 리렌더링 하는 이유입니다. 이는 리렌더링에 많은 계산을 요구하지 않는 컴포넌트에서는 괜찮습니다. 하지만 리렌더링이 느린 것을 확인한 경우, `ShippingForm`을 [`memo`](/reference/react/memo)로 감싸면 마지막 렌더링과 동일한 props일 때 리렌더링을 건너뛰도록 할 수 있습니다.
 
 ```js {3,5}
 import { memo } from 'react';
@@ -133,7 +133,7 @@ function ProductPage({ productId, referrer, theme }) {
 }
 ```
 
-**자바스크립트에서 `function () {}` 나 `() => {}`은 항상 _다른_ 함수를 생성합니다.** 이것은 `{}` 객체 리터럴이 항상 새로운 객체를 생성하는 방식과 유사합니다. 보통의 경우에는 문제가 되지 않지만, 여기서는 `ShippingForm` props는 절대 같아질 수 없고 [`memo`](/reference/react/memo) 최적화는 동작하지 않을 것이라는 걸 의미합니다. 여기서 `useCallback`이 유용하게 사용됩니다.
+**자바스크립트에서 `function () {}` 나 `() => {}`은 항상 _다른_ 함수를 생성합니다.** 이는 `{}` 객체 리터럴이 항상 새로운 객체를 생성하는 방식과 유사합니다. 보통의 경우에는 문제가 되지 않지만, 여기서는 `ShippingForm` props는 절대 같아질 수 없고 [`memo`](/reference/react/memo) 최적화는 동작하지 않을 것이라는 걸 의미합니다. 여기서 `useCallback`이 유용하게 사용됩니다.
 
 ```js {2,3,8,12-13}
 function ProductPage({ productId, referrer, theme }) {
@@ -154,7 +154,7 @@ function ProductPage({ productId, referrer, theme }) {
 }
 ```
 
-**`handleSubmit`을 `useCallback`으로 감쌈으로써 리렌더링 간에 이것이 (의존성이 변경되기 전까지는) 같은 함수라는 것을 보장합니다.** 특별한 이유가 없다면 함수를 꼭 `useCallback`으로 감쌀 필요는 없습니다. 이 예시에서의 이유는 ['memo'](/reference/react/memo)로 감싼 컴포넌트에 전달하기 때문에 해당 함수가 리렌더링을 건너뛸 수 있기 때문입니다. `useCallback`이 필요한 다른 이유는 이 페이지의 뒷부분에서 설명하겠습니다.
+**`handleSubmit`을 `useCallback`으로 감쌈으로써 리렌더링 간에 이는 (의존성이 변경되기 전까지는) 같은 함수라는 것을 보장합니다.** 특별한 이유가 없다면 함수를 꼭 `useCallback`으로 감쌀 필요는 없습니다. 이 예시에서의 이유는 ['memo'](/reference/react/memo)로 감싼 컴포넌트에 전달하기 때문에 해당 함수가 리렌더링을 건너뛸 수 있기 때문입니다. `useCallback`이 필요한 다른 이유는 이 페이지의 뒷부분에서 설명하겠습니다.
 
 <Note>
 
@@ -195,8 +195,8 @@ function ProductPage({ productId, referrer }) {
 
 차이점은 *무엇을* 캐싱하는지 입니다.
 
-* **[`useMemo`](/reference/react/useMemo) 는 호출한 함수의 결과값을 캐싱합니다.** 이 예시에서는 `computeRequirements(product)` 함수 호출 결과를 캐싱해서 `product`가 변경되지 않는 한 이 결과값이 변경되지 않도록 합니다. 이것은 불필요하게 `ShippingForm`을 리렌더링하지 않고 `requirements` 객체를 넘겨줄 수 있도록 해줍니다. 필요할 때 React는 렌더링 중에 넘겨주었던 함수를 호출하여 결과를 계산합니다.
-* **`useCallback`은 *함수 자체*를 캐싱합니다.** `useMemo`와 달리, 전달한 함수를 호출하지 않습니다. 그 대신, 전달한 함수를 캐싱해서 `productId`나 `referrer`이 변하지 않으면 `handleSubmit` 자체가 변하지 않도록 합니다. 이것은 불필요하게 `ShippingForm`을 리렌더링하지 않고 `handleSubmit` 함수를 전달할 수 있도록 해줍니다. 함수의 코드는 사용자가 폼을 제출하기 전까지 실행되지 않을 것입니다.
+* **[`useMemo`](/reference/react/useMemo) 는 호출한 함수의 결과값을 캐싱합니다.** 이 예시에서는 `computeRequirements(product)` 함수 호출 결과를 캐싱해서 `product`가 변경되지 않는 한 이 결과값이 변경되지 않도록 합니다. 이는 불필요하게 `ShippingForm`을 리렌더링하지 않고 `requirements` 객체를 넘겨줄 수 있도록 해줍니다. 필요할 때 React는 렌더링 중에 넘겨주었던 함수를 호출하여 결과를 계산합니다.
+* **`useCallback`은 *함수 자체*를 캐싱합니다.** `useMemo`와 달리, 전달한 함수를 호출하지 않습니다. 그 대신, 전달한 함수를 캐싱해서 `productId`나 `referrer`이 변하지 않으면 `handleSubmit` 자체가 변하지 않도록 합니다. 이는 불필요하게 `ShippingForm`을 리렌더링하지 않고 `handleSubmit` 함수를 전달할 수 있도록 해줍니다. 함수의 코드는 사용자가 폼을 제출하기 전까지 실행되지 않을 것입니다.
 
 이미 [`useMemo`](/reference/react/useMemo)에 익숙하다면 `useCallback`을 다음과 같이 생각하는 것이 도움이 될 수 있습니다.
 
@@ -382,7 +382,7 @@ button[type="button"] {
 
 <Solution />
 
-#### 컴포넌트를 항상 리렌더링하기 {/*always-re-rendering-a-component*/}
+#### 컴포넌트를 항상 다시 렌더링하기 {/*always-re-rendering-a-component*/}
 
 이 예시에서 `ShippingForm` 컴포넌트 또한 **인위적으로 느리게 만들었기 때문에** 렌더링하는 React 컴포넌트가 실제로 느릴 때 어떤 일이 일어나는 지 볼 수 있습니다. 카운터를 증가시키고 테마를 토글 해보세요.
 
@@ -715,7 +715,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-이것은 문제를 발생시킵니다. [모든 반응형 값은 Effect의 의존성으로 선언되어야 합니다.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) 하지만 `createOptions`를 의존성으로 선언하면 Effect가 채팅방과 계속 재연결되는 문제가 발생합니다.
+이는 문제를 발생시킵니다. [모든 반응형 값은 Effect의 의존성으로 선언되어야 합니다.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) 하지만 `createOptions`를 의존성으로 선언하면 Effect가 채팅방과 계속 재연결되는 문제가 발생합니다.
 
 
 ```js {6}
@@ -750,7 +750,7 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-이것은 리렌더링 간에 `roomId`가 같다면 `createOptions` 함수는 같다는 것을 보장합니다. **하지만, 함수 의존성을 제거하는 것이 더 좋습니다.** 함수를 Effect *안으로* 이동시키세요.
+이는 리렌더링 간에 `roomId`가 같다면 `createOptions` 함수는 같다는 것을 보장합니다. **하지만, 함수 의존성을 제거하는 것이 더 좋습니다.** 함수를 Effect *안으로* 이동시키세요.
 
 ```js {5-10,16}
 function ChatRoom({ roomId }) {
@@ -857,7 +857,7 @@ Object.is(temp1[2], temp2[2]); // ... 나머지 모든 의존성도 확인합니
 
 ---
 
-### 반복문에서 각 항목마다 `useCallback`을 호출하고 싶지만, 이것은 허용되지 않습니다. {/*i-need-to-call-usememo-for-each-list-item-in-a-loop-but-its-not-allowed*/}
+### 반복문에서 각 항목마다 `useCallback`을 호출하고 싶지만, 이는 허용되지 않습니다. {/*i-need-to-call-usememo-for-each-list-item-in-a-loop-but-its-not-allowed*/}
 
 `Chart` 컴포넌트가 [`memo`](/reference/react/memo)로 감싸져 있다고 생각해 봅시다. `ReportList` 컴포넌트가 렌더링 될 때마다, 모든 `Chart` 항목이 리렌더링 하는 것을 막고 싶습니다. 하지만 반복문에서 `useCallback`을 호출할 수 없습니다.
 
