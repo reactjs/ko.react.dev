@@ -1,8 +1,9 @@
 ---
 title: experimental_taintObjectReference
+version: experimental
 ---
 
-<Wip>
+<Experimental>
 
 **이 API는 실험적이며 React 안정 버전에서는 아직 사용할 수 없습니다.**
 
@@ -16,7 +17,7 @@ title: experimental_taintObjectReference
 
 이 API는 [React 서버 컴포넌트](/reference/rsc/server-components)에서만 사용할 수 있습니다.
 
-</Wip>
+</Experimental>
 
 
 <Intro>

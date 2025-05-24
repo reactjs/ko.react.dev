@@ -4,7 +4,11 @@ title: "지시어"
 
 <RSC>
 
+<<<<<<< HEAD
 지시어는 [React 서버 컴포넌트](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)에서 사용합니다.
+=======
+Directives are for use in [React Server Components](/reference/rsc/server-components).
+>>>>>>> 65d297e93b36be5370e58ab7828d022c741ecbe2
 
 </RSC>
 
