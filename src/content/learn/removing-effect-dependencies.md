@@ -1242,7 +1242,11 @@ export default function Timer() {
 
 </Sandpack>
 
+<<<<<<< HEAD
 Effect 내부에서 `count`를 읽는 대신 `c => c + 1` 명령어("이 숫자를 증가시켜라!")를 React에 전달합니다. React는 다음 렌더링에 이를 적용합니다. 그리고 Effect 내부에서 `count` 값을 더 이상 읽을 필요가 없으므로 Effect의 의존성을 비워둘 수 있습니다(`[]`). 이렇게 하면 매 틱마다 Effect가 인터벌을 다시 생성하지 않아도 됩니다.
+=======
+Instead of reading `count` inside the Effect, you pass a `c => c + 1` instruction ("increment this number!") to React. React will apply it on the next render. And since you don't need to read the value of `count` inside your Effect anymore, you can keep your Effect's dependencies empty (`[]`). This prevents your Effect from re-creating the interval on every tick.
+>>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
 
 </Solution>
 

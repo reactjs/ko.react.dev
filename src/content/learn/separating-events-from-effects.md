@@ -439,7 +439,11 @@ function ChatRoom({ roomId, theme }) {
   // ...
 ```
 
+<<<<<<< HEAD
 이렇게 하면 문제가 해결됩니다. Effect의 의존성 목록에서 `onConnected`를 *제거*해야 한다는 것에 유의하세요. **Effect 이벤트는 반응형이 아니므로 의존성에서 제외되어야 합니다.**
+=======
+This solves the problem. Note that you had to *remove* `theme` from the list of your Effect's dependencies, because it's no longer used in the Effect. You also don't need to *add* `onConnected` to it, because **Effect Events are not reactive and must be omitted from dependencies.**
+>>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
 
 새로운 동작이 예상대로 작동하는지 확인해 보세요.
 
@@ -973,6 +977,23 @@ Effect 이벤트는 Effect의 코드 중 비반응형인 "부분"입니다. Effe
 
 <Sandpack>
 
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
+
 ```js
 import { useState, useEffect } from 'react';
 
@@ -1025,6 +1046,22 @@ Effect의 버그를 찾을 때는 늘 그렇듯 억제된 린터 규칙이 있�
 린터를 억제하는 주석을 제거하면 React는 이 Effect의 코드가 `increment`에 의존한다고 알려줄 것입니다. 하지만 여러분은 이 Effect가 어떠한 반응형 값에도 의존하지 않는다고(`[]`) 함으로써 React에 "거짓말"을 했습니다. 의존성 배열에 `increment`를 추가하세요.
 
 <Sandpack>
+
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
 
 ```js
 import { useState, useEffect } from 'react';
