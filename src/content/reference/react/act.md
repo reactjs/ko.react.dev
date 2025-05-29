@@ -4,7 +4,7 @@ title: act
 
 <Intro>
 
-`act` is a test helper to apply pending React updates before making assertions.
+`act`는 테스트 헬퍼<sup>Helper</sup>로, 대기 중인 React 업데이트를 모두 적용한 뒤 단언<sup>Assert</sup>할 수 있게 도움을 줍니다.
 
 ```js
 await act(async actFn)
@@ -12,10 +12,10 @@ await act(async actFn)
 
 </Intro>
 
-To prepare a component for assertions, wrap the code rendering it and performing updates inside an `await act()` call. This makes your test run closer to how React works in the browser.
+컴포넌트를 단언<sup>Assertion</sup>할 수 있도록 준비하려면 `await act()` 호출 안에 컴포넌트를 렌더링하고 업데이트하는 코드를 감싸세요. 이렇게 하면 테스트가 브라우저에서 작동하는 실제 React 방식과 더 유사하게 실행됩니다.
 
 <Note>
-You might find using `act()` directly a bit too verbose. To avoid some of the boilerplate, you could use a library like [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), whose helpers are wrapped with `act()`.
+`act()`를 직접 사용하는 것이 다소 장황하다고 느껴질 수 있습니다. 반복되는 코드를 줄이고 싶다면 [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)처럼 내부적으로 `act()`로 감싼 헬퍼를 제공하는 라이브러리를 사용하는 것도 좋습니다.
 </Note>
 
 
@@ -23,13 +23,13 @@ You might find using `act()` directly a bit too verbose. To avoid some of the bo
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `await act(async actFn)` {/*await-act-async-actfn*/}
 
-When writing UI tests, tasks like rendering, user events, or data fetching can be considered as "units" of interaction with a user interface. React provides a helper called `act()` that makes sure all updates related to these "units" have been processed and applied to the DOM before you make any assertions.
+UI 테스트를 작성할 때 렌더링, 사용자 이벤트, 데이터 가져오기 등은 사용자 인터페이스와의 상호작용 "단위"로 볼 수 있습니다. React는 `act()`라는 헬퍼를 제공하는데 이는 이 "단위"와 관련된 모든 업데이트가 DOM에 적용되기 전까지 단언이 실행되지 않도록 보장해 줍니다.
 
-The name `act` comes from the [Arrange-Act-Assert](https://wiki.c2.com/?ArrangeActAssert) pattern.
+`act` 라는 이름은 [Arrange-Act-Assert](https://wiki.c2.com/?ArrangeActAssert) 패턴에서 따온 것입니다.
 
 ```js {2,4}
 it ('renders with button disabled', async () => {
@@ -42,25 +42,25 @@ it ('renders with button disabled', async () => {
 
 <Note>
 
-We recommend using `act` with `await` and an `async` function. Although the sync version works in many cases, it doesn't work in all cases and due to the way React schedules updates internally, it's difficult to predict when you can use the sync version.
+`act`는 `await`와 `async` 함수와 함께 사용하는 것을 권장합니다. 동기 버전도 대부분의 경우 동작하지만 React가 내부적으로 업데이트를 예약하는 방식 때문에 언제 동기 버전을 써도 되는지 예측하기 어렵습니다.
 
-We will deprecate and remove the sync version in the future.
+앞으로 동기 버전은 더 이상 사용되지 않을 예정이며 제거될 예정입니다.
 
 </Note>
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `async actFn`: An async function wrapping renders or interactions for components being tested. Any updates triggered within the `actFn`, are added to an internal act queue, which are then flushed together to process and apply any changes to the DOM. Since it is async, React will also run any code that crosses an async boundary, and flush any updates scheduled.
+* `async actFn`: 테스트할 컴포넌트를 렌더링하거나 상호작용을 수행하는 비동기 함수입니다. `actFn` 내부에서 발생하는 업데이트는 내부 act 큐에 추가되며 모두 모아서 DOM에 적용됩니다. 비동기 함수이기 때문에 React는 비동기 경계를 넘는 코드도 실행하고 예약된 업데이트도 함께 처리합니다.
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-`act` does not return anything.
+`act`는 아무 값도 반환하지 않습니다.
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-When testing a component, you can use `act` to make assertions about its output.
+컴포넌트를 테스트할 때 `act`를 사용하면 출력 결과에 대한 단언을 더 안전하게 할 수 있습니다.
 
-For example, let’s say we have this `Counter` component, the usage examples below show how to test it:
+예시로 `Counter`라는 컴포넌트가 있다고 가정하고 아래 사용 예시는 이를 테스트하는 방법을 보여줍니다.
 
 ```js
 function Counter() {
@@ -84,9 +84,9 @@ function Counter() {
 }
 ```
 
-### Rendering components in tests {/*rendering-components-in-tests*/}
+### 테스트에서 컴포넌트를 렌더링하는 방법 {/*rendering-components-in-tests*/}
 
-To test the render output of a component, wrap the render inside `act()`:
+컴포넌트의 렌더링 결과를 테스트하려면 렌더링 코드를 `act()`로 감싸야 합니다.
 
 ```js  {10,12}
 import {act} from 'react';
@@ -97,7 +97,7 @@ it('can render and update a counter', async () => {
   container = document.createElement('div');
   document.body.appendChild(container);
 
-  // ✅ Render the component inside act().
+  // ✅ 컴포넌트를 act() 안에서 렌더링합니다.
   await act(() => {
     ReactDOMClient.createRoot(container).render(<Counter />);
   });
@@ -109,13 +109,13 @@ it('can render and update a counter', async () => {
 });
 ```
 
-Here, we create a container, append it to the document, and render the `Counter` component inside `act()`. This ensures that the component is rendered and its effects are applied before making assertions.
+위 예시에서는 컨테이너를 만들고 문서에 추가한 뒤 `Counter` 컴포넌트를 `act()` 안에서 렌더링합니다. 이렇게 하면 컴포넌트가 렌더링되고 효과가 적용된 후에 단언을 수행할 수 있습니다.
 
-Using `act` ensures that all updates have been applied before we make assertions.
+`act`를 사용하면 모든 업데이트가 적용된 뒤 단언을 실행할 수 있습니다.
 
-### Dispatching events in tests {/*dispatching-events-in-tests*/}
+### 테스트에서 이벤트 디스패칭하는 방법 {/*dispatching-events-in-tests*/}
 
-To test events, wrap the event dispatch inside `act()`:
+이벤트를 테스트하려면 이벤트를 `act()`로 감싸세요.
 
 ```js {14,16}
 import {act} from 'react';
@@ -130,7 +130,7 @@ it.only('can render and update a counter', async () => {
     ReactDOMClient.createRoot(container).render(<Counter />);
   });
 
-  // ✅ Dispatch the event inside act().
+  // ✅ 이벤트 디스패치를 act() 안에서 실행합니다.
   await act(async () => {
     button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
   });
@@ -142,21 +142,21 @@ it.only('can render and update a counter', async () => {
 });
 ```
 
-Here, we render the component with `act`, and then dispatch the event inside another `act()`. This ensures that all updates from the event are applied before making assertions.
+위 예시에서는 컴포넌트를 먼저 `act`로 감싸 렌더링하고, 이벤트 디스패치도 `act()`로 감쌉니다. 이렇게 하면 해당 이벤트로 인한 모든 업데이트가 적용된 뒤 단언이 수행됩니다.
 
 <Pitfall>
 
-Don’t forget that dispatching DOM events only works when the DOM container is added to the document. You can use a library like [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) to reduce the boilerplate code.
+DOM 이벤트를 디스패치할 때는 DOM 컨테이너가 문서에 추가되어 있어야 합니다. 반복되는 설정 코드를 줄이고 싶다면 [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)를 사용하는 것도 고려해보세요.
 
 </Pitfall>
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
-### I'm getting an error: "The current testing environment is not configured to support act"(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
+### "The current testing environment is not configured to support act(...)" 오류가 발생하는 경우 {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
 
-Using `act` requires setting `global.IS_REACT_ACT_ENVIRONMENT=true` in your test environment. This is to ensure that `act` is only used in the correct environment.
+`act`를 사용하려면 테스트 환경에서 `global.IS_REACT_ACT_ENVIRONMENT=true`를 설정해야 합니다. 이 설정은 act가 올바른 환경에서만 사용되도록 보장합니다.
 
-If you don't set the global, you will see an error like this:
+이 전역 설정이 없으면 다음과 같은 오류가 표시됩니다.
 
 <ConsoleBlock level="error">
 
@@ -164,7 +164,7 @@ Warning: The current testing environment is not configured to support act(...)
 
 </ConsoleBlock>
 
-To fix, add this to your global setup file for React tests:
+이 문제를 해결하려면 React 테스트를 위한 전역 설정 파일에 다음 코드를 추가하세요.
 
 ```js
 global.IS_REACT_ACT_ENVIRONMENT=true
@@ -172,6 +172,6 @@ global.IS_REACT_ACT_ENVIRONMENT=true
 
 <Note>
 
-In testing frameworks like [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), `IS_REACT_ACT_ENVIRONMENT` is already set for you.
+[React Testing Library](https://testing-library.com/docs/react-testing-library/intro)같은 테스트 프레임워크에서는 `IS_REACT_ACT_ENVIRONMENT`가 이미 설정되어 있습니다.
 
 </Note>
