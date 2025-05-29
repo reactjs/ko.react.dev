@@ -446,7 +446,7 @@ function Form() {
 
 ## Hook 사이에 상호작용하는 값 전달하기 {/*passing-reactive-values-between-hooks*/}
 
-커스텀 Hook 안의 코드는 컴포넌트가 재렌더링될 때마다 다시 돌아갈 겁니다. 이게 바로 커스컴 Hook이 (컴포넌트처럼) [순수해야하는 이유](/learn/keeping-components-pure) 입니다. 커스텀 Hook을 컴포넌트 본체의 한 부분이라고 생각하세요!
+커스텀 Hook 안의 코드는 컴포넌트가 재렌더링될 때마다 다시 돌아갈 겁니다. 이게 바로 커스텀 Hook이 (컴포넌트처럼) [순수해야하는 이유](/learn/keeping-components-pure) 입니다. 커스텀 Hook을 컴포넌트 본체의 한 부분이라고 생각하세요!
 
 커스텀 Hook이 컴포넌트와 함께 재렌더링된다면, 항상 가장 최신의 props와 state를 전달받을 것입니다. 이게 무슨 말인지 살펴보기 위해 아래의 채팅방 예시를 확인해 보세요. 서버 URL이나 채팅방을 바꾼다고 생각해봅시다.
 
