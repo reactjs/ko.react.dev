@@ -102,7 +102,7 @@ function ProductPage({ productId, referrer, theme }) {
 
 `theme` prop을 토글 하면 앱이 잠시 멈춘다는 것을 알게 되었는데, JSX에서 `<ShippingForm />`을 제거하면 앱이 빨라진 것처럼 느껴집니다. 이는 `<ShippingForm />` 컴포넌트의 최적화를 시도해 볼 가치가 있다는 것을 나타냅니다.
 
-**기본적으로, 컴포넌트가 리렌더링할 때 React는 해당 컴포넌트의 모든 자식을 재귀적으로 리렌더링합니다.** 이는 `ProductPage`가 다른 `theme` 값으로 리렌더링 할 때, `ShippingForm` 컴포넌트 **또한** 리렌더링 하는 이유입니다. 이는 리렌더링에 많은 계산을 요구하지 않는 컴포넌트에서는 괜찮습니다. 하지만 리렌더링이 느린 것을 확인한 경우, `ShippingForm`을 [`memo`](/reference/react/memo)로 감싸면 마지막 렌더링과 동일한 props일 때 리렌더링을 건너뛰도록 할 수 있습니다.
+**기본적으로, 컴포넌트가 리렌더링할 때 React는 해당 컴포넌트의 모든 자식을 재귀적으로 리렌더링합니다.** 이는 `ProductPage`가 다른 `theme` 값으로 리렌더링 할 때, `ShippingForm` 컴포넌트 **또한** 리렌더링 하는 이유입니다. 이것은 리렌더링에 많은 계산을 요구하지 않는 컴포넌트에서는 괜찮습니다. 하지만 리렌더링이 느린 것을 확인한 경우, `ShippingForm`을 [`memo`](/reference/react/memo)로 감싸면 마지막 렌더링과 동일한 props일 때 리렌더링을 건너뛰도록 할 수 있습니다.
 
 ```js {3,5}
 import { memo } from 'react';
@@ -154,7 +154,7 @@ function ProductPage({ productId, referrer, theme }) {
 }
 ```
 
-**`handleSubmit`을 `useCallback`으로 감쌈으로써 리렌더링 간에 이는 (의존성이 변경되기 전까지는) 같은 함수라는 것을 보장합니다.** 특별한 이유가 없다면 함수를 꼭 `useCallback`으로 감쌀 필요는 없습니다. 이 예시에서의 이유는 ['memo'](/reference/react/memo)로 감싼 컴포넌트에 전달하기 때문에 해당 함수가 리렌더링을 건너뛸 수 있기 때문입니다. `useCallback`이 필요한 다른 이유는 이 페이지의 뒷부분에서 설명하겠습니다.
+**`handleSubmit`을 `useCallback`으로 감쌈으로써 리렌더링 간에 이것이 (의존성이 변경되기 전까지는) 같은 함수라는 것을 보장합니다.** 특별한 이유가 없다면 함수를 꼭 `useCallback`으로 감쌀 필요는 없습니다. 이 예시에서의 이유는 ['memo'](/reference/react/memo)로 감싼 컴포넌트에 전달하기 때문에 해당 함수가 리렌더링을 건너뛸 수 있기 때문입니다. `useCallback`이 필요한 다른 이유는 이 페이지의 뒷부분에서 설명하겠습니다.
 
 <Note>
 
@@ -715,7 +715,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-이는 문제를 발생시킵니다. [모든 반응형 값은 Effect의 의존성으로 선언되어야 합니다.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) 하지만 `createOptions`를 의존성으로 선언하면 Effect가 채팅방과 계속 재연결되는 문제가 발생합니다.
+이것은 문제를 발생시킵니다. [모든 반응형 값은 Effect의 의존성으로 선언되어야 합니다.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) 하지만 `createOptions`를 의존성으로 선언하면 Effect가 채팅방과 계속 재연결되는 문제가 발생합니다.
 
 
 ```js {6}
