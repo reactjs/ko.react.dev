@@ -4,21 +4,12 @@ title: React 블로그
 
 <Intro>
 
-<<<<<<< HEAD
-이 블로그는 React 팀의 업데이트에 대한 공식 출처입니다. 릴리스 노트 및 더 이상 사용되지 않는 기능들에 대한 공지<sup>Deprecation Notice</sup>를 비롯한 중요 내용들이 이곳에 먼저 공유됩니다. 트위터에서 [@reactjs](https://twitter.com/reactjs) 계정을 팔로우해도 좋지만, 이 블로그만으로도 모든 정보를 얻을 수 있습니다.
-=======
-This blog is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted here first.
-
-You can also follow the [@react.dev](https://bsky.app/profile/react.dev) account on Bluesky, or [@reactjs](https://twitter.com/reactjs) account on Twitter, but you won’t miss anything essential if you only read this blog.
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
+이 블로그는 React 팀의 업데이트에 대한 공식 출처입니다. 릴리스 노트 및 더 이상 사용되지 않는 기능들에 대한 공지<sup>Deprecation Notice</sup>를 비롯한 중요 내용들을 이곳에 먼저 공유합니다. 블루스카이의 [@react.dev](https://bsky.app/profile/react.dev) 혹은 트위터의 [@reactjs](https://twitter.com/reactjs) 계정을 팔로우해도 좋지만, 이 블로그만으로도 모든 정보를 얻을 수 있습니다.
 
 </Intro>
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<<<<<<< HEAD
-<BlogCard title="Create React App 지원 종료" date="February 13, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
-=======
 <BlogCard title="React Labs: View Transitions, Activity, and more" date="April 23, 2025" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
 
 In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and sharing other areas we're working on now ...
@@ -31,14 +22,13 @@ We are releasing the compiler's first Release Candidate (RC) today.
 
 </BlogCard>
 
-<BlogCard title="Sunsetting Create React App" date="February 14, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
+<BlogCard title="Create React App 지원 종료" date="February 14, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
 
 새로운 앱에 대한 Create React App 사용을 중단하며, 기존 앱은 프레임워크나 Vite, Parcel, RSBuild 같은 빌드 도구로의 마이그레이션을 권장합니다. 또한 프레임워크가 프로젝트와 맞지 않거나, 자신만의 프레임워크를 구축하고 싶거나, 혹은 React가 어떻게 작동하는지 배우기 위해 React 앱을 처음부터 만들어 보고 싶은 사용자들을 위한 문서를 제공합니다.
 
 </BlogCard>
 
-<BlogCard title="React v19 " date="December 5, 2024" url="/blog/2024/12/05/react-19">
+<BlogCard title="React v19" date="December 5, 2024" url="/blog/2024/12/05/react-19">
 
 React 19 업그레이드 가이드에서 React 19로 앱을 업그레이드하는 단계별 지침을 공유했습니다. 이 포스트에서 React 19의 새로운 기능들과 이를 도입하는 방법을 제공합니다.
 
