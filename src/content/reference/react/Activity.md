@@ -83,7 +83,7 @@ When an Activity is rendered with `mode="hidden"`, the `children` are not visibl
 
 When the `mode` later switches to "visible", the pre-rendered children will mount and become visible. This can be used to prepare parts of the UI the user is likely to interact with next to reduce loading times.
 
-In the following example from [`useTransition`](/reference/react/useTransition#preventing-unwanted-loading-indicators), the `PostsTab` component fetches some data using `use`. When you click the “Posts” tab, the `PostsTab` component suspends, causing the button loading state to appear:
+In the following example from [`useTransition`](/reference/react/useTransition#preventing-unwanted-loading-indicators), the `PostsTab` component fetches some data using `use`. When you click the "Posts" tab, the `PostsTab` component suspends, causing the button loading state to appear:
 
 <Sandpack>
 
@@ -485,7 +485,7 @@ When an Activity switches from `mode="visible"` to "hidden", the `children` will
 
 When the `mode` later switches to "visible", the saved state will be re-used when mounting the children by creating all the Effects. This can be used to keep state in parts of the UI the user is likely to interact with again to maintain DOM or React state.
 
-In the following example from [`useTransition`](/reference/react/useTransition#preventing-unwanted-loading-indicators), the `ContactTab` includes a `<textarea>` with a draft message to send. If you enter some text and change to a different tab, then when you click the “Contact” tab again, the draft message is lost:
+In the following example from [`useTransition`](/reference/react/useTransition#preventing-unwanted-loading-indicators), the `ContactTab` includes a `<textarea>` with a draft message to send. If you enter some text and change to a different tab, then when you click the "Contact" tab again, the draft message is lost:
 
 
 <Sandpack>

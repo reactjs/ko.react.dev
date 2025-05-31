@@ -47,7 +47,7 @@ Wrap elements in `<ViewTransition>` to animate them when they update inside a [T
 - `update`: If a `ViewTransition` has any DOM mutations inside it that React is doing (such as a prop changing) or if the `ViewTransition` boundary itself changes size or position due to an immediate sibling. If there are nested` ViewTransition` then the mutation applies to them and not the parent.
 - `share`: If a named `ViewTransition` is inside a deleted subtree and another named `ViewTransition` with the same name is part of an inserted subtree in the same Transition, they form a Shared Element Transition, and it animates from the deleted one to the inserted one.
 
-By default, `<ViewTransition>` animates with a smooth cross-fade (the browser default view transition). You can customize the animation by providing a [View Transition Class](#view-transition-class) to the `<ViewTransition>` component. You can  customize animations for each kind of trigger (see [Styling View Transitions](#styling-view-transitions)).
+By default, `<ViewTransition>` animates with a smooth cross-fade (the browser default view transition). You can customize the animation by providing a [View Transition Class](#view-transition-class) to the `<ViewTransition>` component. You can customize animations for each kind of trigger (see [Styling View Transitions](#styling-view-transitions)).
 
 <DeepDive>
 
@@ -94,8 +94,8 @@ These callbacks allow you to adjust the animation imperatively using the [animat
 
 * **optional** `onEnter`: A function. React calls `onEnter` after an "enter" animation.
 * **optional** `onExit`: A function. React calls `onExit` after an "exit" animation.
-* **optional** `onShare`:  A function. React calls `onShare` after a "share" animation.
-* **optional** `onUpdate`:  A function. React calls `onUpdate` after an "update" animation.
+* **optional** `onShare`: A function. React calls `onShare` after a "share" animation.
+* **optional** `onUpdate`: A function. React calls `onUpdate` after an "update" animation.
 
 Each callback receives as arguments:
 - `element`: The DOM element that was animated.
