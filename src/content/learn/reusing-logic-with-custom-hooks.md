@@ -819,7 +819,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-그리고 반환 값을 다른 Hook에 입력해보세요.
+그리고 다른 Hook에 입력으로 전달하세요.
 
 ```js {6}
 export default function ChatRoom({ roomId }) {
@@ -2081,7 +2081,6 @@ export function useCounter(delay) {
 <Sandpack>
 
 ```js
-import { useState } from 'react';
 import { useCounter } from './useCounter.js';
 
 export default function Counter() {

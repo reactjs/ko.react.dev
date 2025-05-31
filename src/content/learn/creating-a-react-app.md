@@ -32,7 +32,7 @@ React로 새로운 앱이나 웹사이트를 구축하려면 프레임워크부�
 npx create-next-app@latest
 </TerminalBlock>
 
-Next.js는 [Vercel](https://vercel.com/)에서 유지 관리합니다. [Next.js 앱을 빌드](https://nextjs.org/docs/app/building-your-application/deploying)해서 Node.js와 서버리스 호스팅 혹은 자체 서버에 배포할 수 있습니다. Next.js는 또한 서버가 필요없는 [정적 내보내기](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)도 지원합니다. Vercel은 추가적으로 옵트인 유료 클라우드 서비스도 지원합니다.
+Next.js는 [Vercel](https://vercel.com/)에서 유지 관리합니다. [Next.js 앱을 빌드](https://nextjs.org/docs/app/building-your-application/deploying)해서 Node.js, 도커 컨테이너, 서버리스 호스팅, 혹은 자체 서버에 배포할 수 있습니다. Next.js는 또한 서버가 필요없는 [정적 내보내기](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)도 지원합니다.
 
 ### React Router (v7) {/*react-router-v7*/}
 

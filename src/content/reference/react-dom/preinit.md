@@ -45,13 +45,13 @@ function AppRoot() {
 #### 매개변수 {/*parameters*/}
 
 * `href`: 문자열. 다운로드하고 실행할 리소스의 URL입니다.
-* `options`: 객체. 다음 속성들을 포함할 수 있습니다:
-  *  `as`: 필수 문자열. 리소스의 유형입니다. 가능한 값은 `script`와 `style`입니다.
+* `options`: 객체. 다음 속성들을 포함할 수 있습니다.
+  * `as`: 필수 문자열. 리소스의 유형입니다. 가능한 값은 `script`와 `style`입니다.
   * `precedence`: 문자열. 스타일시트에 필수입니다. 다른 스타일시트와의 삽입 순서를 결정합니다. 우선순위가 높은 스타일시트가 낮은 것을 덮어쓸 수 있습니다. 가능한 값은 `reset`, `low`, `medium`, `high`입니다.
-  *  `crossOrigin`: 문자열. 사용할 [CORS 정책](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)입니다. 가능한 값은 `anonymous` 와 `use-credentials`입니다. `as` 가 `"fetch"`일 때 필수입니다.
-  *  `integrity`: 문자열. 리소스의 [무결성을 검증](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)하기 위한 암호화 해시입니다.
-  *  `nonce`: 문자열. 엄격한 콘텐츠 보안 정책을 사용할 때, 리소스를 허용하기 위한 암호화된 [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
-  *  `fetchPriority`: 문자열. 리소스를 가져오는 데 사용할 상대적인 우선순위를 제안합니다. 가능한 값은 `auto` (기본값), `high`, `low`입니다.
+  * `crossOrigin`: 문자열. 사용할 [CORS 정책](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)입니다. 가능한 값은 `anonymous` 와 `use-credentials`입니다.
+  * `integrity`: 문자열. 리소스의 [무결성을 검증](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)하기 위한 암호화 해시입니다.
+  * `nonce`: 문자열. 엄격한 콘텐츠 보안 정책을 사용할 때, 리소스를 허용하기 위한 암호화된 [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
+  * `fetchPriority`: 문자열. 리소스를 가져오는 데 사용할 상대적인 우선순위를 제안합니다. 가능한 값은 `auto` (기본값), `high`, `low`입니다.
 
 #### 반환값 {/*returns*/}
 

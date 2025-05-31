@@ -12,7 +12,7 @@ title: React 버전
 
 이전의 주<sup>Major, 主</sup> 버전에 대한 기록은 아래에서 찾을 수 있습니다.
 
-## 최신 버전: 19.0 {/*latest-version*/}
+## 최신 버전: 19.1 {/*latest-version*/}
 
 - [react.dev](https://react.dev) {/*docs-19*/}
 
@@ -52,6 +52,7 @@ React 15 이전 버전의 경우, [15.react.dev](https://15.react.dev)를 참고
 - [React 19 Deep Dive: Coordinating HTML](https://www.youtube.com/watch?v=IBBN-s77YSI)
 
 **Releases**
+- [v19.1.0 (March, 2025)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1910-march-28-2025)
 - [v19.0.0 (December, 2024)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1900-december-5-2024)
 
 ### React 18 {/*react-18*/}
