@@ -44,25 +44,14 @@ function AppRoot() {
 
 #### 매개변수 {/*parameters*/}
 
-<<<<<<< HEAD
 * `href`: 문자열. 다운로드하고 실행할 리소스의 URL입니다.
-* `options`: 객체. 다음 속성들을 포함할 수 있습니다:
-  *  `as`: 필수 문자열. 리소스의 유형입니다. 가능한 값은 `script`와 `style`입니다.
+* `options`: 객체. 다음 속성들을 포함할 수 있습니다.
+  * `as`: 필수 문자열. 리소스의 유형입니다. 가능한 값은 `script`와 `style`입니다.
   * `precedence`: 문자열. 스타일시트에 필수입니다. 다른 스타일시트와의 삽입 순서를 결정합니다. 우선순위가 높은 스타일시트가 낮은 것을 덮어쓸 수 있습니다. 가능한 값은 `reset`, `low`, `medium`, `high`입니다.
-  *  `crossOrigin`: 문자열. 사용할 [CORS 정책](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)입니다. 가능한 값은 `anonymous` 와 `use-credentials`입니다. `as` 가 `"fetch"`일 때 필수입니다.
-  *  `integrity`: 문자열. 리소스의 [무결성을 검증](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)하기 위한 암호화 해시입니다.
-  *  `nonce`: 문자열. 엄격한 콘텐츠 보안 정책을 사용할 때, 리소스를 허용하기 위한 암호화된 [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
-  *  `fetchPriority`: 문자열. 리소스를 가져오는 데 사용할 상대적인 우선순위를 제안합니다. 가능한 값은 `auto` (기본값), `high`, `low`입니다.
-=======
-* `href`: a string. The URL of the resource you want to download and execute.
-* `options`: an object. It contains the following properties:
-  *  `as`: a required string. The type of resource. Its possible values are `script` and `style`.
-  * `precedence`: a string. Required with stylesheets. Says where to insert the stylesheet relative to others. Stylesheets with higher precedence can override those with lower precedence. The possible values are `reset`, `low`, `medium`, `high`. 
-  *  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
-  *  `integrity`: a string. A cryptographic hash of the resource, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-  *  `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy. 
-  *  `fetchPriority`: a string. Suggests a relative priority for fetching the resource. The possible values are `auto` (the default), `high`, and `low`.
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
+  * `crossOrigin`: 문자열. 사용할 [CORS 정책](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)입니다. 가능한 값은 `anonymous` 와 `use-credentials`입니다.
+  * `integrity`: 문자열. 리소스의 [무결성을 검증](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)하기 위한 암호화 해시입니다.
+  * `nonce`: 문자열. 엄격한 콘텐츠 보안 정책을 사용할 때, 리소스를 허용하기 위한 암호화된 [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
+  * `fetchPriority`: 문자열. 리소스를 가져오는 데 사용할 상대적인 우선순위를 제안합니다. 가능한 값은 `auto` (기본값), `high`, `low`입니다.
 
 #### 반환값 {/*returns*/}
 

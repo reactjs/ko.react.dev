@@ -10,14 +10,9 @@ title: React 버전
 
 주<sup>Major, 主</sup> 버전 내에서 문서를 최신 상태로 유지하기 위해 노력하며, 부<sup>Minor, 部</sup> 또는 수<sup>Patch, 修</sup> 버전에 대한 문서는 게시하지 않습니다. 새로운 주<sup>Major, 主</sup> 버전이 출시되면 이전 버전의 문서는 `x.react.dev`로 보관합니다. 자세한 내용은 [버전 관리 정책](/community/versioning-policy)을 참고하세요.
 
-<<<<<<< HEAD
 이전의 주<sup>Major, 主</sup> 버전에 대한 기록은 아래에서 찾을 수 있습니다.
 
-## 최신 버전: 19.0 {/*latest-version*/}
-=======
-You can find an archive of previous major versions below.
-## Latest version: 19.1 {/*latest-version*/}
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
+## 최신 버전: 19.1 {/*latest-version*/}
 
 - [react.dev](https://react.dev) {/*docs-19*/}
 

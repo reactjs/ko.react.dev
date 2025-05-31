@@ -6,13 +6,6 @@ title: React 컴파일러
 이 페이지는 React 컴파일러에 대한 소개와 이를 성공적으로 시도하는 방법을 제공합니다.
 </Intro>
 
-<<<<<<< HEAD
-<Wip>
-이 문서는 아직 작업 중입니다. 더 많은 정보는 [React 컴파일러 워킹 그룹 저장소](https://github.com/reactwg/react-compiler/discussions)에서 확인할 수 있으며, React 컴파일러가 더욱 안정화되면 이 문서에 반영될 것입니다.
-</Wip>
-
-=======
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
 <YouWillLearn>
 
 * 컴파일러 시작하기
@@ -22,27 +15,17 @@ title: React 컴파일러
 </YouWillLearn>
 
 <Note>
-<<<<<<< HEAD
 
-React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 오픈소스로 공개한 베타<sup>Beta</sup> 버전의 새로운 컴파일러입니다. While it has been used in production at companies like Meta, rolling out the compiler to production for your app will depend on the health of your codebase and how well you’ve followed the [Rules of React](/reference/rules).
-=======
-React Compiler is a new compiler currently in RC, that we've open sourced to get feedback from the community. We now recommend everyone to try the compiler and provide feedback.
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
+React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 RC<sup>Release Candidate</sup> 버전으로 오픈소스화한 새로운 컴파일러입니다. 이제 모든 분께 이 컴파일러를 사용해 보고 피드백을 제공할 것을 권장합니다.
 
 The latest RC release can be found with the `@rc` tag, and daily experimental releases with `@experimental`.
 </Note>
 
-<<<<<<< HEAD
-React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 오픈소스로 공개한 새로운 컴파일러입니다. React 컴파일러는 빌드 타임 전용 도구로 React 앱을 자동으로 최적화합니다. 순수 자바스크립트로 동작하며, [React의 규칙](/reference/rules)을 이해하므로 코드를 다시 작성할 필요가 없습니다.
+React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 오픈소스화한 새로운 컴파일러입니다. React 컴파일러는 빌드 타임 전용 도구로 React 앱을 자동으로 최적화합니다. 순수 자바스크립트로 동작하며, [React의 규칙](/reference/rules)을 이해하므로 코드를 다시 작성할 필요가 없습니다.
 
-컴파일러에는 에디터 내에서 분석 결과를 보여주는 [ESLint 플러그인](#installing-eslint-plugin-react-compiler)도 포함되어 있습니다. **We strongly recommend everyone use the linter today.** The linter does not require that you have the compiler installed, so you can use it even if you are not ready to try out the compiler.
-=======
-React Compiler is a new compiler that we've open sourced to get feedback from the community. It is a build-time only tool that automatically optimizes your React app. It works with plain JavaScript, and understands the [Rules of React](/reference/rules), so you don't need to rewrite any code to use it.
+`eslint-plugin-react-hooks`에는 코드 에디터에서 컴파일러의 분석 결과를 즉시 보여주는 [ESLint 규칙](#installing-eslint-plugin-react-compiler)도 포함되어 있습니다. **지금 당장 모든 분들들께 이 린터 사용을 강력히 권장합니다.** 린터는 컴파일러의 설치가 필요 없으므로 컴파일러를 사용할 준비가 되지 않았더라도 사용할 수 있습니다.
 
-eslint-plugin-react-hooks also includes an [ESLint rule](#installing-eslint-plugin-react-compiler) that surfaces the analysis from the compiler right in your editor. **We strongly recommend everyone use the linter today.** The linter does not require that you have the compiler installed, so you can use it even if you are not ready to try out the compiler.
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
-
-The compiler is currently released as `rc`, and is available to try out on React 17+ apps and libraries. To install the RC:
+컴파일러는 현재 `rc` 버전으로 출시되었으며, React 17 이상의 앱과 라이브러리에서 사용해 볼 수 있습니다. `rc` 버전을 설치하려면 다음 명령어를 실행하세요.
 
 <TerminalBlock>
 {`npm install -D babel-plugin-react-compiler@rc eslint-plugin-react-hooks@^6.0.0-rc.1`}
@@ -130,11 +113,7 @@ function TableContainer({ items }) {
 
 ### 컴파일러를 시도해 봐야 하나요? {/*should-i-try-out-the-compiler*/}
 
-<<<<<<< HEAD
-컴파일러가 여전히 실험적이며 다양한 결함이 있다는 점을 유의하세요. Meta와 같은 회사에서는 이미 프로덕션 환경에서 사용하였지만, 앱의 프로덕션에 컴파일러를 점진적으로 도입할지는 코드베이스의 건강 상태와 [React의 규칙](/reference/rules)을 얼마나 잘 따랐는지에 따라 다를 것입니다.
-=======
-The compiler is now in RC and has been tested extensively in production. While it has been used in production at companies like Meta, rolling out the compiler to production for your app will depend on the health of your codebase and how well you've followed the [Rules of React](/reference/rules).
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
+컴파일러는 현재 Release Candidate(RC) 단계에 있으며, 이미 프로덕션 환경에서 광범위하게 테스트되었습니다. Meta와 같은 회사에서는 이미 프로덕션 환경에 도입하여 사용하고 있지만, 앱에 컴파일러를 점진적으로 도입할지는 코드베이스의 건강 상태와 [React의 규칙](/reference/rules)을 얼마나 잘 준수했는지에 따라 달라질 것입니다.
 
 **지금 당장 컴파일러를 사용하기에 급급할 필요는 없습니다. 안정적인 릴리즈에 도달할 때까지 기다려도 괜찮습니다.** 하지만 앱에서의 작은 실험을 통해 컴파일러를 시도해 보고 [피드백을 제공](#reporting-issues)하여 컴파일러 개선에 도움을 줄 수 있습니다.
 
@@ -142,53 +121,15 @@ The compiler is now in RC and has been tested extensively in production. While i
 
 현재 문서 외에도 [React 컴파일러 워킹 그룹](https://github.com/reactwg/react-compiler)을 확인하여 컴파일러에 대한 추가 정보와 논의를 참조하는 것을 권장합니다.
 
-<<<<<<< HEAD
-### `eslint-plugin-react-compiler` 설치 {/*installing-eslint-plugin-react-compiler*/}
+### `eslint-plugin-react-hooks` 설치 {/*installing-eslint-plugin-react-compiler*/}
 
-React 컴파일러는 ESLint 플러그인도 지원합니다. ESLint 플러그인은 컴파일러와 **독립적으로** 사용할 수 있습니다. 즉, 컴파일러를 사용하지 않더라도 ESLint 플러그인을 사용할 수 있습니다.
-=======
-### Installing eslint-plugin-react-hooks {/*installing-eslint-plugin-react-compiler*/}
-
-React Compiler also powers an ESLint plugin. You can try it out by installing eslint-plugin-react-hooks@^6.0.0-rc.1.
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
+React Compiler also powers an ESLint plugin. You can try it out by installing `eslint-plugin-react-hooks@^6.0.0-rc.1`.
 
 <TerminalBlock>
 {`npm install -D eslint-plugin-react-hooks@^6.0.0-rc.1`}
 </TerminalBlock>
 
-<<<<<<< HEAD
-그런 다음, ESLint 설정<sup>Config</sup> 파일에 추가하세요.
-
-```js
-import reactCompiler from 'eslint-plugin-react-compiler'
-
-export default [
-  {
-    plugins: {
-      'react-compiler': reactCompiler,
-    },
-    rules: {
-      'react-compiler/react-compiler': 'error',
-    },
-  },
-]
-```
-
-Or, in the deprecated eslintrc config format:
-
-```js
-module.exports = {
-  plugins: [
-    'eslint-plugin-react-compiler',
-  ],
-  rules: {
-    'react-compiler/react-compiler': 'error',
-  },
-}
-```
-=======
 See our [editor setup](/learn/editor-setup#linting) guide for more details.
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
 
 ESLint 플러그인은 에디터에서 React의 규칙 위반 사항을 표시합니다. 이 경우 컴파일러가 해당 컴포넌트나 Hook의 최적화를 건너뛰었음을 의미합니다. 이것은 완전히 정상적인 동작이며, 컴파일러는 이를 복구하고 코드베이스의 다른 컴포넌트를 계속해서 최적화할 수 있습니다.
 

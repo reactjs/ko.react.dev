@@ -819,11 +819,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-<<<<<<< HEAD
-그리고 반환 값을 다른 Hook에 입력해보세요.
-=======
-and passing it as an input to another Hook:
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
+그리고 다른 Hook에 입력으로 전달하세요.
 
 ```js {6}
 export default function ChatRoom({ roomId }) {

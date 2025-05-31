@@ -165,11 +165,7 @@ function CheckoutForm() {
 
 `startTransition` 내에서 호출되는 함수를 "Actions"이라고 합니다. Action 내에서 상태를 업데이트하고(선택적으로) 사이드 이펙트를 수행할 수 있으며, 작업은 페이지에서 사용자 상호 작용을 차단하지 않고 백그라운드에서 수행됩니다. 하나의 Transition은 여러 개의 Action을 포함할 수 있으며, Transition이 진행되는 동안 UI는 계속 반응합니다. 예를 들어 사용자가 탭을 클릭했다가 마음이 바뀌어 다른 탭을 클릭하면 첫 번째 업데이트가 완료될 때까지 기다리지 않고 두 번째 클릭이 즉시 처리됩니다.
 
-<<<<<<< HEAD
 진행 중인 Transition에 대해 사용자에게 피드백을 제공하기 위해 `isPending` 상태는 `startTransition`을 처음 호출할 때 `true`로 전환되며, 모든 Action이 완료되어 최종 상태가 사용자에게 표시될 때까지 `true` 상태를 유지합니다. Transition은 Action 내의 사이드 이펙트가 완료되도록 보장하여 [원치 않는 로딩 표시기가 표시되지 않도록 합니다.](#preventing-unwanted-loading-indicators) 또한, Transition이 진행 중일 때 `useOptimistic`을 사용하여 즉각적인 피드백을 제공할 수 있습니다.
-=======
-To give the user feedback about in-progress Transitions, the `isPending` state switches to `true` at the first call to `startTransition`, and stays `true` until all Actions complete and the final state is shown to the user. Transitions ensure side effects in Actions to complete in order to [prevent unwanted loading indicators](#preventing-unwanted-loading-indicators), and you can provide immediate feedback while the Transition is in progress with `useOptimistic`.
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
 
 <Recipes titleText="Action과 일반 이벤트 처리의 차이점">
 
@@ -233,11 +229,7 @@ import { startTransition } from "react";
 
 export default function Item({action}) {
   function handleChange(event) {
-<<<<<<< HEAD
-    // startTransition 내부에서 콜백 함수를 실행하면 action 프로퍼티를 노출할 수 있습니다.
-=======
     // To expose an action prop, await the callback in startTransition.
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
     startTransition(async () => {
       await action(event.target.value);
     })
@@ -595,11 +587,7 @@ export async function updateQuantity(newQuantity) {
 
 컴포넌트에서 `action` 프로퍼티를 노출시켜 부모 컴포넌트에서 Action을 호출할 수 있습니다.
 
-<<<<<<< HEAD
 예를 들어, 이 `TabButton` 컴포넌트는 `onClick`에서 실행될 로직이 `action` prop으로 감싸져있습니다.
-=======
-For example, this `TabButton` component wraps its `onClick` logic in an `action` prop:
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
 
 ```js {8-12}
 export default function TabButton({ action, children, isActive }) {
@@ -1849,15 +1837,9 @@ import {startTransition} from 'react';
 
 export default function Item({action}) {
   function handleChange(e) {
-<<<<<<< HEAD
     // 수량을 업데이트하는 Action입니다.
-    startTransition(() => {
-      action(e.target.value);
-=======
-    // Update the quantity in an Action.
     startTransition(async () => {
       await action(e.target.value);
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
     });
   }
   return (

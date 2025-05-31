@@ -439,11 +439,7 @@ function ChatRoom({ roomId, theme }) {
   // ...
 ```
 
-<<<<<<< HEAD
-이렇게 하면 문제가 해결됩니다. Effect의 의존성 목록에서 `onConnected`를 *제거*해야 한다는 것에 유의하세요. **Effect 이벤트는 반응형이 아니므로 의존성에서 제외되어야 합니다.**
-=======
-This solves the problem. Note that you had to *remove* `theme` from the list of your Effect's dependencies, because it's no longer used in the Effect. You also don't need to *add* `onConnected` to it, because **Effect Events are not reactive and must be omitted from dependencies.**
->>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
+이렇게 하면 문제가 해결됩니다. Effect에서 더 이상 사용하지 않으므로, Effect의 의존성 목록에서 `theme`을 *제거*해야 한다는 점에 유의하세요. 또한 `onConnected`를 *추가*할 필요도 없습니다. **Effect 이벤트는 반응형이 아니므로 의존성에서 제외되어야 합니다.**
 
 새로운 동작이 예상대로 작동하는지 확인해 보세요.
 
