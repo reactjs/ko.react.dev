@@ -18,7 +18,7 @@ title: '자습서: 틱택토 게임'
 자습서는 아래와 같이 몇 가지 부문으로 나뉩니다.
 
 - [자습서 환경설정](#setup-for-the-tutorial)은 자습서를 따를 수 있는 **시작점**을 제공합니다.
-- [개요](#overview)에서는 React의 **핵심**(컴포넌트, props, state)을 배울 수 있습니다.
+- [개요](#overview)에서는 React의 **핵심**(컴포넌트, Props, State)을 배울 수 있습니다.
 - [게임 완료하기](#completing-the-game)에서는 React 개발에서 **가장 흔히 쓰이는 기술**을 배울 수 있습니다.
 - [시간여행 추가하기](#adding-time-travel)에서는 React의 고유한 강점에 대해 **더 깊은 통찰력**을 얻을 수 있습니다.
 
