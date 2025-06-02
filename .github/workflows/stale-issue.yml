@@ -1,0 +1,29 @@
+name: 'Stale Issue'
+on:
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          days-before-stale: 30 
+          days-before-close: -1
+
+          stale-issue-message: '30일 동안 작업이 없어 할당을 해제합니다.'
+          stale-issue-label: 'stale'
+          exempt-issue-labels: 'DO NOT CLOSE OR MERGE,discussion,term,TIP'
+
+          days-before-pr-stale: -1
+
+          labels-to-remove-when-unstale: 'stale'
+
+          include-only-assigned: true
+
