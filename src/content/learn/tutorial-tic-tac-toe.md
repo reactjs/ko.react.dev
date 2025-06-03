@@ -1776,7 +1776,7 @@ export default function Game() {
 }
 ```
 
-`export default` 키워드를 `function Board() {` 선언 앞에서 제거하고 `function Game() {` 선언 앞에 추가한 것에 유의하세요. 이것은 `index.js` 파일에서 `Board` 컴포넌트 대신 `Game` 컴포넌트를 최상위 컴포넌트로 사용하도록 지시합니다. `Game` 컴포넌트가 반환하는 내용에 추가한 div는 나중에 보드에 추가할 게임 정보를 위한 공간을 확보합니다.
+`export default` 키워드를 `function Board() {` 선언 앞에서 제거하고 `function Game() {` 선언 앞에 추가한 것에 유의하세요. 이것은 `index.js` 파일에서 `Board` 컴포넌트 대신 `Game` 컴포넌트를 최상위 컴포넌트로 사용하도록 지시합니다. `Game` 컴포넌트가 반환하는 내용에 추가한 `div`는 나중에 보드에 추가할 게임 정보를 위한 공간을 확보합니다.
 
 다음 플레이어와 이동 기록을 추적하기 위해 `Game` 컴포넌트에 몇개의 State를 추가하세요.
 
@@ -1799,7 +1799,7 @@ export default function Game() {
   // ...
 ```
 
-다음으로 `Game` 컴포넌트 안에 `Board` 컴포넌트가 게임을 업데이트할 때 호출할 `handlePlay` 함수를 만드세요. `xIsNext` , `currentSquares` , `handlePlay` 를 `Board` 컴포넌트에 Props로 전달하세요.
+다음으로 `Game` 컴포넌트 안에 `Board` 컴포넌트가 게임을 업데이트할 때 호출할 `handlePlay` 함수를 만드세요. `xIsNext` , `currentSquares` , `handlePlay`를 `Board` 컴포넌트에 Props로 전달하세요.
 
 ```js {6-8,13}
 export default function Game() {
@@ -1855,7 +1855,7 @@ function Board({ xIsNext, squares, onPlay }) {
 
 `handlePlay`가 호출되면 무엇을 해야 할까요? 이전의 보드는 업데이트된 `setSquares`를 호출했지만, 이제는 업데이트된 `squares` 배열을 `onPlay`로 전달한다는 걸 기억하세요.
 
-`handlePlay` 함수는 리렌더링을 트리거하기 위해 `Game`의 State를 업데이트해야 하지만, 더 이상 호출할 수 있는 `setSquares` 함수가 없으며 대신 이 정보를 저장하기 위해 `history` State 변수를 사용하고 있습니다. 업데이트된 `squares` 배열을 새 히스토리 항목으로 추가하여 `history`를 업데이트해야 하고, Board에서 했던 것처럼 `xIsNext` 값을 반전시켜야 합니다.
+`handlePlay` 함수는 리렌더링을 트리거하기 위해 `Game`의 State를 업데이트해야 하지만, 더 이상 호출할 수 있는 `setSquares` 함수가 없으며 대신 이 정보를 저장하기 위해 `history` State 변수를 사용하고 있습니다. 업데이트된 `squares` 배열을 새 히스토리 항목으로 추가하여 `history`를 업데이트해야 하고, `Board`에서 했던 것처럼 `xIsNext` 값을 반전시켜야 합니다.
 
 ```js {4-5}
 export default function Game() {
@@ -1868,9 +1868,9 @@ export default function Game() {
 }
 ```
 
-위에서 `[...history, nextSquares]` 는 `history`에 있는 모든 항목을 포함하는 새 배열을 만들고 그 뒤에 `nextSquares`를 만듭니다. (`...history` [*전개 구문*](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Spread_syntax)을 "`history` 의 모든 항목 열거"로 읽을 수 있습니다)
+위에서 `[...history, nextSquares]`는 `history`에 있는 모든 항목을 포함하는 새 배열을 만들고 그 뒤에 `nextSquares`를 만듭니다. (`...history` [*전개 구문*](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Spread_syntax)을 "`history` 의 모든 항목 열거"로 읽을 수 있습니다.)
 
-예를 들어, `history`가 `[[null,null,null], ["X",null,null]]`이고 `nextSquares` 가 `["X",null,"O"]`라면 새로운 `[...history, nextSquares]` 배열은 `[[null,null,null], ["X",null,null], ["X",null,"O"]]`가 될 것입니다.
+예를 들어, `history`가 `[[null,null,null], ["X",null,null]]`이고 `nextSquares`가 `["X",null,"O"]`라면 새로운 `[...history, nextSquares]` 배열은 `[[null,null,null], ["X",null,null], ["X",null,"O"]]`가 될 것입니다.
 
 이 시점에서 State를 `Game` 컴포넌트로 옮겼으므로 리팩토링 전과 마찬가지로 UI가 완전히 작동해야 합니다. 이 시점에서 코드의 모습은 다음과 같습니다.
 
@@ -2253,13 +2253,13 @@ body {
 
 `map`으로 `history` 배열을 반복할 때 전달한 함수 내에서 `squares` 인수는 `history`의 각 엘리먼트를 통과하고, `move` 인수는 각 배열 인덱스를 통과합니다: `0`, `1`, `2`, … (대부분은 실제 배열 엘리먼트가 필요하지만, 이 경우에는 이동 목록을 렌더링하기 위해 인덱스만 있어도 됩니다.)
 
-틱택토 게임 history의 각 이동에 대해 버튼 `<button>`이 포함된 목록 항목 `<li>`를 생성하세요. 버튼에는 (아직 구현하지 않은) `jumpTo`라는 함수를 호출하는 `onClick` 핸들러가 있습니다.
+틱택토 게임 `history`의 각 이동에 대해 버튼 `<button>`이 포함된 목록 항목 `<li>`를 생성하세요. 버튼에는 (아직 구현하지 않은) `jumpTo`라는 함수를 호출하는 `onClick` 핸들러가 있습니다.
 
 현재로서는 개발자 도구 콘솔에 게임의 발생한 동작 목록과 오류가 표시되어야 합니다. "key" 오류가 무엇을 의미하는지 알아보겠습니다.
 
 ### Key 선택하기 {/*picking-a-key*/}
 
-리스트를 렌더링할 때 React는 렌더링 된 각 리스트 항목에 대한 몇 가지 정보를 저장합니다. 리스트를 업데이트할 때 React는 무엇이 변경되었는지 확인해야 합니다. 리스트의 항목은 추가, 제거, 재정렬 또는 업데이트될 수 있습니다.
+리스트를 렌더링할 때 React는 렌더링된 각 리스트 항목에 대한 몇 가지 정보를 저장합니다. 리스트를 업데이트할 때 React는 무엇이 변경되었는지 확인해야 합니다. 리스트의 항목은 추가, 제거, 재정렬 또는 업데이트될 수 있습니다.
 
 아래의 리스트가
 
@@ -2276,7 +2276,7 @@ body {
 <li>Alexa: 5 tasks left</li>
 ```
 
-아마 task의 개수가 업데이트 되었을 뿐만 아니라 Alexa와 Ben의 순서가 바뀌고 Claudia가 두 사람 사이에 추가되었다고 생각할 것입니다. 그러나 React는 컴퓨터 프로그램이므로 우리가 의도한 바가 무엇인지 알지 못합니다. 그러므로 리스트의 항목에 _key_ 프로퍼티를 지정하여 각 리스트의 항목이 다른 항목과 다르다는 것을 구별해 주어야 합니다. 만약 데이터베이스에서 데이터를 불러와서 사용한다면 Alexa, Ben, Claudia의 데이터베이스 ID를 key로 사용할 수 있습니다.
+아마 task의 개수가 업데이트 되었을 뿐만 아니라 Alexa와 Ben의 순서가 바뀌고 Claudia가 두 사람 사이에 추가되었다고 생각할 것입니다. 그러나 React는 컴퓨터 프로그램이므로 우리가 의도한 바가 무엇인지 알지 못합니다. 그러므로 리스트의 항목에 _`key`_ 프로퍼티를 지정하여 각 리스트의 항목이 다른 항목과 다르다는 것을 구별해 주어야 합니다. 만약 데이터베이스에서 데이터를 불러와서 사용한다면 Alexa, Ben, Claudia의 데이터베이스 ID를 `key`로 사용할 수 있습니다.
 
 ```js {1}
 <li key={user.id}>
@@ -2284,23 +2284,23 @@ body {
 </li>
 ```
 
-리스트가 다시 렌더링 되면 React는 각 리스트 항목의 key를 가져와서 이전 리스트의 항목에서 일치하는 key를 탐색합니다. 현재 리스트에서 이전에 존재하지 않았던 key가 있으면 React는 컴포넌트를 생성합니다. 만약 현재 리스트에 이전 리스트에 존재했던 key를 가지고 있지 않다면 React는 그 key를 가진 컴포넌트를 제거합니다. 두 key가 일치한다면 해당 컴포넌트는 이동합니다.
+리스트가 다시 렌더링 되면 React는 각 리스트 항목의 `key`를 가져와서 이전 리스트의 항목에서 일치하는 `key`를 탐색합니다. 현재 리스트에서 이전에 존재하지 않았던 `key`가 있으면 React는 컴포넌트를 생성합니다. 만약 현재 리스트에 이전 리스트에 존재했던 `key`를 가지고 있지 않다면 React는 그 `key`를 가진 컴포넌트를 제거합니다. 두 `key`가 일치한다면 해당 컴포넌트는 이동합니다.
 
-key는 각 React가 각 컴포넌트를 구별할 수 있도록 하여 컴포넌트가 다시 렌더링 될 때 React가 해당 컴포넌트의 State를 유지할 수 있게 합니다. 컴포넌트의 key가 변하면 컴포넌트는 제거되고 새로운 State와 함께 다시 생성됩니다.
+`key`는 React가 각 컴포넌트를 구별할 수 있도록 하여 컴포넌트가 다시 렌더링 될 때 React가 해당 컴포넌트의 State를 유지할 수 있게 합니다. 컴포넌트의 `key`가 변하면 컴포넌트는 제거되고 새로운 State와 함께 다시 생성됩니다.
 
-`key`는 React에서 특별하고 미리 지정된 프로퍼티입니다. 엘리먼트가 생성되면 React는 `key` 프로퍼티를 추출하여 반환되는 엘리먼트에 직접 key를 저장합니다. `key`가 Props로 전달되는 것처럼 보일 수 있지만, React는 자동으로 `key`를 사용해 업데이트할 컴포넌트를 결정합니다. 부모가 지정한 `key`가 무엇인지 컴포넌트는 알 수 없습니다.
+`key`는 React에서 특별하고 미리 지정된 프로퍼티입니다. 엘리먼트가 생성되면 React는 `key` 프로퍼티를 추출하여 반환되는 엘리먼트에 직접 `key`를 저장합니다. `key`가 Props로 전달되는 것처럼 보일 수 있지만, React는 자동으로 `key`를 사용해 업데이트할 컴포넌트를 결정합니다. 부모가 지정한 `key`가 무엇인지 컴포넌트는 알 수 없습니다.
 
-**동적인 리스트를 만들 때마다 적절한 key를 할당하는 것을 강력하게 추천합니다.** 적절한 key가 없는 경우 데이터를 재구성하는 것을 고려해 보세요.
+**동적인 리스트를 만들 때마다 적절한 `key`를 할당하는 것을 강력하게 추천합니다.** 적절한 `key`가 없는 경우 데이터를 재구성하는 것을 고려해 보세요.
 
-key가 지정되지 않은 경우, React는 경고를 표시하며 배열의 인덱스를 기본 key로 사용합니다. 배열 인덱스를 key로 사용하면 리스트 항목의 순서를 바꾸거나 항목을 추가/제거할 때 문제가 발생합니다. 명시적으로 `key={i}`를 전달하면 경고는 사라지지만 배열의 인덱스를 사용할 때와 같은 문제가 발생하므로 대부분은 추천하지 않습니다.
+`key`가 지정되지 않은 경우, React는 경고를 표시하며 배열의 인덱스를 기본 `key`로 사용합니다. 배열 인덱스를 `key`로 사용하면 리스트 항목의 순서를 바꾸거나 항목을 추가/제거할 때 문제가 발생합니다. 명시적으로 `key={i}`를 전달하면 경고는 사라지지만 배열의 인덱스를 사용할 때와 같은 문제가 발생하므로 대부분은 추천하지 않습니다.
 
-key는 전역적으로 고유할 필요는 없으며 컴포넌트와 해당 컴포넌트의 형제 컴포넌트 사이에서만 고유하면 됩니다.
+`key`는 전역적으로 고유할 필요는 없으며 컴포넌트와 해당 컴포넌트의 형제 컴포넌트 사이에서만 고유하면 됩니다.
 
 ### 시간여행 구현하기 {/*implementing-time-travel*/}
 
-틱택토 게임의 기록에서 과거의 각 이동에는 해당 이동의 일련번호인 고유 ID가 있습니다. 이동은 중간에 순서를 바꾸거나 삭제하거나 삽입할 수 없으므로 이동 인덱스를 key로 사용하는 것이 안전합니다.
+틱택토 게임의 기록에서 과거의 각 이동에는 해당 이동의 일련번호인 고유 ID가 있습니다. 이동은 중간에 순서를 바꾸거나 삭제하거나 삽입할 수 없으므로 이동 인덱스를 `key`로 사용하는 것이 안전합니다.
 
-`Game` 함수에서 `<li key={move}>`로 key를 추가할 수 있으며 렌더링 된 게임을 다시 로드하면 React의 "key" 에러가 사라질 것입니다.
+`Game` 함수에서 `<li key={move}>`로 `key`를 추가할 수 있으며 렌더링된 게임을 다시 로드하면 React의 "key" 에러가 사라질 것입니다.
 
 ```js {4}
 const moves = history.map((squares, move) => {
@@ -2709,7 +2709,7 @@ body {
 
 이 두 가지 State를 모두 저장할 이유가 없습니다. 항상 중복되는 State는 피하세요. State에 저장하는 것을 단순화하면 버그를 줄이고 코드를 더 쉽게 이해할 수 있습니다. `Game`을 변경하여 더 이상 `xIsNext`를 별도의 State 변수로 저장하지 않고 `currentMove`를 기반으로 알아내도록 수정하겠습니다.
 
-```js {4,11,15}
+```js {4,10,14}
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);

@@ -4,7 +4,7 @@ title: React로 사고하기
 
 <Intro>
 
-React를 사용하게 되면 우리가 고려하고 있는 디자인이나 만들 앱들에 대한 생각을 바꿀 수 있습니다. React로 사용자 인터페이스를 빌드할 때, 먼저 이를 컴포넌트라는 조각으로 나눕니다. 그리고 각 컴포넌트의 다양한 시각적 상태들을 정의합니다. 마지막으로 컴포넌트들을 연결하여 데이터가 그 사이를 흘러가게 합니다. 이 자습서에서는 React로 검색할 수 있는 상품 테이블을 만드는 과정을 체계적으로 안내해 드리겠습니다.
+React를 사용하면 우리가 고려하고 있는 디자인이나 만들 앱에 대한 생각을 바꿀 수 있습니다. React로 사용자 인터페이스를 빌드할 때, 먼저 이를 컴포넌트라는 조각으로 나눕니다. 그리고 각 컴포넌트의 다양한 시각적 상태들을 정의합니다. 마지막으로 컴포넌트들을 연결하여 데이터가 그 사이를 흘러가게 합니다. 이 자습서에서는 React로 검색할 수 있는 상품 테이블을 만드는 과정을 체계적으로 안내해 드리겠습니다.
 
 </Intro>
 
@@ -36,8 +36,8 @@ React로 UI를 구현하기 위해서 일반적으로 다섯 가지 단계를 �
 
 어떤 배경을 가지고 있냐에 따라, 디자인을 컴포넌트로 나누는 방법에 대한 관점이 달라질 수 있습니다.
 
-* **Programming**--새로운 함수나 객체를 만드는 방식과 같은 방법으로 해봅시다. 이 중 [단일책임 원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99)을 반영하고자 한다면 컴포넌트는 이상적으로는 한 번에 한 가지 일만 해야 합니다. 만약 컴포넌트가 점점 커진다면 작은 하위 컴포넌트로 쪼개져야 하겠죠.
-* **CSS**--클래스 선택자를 무엇으로 만들지 생각해 봅시다. (실제 컴포넌트들은 약간 좀 더 세분되어 있습니다.)
+* **Programming**--새로운 함수나 객체를 만드는 방식으로 해봅시다. 이 중 [단일 책임 원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99)을 반영하고자 한다면 컴포넌트는 이상적으로는 한 번에 한 가지 일만 해야 합니다. 만약 컴포넌트가 점점 커진다면 작은 하위 컴포넌트로 쪼개져야 하겠죠.
+* **CSS**--클래스 선택자를 무엇으로 만들지 생각해 봅시다. (실제 컴포넌트들은 약간 더 세분되어 있습니다.)
 * **Design**--디자인 계층을 어떤 식으로 구성할 지 생각해 봅시다.
 
 JSON이 잘 구조화 되어있다면, 종종 이것이 UI의 컴포넌트 구조가 자연스럽게 데이터 모델에 대응된다는 것을 발견할 수 있습니다. 이는 UI와 데이터 모델은 보통 같은 정보 아키텍처, 즉 같은 구조를 가지기 때문입니다. UI를 컴포넌트로 분리하고, 각 컴포넌트가 데이터 모델에 매칭될 수 있도록 하세요.
@@ -72,11 +72,11 @@ JSON이 잘 구조화 되어있다면, 종종 이것이 UI의 컴포넌트 구�
 
 ## Step 2: React로 정적인 버전 구현하기 {/*step-2-build-a-static-version-in-react*/}
 
-이제 컴포넌트 계층구조가 만들어졌으니, 앱을 실제로 구현해 볼 시간입니다. 가장 쉬운 접근 방법은 상호작용 기능은 아직 추가하지 않고 데이터 모델로부터 UI를 렌더링하는 버전을 만드는 것입니다. 대체로 먼저 정적인 버전을 만들고 상호작용 기능을 추가하는 게 더 쉽습니다. 정적 버전을 만드는 것은 많은 타이핑이 필요하지만, 생각할 것은 적으며, 반대로 상호작용 기능을 추가하는 것은 많은 생각이 필요하지만, 타이핑은 그리 많이 필요하지 않습니다.
+이제 컴포넌트 계층구조를 만들었으니, 앱을 실제로 구현해 볼 시간입니다. 가장 쉬운 접근 방법은 상호작용 기능은 아직 추가하지 않고 데이터 모델로부터 UI를 렌더링하는 버전을 만드는 것입니다. 대체로 먼저 정적인 버전을 만들고 상호작용 기능을 추가하는 게 더 쉽습니다. 정적 버전을 만드는 것은 많은 타이핑이 필요하지만, 생각할 것은 적으며, 반대로 상호작용 기능을 추가하는 것은 많은 생각이 필요하지만, 타이핑은 그리 많이 필요하지 않습니다.
 
-데이터 모델을 렌더링하는 앱의 정적인 버전을 만들기 위해 다른 컴포넌트를 재사용하고 [props](/learn/passing-props-to-a-component)를 이용하여 데이터를 넘겨주는 [컴포넌트](/learn/your-first-component)를 구현할 수 있습니다. props는 부모가 자식에게 데이터를 넘겨줄 때 사용할 수 있는 방법입니다. (혹시 [state](/learn/state-a-components-memory) 개념에 익숙하다고 해도 정적인 버전을 만드는 데는 state를 쓰지 마세요! state는 오직 상호작용을 위해, 즉 시간이 지남에 따라 데이터가 바뀌는 것에 사용합니다. 우리는 앱의 정적 버전을 만들고 있기 때문에 지금은 필요하지 않습니다.)
+데이터 모델을 렌더링하는 앱의 정적인 버전을 만들기 위해 다른 컴포넌트를 재사용하고 [Props](/learn/passing-props-to-a-component)를 이용하여 데이터를 넘겨주는 [컴포넌트](/learn/your-first-component)를 구현할 수 있습니다. Props는 부모가 자식에게 데이터를 넘겨줄 때 사용할 수 있는 방법입니다. (혹시 [State](/learn/state-a-components-memory) 개념에 익숙하다고 해도 정적인 버전을 만드는 데는 State를 쓰지 마세요! State는 오직 상호작용을 위해, 즉 시간이 지남에 따라 데이터가 바뀌는 것에 사용합니다. 우리는 앱의 정적 버전을 만들고 있기 때문에 지금은 필요하지 않습니다.)
 
-앱을 만들 때 계층 구조에 따라 상층부에 있는 컴포넌트 (즉 `FilterableProductTable`부터 시작하는 것)부터 하향식(top-down)으로 만들거나 혹은 하층부에 있는 컴포넌트 (`ProductRow`)부터 상향식(bottom-up)으로 만들 수 있습니다. 간단한 예시에서는 보통 하향식으로 만드는 게 쉽지만, 프로젝트가 커지면 상향식으로 만들고 테스트를 작성하면서 개발하기가 더 쉽습니다.
+앱을 만들 때 계층 구조에 따라 상층부에 있는 컴포넌트 (즉, `FilterableProductTable`부터 시작하는 것)부터 하향식<sup>Top-Down</sup>으로 만들거나 혹은 하층부에 있는 컴포넌트 (`ProductRow`)부터 상향식<sup>Bottom-Up</sup>으로 만들 수 있습니다. 간단한 예시에서는 보통 하향식으로 만드는 게 쉽지만, 프로젝트가 커지면 상향식으로 만들고 테스트를 작성하면서 개발하는 것이 더 쉽습니다.
 
 <Sandpack>
 
@@ -194,21 +194,21 @@ td {
 
 </Sandpack>
 
-(위 코드가 어렵게 느껴진다면, [Quick Start](/learn)를 먼저 참고하세요!)
+(위 코드가 어렵게 느껴진다면, [빠르게 시작하기](/learn)를 먼저 참고하세요!)
 
-이 단계가 끝나면 데이터 렌더링을 위해 만들어진 재사용 가능한 컴포넌트들의 라이브러리를 가지게 됩니다. 현재는 앱의 정적 버전이기 때문에 컴포넌트는 단순히 JSX만 리턴합니다. 계층구조의 최상단 컴포넌트 (FilterableProductTable)는 prop으로 데이터 모델을 받습니다. 이는 데이터가 최상단 컴포넌트부터 트리의 맨 아래까지 흘러가기 때문에 `단방향 데이터 흐름`이라고 부릅니다.
+이 단계가 끝나면 데이터 렌더링을 위해 만들어진 재사용 가능한 컴포넌트들의 라이브러리를 가지게 됩니다. 현재는 앱의 정적 버전이기 때문에 컴포넌트는 단순히 JSX만 리턴합니다. 계층구조의 최상단 컴포넌트 `FilterableProductTable`은 Prop으로 데이터 모델을 받습니다. 이는 데이터가 최상단 컴포넌트부터 트리의 맨 아래까지 흘러가기 때문에 <em>단방향 데이터 흐름</em>이라고 부릅니다.
 
 <Pitfall>
 
-여기까지는 아직 state값을 쓰지 마세요. 다음 단계에서 사용할 겁니다!
+여기까지는 아직 State 값을 쓰지 마세요. 다음 단계에서 사용할 겁니다!
 
 </Pitfall>
 
 ## Step 3: 최소한의 데이터만 이용해서 완벽하게 UI State 표현하기 {/*step-3-find-the-minimal-but-complete-representation-of-ui-state*/}
 
-UI를 상호작용(interactive)하게 만들려면 사용자가 기반 데이터 모델을 변경할 수 있게 해야 합니다. React는 *state*를 통해 기반 데이터 모델을 변경할 수 있게 합니다.
+UI를 상호작용<sup>Interactive</sup>하게 만들려면 사용자가 기반 데이터 모델을 변경할 수 있게 해야 합니다. React는 *State*를 통해 기반 데이터 모델을 변경할 수 있게 합니다.
 
-state는 앱이 기억해야 하는, 변경할 수 있는 데이터의 최소 집합이라고 생각하세요. state를 구조화하는 데 가장 중요한 원칙은 [중복배제원칙(Don't Repeat Yourself)](https://ko.wikipedia.org/wiki/%EC%A4%91%EB%B3%B5%EB%B0%B0%EC%A0%9C)입니다. 애플리케이션이 필요로 하는 가장 최소한의 state를 파악하고 나머지 모든 것들은 필요에 따라 실시간으로 계산하세요. 예를 들어, 쇼핑 리스트를 만든다고 하면 당신은 배열에 상품 아이템들을 넣을 겁니다. UI에 상품 아이템의 개수를 노출하고 싶다고 하면 상품 아이템 개수를 따로 state 값으로 가지는 게 아니라 단순하게 배열의 길이만 쓰면 됩니다.
+State는 앱이 기억해야 하는, 변경할 수 있는 데이터의 최소 집합이라고 생각하세요. State를 구조화하는 데 가장 중요한 원칙은 [중복 배제 원칙<sup>Don't Repeat Yourself</sup>](https://ko.wikipedia.org/wiki/%EC%A4%91%EB%B3%B5%EB%B0%B0%EC%A0%9C)입니다. 애플리케이션이 필요로 하는 가장 최소한의 State를 파악하고 나머지 모든 것들은 필요에 따라 실시간으로 계산하세요. 예를 들어, 쇼핑 리스트를 만든다고 하면 당신은 배열에 상품 아이템들을 넣을 겁니다. UI에 상품 아이템의 개수를 노출하고 싶다고 하면 상품 아이템 개수를 따로 State 값으로 가지는 게 아니라 단순하게 배열의 길이만 쓰면 됩니다.
 
 예시 애플리케이션 내 데이터들을 생각해 봅시다. 애플리케이션은 다음과 같은 데이터를 가지고 있습니다.
 
@@ -217,62 +217,62 @@ state는 앱이 기억해야 하는, 변경할 수 있는 데이터의 최소 �
 3. 체크박스의 값
 4. 필터링된 제품 목록
 
-이 중 어떤 게 state가 되어야 할까요? 아래의 세 가지 질문을 통해 결정할 수 있습니다.
+이 중 어떤 게 State가 되어야 할까요? 아래의 세 가지 질문을 통해 결정할 수 있습니다.
 
-- **시간이 지나도 변하지 않나요?** 그러면 확실히 state가 아닙니다.
-- **부모로부터 props를 통해 전달됩니까?** 그러면 확실히 state가 아닙니다.
-- 컴포넌트 안의 다른 state나 props를 가지고 **계산 가능한가요?** 그렇다면 *절대로* state가 아닙니다!
+- **시간이 지나도 변하지 않나요?** 그러면 확실히 State가 아닙니다.
+- **부모로부터 Props를 통해 전달됩니까?** 그러면 확실히 State가 아닙니다.
+- 컴포넌트 안의 다른 State나 Props를 가지고 **계산 가능한가요?** 그렇다면 *절대로* State가 아닙니다!
 
-그 외 남는 건 아마 state일 겁니다.
+그 외 남는 건 아마 State일 겁니다.
 
 위 데이터들을 다시 한번 순서대로 살펴봅시다.
 
-1. 제품의 원본 목록은 **props로 전달되었기 때문에 state가 아닙니다**.
-2. 사용자가 입력한 검색어는 시간이 지남에 따라 변하고, 다른 요소로부터 계산될 수 없기 때문에 state로 볼 수 있습니다.
-3. 체크박스의 값은 시간에 따라 바뀌고 다른 요소로부터 계산될 수 없기 때문에 state로 볼 수 있습니다
-4. 필터링된 제품 목록은 원본 제품 목록을 받아서 검색어와 체크박스의 값에 따라 **계산할 수 있으므로, 이는 state가 아닙니다.**
+1. 제품의 원본 목록은 **Props로 전달되었기 때문에 State가 아닙니다**.
+2. 사용자가 입력한 검색어는 시간에 따라 변하고, 다른 요소로부터 계산할 수 없기 때문에 State로 볼 수 있습니다.
+3. 체크박스의 값은 시간에 따라 바뀌고 다른 요소로부터 계산할 수 없기 때문에 State로 볼 수 있습니다.
+4. 필터링된 제품 목록은 원본 제품 목록을 받아서 검색어와 체크박스의 값에 따라 **계산할 수 있으므로, 이는 State가 아닙니다.**
 
-따라서, 검색어와 체크박스의 값만이 state입니다! 잘하셨습니다!
+따라서, 검색어와 체크박스의 값만이 State입니다! 잘하셨습니다!
 
 <DeepDive>
 
 #### Props vs State {/*props-vs-state*/}
 
-React는 props와 state라는 두 개의 데이터 "모델"이 존재합니다. 둘의 성격은 매우 다릅니다.
+React는 Props와 State라는 두 개의 데이터 "모델"이 존재합니다. 둘의 성격은 매우 다릅니다.
 
-- [**Props**는 함수를 통해 전달되는 인자 같은 성격을 가집니다.](/learn/passing-props-to-a-component) props는 부모 컴포넌트로부터 자식 컴포넌트로 데이터를 넘겨서 외관을 커스터마이징하게 해줍니다. 예를 들어, `Form`은 color라는 prop을 `Button`으로 보내서 `Button`을 내가 원하는 형태로 커스터마이징시킬 수 있습니다..
-- [**State**는 컴포넌트의 메모리 같은 성격을 가집니다.](/learn/state-a-components-memory) state는 컴포넌트가 몇몇 정보를 계속 따라갈 수 있게 해주고 변화하면서 상호작용(interaction)을 만들어 냅니다. 예를 들어, `Button`은 `isHovered`라는 state를 따라갈 것입니다.
+- [**Props**는 함수를 통해 전달되는 인자 같은 성격을 가집니다.](/learn/passing-props-to-a-component) Props는 부모 컴포넌트로부터 자식 컴포넌트로 데이터를 넘겨서 외관을 커스터마이징하게 해줍니다. 예를 들어, `Form`은 `color`라는 Prop을 `Button`으로 보내서 `Button`을 내가 원하는 형태로 커스터마이징할 수 있습니다.
+- [**State**는 컴포넌트의 메모리 같은 성격을 가집니다.](/learn/state-a-components-memory) State는 컴포넌트가 몇몇 정보를 계속 따라갈 수 있게 해주고 변화하면서 상호작용<sup>Interaction</sup>을 만들어 냅니다. 예를 들어, `Button`은 `isHovered`라는 State를 따라갈 것입니다.
 
-props와 state는 다르지만, 함께 동작합니다. state는 보통 부모 컴포넌트에 저장됩니다. ( 그래서 부모 컴포넌트는 그 state를 변경할 수 있습니다. ) 그리고 부모 컴포넌트는 state를 자식 컴포넌트에 props로서 전달합니다. 처음 봤을 때 둘의 차이를 잘 알기 어려워도 괜찮습니다. 약간 연습이 필요할 거예요!
+Props와 State는 다르지만, 함께 동작합니다. State는 보통 부모 컴포넌트에 저장합니다. (그래서 부모 컴포넌트는 그 State를 변경할 수 있습니다.) 그리고 부모 컴포넌트는 State를 자식 컴포넌트에 Props로서 전달합니다. 처음 봤을 때 둘의 차이를 잘 알기 어려워도 괜찮습니다. 약간 연습이 필요할 거예요!
 
 </DeepDive>
 
 ## Step 4: State가 어디에 있어야 할 지 정하기 {/*step-4-identify-where-your-state-should-live*/}
 
-이제 앱에서 최소한으로 필요한 state를 결정했습니다. 다음으로는 어떤 컴포넌트가 이 state를 소유하고, 변경할 책임을 지게 할 지 정해야 합니다. React는 항상 컴포넌트 계층구조를 따라 부모에서 자식으로 데이터를 전달하는 단방향 데이터 흐름을 사용하는 것을 기억하세요! 앱을 구현하면서 어떤 컴포넌트가 state를 가져야 하는 지 바로 명확하지 않을 수 있습니다. 이 개념이 처음이라면 더 어려울 수 있습니다. 그러나 아래의 과정을 따라가면 해결할 수 있습니다.
+이제 앱에서 필요한 최소한의 State를 결정했습니다. 다음으로는 어떤 컴포넌트가 이 State를 소유하고, 변경할 책임을 지게 할 지 정해야 합니다. React는 항상 컴포넌트 계층구조를 따라 부모에서 자식으로 데이터를 전달하는 단방향 데이터 흐름을 사용하는 것을 기억하세요! 앱을 구현하면서 어떤 컴포넌트가 State를 가져야 하는 지 명확하지 않을 수 있습니다. 이 개념이 처음이라면 더 어려울 수 있습니다. 그러나 아래의 과정을 따라가면 해결할 수 있습니다.
 
-애플리케이션의 각 state에 대해서,
+애플리케이션의 각 State에 대해서,
 
-1. 해당 state를 기반으로 렌더링하는 모든 컴포넌트를 찾으세요.
-2. 그들의 가장 가까운 공통되는 부모 컴포넌트를 찾으세요. - 계층에서 모두를 포괄하는 상위 컴포넌트
-3. state가 어디에 위치 돼야 하는지 결정합시다
-   1. 대개, 공통 부모에 state를 그냥 두면 됩니다.
-   2. 혹은, 공통 부모 상위의 컴포넌트에 둬도 됩니다.
-   3. state를 소유할 적절한 컴포넌트를 찾지 못하였다면, state를 소유하는 컴포넌트를 하나 만들어서 상위 계층에 추가하세요.
+1. 해당 State를 기반으로 렌더링하는 모든 컴포넌트를 찾으세요.
+2. 그들의 가장 가까운 공통되는 부모 컴포넌트를 찾으세요. 계층에서 모두를 포괄하는 상위 컴포넌트입니다.
+3. State가 어디에 위치해야 하는지 결정합니다.
+   1. 대개, 공통 부모에 State를 그냥 두면 됩니다.
+   2. 혹은, 공통 부모 상위 컴포넌트에 둬도 됩니다.
+   3. State를 소유할 적절한 컴포넌트를 찾지 못했다면, State를 소유하는 컴포넌트를 하나 만들어서 상위 계층에 추가하세요.
 
-이전 단계에서, 이 애플리케이션의 두 가지 state인 사용자의 검색어 입력과 체크박스의 값을 발견하였습니다. 이 예시에서 그들은 항상 함께 나타나기 때문에 같은 위치에 두는 것이 합리적입니다.
+이전 단계에서, 이 애플리케이션의 두 가지 State인 사용자의 검색어 입력과 체크 박스의 값을 발견하였습니다. 이 예시에서 그들은 항상 함께 나타나기 때문에 같은 위치에 두는 것이 합리적입니다.
 
 이제 이 전략을 애플리케이션에 적용해 봅시다.
 
-1. **state를 쓰는 컴포넌트를 찾아봅시다**:
-   - `ProductTable`은 state에 기반한 상품 리스트를 필터링해야 합니다 (검색어와 체크 박스의 값)
-   - `SearchBar`는 state를 표시해 주어야 합니다. (검색어와 체크 박스의 값)
-2. **공통 부모를 찾아봅시다**: 둘 모두가 공유하는 첫 번째 부모는 `FilterableProductTable`입니다
-3. **어디에 state가 존재해야 할지 정해봅시다**: 우리는`FilterableProductTable`에 검색어와 체크 박스 값을 state로 둘 겁니다.
+1. **State를 쓰는 컴포넌트를 찾아봅시다**:
+   - `ProductTable`은 State에 기반한 상품 리스트를 필터링해야 합니다. (검색어와 체크 박스의 값)
+   - `SearchBar`는 State를 표시해 주어야 합니다. (검색어와 체크 박스의 값)
+2. **공통 부모를 찾아봅시다**: 둘 모두가 공유하는 첫 번째 부모는 `FilterableProductTable`입니다.
+3. **어디에 State가 존재해야 할지 정해봅시다**: 우리는`FilterableProductTable`에 검색어와 체크 박스 값을 State로 둘 겁니다.
 
-이제 state 값은 `FilterableProductTable`안에 있습니다.
+이제 State 값은 `FilterableProductTable` 안에 있습니다.
 
-[`useState()` Hook](/reference/react/useState)을 이용해서 state를 컴포넌트에 추가하세요. Hooks는 React 기능에 "연결할 수(hook into)" 있게 해주는 특별한 함수입니다. `FilterableProductTable`의 상단에 두 개의 state 변수를 추가해서 초깃값을 명확하게 보여주세요.
+[`useState()` Hook](/reference/react/useState)을 이용해서 State를 컴포넌트에 추가하세요. Hook은 React 기능에 "연결할 수<sup>Hook Into</sup>" 있게 해주는 특별한 함수입니다. `FilterableProductTable`의 상단에 두 개의 State 변수를 추가해서 초깃값을 명확하게 보여주세요.
 
 ```js
 function FilterableProductTable({ products }) {
@@ -280,7 +280,7 @@ function FilterableProductTable({ products }) {
   const [inStockOnly, setInStockOnly] = useState(false);
 ```
 
-다음으로, `filterText`와 `inStockOnly`를 `ProductTable`와 `SearchBar`에게 props로 전달하세요.
+다음으로, `filterText`와 `inStockOnly`를 `ProductTable`와 `SearchBar`에게 Props로 전달하세요.
 
 ```js
 <div>
@@ -433,7 +433,7 @@ td {
 
 </Sandpack>
 
-아직 폼을 수정하는 작업이 작동하지 않음을 유의하세요. 위의 샌드박스에서 콘솔 에러가 발생하고 그 이유를 설명하겠습니다.
+아직 폼을 수정하는 작업이 작동하지 않음에 유의하세요. 위 샌드박스에서 콘솔 에러가 발생하며, 그 이유를 설명하겠습니다.
 
 <ConsoleBlock level="error">
 
@@ -441,7 +441,7 @@ You provided a \`value\` prop to a form field without an \`onChange\` handler. T
 
 </ConsoleBlock>
 
-위에 있는 샌드박스를 보면, `ProductTable`와 `SearchBar`가 `filterText`와 `inStockOnly` props를 table, input과 체크 박스를 렌더링하기 위해서 읽고 있습니다. 예를 들면, `SearchBar` input의 value를 아래와 같이 채우고 있습니다.
+위에 있는 샌드박스를 보면, `ProductTable`과 `SearchBar`가 `filterText`와 `inStockOnly` Props를 표<sup>Table</sup>, 입력창<sup>Input</sup>, 체크 박스를 렌더링하기 위해서 읽고 있습니다. 예를 들면, `SearchBar` 입력창의 `value`를 아래와 같이 채우고 있습니다.
 
 ```js {1,6}
 function SearchBar({ filterText, inStockOnly }) {
@@ -457,13 +457,13 @@ function SearchBar({ filterText, inStockOnly }) {
 
 ## Step 5: 역 데이터 흐름 추가하기 {/*step-5-add-inverse-data-flow*/}
 
-지금까지 우리는 계층 구조 아래로 흐르는 props와 state의 함수로써 앱을 만들었습니다. 이제 사용자 입력에 따라 state를 변경하려면 반대 방향의 데이터 흐름을 만들어야 합니다. 이를 위해서는 계층 구조의 하단에 있는 컴포넌트에서 `FilterableProductTable`의 state를 업데이트할 수 있어야 합니다.
+지금까지 우리는 계층 구조 아래로 흐르는 Props와 State의 함수로써 앱을 만들었습니다. 이제 사용자 입력에 따라 State를 변경하려면 반대 방향의 데이터 흐름을 만들어야 합니다. 이를 위해서는 계층 구조의 하단에 있는 컴포넌트에서 `FilterableProductTable`의 State를 업데이트할 수 있어야 합니다.
 
 React는 데이터 흐름을 명시적으로 보이게 만들어 줍니다. 그러나 이는 전통적인 양방향 데이터 바인딩보다 조금 더 많은 타이핑이 필요합니다.
 
-4단계의 예시에서 체크하거나 키보드를 타이핑할 경우 UI의 변화가 없고 입력을 무시하는 것을 확인할 수 있습니다. 이건 의도적으로 `<input value={filterText} />`로 코드를 쓰면서 `value`라는 prop이 항상`FilterableProductTable`의 `filterText`라는 state를 통해서 데이터를 받도록 정했기 때문입니다. `filterText`라는 state가 변경되는 게 아니기 때문에 input의 `value`는 변하지 않고 화면도 바뀌는 게 없습니다.
+4단계의 예시에서 체크하거나 키보드를 타이핑할 경우 UI의 변화가 없고 입력을 무시하는 것을 확인할 수 있습니다. 이건 의도적으로 `<input value={filterText} />`로 코드를 쓰면서 `value`라는 Prop이 항상`FilterableProductTable`의 `filterText`라는 State를 통해서 데이터를 받도록 정했기 때문입니다. `filterText`라는 State가 변경되는 게 아니기 때문에 input의 `value`는 변하지 않고 화면도 바뀌는 게 없습니다.
 
-우리는 사용자가 input을 변경할 때마다 사용자의 입력을 반영할 수 있도록 state를 업데이트하기를 원합니다. state는 `FilterableProductTable`이 가지고 있고 state 변경을 위해서는 `setFilterText`와 `setInStockOnly`를 호출을 하면 됩니다. `SearchBar`가 `FilterableProductTable`의 state를 업데이트할 수 있도록 하려면, 이 함수들을 `SearchBar`로 전달해야 합니다.
+우리는 사용자가 input을 변경할 때마다 사용자의 입력을 반영할 수 있도록 State를 업데이트하기를 원합니다. State는 `FilterableProductTable`이 가지고 있고 State 변경을 위해서는 `setFilterText`와 `setInStockOnly`를 호출을 하면 됩니다. `SearchBar`가 `FilterableProductTable`의 State를 업데이트할 수 있도록 하려면, 이 함수들을 `SearchBar`로 전달해야 합니다.
 
 ```js {2,3,10,11}
 function FilterableProductTable({ products }) {
@@ -479,7 +479,7 @@ function FilterableProductTable({ products }) {
         onInStockOnlyChange={setInStockOnly} />
 ```
 
-`SearchBar`에서 `onChange` 이벤트 핸들러를 추가하여 부모 state를 변경할 수 있도록 구현할 수 있습니다.
+`SearchBar`에서 `onChange` 이벤트 핸들러를 추가하여 부모 State를 변경할 수 있도록 구현할 수 있습니다.
 
 ```js {4,5,13,19}
 function SearchBar({
@@ -653,8 +653,8 @@ td {
 
 </Sandpack>
 
-[Adding Interactivity](/learn/adding-interactivity) 섹션에서 state를 변경하고 이벤트를 다루는 것에 대해 더 심화해서 배울 수 있습니다.
+[상호작용 추가하기](/learn/adding-interactivity) 섹션에서 State를 변경하고 이벤트를 다루는 것에 대해 더 깊이있게 배울 수 있습니다.
 
 ## 더 나아가기 {/*where-to-go-from-here*/}
 
-지금까지는 React를 이용해서 컴포넌트와 앱을 만들려고 할 때 어떻게 사고할지에 대한 간단한 소개입니다. [당장 React로 프로젝트를 시작](/learn/installation)해도 좋고 다음 단계로 넘어가서 이 [자습서를 이용해서 좀 더 심화](/learn/describing-the-ui) 학습해도 좋습니다.
+지금까지는 React를 이용해서 컴포넌트와 앱을 만들려고 할 때 어떻게 사고할지에 대해 간단히 소개했습니다. [당장 React로 프로젝트를 시작](/learn/installation)해도 좋고 다음 단계로 넘어가서 이 [자습서를 이용해서 좀 더 심화](/learn/describing-the-ui) 학습해도 좋습니다.
