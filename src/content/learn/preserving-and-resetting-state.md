@@ -671,7 +671,11 @@ label {
 
 </Sandpack>
 
+<<<<<<< HEAD
 체크 박스를 선택할 때 카운터 state가 초기화됩니다. `div`의 첫 번째 자식으로 `Counter`를 렌더링하는 것에서 `section`의 첫 번째 자식으로 바꾸지만요. 자식 `div`가 DOM에서 제거될 때 그것의 전체 하위 트리(`Counter`와 그 state를 포함해서)는 제거됩니다.
+=======
+The counter state gets reset when you click the checkbox. Although you render a `Counter`, the first child of the `div` changes from a `section` to a `div`. When the child `section` was removed from the DOM, the whole tree below it (including the `Counter` and its state) was destroyed as well.
+>>>>>>> 3ee3a60a1bcc687c0b87039a3a6582e3b1d6887c
 
 <DiagramGroup>
 
