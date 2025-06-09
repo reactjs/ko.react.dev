@@ -206,8 +206,13 @@ function ProductDetailPage({ product }) {
 
 Props와 State 값을 렌더링 후에 업데이트되는 스냅샷으로 생각할 수 있습니다. 이러한 이유로 Props나 State 변수를 직접 수정하지 않아야 합니다. 새로운 Props를 전달하거나 제공된 Setter 함수를 사용하여 컴포넌트가 다음 번에 렌더링 될 때 State가 업데이트되어야 함을 React에 알려줍니다.
 
+<<<<<<< HEAD
 ### Props를 변경하지 마세요 {/*props*/}
 Props는 불변입니다. Props를 변경한다면 애플리케이션이 일관성 없는 출력을 생성하게 되며, 상황에 따라 작동할 수도 있고 안 할 수도 있기 때문에 디버깅이 어려워질 수 있습니다.
+=======
+### Don't mutate Props {/*props*/}
+Props are immutable because if you mutate them, the application will produce inconsistent output, which can be hard to debug as it may or may not work depending on the circumstances.
+>>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91
 
 ```js {2}
 function Post({ item }) {
@@ -307,7 +312,11 @@ function useIconStyle(icon) {
 }
 ```
 
+<<<<<<< HEAD
 Hook 인수를 변경하면 커스텀 Hook의 메모이제이션이 잘못되므로, 이를 피하는 것이 중요합니다.
+=======
+If you were to mutate the Hook's arguments, the custom hook's memoization will become incorrect,  so it's important to avoid doing that.
+>>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91
 
 ```js {4}
 style = useIconStyle(icon);         // `style`은 `icon`을 기준으로 메모이제이션됨.
@@ -327,7 +336,11 @@ style = useIconStyle(icon);         // `style`의 새로운 값이 계산됨.
 
 ## JSX로 전달된 값은 불변입니다 {/*values-are-immutable-after-being-passed-to-jsx*/}
 
+<<<<<<< HEAD
 JSX에 사용된 후에는 값을 변경하지 마세요. JSX가 생성되기 전에 변경을 수행하세요.
+=======
+Don't mutate values after they've been used in JSX. Move the mutation to before the JSX is created.
+>>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91
 
 JSX를 표현식에서 사용할 때, React는 컴포넌트의 렌더링이 끝나기 전에 JSX를 성급하게 평가할 수 있습니다. 이는 JSX에 전달된 후에 값을 변경하면 React가 컴포넌트의 출력을 업데이트할지 여부를 알지 못하므로 오래된 UI로 이어질 수 있음을 의미합니다.
 

@@ -239,7 +239,11 @@ export default function ModalContent({ onClose }) {
 
 Portal을 사용할 때 앱의 접근성<sup>accessibility, a11y</sup>이 준수되는지 확인하는 것이 중요합니다. 예를 들어 사용자가 Portal 안팎으로 자연스럽게 초점을 이동할 수 있도록 키보드 포커스를 관리해야 할 수 있습니다.
 
+<<<<<<< HEAD
 모달을 만들 때는 [WAI-ARIA 모달 제작 관행](https://www.w3.org/WAI/ARIA/apg/#dialog_modal)을 따르세요. 커뮤니티 패키지를 사용하는 경우 해당 패키지가 접근 가능한지, 이 가이드라인을 따르고 있는지 확인하세요.
+=======
+Follow the [WAI-ARIA Modal Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal) when creating modals. If you use a community package, ensure that it is accessible and follows these guidelines.
+>>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91
 
 </Pitfall>
 

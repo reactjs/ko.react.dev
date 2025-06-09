@@ -74,9 +74,9 @@ Context를 `Button`에 전달하려면 `Button` 또는 상위 컴포넌트 중 �
 ```js [[1, 3, "ThemeContext"], [2, 3, "\\"dark\\""], [1, 5, "ThemeContext"]]
 function MyPage() {
   return (
-    <ThemeContext.Provider value="dark">
+    <ThemeContext value="dark">
       <Form />
-    </ThemeContext.Provider>
+    </ThemeContext>
   );
 }
 
@@ -116,9 +116,9 @@ const ThemeContext = createContext(null);
 
 export default function MyApp() {
   return (
-    <ThemeContext.Provider value="dark">
+    <ThemeContext value="dark">
       <Form />
-    </ThemeContext.Provider>
+    </ThemeContext>
   )
 }
 

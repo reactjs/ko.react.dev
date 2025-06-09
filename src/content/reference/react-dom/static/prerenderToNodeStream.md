@@ -69,7 +69,7 @@ On the client, call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to 
 
 #### Caveats {/*caveats*/}
 
-`nonce` is not an available option when prerendering. Nonces must be unique per request and if you use nonces to secure your application with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) it would be inappropriate and insecure to include the a nonce value in the prerender itself.
+`nonce` is not an available option when prerendering. Nonces must be unique per request and if you use nonces to secure your application with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) it would be inappropriate and insecure to include the nonce value in the prerender itself.
 
 <Note>
 
@@ -319,5 +319,9 @@ Any Suspense boundaries with incomplete children will be included in the prelude
 
 The `prerenderToNodeStream` response waits for the entire app to finish rendering, including waiting for all Suspense boundaries to resolve, before resolving. It is designed for static site generation (SSG) ahead of time and does not support streaming more content as it loads.
 
+<<<<<<< HEAD
 To stream content as it loads, use a streaming server render API like [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream).
 
+=======
+To stream content as it loads, use a streaming server render API like [renderToPipeableStream](/reference/react-dom/server/renderToPipeableStream).
+>>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91

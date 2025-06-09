@@ -175,7 +175,7 @@ function Cup({ guest }) {
 }
 
 export default function TeaGathering() {
-  let cups = [];
+  const cups = [];
   for (let i = 1; i <= 12; i++) {
     cups.push(<Cup key={i} guest={i} />);
   }
@@ -243,7 +243,7 @@ React에서, **사이드 이펙트는 보통 [이벤트 핸들러](/learn/respon
 
 ```js src/Clock.js active
 export default function Clock({ time }) {
-  let hours = time.getHours();
+  const hours = time.getHours();
   if (hours >= 0 && hours <= 6) {
     document.getElementById('time').className = 'night';
   } else {
@@ -305,7 +305,7 @@ body > * {
 
 ```js src/Clock.js active
 export default function Clock({ time }) {
-  let hours = time.getHours();
+  const hours = time.getHours();
   let className;
   if (hours >= 0 && hours <= 6) {
     className = 'night';
@@ -604,14 +604,14 @@ export default function StoryTray({ stories }) {
 import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
-let initialStories = [
+const initialStories = [
   {id: 0, label: "Ankit's Story" },
   {id: 1, label: "Taylor's Story" },
 ];
 
 export default function App() {
-  let [stories, setStories] = useState([...initialStories])
-  let time = useTime();
+  const [stories, setStories] = useState([...initialStories])
+  const time = useTime();
 
   // HACK: Prevent the memory from growing forever while you read docs.
   // We're breaking our own rules here.
@@ -700,14 +700,14 @@ export default function StoryTray({ stories }) {
 import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
-let initialStories = [
+const initialStories = [
   {id: 0, label: "Ankit's Story" },
   {id: 1, label: "Taylor's Story" },
 ];
 
 export default function App() {
-  let [stories, setStories] = useState([...initialStories])
-  let time = useTime();
+  const [stories, setStories] = useState([...initialStories])
+  const time = useTime();
 
   // HACK: Prevent the memory from growing forever while you read docs.
   // We're breaking our own rules here.
@@ -768,7 +768,7 @@ li {
 ```js src/StoryTray.js active
 export default function StoryTray({ stories }) {
   // Copy the array!
-  let storiesToDisplay = stories.slice();
+  const storiesToDisplay = stories.slice();
 
   // Does not affect the original array:
   storiesToDisplay.push({
@@ -792,14 +792,14 @@ export default function StoryTray({ stories }) {
 import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
-let initialStories = [
+const initialStories = [
   {id: 0, label: "Ankit's Story" },
   {id: 1, label: "Taylor's Story" },
 ];
 
 export default function App() {
-  let [stories, setStories] = useState([...initialStories])
-  let time = useTime();
+  const [stories, setStories] = useState([...initialStories])
+  const time = useTime();
 
   // HACK: Prevent the memory from growing forever while you read docs.
   // We're breaking our own rules here.

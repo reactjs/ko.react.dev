@@ -410,7 +410,11 @@ function MyInput({placeholder, ref}) {
 
 <Note>
 
+<<<<<<< HEAD
 클래스에 전달된 `ref`는 컴포넌트 인스턴스를 참조하기 때문에 Props로 전달되지 않습니다.
+=======
+`ref`s passed to classes are not passed as props since they reference the component instance.
+>>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91
 
 </Note>
 
