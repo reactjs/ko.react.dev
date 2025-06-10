@@ -78,7 +78,7 @@ effect에서 반환되는 cleanup 함수는 **동기화를 중지**하는 방법
 
 <Note>
 
-일부 effects는 cleanup 함수를 전혀 반환하지 않습니다. [대부분의 경우]((/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)) 함수를 반환하고 싶겠지만, 그렇지 않은 경우 React는 빈 cleanup 함수를 반환한 것처럼 동작합니다.
+일부 effects는 cleanup 함수를 전혀 반환하지 않습니다. [대부분의 경우](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development) 함수를 반환하고 싶겠지만, 그렇지 않은 경우 React는 빈 cleanup 함수를 반환한 것처럼 동작합니다.
 
 </Note>
 
