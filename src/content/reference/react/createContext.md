@@ -39,18 +39,11 @@ const ThemeContext = createContext('light');
 
 `createContext` returns a context object.
 
-<<<<<<< HEAD
-**컨텍스트 객체 자체는 어떠한 정보도 가지고 있지 않습니다.** 다른 컴포넌트가 읽거나 제공하는 어떤 컨텍스트를 나타냅니다. 일반적으로 상위 컴포넌트에서 컨텍스트 값을 지정하기 위해 [`SomeContext.Provider`](#provider)를 사용하고, 아래 컴포넌트에서 읽기 위해 [`useContext(SomeContext)`](/reference/react/useContext)를 호출합니다. 컨텍스트 객체에는 몇 가지 속성이 있습니다.
-
-* `SomeContext.Provider`는 컴포넌트에 컨텍스트 값을 제공합니다.
-* `SomeContext.Consumer`는 컨텍스트 값을 읽는 대안이며 드물게 사용됩니다.
-=======
-**The context object itself does not hold any information.** It represents _which_ context other components read or provide. Typically, you will use [`SomeContext`](#provider) in components above to specify the context value, and call [`useContext(SomeContext)`](/reference/react/useContext) in components below to read it. The context object has a few properties:
+**컨텍스트 객체 자체는 어떠한 정보도 가지고 있지 않습니다.** 다른 컴포넌트가 읽거나 제공하는 어떤 컨텍스트를 나타냅니다. 일반적으로 상위 컴포넌트에서 컨텍스트 값을 지정하기 위해 [`SomeContext`](#provider)를 사용하고, 아래 컴포넌트에서 읽기 위해 [`useContext(SomeContext)`](/reference/react/useContext)를 호출합니다. 컨텍스트 객체에는 몇 가지 속성이 있습니다.
 
 * `SomeContext` lets you provide the context value to components.
-* `SomeContext.Consumer` is an alternative and rarely used way to read the context value.
+* `SomeContext.Consumer`는 컨텍스트 값을 읽는 대안이며 드물게 사용됩니다.
 * `SomeContext.Provider` is a legacy way to provide the context value before React 19.
->>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91
 
 ---
 
@@ -228,12 +221,6 @@ function App() {
 const ThemeContext = createContext('light');
 ```
 
-<<<<<<< HEAD
 이 값은 절대 변경되지 않습니다. React는 상위에 일치하는 제공자를 찾을 수 없는 경우에만 이 값을 기본값으로 사용합니다.
 
 컨텍스트가 시간에 따라 변경되도록 만들려면, [State를 추가하고 컴포넌트를 컨텍스트 제공자로 감싸세요.](/reference/react/useContext#updating-data-passed-via-context)
-=======
-This value never changes. React only uses this value as a fallback if it can't find a matching provider above.
-
-To make context change over time, [add state and wrap components in a context provider.](/reference/react/useContext#updating-data-passed-via-context)
->>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91

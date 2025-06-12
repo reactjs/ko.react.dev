@@ -319,8 +319,4 @@ Any Suspense boundaries with incomplete children will be included in the prelude
 
 The `prerender` response waits for the entire app to finish rendering, including waiting for all Suspense boundaries to resolve, before resolving. It is designed for static site generation (SSG) ahead of time and does not support streaming more content as it loads.
 
-<<<<<<< HEAD
 To stream content as it loads, use a streaming server render API like [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream).
-=======
-To stream content as it loads, use a streaming server render API like [renderToReadableStream](/reference/react-dom/server/renderToReadableStream).
->>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91

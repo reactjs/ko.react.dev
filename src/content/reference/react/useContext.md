@@ -38,23 +38,13 @@ function MyComponent() {
 
 #### 반환값 {/*returns*/}
 
-<<<<<<< HEAD
-`useContext`는 호출하는 컴포넌트에 대한 Context 값을 반환합니다. 이 값은 트리에서 호출하는 컴포넌트 상위의 가장 가까운 `SomeContext.Provider`에 전달된 값으로 결정됩니다. Provider가 없으면 반환된 값은 해당 Context에 대해 [`createContext`](/reference/react/createContext)에 전달한 `defaultValue`가 됩니다. 반환된 값은 항상 최신 상태입니다. Context가 변경되면 React는 자동으로 해당 Context를 읽는 컴포넌트를 다시 렌더링합니다.
-=======
-`useContext` returns the context value for the calling component. It is determined as the `value` passed to the closest `SomeContext` above the calling component in the tree. If there is no such provider, then the returned value will be the `defaultValue` you have passed to [`createContext`](/reference/react/createContext) for that context. The returned value is always up-to-date. React automatically re-renders components that read some context if it changes.
->>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91
+`useContext`는 호출하는 컴포넌트에 대한 Context 값을 반환합니다. 이 값은 트리에서 호출하는 컴포넌트 상위의 가장 가까운 `SomeContext`에 전달된 값으로 결정됩니다. Provider가 없으면 반환된 값은 해당 Context에 대해 [`createContext`](/reference/react/createContext)에 전달한 `defaultValue`가 됩니다. 반환된 값은 항상 최신 상태입니다. Context가 변경되면 React는 자동으로 해당 Context를 읽는 컴포넌트를 다시 렌더링합니다.
 
 #### 주의 사항 {/*caveats*/}
 
-<<<<<<< HEAD
-* 컴포넌트 내의 `useContext()` 호출은 **동일한** 컴포넌트에서 반환된 Provider에 영향을 받지 않습니다. 해당하는 `<Context.Provider>`는 `useContext()` 호출을 하는 컴포넌트 ***상위에* 배치되어야 합니다.**
+* 컴포넌트 내의 `useContext()` 호출은 **동일한** 컴포넌트에서 반환된 Provider에 영향을 받지 않습니다. 해당하는 `<Context>`는 `useContext()` 호출을 하는 컴포넌트 ***상위에* 배치되어야 합니다.**
 * React는 다른 `value`을 받는 Provider로부터 시작해서 특정 Context를 사용하는 모든 자식들을 **자동으로 리렌더링**합니다. 이전 값과 다음 값은 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)를 통해 비교합니다. [`memo`](/reference/react/memo)로 리렌더링을 건너뛰어도 자식들이 새로운 Context 값을 받는 것을 막지는 못합니다.
 * 빌드 시스템이 결과물에 중복 모듈을 생성하는 경우(심볼릭 링크에서 발생할 수 있음) Context가 손상될 수 있습니다. Context를 통해 무언가를 전달하는 것은 `===` 비교에 의해 결정되는 것처럼 Context를 제공하는 데 사용하는 `SomeContext`와 Context를 읽는 데 사용하는 `SomeContext`가 ***정확하게* 동일한 객체**인 경우에만 작동합니다.
-=======
-* `useContext()` call in a component is not affected by providers returned from the *same* component. The corresponding `<Context>` **needs to be *above*** the component doing the `useContext()` call.
-* React **automatically re-renders** all the children that use a particular context starting from the provider that receives a different `value`. The previous and the next values are compared with the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. Skipping re-renders with [`memo`](/reference/react/memo) does not prevent the children receiving fresh context values.
-* If your build system produces duplicates modules in the output (which can happen with symlinks), this can break context. Passing something via context only works if `SomeContext` that you use to provide context and `SomeContext` that you use to read it are ***exactly* the same object**, as determined by a `===` comparison.
->>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91
 
 ---
 
@@ -1359,16 +1349,10 @@ function MyApp() {
 
 이런 일이 발생하는 몇 가지 이유가 있습니다.
 
-<<<<<<< HEAD
-1. `useContext()`를 호출하는 컴포넌트와 동일한 컴포넌트(또는 그 아래)에서 `<SomeContext.Provider>`를 렌더링하는 경우, `<SomeContext.Provider>`를 `useContext()`를 호출하는 컴포넌트의 *위와 바깥*으로 이동하세요.
-2. 컴포넌트를 `<SomeContext.Provider>`로 감싸는 것을 잊었거나 생각했던 것과 다른 트리의 다른 부분에 배치했을 수 있습니다. [React 개발자 도구](/learn/react-developer-tools)를 사용하여 계층 구조가 올바른지 확인하세요.
+1. `useContext()`를 호출하는 컴포넌트와 동일한 컴포넌트(또는 그 아래)에서 `<SomeContext>`를 렌더링하는 경우, `<SomeContext>`를 `useContext()`를 호출하는 컴포넌트의 *위와 바깥*으로 이동하세요.
+2. 컴포넌트를 `<SomeContext>`로 감싸는 것을 잊었거나 생각했던 것과 다른 트리의 다른 부분에 배치했을 수 있습니다. [React 개발자 도구](/learn/react-developer-tools)를 사용하여 계층 구조가 올바른지 확인하세요.
 3. 사용 중인 도구에서 발생하는 빌드 문제로 인해, 제공하는 컴포넌트에서의 `someContext`와 값을 읽는 컴포넌트에서의 `someContext`가 서로 다른 객체로 처리되는 문제가 발생할 수 있습니다. 예를 들어 심볼릭 링크를 사용하는 경우 이런 문제가 발생할 수 있습니다. 이를 확인하려면 `window.SomeContext1`과 `window.SomeContext2`를 전역에 할당하고 콘솔에서 `window.SomeContext1 === window.SomeContext2`인지 확인하면 됩니다. 동일하지 않은 경우 빌드 도구 수준에서 해당 문제를 수정하세요.
 ### 기본값이 다른데도 Context가 `undefined`를 반환합니다. {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
-=======
-1. You're rendering `<SomeContext>` in the same component (or below) as where you're calling `useContext()`. Move `<SomeContext>` *above and outside* the component calling `useContext()`.
-2. You may have forgotten to wrap your component with `<SomeContext>`, or you might have put it in a different part of the tree than you thought. Check whether the hierarchy is right using [React DevTools.](/learn/react-developer-tools)
-3. You might be running into some build issue with your tooling that causes `SomeContext` as seen from the providing component and `SomeContext` as seen by the reading component to be two different objects. This can happen if you use symlinks, for example. You can verify this by assigning them to globals like `window.SomeContext1` and `window.SomeContext2` and then checking whether `window.SomeContext1 === window.SomeContext2` in the console. If they're not the same, fix that issue on the build tool level.
->>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91
 
 트리에 `value`가 없는 Provider가 있을 수 있습니다.
 
@@ -1399,8 +1383,4 @@ function MyApp() {
 </ThemeContext>
 ```
 
-<<<<<<< HEAD
-[`createContext(defaultValue)` 호출의 기본값](#specifying-a-fallback-default-value)은 **위에 일치하는 Provider가 전혀 없는 경우**에만 사용된다는 점에 유의하세요. 부모 트리 어딘가에 `<SomeContext.Provider value={undefined}>` 컴포넌트가 있는 경우, `useContext(SomeContext)`를 호출하는 컴포넌트는 `undefined`를 Context 값으로 받습니다.
-=======
-Note that the [default value from your `createContext(defaultValue)` call](#specifying-a-fallback-default-value) is only used **if there is no matching provider above at all.** If there is a `<SomeContext value={undefined}>` component somewhere in the parent tree, the component calling `useContext(SomeContext)` *will* receive `undefined` as the context value.
->>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91
+[`createContext(defaultValue)` 호출의 기본값](#specifying-a-fallback-default-value)은 **위에 일치하는 Provider가 전혀 없는 경우**에만 사용된다는 점에 유의하세요. 부모 트리 어딘가에 `<SomeContext value={undefined}>` 컴포넌트가 있는 경우, `useContext(SomeContext)`를 호출하는 컴포넌트는 `undefined`를 Context 값으로 받습니다.
