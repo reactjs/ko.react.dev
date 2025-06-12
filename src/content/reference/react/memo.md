@@ -225,12 +225,12 @@ export default function MyApp() {
   }
 
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeContext value={theme}>
       <button onClick={handleClick}>
         Switch theme
       </button>
       <Greeting name="Taylor" />
-    </ThemeContext.Provider>
+    </ThemeContext>
   );
 }
 

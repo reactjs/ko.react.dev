@@ -30,7 +30,6 @@ title: "Legacy React API"
 * [`createFactory`](https://18.react.dev/reference/react/createFactory): 대신 JSX를 사용하세요.
 * 클래스 컴포넌트: [`static contextTypes`](https://18.react.dev//reference/react/Component#static-contexttypes): 대신 [`static contextType`](#static-contexttype)를 사용하세요.
 * 클래스 컴포넌트: [`static childContextTypes`](https://18.react.dev//reference/react/Component#static-childcontexttypes): 대신 [`static contextType`](#static-contexttype)를 사용하세요.
-* 클래스 컴포넌트: [`static getChildContext`](https://18.react.dev//reference/react/Component#getchildcontext): 대신 [`Context.Provider`](/reference/react/createContext#provider)를 사용하세요.
+* 클래스 컴포넌트: [`static getChildContext`](https://18.react.dev//reference/react/Component#getchildcontext): 대신 [`Context`](/reference/react/createContext#provider)를 사용하세요.
 * 클래스 컴포넌트: [`static propTypes`](https://18.react.dev//reference/react/Component#static-proptypes): 대신 [TypeScript](https://www.typescriptlang.org/)같은 타입 시스템을 사용하세요.
 * 클래스 컴포넌트: [`this.refs`](https://18.react.dev//reference/react/Component#refs): 대신 [`createRef`](/reference/react/createRef)를 사용하세요.
-
