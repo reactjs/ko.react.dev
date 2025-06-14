@@ -335,7 +335,7 @@ function Form() {
 
 앞의 예와 동일한 기준을 적용해 보겠습니다.
 
-analytics POST 요청은 Effect에 남아 있어야 합니다. analytics 이벤트를 전송하는 _이유_는 폼이 표시되었기 때문입니다. (개발 중에는 두 번 실행되지만 이를 처리하는 방법은 [여기](/learn/synchronizing-with-effects#sending-analytics)를 참조하세요.)
+analytics POST 요청은 Effect에 남아 있어야 합니다. analytics 이벤트를 전송하는 <em>이유</em>는 폼이 표시되었기 때문입니다. (개발 중에는 두 번 실행되지만 이를 처리하는 방법은 [여기](/learn/synchronizing-with-effects#sending-analytics)를 참조하세요.)
 
 그러나 `/api/register` POST 요청은 _표시되는_ 폼으로 인해 발생하는 것이 아닙니다. 사용자가 버튼을 누를 때라는 특정 시점에만 요청을 보내려고 합니다. 이 요청은 해당 _특정 상호작용에서만_ 발생해야 합니다. 두 번째 Effect를 삭제하고 해당 POST 요청을 이벤트 핸들러로 이동합니다:
 
