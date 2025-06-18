@@ -31,7 +31,7 @@ React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 �
 {`npm install -D babel-plugin-react-compiler@rc eslint-plugin-react-hooks@^6.0.0-rc.1`}
 </TerminalBlock>
 
-또는, Yarn을 사용한다면:
+또는, Yarn을 사용한다면 아래 명령어를 실행해주세요.
 
 <TerminalBlock>
 {`yarn add -D babel-plugin-react-compiler@rc eslint-plugin-react-hooks@^6.0.0-rc.1`}
@@ -167,7 +167,7 @@ React 컴파일러는 React 19 RC에서 최적의 성능을 발휘합니다. 업
 {`npm install react-compiler-runtime@rc`}
 </TerminalBlock>
 
-컴파일러 설정에 올바른 `target`을 추가해야 하며, `target`은 대상으로 하는 React의 메이저 버전입니다:
+컴파일러 설정에 올바른 `target`을 추가해야 하며, `target`은 대상으로 하는 React의 메이저 버전입니다.
 
 ```js {3}
 // babel.config.js
