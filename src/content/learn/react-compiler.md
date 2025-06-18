@@ -285,7 +285,7 @@ export default defineConfig({
 
 ### Expo {/*usage-with-expo*/}
 
-Expo 앱에서 React 컴파일러를 활성화하고 사용하려면 [Expo의 문서](https://docs.expo.dev/guides/react-compiler/)를 확인하세요.
+Expo 앱에서 React 컴파일러를 활성화하고 사용하려면 [Expo 문서](https://docs.expo.dev/guides/react-compiler/)를 확인하세요.
 
 ### Metro (React Native) {/*usage-with-react-native-metro*/}
 
