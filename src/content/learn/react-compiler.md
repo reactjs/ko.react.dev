@@ -129,7 +129,7 @@ React 컴파일러는 ESLint 플러그인도 제공합니다. `eslint-plugin-rea
 {`npm install -D eslint-plugin-react-hooks@^6.0.0-rc.1`}
 </TerminalBlock>
 
-자세한 정보를 위해 우리의 [에디터 설정하기](/learn/editor-setup#linting) 가이드를 확인하세요.
+자세한 정보를 위해 [에디터 설정하기](/learn/editor-setup#linting) 가이드를 확인하세요.
 
 ESLint 플러그인은 에디터에서 React의 규칙 위반 사항을 표시합니다. 이 경우 컴파일러가 해당 컴포넌트나 Hook의 최적화를 건너뛰었음을 의미합니다. 이것은 완전히 정상적인 동작이며, 컴파일러는 이를 복구하고 코드베이스의 다른 컴포넌트를 계속해서 최적화할 수 있습니다.
 
