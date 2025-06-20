@@ -1059,7 +1059,7 @@ img {
 
 <Hint>
 
-`SearchInput` 같은 컴포넌트에서 DOM 노드를 노출하려면 `ref`를 prop 처럼 전달해야 합니다.
+`SearchInput` 같은 컴포넌트에서 DOM 노드를 노출하려면 `ref`를 Prop처럼 전달해야 합니다.
 
 </Hint>
 
