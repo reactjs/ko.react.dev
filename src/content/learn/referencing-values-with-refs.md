@@ -616,7 +616,7 @@ export default function Chat() {
 
 <Solution>
 
-state는 [snapshot 처럼](/learn/state-as-a-snapshot) 작동하므로 타임아웃과 같은 비동기 작업에서 최신 state를 읽을 수 없습니다. 그러나 최신 입력 텍스트를 ref에 유지할 수 있습니다. ref는 변경할 수 있으므로 언제든지 `current` 프로퍼티를 읽을 수 있습니다. current 텍스트는 렌더링에도 사용되므로, 이 예에서는 state 변수(렌더링을 위한) *둘 다*와 ref(시간 초과 시 읽음)가 필요합니다. current ref를 수동으로 업데이트해야 합니다.
+state는 [snapshot 처럼](/learn/state-as-a-snapshot) 작동하므로 타임아웃과 같은 비동기 작업에서 최신 state를 읽을 수 없습니다. 그러나 최신 입력 텍스트를 ref에 유지할 수 있습니다. ref는 변경할 수 있으므로 언제든지 `current` 프로퍼티를 읽을 수 있습니다. current 텍스트는 렌더링에도 사용되므로, 이 예에서는 state 변수(렌더링을 위한)와 ref(시간 초과 시 읽음) *둘 다* 필요합니다. current ref를 수동으로 업데이트해야 합니다.
 
 <Sandpack>
 
