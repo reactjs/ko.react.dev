@@ -248,7 +248,7 @@ function useRef(initialValue) {
 }
 ```
 
-첫 번째 렌더링 중에 `useRef`는 `{ current: initialValue }`을 반환합니다. 이 객체는 React에 의해 저장되므로 다음 렌더링 중에 같은 객체가 반환됩니다. 이 예시에서는 State Setter가 어떻게 사용되지 않는지 주의하세요. `useRef`는 항상 동일한 객체를 반환해야 하므로 필요하지 않습니다!
+첫 번째 렌더링 중에 `useRef`는 `{ current: initialValue }`를 반환합니다. 이 객체는 React에 의해 저장되므로 다음 렌더링 중에 같은 객체를 반환합니다. 이 예시에서는 State Setter를 사용하지 않는 점에 주목하세요. `useRef`는 항상 동일한 객체를 반환해야 하므로 필요하지 않습니다!
 
 React는 `useRef`가 실제로 충분히 일반적이기 때문에 built-in 버전을 제공합니다. setter가 없는 일반적인 state 변수라고 생각할 수 있습니다. 객체 지향 프로그래밍에 익숙하다면 Ref는 인스턴스 필드를 상기시킬 수 있습니다. 하지만 `this.something` 대신에 `somethingRef.current` 처럼 써야합니다.
 
@@ -616,7 +616,7 @@ export default function Chat() {
 
 <Solution>
 
-state는 [snapshot 처럼](/learn/state-as-a-snapshot) 작동하므로 타임아웃과 같은 비동기 작업에서 최신 state를 읽을 수 없습니다. 그러나 최신 입력 텍스트를 ref에 유지할 수 있습니다. ref는 변경할 수 있으므로 언제든지 `current` 프로퍼티를 읽을 수 있습니다. current 텍스트는 렌더링에도 사용되므로, 이 예에서는 state 변수(렌더링을 위한) *둘 다*와 ref(시간 초과 시 읽음)가 필요합니다. current ref를 수동으로 업데이트해야 합니다.
+state는 [snapshot 처럼](/learn/state-as-a-snapshot) 작동하므로 타임아웃과 같은 비동기 작업에서 최신 state를 읽을 수 없습니다. 그러나 최신 입력 텍스트를 ref에 유지할 수 있습니다. ref는 변경할 수 있으므로 언제든지 `current` 프로퍼티를 읽을 수 있습니다. current 텍스트는 렌더링에도 사용되므로, 이 예에서는 state 변수(렌더링을 위한)와 ref(시간 초과 시 읽음) *둘 다* 필요합니다. current ref를 수동으로 업데이트해야 합니다.
 
 <Sandpack>
 
