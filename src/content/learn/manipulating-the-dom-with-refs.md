@@ -1059,9 +1059,7 @@ img {
 
 <Hint>
 
-`SearchInput`같은 컴포넌트에서 `forwardRef`를 사용해서 DOM 노드를 노출할 필요가 있습니다.
-
-You'll need to pass `ref` as a prop to opt into exposing a DOM node from your own component like `SearchInput`.
+`SearchInput` 같은 컴포넌트에서 DOM 노드를 노출하려면 `ref`를 Prop처럼 전달해야 합니다.
 
 </Hint>
 
