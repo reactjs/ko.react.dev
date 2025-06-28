@@ -450,7 +450,7 @@ ul, li { margin: 0; padding: 0; }
 
 여기서는 두 context에 모두 기본값으로 `null`을 전달하고 있습니다. 실제 값은 `TaskApp` 컴포넌트에서 제공될 것입니다.
 
-### 2단계: State과 dispatch 함수를 context에 넣기 {/*step-2-put-state-and-dispatch-into-context*/}
+### 2단계: State와 dispatch 함수를 context에 넣기 {/*step-2-put-state-and-dispatch-into-context*/}
 
 이제 `TaskApp` 컴포넌트에서 두 context를 모두 가져올 수 있습니다. `useReducer()`에서 반환된 `tasks` 및 `dispatch`를 가져와 아래 트리 전체에 [제공](/learn/passing-data-deeply-with-context#step-3-provide-the-context)하세요.
 
