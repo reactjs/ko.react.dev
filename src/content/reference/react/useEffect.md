@@ -1437,7 +1437,7 @@ function Counter() {
 
 `count`가 반응형 값이므로 반드시 의존성 배열에 추가해야 합니다. 그러나 `count`가 변경되는 것은 Effect가 정리된 후 다시 설정되는 것을 야기하므로 `count`는 계속 증가할 것입니다. 이상적이지 않은 방식입니다.
 
-이러한 현상을 방지하려면 [`c => c + 1` state 변경함수](/reference/react/useState#updating-state-based-on-the-previous-state)를 `setCount`에 추가하세요,
+이러한 현상을 방지하려면 [`c => c + 1` state 변경함수](/reference/react/useState#updating-state-based-on-the-previous-state)를 `setCount`에 추가하세요.
 
 <Sandpack>
 
@@ -1576,7 +1576,7 @@ button { margin-left: 10px; }
 
 이제 `options` 객체를 Effect 내에서 생성하면, Effect 자체는 roomId 문자열에만 의존합니다.
 
-이 수정으로 입력란에 텍스트를 입력하더라도 채팅이 다시 연결되지 않습니다. 객체와는 달리 `roomId`와 같은 문자열은 다른 값으로 설정하지 않는 한 변경되지 않습니다. [의존성 제거에 관한 자세한 애용은 여기를 참고하세요.](/learn/removing-effect-dependencies)
+이 수정으로 입력란에 텍스트를 입력하더라도 채팅이 다시 연결되지 않습니다. 객체와는 달리 `roomId`와 같은 문자열은 다른 값으로 설정하지 않는 한 변경되지 않습니다. [의존성 제거에 관한 자세한 내용은 여기를 참고하세요.](/learn/removing-effect-dependencies)
 
 ---
 
@@ -1814,7 +1814,7 @@ Object.is(temp1[2], temp2[2]); // ... 나머지 모든 의존성도 확인합니
 
 ### Effect가 무한 반복됩니다. {/*my-effect-keeps-re-running-in-an-infinite-cycle*/}
 
-Effect가 무한 반복되려면 다음 두 가지 조건이 충족되어야 합니다..
+Effect가 무한 반복되려면 다음 두 가지 조건이 충족되어야 합니다.
 
 - Effect에서 state를 업데이트함.
 - 변경된 state가 리렌더링을 유발하며, 이에 따라 Effect의 종속성이 변경됨.
