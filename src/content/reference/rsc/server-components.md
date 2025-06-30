@@ -4,7 +4,11 @@ title: 서버 컴포넌트
 
 <RSC>
 
+<<<<<<< HEAD
 서버 컴포넌트는 [React 서버 컴포넌트](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)에서 사용합니다.
+=======
+Server Components are for use in [React Server Components](/learn/start-a-new-react-project#full-stack-frameworks).
+>>>>>>> c0c955ed1d1c4fe3bf3e18c06a8d121902a01619
 
 </RSC>
 
@@ -22,7 +26,11 @@ title: 서버 컴포넌트
 
 #### 서버 컴포넌트를 지원하려면 어떻게 해야 하나요? {/*how-do-i-build-support-for-server-components*/}
 
+<<<<<<< HEAD
 React 19의 서버 컴포넌트는 안정적이며 마이너(Minor) 버전 간에는 변경되지 않습니다. 그러나 React 서버 컴포넌트 번들러나 프레임워크를 구현하는 데 사용되는 기본 API는 시맨틱 버전(semver)을 따르지 않으며 React 19.x의 마이너(Minor) 버전 간에 변경될 수 있습니다.
+=======
+While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x.
+>>>>>>> c0c955ed1d1c4fe3bf3e18c06a8d121902a01619
 
 React 서버 컴포넌트를 번들러나 프레임워크로 지원하려면, 특정 React 버전에 고정하거나 Canary 릴리즈를 사용하는 것을 권장합니다. 향후 React 서버 컴포넌트를 구현하는 데 사용되는 API를 안정화하기 위해 번들러 및 프레임워크와 계속 협력할 것입니다.
 
