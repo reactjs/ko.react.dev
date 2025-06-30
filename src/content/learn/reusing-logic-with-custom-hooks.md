@@ -832,7 +832,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-매번 `ChatRoom`가 재렌더링될 때마다, Hook에 최신 `roomId`와 `serverUrl` 값을 넘겨줍니다. 이게 바로 재렌더링 이후에 값이 달라지는지 여부에 관계없이 Effect가 재연결하는 이유입니다. (만약 오디오 또는 비디오 처리 소프트웨어를 작업해 본 적이 있다면, 이처럼 Hook을 연결하는 것이 시각적 혹은 청각적 효과를 연결하는 것을 떠오르게 할 겁니다. 이게 바로 `useState`의 결과를 `useChatRoom`의 입력으로 "넣어주는 것"과 같습니다.)
+매번 `ChatRoom`가 재렌더링될 때마다, Hook에 최신 `roomId`와 `serverUrl` 값을 넘겨줍니다. 이것이 바로 Effect가 다시 렌더링된 후 값이 다를 때마다 채팅에 다시 연결되는 이유입니다. (만약 오디오 또는 비디오 처리 소프트웨어를 작업해 본 적이 있다면, 이처럼 Hook을 연결하는 것이 시각적 혹은 청각적 효과를 연결하는 것을 떠오르게 할 겁니다. 이게 바로 `useState`의 결과를 `useChatRoom`의 입력으로 "넣어주는 것"과 같습니다.)
 
 ### 커스텀 Hook에 이벤트 핸들러 넘겨주기 {/*passing-event-handlers-to-custom-hooks*/}
 
