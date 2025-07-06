@@ -13,7 +13,7 @@ React 패키지를 최신 실험적 버전으로 업그레이드하여 시도해
 - `react-dom@experimental`
 - `eslint-plugin-react-hooks@experimental`
 
-React의 실험적 버전에는 버그가 포함될 수 있습니다. 프로덕션에서는 사용하지 마세요.
+React의 실험적 버전에는 버그가 포함될 수 있습니다. 프로덕션 환경에서는 사용하지 마세요.
 
 </Experimental>
 
@@ -40,36 +40,36 @@ import {unstable_ViewTransition as ViewTransition} from 'react';
 
 ### `<ViewTransition>` {/*viewtransition*/}
 
-엘리먼트를 `<ViewTransition>`으로 감싸면 [Transition](/reference/react/useTransition) 내부에서 업데이트될 때 애니메이션을 적용할 수 있습니다. React는 다음 휴리스틱을 사용하여 View Transition이 애니메이션에 활성화되는지 판단합니다.
+엘리먼트를 `<ViewTransition>`으로 감싸면 [Transition](/reference/react/useTransition) 내부에서 업데이트할 때 애니메이션을 적용할 수 있습니다. React는 다음 휴리스틱을 사용하여 View Transition이 애니메이션에 활성화되는지 판단합니다.
 
 - `enter`: 해당 Transition에서 `ViewTransition` 자체가 삽입되면 활성화됩니다.
 - `exit`: 해당 Transition에서 `ViewTransition` 자체가 삭제되면 활성화됩니다.
 - `update`: `ViewTransition` 내부에서 React가 수행하는 DOM 변경(예: 프로퍼티 변경)이 있거나 인접한 형제 엘리먼트의 영향으로 `ViewTransition` 경계 자체의 크기나 위치가 변경되는 경우 활성화됩니다. 중첩된 `ViewTransition`이 있으면 변경이 부모가 아닌 해당 항목에 적용됩니다.
 - `share`: 이름이 지정된 `ViewTransition`이 삭제된 서브트리 내부에 있고 같은 이름을 가진 다른 이름 있는 `ViewTransition`이 같은 Transition에서 삽입된 서브트리의 일부인 경우 공유 엘리먼트 Transition을 형성하며, 삭제된 것에서 삽입된 것으로 애니메이션됩니다.
 
-기본적으로 `<ViewTransition>`은 부드러운 크로스 페이드(브라우저 기본 view transition)로 애니메이션됩니다. `<ViewTransition>` 컴포넌트에 [View Transition 클래스](#view-transition-class)를 제공하여 애니메이션을 커스터마이즈할 수 있습니다. 각 트리거 유형에 대해 애니메이션을 커스터마이즈할 수 있습니다([View Transition 스타일링](#styling-view-transitions) 참고).
+기본적으로 `<ViewTransition>`은 부드러운 크로스 페이드(브라우저 기본 View Transition)로 애니메이션됩니다. `<ViewTransition>` 컴포넌트에 [View Transition 클래스](#view-transition-class)를 제공하여 애니메이션을 커스터마이징할 수 있습니다. 각 트리거 유형에 대해 애니메이션을 커스터마이징할 수 있습니다([View Transition 스타일링](#styling-view-transitions) 참고).
 
 <DeepDive>
 
 #### `<ViewTransition>`은 어떻게 작동하나요? {/*how-does-viewtransition-work*/}
 
-내부적으로 React는 `<ViewTransition>` 컴포넌트 내부에 중첩된 가장 가까운 DOM 노드의 인라인 스타일에 `view-transition-name`을 적용합니다. `<ViewTransition><div /><div /></ViewTransition>`처럼 여러 형제 DOM 노드가 있을 겨우, React는 각 노드의 이름이 고유하도록 접미사를 추가하지만, 개념적으로는 동일한 전환에 속하는 것으로 간주됩니다.
+내부적으로 React는 `<ViewTransition>` 컴포넌트 내부에 중첩된 가장 가까운 DOM 노드의 인라인 스타일에 `view-transition-name`을 적용합니다. `<ViewTransition><div /><div /></ViewTransition>`처럼 여러 형제 DOM 노드가 있을 경우, React는 각 노드의 이름이 고유하도록 접미사를 추가하지만, 개념적으로는 동일한 전환에 속하는 것으로 간주합니다.
 
-React는 내부적으로 `startViewTransition`을 자체적으로 호출하므로 직접 호출해서는 안 됩니다. 실제로 페이지에서 다른 스크립트나 코드가 ViewTransition을 실행하고 있다면 React가 이를 중단합니다. 따라서 React 자체를 사용하여 이를 조정하는 것을 권장합니다. 과거에 ViewTransition을 트리거하는 다른 방법이 있었다면 내장 방법으로 마이그레이션하는 것을 권장합니다.
+React는 내부적으로 `startViewTransition`을 자체적으로 호출하므로 직접 호출해서는 안됩니다. 실제로 페이지에서 다른 스크립트나 코드가 ViewTransition을 실행하고 있다면 React가 이를 중단합니다. 따라서 React 자체를 사용하여 이를 조정하는 것을 권장합니다. 과거에 ViewTransition을 트리거하는 다른 방법이 있었다면 내장 방법으로 마이그레이션하는 것을 권장합니다.
 
-다른 React ViewTransition이 이미 실행 중이라면, React는 그것들이 완료될 때까지 다음 전환을 시작하지 않습니다. 그러나 중요한 점은 첫 번째 전환이 진행되는 동안 여러 업데이트가 발생하면, 그 업데이트들은 모두 하나로 묶여 처리된다는 것입니다. 예를 들어 A에서 B로 이동하는 전환을 시작했다고 가정합시다. 그 사이에 C로 가는 업데이트가 발생하고 다시 D로 가는 업데이트가 발생한다면, 첫 번째 A->B 애니메이션이 끝난 후 다음 애니메이션은 B에서 D로 전환됩니다.
+다른 React ViewTransition이 이미 실행 중이라면, React는 그것들을 완료할 때까지 다음 전환을 시작하지 않습니다. 그러나 중요한 점은 첫 번째 전환이 진행되는 동안 여러 업데이트가 발생하면, 그 업데이트들은 모두 하나로 묶여 처리된다는 것입니다. 예를 들어 A에서 B로 이동하는 전환을 시작했다고 가정합시다. 그 사이에 C로 가는 업데이트가 발생하고 다시 D로 가는 업데이트가 발생한다면, 첫 번째 A->B 애니메이션이 끝난 후 다음 애니메이션은 B에서 D로 전환됩니다.
 
 `getSnapshotBeforeUpdate` 생명주기는 `startViewTransition` 전에 호출되고 일부 `view-transition-name`은 동시에 업데이트됩니다.
 
 그런 다음 React는 `startViewTransition`을 호출합니다. `updateCallback` 내부에서 React는 다음을 수행합니다.
 
-- DOM에 변경을 적용하고 useInsertionEffect를 호출합니다.
+- DOM에 변경을 적용하고 `useInsertionEffect`를 호출합니다.
 - 폰트가 로드될 때까지 기다립니다.
 - componentDidMount, componentDidUpdate, useLayoutEffect, refs를 호출합니다.
 - 대기 중인 탐색이 완료될 때까지 기다립니다.
 - 그런 다음 React는 레이아웃의 변경 사항을 측정하여 어떤 경계가 애니메이션되어야 하는지 확인합니다.
 
-startViewTransition의 ready Promise가 해결된 이후, React는 view-transition-name을 되돌립니다. 그 다음 React는 onEnter, onExit, onUpdate, onShare 콜백들을 호출하여 애니메이션에 대해 수동으로 프로그래밍 방식의 제어를 할 수 있도록 합니다. 이 호출은 내장된 기본 애니메이션이 이미 계산된 이후에 이루어집니다.
+`startViewTransition`의 ready Promise가 해결된 이후, React는 `view-transition-name`을 되돌립니다. 그 다음 React는 `onEnter`, `onExit`, `onUpdate`, `onShare` 콜백들을 호출하여 애니메이션에 대해 수동으로 프로그래밍 방식의 제어를 할 수 있도록 합니다. 이 호출은 내장된 기본 애니메이션이 이미 계산된 이후에 이루어집니다.
 
 이 시퀀스 중간에 `flushSync`가 발생하면 동기적으로 완료되어야 하는 특성 때문에 React는 해당 Transition을 건너뜁니다.
 
@@ -79,11 +79,11 @@ startViewTransition의 ready Promise가 해결된 이후, React는 view-transiti
 
 #### Props {/*props*/}
 
-기본적으로 `<ViewTransition>`은 부드러운 크로스 페이드로 애니메이션됩니다. 이러한 프로퍼티로 애니메이션을 커스터마이즈하거나 공유 엘리먼트 transition을 지정할 수 있습니다.
+기본적으로 `<ViewTransition>`은 부드러운 크로스 페이드로 애니메이션됩니다. 이러한 프로퍼티로 애니메이션을 커스터마이즈하거나 공유 엘리먼트 Transition을 지정할 수 있습니다.
 
-* **optional** `enter`: 문자열 또는 객체. enter가 활성화될 때 적용할 [View Transition 클래스](#view-transition-class)입니다.
-* **optional** `exit`: 문자열 또는 객체. exit가 활성화될 때 적용할 [View Transition 클래스](#view-transition-class)입니다.
-* **optional** `update`: 문자열 또는 객체. update가 활성화될 때 적용할 [View Transition 클래스](#view-transition-class)입니다.
+* **optional** `enter`: 문자열 또는 객체. "enter"가 활성화될 때 적용할 [View Transition 클래스](#view-transition-class)입니다.
+* **optional** `exit`: 문자열 또는 객체. "exit"이 활성화될 때 적용할 [View Transition 클래스](#view-transition-class)입니다.
+* **optional** `update`: 문자열 또는 객체. "update"가 활성화될 때 적용할 [View Transition 클래스](#view-transition-class)입니다.
 * **optional** `share`: 문자열 또는 객체. 공유 엘리먼트가 활성화될 때 적용할 [View Transition 클래스](#view-transition-class)입니다.
 * **optional** `default`: 문자열 또는 객체. 다른 일치하는 활성화 프로퍼티가 없을 때 사용되는 [View Transition 클래스](#view-transition-class)입니다.
 * **optional** `name`: 문자열 또는 객체. 공유 엘리먼트 transition에 사용되는 View Transition의 이름입니다. 제공되지 않으면 React는 예상치 못한 애니메이션을 방지하기 위해 각 View Transition에 대해 고유한 이름을 사용합니다.
@@ -103,7 +103,7 @@ startViewTransition의 ready Promise가 해결된 이후, React는 view-transiti
 
 ### View Transition 클래스 {/*view-transition-class*/}
 
-View Transition 클래스는 ViewTransition이 활성화될 때 transition 중에 React가 적용하는 CSS 클래스 이름입니다. 문자열 또는 객체일 수 있습니다.
+View Transition 클래스는 ViewTransition이 활성화될 때 Transition 중에 React가 적용하는 CSS 클래스 이름입니다. 문자열 또는 객체일 수 있습니다.
 - `string`: 활성화될 때 자식 엘리먼트에 추가되는 `class`입니다. `'none'`이 제공되면 클래스가 추가되지 않습니다.
 - `object`: 자식 엘리먼트에 추가되는 클래스는 `addTransitionType`으로 추가된 View Transition 타입과 일치하는 키입니다. 객체는 일치하는 타입이 없을 때 사용할 `default`도 지정할 수 있습니다.
 
@@ -126,7 +126,7 @@ View Transition 클래스는 ViewTransition이 활성화될 때 transition 중�
 <ViewTransition enter="slide-in">
 ```
 
-`<ViewTransition>`이 "enter" 애니메이션을 활성화하면 React는 클래스 이름 `slide-in`을 추가합니다. 그런 다음 [view transition 가상 선택자](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API#pseudo-elements)를 사용하여 이 클래스를 참조하여 재사용 가능한 애니메이션을 구축할 수 있습니다.
+`<ViewTransition>`이 "enter" 애니메이션을 활성화하면 React는 클래스 이름 `slide-in`을 추가합니다. 그런 다음 [View Transition 가상 선택자](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API#pseudo-elements)를 사용하여 이 클래스를 참조하여 재사용 가능한 애니메이션을 구축할 수 있습니다.
 
 ```css
 ::view-transition-group(.slide-in) {
@@ -627,7 +627,7 @@ items.map(item => <Component key={item.id} item={item} />)
 
 콘텐츠를 업데이트하지 않고 목록 순서를 변경할 때 DOM 노드 밖에 있으면 목록의 각 `<ViewTransition>`에서 "update" 애니메이션이 발생합니다. enter/exit 애니메이션과 유사합니다.
 
-이는 이 `<ViewTransition>`에서 애니메이션이 발생한다는 의미입니다.:
+이는 이 `<ViewTransition>`에서 애니메이션이 발생한다는 의미입니다.
 
 ```js
 function Component() {
@@ -1347,7 +1347,7 @@ Enter/Exit:
 </ViewTransition>
 ```
 
-그리고 view transition 클래스를 사용하여 CSS에서 slow-fade를 정의합니다.
+그리고 View Transition 클래스를 사용하여 CSS에서 slow-fade를 정의합니다.
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -1793,7 +1793,7 @@ button:hover {
 ### 타입으로 애니메이션 커스터마이징하기 {/*customizing-animations-with-types*/}
 특정 활성화 트리거에 대해 특정 Transition 타입이 활성화될 때 자식 엘리먼트에 클래스 이름을 추가하기 위해 [`addTransitionType`](/reference/react/addTransitionType) API를 사용할 수 있습니다. 이를 통해 각 Transition 타입에 대한 애니메이션을 커스터마이징할 수 있습니다.
 
-예를 들어 모든 앞으로 및 뒤로 네비게이션에 대한 애니메이션을 커스터마이징하려면:
+예를 들어 모든 앞으로 및 뒤로 네비게이션에 대한 애니메이션을 커스터마이징하려면,
 
 ```js
 <ViewTransition default={{
