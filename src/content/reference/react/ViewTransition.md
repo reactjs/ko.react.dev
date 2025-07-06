@@ -53,11 +53,11 @@ import {unstable_ViewTransition as ViewTransition} from 'react';
 
 #### `<ViewTransition>`은 어떻게 작동하나요? {/*how-does-viewtransition-work*/}
 
-내부적으로 React는 `<ViewTransition>` 컴포넌트 내부에 중첩된 가장 가까운 DOM 노드의 인라인 스타일에 `view-transition-name`을 적용합니다. `<ViewTransition><div /><div /></ViewTransition>`처럼 여러 형제 DOM 노드가 있으면 React는 각각을 고유하게 만들기 위해 이름에 접미사를 추가하지만 개념적으로는 같은 것의 일부입니다. React는 이를 즉시 적용하지 않고 경계가 애니메이션에 참여해야 하는 시점에만 적용합니다.
+내부적으로 React는 `<ViewTransition>` 컴포넌트 내부에 중첩된 가장 가까운 DOM 노드의 인라인 스타일에 `view-transition-name`을 적용합니다. `<ViewTransition><div /><div /></ViewTransition>`처럼 여러 형제 DOM 노드가 있을 겨우, React는 각 노드의 이름이 고유하도록 접미사를 추가하지만, 개념적으로는 동일한 전환에 속하는 것으로 간주됩니다.
 
-React는 내부적으로 `startViewTransition`을 자체적으로 호출하므로 직접 호출해서는 안 됩니다. 실제로 실제로 페이지에서 다른 스크립트나 코드가 ViewTransition을 실행하고 있다면 React가 이를 중단합니다. 따라서 React 자체를 사용하여 이를 조정하는 것을 권장합니다. 과거에 ViewTransition을 트리거하는 다른 방법이 있었다면 내장 방법으로 마이그레이션하는 것을 권장합니다.
+React는 내부적으로 `startViewTransition`을 자체적으로 호출하므로 직접 호출해서는 안 됩니다. 실제로 페이지에서 다른 스크립트나 코드가 ViewTransition을 실행하고 있다면 React가 이를 중단합니다. 따라서 React 자체를 사용하여 이를 조정하는 것을 권장합니다. 과거에 ViewTransition을 트리거하는 다른 방법이 있었다면 내장 방법으로 마이그레이션하는 것을 권장합니다.
 
-다른 React ViewTransition이 이미 실행 중이라면 React는 해당 작업이 완료될 때까지 기다린 후 다음 작업을 시작합니다. 그러나 중요한 것은 첫 번째 작업이 실행되는 동안 여러 업데이트가 발생하면 모두 하나로 일괄 처리된다는 점입니다. A->B를 시작했다면 그 사이에 C로 가는 업데이트를 받고 그다음 D로 가는 업데이트를 받으면, 첫 번째 A->B 애니메이션이 끝날 때 다음 애니메이션은 B->D로 애니메이션됩니다.
+다른 React ViewTransition이 이미 실행 중이라면, React는 그것들이 완료될 때까지 다음 전환을 시작하지 않습니다. 그러나 중요한 점은 첫 번째 전환이 진행되는 동안 여러 업데이트가 발생하면, 그 업데이트들은 모두 하나로 묶여 처리된다는 것입니다. 예를 들어 A에서 B로 이동하는 전환을 시작했다고 가정합시다. 그 사이에 C로 가는 업데이트가 발생하고 다시 D로 가는 업데이트가 발생한다면, 첫 번째 A->B 애니메이션이 끝난 후 다음 애니메이션은 B에서 D로 전환됩니다.
 
 `getSnapshotBeforeUpdate` 생명주기는 `startViewTransition` 전에 호출되고 일부 `view-transition-name`은 동시에 업데이트됩니다.
 
@@ -69,11 +69,11 @@ React는 내부적으로 `startViewTransition`을 자체적으로 호출하므�
 - 대기 중인 탐색이 완료될 때까지 기다립니다.
 - 그런 다음 React는 레이아웃의 변경 사항을 측정하여 어떤 경계가 애니메이션되어야 하는지 확인합니다.
 
-`startViewTransition`의 ready Promise가 해결된 후 React는 `view-transition-name`을 되돌립니다. 그런 다음 React는 `onEnter`, `onExit`, `onUpdate`, `onShare` 콜백을 호출하여 애니메이션에 대한 수동 프로그래밍 제어를 허용합니다. 이는 내장 기본값이 이미 계산된 후입니다.
+startViewTransition의 ready Promise가 해결된 이후, React는 view-transition-name을 되돌립니다. 그 다음 React는 onEnter, onExit, onUpdate, onShare 콜백들을 호출하여 애니메이션에 대해 수동으로 프로그래밍 방식의 제어를 할 수 있도록 합니다. 이 호출은 내장된 기본 애니메이션이 이미 계산된 이후에 이루어집니다.
 
 이 시퀀스 중간에 `flushSync`가 발생하면 동기적으로 완료되어야 하는 특성 때문에 React는 해당 Transition을 건너뜁니다.
 
-`startViewTransition`의 finished Promise가 해결된 후 React는 `useEffect`를 호출합니다. 이는 애니메이션 성능을 방해하는 것을 방지합니다. 그러나 애니메이션이 실행되는 동안 다른 `setState`가 발생하면 순차적 보장을 유지하기 위해 여전히 `useEffect`를 더 일찍 호출해야 하므로 이것이 보장되는 것은 아닙니다.
+`startViewTransition`의 finished Promise가 해결된 이후에 React는 `useEffect`를 호출합니다. 이렇게 하면 `useEffect`가 애니메이션 성능에 영향을 주지 않도록 방지할 수 있습니다. 그러나 이것이 반드시 보장되는 것은 아닙니다. 만약 애니메이션이 실행되는 도중에 다른 `setState`가 발생하면, 순차적 동작 보장을 유지하기 위해 `useEffect`를 더 일찍 호출해야 할 수도 있습니다.
 
 </DeepDive>
 
@@ -113,7 +113,7 @@ View Transition 클래스는 ViewTransition이 활성화될 때 transition 중�
 
 <Note>
 
-웹에서 View Transition의 많은 초기 예시에서 [`view-transition-name`](https://developer.mozilla.org/en-US/docs/Web/CSS/view-transition-name)을 사용한 다음 `::view-transition-...(my-name)` 선택자를 사용하여 스타일을 지정하는 것을 볼 수 있습니다. 스타일링에는 이를 권장하지 않습니다. 대신 일반적으로 View Transition 클래스를 사용하는 것을 권장합니다.
+웹에서 View Transition의 많은 초기 예시에서 [`view-transition-name`](https://developer.mozilla.org/en-US/docs/Web/CSS/view-transition-name)을 사용한 다음 `::view-transition-...(my-name)` 선택자를 사용하여 스타일을 지정하는 것을 볼 수 있습니다. 그러나 이러한 방식으로 스타일링하는 것을 권장하지 않습니다. 대신, 일반적으로 View Transition 클래스를 사용하는 것을 권장합니다.
 
 </Note>
 
@@ -375,7 +375,7 @@ function Component() {
 
 하나의 트리가 마운트 해제되고 다른 트리가 마운트될 때 마운트 해제되는 트리와 마운트되는 트리에서 동일한 이름이 존재하는 쌍이 있으면 둘 다에서 "share" 애니메이션이 발생합니다. 마운트 해제되는 쪽에서 마운트되는 쪽으로 애니메이션이 적용됩니다.
 
-exit/enter 애니메이션과 달리 이는 삭제/마운트된 트리 깊숙이 있을 수 있습니다. `<ViewTransition>`이 exit/enter에도 해당한다면 "share" 애니메이션이 우선순위를 갖습니다.
+exit/enter 애니메이션과 달리 삭제되거나 새로 마운트된 트리의 깊숙한 곳에서도 적용될 수 있습니다. `<ViewTransition>`이 exit/enter에도 해당한다면 "share" 애니메이션이 우선순위를 갖습니다.
 
 Transition이 먼저 한쪽을 마운트 해제하고 새로운 이름이 마운트되기 전에 `<Suspense>` 폴백이 표시되는 경우 공유 엘리먼트 Transition은 발생하지 않습니다.
 
@@ -598,7 +598,7 @@ button:hover {
 
 동일한 컴포넌트 인스턴스가 위치를 변경하는 경우에는 이런 일이 발생하지 않으며 "update"가 발생합니다. 한 위치가 뷰포트 밖에 있어도 애니메이션이 적용됩니다.
 
-현재 깊이 중첩된 마운트 해제된 `<ViewTransition>`이 뷰포트 안에 있지만 마운트된 쪽이 뷰포트 안에 있지 않은 경우 마운트 해제된 쪽이 부모 애니메이션의 일부가 아닌 깊이 중첩되어 있음에도 불구하고 자체적인 "exit" 애니메이션으로 동작하는 특이한 현상이 발생할 수 있습니다.
+현재 한 가지 특이한 점이 있는데, 깊게 중첩된 마운트 해제된 `<ViewTransition>`이 뷰포트 안에 있고, 마운트되는 쪽이 뷰포트 밖에 있는 경우, 해당 마운트 해제된 요소는 부모 애니메이션의 일부로 동작하는 대신, 깊게 중첩되어 있더라도 자체적인 "exit" 애니메이션으로 동작하게 됩니다.
 
 </Note>
 
@@ -1035,7 +1035,7 @@ button:hover {
 
 </Sandpack>
 
-이는 컴포넌트가 자체 순서 변경 애니메이션을 제어할 수 있도록 하려는 목록에서 래퍼 엘리먼트를 피하고 싶을 수 있다는 의미입니다.
+이는 컴포넌트가 자체적으로 순서 변경 애니메이션을 제어할 수 있도록 하고 싶을 때는 리스트 안에 래퍼 요소를 두지 않는 것이 좋다는 뜻입니다.
 
 ```
 items.map(item => <div><Component key={item.id} item={item} /></div>)
@@ -1043,7 +1043,7 @@ items.map(item => <div><Component key={item.id} item={item} /></div>)
 
 위 규칙은 항목 중 하나가 크기 조정을 위해 업데이트되어 형제 항목들이 크기 조정되는 경우에도 적용되며, 이는 형제 `<ViewTransition>`도 애니메이션시키지만 직접적인 형제인 경우에만 해당합니다.
 
-이는 많은 리레이아웃을 일으키는 업데이트 중에 페이지의 모든 `<ViewTransition>`을 개별적으로 애니메이션하지 않는다는 의미입니다. 그렇게 되면 실제 변경사항에서 주의를 분산시키는 많은 노이즈가 있는 애니메이션이 발생할 것입니다. 따라서 React는 개별 애니메이션이 발생하는 시점에 대해 더 보수적입니다.
+이것은 업데이트가 발생하여 레이아웃이 크게 변경될 때, 페이지에 있는 모든 `<ViewTransition>`을 각각 개별적으로 애니메이션하지 않는다는 뜻입니다. 그렇게 하면 실제 변화와 관계없는 많은 산만한 애니메이션이 발생해 주의를 흐트러뜨리게 됩니다. 따라서 React는 개별 애니메이션을 언제 트리거할지에 대해 보다 보수적으로 동작합니다.
 
 <Pitfall>
 
@@ -1329,7 +1329,7 @@ Enter/Exit:
 </ViewTransition>
 ```
 
-이는 테마가 변경될 때만 애니메이션되며 자식만 업데이트될 때는 애니메이션되지 않습니다. 자식은 여전히 자체 `<ViewTransition>`으로 다시 참여할 수 있지만 최소한 다시 수동으로 처리됩니다.
+이는 테마가 변경될 때만 애니메이션되며 자식만 업데이트될 때는 애니메이션되지 않습니다. 자식은 여전히 자체 `<ViewTransition>`으로 다시 참여할 수 있지만 최소한 다시 수동으로 제어하는 방식이 됩니다.
 
 ---
 
