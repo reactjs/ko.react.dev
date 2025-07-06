@@ -5,21 +5,21 @@ version: experimental
 
 <Experimental>
 
-**This API is experimental and is not available in a stable version of React yet.**
+**이 API는 실험적이며 아직 React의 안정 버전에서 사용할 수 없습니다.**
 
-You can try it by upgrading React packages to the most recent experimental version:
+React 패키지를 최신 실험적 버전으로 업그레이드하여 시도해볼 수 있습니다.
 
 - `react@experimental`
 - `react-dom@experimental`
 - `eslint-plugin-react-hooks@experimental`
 
-Experimental versions of React may contain bugs. Don't use them in production.
+React의 실험적 버전에는 버그가 포함될 수 있습니다. 프로덕션 환경에서는 사용하지 마세요.
 
 </Experimental>
 
 <Intro>
 
-`<ViewTransition>` lets you animate elements that update inside a Transition.
+`<ViewTransition>`을 사용하면 Transition 내부에서 업데이트되는 엘리먼트에 애니메이션을 적용할 수 있습니다.
 
 
 ```js
@@ -36,97 +36,97 @@ import {unstable_ViewTransition as ViewTransition} from 'react';
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `<ViewTransition>` {/*viewtransition*/}
 
-Wrap elements in `<ViewTransition>` to animate them when they update inside a [Transition](/reference/react/useTransition). React uses the following heuristics to determine if a View Transition activates for an animation:
+엘리먼트를 `<ViewTransition>`으로 감싸면 [Transition](/reference/react/useTransition) 내부에서 업데이트할 때 애니메이션을 적용할 수 있습니다. React는 다음 휴리스틱을 사용하여 View Transition이 애니메이션에 활성화되는지 판단합니다.
 
-- `enter`: If a `ViewTransition` itself gets inserted in this Transition, then this will activate.
-- `exit`: If a `ViewTransition` itself gets deleted in this Transition, then this will activate.
-- `update`: If a `ViewTransition` has any DOM mutations inside it that React is doing (such as a prop changing) or if the `ViewTransition` boundary itself changes size or position due to an immediate sibling. If there are nested` ViewTransition` then the mutation applies to them and not the parent.
-- `share`: If a named `ViewTransition` is inside a deleted subtree and another named `ViewTransition` with the same name is part of an inserted subtree in the same Transition, they form a Shared Element Transition, and it animates from the deleted one to the inserted one.
+- `enter`: 해당 Transition에서 `ViewTransition` 자체가 삽입되면 활성화됩니다.
+- `exit`: 해당 Transition에서 `ViewTransition` 자체가 삭제되면 활성화됩니다.
+- `update`: `ViewTransition` 내부에서 React가 수행하는 DOM 변경(예: 프로퍼티 변경)이 있거나 인접한 형제 엘리먼트의 영향으로 `ViewTransition` 경계 자체의 크기나 위치가 변경되는 경우 활성화됩니다. 중첩된 `ViewTransition`이 있으면 변경이 부모가 아닌 해당 항목에 적용됩니다.
+- `share`: 이름이 지정된 `ViewTransition`이 삭제된 서브트리 내부에 있고 같은 이름을 가진 다른 이름 있는 `ViewTransition`이 같은 Transition에서 삽입된 서브트리의 일부인 경우 공유 엘리먼트 Transition을 형성하며, 삭제된 것에서 삽입된 것으로 애니메이션됩니다.
 
-By default, `<ViewTransition>` animates with a smooth cross-fade (the browser default view transition). You can customize the animation by providing a [View Transition Class](#view-transition-class) to the `<ViewTransition>` component. You can customize animations for each kind of trigger (see [Styling View Transitions](#styling-view-transitions)).
+기본적으로 `<ViewTransition>`은 부드러운 크로스 페이드(브라우저 기본 View Transition)로 애니메이션됩니다. `<ViewTransition>` 컴포넌트에 [View Transition 클래스](#view-transition-class)를 제공하여 애니메이션을 커스터마이징할 수 있습니다. 각 트리거 유형에 대해 애니메이션을 커스터마이징할 수 있습니다([View Transition 스타일링](#styling-view-transitions) 참고).
 
 <DeepDive>
 
-#### How does `<ViewTransition>` work? {/*how-does-viewtransition-work*/}
+#### `<ViewTransition>`은 어떻게 작동하나요? {/*how-does-viewtransition-work*/}
 
-Under the hood, React applies `view-transition-name` to inline styles of the nearest DOM node nested inside the `<ViewTransition>` component. If there are multiple sibling DOM nodes like `<ViewTransition><div /><div /></ViewTransition>` then React adds a suffix to the name to make each unique but conceptually they're part of the same one. React doesn't apply these eagerly but only at the time that boundary should participate in an animation.
+내부적으로 React는 `<ViewTransition>` 컴포넌트 내부에 중첩된 가장 가까운 DOM 노드의 인라인 스타일에 `view-transition-name`을 적용합니다. `<ViewTransition><div /><div /></ViewTransition>`처럼 여러 형제 DOM 노드가 있을 경우, React는 각 노드의 이름이 고유하도록 접미사를 추가하지만, 개념적으로는 동일한 전환에 속하는 것으로 간주합니다.
 
-React automatically calls `startViewTransition` itself behind the scenes so you should never do that yourself. In fact, if you have something else on the page running a ViewTransition React will interrupt it. So it's recommended that you use React itself to coordinate these. If you had other ways of trigger ViewTransitions in the past, we recommend that you migrate to the built-in way.
+React는 내부적으로 `startViewTransition`을 자체적으로 호출하므로 직접 호출해서는 안됩니다. 실제로 페이지에서 다른 스크립트나 코드가 ViewTransition을 실행하고 있다면 React가 이를 중단합니다. 따라서 React 자체를 사용하여 이를 조정하는 것을 권장합니다. 과거에 ViewTransition을 트리거하는 다른 방법이 있었다면 내장 방법으로 마이그레이션하는 것을 권장합니다.
 
-If there are other React ViewTransitions already running then React will wait for them to finish before starting the next one. However, importantly if there are multiple updates happening while the first one is running, those will all be batched into one. If you start A->B. Then in the meantime you get an update to go to C and then D. When the first A->B animation finishes the next one will animate from B->D.
+다른 React ViewTransition이 이미 실행 중이라면, React는 그것들을 완료할 때까지 다음 전환을 시작하지 않습니다. 그러나 중요한 점은 첫 번째 전환이 진행되는 동안 여러 업데이트가 발생하면, 그 업데이트들은 모두 하나로 묶여 처리된다는 것입니다. 예를 들어 A에서 B로 이동하는 전환을 시작했다고 가정합시다. 그 사이에 C로 가는 업데이트가 발생하고 다시 D로 가는 업데이트가 발생한다면, 첫 번째 A->B 애니메이션이 끝난 후 다음 애니메이션은 B에서 D로 전환됩니다.
 
-The `getSnapshotBeforeUpdate` life-cycle will be called before `startViewTransition` and some `view-transition-name` will update at the same time.
+`getSnapshotBeforeUpdate` 생명주기는 `startViewTransition` 전에 호출되고 일부 `view-transition-name`은 동시에 업데이트됩니다.
 
-Then React calls `startViewTransition`. Inside the `updateCallback`, React will:
+그런 다음 React는 `startViewTransition`을 호출합니다. `updateCallback` 내부에서 React는 다음을 수행합니다.
 
-- Apply its mutations to the DOM and invoke useInsertionEffects.
-- Wait for fonts to load.
-- Call componentDidMount, componentDidUpdate, useLayoutEffect and refs.
-- Wait for any pending Navigation to finish.
-- Then React will measure any changes to the layout to see which boundaries will need to animate.
+- DOM에 변경을 적용하고 `useInsertionEffect`를 호출합니다.
+- 폰트가 로드될 때까지 기다립니다.
+- componentDidMount, componentDidUpdate, useLayoutEffect, refs를 호출합니다.
+- 대기 중인 탐색이 완료될 때까지 기다립니다.
+- 그런 다음 React는 레이아웃의 변경 사항을 측정하여 어떤 경계가 애니메이션되어야 하는지 확인합니다.
 
-After the ready Promise of the `startViewTransition` is resolved, React will then revert the `view-transition-name`. Then React will invoke the `onEnter`, `onExit`, `onUpdate` and `onShare` callbacks to allow for manual programmatic control over the Animations. This will be after the built-in default ones have already been computed.
+`startViewTransition`의 ready Promise가 해결된 이후, React는 `view-transition-name`을 되돌립니다. 그 다음 React는 `onEnter`, `onExit`, `onUpdate`, `onShare` 콜백들을 호출하여 애니메이션에 대해 수동으로 프로그래밍 방식의 제어를 할 수 있도록 합니다. 이 호출은 내장된 기본 애니메이션이 이미 계산된 이후에 이루어집니다.
 
-If a `flushSync` happens to get in the middle of this sequence, then React will skip the Transition since it relies on being able to complete synchronously.
+이 시퀀스 중간에 `flushSync`가 발생하면 동기적으로 완료되어야 하는 특성 때문에 React는 해당 Transition을 건너뜁니다.
 
-After the finished Promise of the `startViewTransition` is resolved, React will then invoke `useEffect`. This prevents those from interfering with the performance of the Animation. However, this is not a guarantee because if another `setState` happens while the Animation is running it'll still have to invoke the `useEffect` earlier to preserve the sequential guarantees.
+`startViewTransition`의 finished Promise가 해결된 이후에 React는 `useEffect`를 호출합니다. 이렇게 하면 `useEffect`가 애니메이션 성능에 영향을 주지 않도록 방지할 수 있습니다. 그러나 이것이 반드시 보장되는 것은 아닙니다. 만약 애니메이션이 실행되는 도중에 다른 `setState`가 발생하면, 순차적 동작 보장을 유지하기 위해 `useEffect`를 더 일찍 호출해야 할 수도 있습니다.
 
 </DeepDive>
 
 #### Props {/*props*/}
 
-By default, `<ViewTransition>` animates with a smooth cross-fade. You can customize the animation, or specify a shared element transition, with these props:
+기본적으로 `<ViewTransition>`은 부드러운 크로스 페이드로 애니메이션됩니다. 이러한 프로퍼티로 애니메이션을 커스터마이즈하거나 공유 엘리먼트 Transition을 지정할 수 있습니다.
 
-* **optional** `enter`: A string or object. The [View Transition Class](#view-transition-class) to apply when enter is activated.
-* **optional** `exit`: A string or object. The [View Transition Class](#view-transition-class) to apply when exit is activated.
-* **optional** `update`: A string or object. The [View Transition Class](#view-transition-class) to apply when an update is activated.
-* **optional** `share`: A string or object. The [View Transition Class](#view-transition-class) to apply when a shared element is activated.
-* **optional** `default`: A string or object. The [View Transition Class](#view-transition-class) used when no other matching activation prop is found. 
-* **optional** `name`: A string or object. The name of the View Transition used for shared element transitions. If not provided, React will use a unique name for each View Transition to prevent unexpected animations.
+* **optional** `enter`: 문자열 또는 객체. "enter"가 활성화될 때 적용할 [View Transition 클래스](#view-transition-class)입니다.
+* **optional** `exit`: 문자열 또는 객체. "exit"이 활성화될 때 적용할 [View Transition 클래스](#view-transition-class)입니다.
+* **optional** `update`: 문자열 또는 객체. "update"가 활성화될 때 적용할 [View Transition 클래스](#view-transition-class)입니다.
+* **optional** `share`: 문자열 또는 객체. 공유 엘리먼트가 활성화될 때 적용할 [View Transition 클래스](#view-transition-class)입니다.
+* **optional** `default`: 문자열 또는 객체. 다른 일치하는 활성화 프로퍼티가 없을 때 사용되는 [View Transition 클래스](#view-transition-class)입니다.
+* **optional** `name`: 문자열 또는 객체. 공유 엘리먼트 transition에 사용되는 View Transition의 이름입니다. 제공되지 않으면 React는 예상치 못한 애니메이션을 방지하기 위해 각 View Transition에 대해 고유한 이름을 사용합니다.
 
-#### Callback {/*events*/}
+#### 콜백 {/*events*/}
 
-These callbacks allow you to adjust the animation imperatively using the [animate](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate) APIs:
+이 콜백을 사용하면 [animate](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate) API를 사용하여 애니메이션을 명령적으로 조정할 수 있습니다.
 
-* **optional** `onEnter`: A function. React calls `onEnter` after an "enter" animation.
-* **optional** `onExit`: A function. React calls `onExit` after an "exit" animation.
-* **optional** `onShare`: A function. React calls `onShare` after a "share" animation.
-* **optional** `onUpdate`: A function. React calls `onUpdate` after an "update" animation.
+* **optional** `onEnter`: 함수. React는 "enter" 애니메이션 후에 `onEnter`를 호출합니다.
+* **optional** `onExit`: 함수. React는 "exit" 애니메이션 후에 `onExit`를 호출합니다.
+* **optional** `onShare`: 함수. React는 "share" 애니메이션 후에 `onShare`를 호출합니다.
+* **optional** `onUpdate`: 함수. React는 "update" 애니메이션 후에 `onUpdate`를 호출합니다.
 
-Each callback receives as arguments:
-- `element`: The DOM element that was animated.
-- `types`: The [Transition Types](/reference/react/addTransitionType) included in the animation.
+각 콜백은 다음을 인수로 받습니다.
+- `element`: 애니메이션된 DOM 엘리먼트입니다.
+- `types`: 애니메이션에 포함된 [Transition 타입](/reference/react/addTransitionType)입니다.
 
-### View Transition Class {/*view-transition-class*/}
+### View Transition 클래스 {/*view-transition-class*/}
 
-The View Transition Class is the CSS class name(s) applied by React during the transition when the ViewTransition activates. It can be a string or an object.
-- `string`: the `class` added on the child elements when activated. If `'none'` is provided, no class will be added.
-- `object`: the class added on the child elements will be the key matching View Transition type added with `addTransitionType`. The object can also specify a `default` to use if no matching type is found.
+View Transition 클래스는 ViewTransition이 활성화될 때 Transition 중에 React가 적용하는 CSS 클래스 이름입니다. 문자열 또는 객체일 수 있습니다.
+- `string`: 활성화될 때 자식 엘리먼트에 추가되는 `class`입니다. `'none'`이 제공되면 클래스가 추가되지 않습니다.
+- `object`: 자식 엘리먼트에 추가되는 클래스는 `addTransitionType`으로 추가된 View Transition 타입과 일치하는 키입니다. 객체는 일치하는 타입이 없을 때 사용할 `default`도 지정할 수 있습니다.
 
-The value `'none'` can be used to prevent a View Transition from activating for a specific trigger.
+값 `'none'`은 특정 트리거에 대해 View Transition이 활성화되지 않도록 하는 데 사용할 수 있습니다.
 
-### Styling View Transitions {/*styling-view-transitions*/}
+### View Transition 스타일링 {/*styling-view-transitions*/}
 
 <Note>
 
-In many early examples of View Transitions around the web, you'll have seen using a [`view-transition-name`](https://developer.mozilla.org/en-US/docs/Web/CSS/view-transition-name) and then style it using `::view-transition-...(my-name)` selectors. We don't recommend that for styling. Instead, we normally recommend using a View Transition Class instead.
+웹에서 View Transition의 많은 초기 예시에서 [`view-transition-name`](https://developer.mozilla.org/en-US/docs/Web/CSS/view-transition-name)을 사용한 다음 `::view-transition-...(my-name)` 선택자를 사용하여 스타일을 지정하는 것을 볼 수 있습니다. 그러나 이러한 방식으로 스타일링하는 것을 권장하지 않습니다. 대신, 일반적으로 View Transition 클래스를 사용하는 것을 권장합니다.
 
 </Note>
 
-To customize the animation for a `<ViewTransition>` you can provide a View Transition Class to one of the activation props. The View Transition Class is a CSS class name that React applies to the child elements when the ViewTransition activates.
+`<ViewTransition>`의 애니메이션을 커스터마이즈하려면 활성화 프로퍼티 중 하나에 View Transition 클래스를 제공할 수 있습니다. View Transition 클래스는 ViewTransition이 활성화될 때 React가 자식 엘리먼트에 적용하는 CSS 클래스 이름입니다.
 
-For example, to customize an "enter" animation, provide a class name to the `enter` prop:
+예를 들어 "enter" 애니메이션을 커스터마이즈하려면 `enter` 프로퍼티에 클래스 이름을 제공합니다.
 
 
 ```js
 <ViewTransition enter="slide-in">
 ```
 
-When the `<ViewTransition>` activates an "enter" animation, React will add the class name `slide-in`. Then you can refer to this class using [view transition pseudo selectors](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API#pseudo-elements) to build reusable animations:
+`<ViewTransition>`이 "enter" 애니메이션을 활성화하면 React는 클래스 이름 `slide-in`을 추가합니다. 그런 다음 [View Transition 가상 선택자](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API#pseudo-elements)를 사용하여 이 클래스를 참조하여 재사용 가능한 애니메이션을 구축할 수 있습니다.
 
 ```css
 ::view-transition-group(.slide-in) {
@@ -139,23 +139,23 @@ When the `<ViewTransition>` activates an "enter" animation, React will add the c
 
 }
 ```
-In the future, CSS libraries may add built-in animations using View Transition Classes to make this easier to use.
+향후 CSS 라이브러리에서 View Transition 클래스를 사용한 내장 애니메이션을 추가하여 사용하기 쉽게 만들 수 있습니다.
 
-#### Caveats {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
-- By default, `setState` updates immediately and does not activate `<ViewTransition>`, only updates wrapped in a [Transition](/reference/react/useTransition). You can also use [`<Suspense>`](/reference/react/Suspense) to opt-in to a Transition to [reveal content](/link-to-suspense-below).
-- `<ViewTransition>` creates an image that can be moved around, scaled and cross-faded. Unlike Layout Animations you may have seen in React Native or Motion, this means that not every individual Element inside of it animates its position. This can lead to better performance and a more continuous feeling, smooth animation compared to animating every individual piece. However, it can also lose continuity in things that should be moving by themselves. So you might have to add more `<ViewTransition>` boundaries manually as a result.
-- Many users may prefer not having animations on the page. React doesn't automatically disable animations for this case. We recommend that using the `@media (prefers-reduced-motion)` media query to disable animations or tone them down based on user preference. In the future, CSS libraries may have this built-in to their presets.
-- Currently, `<ViewTransition>` only works in the DOM. We're working on adding support for React Native and other platforms.
+- 기본적으로 `setState` 업데이트는 즉시 이루어지며 `<ViewTransition>`을 활성화하지 않습니다. [Transition](/reference/react/useTransition)으로 감싼 업데이트만 해당됩니다. [`<Suspense>`](/reference/react/Suspense)를 사용하여 Transition을 선택하여 [콘텐츠를 표시](/link-to-suspense-below)할 수도 있습니다.
+- `<ViewTransition>`은 이동, 확대/축소, 크로스 페이드할 수 있는 이미지를 생성합니다. React Native나 Motion에서 본 레이아웃 애니메이션과 달리 내부의 모든 개별 엘리먼트가 위치에 애니메이션되지는 않습니다. 이는 더 나은 성능과 개별 부분을 애니메이션하는 것과 비교하여 더 연속적이고 부드러운 애니메이션 느낌을 줄 수 있습니다. 그러나 스스로 움직여야 하는 것들의 연속성을 잃을 수도 있습니다. 결과적으로 더 많은 `<ViewTransition>` 경계를 수동으로 추가해야 할 수 있습니다.
+- 많은 사용자가 페이지에서 애니메이션을 선호하지 않을 수 있습니다. React는 이 경우 애니메이션을 자동으로 비활성화하지 않습니다. 사용자 선호도에 따라 `@media (prefers-reduced-motion)` 미디어 쿼리를 사용하여 애니메이션을 비활성화하거나 약하게 만드는 것을 권장합니다. 향후 CSS 라이브러리에서는 프리셋에 이것이 내장되어 있을 수 있습니다.
+- 현재 `<ViewTransition>`은 DOM에서만 작동합니다. React Native 및 다른 플랫폼에 대한 지원을 추가하는 작업을 진행하고 있습니다.
 
 ---
 
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Animating an element on enter/exit {/*animating-an-element-on-enter*/}
+### enter/exit에서 엘리먼트 애니메이션 적용하기 {/*animating-an-element-on-enter*/}
 
-Enter/Exit Transitions trigger when a `<ViewTransition>` is added or removed by a component in a transition:
+Enter/Exit Transition은 `<ViewTransition>`이 Transition에서 컴포넌트에 의해 추가되거나 제거될 때 발생합니다.
 
 ```js
 function Child() {
@@ -171,9 +171,9 @@ function Parent() {
 }
 ```
 
-When `setShow` is called, `show` switches to `true` and the `Child` component is rendered. When `setShow` is called inside `startTransition`, and `Child` renders a `ViewTransition` before any other DOM nodes, an `enter` animation is triggered. 
+`setShow`가 호출되면 `show`가 `true`로 바뀌고 `Child` 컴포넌트가 렌더링됩니다. `setShow`가 `startTransition` 내부에서 호출되고 `Child`가 다른 DOM 노드보다 먼저 `ViewTransition`을 렌더링하면 `enter` 애니메이션이 발생합니다.
 
-When `show` switches back to `false`, an `exit` animation is triggered.
+`show`가 다시 `false`로 바뀌면 `exit` 애니메이션이 발생합니다.
 
 <Sandpack>
 
@@ -348,7 +348,7 @@ button:hover {
 
 <Pitfall>
 
-`<ViewTransition>` only activates if it is placed before any DOM node. If `Child` instead looked like this, no animation would trigger:
+`<ViewTransition>`은 DOM 노드보다 앞에 배치되어야만 활성화됩니다. `Child`가 다음과 같다면 애니메이션이 발생하지 않습니다.
 
 ```js [3, 5]
 function Component() {
@@ -363,9 +363,9 @@ function Component() {
 </Pitfall>
 
 ---
-### Animating a shared element {/*animating-a-shared-element*/}
+### 공유 엘리먼트 애니메이션 적용하기 {/*animating-a-shared-element*/}
 
-Normally, we don't recommend assigning a name to a `<ViewTransition>` and instead let React assign it an automatic name. The reason you might want to assign a name is to animate between completely different components when one tree unmounts and another tree mounts at the same time. To preserve continuity.
+일반적으로 `<ViewTransition>`에 이름을 할당하는 것보다 React가 자동으로 이름을 할당하도록 하는 것을 권장합니다. 이름을 할당하고 싶은 경우는 하나의 트리가 마운트 해제되고 다른 트리가 동시에 마운트될 때 완전히 다른 컴포넌트 간에 애니메이션을 적용하여 연속성을 보존하고자 할 때입니다.
 
 ```js
 <ViewTransition name={UNIQUE_NAME}>
@@ -373,11 +373,11 @@ Normally, we don't recommend assigning a name to a `<ViewTransition>` and instea
 </ViewTransition>
 ```
 
-When one tree unmounts and another mounts, if there's a pair where the same name exists in the unmounting tree and the mounting tree, they trigger the "share" animation on both. It animates from the unmounting side to the mounting side.
+하나의 트리가 마운트 해제되고 다른 트리가 마운트될 때 마운트 해제되는 트리와 마운트되는 트리에서 동일한 이름이 존재하는 쌍이 있으면 둘 다에서 "share" 애니메이션이 발생합니다. 마운트 해제되는 쪽에서 마운트되는 쪽으로 애니메이션이 적용됩니다.
 
-Unlike an exit/enter animation this can be deeply inside the deleted/mounted tree. If a `<ViewTransition>` would also be eligible for exit/enter, then the "share" animation takes precedence.
+exit/enter 애니메이션과 달리 삭제되거나 새로 마운트된 트리의 깊숙한 곳에서도 적용될 수 있습니다. `<ViewTransition>`이 exit/enter에도 해당한다면 "share" 애니메이션이 우선순위를 갖습니다.
 
-If Transition first unmounts one side and then leads to a `<Suspense>` fallback being shown before eventually the new name being mounted, then no shared element transition happens.
+Transition이 먼저 한쪽을 마운트 해제하고 새로운 이름이 마운트되기 전에 `<Suspense>` 폴백이 표시되는 경우 공유 엘리먼트 Transition은 발생하지 않습니다.
 
 <Sandpack>
 
@@ -594,17 +594,17 @@ button:hover {
 
 <Note>
 
-If either the mounted or unmounted side of a pair is outside the viewport, then no pair is formed. This ensures that it doesn't fly in or out of the viewport when something is scrolled. Instead it's treated as a regular enter/exit by itself.
+한 쌍의 마운트된 쪽이나 마운트 해제된 쪽 중 하나가 뷰포트 밖에 있으면 쌍이 형성되지 않습니다. 이는 무언가가 스크롤될 때 뷰포트 안팎으로 날아가는 것을 방지합니다. 대신 일반적인 enter/exit로 자체적으로 처리됩니다.
 
-This does not happen if the same Component instance changes position, which triggers an "update". Those animate regardless if one position is outside the viewport.
+동일한 컴포넌트 인스턴스가 위치를 변경하는 경우에는 이런 일이 발생하지 않으며 "update"가 발생합니다. 한 위치가 뷰포트 밖에 있어도 애니메이션이 적용됩니다.
 
-There's currently a quirk where if a deeply nested unmounted `<ViewTransition>` is inside the viewport but the mounted side is not within the viewport, then the unmounted side animates as its own "exit" animation even if it's deeply nested instead of as part of the parent animation.
+현재 한 가지 특이한 점이 있는데, 깊게 중첩된 마운트 해제된 `<ViewTransition>`이 뷰포트 안에 있고, 마운트되는 쪽이 뷰포트 밖에 있는 경우, 해당 마운트 해제된 요소는 부모 애니메이션의 일부로 동작하는 대신, 깊게 중첩되어 있더라도 자체적인 "exit" 애니메이션으로 동작하게 됩니다.
 
 </Note>
 
 <Pitfall>
 
-It's important that there's only one thing with the same name mounted at a time in the entire app. Therefore it's important to use unique namespaces for the name to avoid conflicts. To ensure you can do this you might want to add a constant in a separate module that you import.
+전체 앱에서 동시에 동일한 `name`으로 마운트된 것이 하나만 있어야 한다는 것이 중요합니다. 따라서 충돌을 피하기 위해 `name`에 고유한 네임스페이스를 사용하는 것이 중요합니다. 이를 확실히 하기 위해 가져올 수 있는 별도 모듈에 상수를 추가하는 것이 좋습니다.
 
 ```js
 export const MY_NAME = "my-globally-unique-name";
@@ -618,16 +618,16 @@ import {MY_NAME} from './shared-name';
 
 ---
 
-### Animating reorder of items in a list {/*animating-reorder-of-items-in-a-list*/}
+### 목록에서 항목 순서 변경 애니메이션 적용하기 {/*animating-reorder-of-items-in-a-list*/}
 
 
 ```js
 items.map(item => <Component key={item.id} item={item} />)
 ```
 
-When reordering a list, without updating the content, the "update" animation triggers on each `<ViewTransition>` in the list if they're outside a DOM node. Similar to enter/exit animations.
+콘텐츠를 업데이트하지 않고 목록 순서를 변경할 때 DOM 노드 밖에 있으면 목록의 각 `<ViewTransition>`에서 "update" 애니메이션이 발생합니다. enter/exit 애니메이션과 유사합니다.
 
-This means that this will trigger the animation on this `<ViewTransition>`:
+이는 이 `<ViewTransition>`에서 애니메이션이 발생한다는 의미입니다.
 
 ```js
 function Component() {
@@ -831,14 +831,14 @@ button:hover {
 
 </Sandpack>
 
-However, this wouldn't animate each individual item:
+하지만 다음은 각 개별 항목에 애니메이션을 적용하지 않습니다.
 
 ```js
 function Component() {
   return <div><ViewTransition>...</ViewTransition></div>;
 }
 ```
-Instead, any parent `<ViewTransition>` would cross-fade. If there is no parent `<ViewTransition>` then there's no animation in that case.
+대신 부모 `<ViewTransition>`이 크로스 페이드됩니다. 부모 `<ViewTransition>`이 없으면 별도의 애니메이션이 적용되지 않습니다.
 
 <Sandpack>
 
@@ -1035,33 +1035,33 @@ button:hover {
 
 </Sandpack>
 
-This means you might want to avoid wrapper elements in lists where you want to allow the Component to control its own reorder animation:
+이는 컴포넌트가 자체적으로 순서 변경 애니메이션을 제어할 수 있도록 하고 싶을 때는 리스트 안에 래퍼 요소를 두지 않는 것이 좋다는 뜻입니다.
 
 ```
 items.map(item => <div><Component key={item.id} item={item} /></div>)
 ```
 
-The above rule also applies if one of the items updates to resize, which then causes the siblings to resize, it'll also animate its sibling `<ViewTransition>` but only if they're immediate siblings.
+위 규칙은 항목 중 하나가 크기 조정을 위해 업데이트되어 형제 항목들이 크기 조정되는 경우에도 적용되며, 이는 형제 `<ViewTransition>`도 애니메이션시키지만 직접적인 형제인 경우에만 해당합니다.
 
-This means that during an update, which causes a lot of re-layout, it doesn't individually animate every `<ViewTransition>` on the page. That would lead to a lot of noisy animations which distracts from the actual change. Therefore React is more conservative about when an individual animation triggers.
+이것은 업데이트가 발생하여 레이아웃이 크게 변경될 때, 페이지에 있는 모든 `<ViewTransition>`을 각각 개별적으로 애니메이션하지 않는다는 뜻입니다. 그렇게 하면 실제 변화와 관계없는 많은 산만한 애니메이션이 발생해 주의를 흐트러뜨리게 됩니다. 따라서 React는 개별 애니메이션을 언제 트리거할지에 대해 보다 보수적으로 동작합니다.
 
 <Pitfall>
 
-It's important to properly use keys to preserve identity when reordering lists. It might seem like you could use "name", shared element transitions, to animate reorders but that would not trigger if one side was outside the viewport. To animate a reorder you often want to show that it went to a position outside the viewport.
+목록 순서를 변경할 때 아이덴티티를 보존하기 위해 키를 적절히 사용하는 것이 중요합니다. "name"이나 공유 엘리먼트 Transition을 사용하여 순서 변경을 애니메이션할 수 있을 것 같지만 한쪽이 뷰포트 밖에 있으면 발생하지 않습니다. 리스트를 재정렬하는 애니메이션을 만들 때는, 해당 항목이 화면에 보이지 않는 위치로 이동했음을 사용자에게 보여주는 것이 중요한 경우가 많습니다.
 
 </Pitfall>
 
 ---
 
-### Animating from Suspense content {/*animating-from-suspense-content*/}
+### Suspense 콘텐츠에서 애니메이션 적용하기 {/*animating-from-suspense-content*/}
 
-Just like any Transition, React waits for data and new CSS (`<link rel="stylesheet" precedence="...">`) before running the animation. In addition to this, ViewTransitions also wait up to 500ms for new fonts to load before starting the animation to avoid them flickering in later. For the same reason, an image wrapped in ViewTransition will wait for the image to load.
+다른 Transition과 마찬가지로 React는 애니메이션을 실행하기 전에 데이터와 새로운 CSS(`<link rel="stylesheet" precedence="...">`)를 기다립니다. 이에 더해 ViewTransition은 새로운 폰트가 나중에 깜빡이는 것을 방지하기 위해 애니메이션을 시작하기 전에 새로운 폰트가 로드될 때까지 최대 500ms까지 기다립니다. 같은 이유로 ViewTransition으로 래핑된 이미지는 이미지가 로드될 때까지 기다립니다.
 
-If it's inside a new Suspense boundary instance, then the fallback is shown first. After the Suspense boundary fully loads, it triggers the `<ViewTransition>` to animate the reveal to the content.
+새로운 Suspense 경계 인스턴스 내부에 있으면 폴백이 먼저 표시됩니다. Suspense 경계가 완전히 로드된 후 `<ViewTransition>`이 콘텐츠로 전환되는 애니메이션을 실행합니다.
 
-Currently, this only happens for client-side Transition. In the future, this will also animate Suspense boundary for streaming SSR when content from the server suspends during the initial load.
+현재 이 동작은 클라이언트 측 Transition에서만 발생합니다. 향후에는 초기 로드 중에 서버의 콘텐츠가 일시 중단될 때 스트리밍 SSR에 대한 Suspense 경계도 애니메이션할 예정입니다.
 
-There are two ways to animate Suspense boundaries depending on where you place the `<ViewTransition>`:
+`<ViewTransition>`을 배치하는 위치에 따라 Suspense 경계를 애니메이션하는 두 가지 방법이 있습니다.
 
 Update:
 
@@ -1072,7 +1072,7 @@ Update:
   </Suspense>
 </ViewTransition>
 ```
-In this scenario when the content goes from A to B, it'll be treated as an "update" and apply that class if appropriate. Both A and B will get the same view-transition-name and therefore they're acting as a cross-fade by default.
+이 시나리오에서 콘텐츠가 A에서 B로 바뀔 때 "update"로 처리되며 적절한 경우 해당 클래스를 적용합니다. A와 B 모두 동일한 view-transition-name을 갖게 되므로 기본적으로 크로스 페이드로 작동합니다.
 
 <Sandpack>
 
@@ -1308,16 +1308,16 @@ Enter/Exit:
 </Suspense>
 ```
 
-In this scenario, these are two separate ViewTransition instances each with their own `view-transition-name`. This will be treated as an "exit" of the `<A>` and an "enter" of the `<B>`.
+이 시나리오에서는 각각 고유한 `view-transition-name`을 갖는 두 개의 별도 ViewTransition 인스턴스입니다. 이는 `<A>`의 "exit"와 `<B>`의 "enter"로 처리됩니다.
 
-You can achieve different effects depending on where you choose to place the `<ViewTransition>` boundary.
+`<ViewTransition>` 경계를 배치하는 위치에 따라 다른 효과를 얻을 수 있습니다.
 
 ---
-### Opting-out of an animation {/*opting-out-of-an-animation*/}
+### 애니메이션 제외하기 {/*opting-out-of-an-animation*/}
 
-Sometimes you're wrapping a large existing component, like a whole page, and you want to animate some updates, such as changing the theme. However, you don't want it to opt-in all updates inside the whole page to cross-fade when they're updating. Especially if you're incrementally adding more animations.
+때로는 전체 페이지와 같은 큰 기존 컴포넌트를 래핑하고 테마 변경과 같은 일부 업데이트를 애니메이션하고 싶지만 전체 페이지 내부의 모든 업데이트가 업데이트될 때 크로스 페이드에 포함되는 것을 원하지 않을 수 있습니다. 특히 점진적으로 더 많은 애니메이션을 추가하는 경우에 그렇습니다.
 
-You can use the class "none" to opt-out of an animation. By wrapping your children in a "none" you can disable animations for updates to them while the parent still triggers.
+클래스 "none"을 사용하여 애니메이션을 제외할 수 있습니다. 자식을 "none"으로 래핑하면 부모가 여전히 발생하는 동안 자식에 대한 업데이트 애니메이션을 비활성화할 수 있습니다.
 
 ```js
 <ViewTransition>
@@ -1329,17 +1329,17 @@ You can use the class "none" to opt-out of an animation. By wrapping your childr
 </ViewTransition>
 ```
 
-This will only animate if the theme changes and not if only the children update. The children can still opt-in again with their own `<ViewTransition>` but at least it's manual again.
+이는 테마가 변경될 때만 애니메이션되며 자식만 업데이트될 때는 애니메이션되지 않습니다. 자식은 여전히 자체 `<ViewTransition>`으로 다시 참여할 수 있지만 최소한 다시 수동으로 제어하는 방식이 됩니다.
 
 ---
 
-### Customizing animations {/*customizing-animations*/}
+### 애니메이션 커스터마이징 {/*customizing-animations*/}
 
-By default, `<ViewTransition>` includes the default cross-fade from the browser.
+기본적으로 `<ViewTransition>`은 브라우저의 기본 크로스 페이드를 포함합니다.
 
-To customize animations, you can provide props to the `<ViewTransition>` component to specify which animations to use, based on how the `<ViewTransition>` activates.
+애니메이션을 커스터마이징하려면 `<ViewTransition>` 컴포넌트에 props를 제공하여 `<ViewTransition>`이 활성화되는 방식에 따라 사용할 애니메이션을 지정할 수 있습니다.
 
-For example, we can slow down the default cross fade animation:
+예를 들어 기본 크로스 페이드 애니메이션을 느리게 할 수 있습니다.
 
 ```js
 <ViewTransition default="slow-fade">
@@ -1347,7 +1347,7 @@ For example, we can slow down the default cross fade animation:
 </ViewTransition>
 ```
 
-And define slow-fade in CSS using view transition classes:
+그리고 View Transition 클래스를 사용하여 CSS에서 slow-fade를 정의합니다.
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -1538,7 +1538,7 @@ button:hover {
 
 </Sandpack>
 
-In addition to setting the `default`, you can also provide configurations for `enter`, `exit`, `update`, and `share` animations.
+`default` 설정 외에도 `enter`, `exit`, `update`, `share` 애니메이션에 대한 구성을 제공할 수 있습니다.
 
 <Sandpack>
 
@@ -1790,10 +1790,10 @@ button:hover {
 
 </Sandpack>
 
-### Customizing animations with types {/*customizing-animations-with-types*/}
-You can use the [`addTransitionType`](/reference/react/addTransitionType) API to add a class name to the child elements when a specific transition type is activated for a specific activation trigger. This allows you to customize the animation for each type of transition.
+### 타입으로 애니메이션 커스터마이징하기 {/*customizing-animations-with-types*/}
+특정 활성화 트리거에 대해 특정 Transition 타입이 활성화될 때 자식 엘리먼트에 클래스 이름을 추가하기 위해 [`addTransitionType`](/reference/react/addTransitionType) API를 사용할 수 있습니다. 이를 통해 각 Transition 타입에 대한 애니메이션을 커스터마이징할 수 있습니다.
 
-For example, to customize the animation for all forward and backward navigations:
+예를 들어 모든 앞으로 및 뒤로 네비게이션에 대한 애니메이션을 커스터마이징하려면,
 
 ```js
 <ViewTransition default={{
@@ -1803,15 +1803,15 @@ For example, to customize the animation for all forward and backward navigations
   <div>...</div>
 </ViewTransition>
  
-// in your router:
+// 라우터에서:
 startTransition(() => {
   addTransitionType('navigation-' + navigationType);
 });
 ```
 
-When the ViewTransition activates a "navigation-back" animation, React will add the class name "slide-right". When the ViewTransition activates a "navigation-forward" animation, React will add the class name "slide-left".
+ViewTransition이 "navigation-back" 애니메이션을 활성화하면 React는 "slide-right" 클래스 이름을 추가합니다. ViewTransition이 "navigation-forward" 애니메이션을 활성화하면 React는 "slide-left" 클래스 이름을 추가합니다.
 
-In the future, routers and other libraries may add support for standard view-transition types and styles.
+향후 라우터와 다른 라이브러리들이 표준 view-transition 타입과 스타일에 대한 지원을 추가할 수 있습니다.
 
 <Sandpack>
 
@@ -2119,19 +2119,19 @@ button:hover {
 
 </Sandpack>
 
-### Building View Transition enabled routers {/*building-view-transition-enabled-routers*/}
+### View Transition 지원 라우터 구축하기 {/*building-view-transition-enabled-routers*/}
 
-React waits for any pending Navigation to finish to ensure that scroll restoration happens within the animation. If the Navigation is blocked on React, your router must unblock in `useLayoutEffect` since `useEffect` would lead to a deadlock.
+스크롤 복원이 애니메이션 중에 정상적으로 동작하도록, React는 대기 중인 내비게이션이 완료될 때까지 기다립니다. 네비게이션이 React에서 차단되는 경우 `useEffect`는 교착 상태로 이어질 수 있으므로 라우터는 `useLayoutEffect`에서 차단을 해제해야 합니다.
 
-If a `startTransition` is started from the legacy popstate event, such as during a "back"-navigation then it must finish synchronously to ensure scroll and form restoration works correctly. This is in conflict with running a View Transition animation. Therefore, React will skip animations from popstate. Therefore animations won't run for the back button. You can fix this by upgrading your router to use the Navigation API.
+"뒤로" 네비게이션 중처럼 레거시 popstate 이벤트에서 `startTransition`이 시작되면 스크롤과 폼 복원이 올바르게 작동하도록 동기적으로 완료되어야 합니다. 이는 View Transition 애니메이션 실행과 충돌합니다. 따라서 React는 popstate에서 애니메이션을 건너뜁니다. 따라서 뒤로 버튼에 대해서는 애니메이션이 실행되지 않습니다. Navigation API를 사용하도록 라우터를 업그레이드하여 이를 해결할 수 있습니다.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
-### My `<ViewTransition>` is not activating {/*my-viewtransition-is-not-activating*/}
+### `<ViewTransition>`이 활성화되지 않습니다 {/*my-viewtransition-is-not-activating*/}
 
-`<ViewTransition>` only activates if it is placed is before any DOM node:
+`<ViewTransition>`은 DOM 노드보다 앞에 배치되어야만 활성화됩니다.
 
 ```js [3, 5]
 function Component() {
@@ -2143,7 +2143,7 @@ function Component() {
 }
 ```
 
-To fix, ensure that the `<ViewTransition>` comes before any other DOM nodes:
+해결하려면 `<ViewTransition>`이 다른 DOM 노드보다 앞에 오도록 하세요.
 
 ```js [3, 5] 
 function Component() {
@@ -2155,14 +2155,14 @@ function Component() {
 }
 ```
 
-### I'm getting an error "There are two `<ViewTransition name=%s>` components with the same name mounted at the same time." {/*two-viewtransition-with-same-name*/}
+### "동일한 이름으로 마운트된 `<ViewTransition name=%s>` 컴포넌트가 두 개 있습니다."라는 오류가 발생합니다 {/*two-viewtransition-with-same-name*/}
 
-This error occurs when two `<ViewTransition>` components with the same `name` are mounted at the same time:
+이 오류는 동일한 `name`을 가진 두 개의 `<ViewTransition>` 컴포넌트가 동시에 마운트될 때 발생합니다.
 
 
 ```js [3]
 function Item() {
-  // 🚩 All items will get the same "name".
+  // 🚩 모든 항목이 동일한 "name"을 갖게 됩니다.
   return <ViewTransition name="item">...</ViewTransition>;
 }
 
@@ -2175,7 +2175,7 @@ function ItemList({items}) {
 }
 ```
 
-This will cause the View Transition to error. In development, React detects this issue to surface it and logs two errors:
+이는 View Transition에서 오류를 발생시킵니다. 개발 중에 React는 이 문제를 감지하여 표면화하고 두 개의 오류를 기록합니다.
 
 <ConsoleBlockMulti>
 <ConsoleLogLine level="error">
@@ -2195,11 +2195,11 @@ The existing `<ViewTransition name=%s>` duplicate has this stack trace.
 </ConsoleLogLine>
 </ConsoleBlockMulti>
 
-To fix, ensure that there's only one `<ViewTransition>` with the same name mounted at a time in the entire app by ensuring the `name` is unique, or adding an `id` to the name:
+해결하려면 `name`이 고유하도록 하거나 이름에 `id`를 추가하여 전체 앱에서 동일한 이름을 가진 `<ViewTransition>`이 한 번에 하나만 마운트되도록 하세요.
 
 ```js [3]
 function Item({id}) {
-  // ✅ All items will get the same "name".
+  // ✅ 모든 항목이 고유한 "name"을 갖게 됩니다.
   return <ViewTransition name={`item-${id}`}>...</ViewTransition>;
 }
 
