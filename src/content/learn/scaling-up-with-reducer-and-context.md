@@ -685,11 +685,7 @@ ul, li { margin: 0; padding: 0; }
 </TasksContext>
 ```
 
-<<<<<<< HEAD
 대신 필요한 컴포넌트에서는 `TaskContext`에서 `tasks` 리스트를 읽을 수 있습니다.
-=======
-Instead, any component that needs the task list can read it from the `TasksContext`:
->>>>>>> 341c312916e1b657262bbe14b134a6f1779fecf1
 
 ```js {2}
 export default function TaskList() {
