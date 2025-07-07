@@ -1,37 +1,37 @@
 ---
-title: "React Labs: View Transitions, Activity, and more"
+title: "React Labs: View Transitions, Activity 그리고 그 외"
 author: Ricky Hanlon
 date: 2025/04/23
-description: In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and updates on other areas we're working on now.
+description: React Labs 게시글에는 활발히 연구 개발 중인 프로젝트에 대한 내용을 작성합니다. 이번 게시글에서는 오늘 바로 사용해볼 수 있는 두 가지 새로운 실험적 기능과 현재 작업 중인 다른 영역의 업데이트를 공유합니다.
 ---
 
-April 23, 2025 by [Ricky Hanlon](https://twitter.com/rickhanlonii)
+2025년 4월 23일, [Ricky Hanlon](https://twitter.com/rickhanlonii)
 
 ---
 
 <Intro>
 
-In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and updates on other areas we're working on now.
+React Labs 게시글에는 활발히 연구 개발 중인 프로젝트에 대한 내용을 작성합니다. 이번 게시글에서는 오늘 바로 사용해볼 수 있는 두 가지 새로운 실험적 기능과 현재 작업 중인 다른 영역의 업데이트를 공유합니다.
 
 </Intro>
 
 
 <Note>
 
-React Conf 2025 is scheduled for October 7–8 in Henderson, Nevada! 
+React Conf 2025가 네바다주 헨더슨에서 10월 7-8일에 개최될 예정입니다!
 
-We're looking for speakers to help us create talks about the features covered in this post. If you're interested in speaking at ReactConf, [please apply here](https://forms.reform.app/react-conf/call-for-speakers/) (no talk proposal required).
+이번 게시글에서 다루는 기능들에 대한 발표를 준비해주실 연사분들을 찾고 있습니다. ReactConf에서 발표에 관심이 있으시다면 [여기에서 지원해주세요](https://forms.reform.app/react-conf/call-for-speakers/) (발표 제안서 제출은 필요하지 않습니다).
 
-For more info on tickets, free streaming, sponsoring, and more, see [the React Conf website](https://conf.react.dev).
+티켓, 무료 스트리밍, 후원 등에 대한 더 많은 정보는 [React Conf 웹사이트](https://conf.react.dev)를 참고하세요.
 
 </Note>
 
-Today, we're excited to release documentation for two new experimental features that are ready for testing:
+오늘 저희는 테스트할 준비가 완료된 두 가지 새로운 실험적 기능에 대한 문서를 공개하게 되어 기쁩니다:
 
 - [View Transitions](#view-transitions)
 - [Activity](#activity)
 
-We're also sharing updates on new features currently in development:
+또한 현재 개발 중인 새로운 기능들에 대한 업데이트도 공유합니다:
 - [React Performance Tracks](#react-performance-tracks)
 - [Compiler IDE Extension](#compiler-ide-extension)
 - [Automatic Effect Dependencies](#automatic-effect-dependencies)
@@ -40,40 +40,40 @@ We're also sharing updates on new features currently in development:
 
 ---
 
-# New Experimental Features {/*new-experimental-features*/}
+# 새로운 실험적 기능 {/*new-experimental-features*/}
 
-View Transitions and Activity are now ready for testing in `react@experimental`. These features have been tested in production and are stable, but the final API may still change as we incorporate feedback.
+View Transitions와 Activity는 이제 `react@experimental`에서 테스트할 준비가 되었습니다. 이러한 기능들은 프로덕션에서 테스트되었으며 안정적이지만, 피드백을 반영하는 과정에서 최종 API가 여전히 변경될 수 있습니다.
 
-You can try them by upgrading React packages to the most recent experimental version:
+가장 최신 실험적 버전으로 React 패키지를 업그레이드하여 사용해볼 수 있습니다:
 
 - `react@experimental`
 - `react-dom@experimental`
 
-Read on to learn how to use these features in your app, or check out the newly published docs:
+앱에서 이러한 기능을 사용하는 방법을 알아보려면 계속 읽어보시거나, 새로 공개된 문서를 확인해보세요:
 
-- [`<ViewTransition>`](/reference/react/ViewTransition): A component that lets you activate an animation for a Transition.
-- [`addTransitionType`](/reference/react/addTransitionType): A function that allows you to specify the cause of a Transition.
-- [`<Activity>`](/reference/react/Activity): A component that lets you hide and show parts of the UI.
+- [`<ViewTransition>`](/reference/react/ViewTransition): Transition에 애니메이션을 활성화할 수 있는 컴포넌트입니다.
+- [`addTransitionType`](/reference/react/addTransitionType): Transition의 원인을 지정할 수 있는 함수입니다.
+- [`<Activity>`](/reference/react/Activity): UI의 일부를 숨기거나 보여줄 수 있는 컴포넌트입니다.
 
 ## View Transitions {/*view-transitions*/}
 
-React View Transitions are a new experimental feature that makes it easier to add animations to UI transitions in your app. Under-the-hood, these animations use the new [`startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition) API available in most modern browsers.
+React View Transitions는 앱의 UI 전환에 애니메이션을 더 쉽게 추가할 수 있게 해주는 새로운 실험적 기능입니다. 내부적으로, 이러한 애니메이션은 대부분의 최신 브라우저에서 사용할 수 있는 새로운 [`startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition) API를 사용합니다.
 
-To opt-in to animating an element, wrap it in the new `<ViewTransition>` component:
+엘리먼트의 애니메이션을 활성화하려면, 새로운 `<ViewTransition>` 컴포넌트로 감싸주세요:
 
 ```js
-// "what" to animate.
+// 애니메이션할 "대상"
 <ViewTransition>
   <div>animate me</div>
 </ViewTransition>
 ```
 
-This new component lets you declaratively define "what" to animate when an animation is activated. 
+이 새로운 컴포넌트를 사용하면 애니메이션이 활성화될 때 무엇을 애니메이션할지 선언적으로 정의할 수 있습니다.
 
-You can define "when" to animate by using one of these three triggers for a View Transition:
+View Transition에 대한 다음 세 가지 트리거 중 하나를 사용해서 "언제" 애니메이션할지 정의할 수 있습니다:
 
 ```js
-// "when" to animate.
+// 애니메이션할 "시점"
 
 // Transitions
 startTransition(() => setState(...));
@@ -87,10 +87,10 @@ const deferred = useDeferredValue(value);
 </Suspense>
 ```
 
-By default, these animations use the [default CSS animations for View Transitions](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#customizing_your_animations) applied (typically a smooth cross-fade). You can use [view transition pseudo-selectors](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#the_view_transition_pseudo-element_tree) to define "how" the animation runs. For example, you can use `*` to change the default animation for all transitions:
+기본적으로, 이러한 애니메이션은 [View Transitions의 기본 CSS 애니메이션](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#customizing_your_animations)이 적용됩니다 (일반적으로 부드러운 크로스 페이드). [view transition 의사 선택자](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#the_view_transition_pseudo-element_tree)를 사용해서 애니메이션이 "어떻게" 실행될지 정의할 수 있습니다. 예를 들어, `*`를 사용해서 모든 전환에 대한 기본 애니메이션을 변경할 수 있습니다:
 
 ```
-// "how" to animate.
+// 애니메이션하는 "방법"
 ::view-transition-old(*) {
   animation: 300ms ease-out fade-out;
 }
@@ -99,16 +99,16 @@ By default, these animations use the [default CSS animations for View Transition
 }
 ```
 
-When the DOM updates due to an animation trigger&mdash;like `startTransition`, `useDeferredValue`, or a `Suspense` fallback switching to content&mdash;React will use [declarative heuristics](/reference/react/ViewTransition#viewtransition) to automatically determine which `<ViewTransition>` components to activate for the animation. The browser will then run the animation that's defined in CSS.
+`startTransition`, `useDeferredValue`, 또는 `Suspense` 폴백이 콘텐츠로 전환되는 것과 같은 애니메이션 트리거로 인해 DOM이 업데이트되면, React는 [선언적 휴리스틱](/reference/react/ViewTransition#viewtransition)을 사용해서 애니메이션을 위해 활성화할 `<ViewTransition>` 컴포넌트를 자동으로 결정합니다. 그러면 브라우저가 CSS에서 정의된 애니메이션을 실행합니다.
 
-If you're familiar with the browser's View Transition API and want to know how React supports it, check out [How does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work) in the docs. 
+브라우저의 View Transition API에 익숙하고 React가 이를 어떻게 지원하는지 알고 싶다면, 문서의 [How does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work)를 확인해보세요.
 
-In this post, let's take a look at a few examples of how to use View Transitions. 
+이번 게시글에서는 View Transitions를 사용하는 몇 가지 예시를 살펴보겠습니다.
 
-We'll start with this app, which doesn't animate any of the following interactions:
-- Click a video to view the details.
-- Click "back" to go back to the feed.
-- Type in the list to filter the videos.
+다음과 같은 상호작용을 애니메이션하지 않는 앱부터 시작하겠습니다:
+- 비디오를 클릭해서 세부 정보를 봅니다.
+- "back"을 클릭해서 피드로 돌아갑니다.
+- 목록에서 타이핑해서 비디오를 필터링합니다.
 
 <Sandpack>
 
@@ -1264,17 +1264,17 @@ root.render(
 
 <Note>
 
-#### View Transitions do not replace CSS and JS driven animations {/*view-transitions-do-not-replace-css-and-js-driven-animations*/}
+#### View Transitions는 CSS와 JS 기반 애니메이션을 대체하지 않습니다 {/*view-transitions-do-not-replace-css-and-js-driven-animations*/}
 
-View Transitions are meant to be used for UI transitions such as navigation, expanding, opening, or re-ordering. They are not meant to replace all the animations in your app.
+View Transitions는 네비게이션, 확장, 열기, 재정렬과 같은 UI 전환에 사용하기 위한 것입니다. 앱의 모든 애니메이션을 대체하기 위한 것은 아닙니다.
 
-In our example app above, notice that there are already animations when you click the "like" button and in the Suspense fallback glimmer. These are good use cases for CSS animations because they are animating a specific element.
+위 예시 앱에서 "like" 버튼을 클릭할 때와 Suspense 폴백 반짝임에 이미 애니메이션이 있는 것을 확인할 수 있습니다. 이들은 특정 엘리먼트를 애니메이션하기 때문에 CSS 애니메이션의 좋은 사용 사례입니다.
 
 </Note>
 
-### Animating navigations {/*animating-navigations*/}
+### 네비게이션 애니메이션 {/*animating-navigations*/}
 
-Our app includes a Suspense-enabled router, with [page transitions already marked as Transitions](/reference/react/useTransition#building-a-suspense-enabled-router), which means navigations are performed with `startTransition`:
+저희 앱에는 Suspense가 활성화된 라우터가 포함되어 있으며, [페이지 전환이 이미 Transitions로 표시되어 있습니다](/reference/react/useTransition#building-a-suspense-enabled-router). 이는 네비게이션이 `startTransition`으로 수행된다는 의미입니다:
 
 ```js
 function navigate(url) {
@@ -1284,19 +1284,18 @@ function navigate(url) {
 }
 ```
 
-`startTransition` is a View Transition trigger, so we can add `<ViewTransition>` to animate between pages:
+`startTransition`은 View Transition 트리거이므로, 페이지 간 애니메이션을 위해 `<ViewTransition>`을 추가할 수 있습니다:
 
 ```js
-// "what" to animate
+// 애니메이션할 "대상"
 <ViewTransition key={url}>
   {url === '/' ? <Home /> : <TalkDetails />}
 </ViewTransition>
 ```
 
-When the `url` changes, the `<ViewTransition>` and new route are rendered. Since the `<ViewTransition>` was updated inside of `startTransition`, the `<ViewTransition>` is activated for an animation.
+`url`이 변경되면, `<ViewTransition>`과 새로운 라우트가 렌더링됩니다. `<ViewTransition>`이 `startTransition` 내부에서 업데이트되었으므로, `<ViewTransition>`이 애니메이션을 위해 활성화됩니다.
 
-
-By default, View Transitions include the browser default cross-fade animation. Adding this to our example, we now have a cross-fade whenever we navigate between pages: 
+기본적으로, View Transitions는 브라우저 기본 크로스 페이드 애니메이션을 포함합니다. 이를 예시에 추가하면, 이제 페이지 간 네비게이션할 때마다 크로스 페이드가 적용됩니다: 
 
 <Sandpack>
 
@@ -14210,21 +14209,21 @@ These are areas we're still exploring, and we'll share more as we make progress.
 
 ---
 
-# Features in development {/*features-in-development*/}
+# 개발 중인 기능 {/*features-in-development*/}
 
-We're also developing features to help solve the common problems below. 
+저희는 아래의 일반적인 문제들을 해결하는 데 도움이 되는 기능들도 개발하고 있습니다.
 
-As we iterate on possible solutions, you may see some potential APIs we're testing being shared based on the PRs we are landing. Please keep in mind that as we try different ideas, we often change or remove different solutions after trying them out. 
+가능한 솔루션을 반복 개발하면서, 저희가 진행하고 있는 PR을 기반으로 테스트 중인 잠재적 API들이 공유되는 것을 보실 수 있습니다. 다양한 아이디어를 시도하면서, 시도해본 후 다른 솔루션을 자주 변경하거나 제거한다는 점을 기억해 주세요.
 
-When the solutions we're working on are shared too early, it can create churn and confusion in the community. To balance being transparent and limiting confusion, we're sharing the problems we're currently developing solutions for, without sharing a particular solution we have in mind. 
+저희가 작업하고 있는 솔루션을 너무 일찍 공유하면, 커뮤니티에 혼란과 혼동을 일으킬 수 있습니다. 투명성과 혼란 제한 사이의 균형을 맞추기 위해, 염두에 두고 있는 특정 솔루션을 공유하지 않고 현재 솔루션을 개발하고 있는 문제들을 공유합니다.
 
-As these features progress, we'll announce them on the blog with docs included so you can try them out. 
+이러한 기능들이 진전을 보이면, 여러분이 시도해볼 수 있도록 문서와 함께 블로그에서 발표하겠습니다.
 
 ## React Performance Tracks {/*react-performance-tracks*/}
 
-We're working on a new set of custom tracks to performance profilers using browser APIs that [allow adding custom tracks](https://developer.chrome.com/docs/devtools/performance/extension) to provide more information about the performance of your React app.
+React 앱의 성능에 대한 더 많은 정보를 제공하기 위해 [커스텀 트랙 추가를 허용하는](https://developer.chrome.com/docs/devtools/performance/extension) 브라우저 API를 사용하여 성능 프로파일러에 새로운 커스텀 트랙 세트를 작업하고 있습니다.
 
-This feature is still in progress, so we're not ready to publish docs to fully release it as an experimental feature yet. You can get a sneak preview when using an experimental version of React, which will automatically add the performance tracks to profiles:
+이 기능은 아직 진행 중이므로, 실험적 기능으로 완전히 출시하기 위한 문서를 발행할 준비가 되지 않았습니다. React의 실험적 버전을 사용하면 미리 보기를 할 수 있으며, 이는 자동으로 프로필에 성능 트랙을 추가합니다:
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
   <picture >
@@ -14237,31 +14236,31 @@ This feature is still in progress, so we're not ready to publish docs to fully r
   </picture>
 </div>
 
-There are a few known issues we plan to address such as performance, and the scheduler track not always "connecting" work across Suspended trees, so it's not quite ready to try. We're also still collecting feedback from early adopters to improve the design and usability of the tracks.
+성능과 스케줄러 트랙이 일시 중단된 트리에서 작업을 항상 "연결"하지 않는 등 해결할 계획인 몇 가지 알려진 문제들이 있어서, 아직 시도할 준비가 완전히 되지 않았습니다. 또한 트랙의 디자인과 사용성을 개선하기 위해 얼리 어답터들로부터 피드백을 계속 수집하고 있습니다.
 
-Once we solve those issues, we'll publish experimental docs and share that it's ready to try.
+이러한 문제들을 해결하면, 실험적 문서를 발행하고 시도할 준비가 되었다고 공유하겠습니다.
 
 ---
 
 ## Automatic Effect Dependencies {/*automatic-effect-dependencies*/}
 
-When we released hooks, we had three motivations:
+hooks를 출시했을 때, 저희는 세 가지 동기가 있었습니다:
 
-- **Sharing code between components**: hooks replaced patterns like render props and higher-order components to allow you to reuse stateful logic without changing your component hierarchy.
-- **Think in terms of function, not lifecycles**: hooks let you split one component into smaller functions based on what pieces are related (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods.
-- **Support ahead-of-time compilation**: hooks were designed to support ahead-of-time compilation with less pitfalls causing unintentional de-optimizations caused by lifecycle methods, and limitations of classes.
+- **컴포넌트 간 코드 공유**: hooks는 render props와 고차 컴포넌트 같은 패턴을 대체하여 컴포넌트 계층을 변경하지 않고도 상태가 있는 로직을 재사용할 수 있게 해주었습니다.
+- **생명주기가 아닌 함수의 관점에서 사고**: hooks는 생명주기 메서드를 기반으로 한 분할을 강제하는 것이 아니라 관련된 부분(구독 설정이나 데이터 가져오기 등)을 기반으로 하나의 컴포넌트를 더 작은 함수로 분할할 수 있게 해주었습니다.
+- **사전 컴파일 지원**: hooks는 생명주기 메서드로 인한 의도하지 않은 최적화 해제 문제와 클래스의 제약사항을 줄이면서 사전 컴파일을 지원하도록 설계되었습니다.
 
-Since their release, hooks have been successful at *sharing code between components*. Hooks are now the favored way to share logic between components, and there are less use cases for render props and higher order components. Hooks have also been successful at supporting features like Fast Refresh that were not possible with class components. 
+출시 이후 hooks는 *컴포넌트 간 코드 공유*에서 성공적이었습니다. Hooks는 이제 컴포넌트 간 로직을 공유하는 선호되는 방법이 되었고, render props와 고차 컴포넌트의 사용 사례는 줄어들었습니다. Hooks는 또한 클래스 컴포넌트로는 불가능했던 Fast Refresh와 같은 기능을 지원하는 데도 성공적이었습니다.
 
-### Effects can be hard {/*effects-can-be-hard*/}
+### Effects는 어려울 수 있습니다 {/*effects-can-be-hard*/}
 
-Unfortunately, some hooks are still hard to think in terms of function instead of lifecycles. Effects specifically are still hard to understand and are the most common pain point we hear from developers. Last year, we spent a significant amount of time researching how Effects were used, and how those use cases could be simplified and easier to understand.
+안타깝게도, 일부 hooks는 여전히 생명주기 대신 함수의 관점에서 사고하기 어렵습니다. 특히 Effects는 여전히 이해하기 어렵고 개발자들로부터 듣는 가장 일반적인 고민거리입니다. 작년에 저희는 Effects가 어떻게 사용되는지, 그리고 이러한 사용 사례가 어떻게 단순화되고 이해하기 쉬워질 수 있는지에 대해 상당한 시간을 연구했습니다.
 
-We found that often, the confusion is from using an Effect when you don't need to. The [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) guide covers many cases for when Effects are not the right solution. However, even when an Effect is the right fit for a problem, Effects can still be harder to understand than class component lifecycles.
+종종 혼란은 필요하지 않을 때 Effect를 사용하는 데서 온다는 것을 발견했습니다. [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) 가이드는 Effects가 올바른 솔루션이 아닌 경우들을 많이 다루고 있습니다. 하지만 Effect가 문제에 적합한 해결책일 때조차도, Effects는 클래스 컴포넌트 생명주기보다 여전히 이해하기 어려울 수 있습니다.
 
-We believe one of the reasons for confusion is that developers to think of Effects from the _component's_ perspective (like a lifecycle), instead of the _Effects_ point of view (what the Effect does).
+혼란의 이유 중 하나는 개발자들이 _Effects_ 관점(Effect가 무엇을 하는지)이 아니라 _컴포넌트의_ 관점(생명주기 같은)에서 Effects를 생각하기 때문이라고 생각합니다.
 
-Let's look at an example [from the docs](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective):
+[문서의 예시](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective)를 살펴보겠습니다:
 
 ```js
 useEffect(() => {
@@ -14275,15 +14274,15 @@ useEffect(() => {
 }, [roomId]);
 ```
 
-Many users would read this code as "on mount, connect to the roomId. whenever `roomId` changes, disconnect to the old room and re-create the connection". However, this is thinking from the component's lifecycle perspective, which means you will need to think of every component lifecycle state to write the Effect correctly. This can be difficult, so it's understandable that Effects seem harder than class lifecycles when using the component perspective.
+많은 사용자들은 이 코드를 "마운트 시에 roomId에 연결하고, `roomId`가 변경될 때마다 이전 방으로부터 연결을 해제하고 새로운 연결을 생성한다"고 읽을 것입니다. 하지만 이는 컴포넌트의 생명주기 관점에서 생각하는 것이며, 이는 Effect를 올바르게 작성하기 위해 모든 컴포넌트 생명주기 상태를 생각해야 한다는 의미입니다. 이는 어려울 수 있으므로, 컴포넌트 관점을 사용할 때 Effects가 클래스 생명주기보다 어려워 보이는 것이 이해할 만합니다.
 
-### Effects without dependencies {/*effects-without-dependencies*/}
+### 의존성 없는 Effects {/*effects-without-dependencies*/}
 
-Instead, it's better to think from the Effect's perspective. The Effect doesn't know about the component lifecycles. It only describes how to start synchronization and how to stop it. When users think of Effects in this way, their Effects tend to be easier to write, and more resilient to being started and stopped as many times as is needed.
+대신 Effect의 관점에서 생각하는 것이 좋습니다. Effect는 컴포넌트 생명주기에 대해 알지 못합니다. 단지 동기화를 시작하는 방법과 중지하는 방법만 설명합니다. 사용자가 이런 식으로 Effects를 생각할 때, 그들의 Effects는 작성하기 더 쉬워지고, 필요한 만큼 여러 번 시작되고 중지되는 것에 더 탄력적이 됩니다.
 
-We spent some time researching why Effects are thought of from the component perspective, and we think one of the reasons is the dependency array. Since you have to write it, it's right there and in your face reminding you of what you're "reacting" to and baiting you into the mental model of 'do this when these values change'.
+Effects가 컴포넌트 관점에서 생각되는 이유를 연구하는 데 시간을 보냈고, 그 이유 중 하나가 의존성 배열이라고 생각합니다. 작성해야 하므로, 바로 거기에 있고 여러분이 무엇에 "반응"하고 있는지를 상기시키며 '이 값들이 변경될 때 이것을 하라'는 멘탈 모델로 유도합니다.
 
-When we released hooks, we knew we could make them easier to use with ahead-of-time compilation. With the React Compiler, you're now able to avoid writing `useCallback` and `useMemo` yourself in most cases. For Effects, the compiler can insert the dependencies for you:
+hooks를 출시할 때, 사전 컴파일로 사용하기 더 쉽게 만들 수 있다는 것을 알고 있었습니다. React Compiler를 사용하면, 이제 대부분의 경우 `useCallback`과 `useMemo`를 직접 작성하는 것을 피할 수 있습니다. Effects의 경우, 컴파일러가 의존성을 자동으로 삽입할 수 있습니다:
 
 ```js
 useEffect(() => {
@@ -14292,42 +14291,42 @@ useEffect(() => {
   return () => {
     connection.disconnect();
   };
-}); // compiler inserted dependencies. 
+}); // 컴파일러가 의존성을 삽입했습니다.
 ```
 
-With this code, the React Compiler can infer the dependencies for you and insert them automatically so you don't need to see or write them. With features like [the IDE extension](#compiler-ide-extension) and [`useEffectEvent`](/reference/react/experimental_useEffectEvent), we can provide a CodeLens to show you what the Compiler inserted for times you need to debug, or to optimize by removing a dependency. This helps reinforce the correct mental model for writing Effects, which can run at any time to synchronize your component or hook's state with something else.
+이 코드를 사용하면, React Compiler가 의존성을 추론하고 자동으로 삽입하므로 보거나 작성할 필요가 없습니다. [IDE 확장 프로그램](#compiler-ide-extension)과 [`useEffectEvent`](/reference/react/experimental_useEffectEvent) 같은 기능을 통해, 디버깅이 필요한 시점이나 의존성을 제거하여 최적화할 때 Compiler가 삽입한 것을 보여주는 CodeLens를 제공할 수 있습니다. 이는 언제든지 실행되어 컴포넌트나 hook의 상태를 다른 것과 동기화할 수 있는 Effects를 작성하는 올바른 멘탈 모델을 강화하는 데 도움이 됩니다.
 
-Our hope is that automatically inserting dependencies is not only easier to write, but that it also makes them easier to understand by forcing you to think in terms of what the Effect does, and not in component lifecycles. 
+저희의 희망은 의존성을 자동으로 삽입하는 것이 작성하기 더 쉬울 뿐만 아니라, 컴포넌트 생명주기가 아닌 Effect가 하는 일의 관점에서 생각하도록 강제함으로써 이해하기도 더 쉽게 만든다는 것입니다.
 
 ---
 
 ## Compiler IDE Extension {/*compiler-ide-extension*/}
 
-Earlier this week [we shared](/blog/2025/04/21/react-compiler-rc) the React Compiler release candidate, and we're working towards shipping the first SemVer stable version of the compiler in the coming months.
+이번 주 초에 [React Compiler 릴리스 후보를 공유했으며](/blog/2025/04/21/react-compiler-rc), 앞으로 몇 달 안에 컴파일러의 첫 번째 SemVer 안정 버전을 출시하기 위해 작업하고 있습니다.
 
-We've also begun exploring ways to use the React Compiler to provide information that can improve understanding and debugging your code. One idea we've started exploring is a new experimental LSP-based React IDE extension powered by React Compiler, similar to the extension used in [Lauren Tan's React Conf talk](https://conf2024.react.dev/talks/5).
+또한 React Compiler를 사용해서 코드 이해와 디버깅을 향상시킬 수 있는 정보를 제공하는 방법을 탐구하기 시작했습니다. 저희가 탐구하기 시작한 아이디어 중 하나는 [Lauren Tan의 React Conf 발표](https://conf2024.react.dev/talks/5)에서 사용된 확장 프로그램과 유사한, React Compiler를 기반으로 하는 새로운 실험적 LSP 기반 React IDE 확장 프로그램입니다.
 
-Our idea is that we can use the compiler's static analysis to provide more information, suggestions, and optimization opportunities directly in your IDE. For example, we can provide diagnostics for code breaking the Rules of React, hovers to show if components and hooks were optimized by the compiler, or a CodeLens to see [automatically inserted Effect dependencies](#automatic-effect-dependencies).
+저희의 아이디어는 컴파일러의 정적 분석을 사용해서 IDE에서 직접 더 많은 정보, 제안, 최적화 기회를 제공할 수 있다는 것입니다. 예를 들어, React의 규칙을 위반하는 코드에 대한 진단을 제공하거나, 컴포넌트와 hooks가 컴파일러에 의해 최적화되었는지 보여주는 호버, 또는 [자동으로 삽입된 Effect 의존성](#automatic-effect-dependencies)을 볼 수 있는 CodeLens를 제공할 수 있습니다.
 
-The IDE extension is still an early exploration, but we'll share our progress in future updates.
+IDE 확장 프로그램은 아직 초기 탐구 단계이지만, 향후 업데이트에서 진행 상황을 공유하겠습니다.
 
 ---
 
 ## Fragment Refs {/*fragment-refs*/}
 
-Many DOM APIs like those for event management, positioning, and focus are difficult to compose when writing with React. This often leads developers to reach for Effects, managing multiple Refs, by using APIs like `findDOMNode` (removed in React 19).
+이벤트 관리, 위치 지정, 포커스를 위한 DOM API들은 React로 작성할 때 구성하기 어렵습니다. 이는 종종 개발자들이 Effects에 의존하거나, 여러 Refs를 관리하거나, `findDOMNode`(React 19에서 제거됨)와 같은 API를 사용하게 만듭니다.
 
-We are exploring adding refs to Fragments that would point to a group of DOM elements, rather than just a single element. Our hope is that this will simplify managing multiple children and make it easier to write composable React code when calling DOM APIs.
+저희는 단일 엘리먼트가 아닌 DOM 엘리먼트 그룹을 가리키는 Fragments에 refs를 추가하는 것을 탐구하고 있습니다. 저희의 희망은 이것이 여러 자식을 관리하는 것을 단순화하고 DOM API를 호출할 때 구성 가능한 React 코드를 작성하기 더 쉽게 만드는 것입니다.
 
-Fragment refs are still being researched. We'll share more when we're closer to having the final API finished.
+Fragment refs는 아직 연구 중입니다. 최종 API가 완성에 가까워지면 더 많은 내용을 공유하겠습니다.
 
 ---
 
 ## Gesture Animations {/*gesture-animations*/}
 
-We're also researching ways to enhance View Transitions to support gesture animations such as swiping to open a menu, or scroll through a photo carousel. 
+저희는 또한 메뉴를 열기 위한 스와이프나 사진 캐러셀을 스크롤하는 것과 같은 제스처 애니메이션을 지원하기 위해 View Transitions를 향상시키는 방법을 연구하고 있습니다.
 
-Gestures present new challenges for a few reasons:
+제스처는 몇 가지 이유로 새로운 도전을 제시합니다:
 
 - **Gestures are continuous**: as you swipe the animation is tied to your finger placement time, rather than triggering and running to completion.
 - **Gestures don't complete**: when you release your finger gesture animations can run to completion, or revert to their original state (like when you only partially open a menu) depending on how far you go.
