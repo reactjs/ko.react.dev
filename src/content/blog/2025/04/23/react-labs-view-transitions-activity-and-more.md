@@ -26,12 +26,12 @@ React Conf 2025가 네바다주 헨더슨에서 10월 7-8일에 개최될 예정
 
 </Note>
 
-오늘 저희는 테스트할 준비가 완료된 두 가지 새로운 실험적 기능에 대한 문서를 공개하게 되어 기쁩니다:
+오늘 저희는 테스트할 준비가 완료된 두 가지 새로운 실험적 기능에 대한 문서를 공개하게 되어 기쁩니다.
 
 - [View Transitions](#view-transitions)
 - [Activity](#activity)
 
-또한 현재 개발 중인 새로운 기능들에 대한 업데이트도 공유합니다:
+또한 현재 개발 중인 새로운 기능들에 대한 업데이트도 공유합니다.
 - [React Performance Tracks](#react-performance-tracks)
 - [Compiler IDE Extension](#compiler-ide-extension)
 - [Automatic Effect Dependencies](#automatic-effect-dependencies)
@@ -44,12 +44,12 @@ React Conf 2025가 네바다주 헨더슨에서 10월 7-8일에 개최될 예정
 
 View Transitions와 Activity는 이제 `react@experimental`에서 테스트할 준비가 되었습니다. 이러한 기능들은 프로덕션에서 테스트되었으며 안정적이지만, 피드백을 반영하는 과정에서 최종 API가 여전히 변경될 수 있습니다.
 
-가장 최신 실험적 버전으로 React 패키지를 업그레이드하여 사용해볼 수 있습니다:
+가장 최신 실험적 버전으로 React 패키지를 업그레이드하여 사용해볼 수 있습니다.
 
 - `react@experimental`
 - `react-dom@experimental`
 
-앱에서 이러한 기능을 사용하는 방법을 알아보려면 계속 읽어보시거나, 새로 공개된 문서를 확인해보세요:
+앱에서 이러한 기능을 사용하는 방법을 알아보려면 계속 읽어보시거나, 새로 공개된 문서를 확인해보세요.
 
 - [`<ViewTransition>`](/reference/react/ViewTransition): Transition에 애니메이션을 활성화할 수 있는 컴포넌트입니다.
 - [`addTransitionType`](/reference/react/addTransitionType): Transition의 원인을 지정할 수 있는 함수입니다.
@@ -59,7 +59,7 @@ View Transitions와 Activity는 이제 `react@experimental`에서 테스트할 �
 
 React View Transitions는 앱의 UI 전환에 애니메이션을 더 쉽게 추가할 수 있게 해주는 새로운 실험적 기능입니다. 내부적으로, 이러한 애니메이션은 대부분의 최신 브라우저에서 사용할 수 있는 새로운 [`startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition) API를 사용합니다.
 
-엘리먼트의 애니메이션을 활성화하려면, 새로운 `<ViewTransition>` 컴포넌트로 감싸주세요:
+엘리먼트의 애니메이션을 활성화하려면, 새로운 `<ViewTransition>` 컴포넌트로 감싸주세요.
 
 ```js
 // 애니메이션할 "대상"
@@ -70,7 +70,7 @@ React View Transitions는 앱의 UI 전환에 애니메이션을 더 쉽게 추�
 
 이 새로운 컴포넌트를 사용하면 애니메이션이 활성화될 때 무엇을 애니메이션할지 선언적으로 정의할 수 있습니다.
 
-View Transition에 대한 다음 세 가지 트리거 중 하나를 사용해서 "언제" 애니메이션할지 정의할 수 있습니다:
+View Transition에 대한 다음 세 가지 트리거 중 하나를 사용해서 "언제" 애니메이션할지 정의할 수 있습니다.
 
 ```js
 // 애니메이션할 "시점"
@@ -87,7 +87,7 @@ const deferred = useDeferredValue(value);
 </Suspense>
 ```
 
-기본적으로, 이러한 애니메이션은 [View Transitions의 기본 CSS 애니메이션](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#customizing_your_animations)이 적용됩니다 (일반적으로 부드러운 크로스 페이드). [view transition 의사 선택자](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#the_view_transition_pseudo-element_tree)를 사용해서 애니메이션이 "어떻게" 실행될지 정의할 수 있습니다. 예를 들어, `*`를 사용해서 모든 전환에 대한 기본 애니메이션을 변경할 수 있습니다:
+기본적으로, 이러한 애니메이션은 [View Transitions의 기본 CSS 애니메이션](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#customizing_your_animations)이 적용됩니다 (일반적으로 부드러운 크로스 페이드). [view transition 의사 선택자](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#the_view_transition_pseudo-element_tree)를 사용해서 애니메이션이 "어떻게" 실행될지 정의할 수 있습니다. 예를 들어, `*`를 사용해서 모든 전환에 대한 기본 애니메이션을 변경할 수 있습니다.
 
 ```
 // 애니메이션하는 "방법"
@@ -105,7 +105,7 @@ const deferred = useDeferredValue(value);
 
 이번 게시글에서는 View Transitions를 사용하는 몇 가지 예시를 살펴보겠습니다.
 
-다음과 같은 상호작용을 애니메이션하지 않는 앱부터 시작하겠습니다:
+다음과 같은 상호작용을 애니메이션하지 않는 앱부터 시작하겠습니다.
 - 비디오를 클릭해서 세부 정보를 봅니다.
 - "back"을 클릭해서 피드로 돌아갑니다.
 - 목록에서 타이핑해서 비디오를 필터링합니다.
@@ -1274,7 +1274,7 @@ View Transitions는 네비게이션, 확장, 열기, 재정렬과 같은 UI 전�
 
 ### 네비게이션 애니메이션 {/*animating-navigations*/}
 
-저희 앱에는 Suspense가 활성화된 라우터가 포함되어 있으며, [페이지 전환이 이미 Transitions로 표시되어 있습니다](/reference/react/useTransition#building-a-suspense-enabled-router). 이는 네비게이션이 `startTransition`으로 수행된다는 의미입니다:
+저희 앱에는 Suspense가 활성화된 라우터가 포함되어 있으며, [페이지 전환이 이미 Transitions로 표시되어 있습니다](/reference/react/useTransition#building-a-suspense-enabled-router). 이는 네비게이션이 `startTransition`으로 수행된다는 의미입니다.
 
 ```js
 function navigate(url) {
@@ -1295,7 +1295,8 @@ function navigate(url) {
 
 `url`이 변경되면, `<ViewTransition>`과 새로운 라우트가 렌더링됩니다. `<ViewTransition>`이 `startTransition` 내부에서 업데이트되었으므로, `<ViewTransition>`이 애니메이션을 위해 활성화됩니다.
 
-기본적으로, View Transitions는 브라우저 기본 크로스 페이드 애니메이션을 포함합니다. 이를 예시에 추가하면, 이제 페이지 간 네비게이션할 때마다 크로스 페이드가 적용됩니다: 
+
+기본적으로, View Transitions는 브라우저 기본 크로스 페이드 애니메이션을 포함합니다. 이를 예시에 추가하면, 이제 페이지 간 네비게이션할 때마다 크로스 페이드가 적용됩니다.
 
 <Sandpack>
 
@@ -14223,7 +14224,7 @@ These are areas we're still exploring, and we'll share more as we make progress.
 
 React 앱의 성능에 대한 더 많은 정보를 제공하기 위해 [커스텀 트랙 추가를 허용하는](https://developer.chrome.com/docs/devtools/performance/extension) 브라우저 API를 사용하여 성능 프로파일러에 새로운 커스텀 트랙 세트를 작업하고 있습니다.
 
-이 기능은 아직 진행 중이므로, 실험적 기능으로 완전히 출시하기 위한 문서를 발행할 준비가 되지 않았습니다. React의 실험적 버전을 사용하면 미리 보기를 할 수 있으며, 이는 자동으로 프로필에 성능 트랙을 추가합니다:
+이 기능은 아직 진행 중이므로, 실험적 기능으로 완전히 출시하기 위한 문서를 발행할 준비가 되지 않았습니다. React의 실험적 버전을 사용하면 미리 보기를 할 수 있으며, 이는 자동으로 프로필에 성능 트랙을 추가합니다.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
   <picture >
