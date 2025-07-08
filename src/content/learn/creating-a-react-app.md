@@ -36,7 +36,7 @@ Next.js는 [Vercel](https://vercel.com/)에서 유지 관리합니다. [Next.js 
 
 ### React Router (v7) {/*react-router-v7*/}
 
-**[React Router](https://reactrouter.com/start/framework/installation)는 React에서 가장 인기인는 라우팅 라이브러리이며 Vite와 함께 사용하면 풀스택 React 프레임워크를 만들 수 있습니다**. 표준 Web API를 강조하고 다양한 자바스크립트 런타임과 플랫폼을 위한 [준비된 배포 템플릿](https://github.com/remix-run/react-router-templates)이 있습니다.
+**[React Router](https://reactrouter.com/start/framework/installation)는 React에서 가장 인기 있는 라우팅 라이브러리이며 Vite와 함께 사용하면 풀스택 React 프레임워크를 만들 수 있습니다**. 표준 Web API를 강조하고 다양한 자바스크립트 런타임과 플랫폼을 위한 [준비된 배포 템플릿](https://github.com/remix-run/react-router-templates)이 있습니다.
 
 새로운 React Router 프레임워크를 생성하려면 다음 명령을 사용하세요.
 
