@@ -7,7 +7,7 @@ version: experimental
 
 **이 API는 실험적이며 아직 React의 안정 버전에서 사용할 수 없습니다.**
 
-React 패키지를 최신 실험적 버전으로 업그레이드하여 시도해볼 수 있습니다.
+React 패키지를 최신 실험적 버전으로 업그레이드하여 시도해 볼 수 있습니다.
 
 - `react@experimental`
 - `react-dom@experimental`
@@ -19,7 +19,7 @@ React의 실험적 버전에는 버그가 포함될 수 있습니다. 프로덕�
 
 <Intro>
 
-`<Activity>`를 사용하면 UI의 일부를 숨기거나 보여줄 수 있습니다.
+`<Activity>`를 사용하면 UI 일부를 숨기거나 보여줄 수 있습니다.
 
 
 ```js
@@ -38,7 +38,7 @@ React의 실험적 버전에는 버그가 포함될 수 있습니다. 프로덕�
 
 ### `<Activity>` {/*activity*/}
 
-UI의 일부를 `<Activity>`로 감싸서 표시 상태를 관리할 수 있습니다.
+UI 일부를 `<Activity>`로 감싸서 표시 상태를 관리할 수 있습니다.
 
 ```js
 import {unstable_Activity as Activity} from 'react';
@@ -48,7 +48,7 @@ import {unstable_Activity as Activity} from 'react';
 </Activity>
 ```
 
-"hidden" 상태일 때 `<Activity />`의 `children`은 페이지에 표시되지 않습니다. 새로운 `<Activity>`가 "hidden" 상태로 마운트되면 페이지의 표시되는 콘텐츠를 차단하지 않으면서 낮은 우선순위로 콘텐츠를 사전 렌더링하지만, Effect를 생성하여 마운트하지는 않습니다. "visible" Activity가 "hidden"으로 전환되면 모든 Effect를 제거하여 개념적으로는 마운트 해제되지만 상태는 저장됩니다. 이를 통해 "hidden" Activity의 상태를 재생성하지 않고도 "visible"과 "hidden" 상태 간의 빠른 전환이 가능합니다.
+"hidden" 상태일 때 `<Activity />`의 `children`은 페이지에 표시되지 않습니다. 새로운 `<Activity>`가 "hidden" 상태로 마운트되면 페이지의 표시되는 콘텐츠를 차단하지 않으면서 낮은 우선순위로 콘텐츠를 사전 렌더링하지만, Effect를 생성하여 마운트하지는 않습니다. "visible" Activity가 "hidden"으로 전환되면 모든 Effect를 제거하여 개념적으로는 마운트 해제되지만, 상태는 저장됩니다. 이를 통해 "hidden" Activity의 상태를 재생성하지 않고도 "visible"과 "hidden" 상태 간의 빠른 전환이 가능합니다.
 
 앞으로는 메모리 등 리소스 상황에 따라, "hidden" Activity의 상태가 자동으로 제거될 수 있습니다.
 
@@ -60,7 +60,7 @@ import {unstable_Activity as Activity} from 'react';
 #### 주의 사항 {/*caveats*/}
 
 - 숨겨진 상태에서 `<Activity>`의 `children`은 페이지에 숨겨집니다.
-- `<Activity>`는 "visible"에서 "hidden"으로 전환할 때 React나 DOM 상태를 제거하지 않고 모든 Effect를 마운트 해제합니다. 이는 마운트 시 한 번만 실행될 것으로 예상되는 Effect가 "hidden"에서 "visible"로 전환할 때 다시 실행됨을 의미합니다. 개념적으로는 "hidden" Activity는 마운트 해제되지만 파괴되지는 않습니다. 이러한 동작으로 인한 예상치 못한 부작용을 잡기 위해 [`<StrictMode>`](/reference/react/StrictMode)를 사용하는 것을 추천합니다.
+- `<Activity>`는 "visible"에서 "hidden"으로 전환할 때 React나 DOM 상태를 제거하지 않고 모든 Effect를 마운트 해제합니다. 이는 마운트 시 한 번만 실행될 것으로 예상되는 Effect가 "hidden"에서 "visible"로 전환할 때 다시 실행됨을 의미합니다. 개념적으로는 "hidden" Activity는 마운트 해제되지만, 제거되지는 않습니다. 이러한 동작으로 인한 예상치 못한 부작용을 잡기 위해 [`<StrictMode>`](/reference/react/StrictMode)를 사용하는 것을 추천합니다.
 - `<ViewTransition>`과 함께 사용할 때 전환에서 나타나는 숨겨진 Activity는 "enter" 애니메이션을 활성화합니다. 전환에서 숨겨지는 표시되는 Activity는 "exit" 애니메이션을 활성화합니다.
 - `<Activity mode="hidden">`으로 감싸진 UI 부분은 SSR 응답에 포함되지 않습니다.
 - `<Activity mode="visible">`으로 감싸진 UI 부분은 다른 콘텐츠보다 낮은 우선순위로 하이드레이션됩니다.
@@ -71,7 +71,7 @@ import {unstable_Activity as Activity} from 'react';
 
 ### UI 일부 사전 렌더링하기 {/*pre-render-part-of-the-ui*/}
 
-`<Activity mode="hidden">`을 사용하여 UI의 일부를 사전 렌더링할 수 있습니다.
+`<Activity mode="hidden">`을 사용하여 UI 일부를 사전 렌더링할 수 있습니다.
 
 ```js
 <Activity mode={tab === "posts" ? "visible" : "hidden"}>
@@ -79,9 +79,9 @@ import {unstable_Activity as Activity} from 'react';
 </Activity>
 ```
 
-Activity가 `mode="hidden"`으로 렌더링되면 `children`은 페이지에 표시되지 않지만 페이지의 표시되는 콘텐츠보다 낮은 우선순위로 렌더링됩니다.
+Activity가 `mode="hidden"`으로 렌더링되면 `children`은 페이지에 표시되지 않지만, 페이지의 표시되는 콘텐츠보다 낮은 우선순위로 렌더링 됩니다.
 
-나중에 `mode`가 "visible"로 전환되면 사전 렌더링된 자식 컴포넌트가 마운트되고 표시됩니다. 이를 통해 사용자가 다음에 상호작용할 가능성이 높은 UI 부분을 미리 준비하여 로딩 시간을 줄일 수 있습니다.
+나중에 `mode`가 "visible"로 전환되면 사전 렌더링 된 자식 컴포넌트가 마운트되고 표시됩니다. 이를 통해 사용자가 다음에 상호작용을 할 가능성이 높은 UI 부분을 미리 준비하여 로딩 시간을 줄일 수 있습니다.
 
 다음은 [`useTransition`](/reference/react/useTransition#preventing-unwanted-loading-indicators)에서 가져온 예시입니다. `PostsTab` 컴포넌트는 `use`를 사용하여 일부 데이터를 가져옵니다. "Posts" 탭을 클릭하면 `PostsTab` 컴포넌트가 일시 중단되어 버튼 로딩 상태가 나타납니다.
 
@@ -481,7 +481,7 @@ b { display: inline-block; margin-right: 10px; }
 </Activity>
 ```
 
-Activity가 `mode="visible"`에서 "hidden"으로 전환되면 `children`은 페이지에서 숨겨지고 모든 Effect를 제거하여 마운트 해제되지만 React와 DOM 상태는 유지됩니다.
+Activity가 `mode="visible"`에서 "hidden"으로 전환되면 `children`은 페이지에서 숨겨지고 모든 Effect를 제거하여 마운트 해제되지만, React와 DOM 상태는 유지됩니다.
 
 나중에 `mode`가 "visible"로 전환되면 저장된 상태가 모든 Effect를 생성하여 자식 컴포넌트를 마운트할 때 재사용됩니다. 이를 통해 사용자가 다시 상호작용할 가능성이 높은 UI 부분의 상태를 유지하여 DOM이나 React 상태를 유지할 수 있습니다.
 
@@ -876,7 +876,7 @@ b { display: inline-block; margin-right: 10px; }
 
 ### Activity가 숨겨져 있을 때 Effect가 마운트되지 않습니다 {/*effects-dont-mount-when-an-activity-is-hidden*/}
 
-`<Activity>`가 "hidden"일 때 모든 Effect가 마운트 해제됩니다. 개념적으로는 컴포넌트가 마운트 해제되지만 React는 나중에 사용할 상태를 저장합니다.
+`<Activity>`가 "hidden"일 때 모든 Effect가 마운트 해제됩니다. 개념적으로는 컴포넌트가 마운트 해제되지만, React는 나중에 사용할 상태를 저장합니다.
 
 이는 Activity의 기능입니다. 숨겨진 UI 부분에 대한 구독이 이루어지지 않아 숨겨진 콘텐츠에 대한 작업량이 줄어들기 때문입니다. 또한 비디오 일시 정지와 같은 정리 작업(Activity 없이 마운트 해제했을 때 예상되는 동작)이 실행됩니다. Activity가 "visible"로 전환되면 Effect를 생성하여 마운트하고, 이때 구독하고 비디오를 재생합니다.
 
@@ -1156,6 +1156,6 @@ video { width: 300px; margin-top: 10px; }
 
 이러한 이유로 Activity를 개념적으로는 컴포넌트를 "마운트 해제"하고 "재마운트"하되 React나 DOM 상태는 나중에 사용할 수 있도록 저장하는 것으로 생각하는 것이 좋습니다. 실제로는 [You Might Not Need an Effect](learn/you-might-not-need-an-effect) 가이드를 따랐다면 예상대로 작동합니다. 문제가 있는 Effect를 적극적으로 찾으려면 Activity 마운트 해제와 마운트를 적극적으로 수행하여 예상치 못한 부작용을 잡아내는 [`<StrictMode>`](/reference/react/StrictMode)를 추가하는 것을 추천합니다.
 
-### 숨겨진 Activity가 SSR에서 렌더링되지 않습니다 {/*my-hidden-activity-is-not-rendered-in-ssr*/}
+### 숨겨진 Activity가 SSR에서 렌더링 되지 않습니다 {/*my-hidden-activity-is-not-rendered-in-ssr*/}
 
 서버 사이드 렌더링 중에 `<Activity mode="hidden">`을 사용하면 Activity의 콘텐츠가 SSR 응답에 포함되지 않습니다. 이는 콘텐츠가 페이지에 표시되지 않고 초기 렌더링에 필요하지 않기 때문입니다. SSR 응답에 콘텐츠를 포함해야 한다면 [`useDeferredValue`](/reference/react/useDeferredValue)를 사용하여 콘텐츠의 렌더링을 지연시키는 것과 같은 다른 접근 방법을 사용할 수 있습니다.
