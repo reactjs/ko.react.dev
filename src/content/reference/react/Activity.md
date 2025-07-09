@@ -55,7 +55,7 @@ import {unstable_Activity as Activity} from 'react';
 #### Props {/*props*/}
 
 * `children`: 실제로 렌더링하려는 UI입니다.
-* **optional** `mode`: "visible" 또는 "hidden" 중 하나입니다. 기본값은 "visible"입니다. "hidden"일 때는 자식 컴포넌트의 업데이트가 낮은 우선순위로 지연됩니다. 컴포넌트는 Activity가 "visible"로 전환될 때까지 Effect를 생성하지 않습니다. "visible" Activity가 "hidden"으로 전환되면 Effect가 제거됩니다.
+* **optional** `mode`: "visible" 또는 "hidden" 중 하나입니다. 기본값은 "visible"입니다. "hidden"일 때는 자식 컴포넌트의 업데이트가 낮은 우선순위로 지연됩니다. 컴포넌트는 Activity가 "visible"로 전환할 때까지 Effect를 생성하지 않습니다. "visible" Activity가 "hidden"으로 전환되면 Effect가 제거됩니다.
 
 #### 주의 사항 {/*caveats*/}
 
@@ -1047,7 +1047,7 @@ video { width: 300px; margin-top: 10px; }
 
 이는 Activity가 숨겨진 상태에서 Effect를 마운트했을 때 발생하는 일과 유사합니다. 마찬가지로 Activity가 숨길 때 Effect를 마운트 해제하지 않으면 비디오가 백그라운드에서 계속 재생됩니다.
 
-Activity는 처음에 "hidden" 상태로 렌더링될 때 Effect를 생성하지 않고 "visible"에서 "hidden"으로 전환할 때 모든 Effect를 제거함으로써 이 문제를 해결합니다.
+Activity는 처음에 "hidden" 상태로 렌더링할 때 Effect를 생성하지 않고 "visible"에서 "hidden"으로 전환할 때 모든 Effect를 제거함으로써 이 문제를 해결합니다.
 
 
 <Sandpack>
