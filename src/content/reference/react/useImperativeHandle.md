@@ -4,7 +4,7 @@ title: useImperativeHandle
 
 <Intro>
 
-`useImperativeHandle`은 [ref](/learn/manipulating-the-dom-with-refs)로 노출되는 핸들을 사용자가 직접 정의할 수 있게 해주는 React 훅입니다.
+`useImperativeHandle`은 [Ref](/learn/manipulating-the-dom-with-refs)로 노출되는 핸들을 사용자가 직접 정의할 수 있게 해주는 React Hook입니다.
 
 ```js
 useImperativeHandle(ref, createHandle, dependencies?)
@@ -20,7 +20,7 @@ useImperativeHandle(ref, createHandle, dependencies?)
 
 ### `useImperativeHandle(ref, createHandle, dependencies?)` {/*useimperativehandle*/}
 
-컴포넌트의 최상위 레벨에서 `useImperativeHandle` 을 호출하여 노출할 ref 핸들을 사용자가 직접 정의할 수 있습니다.
+컴포넌트의 최상위 레벨에서 `useImperativeHandle`을 호출하여 노출할 Ref 핸들을 사용자가 직접 정의할 수 있습니다.
 
 ```js
 import { useImperativeHandle } from 'react';
@@ -38,16 +38,15 @@ function MyInput({ ref }) {
 
 #### 매개변수 {/*parameters*/}
 
-* `ref`: `MyInput` 컴포넌트의 prop으로 받은 `ref`입니다.
+* `ref`: `MyInput` 컴포넌트의 Prop으로 받은 `ref`입니다.
 
-* `createHandle`: 인수가 없고 노출하려는 ref 핸들을 반환하는 함수입니다. 해당 ref 핸들은 어떠한 유형이든 될 수 있습니다. 일반적으로 노출하려는 메서드가 있는 객체를 반환합니다.
+* `createHandle`: 인수가 없고 노출하려는 Ref 핸들을 반환하는 함수입니다. 해당 Ref 핸들은 어떠한 유형이든 될 수 있습니다. 일반적으로 노출하려는 메서드가 있는 객체를 반환합니다.
 
-* **(선택적)** `dependencies`: `createHandle` 코드 내에서 참조하는 모든 반응형 값을 나열한 목록입니다. 반응형 값은 props, state 및 컴포넌트 내에서 직접 선언한 모든 변수와 함수를 포함합니다. [React에 대한 린터를 구성한 경우](/learn/editor-setup#linting) 모든 반응형 값이 올바르게 의존성으로 지정되었는지 확인합니다. 의존성 목록은 항상 일정한 수의 항목을 가지고 `[dep1, dep2, dep3]`와 같이 인라인으로 작성되어야 합니다. React는 각 의존성을 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 사용하여 이전 값과 비교합니다. 리렌더링으로 인해 일부 의존성이 변경되거나 이 인수를 생략한 경우 `createHandle`함수가 다시 실행되고 새로 생성된 핸들이 ref에 할당됩니다.
+* **(선택적)** `dependencies`: `createHandle` 코드 내에서 참조하는 모든 반응형 값을 나열한 목록입니다. 반응형 값은 Props, State 및 컴포넌트 내에서 직접 선언한 모든 변수와 함수를 포함합니다. [React에 대한 린터<sup>Linter</sup>를 구성한 경우](/learn/editor-setup#linting), 모든 반응형 값이 올바르게 의존성으로 지정되었는지 확인합니다. 의존성 목록은 항상 일정한 수의 항목을 가지고 `[dep1, dep2, dep3]`와 같이 인라인으로 작성되어야 합니다. React는 각 의존성을 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교를 사용하여 이전 값과 비교합니다. 리렌더링으로 인해 일부 의존성이 변경되거나, 이 인수를 생략한 경우 `createHandle` 함수가 다시 실행되고 새로 생성된 핸들이 Ref에 할당됩니다.
 
 <Note>
 
-React 19 부터 [`ref`를 prop으로 받을 수 있습니다.](/blog/2024/12/05/react-19#ref-as-a-prop) React 18 또는 그 이전 버전에서는 `ref`를 받기위해 [`forwardRef`](/reference/react/forwardRef)를 사용해야 합니다.
-Starting with React 19, [`ref` is available as a prop.](/blog/2024/12/05/react-19#ref-as-a-prop) In React 18 and earlier, it was necessary to get the `ref` from [`forwardRef`.](/reference/react/forwardRef)
+React 19 부터 [`ref`를 Prop으로 받을 수 있습니다.](/blog/2024/12/05/react-19#ref-as-a-prop) React 18 또는 그 이전 버전에서는 `ref`를 받기위해 [`forwardRef`](/reference/react/forwardRef)를 사용해야 합니다.
 
 </Note>
 
@@ -59,11 +58,9 @@ Starting with React 19, [`ref` is available as a prop.](/blog/2024/12/05/react-1
 
 ## 사용법 {/*usage*/}
 
-### 부모 컴포넌트에 커스텀 ref핸들 노출 {/*exposing-a-custom-ref-handle-to-the-parent-component*/}
+### 부모 컴포넌트에 커스텀 Ref 핸들 노출 {/*exposing-a-custom-ref-handle-to-the-parent-component*/}
 
-기본적으로 컴포넌트는 자식 컴포넌트의 DOM 노드를 부모 컴포넌트에 노출하지 않습니다. 예를 들어 `MyInput`의 부모 컴포넌트가 `<input>` DOM 노드에 [접근하려면](/learn/manipulating-the-dom-with-refs) [`forwardRef`](/reference/react/forwardRef)를 사용하여 선택적으로 참조에 포함해야 합니다.
-
-To expose a DOM node to the parent element, pass in the `ref` prop to the node. {/*TODO*/}
+부모 엘리먼트에 DOM 노드를 노출하려면 해당 노드에 `ref` Prop을 전달해야 합니다.
 
 ```js {2}
 function MyInput({ ref }) {
@@ -71,9 +68,7 @@ function MyInput({ ref }) {
 };
 ```
 
-위의 코드에서 [`MyInput`에 대한 ref는 `<input>` DOM 노드를 받게 됩니다.](/reference/react/forwardRef#exposing-a-dom-node-to-the-parent-component) 그러나 대신 사용자 지정 값을 노출할 수 있습니다. 노출된 핸들을 사용자 정의하려면 컴포넌트의 최상위 레벨에서 `useImperativeHandle`을 호출하세요.
-
-With the code above, [a ref to `MyInput` will receive the `<input>` DOM node.](/learn/manipulating-the-dom-with-refs) However, you can expose a custom value instead. To customize the exposed handle, call `useImperativeHandle` at the top level of your component:
+위의 코드에서 [`MyInput`에 대한 Ref는 `<input>` DOM 노드를 받게 됩니다.](/reference/react/forwardRef#exposing-a-dom-node-to-the-parent-component) 그러나 대신 사용자 지정 값을 노출할 수 있습니다. 노출된 핸들을 사용자 정의하려면 컴포넌트의 최상위 레벨에서 `useImperativeHandle`을 호출하세요.
 
 ```js {4-8}
 import { useImperativeHandle } from 'react';
@@ -91,9 +86,7 @@ function MyInput({ ref }) {
 
 위의 코드에서 `<input>`에 대한 `ref`는 더이상 전달되지 않습니다.
 
-Note that in the code above, the `ref` is no longer passed to the `<input>`. {/*TODO*/}
-
-예를 들어 전체 `<input>` DOM 노드를 노출하지 않고 `focus`와 `scrollIntoView`의 두 메서드만을 노출하고 싶다고 가정해 봅시다. 그러기 위해서는 실제 브라우저 DOM을 별도의 ref에 유지해야 합니다. 그리고 `useImperativeHandle`을 사용하여 부모 컴포넌트에서 호출할 메서드만 있는 핸들을 노출합니다.
+예를 들어 전체 `<input>` DOM 노드를 노출하지 않고 `focus`와 `scrollIntoView`의 두 메서드만을 노출하고 싶다고 가정해 봅시다. 그러기 위해서는 실제 브라우저 DOM을 별도의 Ref에 유지해야 합니다. 그리고 `useImperativeHandle`을 사용하여 부모 컴포넌트에서 호출할 메서드만 있는 핸들을 노출합니다.
 
 ```js {7-14}
 import { useRef, useImperativeHandle } from 'react';
@@ -116,7 +109,7 @@ function MyInput({ ref }) {
 };
 ```
 
-이제 부모 컴포넌트가 `MyInput`에 대한 ref를 가져오면 `focus` 및 `scrollIntoView` 메서드를 호출할 수 있습니다. 그러나 기본 `<input>` DOM 노드의 전체 엑세스 권한은 없습니다.
+이제 부모 컴포넌트가 `MyInput`에 대한 Ref를 가져오면 `focus` 및 `scrollIntoView` 메서드를 호출할 수 있습니다. 그러나 기본 `<input>` DOM 노드의 전체 엑세스 권한은 없습니다.
 
 <Sandpack>
 
@@ -177,9 +170,9 @@ input {
 
 ---
 
-### 사용자 정의 imperative 메서드 노출 {/*exposing-your-own-imperative-methods*/}
+### 사용자 정의 Imperative 메서드 노출 {/*exposing-your-own-imperative-methods*/}
 
-imperative handle을 통해 노출하는 메서드는 DOM 메서드와 정확하게 일치할 필요가 없습니다. 예를 들어, 이 `Post` 컴포넌트는 imperative handle을 통해 `scrollAndFocusAddComment` 메서드를 표시합니다. 이렇게 하면 부모 `Page`에서 버튼을 클릭할 때 댓글 목록을 스크롤하고 입력 필드에 초점을 맞출 수 있습니다.
+Imperative Handle을 통해 노출하는 메서드는 DOM 메서드와 정확하게 일치할 필요가 없습니다. 예를 들어, 이 `Post` 컴포넌트는 Imperative Handle을 통해 `scrollAndFocusAddComment` 메서드를 표시합니다. 이렇게 하면 부모 `Page`에서 버튼을 클릭할 때 댓글 목록을 스크롤하고 입력 필드에 초점을 맞출 수 있습니다.
 
 <Sandpack>
 
@@ -292,7 +285,7 @@ export default AddComment;
 
 <Pitfall>
 
-**ref를 과도하게 사용하지 마세요.** ref는 props로 표현할 수 없는 필수적인 행동에만 사용해야 합니다. 예를 들어 특정 노드로 스크롤 하기, 노드에 초점 맞추기, 애니메이션 촉발하기, 텍스트 선택하기 등이 있습니다.
+**Ref를 과도하게 사용하지 마세요.** Ref는 Props로 표현할 수 없는 필수적인 행동에만 사용해야 합니다. 예를 들어 특정 노드로 스크롤 하기, 노드에 초점 맞추기, 애니메이션 실행하기, 텍스트 선택하기 등이 있습니다.
 
-**prop으로 표현할 수 있는 것은 ref를 사용하지 마세요.** 예를 들어 `Modal` 컴포넌트에서 `{ open, close }` 와 같은 imperative handle을 노출하는 대신 `<Modal isOpen={isOpen} />`과 같은 `isOpen` prop을 사용하는 것이 더 좋습니다. [Effects](/learn/synchronizing-with-effects)를 사용하면 prop을 통해 명령형 동작(imperative behavior)을 노출할 수 있습니다.
+**Prop으로 표현할 수 있는 것에 Ref를 사용하지 마세요.** 예를 들어 `Modal` 컴포넌트에서 `{ open, close }`와 같은 Imperative Handle을 노출하는 대신 `<Modal isOpen={isOpen} />`과 같은 `isOpen` Prop을 사용하는 것이 더 좋습니다. [Effect](/learn/synchronizing-with-effects)를 사용하면 Prop을 통해 명령형 동작<sup>Imperative Behavior</sup>을 노출할 수 있습니다.
 </Pitfall>
