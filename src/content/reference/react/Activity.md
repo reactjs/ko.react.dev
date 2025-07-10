@@ -79,7 +79,7 @@ import {unstable_Activity as Activity} from 'react';
 </Activity>
 ```
 
-Activity가 `mode="hidden"`으로 렌더링되면 `children`은 페이지에 표시되지 않지만, 페이지의 표시되는 콘텐츠보다 낮은 우선순위로 렌더링 됩니다.
+Activity가 `mode="hidden"`으로 렌더링되면 `children`은 페이지에 표시되지 않지만, 페이지의 표시되는 콘텐츠보다 낮은 우선순위로 렌더링됩니다.
 
 나중에 `mode`가 "visible"로 전환되면 사전 렌더링 된 자식 컴포넌트가 마운트되고 표시됩니다. 이를 통해 사용자가 다음에 상호작용을 할 가능성이 높은 UI 부분을 미리 준비하여 로딩 시간을 줄일 수 있습니다.
 
@@ -1156,6 +1156,6 @@ video { width: 300px; margin-top: 10px; }
 
 이러한 이유로 Activity를 개념적으로는 컴포넌트를 "마운트 해제"하고 "재마운트"하되 React나 DOM 상태는 나중에 사용할 수 있도록 저장하는 것으로 생각하는 것이 좋습니다. 실제로는 [You Might Not Need an Effect](learn/you-might-not-need-an-effect) 가이드를 따랐다면 예상대로 작동합니다. 문제가 있는 Effect를 적극적으로 찾으려면 Activity 마운트 해제와 마운트를 적극적으로 수행하여 예상치 못한 부작용을 잡아내는 [`<StrictMode>`](/reference/react/StrictMode)를 추가하는 것을 추천합니다.
 
-### 숨겨진 Activity가 SSR에서 렌더링 되지 않습니다 {/*my-hidden-activity-is-not-rendered-in-ssr*/}
+### 숨겨진 Activity가 SSR에서 렌더링되지 않습니다 {/*my-hidden-activity-is-not-rendered-in-ssr*/}
 
 서버 사이드 렌더링 중에 `<Activity mode="hidden">`을 사용하면 Activity의 콘텐츠가 SSR 응답에 포함되지 않습니다. 이는 콘텐츠가 페이지에 표시되지 않고 초기 렌더링에 필요하지 않기 때문입니다. SSR 응답에 콘텐츠를 포함해야 한다면 [`useDeferredValue`](/reference/react/useDeferredValue)를 사용하여 콘텐츠의 렌더링을 지연시키는 것과 같은 다른 접근 방법을 사용할 수 있습니다.
