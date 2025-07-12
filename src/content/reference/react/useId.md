@@ -46,7 +46,7 @@ function PasswordField() {
 
 * `useId`를 리스트의 **key를 생성하기 위해 사용하면 안 됩니다**. [Key는 데이터로부터 생성해야 합니다.](/learn/rendering-lists#where-to-get-your-key)
 
-* `useId` currently cannot be used in [async Server Components](/reference/rsc/server-components#async-components-with-server-components).
+* `useId`는 현재 [비동기 서버 컴포넌트](/reference/rsc/server-components#async-components-with-server-components)에서 사용할 수 없습니다.
 
 ---
 
@@ -333,4 +333,4 @@ const root = hydrateRoot(
 );
 ```
 
-You do not need to pass `identifierPrefix` if you only have one React app on the page.
+페이지에 React 앱이 하나만 있는 경우에는 `identifierPrefix`를 전달할 필요가 없습니다.
