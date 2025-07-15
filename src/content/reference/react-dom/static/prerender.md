@@ -47,7 +47,7 @@ async function handler(request) {
 
 #### 매개변수 {/*parameters*/}
 
-* `reactNode`: HTML로 렌더링하려는 React 노드. 예를 들어 `<App />`과 같은 JSX 엘리먼트입니다. 전체 문서를 나타낼 것으로 예상되므로 App 컴포넌트는 `<html>` 태그를 렌더링해야 합니다.
+* `reactNode`: HTML로 렌더링하려는 React 노드. 예를 들어 `<App />`과 같은 JSX 엘리먼트입니다. 전체 문서를 나타낼 것으로 예상되므로 `App` 컴포넌트는 `<html>` 태그를 렌더링해야 합니다.
 
 * **optional** `options`: 정적 생성 옵션을 가진 객체입니다.
   * **optional** `bootstrapScriptContent`: 지정될 경우, 해당 문자열은 `<script>` 태그에 인라인 형식으로 추가됩니다.
@@ -57,7 +57,7 @@ async function handler(request) {
   * **optional** `namespaceURI`: 스트림의 루트 [namespace URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris)를 가진 문자열입니다. 기본값은 일반 HTML입니다. SVG의 경우 `'http://www.w3.org/2000/svg'`를, MathML의 경우 `'http://www.w3.org/1998/Math/MathML'`을 전달합니다.
   * **optional** `onError`: [복구 가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) 또는 [불가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)에 관계없이 서버 오류가 발생할 때마다 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. 이 함수를 재정의하여 [크래시 리포트를 로깅](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server)하는 경우 `console.error`를 계속 호출해야 합니다. 또한 셸이 출력되기 전에 [상태 코드를 설정](/reference/react-dom/server/renderToReadableStream#setting-the-status-code)하는 데 사용할 수도 있습니다.
   * **optional** `progressiveChunkSize`: 청크의 바이트 수입니다. [기본 휴리스틱에 대해 더 읽어보기.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
-  * **optional** `signal`: [사전 렌더링을 중단](#aborting-prerendering)하고 나머지를 클라이언트에서 렌더링하기 위한 [중단 신호(abort signal)](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)를 설정합니다.
+  * **optional** `signal`: [사전 렌더링을 중단](#aborting-prerendering)하고 나머지를 클라이언트에서 렌더링하기 위한 [중단 신호<sup>Abort Signal</sup>](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)를 설정합니다.
 
 #### 반환값 {/*returns*/}
 
@@ -68,7 +68,7 @@ async function handler(request) {
 
 #### 주의 사항 {/*caveats*/}
 
-`nonce`는 사전 렌더링할 때 사용할 수 없는 옵션입니다. nonce는 요청마다 고유해야 하며, [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP)로 애플리케이션을 보호하기 위해 nonce를 사용한다면 nonce 값을 사전 렌더링 자체에 포함하는 것은 부적절하고 안전하지 않습니다.
+`nonce`는 사전 렌더링할 때 사용할 수 없는 옵션입니다. Nonce는 요청마다 고유해야 하며, [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP)로 애플리케이션을 보호하기 위해 Nonce를 사용한다면 Nonce 값을 사전 렌더링 자체에 포함하는 것은 부적절하고 안전하지 않습니다.
 
 
 <Note>
@@ -149,7 +149,7 @@ hydrateRoot(document, <App />);
 
 최종 에셋 URL(JavaScript 및 CSS 파일 등)은 빌드 후 해시되는 경우가 많습니다. 예를 들어, `styles.css` 대신 `styles.123456.css`로 끝날 수 있습니다. 정적 에셋 파일명을 해시하면 동일한 에셋의 모든 개별 빌드가 다른 파일명을 갖게 됩니다. 이는 정적 에셋에 대한 장기 캐싱을 안전하게 활성화할 수 있게 해주므로 유용합니다. 특정 이름의 파일은 절대 콘텐츠가 변경되지 않기 때문입니다.
 
-하지만 빌드가 끝날 때까지 에셋 URL을 모르는 경우 소스 코드에 넣을 방법이 없습니다. 예를 들어, JSX에 `"/styles.css"`를 하드코딩하는 것은 작동하지 않습니다. 소스 코드에 URL을 넣지 않으려면 루트 컴포넌트는 props로 전달된 맵에서 실제 파일명을 읽어야 합니다.
+하지만 빌드가 끝날 때까지 에셋 URL을 모르는 경우 소스 코드에 넣을 방법이 없습니다. 예를 들어, JSX에 `"/styles.css"`를 하드코딩하는 것은 작동하지 않습니다. 소스 코드에 URL을 넣지 않으려면 루트 컴포넌트는 Props로 전달된 맵에서 실제 파일명을 읽어야 합니다.
 
 ```js {1,6}
 export default function App({ assetMap }) {
@@ -214,7 +214,7 @@ import App from './App.js';
 hydrateRoot(document, <App assetMap={window.assetMap} />);
 ```
 
-클라이언트와 서버 모두 동일한 `assetMap` prop으로 `App`을 렌더링하므로 Hydration 오류가 발생하지 않습니다.
+클라이언트와 서버 모두 동일한 `assetMap` Prop으로 `App`을 렌더링하므로 Hydration 오류가 발생하지 않습니다.
 
 </DeepDive>
 
