@@ -57,7 +57,7 @@ async function handler(request) {
   * **optional** `namespaceURI`: 스트림의 루트 [namespace URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris)를 가진 문자열입니다. 기본값은 일반 HTML입니다. SVG의 경우 `'http://www.w3.org/2000/svg'`를, MathML의 경우 `'http://www.w3.org/1998/Math/MathML'`을 전달합니다.
   * **optional** `onError`: [복구 가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) 또는 [불가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)에 관계없이 서버 오류가 발생할 때마다 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. 이 함수를 재정의하여 [크래시 리포트를 로깅](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server)하는 경우 `console.error`를 계속 호출해야 합니다. 또한 셸이 출력되기 전에 [상태 코드를 설정](/reference/react-dom/server/renderToReadableStream#setting-the-status-code)하는 데 사용할 수도 있습니다.
   * **optional** `progressiveChunkSize`: 청크의 바이트 수입니다. [기본 휴리스틱에 대해 더 읽어보기.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
-  * **optional** `signal`: [사전 렌더링을 중단](#aborting-prerendering)하고 나머지를 클라이언트에서 렌더링하기 위한 [거절 신호(abort signal)](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)를 설정합니다.
+  * **optional** `signal`: [사전 렌더링을 중단](#aborting-prerendering)하고 나머지를 클라이언트에서 렌더링하기 위한 [중단 신호(abort signal)](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)를 설정합니다.
 
 #### 반환값 {/*returns*/}
 
@@ -281,9 +281,9 @@ function ProfilePage() {
 
 Suspense는 Effect나 이벤트 핸들러 내부에서 데이터를 가져올 경우, **이를 감지하지 못합니다.**.
 
-`Posts` 컴포넌트에서 데이터를 불러오는 정확한 방법은 앞서 설명한 프레임워크에 따라 다릅니다. Suspense를 지원하는 프레임워크를 사용하는 경우, 데이터를 가져오는 자세한 방법은 해당 프레임워크 문서에서 찾을 수 있습니다.
+`Posts` 컴포넌트에서 데이터를 불러오는 정확한 방법은 프레임워크에 따라 다릅니다. Suspense를 지원하는 프레임워크를 사용하는 경우, 데이터를 가져오는 자세한 방법은 해당 프레임워크 문서에서 찾을 수 있습니다.
 
-독자적인 프레임워크를 사용하지 않는 Suspense 지원 데이터 가져오기는 아직 지원하지 않습니다. Suspense를 지원하는 데이터 소스를 구현하기 위한 요구 사항은 불안정하고 문서화되지 않았습니다. 데이터 소스를 Suspense와 통합하기 위한 공식 API는 React의 향후 버전에서 출시할 예정입니다.
+독자적인 프레임워크를 사용하지 않는 Suspense 지원 데이터 가져오기는 아직 지원되지 않습니다. Suspense를 지원하는 데이터 소스를 구현하기 위한 요구 사항은 불안정하고 문서화되지 않았습니다. 데이터 소스를 Suspense와 통합하기 위한 공식 API는 React의 향후 버전에서 출시할 예정입니다.
 
 </Note>
 
@@ -301,8 +301,8 @@ async function renderToString() {
   }, 10000);
 
   try {
-    // prelude는 사전 렌더링된 모든 HTML이 포함됩니다
-    // 컨트롤러가 중단되기 전에.
+    // prelude에는 컨트롤러가 중단되기 전에
+    // 사전 렌더링된 모든 HTML이 포함됩니다.
     const {prelude} = await prerender(<App />, {
       signal: controller.signal,
     });
