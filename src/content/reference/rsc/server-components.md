@@ -4,7 +4,11 @@ title: 서버 컴포넌트
 
 <RSC>
 
+<<<<<<< HEAD
 서버 컴포넌트는 [React 서버 컴포넌트](/learn/start-a-new-react-project#full-stack-frameworks)에서 사용합니다.
+=======
+Server Components are for use in [React Server Components](/learn/creating-a-react-app#full-stack-frameworks).
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 </RSC>
 

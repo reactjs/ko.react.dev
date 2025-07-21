@@ -11,16 +11,27 @@ TypeScript는 JavaScript 코드 베이스에 타입 정의를 추가하는 데 �
 
 <YouWillLearn>
 
+<<<<<<< HEAD
 * [React 컴포넌트가 있는 TypeScript](/learn/typescript#typescript-with-react-components)
 * [Hooks 타이핑 예시](/learn/typescript#example-hooks)
 * [`@types/react`의 일반적인 타입](/learn/typescript/#useful-types)
 * [추가 학습 위치](/learn/typescript/#further-learning)
+=======
+* [TypeScript with React Components](/learn/typescript#typescript-with-react-components)
+* [Examples of typing with Hooks](/learn/typescript#example-hooks)
+* [Common types from `@types/react`](/learn/typescript#useful-types)
+* [Further learning locations](/learn/typescript#further-learning)
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 </YouWillLearn>
 
 ## 설치 {/*installation*/}
 
+<<<<<<< HEAD
 모든 [프로덕션 수준의 React 프레임워크](/learn/start-a-new-react-project#production-grade-react-frameworks)는 TypeScript 사용을 지원합니다. 프레임워크별 설치 가이드를 따르세요.
+=======
+All [production-grade React frameworks](/learn/creating-a-react-app#full-stack-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 - [Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
