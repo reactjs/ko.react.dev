@@ -355,7 +355,11 @@ Prerender API는 정적 HTML 스트림이 반환되기 전에 데이터가 로�
 
 서버 컴포넌트는 번들링 전에 클라이언트 애플리케이션 또는 SSR 서버와 분리된 환경에서 컴포넌트를 미리 렌더링할 수 있는 새로운 옵션입니다. 이 별도의 환경이 React 서버 컴포넌트에서 "서버"입니다. 서버 컴포넌트는 CI 서버에서 빌드 시 한 번 실행하거나 웹 서버를 사용하여 각 요청에 대해 실행할 수 있습니다.
 
+<<<<<<< HEAD
 React 19는 Canary 채널에서 포함된 모든 React 서버 컴포넌트 기능을 포함하고 있습니다. 이는 서버 컴포넌트가 포함된 라이브러리들이 이제 [풀스택 React 아키텍처](/learn/start-a-new-react-project#which-features-make-up-the-react-teams-full-stack-architecture-vision)를 지원하는 프레임워크에서 `react-server` [export 조건](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md#react-server-conditional-exports)을 사용하여 React 19를 향한 상호 의존성<sup>Peer Dependencies</sup>으로 지정할 수 있음을 의미합니다.
+=======
+React 19 includes all of the React Server Components features included from the Canary channel. This means libraries that ship with Server Components can now target React 19 as a peer dependency with a `react-server` [export condition](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md#react-server-conditional-exports) for use in frameworks that support the [Full-stack React Architecture](/learn/creating-a-react-app#which-features-make-up-the-react-teams-full-stack-architecture-vision). 
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 
 <Note>
@@ -389,7 +393,11 @@ React 서버 컴포넌트를 지원하기 위해, 특정 React 버전에 고정�
 
 서버 액션은 서버 컴포넌트에서 생성되며 클라이언트 컴포넌트에 props를 전달되거나 클라이언트 컴포넌트에서 가져와 사용할 수 있습니다.
 
+<<<<<<< HEAD
 더 많은 정보는 [React 서버 액션](/reference/rsc/server-actions)을 참고하세요.
+=======
+For more, see the docs for [React Server Actions](/reference/rsc/server-functions).
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 ## React 19에서 개선 사항 {/*improvements-in-react-19*/}
 
