@@ -21,14 +21,14 @@ title: React DOM APIs
 
 아래 API는 스크립트, 스타일시트, 글꼴과 같은 리소스를 미리 로드하여 앱 속도를 개선하는 데 사용할 수 있습니다. 예를 들어 특정 리소스가 사용될 다른 페이지로 이동하기 전에 리소스를 미리 불러올 수 있습니다.
 
-[React 기반 프레임워크](/learn/start-a-new-react-project) 에서는 일반적으로 리소스 로딩을 자동으로 처리해 주기 때문에 API를 직접 호출하지 않아도 됩니다. 자세한 내용은 사용하는 프레임워크의 문서를 참고하세요.
+[React 기반 프레임워크](/learn/start-a-new-react-project)에서는 일반적으로 리소스 로딩을 자동으로 처리해 주기 때문에 API를 직접 호출하지 않아도 됩니다. 자세한 내용은 사용하는 프레임워크의 문서를 참고하세요.
 
-* [`preconnect`](/reference/react-dom/preconnect) 를 사용하면 어떤 리소스가 필요한지 모르더라도 리소스를 요청할 것으로 예상되는 서버와 미리 연결할 수 있습니다.
-* [`prefetchDNS`](/reference/react-dom/prefetchDNS) 를 사용하면 접속할 가능성이 있는 DNS 도메인의 IP 주소를 미리 조회할 수 있습니다.
-* [`preinit`](/reference/react-dom/preinit) 을 사용하면 외부 스크립트나 스타일시트를 미리 가져오고 실행할 수 있습니다.
-* [`preinitModule`](/reference/react-dom/preinitModule) 을 사용하면 외부 ESM 모듈을 미리 가져오고 평가(evaluate)할 수 있게 해줍니다.
-* [`preload`](/reference/react-dom/preload) 를 사용하면 스타일시트, 글꼴, 이미지 또는 외부 스크립트 같은 리소스를 미리 가져올 수 있습니다.
-* [`preloadModule`](/reference/react-dom/preloadModule) 을 사용하면 사용할 ESM 모듈을 미리 가져올 수 있습니다.
+* [`preconnect`](/reference/react-dom/preconnect)를 사용하면 어떤 리소스가 필요한지 모르더라도 리소스를 요청할 것으로 예상되는 서버와 미리 연결할 수 있습니다.
+* [`prefetchDNS`](/reference/react-dom/prefetchDNS)를 사용하면 접속할 가능성이 있는 DNS 도메인의 IP 주소를 미리 조회할 수 있습니다.
+* [`preinit`](/reference/react-dom/preinit)을 사용하면 외부 스크립트나 스타일시트를 미리 가져오고 실행할 수 있습니다.
+* [`preinitModule`](/reference/react-dom/preinitModule)을 사용하면 외부 ESM 모듈을 미리 가져오고 평가<sup>Evaluate</sup>할 수 있게 해줍니다.
+* [`preload`](/reference/react-dom/preload)를 사용하면 스타일시트, 글꼴, 이미지 또는 외부 스크립트 같은 리소스를 미리 가져올 수 있습니다.
+* [`preloadModule`](/reference/react-dom/preloadModule)을 사용하면 사용할 ESM 모듈을 미리 가져올 수 있습니다.
 
 
 ---
