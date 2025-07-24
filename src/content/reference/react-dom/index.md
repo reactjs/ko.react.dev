@@ -30,7 +30,6 @@ title: React DOM APIs
 * [`preload`](/reference/react-dom/preload)를 사용하면 스타일시트, 글꼴, 이미지 또는 외부 스크립트 같은 리소스를 미리 가져올 수 있습니다.
 * [`preloadModule`](/reference/react-dom/preloadModule)을 사용하면 사용할 ESM 모듈을 미리 가져올 수 있습니다.
 
-
 ---
 
 ## 진입점 {/*entry-points*/}
