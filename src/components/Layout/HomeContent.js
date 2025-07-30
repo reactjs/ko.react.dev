@@ -145,7 +145,7 @@ export function HomeContent() {
             React
           </h1>
           <p className="text-4xl font-display max-w-lg md:max-w-full py-1 text-center text-secondary dark:text-primary-dark leading-snug self-center">
-            웹 및 사용자 인터페이스를 위한 라이브러리
+            웹 및 네이티브 사용자 인터페이스를 위한 라이브러리
           </p>
           <div className="mt-5 self-center flex gap-2 w-full sm:w-auto flex-col sm:flex-row">
             <ButtonLink
