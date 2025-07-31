@@ -126,7 +126,7 @@ function App() {
 
 <Note>
 
-앱의 일부에서 `StrictMode`가 활성화되면 React는 실제 운영 환경에서만 가능한 동작만 허용합니다. 예를 들어, 앱의 루트에서 `<StrictMode>`가 활성화되지 않으면 초기 마운트 시 [Effects를 다시 실행](#fixing-bugs-found-by-re-running-effects-in-development)하지 않습니다. 이는 부모 Effects 없이 자식 Effects가 두 번 실행되는 상황을 방지하기 위함이며, 이러한 상황은 실제 운영 환경에서는 발생할 수 없습니다.
+앱의 일부에서 `StrictMode`가 활성화되면 React는 실제 운영 환경에서만 가능한 동작만을 허용합니다. 예를 들어, 앱의 루트에서 `<StrictMode>`가 활성화되지 않으면 초기 마운트 시 [Effect를 다시 실행](#fixing-bugs-found-by-re-running-effects-in-development)하지 않습니다. 이는 부모 Effect 없이 자식 Effect가 두 번 실행되는 상황을 방지하기 위함이며, 이러한 상황은 실제 운영 환경에서는 발생하지 않습니다.
 
 </Note>
 
