@@ -89,7 +89,7 @@ Strict Mode에서는 개발 시 다음과 같은 검사를 가능하게 합니�
 
 - 컴포넌트가 순수하지 않은 렌더링으로 인한 버그를 찾기 위해 [추가로 다시 렌더링합니다.](#fixing-bugs-found-by-double-rendering-in-development)
 - 컴포넌트가 Effect 클린업이 누락되어 발생한 버그를 찾기 위해 [Effect를 다시 실행합니다.](#fixing-bugs-found-by-re-running-effects-in-development)
-- Your components will [re-run refs callbacks an extra time](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) to find bugs caused by missing ref cleanup.
+- 컴포넌트가 Ref 클린업이 누락되어 발생한 버그를 찾기 위해 [Ref 콜백을 다시 실행합니다.](#fixing-bugs-found-by-re-running-ref-callbacks-in-development)
 - 컴포넌트가 [더 이상 사용되지 않는 API를 사용하는지 확인합니다.](#fixing-deprecation-warnings-enabled-by-strict-mode)
 
 
@@ -126,7 +126,7 @@ function App() {
 
 <Note>
 
-When `StrictMode` is enabled for a part of the app, React will only enable behaviors that are possible in production. For example, if `<StrictMode>` is not enabled at the root of the app, it will not [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) on initial mount, since this would cause child effects to double fire without the parent effects, which cannot happen in production.
+앱의 일부에서 `StrictMode`가 활성화되면 React는 실제 운영 환경에서만 가능한 동작만을 허용합니다. 예를 들어, 앱의 루트에서 `<StrictMode>`가 활성화되지 않으면 초기 마운트 시 [Effect를 다시 실행](#fixing-bugs-found-by-re-running-effects-in-development)하지 않습니다. 이는 부모 Effect 없이 자식 Effect가 두 번 실행되는 상황을 방지하기 위함이며, 이러한 상황은 실제 운영 환경에서는 발생하지 않습니다.
 
 </Note>
 
