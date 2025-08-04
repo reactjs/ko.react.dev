@@ -15,6 +15,10 @@
       "path": "/learn/installation"
     },
     {
+      "title": "React Compiler",
+      "path": "/learn/react-compiler"
+    },
+    {
       "hasSectionHeader": true,
       "sectionHeader": "React 학습하기"
     },
@@ -76,7 +80,27 @@
     },
     {
       "hasSectionHeader": true,
+<<<<<<< HEAD
       "sectionHeader": "참여하기"
+=======
+      "sectionHeader": "REACT COMPILER API"
+    },
+    {
+      "title": "Configuration",
+      "path": "/reference/react-compiler/configuration"
+    },
+    {
+      "title": "Directives",
+      "path": "/reference/react-compiler/directives"
+    },
+    {
+      "title": "Compiling Libraries",
+      "path": "/reference/react-compiler/compiling-libraries"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "GET INVOLVED"
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
     },
     {
       "title": "React 커뮤니티",
