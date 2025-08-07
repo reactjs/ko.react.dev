@@ -52,10 +52,10 @@ react-devtools
 
 ![React Developer Tools standalone](/images/docs/react-devtools-standalone.png)
 
-## Mobile (React Native) {/*mobile-react-native*/}
+## 모바일 (React Native) {/*mobile-react-native*/}
 
-To inspect apps built with [React Native](https://reactnative.dev/), you can use [React Native DevTools](https://reactnative.dev/docs/react-native-devtools), the built-in debugger that deeply integrates React Developer Tools. All features work identically to the browser extension, including native element highlighting and selection.
+[React Native](https://reactnative.dev/)로 만든 앱은 React Developer Tools가 내장된 [React Native DevTools](https://reactnative.dev/docs/react-native-devtools)를 통해 디버깅할 수 있습니다. 네이티브 요소를 강조하거나 선택하는 기능을 포함한 브라우저 확장 프로그램에서 사용하던 모든 기능을 동일하게 사용할 수 있습니다.
 
-[Learn more about debugging in React Native.](https://reactnative.dev/docs/debugging)
+[React Native에서 디버깅하는 방법 더 알아보기](https://reactnative.dev/docs/debugging)
 
-> For versions of React Native earlier than 0.76, please use the standalone build of React DevTools by following the [Safari and other browsers](#safari-and-other-browsers) guide above.
+> 참고: React Native 0.76 이전 버전을 사용하는 경우, 위의 [Safari 및 기타 브라우저](#safari-and-other-browsers) 가이드를 참고하여 독립형 React DevTools를 사용하세요.
