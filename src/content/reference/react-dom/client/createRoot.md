@@ -350,9 +350,9 @@ export default function App({counter}) {
 
 `render`를 여러 번 호출하는 경우는 흔하지 않습니다. 일반적으로는, 컴포넌트가 [State를 업데이트](/reference/react/useState)합니다.
 
-### Error logging in production {/*error-logging-in-production*/}
+### 프로덕션 환경에서 오류 로깅하기 {/*error-logging-in-production*/}
 
-By default, React will log all errors to the console. To implement your own error reporting, you can provide the optional error handler root options `onUncaughtError`, `onCaughtError` and `onRecoverableError`:
+React는 기본적으로 모든 오류를 콘솔에 출력합니다. 사용자 정의 오류 보고 기능을 구현하기 위해서 `onUncaughtError`, `onCaughtError`, `onRecoverableError`와 같은 에러 핸들러 루트 옵션을 제공할 수 있습니다.
 
 ```js [[1, 6, "onCaughtError"], [2, 6, "error", 1], [3, 6, "errorInfo"], [4, 10, "componentStack", 15]]
 import { createRoot } from "react-dom/client";
@@ -371,12 +371,12 @@ const root = createRoot(container, {
 });
 ```
 
-The <CodeStep step={1}>onCaughtError</CodeStep> option is a function called with two arguments:
+<CodeStep step={1}>onCaughtError</CodeStep> 옵션은 다음 두 개의 인자를 받는 함수입니다.
 
-1. The <CodeStep step={2}>error</CodeStep> that was thrown.
-2. An <CodeStep step={3}>errorInfo</CodeStep> object that contains the <CodeStep step={4}>componentStack</CodeStep> of the error.
+1. 발생한 <CodeStep step={2}>error</CodeStep> 객체입니다.
+2. <CodeStep step={3}>errorInfo</CodeStep> 객체는 오류의 <CodeStep step={4}>componentStack</CodeStep> 정보를 포함합니다.
 
-Together with `onUncaughtError` and `onRecoverableError`, you can can implement your own error reporting system:
+`onUncaughtError`와 `onRecoverableError`를 함께 사용하면, 사용자 정의 오류 보고 시스템을 구현할 수 있습니다.
 
 <Sandpack>
 
