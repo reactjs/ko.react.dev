@@ -374,7 +374,7 @@ const root = createRoot(container, {
 <CodeStep step={1}>onCaughtError</CodeStep> 옵션은 다음 두 개의 인자를 받는 함수입니다.
 
 1. 발생한 <CodeStep step={2}>error</CodeStep> 객체.
-2. 오류의 <CodeStep step={4}>componentStack</CodeStep> 속성을 포함한 <CodeStep step={3}>errorInfo</CodeStep> 객체.
+2. 오류의 <CodeStep step={4}>componentStack</CodeStep> 정보를 포함한 <CodeStep step={3}>errorInfo</CodeStep> 객체.
 
 `onUncaughtError`와 `onRecoverableError`를 함께 사용하면, 사용자 정의 오류 보고 시스템을 구현할 수 있습니다.
 
