@@ -373,8 +373,8 @@ const root = createRoot(container, {
 
 <CodeStep step={1}>onCaughtError</CodeStep> 옵션은 다음 두 개의 인자를 받는 함수입니다.
 
-1. 발생한 <CodeStep step={2}>error</CodeStep> 객체입니다.
-2. <CodeStep step={3}>errorInfo</CodeStep> 객체는 오류의 <CodeStep step={4}>componentStack</CodeStep> 정보를 포함합니다.
+1. 발생한 <CodeStep step={2}>error</CodeStep> 객체
+2. <CodeStep step={4}>componentStack</CodeStep> 속성이 포함된 <CodeStep step={3}>errorInfo</CodeStep> 객체
 
 `onUncaughtError`와 `onRecoverableError`를 함께 사용하면, 사용자 정의 오류 보고 시스템을 구현할 수 있습니다.
 
@@ -382,8 +382,8 @@ const root = createRoot(container, {
 
 ```js src/reportError.js
 function reportError({ type, error, errorInfo }) {
-  // The specific implementation is up to you.
-  // `console.error()` is only used for demonstration purposes.
+  // 구체적인 구현은 여러분에게 맡깁니다.
+  // `console.error()`는 설명을 위한 용도입니다.
   console.error(type, error, "Component Stack: ");
   console.error("Component Stack: ", errorInfo.componentStack);
 }
@@ -414,9 +414,9 @@ import {
 
 const container = document.getElementById("root");
 const root = createRoot(container, {
-  // Keep in mind to remove these options in development to leverage
-  // React's default handlers or implement your own overlay for development.
-  // The handlers are only specfied unconditionally here for demonstration purposes.
+  // 개발 환경에서는 이 옵션들을 제거하고
+  // React의 기본 핸들러를 사용하거나 직접 오버레이를 구현하는 것을 권장합니다.
+  // 여기서는 편의를 위해 조건 없이 핸들러를 지정했습니다.
   onCaughtError: onCaughtErrorProd,
   onRecoverableError: onRecoverableErrorProd,
   onUncaughtError: onUncaughtErrorProd,

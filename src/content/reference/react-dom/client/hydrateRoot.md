@@ -370,9 +370,9 @@ export default function App({counter}) {
 
 Hydration된 루트에서 [`root.render`](#root-render)를 호출하는 것은 흔한 일은 아닙니다. 내부 컴포넌트 중 한 곳에서 [useState](/reference/react/useState)를 사용하는 것이 일반적입니다.
 
-### Error logging in production {/*error-logging-in-production*/}
+### 프로덕션 환경에서 오류 로깅하기 {/*error-logging-in-production*/}
 
-By default, React will log all errors to the console. To implement your own error reporting, you can provide the optional error handler root options `onUncaughtError`, `onCaughtError` and `onRecoverableError`:
+React는 기본적으로 모든 오류를 콘솔에 출력합니다. 사용자 정의 오류 보고 기능을 구현하기 위해서 `onUncaughtError`, `onCaughtError`, `onRecoverableError`와 같은 에러 핸들러 루트 옵션을 제공할 수 있습니다.
 
 ```js [[1, 7, "onCaughtError"], [2, 7, "error", 1], [3, 7, "errorInfo"], [4, 11, "componentStack", 15]]
 import { hydrateRoot } from "react-dom/client";
@@ -392,19 +392,19 @@ const root = hydrateRoot(container, <App />, {
 });
 ```
 
-The <CodeStep step={1}>onCaughtError</CodeStep> option is a function called with two arguments:
+<CodeStep step={1}>onCaughtError</CodeStep> 옵션은 다음 두 개의 인자를 받는 함수입니다.
 
-1. The <CodeStep step={2}>error</CodeStep> that was thrown.
-2. An <CodeStep step={3}>errorInfo</CodeStep> object that contains the <CodeStep step={4}>componentStack</CodeStep> of the error.
+1. 발생한 <CodeStep step={2}>error</CodeStep> 객체
+2. <CodeStep step={4}>componentStack</CodeStep> 속성이 포함된 <CodeStep step={3}>errorInfo</CodeStep> 객체
 
-Together with `onUncaughtError` and `onRecoverableError`, you can implement your own error reporting system:
+`onUncaughtError`와 `onRecoverableError`를 함께 사용하면, 사용자 정의 오류 보고 시스템을 구현할 수 있습니다.
 
 <Sandpack>
 
 ```js src/reportError.js
 function reportError({ type, error, errorInfo }) {
-  // The specific implementation is up to you.
-  // `console.error()` is only used for demonstration purposes.
+  // 구체적인 구현은 여러분에게 맡깁니다.
+  // `console.error()`는 설명을 위한 용도입니다.
   console.error(type, error, "Component Stack: ");
   console.error("Component Stack: ", errorInfo.componentStack);
 }
@@ -435,9 +435,9 @@ import {
 
 const container = document.getElementById("root");
 hydrateRoot(container, <App />, {
-  // Keep in mind to remove these options in development to leverage
-  // React's default handlers or implement your own overlay for development.
-  // The handlers are only specfied unconditionally here for demonstration purposes.
+  // 개발 환경에서는 이 옵션들을 제거하고
+  // React의 기본 핸들러를 사용하거나 직접 오버레이를 구현하는 것을 권장합니다.
+  // 여기서는 편의를 위해 조건 없이 핸들러를 지정했습니다.
   onCaughtError: onCaughtErrorProd,
   onRecoverableError: onRecoverableErrorProd,
   onUncaughtError: onUncaughtErrorProd,
