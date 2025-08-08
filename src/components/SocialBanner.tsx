@@ -9,7 +9,7 @@ import {ExternalLink} from './ExternalLink';
 
 const bannerText = '10월 7-8일 React Conf에 함께하세요.';
 const bannerLink = 'https://conf.react.dev/';
-const bannerLinkText = ' 더 알아보기.';
+const bannerLinkText = '더 알아보기.';
 
 export default function SocialBanner() {
   const ref = useRef<HTMLDivElement | null>(null);
