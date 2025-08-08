@@ -56,6 +56,6 @@ react-devtools
 
 [React Native](https://reactnative.dev/)로 만든 앱은 React Developer Tools가 내장된 [React Native DevTools](https://reactnative.dev/docs/react-native-devtools)를 통해 디버깅할 수 있습니다. 네이티브 요소를 강조하거나 선택하는 기능을 포함한 브라우저 확장 프로그램에서 사용하던 모든 기능을 동일하게 사용할 수 있습니다.
 
-[React Native에서 디버깅하는 방법 더 알아보기](https://reactnative.dev/docs/debugging)
+[React Native에서 디버깅하는 방법 더 알아보기](https://reactnative.dev/docs/debugging).
 
 > 참고: React Native 0.76 이전 버전을 사용하는 경우, 위의 [Safari 및 기타 브라우저](#safari-and-other-browsers) 가이드를 참고하여 독립형 React DevTools를 사용하세요.
