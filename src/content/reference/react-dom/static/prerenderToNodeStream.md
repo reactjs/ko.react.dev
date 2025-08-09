@@ -70,11 +70,12 @@ app.use('/', async (request, response) => {
 #### 주의 사항 {/*caveats*/}
 
 프리렌더링 시 `nonce` 옵션은 사용할 수 없습니다. nonce는 요청마다 고유해야 하며, [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP)로 애플리케이션을 보호할 때 nonce 값을 프리렌더링 결과에 포함하는 것은 부적절하고 안전하지 않습니다.
+
 <Note>
 
 ### `prerenderToNodeStream`은 언제 사용해야 하나요? ? {/*when-to-use-prerender*/}
 
-정적 `prerenderToNodeStream` API는 정적 서버 사이드 생성(SSG)에 사용됩니다.  `renderToString`과 달리, `prerenderToNodeStream`은 모든 데이터가 로드될 때까지 기다린 후에 성공합니다. 이는 Suspense를 사용해 가져와야 하는 데이터를 포함해, 전체 페이지의 정적 HTML을 생성하는 데 적합합니다. 콘텐츠가 로드되는 동안 스트리밍하려면, [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)과 같은 스트리밍 서버 사이드 렌더링(SSR) API를 사용하세요.
+정적 `prerenderToNodeStream` API는 정적 서버 사이드 생성(SSG)에 사용됩니다. `renderToString`과 달리, `prerenderToNodeStream`은 모든 데이터가 로드될 때까지 기다린 후에 성공합니다. 이는 Suspense를 사용해 가져와야 하는 데이터를 포함해, 전체 페이지의 정적 HTML을 생성하는 데 적합합니다. 콘텐츠가 로드되는 동안 스트리밍하려면, [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)과 같은 스트리밍 서버 사이드 렌더링(SSR) API를 사용하세요.
 
 </Note>
 
@@ -101,7 +102,6 @@ app.use('/', async (request, response) => {
 ```
 
 <CodeStep step={1}>루트 컴포넌트</CodeStep>와 함께, <CodeStep step={2}>부트스트랩 `<script>` 경로</CodeStep> 목록을 제공해야 합니다. 루트 컴포넌트는 **루트 `<html>` 태그를 포함한 전체 문서를 반환해야 합니다.**
-
 
 예를 들어, 다음과 같을 수 있습니다. 
 
@@ -250,8 +250,7 @@ async function renderToString() {
 
 ### 모든 데이터 로드 대기 {/*waiting-for-all-data-to-load*/}
 
-`prerenderToNodeStream`는 모든 데이터가 로드될 때까지 기다린 뒤 정적 HTML 생성을 완료하고 Promise를 해결합니다.
-예를 들어 표지 이미지, 친구와 사진이 포함된 사이드바, 게시물 목록을 표시하는 프로필 페이지를 생각해 보겠습니다.
+`prerenderToNodeStream`는 모든 데이터가 로드될 때까지 기다린 뒤 정적 HTML 생성을 완료하고 Promise를 해결합니다. 예를 들어 표지 이미지, 친구와 사진이 포함된 사이드바, 게시물 목록을 표시하는 프로필 페이지를 생각해 보겠습니다.
 
 ```js
 function ProfilePage() {
@@ -270,10 +269,8 @@ function ProfilePage() {
 }
 ```
 
-예를 들어 `<Posts />`가 데이터를 로드해야 하고, 이 과정에 시간이 걸린다고 가정해 보겠습니다.
-이 경우, 이상적으로는 게시물 데이터가 모두 로드된 뒤 HTML에 포함되기를 원할 것입니다.
-이를 위해 Suspense를 사용해 데이터 로드가 완료될 때까지 렌더링을 일시 중단할 수 있으며,
-`prerenderToNodeStream`는 해당 중단된 콘텐츠가 완료될 때까지 기다린 후 정적 HTML로 변환을 완료합니다.
+예를 들어 `<Posts />`가 데이터를 로드해야 하고, 이 과정에 시간이 걸린다고 가정해 보겠습니다. 이 경우, 이상적으로는 게시물 데이터가 모두 로드된 뒤 HTML에 포함되기를 원할 것입니다. 이를 위해 Suspense를 사용해 데이터 로드가 완료될 때까지 렌더링을 일시 중단할 수 있으며, `prerenderToNodeStream`는 해당 중단된 콘텐츠가 완료될 때까지 기다린 후 정적 HTML로 변환을 완료합니다.
+
 <Note>
 
 **Suspense를 지원하는 데이터 소스만이 Suspense 컴포넌트를 활성화합니다.** 여기에는 다음이 포함됩니다.
@@ -284,10 +281,9 @@ function ProfilePage() {
 
 Suspense는 Effect나 이벤트 핸들러 내부에서 데이터가 패칭될 때 이를 **감지하지 않습니다.** 
 
-위 예시의 `Posts` 컴포넌트에서 데이터를 로드하는 구체적인 방법은 사용하는 프레임워크에 따라 다릅니다. Suspense를 지원하는 프레임워크를 사용한다면, 해당 프레임워크의 데이터 패칭 문서에서 자세한 내용을 확인할 수 있습니다.
+위 예시의 `Posts` 컴포넌트에서 데이터를 로드하는 구체적인 방법은 사용하는 프레임워크에 따라 다릅니다. Suspense를 지원하는 프레임워크를 사용한다면, 해당 프레임워크의 데이터 패칭 문서에서 자세한 내용을 확인할 수 있습니다. 
 
-특정 프레임워크를 사용하지 않는 Suspense 지원 데이터 패칭은 아직 지원되지 않습니다.
-Suspense를 지원하는 데이터 소스를 구현하기 위한 요구 사항은 현재 불안정하고 문서화되어 있지 않습니다. 데이터 소스를 Suspense와 통합하기 위한 공식 API는 React의 향후 버전에서 제공될 예정입니다.
+특정 프레임워크를 사용하지 않는 Suspense 지원 데이터 패칭은 아직 지원되지 않습니다. Suspense를 지원하는 데이터 소스를 구현하기 위한 요구 사항은 현재 불안정하고 문서화되어 있지 않습니다. 데이터 소스를 Suspense와 통합하기 위한 공식 API는 React의 향후 버전에서 제공될 예정입니다.
 
 </Note>
 
@@ -321,7 +317,6 @@ async function renderToString() {
 
 ### 전체 앱이 렌더링될 때까지 스트림이 시작되지 않았습니다. {/*my-stream-doesnt-start-until-the-entire-app-is-rendered*/}
 
-`prerenderToNodeStream` 응답은 모든 Suspense 경계가 해결될 때까지 기다리는 것을 포함하여 전체 앱이 렌더링이 완료될 때까지 기다린 후 완료됩니다.
-이 API는 정적 사이트 생성(SSG)을 위해 설계되었으며 콘텐츠가 로드되면서 더 많은 콘텐츠를 스트리밍하는 것을 지원하지 않습니다.
+`prerenderToNodeStream` 응답은 모든 Suspense 경계가 해결될 때까지 기다리는 것을 포함하여 전체 앱이 렌더링이 완료될 때까지 기다린 후 완료됩니다. 이 API는 정적 사이트 생성(SSG)을 위해 설계되었으며 콘텐츠가 로드되면서 더 많은 콘텐츠를 스트리밍하는 것을 지원하지 않습니다.
 
 콘텐츠가 로드되면서 스트리밍하려면 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream)과 같은 스트리밍 서버 렌더링 API를 사용하세요.
