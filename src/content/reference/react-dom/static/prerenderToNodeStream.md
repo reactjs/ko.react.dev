@@ -56,7 +56,7 @@ app.use('/', async (request, response) => {
   * **optional** `bootstrapModules`: `bootstrapScripts`와 같지만, [`<script type="module">`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)을 출력합니다.
   * **optional** `identifierPrefix`: [`useId`](/reference/react/useId)로 생성된 ID에 React가 사용하는 문자열 접두사입니다. 한 페이지에서 여러 개의 루트를 사용할 때 충돌을 피하는 데 유용합니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters)에 전달한 접두사와 동일해야 합니다.
   * **optional** `namespaceURI`: 스트림의 루트 [namespace URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris)를 담은 문자열입니다. 기본값은 일반 HTML입니다. SVG의 경우 `'http://www.w3.org/2000/svg'`, MathML의 경우 `'http://www.w3.org/1998/Math/MathML'`을 전달하세요.
-  * **optional** `onError`: 서버 오류가 발생할 때마다([복구 가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-outside-the-shell)하거나 [불가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell) 여부와 관계없이) 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. [충돌 보고를 기록](/reference/react-dom/server/renderToPipeableStream#logging-crashes-on-the-server)하도록 재정의하는 경우에도 반드시 `console.error`를 호출해야합니다. 셸이 출력되기 전에 [상태 코드를 설정](/reference/react-dom/server/renderToPipeableStream#setting-the-status-code)하는 데에도 사용할 수 있습니다.
+  * **optional** `onError`: 서버 오류가 발생할 때마다, [복구 가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-outside-the-shell)  [불가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell) 여부와 관계없이 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. [충돌 보고를 기록](/reference/react-dom/server/renderToPipeableStream#logging-crashes-on-the-server)하도록 재정의하는 경우에도 반드시 `console.error`를 호출해야합니다. 셸이 출력되기 전에 [상태 코드를 설정](/reference/react-dom/server/renderToPipeableStream#setting-the-status-code)하는 데에도 사용할 수 있습니다.
   * **optional** `progressiveChunkSize`: 청크의 바이트 수입니다. [기본 휴리스틱에 대해 더 읽어보세요.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
   * **optional** `signal`: [프리렌더링을 중단하고](#aborting-prerendering) 나머지를 클라이언트에서 렌더링할 수 있게 하는 [중단 신호](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)입니다.
 
@@ -64,18 +64,18 @@ app.use('/', async (request, response) => {
 
 `prerenderToNodeStream` 는 Promise를 반환합니다.
 - 렌더링이 성공하면 Promise는 다음을 포함하는 객체로 해결됩니다.
-  - `prelude`: HTML의 [Node.js Stream.](https://nodejs.org/api/stream.html)입니다. 이 스트림을 사용해 응답을 청크 단위로 전송하거나, 전체 스트림을 문자열로 읽을 수 있습니다.
-- 렌더링에 실패하면, Promise가 실패됩니다. [이를 사용해 폴백 셸을 출력하세요.](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)
+  - `prelude`: HTML의 [Node.js Stream](https://nodejs.org/api/stream.html)입니다. 이 스트림을 사용해 응답을 청크 단위로 전송하거나, 전체 스트림을 문자열로 읽을 수 있습니다.
+- 렌더링에 실패하면, Promise가 실패합니다. [이를 사용해 폴백 셸<sup>Fallback Shell</sup>을 출력하세요.](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)
 
 #### 주의 사항 {/*caveats*/}
 
-프리렌더링 시 `nonce` 옵션은 사용할 수 없습니다. nonce는 요청마다 고유해야 하며, [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP)로 애플리케이션을 보호할 때 nonce 값을 프리렌더링 결과에 포함하는 것은 부적절하고 안전하지 않습니다.
+프리렌더링 시 `nonce` 옵션은 사용할 수 없습니다. Nonce는 요청마다 고유해야 하며, [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP)로 애플리케이션을 보호할 때 Nonce 값을 프리렌더링 결과에 포함하는 것은 부적절하고 안전하지 않습니다.
 
 <Note>
 
-### `prerenderToNodeStream`은 언제 사용해야 하나요? ? {/*when-to-use-prerender*/}
+### `prerenderToNodeStream`은 언제 사용해야 하나요? {/*when-to-use-prerender*/}
 
-정적 `prerenderToNodeStream` API는 정적 서버 사이드 생성(SSG)에 사용됩니다. `renderToString`과 달리, `prerenderToNodeStream`은 모든 데이터가 로드될 때까지 기다린 후에 성공합니다. 이는 Suspense를 사용해 가져와야 하는 데이터를 포함해, 전체 페이지의 정적 HTML을 생성하는 데 적합합니다. 콘텐츠가 로드되는 동안 스트리밍하려면, [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)과 같은 스트리밍 서버 사이드 렌더링(SSR) API를 사용하세요.
+정적 `prerenderToNodeStream` API는 정적 서버 사이드 생성(SSG)에 사용합니다. `renderToString`과 달리, `prerenderToNodeStream`은 모든 데이터가 로드될 때까지 기다린 후에 성공합니다. 이는 Suspense를 사용해 가져와야 하는 데이터를 포함해, 전체 페이지의 정적 HTML을 생성하는 데 적합합니다. 콘텐츠가 로드되는 동안 스트리밍하려면, [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)과 같은 스트리밍 서버 사이드 렌더링(SSR) API를 사용하세요.
 
 </Note>
 
@@ -148,9 +148,9 @@ hydrateRoot(document, <App />);
 
 #### 빌드 출력에서 CSS 및 JS 에셋 경로 읽기 {/*reading-css-and-js-asset-paths-from-the-build-output*/}
 
-최종 에셋 URL(예: JavaScript와 CSS 파일)은 빌드 후 종종 해시가 추가됩니다. 예를 들어 `styles.css` 대신 `styles.123456.css`와 같은 파일명이 될 수 있습니다. 정적 에셋 파일명에 해시를 추가하면 동일한 에셋이라도 빌드마다 다른 파일명을 갖게 됩니다. 이는 정적 에셋에 대해 장기 캐싱을 안전하게 활성화할 수 있게 해줍니다. 특정 이름을 가진 파일은 그 내용이 절대 변경되지 않기 때문입니다.
+최종 에셋 URL(예: JavaScript와 CSS 파일)은 빌드 후 종종 해시<sup>Hash</sup>가 추가됩니다. 예를 들어 `styles.css` 대신 `styles.123456.css`와 같은 파일명이 될 수 있습니다. 정적 에셋 파일명에 해시를 추가하면 동일한 에셋이라도 빌드마다 다른 파일명을 갖게 됩니다. 이는 정적 에셋에 대해 장기 캐싱을 안전하게 활성화할 수 있게 해줍니다. 특정 이름을 가진 파일은 그 내용이 절대 변경되지 않기 때문입니다.
 
-그러나 빌드가 끝난 후에야 에셋 URL을 알 수 있다면, 이를 소스 코드에 넣을 방법이 없습니다. 예를 들어 앞서처럼 JSX에 `"/styles.css"`를 하드코딩하면 동작하지 않습니다. 소스 코드에 에셋 경로를 넣지 않으려면, 루트 컴포넌트가 prop으로 전달된 맵에서 실제 파일명을 읽어올 수 있습니다.
+그러나 빌드가 끝난 후에야 에셋 URL을 알 수 있다면, 이를 소스 코드에 넣을 방법이 없습니다. 예를 들어 앞서처럼 JSX에 `"/styles.css"`를 하드코딩하면 동작하지 않습니다. 소스 코드에 에셋 경로를 넣지 않으려면, 루트 컴포넌트가 Prop으로 전달된 맵에서 실제 파일명을 읽어올 수 있습니다.
 
 ```js {1,6}
 export default function App({ assetMap }) {
@@ -185,7 +185,7 @@ app.use('/', async (request, response) => {
 });
 ```
 
-서버에서 `<App assetMap={assetMap} />`을 렌더링하고 있으므로, hydration 오류를 피하려면 클라이언트에서도 `assetMap`과 함께 렌더링해야 합니다. 다음과 같이 `assetMap`을 직렬화해 클라이언트로 전달할 수 있습니다.
+서버에서 `<App assetMap={assetMap} />`을 렌더링하고 있으므로, Hydration 오류를 피하려면 클라이언트에서도 `assetMap`과 함께 렌더링해야 합니다. 다음과 같이 `assetMap`을 직렬화해 클라이언트로 전달할 수 있습니다.
 
 ```js {9-10}
 // 이 JSON은 빌드 도구에서 가져와야 합니다.
@@ -196,7 +196,7 @@ const assetMap = {
 
 app.use('/', async (request, response) => {
   const { prelude } = await prerenderToNodeStream(<App />, {
-    // 주의: 이 데이터는 사용자가 생성한 것이 아니므로 stringify()해도 안전합니다.
+    // 주의: 이 데이터는 사용자가 생성한 것이 아니므로 `stringify()`해도 안전합니다.
     bootstrapScriptContent: `window.assetMap = ${JSON.stringify(assetMap)};`,
     bootstrapScripts: [assetMap['/main.js']],
   });
@@ -215,7 +215,7 @@ import App from './App.js';
 hydrateRoot(document, <App assetMap={window.assetMap} />);
 ```
 
-클라이언트와 서버 모두 `App`을 동일한 `assetMap` prop으로 렌더링하므로 하이드레이션 오류가 발생하지 않습니다.
+클라이언트와 서버 모두 `App`을 동일한 `assetMap` Prop으로 렌더링하므로 하이드레이션 오류가 발생하지 않습니다.
 
 </DeepDive>
 
@@ -244,11 +244,11 @@ async function renderToString() {
 }
 ```
 
-이렇게 하면 React 컴포넌트의 초기 상호작용하지 않은 HTML 출력이 생성됩니다. 클라이언트에서는 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 호출하여 서버에서 생성된 HTML을 *hydrate*하고 상호작용하게 만들어야 합니다.
+이렇게 하면 React 컴포넌트의 초기 상호작용하지 않은 HTML 출력이 생성됩니다. 클라이언트에서는 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 호출하여 서버에서 생성된 HTML을 *Hydrate*하고 상호작용하게 만들어야 합니다.
 
 ---
 
-### 모든 데이터 로드 대기 {/*waiting-for-all-data-to-load*/}
+### 모든 데이터가 로드될 때까지 기다리기 {/*waiting-for-all-data-to-load*/}
 
 `prerenderToNodeStream`는 모든 데이터가 로드될 때까지 기다린 뒤 정적 HTML 생성을 완료하고 Promise를 해결합니다. 예를 들어 표지 이미지, 친구와 사진이 포함된 사이드바, 게시물 목록을 표시하는 프로필 페이지를 생각해 보겠습니다.
 
@@ -275,9 +275,9 @@ function ProfilePage() {
 
 **Suspense를 지원하는 데이터 소스만이 Suspense 컴포넌트를 활성화합니다.** 여기에는 다음이 포함됩니다.
 
-- [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)나[Next.js](https://nextjs.org/docs/getting-started/react-essentials) 처럼 Suspense를 지원하는 프레임워크를 사용한 데이터 패칭
-- [`lazy`](/reference/react/lazy)를 사용한 컴포넌트 코드의 지연로딩
-- [`use`](/reference/react/use)를 사용해 Promise의 값을 읽기
+- [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 혹은 [Next.js](https://nextjs.org/docs/getting-started/react-essentials) 처럼 Suspense를 지원하는 프레임워크를 사용한 데이터 가져오기.
+- [`lazy`](/reference/react/lazy)를 사용한 컴포넌트 코드의 지연로딩.
+- [`use`](/reference/react/use)를 사용해 Promise의 값을 읽기.
 
 Suspense는 Effect나 이벤트 핸들러 내부에서 데이터가 패칭될 때 이를 **감지하지 않습니다.** 
 
@@ -289,7 +289,7 @@ Suspense는 Effect나 이벤트 핸들러 내부에서 데이터가 패칭될 �
 
 ---
 
-### 사전 렌더링 중단 {/*aborting-prerendering*/}
+### 사전 렌더링 중단하 {/*aborting-prerendering*/}
 
 타임아웃 이후 사전 렌더링을 "포기"하도록 강제할 수 있습니다.
 
@@ -301,7 +301,7 @@ async function renderToString() {
   }, 10000);
 
   try {
-    // prelude에는 컨트롤러가 중단하기 전에
+    // Prelude에는 컨트롤러가 중단하기 전에
     // 사전렌더링된 모든 HTML이 포함됩니다.
     const {prelude} = await prerenderToNodeStream(<App />, {
       signal: controller.signal,
@@ -309,7 +309,7 @@ async function renderToString() {
     //...
 ```
 
-불완전한 자식을 가진 모든 Suspense 경계는 풀백 상태로 prelude에 포함됩니다.
+불완전한 자식을 가진 모든 Suspense 경계는 풀백 상태로 Prelude에 포함됩니다.
 
 ---
 
