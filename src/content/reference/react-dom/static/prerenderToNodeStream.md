@@ -56,7 +56,7 @@ app.use('/', async (request, response) => {
   * **optional** `bootstrapModules`: `bootstrapScripts`와 같지만, [`<script type="module">`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)을 출력합니다.
   * **optional** `identifierPrefix`: [`useId`](/reference/react/useId)로 생성된 ID에 React가 사용하는 문자열 접두사입니다. 한 페이지에서 여러 개의 루트를 사용할 때 충돌을 피하는 데 유용합니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters)에 전달한 접두사와 동일해야 합니다.
   * **optional** `namespaceURI`: 스트림의 루트 [namespace URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris)를 담은 문자열입니다. 기본값은 일반 HTML입니다. SVG의 경우 `'http://www.w3.org/2000/svg'`, MathML의 경우 `'http://www.w3.org/1998/Math/MathML'`을 전달하세요.
-  * **optional** `onError`: 서버 오류가 발생할 때마다, [복구 가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-outside-the-shell)  [불가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell) 여부와 관계없이 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. [충돌 보고를 기록](/reference/react-dom/server/renderToPipeableStream#logging-crashes-on-the-server)하도록 재정의하는 경우에도 반드시 `console.error`를 호출해야합니다. 셸이 출력되기 전에 [상태 코드를 설정](/reference/react-dom/server/renderToPipeableStream#setting-the-status-code)하는 데에도 사용할 수 있습니다.
+  * **optional** `onError`: 서버 오류가 발생할 때마다, [복구 가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-outside-the-shell)  [불가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell) 여부와 관계없이 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. [충돌 보고를 기록](/reference/react-dom/server/renderToPipeableStream#logging-crashes-on-the-server)하도록 재정의하는 경우에도 반드시 `console.error`를 호출해야 합니다. 셸이 출력되기 전에 [상태 코드를 설정](/reference/react-dom/server/renderToPipeableStream#setting-the-status-code)하는 데에도 사용할 수 있습니다.
   * **optional** `progressiveChunkSize`: 청크의 바이트 수입니다. [기본 휴리스틱에 대해 더 읽어보세요.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
   * **optional** `signal`: [프리렌더링을 중단하고](#aborting-prerendering) 나머지를 클라이언트에서 렌더링할 수 있게 하는 [중단 신호](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)입니다.
 
@@ -289,7 +289,7 @@ Suspense는 Effect나 이벤트 핸들러 내부에서 데이터가 패칭될 �
 
 ---
 
-### 사전 렌더링 중단하 {/*aborting-prerendering*/}
+### 사전 렌더링 중단하기 {/*aborting-prerendering*/}
 
 타임아웃 이후 사전 렌더링을 "포기"하도록 강제할 수 있습니다.
 
