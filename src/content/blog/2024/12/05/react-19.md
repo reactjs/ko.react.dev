@@ -762,7 +762,7 @@ React will try to recreate this component tree from scratch using the error boun
 
 </ConsoleBlockMulti>
 
-In React 19, we log a single error with all the error information included:
+React 19에서는 모든 오류 정보를 하나의 오류 로그로 기록합니다.
 
 <ConsoleBlockMulti>
 
