@@ -88,12 +88,12 @@ React는 `root`에 `<App />`을 표시하고 그 안에 있는 DOM을 관리합�
 
 * 동일한 루트에서 `render`를 두 번 이상 호출하면, React는 필요에 따라 DOM을 업데이트하여 사용자가 전달한 최신 JSX를 반영합니다. React는 이전에 렌더링 된 트리와 ["비교"](/learn/preserving-and-resetting-state)해서 재사용할 수 있는 부분과 다시 만들어야 하는 부분을 결정합니다. 동일한 루트에서 `render`를 다시 호출하는 것은 루트 컴포넌트에서 [`set` 함수](/reference/react/useState#setstate)를 호출하는 것과 비슷합니다. React는 불필요한 DOM 업데이트를 피합니다.
 
-* Although rendering is synchronous once it starts, `root.render(...)` is not. This means code after `root.render()` may run before any effects (`useLayoutEffect`, `useEffect`) of that specific render are fired. This is usually fine and rarely needs adjustment. In rare cases where effect timing matters, you can wrap `root.render(...)` in [`flushSync`](https://react.dev/reference/react-dom/flushSync) to ensure the initial render runs fully synchronously.
-  
+* 렌더링이 시작된 이후에는 동기적으로 실행되지만, `root.render(...)`자체는 비동기적입니다. 즉, `root.render()` 이후에 작성된 코드가 해당 렌더링의 `useLayoutEffect`나 `useEffect`보다 먼저 실행될 수 있습니다. 일반적인 상황에서는 이러한 동작도 문제 없이 잘 작동하며, 대부분 수정이 필요하지 않습니다.  다만, 효과(effects)의 실행 순서가 중요한 경우에는 `flushSync`로 `root.render(...)` 호출을 감싸면 초기 렌더링이 완전히 동기적으로 실행되도록 보장할 수 있습니다.
+
   ```js
   const root = createRoot(document.getElementById('root'));
   root.render(<App />);
-  // 🚩 The HTML will not include the rendered <App /> yet:
+  // 🚩 HTML에는 아직 렌더링된 <App /> 내용이 포함되지 않습니다.
   console.log(document.body.innerHTML);
   ```
 
@@ -156,7 +156,7 @@ root.render(<App />);
 <html>
   <head><title>My app</title></head>
   <body>
-    <!-- This is the DOM node -->
+    <!-- 이것이 DOM 노드입니다 -->
     <div id="root"></div>
   </body>
 </html>
@@ -315,7 +315,7 @@ root.unmount();
 
 ---
 
-### Updating a root component {/*updating-a-root-component*/}
+### 루트 컴포넌트 업데이트하기 {/*updating-a-root-component*/}
 
 같은 루트에서 `render`를 두 번 이상 호출할 수도 있습니다. 컴포넌트 트리 구조가 이전 렌더링과 일치하는 한, React는 [기존 State를 유지](/learn/preserving-and-resetting-state)합니다. 다음 예시에서 입력 창에 어떻게 타이핑하든 관계없이, 매 초 반복되는 `render` 호출로 인한 업데이트가 아무런 문제를 일으키지 않음을 주목하세요.
 
@@ -491,22 +491,22 @@ root.render(<App />);
 
 ---
 
-### I'm getting an error: "You passed a second argument to root.render" {/*im-getting-an-error-you-passed-a-second-argument-to-root-render*/}
+### 오류 발생: “root.render에 두 번째 인수를 전달했습니다” {/*im-getting-an-error-you-passed-a-second-argument-to-root-render*/}
 
-A common mistake is to pass the options for `createRoot` to `root.render(...)`:
+흔히 하는 실수는 `createRoot`의 옵션을 `root.render(...)`에 전달하는 것입니다.
 
 <ConsoleBlock level="error">
 
-Warning: You passed a second argument to root.render(...) but it only accepts one argument.
+경고: `root.render(...)`에 두 번째 인수를 전달했지만, 이 메서드는 하나의 인자만 받을 수 있습니다.
 
 </ConsoleBlock>
 
-To fix, pass the root options to `createRoot(...)`, not `root.render(...)`:
+해결 방법: 루트 옵션은 `root.render(...)`가 아니라 `createRoot(...)`에 전달하세요.
 ```js {2,5}
-// 🚩 Wrong: root.render only takes one argument.
+// 🚩 잘못된 방법: root.render는 하나의 인자만 받습니다.
 root.render(App, {onUncaughtError});
 
-// ✅ Correct: pass options to createRoot.
+// ✅ 올바른 방법: 옵션은 createRoot에 전달합니다.
 const root = createRoot(container, {onUncaughtError});
 root.render(<App />);
 ```
@@ -515,9 +515,9 @@ root.render(<App />);
 
 ### "대상 컨테이너가 DOM 엘리먼트가 아닙니다" 라는 오류가 발생합니다. {/*im-getting-an-error-target-container-is-not-a-dom-element*/}
 
-This error means that whatever you're passing to `createRoot` is not a DOM node.
+이 오류는 `createRoot`에 전달한 값이 DOM 노드가 아니라는 뜻입니다.
 
-If you're not sure what's happening, try logging it:
+무슨 상황인지 잘 모르겠다면, 해당 값을 콘솔에 출력해서 확인해 보세요.
 
 ```js {2}
 const domNode = document.getElementById('root');
@@ -542,20 +542,20 @@ root.render(<App />);
 이 오류는 `<Component />` 대신 `Component`로 `root.render`를 호출할 때 발생할 수 있습니다.
 
 ```js {2,5}
-// 🚩 Wrong: App is a function, not a Component.
+// 🚩잘못된 방법: App은 컴포넌트가 아니라 함수입니다.
 root.render(App);
 
-// ✅ Correct: <App /> is a component.
+// ✅ 올바른 방법: <App />은 컴포넌트입니다.
 root.render(<App />);
 ```
 
 또는 함수를 호출한 결과 대신 `root.render`에 함수 자체를 전달했을 때도 발생할 수 있습니다.
 
 ```js {2,5}
-// 🚩 Wrong: createApp is a function, not a component.
+// 🚩잘못된 방법: createApp은 컴포넌트가 아니라 함수입니다.
 root.render(createApp);
 
-// ✅ Correct: call createApp to return a component.
+// ✅ 올바른 방법: createApp을 호출하여 컴포넌트를 반환합니다.
 root.render(createApp());
 ```
 
