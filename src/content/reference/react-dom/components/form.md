@@ -306,7 +306,7 @@ export default function Page() {
   const [message, signupAction] = useActionState(signup, null);
   return (
     <>
-      <h1>저의 뉴스레터에 가입하세요</h1>
+      <h1>뉴스레터에 가입하세요</h1>
       <p>같은 이메일로 두 번 가입하여 오류를 확인하세요</p>
       <form action={signupAction} id="signup-form">
         <label htmlFor="email">이메일: </label>
