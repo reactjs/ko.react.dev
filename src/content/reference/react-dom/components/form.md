@@ -9,7 +9,7 @@ title: "<form>"
 ```js
 <form action={search}>
     <input name="query" />
-    <button type="submit">Search</button>
+    <button type="submit">검색</button>
 </form>
 ```
 
@@ -28,7 +28,7 @@ title: "<form>"
 ```js
 <form action={search}>
     <input name="query" />
-    <button type="submit">Search</button>
+    <button type="submit">검색</button>
 </form>
 ```
 
@@ -58,12 +58,12 @@ title: "<form>"
 export default function Search() {
   function search(formData) {
     const query = formData.get("query");
-    alert(`You searched for '${query}'`);
+    alert(`'${query}'을 검색했습니다`);
   }
   return (
     <form action={search}>
       <input name="query" />
-      <button type="submit">Search</button>
+      <button type="submit">검색</button>
     </form>
   );
 }
@@ -92,7 +92,7 @@ function AddToCart({productId}) {
   return (
     <form action={addToCart}>
         <input type="hidden" name="productId" value={productId} />
-        <button type="submit">Add to Cart</button>
+        <button type="submit">장바구니에 추가</button>
     </form>
   );
 }
@@ -111,7 +111,7 @@ function AddToCart({productId}) {
   const addProductToCart = addToCart.bind(null, productId);
   return (
     <form action={addProductToCart}>
-      <button type="submit">Add to Cart</button>
+      <button type="submit">장바구니에 추가</button>
     </form>
   );
 }
@@ -135,7 +135,7 @@ function Submit() {
   const { pending } = useFormStatus();
   return (
     <button type="submit" disabled={pending}>
-      {pending ? "Submitting..." : "Submit"}
+      {pending ? "제출중..." : "제출"}
     </button>
   );
 }
@@ -167,7 +167,7 @@ export async function submitForm(query) {
 
 `useOptimistic` Hook은 네트워크 요청과 같은 백그라운드의 작업이 끝나기 전에 사용자 인터페이스에 낙관적으로 업데이트하는 방법을 제공합니다. 폼의 맥락에서 이 기술은 앱을 더욱 반응형으로 느끼게 해줍니다. 사용자가 폼을 제출하면 인터페이스는 사용자가 기대하는 결과물로 즉시 업데이트됩니다.
 
-예를 들어, 사용자가 폼에 메시지를 입력하고 "제출" 버튼을 클릭하면 `useOptimistic` Hook은 "제출중..." 라벨과 함께 메시지가 서버에 보내지기 전에 리스트에 즉시 보입니다. 이러한 '낙관적인' 접근 방식은 속도와 반응성이 뛰어나다는 인상을 줍니다. 그다음 폼은 실제로 백그라운드에 메시지 보내기를 시도합니다. 서버에 메시지가 잘 도착하면, "제출중..." 라벨은 사라집니다.
+예를 들어, 사용자가 폼에 메시지를 입력하고 "전송" 버튼을 클릭하면 `useOptimistic` Hook은 "전송중..." 라벨과 함께 메시지가 서버에 보내지기 전에 리스트에 즉시 보입니다. 이러한 '낙관적인' 접근 방식은 속도와 반응성이 뛰어나다는 인상을 줍니다. 그다음 폼은 실제로 백그라운드에 메시지 보내기를 시도합니다. 서버에 메시지가 잘 도착하면, "전송중..." 라벨은 사라집니다.
 
 
 <Sandpack>
@@ -200,12 +200,12 @@ function Thread({ messages, sendMessage }) {
       {optimisticMessages.map((message, index) => (
         <div key={index}>
           {message.text}
-          {!!message.sending && <small> (Sending...)</small>}
+          {!!message.sending && <small> (전송중...)</small>}
         </div>
       ))}
       <form action={formAction} ref={formRef}>
         <input type="text" name="message" placeholder="Hello!" />
-        <button type="submit">Send</button>
+        <button type="submit">전송</button>
       </form>
     </>
   );
@@ -253,7 +253,7 @@ export default function Search() {
     >
       <form action={search}>
         <input name="query" />
-        <button type="submit">Search</button>
+        <button type="submit">검색</button>
       </form>
     </ErrorBoundary>
   );
@@ -298,7 +298,7 @@ export default function Page() {
     const email = formData.get("email");
     try {
       await signUpNewUser(email);
-      alert(`Added "${email}"`);
+      alert(`"${email}"을 등록했어요`);
     } catch (err) {
       return err.toString();
     }
@@ -306,12 +306,12 @@ export default function Page() {
   const [message, signupAction] = useActionState(signup, null);
   return (
     <>
-      <h1>Signup for my newsletter</h1>
-      <p>Signup with the same email twice to see an error</p>
+      <h1>저의 뉴스레터에 가입하세요</h1>
+      <p>같은 이메일로 두 번 가입하여 오류를 확인하세요</p>
       <form action={signupAction} id="signup-form">
-        <label htmlFor="email">Email: </label>
+        <label htmlFor="email">이메일: </label>
         <input name="email" id="email" placeholder="react@example.com" />
-        <button>Sign up</button>
+        <button>가입하기</button>
         {!!message && <p>{message}</p>}
       </form>
     </>
@@ -324,7 +324,7 @@ let emails = [];
 
 export async function signUpNewUser(newEmail) {
   if (emails.includes(newEmail)) {
-    throw new Error("This email address has already been added");
+    throw new Error("이 이메일 주소는 이미 등록되었습니다.");
   }
   emails.push(newEmail);
 }
@@ -347,20 +347,20 @@ export default function Search() {
   function publish(formData) {
     const content = formData.get("content");
     const button = formData.get("button");
-    alert(`'${content}' was published with the '${button}' button`);
+    alert(`'${button}' 버튼으로 '${content}'가 발행되었습니다`);
   }
 
   function save(formData) {
     const content = formData.get("content");
-    alert(`Your draft of '${content}' has been saved!`);
+    alert(`'${content}' 초안이 저장되었습니다!`);
   }
 
   return (
     <form action={publish}>
       <textarea name="content" rows={4} cols={40} />
       <br />
-      <button type="submit" name="button" value="submit">Publish</button>
-      <button formAction={save}>Save draft</button>
+      <button type="submit" name="button" value="submit">발행</button>
+      <button formAction={save}>초안 저장</button>
     </form>
   );
 }
