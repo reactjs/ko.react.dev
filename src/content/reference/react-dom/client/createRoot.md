@@ -88,7 +88,7 @@ React는 `root`에 `<App />`을 표시하고 그 안에 있는 DOM을 관리합�
 
 * 동일한 루트에서 `render`를 두 번 이상 호출하면, React는 필요에 따라 DOM을 업데이트하여 사용자가 전달한 최신 JSX를 반영합니다. React는 이전에 렌더링 된 트리와 ["비교"](/learn/preserving-and-resetting-state)해서 재사용할 수 있는 부분과 다시 만들어야 하는 부분을 결정합니다. 동일한 루트에서 `render`를 다시 호출하는 것은 루트 컴포넌트에서 [`set` 함수](/reference/react/useState#setstate)를 호출하는 것과 비슷합니다. React는 불필요한 DOM 업데이트를 피합니다.
 
-* 렌더링이 시작된 이후에는 동기적으로 실행되지만, `root.render(...)`자체는 비동기적입니다. 즉, `root.render()` 이후에 작성된 코드가 해당 렌더링의 `useLayoutEffect`나 `useEffect`보다 먼저 실행될 수 있습니다. 일반적인 상황에서는 이러한 동작도 문제 없이 잘 작동하며, 대부분 수정이 필요하지 않습니다. 다만, 효과(effects)의 실행 순서가 중요한 경우에는 `flushSync`로 `root.render(...)` 호출을 감싸면 초기 렌더링이 완전히 동기적으로 실행되도록 보장할 수 있습니다.
+* 렌더링이 시작된 이후에는 동기적으로 실행되지만, `root.render(...)` 자체는 비동기적입니다. 즉, `root.render()` 이후에 작성된 코드가 해당 렌더링의 `useLayoutEffect`나 `useEffect`보다 먼저 실행될 수 있습니다. 일반적인 상황에서는 이러한 동작도 문제 없이 잘 작동하며, 대부분 수정이 필요하지 않습니다. 다만, Effect의 실행 순서가 중요한 경우에는 [`flushSync`](/reference/react-dom/flushSync)로 `root.render(...)` 호출을 감싸면 초기 렌더링이 완전히 동기적으로 실행되도록 보장할 수 있습니다.
 
   ```js
   const root = createRoot(document.getElementById('root'));
@@ -156,7 +156,7 @@ root.render(<App />);
 <html>
   <head><title>My app</title></head>
   <body>
-    <!-- 이것이 DOM 노드입니다 -->
+    <!-- 이것은은 DOM 노드입니다. -->
     <div id="root"></div>
   </body>
 </html>
@@ -542,7 +542,7 @@ root.render(<App />);
 이 오류는 `<Component />` 대신 `Component`로 `root.render`를 호출할 때 발생할 수 있습니다.
 
 ```js {2,5}
-// 🚩잘못된 방법: App은 컴포넌트가 아니라 함수입니다.
+// 🚩 잘못된 방법: App은 컴포넌트가 아니라 함수입니다.
 root.render(App);
 
 // ✅ 올바른 방법: <App />은 컴포넌트입니다.
