@@ -552,7 +552,7 @@ root.render(<App />);
 또는 함수를 호출한 결과 대신 `root.render`에 함수 자체를 전달했을 때도 발생할 수 있습니다.
 
 ```js {2,5}
-// 🚩잘못된 방법: createApp은 컴포넌트가 아니라 함수입니다.
+// 🚩 잘못된 방법: createApp은 컴포넌트가 아니라 함수입니다.
 root.render(createApp);
 
 // ✅ 올바른 방법: createApp을 호출하여 컴포넌트를 반환합니다.
