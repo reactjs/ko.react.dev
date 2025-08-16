@@ -4,7 +4,7 @@ title: "<form>"
 
 <Intro>
 
-[내장 브라우저 `<form>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)는 정보 제출을 위한 대화형 컨트롤을 만들 수 있습니다.
+[내장 브라우저 `<form>` 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)로 정보 제출을 위한 대화형 컨트롤을 만들 수 있습니다.
 
 ```js
 <form action={search}>
@@ -58,7 +58,7 @@ title: "<form>"
 export default function Search() {
   function search(formData) {
     const query = formData.get("query");
-    alert(`'${query}'을 검색했습니다`);
+    alert(`'${query}'을(를) 검색했습니다.`);
   }
   return (
     <form action={search}>
@@ -307,7 +307,7 @@ export default function Page() {
   return (
     <>
       <h1>뉴스레터에 가입하세요</h1>
-      <p>같은 이메일로 두 번 가입하여 오류를 확인하세요</p>
+      <p>같은 이메일로 두 번 가입하여 오류를 확인하세요.</p>
       <form action={signupAction} id="signup-form">
         <label htmlFor="email">이메일: </label>
         <input name="email" id="email" placeholder="react@example.com" />
@@ -347,7 +347,7 @@ export default function Search() {
   function publish(formData) {
     const content = formData.get("content");
     const button = formData.get("button");
-    alert(`'${button}' 버튼으로 '${content}'가 발행되었습니다`);
+    alert(`'${button}' 버튼으로 '${content}'가 발행되었습니다.`);
   }
 
   function save(formData) {
