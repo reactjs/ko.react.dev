@@ -496,7 +496,9 @@ root.render(<App />);
 흔히 하는 실수는 `createRoot`의 옵션을 `root.render(...)`에 전달하는 것입니다.
 
 <ConsoleBlock level="error">
-경고: `root.render(...)`에 두 번째 인수를 전달했지만, 이 메서드는 하나의 인자만 받을 수 있습니다.
+
+Warning: You passed a second argument to root.render(...) but it only accepts one argument.
+
 </ConsoleBlock>
 
 해결 방법: 루트 옵션은 `root.render(...)`가 아니라 `createRoot(...)`에 전달하세요.
