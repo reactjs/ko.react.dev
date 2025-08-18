@@ -29,7 +29,19 @@ React DOM은 브라우저 DOM 환경에서 실행되는 웹 애플리케이션�
 * [클라이언트 API](/reference/react-dom/client) - `react-dom/client` API를 사용하면 브라우저에서 React 컴포넌트를 렌더링할 수 있습니다.
 * [서버 API](/reference/react-dom/server) - `react-dom/server` API를 사용하면 서버에서 React 컴포넌트를 HTML로 렌더링할 수 있습니다.
 
+<<<<<<< HEAD
 ## React의 규칙 {/*rules-of-react*/}
+=======
+## React Compiler {/*react-compiler*/}
+
+The React Compiler is a build-time optimization tool that automatically memoizes your React components and values:
+
+* [Configuration](/reference/react-compiler/configuration) - Configuration options for React Compiler.
+* [Directives](/reference/react-compiler/directives) - Function-level directives to control compilation.
+* [Compiling Libraries](/reference/react-compiler/compiling-libraries) - Guide for shipping pre-compiled library code.
+
+## Rules of React {/*rules-of-react*/}
+>>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 
 React에는 패턴 이해를 쉽게 하며 고품질의 애플리케이션을 만들 수 있게 하는 일종의 규칙 혹은 모범적인 방식이 있습니다.
 
