@@ -4,7 +4,7 @@ title: captureOwnerStack
 
 <Intro>
 
-`captureOwnerStack`는 개발 환경에서 현재 Owner Stack을 읽고, 사용가능한 문자열을 반환합니다.
+`captureOwnerStack`는 개발 환경에서 현재 Owner Stack을 읽고, 사용할 수 있는 문자열을 반환합니다.
 
 ```js
 const stack = captureOwnerStack();
@@ -41,13 +41,13 @@ function Component() {
 
 `captureOwnerStack`은 `string`이나 `null`을 반환합니다.
 
-Owner Stacks은 다음 경우에 사용 가능합니다.
+Owner Stacks은 다음 경우에 사용할 수 있습니다.
 - 컴포넌트 렌더링 시
 - 이펙트 (예: `useEffect`)
 - React 이벤트 핸들러 (예: `<button onClick={...} />`)
 - React 에러 핸들러 ([React 루트 옵션](/reference/react-dom/client/createRoot#parameters) `onCaughtError`, `onRecoverableError`, `onUncaughtError`)
 
-Owner Stack을 사용할 수 없는 경우, `null`이 반환 됩니다. ([문제해결: Owner Stack이 `null`인 경우](#the-owner-stack-is-null))
+Owner Stack을 사용할 수 없는 경우, `null`이 반환됩니다. ([문제해결: Owner Stack이 `null`인 경우](#the-owner-stack-is-null))
 
 #### 주의 사항 {/*caveats*/}
 
@@ -57,7 +57,7 @@ Owner Stack을 사용할 수 없는 경우, `null`이 반환 됩니다. ([문제
 
 #### Owner Stack vs Component Stack {/*owner-stack-vs-component-stack*/}
 
-The Owner Stack은 [`errorInfo.componentStack` in `onUncaughtError`](/reference/react-dom/client/hydrateRoot#show-a-dialog-for-uncaught-errors)와 같은 리액트 에러 핸들러에서 사용할 수 있는 Component Stack과 다릅니다.
+Owner Stack은 [`errorInfo.componentStack` in `onUncaughtError`](/reference/react-dom/client/hydrateRoot#show-a-dialog-for-uncaught-errors)와 같은 리액트 에러 핸들러에서 사용할 수 있는 Component Stack과 다릅니다.
 
 예를 들어 다음 코드를 살펴보겠습니다.
 
@@ -351,7 +351,7 @@ export default function App() {
 
 `captureOwnerStack`이 React가 제어하지 않는 함수 바깥에서 호출됐을 경우, 예를 들어 `setTimeout` 콜백, `fetch` 호출 후, 커스텀 DOM 이벤트 핸들러 등에서는 Owner Stack이 null이 됩니다. 렌더링 중이나 이펙트, React 이벤트 핸들러, React 에러 핸들러(예: `hydrateRoot#options.onCaughtError`) 내에서만 생성됩니다.
 
-아래 예제에서, 버튼을 클릭하면 빈 Owner Stack이 로그로 출력됩니다. 그 이유는 `captureOwnerStack`이 커스텀 이벤트 핸들러 내에서 호출되었기 때문입니다. Owner Stack은 더 이른 시점, 예를 들어 이펙트 내부에서 `captureOwnerStack`를 호출하도록 이동시켜야 올바르게 캡쳐할 수 있습니다.
+아래 예시에서, 버튼을 클릭하면 빈 Owner Stack이 로그로 출력됩니다. 그 이유는 `captureOwnerStack`이 커스텀 이벤트 핸들러 내에서 호출되었기 때문입니다. Owner Stack은 더 이른 시점, 예를 들어 이펙트 내부에서 `captureOwnerStack`를 호출하도록 이동시켜야 올바르게 캡처할 수 있습니다.
 <Sandpack>
 
 ```js
@@ -381,7 +381,7 @@ export default function App() {
 
 ### `captureOwnerStack`을 사용할 수 없는 경우 {/*captureownerstack-is-not-available*/}
 
-`captureOwnerStack`은 개발 환경 빌드에서만 export됩니다. 프로덕션 환경 빌드에서는 `undefined`입니다. `captureOwnerStack`이 개발과 프로덕션이 모두 번들링되는 파일에서 사용될 때에는 네임스페이스 임포트를 사용하고 조건부로 접근해야 합니다.
+`captureOwnerStack`은 개발 환경 빌드에서만 export됩니다. 프로덕션 환경 빌드에서는 `undefined`입니다. `captureOwnerStack`이 개발과 프로덕션이 모두 번들링되는 파일에서 사용될 때는 네임스페이스 import를 사용하고 조건부로 접근해야 합니다.
 
 ```js
 // Don't use named imports of `captureOwnerStack` in files that are bundled for development and production.

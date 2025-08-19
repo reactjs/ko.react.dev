@@ -49,7 +49,7 @@ startTransition(() => {
 #### 주의 사항 {/*caveats*/}
 
 - 여러 트랜지션이 결합되면 모든 트랜지션 타입이 수집됩니다. 하나의 트랜지션에 두 개 이상의 타입을 추가할 수도 있습니다.
-- 트랜지션 타입은 커밋마다 초기화됩니다. 즉, `<Suspense>`의 Fallback은 `startTransition` 이후 타입을 연결하며, 컨텐츠가 나타날 때는 그렇지 않습니다.
+- 트랜지션 타입은 커밋마다 초기화됩니다. 즉, `<Suspense>`의 Fallback은 `startTransition` 이후 타입을 연결하며, 내용이 나타날 때는 그렇지 않습니다.
 
 ---
 
@@ -177,4 +177,4 @@ View Transition 이벤트를 활용하여 타입에 따라 활성화된 `ViewTra
 
 ## 문제 해결 {/*troubleshooting*/}
 
-### 해야할 일 {/*todo2*/}
+### 해야 할 일 {/*todo2*/}
