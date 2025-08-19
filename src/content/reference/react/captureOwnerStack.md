@@ -4,7 +4,7 @@ title: captureOwnerStack
 
 <Intro>
 
-`captureOwnerStack` reads the current Owner Stack in development and returns it as a string if available.
+`captureOwnerStack`는 개발 환경에서 현재 Owner Stack을 읽고, 사용가능한 문자열을 반환합니다.
 
 ```js
 const stack = captureOwnerStack();
@@ -16,11 +16,11 @@ const stack = captureOwnerStack();
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `captureOwnerStack()` {/*captureownerstack*/}
 
-Call `captureOwnerStack` to get the current Owner Stack.
+`captureOwnerStack`을 호출하여 현재 Owner Stack을 가져옵니다.
 
 ```js {5,5}
 import * as React from 'react';
@@ -33,33 +33,33 @@ function Component() {
 }
 ```
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-`captureOwnerStack` does not take any parameters.
+`captureOwnerStack`는 매개변수를 받지 않습니다.
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-`captureOwnerStack` returns `string | null`.
+`captureOwnerStack`은 `string`이나 `null`을 반환합니다.
 
-Owner Stacks are available in
-- Component render
-- Effects (e.g. `useEffect`)
-- React's event handlers (e.g. `<button onClick={...} />`)
-- React error handlers ([React Root options](/reference/react-dom/client/createRoot#parameters) `onCaughtError`, `onRecoverableError`, and `onUncaughtError`)
+Owner Stacks은 다음 경우에 사용 가능합니다.
+- 컴포넌트 렌더링 시
+- 이펙트 (예: `useEffect`)
+- React 이벤트 핸들러 (예: `<button onClick={...} />`)
+- React 에러 핸들러 ([React 루트 옵션](/reference/react-dom/client/createRoot#parameters) `onCaughtError`, `onRecoverableError`, `onUncaughtError`)
 
-If no Owner Stack is available, `null` is returned (see [Troubleshooting: The Owner Stack is `null`](#the-owner-stack-is-null)).
+Owner Stack을 사용할 수 없는 경우, `null`이 반환 됩니다. ([문제해결: Owner Stack이 `null`인 경우](#the-owner-stack-is-null))
 
-#### Caveats {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
-- Owner Stacks are only available in development. `captureOwnerStack` will always return `null` outside of development.
+- Owner Stack은 개발 환경에서만 사용할 수 있습니다. `captureOwnerStack`은 개발 환경 밖에서는 항상 `null`을 반환합니다.
 
 <DeepDive>
 
 #### Owner Stack vs Component Stack {/*owner-stack-vs-component-stack*/}
 
-The Owner Stack is different from the Component Stack available in React error handlers like [`errorInfo.componentStack` in `onUncaughtError`](/reference/react-dom/client/hydrateRoot#show-a-dialog-for-uncaught-errors).
+The Owner Stack은 [`errorInfo.componentStack` in `onUncaughtError`](/reference/react-dom/client/hydrateRoot#show-a-dialog-for-uncaught-errors)와 같은 리액트 에러 핸들러에서 사용할 수 있는 Component Stack과 다릅니다.
 
-For example, consider the following code:
+예를 들어 다음 코드를 살펴보겠습니다.
 
 <Sandpack>
 
@@ -136,8 +136,7 @@ createRoot(document.createElement('div'), {
 
 </Sandpack>
 
-`SubComponent` would throw an error.
-The Component Stack of that error would be
+`SubComponent`에서 에러가 날 때, 에러의 Component Stack은 다음과 같을 수 있습니다.
 
 ```
 at SubComponent
@@ -147,24 +146,23 @@ at main
 at React.Suspense
 at App
 ```
-
-However, the Owner Stack would only read
+그러나 Owner Stack은 이렇게만 읽습니다.
 
 ```
 at Component
 ```
 
-Neither `App` nor the DOM components (e.g. `fieldset`) are considered Owners in this Stack since they didn't contribute to "creating" the node containing `SubComponent`. `App` and DOM components only forwarded the node. `App` just rendered the `children` node as opposed to `Component` which created a node containing `SubComponent` via `<SubComponent />`.
+`App`이나 DOM 컴포넌트들(예: `fieldset`)은 이 스택에 포함되지 않습니다. 왜냐하면 이들은 `SubComponent`를 포함하는 노드를 "생성하는" 데에 기여하지 않기 때문입니다. `App`과 DOM 컴포넌트들은 노드를 전달할 뿐입니다. `App`은 `<SubComponent />`를 통해 `SubComponent`를 포함한 노드를 생성하는 `Component`와 달리 `children` 노드만 렌더링합니다.
 
-Neither `Navigation` nor `legend` are in the stack at all since it's only a sibling to a node containing `<SubComponent />`.
+또한, `Navigation`이나 `legend`도 `<SubComponent />`를 포함하는 노드의 형제가 아니기 때문에, 스택에 없습니다.
 
-`SubComponent` is omitted because it's already part of the callstack.
+`SubComponent`는 이미 호출 스택에 포함되어 있어서 Owner Stack에 나오지 않습니다.
 
 </DeepDive>
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Enhance a custom error overlay {/*enhance-a-custom-error-overlay*/}
+### 커스텀 에러 오버레이 개선하기 {/*enhance-a-custom-error-overlay*/}
 
 ```js [[1, 5, "console.error"], [4, 7, "captureOwnerStack"]]
 import { captureOwnerStack } from "react";
@@ -183,7 +181,7 @@ console.error = function patchedConsoleError(...args) {
 };
 ```
 
-If you intercept <CodeStep step={1}>`console.error`</CodeStep> calls to highlight them in an error overlay, you can call <CodeStep step={2}>`captureOwnerStack`</CodeStep> to include the Owner Stack.
+<CodeStep step={1}>`console.error`</CodeStep> 호출을 가로채서 에러 오버레이에 표시하고 싶다면, <CodeStep step={2}>`captureOwnerStack`</CodeStep>을 호출하여 `OwnerStack`을 포함할 수 있습니다.
 
 <Sandpack>
 
@@ -347,13 +345,13 @@ export default function App() {
 
 </Sandpack>
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
-### The Owner Stack is `null` {/*the-owner-stack-is-null*/}
+### Owner Stack이 `null`인 경우 {/*the-owner-stack-is-null*/}
 
-The call of `captureOwnerStack` happened outside of a React controlled function e.g. in a `setTimeout` callback, after a `fetch` call or in a custom DOM event handler. During render, Effects, React event handlers, and React error handlers (e.g. `hydrateRoot#options.onCaughtError`) Owner Stacks should be available.
+`captureOwnerStack`이 React가 제어하지 않는 함수 바깥에서 호출됐을 경우, 예를 들어 `setTimeout` 콜백, `fetch` 호출 후, 커스텀 DOM 이벤트 핸들러 등에서는 Owner Stack이 null이 됩니다. 렌더링 중이나 이펙트, React 이벤트 핸들러, React 에러 핸들러(예: `hydrateRoot#options.onCaughtError`) 내에서만 생성됩니다.
 
-In the example below, clicking the button will log an empty Owner Stack because `captureOwnerStack` was called during a custom DOM event handler. The Owner Stack must be captured earlier e.g. by moving the call of `captureOwnerStack` into the Effect body.
+아래 예제에서, 버튼을 클릭하면 빈 Owner Stack이 로그로 출력됩니다. 그 이유는 `captureOwnerStack`이 커스텀 이벤트 핸들러 내에서 호출되었기 때문입니다. Owner Stack은 더 이른 시점, 예를 들어 이펙트 내부에서 `captureOwnerStack`를 호출하도록 이동시켜야 올바르게 캡쳐할 수 있습니다.
 <Sandpack>
 
 ```js
@@ -381,9 +379,9 @@ export default function App() {
 
 </Sandpack>
 
-### `captureOwnerStack` is not available {/*captureownerstack-is-not-available*/}
+### `captureOwnerStack`을 사용할 수 없는 경우 {/*captureownerstack-is-not-available*/}
 
-`captureOwnerStack` is only exported in development builds. It will be `undefined` in production builds. If `captureOwnerStack` is used in files that are bundled for production and development, you should conditionally access it from a namespace import.
+`captureOwnerStack`은 개발 환경 빌드에서만 export됩니다. 프로덕션 환경 빌드에서는 `undefined`입니다. `captureOwnerStack`이 개발과 프로덕션이 모두 번들링되는 파일에서 사용될 때에는 네임스페이스 임포트를 사용하고 조건부로 접근해야 합니다.
 
 ```js
 // Don't use named imports of `captureOwnerStack` in files that are bundled for development and production.
