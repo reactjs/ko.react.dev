@@ -708,8 +708,7 @@ body {
 
 ### 사용자와 상호작용하는 컴포넌트 만들기 {/*making-an-interactive-component*/}
 
-이제 `Square` 컴포넌트를 클릭하면 `X`로 채워보겠습니다. `Square` 컴포넌트 내부에 `handleClick` 함수를 선언하세요. 그런 다음 `Square`에서 반환(`return`)된 `<button>` JSX 요소에 `onClick` Props를 추가하세요.
-
+이제 `Square` 컴포넌트를 클릭하면 `X`로 채워보겠습니다. `Square` 컴포넌트 내부에 `handleClick` 함수를 선언하세요. 그런 다음 `Square`에서 반환<sup>`return`</sup>된 버튼<sup>`<button>`</sup> JSX 요소에 `onClick` Props를 추가하세요.
 
 ```js {2-4,9}
 function Square({ value }) {
