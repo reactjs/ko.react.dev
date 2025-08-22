@@ -52,7 +52,7 @@ React는 `<style>` 컴포넌트를 문서의 `<head>`로 이동시키고, 동일
 이러한 처리는 세 가지 주의 사항이 있습니다.
 
 * 스타일이 렌더링된 후에는 React가 속성 변경을 무시합니다. (개발 중에 이 상황이 발생하면 React는 경고를 표시합니다.)
-* React는 `precedence` 속성을 사용할 때 불필요한 props를 제거합니다 (단, href와 precedence는 제외).
+* React는 `precedence` 속성을 사용할 때 불필요한 props를 제거합니다 (단, `href`와 `precedence`는 제외).
 * 스타일을 렌더링한 컴포넌트가 마운트 해제된 후에도 DOM에 스타일이 유지될 수 있습니다.
 ---
 
