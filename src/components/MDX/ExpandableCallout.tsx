@@ -16,6 +16,7 @@ type CalloutVariants =
   | 'note'
   | 'wip'
   | 'canary'
+  | 'experimental'
   | 'major'
   | 'rsc';
 
@@ -26,7 +27,7 @@ interface ExpandableCalloutProps {
 
 const variantMap = {
   deprecated: {
-    title: '더 이상 사용되지 않습니다',
+    title: '더 이상 사용되지 않습니다!',
     Icon: IconWarning,
     containerClasses: 'bg-red-5 dark:bg-red-60 dark:bg-opacity-20',
     textColor: 'text-red-50 dark:text-red-40',
@@ -51,6 +52,15 @@ const variantMap = {
     overlayGradient:
       'linear-gradient(rgba(245, 249, 248, 0), rgba(245, 249, 248, 1)',
   },
+  experimental: {
+    title: '실험적 기능',
+    Icon: IconCanary,
+    containerClasses:
+      'bg-green-5 dark:bg-green-60 dark:bg-opacity-20 text-primary dark:text-primary-dark text-lg',
+    textColor: 'text-green-60 dark:text-green-40',
+    overlayGradient:
+      'linear-gradient(rgba(245, 249, 248, 0), rgba(245, 249, 248, 1)',
+  },
   pitfall: {
     title: '주의하세요!',
     Icon: IconPitfall,
@@ -60,7 +70,7 @@ const variantMap = {
       'linear-gradient(rgba(249, 247, 243, 0), rgba(249, 247, 243, 1)',
   },
   wip: {
-    title: '개발중이에요',
+    title: '개발중이에요!',
     Icon: IconNote,
     containerClasses: 'bg-yellow-5 dark:bg-yellow-60 dark:bg-opacity-20',
     textColor: 'text-yellow-50 dark:text-yellow-40',

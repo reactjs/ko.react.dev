@@ -67,9 +67,10 @@ function StatefulForm({}) {
 
 `useActionState`는 다음 세 가지 값을 담은 배열을 반환합니다.
 
-1. 현재 State입니다. 첫 렌더링 시에는 `initialState`와 일치하며, 액션이 실행된 후에는 액션이 반환한 값과 일치합니다.
-2. `<form>` 컴포넌트의 `action` Prop이나 폼 내부 `<button>` 컴포넌트의 `formAction` Prop에 전달할 수 있는 새 액션입니다.
-3. 폼 액션이 대기 중인지 여부를 알려주는 `isPending` 플래그입니다.
+1. 현재 State입니다. 첫 렌더링 시에는 `initialState`와 일치하며, 액션이 실행된 후에는 해당 액션이 반환한 값과 일치합니다.
+2. `form` 컴포넌트의 `action` Prop이나, 폼 내부 `button` 컴포넌트의 `formAction` Prop에 전달할 수 있는 새 액션입니다. 이 액션은 [`startTransition`](/reference/react/startTransition) 내에서 수동으로 호출할 수도 있습니다.
+3. 현재 Transition이 대기 중인지 알려주는 `isPending` 플래그입니다.
+
 
 #### 주의 사항 {/*caveats*/}
 
@@ -101,13 +102,16 @@ function MyComponent() {
 
 `useActionState`가 반환하는 배열은 다음과 같은 요소를 갖습니다.
 
-1. 폼의 <CodeStep step={1}>현재 State</CodeStep>입니다. 처음에는 전달한 <CodeStep step={4}>초기 State</CodeStep>로 설정되며, 폼이 제출된 후에는 전달한 <CodeStep step={3}>액션</CodeStep>의 반환값으로 설정됩니다.
-2. `<form>`의 `action` Prop에 전달할 <CodeStep step={2}>새로운 액션</CodeStep>입니다.
+1. 폼의 <CodeStep step={1}>현재 State</CodeStep>는, 처음에는 전달한 <CodeStep step={4}>초기 State</CodeStep>로 설정되며, 폼이 제출된 후에는 전달한 <CodeStep step={3}>액션</CodeStep>의 반환값으로 설정됩니다.
+2. `<form>`의 `action` Prop에 전달하거나 `startTransition` 안에서 직접 호출할 수 있는<CodeStep step={2}>새로운 액션</CodeStep>입니다.
 3. 액션이 처리되는 동안 사용할 수 있는 <CodeStep step={1}>대기<sup>Pending</sup> State</CodeStep>입니다.
 
-폼 제출 시, <CodeStep step={3}>액션</CodeStep> 함수가 호출되고 그 반환값이 폼의 새로운 <CodeStep step={1}>현재 State</CodeStep>가 됩니다.
 
-또한 <CodeStep step={3}>액션</CodeStep> 함수는 새롭게 추가된 첫 번째 인수로 폼의 <CodeStep step={1}>현재 State</CodeStep>를 받습니다. (처음엔 <CodeStep step={4}>초기 State</CodeStep>, 그 후에는 직전 반환값) 나머지 인수들은 일반 폼 액션 호출과 동일합니다.
+폼이 제출되면, 제공한 <CodeStep step={3}>액션</CodeStep> 함수가 호출되며, 해당 함수의 반환값이 새로운 <CodeStep step={1}>현재 State</CodeStep>로 설정됩니다.
+
+이 <CodeStep step={3}>액션</CodeStep> 함수는 첫 번째 인수로 <CodeStep step={1}>현재 State</CodeStep>를 추가로 전달받습니다.
+처음 제출될 때는<CodeStep step={4}>초기 State</CodeStep>가 전달되며, 이후 제출부터는 직전 호출 시 반환된 값이 전달됩니다. 나머지 인수들은 useActionState를 사용하지 않았을 때와 동일합니다.
+
 
 ```js [[3, 1, "action"], [1, 1, "currentState"]]
 function action(currentState, formData) {
@@ -263,7 +267,7 @@ form button {
 
 ### 액션이 더 이상 제출된 폼 데이터를 읽을 수 없습니다 {/*my-action-can-no-longer-read-the-submitted-form-data*/}
 
-액션을 `useActionState`로 감싸면 *첫 번째 인수*로 “이전(또는 현재) State”가 추가됩니다. 따라서 일반적인 폼 액션과 달리, 제출된 폼 데이터는 *두 번째 인수*에서 확인해야 합니다.
+액션을 `useActionState`로 감싸면 *첫 번째 인수*로 "이전(또는 현재) State"가 추가됩니다. 따라서 일반적인 폼 액션과 달리, 제출된 폼 데이터는 *두 번째 인수*에서 확인해야 합니다.
 
 ```js
 function action(currentState, formData) {

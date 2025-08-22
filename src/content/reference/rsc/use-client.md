@@ -5,7 +5,7 @@ titleForTitleTag: "'use client' 지시어"
 
 <RSC>
 
-`'use client'`는 [React 서버 컴포넌트](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)와 함께 사용합니다.
+`'use client'`는 [React 서버 컴포넌트](/reference/rsc/server-components)와 함께 사용합니다.
 
 </RSC>
 
@@ -41,7 +41,7 @@ export default function RichTextEditor({ timestamp, text }) {
 }
 ```
 
-서버 컴포넌트에서 `'use client'`라 표시된 파일을 가져오면 [호환되는 번들러](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)는 모듈 불러오기<sup>Module Import</sup>를 서버 실행 코드와 클라이언트 실행 코드 사이의 경계로 처리합니다.
+서버 컴포넌트에서 `'use client'`라 표시된 파일을 가져오면 [호환되는 번들러](/learn/start-a-new-react-project#full-stack-frameworks)는 모듈 불러오기<sup>Module Import</sup>를 서버 실행 코드와 클라이언트 실행 코드 사이의 경계로 처리합니다.
 
 `RichTextEditor`의 의존성으로 인하여, `formatDate`와 `Button`의 모듈에 `'use client'` 지시어가 포함되어 있지 않더라도 클라이언트에서 평가됩니다. 하나의 모듈이 서버 코드에서 가져올 때는 서버에서, 클라이언트 코드에서 가져올 때는 클라이언트에서 평가될 수 있음을 유의해야 합니다.
 

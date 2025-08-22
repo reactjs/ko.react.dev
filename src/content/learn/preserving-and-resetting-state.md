@@ -671,13 +671,13 @@ label {
 
 </Sandpack>
 
-체크 박스를 선택할 때 카운터 state가 초기화됩니다. `div`의 첫 번째 자식으로 `Counter`를 렌더링하는 것에서 `section`의 첫 번째 자식으로 바꾸지만요. 자식 `div`가 DOM에서 제거될 때 그것의 전체 하위 트리(`Counter`와 그 state를 포함해서)는 제거됩니다.
+`Counter`의 State는 체크 박스를 선택할 때 초기화됩니다. 비록 `Counter`를 렌더링하지만, `div`의 첫 번째 자식이 `section`에서 `div`로 바뀝니다. 자식 `section`이 DOM에서 제거되었을 때, 그 아래 전체 트리(`Counter`와 그 State를 포함하여)도 함께 제거됩니다.
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_diff_same_pt1" height={350} width={794} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'section', which has a single child labeled 'Counter' containing a state bubble labeled 'count' with value 3. The middle section has the same 'div' parent, but the child components have now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'div', highlighted in yellow, also with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, all highlighted in yellow.">
 
-`section` 이 `div` 로 바뀌면, `section` 은 삭제되고 새로운 `div` 가 추가됩니다
+`section`이 `div`로 바뀌면, `section`은 삭제되고 새로운 `div`가 추가됩니다.
 
 </Diagram>
 
@@ -687,17 +687,17 @@ label {
 
 <Diagram name="preserving_state_diff_same_pt2" height={350} width={794} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'div', which has a single child labeled 'Counter' containing a state bubble labeled 'count' with value 0. The middle section has the same 'div' parent, but the child components have now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'section', highlighted in yellow, also with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, all highlighted in yellow.">
 
-다시 되돌리면, `div` 는 삭제되고 새로운 `section` 이 추가됩니다.
+다시 되돌리면, `div`는 삭제되고 새로운 `section`이 추가됩니다.
 
 </Diagram>
 
 </DiagramGroup>
 
-경험상(rule of thumb) **리렌더링할 때 state를 유지하고 싶다면, 트리 구조가 "같아야" 합니다.** 만약 구조가 다르다면 React가 트리에서 컴포넌트를 지울 때 state로 지우기 때문에 state가 유지되지 않습니다.
+경험상<sup>Rule of Thumb</sup> **리렌더링할 때 State를 유지하고 싶다면, 트리 구조가 "같아야" 합니다.** 만약 구조가 다르다면 React가 트리에서 컴포넌트를 지울 때 State로 지우기 때문에 State가 유지되지 않습니다.
 
 <Pitfall>
 
-이것이 컴포넌트 함수를 중첩해서 정의하면 안 되는 이유입니다.
+이것이 컴포넌트 함수를 중첩해서 정의하면 안되는 이유입니다.
 
 여기, `MyComponent` 안에서 `MyTextField` 컴포넌트 함수를 정의하고 있습니다.
 
@@ -734,13 +734,13 @@ export default function MyComponent() {
 </Sandpack>
 
 
-버튼을 누를 때마다 입력 state가 사라집니다! 이것은 `MyComponent`를 렌더링할 때마다 *다른* `MyTextField` 함수가 만들어지기 때문입니다. 따라서 같은 함수에서 *다른* 컴포넌트를 렌더링할 때마다 React는 그 아래의 모든 state를 초기화합니다. 이런 문제를 피하려면 **항상 컴포넌트를 중첩해서 정의하지 않고 최상위 범위에서 정의해야 합니다.**
+버튼을 누를 때마다 입력 State가 사라집니다! 이것은 `MyComponent`를 렌더링할 때마다 *다른* `MyTextField` 함수가 만들어지기 때문입니다. 따라서 같은 함수에서 *다른* 컴포넌트를 렌더링할 때마다 React는 그 아래의 모든 state를 초기화합니다. 이런 문제를 피하려면 **항상 컴포넌트를 중첩해서 정의하지 않고 최상위 범위에서 정의해야 합니다.**
 
 </Pitfall>
 
 ## 같은 위치에서 state를 초기화하기 {/*resetting-state-at-the-same-position*/}
 
-기본적으로 React는 컴포넌트가 같은 위치를 유지하면 state를 유지합니다. 보통 이것이 당신이 원하는 행동이기 때문에 기본 동작으로서 타당합니다. 그러나 가끔 컴포넌트 state를 초기화하고 싶을 때가 있습니다. 두 선수가 턴마다 자신의 점수를 추적하는 앱을 한번 봅시다.
+기본적으로 React는 컴포넌트가 같은 위치를 유지하면 state를 유지합니다. 보통 이것이 당신이 원하는 행동이기 때문에 기본 동작으로서 타당합니다. 그러나 가끔 컴포넌트 State를 초기화하고 싶을 때가 있습니다. 두 선수가 턴마다 자신의 점수를 추적하는 앱을 한번 봅시다.
 
 <Sandpack>
 
@@ -2006,7 +2006,7 @@ export default function ContactList() {
       <label>
         <input
           type="checkbox"
-          value={reverse}
+          checked={reverse}
           onChange={e => {
             setReverse(e.target.checked)
           }}
@@ -2105,7 +2105,7 @@ export default function ContactList() {
       <label>
         <input
           type="checkbox"
-          value={reverse}
+          checked={reverse}
           onChange={e => {
             setReverse(e.target.checked)
           }}

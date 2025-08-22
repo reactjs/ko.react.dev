@@ -1,5 +1,5 @@
 ---
-title: Effect 의존성 제거하기
+title: Effect의 의존성 제거하기
 ---
 
 <Intro>
@@ -509,7 +509,7 @@ function ShippingForm({ country }) {
 1. `country` props를 기반으로 `cities` State를 네트워크에 동기화하려고 합니다.
 2. `city` State를 기반으로 `areas` State를 네트워크에 동기화하려고 합니다.
 
-로직을 두 개의 Effect로 분할하고, 각 Effect는 동기화해야 하는 props즈에 반응합니다.
+로직을 두 개의 Effect로 분할하고, 각 Effect는 동기화해야 하는 props에 반응합니다.
 
 
 ```js {19-33}

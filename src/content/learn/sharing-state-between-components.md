@@ -125,7 +125,7 @@ state를 올리려면, 조정하려는 *두* 자식 컴포넌트의 가장 가�
   - `Panel`
   - `Panel`
 
-예시에서는 `Accordion` 컴포넌트입니다. 이 컴포넌트는 두 패널의 상위에 있고 props를 제어할 수 있기 때문에 현재 어느 패널이 활성화되었는지에 대한 "진리의 원천(source of truth)"이 됩니다. `Accordion` 컴포넌트가 하드 코딩된 값을 가지는 `isActive`를 (예를 들면 `true`)  두 패널에 전달하도록 만듭니다.
+예시에서는 `Accordion` 컴포넌트입니다. 이 컴포넌트는 두 패널의 상위에 있고 props를 제어할 수 있기 때문에 현재 어느 패널이 활성화되었는지에 대한 "진리의 원천(source of truth)"이 됩니다. `Accordion` 컴포넌트가 하드 코딩된 값을 가지는 `isActive`를 (예를 들면 `true`) 두 패널에 전달하도록 만듭니다.
 
 <Sandpack>
 

@@ -1,8 +1,9 @@
 ---
 title: experimental_taintUniqueValue
+version: experimental
 ---
 
-<Wip>
+<Experimental>
 
 **이 API는 실험적이며 React 안정 버전에서는 아직 사용할 수 없습니다.**
 
@@ -16,7 +17,7 @@ title: experimental_taintUniqueValue
 
 이 API는 [React 서버 컴포넌트](/reference/rsc/server-components)에서만 사용할 수 있습니다.
 
-</Wip>
+</Experimental>
 
 
 <Intro>
@@ -55,7 +56,7 @@ experimental_taintUniqueValue(
 
 #### 매개변수 {/*parameters*/}
 
-* `message`: 클라이언트 컴포넌트에 `value`가 전달될 경우 표시하고자 하는 메시지입니다.  이 메시지는 `value`가 클라이언트 컴포넌트에 전달될 경우 발생하는 오류의 일부로 표시됩니다.
+* `message`: 클라이언트 컴포넌트에 `value`가 전달될 경우 표시하고자 하는 메시지입니다. 이 메시지는 `value`가 클라이언트 컴포넌트에 전달될 경우 발생하는 오류의 일부로 표시됩니다.
 
 * `lifetime`: `value`가 얼마나 오랫동안 오염<sup>Taint</sup> 상태를 유지해야 하는지를 나타내는 객체입니다.`value`는 이 객체가 존재하는 동안 클라이언트 컴포넌트로 전달되지 않도록 차단됩니다. 예를 들어 `globalThis`를 전달하면 앱이 종료될 때까지 값이 차단됩니다. `lifetime`은 일반적으로 `value`를 프로퍼티로 가지는 객체입니다.
 

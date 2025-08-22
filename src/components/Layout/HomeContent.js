@@ -145,7 +145,7 @@ export function HomeContent() {
             React
           </h1>
           <p className="text-4xl font-display max-w-lg md:max-w-full py-1 text-center text-secondary dark:text-primary-dark leading-snug self-center">
-            웹 및 사용자 인터페이스를 위한 라이브러리
+            웹 및 네이티브 사용자 인터페이스를 위한 라이브러리
           </p>
           <div className="mt-5 self-center flex gap-2 w-full sm:w-auto flex-col sm:flex-row">
             <ButtonLink
@@ -196,7 +196,7 @@ export function HomeContent() {
             <Para>
               혼자서 작업하든, 수천 명의 다른 개발자와 함께 작업하든, React를
               사용하는 느낌은 동일합니다. 개인, 팀, 조직에서 작성한 컴포넌트를
-              원활하게 결합할 수 있도록 설계되었습니다.
+              원활하게 결합할 수 있도록 설계하였습니다.
             </Para>
           </Center>
         </Section>
@@ -325,7 +325,7 @@ export function HomeContent() {
                         React를 사용하면 데이터를 가져오는 동안 HTML을
                         스트리밍하여 자바스크립트 코드가 로드되기 전에 남은
                         내용을 점진적으로 채울 수 있습니다. 클라이언트에서
-                        React는 표준 웹 API를 사용하여 렌더링 중에도 UI를
+                        React는 표준 웹 API를 사용하여 렌더링 중에도 UI가
                         반응하도록 유지할 수 있습니다.
                       </p>
                     </div>
@@ -886,7 +886,8 @@ function ExampleLayout({
           </div>
           <div
             ref={contentRef}
-            className="relative mt-0 lg:-my-20 w-full p-2.5 xs:p-5 lg:p-10 flex grow justify-center">
+            className="relative mt-0 lg:-my-20 w-full p-2.5 xs:p-5 lg:p-10 flex grow justify-center"
+            dir="ltr">
             {right}
             <div
               className={cn(
@@ -1198,7 +1199,7 @@ async function Talks({ confId }) {
         </CodeBlock>
       }
       right={
-        <NavContext.Provider value={{slug, navigate}}>
+        <NavContext value={{slug, navigate}}>
           <BrowserChrome
             domain="example.com"
             path={'confs/' + slug}
@@ -1218,7 +1219,7 @@ async function Talks({ confId }) {
               </Suspense>
             </ExamplePanel>
           </BrowserChrome>
-        </NavContext.Provider>
+        </NavContext>
       }
     />
   );

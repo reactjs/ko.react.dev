@@ -40,7 +40,7 @@ store에 있는 데이터의 스냅샷을 반환합니다. 두 개의 함수를 
 
 #### 매개변수 {/*parameters*/}
 
-* `subscribe`:  하나의 `callback` 인수를 받아 store에 구독하는 함수입니다. store가 변경될 때, 제공된 `callback`이 호출되어 React가 `getSnapshot`을 다시 호출하고 (필요한 경우) 컴포넌트를 다시 렌더링하도록 해야 합니다. `subscribe` 함수는 구독을 정리하는 함수를 반환해야 합니다.
+* `subscribe`: 하나의 `callback` 인수를 받아 store에 구독하는 함수입니다. store가 변경될 때, 제공된 `callback`이 호출되어 React가 `getSnapshot`을 다시 호출하고 (필요한 경우) 컴포넌트를 다시 렌더링하도록 해야 합니다. `subscribe` 함수는 구독을 정리하는 함수를 반환해야 합니다.
 
 * `getSnapshot`: 컴포넌트에 필요한 store 데이터의 스냅샷을 반환하는 함수입니다. store가 변경되지 않은 상태에서 `getSnapshot`을 반복적으로 호출하면 동일한 값을 반환해야 합니다. 저장소가 변경되어 반환된 값이 다르면 ([`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is)와 비교하여) React는 컴포넌트를 리렌더링합니다.
 
@@ -404,14 +404,14 @@ store 데이터가 변경 가능한 경우 `getSnapshot` 함수는 해당 데이
 
 subscribe 함수는 컴포넌트 내부에 정의되므로 리렌더링할 때마다 달라집니다.
 
-```js {4-7}
+```js {2-5}
 function ChatIndicator() {
-  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
-
-  // 🚩항상 다른 함수를 사용하므로 React는 렌더링할 때마다 다시 구독합니다.
+  // 🚩 항상 다른 함수를 사용하므로 React는 렌더링할 때마다 다시 구독합니다.
   function subscribe() {
     // ...
   }
+  
+  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
 
   // ...
 }
@@ -419,28 +419,28 @@ function ChatIndicator() {
 
 리렌더링 사이에 다른 `subscribe` 함수를 전달하면 React가 store를 다시 구독합니다. 이로 인해 성능 문제가 발생하고 store 재구독을 피하고 싶다면 `subscribe` 함수를 외부로 이동하세요.
 
-```js {6-9}
-function ChatIndicator() {
-  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
+```js {1-4}
+// ✅ 항상 동일한 함수이므로 React는 다시 구독할 필요가 없습니다.
+function subscribe() {
   // ...
 }
 
-// ✅ 항상 동일한 함수이므로 React는 다시 구독할 필요가 없습니다.
-function subscribe() {
+function ChatIndicator() {
+  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
   // ...
 }
 ```
 
 또는 일부 인수가 변경될 때만 다시 구독하도록 `subscribe`을 [`useCallback`](/reference/react/useCallback)으로 래핑합니다.
 
-```js {4-8}
+```js {2-5}
 function ChatIndicator({ userId }) {
-  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
-
   // ✅ userId가 변경되지 않는 한 동일한 함수입니다.
   const subscribe = useCallback(() => {
     // ...
   }, [userId]);
+  
+  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
 
   // ...
 }

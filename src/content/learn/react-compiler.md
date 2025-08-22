@@ -6,10 +6,6 @@ title: React 컴파일러
 이 페이지는 React 컴파일러에 대한 소개와 이를 성공적으로 시도하는 방법을 제공합니다.
 </Intro>
 
-<Wip>
-이 문서는 아직 작업 중입니다. 더 많은 정보는 [React 컴파일러 워킹 그룹 저장소](https://github.com/reactwg/react-compiler/discussions)에서 확인할 수 있으며, React 컴파일러가 더욱 안정화되면 이 문서에 반영될 것입니다.
-</Wip>
-
 <YouWillLearn>
 
 * 컴파일러 시작하기
@@ -20,28 +16,28 @@ title: React 컴파일러
 
 <Note>
 
-React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 오픈소스로 공개한 베타<sup>Beta</sup> 버전의 새로운 컴파일러입니다. While it has been used in production at companies like Meta, rolling out the compiler to production for your app will depend on the health of your codebase and how well you’ve followed the [Rules of React](/reference/rules).
+React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 RC<sup>Release Candidate</sup> 버전으로 오픈소스화한 새로운 컴파일러입니다. 이제 모든 분께 이 컴파일러를 사용해 보고 피드백을 제공할 것을 권장합니다.
 
-The latest Beta release can be found with the `@beta` tag, and daily experimental releases with `@experimental`.
+최신 RC 릴리스는 `@rc` 태그로 찾을 수 있고, 일일 실험적 릴리스는 `@experimental`로 찾을 수 있습니다.
 </Note>
 
-React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 오픈소스로 공개한 새로운 컴파일러입니다. React 컴파일러는 빌드 타임 전용 도구로 React 앱을 자동으로 최적화합니다. 순수 자바스크립트로 동작하며, [React의 규칙](/reference/rules)을 이해하므로 코드를 다시 작성할 필요가 없습니다.
+React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 오픈소스화한 새로운 컴파일러입니다. React 컴파일러는 빌드 타임 전용 도구로 React 앱을 자동으로 최적화합니다. 순수 자바스크립트로 동작하며, [React의 규칙](/reference/rules)을 이해하므로 코드를 다시 작성할 필요가 없습니다.
 
-컴파일러에는 에디터 내에서 분석 결과를 보여주는 [ESLint 플러그인](#installing-eslint-plugin-react-compiler)도 포함되어 있습니다. **We strongly recommend everyone use the linter today.** The linter does not require that you have the compiler installed, so you can use it even if you are not ready to try out the compiler.
+`eslint-plugin-react-hooks`에는 코드 에디터에서 컴파일러의 분석 결과를 즉시 보여주는 [ESLint 규칙](#installing-eslint-plugin-react-compiler)도 포함되어 있습니다. **지금 당장 모든 분들들께 이 린터 사용을 강력히 권장합니다.** 린터는 컴파일러의 설치가 필요 없으므로 컴파일러를 사용할 준비가 되지 않았더라도 사용할 수 있습니다.
 
-The compiler is currently released as `beta`, and is available to try out on React 17+ apps and libraries. To install the Beta:
-
-<TerminalBlock>
-npm install -D babel-plugin-react-compiler@beta eslint-plugin-react-compiler@beta
-</TerminalBlock>
-
-Or, if you're using Yarn:
+컴파일러는 현재 `rc` 버전으로 출시되었으며, React 17 이상의 앱과 라이브러리에서 사용해 볼 수 있습니다. `rc` 버전을 설치하려면 다음 명령어를 실행하세요.
 
 <TerminalBlock>
-yarn add -D babel-plugin-react-compiler@beta eslint-plugin-react-compiler@beta
+{`npm install -D babel-plugin-react-compiler@rc eslint-plugin-react-hooks@^6.0.0-rc.1`}
 </TerminalBlock>
 
-If you are not using React 19 yet, please see [the section below](#using-react-compiler-with-react-17-or-18) for further instructions.
+또는, Yarn을 사용한다면 아래 명령어를 실행해주세요.
+
+<TerminalBlock>
+{`yarn add -D babel-plugin-react-compiler@rc eslint-plugin-react-hooks@^6.0.0-rc.1`}
+</TerminalBlock>
+
+React 19를 아직 사용하지 않는다면, 추가 지침을 위해 [아래 섹션](#using-react-compiler-with-react-17-or-18)을 확인하세요.
 
 ### 컴파일러는 무엇을 하나요? {/*what-does-the-compiler-do*/}
 
@@ -50,7 +46,7 @@ React 컴파일러는 애플리케이션을 최적화하기 위해 코드를 자
 컴파일러는 자바스크립트와 React의 규칙에 대한 지식을 활용하여 자동으로 컴포넌트와 Hook 내부의 값 또는 값 그룹을 메모이제이션 합니다. 규칙 위반을 감지할 경우 해당 컴포넌트 또는 Hook을 건너뛰고 다른 코드를 안전하게 컴파일합니다.
 
 <Note>
-React Compiler can statically detect when Rules of React are broken, and safely opt-out of optimizing just the affected components or hooks. It is not necessary for the compiler to optimize 100% of your codebase.
+React 컴파일러는 React의 규칙 위반을 정적으로 감지할 수 있으며, 영향을 받는 컴포넌트나 Hook만 안전하게 최적화에서 제외할 수 있습니다. 컴파일러가 코드베이스의 100%를 최적화할 필요는 없습니다.
 </Note>
 
 이미 코드베이스에 메모이제이션이 잘 되어 있다면, 컴파일러를 통해 주요 성능 향상을 기대하기 어려울 수 있습니다. 그러나 실제로 성능 문제를 일으키는 올바른 의존성<sup>dependencies</sup>을 메모이제이션 하는 것은 직접 처리하기 까다로울 수 있습니다.
@@ -117,7 +113,7 @@ function TableContainer({ items }) {
 
 ### 컴파일러를 시도해 봐야 하나요? {/*should-i-try-out-the-compiler*/}
 
-컴파일러가 여전히 실험적이며 다양한 결함이 있다는 점을 유의하세요. Meta와 같은 회사에서는 이미 프로덕션 환경에서 사용하였지만, 앱의 프로덕션에 컴파일러를 점진적으로 도입할지는 코드베이스의 건강 상태와 [React의 규칙](/reference/rules)을 얼마나 잘 따랐는지에 따라 다를 것입니다.
+컴파일러는 현재 Release Candidate(RC) 단계에 있으며, 이미 프로덕션 환경에서 광범위하게 테스트되었습니다. Meta와 같은 회사에서는 이미 프로덕션 환경에 도입하여 사용하고 있지만, 앱에 컴파일러를 점진적으로 도입할지는 코드베이스의 건강 상태와 [React의 규칙](/reference/rules)을 얼마나 잘 준수했는지에 따라 달라질 것입니다.
 
 **지금 당장 컴파일러를 사용하기에 급급할 필요는 없습니다. 안정적인 릴리즈에 도달할 때까지 기다려도 괜찮습니다.** 하지만 앱에서의 작은 실험을 통해 컴파일러를 시도해 보고 [피드백을 제공](#reporting-issues)하여 컴파일러 개선에 도움을 줄 수 있습니다.
 
@@ -125,43 +121,15 @@ function TableContainer({ items }) {
 
 현재 문서 외에도 [React 컴파일러 워킹 그룹](https://github.com/reactwg/react-compiler)을 확인하여 컴파일러에 대한 추가 정보와 논의를 참조하는 것을 권장합니다.
 
-### `eslint-plugin-react-compiler` 설치 {/*installing-eslint-plugin-react-compiler*/}
+### `eslint-plugin-react-hooks` 설치 {/*installing-eslint-plugin-react-compiler*/}
 
-React 컴파일러는 ESLint 플러그인도 지원합니다. ESLint 플러그인은 컴파일러와 **독립적으로** 사용할 수 있습니다. 즉, 컴파일러를 사용하지 않더라도 ESLint 플러그인을 사용할 수 있습니다.
+React 컴파일러는 ESLint 플러그인도 제공합니다. `eslint-plugin-react-hooks@^6.0.0-rc.1`을 설치해서 시도해보세요.
 
 <TerminalBlock>
-npm install -D eslint-plugin-react-compiler@beta
+{`npm install -D eslint-plugin-react-hooks@^6.0.0-rc.1`}
 </TerminalBlock>
 
-그런 다음, ESLint 설정<sup>Config</sup> 파일에 추가하세요.
-
-```js
-import reactCompiler from 'eslint-plugin-react-compiler'
-
-export default [
-  {
-    plugins: {
-      'react-compiler': reactCompiler,
-    },
-    rules: {
-      'react-compiler/react-compiler': 'error',
-    },
-  },
-]
-```
-
-Or, in the deprecated eslintrc config format:
-
-```js
-module.exports = {
-  plugins: [
-    'eslint-plugin-react-compiler',
-  ],
-  rules: {
-    'react-compiler/react-compiler': 'error',
-  },
-}
-```
+자세한 정보를 위해 [에디터 설정하기](/learn/editor-setup#linting) 가이드를 확인하세요.
 
 ESLint 플러그인은 에디터에서 React의 규칙 위반 사항을 표시합니다. 이 경우 컴파일러가 해당 컴포넌트나 Hook의 최적화를 건너뛰었음을 의미합니다. 이것은 완전히 정상적인 동작이며, 컴파일러는 이를 복구하고 코드베이스의 다른 컴포넌트를 계속해서 최적화할 수 있습니다.
 
@@ -191,15 +159,15 @@ const ReactCompilerConfig = {
 
 새 프로젝트를 시작할 경우, 기본 동작으로 전체 코드베이스에서 컴파일러를 활성화할 수 있습니다.
 
-### Using React Compiler with React 17 or 18 {/*using-react-compiler-with-react-17-or-18*/}
+### React 17 또는 18에서 컴파일러 사용 {/*using-react-compiler-with-react-17-or-18*/}
 
-React Compiler works best with React 19 RC. If you are unable to upgrade, you can install the extra `react-compiler-runtime` package which will allow the compiled code to run on versions prior to 19. However, note that the minimum supported version is 17.
+React 컴파일러는 React 19 RC에서 최적의 성능을 발휘합니다. 업그레이드가 불가능하다면 `react-compiler-runtime` 패키지를 추가 설치해 컴파일된 코드를 19 이전 버전에서도 실행할 수 있습니다. 단, 최소 지원 버전은 17입니다.
 
 <TerminalBlock>
-npm install react-compiler-runtime@beta
+{`npm install react-compiler-runtime@rc`}
 </TerminalBlock>
 
-You should also add the correct `target` to your compiler config, where `target` is the major version of React you are targeting:
+컴파일러 설정에 올바른 `target`을 추가해야 하며, `target`은 대상으로 하는 React의 메이저 버전입니다.
 
 ```js {3}
 // babel.config.js
@@ -216,22 +184,22 @@ module.exports = function () {
 };
 ```
 
-### Using the compiler on libraries {/*using-the-compiler-on-libraries*/}
+### 라이브러리에서 컴파일러 사용 {/*using-the-compiler-on-libraries*/}
 
-React Compiler can also be used to compile libraries. Because React Compiler needs to run on the original source code prior to any code transformations, it is not possible for an application's build pipeline to compile the libraries they use. Hence, our recommendation is for library maintainers to independently compile and test their libraries with the compiler, and ship compiled code to npm.
+React 컴파일러는 라이브러리 컴파일에도 사용할 수 있습니다. React 컴파일러는 코드 변환 이전의 원본 소스 코드에서 실행되어야 하기 때문에, 애플리케이션의 빌드 파이프라인으로는 사용하는 라이브러리를 컴파일할 수 없습니다. 따라서, 라이브러리 유지보수자가 컴파일러로 라이브러리를 독립적으로 컴파일하고 테스트한 후, 컴파일된 코드를 npm에 배포하는 것을 권장합니다.
 
-Because your code is pre-compiled, users of your library will not need to have the compiler enabled in order to benefit from the automatic memoization applied to your library. If your library targets apps not yet on React 19, specify a minimum [`target` and add `react-compiler-runtime` as a direct dependency](#using-react-compiler-with-react-17-or-18). The runtime package will use the correct implementation of APIs depending on the application's version, and polyfill the missing APIs if necessary.
+코드가 사전 컴파일되기 때문에, 라이브러리 사용자들은 라이브러리에 적용된 자동 메모이제이션의 이점을 얻기 위해 컴파일러를 활성화할 필요가 없습니다. 라이브러리가 아직 React 19 버전이 아닌 앱을 대상으로 한다면, 최소 [`target`을 설정하고 `react-compiler-runtime`을 직접 의존성으로 추가하세요](#using-react-compiler-with-react-17-or-18). 런타임 패키지는 애플리케이션 버전에 따라 올바른 API 구현을 사용하며, 필요한 경우 누락된 API를 폴리필합니다.
 
-Library code can often require more complex patterns and usage of escape hatches. For this reason, we recommend ensuring that you have sufficient testing in order to identify any issues that might arise from using the compiler on your library. If you identify any issues, you can always opt-out the specific components or hooks with the [`'use no memo'` directive](#something-is-not-working-after-compilation).
+라이브러리 코드는 종종 더 복잡한 패턴과 탈출구 사용이 필요할 수 있습니다. 이런 이유로, 라이브러리에 컴파일러를 적용할 때 발생할 수 있는 문제를 발견하기 위해 충분한 테스트를 갖추는 것을 권장합니다. 문제를 발견하면, 해당 컴포넌트나 훅을 [`'use no memo'` 지시어](#something-is-not-working-after-compilation)를 통해 언제든 제외할 수 있습니다.
 
-Similarly to apps, it is not necessary to fully compile 100% of your components or hooks to see benefits in your library. A good starting point might be to identify the most performance sensitive parts of your library and ensuring that they don't break the [Rules of React](/reference/rules), which you can use `eslint-plugin-react-compiler` to identify.
+앱과 비슷하게, 라이브러리에서 이점을 보기 위해 모든 컴포넌트나 훅을 100% 컴파일할 필요는 없습니다. 좋은 시작점은 라이브러리에서 성능에 민감한 부분을 파악하고 해당 부분이 [React의 규칙](/reference/rules)을 위반하지 않는지 확인하는 것입니다. 이는 `eslint-plugin-react-compiler`를 통해 파악할 수 있습니다.
 
-## Usage {/*installation*/}
+## 사용법 {/*installation*/}
 
 ### Babel {/*usage-with-babel*/}
 
 <TerminalBlock>
-npm install babel-plugin-react-compiler@beta
+{`npm install babel-plugin-react-compiler@rc`}
 </TerminalBlock>
 
 컴파일러에는 빌드 파이프라인에서 사용할 수 있는 Babel 플러그인이 포함되어 있습니다.
@@ -280,13 +248,13 @@ export default defineConfig(() => {
 
 ### Next.js {/*usage-with-nextjs*/}
 
-Please refer to the [Next.js docs](https://nextjs.org/docs/app/api-reference/next-config-js/reactCompiler) for more information.
+자세한 정보를 위해 [Next.js 문서](https://nextjs.org/docs/app/api-reference/next-config-js/reactCompiler)를 확인하세요.
 
 ### Remix {/*usage-with-remix*/}
 `vite-plugin-babel`을 설치하고 컴파일러의 Babel 플러그인을 추가하세요.
 
 <TerminalBlock>
-npm install vite-plugin-babel
+{`npm install vite-plugin-babel`}
 </TerminalBlock>
 
 ```js {2,14}
@@ -313,11 +281,11 @@ export default defineConfig({
 
 ### Webpack {/*usage-with-webpack*/}
 
-A community Webpack loader is [now available here](https://github.com/SukkaW/react-compiler-webpack).
+커뮤니티 webpack 로더가 [이제 여기에서 사용 가능합니다](https://github.com/SukkaW/react-compiler-webpack).
 
 ### Expo {/*usage-with-expo*/}
 
-Please refer to [Expo's docs](https://docs.expo.dev/guides/react-compiler/) to enable and use the React Compiler in Expo apps.
+Expo 앱에서 React 컴파일러를 활성화하고 사용하려면 [Expo 문서](https://docs.expo.dev/guides/react-compiler/)를 확인하세요.
 
 ### Metro (React Native) {/*usage-with-react-native-metro*/}
 

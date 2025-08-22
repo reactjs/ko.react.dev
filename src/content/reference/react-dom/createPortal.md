@@ -239,7 +239,7 @@ export default function ModalContent({ onClose }) {
 
 Portal을 사용할 때 앱의 접근성<sup>accessibility, a11y</sup>이 준수되는지 확인하는 것이 중요합니다. 예를 들어 사용자가 Portal 안팎으로 자연스럽게 초점을 이동할 수 있도록 키보드 포커스를 관리해야 할 수 있습니다.
 
-모달을 만들 때는 [WAI-ARIA 모달 제작 관행](https://www.w3.org/WAI/ARIA/apg/#dialog_modal)을 따르세요. 커뮤니티 패키지를 사용하는 경우 해당 패키지가 접근 가능한지, 이 가이드라인을 따르고 있는지 확인하세요.
+모달을 만들 때는 [WAI-ARIA 모달 제작 관행](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal)을 따르세요. 커뮤니티 패키지를 사용하는 경우 해당 패키지가 접근 가능한지, 이 가이드라인을 따르고 있는지 확인하세요.
 
 </Pitfall>
 
@@ -251,7 +251,7 @@ Portal은 React 루트가 React로 빌드되지 않은 정적 또는 서버 렌�
 
 <Sandpack>
 
-```html index.html
+```html public/index.html
 <!DOCTYPE html>
 <html>
   <head><title>My app</title></head>

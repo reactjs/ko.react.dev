@@ -282,7 +282,9 @@ export default function TopNav({
               <BrandMenu>
                 <div className="flex items-center">
                   <div className="uwu-visible flex items-center justify-center h-full">
-                    <NextLink href="/">
+                    <NextLink
+                      href="/"
+                      className="active:scale-95 transition-transform">
                       <Image
                         alt="logo by @sawaratsuki1004"
                         title="logo by @sawaratsuki1004"
@@ -366,7 +368,7 @@ export default function TopNav({
                   <Link
                     href="https://ko-react-exy5xcwjj-fbopensource.vercel.app/"
                     aria-label="React version 18 Korean translation"
-                    className="active:scale-95 transition-transform flex w-12 h-12 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
+                    className="active:scale-95 transition-transform flex w-12 h-12 rounded-full items-center justify-center overflow-hidden hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
                     {react18Icon}
                   </Link>
                 </div>

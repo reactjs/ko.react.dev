@@ -4,13 +4,13 @@ title: "지시어"
 
 <RSC>
 
-지시어는 [React 서버 컴포넌트](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)에서 사용합니다.
+지시어는 [React 서버 컴포넌트](/reference/rsc/server-components)에서 사용합니다.
 
 </RSC>
 
 <Intro>
 
-지시어는 [React 서버 컴포넌트와 호환되는 번들러](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)에게 지시사항을 제공합니다.
+지시어는 [React 서버 컴포넌트와 호환되는 번들러](/learn/start-a-new-react-project#full-stack-frameworks)에게 지시사항을 제공합니다.
 
 </Intro>
 

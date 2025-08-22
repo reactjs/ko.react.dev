@@ -1,52 +1,52 @@
 ---
 title: "React v19"
-author: The React Team
+author: React 팀
 date: 2024/12/05
-description: React 19 is now available on npm! In this post, we'll give an overview of the new features in React 19, and how you can adopt them.
+description: React 19를 이제 npm에서 사용할 수 있습니다! 이 포스트에서 React 19의 새로운 기능들에 대한 개요와 도입하는 방법에 대해 설명합니다.
 ---
-
-December 05, 2024 by [The React Team](/community/team)
+{/*<!-- eslint-disable mark/no-double-space -->*/}
+2024년 12월 5일 by [React 팀](/community/team)
 
 ---
 <Note>
 
-### React 19 is now stable! {/*react-19-is-now-stable*/}
+### React 19는 이제 안정적입니다! {/*react-19-is-now-stable*/}
 
-Additions since this post was originally shared with the React 19 RC in April:
+React 19 RC를 4월에 처음 공유한 이후 다음을 추가하였습니다.
 
-- **Pre-warming for suspended trees**: see [Improvements to Suspense](/blog/2024/04/25/react-19-upgrade-guide#improvements-to-suspense).
-- **React DOM static APIs**: see [New React DOM Static APIs](#new-react-dom-static-apis).
+- **지연된 트리의 사전 워밍**: [Suspense 개선 사항](/blog/2024/04/25/react-19-upgrade-guide#improvements-to-suspense)을 참고하세요.
+- **React DOM 정적 API들**: [새로운 React DOM의 정적 API](#new-react-dom-static-apis)를 참고하세요.
 
-_The date for this post has been updated to reflect the stable release date._
+_이 게시물의 날짜는 안정된 버전의 릴리즈 날짜를 반영하도록 업데이트되었습니다._
 
 </Note>
 
 <Intro>
 
-React v19 is now available on npm!
+React v19를 이제 npm에서 사용할 수 있습니다!
 
 </Intro>
 
-In our [React 19 Upgrade Guide](/blog/2024/04/25/react-19-upgrade-guide), we shared step-by-step instructions for upgrading your app to React 19. In this post, we'll give an overview of the new features in React 19, and how you can adopt them.
+[React 19 업그레이드 가이드](/blog/2024/04/25/react-19-upgrade-guide)에서 React 19로 앱을 업그레이드하는 단계별 지침을 공유했습니다. 이 포스트에서 React 19의 새로운 기능들과 이를 도입하는 방법을 제공합니다.
 
-- [What's new in React 19](#whats-new-in-react-19)
-- [Improvements in React 19](#improvements-in-react-19)
-- [How to upgrade](#how-to-upgrade)
+- [React 19의 새로운 기능](#whats-new-in-react-19)
+- [React 19의 개선 사항](#improvements-in-react-19)
+- [업그레이드 방법](#how-to-upgrade)
 
-For a list of breaking changes, see the [Upgrade Guide](/blog/2024/04/25/react-19-upgrade-guide).
+주요 변경 사항 목록은 [업그레이드 가이드](/blog/2024/04/25/react-19-upgrade-guide)를 참고하세요.
 
 ---
 
-## What's new in React 19 {/*whats-new-in-react-19*/}
+## React 19의 새로운 기능 {/*whats-new-in-react-19*/}
 
-### Actions {/*actions*/}
+### 액션 {/*actions*/}
 
-A common use case in React apps is to perform a data mutation and then update state in response. For example, when a user submits a form to change their name, you will make an API request, and then handle the response. In the past, you would need to handle pending states, errors, optimistic updates, and sequential requests manually.
+React 앱에서 일반적인 사용 사례 중 하나는 데이터 변경을 수행한 뒤 응답에 따라 상태를 변경하는 것입니다. 예를 들어, 사용자가 이름을 변경하는 폼을 제출하면 API 요청을 보내고 그 응답을 처리해야 합니다. 이전에는 대기 상태, 에러, 낙관적 업데이트, 순차적 요청을 수동으로 처리해야 했습니다.
 
-For example, you could handle the pending and error state in `useState`:
+예를 들어, `useState`로 대기, 에러 상태를 처리할 수 있었습니다.
 
 ```js
-// Before Actions
+// 액션 이전
 function UpdateName({}) {
   const [name, setName] = useState("");
   const [error, setError] = useState(null);
@@ -75,12 +75,12 @@ function UpdateName({}) {
 }
 ```
 
-In React 19, we're adding support for using async functions in transitions to handle pending states, errors, forms, and optimistic updates automatically.
+React 19에서는 비동기 함수를 사용하여 대기 상태, 에러, 폼, 낙관적 업데이트를 자동으로 처리할 수 있도록 지원을 추가했습니다.
 
-For example, you can use `useTransition` to handle the pending state for you:
+예를 들어, `useTransition`을 통해 대기 상태를 다룰 수 있습니다.
 
 ```js
-// Using pending state from Actions
+// 액션을 통해 대기 상태를 활용
 function UpdateName({}) {
   const [name, setName] = useState("");
   const [error, setError] = useState(null);
@@ -109,27 +109,27 @@ function UpdateName({}) {
 }
 ```
 
-The async transition will immediately set the `isPending` state to true, make the async request(s), and switch `isPending` to false after any transitions. This allows you to keep the current UI responsive and interactive while the data is changing.
+비동기 전환은 즉시 `isPending` 상태를 `true`로 설정하고, 비동기 요청을 수행한 후, 모든 전환이 완료되면 `isPending`을 `false`로 변경합니다. 이를 통해 데이터가 변경되는 동안에도 현재 UI 반응성과 상호작용성을 유지할 수 있습니다.
 
 <Note>
 
-#### By convention, functions that use async transitions are called "Actions". {/*by-convention-functions-that-use-async-transitions-are-called-actions*/}
+#### 관습에 따르면 비동기 전환을 사용하는 함수들을 "액션"이라 부릅니다. {/*by-convention-functions-that-use-async-transitions-are-called-actions*/}
 
-Actions automatically manage submitting data for you:
+액션은 데이터 제출을 자동으로 관리합니다.
 
-- **Pending state**: Actions provide a pending state that starts at the beginning of a request and automatically resets when the final state update is committed.
-- **Optimistic updates**: Actions support the new [`useOptimistic`](#new-hook-optimistic-updates) hook so you can show users instant feedback while the requests are submitting.
-- **Error handling**: Actions provide error handling so you can display Error Boundaries when a request fails, and revert optimistic updates to their original value automatically.
-- **Forms**: `<form>` elements now support passing functions to the `action` and `formAction` props. Passing functions to the `action` props use Actions by default and reset the form automatically after submission.
+- **대기 상태**: 액션은 요청 시작 시 대기 상태를 활성화하고 최종 상태가 커밋되었을때 자동으로 초기화합니다.
+- **낙관적 업데이트**: 액션은 새로운 [`useOptimistic`](#new-hook-optimistic-updates)훅을 통해 사용자가 요청을 제출하는 동안 즉각적인 피드백을 표시할 수 있습니다.
+- **에러 처리**: 액션은 요청 실패 시 Error Boundary를 보여주고 낙관적 업데이트를 원래 값으로, 자동으로 돌려놓습니다.
+- **폼**: `<form>` 엘리먼트는 `action` 및 `formAction` props에 함수를 전달하는 것을 지원합니다. `action` props에 함수가 전달되면 기본적으로 액션을 사용하며 제출 후 폼을 자동으로 초기화합니다.
 
 </Note>
 
-Building on top of Actions, React 19 introduces [`useOptimistic`](#new-hook-optimistic-updates) to manage optimistic updates, and a new hook [`React.useActionState`](#new-hook-useactionstate) to handle common cases for Actions. In `react-dom` we're adding [`<form>` Actions](#form-actions) to manage forms automatically and [`useFormStatus`](#new-hook-useformstatus) to support the common cases for Actions in forms.
+액션을 기반으로, React 19는 낙관적 업데이트를 관리하는 [`useOptimistic`](#new-hook-optimistic-updates)와 액션을 위한 일반적인 케이스를 처리하는 [`React.useActionState`](#new-hook-useactionstate) Hook을 도입했습니다. `react-dom`에서는 폼 처리를 자동화하는 [`<form>` 액션](#form-actions)과 폼 내의 공통 케이스를 지원하는 [`useFormStatus`](#new-hook-useformstatus)를 추가했습니다.
 
-In React 19, the above example can be simplified to:
+React 19에서 간단한 예시가 있습니다.
 
 ```js
-// Using <form> Actions and useActionState
+// `<form>` 액션과 `useActionState`의 사용
 function ChangeName({ name, setName }) {
   const [error, submitAction, isPending] = useActionState(
     async (previousState, formData) => {
@@ -153,56 +153,56 @@ function ChangeName({ name, setName }) {
 }
 ```
 
-In the next section, we'll break down each of the new Action features in React 19.
+다음 섹션에서 React 19의 새로운 기능들을 분석해 보겠습니다.
 
-### New hook: `useActionState` {/*new-hook-useactionstate*/}
+### 새로운 훅 `useActionState` {/*new-hook-useactionstate*/}
 
-To make the common cases easier for Actions, we've added a new hook called `useActionState`:
+액션의 일반적인 경우를 더 쉽게 처리하기 위해 `useActionState`라는 새로운 Hook을 추가했습니다.
 
 ```js
 const [error, submitAction, isPending] = useActionState(
   async (previousState, newName) => {
     const error = await updateName(newName);
     if (error) {
-      // You can return any result of the action.
-      // Here, we return only the error.
+      // 액션에 대한 결과를 반환할 수 있습니다.
+      // 여기서 에러를 반환합니다.
       return error;
     }
 
-    // handle success
+    // 정상 결과를 다룹니다.
     return null;
   },
   null,
 );
 ```
 
-`useActionState` accepts a function (the "Action"), and returns a wrapped Action to call. This works because Actions compose. When the wrapped Action is called, `useActionState` will return the last result of the Action as `data`, and the pending state of the Action as `pending`.
+`useActionState`는 함수(액션)를 받아서 이를 호출하는 래핑된 액션을 반환합니다. 이것이 작동하는 이유는, 액션들이 조합 가능하기 때문입니다. 래핑된 액션이 호출되면 `useActionState`는 액션의 마지막 결과를 `data`로 액션의 대기 상태를 `pending`으로 반환합니다.
 
 <Note>
 
-`React.useActionState` was previously called `ReactDOM.useFormState` in the Canary releases, but we've renamed it and deprecated `useFormState`.
+`React.useActionState` 는 Canary 릴리즈에서 `ReactDOM.useFormState`라 불렸지만 이름이 변경되었고 `useFormState`는 더 이상 사용되지 않습니다.
 
-See [#28491](https://github.com/facebook/react/pull/28491) for more info.
+더 많은 정보는 [#28491](https://github.com/facebook/react/pull/28491)을 참고하세요.
 
 </Note>
 
-For more information, see the docs for [`useActionState`](/reference/react/useActionState).
+더 많은 정보는 [`useActionState`](/reference/react/useActionState) 문서를 참고하세요.
 
-### React DOM: `<form>` Actions {/*form-actions*/}
+### React DOM: `<form>` 액션 {/*form-actions*/}
 
-Actions are also integrated with React 19's new `<form>` features for `react-dom`. We've added support for passing functions as the `action` and `formAction` props of `<form>`, `<input>`, and `<button>` elements to automatically submit forms with Actions:
+액션은 또한 React 19의 새로운 `<form>`기능과 `react-dom`을 통합하였습니다. `<form>`, `<input>`, 그리고 `<button>` 엘리먼트의 `action`과 `formAction` 속성에 함수를 전달하여 액션으로 폼을 자동으로 제출할 수 있도록 지원을 추가하였습니다.
 
 ```js [[1,1,"actionFunction"]]
 <form action={actionFunction}>
 ```
 
-When a `<form>` Action succeeds, React will automatically reset the form for uncontrolled components. If you need to reset the `<form>` manually, you can call the new `requestFormReset` React DOM API.
+`<form>` 액션이 성공하면 React는 비제어 컴포넌트의 경우, 폼을 자동으로 재설정합니다. 만일 수동으로 `<form>`을 재설정해야 하는 경우, 새로운 React DOM API인 `requestFormReset`을 호출할 수 있습니다.
 
-For more information, see the `react-dom` docs for [`<form>`](/reference/react-dom/components/form), [`<input>`](/reference/react-dom/components/input), and `<button>`.
+더 많은 정보는 [`<form>`](/reference/react-dom/components/form), [`<input>`](/reference/react-dom/components/input) 그리고 `<button>`을 위한 `react-dom` 문서를 참고하세요.
 
-### React DOM: New hook: `useFormStatus` {/*new-hook-useformstatus*/}
+### React DOM: 새로운 Hook: `useFormStatus` {/*new-hook-useformstatus*/}
 
-In design systems, it's common to write design components that need access to information about the `<form>` they're in, without drilling props down to the component. This can be done via Context, but to make the common case easier, we've added a new hook `useFormStatus`:
+디자인 시스템에서는 컴포넌트로 Props를 내려보내지 않고 `<form>` 내 정보에 접근해야 하는 디자인 컴포넌트를 작성하는 것이 일반적입니다. 이는 Context를 통해 수행할 수 있지만 일반적인 경우를 더 쉽게 만들기 위해 새로운 훅 `useFormStatus`을 추가했습니다.
 
 ```js [[1, 4, "pending"], [1, 5, "pending"]]
 import {useFormStatus} from 'react-dom';
@@ -213,13 +213,13 @@ function DesignButton() {
 }
 ```
 
-`useFormStatus` reads the status of the parent `<form>` as if the form was a Context provider.
+`useFormStatus`는 마치 폼이 Context Provider인 것처럼 부모 `<form>`의 상태를 읽습니다.
 
-For more information, see the `react-dom` docs for [`useFormStatus`](/reference/react-dom/hooks/useFormStatus).
+더 많은 정보는 `react-dom`의 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 문서를 참고하세요.
 
-### New hook: `useOptimistic` {/*new-hook-optimistic-updates*/}
+### 새로운 Hook: `useOptimistic` {/*new-hook-optimistic-updates*/}
 
-Another common UI pattern when performing a data mutation is to show the final state optimistically while the async request is underway. In React 19, we're adding a new hook called `useOptimistic` to make this easier:
+데이터 변경을 수행할 때 또 다른 일반적인 UI 패턴은 비동기 요청이 진행되는 동안 최종 상태를 낙관적으로 보여주는 것입니다. React 19에서는 이를 더 쉽게 만들기 위해 새로운 훅 `useOptimistic`를 추가했습니다.
 
 ```js {2,6,13,19}
 function ChangeName({currentName, onUpdateName}) {
@@ -248,28 +248,28 @@ function ChangeName({currentName, onUpdateName}) {
 }
 ```
 
-The `useOptimistic` hook will immediately render the `optimisticName` while the `updateName` request is in progress. When the update finishes or errors, React will automatically switch back to the `currentName` value.
+`useOptimistic` Hook은 `updateName` 요청이 진행 중일 때 `optimisticName`을 즉시 렌더링할 것입니다. 업데이트가 끝나거나 에러가 발생했을 때 React는 자동으로 `currentName` 값을 이전으로 되돌립니다.
 
-For more information, see the docs for [`useOptimistic`](/reference/react/useOptimistic).
+더 많은 정보는 [`useOptimistic`](/reference/react/useOptimistic)문서를 참고하세요.
 
-### New API: `use` {/*new-feature-use*/}
+### 새로운 API: `use` {/*new-feature-use*/}
 
-In React 19 we're introducing a new API to read resources in render: `use`.
+React 19에서 렌더링에서 Resource를 읽기 위해 새로운 API `use`를 발표했습니다.
 
-For example, you can read a promise with `use`, and React will Suspend until the promise resolves:
+예를 들어 `use`를 통해 Promise를 읽을 수 있고 React는 Promise를 처리할 때까지 중단할 것입니다.
 
 ```js {1,5}
 import {use} from 'react';
 
 function Comments({commentsPromise}) {
-  // `use` will suspend until the promise resolves.
+  // `use`는 promise가 처리될 때까지 중단될 것입니다.
   const comments = use(commentsPromise);
   return comments.map(comment => <p key={comment.id}>{comment}</p>);
 }
 
 function Page({commentsPromise}) {
-  // When `use` suspends in Comments,
-  // this Suspense boundary will be shown.
+  // Comments 컴포넌트에서 `use`가 중단될 때
+  // Suspense Boundary가 보일 것 입니다.
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Comments commentsPromise={commentsPromise} />
@@ -280,9 +280,9 @@ function Page({commentsPromise}) {
 
 <Note>
 
-#### `use` does not support promises created in render. {/*use-does-not-support-promises-created-in-render*/}
+#### `use`는 더 이상 렌더링 중에 프로미스 생성을 지원하지 않습니다. {/*use-does-not-support-promises-created-in-render*/}
 
-If you try to pass a promise created in render to `use`, React will warn:
+만약 렌더링 중에 프로미스를 생성해 `use`에 전달하려고 하면 React는 경고를 표시할 것입니다.
 
 <ConsoleBlockMulti>
 
@@ -294,11 +294,11 @@ A component was suspended by an uncached promise. Creating promises inside a Cli
 
 </ConsoleBlockMulti>
 
-To fix, you need to pass a promise from a suspense powered library or framework that supports caching for promises. In the future we plan to ship features to make it easier to cache promises in render.
+해결하려면 프로미스 캐싱을 위한 Suspense 기반 라이브러리나 프레임워크에서 프로미스를 전달해야 합니다. 앞으로 렌더링에서 프로미스를 더 쉽게 캐시할 수 있는 기능을 배포할 계획입니다.
 
 </Note>
 
-You can also read context with `use`, allowing you to read Context conditionally such as after early returns:
+또한 `use`로 컨텍스트를 읽을 수 있으며 이를 통해 조기 반환 후와 같은 조건으로 컨텍스트를 읽을 수 있습니다.
 
 ```js {1,11}
 import {use} from 'react';
@@ -309,8 +309,8 @@ function Heading({children}) {
     return null;
   }
 
-  // This would not work with useContext
-  // because of the early return.
+  // 조기 반환으로 인하여,
+  // `useContext`는 동작하지 않습니다.
   const theme = use(ThemeContext);
   return (
     <h1 style={{color: theme.color}}>
@@ -320,17 +320,17 @@ function Heading({children}) {
 }
 ```
 
-The `use` API can only be called in render, similar to hooks. Unlike hooks, `use` can be called conditionally. In the future we plan to support more ways to consume resources in render with `use`.
+`use` API는 Hook과 유사하게 오직 렌더링 중일때만 호출됩니다. 훅과 달리 `use`는 조건적으로 호출됩니다. 앞으로 `use`를 사용하여 렌더링 중일 때 리소스들을 소비하도록 더 많은 방법을 지원할 계획입니다.
 
-For more information, see the docs for [`use`](/reference/react/use).
+더 많은 정보는 [`use`](/reference/react/use)문서를 참고하세요.
 
-## New React DOM Static APIs {/*new-react-dom-static-apis*/}
+## 새로운 React DOM의 정적 API {/*new-react-dom-static-apis*/}
 
-We've added two new APIs to `react-dom/static` for static site generation:
+정적 사이트 생성을 위해 `react-dom/static`에 새로운 두 가지 API를 추가했습니다.
 - [`prerender`](/reference/react-dom/static/prerender)
 - [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream)
 
-These new APIs improve on `renderToString` by waiting for data to load for static HTML generation. They are designed to work with streaming environments like Node.js Streams and Web Streams. For example, in a Web Stream environment, you can prerender a React tree to static HTML with `prerender`:
+이 새로운 API들은 `renderToString`보다 더 나아가서 정적 HTML 생성을 위해 데이터가 로드될 때까지 기다립니다. 이들은 Node.js Streams와 Web Streams와 같은 스트리밍 환경과 호환되도록 설계되었습니다. 예를 들어, Web Stream 환경에서는 `prerender`를 사용하여 React 트리를 정적 HTML로 미리 렌더링할 수 있습니다.
 
 ```js
 import { prerender } from 'react-dom/static';
@@ -345,57 +345,57 @@ async function handler(request) {
 }
 ```
 
-Prerender APIs will wait for all data to load before returning the static HTML stream. Streams can be converted to strings, or sent with a streaming response. They do not support streaming content as it loads, which is supported by the existing [React DOM server rendering APIs](/reference/react-dom/server).
+Prerender API는 정적 HTML 스트림이 반환되기 전에 데이터가 로드되는 것을 기다립니다. Stream은 문자열로 변환이 가능하거나 스트리밍 응답으로 전송될 수 있습니다. 그러나 로드되는 콘텐츠를 스트리밍으로 지원하지 않습니다. 이는 기존 [React DOM server rendering APIs](/reference/react-dom/server)에서 지원됩니다.
 
-For more information, see [React DOM Static APIs](/reference/react-dom/static).
+더 많은 정보는 [React DOM Static APIs](/reference/react-dom/static)를 참고하세요.
 
-## React Server Components {/*react-server-components*/}
+## React 서버 컴포넌트 {/*react-server-components*/}
 
-### Server Components {/*server-components*/}
+### 서버 컴포넌트 {/*server-components*/}
 
-Server Components are a new option that allows rendering components ahead of time, before bundling, in an environment separate from your client application or SSR server. This separate environment is the "server" in React Server Components. Server Components can run once at build time on your CI server, or they can be run for each request using a web server.
+서버 컴포넌트는 번들링 전에 클라이언트 애플리케이션 또는 SSR 서버와 분리된 환경에서 컴포넌트를 미리 렌더링할 수 있는 새로운 옵션입니다. 이 별도의 환경이 React 서버 컴포넌트에서 "서버"입니다. 서버 컴포넌트는 CI 서버에서 빌드 시 한 번 실행하거나 웹 서버를 사용하여 각 요청에 대해 실행할 수 있습니다.
 
-React 19 includes all of the React Server Components features included from the Canary channel. This means libraries that ship with Server Components can now target React 19 as a peer dependency with a `react-server` [export condition](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md#react-server-conditional-exports) for use in frameworks that support the [Full-stack React Architecture](/learn/start-a-new-react-project#which-features-make-up-the-react-teams-full-stack-architecture-vision).
+React 19는 Canary 채널에서 포함된 모든 React 서버 컴포넌트 기능을 포함하고 있습니다. 이는 서버 컴포넌트가 포함된 라이브러리들이 이제 [풀스택 React 아키텍처](/learn/start-a-new-react-project#which-features-make-up-the-react-teams-full-stack-architecture-vision)를 지원하는 프레임워크에서 `react-server` [export 조건](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md#react-server-conditional-exports)을 사용하여 React 19를 향한 상호 의존성<sup>Peer Dependencies</sup>으로 지정할 수 있음을 의미합니다.
 
 
 <Note>
 
-#### How do I build support for Server Components? {/*how-do-i-build-support-for-server-components*/}
+#### 서버 컴포넌트에 대한 지원을 어떻게 구축하나요? {/*how-do-i-build-support-for-server-components*/}
 
-While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x.
+React 19에서 React 서버 컴포넌트는 안정적이며 마이너 버전 간에는 깨지지 않지만, React 서버 컴포넌트 번들러나 프레임워크를 구현하는 데 사용되는 기본 API는 semver를 따르지 않고 React 19.x의 마이너 버전 간에는 변경될 수 있습니다.
 
-To support React Server Components as a bundler or framework, we recommend pinning to a specific React version, or using the Canary release. We will continue working with bundlers and frameworks to stabilize the APIs used to implement React Server Components in the future.
+React 서버 컴포넌트를 지원하기 위해, 특정 React 버전에 고정하거나 Canary 릴리스를 사용하는 것을 권장합니다. 우리는 앞으로 번들러와 프레임워크와 협력하여 React 서버 컴포넌트를 구현하는 데 사용되는 API를 안정화할 계획입니다.
 
 </Note>
 
 
-For more, see the docs for [React Server Components](/reference/rsc/server-components).
+더 많은 정보는 [React 서버 컴포넌트](/reference/rsc/server-components) 문서를 참고하세요.
 
-### Server Actions {/*server-actions*/}
+### 서버 액션 {/*server-actions*/}
 
-Server Actions allow Client Components to call async functions executed on the server.
+서버 액션은 서버에서 실행되는 비동기 함수를 클라이언트 컴포넌트에서 호출하는 것을 허용합니다.
 
-When a Server Action is defined with the `"use server"` directive, your framework will automatically create a reference to the server function, and pass that reference to the Client Component. When that function is called on the client, React will send a request to the server to execute the function, and return the result.
+서버 액션이 `"use server"` 지시어로 정의될 때 프레임워크는 자동으로 서버 함수에 대한 참조를 생성하고 클라이언트 컴포넌트에 이를 전달합니다. 클라이언트에서 함수가 호출되면 React는 서버에 함수를 실행하라는 요청을 보내고 결과를 반환합니다.
 
 <Note>
 
-#### There is no directive for Server Components. {/*there-is-no-directive-for-server-components*/}
+#### 서버 컴포넌트에 대한 지시어는 없습니다. {/*there-is-no-directive-for-server-components*/}
 
-A common misunderstanding is that Server Components are denoted by `"use server"`, but there is no directive for Server Components. The `"use server"` directive is used for Server Actions.
+흔한 오해는 서버 컴포넌트는 `"use server"`로 표시되지만 이에 대한 지시어는 존재하지 않습니다. `"use server"`지시어는 서버 액션을 위해 사용됩니다.
 
-For more info, see the docs for [Directives](/reference/rsc/directives).
+더 많은 정보는 [지시어](/reference/rsc/directives)문서를 참고하세요.
 
 </Note>
 
-Server Actions can be created in Server Components and passed as props to Client Components, or they can be imported and used in Client Components.
+서버 액션은 서버 컴포넌트에서 생성되며 클라이언트 컴포넌트에 props를 전달되거나 클라이언트 컴포넌트에서 가져와 사용할 수 있습니다.
 
-For more, see the docs for [React Server Actions](/reference/rsc/server-actions).
+더 많은 정보는 [React 서버 액션](/reference/rsc/server-actions)을 참고하세요.
 
-## Improvements in React 19 {/*improvements-in-react-19*/}
+## React 19에서 개선 사항 {/*improvements-in-react-19*/}
 
-### `ref` as a prop {/*ref-as-a-prop*/}
+### Prop으로의 `ref` {/*ref-as-a-prop*/}
 
-Starting in React 19, you can now access `ref` as a prop for function components:
+React 19부터 함수 컴포넌트의 Prop으로 `ref`에 접근할 수 있습니다.
 
 ```js [[1, 1, "ref"], [1, 2, "ref", 45], [1, 6, "ref", 14]]
 function MyInput({placeholder, ref}) {
@@ -406,17 +406,17 @@ function MyInput({placeholder, ref}) {
 <MyInput ref={ref} />
 ```
 
-New function components will no longer need `forwardRef`, and we will be publishing a codemod to automatically update your components to use the new `ref` prop. In future versions we will deprecate and remove `forwardRef`.
+새로운 함수 컴포넌트에서는 더 이상 `forwardRef`이 필요하지 않으며, 새로운 `ref` Prop을 사용하도록 컴포넌트를 자동으로 업데이트하는 codemod를 배포할 예정입니다. 앞으로의 버전에서는 `forwardRef`를 사용하지 않도록 제거하고 더 이상 사용하지 않을 계획입니다.
 
 <Note>
 
-`refs` passed to classes are not passed as props since they reference the component instance.
+클래스에 전달된 `ref`는 컴포넌트 인스턴스를 참조하기 때문에 Props로 전달되지 않습니다.
 
 </Note>
 
-### Diffs for hydration errors {/*diffs-for-hydration-errors*/}
+### 하이드레이션 에러에 대한 차이<sup>Diff</sup> {/*diffs-for-hydration-errors*/}
 
-We also improved error reporting for hydration errors in `react-dom`. For example, instead of logging multiple errors in DEV without any information about the mismatch:
+예를 들어, 일치하지 않는 정보 없이 DEV 환경에서 여러 에러 로깅하는 대신 `react-dom`에서 하이드레이션 에러에 대한 오류 보고를 개선했습니다. 
 
 <ConsoleBlockMulti>
 
@@ -458,7 +458,7 @@ Uncaught Error: Text content does not match server-rendered HTML.
 
 </ConsoleBlockMulti>
 
-We now log a single message with a diff of the mismatch:
+이제 일치하지 않는 차이점을 보여주는 단일 메시지를 로깅합니다.
 
 
 <ConsoleBlockMulti>
@@ -484,9 +484,9 @@ https://react.dev/link/hydration-mismatch {'\n'}
 
 </ConsoleBlockMulti>
 
-### `<Context>` as a provider {/*context-as-a-provider*/}
+### Provider로 사용하는 `<Context>` {/*context-as-a-provider*/}
 
-In React 19, you can render `<Context>` as a provider instead of `<Context.Provider>`:
+React 19에서는 `<Context.Provider>` 대신에 `<Context>` Provider로 렌더링할 수 있습니다.
 
 
 ```js {5,7}
@@ -501,72 +501,72 @@ function App({children}) {
 }
 ```
 
-New Context providers can use `<Context>` and we will be publishing a codemod to convert existing providers. In future versions we will deprecate `<Context.Provider>`.
+새로운 Context 프로바이더는 `<Context>` 사용할 수 있고 기존 존재하는 프로바이더를 변환하기 위한 codemod를 배포할 예정입니다. 앞으로의 버전에서 `<Context.Provider>`를 더 이상 사용하지 않을 계획입니다.
 
-### Cleanup functions for refs {/*cleanup-functions-for-refs*/}
+### Ref를 위한 클린업 함수 {/*cleanup-functions-for-refs*/}
 
-We now support returning a cleanup function from `ref` callbacks:
+이제 `ref` 콜백에 클린업 함수를 반환하는 것을 지원합니다.
 
 ```js {7-9}
 <input
   ref={(ref) => {
-    // ref created
+    // ref 생성
 
-    // NEW: return a cleanup function to reset
-    // the ref when element is removed from DOM.
+    // NEW: 재설정을 위한 클린업 함수 반환
+    // DOM에서 엘리먼트가 제거될 때의 ref
     return () => {
-      // ref cleanup
+      // ref 클린업
     };
   }}
 />
 ```
 
-When the component unmounts, React will call the cleanup function returned from the `ref` callback. This works for DOM refs, refs to class components, and `useImperativeHandle`.
+컴포넌트가 마운트 해제될 때, React는 `ref` 콜백으로부터 클린업 함수를 호출할 것입니다. 이는 DOM Ref, 클래스 컴포넌트 Ref 그리고 `useImperativeHandle` 모두 해당합니다.
 
 <Note>
 
-Previously, React would call `ref` functions with `null` when unmounting the component. If your `ref` returns a cleanup function, React will now skip this step.
+이전에는 React가 컴포넌트를 마운트 해제할 때 `ref` 함수를 `null`과 함께 호출했습니다. 이제 만약 `ref`가 클린업 함수를 반환한다면, React는 이 단계를 건너뜁니다.
 
-In future versions, we will deprecate calling refs with `null` when unmounting components.
+앞으로의 버전에서는 컴포넌트를 마운트 해제할 때 `null`과 함께 `ref`를 호출하는 것을 더 이상 사용하지 않을 예정입니다.
 
 </Note>
 
-Due to the introduction of ref cleanup functions, returning anything else from a `ref` callback will now be rejected by TypeScript. The fix is usually to stop using implicit returns, for example:
+`ref` 클린업 함수의 도입으로 인해, TypeScript에서 `ref` 콜백에서 다른 값을 반환하는 것이 거부될 것입니다. 일반적으로 해결 방법은 암시적 반환을 사용하지 않도록 하는 것입니다. 예시는 아래와 같습니다.
 
 ```diff [[1, 1, "("], [1, 1, ")"], [2, 2, "{", 15], [2, 2, "}", 1]]
 - <div ref={current => (instance = current)} />
 + <div ref={current => {instance = current}} />
 ```
 
-The original code returned the instance of the `HTMLDivElement` and TypeScript wouldn't know if this was _supposed_ to be a cleanup function or if you didn't want to return a cleanup function.
+기존 코드는 `HTMLDivElement`의 인스턴스를 반환했고, TypeScript는 이것이 _클린업 함수인지_ 혹은 클린업 함수를 반환하지 않으려는 것인지 알지 못합니다.
 
-You can codemod this pattern with [`no-implicit-ref-callback-return`](https://github.com/eps1lon/types-react-codemod/#no-implicit-ref-callback-return).
+이 패턴은 [`no-implicit-ref-callback-return`](https://github.com/eps1lon/types-react-codemod/#no-implicit-ref-callback-return)을 사용하여 codemod로 변환할 수 있습니다.
 
-### `useDeferredValue` initial value {/*use-deferred-value-initial-value*/}
+### `useDeferredValue` 초기값 {/*use-deferred-value-initial-value*/}
 
-We've added an `initialValue` option to `useDeferredValue`:
+`useDeferredValue`에 `initialValue` 옵션을 추가했습니다.
 
 ```js [[1, 1, "deferredValue"], [1, 4, "deferredValue"], [2, 4, "''"]]
 function Search({deferredValue}) {
-  // On initial render the value is ''.
-  // Then a re-render is scheduled with the deferredValue.
+  // 초기 렌더링 값은 '' 입니다.
+  // deferredValue로 리렌더링됩니다.
   const value = useDeferredValue(deferredValue, '');
 
   return (
     <Results query={value} />
   );
 }
-````
+```
 
-When <CodeStep step={2}>initialValue</CodeStep> is provided, `useDeferredValue` will return it as `value` for the initial render of the component, and schedules a re-render in the background with the <CodeStep step={1}>deferredValue</CodeStep> returned.
+<CodeStep step={2}>initialValue</CodeStep>이 제공되면, `useDeferredValue`는 컴포넌트의 초기 렌더링에서 이를 `value`로 반환하고 백그라운드에서 <CodeStep step={1}>deferredValue</CodeStep>으로 리렌더링을 예약합니다.
 
-For more, see [`useDeferredValue`](/reference/react/useDeferredValue).
+더 많은 정보는 [`useDeferredValue`](/reference/react/useDeferredValue) 문서를 참고하세요.
 
-### Support for Document Metadata {/*support-for-metadata-tags*/}
+### 메타데이터 문서에 대한 지원 {/*support-for-metadata-tags*/}
 
-In HTML, document metadata tags like `<title>`, `<link>`, and `<meta>` are reserved for placement in the `<head>` section of the document. In React, the component that decides what metadata is appropriate for the app may be very far from the place where you render the `<head>` or React does not render the `<head>` at all. In the past, these elements would need to be inserted manually in an effect, or by libraries like [`react-helmet`](https://github.com/nfl/react-helmet), and required careful handling when server rendering a React application.
+HTML에서는 `<title>`, `<link>`, `<meta>`와 같은 문서 메타 데이터 태그들이 문서의 `<head>` 섹션에 배치되어야 합니다. 그러나 React에서는 애플리케이션에 적합한 메타 데이터를 결정하는 컴포넌트가 `<head>`를 렌더링하는 곳과 아주 멀리 떨어져 있을 수 있거나, React 자체에서 `<head>`를 전혀 렌더링하지 않을 수도 있습니다. 과거에는 이러한 엘리먼트들을 이펙트를 사용하여 수동으로 삽입하거나 [`react-helmet`](https://github.com/nfl/react-helmet)과 같은 라이브러리를 사용하여 처리해야 했으며, React 애플리케이션을 서버에서 렌더링할 때 주의 깊게 처리해야 했습니다.
 
-In React 19, we're adding support for rendering document metadata tags in components natively:
+React 19에서는 컴포넌트에서 문서 메타 데이터 태그를 네이티브로 렌더링할 수 있는 지원을 추가하고 있습니다.
 
 ```js {5-8}
 function BlogPost({post}) {
@@ -585,23 +585,23 @@ function BlogPost({post}) {
 }
 ```
 
-When React renders this component, it will see the `<title>` `<link>` and `<meta>` tags, and automatically hoist them to the `<head>` section of document. By supporting these metadata tags natively, we're able to ensure they work with client-only apps, streaming SSR, and Server Components.
+React가 이 컴포넌트를 렌더링하면 `<title>` `<link>` 그리고 `<meta>`들이 보여지고 자동으로 문서의 `<head>` 섹션으로 호이스팅됩니다. 이러한 메타데이터 태그들이 네이티브로 지원하면 클라이언트 전용 앱, 스트리밍 SSR, 서버 컴포넌트와 동작되도록 보장할 수 있습니다.
 
 <Note>
 
-#### You may still want a Metadata library {/*you-may-still-want-a-metadata-library*/}
+#### 여전히 메타데이터 라이브러리를 원한다면 {/*you-may-still-want-a-metadata-library*/}
 
-For simple use cases, rendering Document Metadata as tags may be suitable, but libraries can offer more powerful features like overriding generic metadata with specific metadata based on the current route. These features make it easier for frameworks and libraries like [`react-helmet`](https://github.com/nfl/react-helmet) to support metadata tags, rather than replace them.
+간단한 사용 사례의 경우에 문서 메타 데이터를 태그로 렌더링하는 것이 적합할 수 있지만, 라이브러리는 현재 경로에 따라 일반 메타 데이터를 구체적인 메타 데이터로 덮어쓰는 등 더 강력한 기능을 제공할 수 있습니다. 이러한 기능들은 메타 데이터 태그를 대체하는 것보다 [`react-helmet`](https://github.com/nfl/react-helmet)과 같은 프레임워크나 라이브러리를 더 쉽게 할 수 있도록 합니다.
 
 </Note>
 
-For more info, see the docs for [`<title>`](/reference/react-dom/components/title), [`<link>`](/reference/react-dom/components/link), and [`<meta>`](/reference/react-dom/components/meta).
+더 많은 내용은 [`<title>`](/reference/react-dom/components/title), [`<link>`](/reference/react-dom/components/link), [`<meta>`](/reference/react-dom/components/meta) 문서를 참고하세요.
 
-### Support for stylesheets {/*support-for-stylesheets*/}
+### 스타일시트 지원 {/*support-for-stylesheets*/}
 
-Stylesheets, both externally linked (`<link rel="stylesheet" href="...">`) and inline (`<style>...</style>`), require careful positioning in the DOM due to style precedence rules. Building a stylesheet capability that allows for composability within components is hard, so users often end up either loading all of their styles far from the components that may depend on them, or they use a style library which encapsulates this complexity.
+외부 링크 (`<link rel="stylesheet" href="...">`)와 인라인 (`<style>...</style>`) 스타일 시트는 스타일 우선순위 규칙으로 인해 DOM에서 안전한 위치를 요구합니다. 컴포넌트 내에서 합성 가능성을 허용하는 스타일시트 기능을 구축하는것은 어렵습니다. 그래서 사용자들은 종종 컴포넌트에서 멀리 떨어진 곳에서 모든 스타일을 로드하거나, 이러한 복잡성을 캡슐화하는 스타일 라이브러리를 사용하게 됩니다.
 
-In React 19, we're addressing this complexity and providing even deeper integration into Concurrent Rendering on the Client and Streaming Rendering on the Server with built in support for stylesheets. If you tell React the `precedence` of your stylesheet it will manage the insertion order of the stylesheet in the DOM and ensure that the stylesheet (if external) is loaded before revealing content that depends on those style rules.
+React 19에서는 이 복잡성에 대응하고, 클라이언트에서의 동시 렌더링과 서버에서의 스트리밍 렌더링에 대한 더 깊은 통합을 제공하며, 스타일시트에 대한 내장 지원을 제공합니다. 스타일시트의 `precedence`를 React에게 알리면, React는 스타일시트의 DOM 삽입 순서를 관리하고, 스타일 규칙에 의존하는 콘텐츠를 노출하기 전에 (외부의 경우) 스타일시트가 로드될 수 있도록 보장합니다.
 
 ```js {4,5,17}
 function ComponentOne() {
@@ -620,37 +620,37 @@ function ComponentTwo() {
   return (
     <div>
       <p>{...}</p>
-      <link rel="stylesheet" href="baz" precedence="default" />  <-- will be inserted between foo & bar
+      <link rel="stylesheet" href="baz" precedence="default" />  <-- foo 와 bar 사이에 삽입될 것
     </div>
   )
 }
 ```
 
-During Server Side Rendering React will include the stylesheet in the `<head>`, which ensures that the browser will not paint until it has loaded. If the stylesheet is discovered late after we've already started streaming, React will ensure that the stylesheet is inserted into the `<head>` on the client before revealing the content of a Suspense boundary that depends on that stylesheet.
+서버 사이드 렌더링 중에 React는 스타일시트를 `<head>`에 포함합니다. 이는 브라우저가 스타일시트를 로드할 때까지 페인팅을 하지 않도록 보장합니다. 만약 스트리밍을 시작한 후 늦게 스타일시트가 발견된다면, React는 해당 스타일시트에 의존하는 Suspense 경계의 콘텐츠를 표시하기 전에 클라이언트에서 스타일시트가 `<head>`에 삽입되도록 보장합니다.
 
-During Client Side Rendering React will wait for newly rendered stylesheets to load before committing the render. If you render this component from multiple places within your application React will only include the stylesheet once in the document:
+클라이언트 사이드 렌더링 중에는 React가 렌더링을 커밋하기 전에 새로 렌더링된 스타일시트가 로드될 때까지 기다립니다. 애플리케이션의 여러 위치에서 이 컴포넌트를 렌더링하더라도 React는 문서에 스타일시트를 한 번만 포함합니다.
 
 ```js {5}
 function App() {
   return <>
     <ComponentOne />
     ...
-    <ComponentOne /> // won't lead to a duplicate stylesheet link in the DOM
+    <ComponentOne /> // DOM 내에서 스타일 시트 링크가 중복으로 이어지지 않습니다.
   </>
 }
 ```
 
-For users accustomed to loading stylesheets manually this is an opportunity to locate those stylesheets alongside the components that depend on them allowing for better local reasoning and an easier time ensuring you only load the stylesheets that you actually depend on.
+스타일시트를 수동으로 로드하는 데 익숙한 사용자들에게 이것은 의존하는 컴포넌트 옆에 스타일시트를 배치할 기회를 제공합니다. 이를 통해 더 나은 지역적 추론이 가능하고 실제로 의존하는 스타일시트만 로드하도록 보장하는 것이 더 쉬워집니다.
 
-Style libraries and style integrations with bundlers can also adopt this new capability so even if you don't directly render your own stylesheets, you can still benefit as your tools are upgraded to use this feature.
+스타일 라이브러리와 번들러의 통합도 이 새로운 기능을 채택할 수 있으므로, 직접 스타일시트를 렌더링하지 않더라도 도구가 이 기능을 사용하도록 업그레이드되면 여전히 혜택을 받을 수 있습니다.
 
-For more details, read the docs for [`<link>`](/reference/react-dom/components/link) and [`<style>`](/reference/react-dom/components/style).
+자세한 내용은 [`<link>`](/reference/react-dom/components/link)와 [`<style>`](/reference/react-dom/components/style)에 대한 문서를 참조하세요.
 
-### Support for async scripts {/*support-for-async-scripts*/}
+### 비동기 스트립트 지원 {/*support-for-async-scripts*/}
 
-In HTML normal scripts (`<script src="...">`) and deferred scripts (`<script defer="" src="...">`) load in document order which makes rendering these kinds of scripts deep within your component tree challenging. Async scripts (`<script async="" src="...">`) however will load in arbitrary order.
+HTML 일반 스크립트 (`<script src="...">`)와 지연 스크립트(`<script defer="" src="...">`)는 문서 순서대로 로드되어 컴포넌트 트리 깊숙한 곳에 이러한 종류의 스크립트를 렌더링하는 것을 어렵게 만듭니다. 그러나 비동기 스크립트 (`<script async="" src="...">`)는 임의의 순서로 로드됩니다.
 
-In React 19 we've included better support for async scripts by allowing you to render them anywhere in your component tree, inside the components that actually depend on the script, without having to manage relocating and deduplicating script instances.
+React 19에서는 비동기 스크립트에 대한 더 나은 지원을 포함하여, 스크립트 인스턴스의 재배치와 중복 제거를 관리하지 않아도 실제로 스크립트에 의존하는 컴포넌트 트리내 어디든 렌더링할 수 있도록 허용합니다.
 
 ```js {4,15}
 function MyComponent() {
@@ -667,39 +667,39 @@ function App() {
     <body>
       <MyComponent>
       ...
-      <MyComponent> // won't lead to duplicate script in the DOM
+      <MyComponent> // DOM 내에서 스크립트가 중복으로 이어지지 않습니다.
     </body>
   </html>
 }
 ```
 
-In all rendering environments, async scripts will be deduplicated so that React will only load and execute the script once even if it is rendered by multiple different components.
+모든 렌더링 환경에서, 비동기 스크립트는 중복으로 처리되어 React가 동일한 스크립트를 여러 다른 컴포넌트에서 렌더링하더라도 한 번만 로드하고 실행합니다.
 
-In Server Side Rendering, async scripts will be included in the `<head>` and prioritized behind more critical resources that block paint such as stylesheets, fonts, and image preloads.
+서버 사이드 렌더링에서는 비동기 스크립트가 `<head>`에 포함되며, 스타일시트, 폰트, 이미지 프리로드와 같이 페인트를 차단하는 더 중요한 리소스 뒤에 우선적으로 처리됩니다.
 
-For more details, read the docs for [`<script>`](/reference/react-dom/components/script).
+더 자세한 내용은 [`<script>`](/reference/react-dom/components/script) 문서를 참조하세요.
 
-### Support for preloading resources {/*support-for-preloading-resources*/}
+### 리소스 사전 로드 지원 {/*support-for-preloading-resources*/}
 
-During initial document load and on client side updates, telling the Browser about resources that it will likely need to load as early as possible can have a dramatic effect on page performance.
+문서 초기 로드 및 클라이언트 측 업데이트 중에 브라우저에 가능한 한 빨리 로드해야 할 리소스에 대해 알려주는 것이 페이지 성능에 중대한 영향을 미칠 수 있습니다.
 
-React 19 includes a number of new APIs for loading and preloading Browser resources to make it as easy as possible to build great experiences that aren't held back by inefficient resource loading.
+React 19에는 비효율적인 리소스 로딩으로 인해 좋지 않은 경험을 제한받지 않도록, 브라우저 리소스를 로드하고 사전로드하기 위한 여러 새로운 API가 포함되어 있습니다. 이를 통해 우수한 사용자 경험을 구축하는 것이 가능하게 되었습니다.
 
 ```js
 import { prefetchDNS, preconnect, preload, preinit } from 'react-dom'
 function MyComponent() {
-  preinit('https://.../path/to/some/script.js', {as: 'script' }) // loads and executes this script eagerly
-  preload('https://.../path/to/font.woff', { as: 'font' }) // preloads this font
-  preload('https://.../path/to/stylesheet.css', { as: 'style' }) // preloads this stylesheet
-  prefetchDNS('https://...') // when you may not actually request anything from this host
-  preconnect('https://...') // when you will request something but aren't sure what
+  preinit('https://.../path/to/some/script.js', {as: 'script' }) // 스크립트 즉시 로드 실행
+  preload('https://.../path/to/font.woff', { as: 'font' }) // 폰트 사전로드
+  preload('https://.../path/to/stylesheet.css', { as: 'style' }) // 스타일시트 사전로드
+  prefetchDNS('https://...') // 실제로 이 호스트에서 아무것도 요청하지 않을때
+  preconnect('https://...') // 어떤 것을 요청할지 확신하지 못할 때
 }
 ```
 ```html
-<!-- the above would result in the following DOM/HTML -->
+<!-- 위 내용은 다음과 같은 DOM/HTML을 결과로 합니다. -->
 <html>
   <head>
-    <!-- links/scripts are prioritized by their utility to early loading, not call order -->
+    <!-- link/script는 호출순서에 따라 정렬되지 않고 초기 로딩의 유용성에 따라 우선순위 결정 -->
     <link rel="prefetch-dns" href="https://...">
     <link rel="preconnect" href="https://...">
     <link rel="preload" as="font" href="https://.../path/to/font.woff">
@@ -712,23 +712,23 @@ function MyComponent() {
 </html>
 ```
 
-These APIs can be used to optimize initial page loads by moving discovery of additional resources like fonts out of stylesheet loading. They can also make client updates faster by prefetching a list of resources used by an anticipated navigation and then eagerly preloading those resources on click or even on hover.
+이러한 API들은 초기 페이지 로드 최적화에 사용될 수 있으며, 스타일시트 로딩에서 폰트와 같은 추가 리소스의 발견을 완화시킬 수 있습니다. 또한, 예상된 네비게이션에서 사용되는 리소스 목록을 사전에 가져와 클릭 또는 호버 시 이러한 리소스를 즉시 사전로드하여 클라이언트 업데이트 속도를 높일 수 있습니다.
 
-For more details see [Resource Preloading APIs](/reference/react-dom#resource-preloading-apis).
+더 자세한 내용은 [리소스 사전 로드 API](/reference/react-dom#resource-preloading-apis)를 참고하세요.
 
-### Compatibility with third-party scripts and extensions {/*compatibility-with-third-party-scripts-and-extensions*/}
+### 서드파티 스크립트와 확장 프로그램의 호환성 {/*compatibility-with-third-party-scripts-and-extensions*/}
 
-We've improved hydration to account for third-party scripts and browser extensions.
+저희는 서드파티 스크립트와 브라우저 확장 프로그램 호환성을 개선했습니다.
 
-When hydrating, if an element that renders on the client doesn't match the element found in the HTML from the server, React will force a client re-render to fix up the content. Previously, if an element was inserted by third-party scripts or browser extensions, it would trigger a mismatch error and client render.
+화면 새로고침 시, 클라이언트에서 렌더링되는 엘리먼트가 서버에서 제공된 HTML과 일치하지 않으면 React는 컨텐츠를 수정하기 위해 클라이언트에서 강제 리렌더링합니다. 이전에는 서드파티 스크립트나 브라우저 확장 프로그램에 의해 삽입된 엘리먼트는 불일치 오류와 클라이언트 리렌더링을 유발했습니다.
 
-In React 19, unexpected tags in the `<head>` and `<body>` will be skipped over, avoiding the mismatch errors. If React needs to re-render the entire document due to an unrelated hydration mismatch, it will leave in place stylesheets inserted by third-party scripts and browser extensions.
+React 19에서는 `<head>` 및 `<body>`에서 예상치 못한 태그가 발견되면 불일치 오류를 피하고자 이러한 태그들을 건너뜁니다. 또한, React가 관계없는 불일치로 인해 전체 문서를 리렌더링해야 할 경우, 서드파티 스크립트와 브라우저 확장 프로그램에 의해 삽입된 스타일시트는 그대로 남겨집니다.
 
-### Better error reporting {/*error-handling*/}
+### 더 나은 에러 리포팅 {/*error-handling*/}
 
-We improved error handling in React 19 to remove duplication and provide options for handling caught and uncaught errors. For example, when there's an error in render caught by an Error Boundary, previously React would throw the error twice (once for the original error, then again after failing to automatically recover), and then call `console.error` with info about where the error occurred.
+React 19에서는 오류 처리를 개선하여 중복을 줄이고 잡힌 오류와 잡히지 않은 오류를 처리할 수 있는 옵션을 제공했습니다. 예를 들어, 에러 바운더리에 의해 잡힌 렌더링 중 오류가 발생할 경우, 이전에는 React가 오류를 두 번 던졌습니다 (원래 오류와 자동 복구에 실패한 후에 다시). 그리고 `console.error`를 호출하여 오류가 발생한 위치에 대한 정보를 출력했습니다.
 
-This resulted in three errors for every caught error:
+이에 따라 잡힌 오류마다 세 개의 오류가 발생하는 문제가 있었습니다.
 
 <ConsoleBlockMulti>
 
@@ -762,7 +762,7 @@ React will try to recreate this component tree from scratch using the error boun
 
 </ConsoleBlockMulti>
 
-In React 19, we log a single error with all the error information included:
+React 19에서는 모든 오류 정보를 하나의 오류 로그로 기록합니다.
 
 <ConsoleBlockMulti>
 
@@ -784,27 +784,27 @@ React will try to recreate this component tree from scratch using the error boun
 
 </ConsoleBlockMulti>
 
-Additionally, we've added two new root options to complement `onRecoverableError`:
+추가로, `onRecoverableError`을 보완하기 위해 두 새로운 루트 옵션을 추가했습니다.
 
-- `onCaughtError`: called when React catches an error in an Error Boundary.
-- `onUncaughtError`: called when an error is thrown and not caught by an Error Boundary.
-- `onRecoverableError`: called when an error is thrown and automatically recovered.
+- `onCaughtError`: React가 에러 바운더리에서 오류를 잡을 때 호출됩니다.
+- `onUncaughtError`: 에러가 발생하고 에러 바운더리에 의해 잡히지 않을 때 호출됩니다.
+- `onRecoverableError`: 에러가 발생하고 자동으로 복구될 때 호출됩니다.
 
-For more info and examples, see the docs for [`createRoot`](/reference/react-dom/client/createRoot) and [`hydrateRoot`](/reference/react-dom/client/hydrateRoot).
+더 자세한 내용과 예시는 [`createRoot`](/reference/react-dom/client/createRoot)와 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 문서를 참고하세요.
 
-### Support for Custom Elements {/*support-for-custom-elements*/}
+### 커스텀 엘리먼트 지원 {/*support-for-custom-elements*/}
 
-React 19 adds full support for custom elements and passes all tests on [Custom Elements Everywhere](https://custom-elements-everywhere.com/).
+React 19는 커스텀 엘리먼트에 대한 모든 지원을 추가하고 [Custom Elements Everywhere](https://custom-elements-everywhere.com/)의 모든 테스트를 통과했습니다.
 
-In past versions, using Custom Elements in React has been difficult because React treated unrecognized props as attributes rather than properties. In React 19, we've added support for properties that works on the client and during SSR with the following strategy:
+이전 버전에서는 React에서 인식되지 않는 props를 속성으로 처리하여 커스텀 엘리먼트 사용이 어려웠습니다. React 19에서는 클라이언트 및 SSR에서 속성을 지원하도록 아래와 같은 전략을 추가했습니다.
 
-- **Server Side Rendering**: props passed to a custom element will render as attributes if their type is a primitive value like `string`, `number`, or the value is `true`. Props with non-primitive types like `object`, `symbol`, `function`, or value `false` will be omitted.
-- **Client Side Rendering**: props that match a property on the Custom Element instance will be assigned as properties, otherwise they will be assigned as attributes.
+- **서버 사이드 렌더링**: `string`, `number` 또는 한 값이 `true`인 원시 값일 경우 커스텀 엘리먼트에 전달된 props는 렌더링 될 것입니다. 비-원시 타입인 `object`, `symbol`, `function` 또는 값이 `false`인 props는 생략됩니다.
+- **클라이언트 사이드 렌더링**: 커스텀 엘리먼트 인스턴스의 속성과 일치하는 props는 프로퍼티로 할당됩니다. 그렇지 않은 경우에는 어트리뷰트로 할당됩니다.
 
-Thanks to [Joey Arhar](https://github.com/josepharhar) for driving the design and implementation of Custom Element support in React.
+React의 Custom 엘리먼트 지원의 설계 및 구현을 주도해 주신 [Joey Arhar](https://github.com/josepharhar)에게 감사드립니다.
 
 
-#### How to upgrade {/*how-to-upgrade*/}
-See the [React 19 Upgrade Guide](/blog/2024/04/25/react-19-upgrade-guide) for step-by-step instructions and a full list of breaking and notable changes.
+#### 업그레이드 방법 {/*how-to-upgrade*/}
+단계별 지침과 주요 변경 사항의 전체 목록은 [React 19 Upgrade Guide](/blog/2024/04/25/react-19-upgrade-guide)를 참고하세요.
 
-_Note: this post was originally published 04/25/2024 and has been updated to 12/05/2024 with the stable release._
+_참고: 이 게시물은 원래 2024년 4월 25일에 게시되었으며, 안정적인 릴리스와 함께 2024년 12월 5일로 업데이트되었습니다._

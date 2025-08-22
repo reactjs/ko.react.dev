@@ -38,11 +38,11 @@ function MyComponent() {
 
 #### 반환값 {/*returns*/}
 
-`useContext`는 호출하는 컴포넌트에 대한 Context 값을 반환합니다. 이 값은 트리에서 호출하는 컴포넌트 상위의 가장 가까운 `SomeContext.Provider`에 전달된 값으로 결정됩니다. Provider가 없으면 반환된 값은 해당 Context에 대해 [`createContext`](/reference/react/createContext)에 전달한 `defaultValue`가 됩니다. 반환된 값은 항상 최신 상태입니다. Context가 변경되면 React는 자동으로 해당 Context를 읽는 컴포넌트를 다시 렌더링합니다.
+`useContext`는 호출하는 컴포넌트에 대한 Context 값을 반환합니다. 이 값은 트리에서 호출하는 컴포넌트 상위의 가장 가까운 `SomeContext`에 전달된 값으로 결정됩니다. Provider가 없으면 반환된 값은 해당 Context에 대해 [`createContext`](/reference/react/createContext)에 전달한 `defaultValue`가 됩니다. 반환된 값은 항상 최신 상태입니다. Context가 변경되면 React는 자동으로 해당 Context를 읽는 컴포넌트를 다시 렌더링합니다.
 
 #### 주의 사항 {/*caveats*/}
 
-* 컴포넌트 내의 `useContext()` 호출은 **동일한** 컴포넌트에서 반환된 Provider에 영향을 받지 않습니다. 해당하는 `<Context.Provider>`는 `useContext()` 호출을 하는 컴포넌트 ***상위에* 배치되어야 합니다.**
+* 컴포넌트 내의 `useContext()` 호출은 **동일한** 컴포넌트에서 반환된 Provider에 영향을 받지 않습니다. 해당하는 `<Context>`는 `useContext()` 호출을 하는 컴포넌트 ***상위에* 배치되어야 합니다.**
 * React는 다른 `value`을 받는 Provider로부터 시작해서 특정 Context를 사용하는 모든 자식들을 **자동으로 리렌더링**합니다. 이전 값과 다음 값은 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)를 통해 비교합니다. [`memo`](/reference/react/memo)로 리렌더링을 건너뛰어도 자식들이 새로운 Context 값을 받는 것을 막지는 못합니다.
 * 빌드 시스템이 결과물에 중복 모듈을 생성하는 경우(심볼릭 링크에서 발생할 수 있음) Context가 손상될 수 있습니다. Context를 통해 무언가를 전달하는 것은 `===` 비교에 의해 결정되는 것처럼 Context를 제공하는 데 사용하는 `SomeContext`와 Context를 읽는 데 사용하는 `SomeContext`가 ***정확하게* 동일한 객체**인 경우에만 작동합니다.
 
@@ -70,9 +70,9 @@ Context를 `Button`에 전달하려면 해당 버튼 또는 상위 컴포넌트 
 ```js [[1, 3, "ThemeContext"], [2, 3, "\\"dark\\""], [1, 5, "ThemeContext"]]
 function MyPage() {
   return (
-    <ThemeContext.Provider value="dark">
+    <ThemeContext value="dark">
       <Form />
-    </ThemeContext.Provider>
+    </ThemeContext>
   );
 }
 
@@ -98,9 +98,9 @@ const ThemeContext = createContext(null);
 
 export default function MyApp() {
   return (
-    <ThemeContext.Provider value="dark">
+    <ThemeContext value="dark">
       <Form />
-    </ThemeContext.Provider>
+    </ThemeContext>
   )
 }
 
@@ -183,14 +183,14 @@ function Button({ children }) {
 function MyPage() {
   const [theme, setTheme] = useState('dark');
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeContext value={theme}>
       <Form />
       <Button onClick={() => {
         setTheme('light');
       }}>
         Switch to light theme
       </Button>
-    </ThemeContext.Provider>
+    </ThemeContext>
   );
 }
 ```
@@ -213,7 +213,7 @@ const ThemeContext = createContext(null);
 export default function MyApp() {
   const [theme, setTheme] = useState('light');
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeContext value={theme}>
       <Form />
       <label>
         <input
@@ -225,7 +225,7 @@ export default function MyApp() {
         />
         Use dark mode
       </label>
-    </ThemeContext.Provider>
+    </ThemeContext>
   )
 }
 
@@ -317,14 +317,14 @@ const CurrentUserContext = createContext(null);
 export default function MyApp() {
   const [currentUser, setCurrentUser] = useState(null);
   return (
-    <CurrentUserContext.Provider
+    <CurrentUserContext
       value={{
         currentUser,
         setCurrentUser
       }}
     >
       <Form />
-    </CurrentUserContext.Provider>
+    </CurrentUserContext>
   );
 }
 
@@ -411,8 +411,8 @@ export default function MyApp() {
   const [theme, setTheme] = useState('light');
   const [currentUser, setCurrentUser] = useState(null);
   return (
-    <ThemeContext.Provider value={theme}>
-      <CurrentUserContext.Provider
+    <ThemeContext value={theme}>
+      <CurrentUserContext
         value={{
           currentUser,
           setCurrentUser
@@ -429,8 +429,8 @@ export default function MyApp() {
           />
           Use dark mode
         </label>
-      </CurrentUserContext.Provider>
-    </ThemeContext.Provider>
+      </CurrentUserContext>
+    </ThemeContext>
   )
 }
 
@@ -596,16 +596,16 @@ export default function MyApp() {
 function MyProviders({ children, theme, setTheme }) {
   const [currentUser, setCurrentUser] = useState(null);
   return (
-    <ThemeContext.Provider value={theme}>
-      <CurrentUserContext.Provider
+    <ThemeContext value={theme}>
+      <CurrentUserContext
         value={{
           currentUser,
           setCurrentUser
         }}
       >
         {children}
-      </CurrentUserContext.Provider>
-    </ThemeContext.Provider>
+      </CurrentUserContext>
+    </ThemeContext>
   );
 }
 
@@ -775,11 +775,11 @@ export function TasksProvider({ children }) {
   );
 
   return (
-    <TasksContext.Provider value={tasks}>
-      <TasksDispatchContext.Provider value={dispatch}>
+    <TasksContext value={tasks}>
+      <TasksDispatchContext value={dispatch}>
         {children}
-      </TasksDispatchContext.Provider>
-    </TasksContext.Provider>
+      </TasksDispatchContext>
+    </TasksContext>
   );
 }
 
@@ -978,9 +978,9 @@ export default function MyApp() {
   const [theme, setTheme] = useState('light');
   return (
     <>
-      <ThemeContext.Provider value={theme}>
+      <ThemeContext value={theme}>
         <Form />
-      </ThemeContext.Provider>
+      </ThemeContext>
       <Button onClick={() => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
       }}>
@@ -1067,13 +1067,13 @@ function Button({ children, onClick }) {
 트리의 일부분을 다른 값의 Provider로 감싸서 해당 부분에 대한 Context를 오버라이딩 할 수 있습니다.
 
 ```js {3,5}
-<ThemeContext.Provider value="dark">
+<ThemeContext value="dark">
   ...
-  <ThemeContext.Provider value="light">
+  <ThemeContext value="light">
     <Footer />
-  </ThemeContext.Provider>
+  </ThemeContext>
   ...
-</ThemeContext.Provider>
+</ThemeContext>
 ```
 
 필요한 만큼 Provider를 중첩하고 오버라이딩 할 수 있습니다.
@@ -1093,9 +1093,9 @@ const ThemeContext = createContext(null);
 
 export default function MyApp() {
   return (
-    <ThemeContext.Provider value="dark">
+    <ThemeContext value="dark">
       <Form />
-    </ThemeContext.Provider>
+    </ThemeContext>
   )
 }
 
@@ -1104,9 +1104,9 @@ function Form() {
     <Panel title="Welcome">
       <Button>Sign up</Button>
       <Button>Log in</Button>
-      <ThemeContext.Provider value="light">
+      <ThemeContext value="light">
         <Footer />
-      </ThemeContext.Provider>
+      </ThemeContext>
     </Panel>
   );
 }
@@ -1188,7 +1188,7 @@ footer {
 
 #### 자동으로 중첩된 제목 {/*automatically-nested-headings*/}
 
-Ccontext Provider를 중첩할 때 정보를 "누적"할 수 있습니다. 이 예시에서 `Section` 컴포넌트는 섹션 중첩의 깊이를 지정하는 `LevelContext`를 추적합니다. 이 컴포넌트는 부모 섹션에서 `LevelContext`를 읽은 다음 1씩 증가한 `LevelContext` 숫자를 자식에게 제공합니다. 그 결과 `Heading`  컴포넌트는 얼마나 많은 `Section` 컴포넌트가 중첩되어 있는지에 따라 `<h1>`, `<h2>`, `<h3>`, ...,  태그 중 어떤 태그를 사용할지 자동으로 결정할 수 있습니다.
+Ccontext Provider를 중첩할 때 정보를 "누적"할 수 있습니다. 이 예시에서 `Section` 컴포넌트는 섹션 중첩의 깊이를 지정하는 `LevelContext`를 추적합니다. 이 컴포넌트는 부모 섹션에서 `LevelContext`를 읽은 다음 1씩 증가한 `LevelContext` 숫자를 자식에게 제공합니다. 그 결과 `Heading`  컴포넌트는 얼마나 많은 `Section` 컴포넌트가 중첩되어 있는지에 따라 `<h1>`, `<h2>`, `<h3>`, ..., 태그 중 어떤 태그를 사용할지 자동으로 결정할 수 있습니다.
 
 이 예시에 대한 [자세한 안내](/learn/passing-data-deeply-with-context)를 읽어보세요.
 
@@ -1230,9 +1230,9 @@ export default function Section({ children }) {
   const level = useContext(LevelContext);
   return (
     <section className="section">
-      <LevelContext.Provider value={level + 1}>
+      <LevelContext value={level + 1}>
         {children}
-      </LevelContext.Provider>
+      </LevelContext>
     </section>
   );
 }
@@ -1302,9 +1302,9 @@ function MyApp() {
   }
 
   return (
-    <AuthContext.Provider value={{ currentUser, login }}>
+    <AuthContext value={{ currentUser, login }}>
       <Page />
-    </AuthContext.Provider>
+    </AuthContext>
   );
 }
 ```
@@ -1330,9 +1330,9 @@ function MyApp() {
   }), [currentUser, login]);
 
   return (
-    <AuthContext.Provider value={contextValue}>
+    <AuthContext value={contextValue}>
       <Page />
-    </AuthContext.Provider>
+    </AuthContext>
   );
 }
 ```
@@ -1349,8 +1349,8 @@ function MyApp() {
 
 이런 일이 발생하는 몇 가지 이유가 있습니다.
 
-1. `useContext()`를 호출하는 컴포넌트와 동일한 컴포넌트(또는 그 아래)에서 `<SomeContext.Provider>`를 렌더링하는 경우, `<SomeContext.Provider>`를 `useContext()`를 호출하는 컴포넌트의 *위와 바깥*으로 이동하세요.
-2. 컴포넌트를 `<SomeContext.Provider>`로 감싸는 것을 잊었거나 생각했던 것과 다른 트리의 다른 부분에 배치했을 수 있습니다. [React 개발자 도구](/learn/react-developer-tools)를 사용하여 계층 구조가 올바른지 확인하세요.
+1. `useContext()`를 호출하는 컴포넌트와 동일한 컴포넌트(또는 그 아래)에서 `<SomeContext>`를 렌더링하는 경우, `<SomeContext>`를 `useContext()`를 호출하는 컴포넌트의 *위와 바깥*으로 이동하세요.
+2. 컴포넌트를 `<SomeContext>`로 감싸는 것을 잊었거나 생각했던 것과 다른 트리의 다른 부분에 배치했을 수 있습니다. [React 개발자 도구](/learn/react-developer-tools)를 사용하여 계층 구조가 올바른지 확인하세요.
 3. 사용 중인 도구에서 발생하는 빌드 문제로 인해, 제공하는 컴포넌트에서의 `someContext`와 값을 읽는 컴포넌트에서의 `someContext`가 서로 다른 객체로 처리되는 문제가 발생할 수 있습니다. 예를 들어 심볼릭 링크를 사용하는 경우 이런 문제가 발생할 수 있습니다. 이를 확인하려면 `window.SomeContext1`과 `window.SomeContext2`를 전역에 할당하고 콘솔에서 `window.SomeContext1 === window.SomeContext2`인지 확인하면 됩니다. 동일하지 않은 경우 빌드 도구 수준에서 해당 문제를 수정하세요.
 ### 기본값이 다른데도 Context가 `undefined`를 반환합니다. {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
 
@@ -1358,9 +1358,9 @@ function MyApp() {
 
 ```js {1,2}
 // 🚩 Doesn't work: no value prop
-<ThemeContext.Provider>
+<ThemeContext>
    <Button />
-</ThemeContext.Provider>
+</ThemeContext>
 ```
 
 `value`를 지정하는 것을 잊어버린 경우, `value={undefined}`를 전달하는 것과 같습니다.
@@ -1369,18 +1369,18 @@ function MyApp() {
 
 ```js {1,2}
 // 🚩 Doesn't work: prop should be called "value"
-<ThemeContext.Provider theme={theme}>
+<ThemeContext theme={theme}>
    <Button />
-</ThemeContext.Provider>
+</ThemeContext>
 ```
 
 두 가지 경우 모두 콘솔에 React에서 경고가 표시될 것입니다. 이를 수정하려면 Prop `value`를 호출하세요.
 
 ```js {1,2}
 // ✅ Passing the value prop
-<ThemeContext.Provider value={theme}>
+<ThemeContext value={theme}>
    <Button />
-</ThemeContext.Provider>
+</ThemeContext>
 ```
 
-[`createContext(defaultValue)` 호출의 기본값](#specifying-a-fallback-default-value)은 **위에 일치하는 Provider가 전혀 없는 경우**에만 사용된다는 점에 유의하세요. 부모 트리 어딘가에 `<SomeContext.Provider value={undefined}>` 컴포넌트가 있는 경우, `useContext(SomeContext)`를 호출하는 컴포넌트는 `undefined`를 Context 값으로 받습니다.
+[`createContext(defaultValue)` 호출의 기본값](#specifying-a-fallback-default-value)은 **위에 일치하는 Provider가 전혀 없는 경우**에만 사용된다는 점에 유의하세요. 부모 트리 어딘가에 `<SomeContext value={undefined}>` 컴포넌트가 있는 경우, `useContext(SomeContext)`를 호출하는 컴포넌트는 `undefined`를 Context 값으로 받습니다.

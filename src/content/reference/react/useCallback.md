@@ -44,13 +44,13 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 #### 반환값 {/*returns*/}
 
-최초 렌더링에서는 `useCallback`은 전달한 `fn`함수를 그대로 반환합니다.
+최초 렌더링에서는 `useCallback`은 전달한 `fn` 함수를 그대로 반환합니다.
 
-후속 렌더링에서는 이전 렌더링에서 이미 저장해 두었던 `fn`함수를 반환하거나 (의존성이 변하지 않았을 때), 현재 렌더링 중에 전달한 `fn`함수를 그대로 반환합니다.
+후속 렌더링에서는 이전 렌더링에서 이미 저장해 두었던 `fn` 함수를 반환하거나 (의존성이 변하지 않았을 때), 현재 렌더링 중에 전달한 `fn` 함수를 그대로 반환합니다.
 
 #### 주의 사항 {/*caveats*/}
 
-* `useCallback`은 Hook이므로, **컴포넌트의 최상위 레벨** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문 내에서 호출할 수 없습니다. 이 작업이 필요하다면 새로운 컴포넌트로 분리해서 state를 새 컴포넌로 옮기세요.
+* `useCallback`은 Hook이므로, **컴포넌트의 최상위 레벨** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문 내에서 호출할 수 없습니다. 이 작업이 필요하다면 새로운 컴포넌트로 분리해서 state를 새 컴포넌트로 옮기세요.
 * React는 **특별한 이유가 없는 한 캐시 된 함수를 삭제하지 않습니다.** 예를 들어 개발 환경에서는 컴포넌트 파일을 편집할 때 React가 캐시를 삭제합니다. 개발 환경과 프로덕션 환경 모두에서, 초기 마운트 중에 컴포넌트가 일시 중단되면 React는 캐시를 삭제합니다. 앞으로 React는 캐시 삭제를 활용하는 더 많은 기능을 추가할 수 있습니다. 예를 들어, React에 가상화된 목록에 대한 빌트인 지원이 추가한다면, 가상화된 테이블 뷰포트에서 스크롤 밖의 항목에 대해 캐시를 삭제하는것이 적절할 것 입니다. 이는 `useCallback`을 성능 최적화 방법으로 의존하는 경우에 개발자의 예상과 일치해야 합니다. 그렇지 않다면 [state 변수](/reference/react/useState#im-trying-to-set-state-to-a-function-but-it-gets-called-instead) 나 [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents)가 더 적절할 수 있습니다.
 ---
 
@@ -100,9 +100,9 @@ function ProductPage({ productId, referrer, theme }) {
   );
 ```
 
-`theme` prop을 토글 하면 앱이 잠시 멈춘다는 것을 알게 되었는데, JSX에서 `<ShippingForm />`을 제거하면 앱이 빨라진 것처럼 느껴집니다. 이것은 `<ShippingForm />` 컴포넌트의 최적화를 시도해 볼 가치가 있다는 것을 나타냅니다.
+`theme` prop을 토글 하면 앱이 잠시 멈춘다는 것을 알게 되었는데, JSX에서 `<ShippingForm />`을 제거하면 앱이 빨라진 것처럼 느껴집니다. 이는 `<ShippingForm />` 컴포넌트의 최적화를 시도해 볼 가치가 있다는 것을 나타냅니다.
 
-**기본적으로, 컴포넌트가 리렌더링할 때 React는 이것의 모든 자식을 재귀적으로 재렌더링합니다.** 이것이 `ProductPage`가 다른 `theme` 값으로 리렌더링 할 때, `ShippingForm` 컴포넌트 **또한** 리렌더링 하는 이유입니다. 이 것은 리렌더링에 많은 계산을 요구하지 않는 컴포넌트에서는 괜찮습니다. 하지만 리렌더링이 느린 것을 확인한 경우, `ShippingForm`을 [`memo`](/reference/react/memo)로 감싸면 마지막 렌더링과 동일한 props일 때 리렌더링을 건너뛰도록 할 수 있습니다.
+**기본적으로, 컴포넌트가 리렌더링할 때 React는 해당 컴포넌트의 모든 자식을 재귀적으로 리렌더링합니다.** 이는 `ProductPage`가 다른 `theme` 값으로 리렌더링 할 때, `ShippingForm` 컴포넌트 **또한** 리렌더링 하는 이유입니다. 이것은 리렌더링에 많은 계산을 요구하지 않는 컴포넌트에서는 괜찮습니다. 하지만 리렌더링이 느린 것을 확인한 경우, `ShippingForm`을 [`memo`](/reference/react/memo)로 감싸면 마지막 렌더링과 동일한 props일 때 리렌더링을 건너뛰도록 할 수 있습니다.
 
 ```js {3,5}
 import { memo } from 'react';
@@ -133,7 +133,7 @@ function ProductPage({ productId, referrer, theme }) {
 }
 ```
 
-**자바스크립트에서 `function () {}` 나 `() => {}`은 항상 _다른_ 함수를 생성합니다.** 이것은 `{}` 객체 리터럴이 항상 새로운 객체를 생성하는 방식과 유사합니다. 보통의 경우에는 문제가 되지 않지만, 여기서는 `ShippingForm` props는 절대 같아질 수 없고 [`memo`](/reference/react/memo) 최적화는 동작하지 않을 것이라는 걸 의미합니다. 여기서 `useCallback`이 유용하게 사용됩니다.
+**자바스크립트에서 `function () {}` 나 `() => {}`은 항상 _다른_ 함수를 생성합니다.** 이는 `{}` 객체 리터럴이 항상 새로운 객체를 생성하는 방식과 유사합니다. 보통의 경우에는 문제가 되지 않지만, 여기서는 `ShippingForm` props는 절대 같아질 수 없고 [`memo`](/reference/react/memo) 최적화는 동작하지 않을 것이라는 걸 의미합니다. 여기서 `useCallback`이 유용하게 사용됩니다.
 
 ```js {2,3,8,12-13}
 function ProductPage({ productId, referrer, theme }) {
@@ -195,8 +195,8 @@ function ProductPage({ productId, referrer }) {
 
 차이점은 *무엇을* 캐싱하는지 입니다.
 
-* **[`useMemo`](/reference/react/useMemo) 는 호출한 함수의 결과값을 캐싱합니다.** 이 예시에서는 `computeRequirements(product)` 함수 호출 결과를 캐싱해서 `product`가 변경되지 않는 한 이 결과값이 변경되지 않도록 합니다. 이것은 불필요하게 `ShippingForm`을 리렌더링하지 않고 `requirements` 객체를 넘겨줄 수 있도록 해줍니다. 필요할 때 React는 렌더링 중에 넘겨주었던 함수를 호출하여 결과를 계산합니다.
-* **`useCallback`은 *함수 자체*를 캐싱합니다.** `useMemo`와 달리, 전달한 함수를 호출하지 않습니다. 그 대신, 전달한 함수를 캐싱해서 `productId`나 `referrer`이 변하지 않으면 `handleSubmit` 자체가 변하지 않도록 합니다. 이것은 불필요하게 `ShippingForm`을 리렌더링하지 않고 `handleSubmit` 함수를 전달할 수 있도록 해줍니다. 함수의 코드는 사용자가 폼을 제출하기 전까지 실행되지 않을 것입니다.
+* **[`useMemo`](/reference/react/useMemo) 는 호출한 함수의 결과값을 캐싱합니다.** 이 예시에서는 `computeRequirements(product)` 함수 호출 결과를 캐싱해서 `product`가 변경되지 않는 한 이 결과값이 변경되지 않도록 합니다. 이는 불필요하게 `ShippingForm`을 리렌더링하지 않고 `requirements` 객체를 넘겨줄 수 있도록 해줍니다. 필요할 때 React는 렌더링 중에 넘겨주었던 함수를 호출하여 결과를 계산합니다.
+* **`useCallback`은 *함수 자체*를 캐싱합니다.** `useMemo`와 달리, 전달한 함수를 호출하지 않습니다. 그 대신, 전달한 함수를 캐싱해서 `productId`나 `referrer`이 변하지 않으면 `handleSubmit` 자체가 변하지 않도록 합니다. 이는 불필요하게 `ShippingForm`을 리렌더링하지 않고 `handleSubmit` 함수를 전달할 수 있도록 해줍니다. 함수의 코드는 사용자가 폼을 제출하기 전까지 실행되지 않을 것입니다.
 
 이미 [`useMemo`](/reference/react/useMemo)에 익숙하다면 `useCallback`을 다음과 같이 생각하는 것이 도움이 될 수 있습니다.
 
@@ -222,7 +222,7 @@ function useCallback(fn, dependencies) {
 - [`memo`](/reference/react/memo)로 감싸진 컴포넌트에 prop으로 넘깁니다. 이 값이 변하지 않으면 리렌더링을 건너뛰고 싶습니다. memoization은 의존성이 변했을 때만 컴포넌트가 리렌더링하도록 합니다.
 - 넘긴 함수가 나중에 어떤 Hook의 의존성으로 사용됩니다. 예를 들어, `useCallback`으로 감싸진 다른 함수가 이 함수에 의존하거나, [`useEffect`](/reference/react/useEffect)에서 이 함수에 의존합니다.
 
-다른 경우에서 `useCallback`으로 함수를 감싸는 것은 아무런 이익이 없습니다. 또한 이렇게 하는 것이 큰 불이익을 가져오지도 않으므로  일부 팀은 개별적인 경우를 따로 생각하지 않고, 가능한 한 많이 memoization하는 방식을 택합니다. 단점은 코드의 가독성이 떨어지는 것입니다. 또한, 모든 memoization이 효과적인 것은 아닙니다. "항상 새로운" 하나의 값이 있다면 전체 컴포넌트의 memoization을 깨기에 충분합니다.
+다른 경우에서 `useCallback`으로 함수를 감싸는 것은 아무런 이익이 없습니다. 또한 이렇게 하는 것이 큰 불이익을 가져오지도 않으므로 일부 팀은 개별적인 경우를 따로 생각하지 않고, 가능한 한 많이 memoization하는 방식을 택합니다. 단점은 코드의 가독성이 떨어지는 것입니다. 또한, 모든 memoization이 효과적인 것은 아닙니다. "항상 새로운" 하나의 값이 있다면 전체 컴포넌트의 memoization을 깨기에 충분합니다.
 
 `useCallback`이 함수의 *생성*을 막지 않는다는 점을 주의하세요. 항상 함수를 생성하지만 (이건 괜찮습니다!), 그러나 React는 변경이 없는 경우에는 무시하고 캐시된 함수를 반환합니다
 
@@ -750,7 +750,7 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-이것은 리렌더링 간에 `roomId`가 같다면 `createOptions` 함수는 같다는 것을 보장합니다. **하지만, 함수 의존성을 제거하는 것이 더 좋습니다.** 함수를 Effect *안으로* 이동시키세요.
+이는 리렌더링 간에 `roomId`가 같다면 `createOptions` 함수는 같다는 것을 보장합니다. **하지만, 함수 의존성을 제거하는 것이 더 좋습니다.** 함수를 Effect *안으로* 이동시키세요.
 
 ```js {5-10,16}
 function ChatRoom({ roomId }) {
@@ -857,7 +857,7 @@ Object.is(temp1[2], temp2[2]); // ... 나머지 모든 의존성도 확인합니
 
 ---
 
-### 반복문에서 각 항목마다 `useCallback`을 호출하고 싶지만, 이것은 허용되지 않습니다. {/*i-need-to-call-usememo-for-each-list-item-in-a-loop-but-its-not-allowed*/}
+### 반복문에서 각 항목마다 `useCallback`을 호출하고 싶지만, 이는 허용되지 않습니다. {/*i-need-to-call-usememo-for-each-list-item-in-a-loop-but-its-not-allowed*/}
 
 `Chart` 컴포넌트가 [`memo`](/reference/react/memo)로 감싸져 있다고 생각해 봅시다. `ReportList` 컴포넌트가 렌더링 될 때마다, 모든 `Chart` 항목이 리렌더링 하는 것을 막고 싶습니다. 하지만 반복문에서 `useCallback`을 호출할 수 없습니다.
 

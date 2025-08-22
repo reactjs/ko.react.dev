@@ -39,3 +39,8 @@ public/fonts/**/Optimistic_*.woff2
 
 # rss
 public/rss.xml
+
+# code editor
+.cursor
+.idea
+*.code-workspace

@@ -70,7 +70,7 @@ export default function Image() {
 컴포넌트가 처음으로 렌더링 된 후에는 [`set` 함수](/reference/react/useState#setstate)를 통해 상태를 업데이트하여 추가적인 렌더링을 트리거할 수 있습니다. 컴포넌트의 상태를 업데이트하면 자동으로 렌더링 대기열에 추가됩니다. (이것은 레스토랑의 손님이 첫 주문 이후에 갈증이나 배고픔의 상태에 따라 차, 디저트 등의 메뉴를 주문하는 것으로 상상해 볼 수 있습니다.)
 
 <IllustrationBlock sequential>
-  <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. They patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
+  <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. The patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
   <Illustration caption="...triggers..." alt="React returns to the Component Kitchen and tells the Card Chef they need a pink Card." src="/images/docs/illustrations/i_rerender2.png" />
   <Illustration caption="...render!" alt="The Card Chef gives React the pink Card." src="/images/docs/illustrations/i_rerender3.png" />
 </IllustrationBlock>

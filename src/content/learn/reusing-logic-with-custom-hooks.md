@@ -4,7 +4,7 @@ title: 커스텀 Hook으로 로직 재사용하기
 
 <Intro>
 
-React는 `useState`, `useContext`, 그리고 `useEffect`같이 몇몇 내재하고 있는 Hook이 존재합니다. 가끔 조금 더 구체적인 목적을 가진 Hook이 존재하길 바랄 때도 있을 겁니다. 예를 들어, 데이터를 가져온다던가, 사용자가 온라인 상태인지 계속 확인한다던가, 혹은 채팅방에 연결하기 위한 목적들처럼요. React에서 다음과 같은 Hook들을 찾기는 어려울 것입니다. 하지만 애플리케이션의 필요에 알맞은 본인만의 Hook을 만들 수 있습니다.
+React는 `useState`, `useContext`, 그리고 `useEffect`같이 몇몇 내재하고 있는 Hook이 존재합니다. 가끔 조금 더 구체적인 목적을 가진 Hook이 존재하길 바랄 때도 있을 겁니다. 예를 들어, 데이터를 가져온다든가, 사용자가 온라인 상태인지 계속 확인한다든가, 혹은 채팅방에 연결하기 위한 목적들처럼요. React에서 다음과 같은 Hook들을 찾기는 어려울 것입니다. 하지만 애플리케이션의 필요에 알맞은 본인만의 Hook을 만들 수 있습니다.
 
 </Intro>
 
@@ -446,7 +446,7 @@ function Form() {
 
 ## Hook 사이에 상호작용하는 값 전달하기 {/*passing-reactive-values-between-hooks*/}
 
-커스텀 Hook 안의 코드는 컴포넌트가 재렌더링될 때마다 다시 돌아갈 겁니다. 이게 바로 커스컴 Hook이 (컴포넌트처럼) [순수해야하는 이유](/learn/keeping-components-pure) 입니다. 커스텀 Hook을 컴포넌트 본체의 한 부분이라고 생각하세요!
+커스텀 Hook 안의 코드는 컴포넌트가 재렌더링될 때마다 다시 돌아갈 겁니다. 이게 바로 커스텀 Hook이 (컴포넌트처럼) [순수해야하는 이유](/learn/keeping-components-pure) 입니다. 커스텀 Hook을 컴포넌트 본체의 한 부분이라고 생각하세요!
 
 커스텀 Hook이 컴포넌트와 함께 재렌더링된다면, 항상 가장 최신의 props와 state를 전달받을 것입니다. 이게 무슨 말인지 살펴보기 위해 아래의 채팅방 예시를 확인해 보세요. 서버 URL이나 채팅방을 바꾼다고 생각해봅시다.
 
@@ -819,7 +819,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-그리고 반환 값을 다른 Hook에 입력해보세요.
+그리고 다른 Hook에 입력으로 전달하세요.
 
 ```js {6}
 export default function ChatRoom({ roomId }) {
@@ -832,7 +832,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-매번 `ChatRoom`가 재렌더링될 때마다, Hook에 최신 `roomId`와 `serverUrl` 값을 넘겨줍니다. 이게 바로 재렌더링 이후에 값이 달라지는지 여부에 관계없이 Effect가 재연결하는 이유입니다. (만약 오디오 또는 비디오 처리 소프트웨어를 작업해 본 적이 있다면, 이처럼 Hook을 연결하는 것이 시각적 혹은 청각적 효과를 연결하는 것을 떠오르게 할 겁니다. 이게 바로 `useState`의 결과를 `useChatRoom`의 입력으로 "넣어주는 것"과 같습니다.)
+매번 `ChatRoom`가 재렌더링될 때마다, Hook에 최신 `roomId`와 `serverUrl` 값을 넘겨줍니다. 이것이 바로 Effect가 다시 렌더링된 후 값이 다를 때마다 채팅에 다시 연결되는 이유입니다. (만약 오디오 또는 비디오 처리 소프트웨어를 작업해 본 적이 있다면, 이처럼 Hook을 연결하는 것이 시각적 혹은 청각적 효과를 연결하는 것을 떠오르게 할 겁니다. 이게 바로 `useState`의 결과를 `useChatRoom`의 입력으로 "넣어주는 것"과 같습니다.)
 
 ### 커스텀 Hook에 이벤트 핸들러 넘겨주기 {/*passing-event-handlers-to-custom-hooks*/}
 
@@ -922,7 +922,7 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
 }
 ```
 
-이제 `ChatRoom`가 재렌더링될 때마다 채팅방이 재연결되지 않습니다. 여기 커스텀 Hook에 이벤트 핸들러를 넘겨주는 직접 다뤄볼 수 있는  제대로 동작하는 예시가 있습니다.
+이제 `ChatRoom`가 재렌더링될 때마다 채팅방이 재연결되지 않습니다. 여기 커스텀 Hook에 이벤트 핸들러를 넘겨주는 직접 다뤄볼 수 있는 제대로 동작하는 예시가 있습니다.
 
 <Sandpack>
 
@@ -1096,7 +1096,7 @@ button { margin-left: 10px; }
 
 모든 자잘한 중복되는 코드들까지 커스텀 Hook으로 분리할 필요가 없습니다. 어떤 중복된 코드는 괜찮습니다. 예를 들어, 앞선 예시처럼 하나의 `useState`를 감싸기 위한 `useFormInput`을 분리하는 것은 불필요합니다.
 
-하지만 Effect를 사용하든 사용하지 않든, 커스텀 Hook 안에 그것을 감싸는 게 좋은지 아닌지 고려하세요. [Effect를 자주 쓸 필요가 없을지 모릅니다.](/learn/you-might-not-need-an-effect) 만약 Effect를 사용한다면, 그건 외부 시스템과 동기화한다던가 React가 내장하지 않은 API를 위해 무언가를 하는 등 "React에서 벗어나기" 위함일 겁니다. 커스텀 Hook으로 감싸는 것은 목적을 정확하게 전달하고 어떻게 데이터가 그것을 통해 흐르는지 알 수 있게 해줍니다.
+하지만 Effect를 사용하든 사용하지 않든, 커스텀 Hook 안에 그것을 감싸는 게 좋은지 아닌지 고려하세요. [Effect를 자주 쓸 필요가 없을지 모릅니다.](/learn/you-might-not-need-an-effect) 만약 Effect를 사용한다면, 그건 외부 시스템과 동기화한다든가 React가 내장하지 않은 API를 위해 무언가를 하는 등 "React에서 벗어나기" 위함일 겁니다. 커스텀 Hook으로 감싸는 것은 목적을 정확하게 전달하고 어떻게 데이터가 그것을 통해 흐르는지 알 수 있게 해줍니다.
 
 예를 들어 두 가지 목록을 보여주는 `ShippingForm` 컴포넌트를 살펴봅시다. 하나는 도시의 목록을 보여주고, 다른 하나는 선택된 도시의 구역 목록을 보여줍니다. 아마 코드를 다음과 같이 작성하기 시작할 겁니다.
 
@@ -1332,7 +1332,7 @@ export function useOnlineStatus() {
 
 위의 예시에서 `useOnlineStatus`는 한 쌍의 [`useState`](/reference/react/useState)와 [`useEffect`](/reference/react/useEffect)와 함께 실행됩니다. 하지만 이건 가장 좋은 해결 방법은 아닙니다. 이 해결 방법이 고려하지 못한 수많은 예외 상황이 존재합니다. 예를 들어, 이건 컴포넌트가 마운트됐을 때, `isOnline`이 이미 `true`라고 가정합니다. 하지만 이것은 네트워크가 이미 꺼졌을 때 틀린 가정이 됩니다. 이런 상황을 확인하기 위해 브라우저 [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API를 사용할 수도 있습니다. 하지만 이걸 직접적으로 사용하게 되면 초기 HTML을 생성하기 위한 서버에선 동작하지 않습니다. 짧게 말하면 코드는 보완되어야 합니다.
 
-운 좋게도 React 18은 이런 모든 문제를 신경 써주는 [`useSyncExternalStore`](/reference/react/useSyncExternalStore)라고 불리는 섬세한 API를 포함합니다. 여기 새 API의 장점을 가지고 다시 쓰인 `useOnlineStatus`이 있습니다.
+React는 이런 모든 문제를 신경 써주는 [`useSyncExternalStore`](/reference/react/useSyncExternalStore)라고 불리는 섬세한 API를 포함합니다. 여기 새 API의 장점을 가지고 다시 쓰인 `useOnlineStatus`이 있습니다.
 
 <Sandpack>
 
@@ -2081,7 +2081,6 @@ export function useCounter(delay) {
 <Sandpack>
 
 ```js
-import { useState } from 'react';
 import { useCounter } from './useCounter.js';
 
 export default function Counter() {

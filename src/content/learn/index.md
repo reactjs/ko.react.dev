@@ -21,7 +21,7 @@ React 문서에 오신 것을 환영합니다! 이 페이지에서는 여러분�
 
 ## 컴포넌트 생성 및 중첩하기 {/*components*/}
 
-React 앱은 *컴포넌트*로 구성됩니다. 컴포넌트는 고유한 로직과 모양을 가진 UI(사용자 인터페이스)의 일부입니다. 컴포넌트는 버튼만큼 작을 수도 있고 전체 페이지만큼 클 수도 있습니다.
+React 앱은 *컴포넌트*로 구성됩니다. 컴포넌트는 고유한 로직과 모양을 가진 사용자 인터페이스<sup>UI</sup>의 일부입니다. 컴포넌트는 버튼만큼 작을 수도 있고 전체 페이지만큼 클 수도 있습니다.
 
 React 컴포넌트는 마크업을 반환하는 자바스크립트 함수입니다.
 
@@ -115,7 +115,7 @@ React는 CSS 파일을 추가하는 방법을 규정하지 않습니다. 가장 
 
 ## 데이터 표시하기 {/*displaying-data*/}
 
-JSX를 사용하면 자바스크립트에 마크업을 넣을 수 있습니다. 중괄호를 사용하면 코드에서 일부 변수를 삽입하여 사용자에게 표시할 수 있도록 자바스크립트로 "이스케이프 백(Escape Back)" 할 수 있습니다. 아래의 예시는 `user.name`을 표시합니다.
+JSX를 사용하면 자바스크립트에 마크업을 넣을 수 있습니다. 중괄호를 사용하면 코드에서 일부 변수를 삽입하여 사용자에게 표시할 수 있도록 자바스크립트로 "이스케이프 백<sup>Escape Back</sup>" 할 수 있습니다. 아래의 예시는 `user.name`을 표시합니다.
 
 ```js {3}
 return (
@@ -125,7 +125,7 @@ return (
 );
 ```
 
-JSX 어트리뷰트에서 따옴표 *대신* 중괄호를 사용하여 "자바스크립트로 이스케이프(Escape Into JavaScript)" 할 수도 있습니다. 예를 들어 `className="avatar"`는 `"avatar"` 문자열을 CSS로 전달하지만 `src={user.imageUrl}`는 자바스크립트 `user.imageUrl` 변수 값을 읽은 다음 해당 값을 `src` 어트리뷰트로 전달합니다.
+JSX 어트리뷰트에서 따옴표 *대신* 중괄호를 사용하여 "자바스크립트로 이스케이프<sup>Escape Into JavaScript</sup>" 할 수도 있습니다. 예를 들어 `className="avatar"`는 `"avatar"` 문자열을 CSS로 전달하지만 `src={user.imageUrl}`는 자바스크립트 `user.imageUrl` 변수 값을 읽은 다음 해당 값을 `src` 어트리뷰트로 전달합니다.
 
 ```js {3,4}
 return (
@@ -299,7 +299,7 @@ function MyButton() {
 
 ## 화면 업데이트하기 {/*updating-the-screen*/}
 
-컴포넌트가 특정 정보를 "기억"하여 표시하기를 원하는 경우가 종종 있습니다. 예를 들어 버튼이 클릭된 횟수를 세고 싶을 수 있습니다. 이렇게 하려면 컴포넌트에 *state*를 추가하면 됩니다.
+컴포넌트가 특정 정보를 "기억"하여 표시하기를 원하는 경우가 종종 있습니다. 예를 들어 버튼이 클릭된 횟수를 세고 싶을 수 있습니다. 이렇게 하려면 컴포넌트에 *State*를 추가하면 됩니다.
 
 먼저, React에서 [`useState`](/reference/react/useState)를 가져옵니다.
 
@@ -307,7 +307,7 @@ function MyButton() {
 import { useState } from 'react';
 ```
 
-이제 컴포넌트 내부에 *state 변수*를 선언할 수 있습니다.
+이제 컴포넌트 내부에 *State 변수*를 선언할 수 있습니다.
 
 ```js
 function MyButton() {
@@ -315,9 +315,9 @@ function MyButton() {
   // ...
 ```
 
-`useState`로부터 현재 state (`count`)와 이를 업데이트할 수 있는 함수(`setCount`)를 얻을 수 있습니다. 이들을 어떤 이름으로도 지정할 수 있지만 `[something, setSomething]`으로 작성하는 것이 일반적입니다.
+`useState`로부터 현재 State (`count`)와 이를 업데이트할 수 있는 함수 (`setCount`)를 얻을 수 있습니다. 이들을 어떤 이름으로도 지정할 수 있지만 `[something, setSomething]`으로 작성하는 것이 일반적입니다.
 
-버튼이 처음 표시될 때는 `useState()`에 `0`을 전달했기 때문에 `count`가 `0`이 됩니다. state를 변경하고 싶다면 `setCount()`를 실행하고 새 값을 전달하세요. 이 버튼을 클릭하면 카운터가 증가합니다.
+버튼이 처음 표시될 때는 `useState()`에 `0`을 전달했기 때문에 `count`가 `0`이 됩니다. State를 변경하고 싶다면 `setCount()`를 실행하고 새 값을 전달하세요. 이 버튼을 클릭하면 카운터가 증가합니다.
 
 ```js {5}
 function MyButton() {
@@ -337,7 +337,7 @@ function MyButton() {
 
 React가 컴포넌트 함수를 다시 호출합니다. 이번에는 `count`가 `1`이 되고, 그 다음에는 `2`가 될 것입니다. 이런 방식입니다.
 
-같은 컴포넌트를 여러 번 렌더링하면 각각의 컴포넌트는 고유한 state를 얻게 됩니다. 각 버튼을 개별적으로 클릭해 보세요.
+같은 컴포넌트를 여러 번 렌더링하면 각각의 컴포넌트는 고유한 State를 얻게 됩니다. 각 버튼을 개별적으로 클릭해 보세요.
 
 <Sandpack>
 
@@ -378,7 +378,7 @@ button {
 
 </Sandpack>
 
-각 버튼이 고유한 `count` state를 "기억"하고 다른 버튼에 영향을 주지 않는 방식에 주목해 주세요.
+각 버튼이 고유한 `count` State를 "기억"하고 다른 버튼에 영향을 주지 않는 방식에 주목해 주세요.
 
 ## Hook 사용하기 {/*using-hooks*/}
 
@@ -408,7 +408,7 @@ Hook은 다른 함수보다 더 제한적입니다. 컴포넌트(또는 다른 H
 
 하지만 *데이터를 공유하고 항상 함께 업데이트하기* 위한 컴포넌트가 필요한 경우가 많습니다.
 
-두 `MyButton` 컴포넌트가 동일한 `count`를 표시하고 함께 업데이트하려면, state를 개별 버튼에서 모든 버튼이 포함된 가장 가까운 컴포넌트로 "위쪽"으로 이동해야 합니다.
+두 `MyButton` 컴포넌트가 동일한 `count`를 표시하고 함께 업데이트하려면, State를 개별 버튼에서 모든 버튼이 포함된 가장 가까운 컴포넌트로 "위쪽"으로 이동해야 합니다.
 
 이 예시에서는 `MyApp`입니다.
 
@@ -416,13 +416,13 @@ Hook은 다른 함수보다 더 제한적입니다. 컴포넌트(또는 다른 H
 
 <Diagram name="sharing_data_parent" height={385} width={410} alt="Diagram showing a tree of three components, one parent labeled MyApp and two children labeled MyButton. MyApp contains a count value of zero which is passed down to both of the MyButton components, which also show value zero." >
 
-처음에 `MyApp`의 `count` state는 `0`이며 두 자식에게 모두 전달됩니다.
+처음에 `MyApp`의 `count` State는 `0`이며 두 자식에게 모두 전달합니다.
 
 </Diagram>
 
 <Diagram name="sharing_data_parent_clicked" height={385} width={410} alt="The same diagram as the previous, with the count of the parent MyApp component highlighted indicating a click with the value incremented to one. The flow to both of the children MyButton components is also highlighted, and the count value in each child is set to one indicating the value was passed down." >
 
-클릭 시 `MyApp`은 `count` state를 `1`로 업데이트하고 두 자식에게 전달합니다.
+클릭 시 `MyApp`은 `count` State를 `1`로 업데이트하고 두 자식에게 전달합니다.
 
 </Diagram>
 
@@ -430,7 +430,7 @@ Hook은 다른 함수보다 더 제한적입니다. 컴포넌트(또는 다른 H
 
 이제 두 버튼 중 하나를 클릭하면 `MyApp`의 `count`가 변경되어 `MyButton`의 카운트가 모두 변경됩니다. 이를 코드로 표현하는 방법은 다음과 같습니다.
 
-먼저 `MyButton`에서 `MyApp`으로 *state를 위로 이동*합니다.
+먼저 `MyButton`에서 `MyApp`으로 *State를 위로 이동*합니다.
 
 ```js {2-6,18}
 export default function MyApp() {
@@ -455,7 +455,7 @@ function MyButton() {
 
 ```
 
-그 다음 공유된 클릭 핸들러와 함께 `MyApp`에서 각 `MyButton`으로 *state를 전달합니다*. 이전에 `<img>`와 같은 기본 제공 태그를 사용했던 것처럼 JSX 중괄호를 사용하여 `MyButton`에 정보를 전달할 수 있습니다.
+그 다음 공유된 클릭 핸들러와 함께 `MyApp`에서 각 `MyButton`으로 *State를 전달합니다*. 이전에 `<img>`와 같은 기본 제공 태그를 사용했던 것처럼 JSX 중괄호를 사용하여 `MyButton`에 정보를 전달할 수 있습니다.
 
 ```js {11-12}
 export default function MyApp() {
@@ -475,9 +475,9 @@ export default function MyApp() {
 }
 ```
 
-이렇게 전달한 정보를 *props*라고 합니다. 이제 `MyApp` 컴포넌트는 `count` state와 `handleClick` 이벤트 핸들러를 포함하며, *이 두 가지를 각 버튼에  props로 전달합니다*.
+이렇게 전달한 정보를 *Props*라고 합니다. 이제 `MyApp` 컴포넌트는 `count` State와 `handleClick` 이벤트 핸들러를 포함하며, *이 두 가지를 각 버튼에 Props로 전달합니다*.
 
-마지막으로 부모 컴포넌트에서 전달한 props를 *읽도록* `MyButton`을 변경합니다.
+마지막으로 부모 컴포넌트에서 전달한 Props를 *읽도록* `MyButton`을 변경합니다.
 
 
 ```js {1,3}
@@ -490,7 +490,7 @@ function MyButton({ count, onClick }) {
 }
 ```
 
-버튼을 클릭하면 `onClick` 핸들러가 실행됩니다. 각 버튼의 `onClick` prop는 `MyApp` 내부의 `handleClick` 함수로 설정되었으므로 그 안에 있는 코드가 실행됩니다. 이 코드는 `setCount(count + 1)`를 실행하여 `count` state 변수를 증가시킵니다. 새로운 `count` 값은 각 버튼에 prop로 전달되므로 모든 버튼에는 새로운 값이 표시됩니다. 이를 "state 끌어올리기"라고 합니다. state를 위로 이동함으로써 컴포넌트 간에 state를 공유하게 됩니다.
+버튼을 클릭하면 `onClick` 핸들러가 실행됩니다. 각 버튼의 `onClick` Prop는 `MyApp` 내부의 `handleClick` 함수로 설정되었으므로 그 안에 있는 코드가 실행됩니다. 이 코드는 `setCount(count + 1)`를 실행하여 `count` State 변수를 증가시킵니다. 새로운 `count` 값은 각 버튼에 Prop로 전달되므로 모든 버튼에는 새로운 값이 표시됩니다. 이를 "State 끌어올리기"라고 합니다. State를 위로 이동함으로써 컴포넌트 간에 State를 공유하게 됩니다.
 
 <Sandpack>
 

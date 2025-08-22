@@ -4,7 +4,7 @@ title: 서버 컴포넌트
 
 <RSC>
 
-서버 컴포넌트는 [React 서버 컴포넌트](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)에서 사용합니다.
+서버 컴포넌트는 [React 서버 컴포넌트](/learn/start-a-new-react-project#full-stack-frameworks)에서 사용합니다.
 
 </RSC>
 
@@ -22,7 +22,7 @@ title: 서버 컴포넌트
 
 #### 서버 컴포넌트를 지원하려면 어떻게 해야 하나요? {/*how-do-i-build-support-for-server-components*/}
 
-React 19의 서버 컴포넌트는 안정적이며 마이너(Minor) 버전 간에는 변경되지 않습니다. 그러나 React 서버 컴포넌트 번들러나 프레임워크를 구현하는 데 사용되는 기본 API는 시맨틱 버전(semver)을 따르지 않으며 React 19.x의 마이너(Minor) 버전 간에 변경될 수 있습니다.
+React 19의 서버 컴포넌트는 안정적이며 마이너<sup>Minor</sup> 버전 간에는 변경되지 않습니다. 그러나 React 서버 컴포넌트 번들러나 프레임워크를 구현하는 데 사용되는 기본 API는 시맨틱 버전<sup>SemVer</sup>을 따르지 않으며 React 19.x의 마이너<sup>Minor</sup> 버전 간에 변경될 수 있습니다.
 
 React 서버 컴포넌트를 번들러나 프레임워크로 지원하려면, 특정 React 버전에 고정하거나 Canary 릴리즈를 사용하는 것을 권장합니다. 향후 React 서버 컴포넌트를 구현하는 데 사용되는 API를 안정화하기 위해 번들러 및 프레임워크와 계속 협력할 것입니다.
 
@@ -299,4 +299,4 @@ function Comments({commentsPromise}) {
 
 `note` 콘텐츠는 페이지 렌더링에 중요한 데이터이므로 서버에서 `await` 합니다. 댓글은 중요도가 낮아 페이지 아래에 표시되므로 서버에서 Promise를 시작하고 클라이언트에서 `use` API를 사용하여 기다립니다. 이는 클라이언트에서 지연되지만 `note` 콘텐츠가 렌더링되는 것을 차단하지 않습니다.
 
-비동기 컴포넌트는 [클라이언트에서 지원되지 않으므로](#why-cant-i-use-async-components-on-the-client) Promise를 `use`로 기다립니다.
+비동기 컴포넌트는 클라이언트에서 지원되지 않으므로 Promise를 `use`로 기다립니다.

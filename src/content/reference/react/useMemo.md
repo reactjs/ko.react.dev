@@ -84,7 +84,7 @@ function TodoList({ todos, tab, theme }) {
 
 초기 렌더링에서 `useMemo`에서 얻을 수 있는 <CodeStep step={3}>값</CodeStep>은 <CodeStep step={1}>계산 함수</CodeStep>를 호출한 결과값 입니다.
 
-이후 모든 렌더링에서 React는 <CodeStep step={2}>종속성 목록을</CodeStep> 마지막 렌더링 중에 전달한 종속성 목록과 비교합니다. 만일  ([`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)와 비교했을 때) 종속성이 변경되지 않았다면, `useMemo`는 이전에 이미 계산해둔 값을 반환합니다. 그렇지 않다면 React는 계산을 다시 실행하고 새로운 값을 반환합니다.
+이후 모든 렌더링에서 React는 <CodeStep step={2}>종속성 목록을</CodeStep> 마지막 렌더링 중에 전달한 종속성 목록과 비교합니다. 만일 ([`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)와 비교했을 때) 종속성이 변경되지 않았다면, `useMemo`는 이전에 이미 계산해둔 값을 반환합니다. 그렇지 않다면 React는 계산을 다시 실행하고 새로운 값을 반환합니다.
 
 즉, `useMemo`는 종속성이 변경되기 전까지 재렌더링 사이의 계산 결과를 캐싱합니다.
 
@@ -1056,9 +1056,9 @@ label {
 
 ---
 
-### Preventing an Effect from firing too often {/*preventing-an-effect-from-firing-too-often*/}
+### Effect가 자주 실행되지 않도록 하기 {/*preventing-an-effect-from-firing-too-often*/}
 
-Sometimes, you might want to use a value inside an [Effect:](/learn/synchronizing-with-effects)
+때때로, [Effect](/learn/synchronizing-with-effects) 안에 값을 사용하고 싶을 것입니다.
 
 ```js {4-7,10}
 function ChatRoom({ roomId }) {
@@ -1075,19 +1075,18 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-This creates a problem. [Every reactive value must be declared as a dependency of your Effect.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) However, if you declare `options` as a dependency, it will cause your Effect to constantly reconnect to the chat room:
-
+이것은 문제를 일으킵니다. [모든 반응형 값은 Effect의 종속성으로 선언되어야 합니다.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) 그러나 만약 `options`을 종속성으로 선언한다면, 이것은 Effect가 chat room과 계속해서 재연결되도록 할 것입니다.
 
 ```js {5}
   useEffect(() => {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // 🔴 Problem: This dependency changes on every render
+  }, [options]); // 🔴 문제: 이 종속성은 렌더링마다 변경됩니다.
   // ...
 ```
 
-To solve this, you can wrap the object you need to call from an Effect in `useMemo`:
+이 문제를 해결하기 위해서는, Effect 안에서 사용되는 객체를 `useMemo`로 감싸면 됩니다.
 
 ```js {4-9,16}
 function ChatRoom({ roomId }) {
@@ -1098,26 +1097,27 @@ function ChatRoom({ roomId }) {
       serverUrl: 'https://localhost:1234',
       roomId: roomId
     };
-  }, [roomId]); // ✅ Only changes when roomId changes
+  }, [roomId]); // ✅ roomId가 변경될때만 실행됩니다.
 
   useEffect(() => {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // ✅ Only changes when options changes
+  }, [options]); // ✅ options가 변경될때만 실행됩니다.
   // ...
 ```
 
-This ensures that the `options` object is the same between re-renders if `useMemo` returns the cached object.
+이것은 만약 `useMemo`가 캐시된 객체를 반환할 경우, 재렌더링시 `options` 객체가 동일하다는 것을 보장합니다.
 
-However, since `useMemo` is performance optimization, not a semantic guarantee, React may throw away the cached value if [there is a specific reason to do that](#caveats). This will also cause the effect to re-fire, **so it's even better to remove the need for a function dependency** by moving your object *inside* the Effect:
+그러나 `useMemo`는 성능 최적화를 위한 것이지 의미론적 보장은 아니기 때문에 React는 [특별한 이유가 있는 경우](#caveats) 캐시된 값을 버릴 수 있습니다. 이로 인해 Effect가 다시 실행될 수 있습니다. 따라서 객체를 Effect *안으로* 이동시켜 **함수 종속성의 필요성을 제거하는 것이 더 좋습니다.**
+
 
 ```js {5-8,13}
 function ChatRoom({ roomId }) {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    const options = { // ✅ No need for useMemo or object dependencies!
+    const options = { // ✅ 더이상 useMemo나 object dependencies가 필요없습니다!
       serverUrl: 'https://localhost:1234',
       roomId: roomId
     }
@@ -1125,11 +1125,11 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ Only changes when roomId changes
+  }, [roomId]); // ✅ roomId가 변경될때에만 실행됩니다.
   // ...
 ```
 
-Now your code is simpler and doesn't need `useMemo`. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+이제 코드는 더 간단해지고 `useMemo`가 필요하지 않습니다. [Effect 종속성 제거에 대해 더 알아보세요.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
 ### 다른 Hook의 종속성 메모화 {/*memoizing-a-dependency-of-another-hook*/}
 

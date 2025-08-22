@@ -4,7 +4,7 @@ title: 서버 함수
 
 <RSC>
 
-서버 함수는 [React 서버 컴포넌트](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)에서 사용합니다.
+서버 함수는 [React 서버 컴포넌트](/reference/rsc/server-components)에서 사용합니다.
 
 **참고:** 2024년 9월까지, 우리는 모든 서버 함수를 "서버 액션"으로 불렀습니다. 만약 서버 함수를 action prop으로 전달하거나 action 내부에서 호출된다면 이는 서버 액션이지만, 모든 서버 함수가 서버 액션은 아닙니다. 이 문서의 명명 규칙은 서버 함수가 여러 용도로 사용될 수 있다는 점을 반영하여 업데이트했습니다.
 
@@ -28,7 +28,7 @@ React 19의 서버 함수는 안정적이며 마이너<sup>Minor</sup> 버전 �
 
 </Note>
 
-서버 함수가 [`"use server"`](/reference/rsc/use-server) 지시어로 정의되면, 프레임워크는 자동으로 서버 함수에 대한 참조를 생성하고 해당 참조를 클라이언트 컴포넌트에 전달합니다. 클라이언트에서 해당 함수가 호출되면, React는 서버에 함수를 실행하라는 요청<sup>Request</sup>을 보내고 결과를 반환합니다.
+서버 함수가 [`"use server"`](/reference/rsc/use-server) 지시어로 정의되면, 프레임워크는 자동으로 서버 함수에 대한 참조를 생성하고 해당 참조를 클라이언트 컴포넌트에 전달합니다. 클라이언트에서 해당 함수를 호출하면, React는 서버에 함수를 실행하라는 요청<sup>Request</sup>을 보내고 결과를 반환합니다.
 
 서버 함수는 서버 컴포넌트에서 생성하여 클라이언트 컴포넌트에 Props로 전달할 수 있으며, 클라이언트 컴포넌트에서 가져와서 사용할 수도 있습니다.
 
@@ -54,7 +54,7 @@ function EmptyNote () {
 }
 ```
 
-React가 `EmptyNote` 서버 컴포넌트를 렌더링할 때, `createNote` 함수에 대한 참조를 생성하고, 그 참조를 `Button` 클라이언트 컴포넌트에 전달합니다. 버튼을 클릭하면, React는 제공된 참조를 통해 `createNote` 함수를 실행하도록 서버에 요청<sup>Request</sup>을 보냅니다.
+React가 `EmptyNote` 서버 컴포넌트를 렌더링할 때, `createNoteAction` 함수에 대한 참조를 생성하고, 그 참조를 `Button` 클라이언트 컴포넌트에 전달합니다. 버튼을 클릭하면, React는 제공된 참조를 통해 `createNoteAction` 함수를 실행하도록 서버에 요청<sup>Request</sup>을 보냅니다.
 
 ```js {5}
 "use client";
@@ -127,7 +127,7 @@ function UpdateName() {
   const submitAction = async () => {
     startTransition(async () => {
       const {error} = await updateName(name);
-      if (!error) {
+      if (error) {
         setError(error);
       } else {
         setName('');
@@ -138,7 +138,7 @@ function UpdateName() {
   return (
     <form action={submitAction}>
       <input type="text" name="name" disabled={isPending}/>
-      {state.error && <span>Failed: {state.error}</span>}
+      {error && <span>Failed: {error}</span>}
     </form>
   )
 }
