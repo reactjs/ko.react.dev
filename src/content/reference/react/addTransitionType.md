@@ -21,6 +21,7 @@ version: experimental
 
 `unstable_addTransitionType`를 사용하면 트랜지션이 발생한 원인을 상세히 나타낼 수 있습니다.
 
+
 ```js
 startTransition(() => {
   unstable_addTransitionType('my-transition-type');
@@ -57,9 +58,9 @@ startTransition(() => {
 
 ### 트랜지션의 원인 추가하기 {/*adding-the-cause-of-a-transition*/}
 
-`startTransition` 내부에서 `addTransitionType`을 호출해 트랜지션의 원인을 나타냅니다.
+트랜지션의 원인을 나타내기 위해 `startTransition` 내부에서 `addTransitionType`을 호출합니다
 
-```
+``` [[1, 6, "unstable_addTransitionType"], [2, 5, "startTransition", [3, 6, "'submit-click'"]]
 import { startTransition, unstable_addTransitionType } from 'react';
 
 function Submit({action) {
@@ -78,6 +79,7 @@ function Submit({action) {
 <CodeStep step={1}>addTransitionType</CodeStep>을 <CodeStep step={2}>startTransition</CodeStep>의 범위 내에서 호출하면, React는 해당 트랜지션에 <CodeStep step={3}>submit-click</CodeStep>을 원인으로 연결합니다.
 
 현재 트랜지션 타입은 원인에 따라 서로 다른 애니메이션을 커스터마이즈하는 데 사용할 수 있습니다. 사용할 수 있는 방식은 세 가지입니다:
+
 - [브라우저 view transition 타입으로 애니메이션 커스텀하기](#customize-animations-using-browser-view-transition-types)
 - [`View Transition` 클래스로 애니메이션 커스텀하기](#customize-animations-using-view-transition-class)
 - [`ViewTransition`이벤트로 애니메이션 커스텀하기](#customize-animations-using-viewtransition-events) 
@@ -120,7 +122,6 @@ startTransition(() => {
 
 활성화된 ViewTransition에서 타입에 따라 애니메이션을 커스터마이즈하려면, View Transition 클래스에 객체를 전달하면 됩니다.
 
-
 ```js
 function Component() {
   return (
@@ -139,7 +140,7 @@ startTransition(() => {
 });
 ```
 
-여러 타입이 매칭되면 값들이 결합되고, 매칭되는 타입이 없으면 "default" 엔트리가 사용됩니다. 만약 값이 "none"이면 ViewTransition이 비활성화되어 이름이 할당되지 않습니다.
+여러 타입이 매칭되면 값들이 결합됩니다. 매칭되는 타입이 없으면 "default" 엔트리가 사용됩니다. 어떤 타입이라도 값이 none이면 해당 값이 우선하며 ViewTransition은 비활성화되어(이름이 할당되지 않습니다).
 
 이 방식은 enter/exit/update/layout/share props와 결합하여 트리거 종류와 트랜지션 타입에 따라 동작을 맞출 수 있습니다.
 
@@ -171,6 +172,7 @@ View Transition 이벤트를 활용하여 타입에 따라 활성화된 `ViewTra
   }
 }}>
 ```
+
 이렇게 하면 원인에 따라 서로 다른 애니메이션을 선택할 수 있습니다.
 
 ---

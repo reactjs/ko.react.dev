@@ -45,10 +45,10 @@ Owner Stacks은 다음 경우에 사용할 수 있습니다.
 - 컴포넌트 렌더링 시
 - 이펙트 (예: `useEffect`)
 - React 이벤트 핸들러 (예: `<button onClick={...} />`)
-- React 에러 핸들러 ([React 루트 옵션](/reference/react-dom/client/createRoot#parameters) `onCaughtError`, `onRecoverableError`, `onUncaughtError`)
+- React 오류 핸들러 ([React 루트 옵션](/reference/react-dom/client/createRoot#parameters) `onCaughtError`, `onRecoverableError`, `onUncaughtError`)
 
 Owner Stack을 사용할 수 없는 경우, `null`이 반환됩니다. ([문제해결: Owner Stack이 `null`인 경우](#the-owner-stack-is-null))
-
+3
 #### 주의 사항 {/*caveats*/}
 
 - Owner Stack은 개발 환경에서만 사용할 수 있습니다. `captureOwnerStack`은 개발 환경 밖에서는 항상 `null`을 반환합니다.
@@ -57,7 +57,7 @@ Owner Stack을 사용할 수 없는 경우, `null`이 반환됩니다. ([문제�
 
 #### Owner Stack vs Component Stack {/*owner-stack-vs-component-stack*/}
 
-Owner Stack은 [`errorInfo.componentStack` in `onUncaughtError`](/reference/react-dom/client/hydrateRoot#show-a-dialog-for-uncaught-errors)와 같은 리액트 에러 핸들러에서 사용할 수 있는 Component Stack과 다릅니다.
+Owner Stack은 [`errorInfo.componentStack` in `onUncaughtError`](/reference/react-dom/client/hydrateRoot#show-a-dialog-for-uncaught-errors)와 같은 리액트 오류 핸들러에서 사용할 수 있는 Component Stack과 다릅니다.
 
 예를 들어 다음 코드를 살펴보겠습니다.
 
@@ -136,7 +136,8 @@ createRoot(document.createElement('div'), {
 
 </Sandpack>
 
-`SubComponent`에서 에러가 날 때, 에러의 Component Stack은 다음과 같을 수 있습니다.
+`SubComponent`에서 오류가 날 수 있습니다.
+그 오류의 Component Stack은 다음과 같을 것입니다.
 
 ```
 at SubComponent
@@ -146,23 +147,24 @@ at main
 at React.Suspense
 at App
 ```
-그러나 Owner Stack은 이렇게만 읽습니다.
+
+그러나, Owner Stack에는 다음 내용만 나타납니다.
 
 ```
 at Component
 ```
 
-`App`이나 DOM 컴포넌트들(예: `fieldset`)은 이 스택에 포함되지 않습니다. 왜냐하면 이들은 `SubComponent`를 포함하는 노드를 "생성하는" 데에 기여하지 않기 때문입니다. `App`과 DOM 컴포넌트들은 노드를 전달할 뿐입니다. `App`은 `<SubComponent />`를 통해 `SubComponent`를 포함한 노드를 생성하는 `Component`와 달리 `children` 노드만 렌더링합니다.
+`App`과 DOM 컴포넌트들(예: `fieldset`)은 `SubComponent`를 포함하는 노드를 "생성하는" 데에 기여하지 않기 때문 이 스택에 포함되지 않습니다. `App`과 DOM 컴포넌트들은 노드를 전달할 뿐입니다. `App`은 `<SubComponent />`를 통해 `SubComponent`를 포함한 노드를 생성하는 `Component`와 달리 `children` 노드만 렌더링합니다.
 
-또한, `Navigation`이나 `legend`도 `<SubComponent />`를 포함하는 노드의 형제가 아니기 때문에, 스택에 없습니다.
+`Navigation`과 `legend`는 `<SubComponent />`를 포함하는 노드의 형제 요소이기 때문에 스택에 전혀 포함되지 않습니다.
 
-`SubComponent`는 이미 호출 스택에 포함되어 있어서 Owner Stack에 나오지 않습니다.
+`SubComponent`는 이미 호출 스택에 포함되어 있기 떄문에 Owner Stack에 나타나지 않습니다.
 
 </DeepDive>
 
 ## 사용법 {/*usage*/}
 
-### 커스텀 에러 오버레이 개선하기 {/*enhance-a-custom-error-overlay*/}
+### 커스텀 오류 오버레이 개선하기 {/*enhance-a-custom-error-overlay*/}
 
 ```js [[1, 5, "console.error"], [4, 7, "captureOwnerStack"]]
 import { captureOwnerStack } from "react";
@@ -181,7 +183,7 @@ console.error = function patchedConsoleError(...args) {
 };
 ```
 
-<CodeStep step={1}>`console.error`</CodeStep> 호출을 가로채서 에러 오버레이에 표시하고 싶다면, <CodeStep step={2}>`captureOwnerStack`</CodeStep>을 호출하여 `OwnerStack`을 포함할 수 있습니다.
+<CodeStep step={1}>`console.error`</CodeStep> 호출을 가로채서 오류 오버레이에 표시하고 싶다면, <CodeStep step={2}>`captureOwnerStack`</CodeStep>을 호출하여 `OwnerStack`을 포함할 수 있습니다.
 
 <Sandpack>
 
@@ -349,7 +351,7 @@ export default function App() {
 
 ### Owner Stack이 `null`인 경우 {/*the-owner-stack-is-null*/}
 
-`captureOwnerStack`이 React가 제어하지 않는 함수 바깥에서 호출됐을 경우, 예를 들어 `setTimeout` 콜백, `fetch` 호출 후, 커스텀 DOM 이벤트 핸들러 등에서는 Owner Stack이 null이 됩니다. 렌더링 중이나 이펙트, React 이벤트 핸들러, React 에러 핸들러(예: `hydrateRoot#options.onCaughtError`) 내에서만 생성됩니다.
+`captureOwnerStack`이 React가 제어하지 않는 함수 바깥에서 호출됐을 경우, 예를 들어 `setTimeout` 콜백, `fetch` 호출 후, 커스텀 DOM 이벤트 핸들러 등에서는 Owner Stack이 null이 됩니다. 렌더링 중이나 이펙트, React 이벤트 핸들러, React 오류 핸들러(예: `hydrateRoot#options.onCaughtError`) 내에서만 생성됩니다.
 
 아래 예시에서, 버튼을 클릭하면 빈 Owner Stack이 로그로 출력됩니다. 그 이유는 `captureOwnerStack`이 커스텀 이벤트 핸들러 내에서 호출되었기 때문입니다. Owner Stack은 더 이른 시점, 예를 들어 이펙트 내부에서 `captureOwnerStack`를 호출하도록 이동시켜야 올바르게 캡처할 수 있습니다.
 <Sandpack>
