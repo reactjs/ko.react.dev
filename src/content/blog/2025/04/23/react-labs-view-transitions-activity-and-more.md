@@ -2458,17 +2458,18 @@ root.render(
 
 </Sandpack>
 
-Since our router already updates the route using `startTransition`, this one line change to add `<ViewTransition>` activates with the default cross-fade animation. 
+라우터가 이미 `startTransition`을 사용해서 라우트를 업데이트하고 있기 때문에, `<ViewTransition>`을 한 줄 추가하는 것만으로 기본 크로스 페이드 애니메이션이 활성화됩니다.
 
-If you're curious how this works, see the docs for [How does `<ViewTransition>` work?](/reference/react/ViewTransition#how-does-viewtransition-work)
+어떻게 동작하는지 궁금하다면 [How does `<ViewTransition>` work?](/reference/react/ViewTransition#how-does-viewtransition-work) 문서를 참고하세요.
 
 <Note>
 
-#### Opting out of `<ViewTransition>` animations {/*opting-out-of-viewtransition-animations*/}
+#### `<ViewTransition>` 애니메이션 건너뛰기 {/*opting-out-of-viewtransition-animations*/}
 
-In this example, we're wrapping the root of the app in `<ViewTransition>` for simplicity, but this means that all transitions in the app will be animated, which can lead to unexpected animations. 
+이 예시에서 단순화를 위해 앱의 루트를 `<ViewTransition>`으로 감싸고 있지만, 이렇게 하면 앱 내의 모든 트랜지션이 애니메이션 되어 예상치 못한 애니메이션이 발생할 수 있습니다.
 
-To fix, we're wrapping route children with `"none"` so each page can control its own animation:
+이를 해결하기 위해 각 페이지에서 자체적으로 애니메이션을 제어할 수 있도록 라우트 자식 요소를 `"none"`으로 감싸고 있습니다.
+
 
 ```js
 // Layout.js
@@ -2477,7 +2478,7 @@ To fix, we're wrapping route children with `"none"` so each page can control its
 </ViewTransition>
 ```
 
-In practice, navigations should be done via "enter" and "exit" props, or by using Transition Types. 
+실제로 내비게이션은 "enter"와 "exit" props 또는 Transition Types를 사용해서 처리하는 것이 좋습니다.
 
 </Note>
 
