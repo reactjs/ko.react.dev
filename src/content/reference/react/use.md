@@ -310,7 +310,11 @@ export default async function App() {
 }
 ```
 
+<<<<<<< HEAD
 하지만 [서버 컴포넌트](/reference/react/use-server)에서 `await`을 사용하면 `await` 문이 완료될 때까지 렌더링이 차단됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 Promise를 Prop으로 전달하면 Promise가 서버 컴포넌트의 렌더링을 차단하는 것을 방지할 수 있습니다.
+=======
+But using `await` in a [Server Component](/reference/rsc/server-components) will block its rendering until the `await` statement is finished. Passing a Promise from a Server Component to a Client Component prevents the Promise from blocking the rendering of the Server Component.
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 
 </DeepDive>
 
