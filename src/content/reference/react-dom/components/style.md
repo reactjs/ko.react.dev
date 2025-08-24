@@ -49,15 +49,11 @@ React는 `<style>` 컴포넌트를 문서의 `<head>`로 이동시키고, 동일
 
 이 동작을 사용하려면 `href`와 `precedence` 속성을 제공하세요. React는 동일한 `href`를 가진 스타일의 중복을 제거합니다. `precedence` 속성은 문서의 `<head>` 내 다른 요소에 비해 `<style>` DOM 노드의 순위를 지정하며, 어떤 스타일시트가 다른 스타일시트를 덮어쓸 수 있는지를 결정합니다.
 
-이러한 처리는 두 가지 주의 사항이 있습니다.
+이러한 처리는 세 가지 주의 사항이 있습니다.
 
-* 스타일이 렌더링된 후에는 React가 속성 변경을 무시합니다. (개발 중에 이 상황이 발생하면 React는 경고를 표시합니다.)
-
+* 스타일이 렌더링된 후에는 React가 Props 변경을 무시합니다. (개발 중에 이 상황이 발생하면 React는 경고를 표시합니다.)
+* React는 `precedence` Prop을 사용할 때 불필요한 Props를 제거합니다. (단, `href`와 `precedence`는 제외.)
 * 스타일을 렌더링한 컴포넌트가 마운트 해제된 후에도 DOM에 스타일이 유지될 수 있습니다.
-* React will ignore changes to props after the style has been rendered. (React will issue a warning in development if this happens.)
-* React will drop all extraneous props when using the `precedence` prop (beyond `href` and `precedence`).
-* React may leave the style in the DOM even after the component that rendered it has been unmounted.
-
 ---
 
 ## 사용법 {/*usage*/}
@@ -66,11 +62,11 @@ React는 `<style>` 컴포넌트를 문서의 `<head>`로 이동시키고, 동일
 
 컴포넌트가 올바르게 표시되기 위해 특정 CSS 스타일에 의존하는 경우, 컴포넌트 내에서 인라인 스타일시트를 렌더링할 수 있습니다.
 
-The `href` prop should uniquely identify the stylesheet, because React will de-duplicate stylesheets that have the same `href`.
-If you supply a `precedence` prop, React will reorder inline stylesheets based on the order these values appear in the component tree.
+React는 동일한 `href`를 가진 스타일시트의 중복을 제거하므로 `href` 속성은 스타일시트를 고유하게 식별해야 합니다.
+`precedence` Prop을 제공하면 React는 컴포넌트 트리에서 해당 값이 표시되는 순서에 따라 인라인 스타일시트의 순서를 다시 지정합니다.
 
-Inline stylesheets will not trigger Suspense boundaries while they're loading.
-Even if they load async resources like fonts or images.
+인라인 스타일시트는 로딩 중이더라도 Suspense 경계를 트리거하지 않습니다.
+이는, 글꼴이나 이미지와 같은 비동기 리소스를 로드하는 경우에도 마찬가지입니다.
 
 <SandpackWithHTMLOutput>
 
