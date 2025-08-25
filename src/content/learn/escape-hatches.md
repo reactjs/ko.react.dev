@@ -820,9 +820,11 @@ export function useDelayedValue(value, delay) {
   const [delayedValue, setDelayedValue] = useState(value);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timerId = setTimeout(() => {
       setDelayedValue(value);
     }, delay);
+
+    return () => clearTimeout(timerId);
   }, [value, delay]);
 
   return delayedValue;
