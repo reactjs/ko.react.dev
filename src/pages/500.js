@@ -20,7 +20,7 @@ export default function NotFound() {
           <P>불편을 드려 죄송합니다.</P>
           <P>
             가능하시다면{' '}
-            <A href="https://github.com/reactjs/react.dev/issues/new">
+            <A href="https://github.com/reactjs/ko.react.dev/issues/new">
               버그를 신고
             </A>
             해주실 수 있으실까요?
