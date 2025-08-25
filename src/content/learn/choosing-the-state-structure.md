@@ -1065,7 +1065,7 @@ export const initialTravelPlan = {
     childIds: []
   },
   39: {
-    id: 40,
+    id: 39,
     title: 'Hawaii (the USA)',
     childIds: []
   },
@@ -1717,7 +1717,7 @@ export const initialTravelPlan = {
   34: {
     id: 34,
     title: 'Oceania',
-    childIds: [35, 36, 37, 38, 39, 40,, 41],
+    childIds: [35, 36, 37, 38, 39, 40, 41],
   },
   35: {
     id: 35,
