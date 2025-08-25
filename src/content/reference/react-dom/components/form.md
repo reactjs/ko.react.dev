@@ -36,7 +36,11 @@ title: "<form>"
 
 #### Props {/*props*/}
 
+<<<<<<< HEAD
 `<form>`은 모든 [공통 엘리먼트 Props](/reference/react-dom/components/common#props)를 지원합니다.
+=======
+`<form>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> 27d86ffe6ec82e3642c6490d2187bae2271020a4
 
 [`action`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action): URL 혹은 함수. URL을 `action`을 통해 전달하면, 폼은 HTML 폼 컴포넌트처럼 동작합니다. 함수를 `action`을 통해 전달하면, 해당 함수는 폼 제출을 처리합니다. `action`을 통한 함수는 비동기로 동작할 수 있으며, 폼을 통해 제출된 [`formData`](https://developer.mozilla.org/ko/docs/Web/API/FormData)를 포함한 단일 인수로 호출됩니다. `action`의 프로퍼티는 `formAction`의 속성인 `<button>`, `<input type="submit">`, 혹은 `<input type="image">`로 재정의될 수 있습니다.
 
@@ -232,7 +236,12 @@ export async function deliverMessage(message) {
 
 </Sandpack>
 
+<<<<<<< HEAD
 `useOptimistic` Hook에 대해 더 알고 싶다면 [참고 문서](/reference/react/hooks/useOptimistic)를 확인하세요.
+=======
+[//]: # 'Uncomment the next line, and delete this line after the `useOptimistic` reference documentatino page is published'
+[//]: # 'To learn more about the `useOptimistic` Hook see the [reference documentation](/reference/react/useOptimistic).'
+>>>>>>> 27d86ffe6ec82e3642c6490d2187bae2271020a4
 
 ### 폼 제출 오류 처리하기 {/*handling-form-submission-errors*/}
 
