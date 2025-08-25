@@ -257,30 +257,30 @@ title: "공통 컴포넌트 (예: <div>)"
 
 [`ref` 콜백을 사용하는 예시를 확인해 보세요.](/learn/manipulating-the-dom-with-refs#how-to-manage-a-list-of-refs-using-a-ref-callback)
 
-화면에 `<div>` DOM 노드가 추가되면, React는 `ref` 콜백을 호출하고 그 인자로 DOM `node`를 전달합니다. 해당 `<div>` DOM 노드가 제거되면, React는 콜백에서 반환한 cleanup 함수를 호출합니다.
+화면에 `<div>` DOM 노드가 추가되면, React는 `ref` 콜백을 호출하고 그 인자로 DOM `node`를 전달합니다. 해당 `<div>` DOM 노드가 제거되면, React는 콜백에서 반환한 Cleanup 함수를 호출합니다.
 
 React는 *다른* `ref` 콜백을 전달할 때마다 `ref` 콜백도 호출합니다. 위 예시에서 `(node) => { ... }`는 렌더링마다 서로 다른 함수입니다. 컴포넌트가 다시 렌더링 될 때, *이전* 함수는 인자로 `null`을 받아 호출되고, *다음* 함수는 DOM 노드를 인자로 받아 호출됩니다.
 
 #### 매개변수 {/*ref-callback-parameters*/}
 
-* `node`: 하나의 DOM 노드. ref가 DOM 노드에 연결될 때 React가 해당 DOM 노드를 전달합니다. 매 렌더에서 `ref` 콜백에 동일한 함수 참조를 넘기지 않으면, 컴포넌트가 리렌더링될 때마다 그 콜백이 잠시 정리됐다가 다시 생성됩니다.
+* `node`: DOM 노드. Ref가 DOM 노드에 연결될 때 React가 해당 DOM 노드를 전달합니다. 매 렌더링에서 `ref` 콜백에 동일한 함수 참조를 넘기지 않으면, 컴포넌트가 리렌더링될 때마다 콜백이 일시적으로 Cleanup 됐다가 다시 생성됩니다.
 
 <Note>
 
-#### React 19는 `ref` 콜백을 위한 cleanup 함수를 추가했습니다. {/*react-19-added-cleanup-functions-for-ref-callbacks*/}
+#### React 19는 `ref` 콜백을 위한 Cleanup 함수를 추가했습니다. {/*react-19-added-cleanup-functions-for-ref-callbacks*/}
 
-하위 호환성을 위해, `ref` 콜백이 cleanup 함수를 반환하지 않으면, `ref`가 분리될 때 `node`가 `null`로 호출됩니다. 이 동작은 향후 버전에서 제거될 예정입니다.
+하위 호환성을 위해, `ref` 콜백이 Cleanup 함수를 반환하지 않으면, `ref`가 분리될 때 `node`가 `null`로 호출됩니다. 이 동작은 향후 버전에서 제거될 예정입니다.
 
 </Note>
 
 #### 반환값 {/*returns*/}
 
-* **optional** `cleanup 함수`: `ref`가 분리되면, React는 cleanup 함수를 호출합니다. `ref` 콜백에 의해 함수가 반환되지 않으면 React는 `ref`가 분리되면 인수로 `null`을 사용하여 다시 콜백을 호출합니다. 이 동작은 향후 버전에서 제거될 예정입니다.
+* **optional** `Cleanup 함수`: `ref`가 분리되면, React는 cleanup 함수를 호출합니다. `ref` 콜백에 의해 함수가 반환되지 않으면 React는 `ref`가 분리되면 인수로 `null`을 사용하여 다시 콜백을 호출합니다. 이 동작은 향후 버전에서 제거될 예정입니다.
 
 #### 주의 사항 {/*caveats*/}
 
-* Strict Mode가 켜져있으면, React는 첫 번째 실제 설정 전에 **개발 전용 설정 + cleanup 주기**를 하나 더 실행할 것입니다. 이는 스트레스 테스트로, cleanup 로직이 setup 로직을 "거울처럼" 따라가며 setup이 하는 일을 중지하거나 되돌리도록 보장하기 위한 것입니다. 이 때문에 문제가 발생한다면 cleanup 함수를 구현하세요.
-* *다른* `ref` 콜백을 전달하면, React는 먼저 *이전* 콜백의 cleanup 함수가 있다면 그것을 호출합니다. cleanup 함수가 없으면, 이전 `ref` 콜백을 `null` 인수로 한 번 호출합니다. *다음* 함수는 DOM 노드와 함께 호출됩니다.
+* Strict Mode가 켜져있으면, React는 첫 번째 실제 설정 전에 **개발 전용 Setup + cleanup 주기**를 하나 더 실행할 것입니다. 이는 스트레스 테스트로, Cleanup 로직이 Setup 로직을 "거울처럼" 따라가며 Setup이 하는 일을 중지하거나 되돌리도록 보장하기 위한 것입니다. 이 때문에 문제가 발생한다면 Cleanup 함수를 구현하세요.
+* *다른* `ref` 콜백을 전달하면, React는 먼저 *이전* 콜백의 Cleanup 함수가 있다면 그것을 호출합니다. Cleanup 함수가 없으면, 이전 `ref` 콜백을 `null`을 인수로 하여 한 번 호출합니다. *다음* 함수는 DOM 노드와 함께 호출됩니다.
 
 ---
 
