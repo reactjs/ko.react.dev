@@ -255,7 +255,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 ```js
 setEnabled(e => !e);
-setLastName(ln => ln.reverse());
+setLastName(ln => ln.toUpperCase());
 setFriendCount(fc => fc * 2);
 ```
 
