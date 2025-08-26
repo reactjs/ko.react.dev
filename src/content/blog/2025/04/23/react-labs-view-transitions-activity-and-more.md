@@ -2483,11 +2483,13 @@ In practice, navigations should be done via "enter" and "exit" props, or by usin
 
 ### Customizing animations {/*customizing-animations*/}
 
-By default, `<ViewTransition>` includes the default cross-fade from the browser.
+기본적으로 `<ViewTransition>`은 브라우저의 기본 크로스페이드를 포함합니다.
 
-To customize animations, you can provide props to the `<ViewTransition>` component to specify which animations to use, based on [how the `<ViewTransition>` activates](/reference/react/ViewTransition#props).
+애니메이션을 커스터마이징하려면 [어떻게 `<ViewTransition>`이 활성화되는지](/reference/react/ViewTransition#props)에 따라 어떤 애니메이션을 사용할지 지정하는 props를 `<ViewTransition>` 컴포넌트에 제공할 수 있습니다.
 
-For example, we can slow down the `default` cross fade animation:
+예를 들어 `default` 크로스페이드 애니메이션을 느리게 만들 수 있습니다.
+
+
 
 ```js
 <ViewTransition default="slow-fade">
@@ -2495,7 +2497,7 @@ For example, we can slow down the `default` cross fade animation:
 </ViewTransition>
 ```
 
-And define `slow-fade` in CSS using [view transition classes](/reference/react/ViewTransition#view-transition-classes):
+그리고 [뷰 전환 클래스](/reference/react/ViewTransition#view-transition-classes)를 사용하여 CSS에서 `slow-fade`를 정의합니다.
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -2507,7 +2509,7 @@ And define `slow-fade` in CSS using [view transition classes](/reference/react/V
 }
 ```
 
-Now, the cross fade is slower:
+이제 크로스페이드가 더 느려집니다.
 
 <Sandpack>
 
@@ -3686,7 +3688,7 @@ root.render(
 
 </Sandpack>
 
-See [Styling View Transitions](/reference/react/ViewTransition#styling-view-transitions) for a full guide on styling `<ViewTransition>`.
+`<ViewTransition>` 스타일링에 대한 전체 가이드는 [View Transitions 스타일링](/reference/react/ViewTransition#styling-view-transitions)을 참조하세요.
 
 ### Shared Element Transitions {/*shared-element-transitions*/}
 
