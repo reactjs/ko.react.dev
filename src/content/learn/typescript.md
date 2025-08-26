@@ -236,7 +236,9 @@ import { stateReducer, State } from './your-reducer-implementation';
 const initialState = { count: 0 };
 
 export default function App() {
-  const [state, dispatch] = useReducer<State>(stateReducer, initialState);
+  const [state, dispatch] = useReducer<
+    (state: State, action: CounterAction) => State
+  >(stateReducer, initialState);
 }
 ```
 
