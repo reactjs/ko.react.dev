@@ -227,7 +227,7 @@ export default function Form({
           </p>
         }
       </form>
-      </>
+    </>
   );
 }
 ```
@@ -749,8 +749,7 @@ function show(el) {
 }
 
 let form = document.getElementById('form');
-let profile = document.getElementById('profile');
-let editButton = document.getElementById('editButton');
+let button = document.getElementById('button');
 let firstNameInput = document.getElementById('firstNameInput');
 let firstNameText = document.getElementById('firstNameText');
 let lastNameInput = document.getElementById('lastNameInput');
@@ -951,8 +950,7 @@ function show(el) {
 }
 
 let form = document.getElementById('form');
-let profile = document.getElementById('profile');
-let editButton = document.getElementById('editButton');
+let button = document.getElementById('button');
 let firstNameInput = document.getElementById('firstNameInput');
 let firstNameText = document.getElementById('firstNameText');
 let lastNameInput = document.getElementById('lastNameInput');
@@ -1058,8 +1056,7 @@ function show(el) {
 }
 
 let form = document.getElementById('form');
-let profile = document.getElementById('profile');
-let editButton = document.getElementById('editButton');
+let button = document.getElementById('button');
 let firstNameInput = document.getElementById('firstNameInput');
 let firstNameText = document.getElementById('firstNameText');
 let lastNameInput = document.getElementById('lastNameInput');
@@ -1177,8 +1174,7 @@ function show(el) {
 }
 
 let form = document.getElementById('form');
-let profile = document.getElementById('profile');
-let editButton = document.getElementById('editButton');
+let button = document.getElementById('button');
 let firstNameInput = document.getElementById('firstNameInput');
 let firstNameText = document.getElementById('firstNameText');
 let lastNameInput = document.getElementById('lastNameInput');
