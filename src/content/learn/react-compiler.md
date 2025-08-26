@@ -23,7 +23,7 @@ React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 RC
 
 React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 오픈소스화한 새로운 컴파일러입니다. React 컴파일러는 빌드 타임 전용 도구로 React 앱을 자동으로 최적화합니다. 순수 자바스크립트로 동작하며, [React의 규칙](/reference/rules)을 이해하므로 코드를 다시 작성할 필요가 없습니다.
 
-`eslint-plugin-react-hooks`에는 코드 에디터에서 컴파일러의 분석 결과를 즉시 보여주는 [ESLint 규칙](#installing-eslint-plugin-react-compiler)도 포함되어 있습니다. **지금 당장 모든 분들들께 이 린터 사용을 강력히 권장합니다.** 린터는 컴파일러의 설치가 필요 없으므로 컴파일러를 사용할 준비가 되지 않았더라도 사용할 수 있습니다.
+`eslint-plugin-react-hooks`에는 코드 에디터에서 컴파일러의 분석 결과를 즉시 보여주는 [ESLint 규칙](#installing-eslint-plugin-react-hooks)도 포함되어 있습니다. **지금 당장 모든 분들들께 이 린터 사용을 강력히 권장합니다.** 린터는 컴파일러의 설치가 필요 없으므로 컴파일러를 사용할 준비가 되지 않았더라도 사용할 수 있습니다.
 
 컴파일러는 현재 `rc` 버전으로 출시되었으며, React 17 이상의 앱과 라이브러리에서 사용해 볼 수 있습니다. `rc` 버전을 설치하려면 다음 명령어를 실행하세요.
 
@@ -121,7 +121,7 @@ function TableContainer({ items }) {
 
 현재 문서 외에도 [React 컴파일러 워킹 그룹](https://github.com/reactwg/react-compiler)을 확인하여 컴파일러에 대한 추가 정보와 논의를 참조하는 것을 권장합니다.
 
-### `eslint-plugin-react-hooks` 설치 {/*installing-eslint-plugin-react-compiler*/}
+### `eslint-plugin-react-hooks` 설치 {/*installing-eslint-plugin-react-hooks*/}
 
 React 컴파일러는 ESLint 플러그인도 제공합니다. `eslint-plugin-react-hooks@^6.0.0-rc.1`을 설치해서 시도해보세요.
 
@@ -310,7 +310,7 @@ React 컴파일러 워킹 그룹에서도 회원으로 지원하여 피드백을
 React 컴파일러는 다음과 같이 가정합니다.
 
 1. 올바르고 의미 있는 자바스크립트 코드로 작성되었습니다.
-2. nullable/optional 값과 속성에 접근하기 전에 그 값이 정의되어 있는지 테스트합니다. 예를 들어, TypeScript를 사용하는 경우 [`strictNullChecks`](https://www.typescriptlang.org/ko/tsconfig/#strictNullChecks)을 활성화하여 수행합니다. 즉, `if (object.nullableProperty) { object.nullableProperty.foo }`와 같이 처리하거나, 옵셔널 체이닝<sup>Optional Chaning</sup>을 사용하여 `object.nullableProperty?.foo`와 같이 처리합니다.
+2. nullable/optional 값과 속성에 접근하기 전에 그 값이 정의되어 있는지 테스트합니다. 예를 들어, TypeScript를 사용하는 경우 [`strictNullChecks`](https://www.typescriptlang.org/ko/tsconfig/#strictNullChecks)을 활성화하여 수행합니다. 즉, `if (object.nullableProperty) { object.nullableProperty.foo }`와 같이 처리하거나, 옵셔널 체이닝<sup>Optional Chaining</sup>을 사용하여 `object.nullableProperty?.foo`와 같이 처리합니다.
 3. [React의 규칙](/reference/rules)을 따릅니다.
 
 React 컴파일러는 React의 많은 규칙을 정적으로 검증할 수 있으며, 에러가 감지되면 안전하게 컴파일을 건너뜁니다. 에러를 확인하려면 [`eslint-plugin-react-compiler`](https://www.npmjs.com/package/eslint-plugin-react-compiler)의 설치를 권장합니다.
