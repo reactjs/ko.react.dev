@@ -4895,7 +4895,7 @@ root.render(
 
 </Sandpack>
 
-기본적으로 React는 Transition에 활성화된 각 요소에 대해 고유한 `name`을 자동으로 생성합니다. ([`<ViewTransition>`이 어떻게 동작하는지 참고하세요](/reference/react/ViewTransition#how-does-viewtransition-work)). React가 어떤 Transition에서 특정 `name`을 가진 `<ViewTransition>`이 제거되고, 동일한 `name`을 가진 새로운 `<ViewTransition>`이 추가된 것을 감지하면 공유 요소 전환<sup>Shared Element Transition</sup>을 활성화합니다.
+기본적으로 React는 Transition에 활성화된 각 요소에 대해 고유한 `name`을 자동으로 생성합니다. ([`<ViewTransition>`이 어떻게 동작하는지 참고하세요.](/reference/react/ViewTransition#how-does-viewtransition-work)) React가 어떤 Transition에서 특정 `name`을 가진 `<ViewTransition>`이 제거되고, 동일한 `name`을 가진 새로운 `<ViewTransition>`이 추가된 것을 감지하면 공유 요소 전환<sup>Shared Element Transition</sup>을 활성화합니다.
 
 자세한 내용은 [Animating a Shared Element](/reference/react/ViewTransition#animating-a-shared-element) 문서를 참고하세요.
 
