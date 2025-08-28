@@ -200,7 +200,7 @@ JSX에서는 태그를 명시적으로 닫아야 합니다. `<img>`처럼 자체
 </>
 ```
 
-### 3. <s>거의</s> 대부분 캐멀 케이스로! {/*3-camelcase-salls-most-of-the-things*/}
+### 3. <s>거의</s> 대부분 캐멀 케이스로! {/*3-camelcase-almost-all-the-things*/}
 
 JSX는 JavaScript로 바뀌고 JSX에서 작성된 어트리뷰트는 JavaScript 객체의 키가 됩니다. 컴포넌트에서는 종종 어트리뷰트를 변수로 읽고 싶은 경우가 있습니다. 그러나 JavaScript는 변수명에 제한이 있습니다. 예를 들면, 변수명에 대시를 포함하거나 `class`처럼 예약어를 사용할 수 없습니다.
 

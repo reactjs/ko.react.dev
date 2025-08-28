@@ -967,7 +967,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-`handlePlusClick`의 문제는 `player` 객체를 변경했다는 점입니다. 결과적으로 React는 리렌더링을 할 필요성을 몰랐으며, 스코어를 업데이트하지 않았습니다. 이것이 fist name을 변경했을 때 state가 업데이트되었으며, 리렌더링을 야기하여 스코어 _또한_ 업데이트된 이유입니다.
+`handlePlusClick`의 문제는 `player` 객체를 변경했다는 점입니다. 결과적으로 React는 리렌더링을 할 필요성을 몰랐으며, 스코어를 업데이트하지 않았습니다. 이것이 first name을 변경했을 때 state가 업데이트되었으며, 리렌더링을 야기하여 스코어 _또한_ 업데이트된 이유입니다.
 
 `handleLastNameChange`의 문제는 그것이 이미 존재하는 `...player` 필드를 새 객체로 복사하지 않았다는 점입니다. 이것이 last name을 수정한 후에 스코어가 없어진 이유입니다.
 

@@ -23,7 +23,7 @@ title: 에디터 설정하기
 
 * [WebStorm](https://www.jetbrains.com/ko-kr/webstorm/)은 자바스크립트<sup>JavaScript</sup>에 특화되어 설계된 통합 개발 환경입니다.
 * [Sublime Text](https://www.sublimetext.com/)는 JSX와 타입스크립트<sup>TypeScript</sup>를 지원하며 [문법 강조](https://stackoverflow.com/a/70960574/458193) 및 자동 완성 기능이 내장되어 있습니다.
-* [Vim](https://www.vim.org/)은 모든 종류의 텍스트를 매우 효율적으로 생성하고 변경할 수 있도록 설계된 텍스트 편집기입니다. 대부분의 UNIX 시스템과 Apple OS X에 "vi"로 포함되어 있습니다.
+* [Vim](https://www.vim.org/)은 모든 종류의 텍스트를 매우 효율적으로 생성하고 변경할 수 있도록 설계된 텍스트 편집기입니다. 대부분의 UNIX 시스템과 macOS에 "vi"로 포함되어 있습니다.
 
 ## 에디터 기능 추천 {/*recommended-text-editor-features*/}
 
