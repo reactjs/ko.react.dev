@@ -4895,6 +4895,7 @@ root.render(
 
 </Sandpack>
 
+기본적으로 React는 Transition에 활성화된 각 요소에 대해 고유한 `name`을 자동으로 생성합니다. ([`<ViewTransition>`이 어떻게 동작하는지 참고하세요.](/reference/react/ViewTransition#how-does-viewtransition-work)) React가 어떤 Transition에서 특정 `name`을 가진 `<ViewTransition>`이 제거되고, 동일한 `name`을 가진 새로운 `<ViewTransition>`이 추가된 것을 감지하면 공유 엘리먼트 전환<sup>Shared Element Transition</sup>을 활성화합니다.
 
 자세한 내용은 [Animating a Shared Element](/reference/react/ViewTransition#animating-a-shared-element) 문서를 참고하세요.
 
@@ -4932,7 +4933,7 @@ Transition types을 사용하면 `<ViewTransition>`에 props를 통해 커스텀
 </ViewTransition>
 ```
 
-Here we pass a `share` prop to define how to animate based on the transition type. When the share transition activates from `nav-forward`, the view transition class `slide-forward` is applied. When it's from `nav-back`, the `slide-back` animation is activated. Let's define these animations in CSS:
+여기에서는 `share` prop을 전달하여 transition type에 따라 어떻게 애니메이션을 적용할지 정의합니다. `nav-forward`로 인해 공통의 transition이 활성화되면, view transition 클래스인 `slide-forward`가 적용됩니다. `nav-back`로 인해 활성화되면, `slide-back` 애니메이션이 활성화됩니다. CSS에서 이러한 애니메이션을 정의해 보겠습니다.
 
 ```css
 ::view-transition-old(.slide-forward) {
@@ -4956,7 +4957,7 @@ Here we pass a `share` prop to define how to animate based on the transition typ
 }
 ```
 
-Now we can animate the header along with thumbnail based on navigation type:
+이제 navigation type에 따라 썸네일과 헤더에 애니메이션을 적용할 수 있습니다:
 
 <Sandpack>
 
@@ -6210,11 +6211,11 @@ root.render(
 
 </Sandpack>
 
-### Animating Suspense Boundaries {/*animating-suspense-boundaries*/}
+### Suspense Boundaries 애니메이팅 {/*animating-suspense-boundaries*/}
 
-Suspense will also activate View Transitions. 
+Suspense 역시 View Transitions을 활성화합니다.
 
-To animate the fallback to content, we can wrap `Suspense` with `<ViewTranstion>`:
+콘텐츠에 대한 폴백 애니메이션을 적용하려면 `Suspense`를 `<ViewTranstion>`으로 래핑하면 됩니다:
 
 ```js
 <ViewTransition>
@@ -6224,7 +6225,7 @@ To animate the fallback to content, we can wrap `Suspense` with `<ViewTranstion>
 </ViewTransition>
 ```
 
-By adding this, the fallback will cross-fade into the content. Click a video and see the video info animate in:
+이를 추가하면 폴백이 콘텐츠에 크로스 페이드됩니다. 동영상을 클릭하면 동영상 정보에 애니메이션이 적용됩니다:
 
 <Sandpack>
 
@@ -7508,7 +7509,7 @@ root.render(
 
 </Sandpack>
 
-We can also provide custom animations using an `exit` on the fallback, and `enter` on the content:
+또한 폴백에 `exit`, 내부 콘텐츠에 `enter`를 사용하여 커스텀 애니메이션을 제공할 수도 있습니다.
 
 ```js {3,8}
 <Suspense
@@ -7524,7 +7525,7 @@ We can also provide custom animations using an `exit` on the fallback, and `ente
 </Suspense>
 ```
 
-Here's how we'll define `slide-down` and `slide-up` with CSS:
+CSS로 `slide-down`과 `slide-up`을 정의하는 방법은 다음과 같습니다.
 
 ```css {1, 6}
 ::view-transition-old(.slide-down) { 
@@ -7538,7 +7539,7 @@ Here's how we'll define `slide-down` and `slide-up` with CSS:
 }
 ```
 
-Now, the Suspense content replaces the fallback with a sliding animation:
+이제 Suspense 콘텐츠가 슬라이드 애니메이션으로 폴백을 대체합니다.
 
 <Sandpack>
 
@@ -8830,9 +8831,9 @@ root.render(
 </Sandpack>
 
 
-### Animating Lists {/*animating-lists*/}
+### 목록 애니메이팅 {/*animating-lists*/}
 
-You can also use `<ViewTransition>` to animate lists of items as they re-order, like in a searchable list of items:
+검색 가능 항목 목록에서처럼 `<ViewTransition>`을 사용하여 항목 목록이 재정렬될 때 애니메이션을 적용할 수도 있습니다.
 
 ```js {3,5}
 <div className="videos">
@@ -8844,7 +8845,7 @@ You can also use `<ViewTransition>` to animate lists of items as they re-order, 
 </div>
 ```
 
-To activate the ViewTransition, we can use `useDeferredValue`:
+ViewTransition을 활성화하려면 `useDeferredValue`를 사용할 수 있습니다.
 
 ```js {2}
 const [searchText, setSearchText] = useState('');
@@ -8852,7 +8853,7 @@ const deferredSearchText = useDeferredValue(searchText);
 const filteredVideos = filterVideos(videos, deferredSearchText);
 ```
 
-Now the items animate as you type in the search bar:
+이제 검색창에 입력할 때 항목에 애니메이션이 적용됩니다.
 
 <Sandpack>
 
@@ -10170,13 +10171,13 @@ root.render(
 
 </Sandpack>
 
-### Final result {/*final-result*/}
+### 최종 결과물 {/*final-result*/}
 
-By adding a few `<ViewTransition>` components and a few lines of CSS, we were able to add all the animations above into the final result.
+몇 개의 `<ViewTransition>` 컴포넌트와 몇 줄의 CSS를 추가하여 위의 모든 애니메이션을 최종 결과물에 추가할 수 있었습니다.
 
-We're excited about View Transitions and think they will level up the apps you're able to build. They're ready to start trying today in the experimental channel of React releases.
+저희는 View Transition이 여러분의 앱 제작 수준을 한 단계 높여줄 것으로 기대하고 있습니다. 오늘부터 React 릴리즈의 experimental 채널에서 사용해 볼 수 있습니다.
 
-Let's remove the slow fade, and take a look at the final result:
+이제 느린 페이드 효과를 제거하고, 최종 결과물을 살펴봅시다.
 
 <Sandpack>
 
@@ -11456,9 +11457,10 @@ root.render(
 
 </Sandpack>
 
-If you're curious to know more about how they work, check out [How Does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work) in the docs.
+작동 방식에 대해 자세히 알고 싶다면 문서에서 [`<ViewTransition>`의 작동 방식](/reference/react/ViewTransition#how-does-viewtransition-work)을 확인하세요.
 
-_For more background on how we built View Transitions, see: [#31975](https://github.com/facebook/react/pull/31975), [#32105](https://github.com/facebook/react/pull/32105), [#32041](https://github.com/facebook/react/pull/32041), [#32734](https://github.com/facebook/react/pull/32734), [#32797](https://github.com/facebook/react/pull/32797) [#31999](https://github.com/facebook/react/pull/31999), [#32031](https://github.com/facebook/react/pull/32031), [#32050](https://github.com/facebook/react/pull/32050), [#32820](https://github.com/facebook/react/pull/32820), [#32029](https://github.com/facebook/react/pull/32029), [#32028](https://github.com/facebook/react/pull/32028), and [#32038](https://github.com/facebook/react/pull/32038) by [@sebmarkbage](https://twitter.com/sebmarkbage) (thanks Seb!)._
+
+_View Transition을 구축한 배경에 대한 자세한 내용은 다음을 참조하세요. [#31975](https://github.com/facebook/react/pull/31975), [#32105](https://github.com/facebook/react/pull/32105), [#32041](https://github.com/facebook/react/pull/32041), [#32734](https://github.com/facebook/react/pull/32734), [#32797](https://github.com/facebook/react/pull/32797) [#31999](https://github.com/facebook/react/pull/31999), [#32031](https://github.com/facebook/react/pull/32031), [#32050](https://github.com/facebook/react/pull/32050), [#32820](https://github.com/facebook/react/pull/32820), [#32029](https://github.com/facebook/react/pull/32029), [#32028](https://github.com/facebook/react/pull/32028), and [#32038](https://github.com/facebook/react/pull/32038) by [@sebmarkbage](https://twitter.com/sebmarkbage) (Seb 감사합니다!)_
 
 ---
 
