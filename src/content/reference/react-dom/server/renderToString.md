@@ -104,8 +104,8 @@ app.use('/', (request, response) => {
 
 가능하면 다음과 같은 완전한 기능을 갖춘 대안을 사용하는 것을 권장합니다.
 
-* Node.js를 사용하는 경우 [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream).
-* Deno와 최신 엣지 런타임에서 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)을 사용하는 경우 [`prerender`](/reference/react-dom/static/prerender)을 사용하세요.
+* Node.js를 사용하는 경우 [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream)을 사용하세요.
+* Deno와 최신 엣지 런타임에서 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)을 사용하는 경우 [`prerender`](/reference/react-dom/static/prerender)를 사용하세요.
 
 정적 사이트 생성 환경에서 스트림을 지원하지 않는 경우에는 `renderToString`을 계속 사용할 수 있습니다.
 
