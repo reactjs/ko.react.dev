@@ -2458,17 +2458,17 @@ root.render(
 
 </Sandpack>
 
-Since our router already updates the route using `startTransition`, this one line change to add `<ViewTransition>` activates with the default cross-fade animation. 
+라우터는 이미 `startTransition`을 사용하여 라우트를 업데이트하고 있으므로, `<ViewTransition>`를 한 줄 추가함으로써 기본 크로스 페이드 애니메이션이 활성화됩니다.
 
-If you're curious how this works, see the docs for [How does `<ViewTransition>` work?](/reference/react/ViewTransition#how-does-viewtransition-work)
+이 기능이 어떻게 작동하는지 궁금하다면, 문서의 [ `<ViewTransition>`은 어떻게 작용하나요?](/reference/react/ViewTransition#how-does-viewtransition-work)를 읽어보세요.
 
 <Note>
 
-#### Opting out of `<ViewTransition>` animations {/*opting-out-of-viewtransition-animations*/}
+#### `<ViewTransition>` 애니메이션 선택 해제하기 {/*opting-out-of-viewtransition-animations*/}
 
-In this example, we're wrapping the root of the app in `<ViewTransition>` for simplicity, but this means that all transitions in the app will be animated, which can lead to unexpected animations. 
+이 예시에서는 단순화하기 위해 앱의 루트를 `<ViewTransition>`으로 래핑하고 있지만, 이렇게 하면 앱의 모든 전환에 애니메이션이 적용되므로 예기치 않은 애니메이션이 발생할 수 있습니다.
 
-To fix, we're wrapping route children with `"none"` so each page can control its own animation:
+이 문제를 해결하기 위해 라우트 자식을 `"none"`으로 래핑하여 각 페이지가 자신의 애니메이션을 제어할 수 있도록 합니다:
 
 ```js
 // Layout.js
@@ -2477,7 +2477,7 @@ To fix, we're wrapping route children with `"none"` so each page can control its
 </ViewTransition>
 ```
 
-In practice, navigations should be done via "enter" and "exit" props, or by using Transition Types. 
+실제로는, `"enter"` 및 `"exit"` props나 Transition Types을 사용하여 내비게이션을 구현해야 합니다.
 
 </Note>
 
@@ -4901,7 +4901,7 @@ root.render(
 
 ### Animating based on cause {/*animating-based-on-cause*/}
 
-Sometimes, you may want elements to animate differently based on how it was triggered. For this use case, we've added a new API called `addTransitionType` to specify the cause of a transition:
+때로는 트리거된 방식에 따라 요소의 애니메이션을 다르게 적용하고 싶을 때가 있습니다. 이 사용 사례의 경우 전환의 원인을 지정하기 위해 `addTransitionType`이라는 새로운 API를 추가했습니다:
 
 ```js {4,11}
 function navigate(url) {
@@ -4920,7 +4920,7 @@ function navigateBack(url) {
 }
 ```
 
-With transition types, you can provide custom animations via props to `<ViewTransition>`. Let's add a shared element transition to the header for "6 Videos" and "Back":
+transition types을 사용하면 `<ViewTransition>`에 props를 통해 커스텀 애니메이션을 제공할 수 있습니다. '6 Videos' 및 'Back'의 헤더에 공유 요소 전환을 추가해 보겠습니다:
 
 ```js {4,5}
 <ViewTransition
