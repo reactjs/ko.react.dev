@@ -2483,11 +2483,11 @@ In practice, navigations should be done via "enter" and "exit" props, or by usin
 
 ### Customizing animations {/*customizing-animations*/}
 
-By default, `<ViewTransition>` includes the default cross-fade from the browser.
+기본적으로 `<ViewTransition>`은 브라우저의 기본 크로스페이드를 포함합니다.
 
-To customize animations, you can provide props to the `<ViewTransition>` component to specify which animations to use, based on [how the `<ViewTransition>` activates](/reference/react/ViewTransition#props).
+애니메이션을 커스터마이징하려면, [어떻게 `<ViewTransition>`이 활성화되는지](/reference/react/ViewTransition#props)에 따라, 어떤 애니메이션을 사용할지 지정하는 Props를 `<ViewTransition>` 컴포넌트에 제공할 수 있습니다.
 
-For example, we can slow down the `default` cross fade animation:
+예를 들어, `default` 크로스페이드 애니메이션을 느리게 만들 수 있습니다.
 
 ```js
 <ViewTransition default="slow-fade">
@@ -2495,7 +2495,7 @@ For example, we can slow down the `default` cross fade animation:
 </ViewTransition>
 ```
 
-And define `slow-fade` in CSS using [view transition classes](/reference/react/ViewTransition#view-transition-classes):
+그리고 [View Transition 클래스](/reference/react/ViewTransition#view-transition-classes)를 사용하여 CSS에서 `slow-fade`를 정의합니다.
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -2507,7 +2507,7 @@ And define `slow-fade` in CSS using [view transition classes](/reference/react/V
 }
 ```
 
-Now, the cross fade is slower:
+이제 크로스페이드가 더 느려집니다.
 
 <Sandpack>
 
@@ -3686,13 +3686,13 @@ root.render(
 
 </Sandpack>
 
-See [Styling View Transitions](/reference/react/ViewTransition#styling-view-transitions) for a full guide on styling `<ViewTransition>`.
+`<ViewTransition>` 스타일링에 대한 전체 가이드는 [View Transition 스타일링](/reference/react/ViewTransition#styling-view-transitions)을 참조하세요.
 
 ### Shared Element Transitions {/*shared-element-transitions*/}
 
-When two pages include the same element, often you want to animate it from one page to the next.
+두 페이지에 같은 요소가 있을 때, 종종 한 페이지에서 다음 페이지로 이어지도록 애니메이션을 주고 싶을 때가 있습니다.
 
-To do this you can add a unique `name` to the `<ViewTransition>`:
+이를 위해 `<ViewTransition>`에 고유한 `name` 속성을 추가할 수 있습니다.
 
 ```js
 <ViewTransition name={`video-${video.id}`}>
@@ -3700,7 +3700,7 @@ To do this you can add a unique `name` to the `<ViewTransition>`:
 </ViewTransition>
 ```
 
-Now the video thumbnail animates between the two pages:
+이제 비디오 썸네일이 두 페이지 사이에서 애니메이션으로 전환됩니다.
 
 <Sandpack>
 
@@ -4895,9 +4895,9 @@ root.render(
 
 </Sandpack>
 
-By default, React automatically generates a unique `name` for each element activated for a transition (see [How does `<ViewTransition>` work](/reference/react/ViewTransition#how-does-viewtransition-work)). When React sees a transition where a `<ViewTransition>` with a `name` is removed and a new `<ViewTransition>` with the same `name` is added, it will activate a shared element transition.
+기본적으로 React는 Transition에 활성화된 각 요소에 대해 고유한 `name`을 자동으로 생성합니다. ([`<ViewTransition>`이 어떻게 동작하는지 참고하세요.](/reference/react/ViewTransition#how-does-viewtransition-work)) React가 어떤 Transition에서 특정 `name`을 가진 `<ViewTransition>`이 제거되고, 동일한 `name`을 가진 새로운 `<ViewTransition>`이 추가된 것을 감지하면 공유 요소 전환<sup>Shared Element Transition</sup>을 활성화합니다.
 
-For more info, see the docs for [Animating a Shared Element](/reference/react/ViewTransition#animating-a-shared-element).
+자세한 내용은 [Animating a Shared Element](/reference/react/ViewTransition#animating-a-shared-element) 문서를 참고하세요.
 
 ### Animating based on cause {/*animating-based-on-cause*/}
 
