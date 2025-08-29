@@ -2468,7 +2468,7 @@ root.render(
 
 이 예시에서는 단순화하기 위해 앱의 루트를 `<ViewTransition>`으로 래핑하고 있지만, 이렇게 하면 앱의 모든 전환에 애니메이션이 적용되므로 예기치 않은 애니메이션이 발생할 수 있습니다.
 
-이 문제를 해결하기 위해 라우트 자식을 `"none"`으로 래핑하여 각 페이지가 자신의 애니메이션을 제어할 수 있도록 합니다:
+이 문제를 해결하기 위해 라우트 자식을 `"none"`으로 래핑하여 각 페이지가 자신의 애니메이션을 제어할 수 있도록 합니다.
 
 ```js
 // Layout.js
@@ -4895,13 +4895,12 @@ root.render(
 
 </Sandpack>
 
-기본적으로 React는 Transition에 활성화된 각 요소에 대해 고유한 `name`을 자동으로 생성합니다. ([`<ViewTransition>`이 어떻게 동작하는지 참고하세요.](/reference/react/ViewTransition#how-does-viewtransition-work)) React가 어떤 Transition에서 특정 `name`을 가진 `<ViewTransition>`이 제거되고, 동일한 `name`을 가진 새로운 `<ViewTransition>`이 추가된 것을 감지하면 공유 요소 전환<sup>Shared Element Transition</sup>을 활성화합니다.
 
 자세한 내용은 [Animating a Shared Element](/reference/react/ViewTransition#animating-a-shared-element) 문서를 참고하세요.
 
-### Animating based on cause {/*animating-based-on-cause*/}
+### 원인에 따라 애니메이션 적용하기 {/*animating-based-on-cause*/}
 
-때로는 트리거된 방식에 따라 요소의 애니메이션을 다르게 적용하고 싶을 때가 있습니다. 이 사용 사례의 경우 전환의 원인을 지정하기 위해 `addTransitionType`이라는 새로운 API를 추가했습니다:
+때로는 트리거된 방식에 따라 요소의 애니메이션을 다르게 적용하고 싶을 때가 있습니다. 이 사용 사례의 경우 전환의 원인을 지정하기 위해 `addTransitionType`이라는 새로운 API를 추가했습니다.
 
 ```js {4,11}
 function navigate(url) {
@@ -4920,7 +4919,7 @@ function navigateBack(url) {
 }
 ```
 
-transition types을 사용하면 `<ViewTransition>`에 props를 통해 커스텀 애니메이션을 제공할 수 있습니다. '6 Videos' 및 'Back'의 헤더에 공유 요소 전환을 추가해 보겠습니다:
+Transition types을 사용하면 `<ViewTransition>`에 props를 통해 커스텀 애니메이션을 제공할 수 있습니다. '6 Videos' 와 'Back' 헤더에 공유 엘리먼트 Transition을 추가해 보겠습니다:
 
 ```js {4,5}
 <ViewTransition
