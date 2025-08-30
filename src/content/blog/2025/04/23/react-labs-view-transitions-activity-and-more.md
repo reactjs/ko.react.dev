@@ -2470,7 +2470,6 @@ root.render(
 
 이를 해결하기 위해 각 페이지에서 자체적으로 애니메이션을 제어할 수 있도록 라우트 자식 요소를 `"none"`으로 감싸고 있습니다.
 
-
 ```js
 // Layout.js
 <ViewTransition default="none">
@@ -2478,7 +2477,7 @@ root.render(
 </ViewTransition>
 ```
 
-실제로 내비게이션은 "enter"와 "exit" props 또는 Transition Types를 사용해서 처리하는 것이 좋습니다.
+실제로 네비게이션은 "enter"와 "exit" Props 또는 Transition Types를 사용해서 처리하는 것이 좋습니다.
 
 </Note>
 
