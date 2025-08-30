@@ -98,16 +98,16 @@ app.use('/', (request, response) => {
 
 ---
 
-### Migrating from `renderToString` to a static prerender on the server {/*migrating-from-rendertostring-to-a-static-prerender-on-the-server*/}
+### 서버에서 `renderToString`을 정적 프리렌더로 마이그레이션 {/*migrating-from-rendertostring-to-a-static-prerender-on-the-server*/}
 
-`renderToString` returns a string immediately, so it does not support waiting for data to load for static HTML generation.
+`renderToString`은 문자열을 즉시 반환하므로, 정적 HTML 생성을 위해 데이터 로딩이 완료될 때까지 기다리는 것을 지원하지 않습니다.
 
-We recommend using these fully-featured alternatives:
+가능하면 다음과 같은 완전한 기능을 갖춘 대안을 사용하는 것을 권장합니다.
 
-* If you use Node.js, use [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream).
-* If you use Deno or a modern edge runtime with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), use [`prerender`](/reference/react-dom/static/prerender).
+* Node.js를 사용하는 경우 [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream)을 사용하세요.
+* Deno와 최신 엣지 런타임에서 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)을 사용하는 경우 [`prerender`](/reference/react-dom/static/prerender)를 사용하세요.
 
-You can continue using `renderToString` if your static site generation environment does not support streams.
+정적 사이트 생성 환경에서 스트림을 지원하지 않는 경우에는 `renderToString`을 계속 사용할 수 있습니다.
 
 ---
 
