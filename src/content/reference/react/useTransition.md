@@ -746,7 +746,7 @@ b { display: inline-block; margin-right: 10px; }
 
 컴포넌트에서 `action` Prop을 노출할 때는 Transition 내부에서 `await` 해야 합니다.
 
-이렇게 하면 `action` 콜백이 동기적이든 비동기적이든 상관없이 작동할 수 있으며, Action 내부의 `await`를 추가적인 `startTransition`으로 감쌀 필요가 없습니다.
+이렇게 하면 `action` 콜백이 동기적이든 비동기적이든 상관없이 작동할 수 있으며, `action` 내부의 `await`을 추가적인 `startTransition`으로 감쌀 필요가 없습니다.
 
 </Note>
 
