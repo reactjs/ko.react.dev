@@ -2458,17 +2458,17 @@ root.render(
 
 </Sandpack>
 
-라우터는 이미 `startTransition`을 사용하여 라우트를 업데이트하고 있으므로, `<ViewTransition>`를 한 줄 추가함으로써 기본 크로스 페이드 애니메이션이 활성화됩니다.
+라우터가 이미 `startTransition`을 사용해서 라우트를 업데이트하고 있기 때문에, `<ViewTransition>`을 한 줄 추가하는 것만으로 기본 크로스 페이드 애니메이션이 활성화됩니다.
 
-이 기능이 어떻게 작동하는지 궁금하다면, 문서의 [ `<ViewTransition>`은 어떻게 작용하나요?](/reference/react/ViewTransition#how-does-viewtransition-work)를 읽어보세요.
+어떻게 동작하는지 궁금하다면 [How does `<ViewTransition>` work?](/reference/react/ViewTransition#how-does-viewtransition-work) 문서를 참고하세요.
 
 <Note>
 
-#### `<ViewTransition>` 애니메이션 선택 해제하기 {/*opting-out-of-viewtransition-animations*/}
+#### `<ViewTransition>` 애니메이션 건너뛰기 {/*opting-out-of-viewtransition-animations*/}
 
-이 예시에서는 단순화하기 위해 앱의 루트를 `<ViewTransition>`으로 래핑하고 있지만, 이렇게 하면 앱의 모든 전환에 애니메이션이 적용되므로 예기치 않은 애니메이션이 발생할 수 있습니다.
+이 예시에서 단순화를 위해 앱의 루트를 `<ViewTransition>`으로 감싸고 있지만, 이렇게 하면 앱 내의 모든 트랜지션이 애니메이션 되어 예상치 못한 애니메이션이 발생할 수 있습니다.
 
-이 문제를 해결하기 위해 라우트 자식을 `"none"`으로 래핑하여 각 페이지가 자신의 애니메이션을 제어할 수 있도록 합니다.
+이를 해결하기 위해 각 페이지에서 자체적으로 애니메이션을 제어할 수 있도록 라우트 자식 요소를 `"none"`으로 감싸고 있습니다.
 
 ```js
 // Layout.js
@@ -2477,7 +2477,7 @@ root.render(
 </ViewTransition>
 ```
 
-실제로는, `"enter"` 및 `"exit"` props나 Transition Types을 사용하여 내비게이션을 구현해야 합니다.
+실제로 네비게이션은 "enter"와 "exit" Props 또는 Transition Types를 사용해서 처리하는 것이 좋습니다.
 
 </Note>
 
