@@ -5,21 +5,21 @@ version: experimental
 
 <Experimental>
 
-**This API is experimental and is not available in a stable version of React yet.**
+**이 API는 실험적이며 React의 안정 버전에서는 아직 사용할 수 없습니다.**
 
-You can try it by upgrading React packages to the most recent experimental version:
+이 API를 사용하려면 React 패키지를 가장 최신의 실험적인 버전으로 업그레이드해야 합니다.
 
 - `react@experimental`
 - `react-dom@experimental`
 - `eslint-plugin-react-hooks@experimental`
 
-Experimental versions of React may contain bugs. Don't use them in production.
+실험적인 버전의 React에는 버그가 있을 수 있습니다. 프로덕션에서는 사용하지 마세요.
 
 </Experimental>
 
 <Intro>
 
-`unstable_addTransitionType` lets you specify the cause of a transition.
+`unstable_addTransitionType`는 transition의 원인을 지정할 수 있게 해줍니다.
 
 
 ```js
@@ -35,30 +35,30 @@ startTransition(() => {
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `addTransitionType` {/*addtransitiontype*/}
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-- `type`: The type of transition to add. This can be any string.
+- `type`: 추가할 transition의 타입입니다. 어떤 문자열이든 될 수 있습니다.
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-`startTransition` does not return anything.
+`startTransition`은 아무것도 반환하지 않습니다.
 
-#### Caveats {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
-- If multiple transitions are combined, all Transition Types are collected. You can also add more than one type to a Transition.
-- Transition Types are reset after each commit. This means a `<Suspense>` fallback will associate the types after a `startTransition`, but revealing the content does not.
+- 여러 transition이 결합되면 모든 Transition Type이 수집됩니다. Transition에 하나 이상의 타입을 추가할 수도 있습니다.
+- Transition Type은 각 커밋 후에 리셋됩니다. 즉, `<Suspense>` fallback은 `startTransition` 이후의 타입들과 연관되지만, 콘텐츠를 보여주는 것은 그렇지 않습니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Adding the cause of a transition {/*adding-the-cause-of-a-transition*/}
+### transition의 원인 추가하기 {/*adding-the-cause-of-a-transition*/}
 
-Call `addTransitionType` inside of `startTransition` to indicate the cause of a transition:
+transition의 원인을 나타내려면 `startTransition` 내부에서 `addTransitionType`을 호출하세요:
 
 ``` [[1, 6, "unstable_addTransitionType"], [2, 5, "startTransition", [3, 6, "'submit-click'"]]
 import { startTransition, unstable_addTransitionType } from 'react';
@@ -76,22 +76,22 @@ function Submit({action) {
 
 ```
 
-When you call <CodeStep step={1}>addTransitionType</CodeStep> inside the scope of <CodeStep step={2}>startTransition</CodeStep>, React will associate <CodeStep step={3}>submit-click</CodeStep> as one of the causes for the Transition.
+<CodeStep step={2}>startTransition</CodeStep> 범위 내에서 <CodeStep step={1}>addTransitionType</CodeStep>을 호출하면, React는 <CodeStep step={3}>submit-click</CodeStep>을 Transition의 원인 중 하나로 연관시킵니다.
 
-Currently, Transition Types can be used to customize different animations based on what caused the Transition. You have three different ways to choose from for how to use them:
+현재 Transition Type은 Transition을 일으킨 원인에 따라 다른 애니메이션을 사용자 정의하는 데 사용할 수 있습니다. 사용 방법으로 세 가지 다른 방식을 선택할 수 있습니다:
 
-- [Customize animations using browser view transition types](#customize-animations-using-browser-view-transition-types)
-- [Customize animations using `View Transition` Class](#customize-animations-using-view-transition-class)
-- [Customize animations using `ViewTransition` events](#customize-animations-using-viewtransition-events) 
+- [브라우저 view transition types을 사용한 애니메이션 사용자 정의](#customize-animations-using-browser-view-transition-types)
+- [`View Transition` 클래스를 사용한 애니메이션 사용자 정의](#customize-animations-using-view-transition-class)
+- [`ViewTransition` events를 사용한 애니메이션 사용자 정의](#customize-animations-using-viewtransition-events) 
 
-In the future, we plan to support more use cases for using the cause of a transition.
+미래에는 transition의 원인을 사용하는 더 많은 사용 사례를 지원할 계획입니다.
 
 ---
-### Customize animations using browser view transition types {/*customize-animations-using-browser-view-transition-types*/}
+### 브라우저의 view transition types를 사용한 애니메이션 사용자 정의 {/*customize-animations-using-browser-view-transition-types*/}
 
-When a [`ViewTransition`](/reference/react/ViewTransition) activates from a transition, React adds all the Transition Types as browser [view transition types](https://www.w3.org/TR/css-view-transitions-2/#active-view-transition-pseudo-examples) to the element.
+transition에서 [`ViewTransition`](/reference/react/ViewTransition)이 활성화되면, React는 모든 Transition Type을 브라우저의 [view transition types](https://www.w3.org/TR/css-view-transitions-2/#active-view-transition-pseudo-examples)로 요소에 추가합니다.
 
-This allows you to customize different animations based on CSS scopes:
+이를 통해 CSS 범위에 따라 다른 애니메이션을 사용자 정의할 수 있습니다.
 
 ```js [11]
 function Component() {
@@ -118,9 +118,9 @@ startTransition(() => {
 
 ---
 
-### Customize animations using `View Transition` Class {/*customize-animations-using-view-transition-class*/}
+### `View Transition` 클래스를 사용한 애니메이션 사용자 정의 {/*customize-animations-using-view-transition-class*/}
 
-You can customize animations for an activated `ViewTransition` based on type by passing an object to the View Transition Class:
+View Transition 클래스에 객체를 전달하여 타입에 따라 활성화된 `ViewTransition`의 애니메이션을 사용자 정의할 수 있습니다.
 
 ```js
 function Component() {
@@ -140,9 +140,9 @@ startTransition(() => {
 });
 ```
 
-If multiple types match, then they're joined together. If no types match then the special "default" entry is used instead. If any type has the value "none" then that wins and the ViewTransition is disabled (not assigned a name).
+여러 타입이 일치하면 함께 결합됩니다. 일치하는 타입이 없으면 특별한 "default" 엔트리가 대신 사용됩니다. 어떤 타입이 "none" 값을 가지면 그것이 우선되고 ViewTransition이 비활성화됩니다(이름이 할당되지 않음).
 
-These can be combined with enter/exit/update/layout/share props to match based on kind of trigger and Transition Type.
+이들은 enter/exit/update/layout/share props와 결합하여 트리거의 종류와 Transition Type에 따라 매칭할 수 있습니다.
 
 ```js
 <ViewTransition enter={{
@@ -157,9 +157,9 @@ exit={{
 
 ---
 
-### Customize animations using `ViewTransition` events {/*customize-animations-using-viewtransition-events*/}
+### `ViewTransition` events를 사용한 애니메이션 사용자 정의 {/*customize-animations-using-viewtransition-events*/}
 
-You can imperatively customize animations for an activated `ViewTransition` based on type using View Transition events:
+View Transition events를 사용하여 타입에 따라 활성화된 `ViewTransition`의 애니메이션을 명령형으로 사용자 정의할 수 있습니다.
 
 ```
 <ViewTransition onUpdate={(inst, types) => {
@@ -173,7 +173,7 @@ You can imperatively customize animations for an activated `ViewTransition` base
 }}>
 ```
 
-This allows you to pick different imperative Animations based on the cause.
+이를 통해 원인에 따라 다른 명령형 Animation을 선택할 수 있습니다.
 
 ---
 
