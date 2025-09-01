@@ -13,17 +13,25 @@
     "prettier:diff": "yarn nit:source",
     "lint-heading-ids": "node scripts/headingIdLinter.js",
     "fix-headings": "node scripts/headingIdLinter.js --fix",
+<<<<<<< HEAD
     "ci-check": "npm-run-all prettier:diff --parallel lint tsc lint-heading-ids rss lint-editorconfig",
+=======
+    "ci-check": "npm-run-all prettier:diff --parallel lint tsc lint-heading-ids rss deadlinks",
+>>>>>>> 2774ddfa0c39b8c2f0563b987dcb90a01ee723cf
     "tsc": "tsc --noEmit",
     "start": "next start",
     "postinstall": "is-ci || husky install .husky",
     "check-all": "npm-run-all prettier lint:fix tsc rss",
     "rss": "node scripts/generateRss.js",
+<<<<<<< HEAD
     "cache-reset": "rm -rf node_modules/.cache && rm -rf .next && yarn cache clean",
     "lint-editorconfig": "yarn editorconfig-checker",
     "textlint-test": "yarn mocha ./textlint/tests/utils && yarn mocha ./textlint/tests/rules",
     "textlint-docs": "node ./textlint/generators/genTranslateGlossaryDocs.js && git add wiki/translate-glossary.md",
     "textlint-lint": "yarn textlint ./src/content --rulesdir ./textlint/rules -f pretty-error && npx --yes eslint@9 -c eslint.config.mjs"
+=======
+    "deadlinks": "node scripts/deadLinkChecker.js"
+>>>>>>> 2774ddfa0c39b8c2f0563b987dcb90a01ee723cf
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "2.13.5",
@@ -64,7 +72,11 @@
     "autoprefixer": "^10.4.2",
     "babel-eslint": "10.x",
     "babel-plugin-react-compiler": "19.0.0-beta-e552027-20250112",
+<<<<<<< HEAD
     "editorconfig-checker": "^6.0.1",
+=======
+    "chalk": "4.1.2",
+>>>>>>> 2774ddfa0c39b8c2f0563b987dcb90a01ee723cf
     "eslint": "7.x",
     "eslint-config-next": "12.0.3",
     "eslint-config-react-app": "^5.2.1",
