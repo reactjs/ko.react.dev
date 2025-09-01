@@ -20,7 +20,7 @@ export default function NotFound() {
           <P>
             저희 잘못으로 인한 오류라면{', '}
             수정할 수 있도록{' '}
-            <A href="https://github.com/reactjs/react.dev/issues/new">
+            <A href="https://github.com/reactjs/ko.react.dev/issues/new">
               저희에게 알려주세요.
             </A>
           </P>
