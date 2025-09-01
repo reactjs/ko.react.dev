@@ -13,13 +13,13 @@ version: experimental
 - `react-dom@experimental`
 - `eslint-plugin-react-hooks@experimental`
 
-실험적인 버전의 React에는 버그가 있을 수 있습니다. 프로덕션에서는 사용하지 마세요.
+실험적인 버전의 React에는 버그가 있을 수 있습니다. 프로덕션 환경에서는 사용하지 마세요.
 
 </Experimental>
 
 <Intro>
 
-`unstable_addTransitionType`를 사용하면 트랜지션이 발생한 원인을 상세히 나타낼 수 있습니다.
+`unstable_addTransitionType`을 사용하면 트랜지션이 발생한 원인을 상세히 나타낼 수 있습니다.
 
 
 ```js
@@ -78,18 +78,18 @@ function Submit({action) {
 
 <CodeStep step={1}>addTransitionType</CodeStep>을 <CodeStep step={2}>startTransition</CodeStep>의 범위 내에서 호출하면, React는 해당 트랜지션에 <CodeStep step={3}>submit-click</CodeStep>을 원인으로 연결합니다.
 
-현재 트랜지션 타입은 원인에 따라 서로 다른 애니메이션을 커스터마이즈하는 데 사용할 수 있습니다. 사용할 수 있는 방식은 세 가지입니다:
+현재 트랜지션 타입은 원인에 따라 서로 다른 애니메이션을 커스터마이즈하는 데 사용할 수 있습니다. 사용할 수 있는 방식은 세 가지입니다.
 
-- [브라우저 view transition 타입으로 애니메이션 커스텀하기](#customize-animations-using-browser-view-transition-types)
+- [브라우저 View Transition 타입으로 애니메이션 커스텀하기](#customize-animations-using-browser-view-transition-types)
 - [`View Transition` 클래스로 애니메이션 커스텀하기](#customize-animations-using-view-transition-class)
 - [`ViewTransition`이벤트로 애니메이션 커스텀하기](#customize-animations-using-viewtransition-events) 
 
 향후에는 트랜지션의 원인을 활용할 수 있는 다양한 용례를 지원할 예정입니다.
 
 ---
-### 브라우저 view transition 타입으로 애니메이션 커스텀하기 {/*customize-animations-using-browser-view-transition-types*/}
+### 브라우저 View Transition 타입으로 애니메이션 커스텀하기 {/*customize-animations-using-browser-view-transition-types*/}
 
-트랜지션에서 [`ViewTransition`](/reference/react/ViewTransition)이 활성화되면, React는 모든 트랜지션 타입을 브라우저의 [view transition types](https://www.w3.org/TR/css-view-transitions-2/#active-view-transition-pseudo-examples)으로 해당 요소에 추가합니다.
+트랜지션에서 [`ViewTransition`](/reference/react/ViewTransition)이 활성화되면, React는 모든 트랜지션 타입을 브라우저의 [View Transition Types](https://www.w3.org/TR/css-view-transitions-2/#active-view-transition-pseudo-examples)으로 해당 요소에 추가합니다.
 
 이렇게 하면 CSS 범위에서 다른 애니메이션을 커스텀할 수 있습니다.
 
@@ -120,7 +120,7 @@ startTransition(() => {
 
 ### `View Transition` 클래스로 애니메이션 커스텀하기 {/*customize-animations-using-view-transition-class*/}
 
-활성화된 ViewTransition에서 타입에 따라 애니메이션을 커스터마이즈하려면, View Transition 클래스에 객체를 전달하면 됩니다.
+활성화된 `ViewTransition`에서 타입에 따라 애니메이션을 커스터마이즈하려면, View Transition 클래스에 객체를 전달하면 됩니다.
 
 ```js
 function Component() {
@@ -140,9 +140,9 @@ startTransition(() => {
 });
 ```
 
-여러 타입이 매칭되면 값들이 결합됩니다. 매칭되는 타입이 없으면 "default" 엔트리가 사용됩니다. 어떤 타입이라도 값이 none이면 해당 값이 우선하며 ViewTransition은 비활성화됩니다.(이름이 할당되지 않습니다).
+여러 타입이 매칭되면 값들이 결합됩니다. 매칭되는 타입이 없으면 "default" 엔트리가 사용됩니다. 어떤 타입이라도 값이 "none"이면 해당 값이 우선하며 `ViewTransition`은 비활성화됩니다. (이름이 할당되지 않습니다).
 
-이 방식은 enter/exit/update/layout/share props와 결합하여 트리거 종류와 트랜지션 타입에 따라 동작을 맞출 수 있습니다.
+이 방식은 enter/exit/update/layout/share Props와 결합하여 트리거 종류와 트랜지션 타입에 따라 동작을 맞출 수 있습니다.
 
 ```js
 <ViewTransition enter={{
@@ -157,7 +157,7 @@ exit={{
 
 ---
 
-### `ViewTransition`이벤트로 애니메이션 커스텀하기 {/*customize-animations-using-viewtransition-events*/}
+### `ViewTransition` 이벤트로 애니메이션 커스텀하기 {/*customize-animations-using-viewtransition-events*/}
 
 View Transition 이벤트를 활용하여 타입에 따라 활성화된 `ViewTransition`의 애니메이션을 즉시 커스터마이즈할 수 있습니다.
 
