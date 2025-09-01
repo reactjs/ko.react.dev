@@ -2495,7 +2495,11 @@ root.render(
 </ViewTransition>
 ```
 
+<<<<<<< HEAD
 그리고 [View Transition 클래스](/reference/react/ViewTransition#view-transition-classes)를 사용하여 CSS에서 `slow-fade`를 정의합니다.
+=======
+And define `slow-fade` in CSS using [view transition classes](/reference/react/ViewTransition#view-transition-class):
+>>>>>>> 2774ddfa0c39b8c2f0563b987dcb90a01ee723cf
 
 ```css
 ::view-transition-old(.slow-fade) {

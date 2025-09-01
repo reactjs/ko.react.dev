@@ -30,7 +30,11 @@ link: "<link>"
 
 #### Props {/*props*/}
 
+<<<<<<< HEAD
 `<link>`는 모든 [공통 요소 속성](/reference/react-dom/components/common#props)을 지원합니다.
+=======
+`<link>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> 2774ddfa0c39b8c2f0563b987dcb90a01ee723cf
 
 * `rel`: 문자열 타입, 필수, [리소스와의 관계](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel)를 지정합니다. React는 다른 링크와는 달리 [`rel="stylesheet"` 링크를 특별하게 처리](#special-rendering-behavior)합니다.
 

@@ -30,7 +30,11 @@ title: "<input>"
 
 #### Props {/*props*/}
 
+<<<<<<< HEAD
 `<input>`은 모든 [공통 엘리먼트 Props](/reference/react-dom/components/common#props)를 지원합니다.
+=======
+`<input>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> 2774ddfa0c39b8c2f0563b987dcb90a01ee723cf
 
 - [`formAction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formaction): A string or function. Overrides the parent `<form action>` for `type="submit"` and `type="image"`. When a URL is passed to `action` the form will behave like a standard HTML form. When a function is passed to `formAction` the function will handle the form submission. See [`<form action>`](/reference/react-dom/components/form#props).
 
