@@ -97,7 +97,7 @@ React 생태계에는 이러한 문제들을 해결하기 위한 많은 도구�
 
 대부분의 백엔드나 REST 스타일 API에서 데이터를 가져온다면 다음을 사용할 것을 제안합니다.
 
-- [React Query](https://react-query.tanstack.com/)
+- [React Query](https://tanstack.com/query/latest)
 - [SWR](https://swr.vercel.app/)
 - [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
 
@@ -126,7 +126,7 @@ GraphQL API에서 데이터를 가져온다면 다음을 사용할 것을 제안
 
 * **단일 페이지 앱 (SPA)** 은 단일 HTML 페이지를 로드하고 사용자가 앱과 상호작용을 할 때 페이지를 동적으로 업데이트합니다. SPA는 시작하기는 더 쉽지만, 초기 로드 시간이 느릴 수 있습니다. SPA는 대부분의 빌드 도구에서 기본 아키텍처입니다.
 
-* **스트리밍 서버 측 렌더링(SSR)** 은 서버에서 페이지를 렌더링하고 완전히 렌더링 된 페이지를 클라이언트로 보냅니다. SSR은 성능을 향상할 수 있지만, 단일 페이지 앱보다 설정하고 유지 관리하는 것이 더 복잡할 수 있습니다. 스트리밍 기능이 추가되면서 SSR은 설정 및 유지 관리가 매우 복잡해질 수 있습니다. Vite의 SSR 가이드를 참조하세요.
+* **스트리밍 서버 측 렌더링(SSR)** 은 서버에서 페이지를 렌더링하고 완전히 렌더링 된 페이지를 클라이언트로 보냅니다. SSR은 성능을 향상할 수 있지만, 단일 페이지 앱보다 설정하고 유지 관리하는 것이 더 복잡할 수 있습니다. 스트리밍 기능이 추가되면서 SSR은 설정 및 유지 관리가 매우 복잡해질 수 있습니다. [Vite의 SSR 가이드](https://vite.dev/guide/ssr.html)를 참조하세요.
 
 * **정적 사이트 생성(SSG)** 은 빌드 시점에 앱에 대한 정적 HTML 파일을 생성합니다. SSG는 성능을 향상할 수 있지만, 서버 측 렌더링보다 설정하고 유지 관리하는 것이 더 복잡할 수 있습니다. [Vite의 SSG 가이드](https://vite.dev/guide/ssr.html#pre-rendering-ssg)를 참조하세요.
 

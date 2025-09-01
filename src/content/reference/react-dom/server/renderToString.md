@@ -98,16 +98,16 @@ app.use('/', (request, response) => {
 
 ---
 
-### Migrating from `renderToString` to a static prerender on the server {/*migrating-from-rendertostring-to-a-static-prerender-on-the-server*/}
+### 서버에서 `renderToString`을 정적 프리렌더로 마이그레이션 {/*migrating-from-rendertostring-to-a-static-prerender-on-the-server*/}
 
-`renderToString` returns a string immediately, so it does not support waiting for data to load for static HTML generation.
+`renderToString`은 문자열을 즉시 반환하므로, 정적 HTML 생성을 위해 데이터 로딩이 완료될 때까지 기다리는 것을 지원하지 않습니다.
 
-We recommend using these fully-featured alternatives:
+가능하면 다음과 같은 완전한 기능을 갖춘 대안을 사용하는 것을 권장합니다.
 
-* If you use Node.js, use [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream).
-* If you use Deno or a modern edge runtime with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), use [`prerender`](/reference/react-dom/static/prerender).
+* Node.js를 사용하는 경우 [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream)을 사용하세요.
+* Deno와 최신 엣지 런타임에서 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)을 사용하는 경우 [`prerender`](/reference/react-dom/static/prerender)를 사용하세요.
 
-You can continue using `renderToString` if your static site generation environment does not support streams.
+정적 사이트 생성 환경에서 스트림을 지원하지 않는 경우에는 `renderToString`을 계속 사용할 수 있습니다.
 
 ---
 
@@ -149,4 +149,5 @@ console.log(div.innerHTML); // 예를 들어, "<svg>...</svg>"
 
 일부 컴포넌트가 일시 중단<sup>Suspend</sup>되거나 (예를 들어, [`lazy`](/reference/react/lazy)와 함께 정의되거나 데이터를 가져올 때) `renderToString`은 콘텐츠가 해결될 때까지 기다리지 않습니다. `renderToString`는 그 위에 가장 가까운 [`<Suspense>`](/reference/react/Suspense) 경계를 찾아 `fallback` 프로퍼티를 HTML에 렌더링합니다. 내용<sup>Content</sup>은 클라이언트 코드가 로드될 때까지 나타나지 않습니다.
 
-To solve this, use one of the [recommended streaming solutions](#alternatives). For server side rendering, they can stream content in chunks as it resolves on the server so that the user sees the page being progressively filled in before the client code loads. For static site generation, they can wait for all the content to resolve before generating the static HTML.
+이를 해결하려면 [권장되는 스트리밍 솔루션](#alternatives) 중 하나를 사용하면 좋습니다. 서버 사이드 렌더링의 경우, 서버에서 해결되는 대로 콘텐츠를 작은 단위<sup>chunk</sup>로 스트리밍할 수 있어 클라이언트 코드가 로드되기 전에 사용자가 페이지가 단계적으로 나타나는 것을 볼 수 있습니다. 정적 사이트 생성의 경우, 정적 HTML을 생성하기 전에 모든 콘텐츠가 해결될 때까지 기다릴 수 있습니다.
+

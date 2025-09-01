@@ -187,7 +187,7 @@
       "path": "/reference/react-dom/components",
       "routes": [
         {
-          "title": "Common (e.g. <div>)",
+          "title": "공통 컴포넌트 (예: <div>)",
           "path": "/reference/react-dom/components/common"
         },
         {
