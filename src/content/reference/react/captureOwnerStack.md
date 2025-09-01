@@ -4,7 +4,7 @@ title: captureOwnerStack
 
 <Intro>
 
-`captureOwnerStack`는 개발 환경에서 현재 Owner Stack을 읽고, 사용할 수 있는 문자열을 반환합니다.
+`captureOwnerStack`는 개발 환경에서 현재 Owner Stack을 읽고, 사용할 수 있다면 문자열 반환합니다.
 
 ```js
 const stack = captureOwnerStack();
@@ -43,11 +43,12 @@ function Component() {
 
 Owner Stacks은 다음 경우에 사용할 수 있습니다.
 - 컴포넌트 렌더링 시
-- 이펙트 (예: `useEffect`)
+- Effect (예: `useEffect`)
 - React 이벤트 핸들러 (예: `<button onClick={...} />`)
 - React 오류 핸들러 ([React 루트 옵션](/reference/react-dom/client/createRoot#parameters) `onCaughtError`, `onRecoverableError`, `onUncaughtError`)
 
-Owner Stack을 사용할 수 없는 경우, `null`이 반환됩니다. ([문제해결: Owner Stack이 `null`인 경우](#the-owner-stack-is-null))
+Owner Stack을 사용할 수 없는 경우, `null`을 반환합니다. ([문제해결: Owner Stack이 `null`인 경우](#the-owner-stack-is-null))
+
 #### 주의 사항 {/*caveats*/}
 
 - Owner Stack은 개발 환경에서만 사용할 수 있습니다. `captureOwnerStack`은 개발 환경 밖에서는 항상 `null`을 반환합니다.
