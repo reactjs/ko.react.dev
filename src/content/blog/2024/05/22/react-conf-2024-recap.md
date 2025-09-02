@@ -1,66 +1,67 @@
 ---
-title: "React Conf 2024 Recap"
+title: "React Conf 2024 요약"
 author: Ricky Hanlon
-date: 2024/05/22
-description: Last week we hosted React Conf 2024, a two-day conference in Henderson, Nevada where 700+ attendees gathered in-person to discuss the latest in UI engineering. In this post, we'll summarize the talks and announcements from the event.
+date: 2024년 05월 22일
+description: 지난주 우리는 네바다주 헨더슨에서 2일간의 React Conf 2024를 개최했으며, 700명 이상의 참가자가 현장에서 모여 UI 엔지니어링 분야의 최신 동향을 논의했습니다. 이 글에서는 콘퍼런스에서 진행된 강연과 발표 내용을 요약해 보았습니다.
+
 ---
 
-May 22, 2024 by [Ricky Hanlon](https://twitter.com/rickhanlonii).
+2024년 5월 22일 by [Ricky Hanlon](https://twitter.com/rickhanlonii).
 
 ---
 
 <Intro>
 
-Last week we hosted React Conf 2024, a two-day conference in Henderson, Nevada where 700+ attendees gathered in-person to discuss the latest in UI engineering. This was our first in-person conference since 2019, and we were thrilled to be able to bring the community together again.
+지난주 우리는 네바다주 헨더슨에서 2일간의 React Conf 2024를 개최했으며, 700명 이상의 참가자가 현장에서 모여 UI 엔지니어링 분야의 최신 동향을 논의했습니다. 이는 2019년 이후 처음 열린 오프라인 콘퍼런스였으며, 우리는 이 커뮤니티를 다시 한자리에 모을 수 있게 되어 매우 기뻤습니다.
 
 </Intro>
 
 ---
 
-At React Conf 2024, we announced the [React 19 RC](/blog/2024/12/05/react-19), the [React Native New Architecture Beta](https://github.com/reactwg/react-native-new-architecture/discussions/189), and an experimental release of the [React Compiler](/learn/react-compiler). The community also took the stage to announce [React Router v7](https://remix.run/blog/merging-remix-and-react-router), [Universal Server Components](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s) in Expo Router, React Server Components in [RedwoodJS](https://redwoodjs.com/blog/rsc-now-in-redwoodjs), and much more.
+React Conf 2024에서는 [React 19 RC](/blog/2024/12/05/react-19), [React Native 의 새로운 아키텍처 베타 버전](https://github.com/reactwg/react-native-new-architecture/discussions/189), 그리고 [React Compiler](/learn/react-compiler)의 실험 버전을 발표했습니다. 또한 커뮤니티도 [React Router v7](https://remix.run/blog/merging-remix-and-react-router), Expo Routher의 [Universal Server Components](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s) , [RedwoodJS](https://redwoodjs.com/blog/rsc-now-in-redwoodjs)의 React Server Components 등을 발표했습니다.
 
-The entire [day 1](https://www.youtube.com/watch?v=T8TZQ6k4SLE) and [day 2](https://www.youtube.com/watch?v=0ckOUBiuxVY) streams are available online. In this post, we'll summarize the talks and announcements from the event.
+[1일차](https://www.youtube.com/watch?v=T8TZQ6k4SLE)와 [2일차](https://www.youtube.com/watch?v=0ckOUBiuxVY)의 전체 스트리밍 영상은 온라인에서 시청하실 수 있습니다. 이 글에서는 콘퍼런스에서 진행된 강연과 발표 내용을 요약해 보았습니다.
 
-## Day 1 {/*day-1*/}
+## 1일차 {/*day-1*/}
 
-_[Watch the full day 1 stream here.](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=973s)_
+_[1일차 전체 스트리밍 시청하기.](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=973s)_
 
-To kick off day 1, Meta CTO [Andrew "Boz" Bosworth](https://www.threads.net/@boztank) shared a welcome message followed by an introduction by [Seth Webster](https://twitter.com/sethwebster), who manages the React Org at Meta, and our MC [Ashley Narcisse](https://twitter.com/_darkfadr).
+첫째 날의 시작은 Meta CTO인 [Andrew "Boz" Bosworth](https://www.threads.net/@boztank)의 환영 인사로 열렸으며, 이어서 Meta의 React 팀을 담당하는 [Seth Webster](https://twitter.com/sethwebster)와 사회자인 [Ashley Narcisse](https://twitter.com/_darkfadr)가 소개를 맡았습니다.
 
-In the day 1 keynote, [Joe Savona](https://twitter.com/en_JS) shared our goals and vision for React to make it easy for anyone to build great user experiences. [Lauren Tan](https://twitter.com/potetotes) followed with a State of React, where she shared that React was downloaded over 1 billion times in 2023, and that 37% of new developers learn to program with React. Finally, she highlighted the work of the React community to make React, React.
+첫째 날의 키노트에서 [Joe Savona](https://twitter.com/en_JS)는 누구나 쉽게 뛰어난 사용자 경험을 구축할 수 있도록 하는 React의 목표와 비전을 공유했습니다. 이어서 [Lauren Tan](https://twitter.com/potetotes)은 React 현황을 발표하며 2023년 React 다운로드 수가 10억 회를 넘었고, 신규 개발자의 37%가 React로 프로그래밍을 배운다는 사실을 공유했습니다. 마지막으로 그녀는 React 커뮤니티가 React를 React답게 만들기 위해 한 일들을 강조했습니다.
 
-For more, check out these talks from the community later in the conference:
+추가로, 콘퍼런스에서 진행된 커뮤니티 강연도 확인해 보세요:
 
-- [Vanilla React](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=5542s) by [Ryan Florence](https://twitter.com/ryanflorence)
-- [React Rhythm & Blues](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=12728s) by [Lee Robinson](https://twitter.com/leeerob)
-- [RedwoodJS, now with React Server Components](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=26815s) by [Amy Dutton](https://twitter.com/selfteachme)
-- [Introducing Universal React Server Components in Expo Router](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s) by [Evan Bacon](https://twitter.com/Baconbrix)
+- [Ryan Florence](https://twitter.com/ryanflorence): [바닐라 React](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=5542s)
+- [Lee Robinson](https://twitter.com/leeerob): [React 리듬 & 블루스](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=12728s)
+- [Amy Dutton](https://twitter.com/selfteachme): [RedwoodJS, 근데 이제 React Server Components를 곁들인](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=26815s)
+- [Evan Bacon](https://twitter.com/Baconbrix): [Expo Router의 Universal React Server Components 소개](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s)
 
 Next in the keynote, [Josh Story](https://twitter.com/joshcstory) and [Andrew Clark](https://twitter.com/acdlite) shared new features coming in React 19, and announced the React 19 RC which is ready for testing in production. Check out all the features in the [React 19 release post](/blog/2024/12/05/react-19), and see these talks for deep dives on the new features:
 
-- [What's new in React 19](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=8880s) by [Lydia Hallie](https://twitter.com/lydiahallie)
-- [React Unpacked: A Roadmap to React 19](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=10112s) by [Sam Selikoff](https://twitter.com/samselikoff)
-- [React 19 Deep Dive: Coordinating HTML](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=24916s) by [Josh Story](https://twitter.com/joshcstory)
-- [Enhancing Forms with React Server Components](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=25280s) by [Aurora Walberg Scharff](https://twitter.com/aurorascharff)
-- [React for Two Computers](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=18825s) by [Dan Abramov](https://bsky.app/profile/danabra.mov)
-- [And Now You Understand React Server Components](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=11256s) by [Kent C. Dodds](https://twitter.com/kentcdodds)
+- [Lydia Hallie](https://twitter.com/lydiahallie): [What's new in React 19](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=8880s)
+- [Sam Selikoff](https://twitter.com/samselikoff): [React Unpacked: A Roadmap to React 19](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=10112s) 
+- [Josh Story](https://twitter.com/joshcstory): [React 19 Deep Dive: Coordinating HTML](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=24916s) 
+- [Aurora Walberg Scharff](https://twitter.com/aurorascharff): [Enhancing Forms with React Server Components](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=25280s)
+-[Dan Abramov](https://bsky.app/profile/danabra.mov): [React for Two Computers](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=18825s)
+- [Kent C. Dodds](https://twitter.com/kentcdodds): [And Now You Understand React Server Components](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=11256s)
 
 Finally, we ended the keynote with [Joe Savona](https://twitter.com/en_JS), [Sathya Gunasekaran](https://twitter.com/_gsathya), and [Mofei Zhang](https://twitter.com/zmofei) announcing that the React Compiler is now [Open Source](https://github.com/facebook/react/pull/29061), and sharing an experimental version of the React Compiler to try out.
 
 For more information on using the Compiler and how it works, check out [the docs](/learn/react-compiler) and these talks:
 
-- [Forget About Memo](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=12020s) by [Lauren Tan](https://twitter.com/potetotes)
-- [React Compiler Deep Dive](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=9313s) by [Sathya Gunasekaran](https://twitter.com/_gsathya) and [Mofei Zhang](https://twitter.com/zmofei)
+- [Lauren Tan](https://twitter.com/potetotes): [Forget About Memo](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=12020s) by 
+- [Sathya Gunasekaran](https://twitter.com/_gsathya) 와 [Mofei Zhang](https://twitter.com/zmofei): [React Compiler Deep Dive](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=9313s)
 
 Watch the full day 1 keynote here:
 
 <YouTubeIframe src="https://www.youtube.com/embed/T8TZQ6k4SLE?t=973s" />
 
-## Day 2 {/*day-2*/}
+## 2일차 {/*day-2*/}
 
 _[Watch the full day 2 stream here.](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=1720s)_
 
-To kick off day 2, [Seth Webster](https://twitter.com/sethwebster) shared a welcome message, followed by a Thank You from [Eli White](https://x.com/Eli_White) and an introduction by our Chief Vibes Officer [Ashley Narcisse](https://twitter.com/_darkfadr).
+둘째날의 시작은 [Seth Webster](https://twitter.com/sethwebster)의 환영 인사로 시작되었으며, [Eli White](https://x.com/Eli_White)의 감사 인사에 이어 CVO(Chief Vibes Officer) [Ashley Narcisse](https://twitter.com/_darkfadr)가 소개를 맡았습니다.
 
 In the day 2 keynote, [Nicola Corti](https://twitter.com/cortinico) shared the State of React Native, including 78 million downloads in 2023. He also highlighted apps using React Native including 2000+ screens used inside of Meta; the product details page in Facebook Marketplace, which is visited more than 2 billion times per day; and part of the Microsoft Windows Start Menu and some features in almost every Microsoft Office product across mobile and desktop.
 
@@ -83,22 +84,22 @@ Watch the full day 2 keynote here:
 
 ## Q&A {/*q-and-a*/}
 
-The React and React Native teams also ended each day with a Q&A session:
+또한 React와 React Native 팀은 매일 Q&A 세션으로 그 날의 일정을 마무리했습니다:
 
-- [React Q&A](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=27518s) hosted by [Michael Chan](https://twitter.com/chantastic)
-- [React Native Q&A](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=27935s) hosted by [Jamon Holmgren](https://twitter.com/jamonholmgren)
+- [Michael Chan](https://twitter.com/chantastic)이 진행한 [React Q&A](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=27518s)
+- [Jamon Holmgren](https://twitter.com/jamonholmgren)이 진행한 [React Native Q&A](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=27935s)
 
-## And more... {/*and-more*/}
+## 그리고... {/*and-more*/}
 
 We also heard talks on accessibility, error reporting, css, and more:
 
-- [Demystifying accessibility in React apps](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=20655s) by [Kateryna Porshnieva](https://twitter.com/krambertech)
-- [Pigment CSS, CSS in the server component age](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=21696s) by [Olivier Tassinari](https://twitter.com/olivtassinari)
-- [Real-time React Server Components](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=24070s) by [Sunil Pai](https://twitter.com/threepointone)
-- [Let's break React Rules](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=25862s) by [Charlotte Isambert](https://twitter.com/c_isambert)
-- [Solve 100% of your errors](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=19881s) by [Ryan Albrecht](https://github.com/ryan953)
+- [Kateryna Porshnieva](https://twitter.com/krambertech): [Demystifying accessibility in React apps](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=20655s)
+- [Olivier Tassinari](https://twitter.com/olivtassinari): [Pigment CSS, CSS in the server component age](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=21696s) 
+- [Sunil Pai](https://twitter.com/threepointone): [Real-time React Server Components](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=24070s) 
+- [Charlotte Isambert](https://twitter.com/c_isambert): [Let's break React Rules](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=25862s) 
+- [Ryan Albrecht](https://github.com/ryan953): [Solve 100% of your errors](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=19881s) 
 
-## Thank you {/*thank-you*/}
+## 감사드립니다 {/*thank-you*/}
 
 Thank you to all the staff, speakers, and participants who made React Conf 2024 possible. There are too many to list, but we want to thank a few in particular.
 
