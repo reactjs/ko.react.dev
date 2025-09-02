@@ -4895,7 +4895,7 @@ root.render(
 
 </Sandpack>
 
-기본적으로 React는 Transition에 활성화된 각 요소에 대해 고유한 `name`을 자동으로 생성합니다. ([`<ViewTransition>`이 어떻게 동작하는지 참고하세요.](/reference/react/ViewTransition#how-does-viewtransition-work)) React가 어떤 Transition에서 특정 `name`을 가진 `<ViewTransition>`이 제거되고, 동일한 `name`을 가진 새로운 `<ViewTransition>`이 추가된 것을 감지하면 공유 엘리먼트 전환<sup>Shared Element Transition</sup>을 활성화합니다.
+기본적으로 React는 Transition에 활성화된 각 요소에 대해 고유한 `name`을 자동으로 생성합니다. ([`<ViewTransition>`이 어떻게 동작하는지 참고하세요.](/reference/react/ViewTransition#how-does-viewtransition-work)) React가 어떤 Transition에서 특정 `name`을 가진 `<ViewTransition>`이 제거되고, 동일한 `name`을 가진 새로운 `<ViewTransition>`이 추가된 것을 감지하면 공유 요소 전환<sup>Shared Element Transition</sup>을 활성화합니다.
 
 자세한 내용은 [Animating a Shared Element](/reference/react/ViewTransition#animating-a-shared-element) 문서를 참고하세요.
 
@@ -4920,7 +4920,7 @@ function navigateBack(url) {
 }
 ```
 
-Transition types을 사용하면 `<ViewTransition>`에 props를 통해 커스텀 애니메이션을 제공할 수 있습니다. '6 Videos' 와 'Back' 헤더에 공유 엘리먼트 Transition을 추가해 보겠습니다:
+Transition Types을 사용하면 `<ViewTransition>`에 Props를 통해 커스텀 애니메이션을 제공할 수 있습니다. "6 Videos" 와 "Back" 헤더에 공유 엘리먼트 Transition을 추가해 보겠습니다.
 
 ```js {4,5}
 <ViewTransition
@@ -4933,7 +4933,7 @@ Transition types을 사용하면 `<ViewTransition>`에 props를 통해 커스텀
 </ViewTransition>
 ```
 
-여기에서는 `share` prop을 전달하여 transition type에 따라 어떻게 애니메이션을 적용할지 정의합니다. `nav-forward`로 인해 공통의 transition이 활성화되면, view transition 클래스인 `slide-forward`가 적용됩니다. `nav-back`로 인해 활성화되면, `slide-back` 애니메이션이 활성화됩니다. CSS에서 이러한 애니메이션을 정의해 보겠습니다.
+여기에서는 `share` Prop을 전달하여 Transition Type에 따라 어떻게 애니메이션을 적용할지 정의합니다. `nav-forward`로 인해 공통 Transition이 활성화되면, View Transition 클래스인 `slide-forward`가 적용됩니다. `nav-back`로 인해 활성화되면, `slide-back` 애니메이션이 활성화됩니다. CSS에서 이러한 애니메이션을 정의해 보겠습니다.
 
 ```css
 ::view-transition-old(.slide-forward) {
@@ -4957,7 +4957,7 @@ Transition types을 사용하면 `<ViewTransition>`에 props를 통해 커스텀
 }
 ```
 
-이제 navigation type에 따라 썸네일과 헤더에 애니메이션을 적용할 수 있습니다:
+이제 Navigation Type에 따라 썸네일과 헤더에 애니메이션을 적용할 수 있습니다.
 
 <Sandpack>
 
@@ -6213,9 +6213,9 @@ root.render(
 
 ### Suspense Boundaries 애니메이팅 {/*animating-suspense-boundaries*/}
 
-Suspense 역시 View Transitions을 활성화합니다.
+Suspense 역시 View Transition을 활성화합니다.
 
-콘텐츠에 대한 폴백 애니메이션을 적용하려면 `Suspense`를 `<ViewTranstion>`으로 래핑하면 됩니다:
+콘텐츠에 대한 폴백 애니메이션을 적용하려면 `Suspense`를 `<ViewTranstion>`으로 래핑하면 됩니다.
 
 ```js
 <ViewTransition>
@@ -6225,7 +6225,7 @@ Suspense 역시 View Transitions을 활성화합니다.
 </ViewTransition>
 ```
 
-이를 추가하면 폴백이 콘텐츠에 크로스 페이드됩니다. 동영상을 클릭하면 동영상 정보에 애니메이션이 적용됩니다:
+이를 추가하면 폴백이 콘텐츠에 크로스 페이드됩니다. 동영상을 클릭하면 동영상 정보에 애니메이션이 적용됩니다.
 
 <Sandpack>
 
@@ -10175,7 +10175,7 @@ root.render(
 
 몇 개의 `<ViewTransition>` 컴포넌트와 몇 줄의 CSS를 추가하여 위의 모든 애니메이션을 최종 결과물에 추가할 수 있었습니다.
 
-저희는 View Transition이 여러분의 앱 제작 수준을 한 단계 높여줄 것으로 기대하고 있습니다. 오늘부터 React 릴리즈의 experimental 채널에서 사용해 볼 수 있습니다.
+저희는 View Transition이 여러분의 앱 제작 수준을 한 단계 높여줄 것으로 기대하고 있습니다. 오늘부터 React 릴리즈의 Experimental 채널에서 사용해 볼 수 있습니다.
 
 이제 느린 페이드 효과를 제거하고, 최종 결과물을 살펴봅시다.
 
@@ -11459,7 +11459,7 @@ root.render(
 
 작동 방식에 대해 자세히 알고 싶다면 문서에서 [`<ViewTransition>`의 작동 방식](/reference/react/ViewTransition#how-does-viewtransition-work)을 확인하세요.
 
-_View Transition을 구축한 배경에 대한 자세한 내용은 다음을 참조하세요. [#31975](https://github.com/facebook/react/pull/31975), [#32105](https://github.com/facebook/react/pull/32105), [#32041](https://github.com/facebook/react/pull/32041), [#32734](https://github.com/facebook/react/pull/32734), [#32797](https://github.com/facebook/react/pull/32797) [#31999](https://github.com/facebook/react/pull/31999), [#32031](https://github.com/facebook/react/pull/32031), [#32050](https://github.com/facebook/react/pull/32050), [#32820](https://github.com/facebook/react/pull/32820), [#32029](https://github.com/facebook/react/pull/32029), [#32028](https://github.com/facebook/react/pull/32028), and [#32038](https://github.com/facebook/react/pull/32038) by [@sebmarkbage](https://twitter.com/sebmarkbage) (Seb 감사합니다!)_
+_View Transition을 구축한 배경에 대한 자세한 내용은 다음을 참조하세요. [#31975](https://github.com/facebook/react/pull/31975), [#32105](https://github.com/facebook/react/pull/32105), [#32041](https://github.com/facebook/react/pull/32041), [#32734](https://github.com/facebook/react/pull/32734), [#32797](https://github.com/facebook/react/pull/32797) [#31999](https://github.com/facebook/react/pull/31999), [#32031](https://github.com/facebook/react/pull/32031), [#32050](https://github.com/facebook/react/pull/32050), [#32820](https://github.com/facebook/react/pull/32820), [#32029](https://github.com/facebook/react/pull/32029), [#32028](https://github.com/facebook/react/pull/32028), and [#32038](https://github.com/facebook/react/pull/32038) by [@sebmarkbage](https://twitter.com/sebmarkbage) (Seb에게 감사합니다!)_
 
 ---
 
@@ -11477,7 +11477,7 @@ _View Transition을 구축한 배경에 대한 자세한 내용은 다음을 참
 </Activity>
 ```
 
-Activity가 <CodeStep step={1}>visible</CodeStep>하면 정상적으로 렌더링됩니다. Activity가 <CodeStep step={2}>hidden</CodeStep>하면 마운트 해제되지만, 상태를 저장하고 화면에 표시되는 항목보다 낮은 우선 순위로 계속 렌더링됩니다.
+Activity가 <CodeStep step={1}>visible</CodeStep>하면 정상적으로 렌더링됩니다. Activity가 <CodeStep step={2}>hidden</CodeStep>이면 마운트 해제되지만, 상태를 저장하고 화면에 표시되는 항목보다 낮은 우선 순위로 계속 렌더링됩니다.
 
 `Activity`를 사용하여 사용자가 사용하지 않는 UI 부분의 상태를 저장하거나 사용자가 다음에 사용할 가능성이 있는 부분을 미리 렌더링할 수 있습니다.
 
@@ -11485,9 +11485,9 @@ Activity가 <CodeStep step={1}>visible</CodeStep>하면 정상적으로 렌더�
 
 <Note>
 
-**Activity가 숨겨져 있으면 Effects는 마운트되지 않습니다.**
+**Activity가 숨겨져 있으면 Effect는 마운트되지 않습니다.**
 
-`<Activity>`가 `hidden`이면 Effects가 마운트 해제됩니다. 개념적으로는 컴포넌트가 마운트 해제되지만 React는 나중에 사용할 수 있도록 상태를 저장합니다.
+`<Activity>`가 `hidden`이면 Effect가 마운트 해제됩니다. 개념적으로는 컴포넌트가 마운트 해제되지만 React는 나중에 사용할 수 있도록 상태를 저장합니다.
 
 실제로는 [Effect가 필요하지 않은 경우](/learn/you-might-not-need-an-effect) 가이드를 따랐다면 예상대로 작동합니다. 문제가 있는 Effect를 열심히 찾으려면, 예상치 못한 사이드 이펙트를 발견하기 위해 Activity 마운트 해제와 마운트를 열심히 수행하는 [`<StrictMode>`](/reference/react/StrictMode)를 추가하는 것이 좋습니다.
 
