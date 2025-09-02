@@ -232,7 +232,7 @@ export async function deliverMessage(message) {
 
 </Sandpack>
 
-`useOptimistic` Hook에 대해 더 알고 싶다면 [참고 문서](/reference/react/hooks/useOptimistic)를 확인하세요.
+`useOptimistic` Hook에 대해 더 알고 싶다면 [참고 문서](/reference/react/useOptimistic)를 확인하세요.
 
 ### 폼 제출 오류 처리하기 {/*handling-form-submission-errors*/}
 
