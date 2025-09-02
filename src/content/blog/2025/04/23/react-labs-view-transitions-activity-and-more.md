@@ -11459,7 +11459,6 @@ root.render(
 
 작동 방식에 대해 자세히 알고 싶다면 문서에서 [`<ViewTransition>`의 작동 방식](/reference/react/ViewTransition#how-does-viewtransition-work)을 확인하세요.
 
-
 _View Transition을 구축한 배경에 대한 자세한 내용은 다음을 참조하세요. [#31975](https://github.com/facebook/react/pull/31975), [#32105](https://github.com/facebook/react/pull/32105), [#32041](https://github.com/facebook/react/pull/32041), [#32734](https://github.com/facebook/react/pull/32734), [#32797](https://github.com/facebook/react/pull/32797) [#31999](https://github.com/facebook/react/pull/31999), [#32031](https://github.com/facebook/react/pull/32031), [#32050](https://github.com/facebook/react/pull/32050), [#32820](https://github.com/facebook/react/pull/32820), [#32029](https://github.com/facebook/react/pull/32029), [#32028](https://github.com/facebook/react/pull/32028), and [#32038](https://github.com/facebook/react/pull/32038) by [@sebmarkbage](https://twitter.com/sebmarkbage) (Seb 감사합니다!)_
 
 ---
@@ -11490,9 +11489,7 @@ Activity가 <CodeStep step={1}>visible</CodeStep>하면 정상적으로 렌더�
 
 `<Activity>`가 `hidden`이면 Effects가 마운트 해제됩니다. 개념적으로는 컴포넌트가 마운트 해제되지만 React는 나중에 사용할 수 있도록 상태를 저장합니다.
 
-In practice, this works as expected if you have followed the [Effect가 필요하지 않은 경우](/learn/you-might-not-need-an-effect) guide. To eagerly find problematic Effects, we recommend adding [`<StrictMode>`](/reference/react/StrictMode) which will eagerly perform Activity unmounts and mounts to catch any unexpected side effects.
-실제로는 [Effect가 필요하지 않은 경우](/learn/you-might-not-need-an-effect) 가이드를 따랐다면 예상대로 작동합니다. 
-문제가 있는 Effect를 열심히 찾으려면, 예상치 못한 사이드 이펙트를 발견하기 위해 Activity 마운트 해제와 마운트를 열심히 수행하는 [`<StrictMode>`](/reference/react/StrictMode)를 추가하는 것이 좋습니다.
+실제로는 [Effect가 필요하지 않은 경우](/learn/you-might-not-need-an-effect) 가이드를 따랐다면 예상대로 작동합니다. 문제가 있는 Effect를 열심히 찾으려면, 예상치 못한 사이드 이펙트를 발견하기 위해 Activity 마운트 해제와 마운트를 열심히 수행하는 [`<StrictMode>`](/reference/react/StrictMode)를 추가하는 것이 좋습니다.
 
 </Note>
 
