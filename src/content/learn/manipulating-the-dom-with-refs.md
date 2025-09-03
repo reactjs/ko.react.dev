@@ -440,7 +440,7 @@ export default function Form() {
 
 </Sandpack>
 
-여기 `MyInput` 내부의 `realInputRef`는 실제 input DOM 노드를 가지고 있습니다. 하지만 [`useImperativeHandle`](/reference/react/useImperativeHandle)을 사용하여 React가 ref를 참조하는 부모 컴포넌트에 직접 구성한 객체를 전달하도록 지시합니다. 따라서 `Form` 컴포넌트 안쪽의 `inputRef.current`는 `foucs` 메서드만 가지고 있습니다. 이 경우 ref는 DOM 노드가 아니라 [`useImperativeHandle`](/reference/react/useImperativeHandle) 호출에서 직접 구성한 객체가 됩니다.
+여기 `MyInput` 내부의 `realInputRef`는 실제 input DOM 노드를 가지고 있습니다. 하지만 [`useImperativeHandle`](/reference/react/useImperativeHandle)을 사용하여 React가 ref를 참조하는 부모 컴포넌트에 직접 구성한 객체를 전달하도록 지시합니다. 따라서 `Form` 컴포넌트 안쪽의 `inputRef.current`는 `focus` 메서드만 가지고 있습니다. 이 경우 ref는 DOM 노드가 아니라 [`useImperativeHandle`](/reference/react/useImperativeHandle) 호출에서 직접 구성한 객체가 됩니다.
 
 </DeepDive>
 

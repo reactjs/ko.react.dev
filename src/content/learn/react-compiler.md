@@ -310,7 +310,7 @@ React 컴파일러 워킹 그룹에서도 회원으로 지원하여 피드백을
 React 컴파일러는 다음과 같이 가정합니다.
 
 1. 올바르고 의미 있는 자바스크립트 코드로 작성되었습니다.
-2. nullable/optional 값과 속성에 접근하기 전에 그 값이 정의되어 있는지 테스트합니다. 예를 들어, TypeScript를 사용하는 경우 [`strictNullChecks`](https://www.typescriptlang.org/ko/tsconfig/#strictNullChecks)을 활성화하여 수행합니다. 즉, `if (object.nullableProperty) { object.nullableProperty.foo }`와 같이 처리하거나, 옵셔널 체이닝<sup>Optional Chaning</sup>을 사용하여 `object.nullableProperty?.foo`와 같이 처리합니다.
+2. nullable/optional 값과 속성에 접근하기 전에 그 값이 정의되어 있는지 테스트합니다. 예를 들어, TypeScript를 사용하는 경우 [`strictNullChecks`](https://www.typescriptlang.org/ko/tsconfig/#strictNullChecks)을 활성화하여 수행합니다. 즉, `if (object.nullableProperty) { object.nullableProperty.foo }`와 같이 처리하거나, 옵셔널 체이닝<sup>Optional Chaining</sup>을 사용하여 `object.nullableProperty?.foo`와 같이 처리합니다.
 3. [React의 규칙](/reference/rules)을 따릅니다.
 
 React 컴파일러는 React의 많은 규칙을 정적으로 검증할 수 있으며, 에러가 감지되면 안전하게 컴파일을 건너뜁니다. 에러를 확인하려면 [`eslint-plugin-react-compiler`](https://www.npmjs.com/package/eslint-plugin-react-compiler)의 설치를 권장합니다.
