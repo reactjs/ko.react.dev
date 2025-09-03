@@ -4899,9 +4899,9 @@ root.render(
 
 자세한 내용은 [Animating a Shared Element](/reference/react/ViewTransition#animating-a-shared-element) 문서를 참고하세요.
 
-### Animating based on cause {/*animating-based-on-cause*/}
+### 원인에 따라 애니메이션 적용하기 {/*animating-based-on-cause*/}
 
-Sometimes, you may want elements to animate differently based on how it was triggered. For this use case, we've added a new API called `addTransitionType` to specify the cause of a transition:
+때로는 트리거된 방식에 따라 요소의 애니메이션을 다르게 적용하고 싶을 때가 있습니다. 이 사용 사례의 경우 전환의 원인을 지정하기 위해 `addTransitionType`이라는 새로운 API를 추가했습니다.
 
 ```js {4,11}
 function navigate(url) {
@@ -4920,7 +4920,7 @@ function navigateBack(url) {
 }
 ```
 
-With transition types, you can provide custom animations via props to `<ViewTransition>`. Let's add a shared element transition to the header for "6 Videos" and "Back":
+Transition Types을 사용하면 `<ViewTransition>`에 Props를 통해 커스텀 애니메이션을 제공할 수 있습니다. "6 Videos" 와 "Back" 헤더에 공유 엘리먼트 Transition을 추가해 보겠습니다.
 
 ```js {4,5}
 <ViewTransition
@@ -4933,7 +4933,7 @@ With transition types, you can provide custom animations via props to `<ViewTran
 </ViewTransition>
 ```
 
-Here we pass a `share` prop to define how to animate based on the transition type. When the share transition activates from `nav-forward`, the view transition class `slide-forward` is applied. When it's from `nav-back`, the `slide-back` animation is activated. Let's define these animations in CSS:
+여기에서는 `share` Prop을 전달하여 Transition Type에 따라 어떻게 애니메이션을 적용할지 정의합니다. `nav-forward`로 인해 공통 Transition이 활성화되면, View Transition 클래스인 `slide-forward`가 적용됩니다. `nav-back`로 인해 활성화되면, `slide-back` 애니메이션이 활성화됩니다. CSS에서 이러한 애니메이션을 정의해 보겠습니다.
 
 ```css
 ::view-transition-old(.slide-forward) {
@@ -4957,7 +4957,7 @@ Here we pass a `share` prop to define how to animate based on the transition typ
 }
 ```
 
-Now we can animate the header along with thumbnail based on navigation type:
+이제 Navigation Type에 따라 썸네일과 헤더에 애니메이션을 적용할 수 있습니다.
 
 <Sandpack>
 
@@ -6211,11 +6211,11 @@ root.render(
 
 </Sandpack>
 
-### Animating Suspense Boundaries {/*animating-suspense-boundaries*/}
+### Suspense Boundaries 애니메이팅 {/*animating-suspense-boundaries*/}
 
-Suspense will also activate View Transitions. 
+Suspense 역시 View Transition을 활성화합니다.
 
-To animate the fallback to content, we can wrap `Suspense` with `<ViewTranstion>`:
+콘텐츠에 대한 폴백 애니메이션을 적용하려면 `Suspense`를 `<ViewTranstion>`으로 래핑하면 됩니다.
 
 ```js
 <ViewTransition>
@@ -6225,7 +6225,7 @@ To animate the fallback to content, we can wrap `Suspense` with `<ViewTranstion>
 </ViewTransition>
 ```
 
-By adding this, the fallback will cross-fade into the content. Click a video and see the video info animate in:
+이를 추가하면 폴백이 콘텐츠에 크로스 페이드됩니다. 동영상을 클릭하면 동영상 정보에 애니메이션이 적용됩니다.
 
 <Sandpack>
 
@@ -7509,7 +7509,7 @@ root.render(
 
 </Sandpack>
 
-We can also provide custom animations using an `exit` on the fallback, and `enter` on the content:
+또한 폴백에 `exit`, 내부 콘텐츠에 `enter`를 사용하여 커스텀 애니메이션을 제공할 수도 있습니다.
 
 ```js {3,8}
 <Suspense
@@ -7525,7 +7525,7 @@ We can also provide custom animations using an `exit` on the fallback, and `ente
 </Suspense>
 ```
 
-Here's how we'll define `slide-down` and `slide-up` with CSS:
+CSS로 `slide-down`과 `slide-up`을 정의하는 방법은 다음과 같습니다.
 
 ```css {1, 6}
 ::view-transition-old(.slide-down) { 
@@ -7539,7 +7539,7 @@ Here's how we'll define `slide-down` and `slide-up` with CSS:
 }
 ```
 
-Now, the Suspense content replaces the fallback with a sliding animation:
+이제 Suspense 콘텐츠가 슬라이드 애니메이션으로 폴백을 대체합니다.
 
 <Sandpack>
 
@@ -8831,9 +8831,9 @@ root.render(
 </Sandpack>
 
 
-### Animating Lists {/*animating-lists*/}
+### 목록 애니메이팅 {/*animating-lists*/}
 
-You can also use `<ViewTransition>` to animate lists of items as they re-order, like in a searchable list of items:
+검색 가능 항목 목록에서처럼 `<ViewTransition>`을 사용하여 항목 목록이 재정렬될 때 애니메이션을 적용할 수도 있습니다.
 
 ```js {3,5}
 <div className="videos">
@@ -8845,7 +8845,7 @@ You can also use `<ViewTransition>` to animate lists of items as they re-order, 
 </div>
 ```
 
-To activate the ViewTransition, we can use `useDeferredValue`:
+ViewTransition을 활성화하려면 `useDeferredValue`를 사용할 수 있습니다.
 
 ```js {2}
 const [searchText, setSearchText] = useState('');
@@ -8853,7 +8853,7 @@ const deferredSearchText = useDeferredValue(searchText);
 const filteredVideos = filterVideos(videos, deferredSearchText);
 ```
 
-Now the items animate as you type in the search bar:
+이제 검색창에 입력할 때 항목에 애니메이션이 적용됩니다.
 
 <Sandpack>
 
@@ -10171,13 +10171,13 @@ root.render(
 
 </Sandpack>
 
-### Final result {/*final-result*/}
+### 최종 결과물 {/*final-result*/}
 
-By adding a few `<ViewTransition>` components and a few lines of CSS, we were able to add all the animations above into the final result.
+몇 개의 `<ViewTransition>` 컴포넌트와 몇 줄의 CSS를 추가하여 위의 모든 애니메이션을 최종 결과물에 추가할 수 있었습니다.
 
-We're excited about View Transitions and think they will level up the apps you're able to build. They're ready to start trying today in the experimental channel of React releases.
+저희는 View Transition이 여러분의 앱 제작 수준을 한 단계 높여줄 것으로 기대하고 있습니다. 오늘부터 React 릴리즈의 Experimental 채널에서 사용해 볼 수 있습니다.
 
-Let's remove the slow fade, and take a look at the final result:
+이제 느린 페이드 효과를 제거하고, 최종 결과물을 살펴봅시다.
 
 <Sandpack>
 
@@ -11457,19 +11457,19 @@ root.render(
 
 </Sandpack>
 
-If you're curious to know more about how they work, check out [How Does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work) in the docs.
+작동 방식에 대해 자세히 알고 싶다면 문서에서 [`<ViewTransition>`의 작동 방식](/reference/react/ViewTransition#how-does-viewtransition-work)을 확인하세요.
 
-_For more background on how we built View Transitions, see: [#31975](https://github.com/facebook/react/pull/31975), [#32105](https://github.com/facebook/react/pull/32105), [#32041](https://github.com/facebook/react/pull/32041), [#32734](https://github.com/facebook/react/pull/32734), [#32797](https://github.com/facebook/react/pull/32797) [#31999](https://github.com/facebook/react/pull/31999), [#32031](https://github.com/facebook/react/pull/32031), [#32050](https://github.com/facebook/react/pull/32050), [#32820](https://github.com/facebook/react/pull/32820), [#32029](https://github.com/facebook/react/pull/32029), [#32028](https://github.com/facebook/react/pull/32028), and [#32038](https://github.com/facebook/react/pull/32038) by [@sebmarkbage](https://twitter.com/sebmarkbage) (thanks Seb!)._
+_View Transition을 구축한 배경에 대한 자세한 내용은 다음을 참조하세요. [#31975](https://github.com/facebook/react/pull/31975), [#32105](https://github.com/facebook/react/pull/32105), [#32041](https://github.com/facebook/react/pull/32041), [#32734](https://github.com/facebook/react/pull/32734), [#32797](https://github.com/facebook/react/pull/32797) [#31999](https://github.com/facebook/react/pull/31999), [#32031](https://github.com/facebook/react/pull/32031), [#32050](https://github.com/facebook/react/pull/32050), [#32820](https://github.com/facebook/react/pull/32820), [#32029](https://github.com/facebook/react/pull/32029), [#32028](https://github.com/facebook/react/pull/32028), and [#32038](https://github.com/facebook/react/pull/32038) by [@sebmarkbage](https://twitter.com/sebmarkbage) (Seb에게 감사합니다!)_
 
 ---
 
 ## Activity {/*activity*/}
 
-In [past](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen) [updates](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity), we shared that we were researching an API to allow components to be visually hidden and deprioritized, preserving UI state with reduced performance costs relative to unmounting or hiding with CSS.
+[지난](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen) [업데이트](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity)에서, 컴포넌트를 시각적으로 숨기고 우선순위를 지정 해제할 수 있는 API를 연구 중이며, CSS로 마운트 해제하거나 숨기는 것에 비해 성능 비용을 줄이면서 UI 상태를 유지할 수 있다고 공유한 바 있습니다.
 
-We're now ready to share the API and how it works, so you can start testing it in experimental React versions.
+이제 API와 그 작동 방식을 공유할 준비가 되었고, 실험적인 React 버전에서 테스트를 시작할 수 있습니다.
 
-`<Activity>` is a new component to hide and show parts of the UI:
+`<Activity>`는 UI의 일부를 숨기고 표시하는 새로운 컴포넌트입니다.
 
 ```js [[1, 1, "'visible'"], [2, 1, "'hidden'"]]
 <Activity mode={isVisible ? 'visible' : 'hidden'}>
@@ -11477,25 +11477,25 @@ We're now ready to share the API and how it works, so you can start testing it i
 </Activity>
 ```
 
-When an Activity is <CodeStep step={1}>visible</CodeStep> it's rendered as normal. When an Activity is <CodeStep step={2}>hidden</CodeStep> it is unmounted, but will save its state and continue to render at a lower priority than anything visible on screen.
+Activity가 <CodeStep step={1}>visible</CodeStep>하면 정상적으로 렌더링됩니다. Activity가 <CodeStep step={2}>hidden</CodeStep>이면 마운트 해제되지만, 상태를 저장하고 화면에 표시되는 항목보다 낮은 우선 순위로 계속 렌더링됩니다.
 
-You can use `Activity` to save state for parts of the UI the user isn't using, or pre-render parts that a user is likely to use next.
+`Activity`를 사용하여 사용자가 사용하지 않는 UI 부분의 상태를 저장하거나 사용자가 다음에 사용할 가능성이 있는 부분을 미리 렌더링할 수 있습니다.
 
-Let's look at some examples improving the View Transition examples above.
+위의 View Transition 예시를 개선한 몇 가지 예시를 살펴보겠습니다.
 
 <Note>
 
-**Effects don’t mount when an Activity is hidden.**
+**Activity가 `hidden`이면 Effect는 마운트되지 않습니다.**
 
-When an `<Activity>` is `hidden`, Effects are unmounted. Conceptually, the component is unmounted, but React saves the state for later.
+`<Activity>`가 `hidden`이면 Effect가 마운트 해제됩니다. 개념적으로는 컴포넌트가 마운트 해제되지만 React는 나중에 사용할 수 있도록 State를 저장합니다.
 
-In practice, this works as expected if you have followed the [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) guide. To eagerly find problematic Effects, we recommend adding [`<StrictMode>`](/reference/react/StrictMode) which will eagerly perform Activity unmounts and mounts to catch any unexpected side effects.
+실제로는 [Effect가 필요하지 않은 경우](/learn/you-might-not-need-an-effect) 가이드를 따랐다면 예상대로 작동합니다. 문제가 있는 Effect를 찾으려면, 예상치 못한 사이드 이펙트를 발견하기 위해 Activity 마운트 해제와 마운트를 수행하는 [`<StrictMode>`](/reference/react/StrictMode)를 추가하는 것이 좋습니다.
 
 </Note>
 
-### Restoring state with Activity {/*restoring-state-with-activity*/}
+### Activity로 상태 복원하기 {/*restoring-state-with-activity*/}
 
-When a user navigates away from a page, it's common to stop rendering the old page:
+사용자가 페이지에서 다른 페이지로 이동하면 이전 페이지의 렌더링을 중단하는 것이 일반적입니다.
 
 ```js {6,7}
 function App() {
@@ -11510,9 +11510,9 @@ function App() {
 }
 ```
 
-However, this means if the user goes back to the old page, all of the previous state is lost. For example, if the `<Home />` page has an `<input>` field, when the user leaves the page the `<input>` is unmounted, and all of the text they had typed is lost.
+그러나 이는 사용자가 이전 페이지로 돌아갈 경우 이전 State는 모두 손실되는 것을 의미합니다. 예를 들어 `<Home />` 페이지에 `<input>` 필드가 있는 경우 사용자가 페이지를 나가면 `<input>`이 마운트 해제되고 입력했던 모든 텍스트가 손실됩니다.
 
-Activity allows you to keep the state around as the user changes pages, so when they come back they can resume where they left off. This is done by wrapping part of the tree in `<Activity>` and toggling the `mode`:
+Activity를 사용하면 사용자가 페이지를 변경할 때 상태를 유지하여, 다시 돌아왔을 때 중단한 부분부터 다시 시작할 수 있습니다. 이 작업은 트리의 일부를 `<Activity>`로 감싸고 `mode`를 전환하면 됩니다.
 
 ```js {6-8}
 function App() {
@@ -11529,9 +11529,9 @@ function App() {
 }
 ```
 
-With this change, we can improve on our View Transitions example above. Before, when you searched for a video, selected one, and returned, your search filter was lost. With Activity, your search filter is restored and you can pick up where you left off.
+이 변경으로 위의 View Transition 예시를 개선할 수 있습니다. 이전에는 동영상을 검색하고 선택한 후 돌아오면 검색 필터가 사라졌습니다. Activity를 사용하면 검색 필터가 복원되어 중단한 부분부터 다시 시작할 수 있습니다.
 
-Try searching for a video, selecting it, and clicking "back":
+동영상을 검색하고 선택한 후 "back"을 클릭해 보세요.
 
 <Sandpack>
 
@@ -12848,11 +12848,11 @@ root.render(
 
 </Sandpack>
 
-### Pre-rendering with Activity {/*prerender-with-activity*/}
+### Activity로 사전 렌더링하기 {/*prerender-with-activity*/}
 
-Sometimes, you may want to prepare the next part of the UI a user is likely to use ahead of time, so it's ready by the time they are ready to use it. This is especially useful if the next route needs to suspend on data it needs to render, because you can help ensure the data is already fetched before the user navigates.
+사용자가 사용할 가능성이 높은 UI의 다음 부분을 미리 준비하여 그들이 사용할 준비가 되었을 때 바로 사용할 수 있도록 하고 싶을 때가 있습니다. 사용자가 네비게이팅하기 전에 데이터를 이미 가져왔을 수 있으므로, 다음 라우트가 렌더링해야 하는 데이터를 일시 중단해야 하는 경우 특히 유용합니다.
 
-For example, our app currently needs to suspend to load the data for each video when you select one. We can improve this by rendering all of the pages in a hidden `<Activity>` until the user navigates:
+예를 들어, 현재 우리의 앱은 사용자가 동영상을 선택할 때 각 동영상에 대한 데이터를 로드하기 위해 일시 중단해야 합니다. 사용자가 탐색할 때까지 숨겨진 `<Activity>`에 있는 모든 페이지를 렌더링하여 이 문제를 개선할 수 있습니다.
 
 ```js {2,5,8}
 <ViewTransition>
@@ -12868,7 +12868,7 @@ For example, our app currently needs to suspend to load the data for each video 
 <ViewTransition>
 ```
 
-With this update, if the content on the next page has time to pre-render, it will animate in without the Suspense fallback. Click a video, and notice that the video title and description on the Details page render immediately, without a fallback:
+이 업데이트를 통해 다음 페이지의 콘텐츠가 미리 렌더링할 시간이 있는 경우 Suspense 폴백 없이 애니메이션이 적용됩니다. 동영상을 클릭하면 세부 정보 페이지의 동영상 제목과 설명이 폴백 없이 즉시 렌더링되는 것을 확인할 수 있습니다.
 
 <Sandpack>
 
@@ -14186,27 +14186,27 @@ root.render(
 
 </Sandpack>
 
-### Server-Side Rendering with Activity {/*server-side-rendering-with-activity*/}
+### Activity를 사용한 서버 사이드 렌더링 {/*server-side-rendering-with-activity*/}
 
-When using Activity on a page that uses server-side rendering (SSR), there are additional optimizations.
+서버 사이드 렌더링(SSR)을 사용하는 페이지에서 Activity를 사용하는 경우 추가적인 최적화 과정이 있습니다.
 
-If part of the page is rendered with `mode="hidden"`, then it will not be included in the SSR response. Instead, React will schedule a client render for the content inside Activity while the rest of the page hydrates, prioritizing the visible content on screen.
+페이지의 일부가 `mode="hidden"`으로 렌더링되는 경우, 해당 부분은 SSR 응답에 포함되지 않습니다. 대신, React는 페이지의 나머지 부분이 하이드레이션되는 동안 Activity 내부의 콘텐츠에 대한 클라이언트 렌더링을 예약하여 화면에 표시되는 콘텐츠의 우선순위를 정합니다.
 
-For parts of the UI rendered with `mode="visible"`, React will de-prioritize hydration of content within Activity, similar to how Suspense content is hydrated at a lower priority. If the user interacts with the page, we'll prioritize hydration within the boundary if needed.
+`mode="visible"`으로 렌더링된 UI의 일부의 경우, React는 Suspense 콘텐츠가 낮은 우선순위로 하이드레이션되는 것과 유사하게 활동 내 콘텐츠의 하이드레이션 우선순위를 낮춥니다. 사용자가 페이지와 상호작용하는 경우, 필요한 경우 경계 내에서 하이드레이션의 우선순위를 지정합니다.
 
-These are advanced use cases, but they show the additional benefits considered with Activity.
+이는 고급 사용 사례이지만 Activity에서 고려되는 추가적인 이점을 보여줍니다.
 
-### Future modes for Activity {/*future-modes-for-activity*/}
+### 향후 Activity의 모드 {/*future-modes-for-activity*/}
 
-In the future, we may add more modes to Activity.
+향후 Activity에 더 많은 모드를 추가할 수 있습니다.
 
-For example, a common use case is rendering a modal, where the previous "inactive" page is visible behind the "active" modal view. The "hidden" mode does not work for this use case because it's not visible and not included in SSR.
+예를 들어 일반적인 사용 사례는 "활성화된" 모달 뷰 뒤에 이전의 "비활성된" 페이지가 표시되는 모달을 렌더링하는 것입니다. 이 사용 사례에서는 "hidden" 모드가 표시되지 않고 SSR에 포함되지 않기 때문에 작동하지 않습니다.
 
-Instead, we're considering a new mode that would keep the content visible&mdash;and included in SSR&mdash;but keep it unmounted and de-prioritize updates. This mode may also need to "pause" DOM updates, since it can be distracting to see backgrounded content updating while a modal is open.
+대신 콘텐츠를 계속 표시하고 &mdash;SSR에 포함하되&mdash; 마운트되지 않은 상태로 유지하고 업데이트 우선순위를 해제하는 새로운 모드를 고려하고 있습니다. 이 모드는 모달이 열려 있는 동안 백그라운드 콘텐츠가 업데이트되는 것을 보는 것이 방해가 될 수 있으므로, DOM 업데이트를 "일시 중지"해야 할 수도 있습니다.
 
-Another mode we're considering for Activity is the ability to automatically destroy state for hidden Activities if there is too much memory being used. Since the component is already unmounted, it may be preferable to destroy state for the least recently used hidden parts of the app rather than consume too many resources.
+Activity에서 고려 중인 또 다른 모드는 메모리가 너무 많이 사용되는 경우 숨겨진 활동의 상태를 자동으로 삭제하는 기능입니다. 컴포넌트가 이미 마운트 해제된 상태이므로 너무 많은 리소스를 소모하기보다는 앱에서 가장 최근에 사용된 숨겨진 부분의 상태를 파기하는 것이 더 바람직할 수 있습니다.
 
-These are areas we're still exploring, and we'll share more as we make progress. For more information on what Activity includes today, [check out the docs](/reference/react/Activity).
+이 부분은 아직 연구 중인 부분이며, 진전이 있으면 더 많은 내용을 공유해드리겠습니다. 오늘 포함된 Activity에 대한 자세한 내용은 [문서를 참조하세요](/reference/react/Activity).
 
 ---
 
