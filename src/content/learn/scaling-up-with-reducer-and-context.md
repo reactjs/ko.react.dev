@@ -696,7 +696,7 @@ export default function TaskList() {
 `tasks` 리스트를 업데이트하기 위해서 컴포넌트에서 context의 `dispatch` 함수를 읽고 호출할 수 있습니다.
 
 ```js {3,9-13}
-export default function AddTask() {
+export default function AddTask({ onAddTask }) {
   const [text, setText] = useState('');
   const dispatch = useContext(TasksDispatchContext);
   // ...
@@ -785,7 +785,7 @@ export const TasksDispatchContext = createContext(null);
 import { useState, useContext } from 'react';
 import { TasksDispatchContext } from './TasksContext.js';
 
-export default function AddTask() {
+export default function AddTask({ onAddTask }) {
   const [text, setText] = useState('');
   const dispatch = useContext(TasksDispatchContext);
   return (
