@@ -23,7 +23,7 @@ React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 RC
 
 React 컴파일러는 커뮤니티로부터 초기 피드백을 받기 위해 오픈소스화한 새로운 컴파일러입니다. React 컴파일러는 빌드 타임 전용 도구로 React 앱을 자동으로 최적화합니다. 순수 자바스크립트로 동작하며, [React의 규칙](/reference/rules)을 이해하므로 코드를 다시 작성할 필요가 없습니다.
 
-`eslint-plugin-react-hooks`에는 코드 에디터에서 컴파일러의 분석 결과를 즉시 보여주는 [ESLint 규칙](#installing-eslint-plugin-react-hooks)도 포함되어 있습니다. **지금 당장 모든 분들들께 이 린터 사용을 강력히 권장합니다.** 린터는 컴파일러의 설치가 필요 없으므로 컴파일러를 사용할 준비가 되지 않았더라도 사용할 수 있습니다.
+`eslint-plugin-react-hooks`에는 코드 에디터에서 컴파일러의 분석 결과를 즉시 보여주는 [ESLint 규칙](#installing-eslint-plugin-react-compiler)도 포함되어 있습니다. **지금 당장 모든 분들들께 이 린터 사용을 강력히 권장합니다.** 린터는 컴파일러의 설치가 필요 없으므로 컴파일러를 사용할 준비가 되지 않았더라도 사용할 수 있습니다.
 
 컴파일러는 현재 `rc` 버전으로 출시되었으며, React 17 이상의 앱과 라이브러리에서 사용해 볼 수 있습니다. `rc` 버전을 설치하려면 다음 명령어를 실행하세요.
 
@@ -121,7 +121,7 @@ function TableContainer({ items }) {
 
 현재 문서 외에도 [React 컴파일러 워킹 그룹](https://github.com/reactwg/react-compiler)을 확인하여 컴파일러에 대한 추가 정보와 논의를 참조하는 것을 권장합니다.
 
-### `eslint-plugin-react-hooks` 설치 {/*installing-eslint-plugin-react-hooks*/}
+### `eslint-plugin-react-hooks` 설치 {/*installing-eslint-plugin-react-compiler*/}
 
 React 컴파일러는 ESLint 플러그인도 제공합니다. `eslint-plugin-react-hooks@^6.0.0-rc.1`을 설치해서 시도해보세요.
 
