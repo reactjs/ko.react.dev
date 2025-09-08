@@ -84,20 +84,20 @@ _[2일차 전체 시청하기](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=172
 
 ## Q&A {/*q-and-a*/}
 
-또한 React와 React Native 팀은 매일 Q&A 세션으로 그 날의 일정을 마무리했습니다:
+React와 React Native 팀은 매일 Q&A 세션으로 하루를 마무리했습니다:
 
 - [Michael Chan](https://twitter.com/chantastic)이 진행한 [React Q&A](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=27518s)
 - [Jamon Holmgren](https://twitter.com/jamonholmgren)이 진행한 [React Native Q&A](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=27935s)
 
 ## 그리고... {/*and-more*/}
 
-We also heard talks on accessibility, error reporting, css, and more:
+접근성, 오류 보고, CSS 등 다양한 주제의 강연도 있었습니다:
 
-- [Kateryna Porshnieva](https://twitter.com/krambertech): [Demystifying accessibility in React apps](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=20655s)
-- [Olivier Tassinari](https://twitter.com/olivtassinari): [Pigment CSS, CSS in the server component age](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=21696s) 
-- [Sunil Pai](https://twitter.com/threepointone): [Real-time React Server Components](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=24070s) 
-- [Charlotte Isambert](https://twitter.com/c_isambert): [Let's break React Rules](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=25862s) 
-- [Ryan Albrecht](https://github.com/ryan953): [Solve 100% of your errors](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=19881s) 
+- [React 앱 접근성 해설](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=20655s) by [Kateryna Porshnieva](https://twitter.com/krambertech)
+- [Pigment CSS, 서버 컴포넌트 시대의 CSS](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=21696s) by [Olivier Tassinari](https://twitter.com/olivtassinari)
+- [실시간 React 서버 컴포넌트](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=24070s) by [Sunil Pai](https://twitter.com/threepointone)
+- [React의 규칙 깨기](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=25862s) by [Charlotte Isambert](https://twitter.com/c_isambert)
+- [오류 100% 해결하기](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=19881s) by [Ryan Albrecht](https://github.com/ryan953)
 
 ## 감사드립니다 {/*thank-you*/}
 
