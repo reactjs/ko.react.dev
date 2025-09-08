@@ -2495,7 +2495,11 @@ root.render(
 </ViewTransition>
 ```
 
+<<<<<<< HEAD
 그리고 [View Transition 클래스](/reference/react/ViewTransition#view-transition-classes)를 사용하여 CSS에서 `slow-fade`를 정의합니다.
+=======
+And define `slow-fade` in CSS using [view transition classes](/reference/react/ViewTransition#view-transition-class):
+>>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -2521,7 +2525,7 @@ export default function App() {
   const { url } = useRouter();
 
   // Define a default animation of .slow-fade.
-  // See animations.css for the animation definiton.
+  // See animations.css for the animation definition.
   return (
     <ViewTransition default="slow-fade">
       {url === '/' ? <Home /> : <Details />}

@@ -17,7 +17,8 @@ import {
   useSandpackNavigation,
 } from '@codesandbox/sandpack-react/unstyled';
 import {OpenInCodeSandboxButton} from './OpenInCodeSandboxButton';
-import {ResetButton} from './ResetButton';
+import {ReloadButton} from './ReloadButton';
+import {ClearButton} from './ClearButton';
 import {DownloadButton} from './DownloadButton';
 import {IconChevron} from '../../Icon/IconChevron';
 import {Listbox} from '@headlessui/react';
@@ -95,7 +96,7 @@ export function NavigationBar({providedFiles}: {providedFiles: Array<string>}) {
     // Note: in a real useEvent, onContainerResize would be omitted.
   }, [isMultiFile, onContainerResize]);
 
-  const handleReset = () => {
+  const handleClear = () => {
     /**
      * resetAllFiles must come first, otherwise
      * the previous content will appear for a second
@@ -103,13 +104,20 @@ export function NavigationBar({providedFiles}: {providedFiles: Array<string>}) {
      *
      * Plus, it should only prompt if there's any file changes
      */
+<<<<<<< HEAD
     if (
       sandpack.editorState === 'dirty' &&
       confirm('모든 수정 사항이 초기화됩니다. 계속하시겠습니까?')
     ) {
+=======
+    if (sandpack.editorState === 'dirty' && confirm('Clear all your edits?')) {
+>>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
       sandpack.resetAllFiles();
     }
+    refresh();
+  };
 
+  const handleReload = () => {
     refresh();
   };
 
@@ -188,7 +196,8 @@ export function NavigationBar({providedFiles}: {providedFiles: Array<string>}) {
         className="px-3 flex items-center justify-end text-start"
         translate="yes">
         <DownloadButton providedFiles={providedFiles} />
-        <ResetButton onReset={handleReset} />
+        <ReloadButton onReload={handleReload} />
+        <ClearButton onClear={handleClear} />
         <OpenInCodeSandboxButton />
         {activeFile.endsWith('.tsx') && (
           <OpenInTypeScriptPlaygroundButton

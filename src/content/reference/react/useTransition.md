@@ -1775,7 +1775,11 @@ function setState() {
 
 `startTransition` 내부에서 `await`를 사용하면 상태 업데이트가 순서대로 발생하지 않을 수 있습니다.
 
+<<<<<<< HEAD
 이 예시에서 `updateQuantity` 함수는 서버에 요청을 보내 장바구니에서 항목의 수량을 업데이트하는 동작을 시뮬레이션합니다. 이 함수는 *이전 요청 후마다 다른 요청을 인위적으로 반환*하여 네트워크 요청에 대한 경쟁 상태(race condition)를 시뮬레이션합니다.
+=======
+In this example, the `updateQuantity` function simulates a request to the server to update the item's quantity in the cart. This function *artificially returns every other request after the previous* to simulate race conditions for network requests.
+>>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
 
 수량을 한 번 업데이트한 후, 빠르게 여러 번 업데이트를 시도해 보세요. 그러면 잘못된 총합이 표시될 수 있습니다
 

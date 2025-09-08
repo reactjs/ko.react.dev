@@ -4,7 +4,11 @@ title: Static React DOM APIs
 
 <Intro>
 
+<<<<<<< HEAD
 `react-dom/static` API를 사용하면 React 컴포넌트를 위한 정적 HTML을 생성할 수 있습니다. 이는 스트리밍 API에 비해 제한된 기능을 가지고 있습니다. [프레임워크](/learn/start-a-new-react-project#production-grade-react-frameworks)가 대신 호출할 수도 있습니다. 대부분의 컴포넌트는 이를 가져오거나 사용할 필요가 없습니다.
+=======
+The `react-dom/static` APIs let you generate static HTML for React components. They have limited functionality compared to the streaming APIs. A [framework](/learn/start-a-new-react-project#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
+>>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
 
 </Intro>
 

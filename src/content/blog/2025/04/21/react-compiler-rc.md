@@ -57,7 +57,12 @@ RC에서는 React 컴파일러를 프로젝트에 더 쉽게 추가할 수 있�
 
 RC 기간 동안 React 사용자들이 컴파일러를 사용해보시고 React 레포지토리에 피드백을 제공해 주시길 바랍니다. 버그나 예상치 못한 동작을 발견하면 [이슈](https://github.com/facebook/react/issues)를 등록해 주세요. 일반적인 질문이나 제안이 있다면 [React Compiler Working Group](https://github.com/reactwg/react-compiler/discussions)에 남겨 주시면 됩니다.
 
+<<<<<<< HEAD
 ## 하위 호환성 {/*backwards-compatibility*/}
+=======
+## Migrating from eslint-plugin-react-compiler to eslint-plugin-react-hooks {/*migrating-from-eslint-plugin-react-compiler-to-eslint-plugin-react-hooks*/}
+If you have already installed eslint-plugin-react-compiler, you can now remove it and use `eslint-plugin-react-hooks@rc`. Many thanks to [@michaelfaith](https://bsky.app/profile/michael.faith) for contributing to this improvement!
+>>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
 
 베타 발표 때 언급했듯이 React 컴파일러는 React 17 이상에서 호환됩니다. 아직 React 19로 업데이트하지 않았다면 컴파일러 설정에서 최소 타겟을 지정하고 `react-compiler-runtime`을 의존성에 추가하면 React 컴파일러를 사용할 수 있습니다. 자세한 방법은 [문서](https://react.dev/learn/react-compiler#using-react-compiler-with-react-17-or-18)에서 확인할 수 있습니다.
 
@@ -70,19 +75,31 @@ RC 기간 동안 React 사용자들이 컴파일러를 사용해보시고 React 
 npm
 
 <TerminalBlock>
+<<<<<<< HEAD
   {`npm install --save-dev eslint-plugin-react-hooks@6.0.0-rc.1`}
+=======
+{`npm install --save-dev eslint-plugin-react-hooks@rc`}
+>>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
 </TerminalBlock>
 
 pnpm
 
 <TerminalBlock>
+<<<<<<< HEAD
   {`pnpm add --save-dev eslint-plugin-react-hooks@6.0.0-rc.1`}
+=======
+{`pnpm add --save-dev eslint-plugin-react-hooks@rc`}
+>>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
 </TerminalBlock>
 
 yarn
 
 <TerminalBlock>
+<<<<<<< HEAD
   {`yarn add --dev eslint-plugin-react-hooks@6.0.0-rc.1`}
+=======
+{`yarn add --dev eslint-plugin-react-hooks@rc`}
+>>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
 </TerminalBlock>
 
 ```js

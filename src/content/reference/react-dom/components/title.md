@@ -30,7 +30,11 @@ title: "<title>"
 
 #### Props {/*props*/}
 
+<<<<<<< HEAD
 `<title>`은 [공통 컴포넌트 속성](/reference/react-dom/components/common#props)을 지원합니다.
+=======
+`<title>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
 
 * `children`: `<title>`은 자식으로 텍스트만 허용합니다. 이 텍스트는 문서의 제목이 됩니다. 텍스트만 렌더링하는 한, 사용자 정의 컴포넌트도 전달할 수 있습니다.
 
