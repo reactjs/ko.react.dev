@@ -448,9 +448,7 @@ button { display: block; margin-bottom: 20px; }
 
 #### 컴포넌트에 ref 노출하기 {/*exposing-a-ref-to-your-own-component*/}
 
-때로는 부모 컴포넌트가 컴포넌트 내부의 DOM을 조작할 수 있도록 하고 싶을 때가 있습니다. 예를 들어 `MyInput` 컴포넌트를 작성하는 중인데, 부모 컴포넌트가 (부모가 접근할 수 없는) `MyInput`의 input에 포커스를 맞출 수 있게 하고 싶을 수 있습니다. `useRef`로 input을 붙잡고 [`forwardRef`](/reference/react/forwardRef)로 이를 부모 컴포넌트에 노출시킬 수 있습니다. [자세한 내용은 여기에서 확인하세요.](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)
-
-Sometimes, you may want to let the parent component manipulate the DOM inside of your component. For example, maybe you're writing a `MyInput` component, but you want the parent to be able to focus the input (which the parent has no access to). You can create a `ref` in the parent and pass the `ref` as prop to the child component. Read a [detailed walkthrough](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) here. {/*TODO*/}
+때로는 부모 컴포넌트가 컴포넌트 내부의 DOM을 조작할 수 있도록 하고 싶을 때가 있습니다. 예를 들어 `MyInput` 컴포넌트를 작성하는 중인데, 부모 컴포넌트가 (부모가 접근할 수 없는) `MyInput`의 Input에 포커스를 맞출 수 있게 하고 싶을 수 있습니다. 이때 부모는 `ref`를 만들고, 이 `ref`를 자식 컴포넌트로 넘겨줌으로써 부모가 접근할 수 있도록 만들 수 있습니다. [자세한 내용은 여기에서 확인하세요.](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)
 
 <Sandpack>
 
