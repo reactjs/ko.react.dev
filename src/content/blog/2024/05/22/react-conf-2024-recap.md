@@ -86,7 +86,7 @@ _[2일차 전체 시청하기](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=172
 
 React와 React Native 팀은 매일 Q&A 세션으로 하루를 마무리했습니다:
 
-- [Michael Chan](https://twitter.com/chantastic)이 진행한 [React Q&A](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=27518s)
+- [Michael Chan](https://twitter.com/chantastic)이 진행한 [React Q&A](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=27518s) 
 - [Jamon Holmgren](https://twitter.com/jamonholmgren)이 진행한 [React Native Q&A](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=27935s)
 
 ## 그리고... {/*and-more*/}
@@ -101,25 +101,24 @@ React와 React Native 팀은 매일 Q&A 세션으로 하루를 마무리했습�
 
 ## 감사드립니다 {/*thank-you*/}
 
-Thank you to all the staff, speakers, and participants who made React Conf 2024 possible. There are too many to list, but we want to thank a few in particular.
+React Conf 2024를 가능하게 해준 모든 스태프, 발표자, 참가자분들께 감사드립니다. 너무 많아 모두 나열할 수 없지만, 몇 분께 특별히 감사드리고 싶습니다.
 
-Thank you to [Barbara Markiewicz](https://twitter.com/barbara_markie), the team at [Callstack](https://www.callstack.com/), and our React Team Developer Advocate [Matt Carroll](https://twitter.com/mattcarrollcode) for helping to plan the entire event; and to [Sunny Leggett](https://zeroslopeevents.com/about) and everyone from [Zero Slope](https://zeroslopeevents.com) for helping to organize the event.
+전체 행사 기획을 도와주신 [Barbara Markiewicz](https://twitter.com/barbara_markie), [Callstack 팀](https://www.callstack.com/), React Team Developer Advocate인 [Matt Carroll](https://twitter.com/mattcarrollcode)께 감사드립니다. 행사 운영을 도와주신 [Sunny Leggett](https://zeroslopeevents.com/about)와 [Zero Slope 팀](https://zeroslopeevents.com)께도 감사드립니다.
 
-Thank you [Ashley Narcisse](https://twitter.com/_darkfadr) for being our MC and Chief Vibes Officer; and to [Michael Chan](https://twitter.com/chantastic) and [Jamon Holmgren](https://twitter.com/jamonholmgren) for hosting the Q&A sessions.
+사회를 맡아주신 Chief Vibes Officer [Ashley Narcisse](https://twitter.com/_darkfadr), Q&A 세션을 진행해주신 [Michael Chan](https://twitter.com/chantastic)과 [Jamon Holmgren](https://twitter.com/jamonholmgren)께 감사드립니다.
 
-Thank you [Seth Webster](https://twitter.com/sethwebster) and [Eli White](https://x.com/Eli_White) for welcoming us each day and providing direction on structure and content; and to [Tom Occhino](https://twitter.com/tomocchino) for joining us with a special message during the after-party.
+매일 환영사로 우리를 맞아주고 구조와 콘텐츠의 방향을 제시해주신 [Seth Webster](https://twitter.com/sethwebster)와 [Eli White](https://x.com/Eli_White), 애프터 파티에서 특별한 메시지를 전해주신 [Tom Occhino](https://twitter.com/tomocchino)께 감사드립니다.
 
-Thank you [Ricky Hanlon](https://www.youtube.com/watch?v=FxTZL2U-uKg&t=1263s) for providing detailed feedback on talks, working on slide designs, and generally filling in the gaps to sweat the details.
+강연에 대한 세심한 피드백, 슬라이드 디자인, 그리고 전반적인 세부 사항을 신경써주신 [Ricky Hanlon](https://www.youtube.com/watch?v=FxTZL2U-uKg&t=1263s)께 감사드립니다.
 
-Thank you [Callstack](https://www.callstack.com/) for building the conference website; and to [Kadi Kraman](https://twitter.com/kadikraman) and the [Expo](https://expo.dev/) team for building the conference mobile app.
+콘퍼런스 웹사이트를 제작한 [Callstack](https://www.callstack.com/), 모바일 앱을 제작한 [Kadi Kraman](https://twitter.com/kadikraman)과 [Expo 팀](https://expo.dev/)께 감사드립니다.
 
-Thank you to all the sponsors who made the event possible: [Remix](https://remix.run/), [Amazon](https://developer.amazon.com/apps-and-games?cmp=US_2024_05_3P_React-Conf-2024&ch=prtnr&chlast=prtnr&pub=ref&publast=ref&type=org&typelast=org), [MUI](https://mui.com/), [Sentry](https://sentry.io/for/react/?utm_source=sponsored-conf&utm_medium=sponsored-event&utm_campaign=frontend-fy25q2-evergreen&utm_content=logo-reactconf2024-learnmore), [Abbott](https://www.jobs.abbott/software), [Expo](https://expo.dev/), [RedwoodJS](https://redwoodjs.com/), and [Vercel](https://vercel.com).
+행사를 가능하게 해준 스폰서분들께 감사드립니다: [Remix](https://remix.run/), [Amazon](https://developer.amazon.com/apps-and-games?cmp=US_2024_05_3P_React-Conf-2024&ch=prtnr&chlast=prtnr&pub=ref&publast=ref&type=org&typelast=org), [MUI](https://mui.com/), [Sentry](https://sentry.io/for/react/?utm_source=sponsored-conf&utm_medium=sponsored-event&utm_campaign=frontend-fy25q2-evergreen&utm_content=logo-reactconf2024-learnmore), [Abbott](https://www.jobs.abbott/software), [Expo](https://expo.dev/), [RedwoodJS](https://redwoodjs.com/), [Vercel](https://vercel.com).
 
-Thank you to the AV Team for the visuals, stage, and sound; and to the Westin Hotel for hosting us.
+시각, 무대, 그리고 음향을 담당해주신 AV팀과 행사를 개최해주신 Westin Hotel에도 감사드립니다.
 
-Thank you to all the speakers who shared their knowledge and experiences with the community.
+지식과 커뮤니티에 관한 경험을 공유해주신 모든 연사분들께 감사드립니다.
 
-Finally, thank you to everyone who attended in person and online to show what makes React, React. React is more than a library, it is a community, and it was inspiring to see everyone come together to share and learn together.
+마지막으로, 현장과 온라인에서 참석하여 무엇이 React를 React답게 만드는지 보여주신 모든 분들께 감사드립니다. React는 단순한 라이브러리를 넘어 커뮤니티입니다. 모두가 한자리에 모여 함께 배우고 공유하는 모습이 큰 영감이 되었습니다.
 
-See you next time!
-
+다음에 또 만나요!
