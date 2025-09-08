@@ -3,7 +3,6 @@ title: "React Conf 2024 요약"
 author: Ricky Hanlon
 date: 2024년 05월 22일
 description: 지난주 우리는 네바다주 헨더슨에서 React Conf 2024를 개최했습니다. 2일간의 콘퍼런스에서는 700명 이상의 참가자가 현장에서 모여 UI 엔지니어링 분야의 최신 동향을 논의했습니다. 이 글에서는 콘퍼런스에서 진행된 강연과 발표 내용을 요약했습니다.
-
 ---
 
 2024년 5월 22일, [Ricky Hanlon](https://twitter.com/rickhanlonii).
