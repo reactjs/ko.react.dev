@@ -59,26 +59,26 @@ _[1일차 전체 영상 시청하기.](https://www.youtube.com/watch?v=T8TZQ6k4S
 
 ## 2일차 {/*day-2*/}
 
-_[Watch the full day 2 stream here.](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=1720s)_
+_[2일차 전체 시청하기](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=1720s)_
 
-둘째날의 시작은 [Seth Webster](https://twitter.com/sethwebster)의 환영 인사로 시작되었으며, [Eli White](https://x.com/Eli_White)의 감사 인사에 이어 CVO(Chief Vibes Officer) [Ashley Narcisse](https://twitter.com/_darkfadr)가 소개를 맡았습니다.
+둘째 날은 [Seth Webster](https://twitter.com/sethwebster)의 환영사와 [Eli White](https://x.com/Eli_White)의 감사 인사, 그리고 사회자 [Ashley Narcisse](https://twitter.com/_darkfadr)의 소개로 시작되었습니다.
 
-In the day 2 keynote, [Nicola Corti](https://twitter.com/cortinico) shared the State of React Native, including 78 million downloads in 2023. He also highlighted apps using React Native including 2000+ screens used inside of Meta; the product details page in Facebook Marketplace, which is visited more than 2 billion times per day; and part of the Microsoft Windows Start Menu and some features in almost every Microsoft Office product across mobile and desktop.
+2일차 기조연설에서 [Nicola Corti](https://twitter.com/cortinico)는 React Native의 현황을 발표하며 2023년 다운로드 수가 7800만 건임을 공유했습니다. 또한 Meta에서 사용되는 2000개 이상의 화면, 하루 20억 회 이상 방문되는 Facebook 마켓플레이스의 제품 상세 페이지, Microsoft Windows의 시작 메뉴 일부 및 대부분의 Microsoft Office 모바일/데스크톱 기능을 포함한 React Native 앱의 사례를 강조했습니다.
 
-Nicola also highlighted all the work the community does to support React Native including libraries, frameworks, and multiple platforms. For more, check out these talks from the community:
+또한, Nicola는 라이브러리, 프레임워크, 다양한 플랫폼을 포함해 React Native를 지원하기 위해 커뮤니티가 한 모든 활동도 강조했습니다. 더 자세한 내용은 커뮤니티 발표를 참고하세요.
 
-- [Extending React Native beyond Mobile and Desktop Apps](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=5798s) by [Chris Traganos](https://twitter.com/chris_trag) and [Anisha Malde](https://twitter.com/anisha_malde)
-- [Spatial computing with React](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=22525s) by [Michał Pierzchała](https://twitter.com/thymikee)
+- [Chris Traganos](https://twitter.com/chris_trag) & [Anisha Malde](https://twitter.com/anisha_malde): [모바일 및 데스크톱 앱을 넘어선 React Native 확장](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=5798s)
+- [Michał Pierzchała](https://twitter.com/thymikee): [React를 활용한 공간 컴퓨팅](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=22525s)
 
-[Riccardo Cipolleschi](https://twitter.com/cipolleschir) continued the day 2 keynote by announcing that the React Native New Architecture is now in Beta and ready for apps to adopt in production. He shared new features and improvements in the new architecture, and shared the roadmap for the future of React Native. For more check out:
+[Riccardo Cipolleschi](https://twitter.com/cipolleschir)는 React Native의 새로운 아키텍처가 베타 상태로 출시되어 앱에서 사용할 준비가 되었음을 발표하고, 새로운 기능 및 향후 로드맵을 공유했습니다. 더 알아보기:
 
-- [Cross Platform React](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=26569s) by [Olga Zinoveva](https://github.com/SlyCaptainFlint) and [Naman Goel](https://twitter.com/naman34)
+- [Olga Zinoveva](https://github.com/SlyCaptainFlint) & [Naman Goel](https://twitter.com/naman34): [크로스 플랫폼 React](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=26569s)
 
-Next in the keynote, Nicola announced that we are now recommending starting with a framework like Expo for all new apps created with React Native. With the change, he also announced a new React Native homepage and new Getting Started docs. You can view the new Getting Started guide in the [React Native docs](https://reactnative.dev/docs/next/environment-setup).
+기조연설에서 Nicola는 React Native 신규 앱 개발 시 Expo와 같은 프레임워크 사용을 권장한다고 발표하고, 새로운 React Native 홈페이지와 시작 가이드를 공개했습니다. [React Native 문서](https://reactnative.dev/docs/next/environment-setup)에서 새 가이드를 확인할 수 있습니다.
 
-Finally, to end the keynote, [Kadi Kraman](https://twitter.com/kadikraman) shared the latest features and improvements in Expo, and how to get started developing with React Native using Expo.
+마지막으로 [Kadi Kraman](https://twitter.com/kadikraman)이 Expo의 최신 기능과 개선 사항, 그리고 Expo를 통한 React Native 개발 시작 방법을 공유하며 기조연설을 마쳤습니다.
 
-Watch the full day 2 keynote here:
+2일차 기조 연설 전체 시청하기:
 
 <YouTubeIframe src="https://www.youtube.com/embed/0ckOUBiuxVY?t=1720s" />
 
