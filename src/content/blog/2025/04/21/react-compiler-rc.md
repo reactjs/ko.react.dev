@@ -1,11 +1,11 @@
 ---
-title: 'React Compiler RC'
+title: 'React 컴파일러 RC'
 author: Lauren Tan and Mofei Zhang
 date: 2025/04/21
 description: 컴파일러의 첫 번째 릴리즈 후보(Release Candidate, RC)를 공개합니다.
 ---
 
-2025년 4월 21일, by [Lauren Tan](https://x.com/potetotes) and [Mofei Zhang](https://x.com/zmofei).
+2025년 4월 21일, [Lauren Tan](https://x.com/potetotes), [Mofei Zhang](https://x.com/zmofei)
 
 ---
 

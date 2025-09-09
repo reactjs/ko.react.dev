@@ -6,7 +6,7 @@ description: 오늘 React와 React 문서의 새로운 보금자리인 react.dev
 
 ---
 
-2023년 3월 16일 [Dan Abramov](https://twitter.com/dan_abramov)와 [Rachel Nabors](https://twitter.com/rachelnabors)가 작성함
+2023년 3월 16일, [Dan Abramov](https://twitter.com/dan_abramov), [Rachel Nabors](https://twitter.com/rachelnabors)
 
 ---
 
