@@ -23,7 +23,7 @@ React Conf 2024에서는 [React 19 RC](/blog/2024/12/05/react-19), [React Native
 
 ## 1일 차 {/*day-1*/}
 
-_[1일 차 전체 스트리밍 시청하기.](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=973s)_
+_[1일 차 전체 스트리밍 시청하기](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=973s)_
 
 첫째 날은 Meta CTO [Andrew "Boz" Bosworth](https://www.threads.net/@boztank)의 환영사와 Meta의 React 팀을 이끄는 [Seth Webster](https://twitter.com/sethwebster)와 사회자 [Ashley Narcisse](https://twitter.com/_darkfadr)의 소개로 시작되었습니다.
 
