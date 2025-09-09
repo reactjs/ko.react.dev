@@ -5,7 +5,7 @@ date: 2025/02/14
 description: 새로운 앱에 대한 Create React App 사용을 중단하며, 기존 앱은 프레임워크나 Vite, Parcel, RSBuild 같은 빌드 도구로의 마이그레이션을 권장합니다. 또한 프레임워크가 프로젝트와 맞지 않거나, 자신만의 프레임워크를 구축하고 싶거나, 혹은 React가 어떻게 작동하는지 배우기 위해 React 앱을 처음부터 만들어 보고 싶은 사용자들을을 위한 문서를 제공합니다.
 ---
 
-2025년 02월 14일, [Matt Carroll](https://twitter.com/mattcarrollcode), [Ricky Hanlon](https://bsky.app/profile/ricky.fm)
+2025년 2월 14일, [Matt Carroll](https://twitter.com/mattcarrollcode), [Ricky Hanlon](https://bsky.app/profile/ricky.fm)
 
 ---
 
