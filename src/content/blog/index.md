@@ -40,9 +40,9 @@ We announced an experimental release of React Compiler at React Conf 2024. We've
 
 </BlogCard>
 
-<BlogCard title="React Conf 2024 Recap" date="May 22, 2024" url="/blog/2024/05/22/react-conf-2024-recap">
+<BlogCard title="React Conf 2024 요약" date="2024년 5월 22일" url="/blog/2024/05/22/react-conf-2024-recap">
 
-Last week we hosted React Conf 2024, a two-day conference in Henderson, Nevada where 700+ attendees gathered in-person to discuss the latest in UI engineering. This was our first in-person conference since 2019, and we were thrilled to be able to bring the community together again ...
+지난주 우리는 네바다주 헨더슨에서 2일간의 React Conf 2024를 개최했으며, 700명 이상의 참가자가 현장에서 모여 UI 엔지니어링 분야의 최신 동향을 논의했습니다. 이는 2019년 이후 처음 열린 오프라인 콘퍼런스였으며, 우리는 이 커뮤니티를 다시 한자리에 모을 수 있게 되어 매우 기뻤습니다.
 
 </BlogCard>
 
