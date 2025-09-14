@@ -20,7 +20,6 @@ React Labs 게시글에서는 현재 연구 개발 중인 프로젝트에 대한
 
 컴파일러의 첫 번째 릴리즈 후보(Release Candidate, RC)를 공개합니다.
 
-
 </BlogCard>
 
 <BlogCard title="Create React App 지원 종료" date="2025년 2월 14일" url="/blog/2025/02/14/sunsetting-create-react-app">
