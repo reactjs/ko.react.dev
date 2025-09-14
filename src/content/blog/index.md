@@ -10,25 +10,25 @@ title: React 블로그
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<BlogCard title="React Labs: View Transitions, Activity, and more" date="April 23, 2025" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
+<BlogCard title="React Labs: View Transitions, Activity 그리고 그 외" date="2025년 4월 23일" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
 
 React Labs 게시글에서는 현재 연구 개발 중인 프로젝트에 대한 글을 작성합니다. 이번 포스팅에서는 지금 바로 사용해 볼 수 있는 두 가지 새로운 실험적 기능을 공유하고, 현재 작업 중인 다른 영역에 대해서도 공유하고자 합니다.
 
 </BlogCard>
 
-<BlogCard title="React Compiler RC" date="April 21, 2025" url="/blog/2025/04/21/react-compiler-rc">
+<BlogCard title="React 컴파일러 RC" date="2025년 5월 21일" url="/blog/2025/04/21/react-compiler-rc">
 
-We are releasing the compiler's first Release Candidate (RC) today.
+컴파일러의 첫 번째 릴리즈 후보(Release Candidate, RC)를 공개합니다.
 
 </BlogCard>
 
-<BlogCard title="Create React App 지원 종료" date="February 14, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
+<BlogCard title="Create React App 지원 종료" date="2025년 2월 14일" url="/blog/2025/02/14/sunsetting-create-react-app">
 
 새로운 앱에 대한 Create React App 사용을 중단하며, 기존 앱은 프레임워크나 Vite, Parcel, RSBuild 같은 빌드 도구로의 마이그레이션을 권장합니다. 또한 프레임워크가 프로젝트와 맞지 않거나, 자신만의 프레임워크를 구축하고 싶거나, 혹은 React가 어떻게 작동하는지 배우기 위해 React 앱을 처음부터 만들어 보고 싶은 사용자들을 위한 문서를 제공합니다.
 
 </BlogCard>
 
-<BlogCard title="React v19" date="December 5, 2024" url="/blog/2024/12/05/react-19">
+<BlogCard title="React v19" date="2024년 12월 5일" url="/blog/2024/12/05/react-19">
 
 React 19 업그레이드 가이드에서 React 19로 앱을 업그레이드하는 단계별 지침을 공유했습니다. 이 포스트에서 React 19의 새로운 기능들과 이를 도입하는 방법을 제공합니다.
 
