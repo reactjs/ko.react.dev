@@ -36,7 +36,11 @@ title: "<option>"
 
 #### Props {/*props*/}
 
+<<<<<<< HEAD
 `<option>`은 모든 [공통 엘리먼트 Props](/reference/react-dom/components/common#props)를 지원합니다.
+=======
+`<option>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> a5181c291f01896735b65772f156cfde34df20ee
 
 또한, `<option>`은 아래와 같은 Props를 지원합니다.
 
