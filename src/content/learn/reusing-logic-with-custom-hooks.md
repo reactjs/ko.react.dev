@@ -1418,10 +1418,36 @@ function SaveButton() {
 
 #### React가 데이터 패칭을 위한 내부 해결책을 제공할까요? {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
 
+<<<<<<< HEAD
 아직 세부적인 사항을 작업 중이지만, 앞으로는 이와 같이 데이터 가져오도록 작성하게 될 것으로 예상합니다.
 
 ```js {1,4,6}
 import { use } from 'react'; // 아직 사용 불가능합니다!
+=======
+Today, with the [`use`](/reference/react/use#streaming-data-from-server-to-client) API, data can be read in render by passing a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to `use`:
+
+```js {1,4,11}
+import { use, Suspense } from "react";
+
+function Message({ messagePromise }) {
+  const messageContent = use(messagePromise);
+  return <p>Here is the message: {messageContent}</p>;
+}
+
+export function MessageContainer({ messagePromise }) {
+  return (
+    <Suspense fallback={<p>⌛Downloading message...</p>}>
+      <Message messagePromise={messagePromise} />
+    </Suspense>
+  );
+}
+```
+
+We're still working out the details, but we expect that in the future, you'll write data fetching like this:
+
+```js {1,4,6}
+import { use } from 'react';
+>>>>>>> a5181c291f01896735b65772f156cfde34df20ee
 
 function ShippingForm({ country }) {
   const cities = use(fetch(`/api/cities?country=${country}`));

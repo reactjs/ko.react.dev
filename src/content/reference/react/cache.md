@@ -314,7 +314,11 @@ React는 컴포넌트에서 메모화된 함수의 캐시 접근만 제공합니
 
 #### `useMemo` {/*deep-dive-use-memo*/}
 
+<<<<<<< HEAD
 일반적으로 [`useMemo`](/reference/react/useMemo)는 클라이언트 컴포넌트에서 렌더링에 걸쳐 고비용의 계산을 캐싱할 때 사용합니다. 예를 들어 컴포넌트 내에서 데이터의 변환을 메모화할 수 있습니다.
+=======
+In general, you should use [`useMemo`](/reference/react/useMemo) for caching an expensive computation in a Client Component across renders. As an example, to memoize a transformation of data within a component.
+>>>>>>> a5181c291f01896735b65772f156cfde34df20ee
 
 ```jsx {4}
 'use client';
