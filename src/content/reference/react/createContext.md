@@ -47,9 +47,9 @@ const ThemeContext = createContext('light');
 
 ---
 
-### `SomeContext Provider` {/*provider*/}
+### `SomeContext` Provider {/*provider*/}
 
-컴포넌트를 컨텍스트 제공자로 감싸서 이 컨텍스트의 값을 모든 내부 컴포넌트에 지정합니다.
+컴포넌트를 컨텍스트 제공자<sup>Provider</sup>로 감싸서 이 컨텍스트의 값을 모든 내부 컴포넌트에 지정합니다.
 
 ```js
 function App() {
@@ -65,7 +65,7 @@ function App() {
 
 <Note>
 
-React 19부터는 `<SomeContext>`를 제공자로 렌더링 할 수 있습니다.
+React 19부터는 `<SomeContext>`를 제공자<sup>Provider</sup>로 렌더링 할 수 있습니다.
 
 오래된 React 버전은 `<SomeContext.Provider>`를 사용합니다.
 
@@ -213,7 +213,7 @@ function App() {
 
 ## 문제 해결 {/*troubleshooting*/}
 
-### 컨텍스트 값을 바꾸는 방법을 모르겠어요. {/*i-cant-find-a-way-to-change-the-context-value*/}
+### 컨텍스트 값을 바꾸는 방법을 모르겠어요 {/*i-cant-find-a-way-to-change-the-context-value*/}
 
 이런 코드는 *기본* 컨텍스트 값을 지정합니다.
 
