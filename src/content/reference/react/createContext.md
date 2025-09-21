@@ -37,19 +37,19 @@ const ThemeContext = createContext('light');
 
 #### 반환값 {/*returns*/}
 
-`createContext` returns a context object.
+`createContext`는 컨텍스트 객체를 반환합니다.
 
 **컨텍스트 객체 자체는 어떠한 정보도 가지고 있지 않습니다.** 다른 컴포넌트가 읽거나 제공하는 어떤 컨텍스트를 나타냅니다. 일반적으로 상위 컴포넌트에서 컨텍스트 값을 지정하기 위해 [`SomeContext`](#provider)를 사용하고, 아래 컴포넌트에서 읽기 위해 [`useContext(SomeContext)`](/reference/react/useContext)를 호출합니다. 컨텍스트 객체에는 몇 가지 속성이 있습니다.
 
-* `SomeContext` lets you provide the context value to components.
+* `SomeContext`는 컴포넌트에게 컨텍스트 값을 제공합니다.
 * `SomeContext.Consumer`는 컨텍스트 값을 읽는 대안이며 드물게 사용됩니다.
-* `SomeContext.Provider` is a legacy way to provide the context value before React 19.
+* `SomeContext.Provider`는 React 19 이전 버전에서 사용되는 오래된 컨텍스트 값 제공 방법입니다.
 
 ---
 
 ### `SomeContext` Provider {/*provider*/}
 
-컴포넌트를 컨텍스트 제공자로 감싸서 이 컨텍스트의 값을 모든 내부 컴포넌트에 지정합니다.
+컴포넌트를 컨텍스트 제공자<sup>Provider</sup>로 감싸서 이 컨텍스트의 값을 모든 내부 컴포넌트에 지정합니다.
 
 ```js
 function App() {
@@ -65,9 +65,9 @@ function App() {
 
 <Note>
 
-Starting in React 19, you can render `<SomeContext>` as a provider. 
+React 19부터는 `<SomeContext>`를 제공자<sup>Provider</sup>로 렌더링 할 수 있습니다.
 
-In older versions of React, use `<SomeContext.Provider>`.
+오래된 React 버전은 `<SomeContext.Provider>`를 사용합니다.
 
 </Note>
 
@@ -213,7 +213,7 @@ function App() {
 
 ## 문제 해결 {/*troubleshooting*/}
 
-### I can't find a way to change the context value {/*i-cant-find-a-way-to-change-the-context-value*/}
+### 컨텍스트 값을 바꾸는 방법을 모르겠어요 {/*i-cant-find-a-way-to-change-the-context-value*/}
 
 이런 코드는 *기본* 컨텍스트 값을 지정합니다.
 
