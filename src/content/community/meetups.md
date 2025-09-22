@@ -1,5 +1,5 @@
 ---
-title: React 밋업
+title: React Meetups
 ---
 
 <Intro>
