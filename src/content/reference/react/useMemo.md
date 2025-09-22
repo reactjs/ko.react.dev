@@ -12,6 +12,12 @@ const cachedValue = useMemo(calculateValue, dependencies)
 
 </Intro>
 
+<Note>
+
+[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useMemo` calls. You can use the compiler to handle memoization automatically.
+
+</Note>
+
 <InlineToc />
 
 ---
@@ -143,7 +149,11 @@ console.timeEnd('filter array');
 
 #### 모든 곳에 useMemo를 추가해야 하나요? {/*should-you-add-usememo-everywhere*/}
 
+<<<<<<< HEAD
 이 사이트와 같이 대부분의 상호 작용이 거친 경우(페이지 또는 전체 섹션이 교체되는 것과 같이) 메모이제이션이 필요하지 않습니다. 반면, 앱이 그림 편집기와 비슷하고 대부분의 상호 작용이 세분화된 경우(도형 이동과 같은) 메모이제이션이 매우 유용할 수 있습니다.
+=======
+If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful.
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 
 `useMemo`로 최적화하는 것은 몇몇 경우에만 유용합니다.
 
@@ -219,7 +229,8 @@ export default function App() {
 
 ```
 
-```js src/TodoList.js active
+{/* TODO(@poteto) - investigate potential false positives in react compiler validation */}
+```js {expectedErrors: {'react-compiler': [5]}} src/TodoList.js active
 import { useMemo } from 'react';
 import { filterTodos } from './utils.js'
 
@@ -711,7 +722,7 @@ export default function TodoList({ todos, theme, tab }) {
 }
 ```
 
-```js src/List.js
+```js {expectedErrors: {'react-compiler': [5, 6]}} src/List.js
 import { memo } from 'react';
 
 const List = memo(function List({ items }) {
@@ -849,7 +860,7 @@ export default function TodoList({ todos, theme, tab }) {
 }
 ```
 
-```js src/List.js
+```js {expectedErrors: {'react-compiler': [5, 6]}} src/List.js
 import { memo } from 'react';
 
 const List = memo(function List({ items }) {
@@ -1364,7 +1375,7 @@ Object.is(temp1[2], temp2[2]); // ... 그리고 기타 모든 종속성들이 �
 
 `Chart` 컴포넌트가 [`memo`](/reference/react/memo)로 감싸져 있다고 가정해보겠습니다. `ReportList` 컴포넌트가 다시 렌더링 될 때 목록의 모든 `Chart`를 다시 렌더링하는 것을 생략하고 싶을 것입니다. 그러나 반복문에서 `useMemo`를 호출할 수 없습니다.
 
-```js {5-11}
+```js {expectedErrors: {'react-compiler': [6]}} {5-11}
 function ReportList({ items }) {
   return (
     <article>

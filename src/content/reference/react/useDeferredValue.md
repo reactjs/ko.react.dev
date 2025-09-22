@@ -245,7 +245,11 @@ input { margin: 10px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 일반적인 대체 UI 패턴은 결과 목록 업데이트를 *지연*하고 새 결과가 준비될 때까지 이전 결과를 계속 표시합니다. `useDeferredValue`를 호출하여 쿼리의 지연된 버전을 전달하세요.
+=======
+A common alternative UI pattern is to *defer* updating the list of results and to keep showing the previous results until the new results are ready. Call `useDeferredValue` to pass a deferred version of the query down:
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 
 ```js {3,11}
 export default function App() {
@@ -670,7 +674,7 @@ export default function App() {
 }
 ```
 
-```js src/SlowList.js
+```js {expectedErrors: {'react-compiler': [19, 20]}} src/SlowList.js
 import { memo } from 'react';
 
 const SlowList = memo(function SlowList({ text }) {
@@ -745,7 +749,7 @@ export default function App() {
 }
 ```
 
-```js src/SlowList.js
+```js {expectedErrors: {'react-compiler': [19, 20]}} src/SlowList.js
 import { memo } from 'react';
 
 const SlowList = memo(function SlowList({ text }) {

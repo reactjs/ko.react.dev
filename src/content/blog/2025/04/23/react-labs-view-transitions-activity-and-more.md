@@ -2495,7 +2495,11 @@ root.render(
 </ViewTransition>
 ```
 
+<<<<<<< HEAD
 그리고 [View Transition 클래스](/reference/react/ViewTransition#view-transition-classes)를 사용하여 CSS에서 `slow-fade`를 정의합니다.
+=======
+And define `slow-fade` in CSS using [view transition classes](/reference/react/ViewTransition#view-transition-class):
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -2521,7 +2525,7 @@ export default function App() {
   const { url } = useRouter();
 
   // Define a default animation of .slow-fade.
-  // See animations.css for the animation definiton.
+  // See animations.css for the animation definition.
   return (
     <ViewTransition default="slow-fade">
       {url === '/' ? <Home /> : <Details />}
@@ -11465,7 +11469,19 @@ _View Transition을 구축한 배경에 대한 자세한 내용은 다음을 참
 
 ## Activity {/*activity*/}
 
+<<<<<<< HEAD
 [지난](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen) [업데이트](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity)에서, 컴포넌트를 시각적으로 숨기고 우선순위를 지정 해제할 수 있는 API를 연구 중이며, CSS로 마운트 해제하거나 숨기는 것에 비해 성능 비용을 줄이면서 UI 상태를 유지할 수 있다고 공유한 바 있습니다.
+=======
+<Note>
+
+**`<Activity />` is now available in React’s Canary channel.**
+
+[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
+
+</Note>
+
+In [past](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen) [updates](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity), we shared that we were researching an API to allow components to be visually hidden and deprioritized, preserving UI state with reduced performance costs relative to unmounting or hiding with CSS.
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 
 이제 API와 그 작동 방식을 공유할 준비가 되었고, 실험적인 React 버전에서 테스트를 시작할 수 있습니다.
 
