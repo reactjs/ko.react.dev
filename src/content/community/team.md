@@ -4,7 +4,7 @@ title: "팀 소개"
 
 <Intro>
 
-React 개발은 Meta에서 전담 팀이 주도하고 있으며, 전 세계 사람들의 기여를 받고 있습니다.
+React 개발은 Meta의 전담 팀이 주도하며, 전 세계 개발자들이 기여하고 있습니다.
 
 </Intro>
 
@@ -12,7 +12,7 @@ React 개발은 Meta에서 전담 팀이 주도하고 있으며, 전 세계 사�
 
 React Core 팀 구성원들은 React DOM과 React Native를 구동하는 엔진, 핵심 컴포넌트 API, React DevTools, 그리고 문서 웹사이트 개발을 전담합니다.
 
-현재 React 팀 멤버들은 아래에 알파벳 순으로 나열되어 있습니다.
+현재 React 팀 멤버는 아래에 알파벳 순으로 나열되어 있습니다.
 
 <TeamMember name="Andrew Clark" permalink="andrew-clark" photo="/images/team/acdlite.jpg" github="acdlite" twitter="acdlite" threads="acdlite" title="Engineer at Vercel">
     Andrew는 WordPress로 사이트를 만들며 웹 개발을 시작했고, 어쩌다 보니 JavaScript까지 하게 되었습니다. 취미는 노래방에서 시간을 보내는 것이고, 날에 따라 디즈니 빌런 같기도, 디즈니 공주 같기도 합니다.

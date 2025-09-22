@@ -7,7 +7,7 @@ React.js 관련 컨퍼런스를 알고 계신가요? 이곳에 추가해주세�
 
 </Intro>
 
-## 예정된 컨퍼런스 {/*upcoming-conferences*/}
+## 예정 컨퍼런스 {/*upcoming-conferences*/}
 
 ### CityJS London 2025 {/*cityjs-london*/}
 
