@@ -1,10 +1,10 @@
 ---
-title: React Meetups
+title: React 모임
 ---
 
 <Intro>
 
-React.js 관련 밋업이 있다면 이곳에 추가해주세요! (목록은 알파벳 순으로 유지해주세요)
+React.js 관련 모임이 있다면 이곳에 추가해주세요! (목록은 알파벳 순으로 유지해주세요)
 
 </Intro>
 
