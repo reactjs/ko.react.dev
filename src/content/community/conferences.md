@@ -1,14 +1,13 @@
 ---
-title: React Conferences
+title: React 컨퍼런스
 ---
 
 <Intro>
-
-Do you know of a local React.js conference? Add it here! (Please keep the list chronological)
+React.js 관련 컨퍼런스를 알고 계신가요? 이곳에 추가해주세요! (목록은 날짜 순으로 정렬해주세요)
 
 </Intro>
 
-## Upcoming Conferences {/*upcoming-conferences*/}
+## 예정 컨퍼런스 {/*upcoming-conferences*/}
 
 ### CityJS London 2025 {/*cityjs-london*/}
 
