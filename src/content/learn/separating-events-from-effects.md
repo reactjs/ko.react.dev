@@ -400,13 +400,23 @@ label { display: block; margin-top: 10px; }
 
 ### Effect 이벤트 선언하기 {/*declaring-an-effect-event*/}
 
-<Wip>
+<Canary>
 
+<<<<<<< HEAD
 이 단락에서는 **아직 안정된 버전의 React로 출시되지 않은 실험적인 API**를 설명합니다.
+=======
+**The `useEffectEvent` API is currently only available in React’s Canary and Experimental channels.** 
+>>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
 
-</Wip>
+[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
 
+<<<<<<< HEAD
 이 비반응형 로직을 Effect에서 추출하려면 [`useEffectEvent`](/reference/react/experimental_useEffectEvent)라는 특수한 Hook을 사용하세요.
+=======
+</Canary>
+
+Use a special Hook called [`useEffectEvent`](/reference/react/useEffectEvent) to extract this non-reactive logic out of your Effect:
+>>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
 
 ```js {1,4-6}
 import { useEffect, useEffectEvent } from 'react';
@@ -448,8 +458,8 @@ function ChatRoom({ roomId, theme }) {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -464,7 +474,7 @@ function ChatRoom({ roomId, theme }) {
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 import { createConnection, sendMessage } from './chat.js';
 import { showNotification } from './notifications.js';
 
@@ -578,11 +588,17 @@ Effect 이벤트가 이벤트 핸들러와 아주 비슷하다고 생각할 수 
 
 ### Effect 이벤트로 최근 props와 state 읽기 {/*reading-latest-props-and-state-with-effect-events*/}
 
-<Wip>
+<Canary>
 
+<<<<<<< HEAD
 이 단락에서는 **아직 안정된 버전의 React로 출시되지 않은 실험적인 API**를 설명합니다.
+=======
+**The `useEffectEvent` API is currently only available in React’s Canary and Experimental channels.** 
+>>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
 
-</Wip>
+[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
+
+</Canary>
 
 Effect 이벤트는 의존성 린터를 억제하고 싶었을 많은 패턴을 수정하게 합니다.
 
@@ -711,7 +727,7 @@ Effect 이벤트가 `visitedUrl`을 명시적으로 "요구"하므로 `url`을 E
 
 기존 코드베이스에서는 아래와 같이 린트 규칙이 억제된 것을 가끔 볼 수 있습니다.
 
-```js {7-9}
+```js {expectedErrors: {'react-compiler': [8]}} {7-9}
 function Page({ url }) {
   const { items } = useContext(ShoppingCartContext);
   const numberOfItems = items.length;
@@ -735,7 +751,7 @@ function Page({ url }) {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [16]}}
 import { useState, useEffect } from 'react';
 
 export default function App() {
@@ -803,8 +819,8 @@ body {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -818,7 +834,7 @@ body {
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 
 export default function App() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -878,11 +894,17 @@ body {
 
 ### Effect 이벤트의 한계 {/*limitations-of-effect-events*/}
 
-<Wip>
+<Canary>
 
+<<<<<<< HEAD
 이 단락에서는 **아직 안정된 버전의 React로 출시되지 않은 실험적인 API**를 설명합니다.
+=======
+**The `useEffectEvent` API is currently only available in React’s Canary and Experimental channels.** 
+>>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
 
-</Wip>
+[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
+
+</Canary>
 
 Effect 이벤트는 사용할 수 있는 방법이 매우 제한적입니다.
 
@@ -976,8 +998,8 @@ Effect 이벤트는 Effect의 코드 중 비반응형인 "부분"입니다. Effe
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -990,7 +1012,7 @@ Effect 이벤트는 Effect의 코드 중 비반응형인 "부분"입니다. Effe
 ```
 
 
-```js
+```js {expectedErrors: {'react-compiler': [14]}}
 import { useState, useEffect } from 'react';
 
 export default function Timer() {
@@ -1046,8 +1068,8 @@ Effect의 버그를 찾을 때는 늘 그렇듯 억제된 린터 규칙이 있�
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -1124,8 +1146,8 @@ button { margin: 10px; }
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -1139,7 +1161,7 @@ button { margin: 10px; }
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 
 export default function Timer() {
   const [count, setCount] = useState(0);
@@ -1193,8 +1215,8 @@ Effect 내부의 코드가 state 변수 `increment`를 사용하는 것이 문�
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -1208,7 +1230,7 @@ Effect 내부의 코드가 state 변수 `increment`를 사용하는 것이 문�
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 
 export default function Timer() {
   const [count, setCount] = useState(0);
@@ -1275,8 +1297,8 @@ Effect 이벤트 내부의 코드는 반응형이 아닙니다. `setInterval` �
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -1290,7 +1312,7 @@ Effect 이벤트 내부의 코드는 반응형이 아닙니다. `setInterval` �
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 
 export default function Timer() {
   const [count, setCount] = useState(0);
@@ -1362,8 +1384,8 @@ button { margin: 10px; }
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -1377,7 +1399,7 @@ button { margin: 10px; }
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 
 export default function Timer() {
   const [count, setCount] = useState(0);
@@ -1458,8 +1480,8 @@ Effect는 자신이 어느 방에 연결했는지 알고 있습니다. Effect �
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -1474,7 +1496,7 @@ Effect는 자신이 어느 방에 연결했는지 알고 있습니다. Effect �
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 import { createConnection, sendMessage } from './chat.js';
 import { showNotification } from './notifications.js';
 
@@ -1599,8 +1621,8 @@ Effect 이벤트는 2초의 지연 후에 호출됩니다. travel 방에서 musi
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -1615,7 +1637,7 @@ Effect 이벤트는 2초의 지연 후에 호출됩니다. travel 방에서 musi
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 import { createConnection, sendMessage } from './chat.js';
 import { showNotification } from './notifications.js';
 
@@ -1736,8 +1758,8 @@ label { display: block; margin-top: 10px; }
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -1752,7 +1774,7 @@ label { display: block; margin-top: 10px; }
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 import { createConnection, sendMessage } from './chat.js';
 import { showNotification } from './notifications.js';
 

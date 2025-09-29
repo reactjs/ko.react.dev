@@ -4,7 +4,11 @@ title: Server React DOM APIs
 
 <Intro>
 
+<<<<<<< HEAD
 `react-dom/server` API를 사용하면 React 컴포넌트를 서버 측에서 HTML로 렌더링할 수 있습니다. 이 API는 앱의 최상위 레벨에 있는 서버에서만 초기 HTML을 생성하는 데 사용됩니다. [프레임워크](/learn/start-a-new-react-project#production-grade-react-frameworks)가 대신 호출할 수도 있습니다. 대부분의 컴포넌트는 이를 가져오거나 사용할 필요가 없습니다.
+=======
+The `react-dom/server` APIs let you server-side render React components to HTML. These APIs are only used on the server at the top level of your app to generate the initial HTML. A [framework](/learn/start-a-new-react-project#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
+>>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
 
 </Intro>
 
