@@ -525,39 +525,39 @@ React 19부터는 `react-test-renderer`를 사용할 경우 사용 중단 경고
 
 ### StrictMode 관련 변경 사항 {/*strict-mode-improvements*/}
 
-React 19는 StrictMode에 대한 여러 버그 수정 및 개선 사항을 포함합니다.
+React 19에는 Strict Mode 관련 여러 수정 및 개선 사항이 포함되어 있습니다.
 
-개발 환경에서 Strict Mode가 이중 렌더링을 수행할 때, `useMemo`와 `useCallback` w은 첫 번째 렌더링의 메모이즈된 결과를 재사용합니다. 이미 StrictMode에 호환되는 컴포넌트는 기존과 다르게 동작하지 않습니다.
+개발 환경에서 Strict Mode가 이중 렌더링<sup>double rendering</sup>할 때, `useMemo`와 `useCallback`은 첫 번째 렌더링의 저장된 결과<sup>memoized results</sup>를 재사용합니다. 이미 Strict Mode와 호환되는 컴포넌트라면 동작상의 차이를 거의 느끼지 못할 것입니다.
 
-StrictMode의 모든 동작과 마찬가지로, 이러한 변경은 프로덕션에 배포되기 전 개발 중 버그를 사전에 찾기 위한 목적입니다. 예를 들어 개발 중에는, 컴포넌트가 Suspense fallback으로 교체되는 상황을 시뮬레이션하기 위해 ref 콜백 함수가 초기 마운트 시 두 번 호출됩니다.
+모든 Strict Mode 동작과 마찬가지로 이러한 기능은 개발 단계에서 컴포넌트의 잠재적 버그를 조기에 드러내고, 실제 배포 전에 수정할 수 있도록 돕기 위해 설계되었습니다. 예를 들어 개발 중에는 컴포넌트가 Suspense fallback으로 교체되는 상황을 시뮬레이션하기 위해 ref 콜백 함수가 초기 마운트 시 두 번 호출됩니다.
 
 ### Suspense 개선 사항 {/*improvements-to-suspense*/}
 
-React 19에서는 컴포넌트가 **서스펜드(suspend)**되면, React는 더 이상 전체 형제 컴포넌트를 렌더링할 때까지 기다리지 않고 **가장 가까운 Suspense 경계의 fallback을 즉시 렌더링(commit)**합니다.
+React 19에서는 컴포넌트가 일시 중단<sup>suspend</sup> 될 때 React는 전체 형제 컴포넌트<sup>entire sibling tree</sup>를 렌더링할 때까지 기다리지 않고 가장 가까운 Suspense 경계의 fallback을 즉시 반영<sup>commit</sup>합니다.
 
-fallback이 렌더링 된 후, 서스펜드된 형제 컴포넌트들은 따로 렌더링되며 이 과정을 통해 나머지 트리의 lazy 요청을 "미리 준비(pre-warm)"하게 됩니다.
+fallback이 반영된 후, React는 일시 중단된 형제 컴포넌트를 다시 렌더링 예약하여 트리의 나머지 부분에서 발생할 수 있는 lazy 요청을 "사전 준비<sup>pre-warm</sup>"하게 합니다.
 
 이 변경으로 인해 Suspense fallback은 더 빠르게 표시되며, 동시에 lazy 요청에 대한 성능 최적화 효과도 유지됩니다.
 
 <Diagram name="prerender" height={162} width={1270} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Both Panel components contain isActive with value false.">
 
-이전에는 컴포넌트가 서스펜드될 때, **서스펜드된 형제 컴포넌트들을 먼저 렌더링한 후에 fallback이 렌더링(commit)**되었습니다.
+이전에는 컴포넌트가 일시 중단되면 형제 컴포넌트가 먼저 렌더링된 후 fallback이 반영되었습니다.
 
 </Diagram>
 
 <Diagram name="prewarm" height={162} width={1270} alt="The same diagram as the previous, with the isActive of the first child Panel component highlighted indicating a click with the isActive value set to true. The second Panel component still contains value false." >
 
-하지만 React 19에서는, 컴포넌트가 서스펜드되면 **먼저 fallback이 렌더링(commit)**되고, 그 후에 서스펜드된 형제 컴포넌트들이 렌더링됩니다.
+React 19에서는 컴포넌트가 일시 중단되면 fallback을 먼저 반영한 후 형제 컴포넌트들이 렌더링됩니다.
 
 </Diagram>
 
-이 변경으로 인해 Suspense fallback이 더 빠르게 표시되며, 동시에 **서스펜드된 트리의 lazy 요청을 미리 준비(pre-warm)**할 수 있게 됩니다.
+이 변경으로 인해 Suspense fallback이 더 빠르게 표시되면서도, 일시 중단된 트리 내에서 lazy 요청을 사전 준비할 수 있습니다.
 
-### UMD 빌드 제거 {/*umd-builds-removed*/}
+### UMD 빌드 제거됨 {/*umd-builds-removed*/}
 
-UMD는 과거에 빌드 도구 없이 React를 HTML에서 스크립트 태그로 로드할 수 있도록 돕는 주요 방식이었으나, 이제는 더 현대적인 모듈 로딩 방법이 있습니다.
-React 19부터는 UMD 빌드를 더 이상 제공하지 않습니다. 이는 테스트 및 릴리스 프로세스의 복잡도를 줄이기 위함입니다.
-React 19를 script 태그로 로드하고 싶다면, ESM 기반 CDN인 [esm.sh](https://esm.sh/)를 사용할 것을 권장합니다:
+과거에는 빌드 과정 없이도 React를 불러올 수 있는 편리한 방법으로 UMD가 널리 사용되었습니다. 하지만 이제는 HTML 문서에서 스크립트로 모듈을 불러올 수 있는 더 현대적인 대안이 존재합니다. React 19부터는 테스트 및 릴리스 과정의 복잡성을 줄이기 위해 UMD 빌드를 더 이상 제공하지 않습니다.
+
+React 19를 script 태그로 불러오려면 [esm.sh](https://esm.sh/)와 같은 ESM 기반 CDN을 사용할 것을 권장합니다.
 
 ```html
 <script type="module">
@@ -567,33 +567,32 @@ React 19를 script 태그로 로드하고 싶다면, ESM 기반 CDN인 [esm.sh](
 </script>
 ```
 
-### React 내부에 의존하는 라이브러리는 업그레이드를 막을 수 있음 {/*libraries-depending-on-react-internals-may-block-upgrades*/}
+### React 내부에 의존하는 라이브러리가 업그레이드를 막을 수도 있음 {/*libraries-depending-on-react-internals-may-block-upgrades*/}
 
-이번 릴리스에서는 React 내부 구조에 대한 변경이 포함되어 있습니다. `SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` 같은 내부 API에 의존하는 라이브러리는 영향을 받을 수 있습니다.
-이러한 변경은 React 19의 개선을 위한 필수 작업이며, 공식 가이드를 따르는 라이브러리에는 영향을 주지 않습니다. 
+이번 릴리스에서는 React 내부 구현에 대한 변경이 포함되어 있으며, `SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` 같은 내부 API를 사용하지 말라는 권고를 무시한 라이브러리에 영향을 줄 수 있습니다. 이러한 변경은 React 19의 개선 사항을 적용하기 위해 필요하며 가이드라인을 따르는 라이브러리에는 문제가 발생하지 않습니다.
 
-우리의 [버전 관리 정책](https://react.dev/community/versioning-policy#what-counts-as-a-breaking-change)에 따르면, 이러한 업데이트는 **주요 변경 사항**으로 간주하지 않으며, 업그레이드 방법에 대한 문서도 제공하지 않습니다. 권장 사항은 내부 구현에 의존하는 코드를 제거하는 것입니다.
+[버전 관리 정책](https://react.dev/community/versioning-policy#what-counts-as-a-breaking-change)에 따라 이러한 업데이트는 중요 변경 사항으로 간주하지 않으며 어떻게 업그레이드해야 하는지에 대한 문서도 제공되지 않습니다. 권장 사항은 내부 구현에 의존하는 코드를 모두 제거하는 것입니다.
 
-내부 구현을 사용하는 것이 얼마나 영향을 줄 수 있는지를 반영하기 위해, `SECRET_INTERNALS` 접미사를 다음과 같이 변경했습니다:
+내부 구현 사용의 영향을 명확히 보여주기 위해 `SECRET_INTERNALS` 접미사<sup>suffix</sup>를 다음과 같이 변경했습니다.
 
 `_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE`
 
-앞으로는 React의 내부 구현에 접근하는 것을 더 강력하게 차단할 예정이며, 이는 사용자들이 React 업그레이드에 막히지 않도록 보장하려는 조치입니다.
+앞으로는 React의 내부 구현에 접근하는 것을 더 강력하게 차단할 예정이며 이는 내부 API 사용을 억제하고 사용자가 React 업그레이드 과정에서 막히지 않도록 하기 위함입니다.
 
 ## TypeScript 관련 변경 사항 {/*typescript-changes*/}
 
 ### 제거된 TypeScript 타입 {/*removed-deprecated-typescript-types*/}
 
-React 19에서 제거된 API에 따라 관련 TypeScript 타입도 정리되었습니다. 일부 타입은 더 적절한 패키지로 이동되었고, 일부는 더 이상 필요하지 않아 삭제되었습니다.
+React 19에서 제거된 API에 따라 관련 TypeScript 타입이 정리되었습니다. 일부 제거된 타입은 더 적절한 패키지로 이동되었고 다른 일부는 이제 React의 동작을 설명하는 데 더 이상 필요하지 않기 때문에 제거되었습니다.
 
 <Note>
-저희는 대부분의 타입 관련 브레이킹 변경 사항을 자동으로 마이그레이션하기 위한 [`types-react-codemod`](https://github.com/eps1lon/types-react-codemod/)를 공개했습니다.
+대부분의 타입 관련 중요 변경 사항을 자동으로 마이그레이션하기 위한 [`types-react-codemod`](https://github.com/eps1lon/types-react-codemod/)를 공개했습니다.
 
 ```bash
 npx types-react-codemod@latest preset-19 ./path-to-app
 ```
 
-`element.props`에 대한 비타입 안전 접근이 많은 경우, 아래 추가 codemod를 실행할 수 있습니다.
+`element.props`에 대한 안전하지 않은 접근<sup>unsound access</sup>이 많은 경우, 아래 codemod를 추가로 실행할 수 있습니다.
 
 ```bash
 npx types-react-codemod@latest react-element-default-any-props ./path-to-your-react-ts-files
@@ -601,7 +600,7 @@ npx types-react-codemod@latest react-element-default-any-props ./path-to-your-re
 
 </Note>
 
-[`types-react-codemod`](https://github.com/eps1lon/types-react-codemod/) 저장소에서 지원되는 대체 codemod 목록을 확인할 수 있습니다. 만약 빠진 codemod가 있다고 생각된다면, [React 19 누락 codemod 목록](https://github.com/eps1lon/types-react-codemod/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22React+19%22+label%3Aenhancement)에서 추적할 수 있습니다.
+[`types-react-codemod`](https://github.com/eps1lon/types-react-codemod/) 문서를 확인하면 지원되는 교체 목록을 볼 수 있습니다. 만약 누락된 codemod가 있다면 [React 19 누락 codemod 목록](https://github.com/eps1lon/types-react-codemod/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22React+19%22+label%3Aenhancement)에서 확인할 수 있습니다.
 
 
 ### `ref` 정리 필요 {/*ref-cleanup-required*/}
@@ -736,7 +735,7 @@ const reducer = (state: State, action: Action) => state;
 
 ## 변경 로그 {/*changelog*/}
 
-### 기타 주요 변경 사항 {/*other-breaking-changes*/}
+### 기타 중요 변경 사항 {/*other-breaking-changes*/}
 
 - **react-dom**: `src` 및 `href` 속성에 JavaScript URL 사용 시 오류 발생 [#26507](https://github.com/facebook/react/pull/26507)
 - **react-dom**: `onRecoverableError`에서 `errorInfo.digest` 제거 [#28222](https://github.com/facebook/react/pull/28222)
