@@ -2,7 +2,7 @@
 title: "React 19 업그레이드 가이드"
 author: Ricky Hanlon
 date: 2024/04/25
-description: React 19에 추가된 개선 사항들로 인해 일부 큰 변경이 필요하지만, 저희는 업그레이드를 가능한 한 원활하게 진행할 수 있도록 노력했으며 대부분의 앱에 큰 영향이 없을 것으로 예상합니다. 이 글에서는 앱과 라이브러리를 React 19로 업그레이드하는 단계를 안내합니다.
+description: React 19에 추가된 개선 사항들로 인해 일부 큰 변경이 필요하지만, 업그레이드를 가능한 한 원활하게 진행할 수 있도록 노력했으며 대부분의 앱에 큰 영향이 없을 것으로 예상합니다. 이 글에서는 앱과 라이브러리를 React 19로 업그레이드하는 단계를 안내합니다.
 ---
 
 2024년 4월 25일, [Ricky Hanlon](https://twitter.com/rickhanlonii)
@@ -12,7 +12,7 @@ description: React 19에 추가된 개선 사항들로 인해 일부 큰 변경�
 
 <Intro>
 
-React 19에 추가된 개선 사항들로 인해 일부 큰 변경<sup>breaking changes</sup>이 필요하지만, 저희는 업그레이드를 가능한 한 원활하게 진행할 수 있도록 노력했으며 대부분의 앱에 큰 영향이 없을 것으로 예상합니다.
+React 19에 추가된 개선 사항들로 인해 일부 큰 변경<sup>breaking changes</sup>이 필요하지만, 업그레이드를 가능한 한 원활하게 진행할 수 있도록 노력했으며 대부분의 앱에 큰 영향이 없을 것으로 예상합니다.
 
 </Intro>
 
@@ -67,7 +67,7 @@ Your app (or one of its dependencies) is using an outdated JSX transform. Update
 </Note>
 
 
-최신 버전의 React 및 React DOM을 설치하려면:
+최신 버전의 React 및 React DOM을 설치:
 ```bash
 npm install --save-exact react@^19.0.0 react-dom@^19.0.0
 ```
@@ -77,7 +77,7 @@ Yarn을 사용하는 경우:
 yarn add --exact react@^19.0.0 react-dom@^19.0.0
 ```
 
-TypeScript를 사용하는 경우, 타입 정의도 함께 업데이트해야 합니다.
+TypeScript를 사용하는 경우, 타입도 함께 업데이트해야 합니다.
 ```bash
 npm install --save-exact @types/react@^19.0.0 @types/react-dom@^19.0.0
 ```
@@ -87,11 +87,11 @@ Yarn을 사용하는 경우:
 yarn add --exact @types/react@^19.0.0 @types/react-dom@^19.0.0
 ```
 
-가장 일반적인 교체 작업을 위한 codemod도 포함되어 있습니다. 아래의 [TypeScript 변경 사항](#typescript-changes)을 참고하세요.
+가장 흔한 교체 작업을 위한 codemod도 포함되어 있습니다. 아래의 [TypeScript 변경 사항](#typescript-changes)을 참고하세요.
 
 ## Codemods {/*codemods*/}
 
-업그레이드를 돕기 위해 [codemod.com](https://codemod.com) 팀과 협력하여 React 19의 새로운 API 및 패턴에 맞게 코드를 자동으로 업데이트해 주는 codemod들을 공개했습니다.
+업그레이드를 돕기 위해 [codemod.com](https://codemod.com) 팀과 협력하여 React 19의 새로운 API 및 패턴에 맞게 코드를 자동으로 업데이트해 주는 codemods을 공개했습니다.
 
 모든 codemods는 [`react-codemod` 저장소](https://github.com/reactjs/react-codemod)에 있으며, Codemod 팀도 유지보수 하는 데 함께하고 있습니다. codemods을 실행할 때는 `react-codemod`보다 `codemod` 명령어 사용을 권장합니다. 왜냐하면 해당 명령어로 실행했을 때 더 빠르고 더 복잡한 코드 마이그레이션을 처리하고 TypeScript에 대한 더 나은 지원을 제공합니다.
 
@@ -100,7 +100,7 @@ yarn add --exact @types/react@^19.0.0 @types/react-dom@^19.0.0
 
 #### React 19 codemods 전체 실행 {/*run-all-react-19-codemods*/}
 
-이 가이드에 나열된 모든 codemods를 React 19의 `codemod` 레시피를 통해 한 번에 실행하려면:
+이 가이드에 나열된 모든 codemods를 React 19의 `codemod` 레시피를 통해 한 번에 실행하려면
 
 ```bash
 npx codemod@latest react/19/migration-recipe
@@ -121,18 +121,18 @@ Codemod가 포함된 변경 사항에는 아래와 같이 명령어가 함께 �
 
 사용할 수 있는 모든 codemods 목록은 [`react-codemod` 저장소](https://github.com/reactjs/react-codemod)를 참고하세요.
 
-## 주요 변경 사항 {/*breaking-changes*/}
+## 중요 변경 사항 {/*breaking-changes*/}
 
 ### 렌더링 중에 발생한 오류는 re-throw 하지 않음 {/*errors-in-render-are-not-re-thrown*/}
 
-이전 버전의 React에서는 렌더링 중에 발생한 오류를 잡아서 다시 throw 했습니다. DEV 환경에서는 `console.error`로도 로그를 출력하여 오류 로그가 중복되는 문제가 있었습니다.
+이전 버전의 React에서는 렌더링 중에 발생한 오류를 잡아서 re-throw 했습니다. 개발 모드<sup>DEV</sup>에서는 `console.error`로도 로그를 출력하여 오류 로그가 중복되는 문제가 있었습니다.
 
-React 19에서는 [오류 처리 방식이 개선되었습니다.](/blog/2024/04/25/react-19#error-handling) 더 이상 오류를 re-throw 하지 않아 중복 로그가 줄어듭니다.
+React 19에서는 [오류 처리 방식을 개선하여](/blog/2024/04/25/react-19#error-handling) 더 이상 오류를 re-throw 하지 않음으로써 중복 로그를 줄였습니다.
 
-- **처리되지 않은 오류**: Error Boundary에서 잡히지 않은 오류는 `window.reportError`로 보고됩니다.
-- **처리된 오류**: Error Boundary에서 잡힌 오류는 `console.error`로 보고됩니다.
+- **포착되지 않은 오류**: Error Boundary에서 잡히지 않은 오류는 `window.reportError`로 보고됩니다.
+- **포착된 오류**: Error Boundary에서 잡힌 오류는 `console.error`로 보고됩니다.
 
-이 변경은 대부분의 앱에 영향을 주지 않지만, 프로덕션 오류 보고가 오류의 재-throw에 의존하고 있다면, 오류 처리 방식을 업데이트해야 할 수 있습니다. 이를 지원하기 위해 `createRoot` 및 `hydrateRoot`에 사용자 정의 오류 처리를 위한 새로운 메서드가 추가되었습니다.
+이 변경은 대부분의 앱에 영향을 주지 않지만 프로덕션 환경에서의 오류 보고가 re-throw에 의존하고 있다면 오류 처리 방식을 업데이트해야 할 수 있습니다. 이를 지원하기 위해 `createRoot` 및 `hydrateRoot`에 사용자 정의 오류 처리를 위한 새로운 메서드가 추가되었습니다.
 
 ```js [[1, 2, "onUncaughtError"], [2, 5, "onCaughtError"]]
 const root = createRoot(container, {
@@ -155,7 +155,7 @@ const root = createRoot(container, {
 
 React 19에서는 `propType` 검사 기능이 React 패키지에서 제거되며, 사용하더라도 아무 동작도 하지 않습니다. `propTypes`를 사용 중이라면 TypeScript나 다른 타입 검사 도구로 마이그레이션하는 것을 권장합니다.
 
-또한, 함수형 컴포넌트에서는 `defaultProps`가 제거되며, 대신 **ES6의 기본 매개변수(default parameters)**를 사용해야 합니다. 클래스형 컴포넌트에서는 `defaultProps`가 여전히 지원됩니다 (ES6 대안이 없기 때문입니다).
+또한, 함수형 컴포넌트에서는 `defaultProps`가 제거되며, 대신 **ES6의 기본 매개변수(default parameters)**를 사용해야 합니다. 클래스형 컴포넌트에서는 ES6 대안이 없기 때문에 `defaultProps`가 여전히 지원됩니다.
 
 ```js
 // 변경 전
@@ -183,7 +183,7 @@ function Heading({text = 'Hello, world!'}: Props) {
 
 <Note>
 
-Codemod을 사용해 `propTypes`를 TypeScript로 변환하려면 다음 명령어를 실행하세요:
+Codemod을 사용해 `propTypes`를 TypeScript로 바꾸는 경우
 
 ```bash
 npx codemod@latest react/prop-types-typescript
@@ -191,11 +191,11 @@ npx codemod@latest react/prop-types-typescript
 
 </Note>
 
-#### 제거됨: `contextTypes` 와 `getChildContext`를 사용하는 레거시 콘텍스트 {/*removed-removing-legacy-context*/}
+#### 제거됨: `contextTypes`와 `getChildContext`를 사용하는 레거시 콘텍스트 {/*removed-removing-legacy-context*/}
 
 레거시 콘텍스트는 [2018년 10월 (v16.6.0)](https://legacy.reactjs.org/blog/2018/10/23/react-v-16-6.html)부터 더 이상 권장되지 않습니다.
 
-레거시 컨텍스트는 클래스형 컴포넌트에서 `contextTypes` 와 `getChildContext` API를 통해 사용할 수 있었지만, 미묘한 버그들로 인해 `contextType` API로 대체되었습니다. React 19에서는 React의 크기를 줄이고 성능을 향상하기 위해 레거시 콘텍스트가 제거됩니다.
+레거시 콘텍스트는 클래스형 컴포넌트에서 `contextTypes`와 `getChildContext` API를 통해 사용할 수 있었지만, 미묘한 버그들로 인해 `contextType` API로 대체되었습니다. React 19에서는 React의 크기를 줄이고 성능을 향상하기 위해 레거시 콘텍스트가 제거됩니다.
 
 아직도 클래스형 컴포넌트에서 레거시 콘텍스트를 사용하고 있다면, 새로운 `contextType`API로 마이그레이션해야 합니다.
 
@@ -286,7 +286,7 @@ class MyComponent extends React.Component {
 
 <Note>
 
-Codemod을 사용해 문자열 refs를 `ref` 콜백으로 변환하려면
+Codemod를 사용해 문자열 refs를 `ref` 콜백으로 바꾸는 경우
 
 ```bash
 npx codemod@latest react/19/replace-string-ref
@@ -346,21 +346,21 @@ npm install react-shallow-renderer --save-dev
 
 ##### Shallow 렌더링 재고 권장 {/*please-reconsider-shallow-rendering*/}
 
-Shallow 렌더링은 React 내부 구현에 의존하며, 향후 React 업그레이드를 방해할 수 있습니다. [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) 또는 [@testing-library/react-native](https://testing-library.com/docs/react-native-testing-library/intro)로 테스트 마이그레이션하는 것을 권장합니다.
+Shallow 렌더링은 React 내부 구현에 의존하며, 향후 React 업그레이드를 방해할 수 있습니다. 테스트들을 [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) 또는 [@testing-library/react-native](https://testing-library.com/docs/react-native-testing-library/intro)로 마이그레이션하는 것을 권장합니다.
 
 </Note>
 
-### 더 이상 권장되지 않던 React DOM API 제거 {/*removed-deprecated-react-dom-apis*/}
+### 더 이상 사용되지 않는 React DOM API 제거 {/*removed-deprecated-react-dom-apis*/}
 
 #### 제거됨: `react-dom/test-utils` {/*removed-react-dom-test-utils*/}
 
-`act`는 이제 `react-dom/test-utils` 대신 `react` 패키지에서 가져와야 합니다:
+`act`는 이제 `react-dom/test-utils` 대신 `react` 패키지에서 가져와야 합니다.
 
 <ConsoleBlockMulti>
 
 <ConsoleLogLine level="error">
 
-`ReactDOMTestUtils.act`는 더 이상 권장되지 않으며, 대신 `React.act`를 사용하세요. `react-dom/test-utils`가 아닌 `react`에서 `act`를 import 하세요. 자세한 내용은 https://react.dev/warnings/react-dom-test-utils를 참조하세요.
+`ReactDOMTestUtils.act`is deprecated in favor of `React.act`. Import `act` from `react` instead of `react-dom/test-utils`. See https://react.dev/warnings/react-dom-test-utils for more info.
 
 </ConsoleLogLine>
 
@@ -373,13 +373,14 @@ Shallow 렌더링은 React 내부 구현에 의존하며, 향후 React 업그레
 + import {act} from 'react';
 ```
 
-기존의 다른 `test-utils` 함수들은 모두 제거되었습니다. 이러한 유틸리티는 흔히 사용되진 않았고, 컴포넌트나 React의 내부 구현에 과도하게 의존하게 만들 수 있었습니다. React 19에서는 이 함수들을 호출하면 에러가 발생하며, 추후 버전에서는 완전히 export도 제거될 예정입니다.
+기존의 다른 `test-utils` 함수들은 모두 제거되었습니다. 이러한 유틸리티는 흔히 사용되진 않았고 컴포넌트나 React의 내부 구현에 과하게 의존하게 만들 수 있었습니다. React 19에서 이 함수들을 호출하면 에러가 발생하며 다음 버전에서는 export도 완전히 제거될 예정입니다.
 
 대체 방법은 [경고 페이지](https://react.dev/warnings/react-dom-test-utils)를 참고하세요.
 
 <Note>
 
-Codemod를 사용해 `ReactDOMTestUtils.act` 를 `React.act` 로 바꾸려면:
+Codemod를 사용해 `ReactDOMTestUtils.act` 를 `React.act` 로 바꾸는 경우
+
 
 ```bash
 npx codemod@latest react/19/replace-act-import
@@ -404,7 +405,7 @@ root.render(<App />);
 
 <Note>
 
-Codemod를 사용해 `ReactDOM.render`를 `ReactDOMClient.createRoot`로 바꾸려면
+Codemod를 사용해 `ReactDOM.render`를 `ReactDOMClient.createRoot`로 바꾸는 경우
 
 ```bash
 npx codemod@latest react/19/replace-reactdom-render
@@ -414,7 +415,7 @@ npx codemod@latest react/19/replace-reactdom-render
 
 #### 제거됨: `ReactDOM.hydrate` {/*removed-reactdom-hydrate*/}
 
-`ReactDOM.hydrate`는 [2022년 3월 (v18.0.0)](/blog/2022/03/08/react-18-upgrade-guide)부터 더 이상 권장되지 않습니다. React 19에서는, `ReactDOM.hydrate`가 제거되며, [`ReactDOM.hydrateRoot`](/reference/react-dom/client/hydrateRoot)로 마이그레이션 해야 합니다.
+`ReactDOM.hydrate`는 [2022년 3월 (v18.0.0)](/blog/2022/03/08/react-18-upgrade-guide)부터 더 이상 권장되지 않습니다. React 19에서는 `ReactDOM.hydrate`가 제거되며 [`ReactDOM.hydrateRoot`](/reference/react-dom/client/hydrateRoot)로 마이그레이션 해야 합니다.
 
 ```js
 // 변경 전
@@ -428,7 +429,7 @@ hydrateRoot(document.getElementById('root'), <App />);
 
 <Note>
 
-Codemod를 사용하여 `ReactDOM.hydrate`를 `ReactDOMClient.hydrateRoot`로 바꾸려면
+Codemod를 사용해 `ReactDOM.hydrate`를 `ReactDOMClient.hydrateRoot`로 바꾸는 경우
 
 ```bash
 npx codemod@latest react/19/replace-reactdom-render
@@ -438,7 +439,7 @@ npx codemod@latest react/19/replace-reactdom-render
 
 #### 제거됨: `unmountComponentAtNode` {/*removed-unmountcomponentatnode*/}
 
-`ReactDOM.unmountComponentAtNode`는 [2022년 3월 (v18.0.0)](https://react.dev/blog/2022/03/08/react-18-upgrade-guide)부터 더 이상 권장되지 않습니다. React 19부터는, `root.unmount()`를 사용해야 합니다.
+`ReactDOM.unmountComponentAtNode`는 [2022년 3월 (v18.0.0)](https://react.dev/blog/2022/03/08/react-18-upgrade-guide)부터 더 이상 권장되지 않습니다. React 19부터는 `root.unmount()`를 사용해야 합니다.
 
 
 ```js
@@ -449,11 +450,11 @@ unmountComponentAtNode(document.getElementById('root'));
 root.unmount();
 ```
 
-자세한 내용은 [`createRoot`](https://react.dev/reference/react-dom/client/createRoot#root-unmount) 및 [`hydrateRoot`](https://react.dev/reference/react-dom/client/hydrateRoot#root-unmount) 의 `root.unmount()`문서를 참고하세요.
+자세한 내용은 [`createRoot`](https://react.dev/reference/react-dom/client/createRoot#root-unmount) 및 [`hydrateRoot`](https://react.dev/reference/react-dom/client/hydrateRoot#root-unmount)의 `root.unmount()`문서를 참고하세요.
 
 <Note>
 
-Codemod를 사용해 `unmountComponentAtNode`를 `root.unmount`로 바꾸려면
+Codemod를 사용해 `unmountComponentAtNode`를 `root.unmount`로 바꾸는 경우
 
 ```bash
 npx codemod@latest react/19/replace-reactdom-render
@@ -465,8 +466,8 @@ npx codemod@latest react/19/replace-reactdom-render
 
 `ReactDOM.findDOMNode`는 [2018년 10월 (v16.6.0)](https://legacy.reactjs.org/blog/2018/10/23/react-v-16-6.html#deprecations-in-strictmode)부터 더 이상 권장되지 않습니다.
 
-`findDOMNode`이 API는 과거의 회피 수단이었으나, 실행 속도가 느리고 리팩토링에 취약하며 첫 번째 자식만 반환하는 등 많은 문제가 있어 제거됩니다.
-(자세한 사항은 [here](https://legacy.reactjs.org/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)). `ReactDOM.findDOMNode` 대신 [DOM refs](/learn/manipulating-the-dom-with-refs)를 사용하세요.
+`findDOMNode`는 레거시 코드의 해결책이었지만 실행 속도가 느리고 리팩토링에 취약하며 첫 번째 자식만 반환하는 등 많은 문제가 있어 제거됩니다.
+([이곳](https://legacy.reactjs.org/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)에서 더 알아보기). `ReactDOM.findDOMNode` 대신 [DOM refs](/learn/manipulating-the-dom-with-refs)로 대체하여 사용할 수 있습니다.
 
 ```js
 // 변경 전
@@ -494,32 +495,31 @@ function AutoselectingInput() {
 }
 ```
 
-## 새로 사용 중단된 사항 {/*new-deprecations*/}
+## 사용이 중단된 기능 {/*new-deprecations*/}
 
-### 사용 중단됨: `element.ref` {/*deprecated-element-ref*/}
+### 중단됨: `element.ref` {/*deprecated-element-ref*/}
 
-React 19에서는 [`ref`를 일반 prop으로 사용하는 기능](/blog/2024/04/25/react-19#ref-as-a-prop)을 도입함에 따라, 기존의 `element.ref` 접근 방식은 사용 중단되고, 대신 `element.props.ref`를 사용해야 합니다.
+React 19에서는 [`ref`를 일반 prop으로 사용하는 기능](/blog/2024/04/25/react-19#ref-as-a-prop)을 도입하여 기존의 `element.ref` 접근 방식은 사용 중단되고 대신 `element.props.ref`를 사용해야 합니다.
 
-`element.ref` 에 접근하면 아래와 같은 경고가 표시됩니다:
+`element.ref`에 접근하면 아래와 같은 경고가 표시됩니다.
 
 <ConsoleBlockMulti>
 
 <ConsoleLogLine level="error">
 
-`element.ref`에 대한 접근은 더 이상 지원되지 않습니다. ref는 이제 일반 prop입니다. 향후 릴리스에서 JSX 엘리먼트 타입에서 제거될 예정입니다.
+Accessing element.ref is no longer supported. ref is now a regular prop. It will be removed from the JSX Element type in a future release.
 
 </ConsoleLogLine>
 
 </ConsoleBlockMulti>
 
-### 사용 중단됨: `react-test-renderer` {/*deprecated-react-test-renderer*/}
+### 중단됨: `react-test-renderer` {/*deprecated-react-test-renderer*/}
 
-`react-test-renderer`는 자체 렌더러 환경을 구현하고 있으며, 이는 실제 사용자 환경과 일치하지 않으며, 내부 구현 세부 사항에 의존한 테스트를 유도하고 React 내부 구조를 분석하는 방식에 의존합니다.
-이러한 이유로 React 19에서는 `react-test-renderer`를 사용 중단 처리하였습니다.
+`react-test-renderer`는 실제 사용 환경과 일치하지 않는 자체 렌더러 환경을 구현하고, 구현 세부 사항에 의존하는 테스트를 조장하며, React 내부 동작을 탐색하는 방식에 의존하기 때문에 사용 중단됩니다.
 
-이 렌더리는 [React Testing Library](https://testing-library.com), 와 같은 더 나은 테스트 전략이 등장하기 이전에 만들어진 도구였습니다. 현재는 더 현대적이고 잘 지원되는 테스트 도구인 [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) 또는 [@testing-library/react-native](https://testing-library.com/docs/react-native-testing-library/intro) 를 사용하는 것이 권장됩니다.
+이 테스트 렌더러는 [React Testing Library](https://testing-library.com)와 같은 더 나은 테스트 전략이 나오기 이전에 만들어졌으며, 이제는 더 현대적이고 지원 잘 되는 테스트 도구인 [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) 또는 [@testing-library/react-native](https://testing-library.com/docs/react-native-testing-library/intro)를 사용하는 것을 권장합니다.
 
-React 19부터는, `react-test-renderer`를 사용할 경우 사용 중단 경고가 로그로 출력되며, 동시성 렌더링<sup>Concurrent Rendering</sup>을 사용하도록 변경되었습니다. 향후를 대비해 테스트를 React Testing Library 기반으로 이전하는 것을 추천합니다.
+React 19부터는 `react-test-renderer`를 사용할 경우 사용 중단 경고가 로그로 출력되며 동시성 렌더링<sup>Concurrent Rendering</sup>을 사용하도록 변경되었습니다. 향후를 대비해 테스트를 React Testing Library 기반으로 이전하는 것을 추천합니다.
 
 ## 주목할 만한 변경 사항 {/*notable-changes*/}
 
@@ -593,7 +593,7 @@ React 19에서 제거된 API에 따라 관련 TypeScript 타입도 정리되었�
 npx types-react-codemod@latest preset-19 ./path-to-app
 ```
 
-`element.props`에 대한 비타입 안전 접근이 많은 경우, 아래 추가 codemod를 실행할 수 있습니다:
+`element.props`에 대한 비타입 안전 접근이 많은 경우, 아래 추가 codemod를 실행할 수 있습니다.
 
 ```bash
 npx types-react-codemod@latest react-element-default-any-props ./path-to-your-react-ts-files
