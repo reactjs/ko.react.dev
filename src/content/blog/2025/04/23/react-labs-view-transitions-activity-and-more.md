@@ -2495,7 +2495,11 @@ root.render(
 </ViewTransition>
 ```
 
+<<<<<<< HEAD
 그리고 [View Transition 클래스](/reference/react/ViewTransition#view-transition-classes)를 사용하여 CSS에서 `slow-fade`를 정의합니다.
+=======
+And define `slow-fade` in CSS using [view transition classes](/reference/react/ViewTransition#view-transition-class):
+>>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -2521,7 +2525,7 @@ export default function App() {
   const { url } = useRouter();
 
   // Define a default animation of .slow-fade.
-  // See animations.css for the animation definiton.
+  // See animations.css for the animation definition.
   return (
     <ViewTransition default="slow-fade">
       {url === '/' ? <Home /> : <Details />}
@@ -11465,7 +11469,19 @@ _View Transition을 구축한 배경에 대한 자세한 내용은 다음을 참
 
 ## Activity {/*activity*/}
 
+<<<<<<< HEAD
 [지난](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen) [업데이트](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity)에서, 컴포넌트를 시각적으로 숨기고 우선순위를 지정 해제할 수 있는 API를 연구 중이며, CSS로 마운트 해제하거나 숨기는 것에 비해 성능 비용을 줄이면서 UI 상태를 유지할 수 있다고 공유한 바 있습니다.
+=======
+<Note>
+
+**`<Activity />` is now available in React’s Canary channel.**
+
+[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
+
+</Note>
+
+In [past](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen) [updates](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity), we shared that we were researching an API to allow components to be visually hidden and deprioritized, preserving UI state with reduced performance costs relative to unmounting or hiding with CSS.
+>>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
 
 이제 API와 그 작동 방식을 공유할 준비가 되었고, 실험적인 React 버전에서 테스트를 시작할 수 있습니다.
 
@@ -14295,7 +14311,11 @@ useEffect(() => {
 }); // 컴파일러가 의존성을 삽입했습니다.
 ```
 
+<<<<<<< HEAD
 이 코드를 사용하면, React Compiler가 의존성을 추론하고 자동으로 삽입하므로 보거나 작성할 필요가 없습니다. [IDE 확장 프로그램](#compiler-ide-extension)과 [`useEffectEvent`](/reference/react/experimental_useEffectEvent) 같은 기능을 통해, 디버깅이 필요한 시점이나 의존성을 제거하여 최적화할 때 Compiler가 삽입한 것을 보여주는 CodeLens를 제공할 수 있습니다. 이는 언제든지 실행되어 컴포넌트나 hook의 상태를 다른 것과 동기화할 수 있는 Effects를 작성하는 올바른 멘탈 모델을 강화하는 데 도움이 됩니다.
+=======
+With this code, the React Compiler can infer the dependencies for you and insert them automatically so you don't need to see or write them. With features like [the IDE extension](#compiler-ide-extension) and [`useEffectEvent`](/reference/react/useEffectEvent), we can provide a CodeLens to show you what the Compiler inserted for times you need to debug, or to optimize by removing a dependency. This helps reinforce the correct mental model for writing Effects, which can run at any time to synchronize your component or hook's state with something else.
+>>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
 
 저희의 희망은 의존성을 자동으로 삽입하는 것이 작성하기 더 쉬울 뿐만 아니라, 컴포넌트 생명주기가 아닌 Effect가 하는 일의 관점에서 생각하도록 강제함으로써 이해하기도 더 쉽게 만든다는 것입니다.
 

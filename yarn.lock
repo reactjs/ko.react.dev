@@ -2521,12 +2521,12 @@ babel-plugin-dynamic-import-node@^2.3.3:
   dependencies:
     object.assign "^4.1.0"
 
-babel-plugin-react-compiler@19.0.0-beta-e552027-20250112:
-  version "19.0.0-beta-e552027-20250112"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-compiler/-/babel-plugin-react-compiler-19.0.0-beta-e552027-20250112.tgz#f06f0436420bd09df5abf37337ecd8fb43b0d847"
-  integrity sha512-pUTT0mAZ4XLewC6bvqVeX015nVRLVultcSQlkzGdC10G6YV6K2h4E7cwGlLAuLKWTj3Z08mTO9uTnPP/opUBsg==
+babel-plugin-react-compiler@^19.1.0-rc.3:
+  version "19.1.0-rc.3"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-compiler/-/babel-plugin-react-compiler-19.1.0-rc.3.tgz#45e5a282a2460b3701971e5eb8310a90a7919022"
+  integrity sha512-mjRn69WuTz4adL0bXGx8Rsyk1086zFJeKmes6aK0xPuK3aaXmDJdLHqwKKMrpm6KAI1MCoUK72d2VeqQbu8YIA==
   dependencies:
-    "@babel/types" "^7.19.0"
+    "@babel/types" "^7.26.0"
 
 bail@^1.0.0:
   version "1.0.5"
@@ -2733,6 +2733,14 @@ ccount@^2.0.0:
   resolved "https://registry.npmjs.org/ccount/-/ccount-2.0.1.tgz"
   integrity sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==
 
+chalk@4.1.2, chalk@^4.0.0, chalk@^4.1.0:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
+  integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
+  dependencies:
+    ansi-styles "^4.1.0"
+    supports-color "^7.1.0"
+
 chalk@^2.0.0, chalk@^2.4.1:
   version "2.4.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz"
@@ -2742,6 +2750,7 @@ chalk@^2.0.0, chalk@^2.4.1:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
+<<<<<<< HEAD
 chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
@@ -2755,6 +2764,8 @@ chalk@^5.4.1:
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.4.1.tgz#1b48bf0963ec158dce2aacf69c093ae2dd2092d8"
   integrity sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==
 
+=======
+>>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
 character-entities-html4@^1.0.0:
   version "1.1.4"
   resolved "https://registry.npmjs.org/character-entities-html4/-/character-entities-html4-1.1.4.tgz"
@@ -3872,6 +3883,7 @@ eslint-plugin-jsx-a11y@^6.4.1:
     safe-regex-test "^1.0.3"
     string.prototype.includes "^2.0.0"
 
+<<<<<<< HEAD
 eslint-plugin-mark@^0.1.0-canary.2:
   version "0.1.0-canary.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-mark/-/eslint-plugin-mark-0.1.0-canary.2.tgz#b7b05eb6201aab0f3225c99f1c7274c4a0fde3e3"
@@ -3881,6 +3893,11 @@ eslint-plugin-mark@^0.1.0-canary.2:
     "@types/mdast" "^4.0.4"
     cheerio "^1.0.0"
     emoji-regex "^10.4.0"
+=======
+"eslint-plugin-local-rules@link:eslint-local-rules":
+  version "0.0.0"
+  uid ""
+>>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
 
 eslint-plugin-react-compiler@^19.0.0-beta-e552027-20250112:
   version "19.0.0-beta-e552027-20250112"

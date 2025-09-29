@@ -21,7 +21,7 @@ function BlogPost() {
 }
 ```
 
-```js {2}
+```js {expectedErrors: {'react-compiler': [2]}} {2}
 function BlogPost() {
   return <Layout>{Article()}</Layout>; // 🔴 Bad: 컴포넌트 함수를 직접 호출하지 마세요.
 }
@@ -51,7 +51,7 @@ Hook은 컴포넌트에 React 기능을 추가할 수 있게 합니다. Hook은 
 
 Hook은 가능한 한 "정적"으로 유지되어야 합니다. 이는 Hook을 동적으로 변경해서는 안 된다는 의미입니다. 예를 들어 고차 Hook을 작성하면 안됩니다.
 
-```js {2}
+```js {expectedErrors: {'react-compiler': [2, 3]}} {2}
 function ChatInput() {
   const useDataWithLogging = withLogging(useData); // 🔴 Bad: 고차 Hook을 작성하지 마세요.
   const data = useDataWithLogging();
@@ -74,7 +74,7 @@ function useDataWithLogging() {
 
 Hook은 동적으로 사용해서도 안 됩니다. 예를 들어 Hook을 값으로 전달하여 컴포넌트에 의존성을 주입하는 대신,
 
-```js {2}
+```js {expectedErrors: {'react-compiler': [2]}} {2}
 function ChatInput() {
   return <Button useData={useDataWithLogging} /> // 🔴 Bad: Hook을 Props로 전달하지 마세요.
 }

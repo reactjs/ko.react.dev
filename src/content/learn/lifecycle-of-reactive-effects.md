@@ -1132,7 +1132,7 @@ body {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [16]}}
 import { useState, useEffect } from 'react';
 
 export default function App() {
@@ -1375,7 +1375,7 @@ export default function App() {
 }
 ```
 
-```js src/ChatRoom.js active
+```js {expectedErrors: {'react-compiler': [8]}} src/ChatRoom.js active
 import { useState, useEffect } from 'react';
 
 export default function ChatRoom({ roomId, createConnection }) {
