@@ -38,7 +38,7 @@ function MyComponent() {
 
 #### 매개변수 {/*parameters*/}
 
-* `reducer`: state가 어떻게 업데이트 되는지 지정하는 리듀서 함수입니다. 리듀서 함수는 반드시 순수 함수여야 하며, state와 action을 인수로 받아야 하고, 다음 state를 반환해야 합니다. state와 action에는 모든 데이터 타입이 할당될 수 있습니다.
+* `reducer`: state가 어떻게 업데이트 되는지 지정하는 reducer 함수입니다. reducer 함수는 반드시 순수 함수여야 하며, state와 action을 인수로 받아야 하고, 다음 state를 반환해야 합니다. state와 action에는 모든 데이터 타입이 할당될 수 있습니다.
 * `initialArg`: 초기 state가 계산되는 값입니다. 모든 데이터 타입이 할당될 수 있습니다. 초기 state가 어떻게 계산되는지는 다음 `init` 인수에 따라 달라집니다.
 * **선택사항** `init`: 초기 state를 반환하는 초기화 함수입니다. 이 함수가 인수에 할당되지 않으면 초기 state는 `initialArg`로 설정됩니다. 할당되었다면 초기 state는 `init(initialArg)`를 호출한 결과가 할당됩니다.
 
@@ -320,7 +320,7 @@ button { display: block; margin-top: 10px; }
 
 #### 투두 리스트 (배열) {/*todo-list-array*/}
 
-이 예시에서는 리듀서를 이용해 할 일 목록들을 배열로 관리합니다. 배열의 업데이트는 [mutation이 없이](/learn/updating-arrays-in-state) 이루어져야 합니다.
+이 예시에서는 reducer를 이용해 할 일 목록들을 배열로 관리합니다. 배열의 업데이트는 [mutation이 없이](/learn/updating-arrays-in-state) 이루어져야 합니다.
 
 <Sandpack>
 

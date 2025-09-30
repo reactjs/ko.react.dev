@@ -165,7 +165,7 @@
           "path": "/learn/preserving-and-resetting-state"
         },
         {
-          "title": "State 로직을 리듀서로 작성하기",
+          "title": "State 로직을 reducer로 작성하기",
           "path": "/learn/extracting-state-logic-into-a-reducer"
         },
         {
