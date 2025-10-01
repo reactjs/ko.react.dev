@@ -48,7 +48,7 @@ We announced an experimental release of React Compiler at React Conf 2024. We've
 
 <BlogCard title="React 19 업그레이드 가이드" date="2024년 4월 25일" url="/blog/2024/04/25/react-19-upgrade-guide">
 
-React 19에 추가된 개선 사항들로 인해 일부 큰 변경이 필요하지만, 업그레이드를 가능한 한 원활하게 진행할 수 있도록 노력했으며 대부분의 앱에 큰 영향이 없을 것으로 예상합니다. 이 글에서는 앱과 라이브러리를 React 19로 업그레이드하는 단계를 안내합니다.
+React 19에 추가된 개선 사항들로 인해 일부 주요한 변경 사항이 있지만, 업그레이드를 가능한 한 원활하게 진행할 수 있도록 노력했으며 대부분의 앱에 큰 영향이 없을 것으로 예상합니다. 이 글에서는 앱과 라이브러리를 React 19로 업그레이드하는 단계를 안내합니다.
 
 </BlogCard>
 

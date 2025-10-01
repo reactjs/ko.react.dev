@@ -2,7 +2,7 @@
 title: "React 19 업그레이드 가이드"
 author: Ricky Hanlon
 date: 2024/04/25
-description: React 19에 추가된 개선 사항들로 인해 일부 큰 변경이 필요하지만, 업그레이드를 가능한 한 원활하게 진행할 수 있도록 노력했으며 대부분의 앱에 큰 영향이 없을 것으로 예상합니다. 이 글에서는 앱과 라이브러리를 React 19로 업그레이드하는 단계를 안내합니다.
+description: React 19에 추가된 개선 사항들로 인해 일부 주요한 변경 사항이 있지만, 업그레이드를 가능한 한 원활하게 진행할 수 있도록 노력했으며 대부분의 앱에 큰 영향이 없을 것으로 예상합니다. 이 글에서는 앱과 라이브러리를 React 19로 업그레이드하는 단계를 안내합니다.
 ---
 
 2024년 4월 25일, [Ricky Hanlon](https://twitter.com/rickhanlonii)
@@ -12,15 +12,15 @@ description: React 19에 추가된 개선 사항들로 인해 일부 큰 변경�
 
 <Intro>
 
-React 19에 추가된 개선 사항들로 인해 일부 큰 변경<sup>breaking changes</sup>이 필요하지만, 업그레이드를 가능한 한 원활하게 진행할 수 있도록 노력했으며 대부분의 앱에 큰 영향이 없을 것으로 예상합니다.
+React 19에 추가된 개선 사항들로 인해 일부 주요한 변경 사항이<sup>Breaking Changes</sup>가 있지만, 업그레이드를 가능한 한 원활하게 진행할 수 있도록 노력했으며 대부분의 앱에 큰 영향이 없을 것으로 예상합니다.
 
 </Intro>
 
 <Note>
 
-#### React 18.3도 함께 출시되었습니다. {/*react-18-3*/}
+#### React 18.3도 함께 출시되었습니다 {/*react-18-3*/}
 
-React 19으로의 업그레이드를 더 쉽게 돕기 위해  `react@18.3`을 출시했습니다. 이 버전은 18.2와 동일하지만, 더 이상 사용되지 않는 API 및 React 19에 필요한 변경 사항에 대한 경고를 추가했습니다.
+React 19으로의 업그레이드를 더 쉽게 돕기 위해 `react@18.3`을 출시했습니다. 이 버전은 18.2와 동일하지만, 더 이상 사용되지 않는 API 및 React 19에 필요한 변경 사항에 대한 경고를 추가했습니다.
 
 React 19로 업그레이드하기 전에 먼저 React 18.3으로 업데이트하여 잠재적인 문제를 미리 파악하는 것을 권장합니다.
 
@@ -28,28 +28,28 @@ React 19로 업그레이드하기 전에 먼저 React 18.3으로 업데이트하
 
 </Note>
 
-이 게시물에서는 React 19로 업그레이드하는 단계를 안내합니다.
+이 글에서는 React 19로 업그레이드하는 방법을 단계별로 안내합니다.
 
 - [설치](#installing)
 - [Codemods](#codemods)
-- [중요 변경 사항](#breaking-changes)
-- [사용이 중단된 기능](#new-deprecations)
+- [주요한 변경 사항](#breaking-changes)
+- [사용 중단된 사항](#new-deprecations)
 - [주목할 만한 변경 사항](#notable-changes)
 - [TypeScript 변경 사항](#typescript-changes)
 - [변경 로그](#changelog)
 
-React 19을 테스트해 보고 싶으시다면 해당 가이드에 나와 있는 단계를 따라주시고, 문제가 발생하면 [이슈를 제보해 주세요](https://github.com/facebook/react/issues/new?assignees=&labels=React+19&projects=&template=19.md&title=%5BReact+19%5D). React 19에 새롭게 추가된 기능 목록은 [React 19 릴리스 게시글](/blog/2024/12/05/react-19)에서 확인할 수 있습니다.
+React 19를 테스트해 보고 싶다면 해당 가이드에 나와 있는 단계를 따라주시고, 문제가 발생하면 [이슈를 제보해 주세요](https://github.com/facebook/react/issues/new?assignees=&labels=React+19&projects=&template=19.md&title=%5BReact+19%5D). React 19에 새롭게 추가된 기능 목록은 [React 19 릴리스 게시글](/blog/2024/12/05/react-19)에서 확인할 수 있습니다.
 
 ---
 ## 설치 {/*installing*/}
 
 <Note>
 
-#### 이제 새로운 JSX 변환 방식은 필수입니다. {/*new-jsx-transform-is-now-required*/}
+#### 이제 새로운 JSX 변환 방식은 필수입니다 {/*new-jsx-transform-is-now-required*/}
 
-2020년에 [새로운 JSX 변환](https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html)을 도입하여 번들 크기를 줄이고 React를 import 하지 않고도 JSX를 사용할 수 있도록 했습니다. React 19에서는 ref를 prop으로 사용할 수 있는 기능이나 JSX 성능 향상과 같은 추가적인 개선 사항이 도입되며, 이러한 기능들은 새로운 변환<sup>new transform</sup>이 필요합니다.
+2020년에 [새로운 JSX 변환](https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html)을 도입하여 번들 크기를 줄이고 React를 import 하지 않고도 JSX를 사용할 수 있도록 했습니다. React 19에서는 ref를 prop으로 사용할 수 있는 기능이나 JSX 성능 향상과 같은 추가적인 개선 사항이 도입되며, 이러한 기능들은 새로운 변환<sup>New Transform</sup>이 필요합니다.
 
-새로운 변환이 활성화되지 않은 경우, 다음과 같은 경고가 표시됩니다.
+새로운 변환이 활성화되지 않으면 다음과 같은 경고가 표시됩니다.
 
 <ConsoleBlockMulti>
 
@@ -62,27 +62,27 @@ Your app (or one of its dependencies) is using an outdated JSX transform. Update
 </ConsoleBlockMulti>
 
 
-대부분의 환경에서는 이미 활성화되어 있기 때문에 대부분의 앱은 영향을 받지 않으리라고 예상됩니다. 수동으로 업그레이드하는 방법에 대한 안내는 [해당 공지글](https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html)을 참조해 주세요.
+대부분의 환경에서는 이미 활성화되어 있기 때문에 대부분의 앱은 영향을 받지 않으리라고 예상됩니다. 수동으로 업그레이드하는 방법은 [해당 공지](https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html)를 참고하세요.
 
 </Note>
 
 
-최신 버전의 React 및 React DOM을 설치:
+최신 버전의 React 및 React DOM을 설치하기 위해 다음 명령어를 입력하세요.
 ```bash
 npm install --save-exact react@^19.0.0 react-dom@^19.0.0
 ```
 
-Yarn을 사용하는 경우:
+Yarn을 사용한다면 다음 명령어를 입력하세요.
 ```bash
 yarn add --exact react@^19.0.0 react-dom@^19.0.0
 ```
 
-TypeScript를 사용하는 경우, 타입도 함께 업데이트해야 합니다.
+TypeScript를 사용한다면 다음 명령어를 입력하세요.
 ```bash
 npm install --save-exact @types/react@^19.0.0 @types/react-dom@^19.0.0
 ```
 
-Yarn을 사용하는 경우:
+Yarn을 사용한다면 다음 명령어를 입력하세요.
 ```bash
 yarn add --exact @types/react@^19.0.0 @types/react-dom@^19.0.0
 ```
@@ -91,16 +91,16 @@ yarn add --exact @types/react@^19.0.0 @types/react-dom@^19.0.0
 
 ## Codemods {/*codemods*/}
 
-업그레이드를 돕기 위해 [codemod.com](https://codemod.com) 팀과 협력하여 React 19의 새로운 API 및 패턴에 맞게 코드를 자동으로 업데이트해 주는 codemods을 공개했습니다.
+업그레이드를 돕기 위해 [codemod.com](https://codemod.com) 팀과 협력하여 React 19의 새로운 API 및 패턴에 맞게 코드를 자동으로 업데이트해 주는 codemods를 공개했습니다.
 
-모든 codemods는 [`react-codemod` 저장소](https://github.com/reactjs/react-codemod)에 있으며, Codemod 팀도 유지보수 하는 데 함께하고 있습니다. codemods을 실행할 때는 `react-codemod`보다 `codemod` 명령어 사용을 권장합니다. 왜냐하면 해당 명령어로 실행했을 때 더 빠르고 더 복잡한 코드 마이그레이션을 처리하고 TypeScript에 대한 더 나은 지원을 제공합니다.
+모든 codemods는 [`react-codemod` 저장소](https://github.com/reactjs/react-codemod)에 있으며, Codemod 팀도 유지보수 하는 데 함께하고 있습니다. codemods를 실행할 때는 `react-codemod`보다 `codemod` 명령어 사용을 권장합니다. 왜냐하면 해당 명령어로 실행했을 때 더 빠르고, 더 복잡한 코드 마이그레이션을 처리하고, TypeScript에 대한 더 나은 지원을 제공합니다.
 
 
 <Note>
 
 #### React 19 codemods 전체 실행 {/*run-all-react-19-codemods*/}
 
-이 가이드에 나열된 모든 codemods를 React 19의 `codemod` 레시피를 통해 한 번에 실행하려면
+이 가이드에 나열된 모든 codemods를 React 19의 `codemod` 레시피를 통해 한 번에 실행하려면 다음 명령어를 입력하세요.
 
 ```bash
 npx codemod@latest react/19/migration-recipe
@@ -121,7 +121,7 @@ Codemod가 포함된 변경 사항에는 아래와 같이 명령어가 함께 �
 
 사용할 수 있는 모든 codemods 목록은 [`react-codemod` 저장소](https://github.com/reactjs/react-codemod)를 참고하세요.
 
-## 중요 변경 사항 {/*breaking-changes*/}
+## 주요한 변경 사항 {/*breaking-changes*/}
 
 ### 렌더링 중에 발생한 오류는 re-throw 하지 않음 {/*errors-in-render-are-not-re-thrown*/}
 
@@ -132,7 +132,7 @@ React 19에서는 [오류 처리 방식을 개선하여](/blog/2024/04/25/react-
 - **포착되지 않은 오류**: Error Boundary에서 잡히지 않은 오류는 `window.reportError`로 보고됩니다.
 - **포착된 오류**: Error Boundary에서 잡힌 오류는 `console.error`로 보고됩니다.
 
-이 변경은 대부분의 앱에 영향을 주지 않지만 프로덕션 환경에서의 오류 보고가 re-throw에 의존하고 있다면 오류 처리 방식을 업데이트해야 할 수 있습니다. 이를 지원하기 위해 `createRoot` 및 `hydrateRoot`에 사용자 정의 오류 처리를 위한 새로운 메서드가 추가되었습니다.
+이 변경은 대부분의 앱에 영향을 주지 않지만, 프로덕션 환경에서의 오류 보고가 re-throw에 의존하고 있다면 오류 처리 방식을 업데이트해야 할 수 있습니다. 이를 지원하기 위해 `createRoot` 및 `hydrateRoot`에 사용자 정의 오류 처리를 위한 새로운 메서드가 추가되었습니다.
 
 ```js [[1, 2, "onUncaughtError"], [2, 5, "onCaughtError"]]
 const root = createRoot(container, {
@@ -153,9 +153,9 @@ const root = createRoot(container, {
 #### 제거됨: 함수형 컴포넌트에서의 `propTypes` 및 `defaultProps` {/*removed-proptypes-and-defaultprops*/}
 `PropTypes`는 [2017년 4월 (v15.5.0)](https://legacy.reactjs.org/blog/2017/04/07/react-v15.5.0.html#new-deprecation-warnings)부터 더 이상 권장하지 않습니다.
 
-React 19에서는 `propType` 검사 기능이 React 패키지에서 제거되며, 사용하더라도 아무 동작도 하지 않습니다. `propTypes`를 사용 중이라면 TypeScript나 다른 타입 검사 도구로 마이그레이션하는 것을 권장합니다.
+React 19에서는 `propType` 검사 기능이 React 패키지에서 제거되며 사용하더라도 아무 동작도 하지 않습니다. `propTypes`를 사용 중이라면 TypeScript나 다른 타입 검사 도구로 마이그레이션하는 것을 권장합니다.
 
-또한, 함수형 컴포넌트에서는 `defaultProps`가 제거되며, 대신 **ES6의 기본 매개변수(default parameters)**를 사용해야 합니다. 클래스형 컴포넌트에서는 ES6 대안이 없기 때문에 `defaultProps`가 여전히 지원됩니다.
+또한, 함수형 컴포넌트에서는 `defaultProps`가 제거되며, 대신 ES6의 기본 매개변수를 사용해야 합니다. 클래스형 컴포넌트에서는 ES6 대안이 없어서 `defaultProps`가 여전히 지원됩니다.
 
 ```js
 // 변경 전
@@ -183,7 +183,7 @@ function Heading({text = 'Hello, world!'}: Props) {
 
 <Note>
 
-Codemod을 사용해 `propTypes`를 TypeScript로 바꾸는 경우
+Codemod를 사용해 `propTypes`를 TypeScript로 바꾸려면 다음 명령어를 입력하세요.
 
 ```bash
 npx codemod@latest react/prop-types-typescript
@@ -286,7 +286,7 @@ class MyComponent extends React.Component {
 
 <Note>
 
-Codemod를 사용해 문자열 refs를 `ref` 콜백으로 바꾸는 경우
+Codemod를 사용해 문자열 refs를 `ref` 콜백으로 바꾸려면 다음 명령어를 입력하세요.
 
 ```bash
 npx codemod@latest react/19/replace-string-ref
@@ -294,10 +294,10 @@ npx codemod@latest react/19/replace-string-ref
 
 </Note>
 
-#### 제거됨: 모듈 패턴 팩토리 {/*removed-module-pattern-factories*/}
+#### 제거됨: 모듈 패턴 팩토리<sup>Module Pattern Factories</sup> {/*removed-module-pattern-factories*/}
 모듈 패턴 팩토리는 [2019년 8월 (v16.9.0)](https://legacy.reactjs.org/blog/2019/08/08/react-v16.9.0.html#deprecating-module-pattern-factories)부터 더 이상 권장되지 않습니다.
 
-이 패턴은 거의 사용되지 않았으며, 이를 지원하는 것은 React를 불필요하게 더 크고 느리게 만들었습니다. React 19에서는 모듈 패턴 팩토리에 대한 지원이 제거되며, 일반 함수로 마이그레이션해야 합니다.
+이 패턴은 거의 사용되지 않았으며, 이를 지원하는 것은 React를 불필요하게 더 크고 느리게 만들었습니다. React 19에서는 모듈 패턴 팩토리에 대한 지원이 제거되며 일반 함수로 마이그레이션해야 합니다.
 
 ```js
 // 변경 전
@@ -316,7 +316,7 @@ function FactoryComponent() {
 #### 제거됨: `React.createFactory` {/*removed-createfactory*/}
 `createFactory`는 [2020년 2월 (v16.13.0)](https://legacy.reactjs.org/blog/2020/02/26/react-v16.13.0.html#deprecating-createfactory)부터 더 이상 권장되지 않습니다.
 
-`createFactory`는 JSX가 널리 사용되기 전에는 일반적이었지만, 오늘날에는 거의 사용되지 않으며 JSX로 쉽게 대체할 수 있습니다. React 19에서는 `createFactory`가 제거되며, JSX로 마이그레이션해야 합니다.
+`createFactory`는 JSX가 널리 사용되기 전에는 일반적이었지만 오늘날에는 거의 사용되지 않으며 JSX로 쉽게 대체할 수 있습니다. React 19에서는 `createFactory`가 제거되며 JSX로 마이그레이션해야 합니다.
 
 ```js
 // 변경 전
@@ -332,7 +332,7 @@ const button = <button />;
 
 #### 제거됨: `react-test-renderer/shallow` {/*removed-react-test-renderer-shallow*/}
 
-React 18에서는, `react-test-renderer/shallow`를 [react-shallow-renderer](https://github.com/enzymejs/react-shallow-renderer)로 다시 내보내도록 업데이트했습니다. React 19에서는, `react-test-render/shallow`가 완전히 제거되며, 대신 해당 패키지를 직접 설치해야 합니다.
+React 18에서는 `react-test-renderer/shallow`를 [react-shallow-renderer](https://github.com/enzymejs/react-shallow-renderer)로 다시 내보내도록 업데이트했습니다. React 19에서는 `react-test-render/shallow`가 완전히 제거되며 대신 해당 패키지를 직접 설치해야 합니다.
 
 ```bash
 npm install react-shallow-renderer --save-dev
@@ -346,7 +346,7 @@ npm install react-shallow-renderer --save-dev
 
 ##### Shallow 렌더링 재고 권장 {/*please-reconsider-shallow-rendering*/}
 
-Shallow 렌더링은 React 내부 구현에 의존하며, 향후 React 업그레이드를 방해할 수 있습니다. 테스트들을 [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) 또는 [@testing-library/react-native](https://testing-library.com/docs/react-native-testing-library/intro)로 마이그레이션하는 것을 권장합니다.
+Shallow 렌더링은 React 내부 구현에 의존하며 향후 React 업그레이드를 방해할 수 있습니다. 테스트를 [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) 또는 [@testing-library/react-native](https://testing-library.com/docs/react-native-testing-library/intro)로 마이그레이션하는 것을 권장합니다.
 
 </Note>
 
@@ -366,7 +366,7 @@ Shallow 렌더링은 React 내부 구현에 의존하며, 향후 React 업그레
 
 </ConsoleBlockMulti>
 
-이 경고를 해결하려면, `react`에서 `act`를 import 하세요.
+이 경고를 해결하려면 `react`에서 `act`를 import 하세요.
 
 ```diff
 - import {act} from 'react-dom/test-utils'
@@ -379,7 +379,7 @@ Shallow 렌더링은 React 내부 구현에 의존하며, 향후 React 업그레
 
 <Note>
 
-Codemod를 사용해 `ReactDOMTestUtils.act` 를 `React.act` 로 바꾸는 경우
+Codemod를 사용해 `ReactDOMTestUtils.act`를 `React.act`로 바꾸려면 다음 명령어를 입력하세요.
 
 
 ```bash
@@ -390,7 +390,7 @@ npx codemod@latest react/19/replace-act-import
 
 #### 제거됨: `ReactDOM.render` {/*removed-reactdom-render*/}
 
-`ReactDOM.render`는 [2022년 3월 (v18.0.0)](/blog/2022/03/08/react-18-upgrade-guide)부터 더 이상 권장되지 않습니다. React 19에서는, `ReactDOM.render`가 제거되며, [`ReactDOM.createRoot`](/reference/react-dom/client/createRoot)를 사용해야 합니다.
+`ReactDOM.render`는 [2022년 3월 (v18.0.0)](/blog/2022/03/08/react-18-upgrade-guide)부터 더 이상 권장되지 않습니다. React 19에서는 `ReactDOM.render`가 제거되며 [`ReactDOM.createRoot`](/reference/react-dom/client/createRoot)를 사용해야 합니다.
 
 ```js
 // 변경 전
@@ -405,7 +405,7 @@ root.render(<App />);
 
 <Note>
 
-Codemod를 사용해 `ReactDOM.render`를 `ReactDOMClient.createRoot`로 바꾸는 경우
+Codemod를 사용해 `ReactDOM.render`를 `ReactDOMClient.createRoot`로 바꾸려면 다음 명령어를 입력하세요.
 
 ```bash
 npx codemod@latest react/19/replace-reactdom-render
@@ -429,7 +429,7 @@ hydrateRoot(document.getElementById('root'), <App />);
 
 <Note>
 
-Codemod를 사용해 `ReactDOM.hydrate`를 `ReactDOMClient.hydrateRoot`로 바꾸는 경우
+Codemod를 사용해 `ReactDOM.hydrate`를 `ReactDOMClient.hydrateRoot`로 바꾸려면 다음 명령어를 입력하세요.
 
 ```bash
 npx codemod@latest react/19/replace-reactdom-render
@@ -454,7 +454,7 @@ root.unmount();
 
 <Note>
 
-Codemod를 사용해 `unmountComponentAtNode`를 `root.unmount`로 바꾸는 경우
+Codemod를 사용해 `unmountComponentAtNode`를 `root.unmount`로 바꾸려면 다음 명령어를 입력하세요.
 
 ```bash
 npx codemod@latest react/19/replace-reactdom-render
@@ -466,8 +466,7 @@ npx codemod@latest react/19/replace-reactdom-render
 
 `ReactDOM.findDOMNode`는 [2018년 10월 (v16.6.0)](https://legacy.reactjs.org/blog/2018/10/23/react-v-16-6.html#deprecations-in-strictmode)부터 더 이상 권장되지 않습니다.
 
-`findDOMNode`는 레거시 코드의 해결책이었지만 실행 속도가 느리고 리팩토링에 취약하며 첫 번째 자식만 반환하는 등 많은 문제가 있어 제거됩니다.
-([이곳](https://legacy.reactjs.org/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)에서 더 알아보기). `ReactDOM.findDOMNode` 대신 [DOM refs](/learn/manipulating-the-dom-with-refs)로 대체하여 사용할 수 있습니다.
+`findDOMNode`는 레거시 코드의 해결책이었지만 실행 속도가 느리고 리팩토링에 취약하며 첫 번째 자식만 반환하는 등 많은 문제가 있어 제거됩니다 ([이곳](https://legacy.reactjs.org/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)에서 더 알아보기). `ReactDOM.findDOMNode` 대신 [DOM refs](/learn/manipulating-the-dom-with-refs)로 대체하여 사용할 수 있습니다.
 
 ```js
 // 변경 전
@@ -495,7 +494,7 @@ function AutoselectingInput() {
 }
 ```
 
-## 사용이 중단된 기능 {/*new-deprecations*/}
+## 사용 중단된 사항 {/*new-deprecations*/}
 
 ### 중단됨: `element.ref` {/*deprecated-element-ref*/}
 
@@ -525,33 +524,31 @@ React 19부터는 `react-test-renderer`를 사용할 경우 사용 중단 경고
 
 ### StrictMode 관련 변경 사항 {/*strict-mode-improvements*/}
 
-React 19에는 Strict Mode 관련 여러 수정 및 개선 사항이 포함되어 있습니다.
+React 19에는 Strict Mode 관련해 여러 수정 및 개선 사항이 포함되어 있습니다.
 
-개발 환경에서 Strict Mode가 이중 렌더링<sup>double rendering</sup>할 때, `useMemo`와 `useCallback`은 첫 번째 렌더링의 저장된 결과<sup>memoized results</sup>를 재사용합니다. 이미 Strict Mode와 호환되는 컴포넌트라면 동작상의 차이를 거의 느끼지 못할 것입니다.
+개발 환경에서 Strict Mode가 이중 렌더링<sup>Double Rendering</sup>할 때, `useMemo`와 `useCallback`은 첫 번째 렌더링의 저장된 결과<sup>Memoized Results</sup>를 재사용합니다. 이미 Strict Mode와 호환되는 컴포넌트라면 동작상의 차이를 거의 느끼지 못할 것입니다.
 
 모든 Strict Mode 동작과 마찬가지로 이러한 기능은 개발 단계에서 컴포넌트의 잠재적 버그를 조기에 드러내고, 실제 배포 전에 수정할 수 있도록 돕기 위해 설계되었습니다. 예를 들어 개발 중에는 컴포넌트가 Suspense fallback으로 교체되는 상황을 시뮬레이션하기 위해 ref 콜백 함수가 초기 마운트 시 두 번 호출됩니다.
 
-### Suspense 개선 사항 {/*improvements-to-suspense*/}
+### Suspense 관련 개선 사항 {/*improvements-to-suspense*/}
 
-React 19에서는 컴포넌트가 일시 중단<sup>suspend</sup> 될 때 React는 전체 형제 컴포넌트<sup>entire sibling tree</sup>를 렌더링할 때까지 기다리지 않고 가장 가까운 Suspense 경계의 fallback을 즉시 반영<sup>commit</sup>합니다.
+React 19에서는 컴포넌트가 일시 중단<sup>Suspend</sup> 될 때 React는 전체 형제 컴포넌트<sup>Entire Sibling Tree</sup>를 렌더링할 때까지 기다리지 않고 가장 가까운 Suspense 경계의 fallback을 즉시 반영<sup>Commit</sup>합니다.
 
-fallback이 반영된 후, React는 일시 중단된 형제 컴포넌트를 다시 렌더링 예약하여 트리의 나머지 부분에서 발생할 수 있는 lazy 요청을 "사전 준비<sup>pre-warm</sup>"하게 합니다.
-
-이 변경으로 인해 Suspense fallback은 더 빠르게 표시되며, 동시에 lazy 요청에 대한 성능 최적화 효과도 유지됩니다.
+fallback이 반영된 후 React는 일시 중단된 형제 컴포넌트를 다시 렌더링 예약하여 트리의 나머지 부분에서 발생할 수 있는 lazy 요청을 사전 준비<sup>pre-warm</sup>하게 합니다.
 
 <Diagram name="prerender" height={162} width={1270} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Both Panel components contain isActive with value false.">
 
-이전에는 컴포넌트가 일시 중단되면 형제 컴포넌트가 먼저 렌더링된 후 fallback이 반영되었습니다.
+이전에는 컴포넌트가 일시 중단되면 형제 컴포넌트를 먼저 렌더링한 후 fallback이 반영되었습니다.
 
 </Diagram>
 
 <Diagram name="prewarm" height={162} width={1270} alt="The same diagram as the previous, with the isActive of the first child Panel component highlighted indicating a click with the isActive value set to true. The second Panel component still contains value false." >
 
-React 19에서는 컴포넌트가 일시 중단되면 fallback을 먼저 반영한 후 형제 컴포넌트들이 렌더링됩니다.
+React 19에서는 컴포넌트가 일시 중단되면 fallback을 먼저 반영한 후 형제 컴포넌트들을 렌더링합니다.
 
 </Diagram>
 
-이 변경으로 인해 Suspense fallback이 더 빠르게 표시되면서도, 일시 중단된 트리 내에서 lazy 요청을 사전 준비할 수 있습니다.
+이 변경으로 인해 Suspense fallback은 더 빠르게 표시되며 동시에 lazy 요청에 대한 성능 최적화 효과도 유지됩니다.
 
 ### UMD 빌드 제거됨 {/*umd-builds-removed*/}
 
@@ -569,11 +566,11 @@ React 19를 script 태그로 불러오려면 [esm.sh](https://esm.sh/)와 같은
 
 ### React 내부에 의존하는 라이브러리가 업그레이드를 막을 수도 있음 {/*libraries-depending-on-react-internals-may-block-upgrades*/}
 
-이번 릴리스에서는 React 내부 구현에 대한 변경이 포함되어 있으며, `SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` 같은 내부 API를 사용하지 말라는 권고를 무시한 라이브러리에 영향을 줄 수 있습니다. 이러한 변경은 React 19의 개선 사항을 적용하기 위해 필요하며 가이드라인을 따르는 라이브러리에는 문제가 발생하지 않습니다.
+이번 릴리스에서는 React 내부 구현에 대한 변경이 포함되어 있으며 `SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` 같은 내부 API를 사용하지 말라는 권고를 무시한 라이브러리에 영향을 줄 수 있습니다. 이러한 변경은 React 19의 개선 사항을 적용하기 데 필요하며 가이드라인을 따르는 라이브러리에는 문제가 발생하지 않습니다.
 
 [버전 관리 정책](https://react.dev/community/versioning-policy#what-counts-as-a-breaking-change)에 따라 이러한 업데이트는 중요 변경 사항으로 간주하지 않으며 어떻게 업그레이드해야 하는지에 대한 문서도 제공되지 않습니다. 권장 사항은 내부 구현에 의존하는 코드를 모두 제거하는 것입니다.
 
-내부 구현 사용의 영향을 명확히 보여주기 위해 `SECRET_INTERNALS` 접미사<sup>suffix</sup>를 다음과 같이 변경했습니다.
+내부 구현 사용의 영향을 명확히 보여주기 위해 `SECRET_INTERNALS` 접미사<sup>Suffix</sup>를 다음과 같이 변경했습니다.
 
 `_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE`
 
@@ -592,7 +589,7 @@ React 19에서 제거된 API에 따라 관련 TypeScript 타입이 정리되었�
 npx types-react-codemod@latest preset-19 ./path-to-app
 ```
 
-`element.props`에 대한 안전하지 않은 접근<sup>unsound access</sup>이 많은 경우, 아래 codemod를 추가로 실행할 수 있습니다.
+`element.props`에 대해 안전하지 않은 접근<sup>Unsound Access</sup>이 많은 경우 아래 codemod를 추가로 실행할 수 있습니다.
 
 ```bash
 npx types-react-codemod@latest react-element-default-any-props ./path-to-your-react-ts-files
@@ -600,7 +597,7 @@ npx types-react-codemod@latest react-element-default-any-props ./path-to-your-re
 
 </Note>
 
-[`types-react-codemod`](https://github.com/eps1lon/types-react-codemod/) 문서를 확인하면 지원되는 교체 목록을 볼 수 있습니다. 만약 누락된 codemod가 있다면 [React 19 누락 codemod 목록](https://github.com/eps1lon/types-react-codemod/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22React+19%22+label%3Aenhancement)에서 확인할 수 있습니다.
+[`types-react-codemod`](https://github.com/eps1lon/types-react-codemod/) 문서를 확인하면 지원되는 교체 목록을 볼 수 있습니다. 만약 빠진 codemod가 있다면 [React 19 누락 codemod 목록](https://github.com/eps1lon/types-react-codemod/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22React+19%22+label%3Aenhancement)에서 확인할 수 있습니다.
 
 
 ### `ref` 정리 필요 {/*ref-cleanup-required*/}
@@ -608,20 +605,20 @@ npx types-react-codemod@latest react-element-default-any-props ./path-to-your-re
 _이 변경 사항은`react-19` codemod 프리셋에 포함된 [`no-implicit-ref-callback-return
 `](https://github.com/eps1lon/types-react-codemod/#no-implicit-ref-callback-return)항목에 해당합니다._
 
-ref cleanup 함수 도입에 따라, **ref 콜백이 값을 암시적으로 반환하는 경우(TypeScript에서는 명확히 cleanup 함수인지 판단 불가)**를 허용하지 않습니다. 이를 해결하기 위해 암시적 반환을 사용하지 않도록 코드를 수정해야 합니다:
+ref 정리 함수<sup>Cleanup Funtions</sup>가 도입됨에 따라 이제 ref 콜백에서 다른 값을 반환하는 경우 TypeScript에서 거부됩니다. 일반적인 해결 방법은 암시적 반환<sup>Implicit Return</sup>을 사용하지 않는 것입니다.
 
 ```diff [[1, 1, "("], [1, 1, ")"], [2, 2, "{", 15], [2, 2, "}", 1]]
 - <div ref={current => (instance = current)} />
 + <div ref={current => {instance = current}} />
 ```
 
-원래 코드에서는 `HTMLDivElement` 인스턴스를 반환했기 때문에, TypeScript는 이것이 정리 함수인지 아닌지 구분할 수 없습니다.
+예전에는 `HTMLDivElement` 인스턴스를 반환하는 코드가 있었는데 TypeScript는 그것이 정리 함수인지 단순 반환 값인지 구분할 수 없었습니다.
 
-### `useRef`는 인자가 필수 {/*useref-requires-argument*/}
+### `useRef`는 인자가 필요함 {/*useref-requires-argument*/}
 
-_이 변경 사항은 `react-19` codemod 프리셋에 포함된 [`refobject-defaults`](https://github.com/eps1lon/types-react-codemod/#refobject-defaults)항목에 해당합니다._
+_이 변경 사항은 `react-19` codemod 프리셋에 포함된 [`refobject-defaults`](https://github.com/eps1lon/types-react-codemod/#refobject-defaults) 항목에 해당합니다._
 
-TypeScript와 React의 오랜 불만이었던 `useRef` 사용 방식이 변경되었습니다. 이제 `useRef` 는 인자를 반드시 요구하며, 이는 타입 시그니처를 더 명확하게 단순화하고 `createContext` 처럼 동작하게 됩니다.
+오랫동안 제기되어 온 TypeScript와 React의 불편한 점 중 하나가 `useRef`였습니다. React 19에서는 타입 정의가 변경되어, 이제 `useRef`는 반드시 인자를 받아야 합니다. 이에 따라 타입 시그니처가 훨씬 단순해졌으며, 이제는 `createContext`와 더 유사하게 동작합니다.
 
 ```ts
 // @ts-expect-error: Expected 1 argument but saw none
@@ -634,16 +631,16 @@ createContext();
 createContext(undefined);
 ```
 
-이제 모든 ref는 변경 가능하다는 것을 의미합니다. 더 이상 `null`로 초기화했기 때문에 ref를 변경할 수 없는 문제는 발생하지 않습니다:
+이제 모든 ref는 변경 가능<sup>Mutable</sup>합니다. 즉, `null`로 초기화했기 때문에 `ref.current`를 변경할 수 없었던 기존 문제를 더 이상 겪지 않아도 됩니다.
 
 ```ts
 const ref = useRef<number>(null);
 
-// Cannot assign to 'current' because it is a read-only property
+// 읽기 전용이라 'current'에 할당 불가
 ref.current = 1;
 ```
 
-`MutableRef`는 이제 사용 중단되었으며, `useRef` 는 항상 단일 `RefObject` 타입을 반환합니다.
+`MutableRef`는 이제 사용 중단되었으며 `useRef`는 항상 단일 `RefObject` 타입을 반환합니다.
 
 ```ts
 interface RefObject<T> {
@@ -653,22 +650,22 @@ interface RefObject<T> {
 declare function useRef<T>: RefObject<T>
 ```
 
-`useRef<T>(null)`에 대해서는 여전히 편의 오버로드가 제공되어, 자동으로 `RefObject<T | null>`을 반환합니다. `useRef`에 인자가 필요하도록 변경됨에 따라 마이그레이션을 쉽게 하려고, `useRef(undefined)`도 자동으로  `RefObject<T | undefined>`를 반환하는 오버로드가 추가되었습니다.
+`useRef`는 여전히 `useRef<T>(null)`을 사용할 때 자동으로 `RefObject<T | null>`을 반환하는 오버로드를 편의상 제공합니다. `useRef`에 인자가 필요하도록 변경됨에 따라 마이그레이션을 쉽게 하려고 `useRef(undefined)`를 사용할 경우 자동으로 `RefObject<T | undefined>`를 반환하는 오버로드가 편의상 추가되었습니다.
 
-이 변경에 대한 논의는 [[RFC] 모든 ref를 mutable로 만들기](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/64772)에서 확인하실 수 있습니다.
+이 변경에 대한 이전 논의는 [[RFC] 모든 ref를 변경할 수 있게 만들기](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/64772)에서 확인하실 수 있습니다.
 
 ### `ReactElement` TypeScript 타입의 변경 사항 {/*changes-to-the-reactelement-typescript-type*/}
 
 _이 변경사항은 [`react-element-default-any-props`](https://github.com/eps1lon/types-react-codemod#react-element-default-any-props) codemod에 포함되어 있습니다._
 
-`ReactElement`로 타입이 지정된 요소의 `props` 기본 타입이 `any`에서 `unknown`으로 변경되었습니다. 단, `ReactElement`에 타입 인자를 명시적으로 제공할 떄에 영향을 받지 않습니다.
+`ReactElement`로 타입이 지정된 요소의 `props` 기본 타입이 `any`에서 `unknown`으로 변경되었습니다. 단, `ReactElement`에 타입 인자를 명시적으로 제공할 때 영향을 받지 않습니다.
 
 ```ts
 type Example2 = ReactElement<{ id: string }>["props"];
 //   ^? { id: string }
 ```
 
-하지만 이전에 기본값을 사용한 경우, 이제는 `unknown`을 처리해야 합니다:
+하지만 이전에 기본값을 사용하였으면 `unknown`을 처리해야 합니다.
 
 ```ts
 type Example = ReactElement["props"];
@@ -676,12 +673,12 @@ type Example = ReactElement["props"];
 ```
 
 이 변경은 주로 `element.props`에 대한 불안정한 접근을 많이 사용한 레거시 코드에 영향을 줍니다.
-요소 내부 속성 접근<sup>Element introspection</sup>은 예외적인 경우에만 사용되어야 하며, `any`를 명시적으로 사용해 타입 안정성이 없음을 드러내는 것이 좋습니다.
+요소 내부 속성 접근<sup>Element Introspection</sup>은 예외적인 경우에만 사용되어야 하며, `any`를 명시적으로 사용해 타입 안정성이 없음을 드러내는 것이 좋습니다.
 
 ### TypeScript의 JSX 네임스페이스 변경 {/*the-jsx-namespace-in-typescript*/}
 이 변경은 `react-19` codemod preset의 [`scoped-jsx`](https://github.com/eps1lon/types-react-codemod#scoped-jsx)항목에 포함되어 있습니다.
 
-오랫동안 요청된 기능 중 하나는 전역 `JSX` 네임스페이스를 제거하고 `React.JSX` 로 대체하는 것이었습니다. 이 변경은 JSX를 사용하는 다양한 UI 라이브러리 간의 타입 충돌을 방지하기 위해 글로벌 타입 오염을 줄이는 데 도움이 됩니다.
+오랫동안 요청된 기능 중 하나는 전역 `JSX` 네임스페이스를 제거하고 `React.JSX`로 대체하는 것이었습니다. 이 변경은 JSX를 사용하는 다양한 UI 라이브러리 간의 타입 충돌을 방지하기 위해 글로벌 타입 오염을 줄이는 데 도움이 됩니다.
 
 이제 JSX 네임스페이스 확장은 다음처럼 `declare module "...."을 통해 감싸야 합니다.
 
@@ -700,15 +697,15 @@ type Example = ReactElement["props"];
 
 `tsconfig.json`의 `compilerOptions`에서 지정한 JSX 런타임 설정에 따라 정확한 모듈 명세자는 다음과 같이 달라집니다.
 
-- `"jsx": "react-jsx"` 인 경우 →`react/jsx-runtime`.
-- `"jsx": "react-jsxdev"` 인 경우 → `react/jsx-dev-runtime`.
-- `"jsx": "react"` 또는 `"jsx": "preserve"` 인 경우 → `react`.
+- `"jsx": "react-jsx"` 인 경우 `react/jsx-runtime`.
+- `"jsx": "react-jsxdev"` 인 경우 `react/jsx-dev-runtime`.
+- `"jsx": "react"` 또는 `"jsx": "preserve"` 인 경우 `react`.
 
 ### `useReducer` 타입 추론 개선 {/*better-usereducer-typings*/}
 
-[@mfp22](https://github.com/mfp22)의 기여 덕분에, `useReducer`는 이제 더 나은 타입 추론을 제공합니다.
+[@mfp22](https://github.com/mfp22) 덕분에 이제 `useReducer`의 타입 추론이 개선되었습니다.
 
-그러나 이에 따라 약간의 호환성 깨짐이 발생했으며, 이제 `useReducer`는 전체 리듀서 타입을 타입 인자로 받지 않고, 아예 타입 인자를 생략하거나 state와 action 타입을 둘 다 명시해야 합니다.
+하지만 이에 따라 호환성 깨짐이 발생했는데, 이제 `useReducer`는 전체 reducer 타입을 타입 인자로 받지 않고 아예 타입 인자를 생략하거나 state와 action 타입을 둘 다 지정해야 합니다.
 
 새로운 권장 방식은 타입 인자를 `useReducer`에 넘기지 _않는_ 것입니다.
 ```diff
@@ -716,28 +713,28 @@ type Example = ReactElement["props"];
 + useReducer(reducer)
 ```
 
-예외적으로 타입이 제대로 추론되지 않을 때에는 다음처럼 `Action`을 튜플로 넘겨서 명시적으로 지정할 수 있습니다.
+하지만 특수한 경우에는 `Action`을 튜플로 전달하여 state와 action을 명시적으로 지정해야 할 수도 있습니다.
 ```diff
 - useReducer<React.Reducer<State, Action>>(reducer)
 + useReducer<State, [Action]>(reducer)
 ```
 
-리듀서를 인라인으로 정의하는 경우, 함수 매개변수에 타입을 지정하는 방식이 권장됩니다.
+reducer를 인라인으로 정의한다면 함수 매개변수에 타입을 지정하는 방식을 권장합니다.
 ```diff
 - useReducer<React.Reducer<State, Action>>((state, action) => state)
 + useReducer((state: State, action: Action) => state)
 ```
 
-또는 리듀서를 `useReducer` 외부에 정의할 때도 다음과 같이 작성할 수 있습니다.
+이는 `useReducer` 호출문 밖으로 reducer를 분리할 때도 동일하게 적용됩니다.
 ```ts
 const reducer = (state: State, action: Action) => state;
 ```
 
 ## 변경 로그 {/*changelog*/}
 
-### 기타 중요 변경 사항 {/*other-breaking-changes*/}
+### 기타 주요한 변경 사항 {/*other-breaking-changes*/}
 
-- **react-dom**: `src` 및 `href` 속성에 JavaScript URL 사용 시 오류 발생 [#26507](https://github.com/facebook/react/pull/26507)
+- **react-dom**: `src` 및 `href` 속성에 JavaScript URL 사용 시 발생하던 오류 [#26507](https://github.com/facebook/react/pull/26507)
 - **react-dom**: `onRecoverableError`에서 `errorInfo.digest` 제거 [#28222](https://github.com/facebook/react/pull/28222)
 - **react-dom**: `unstable_flushControlled` 제거 [#26397](https://github.com/facebook/react/pull/26397)
 - **react-dom**: `unstable_createEventHandle` 제거 [#28271](https://github.com/facebook/react/pull/28271)
@@ -745,7 +742,7 @@ const reducer = (state: State, action: Action) => state;
 - **react-dom**: `unstable_runWithPriority` 제거 [#28271](https://github.com/facebook/react/pull/28271)
 - **react-is**: `react-is`에서 사용 중단된 메서드 제거 [28224](https://github.com/facebook/react/pull/28224)
 
-### 기타 주목할 만한 변경사항 {/*other-notable-changes*/}
+### 기타 주목할 만한 변경 사항 {/*other-notable-changes*/}
 
 - **react**: 동기, 기본, 지속적 lane 처리 배치 적용 [#25700](https://github.com/facebook/react/pull/25700)
 - **react**: 중단된 컴포넌트의 형제 요소 선렌더링 방지 [#26380](https://github.com/facebook/react/pull/26380)
@@ -758,4 +755,4 @@ const reducer = (state: State, action: Action) => state;
 
 ---
 
-이 포스트의 리뷰 및 편집에 도움을 준 분들께 감사드립니다: [Andrew Clark](https://twitter.com/acdlite), [Eli White](https://twitter.com/Eli_White), [Jack Pope](https://github.com/jackpope), [Jan Kassens](https://github.com/kassens), [Josh Story](https://twitter.com/joshcstory), [Matt Carroll](https://twitter.com/mattcarrollcode), [Noah Lemen](https://twitter.com/noahlemen), [Sophie Alpert](https://twitter.com/sophiebits), and [Sebastian Silbermann](https://twitter.com/sebsilbermann)
+이 글을 작성하는 데에 도움을 준 모든 분들께 감사드립니다. [Andrew Clark](https://twitter.com/acdlite), [Eli White](https://twitter.com/Eli_White), [Jack Pope](https://github.com/jackpope), [Jan Kassens](https://github.com/kassens), [Josh Story](https://twitter.com/joshcstory), [Matt Carroll](https://twitter.com/mattcarrollcode), [Noah Lemen](https://twitter.com/noahlemen), [Sophie Alpert](https://twitter.com/sophiebits), [Sebastian Silbermann](https://twitter.com/sebsilbermann)
