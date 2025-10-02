@@ -710,7 +710,6 @@ type Example = ReactElement["props"];
 - useReducer<React.Reducer<State, Action>>(reducer)
 + useReducer(reducer)
 ```
-
 하지만 특수한 경우에는 `Action`을 튜플로 전달하여 state와 action을 명시적으로 지정해야 할 수도 있습니다.
 ```diff
 - useReducer<React.Reducer<State, Action>>(reducer)
