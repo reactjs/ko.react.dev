@@ -599,7 +599,7 @@ npx types-react-codemod@latest react-element-default-any-props ./path-to-your-re
 [`types-react-codemod`](https://github.com/eps1lon/types-react-codemod/) 문서를 확인하면 지원되는 교체 목록을 볼 수 있습니다. 만약 빠진 codemod가 있다면 [React 19 누락 codemod 목록](https://github.com/eps1lon/types-react-codemod/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22React+19%22+label%3Aenhancement)에서 확인할 수 있습니다.
 
 
-### `ref` 정리 필요 {/*ref-cleanup-required*/}
+### `ref` 정리<sup>Cleanup</sup> 필요 {/*ref-cleanup-required*/}
 
 _이 변경 사항은`react-19` codemod 프리셋에 포함된 [`no-implicit-ref-callback-return
 `](https://github.com/eps1lon/types-react-codemod/#no-implicit-ref-callback-return)항목에 해당합니다._
@@ -671,8 +671,7 @@ type Example = ReactElement["props"];
 //   ^? Before, was 'any', now 'unknown'
 ```
 
-이 변경은 주로 `element.props`에 대한 불안정한 접근을 많이 사용한 레거시 코드에 영향을 줍니다.
-요소 내부 속성 접근<sup>Element Introspection</sup>은 예외적인 경우에만 사용되어야 하며, `any`를 명시적으로 사용해 타입 안정성이 없음을 드러내는 것이 좋습니다.
+이 변경은 주로 `element.props`에 대한 불안정한 접근을 많이 사용한 레거시 코드에 영향을 줍니다. 요소 내부 속성 접근<sup>Element Introspection</sup>은 예외적인 경우에만 사용되어야 하며, `any`를 명시적으로 사용해 타입 안정성이 없음을 드러내는 것이 좋습니다.
 
 ### TypeScript의 JSX 네임스페이스 변경 {/*the-jsx-namespace-in-typescript*/}
 이 변경은 `react-19` codemod preset의 [`scoped-jsx`](https://github.com/eps1lon/types-react-codemod#scoped-jsx)항목에 포함되어 있습니다.
