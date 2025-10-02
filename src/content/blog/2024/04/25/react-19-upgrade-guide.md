@@ -2,7 +2,7 @@
 title: "React 19 업그레이드 가이드"
 author: Ricky Hanlon
 date: 2024/04/25
-description: React 19에 추가된 개선 사항들로 인해 일부 주요한 변경 사항이 있지만, 업그레이드를 가능한 한 원활하게 진행할 수 있도록 노력했으며 대부분의 앱에 큰 영향이 없을 것으로 예상합니다. 이 글에서는 앱과 라이브러리를 React 19로 업그레이드하는 단계를 안내합니다.
+description: React 19에 추가된 개선 사항들로 인해 일부 주요한 변경 사항이 있지만, 업그레이드를 가능한 원활하게 진행할 수 있도록 노력했으며 대부분의 앱에 큰 영향이 없을 것으로 예상합니다. 이 글에서는 앱과 라이브러리를 React 19로 업그레이드하는 단계를 안내합니다.
 ---
 
 2024년 4월 25일, [Ricky Hanlon](https://twitter.com/rickhanlonii)
@@ -12,7 +12,7 @@ description: React 19에 추가된 개선 사항들로 인해 일부 주요한 �
 
 <Intro>
 
-React 19에 추가된 개선 사항들로 인해 일부 주요한 변경 사항이<sup>Breaking Changes</sup>가 있지만, 업그레이드를 가능한 한 원활하게 진행할 수 있도록 노력했으며 대부분의 앱에 큰 영향이 없을 것으로 예상합니다.
+React 19에 추가된 개선 사항들로 인해 일부 주요한 변경 사항<sup>Breaking Changes</sup>이 있지만, 업그레이드를 가능한 한 원활하게 진행할 수 있도록 노력했으며 대부분의 앱에 큰 영향이 없을 것으로 예상합니다.
 
 </Intro>
 
@@ -47,7 +47,7 @@ React 19를 테스트해 보고 싶다면 해당 가이드에 나와 있는 단�
 
 #### 이제 새로운 JSX 변환 방식은 필수입니다 {/*new-jsx-transform-is-now-required*/}
 
-2020년에 [새로운 JSX 변환](https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html)을 도입하여 번들 크기를 줄이고 React를 import 하지 않고도 JSX를 사용할 수 있도록 했습니다. React 19에서는 ref를 prop으로 사용할 수 있는 기능이나 JSX 성능 향상과 같은 추가적인 개선 사항이 도입되며, 이러한 기능들은 새로운 변환<sup>New Transform</sup>이 필요합니다.
+2020년에 [새로운 JSX 변환](https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html)을 도입하여 번들 크기를 줄이고 React를 import 하지 않고도 JSX를 사용할 수 있도록 했습니다. React 19에서는 Ref를 Prop으로 사용할 수 있는 기능이나 JSX 성능 향상과 같은 추가적인 개선 사항이 도입되며, 이러한 기능들은 새로운 변환<sup>New Transform</sup>이 필요합니다.
 
 새로운 변환이 활성화되지 않으면 다음과 같은 경고가 표시됩니다.
 
@@ -68,11 +68,13 @@ Your app (or one of its dependencies) is using an outdated JSX transform. Update
 
 
 최신 버전의 React 및 React DOM을 설치하기 위해 다음 명령어를 입력하세요.
+
 ```bash
 npm install --save-exact react@^19.0.0 react-dom@^19.0.0
 ```
 
 Yarn을 사용한다면 다음 명령어를 입력하세요.
+
 ```bash
 yarn add --exact react@^19.0.0 react-dom@^19.0.0
 ```
@@ -87,7 +89,7 @@ Yarn을 사용한다면 다음 명령어를 입력하세요.
 yarn add --exact @types/react@^19.0.0 @types/react-dom@^19.0.0
 ```
 
-가장 흔한 교체 작업을 위한 codemod도 포함되어 있습니다. 아래의 [TypeScript 변경 사항](#typescript-changes)을 참고하세요.
+가장 흔한 교체 작업을 위한 Codemod도 포함되어 있습니다. 아래의 [TypeScript 변경 사항](#typescript-changes)을 참고하세요.
 
 ## Codemods {/*codemods*/}
 
