@@ -320,7 +320,7 @@ button { display: block; margin-top: 10px; }
 
 #### 투두 리스트 (배열) {/*todo-list-array*/}
 
-이 예시에서는 reducer를 이용해 할 일 목록들을 배열로 관리합니다. 배열의 업데이트는 [mutation이 없이](/learn/updating-arrays-in-state) 이루어져야 합니다.
+이 예시에서는 Reducer를 이용해 할 일 목록들을 배열로 관리합니다. 배열의 업데이트는 [Mutation이 없이](/learn/updating-arrays-in-state) 이루어져야 합니다.
 
 <Sandpack>
 
