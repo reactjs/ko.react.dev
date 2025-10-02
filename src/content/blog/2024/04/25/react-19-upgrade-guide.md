@@ -715,14 +715,13 @@ type Example = ReactElement["props"];
 - useReducer<React.Reducer<State, Action>>(reducer)
 + useReducer<State, [Action]>(reducer)
 ```
-
 reducer를 인라인으로 정의한다면 함수 매개변수에 타입을 지정하는 방식을 권장합니다.
 ```diff
 - useReducer<React.Reducer<State, Action>>((state, action) => state)
 + useReducer((state: State, action: Action) => state)
 ```
-
 이는 `useReducer` 호출문 밖으로 reducer를 분리할 때도 동일하게 적용됩니다.
+
 ```ts
 const reducer = (state: State, action: Action) => state;
 ```
