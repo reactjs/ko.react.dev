@@ -79,7 +79,7 @@ Yarn을 사용한다면 다음 명령어를 입력하세요.
 yarn add --exact react@^19.0.0 react-dom@^19.0.0
 ```
 
-TypeScript를 사용한다면 다음 명령어를 입력하세요.
+TypeScript를 사용한다면 타입에 대한 업데이트도 필요합니다.
 ```bash
 npm install --save-exact @types/react@^19.0.0 @types/react-dom@^19.0.0
 ```
@@ -93,22 +93,22 @@ yarn add --exact @types/react@^19.0.0 @types/react-dom@^19.0.0
 
 ## Codemods {/*codemods*/}
 
-업그레이드를 돕기 위해 [codemod.com](https://codemod.com) 팀과 협력하여 React 19의 새로운 API 및 패턴에 맞게 코드를 자동으로 업데이트해 주는 codemods를 공개했습니다.
+업그레이드를 돕기 위해 [codemod.com](https://codemod.com) 팀과 협력하여 React 19의 새로운 API 및 패턴에 맞게 코드를 자동으로 업데이트해 주는 Codemod를 공개했습니다.
 
-모든 codemods는 [`react-codemod` 저장소](https://github.com/reactjs/react-codemod)에 있으며, Codemod 팀도 유지보수 하는 데 함께하고 있습니다. codemods를 실행할 때는 `react-codemod`보다 `codemod` 명령어 사용을 권장합니다. 왜냐하면 해당 명령어로 실행했을 때 더 빠르고, 더 복잡한 코드 마이그레이션을 처리하고, TypeScript에 대한 더 나은 지원을 제공합니다.
+모든 Codemod는 [`react-codemod` 저장소](https://github.com/reactjs/react-codemod)에 있으며, Codemod 팀도 유지보수 하는 데 함께하고 있습니다. Codemod를 실행할 때는 `react-codemod`보다 `codemod` 명령어 사용을 권장합니다. 왜냐하면 해당 명령어로 실행했을 때 더 빠르고, 더 복잡한 코드 마이그레이션을 처리하고, TypeScript에 대한 더 나은 지원을 제공합니다.
 
 
 <Note>
 
-#### React 19 codemods 전체 실행 {/*run-all-react-19-codemods*/}
+#### React 19 codemod 전체 실행 {/*run-all-react-19-codemods*/}
 
-이 가이드에 나열된 모든 codemods를 React 19의 `codemod` 레시피를 통해 한 번에 실행하려면 다음 명령어를 입력하세요.
+이 가이드에 나열된 모든 Codemod를 React 19의 `codemod` 레시피를 통해 한 번에 실행하려면 다음 명령어를 입력하세요.
 
 ```bash
 npx codemod@latest react/19/migration-recipe
 ```
 
-이 명령어를 실행하면 `react-codemod`에서 아래 codemods가 실행됩니다.
+이 명령어를 실행하면 `react-codemod`에서 아래 Codemod가 실행됩니다.
 - [`replace-reactdom-render`](https://github.com/reactjs/react-codemod?tab=readme-ov-file#replace-reactdom-render)
 - [`replace-string-ref`](https://github.com/reactjs/react-codemod?tab=readme-ov-file#replace-string-ref)
 - [`replace-act-import`](https://github.com/reactjs/react-codemod?tab=readme-ov-file#replace-act-import)
@@ -121,9 +121,9 @@ npx codemod@latest react/19/migration-recipe
 
 Codemod가 포함된 변경 사항에는 아래와 같이 명령어가 함께 제공됩니다.
 
-사용할 수 있는 모든 codemods 목록은 [`react-codemod` 저장소](https://github.com/reactjs/react-codemod)를 참고하세요.
+사용할 수 있는 모든 Codemod 목록은 [`react-codemod` 저장소](https://github.com/reactjs/react-codemod)를 참고하세요.
 
-## 주요한 변경 사항 {/*breaking-changes*/}
+## 주요한 변경 사항<sup>Breaking Changes</sup> {/*breaking-changes*/}
 
 ### 렌더링 중에 발생한 오류는 re-throw 하지 않음 {/*errors-in-render-are-not-re-thrown*/}
 
@@ -195,7 +195,7 @@ npx codemod@latest react/prop-types-typescript
 
 #### 제거됨: `contextTypes`와 `getChildContext`를 사용하는 레거시 콘텍스트 {/*removed-removing-legacy-context*/}
 
-레거시 콘텍스트는 [2018년 10월 (v16.6.0)](https://legacy.reactjs.org/blog/2018/10/23/react-v-16-6.html)부터 더 이상 권장되지 않습니다.
+레거시 콘텍스트는 [2018년 10월 (v16.6.0)](https://legacy.reactjs.org/blog/2018/10/23/react-v-16-6.html)부터 더 이상 권장하지 않습니다.
 
 레거시 콘텍스트는 클래스형 컴포넌트에서 `contextTypes`와 `getChildContext` API를 통해 사용할 수 있었지만, 미묘한 버그들로 인해 `contextType` API로 대체되었습니다. React 19에서는 React의 크기를 줄이고 성능을 향상하기 위해 레거시 콘텍스트가 제거됩니다.
 
@@ -253,12 +253,12 @@ class Child extends React.Component {
 }
 ```
 
-#### 제거됨: 문자열 refs {/*removed-string-refs*/}
-문자열 refs는 [2018년 3월 (v16.3.0)](https://legacy.reactjs.org/blog/2018/03/27/update-on-async-rendering.html)부터 더 이상 권장되지 않습니다.
+#### 제거됨: 문자열 Refs {/*removed-string-refs*/}
+문자열 Refs는 [2018년 3월 (v16.3.0)](https://legacy.reactjs.org/blog/2018/03/27/update-on-async-rendering.html)부터 더 이상 권장되지 않습니다.
 
-클래스형 컴포넌트에서는 문자열 refs를 사용할 수 있었지만, [여러 단점](https://github.com/facebook/react/issues/1373)으로 인해 ref 콜백 방식으로 대체되었습니다. React 19에서는 React를 더 간단하고 이해하기 쉽게 만들기 위해 문자열 refs가 제거됩니다.
+클래스형 컴포넌트에서는 문자열 Refs를 사용할 수 있었지만, [여러 단점](https://github.com/facebook/react/issues/1373)으로 인해 Ref 콜백 방식으로 대체되었습니다. React 19에서는 React를 더 간단하고 이해하기 쉽게 만들기 위해 문자열 Refs가 제거됩니다.
 
-클래스형 컴포넌트에서 아직 문자열 refs를 사용하고 있다면, ref 콜백으로 마이그레이션해야 합니다.
+클래스형 컴포넌트에서 아직 문자열 Refs를 사용하고 있다면, Ref 콜백으로 마이그레이션해야 합니다.
 
 ```js {4,8}
 // 변경 전
@@ -316,7 +316,7 @@ function FactoryComponent() {
 ```
 
 #### 제거됨: `React.createFactory` {/*removed-createfactory*/}
-`createFactory`는 [2020년 2월 (v16.13.0)](https://legacy.reactjs.org/blog/2020/02/26/react-v16.13.0.html#deprecating-createfactory)부터 더 이상 권장되지 않습니다.
+`createFactory`는 [2020년 2월 (v16.13.0)](https://legacy.reactjs.org/blog/2020/02/26/react-v16.13.0.html#deprecating-createfactory)부터 더 이상 권장하지 않습니다.
 
 `createFactory`는 JSX가 널리 사용되기 전에는 일반적이었지만 오늘날에는 거의 사용되지 않으며 JSX로 쉽게 대체할 수 있습니다. React 19에서는 `createFactory`가 제거되며 JSX로 마이그레이션해야 합니다.
 
@@ -362,7 +362,7 @@ Shallow 렌더링은 React 내부 구현에 의존하며 향후 React 업그레�
 
 <ConsoleLogLine level="error">
 
-`ReactDOMTestUtils.act`is deprecated in favor of `React.act`. Import `act` from `react` instead of `react-dom/test-utils`. See https://react.dev/warnings/react-dom-test-utils for more info.
+`ReactDOMTestUtils.act` is deprecated in favor of `React.act`. Import `act` from `react` instead of `react-dom/test-utils`. See https://react.dev/warnings/react-dom-test-utils for more info.
 
 </ConsoleLogLine>
 
@@ -382,7 +382,6 @@ Shallow 렌더링은 React 내부 구현에 의존하며 향후 React 업그레�
 <Note>
 
 Codemod를 사용해 `ReactDOMTestUtils.act`를 `React.act`로 바꾸려면 다음 명령어를 입력하세요.
-
 
 ```bash
 npx codemod@latest react/19/replace-act-import
