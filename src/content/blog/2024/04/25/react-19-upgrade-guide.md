@@ -533,9 +533,7 @@ React 19에는 Strict Mode 관련해 여러 수정 및 개선 사항이 포함�
 
 ### Suspense 관련 개선 사항 {/*improvements-to-suspense*/}
 
-React 19에서는 컴포넌트가 일시 중단<sup>Suspend</sup> 될 때 React는 전체 형제 컴포넌트<sup>Entire Sibling Tree</sup>를 렌더링할 때까지 기다리지 않고 가장 가까운 Suspense 경계의 fallback을 즉시 반영<sup>Commit</sup>합니다.
-
-fallback이 반영된 후 React는 일시 중단된 형제 컴포넌트를 다시 렌더링 예약하여 트리의 나머지 부분에서 발생할 수 있는 lazy 요청을 사전 준비<sup>pre-warm</sup>하게 합니다.
+React 19에서는 컴포넌트가 일시 중단<sup>Suspend</sup> 될 때 React는 전체 형제 컴포넌트<sup>Entire Sibling Tree</sup>를 렌더링할 때까지 기다리지 않고 가장 가까운 Suspense 경계의 Fallback을 즉시 반영<sup>Commit</sup>합니다. Fallback이 반영된 후 React는 일시 중단된 형제 컴포넌트를 다시 렌더링 예약하여 트리의 나머지 부분에서 발생할 수 있는 lazy 요청을 사전 준비<sup>pre-warm</sup>하게 합니다.
 
 <Diagram name="prerender" height={162} width={1270} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Both Panel components contain isActive with value false.">
 
