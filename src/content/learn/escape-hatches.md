@@ -201,7 +201,7 @@ Effect가 필요하지 않은 두 가지 일반적인 경우가 있습니다.
 
 예를 들어, 다른 State에 따라 일부 State를 조정하는 데는 Effect가 필요하지 않습니다.
 
-```js {5-9}
+```js {expectedErrors: {'react-compiler': [8]}} {5-9}
 function Form() {
   const [firstName, setFirstName] = useState('Taylor');
   const [lastName, setLastName] = useState('Swift');
@@ -312,6 +312,7 @@ Effect의 생명주기가 컴포넌트와 어떻게 다른지를 배우려면 <s
 
 ## Effect에서 이벤트 분리하기 {/*separating-events-from-effects*/}
 
+<<<<<<< HEAD
 <Wip>
 
 이 섹션에서는 아직 안정된 버전의 React로 **출시하지 않은 실험적인 API**에 대해 설명합니다.
@@ -319,6 +320,9 @@ Effect의 생명주기가 컴포넌트와 어떻게 다른지를 배우려면 <s
 </Wip>
 
 이벤트 핸들러는 같은 상호작용을 반복하는 경우에만 다시 실행됩니다. Effect는 이벤트 핸들러와 달리 Prop이나 State 변수 등 읽은 값이 마지막 렌더링 때와 다르면 다시 동기화합니다. 때로는 두 동작이 섞여서 어떤 값에는 반응해 다시 실행되지만, 다른 값에는 그러지 않는 Effect를 원할 때도 있습니다. 이 페이지에서 그 방법을 알려드리겠습니다.
+=======
+Event handlers only re-run when you perform the same interaction again. Unlike event handlers, Effects re-synchronize if any of the values they read, like props or state, are different than during last render. Sometimes, you want a mix of both behaviors: an Effect that re-runs in response to some values but not others.
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 
 Effect 내의 모든 코드는 <em>반응형</em>이며, 읽은 반응형 값이 다시 렌더링되는 것으로 인해 변경되면 다시 실행됩니다. 예를 들어 다음의 Effect는 `roomId` 또는 `theme`이 변경되면 채팅에 다시 연결됩니다.
 
@@ -455,8 +459,8 @@ label { display: block; margin-top: 10px; }
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "latest",
+    "react-dom": "latest",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -471,7 +475,7 @@ label { display: block; margin-top: 10px; }
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 import { createConnection, sendMessage } from './chat.js';
 import { showNotification } from './notifications.js';
 

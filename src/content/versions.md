@@ -10,9 +10,15 @@ title: React 버전
 
 주<sup>Major, 主</sup> 버전 내에서 문서를 최신 상태로 유지하기 위해 노력하며, 부<sup>Minor, 部</sup> 또는 수<sup>Patch, 修</sup> 버전에 대한 문서는 게시하지 않습니다. 새로운 주<sup>Major, 主</sup> 버전이 출시되면 이전 버전의 문서는 `x.react.dev`로 보관합니다. 자세한 내용은 [버전 관리 정책](/community/versioning-policy)을 참고하세요.
 
+<<<<<<< HEAD
 이전의 주<sup>Major, 主</sup> 버전에 대한 기록은 아래에서 찾을 수 있습니다.
 
 ## 최신 버전: 19.1 {/*latest-version*/}
+=======
+You can find an archive of previous major versions below.
+
+## Latest version: 19.2 {/*latest-version*/}
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 
 - [react.dev](https://react.dev) {/*docs-19*/}
 
@@ -41,6 +47,8 @@ React 15 이전 버전의 경우, [15.react.dev](https://15.react.dev)를 참고
 - [React v19](/blog/2024/12/05/react-19)
 - [React 19 Upgrade Guide](/blog/2024/04/25/react-19-upgrade-guide)
 - [React Compiler Beta Release](/blog/2024/10/21/react-compiler-beta-release)
+- [React Compiler RC](/blog/2025/04/21/react-compiler-rc)
+- [React 19.2](/blog/2025/10/01/react-19-2)
 
 **Talks**
 - [React 19 Keynote](https://www.youtube.com/watch?v=lyEKhv8-3n0)
@@ -52,6 +60,7 @@ React 15 이전 버전의 경우, [15.react.dev](https://15.react.dev)를 참고
 - [React 19 Deep Dive: Coordinating HTML](https://www.youtube.com/watch?v=IBBN-s77YSI)
 
 **Releases**
+- [v19.2.0 (October, 2025)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1920-october-1st-2025)
 - [v19.1.0 (March, 2025)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1910-march-28-2025)
 - [v19.0.0 (December, 2024)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1900-december-5-2024)
 
