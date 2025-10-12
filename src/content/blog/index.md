@@ -10,6 +10,12 @@ title: React 블로그
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<BlogCard title="React 19.2" date="2025년 10월 1일" url="/blog/2025/10/01/react-19-2">
+
+React 19.2에는 Activity, React Performance Tracks, useEffectEvent 등의 새로운 기능이 추가되었습니다. 이 글에서는…
+
+</BlogCard>
+
 <BlogCard title="React Labs: View Transitions, Activity 그리고 그 외" date="2025년 4월 23일" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
 
 React Labs 게시글에서는 현재 연구 개발 중인 프로젝트에 대한 글을 작성합니다. 이번 포스팅에서는 지금 바로 사용해 볼 수 있는 두 가지 새로운 실험적 기능을 공유하고, 현재 작업 중인 다른 영역에 대해서도 공유하고자 합니다.
