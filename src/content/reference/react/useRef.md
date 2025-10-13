@@ -197,7 +197,7 @@ React는 컴포넌트의 본문이 [순수 함수처럼 동작하기](/learn/kee
 
 **렌더링 중에** ref를 읽거나 쓰면 이러한 기대가 깨집니다.
 
-```js {3-4,6-7}
+```js {expectedErrors: {'react-compiler': [4]}} {3-4,6-7}
 function MyComponent() {
   // ...
   // 🚩 Don't write a ref during rendering

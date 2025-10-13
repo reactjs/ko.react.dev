@@ -12,6 +12,20 @@
       "skipBreadcrumb": true,
       "routes": [
         {
+          "title": "React Compiler v1.0",
+          "titleForHomepage": "React Compiler v1.0",
+          "icon": "blog",
+          "date": "October 8, 2025",
+          "path": "/blog/2025/10/07/react-compiler-1"
+        },
+        {
+          "title": "Introducing the React Foundation",
+          "titleForHomepage": "Introducing the React Foundation",
+          "icon": "blog",
+          "date": "October 7, 2025",
+          "path": "/blog/2025/10/07/introducing-the-react-foundation"
+        },
+        {
           "title": "React Labs: View Transitions, Activity, and more",
           "titleForHomepage": "View Transitions and Activity",
           "icon": "blog",
@@ -19,6 +33,7 @@
           "path": "/blog/2025/04/23/react-labs-view-transitions-activity-and-more"
         },
         {
+<<<<<<< HEAD
           "title": "React Compiler RC",
           "titleForHomepage": "React Compiler RC",
           "icon": "blog",
@@ -27,6 +42,9 @@
         },
         {
           "title": "Create React App 지원 종료",
+=======
+          "title": "Sunsetting Create React App",
+>>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
           "titleForHomepage": "Sunsetting Create React App",
           "icon": "blog",
           "date": "February 14, 2025",
