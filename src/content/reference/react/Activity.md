@@ -150,7 +150,9 @@ export default function TabButton({ action, children, isActive }) {
 ```
 
 ```js src/AboutTab.js hidden
-import {unstable_ViewTransition as ViewTransition} from 'react';
+import {unstable_ViewTransition, ViewTransition as ViewTransitionStable} from 'react';
+
+let ViewTransition = ViewTransitionStable ?? unstable_ViewTransition;
 
 export default function AboutTab() {
   return (
@@ -162,8 +164,10 @@ export default function AboutTab() {
 ```
 
 ```js src/PostsTab.js hidden
-import {use, unstable_ViewTransition as ViewTransition} from 'react';
+import {use, unstable_ViewTransition, ViewTransition as ViewTransitionStable} from 'react';
 import { fetchData } from './data.js';
+
+let ViewTransition = ViewTransitionStable ?? unstable_ViewTransition;
 
 function PostsTab() {
   const posts = use(fetchData('/posts'));
@@ -256,24 +260,6 @@ button { margin-right: 10px }
 b { display: inline-block; margin-right: 10px; }
 .pending { color: #777; }
 ```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
-    "react-scripts": "latest",
-    "toastify-js": "1.12.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 </Sandpack>
 
 이 예시에서 "Posts" 탭을 클릭할 때 게시물이 로드될 때까지 기다려야 합니다.
@@ -283,11 +269,13 @@ b { display: inline-block; margin-right: 10px; }
 <Sandpack>
 
 ```js
-import { Suspense, useState, unstable_Activity as Activity } from "react";
+import { Suspense, useState, unstable_Activity, Activity as ActivityStable } from "react";
 import TabButton from "./TabButton.js";
 import AboutTab from "./AboutTab.js";
 import PostsTab from "./PostsTab.js";
 import ContactTab from "./ContactTab.js";
+
+let Activity = ActivityStable ?? unstable_Activity;
 
 export default function TabContainer() {
   const [tab, setTab] = useState("about");
@@ -342,7 +330,9 @@ export default function TabButton({ action, children, isActive }) {
 ```
 
 ```js src/AboutTab.js hidden
-import {unstable_ViewTransition as ViewTransition} from 'react';
+import {unstable_ViewTransition, ViewTransition as ViewTransitionStable} from 'react';
+
+let ViewTransition = ViewTransitionStable ?? unstable_ViewTransition;
 
 export default function AboutTab() {
   return (
@@ -354,8 +344,10 @@ export default function AboutTab() {
 ```
 
 ```js src/PostsTab.js hidden
-import {use, unstable_ViewTransition as ViewTransition} from 'react';
+import {use, unstable_ViewTransition, ViewTransition as ViewTransitionStable} from 'react';
 import { fetchData } from './data.js';
+
+let ViewTransition = ViewTransitionStable ?? unstable_ViewTransition;
 
 function PostsTab() {
   const posts = use(fetchData('/posts'));
@@ -382,7 +374,9 @@ export default PostsTab;
 ```
 
 ```js src/ContactTab.js hidden
-import {unstable_ViewTransition as ViewTransition} from 'react';
+import {unstable_ViewTransition, ViewTransition as ViewTransitionStable} from 'react';
+
+let ViewTransition = ViewTransitionStable ?? unstable_ViewTransition;
 
 export default function ContactTab() {
   return (
@@ -449,22 +443,6 @@ b { display: inline-block; margin-right: 10px; }
 .pending { color: #777; }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
-    "react-scripts": "latest",
-    "toastify-js": "1.12.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
 </Sandpack>
 
@@ -553,7 +531,9 @@ export default function TabButton({ action, children, isActive }) {
 ```
 
 ```js src/AboutTab.js hidden
-import {unstable_ViewTransition as ViewTransition} from 'react';
+import {unstable_ViewTransition, ViewTransition as ViewTransitionStable} from 'react';
+
+let ViewTransition = ViewTransitionStable ?? unstable_ViewTransition;
 
 export default function AboutTab() {
   return (
@@ -565,8 +545,10 @@ export default function AboutTab() {
 ```
 
 ```js src/PostsTab.js hidden
-import {use, unstable_ViewTransition as ViewTransition} from 'react';
+import {use, unstable_ViewTransition, ViewTransition as ViewTransitionStable} from 'react';
 import { fetchData } from './data.js';
+
+let ViewTransition = ViewTransitionStable ?? unstable_ViewTransition;
 
 function PostsTab() {
   const posts = use(fetchData('/posts'));
@@ -593,7 +575,9 @@ export default PostsTab;
 ```
 
 ```js src/ContactTab.js hidden
-import {unstable_ViewTransition as ViewTransition} from 'react';
+import {unstable_ViewTransition, ViewTransition as ViewTransitionStable} from 'react';
+
+let ViewTransition = ViewTransitionStable ?? unstable_ViewTransition;
 
 export default function ContactTab() {
   return (
@@ -660,22 +644,6 @@ b { display: inline-block; margin-right: 10px; }
 .pending { color: #777; }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
-    "react-scripts": "latest",
-    "toastify-js": "1.12.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
 </Sandpack>
 
@@ -685,11 +653,13 @@ b { display: inline-block; margin-right: 10px; }
 <Sandpack>
 
 ```js
-import { Suspense, useState, unstable_Activity as Activity } from "react";
+import { Suspense, useState, unstable_Activity, Activity as ActivityStable } from "react";
 import TabButton from "./TabButton.js";
 import AboutTab from "./AboutTab.js";
 import PostsTab from "./PostsTab.js";
 import ContactTab from "./ContactTab.js";
+
+let Activity = ActivityStable ?? unstable_Activity;
 
 export default function TabContainer() {
   const [tab, setTab] = useState("about");
@@ -744,7 +714,9 @@ export default function TabButton({ action, children, isActive }) {
 ```
 
 ```js src/AboutTab.js hidden
-import {unstable_ViewTransition as ViewTransition} from 'react';
+import {unstable_ViewTransition, ViewTransition as ViewTransitionStable} from 'react';
+
+let ViewTransition = ViewTransitionStable ?? unstable_ViewTransition;
 
 export default function AboutTab() {
   return (
@@ -756,8 +728,10 @@ export default function AboutTab() {
 ```
 
 ```js src/PostsTab.js hidden
-import {use, unstable_ViewTransition as ViewTransition} from 'react';
+import {use, unstable_ViewTransition, ViewTransition as ViewTransitionStable} from 'react';
 import { fetchData } from './data.js';
+
+let ViewTransition = ViewTransitionStable ?? unstable_ViewTransition;
 
 function PostsTab() {
   const posts = use(fetchData('/posts'));
@@ -784,7 +758,9 @@ export default PostsTab;
 ```
 
 ```js src/ContactTab.js hidden
-import {unstable_ViewTransition as ViewTransition} from 'react';
+import {unstable_ViewTransition, ViewTransition as ViewTransitionStable} from 'react';
+
+let ViewTransition = ViewTransitionStable ?? unstable_ViewTransition;
 
 export default function ContactTab() {
   return (
@@ -851,22 +827,6 @@ b { display: inline-block; margin-right: 10px; }
 .pending { color: #777; }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
-    "react-scripts": "latest",
-    "toastify-js": "1.12.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
 </Sandpack>
 
@@ -1053,8 +1013,10 @@ Activity는 처음에 "hidden" 상태로 렌더링할 때 Effect를 생성하지
 <Sandpack>
 
 ```js
-import { useState, useRef, useEffect, unstable_Activity as Activity } from 'react';
+import { useState, useRef, useEffect, unstable_Activity, Activity as ActivityStable } from 'react';
 import VideoChecker from './checker.js';
+
+let Activity = ActivityStable ?? unstable_Activity
 
 function VideoPlayer({ src, isPlaying }) {
   const ref = useRef(null);
@@ -1135,22 +1097,6 @@ b { display: inline-block; margin-right: 10px; }
 video { width: 300px; margin-top: 10px; }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
-    "react-scripts": "latest",
-    "toastify-js": "1.12.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
 </Sandpack>
 
