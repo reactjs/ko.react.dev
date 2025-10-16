@@ -226,11 +226,7 @@ li {
 
 위 코드에는 실수가 있습니다. 하지만 초기 출력이 올바르게 나타나기 때문에 놓치기 쉽습니다.
 
-<<<<<<< HEAD
-이 실수는 `StoryTray` 컴포넌트가 여러 번 다시 렌더링하면 더 눈에 띄게 됩니다. 예를 들어 `StoryTray`에 마우스를 올려놓을 때마다 다른 배경색으로 다시 렌더링하도록 해 보겠습니다.
-=======
 This mistake will become more noticeable if the `StoryTray` component re-renders multiple times. For example, let's make the `StoryTray` re-render with a different background color whenever you hover over it:
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 <Sandpack>
 
@@ -880,11 +876,7 @@ export default function CatFriends() {
     });
   }
 
-<<<<<<< HEAD
-  const animals = animalList.filter(a => a.type === animal)
-=======
   const cats = catList.filter(c => c.type === cat)
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
   return (
     <>
@@ -902,28 +894,6 @@ export default function CatFriends() {
       </nav>
       <div>
         <ul>
-<<<<<<< HEAD
-          {animals.map((animal) => (
-              <li
-                key={animal.src}
-                ref={(node) => {
-                  const list = itemsRef.current;
-                  const item = {animal: animal, node};
-                  list.push(item);
-                  console.log(`✅ 동물을 목록에 추가하는 중. 총 동물 수: ${list.length}`);
-                  if (list.length > 10) {
-                    console.log('❌ 목록에 동물이 너무 많습니다!');
-                  }
-                  return () => {
-                    // 🚩 No cleanup, this is a bug!
-                  }
-                }}
-              >
-                <img src={animal.src} />
-              </li>
-            ))}
-
-=======
           {cats.map((cat) => (
             <li
               key={cat.src}
@@ -943,7 +913,6 @@ export default function CatFriends() {
               <img src={cat.src} />
             </li>
           ))}
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
         </ul>
       </div>
     </>
@@ -1048,11 +1017,7 @@ export default function CatFriends() {
     });
   }
 
-<<<<<<< HEAD
-  const animals = animalList.filter(a => a.type === animal)
-=======
   const cats = catList.filter(c => c.type === cat)
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
   return (
     <>
@@ -1070,28 +1035,6 @@ export default function CatFriends() {
       </nav>
       <div>
         <ul>
-<<<<<<< HEAD
-          {animals.map((animal) => (
-              <li
-                key={animal.src}
-                ref={(node) => {
-                  const list = itemsRef.current;
-                  const item = {animal: animal, node}
-                  list.push(item);
-                  console.log(`✅ 동물을 목록에 추가하는 중. 총 동물 수: ${list.length}`);
-                  if (list.length > 10) {
-                    console.log('❌ 목록에 동물이 너무 많습니다!');
-                  }
-                  return () => {
-                    // 🚩 No cleanup, this is a bug!
-                  }
-                }}
-              >
-                <img src={animal.src} />
-              </li>
-            ))}
-
-=======
           {cats.map((cat) => (
             <li
               key={cat.src}
@@ -1111,7 +1054,6 @@ export default function CatFriends() {
               <img src={cat.src} />
             </li>
           ))}
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
         </ul>
       </div>
     </>
@@ -1200,11 +1142,7 @@ export default function CatFriends() {
     });
   }
 
-<<<<<<< HEAD
-  const animals = animalList.filter(a => a.type === animal)
-=======
   const cats = catList.filter(c => c.type === cat)
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
   return (
     <>
@@ -1222,29 +1160,6 @@ export default function CatFriends() {
       </nav>
       <div>
         <ul>
-<<<<<<< HEAD
-          {animals.map((animal) => (
-              <li
-                key={animal.src}
-                ref={(node) => {
-                  const list = itemsRef.current;
-                  const item = {animal, node};
-                  list.push({animal: animal, node});
-                  console.log(`✅ 동물을 목록에 추가하는 중. 총 동물 수: ${list.length}`);
-                  if (list.length > 10) {
-                    console.log('❌ 목록에 동물이 너무 많습니다!');
-                  }
-                  return () => {
-                    list.splice(list.indexOf(item));
-                    console.log(`❌ 목록에서 동물을 제거합니다. 전체 동물 수: ${itemsRef.current.length}`);
-                  }
-                }}
-              >
-                <img src={animal.src} />
-              </li>
-            ))}
-
-=======
           {cats.map((cat) => (
             <li
               key={cat.src}
@@ -1265,7 +1180,6 @@ export default function CatFriends() {
               <img src={cat.src} />
             </li>
           ))}
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
         </ul>
       </div>
     </>
@@ -1330,11 +1244,7 @@ li {
 Strict Mode 없이는 고장 난 기능을 알아차릴 때까지 여기저기 클릭해야 하므로 버그를 놓치기 쉽습니다. Strict Mode는 버그를 즉시 드러나도록 하여 프로덕션에 배포하기 전에 문제를 발견할 수 있습니다.
 
 ---
-<<<<<<< HEAD
-### Strict Mode에서 활성화된 더 이상 사용되지 않는 경고 수정하기 {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
-=======
 ### Fixing deprecation warnings enabled by Strict Mode {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 React는 `<StrictMode>` 트리 내부의 컴포넌트가 더 이상 사용되지 않는 다음 API 중 하나를 사용하는 경우 경고를 표시합니다.
 

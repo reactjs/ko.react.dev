@@ -61,18 +61,11 @@ async function handler(request, response) {
 
 #### 반환값 {/*returns*/}
 
-<<<<<<< HEAD
-`prerender`는 Promise를 반환합니다.
-- 렌더링이 성공하면 Promise는 다음을 포함하는 객체로 해결됩니다.
-  - `prelude`: HTML의 [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)입니다. 스트림을 사용하여 청크 단위로 응답을 보내거나 전체 스트림을 문자열로 읽을 수 있습니다.
-- 렌더링이 실패하면 반환된 Promise는 취소됩니다. [이것을 이용해 실패 결과를 출력하세요.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
-=======
 `prerender` returns a Promise:
 - If rendering the is successful, the Promise will resolve to an object containing:
   - `prelude`: a [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) of HTML. You can use this stream to send a response in chunks, or you can read the entire stream into a string.
   - `postponed`: a JSON-serializeable, opaque object that can be passed to [`resume`](/reference/react-dom/server/resume) if `prerender` did not finish. Otherwise `null` indicating that the `prelude` contains all the content and no resume is necessary.
 - If rendering fails, the Promise will be rejected. [Use this to output a fallback shell.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 #### 주의 사항 {/*caveats*/}
 

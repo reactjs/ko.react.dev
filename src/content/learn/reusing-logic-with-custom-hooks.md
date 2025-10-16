@@ -836,17 +836,7 @@ export default function ChatRoom({ roomId }) {
 
 ### 커스텀 Hook에 이벤트 핸들러 넘겨주기 {/*passing-event-handlers-to-custom-hooks*/}
 
-<<<<<<< HEAD
-<Wip>
-
-이 섹션은 React의 안정화 버전에 **아직 반영되지 않은 실험적인 API**를 설명하고 있습니다.
-
-</Wip>
-
-만약 `useChatRoom`을 더 많은 컴포넌트에서 사용하길 원한다면, 컴포넌트가 본인의 동작을 커스텀할 수 있길 바랄 것입니다. 예를 들어, 최근 메시지가 도착했을 때 무엇을 해야 하는지에 대한 로직이 Hook 안에 하드코딩 되어있다고 해봅시다.
-=======
 As you start using `useChatRoom` in more components, you might want to let components customize its behavior. For example, currently, the logic for what to do when a message arrives is hardcoded inside the Hook:
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 ```js {9-11}
 export function useChatRoom({ serverUrl, roomId }) {
@@ -1422,12 +1412,6 @@ function SaveButton() {
 
 #### React가 데이터 패칭을 위한 내부 해결책을 제공할까요? {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
 
-<<<<<<< HEAD
-아직 세부적인 사항을 작업 중이지만, 앞으로는 이와 같이 데이터 가져오도록 작성하게 될 것으로 예상합니다.
-
-```js {1,4,6}
-import { use } from 'react'; // 아직 사용 불가능합니다!
-=======
 Today, with the [`use`](/reference/react/use#streaming-data-from-server-to-client) API, data can be read in render by passing a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to `use`:
 
 ```js {1,4,11}
@@ -1451,7 +1435,6 @@ We're still working out the details, but we expect that in the future, you'll wr
 
 ```js {1,4,6}
 import { use } from 'react';
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 function ShippingForm({ country }) {
   const cities = use(fetch(`/api/cities?country=${country}`));

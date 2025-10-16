@@ -35,13 +35,9 @@ title: <Profiler>
 * `id`: 성능을 측정하는 UI 컴포넌트를 식별하기 위한 문자열입니다.
 * `onRender`: 프로파일링된 트리 내의 컴포넌트가 업데이트될 때마다 React가 호출하는 [`onRender` 콜백](#onrender-callback)입니다. 렌더링된 내용과 소요된 시간에 대한 정보를 받습니다.
 
-<<<<<<< HEAD
-#### 주의 사항 {/*caveats*/}
-=======
 #### Caveats {/*caveats*/}
 
 * Profiling adds some additional overhead, so **it is disabled in the production build by default.** To opt into production profiling, you need to enable a [special production build with profiling enabled.](/reference/dev-tools/react-performance-tracks#using-profiling-builds)
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 * 프로파일링은 추가적인 오버헤드를 더하기 때문에, **프로덕션 빌드에서는 기본적으로 비활성화 되어있습니다.** 프로덕션 프로파일링을 사용하려면, [프로파일링 기능이 활성화된 특수한 프로덕션 빌드](https://fb.me/react-profiling)를 사용해야 합니다.
 ---
@@ -86,11 +82,7 @@ UI 컴포넌트를 식별하기 위한 `id` 문자열과 트리 내의 컴포넌
 
 <Pitfall>
 
-<<<<<<< HEAD
-프로파일링은 추가적인 오버헤드를 더하기 때문에, **프로덕션 빌드에서는 기본적으로 비활성화 되어있습니다.** 프로덕션 프로파일링을 사용하려면, [프로파일링 기능이 활성화된 특수한 프로덕션 빌드](https://fb.me/react-profiling)를 사용해야 합니다.
-=======
 Profiling adds some additional overhead, so **it is disabled in the production build by default.** To opt into production profiling, you need to enable a [special production build with profiling enabled.](/reference/dev-tools/react-performance-tracks#using-profiling-builds)
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 </Pitfall>
 

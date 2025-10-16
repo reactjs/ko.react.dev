@@ -400,17 +400,7 @@ label { display: block; margin-top: 10px; }
 
 ### Effect 이벤트 선언하기 {/*declaring-an-effect-event*/}
 
-<<<<<<< HEAD
-<Wip>
-
-이 단락에서는 **아직 안정된 버전의 React로 출시되지 않은 실험적인 API**를 설명합니다.
-
-</Wip>
-
-이 비반응형 로직을 Effect에서 추출하려면 [`useEffectEvent`](/reference/react/experimental_useEffectEvent)라는 특수한 Hook을 사용하세요.
-=======
 Use a special Hook called [`useEffectEvent`](/reference/react/useEffectEvent) to extract this non-reactive logic out of your Effect:
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 ```js {1,4-6}
 import { useEffect, useEffectEvent } from 'react';
@@ -582,17 +572,7 @@ Effect 이벤트가 이벤트 핸들러와 아주 비슷하다고 생각할 수 
 
 ### Effect 이벤트로 최근 props와 state 읽기 {/*reading-latest-props-and-state-with-effect-events*/}
 
-<<<<<<< HEAD
-<Wip>
-
-이 단락에서는 **아직 안정된 버전의 React로 출시되지 않은 실험적인 API**를 설명합니다.
-
-</Wip>
-
-Effect 이벤트는 의존성 린터를 억제하고 싶었을 많은 패턴을 수정하게 합니다.
-=======
 Effect Events let you fix many patterns where you might be tempted to suppress the dependency linter.
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 예를 들어 페이지 방문을 기록하기 위한 Effect가 있다고 해보겠습니다.
 
@@ -733,11 +713,7 @@ function Page({ url }) {
 }
 ```
 
-<<<<<<< HEAD
-`useEffectEvent`가 React의 안정적인 기능이 되면 **린터를 절대로 억제하지 않을 것**을 추천합니다.
-=======
 We recommend **never suppressing the linter**.
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 규칙을 억제하는 것의 첫 번째 단점은 코드에 추가한 새로운 반응형 의존성에 Effect가 "반응"해야 할 때 React가 더 이상 경고하지 않는다는 것입니다. 이전 예시에서는 React가 의존성에 `url`을 추가하라고 상기시켜 주었기 *때문에* 그렇게 했습니다. 린터를 억제하면 해당 Effect에 대한 향후 편집에 대해 이러한 알림을 더 이상 받지 않게 됩니다. 이는 버그로 이어집니다.
 
@@ -874,17 +850,7 @@ body {
 
 ### Effect 이벤트의 한계 {/*limitations-of-effect-events*/}
 
-<<<<<<< HEAD
-<Wip>
-
-이 단락에서는 **아직 안정된 버전의 React로 출시되지 않은 실험적인 API**를 설명합니다.
-
-</Wip>
-
-Effect 이벤트는 사용할 수 있는 방법이 매우 제한적입니다.
-=======
 Effect Events are very limited in how you can use them:
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 * **Effect 내부에서만 호출하세요.**
 * **절대로 다른 컴포넌트나 Hook에 전달하지 마세요.**

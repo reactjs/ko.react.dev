@@ -10,17 +10,6 @@ title: React 블로그
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<<<<<<< HEAD
-<BlogCard title="React Labs: View Transitions, Activity 그리고 그 외" date="2025년 4월 23일" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
-
-React Labs 게시글에서는 현재 연구 개발 중인 프로젝트에 대한 글을 작성합니다. 이번 포스팅에서는 지금 바로 사용해 볼 수 있는 두 가지 새로운 실험적 기능을 공유하고, 현재 작업 중인 다른 영역에 대해서도 공유하고자 합니다.
-
-</BlogCard>
-
-<BlogCard title="React 컴파일러 RC" date="2025년 4월 21일" url="/blog/2025/04/21/react-compiler-rc">
-
-컴파일러의 첫 번째 릴리즈 후보(Release Candidate, RC)를 공개합니다.
-=======
 <BlogCard title="React Compiler v1.0" date="October 7, 2025" url="/blog/2025/10/07/react-compiler-1">
 
 We're releasing the compiler's first stable release today, plus linting and tooling improvements to make adoption easier.
@@ -42,7 +31,6 @@ React 19.2 adds new features like Activity, React Performance Tracks, useEffectE
 <BlogCard title="React Labs: View Transitions, Activity, and more" date="April 23, 2025" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
 
 In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and sharing other areas we're working on now ...
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 </BlogCard>
 

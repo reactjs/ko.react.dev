@@ -62,18 +62,11 @@ app.use('/', async (request, response) => {
 
 #### 반환값 {/*returns*/}
 
-<<<<<<< HEAD
-`prerenderToNodeStream` 는 Promise를 반환합니다.
-- 렌더링이 성공하면 Promise는 다음을 포함하는 객체로 해결됩니다.
-  - `prelude`: HTML의 [Node.js Stream](https://nodejs.org/api/stream.html)입니다. 이 스트림을 사용해 응답을 청크 단위로 전송하거나, 전체 스트림을 문자열로 읽을 수 있습니다.
-- 렌더링에 실패하면, Promise가 실패합니다. [이를 사용해 폴백 셸<sup>Fallback Shell</sup>을 출력하세요.](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)
-=======
 `prerenderToNodeStream` returns a Promise:
 - If rendering the is successful, the Promise will resolve to an object containing:
   - `prelude`: a [Node.js Stream.](https://nodejs.org/api/stream.html) of HTML. You can use this stream to send a response in chunks, or you can read the entire stream into a string.
   - `postponed`: a JSON-serializeable, opaque object that can be passed to [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream) if `prerenderToNodeStream` did not finish. Otherwise `null` indicating that the `prelude` contains all the content and no resume is necessary.
 - If rendering fails, the Promise will be rejected. [Use this to output a fallback shell.](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 #### 주의 사항 {/*caveats*/}
 

@@ -36,11 +36,7 @@ select box를 표시하려면 [내장 브라우저 `<select>` 컴포넌트](http
 
 #### Props {/*props*/}
 
-<<<<<<< HEAD
-`<select>`는 [공통 엘리먼트 Props](/reference/react-dom/components/common#props)를 지원합니다.
-=======
 `<select>` supports all [common element props.](/reference/react-dom/components/common#common-props)
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 [select box를 제어](#controlling-a-select-box-with-a-state-variable)하려면 `value` Prop을 전달하세요.
 

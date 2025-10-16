@@ -3,14 +3,10 @@ title: <Fragment> (<>...</>)
 ---
 
 <Intro>
-<<<<<<< HEAD
-`<Fragment>`는 종종 `<>...</>` 구문으로 사용하고, 래퍼 노드 없이 엘리먼트를 그룹화할 수 있습니다.
-=======
 
 `<Fragment>`, often used via `<>...</>` syntax, lets you group elements without a wrapper node. 
 
 <Canary> Fragments can also accept refs, which enable interacting with underlying DOM nodes without adding wrapper elements. See reference and usage below.</Canary>
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 ```js
 <>
@@ -34,9 +30,6 @@ title: <Fragment> (<>...</>)
 #### Props {/*props*/}
 - **optional** `key`: 명시적 `<Fragment>`로 선언된 Fragment에는 [`key`](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 사용할 수 있습니다.
 
-<<<<<<< HEAD
-#### 주의 사항 {/*caveats*/}
-=======
 - **optional** `key`: Fragments declared with the explicit `<Fragment>` syntax may have [keys.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
 - <CanaryBadge />  **optional** `ref`: A ref object (e.g. from [`useRef`](/reference/react/useRef)) or [callback function](/reference/react-dom/components/common#ref-callback). React provides a `FragmentInstance` as the ref value that implements methods for interacting with the DOM nodes wrapped by the Fragment.
 
@@ -65,7 +58,6 @@ When you pass a ref to a fragment, React provides a `FragmentInstance` object wi
 **Observer methods:**
 - `observeUsing(observer)`: Starts observing the Fragment's DOM children with an IntersectionObserver or ResizeObserver.
 - `unobserveUsing(observer)`: Stops observing the Fragment's DOM children with the specified observer.
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 - Fragment에 `key`를 사용하려면 `<>...</>` 구문을 사용할 수 없습니다. 명시적으로 `react`에서 `Fragment`를 불러오고<sup>Import</sup> `<Fragment key={yourKey}>...</Fragment>`를 렌더링해야 합니다.
 
