@@ -47,7 +47,7 @@ export const DocsPageFooter = memo<DocsPageFooterProps>(
 
               {nextRoute?.path ? (
                 <FooterLink
-                  type="다음음"
+                  type="다음"
                   title={nextRoute.title}
                   href={nextRoute.path}
                 />
