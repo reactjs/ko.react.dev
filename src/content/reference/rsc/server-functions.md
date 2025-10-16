@@ -196,7 +196,7 @@ function UpdateName() {
 
 서버 함수 함께 `useActionState`를 사용하는 경우, React는 Hydration이 완료되기 전에 입력된 폼 제출을 자동으로 다시 실행합니다. 즉, 사용자는 앱이 Hydration 되기 전에도 앱과 상호작용을 할 수 있습니다.
 
-For more, see the docs for [`useActionState`](/reference/react/useActionState).
+자세한 내용은 [`useActionState`](/reference/react/useActionState) 문서를 참조하세요.
 
 ### `useActionState`를 통한 점진적 향상 {/*progressive-enhancement-with-useactionstate*/}
 
@@ -220,4 +220,4 @@ function UpdateName() {
 
 <CodeStep step={2}>permalink</CodeStep>가 `useActionState`에 제공될 때, 자바스크립트 번들이 로드되기 전에 폼이 제출되면 React는 제공된 URL로 리디렉션합니다.
 
-For more, see the docs for [`useActionState`](/reference/react/useActionState).
+자세한 내용은 [`useActionState`](/reference/react/useActionState) 문서를 참조하세요.

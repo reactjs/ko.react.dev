@@ -96,8 +96,7 @@ async function addToCart(data) {
 
 지원되는 직렬화 가능한 반환 값은 경계 클라이언트 컴포넌트의 [직렬화 가능한 Props](/reference/rsc/use-client#serializable-types)와 동일합니다.
 
-
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
 ### Server Functions in forms {/*server-functions-in-forms*/}
 
