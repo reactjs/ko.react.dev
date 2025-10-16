@@ -52,7 +52,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 최초 렌더링에서는 `useCallback`은 전달한 `fn` 함수를 그대로 반환합니다.
 
-During subsequent renders, it will either return an already stored `fn` function from the last render (if the dependencies haven't changed), or return the `fn` function you have passed during this render.
+후속 렌더링에서는 이전 렌더링에서 이미 저장해 두었던 `fn` 함수를 반환하거나 (의존성이 변하지 않았을 때), 현재 렌더링 중에 전달한 `fn` 함수를 그대로 반환합니다.
 
 #### 주의 사항 {/*caveats*/}
 
@@ -207,7 +207,7 @@ function ProductPage({ productId, referrer }) {
 이미 [`useMemo`](/reference/react/useMemo)에 익숙하다면 `useCallback`을 다음과 같이 생각하는 것이 도움이 될 수 있습니다.
 
 ```js
-// Simplified implementation (inside React)
+// (React 내부의) 단순화된 구현 형태
 function useCallback(fn, dependencies) {
   return useMemo(() => fn, dependencies);
 }
@@ -221,9 +221,9 @@ function useCallback(fn, dependencies) {
 
 #### 항상 `useCallback`을 사용해야 할까요? {/*should-you-add-usecallback-everywhere*/}
 
-If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful.
+이 사이트처럼 대부분의 상호작용이 (페이지 전체나 전체 부문을 교체하는 것처럼) 굵직한 경우, 보통 memoization이 필요하지 않습니다. 반면에 앱이 (도형을 이동하는 것과 같이) 미세한 상호작용을 하는 그림 편집기 같은 경우, memoization이 매우 유용할 수 있습니다.
 
-Caching a function with `useCallback` is only valuable in a few cases:
+`useCallback`으로 함수를 캐싱하는 것은 몇 가지 경우에만 가치 있습니다.
 
 - [`memo`](/reference/react/memo)로 감싸진 컴포넌트에 prop으로 넘깁니다. 이 값이 변하지 않으면 리렌더링을 건너뛰고 싶습니다. memoization은 의존성이 변했을 때만 컴포넌트가 리렌더링하도록 합니다.
 - 넘긴 함수가 나중에 어떤 Hook의 의존성으로 사용됩니다. 예를 들어, `useCallback`으로 감싸진 다른 함수가 이 함수에 의존하거나, [`useEffect`](/reference/react/useEffect)에서 이 함수에 의존합니다.
