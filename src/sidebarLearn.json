@@ -66,11 +66,6 @@
           "path": "/learn/react-compiler/introduction"
         },
         {
-<<<<<<< HEAD
-          "title": "React 컴파일러",
-          "path": "/learn/react-compiler",
-          "canary": true
-=======
           "title": "Installation",
           "path": "/learn/react-compiler/installation"
         },
@@ -81,7 +76,6 @@
         {
           "title": "Debugging and Troubleshooting",
           "path": "/learn/react-compiler/debugging"
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
         }
       ]
     },

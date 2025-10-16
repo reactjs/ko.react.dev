@@ -111,14 +111,10 @@ export function NavigationBar({providedFiles}: {providedFiles: Array<string>}) {
      *
      * Plus, it should only prompt if there's any file changes
      */
-<<<<<<< HEAD
     if (
       sandpack.editorState === 'dirty' &&
       confirm('모든 수정 사항이 초기화됩니다. 계속하시겠습니까?')
     ) {
-=======
-    if (sandpack.editorState === 'dirty' && confirm('Clear all your edits?')) {
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
       sandpack.resetAllFiles();
     }
     refresh();

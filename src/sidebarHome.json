@@ -84,9 +84,6 @@
     },
     {
       "hasSectionHeader": true,
-<<<<<<< HEAD
-      "sectionHeader": "참여하기"
-=======
       "sectionHeader": "REACT COMPILER API"
     },
     {
@@ -104,7 +101,6 @@
     {
       "hasSectionHeader": true,
       "sectionHeader": "GET INVOLVED"
->>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
     },
     {
       "title": "React 커뮤니티",
