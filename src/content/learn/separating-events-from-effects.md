@@ -699,7 +699,7 @@ Effect 이벤트가 `visitedUrl`을 명시적으로 "요구"하므로 `url`을 E
 
 기존 코드베이스에서는 아래와 같이 린트 규칙이 억제된 것을 가끔 볼 수 있습니다.
 
-```js {expectedErrors: {'react-compiler': [8]}} {7-9}
+```js {7-9}
 function Page({ url }) {
   const { items } = useContext(ShoppingCartContext);
   const numberOfItems = items.length;
@@ -723,7 +723,7 @@ We recommend **never suppressing the linter**.
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [16]}}
+```js
 import { useState, useEffect } from 'react';
 
 export default function App() {
@@ -939,7 +939,7 @@ Effect 이벤트는 Effect의 코드 중 비반응형인 "부분"입니다. Effe
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [14]}}
+```js
 import { useState, useEffect } from 'react';
 
 export default function Timer() {

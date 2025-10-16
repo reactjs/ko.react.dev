@@ -930,7 +930,7 @@ export default function Page() {
 <Sandpack>
 
 {/* TODO(@poteto) - investigate potential false positives in react compiler validation */}
-```js {expectedErrors: {'react-compiler': [9]}} src/App.js
+```js src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -1734,7 +1734,7 @@ If your app uses server rendering (either [directly](/reference/react-dom/server
 
 
 {/* TODO(@poteto) - investigate potential false positives in react compiler validation */}
-```js {expectedErrors: {'react-compiler': [5]}}
+```js
 function MyComponent() {
   const [didMount, setDidMount] = useState(false);
 

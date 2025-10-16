@@ -95,7 +95,7 @@ function VideoPlayer({ src, isPlaying }) {
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [7, 9]}}
+```js
 import { useState, useRef, useEffect } from 'react';
 
 function VideoPlayer({ src, isPlaying }) {
@@ -1469,7 +1469,7 @@ body {
 <Sandpack>
 
 {/* not the most efficient, but this validation is enabled in the linter only, so it's fine to ignore it here since we know what we're doing */}
-```js {expectedErrors: {'react-compiler': [9]}} src/App.js
+```js src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -1543,7 +1543,7 @@ Effect가 비동기로 무언가를 가져오는 경우 일반적으로 클린�
 <Sandpack>
 
 {/* not the most efficient, but this validation is enabled in the linter only, so it's fine to ignore it here since we know what we're doing */}
-```js {expectedErrors: {'react-compiler': [9]}} src/App.js
+```js src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 

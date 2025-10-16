@@ -209,7 +209,7 @@ Props와 State 값을 렌더링 후에 업데이트되는 스냅샷으로 생각
 ### Props를 변경하지 마세요 {/*props*/}
 Props는 불변입니다. Props를 변경한다면 애플리케이션이 일관성 없는 출력을 생성하게 되며, 상황에 따라 작동할 수도 있고 안 할 수도 있기 때문에 디버깅이 어려워질 수 있습니다.
 
-```js {expectedErrors: {'react-compiler': [2]}} {2}
+```js {2}
 function Post({ item }) {
   item.url = new Url(item.url, base); // 🔴 Bad: 절대 Props를 직접 변경하지 마세요.
   return <Link url={item.url}>{item.title}</Link>;
@@ -232,7 +232,7 @@ const [stateVariable, setter] = useState(0);
 
 State 변수를 직접 변경하는 대신, `useState`에 의해 반환된 Setter 함수를 사용하여 변경해야 합니다. State 변수의 값을 변경하면 컴포넌트가 변경되지 않아 사용자는 이전 UI를 보게 됩니다. Setter 함수를 사용하면 React에 State가 변경되었으며 UI를 변경하기 위해 리렌더링을 대기열에 추가해야 한다는 것을 알립니다.
 
-```js {expectedErrors: {'react-compiler': [2, 5]}} {5}
+```js {5}
 function Counter() {
   const [count, setCount] = useState(0);
 
@@ -270,7 +270,7 @@ function Counter() {
 
 값이 Hook에 전달되면, 이를 수정해서는 안 됩니다. JSX의 Props와 마찬가지로 Hook에 전달된 값은 불변입니다.
 
-```js {expectedErrors: {'react-compiler': [4]}} {4}
+```js {4}
 function useIconStyle(icon) {
   const theme = useContext(ThemeContext);
   if (icon.enabled) {
@@ -331,7 +331,7 @@ JSX에 사용된 후에는 값을 변경하지 마세요. JSX가 생성되기 �
 
 JSX를 표현식에서 사용할 때, React는 컴포넌트의 렌더링이 끝나기 전에 JSX를 성급하게 평가할 수 있습니다. 이는 JSX에 전달된 후에 값을 변경하면 React가 컴포넌트의 출력을 업데이트할지 여부를 알지 못하므로 오래된 UI로 이어질 수 있음을 의미합니다.
 
-```js {expectedErrors: {'react-compiler': [4]}} {4}
+```js {4}
 function Page({ colour }) {
   const styles = { colour, size: "large" };
   const header = <Header styles={styles} />;

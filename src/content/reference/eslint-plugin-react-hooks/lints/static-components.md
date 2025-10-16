@@ -61,7 +61,7 @@ function Parent({type}) {
 
 You might define components inside to access local state:
 
-```js {expectedErrors: {'react-compiler': [13]}}
+```js
 // ❌ Wrong: Inner component to access parent state
 function Parent() {
   const [theme, setTheme] = useState('light');

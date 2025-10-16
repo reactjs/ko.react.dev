@@ -717,7 +717,7 @@ export default function TodoList({ todos, theme, tab }) {
 }
 ```
 
-```js {expectedErrors: {'react-compiler': [5, 6]}} src/List.js
+```js src/List.js
 import { memo } from 'react';
 
 const List = memo(function List({ items }) {
@@ -855,7 +855,7 @@ export default function TodoList({ todos, theme, tab }) {
 }
 ```
 
-```js {expectedErrors: {'react-compiler': [5, 6]}} src/List.js
+```js src/List.js
 import { memo } from 'react';
 
 const List = memo(function List({ items }) {
@@ -1370,7 +1370,7 @@ Object.is(temp1[2], temp2[2]); // ... 그리고 기타 모든 종속성들이 �
 
 `Chart` 컴포넌트가 [`memo`](/reference/react/memo)로 감싸져 있다고 가정해보겠습니다. `ReportList` 컴포넌트가 다시 렌더링 될 때 목록의 모든 `Chart`를 다시 렌더링하는 것을 생략하고 싶을 것입니다. 그러나 반복문에서 `useMemo`를 호출할 수 없습니다.
 
-```js {expectedErrors: {'react-compiler': [6]}} {5-11}
+```js {5-11}
 function ReportList({ items }) {
   return (
     <article>

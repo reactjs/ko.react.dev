@@ -16,7 +16,7 @@ Calling `setState` during render unconditionally triggers another render before 
 
 ### Invalid {/*invalid*/}
 
-```js {expectedErrors: {'react-compiler': [4]}}
+```js
 // ❌ Unconditional setState directly in render
 function Component({value}) {
   const [count, setCount] = useState(0);

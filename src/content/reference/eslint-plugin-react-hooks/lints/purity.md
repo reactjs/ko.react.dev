@@ -57,7 +57,7 @@ function Component() {
 
 Calling `Date.now()` during render makes your component impure:
 
-```js {expectedErrors: {'react-compiler': [3]}}
+```js
 // ❌ Wrong: Time changes every render
 function Clock() {
   return <div>Current time: {Date.now()}</div>;

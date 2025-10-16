@@ -473,7 +473,7 @@ h2 { font-size: 20px; }
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [5]}}
+```js
 let guest = 0;
 
 function Cup() {

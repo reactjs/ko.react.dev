@@ -206,7 +206,7 @@ function ProductPage({ productId, referrer }) {
 
 이미 [`useMemo`](/reference/react/useMemo)에 익숙하다면 `useCallback`을 다음과 같이 생각하는 것이 도움이 될 수 있습니다.
 
-```js {expectedErrors: {'react-compiler': [3]}}
+```js
 // Simplified implementation (inside React)
 function useCallback(fn, dependencies) {
   return useMemo(() => fn, dependencies);
@@ -309,7 +309,7 @@ function post(url, data) {
 }
 ```
 
-```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
+```js src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -448,7 +448,7 @@ function post(url, data) {
 }
 ```
 
-```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
+```js src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -867,7 +867,7 @@ Object.is(temp1[2], temp2[2]); // ... 나머지 모든 의존성도 확인합니
 
 `Chart` 컴포넌트가 [`memo`](/reference/react/memo)로 감싸져 있다고 생각해 봅시다. `ReportList` 컴포넌트가 렌더링 될 때마다, 모든 `Chart` 항목이 리렌더링 하는 것을 막고 싶습니다. 하지만 반복문에서 `useCallback`을 호출할 수 없습니다.
 
-```js {expectedErrors: {'react-compiler': [6]}} {5-14}
+```js {5-14}
 function ReportList({ items }) {
   return (
     <article>

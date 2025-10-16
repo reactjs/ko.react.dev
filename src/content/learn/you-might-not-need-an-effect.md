@@ -34,7 +34,7 @@ You *do* need Effects to [synchronize](/learn/synchronizing-with-effects#what-ar
 
 `firstName`과 `lastName`이라는 두 개의 state 변수가 있다고 가정해 봅시다. 두 변수를 연결해서 `fullName`을 계산하고 싶습니다. 또한 `firstName`이나 `lastName`이 변경될 때마다 `fullName`이 업데이트되기를 바랍니다. 가장 먼저 `fullName` State 변수를 추가하고 Effect에서 업데이트하고 싶을 것입니다.
 
-```js {expectedErrors: {'react-compiler': [8]}} {5-9}
+```js {5-9}
 function Form() {
   const [firstName, setFirstName] = useState('Taylor');
   const [lastName, setLastName] = useState('Swift');
@@ -66,7 +66,7 @@ function Form() {
 
 이 컴포넌트는 props로 받은 `todos`를 `filter` prop에 따라 필터링하여 `visibleTodos`를 계산합니다. 결과를 state에 저장하고 Effect에서 업데이트하고 싶을 수 있습니다.
 
-```js {expectedErrors: {'react-compiler': [7]}} {4-8}
+```js {4-8}
 function TodoList({ todos, filter }) {
   const [newTodo, setNewTodo] = useState('');
 
@@ -165,7 +165,7 @@ console.timeEnd('filter array');
 
 이 `ProfilePage` 컴포넌트는 `userId` prop을 받습니다. 페이지는 댓글 입력을 포함하며 `comment` state 변수를 사용해 해당 값을 보관합니다. 어느 날 한 프로필에서 다른 프로필로 이동할 때 `comment` state가 재설정되지 않는 문제를 발견했습니다. 그 결과 실수로 잘못된 사용자의 프로필에 댓글을 게시하기 쉽습니다. 이 문제를 해결하기 위해 `userId`가 변경될 때마다 `comment` state 변수를 비우려고 합니다.
 
-```js {expectedErrors: {'react-compiler': [6]}} {4-7}
+```js {4-7}
 export default function ProfilePage({ userId }) {
   const [comment, setComment] = useState('');
 
@@ -208,7 +208,7 @@ prop이 변경될 때 전체가 아닌 일부 state만 재설정하거나 조정
 
 이 `List` 컴포넌트는 `items` 목록을 prop으로 받고 `selection` state 변수에 선택된 item을 유지합니다. `items` prop이 다른 배열을 받을 때마다 `selection`을 `null`로 재설정하고 싶습니다.
 
-```js {expectedErrors: {'react-compiler': [7]}} {5-8}
+```js {5-8}
 function List({ items }) {
   const [isReverse, setIsReverse] = useState(false);
   const [selection, setSelection] = useState(null);
@@ -820,7 +820,7 @@ function useData(url) {
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [12, 16, 20]}}
+```js
 import { useState, useEffect } from 'react';
 import { initialTodos, createTodo } from './todos.js';
 
@@ -1023,7 +1023,7 @@ input { margin-top: 10px; }
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [11]}}
+```js
 import { useState, useEffect } from 'react';
 import { initialTodos, createTodo, getVisibleTodos } from './todos.js';
 
@@ -1364,7 +1364,7 @@ export default function ContactList({
 }
 ```
 
-```js {expectedErrors: {'react-compiler': [8, 9]}} src/EditContact.js active
+```js src/EditContact.js active
 import { useState, useEffect } from 'react';
 
 export default function EditContact({ savedContact, onSave }) {

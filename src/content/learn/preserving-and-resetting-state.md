@@ -703,7 +703,7 @@ label {
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [7]}}
+```js
 import { useState } from 'react';
 
 export default function MyComponent() {

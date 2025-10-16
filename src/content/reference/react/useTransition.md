@@ -684,7 +684,7 @@ export default function AboutTab() {
 }
 ```
 
-```js {expectedErrors: {'react-compiler': [19, 20]}} src/PostsTab.js
+```js src/PostsTab.js
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
@@ -839,7 +839,7 @@ export default function AboutTab() {
 }
 ```
 
-```js {expectedErrors: {'react-compiler': [19, 20]}} src/PostsTab.js
+```js src/PostsTab.js
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {

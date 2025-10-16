@@ -320,7 +320,7 @@ This is because cache access is provided through a [context](/learn/passing-data
 
 In general, you should use [`useMemo`](/reference/react/useMemo) for caching an expensive computation in a Client Component across renders. As an example, to memoize a transformation of data within a component.
 
-```jsx {expectedErrors: {'react-compiler': [4]}} {4}
+```jsx {4}
 'use client';
 
 function WeatherReport({record}) {

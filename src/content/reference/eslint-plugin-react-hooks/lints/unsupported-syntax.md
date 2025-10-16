@@ -60,7 +60,7 @@ function Component() {
 
 You might need to evaluate user-provided code:
 
-```js {expectedErrors: {'react-compiler': [3]}}
+```js
 // ❌ Wrong: eval in component
 function Calculator({expression}) {
   const result = eval(expression); // Unsafe and unoptimizable

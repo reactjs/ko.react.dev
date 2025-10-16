@@ -303,7 +303,7 @@ useEffect(() => {
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [14]}}
+```js
 import { useState, useEffect } from 'react';
 
 export default function Timer() {
@@ -789,7 +789,7 @@ function ChatRoom({ roomId }) {
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [10]}}
+```js
 import { useState, useEffect } from 'react';
 import { createConnection } from './chat.js';
 

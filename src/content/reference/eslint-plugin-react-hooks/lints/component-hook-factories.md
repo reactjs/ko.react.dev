@@ -16,7 +16,7 @@ Defining components or hooks inside other functions creates new instances on eve
 
 Examples of incorrect code for this rule:
 
-```js {expectedErrors: {'react-compiler': [14]}}
+```js
 // ❌ Factory function creating components
 function createComponent(defaultValue) {
   return function Component() {
