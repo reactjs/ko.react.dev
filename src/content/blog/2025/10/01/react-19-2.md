@@ -96,7 +96,7 @@ function ChatRoom({ roomId, theme }) {
   // ...
 ```
 
-Similar to DOM events, Effect Events always “see” the latest props and state.
+Similar to DOM events, Effect Events always "see" the latest props and state.
 
 **Effect Events should _not_ be declared in the dependency array**. You'll need to upgrade to `eslint-plugin-react-hooks@latest` so that the linter doesn't try to insert them as dependencies. Note that Effect Events can only be declared in the same component or Hook as "their" Effect. These restrictions are verified by the linter.
 

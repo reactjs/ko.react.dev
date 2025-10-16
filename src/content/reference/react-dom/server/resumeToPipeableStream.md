@@ -4,7 +4,7 @@ title: resumeToPipeableStream
 
 <Intro>
 
-`resumeToPipeableStream` streams a pre-rendered React tree  to a pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
+`resumeToPipeableStream` streams a pre-rendered React tree to a pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
 
 ```js
 const {pipe, abort} = await resumeToPipeableStream(reactNode, postponedState, options?)
