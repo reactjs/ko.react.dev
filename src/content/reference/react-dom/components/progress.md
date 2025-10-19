@@ -30,7 +30,7 @@ title: "<progress>"
 
 #### Props {/*props*/}
 
-`<progress>`는 모든 [공통 엘리먼트 Props](/reference/react-dom/components/common#props)를 지원합니다.
+`<progress>`는 모든 [공통 엘리먼트 Props](/reference/react-dom/components/common#common-props)를 지원합니다.
 
 또한 `<progress>`는 아래와 같은 Props를 지원합니다.
 

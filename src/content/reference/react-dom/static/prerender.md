@@ -7,7 +7,7 @@ title: prerender
 `prerender`는 [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)을 사용하여 React 트리를 정적 HTML 문자열로 렌더링합니다.
 
 ```js
-const {prelude} = await prerender(reactNode, options?)
+const {prelude, postponed} = await prerender(reactNode, options?)
 ```
 
 </Intro>
@@ -31,7 +31,7 @@ const {prelude} = await prerender(reactNode, options?)
 ```js
 import { prerender } from 'react-dom/static';
 
-async function handler(request) {
+async function handler(request, response) {
   const {prelude} = await prerender(<App />, {
     bootstrapScripts: ['/main.js']
   });
@@ -61,21 +61,23 @@ async function handler(request) {
 
 #### 반환값 {/*returns*/}
 
-`prerender`는 Promise를 반환합니다.
-- 렌더링이 성공하면 Promise는 다음을 포함하는 객체로 해결됩니다.
-  - `prelude`: HTML의 [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)입니다. 스트림을 사용하여 청크 단위로 응답을 보내거나 전체 스트림을 문자열로 읽을 수 있습니다.
-- 렌더링이 실패하면 반환된 Promise는 취소됩니다. [이것을 이용해 실패 결과를 출력하세요.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
+`prerender` returns a Promise:
+- If rendering the is successful, the Promise will resolve to an object containing:
+  - `prelude`: a [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) of HTML. You can use this stream to send a response in chunks, or you can read the entire stream into a string.
+  - `postponed`: a JSON-serializeable, opaque object that can be passed to [`resume`](/reference/react-dom/server/resume) if `prerender` did not finish. Otherwise `null` indicating that the `prelude` contains all the content and no resume is necessary.
+- If rendering fails, the Promise will be rejected. [Use this to output a fallback shell.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
 
 #### 주의 사항 {/*caveats*/}
 
 `nonce`는 사전 렌더링할 때 사용할 수 없는 옵션입니다. Nonce는 요청마다 고유해야 하며, [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP)로 애플리케이션을 보호하기 위해 Nonce를 사용한다면 Nonce 값을 사전 렌더링 자체에 포함하는 것은 부적절하고 안전하지 않습니다.
-
 
 <Note>
 
 ### `prerender`를 언제 사용해야 하나요? {/*when-to-use-prerender*/}
 
 정적 `prerender` API는 정적 서버 사이드 생성(SSG)에 사용됩니다. `renderToString`과 달리 `prerender`는 해결되기 전에 모든 데이터가 로드될 때까지 대기합니다. 이는 Suspense를 사용하여 가져와야 하는 데이터를 포함하여 전체 페이지에 대한 정적 HTML을 생성하는 데 적합합니다. 콘텐츠가 로드되면서 스트리밍하려면 [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)과 같은 스트리밍 서버 사이드 렌더링(SSR) API를 사용하세요.
+
+`prerender` can be aborted and later either continued with `resumeAndPrerender` or resumed with `resume` to support partial pre-rendering.
 
 </Note>
 
@@ -311,7 +313,7 @@ async function renderToString() {
 
 불완전한 자식을 가진 모든 Suspense 경계는 폴백 상태로 prelude에 포함됩니다.
 
----
+This can be used for partial prerendering together with [`resume`](/reference/react-dom/server/resume) or [`resumeAndPrerender`](/reference/react-dom/static/resumeAndPrerender).
 
 ## 문제 해결 {/*troubleshooting*/}
 

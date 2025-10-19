@@ -12,6 +12,20 @@
       "skipBreadcrumb": true,
       "routes": [
         {
+          "title": "React Compiler v1.0",
+          "titleForHomepage": "React Compiler v1.0",
+          "icon": "blog",
+          "date": "October 8, 2025",
+          "path": "/blog/2025/10/07/react-compiler-1"
+        },
+        {
+          "title": "Introducing the React Foundation",
+          "titleForHomepage": "Introducing the React Foundation",
+          "icon": "blog",
+          "date": "October 7, 2025",
+          "path": "/blog/2025/10/07/introducing-the-react-foundation"
+        },
+        {
           "title": "React Labs: View Transitions, Activity, and more",
           "titleForHomepage": "View Transitions and Activity",
           "icon": "blog",

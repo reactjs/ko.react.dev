@@ -30,7 +30,7 @@ style: "<style>"
 
 #### Props {/*props*/}
 
-`<style>`은 [공통 컴포넌트 속성](/reference/react-dom/components/common#props)을 지원합니다.
+`<style>`은 모든 [공통 엘리먼트 Props](/reference/react-dom/components/common#common-props)를 지원합니다.
 
 * `children`: 문자열 타입. 필수 항목. 스타일시트의 내용.
 * `precedence`: 문자열 타입. 문서의 `<head>` 내 다른 요소들에 비해 `<style>` DOM 노드의 순위를 지정하여, 어떤 스타일시트가 다른 스타일시트를 덮어쓸 수 있는지를 결정합니다. React는 먼저 발견한 우선순위를 "낮게", 나중에 발견한 우선순위를 "높게" 추론합니다. 많은 스타일 시스템은 스타일 규칙이 원자적이기 때문에 단일 우선순위 값을 사용해도 잘 작동할 수 있습니다. 동일한 우선순위를 가지는 스타일시트는 `<link>` 태그인지 인라인 `<style>` 태그인지 [`preinit`](/reference/react-dom/preinit) 함수로 로드된 것인지와 무관하게 함께 적용됩니다.
@@ -49,7 +49,11 @@ React는 `<style>` 컴포넌트를 문서의 `<head>`로 이동시키고, 동일
 
 이 동작을 사용하려면 `href`와 `precedence` 속성을 제공하세요. React는 동일한 `href`를 가진 스타일의 중복을 제거합니다. `precedence` 속성은 문서의 `<head>` 내 다른 요소에 비해 `<style>` DOM 노드의 순위를 지정하며, 어떤 스타일시트가 다른 스타일시트를 덮어쓸 수 있는지를 결정합니다.
 
-이러한 처리는 세 가지 주의 사항이 있습니다.
+This special treatment comes with three caveats:
+
+* React will ignore changes to props after the style has been rendered. (React will issue a warning in development if this happens.)
+* React will drop all extraneous props when using the `precedence` prop (beyond `href` and `precedence`).
+* React may leave the style in the DOM even after the component that rendered it has been unmounted.
 
 * 스타일이 렌더링된 후에는 React가 Props 변경을 무시합니다. (개발 중에 이 상황이 발생하면 React는 경고를 표시합니다.)
 * React는 `precedence` Prop을 사용할 때 불필요한 Props를 제거합니다. (단, `href`와 `precedence`는 제외.)

@@ -11,16 +11,16 @@ TypeScript는 JavaScript 코드 베이스에 타입 정의를 추가하는 데 �
 
 <YouWillLearn>
 
-* [React 컴포넌트가 있는 TypeScript](/learn/typescript#typescript-with-react-components)
-* [Hooks 타이핑 예시](/learn/typescript#example-hooks)
-* [`@types/react`의 일반적인 타입](/learn/typescript/#useful-types)
-* [추가 학습 위치](/learn/typescript/#further-learning)
+* [TypeScript with React Components](/learn/typescript#typescript-with-react-components)
+* [Examples of typing with Hooks](/learn/typescript#example-hooks)
+* [Common types from `@types/react`](/learn/typescript#useful-types)
+* [Further learning locations](/learn/typescript#further-learning)
 
 </YouWillLearn>
 
 ## 설치 {/*installation*/}
 
-모든 [프로덕션 수준의 React 프레임워크](/learn/start-a-new-react-project#production-grade-react-frameworks)는 TypeScript 사용을 지원합니다. 프레임워크별 설치 가이드를 따르세요.
+All [production-grade React frameworks](/learn/start-a-new-react-project#full-stack-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
 
 - [Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
@@ -32,14 +32,14 @@ TypeScript는 JavaScript 코드 베이스에 타입 정의를 추가하는 데 �
 최신 버전의 React 타입 정의를 설치합니다.
 
 <TerminalBlock>
-npm install @types/react @types/react-dom
+npm install --save-dev @types/react @types/react-dom
 </TerminalBlock>
 
 다음 컴파일러 옵션을 `tsconfig.json`에 설정해야 합니다.
 
-1. `dom`은 [`lib`](https://www.typescriptlang.org/ko/tsconfig/#lib)에 포함되어야 합니다(주의: `lib` 옵션이 지정되지 않으면, 기본적으로 `dom`이 포함됩니다).
-1. [`jsx`](https://www.typescriptlang.org/ko/tsconfig/#jsx)를 유효한 옵션 중 하나로 설정해야 합니다. 대부분의 애플리케이션에서는 `preserve`로 충분합니다.
-  라이브러리를 게시하는 경우 어떤 값을 선택해야 하는지 [`jsx` 설명서](https://www.typescriptlang.org/ko/tsconfig/#jsx)를 참조하세요.
+1. `dom` must be included in [`lib`](https://www.typescriptlang.org/tsconfig/#lib) (Note: If no `lib` option is specified, `dom` is included by default).
+2. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) must be set to one of the valid options. `preserve` should suffice for most applications.
+  If you're publishing a library, consult the [`jsx` documentation](https://www.typescriptlang.org/tsconfig/#jsx) on what value to choose.
 
 ## React 컴포넌트가 있는 TypeScript {/*typescript-with-react-components*/}
 
@@ -124,7 +124,7 @@ export default App = AppTSX;
 
 ## Hooks 예시 {/*example-hooks*/}
 
-`@types/react`의 타입 정의에는 내장 Hooks에 대한 타입이 포함되어 있으므로 추가 설정 없이 컴포넌트에 사용할 수 있습니다. 컴포넌트에 작성한 코드를 고려하도록 만들어졌기 때문에 대부분의 경우 [추론된 타입](https://www.typescriptlang.org/ko/docs/handbook/type-inference.html)을 얻을 수 있으며, 이상적으로는 타입을 제공하는 사소한 작업을 처리할 필요가 없습니다.
+The type definitions from `@types/react` include types for the built-in Hooks, so you can use them in your components without any additional setup. They are built to take into account the code you write in your component, so you will get [inferred types](https://www.typescriptlang.org/docs/handbook/type-inference.html) a lot of the time and ideally do not need to handle the minutiae of providing the types.
 
 하지만, hooks에 타입을 제공하는 방법의 몇 가지 예시를 볼 수 있습니다.
 
@@ -140,7 +140,7 @@ const [enabled, setEnabled] = useState(false);
 `boolean` 타입이 `enabled`에 할당되고, `setEnabled` 는 `boolean` 인수나 `boolean`을 반환하는 함수를 받는 함수가 됩니다. state에 대한 타입을 명시적으로 제공하려면 `useState` 호출에 타입 인수를 제공하면 됩니다.
 
 ```ts
-// 명시적으로 타입을 "boolean"으로 설정합니다
+// Explicitly set the type to "boolean"
 const [enabled, setEnabled] = useState<boolean>(false);
 ```
 
@@ -284,7 +284,7 @@ export default App = AppTSX;
 
 </Sandpack>
 
-이 기술은 합리적인 기본값이 있을 때 효과적이지만 그렇지 않은 경우도 간혹 있으며, 그러한 경우 `null`이 기본값으로 합리적이라고 느낄 수 있습니다. 그러나, 타입 시스템이 코드를 이해할 수 있도록 하려면 `createContext`에서 `ContextShape | null`을 명시적으로 설정해야 합니다.
+This technique works when you have a default value which makes sense - but there are occasionally cases when you do not, and in those cases `null` can feel reasonable as a default value. However, to allow the type-system to understand your code, you need to explicitly set `ContextShape | null` on the `createContext`.
 
 이에 따라 context 소비자에 대한 타입에서 `| null`을 제거해야 하는 문제가 발생합니다. 권장 사항은 Hook이 런타임에 존재 여부를 검사하고 존재하지 않을 경우 에러를 throw 하는 것입니다.
 
@@ -329,7 +329,13 @@ function MyComponent() {
 
 ### `useMemo` {/*typing-usememo*/}
 
-[`useMemo`](/reference/react/useMemo) Hooks는 함수 호출로부터 memorized 된 값을 생성/재접근하여, 두 번째 매개변수로 전달된 종속성이 변경될 때만 함수를 다시 실행합니다. Hook을 호출한 결과는 첫 번째 매개변수에 있는 함수의 반환 값에서 추론됩니다. Hook에 타입 인수를 제공하여 더욱더 명확하게 할 수 있습니다.
+<Note>
+
+[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useMemo` calls. You can use the compiler to handle memoization automatically.
+
+</Note>
+
+The [`useMemo`](/reference/react/useMemo) Hooks will create/re-access a memorized value from a function call, re-running the function only when dependencies passed as the 2nd parameter are changed. The result of calling the Hook is inferred from the return value from the function in the first parameter. You can be more explicit by providing a type argument to the Hook.
 
 ```ts
 // visibleTodos의 타입은 filterTodos의 반환 값에서 추론됩니다.
@@ -339,7 +345,13 @@ const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
 
 ### `useCallback` {/*typing-usecallback*/}
 
-[`useCallback`](/reference/react/useCallback)는 두 번째 매개변수로 전달되는 종속성이 같다면 함수에 대한 안정적인 참조를 제공합니다. `useMemo`와 마찬가지로, 함수의 타입은 첫 번째 매개변수에 있는 함수의 반환 값에서 추론되며, Hook에 타입 인수를 제공하여 더욱더 명확하게 할 수 있습니다.
+<Note>
+
+[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useCallback` calls. You can use the compiler to handle memoization automatically.
+
+</Note>
+
+The [`useCallback`](/reference/react/useCallback) provide a stable reference to a function as long as the dependencies passed into the second parameter are the same. Like `useMemo`, the function's type is inferred from the return value of the function in the first parameter, and you can be more explicit by providing a type argument to the Hook.
 
 
 ```ts
@@ -350,7 +362,7 @@ const handleClick = useCallback(() => {
 
 TypeScript strict mode에서 작업할 때 `useCallback`을 사용하려면 콜백에 매개변수를 위한 타입을 추가해야 합니다. 콜백의 타입은 함수의 반환 값에서 추론되고, 매개변수 없이는 타입을 완전히 이해할 수 없기 때문입니다.
 
-코드 스타일 선호도에 따라, 콜백을 정의하는 동시에 이벤트 핸들러의 타입을 제공하기 위해 React 타입의 `*EventHandler` 함수를 사용할 수 있습니다.
+Depending on your code-style preferences, you could use the `*EventHandler` functions from the React types to provide the type for the event handler at the same time as defining the callback:
 
 ```ts
 import { useState, useCallback } from 'react';
@@ -433,7 +445,7 @@ interface ModalRendererProps {
 }
 ```
 
-자식이 특정 JSX 엘리먼트 타입이라고 설명하기 위해 TypeScript를 사용할 수 없으므로, `<li>` 자식만 허용하는 컴포넌트를 설명하기 위해 타입 시스템을 사용할 수 없다는 점에 주의하세요.
+Note, that you cannot use TypeScript to describe that the children are a certain type of JSX elements, so you cannot use the type-system to describe a component which only accepts `<li>` children.
 
 [TypeScript 플레이그라운드](https://www.typescriptlang.org/ko/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA)에서 타입 체커를 사용하여 `React.ReactNode`와 `React.ReactElement`의 모든 예시를 확인할 수 있습니다.
 

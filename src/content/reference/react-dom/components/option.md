@@ -36,7 +36,7 @@ title: "<option>"
 
 #### Props {/*props*/}
 
-`<option>`은 모든 [공통 엘리먼트 Props](/reference/react-dom/components/common#props)를 지원합니다.
+`<option>`은 모든 [공통 엘리먼트 Props](/reference/react-dom/components/common#common-props)를 지원합니다.
 
 또한, `<option>`은 아래와 같은 Props를 지원합니다.
 

@@ -24,7 +24,7 @@ title: 기존 프로젝트에 React 추가하기
 2. 사용하는 프레임워크 설정에서 **`/some-app` 을 *기본 경로*<sup>*Base Path*</sup>로 명시하세요**. (이때, [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)를 사용하세요!)
 3. **서버 또는 프록시를 구성**하여 `/some-app/` 하위의 모든 요청이 React 앱에서 처리되도록 하세요.
 
-이는 앱의 React 부분이 이러한 프레임워크에 내장된 [최고의 사례들<sup>Best Practices</sup>로부터 이점을 얻을 수 있습니다.](/learn/start-a-new-react-project#can-i-use-react-without-a-framework)
+This ensures the React part of your app can [benefit from the best practices](/learn/build-a-react-app-from-scratch#consider-using-a-framework) baked into those frameworks.
 
 많은 React 기반의 프레임워크는 풀스택이며 React 앱이 서버를 활용할 수 있도록 합니다. 그러나 서버에서 자바스크립트를 실행할 수 없거나 실행하고 싶지 않은 경우에도 동일한 접근방식을 사용할 수 있습니다. 이러한 경우에는 HTML/CSS/JS 내보내기(Next.js의 경우 [`next export` output](https://nextjs.org/docs/advanced-features/static-html-export), Gatsby의 경우 기본값)를 `/some-app/`에서 대신 제공하세요.
 

@@ -1,30 +1,24 @@
 ---
-title: unstable_addTransitionType
-version: experimental
+title: addTransitionType
+version: canary
 ---
 
-<Experimental>
+<Canary>
 
-**이 API는 실험적이며 React 안정 버전에서는 아직 사용할 수 없습니다.**
+**The `addTransitionType` API is currently only available in React’s Canary and Experimental channels.** 
 
-이 API를 사용하려면 React 패키지를 가장 최신의 실험적인 버전으로 업그레이드해야 합니다.
+[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
 
-- `react@experimental`
-- `react-dom@experimental`
-- `eslint-plugin-react-hooks@experimental`
-
-실험적인 버전의 React에는 버그가 있을 수 있습니다. 프로덕션 환경에서는 사용하지 마세요.
-
-</Experimental>
+</Canary>
 
 <Intro>
 
-`unstable_addTransitionType`을 사용하면 트랜지션이 발생한 원인을 상세히 나타낼 수 있습니다.
+`addTransitionType` lets you specify the cause of a transition.
 
 
 ```js
 startTransition(() => {
-  unstable_addTransitionType('my-transition-type');
+  addTransitionType('my-transition-type');
   setState(newState);
 });
 ```
@@ -60,13 +54,13 @@ startTransition(() => {
 
 트랜지션의 원인을 나타내기 위해 `startTransition` 내부에서 `addTransitionType`을 호출합니다
 
-``` [[1, 6, "unstable_addTransitionType"], [2, 5, "startTransition", [3, 6, "'submit-click'"]]
-import { startTransition, unstable_addTransitionType } from 'react';
+``` [[1, 6, "addTransitionType"], [2, 5, "startTransition", [3, 6, "'submit-click'"]]
+import { startTransition, addTransitionType } from 'react';
 
 function Submit({action) {
   function handleClick() {
     startTransition(() => {
-      unstable_addTransitionType('submit-click');
+      addTransitionType('submit-click');
       action();
     });
   }
@@ -103,7 +97,7 @@ function Component() {
 }
 
 startTransition(() => {
-  unstable_addTransitionType('my-transition-type');
+  addTransitionType('my-transition-type');
   setShow(true);
 });
 ```
@@ -135,7 +129,7 @@ function Component() {
 
 // ...
 startTransition(() => {
-  unstable_addTransitionType('my-transition-type');
+  addTransitionType('my-transition-type');
   setState(newState);
 });
 ```
@@ -173,10 +167,4 @@ View Transition 이벤트를 활용하여 타입에 따라 활성화된 `ViewTra
 }}>
 ```
 
-이렇게 하면 원인에 따라 서로 다른 애니메이션을 선택할 수 있습니다.
-
----
-
-## 문제 해결 {/*troubleshooting*/}
-
-### 해야 할 일 {/*todo2*/}
+This allows you to pick different imperative Animations based on the cause.

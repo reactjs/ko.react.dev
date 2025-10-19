@@ -897,7 +897,7 @@ button { margin: 5px; }
 
 ### Effect를 이용한 데이터 페칭 {/*fetching-data-with-effects*/}
 
-컴포넌트에 데이터를 페칭하기 위해 Effect를 사용할 수 있습니다. 만약 [프레임워크를 사용하고 있다면](/learn/start-a-new-react-project#production-grade-react-frameworks) 프레임워크의 데이터 페칭 메커니즘을 이용하는 것이 Effect를 직접 작성하는 것보다 더 효율적일 것입니다.
+You can use an Effect to fetch data for your component. Note that [if you use a framework,](/learn/start-a-new-react-project#full-stack-frameworks) using your framework's data fetching mechanism will be a lot more efficient than writing Effects manually.
 
 만약 직접 Effect를 작성하여 데이터를 페칭하고 싶다면, 코드는 다음과 같을 수 있습니다.
 
@@ -929,6 +929,7 @@ export default function Page() {
 
 <Sandpack>
 
+{/* TODO(@poteto) - investigate potential false positives in react compiler validation */}
 ```js src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
@@ -1049,8 +1050,8 @@ Effect 내부에서 `fetch` 호출을 작성하는 것은 클라이언트 사이
 
 이러한 단점은 React만 해당되는 것이 아닙니다. 다른 라이브러리를 사용하여 데이터를 페칭할 때도 해당됩니다. 라우팅과 마찬가지로 데이터 페칭은 세부적인 사항이 많으므로 다음과 같은 접근 방식을 권장합니다.
 
-- **[프레임워크](/learn/start-a-new-react-project#production-grade-react-frameworks)를 사용하는 경우, 해당 프레임워크에 내장된 데이터 페칭 메커니즘을 활용하세요.** 현대 React 프레임워크는 매우 효율적이며 위에서 언급한 문제점이 없는 통합된 데이터 페칭 기능을 가지고 있습니다.
-- **그렇지 않은 경우, 클라이언트 측 캐시를 사용하거나 직접 개발을 고려해 보세요.** 인기 있는 오픈소스 솔루션으로는 [React Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), 그리고 [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview)가 있습니다. 물론 직접 솔루션을 개발할수도 있으며 이 경우에는 이펙트를 내부적으로 사용하면서도 데이터 사전로드 또는 데이터 요구사항을 라우트로 호이스팅하는 방법을 통해 중복 요청 방지, 응답 캐싱 및 네트워크 폭포 효과 방지를 구현할 수 있습니다.
+- **If you use a [framework](/learn/start-a-new-react-project#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
+- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [React Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood but also add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
 
 만약 이러한 접근 방식이 적합하지 않다면 Effect 내부에서 데이터를 페칭하는 것을 계속 진행할 수 있습니다.
 
@@ -1690,13 +1691,7 @@ button { margin-left: 10px; }
 
 ### Effect에서 최신 props와 state를 읽기 {/*reading-the-latest-props-and-state-from-an-effect*/}
 
-<Wip>
-
-이 섹션은 안정 버전의 React에 **반영되지 않은 실험적 API**에 대해 설명합니다.
-
-</Wip>
-
-기본적으로 Effect에서 반응형 값을 읽을 때는 해당 값을 의존성에 추가해야 합니다. 이렇게 하면 Effect가 해당 값의 모든 변경에 '반응'하게 됩니다. 대부분의 의존성에서 원하는 동작입니다.
+By default, when you read a reactive value from an Effect, you have to add it as a dependency. This ensures that your Effect "reacts" to every change of that value. For most dependencies, that's the behavior you want.
 
 **그러나 때로는 Effect에서 최신 props와 state를 '반응'하지 않고 읽고 싶을 수 있습니다.** 예를 들어 페이지 방문마다 쇼핑 카트에 담긴 항목 수를 기록하고 싶다고 가정해 보겠습니다.
 
@@ -1709,7 +1704,7 @@ function Page({ url, shoppingCart }) {
 }
 ```
 
-**`url` 변경마다 새로운 페이지 방문을 기록하고 싶지만 `shoppingCart`만 변경되는 경우에는 기록하고 싶지 않다면 어떻게 해야 할까요?** `shoppingCart`를 의존성에서 제외하면 [반응성 규칙](#specifying-reactive-dependencies)을 어기게 됩니다. Effect 내에서 호출되는 코드이지만 변경에 반응하지 않기를 원한다면 [`useEffectEvent`](/reference/react/experimental_useEffectEvent) Hook을 사용하여 [`Effect Event`](/learn/separating-events-from-effects#declaring-an-effect-event)를 선언하고 `shoppingCart`를 읽는 코드를 그 안에 이동시킬 수 있습니다.
+**What if you want to log a new page visit after every `url` change, but *not* if only the `shoppingCart` changes?** You can't exclude `shoppingCart` from dependencies without breaking the [reactivity rules.](#specifying-reactive-dependencies) However, you can express that you *don't want* a piece of code to "react" to changes even though it is called from inside an Effect. [Declare an *Effect Event*](/learn/separating-events-from-effects#declaring-an-effect-event) with the [`useEffectEvent`](/reference/react/useEffectEvent) Hook, and move the code reading `shoppingCart` inside of it:
 
 ```js {2-4,7,8}
 function Page({ url, shoppingCart }) {
@@ -1733,10 +1728,12 @@ function Page({ url, shoppingCart }) {
 
 ### 서버와 클라이언트에서 다른 컨텐츠를 표시하기 {/*displaying-different-content-on-the-server-and-the-client*/}
 
-앱이 서버 렌더링을 사용하는 경우 ([직접](/reference/react-dom/server) 또는 [프레임워크](/learn/start-a-new-react-project#production-grade-react-frameworks)를 통해) 컴포넌트는 두 가지 다른 환경에서 렌더링됩니다. 서버에서는 초기 HTML을 생성하기 위해 렌더링되고, 클라이언트에서는 React가 이벤트 핸들러를 해당 HTML에 연결하기 위해 다시 렌더링 코드를 실행합니다. 이것이 [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html)이 작동하려면 초기 렌더링 출력이 서버와 클라이언트에서 동일해야 하는 이유입니다.
+If your app uses server rendering (either [directly](/reference/react-dom/server) or via a [framework](/learn/start-a-new-react-project#full-stack-frameworks)), your component will render in two different environments. On the server, it will render to produce the initial HTML. On the client, React will run the rendering code again so that it can attach your event handlers to that HTML. This is why, for [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) to work, your initial render output must be identical on the client and the server.
 
 드물게 클라이언트에서 다른 내용을 표시해야 할 수 있습니다. 예를 들어 앱이 [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)에서 일부 데이터를 읽는 경우, 이를 서버에서 구현할 수 없습니다. 다음은 이것을 구현하는 방법입니다.
 
+
+{/* TODO(@poteto) - investigate potential false positives in react compiler validation */}
 ```js
 function MyComponent() {
   const [didMount, setDidMount] = useState(false);

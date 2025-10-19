@@ -49,7 +49,7 @@ Promise와 함께 호출될 때 `use` Hook은 [`Suspense`](/reference/react/Susp
 
 * `use` API는 컴포넌트나 Hook 내부에서 호출되어야 합니다.
 * [서버 컴포넌트](/reference/rsc/use-server)에서 데이터를 가져올 때는 `use`보다 `async` 및 `await`을 사용합니다. `async` 및 `await`은 `await`이 호출된 시점부터 렌더링을 시작하는 반면, `use`는 데이터가 리졸브된 후 컴포넌트를 리렌더링합니다.
-* [클라이언트 컴포넌트](/reference/rsc/use-clientt)에서 Promise를 생성하는 것보다 [서버 컴포넌트](/reference/rsc/use-server)에서 Promise를 생성하여 클라이언트 컴포넌트에 전달하는 것이 좋습니다. 클라이언트 컴포넌트에서 생성된 Promise는 렌더링할 때마다 다시 생성됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 전달된 Promise는 리렌더링 전반에 걸쳐 안정적입니다. [예시를 확인하세요](#streaming-data-from-server-to-client).
+* [클라이언트 컴포넌트](/reference/rsc/use-client)에서 Promise를 생성하는 것보다 [서버 컴포넌트](/reference/rsc/use-server)에서 Promise를 생성하여 클라이언트 컴포넌트에 전달하는 것이 좋습니다. 클라이언트 컴포넌트에서 생성된 Promise는 렌더링할 때마다 다시 생성됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 전달된 Promise는 리렌더링 전반에 걸쳐 안정적입니다. [예시를 확인하세요](#streaming-data-from-server-to-client).
 
 ---
 
@@ -310,7 +310,7 @@ export default async function App() {
 }
 ```
 
-하지만 [서버 컴포넌트](/reference/react/use-server)에서 `await`을 사용하면 `await` 문이 완료될 때까지 렌더링이 차단됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 Promise를 Prop으로 전달하면 Promise가 서버 컴포넌트의 렌더링을 차단하는 것을 방지할 수 있습니다.
+하지만 [서버 컴포넌트](/reference/rsc/server-components)에서 `await`을 사용하면 `await` 문이 완료될 때까지 렌더링이 차단됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 Promise를 Prop으로 전달하면 Promise가 서버 컴포넌트의 렌더링을 차단하는 것을 방지할 수 있습니다.
 
 </DeepDive>
 

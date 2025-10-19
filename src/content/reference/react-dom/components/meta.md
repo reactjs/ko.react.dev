@@ -30,7 +30,7 @@ meta: "<meta>"
 
 #### Props {/*props*/}
 
-`<meta>`는 [공통 요소 Props](/reference/react-dom/components/common#props)를 지원합니다.
+`<meta>`는 모든 [공통 엘리먼트 Props](/reference/react-dom/components/common#common-props)를 지원합니다.
 
 다음 속성 중 _하나만_ 가져야 합니다. `name`, `httpEquiv`, `charset`, `itemProp`.
 

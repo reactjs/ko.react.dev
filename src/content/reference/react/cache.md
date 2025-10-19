@@ -1,11 +1,10 @@
 ---
 title: cache
-canary: true
 ---
 
 <RSC>
 
-`cache`는 오직 [React 서버 컴포넌트](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)와 함께 사용합니다.
+`cache` is only for use with [React Server Components](/reference/rsc/server-components).
 
 </RSC>
 
@@ -62,10 +61,10 @@ function Chart({data}) {
 
 #### 주의 사항 {/*caveats*/}
 
-- React는 서버 요청마다 모든 메모화된 함수들을 위해 캐시를 무효화합니다.
-- `cache`를 호출할 때마다 새 함수가 생성됩니다. 즉, 동일한 함수로 `cache`를 여러 번 호출하면 동일한 캐시를 공유하지 않는 다른 메모화된 함수가 반환됩니다.
-- `cachedFn` 또한 캐시 오류를 잡아냅니다. `fn`이 특정 인수에 대해 오류를 던지면 캐싱되고, 동일한 인수로 `cachedFn`를 호출하면 동일한 오류가 다시 발생합니다.
-- `cache`는 [서버 컴포넌트](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)에서만 사용가능합니다.
+- React will invalidate the cache for all memoized functions for each server request.
+- Each call to `cache` creates a new function. This means that calling `cache` with the same function multiple times will return different memoized functions that do not share the same cache.
+- `cachedFn` will also cache errors. If `fn` throws an error for certain arguments, it will be cached, and the same error is re-thrown when `cachedFn` is called with those same arguments.
+- `cache` is for use in [Server Components](/reference/rsc/server-components) only.
 
 ---
 
@@ -96,9 +95,13 @@ function TeamReport({users}) {
 ```
 같은 `user` 객체가 `Profile`과 `TeamReport`에서 렌더링될 때, 두 컴포넌트는 작업을 공유하고, `user`를 위한 `calculateUserMetrics`를 한 번만 호출합니다.
 
-`Profile`이 먼저 렌더링된다고 가정합시다. `Profile`은 <CodeStep step={1}>`getUserMetrics`</CodeStep>를 호출하고, 캐싱된 결과가 있는지 확인합니다. `user`와 함께 `getUserMetrics`를 처음 호출하기 때문에, 현재 저장된 캐시는 없습니다. `getUserMetrics`는 `user`와 함께 `calculateUserMetrics`를 호출하고 캐시에 결과값을 저장합니다.
+If the same `user` object is rendered in both `Profile` and `TeamReport`, the two components can share work and only call `calculateUserMetrics` once for that `user`.
 
-`TeamReport`가 `users` 목록과 함께 렌더링될 때 같은 `user` 객체를 사용하게 되고, 이는 <CodeStep step={2}>`getUserMetrics`</CodeStep>를 호출해 캐시에서 결과값을 읽어옵니다.
+Assume `Profile` is rendered first. It will call <CodeStep step={1}>`getUserMetrics`</CodeStep>, and check if there is a cached result. Since it is the first time `getUserMetrics` is called with that `user`, there will be a cache miss. `getUserMetrics` will then call `calculateUserMetrics` with that `user` and write the result to cache.
+
+When `TeamReport` renders its list of `users` and reaches the same `user` object, it will call <CodeStep step={2}>`getUserMetrics`</CodeStep> and read the result from cache.
+
+If `calculateUserMetrics` can be aborted by passing an [`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal), you can use [`cacheSignal()`](/reference/react/cacheSignal) to cancel the expensive computation if React has finished rendering. `calculateUserMetrics` may already handle cancellation internally by using `cacheSignal` directly.
 
 <Pitfall>
 
@@ -166,12 +169,12 @@ export default function Precipitation({cityData}) {
   // ...
 }
 ```
-여기 두 컴포넌트가 같은 캐시를 읽고 쓰기 위해 `./getWeekReport.js`로 부터 `export`해 온 <CodeStep step={3}>같은 메모화된 함수</CodeStep>를 호출했습니다.
+Here, both components call the <CodeStep step={3}>same memoized function</CodeStep> exported from `./getWeekReport.js` to read and write to the same cache.
 </Pitfall>
 
 ### 데이터의 스냅샷 공유하기 {/*take-and-share-snapshot-of-data*/}
 
-컴포넌트끼리 데이터의 스냅샷을 공유하기 위해선 `fetch`와 같이 데이터를 가져오는 함수와 함께 `cache`를 사용해야 합니다. 여러 컴포넌트가 같은 데이터를 받아올 때, 요청이 한 번만 발생하고 받아온 데이터는 캐싱되며 컴포넌트끼리 공유됩니다. 모든 컴포넌트는 서버 렌더링 전반에 걸쳐 동일한 데이터 스냅샷을 참조합니다.
+To share a snapshot of data between components, call `cache` with a data-fetching function like `fetch`. When multiple components make the same data fetch, only one request is made and the data returned is cached and shared across components. All components refer to the same snapshot of data across the server render.
 
 ```js [[1, 4, "city"], [1, 5, "fetchTemperature(city)"], [2, 4, "getTemperature"], [2, 9, "getTemperature"], [1, 9, "city"], [2, 14, "getTemperature"], [1, 14, "city"]]
 import {cache} from 'react';
@@ -192,7 +195,7 @@ async function MinimalWeatherCard({city}) {
 }
 ```
 
-`AnimatedWeatherCard`와 `MinimalWeatherCard`가 같은 <CodeStep step={1}>city</CodeStep>를 렌더링할 때, <CodeStep step={2}>메모화된 함수</CodeStep>로 부터 같은 데이터의 스냅샷을 받게 됩니다.
+If `AnimatedWeatherCard` and `MinimalWeatherCard` both render for the same <CodeStep step={1}>city</CodeStep>, they will receive the same snapshot of data from the <CodeStep step={2}>memoized function</CodeStep>.
 
 `AnimatedWeatherCard`와 `MinimalWeatherCard`가 다른 <CodeStep step={1}>city</CodeStep>를 <CodeStep step={2}>`getTemperature`</CodeStep>의 인수로 받게 된다면, `fetchTemperature`는 두 번 호출되고 호출마다 다른 데이터를 받게됩니다.
 
@@ -200,7 +203,7 @@ async function MinimalWeatherCard({city}) {
 
 <Note>
 
-<CodeStep step={3}>비동기 렌더링</CodeStep>은 [서버 컴포넌트](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)에서만 지원됩니다.
+<CodeStep step={3}>Asynchronous rendering</CodeStep> is only supported for Server Components.
 
 ```js [[3, 1, "async"], [3, 2, "await"]]
 async function AnimatedWeatherCard({city}) {
@@ -208,7 +211,8 @@ async function AnimatedWeatherCard({city}) {
   // ...
 }
 ```
-클라이언트 컴포넌트에서 비동기 데이터를 사용하는 컴포넌트를 렌더링하고 싶다면 [`use`](/reference/react/use) 문서를 참고하세요.
+
+To render components that use asynchronous data in Client Components, see [`use()` documentation](/reference/react/use).
 
 </Note>
 
@@ -253,7 +257,7 @@ function Page({id}) {
 
 [비동기 함수](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/async_function)의 결과를 보면, [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)를 받습니다. 이 Promise는 작업에 대한 상태(_대기_, _완료_, _실패_)와 최종적으로 확정된 결과를 가지고 있습니다.
 
-이 예시에서, 비동기 함수 <CodeStep step={1}>`fetchData`</CodeStep>는 `fetch`를 기다리는 Promise를 반환합니다.
+In this example, the asynchronous function <CodeStep step={1}>`fetchData`</CodeStep> returns a promise that is awaiting the `fetch`.
 
 ```js [[1, 1, "fetchData()"], [2, 8, "getData()"], [3, 10, "getData()"]]
 async function fetchData() {
@@ -274,7 +278,7 @@ async function MyComponent() {
 
 첫 번째 <CodeStep step={2}>`getData`</CodeStep> 호출은 기다리지<sup>`await`</sup> 않지만 <CodeStep step={3}>두 번째</CodeStep>는 기다립니다. [`await`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/await)은 자바스크립트 연산자로, 기다렸다가 확정된 Promise의 결과를 반환합니다. 첫 번째 <CodeStep step={2}>`getData`</CodeStep>는 단순히 조회할 두 번째 <CodeStep step={3}>`getData`</CodeStep>에 대한 Promise를 캐싱하기 위해 `fetch`를 실행합니다.
 
-<CodeStep step={3}>두 번째 호출</CodeStep>에서 Promise가 여전히 <em>대기 중</em>이면, 결과를 기다리는 동안 `await`이 일시 중지됩니다. 이 최적화는 데이터 불러오기를 기다리는 동안 React가 계산 작업을 계속할 수 있게 해 <CodeStep step={3}>두 번째 호출</CodeStep>에 대한 대기 시간을 줄일 수 있게 합니다.
+If by the <CodeStep step={3}>second call</CodeStep> the promise is still _pending_, then `await` will pause for the result. The optimization is that while we wait on the `fetch`, React can continue with computational work, thus reducing the wait time for the <CodeStep step={3}>second call</CodeStep>.
 
 _완료된_ 결과나 오류에 대한 Promise가 이미 정해진 경우, `await`는 즉시 값을 반환합니다. 두 결과 모두 성능상의 이점이 있습니다.
 </DeepDive>
@@ -302,7 +306,7 @@ async function DemoProfile() {
 
 React는 컴포넌트에서 메모화된 함수의 캐시 접근만 제공합니다. 컴포넌트 외부에서 <CodeStep step={1}>`getUser`</CodeStep>를 호출하면 여전히 함수를 실행하지만, 캐시를 읽거나 업데이트하지는 않습니다.
 
-이는 컴포넌트에서만 접근할 수 있는 [Context](/learn/passing-data-deeply-with-context)를 통해 캐시 접근이 제공되기 때문입니다.
+This is because cache access is provided through a [context](/learn/passing-data-deeply-with-context) which is only accessible from a component.
 
 </Pitfall>
 
@@ -314,7 +318,7 @@ React는 컴포넌트에서 메모화된 함수의 캐시 접근만 제공합니
 
 #### `useMemo` {/*deep-dive-use-memo*/}
 
-일반적으로 [`useMemo`](/reference/react/useMemo)는 클라이언트 컴포넌트에서 렌더링에 걸쳐 고비용의 계산을 캐싱할 때 사용합니다. 예를 들어 컴포넌트 내에서 데이터의 변환을 메모화할 수 있습니다.
+In general, you should use [`useMemo`](/reference/react/useMemo) for caching an expensive computation in a Client Component across renders. As an example, to memoize a transformation of data within a component.
 
 ```jsx {4}
 'use client';
@@ -335,9 +339,7 @@ function App() {
 }
 ```
 
-이 예시에서 `App`은 두 개의 `WeatherReport`를 같은 데이터와 함께 렌더링했습니다. 두 컴포넌트가 같은 작업을 수행했음에도 불구하고 서로 작업을 공유하지 않습니다. `useMemo`의 캐시는 해당 컴포넌트 내부에만 있습니다.
-
-하지만 `useMemo`는 `App`이 다시 렌더링되고 `record` 객체가 변경되지 않는 경우, 각 컴포넌트 인스턴스가 작업을 건너뛰고 메모화된 `avgTemp`의 값을 사용합니다. `useMemo`는 주어진 종속성을 가진 `avgTemp`의 마지막 계산만 캐싱합니다.
+However, `useMemo` does ensure that if `App` re-renders and the `record` object doesn't change, each component instance would skip work and use the memoized value of `avgTemp`. `useMemo` will only cache the last computation of `avgTemp` with the given dependencies.
 
 #### `cache` {/*deep-dive-cache*/}
 
@@ -390,7 +392,7 @@ function App() {
 }
 ```
 
-예시에서 `MemoWeatherReport` 컴포넌트 모두 첫 번째 렌더링에서 `calculateAvg`를 호출합니다. 하지만 `App`이 다시 렌더링될 때 `record`의 변경이 없다면 프로퍼티의 변경이 없기 때문에 `MemoWeatherReport`가 다시 렌더링되지 않습니다.
+In this example, both `MemoWeatherReport` components will call `calculateAvg` when first rendered. However, if `App` re-renders, with no changes to `record`, none of the props have changed and `MemoWeatherReport` will not re-render.
 
 `useMemo`와 비교하면 `memo`는 프로퍼티와 특정 계산을 기반으로 컴포넌트 렌더링을 메모화합니다. `useMemo`와 유사하게, 메모화된 컴포넌트는 마지막 프로퍼티 값에 대한 마지막 렌더링을 캐싱합니다. 프로퍼티가 변경되면, 캐시는 무효화되고 컴포넌트는 다시 렌더링됩니다.
 
@@ -488,4 +490,3 @@ function App() {
   );
 }
 ```
-
