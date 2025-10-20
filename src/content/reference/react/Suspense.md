@@ -2007,7 +2007,11 @@ Transition이 진행되는 동안 React는 이미 보인 콘텐츠를 숨기지 
 
 [스트리밍 서버 렌더링 API](/reference/react-dom/server) 중 하나(또는 이에 의존하는 프레임워크)를 사용하는 경우, React는 서버의 에러를 처리하기 위해 `<Suspense>` 경계도 사용할 것입니다. 컴포넌트가 서버에서 에러를 발생시키더라도 React는 서버 렌더링을 중단하지 않습니다. 대신, 그 위에 있는 가장 가까운 `<Suspense>` 컴포넌트를 찾아서 그 Fallback(예: 스피너)을 생성된 서버 HTML에 포함합니다. 사용자는 처음에는 스피너를 보게 됩니다.
 
+<<<<<<< HEAD
 클라이언트에서 React는 동일한 컴포넌트를 다시 렌더링하려고 시도합니다. 클라이언트에서도 에러가 발생하면 React는 에러를 던지고 가장 가까운 [Error Boundary](/reference/react/Component#static-getderivedstatefromerror)를 표시합니다. 그러나 클라이언트에서 에러가 발생하지 않으면 콘텐츠가 결국 성공적으로 보였기 때문에 React는 사용자에게 에러를 보여주지 않습니다.
+=======
+On the client, React will attempt to render the same component again. If it errors on the client too, React will throw the error and display the closest [Error Boundary.](/reference/react/Component#static-getderivedstatefromerror) However, if it does not error on the client, React will not display the error to the user since the content was eventually displayed successfully.
+>>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 
 이를 사용하여 일부 컴포넌트를 서버에서 렌더링하지 않도록 선택할 수 있습니다. 이렇게 하려면 서버 환경에서 에러를 발생시킨 다음 `<Suspense>` 경계로 감싸서 해당 HTML을 Fallback으로 대체합니다.
 

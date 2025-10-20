@@ -4,7 +4,11 @@ title: "내장 React API"
 
 <Intro>
 
+<<<<<<< HEAD
 [Hook](/reference/react/hooks)과 [컴포넌트](/reference/react/components) 외에도 `react` 패키지는 컴포넌트를 정의하는데 유용한 몇 가지 API를 가지고 있습니다. 이 페이지는 최신 React API를 모두 나열합니다.
+=======
+In addition to [Hooks](/reference/react/hooks) and [Components](/reference/react/components), the `react` package exports a few other APIs that are useful for defining components. This page lists all the remaining modern React APIs.
+>>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 
 </Intro>
 {/*React 영문 공식 문서에 반영되지 않은 내용 임의로 수정하여 반영하였습니다. `cache` 및 `use`에 대한 내용 설명을 제외하고 수정하지 말아주세요*/}

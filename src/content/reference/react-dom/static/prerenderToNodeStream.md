@@ -4,7 +4,11 @@ title: prerenderToNodeStream
 
 <Intro>
 
+<<<<<<< HEAD
 `prerenderToNodeStream`은 [Node.js Stream](https://nodejs.org/api/stream.html)을 사용하여 React 트리를 정적 HTML 문자열로 렌더링합니다.
+=======
+`prerenderToNodeStream` renders a React tree to a static HTML string using a [Node.js Stream.](https://nodejs.org/api/stream.html)
+>>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 
 ```js
 const {prelude, postponed} = await prerenderToNodeStream(reactNode, options?)
@@ -88,7 +92,11 @@ app.use('/', async (request, response) => {
 
 ### React 트리를 정적 HTML 스트림으로 렌더링하기 {/*rendering-a-react-tree-to-a-stream-of-static-html*/}
 
+<<<<<<< HEAD
 `prerenderToNodeStream`를 호출해 React 트리를 정적 HTML로 렌더링하고, 이를 [Node.js Stream](https://nodejs.org/api/stream.html)에 출력합니다.
+=======
+Call `prerenderToNodeStream` to render your React tree to static HTML into a [Node.js Stream](https://nodejs.org/api/stream.html):
+>>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 
 ```js [[1, 5, "<App />"], [2, 6, "['/main.js']"]]
 import { prerenderToNodeStream } from 'react-dom/static';

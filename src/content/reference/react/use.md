@@ -33,7 +33,11 @@ function MessageComponent({ messagePromise }) {
 
 다른 React Hook과 달리 `use`는 `if`와 같은 조건문과 반복문 내부에서 호출할 수 있습니다. 다만, 다른 React Hook과 같이 `use`는 컴포넌트 또는 Hook에서만 호출해야 합니다.
 
+<<<<<<< HEAD
 Promise와 함께 호출될 때 `use` Hook은 [`Suspense`](/reference/react/Suspense) 및 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)와 통합됩니다. `use`에 전달된 Promise가 대기<sup>Pending</sup>하는 동안 `use`를 호출하는 컴포넌트는 *Suspend*됩니다. `use`를 호출하는 컴포넌트가 Suspense 경계로 둘러싸여 있으면 Fallback이 표시됩니다. Promise가 리졸브되면 Suspense Fallback은 `use` Hook이 반환한 컴포넌트로 대체됩니다. `use`에 전달된 Promise가 Reject되면 가장 가까운 Error Boundary의 Fallback이 표시됩니다.
+=======
+When called with a Promise, the `use` API integrates with [`Suspense`](/reference/react/Suspense) and [Error Boundaries](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). The component calling `use` *suspends* while the Promise passed to `use` is pending. If the component that calls `use` is wrapped in a Suspense boundary, the fallback will be displayed.  Once the Promise is resolved, the Suspense fallback is replaced by the rendered components using the data returned by the `use` API. If the Promise passed to `use` is rejected, the fallback of the nearest Error Boundary will be displayed.
+>>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 
 [아래 예시를 참고하세요.](#usage)
 
@@ -318,18 +322,29 @@ export default async function App() {
 
 경우에 따라 `use`에 전달된 Promise가 거부될 수 있습니다. 거부된 프로미스를 처리하는 방법은 2가지가 존재합니다.
 
+<<<<<<< HEAD
 1. [Error Boundary를 사용하여 오류 표시하기](#displaying-an-error-to-users-with-error-boundary)
 2. [`Promise.catch`로 대체 값 제공하기](#providing-an-alternative-value-with-promise-catch)
+=======
+1. [Displaying an error to users with an Error Boundary.](#displaying-an-error-to-users-with-error-boundary)
+2. [Providing an alternative value with `Promise.catch`](#providing-an-alternative-value-with-promise-catch)
+>>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 
 <Pitfall>
 
 `use`는 `try`-`catch` 블록에서 호출할 수 없습니다. `try`-`catch` 블록 대신 [컴포넌트를 Error Boundary로 래핑]((#displaying-an-error-to-users-with-error-boundary))하거나, Promise의 [`catch` 메서드를 사용하여 대체 값을 제공해야 합니다.]((#providing-an-alternative-value-with-promise-catch))
 </Pitfall>
 
+<<<<<<< HEAD
 #### Error Boundary를 사용하여 오류 표시하기 {/*error-boundary를-사용하여-오류-표시하기*/}
  {/*displaying-an-error-to-users-with-error-boundary*/}
 
 Promise가 거부될 때 오류를 표시하고 싶다면 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용합니다. Error Boundary를 사용하려면 `use` API 를 호출하는 컴포넌트를 Error Boundary로 래핑합니다. `use`에 전달된 Promise가 거부되면 Error Boundary에 대한 Fallback이 표시됩니다.
+=======
+#### Displaying an error to users with an Error Boundary {/*displaying-an-error-to-users-with-error-boundary*/}
+
+If you'd like to display an error to your users when a Promise is rejected, you can use an [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). To use an Error Boundary, wrap the component where you are calling the `use` API in an Error Boundary. If the Promise passed to `use` is rejected the fallback for the Error Boundary will be displayed.
+>>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 
 <Sandpack>
 
@@ -439,9 +454,13 @@ Promise의 <CodeStep step={1}>`catch`</CodeStep> 메서드를 사용하려면 Pr
 
 ### "Suspense Exception: This is not a real error!" {/*suspense-exception-error*/}
 
+<<<<<<< HEAD
 React 컴포넌트 또는 Hook 함수 외부에서, 혹은 `try`-`catch` 블록에서 `use`를 호출하고 있는 경우입니다. `try`-`catch` 블록 내에서 `use`를 호출하는 경우 컴포넌트를 Error Boundary로 래핑하거나 Promise의 `catch`를 호출하여 오류를 발견하고 Promise를 다른 값으로 리졸브합니다. [이러한 예시들을 확인하세요](#dealing-with-rejected-promises).
 
 React 컴포넌트나 Hook 함수 외부에서 `use`를 호출하는 경우 `use` 호출을 React 컴포넌트나 Hook 함수로 이동합니다.
+=======
+You are either calling `use` outside of a React Component or Hook function, or calling `use` in a try–catch block. If you are calling `use` inside a try–catch block, wrap your component in an Error Boundary, or call the Promise's `catch` to catch the error and resolve the Promise with another value. [See these examples](#dealing-with-rejected-promises).
+>>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 
 
 ```jsx
