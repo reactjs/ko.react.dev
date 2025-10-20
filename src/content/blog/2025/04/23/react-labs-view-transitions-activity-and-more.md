@@ -16,19 +16,7 @@ React Labs 게시글에는 활발히 연구 개발 중인 프로젝트에 대한
 </Intro>
 
 
-<<<<<<< HEAD
-<Note>
-
-React Conf 2025 is scheduled for October 7–8 in Henderson, Nevada!
-
-Watch the livestream on [the React Conf website](https://conf.react.dev).
-
-</Note>
-
 오늘 저희는 테스트할 준비가 완료된 두 가지 새로운 실험적 기능에 대한 문서를 공개하게 되어 기쁩니다.
-=======
-Today, we're excited to release documentation for two new experimental features that are ready for testing:
->>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 
 - [View Transitions](#view-transitions)
 - [Activity](#activity)
@@ -44,9 +32,6 @@ Today, we're excited to release documentation for two new experimental features 
 
 # 새로운 실험적 기능 {/*new-experimental-features*/}
 
-<<<<<<< HEAD
-View Transitions와 Activity는 이제 `react@experimental`에서 테스트할 준비가 되었습니다. 이러한 기능들은 프로덕션에서 테스트되었으며 안정적이지만, 피드백을 반영하는 과정에서 최종 API가 여전히 변경될 수 있습니다.
-=======
 <Note>
 
 `<Activity />` has shipped in `react@19.2`.
@@ -55,8 +40,7 @@ View Transitions와 Activity는 이제 `react@experimental`에서 테스트할 �
 
 </Note>
 
-View Transitions and Activity are now ready for testing in `react@experimental`. These features have been tested in production and are stable, but the final API may still change as we incorporate feedback.
->>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
+View Transitions와 Activity는 이제 `react@experimental`에서 테스트할 준비가 되었습니다. 이러한 기능들은 프로덕션에서 테스트되었으며 안정적이지만, 피드백을 반영하는 과정에서 최종 API가 여전히 변경될 수 있습니다.
 
 가장 최신 실험적 버전으로 React 패키지를 업그레이드하여 사용해볼 수 있습니다.
 

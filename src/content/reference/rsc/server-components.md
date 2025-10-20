@@ -2,15 +2,6 @@
 title: 서버 컴포넌트
 ---
 
-<<<<<<< HEAD
-<RSC>
-
-서버 컴포넌트는 [React 서버 컴포넌트](/learn/start-a-new-react-project#full-stack-frameworks)에서 사용합니다.
-
-</RSC>
-
-=======
->>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 <Intro>
 
 서버 컴포넌트는 번들링 전에 클라이언트 앱이나 SSR(Server Side Rendering) 서버와는 분리된 환경에서 미리 렌더링되는 새로운 유형의 컴포넌트입니다.

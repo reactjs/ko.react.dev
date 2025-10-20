@@ -274,20 +274,12 @@ export function HomeContent() {
               <Br /> 풀스택으로 만들기
             </Header>
             <Para>
-<<<<<<< HEAD
               React는 라이브러리입니다. 컴포넌트를 조합할 수 있도록 도와주지만,
               라우팅이나 데이터를 가져오는 방법을 규정하지는 않습니다. React로
               완전한 앱을 만들려면,{' '}
               <Link href="https://nextjs.org">Next.js</Link> 또는{' '}
-              <Link href="https://remix.run">Remix</Link> 같은 풀스택 React
-              프레임워크를 추천합니다.
-=======
-              React is a library. It lets you put components together, but it
-              doesn’t prescribe how to do routing and data fetching. To build an
-              entire app with React, we recommend a full-stack React framework
-              like <Link href="https://nextjs.org">Next.js</Link> or{' '}
-              <Link href="https://reactrouter.com">React Router</Link>.
->>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
+              <Link href="https://reactrouter.com">React Router</Link> 같은
+              풀스택 React 프레임워크를 추천합니다.
             </Para>
           </Center>
           <FullBleed>

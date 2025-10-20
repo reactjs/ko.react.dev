@@ -36,15 +36,9 @@ React로 UI를 구현하기 위해서 일반적으로 다섯 가지 단계를 �
 
 어떤 배경을 가지고 있냐에 따라, 디자인을 컴포넌트로 나누는 방법에 대한 관점이 달라질 수 있습니다.
 
-<<<<<<< HEAD
 * **Programming**--새로운 함수나 객체를 만드는 방식으로 해봅시다. 이 중 [단일 책임 원칙](https://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%B1%85%EC%9E%84_%EC%9B%90%EC%B9%99)을 반영하고자 한다면 컴포넌트는 이상적으로는 한 번에 한 가지 일만 해야 합니다. 만약 컴포넌트가 점점 커진다면 작은 하위 컴포넌트로 쪼개져야 하겠죠.
 * **CSS**--클래스 선택자를 무엇으로 만들지 생각해 봅시다. (실제 컴포넌트들은 약간 더 세분되어 있습니다.)
 * **Design**--디자인 계층을 어떤 식으로 구성할 지 생각해 봅시다.
-=======
-* **Programming**--use the same techniques for deciding if you should create a new function or object. One such technique is the [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns), that is, a component should ideally only be concerned with one thing. If it ends up growing, it should be decomposed into smaller subcomponents. 
-* **CSS**--consider what you would make class selectors for. (However, components are a bit less granular.)
-* **Design**--consider how you would organize the design's layers.
->>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 
 JSON이 잘 구조화 되어있다면, 종종 이것이 UI의 컴포넌트 구조가 자연스럽게 데이터 모델에 대응된다는 것을 발견할 수 있습니다. 이는 UI와 데이터 모델은 보통 같은 정보 아키텍처, 즉 같은 구조를 가지기 때문입니다. UI를 컴포넌트로 분리하고, 각 컴포넌트가 데이터 모델에 매칭될 수 있도록 하세요.
 

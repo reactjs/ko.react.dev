@@ -15,17 +15,6 @@ React Labs 게시글에는 활발히 연구 개발 중인 프로젝트에 대한
 
 </Intro>
 
-<<<<<<< HEAD
-<Note>
-
-React Conf 2024가 5월 15일부터 16일까지 네바다주 헨더슨에서 개최됩니다! React Conf에 직접 참석하고 싶으시다면 2월 28일까지 [티켓 추첨에 등록하세요](https://forms.reform.app/bLaLeE/react-conf-2024-ticket-lottery/1aRQLK).
-
-티켓과 무료 스트리밍, 후원 등에 대한 더 자세한 정보는 [React Conf 웹사이트](https://conf.react.dev)를 참조하세요.
-
-</Note>
-
-=======
->>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 ---
 
 ## React 컴파일러 {/*react-compiler*/}

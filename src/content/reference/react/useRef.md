@@ -573,11 +573,7 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
-<<<<<<< HEAD
-그리고 `ref`를 컴포넌트가 받는 props 목록에 추가한 뒤, 아래처럼 해당 자식 [내장 컴포넌트](/reference/react-dom/components/common)에 prop으로 `ref`를 전달하세요.
-=======
-And then add `ref` to the list of props your component accepts and pass `ref` as a prop to the relevant child [built-in component](/reference/react-dom/components/common) like this:
->>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
+그리고 `ref`를 컴포넌트가 받는 Props 목록에 추가한 뒤, 아래처럼 해당 자식 [내장 컴포넌트](/reference/react-dom/components/common)에 Prop으로 `ref`를 전달하세요.
 
 ```js {1,6}
 function MyInput({ value, onChange, ref }) {
