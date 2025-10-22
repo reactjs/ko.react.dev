@@ -10,21 +10,27 @@ title: React 블로그
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<BlogCard title="React Compiler v1.0" date="October 7, 2025" url="/blog/2025/10/07/react-compiler-1">
+
+We're releasing the compiler's first stable release today, plus linting and tooling improvements to make adoption easier.
+
+</BlogCard>
+
+<BlogCard title="Introducing the React Foundation" date="October 7, 2025" url="/blog/2025/10/07/introducing-the-react-foundation">
+
+Today, we're announcing our plans to create the React Foundation and a new technical governance structure ...
+
+</BlogCard>
+
 <BlogCard title="React 19.2" date="2025년 10월 1일" url="/blog/2025/10/01/react-19-2">
 
-React 19.2에는 Activity, React Performance Tracks, useEffectEvent 등의 새로운 기능이 추가되었습니다. 이 글에서는…
+React 19.2에는 Activity, React 성능 트랙, useEffectEvent 등의 새로운 기능이 추가되었습니다. 이 글에서는...
 
 </BlogCard>
 
-<BlogCard title="React Labs: View Transitions, Activity 그리고 그 외" date="2025년 4월 23일" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
+<BlogCard title="React Labs: View Transitions, Activity, and more" date="April 23, 2025" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
 
-React Labs 게시글에서는 현재 연구 개발 중인 프로젝트에 대한 글을 작성합니다. 이번 포스팅에서는 지금 바로 사용해 볼 수 있는 두 가지 새로운 실험적 기능을 공유하고, 현재 작업 중인 다른 영역에 대해서도 공유하고자 합니다.
-
-</BlogCard>
-
-<BlogCard title="React 컴파일러 RC" date="2025년 4월 21일" url="/blog/2025/04/21/react-compiler-rc">
-
-컴파일러의 첫 번째 릴리즈 후보(Release Candidate, RC)를 공개합니다.
+In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and sharing other areas we're working on now ...
 
 </BlogCard>
 

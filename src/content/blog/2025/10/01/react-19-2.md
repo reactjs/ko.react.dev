@@ -98,7 +98,7 @@ function ChatRoom({ roomId, theme }) {
 
 DOM 이벤트와 유사하게, Effect 이벤트는 항상 최신 props와 상태를 "봅니다".
 
-Effect 이벤트는 의존성 배열에 선언해서는 안 됩니다. 린터가 이를 의존성으로 삽입하려고 하지 않도록 `eslint-plugin-react-hooks@6.1.1`로 업그레이드해야 합니다. Effect 이벤트는 "자신"의 Effect와 동일한 컴포넌트 또는 Hook 내에서만 선언할 수 있습니다. 이러한 제약은 린터에 의해 검증됩니다.
+**Effect 이벤트는 의존성 배열에 선언해서는 안 됩니다**. 린터가 이를 의존성으로 삽입하려고 하지 않도록 `eslint-plugin-react-hooks@latest`로 업그레이드해야 합니다. Effect 이벤트는 "자신"의 Effect와 동일한 컴포넌트 또는 Hook 내에서만 선언할 수 있습니다. 이러한 제약은 린터에 의해 검증됩니다.
 
 <Note>
 
@@ -120,7 +120,7 @@ Effect 이벤트는 의존성 배열에 선언해서는 안 됩니다. 린터가
 
 </RSC>
 
-`cacheSignal`을 사용하면 [`cache()`](/reference/react/cache)의 수명이 끝났을 때 알 수 있습니다.
+`cacheSignal`을 사용하면 [`cache()`](/reference/react/cache)의 수명이 끝났을 때 알 수 있습니다:
 
 ```
 import {cache, cacheSignal} from 'react';
@@ -143,7 +143,7 @@ async function Component() {
 
 ### 성능 트랙 {/*performance-tracks*/}
 
-React 19.2는 Chrome DevTools 성능 프로필에 새로운 [커스텀 트랙](https://developer.chrome.com/docs/devtools/performance/extension) 세트를 추가하여 React 앱의 성능에 대한 더 많은 정보를 제공합니다.
+React 19.2는 Chrome DevTools 성능 프로필에 새로운 [커스텀 트랙](https://developer.chrome.com/docs/devtools/performance/extension) 세트를 추가하여 React 앱의 성능에 대한 더 많은 정보를 제공합니다:
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
   <picture >
@@ -247,7 +247,6 @@ React 19.2에서는 Suspense Boundary가 짧은 시간 동안 배치되어 더 �
 
 </Diagram>
 
-
 이 수정은 또한 SSR 중 Suspense에 대한 `<ViewTransition>` 지원을 위한 앱을 준비합니다. 더 많은 콘텐츠를 함께 노출함으로써 애니메이션이 더 큰 콘텐츠 배치에서 실행될 수 있으며, 가깝게 스트리밍되는 콘텐츠의 체인 애니메이션을 피할 수 있습니다.
 
 <Note>
@@ -290,7 +289,7 @@ Node.js 환경에서는 여전히 Node 스트림 API 사용을 강력히 권장�
 
 ### `eslint-plugin-react-hooks` v6 {/*eslint-plugin-react-hooks*/}
 
-또한 `eslint-plugin-react-hooks@6.1.1`을 공개했으며, `recommended` 프리셋에 기본적으로 플랫 config를 포함하고 새로운 React 컴파일러 기반 규칙을 옵트인(opt-in)할 수 있도록 했습니다.
+또한 `eslint-plugin-react-hooks@latest`를 공개했으며, `recommended` 프리셋에 기본적으로 플랫 config를 포함하고 새로운 React 컴파일러 기반 규칙을 옵트인(opt-in)할 수 있도록 했습니다.
 
 레거시 config를 계속 사용하려면 `recommended-legacy`로 변경할 수 있습니다:
 
@@ -299,7 +298,7 @@ Node.js 환경에서는 여전히 Node 스트림 API 사용을 강력히 권장�
 + extends: ['plugin:react-hooks/recommended-legacy']
 ```
 
-컴파일러 활성화 규칙의 전체 목록은 [린터 문서](/reference/eslint-plugin-react-hooks#additional-rules)를 참조하세요.
+컴파일러 활성화 규칙의 전체 목록은 [린터 문서](/reference/eslint-plugin-react-hooks#recommended)를 참조하세요.
 
 전체 변경 사항 목록은 [`eslint-plugin-react-hooks` 변경 로그](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/CHANGELOG.md#610)를 참조하세요.
 
