@@ -98,19 +98,17 @@ function runReactCompiler(code, filename) {
       continue;
     }
 
-    const loc =
-      typeof detail.primaryLocation === 'function'
-        ? detail.primaryLocation()
-        : null;
+    const loc = typeof detail.primaryLocation === 'function'
+      ? detail.primaryLocation()
+      : null;
 
     if (loc == null || typeof loc === 'symbol') {
       continue;
     }
 
-    const message =
-      typeof detail.printErrorMessage === 'function'
-        ? detail.printErrorMessage(result.sourceCode, {eslint: true})
-        : detail.description || 'Unknown React Compiler error';
+    const message = typeof detail.printErrorMessage === 'function'
+      ? detail.printErrorMessage(result.sourceCode, {eslint: true})
+      : detail.description || 'Unknown React Compiler error';
 
     diagnostics.push({detail, loc, message});
   }

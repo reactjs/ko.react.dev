@@ -120,7 +120,7 @@ DOM 이벤트와 유사하게, Effect 이벤트는 항상 최신 props와 상태
 
 </RSC>
 
-`cacheSignal`을 사용하면 [`cache()`](/reference/react/cache)의 수명이 끝났을 때 알 수 있습니다:
+`cacheSignal`을 사용하면 [`cache()`](/reference/react/cache)의 수명이 끝났을 때 알 수 있습니다.
 
 ```
 import {cache, cacheSignal} from 'react';
@@ -143,7 +143,7 @@ async function Component() {
 
 ### 성능 트랙 {/*performance-tracks*/}
 
-React 19.2는 Chrome DevTools 성능 프로필에 새로운 [커스텀 트랙](https://developer.chrome.com/docs/devtools/performance/extension) 세트를 추가하여 React 앱의 성능에 대한 더 많은 정보를 제공합니다:
+React 19.2는 Chrome DevTools 성능 프로필에 새로운 [커스텀 트랙](https://developer.chrome.com/docs/devtools/performance/extension) 세트를 추가하여 React 앱의 성능에 대한 더 많은 정보를 제공합니다.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
   <picture >

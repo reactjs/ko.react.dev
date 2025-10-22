@@ -84,9 +84,7 @@ function parseExpectedErrorsEntries(rawEntries) {
 
   if (parsed && typeof parsed === 'object') {
     for (const [key, value] of Object.entries(parsed)) {
-      entries[key] = normalizeEntryValues(
-        Array.isArray(value) ? value.flat() : value
-      );
+      entries[key] = normalizeEntryValues(Array.isArray(value) ? value.flat() : value);
     }
   }
 
@@ -94,9 +92,7 @@ function parseExpectedErrorsEntries(rawEntries) {
 }
 
 function parseExpectedErrorsToken(tokenText) {
-  const match = tokenText.match(
-    /^\{\s*expectedErrors\s*:\s*(\{[\s\S]*\})\s*\}$/
-  );
+  const match = tokenText.match(/^\{\s*expectedErrors\s*:\s*(\{[\s\S]*\})\s*\}$/);
   if (!match) {
     return null;
   }
@@ -207,9 +203,7 @@ function cloneMetadata(metadata) {
 }
 
 function findExpectedErrorsToken(metadata) {
-  return (
-    metadata.tokens.find((token) => token.type === 'expectedErrors') || null
-  );
+  return metadata.tokens.find((token) => token.type === 'expectedErrors') || null;
 }
 
 function getCompilerExpectedLines(metadata) {
