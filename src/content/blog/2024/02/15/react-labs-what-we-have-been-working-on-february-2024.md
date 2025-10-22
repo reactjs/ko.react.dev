@@ -107,7 +107,7 @@ Activity는 여전히 연구 중이며, 라이브러리 개발자에게 노출�
 
 이번 업데이트 외에도 우리 팀은 컨퍼런스에서 발표하고 팟캐스트 출연을 통해 우리의 작업에 관해 이야기를 나누고 질문에 답변했습니다.
 
-- [Sathya Gunasekaran](/community/team#sathya-gunasekaran)은 [React India](https://www.youtube.com/watch?v=kjOacmVsLSE) 컨퍼런스에서 React 컴파일러에 관해 이야기했습니다.
+- [Sathya Gunasekaran](https://github.com/gsathya)은 [React India](https://www.youtube.com/watch?v=kjOacmVsLSE) 컨퍼런스에서 React 컴파일러에 관해 이야기했습니다.
 
 - [Dan Abramov](/community/team#dan-abramov)은 [RemixConf](https://www.youtube.com/watch?v=zMf_xeGPn6s)에서 "다른 차원의 React"를 주제로 강연했습니다. 이곳에서 React 서버 컴포넌트와 액션을 어떻게 만들었는지에 관한 대안적인 역사를 탐구했습니다.
 

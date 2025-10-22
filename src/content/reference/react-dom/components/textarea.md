@@ -30,7 +30,7 @@ title: "<textarea>"
 
 #### Props {/*props*/}
 
-`<textarea>`는 [공통 엘리먼트 Props](/reference/react-dom/components/common#props)를 지원합니다.
+`<textarea>`는 모든 [공통 엘리먼트 Props](/reference/react-dom/components/common#common-props)를 지원합니다.
 
 [텍스트 영역을 제어](#controlling-a-select-box-with-a-state-variable)하려면 `value` Prop을 전달하세요.
 

@@ -12,6 +12,12 @@ const cachedValue = useMemo(calculateValue, dependencies)
 
 </Intro>
 
+<Note>
+
+[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useMemo` calls. You can use the compiler to handle memoization automatically.
+
+</Note>
+
 <InlineToc />
 
 ---
@@ -143,7 +149,7 @@ console.timeEnd('filter array');
 
 #### 모든 곳에 useMemo를 추가해야 하나요? {/*should-you-add-usememo-everywhere*/}
 
-이 사이트와 같이 대부분의 상호 작용이 거친 경우(페이지 또는 전체 섹션이 교체되는 것과 같이) 메모이제이션이 필요하지 않습니다. 반면, 앱이 그림 편집기와 비슷하고 대부분의 상호 작용이 세분화된 경우(도형 이동과 같은) 메모이제이션이 매우 유용할 수 있습니다.
+If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful.
 
 `useMemo`로 최적화하는 것은 몇몇 경우에만 유용합니다.
 

@@ -163,7 +163,7 @@ function CheckoutForm() {
 }
 ```
 
-`startTransition` 내에서 호출되는 함수를 "Actions"이라고 합니다. Action 내에서 상태를 업데이트하고(선택적으로) 사이드 이펙트를 수행할 수 있으며, 작업은 페이지에서 사용자 상호 작용을 차단하지 않고 백그라운드에서 수행됩니다. 하나의 Transition은 여러 개의 Action을 포함할 수 있으며, Transition이 진행되는 동안 UI는 계속 반응합니다. 예를 들어 사용자가 탭을 클릭했다가 마음이 바뀌어 다른 탭을 클릭하면 첫 번째 업데이트가 완료될 때까지 기다리지 않고 두 번째 클릭이 즉시 처리됩니다.
+The function passed to `startTransition` is called the "Action". You can update state and (optionally) perform side effects within an Action, and the work will be done in the background without blocking user interactions on the page. A Transition can include multiple Actions, and while a Transition is in progress, your UI stays responsive. For example, if the user clicks a tab but then changes their mind and clicks another tab, the second click will be immediately handled without waiting for the first update to finish.
 
 진행 중인 Transition에 대해 사용자에게 피드백을 제공하기 위해 `isPending` 상태는 `startTransition`을 처음 호출할 때 `true`로 전환되며, 모든 Action이 완료되어 최종 상태가 사용자에게 표시될 때까지 `true` 상태를 유지합니다. Transition은 Action 내의 사이드 이펙트가 완료되도록 보장하여 [원치 않는 로딩 표시기가 표시되지 않도록 합니다.](#preventing-unwanted-loading-indicators) 또한, Transition이 진행 중일 때 `useOptimistic`을 사용하여 즉각적인 피드백을 제공할 수 있습니다.
 
@@ -599,7 +599,7 @@ export default function TabButton({ action, children, isActive }) {
     <button onClick={() => {
       startTransition(async () => {
         // await the action that's passed in.
-        // This allows it to be either sync or async. 
+        // This allows it to be either sync or async.
         await action();
       });
     }}>
@@ -666,7 +666,7 @@ export default function TabButton({ action, children, isActive }) {
     <button onClick={async () => {
       startTransition(async () => {
         // await the action that's passed in.
-        // This allows it to be either sync or async. 
+        // This allows it to be either sync or async.
         await action();
       });
     }}>
@@ -744,7 +744,7 @@ b { display: inline-block; margin-right: 10px; }
 
 <Note>
 
-컴포넌트에서 `action` Prop을 노출할 때는 Transition 내부에서 `await` 해야 합니다.
+When exposing an `action` prop from a component, you should `await` it inside the transition.
 
 이렇게 하면 `action` 콜백이 동기적이든 비동기적이든 상관없이 작동할 수 있으며, `action` 내부의 `await`을 추가적인 `startTransition`으로 감쌀 필요가 없습니다.
 
@@ -1775,7 +1775,7 @@ function setState() {
 
 `startTransition` 내부에서 `await`를 사용하면 상태 업데이트가 순서대로 발생하지 않을 수 있습니다.
 
-이 예시에서 `updateQuantity` 함수는 서버에 요청을 보내 장바구니에서 항목의 수량을 업데이트하는 동작을 시뮬레이션합니다. 이 함수는 *이전 요청 후마다 다른 요청을 인위적으로 반환*하여 네트워크 요청에 대한 경쟁 상태(race condition)를 시뮬레이션합니다.
+In this example, the `updateQuantity` function simulates a request to the server to update the item's quantity in the cart. This function *artificially returns every other request after the previous* to simulate race conditions for network requests.
 
 수량을 한 번 업데이트한 후, 빠르게 여러 번 업데이트를 시도해 보세요. 그러면 잘못된 총합이 표시될 수 있습니다
 
@@ -2005,7 +2005,7 @@ export default function Item({action}) {
     startTransition(() => {
       action(e.target.value);
     });
-  }  
+  }
   return (
     <div className="item">
       <span>Eras Tour Tickets</span>

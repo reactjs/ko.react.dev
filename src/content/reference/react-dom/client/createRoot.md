@@ -207,7 +207,7 @@ HTML이 비어있으면, 앱의 자바스크립트 코드가 로드되고 실행
 <div id="root"></div>
 ```
 
-이것은 매우 느리게 느껴질 수 있습니다! 이 문제를 해결하기 위해 [서버에서 또는 빌드 중에](/reference/react-dom/server) 컴포넌트로부터 초기 HTML을 생성할 수 있습니다. 그러면 방문자는 자바스크립트 코드가 로드되기 전에 텍스트를 읽고, 이미지를 보고, 링크를 클릭할 수 있습니다. 이 최적화를 기본적으로 수행하는 [프레임워크를 사용](/learn/start-a-new-react-project#production-grade-react-frameworks)하는 것이 좋습니다. 실행 시점에 따라 이를 *서버 측 렌더링<sup>SSR</sup>* 또는 *정적 사이트 생성<sup>SSG</sup>* 이라고 합니다.
+This can feel very slow! To solve this, you can generate the initial HTML from your components [on the server or during the build.](/reference/react-dom/server) Then your visitors can read text, see images, and click links before any of the JavaScript code loads. We recommend [using a framework](/learn/start-a-new-react-project#full-stack-frameworks) that does this optimization out of the box. Depending on when it runs, this is called *server-side rendering (SSR)* or *static site generation (SSG).*
 
 </Note>
 

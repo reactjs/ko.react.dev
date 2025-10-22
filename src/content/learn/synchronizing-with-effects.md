@@ -617,7 +617,7 @@ Effect가 개발 모드에서 두 번 실행되는 것을 막으려다 흔히 �
 
 이렇게 하면 개발 모드에서 `"✅ 연결 중..."`이 한 번만 보이지만 버그가 수정된 건 아닙니다.
 
-사용자가 다른 곳에 가더라도 연결이 끊어지지 않고 사용자가 다시 돌아왔을 때 새로운 연결이 생성됩니다. 사용자가 앱을 탐색하면 버그가 수정되기 전처럼 연결이 계속 쌓이게 됩니다.
+When the user navigates away, the connection still isn't closed and when they navigate back, a new connection is created. As the user navigates across the app, the connections would keep piling up, the same as it would before the "fix".
 
 버그를 수정하기 위해선 Effect를 단순히 한 번만 실행되도록 만드는 것으로는 부족합니다. Effect는 위에 있는 예시가 연결을 클린업 한것처럼 다시 마운트된 이후에도 제대로 동작해야 합니다.
 
@@ -732,8 +732,8 @@ Effect 안에서 `fetch` 호출을 작성하는 것은 [데이터를 가져오�
 
 이 단점 목록은 React에만 해당되는 것은 아닙니다. 어떤 라이브러리에서든 마운트 시에 데이터를 가져온다면 비슷한 단점이 존재합니다. 마운트 시에 데이터를 페칭하는 것도 라우팅과 마찬가지로 잘 수행하기 어려운 작업이므로 다음 접근 방식을 권장합니다.
 
-- **[프레임워크](/learn/start-a-new-react-project#production-grade-react-frameworks)를 사용하는 경우 해당 프레임워크의 내장 데이터 페칭 메커니즘을 사용하세요.** 현대적인 React 프레임워크에는 위의 단점을 겪지 않는 효율적이고 통합적인 데이터 페칭 메커니즘이 포함되어 있습니다.
-- **그렇지 않은 경우 클라이언트 측 캐시를 사용하거나 구축하는 것을 고려하세요.** 인기 있는 오픈 소스 솔루션으로는 [React Query](https://tanstack.com/query/latest), [useSWR](https://swr.vercel.app/) 및 [React Router 6.4+](https://beta.reactrouter.com/en/main/start/overview)이 있습니다. 직접 솔루션을 구축할 수도 있으며 이 경우 Effect를 내부적으로 사용하면서 요청 중복을 제거하고 응답을 캐시하고 네트워크 폭포를 피하는 로직을 추가할 것입니다. (데이터를 사전에 로드하거나 데이터 요구 사항을 라우트)
+- **If you use a [framework](/learn/start-a-new-react-project#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
+- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [React Query](https://tanstack.com/query/latest), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood, but add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
 
 이러한 접근 방식 중 어느 것도 적합하지 않은 경우, Effect 내에서 데이터를 직접 가져오는 것을 계속하셔도 됩니다.
 
@@ -1004,7 +1004,7 @@ import { useEffect, useRef } from 'react';
 export default function MyInput({ value, onChange }) {
   const ref = useRef(null);
 
-  // TODO: 작동하지 않는다. 고쳐야함
+  // TODO: This doesn't quite work. Fix it.
   // ref.current.focus()
 
   return (
@@ -1468,6 +1468,7 @@ body {
 
 <Sandpack>
 
+{/* not the most efficient, but this validation is enabled in the linter only, so it's fine to ignore it here since we know what we're doing */}
 ```js src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
@@ -1541,6 +1542,7 @@ Effect가 비동기로 무언가를 가져오는 경우 일반적으로 클린�
 
 <Sandpack>
 
+{/* not the most efficient, but this validation is enabled in the linter only, so it's fine to ignore it here since we know what we're doing */}
 ```js src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
@@ -1605,4 +1607,3 @@ export async function fetchBio(person) {
 </Solution>
 
 </Challenges>
-

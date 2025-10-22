@@ -146,7 +146,7 @@ function UpdateName() {
 
 이렇게 하면 클라이언트의 액션으로 래핑하여 서버 함수의 `isPending` 상태에 접근할 수 있습니다.
 
-자세한 내용은 [`<form>` 외부에서 서버 함수 호출하기](/reference/rsc/use-server#calling-a-server-action-outside-of-form) 문서를 참조하세요.
+자세한 내용은 [`<form>` 외부에서 서버 함수 호출하기](/reference/rsc/use-server#calling-a-server-function-outside-of-form) 문서를 참조하세요.
 
 ### 서버 함수를 사용한 폼 액션 {/*using-server-functions-with-form-actions*/}
 

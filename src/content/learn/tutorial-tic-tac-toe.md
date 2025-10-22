@@ -288,9 +288,9 @@ CodeSandBox에는 세 가지 주요 구역이 있습니다.
 
 ![CodeSandBox의 초기 코드](../images/tutorial/react-starter-code-codesandbox.png)
 
-1. `App.js`, `index.js`, `style.css` 와 같은 파일 목록과 `public` 폴더가 있는 _파일_ 구역
-1. 선택한 파일의 소스 코드를 볼 수 있는 _코드 편집기_
-1. 작성한 코드가 어떻게 보이는지 확인할 수 있는 _브라우저_ 구역
+1. The _Files_ section with a list of files like `App.js`, `index.js`, `styles.css` in `src` folder and a folder called `public`
+1. The _code editor_ where you'll see the source code of your selected file
+1. The _browser_ section where you'll see how the code you've written will be displayed
 
 _파일_ 구역에서 `App.js` 파일을 선택하세요. _코드 편집기_ 에서 해당 파일의 내용이 있어야 합니다.
 

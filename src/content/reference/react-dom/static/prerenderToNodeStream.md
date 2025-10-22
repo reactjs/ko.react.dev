@@ -7,7 +7,7 @@ title: prerenderToNodeStream
 `prerenderToNodeStream`은 [Node.js Stream](https://nodejs.org/api/stream.html)을 사용하여 React 트리를 정적 HTML 문자열로 렌더링합니다.
 
 ```js
-const {prelude} = await prerenderToNodeStream(reactNode, options?)
+const {prelude, postponed} = await prerenderToNodeStream(reactNode, options?)
 ```
 
 </Intro>
@@ -62,10 +62,11 @@ app.use('/', async (request, response) => {
 
 #### 반환값 {/*returns*/}
 
-`prerenderToNodeStream` 는 Promise를 반환합니다.
-- 렌더링이 성공하면 Promise는 다음을 포함하는 객체로 해결됩니다.
-  - `prelude`: HTML의 [Node.js Stream](https://nodejs.org/api/stream.html)입니다. 이 스트림을 사용해 응답을 청크 단위로 전송하거나, 전체 스트림을 문자열로 읽을 수 있습니다.
-- 렌더링에 실패하면, Promise가 실패합니다. [이를 사용해 폴백 셸<sup>Fallback Shell</sup>을 출력하세요.](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)
+`prerenderToNodeStream` returns a Promise:
+- If rendering the is successful, the Promise will resolve to an object containing:
+  - `prelude`: a [Node.js Stream.](https://nodejs.org/api/stream.html) of HTML. You can use this stream to send a response in chunks, or you can read the entire stream into a string.
+  - `postponed`: a JSON-serializeable, opaque object that can be passed to [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream) if `prerenderToNodeStream` did not finish. Otherwise `null` indicating that the `prelude` contains all the content and no resume is necessary.
+- If rendering fails, the Promise will be rejected. [Use this to output a fallback shell.](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)
 
 #### 주의 사항 {/*caveats*/}
 
@@ -76,6 +77,8 @@ app.use('/', async (request, response) => {
 ### `prerenderToNodeStream`은 언제 사용해야 하나요? {/*when-to-use-prerender*/}
 
 정적 `prerenderToNodeStream` API는 정적 서버 사이드 생성(SSG)에 사용합니다. `renderToString`과 달리, `prerenderToNodeStream`은 모든 데이터가 로드될 때까지 기다린 후에 성공합니다. 이는 Suspense를 사용해 가져와야 하는 데이터를 포함해, 전체 페이지의 정적 HTML을 생성하는 데 적합합니다. 콘텐츠가 로드되는 동안 스트리밍하려면, [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)과 같은 스트리밍 서버 사이드 렌더링(SSR) API를 사용하세요.
+
+`prerenderToNodeStream` can be aborted and resumed later with `resumeToPipeableStream` to support partial pre-rendering.
 
 </Note>
 
@@ -311,7 +314,7 @@ async function renderToString() {
 
 불완전한 자식을 가진 모든 Suspense 경계는 풀백 상태로 Prelude에 포함됩니다.
 
----
+This can be used for partial prerendering together with [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream) or [`resumeAndPrerenderToNodeStream`](/reference/react-dom/static/resumeAndPrerenderToNodeStream).
 
 ## 문제 해결 {/*troubleshooting*/}
 

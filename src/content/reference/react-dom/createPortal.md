@@ -49,7 +49,7 @@ Portal은 DOM 노드의 물리적 배치만 변경합니다. 이외의 모든 �
 
 * `domNode` : `document.getElementById()`가 반환하는 것과 같은 일부 DOM 노드. 노드가 이미 존재해야 합니다. 업데이트 중에 다른 DOM 노드를 전달하면 Portal 콘텐츠가 다시 생성됩니다.
 
-* **Optional** `key`: Portal의 [`key`](/learn/rendering-lists/#keeping-list-items-in-order-with-key)로 사용할 고유한 문자열 또는 숫자입니다.
+* **optional** `key`: A unique string or number to be used as the portal's [key.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
 
 #### 반환값 {/*returns*/}
 

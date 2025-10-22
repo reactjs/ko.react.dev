@@ -26,7 +26,7 @@ Effect가 필요하지 않은 두 가지 일반적인 경우가 있습니다.
 * **렌더링을 위해 데이터를 변환하는 데 Effect가 필요하지 않습니다.** 예를 들어 리스트를 표시하기 전에 필터링하고 싶다고 가정해 보겠습니다. 리스트가 변경될 때 state 변수를 업데이트하는 Effect를 작성하고 싶을 수 있습니다. 하지만 이는 비효율적입니다. state를 업데이트할 때 React는 먼저 컴포넌트 함수를 호출해 화면에 표시될 내용을 계산합니다. 그런 다음 React는 이러한 변경 사항을 DOM에 ["commit"](/learn/render-and-commit)하여 화면을 업데이트합니다. 그리고 나서 React가 Effect를 실행합니다. 만약 Effect도 *즉시* state를 업데이트한다면 전체 프로세스가 처음부터 다시 시작됩니다! 불필요한 렌더링 패스를 피하려면, 컴포넌트의 최상위 레벨에서 모든 데이터를 변환하세요. 그러면 props나 state가 변경될 때마다 해당 코드가 자동으로 다시 실행됩니다.
 * **사용자 이벤트를 처리하는 데 Effect가 필요하지 않습니다.** 예를 들어 사용자가 제품을 구매할 때 `/api/buy` POST 요청을 전송하고 알림을 표시하고 싶다고 가정해 보겠습니다. 구매 버튼 클릭 이벤트 핸들러에서는 정확히 어떤 일이 일어났는지 알 수 있습니다. Effect가 실행될 때까지 사용자가 무엇을 했는지 (예: 어떤 버튼을 클릭 했는지) 알 수 없습니다. 그렇기 때문에 일반적으로 해당되는 이벤트 핸들러에서 사용자 이벤트를 처리합니다.
 
-외부 시스템과 [동기화](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events)하려면 Effect가 *반드시* 필요합니다. 예를 들어 jQuery 위젯이 React State와 동기화되도록 유지하는 Effect를 작성할 수 있습니다. Effect로 데이터를 가져올 수도 있습니다: 예를 들어 검색 결과를 현재 검색 쿼리와 동기화할 수 있습니다. 모던 [프레임워크](/learn/start-a-new-react-project#production-grade-react-frameworks)는 컴포넌트에 직접 Effect를 작성하는 것보다 더 효율적인 내장 데이터 가져오기 메커니즘을 제공한다는 점을 명심하세요.
+You *do* need Effects to [synchronize](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events) with external systems. For example, you can write an Effect that keeps a jQuery widget synchronized with the React state. You can also fetch data with Effects: for example, you can synchronize the search results with the current search query. Keep in mind that modern [frameworks](/learn/start-a-new-react-project#full-stack-frameworks) provide more efficient built-in data fetching mechanisms than writing Effects directly in your components.
 
 올바른 직관을 얻기 위해, 몇 가지 일반적이고 구체적인 예를 살펴봅시다!
 
@@ -94,6 +94,12 @@ function TodoList({ todos, filter }) {
 보통, 이 코드는 괜찮습니다! 하지만 `getFilteredTodos()`가 느리거나 `todos`가 많을 수도 있습니다. 이 경우 `newTodo`와 같이 관련 없는 state 변수가 변경된 경우 `getFilteredTodos()`를 다시 계산하고 싶지 않을 수 있습니다.
 
 [`useMemo`](/reference/react/useMemo) Hook으로 래핑해서 값비싼 계산을 캐시(또는 ["메모이제이션"](https://ko.wikipedia.org/wiki/메모이제이션)) 할 수 있습니다.
+
+<Note>
+
+[React Compiler](/learn/react-compiler) can automatically memoize expensive calculations for you, eliminating the need for manual `useMemo` in many cases.
+
+</Note>
 
 ```js {5-8}
 import { useMemo, useState } from 'react';
@@ -752,7 +758,7 @@ function SearchResults({ query }) {
 
 데이터 가져오기를 구현할 때 경쟁 조건을 처리하는 것만이 어려운 것은 아닙니다. 응답 캐싱(사용자가 뒤로가기 버튼을 클릭하여 이전 화면을 즉시 볼 수 있도록), 서버에서 데이터를 가져오는 방법(초기 서버 렌더링 HTML에 스피너 대신 가져온 콘텐츠가 포함되도록), 네트워크 워터폴을 피하는 방법(자식이 모든 부모를 기다리지 않고 데이터를 가져올 수 있도록)도 고려해야 합니다.
 
-**이러한 문제는 React뿐만 아니라 모든 UI 라이브러리에 적용됩니다. 이러한 문제를 해결하는 것은 간단하지 않기 때문에 모던 [프레임워크](/learn/start-a-new-react-project#production-grade-react-frameworks)는 Effect에서 데이터를 가져오는 것보다 더 효율적인 내장 데이터 가져오기 메커니즘을 제공합니다.**
+**These issues apply to any UI library, not just React. Solving them is not trivial, which is why modern [frameworks](/learn/start-a-new-react-project#full-stack-frameworks) provide more efficient built-in data fetching mechanisms than fetching data in Effects.**
 
 프레임워크를 사용하지 않고(그리고 직접 빌드하고 싶지 않고) Effect에서 데이터를 보다 인체공학적으로 가져오고 싶다면 이 예시처럼 가져오기 로직을 사용자 정의 Hook으로 추출하는 것을 고려하세요.
 

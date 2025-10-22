@@ -36,9 +36,9 @@ title: "<form>"
 
 #### Props {/*props*/}
 
-`<form>`은 모든 [공통 엘리먼트 Props](/reference/react-dom/components/common#props)를 지원합니다.
+`<form>`은 모든 [공통 엘리먼트 Props](/reference/react-dom/components/common#common-props)를 지원합니다.
 
-[`action`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action): URL 혹은 함수. URL을 `action`을 통해 전달하면, 폼은 HTML 폼 컴포넌트처럼 동작합니다. 함수를 `action`을 통해 전달하면, 해당 함수는 폼 제출을 처리합니다. `action`을 통한 함수는 비동기로 동작할 수 있으며, 폼을 통해 제출된 [`formData`](https://developer.mozilla.org/ko/docs/Web/API/FormData)를 포함한 단일 인수로 호출됩니다. `action`의 프로퍼티는 `formAction`의 속성인 `<button>`, `<input type="submit">`, 혹은 `<input type="image">`로 재정의될 수 있습니다.
+[`action`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action): a URL or function. When a URL is passed to `action` the form will behave like the HTML form component. When a function is passed to `action` the function will handle the form submission in a Transition following [the Action prop pattern](/reference/react/useTransition#exposing-action-props-from-components). The function passed to `action` may be async and will be called with a single argument containing the [form data](https://developer.mozilla.org/en-US/docs/Web/API/FormData) of the submitted form. The `action` prop can be overridden by a `formAction` attribute on a `<button>`, `<input type="submit">`, or `<input type="image">` component.
 
 #### 주의 사항 {/*caveats*/}
 
@@ -232,7 +232,8 @@ export async function deliverMessage(message) {
 
 </Sandpack>
 
-`useOptimistic` Hook에 대해 더 알고 싶다면 [참고 문서](/reference/react/useOptimistic)를 확인하세요.
+[//]: # 'Uncomment the next line, and delete this line after the `useOptimistic` reference documentation page is published'
+[//]: # 'To learn more about the `useOptimistic` Hook see the [reference documentation](/reference/react/useOptimistic).'
 
 ### 폼 제출 오류 처리하기 {/*handling-form-submission-errors*/}
 
@@ -280,9 +281,9 @@ export default function Search() {
 
 점진적 향상을 위해 자바스크립트 번들이 로드되기 전 오류 메시지를 보여주기 위해 다음 요소들이 지켜져야 합니다.
 
-1. `<form>`이 [서버 컴포넌트](/reference/rsc/use-client)에서 렌더링.
-2. `<form>`의 `action` 프로퍼티로 전달된 함수가 [서버 함수](/reference/rsc/server-functions).
-3. `useActionState` Hook이 오류 메시지를 보여주기 위해 사용.
+1. `<form>` be rendered by a [Client Component](/reference/rsc/use-client)
+1. the function passed to the `<form>`'s `action` prop be a [Server Function](/reference/rsc/server-functions)
+1. the `useActionState` Hook be used to display the error message
 
 `useActionState`는 [서버 함수](/reference/rsc/use-server)와 초기 State라는 두 개의 매개변수를 가집니다. `useActionState`는 State 변수와 액션이라는 두 개의 값을 반환합니다. `useActionState`를 통해 반환된 액션은 폼의 `action` 프로퍼티에 전달될 수 있습니다. `useActionState`를 통해 반환된 상태 변수는 오류 메시지를 보여주는 데 사용됩니다. `useActionState`에 전달된 [서버 함수](/reference/rsc/server-functions)에서 반환된 값은 State 변수를 업데이트하는 데 사용됩니다.
 

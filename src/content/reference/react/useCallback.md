@@ -12,6 +12,12 @@ const cachedFn = useCallback(fn, dependencies)
 
 </Intro>
 
+<Note>
+
+[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useCallback` calls. You can use the compiler to handle memoization automatically.
+
+</Note>
+
 <InlineToc />
 
 ---
@@ -201,7 +207,7 @@ function ProductPage({ productId, referrer }) {
 이미 [`useMemo`](/reference/react/useMemo)에 익숙하다면 `useCallback`을 다음과 같이 생각하는 것이 도움이 될 수 있습니다.
 
 ```js
-// (React 내부의) 간단한 구현
+// (React 내부의) 단순화된 구현 형태
 function useCallback(fn, dependencies) {
   return useMemo(() => fn, dependencies);
 }

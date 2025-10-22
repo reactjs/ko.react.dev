@@ -162,23 +162,137 @@ React는 브라우저에 내장된 모든 HTML 컴포넌트를 지원합니다. 
 
 ### 커스텀 HTML 요소 {/*custom-html-elements*/}
 
-`<my-element>`같이 대시<sup>Dash</sup>가 포함된 태그를 렌더링하면 React는 [커스텀 HTML 요소](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)를 렌더링한다고 가정합니다. React에서 커스텀 요소를 렌더링하는 방법은 브라우저 내장 태그를 렌더링하는 방법과 다릅니다.
-
-- 모든 커스텀 요소 Props는 문자열로 직렬화되며 항상 어트리뷰트를 사용하여 설정됩니다.
-- 커스텀 엘리먼트는 `class` 대신 `className`을 사용하고 `for` 대신 `htmlFor`를 사용합니다.
+If you render a tag with a dash, like `<my-element>`, React will assume you want to render a [custom HTML element.](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
 
 [`is`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/is) 어트리뷰트를 사용하여 브라우저 내장 HTML 요소를 렌더링하면 커스텀 엘리먼트로 취급됩니다.
 
+#### Setting values on custom elements {/*attributes-vs-properties*/}
+
+Custom elements have two methods of passing data into them:
+
+1) Attributes: Which are displayed in markup and can only be set to string values
+2) Properties: Which are not displayed in markup and can be set to arbitrary JavaScript values
+
+By default, React will pass values bound in JSX as attributes:
+
+```jsx
+<my-element value="Hello, world!"></my-element>
+```
+
+Non-string JavaScript values passed to custom elements will be serialized by default:
+
+```jsx
+// Will be passed as `"1,2,3"` as the output of `[1,2,3].toString()`
+<my-element value={[1,2,3]}></my-element>
+```
+
+React will, however, recognize an custom element's property as one that it may pass arbitrary values to if the property name shows up on the class during construction:
+
+<Sandpack>
+
+```js src/index.js hidden
+import {MyElement} from './MyElement.js';
+import { createRoot } from 'react-dom/client';
+import {App} from "./App.js";
+
+customElements.define('my-element', MyElement);
+
+const root = createRoot(document.getElementById('root'))
+root.render(<App />);
+```
+
+```js src/MyElement.js active
+export class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    // The value here will be overwritten by React 
+    // when initialized as an element
+    this.value = undefined;
+  }
+
+  connectedCallback() {
+    this.innerHTML = this.value.join(", ");
+  }
+}
+```
+
+```js src/App.js
+export function App() {
+  return <my-element value={[1,2,3]}></my-element>
+}
+```
+
+</Sandpack>
+
+#### Listening for events on custom elements {/*custom-element-events*/}
+
+A common pattern when using custom elements is that they may dispatch [`CustomEvent`s](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) rather than accept a function to call when an event occur. You can listen for these events using an `on` prefix when binding to the event via JSX.
+
+<Sandpack>
+
+```js src/index.js hidden
+import {MyElement} from './MyElement.js';
+import { createRoot } from 'react-dom/client';
+import {App} from "./App.js";
+
+customElements.define('my-element', MyElement);
+
+const root = createRoot(document.getElementById('root'))
+root.render(<App />);
+```
+
+```javascript src/MyElement.js
+export class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    this.test = undefined;
+    this.emitEvent = this._emitEvent.bind(this);
+  }
+
+  _emitEvent() {
+    const event = new CustomEvent('speak', {
+      detail: {
+        message: 'Hello, world!',
+      },
+    });
+    this.dispatchEvent(event);
+  }
+
+  connectedCallback() {
+    this.el = document.createElement('button');
+    this.el.innerText = 'Say hi';
+    this.el.addEventListener('click', this.emitEvent);
+    this.appendChild(this.el);
+  }
+
+  disconnectedCallback() {
+    this.el.removeEventListener('click', this.emitEvent);
+  }
+}
+```
+
+```jsx src/App.js active
+export function App() {
+  return (
+    <my-element
+      onspeak={e => console.log(e.detail.message)}
+    ></my-element>
+  )
+}
+```
+
+</Sandpack>
+
 <Note>
 
-[향후 React 버전에는 커스텀 엘리먼트에 대한 더 포괄적인 지원을 제공할 예정입니다.](https://github.com/facebook/react/issues/11347#issuecomment-1122275286)
+Events are case-sensitive and support dashes (`-`). Preserve the casing of the event and include all dashes when listening for custom element's events:
 
-React 패키지를 최신 실험 버전으로 업그레이드하여 사용해 볼 수 있습니다.
-
-- `react@experimental`
-- `react-dom@experimental`
-
-React 실험 버전은 버그가 있을 수 있습니다. 프로덕션 환경에서 사용하지 마세요.
+```jsx
+// Listens for `say-hi` events
+<my-element onsay-hi={console.log}></my-element>
+// Listens for `sayHi` events
+<my-element onsayHi={console.log}></my-element>
+```
 
 </Note>
 ---

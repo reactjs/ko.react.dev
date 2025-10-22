@@ -1,21 +1,15 @@
 ---
 title: <ViewTransition>
-version: experimental
+version: canary
 ---
 
-<Experimental>
+<Canary>
 
-**이 API는 실험적이며 아직 React의 안정 버전에서 사용할 수 없습니다.**
+**The `<ViewTransition />` API is currently only available in React’s Canary and Experimental channels.** 
 
-React 패키지를 최신 실험적 버전으로 업그레이드하여 시도해볼 수 있습니다.
+[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
 
-- `react@experimental`
-- `react-dom@experimental`
-- `eslint-plugin-react-hooks@experimental`
-
-React의 실험적 버전에는 버그가 포함될 수 있습니다. 프로덕션 환경에서는 사용하지 마세요.
-
-</Experimental>
+</Canary>
 
 <Intro>
 
@@ -23,7 +17,7 @@ React의 실험적 버전에는 버그가 포함될 수 있습니다. 프로덕�
 
 
 ```js
-import {unstable_ViewTransition as ViewTransition} from 'react';
+import {ViewTransition} from 'react';
 
 <ViewTransition>
   <div>...</div>
@@ -143,10 +137,10 @@ View Transition 클래스는 ViewTransition이 활성화될 때 Transition 중�
 
 #### 주의 사항 {/*caveats*/}
 
-- 기본적으로 `setState` 업데이트는 즉시 이루어지며 `<ViewTransition>`을 활성화하지 않습니다. [Transition](/reference/react/useTransition)으로 감싼 업데이트만 해당됩니다. [`<Suspense>`](/reference/react/Suspense)를 사용하여 Transition을 선택하여 [콘텐츠를 표시](/link-to-suspense-below)할 수도 있습니다.
-- `<ViewTransition>`은 이동, 확대/축소, 크로스 페이드할 수 있는 이미지를 생성합니다. React Native나 Motion에서 본 레이아웃 애니메이션과 달리 내부의 모든 개별 엘리먼트가 위치에 애니메이션되지는 않습니다. 이는 더 나은 성능과 개별 부분을 애니메이션하는 것과 비교하여 더 연속적이고 부드러운 애니메이션 느낌을 줄 수 있습니다. 그러나 스스로 움직여야 하는 것들의 연속성을 잃을 수도 있습니다. 결과적으로 더 많은 `<ViewTransition>` 경계를 수동으로 추가해야 할 수 있습니다.
-- 많은 사용자가 페이지에서 애니메이션을 선호하지 않을 수 있습니다. React는 이 경우 애니메이션을 자동으로 비활성화하지 않습니다. 사용자 선호도에 따라 `@media (prefers-reduced-motion)` 미디어 쿼리를 사용하여 애니메이션을 비활성화하거나 약하게 만드는 것을 권장합니다. 향후 CSS 라이브러리에서는 프리셋에 이것이 내장되어 있을 수 있습니다.
-- 현재 `<ViewTransition>`은 DOM에서만 작동합니다. React Native 및 다른 플랫폼에 대한 지원을 추가하는 작업을 진행하고 있습니다.
+- By default, `setState` updates immediately and does not activate `<ViewTransition>`, only updates wrapped in a [Transition](/reference/react/useTransition). You can also use [`<Suspense>`](/reference/react/Suspense) to opt-in to a Transition to [reveal content](/reference/react/Suspense#revealing-content-together-at-once).
+- `<ViewTransition>` creates an image that can be moved around, scaled and cross-faded. Unlike Layout Animations you may have seen in React Native or Motion, this means that not every individual Element inside of it animates its position. This can lead to better performance and a more continuous feeling, smooth animation compared to animating every individual piece. However, it can also lose continuity in things that should be moving by themselves. So you might have to add more `<ViewTransition>` boundaries manually as a result.
+- Many users may prefer not having animations on the page. React doesn't automatically disable animations for this case. We recommend that using the `@media (prefers-reduced-motion)` media query to disable animations or tone them down based on user preference. In the future, CSS libraries may have this built-in to their presets.
+- Currently, `<ViewTransition>` only works in the DOM. We're working on adding support for React Native and other platforms.
 
 ---
 
@@ -159,7 +153,11 @@ Enter/Exit Transition은 `<ViewTransition>`이 Transition에서 컴포넌트에 
 
 ```js
 function Child() {
-  return <ViewTransition>Hi</ViewTransition>
+  return (
+    <ViewTransition>
+      <div>Hi</div>
+    </ViewTransition>
+  );
 }
 
 function Parent() {
@@ -208,7 +206,7 @@ export function Video({ video }) {
 
 ```js
 import {
-  unstable_ViewTransition as ViewTransition,
+  ViewTransition,
   useState,
   startTransition
 } from 'react';
@@ -337,8 +335,8 @@ button:hover {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   }
 }
@@ -352,11 +350,7 @@ button:hover {
 
 ```js [3, 5]
 function Component() {
-  return (
-    <div>
-      <ViewTransition>Hi</ViewTransition>
-    </div>
-  );
+  return <ViewTransition>Hi</ViewTransition>;
 }
 ```
 
@@ -383,7 +377,7 @@ Transition이 먼저 한쪽을 마운트 해제하고 새로운 이름이 마운
 
 ```js
 import {
-  unstable_ViewTransition as ViewTransition,
+  ViewTransition,
   useState,
   startTransition
 } from "react";
@@ -407,7 +401,7 @@ export default function Component() {
 ```
 
 ```js src/Video.js
-import {unstable_ViewTransition as ViewTransition} from "react";
+import {ViewTransition} from "react";
 
 const THUMBNAIL_NAME = "video-thumbnail"
 
@@ -519,7 +513,6 @@ button:hover {
   background-image: conic-gradient(at top right, #c76a15, #a6423a, #2b3491);
 }
 .thumbnail.fullscreen {
-  height: 100%;
   width: 100%;
 }
 .video {
@@ -582,8 +575,8 @@ button:hover {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   }
 }
@@ -664,7 +657,7 @@ export function Video({ video }) {
 
 ```js
 import {
-  unstable_ViewTransition as ViewTransition,
+  ViewTransition,
   useState,
   startTransition
 } from "react";
@@ -822,8 +815,8 @@ button:hover {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   }
 }
@@ -870,7 +863,7 @@ export function Video({ video }) {
 
 ```js
 import {
-  unstable_ViewTransition as ViewTransition,
+  ViewTransition,
   useState,
   startTransition
 } from "react";
@@ -1026,8 +1019,8 @@ button:hover {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   }
 }
@@ -1119,7 +1112,7 @@ export function VideoPlaceholder() {
 
 ```js
 import {
-  unstable_ViewTransition as ViewTransition,
+  ViewTransition,
   useState,
   startTransition,
   Suspense
@@ -1291,8 +1284,8 @@ button:hover {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   }
 }
@@ -1392,7 +1385,7 @@ export function Video({ video }) {
 
 ```js
 import {
-  unstable_ViewTransition as ViewTransition,
+  ViewTransition,
   useState,
   startTransition
 } from 'react';
@@ -1529,8 +1522,8 @@ button:hover {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   }
 }
@@ -1573,7 +1566,7 @@ export function Video({ video }) {
 
 ```js
 import {
-  unstable_ViewTransition as ViewTransition,
+  ViewTransition,
   useState,
   startTransition
 } from 'react';
@@ -1781,8 +1774,8 @@ button:hover {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   }
 }
@@ -1845,8 +1838,8 @@ export function Video({ video }) {
 
 ```js
 import {
-  unstable_ViewTransition as ViewTransition,
-  unstable_addTransitionType as addTransitionType,
+  ViewTransition,
+  addTransitionType,
   useState,
   startTransition,
 } from "react";
@@ -2110,8 +2103,8 @@ button:hover {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   }
 }
@@ -2131,7 +2124,7 @@ button:hover {
 
 ### `<ViewTransition>`이 활성화되지 않습니다 {/*my-viewtransition-is-not-activating*/}
 
-`<ViewTransition>`은 DOM 노드보다 앞에 배치되어야만 활성화됩니다.
+`<ViewTransition>` only activates if it is placed before any DOM node:
 
 ```js [3, 5]
 function Component() {

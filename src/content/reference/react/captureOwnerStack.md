@@ -57,7 +57,7 @@ Owner Stack을 사용할 수 없는 경우, `null`을 반환합니다. ([문제�
 
 #### Owner Stack vs Component Stack {/*owner-stack-vs-component-stack*/}
 
-Owner Stack은 [`onUncaughtError` 내부의 `errorInfo.componentStack`](/reference/react-dom/client/hydrateRoot#show-a-dialog-for-uncaught-errors)과 같은 React 오류 핸들러에서 사용할 수 있는 컴포넌트 Stack과 다릅니다.
+The Owner Stack is different from the Component Stack available in React error handlers like [`errorInfo.componentStack` in `onUncaughtError`](/reference/react-dom/client/hydrateRoot#error-logging-in-production).
 
 예를 들어 다음 코드를 살펴보겠습니다.
 
