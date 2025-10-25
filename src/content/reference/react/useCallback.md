@@ -234,11 +234,11 @@ function useCallback(fn, dependencies) {
 
 **실제로 몇 가지 원칙을 따르면 많은 memoization을 불필요하게 만들 수 있습니다.**
 
-1. 컴포넌트가 다른 컴포넌트를 시각적으로 감싸고 있다면 [JSX를 자식으로 받게](/learn/passing-props-to-a-component#passing-jsx-as-children) 하세요. 감싸는 컴포넌트가 자신의 상태를 업데이트하면, React는 자식들은 리렌더링할 필요가 없다는 것을 알게 됩니다.
-1. 가능한 한 로컬 상태를 선호하고, [컴포넌트 간 상태 공유](/learn/sharing-state-between-components)를 필요 이상으로 하지 마세요. 폼이나 항목이 호버되었는지와 같은 일시적인 상태를 트리의 상단이나 전역 상태 라이브러리에 유지하지 마세요.
-1. [렌더링 로직을 순수하게 유지](/learn/keeping-components-pure)하세요. 컴포넌트를 리렌더링하는 것이 문제를 일으키거나 눈에 띄는 시각적인 형체를 생성한다면, 그것은 컴포넌트의 버그입니다! memoization을 추가하는 대신 버그를 해결하세요.
-1. [상태를 업데이트하는 불필요한 Effects](/learn/you-might-not-need-an-effect)를 피하세요. React 앱에서 대부분의 성능 문제는 Effects로부터 발생한 연속된 업데이트가 컴포넌트를 계속해서 렌더링하는 것이 원인입니다.
-1. [Effects에서 불필요한 의존성을 제거](/learn/removing-effect-dependencies)하세요. 예를 들어, memoization 대신 객체나 함수를 Effect 안이나 컴포넌트 외부로 이동시키는 것이 더 간단한 경우가 많습니다.
+1. 컴포넌트가 다른 컴포넌트를 시각적으로 감싸고 있다면 [JSX를 자식으로 받게](/learn/passing-props-to-a-component#passing-jsx-as-children) 하세요. 감싸는 컴포넌트가 자신의 State를 업데이트하면, React는 자식들은 리렌더링할 필요가 없다는 것을 알게 됩니다.
+1. 가능한 한 로컬 State를 선호하고, [컴포넌트 간 상태 공유](/learn/sharing-state-between-components)를 필요 이상으로 하지 마세요. 폼이나 항목이 호버되었는지와 같은 일시적인 State를 트리의 상단이나 전역 State 라이브러리에 유지하지 마세요.
+1. [렌더링 로직을 순수하게 유지](/learn/keeping-components-pure)하세요. 컴포넌트를 리렌더링하는 것이 문제를 일으키거나 눈에 띄는 시각적인 형체를 생성한다면, 그것은 컴포넌트의 버그입니다! Memoization을 추가하는 대신 버그를 해결하세요.
+1. [State를 업데이트하는 불필요한 Effect](/learn/you-might-not-need-an-effect)를 피하세요. React 앱에서 대부분의 성능 문제는 Effect로부터 발생한 연속된 업데이트가 컴포넌트를 계속해서 렌더링하는 것이 원인입니다.
+1. [Effect에서 불필요한 의존성을 제거](/learn/removing-effect-dependencies)하세요. 예를 들어, Memoization 대신 객체나 함수를 Effect 안이나 컴포넌트 외부로 이동시키는 것이 더 간단한 경우가 많습니다.
 
 만약 특정 상호작용이 여전히 느리게 느껴진다면, [React Developer Tools profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)를 사용하여, 어떤 컴포넌트가 memoization을 가장 필요로 하는지 살펴보고, 필요한 곳에 memoization을 추가하세요. 이런 원칙들은 컴포넌트를 더 쉽게 디버깅하고 이해할 수 있도록 해주기 때문에 어떤 경우라도 따르는 것이 좋습니다. 장기적으로 이러한 문제를 해결하기 위해 우리는 [memoization을 자동화하는 기술](https://www.youtube.com/watch?v=lGEMwh32soc)을 연구하고 있습니다.
 
