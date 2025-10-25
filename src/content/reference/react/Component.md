@@ -206,11 +206,7 @@ constructor는 부수 효과 또는 구독을 포함하면 안됩니다.
 
 `componentDidCatch`를 정의하면, 일부 자식 컴포넌트(먼 자식을 포함)가 에러를 발생시킬 때 React가 이를 호출합니다. 이를 통해 운영 중인 에러 보고 서비스에 에러를 기록할 수 있습니다.
 
-<<<<<<< HEAD
-일반적으로, 에러에 대한 응답으로 state를 업데이트하고 사용자에게 에러 메시지를 표시할 수 있는 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)와 함께 사용됩니다. 이런 여러 메서드를 사용하는 컴포넌트를 *error boundary*라고 합니다.
-=======
-Typically, it is used together with [`static getDerivedStateFromError`](#static-getderivedstatefromerror) which lets you update state in response to an error and display an error message to the user. A component with these methods is called an *Error Boundary*.
->>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
+일반적으로, 에러에 대한 응답으로 State를 업데이트하고 사용자에게 에러 메시지를 표시할 수 있는 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)와 함께 사용합니다. 이런 여러 메서드를 사용하는 컴포넌트를 *Error Boundary*라고 합니다.
 
 [예시를 확인하세요.](#catching-rendering-errors-with-an-error-boundary)
 
@@ -936,11 +932,7 @@ class Button extends Component {
 
 `static getDerivedStateFromError`를 정의하면 렌더링 도중 자식 컴포넌트(멀리 떨어진 자식 포함)가 에러를 throw 할 때 React가 이를 호출합니다. 이렇게 하면 UI를 지우는 대신 오류 메시지를 표시할 수 있습니다.
 
-<<<<<<< HEAD
-일반적으로 일부 분석 서비스에 오류 보고서를 보낼 수 있는 [`componentDidCatch`](#componentdidcatch)와 함께 사용됩니다. 이러한 메서드가 있는 컴포넌트를 *error boundary* 라고 합니다.
-=======
-Typically, it is used together with [`componentDidCatch`](#componentdidcatch) which lets you send the error report to some analytics service. A component with these methods is called an *Error Boundary*.
->>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
+일반적으로 일부 분석 서비스에 오류 보고서를 보낼 수 있는 [`componentDidCatch`](#componentdidcatch)와 함께 사용합니다. 이러한 메서드가 있는 컴포넌트를 *Error Boundary* 라고 합니다.
 
 [예시를 확인하세요.](#catching-rendering-errors-with-an-error-boundary)
 
@@ -1275,19 +1267,11 @@ button { margin-left: 10px; }
 
 ---
 
-<<<<<<< HEAD
-### error boundary로 렌더링 오류 포착하기 {/*catching-rendering-errors-with-an-error-boundary*/}
+### Error Boundary로 렌더링 오류 포착하기 {/*catching-rendering-errors-with-an-error-boundary*/}
 
-기본적으로 애플리케이션이 렌더링 도중 에러를 발생시키면 React는 화면에서 해당 UI를 제거합니다. 이를 방지하기 위해 UI의 일부를 *error boundary*로 감싸면 됩니다. error boundary는 에러가 발생한 부분 대신 오류 메시지와 같은 fallback UI를 표시할 수 있는 특수 컴포넌트입니다.
+기본적으로 애플리케이션이 렌더링 도중 에러를 발생시키면 React는 화면에서 해당 UI를 제거합니다. 이를 방지하기 위해 UI의 일부를 *Error Boundary*로 감싸면 됩니다. Error Boundary는 에러가 발생한 부분 대신 오류 메시지와 같은 Fallback UI를 표시할 수 있는 특수 컴포넌트입니다.
 
-error boundary 컴포넌트를 구현하려면 오류에 대한 응답으로 state를 업데이트하고 사용자에게 오류 메시지를 표시할 수 있는 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)를 제공해야 합니다. 또한 선택적으로 [`componentDidCatch`](#componentdidcatch)를 구현하여 분석 서비스에 오류를 기록하는 등의 추가 로직을 추가할 수도 있습니다.
-=======
-### Catching rendering errors with an Error Boundary {/*catching-rendering-errors-with-an-error-boundary*/}
-
-By default, if your application throws an error during rendering, React will remove its UI from the screen. To prevent this, you can wrap a part of your UI into an *Error Boundary*. An Error Boundary is a special component that lets you display some fallback UI instead of the part that crashed--for example, an error message.
-
-To implement an Error Boundary component, you need to provide [`static getDerivedStateFromError`](#static-getderivedstatefromerror) which lets you update state in response to an error and display an error message to the user. You can also optionally implement [`componentDidCatch`](#componentdidcatch) to add some extra logic, for example, to log the error to an analytics service.
->>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
+Error Boundary 컴포넌트를 구현하려면 오류에 대한 응답으로 State를 업데이트하고 사용자에게 오류 메시지를 표시할 수 있는 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)를 제공해야 합니다. 또한 선택적으로 [`componentDidCatch`](#componentdidcatch)를 구현하여 분석 서비스에 오류를 기록하는 등의 추가 로직을 추가할 수도 있습니다.
 
 With [`captureOwnerStack`](/reference/react/captureOwnerStack) you can include the Owner Stack during development.
 
@@ -1340,19 +1324,11 @@ class ErrorBoundary extends React.Component {
 
 `Profile` 또는 그 하위 컴포넌트가 오류를 발생시키면 `ErrorBoundary`가 해당 오류를 "포착"하고 사용자가 제공한 오류 메시지와 함께 fallback UI를 표시한 다음 프로덕션 오류 보고서를 오류 보고 서비스에 전송합니다.
 
-<<<<<<< HEAD
-모든 컴포넌트를 별도의 error boundary로 묶을 필요는 없습니다. [error boundary의 세분화](https://www.brandondail.com/posts/fault-tolerance-react)를 고려할 때는 오류 메시지를 표시하는 것이 적절한 위치를 고려하세요. 예를 들어 메시징 앱의 경우 error boundary를 대화 목록 주위에 위치시키는 것이 좋습니다. 또한 모든 개별 메시지 주위에 위치시키는 것도 좋습니다. 하지만 모든 아바타 주위에 boundary를 위치시키는 것은 적절하지 않습니다.
+모든 컴포넌트를 별도의 Error Boundary로 묶을 필요는 없습니다. [Error Boundary의 세분화](https://www.brandondail.com/posts/fault-tolerance-react)를 고려할 때는 오류 메시지를 표시하는 것이 적절한 위치를 고려하세요. 예를 들어 메시징 앱의 경우 Error Boundary를 대화 목록 주위에 위치시키는 것이 좋습니다. 또한 모든 개별 메시지 주위에 위치시키는 것도 좋습니다. 하지만 모든 아바타 주위에 Boundary를 위치시키는 것은 적절하지 않습니다.
 
 <Note>
 
-현재 error boundary를 함수 컴포넌트로 작성할 수 있는 방법은 없습니다. 하지만 error boundary 클래스를 직접 작성할 필요는 없습니다. 예를 들어 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary)를 대신 사용할 수 있습니다.
-=======
-You don't need to wrap every component into a separate Error Boundary. When you think about the [granularity of Error Boundaries,](https://www.brandondail.com/posts/fault-tolerance-react) consider where it makes sense to display an error message. For example, in a messaging app, it makes sense to place an Error Boundary around the list of conversations. It also makes sense to place one around every individual message. However, it wouldn't make sense to place a boundary around every avatar.
-
-<Note>
-
-There is currently no way to write an Error Boundary as a function component. However, you don't have to write the Error Boundary class yourself. For example, you can use [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary) instead.
->>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
+현재 Error Boundary를 함수 컴포넌트로 작성할 수 있는 방법은 없습니다. 하지만 Error Boundary 클래스를 직접 작성할 필요는 없습니다. 예를 들어 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary)를 대신 사용할 수 있습니다.
 
 </Note>
 
