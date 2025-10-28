@@ -278,8 +278,8 @@ export function HomeContent() {
               라우팅이나 데이터를 가져오는 방법을 규정하지는 않습니다. React로
               완전한 앱을 만들려면,{' '}
               <Link href="https://nextjs.org">Next.js</Link> 또는{' '}
-              <Link href="https://remix.run">Remix</Link> 같은 풀스택 React
-              프레임워크를 추천합니다.
+              <Link href="https://reactrouter.com">React Router</Link> 같은
+              풀스택 React 프레임워크를 추천합니다.
             </Para>
           </Center>
           <FullBleed>

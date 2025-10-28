@@ -20,10 +20,10 @@ export function ReloadButton({onReload}: ReloadButtonProps) {
     <button
       className="text-sm text-primary dark:text-primary-dark inline-flex items-center hover:text-link duration-100 ease-in transition mx-1"
       onClick={onReload}
-      title="Keep your edits and reload sandbox"
+      title="편집 내용을 유지하고 샌드박스를 새로고침합니다."
       type="button">
       <IconRestart className="inline mx-1 relative" />
-      <span className="hidden md:block">Reload</span>
+      <span className="hidden md:block">새로고침</span>
     </button>
   );
 }
