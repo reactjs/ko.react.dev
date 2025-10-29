@@ -138,7 +138,7 @@ View Transition 클래스는 ViewTransition이 활성화될 때 Transition 중�
 #### 주의 사항 {/*caveats*/}
 
 - 기본적으로 `setState`는 즉시 업데이트되며 `<ViewTransition>`을 활성화하지 않습니다. [Transition](/reference/react/useTransition)으로 감싼 업데이트만 활성화됩니다. `<Suspense>`](/reference/react/Suspense)를 사용하여 Transition을 선택적으로 적용하고 [콘텐츠를 한 번에 표시](/reference/react/Suspense#revealing-content-together-at-once)할 수도 있습니다.
-- `<ViewTransition>`은 이동, 크기 조정 및 크로스페이드가 가능한 이미지를 생성합니다. React Native나 Motion에서 볼 수 있는 레이아웃 애니메이션과 달리, 내부의 모든 개별 요소가 위치를 애니메이션하는 것이 아닙니다. 이는 모든 개별 요소를 애니메이션하는 것에 비해 더 나은 성능과 더 연속적이고 부드러운 애니메이션을 제공할 수 있습니다. 하지만 독립적으로 움직여야 하는 요소들의 연속성을 잃을 수도 있습니다. 따라서 수동으로 더 많은 `<ViewTransition>` 경계를 추가해야 할 수 있습니다.
+- `<ViewTransition>`은 이동, 크기 조정 및 크로스-페이드가 가능한 이미지를 생성합니다. React Native나 Motion에서 볼 수 있는 레이아웃 애니메이션과 달리, 내부의 모든 개별 요소가 위치를 애니메이션하는 것이 아닙니다. 이는 모든 개별 요소를 애니메이션하는 것에 비해 더 나은 성능과 더 연속적이고 부드러운 애니메이션을 제공할 수 있습니다. 하지만 독립적으로 움직여야 하는 요소들의 연속성을 잃을 수도 있습니다. 따라서 수동으로 더 많은 `<ViewTransition>` 경계를 추가해야 할 수 있습니다.
 - 많은 사용자가 페이지의 애니메이션을 선호하지 않을 수 있습니다. React는 이 경우에 대해 자동으로 애니메이션을 비활성화하지 않습니다. 사용자 선호도에 따라 애니메이션을 비활성화하거나 줄이기 위해 `@media (prefers-reduced-motion)` 미디어 쿼리를 사용할 것을 권장합니다. 향후 CSS 라이브러리에서 프리셋에 이 기능이 내장될 수 있습니다.
 - 현재 `<ViewTransition>`은 DOM에서만 작동합니다. React Native 및 기타 플랫폼에 대한 지원을 추가하기 위해 작업 중입니다.
 
