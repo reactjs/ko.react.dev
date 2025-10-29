@@ -60,7 +60,7 @@ _[React 컴파일러 Playground](https://playground.react.dev/#N4Igzg9grgTgxgUxA
 
 자동 메모이제이션 외에도 React 컴파일러는 React 코드에 대해 실행되는 유효성 검사 패스를 가지고 있습니다. 이 패스는 [React의 규칙](/reference/rules)을 인코딩하고, 컴파일러의 데이터 흐름 및 가변성에 대한 이해를 사용하여 React의 규칙이 깨진 부분에 대한 진단을 제공합니다. 이러한 진단은 종종 React 코드에 숨어있는 잠재적인 버그를 노출하며, 주로 `eslint-plugin-react-hooks`를 통해 표시됩니다.
 
-컴파일러가 코드를 최적화하는 방법에 대해 더 자세히 알아보려면 [Playground](https.playground.react.dev)를 방문하세요.
+컴파일러가 코드를 최적화하는 방법에 대해 더 자세히 알아보려면 [Playground](https://playground.react.dev)를 방문하세요.
 
 </DeepDive>
 
