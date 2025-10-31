@@ -12,18 +12,11 @@ React는 JSX에서 사용할 수 있는 몇 가지 내장 컴포넌트를 제공
 
 ## 내장 컴포넌트 {/*built-in-components*/}
 
-<<<<<<< HEAD
 * [`<Fragment>`](/reference/react/Fragment) 또는 `<>...</>` 로 표기하며, 여러 JSX 노드를 함께 그룹화할 수 있습니다.
 * [`<Profiler>`](/reference/react/Profiler)를 통해 React 트리의 렌더링 성능을 프로그래밍 방식으로 측정할 수 있습니다.
 * [`<StrictMode>`](/reference/react/StrictMode)를 통해 초기에 버그를 찾는 데 도움이 되는 추가 개발 전용 검사를 사용할 수 있습니다.
 * [`<Suspense>`](/reference/react/Suspense)를 통해 자식 컴포넌트를 로딩하는 동안 Fallback을 표시할 수 있습니다.
-=======
-* [`<Fragment>`](/reference/react/Fragment), alternatively written as `<>...</>`, lets you group multiple JSX nodes together.
-* [`<Profiler>`](/reference/react/Profiler) lets you measure rendering performance of a React tree programmatically.
-* [`<Suspense>`](/reference/react/Suspense) lets you display a fallback while the child components are loading.
-* [`<StrictMode>`](/reference/react/StrictMode) enables extra development-only checks that help you find bugs early.
 * [`<Activity>`](/reference/react/Activity) lets you hide and restore the UI and internal state of its children.
->>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
 
 ---
 
