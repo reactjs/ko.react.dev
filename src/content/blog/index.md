@@ -28,9 +28,9 @@ Today, we're announcing our plans to create the React Foundation and a new techn
 
 </BlogCard>
 
-<BlogCard title="React 19.2" date="October 1, 2025" url="/blog/2025/10/01/react-19-2">
+<BlogCard title="React 19.2" date="2025년 10월 1일" url="/blog/2025/10/01/react-19-2">
 
-React 19.2 adds new features like Activity, React Performance Tracks, useEffectEvent, and more. In this post ...
+React 19.2에는 Activity, React 성능 트랙, useEffectEvent 등의 새로운 기능이 추가되었습니다. 이 글에서는...
 
 </BlogCard>
 
