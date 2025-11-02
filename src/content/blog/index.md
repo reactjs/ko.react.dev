@@ -16,9 +16,9 @@ Last week we hosted React Conf 2025. In this post, we summarize the talks and an
 
 </BlogCard>
 
-<BlogCard title="React Compiler v1.0" date="October 7, 2025" url="/blog/2025/10/07/react-compiler-1">
+<BlogCard title="React 컴파일러 v1.0" date="2025년 10월 7일" url="/blog/2025/10/07/react-compiler-1">
 
-We're releasing the compiler's first stable release today, plus linting and tooling improvements to make adoption easier.
+오늘 컴파일러의 첫 릴리즈 버전을 출시하며, 도입을 더 쉽게 할 린팅 및 툴링 개선 사항도 함께 공개합니다.
 
 </BlogCard>
 
