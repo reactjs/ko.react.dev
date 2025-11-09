@@ -4,7 +4,7 @@ title: <Activity>
 
 <Intro>
 
-`<Activity>` lets you hide and restore the UI and internal state of its children.
+`<Activity>`를 사용하면 자식 컴포넌트의 UI와 내부 상태를 숨기고 복원할 수 있습니다.
 
 ```js
 <Activity mode={visibility}>
@@ -22,7 +22,7 @@ title: <Activity>
 
 ### `<Activity>` {/*activity*/}
 
-You can use Activity to hide part of your application:
+Activity를 사용하여 애플리케이션의 일부를 숨길 수 있습니다.
 
 ```js [[1, 1, "\\"hidden\\""], [2, 2, "<Sidebar />"], [3, 1, "\\"visible\\""]]
 <Activity mode={isShowingSidebar ? "visible" : "hidden"}>
@@ -30,33 +30,33 @@ You can use Activity to hide part of your application:
 </Activity>
 ```
 
-When an Activity boundary is <CodeStep step={1}>hidden</CodeStep>, React will visually hide <CodeStep step={2}>its children</CodeStep> using the `display: "none"` CSS property. It will also destroy their Effects, cleaning up any active subscriptions.
+Activity 경계가 <CodeStep step={1}>숨겨지면</CodeStep>, React는 `display: "none"` CSS 프로퍼티를 사용해 <CodeStep step={2}>자식 컴포넌트</CodeStep>를 시각적으로 숨깁니다. 또한 Effect를 클린업하고 활성 구독을 모두 해제합니다.
 
-While hidden, children still re-render in response to new props, albeit at a lower priority than the rest of the content.
+숨겨진 상태에서도 자식 컴포넌트는 새로운 props에 반응하여 리렌더링되지만, 나머지 콘텐츠보다 낮은 우선순위로 처리됩니다.
 
-When the boundary becomes <CodeStep step={3}>visible</CodeStep> again, React will reveal the children with their previous state restored, and re-create their Effects.
+경계가 다시 <CodeStep step={3}>보이게 되면</CodeStep>, React는 이전 상태를 복원한 상태로 자식 컴포넌트를 표시하고 Effect를 다시 생성합니다.
 
-In this way, Activity can be thought of as a mechanism for rendering "background activity". Rather than completely discarding content that's likely to become visible again, you can use Activity to maintain and restore that content's UI and internal state, while ensuring that your hidden content has no unwanted side effects.
+이러한 방식으로 Activity는 "백그라운드 작업"을 렌더링하는 메커니즘으로 생각할 수 있습니다. 다시 표시될 가능성이 있는 콘텐츠를 완전히 삭제하는 대신, Activity를 사용하면 해당 콘텐츠의 UI와 내부 상태를 유지하고 복원할 수 있으며, 동시에 숨겨진 콘텐츠가 원치 않는 부작용을 일으키지 않도록 보장합니다.
 
-[See more examples below.](#usage)
+[아래에서 더 많은 예시를 확인하세요.](#usage)
 
 #### Props {/*props*/}
 
-* `children`: The UI you intend to show and hide.
-* `mode`: A string value of either `'visible'` or `'hidden'`. If omitted, defaults to `'visible'`. 
+* `children`: 표시하거나 숨길 UI입니다.
+* `mode`: `'visible'` 또는 `'hidden'` 중 하나의 문자열 값입니다. 생략하면 기본값은 `'visible'`입니다. 
 
 #### 주의 사항 {/*caveats*/}
 
-- If an Activity is rendered inside of a [ViewTransition](/reference/react/ViewTransition), and it becomes visible as a result of an update caused by [startTransition](/reference/react/startTransition), it will activate the ViewTransition's `enter` animation. If it becomes hidden, it will activate its `exit` animation.
-- An Activity that just renders text will not render anything rather than rendering hidden text, because there’s no corresponding DOM element to apply visibility changes to. For example, `<Activity mode="hidden"><ComponentThatJustReturnsText /></Activity>` will not produce any output in the DOM for `const ComponentThatJustReturnsText = () => "Hello, World!"`.
+- Activity가 [ViewTransition](/reference/react/ViewTransition) 내부에서 렌더링되고, [startTransition](/reference/react/startTransition)으로 인한 업데이트의 결과로 보이게 되면 ViewTransition의 `enter` 애니메이션이 활성화됩니다. 숨겨지면 `exit` 애니메이션이 활성화됩니다.
+- 텍스트만 렌더링하는 Activity는 아무것도 렌더링하지 않습니다. 가시성 변경을 적용할 대응하는 DOM 엘리먼트가 없기 때문입니다. 예를 들어 `const ComponentThatJustReturnsText = () => "Hello, World!"`인 경우, `<Activity mode="hidden"><ComponentThatJustReturnsText /></Activity>`는 DOM에 아무런 출력도 생성하지 않습니다.
 
 ---
 
 ## 사용법 {/*usage*/}
 
-### Restoring the state of hidden components {/*restoring-the-state-of-hidden-components*/}
+### 숨겨진 컴포넌트의 상태 복원하기 {/*restoring-the-state-of-hidden-components*/}
 
-In React, when you want to conditionally show or hide a component, you typically mount or unmount it based on that condition:
+React에서 컴포넌트를 조건부로 표시하거나 숨기려면 일반적으로 해당 조건에 따라 마운트하거나 마운트 해제합니다.
 
 ```jsx
 {isShowingSidebar && (
@@ -64,9 +64,9 @@ In React, when you want to conditionally show or hide a component, you typically
 )}
 ```
 
-But unmounting a component destroys its internal state, which is not always what you want.
+하지만 컴포넌트를 마운트 해제하면 내부 상태가 사라지는데, 이것이 항상 원하는 동작은 아닙니다.
 
-When you hide a component using an Activity boundary instead, React will "save" its state for later:
+Activity 경계를 사용해 컴포넌트를 숨기면 React는 나중을 위해 상태를 "저장"합니다.
 
 ```jsx
 <Activity mode={isShowingSidebar ? "visible" : "hidden"}>
@@ -74,11 +74,11 @@ When you hide a component using an Activity boundary instead, React will "save" 
 </Activity>
 ```
 
-This makes it possible to hide and then later restore components in the state they were previously in.
+이렇게 하면 컴포넌트를 숨긴 후 나중에 이전 상태 그대로 복원할 수 있습니다.
 
-The following example has a sidebar with an expandable section. You can press "Overview" to reveal the three subitems below it. The main app area also has a button that hides and shows the sidebar.
+다음 예시에는 펼칠 수 있는 섹션이 있는 사이드바가 있습니다. "Overview"를 누르면 아래에 세 개의 하위 항목이 표시됩니다. 메인 앱 영역에는 사이드바를 숨기고 표시하는 버튼도 있습니다.
 
-Try expanding the Overview section, and then toggling the sidebar closed then open:
+Overview 섹션을 펼친 다음 사이드바를 닫았다가 다시 열어보세요.
 
 <Sandpack>
 
@@ -167,11 +167,11 @@ h1 {
 
 </Sandpack>
 
-The Overview section always starts out collapsed. Because we unmount the sidebar when `isShowingSidebar` flips to `false`, all its internal state is lost.
+Overview 섹션은 항상 접힌 상태로 시작합니다. `isShowingSidebar`가 `false`로 바뀌면서 사이드바를 마운트 해제하기 때문에 모든 내부 상태가 손실됩니다.
 
-This is a perfect use case for Activity. We can preserve the internal state of our sidebar, even when visually hiding it.
+이것이 바로 Activity를 사용하기 완벽한 사례입니다. 시각적으로 숨기면서도 사이드바의 내부 상태를 보존할 수 있습니다.
 
-Let's replace the conditional rendering of our sidebar with an Activity boundary:
+사이드바의 조건부 렌더링을 Activity 경계로 교체해보겠습니다.
 
 ```jsx {7,9}
 // Before
@@ -185,7 +185,7 @@ Let's replace the conditional rendering of our sidebar with an Activity boundary
 </Activity>
 ```
 
-and check out the new behavior:
+새로운 동작을 확인해보세요.
 
 <Sandpack>
 
@@ -275,15 +275,15 @@ h1 {
 
 </Sandpack>
 
-Our sidebar's internal state is now restored, without any changes to its implementation.
+이제 사이드바의 내부 상태가 구현을 변경하지 않고도 복원됩니다.
 
 ---
 
-### Restoring the DOM of hidden components {/*restoring-the-dom-of-hidden-components*/}
+### 숨겨진 컴포넌트의 DOM 복원하기 {/*restoring-the-dom-of-hidden-components*/}
 
-Since Activity boundaries hide their children using `display: none`, their children's DOM is also preserved when hidden. This makes them great for maintaining ephemeral state in parts of the UI that the user is likely to interact with again.
+Activity 경계는 `display: none`을 사용해 자식 컴포넌트를 숨기기 때문에, 숨겨진 상태에서도 자식의 DOM이 보존됩니다. 이는 사용자가 다시 상호작용할 가능성이 있는 UI 부분의 임시 상태를 유지하는 데 유용합니다.
 
-In this example, the Contact tab has a `<textarea>` where the user can enter a message. If you enter some text, change to the Home tab, then change back to the Contact tab, the draft message is lost:
+이 예시에서 Contact 탭에는 사용자가 메시지를 입력할 수 있는 `<textarea>`가 있습니다. 텍스트를 입력한 후 Home 탭으로 변경했다가 다시 Contact 탭으로 돌아오면 입력한 메시지가 사라집니다.
 
 <Sandpack>
 
@@ -369,9 +369,9 @@ b { display: inline-block; margin-right: 10px; }
 
 </Sandpack>
 
-This is because we're fully unmounting `Contact` in `App`. When the Contact tab unmounts, the `<textarea>` element's internal DOM state is lost.
+`App`에서 `Contact`를 완전히 마운트 해제하기 때문입니다. Contact 탭이 마운트 해제되면 `<textarea>` 엘리먼트의 내부 DOM 상태가 손실됩니다.
 
-If we switch to using an Activity boundary to show and hide the active tab, we can preserve the state of each tab's DOM. Try entering text and switching tabs again, and you'll see the draft message is no longer reset:
+Activity 경계를 사용해 활성 탭을 표시하고 숨기도록 전환하면 각 탭의 DOM 상태를 보존할 수 있습니다. 텍스트를 입력하고 다시 탭을 전환해보면 입력한 메시지가 더 이상 초기화되지 않는 것을 확인할 수 있습니다.
 
 <Sandpack>
 
@@ -461,15 +461,15 @@ b { display: inline-block; margin-right: 10px; }
 
 </Sandpack>
 
-Again, the Activity boundary let us preserve the Contact tab's internal state without changing its implementation.
+다시 한번, Activity 경계를 통해 Contact 탭의 내부 상태를 구현 변경 없이 보존할 수 있었습니다.
 
 ---
 
-### Pre-rendering content that's likely to become visible {/*pre-rendering-content-thats-likely-to-become-visible*/}
+### 표시될 가능성이 있는 콘텐츠 사전 렌더링하기 {/*pre-rendering-content-thats-likely-to-become-visible*/}
 
-So far, we've seen how Activity can hide some content that the user has interacted with, without discarding that content's ephemeral state.
+지금까지 Activity를 사용해 사용자가 상호작용한 콘텐츠를 임시 상태를 삭제하지 않고 숨기는 방법을 살펴봤습니다.
 
-But Activity boundaries can also be used to _prepare_ content that the user has yet to see for the first time:
+하지만 Activity 경계는 사용자가 아직 처음 보지 못한 콘텐츠를 _준비_ 하는 데도 사용할 수 있습니다.
 
 ```jsx [[1, 1, "\\"hidden\\""]]
 <Activity mode="hidden">
@@ -477,13 +477,13 @@ But Activity boundaries can also be used to _prepare_ content that the user has 
 </Activity>
 ```
 
-When an Activity boundary is <CodeStep step={1}>hidden</CodeStep> during its initial render, its children won't be visible on the page — but they will _still be rendered_, albeit at a lower priority than the visible content, and without mounting their Effects.
+Activity 경계가 초기 렌더링 중에 <CodeStep step={1}>숨겨진</CodeStep> 상태라면, 자식 컴포넌트는 페이지에 보이지 않지만 _여전히 렌더링_ 됩니다. 다만 보이는 콘텐츠보다 낮은 우선순위로 렌더링되며, Effect는 마운트되지 않습니다.
 
-This _pre-rendering_ allows the children to load any code or data they need ahead of time, so that later, when the Activity boundary becomes visible, the children can appear faster with reduced loading times.
+이러한 _사전 렌더링_ 을 통해 자식 컴포넌트가 필요한 코드나 데이터를 미리 로드할 수 있으므로, 나중에 Activity 경계가 보이게 될 때 로딩 시간이 줄어들어 더 빠르게 표시할 수 있습니다.
 
-Let's look at an example.
+예시를 살펴보겠습니다.
 
-In this demo, the Posts tab loads some data. If you press it, you'll see a Suspense fallback displayed while the data is being fetched:
+이 데모에서 Posts 탭은 일부 데이터를 로드합니다. 탭을 누르면 데이터를 가져오는 동안 Suspense 폴백이 표시됩니다.
 
 <Sandpack>
 
@@ -611,11 +611,11 @@ video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
 
 </Sandpack>
 
-This is because `App` doesn't mount `Posts` until its tab is active.
+`App`이 탭이 활성화될 때까지 `Posts`를 마운트하지 않기 때문입니다.
 
-If we update `App` to use an Activity boundary to show and hide the active tab, `Posts` will be pre-rendered when the app first loads, allowing it to fetch its data before it becomes visible.
+`App`을 수정하여 Activity 경계로 활성 탭을 표시하고 숨기도록 하면, 앱이 처음 로드될 때 `Posts`가 사전 렌더링되어 보이기 전에 데이터를 가져올 수 있습니다.
 
-Try clicking the Posts tab now:
+이제 Posts 탭을 클릭해보세요.
 
 <Sandpack>
 
@@ -747,36 +747,36 @@ video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
 
 </Sandpack>
 
-`Posts` was able to prepare itself for a faster render, thanks to the hidden Activity boundary.
+숨겨진 Activity 경계 덕분에 `Posts`가 더 빠른 렌더링을 준비할 수 있었습니다.
 
 ---
 
-Pre-rendering components with hidden Activity boundaries is a powerful way to reduce loading times for parts of the UI that the user is likely to interact with next.
+숨겨진 Activity 경계로 컴포넌트를 사전 렌더링하는 것은 사용자가 다음에 상호작용할 가능성이 있는 UI 부분의 로딩 시간을 줄이는 강력한 방법입니다.
 
 <Note>
 
-**Only Suspense-enabled data sources will be fetched during pre-rendering.** They include:
+**사전 렌더링 중에는 Suspense가 가능한 데이터만 가져옵니다.** 여기에는 다음이 포함됩니다.
 
-- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense)
-- Lazy-loading component code with [`lazy`](/reference/react/lazy)
-- Reading the value of a cached Promise with [`use`](/reference/react/use)
+- [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense) 같이 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기.
+- [`lazy`](/reference/react/lazy)를 활용한 지연 로딩 컴포넌트.
+- [`use`](/reference/react/use)를 사용해서 캐시된 Promise 값 읽기.
 
-Activity **does not** detect data that is fetched inside an Effect.
+Activity는 Effect 내부에서 가져온 데이터를 감지하지 **않습니다.**
 
-The exact way you would load data in the `Posts` component above depends on your framework. If you use a Suspense-enabled framework, you'll find the details in its data fetching documentation.
+위의 `Posts` 컴포넌트에서 데이터를 로드하는 정확한 방법은 프레임워크에 따라 다릅니다. Suspense가 가능한 프레임워크를 사용하는 경우, 프레임워크의 데이터 불러오기 관련 문서에서 자세한 내용을 확인할 수 있습니다.
 
-Suspense-enabled data fetching without the use of an opinionated framework is not yet supported. The requirements for implementing a Suspense-enabled data source are unstable and undocumented. An official API for integrating data sources with Suspense will be released in a future version of React. 
+독자적인 프레임워크를 사용하지 않는 Suspense가 가능한 데이터 가져오기 기능은 아직 지원되지 않습니다. Suspense 지원 데이터 소스를 구현하기 위한 요구 사항은 불안정하고 문서화되지 않았습니다. 데이터 소스를 Suspense와 통합하기 위한 공식 API는 향후 React 버전에서 출시될 예정입니다.
 
 </Note>
 
 ---
 
 
-### Speeding up interactions during page load {/*speeding-up-interactions-during-page-load*/}
+### 페이지 로드 중 상호작용 속도 높이기 {/*speeding-up-interactions-during-page-load*/}
 
-React includes an under-the-hood performance optimization called Selective Hydration. It works by hydrating your app's initial HTML _in chunks_, enabling some components to become interactive even if other components on the page haven't loaded their code or data yet.
+React에는 선택적 하이드레이션이라는 내부 성능 최적화가 포함되어 있습니다. 이는 앱의 초기 HTML을 _청크 단위_ 로 하이드레이션하여, 페이지의 다른 컴포넌트가 코드나 데이터를 아직 로드하지 않았더라도 일부 컴포넌트를 상호작용 가능하게 만듭니다.
 
-Suspense boundaries participate in Selective Hydration, because they naturally divide your component tree into units that are independent from one another:
+Suspense 경계는 자연스럽게 컴포넌트 트리를 서로 독립적인 단위로 나누기 때문에 선택적 하이드레이션에 참여합니다.
 
 ```jsx
 function Page() {
@@ -792,13 +792,13 @@ function Page() {
 }
 ```
 
-Here, `MessageComposer` can be fully hydrated during the initial render of the page, even before `Chats` is mounted and starts to fetch its data.
+여기서 `MessageComposer`는 `Chats`가 마운트되어 데이터를 가져오기 시작하기 전에도 페이지의 초기 렌더링 중에 완전히 하이드레이션될 수 있습니다.
 
-So by breaking up your component tree into discrete units, Suspense allows React to hydrate your app's server-rendered HTML in chunks, enabling parts of your app to become interactive as fast as possible.
+컴포넌트 트리를 개별 단위로 나누면 React가 앱의 서버 렌더링된 HTML을 청크 단위로 하이드레이션할 수 있어, 앱의 일부가 가능한 한 빠르게 상호작용 가능해집니다.
 
-But what about pages that don't use Suspense?
+그렇다면 Suspense를 사용하지 않는 페이지는 어떻게 될까요?
 
-Take this tabs example:
+다음 탭 예시를 보겠습니다.
 
 ```jsx
 function Page() {
@@ -824,9 +824,9 @@ function Page() {
 }
 ```
 
-Here, React must hydrate the entire page all at once. If `Home` or `Video` are slower to render, they could make the tab buttons feel unresponsive during hydration.
+여기서 React는 전체 페이지를 한 번에 하이드레이션해야 합니다. `Home`이나 `Video`가 렌더링이 느리다면 하이드레이션 중에 탭 버튼이 반응하지 않는 것처럼 느껴질 수 있습니다.
 
-Adding Suspense around the active tab would solve this:
+활성 탭 주위에 Suspense를 추가하면 이 문제를 해결할 수 있습니다.
 
 ```jsx {13,20}
 function Page() {
@@ -854,11 +854,11 @@ function Page() {
 }
 ```
 
-...but it would also change the UI, since the `Placeholder` fallback would be displayed on the initial render.
+...하지만 이렇게 하면 초기 렌더링에서 `Placeholder` 폴백이 표시되기 때문에 UI가 변경됩니다.
 
-Instead, we can use Activity. Since Activity boundaries show and hide their children, they already naturally divide the component tree into independent units. And just like Suspense, this feature allows them to participate in Selective Hydration.
+대신 Activity를 사용할 수 있습니다. Activity 경계는 자식을 표시하고 숨기기 때문에 이미 자연스럽게 컴포넌트 트리를 독립적인 단위로 나눕니다. 그리고 Suspense처럼 이 기능을 통해 선택적 하이드레이션에 참여할 수 있습니다.
 
-Let's update our example to use Activity boundaries around the active tab:
+예시를 수정하여 활성 탭 주위에 Activity 경계를 사용해보겠습니다.
 
 ```jsx {13-18}
 function Page() {
@@ -884,13 +884,13 @@ function Page() {
 }
 ```
 
-Now our initial server-rendered HTML looks the same as it did in the original version, but thanks to Activity, React can hydrate the tab buttons first, before it even mounts `Home` or `Video`.
+이제 초기 서버 렌더링된 HTML은 원래 버전과 동일하게 보이지만, Activity 덕분에 React는 `Home`이나 `Video`를 마운트하기도 전에 탭 버튼을 먼저 하이드레이션할 수 있습니다.
 
 ---
 
-Thus, in addition to hiding and showing content, Activity boundaries help improve your app's performance during hydration by letting React know which parts of your page can become interactive in isolation.
+따라서 콘텐츠를 숨기고 표시하는 것 외에도, Activity 경계는 페이지의 어느 부분이 독립적으로 상호작용 가능해질 수 있는지 React에 알려줌으로써 하이드레이션 중 앱의 성능을 향상시킵니다.
 
-And even if your page doesn't ever hide part of its content, you can still add always-visible Activity boundaries to improve hydration performance:
+페이지가 콘텐츠의 일부를 숨기지 않더라도, 하이드레이션 성능을 향상시키기 위해 항상 보이는 Activity 경계를 추가할 수 있습니다.
 
 ```jsx
 function Page() {
@@ -910,13 +910,13 @@ function Page() {
 
 ## 문제 해결 {/*troubleshooting*/}
 
-### My hidden components have unwanted side effects {/*my-hidden-components-have-unwanted-side-effects*/}
+### 숨겨진 컴포넌트에 원치 않는 부작용이 있습니다 {/*my-hidden-components-have-unwanted-side-effects*/}
 
-An Activity boundary hides its content by setting `display: none` on its children and cleaning up any of their Effects. So, most well-behaved React components that properly clean up their side effects will already be robust to being hidden by Activity.
+Activity 경계는 자식에 `display: none`을 설정하고 Effect를 클린업하여 콘텐츠를 숨깁니다. 따라서 부작용을 적절히 클린업하는 대부분의 잘 작성된 React 컴포넌트는 이미 Activity에 의해 숨겨지는 것에 대해 견고합니다.
 
-But there _are_ some situations where a hidden component behaves differently than an unmounted one. Most notably, since a hidden component's DOM is not destroyed, any side effects from that DOM will persist, even after the component is hidden.
+하지만 숨겨진 컴포넌트가 마운트 해제된 컴포넌트와 다르게 동작하는 _몇 가지_ 상황이 있습니다. 특히 숨겨진 컴포넌트의 DOM은 제거되지 않기 때문에, 해당 DOM의 부작용은 컴포넌트가 숨겨진 후에도 지속됩니다.
 
-As an example, consider a `<video>` tag. Typically it doesn't require any cleanup, because even if you're playing a video, unmounting the tag stops the video and audio from playing in the browser. Try playing the video and then pressing Home in this demo:
+예를 들어 `<video>` 태그를 생각해보세요. 일반적으로 클린업이 필요하지 않습니다. 비디오를 재생 중이더라도 태그를 마운트 해제하면 브라우저에서 비디오와 오디오 재생이 중지되기 때문입니다. 비디오를 재생한 후 이 데모에서 Home을 눌러보세요.
 
 <Sandpack>
 
@@ -999,13 +999,13 @@ video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
 
 </Sandpack>
 
-The video stops playing as expected.
+비디오가 예상대로 재생을 멈춥니다.
 
-Now, let's say we wanted to preserve the timecode where the user last watched, so that when they tab back to the video, it doesn't start over from the beginning again.
+이제 사용자가 마지막으로 시청한 타임코드를 보존하여 비디오 탭으로 돌아왔을 때 처음부터 다시 시작하지 않도록 하고 싶다고 가정해봅시다.
 
-This is a great use case for Activity!
+이것은 Activity를 사용하기 완벽한 사례입니다!
 
-Let's update `App` to hide the inactive tab with a hidden Activity boundary instead of unmounting it, and see how the demo behaves this time:
+`App`을 수정하여 비활성 탭을 마운트 해제하는 대신 숨겨진 Activity 경계로 숨기고, 이번에는 데모가 어떻게 동작하는지 확인해보세요.
 
 <Sandpack>
 
@@ -1092,9 +1092,9 @@ video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
 
 </Sandpack>
 
-Whoops! The video and audio continue to play even after it's been hidden, because the tab's `<video>` element is still in the DOM.
+이런! 비디오가 숨겨진 후에도 비디오와 오디오가 계속 재생됩니다. 탭의 `<video>` 엘리먼트가 여전히 DOM에 있기 때문입니다.
 
-To fix this, we can add an Effect with a cleanup function that pauses the video:
+이를 해결하기 위해 비디오를 일시정지하는 클린업 함수가 있는 Effect를 추가할 수 있습니다.
 
 ```jsx {2,4-10,14}
 export default function VideoTab() {
@@ -1120,9 +1120,9 @@ export default function VideoTab() {
 }
 ```
 
-We call `useLayoutEffect` instead of `useEffect` because conceptually the clean-up code is tied to the component's UI being visually hidden. If we used a regular effect, the code could be delayed by (say) a re-suspending Suspense boundary or a View Transition.
+개념적으로 클린업 코드가 컴포넌트의 UI가 시각적으로 숨겨지는 것과 연결되어 있기 때문에 `useEffect` 대신 `useLayoutEffect`를 호출합니다. 일반 effect를 사용하면 (예를 들어) 다시 suspend되는 Suspense 경계나 View Transition에 의해 코드가 지연될 수 있습니다.
 
-Let's see the new behavior. Try playing the video, switching to the Home tab, then back to the Video tab:
+새로운 동작을 확인해보세요. 비디오를 재생하고 Home 탭으로 전환한 다음 다시 Video 탭으로 돌아와보세요.
 
 <Sandpack>
 
@@ -1222,31 +1222,31 @@ video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
 
 </Sandpack>
 
-It works great! Our cleanup function ensures that the video stops playing if it's ever hidden by an Activity boundary, and even better, because the `<video>` tag is never destroyed, the timecode is preserved, and the video itself doesn't need to be initialized or downloaded again when the user switches back to keep watching it.
+완벽하게 작동합니다! 클린업 함수는 Activity 경계에 의해 숨겨질 때마다 비디오 재생이 중지되도록 보장하며, 더 좋은 점은 `<video>` 태그가 제거되지 않기 때문에 타임코드가 보존되고, 사용자가 시청을 계속하기 위해 다시 전환할 때 비디오를 초기화하거나 다시 다운로드할 필요가 없다는 것입니다.
 
-This is a great example of using Activity to preserve ephemeral DOM state for parts of the UI that become hidden, but the user is likely to interact with again soon.
+이는 Activity를 사용하여 숨겨지지만 사용자가 곧 다시 상호작용할 가능성이 있는 UI 부분의 임시 DOM 상태를 보존하는 좋은 예시입니다.
 
 ---
 
-Our example illustrates that for certain tags like `<video>`, unmounting and hiding have different behavior. If a component renders DOM that has a side effect, and you want to prevent that side effect when an Activity boundary hides it, add an Effect with a return function to clean it up.
+예시에서 보듯이 `<video>`와 같은 특정 태그의 경우 마운트 해제와 숨기기가 다른 동작을 보입니다. 컴포넌트가 부작용이 있는 DOM을 렌더링하고, Activity 경계가 이를 숨길 때 해당 부작용을 방지하고 싶다면 클린업을 위한 return 함수가 있는 Effect를 추가하세요.
 
-The most common cases of this will be from the following tags:
+가장 흔한 경우는 다음 태그일 것입니다.
 
   - `<video>`
   - `<audio>`
   - `<iframe>`
 
-Typically, though, most of your React components should already be robust to being hidden by an Activity boundary. And conceptually, you should think of "hidden" Activities as being unmounted.
+하지만 일반적으로 대부분의 React 컴포넌트는 이미 Activity 경계에 의해 숨겨지는 것에 대해 견고해야 합니다. 개념적으로 "숨겨진" Activity는 마운트 해제된 것으로 생각해야 합니다.
 
-To eagerly discover other Effects that don't have proper cleanup, which is important not only for Activity boundaries but for many other behaviors in React, we recommend using [`<StrictMode>`](/reference/react/StrictMode). 
+적절한 클린업이 없는 다른 Effect를 미리 발견하려면 [`<StrictMode>`](/reference/react/StrictMode) 사용을 권장합니다. 이는 Activity 경계뿐만 아니라 React의 다른 많은 동작에도 중요합니다.
 
 ---
 
 
-### My hidden components have Effects that aren't running {/*my-hidden-components-have-effects-that-arent-running*/}
+### 숨겨진 컴포넌트의 Effect가 실행되지 않습니다 {/*my-hidden-components-have-effects-that-arent-running*/}
 
-When an `<Activity>` is "hidden", all its children's Effects are cleaned up. Conceptually, the children are unmounted, but React saves their state for later. This is a feature of Activity because it means subscriptions won't be active for hidden parts of the UI, reducing the amount of work needed for hidden content.
+`<Activity>`가 "hidden" 상태일 때 모든 자식의 Effect가 클린업됩니다. 개념적으로 자식은 마운트 해제되지만, React는 나중을 위해 상태를 저장합니다. 이는 Activity의 기능입니다. 숨겨진 UI 부분에 대한 구독이 활성화되지 않아 숨겨진 콘텐츠에 필요한 작업량이 줄어들기 때문입니다.
 
-If you're relying on an Effect mounting to clean up a component's side effects, refactor the Effect to do the work in the returned cleanup function instead.
+컴포넌트의 부작용을 클린업하기 위해 Effect가 마운트되는 것에 의존하고 있다면, 대신 반환된 클린업 함수에서 작업을 수행하도록 Effect를 리팩터링하세요.
 
-To eagerly find problematic Effects, we recommend adding [`<StrictMode>`](/reference/react/StrictMode) which will eagerly perform Activity unmounts and mounts to catch any unexpected side-effects. 
+문제가 있는 Effect를 미리 찾으려면 [`<StrictMode>`](/reference/react/StrictMode) 추가를 권장합니다. 이는 예상치 못한 부작용을 포착하기 위해 Activity 마운트 해제와 마운트를 미리 수행합니다.
