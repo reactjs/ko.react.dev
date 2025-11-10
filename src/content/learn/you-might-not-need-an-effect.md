@@ -437,7 +437,7 @@ function Game() {
     // ✅ 이벤트 핸들러에서 다음 state를 모두 계산합니다.
     setCard(nextCard);
     if (nextCard.gold) {
-      if (goldCardCount <= 3) {
+      if (goldCardCount < 3) {
         setGoldCardCount(goldCardCount + 1);
       } else {
         setGoldCardCount(0);
