@@ -1412,7 +1412,7 @@ function SaveButton() {
 
 #### React가 데이터 패칭을 위한 내부 해결책을 제공할까요? {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
 
-Today, with the [`use`](/reference/react/use#streaming-data-from-server-to-client) API, data can be read in render by passing a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to `use`:
+현재는 [`use`](/reference/react/use#streaming-data-from-server-to-client) API를 사용해, 렌더링 단계에서 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)를 `use`에 넘겨 데이터를 읽을 수 있습니다.
 
 ```js {1,4,11}
 import { use, Suspense } from "react";
@@ -1431,7 +1431,7 @@ export function MessageContainer({ messagePromise }) {
 }
 ```
 
-We're still working out the details, but we expect that in the future, you'll write data fetching like this:
+아직 세부 사항을 조정 중이지만, 나중에는 데이터 패칭을 다음과 같이 작성할 것입니다.
 
 ```js {1,4,6}
 import { use } from 'react';
