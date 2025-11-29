@@ -12,6 +12,7 @@ description: 지난주 React Conf 2025를 개최했으며, 이 게시글에서 �
 <Intro>
 
 지난주 React Conf 2025를 개최했으며, 여기서 [React Foundation](/blog/2025/10/07/introducing-the-react-foundation) 설립을 발표하고 React 및 React Native에 도입될 새로운 기능을 선보였습니다.
+
 </Intro>
 
 ---
@@ -21,6 +22,7 @@ React Conf 2025는 2025년 10월 7일부터 8일까지 네바다주 헨더슨에
 [첫째 날](https://www.youtube.com/watch?v=zyVRg2QR6LA&t=1067s)과 [둘째 날](https://www.youtube.com/watch?v=p9OcztRyDl0&t=2299s) 전체 스트리밍을 온라인에서 시청할 수 있으며, 이벤트 사진은 [여기](https://conf.react.dev/photos)에서 확인할 수 있습니다.
 
 이 게시글에서는 이벤트의 발표 내용과 공지 사항을 요약해 드립니다.
+
 
 ## 1일 차 기조연설 {/*day-1-keynote*/}
 
@@ -80,7 +82,6 @@ Ruben Norte와 Alex Hunt는 기조연설을 마무리하며 다음을 발표했�
 * [React Strict DOM](https://www.youtube.com/watch?v=p9OcztRyDl0&t=9026s) [(Nicolas Gallagher)](https://nicolasgallagher.com/)는 Meta의 웹 코드를 네이티브에서 사용하는 접근 방식에 대해 이야기했습니다.
 * [View Transitions and Activity](https://www.youtube.com/watch?v=zyVRg2QR6LA&t=4870s) [(Chance Strickland)](https://x.com/chancethedev) — Chance는 React 팀과 협력하여 빠르고 네이티브 느낌의 애니메이션을 구축하기 위해 [`<Activity />`](https://react.dev/reference/react/Activity) 및 [`<ViewTransition />`](https://react.dev/reference/react/ViewTransition)를 사용하는 방법을 시연했습니다.
 * [In case you missed the memo](https://www.youtube.com/watch?v=zyVRg2QR6LA&t=9525s) [(Cody Olsen)](https://bsky.app/profile/codey.bsky.social) - Cody는 Sanity Studio에서 Compiler를 채택하기 위해 React 팀과 협력했으며, 그 경험을 공유했습니다.
-
 ## React 프레임워크 발표 {/*react-framework-talks*/}
 
 둘째 날 후반부에는 다음을 포함하여 React 프레임워크 팀의 연속 발표가 있었습니다.
