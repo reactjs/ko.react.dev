@@ -10,7 +10,11 @@ title: "지시어"
 
 <Intro>
 
+<<<<<<< HEAD
 지시어는 [React 서버 컴포넌트와 호환되는 번들러](/learn/start-a-new-react-project#full-stack-frameworks)에게 지시사항을 제공합니다.
+=======
+Directives provide instructions to [bundlers compatible with React Server Components](/learn/creating-a-react-app#full-stack-frameworks).
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 
 </Intro>
 
