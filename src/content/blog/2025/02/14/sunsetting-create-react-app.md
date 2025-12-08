@@ -177,7 +177,11 @@ export default function Dashboard() {
 }
 ```
 
+<<<<<<< HEAD
 Effect에서 데이터를 가져오는것은, 데이터를 더 일찍 가져올 수 있었음에도 불구하고, 사용자가 콘텐츠를 보기 위해 더 오래 기다려야 함을 의미합니다. 이 문제를 해결하기 위해 컴포넌트를 렌더링하기 전에 요청을 시작할 수 있도록 데이터 미리 가져오기 옵션을 제공하는 [React Query](https://react-query.tanstack.com/), [SWR](https://swr.vercel.app/ko), [Apollo](https://www.apollographql.com/docs/react) 또는 [Relay](https://relay.dev/)와 같은 라이브러리들을 사용할 수 있습니다. 
+=======
+Fetching in an effect means the user has to wait longer to see the content, even though the data could have been fetched earlier. To solve this, you can use a data fetching library like [TanStack Query](https://tanstack.com/query/), [SWR](https://swr.vercel.app/), [Apollo](https://www.apollographql.com/docs/react), or [Relay](https://relay.dev/) which provide options to prefetch data so the request is started before the component renders.
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 이러한 라이브러리들은 라우트 수준에서 데이터 의존성을 지정할 수 있는 라우팅 "로더" 패턴과 통합될 때 가장 효과적으로 작동하며, 이를 통해 라우터가 데이터 가져오기를 최적화할 수 있습니다.
 

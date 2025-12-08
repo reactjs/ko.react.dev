@@ -732,8 +732,13 @@ Effect 안에서 `fetch` 호출을 작성하는 것은 [데이터를 가져오�
 
 이 단점 목록은 React에만 해당되는 것은 아닙니다. 어떤 라이브러리에서든 마운트 시에 데이터를 가져온다면 비슷한 단점이 존재합니다. 마운트 시에 데이터를 페칭하는 것도 라우팅과 마찬가지로 잘 수행하기 어려운 작업이므로 다음 접근 방식을 권장합니다.
 
+<<<<<<< HEAD
 - **[프레임워크](/learn/start-a-new-react-project#full-stack-frameworks)를 사용하고 있다면, 그 프레임워크가 제공하는 내장 데이터 패칭 기능을 사용하세요.** 최신 React 프레임워크는 효율적인 데이터 패칭 메커니즘을 내장하고 있으며, 앞서 언급한 단점을 겪지 않습니다.
 - **사용하지 않는다면, 클라이언트 사이드 캐시를 사용하거나 직접 구축하는 것을 고려하세요.** 인기있는 오픈소스 솔루션으로는 [React Query](https://tanstack.com/query/latest), [useSWR](https://swr.vercel.app/), [React Router 6.4+](https://beta.reactrouter.com/en/main/start/overview)가 있습니다. 직접 구현할 수도 있는데, 이 경우에는 Effects를 사용하되, 요청 중복 제거, 응답 캐싱, 네트워크 워터폴 방지를 위한 로직을 추가해야 합니다(데이터를 미리 로드하거나, 필요한 데이터를 상위 라우트로 호이스팅하는 방식으로).
+=======
+- **If you use a [framework](/learn/creating-a-react-app#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
+- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [TanStack Query](https://tanstack.com/query/latest), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood, but add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 이러한 접근 방식 중 어느 것도 적합하지 않은 경우, Effect 내에서 데이터를 직접 가져오는 것을 계속하셔도 됩니다.
 

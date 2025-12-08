@@ -4,7 +4,11 @@ title: preinit
 
 <Note>
 
+<<<<<<< HEAD
 [React 기반 프레임워크](/learn/start-a-new-react-project)는 종종 리소스 로딩을 자동으로 처리하므로, 이 API를 직접 호출하지 않아도 됩니다. 자세한 내용은 사용하는 프레임워크의 문서를 참고하세요.
+=======
+[React-based frameworks](/learn/creating-a-react-app) frequently handle resource loading for you, so you might not have to call this API yourself. Consult your framework's documentation for details.
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 </Note>
 
