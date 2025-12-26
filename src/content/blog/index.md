@@ -10,9 +10,9 @@ title: React 블로그
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<BlogCard title="React Conf 2025 Recap" date="October 16, 2025" url="/blog/2025/10/16/react-conf-2025-recap">
+<BlogCard title="React Conf 2025 요약" date="2025년 10월 16일" url="/blog/2025/10/16/react-conf-2025-recap">
 
-Last week we hosted React Conf 2025. In this post, we summarize the talks and announcements from the event...
+지난주에 React Conf 2025를 개최했습니다. 이 글에서는 행사에서 있었던 강연과 발표 내용을 정리합니다...
 
 </BlogCard>
 
