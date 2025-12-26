@@ -22,9 +22,9 @@ title: React 블로그
 
 </BlogCard>
 
-<BlogCard title="Introducing the React Foundation" date="October 7, 2025" url="/blog/2025/10/07/introducing-the-react-foundation">
+<BlogCard title="React Foundation 소개" date="2025년 10월 7일" url="/blog/2025/10/07/introducing-the-react-foundation">
 
-Today, we're announcing our plans to create the React Foundation and a new technical governance structure ...
+오늘 우리는 React Foundation의 설립과 새로운 기술 거버넌스 구조에 대한 계획을 발표합니다.
 
 </BlogCard>
 
