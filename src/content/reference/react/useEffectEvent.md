@@ -4,7 +4,7 @@ title: useEffectEvent
 
 <Intro>
 
-`useEffectEvent` is a React Hook that lets you extract non-reactive logic from your Effects into a reusable function called an [Effect Event](/learn/separating-events-from-effects#declaring-an-effect-event).
+`useEffectEvent`는 Effect 내부의 비반응형 로직을 추출해 [Effect 이벤트](/learn/separating-events-from-effects#declaring-an-effect-event)라고 불리는 재사용 가능한 함수로 만들 수 있게 해주는 React Hook입니다.
 
 ```js
 const onSomething = useEffectEvent(callback)
@@ -14,11 +14,11 @@ const onSomething = useEffectEvent(callback)
 
 <InlineToc />
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `useEffectEvent(callback)` {/*useeffectevent*/}
 
-Call `useEffectEvent` at the top level of your component to declare an Effect Event. Effect Events are functions you can call inside Effects, such as `useEffect`:
+Effect 이벤트를 선언하기 위해 컴포넌트의 최상위 레벨에서 `useEffectEvent`를 호출하세요. Effect 이벤트는 `useEffect`와 같이 Effect 내부에서 호출 가능한 함수입니다.
 
 ```js {4-6,11}
 import { useEffectEvent, useEffect } from 'react';
@@ -41,33 +41,33 @@ function ChatRoom({ roomId, theme }) {
 }
 ```
 
-[See more examples below.](#usage)
+[아래에서 더 많은 예시를 확인하세요.](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-- `callback`: A function containing the logic for your Effect Event. When you define an Effect Event with `useEffectEvent`, the `callback` always accesses the latest values from props and state when it is invoked. This helps avoid issues with stale closures.
+- `callback`: Effect 이벤트를 위한 로직을 포함하는 함수입니다. `useEffectEvent`로 Effect 이벤트를 정의했을 때, `callback`은 실행할 때마다 항상 최신의 props와 state 값을 참조합니다. 이를 통해 오래된 클로저 문제를 피할 수 있습니다.
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-Returns an Effect Event function. You can call this function inside `useEffect`, `useLayoutEffect`, or `useInsertionEffect`.
+Effect 이벤트 함수를 반환합니다. `useEffect`, `useLayoutEffect` 또는 `useInsertionEffect` 내부에서 이 함수를 호출할 수 있습니다.
 
-#### Caveats {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
-- **Only call inside Effects:** Effect Events should only be called within Effects. Define them just before the Effect that uses them. Do not pass them to other components or hooks. The [`eslint-plugin-react-hooks`](/reference/eslint-plugin-react-hooks) linter (version 6.1.1 or higher) will enforce this restriction to prevent calling Effect Events in the wrong context.
-- **Not a dependency shortcut:** Do not use `useEffectEvent` to avoid specifying dependencies in your Effect's dependency array. This can hide bugs and make your code harder to understand. Prefer explicit dependencies or use refs to compare previous values if needed.
-- **Use for non-reactive logic:** Only use `useEffectEvent` to extract logic that does not depend on changing values.
+- **Effect 내부에서만 호출하세요:** Effect 이벤트는 오로지 Effect 내부에서만 호출해야 합니다. 그것을 사용하는 Effect 이전에 그것을 정의하세요. 다른 컴포넌트나 훅으로 그것을 전달하지 마세요. [`eslint-plugin-react-hooks`](/reference/eslint-plugin-react-hooks) 린터(버전 6.1.1 또는 최신)는 Effect 이벤트를 잘못된 맥락에서 호출하는 것을 방지하기 위해 이 제한을 강제할 것입니다.
+- **의존성 지름길이 아닙니다:** Effect의 의존성 배열에 의존성을 적는 것을 피하기 위해 `useEffectEvent`를 사용하지 마세요. 이것은 버그를 숨기고 코드를 이해하는 것을 어렵게 합니다. 명시적으로 의존성을 작성하거나 필요한 경우 이전 값을 비교하기 위해 ref를 사용하세요.
+- **비반응형 로직을 위해 사용하세요:** 변하는 값에 의존하지 않는 로직을 추출하기 위해서만 `useEffectEvent`를 사용하세요.
 
 ___
 
-## Usage {/*usage*/}
+## 용법 {/*usage*/}
 
-### Reading the latest props and state {/*reading-the-latest-props-and-state*/}
+### 최신 props와 state를 읽기 {/*reading-the-latest-props-and-state*/}
 
-Typically, when you access a reactive value inside an Effect, you must include it in the dependency array. This makes sure your Effect runs again whenever that value changes, which is usually the desired behavior.
+전형적으로, Effect 내부에서 반응형 값을 읽을 때, 의존성 배열에 그것을 포함해야 합니다. 이것은 값이 바뀔 때 마다 Effect가 다시 동작하도록 하고, 이것은 보통 바람직한 동작입니다.
 
-But in some cases, you may want to read the most recent props or state inside an Effect without causing the Effect to re-run when those values change.
+그러나 몇몇의 사례에서, 이 값들이 변할 때 Effect가 다시 동작하지 않고 Effect 내부에서 가장 최신의 props 또는 state를 읽고 싶어할 수 있습니다.
 
-To [read the latest props or state](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events) in your Effect, without making those values reactive, include them in an Effect Event.
+Effect 내부에서 이 값들을 반응형으로 만드는 것 없이 [최신 props와 state를 읽기 위해](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events) Effect 이벤트 내부에 그것들을 포함하세요.
 
 ```js {7-9,12}
 import { useEffect, useContext, useEffectEvent } from 'react';
@@ -88,7 +88,7 @@ function Page({ url }) {
 }
 ```
 
-In this example, the Effect should re-run after a render when `url` changes (to log the new page visit), but it should **not** re-run when `numberOfItems` changes. By wrapping the logging logic in an Effect Event, `numberOfItems` becomes non-reactive. It's always read from the latest value without triggering the Effect.
+이 예시에서, `url`이 바뀔 때(새로운 페이지 방문을 로깅하기 위해) Effect는 랜더 이후에 다시 동작해야 합니다. 그러나 이것은 `numberOfItems`가 바뀔 때 다시 동작하면 **안됩니다**. 로깅 로직을 Effect 이벤트로 감싸 `numberOfItems`는 비반응형이 됩니다. 이것은 항상 Effect를 트리거 하는 것 없이 최신의 값을 읽습니다.
 
-You can pass reactive values like `url` as arguments to the Effect Event to keep them reactive while accessing the latest non-reactive values inside the event.
+`url`과 같은 반응형 값을 Effect 이벤트의 인수로 전달할 수 있습니다. 이로써, 이벤트 내부의 비반응형 값에 접근할 때 이것들을 반응형으로 유지할 수 있습니다.
 
