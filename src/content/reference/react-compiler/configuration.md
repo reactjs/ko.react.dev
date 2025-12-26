@@ -127,7 +127,7 @@ module.exports = {
 
 ### React 17/18 프로젝트 {/*react-17-18*/}
 
-React 17/18 버전은 런타임 패키지와 target 구성이 필요합니다.
+React 17/18 프로젝트에서는 런타임 패키지와 target 구성이 필요합니다.
 
 ```bash
 npm install react-compiler-runtime@latest
