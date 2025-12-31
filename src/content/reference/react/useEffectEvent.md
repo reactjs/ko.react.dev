@@ -59,7 +59,7 @@ Effect 이벤트 함수를 반환합니다. `useEffect`, `useLayoutEffect` 또�
 
 ___
 
-## 용법 {/*usage*/}
+## 사용법 {/*usage*/}
 
 ### 최신 props와 state를 읽기 {/*reading-the-latest-props-and-state*/}
 
