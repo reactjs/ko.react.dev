@@ -1,21 +1,21 @@
 /* eslint-disable import/no-anonymous-default-export */
-import mark from 'eslint-plugin-mark';
+import md from 'eslint-markdown';
 
 export default [
   {
     ignores: ['**/*.js', '**/*.mjs', '**/*.cjs'],
   },
   {
-    ...mark.configs.baseGfm,
+    ...md.configs.base,
     files: ['src/content/**/*.md'],
     rules: {
-      'mark/no-curly-quote': [
+      'md/no-curly-quote': [
         'error',
         {leftSingleQuotationMark: false, rightSingleQuotationMark: false},
       ],
-      'mark/no-double-space': 'error',
-      'mark/no-git-conflict-marker': ['error', {skipCode: false}],
-      'mark/no-irregular-whitespace': [
+      'md/no-double-space': 'error',
+      'md/no-git-conflict-marker': ['error', {skipCode: false}],
+      'md/no-irregular-whitespace': [
         'error',
         {skipCode: false, skipInlineCode: false},
       ],

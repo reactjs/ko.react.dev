@@ -924,17 +924,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@eslint/core@^0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@eslint/core/-/core-0.10.0.tgz#23727063c21b335f752dbb3a16450f6f9cbc9091"
-  integrity sha512-gFHJ+xBOo4G3WRlR1e/3G8A6/KZAH6zcE/hkLRCZTi/B9avAG365QhFA8uOGzTMqgTghpn7/fSnscW++dpMSAw==
-  dependencies:
-    "@types/json-schema" "^7.0.15"
-
-"@eslint/core@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@eslint/core/-/core-0.13.0.tgz#bf02f209846d3bf996f9e8009db62df2739b458c"
-  integrity sha512-yfkgDw1KR66rkT5A8ci4irzDysN7FRpq3ttJolR88OqQikAWqwA8j5VZyas+vjyBNFIJ7MfybJ9plMILI2UrCw==
+"@eslint/core@^0.17.0":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/@eslint/core/-/core-0.17.0.tgz#77225820413d9617509da9342190a2019e78761c"
+  integrity sha512-yL/sLrpmtDaFEiUj1osRP4TI2MDz1AddJL+jZ7KSqvBuliN4xqYY54IfdN8qD8Toa6g1iloph1fxQNkjOxrrpQ==
   dependencies:
     "@types/json-schema" "^7.0.15"
 
@@ -953,23 +946,27 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@eslint/markdown@^6.3.0":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@eslint/markdown/-/markdown-6.3.0.tgz#f9e9d01ff76b0a3ef722da30ffa43e1a362ee392"
-  integrity sha512-8rj7wmuP5hwXZ0HWoad+WL9nftpN373bCCQz9QL6sA+clZiz7et8Pk0yDAKeo//xLlPONKQ6wCpjkOHCLkbYUw==
+"@eslint/markdown@^7.5.1":
+  version "7.5.1"
+  resolved "https://registry.yarnpkg.com/@eslint/markdown/-/markdown-7.5.1.tgz#08b254b1424d764ca1a55b82e00ecaf09baba8a5"
+  integrity sha512-R8uZemG9dKTbru/DQRPblbJyXpObwKzo8rv1KYGGuPUPtjM4LXBYM9q5CIZAComzZupws3tWbDwam5AFpPLyJQ==
   dependencies:
-    "@eslint/core" "^0.10.0"
-    "@eslint/plugin-kit" "^0.2.5"
+    "@eslint/core" "^0.17.0"
+    "@eslint/plugin-kit" "^0.4.1"
+    github-slugger "^2.0.0"
     mdast-util-from-markdown "^2.0.2"
-    mdast-util-gfm "^3.0.0"
+    mdast-util-frontmatter "^2.0.1"
+    mdast-util-gfm "^3.1.0"
+    micromark-extension-frontmatter "^2.0.0"
     micromark-extension-gfm "^3.0.0"
+    micromark-util-normalize-identifier "^2.0.1"
 
-"@eslint/plugin-kit@^0.2.5":
-  version "0.2.8"
-  resolved "https://registry.yarnpkg.com/@eslint/plugin-kit/-/plugin-kit-0.2.8.tgz#47488d8f8171b5d4613e833313f3ce708e3525f8"
-  integrity sha512-ZAoA40rNMPwSm+AeHpCq8STiNAwzWLJuP8Xv4CHIc9wv/PSuExjMrmjfYNj682vW0OOiZ1HKxzvjQr9XZIisQA==
+"@eslint/plugin-kit@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@eslint/plugin-kit/-/plugin-kit-0.4.1.tgz#9779e3fd9b7ee33571a57435cf4335a1794a6cb2"
+  integrity sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==
   dependencies:
-    "@eslint/core" "^0.13.0"
+    "@eslint/core" "^0.17.0"
     levn "^0.4.1"
 
 "@floating-ui/core@^1.0.0":
@@ -1914,7 +1911,7 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/mdast@^4.0.0", "@types/mdast@^4.0.4":
+"@types/mdast@^4.0.0":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@types/mdast/-/mdast-4.0.4.tgz#7ccf72edd2f1aa7dd3437e180c64373585804dd6"
   integrity sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==
@@ -2829,23 +2826,6 @@ cheerio-select@^2.1.0:
     domhandler "^5.0.3"
     domutils "^3.0.1"
 
-cheerio@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-1.0.0.tgz#1ede4895a82f26e8af71009f961a9b8cb60d6a81"
-  integrity sha512-quS9HgjQpdaXOvsZz82Oz7uxtXiy6UIsIQcpBj7HRw2M63Skasm9qlDocAM7jNuaxdhpPU7c4kJN+gA5MCu4ww==
-  dependencies:
-    cheerio-select "^2.1.0"
-    dom-serializer "^2.0.0"
-    domhandler "^5.0.3"
-    domutils "^3.1.0"
-    encoding-sniffer "^0.2.0"
-    htmlparser2 "^9.1.0"
-    parse5 "^7.1.2"
-    parse5-htmlparser2-tree-adapter "^7.0.0"
-    parse5-parser-stream "^7.1.2"
-    undici "^6.19.5"
-    whatwg-mimetype "^4.0.0"
-
 cheerio@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-1.1.2.tgz#26af77e89336c81c63ea83197f868b4cbd351369"
@@ -3387,7 +3367,7 @@ domhandler@^5.0.2, domhandler@^5.0.3:
   dependencies:
     domelementtype "^2.3.0"
 
-domutils@^3.0.1, domutils@^3.1.0, domutils@^3.2.1, domutils@^3.2.2:
+domutils@^3.0.1, domutils@^3.2.1, domutils@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/domutils/-/domutils-3.2.2.tgz#edbfe2b668b0c1d97c24baf0f1062b132221bc78"
   integrity sha512-6kZKyUajlDuqlHKVX1w7gyslj9MPIXzIFiz/rGu35uC1wMi+kMhQwGhl4lt9unC9Vb9INnY9Z3/ZA3+FhASLaw==
@@ -3436,7 +3416,7 @@ electron-to-chromium@^1.5.73:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.80.tgz#ca7a8361d7305f0ec9e203ce4e633cbb8a8ef1b1"
   integrity sha512-LTrKpW0AqIuHwmlVNV+cjFYTnXtM9K37OGhpe0ZI10ScPSxqVSryZHIY3WnCS5NSYbBODRTZyhRMS2h5FAEqAw==
 
-emoji-regex@^10.3.0, emoji-regex@^10.4.0:
+emoji-regex@^10.3.0:
   version "10.4.0"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-10.4.0.tgz#03553afea80b3975749cfcb36f776ca268e413d4"
   integrity sha512-EC+0oUMY1Rqm4O6LLrgjtYDvcVYTy7chDnM4Q7030tP4Kwj3u/pR6gP9ygnp2CJMK5Gq+9Q2oqmrFJAz01DXjw==
@@ -3455,14 +3435,6 @@ encodeurl@~1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/encodeurl/-/encodeurl-1.0.2.tgz"
   integrity sha512-TPJXq8JqFaVYm2CWmPvnP2Iyo4ZSM7/QKcSmuMLDObfpH5fi7RUGmd/rTDf+rut/saiDiQEeVTNgAmJEdAOx0w==
-
-encoding-sniffer@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/encoding-sniffer/-/encoding-sniffer-0.2.0.tgz#799569d66d443babe82af18c9f403498365ef1d5"
-  integrity sha512-ju7Wq1kg04I3HtiYIOrUrdfdDvkyO9s5XM8QAj/bN61Yo/Vb4vgJxy5vi4Yxk01gWHbrofpPtpxM8bKger9jhg==
-  dependencies:
-    iconv-lite "^0.6.3"
-    whatwg-encoding "^3.1.1"
 
 encoding-sniffer@^0.2.1:
   version "0.2.1"
@@ -3769,6 +3741,15 @@ eslint-import-resolver-typescript@^2.4.0:
     resolve "^1.22.0"
     tsconfig-paths "^3.14.1"
 
+eslint-markdown@^0.1.0-canary.12:
+  version "0.1.0-canary.12"
+  resolved "https://registry.yarnpkg.com/eslint-markdown/-/eslint-markdown-0.1.0-canary.12.tgz#755c255f254bd428e76e7cb98e10ad458c488638"
+  integrity sha512-iTEHFxLW2QumAgGEJjNb835zJtBGUvXA0JtuRzRjIzevjLlPkXwAJ9QM/33T5OWapb0sUADxDtkxoVbogvOshA==
+  dependencies:
+    "@eslint/markdown" "^7.5.1"
+    micromark-util-normalize-identifier "^2.0.1"
+    parse5 "^8.0.0"
+
 eslint-module-utils@^2.7.2:
   version "2.7.2"
   resolved "https://registry.npmjs.org/eslint-module-utils/-/eslint-module-utils-2.7.2.tgz"
@@ -3875,16 +3856,7 @@ eslint-plugin-jsx-a11y@^6.4.1:
 
 "eslint-plugin-local-rules@link:eslint-local-rules":
   version "0.0.0"
-
-eslint-plugin-mark@^0.1.0-canary.2:
-  version "0.1.0-canary.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-mark/-/eslint-plugin-mark-0.1.0-canary.2.tgz#b7b05eb6201aab0f3225c99f1c7274c4a0fde3e3"
-  integrity sha512-0I+AndOwAIkuX/qYthEGr3BfgW0nkIJSPfUAsdhoAXoWjJU60PUMgesPmvz512SEYNZ9T0ojibJqjpoUZIf+Kw==
-  dependencies:
-    "@eslint/markdown" "^6.3.0"
-    "@types/mdast" "^4.0.4"
-    cheerio "^1.0.0"
-    emoji-regex "^10.4.0"
+  uid ""
 
 eslint-plugin-react-compiler@^19.0.0-beta-e552027-20250112:
   version "19.0.0-beta-e552027-20250112"
@@ -4515,6 +4487,11 @@ github-slugger@^1.0.0, github-slugger@^1.3.0:
   resolved "https://registry.npmjs.org/github-slugger/-/github-slugger-1.4.0.tgz"
   integrity sha512-w0dzqw/nt51xMVmlaV1+JRzN+oCa1KfcgGEWhxUG16wbdA+Xnt/yoFO8Z8x/V82ZcZ0wy6ln9QDup5avbhiDhQ==
 
+github-slugger@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-2.0.0.tgz#52cf2f9279a21eb6c59dd385b410f0c0adda8f1a"
+  integrity sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==
+
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"
   resolved "https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.2.tgz"
@@ -4838,16 +4815,6 @@ htmlparser2@^10.0.0:
     domhandler "^5.0.3"
     domutils "^3.2.1"
     entities "^6.0.0"
-
-htmlparser2@^9.1.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-9.1.0.tgz#cdb498d8a75a51f739b61d3f718136c369bc8c23"
-  integrity sha512-5zfg6mHUoaer/97TxnGpxmbR7zJtPwIYFMZ/H5ucTlPZhKvtum05yiPK3Mgai3a0DyVxv7qYqoweaEd2nrYQzQ==
-  dependencies:
-    domelementtype "^2.3.0"
-    domhandler "^5.0.3"
-    domutils "^3.1.0"
-    entities "^4.5.0"
 
 http-errors@2.0.0:
   version "2.0.0"
@@ -5814,6 +5781,18 @@ mdast-util-frontmatter@^1.0.0:
   dependencies:
     micromark-extension-frontmatter "^1.0.0"
 
+mdast-util-frontmatter@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/mdast-util-frontmatter/-/mdast-util-frontmatter-2.0.1.tgz#f5f929eb1eb36c8a7737475c7eb438261f964ee8"
+  integrity sha512-LRqI9+wdgC25P0URIJY9vwocIzCcksduHQ9OF2joxQoyTNVduwLAFUzjoopuRJbJAReaKrNQKAZKL3uCMugWJA==
+  dependencies:
+    "@types/mdast" "^4.0.0"
+    devlop "^1.0.0"
+    escape-string-regexp "^5.0.0"
+    mdast-util-from-markdown "^2.0.0"
+    mdast-util-to-markdown "^2.0.0"
+    micromark-extension-frontmatter "^2.0.0"
+
 mdast-util-gfm-autolink-literal@^0.1.0, mdast-util-gfm-autolink-literal@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/mdast-util-gfm-autolink-literal/-/mdast-util-gfm-autolink-literal-0.1.3.tgz#9c4ff399c5ddd2ece40bd3b13e5447d84e385fb7"
@@ -5966,7 +5945,7 @@ mdast-util-gfm@^2.0.0:
     mdast-util-gfm-task-list-item "^1.0.0"
     mdast-util-to-markdown "^1.0.0"
 
-mdast-util-gfm@^3.0.0:
+mdast-util-gfm@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/mdast-util-gfm/-/mdast-util-gfm-3.1.0.tgz#2cdf63b92c2a331406b0fb0db4c077c1b0331751"
   integrity sha512-0ulfdQOM3ysHhCJ1p06l0b0VKlhU0wuQs3thxZQagjcjPrlFRqY215uZGHHJan9GEAXd9MbfPjFJz+qMkVR6zQ==
@@ -6251,6 +6230,16 @@ micromark-extension-frontmatter@^1.0.0:
     fault "^2.0.0"
     micromark-util-character "^1.0.0"
     micromark-util-symbol "^1.0.0"
+
+micromark-extension-frontmatter@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/micromark-extension-frontmatter/-/micromark-extension-frontmatter-2.0.0.tgz#651c52ffa5d7a8eeed687c513cd869885882d67a"
+  integrity sha512-C4AkuM3dA58cgZha7zVnuVxBhDsbttIMiytjgsM2XbHAB2faRVaHRle40558FBN+DJcrLNCoqG5mlrpdU4cRtg==
+  dependencies:
+    fault "^2.0.0"
+    micromark-util-character "^2.0.0"
+    micromark-util-symbol "^2.0.0"
+    micromark-util-types "^2.0.0"
 
 micromark-extension-gfm-autolink-literal@^1.0.0:
   version "1.0.3"
@@ -6766,7 +6755,7 @@ micromark-util-normalize-identifier@^1.0.0:
   dependencies:
     micromark-util-symbol "^1.0.0"
 
-micromark-util-normalize-identifier@^2.0.0:
+micromark-util-normalize-identifier@^2.0.0, micromark-util-normalize-identifier@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/micromark-util-normalize-identifier/-/micromark-util-normalize-identifier-2.0.1.tgz#c30d77b2e832acf6526f8bf1aa47bc9c9438c16d"
   integrity sha512-sxPqmo70LyARJs0w2UclACPUUEqltCkJ6PhKdMIDuJ3gSf/Q+/GIe3WKl0Ijb/GyH9lOpUkRAO2wp0GVkLvS9Q==
@@ -7519,7 +7508,7 @@ parse-numeric-range@^1.2.0:
   resolved "https://registry.npmjs.org/parse-numeric-range/-/parse-numeric-range-1.3.0.tgz"
   integrity sha512-twN+njEipszzlMJd4ONUYgSfZPDxgHhT9Ahed5uTigpQn90FggW4SA/AIPq/6a149fTbE9qBEcSwE3FAEp6wQQ==
 
-parse5-htmlparser2-tree-adapter@^7.0.0, parse5-htmlparser2-tree-adapter@^7.1.0:
+parse5-htmlparser2-tree-adapter@^7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/parse5-htmlparser2-tree-adapter/-/parse5-htmlparser2-tree-adapter-7.1.0.tgz#b5a806548ed893a43e24ccb42fbb78069311e81b"
   integrity sha512-ruw5xyKs6lrpo9x9rCZqZZnIUntICjQAd0Wsmp396Ul9lN/h+ifgVV1x1gZHi8euej6wTfpqX8j+BFQxF0NS/g==
@@ -7534,7 +7523,7 @@ parse5-parser-stream@^7.1.2:
   dependencies:
     parse5 "^7.0.0"
 
-parse5@^7.0.0, parse5@^7.1.2:
+parse5@^7.0.0:
   version "7.2.1"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-7.2.1.tgz#8928f55915e6125f430cc44309765bf17556a33a"
   integrity sha512-BuBYQYlv1ckiPdQi/ohiivi9Sagc9JG+Ozs0r7b/0iK3sKmrb0b9FdWdBbOdx6hBCM/F9Ir82ofnBhtZOjCRPQ==
@@ -7545,6 +7534,13 @@ parse5@^7.3.0:
   version "7.3.0"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-7.3.0.tgz#d7e224fa72399c7a175099f45fc2ad024b05ec05"
   integrity sha512-IInvU7fabl34qmi9gY8XOVxhYyMyuH2xUNpb2q8/Y+7552KlejkRvqvD19nMoUW/uQGGbqNpA6Tufu5FL5BZgw==
+  dependencies:
+    entities "^6.0.0"
+
+parse5@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-8.0.0.tgz#aceb267f6b15f9b6e6ba9e35bfdd481fc2167b12"
+  integrity sha512-9m4m5GSgXjL4AjumKzq1Fgfp3Z8rsvjRNbnkVwfu2ImRqE5D0LnY2QfDen18FSY9C573YU5XxSapdHZTZ2WolA==
   dependencies:
     entities "^6.0.0"
 
@@ -9608,11 +9604,6 @@ unbox-primitive@^1.0.2:
     has-bigints "^1.0.2"
     has-symbols "^1.0.3"
     which-boxed-primitive "^1.0.2"
-
-undici@^6.19.5:
-  version "6.21.2"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-6.21.2.tgz#49c5884e8f9039c65a89ee9018ef3c8e2f1f4928"
-  integrity sha512-uROZWze0R0itiAKVPsYhFov9LxrPMHLMEQFszeI2gCN6bnIIZ8twzBCJcN2LJrBBLfrP0t1FW0g+JmKVl8Vk1g==
 
 undici@^7.12.0:
   version "7.12.0"
