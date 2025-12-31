@@ -11,7 +11,10 @@ export default [
     rules: {
       'md/no-curly-quote': [
         'error',
-        {leftSingleQuotationMark: false, rightSingleQuotationMark: false},
+        {
+          checkLeftSingleQuotationMark: false,
+          checkRightSingleQuotationMark: false,
+        },
       ],
       'md/no-double-space': 'error',
       'md/no-git-conflict-marker': ['error', {skipCode: false}],
