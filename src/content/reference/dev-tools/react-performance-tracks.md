@@ -1,159 +1,163 @@
 ---
-title: React Performance tracks
+title: React Performance 트랙
 ---
 
 <Intro>
 
-React Performance tracks are specialized custom entries that appear on the Performance panel's timeline in your browser developer tools.
+React Performance(성능) 트랙은 브라우저 개발자 도구의 Performance 패널 타임라인에 표시되는 특수한 맞춤형 항목입니다.
 
 </Intro>
 
-These tracks are designed to provide developers with comprehensive insights into their React application's performance by visualizing React-specific events and metrics alongside other critical data sources such as network requests, JavaScript execution, and event loop activity, all synchronized on a unified timeline within the Performance panel for a complete understanding of application behavior.
+이 트랙은 개발자에게 React 애플리케이션의 성능에 대한 포괄적인 인사이트를 제공하도록 설계되었습니다. 네트워크 요청, 자바스크립트 실행, 이벤트 루프 활동과 같은 주요 데이터 소스와 함께 React 전용 이벤트와 메트릭을 시각화하며, 애플리케이션 동작을 완전히 이해할 수 
+있도록 Performance(성능) 패널 내의 통합된 타임라인에서 모든 정보가 동기화되어 표시됩니다.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/overview.png" alt="React Performance Tracks" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/overview.dark.png" alt="React Performance Tracks" />
+  <img className="w-full light-image" src="/images/docs/performance-tracks/overview.png" alt="React Performance 트랙" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/overview.dark.png" alt="React Performance 트랙" />
 </div>
 
 <InlineToc />
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-React Performance tracks are only available in development and profiling builds of React:
+React Performance 트랙은 개발 및 프로파일링 빌드에서만 사용할 수 있습니다.
 
-- **Development**: enabled by default.
-- **Profiling**: Only Scheduler tracks are enabled by default. The Components track only lists Components that are in subtrees wrapped with [`<Profiler>`](/reference/react/Profiler). If you have [React Developer Tools extension](/learn/react-developer-tools) enabled, all Components are included in the Components track even if they're not wrapped in `<Profiler>`. Server tracks are not available in profiling builds.
+- **개발**: 기본적으로 활성화되어 있습니다.
+- **프로파일링**: 기본적으로 Scheduler 트랙만 활성화되어 있습니다. 컴포넌트 트랙은 [`<Profiler>`](/reference/react/Profiler)로 감싼 서브트리 내의 컴포넌트만 나열합니다. [React 개발자 도구 확장 
+  프로그램](/learn/react-developer-tools)을 활성화했다면, `<Profiler>`로 감싸지 않았더라도 모든 컴포넌트가 컴포넌트 트랙에 포함됩니다. 서버 트랙은 프로파일링 빌드에서 사용할 수 없습니다.
 
-If enabled, tracks should appear automatically in the traces you record with the Performance panel of browsers that provide [extensibility APIs](https://developer.chrome.com/docs/devtools/performance/extension).
+활성화된 경우 [확장성 API](https://developer.chrome.com/docs/devtools/performance/extension)를 제공하는 브라우저의 Performance(성능) 패널로 기록한 트레이스에서 트랙이 자동으로 표시됩니다.
 
 <Pitfall>
 
-The profiling instrumentation that powers React Performance tracks adds some additional overhead, so it is disabled in production builds by default.
-Server Components and Server Requests tracks are only available in development builds.
+React Performance 트랙을 구동하는 프로파일링 도구는 추가적인 오버헤드를 발생시키므로, 프로덕션 빌드에서는 기본적으로 비활성화되어 있습니다.
+서버 컴포넌트 및 서버 요청(Server Requests) 트랙은 개발 빌드에서만 사용할 수 있습니다.
 
 </Pitfall>
 
-### Using profiling builds {/*using-profiling-builds*/}
+### 프로파일링 빌드 사용하기 {/*using-profiling-builds*/}
 
-In addition to production and development builds, React also includes a special profiling build.
-To use profiling builds, you have to use `react-dom/profiling` instead of `react-dom/client`.
-We recommend that you alias `react-dom/client` to `react-dom/profiling` at build time via bundler aliases instead of manually updating each `react-dom/client` import.
-Your framework might have built-in support for enabling React's profiling build.
+프로덕션 및 개발 빌드 외에도 React는 특수한 프로파일링 빌드를 제공합니다.
+프로파일링 빌드를 사용하려면 `react-dom/client` 대신 `react-dom/profiling`을 사용해야 합니다. 모든 `react-dom/client` 임포트(import) 구문을 수동으로 수정하는 대신 **번들러 별칭(alias)** 을 설정하여 빌드 시점에 
+`react-dom/client` 가 `react-dom/profiling` 을 가리키도록 하는 것을 권장합니다.
+사용 중인 프레임워크에 React 프로파일링 빌드를 활성화하는 기능이 내장되어 있을 수 있습니다.
 
 ---
 
-## Tracks {/*tracks*/}
+## 트랙 {/*tracks*/}
 
 ### Scheduler {/*scheduler*/}
 
-The Scheduler is an internal React concept used for managing tasks with different priorities. This track consists of 4 subtracks, each representing work of a specific priority:
+Scheduler는 우선순위가 다른 작업을 관리하는 데 사용되는 React의 내부 개념입니다.
+이 트랙은 특정 우선순위의 작업을 나타내는 네 개의 서브트랙으로 구성됩니다.
 
-- **Blocking** - The synchronous updates, which could've been initiated by user interactions.
-- **Transition** - Non-blocking work that happens in the background, usually initiated via [`startTransition`](/reference/react/startTransition).
-- **Suspense** - Work related to Suspense boundaries, such as displaying fallbacks or revealing content.
-- **Idle** - The lowest priority work that is done when there are no other tasks with higher priority.
+- **Blocking** - 사용자 상호작용에 의해 시작될 수 있는 동기 업데이트입니다.
+- **Transition** - 백그라운드에서 발생하는 논블로킹 작업으로 주로 [`startTransition`](/reference/react/startTransition)을 통해 시작됩니다.
+- **Suspense** - 폴백(fallback) 표시나 콘텐츠 노출 등 Suspense 경계와 관련된 작업입니다.
+- **Idle** - 우선순위가 더 높은 다른 작업이 없을 때 수행되는 가장 낮은 우선순위의 작업입니다.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/scheduler.png" alt="Scheduler track" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/scheduler.dark.png" alt="Scheduler track" />
+  <img className="w-full light-image" src="/images/docs/performance-tracks/scheduler.png" alt="Scheduler 트랙" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/scheduler.dark.png" alt="Scheduler 트랙" />
 </div>
 
-#### Renders {/*renders*/}
+#### 렌더링 {/*renders*/}
 
-Every render pass consists of multiple phases that you can see on a timeline:
+모든 렌더링 과정(render pass)은 타임라인에서 확인할 수 있는 여러 단계로 구성됩니다.
 
-- **Update** - this is what caused a new render pass.
-- **Render** - React renders the updated subtree by calling render functions of components. You can see the rendered components subtree on [Components track](#components), which follows the same color scheme.
-- **Commit** - After rendering components, React will submit the changes to the DOM and run layout effects, like [`useLayoutEffect`](/reference/react/useLayoutEffect).
-- **Remaining Effects** - React runs passive effects of a rendered subtree. This usually happens after the paint, and this is when React runs hooks like [`useEffect`](/reference/react/useEffect). One known exception is user interactions, like clicks, or other discrete events. In this scenario, this phase could run before the paint.
+- **Update** - 새로운 렌더링 과정을 발생시킨 원인입니다.
+- **Render** - React가 컴포넌트의 렌더링 함수를 호출하여 업데이트된 서브트리를 렌더링하는 단계입니다. 렌더링된 컴포넌트 서브트리는 동일한 색 구성표를 따르는 [컴포넌트 트랙](#components)에서 확인할 수 있습니다.
+- **Commit** - 컴포넌트 렌더링 후, React가 DOM에 변경 사항을 반영하고 [`useLayoutEffect`](/reference/react/useLayoutEffect)와 같은 레이아웃 Effect를 실행하는 단계입니다.
+- **Remaining Effects** - React가 렌더링된 서브트리의 패시브(passive) Effect를 실행하는 단계입니다. 이는 주로 브라우저가 화면을 그린(paint) 후에 발생하며, 이 시점에 [`useEffect`](/reference/react/useEffect)와 같은 Hook이 실행됩니다. 클릭과 같은 사용자 상호작용이나 다른 불연속 이벤트(discrete events)는 예외적으로 페인트 이전에 실행될 수 있습니다.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/scheduler-update.png" alt="Scheduler track: updates" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/scheduler-update.dark.png" alt="Scheduler track: updates" />
+  <img className="w-full light-image" src="/images/docs/performance-tracks/scheduler-update.png" alt="Scheduler 트랙: 업데이트" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/scheduler-update.dark.png" alt="Scheduler 트랙: 업데이트" />
 </div>
 
-[Learn more about renders and commits](/learn/render-and-commit).
+[렌더링과 커밋에 대해 더 알아보기](/learn/render-and-commit).
 
-#### Cascading updates {/*cascading-updates*/}
+#### 연쇄 업데이트 {/*cascading-updates*/}
 
-Cascading updates is one of the patterns for performance regressions. If an update was scheduled during a render pass, React could discard completed work and start a new pass.
+연쇄 업데이트(Cascading updates)는 성능 저하를 유발하는 대표적인 패턴 중 하나입니다. 렌더링 과정 중에 업데이트가 예약되면, React는 이미 완료된 작업을 폐기하고 새로운 과정을 다시 시작할 수 있습니다.
 
-In development builds, React can show you which Component scheduled a new update. This includes both general updates and cascading ones. You can see the enhanced stack trace by clicking on the "Cascading update" entry, which should also display the name of the method that scheduled an update.
+개발 빌드에서는 어떤 컴포넌트가 새로운 업데이트를 예약했는지 확인할 수 있습니다. 여기에는 일반적인 업데이트와 연쇄적으로 발생하는 업데이트가 모두 포함됩니다. "Cascading update" 항목을 클릭하면 업데이트를 예약한 메서드 이름이 포함된 상세한 스택 트레이스를 확인할 수 있습니다.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/scheduler-cascading-update.png" alt="Scheduler track: cascading updates" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/scheduler-cascading-update.dark.png" alt="Scheduler track: cascading updates" />
+  <img className="w-full light-image" src="/images/docs/performance-tracks/scheduler-cascading-update.png" alt="Scheduler 트랙: 연쇄 업데이트" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/scheduler-cascading-update.dark.png" alt="Scheduler 트랙: 연쇄 업데이트" />
 </div>
 
-[Learn more about Effects](/learn/you-might-not-need-an-effect).
+[Effect에 대해 더 알아보기](/learn/you-might-not-need-an-effect).
 
-### Components {/*components*/}
+### 컴포넌트 {/*components*/}
 
-The Components track visualizes the durations of React components. They are displayed as a flamegraph, where each entry represents the duration of the corresponding component render and all its descendant children components.
+컴포넌트 트랙은 React 컴포넌트의 지속 시간을 시각화합니다. 각 항목은 해당 컴포넌트와 그 **모든 하위 컴포넌트**의 렌더링 지속 시간을 나타내는 플레임그래프로 표시됩니다.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/components-render.png" alt="Components track: render durations" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/components-render.dark.png" alt="Components track: render durations" />
+  <img className="w-full light-image" src="/images/docs/performance-tracks/components-render.png" alt="컴포넌트 트랙: 렌더링 지속 시간" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/components-render.dark.png" alt="컴포넌트 트랙: 렌더링 지속 시간" />
 </div>
 
-Similar to render durations, effect durations are also represented as a flamegraph, but with a different color scheme that aligns with the corresponding phase on the Scheduler track.
+렌더링 지속 시간과 유사하게 Effect 지속 시간도 플레임그래프로 표현되지만 Scheduler 트랙의 해당 단계와 일치하는 다른 색 구성표를 사용합니다.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/components-effects.png" alt="Components track: effects durations" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/components-effects.dark.png" alt="Components track: effects durations" />
+  <img className="w-full light-image" src="/images/docs/performance-tracks/components-effects.png" alt="컴포넌트 트랙: effect 지속 시간" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/components-effects.dark.png" alt="컴포넌트 트랙: effect 지속 시간" />
 </div>
 
 <Note>
 
-Unlike renders, not all effects are shown on the Components track by default.
+렌더링과 달리 모든 Effect가 기본적으로 컴포넌트 트랙에 표시되는 것은 아닙니다.
 
-To maintain performance and prevent UI clutter, React will only display those effects, which had a duration of 0.05ms or longer, or triggered an update.
+성능을 유지하고 **UI가 복잡해지는 것을 방지하기 위해** React는 0.05ms 이상의 지속 시간을 가지거나 업데이트를 트리거한 Effect만 표시합니다.
 
 </Note>
 
-Additional events may be displayed during the render and effects phases:
+렌더링 및 Effect 단계 중에 추가 이벤트가 표시될 수 있습니다.
 
-- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Mount</span> - A corresponding subtree of component renders or effects was mounted.
-- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Unmount</span> - A corresponding subtree of component renders or effects was unmounted.
-- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Reconnect</span> - Similar to Mount, but limited to cases when [`<Activity>`](/reference/react/Activity) is used.
-- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Disconnect</span> - Similar to Unmount, but limited to cases when [`<Activity>`](/reference/react/Activity) is used.
+- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>마운트</span> - 컴포넌트 렌더링 또는 Effect에 해당하는 서브트리가 마운트되었습니다.
+- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>마운트 해제</span> - 컴포넌트 렌더링 또는 Effect에 해당하는 서브트리가 마운트 해제되었습니다.
+- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Reconnect</span> - 마운트와 유사하지만 [
+  `<Activity>`](/reference/react/Activity)를 사용하는 경우에만 발생합니다.
+- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Disconnect</span> - 마운트 해제와 유사하지만 [`<Activity>`](/reference/react/Activity)를 사용하는 경우에만 발생합니다.
 
-#### Changed props {/*changed-props*/}
+#### 변경된 props {/*changed-props*/}
 
-In development builds, when you click on a component render entry, you can inspect potential changes in props. You can use this information to identify unnecessary renders.
-
-<div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/changed-props.png" alt="Components track: changed props" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/changed-props.dark.png" alt="Components track: changed props" />
-</div>
-
-### Server {/*server*/}
+개발 빌드에서 컴포넌트 렌더링 항목을 클릭하면 props의 잠재적인 변경 사항을 확인할 수 있습니다. 이 정보를 사용하여 불필요한 렌더링을 식별할 수 있습니다.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/server-overview.png" alt="React Server Performance Tracks" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/server-overview.dark.png" alt="React Server Performance Tracks" />
+  <img className="w-full light-image" src="/images/docs/performance-tracks/changed-props.png" alt="컴포넌트 트랙: 변경된 props" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/changed-props.dark.png" alt="컴포넌트 트랙: 변경된 props" />
 </div>
 
-#### Server Requests {/*server-requests*/}
+### 서버 {/*server*/}
 
-The Server Requests track visualized all Promises that eventually end up in a React Server Component. This includes any `async` operations like calling `fetch` or async Node.js file operations. 
+<div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
+  <img className="w-full light-image" src="/images/docs/performance-tracks/server-overview.png" alt="React 서버 성능 트랙" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/server-overview.dark.png" alt="React 서버 성능 트랙" />
+</div>
 
-React will try to combine Promises that are started from inside third-party code into a single span representing the the duration of the entire operation blocking 1st party code.
-For example, a third party library method called `getUser` that calls `fetch` internally multiple times will be represented as a single span called `getUser`, instead of showing multiple `fetch` spans.
+#### 서버 요청 {/*server-requests*/}
 
-Clicking on spans will show you a stack trace of where the Promise was created as well as a view of the value that the Promise resolved to, if available.
+서버 요청 트랙은 최종적으로 React 서버 컴포넌트로 귀결되는 모든 Promise를 시각화합니다. 여기에는 `fetch` 호출이나 비동기 Node.js 파일 작업과 같은 모든 비동기(async) 작업이 포함됩니다.
 
-Rejected Promises are displayed as red with their rejected value.
+React는 서드 파티 코드 내부에서 시작된 Promise를 **퍼스트 파티(1st party) 코드**를 차단하는 전체 작업의 지속 시간을 나타내는 단일 스팬으로 결합하려고 시도합니다.
+예를 들어, 내부적으로 `fetch`를 여러 번 호출하는 서드 파티 라이브러리 메서드 `getUser`는 여러 `fetch` 스팬을 표시하는 대신 `getUser`라는 단일 스팬으로 표현됩니다.
 
-#### Server Components {/*server-components*/}
+스팬을 클릭하면 Promise가 생성된 위치의 스택 트레이스와 함께, 가능한 경우 **Promise가 해결(resolve)된 값**의 뷰가 표시됩니다.
 
-The Server Components tracks visualize the durations of React Server Components Promises they awaited. Timings are displayed as a flamegraph, where each entry represents the duration of the corresponding component render and all its descendant children components.
+거부된(Rejected) Promise는 거부된 값과 함께 빨간색으로 표시됩니다.
 
-If you await a Promise, React will display duration of that Promise. To see all I/O operations, use the Server Requests track.
+#### 서버 컴포넌트 {/*server-components*/}
 
-Different colors are used to indicate the duration of the component render. The darker the color, the longer the duration.
+서버 컴포넌트 트랙은 React 서버 컴포넌트의 렌더링 지속 시간과 해당 컴포넌트가 **대기한(awaited) Promise**를 시각화합니다. 시간 정보는 플레임그래프 형태로 표시되며, 각 항목은 해당 컴포넌트와 모든 하위 컴포넌트의 렌더링 지속 시간을 나타냅니다.
 
-The Server Components track group will always contain a "Primary" track. If React is able to render Server Components concurrently, it will display addititional "Parallel" tracks.
-If more than 8 Server Components are rendered concurrently, React will associate them with the last "Parallel" track instead of adding more tracks.
+Promise를 await하면 React가 해당 Promise의 지속 시간을 **확인할 수 있습니다.** 모든 I/O 작업을 확인하려면 서버 요청 트랙을 사용하세요.
+
+렌더링 지속 시간에 따라 다른 색상으로 표시됩니다. 색이 어두울수록 지속 시간이 더 길다는 것을 의미합니다.
+
+서버 컴포넌트 트랙 그룹에는 항상 "Primary" 트랙이 포함됩니다. React가 서버 컴포넌트를 **동시(concurrently)에** 렌더링할 수 있는 경우 추가적인 "Parallel" 트랙이 표시됩니다.
+8개 이상의 서버 컴포넌트가 동시에 렌더링되면 React는 트랙을 계속 추가하는 대신 마지막 "Parallel" 트랙에 연결하여 표시합니다.
