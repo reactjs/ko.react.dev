@@ -398,10 +398,10 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "React DevTools"
+      "sectionHeader": "React 개발자 도구"
     },
     {
-      "title": "React Performance tracks",
+      "title": "React Performance 트랙",
       "path": "/reference/dev-tools/react-performance-tracks"
     },
     {
