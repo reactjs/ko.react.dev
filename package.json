@@ -76,7 +76,7 @@
     "eslint-plugin-import": "2.x",
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-local-rules": "link:eslint-local-rules",
-    "eslint-plugin-mark": "^0.1.0-canary.2",
+    "eslint-markdown": "^0.1.0-canary.12",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-compiler": "^19.0.0-beta-e552027-20250112",
     "eslint-plugin-react-hooks": "^0.0.0-experimental-fabef7a6b-20221215",

@@ -4,7 +4,7 @@ author: React 팀
 date: 2024/12/05
 description: React 19를 이제 npm에서 사용할 수 있습니다! 이 포스트에서 React 19의 새로운 기능들에 대한 개요와 도입하는 방법에 대해 설명합니다.
 ---
-{/*<!-- eslint-disable mark/no-double-space -->*/}
+{/*<!-- eslint-disable md/no-double-space -->*/}
 2024년 12월 5일, [React 팀](/community/team)
 
 ---
