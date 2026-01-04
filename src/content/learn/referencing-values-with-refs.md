@@ -477,8 +477,6 @@ export default function Toggle() {
 <Sandpack>
 
 ```js
-import { useState } from 'react';
-
 let timeoutID;
 
 function DebouncedButton({ onClick, children }) {
