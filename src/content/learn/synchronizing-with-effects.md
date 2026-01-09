@@ -441,7 +441,7 @@ function VideoPlayer({ src, isPlaying }) {
   }, [isPlaying]);
 ```
 
-이것은 `ref` 객체가 *안정된 식별성(stable identity)*을 가지기 때문입니다. React는 동일한 `useRef` 호출에서 항상 [같은 객체를 얻을 수 있음을](/reference/react/useRef#returns) 보장합니다. 이 객체는 절대 변경되지 않기 때문에 자체적으로 Effect를 다시 실행시키지 않습니다. 따라서 `ref`는 의존성 배열에 포함하든 포함하지 않든 상관없습니다. 포함해도 문제없습니다.
+이것은 `ref` 객체가 안정된 식별성(stable identity)을 가지기 때문입니다. React는 동일한 `useRef` 호출에서 항상 [같은 객체를 얻을 수 있음을](/reference/react/useRef#returns) 보장합니다. 이 객체는 절대 변경되지 않기 때문에 자체적으로 Effect를 다시 실행시키지 않습니다. 따라서 `ref`는 의존성 배열에 포함하든 포함하지 않든 상관없습니다. 포함해도 문제없습니다.
 
 ```js {9}
 function VideoPlayer({ src, isPlaying }) {
@@ -617,7 +617,7 @@ Effect가 개발 모드에서 두 번 실행되는 것을 막으려다 흔히 �
 
 이렇게 하면 개발 모드에서 `"✅ 연결 중..."`이 한 번만 보이지만 버그가 수정된 건 아닙니다.
 
-When the user navigates away, the connection still isn't closed and when they navigate back, a new connection is created. As the user navigates across the app, the connections would keep piling up, the same as it would before the "fix".
+사용자가 다른 페이지로 이동해도 연결은 여전히 닫히지 않고, 다시 돌아오면 새 연결이 생성됩니다. 사용자가 앱을 탐색할수록 연결이 계속 쌓이게 되는데, 이는 "수정" 전과 동일합니다.
 
 버그를 수정하기 위해선 Effect를 단순히 한 번만 실행되도록 만드는 것으로는 부족합니다. Effect는 위에 있는 예시가 연결을 클린업 한것처럼 다시 마운트된 이후에도 제대로 동작해야 합니다.
 
