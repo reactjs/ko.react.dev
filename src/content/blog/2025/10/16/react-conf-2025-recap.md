@@ -81,7 +81,7 @@ Ruben Norte와 Alex Hunt는 기조연설을 마무리하며 다음을 발표했�
 * [Profiling with React Performance tracks](https://www.youtube.com/watch?v=zyVRg2QR6LA&t=8276s) [(Ruslan Lesiutin)](https://x.com/ruslanlesiutin)은 새로운 React Performance Tracks를 사용하여 성능 문제를 디버깅하고 훌륭한 앱을 구축하는 방법을 보여주었습니다.
 * [React Strict DOM](https://www.youtube.com/watch?v=p9OcztRyDl0&t=9026s) [(Nicolas Gallagher)](https://nicolasgallagher.com/)는 Meta의 웹 코드를 네이티브에서 사용하는 접근 방식에 대해 이야기했습니다.
 * [View Transitions and Activity](https://www.youtube.com/watch?v=zyVRg2QR6LA&t=4870s) [(Chance Strickland)](https://x.com/chancethedev) — Chance는 React 팀과 협력하여 빠르고 네이티브 느낌의 애니메이션을 구축하기 위해 [`<Activity />`](https://react.dev/reference/react/Activity) 및 [`<ViewTransition />`](https://react.dev/reference/react/ViewTransition)를 사용하는 방법을 시연했습니다.
-* [In case you missed the memo](https://www.youtube.com/watch?v=zyVRg2QR6LA&t=9525s) [(Cody Olsen)](https://bsky.app/profile/codey.bsky.social) - Cody는 Sanity Studio에서 Compiler를 채택하기 위해 React 팀과 협력했으며, 그 경험을 공유했습니다.
+* [In case you missed the memo](https://www.youtube.com/watch?v=zyVRg2QR6LA&t=9525s) [(Cody Olsen)](https://bsky.app/profile/codey.bsky.social) - Cody는 Sanity Studio에서 컴파일러를 채택하기 위해 React 팀과 협력했으며, 그 경험을 공유했습니다.
 ## React 프레임워크 발표 {/*react-framework-talks*/}
 
 둘째 날 후반부에는 다음을 포함하여 React 프레임워크 팀의 연속 발표가 있었습니다.
