@@ -459,9 +459,9 @@ module.exports = {
       },
       {
         sources: [/\bCompiler\b/],
-        target: 'React 컴파일러',
+        target: '컴파일러',
         meta: {
-          term: 'React Compiler',
+          term: 'Compiler',
           discussions: [1400],
           note: '',
         },
