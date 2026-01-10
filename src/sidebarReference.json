@@ -353,7 +353,7 @@
       "sectionHeader": "React Compiler"
     },
     {
-      "title": "구성",
+      "title": "설정",
       "path": "/reference/react-compiler/configuration",
       "routes": [
         {
