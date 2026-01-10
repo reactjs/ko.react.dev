@@ -1,19 +1,19 @@
 ---
-title: React Compiler
+title: React 컴파일러
 ---
 
 ## 소개 {/*introduction*/}
 
-[React Compiler가 하는 일](/learn/react-compiler/introduction)과 메모이제이션을 자동으로 처리하여 `useMemo`, `useCallback`, `React.memo`를 수동으로 사용할 필요 없이 React 애플리케이션을 최적화하는 방법을 알아보세요.
+[React 컴파일러가 하는 일](/learn/react-compiler/introduction)과 메모이제이션을 자동으로 처리하여 `useMemo`, `useCallback`, `React.memo`를 수동으로 사용할 필요 없이 React 애플리케이션을 최적화하는 방법을 알아보세요.
 
 ## 설치 {/*installation*/}
 
-[React Compiler 설치](/learn/react-compiler/installation)를 시작하고 빌드 도구와 함께 구성하는 방법을 알아보세요.
+[React 컴파일러 설치](/learn/react-compiler/installation)를 시작하고 빌드 도구와 함께 구성하는 방법을 알아보세요.
 
 
 ## 점진적 도입 {/*incremental-adoption*/}
 
-아직 모든 곳에서 활성화할 준비가 되지 않았다면, 기존 코드베이스에서 [React Compiler를 점진적으로 도입하는 전략](/learn/react-compiler/incremental-adoption)을 알아보세요.
+아직 모든 곳에서 활성화할 준비가 되지 않았다면, 기존 코드베이스에서 [React 컴파일러를 점진적으로 도입하는 전략](/learn/react-compiler/incremental-adoption)을 알아보세요.
 
 ## 디버깅 및 문제 해결 {/*debugging-and-troubleshooting*/}
 
