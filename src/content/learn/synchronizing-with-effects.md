@@ -441,7 +441,7 @@ function VideoPlayer({ src, isPlaying }) {
   }, [isPlaying]);
 ```
 
-이것은 `ref` 객체가 안정된 식별성(stable identity)을 가지기 때문입니다. React는 동일한 `useRef` 호출에서 항상 [같은 객체를 얻을 수 있음을](/reference/react/useRef#returns) 보장합니다. 이 객체는 절대 변경되지 않기 때문에 자체적으로 Effect를 다시 실행시키지 않습니다. 따라서 `ref`는 의존성 배열에 포함하든 포함하지 않든 상관없습니다. 포함해도 문제없습니다.
+이것은 `ref` 객체가 <em>안정된 식별성(stable identity)</em>을 가지기 때문입니다. React는 동일한 `useRef` 호출에서 항상 [같은 객체를 얻을 수 있음을](/reference/react/useRef#returns) 보장합니다. 이 객체는 절대 변경되지 않기 때문에 자체적으로 Effect를 다시 실행시키지 않습니다. 따라서 `ref`는 의존성 배열에 포함하든 포함하지 않든 상관없습니다. 포함해도 문제없습니다.
 
 ```js {9}
 function VideoPlayer({ src, isPlaying }) {
