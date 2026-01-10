@@ -8,8 +8,7 @@ React Performance(성능) 트랙은 브라우저 개발자 도구의 Performance
 
 </Intro>
 
-이 트랙은 개발자에게 React 애플리케이션의 성능에 대한 포괄적인 인사이트를 제공하도록 설계되었습니다. 네트워크 요청, 자바스크립트 실행, 이벤트 루프 활동과 같은 주요 데이터 소스와 함께 React 전용 이벤트와 메트릭을 시각화하며, 애플리케이션 동작을 완전히 이해할 수 
-있도록 Performance(성능) 패널 내의 통합된 타임라인에서 모든 정보가 동기화되어 표시됩니다.
+이 트랙은 개발자에게 React 애플리케이션의 성능에 대한 포괄적인 인사이트를 제공하도록 설계되었습니다. 네트워크 요청, 자바스크립트 실행, 이벤트 루프 활동과 같은 주요 데이터 소스와 함께 React 전용 이벤트와 메트릭을 시각화하며, 애플리케이션 동작을 완전히 이해할 수 있도록 Performance(성능) 패널 내의 통합된 타임라인에서 모든 정보가 동기화되어 표시됩니다.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
   <img className="w-full light-image" src="/images/docs/performance-tracks/overview.png" alt="React Performance 트랙" />
@@ -25,8 +24,7 @@ React Performance(성능) 트랙은 브라우저 개발자 도구의 Performance
 React Performance 트랙은 개발 및 프로파일링 빌드에서만 사용할 수 있습니다.
 
 - **개발**: 기본적으로 활성화되어 있습니다.
-- **프로파일링**: 기본적으로 Scheduler 트랙만 활성화되어 있습니다. 컴포넌트 트랙은 [`<Profiler>`](/reference/react/Profiler)로 감싼 서브트리 내의 컴포넌트만 나열합니다. [React 개발자 도구 확장 
-  프로그램](/learn/react-developer-tools)을 활성화했다면, `<Profiler>`로 감싸지 않았더라도 모든 컴포넌트가 컴포넌트 트랙에 포함됩니다. 서버 트랙은 프로파일링 빌드에서 사용할 수 없습니다.
+- **프로파일링**: 기본적으로 Scheduler 트랙만 활성화되어 있습니다. 컴포넌트 트랙은 [`<Profiler>`](/reference/react/Profiler)로 감싼 서브트리 내의 컴포넌트만 나열합니다. [React 개발자 도구 확장 프로그램](/learn/react-developer-tools)을 활성화했다면, `<Profiler>`로 감싸지 않았더라도 모든 컴포넌트가 컴포넌트 트랙에 포함됩니다. 서버 트랙은 프로파일링 빌드에서 사용할 수 없습니다.
 
 활성화된 경우 [확장성 API](https://developer.chrome.com/docs/devtools/performance/extension)를 제공하는 브라우저의 Performance(성능) 패널로 기록한 트레이스에서 트랙이 자동으로 표시됩니다.
 
@@ -50,8 +48,7 @@ React Performance 트랙을 구동하는 프로파일링 도구는 추가적인 
 
 ### Scheduler {/*scheduler*/}
 
-Scheduler는 우선순위가 다른 작업을 관리하는 데 사용되는 React의 내부 개념입니다.
-이 트랙은 특정 우선순위의 작업을 나타내는 네 개의 서브트랙으로 구성됩니다.
+Scheduler는 우선순위가 다른 작업을 관리하는 데 사용되는 React의 내부 개념입니다. 이 트랙은 특정 우선순위의 작업을 나타내는 네 개의 서브트랙으로 구성됩니다.
 
 - **Blocking** - 사용자 상호작용에 의해 시작될 수 있는 동기 업데이트입니다.
 - **Transition** - 백그라운드에서 발생하는 논블로킹 작업으로 주로 [`startTransition`](/reference/react/startTransition)을 통해 시작됩니다.
