@@ -2,32 +2,32 @@
 title: React Compiler
 ---
 
-## Introduction {/*introduction*/}
+## 소개 {/*introduction*/}
 
-Learn [what React Compiler does](/learn/react-compiler/introduction) and how it automatically optimizes your React application by handling memoization for you, eliminating the need for manual `useMemo`, `useCallback`, and `React.memo`.
+[React Compiler가 하는 일](/learn/react-compiler/introduction)과 메모이제이션을 자동으로 처리하여 `useMemo`, `useCallback`, `React.memo`를 수동으로 사용할 필요 없이 React 애플리케이션을 최적화하는 방법을 알아보세요.
 
-## Installation {/*installation*/}
+## 설치 {/*installation*/}
 
-Get started with [installing React Compiler](/learn/react-compiler/installation) and learn how to configure it with your build tools.
+[React Compiler 설치](/learn/react-compiler/installation)를 시작하고 빌드 도구와 함께 구성하는 방법을 알아보세요.
 
 
-## Incremental Adoption {/*incremental-adoption*/}
+## 점진적 도입 {/*incremental-adoption*/}
 
-Learn [strategies for gradually adopting React Compiler](/learn/react-compiler/incremental-adoption) in your existing codebase if you're not ready to enable it everywhere yet.
+아직 모든 곳에서 활성화할 준비가 되지 않았다면, 기존 코드베이스에서 [React Compiler를 점진적으로 도입하는 전략](/learn/react-compiler/incremental-adoption)을 알아보세요.
 
-## Debugging and Troubleshooting {/*debugging-and-troubleshooting*/}
+## 디버깅 및 문제 해결 {/*debugging-and-troubleshooting*/}
 
-When things don't work as expected, use our [debugging guide](/learn/react-compiler/debugging) to understand the difference between compiler errors and runtime issues, identify common breaking patterns, and follow a systematic debugging workflow.
+예상대로 작동하지 않을 때, [디버깅 가이드](/learn/react-compiler/debugging)를 사용하여 컴파일러 오류와 런타임 문제의 차이를 이해하고, 일반적인 문제 패턴을 식별하며, 체계적인 디버깅 워크플로우를 따라가 보세요.
 
-## Configuration and Reference {/*configuration-and-reference*/}
+## 설정 및 레퍼런스 {/*configuration-and-reference*/}
 
-For detailed configuration options and API reference:
+자세한 설정 옵션과 API 레퍼런스는 다음을 참고하세요.
 
-- [Configuration Options](/reference/react-compiler/configuration) - All compiler configuration options including React version compatibility
-- [Directives](/reference/react-compiler/directives) - Function-level compilation control
-- [Compiling Libraries](/reference/react-compiler/compiling-libraries) - Shipping pre-compiled libraries
+- [설정 옵션](/reference/react-compiler/configuration) - React 버전 호환성을 포함한 모든 컴파일러 설정 옵션
+- [지시어](/reference/react-compiler/directives) - 함수 수준의 컴파일 제어
+- [라이브러리 컴파일](/reference/react-compiler/compiling-libraries) - 사전 컴파일된 라이브러리 배포
 
-## Additional resources {/*additional-resources*/}
+## 추가 자료 {/*additional-resources*/}
 
-In addition to these docs, we recommend checking the [React Compiler Working Group](https://github.com/reactwg/react-compiler) for additional information and discussion about the compiler.
+이 문서 외에도, 컴파일러에 대한 추가 정보와 논의를 위해 [React Compiler Working Group](https://github.com/reactwg/react-compiler)을 확인하는 것을 권장합니다.
 
