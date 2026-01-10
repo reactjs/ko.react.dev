@@ -14290,7 +14290,7 @@ useEffect(() => {
 
 Effects가 컴포넌트 관점에서 생각되는 이유를 연구하는 데 시간을 보냈고, 그 이유 중 하나가 의존성 배열이라고 생각합니다. 작성해야 하므로, 바로 거기에 있고 여러분이 무엇에 "반응"하고 있는지를 상기시키며 '이 값들이 변경될 때 이것을 하라'는 멘탈 모델로 유도합니다.
 
-hooks를 출시할 때, 사전 컴파일로 사용하기 더 쉽게 만들 수 있다는 것을 알고 있었습니다. React Compiler를 사용하면, 이제 대부분의 경우 `useCallback`과 `useMemo`를 직접 작성하는 것을 피할 수 있습니다. Effects의 경우, 컴파일러가 의존성을 자동으로 삽입할 수 있습니다:
+hooks를 출시할 때, 사전 컴파일로 사용하기 더 쉽게 만들 수 있다는 것을 알고 있었습니다. React 컴파일러를 사용하면, 이제 대부분의 경우 `useCallback`과 `useMemo`를 직접 작성하는 것을 피할 수 있습니다. Effects의 경우, 컴파일러가 의존성을 자동으로 삽입할 수 있습니다:
 
 ```js
 useEffect(() => {
@@ -14312,7 +14312,7 @@ Our hope is that automatically inserting dependencies is not only easier to writ
 
 Later in 2025 [we shared](/blog/2025/10/07/react-compiler-1) the first stable release of React Compiler, and we're continuing to invest in shipping more improvements.
 
-또한 React Compiler를 사용해서 코드 이해와 디버깅을 향상시킬 수 있는 정보를 제공하는 방법을 탐구하기 시작했습니다. 저희가 탐구하기 시작한 아이디어 중 하나는 [Lauren Tan의 React Conf 발표](https://conf2024.react.dev/talks/5)에서 사용된 확장 프로그램과 유사한, React Compiler를 기반으로 하는 새로운 실험적 LSP 기반 React IDE 확장 프로그램입니다.
+또한 React 컴파일러를 사용해서 코드 이해와 디버깅을 향상시킬 수 있는 정보를 제공하는 방법을 탐구하기 시작했습니다. 저희가 탐구하기 시작한 아이디어 중 하나는 [Lauren Tan의 React Conf 발표](https://conf2024.react.dev/talks/5)에서 사용된 확장 프로그램과 유사한, React 컴파일러를 기반으로 하는 새로운 실험적 LSP 기반 React IDE 확장 프로그램입니다.
 
 저희의 아이디어는 컴파일러의 정적 분석을 사용해서 IDE에서 직접 더 많은 정보, 제안, 최적화 기회를 제공할 수 있다는 것입니다. 예를 들어, React의 규칙을 위반하는 코드에 대한 진단을 제공하거나, 컴포넌트와 hooks가 컴파일러에 의해 최적화되었는지 보여주는 호버, 또는 [자동으로 삽입된 Effect 의존성](#automatic-effect-dependencies)을 볼 수 있는 CodeLens를 제공할 수 있습니다.
 

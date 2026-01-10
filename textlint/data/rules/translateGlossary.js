@@ -457,6 +457,15 @@ module.exports = {
           note: '',
         },
       },
+      {
+        sources: [/\bCompiler\b/],
+        target: '컴파일러',
+        meta: {
+          term: 'Compiler',
+          discussions: [1400],
+          note: '',
+        },
+      },
     ],
     others: [
       {

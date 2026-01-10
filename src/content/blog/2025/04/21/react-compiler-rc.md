@@ -21,7 +21,7 @@ React 팀이 새로운 업데이트를 발표합니다.
 
 ---
 
-[React 컴파일러](https://react.dev/learn/react-compiler)는 자동 메모이제이션을 통해 React 앱을 최적화할 수 있도록 도와주는 빌드 툴입니다. 지난해, React Compiler의 [첫 번째 베타](https://react.dev/blog/2024/10/21/react-compiler-beta-release)를 공개했고 많은 피드백과 기여를 받았습니다. 실제로 컴파일러를 도입한 사례들 ([Sanity Studio](https://github.com/reactwg/react-compiler/discussions/33), [Wakelet](https://github.com/reactwg/react-compiler/discussions/52))에서도 성과를 확인했습니다. 그리고 이제 안정화 출시를 향해 나아가고 있습니다.
+[React 컴파일러](https://react.dev/learn/react-compiler)는 자동 메모이제이션을 통해 React 앱을 최적화할 수 있도록 도와주는 빌드 툴입니다. 지난해, React 컴파일러의 [첫 번째 베타](https://react.dev/blog/2024/10/21/react-compiler-beta-release)를 공개했고 많은 피드백과 기여를 받았습니다. 실제로 컴파일러를 도입한 사례들 ([Sanity Studio](https://github.com/reactwg/react-compiler/discussions/33), [Wakelet](https://github.com/reactwg/react-compiler/discussions/52))에서도 성과를 확인했습니다. 그리고 이제 안정화 출시를 향해 나아가고 있습니다.
 
 오늘 컴파일러의 첫 번째 RC (Release Candidate)를 공개합니다. RC는 컴파일러의 안정적이고 최종 버전에 가까운 상태로 프로덕션 환경에서 시도해 볼 수 있습니다.
 
