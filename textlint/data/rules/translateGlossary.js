@@ -457,6 +457,15 @@ module.exports = {
           note: '',
         },
       },
+      {
+        sources: [/\bReact Compiler\b/],
+        target: 'React 컴파일러',
+        meta: {
+          term: 'React Compiler',
+          discussions: [1400],
+          note: '',
+        },
+      },
     ],
     others: [
       {

@@ -58,6 +58,7 @@ Escape Hatches|`/\bEscape[-\s]?Hatches\b/`|탈출구|[#738](https://github.com/r
 Bundle|`/\bBundles?\b/`|번들|[#829](https://github.com/reactjs/ko.react.dev/issues/829)||
 Bundler|`/\bBundlers?\b/`|번들러|[#829](https://github.com/reactjs/ko.react.dev/issues/829)||
 Bundling|`/\bBundling\b/`|번들링|[#829](https://github.com/reactjs/ko.react.dev/issues/829)||
+React Compiler|`/\bReact Compiler\b/`|React 컴파일러|[#1400](https://github.com/reactjs/ko.react.dev/issues/1400)||
 
 ### Others
 
