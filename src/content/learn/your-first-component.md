@@ -215,7 +215,11 @@ React 애플리케이션은 "root"컴포넌트에서 시작됩니다. 보통 새
 
 대부분의 React 앱은 모든 부분에서 컴포넌트를 사용합니다. 즉, 버튼과 같이 재사용 가능한 부분뿐만 아니라 사이드바, 목록, 그리고 궁극적으로 전체 페이지와 같은 큰 부분에도 컴포넌트를 사용하게 됩니다! 컴포넌트는 한 번만 사용되더라도 UI 코드와 마크업을 정리하는 편리한 방법입니다.
 
+<<<<<<< HEAD
 [React 기반 프레임워크들](/learn/start-a-new-react-project)은 이를 한 단계 더 발전시킵니다. 빈 HTML파일을 사용하고 React가 JavaScript로 페이지 관리를 "다룰 수 있게" 하도록 하는 대신, React 컴포넌트에서 HTML을 자동으로 생성하기도합니다. 이를 통해 JavaScript 코드가 로드되기 전에 앱에서 일부 컨텐츠를 표시할 수 있습니다.
+=======
+[React-based frameworks](/learn/creating-a-react-app) take this a step further. Instead of using an empty HTML file and letting React "take over" managing the page with JavaScript, they *also* generate the HTML automatically from your React components. This allows your app to show some content before the JavaScript code loads.
+>>>>>>> 2da4f7fbd90ddc09835c9f85d61fd5644a271abc
 
 그렇지만 여전히 많은 웹사이트들은 React를 [약간의 상호작용을 추가하는 용도로만](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) 사용합니다. 이러한 웹사이트에는 전체 페이지에 하나의 root 컴포넌트가 아닌 여러 개의 root 컴포넌트가 있습니다. 필요한 만큼 React를 많이 또는 적게 사용할 수 있습니다.
 
