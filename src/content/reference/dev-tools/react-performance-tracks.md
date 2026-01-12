@@ -117,8 +117,7 @@ Scheduler는 우선순위가 다른 작업을 관리하는 데 사용되는 Reac
 
 - <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>마운트</span> - 컴포넌트 렌더링 또는 Effect에 해당하는 서브트리가 마운트되었습니다.
 - <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>마운트 해제</span> - 컴포넌트 렌더링 또는 Effect에 해당하는 서브트리가 마운트 해제되었습니다.
-- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Reconnect</span> - 마운트와 유사하지만 [
-  `<Activity>`](/reference/react/Activity)를 사용하는 경우에만 발생합니다.
+- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Reconnect</span> - 마운트와 유사하지만 [`<Activity>`](/reference/react/Activity)를 사용하는 경우에만 발생합니다.
 - <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Disconnect</span> - 마운트 해제와 유사하지만 [`<Activity>`](/reference/react/Activity)를 사용하는 경우에만 발생합니다.
 
 #### 변경된 props {/*changed-props*/}
