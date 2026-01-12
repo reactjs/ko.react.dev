@@ -211,7 +211,7 @@ li {
 
 이 문제를 해결하는 한 방법은 부모 요소에서 단일 ref를 얻고, [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)과 같은 DOM 조작 메서드를 사용하여 그 안에서 개별 자식 노드를 "찾는" 것입니다. 하지만 이는 다루기가 힘들며 DOM 구조가 바뀌는 경우 작동하지 않을 수 있습니다.
 
-Another solution is to **pass a function to the `ref` attribute.** This is called a [`ref` callback.](/reference/react-dom/components/common#ref-callback) React will call your ref callback with the DOM node when it's time to set the ref, and call the cleanup function returned from the callback when it's time to clear it. This lets you maintain your own array or a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), and access any ref by its index or some kind of ID.
+또 다른 해결책은 **`ref` 어트리뷰트에 함수를 전달하는 것입니다.** 이것을 [`ref` 콜백](/reference/react-dom/components/common#ref-callback)이라 부릅니다. React는 ref를 설정할 때 DOM 노드와 함께 ref 콜백을 호출하고, ref를 지울 때는 콜백에서 반환된 정리 함수를 호출합니다. 이를 통해 배열이나 [Map](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map)을 직접 관리하고 인덱스나 특정 ID로 ref에 접근할 수 있습니다.
 
 아래 예시는 긴 목록에서 특정 노드에 스크롤 하기 위해 앞에서 말한 접근법을 사용합니다.
 

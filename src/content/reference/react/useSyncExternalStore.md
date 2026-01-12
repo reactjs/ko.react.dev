@@ -101,8 +101,8 @@ function TodosApp() {
 
 store에 있는 데이터의 <CodeStep step={3}>snapshot</CodeStep>을 반환합니다. 두 개의 함수를 인수로 전달해야 합니다.
 
-1. <CodeStep step={1}>`subscribe` 함수</CodeStep>는 store에 구독하고 구독을 취소하는 함수를 반환해야 합니다.
-2. <CodeStep step={2}>`getSnapshot` 함수</CodeStep> 함수는 store에서 데이터의 스냅샷을 읽어야 합니다.
+1. <CodeStep step={1}>`subscribe`</CodeStep> 함수는 store에 구독하고 구독을 취소하는 함수를 반환해야 합니다.
+2. <CodeStep step={2}>`getSnapshot`</CodeStep> 함수는 store에서 데이터의 스냅샷을 읽어야 합니다.
 
 React는 이 함수를 사용해 컴포넌트를 store에 구독한 상태로 유지하고 변경 사항이 있을 때 리렌더링합니다.
 

@@ -1,16 +1,16 @@
 ---
-title: Configuration
+title: 설정
 ---
 
 <Intro>
 
-This page lists all configuration options available in React Compiler.
+이 페이지에서는 React Compiler에서 사용할 수 있는 모든 설정 옵션을 나열합니다.
 
 </Intro>
 
 <Note>
 
-For most apps, the default options should work out of the box. If you have a special need, you can use these advanced options.
+대부분의 앱에서는 기본 옵션이 기본적으로 잘 작동합니다. 특별한 필요가 있다면 이러한 고급 옵션을 사용할 수 있습니다.
 
 </Note>
 
@@ -29,55 +29,55 @@ module.exports = {
 
 ---
 
-## Compilation Control {/*compilation-control*/}
+## 컴파일 제어 {/*compilation-control*/}
 
-These options control *what* the compiler optimizes and *how* it selects components and hooks to compile.
+이 옵션들은 컴파일러가 *무엇*을 최적화하고, *어떻게* 컴포넌트와 hooks를 컴파일 대상으로 선택할지를 제어합니다.
 
-* [`compilationMode`](/reference/react-compiler/compilationMode) controls the strategy for selecting functions to compile (e.g., all functions, only annotated ones, or intelligent detection).
+* [`compilationMode`](/reference/react-compiler/compilationMode)는 컴파일할 함수를 선택하는 전략을 제어합니다. (예: 모든 함수, 어노테이션된 함수만, 또는 컴파일러의 자동 감지).
 
 ```js
 {
-  compilationMode: 'annotation' // Only compile "use memo" functions
+  compilationMode: 'annotation' // "use memo"가 명시된 함수만 컴파일합니다.
 }
 ```
 
 ---
 
-## Version Compatibility {/*version-compatibility*/}
+## 버전 호환성 {/*version-compatibility*/}
 
-React version configuration ensures the compiler generates code compatible with your React version.
+React 버전 설정은 컴파일러가 현재 사용 중인 React 버전과 호환되는 코드를 생성하도록 합니다.
 
-[`target`](/reference/react-compiler/target) specifies which React version you're using (17, 18, or 19).
+[`target`](/reference/react-compiler/target)은 현재 사용 중인 React 버전(17, 18, 또는 19)을 지정합니다.
 
 ```js
-// For React 18 projects
+// React 18을 사용하는 프로젝트의 경우
 {
-  target: '18' // Also requires react-compiler-runtime package
+  target: '18' // react-compiler-runtime 패키지가 필요합니다.
 }
 ```
 
 ---
 
-## Error Handling {/*error-handling*/}
+## 에러 처리 {/*error-handling*/}
 
-These options control how the compiler responds to code that doesn't follow the [Rules of React](/reference/rules).
+이 옵션들은 [React의 규칙](/reference/rules)을 따르지 않는 코드에 대해 컴파일러가 어떻게 대응하는지를 제어합니다.
 
-[`panicThreshold`](/reference/react-compiler/panicThreshold) determines whether to fail the build or skip problematic components.
+[`panicThreshold`](/reference/react-compiler/panicThreshold)는 빌드를 실패로 처리할지, 문제가 있는 컴포넌트를 건너뛸지를 결정합니다.
 
 ```js
-// Recommended for production
+// 프로덕션 환경에 권장
 {
-  panicThreshold: 'none' // Skip components with errors instead of failing the build
+  panicThreshold: 'none' // 빌드를 실패시키는 대신 오류가 있는 컴포넌트를 건너뜁니다.
 }
 ```
 
 ---
 
-## Debugging {/*debugging*/}
+## 디버깅 {/*debugging*/}
 
-Logging and analysis options help you understand what the compiler is doing.
+로깅 및 분석 옵션은 컴파일러의 동작을 이해하는 데 도움을 줍니다.
 
-[`logger`](/reference/react-compiler/logger) provides custom logging for compilation events.
+[`logger`](/reference/react-compiler/logger)는 컴파일 이벤트에 대한 커스텀 로깅을 제공합니다.
 
 ```js
 {
@@ -93,11 +93,11 @@ Logging and analysis options help you understand what the compiler is doing.
 
 ---
 
-## Feature Flags {/*feature-flags*/}
+## 기능 플래그 {/*feature-flags*/}
 
-Conditional compilation lets you control when optimized code is used.
+조건부 컴파일을 사용하면 최적화된 코드가 언제 사용될지를 제어할 수 있습니다.
 
-[`gating`](/reference/react-compiler/gating) enables runtime feature flags for A/B testing or gradual rollouts.
+[`gating`](/reference/react-compiler/gating)은 A/B 테스트나 점진적 배포를 위한 런타임 기능 플래그를 활성화합니다.
 
 ```js
 {
@@ -110,11 +110,11 @@ Conditional compilation lets you control when optimized code is used.
 
 ---
 
-## Common Configuration Patterns {/*common-patterns*/}
+## 공통 설정 패턴 {/*common-patterns*/}
 
-### Default configuration {/*default-configuration*/}
+### 기본 설정 {/*default-configuration*/}
 
-For most React 19 applications, the compiler works without configuration:
+대부분의 React 19 애플리케이션에서는 별도의 설정 없이도 컴파일러가 정상적으로 동작합니다.
 
 ```js
 // babel.config.js
@@ -125,9 +125,9 @@ module.exports = {
 };
 ```
 
-### React 17/18 projects {/*react-17-18*/}
+### React 17/18 프로젝트 {/*react-17-18*/}
 
-Older React versions need the runtime package and target configuration:
+React 17/18 프로젝트에서는 런타임 패키지와 target 설정이 필요합니다.
 
 ```bash
 npm install react-compiler-runtime@latest
@@ -139,13 +139,13 @@ npm install react-compiler-runtime@latest
 }
 ```
 
-### Incremental adoption {/*incremental-adoption*/}
+### 점진적 적용 {/*incremental-adoption*/}
 
-Start with specific directories and expand gradually:
+특정 디렉토리부터 시작해 점진적으로 확장할 수 있습니다.
 
 ```js
 {
-  compilationMode: 'annotation' // Only compile "use memo" functions
+  compilationMode: 'annotation' // "use memo"가 명시된 함수만 컴파일합니다.
 }
 ```
 
