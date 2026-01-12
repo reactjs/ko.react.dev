@@ -41,11 +41,11 @@ Jack Pope는 Canary에 도입될 새로운 기능들을 발표했으며, 여기�
 * [`<ViewTransition />`](https://react.dev/reference/react/ViewTransition) — 페이지 전환에 애니메이션을 적용하는 새로운 컴포넌트.
 * [Fragment Refs](https://react.dev/reference/react/Fragment#fragmentinstance) — Fragment로 감싸진 DOM 노드와 상호작용하는 새로운 방식.
 
-Lauren Tan은 [React Compiler v1.0](/blog/2025/10/07/react-compiler-1)을 발표하고, 다음과 같은 이점 때문에 모든 앱에서 React Compiler를 사용할 것을 권장했습니다.
+Lauren Tan은 [React 컴파일러 v1.0](/blog/2025/10/07/react-compiler-1)을 발표하고, 다음과 같은 이점 때문에 모든 앱에서 React 컴파일러를 사용할 것을 권장했습니다.
 * React 코드를 이해하는 [자동 메모이제이션](/learn/react-compiler/introduction#what-does-react-compiler-do).
-* 모범 사례를 알려주는 React Compiler 기반의 [새로운 린트 규칙](/learn/react-compiler/installation#eslint-integration).
+* 모범 사례를 알려주는 React 컴파일러 기반의 [새로운 린트 규칙](/learn/react-compiler/installation#eslint-integration).
 * Vite, Next.js, Expo의 새로운 앱에 대한 [기본 지원](/learn/react-compiler/installation#basic-setup).
-* 기존 앱이 React Compiler로 마이그레이션하기 위한 [마이그레이션 가이드](/learn/react-compiler/incremental-adoption).
+* 기존 앱이 React 컴파일러로 마이그레이션하기 위한 [마이그레이션 가이드](/learn/react-compiler/incremental-adoption).
 
 마지막으로, Seth Webster는 React의 오픈소스 개발과 커뮤니티를 관리할 [React Foundation](/blog/2025/10/07/introducing-the-react-foundation) 설립을 발표했습니다.
 
@@ -81,7 +81,7 @@ Ruben Norte와 Alex Hunt는 기조연설을 마무리하며 다음을 발표했�
 * [Profiling with React Performance tracks](https://www.youtube.com/watch?v=zyVRg2QR6LA&t=8276s) [(Ruslan Lesiutin)](https://x.com/ruslanlesiutin)은 새로운 React Performance Tracks를 사용하여 성능 문제를 디버깅하고 훌륭한 앱을 구축하는 방법을 보여주었습니다.
 * [React Strict DOM](https://www.youtube.com/watch?v=p9OcztRyDl0&t=9026s) [(Nicolas Gallagher)](https://nicolasgallagher.com/)는 Meta의 웹 코드를 네이티브에서 사용하는 접근 방식에 대해 이야기했습니다.
 * [View Transitions and Activity](https://www.youtube.com/watch?v=zyVRg2QR6LA&t=4870s) [(Chance Strickland)](https://x.com/chancethedev) — Chance는 React 팀과 협력하여 빠르고 네이티브 느낌의 애니메이션을 구축하기 위해 [`<Activity />`](https://react.dev/reference/react/Activity) 및 [`<ViewTransition />`](https://react.dev/reference/react/ViewTransition)를 사용하는 방법을 시연했습니다.
-* [In case you missed the memo](https://www.youtube.com/watch?v=zyVRg2QR6LA&t=9525s) [(Cody Olsen)](https://bsky.app/profile/codey.bsky.social) - Cody는 Sanity Studio에서 Compiler를 채택하기 위해 React 팀과 협력했으며, 그 경험을 공유했습니다.
+* [In case you missed the memo](https://www.youtube.com/watch?v=zyVRg2QR6LA&t=9525s) [(Cody Olsen)](https://bsky.app/profile/codey.bsky.social) - Cody는 Sanity Studio에서 컴파일러를 채택하기 위해 React 팀과 협력했으며, 그 경험을 공유했습니다.
 ## React 프레임워크 발표 {/*react-framework-talks*/}
 
 둘째 날 후반부에는 다음을 포함하여 React 프레임워크 팀의 연속 발표가 있었습니다.

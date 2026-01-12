@@ -72,7 +72,7 @@ React 19에 추가된 개선 사항들로 인해 일부 주요한 변경 사항<
 
 <BlogCard title="React Labs: 그동안의 작업 - 2024년 2월" date="2024년 2월 15일" url="/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024">
 
-React Labs 게시글에서는 현재 연구 개발 중인 프로젝트에 대한 글을 작성합니다. 지난 업데이트 이후 React Compiler, 새로운 기능 및 React 19에서 상당한 진전이 있었으며, 그 내용을 공유하고자 합니다.
+React Labs 게시글에서는 현재 연구 개발 중인 프로젝트에 대한 글을 작성합니다. 지난 업데이트 이후 React 컴파일러, 새로운 기능 및 React 19에서 상당한 진전이 있었으며, 그 내용을 공유하고자 합니다.
 
 </BlogCard>
 
