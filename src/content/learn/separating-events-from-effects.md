@@ -591,7 +591,7 @@ function Page() {
 function Page({ url }) {
   useEffect(() => {
     logVisit(url);
-  }, []); // 🔴 React Hook useEffect has a missing dependency: 'url'
+  }, []); // 🔴 React Hook useEffect의 의존성 'url'이 누락되었습니다.
   // ...
 }
 ```
@@ -616,7 +616,7 @@ function Page({ url }) {
 
   useEffect(() => {
     logVisit(url, numberOfItems);
-  }, [url]); // 🔴 React Hook useEffect has a missing dependency: 'numberOfItems'
+  }, [url]); // 🔴 React Hook useEffect의 의존성 'numberOfItems'가 누락되었습니다.
   // ...
 }
 ```
