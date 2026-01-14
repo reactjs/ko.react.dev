@@ -149,7 +149,7 @@ function TableContainer({ items }) {
 
 ## 컴파일러를 사용해 봐야 하나요? {/*should-i-try-out-the-compiler*/}
 
-모든 분들이 React 컴파일러를 사용해 보시길 권장합니다. 현재 컴파일러는 React에 대한 선택적 추가 기능이지만, 미래에는 일부 기능이 완전히 작동하기 위해 컴파일러가 필요할 수 있습니다.
+React 컴파일러를 사용해 보길 권장합니다. 현재 컴파일러는 React에 대한 선택적 추가 기능이지만, 미래에는 일부 기능이 완전히 작동하기 위해 컴파일러가 필요할 수 있습니다.
 
 ### 사용해도 안전한가요? {/*is-it-safe-to-use*/}
 
@@ -165,7 +165,7 @@ Next.js 사용자는 [v15.3.1](https://github.com/vercel/next.js/releases/tag/v1
 
 ## useMemo, useCallback, React.memo는 어떻게 해야 하나요? {/*what-should-i-do-about-usememo-usecallback-and-reactmemo*/}
 
-기본적으로 React 컴파일러는 분석과 휴리스틱을 기반으로 코드를 메모이제이션합니다. 대부분의 경우 이 메모이제이션은 여러분이 작성한 것만큼 정확하거나 더 정확할 것입니다.
+기본적으로 React 컴파일러는 분석과 휴리스틱을 기반으로 코드를 메모이제이션합니다. 대부분의 경우 이 메모이제이션은 직접 작성한 것만큼 정확하거나 더 정확할 것입니다.
 
 그러나 일부 경우에는 개발자가 메모이제이션에 대해 더 많은 제어가 필요할 수 있습니다. `useMemo`와 `useCallback` Hook은 어떤 값이 메모이제이션되는지에 대한 제어를 제공하는 탈출구로 React 컴파일러와 함께 계속 사용할 수 있습니다. 일반적인 사용 사례는 메모이제이션된 값이 Effect 의존성으로 사용되어 의존성이 의미 있게 변경되지 않더라도 Effect가 반복적으로 실행되지 않도록 하는 경우입니다.
 
