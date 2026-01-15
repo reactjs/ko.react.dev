@@ -64,7 +64,7 @@ module.exports = {
 
 ### Vite {/*vite*/}
 
-Vite를 사용하는 경우 vite-plugin-react에 플러그인을 추가할 수 있습니다.
+Vite를 사용하는 경우 `vite-plugin-react`에 플러그인을 추가할 수 있습니다.
 
 ```js {3,9}
 // vite.config.js
@@ -172,7 +172,7 @@ ESLint 플러그인을 설치합니다.
 npm install -D eslint-plugin-react-hooks@latest
 </TerminalBlock>
 
-eslint-plugin-react-hooks를 아직 설정하지 않았다면 [readme의 설치 지침](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation)을 따르세요. 컴파일러 규칙은 `recommended-latest` 프리셋에서 사용할 수 있습니다.
+`eslint-plugin-react-hooks`를 아직 설정하지 않았다면 [readme의 설치 지침](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation)을 따르세요. 컴파일러 규칙은 `recommended-latest` 프리셋에서 사용할 수 있습니다.
 
 ESLint 규칙은 다음과 같은 역할을 합니다.
 - [React 규칙](/reference/rules) 위반 식별
