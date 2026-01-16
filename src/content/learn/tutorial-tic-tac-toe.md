@@ -1346,7 +1346,7 @@ DOM `<button>` 엘리먼트의 `onClick` 어트리뷰트는 빌트인 컴포넌�
 ```jsx
 const squares = [null, null, null, null, null, null, null, null, null];
 squares[0] = 'X';
-// 이제 `squares`는 ["X", null, null, null, null, null, null, null, null]입니다.
+// 이제 `squares`는 `["X", null, null, null, null, null, null, null, null]`입니다.
 ```
 
 그리고 아래는 `squares` 배열을 변형하지 않고 데이터를 변경한 경우의 모습입니다.
@@ -1354,7 +1354,7 @@ squares[0] = 'X';
 ```jsx
 const squares = [null, null, null, null, null, null, null, null, null];
 const nextSquares = ['X', null, null, null, null, null, null, null, null];
-// 이제 `squares`는 변경되지 않았지만 `nextSquares`의 첫 번째 요소는 `null`이 아닌 'X'입니다.
+// 이제 `squares`는 변경되지 않았지만 `nextSquares`의 첫 번째 요소는 `null`이 아닌 `'X'`입니다.
 ```
 
 최종 결과는 같지만, 원본 데이터를 직접 변형하지 않음으로써 몇 가지 이점을 얻을 수 있습니다.
