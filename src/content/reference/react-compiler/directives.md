@@ -1,14 +1,14 @@
 ---
-title: Directives
+title: 지시어
 ---
 
 <Intro>
-React Compiler directives are special string literals that control whether specific functions are compiled.
+React 컴파일러 지시어는 특정 함수에 대한 컴파일 적용 여부를 제어하는 특수 문자열 리터럴입니다.
 </Intro>
 
 ```js
 function MyComponent() {
-  "use memo"; // Opt this component into compilation
+  "use memo"; // 이 컴포넌트를 컴파일 대상으로 설정합니다
   return <div>{/* ... */}</div>;
 }
 ```
@@ -17,53 +17,53 @@ function MyComponent() {
 
 ---
 
-## Overview {/*overview*/}
+## 개요 {/*overview*/}
 
-React Compiler directives provide fine-grained control over which functions are optimized by the compiler. They are string literals placed at the beginning of a function body or at the top of a module.
+React 컴파일러 지시어는 컴파일러가 최적화할 함수를 세밀하게 제어할 수 있도록 합니다. 함수 본문의 시작 부분이나 모듈의 최상단에 배치되는 문자열 리터럴입니다.
 
-### Available directives {/*available-directives*/}
+### 사용 가능한 지시어 {/*available-directives*/}
 
-* **[`"use memo"`](/reference/react-compiler/directives/use-memo)** - Opts a function into compilation
-* **[`"use no memo"`](/reference/react-compiler/directives/use-no-memo)** - Opts a function out of compilation
+* **[`"use memo"`](/reference/react-compiler/directives/use-memo)** - 함수를 컴파일 대상으로 선택합니다
+* **[`"use no memo"`](/reference/react-compiler/directives/use-no-memo)** - 함수를 컴파일 대상에서 제외합니다
 
-### Quick comparison {/*quick-comparison*/}
+### 빠른 비교 {/*quick-comparison*/}
 
-| Directive | Purpose | When to use |
+| 지시어 | 목적 | 사용 시점 |
 |-----------|---------|-------------|
-| [`"use memo"`](/reference/react-compiler/directives/use-memo) | Force compilation | When using `annotation` mode or to override `infer` mode heuristics |
-| [`"use no memo"`](/reference/react-compiler/directives/use-no-memo) | Prevent compilation | Debugging issues or working with incompatible code |
+| [`"use memo"`](/reference/react-compiler/directives/use-memo) | 컴파일 강제 | `annotation` 모드를 사용하거나 `infer` 모드의 휴리스틱을 재정의할 때 |
+| [`"use no memo"`](/reference/react-compiler/directives/use-no-memo) | 컴파일 제외 | 이슈를 디버깅하거나 호환되지 않는 코드를 다룰 때 |
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Function-level directives {/*function-level*/}
+### 함수 수준 지시어 {/*function-level*/}
 
-Place directives at the beginning of a function to control its compilation:
+함수의 시작 부분에 지시어를 선언하여 컴파일을 제어합니다:
 
 ```js
-// Opt into compilation
+// 컴파일 대상으로 설정
 function OptimizedComponent() {
   "use memo";
   return <div>This will be optimized</div>;
 }
 
-// Opt out of compilation
+// 컴파일 대상에서 제외
 function UnoptimizedComponent() {
   "use no memo";
   return <div>This won't be optimized</div>;
 }
 ```
 
-### Module-level directives {/*module-level*/}
+### 모듈 수준 지시어 {/*module-level*/}
 
-Place directives at the top of a file to affect all functions in that module:
+파일의 최상단에 선언하여 해당 모듈의 모든 함수에 적용됩니다:
 
 ```js
-// At the very top of the file
+// 파일의 최상단에 선언
 "use memo";
 
-// All functions in this file will be compiled
+// 이 파일의 모든 함수가 컴파일됩니다
 function Component1() {
   return <div>Compiled</div>;
 }
@@ -72,31 +72,31 @@ function Component2() {
   return <div>Also compiled</div>;
 }
 
-// Can be overridden at function level
+// 함수 수준에서 재정의 가능
 function Component3() {
-  "use no memo"; // This overrides the module directive
+  "use no memo"; // 모듈 수준에서 재정의됩니다
   return <div>Not compiled</div>;
 }
 ```
 
-### Compilation modes interaction {/*compilation-modes*/}
+### 컴파일 모드와의 상호작용 {/*compilation-modes*/}
 
-Directives behave differently depending on your [`compilationMode`](/reference/react-compiler/compilationMode):
+지시어는 [`compilationMode`](/reference/react-compiler/compilationMode)에 따라 다르게 동작합니다:
 
-* **`annotation` mode**: Only functions with `"use memo"` are compiled
-* **`infer` mode**: Compiler decides what to compile, directives override decisions
-* **`all` mode**: Everything is compiled, `"use no memo"` can exclude specific functions
+* **`annotation` 모드**: `"use memo"`가 선언된 함수만 컴파일됩니다
+* **`infer` 모드**: 컴파일러가 컴파일할 대상을 결정하며, 지시어는 이 결정을 재정의합니다
+* **`all` 모드**: 모든 것이 컴파일되며, `"use no memo"` 로 특정 함수를 제외할 수 있습니다
 
 ---
 
-## Best practices {/*best-practices*/}
+## 모범 사례 {/*best-practices*/}
 
-### Use directives sparingly {/*use-sparingly*/}
+### 지시어는 신중하게 사용하세요 {/*use-sparingly*/}
 
-Directives are escape hatches. Prefer configuring the compiler at the project level:
+이 지시어는 탈출구(escape hatch)입니다. 컴파일러는 프로젝트 수준에서 설정하는 것을 권장합니다:
 
 ```js
-// ✅ Good - project-wide configuration
+// ✅ good - 프로젝트 전역 설정
 {
   plugins: [
     ['babel-plugin-react-compiler', {
@@ -105,70 +105,70 @@ Directives are escape hatches. Prefer configuring the compiler at the project le
   ]
 }
 
-// ⚠️ Use directives only when needed
+// ⚠️ 필요할 때마 지시어 사용
 function SpecialCase() {
-  "use no memo"; // Document why this is needed
+  "use no memo"; // 왜 필요한지 문서화하세요
   // ...
 }
 ```
 
-### Document directive usage {/*document-usage*/}
+### 지시어 사용 이유를 문서화하세요 {/*document-usage*/}
 
-Always explain why a directive is used:
+지시어를 사용하는 이유를 항상 명확히 설명하세요:
 
 ```js
-// ✅ Good - clear explanation
+// ✅ good - 명확한 설명
 function DataGrid() {
-  "use no memo"; // TODO: Remove after fixing issue with dynamic row heights (JIRA-123)
-  // Complex grid implementation
+  "use no memo"; // TODO: 동적 row heiht 이슈 해결 후 제거 (JIRA-123)
+  // 복잡한 그리드 구현
 }
 
-// ❌ Bad - no explanation
+// ❌ bad - 설명 없음
 function Mystery() {
   "use no memo";
   // ...
 }
 ```
 
-### Plan for removal {/*plan-removal*/}
+### 제거 계획을 세우세요 {/*plan-removal*/}
 
-Opt-out directives should be temporary:
+제외 지시어는 임시로 사용해야 합니다:
 
-1. Add the directive with a TODO comment
-2. Create a tracking issue
-3. Fix the underlying problem
-4. Remove the directive
+1. TODO 주석과 함께 지시어를 추가합니다
+2. 추적용 이슈를 생성합니다
+3. 근본적인 문제를 해결합니다
+4. 지시어를 제거합니다
 
 ```js
 function TemporaryWorkaround() {
-  "use no memo"; // TODO: Remove after upgrading ThirdPartyLib to v2.0
+  "use no memo"; // TODO: ThirdPartyLib를 v2.0으로 업그레이드한 후 제거
   return <ThirdPartyComponent />;
 }
 ```
 
 ---
 
-## Common patterns {/*common-patterns*/}
+## 일반적인 패턴 {/*common-patterns*/}
 
-### Gradual adoption {/*gradual-adoption*/}
+### 점진적 도입 {/*gradual-adoption*/}
 
-When adopting the React Compiler in a large codebase:
+대규모 코드베이스에서 React 컴파일러를 도입할 때:
 
 ```js
-// Start with annotation mode
+// annotation 모드로 시작
 {
   compilationMode: 'annotation'
 }
 
-// Opt in stable components
+// 안정적인 컴파일러를 컴파일 대상으로 설정
 function StableComponent() {
   "use memo";
-  // Well-tested component
+  // 충분히 테스트된 컴포넌트
 }
 
-// Later, switch to infer mode and opt out problematic ones
+// 나중에 infer 모드로 전환하고 문제가 있는 컴포넌트는 제외
 function ProblematicComponent() {
-  "use no memo"; // Fix issues before removing
+  "use no memo"; // 제거 전에 이슈를 해결하세요
   // ...
 }
 ```
@@ -176,23 +176,22 @@ function ProblematicComponent() {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
-For specific issues with directives, see the troubleshooting sections in:
+지시어와 관련된 구체적인 문제는 다음 문제 해결 섹션을 참고하세요:
 
-* [`"use memo"` troubleshooting](/reference/react-compiler/directives/use-memo#troubleshooting)
-* [`"use no memo"` troubleshooting](/reference/react-compiler/directives/use-no-memo#troubleshooting)
+* [`"use memo"` 문제 해결](/reference/react-compiler/directives/use-memo#troubleshooting)
+* [`"use no memo"` 문제 해결](/reference/react-compiler/directives/use-no-memo#troubleshooting)
 
-### Common issues {/*common-issues*/}
+### 자주 발생하는 이슈 {/*common-issues*/}
 
-1. **Directive ignored**: Check placement (must be first) and spelling
-2. **Compilation still happens**: Check `ignoreUseNoForget` setting
-3. **Module directive not working**: Ensure it's before all imports
-
+1. **지시어가 무시됨**: 위치(파일 또는 함수의 첫 줄인지)와 철자를 확인하세요
+2. **컴파일이 계속됨**: `ignoreUseNoForget` 설정을 확인하세요
+3. **모듈 수준 지시어가 작동하지 않음**: 모든 import 문보다 앞에 있는지 확인하세요
 ---
 
-## See also {/*see-also*/}
+## 참고 {/*see-also*/}
 
-* [`compilationMode`](/reference/react-compiler/compilationMode) - Configure how the compiler chooses what to optimize
-* [`Configuration`](/reference/react-compiler/configuration) - Full compiler configuration options
-* [React Compiler documentation](https://react.dev/learn/react-compiler) - Getting started guide
+* [`compilationMode`](/reference/react-compiler/compilationMode) - 컴파일러가 최적화 대상을 선택하는 방식을 설정합니다
+* [`Configuration`](/reference/react-compiler/configuration) - 전체 컴파일러 설정 옵션
+* [React Compiler documentation](https://react.dev/learn/react-compiler) - 시작 가이드
