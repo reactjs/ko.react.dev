@@ -39,7 +39,7 @@ React 컴파일러 지시어는 컴파일러가 최적화할 함수를 세밀하
 
 ### 함수 수준 지시어 {/*function-level*/}
 
-함수의 시작 부분에 지시어를 선언하여 컴파일을 제어합니다:
+함수의 시작 부분에 지시어를 선언하여 컴파일을 제어합니다.
 
 ```js
 // 컴파일 대상으로 설정
@@ -57,7 +57,7 @@ function UnoptimizedComponent() {
 
 ### 모듈 수준 지시어 {/*module-level*/}
 
-파일의 최상단에 선언하여 해당 모듈의 모든 함수에 적용됩니다:
+파일의 최상단에 선언하여 해당 모듈의 모든 함수에 적용됩니다.
 
 ```js
 // 파일의 최상단에 선언
@@ -81,11 +81,11 @@ function Component3() {
 
 ### 컴파일 모드와의 상호작용 {/*compilation-modes*/}
 
-지시어는 [`compilationMode`](/reference/react-compiler/compilationMode)에 따라 다르게 동작합니다:
+지시어는 [`compilationMode`](/reference/react-compiler/compilationMode)에 따라 다르게 동작합니다.
 
 * **`annotation` 모드**: `"use memo"`가 선언된 함수만 컴파일됩니다
-* **`infer` 모드**: 컴파일러가 컴파일할 대상을 결정하며, 지시어는 이 결정을 재정의합니다
-* **`all` 모드**: 모든 것이 컴파일되며, `"use no memo"` 로 특정 함수를 제외할 수 있습니다
+* **`infer` 모드**: 컴파일러가 컴파일할 대상을 결정하며 지시어는 이 결정을 재정의합니다
+* **`all` 모드**: 모든 것이 컴파일되며 `"use no memo"` 로 특정 함수를 제외할 수 있습니다
 
 ---
 
@@ -93,7 +93,7 @@ function Component3() {
 
 ### 지시어는 신중하게 사용하세요 {/*use-sparingly*/}
 
-이 지시어는 탈출구(escape hatch)입니다. 컴파일러는 프로젝트 수준에서 설정하는 것을 권장합니다:
+이 지시어는 탈출구(escape hatch)입니다. 컴파일러는 프로젝트 수준에서 설정하는 것을 권장합니다.
 
 ```js
 // ✅ good - 프로젝트 전역 설정
@@ -114,7 +114,7 @@ function SpecialCase() {
 
 ### 지시어 사용 이유를 문서화하세요 {/*document-usage*/}
 
-지시어를 사용하는 이유를 항상 명확히 설명하세요:
+지시어를 사용하는 이유를 항상 명확히 설명하세요.
 
 ```js
 // ✅ good - 명확한 설명
@@ -132,7 +132,7 @@ function Mystery() {
 
 ### 제거 계획을 세우세요 {/*plan-removal*/}
 
-제외 지시어는 임시로 사용해야 합니다:
+제외 지시어는 임시로 사용해야 합니다.
 
 1. TODO 주석과 함께 지시어를 추가합니다
 2. 추적용 이슈를 생성합니다
@@ -152,7 +152,7 @@ function TemporaryWorkaround() {
 
 ### 점진적 도입 {/*gradual-adoption*/}
 
-대규모 코드베이스에서 React 컴파일러를 도입할 때:
+대규모 코드베이스에서 React 컴파일러를 도입할 때 다음과 같은 방식이 일반적입니다.
 
 ```js
 // annotation 모드로 시작
@@ -178,7 +178,7 @@ function ProblematicComponent() {
 
 ## 문제 해결 {/*troubleshooting*/}
 
-지시어와 관련된 구체적인 문제는 다음 문제 해결 섹션을 참고하세요:
+지시어와 관련된 구체적인 문제는 다음 문제 해결 섹션을 참고하세요.
 
 * [`"use memo"` 문제 해결](/reference/react-compiler/directives/use-memo#troubleshooting)
 * [`"use no memo"` 문제 해결](/reference/react-compiler/directives/use-no-memo#troubleshooting)
