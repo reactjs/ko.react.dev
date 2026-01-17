@@ -7,7 +7,7 @@ version: canary
 
 **`addTransitionType` API는 현재 React의 카나리 및 실험적 채널에서만 사용할 수 있습니다.** 
 
-[리액트의 배포 채널에 대해 더 배워보세요.](/community/versioning-policy#all-release-channels)
+[React의 배포 채널에 대해 더 알아보세요.](/community/versioning-policy#all-release-channels)
 
 </Canary>
 
