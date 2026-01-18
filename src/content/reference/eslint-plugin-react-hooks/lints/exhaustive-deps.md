@@ -4,13 +4,13 @@ title: exhaustive-deps
 
 <Intro>
 
-React 훅의 의존성 배열에 필요한 모든 의존성이 포함되어 있는지 검증합니다.
+React Hook의 의존성 배열에 필요한 모든 의존성이 포함되어 있는지 검증합니다.
 
 </Intro>
 
 ## 규칙 자세히보기 {/*rule-details*/}
 
-`useEffect`, `useMemo`, `useCallback`과 같은 React 훅은 의존성 배열을 받습니다. 이 훅들 안에서 참조한 값이 의존성 배열에 포함되지 않으면 그 값이 바뀌어도 React가 effect를 다시 실행하거나 값을 다시 계산하지 않습니다. 그 결과 훅이 예전 값을 계속 붙잡고 사용하는 “stale closure(오래된 클로저)” 문제가 생겨 최신 값이 아닌 상태로 동작하게 됩니다.
+`useEffect`, `useMemo`, `useCallback`과 같은 React 훅은 의존성 배열을 받습니다. 이 훅들 안에서 참조한 값이 의존성 배열에 포함되지 않으면 그 값이 바뀌어도 React가 effect를 다시 실행하거나 값을 다시 계산하지 않습니다. 그 결과 훅이 예전 값을 계속 붙잡고 사용하는 "stale closure(오래된 클로저)" 문제가 생겨 최신 값이 아닌 상태로 동작하게 됩니다.
 
 ## 흔한 위반 사항 {/*common-violations*/}
 
@@ -18,9 +18,9 @@ React 훅의 의존성 배열에 필요한 모든 의존성이 포함되어 있�
 
 린터 경고를 계속 피하려고 하거나 맞추기 어렵다고 느낀다면, 코드 구조를 다시 구성해야 할 가능성이 큽니다. 방법은 [Effect의 의존성 제거하기](/learn/removing-effect-dependencies) 문서를 참고하세요.
 
-### 유효하지않음 {/*invalid*/}
+### 유효하지 않음 {/*invalid*/}
 
-이 규칙에 대한 잘못된 코드 예시:
+이 규칙에 대한 잘못된 코드 예시
 
 ```js
 // ❌ Missing dependency
@@ -39,9 +39,9 @@ useMemo(() => {
 }, [items]); // Missing 'sortOrder'
 ```
 
-### 유효함 {/*valid*/}
+### 유효 {/*valid*/}
 
-이 규칙에 대한 올바른 예시:
+이 규칙에 대한 올바른 예시
 
 ```js
 // ✅ All dependencies included
@@ -57,9 +57,9 @@ useEffect(() => {
 
 ## 문제 해결 {/*troubleshooting*/}
 
-### 함수를 의존성으로 추가하면 무한 루프가 발생할 수 있습니다. {/*function-dependency-loops*/}
+### 함수를 의존성으로 추가하면 무한 루프가 발생할 수 있습니다 {/*function-dependency-loops*/}
 
-effect를 사용하고 있지만, 렌더링이 일어날 때마다 새로운 함수를 매번 생성하고 있습니다:
+effect를 사용하고 있지만, 렌더링이 일어날 때마다 새로운 함수를 매번 생성하고 있습니다.
 
 ```js
 // ❌ Causes infinite loop
@@ -72,7 +72,7 @@ useEffect(() => {
 }, [logItems]); // Infinite loop!
 ```
 
-대부분의 경우 effect는 필요하지 않습니다. 대신 그 동작이 실제로 발생하는 지점에서 함수를 호출하세요:
+대부분의 경우 effect는 필요하지 않습니다. 대신 그 동작이 실제로 발생하는 지점에서 함수를 호출하세요.
 
 ```js
 // ✅ Call it from the event handler
@@ -88,7 +88,7 @@ items.forEach(item => {
 });
 ```
 
-정말로 effect가 필요한 경우(예: 외부 무언가를 구독해야 하는 경우)에는, 의존성이 안정적이도록 만드세요:
+정말로 effect가 필요한 경우(예: 외부 무언가를 구독해야 하는 경우)에는, 의존성이 안정적이도록 만드세요.
 
 ```js
 // ✅ useCallback keeps the function reference stable
@@ -108,7 +108,7 @@ useEffect(() => {
 
 ### effect를 한 번만 실행하기 {/*effect-on-mount*/}
 
-마운트 시점에 effect를 한 번만 실행하고 싶지만, 린터가 누락된 의존성에 대해 경고합니다:
+마운트 시점에 effect를 한 번만 실행하고 싶지만, 린터가 누락된 의존성에 대해 경고합니다.
 
 ```js
 // ❌ Missing dependency
@@ -117,7 +117,7 @@ useEffect(() => {
 }, []); // Missing 'userId'
 ```
 
-의존성을 포함하는 것이 권장되며, 정말로 한 번만 실행해야 한다면 `useRef`를 사용하세요:
+의존성을 포함하는 것이 권장되며, 정말로 한 번만 실행해야 한다면 Ref를 사용하세요.
 
 ```js
 // ✅ Include dependency
@@ -140,7 +140,7 @@ useEffect(() => {
 
 ## 옵션 {/*options*/}
 
-공유 ESLint 설정을 사용해 커스텀 effect 훅을 설정할 수 있습니다(`eslint-plugin-react-hooks` 6.1.1 이상에서 지원):
+공유 ESLint 설정을 사용해 커스텀 Effect Hook을 설정할 수 있습니다(`eslint-plugin-react-hooks` 6.1.1 이상에서 지원).
 
 ```js
 {
@@ -152,9 +152,9 @@ useEffect(() => {
 }
 ```
 
-- `additionalEffectHooks`: 철저한 의존성 검사를 적용해야 하는 커스텀 훅을 정규식 패턴으로 지정합니다. 이 설정은 모든 `react-hooks` 규칙에서 공통으로 사용됩니다.
+- `additionalEffectHooks`: 철저한 의존성 검사를 적용해야 하는 커스텀 Hook을 정규식 패턴으로 지정합니다. 이 설정은 모든 `react-hooks` 규칙에서 공통으로 사용됩니다.
 
-하위 호환성을 위해 이 규칙은 규칙 단위 옵션도 함께 지원합니다:
+하위 호환성을 위해 이 규칙은 규칙 단위 옵션도 함께 지원합니다.
 
 ```js
 {
@@ -166,5 +166,4 @@ useEffect(() => {
 }
 ```
 
-- `additionalHooks`: 빠짐없는 의존성 검사(exhaustive deps)를 적용해야 하는 훅을 정규식으로 지정합니다.
-**참고:** 이 규칙별 옵션을 지정하면 공유 `settings` 설정보다 우선 적용됩니다.
+- `additionalHooks`: 빠짐없는 의존성 검사(exhaustive deps)를 적용해야 하는 훅을 정규식으로 지정합니다. **참고:** 이 규칙별 옵션을 지정하면 공유 `settings` 설정보다 우선 적용됩니다.
