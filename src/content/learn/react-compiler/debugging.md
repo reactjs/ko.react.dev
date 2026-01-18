@@ -1,93 +1,93 @@
 ---
-title: Debugging and Troubleshooting
+title: 디버깅 및 문제 해결
 ---
 
 <Intro>
-This guide helps you identify and fix issues when using React Compiler. Learn how to debug compilation problems and resolve common issues.
+이 가이드에서는 React 컴파일러 사용 시 발생하는 문제를 식별하고 해결하는 방법을 알아봅니다. 컴파일 문제를 디버깅하고 일반적인 문제를 해결하는 방법을 배웁니다.
 </Intro>
 
 <YouWillLearn>
 
-* The difference between compiler errors and runtime issues
-* Common patterns that break compilation
-* Step-by-step debugging workflow
+* 컴파일러 오류와 런타임 문제의 차이
+* 컴파일을 방해하는 일반적인 패턴
+* 단계별 디버깅 워크플로우
 
 </YouWillLearn>
 
-## Understanding Compiler Behavior {/*understanding-compiler-behavior*/}
+## 컴파일러 동작 이해하기 {/*understanding-compiler-behavior*/}
 
-React Compiler is designed to handle code that follows the [Rules of React](/reference/rules). When it encounters code that might break these rules, it safely skips optimization rather than risk changing your app's behavior.
+React 컴파일러는 [React의 규칙](/reference/rules)을 따르는 코드를 처리하도록 설계되었습니다. 이러한 규칙을 위반할 수 있는 코드를 만나면 앱의 동작을 변경하는 위험을 감수하기보다 안전하게 최적화를 건너뜁니다.
 
-### Compiler Errors vs Runtime Issues {/*compiler-errors-vs-runtime-issues*/}
+### 컴파일러 오류 vs 런타임 문제 {/*compiler-errors-vs-runtime-issues*/}
 
-**Compiler errors** occur at build time and prevent your code from compiling. These are rare because the compiler is designed to skip problematic code rather than fail.
+**컴파일러 오류**는 빌드 시점에 발생하며 코드가 컴파일되지 않게 합니다. 컴파일러는 문제가 있는 코드를 실패시키기보다 건너뛰도록 설계되어 있기 때문에 이러한 오류는 드뭅니다.
 
-**Runtime issues** occur when compiled code behaves differently than expected. Most of the time, if you encounter an issue with React Compiler, it's a runtime issue. This typically happens when your code violates the Rules of React in subtle ways that the compiler couldn't detect, and the compiler mistakenly compiled a component it should have skipped.
+**런타임 문제**는 컴파일된 코드가 예상과 다르게 동작할 때 발생합니다. React 컴파일러 관련 문제가 발생하면 대부분 런타임 문제입니다. 이는 일반적으로 컴파일러가 감지할 수 없는 미묘한 방식으로 코드가 React의 규칙을 위반하고, 컴파일러가 건너뛰어야 했던 컴포넌트를 실수로 컴파일했을 때 발생합니다.
 
-When debugging runtime issues, focus your efforts on finding Rules of React violations in the affected components that were not detected by the ESLint rule. The compiler relies on your code following these rules, and when they're broken in ways it can't detect, that's when runtime problems occur.
+런타임 문제를 디버깅할 때는 ESLint 규칙이 감지하지 못한 영향받는 컴포넌트의 React 규칙 위반을 찾는 데 집중하세요. 컴파일러는 코드가 이러한 규칙을 따른다고 가정하며, 감지할 수 없는 방식으로 규칙이 위반되면 런타임 문제가 발생합니다.
 
 
-## Common Breaking Patterns {/*common-breaking-patterns*/}
+## 컴파일을 방해하는 일반적인 패턴 {/*common-breaking-patterns*/}
 
-One of the main ways React Compiler can break your app is if your code was written to rely on memoization for correctness. This means your app depends on specific values being memoized to work properly. Since the compiler may memoize differently than your manual approach, this can lead to unexpected behavior like effects over-firing, infinite loops, or missing updates.
+React 컴파일러가 앱을 망가뜨릴 수 있는 주요 원인 중 하나는 코드가 정확성을 위해 메모이제이션에 의존하도록 작성된 경우입니다. 이는 앱이 제대로 작동하기 위해 특정 값이 메모이제이션되는 것에 의존한다는 의미입니다. 컴파일러가 수동 방식과 다르게 메모이제이션할 수 있으므로, Effect가 과도하게 실행되거나 무한 루프가 발생하거나 업데이트가 누락되는 등의 예상치 못한 동작이 발생할 수 있습니다.
 
-Common scenarios where this occurs:
+이런 상황이 발생하는 일반적인 시나리오는 다음과 같습니다.
 
-- **Effects that rely on referential equality** - When effects depend on objects or arrays maintaining the same reference across renders
-- **Dependency arrays that need stable references** - When unstable dependencies cause effects to fire too often or create infinite loops
-- **Conditional logic based on reference checks** - When code uses referential equality checks for caching or optimization
+- **참조 동등성에 의존하는 Effect** - Effect가 렌더링 간에 동일한 참조를 유지하는 객체나 배열에 의존하는 경우
+- **안정적인 참조가 필요한 의존성 배열** - 불안정한 의존성이 Effect를 너무 자주 실행하거나 무한 루프를 생성하는 경우
+- **참조 검사 기반 조건부 로직** - 코드가 캐싱이나 최적화를 위해 참조 동등성 검사를 사용하는 경우
 
-## Debugging Workflow {/*debugging-workflow*/}
+## 디버깅 워크플로우 {/*debugging-workflow*/}
 
-Follow these steps when you encounter issues:
+문제가 발생하면 다음 단계를 따르세요.
 
-### Compiler Build Errors {/*compiler-build-errors*/}
+### 컴파일러 빌드 오류 {/*compiler-build-errors*/}
 
-If you encounter a compiler error that unexpectedly breaks your build, this is likely a bug in the compiler. Report it to the [facebook/react](https://github.com/facebook/react/issues) repository with:
-- The error message
-- The code that caused the error
-- Your React and compiler versions
+빌드를 예상치 않게 중단시키는 컴파일러 오류가 발생하면 컴파일러의 버그일 가능성이 높습니다. 다음 정보와 함께 [facebook/react](https://github.com/facebook/react/issues) 저장소에 보고해 주세요.
+- 오류 메시지
+- 오류를 발생시킨 코드
+- React 및 컴파일러 버전
 
-### Runtime Issues {/*runtime-issues*/}
+### 런타임 문제 {/*runtime-issues*/}
 
-For runtime behavior issues:
+런타임 동작 문제의 경우 다음을 확인하세요.
 
-### 1. Temporarily Disable Compilation {/*temporarily-disable-compilation*/}
+### 1. 일시적으로 컴파일 비활성화 {/*temporarily-disable-compilation*/}
 
-Use `"use no memo"` to isolate whether an issue is compiler-related:
+`"use no memo"`를 사용하여 문제가 컴파일러와 관련이 있는지 확인합니다.
 
 ```js
 function ProblematicComponent() {
-  "use no memo"; // Skip compilation for this component
-  // ... rest of component
+  "use no memo"; // 이 컴포넌트의 컴파일 건너뛰기
+  // ... 나머지 컴포넌트
 }
 ```
 
-If the issue disappears, it's likely related to a Rules of React violation.
+문제가 사라지면 React 규칙 위반과 관련이 있을 가능성이 높습니다.
 
-You can also try removing manual memoization (useMemo, useCallback, memo) from the problematic component to verify that your app works correctly without any memoization. If the bug still occurs when all memoization is removed, you have a Rules of React violation that needs to be fixed.
+문제가 있는 컴포넌트에서 수동 메모이제이션(`useMemo`, `useCallback`, `memo`)을 제거하여 메모이제이션 없이도 앱이 올바르게 작동하는지 확인해 볼 수도 있습니다. 모든 메모이제이션을 제거해도 버그가 계속 발생하면 수정해야 할 React 규칙 위반이 있는 것입니다.
 
-### 2. Fix Issues Step by Step {/*fix-issues-step-by-step*/}
+### 2. 단계별로 문제 해결 {/*fix-issues-step-by-step*/}
 
-1. Identify the root cause (often memoization-for-correctness)
-2. Test after each fix
-3. Remove `"use no memo"` once fixed
-4. Verify the component shows the ✨ badge in React DevTools
+1. 근본 원인 식별 (주로 정확성을 위한 메모이제이션)
+2. 각 수정 후 테스트
+3. 수정 완료 후 `"use no memo"` 제거
+4. React DevTools에서 컴포넌트에 ✨ 배지가 표시되는지 확인
 
-## Reporting Compiler Bugs {/*reporting-compiler-bugs*/}
+## 컴파일러 버그 보고 {/*reporting-compiler-bugs*/}
 
-If you believe you've found a compiler bug:
+컴파일러 버그를 발견했다고 생각되면 다음을 확인하세요.
 
-1. **Verify it's not a Rules of React violation** - Check with ESLint
-2. **Create a minimal reproduction** - Isolate the issue in a small example
-3. **Test without the compiler** - Confirm the issue only occurs with compilation
-4. **File an [issue](https://github.com/facebook/react/issues/new?template=compiler_bug_report.yml)**:
-   - React and compiler versions
-   - Minimal reproduction code
-   - Expected vs actual behavior
-   - Any error messages
+1. **React 규칙 위반이 아닌지 확인** - ESLint로 검사
+2. **최소 재현 사례 생성** - 작은 예시로 문제 격리
+3. **컴파일러 없이 테스트** - 컴파일 시에만 문제가 발생하는지 확인
+4. **[이슈](https://github.com/facebook/react/issues/new?template=compiler_bug_report.yml) 등록**:
+   - React 및 컴파일러 버전
+   - 최소 재현 코드
+   - 예상 동작 vs 실제 동작
+   - 오류 메시지
 
-## Next Steps {/*next-steps*/}
+## 다음 단계 {/*next-steps*/}
 
-- Review the [Rules of React](/reference/rules) to prevent issues
-- Check the [incremental adoption guide](/learn/react-compiler/incremental-adoption) for gradual rollout strategies
+- 문제 예방을 위해 [React의 규칙](/reference/rules) 검토
+- 점진적 배포 전략을 위한 [점진적 도입 가이드](/learn/react-compiler/incremental-adoption) 확인
