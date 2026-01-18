@@ -10,7 +10,7 @@ React Hook의 의존성 배열에 필요한 모든 의존성이 포함되어 있
 
 ## 규칙 자세히보기 {/*rule-details*/}
 
-`useEffect`, `useMemo`, `useCallback`과 같은 React 훅은 의존성 배열을 받습니다. 이 훅들 안에서 참조한 값이 의존성 배열에 포함되지 않으면 그 값이 바뀌어도 React가 effect를 다시 실행하거나 값을 다시 계산하지 않습니다. 그 결과 훅이 예전 값을 계속 붙잡고 사용하는 "stale closure(오래된 클로저)" 문제가 생겨 최신 값이 아닌 상태로 동작하게 됩니다.
+`useEffect`, `useMemo`, `useCallback`과 같은 React Hook은 의존성 배열을 받습니다. 이 Hook들 안에서 참조한 값이 의존성 배열에 포함되지 않으면 그 값이 바뀌어도 React가 effect를 다시 실행하거나 값을 다시 계산하지 않습니다. 그 결과 Hook이 예전 값을 계속 붙잡고 사용하는 "stale closure(오래된 클로저)" 문제가 생겨 최신 값이 아닌 상태로 동작하게 됩니다.
 
 ## 흔한 위반 사항 {/*common-violations*/}
 
@@ -166,4 +166,4 @@ useEffect(() => {
 }
 ```
 
-- `additionalHooks`: 빠짐없는 의존성 검사(exhaustive deps)를 적용해야 하는 훅을 정규식으로 지정합니다. **참고:** 이 규칙별 옵션을 지정하면 공유 `settings` 설정보다 우선 적용됩니다.
+- `additionalHooks`: 빠짐없는 의존성 검사(exhaustive deps)를 적용해야 하는 Hook을 정규식으로 지정합니다. **참고:** 이 규칙별 옵션을 지정하면 공유 `settings` 설정보다 우선 적용됩니다.
