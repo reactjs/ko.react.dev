@@ -6213,7 +6213,7 @@ root.render(
 
 Suspense도 View Transitions를 활성화합니다.
 
-콘텐츠에 대한 폴백 애니메이션을 적용하려면 `Suspense`를 `<ViewTranstion>`으로 래핑하면 됩니다.
+콘텐츠에 대한 폴백 애니메이션을 적용하려면 `Suspense`를 `<ViewTransition>`으로 래핑하면 됩니다.
 
 ```js
 <ViewTransition>
