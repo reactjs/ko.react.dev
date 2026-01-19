@@ -34,9 +34,9 @@ React Labs 게시글에는 활발히 연구 개발 중인 프로젝트에 대한
 
 <Note>
 
-`<Activity />` has shipped in `react@19.2`.
+`<Activity />`는 `react@19.2`에 포함되어 출시되었습니다.
 
-`<ViewTransition />` and `addTransitionType` are now available in `react@canary`.
+`<ViewTransition />`과 `addTransitionType`은 이제 `react@canary`에서 사용할 수 있습니다.
 
 </Note>
 
@@ -66,7 +66,7 @@ React View Transitions는 앱의 UI 전환에 애니메이션을 더 쉽게 추�
 </ViewTransition>
 ```
 
-This new component lets you declaratively define "what" to animate when an animation is activated.
+이 새로운 컴포넌트를 사용하면 애니메이션이 활성화될 때 무엇을 애니메이션할지 선언적으로 정의할 수 있습니다.
 
 View Transition에 대한 다음 세 가지 트리거 중 하나를 사용해서 "언제" 애니메이션할지 정의할 수 있습니다.
 
@@ -99,9 +99,9 @@ const deferred = useDeferredValue(value);
 
 `startTransition`, `useDeferredValue`, 또는 `Suspense` 폴백이 콘텐츠로 전환되는 것과 같은 애니메이션 트리거로 인해 DOM이 업데이트되면, React는 [선언적 휴리스틱](/reference/react/ViewTransition#viewtransition)을 사용해서 애니메이션을 위해 활성화할 `<ViewTransition>` 컴포넌트를 자동으로 결정합니다. 그러면 브라우저가 CSS에서 정의된 애니메이션을 실행합니다.
 
-If you're familiar with the browser's View Transition API and want to know how React supports it, check out [How does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work) in the docs.
+브라우저의 View Transition API에 익숙하고 React가 이를 어떻게 지원하는지 알고 싶다면 문서의 [`<ViewTransition>`이 어떻게 동작하는지](/reference/react/ViewTransition#how-does-viewtransition-work)를 참고하세요.
 
-In this post, let's take a look at a few examples of how to use View Transitions.
+이 글에서는 View Transition을 사용하는 몇 가지 예시를 살펴봅니다.
 
 다음과 같은 상호작용을 애니메이션하지 않는 앱부터 시작하겠습니다.
 - 비디오를 클릭해서 세부 정보를 봅니다.
@@ -116,7 +116,7 @@ import TalkDetails from './Details'; import Home from './Home'; import {useRoute
 export default function App() {
   const {url} = useRouter();
 
-  // 🚩This version doesn't include any animations yet
+  // 🚩 이 버전에는 아직 애니메이션이 포함되어 있지 않습니다.
   return url === '/' ? <Home /> : <TalkDetails />;
 }
 ```
@@ -619,13 +619,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // 복원은 동기적으로 이루어져야 하므로 애니메이션되면 안 됩니다.
+      // 트랜지션이더라도 마찬가지입니다.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // 아무 작업도 하지 않습니다. URL은 이미 업데이트되었습니다.
           },
         });
       });
@@ -1293,8 +1293,7 @@ function navigate(url) {
 
 `url`이 변경되면, `<ViewTransition>`과 새로운 라우트가 렌더링됩니다. `<ViewTransition>`이 `startTransition` 내부에서 업데이트되었으므로, `<ViewTransition>`이 애니메이션을 위해 활성화됩니다.
 
-
-By default, View Transitions include the browser default cross-fade animation. Adding this to our example, we now have a cross-fade whenever we navigate between pages:
+기본적으로 View Transitions에는 브라우저의 기본 크로스 페이드 애니메이션이 포함되어 있습니다. 이를 예시에 적용하면, 페이지 간을 이동할 때마다 크로스 페이드 애니메이션이 실행됩니다.
 
 <Sandpack>
 
@@ -1305,8 +1304,8 @@ import Home from './Home'; import {useRouter} from './router';
 export default function App() {
   const {url} = useRouter();
 
-  // Use ViewTransition to animate between pages.
-  // No additional CSS needed by default.
+  // ViewTransition을 사용해 페이지 간 전환을 애니메이션합니다.
+  // 기본값으로는 추가 CSS가 필요하지 않습니다.
   return (
     <ViewTransition>
       {url === '/' ? <Home /> : <Details />}
@@ -1576,8 +1575,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* 콘텐츠에 대해 ViewTransition을 사용하지 않습니다. */}
+      {/* 콘텐츠는 자체 ViewTransition을 정의할 수 있습니다. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -1806,13 +1805,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // 복원은 동기적으로 이루어져야 하므로 애니메이션되면 안 됩니다.
+      // 트랜지션이더라도 마찬가지입니다.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // 아무 작업도 하지 않습니다. URL은 이미 업데이트되었습니다.
           },
         });
       });
@@ -2457,7 +2456,7 @@ root.render(
 
 </Sandpack>
 
-Since our router already updates the route using `startTransition`, this one line change to add `<ViewTransition>` activates with the default cross-fade animation.
+라우터가 이미 `startTransition`으로 라우트를 업데이트하고 있으므로, `<ViewTransition>`을 추가하는 이 한 줄 변경만으로 기본 크로스 페이드 애니메이션이 활성화됩니다.
 
 어떻게 동작하는지 궁금하다면 [How does `<ViewTransition>` work?](/reference/react/ViewTransition#how-does-viewtransition-work) 문서를 참고하세요.
 
@@ -2465,7 +2464,7 @@ Since our router already updates the route using `startTransition`, this one lin
 
 #### `<ViewTransition>` 애니메이션 건너뛰기 {/*opting-out-of-viewtransition-animations*/}
 
-In this example, we're wrapping the root of the app in `<ViewTransition>` for simplicity, but this means that all transitions in the app will be animated, which can lead to unexpected animations.
+이 예시에서는 단순화를 위해 앱의 루트를 `<ViewTransition>`으로 감싸고 있습니다. 하지만 이렇게 하면 앱의 모든 트랜지션이 애니메이션되므로, 예상치 못한 애니메이션이 생길 수 있습니다.
 
 이를 해결하기 위해 각 페이지에서 자체적으로 애니메이션을 제어할 수 있도록 라우트 자식 요소를 `"none"`으로 감싸고 있습니다.
 
@@ -2476,7 +2475,7 @@ In this example, we're wrapping the root of the app in `<ViewTransition>` for si
 </ViewTransition>
 ```
 
-In practice, navigations should be done via "enter" and "exit" props, or by using Transition Types.
+실제로는 네비게이션을 `"enter"`와 `"exit"` prop으로 처리하거나, 트랜지션 타입을 사용해야 합니다.
 
 </Note>
 
@@ -2494,7 +2493,7 @@ In practice, navigations should be done via "enter" and "exit" props, or by usin
 </ViewTransition>
 ```
 
-And define `slow-fade` in CSS using [view transition classes](/reference/react/ViewTransition#view-transition-class):
+그리고 [뷰 트랜지션 클래스](/reference/react/ViewTransition#view-transition-class)를 사용해서 CSS에서 `slow-fade`를 정의합니다:
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -2519,8 +2518,8 @@ import { useRouter } from "./router";
 export default function App() {
   const { url } = useRouter();
 
-  // Define a default animation of .slow-fade.
-  // See animations.css for the animation definition.
+  // 기본 애니메이션으로 .slow-fade를 지정합니다.
+  // 애니메이션 정의는 animations.css를 참고하세요.
   return (
     <ViewTransition default="slow-fade">
       {url === '/' ? <Home /> : <Details />}
@@ -2790,8 +2789,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* 콘텐츠는 ViewTransition을 적용하지 않습니다. */}
+      {/* 콘텐츠에서 자체적으로 ViewTransition을 정의할 수 있습니다. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -2806,8 +2805,8 @@ export default function Page({ heading, children }) {
 import {useState} from 'react';
 import {Heart} from './Icons';
 
-// A hack since we don't actually have a backend.
-// Unlike local state, this survives videos being filtered.
+// 실제로는 백엔드가 없어서 쓰는 임시 처리입니다.
+// 로컬 상태와 달리, 비디오 목록을 필터링해도 이 값은 유지됩니다.
 const likedVideos = new Set();
 
 export default function LikeButton({video}) {
@@ -3016,14 +3015,14 @@ export function Router({ children }) {
     });
   }
   function navigate(url) {
-    // Update router state in transition.
+    // 트랜지션 안에서 라우터 상태를 업데이트합니다.
     startTransition(() => {
       go(url);
     });
   }
 
   function navigateBack(url) {
-    // Update router state in transition.
+    // 트랜지션 안에서 라우터 상태를 업데이트합니다.
     startTransition(() => {
       go(url);
     });
@@ -3031,13 +3030,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // 복원은 동기적으로 처리되어야 하므로 여기서는 애니메이션되면 안 됩니다.
+      // 트랜지션이더라도 마찬가지입니다.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // 아무 작업도 하지 않습니다. URL은 이미 업데이트되었습니다.
           },
         });
       });
@@ -3638,7 +3637,7 @@ ul {
 
 
 ```css src/animations.css
-/* Define .slow-fade using view transition classes */
+/* 뷰 트랜지션 클래스를 사용해서 .slow-fade를 정의합니다 */
 ::view-transition-old(.slow-fade) {
     animation-duration: 500ms;
 }
@@ -3712,9 +3711,9 @@ import { useRouter } from "./router";
 export default function App() {
   const { url } = useRouter();
 
-  // Keeping our default slow-fade.
-  // This allows the content not in the shared
-  // element transition to cross-fade.
+  // 기본 slow-fade는 그대로 둡니다.
+  // 공유 요소 트랜지션에 포함되지 않는 콘텐츠가
+  // 크로스 페이드되도록 하기 위함입니다.
   return (
     <ViewTransition default="slow-fade">
       {url === "/" ? <Home /> : <Details />}
@@ -3984,8 +3983,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* 콘텐츠에 대해 ViewTransition을 사용하지 않습니다. */}
+      {/* 콘텐츠는 자체 ViewTransition을 정의할 수 있습니다. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -4031,8 +4030,8 @@ export default function LikeButton({video}) {
 import { useState, ViewTransition } from "react"; import LikeButton from "./LikeButton"; import { useRouter } from "./router"; import { PauseIcon, PlayIcon } from "./Icons"; import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
-  // Add a name to animate with a shared element transition.
-  // This uses the default animation, no additional css needed.
+  // 공유 요소 트랜지션으로 애니메이션되도록 name을 추가합니다.
+  // 기본 애니메이션을 사용하므로 추가 CSS가 필요하지 않습니다.
   return (
     <ViewTransition name={`video-${video.id}`}>
       <div
@@ -4225,13 +4224,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // 복원은 동기적으로 이루어져야 하므로 애니메이션되면 안 됩니다.
+      // 트랜지션이더라도 마찬가지입니다.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // 아무 작업도 하지 않습니다. URL은 이미 업데이트되었습니다.
           },
         });
       });
@@ -4832,7 +4831,7 @@ ul {
 
 
 ```css src/animations.css
-/* No additional animations needed */
+/* 추가 애니메이션은 필요하지 않습니다 */
 
 
 
@@ -4842,7 +4841,7 @@ ul {
 
 
 
-/* Previously defined animations below */
+/* 이전에 정의된 애니메이션은 아래에 있습니다 */
 
 
 
@@ -4905,14 +4904,14 @@ root.render(
 ```js {4,11}
 function navigate(url) {
   startTransition(() => {
-    // Transition type for the cause "nav forward"
+    // 전환 원인이 "nav forward"인 경우의 트랜지션 타입
     addTransitionType('nav-forward');
     go(url);
   });
 }
 function navigateBack(url) {
   startTransition(() => {
-    // Transition type for the cause "nav backward"
+    // 전환 원인이 "nav backward"인 경우의 트랜지션 타입
     addTransitionType('nav-back');
     go(url);
   });
@@ -4936,22 +4935,22 @@ Transition Types을 사용하면 `<ViewTransition>`에 Props를 통해 커스텀
 
 ```css
 ::view-transition-old(.slide-forward) {
-    /* when sliding forward, the "old" page should slide out to left. */
+   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: ...
 }
 
 ::view-transition-new(.slide-forward) {
-    /* when sliding forward, the "new" page should slide in from right. */
+    /* 앞으로 전환할 때 "new" 페이지는 오른쪽에서 슬라이드되어 들어와야 합니다. */
     animation: ...
 }
 
 ::view-transition-old(.slide-back) {
-    /* when sliding back, the "old" page should slide out to right. */
+    /* 뒤로 전환할 때 "old" 페이지는 오른쪽으로 슬라이드되어 나가야 합니다. */
     animation: ...
 }
 
 ::view-transition-new(.slide-back) {
-    /* when sliding back, the "new" page should slide in from left. */
+    /* 뒤로 전환할 때 "new" 페이지는 왼쪽에서 슬라이드되어 들어와야 합니다. */
     animation: ...
 }
 ```
@@ -5234,7 +5233,7 @@ export default function Page({ heading, children }) {
     <div className="page">
       <div className="top">
         <div className="top-nav">
-          {/* Custom classes based on transition type. */}
+          {/* 트랜지션 타입에 따라 커스텀 클래스를 적용합니다. */}
           <ViewTransition
             name="nav"
             share={{
@@ -5246,8 +5245,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* 콘텐츠에 대해 ViewTransition을 사용하지 않습니다. */}
+      {/* 콘텐츠는 자체 ViewTransition을 정의할 수 있습니다. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -5297,8 +5296,8 @@ import { PauseIcon, PlayIcon } from "./Icons";
 import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
-  // Add a name to animate with a shared element transition.
-  // This uses the default animation, no additional css needed.
+  // 공유 요소 트랜지션으로 애니메이션되도록 name을 추가합니다.
+  // 기본 애니메이션을 사용하므로 추가 CSS가 필요하지 않습니다.
   return (
     <ViewTransition name={`video-${video.id}`}>
       <div
@@ -5448,14 +5447,14 @@ export function Router({ children }) {
 
   function navigate(url) {
     startTransition(() => {
-      // Transition type for the cause "nav forward"
+      // 전환 원인이 "nav forward"인 경우의 트랜지션 타입
       addTransitionType('nav-forward');
       go(url);
     });
   }
   function navigateBack(url) {
     startTransition(() => {
-      // Transition type for the cause "nav backward"
+      // 전환 원인이 "nav backward"인 경우의 트랜지션 타입
       addTransitionType('nav-back');
       go(url);
     });
@@ -5475,13 +5474,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // 복원은 동기적으로 이루어져야 하므로 애니메이션되면 안 됩니다.
+      // 트랜지션이더라도 마찬가지입니다.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // 아무 작업도 하지 않습니다. URL은 이미 업데이트되었습니다.
           },
         });
       });
@@ -6093,27 +6092,27 @@ ul {
 
 
 ```css src/animations.css
-/* Animations for view transition classed added by transition type */
+/* 트랜지션 타입에 의해 추가된 View Transition 클래스용 애니메이션 */
 ::view-transition-old(.slide-forward) {
-    /* when sliding forward, the "old" page should slide out to left. */
+   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
 
 ::view-transition-new(.slide-forward) {
-    /* when sliding forward, the "new" page should slide in from right. */
+    /* 앞으로 전환할 때 "new" 페이지는 오른쪽에서 슬라이드되어 들어와야 합니다. */
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 
 ::view-transition-old(.slide-back) {
-    /* when sliding back, the "old" page should slide out to right. */
+    /* 뒤로 전환할 때 "old" 페이지는 오른쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-right;
 }
 
 ::view-transition-new(.slide-back) {
-    /* when sliding back, the "new" page should slide in from left. */
+    /* 뒤로 전환할 때 "new" 페이지는 왼쪽에서 슬라이드되어 들어와야 합니다. */
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-left;
 }
@@ -6161,7 +6160,7 @@ ul {
     }
 }
 
-/* Previously defined animations. */
+/* 이전에 정의된 애니메이션 */
 
 /* Default .slow-fade. */
 ::view-transition-old(.slow-fade) {
@@ -6212,7 +6211,7 @@ root.render(
 
 ### Suspense Boundaries 애니메이팅 {/*animating-suspense-boundaries*/}
 
-Suspense will also activate View Transitions.
+Suspense도 View Transitions를 활성화합니다.
 
 콘텐츠에 대한 폴백 애니메이션을 적용하려면 `Suspense`를 `<ViewTranstion>`으로 래핑하면 됩니다.
 
@@ -6250,7 +6249,7 @@ export default function App() {
 import { use, Suspense, ViewTransition } from "react"; import { fetchVideo, fetchVideoDetails } from "./data"; import { Thumbnail, VideoControls } from "./Videos"; import { useRouter } from "./router"; import Layout from "./Layout"; import { ChevronLeft } from "./Icons";
 
 function VideoDetails({ id }) {
-  // Cross-fade the fallback to content.
+  // 폴백에서 콘텐츠로 크로스 페이드합니다.
   return (
     <ViewTransition default="slow-fade">
       <Suspense fallback={<VideoInfoFallback />}>
@@ -6506,7 +6505,7 @@ export default function Page({ heading, children }) {
     <div className="page">
       <div className="top">
         <div className="top-nav">
-          {/* Custom classes based on transition type. */}
+          {/* 트랜지션 타입에 따라 커스텀 클래스를 적용합니다. */}
           <ViewTransition
             name="nav"
             share={{
@@ -6518,8 +6517,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* 콘텐츠에 대해 ViewTransition을 사용하지 않습니다. */}
+      {/* 콘텐츠는 자체 ViewTransition을 정의할 수 있습니다. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -6569,8 +6568,8 @@ import { PauseIcon, PlayIcon } from "./Icons";
 import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
-  // Add a name to animate with a shared element transition.
-  // This uses the default animation, no additional css needed.
+  // 공유 요소 트랜지션으로 애니메이션되도록 name을 추가합니다.
+  // 기본 애니메이션을 사용하므로 추가 CSS가 필요하지 않습니다.
   return (
     <ViewTransition name={`video-${video.id}`}>
       <div
@@ -6720,14 +6719,14 @@ export function Router({ children }) {
   const [routerState, setRouterState] = useState({pendingNav: () => {}, url: document.location.pathname});
   function navigate(url) {
     startTransition(() => {
-      // Transition type for the cause "nav forward"
+      // 전환 원인이 "nav forward"인 경우의 트랜지션 타입
       addTransitionType('nav-forward');
       go(url);
     });
   }
   function navigateBack(url) {
     startTransition(() => {
-      // Transition type for the cause "nav backward"
+      // 전환 원인이 "nav backward"인 경우의 트랜지션 타입
       addTransitionType('nav-back');
       go(url);
     });
@@ -6744,13 +6743,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // 복원은 동기적으로 이루어져야 하므로 애니메이션되면 안 됩니다.
+      // 트랜지션이더라도 마찬가지입니다.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // 아무 작업도 하지 않습니다. URL은 이미 업데이트되었습니다.
           },
         });
       });
@@ -7362,17 +7361,17 @@ ul {
 
 
 ```css src/animations.css
-/* Slide the fallback down */
+/* 폴백을 아래로 슬라이드합니다 */
 ::view-transition-old(.slide-down) {
     animation: 150ms ease-out both fade-out, 150ms ease-out both slide-down;
 }
 
-/* Slide the content up */
+/* 콘텐츠를 위로 슬라이드합니다 */
 ::view-transition-new(.slide-up) {
     animation: 210ms ease-in 150ms both fade-in, 400ms ease-in both slide-up;
 }
 
-/* Define the new keyframes */
+/* 새로운 키프레임을 정의합니다 */
 @keyframes slide-up {
     from {
         transform: translateY(10px);
@@ -7391,34 +7390,34 @@ ul {
     }
 }
 
-/* Previously defined animations below */
+/* 이전에 정의된 애니메이션은 아래에 있습니다 */
 
-/* Animations for view transition classed added by transition type */
+/* 트랜지션 타입에 의해 추가된 View Transition 클래스용 애니메이션 */
 ::view-transition-old(.slide-forward) {
-    /* when sliding forward, the "old" page should slide out to left. */
+   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
 
 ::view-transition-new(.slide-forward) {
-    /* when sliding forward, the "new" page should slide in from right. */
+    /* 앞으로 전환할 때 "new" 페이지는 오른쪽에서 슬라이드되어 들어와야 합니다. */
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 
 ::view-transition-old(.slide-back) {
-    /* when sliding back, the "old" page should slide out to right. */
+    /* 뒤로 전환할 때 "old" 페이지는 오른쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-right;
 }
 
 ::view-transition-new(.slide-back) {
-    /* when sliding back, the "new" page should slide in from left. */
+    /* 뒤로 전환할 때 "new" 페이지는 왼쪽에서 슬라이드되어 들어와야 합니다. */
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-left;
 }
 
-/* Keyframes to support our animations above. */
+/* 위 애니메이션을 지원하기 위한 키프레임 */
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -7528,12 +7527,12 @@ CSS로 `slide-down`과 `slide-up`을 정의하는 방법은 다음과 같습니�
 
 ```css {1, 6}
 ::view-transition-old(.slide-down) {
-  /* Slide the fallback down */
+  /* 폴백을 아래로 슬라이드합니다 */
   animation: ...;
 }
 
 ::view-transition-new(.slide-up) {
-  /* Slide the content up */
+  /* 콘텐츠를 위로 슬라이드합니다 */
   animation: ...;
 }
 ```
@@ -7567,13 +7566,13 @@ function VideoDetails({ id }) {
   return (
     <Suspense
       fallback={
-        // Animate the fallback down.
+        // 폴백을 아래로 애니메이션합니다.
         <ViewTransition exit="slide-down">
           <VideoInfoFallback />
         </ViewTransition>
       }
     >
-      {/* Animate the content up */}
+      {/* 콘텐츠를 위로 애니메이션합니다 */}
       <ViewTransition enter="slide-up">
         <VideoInfo id={id} />
       </ViewTransition>
@@ -7827,7 +7826,7 @@ export default function Page({ heading, children }) {
     <div className="page">
       <div className="top">
         <div className="top-nav">
-          {/* Custom classes based on transition type. */}
+          {/* 트랜지션 타입에 따라 커스텀 클래스를 적용합니다. */}
           <ViewTransition
             name="nav"
             share={{
@@ -7839,8 +7838,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* 콘텐츠에 대해 ViewTransition을 사용하지 않습니다. */}
+      {/* 콘텐츠는 자체 ViewTransition을 정의할 수 있습니다. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -7890,8 +7889,8 @@ import { PauseIcon, PlayIcon } from "./Icons";
 import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
-  // Add a name to animate with a shared element transition.
-  // This uses the default animation, no additional css needed.
+  // 공유 요소 트랜지션으로 애니메이션되도록 name을 추가합니다.
+  // 기본 애니메이션을 사용하므로 추가 CSS가 필요하지 않습니다.
   return (
     <ViewTransition name={`video-${video.id}`}>
       <div
@@ -8041,14 +8040,14 @@ export function Router({ children }) {
   const [routerState, setRouterState] = useState({pendingNav: () => {}, url: document.location.pathname});
   function navigate(url) {
     startTransition(() => {
-      // Transition type for the cause "nav forward"
+      // 전환 원인이 "nav forward"인 경우의 트랜지션 타입
       addTransitionType('nav-forward');
       go(url);
     });
   }
   function navigateBack(url) {
     startTransition(() => {
-      // Transition type for the cause "nav backward"
+      // 전환 원인이 "nav backward"인 경우의 트랜지션 타입
       addTransitionType('nav-back');
       go(url);
     });
@@ -8065,13 +8064,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // 복원은 동기적으로 이루어져야 하므로 애니메이션되면 안 됩니다.
+      // 트랜지션이더라도 마찬가지입니다.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // 아무 작업도 하지 않습니다. URL은 이미 업데이트되었습니다.
           },
         });
       });
@@ -8683,17 +8682,17 @@ ul {
 
 
 ```css src/animations.css
-/* Slide the fallback down */
+/* 폴백을 아래로 슬라이드합니다 */
 ::view-transition-old(.slide-down) {
     animation: 150ms ease-out both fade-out, 150ms ease-out both slide-down;
 }
 
-/* Slide the content up */
+/* 콘텐츠를 위로 슬라이드합니다 */
 ::view-transition-new(.slide-up) {
     animation: 210ms ease-in 150ms both fade-in, 400ms ease-in both slide-up;
 }
 
-/* Define the new keyframes */
+/* 새로운 키프레임을 정의합니다 */
 @keyframes slide-up {
     from {
         transform: translateY(10px);
@@ -8712,34 +8711,34 @@ ul {
     }
 }
 
-/* Previously defined animations below */
+/* 이전에 정의된 애니메이션은 아래에 있습니다 */
 
-/* Animations for view transition classed added by transition type */
+/* 트랜지션 타입에 의해 추가된 View Transition 클래스용 애니메이션 */
 ::view-transition-old(.slide-forward) {
-    /* when sliding forward, the "old" page should slide out to left. */
+   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
 
 ::view-transition-new(.slide-forward) {
-    /* when sliding forward, the "new" page should slide in from right. */
+    /* 앞으로 전환할 때 "new" 페이지는 오른쪽에서 슬라이드되어 들어와야 합니다. */
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 
 ::view-transition-old(.slide-back) {
-    /* when sliding back, the "old" page should slide out to right. */
+    /* 뒤로 전환할 때 "old" 페이지는 오른쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-right;
 }
 
 ::view-transition-new(.slide-back) {
-    /* when sliding back, the "new" page should slide in from left. */
+    /* 뒤로 전환할 때 "new" 페이지는 왼쪽에서 슬라이드되어 들어와야 합니다. */
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-left;
 }
 
-/* Keyframes to support our animations above. */
+/* 위 애니메이션을 지원하기 위한 키프레임 */
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -8883,17 +8882,17 @@ import Layout from "./Layout";
 import { ChevronLeft } from "./Icons";
 
 function VideoDetails({id}) {
-  // Animate from Suspense fallback to content
+  // 페이지 간 교차 페이드 애니메이션을 적용합니다.
   return (
     <Suspense
       fallback={
-        // Animate the fallback down.
+        // 폴백을 아래로 애니메이션합니다.
         <ViewTransition exit="slide-down">
           <VideoInfoFallback />
         </ViewTransition>
       }
     >
-      {/* Animate the content up */}
+      {/* 콘텐츠를 위로 애니메이션합니다 */}
       <ViewTransition enter="slide-up">
         <VideoInfo id={id} />
       </ViewTransition>
@@ -8953,14 +8952,14 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
-  // Activate with useDeferredValue ("when")
+ // useDeferredValue로 활성화합니다("언제")
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
     <div className="video-list">
       <div className="videos">
         {filteredVideos.map((video) => (
-          // Animate each item in list ("what")
+          // 리스트의 각 항목을 애니메이션합니다("무엇")
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -9154,7 +9153,7 @@ export default function Page({ heading, children }) {
     <div className="page">
       <div className="top">
         <div className="top-nav">
-          {/* Custom classes based on transition type. */}
+          {/* 트랜지션 타입에 따라 커스텀 클래스를 적용합니다. */}
           <ViewTransition
             name="nav"
             share={{
@@ -9166,8 +9165,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* 콘텐츠에 대해 ViewTransition을 사용하지 않습니다. */}
+      {/* 콘텐츠는 자체 ViewTransition을 정의할 수 있습니다. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -9217,8 +9216,8 @@ import { PauseIcon, PlayIcon } from "./Icons";
 import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
-  // Add a name to animate with a shared element transition.
-  // This uses the default animation, no additional css needed.
+  // 공유 요소 트랜지션으로 애니메이션되도록 name을 추가합니다.
+  // 기본 애니메이션을 사용하므로 추가 CSS가 필요하지 않습니다.
   return (
     <ViewTransition name={`video-${video.id}`}>
       <div
@@ -9368,14 +9367,14 @@ export function Router({ children }) {
   const [routerState, setRouterState] = useState({pendingNav: () => {}, url: document.location.pathname});
   function navigate(url) {
     startTransition(() => {
-      // Transition type for the cause "nav forward"
+      // 전환 원인이 "nav forward"인 경우의 트랜지션 타입
       addTransitionType('nav-forward');
       go(url);
     });
   }
   function navigateBack(url) {
     startTransition(() => {
-      // Transition type for the cause "nav backward"
+      // 전환 원인이 "nav backward"인 경우의 트랜지션 타입
       addTransitionType('nav-back');
       go(url);
     });
@@ -9392,13 +9391,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // 복원은 동기적으로 이루어져야 하므로 애니메이션되면 안 됩니다.
+      // 트랜지션이더라도 마찬가지입니다.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // 아무 작업도 하지 않습니다. URL은 이미 업데이트되었습니다.
           },
         });
       });
@@ -10010,7 +10009,7 @@ ul {
 
 
 ```css src/animations.css
-/* No additional animations needed */
+/* 추가 애니메이션은 필요하지 않습니다 */
 
 
 
@@ -10020,7 +10019,7 @@ ul {
 
 
 
-/* Previously defined animations below */
+/* 이전에 정의된 애니메이션은 아래에 있습니다 */
 
 
 
@@ -10036,32 +10035,32 @@ ul {
     animation: 210ms ease-in 150ms both fade-in, 400ms ease-in both slide-up;
 }
 
-/* Animations for view transition classed added by transition type */
+/* 트랜지션 타입에 의해 추가된 View Transition 클래스용 애니메이션 */
 ::view-transition-old(.slide-forward) {
-    /* when sliding forward, the "old" page should slide out to left. */
+   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
 
 ::view-transition-new(.slide-forward) {
-    /* when sliding forward, the "new" page should slide in from right. */
+    /* 앞으로 전환할 때 "new" 페이지는 오른쪽에서 슬라이드되어 들어와야 합니다. */
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 
 ::view-transition-old(.slide-back) {
-    /* when sliding back, the "old" page should slide out to right. */
+    /* 뒤로 전환할 때 "old" 페이지는 오른쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-right;
 }
 
 ::view-transition-new(.slide-back) {
-    /* when sliding back, the "new" page should slide in from left. */
+    /* 뒤로 전환할 때 "new" 페이지는 왼쪽에서 슬라이드되어 들어와야 합니다. */
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-left;
 }
 
-/* Keyframes to support our animations above. */
+/* 위 애니메이션을 지원하기 위한 키프레임 */
 @keyframes slide-up {
     from {
         transform: translateY(10px);
@@ -10186,7 +10185,7 @@ import {ViewTransition} from 'react'; import Details from './Details'; import Ho
 export default function App() {
   const {url} = useRouter();
 
-  // Animate with a cross fade between pages.
+  // 페이지 간을 크로스페이드로 애니메이션합니다.
   return (
     <ViewTransition key={url}>
       {url === '/' ? <Home /> : <Details />}
@@ -10199,17 +10198,17 @@ export default function App() {
 import { use, Suspense, ViewTransition } from "react"; import { fetchVideo, fetchVideoDetails } from "./data"; import { Thumbnail, VideoControls } from "./Videos"; import { useRouter } from "./router"; import Layout from "./Layout"; import { ChevronLeft } from "./Icons";
 
 function VideoDetails({id}) {
-  // Animate from Suspense fallback to content
+  // Suspense 폴백에서 콘텐츠로 전환되는 애니메이션
   return (
     <Suspense
       fallback={
-        // Animate the fallback down.
+        // 폴백을 아래로 애니메이션합니다.
         <ViewTransition exit="slide-down">
           <VideoInfoFallback />
         </ViewTransition>
       }
     >
-      {/* Animate the content up */}
+      {/* 콘텐츠를 위로 애니메이션합니다 */}
       <ViewTransition enter="slide-up">
         <VideoInfo id={id} />
       </ViewTransition>
@@ -10269,14 +10268,14 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
-  // Activate with useDeferredValue ("when")
+ // useDeferredValue로 활성화합니다("언제")
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
     <div className="video-list">
       <div className="videos">
         {filteredVideos.map((video) => (
-          // Animate each item in list ("what")
+          // 리스트의 각 항목을 애니메이션합니다("무엇")
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -10469,7 +10468,7 @@ export default function Page({ heading, children }) {
     <div className="page">
       <div className="top">
         <div className="top-nav">
-          {/* Custom classes based on transition type. */}
+          {/* 트랜지션 타입에 따라 커스텀 클래스를 적용합니다. */}
           <ViewTransition
             name="nav"
             share={{
@@ -10481,8 +10480,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* 콘텐츠에 대해 ViewTransition을 사용하지 않습니다. */}
+      {/* 콘텐츠는 자체 ViewTransition을 정의할 수 있습니다. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -10528,7 +10527,7 @@ export default function LikeButton({video}) {
 import { useState, ViewTransition } from "react"; import LikeButton from "./LikeButton"; import { useRouter } from "./router"; import { PauseIcon, PlayIcon } from "./Icons"; import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
-  // Add a name to animate with a shared element transition.
+  // 공유 요소 트랜지션으로 애니메이션되도록 name을 추가합니다.
   return (
     <ViewTransition name={`video-${video.id}`}>
       <div
@@ -10679,14 +10678,14 @@ export function Router({ children }) {
   const [isPending, startTransition] = useTransition();
   function navigate(url) {
     startTransition(() => {
-      // Transition type for the cause "nav forward"
+      // 전환 원인이 "nav forward"인 경우의 트랜지션 타입
       addTransitionType('nav-forward');
       go(url);
     });
   }
   function navigateBack(url) {
     startTransition(() => {
-      // Transition type for the cause "nav backward"
+      // 전환 원인이 "nav backward"인 경우의 트랜지션 타입
       addTransitionType('nav-back');
       go(url);
     });
@@ -10705,13 +10704,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // 복원은 동기적으로 이루어져야 하므로 애니메이션되면 안 됩니다.
+      // 트랜지션이더라도 마찬가지입니다.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // 아무 작업도 하지 않습니다. URL은 이미 업데이트되었습니다.
           },
         });
       });
@@ -11323,7 +11322,7 @@ ul {
 
 
 ```css src/animations.css
-/* Slide animations for Suspense the fallback down */
+/* Suspense 폴백을 아래로 슬라이드하는 애니메이션 */
 ::view-transition-old(.slide-down) {
     animation: 150ms ease-out both fade-out, 150ms ease-out both slide-down;
 }
@@ -11332,32 +11331,32 @@ ul {
     animation: 210ms ease-in 150ms both fade-in, 400ms ease-in both slide-up;
 }
 
-/* Animations for view transition classed added by transition type */
+/* 트랜지션 타입에 의해 추가된 View Transition 클래스용 애니메이션 */
 ::view-transition-old(.slide-forward) {
-    /* when sliding forward, the "old" page should slide out to left. */
+   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
 
 ::view-transition-new(.slide-forward) {
-    /* when sliding forward, the "new" page should slide in from right. */
+    /* 앞으로 전환할 때 "new" 페이지는 오른쪽에서 슬라이드되어 들어와야 합니다. */
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 
 ::view-transition-old(.slide-back) {
-    /* when sliding back, the "old" page should slide out to right. */
+    /* 뒤로 전환할 때 "old" 페이지는 오른쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-right;
 }
 
 ::view-transition-new(.slide-back) {
-    /* when sliding back, the "new" page should slide in from left. */
+    /* 뒤로 전환할 때 "new" 페이지는 왼쪽에서 슬라이드되어 들어와야 합니다. */
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-left;
 }
 
-/* Keyframes to support our animations above. */
+/* 위 애니메이션을 지원하기 위한 키프레임 */
 @keyframes slide-up {
     from {
         transform: translateY(10px);
@@ -11466,13 +11465,13 @@ _View Transition을 구축한 배경에 대한 자세한 내용은 다음을 참
 
 <Note>
 
-**`<Activity />` is now available in React’s Canary channel.**
+**`<Activity />`는 이제 React의 Canary 채널에서 사용할 수 있습니다.**
 
-[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
+[React의 릴리스 채널에 대해 더 알아보기](/community/versioning-policy#all-release-channels)
 
 </Note>
 
-In [past](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen) [updates](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity), we shared that we were researching an API to allow components to be visually hidden and deprioritized, preserving UI state with reduced performance costs relative to unmounting or hiding with CSS.
+[이전](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen) [업데이트](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity)에서, 컴포넌트를 시각적으로 숨기고 우선순위를 낮출 수 있도록 하는 API를 연구하고 있다고 공유했습니다. 이 API는 컴포넌트를 마운트 해제하거나 CSS로 숨기는 방식에 비해 더 낮은 성능 비용으로 UI 상태를 유지하는 것을 목표로 합니다.
 
 이제 API와 그 작동 방식을 공유할 준비가 되었고, 실험적인 React 버전에서 테스트를 시작할 수 있습니다.
 
@@ -11549,9 +11548,9 @@ export default function App() {
   const { url } = useRouter();
 
   return (
-    // View Transitions know about Activity
+    // View Transitions는 Activity를 인식합니다
     <ViewTransition>
-      {/* Render Home in Activity so we don't lose state */}
+      {/* 상태를 잃지 않도록 Home을 Activity로 렌더링합니다 */}
       <Activity mode={url === '/' ? 'visible' : 'hidden'}>
         <Home />
       </Activity>
@@ -11574,13 +11573,13 @@ function VideoDetails({id}) {
   return (
     <Suspense
       fallback={
-        // Animate the fallback down.
+        // 폴백을 아래로 애니메이션합니다.
         <ViewTransition exit="slide-down">
           <VideoInfoFallback />
         </ViewTransition>
       }
     >
-      {/* Animate the content up */}
+      {/* 콘텐츠를 위로 애니메이션합니다 */}
       <ViewTransition enter="slide-up">
         <VideoInfo id={id} />
       </ViewTransition>
@@ -11640,7 +11639,7 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
-  // Activate with useDeferredValue ("when")
+ // useDeferredValue로 활성화합니다("언제")
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
@@ -11650,7 +11649,7 @@ function SearchList({searchText, videos}) {
       )}
       <div className="videos">
         {filteredVideos.map((video) => (
-          // Animate each item in list ("what")
+          // 리스트의 각 항목을 애니메이션합니다("무엇")
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -11840,7 +11839,7 @@ export default function Page({ heading, children }) {
     <div className="page">
       <div className="top">
         <div className="top-nav">
-          {/* Custom classes based on transition type. */}
+          {/* 트랜지션 타입에 따라 커스텀 클래스를 적용합니다. */}
           <ViewTransition
             name="nav"
             share={{
@@ -11852,8 +11851,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* 콘텐츠에 대해 ViewTransition을 사용하지 않습니다. */}
+      {/* 콘텐츠는 자체 ViewTransition을 정의할 수 있습니다. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -11903,8 +11902,8 @@ import { PauseIcon, PlayIcon } from "./Icons";
 import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
-  // Add a name to animate with a shared element transition.
-  // This uses the default animation, no additional css needed.
+  // 공유 요소 트랜지션으로 애니메이션되도록 name을 추가합니다.
+  // 기본 애니메이션을 사용하므로 추가 CSS가 필요하지 않습니다.
   return (
     <ViewTransition name={`video-${video.id}`}>
       <div
@@ -12054,14 +12053,14 @@ export function Router({ children }) {
   const [routerState, setRouterState] = useState({pendingNav: () => {}, url: document.location.pathname});
   function navigate(url) {
     startTransition(() => {
-      // Transition type for the cause "nav forward"
+      // 전환 원인이 "nav forward"인 경우의 트랜지션 타입
       addTransitionType('nav-forward');
       go(url);
     });
   }
   function navigateBack(url) {
     startTransition(() => {
-      // Transition type for the cause "nav backward"
+      // 전환 원인이 "nav backward"인 경우의 트랜지션 타입
       addTransitionType('nav-back');
       go(url);
     });
@@ -12078,13 +12077,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // 복원은 동기적으로 이루어져야 하므로 애니메이션되면 안 됩니다.
+      // 트랜지션이더라도 마찬가지입니다.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // 아무 작업도 하지 않습니다. URL은 이미 업데이트되었습니다.
           },
         });
       });
@@ -12696,7 +12695,7 @@ ul {
 
 
 ```css src/animations.css
-/* No additional animations needed */
+/* 추가 애니메이션은 필요하지 않습니다 */
 
 
 
@@ -12706,14 +12705,14 @@ ul {
 
 
 
-/* Previously defined animations below */
+/* 이전에 정의된 애니메이션은 아래에 있습니다 */
 
 
 
 
 
 
-/* Slide animations for Suspense the fallback down */
+/* Suspense 폴백을 아래로 슬라이드하는 애니메이션 */
 ::view-transition-old(.slide-down) {
     animation: 150ms ease-out both fade-out, 150ms ease-out both slide-down;
 }
@@ -12722,32 +12721,32 @@ ul {
     animation: 210ms ease-in 150ms both fade-in, 400ms ease-in both slide-up;
 }
 
-/* Animations for view transition classed added by transition type */
+/* 트랜지션 타입에 의해 추가된 View Transition 클래스용 애니메이션 */
 ::view-transition-old(.slide-forward) {
-    /* when sliding forward, the "old" page should slide out to left. */
+   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
 
 ::view-transition-new(.slide-forward) {
-    /* when sliding forward, the "new" page should slide in from right. */
+    /* 앞으로 전환할 때 "new" 페이지는 오른쪽에서 슬라이드되어 들어와야 합니다. */
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 
 ::view-transition-old(.slide-back) {
-    /* when sliding back, the "old" page should slide out to right. */
+    /* 뒤로 전환할 때 "old" 페이지는 오른쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-right;
 }
 
 ::view-transition-new(.slide-back) {
-    /* when sliding back, the "new" page should slide in from left. */
+    /* 뒤로 전환할 때 "new" 페이지는 왼쪽에서 슬라이드되어 들어와야 합니다. */
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-left;
 }
 
-/* Keyframes to support our animations above. */
+/* 위 애니메이션을 지원하기 위한 키프레임 */
 @keyframes slide-up {
     from {
         transform: translateY(10px);
@@ -12889,7 +12888,7 @@ export default function App() {
 
   return (
     <ViewTransition>
-      {/* Render videos in Activity to pre-render them */}
+      {/* 미리 렌더링하기 위해 Activity로 비디오를 렌더링합니다 */}
       {videos.map(({id}) => (
         <Activity key={id} mode={videoId === id ? 'visible' : 'hidden'}>
           <Details id={id}/>
@@ -12907,19 +12906,18 @@ export default function App() {
 import { use, Suspense, ViewTransition } from "react"; import { fetchVideo, fetchVideoDetails } from "./data"; import { Thumbnail, VideoControls } from "./Videos"; import { useRouter } from "./router"; import Layout from "./Layout"; import { ChevronLeft } from "./Icons";
 
 function VideoDetails({id}) {
-  // Animate from Suspense fallback to content.
-  // If this is pre-rendered then the fallback
-  // won't need to show.
+  // Suspense 폴백에서 콘텐츠로 애니메이션합니다.
+  // 미리 렌더링되어 있다면 폴백을 표시할 필요가 없습니다.
   return (
     <Suspense
       fallback={
-        // Animate the fallback down.
+        // 폴백을 아래로 애니메이션합니다.
         <ViewTransition exit="slide-down">
           <VideoInfoFallback />
         </ViewTransition>
       }
     >
-      {/* Animate the content up */}
+      {/* 콘텐츠를 위로 애니메이션합니다 */}
       <ViewTransition enter="slide-up">
         <VideoInfo id={id} />
       </ViewTransition>
@@ -12978,7 +12976,7 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
-  // Activate with useDeferredValue ("when")
+ // useDeferredValue로 활성화합니다("언제")
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
@@ -12988,7 +12986,7 @@ function SearchList({searchText, videos}) {
       )}
       <div className="videos">
         {filteredVideos.map((video) => (
-          // Animate each item in list ("what")
+          // 리스트의 각 항목을 애니메이션합니다("무엇")
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -13178,7 +13176,7 @@ export default function Page({ heading, children }) {
     <div className="page">
       <div className="top">
         <div className="top-nav">
-          {/* Custom classes based on transition type. */}
+          {/* 트랜지션 타입에 따라 커스텀 클래스를 적용합니다. */}
           <ViewTransition
             name="nav"
             share={{
@@ -13190,8 +13188,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* 콘텐츠에 대해 ViewTransition을 사용하지 않습니다. */}
+      {/* 콘텐츠는 자체 ViewTransition을 정의할 수 있습니다. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -13241,8 +13239,8 @@ import { PauseIcon, PlayIcon } from "./Icons";
 import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
-  // Add a name to animate with a shared element transition.
-  // This uses the default animation, no additional css needed.
+  // 공유 요소 트랜지션으로 애니메이션되도록 name을 추가합니다.
+  // 기본 애니메이션을 사용하므로 추가 CSS가 필요하지 않습니다.
   return (
     <ViewTransition name={`video-${video.id}`}>
       <div
@@ -13392,14 +13390,14 @@ export function Router({ children }) {
   const [routerState, setRouterState] = useState({pendingNav: () => {}, url: document.location.pathname});
   function navigate(url) {
     startTransition(() => {
-      // Transition type for the cause "nav forward"
+      // 전환 원인이 "nav forward"인 경우의 트랜지션 타입
       addTransitionType('nav-forward');
       go(url);
     });
   }
   function navigateBack(url) {
     startTransition(() => {
-      // Transition type for the cause "nav backward"
+      // 전환 원인이 "nav backward"인 경우의 트랜지션 타입
       addTransitionType('nav-back');
       go(url);
     });
@@ -13416,13 +13414,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // 복원은 동기적으로 이루어져야 하므로 애니메이션되면 안 됩니다.
+      // 트랜지션이더라도 마찬가지입니다.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // 아무 작업도 하지 않습니다. URL은 이미 업데이트되었습니다.
           },
         });
       });
@@ -14034,7 +14032,7 @@ ul {
 
 
 ```css src/animations.css
-/* No additional animations needed */
+/* 추가 애니메이션은 필요하지 않습니다 */
 
 
 
@@ -14044,14 +14042,14 @@ ul {
 
 
 
-/* Previously defined animations below */
+/* 이전에 정의된 애니메이션은 아래에 있습니다 */
 
 
 
 
 
 
-/* Slide animations for Suspense the fallback down */
+/* Suspense 폴백을 아래로 슬라이드하는 애니메이션 */
 ::view-transition-old(.slide-down) {
     animation: 150ms ease-out both fade-out, 150ms ease-out both slide-down;
 }
@@ -14060,32 +14058,32 @@ ul {
     animation: 210ms ease-in 150ms both fade-in, 400ms ease-in both slide-up;
 }
 
-/* Animations for view transition classed added by transition type */
+/* 트랜지션 타입에 의해 추가된 View Transition 클래스용 애니메이션 */
 ::view-transition-old(.slide-forward) {
-    /* when sliding forward, the "old" page should slide out to left. */
+   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
 
 ::view-transition-new(.slide-forward) {
-    /* when sliding forward, the "new" page should slide in from right. */
+    /* 앞으로 전환할 때 "new" 페이지는 오른쪽에서 슬라이드되어 들어와야 합니다. */
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 
 ::view-transition-old(.slide-back) {
-    /* when sliding back, the "old" page should slide out to right. */
+    /* 뒤로 전환할 때 "old" 페이지는 오른쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-right;
 }
 
 ::view-transition-new(.slide-back) {
-    /* when sliding back, the "new" page should slide in from left. */
+    /* 뒤로 전환할 때 "new" 페이지는 왼쪽에서 슬라이드되어 들어와야 합니다. */
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-left;
 }
 
-/* Keyframes to support our animations above. */
+/* 위 애니메이션을 지원하기 위한 키프레임 */
 @keyframes slide-up {
     from {
         transform: translateY(10px);
@@ -14219,13 +14217,13 @@ Activity에서 고려 중인 또 다른 모드는 메모리가 너무 많이 사
 
 # 개발 중인 기능 {/*features-in-development*/}
 
-We're also developing features to help solve the common problems below.
+또한 아래와 같은 일반적인 문제를 해결하기 위한 기능들도 개발 중입니다.
 
-As we iterate on possible solutions, you may see some potential APIs we're testing being shared based on the PRs we are landing. Please keep in mind that as we try different ideas, we often change or remove different solutions after trying them out.
+가능한 해결책을 반복적으로 검토하는 과정에서, 현재 병합 중인 PR을 통해 실험 중인 잠재적 API가 일부 공유될 수 있습니다. 다양한 아이디어를 시도하는 과정에서, 실험 결과에 따라 일부 해결책은 변경되거나 제거되기도 합니다.
 
-When the solutions we're working on are shared too early, it can create churn and confusion in the community. To balance being transparent and limiting confusion, we're sharing the problems we're currently developing solutions for, without sharing a particular solution we have in mind.
+아직 충분히 검증되지 않은 해결책이 너무 이르게 공유되면, 커뮤니티에 혼란과 불필요한 변동을 초래할 수 있습니다. 투명성과 혼란 최소화 사이의 균형을 위해, 현재는 구체적인 해결책을 공개하지 않고 우리가 해결하려는 문제 자체만 공유하고 있습니다.
 
-As these features progress, we'll announce them on the blog with docs included so you can try them out.
+이 기능들이 더 진전되면, 문서와 함께 블로그를 통해 공개하여 직접 사용해 볼 수 있도록 안내할 예정입니다.
 
 ## React Performance Tracks {/*react-performance-tracks*/}
 
@@ -14258,7 +14256,8 @@ hooks를 출시했을 때, 저희는 세 가지 동기가 있었습니다:
 - **생명주기가 아닌 함수의 관점에서 사고**: hooks는 생명주기 메서드를 기반으로 한 분할을 강제하는 것이 아니라 관련된 부분(구독 설정이나 데이터 가져오기 등)을 기반으로 하나의 컴포넌트를 더 작은 함수로 분할할 수 있게 해주었습니다.
 - **사전 컴파일 지원**: hooks는 생명주기 메서드로 인한 의도하지 않은 최적화 해제 문제와 클래스의 제약사항을 줄이면서 사전 컴파일을 지원하도록 설계되었습니다.
 
-Since their release, hooks have been successful at *sharing code between components*. Hooks are now the favored way to share logic between components, and there are less use cases for render props and higher order components. Hooks have also been successful at supporting features like Fast Refresh that were not possible with class components.
+출시 이후 hooks는 *컴포넌트 간 코드 공유* 측면에서 성공을 거두었습니다.  
+현재 hooks는 컴포넌트 간 로직을 공유하는 데 선호되는 방식이며, 렌더링 props와 고차 컴포넌트를 사용할 필요가 있는 경우도 줄어들었습니다. 또한 hooks는 클래스 컴포넌트로는 가능하지 않았던 Fast Refresh와 같은 기능을 지원하는 데에도 성공했습니다.
 
 ### Effects는 어려울 수 있습니다 {/*effects-can-be-hard*/}
 
@@ -14272,11 +14271,11 @@ Since their release, hooks have been successful at *sharing code between compone
 
 ```js
 useEffect(() => {
-  // Your Effect connected to the room specified with roomId...
+  // roomId로 지정된 방에 연결된 effect...
   const connection = createConnection(serverUrl, roomId);
   connection.connect();
   return () => {
-    // ...until it disconnected
+     // ...연결이 끊어질 때까지
     connection.disconnect();
   };
 }, [roomId]);
@@ -14299,18 +14298,18 @@ useEffect(() => {
   return () => {
     connection.disconnect();
   };
-}); // compiler inserted dependencies.
+}); // 컴파일러가 삽입한 의존성
 ```
 
-With this code, the React Compiler can infer the dependencies for you and insert them automatically so you don't need to see or write them. With features like [the IDE extension](#compiler-ide-extension) and [`useEffectEvent`](/reference/react/useEffectEvent), we can provide a CodeLens to show you what the Compiler inserted for times you need to debug, or to optimize by removing a dependency. This helps reinforce the correct mental model for writing Effects, which can run at any time to synchronize your component or hook's state with something else.
+이 코드에서는 React 컴파일러가 의존성을 자동으로 추론해 삽입하므로, 개발자가 직접 보거나 작성할 필요가 없습니다. [IDE 확장](#컴파일러-ide-extension)이나 [`useEffectEvent`](/reference/react/useEffectEvent) 같은 기능을 사용하면, 디버깅이 필요하거나 의존성을 제거해 최적화해야 할 때 컴파일러가 무엇을 삽입했는지 보여주는 CodeLens를 제공할 수 있습니다. 이는 컴포넌트나 Hook의 상태를 다른 무언가와 동기화하기 위해 언제든 실행될 수 있는 Effect를 작성할 때, 올바른 사고 모델을 강화하는 데 도움이 됩니다.
 
-Our hope is that automatically inserting dependencies is not only easier to write, but that it also makes them easier to understand by forcing you to think in terms of what the Effect does, and not in component lifecycles.
+저희의 바람은 의존성을 자동으로 삽입하는 방식이 작성하기 쉬울 뿐만 아니라, 컴포넌트 생명주기가 아니라 Effect가 무엇을 하는지에 집중하도록 강제함으로써 이해하기도 더 쉬워지는 것입니다.
 
 ---
 
 ## Compiler IDE Extension {/*compiler-ide-extension*/}
 
-Later in 2025 [we shared](/blog/2025/10/07/react-compiler-1) the first stable release of React Compiler, and we're continuing to invest in shipping more improvements.
+2025년 말, 저희는 React 컴파일러의 첫 번째 안정화 릴리스를 [공유했으며](/blog/2025/10/07/react-compiler-1), 이후에도 더 많은 개선 사항을 제공하기 위해 지속적으로 투자하고 있습니다.
 
 또한 React 컴파일러를 사용해서 코드 이해와 디버깅을 향상시킬 수 있는 정보를 제공하는 방법을 탐구하기 시작했습니다. 저희가 탐구하기 시작한 아이디어 중 하나는 [Lauren Tan의 React Conf 발표](https://conf2024.react.dev/talks/5)에서 사용된 확장 프로그램과 유사한, React 컴파일러를 기반으로 하는 새로운 실험적 LSP 기반 React IDE 확장 프로그램입니다.
 
@@ -14332,34 +14331,34 @@ Fragment refs는 아직 연구 중입니다. 최종 API가 완성에 가까워�
 
 ## Gesture Animations {/*gesture-animations*/}
 
-We're also researching ways to enhance View Transitions to support gesture animations such as swiping to open a menu, or scroll through a photo carousel.
+또한 메뉴를 스와이프로 열거나 사진 캐러셀을 스크롤하는 것과 같은 제스처 애니메이션을 지원하도록 View Transitions를 확장하는 방법도 연구하고 있습니다.
 
 제스처는 몇 가지 이유로 새로운 도전을 제시합니다:
 
-- **Gestures are continuous**: as you swipe the animation is tied to your finger placement time, rather than triggering and running to completion.
-- **Gestures don't complete**: when you release your finger gesture animations can run to completion, or revert to their original state (like when you only partially open a menu) depending on how far you go.
-- **Gestures invert old and new**: while you're animating, you want the page you are animating from to stay "alive" and interactive. This inverts the browser View Transition model where the "old" state is a snapshot and the "new" state is the live DOM.
+- **제스처는 연속적입니다**: 스와이프하는 동안 애니메이션은 트리거되어 끝까지 실행되는 것이 아니라, 손가락 위치와 시간에 직접적으로 연결됩니다.
+- **제스처는 항상 완료되지 않습니다**: 손가락을 놓았을 때, 제스처 애니메이션은 끝까지 실행될 수도 있고, 이동한 거리와 정도에 따라(예: 메뉴를 부분적으로만 연 경우) 원래 상태로 되돌아갈 수도 있습니다.
+- **제스처는 old와 new를 뒤집습니다**: 애니메이션이 진행되는 동안에는 출발 지점이 되는 페이지가 계속 "살아 있는" 상태로 상호작용 가능해야 합니다. 이는 "old" 상태가 스냅샷이고 "new" 상태가 실제 DOM인 브라우저의 View Transition 모델과는 반대입니다.
 
-We believe we’ve found an approach that works well and may introduce a new API for triggering gesture transitions. For now, we're focused on shipping `<ViewTransition>`, and will revisit gestures afterward.
+저희는 잘 동작하는 접근 방식을 찾았다고 생각하며, 제스처 전환을 트리거하기 위한 새로운 API를 도입할 수도 있습니다. 다만 현재는 `<ViewTransition>`을 제공하는 데 집중하고 있으며, 제스처 지원은 그 이후에 다시 다룰 예정입니다.
 
 ---
 
 ## Concurrent Stores {/*concurrent-stores*/}
 
-When we released React 18 with concurrent rendering, we also released `useSyncExternalStore` so external store libraries that did not use React state or context could [support concurrent rendering](https://github.com/reactwg/react-18/discussions/70) by forcing a synchronous render when the store is updated.
+동시 렌더링을 포함한 React 18을 출시하면서, React 상태나 context를 사용하지 않는 외부 스토어 라이브러리도 스토어 업데이트 시 동기 렌더링을 강제함으로써 [동시 렌더링을 지원](https://github.com/reactwg/react-18/discussions/70)할 수 있도록 `useSyncExternalStore`를 함께 출시했습니다.
 
-Using `useSyncExternalStore` comes at a cost though, since it forces a bail out from concurrent features like transitions, and forces existing content to show Suspense fallbacks.
+다만 `useSyncExternalStore`를 사용하면 비용이 따릅니다. 트랜지션과 같은 동시성 기능에서 빠져나오게 되고, 기존 콘텐츠에 Suspense 폴백이 표시되도록 강제하기 때문입니다.
 
-Now that React 19 has shipped, we're revisiting this problem space to create a primitive to fully support concurrent external stores with the `use` API:
+이제 React 19가 출시됨에 따라, `use` API로 동시 외부 스토어를 완전히 지원하기 위한 기본 요소를 만들기 위해 이 문제 영역을 다시 살펴보고 있습니다:
 
 ```js
 const value = use(store);
 ```
 
-Our goal is to allow external state to be read during render without tearing, and to work seamlessly with all of the concurrent features React offers.
+목표는 외부 상태를 렌더링 중에 찢김(tearing) 없이 읽을 수 있도록 하고, React가 제공하는 모든 동시성 기능과 자연스럽게 동작하게 하는 것입니다.
 
-This research is still early. We'll share more, and what the new APIs will look like, when we're further along.
+이 연구는 아직 초기 단계입니다. 더 진행되면 새로운 API의 형태와 함께 추가 내용을 공유하겠습니다.
 
 ---
 
-_Thanks to [Aurora Scharff](https://bsky.app/profile/aurorascharff.no), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Eli White](https://twitter.com/Eli_White), [Lauren Tan](https://bsky.app/profile/no.lol), [Luna Wei](https://github.com/lunaleaps), [Matt Carroll](https://twitter.com/mattcarrollcode), [Jack Pope](https://jackpope.me), [Jason Bonta](https://threads.net/someextent), [Jordan Brown](https://github.com/jbrown215), [Jordan Eldredge](https://bsky.app/profile/capt.dev), [Mofei Zhang](https://threads.net/z_mofei), [Sebastien Lorber](https://bsky.app/profile/sebastienlorber.com), [Sebastian Markbåge](https://bsky.app/profile/sebmarkbage.calyptus.eu), and [Tim Yung](https://github.com/yungsters) for reviewing this post._
+_이 게시물을 검토해 준 [Aurora Scharff](https://bsky.app/profile/aurorascharff.no), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Eli White](https://twitter.com/Eli_White), [Lauren Tan](https://bsky.app/profile/no.lol), [Luna Wei](https://github.com/lunaleaps), [Matt Carroll](https://twitter.com/mattcarrollcode), [Jack Pope](https://jackpope.me), [Jason Bonta](https://threads.net/someextent), [Jordan Brown](https://github.com/jbrown215), [Jordan Eldredge](https://bsky.app/profile/capt.dev), [Mofei Zhang](https://threads.net/z_mofei), [Sebastien Lorber](https://bsky.app/profile/sebastienlorber.com), [Sebastian Markbåge](https://bsky.app/profile/sebmarkbage.calyptus.eu), 및 [Tim Yung](https://github.com/yungsters)에게 감사드립니다._
