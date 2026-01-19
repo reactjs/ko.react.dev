@@ -20,7 +20,11 @@ TypeScript는 JavaScript 코드 베이스에 타입 정의를 추가하기 위�
 
 ## 설치 {/*installation*/}
 
+<<<<<<< HEAD
 모든 [프로덕션 수준의 React 프레임워크](/learn/start-a-new-react-project#full-stack-frameworks)는 TypeScript 사용을 지원합니다. 프레임워크별 설치 가이드를 따르세요.
+=======
+All [production-grade React frameworks](/learn/creating-a-react-app#full-stack-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
+>>>>>>> a1ddcf51a08cc161182b90a24b409ba11289f73e
 
 - [Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)

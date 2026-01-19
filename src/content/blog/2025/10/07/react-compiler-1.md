@@ -69,17 +69,17 @@ _[React 컴파일러 Playground](https://playground.react.dev/#N4Igzg9grgTgxgUxA
 
 npm
 <TerminalBlock>
-{`npm install --save-dev --save-exact babel-plugin-react-compiler@latest`}
+npm install --save-dev --save-exact babel-plugin-react-compiler@latest
 </TerminalBlock>
 
 pnpm
 <TerminalBlock>
-{`pnpm add --save-dev --save-exact babel-plugin-react-compiler@latest`}
+pnpm add --save-dev --save-exact babel-plugin-react-compiler@latest
 </TerminalBlock>
 
 yarn
 <TerminalBlock>
-{`yarn add --dev --exact babel-plugin-react-compiler@latest`}
+yarn add --dev --exact babel-plugin-react-compiler@latest
 </TerminalBlock>
 
 안정 버전 출시의 일환으로, React 컴파일러를 프로젝트에 더 쉽게 추가할 수 있도록 하고 컴파일러가 메모이제이션을 생성하는 방식을 최적화했습니다. React 컴파일러는 이제 옵셔널 체이닝과 배열 인덱스를 의존성으로 지원합니다. 이러한 개선 사항은 궁극적으로 재렌더링을 줄이고 더 반응적인 UI를 만들면서도, 관용적인 선언적 코드를 계속 작성할 수 있게 해줍니다.
@@ -101,17 +101,17 @@ React 컴파일러에는 [React의 규칙](/reference/rules)을 위반하는 코
 
 npm
 <TerminalBlock>
-{`npm install --save-dev eslint-plugin-react-hooks@latest`}
+npm install --save-dev eslint-plugin-react-hooks@latest
 </TerminalBlock>
 
 pnpm
 <TerminalBlock>
-{`pnpm add --save-dev eslint-plugin-react-hooks@latest`}
+pnpm add --save-dev eslint-plugin-react-hooks@latest
 </TerminalBlock>
 
 yarn
 <TerminalBlock>
-{`yarn add --dev eslint-plugin-react-hooks@latest`}
+yarn add --dev eslint-plugin-react-hooks@latest
 </TerminalBlock>
 
 ```js {6}
@@ -153,19 +153,19 @@ Expo, Vite, Next.js 팀과 협력하여 새로운 앱 경험에 컴파일러를 
 [Expo SDK 54](https://docs.expo.dev/guides/react-compiler/) 이상에서는 컴파일러가 기본적으로 활성화되어 있으므로, 새로운 앱은 처음부터 자동으로 컴파일러의 이점을 활용할 수 있습니다.
 
 <TerminalBlock>
-{`npx create-expo-app@latest`}
+npx create-expo-app@latest
 </TerminalBlock>
 
 [Vite](https://vite.dev/guide/) 및 [Next.js](https://nextjs.org/docs/app/api-reference/cli/create-next-app) 사용자는 `create-vite` 및 `create-next-app`에서 컴파일러가 활성화된 템플릿을 선택할 수 있습니다.
 
 <TerminalBlock>
-{`npm create vite@latest`}
+npm create vite@latest
 </TerminalBlock>
 
 <br />
 
 <TerminalBlock>
-{`npx create-next-app@latest`}
+npx create-next-app@latest
 </TerminalBlock>
 
 ## React 컴파일러 점진적으로 도입하기 {/*adopt-react-compiler-incrementally*/}

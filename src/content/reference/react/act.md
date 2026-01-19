@@ -152,7 +152,11 @@ DOM 이벤트를 디스패치할 때는 DOM 컨테이너가 문서에 추가되�
 
 ## 문제 해결 {/*troubleshooting*/}
 
+<<<<<<< HEAD
 ### "The current testing environment is not configured to support act(...)" 오류가 발생하는 경우 {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
+=======
+### I'm getting an error: "The current testing environment is not configured to support act(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
+>>>>>>> a1ddcf51a08cc161182b90a24b409ba11289f73e
 
 `act`를 사용하려면 테스트 환경에서 `global.IS_REACT_ACT_ENVIRONMENT=true`를 설정해야 합니다. 이 설정은 act가 올바른 환경에서만 사용되도록 보장합니다.
 
