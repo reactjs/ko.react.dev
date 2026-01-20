@@ -288,9 +288,9 @@ CodeSandBox에는 세 가지 주요 구역이 있습니다.
 
 ![CodeSandBox의 초기 코드](../images/tutorial/react-starter-code-codesandbox.png)
 
-1. The _Files_ section with a list of files like `App.js`, `index.js`, `styles.css` in `src` folder and a folder called `public`
-1. The _code editor_ where you'll see the source code of your selected file
-1. The _browser_ section where you'll see how the code you've written will be displayed
+1. `App.js`, `index.js`, `style.css` 와 같은 파일 목록과 `public` 폴더가 있는 _파일_ 구역
+1. 선택한 파일의 소스 코드를 볼 수 있는 _코드 편집기_
+1. 작성한 코드가 어떻게 보이는지 확인할 수 있는 _브라우저_ 구역
 
 _파일_ 구역에서 `App.js` 파일을 선택하세요. _코드 편집기_ 에서 해당 파일의 내용이 있어야 합니다.
 
@@ -1346,7 +1346,7 @@ DOM `<button>` 엘리먼트의 `onClick` 어트리뷰트는 빌트인 컴포넌�
 ```jsx
 const squares = [null, null, null, null, null, null, null, null, null];
 squares[0] = 'X';
-// Now `squares` is ["X", null, null, null, null, null, null, null, null];
+// 이제 `squares`는 `["X", null, null, null, null, null, null, null, null]`입니다.
 ```
 
 그리고 아래는 `squares` 배열을 변형하지 않고 데이터를 변경한 경우의 모습입니다.
@@ -1354,7 +1354,7 @@ squares[0] = 'X';
 ```jsx
 const squares = [null, null, null, null, null, null, null, null, null];
 const nextSquares = ['X', null, null, null, null, null, null, null, null];
-// Now `squares` is unchanged, but `nextSquares` first element is 'X' rather than `null`
+// 이제 `squares`는 변경되지 않았지만 `nextSquares`의 첫 번째 요소는 `null`이 아닌 `'X'`입니다.
 ```
 
 최종 결과는 같지만, 원본 데이터를 직접 변형하지 않음으로써 몇 가지 이점을 얻을 수 있습니다.
@@ -1739,11 +1739,11 @@ body {
 
 ```jsx
 [
-  // Before first move
+  // 첫 번째 이동 전
   [null, null, null, null, null, null, null, null, null],
-  // After first move
+  // 첫 번째 이동 후
   [null, null, null, null, 'X', null, null, null, null],
-  // After second move
+  // 두 번째 이동 후
   [null, null, null, null, 'X', null, null, null, 'O'],
   // ...
 ]

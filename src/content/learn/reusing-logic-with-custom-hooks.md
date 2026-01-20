@@ -836,7 +836,7 @@ export default function ChatRoom({ roomId }) {
 
 ### 커스텀 Hook에 이벤트 핸들러 넘겨주기 {/*passing-event-handlers-to-custom-hooks*/}
 
-As you start using `useChatRoom` in more components, you might want to let components customize its behavior. For example, currently, the logic for what to do when a message arrives is hardcoded inside the Hook:
+더 많은 컴포넌트에서 `useChatRoom`을 사용하기 시작하면, 컴포넌트가 그 동작을 커스텀할 수 있도록 하고 싶을 수 있습니다. 예를 들어, 현재 메시지가 도착했을 때 무엇을 할지에 대한 로직은 Hook 내부에 하드 코딩되어 있습니다.
 
 ```js {9-11}
 export function useChatRoom({ serverUrl, roomId }) {
@@ -1001,7 +1001,7 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
 
 ```js src/chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 실제 구현에서는 서버에 연결됩니다
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }
@@ -1248,7 +1248,7 @@ function ChatRoom({ roomId }) {
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
-  // ✅ Great: custom Hooks named after their purpose
+  // ✅ 좋은 예시: 목적에 따라 이름이 지어진 커스텀 Hook
   useChatRoom({ serverUrl, roomId });
   useImpressionLog('visit_chat', { roomId });
   // ...
@@ -1778,7 +1778,7 @@ export class FadeInAnimation {
     if (progress === 1) {
       this.stop();
     } else {
-      // We still have more frames to paint
+      // 아직 더 그릴 프레임이 있습니다
       this.frameId = requestAnimationFrame(() => this.onFrame());
     }
   }
@@ -1915,7 +1915,7 @@ export default function Counter() {
 ```
 
 ```js src/useCounter.js
-// Write your custom Hook in this file!
+// 이 파일에 커스텀 Hook을 작성하세요!
 ```
 
 </Sandpack>
@@ -2102,7 +2102,7 @@ export function useCounter(delay) {
 ```
 
 ```js src/useInterval.js
-// Hook을 여기에 작성하세요!
+// 이 파일에 커스텀 Hook을 작성하세요!
 ```
 
 </Sandpack>
