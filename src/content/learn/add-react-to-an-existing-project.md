@@ -20,7 +20,7 @@ title: 기존 프로젝트에 React 추가하기
 
 다음과 같이 설정하는 것을 추천합니다.
 
-1. [React 기반 프레임워크](/learn/start-a-new-react-project) 중 하나를 사용하여 **앱의 React 부분을 빌드하세요.**
+1. [React 기반 프레임워크](/learn/creating-a-react-app) 중 하나를 사용하여 **앱의 React 부분을 빌드하세요.**
 2. 사용하는 프레임워크 설정에서 **`/some-app` 을 *기본 경로*<sup>*Base Path*</sup>로 명시하세요**. (이때, [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)를 사용하세요!)
 3. **서버 또는 프록시를 구성**하여 `/some-app/` 하위의 모든 요청이 React 앱에서 처리되도록 하세요.
 
@@ -151,7 +151,7 @@ root.render(<NavigationBar />);
 
 기존에 존재하던 `index.html`의 원본 HTML 컨텐츠가 그대로 남아있는 것을 확인할 수 있습니다. 하지만 이제는 `<nav id="navigation">` 안에 개발자가 직접 작성한 `NavigationBar` React 컴포넌트가 나타납니다. 기존 HTML 페이지에서 React 컴포넌트가 렌더링 되는 것에 대하여 더 알아보려면 [`createRoot` 사용법 문서](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react)를 읽어보세요.
 
-기존 프로젝트에서 React를 도입할 때, 일반적으로 작은 상호작용 컴포넌트(예시: 버튼)에서 시작하여 점진적으로 "상위 구조로 확장하면서" 결국에는 전체 페이지가 React로 빌드될 때까지 이 과정을 반복하게 됩니다. 이 지점에 도달한다면 React의 장점을 최대한 활용하기 위해 [React 프레임워크](/learn/start-a-new-react-project)로 마이그레이션하는 것을 권장합니다.
+기존 프로젝트에서 React를 도입할 때, 일반적으로 작은 상호작용 컴포넌트(예시: 버튼)에서 시작하여 점진적으로 "상위 구조로 확장하면서" 결국에는 전체 페이지가 React로 빌드될 때까지 이 과정을 반복하게 됩니다. 이 지점에 도달한다면 React의 장점을 최대한 활용하기 위해 [React 프레임워크](/learn/creating-a-react-app)로 마이그레이션하는 것을 권장합니다.
 
 ## 기존 네이티브 모바일 앱에서 React Native 사용하기 {/*using-react-native-in-an-existing-native-mobile-app*/}
 

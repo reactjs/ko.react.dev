@@ -96,7 +96,7 @@ function SubmitButton({ submitAction }) {
 #### 매개변수 {/*starttransition-parameters*/}
 
 * `action`: 하나 이상의 [`set` 함수](/reference/react/useState#setstate)를 호출하여 일부 상태를 업데이트하는 함수입니다. React는 매개변수 없이 즉시 `action`을 호출하고 `action` 함수 호출 중에 동기적으로 예약된 모든 상태 업데이트를 Transitions으로 표시합니다. `action`에서 await된 비동기 호출은 Transition에 포함되지만, 현재로서는 `await` 이후의 `set` 함수 호출을 추가적인 `startTransition`으로 감싸야 합니다([문제 해결 참조](#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
-Transitions으로 표시된 상태 업데이트는 [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) 방식으로 처리되며, [불필요한 로딩 표시가 나타나지 않습니다](#preventing-unwanted-loading-indicators).
+Transitions으로 표시된 상태 업데이트는 [non-blocking](#perform-non-blocking-updates-with-actions) 방식으로 처리되며, [불필요한 로딩 표시가 나타나지 않습니다](#preventing-unwanted-loading-indicators).
 
 #### 반환값 {/*starttransition-returns*/}
 
@@ -1249,7 +1249,7 @@ function Router() {
 
 세 가지 이유로 이 방법을 권장합니다.
 
-- [Transition은 중단할 수 있으므로](#marking-a-state-update-as-a-non-blocking-transition) 사용자는 리렌더링이 완료될 때까지 기다릴 필요 없이 바로 클릭할 수 있습니다.
+- [Transition은 중단할 수 있으므로](#perform-non-blocking-updates-with-actions) 사용자는 리렌더링이 완료될 때까지 기다릴 필요 없이 바로 클릭할 수 있습니다.
 - [Transition은 원치 않는 로딩 표시기를 방지하므로](#preventing-unwanted-loading-indicators) 사용자가 탐색 시 갑작스러운 이동을 방지할 수 있습니다.
 - [Transition은 모든 보류 중인 작업을 대기하므로](#perform-non-blocking-updates-with-actions) 사용자는 사이드 이펙트가 완료된 후에 새로운 페이지를 볼 수 있습니다.
 

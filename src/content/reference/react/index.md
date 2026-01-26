@@ -28,6 +28,7 @@ React DOM은 브라우저 DOM 환경에서 실행되는 웹 애플리케이션�
 * [API](/reference/react-dom) - `react-dom` 패키지에는 웹 애플리케이션에서만 지원되는 메서드가 포함되어 있습니다.
 * [클라이언트 API](/reference/react-dom/client) - `react-dom/client` API를 사용하면 브라우저에서 React 컴포넌트를 렌더링할 수 있습니다.
 * [서버 API](/reference/react-dom/server) - `react-dom/server` API를 사용하면 서버에서 React 컴포넌트를 HTML로 렌더링할 수 있습니다.
+* [정적 API](/reference/react-dom/static) - `react-dom/static` API를 사용하면 React 컴포넌트의 정적 HTML을 생성할 수 있습니다.
 
 ## React Compiler {/*react-compiler*/}
 
