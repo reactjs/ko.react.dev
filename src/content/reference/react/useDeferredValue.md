@@ -421,7 +421,7 @@ input { margin: 10px; }
 
 두 단계로 진행된다고 생각하면 됩니다.
 
-1. **First, React re-renders with the new `query` (`"ab"`) but with the old `deferredQuery` (still `"a"`).** The `deferredQuery` value, which you pass to the result list, is *deferred:* it "lags behind" the `query` value.
+1. **먼저 React는 새로운 `query` 값(`"ab"`)으로 리렌더링하지만, `deferredQuery`는 이전 값(여전히 `"a"`)을 사용합니다.** 결과 목록에는 이 지연(*deferred*)된 `deferredQuery` 값이 전달되며, 이는 `query` 값보다 뒤처져서 동작합니다.
 
 2. **백그라운드에서 React는 `query`와 `deferredQuery`를 모두 `"ab"`로 업데이트한 상태로 리렌더링을 시도합니다.** 이 리렌더링이 완료되면 React는 이를 화면에 표시합니다. 그러나 일시 중단되는 경우(`"ab"`에 대한 결과가 아직 로딩되지 않은 경우) React는 이 렌더링 시도를 포기하며, 데이터가 로딩된 후 이 리렌더링을 다시 시도합니다. 사용자는 데이터가 준비될 때까지 오래된 지연된 값을 계속 보게 됩니다.
 
