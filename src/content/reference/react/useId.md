@@ -44,13 +44,7 @@ function PasswordField() {
 
 * `useId`는 Hook이므로 **컴포넌트의 최상위** 또는 커스텀 Hook에서만 호출할 수 있습니다. 반복문이나 조건문에서는 사용할 수 없습니다. 필요한 경우 새로운 컴포넌트를 추출하고 해당 컴포넌트로 state를 이동해서 사용할 수 있습니다.
 
-<<<<<<< HEAD
 * `useId`를 리스트의 **key를 생성하기 위해 사용하면 안 됩니다**. [Key는 데이터로부터 생성해야 합니다.](/learn/rendering-lists#where-to-get-your-key)
-=======
-* `useId` **should not be used to generate cache keys** for [use()](/reference/react/use). The ID is stable when a component is mounted but may change during rendering. Cache keys should be generated from your data.
-
-* `useId` **should not be used to generate keys** in a list. [Keys should be generated from your data.](/learn/rendering-lists#where-to-get-your-key)
->>>>>>> a1ddcf51a08cc161182b90a24b409ba11289f73e
 
 * `useId`는 현재 [비동기 서버 컴포넌트](/reference/rsc/server-components#async-components-with-server-components)에서 사용할 수 없습니다.
 

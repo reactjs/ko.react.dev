@@ -21,7 +21,6 @@ React의 프로그래밍 기능.
 
 ## React DOM {/*react-dom*/}
 
-<<<<<<< HEAD
 React DOM은 브라우저 DOM 환경에서 실행되는 웹 애플리케이션에서만 지원되는 기능을 포함하고 있습니다. 이 섹션은 다음과 같이 나뉩니다.
 
 * [Hook](/reference/react-dom/hooks) - 브라우저 DOM 환경에서 실행되는 웹 애플리케이션을 위한 Hook입니다.
@@ -29,16 +28,6 @@ React DOM은 브라우저 DOM 환경에서 실행되는 웹 애플리케이션�
 * [API](/reference/react-dom) - `react-dom` 패키지에는 웹 애플리케이션에서만 지원되는 메서드가 포함되어 있습니다.
 * [클라이언트 API](/reference/react-dom/client) - `react-dom/client` API를 사용하면 브라우저에서 React 컴포넌트를 렌더링할 수 있습니다.
 * [서버 API](/reference/react-dom/server) - `react-dom/server` API를 사용하면 서버에서 React 컴포넌트를 HTML로 렌더링할 수 있습니다.
-=======
-React DOM contains features that are only supported for web applications (which run in the browser DOM environment). This section is broken into the following:
-
-* [Hooks](/reference/react-dom/hooks) - Hooks for web applications which run in the browser DOM environment.
-* [Components](/reference/react-dom/components) - React supports all of the browser built-in HTML and SVG components.
-* [APIs](/reference/react-dom) - The `react-dom` package contains methods supported only in web applications.
-* [Client APIs](/reference/react-dom/client) - The `react-dom/client` APIs let you render React components on the client (in the browser).
-* [Server APIs](/reference/react-dom/server) - The `react-dom/server` APIs let you render React components to HTML on the server.
-* [Static APIs](/reference/react-dom/static) - The `react-dom/static` APIs let you generate static HTML for React components.
->>>>>>> a1ddcf51a08cc161182b90a24b409ba11289f73e
 
 ## React Compiler {/*react-compiler*/}
 

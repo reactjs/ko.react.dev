@@ -97,11 +97,7 @@ React 생태계에는 이러한 문제들을 해결하기 위한 많은 도구�
 
 대부분의 백엔드나 REST 스타일 API에서 데이터를 가져온다면 다음을 사용할 것을 제안합니다.
 
-<<<<<<< HEAD
 - [React Query](https://tanstack.com/query/latest)
-=======
-- [TanStack Query](https://tanstack.com/query/)
->>>>>>> a1ddcf51a08cc161182b90a24b409ba11289f73e
 - [SWR](https://swr.vercel.app/)
 - [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
 

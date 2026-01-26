@@ -4,11 +4,7 @@ title: preloadModule
 
 <Note>
 
-<<<<<<< HEAD
 [React 기반 프레임워크](/learn/start-a-new-react-project)는 리소스 로딩을 대신 처리하는 경우가 많으므로 이 API를 직접 호출할 필요가 없을 수도 있습니다. 자세한 내용은 해당 프레임워크의 문서를 참조하세요.
-=======
-[React-based frameworks](/learn/creating-a-react-app) frequently handle resource loading for you, so you might not have to call this API yourself. Consult your framework's documentation for details.
->>>>>>> a1ddcf51a08cc161182b90a24b409ba11289f73e
 
 </Note>
 
