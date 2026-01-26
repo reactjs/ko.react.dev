@@ -245,7 +245,7 @@ input { margin: 10px; }
 
 </Sandpack>
 
-A common alternative UI pattern is to *defer* updating the list of results and to keep showing the previous results until the new results are ready. Call `useDeferredValue` to pass a deferred version of the query down:
+흔히 사용되는 또 다른 UI 패턴은 결과 목록의 업데이트를 지연(*defer*) 하고, 새로운 결과가 준비될 때까지 이전 결과를 계속 표시하는 것입니다. `useDeferredValue`를 호출하여 쿼리의 지연된 버전을 전달하세요:
 
 ```js {3,11}
 export default function App() {
