@@ -34,7 +34,7 @@ React로 처음부터 시작하는 것은 React를 처음 사용하기에는 쉬
 [Vite](https://vite.dev/)는 모던 웹 프로젝트에서 빠르고 간결한 개발 환경을 제공하는 것을 목표로 하는 빌드 도구입니다.
 
 <TerminalBlock>
-{`npm create vite@latest my-app -- --template react`}
+npm create vite@latest my-app -- --template react-ts
 </TerminalBlock>
 
 Vite는 명확한 특성을 보이며, 별도의 설정 없이도 합리적인 기본값을 제공합니다. Vite는 빠른 새로고침, JSX, Babel/SWC 등과 같은 일반적인 기능을 지원하는 풍부한 플러그인 생태계를 가지고 있습니다. 시작하려면 Vite의 [React 플러그인](https://ko.vite.dev/plugins/#vitejs-plugin-react) 또는 [React SWC 플러그인](https://ko.vite.dev/plugins/#vitejs-plugin-react-swc), 그리고 [React 서버 사이드 렌더링(SSR) 예시 프로젝트](https://ko.vite.dev/guide/ssr.html#example-projects)를 참고하세요.
@@ -46,7 +46,7 @@ Vite는 저희가 [추천하는 프레임워크](/learn/creating-a-react-app)인
 [Parcel](https://parceljs.org/)은 뛰어난 기본 개발 경험과 함께, 프로젝트를 이제 막 시작하는 단계부터 대규모 프로덕션 애플리케이션까지 확장할 수 있는 아키텍처를 결합한 빌드 툴입니다.
 
 <TerminalBlock>
-{`npm install --save-dev parcel`}
+npm install --save-dev parcel
 </TerminalBlock>
 
 Parcel은 별다른 설정 없이도 빠른 새로고침<sup>Fast Refresh</sup>, JSX, TypeScript, Flow 그리고 스타일링 기능을 지원합니다. 시작하려면 [Parcel에서 React 시작하기](https://parceljs.org/recipes/react/#getting-started)를 참고하세요.
@@ -56,7 +56,7 @@ Parcel은 별다른 설정 없이도 빠른 새로고침<sup>Fast Refresh</sup>,
 [Rsbuild](https://rsbuild.dev/)는 React 애플리케이션에 원활한 개발 경험을 제공하는 Rspack 기반의 빌드 툴입니다. 즉시 사용할 수 있도록 신중하게 조정된 기본 설정과 성능 최적화가 적용되어 있습니다.
 
 <TerminalBlock>
-{`npx create-rsbuild --template react`}
+npx create-rsbuild --template react
 </TerminalBlock>
 
 Rsbuild는 빠른 새로고침, JSX, TypeScript, 그리고 스타일링과 같은 React 기능을 기본적으로 지원합니다. 시작하려면 [Rsbuild의 React 가이드](https://rsbuild.dev/guide/framework/react)를 참고하세요.
@@ -97,7 +97,11 @@ React 생태계에는 이러한 문제들을 해결하기 위한 많은 도구�
 
 대부분의 백엔드나 REST 스타일 API에서 데이터를 가져온다면 다음을 사용할 것을 제안합니다.
 
+<<<<<<< HEAD
 - [React Query](https://tanstack.com/query/latest)
+=======
+- [TanStack Query](https://tanstack.com/query/)
+>>>>>>> a1ddcf51a08cc161182b90a24b409ba11289f73e
 - [SWR](https://swr.vercel.app/)
 - [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
 
