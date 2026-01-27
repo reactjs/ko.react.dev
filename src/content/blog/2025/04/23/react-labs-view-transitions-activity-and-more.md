@@ -1293,6 +1293,7 @@ function navigate(url) {
 
 `url`이 변경되면, `<ViewTransition>`과 새로운 라우트가 렌더링됩니다. `<ViewTransition>`이 `startTransition` 내부에서 업데이트되었으므로, `<ViewTransition>`이 애니메이션을 위해 활성화됩니다.
 
+
 기본적으로 View Transitions에는 브라우저의 기본 크로스 페이드 애니메이션이 포함되어 있습니다. 이를 예시에 적용하면, 페이지 간을 이동할 때마다 크로스 페이드 애니메이션이 실행됩니다.
 
 <Sandpack>
@@ -2493,7 +2494,7 @@ root.render(
 </ViewTransition>
 ```
 
-그리고 [뷰 트랜지션 클래스](/reference/react/ViewTransition#view-transition-class)를 사용해서 CSS에서 `slow-fade`를 정의합니다:
+그리고 [뷰 트랜지션 클래스](/reference/react/ViewTransition#view-transition-class)를 사용해서 CSS에서 `slow-fade`를 정의합니다.
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -4935,7 +4936,7 @@ Transition Types을 사용하면 `<ViewTransition>`에 Props를 통해 커스텀
 
 ```css
 ::view-transition-old(.slide-forward) {
-   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
+    /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: ...
 }
 
@@ -6094,7 +6095,7 @@ ul {
 ```css src/animations.css
 /* 트랜지션 타입에 의해 추가된 View Transition 클래스용 애니메이션 */
 ::view-transition-old(.slide-forward) {
-   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
+    /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
@@ -8715,7 +8716,7 @@ ul {
 
 /* 트랜지션 타입에 의해 추가된 View Transition 클래스용 애니메이션 */
 ::view-transition-old(.slide-forward) {
-   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
+    /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
@@ -8952,7 +8953,7 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
- // useDeferredValue로 활성화합니다("언제")
+  // useDeferredValue로 활성화합니다("언제")
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
@@ -10037,7 +10038,7 @@ ul {
 
 /* 트랜지션 타입에 의해 추가된 View Transition 클래스용 애니메이션 */
 ::view-transition-old(.slide-forward) {
-   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
+    /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
@@ -10268,7 +10269,7 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
- // useDeferredValue로 활성화합니다("언제")
+  // useDeferredValue로 활성화합니다("언제")
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
@@ -11333,7 +11334,7 @@ ul {
 
 /* 트랜지션 타입에 의해 추가된 View Transition 클래스용 애니메이션 */
 ::view-transition-old(.slide-forward) {
-   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
+    /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
@@ -11467,7 +11468,7 @@ _View Transition을 구축한 배경에 대한 자세한 내용은 다음을 참
 
 **`<Activity />`는 이제 React의 Canary 채널에서 사용할 수 있습니다.**
 
-[React의 릴리스 채널에 대해 더 알아보기](/community/versioning-policy#all-release-channels)
+[React의 릴리스 채널에 대해 더 알아보기](/community/versioning-policy#all-release-channels).
 
 </Note>
 
@@ -11639,7 +11640,7 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
- // useDeferredValue로 활성화합니다("언제")
+  // useDeferredValue로 활성화합니다("언제")
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
@@ -12723,7 +12724,7 @@ ul {
 
 /* 트랜지션 타입에 의해 추가된 View Transition 클래스용 애니메이션 */
 ::view-transition-old(.slide-forward) {
-   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
+    /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
@@ -12908,6 +12909,7 @@ import { use, Suspense, ViewTransition } from "react"; import { fetchVideo, fetc
 function VideoDetails({id}) {
   // Suspense 폴백에서 콘텐츠로 애니메이션합니다.
   // 미리 렌더링되어 있다면 폴백을 표시할 필요가 없습니다.
+
   return (
     <Suspense
       fallback={
@@ -12976,7 +12978,7 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
- // useDeferredValue로 활성화합니다("언제")
+  // useDeferredValue로 활성화합니다("언제")
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
@@ -14060,7 +14062,7 @@ ul {
 
 /* 트랜지션 타입에 의해 추가된 View Transition 클래스용 애니메이션 */
 ::view-transition-old(.slide-forward) {
-   /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
+    /* 앞으로 전환할 때 "old" 페이지는 왼쪽으로 슬라이드되어 나가야 합니다. */
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
@@ -14256,8 +14258,7 @@ hooks를 출시했을 때, 저희는 세 가지 동기가 있었습니다:
 - **생명주기가 아닌 함수의 관점에서 사고**: hooks는 생명주기 메서드를 기반으로 한 분할을 강제하는 것이 아니라 관련된 부분(구독 설정이나 데이터 가져오기 등)을 기반으로 하나의 컴포넌트를 더 작은 함수로 분할할 수 있게 해주었습니다.
 - **사전 컴파일 지원**: hooks는 생명주기 메서드로 인한 의도하지 않은 최적화 해제 문제와 클래스의 제약사항을 줄이면서 사전 컴파일을 지원하도록 설계되었습니다.
 
-출시 이후 hooks는 *컴포넌트 간 코드 공유* 측면에서 성공을 거두었습니다.  
-현재 hooks는 컴포넌트 간 로직을 공유하는 데 선호되는 방식이며, 렌더링 props와 고차 컴포넌트를 사용할 필요가 있는 경우도 줄어들었습니다. 또한 hooks는 클래스 컴포넌트로는 가능하지 않았던 Fast Refresh와 같은 기능을 지원하는 데에도 성공했습니다.
+출시 이후 hooks는 *컴포넌트 간 코드 공유* 측면에서 성공을 거두었습니다. 현재 hooks는 컴포넌트 간 로직을 공유하는 데 선호되는 방식이며, 렌더링 props와 고차 컴포넌트를 사용할 필요가 있는 경우도 줄어들었습니다. 또한 hooks는 클래스 컴포넌트로는 가능하지 않았던 Fast Refresh와 같은 기능을 지원하는 데에도 성공했습니다.
 
 ### Effects는 어려울 수 있습니다 {/*effects-can-be-hard*/}
 
@@ -14275,7 +14276,7 @@ useEffect(() => {
   const connection = createConnection(serverUrl, roomId);
   connection.connect();
   return () => {
-     // ...연결이 끊어질 때까지
+    // ...연결이 끊어질 때까지
     connection.disconnect();
   };
 }, [roomId]);
@@ -14301,7 +14302,7 @@ useEffect(() => {
 }); // 컴파일러가 삽입한 의존성
 ```
 
-이 코드에서는 React 컴파일러가 의존성을 자동으로 추론해 삽입하므로, 개발자가 직접 보거나 작성할 필요가 없습니다. [IDE 확장](#컴파일러-ide-extension)이나 [`useEffectEvent`](/reference/react/useEffectEvent) 같은 기능을 사용하면, 디버깅이 필요하거나 의존성을 제거해 최적화해야 할 때 컴파일러가 무엇을 삽입했는지 보여주는 CodeLens를 제공할 수 있습니다. 이는 컴포넌트나 Hook의 상태를 다른 무언가와 동기화하기 위해 언제든 실행될 수 있는 Effect를 작성할 때, 올바른 사고 모델을 강화하는 데 도움이 됩니다.
+이 코드에서는 React 컴파일러가 의존성을 자동으로 추론해 삽입하므로, 개발자가 직접 보거나 작성할 필요가 없습니다. [IDE 확장](#compiler-ide-extension)이나 [`useEffectEvent`](/reference/react/useEffectEvent) 같은 기능을 사용하면, 디버깅이 필요하거나 의존성을 제거해 최적화해야 할 때 컴파일러가 무엇을 삽입했는지 보여주는 CodeLens를 제공할 수 있습니다. 이는 컴포넌트나 Hook의 상태를 다른 무언가와 동기화하기 위해 언제든 실행될 수 있는 Effect를 작성할 때, 올바른 사고 모델을 강화하는 데 도움이 됩니다.
 
 저희의 바람은 의존성을 자동으로 삽입하는 방식이 작성하기 쉬울 뿐만 아니라, 컴포넌트 생명주기가 아니라 Effect가 무엇을 하는지에 집중하도록 강제함으로써 이해하기도 더 쉬워지는 것입니다.
 
