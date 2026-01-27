@@ -62,19 +62,19 @@
       "canary": true,
       "routes": [
         {
-          "title": "Introduction",
+          "title": "소개",
           "path": "/learn/react-compiler/introduction"
         },
         {
-          "title": "Installation",
+          "title": "설치",
           "path": "/learn/react-compiler/installation"
         },
         {
-          "title": "Incremental Adoption",
+          "title": "점진적 도입",
           "path": "/learn/react-compiler/incremental-adoption"
         },
         {
-          "title": "Debugging and Troubleshooting",
+          "title": "디버깅 및 문제 해결",
           "path": "/learn/react-compiler/debugging"
         }
       ]
