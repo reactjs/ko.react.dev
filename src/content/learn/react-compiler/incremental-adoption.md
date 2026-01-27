@@ -1,55 +1,55 @@
 ---
-title: Incremental Adoption
+title: 점진적 도입
 ---
 
 <Intro>
-React Compiler can be adopted incrementally, allowing you to try it on specific parts of your codebase first. This guide shows you how to gradually roll out the compiler in existing projects.
+React 컴파일러는 점진적으로 도입할 수 있어서 코드베이스의 특정 부분에서 먼저 시도해 볼 수 있습니다. 이 가이드에서는 기존 프로젝트에서 컴파일러를 단계적으로 배포하는 방법을 알아봅니다.
 </Intro>
 
 <YouWillLearn>
 
-* Why incremental adoption is recommended
-* Using Babel overrides for directory-based adoption
-* Using the "use memo" directive for opt-in compilation
-* Using the "use no memo" directive to exclude components
-* Runtime feature flags with gating
-* Monitoring your adoption progress
+* 점진적 도입이 권장되는 이유
+* 디렉터리 기반 도입을 위한 Babel overrides 사용
+* 선택적 컴파일을 위한 "use memo" 지시어 사용
+* 컴포넌트 제외를 위한 "use no memo" 지시어 사용
+* 게이팅을 통한 런타임 기능 플래그
+* 도입 진행 상황 모니터링
 
 </YouWillLearn>
 
-## Why Incremental Adoption? {/*why-incremental-adoption*/}
+## 점진적 도입이 필요한 이유 {/*why-incremental-adoption*/}
 
-React Compiler is designed to optimize your entire codebase automatically, but you don't have to adopt it all at once. Incremental adoption gives you control over the rollout process, letting you test the compiler on small parts of your app before expanding to the rest.
+React 컴파일러는 전체 코드베이스를 자동으로 최적화하도록 설계되었지만, 한 번에 모두 도입할 필요는 없습니다. 점진적 도입은 배포 과정을 제어할 수 있게 해주어 앱의 작은 부분에서 컴파일러를 테스트한 후 나머지 부분으로 확장할 수 있습니다.
 
-Starting small helps you build confidence in the compiler's optimizations. You can verify that your app behaves correctly with compiled code, measure performance improvements, and identify any edge cases specific to your codebase. This approach is especially valuable for production applications where stability is critical.
+작은 부분부터 시작하면 컴파일러의 최적화에 대한 신뢰를 쌓을 수 있습니다. 컴파일된 코드로 앱이 올바르게 동작하는지 확인하고, 성능 개선을 측정하고, 코드베이스에 특정한 엣지 케이스를 식별할 수 있습니다. 이 접근 방식은 안정성이 중요한 프로덕션 애플리케이션에 특히 유용합니다.
 
-Incremental adoption also makes it easier to address any Rules of React violations the compiler might find. Instead of fixing violations across your entire codebase at once, you can tackle them systematically as you expand compiler coverage. This keeps the migration manageable and reduces the risk of introducing bugs.
+점진적 도입은 컴파일러가 발견할 수 있는 React 규칙 위반을 해결하기도 더 쉽게 만듭니다. 전체 코드베이스의 위반을 한 번에 수정하는 대신 컴파일러 적용 범위를 확장하면서 체계적으로 해결할 수 있습니다. 이를 통해 마이그레이션을 관리하기 쉽게 유지하고 버그 도입 위험을 줄일 수 있습니다.
 
-By controlling which parts of your code get compiled, you can also run A/B tests to measure the real-world impact of the compiler's optimizations. This data helps you make informed decisions about full adoption and demonstrates the value to your team.
+컴파일되는 코드 부분을 제어함으로써 A/B 테스트를 실행하여 컴파일러 최적화의 실제 영향을 측정할 수도 있습니다. 이 데이터는 전체 도입에 대한 정보에 기반한 결정을 내릴 수 있어 팀에게 가치를 입증하는데 도움이 됩니다.
 
-## Approaches to Incremental Adoption {/*approaches-to-incremental-adoption*/}
+## 점진적 도입 방법 {/*approaches-to-incremental-adoption*/}
 
-There are three main approaches to adopt React Compiler incrementally:
+React 컴파일러를 점진적으로 도입하는 세 가지 주요 방법이 있습니다.
 
-1. **Babel overrides** - Apply the compiler to specific directories
-2. **Opt-in with "use memo"** - Only compile components that explicitly opt in
-3. **Runtime gating** - Control compilation with feature flags
+1. **Babel overrides** - 특정 디렉터리에 컴파일러 적용
+2. **"use memo"로 선택적 적용** - 명시적으로 선택한 컴포넌트만 컴파일
+3. **런타임 게이팅** - 기능 플래그로 컴파일 제어
 
-All approaches allow you to test the compiler on specific parts of your application before full rollout.
+모든 방법은 전체 배포 전에 애플리케이션의 특정 부분에서 컴파일러를 테스트할 수 있게 해줍니다.
 
-## Directory-Based Adoption with Babel Overrides {/*directory-based-adoption*/}
+## Babel Overrides를 사용한 디렉터리 기반 도입 {/*directory-based-adoption*/}
 
-Babel's `overrides` option lets you apply different plugins to different parts of your codebase. This is ideal for gradually adopting React Compiler directory by directory.
+Babel의 `overrides` 옵션을 사용하면 코드베이스의 여러 부분에 서로 다른 플러그인을 적용할 수 있습니다. 디렉터리별로 React 컴파일러를 점진적으로 도입하는 데 적합합니다.
 
-### Basic Configuration {/*basic-configuration*/}
+### 기본 설정 {/*basic-configuration*/}
 
-Start by applying the compiler to a specific directory:
+특정 디렉터리에 컴파일러를 적용하는 것부터 시작합니다.
 
 ```js
 // babel.config.js
 module.exports = {
   plugins: [
-    // Global plugins that apply to all files
+    // 모든 파일에 적용되는 전역 플러그인
   ],
   overrides: [
     {
@@ -62,15 +62,15 @@ module.exports = {
 };
 ```
 
-### Expanding Coverage {/*expanding-coverage*/}
+### 적용 범위 확장 {/*expanding-coverage*/}
 
-As you gain confidence, add more directories:
+신뢰가 쌓이면 더 많은 디렉터리를 추가합니다.
 
 ```js
 // babel.config.js
 module.exports = {
   plugins: [
-    // Global plugins
+    // 전역 플러그인
   ],
   overrides: [
     {
@@ -82,16 +82,16 @@ module.exports = {
     {
       test: './src/legacy/**/*.{js,jsx,ts,tsx}',
       plugins: [
-        // Different plugins for legacy code
+        // 레거시 코드용 다른 플러그인
       ]
     }
   ]
 };
 ```
 
-### With Compiler Options {/*with-compiler-options*/}
+### 컴파일러 옵션과 함께 사용 {/*with-compiler-options*/}
 
-You can also configure compiler options per override:
+override별로 컴파일러 옵션을 설정할 수도 있습니다.
 
 ```js
 // babel.config.js
@@ -102,7 +102,7 @@ module.exports = {
       test: './src/experimental/**/*.{js,jsx,ts,tsx}',
       plugins: [
         ['babel-plugin-react-compiler', {
-          // options ...
+          // 옵션 ...
         }]
       ]
     },
@@ -110,7 +110,7 @@ module.exports = {
       test: './src/production/**/*.{js,jsx,ts,tsx}',
       plugins: [
         ['babel-plugin-react-compiler', {
-          // options ...
+          // 옵션 ...
         }]
       ]
     }
@@ -119,15 +119,15 @@ module.exports = {
 ```
 
 
-## Opt-in Mode with "use memo" {/*opt-in-mode-with-use-memo*/}
+## "use memo"를 사용한 선택적 모드 {/*opt-in-mode-with-use-memo*/}
 
-For maximum control, you can use `compilationMode: 'annotation'` to only compile components and hooks that explicitly opt in with the `"use memo"` directive.
+최대한의 제어를 위해 `compilationMode: 'annotation'`을 사용하여 `"use memo"` 지시어로 명시적으로 선택한 컴포넌트와 Hook만 컴파일할 수 있습니다.
 
 <Note>
-This approach gives you fine-grained control over individual components and hooks. It's useful when you want to test the compiler on specific components without affecting entire directories.
+이 방법은 개별 컴포넌트와 Hook에 대한 세밀한 제어를 제공합니다. 전체 디렉터리에 영향을 주지 않고 특정 컴포넌트에서 컴파일러를 테스트하고 싶을 때 유용합니다.
 </Note>
 
-### Annotation Mode Configuration {/*annotation-mode-configuration*/}
+### 어노테이션 모드 설정 {/*annotation-mode-configuration*/}
 
 ```js
 // babel.config.js
@@ -140,13 +140,13 @@ module.exports = {
 };
 ```
 
-### Using the Directive {/*using-the-directive*/}
+### 지시어 사용 {/*using-the-directive*/}
 
-Add `"use memo"` at the beginning of functions you want to compile:
+컴파일하려는 함수의 시작 부분에 `"use memo"`를 추가합니다.
 
 ```js
 function TodoList({ todos }) {
-  "use memo"; // Opt this component into compilation
+  "use memo"; // 이 컴포넌트를 컴파일 대상으로 선택
 
   const sortedTodos = todos.slice().sort();
 
@@ -160,28 +160,28 @@ function TodoList({ todos }) {
 }
 
 function useSortedData(data) {
-  "use memo"; // Opt this hook into compilation
+  "use memo"; // 이 Hook을 컴파일 대상으로 선택
 
   return data.slice().sort();
 }
 ```
 
-With `compilationMode: 'annotation'`, you must:
-- Add `"use memo"` to every component you want optimized
-- Add `"use memo"` to every custom hook
-- Remember to add it to new components
+`compilationMode: 'annotation'`을 사용하면 다음을 해야 합니다.
+- 최적화하려는 모든 컴포넌트에 `"use memo"` 추가
+- 모든 커스텀 Hook에 `"use memo"` 추가
+- 새 컴포넌트에도 추가하는 것을 기억
 
-This gives you precise control over which components are compiled while you evaluate the compiler's impact.
+이를 통해 컴파일러의 영향을 평가하는 동안 어떤 컴포넌트가 컴파일되는지 정밀하게 제어할 수 있습니다.
 
-## Runtime Feature Flags with Gating {/*runtime-feature-flags-with-gating*/}
+## 게이팅을 통한 런타임 기능 플래그 {/*runtime-feature-flags-with-gating*/}
 
-The `gating` option enables you to control compilation at runtime using feature flags. This is useful for running A/B tests or gradually rolling out the compiler based on user segments.
+`gating` 옵션을 사용하면 기능 플래그를 사용하여 런타임에 컴파일을 제어할 수 있습니다. A/B 테스트를 실행하거나 사용자 세그먼트에 따라 컴파일러를 점진적으로 배포하는 데 유용합니다.
 
-### How Gating Works {/*how-gating-works*/}
+### 게이팅 작동 방식 {/*how-gating-works*/}
 
-The compiler wraps optimized code in a runtime check. If the gate returns `true`, the optimized version runs. Otherwise, the original code runs.
+컴파일러는 최적화된 코드를 런타임 검사로 감쌉니다. 게이트가 `true`를 반환하면 최적화된 버전이 실행됩니다. 그렇지 않으면 원본 코드가 실행됩니다.
 
-### Gating Configuration {/*gating-configuration*/}
+### 게이팅 설정 {/*gating-configuration*/}
 
 ```js
 // babel.config.js
@@ -197,29 +197,29 @@ module.exports = {
 };
 ```
 
-### Implementing the Feature Flag {/*implementing-the-feature-flag*/}
+### 기능 플래그 구현 {/*implementing-the-feature-flag*/}
 
-Create a module that exports your gating function:
+게이팅 함수를 내보내는 모듈을 생성합니다.
 
 ```js
 // ReactCompilerFeatureFlags.js
 export function isCompilerEnabled() {
-  // Use your feature flag system
+  // 기능 플래그 시스템 사용
   return getFeatureFlag('react-compiler-enabled');
 }
 ```
 
-## Troubleshooting Adoption {/*troubleshooting-adoption*/}
+## 도입 문제 해결 {/*troubleshooting-adoption*/}
 
-If you encounter issues during adoption:
+도입 중 문제가 발생하면 다음을 시도해 보세요.
 
-1. Use `"use no memo"` to temporarily exclude problematic components
-2. Check the [debugging guide](/learn/react-compiler/debugging) for common issues
-3. Fix Rules of React violations identified by the ESLint plugin
-4. Consider using `compilationMode: 'annotation'` for more gradual adoption
+1. `"use no memo"`를 사용하여 문제가 있는 컴포넌트를 일시적으로 제외
+2. [디버깅 가이드](/learn/react-compiler/debugging)에서 일반적인 문제 확인
+3. ESLint 플러그인이 식별한 React 규칙 위반 수정
+4. 더 점진적인 도입을 위해 `compilationMode: 'annotation'` 사용 고려
 
-## Next Steps {/*next-steps*/}
+## 다음 단계 {/*next-steps*/}
 
-- Read the [configuration guide](/reference/react-compiler/configuration) for more options
-- Learn about [debugging techniques](/learn/react-compiler/debugging)
-- Check the [API reference](/reference/react-compiler/configuration) for all compiler options
+- 더 많은 옵션은 [설정 가이드](/reference/react-compiler/configuration) 참고
+- [디버깅 기법](/learn/react-compiler/debugging) 알아보기
+- 모든 컴파일러 옵션은 [API 레퍼런스](/reference/react-compiler/configuration) 확인
