@@ -14,7 +14,7 @@ const MemoizedComponent = memo(SomeComponent, arePropsEqual?)
 
 <Note>
 
-[React Compiler](/learn/react-compiler) automatically applies the equivalent of `memo` to all components, reducing the need for manual memoization. You can use the compiler to handle component memoization automatically.
+[React 컴파일러](/learn/react-compiler)는 모든 컴포넌트에 `memo`와 동일한 최적화를 자동으로 적용하므로 수동으로 메모이제이션을 할 필요가 줄어듭니다. 컴파일러를 사용해 컴포넌트 메모이제이션을 자동으로 처리할 수 있습니다.
 
 </Note>
 
