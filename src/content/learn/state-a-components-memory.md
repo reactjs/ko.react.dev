@@ -540,37 +540,37 @@ button {
 let componentHooks = [];
 let currentHookIndex = 0;
 
-// How useState works inside React (simplified).
+// React 내부에서 useState가 작동하는 방식 (단순화됨).
 function useState(initialState) {
   let pair = componentHooks[currentHookIndex];
   if (pair) {
-    // This is not the first render,
-    // so the state pair already exists.
-    // Return it and prepare for next Hook call.
+    // 첫 번째 렌더링이 아니므로
+    // state 쌍이 이미 존재합니다.
+    // 이를 반환하고 다음 Hook 호출을 준비합니다.
     currentHookIndex++;
     return pair;
   }
 
-  // This is the first time we're rendering,
-  // so create a state pair and store it.
+  // 처음 렌더링하는 것이므로
+  // state 쌍을 생성하고 저장합니다.
   pair = [initialState, setState];
 
   function setState(nextState) {
-    // When the user requests a state change,
-    // put the new value into the pair.
+    // 사용자가 state 변경을 요청하면
+    // 새 값을 쌍에 넣습니다.
     pair[0] = nextState;
     updateDOM();
   }
 
-  // Store the pair for future renders
-  // and prepare for the next Hook call.
+  // 이후 렌더링을 위해 쌍을 저장하고
+  // 다음 Hook 호출을 준비합니다.
   componentHooks[currentHookIndex] = pair;
   currentHookIndex++;
   return pair;
 }
 
 function Gallery() {
-  // Each useState() call will get the next pair.
+  // 각 useState() 호출은 다음 쌍을 가져옵니다.
   const [index, setIndex] = useState(0);
   const [showMore, setShowMore] = useState(false);
 
@@ -583,8 +583,8 @@ function Gallery() {
   }
 
   let sculpture = sculptureList[index];
-  // This example doesn't use React, so
-  // return an output object instead of JSX.
+  // 이 예시는 React를 사용하지 않으므로
+  // JSX 대신 출력 객체를 반환합니다.
   return {
     onNextClick: handleNextClick,
     onMoreClick: handleMoreClick,
@@ -598,13 +598,13 @@ function Gallery() {
 }
 
 function updateDOM() {
-  // Reset the current Hook index
-  // before rendering the component.
+  // 컴포넌트를 렌더링하기 전에
+  // 현재 Hook 인덱스를 초기화합니다.
   currentHookIndex = 0;
   let output = Gallery();
 
-  // Update the DOM to match the output.
-  // This is the part React does for you.
+  // 출력과 일치하도록 DOM을 업데이트합니다.
+  // 이 부분은 React가 대신 해줍니다.
   nextButton.onclick = output.onNextClick;
   header.textContent = output.header;
   moreButton.onclick = output.onMoreClick;
@@ -698,7 +698,7 @@ let sculptureList = [{
   alt: 'A group of bronze hippo sculptures emerging from the sett sidewalk as if they were swimming.'
 }];
 
-// Make UI match the initial state.
+// UI를 초기 state와 일치시킵니다.
 updateDOM();
 ```
 

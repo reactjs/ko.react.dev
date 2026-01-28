@@ -14,7 +14,7 @@ const cachedValue = useMemo(calculateValue, dependencies)
 
 <Note>
 
-[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useMemo` calls. You can use the compiler to handle memoization automatically.
+[React 컴파일러](/learn/react-compiler)는 값과 함수를 자동으로 메모이제이션하므로 `useMemo`를 수동으로 사용할 일이 줄어듭니다. 컴파일러를 사용해 메모이제이션을 자동으로 처리할 수 있습니다.
 
 </Note>
 
