@@ -371,14 +371,6 @@ export default function TopNav({
                     <IconSearch className="w-5 h-5 align-middle" />
                   </button>
                 </div>
-                <div className="flex">
-                  <Link
-                    href="https://ko-react-exy5xcwjj-fbopensource.vercel.app/"
-                    aria-label="React version 18 Korean translation"
-                    className="active:scale-95 transition-transform flex w-12 h-12 rounded-full items-center justify-center overflow-hidden hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
-                    {react18Icon}
-                  </Link>
-                </div>
                 <div className="flex dark:hidden">
                   <button
                     type="button"

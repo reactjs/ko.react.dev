@@ -171,14 +171,6 @@ export function HomeContent() {
               label="API Reference">
               API 참고서
             </ButtonLink>
-            <ButtonLink
-              href={'https://ko-react-exy5xcwjj-fbopensource.vercel.app/'}
-              type="secondary"
-              size="lg"
-              className="w-full sm:w-auto justify-center"
-              label="API Reference">
-              React v18 한글
-            </ButtonLink>
           </div>
         </div>
 

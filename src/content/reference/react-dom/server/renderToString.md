@@ -116,7 +116,7 @@ app.use('/', (request, response) => {
 클라이언트에서 일부 컴포넌트를 HTML로 변환하기 위해 `renderToString`을 사용하기도 합니다.
 
 ```js {1-2}
-// 🚩 불필요: 클라이언트에서 renderToString 사용하기
+// 🚩 불필요: 클라이언트에서 `renderToString` 사용하기.
 import { renderToString } from 'react-dom/server';
 
 const html = renderToString(<MyIcon />);
