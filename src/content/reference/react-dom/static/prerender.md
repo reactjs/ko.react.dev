@@ -75,7 +75,7 @@ async function handler(request, response) {
 
 ### `prerender`를 언제 사용해야 하나요? {/*when-to-use-prerender*/}
 
-정적 `prerender` API는 정적 서버 사이드 생성(SSG)에 사용됩니다. `renderToString`과 달리 `prerender`는 해결되기 전에 모든 데이터가 로드될 때까지 대기합니다. 이는 Suspense를 사용하여 가져와야 하는 데이터를 포함하여 전체 페이지에 대한 정적 HTML을 생성하는 데 적합합니다. 콘텐츠가 로드되면서 스트리밍하려면 [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)과 같은 스트리밍 서버 사이드 렌더링(SSR) API를 사용하세요.
+정적 `prerender` API는 정적 사이트 생성<sup>SSG, Static Site Generation</sup>에 사용됩니다. `renderToString`과 달리 `prerender`는 해결되기 전에 모든 데이터가 로드될 때까지 대기합니다. 이는 Suspense를 사용하여 가져와야 하는 데이터를 포함하여 전체 페이지에 대한 정적 HTML을 생성하는 데 적합합니다. 콘텐츠가 로드되면서 스트리밍하려면 [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)과 같은 스트리밍 서버 사이드 렌더링(SSR) API를 사용하세요.
 
 `prerender` can be aborted and later either continued with `resumeAndPrerender` or resumed with `resume` to support partial pre-rendering.
 
