@@ -604,8 +604,8 @@ module.exports = {
         },
       },
       {
-        sources: [/\busage\b/i],
-        target: '용법',
+        sources: [/\bUsage\b/i],
+        target: '사용법',
         meta: {
           term: 'Usage',
           discussions: [1425],
@@ -613,10 +613,10 @@ module.exports = {
         },
       },
       {
-        sources: [/\bimperative\b/],
+        sources: [/\bImperative\b/],
         target: '명령형',
         meta: {
-          term: 'imperative',
+          term: 'Imperative',
           discussions: [1425],
           note: '',
         },
