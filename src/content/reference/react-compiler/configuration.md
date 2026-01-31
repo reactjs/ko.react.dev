@@ -10,7 +10,7 @@ title: 설정
 
 <Note>
 
-대부분의 앱에서는 기본 옵션이 기본적으로 잘 작동합니다. 특별한 필요가 있다면 이러한 고급 옵션을 사용할 수 있습니다.
+대부분의 앱에서는 기본 옵션이 기본적으로 잘 작동합니다. 특별한 필요성이 있는 경우에 이러한 고급 옵션을 사용할 수 있습니다.
 
 </Note>
 
@@ -31,9 +31,9 @@ module.exports = {
 
 ## 컴파일 제어 {/*compilation-control*/}
 
-이 옵션들은 컴파일러가 *무엇*을 최적화하고, *어떻게* 컴포넌트와 hooks를 컴파일 대상으로 선택할지를 제어합니다.
+이 옵션들은 컴파일러가 *무엇*을 최적화하고, *어떻게* 컴포넌트와 Hook을 컴파일 대상으로 선택할지를 제어합니다.
 
-* [`compilationMode`](/reference/react-compiler/compilationMode)는 컴파일할 함수를 선택하는 전략을 제어합니다. (예: 모든 함수, 어노테이션된 함수만, 또는 컴파일러의 자동 감지).
+* [`compilationMode`](/reference/react-compiler/compilationMode)는 컴파일할 함수를 선택하는 전략을 제어합니다. (예: 모든 함수, 어노테이션된 함수만, 또는 컴파일러의 자동 감지)
 
 ```js
 {
@@ -127,7 +127,7 @@ module.exports = {
 
 ### React 17/18 프로젝트 {/*react-17-18*/}
 
-React 17/18 프로젝트에서는 런타임 패키지와 target 설정이 필요합니다.
+React 17/18 프로젝트에서는 런타임 패키지와 `target` 설정이 필요합니다.
 
 ```bash
 npm install react-compiler-runtime@latest
