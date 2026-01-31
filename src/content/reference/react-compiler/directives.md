@@ -8,7 +8,7 @@ React 컴파일러 지시어는 특정 함수에 대한 컴파일 적용 여부�
 
 ```js
 function MyComponent() {
-  "use memo"; // 이 컴포넌트를 컴파일 대상으로 설정합니다
+  "use memo"; // 이 컴포넌트를 컴파일 대상으로 설정합니다.
   return <div>{/* ... */}</div>;
 }
 ```
@@ -23,14 +23,14 @@ React 컴파일러 지시어는 컴파일러가 최적화할 함수를 세밀하
 
 ### 사용 가능한 지시어 {/*available-directives*/}
 
-* **[`"use memo"`](/reference/react-compiler/directives/use-memo)** - 함수를 컴파일 대상으로 선택합니다
-* **[`"use no memo"`](/reference/react-compiler/directives/use-no-memo)** - 함수를 컴파일 대상에서 제외합니다
+* **[`"use memo"`](/reference/react-compiler/directives/use-memo)** - 함수를 컴파일 대상으로 선택합니다.
+* **[`"use no memo"`](/reference/react-compiler/directives/use-no-memo)** - 함수를 컴파일 대상에서 제외합니다.
 
 ### 빠른 비교 {/*quick-comparison*/}
 
 | 지시어 | 목적 | 사용 시점 |
 |-----------|---------|-------------|
-| [`"use memo"`](/reference/react-compiler/directives/use-memo) | 컴파일 강제 | `annotation` 모드를 사용하거나 `infer` 모드의 휴리스틱을 재정의할 때 |
+| [`"use memo"`](/reference/react-compiler/directives/use-memo) | 컴파일 강제 | `annotation` 모드를 사용하거나 `infer` 모드의 휴리스틱을 재정의<sup>Override</sup>할 때 |
 | [`"use no memo"`](/reference/react-compiler/directives/use-no-memo) | 컴파일 제외 | 이슈를 디버깅하거나 호환되지 않는 코드를 다룰 때 |
 
 ---
@@ -57,7 +57,7 @@ function UnoptimizedComponent() {
 
 ### 모듈 수준 지시어 {/*module-level*/}
 
-파일의 최상단에 선언하여 해당 모듈의 모든 함수에 적용됩니다.
+파일의 최상단에 선언하여 해당 모듈의 모든 함수에 적용합니다.
 
 ```js
 // 파일의 최상단에 선언
@@ -83,9 +83,9 @@ function Component3() {
 
 지시어는 [`compilationMode`](/reference/react-compiler/compilationMode)에 따라 다르게 동작합니다.
 
-* **`annotation` 모드**: `"use memo"`가 선언된 함수만 컴파일됩니다
-* **`infer` 모드**: 컴파일러가 컴파일할 대상을 결정하며 지시어는 이 결정을 재정의합니다
-* **`all` 모드**: 모든 것이 컴파일되며 `"use no memo"` 로 특정 함수를 제외할 수 있습니다
+* **`annotation` 모드**: `"use memo"`가 선언된 함수만 컴파일됩니다.
+* **`infer` 모드**: 컴파일러가 컴파일할 대상을 결정하며 지시어는 이 결정을 재정의<sup>Override</sup>합니다.
+* **`all` 모드**: 모든 것이 컴파일되며 `"use no memo"`로 특정 함수를 제외할 수 있습니다.
 
 ---
 
@@ -93,10 +93,10 @@ function Component3() {
 
 ### 지시어는 신중하게 사용하세요 {/*use-sparingly*/}
 
-이 지시어는 탈출구(escape hatch)입니다. 컴파일러는 프로젝트 수준에서 설정하는 것을 권장합니다.
+지시어는 탈출구<sup>Escape Hatch</sup>입니다. 컴파일러는 프로젝트 수준에서 설정하는 것을 권장합니다.
 
 ```js
-// ✅ good - 프로젝트 전역 설정
+// ✅ Good - 프로젝트 전역 설정
 {
   plugins: [
     ['babel-plugin-react-compiler', {
@@ -105,7 +105,7 @@ function Component3() {
   ]
 }
 
-// ⚠️ 필요할 때마 지시어 사용
+// ⚠️ 필요할 때마다 지시어 사용
 function SpecialCase() {
   "use no memo"; // 왜 필요한지 문서화하세요
   // ...
@@ -117,13 +117,13 @@ function SpecialCase() {
 지시어를 사용하는 이유를 항상 명확히 설명하세요.
 
 ```js
-// ✅ good - 명확한 설명
+// ✅ Good - 명확한 설명
 function DataGrid() {
-  "use no memo"; // TODO: 동적 row heiht 이슈 해결 후 제거 (JIRA-123)
+  "use no memo"; // TODO: 동적 row height 이슈 해결 후 제거 (JIRA-123)
   // 복잡한 그리드 구현
 }
 
-// ❌ bad - 설명 없음
+// ❌ Bad - 설명 없음
 function Mystery() {
   "use no memo";
   // ...
@@ -132,12 +132,12 @@ function Mystery() {
 
 ### 제거 계획을 세우세요 {/*plan-removal*/}
 
-제외 지시어는 임시로 사용해야 합니다.
+컴파일 제외 지시어는 임시로 사용해야 합니다.
 
-1. TODO 주석과 함께 지시어를 추가합니다
-2. 추적용 이슈를 생성합니다
-3. 근본적인 문제를 해결합니다
-4. 지시어를 제거합니다
+1. TODO 주석과 함께 지시어를 추가합니다.
+2. 추적용 이슈를 생성합니다.
+3. 근본적인 문제를 해결합니다.
+4. 지시어를 제거합니다.
 
 ```js
 function TemporaryWorkaround() {
@@ -160,7 +160,7 @@ function TemporaryWorkaround() {
   compilationMode: 'annotation'
 }
 
-// 안정적인 컴파일러를 컴파일 대상으로 설정
+// 안정적인 컴포넌트를 컴파일 대상으로 설정
 function StableComponent() {
   "use memo";
   // 충분히 테스트된 컴포넌트
@@ -193,6 +193,6 @@ function ProblematicComponent() {
 
 ## 참고 {/*see-also*/}
 
-* [`compilationMode`](/reference/react-compiler/compilationMode) - 컴파일러가 최적화 대상을 선택하는 방식을 설정합니다
-* [`Configuration`](/reference/react-compiler/configuration) - 전체 컴파일러 설정 옵션
-* [React Compiler documentation](https://react.dev/learn/react-compiler) - 시작 가이드
+* [`compilationMode`](/reference/react-compiler/compilationMode) - 컴파일러가 최적화 대상을 선택하는 방식을 설정합니다.
+* [`Configuration`](/reference/react-compiler/configuration) - 전체 컴파일러 설정 옵션.
+* [React Compiler documentation](/learn/react-compiler) - 시작 가이드.

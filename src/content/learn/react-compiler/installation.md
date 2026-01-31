@@ -187,15 +187,15 @@ ESLint 규칙은 다음과 같은 역할을 합니다.
 
 React 컴파일러에 의해 최적화된 컴포넌트는 React DevTools에서 "Memo ✨" 배지가 표시됩니다.
 
-1. [React Developer Tools](/learn/react-developer-tools) 브라우저 확장 프로그램을 설치합니다
-2. 개발 모드에서 앱을 엽니다
-3. React DevTools를 엽니다
-4. 컴포넌트 이름 옆에 ✨ 이모지가 있는지 확인합니다
+1. [React Developer Tools](/learn/react-developer-tools) 브라우저 확장 프로그램을 설치합니다.
+2. 개발 모드에서 앱을 엽니다.
+3. React DevTools를 엽니다.
+4. 컴포넌트 이름 옆에 ✨ 이모지가 있는지 확인합니다.
 
 컴파일러가 작동하는 경우
-- 컴포넌트에 "Memo ✨" 배지가 React DevTools에 표시됩니다
-- 비용이 큰 계산이 자동으로 메모이제이션됩니다
-- 수동으로 `useMemo`를 사용할 필요가 없습니다
+- 컴포넌트에 "Memo ✨" 배지가 React DevTools에 표시됩니다.
+- 비용이 큰 계산이 자동으로 메모이제이션됩니다.
+- 수동으로 `useMemo`를 사용할 필요가 없습니다.
 
 ### 빌드 출력 확인 {/*check-build-output*/}
 
