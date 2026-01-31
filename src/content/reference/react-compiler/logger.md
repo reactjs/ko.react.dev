@@ -4,7 +4,7 @@ title: logger
 
 <Intro>
 
-The `logger` option provides custom logging for React Compiler events during compilation.
+`logger` 옵션은 컴파일 중 React 컴파일러 이벤트에 대한 커스텀 로깅을 제공합니다.
 
 </Intro>
 
@@ -22,13 +22,13 @@ The `logger` option provides custom logging for React Compiler events during com
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `logger` {/*logger*/}
 
-Configures custom logging to track compiler behavior and debug issues.
+컴파일러 동작을 추적하고 문제를 디버깅하기 위한 커스텀 로깅을 설정합니다.
 
-#### Type {/*type*/}
+#### 타입 {/*type*/}
 
 ```
 {
@@ -36,35 +36,35 @@ Configures custom logging to track compiler behavior and debug issues.
 } | null
 ```
 
-#### Default value {/*default-value*/}
+#### 기본값 {/*default-value*/}
 
 `null`
 
-#### Methods {/*methods*/}
+#### 메서드 {/*methods*/}
 
-- **`logEvent`**: Called for each compiler event with the filename and event details
+- **`logEvent`**: 각 컴파일러 이벤트에 대해 파일명, 이벤트 세부 정보와 함께 호출됩니다.
 
-#### Event types {/*event-types*/}
+#### 이벤트 타입 {/*event-types*/}
 
-- **`CompileSuccess`**: Function successfully compiled
-- **`CompileError`**: Function skipped due to errors
-- **`CompileDiagnostic`**: Non-fatal diagnostic information
-- **`CompileSkip`**: Function skipped for other reasons
-- **`PipelineError`**: Unexpected compilation error
-- **`Timing`**: Performance timing information
+- **`CompileSuccess`**: 함수가 성공적으로 컴파일됨.
+- **`CompileError`**: 오류로 인해 함수가 건너뛰어짐.
+- **`CompileDiagnostic`**: 치명적이지 않은 진단 정보.
+- **`CompileSkip`**: 다른 이유로 함수가 건너뛰어짐.
+- **`PipelineError`**: 예기치 않은 컴파일 오류.
+- **`Timing`**: 성능 타이밍 정보.
 
-#### Caveats {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
-- Event structure may change between versions
-- Large codebases generate many log entries
+- 이벤트 구조는 버전 간에 변경될 수 있습니다.
+- 대규모 코드베이스는 많은 로그 항목을 생성합니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Basic logging {/*basic-logging*/}
+### 기본 로깅 {/*basic-logging*/}
 
-Track compilation success and failures:
+컴파일 성공과 실패를 추적합니다.
 
 ```js
 {
@@ -86,9 +86,9 @@ Track compilation success and failures:
 }
 ```
 
-### Detailed error logging {/*detailed-error-logging*/}
+### 상세 오류 로깅 {/*detailed-error-logging*/}
 
-Get specific information about compilation failures:
+컴파일 실패에 대한 구체적인 정보를 확인합니다.
 
 ```js
 {
