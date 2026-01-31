@@ -117,7 +117,7 @@ import { c as _c } from 'react-compiler-runtime';
    npm install react-compiler-runtime@latest
    ```
 
-3. target이 React 버전과 일치하는지 확인합니다.
+3. `target`이 React 버전과 일치하는지 확인합니다.
    ```js
    {
      target: '18' // React 메이저 버전과 일치해야 합니다
