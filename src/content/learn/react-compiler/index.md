@@ -8,7 +8,7 @@ title: React 컴파일러
 
 ## 설치 {/*installation*/}
 
-[React 컴파일러 설치](/learn/react-compiler/installation)를 시작하고 빌드 도구와 함께 구성하는 방법을 알아보세요.
+[React 컴파일러 설치](/learn/react-compiler/installation)를 통해 시작하고 빌드 도구와 함께 구성하는 방법을 알아보세요.
 
 
 ## 점진적 도입 {/*incremental-adoption*/}

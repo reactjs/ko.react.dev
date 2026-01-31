@@ -5,13 +5,13 @@ titleForTitleTag: "'use memo' 지시어"
 
 <Intro>
 
-`"use memo"`는 React 컴파일러의 최적화 대상으로 함수를 표시합니다.
+`"use memo"`는 특정 함수를 React 컴파일러의 최적화 대상으로 표시합니다.
 
 </Intro>
 
 <Note>
 
-대부분의 경우 `"use memo"`는 필요하지 않습니다. 이 지시어는 최적화 대상을 명시적으로 표시해야 하는 `annotation` 모드에서 주로 사용됩니다. `infer` 모드에서는 컴파일러가 이름 규칙(컴포넌트는 PascalCase, Hook은 `use` 접두사)을 기반으로 컴포넌트와 Hook을 자동으로 감지합니다. `infer` 모드에서 컴포넌트나 Hook이 컴파일되지 않는다면, `"use memo"`로 강제로 컴파일하기 보다는 이름 규칙을 올바르게 수정해야 합니다.
+대부분의 경우 `"use memo"`는 필요하지 않습니다. 이 지시어는 최적화 대상을 명시적으로 표시해야 하는 `annotation` 모드에서 주로 사용합니다. `infer` 모드에서는 컴파일러가 이름 규칙(컴포넌트는 PascalCase, Hook은 `use` 접두사)을 기반으로 컴포넌트와 Hook을 자동으로 감지합니다. `infer` 모드에서 컴포넌트나 Hook이 컴파일되지 않는다면, `"use memo"`로 강제로 컴파일하기 보다는 이름 규칙을 올바르게 수정해야 합니다.
 
 </Note>
 
@@ -23,9 +23,9 @@ titleForTitleTag: "'use memo' 지시어"
 
 ### `"use memo"` {/*use-memo*/}
 
-함수를 React 컴파일러 최적화 대상으로 표시하려면 함수의 시작 부분에 `"use memo"`를 추가하세요.
+특정 함수를 React 컴파일러 최적화 대상으로 표시하려면 함수의 시작 부분에 `"use memo"`를 추가하세요.
 
-```js {1}
+```js {2}
 function MyComponent() {
   "use memo";
   // ...
@@ -36,7 +36,7 @@ function MyComponent() {
 
 #### 주의 사항 {/*caveats*/}
 
-* `"use memo"`는 함수 본문의 최상단에 있어야 하며, import나 다른 코드보다 앞에 있어야 합니다 (주석은 괜찮습니다).
+* `"use memo"`는 함수 본문의 최상단에 있어야 하며, import나 다른 코드보다 앞에 있어야 합니다. (주석은 괜찮습니다.)
 * 지시어는 백틱이 아니라 큰따옴표 또는 작은따옴표로 작성해야 합니다.
 * 지시어는 `"use memo"`와 정확히 일치해야 합니다.
 * 함수의 첫 번째 지시어만 처리되며, 그 이후의 지시어는 무시됩니다.
@@ -118,7 +118,7 @@ function ProductCard({ product }) {
   // ...
 }
 
-// ❌ 최적화되지 않음(지시어 없음)
+// ❌ 최적화되지 않음 (지시어 없음)
 function ProductList({ products }) {
   // ...
 }

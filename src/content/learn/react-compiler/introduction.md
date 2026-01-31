@@ -99,7 +99,7 @@ React 컴파일러의 자동 메모이제이션은 주로 **업데이트 성능 
 
 #### 리렌더링 최적화 {/*optimizing-re-renders*/}
 
-React는 UI를 현재 state의 함수로 표현할 수 있게 해줍니다 (더 구체적으로는 props, state, context). 현재 구현에서 컴포넌트의 state가 변경되면 React는 `useMemo()`, `useCallback()`, `React.memo()`를 사용한 수동 메모이제이션을 적용하지 않는 한 해당 컴포넌트 _및 모든 자식 컴포넌트_를 리렌더링합니다. 예를 들어, 다음 예시에서 `<MessageButton>`은 `<FriendList>`의 state가 변경될 때마다 리렌더링됩니다.
+React는 UI를 현재 state의 함수로 표현할 수 있게 해줍니다 (더 구체적으로는 props, state, context). 현재 구현에서 컴포넌트의 state가 변경되면 React는 `useMemo()`, `useCallback()`, `React.memo()`를 사용한 수동 메모이제이션을 적용하지 않는 한 해당 컴포넌트 <em>및 모든 자식 컴포넌트</em>를 리렌더링합니다. 예를 들어, 다음 예시에서 `<MessageButton>`은 `<FriendList>`의 state가 변경될 때마다 리렌더링됩니다.
 
 ```javascript
 function FriendList({ friends }) {
@@ -144,7 +144,7 @@ function TableContainer({ items }) {
 - React 컴파일러는 모든 함수가 아닌 React 컴포넌트와 Hook만 메모이제이션합니다.
 - React 컴파일러의 메모이제이션은 여러 컴포넌트나 Hook 간에 공유되지 않습니다.
 
-따라서 `expensivelyProcessAReallyLargeArrayOfObjects`가 여러 다른 컴포넌트에서 사용되는 경우, 정확히 동일한 items가 전달되더라도 비용이 많이 드는 계산이 반복적으로 실행됩니다. 코드를 더 복잡하게 만들기 전에 먼저 [프로파일링](reference/react/useMemo#how-to-tell-if-a-calculation-is-expensive)하여 정말로 비용이 많이 드는지 확인하는 것을 권장합니다.
+따라서 `expensivelyProcessAReallyLargeArrayOfObjects`가 여러 다른 컴포넌트에서 사용되는 경우, 정확히 동일한 `items`가 전달되더라도 비용이 많이 드는 계산이 반복적으로 실행됩니다. 코드를 더 복잡하게 만들기 전에 먼저 [프로파일링](reference/react/useMemo#how-to-tell-if-a-calculation-is-expensive)하여 정말로 비용이 많이 드는지 확인하는 것을 권장합니다.
 </DeepDive>
 
 ## 컴파일러를 사용해 봐야 하나요? {/*should-i-try-out-the-compiler*/}
