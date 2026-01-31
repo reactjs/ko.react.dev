@@ -604,7 +604,7 @@ module.exports = {
         },
       },
       {
-        sources: [/\bUsage\b/i],
+        sources: [/\bUsage\b/],
         target: '사용법',
         meta: {
           term: 'Usage',
