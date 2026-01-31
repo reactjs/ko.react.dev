@@ -613,15 +613,6 @@ module.exports = {
         },
       },
       {
-        sources: [/\btransitions?\b/],
-        target: '트랜지션',
-        meta: {
-          term: 'transition',
-          discussions: [1425],
-          note: '',
-        },
-      },
-      {
         sources: [/\bimperative\b/],
         target: '명령형',
         meta: {

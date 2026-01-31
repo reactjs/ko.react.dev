@@ -80,6 +80,5 @@ Logic|`/\bLogic\b/`|로직|[#695](https://github.com/reactjs/ko.react.dev/issues
 Dependency|`/\bDependenc(?:y\|ies)\b/`|의존성|[#841](https://github.com/reactjs/ko.react.dev/issues/841)||
 Directive|`/\bDirectives?\b/`|지시어|[#819](https://github.com/reactjs/ko.react.dev/issues/819)||
 Usage|`/\busage\b/i`|용법|[#1425](https://github.com/reactjs/ko.react.dev/issues/1425)||
-transition|`/\btransitions?\b/`|트랜지션|[#1425](https://github.com/reactjs/ko.react.dev/issues/1425)||
 imperative|`/\bimperative\b/`|명령형|[#1425](https://github.com/reactjs/ko.react.dev/issues/1425)||
 
