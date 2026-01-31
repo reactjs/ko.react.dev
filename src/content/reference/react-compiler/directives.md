@@ -85,7 +85,7 @@ function Component3() {
 
 * **`annotation` 모드**: `"use memo"`가 선언된 함수만 컴파일됩니다.
 * **`infer` 모드**: 컴파일러가 컴파일할 대상을 결정하며 지시어는 이 결정을 재정의<sup>Override</sup>합니다.
-* **`all` 모드**: 모든 것이 컴파일되며 `"use no memo"` 로 특정 함수를 제외할 수 있습니다.
+* **`all` 모드**: 모든 것이 컴파일되며 `"use no memo"`로 특정 함수를 제외할 수 있습니다.
 
 ---
 
