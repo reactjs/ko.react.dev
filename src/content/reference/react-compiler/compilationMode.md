@@ -37,12 +37,12 @@ React 컴파일러가 최적화할 함수를 결정하는 전략을 제어합니
 #### 옵션 {/*options*/}
 
 - **`'infer'`** (기본값): 컴파일러가 지능형 휴리스틱을 사용하여 React 컴포넌트와 Hook을 식별합니다.
-  - `"use memo"` 지시어로 명시적으로 표시된 함수
-  - 컴포넌트(PascalCase) 또는 Hook(`use` 접두사)처럼 이름이 지어진 함수이면서 JSX를 생성하거나 다른 Hook을 호출하는 함수
+  - `"use memo"` 지시어로 명시적으로 표시된 함수.
+  - 컴포넌트(PascalCase) 또는 Hook(`use` 접두사)처럼 이름이 지어진 함수이면서 JSX를 생성하거나 다른 Hook을 호출하는 함수.
 
 - **`'annotation'`**: `"use memo"` 지시어로 명시적으로 표시된 함수만 컴파일합니다. 점진적 도입에 이상적입니다.
 
-- **`'syntax'`**: Flow의 [component](https://flow.org/en/docs/react/component-syntax/) 및 [hook](https://flow.org/en/docs/react/hook-syntax/) 문법을 사용하는 컴포넌트와 Hook만 컴파일합니다.
+- **`'syntax'`**: Flow의 [Component](https://flow.org/en/docs/react/component-syntax/) 및 [Hook](https://flow.org/en/docs/react/hook-syntax/) 문법을 사용하는 컴포넌트와 Hook만 컴파일합니다.
 
 - **`'all'`**: 모든 최상위 함수를 컴파일합니다. React가 아닌 함수도 컴파일할 수 있으므로 권장하지 않습니다.
 
@@ -59,7 +59,7 @@ React 컴파일러가 최적화할 함수를 결정하는 전략을 제어합니
 
 ### 기본 추론 모드 {/*default-inference-mode*/}
 
-기본 `'infer'` 모드는 React 규칙을 따르는 대부분의 코드베이스에서 잘 작동합니다.
+기본 `'infer'` 모드는 React의 규칙을 따르는 대부분의 코드베이스에서 잘 작동합니다.
 
 ```js
 {
@@ -173,9 +173,9 @@ function ComponentWithSideEffects() {
 
 ## 문제 해결 {/*troubleshooting*/}
 
-### infer 모드에서 컴포넌트가 컴파일되지 않는 경우 {/*component-not-compiled-infer*/}
+### `'infer'` 모드에서 컴포넌트가 컴파일되지 않는 경우 {/*component-not-compiled-infer*/}
 
-`'infer'` 모드에서는 컴포넌트가 React 규칙을 따르는지 확인하세요.
+`'infer'` 모드에서는 컴포넌트가 React의 규칙을 따르는지 확인하세요.
 
 ```js
 // ❌ 컴파일되지 않음: 소문자 이름
