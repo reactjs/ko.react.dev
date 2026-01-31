@@ -4,7 +4,7 @@ title: panicThreshold
 
 <Intro>
 
-The `panicThreshold` option controls how the React Compiler handles errors during compilation.
+`panicThreshold` 옵션은 React 컴파일러가 컴파일 중 오류를 처리하는 방식을 제어합니다.
 
 </Intro>
 
@@ -18,42 +18,42 @@ The `panicThreshold` option controls how the React Compiler handles errors durin
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `panicThreshold` {/*panicthreshold*/}
 
-Determines whether compilation errors should fail the build or skip optimization.
+컴파일 오류가 빌드를 실패시켜야 하는지 아니면 최적화를 건너뛰어야 하는지를 결정합니다.
 
-#### Type {/*type*/}
+#### 타입 {/*type*/}
 
 ```
 'none' | 'critical_errors' | 'all_errors'
 ```
 
-#### Default value {/*default-value*/}
+#### 기본값 {/*default-value*/}
 
 `'none'`
 
-#### Options {/*options*/}
+#### 옵션 {/*options*/}
 
-- **`'none'`** (default, recommended): Skip components that can't be compiled and continue building
-- **`'critical_errors'`**: Fail the build only on critical compiler errors
-- **`'all_errors'`**: Fail the build on any compiler diagnostic
+- **`'none'`** (기본값, 권장): 컴파일할 수 없는 컴포넌트를 건너뛰고 빌드를 계속 진행합니다.
+- **`'critical_errors'`**: 치명적인 컴파일러 오류에서만 빌드를 실패시킵니다.
+- **`'all_errors'`**: 모든 컴파일러 진단에서 빌드를 실패시킵니다.
 
-#### Caveats {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
-- Production builds should always use `'none'`
-- Build failures prevent your application from building
-- The compiler automatically detects and skips problematic code with `'none'`
-- Higher thresholds are only useful during development for debugging
+- 프로덕션 빌드에서는 항상 `'none'`을 사용해야 합니다.
+- 빌드 실패는 애플리케이션이 빌드되지 않도록 합니다.
+- 컴파일러는 `'none'`을 사용하면 문제가 있는 코드를 자동으로 감지하고 건너뜁니다.
+- 더 높은 임계값은 개발 중 디버깅에만 유용합니다.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Production configuration (recommended) {/*production-configuration*/}
+### 프로덕션 설정 (권장) {/*production-configuration*/}
 
-For production builds, always use `'none'`. This is the default value:
+프로덕션 빌드에서는 항상 `'none'`을 사용하세요. 이것이 기본값입니다.
 
 ```js
 {
@@ -61,15 +61,15 @@ For production builds, always use `'none'`. This is the default value:
 }
 ```
 
-This ensures:
-- Your build never fails due to compiler issues
-- Components that can't be optimized run normally
-- Maximum components get optimized
-- Stable production deployments
+이렇게 하면 다음을 보장합니다.
+- 컴파일러 문제로 인해 빌드가 실패하지 않습니다.
+- 최적화할 수 없는 컴포넌트도 정상적으로 실행됩니다.
+- 최대한 많은 컴포넌트가 최적화됩니다.
+- 안정적인 프로덕션 배포가 가능합니다.
 
-### Development debugging {/*development-debugging*/}
+### 개발 중 디버깅 {/*development-debugging*/}
 
-Temporarily use stricter thresholds to find issues:
+문제를 찾기 위해 일시적으로 더 엄격한 임계값을 사용합니다.
 
 ```js
 const isDevelopment = process.env.NODE_ENV === 'development';
