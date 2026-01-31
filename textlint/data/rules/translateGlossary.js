@@ -603,6 +603,33 @@ module.exports = {
           note: '',
         },
       },
+      {
+        sources: [/\busage\b/i],
+        target: '용법',
+        meta: {
+          term: 'Usage',
+          discussions: [1425],
+          note: '',
+        },
+      },
+      {
+        sources: [/\btransitions?\b/],
+        target: '트랜지션',
+        meta: {
+          term: 'transition',
+          discussions: [1425],
+          note: '',
+        },
+      },
+      {
+        sources: [/\bimperative\b/],
+        target: '명령형',
+        meta: {
+          term: 'imperative',
+          discussions: [1425],
+          note: '',
+        },
+      },
     ],
   },
   // untranslated: {
