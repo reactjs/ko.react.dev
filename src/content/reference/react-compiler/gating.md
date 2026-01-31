@@ -43,7 +43,7 @@ title: gating
 #### 프로퍼티 {/*properties*/}
 
 - **`source`**: 기능 플래그를 가져올 모듈 경로.
-- **`importSpecifierName`**: 가져오고<sup>Import</sup> 싶은 내보낸<sup>Export</sup> 함수의 이름.
+- **`importSpecifierName`**: `import`해서 사용하려는 내보낸<sup>Export</sup> 함수의 이름.
 
 #### 주의 사항 {/*caveats*/}
 
