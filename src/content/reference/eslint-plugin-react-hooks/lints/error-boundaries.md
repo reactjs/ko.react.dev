@@ -4,35 +4,35 @@ title: error-boundaries
 
 <Intro>
 
-Validates usage of Error Boundaries instead of try/catch for errors in child components.
+자식 컴포넌트의 오류에 대해 try/catch 대신 Error Boundary 사용을 검증합니다.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## 규칙 세부 사항 {/*rule-details*/}
 
-Try/catch blocks can't catch errors that happen during React's rendering process. Errors thrown in rendering methods or hooks bubble up through the component tree. Only [Error Boundaries](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) can catch these errors.
+try/catch 블록은 React의 렌더링 과정에서 발생하는 오류를 잡을 수 없습니다. 렌더링 메서드나 Hook에서 발생한 오류는 컴포넌트 트리를 타고 위로 전파됩니다. 오직 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)만이 이러한 오류를 잡을 수 있습니다.
 
-### Invalid {/*invalid*/}
+### 잘못된 예 {/*invalid*/}
 
-Examples of incorrect code for this rule:
+이 규칙에 대한 잘못된 코드 예시입니다.
 
 ```js
-// ❌ Try/catch won't catch render errors
+// ❌ try/catch는 렌더링 오류를 잡을 수 없음
 function Parent() {
   try {
-    return <ChildComponent />; // If this throws, catch won't help
+    return <ChildComponent />; // 여기서 오류가 발생하면 catch가 도움이 되지 않음
   } catch (error) {
     return <div>Error occurred</div>;
   }
 }
 ```
 
-### Valid {/*valid*/}
+### 올바른 예 {/*valid*/}
 
-Examples of correct code for this rule:
+이 규칙에 대한 올바른 코드 예시입니다.
 
 ```js
-// ✅ Using error boundary
+// ✅ Error Boundary 사용
 function Parent() {
   return (
     <ErrorBoundary>
@@ -42,24 +42,24 @@ function Parent() {
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
-### Why is the linter telling me not to wrap `use` in `try`/`catch`? {/*why-is-the-linter-telling-me-not-to-wrap-use-in-trycatch*/}
+### 린터가 `use`를 `try`/`catch`로 감싸지 말라고 하는 이유는 무엇인가요? {/*why-is-the-linter-telling-me-not-to-wrap-use-in-trycatch*/}
 
-The `use` hook doesn't throw errors in the traditional sense, it suspends component execution. When `use` encounters a pending promise, it suspends the component and lets React show a fallback. Only Suspense and Error Boundaries can handle these cases. The linter warns against `try`/`catch` around `use` to prevent confusion as the `catch` block would never run.
+`use` Hook은 전통적인 의미에서 오류를 던지지 않고 컴포넌트 실행을 일시 중단합니다. `use`가 대기 중인 Promise를 만나면 컴포넌트를 일시 중단하고 React가 폴백을 표시하도록 합니다. Suspense와 Error Boundary만이 이러한 경우를 처리할 수 있습니다. 린터는 `catch` 블록이 절대 실행되지 않으므로 혼란을 방지하기 위해 `use` 주위의 `try`/`catch`에 대해 경고합니다.
 
 ```js
-// ❌ Try/catch around `use` hook
+// ❌ `use` Hook 주위의 try/catch
 function Component({promise}) {
   try {
-    const data = use(promise); // Won't catch - `use` suspends, not throws
+    const data = use(promise); // 잡을 수 없음 - `use`는 던지지 않고 일시 중단함
     return <div>{data}</div>;
   } catch (error) {
-    return <div>Failed to load</div>; // Unreachable
+    return <div>Failed to load</div>; // 도달 불가
   }
 }
 
-// ✅ Error boundary catches `use` errors
+// ✅ Error Boundary가 `use` 오류를 잡음
 function App() {
   return (
     <ErrorBoundary fallback={<div>Failed to load</div>}>
