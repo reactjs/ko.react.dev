@@ -1024,8 +1024,6 @@ li {
 
 `Context.js`에 `ImageSizeContext`를 생성하고 내보냅니다. 리스트를 `<ImageSizeContext.Provider value={imageSize}>`로 감싸 값을 아래로 전달하고 `useContext(ImageSizeContext)`로 `PlaceImage`에서 그것을 읽습니다.
 
-Create and export `ImageSizeContext` from `Context.js`. Then wrap the List into `<ImageSizeContext value={imageSize}>` to pass the value down, and `useContext(ImageSizeContext)` to read it in the `PlaceImage`:
-
 <Sandpack>
 
 ```js src/App.js
