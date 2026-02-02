@@ -95,8 +95,12 @@ function SubmitButton({ submitAction }) {
 
 #### 매개변수 {/*starttransition-parameters*/}
 
+<<<<<<< HEAD
 * `action`: 하나 이상의 [`set` 함수](/reference/react/useState#setstate)를 호출하여 일부 상태를 업데이트하는 함수입니다. React는 매개변수 없이 즉시 `action`을 호출하고 `action` 함수 호출 중에 동기적으로 예약된 모든 상태 업데이트를 Transitions으로 표시합니다. `action`에서 await된 비동기 호출은 Transition에 포함되지만, 현재로서는 `await` 이후의 `set` 함수 호출을 추가적인 `startTransition`으로 감싸야 합니다([문제 해결 참조](#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
 Transitions으로 표시된 상태 업데이트는 [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) 방식으로 처리되며, [불필요한 로딩 표시가 나타나지 않습니다](#preventing-unwanted-loading-indicators).
+=======
+* `action`: A function that updates some state by calling one or more [`set` functions](/reference/react/useState#setstate). React calls `action` immediately with no parameters and marks all state updates scheduled synchronously during the `action` function call as Transitions. Any async calls that are awaited in the `action` will be included in the Transition, but currently require wrapping any `set` functions after the `await` in an additional `startTransition` (see [Troubleshooting](#react-doesnt-treat-my-state-update-after-await-as-a-transition)). State updates marked as Transitions will be [non-blocking](#perform-non-blocking-updates-with-actions) and [will not display unwanted loading indicators](#preventing-unwanted-loading-indicators).
+>>>>>>> 38b52cfdf059b2efc5ee3223a758efe00319fcc7
 
 #### 반환값 {/*starttransition-returns*/}
 
@@ -1249,9 +1253,15 @@ function Router() {
 
 세 가지 이유로 이 방법을 권장합니다.
 
+<<<<<<< HEAD
 - [Transition은 중단할 수 있으므로](#marking-a-state-update-as-a-non-blocking-transition) 사용자는 리렌더링이 완료될 때까지 기다릴 필요 없이 바로 클릭할 수 있습니다.
 - [Transition은 원치 않는 로딩 표시기를 방지하므로](#preventing-unwanted-loading-indicators) 사용자가 탐색 시 갑작스러운 이동을 방지할 수 있습니다.
 - [Transition은 모든 보류 중인 작업을 대기하므로](#perform-non-blocking-updates-with-actions) 사용자는 사이드 이펙트가 완료된 후에 새로운 페이지를 볼 수 있습니다.
+=======
+- [Transitions are interruptible,](#perform-non-blocking-updates-with-actions) which lets the user click away without waiting for the re-render to complete.
+- [Transitions prevent unwanted loading indicators,](#preventing-unwanted-loading-indicators) which lets the user avoid jarring jumps on navigation.
+- [Transitions wait for all pending actions](#perform-non-blocking-updates-with-actions) which lets the user wait for side effects to complete before the new page is shown.
+>>>>>>> 38b52cfdf059b2efc5ee3223a758efe00319fcc7
 
 다음은 navigation에 Transitions를 사용하는 간단한 라우터 예시입니다.
 

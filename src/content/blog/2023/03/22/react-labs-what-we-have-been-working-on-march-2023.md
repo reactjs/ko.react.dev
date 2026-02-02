@@ -31,7 +31,11 @@ RSC는 서버 중심의 멀티 페이지 애플리케이션의 간단한 "요청
 
 이제 데이터 가져오기<sup>Fetching</sup>가 어느 정도 잘 정리되었으므로 다른 방향을 살펴보고 있습니다. 바로 클라이언트에서 서버로 데이터를 전송하여 데이터베이스 변경을 실행하고 폼을 구현할 수 있도록 하는 것입니다. 서버와 클라이언트의 경계를 넘어 서버 액션 함수를 전달하면 클라이언트가 이를 호출하여 원활한 RPC를 제공할 수 있습니다. 서버 액션은 또한 자바스크립트를 불러오기 전에 점진적으로 향상된 폼을 제공합니다.
 
+<<<<<<< HEAD
 React 서버 컴포넌트는 [Next.js App 라우터](/learn/start-a-new-react-project#nextjs-app-router)에 포함되어 있습니다. Next.js에서는 라우터와 깊은 결합을 통해 RSC를 기본 요소로 받아들이는 것을 보여줍니다. 그러나 이 방법이 RSC와 호환할 수 있는 라우터나 프레임워크를 구축하는 유일한 방법은 아닙니다. RSC 명세와 구현에서 제공하는 기능에는 명확한 구분이 있습니다. React 서버 컴포넌트는 호환할 수 있는 React 프레임워크에서 동작하는 컴포넌트에 대한 명세입니다.
+=======
+React Server Components has shipped in [Next.js App Router](/learn/creating-a-react-app#nextjs-app-router). This showcases a deep integration of a router that really buys into RSC as a primitive, but it's not the only way to build a RSC-compatible router and framework. There's a clear separation for features provided by the RSC spec and implementation. React Server Components is meant as a spec for components that work across compatible React frameworks.
+>>>>>>> 38b52cfdf059b2efc5ee3223a758efe00319fcc7
 
 우리는 일반적으로 기존 프레임워크를 권장하지만, 직접 사용자 지정 프레임워크를 구축해야 하는 경우도 가능합니다. RSC와 호환할 수 있는 프레임워크를 직접 구축하는 것은 번들러와의 깊은 결합을 필요로하기 때문에 생각만큼 쉽지 않습니다. 현재 세대의 번들러는 클라이언트에서 사용하기에는 훌륭하지만, 서버와 클라이언트 간에 단일 모듈 그래프를 분할하는 것을 우선으로 지원하도록 설계되지 않았습니다. 이것이 지금 RSC를 내장하기 위한 기본 요소를 얻기 위해 번들러 개발자들과 직접 협력하는 이유입니다.
 
@@ -92,7 +96,11 @@ React 컴포넌트의 순수한 자바스크립트를 반응형으로 만들기 
 
 ## 트랜지션 추적 {/*transition-tracing*/}
 
+<<<<<<< HEAD
 트랜지션 추적 API를 통해 [React 트랜지션](/reference/react/useTransition)이 느려지는 시점을 감지하고 느려지는 이유를 조사할 수 있습니다. 지난 업데이트 이후 API의 초기 설계를 마무리하고 [RFC](https://github.com/reactjs/rfcs/pull/238)를 공개했습니다. 기본 기능도 함께 구현되었습니다. 이 프로젝트는 현재 보류 중입니다. RFC에 대한 피드백을 환영하며, 개발을 재개하여 React를 위한 더 나은 성능 측정 도구를 제공할 수 있기를 기대합니다. 이는 [Next.js App 라우터](/learn/start-a-new-react-project#nextjs-app-router)와 같이 React 트랜지션 위에 구축된 라우터에서는 특히 더 유용할 것입니다.
+=======
+The Transition Tracing API lets you detect when [React Transitions](/reference/react/useTransition) become slower and investigate why they may be slow. Following our last update, we have completed the initial design of the API and published an [RFC](https://github.com/reactjs/rfcs/pull/238). The basic capabilities have also been implemented. The project is currently on hold. We welcome feedback on the RFC and look forward to resuming its development to provide a better performance measurement tool for React. This will be particularly useful with routers built on top of React Transitions, like the [Next.js App Router](/learn/creating-a-react-app#nextjs-app-router).
+>>>>>>> 38b52cfdf059b2efc5ee3223a758efe00319fcc7
 
 * * *
 이번 업데이트 외에도 최근 우리 팀은 커뮤니티 팟캐스트와 라이브스트림에 초청자로 출연하여 우리의 작업에 대해 더 많은 이야기를 나누고 질문에 답변했습니다.
