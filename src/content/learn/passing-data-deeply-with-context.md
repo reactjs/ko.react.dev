@@ -1022,7 +1022,7 @@ li {
 
 `imageSize` prop을 모든 컴포넌트에서 제거합니다.
 
-`Context.js`에 `ImageSizeContext`를 생성하고 내보냅니다. 리스트를 `<ImageSizeContext.Provider value={imageSize}>`로 감싸 값을 아래로 전달하고 `useContext(ImageSizeContext)`로 `PlaceImage`에서 그것을 읽습니다.
+`Context.js`에 `ImageSizeContext`를 생성하고 내보냅니다. 리스트를 `<ImageSizeContext value={imageSize}>`로 감싸 값을 아래로 전달하고 `useContext(ImageSizeContext)`로 `PlaceImage`에서 그것을 읽습니다.
 
 <Sandpack>
 
