@@ -172,7 +172,7 @@ input {
 
 ### 사용자 정의 명령형 메서드 노출 {/*exposing-your-own-imperative-methods*/}
 
-`Imperative Handle`을 통해 노출하는 메서드는 DOM 메서드와 정확하게 일치할 필요가 없습니다. 예를 들어, 이 `Post` 컴포넌트는 `Imperative Handle`을 통해 `scrollAndFocusAddComment` 메서드를 표시합니다. 이렇게 하면 부모 `Page`에서 버튼을 클릭할 때 댓글 목록을 스크롤하고 입력 필드에 초점을 맞출 수 있습니다.
+명령형 핸들<sup>Imperative Handle</sup>을 통해 노출하는 메서드는 DOM 메서드와 정확하게 일치할 필요가 없습니다. 예를 들어, 이 `Post` 컴포넌트는 명령형 핸들을 통해 `scrollAndFocusAddComment` 메서드를 표시합니다. 이렇게 하면 부모 `Page`에서 버튼을 클릭할 때 댓글 목록을 스크롤하고 입력 필드에 초점을 맞출 수 있습니다.
 
 <Sandpack>
 
@@ -287,5 +287,5 @@ export default AddComment;
 
 **Ref를 과도하게 사용하지 마세요.** Ref는 Props로 표현할 수 없는 필수적인 행동에만 사용해야 합니다. 예를 들어 특정 노드로 스크롤 하기, 노드에 초점 맞추기, 애니메이션 실행하기, 텍스트 선택하기 등이 있습니다.
 
-**Prop으로 표현할 수 있는 것에 Ref를 사용하지 마세요.** 예를 들어 `Modal` 컴포넌트에서 `{ open, close }`와 같은 `Imperative Handle`을 노출하는 대신 `<Modal isOpen={isOpen} />`과 같은 `isOpen` Prop을 사용하는 것이 더 좋습니다. [Effect](/learn/synchronizing-with-effects)를 사용하면 Prop을 통해 명령형 동작<sup>Imperative Behavior</sup>을 노출할 수 있습니다.
+**Prop으로 표현할 수 있는 것에 Ref를 사용하지 마세요.** 예를 들어 `Modal` 컴포넌트에서 `{ open, close }`와 같은 명령형 핸들<sup>Imperative Handle</sup>을 노출하는 대신 `<Modal isOpen={isOpen} />`과 같은 `isOpen` Prop을 사용하는 것이 더 좋습니다. [Effect](/learn/synchronizing-with-effects)를 사용하면 Prop을 통해 명령형 동작<sup>Imperative Behavior</sup>을 노출할 수 있습니다.
 </Pitfall>
