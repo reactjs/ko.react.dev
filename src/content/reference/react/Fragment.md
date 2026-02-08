@@ -4,9 +4,9 @@ title: <Fragment> (<>...</>)
 
 <Intro>
 
-`<Fragment>`, often used via `<>...</>` syntax, lets you group elements without a wrapper node. 
+`<Fragment>`는 `<>...</>` 문법으로 자주 사용되며, 래퍼 노드 없이 엘리먼트를 그룹화할 수 있게 해줍니다.
 
-<Canary> Fragments can also accept refs, which enable interacting with underlying DOM nodes without adding wrapper elements. See reference and usage below.</Canary>
+<Canary> Fragment는 `ref`를 받을 수도 있으며, 래퍼 엘리먼트를 추가하지 않고도 기본 DOM 노드와 상호작용할 수 있습니다. 아래 레퍼런스와 사용법을 참고하세요.</Canary>
 
 ```js
 <>
@@ -25,45 +25,46 @@ title: <Fragment> (<>...</>)
 
 ### `<Fragment>` {/*fragment*/}
 
-하나의 엘리먼트가 필요한 상황에서 엘리먼트를 `<Fragment>`로 감싸서 그룹화하세요. `Fragment` 안에서 그룹화된 엘리먼트는 DOM 결과물에 영향을 주지 않습니다. 즉, 엘리먼트가 그룹화되지 않은 것과 같습니다. 대부분의 경우 빈 JSX 태그인 `<></>`는 `<Fragment></Fragment>`의 줄임말입니다.
+하나의 엘리먼트가 필요한 상황에서 엘리먼트를 `<Fragment>`로 감싸서 그룹화하세요. `Fragment` 안에서 그룹화된 엘리먼트는 DOM 결과물에 영향을 주지 않습니다. 즉, 엘리먼트가 그룹화되지 않은 것과 같습니다. 대부분의 경우 빈 JSX 태그인 `<></>`는 `<Fragment></Fragment>`의 축약형입니다.
 
 #### Props {/*props*/}
-- **optional** `key`: 명시적 `<Fragment>`로 선언된 Fragment에는 [`key`](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 사용할 수 있습니다.
+- **optional** `key`: 명시적 `<Fragment>`로 선언된 `Fragment`에는 [`key`](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 사용할 수 있습니다.
 
-- **optional** `key`: Fragments declared with the explicit `<Fragment>` syntax may have [keys.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
-- <CanaryBadge />  **optional** `ref`: A ref object (e.g. from [`useRef`](/reference/react/useRef)) or [callback function](/reference/react-dom/components/common#ref-callback). React provides a `FragmentInstance` as the ref value that implements methods for interacting with the DOM nodes wrapped by the Fragment.
+- <CanaryBadge />  **optional** `ref`: ref 객체(예: [`useRef`](/reference/react/useRef)에서 반환된 것) 또는 [콜백 함수](/reference/react-dom/components/common#ref-callback)입니다. React는 `Fragment`로 감싼 DOM 노드와 상호작용하기 위한 메서드를 구현한 `FragmentInstance`를 ref 값으로 제공합니다.
 
 ### <CanaryBadge /> FragmentInstance {/*fragmentinstance*/}
 
-When you pass a ref to a fragment, React provides a `FragmentInstance` object with methods for interacting with the DOM nodes wrapped by the fragment:
+`Fragment`에 `ref`를 전달하면, React는 `Fragment`로 감싼 DOM 노드와 상호작용하기 위한 메서드가 포함된 `FragmentInstance` 객체를 제공합니다.
 
-**Event handling methods:**
-- `addEventListener(type, listener, options?)`: Adds an event listener to all first-level DOM children of the Fragment.
-- `removeEventListener(type, listener, options?)`: Removes an event listener from all first-level DOM children of the Fragment.
-- `dispatchEvent(event)`: Dispatches an event to a virtual child of the Fragment to call any added listeners and can bubble to the DOM parent.
+**이벤트 처리 메서드**
+- `addEventListener(type, listener, options?)`: Fragment의 모든 최상위 DOM 자식에 이벤트 리스너를 추가합니다.
+- `removeEventListener(type, listener, options?)`: Fragment의 모든 최상위 DOM 자식에서 이벤트 리스너를 제거합니다.
+- `dispatchEvent(event)`: Fragment의 가상 자식에 이벤트를 디스패치하여 추가된 리스너를 호출하며, DOM 부모로 버블링될 수 있습니다.
 
-**Layout methods:**
-- `compareDocumentPosition(otherNode)`: Compares the document position of the Fragment with another node.
-  - If the Fragment has children, the native `compareDocumentPosition` value is returned. 
-  - Empty Fragments will attempt to compare positioning within the React tree and include `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`.
-  - Elements that have a different relationship in the React tree and DOM tree due to portaling or other insertions are `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`.
-- `getClientRects()`: Returns a flat array of `DOMRect` objects representing the bounding rectangles of all children.
-- `getRootNode()`: Returns the root node containing the Fragment's parent DOM node.
+**레이아웃 메서드**
+- `compareDocumentPosition(otherNode)`: Fragment의 문서 위치를 다른 노드와 비교합니다.
+  - Fragment에 자식이 있으면 네이티브 `compareDocumentPosition` 값이 반환됩니다.
+  - 빈 Fragment는 React 트리 내에서 위치를 비교하며 `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`을 포함합니다.
+  - 포탈이나 다른 삽입으로 인해 React 트리와 DOM 트리에서 다른 관계를 가진 엘리먼트는 `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`입니다.
+- `getClientRects()`: 모든 자식의 경계 사각형을 나타내는 `DOMRect` 객체의 평탄화된 배열을 반환합니다.
+- `getRootNode()`: Fragment의 부모 DOM 노드를 포함하는 루트 노드를 반환합니다.
 
-**Focus management methods:**
-- `focus(options?)`: Focuses the first focusable DOM node in the Fragment. Focus is attempted on nested children depth-first.
-- `focusLast(options?)`: Focuses the last focusable DOM node in the Fragment. Focus is attempted on nested children depth-first.
-- `blur()`: Removes focus if `document.activeElement` is within the Fragment.
+**포커스 관리 메서드**
+- `focus(options?)`: Fragment 내의 첫 번째 포커스 가능한 DOM 노드에 포커스합니다. 중첩된 자식에 대해 깊이 우선으로 포커스를 시도합니다.
+- `focusLast(options?)`: Fragment 내의 마지막 포커스 가능한 DOM 노드에 포커스합니다. 중첩된 자식에 대해 깊이 우선으로 포커스를 시도합니다.
+- `blur()`: `document.activeElement`가 Fragment 내에 있으면 포커스를 제거합니다.
 
-**Observer methods:**
-- `observeUsing(observer)`: Starts observing the Fragment's DOM children with an IntersectionObserver or ResizeObserver.
-- `unobserveUsing(observer)`: Stops observing the Fragment's DOM children with the specified observer.
+**옵저버 메서드**
+- `observeUsing(observer)`: IntersectionObserver 또는 ResizeObserver로 Fragment의 DOM 자식을 관찰하기 시작합니다.
+- `unobserveUsing(observer)`: 지정된 옵저버로 Fragment의 DOM 자식 관찰을 중지합니다.
+
+#### 주의 사항 {/*caveats*/}
 
 - Fragment에 `key`를 사용하려면 `<>...</>` 구문을 사용할 수 없습니다. 명시적으로 `react`에서 `Fragment`를 불러오고<sup>Import</sup> `<Fragment key={yourKey}>...</Fragment>`를 렌더링해야 합니다.
 
 - React는 `<><Child /></>`에서 `[<Child />]`로 렌더링하거나 (또는 반대의 경우), 혹은 `<><Child /></>` 에서 `<Child />` 렌더링하거나 (또는 반대의 경우) [State를 초기화](/learn/preserving-and-resetting-state)하지 않습니다. 이는 오직 한 단계 깊이<sup>Single Level Deep</sup>까지만 적용됩니다. 예를 들어 `<><><Child /></></>` 에서 `<Child />`로 렌더링하는 것은 State가 초기화됩니다. 정확한 의미는 [여기](https://gist.github.com/clemmy/b3ef00f9507909429d8aa0d3ee4f986b)서 확인할 수 있습니다.
 
-- <CanaryBadge /> If you want to pass `ref` to a Fragment, you can't use the `<>...</>` syntax. You have to explicitly import `Fragment` from `'react'` and render `<Fragment ref={yourRef}>...</Fragment>`.
+- <CanaryBadge /> Fragment에 `ref`를 전달하려면 `<>...</>` 문법을 사용할 수 없습니다. 명시적으로 `'react'`에서 `Fragment`를 불러오고 `<Fragment ref={yourRef}>...</Fragment>`를 렌더링해야 합니다.
 
 ---
 
@@ -241,9 +242,9 @@ function PostBody({ body }) {
 
 ---
 
-### <CanaryBadge /> Using Fragment refs for DOM interaction {/*using-fragment-refs-for-dom-interaction*/}
+### <CanaryBadge /> Fragment ref를 사용한 DOM 상호작용 {/*using-fragment-refs-for-dom-interaction*/}
 
-Fragment refs allow you to interact with the DOM nodes wrapped by a Fragment without adding extra wrapper elements. This is useful for event handling, visibility tracking, focus management, and replacing deprecated patterns like `ReactDOM.findDOMNode()`.
+Fragment ref를 사용하면 래퍼 엘리먼트를 추가하지 않고도 Fragment로 감싼 DOM 노드와 상호작용할 수 있습니다. 이벤트 처리, 가시성 추적, 포커스 관리, 그리고 `ReactDOM.findDOMNode()`와 같이 더 이상 사용되지 않는 패턴을 대체하는 데 유용합니다.
 
 ```js
 import { Fragment } from 'react';
@@ -261,9 +262,9 @@ function ClickableFragment({ children, onClick }) {
 ```
 ---
 
-### <CanaryBadge /> Tracking visibility with Fragment refs {/*tracking-visibility-with-fragment-refs*/}
+### <CanaryBadge /> Fragment ref로 가시성 추적하기 {/*tracking-visibility-with-fragment-refs*/}
 
-Fragment refs are useful for visibility tracking and intersection observation. This enables you to monitor when content becomes visible without requiring the child Components to expose refs:
+Fragment ref는 가시성 추적과 교차 관찰에 유용합니다. 자식 컴포넌트가 ref를 노출하지 않아도 콘텐츠가 화면에 보이는 시점을 모니터링할 수 있습니다.
 
 ```js {19,21,31-34}
 import { Fragment, useRef, useLayoutEffect } from 'react';
@@ -304,13 +305,13 @@ function MyComponent() {
 }
 ```
 
-This pattern is an alternative to Effect-based visibility logging, which is an anti-pattern in most cases. Relying on Effects alone does not guarantee that the rendered Component is observable by the user.
+이 패턴은 Effect 기반 가시성 로깅의 대안이며, Effect 기반 방식은 대부분의 경우 안티패턴입니다. Effect에만 의존하면 렌더링된 컴포넌트가 사용자에게 실제로 보이는지 보장할 수 없습니다.
 
 ---
 
-### <CanaryBadge /> Focus management with Fragment refs {/*focus-management-with-fragment-refs*/}
+### <CanaryBadge /> Fragment ref로 포커스 관리하기 {/*focus-management-with-fragment-refs*/}
 
-Fragment refs provide focus management methods that work across all DOM nodes within the Fragment:
+Fragment ref는 Fragment 내의 모든 DOM 노드에서 동작하는 포커스 관리 메서드를 제공합니다.
 
 ```js
 import { Fragment, useRef } from 'react';
@@ -324,4 +325,4 @@ function FocusFragment({ children }) {
 }
 ```
 
-The `focus()` method focuses the first focusable element within the Fragment, while `focusLast()` focuses the last focusable element.
+`focus()` 메서드는 Fragment 내의 첫 번째 포커스 가능한 엘리먼트에 포커스하고, `focusLast()`는 마지막 포커스 가능한 엘리먼트에 포커스합니다.
