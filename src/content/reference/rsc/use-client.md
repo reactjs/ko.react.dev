@@ -41,7 +41,11 @@ export default function RichTextEditor({ timestamp, text }) {
 }
 ```
 
+<<<<<<< HEAD
 서버 컴포넌트에서 `'use client'`라 표시된 파일을 가져오면 [호환되는 번들러](/learn/start-a-new-react-project#full-stack-frameworks)는 모듈 불러오기<sup>Module Import</sup>를 서버 실행 코드와 클라이언트 실행 코드 사이의 경계로 처리합니다.
+=======
+When a file marked with `'use client'` is imported from a Server Component, [compatible bundlers](/learn/creating-a-react-app#full-stack-frameworks) will treat the module import as a boundary between server-run and client-run code.
+>>>>>>> 38b52cfdf059b2efc5ee3223a758efe00319fcc7
 
 `RichTextEditor`의 의존성으로 인하여, `formatDate`와 `Button`의 모듈에 `'use client'` 지시어가 포함되어 있지 않더라도 클라이언트에서 평가됩니다. 하나의 모듈이 서버 코드에서 가져올 때는 서버에서, 클라이언트 코드에서 가져올 때는 클라이언트에서 평가될 수 있음을 유의해야 합니다.
 
