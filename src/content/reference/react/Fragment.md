@@ -6,7 +6,7 @@ title: <Fragment> (<>...</>)
 
 `<Fragment>`는 `<>...</>` 문법으로 자주 사용되며, 래퍼 노드 없이 엘리먼트를 그룹화할 수 있게 해줍니다.
 
-<Canary> Fragment는 ref를 받을 수도 있으며, 래퍼 엘리먼트를 추가하지 않고도 기본 DOM 노드와 상호작용할 수 있습니다. 아래 레퍼런스와 사용법을 참고하세요.</Canary>
+<Canary> Fragment는 `ref`를 받을 수도 있으며, 래퍼 엘리먼트를 추가하지 않고도 기본 DOM 노드와 상호작용할 수 있습니다. 아래 레퍼런스와 사용법을 참고하세요.</Canary>
 
 ```js
 <>
@@ -25,16 +25,16 @@ title: <Fragment> (<>...</>)
 
 ### `<Fragment>` {/*fragment*/}
 
-하나의 엘리먼트가 필요한 상황에서 엘리먼트를 `<Fragment>`로 감싸서 그룹화하세요. `Fragment` 안에서 그룹화된 엘리먼트는 DOM 결과물에 영향을 주지 않습니다. 즉, 엘리먼트가 그룹화되지 않은 것과 같습니다. 대부분의 경우 빈 JSX 태그인 `<></>`는 `<Fragment></Fragment>`의 줄임말입니다.
+하나의 엘리먼트가 필요한 상황에서 엘리먼트를 `<Fragment>`로 감싸서 그룹화하세요. `Fragment` 안에서 그룹화된 엘리먼트는 DOM 결과물에 영향을 주지 않습니다. 즉, 엘리먼트가 그룹화되지 않은 것과 같습니다. 대부분의 경우 빈 JSX 태그인 `<></>`는 `<Fragment></Fragment>`의 축약형입니다.
 
 #### Props {/*props*/}
-- **optional** `key`: 명시적 `<Fragment>`로 선언된 Fragment에는 [`key`](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 사용할 수 있습니다.
+- **optional** `key`: 명시적 `<Fragment>`로 선언된 `Fragment`에는 [`key`](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 사용할 수 있습니다.
 
-- <CanaryBadge />  **optional** `ref`: ref 객체(예: [`useRef`](/reference/react/useRef)에서 반환된 것) 또는 [콜백 함수](/reference/react-dom/components/common#ref-callback)입니다. React는 Fragment로 감싼 DOM 노드와 상호작용하기 위한 메서드를 구현한 `FragmentInstance`를 ref 값으로 제공합니다.
+- <CanaryBadge />  **optional** `ref`: ref 객체(예: [`useRef`](/reference/react/useRef)에서 반환된 것) 또는 [콜백 함수](/reference/react-dom/components/common#ref-callback)입니다. React는 `Fragment`로 감싼 DOM 노드와 상호작용하기 위한 메서드를 구현한 `FragmentInstance`를 ref 값으로 제공합니다.
 
 ### <CanaryBadge /> FragmentInstance {/*fragmentinstance*/}
 
-Fragment에 ref를 전달하면, React는 Fragment로 감싼 DOM 노드와 상호작용하기 위한 메서드가 포함된 `FragmentInstance` 객체를 제공합니다.
+`Fragment`에 `ref`를 전달하면, React는 `Fragment`로 감싼 DOM 노드와 상호작용하기 위한 메서드가 포함된 `FragmentInstance` 객체를 제공합니다.
 
 **이벤트 처리 메서드**
 - `addEventListener(type, listener, options?)`: Fragment의 모든 최상위 DOM 자식에 이벤트 리스너를 추가합니다.
@@ -57,6 +57,8 @@ Fragment에 ref를 전달하면, React는 Fragment로 감싼 DOM 노드와 상�
 **옵저버 메서드**
 - `observeUsing(observer)`: IntersectionObserver 또는 ResizeObserver로 Fragment의 DOM 자식을 관찰하기 시작합니다.
 - `unobserveUsing(observer)`: 지정된 옵저버로 Fragment의 DOM 자식 관찰을 중지합니다.
+
+#### 주의 사항 {/*caveats*/}
 
 - Fragment에 `key`를 사용하려면 `<>...</>` 구문을 사용할 수 없습니다. 명시적으로 `react`에서 `Fragment`를 불러오고<sup>Import</sup> `<Fragment key={yourKey}>...</Fragment>`를 렌더링해야 합니다.
 
