@@ -5,36 +5,36 @@ version: rc
 
 <Intro>
 
-`eslint-plugin-react-hooks` provides ESLint rules to enforce the [Rules of React](/reference/rules).
+`eslint-plugin-react-hooks`는 [React의 규칙](/reference/rules)을 적용하기 위한 ESLint 규칙을 제공합니다.
 
 </Intro>
 
-This plugin helps you catch violations of React's rules at build time, ensuring your components and hooks follow React's rules for correctness and performance. The lints cover both fundamental React patterns (exhaustive-deps and rules-of-hooks) and issues flagged by React Compiler. React Compiler diagnostics are automatically surfaced by this ESLint plugin, and can be used even if your app hasn't adopted the compiler yet.
+이 플러그인은 빌드 시간에 React 규칙 위반을 감지하여 컴포넌트와 Hook이 정확성과 성능을 위한 React 규칙을 따르도록 도와줍니다. 린트는 기본적인 React 패턴(exhaustive-deps 및 rules-of-hooks)과 React 컴파일러가 표시하는 문제를 모두 다룹니다. React 컴파일러 진단은 이 ESLint 플러그인에 의해 자동으로 표시되며, 앱이 아직 컴파일러를 도입하지 않았더라도 사용할 수 있습니다.
 
 <Note>
-When the compiler reports a diagnostic, it means that the compiler was able to statically detect a pattern that is not supported or breaks the Rules of React. When it detects this, it **automatically** skips over those components and hooks, while keeping the rest of your app compiled. This ensures optimal coverage of safe optimizations that won't break your app.
+컴파일러가 진단을 보고하면 컴파일러가 지원되지 않거나 React 규칙을 위반하는 패턴을 정적으로 감지했다는 것을 의미합니다. 이를 감지하면 해당 컴포넌트와 Hook을 **자동으로** 건너뛰고 나머지 앱은 계속 컴파일합니다. 이렇게 하면 앱을 손상시키지 않는 안전한 최적화의 최적 적용 범위를 보장합니다.
 
-What this means for linting, is that you don’t need to fix all violations immediately. Address them at your own pace to gradually increase the number of optimized components.
+린트에서 이것이 의미하는 바는 모든 위반을 즉시 수정할 필요가 없다는 것입니다. 자신의 속도에 맞춰 해결하여 점진적으로 최적화된 컴포넌트 수를 늘리세요.
 </Note>
 
-## Recommended Rules {/*recommended*/}
+## 권장 규칙 {/*recommended*/}
 
-These rules are included in the `recommended` preset in `eslint-plugin-react-hooks`:
+이 규칙들은 `eslint-plugin-react-hooks`의 `recommended` 프리셋에 포함되어 있습니다.
 
-* [`exhaustive-deps`](/reference/eslint-plugin-react-hooks/lints/exhaustive-deps) - Validates that dependency arrays for React hooks contain all necessary dependencies
-* [`rules-of-hooks`](/reference/eslint-plugin-react-hooks/lints/rules-of-hooks) - Validates that components and hooks follow the Rules of Hooks
-* [`component-hook-factories`](/reference/eslint-plugin-react-hooks/lints/component-hook-factories) - Validates higher order functions defining nested components or hooks
-* [`config`](/reference/eslint-plugin-react-hooks/lints/config) - Validates the compiler configuration options
-* [`error-boundaries`](/reference/eslint-plugin-react-hooks/lints/error-boundaries) - Validates usage of Error Boundaries instead of try/catch for child errors
-* [`gating`](/reference/eslint-plugin-react-hooks/lints/gating) - Validates configuration of gating mode
-* [`globals`](/reference/eslint-plugin-react-hooks/lints/globals) - Validates against assignment/mutation of globals during render
-* [`immutability`](/reference/eslint-plugin-react-hooks/lints/immutability) - Validates against mutating props, state, and other immutable values
-* [`incompatible-library`](/reference/eslint-plugin-react-hooks/lints/incompatible-library) - Validates against usage of libraries which are incompatible with memoization
-* [`preserve-manual-memoization`](/reference/eslint-plugin-react-hooks/lints/preserve-manual-memoization) - Validates that existing manual memoization is preserved by the compiler
-* [`purity`](/reference/eslint-plugin-react-hooks/lints/purity) - Validates that components/hooks are pure by checking known-impure functions
-* [`refs`](/reference/eslint-plugin-react-hooks/lints/refs) - Validates correct usage of refs, not reading/writing during render
-* [`set-state-in-effect`](/reference/eslint-plugin-react-hooks/lints/set-state-in-effect) - Validates against calling setState synchronously in an effect
-* [`set-state-in-render`](/reference/eslint-plugin-react-hooks/lints/set-state-in-render) - Validates against setting state during render
-* [`static-components`](/reference/eslint-plugin-react-hooks/lints/static-components) - Validates that components are static, not recreated every render
-* [`unsupported-syntax`](/reference/eslint-plugin-react-hooks/lints/unsupported-syntax) - Validates against syntax that React Compiler does not support
-* [`use-memo`](/reference/eslint-plugin-react-hooks/lints/use-memo) - Validates usage of the `useMemo` hook without a return value
+* [`exhaustive-deps`](/reference/eslint-plugin-react-hooks/lints/exhaustive-deps) - React Hook의 의존성 배열에 필요한 모든 의존성이 포함되어 있는지 검증합니다.
+* [`rules-of-hooks`](/reference/eslint-plugin-react-hooks/lints/rules-of-hooks) - 컴포넌트와 Hook이 Hook의 규칙을 따르는지 검증합니다.
+* [`component-hook-factories`](/reference/eslint-plugin-react-hooks/lints/component-hook-factories) - 중첩된 컴포넌트나 Hook을 정의하는 고차 함수를 검증합니다.
+* [`config`](/reference/eslint-plugin-react-hooks/lints/config) - 컴파일러 설정 옵션을 검증합니다.
+* [`error-boundaries`](/reference/eslint-plugin-react-hooks/lints/error-boundaries) - 자식 오류에 대해 try/catch 대신 Error Boundary 사용을 검증합니다.
+* [`gating`](/reference/eslint-plugin-react-hooks/lints/gating) - 게이팅 모드 설정을 검증합니다.
+* [`globals`](/reference/eslint-plugin-react-hooks/lints/globals) - 렌더링 중 전역 변수의 할당/변이를 검증합니다.
+* [`immutability`](/reference/eslint-plugin-react-hooks/lints/immutability) - props, state 및 기타 불변 값의 변이를 검증합니다.
+* [`incompatible-library`](/reference/eslint-plugin-react-hooks/lints/incompatible-library) - 메모이제이션과 호환되지 않는 라이브러리 사용을 검증합니다.
+* [`preserve-manual-memoization`](/reference/eslint-plugin-react-hooks/lints/preserve-manual-memoization) - 기존의 수동 메모이제이션이 컴파일러에 의해 유지되는지 검증합니다.
+* [`purity`](/reference/eslint-plugin-react-hooks/lints/purity) - 알려진 불순 함수를 확인하여 컴포넌트/Hook이 순수한지 검증합니다.
+* [`refs`](/reference/eslint-plugin-react-hooks/lints/refs) - 렌더링 중 읽기/쓰기가 아닌 ref의 올바른 사용을 검증합니다.
+* [`set-state-in-effect`](/reference/eslint-plugin-react-hooks/lints/set-state-in-effect) - Effect에서 setState를 동기적으로 호출하는 것을 검증합니다.
+* [`set-state-in-render`](/reference/eslint-plugin-react-hooks/lints/set-state-in-render) - 렌더링 중 state 설정을 검증합니다.
+* [`static-components`](/reference/eslint-plugin-react-hooks/lints/static-components) - 컴포넌트가 매 렌더링마다 재생성되지 않고 정적인지 검증합니다.
+* [`unsupported-syntax`](/reference/eslint-plugin-react-hooks/lints/unsupported-syntax) - React 컴파일러가 지원하지 않는 문법을 검증합니다.
+* [`use-memo`](/reference/eslint-plugin-react-hooks/lints/use-memo) - 반환값 없이 `useMemo` Hook을 사용하는 것을 검증합니다.

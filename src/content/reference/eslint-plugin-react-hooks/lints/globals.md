@@ -4,55 +4,55 @@ title: globals
 
 <Intro>
 
-Validates against assignment/mutation of globals during render, part of ensuring that [side effects must run outside of render](/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render).
+렌더링 중 전역 변수의 할당/변이를 검증합니다. 이는 [사이드 이펙트는 렌더링 외부에서 실행되어야 합니다](/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render) 규칙을 보장하는 일부입니다.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## 규칙 세부 사항 {/*rule-details*/}
 
-Global variables exist outside React's control. When you modify them during render, you break React's assumption that rendering is pure. This can cause components to behave differently in development vs production, break Fast Refresh, and make your app impossible to optimize with features like React Compiler.
+전역 변수는 React의 제어 범위 밖에 존재합니다. 렌더링 중에 전역 변수를 수정하면 렌더링이 순수하다는 React의 가정을 깨뜨립니다. 이로 인해 컴포넌트가 개발 환경과 프로덕션 환경에서 다르게 동작하거나, Fast Refresh가 중단되거나, React 컴파일러 같은 기능으로 앱을 최적화할 수 없게 됩니다.
 
-### Invalid {/*invalid*/}
+### 잘못된 예 {/*invalid*/}
 
-Examples of incorrect code for this rule:
+이 규칙에 대한 잘못된 코드 예시입니다.
 
 ```js
-// ❌ Global counter
+// ❌ 전역 카운터
 let renderCount = 0;
 function Component() {
-  renderCount++; // Mutating global
+  renderCount++; // 전역 변수 변이
   return <div>Count: {renderCount}</div>;
 }
 
-// ❌ Modifying window properties
+// ❌ window 프로퍼티 수정
 function Component({userId}) {
-  window.currentUser = userId; // Global mutation
+  window.currentUser = userId; // 전역 변이
   return <div>User: {userId}</div>;
 }
 
-// ❌ Global array push
+// ❌ 전역 배열 push
 const events = [];
 function Component({event}) {
-  events.push(event); // Mutating global array
+  events.push(event); // 전역 배열 변이
   return <div>Events: {events.length}</div>;
 }
 
-// ❌ Cache manipulation
+// ❌ 캐시 조작
 const cache = {};
 function Component({id}) {
   if (!cache[id]) {
-    cache[id] = fetchData(id); // Modifying cache during render
+    cache[id] = fetchData(id); // 렌더링 중 캐시 수정
   }
   return <div>{cache[id]}</div>;
 }
 ```
 
-### Valid {/*valid*/}
+### 올바른 예 {/*valid*/}
 
-Examples of correct code for this rule:
+이 규칙에 대한 올바른 코드 예시입니다.
 
 ```js
-// ✅ Use state for counters
+// ✅ 카운터에는 state 사용
 function Component() {
   const [clickCount, setClickCount] = useState(0);
 
@@ -67,16 +67,16 @@ function Component() {
   );
 }
 
-// ✅ Use context for global values
+// ✅ 전역 값에는 context 사용
 function Component() {
   const user = useContext(UserContext);
   return <div>User: {user.id}</div>;
 }
 
-// ✅ Synchronize external state with React
+// ✅ 외부 state를 React와 동기화
 function Component({title}) {
   useEffect(() => {
-    document.title = title; // OK in effect
+    document.title = title; // Effect 내에서는 OK
   }, [title]);
 
   return <div>Page: {title}</div>;
