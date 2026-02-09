@@ -4,7 +4,7 @@ title: globals
 
 <Intro>
 
-렌더링 중 전역 변수의 할당/변이를 검증합니다. 이는 [사이드 이펙트는 렌더링 외부에서 실행되어야 합니다](/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render) 규칙을 보장하는 일부입니다.
+렌더링 중 전역 변수의 할당/변이를 검증합니다. 이는 [사이드 이펙트는 렌더링 외부에서 실행되어야 한다는](/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render) 규칙을 보완합니다.
 
 </Intro>
 

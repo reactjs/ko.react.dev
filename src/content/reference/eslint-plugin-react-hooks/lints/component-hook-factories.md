@@ -79,7 +79,7 @@ const RedButton = makeButton('red');
 const BlueButton = makeButton('blue');
 ```
 
-대신 [JSX를 자식으로 전달](/learn/passing-props-to-a-component#passing-jsx-as-children)하세요.
+대신 [자식을 JSX로 전달](/learn/passing-props-to-a-component#passing-jsx-as-children)하세요.
 
 ```js
 // ✅ 더 나은 방법: JSX를 자식으로 전달
