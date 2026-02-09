@@ -41,7 +41,7 @@ The React Compiler is a build-time optimization tool that automatically memoizes
 
 The [ESLint plugin for React Hooks](/reference/eslint-plugin-react-hooks) helps enforce the Rules of React:
 
-* [Lints](/reference/eslint-plugin-react-hooks) - Detailed documentation for each lint with examples.
+* [린트](/reference/eslint-plugin-react-hooks) - Detailed documentation for each lint with examples.
 
 ## Rules of React {/*rules-of-react*/}
 
