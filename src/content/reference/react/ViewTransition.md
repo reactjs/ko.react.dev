@@ -1053,9 +1053,13 @@ items.map(item => <div><Component key={item.id} item={item} /></div>)
 
 새로운 Suspense 경계 인스턴스 내부에 있으면 폴백이 먼저 표시됩니다. Suspense 경계가 완전히 로드된 후 `<ViewTransition>`이 콘텐츠로 전환되는 애니메이션을 실행합니다.
 
+<<<<<<< HEAD
 현재 이 동작은 클라이언트 측 Transition에서만 발생합니다. 향후에는 초기 로드 중에 서버의 콘텐츠가 일시 중단될 때 스트리밍 SSR에 대한 Suspense 경계도 애니메이션할 예정입니다.
 
 `<ViewTransition>`을 배치하는 위치에 따라 Suspense 경계를 애니메이션하는 두 가지 방법이 있습니다.
+=======
+There are two ways to animate Suspense boundaries depending on where you place the `<ViewTransition>`:
+>>>>>>> bd87c394dc1daf0e54759126f847fcfa927e5a75
 
 Update:
 

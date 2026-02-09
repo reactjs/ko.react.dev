@@ -112,7 +112,11 @@ React Conf 2024를 가능하게 해준 모든 스태프, 발표자, 참가자분
 
 콘퍼런스 웹사이트를 제작해 주신 [Callstack](https://www.callstack.com/), 모바일 앱을 제작해 주신 [Kadi Kraman](https://twitter.com/kadikraman)과 [Expo 팀](https://expo.dev/)께 감사드립니다.
 
+<<<<<<< HEAD
 행사를 가능하게 해 주신 후원자분들께 감사드립니다: [Remix](https://remix.run/), [Amazon](https://developer.amazon.com/apps-and-games?cmp=US_2024_05_3P_React-Conf-2024&ch=prtnr&chlast=prtnr&pub=ref&publast=ref&type=org&typelast=org), [MUI](https://mui.com/), [Sentry](https://sentry.io/for/react/?utm_source=sponsored-conf&utm_medium=sponsored-event&utm_campaign=frontend-fy25q2-evergreen&utm_content=logo-reactconf2024-learnmore), [Abbott](https://www.jobs.abbott/software), [Expo](https://expo.dev/), [RedwoodJS](https://redwoodjs.com/), [Vercel](https://vercel.com).
+=======
+Thank you to all the sponsors who made the event possible: [Remix](https://remix.run/), [Amazon](https://developer.amazon.com/apps-and-games?cmp=US_2024_05_3P_React-Conf-2024&ch=prtnr&chlast=prtnr&pub=ref&publast=ref&type=org&typelast=org), [MUI](https://mui.com/), [Sentry](https://sentry.io/for/react/?utm_source=sponsored-conf&utm_medium=sponsored-event&utm_campaign=frontend-fy25q2-evergreen&utm_content=logo-reactconf2024-learnmore), [Abbott](https://www.jobs.abbott/software), [Expo](https://expo.dev/), [RedwoodJS](https://rwsdk.com/), and [Vercel](https://vercel.com).
+>>>>>>> bd87c394dc1daf0e54759126f847fcfa927e5a75
 
 시각, 무대, 그리고 음향을 담당해 주신 AV 팀과 행사를 개최해 주신 Westin Hotel에도 감사드립니다.
 

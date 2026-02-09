@@ -28,7 +28,11 @@ React를 만드는 핵심 개념 중 하나는 _순수성_ 입니다. 순수한 
 
 React는 선언적입니다. React에 _무엇을_ 렌더링할지 말해주면, React는 사용자에게 _어떻게_ 최적으로 표시할지 알아냅니다. 이를 위해 React는 코드를 실행하는 몇 가지 단계를 거칩니다. React를 잘 사용하기 위해 이 모든 단계를 알 필요는 없습니다. 하지만 고수준에서 _렌더링_ 중에 실행되는 코드와 그 외부에서 실행되는 코드에 대해 알아야 합니다.
 
+<<<<<<< HEAD
 <em>렌더링</em>은 UI의 다음 버전이 어떻게 보일지 계산하는 것을 의미합니다. 렌더링 후에 [Effect](/reference/react/useEffect)가 _flushed_ 됩니다. (더 이상 남아 있지 않을 때까지 실행됨.) 그리고 Effect가 레이아웃에 영향을 미치는 경우, 계산을 업데이트할 수 있습니다. React는 새로운 계산을 이전 UI 버전을 만드는 데 사용된 계산과 비교한 다음, 최신 버전과 일치시키기 위해 [DOM](https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model)(사용자가 실제로 보는 것)에 필요한 최소한의 변경만을 _커밋_ 합니다.
+=======
+_Rendering_ refers to calculating what the next version of your UI should look like. After rendering, React takes this new calculation and compares it to the calculation used to create the previous version of your UI. Then React commits just the minimum changes needed to the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) (what your user actually sees) to apply the changes. Finally, [Effects](/learn/synchronizing-with-effects) are flushed (meaning they are run until there are no more left). For more detailed information see the docs for [Render](/learn/render-and-commit) and [Commit and Effect Hooks](/reference/react/hooks#effect-hooks).
+>>>>>>> bd87c394dc1daf0e54759126f847fcfa927e5a75
 
 <DeepDive>
 
