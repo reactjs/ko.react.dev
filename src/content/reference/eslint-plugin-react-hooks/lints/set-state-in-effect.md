@@ -4,60 +4,60 @@ title: set-state-in-effect
 
 <Intro>
 
-Validates against calling setState synchronously in an effect, which can lead to re-renders that degrade performance.
+Effect에서 `setState`를 동기적으로 호출하는 것에 대해 검증합니다. 이는 성능을 저하시키는 재렌더링으로 이어질 수 있습니다.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## 규칙 세부 정보 {/*rule-details*/}
 
-Setting state immediately inside an effect forces React to restart the entire render cycle. When you update state in an effect, React must re-render your component, apply changes to the DOM, and then run effects again. This creates an extra render pass that could have been avoided by transforming data directly during render or deriving state from props. Transform data at the top level of your component instead. This code will naturally re-run when props or state change without triggering additional render cycles.
+Effect 내부에서 즉시 state를 설정하면 React가 전체 렌더링 사이클을 다시 시작해야 합니다. Effect에서 state를 업데이트하면 React는 컴포넌트를 다시 렌더링하고, DOM에 변경 사항을 적용한 다음, Effect를 다시 실행해야 합니다. 이는 렌더링 중에 직접 데이터를 변환하거나 props에서 state를 파생시켜 피할 수 있었던 추가 렌더링 패스를 생성합니다. 대신 컴포넌트의 최상위 레벨에서 데이터를 변환하세요. 이 코드는 추가 렌더링 사이클을 트리거하지 않고 props나 state가 변경될 때 자연스럽게 다시 실행됩니다.
 
-Synchronous `setState` calls in effects trigger immediate re-renders before the browser can paint, causing performance issues and visual jank. React has to render twice: once to apply the state update, then again after effects run. This double rendering is wasteful when the same result could be achieved with a single render.
+Effect에서 동기적으로 `setState`를 호출하면 브라우저가 페인트하기 전에 즉시 재렌더링이 트리거되어 성능 문제와 시각적 끊김이 발생합니다. React는 두 번 렌더링해야 합니다. 한 번은 state 업데이트를 적용하고, 또 한 번은 Effect가 실행된 후입니다. 단일 렌더링으로 동일한 결과를 얻을 수 있을 때 이러한 이중 렌더링은 낭비입니다.
 
-In many cases, you may also not need an effect at all. Please see [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) for more information.
+많은 경우 Effect가 전혀 필요하지 않을 수도 있습니다. 자세한 내용은 [Effect가 필요하지 않은 경우](/learn/you-might-not-need-an-effect)를 참고하세요.
 
-## Common Violations {/*common-violations*/}
+## 일반적인 위반 사례 {/*common-violations*/}
 
-This rule catches several patterns where synchronous setState is used unnecessarily:
+이 규칙은 동기적으로 `setState`가 불필요하게 사용되는 여러 패턴을 감지합니다.
 
-- Setting loading state synchronously
-- Deriving state from props in effects
-- Transforming data in effects instead of render
+- 로딩 상태를 동기적으로 설정
+- Effect에서 props로부터 state 파생
+- 렌더링 대신 Effect에서 데이터 변환
 
-### Invalid {/*invalid*/}
+### 잘못된 예시 {/*invalid*/}
 
-Examples of incorrect code for this rule:
+이 규칙에 대한 잘못된 코드 예시입니다.
 
 ```js
-// ❌ Synchronous setState in effect
+// ❌ Effect에서 동기적으로 setState
 function Component({data}) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    setItems(data); // Extra render, use initial state instead
+    setItems(data); // 추가 렌더링, 대신 초기 상태를 사용하세요
   }, [data]);
 }
 
-// ❌ Setting loading state synchronously
+// ❌ 로딩 상태를 동기적으로 설정
 function Component() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true); // Synchronous, causes extra render
+    setLoading(true); // 동기적, 추가 렌더링 발생
     fetchData().then(() => setLoading(false));
   }, []);
 }
 
-// ❌ Transforming data in effect
+// ❌ Effect에서 데이터 변환
 function Component({rawData}) {
   const [processed, setProcessed] = useState([]);
 
   useEffect(() => {
-    setProcessed(rawData.map(transform)); // Should derive in render
+    setProcessed(rawData.map(transform)); // 렌더링 중에 생성해야 함
   }, [rawData]);
 }
 
-// ❌ Deriving state from props
+// ❌ props로부터 state 파생
 function Component({selectedId, items}) {
   const [selected, setSelected] = useState(null);
 
@@ -67,12 +67,12 @@ function Component({selectedId, items}) {
 }
 ```
 
-### Valid {/*valid*/}
+### 올바른 예시 {/*valid*/}
 
-Examples of correct code for this rule:
+이 규칙에 대한 올바른 코드 예시입니다.
 
 ```js
-// ✅ setState in an effect is fine if the value comes from a ref
+// ✅ 값이 ref에서 오는 경우 Effect에서 setState는 괜찮습니다
 function Tooltip() {
   const ref = useRef(null);
   const [tooltipHeight, setTooltipHeight] = useState(0);
@@ -83,11 +83,11 @@ function Tooltip() {
   }, []);
 }
 
-// ✅ Calculate during render
+// ✅ 렌더링 중에 계산
 function Component({selectedId, items}) {
   const selected = items.find(i => i.id === selectedId);
   return <div>{selected?.name}</div>;
 }
 ```
 
-**When something can be calculated from the existing props or state, don't put it in state.** Instead, calculate it during rendering. This makes your code faster, simpler, and less error-prone. Learn more in [You Might Not Need an Effect](/learn/you-might-not-need-an-effect).
+**기존 props나 state로부터 계산할 수 있는 경우 state에 넣지 마세요.** 대신 렌더링 중에 계산하세요. 이렇게 하면 코드가 더 빠르고 간단하며 오류가 덜 발생합니다. 자세한 내용은 [Effect가 필요하지 않은 경우](/learn/you-might-not-need-an-effect)를 참고하세요.

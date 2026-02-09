@@ -409,7 +409,7 @@
       "sectionHeader": "eslint-plugin-react-hooks"
     },
     {
-      "title": "Lints",
+      "title": "린트",
       "path": "/reference/eslint-plugin-react-hooks",
       "routes": [
         {
