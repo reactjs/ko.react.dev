@@ -568,7 +568,11 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 Effect 이벤트가 이벤트 핸들러와 아주 비슷하다고 생각할 수 있습니다. 이벤트 핸들러는 사용자의 상호작용에 대한 응답으로 실행되는 반면에 Effect 이벤트는 Effect에서 직접 트리거 된다는 것이 주요한 차이점입니다. Effect 이벤트를 사용하면 Effect의 반응성과 반응형이어서는 안 되는 코드 사이의 "연결을 끊어줍니다".
+=======
+You can think of Effect Events as being very similar to event handlers. The main difference is that event handlers run in response to user interactions, whereas Effect Events are triggered by you from Effects. Effect Events let you "break the chain" between the reactivity of Effects and code that should not be reactive.
+>>>>>>> bd87c394dc1daf0e54759126f847fcfa927e5a75
 
 ### Effect 이벤트로 최근 props와 state 읽기 {/*reading-latest-props-and-state-with-effect-events*/}
 
