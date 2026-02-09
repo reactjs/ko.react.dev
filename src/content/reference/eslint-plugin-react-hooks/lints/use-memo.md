@@ -10,7 +10,7 @@ title: use-memo
 
 ## 규칙 세부 정보 {/*rule-details*/}
 
-`useMemo`는 비용이 많이 드는 값을 계산하고 캐싱하기 위한 것이지 부수 효과를 위한 것이 아닙니다. 반환값이 없으면 `useMemo`는 `undefined`를 반환하여 목적을 달성하지 못하며 잘못된 Hook을 사용하고 있음을 나타낼 가능성이 높습니다.
+`useMemo`는 비용이 많이 드는 값을 계산하고 캐싱하기 위한 것이지 부수 효과<sup>Side Effect</sup>를 위한 것이 아닙니다. 반환값이 없으면 `useMemo`는 `undefined`를 반환하여 목적을 달성하지 못하며, 잘못된 Hook을 사용하고 있음을 나타낼 가능성이 높습니다.
 
 ### 잘못된 예시 {/*invalid*/}
 
@@ -47,7 +47,7 @@ function Component({ data }) {
 
 ### 의존성이 변경될 때 부수 효과를 실행해야 합니다 {/*side-effects*/}
 
-부수 효과에 `useMemo`를 사용하려고 할 수 있습니다.
+부수 효과<sup>Side Effect</sup>에 `useMemo`를 사용하려고 할 수 있습니다.
 
 {/* TODO(@poteto) fix compiler validation to check for unassigned useMemos */}
 ```js
