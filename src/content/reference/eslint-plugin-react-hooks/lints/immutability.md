@@ -10,7 +10,7 @@ title: immutability
 
 ## 규칙 세부 사항 {/*rule-details*/}
 
-A component’s props and state are immutable snapshots. Never mutate them directly. Instead, pass new props down, and use the setter function from `useState`.
+컴포넌트의 props와 state는 불변 스냅샷입니다. 절대 직접 변이하지 마세요. 대신 새로운 props를 전달하고, `useState`의 setter 함수를 사용하세요.
 
 ## 일반적인 위반 사례 {/*common-violations*/}
 
