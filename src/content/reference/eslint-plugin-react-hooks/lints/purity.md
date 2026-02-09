@@ -4,7 +4,7 @@ title: purity
 
 <Intro>
 
-알려진 순수하지 않은 함수를 호출하지 않는지 확인하여 [컴포넌트/Hook이 순수한지](/reference/rules/components-and-hooks-must-be-pure) 검증합니다.
+알려진 순수하지 않은 함수를 호출하지 않는지 확인하여 [컴포넌트와 Hook이 순수한지](/reference/rules/components-and-hooks-must-be-pure) 검증합니다.
 
 </Intro>
 
