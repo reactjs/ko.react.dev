@@ -163,7 +163,7 @@ function CheckoutForm() {
 }
 ```
 
-The function passed to `startTransition` is called the "Action". You can update state and (optionally) perform side effects within an Action, and the work will be done in the background without blocking user interactions on the page. A Transition can include multiple Actions, and while a Transition is in progress, your UI stays responsive. For example, if the user clicks a tab but then changes their mind and clicks another tab, the second click will be immediately handled without waiting for the first update to finish.
+`startTransition`에 전달된 함수를 "Action"이라고 합니다. Action 안에서는 state를 업데이트할 수 있으며, 필요하다면 부수 효과도 수행할 수 있습니다. 이 작업은 페이지의 사용자 상호작용을 차단하지 않고 백그라운드에서 처리됩니다. 하나의 Transition에는 여러 Action이 포함될 수 있고, Transition이 진행되는 동안에도 UI는 반응성을 유지합니다. 예를 들어 사용자가 탭을 클릭한 뒤 마음이 바뀌어 다른 탭을 다시 클릭하더라도, 첫 번째 업데이트가 끝나기를 기다리지 않고 두 번째 클릭이 즉시 처리됩니다.
 
 진행 중인 Transition에 대해 사용자에게 피드백을 제공하기 위해 `isPending` 상태는 `startTransition`을 처음 호출할 때 `true`로 전환되며, 모든 Action이 완료되어 최종 상태가 사용자에게 표시될 때까지 `true` 상태를 유지합니다. Transition은 Action 내의 사이드 이펙트가 완료되도록 보장하여 [원치 않는 로딩 표시기가 표시되지 않도록 합니다.](#preventing-unwanted-loading-indicators) 또한, Transition이 진행 중일 때 `useOptimistic`을 사용하여 즉각적인 피드백을 제공할 수 있습니다.
 
@@ -1775,7 +1775,7 @@ function setState() {
 
 `startTransition` 내부에서 `await`를 사용하면 상태 업데이트가 순서대로 발생하지 않을 수 있습니다.
 
-In this example, the `updateQuantity` function simulates a request to the server to update the item's quantity in the cart. This function *artificially returns every other request after the previous* to simulate race conditions for network requests.
+이 예시에서 `updateQuantity` 함수는 카트에 있는 품목의 수량을 업데이트하기 위해 서버에 요청하는 시뮬레이션을 수행합니다. 또한 네트워크 요청에서 발생할 수 있는 경쟁 상태(race condition)를 재현하도록 *다른 요청들이 이전 요청보다 늦게 완료되도록 인위적으로 응답 순서를 조정합니다.*
 
 수량을 한 번 업데이트한 후, 빠르게 여러 번 업데이트를 시도해 보세요. 그러면 잘못된 총합이 표시될 수 있습니다
 
