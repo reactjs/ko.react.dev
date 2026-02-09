@@ -4,59 +4,59 @@ title: incompatible-library
 
 <Intro>
 
-Validates against usage of libraries which are incompatible with memoization (manual or automatic).
+메모이제이션(수동 또는 자동)과 호환되지 않는 라이브러리 사용에 대해 검증합니다.
 
 </Intro>
 
 <Note>
 
-These libraries were designed before React's memoization rules were fully documented. They made the correct choices at the time to optimize for ergonomic ways to keep components just the right amount of reactive as app state changes. While these legacy patterns worked, we have since discovered that it's incompatible with React's programming model. We will continue working with library authors to migrate these libraries to use patterns that follow the Rules of React.
+이러한 라이브러리는 React의 메모이제이션 규칙이 완전히 문서화되기 전에 설계되었습니다. 당시에는 앱 상태가 변경될 때 컴포넌트가 적절한 반응성을 유지하도록 인체공학적인 방법을 최적화하기 위해 올바른 선택을 했습니다. 이러한 레거시 패턴은 작동했지만, 이후 React의 프로그래밍 모델과 호환되지 않는다는 것을 발견했습니다. React 규칙을 따르는 패턴을 사용하도록 이러한 라이브러리를 마이그레이션하기 위해 라이브러리 작성자와 계속 협력하고 있습니다.
 
 </Note>
 
-## Rule Details {/*rule-details*/}
+## 규칙 세부 정보 {/*rule-details*/}
 
-Some libraries use patterns that aren't supported by React. When the linter detects usages of these APIs from a [known list](https://github.com/facebook/react/blob/main/compiler/packages/babel-plugin-react-compiler/src/HIR/DefaultModuleTypeProvider.ts), it flags them under this rule. This means that React Compiler can automatically skip over components that use these incompatible APIs, in order to avoid breaking your app.
+일부 라이브러리는 React에서 지원하지 않는 패턴을 사용합니다. 린터가 [알려진 목록](https://github.com/facebook/react/blob/main/compiler/packages/babel-plugin-react-compiler/src/HIR/DefaultModuleTypeProvider.ts)에서 이러한 API의 사용을 감지하면 이 규칙에 따라 플래그를 지정합니다. 이는 React 컴파일러가 앱을 손상시키지 않기 위해 이러한 호환되지 않는 API를 사용하는 컴포넌트를 자동으로 건너뛸 수 있음을 의미합니다.
 
 ```js
-// Example of how memoization breaks with these libraries
+// 이러한 라이브러리로 메모이제이션이 깨지는 예시
 function Form() {
   const { watch } = useForm();
 
-  // ❌ This value will never update, even when 'name' field changes
+  // ❌ 'name' 필드가 변경되어도 이 값은 절대 업데이트되지 않습니다
   const name = useMemo(() => watch('name'), [watch]);
 
-  return <div>Name: {name}</div>; // UI appears "frozen"
+  return <div>Name: {name}</div>; // UI가 "얼어붙은" 것처럼 보입니다
 }
 ```
 
-React Compiler automatically memoizes values following the Rules of React. If something breaks with manual `useMemo`, it will also break the compiler's automatic optimization. This rule helps identify these problematic patterns.
+React 컴파일러는 React 규칙을 따라 값을 자동으로 메모이제이션합니다. 수동 `useMemo`로 문제가 발생하면 컴파일러의 자동 최적화도 깨집니다. 이 규칙은 이러한 문제가 있는 패턴을 식별하는 데 도움이 됩니다.
 
 <DeepDive>
 
-#### Designing APIs that follow the Rules of React {/*designing-apis-that-follow-the-rules-of-react*/}
+#### React 규칙을 따르는 API 설계하기 {/*designing-apis-that-follow-the-rules-of-react*/}
 
-One question to think about when designing a library API or hook is whether calling the API can be safely memoized with `useMemo`. If it can't, then both manual and React Compiler memoizations will break your user's code.
+라이브러리 API나 Hook을 설계할 때 고려해야 할 질문 중 하나는 API 호출을 `useMemo`로 안전하게 메모이제이션할 수 있는지 여부입니다. 그렇지 않다면 수동 메모이제이션과 React 컴파일러 메모이제이션 모두 사용자의 코드를 손상시킬 것입니다.
 
-For example, one such incompatible pattern is "interior mutability". Interior mutability is when an object or function keeps its own hidden state that changes over time, even though the reference to it stays the same. Think of it like a box that looks the same on the outside but secretly rearranges its contents. React can't tell anything changed because it only checks if you gave it a different box, not what's inside. This breaks memoization, since React relies on the outer object (or function) changing if part of its value has changed.
+예를 들어, 이러한 호환되지 않는 패턴 중 하나는 "내부 가변성"입니다. 내부 가변성은 객체나 함수가 참조는 동일하게 유지되지만 시간이 지남에 따라 변경되는 자체 숨겨진 상태를 유지하는 것을 말합니다. 외부에서는 동일해 보이지만 내용물을 은밀하게 재배치하는 상자라고 생각하면 됩니다. React는 다른 상자를 받았는지만 확인하고 안에 무엇이 들어 있는지는 확인하지 않기 때문에 변경 사항을 알 수 없습니다. 이는 메모이제이션을 깨뜨리는데, React는 값의 일부가 변경된 경우 외부 객체(또는 함수)가 변경되는 것에 의존하기 때문입니다.
 
-As a rule of thumb, when designing React APIs, think about whether `useMemo` would break it:
+React API를 설계할 때 경험 법칙으로, `useMemo`가 이를 깨뜨릴지 생각해보세요.
 
 ```js
 function Component() {
   const { someFunction } = useLibrary();
-  // it should always be safe to memoize functions like this
+  // 이와 같은 함수를 메모이제이션하는 것은 항상 안전해야 합니다
   const result = useMemo(() => someFunction(), [someFunction]);
 }
 ```
 
-Instead, design APIs that return immutable state and use explicit update functions:
+대신, 불변 상태를 반환하고 명시적인 업데이트 함수를 사용하는 API를 설계하세요.
 
 ```js
-// ✅ Good: Return immutable state that changes reference when updated
+// ✅ 좋은 예시: 업데이트될 때 참조가 변경되는 불변 상태를 반환
 function Component() {
   const { field, updateField } = useLibrary();
-  // this is always safe to memo
+  // 이것은 항상 메모이제이션하기에 안전합니다
   const greeting = useMemo(() => `Hello, ${field.name}!`, [field.name]);
 
   return (
@@ -73,15 +73,15 @@ function Component() {
 
 </DeepDive>
 
-### Invalid {/*invalid*/}
+### 잘못된 예시 {/*invalid*/}
 
-Examples of incorrect code for this rule:
+이 규칙에 대한 잘못된 코드 예시입니다.
 
 ```js
 // ❌ react-hook-form `watch`
 function Component() {
   const {watch} = useForm();
-  const value = watch('field'); // Interior mutability
+  const value = watch('field'); // 내부 가변성
   return <div>{value}</div>;
 }
 
@@ -92,7 +92,7 @@ function Component({data}) {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
-  // table instance uses interior mutability
+  // table 인스턴스가 내부 가변성을 사용합니다
   return <Table table={table} />;
 }
 ```
@@ -101,24 +101,24 @@ function Component({data}) {
 
 #### MobX {/*mobx*/}
 
-MobX patterns like `observer` also break memoization assumptions, but the linter does not yet detect them. If you rely on MobX and find that your app doesn't work with React Compiler, you may need to use the `"use no memo" directive`.
+`observer`와 같은 MobX 패턴도 메모이제이션 가정을 깨뜨리지만, 린터는 아직 이를 감지하지 못합니다. MobX에 의존하고 있고 React 컴파일러에서 앱이 작동하지 않는다면 `"use no memo" 지시어`를 사용해야 할 수 있습니다.
 
 ```js
 // ❌ MobX `observer`
 const Component = observer(() => {
   const [timer] = useState(() => new Timer());
-  return <span>Seconds passed: {timer.secondsPassed}</span>;
+  return <span>경과된 시간: {timer.secondsPassed}</span>;
 });
 ```
 
 </Pitfall>
 
-### Valid {/*valid*/}
+### 올바른 예시 {/*valid*/}
 
-Examples of correct code for this rule:
+이 규칙에 대한 올바른 코드 예시입니다.
 
 ```js
-// ✅ For react-hook-form, use `useWatch`:
+// ✅ react-hook-form의 경우 `useWatch`를 사용하세요
 function Component() {
   const {register, control} = useForm();
   const watchedValue = useWatch({
@@ -129,10 +129,10 @@ function Component() {
   return (
     <>
       <input {...register('field')} />
-      <div>Current value: {watchedValue}</div>
+      <div>현재 값: {watchedValue}</div>
     </>
   );
 }
 ```
 
-Some other libraries do not yet have alternative APIs that are compatible with React's memoization model. If the linter doesn't automatically skip over your components or hooks that call these APIs, please [file an issue](https://github.com/facebook/react/issues) so we can add it to the linter.
+일부 다른 라이브러리는 아직 React의 메모이제이션 모델과 호환되는 대체 API가 없습니다. 린터가 이러한 API를 호출하는 컴포넌트나 Hook을 자동으로 건너뛰지 않는다면 [이슈를 제출](https://github.com/facebook/react/issues)하여 린터에 추가할 수 있도록 해주세요.

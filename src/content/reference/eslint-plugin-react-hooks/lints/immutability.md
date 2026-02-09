@@ -14,7 +14,7 @@ title: immutability
 
 ## 일반적인 위반 사례 {/*common-violations*/}
 
-### 잘못된 예 {/*invalid*/}
+### 잘못된 예시 {/*invalid*/}
 
 ```js
 // ❌ 배열 push 변이
@@ -47,7 +47,7 @@ function Component() {
 }
 ```
 
-### 올바른 예 {/*valid*/}
+### 올바른 예시 {/*valid*/}
 
 ```js
 // ✅ 새 배열 생성

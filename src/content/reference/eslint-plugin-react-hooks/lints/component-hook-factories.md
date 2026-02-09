@@ -12,7 +12,7 @@ title: component-hook-factories
 
 다른 함수 내부에서 컴포넌트나 Hook을 정의하면 호출할 때마다 새로운 인스턴스가 생성됩니다. React는 각각을 완전히 다른 컴포넌트로 취급하여 전체 컴포넌트 트리를 파괴하고 다시 생성하며, 모든 state를 잃고 성능 문제를 일으킵니다.
 
-### 잘못된 예 {/*invalid*/}
+### 잘못된 예시 {/*invalid*/}
 
 이 규칙에 대한 잘못된 코드 예시입니다.
 
@@ -41,7 +41,7 @@ function createCustomHook(endpoint) {
 }
 ```
 
-### 올바른 예 {/*valid*/}
+### 올바른 예시 {/*valid*/}
 
 이 규칙에 대한 올바른 코드 예시입니다.
 

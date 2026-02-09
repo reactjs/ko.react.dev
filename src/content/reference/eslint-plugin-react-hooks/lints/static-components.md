@@ -4,30 +4,30 @@ title: static-components
 
 <Intro>
 
-Validates that components are static, not recreated every render. Components that are recreated dynamically can reset state and trigger excessive re-rendering.
+컴포넌트가 정적이며 렌더링할 때마다 재생성되지 않는지 검증합니다. 동적으로 재생성되는 컴포넌트는 state를 재설정하고 과도한 재렌더링을 트리거할 수 있습니다.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## 규칙 세부 정보 {/*rule-details*/}
 
-Components defined inside other components are recreated on every render. React sees each as a brand new component type, unmounting the old one and mounting the new one, destroying all state and DOM nodes in the process.
+다른 컴포넌트 내부에 정의된 컴포넌트는 렌더링할 때마다 재생성됩니다. React는 각각을 완전히 새로운 컴포넌트 타입으로 간주하여 이전 컴포넌트를 마운트 해제하고 새 컴포넌트를 마운트하며, 그 과정에서 모든 state와 DOM 노드를 파괴합니다.
 
-### Invalid {/*invalid*/}
+### 잘못된 예시 {/*invalid*/}
 
-Examples of incorrect code for this rule:
+이 규칙에 대한 잘못된 코드 예시입니다.
 
 ```js
-// ❌ Component defined inside component
+// ❌ 컴포넌트 내부에 컴포넌트 정의
 function Parent() {
-  const ChildComponent = () => { // New component every render!
+  const ChildComponent = () => { // 렌더링할 때마다 새 컴포넌트!
     const [count, setCount] = useState(0);
     return <button onClick={() => setCount(count + 1)}>{count}</button>;
   };
 
-  return <ChildComponent />; // State resets every render
+  return <ChildComponent />; // 렌더링할 때마다 state 재설정
 }
 
-// ❌ Dynamic component creation
+// ❌ 동적 컴포넌트 생성
 function Parent({type}) {
   const Component = type === 'button'
     ? () => <button>Click</button>
@@ -37,36 +37,36 @@ function Parent({type}) {
 }
 ```
 
-### Valid {/*valid*/}
+### 올바른 예시 {/*valid*/}
 
-Examples of correct code for this rule:
+이 규칙에 대한 올바른 코드 예시입니다.
 
 ```js
-// ✅ Components at module level
+// ✅ 모듈 레벨의 컴포넌트
 const ButtonComponent = () => <button>Click</button>;
 const TextComponent = () => <div>Text</div>;
 
 function Parent({type}) {
   const Component = type === 'button'
-    ? ButtonComponent  // Reference existing component
+    ? ButtonComponent  // 기존 컴포넌트 참조
     : TextComponent;
 
   return <Component />;
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
-### I need to render different components conditionally {/*conditional-components*/}
+### 조건부로 다른 컴포넌트를 렌더링해야 합니다 {/*conditional-components*/}
 
-You might define components inside to access local state:
+로컬 state에 액세스하기 위해 내부에 컴포넌트를 정의할 수 있습니다.
 
 ```js
-// ❌ Wrong: Inner component to access parent state
+// ❌ 잘못된 예시: 부모 state에 액세스하기 위한 내부 컴포넌트
 function Parent() {
   const [theme, setTheme] = useState('light');
 
-  function ThemedButton() { // Recreated every render!
+  function ThemedButton() { // 렌더링할 때마다 재생성!
     return (
       <button className={theme}>
         Click me
@@ -78,10 +78,10 @@ function Parent() {
 }
 ```
 
-Pass data as props instead:
+대신 데이터를 props로 전달하세요.
 
 ```js
-// ✅ Better: Pass props to static component
+// ✅ 더 나은 방법: 정적 컴포넌트에 props 전달
 function ThemedButton({theme}) {
   return (
     <button className={theme}>
@@ -98,6 +98,6 @@ function Parent() {
 
 <Note>
 
-If you find yourself wanting to define components inside other components to access local variables, that's a sign you should be passing props instead. This makes components more reusable and testable.
+로컬 변수에 액세스하기 위해 다른 컴포넌트 내부에 컴포넌트를 정의하고 싶다면, 대신 props를 전달해야 한다는 신호입니다. 이렇게 하면 컴포넌트를 더 재사용 가능하고 테스트하기 쉽게 만들 수 있습니다.
 
 </Note>

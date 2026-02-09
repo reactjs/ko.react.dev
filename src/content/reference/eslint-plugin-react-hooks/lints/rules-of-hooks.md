@@ -50,7 +50,7 @@ for (const promise of promises) {
 
 </Note>
 
-### 잘못된 예 {/*invalid*/}
+### 잘못된 예시 {/*invalid*/}
 
 이 규칙에 대한 잘못된 코드 예시입니다.
 
@@ -80,7 +80,7 @@ try {
 const globalState = useState(0); // 컴포넌트 외부
 ```
 
-### 올바른 예 {/*valid*/}
+### 올바른 예시 {/*valid*/}
 
 이 규칙에 대한 올바른 코드 예시입니다.
 

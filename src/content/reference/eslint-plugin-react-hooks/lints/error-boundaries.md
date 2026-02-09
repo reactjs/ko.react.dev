@@ -12,7 +12,7 @@ title: error-boundaries
 
 try/catch 블록은 React의 렌더링 과정에서 발생하는 오류를 잡을 수 없습니다. 렌더링 메서드나 Hook에서 발생한 오류는 컴포넌트 트리를 타고 위로 전파됩니다. 오직 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)만이 이러한 오류를 잡을 수 있습니다.
 
-### 잘못된 예 {/*invalid*/}
+### 잘못된 예시 {/*invalid*/}
 
 이 규칙에 대한 잘못된 코드 예시입니다.
 
@@ -27,7 +27,7 @@ function Parent() {
 }
 ```
 
-### 올바른 예 {/*valid*/}
+### 올바른 예시 {/*valid*/}
 
 이 규칙에 대한 올바른 코드 예시입니다.
 
