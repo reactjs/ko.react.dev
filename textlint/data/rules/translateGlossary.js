@@ -603,6 +603,24 @@ module.exports = {
           note: '',
         },
       },
+      {
+        sources: [/\bUsage\b/],
+        target: '사용법',
+        meta: {
+          term: 'Usage',
+          discussions: [1425],
+          note: '',
+        },
+      },
+      {
+        sources: [/\bImperative\b/],
+        target: '명령형',
+        meta: {
+          term: 'Imperative',
+          discussions: [1425],
+          note: '',
+        },
+      },
     ],
   },
   // untranslated: {

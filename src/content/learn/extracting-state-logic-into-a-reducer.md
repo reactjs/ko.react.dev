@@ -1776,7 +1776,7 @@ textarea {
 
 잘 동작하기 때문에 "Send" 버튼을 누르면 input의 입력값이 잘 지워질 것입니다.
 
-하지만 *사용자의 관점에서 봤을 때*, message를 전송하는 것과 input 필드에 텍스트를 입력하는 것은 다른 행위입니다. 이를 반영하기 위해 `send_message`라는 *새로운* action을 만들어서 reducer에서 별도로 분리하여 작성해보겠습니다.
+하지만 *사용자의 관점에서 봤을 때*, message를 전송하는 것과 input 필드에 텍스트를 입력하는 것은 다른 행위입니다. 이를 반영하기 위해 `sent_message`라는 *새로운* action을 만들어서 reducer에서 별도로 분리하여 작성해보겠습니다.
 
 <Sandpack>
 
