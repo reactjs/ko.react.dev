@@ -4,70 +4,70 @@ title: preserve-manual-memoization
 
 <Intro>
 
-Validates that existing manual memoization is preserved by the compiler. React Compiler will only compile components and hooks if its inference [matches or exceeds the existing manual memoization](/learn/react-compiler/introduction#what-should-i-do-about-usememo-usecallback-and-reactmemo).
+컴파일러가 기존 수동 메모이제이션을 보존하는지 검증합니다. React 컴파일러는 추론이 [기존 수동 메모이제이션과 일치하거나 이를 초과하는 경우](/learn/react-compiler/introduction#what-should-i-do-about-usememo-usecallback-and-reactmemo)에만 컴포넌트와 Hook을 컴파일합니다.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## 규칙 세부 정보 {/*rule-details*/}
 
-React Compiler preserves your existing `useMemo`, `useCallback`, and `React.memo` calls. If you've manually memoized something, the compiler assumes you had a good reason and won't remove it. However, incomplete dependencies prevent the compiler from understanding your code's data flow and applying further optimizations.
+React 컴파일러는 기존의 `useMemo`, `useCallback` 및 `React.memo` 호출을 보존합니다. 수동으로 메모이제이션한 경우 컴파일러는 타당한 이유가 있다고 가정하고 제거하지 않습니다. 그러나 불완전한 의존성은 컴파일러가 코드의 데이터 흐름을 이해하고 추가 최적화를 적용하는 것을 방해합니다.
 
-### Invalid {/*invalid*/}
+### 잘못된 예시 {/*invalid*/}
 
-Examples of incorrect code for this rule:
+이 규칙에 대한 잘못된 코드 예시입니다.
 
 ```js
-// ❌ Missing dependencies in useMemo
+// ❌ useMemo에 의존성 누락
 function Component({ data, filter }) {
   const filtered = useMemo(
     () => data.filter(filter),
-    [data] // Missing 'filter' dependency
+    [data] // 'filter' 의존성 누락
   );
 
   return <List items={filtered} />;
 }
 
-// ❌ Missing dependencies in useCallback
+// ❌ useCallback에 의존성 누락
 function Component({ onUpdate, value }) {
   const handleClick = useCallback(() => {
     onUpdate(value);
-  }, [onUpdate]); // Missing 'value'
+  }, [onUpdate]); // 'value' 누락
 
   return <button onClick={handleClick}>Update</button>;
 }
 ```
 
-### Valid {/*valid*/}
+### 올바른 예시 {/*valid*/}
 
-Examples of correct code for this rule:
+이 규칙에 대한 올바른 코드 예시입니다.
 
 ```js
-// ✅ Complete dependencies
+// ✅ 완전한 의존성
 function Component({ data, filter }) {
   const filtered = useMemo(
     () => data.filter(filter),
-    [data, filter] // All dependencies included
+    [data, filter] // 모든 의존성 포함
   );
 
   return <List items={filtered} />;
 }
 
-// ✅ Or let the compiler handle it
+// ✅ 또는 컴파일러가 처리하도록 함
 function Component({ data, filter }) {
-  // No manual memoization needed
+  // 수동 메모이제이션 불필요
   const filtered = data.filter(filter);
   return <List items={filtered} />;
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
-### Should I remove my manual memoization? {/*remove-manual-memoization*/}
+### 수동 메모이제이션을 제거해야 하나요? {/*remove-manual-memoization*/}
 
-You might wonder if React Compiler makes manual memoization unnecessary:
+React 컴파일러가 수동 메모이제이션을 불필요하게 만드는지 궁금할 수 있습니다.
 
 ```js
-// Do I still need this?
+// 이게 여전히 필요한가요?
 function Component({items, sortBy}) {
   const sorted = useMemo(() => {
     return [...items].sort((a, b) => {
@@ -79,10 +79,10 @@ function Component({items, sortBy}) {
 }
 ```
 
-You can safely remove it if using React Compiler:
+React 컴파일러를 사용하는 경우 안전하게 제거할 수 있습니다.
 
 ```js
-// ✅ Better: Let the compiler optimize
+// ✅ 더 나은 방법: 컴파일러가 최적화하도록 함
 function Component({items, sortBy}) {
   const sorted = [...items].sort((a, b) => {
     return a[sortBy] - b[sortBy];

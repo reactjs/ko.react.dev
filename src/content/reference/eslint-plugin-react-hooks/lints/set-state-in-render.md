@@ -4,37 +4,37 @@ title: set-state-in-render
 
 <Intro>
 
-Validates against unconditionally setting state during render, which can trigger additional renders and potential infinite render loops.
+렌더링 중에 무조건 state를 설정하는 것에 대해 검증합니다. 이는 추가 렌더링과 잠재적인 무한 렌더링 루프를 트리거할 수 있습니다.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## 규칙 세부 정보 {/*rule-details*/}
 
-Calling `setState` during render unconditionally triggers another render before the current one finishes. This creates an infinite loop that crashes your app.
+렌더링 중에 무조건 `setState`를 호출하면 현재 렌더링이 완료되기 전에 다른 렌더링이 트리거됩니다. 이는 앱을 충돌시키는 무한 루프를 생성합니다.
 
-## Common Violations {/*common-violations*/}
+## 일반적인 위반 사례 {/*common-violations*/}
 
-### Invalid {/*invalid*/}
+### 잘못된 예시 {/*invalid*/}
 
 ```js
-// ❌ Unconditional setState directly in render
+// ❌ 렌더링 중에 직접 무조건 setState
 function Component({value}) {
   const [count, setCount] = useState(0);
-  setCount(value); // Infinite loop!
+  setCount(value); // 무한 루프!
   return <div>{count}</div>;
 }
 ```
 
-### Valid {/*valid*/}
+### 올바른 예시 {/*valid*/}
 
 ```js
-// ✅ Derive during render
+// ✅ 렌더링 중에 파생
 function Component({items}) {
-  const sorted = [...items].sort(); // Just calculate it in render
+  const sorted = [...items].sort(); // 렌더링 중에 계산
   return <ul>{sorted.map(/*...*/)}</ul>;
 }
 
-// ✅ Set state in event handler
+// ✅ 이벤트 핸들러에서 state 설정
 function Component() {
   const [count, setCount] = useState(0);
   return (
@@ -44,20 +44,20 @@ function Component() {
   );
 }
 
-// ✅ Derive from props instead of setting state
+// ✅ state를 설정하는 대신 props에서 파생
 function Component({user}) {
   const name = user?.name || '';
   const email = user?.email || '';
   return <div>{name}</div>;
 }
 
-// ✅ Conditionally derive state from props and state from previous renders
+// ✅ 이전 렌더링의 props와 state로부터 조건부로 state 파생
 function Component({ items }) {
   const [isReverse, setIsReverse] = useState(false);
   const [selection, setSelection] = useState(null);
 
   const [prevItems, setPrevItems] = useState(items);
-  if (items !== prevItems) { // This condition makes it valid
+  if (items !== prevItems) { // 이 조건이 유효하게 만듭니다
     setPrevItems(items);
     setSelection(null);
   }
@@ -65,14 +65,14 @@ function Component({ items }) {
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
-### I want to sync state to a prop {/*clamp-state-to-prop*/}
+### state를 prop과 동기화하고 싶습니다 {/*clamp-state-to-prop*/}
 
-A common problem is trying to "fix" state after it renders. Suppose you want to keep a counter from exceeding a `max` prop:
+일반적인 문제는 렌더링 후 state를 "수정"하려고 시도하는 것입니다. 카운터가 `max` prop을 초과하지 않도록 유지하고 싶다고 가정해봅시다.
 
 ```js
-// ❌ Wrong: clamps during render
+// ❌ 잘못된 예시: 렌더링 중에 제한
 function Counter({max}) {
   const [count, setCount] = useState(0);
 
@@ -88,12 +88,12 @@ function Counter({max}) {
 }
 ```
 
-As soon as `count` exceeds `max`, an infinite loop is triggered.
+`count`가 `max`를 초과하자마자 무한 루프가 트리거됩니다.
 
-Instead, it's often better to move this logic to the event (the place where the state is first set). For example, you can enforce the maximum at the moment you update state:
+대신 이 로직을 이벤트(state가 처음 설정되는 곳)로 이동하는 것이 더 좋습니다. 예를 들어 state를 업데이트하는 순간에 최댓값을 적용할 수 있습니다.
 
 ```js
-// ✅ Clamp when updating
+// ✅ 업데이트할 때 제한
 function Counter({max}) {
   const [count, setCount] = useState(0);
 
@@ -105,6 +105,6 @@ function Counter({max}) {
 }
 ```
 
-Now the setter only runs in response to the click, React finishes the render normally, and `count` never crosses `max`.
+이제 setter는 클릭에 대한 응답으로만 실행되고, React는 정상적으로 렌더링을 완료하며, `count`는 절대 `max`를 넘지 않습니다.
 
-In rare cases, you may need to adjust state based on information from previous renders. For those, follow [this pattern](https://react.dev/reference/react/useState#storing-information-from-previous-renders) of setting state conditionally.
+드문 경우지만 이전 렌더링의 정보를 기반으로 state를 조정해야 할 수 있습니다. 그런 경우 조건부로 state를 설정하는 [이 패턴](/reference/react/useState#storing-information-from-previous-renders)을 따르세요.
