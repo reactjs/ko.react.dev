@@ -14,7 +14,7 @@ title: incompatible-library
 
 </Note>
 
-## 규칙 세부 정보 {/*rule-details*/}
+## 규칙 세부 사항 {/*rule-details*/}
 
 일부 라이브러리는 React에서 지원하지 않는 패턴을 사용합니다. 린터가 [알려진 목록](https://github.com/facebook/react/blob/main/compiler/packages/babel-plugin-react-compiler/src/HIR/DefaultModuleTypeProvider.ts)에서 이러한 API의 사용을 감지하면 이 규칙에 따라 플래그를 지정합니다. 이는 React 컴파일러가 앱을 손상시키지 않기 위해 이러한 호환되지 않는 API를 사용하는 컴포넌트를 자동으로 건너뛸 수 있음을 의미합니다.
 

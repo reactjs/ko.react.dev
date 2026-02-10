@@ -8,7 +8,7 @@ title: set-state-in-render
 
 </Intro>
 
-## 규칙 세부 정보 {/*rule-details*/}
+## 규칙 세부 사항 {/*rule-details*/}
 
 렌더링 중에 무조건 `setState`를 호출하면 현재 렌더링이 완료되기 전에 다른 렌더링이 트리거됩니다. 이는 앱을 충돌시키는 무한 루프를 생성합니다.
 

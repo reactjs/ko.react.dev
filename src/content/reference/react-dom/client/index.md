@@ -1,16 +1,16 @@
 ---
-title: Client React DOM APIs
+title: Client React DOM API
 ---
 
 <Intro>
 
-The `react-dom/client` APIs let you render React components on the client (in the browser). These APIs are typically used at the top level of your app to initialize your React tree. A [framework](/learn/start-a-new-react-project#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
+`react-dom/client` API를 사용하면 클라이언트(브라우저)에서 React 컴포넌트를 렌더링할 수 있습니다. 이 API는 일반적으로 앱의 최상위 레벨에서 React 트리를 초기화하는 데 사용됩니다. [프레임워크](/learn/start-a-new-react-project#full-stack-frameworks)가 대신 호출할 수도 있습니다. 대부분의 컴포넌트는 이를 import하거나 사용할 필요가 없습니다.
 
 </Intro>
 
 ---
 
-## Client APIs {/*client-apis*/}
+## 클라이언트 API {/*client-apis*/}
 
 * [`createRoot`](/reference/react-dom/client/createRoot)를 사용하면 브라우저 DOM 노드 안에 React 컴포넌트를 표시하는 루트를 생성할 수 있습니다.
 * [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 사용하면 이전에 [`react-dom/server`](/reference/react-dom/server)에 의해 생성된 HTML 콘텐츠가 있는 브라우저 DOM 노드 안에 React 컴포넌트를 표시할 수 있습니다.

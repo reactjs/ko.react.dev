@@ -8,7 +8,7 @@ title: preserve-manual-memoization
 
 </Intro>
 
-## 규칙 세부 정보 {/*rule-details*/}
+## 규칙 세부 사항 {/*rule-details*/}
 
 React 컴파일러는 기존의 `useMemo`, `useCallback` 및 `React.memo` 호출을 보존합니다. 수동으로 메모이제이션한 경우 컴파일러는 타당한 이유가 있다고 가정하고 제거하지 않습니다. 그러나 불완전한 의존성은 컴파일러가 코드의 데이터 흐름을 이해하고 추가 최적화를 적용하는 것을 방해합니다.
 
