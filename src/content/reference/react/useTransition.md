@@ -41,8 +41,8 @@ function TabContainer() {
 
 `useTransition`은 정확히 두 개의 항목이 있는 배열을 반환합니다.
 
-1. `isPending` 플래그는 대기 중인 Transition 이 있는지 알려줍니다.
-2. [`startTransition` 함수](#starttransition)는 상태 업데이트를 Transition 으로 표시할 수 있게 해주는 함수입니다.
+1. `isPending` 플래그는 대기 중인 Transition이 있는지 알려줍니다.
+2. [`startTransition` 함수](#starttransition)는 업데이트를 Transition으로 표시할 수 있게 해주는 함수입니다.
 
 ---
 
@@ -65,9 +65,9 @@ function TabContainer() {
 ```
 
 <Note>
-#### startTransition 내에서 호출되는 함수를 "Actions"이라고 합니다. {/*functions-called-in-starttransition-are-called-actions*/}
+#### `startTransition` 내에서 호출되는 함수를 "Action"이라고 합니다. {/*functions-called-in-starttransition-are-called-actions*/}
 
-`startTransition`에 전달된 함수를 "Action"이라고 합니다. 따라서 시작 트랜지션 내에서 호출되는 모든 콜백(예: 콜백 프로퍼티)의 이름은 `action`이거나 "Action" 접미사를 포함해야 합니다.
+`startTransition`에 전달된 함수를 "Action"이라고 합니다. 관례적으로, `startTransition` 내부에서 호출되는 모든 콜백(예: 콜백 프로퍼티)의 이름은 `action`이거나 "Action" 접미사를 포함해야 합니다.
 
 ```js {1,9}
 function SubmitButton({ submitAction }) {
@@ -95,8 +95,8 @@ function SubmitButton({ submitAction }) {
 
 #### 매개변수 {/*starttransition-parameters*/}
 
-* `action`: 하나 이상의 [`set` 함수](/reference/react/useState#setstate)를 호출하여 일부 상태를 업데이트하는 함수입니다. React는 매개변수 없이 즉시 `action`을 호출하고 `action` 함수 호출 중에 동기적으로 예약된 모든 상태 업데이트를 Transitions으로 표시합니다. `action`에서 await된 비동기 호출은 Transition에 포함되지만, 현재로서는 `await` 이후의 `set` 함수 호출을 추가적인 `startTransition`으로 감싸야 합니다([문제 해결 참조](#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
-Transitions으로 표시된 상태 업데이트는 [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) 방식으로 처리되며, [불필요한 로딩 표시가 나타나지 않습니다](#preventing-unwanted-loading-indicators).
+* `action`: 하나 이상의 [`set` 함수](/reference/react/useState#setstate)를 호출하여 일부 상태를 업데이트하는 함수입니다. React는 매개변수 없이 즉시 `action`을 호출하고 `action` 함수 호출 중에 동기적으로 예약된 모든 상태 업데이트를 Transition으로 표시합니다. `action`에서 `await`된 비동기 호출은 Transition에 포함되지만, 현재로서는 `await` 이후의 `set` 함수 호출을 추가적인 `startTransition`으로 감싸야 합니다([문제 해결 참조](#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
+Transition으로 표시된 상태 업데이트는 [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) 방식으로 처리되며, [불필요한 로딩 표시가 나타나지 않습니다](#preventing-unwanted-loading-indicators).
 
 #### 반환값 {/*starttransition-returns*/}
 
@@ -104,11 +104,11 @@ Transitions으로 표시된 상태 업데이트는 [non-blocking](#marking-a-sta
 
 #### 주의 사항 {/*starttransition-caveats*/}
 
-* `useTransition`은 Hook이므로 컴포넌트나 커스텀 Hook 내부에서만 호출할 수 있습니다. 다른 곳(예시: 데이터 라이브러리)에서 Transition 을 시작해야 하는 경우, 독립형 [`startTransition`](/reference/react/startTransition)을 호출하세요.
+* `useTransition`은 Hook이므로 컴포넌트나 커스텀 Hook 내부에서만 호출할 수 있습니다. 다른 곳(예시: 데이터 라이브러리)에서 Transition을 시작해야 하는 경우, 독립형 [`startTransition`](/reference/react/startTransition)을 호출하세요.
 
-* 해당 state의 `set` 함수에 액세스할 수 있는 경우에만 업데이트를 Transition 으로 래핑할 수 있습니다. 일부 prop이나 커스텀 Hook 값에 대한 응답으로 Transition 을 시작하려면 [`useDeferredValue`](/reference/react/useDeferredValue)를 사용해 보세요.
+* 해당 state의 `set` 함수에 액세스할 수 있는 경우에만 업데이트를 Transition 으로 래핑할 수 있습니다. 일부 prop이나 커스텀 Hook 값에 대한 응답으로 Transition을 시작하려면 [`useDeferredValue`](/reference/react/useDeferredValue)를 사용해 보세요.
 
-* `startTransition`에 전달하는 함수는 동기식이어야 합니다. React는 이 함수를 즉시 실행하여 실행하는 동안 발생하는 모든 state 업데이트를 Transition 으로 표시합니다. 나중에 더 많은 state 업데이트를 수행하려고 하면(예시: timeout), Transition 으로 표시되지 않습니다.
+* `startTransition`에 전달하는 함수는 동기식이어야 합니다. React는 이 함수를 즉시 실행하여 실행하는 동안 발생하는 모든 state 업데이트를 Transition으로 표시합니다. 나중에 더 많은 state 업데이트를 수행하려고 하면(예시: timeout), Transition 으로 표시되지 않습니다.
 
 * `startTransition`에 전달하는 함수는 즉시 호출되며, 실행 중 발생하는 모든 상태 업데이트를 Transition으로 표시합니다. 예를 들어 `setTimeout` 내에서 상태를 업데이트하려고 하면, 해당 업데이트는 Transition으로 표시되지 않습니다.
 
@@ -163,7 +163,7 @@ function CheckoutForm() {
 }
 ```
 
-`startTransition`에 전달된 함수를 "Action"이라고 합니다. Action 안에서는 state를 업데이트할 수 있으며, 필요하다면 부수 효과도 수행할 수 있습니다. 이 작업은 페이지의 사용자 상호작용을 차단하지 않고 백그라운드에서 처리됩니다. 하나의 Transition에는 여러 Action이 포함될 수 있고, Transition이 진행되는 동안에도 UI는 반응성을 유지합니다. 예를 들어 사용자가 탭을 클릭한 뒤 마음이 바뀌어 다른 탭을 다시 클릭하더라도, 첫 번째 업데이트가 끝나기를 기다리지 않고 두 번째 클릭이 즉시 처리됩니다.
+`startTransition`에 전달한 함수를 "Action"이라고 합니다. Action 안에서는 state를 업데이트할 수 있으며, 필요하다면 부수 효과도 수행할 수 있습니다. 이 작업은 페이지의 사용자 상호작용을 차단하지 않고 백그라운드에서 처리됩니다. 하나의 Transition에는 여러 Action이 포함될 수 있고, Transition이 진행되는 동안에도 UI는 반응성을 유지합니다. 예를 들어 사용자가 탭을 클릭한 뒤 마음이 바뀌어 다른 탭을 다시 클릭하더라도, 첫 번째 업데이트가 끝나기를 기다리지 않고 두 번째 클릭이 즉시 처리됩니다.
 
 진행 중인 Transition에 대해 사용자에게 피드백을 제공하기 위해 `isPending` 상태는 `startTransition`을 처음 호출할 때 `true`로 전환되며, 모든 Action이 완료되어 최종 상태가 사용자에게 표시될 때까지 `true` 상태를 유지합니다. Transition은 Action 내의 사이드 이펙트가 완료되도록 보장하여 [원치 않는 로딩 표시기가 표시되지 않도록 합니다.](#preventing-unwanted-loading-indicators) 또한, Transition이 진행 중일 때 `useOptimistic`을 사용하여 즉각적인 피드백을 제공할 수 있습니다.
 
@@ -1561,7 +1561,7 @@ main {
 
 ### Error boundary로 사용자에게 오류 표시하기 {/*displaying-an-error-to-users-with-error-boundary*/}
 
-startTransition에 전달된 함수에서 오류가 발생하면 [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용하여 사용자에게 오류를 표시할 수 있습니다. error boundary를 사용하려면 useTransition을 호출하는 컴포넌트를 error boundary로 감싸면 됩니다. startTransition에 전달된 함수에서 오류가 발생하면 error boundary의 Fallback이 표시됩니다.
+`startTransition`에 전달된 함수에서 오류가 발생하면 [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용하여 사용자에게 오류를 표시할 수 있습니다. error boundary를 사용하려면 `useTransition`을 호출하는 컴포넌트를 error boundary로 감싸면 됩니다. `startTransition`에 전달된 함수에서 오류가 발생하면 error boundary의 Fallback이 표시됩니다.
 
 <Sandpack>
 
