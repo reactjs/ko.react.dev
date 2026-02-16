@@ -44,7 +44,13 @@ function ChatRoom({ roomId }) {
 
 #### 매개변수 {/*parameters*/}
 
+<<<<<<< HEAD
 + `setup(설정)`: Effect의 로직이 포함된 함수입니다. 설정 함수는 선택적으로 *clean up(정리)* 함수를 반환할 수 있습니다. React는 컴포넌트가 DOM에 추가된 이후에 설정 함수를 실행합니다. 의존성의 변화에 따라 컴포넌트가 리렌더링이 되었을 경우, (설정 함수에 정리 함수를 추가했었다면) React는 이전 렌더링에 사용된 값으로 정리 함수를 실행한 후 새로운 값으로 설정 함수를 실행합니다. 컴포넌트가 DOM에서 제거된 경우에도 정리 함수를 실행합니다.
+=======
+* `setup`: The function with your Effect's logic. Your setup function may also optionally return a *cleanup* function. When your [component commits](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom), React will run your setup function. After every commit with changed dependencies, React will first run the cleanup function (if you provided it) with the old values, and then run your setup function with the new values. After your component is removed from the DOM, React will run your cleanup function.
+ 
+* **optional** `dependencies`: The list of all reactive values referenced inside of the `setup` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. If you omit this argument, your Effect will re-run after every commit of the component. [See the difference between passing an array of dependencies, an empty array, and no dependencies at all.](#examples-dependencies)
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 
 + `dependencies` **선택사항** : `설정` 함수의 코드 내부에서 참조되는 모든 반응형 값들이 포함된 배열로 구성됩니다. 반응형 값에는 props와 state, 모든 변수 및 컴포넌트 body에 직접적으로 선언된 함수들이 포함됩니다. 린터가 [React 환경에 맞게 설정되어 있을 경우](/learn/editor-setup#linting), 린터는 모든 반응형 값들이 의존성에 제대로 명시되어 있는지 검증할 것입니다. 의존성 배열은 항상 일정한 수의 항목을 가지고 있어야 하며 `[dep1, dep2, dep3]`과 같이 작성되어야 합니다. React는 각각의 의존성들을 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교법을 통해 이전 값과 비교합니다. 의존성을 생략할 경우, Effect는 컴포넌트가 리렌더링될 때마다 실행됩니다. [인수에 의존성 배열을 추가했을 때, 빈 배열을 추가했을 때, 의존성을 추가하지 않았을 때의 차이를 확인해 보세요.](#examples-dependencies)
 
@@ -106,15 +112,27 @@ function ChatRoom({ roomId }) {
 
 **React는 설정 함수와 정리 함수가 필요할 때마다 호출할 수 있으며, 이는 여러 번 호출될 수 있습니다.**
 
+<<<<<<< HEAD
 1. 컴포넌트가 화면에 추가되었을 때 <CodeStep step={1}>설정 코드</CodeStep>가 동작합니다 *(마운트 시)*.
 2. <CodeStep step={3}>의존성</CodeStep>이 변경된 컴포넌트가 리렌더링 될 때마다 아래 동작을 수행합니다.
    - 먼저 <CodeStep step={2}>정리 코드</CodeStep>가 오래된 props와 state와 함께 실행됩니다.
    - 이후, <CodeStep step={1}>설정 코드</CodeStep>가 새로운 props와 state와 함께 실행됩니다.
 3. 컴포넌트가 화면에서 제거된 이후에 <CodeStep step={2}>정리 코드</CodeStep>가 마지막으로 실행됩니다 *(마운트 해제 시)*.
+=======
+1. Your <CodeStep step={1}>setup code</CodeStep> runs when your component is added to the page *(mounts)*.
+2. After every commit of your component where the <CodeStep step={3}>dependencies</CodeStep> have changed:
+   - First, your <CodeStep step={2}>cleanup code</CodeStep> runs with the old props and state.
+   - Then, your <CodeStep step={1}>setup code</CodeStep> runs with the new props and state.
+3. Your <CodeStep step={2}>cleanup code</CodeStep> runs one final time after your component is removed from the page *(unmounts).*
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 
 **위의 예시를 통해 순서를 설명해 보겠습니다.**
 
+<<<<<<< HEAD
 위의 `ChatRoom` 컴포넌트가 화면에 추가되면 초기 `serverUrl`과 `roomId`를 이용해 채팅방과 연결될 것입니다. 리렌더링에 의해 `serverUrl` 또는 `roomId`가 변경된다면 (예를 들어 사용자가 드롭다운 메뉴를 이용해 다른 채팅방을 선택할 경우) *Effect는 이전 채팅방과의 연결을 해제하고 다음 채팅방과 연결합니다.* `ChatRoom` 컴포넌트가 화면에서 제거된다면 Effect는 마지막 채팅방과 이뤄진 연결을 해제할 것입니다.
+=======
+When the `ChatRoom` component above gets added to the page, it will connect to the chat room with the initial `serverUrl` and `roomId`. If either `serverUrl` or `roomId` change as a result of a commit (say, if the user picks a different chat room in a dropdown), your Effect will *disconnect from the previous room, and connect to the next one.* When the `ChatRoom` component is removed from the page, your Effect will disconnect one last time.
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 
 React는 **[버그를 발견하기 위해](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) 개발모드에서 <CodeStep step={1}>설정</CodeStep>이 실행되기 전에 <CodeStep step={1}>설정</CodeStep>과 <CodeStep step={2}>정리</CodeStep>를 한 번 더 실행시킵니다.** 이는 스트레스 테스트의 하나로써 Effect의 로직이 정확하게 수행되고 있는지를 검증합니다. 만약 가시적인 이슈가 보인다면 정리 함수의 로직에 놓친 부분이 있는 것입니다. 정리 함수는 설정 함수의 어떠한 동작이라도 중지하거나 실행 취소를 할 수 있어야 하며, 사용자는 *설정* 함수가 한 번 호출될 때와 *설정* → *정리* → *설정* 순서로 호출될 때의 차이를 느낄 수 없어야 합니다.
 
@@ -897,7 +915,7 @@ button { margin: 5px; }
 
 ### Effect를 이용한 데이터 페칭 {/*fetching-data-with-effects*/}
 
-You can use an Effect to fetch data for your component. Note that [if you use a framework,](/learn/start-a-new-react-project#full-stack-frameworks) using your framework's data fetching mechanism will be a lot more efficient than writing Effects manually.
+You can use an Effect to fetch data for your component. Note that [if you use a framework,](/learn/creating-a-react-app#full-stack-frameworks) using your framework's data fetching mechanism will be a lot more efficient than writing Effects manually.
 
 만약 직접 Effect를 작성하여 데이터를 페칭하고 싶다면, 코드는 다음과 같을 수 있습니다.
 
@@ -1050,8 +1068,8 @@ Effect 내부에서 `fetch` 호출을 작성하는 것은 클라이언트 사이
 
 이러한 단점은 React만 해당되는 것이 아닙니다. 다른 라이브러리를 사용하여 데이터를 페칭할 때도 해당됩니다. 라우팅과 마찬가지로 데이터 페칭은 세부적인 사항이 많으므로 다음과 같은 접근 방식을 권장합니다.
 
-- **If you use a [framework](/learn/start-a-new-react-project#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
-- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [React Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood but also add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
+- **If you use a [framework](/learn/creating-a-react-app#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
+- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [TanStack Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood but also add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
 
 만약 이러한 접근 방식이 적합하지 않다면 Effect 내부에서 데이터를 페칭하는 것을 계속 진행할 수 있습니다.
 
@@ -1146,7 +1164,11 @@ useEffect(() => {
 
 #### 의존성 배열 전달 {/*passing-a-dependency-array*/}
 
+<<<<<<< HEAD
 의존성을 명시하면 Effect는 **초기 렌더링 후 _그리고_ 의존성 값 변경과 함께 리렌더링이 된 후 동작합니다.**
+=======
+If you specify the dependencies, your Effect runs **after the initial commit _and_ after commits with changed dependencies.**
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 
 ```js {3}
 useEffect(() => {
@@ -1243,7 +1265,11 @@ button { margin-left: 5px; }
 
 #### 빈 의존성 배열 전달 {/*passing-an-empty-dependency-array*/}
 
+<<<<<<< HEAD
 만약 Effect가 정말 어떤 반응형 값도 사용하지 않는다면 그것은 **초기 렌더링 이후 한번만 실행됩니다.**
+=======
+If your Effect truly doesn't use any reactive values, it will only run **after the initial commit.**
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 
 ```js {3}
 useEffect(() => {
@@ -1319,7 +1345,11 @@ export function createConnection(serverUrl, roomId) {
 
 #### 의존성 배열을 전달하지 않았을 때 {/*passing-no-dependency-array-at-all*/}
 
+<<<<<<< HEAD
 의존성 배열을 아예 사용하지 않을 경우, Effect는 컴포넌트의 모든 렌더링과 리렌더링마다 동작합니다.
+=======
+If you pass no dependency array at all, your Effect runs **after every single commit** of your component.
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 
 ```js {3}
 useEffect(() => {
@@ -1480,7 +1510,11 @@ body {
 
 ### 불필요한 객체 의존성 제거하기 {/*removing-unnecessary-object-dependencies*/}
 
+<<<<<<< HEAD
 Effect가 렌더링 중에 생성된 객체나 함수에 의존하는 경우, 너무 자주 실행될 수 있습니다. 예를 들어 이 Effect는 매 렌더링 후에 다시 연결됩니다. 이는 [렌더링마다 `options` 객체가 다르기 때문입니다.](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)
+=======
+If your Effect depends on an object or a function created during rendering, it might run too often. For example, this Effect re-connects after every commit because the `options` object is [different for every render:](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 
 ```js {6-9,12,15}
 const serverUrl = 'https://localhost:1234';
@@ -1497,7 +1531,11 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options); // 객체가 Effect 안에서 사용됩니다
     connection.connect();
     return () => connection.disconnect();
+<<<<<<< HEAD
   }, [options]); // 🚩 결과적으로, 의존성이 재 렌더링 때마다 다릅니다
+=======
+  }, [options]); // 🚩 As a result, these dependencies are always different on a commit
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
   // ...
 ```
 
@@ -1583,7 +1621,11 @@ button { margin-left: 10px; }
 
 ### 불필요한 함수 의존성 제거하기 {/*removing-unnecessary-function-dependencies*/}
 
+<<<<<<< HEAD
 Effect가 렌더링 중에 생성된 객체나 함수에 의존하는 경우, 너무 자주 실행될 수 있습니다. 예를 들어 이 Effect는 매 렌더링 후에 다시 연결됩니다. 이는 [렌더링마다 `createOptions` 함수가 다르기 때문입니다.](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)
+=======
+If your Effect depends on an object or a function created during rendering, it might run too often. For example, this Effect re-connects after every commit because the `createOptions` function is [different for every render:](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 
 ```js {4-9,12,16}
 function ChatRoom({ roomId }) {
@@ -1601,11 +1643,19 @@ function ChatRoom({ roomId }) {
     const connection = createConnection();
     connection.connect();
     return () => connection.disconnect();
+<<<<<<< HEAD
   }, [createOptions]); // 🚩 결과적으로, 의존성이 재 렌더링 때마다 다릅니다
   // ...
 ```
 
 리렌더링마다 함수를 처음부터 생성하는 것 그 자체로는 문제가 되지 않고, 이를 최적화할 필요는 없습니다. 그러나 이것을 Effect의 의존성으로 사용하는 경우 Effect가 리렌더링 후마다 다시 실행되게 합니다.
+=======
+  }, [createOptions]); // 🚩 As a result, these dependencies are always different on a commit
+  // ...
+```
+
+By itself, creating a function from scratch on every re-render is not a problem. You don't need to optimize that. However, if you use it as a dependency of your Effect, it will cause your Effect to re-run after every commit.
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 
 렌더링 중에 생성된 함수를 의존성으로 사용하는 것을 피하세요. 대신 Effect 내에서 함수를 선언하세요.
 
@@ -1728,7 +1778,7 @@ function Page({ url, shoppingCart }) {
 
 ### 서버와 클라이언트에서 다른 컨텐츠를 표시하기 {/*displaying-different-content-on-the-server-and-the-client*/}
 
-If your app uses server rendering (either [directly](/reference/react-dom/server) or via a [framework](/learn/start-a-new-react-project#full-stack-frameworks)), your component will render in two different environments. On the server, it will render to produce the initial HTML. On the client, React will run the rendering code again so that it can attach your event handlers to that HTML. This is why, for [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) to work, your initial render output must be identical on the client and the server.
+If your app uses server rendering (either [directly](/reference/react-dom/server) or via a [framework](/learn/creating-a-react-app#full-stack-frameworks)), your component will render in two different environments. On the server, it will render to produce the initial HTML. On the client, React will run the rendering code again so that it can attach your event handlers to that HTML. This is why, for [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) to work, your initial render output must be identical on the client and the server.
 
 드물게 클라이언트에서 다른 내용을 표시해야 할 수 있습니다. 예를 들어 앱이 [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)에서 일부 데이터를 읽는 경우, 이를 서버에서 구현할 수 없습니다. 다음은 이것을 구현하는 방법입니다.
 
@@ -1775,7 +1825,11 @@ function MyComponent() {
 ```js {3}
 useEffect(() => {
   // ...
+<<<<<<< HEAD
 }); // 🚩 의존성 배열이 없음. 재 렌더링 될 때마다 재실행됨!
+=======
+}); // 🚩 No dependency array: re-runs after every commit!
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 ```
 
 의존성 배열을 명시했음에도 Effect가 여전히 반복해서 실행된다면 의존성이 렌더링마다 다르기 때문입니다.

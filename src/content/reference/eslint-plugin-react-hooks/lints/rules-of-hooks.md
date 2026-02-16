@@ -132,7 +132,11 @@ useEffect(() => {
 
 <Note>
 
+<<<<<<< HEAD
 `useEffect`에서 데이터를 가져오는<sup>Fetch</sup> 것보다 더 나은 방법이 있습니다. 데이터 가져오기에는 React Query, useSWR 또는 React Router 6.4+를 사용하는 것을 고려하세요. 이러한 솔루션은 요청 중복 제거, 응답 캐싱, 네트워크 워터폴 방지를 처리합니다.
+=======
+There are better ways to fetch data rather than in a useEffect. Consider using TanStack Query, useSWR, or React Router 6.4+ for data fetching. These solutions handle deduplicating requests, caching responses, and avoiding network waterfalls.
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 
 더 알아보기: [데이터 가져오기](/learn/synchronizing-with-effects#fetching-data)
 
