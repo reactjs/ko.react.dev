@@ -5,9 +5,10 @@ on:
     branches:
       - main
     paths:
-      - 'src/**/*.md'
-      - 'textlint/**/*.js'
-      - '.github/workflows/textlint_lint.yml'
+      - "src/**/*.md"
+      - "textlint/**/*.js"
+      - ".github/workflows/textlint_lint.yml"
+      - "package.json"
 
   pull_request:
     types:
@@ -15,9 +16,10 @@ on:
       - synchronize
       - reopened
     paths:
-      - 'src/**/*.md'
-      - 'textlint/**/*.js'
-      - '.github/workflows/textlint_lint.yml'
+      - "src/**/*.md"
+      - "textlint/**/*.js"
+      - ".github/workflows/textlint_lint.yml"
+      - "package.json"
 
 jobs:
   Lint:
