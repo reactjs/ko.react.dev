@@ -1096,7 +1096,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-Reducer는 순수해야 하기 때문에, 이 안에서는 State를 변경할 수 없습니다. 그러나, Immer에서 제공하는 특별한 `draft` 객체를 사용하면 안전하게 State를 변경할 수 있습니다. 내부적으로, Immer는 변경 사항이 반영된 `draft`로 State의 복사본을 생성합니다. 이것이 `useImmerReducer`가 관리하는 reducer가 첫 번째 인수인 State를 변형할 수 있고 새로운 State 값을 반환할 필요가 없는 이유입니다.
+Reducer는 순수해야 하기 때문에, 이 안에서는 State를 변경할 수 없습니다. 그러나, Immer에서 제공하는 특별한 `draft` 객체를 사용하면 안전하게 State를 변경할 수 있습니다. 내부적으로, Immer는 변경 사항이 반영된 `draft`로 State의 복사본을 생성합니다. 이것이 `useImmerReducer`가 관리하는 Reducer가 첫 번째 인수인 State를 변형할 수 있고 새로운 State 값을 반환할 필요가 없는 이유입니다.
 
 ## 요약 {/*요약*/}
 
