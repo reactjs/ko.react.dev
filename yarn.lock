@@ -3741,10 +3741,10 @@ eslint-import-resolver-typescript@^2.4.0:
     resolve "^1.22.0"
     tsconfig-paths "^3.14.1"
 
-eslint-markdown@^0.1.0-canary.12:
-  version "0.1.0-canary.12"
-  resolved "https://registry.yarnpkg.com/eslint-markdown/-/eslint-markdown-0.1.0-canary.12.tgz#755c255f254bd428e76e7cb98e10ad458c488638"
-  integrity sha512-iTEHFxLW2QumAgGEJjNb835zJtBGUvXA0JtuRzRjIzevjLlPkXwAJ9QM/33T5OWapb0sUADxDtkxoVbogvOshA==
+eslint-markdown@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/eslint-markdown/-/eslint-markdown-0.5.0.tgz#09f142af02801c87431bc491c093c9d34e6e24ea"
+  integrity sha512-EVY0viuqqPLNxo+/hcSuSsG2OhKlAi+NOzSICLZk1WqgI5OzAwGBELXnN6KoZWNp/ISzzeRtvUayavv9tlSpvg==
   dependencies:
     "@eslint/markdown" "^7.5.1"
     micromark-util-normalize-identifier "^2.0.1"
