@@ -671,7 +671,7 @@ label {
 
 </Sandpack>
 
-`Counter`의 State는 체크 박스를 선택할 때 초기화됩니다. 비록 `Counter`를 렌더링하지만, `div`의 첫 번째 자식이 `section`에서 `div`로 바뀝니다. 자식 `section`이 DOM에서 제거되었을 때, 그 아래 전체 트리(`Counter`와 그 State를 포함하여)도 함께 제거됩니다.
+`Counter`의 state는 체크 박스를 선택할 때 초기화됩니다. 비록 `Counter`를 렌더링하지만, `div`의 첫 번째 자식이 `section`에서 `div`로 바뀝니다. 자식 `section`이 DOM에서 제거되었을 때, 그 아래 전체 트리(`Counter`와 그 state를 포함하여)도 함께 제거됩니다.
 
 <DiagramGroup>
 
@@ -693,7 +693,7 @@ label {
 
 </DiagramGroup>
 
-경험상<sup>Rule of Thumb</sup> **리렌더링할 때 State를 유지하고 싶다면, 트리 구조가 "같아야" 합니다.** 만약 구조가 다르다면 React가 트리에서 컴포넌트를 지울 때 State로 지우기 때문에 State가 유지되지 않습니다.
+경험상<sup>Rule of Thumb</sup> **리렌더링할 때 state를 유지하고 싶다면, 트리 구조가 "같아야" 합니다.** 만약 구조가 다르다면 React가 트리에서 컴포넌트를 지울 때 state로 지우기 때문에 state가 유지되지 않습니다.
 
 <Pitfall>
 
@@ -734,13 +734,13 @@ export default function MyComponent() {
 </Sandpack>
 
 
-버튼을 누를 때마다 입력 State가 사라집니다! 이것은 `MyComponent`를 렌더링할 때마다 *다른* `MyTextField` 함수가 만들어지기 때문입니다. 따라서 같은 함수에서 *다른* 컴포넌트를 렌더링할 때마다 React는 그 아래의 모든 state를 초기화합니다. 이런 문제를 피하려면 **항상 컴포넌트를 중첩해서 정의하지 않고 최상위 범위에서 정의해야 합니다.**
+버튼을 누를 때마다 입력 state가 사라집니다! 이것은 `MyComponent`를 렌더링할 때마다 *다른* `MyTextField` 함수가 만들어지기 때문입니다. 따라서 같은 함수에서 *다른* 컴포넌트를 렌더링할 때마다 React는 그 아래의 모든 state를 초기화합니다. 이런 문제를 피하려면 **항상 컴포넌트를 중첩해서 정의하지 않고 최상위 범위에서 정의해야 합니다.**
 
 </Pitfall>
 
 ## 같은 위치에서 state를 초기화하기 {/*resetting-state-at-the-same-position*/}
 
-기본적으로 React는 컴포넌트가 같은 위치를 유지하면 state를 유지합니다. 보통 이것이 당신이 원하는 행동이기 때문에 기본 동작으로서 타당합니다. 그러나 가끔 컴포넌트 State를 초기화하고 싶을 때가 있습니다. 두 선수가 턴마다 자신의 점수를 추적하는 앱을 한번 봅시다.
+기본적으로 React는 컴포넌트가 같은 위치를 유지하면 state를 유지합니다. 보통 이것이 당신이 원하는 행동이기 때문에 기본 동작으로서 타당합니다. 그러나 가끔 컴포넌트 state를 초기화하고 싶을 때가 있습니다. 두 선수가 턴마다 자신의 점수를 추적하는 앱을 한번 봅시다.
 
 <Sandpack>
 
@@ -812,7 +812,7 @@ h1 {
 
 지금은 선수를 바꿀 때 점수가 유지됩니다. 두 `Counter`가 같은 위치에 나타나기 때문에 React는 그들을 `person` props가 변경된 *같은* `Counter`로 봅니다.
 
-하지만, 개념적으로 `app` 에는 두 개의 분리된 카운터가 있어야 합니다. 그들은 UI에 같은 위치에 나타나지만, 하나는 Taylor의 카운터이고, 다른 하나는 Sarah의 카운터입니다.
+하지만, 개념적으로 app에는 두 개의 분리된 카운터가 있어야 합니다. 그들은 UI에 같은 위치에 나타나지만, 하나는 Taylor의 카운터이고, 다른 하나는 Sarah의 카운터입니다.
 
 이 둘을 바꿀 때 state를 초기화하기 위한 두 가지 방법이 있습니다.
 
@@ -1983,7 +1983,7 @@ img { width: 150px; height: 150px; }
 
 #### 배열에서 잘못 지정된 state 고치기 {/*fix-misplaced-state-in-the-list*/}
 
-다음 예시에서 배열의 각 `Contact`는 "Show email"이 눌렸는지에 대한 state를 갖고 있습니다. Alice의 "Show email"을 누르고 "Show in reverse order" 체크 박스를 선택해보세요. 아래쪽으로 내려간 Alice의 이메일은 닫혀있고 대신 _Taylor_의 이메일이 열려있는 것을 볼 수 있습니다.
+다음 예시에서 배열의 각 `Contact`는 "Show email"이 눌렸는지에 대한 state를 갖고 있습니다. Alice의 "Show email"을 누르고 "Show in reverse order" 체크 박스를 선택해보세요. 아래쪽으로 내려간 Alice의 이메일은 닫혀있고 대신 _Taylor_ 의 이메일이 열려있는 것을 볼 수 있습니다.
 
 순서와 관계없이 확장 state가 각 연락처와 연관되도록 고쳐보세요.
 
@@ -2082,7 +2082,7 @@ button {
   <li key={i}>
 ```
 
-하지만 state가 _각 특정 연락처_와 연관되기를 바랍니다.
+하지만 state가 _각 특정 연락처_ 와 연관되기를 바랍니다.
 
 대신 연락처 ID를 `key`로 사용해서 문제를 해결할 수 있습니다.
 
