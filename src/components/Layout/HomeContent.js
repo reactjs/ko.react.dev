@@ -289,8 +289,13 @@ export function HomeContent() {
               <CTA
                 color="gray"
                 icon="framework"
+<<<<<<< HEAD
                 href="/learn/start-a-new-react-project">
                 프레임워크로 시작하기
+=======
+                href="/learn/creating-a-react-app">
+                Get started with a framework
+>>>>>>> a1cc2ab4bf06b530f86a7049923c402baf86aca1
               </CTA>
             </div>
           </Center>
