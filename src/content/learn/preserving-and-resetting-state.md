@@ -1983,7 +1983,7 @@ img { width: 150px; height: 150px; }
 
 #### 배열에서 잘못 지정된 state 고치기 {/*fix-misplaced-state-in-the-list*/}
 
-다음 예시에서 배열의 각 `Contact`는 "Show email"이 눌렸는지에 대한 state를 갖고 있습니다. Alice의 "Show email"을 누르고 "Show in reverse order" 체크 박스를 선택해보세요. 아래쪽으로 내려간 Alice의 이메일은 닫혀있고 대신 _Taylor_ 의 이메일이 열려있는 것을 볼 수 있습니다.
+다음 예시에서 배열의 각 `Contact`는 "Show email"이 눌렸는지에 대한 state를 갖고 있습니다. Alice의 "Show email"을 누르고 "Show in reverse order" 체크 박스를 선택해보세요. 아래쪽으로 내려간 Alice의 이메일은 닫혀있고 대신 *Taylor*의 이메일이 열려있는 것을 볼 수 있습니다.
 
 순서와 관계없이 확장 state가 각 연락처와 연관되도록 고쳐보세요.
 
@@ -2082,7 +2082,7 @@ button {
   <li key={i}>
 ```
 
-하지만 확장 state는 _각 특정 연락처_ 와 연관되어야 합니다.
+하지만 확장 state는 *각 특정 연락처*와 연관되어야 합니다.
 
 대신 연락처 ID를 `key`로 사용해서 문제를 해결할 수 있습니다.
 
