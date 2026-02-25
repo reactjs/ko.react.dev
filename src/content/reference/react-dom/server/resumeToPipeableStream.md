@@ -30,7 +30,7 @@ const {pipe, abort} = await resumeToPipeableStream(reactNode, postponedState, op
 
 
 ```js
-import { resume } from 'react-dom/server';
+import { resumeToPipeableStream } from 'react-dom/server';
 import {getPostponedState} from './storage';
 
 async function handler(request, response) {
@@ -51,9 +51,9 @@ async function handler(request, response) {
 * `postponedState`: [prerender API](/reference/react-dom/static/prerender)에서 반환된 불분명한 `postpone` 객체로, 저장해 둔 위치(예: Redis, 파일, S3)에서 불러옵니다.
 * **optional** `options`: 스트리밍 옵션을 지정할 수 있는 객체입니다.
   * **optional** `nonce`: [`script-src` Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)에서 스크립트를 허용하기 위한 [`nonce`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) 문자열입니다.
-  * **optional** `signal`: [서버 렌더링을 중단](#aborting-server-rendering)하고 나머지를 클라이언트에서 렌더링할 수 있게 하는 [중단 신호](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)입니다.
-  * **optional** `onError`: 서버 오류가 발생할 때마다, [복구 가능 여부](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-outside-the-shell)와 관계없이 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. [충돌 보고를 기록](/reference/react-dom/server/renderToPipeableStream#logging-crashes-on-the-server)하도록 재정의하는 경우에도 반드시 `console.error`를 호출해야 합니다.
-  * **optional** `onShellReady`: [쉘](/reference/react-dom/server/renderToPipeableStream#specifying-what-goes-into-the-shell)이 렌더링된 직후에 실행되는 콜백입니다. 여기서 `pipe`를 호출해 스트리밍을 시작할 수 있습니다. React는 HTML 로딩 폴백을 콘텐츠로 대체하는 인라인 `<script>` 태그와 함께 쉘 뒤에 [추가 콘텐츠를 스트리밍](/reference/react-dom/server/renderToPipeableStream#streaming-more-content-as-it-loads)합니다.
+  * **optional** `signal`: [서버 렌더링을 중단](/reference/react-dom/server/renderToPipeableStream#aborting-server-rendering)하고 나머지를 클라이언트에서 렌더링할 수 있게 하는 [중단 신호](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)입니다.
+  * **optional** `onError`: 서버 오류가 발생할 때마다, [복구 가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-outside-the-shell) 또는 [불가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)에 관계없이 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. [충돌 보고를 기록](/reference/react-dom/server/renderToPipeableStream#logging-crashes-on-the-server)하도록 재정의하는 경우에도 반드시 `console.error`를 호출해야 합니다.
+  * **optional** `onShellReady`: [셸](/reference/react-dom/server/renderToPipeableStream#specifying-what-goes-into-the-shell)이 렌더링된 직후에 실행되는 콜백입니다. 여기서 `pipe`를 호출해 스트리밍을 시작할 수 있습니다. React는 HTML 로딩 폴백을 콘텐츠로 대체하는 인라인 `<script>` 태그와 함께 셸 뒤에 [추가 콘텐츠를 스트리밍](/reference/react-dom/server/renderToPipeableStream#streaming-more-content-as-it-loads)합니다.
   * **optional** `onShellError`: 초기 셸을 렌더링하는 데 오류가 발생하면 호출되는 콜백입니다. 오류를 인자로 받습니다. 스트림에서 아직 바이트가 전송되지 않았고, `onShellReady`나 `onAllReady`도 호출되지 않으므로 [폴백 HTML 셸을 출력](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)하거나 prelude를 사용할 수 있습니다.
 
 
@@ -75,5 +75,5 @@ async function handler(request, response) {
 
 ### 추가로 읽어보기 {/*further-reading*/}
 
-재개 동작은 `renderToReadableStream`과 유사합니다. 더 많은 예시는 [`renderToReadableStream`의 사용법 섹션](/reference/react-dom/server/renderToReadableStream#usage)을 확인하세요.
-[`prerender`의 사용법 섹션](/reference/react-dom/static/prerender#usage)에는 `prerenderToNodeStream` 사용 방법에 대한 예시가 포함되어 있습니다.
+재개 동작은 `renderToPipeableStream`과 유사합니다. 더 많은 예시는 [`renderToPipeableStream`의 사용법 섹션](/reference/react-dom/server/renderToPipeableStream#usage)을 확인하세요.
+[`prerenderToNodeStream`의 사용법 섹션](/reference/react-dom/static/prerenderToNodeStream#usage)에는 `prerenderToNodeStream` 사용 방법에 대한 예시가 포함되어 있습니다.
