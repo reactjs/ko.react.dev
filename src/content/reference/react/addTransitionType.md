@@ -39,7 +39,11 @@ startTransition(() => {
 
 #### 반환값 {/*returns*/}
 
+<<<<<<< HEAD
 `startTransition`은 아무것도 반환하지 않습니다.
+=======
+`addTransitionType` does not return anything.
+>>>>>>> 427f24d694674be458f0fe7cb97ab1c8fe736586
 
 #### 주의 사항 {/*caveats*/}
 
