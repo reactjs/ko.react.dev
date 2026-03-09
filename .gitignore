@@ -40,7 +40,16 @@ public/fonts/**/Optimistic_*.woff2
 # rss
 public/rss.xml
 
+<<<<<<< HEAD
 # code editor
 .cursor
 .idea
 *.code-workspace
+=======
+# claude local settings
+.claude/*.local.*
+.claude/react/
+
+# worktrees
+.worktrees/
+>>>>>>> 7c90c6eb4bb93a5eacb9cb4ad4ca496c32984636

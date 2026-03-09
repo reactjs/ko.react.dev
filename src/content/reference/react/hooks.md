@@ -79,6 +79,9 @@ Effect는 React 패러다임의 "탈출구"입니다. 애플리케이션의 데�
 * [`useLayoutEffect`](/reference/react/useLayoutEffect)는 브라우저가 화면을 다시 그리기 전에 실행됩니다. 여기에서 레이아웃을 계산할 수 있습니다.
 * [`useInsertionEffect`](/reference/react/useInsertionEffect)는 React가 DOM을 변경하기 전에 실행됩니다. 라이브러리는 여기에 동적 CSS를 삽입할 수 있습니다.
 
+You can also separate events from Effects:
+
+- [`useEffectEvent`](/reference/react/useEffectEvent) creates a non-reactive event to fire from any Effect hook.
 ---
 
 ## Performance Hooks {/*performance-hooks*/}
