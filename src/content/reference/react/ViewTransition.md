@@ -5,7 +5,7 @@ version: canary
 
 <Canary>
 
-**`<ViewTransition>` API는 현재 React의 카나리 및 실험적 채널에서만 사용할 수 있습니다.** 
+**`<ViewTransition />` API는 현재 React의 카나리 및 실험적 채널에서만 사용할 수 있습니다.** 
 
 [React의 배포 채널에 대해 더 알아보세요.](/community/versioning-policy#all-release-channels)
 
