@@ -47,8 +47,13 @@ Activity 경계가 <CodeStep step={1}>숨겨지면</CodeStep>, React는 `display
 
 #### 주의 사항 {/*caveats*/}
 
+<<<<<<< HEAD
 - Activity가 [ViewTransition](/reference/react/ViewTransition) 내부에서 렌더링되고, [startTransition](/reference/react/startTransition)으로 인한 업데이트의 결과로 보이게 되면 ViewTransition의 `enter` 애니메이션이 활성화됩니다. 숨겨지면 `exit` 애니메이션이 활성화됩니다.
 - 텍스트만 렌더링하는 Activity는 아무것도 렌더링하지 않습니다. 가시성 변경을 적용할 대응하는 DOM 엘리먼트가 없기 때문입니다. 예를 들어 `const ComponentThatJustReturnsText = () => "Hello, World!"`인 경우, `<Activity mode="hidden"><ComponentThatJustReturnsText /></Activity>`는 DOM에 아무런 출력도 생성하지 않습니다.
+=======
+- If an Activity is rendered inside of a [ViewTransition](/reference/react/ViewTransition), and it becomes visible as a result of an update caused by [startTransition](/reference/react/startTransition), it will activate the ViewTransition's `enter` animation. If it becomes hidden, it will activate its `exit` animation.
+- A *hidden* Activity that just renders text will not render anything rather than rendering hidden text, because there’s no corresponding DOM element to apply visibility changes to. For example, `<Activity mode="hidden"><ComponentThatJustReturnsText /></Activity>` will not produce any output in the DOM for `const ComponentThatJustReturnsText = () => "Hello, World!"`. `<Activity mode="visible"><ComponentThatJustReturnsText /></Activity>` will render visible text.
+>>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
 
 ---
 
