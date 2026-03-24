@@ -4,11 +4,7 @@ title: useActionState
 
 <Intro>
 
-<<<<<<< HEAD
 `useActionState`는 폼 액션의 결과를 기반으로 State를 업데이트할 수 있도록 제공하는 Hook입니다.
-=======
-`useActionState` is a React Hook that lets you update state with side effects using [Actions](/reference/react/useTransition#functions-called-in-starttransition-are-called-actions).
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
 
 ```js
 const [state, dispatchAction, isPending] = useActionState(reducerAction, initialState, permalink?);
@@ -16,7 +12,6 @@ const [state, dispatchAction, isPending] = useActionState(reducerAction, initial
 
 </Intro>
 
-<<<<<<< HEAD
 <Note>
 
 이전 React Canary 버전에서는 이 API가 React DOM에 포함되어 있었고, `useFormState`라고 불렸습니다.
@@ -24,23 +19,6 @@ const [state, dispatchAction, isPending] = useActionState(reducerAction, initial
 </Note>
 
 
-=======
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
-<InlineToc />
-
----
-
-## 레퍼런스 {/*reference*/}
-
-### `useActionState(reducerAction, initialState, permalink?)` {/*useactionstate*/}
-
-<<<<<<< HEAD
-{/* TODO T164397693: link to actions documentation once it exists */}
-
-`useActionState`를 컴포넌트의 최상위 레벨에서 호출하여 [폼 액션이 실행될 때](/reference/react-dom/components/form) 업데이트되는 컴포넌트 State를 생성하세요. `useActionState`는 기존의 폼 액션 함수와 초기 State를 전달받고, 폼에서 사용할 새로운 액션을 반환합니다. 또한 최신 폼 State와 액션이 대기 중인지 여부(`isPending`)도 반환합니다. 이때 최신 폼 State는 `useActionState`에 전달한 함수에도 함께 전달됩니다.
-=======
-Call `useActionState` at the top level of your component to create state for the result of an Action.
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
 
 ```js
 import { useActionState } from 'react';
@@ -49,7 +27,6 @@ function reducerAction(previousState, actionPayload) {
   // ...
 }
 
-<<<<<<< HEAD
 function StatefulForm({}) {
   const [state, formAction] = useActionState(increment, 0);
   return (
@@ -66,133 +43,36 @@ function StatefulForm({}) {
 서버 함수<sup>Server Function</sup>와 함께 사용하는 경우, `useActionState`를 통해 하이드레이션<sup>Hydration</sup>이 끝나기 전에도 폼 제출에 대한 서버 응답을 표시할 수 있습니다.
 
 [아래 예시를 참고하세요.](#usage)
-=======
-function MyCart({initialState}) {
-  const [state, dispatchAction, isPending] = useActionState(reducerAction, initialState);
-  // ...
-}
-```
-
-[See more examples below.](#usage)
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
 
 #### 매개변수 {/*parameters*/}
 
-<<<<<<< HEAD
 * `fn`: 폼이 제출되거나 버튼이 눌렸을 때 호출되는 함수입니다. 함수가 호출되면 첫 번째 인수로 폼의 이전 State(처음에는 전달한 `initialState`, 이후에는 이전 반환값)가 전달되고, 그 뒤로는 폼 액션이 일반적으로 받는 인수들이 전달됩니다.
 * `initialState`: State가 처음에 가지기를 원하는 값입니다. 이는 직렬화 가능한 값이면 무엇이든 될 수 있습니다. 이 인수는 액션이 처음 호출된 후에는 무시됩니다.
 * **optional** `permalink`: 이 폼이 수정하는 고유한 페이지 URL을 포함하는 문자열입니다. 동적 콘텐츠가 있는 페이지(예: 피드)에서 점진적 향상<sup>Progressive Enhancement</sup>과 함께 사용됩니다. 만약 `fn`이 [서버 함수](/reference/rsc/server-functions)이고, 폼이 자바스크립트 번들이 로드되기 전에 제출되면, 브라우저는 현재 페이지의 URL 대신 지정된 영구 링크<sup>Permalink</sup> URL로 이동합니다. React가 State를 전달하는 방법을 알 수 있도록, 동일한 폼 컴포넌트가 대상 페이지에 렌더링되도록 해야 합니다. (동일한 액션 `fn`과 `permalink` 포함.) 폼이 하이드레이션된 후, 이 매개변수는 더 이상 효과가 없습니다.
 
 {/* TODO T164397693: link to serializable values docs once it exists */}
-=======
-* `reducerAction`: The function to be called when the Action is triggered. When called, it receives the previous state (initially the `initialState` you provided, then its previous return value) as its first argument, followed by the `actionPayload` passed to `dispatchAction`.
-* `initialState`: The value you want the state to be initially. React ignores this argument after `dispatchAction` is invoked for the first time.
-* **optional** `permalink`: A string containing the unique page URL that this form modifies.
-  * For use on pages with [React Server Components](/reference/rsc/server-components) with progressive enhancement.
-  * If `reducerAction` is a [Server Function](/reference/rsc/server-functions) and the form is submitted before the JavaScript bundle loads, the browser will navigate to the specified permalink URL rather than the current page's URL.
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
 
 #### 반환값 {/*returns*/}
 
-<<<<<<< HEAD
 `useActionState`는 다음 세 가지 값을 담은 배열을 반환합니다.
 
 1. 현재 State입니다. 첫 렌더링 시에는 `initialState`와 일치하며, 액션이 실행된 후에는 해당 액션이 반환한 값과 일치합니다.
 2. `form` 컴포넌트의 `action` Prop이나, 폼 내부 `button` 컴포넌트의 `formAction` Prop에 전달할 수 있는 새 액션입니다. 이 액션은 [`startTransition`](/reference/react/startTransition) 내에서 수동으로 호출할 수도 있습니다.
 3. 현재 Transition이 대기 중인지 알려주는 `isPending` 플래그입니다.
-=======
-`useActionState` returns an array with exactly three values:
-
-1. The current state. During the first render, it will match the `initialState` you passed. After `dispatchAction` is invoked, it will match the value returned by the `reducerAction`.
-2. A `dispatchAction` function that you call inside [Actions](/reference/react/useTransition#functions-called-in-starttransition-are-called-actions).
-3. The `isPending` flag that tells you if any dispatched Actions for this Hook are pending.
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
 
 
-<<<<<<< HEAD
 #### 주의 사항 {/*caveats*/}
 
 * React 서버 컴포넌트를 지원하는 프레임워크에서 `useActionState`를 사용하면, 클라이언트 자바스크립트 실행 전에도 폼과 상호작용할 수 있습니다. 만약 서버 컴포넌트를 사용하지 않는다면, 이는 단순히 컴포넌트 지역 State와 동일하게 동작합니다.
 * `useActionState`에 전달된 함수는 첫 번째 인수로 이전 또는 초기 State를 추가로 받습니다. 즉, 직접 폼 액션을 사용했을 때와 비교해 함수의 시그니처가 달라질 수 있습니다.
-=======
-* `useActionState` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
-* React queues and executes multiple calls to `dispatchAction` sequentially. Each call to `reducerAction` receives the result of the previous call.
-* The `dispatchAction` function has a stable identity, so you will often see it omitted from Effect dependencies, but including it will not cause the Effect to fire. If the linter lets you omit a dependency without errors, it is safe to do. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
-* When using the `permalink` option, ensure the same form component is rendered on the destination page (including the same `reducerAction` and `permalink`) so React knows how to pass the state through. Once the page becomes interactive, this parameter has no effect.
-* When using Server Functions, `initialState` needs to be [serializable](/reference/rsc/use-server#serializable-parameters-and-return-values) (values like plain objects, arrays, strings, and numbers).
-* If `dispatchAction` throws an error, React cancels all queued actions and shows the nearest [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary).
-* If there are multiple ongoing Actions, React batches them together. This is a limitation that may be removed in a future release.
-
-<Note>
-
-`dispatchAction` must be called from an Action. 
-
-You can wrap it in [`startTransition`](/reference/react/startTransition), or pass it to an [Action prop](/reference/react/useTransition#exposing-action-props-from-components). Calls outside that scope won’t be treated as part of the Transition and [log an error](#async-function-outside-transition) on development mode.
-
-</Note>
-
----
-
-### `reducerAction` function {/*reduceraction*/}
-
-The `reducerAction` function passed to `useActionState` receives the previous state and returns a new state.
-
-Unlike reducers in `useReducer`, the `reducerAction` can be async and perform side effects:
-
-```js
-async function reducerAction(previousState, actionPayload) {
-  const newState = await post(actionPayload);
-  return newState;
-}
-```
-
-Each time you call `dispatchAction`, React calls the `reducerAction` with the `actionPayload`. The reducer will perform side effects such as posting data, and return the new state. If `dispatchAction` is called multiple times, React queues and executes them in order so the result of the previous call is passed as `previousState` for the current call.
-
-#### Parameters {/*reduceraction-parameters*/}
-
-* `previousState`: The last state. Initially this is equal to the `initialState`. After the first call to `dispatchAction`, it's equal to the last state returned.
-
-* **optional** `actionPayload`: The argument passed to `dispatchAction`. It can be a value of any type. Similar to `useReducer` conventions, it is usually an object with a `type` property identifying it and, optionally, other properties with additional information.
-
-#### Returns {/*reduceraction-returns*/}
-
-`reducerAction` returns the new state, and triggers a Transition to re-render with that state.
-
-#### Caveats {/*reduceraction-caveats*/}
-
-* `reducerAction` can be sync or async. It can perform sync actions like showing a notification, or async actions like posting updates to a server. 
-* `reducerAction` is not invoked twice in `<StrictMode>` since `reducerAction` is designed to allow side effects.
-* The return type of `reducerAction` must match the type of `initialState`. If TypeScript infers a mismatch, you may need to explicitly annotate your state type.
-* If you set state after `await` in the `reducerAction` you currently need to wrap the state update in an additional `startTransition`. See the [startTransition](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition) docs for more info.
-* When using Server Functions, `actionPayload` needs to be [serializable](/reference/rsc/use-server#serializable-parameters-and-return-values) (values like plain objects, arrays, strings, and numbers).
-
-<DeepDive>
-
-#### Why is it called `reducerAction`? {/*why-is-it-called-reduceraction*/}
-
-The function passed to `useActionState` is called a *reducer action* because:
-
-- It *reduces* the previous state into a new state, like `useReducer`.
-- It's an *Action* because it's called inside a Transition and can perform side effects.
-
-Conceptually, `useActionState` is like `useReducer`, but you can do side effects in the reducer.
-
-</DeepDive>
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
 
 ---
 
 ## 사용법 {/*usage*/}
 
-<<<<<<< HEAD
 ### 폼 액션에서 반환된 정보 사용하기 {/*using-information-returned-by-a-form-action*/}
 
 컴포넌트의 최상위 레벨에서 `useActionState`를 호출하면, 폼이 마지막으로 제출되었을 때 액션이 반환한 값에 접근할 수 있습니다.
-=======
-### Adding state to an Action {/*adding-state-to-an-action*/}
-
-Call `useActionState` at the top level of your component to create state for the result of an Action.
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
 
 ```js [[1, 7, "count"], [2, 7, "dispatchAction"], [3, 7, "isPending"]]
 import { useActionState } from 'react';
@@ -207,7 +87,6 @@ function Counter() {
 }
 ```
 
-<<<<<<< HEAD
 `useActionState`가 반환하는 배열은 다음과 같은 요소를 갖습니다.
 
 1. 폼의 <CodeStep step={1}>현재 State</CodeStep>는, 처음에는 전달한 <CodeStep step={4}>초기 State</CodeStep>로 설정되며, 폼이 제출된 후에는 전달한 <CodeStep step={3}>액션</CodeStep>의 반환값으로 설정됩니다.
@@ -233,34 +112,18 @@ function action(currentState, formData) {
 #### 오류 표시하기 {/*display-form-errors*/}
 
 서버 함수<sup>Server Function</sup>에서 반환된 오류 메시지나 토스트 메시지를 표시하려면, 해당 액션을 `useActionState`로 감싸주세요.
-=======
-`useActionState` returns an array with exactly three items:
-
-1. The <CodeStep step={1}>current state</CodeStep>, initially set to the initial state you provided.
-2. The <CodeStep step={2}>action dispatcher</CodeStep> that lets you trigger `reducerAction`.
-3. A <CodeStep step={3}>pending state</CodeStep> that tells you whether the Action is in progress.
-
-To call `addToCartAction`, call the <CodeStep step={2}>action dispatcher</CodeStep>. React will queue calls to `addToCartAction` with the previous count.
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
 
 <Sandpack>
 
 ```js src/App.js
-<<<<<<< HEAD
 import { useActionState } from "react";
 import { addToCart } from "./actions.js";
-=======
-import { useActionState, startTransition } from 'react';
-import { addToCart } from './api';
-import Total from './Total';
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
 
 export default function Checkout() {
   const [count, dispatchAction, isPending] = useActionState(async (prevCount) => {
     return await addToCart(prevCount)
   }, 0);
 
-<<<<<<< HEAD
 export default function App() {
   return (
     <>
@@ -282,11 +145,6 @@ export async function addToCart(prevState, queryData) {
     // Add a fake delay to make waiting noticeable.
     await new Promise(resolve => {
       setTimeout(resolve, 2000);
-=======
-  function handleClick() {
-    startTransition(() => {
-      dispatchAction();
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
     });
   }
 
@@ -307,21 +165,12 @@ export async function addToCart(prevState, queryData) {
 }
 ```
 
-<<<<<<< HEAD
 ```css src/styles.css hidden
 form {
   border: solid 1px black;
   margin-bottom: 24px;
   padding: 12px;
 }
-=======
-```js src/Total.js
-const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  minimumFractionDigits: 0,
-});
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
 
 export default function Total({quantity}) {
   return (
@@ -392,33 +241,9 @@ button {
 
 Every time you click "Add Ticket," React queues a call to `addToCartAction`. React shows the pending state until all the tickets are added, and then re-renders with the final state.
 
-<<<<<<< HEAD
 #### 폼 제출 후 구조화된 정보 표시하기 {/*display-structured-information-after-submitting-a-form*/}
 
 서버 함수<sup>Server Function</sup>의 반환값은 직렬화 가능한 어떤 값이든 가능합니다. 예를 들어, 액션 성공 여부를 나타내는 불리언, 오류 메시지, 업데이트된 객체 등 다양하게 활용할 수 있습니다.
-=======
-<DeepDive>
-
-#### How `useActionState` queuing works {/*how-useactionstate-queuing-works*/}
-
-Try clicking "Add Ticket" multiple times. Every time you click, a new `addToCartAction` is queued. Since there's an artificial 1 second delay, that means 4 clicks will take ~4 seconds to complete.
-
-**This is intentional in the design of `useActionState`.**
-
-We have to wait for the previous result of `addToCartAction` in order to pass the `prevCount` to the next call to `addToCartAction`. That means React has to wait for the previous Action to finish before calling the next Action. 
-
-You can typically solve this by [using with useOptimistic](/reference/react/useActionState#using-with-useoptimistic) but for more complex cases you may want to consider [cancelling queued actions](#cancelling-queued-actions) or not using `useActionState`.
-
-</DeepDive>
-
----
-
-### Using multiple Action types {/*using-multiple-action-types*/}
-
-To handle multiple types, you can pass an argument to `dispatchAction`.
-
-By convention, it is common to write it as a switch statement. For each case in the switch, calculate and return some next state. The argument can have any shape, but it is common to pass objects with a `type` property identifying the action.
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
 
 <Sandpack>
 
@@ -1214,7 +1039,6 @@ export default function Checkout() {
   );
 }
 
-<<<<<<< HEAD
 export default function App() {
   return (
     <>
@@ -1240,37 +1064,17 @@ export async function addToCart(prevState, queryData) {
       success: false,
       message: "The item is sold out.",
     };
-=======
-async function updateCartAction(prevCount, formData) {
-  const type = formData.get('type');
-  switch (type) {
-    case 'ADD': {
-      return await addToCart(prevCount);
-    }
-    case 'REMOVE': {
-      return await removeFromCart(prevCount);
-    }
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
   }
   return prevCount;
 }
 ```
 
-<<<<<<< HEAD
 ```css src/styles.css hidden
 form {
   border: solid 1px black;
   margin-bottom: 24px;
   padding: 12px;
 }
-=======
-```js src/Total.js
-const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  minimumFractionDigits: 0,
-});
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
 
 export default function Total({quantity, isPending}) {
   return (
@@ -1556,15 +1360,9 @@ In this example, "Add 10" simulates an API that returns a validation error, whic
 
 ## 문제 해결 {/*troubleshooting*/}
 
-<<<<<<< HEAD
 ### 액션이 더 이상 제출된 폼 데이터를 읽을 수 없습니다 {/*my-action-can-no-longer-read-the-submitted-form-data*/}
 
 액션을 `useActionState`로 감싸면 *첫 번째 인수*로 "이전(또는 현재) State"가 추가됩니다. 따라서 일반적인 폼 액션과 달리, 제출된 폼 데이터는 *두 번째 인수*에서 확인해야 합니다.
-=======
-### My `isPending` flag is not updating {/*ispending-not-updating*/}
-
-If you're calling `dispatchAction` manually (not through an Action prop), make sure you wrap the call in [`startTransition`](/reference/react/startTransition):
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
 
 ```js
 import { useActionState, startTransition } from 'react';

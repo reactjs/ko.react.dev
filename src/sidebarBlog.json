@@ -12,10 +12,6 @@
       "skipBreadcrumb": true,
       "routes": [
         {
-<<<<<<< HEAD
-          "title": "React Conf 2025 요약",
-          "titleForHomepage": "React Conf 2025 요약",
-=======
           "title": "The React Foundation: A New Home for React Hosted by the Linux Foundation",
           "titleForHomepage": "The React Foundation: A New Home for React Hosted by the Linux Foundation",
           "icon": "blog",
@@ -37,9 +33,8 @@
           "path": "/blog/2025/12/03/critical-security-vulnerability-in-react-server-components"
         },
         {
-          "title": "React Conf 2025 Recap",
-          "titleForHomepage": "React Conf 2025 Recap",
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
+          "title": "React Conf 2025 요약",
+          "titleForHomepage": "React Conf 2025 요약",
           "icon": "blog",
           "date": "2025.10.16",
           "path": "/blog/2025/10/16/react-conf-2025-recap"

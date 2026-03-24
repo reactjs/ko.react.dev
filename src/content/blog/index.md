@@ -10,9 +10,6 @@ title: React 블로그
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<<<<<<< HEAD
-<BlogCard title="React Conf 2025 요약" date="2025년 10월 16일" url="/blog/2025/10/16/react-conf-2025-recap">
-=======
 <BlogCard title="The React Foundation: A New Home for React Hosted by the Linux Foundation" date="February 24, 2026" url="/blog/2026/02/24/the-react-foundation">
 
 The React Foundation has officially launched under the Linux Foundation.
@@ -31,8 +28,7 @@ There is an unauthenticated remote code execution vulnerability in React Server 
 
 </BlogCard>
 
-<BlogCard title="React Conf 2025 Recap" date="October 16, 2025" url="/blog/2025/10/16/react-conf-2025-recap">
->>>>>>> 40ea071c846b3ab1232391bab15d31f508913bf4
+<BlogCard title="React Conf 2025 요약" date="2025년 10월 16일" url="/blog/2025/10/16/react-conf-2025-recap">
 
 지난주에 React Conf 2025를 개최했습니다. 이 글에서는 행사에서 있었던 강연과 발표 내용을 정리합니다...
 
