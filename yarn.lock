@@ -4049,7 +4049,6 @@ eslint-plugin-jsx-a11y@^6.4.1:
 
 "eslint-plugin-local-rules@link:eslint-local-rules":
   version "0.0.0"
-  uid ""
 
 eslint-plugin-react-compiler@^19.0.0-beta-e552027-20250112:
   version "19.0.0-beta-e552027-20250112"
@@ -9814,9 +9813,9 @@ unbox-primitive@^1.0.2:
     which-boxed-primitive "^1.0.2"
 
 undici@^7.12.0:
-  version "7.12.0"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-7.12.0.tgz#e93244fa49383e8a0e1a4295048fd454541c7ccb"
-  integrity sha512-GrKEsc3ughskmGA9jevVlIOPMiiAHJ4OFUtaAH+NhfTUSiZ1wMPIQqQvAJUrJspFXJt3EBWgpAeoHEDVT1IBug==
+  version "7.24.5"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-7.24.5.tgz#7debcf5623df2d1cb469b6face01645d9c852ae2"
+  integrity sha512-3IWdCpjgxp15CbJnsi/Y9TCDE7HWVN19j1hmzVhoAkY/+CJx449tVxT5wZc1Gwg8J+P0LWvzlBzxYRnHJ+1i7Q==
 
 unherit@^1.0.4:
   version "1.1.3"
