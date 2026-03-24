@@ -3,10 +3,6 @@ title: <ViewTransition>
 version: canary
 ---
 
-
-
-<Intro>
-
 <Canary>
 
 **`<ViewTransition />` API는 현재 React의 카나리 및 실험적 채널에서만 사용할 수 있습니다.** 

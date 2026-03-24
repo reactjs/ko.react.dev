@@ -107,8 +107,6 @@ function action(currentState, formData) {
 }
 ```
 
-<Recipes titleText="폼 제출 후 정보 표시하기" titleId="display-information-after-submitting-a-form">
-
 #### 오류 표시하기 {/*display-form-errors*/}
 
 서버 함수<sup>Server Function</sup>에서 반환된 오류 메시지나 토스트 메시지를 표시하려면, 해당 액션을 `useActionState`로 감싸주세요.
@@ -240,6 +238,20 @@ button {
 </Sandpack>
 
 Every time you click "Add Ticket," React queues a call to `addToCartAction`. React shows the pending state until all the tickets are added, and then re-renders with the final state.
+
+<DeepDive>
+
+#### How `useActionState` queuing works {/*how-useactionstate-queuing-works*/}
+
+Try clicking "Add Ticket" multiple times. Every time you click, a new `addToCartAction` is queued. Since there's an artificial 1 second delay, that means 4 clicks will take ~4 seconds to complete.
+
+**This is intentional in the design of `useActionState`.**
+
+We have to wait for the previous result of `addToCartAction` in order to pass the `prevCount` to the next call to `addToCartAction`. That means React has to wait for the previous Action to finish before calling the next Action.
+
+You can typically solve this by [using with useOptimistic](/reference/react/useActionState#using-with-useoptimistic) but for more complex cases you may want to consider [cancelling queued actions](#cancelling-queued-actions) or not using `useActionState`.
+
+</DeepDive>
 
 #### 폼 제출 후 구조화된 정보 표시하기 {/*display-structured-information-after-submitting-a-form*/}
 

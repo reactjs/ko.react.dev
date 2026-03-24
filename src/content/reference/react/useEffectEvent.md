@@ -177,9 +177,7 @@ export default function Timer() {
 }
 ```
 
-이 예시에서, `url`이 바뀔 때(새로운 페이지 방문을 로깅하기 위해) Effect는 랜더 이후에 다시 동작해야 합니다. 그러나 이것은 `numberOfItems`가 바뀔 때 다시 동작하면 **안됩니다**. 로깅 로직을 Effect 이벤트로 감싸 `numberOfItems`는 비반응형이 됩니다. 이것은 항상 Effect를 트리거 하는 것 없이 최신의 값을 읽습니다.
-
-`url`과 같은 반응형 값을 Effect 이벤트의 인수로 전달할 수 있습니다. 이로써, 이벤트 내부의 비반응형 값에 접근할 때 이것들을 반응형으로 유지할 수 있습니다.
+</Sandpack>
 
 Try changing the increment value while the timer is running. The counter immediately uses the new increment value, but the timer keeps ticking smoothly without restarting.
 

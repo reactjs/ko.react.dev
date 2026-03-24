@@ -764,11 +764,11 @@ When documenting Server Function arguments, list supported types:
 Supported types for Server Function arguments:
 
 * Primitives
-	* [string](MDN-link)
-	* [number](MDN-link)
+  * [string](MDN-link)
+  * [number](MDN-link)
 * Iterables containing serializable values
-	* [Array](MDN-link)
-	* [Map](MDN-link)
+  * [Array](MDN-link)
+  * [Map](MDN-link)
 
 Notably, these are not supported:
 * React elements, or [JSX](/learn/writing-markup-with-jsx)
