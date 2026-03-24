@@ -71,7 +71,7 @@
     "babel-plugin-react-compiler": "19.0.0-beta-e552027-20250112",
     "chalk": "4.1.2",
     "editorconfig-checker": "^6.0.1",
-    "esbuild": "^0.24.0",
+    "esbuild": "^0.25.0",
     "eslint": "7.x",
     "eslint-config-next": "12.0.3",
     "eslint-config-react-app": "^5.2.1",
