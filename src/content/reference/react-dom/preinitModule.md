@@ -4,7 +4,7 @@ title: preinitModule
 
 <Note>
 
-[React 기반 프레임워크](/learn/start-a-new-react-project)에서는 리소스 로딩을 자동으로 처리해주는 경우가 많기 때문에 이 API를 직접 호출할 필요가 없을 수도 있습니다. 자세한 내용은 사용하는 프레임워크의 문서를 참고하세요.
+[React 기반 프레임워크](/learn/creating-a-react-app)에서는 리소스 로딩을 자동으로 처리해주는 경우가 많기 때문에 이 API를 직접 호출할 필요가 없을 수도 있습니다. 자세한 내용은 사용하는 프레임워크의 문서를 참고하세요.
 
 </Note>
 

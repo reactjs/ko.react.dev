@@ -115,7 +115,6 @@ View Transition 클래스는 ViewTransition이 활성화될 때 Transition 중�
 
 예를 들어 "enter" 애니메이션을 커스터마이즈하려면 `enter` 프로퍼티에 클래스 이름을 제공합니다.
 
-
 ```js
 <ViewTransition enter="slide-in">
 ```
@@ -124,13 +123,10 @@ View Transition 클래스는 ViewTransition이 활성화될 때 Transition 중�
 
 ```css
 ::view-transition-group(.slide-in) {
-  
 }
 ::view-transition-old(.slide-in) {
-
 }
 ::view-transition-new(.slide-in) {
-
 }
 ```
 향후 CSS 라이브러리에서 View Transition 클래스를 사용한 내장 애니메이션을 추가하여 사용하기 쉽게 만들 수 있습니다.
@@ -152,10 +148,10 @@ View Transition 클래스는 ViewTransition이 활성화될 때 Transition 중�
 
 Enter/Exit Transition은 `<ViewTransition>`이 Transition에서 컴포넌트에 의해 추가되거나 제거될 때 발생합니다.
 
-```js
+```js {3}
 function Child() {
   return (
-    <ViewTransition>
+    <ViewTransition enter="auto" exit="auto" default="none">
       <div>Hi</div>
     </ViewTransition>
   );
@@ -177,7 +173,7 @@ function Parent() {
 <Sandpack>
 
 ```js src/Video.js hidden
-function Thumbnail({ video, children }) {
+function Thumbnail({video, children}) {
   return (
     <div
       aria-hidden="true"
@@ -187,14 +183,11 @@ function Thumbnail({ video, children }) {
   );
 }
 
-export function Video({ video }) {
+export function Video({video}) {
   return (
     <div className="video">
-      <div
-        className="link"
-      >
+      <div className="link">
         <Thumbnail video={video}></Thumbnail>
-
         <div className="info">
           <div className="video-title">{video.title}</div>
           <div className="video-description">{video.description}</div>
@@ -206,18 +199,14 @@ export function Video({ video }) {
 ```
 
 ```js
-import {
-  ViewTransition,
-  useState,
-  startTransition
-} from 'react';
-import {Video} from "./Video";
-import videos from "./data"
+import {ViewTransition, useState, startTransition} from 'react';
+import {Video} from './Video';
+import videos from './data';
 
 function Item() {
   return (
-    <ViewTransition>
-      <Video video={videos[0]}/>
+    <ViewTransition enter="auto" exit="auto" default="none">
+      <Video video={videos[0]} />
     </ViewTransition>
   );
 }
@@ -231,8 +220,9 @@ export default function Component() {
           startTransition(() => {
             setShowItem((prev) => !prev);
           });
-        }}
-      >{showItem ? '➖' : '➕'}</button>
+        }}>
+        {showItem ? '➖' : '➕'}
+      </button>
 
       {showItem ? <Item /> : null}
     </>
@@ -247,10 +237,9 @@ export default [
     title: 'First video',
     description: 'Video description',
     image: 'blue',
-  }
-]
+  },
+];
 ```
-
 
 ```css
 #root {
@@ -350,10 +339,18 @@ button:hover {
 `<ViewTransition>`은 DOM 노드보다 앞에 배치되어야만 활성화됩니다. `Child`가 다음과 같다면 애니메이션이 발생하지 않습니다.
 
 ```js [3, 5]
-function Component() {
-  return <ViewTransition>Hi</ViewTransition>;
+function Item() {
+  return (
+    <div> {/* 🚩<div> above <ViewTransition> breaks exit/enter */}
+      <ViewTransition enter="auto" exit="auto" default="none">
+        <Video video={videos[0]} />
+      </ViewTransition>
+    </div>
+  );
 }
 ```
+
+This constraint prevents subtle bugs where too much or too little animates.
 
 </Pitfall>
 
@@ -377,36 +374,35 @@ Transition이 먼저 한쪽을 마운트 해제하고 새로운 이름이 마운
 <Sandpack>
 
 ```js
-import {
-  ViewTransition,
-  useState,
-  startTransition
-} from "react";
-import {Video, Thumbnail, FullscreenVideo} from "./Video";
-import videos from "./data";
+import {ViewTransition, useState, startTransition} from 'react';
+import {Video, Thumbnail, FullscreenVideo} from './Video';
+import videos from './data';
 
 export default function Component() {
   const [fullscreen, setFullscreen] = useState(false);
   if (fullscreen) {
-    return <FullscreenVideo
-      video={videos[0]}
-      onExit={() => startTransition(() => setFullscreen(false))}
-    />
+    return (
+      <FullscreenVideo
+        video={videos[0]}
+        onExit={() => startTransition(() => setFullscreen(false))}
+      />
+    );
   }
-  return <Video
-    video={videos[0]}
-    onClick={() => startTransition(() => setFullscreen(true))}
-  />
+  return (
+    <Video
+      video={videos[0]}
+      onClick={() => startTransition(() => setFullscreen(true))}
+    />
+  );
 }
-
 ```
 
 ```js src/Video.js
-import {ViewTransition} from "react";
+import {ViewTransition} from 'react';
 
-const THUMBNAIL_NAME = "video-thumbnail"
+const THUMBNAIL_NAME = 'video-thumbnail';
 
-export function Thumbnail({ video, children }) {
+export function Thumbnail({video, children}) {
   return (
     <ViewTransition name={THUMBNAIL_NAME}>
       <div
@@ -418,7 +414,7 @@ export function Thumbnail({ video, children }) {
   );
 }
 
-export function Video({ video, onClick }) {
+export function Video({video, onClick}) {
   return (
     <div className="video">
       <div className="link" onClick={onClick}>
@@ -441,10 +437,7 @@ export function FullscreenVideo({video, onExit}) {
           tabIndex={-1}
           className={`thumbnail ${video.image} fullscreen`}
         />
-        <button
-          className="close-button"
-          onClick={onExit}
-        >
+        <button className="close-button" onClick={onExit}>
           ✖
         </button>
       </ViewTransition>
@@ -453,7 +446,6 @@ export function FullscreenVideo({video, onExit}) {
 }
 ```
 
-
 ```js src/data.js hidden
 export default [
   {
@@ -461,10 +453,9 @@ export default [
     title: 'First video',
     description: 'Video description',
     image: 'blue',
-  }
-]
+  },
+];
 ```
-
 
 ```css
 #root {
@@ -572,7 +563,6 @@ button:hover {
 }
 ```
 
-
 ```json package.json hidden
 {
   "dependencies": {
@@ -584,7 +574,6 @@ button:hover {
 ```
 
 </Sandpack>
-
 
 <Note>
 
@@ -609,14 +598,12 @@ import {MY_NAME} from './shared-name';
 
 </Pitfall>
 
-
 ---
 
 ### 목록에서 항목 순서 변경 애니메이션 적용하기 {/*animating-reorder-of-items-in-a-list*/}
 
-
 ```js
-items.map(item => <Component key={item.id} item={item} />)
+items.map((item) => <Component key={item.id} item={item} />);
 ```
 
 콘텐츠를 업데이트하지 않고 목록 순서를 변경할 때 DOM 노드 밖에 있으면 목록의 각 `<ViewTransition>`에서 "update" 애니메이션이 발생합니다. enter/exit 애니메이션과 유사합니다.
@@ -625,13 +612,18 @@ items.map(item => <Component key={item.id} item={item} />)
 
 ```js
 function Component() {
-  return <ViewTransition><div>...</div></ViewTransition>;
+  return (
+    <ViewTransition>
+      <div>...</div>
+    </ViewTransition>
+  );
 }
 ```
+
 <Sandpack>
 
 ```js src/Video.js hidden
-function Thumbnail({ video }) {
+function Thumbnail({video}) {
   return (
     <div
       aria-hidden="true"
@@ -641,7 +633,7 @@ function Thumbnail({ video }) {
   );
 }
 
-export function Video({ video }) {
+export function Video({video}) {
   return (
     <div className="video">
       <div className="link">
@@ -657,13 +649,9 @@ export function Video({ video }) {
 ```
 
 ```js
-import {
-  ViewTransition,
-  useState,
-  startTransition
-} from "react";
-import {Video} from "./Video";
-import videos from "./data";
+import {ViewTransition, useState, startTransition} from 'react';
+import {Video} from './Video';
+import videos from './data';
 
 export default function Component() {
   const [orderedVideos, setOrderedVideos] = useState(videos);
@@ -689,8 +677,6 @@ export default function Component() {
     </>
   );
 }
-  
-
 ```
 
 ```js src/data.js hidden
@@ -718,10 +704,9 @@ export default [
     title: 'Fourth video',
     description: 'Video description',
     image: 'purple',
-  }
-]
+  },
+];
 ```
-
 
 ```css
 #root {
@@ -812,7 +797,6 @@ button:hover {
 }
 ```
 
-
 ```json package.json hidden
 {
   "dependencies": {
@@ -829,7 +813,11 @@ button:hover {
 
 ```js
 function Component() {
-  return <div><ViewTransition>...</ViewTransition></div>;
+  return (
+    <div>
+      <ViewTransition>...</ViewTransition>
+    </div>
+  );
 }
 ```
 대신 부모 `<ViewTransition>`이 크로스 페이드됩니다. 부모 `<ViewTransition>`이 없으면 별도의 애니메이션이 적용되지 않습니다.
@@ -837,7 +825,7 @@ function Component() {
 <Sandpack>
 
 ```js src/Video.js hidden
-function Thumbnail({ video }) {
+function Thumbnail({video}) {
   return (
     <div
       aria-hidden="true"
@@ -847,7 +835,7 @@ function Thumbnail({ video }) {
   );
 }
 
-export function Video({ video }) {
+export function Video({video}) {
   return (
     <div className="video">
       <div className="link">
@@ -863,13 +851,9 @@ export function Video({ video }) {
 ```
 
 ```js
-import {
-  ViewTransition,
-  useState,
-  startTransition
-} from "react";
-import {Video} from "./Video";
-import videos from "./data";
+import {ViewTransition, useState, startTransition} from 'react';
+import {Video} from './Video';
+import videos from './data';
 
 export default function Component() {
   const [orderedVideos, setOrderedVideos] = useState(videos);
@@ -893,8 +877,6 @@ export default function Component() {
     </>
   );
 }
-  
-
 ```
 
 ```js src/data.js hidden
@@ -922,10 +904,9 @@ export default [
     title: 'Fourth video',
     description: 'Video description',
     image: 'purple',
-  }
-]
+  },
+];
 ```
-
 
 ```css
 #root {
@@ -1015,7 +996,6 @@ button:hover {
   font-size: 13px;
 }
 ```
-
 
 ```json package.json hidden
 {
@@ -1057,7 +1037,7 @@ items.map(item => <div><Component key={item.id} item={item} /></div>)
 
 `<ViewTransition>`을 배치하는 위치에 따라 Suspense 경계를 애니메이션하는 두 가지 방법이 있습니다.
 
-Update:
+**Update:**
 
 ```
 <ViewTransition>
@@ -1071,7 +1051,7 @@ Update:
 <Sandpack>
 
 ```js src/Video.js hidden
-function Thumbnail({ video, children }) {
+function Thumbnail({video, children}) {
   return (
     <div
       aria-hidden="true"
@@ -1081,7 +1061,7 @@ function Thumbnail({ video, children }) {
   );
 }
 
-export function Video({ video }) {
+export function Video({video}) {
   return (
     <div className="video">
       <div className="link">
@@ -1096,7 +1076,7 @@ export function Video({ video }) {
 }
 
 export function VideoPlaceholder() {
-  const video = {image: "loading"}
+  const video = {image: 'loading'};
   return (
     <div className="video">
       <div className="link">
@@ -1112,20 +1092,13 @@ export function VideoPlaceholder() {
 ```
 
 ```js
-import {
-  ViewTransition,
-  useState,
-  startTransition,
-  Suspense
-} from 'react';
-import {Video, VideoPlaceholder} from "./Video";
-import {useLazyVideoData} from "./data"
+import {ViewTransition, useState, startTransition, Suspense} from 'react';
+import {Video, VideoPlaceholder} from './Video';
+import {useLazyVideoData} from './data';
 
 function LazyVideo() {
   const video = useLazyVideoData();
-  return (
-    <Video video={video}/>
-  );
+  return <Video video={video} />;
 }
 
 export default function Component() {
@@ -1137,8 +1110,9 @@ export default function Component() {
           startTransition(() => {
             setShowItem((prev) => !prev);
           });
-        }}
-      >{showItem ? '➖' : '➕'}</button>
+        }}>
+        {showItem ? '➖' : '➕'}
+      </button>
       {showItem ? (
         <ViewTransition>
           <Suspense fallback={<VideoPlaceholder />}>
@@ -1152,7 +1126,7 @@ export default function Component() {
 ```
 
 ```js src/data.js hidden
-import {use} from "react";
+import {use} from 'react';
 
 let cache = null;
 
@@ -1176,7 +1150,6 @@ export function useLazyVideoData() {
   return use(fetchVideo());
 }
 ```
-
 
 ```css
 #root {
@@ -1223,7 +1196,12 @@ button:hover {
   background-image: conic-gradient(at top right, #c76a15, #087ea4, #2b3491);
 }
 .loading {
-  background-image: linear-gradient(90deg, rgba(173, 216, 230, 0.3) 25%, rgba(135, 206, 250, 0.5) 50%, rgba(173, 216, 230, 0.3) 75%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(173, 216, 230, 0.3) 25%,
+    rgba(135, 206, 250, 0.5) 50%,
+    rgba(173, 216, 230, 0.3) 75%
+  );
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
@@ -1294,7 +1272,7 @@ button:hover {
 
 </Sandpack>
 
-Enter/Exit:
+**Enter/Exit:**
 
 ```
 <Suspense fallback={<ViewTransition><A /></ViewTransition>}>
@@ -1316,9 +1294,7 @@ Enter/Exit:
 ```js
 <ViewTransition>
   <div className={theme}>
-    <ViewTransition update="none">
-      {children}
-    </ViewTransition>
+    <ViewTransition update="none">{children}</ViewTransition>
   </div>
 </ViewTransition>
 ```
@@ -1345,18 +1321,18 @@ Enter/Exit:
 
 ```css
 ::view-transition-old(.slow-fade) {
-    animation-duration: 500ms;
+  animation-duration: 500ms;
 }
 
 ::view-transition-new(.slow-fade) {
-    animation-duration: 500ms;
+  animation-duration: 500ms;
 }
 ```
 
 <Sandpack>
 
 ```js src/Video.js hidden
-function Thumbnail({ video, children }) {
+function Thumbnail({video, children}) {
   return (
     <div
       aria-hidden="true"
@@ -1366,12 +1342,10 @@ function Thumbnail({ video, children }) {
   );
 }
 
-export function Video({ video }) {
+export function Video({video}) {
   return (
     <div className="video">
-      <div
-        className="link"
-      >
+      <div className="link">
         <Thumbnail video={video}></Thumbnail>
 
         <div className="info">
@@ -1385,18 +1359,14 @@ export function Video({ video }) {
 ```
 
 ```js
-import {
-  ViewTransition,
-  useState,
-  startTransition
-} from 'react';
-import {Video} from "./Video";
-import videos from "./data"
+import {ViewTransition, useState, startTransition} from 'react';
+import {Video} from './Video';
+import videos from './data';
 
 function Item() {
   return (
     <ViewTransition default="slow-fade">
-      <Video video={videos[0]}/>
+      <Video video={videos[0]} />
     </ViewTransition>
   );
 }
@@ -1410,8 +1380,9 @@ export default function Component() {
           startTransition(() => {
             setShowItem((prev) => !prev);
           });
-        }}
-      >{showItem ? '➖' : '➕'}</button>
+        }}>
+        {showItem ? '➖' : '➕'}
+      </button>
 
       {showItem ? <Item /> : null}
     </>
@@ -1426,18 +1397,17 @@ export default [
     title: 'First video',
     description: 'Video description',
     image: 'blue',
-  }
-]
+  },
+];
 ```
-
 
 ```css
 ::view-transition-old(.slow-fade) {
-    animation-duration: 500ms;
+  animation-duration: 500ms;
 }
 
 ::view-transition-new(.slow-fade) {
-    animation-duration: 500ms;
+  animation-duration: 500ms;
 }
 
 #root {
@@ -1537,7 +1507,7 @@ button:hover {
 <Sandpack>
 
 ```js src/Video.js hidden
-function Thumbnail({ video, children }) {
+function Thumbnail({video, children}) {
   return (
     <div
       aria-hidden="true"
@@ -1547,12 +1517,10 @@ function Thumbnail({ video, children }) {
   );
 }
 
-export function Video({ video }) {
+export function Video({video}) {
   return (
     <div className="video">
-      <div
-        className="link"
-      >
+      <div className="link">
         <Thumbnail video={video}></Thumbnail>
 
         <div className="info">
@@ -1566,18 +1534,14 @@ export function Video({ video }) {
 ```
 
 ```js
-import {
-  ViewTransition,
-  useState,
-  startTransition
-} from 'react';
-import {Video} from "./Video";
-import videos from "./data"
+import {ViewTransition, useState, startTransition} from 'react';
+import {Video} from './Video';
+import videos from './data';
 
 function Item() {
   return (
     <ViewTransition enter="slide-in" exit="slide-out">
-      <Video video={videos[0]}/>
+      <Video video={videos[0]} />
     </ViewTransition>
   );
 }
@@ -1591,8 +1555,9 @@ export default function Component() {
           startTransition(() => {
             setShowItem((prev) => !prev);
           });
-        }}
-      >{showItem ? '➖' : '➕'}</button>
+        }}>
+        {showItem ? '➖' : '➕'}
+      </button>
 
       {showItem ? <Item /> : null}
     </>
@@ -1607,10 +1572,9 @@ export default [
     title: 'First video',
     description: 'Video description',
     image: 'blue',
-  }
-]
+  },
+];
 ```
-
 
 ```css
 ::view-transition-old(.slide-in) {
@@ -1790,10 +1754,11 @@ button:hover {
 예를 들어 모든 앞으로 및 뒤로 네비게이션에 대한 애니메이션을 커스터마이징하려면,
 
 ```js
-<ViewTransition default={{
-  'navigation-back': 'slide-right',
-  'navigation-forward': 'slide-left',
- }}>
+<ViewTransition
+  default={{
+    'navigation-back': 'slide-right',
+    'navigation-forward': 'slide-left',
+  }}>
   <div>...</div>
 </ViewTransition>
  
@@ -1810,7 +1775,7 @@ ViewTransition이 "navigation-back" 애니메이션을 활성화하면 React는 
 <Sandpack>
 
 ```js src/Video.js hidden
-function Thumbnail({ video, children }) {
+function Thumbnail({video, children}) {
   return (
     <div
       aria-hidden="true"
@@ -1820,12 +1785,10 @@ function Thumbnail({ video, children }) {
   );
 }
 
-export function Video({ video }) {
+export function Video({video}) {
   return (
     <div className="video">
-      <div
-        className="link"
-      >
+      <div className="link">
         <Thumbnail video={video}></Thumbnail>
         <div className="info">
           <div className="video-title">{video.title}</div>
@@ -1843,25 +1806,22 @@ import {
   addTransitionType,
   useState,
   startTransition,
-} from "react";
-import {Video} from "./Video";
-import videos from "./data"
+} from 'react';
+import {Video} from './Video';
+import videos from './data';
 
 function Item() {
   return (
-    <ViewTransition enter={
-        {
-          "add-video-back": "slide-in-back",
-          "add-video-forward": "slide-in-forward"
-        }
-      }
-      exit={
-        {
-          "remove-video-back": "slide-in-forward",
-          "remove-video-forward": "slide-in-back"
-        }
-      }>
-      <Video video={videos[0]}/>
+    <ViewTransition
+      enter={{
+        'add-video-back': 'slide-in-back',
+        'add-video-forward': 'slide-in-forward',
+      }}
+      exit={{
+        'remove-video-back': 'slide-in-forward',
+        'remove-video-forward': 'slide-in-back',
+      }}>
+      <Video video={videos[0]} />
     </ViewTransition>
   );
 }
@@ -1875,26 +1835,28 @@ export default function Component() {
           onClick={() => {
             startTransition(() => {
               if (showItem) {
-                addTransitionType("remove-video-back")
+                addTransitionType('remove-video-back');
               } else {
-                addTransitionType("add-video-back")
+                addTransitionType('add-video-back');
               }
               setShowItem((prev) => !prev);
             });
-          }}
-        >⬅️</button>
+          }}>
+          ⬅️
+        </button>
         <button
           onClick={() => {
             startTransition(() => {
               if (showItem) {
-                addTransitionType("remove-video-forward")
+                addTransitionType('remove-video-forward');
               } else {
-                addTransitionType("add-video-forward")
+                addTransitionType('add-video-forward');
               }
               setShowItem((prev) => !prev);
             });
-          }}
-        >➡️</button>
+          }}>
+          ➡️
+        </button>
       </div>
       {showItem ? <Item /> : null}
     </>
@@ -1909,10 +1871,9 @@ export default [
     title: 'First video',
     description: 'Video description',
     image: 'blue',
-  }
-]
+  },
+];
 ```
-
 
 ```css
 ::view-transition-old(.slide-in-back) {
@@ -2139,7 +2100,7 @@ function Component() {
 
 해결하려면 `<ViewTransition>`이 다른 DOM 노드보다 앞에 오도록 하세요.
 
-```js [3, 5] 
+```js [3, 5]
 function Component() {
   return (
     <ViewTransition>
@@ -2153,7 +2114,6 @@ function Component() {
 
 이 오류는 동일한 `name`을 가진 두 개의 `<ViewTransition>` 컴포넌트가 동시에 마운트될 때 발생합니다.
 
-
 ```js [3]
 function Item() {
   // 🚩 모든 항목이 동일한 "name"을 갖게 됩니다.
@@ -2163,7 +2123,9 @@ function Item() {
 function ItemList({items}) {
   return (
     <>
-      {item.map(item => <Item key={item.id} />)}
+      {items.map((item) => (
+        <Item key={item.id} />
+      ))}
     </>
   );
 }
@@ -2175,16 +2137,16 @@ function ItemList({items}) {
 <ConsoleLogLine level="error">
 
 There are two `<ViewTransition name=%s>` components with the same name mounted at the same time. This is not supported and will cause View Transitions to error. Try to use a more unique name e.g. by using a namespace prefix and adding the id of an item to the name.
-{'    '}at Item
-{'    '}at ItemList
+{' '}at Item
+{' '}at ItemList
 
 </ConsoleLogLine>
 
 <ConsoleLogLine level="error">
 
 The existing `<ViewTransition name=%s>` duplicate has this stack trace.
-{'    '}at Item
-{'    '}at ItemList
+{' '}at Item
+{' '}at ItemList
 
 </ConsoleLogLine>
 </ConsoleBlockMulti>
@@ -2200,7 +2162,9 @@ function Item({id}) {
 function ItemList({items}) {
   return (
     <>
-      {item.map(item => <Item key={item.id} item={item} />)}
+      {items.map((item) => (
+        <Item key={item.id} item={item} />
+      ))}
     </>
   );
 }

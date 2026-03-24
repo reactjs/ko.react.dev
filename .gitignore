@@ -44,3 +44,10 @@ public/rss.xml
 .cursor
 .idea
 *.code-workspace
+
+# claude local settings
+.claude/*.local.*
+.claude/react/
+
+# worktrees
+.worktrees/

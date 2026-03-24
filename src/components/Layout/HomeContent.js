@@ -289,7 +289,7 @@ export function HomeContent() {
               <CTA
                 color="gray"
                 icon="framework"
-                href="/learn/start-a-new-react-project">
+                href="/learn/creating-a-react-app">
                 프레임워크로 시작하기
               </CTA>
             </div>

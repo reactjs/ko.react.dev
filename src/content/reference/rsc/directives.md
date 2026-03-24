@@ -10,7 +10,7 @@ title: "지시어"
 
 <Intro>
 
-지시어는 [React 서버 컴포넌트와 호환되는 번들러](/learn/start-a-new-react-project#full-stack-frameworks)에게 지시사항을 제공합니다.
+지시어는 [React 서버 컴포넌트와 호환되는 번들러](/learn/creating-a-react-app#full-stack-frameworks)에게 지시사항을 제공합니다.
 
 </Intro>
 
