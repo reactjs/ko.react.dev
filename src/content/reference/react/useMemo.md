@@ -62,7 +62,7 @@ function TodoList({ todos, tab }) {
 
 <Note>
 
-이와 같이 반환값을 캐싱하는 것을 [*memoization*](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98)라고 하며, 이 훅을 `useMemo`라고 부르는 이유압니다.
+이와 같이 반환값을 캐싱하는 것을 [*memoization*](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98)라고 하며, 이 훅을 `useMemo`라고 부르는 이유입니다.
 
 </Note>
 
