@@ -86,7 +86,11 @@ label {
 
 </Sandpack>
 
+<<<<<<< HEAD
 카운터가 다음과 같이 트리 구조로 보입니다.
+=======
+Here's how these look as a tree:
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <DiagramGroup>
 
@@ -1883,25 +1887,25 @@ export default function Gallery() {
 
 let images = [{
   place: 'Penang, Malaysia',
-  src: 'https://i.imgur.com/FJeJR8M.jpg'
+  src: 'https://react.dev/images/docs/scientists/FJeJR8M.jpg'
 }, {
   place: 'Lisbon, Portugal',
-  src: 'https://i.imgur.com/dB2LRbj.jpg'
+  src: 'https://react.dev/images/docs/scientists/dB2LRbj.jpg'
 }, {
   place: 'Bilbao, Spain',
-  src: 'https://i.imgur.com/z08o2TS.jpg'
+  src: 'https://react.dev/images/docs/scientists/z08o2TS.jpg'
 }, {
   place: 'Valparaíso, Chile',
-  src: 'https://i.imgur.com/Y3utgTi.jpg'
+  src: 'https://react.dev/images/docs/scientists/Y3utgTi.jpg'
 }, {
   place: 'Schwyz, Switzerland',
-  src: 'https://i.imgur.com/JBbMpWY.jpg'
+  src: 'https://react.dev/images/docs/scientists/JBbMpWY.jpg'
 }, {
   place: 'Prague, Czechia',
-  src: 'https://i.imgur.com/QwUKKmF.jpg'
+  src: 'https://react.dev/images/docs/scientists/QwUKKmF.jpg'
 }, {
   place: 'Ljubljana, Slovenia',
-  src: 'https://i.imgur.com/3aIiwfm.jpg'
+  src: 'https://react.dev/images/docs/scientists/3aIiwfm.jpg'
 }];
 ```
 
@@ -1951,25 +1955,25 @@ export default function Gallery() {
 
 let images = [{
   place: 'Penang, Malaysia',
-  src: 'https://i.imgur.com/FJeJR8M.jpg'
+  src: 'https://react.dev/images/docs/scientists/FJeJR8M.jpg'
 }, {
   place: 'Lisbon, Portugal',
-  src: 'https://i.imgur.com/dB2LRbj.jpg'
+  src: 'https://react.dev/images/docs/scientists/dB2LRbj.jpg'
 }, {
   place: 'Bilbao, Spain',
-  src: 'https://i.imgur.com/z08o2TS.jpg'
+  src: 'https://react.dev/images/docs/scientists/z08o2TS.jpg'
 }, {
   place: 'Valparaíso, Chile',
-  src: 'https://i.imgur.com/Y3utgTi.jpg'
+  src: 'https://react.dev/images/docs/scientists/Y3utgTi.jpg'
 }, {
   place: 'Schwyz, Switzerland',
-  src: 'https://i.imgur.com/JBbMpWY.jpg'
+  src: 'https://react.dev/images/docs/scientists/JBbMpWY.jpg'
 }, {
   place: 'Prague, Czechia',
-  src: 'https://i.imgur.com/QwUKKmF.jpg'
+  src: 'https://react.dev/images/docs/scientists/QwUKKmF.jpg'
 }, {
   place: 'Ljubljana, Slovenia',
-  src: 'https://i.imgur.com/3aIiwfm.jpg'
+  src: 'https://react.dev/images/docs/scientists/3aIiwfm.jpg'
 }];
 ```
 

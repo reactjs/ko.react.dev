@@ -30,17 +30,29 @@ function ChatRoom({ roomId, theme }) {
 }
 ```
 
+<<<<<<< HEAD
 [아래에서 더 많은 예시를 확인하세요.](#usage)
+=======
+Effect Events are a part of your Effect logic, but they behave more like an event handler. They always “see” the latest values from render (like props and state) without re-synchronizing your Effect, so they're excluded from Effect dependencies. See [Separating Events from Effects](/learn/separating-events-from-effects#extracting-non-reactive-logic-out-of-effects) to learn more.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 #### 매개변수 {/*parameters*/}
 
 - `callback`: Effect 이벤트를 위한 로직을 포함하는 함수입니다. `useEffectEvent`로 Effect 이벤트를 정의했을 때, `callback`은 실행할 때마다 항상 최신의 props와 state 값을 참조합니다. 이를 통해 오래된 클로저 문제를 피할 수 있습니다.
 
+<<<<<<< HEAD
 #### 반환값 {/*returns*/}
+=======
+* `callback`: A function containing the logic for your Effect Event. The function can accept any number of arguments and return any value. When you call the returned Effect Event function, the `callback` always accesses the latest committed values from render at the time of the call.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 Effect 이벤트 함수를 반환합니다. `useEffect`, `useLayoutEffect` 또는 `useInsertionEffect` 내부에서 이 함수를 호출할 수 있습니다.
 
+<<<<<<< HEAD
 #### 주의 사항 {/*caveats*/}
+=======
+`useEffectEvent` returns an Effect Event function with the same type signature as your `callback`.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 - **Effect 내부에서만 호출하세요:** Effect 이벤트는 오로지 Effect 내부에서만 호출해야 합니다. 그것을 사용하는 Effect 이전에 그것을 정의하세요. 다른 컴포넌트나 훅으로 그것을 전달하지 마세요. [`eslint-plugin-react-hooks`](/reference/eslint-plugin-react-hooks) 린터(버전 6.1.1 또는 최신)는 Effect 이벤트를 잘못된 맥락에서 호출하는 것을 방지하기 위해 이 제한을 강제할 것입니다.
 - **의존성 지름길이 아닙니다:** Effect의 의존성 배열에 의존성을 적는 것을 피하기 위해 `useEffectEvent`를 사용하지 마세요. 이것은 버그를 숨기고 코드를 이해하는 것을 어렵게 합니다. 명시적으로 의존성을 작성하거나 필요한 경우 이전 값을 비교하기 위해 ref를 사용하세요.

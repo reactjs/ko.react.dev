@@ -38,9 +38,15 @@ function MyComponent() {
 
 #### 매개변수 {/*parameters*/}
 
+<<<<<<< HEAD
 * `reducer`: state가 어떻게 업데이트 되는지 지정하는 Reducer 함수입니다. Reducer 함수는 반드시 순수 함수여야 하며, State와 Action을 인수로 받아야 하고, 다음 State를 반환해야 합니다. State와 Action에는 모든 데이터 타입이 할당될 수 있습니다.
 * `initialArg`: 초기 State가 계산되는 값입니다. 모든 데이터 타입이 할당될 수 있습니다. 초기 State가 어떻게 계산되는지는 다음 `init` 인수에 따라 달라집니다.
 * **선택사항** `init`: 초기 State를 반환하는 초기화 함수입니다. 이 함수가 인수에 할당되지 않으면 초기 State는 `initialArg`로 설정됩니다. 할당되었다면 초기 State는 `init(initialArg)`를 호출한 결과가 할당됩니다.
+=======
+* `reducer`: The reducer function that specifies how the state gets updated. It must be pure, should take the state and action as arguments, and should return the next state. State and action can be of any types.
+* `initialArg`: The value from which the initial state is calculated. It can be a value of any type. How the initial state is calculated from it depends on the next `init` argument.
+* **optional** `init`: The initializer function that should return the initial state. If it's not specified, the initial state is set to `initialArg`. Otherwise, the initial state is set to the result of calling `init(initialArg)`.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 #### 반환값 {/*returns*/}
 

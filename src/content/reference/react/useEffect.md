@@ -44,7 +44,13 @@ function ChatRoom({ roomId }) {
 
 #### 매개변수 {/*parameters*/}
 
+<<<<<<< HEAD
 + `setup(설정)`: Effect의 로직이 포함된 함수입니다. 설정 함수는 선택적으로 *clean up(정리)* 함수를 반환할 수 있습니다. React는 컴포넌트가 DOM에 추가된 이후에 설정 함수를 실행합니다. 의존성의 변화에 따라 컴포넌트가 리렌더링이 되었을 경우, (설정 함수에 정리 함수를 추가했었다면) React는 이전 렌더링에 사용된 값으로 정리 함수를 실행한 후 새로운 값으로 설정 함수를 실행합니다. 컴포넌트가 DOM에서 제거된 경우에도 정리 함수를 실행합니다.
+=======
+* `setup`: The function with your Effect's logic. Your setup function may also optionally return a *cleanup* function. When your [component commits](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom), React will run your setup function. After every commit with changed dependencies, React will first run the cleanup function (if you provided it) with the old values, and then run your setup function with the new values. After your component is removed from the DOM, React will run your cleanup function.
+
+* **optional** `dependencies`: The list of all reactive values referenced inside of the `setup` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. If you omit this argument, your Effect will re-run after every commit of the component. [See the difference between passing an array of dependencies, an empty array, and no dependencies at all.](#examples-dependencies)
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 + `dependencies` **선택사항** : `설정` 함수의 코드 내부에서 참조되는 모든 반응형 값들이 포함된 배열로 구성됩니다. 반응형 값에는 props와 state, 모든 변수 및 컴포넌트 body에 직접적으로 선언된 함수들이 포함됩니다. 린터가 [React 환경에 맞게 설정되어 있을 경우](/learn/editor-setup#linting), 린터는 모든 반응형 값들이 의존성에 제대로 명시되어 있는지 검증할 것입니다. 의존성 배열은 항상 일정한 수의 항목을 가지고 있어야 하며 `[dep1, dep2, dep3]`과 같이 작성되어야 합니다. React는 각각의 의존성들을 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교법을 통해 이전 값과 비교합니다. 의존성을 생략할 경우, Effect는 컴포넌트가 리렌더링될 때마다 실행됩니다. [인수에 의존성 배열을 추가했을 때, 빈 배열을 추가했을 때, 의존성을 추가하지 않았을 때의 차이를 확인해 보세요.](#examples-dependencies)
 
@@ -112,7 +118,11 @@ function ChatRoom({ roomId }) {
    - 이후, <CodeStep step={1}>설정 코드</CodeStep>가 새로운 props와 state와 함께 실행됩니다.
 3. 컴포넌트가 화면에서 제거된 이후에 <CodeStep step={2}>정리 코드</CodeStep>가 마지막으로 실행됩니다 *(마운트 해제 시)*.
 
+<<<<<<< HEAD
 **위의 예시를 통해 순서를 설명해 보겠습니다.**
+=======
+**Let's illustrate this sequence for the example above.**
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 위의 `ChatRoom` 컴포넌트가 화면에 추가되면 초기 `serverUrl`과 `roomId`를 이용해 채팅방과 연결될 것입니다. 리렌더링에 의해 `serverUrl` 또는 `roomId`가 변경된다면 (예를 들어 사용자가 드롭다운 메뉴를 이용해 다른 채팅방을 선택할 경우) *Effect는 이전 채팅방과의 연결을 해제하고 다음 채팅방과 연결합니다.* `ChatRoom` 컴포넌트가 화면에서 제거된다면 Effect는 마지막 채팅방과 이뤄진 연결을 해제할 것입니다.
 
@@ -1436,7 +1446,11 @@ function Counter() {
 }
 ```
 
+<<<<<<< HEAD
 `count`가 반응형 값이므로 반드시 의존성 배열에 추가해야 합니다. 그러나 `count`가 변경되는 것은 Effect가 정리된 후 다시 설정되는 것을 야기하므로 `count`는 계속 증가할 것입니다. 이상적이지 않은 방식입니다.
+=======
+Since `count` is a reactive value, it must be specified in the list of dependencies. However, that causes the Effect to cleanup and setup again every time the `count` changes. This is not ideal.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 이러한 현상을 방지하려면 [`c => c + 1` state 변경함수](/reference/react/useState#updating-state-based-on-the-previous-state)를 `setCount`에 추가하세요.
 

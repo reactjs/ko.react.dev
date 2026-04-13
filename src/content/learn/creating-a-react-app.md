@@ -104,7 +104,11 @@ Next.js의 App Router는 [Suspense와 데이터 조회](/blog/2022/03/29/react-v
 
 앱에 기존 프레임워크에서 잘 제공되지 않는 제약 조건이 있거나, 자체 프레임워크를 구축하는 것을 선호하거나, React 앱의 기본 사항을 배우려는 경우 React 프로젝트를 처음부터 시작하는 데 사용할 수 있는 다른 옵션이 있습니다.
 
+<<<<<<< HEAD
 처음부터 시작하면 더 많은 유연성을 얻을 수 있지만 라우팅, 데이터 가져오기 및 기타 일반적인 사용 패턴에 사용할 도구를 선택해야 합니다. 이미 존재하는 프레임워크를 사용하는 대신 자신만의 프레임워크를 구축하는 것과 비슷합니다. 저희가 [권장하는 프레임워크](#full-stack-frameworks)에는 이러한 문제에 대한 기본 제공 솔루션이 있습니다.
+=======
+Starting from scratch gives you more flexibility, but does require that you make choices on which tools to use for routing, data fetching, and other common usage patterns.  It's a lot like building your own framework, instead of using a framework that already exists. The [frameworks we recommend](#full-stack-frameworks) have built-in solutions for these problems.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 자신만의 솔루션을 구축하려면, [Vite](https://vite.dev/), [Parcel](https://parceljs.org/) 또는 [RSbuild](https://rsbuild.dev/)와 같은 빌드 도구로 시작할 수 있도록 하는 [처음부터 React 앱 만들기](/learn/build-a-react-app-from-scratch) 가이드를 참조하세요.
 

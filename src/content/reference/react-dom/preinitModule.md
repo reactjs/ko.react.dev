@@ -44,12 +44,21 @@ function AppRoot() {
 
 #### 매개변수 {/*parameters*/}
 
+<<<<<<< HEAD
 * `href`: 문자열입니다. 다운로드하고 실행할 모듈의 URL입니다.
 * `options`: 객체입니다. 다음 속성을 포함합니다:
   *  `as`: 필수 문자열입니다. 반드시 `'script'`여야 합니다.
   *  `crossOrigin`: 문자열입니다. 사용할 [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)을 지정합니다. 가능한 값은 `anonymous` 또는 `use-credentials`입니다.
   *  `integrity`: 문자열입니다. 모듈의 암호학적 해시로, [무결성을 검증](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)하는 데 사용됩니다.
   *  `nonce`: 문자열입니다. 엄격한 Content Security Policy를 사용할 때 모듈을 허용하기 위한 암호학적 [nonce](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
+=======
+* `href`: a string. The URL of the module you want to download and execute.
+* `options`: an object. It contains the following properties:
+  *  `as`: a required string. It must be `'script'`.
+  *  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
+  *  `integrity`: a string. A cryptographic hash of the module, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
+  *  `nonce`: a string. A cryptographic [nonce to allow the module](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 #### 반환값 {/*returns*/}
 

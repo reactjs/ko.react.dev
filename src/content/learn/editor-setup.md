@@ -31,7 +31,11 @@ title: 에디터 설정하기
 
 ### 린팅<sup>Linting</sup> {/*linting*/}
 
+<<<<<<< HEAD
 코드 린터<sup>Linter</sup>는 코드를 작성하는 동안 실시간으로 문제를 찾아, 빠른 문제 해결을 도와줍니다. 자바스크립트를 위한 오픈 소스 린터<sup>Linter</sup>인 [ESLint](https://eslint.org)를 가장 많이 사용합니다!
+=======
+Code linters find problems in your code as you write, helping you fix them early. [ESLint](https://eslint.org/) is a popular, open source linter for JavaScript.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 * [React를 위한 추천 설정과 함께 ESLint 설치하기](https://www.npmjs.com/package/eslint-config-react-app) (사전에 [Node.js](https://nodejs.org/ko/download/current/)를 설치해야 합니다.)
 * [VS Code의 ESLint를 공식 익스텐션과 통합하기](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)

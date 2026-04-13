@@ -293,7 +293,11 @@ button { margin-left: 10px; }
 ```js {1,3,8}
 function ChatRoom({ roomId }) { // roomId prop은 시간이 지남에 따라 변경될 수 있습니다.
   useEffect(() => {
+<<<<<<< HEAD
     const connection = createConnection(serverUrl, roomId); // 이 effect는 roomId를 읽습니다.
+=======
+    const connection = createConnection(serverUrl, roomId); // This Effect reads roomId
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
     connection.connect();
     return () => {
       connection.disconnect();

@@ -44,6 +44,7 @@ function AppRoot() {
 
 #### 매개변수 {/*parameters*/}
 
+<<<<<<< HEAD
 * `href`: 문자열입니다. 다운로드하려는 리소스의 URL입니다.
 * `options`: 객체입니다. 여기에는 다음과 같은 속성이 포함되어 있습니다.
   *  `as`: 필수 문자열입니다. 리소스의 타입입니다. [가능한 값](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#as)은 `audio`, `document`, `embed`, `fetch`, `font`, `image`, `object`, `script`, `style`, `track`, `video`, `worker`입니다.
@@ -55,6 +56,19 @@ function AppRoot() {
   *  `fetchPriority`: 문자열입니다. 리소스 페칭의 상대적 우선순위를 제안합니다. 사용할 수 있는 값은 `auto` (기본값), `high` 그리고 `low`입니다.
   *  `imageSrcSet`: 문자열입니다. `as: "image"`와만 함께 사용합니다. [이미지의 소스 세트](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)를 지정합니다.
   *  `imageSizes`: 문자열입니다. `as: "image"`와만 함께 사용합니다. [이미지의 크기](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)를 지정합니다.
+=======
+* `href`: a string. The URL of the resource you want to download.
+* `options`: an object. It contains the following properties:
+  *  `as`: a required string. The type of resource. Its [possible values](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#as) are `audio`, `document`, `embed`, `fetch`, `font`, `image`, `object`, `script`, `style`, `track`, `video`, `worker`.
+  *  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`. It is required when `as` is set to `"fetch"`.
+  *  `referrerPolicy`: a string. The [Referrer header](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#referrerpolicy) to send when fetching. Its possible values are `no-referrer-when-downgrade` (the default), `no-referrer`, `origin`, `origin-when-cross-origin`, and `unsafe-url`.
+  *  `integrity`: a string. A cryptographic hash of the resource, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
+  *  `type`: a string. The MIME type of the resource.
+  *  `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy.
+  *  `fetchPriority`: a string. Suggests a relative priority for fetching the resource. The possible values are `auto` (the default), `high`, and `low`.
+  *  `imageSrcSet`: a string. For use only with `as: "image"`. Specifies the [source set of the image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
+  *  `imageSizes`: a string. For use only with `as: "image"`. Specifies the [sizes of the image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 #### 반환값 {/*returns*/}
 

@@ -40,6 +40,7 @@ script: "<script>"
 
 지원하는 다른 속성들:
 
+<<<<<<< HEAD
 * `async`: 불리언 값. 브라우저가 문서의 남은 부분을 처리할 때까지 스크립트 실행을 연기할 수 있도록 합니다. 이는 성능을 위한 우선적인 동작 방식입니다.
 *  `crossOrigin`: 문자열. 사용할 [CORS 정책](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)입니다. 가능한 값은 `anonymous`와 `use-credentials`입니다.
 * `fetchPriority`: 문자열. 여러 스크립트를 동시에 가져올 때 브라우저가 스크립트를 우선순위로 순위 지정할 수 있도록 합니다. `"high"`, `"low"`, 또는 `"auto"` (기본값)일 수 있습니다.
@@ -48,6 +49,16 @@ script: "<script>"
 * `nonce`: 문자열. 엄격한 콘텐츠 보안 정책을 사용할 때 [리소스를 허용하기 위해](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) 사용하는 암호화된 nonce입니다.
 * `referrer`: 문자열. 스크립트를 가져오고 스크립트가 다시 가져온 리소스를 가져올 때 보낼 [Referer 헤더를 지정합니다.](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#referrerpolicy)
 * `type`: 문자열. 스크립트가 [전통적인 스크립트, ES 모듈 또는 import 맵](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type)인지를 나타냅니다.
+=======
+* `async`: a boolean. Allows the browser to defer execution of the script until the rest of the document has been processed — the preferred behavior for performance.
+*  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
+* `fetchPriority`: a string. Lets the browser rank scripts in priority when fetching multiple scripts at the same time. Can be `"high"`, `"low"`, or `"auto"` (the default).
+* `integrity`: a string. A cryptographic hash of the script, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
+* `noModule`: a boolean. Disables the script in browsers that support ES modules — allowing for a fallback script for browsers that do not.
+* `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy.
+* `referrer`: a string. Says [what Referer header to send](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#referrerpolicy) when fetching the script and any resources that the script fetches in turn.
+* `type`: a string. Says whether the script is a [classic script, ES module, or import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type).
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 React의 [스크립트 특수 처리](#special-rendering-behavior)를 비활성화하는 속성들:
 

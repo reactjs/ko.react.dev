@@ -34,7 +34,11 @@ function AppRoot() {
 
 [아래 예시를 참고하세요.](#usage)
 
+<<<<<<< HEAD
 `preconnect`는 브라우저가 해당 서버와 연결을 맺어야 한다는 힌트를 제공합니다. 브라우저가 해당 서버를 선택하면, 해당 서버에서 리소스를 불러오는 속도가 빨라질 수 있습니다.
+=======
+The `preconnect` function provides the browser with a hint that it should open a connection to the given server. If the browser chooses to do so, this can speed up the loading of resources from that server.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 #### 매개변수 {/*parameters*/}
 

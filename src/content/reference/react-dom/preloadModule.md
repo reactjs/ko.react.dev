@@ -44,6 +44,7 @@ function AppRoot() {
 
 #### 매개변수 {/*parameters*/}
 
+<<<<<<< HEAD
 * `href`: 문자열입니다. 다운로드하려는 모듈의 URL입니다.
 * `options`: 객체입니다. 여기에는 다음과 같은 속성들이 포함되어 있습니다.
   *  `as`: 필수 문자열입니다. `'script'`여야 합니다.
@@ -51,6 +52,14 @@ function AppRoot() {
   *  `integrity`: 문자열입니다. 모듈의 [신뢰성 확인](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)을 위한
   모듈의 암호화 해시입니다.
   *  `nonce`: 문자열입니다. 엄격한 컨텐츠 보안 정책을 사용할 때 [모듈을 허용하기 위한 암호화 논스(Nonce)](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
+=======
+* `href`: a string. The URL of the module you want to download.
+* `options`: an object. It contains the following properties:
+  *  `as`: a required string. It must be `'script'`.
+  *  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
+  *  `integrity`: a string. A cryptographic hash of the module, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
+  *  `nonce`: a string. A cryptographic [nonce to allow the module](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 
 #### 반환값 {/*returns*/}

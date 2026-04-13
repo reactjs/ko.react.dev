@@ -879,7 +879,11 @@ const options2 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 console.log(Object.is(options1, options2)); // false
 ```
 
+<<<<<<< HEAD
 **객체 및 함수 의존성으로 인해 Effect가 필요 이상으로 자주 재동기화될 수 있습니다.**
+=======
+**Object and function dependencies can make your Effect re-synchronize more often than you need.**
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 그렇기 때문에 가능하면 객체와 함수를 Effect의 의존성으로 사용하지 않는 것이 좋습니다. 대신 컴포넌트 외부나 Effect 내부로 이동하거나 원시 값을 추출해 보세요.
 

@@ -97,7 +97,11 @@ it('can render and update a counter', async () => {
   container = document.createElement('div');
   document.body.appendChild(container);
 
+<<<<<<< HEAD
   // ✅ 컴포넌트를 act() 안에서 렌더링합니다.
+=======
+  // ✅ Render the component inside act().
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
   await act(() => {
     ReactDOMClient.createRoot(container).render(<Counter />);
   });
@@ -130,7 +134,11 @@ it.only('can render and update a counter', async () => {
     ReactDOMClient.createRoot(container).render(<Counter />);
   });
 
+<<<<<<< HEAD
   // ✅ 이벤트 디스패치를 act() 안에서 실행합니다.
+=======
+  // ✅ Dispatch the event inside act().
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
   await act(async () => {
     button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
   });
