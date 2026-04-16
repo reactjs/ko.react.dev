@@ -38,7 +38,7 @@ React Performance 트랙을 구동하는 프로파일링 도구는 추가적인 
 ### 프로파일링 빌드 사용하기 {/*using-profiling-builds*/}
 
 프로덕션 및 개발 빌드 외에도 React는 특수한 프로파일링 빌드를 제공합니다.
-프로파일링 빌드를 사용하려면 `react-dom/client` 대신 `react-dom/profiling`을 사용해야 합니다. 모든 `react-dom/client` 임포트(import) 구문을 수동으로 수정하는 대신 **번들러 별칭(alias)** 을 설정하여 빌드 시점에 
+프로파일링 빌드를 사용하려면 `react-dom/client` 대신 `react-dom/profiling`을 사용해야 합니다. 모든 `react-dom/client` 임포트(import) 구문을 수동으로 수정하는 대신 **번들러 별칭(alias)** 을 설정하여 빌드 시점에
 `react-dom/client` 가 `react-dom/profiling` 을 가리키도록 하는 것을 권장합니다.
 사용 중인 프레임워크에 React 프로파일링 빌드를 활성화하는 기능이 내장되어 있을 수 있습니다.
 

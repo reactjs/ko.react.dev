@@ -106,7 +106,7 @@ app.use('/', async (request, response) => {
 
 <CodeStep step={1}>루트 컴포넌트</CodeStep>와 함께, <CodeStep step={2}>부트스트랩 `<script>` 경로</CodeStep> 목록을 제공해야 합니다. 루트 컴포넌트는 **루트 `<html>` 태그를 포함한 전체 문서를 반환해야 합니다.**
 
-예를 들어, 다음과 같을 수 있습니다. 
+예를 들어, 다음과 같을 수 있습니다.
 
 ```js [[1, 1, "App"]]
 export default function App() {
@@ -282,9 +282,9 @@ function ProfilePage() {
 - [`lazy`](/reference/react/lazy)를 사용한 컴포넌트 코드의 지연로딩.
 - [`use`](/reference/react/use)를 사용해 Promise의 값을 읽기.
 
-Suspense는 Effect나 이벤트 핸들러 내부에서 데이터가 패칭될 때 이를 **감지하지 않습니다.** 
+Suspense는 Effect나 이벤트 핸들러 내부에서 데이터가 패칭될 때 이를 **감지하지 않습니다.**
 
-위 예시의 `Posts` 컴포넌트에서 데이터를 로드하는 구체적인 방법은 사용하는 프레임워크에 따라 다릅니다. Suspense를 지원하는 프레임워크를 사용한다면, 해당 프레임워크의 데이터 패칭 문서에서 자세한 내용을 확인할 수 있습니다. 
+위 예시의 `Posts` 컴포넌트에서 데이터를 로드하는 구체적인 방법은 사용하는 프레임워크에 따라 다릅니다. Suspense를 지원하는 프레임워크를 사용한다면, 해당 프레임워크의 데이터 패칭 문서에서 자세한 내용을 확인할 수 있습니다.
 
 특정 프레임워크를 사용하지 않는 Suspense 지원 데이터 패칭은 아직 지원되지 않습니다. Suspense를 지원하는 데이터 소스를 구현하기 위한 요구 사항은 현재 불안정하고 문서화되어 있지 않습니다. 데이터 소스를 Suspense와 통합하기 위한 공식 API는 React의 향후 버전에서 제공될 예정입니다.
 

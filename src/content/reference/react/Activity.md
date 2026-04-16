@@ -43,7 +43,7 @@ Activity 경계가 <CodeStep step={1}>숨겨지면</CodeStep>, React는 `display
 #### Props {/*props*/}
 
 * `children`: 표시하거나 숨길 UI입니다.
-* `mode`: `'visible'` 또는 `'hidden'` 중 하나의 문자열 값입니다. 생략하면 기본값은 `'visible'`입니다. 
+* `mode`: `'visible'` 또는 `'hidden'` 중 하나의 문자열 값입니다. 생략하면 기본값은 `'visible'`입니다.
 
 #### 주의 사항 {/*caveats*/}
 
