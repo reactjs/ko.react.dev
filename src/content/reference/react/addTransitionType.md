@@ -5,11 +5,7 @@ version: canary
 
 <Canary>
 
-<<<<<<< HEAD
 **`addTransitionType` API는 현재 React의 카나리 및 실험적 채널에서만 사용할 수 있습니다.** 
-=======
-**The `addTransitionType` API is currently only available in React’s Canary and Experimental channels.**
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 [React의 배포 채널에 대해 더 알아보세요.](/community/versioning-policy#all-release-channels)
 
@@ -78,15 +74,9 @@ function Submit({action) {
 
 현재 트랜지션 타입은 원인에 따라 서로 다른 애니메이션을 커스터마이즈하는 데 사용할 수 있습니다. 사용할 수 있는 방식은 세 가지입니다.
 
-<<<<<<< HEAD
 - [브라우저 View Transition 타입으로 애니메이션 커스텀하기](#customize-animations-using-browser-view-transition-types)
 - [`View Transition` 클래스로 애니메이션 커스텀하기](#customize-animations-using-view-transition-class)
 - [`ViewTransition`이벤트로 애니메이션 커스텀하기](#customize-animations-using-viewtransition-events) 
-=======
-- [Customize animations using browser view transition types](#customize-animations-using-browser-view-transition-types)
-- [Customize animations using `View Transition` Class](#customize-animations-using-view-transition-class)
-- [Customize animations using `ViewTransition` events](#customize-animations-using-viewtransition-events)
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 향후에는 트랜지션의 원인을 활용할 수 있는 다양한 용례를 지원할 예정입니다.
 

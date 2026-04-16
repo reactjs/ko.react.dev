@@ -296,11 +296,7 @@ setPerson({
 });
 ```
 
-<<<<<<< HEAD
 이제 폼이 동작합니다!
-=======
-Now the form works!
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 각 input 필드에 대해 분리된 state를 선언하지 않았음을 기억하세요. 큰 폼들은 올바르게 업데이트한다면, 한 객체에 모든 데이터를 그룹화하여 저장하는 것이 편리합니다.
 
@@ -377,11 +373,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-<<<<<<< HEAD
 `...` 전개 문법은 "얕다"는 점을 알아두세요. 이것은 한 레벨 깊이의 내용만 복사합니다. 빠르지만, 중첩된 프로퍼티를 업데이트하고 싶다면 한 번 이상 사용해야 한다는 뜻이기도 합니다.
-=======
-Note that the `...` spread syntax is "shallow"--it only copies things one level deep. This makes it fast, but it also means that if you want to update a nested property, you'll have to use it more than once.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <DeepDive>
 

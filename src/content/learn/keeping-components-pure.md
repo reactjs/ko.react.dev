@@ -27,7 +27,6 @@ title: 컴포넌트를 순수하게 유지하기
 
 이 수학 공식을 생각해보세요. <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>.
 
-<<<<<<< HEAD
 만약 <Math><MathI>x</MathI> = 2</Math>이라면 항상 <Math><MathI>y</MathI> = 4</Math>입니다.
 
 만약 <Math><MathI>x</MathI> = 3</Math>이라면 항상 <Math><MathI>y</MathI> = 6</Math>입니다.
@@ -35,15 +34,6 @@ title: 컴포넌트를 순수하게 유지하기
 만약 <Math><MathI>x</MathI> = 3</Math>이라면, 그날의 시간이나 주식 시장의 상태에 따라 <MathI>y</MathI>가 갑자기 <Math>9</Math>가 되거나 <Math>–1</Math>이 되거나 <Math>2.5</Math>가 되는 일은 일어나지 않습니다.
 
 만약 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> 그리고 <Math><MathI>x</MathI> = 3</Math>이라면, <MathI>y</MathI>는 _항상_ <Math>6</Math>이 될 것입니다.
-=======
-If <Math><MathI>x</MathI> = 2</Math> then <Math><MathI>y</MathI> = 4</Math>. Always.
-
-If <Math><MathI>x</MathI> = 3</Math> then <Math><MathI>y</MathI> = 6</Math>. Always.
-
-If <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> won't sometimes be <Math>9</Math> or <Math>–1</Math> or <Math>2.5</Math> depending on the time of day or the state of the stock market.
-
-If <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> and <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> will _always_ be <Math>6</Math>.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 위 내용들을 자바스크립트 함수로 만든다면 아래와 같습니다.
 
@@ -85,19 +75,11 @@ export default function App() {
 
 </Sandpack>
 
-<<<<<<< HEAD
 `Recipe`에 `drinkers={2}`를 넘기면 항상 `2 cups of water`를 포함한 JSX 반환합니다.
-=======
-When you pass `drinkers={2}` to `Recipe`, it will return JSX containing `2 cups of water`. Always.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 `drinkers={4}`를 넘기면 항상 `4 cups of water`를 포함한 JSX를 반환합니다.
 
-<<<<<<< HEAD
 수학 공식처럼 말입니다.
-=======
-Just like a math formula.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 컴포넌트를 마치 레시피라고 생각할 수도 있습니다. 레시피를 그대로 따르고 요리 중 새로운 재료를 추가하지 않으면 매번 동일한 요리를 만들 수 있습니다. 여기서 "요리"는 컴포넌트가 React에 전달하여 [렌더링](/learn/render-and-commit)하도록 하는 JSX입니다.
 
@@ -233,7 +215,6 @@ React에서, **사이드 이펙트는 보통 [이벤트 핸들러](/learn/respon
 
 <Recap>
 
-<<<<<<< HEAD
 * 컴포넌트는 순수해야만 합니다. 이것은 두 가지를 의미합니다.
   * **자신의 일에만 집중합니다.** 렌더링 전에 존재했던 객체나 변수를 변경하지 않아야 합니다.
   * **같은 입력, 같은 출력.** 입력이 같을 경우, 컴포넌트는 항상 같은 JSX를 반환해야 합니다.
@@ -244,20 +225,6 @@ React에서, **사이드 이펙트는 보통 [이벤트 핸들러](/learn/respon
 
 </Recap>
 
-=======
-* A component must be pure, meaning:
-  * **It minds its own business.** It should not change any objects or variables that existed before rendering.
-  * **Same inputs, same output.** Given the same inputs, a component should always return the same JSX.
-* Rendering can happen at any time, so components should not depend on each others' rendering sequence.
-* You should not mutate any of the inputs that your components use for rendering. That includes props, state, and context. To update the screen, ["set" state](/learn/state-a-components-memory) instead of mutating preexisting objects.
-* Strive to express your component's logic in the JSX you return. When you need to "change things", you'll usually want to do it in an event handler. As a last resort, you can `useEffect`.
-* Writing pure functions takes a bit of practice, but it unlocks the power of React's paradigm.
-
-</Recap>
-
-
-
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 <Challenges>
 
 #### 고장난 시계 고치기 {/*fix-a-broken-clock*/}

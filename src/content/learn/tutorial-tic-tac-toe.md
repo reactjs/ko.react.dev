@@ -341,11 +341,7 @@ import './styles.css';
 import App from './App';
 ```
 
-<<<<<<< HEAD
 1~5줄은 아래에 있는 필요한 모든 코드를 한 곳으로 가져옵니다.
-=======
-Lines 1-5 bring all the necessary pieces together:
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 * React
 * 웹 브라우저와 상호작용하는 React의 라이브러리 (React DOM)
@@ -559,11 +555,7 @@ export default function Board() {
 }
 ```
 
-<<<<<<< HEAD
 브라우저의 `div`와 달리, 직접 만든 `Board`와 `Square` 컴포넌트는 반드시 대문자로 시작해야 한다는 점에 유의하세요.
-=======
-Note how unlike the browser `div`s, your own components `Board` and `Square` must start with a capital letter.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 보드를 살펴보겠습니다.
 
@@ -1106,11 +1098,7 @@ function Square({ value, onSquareClick }) {
 }
 ```
 
-<<<<<<< HEAD
 이제 `onSquareClick` Prop을 `Board` 컴포넌트의 `handleClick` 함수와 연결하세요. `onSquareClick` 함수를 `handleClick`과 연결하려면 첫 번째 `Square` 컴포넌트의 `onSquareClick` Prop에 해당 함수를 전달하면 됩니다.
-=======
-Now you'll connect the `onSquareClick` prop to a function in the `Board` component that you'll name `handleClick`. To connect `onSquareClick` to `handleClick` you'll pass a function to the `onSquareClick` prop of the first `Square` component:
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ```js {7}
 export default function Board() {
@@ -2089,21 +2077,13 @@ export default function Game() {
 }
 ```
 
-<<<<<<< HEAD
 아래에서 코드가 어떻게 보이는지 확인할 수 있습니다. 개발자 도구 콘솔에 다음과 같은 오류 메시지가 표시되어야 합니다:
-=======
-You can see what your code should look like below. Note that you should see an error in the developer tools console that says:
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <ConsoleBlock level="warning">
 경고: 배열 또는 반복자의 각 자식 요소는 고유한 "key" 속성을 가져야 합니다. &#96;Game&#96;의 렌더 메서드를 확인하세요.
 </ConsoleBlock>
 
-<<<<<<< HEAD
 다음 부문에서 이 오류를 수정하겠습니다.
-=======
-You'll fix this error in the next section.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <Sandpack>
 

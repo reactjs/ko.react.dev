@@ -12,11 +12,7 @@ title: 처음부터 React 앱 만들기
 
 #### 프레임워크 사용을 고려해 보세요 {/*consider-using-a-framework*/}
 
-<<<<<<< HEAD
 React로 처음부터 시작하는 것은 React를 처음 사용하기에는 쉬운 방법이지만, 이 방식이 종종 자신만의 임시 프레임워크를 만드는 것과 다름없다는 점을 알아야 합니다. 요구사항이 발전함에 따라, 저희가 추천하는 프레임워크들이 이미 잘 개발하고 해결한 문제들을 직접 해결해야 할 수도 있습니다.
-=======
-Starting from scratch is an easy way to get started using React, but a major tradeoff to be aware of is that going this route is often the same as building your own adhoc framework. As your requirements evolve, you may need to solve more framework-like problems that our recommended frameworks already have well developed and supported solutions for.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 예를 들어, 나중에 앱이 서버 사이드 렌더링(SSR), 정적 사이트 생성(SSG), 또는 React 서버 컴포넌트<sup>RSC</sup>를 지원해야 한다면, 이 모든 것을 직접 구현해야 할 것입니다. 마찬가지로, 미래의 React 기능 중 프레임워크 수준의 통합이 필요한 기능이 있다면, 사용하고 싶을 때 직접 구현해야 합니다.
 
@@ -136,22 +132,12 @@ GraphQL API에서 데이터를 가져온다면 다음을 사용할 것을 제안
 
 * **React 서버 컴포넌트(RSC)** 를 사용하면 빌드 타임, 서버 전용, 대화형 컴포넌트를 단일 React 트리에서 혼합할 수 있습니다. RSC는 성능을 향상할 수 있지만, 현재는 설정하고 유지 관리하는 데 깊은 전문 지식이 필요합니다. [Parcel의 RSC 예시](https://github.com/parcel-bundler/rsc-examples)를 참조하세요.
 
-<<<<<<< HEAD
 프레임워크로 만들어진 앱이 라우트별로 렌더링 전략을 선택할 수 있도록, 렌더링 전략은 라우터와 통합되어야 합니다. 이렇게 하면 전체 앱을 다시 작성할 필요 없이 다양한 렌더링 전략을 사용할 수 있습니다. 예를 들어, 앱의 랜딩 페이지는 정적으로 생성되는 것(SSG)이 유리할 수 있지만, 콘텐츠 피드가 있는 페이지는 서버 측 렌더링이 가장 잘 작동할 수 있습니다.
-=======
-Your rendering strategies need to integrate with your router so apps built with your framework can choose the rendering strategy on a per-route level. This will enable different rendering strategies without having to rewrite your whole app. For example, the landing page for your app might benefit from being statically generated (SSG), while a page with a content feed might perform best with server-side rendering.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 올바른 라우트에 올바른 렌더링 전략을 사용하면 콘텐츠의 첫 바이트가 로드되는 시간([Time to First Byte](https://web.dev/articles/ttfb)), 첫 번째 콘텐츠가 렌더링 되는 시간([First Contentful Paint](https://web.dev/articles/fcp)), 그리고 앱의 가장 큰 시각적 콘텐츠가 렌더링되는 시간([Largest Contentful Paint](https://web.dev/articles/lcp))을 줄일 수 있습니다.
 
 ### 그리고 더... {/*and-more*/}
 
-<<<<<<< HEAD
 이것들은 새로운 앱을 처음부터 구축할 때 고려해야 할 기능들의 몇 가지 예시에 불과합니다. 맞닥뜨리게 될 많은 제약은 각 문제가 서로 얽혀 있고 익숙하지 않은 문제 영역에 대한 깊은 전문 지식을 요구할 수 있기 때문에 해결하기 어려울 수 있습니다.
 
 이러한 문제들을 직접 해결하고 싶지 않다면, 이러한 기능을 바로 제공하는 [프레임워크로 시작](/learn/creating-a-react-app)할 수 있습니다.
-=======
-These are just a few examples of the features a new app will need to consider when building from scratch. Many limitations you'll hit can be difficult to solve as each problem is interconnected with the others and can require deep expertise in problem areas you may not be familiar with.
-
-If you don't want to solve these problems on your own, you can [get started with a framework](/learn/creating-a-react-app) that provides these features out of the box.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a

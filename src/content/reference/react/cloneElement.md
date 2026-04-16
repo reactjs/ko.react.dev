@@ -246,11 +246,7 @@ button {
 
 ### 렌더링 prop으로 데이터를 전달하기 {/*passing-data-with-a-render-prop*/}
 
-<<<<<<< HEAD
 `cloneElement`를 사용하는 대신에 `renderItem`과 같은 *렌더링 prop*을 사용하는 것을 고려해 보세요. 다음 예시의 `List`는 `renderItem`을 prop으로 받습니다. `List`는 모든 item에 대해 `renderItem`을 호출하고 `isHighlighted`를 인자로 전달합니다.
-=======
-Instead of using `cloneElement`, consider accepting a *render prop* like `renderItem`. Here, `List` receives `renderItem` as a prop. `List` calls `renderItem` for every item and passes `isHighlighted` as an argument:
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ```js {1,7}
 export default function List({ items, renderItem }) {

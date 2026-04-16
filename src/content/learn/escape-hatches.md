@@ -227,11 +227,7 @@ function Form() {
 }
 ```
 
-<<<<<<< HEAD
 그러나 외부 시스템과 동기화하려면 Effect가 <em>필요</em>합니다.
-=======
-However, you *do* need Effects to synchronize with external systems.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <LearnMore path="/learn/you-might-not-need-an-effect">
 

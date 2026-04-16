@@ -342,11 +342,7 @@ img { height: 180px; }
 export default function Profile() {
   return (
     <img
-<<<<<<< HEAD
-      src="https://i.imgur.com/jA8hHMpm.jpg"
-=======
       src="https://react.dev/images/docs/scientists/jA8hHMpm.jpg"
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
       alt="Katsuko Saruhashi"
     />
   );

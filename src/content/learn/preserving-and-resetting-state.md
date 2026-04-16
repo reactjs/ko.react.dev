@@ -86,11 +86,7 @@ label {
 
 </Sandpack>
 
-<<<<<<< HEAD
 카운터가 다음과 같이 트리 구조로 보입니다.
-=======
-Here's how these look as a tree:
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <DiagramGroup>
 

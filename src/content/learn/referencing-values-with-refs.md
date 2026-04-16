@@ -35,11 +35,7 @@ const ref = useRef(0);
 
 ```js
 {
-<<<<<<< HEAD
   current: 0 // useRef에 전달한 값
-=======
-  current: 0 // The value you passed to useRef
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 }
 ```
 

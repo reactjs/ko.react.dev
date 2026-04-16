@@ -40,11 +40,7 @@ export default function App() {
 }
 ```
 
-<<<<<<< HEAD
 상태 정보를 제공받기 위해 `Submit` 컴포넌트를 `<form>` 내부에 렌더링해야 합니다. 이 Hook은 폼이 현재 제출하고 있는 상태인지를 의미하는 <CodeStep step={1}>`pending`</CodeStep> 프로퍼티와 같은 상태 정보를 반환합니다.
-=======
-To get status information, the `Submit` component must be rendered within a `<form>`. The Hook returns information like the <CodeStep step={1}>`pending`</CodeStep> property which tells you if the form is actively submitting.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 위의 예시에서 `Submit` 컴포넌트는 폼이 제출 중일 때 `<button>`을 누를 수 없도록 하기 위해 이 정보를 활용합니다.
 
@@ -69,13 +65,8 @@ To get status information, the `Submit` component must be rendered within a `<fo
 
 #### 주의 사항 {/*caveats*/}
 
-<<<<<<< HEAD
 * `useFormStatus` Hook은 `<form>` 내부에 렌더링한 컴포넌트에서 호출해야 합니다.
 * `useFormStatus`는 오직 상위 `<form>`에 대한 상태 정보만 반환합니다. 동일한 컴포넌트나 자식 컴포넌트에서 렌더링한 `<form>`의 상태 정보는 반환하지 않습니다.
-=======
-* The `useFormStatus` Hook must be called from a component that is rendered inside a `<form>`.
-* `useFormStatus` will only return status information for a parent `<form>`. It will not return status information for any `<form>` rendered in that same component or children components.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ---
 
@@ -84,11 +75,7 @@ To get status information, the `Submit` component must be rendered within a `<fo
 ### 폼을 제출하는 동안 대기 중인 상태로 표시하기 {/*display-a-pending-state-during-form-submission*/}
 폼을 제출하는 동안 대기<sup>Pending</sup> 상태를 표시하려면 `<form>` 내에서 렌더링한 컴포넌트에서 `useFormStatus` Hook을 호출하고 반환된 `pending` 프로퍼티를 확인하세요.
 
-<<<<<<< HEAD
 여기서는 `pending` 프로퍼티를 사용하여 폼이 제출 중인지를 나타냅니다.
-=======
-Here, we use the `pending` property to indicate the form is submitting.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <Sandpack>
 
@@ -144,11 +131,7 @@ function Form() {
 
 ```js
 function Submit() {
-<<<<<<< HEAD
   // ✅ `pending`은 Submit 컴포넌트를 감싸는 폼에서 파생됩니다
-=======
-  // ✅ `pending` will be derived from the form that wraps the Submit component
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
   const { pending } = useFormStatus();
   return <button disabled={pending}>...</button>;
 }
@@ -240,11 +223,7 @@ button {
 
 ### `status.pending`이 절대로 `true`가 되지 않습니다 {/*pending-is-never-true*/}
 
-<<<<<<< HEAD
 `useFormStatus`는 오직 상위 `<form>`에 대한 상태 정보만 반환합니다.
-=======
-`useFormStatus` will only return status information for a parent `<form>`.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 `useFormStatus`를 호출하는 컴포넌트가 `<form>`에 감싸져 있지 않다면, `status.pending`은 항상 `false`를 반환합니다. `useFormStatus`가 `<form>` 엘리먼트의 자식 컴포넌트에서 호출되는지 확인하세요.
 

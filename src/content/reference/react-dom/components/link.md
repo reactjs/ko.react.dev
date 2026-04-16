@@ -151,11 +151,7 @@ export default function SiteMapPage() {
 
 ### 스타일시트 우선순위 제어하기 {/*controlling-stylesheet-precedence*/}
 
-<<<<<<< HEAD
 스타일시트는 서로 충돌할 수 있으며, 이 경우 브라우저는 문서에서 나중에 오는 스타일시트를 적용합니다. React는 `precedence` 속성을 사용하여 스타일시트의 순서를 제어할 수 있도록 합니다. 이 예시에서는 세 개의 컴포넌트가 스타일시트를 렌더링하며, 동일한 `precedence` 값을 가진 스타일시트는 `<head>`에서 함께 그룹화됩니다.
-=======
-Stylesheets can conflict with each other, and when they do, the browser goes with the one that comes later in the document. React lets you control the order of stylesheets with the `precedence` prop. In this example, three components render stylesheets, and the ones with the same precedence are grouped together in the `<head>`.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <SandpackWithHTMLOutput>
 

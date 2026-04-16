@@ -169,11 +169,7 @@ button { margin-right: 10px; }
 
 ### 이벤트 핸들러를 Prop으로 전달하기 {/*passing-event-handlers-as-props*/}
 
-<<<<<<< HEAD
 종종 부모 컴포넌트로 자식의 이벤트 핸들러를 지정하기를 원할 수 있습니다. 버튼의 경우를 고려해봅시다. `Button` 컴포넌트를 사용하는 위치에 따라 다른 기능을 수행하도록 만들고자 할 때가 있을 것입니다. 한 버튼은 영화를 재생하고 다른 버튼은 이미지를 업로드하도록 말이죠.
-=======
-Often you'll want the parent component to specify a child's event handler. Consider buttons: depending on where you're using a `Button` component, you might want to execute a different function—perhaps one plays a movie and another uploads an image.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 이러한 기능을 위해서 컴포넌트가 그 부모 컴포넌트로부터 받은 prop을 이벤트 핸들러로 다음과 같이 전달합니다.
 
@@ -316,19 +312,11 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
-<<<<<<< HEAD
 `App` 컴포넌트는 `Toolbar`가 `onPlayMovie` 또는 `onUploadImage`를 가지고 *무엇*을 할 것인지 알 필요가 없음에 유의하세요. 이 `Toolbar` 구현의 특별한 부분입니다. 지금 `Toolbar`는 위 요소들을 `Button`의 `onClick` 핸들러 요소로 내려보내지만, 추후에는 키보드 바로가기 키 입력을 통해 이들을 활성화할 수도 있을 것입니다. `onPlayMovie`와 같이 prop 이름을 애플리케이션별 상호작용에 기반하여 명명한다면 나중에 어떻게 이를 이용하게 될지에 대한 유연성을 제공할 것입니다.
 
 <Note>
 
 이벤트 핸들러에 적절한 HTML 태그를 사용하고 있는지 확인하세요. 예를 들어 클릭을 처리하기 위해서는 `<div onClick={handleClick}>` 대신 [`<button onClick={handleClick}>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/button)을 사용하세요. 실제 브라우저에서 `<button>`은 키보드 내비게이션과 같은 빌트인 브라우저 동작을 활성화 합니다. 만일 버튼의 기본 브라우저 스타일링이 싫어서 링크나 다른 UI 요소처럼 보이도록 하고 싶다면 CSS를 통해 그 목적을 이룰 수 있습니다. [접근성을 위한 마크업 작성법에 대해 더 알아보세요.](https://developer.mozilla.org/ko/docs/Learn/Accessibility/HTML)
-=======
-Notice how the `App` component does not need to know *what* `Toolbar` will do with `onPlayMovie` or `onUploadImage`. That's an implementation detail of the `Toolbar`. Here, `Toolbar` passes them down as `onClick` handlers to its `Button`s, but it could later also trigger them on a keyboard shortcut. Naming props after app-specific interactions like `onPlayMovie` gives you the flexibility to change how they're used later.
-
-<Note>
-
-Make sure that you use the appropriate HTML tags for your event handlers. For example, to handle clicks, use [`<button onClick={handleClick}>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) instead of `<div onClick={handleClick}>`. Using a real browser `<button>` enables built-in browser behaviors like keyboard navigation. If you don't like the default browser styling of a button and want to make it look more like a link or a different UI element, you can achieve it with CSS. [Learn more about writing accessible markup.](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 </Note>
 
@@ -423,21 +411,12 @@ button { margin: 5px; }
 
 버튼을 클릭하면 다음과 같은 절차가 진행됩니다.
 
-<<<<<<< HEAD
 1. React가 `<button>`에 전달된 `onClick` 핸들러를 호출합니다.
 2. `Button`에 정의된 해당 핸들러는 다음을 수행합니다.
    * `e.stopPropagation()`을 호출하여 이벤트가 더 이상 bubbling 되지 않도록 방지합니다.
    * `Toolbar` 컴포넌트가 전달해 준 `onClick` 함수를 호출합니다.
 3. `Toolbar` 컴포넌트에서 정의된 위 함수가 버튼의 alert를 표시합니다.
 4. 전파가 중단되었으므로 부모인 `<div>`의 `onClick`은 *실행되지 않습니다*.
-=======
-1. React calls the `onClick` handler passed to `<button>`.
-2. That handler, defined in `Button`, does the following:
-   * Calls `e.stopPropagation()`, preventing the event from bubbling further.
-   * Calls the `onClick` function, which is a prop passed from the `Toolbar` component.
-3. That function, defined in the `Toolbar` component, displays the button's own alert.
-4. Since the propagation was stopped, the parent `<div>`'s `onClick` handler does *not* run.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 `e.stopPropagation()`의 결과, 버튼을 클릭하는 것은 이제 `<button>`과 그 부모인 툴바의 `<div>`가 보내는 두 개의 alert를 표시하지 않고 단 하나의 `<button>` alert 만을 표시합니다. 버튼을 클릭하는 것은 그 주변의 툴바 부분을 클릭하는 것과 같지 않기에 이 UI 상에서는 전파를 멈추는 것이 합리적일 것입니다.
 
@@ -454,19 +433,11 @@ button { margin: 5px; }
 </div>
 ```
 
-<<<<<<< HEAD
 각각의 이벤트는 세 단계를 거쳐 전파됩니다.
 
 1. 아래로 전달되면서 만나는 모든 `onClickCapture` 핸들러를 호출합니다.
 2. 클릭된 요소의 `onClick` 핸들러를 실행합니다.
 3. 위로 전달되면서 만나는 모든 `onClick` 핸들러를 호출합니다.
-=======
-Each event propagates in three phases:
-
-1. It travels down, calling all `onClickCapture` handlers.
-2. It runs the clicked element's `onClick` handler.
-3. It travels upwards, calling all `onClick` handlers.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 이벤트 캡처는 라우터나 분석을 위한 코드에 유용할 수 있지만 일반 애플리케이션 코드에서는 사용하지 않을 가능성이 높습니다.
 

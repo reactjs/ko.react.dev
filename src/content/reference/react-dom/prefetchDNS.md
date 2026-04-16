@@ -34,11 +34,7 @@ function AppRoot() {
 
 [아래 예시를 참고하세요.](#usage)
 
-<<<<<<< HEAD
 `prefetchDNS`는 브라우저에게 주어진 서버의 IP 주소를 조회해야 한다는 힌트를 제공합니다. 브라우저가 이를 수행하기로 선택하면 해당 서버에서 리소스를 로딩하는 속도가 빨라질 수 있습니다.
-=======
-The prefetchDNS function provides the browser with a hint that it should look up the IP address of a given server. If the browser chooses to do so, this can speed up the loading of resources from that server.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 #### 매개변수 {/*parameters*/}
 

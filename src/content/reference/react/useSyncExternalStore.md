@@ -106,11 +106,7 @@ store에 있는 데이터의 <CodeStep step={3}>snapshot</CodeStep>을 반환합
 
 React는 이 함수를 사용해 컴포넌트를 store에 구독한 상태로 유지하고 변경 사항이 있을 때 리렌더링합니다.
 
-<<<<<<< HEAD
 예를 들어 아래 샌드박스에서 `todosStore`는 React 외부에 데이터를 저장하는 외부 store로 구현되어 있습니다. `TodosApp`컴포넌트는 `useSyncExternalStore` Hook으로 해당 외부 store에 연결합니다.
-=======
-For example, in the sandbox below, `todosStore` is implemented as an external store that stores data outside of React. The `TodosApp` component connects to that external store with the `useSyncExternalStore` Hook.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <Sandpack>
 
@@ -421,11 +417,7 @@ function ChatIndicator() {
 }
 ```
 
-<<<<<<< HEAD
 리렌더링 사이에 다른 `subscribe` 함수를 전달하면 React가 store를 다시 구독합니다. 이로 인해 성능 문제가 발생하고 store 재구독을 피하고 싶다면 `subscribe` 함수를 외부로 이동하세요.
-=======
-React will resubscribe to your store if you pass a different `subscribe` function between re-renders. If this causes performance issues and you'd like to avoid resubscribing, move the `subscribe` function outside:
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ```js {1-4}
 // ✅ 항상 동일한 함수이므로 React는 다시 구독할 필요가 없습니다.

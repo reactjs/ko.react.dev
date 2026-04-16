@@ -138,11 +138,7 @@ Scheduler는 우선순위가 다른 작업을 관리하는 데 사용되는 Reac
 
 #### 서버 요청 {/*server-requests*/}
 
-<<<<<<< HEAD
 서버 요청 트랙은 최종적으로 React 서버 컴포넌트로 귀결되는 모든 Promise를 시각화합니다. 여기에는 `fetch` 호출이나 비동기 Node.js 파일 작업과 같은 모든 비동기(async) 작업이 포함됩니다.
-=======
-The Server Requests track visualized all Promises that eventually end up in a React Server Component. This includes any `async` operations like calling `fetch` or async Node.js file operations.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 React는 서드 파티 코드 내부에서 시작된 Promise를 **퍼스트 파티(1st party) 코드**를 차단하는 전체 작업의 지속 시간을 나타내는 단일 스팬으로 결합하려고 시도합니다.
 예를 들어, 내부적으로 `fetch`를 여러 번 호출하는 서드 파티 라이브러리 메서드 `getUser`는 여러 `fetch` 스팬을 표시하는 대신 `getUser`라는 단일 스팬으로 표현됩니다.

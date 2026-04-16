@@ -22,11 +22,7 @@ title: 서버 함수
 
 #### 서버 함수를 지원하려면 어떻게 해야 하나요? {/*how-do-i-build-support-for-server-functions*/}
 
-<<<<<<< HEAD
 React 19의 서버 함수는 안정적이며 마이너<sup>Minor</sup> 버전 간에는 변경되지 않습니다. 그러나 React 서버 컴포넌트 번들러나 프레임워크에서 서버 함수를 구현하는 데 사용되는 기본 API는 유의적 버전<sup>SemVer</sup>을 따르지 않으며 React 19.x의 마이너<sup>Minor</sup> 버전 간에 변경될 수 있습니다.
-=======
-While Server Functions in React 19 are stable and will not break between minor versions, the underlying APIs used to implement Server Functions in a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 서버 함수를 번들러나 프레임워크로 지원하려면, 특정 React 버전에 고정하거나 Canary 릴리즈를 사용하는 것을 권장합니다. 향후 서버 함수를 구현하는 데 사용되는 API를 안정화하기 위해 번들러 및 프레임워크와 계속 협력할 것입니다.
 

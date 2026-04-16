@@ -60,10 +60,7 @@ function StatefulForm({}) {
 2. `form` 컴포넌트의 `action` Prop이나, 폼 내부 `button` 컴포넌트의 `formAction` Prop에 전달할 수 있는 새 액션입니다. 이 액션은 [`startTransition`](/reference/react/startTransition) 내에서 수동으로 호출할 수도 있습니다.
 3. 현재 Transition이 대기 중인지 알려주는 `isPending` 플래그입니다.
 
-<<<<<<< HEAD
-=======
-`dispatchAction` must be called from an Action.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
+`dispatchAction`은 반드시 액션 내부에서 호출해야 합니다.
 
 #### 주의 사항 {/*caveats*/}
 
@@ -76,59 +73,7 @@ function StatefulForm({}) {
 
 ### 폼 액션에서 반환된 정보 사용하기 {/*using-information-returned-by-a-form-action*/}
 
-<<<<<<< HEAD
 컴포넌트의 최상위 레벨에서 `useActionState`를 호출하면, 폼이 마지막으로 제출되었을 때 액션이 반환한 값에 접근할 수 있습니다.
-=======
-Unlike reducers in `useReducer`, the `reducerAction` can be async and perform side effects:
-
-```js
-async function reducerAction(previousState, actionPayload) {
-  const newState = await post(actionPayload);
-  return newState;
-}
-```
-
-Each time you call `dispatchAction`, React calls the `reducerAction` with the `actionPayload`. The reducer will perform side effects such as posting data, and return the new state. If `dispatchAction` is called multiple times, React queues and executes them in order so the result of the previous call is passed as `previousState` for the current call.
-
-#### Parameters {/*reduceraction-parameters*/}
-
-* `previousState`: The last state. Initially this is equal to the `initialState`. After the first call to `dispatchAction`, it's equal to the last state returned.
-
-* **optional** `actionPayload`: The argument passed to `dispatchAction`. It can be a value of any type. Similar to `useReducer` conventions, it is usually an object with a `type` property identifying it and, optionally, other properties with additional information.
-
-#### Returns {/*reduceraction-returns*/}
-
-`reducerAction` returns the new state, and triggers a Transition to re-render with that state.
-
-#### Caveats {/*reduceraction-caveats*/}
-
-* `reducerAction` can be sync or async. It can perform sync actions like showing a notification, or async actions like posting updates to a server.
-* `reducerAction` is not invoked twice in `<StrictMode>` since `reducerAction` is designed to allow side effects.
-* The return type of `reducerAction` must match the type of `initialState`. If TypeScript infers a mismatch, you may need to explicitly annotate your state type.
-* If you set state after `await` in the `reducerAction` you currently need to wrap the state update in an additional `startTransition`. See the [startTransition](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition) docs for more info.
-* When using Server Functions, `actionPayload` needs to be [serializable](/reference/rsc/use-server#serializable-parameters-and-return-values) (values like plain objects, arrays, strings, and numbers).
-
-<DeepDive>
-
-#### Why is it called `reducerAction`? {/*why-is-it-called-reduceraction*/}
-
-The function passed to `useActionState` is called a *reducer action* because:
-
-- It *reduces* the previous state into a new state, like `useReducer`.
-- It's an *Action* because it's called inside a Transition and can perform side effects.
-
-Conceptually, `useActionState` is like `useReducer`, but you can do side effects in the reducer.
-
-</DeepDive>
-
----
-
-## Usage {/*usage*/}
-
-### Adding state to an Action {/*adding-state-to-an-action*/}
-
-Call `useActionState` at the top level of your component to create state for the result of an Action.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ```js [[1, 7, "count"], [2, 7, "dispatchAction"], [3, 7, "isPending"]]
 import { useActionState } from 'react';

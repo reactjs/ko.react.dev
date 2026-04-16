@@ -4,11 +4,7 @@ title: <Fragment> (<>...</>)
 
 <Intro>
 
-<<<<<<< HEAD
 `<Fragment>`는 `<>...</>` 문법으로 자주 사용되며, 래퍼 노드 없이 엘리먼트를 그룹화할 수 있게 해줍니다.
-=======
-`<Fragment>`, often used via `<>...</>` syntax, lets you group elements without a wrapper node.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <Canary> Fragment는 `ref`를 받을 수도 있으며, 래퍼 엘리먼트를 추가하지 않고도 기본 DOM 노드와 상호작용할 수 있습니다. 아래 레퍼런스와 사용법을 참고하세요.</Canary>
 
@@ -45,7 +41,6 @@ title: <Fragment> (<>...</>)
 - `removeEventListener(type, listener, options?)`: Fragment의 모든 최상위 DOM 자식에서 이벤트 리스너를 제거합니다.
 - `dispatchEvent(event)`: Fragment의 가상 자식에 이벤트를 디스패치하여 추가된 리스너를 호출하며, DOM 부모로 버블링될 수 있습니다.
 
-<<<<<<< HEAD
 **레이아웃 메서드**
 - `compareDocumentPosition(otherNode)`: Fragment의 문서 위치를 다른 노드와 비교합니다.
   - Fragment에 자식이 있으면 네이티브 `compareDocumentPosition` 값이 반환됩니다.
@@ -53,15 +48,6 @@ title: <Fragment> (<>...</>)
   - 포탈이나 다른 삽입으로 인해 React 트리와 DOM 트리에서 다른 관계를 가진 엘리먼트는 `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`입니다.
 - `getClientRects()`: 모든 자식의 경계 사각형을 나타내는 `DOMRect` 객체의 평탄화된 배열을 반환합니다.
 - `getRootNode()`: Fragment의 부모 DOM 노드를 포함하는 루트 노드를 반환합니다.
-=======
-**Layout methods:**
-- `compareDocumentPosition(otherNode)`: Compares the document position of the Fragment with another node.
-  - If the Fragment has children, the native `compareDocumentPosition` value is returned.
-  - Empty Fragments will attempt to compare positioning within the React tree and include `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`.
-  - Elements that have a different relationship in the React tree and DOM tree due to portaling or other insertions are `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`.
-- `getClientRects()`: Returns a flat array of `DOMRect` objects representing the bounding rectangles of all children.
-- `getRootNode()`: Returns the root node containing the Fragment's parent DOM node.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 **포커스 관리 메서드**
 - `focus(options?)`: Fragment 내의 첫 번째 포커스 가능한 DOM 노드에 포커스합니다. 중첩된 자식에 대해 깊이 우선으로 포커스를 시도합니다.

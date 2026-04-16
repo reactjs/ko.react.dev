@@ -63,11 +63,7 @@ export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
-<<<<<<< HEAD
-  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-=======
   url: 'https://react.dev/images/docs/scientists/Mx7dA2Y.jpg',
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
   alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
@@ -247,11 +243,7 @@ export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
-<<<<<<< HEAD
-  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-=======
   url: 'https://react.dev/images/docs/scientists/Mx7dA2Y.jpg',
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
   alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
@@ -369,11 +361,7 @@ const [index, setIndex] = useState(0);
 
 </Note>
 
-<<<<<<< HEAD
 `useState`의 유일한 인수는 state 변수의 **초깃값**입니다. 이 예시에서 `index`의 초깃값은 `useState(0)`에 의해 `0`으로 설정됩니다.
-=======
-The only argument to `useState` is the **initial value** of your state variable. In this example, the `index`'s initial value is set to `0` with `useState(0)`.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 컴포넌트가 렌더링될 때마다, `useState`는 다음 두 개의 값을 포함하는 배열을 제공합니다.
 
@@ -444,11 +432,7 @@ export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
-<<<<<<< HEAD
-  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-=======
   url: 'https://react.dev/images/docs/scientists/Mx7dA2Y.jpg',
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
   alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
@@ -644,11 +628,7 @@ let sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
-<<<<<<< HEAD
-  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-=======
   url: 'https://react.dev/images/docs/scientists/Mx7dA2Y.jpg',
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
   alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
@@ -816,11 +796,7 @@ export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
-<<<<<<< HEAD
-  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-=======
   url: 'https://react.dev/images/docs/scientists/Mx7dA2Y.jpg',
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
   alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
@@ -991,11 +967,7 @@ export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
-<<<<<<< HEAD
-  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-=======
   url: 'https://react.dev/images/docs/scientists/Mx7dA2Y.jpg',
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
   alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
@@ -1157,11 +1129,7 @@ export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
-<<<<<<< HEAD
-  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-=======
   url: 'https://react.dev/images/docs/scientists/Mx7dA2Y.jpg',
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
   alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
@@ -1476,11 +1444,7 @@ export default function FeedbackForm() {
 
 두 번째 `useState` 호출을 `if` 조건문 뒤로 이동해 보세요. 그러면 어떻게 오류가 발생하는지 확인할 수 있을 것입니다.
 
-<<<<<<< HEAD
 만약 [React 용으로 설정된](/learn/editor-setup#linting) 린터를 사용 중이라면 이와 같은 실수를 할 때 린트 오류가 표시될 것입니다. 로컬에서 잘못된 코드를 시도할 때 오류가 보이지 않는다면 프로젝트에 린터를 설정해야 합니다.
-=======
-If your linter is [configured for React](/learn/editor-setup#linting), you should see a lint error when you make a mistake like this. If you don't see an error when you try the faulty code locally, you need to set up linting for your project.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 </Solution>
 

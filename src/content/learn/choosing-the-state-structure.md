@@ -1822,7 +1822,6 @@ button { margin: 10px; }
 
 <Recap>
 
-<<<<<<< HEAD
 * 만약 두 state 변수가 항상 함께 업데이트된다면, 하나로 합치는 것을 고려해 보세요.
 * State 변수를 신중하게 선택하여 "불가능한" state를 만들지 않도록 하세요.
 * State를 업데이트할 때 실수할 가능성을 줄이도록 state를 구조화하세요.
@@ -1830,15 +1829,6 @@ button { margin: 10px; }
 * 특별히 업데이트를 방지하려는 경우를 제외하고는 props를 state에 *넣지* 마세요.
 * 선택과 같은 UI 패턴의 경우, 객체 자체가 아닌 ID 또는 인덱스를 state에 유지하세요.
 * 깊게 중첩된 state를 업데이트하는 것이 복잡한 경우, 평탄하게 만들어 보세요.
-=======
-* If two state variables always update together, consider merging them into one.
-* Choose your state variables carefully to avoid creating "impossible" states.
-* Structure your state in a way that reduces the chances that you'll make a mistake updating it.
-* Avoid redundant and duplicate state so that you don't need to keep it in sync.
-* Don't put props *into* state unless you specifically want to prevent updates.
-* For UI patterns like selection, keep ID or index in state instead of the object itself.
-* If updating deeply nested state is complicated, try flattening it.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 </Recap>
 
