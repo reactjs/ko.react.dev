@@ -416,7 +416,7 @@ function MyInput({placeholder, ref}) {
 
 ### 하이드레이션 에러에 대한 차이<sup>Diff</sup> {/*diffs-for-hydration-errors*/}
 
-예를 들어, 일치하지 않는 정보 없이 DEV 환경에서 여러 에러 로깅하는 대신 `react-dom`에서 하이드레이션 에러에 대한 오류 보고를 개선했습니다. 
+예를 들어, 일치하지 않는 정보 없이 DEV 환경에서 여러 에러 로깅하는 대신 `react-dom`에서 하이드레이션 에러에 대한 오류 보고를 개선했습니다.
 
 <ConsoleBlockMulti>
 

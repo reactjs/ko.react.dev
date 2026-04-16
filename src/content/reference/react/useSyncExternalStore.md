@@ -410,7 +410,7 @@ function ChatIndicator() {
   function subscribe() {
     // ...
   }
-  
+
   const isOnline = useSyncExternalStore(subscribe, getSnapshot);
 
   // ...
@@ -439,7 +439,7 @@ function ChatIndicator({ userId }) {
   const subscribe = useCallback(() => {
     // ...
   }, [userId]);
-  
+
   const isOnline = useSyncExternalStore(subscribe, getSnapshot);
 
   // ...

@@ -457,7 +457,7 @@ const [person, setPerson] = useState({
   artwork: {
     title: 'Blue Nana',
     city: 'Hamburg',
-    image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+    image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   }
 });
 ```
@@ -501,7 +501,7 @@ export default function Form() {
     artwork: {
       title: 'Blue Nana',
       city: 'Hamburg',
-      image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+      image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
     }
   });
 
@@ -608,7 +608,7 @@ let obj = {
   artwork: {
     title: 'Blue Nana',
     city: 'Hamburg',
-    image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+    image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   }
 };
 ```
@@ -619,7 +619,7 @@ let obj = {
 let obj1 = {
   title: 'Blue Nana',
   city: 'Hamburg',
-  image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
 };
 
 let obj2 = {
@@ -634,7 +634,7 @@ let obj2 = {
 let obj1 = {
   title: 'Blue Nana',
   city: 'Hamburg',
-  image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
 };
 
 let obj2 = {
@@ -691,7 +691,7 @@ export default function Form() {
     artwork: {
       title: 'Blue Nana',
       city: 'Hamburg',
-      image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+      image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
     }
   });
 

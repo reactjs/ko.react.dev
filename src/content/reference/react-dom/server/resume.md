@@ -77,7 +77,7 @@ async function handler(request, writable) {
 
 <Sandpack>
 
-```js src/App.js hidden 
+```js src/App.js hidden
 ```
 
 ```html public/index.html

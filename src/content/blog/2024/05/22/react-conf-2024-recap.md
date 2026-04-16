@@ -43,14 +43,14 @@ _[1일 차 전체 스트리밍 시청하기.](https://www.youtube.com/watch?v=T8
 - [Josh Story](https://twitter.com/joshcstory): [React 19 심층 탐구: HTML 조정](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=24916s)
 - [Aurora Walberg Scharff](https://twitter.com/aurorascharff): [React 서버 컴포넌트로 폼 향상](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=25280s)
 - [Dan Abramov](https://bsky.app/profile/danabra.mov): [두 대의 컴퓨터용 React](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=18825s)
-- [Kent C. Dodds](https://twitter.com/kentcdodds): [이제 React 서버 컴포넌트를 이해합니다](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=11256s) 
+- [Kent C. Dodds](https://twitter.com/kentcdodds): [이제 React 서버 컴포넌트를 이해합니다](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=11256s)
 
 마지막으로 [Joe Savona](https://twitter.com/en_JS), [Sathya Gunasekaran](https://twitter.com/_gsathya), [Mofei Zhang](https://twitter.com/zmofei)은 React 컴파일러가 [오픈소스](https://github.com/facebook/react/pull/29061)로 공개되었음을 알리고, 실험 버전을 공유했습니다.
 
 컴파일러 사용법과 동작 방식은 [관련 문서](/learn/react-compiler) 및 관련 강연을 확인하세요.
 
 - [Lauren Tan](https://twitter.com/potetotes): [Memo를 신경 쓰지 마세요](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=12020s)
-- [Sathya Gunasekaran](https://twitter.com/_gsathya) & [Mofei Zhang](https://twitter.com/zmofei): [React 컴파일러 심층 탐구](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=9313s) 
+- [Sathya Gunasekaran](https://twitter.com/_gsathya) & [Mofei Zhang](https://twitter.com/zmofei): [React 컴파일러 심층 탐구](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=9313s)
 
 1일 차 기조연설 전체 시청하기
 
@@ -85,7 +85,7 @@ _[2일 차 전체 스트리밍 시청하기](https://www.youtube.com/watch?v=0ck
 
 React와 React Native 팀은 매일 Q&A 세션으로 하루를 마무리했습니다.
 
-- [Michael Chan](https://twitter.com/chantastic)이 진행한 [React Q&A](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=27518s) 
+- [Michael Chan](https://twitter.com/chantastic)이 진행한 [React Q&A](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=27518s)
 - [Jamon Holmgren](https://twitter.com/jamonholmgren)이 진행한 [React Native Q&A](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=27935s)
 
 ## 그리고... {/*and-more*/}

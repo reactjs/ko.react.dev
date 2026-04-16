@@ -80,7 +80,7 @@ async function Talks({ confId }) {
   // 1. 서버에서라면 데이터 레이어와 대화할 수 있습니다. API 엔드포인트는 필요하지 않습니다.
   const talks = await db.Talks.findAll({ confId });
 
-  // 2. 렌더링 로직이 추가되더라고도 자바스크립트 번들 크기를 크게 만들지 않습니다. 
+  // 2. 렌더링 로직이 추가되더라고도 자바스크립트 번들 크기를 크게 만들지 않습니다.
   const videos = talks.map(talk => talk.video);
 
   // 3. 브라우저에서 실행될 컴포넌트에 데이터를 전달합니다.

@@ -279,7 +279,7 @@ function VisibilityObserverFragment({ threshold = 0.5, onVisibilityChange, child
       },
       { threshold }
     );
-    
+
     fragmentRef.current.observeUsing(observer);
     return () => fragmentRef.current.unobserveUsing(observer);
   }, [threshold, onVisibilityChange]);

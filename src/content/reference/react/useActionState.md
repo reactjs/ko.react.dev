@@ -60,6 +60,7 @@ function StatefulForm({}) {
 2. `form` 컴포넌트의 `action` Prop이나, 폼 내부 `button` 컴포넌트의 `formAction` Prop에 전달할 수 있는 새 액션입니다. 이 액션은 [`startTransition`](/reference/react/startTransition) 내에서 수동으로 호출할 수도 있습니다.
 3. 현재 Transition이 대기 중인지 알려주는 `isPending` 플래그입니다.
 
+`dispatchAction`은 반드시 액션 내부에서 호출해야 합니다.
 
 #### 주의 사항 {/*caveats*/}
 
@@ -786,7 +787,7 @@ import Total from './Total';
 export default function Checkout() {
   const abortRef = useRef(null);
   const [count, dispatchAction, isPending] = useActionState(updateCartAction, 0);
-  
+
   async function addAction() {
     if (abortRef.current) {
       abortRef.current.abort();
@@ -1182,7 +1183,7 @@ When used with a [Server Function](/reference/rsc/server-functions), `useActionS
 
 </RSC>
 
-See the [`<form>`](/reference/react-dom/components/form#handle-form-submission-with-a-server-function) docs for more information on using Actions with forms. 
+See the [`<form>`](/reference/react-dom/components/form#handle-form-submission-with-a-server-function) docs for more information on using Actions with forms.
 
 ---
 
@@ -1210,16 +1211,16 @@ function Checkout() {
         // Return the error from the API as state
         return {...prevState, error: `Could not add quanitiy ${quantity}: ${result.error}`};
       }
-      
+
       if (!isPending) {
         // Clear the error state for the first dispatch.
-        return {count: result.count, error: null};    
+        return {count: result.count, error: null};
       }
-      
+
       // Return the new count, and any errors that happened.
       return {count: result.count, error: prevState.error};
-      
-      
+
+
     },
     {
       count: 0,
