@@ -37,7 +37,7 @@ function SearchPage() {
 #### 매개변수 {/*parameters*/}
 
 * `value`: 지연시키려는 값입니다. 모든 타입을 가질 수 있습니다.
-* **선택사항** `initialValue`: 컴포넌트 초기 렌더링 시 사용할 값입니다. 이 옵션을 생략하면 초기 렌더링 동안 `useDeferredValue`는 값을 지연시키지 않습니다. 이는 대신 렌더링할 `value`의 이전 버전이 없기 때문입니다.
+* `initialValue`**(선택사항)**: 컴포넌트 초기 렌더링 시 사용할 값입니다. 이 옵션을 생략하면 초기 렌더링 동안 `useDeferredValue`는 값을 지연시키지 않습니다. 이는 대신 렌더링할 `value`의 이전 버전이 없기 때문입니다.
 
 #### 반환값 {/*returns*/}
 

@@ -48,7 +48,7 @@ function StatefulForm({}) {
 
 * `fn`: 폼이 제출되거나 버튼이 눌렸을 때 호출되는 함수입니다. 함수가 호출되면 첫 번째 인수로 폼의 이전 State(처음에는 전달한 `initialState`, 이후에는 이전 반환값)가 전달되고, 그 뒤로는 폼 액션이 일반적으로 받는 인수들이 전달됩니다.
 * `initialState`: State가 처음에 가지기를 원하는 값입니다. 이는 직렬화 가능한 값이면 무엇이든 될 수 있습니다. 이 인수는 액션이 처음 호출된 후에는 무시됩니다.
-* **optional** `permalink`: 이 폼이 수정하는 고유한 페이지 URL을 포함하는 문자열입니다. 동적 콘텐츠가 있는 페이지(예: 피드)에서 점진적 향상<sup>Progressive Enhancement</sup>과 함께 사용됩니다. 만약 `fn`이 [서버 함수](/reference/rsc/server-functions)이고, 폼이 자바스크립트 번들이 로드되기 전에 제출되면, 브라우저는 현재 페이지의 URL 대신 지정된 영구 링크<sup>Permalink</sup> URL로 이동합니다. React가 State를 전달하는 방법을 알 수 있도록, 동일한 폼 컴포넌트가 대상 페이지에 렌더링되도록 해야 합니다. (동일한 액션 `fn`과 `permalink` 포함.) 폼이 하이드레이션된 후, 이 매개변수는 더 이상 효과가 없습니다.
+* `permalink`**(선택사항)**: 이 폼이 수정하는 고유한 페이지 URL을 포함하는 문자열입니다. 동적 콘텐츠가 있는 페이지(예: 피드)에서 점진적 향상<sup>Progressive Enhancement</sup>과 함께 사용됩니다. 만약 `fn`이 [서버 함수](/reference/rsc/server-functions)이고, 폼이 자바스크립트 번들이 로드되기 전에 제출되면, 브라우저는 현재 페이지의 URL 대신 지정된 영구 링크<sup>Permalink</sup> URL로 이동합니다. React가 State를 전달하는 방법을 알 수 있도록, 동일한 폼 컴포넌트가 대상 페이지에 렌더링되도록 해야 합니다. (동일한 액션 `fn`과 `permalink` 포함.) 폼이 하이드레이션된 후, 이 매개변수는 더 이상 효과가 없습니다.
 
 {/* TODO T164397693: link to serializable values docs once it exists */}
 

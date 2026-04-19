@@ -28,9 +28,9 @@ title: <Fragment> (<>...</>)
 하나의 엘리먼트가 필요한 상황에서 엘리먼트를 `<Fragment>`로 감싸서 그룹화하세요. `Fragment` 안에서 그룹화된 엘리먼트는 DOM 결과물에 영향을 주지 않습니다. 즉, 엘리먼트가 그룹화되지 않은 것과 같습니다. 대부분의 경우 빈 JSX 태그인 `<></>`는 `<Fragment></Fragment>`의 축약형입니다.
 
 #### Props {/*props*/}
-- **optional** `key`: 명시적 `<Fragment>`로 선언된 `Fragment`에는 [`key`](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 사용할 수 있습니다.
+- `key`**(선택사항)**: 명시적 `<Fragment>`로 선언된 `Fragment`에는 [`key`](/learn/rendering-lists#keeping-list-items-in-order-with-key)를 사용할 수 있습니다.
 
-- <CanaryBadge />  **optional** `ref`: ref 객체(예: [`useRef`](/reference/react/useRef)에서 반환된 것) 또는 [콜백 함수](/reference/react-dom/components/common#ref-callback)입니다. React는 `Fragment`로 감싼 DOM 노드와 상호작용하기 위한 메서드를 구현한 `FragmentInstance`를 ref 값으로 제공합니다.
+- <CanaryBadge />  `ref`**(선택사항)**: ref 객체(예: [`useRef`](/reference/react/useRef)에서 반환된 것) 또는 [콜백 함수](/reference/react-dom/components/common#ref-callback)입니다. React는 `Fragment`로 감싼 DOM 노드와 상호작용하기 위한 메서드를 구현한 `FragmentInstance`를 ref 값으로 제공합니다.
 
 ### <CanaryBadge /> FragmentInstance {/*fragmentinstance*/}
 
