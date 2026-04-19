@@ -49,15 +49,15 @@ async function handler(request, response) {
 
 * `reactNode`: HTML로 렌더링하려는 React 노드. 예를 들어 `<App />`과 같은 JSX 엘리먼트입니다. 전체 문서를 나타낼 것으로 예상되므로 `App` 컴포넌트는 `<html>` 태그를 렌더링해야 합니다.
 
-* **optional** `options`: 정적 생성 옵션을 가진 객체입니다.
-  * **optional** `bootstrapScriptContent`: 지정될 경우, 해당 문자열은 `<script>` 태그에 인라인 형식으로 추가됩니다.
-  * **optional** `bootstrapScripts`: 페이지에 표시할 `<script>` 태그에 대한 문자열 URL 배열입니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 호출하는 `<script>`를 포함하려면 이것을 사용하세요. 클라이언트에서 React를 전혀 실행하지 않으려면 생략하세요.
-  * **optional** `bootstrapModules`: `bootstrapScripts`와 유사하지만 대신 [`<script type="module">`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)을 추가합니다.
-  * **optional** `identifierPrefix`: React가 [`useId`](/reference/react/useId)에 의해 생성된 ID를 사용하는 문자열 접두사입니다. 같은 페이지에서 여러 루트를 사용할 때 충돌을 피하는 데 유용합니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters)에 전달된 것과 동일한 접두사여야 합니다.
-  * **optional** `namespaceURI`: 스트림의 루트 [namespace URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris)를 가진 문자열입니다. 기본값은 일반 HTML입니다. SVG의 경우 `'http://www.w3.org/2000/svg'`를, MathML의 경우 `'http://www.w3.org/1998/Math/MathML'`을 전달합니다.
-  * **optional** `onError`: [복구 가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) 또는 [불가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)에 관계없이 서버 오류가 발생할 때마다 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. 이 함수를 재정의하여 [크래시 리포트를 로깅](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server)하는 경우 `console.error`를 계속 호출해야 합니다. 또한 셸이 출력되기 전에 [상태 코드를 설정](/reference/react-dom/server/renderToReadableStream#setting-the-status-code)하는 데 사용할 수도 있습니다.
-  * **optional** `progressiveChunkSize`: 청크의 바이트 수입니다. [기본 휴리스틱에 대해 더 읽어보기.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
-  * **optional** `signal`: [사전 렌더링을 중단](#aborting-prerendering)하고 나머지를 클라이언트에서 렌더링하기 위한 [중단 신호<sup>Abort Signal</sup>](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)를 설정합니다.
+* `options`**(선택사항)**: 정적 생성 옵션을 가진 객체입니다.
+  * `bootstrapScriptContent`**(선택사항)**: 지정될 경우, 해당 문자열은 `<script>` 태그에 인라인 형식으로 추가됩니다.
+  * `bootstrapScripts`**(선택사항)**: 페이지에 표시할 `<script>` 태그에 대한 문자열 URL 배열입니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 호출하는 `<script>`를 포함하려면 이것을 사용하세요. 클라이언트에서 React를 전혀 실행하지 않으려면 생략하세요.
+  * `bootstrapModules`**(선택사항)**: `bootstrapScripts`와 유사하지만 대신 [`<script type="module">`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)을 추가합니다.
+  * `identifierPrefix`**(선택사항)**: React가 [`useId`](/reference/react/useId)에 의해 생성된 ID를 사용하는 문자열 접두사입니다. 같은 페이지에서 여러 루트를 사용할 때 충돌을 피하는 데 유용합니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters)에 전달된 것과 동일한 접두사여야 합니다.
+  * `namespaceURI`**(선택사항)**: 스트림의 루트 [namespace URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris)를 가진 문자열입니다. 기본값은 일반 HTML입니다. SVG의 경우 `'http://www.w3.org/2000/svg'`를, MathML의 경우 `'http://www.w3.org/1998/Math/MathML'`을 전달합니다.
+  * `onError`**(선택사항)**: [복구 가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) 또는 [불가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)에 관계없이 서버 오류가 발생할 때마다 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. 이 함수를 재정의하여 [크래시 리포트를 로깅](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server)하는 경우 `console.error`를 계속 호출해야 합니다. 또한 셸이 출력되기 전에 [상태 코드를 설정](/reference/react-dom/server/renderToReadableStream#setting-the-status-code)하는 데 사용할 수도 있습니다.
+  * `progressiveChunkSize`**(선택사항)**: 청크의 바이트 수입니다. [기본 휴리스틱에 대해 더 읽어보기.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
+  * `signal`**(선택사항)**: [사전 렌더링을 중단](#aborting-prerendering)하고 나머지를 클라이언트에서 렌더링하기 위한 [중단 신호<sup>Abort Signal</sup>](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)를 설정합니다.
 
 #### 반환값 {/*returns*/}
 
