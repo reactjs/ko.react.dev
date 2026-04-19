@@ -4,7 +4,7 @@ title: useActionState
 
 <Intro>
 
-`useActionState`는 폼 액션의 결과를 기반으로 State를 업데이트할 수 있도록 제공하는 Hook입니다.
+`useActionState`는 [Action](/reference/react/useTransition#functions-called-in-starttransition-are-called-actions)을 사용해 사이드 이펙트를 동반한 상태 업데이트를 할 수 있게 해주는 React Hook입니다.
 
 ```js
 const [state, dispatchAction, isPending] = useActionState(reducerAction, initialState, permalink?);
@@ -12,13 +12,15 @@ const [state, dispatchAction, isPending] = useActionState(reducerAction, initial
 
 </Intro>
 
-<Note>
+<InlineToc />
 
-이전 React Canary 버전에서는 이 API가 React DOM에 포함되어 있었고, `useFormState`라고 불렸습니다.
+---
 
-</Note>
+## 레퍼런스 {/*reference*/}
 
+### `useActionState(reducerAction, initialState, permalink?)` {/*useactionstate*/}
 
+컴포넌트의 최상위 레벨에서 `useActionState`를 호출하여 Action의 결과에 대한 상태를 생성합니다.
 
 ```js
 import { useActionState } from 'react';
@@ -27,53 +29,103 @@ function reducerAction(previousState, actionPayload) {
   // ...
 }
 
-function StatefulForm({}) {
-  const [state, formAction] = useActionState(increment, 0);
-  return (
-    <form>
-      {state}
-      <button formAction={formAction}>Increment</button>
-    </form>
-  );
+function MyCart({initialState}) {
+  const [state, dispatchAction, isPending] = useActionState(reducerAction, initialState);
+  // ...
 }
 ```
 
-폼 State는 폼을 마지막으로 제출했을 때 액션에서 반환되는 값입니다. 아직 폼을 제출하지 않았다면, `initialState`로 설정됩니다.
-
-서버 함수<sup>Server Function</sup>와 함께 사용하는 경우, `useActionState`를 통해 하이드레이션<sup>Hydration</sup>이 끝나기 전에도 폼 제출에 대한 서버 응답을 표시할 수 있습니다.
-
-[아래 예시를 참고하세요.](#usage)
+[아래에서 더 많은 예시를 확인하세요.](#usage)
 
 #### 매개변수 {/*parameters*/}
 
-* `fn`: 폼이 제출되거나 버튼이 눌렸을 때 호출되는 함수입니다. 함수가 호출되면 첫 번째 인수로 폼의 이전 State(처음에는 전달한 `initialState`, 이후에는 이전 반환값)가 전달되고, 그 뒤로는 폼 액션이 일반적으로 받는 인수들이 전달됩니다.
-* `initialState`: State가 처음에 가지기를 원하는 값입니다. 이는 직렬화 가능한 값이면 무엇이든 될 수 있습니다. 이 인수는 액션이 처음 호출된 후에는 무시됩니다.
-* **optional** `permalink`: 이 폼이 수정하는 고유한 페이지 URL을 포함하는 문자열입니다. 동적 콘텐츠가 있는 페이지(예: 피드)에서 점진적 향상<sup>Progressive Enhancement</sup>과 함께 사용됩니다. 만약 `fn`이 [서버 함수](/reference/rsc/server-functions)이고, 폼이 자바스크립트 번들이 로드되기 전에 제출되면, 브라우저는 현재 페이지의 URL 대신 지정된 영구 링크<sup>Permalink</sup> URL로 이동합니다. React가 State를 전달하는 방법을 알 수 있도록, 동일한 폼 컴포넌트가 대상 페이지에 렌더링되도록 해야 합니다. (동일한 액션 `fn`과 `permalink` 포함.) 폼이 하이드레이션된 후, 이 매개변수는 더 이상 효과가 없습니다.
-
-{/* TODO T164397693: link to serializable values docs once it exists */}
+* `reducerAction`: Action이 트리거될 때 호출될 함수입니다. 호출될 때 첫 번째 인수로 이전 상태(초기에는 제공한 `initialState`, 이후에는 이전 반환값)를 받고, 두 번째 인수로 `dispatchAction`에 전달된 `actionPayload`를 받습니다.
+* `initialState`: 상태의 초깃값입니다. React는 `dispatchAction`이 처음 호출된 이후에는 이 인수를 무시합니다.
+* **선택 사항** `permalink`: 이 폼이 수정하는 고유한 페이지 URL을 포함하는 문자열입니다.
+  * 점진적 향상(progressive enhancement)과 함께 [React Server Components](/reference/rsc/server-components)를 사용하는 페이지에서 사용하기 위한 용도입니다.
+  * `reducerAction`이 [Server Function](/reference/rsc/server-functions)이고 JavaScript 번들이 로드되기 전에 폼이 제출되면, 브라우저는 현재 페이지의 URL이 아닌 지정된 permalink URL로 이동합니다.
 
 #### 반환값 {/*returns*/}
 
-`useActionState`는 다음 세 가지 값을 담은 배열을 반환합니다.
+`useActionState`는 정확히 세 개의 값을 가진 배열을 반환합니다.
 
-1. 현재 State입니다. 첫 렌더링 시에는 `initialState`와 일치하며, 액션이 실행된 후에는 해당 액션이 반환한 값과 일치합니다.
-2. `form` 컴포넌트의 `action` Prop이나, 폼 내부 `button` 컴포넌트의 `formAction` Prop에 전달할 수 있는 새 액션입니다. 이 액션은 [`startTransition`](/reference/react/startTransition) 내에서 수동으로 호출할 수도 있습니다.
-3. 현재 Transition이 대기 중인지 알려주는 `isPending` 플래그입니다.
-
-`dispatchAction`은 반드시 액션 내부에서 호출해야 합니다.
+1. 현재 상태. 첫 번째 렌더링 중에는 전달한 `initialState`와 일치합니다. `dispatchAction`이 호출된 후에는 `reducerAction`이 반환한 값과 일치하게 됩니다.
+2. [Actions](/reference/react/useTransition#functions-called-in-starttransition-are-called-actions) 내부에서 호출하는 `dispatchAction` 함수.
+3. 이 Hook에 대해 디스패치된 Action이 대기 중(pending)인지 알려주는 `isPending` 플래그.
 
 #### 주의 사항 {/*caveats*/}
 
-* React 서버 컴포넌트를 지원하는 프레임워크에서 `useActionState`를 사용하면, 클라이언트 자바스크립트 실행 전에도 폼과 상호작용할 수 있습니다. 만약 서버 컴포넌트를 사용하지 않는다면, 이는 단순히 컴포넌트 지역 State와 동일하게 동작합니다.
-* `useActionState`에 전달된 함수는 첫 번째 인수로 이전 또는 초기 State를 추가로 받습니다. 즉, 직접 폼 액션을 사용했을 때와 비교해 함수의 시그니처가 달라질 수 있습니다.
+* `useActionState`는 Hook이므로 **컴포넌트의 최상위 레벨** 또는 직접 만든 커스텀 Hook 안에서만 호출할 수 있습니다. 반복문이나 조건문 내부에서는 호출할 수 없습니다. 필요하다면 새 컴포넌트를 추출하여 상태를 그 안으로 옮기세요.
+* React는 `dispatchAction`에 대한 여러 호출을 차례대로 큐에 넣고 실행합니다. `reducerAction`의 각 호출은 이전 호출의 결과를 받습니다.
+* `dispatchAction` 함수는 안정적인 식별자를 가집니다. 따라서 Effect 의존성 배열에서 생략되는 경우가 많지만, 포함하더라도 Effect가 실행되지는 않습니다. 린터가 오류 없이 의존성을 생략할 수 있게 해준다면 생략하는 것이 안전합니다. [Effect 의존성 제거에 대해 더 알아보기](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect).
+* `permalink` 옵션을 사용할 때, 대상 페이지에도 동일한 폼 컴포넌트(동일한 `reducerAction`과 `permalink` 포함)가 렌더링되어 React가 상태를 전달하는 방법을 알 수 있도록 해야 합니다. 페이지가 상호작용 가능해지면 이 매개변수는 아무런 영향을 미치지 않습니다.
+* Server Functions를 사용할 때, `initialState`는 [직렬화 가능(serializable)](/reference/rsc/use-server#serializable-parameters-and-return-values)해야 합니다(일반 객체, 배열, 문자열, 숫자와 같은 값).
+* `dispatchAction`이 오류를 던지면, React는 대기 중인 모든 Action을 취소하고 가장 가까운 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 표시합니다.
+* 진행 중인 Action이 여러 개 있는 경우, React는 이들을 일괄 처리(batch)합니다. 이는 향후 릴리스에서 제거될 수 있는 한계점입니다.
+
+<Note>
+
+`dispatchAction`은 반드시 Action 안에서 호출되어야 합니다.
+
+[`startTransition`](/reference/react/startTransition)으로 감싸거나, [Action prop](/reference/react/useTransition#exposing-action-props-from-components)으로 전달할 수 있습니다. 해당 스코프 밖에서 호출하면 Transition의 일부로 취급되지 않으며 개발 모드에서 [에러 로그를 남깁니다](#async-function-outside-transition).
+
+</Note>
+
+---
+
+### `reducerAction` 함수 {/*reduceraction*/}
+
+`useActionState`에 전달된 `reducerAction` 함수는 이전 상태를 받고 새로운 상태를 반환합니다.
+
+`useReducer`의 리듀서와는 달리 `reducerAction`은 비동기적일 수 있으며 사이드 이펙트를 수행할 수 있습니다.
+
+```js
+async function reducerAction(previousState, actionPayload) {
+  const newState = await post(actionPayload);
+  return newState;
+}
+```
+
+`dispatchAction`을 호출할 때마다 React는 `actionPayload`와 함께 `reducerAction`을 호출합니다. 리듀서는 데이터를 게시(posting)하는 등의 사이드 이펙트를 수행하고 새 상태를 반환합니다. `dispatchAction`이 여러 번 호출되면 React는 이를 순서대로 큐에 넣고 실행하여 이전 호출의 결과가 현재 호출의 `previousState`로 전달되도록 합니다.
+
+#### 매개변수 {/*reduceraction-parameters*/}
+
+* `previousState`: 마지막 상태입니다. 처음에는 `initialState`와 동일합니다. `dispatchAction`이 처음 호출된 이후에는 마지막으로 반환된 상태와 같아집니다.
+
+* **선택 사항** `actionPayload`: `dispatchAction`에 전달된 인수입니다. 어떤 타입의 값이든 될 수 있습니다. `useReducer`의 관례와 유사하게 일반적으로 Action을 식별하는 `type` 프로퍼티와 추가 정보가 담긴 선택적 프로퍼티를 가진 객체입니다.
+
+#### 반환값 {/*reduceraction-returns*/}
+
+`reducerAction`은 새 상태를 반환하고 해당 상태로 리렌더링하기 위한 Transition을 트리거합니다.
+
+#### 주의 사항 {/*reduceraction-caveats*/}
+
+* `reducerAction`은 동기적일 수도 있고 비동기적일 수도 있습니다. 알림을 표시하는 등의 동기적 Action이나 서버에 업데이트를 게시하는 등의 비동기적 Action을 수행할 수 있습니다.
+* `reducerAction`은 사이드 이펙트를 허용하도록 설계되었기 때문에 `<StrictMode>`에서 두 번 호출되지 않습니다.
+* `reducerAction`의 반환 타입은 `initialState`의 타입과 일치해야 합니다. TypeScript가 불일치를 추론할 경우, 상태 타입을 명시적으로 지정해야 할 수도 있습니다.
+* `reducerAction`의 `await` 이후에 상태를 설정하는 경우, 현재는 상태 업데이트를 추가적인 `startTransition`으로 감싸야 합니다. 자세한 정보는 [startTransition](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition) 문서를 참고하세요.
+* Server Functions를 사용할 때, `actionPayload`는 [직렬화 가능(serializable)](/reference/rsc/use-server#serializable-parameters-and-return-values)해야 합니다(일반 객체, 배열, 문자열, 숫자와 같은 값).
+
+<DeepDive>
+
+#### 왜 `reducerAction`이라고 부르나요? {/*why-is-it-called-reduceraction*/}
+
+`useActionState`에 전달된 함수는 다음과 같은 이유로 *reducer action*이라고 불립니다.
+
+- `useReducer`와 같이 이전 상태를 새로운 상태로 *축소(reduce)*하기 때문입니다.
+- Transition 내부에서 호출되고 사이드 이펙트를 수행할 수 있는 *Action*이기 때문입니다.
+
+개념적으로 `useActionState`는 `useReducer`와 같지만 리듀서 안에서 사이드 이펙트를 수행할 수 있다는 점이 다릅니다.
+
+</DeepDive>
 
 ---
 
 ## 사용법 {/*usage*/}
 
-### 폼 액션에서 반환된 정보 사용하기 {/*using-information-returned-by-a-form-action*/}
+### Action에 상태 추가하기 {/*adding-state-to-an-action*/}
 
-컴포넌트의 최상위 레벨에서 `useActionState`를 호출하면, 폼이 마지막으로 제출되었을 때 액션이 반환한 값에 접근할 수 있습니다.
+컴포넌트의 최상위 레벨에서 `useActionState`를 호출하여 Action의 결과에 대한 상태를 생성하세요.
 
 ```js [[1, 7, "count"], [2, 7, "dispatchAction"], [3, 7, "isPending"]]
 import { useActionState } from 'react';
@@ -88,62 +140,29 @@ function Counter() {
 }
 ```
 
-`useActionState`가 반환하는 배열은 다음과 같은 요소를 갖습니다.
+`useActionState`는 정확히 세 개의 항목이 포함된 배열을 반환합니다.
 
-1. 폼의 <CodeStep step={1}>현재 State</CodeStep>는, 처음에는 전달한 <CodeStep step={4}>초기 State</CodeStep>로 설정되며, 폼이 제출된 후에는 전달한 <CodeStep step={3}>액션</CodeStep>의 반환값으로 설정됩니다.
-2. `<form>`의 `action` Prop에 전달하거나 `startTransition` 안에서 직접 호출할 수 있는<CodeStep step={2}>새로운 액션</CodeStep>입니다.
-3. 액션이 처리되는 동안 사용할 수 있는 <CodeStep step={1}>대기<sup>Pending</sup> State</CodeStep>입니다.
+1. 제공한 초기 상태로 설정된 <CodeStep step={1}>현재 상태</CodeStep>.
+2. `reducerAction`을 트리거할 수 있게 해주는 <CodeStep step={2}>Action 디스패처</CodeStep>.
+3. Action이 진행 중인지 알려주는 <CodeStep step={3}>보류 상태(pending state)</CodeStep>.
 
-
-폼이 제출되면, 제공한 <CodeStep step={3}>액션</CodeStep> 함수가 호출되며, 해당 함수의 반환값이 새로운 <CodeStep step={1}>현재 State</CodeStep>로 설정됩니다.
-
-이 <CodeStep step={3}>액션</CodeStep> 함수는 첫 번째 인수로 <CodeStep step={1}>현재 State</CodeStep>를 추가로 전달받습니다.
-처음 제출될 때는<CodeStep step={4}>초기 State</CodeStep>가 전달되며, 이후 제출부터는 직전 호출 시 반환된 값이 전달됩니다. 나머지 인수들은 useActionState를 사용하지 않았을 때와 동일합니다.
-
-
-```js [[3, 1, "action"], [1, 1, "currentState"]]
-function action(currentState, formData) {
-  // ...
-  return 'next state';
-}
-```
-
-#### 오류 표시하기 {/*display-form-errors*/}
-
-서버 함수<sup>Server Function</sup>에서 반환된 오류 메시지나 토스트 메시지를 표시하려면, 해당 액션을 `useActionState`로 감싸주세요.
+`addToCartAction`을 호출하려면 <CodeStep step={2}>Action 디스패처</CodeStep>를 호출하세요. React는 이전 개수와 함께 `addToCartAction` 호출을 큐에 넣습니다.
 
 <Sandpack>
 
 ```js src/App.js
-import { useActionState } from "react";
-import { addToCart } from "./actions.js";
+import { useActionState, startTransition } from 'react';
+import { addToCart } from './api';
+import Total from './Total';
 
 export default function Checkout() {
   const [count, dispatchAction, isPending] = useActionState(async (prevCount) => {
     return await addToCart(prevCount)
   }, 0);
 
-export default function App() {
-  return (
-    <>
-      <AddToCartForm itemID="1" itemTitle="JavaScript: The Definitive Guide" />
-      <AddToCartForm itemID="2" itemTitle="JavaScript: The Good Parts" />
-    </>
-  );
-}
-```
-
-```js src/actions.js
-"use server";
-
-export async function addToCart(prevState, queryData) {
-  const itemID = queryData.get('itemID');
-  if (itemID === "1") {
-    return "Added to cart";
-  } else {
-    // Add a fake delay to make waiting noticeable.
-    await new Promise(resolve => {
-      setTimeout(resolve, 2000);
+  function handleClick() {
+    startTransition(() => {
+      dispatchAction();
     });
   }
 
@@ -164,12 +183,12 @@ export async function addToCart(prevState, queryData) {
 }
 ```
 
-```css src/styles.css hidden
-form {
-  border: solid 1px black;
-  margin-bottom: 24px;
-  padding: 12px;
-}
+```js src/Total.js
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 0,
+});
 
 export default function Total({quantity}) {
   return (
@@ -238,25 +257,29 @@ button {
 
 </Sandpack>
 
-Every time you click "Add Ticket," React queues a call to `addToCartAction`. React shows the pending state until all the tickets are added, and then re-renders with the final state.
+"Add Ticket"을 클릭할 때마다 React는 `addToCartAction` 호출을 대기열에 넣습니다. React는 모든 티켓이 추가될 때까지 보류 상태를 표시하고, 최종 상태로 리렌더링을 진행합니다.
 
 <DeepDive>
 
-#### How `useActionState` queuing works {/*how-useactionstate-queuing-works*/}
+#### `useActionState` 큐잉(Queuing) 방식 {/*how-useactionstate-queuing-works*/}
 
-Try clicking "Add Ticket" multiple times. Every time you click, a new `addToCartAction` is queued. Since there's an artificial 1 second delay, that means 4 clicks will take ~4 seconds to complete.
+"Add Ticket"을 여러 번 클릭해 보세요. 클릭할 때마다 새로운 `addToCartAction`이 큐에 쌓입니다. 인위적인 1초의 지연 시간이 있으므로 4번 클릭하면 완료하는 데 약 4초가 걸립니다.
 
-**This is intentional in the design of `useActionState`.**
+**이는 `useActionState` 설계상 의도된 동작입니다.**
 
-We have to wait for the previous result of `addToCartAction` in order to pass the `prevCount` to the next call to `addToCartAction`. That means React has to wait for the previous Action to finish before calling the next Action.
+React는 다음 `addToCartAction` 호출에 `prevCount`를 전달하기 위해 이전 `addToCartAction`의 결과를 기다려야 합니다. 즉, 다음 Action을 호출하기 전에 이전 Action이 끝날 때까지 기다려야 합니다.
 
-You can typically solve this by [using with useOptimistic](/reference/react/useActionState#using-with-useoptimistic) but for more complex cases you may want to consider [cancelling queued actions](#cancelling-queued-actions) or not using `useActionState`.
+일반적으로 [useOptimistic과 함께 사용하여](#using-with-useoptimistic) 이 문제를 해결할 수 있지만, 더 복잡한 경우에는 [대기 중인 Action 취소하기](#cancelling-queued-actions)를 고려하거나 `useActionState`를 사용하지 않는 것을 고려해 볼 수 있습니다.
 
 </DeepDive>
 
-#### 폼 제출 후 구조화된 정보 표시하기 {/*display-structured-information-after-submitting-a-form*/}
+---
 
-서버 함수<sup>Server Function</sup>의 반환값은 직렬화 가능한 어떤 값이든 가능합니다. 예를 들어, 액션 성공 여부를 나타내는 불리언, 오류 메시지, 업데이트된 객체 등 다양하게 활용할 수 있습니다.
+### 여러 Action 타입 사용하기 {/*using-multiple-action-types*/}
+
+여러 타입을 처리하기 위해 `dispatchAction`에 인수를 전달할 수 있습니다.
+
+관례상 보통 switch 문으로 작성합니다. switch의 각 case에서 다음 상태를 계산하고 반환합니다. 인수는 어떤 형태든 가질 수 있지만 Action을 식별하는 `type` 프로퍼티를 가진 객체를 전달하는 것이 일반적입니다.
 
 <Sandpack>
 
@@ -405,29 +428,29 @@ hr {
 
 </Sandpack>
 
-When you click to increase or decrease the quantity, an `"ADD"` or `"REMOVE"` is dispatched. In the `reducerAction`, different APIs are called to update the quantity.
+수량을 늘리거나 줄이기 위해 클릭하면 `"ADD"` 또는 `"REMOVE"`가 디스패치됩니다. `reducerAction` 내에서 수량을 업데이트하기 위해 각각 다른 API가 호출됩니다.
 
-In this example, we use the pending state of the Actions to replace both the quantity and the total. If you want to provide immediate feedback, such as immediately updating the quantity, you can use `useOptimistic`.
+이 예시에서는 Action의 보류 상태(pending state)를 사용하여 수량과 총합을 대체하고 있습니다. 수량을 즉시 업데이트하는 등 즉각적인 피드백을 제공하려면 `useOptimistic`을 사용할 수 있습니다.
 
 <DeepDive>
 
-#### How is `useActionState` different from `useReducer`? {/*useactionstate-vs-usereducer*/}
+#### `useActionState`는 `useReducer`와 어떻게 다른가요? {/*useactionstate-vs-usereducer*/}
 
-You might notice this example looks a lot like `useReducer`, but they serve different purposes:
+이 예시가 `useReducer`와 매우 비슷해 보일 수 있지만 그 목적이 다릅니다.
 
-- **Use `useReducer`** to manage state of your UI. The reducer must be pure.
+- UI의 상태를 관리하려면 **`useReducer`를 사용하세요**. 리듀서는 순수(pure)해야 합니다.
 
-- **Use `useActionState`** to manage state of your Actions. The reducer can perform side effects.
+- Action의 상태를 관리하려면 **`useActionState`를 사용하세요**. 리듀서는 사이드 이펙트를 수행할 수 있습니다.
 
-You can think of `useActionState` as `useReducer` for side effects from user Actions. Since it computes the next Action to take based on the previous Action, it has to [order the calls sequentially](/reference/react/useActionState#how-useactionstate-queuing-works). If you want to perform Actions in parallel, use `useState` and `useTransition` directly.
+`useActionState`는 사용자 Action으로 인한 사이드 이펙트를 처리하기 위한 `useReducer`라고 생각할 수 있습니다. 이전 Action을 기반으로 다음 실행할 Action을 계산하기 때문에 [호출을 차례대로 대기열에 추가](#how-useactionstate-queuing-works)해야 합니다. 여러 Action을 병렬로 수행하려면 `useState`와 `useTransition`을 직접 사용하세요.
 
 </DeepDive>
 
 ---
 
-### Using with `useOptimistic` {/*using-with-useoptimistic*/}
+### `useOptimistic`과 함께 사용하기 {/*using-with-useoptimistic*/}
 
-You can combine `useActionState` with [`useOptimistic`](/reference/react/useOptimistic) to show immediate UI feedback:
+`useActionState`를 [`useOptimistic`](/reference/react/useOptimistic)과 결합하여 즉각적인 UI 피드백을 표시할 수 있습니다.
 
 
 <Sandpack>
@@ -582,16 +605,16 @@ hr {
 </Sandpack>
 
 
-`setOptimisticCount` immediately updates the quantity, and `dispatchAction()` queues the `updateCartAction`. A pending indicator appears on both the quantity and total to give the user feedback that their update is still being applied.
+`setOptimisticCount`는 즉각적으로 수량을 업데이트하고 `dispatchAction()`은 `updateCartAction`을 큐에 넣습니다. 수량과 총합 모두에 대기 상태 표시기를 띄워 사용자의 업데이트가 아직 적용 중이라는 피드백을 제공합니다.
 
 ---
 
 
-### Using with Action props {/*using-with-action-props*/}
+### Action prop과 함께 사용하기 {/*using-with-action-props*/}
 
-When you pass the `dispatchAction` function to a component that exposes an [Action prop](/reference/react/useTransition#exposing-action-props-from-components), you don't need to call `startTransition` or `useOptimistic` yourself.
+[Action prop](/reference/react/useTransition#exposing-action-props-from-components)을 노출하는 컴포넌트에 `dispatchAction` 함수를 전달하는 경우 `startTransition`이나 `useOptimistic`을 직접 호출할 필요가 없습니다.
 
-This example shows using the `increaseAction` and `decreaseAction` props of a QuantityStepper component:
+이 예시는 `QuantityStepper` 컴포넌트의 `increaseAction` 및 `decreaseAction` prop을 사용하는 방법을 보여줍니다.
 
 <Sandpack>
 
@@ -768,13 +791,13 @@ hr {
 
 </Sandpack>
 
-Since `<QuantityStepper>` has built-in support for transitions, pending state, and optimistically updating the count, you just need to tell the Action _what_ to change, and _how_ to change it is handled for you.
+`<QuantityStepper>`는 Transition, 보류 상태(pending state), 카운트를 낙관적으로 업데이트하는 기능이 이미 내장되어 있기 때문에 Action에게 *무엇(what)*을 바꿀지만 알려주면 *어떻게(how)* 바꿀지는 컴포넌트가 대신 처리해 줍니다.
 
 ---
 
-### Cancelling queued Actions {/*cancelling-queued-actions*/}
+### 큐에 대기 중인 Action 취소하기 {/*cancelling-queued-actions*/}
 
-You can use an `AbortController` to cancel pending Actions:
+`AbortController`를 사용하여 보류 중인 Action을 취소할 수 있습니다.
 
 <Sandpack>
 
@@ -993,23 +1016,23 @@ hr {
 
 </Sandpack>
 
-Try clicking increase or decrease multiple times, and notice that the total updates within 1 second no matter how many times you click. This works because it uses an `AbortController` to "complete" the previous Action so the next Action can proceed.
+증가 또는 감소 버튼을 여러 번 클릭해 보고 아무리 많이 클릭하더라도 총합이 1초 내에 업데이트되는 것을 확인해 보세요. 이 기능은 `AbortController`를 이용해 이전 Action을 "완료" 처리하고 다음 Action이 바로 진행되도록 만들기 때문에 작동합니다.
 
 <Pitfall>
 
-Aborting an Action isn't always safe.
+Action을 중단(aborting)하는 것이 항상 안전하지는 않습니다.
 
-For example, if the Action performs a mutation (like writing to a database), aborting the network request doesn't undo the server-side change. This is why `useActionState` doesn't abort by default. It's only safe when you know the side effect can be safely ignored or retried.
+예를 들어, Action이 데이터베이스 쓰기와 같은 변경 작업(mutation)을 수행하는 경우, 네트워크 요청을 중단한다고 해서 서버 측 변경이 취소되지는 않습니다. 이것이 `useActionState`가 기본적으로 중단 기능을 사용하지 않는 이유입니다. 사이드 이펙트를 안전하게 무시하거나 재시도할 수 있다고 확신할 때만 사용하는 것이 안전합니다.
 
 </Pitfall>
 
 ---
 
-### Using with `<form>` Action props {/*use-with-a-form*/}
+### `<form>` Action prop과 함께 사용하기 {/*use-with-a-form*/}
 
-You can pass the `dispatchAction` function as the `action` prop to a `<form>`.
+`dispatchAction` 함수를 `<form>`의 `action` prop으로 전달할 수 있습니다.
 
-When used this way, React automatically wraps the submission in a Transition, so you don't need to call `startTransition` yourself. The `reducerAction` receives the previous state and the submitted `FormData`:
+이 방식으로 사용하면 React가 자동으로 폼 제출을 Transition으로 감싸주기 때문에 `startTransition`을 직접 호출할 필요가 없습니다. `reducerAction`은 이전 상태와 제출된 `FormData`를 받게 됩니다.
 
 <Sandpack>
 
@@ -1052,42 +1075,26 @@ export default function Checkout() {
   );
 }
 
-export default function App() {
-  return (
-    <>
-      <AddToCartForm itemID="1" itemTitle="JavaScript: The Definitive Guide" />
-      <AddToCartForm itemID="2" itemTitle="JavaScript: The Good Parts" />
-    </>
-  );
-}
-```
-
-```js src/actions.js
-"use server";
-
-export async function addToCart(prevState, queryData) {
-  const itemID = queryData.get('itemID');
-  if (itemID === "1") {
-    return {
-      success: true,
-      cartSize: 12,
-    };
-  } else {
-    return {
-      success: false,
-      message: "The item is sold out.",
-    };
+async function updateCartAction(prevCount, formData) {
+  const type = formData.get('type');
+  switch (type) {
+    case 'ADD': {
+      return await addToCart(prevCount);
+    }
+    case 'REMOVE': {
+      return await removeFromCart(prevCount);
+    }
   }
   return prevCount;
 }
 ```
 
-```css src/styles.css hidden
-form {
-  border: solid 1px black;
-  margin-bottom: 24px;
-  padding: 12px;
-}
+```js src/Total.js
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 0,
+});
 
 export default function Total({quantity, isPending}) {
   return (
@@ -1175,25 +1182,25 @@ hr {
 
 </Sandpack>
 
-In this example, when the user clicks the stepper arrows, the button submits the form and `useActionState` calls `updateCartAction` with the form data. The example uses `useOptimistic` to immediately show the new quantity while the server confirms the update.
+이 예시에서는 사용자가 스테퍼 화살표를 클릭하면 버튼이 폼을 제출하고 `useActionState`는 폼 데이터와 함께 `updateCartAction`을 호출합니다. 또한 `useOptimistic`을 활용하여 서버가 업데이트를 확인하는 동안 새로운 수량을 즉시 표시합니다.
 
 <RSC>
 
-When used with a [Server Function](/reference/rsc/server-functions), `useActionState` allows the server's response to be shown before hydration (when React attaches to server-rendered HTML) completes. You can also use the optional `permalink` parameter for progressive enhancement (allowing the form to work before JavaScript loads) on pages with dynamic content. This is typically handled by your framework for you.
+[Server Function](/reference/rsc/server-functions)과 함께 사용할 때, `useActionState`는 하이드레이션(React가 서버 렌더링 HTML에 부착되는 과정)이 완료되기 전에 서버의 응답을 표시할 수 있게 해줍니다. 동적 콘텐츠가 있는 페이지의 경우 점진적 향상(JavaScript가 로드되기 전에 폼이 작동하도록 허용)을 위해 선택적인 `permalink` 매개변수를 사용할 수도 있습니다. 이는 일반적으로 프레임워크가 대신 처리해 줍니다.
 
 </RSC>
 
-See the [`<form>`](/reference/react-dom/components/form#handle-form-submission-with-a-server-function) docs for more information on using Actions with forms.
+폼과 함께 Action을 사용하는 방법에 대한 자세한 내용은 [`<form>`](/reference/react-dom/components/form#handle-form-submission-with-a-server-function) 문서를 참조하세요.
 
 ---
 
-### Handling errors {/*handling-errors*/}
+### 오류 처리하기 {/*handling-errors*/}
 
-There are two ways to handle errors with `useActionState`.
+`useActionState`로 오류를 처리하는 방법에는 두 가지가 있습니다.
 
-For known errors, such as "quantity not available" validation errors from your backend, you can return it as part of your `reducerAction` state and display it in the UI.
+백엔드에서 오는 "수량 부족" 같은 알려진 유효성 검사 오류의 경우, 이를 `reducerAction` 상태의 일부로 반환하여 UI에 표시할 수 있습니다.
 
-For unknown errors, such as `undefined is not a function`, you can throw an error. React will cancel all queued Actions and shows the nearest [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) by rethrowing the error from the `useActionState` hook.
+`undefined is not a function` 같은 알 수 없는 오류의 경우에는 에러를 직접 던질(throw) 수 있습니다. React는 큐에 대기 중인 모든 Action을 취소하고 `useActionState` 훅에서 오류를 다시 발생시켜 가장 가까운 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 표시하게 됩니다.
 
 <Sandpack>
 
@@ -1208,16 +1215,16 @@ function Checkout() {
     async (prevState, quantity) => {
       const result = await addToCart(prevState.count, quantity);
       if (result.error) {
-        // Return the error from the API as state
+        // API의 오류를 상태로 반환합니다
         return {...prevState, error: `Could not add quanitiy ${quantity}: ${result.error}`};
       }
 
       if (!isPending) {
-        // Clear the error state for the first dispatch.
+        // 첫 번째 디스패치에 대해 오류 상태를 지웁니다.
         return {count: result.count, error: null};
       }
 
-      // Return the new count, and any errors that happened.
+      // 새 카운트와 발생한 오류를 반환합니다.
       return {count: result.count, error: prevState.error};
 
 
@@ -1366,16 +1373,16 @@ button {
 
 </Sandpack>
 
-In this example, "Add 10" simulates an API that returns a validation error, which `updateCartAction` stores in state and displays inline. "Add NaN" results in an invalid count, so `updateCartAction` throws, which propagates through `useActionState` to the `ErrorBoundary` and shows a reset UI.
+이 예시에서 "Add 10"은 유효성 검사 오류를 반환하는 API를 시뮬레이션하며, `updateCartAction`은 이를 상태에 저장하고 인라인으로 표시합니다. 반면 "Add NaN"은 유효하지 않은 카운트를 만들어 `updateCartAction`이 에러를 던지게 만들고, 이 에러는 `useActionState`를 통해 `ErrorBoundary`로 전파되어 리셋(reset) UI를 표시하게 됩니다.
 
 
 ---
 
 ## 문제 해결 {/*troubleshooting*/}
 
-### 액션이 더 이상 제출된 폼 데이터를 읽을 수 없습니다 {/*my-action-can-no-longer-read-the-submitted-form-data*/}
+### `isPending` 플래그가 업데이트되지 않습니다 {/*ispending-not-updating*/}
 
-액션을 `useActionState`로 감싸면 *첫 번째 인수*로 "이전(또는 현재) State"가 추가됩니다. 따라서 일반적인 폼 액션과 달리, 제출된 폼 데이터는 *두 번째 인수*에서 확인해야 합니다.
+`dispatchAction`을 (Action prop을 통하지 않고) 수동으로 호출하고 있다면, 호출부를 [`startTransition`](/reference/react/startTransition)으로 감쌌는지 확인하세요.
 
 ```js
 import { useActionState, startTransition } from 'react';
@@ -1384,7 +1391,7 @@ function MyComponent() {
   const [state, dispatchAction, isPending] = useActionState(myAction, null);
 
   function handleClick() {
-    // ✅ Correct: wrap in startTransition
+    // ✅ 올바른 방법: startTransition으로 감싸기
     startTransition(() => {
       dispatchAction();
     });
@@ -1394,21 +1401,21 @@ function MyComponent() {
 }
 ```
 
-When `dispatchAction` is passed to an Action prop, React automatically wraps it in a Transition.
+`dispatchAction`이 Action prop에 전달되면 React가 자동으로 이를 Transition으로 감싸줍니다.
 
 ---
 
-### My Action cannot read form data {/*action-cannot-read-form-data*/}
+### 내 Action이 폼 데이터를 읽을 수 없습니다 {/*action-cannot-read-form-data*/}
 
-When you use `useActionState`, the `reducerAction` receives an extra argument as its first argument: the previous or initial state. The submitted form data is therefore its second argument instead of its first.
+`useActionState`를 사용할 때, `reducerAction`은 첫 번째 인수로 이전 상태(또는 초기 상태)라는 추가적인 인수를 받게 됩니다. 따라서 제출된 폼 데이터는 첫 번째가 아니라 두 번째 인수가 됩니다.
 
 ```js {2,7}
-// Without useActionState
+// useActionState를 사용하지 않을 때
 function action(formData) {
   const name = formData.get('name');
 }
 
-// With useActionState
+// useActionState를 사용할 때
 function action(prevState, formData) {
   const name = formData.get('name');
 }
@@ -1416,13 +1423,13 @@ function action(prevState, formData) {
 
 ---
 
-### My actions are being skipped {/*actions-skipped*/}
+### 내 Action이 무시되고 건너뜁니다 {/*actions-skipped*/}
 
-If you call `dispatchAction` multiple times and some of them don't run, it may be because an earlier `dispatchAction` call threw an error.
+`dispatchAction`을 여러 번 호출했는데 그중 일부가 실행되지 않는다면, 이는 이전 `dispatchAction` 호출에서 오류가 발생했기 때문일 수 있습니다.
 
-When a `reducerAction` throws, React skips all subsequently queued `dispatchAction` calls.
+`reducerAction`이 에러를 던지면 React는 이후 큐에 있는 모든 `dispatchAction` 호출을 건너뜁니다.
 
-To handle this, catch errors within your `reducerAction` and return an error state instead of throwing:
+이 문제를 해결하려면 `reducerAction` 안에서 오류를 포착(catch)하고 에러를 던지는 대신 오류 상태를 반환하세요.
 
 ```js
 async function myReducerAction(prevState, data) {
@@ -1430,7 +1437,7 @@ async function myReducerAction(prevState, data) {
     const result = await submitData(data);
     return { success: true, data: result };
   } catch (error) {
-    // ✅ Return error state instead of throwing
+    // ✅ 에러를 던지는 대신 오류 상태를 반환합니다
     return { success: false, error: error.message };
   }
 }
@@ -1438,19 +1445,19 @@ async function myReducerAction(prevState, data) {
 
 ---
 
-### My state doesn't reset {/*reset-state*/}
+### 상태가 초기화되지 않습니다 {/*reset-state*/}
 
-`useActionState` doesn't provide a built-in reset function. To reset the state, you can design your `reducerAction` to handle a reset signal:
+`useActionState`는 내장된 초기화(reset) 함수를 제공하지 않습니다. 상태를 리셋하려면 `reducerAction`이 리셋 신호를 처리하도록 설계할 수 있습니다.
 
 ```js
 const initialState = { name: '', error: null };
 
 async function formAction(prevState, payload) {
-  // Handle reset
+  // 리셋 처리
   if (payload === null) {
     return initialState;
   }
-  // Normal action logic
+  // 일반적인 Action 로직
   const result = await submitData(payload);
   return result;
 }
@@ -1460,7 +1467,7 @@ function MyComponent() {
 
   function handleReset() {
     startTransition(() => {
-      dispatchAction(null); // Pass null to trigger reset
+      dispatchAction(null); // 리셋을 트리거하기 위해 null을 전달
     });
   }
 
@@ -1468,13 +1475,13 @@ function MyComponent() {
 }
 ```
 
-Alternatively, you can add a `key` prop to the component using `useActionState` to force it to remount with fresh state, or a `<form>` `action` prop, which resets automatically after submission.
+또는 `useActionState`를 사용하는 컴포넌트에 `key` prop을 추가하여 새로운 상태로 강제로 다시 마운트되게 만들거나, 제출 후 자동으로 리셋되는 `<form>`의 `action` prop을 사용할 수도 있습니다.
 
 ---
 
-### I'm getting an error: "An async function with useActionState was called outside of a transition." {/*async-function-outside-transition*/}
+### "An async function with useActionState was called outside of a transition." 에러가 발생합니다 {/*async-function-outside-transition*/}
 
-A common mistake is to forget to call `dispatchAction` from inside a Transition:
+Transition 안에서 `dispatchAction`을 호출하는 것을 빠뜨리는 실수를 자주 합니다.
 
 <ConsoleBlockMulti>
 <ConsoleLogLine level="error">
@@ -1485,14 +1492,14 @@ An async function with useActionState was called outside of a transition. This i
 </ConsoleBlockMulti>
 
 
-This error happens because `dispatchAction` must run inside a Transition:
+이 오류는 `dispatchAction`이 반드시 Transition 내부에서 실행되어야 하기 때문에 발생합니다.
 
 ```js
 function MyComponent() {
   const [state, dispatchAction, isPending] = useActionState(myAsyncAction, null);
 
   function handleClick() {
-    // ❌ Wrong: calling dispatchAction outside a Transition
+    // ❌ 잘못된 방법: Transition 외부에서 dispatchAction 호출
     dispatchAction();
   }
 
@@ -1500,7 +1507,7 @@ function MyComponent() {
 }
 ```
 
-To fix, either wrap the call in [`startTransition`](/reference/react/startTransition):
+이 문제를 해결하려면 호출을 [`startTransition`](/reference/react/startTransition)으로 감싸세요.
 
 ```js
 import { useActionState, startTransition } from 'react';
@@ -1509,7 +1516,7 @@ function MyComponent() {
   const [state, dispatchAction, isPending] = useActionState(myAsyncAction, null);
 
   function handleClick() {
-    // ✅ Correct: wrap in startTransition
+    // ✅ 올바른 방법: startTransition으로 감싸기
     startTransition(() => {
       dispatchAction();
     });
@@ -1519,22 +1526,22 @@ function MyComponent() {
 }
 ```
 
-Or pass `dispatchAction` to an Action prop, is call in a Transition:
+또는 `dispatchAction`을 Action prop으로 전달하면 알아서 Transition 내에서 호출됩니다.
 
 ```js
 function MyComponent() {
   const [state, dispatchAction, isPending] = useActionState(myAsyncAction, null);
 
-  // ✅ Correct: action prop wraps in a Transition for you
+  // ✅ 올바른 방법: action prop이 자동으로 Transition으로 감싸줍니다.
   return <Button action={dispatchAction}>...</Button>;
 }
 ```
 
 ---
 
-### I'm getting an error: "Cannot update action state while rendering" {/*cannot-update-during-render*/}
+### "Cannot update action state while rendering" 에러가 발생합니다 {/*cannot-update-during-render*/}
 
-You cannot call `dispatchAction` during render:
+렌더링 중에는 `dispatchAction`을 호출할 수 없습니다.
 
 <ConsoleBlock level="error">
 
@@ -1542,17 +1549,17 @@ Cannot update action state while rendering.
 
 </ConsoleBlock>
 
-This causes an infinite loop because calling `dispatchAction` schedules a state update, which triggers a re-render, which calls `dispatchAction` again.
+이렇게 하면 `dispatchAction`이 상태 업데이트를 예약하고 이로 인해 리렌더링이 트리거되며 다시 `dispatchAction`을 호출하는 무한 루프가 발생합니다.
 
 ```js
 function MyComponent() {
   const [state, dispatchAction, isPending] = useActionState(myAction, null);
 
-  // ❌ Wrong: calling dispatchAction during render
+  // ❌ 잘못된 방법: 렌더링 중에 dispatchAction 호출
   dispatchAction();
 
   // ...
 }
 ```
 
-To fix, only call `dispatchAction` in response to user events (like form submissions or button clicks).
+이 문제를 해결하려면 폼 제출이나 버튼 클릭과 같은 사용자 이벤트에 대한 응답으로만 `dispatchAction`을 호출하세요.
