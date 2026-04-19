@@ -122,7 +122,7 @@ function RowList({ children }) {
 
 * `children`: 컴포넌트에서 받은 [`children` Prop](/learn/passing-props-to-a-component#passing-jsx-as-children)의 값.
 * `fn`: [베열의 `map` 메서드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 콜백같은 매핑 함수. 자식 요소를 첫 번째 인수로, 인덱스를 두 번째 인수로 받습니다. 인덱스는 0에서 시작해서 호출할 때마다 증가합니다. 함수는 빈 노드(`null`, `undefined` 혹은 Boolean), 문자열, 숫자, React 엘리먼트 혹은 다른 React 노드의 배열과 같은 React 노드를 반환해야 합니다.
-* `thisArg`**(선택사항)**: `fn` 함수가 호출될 때 사용될 [`this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)의 값. 생략시 `undefined`로 간주합니다.
+* `thisArg`**(선택사항)**: `fn` 함수가 호출될 때 사용될 [`this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)의 값. 생략 시 `undefined`로 간주합니다.
 
 #### 반환값 {/*children-map-returns*/}
 

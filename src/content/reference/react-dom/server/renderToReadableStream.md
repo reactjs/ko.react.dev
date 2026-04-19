@@ -51,10 +51,10 @@ async function handler(request) {
 
 * `options`**(선택사항)**: 스트리밍 옵션을 지정할 수 있는 객체입니다.
   * `bootstrapScriptContent`**(선택사항)**: 지정될 경우, 해당 문자열은 `<script>` 태그에 인라인 형식으로 추가됩니다.
-  * `bootstrapScripts`**(선택사항)**: 문자열 배열 형식의 단수 혹은 복수의 URL로 페이지에 함께 작성될 `<script>` 태그에 사용됩니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 호출할 떄, `<script>` 태그를 포함 시키기 위해 사용합니다. 클라이언트에서 React가 실행되길 원하지 않는다면, 제외시켜주세요.
+  * `bootstrapScripts`**(선택사항)**: 문자열 배열 형식의 단수 혹은 복수의 URL로 페이지에 함께 작성될 `<script>` 태그에 사용됩니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 호출할 때, `<script>` 태그를 포함 시키기 위해 사용합니다. 클라이언트에서 React가 실행되길 원하지 않는다면, 제외시켜주세요.
   * `bootstrapModules`**(선택사항)**: `bootstrapScripts`와 비슷합니다, 하지만 [`<script type="module">`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)형식으로 추가됩니다.
-  * `identifierPrefix`**(선택사항)**: React가 ID로서 사용할 문자열 앞머리로 [`useId`](/reference/react/useId)로 생성된 문자열입니다. 같은 페이지에서 여러 root를 사용할 때, 각 root간의 충돌을 방지하기 위해 유용합니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters)에 전달한 앞머리와 반드시 동일해야합니다.
-  * `namespaceURI`**(선택사항)**: 문자열로 스트림을 위한 기준 [namespace URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris)입니다. 일반 HTML에 해당하는 기본값이 설정되어있습니다. SVG를 위해 `'http://www.w3.org/2000/svg'`를 설정하거나 MathML을 위해 `'http://www.w3.org/1998/Math/MathML'`을 설정할 수 있습니다.
+  * `identifierPrefix`**(선택사항)**: React가 ID로서 사용할 문자열 앞머리로 [`useId`](/reference/react/useId)로 생성된 문자열입니다. 같은 페이지에서 여러 root를 사용할 때, 각 root간의 충돌을 방지하기 위해 유용합니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters)에 전달한 앞머리와 반드시 동일해야 합니다.
+  * `namespaceURI`**(선택사항)**: 문자열로 스트림을 위한 기준 [namespace URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris)입니다. 일반 HTML에 해당하는 기본값이 설정되어 있습니다. SVG를 위해 `'http://www.w3.org/2000/svg'`를 설정하거나 MathML을 위해 `'http://www.w3.org/1998/Math/MathML'`을 설정할 수 있습니다.
   * `nonce`**(선택사항)**: [`script-src` Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)를 허용하기 위한 [`nonce`](http://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) (한번만 사용되는) 문자열입니다.
   * `onError`**(선택사항)**: [회복할 수 있든](#recovering-from-errors-outside-the-shell) 있든 [없든] 상관없이, 서버에서 오류가 발생할 때마다 호출되는 콜백입니다. 기본적으로, 이 콜백은 `console.error`만 호출합니다. [크래시 리포트를 로그하기](#logging-crashes-on-the-server) 위해 오버라이드하거나, [상태 코드를 조정하기](#setting-the-status-code) 위해 오버라이드할 수 있습니다.
   * `progressiveChunkSize`**(선택사항)**: 청크의 바이트 수를 설정합니다. [기본 휴리스틱에 대해 더 읽어보기.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)

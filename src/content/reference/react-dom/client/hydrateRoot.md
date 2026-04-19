@@ -42,7 +42,7 @@ React는 `domNode` 내부에 존재하는 HTML에 연결되어, 그 내부의 DO
 * `options`**(선택사항)**: React 루트에 대한 옵션을 가진 객체입니다.
   * `onCaughtError`**(선택사항)**: React가 Error Boundary에서 오류를 잡았을 때 호출되는 콜백입니다. Error Boundary에서 잡은 `error`와 `componentStack`을 포함하는 `errorInfo` 객체와 함께 호출됩니다.
   * `onUncaughtError`**(선택사항)**: 오류가 Error Boundary에 의해 잡히지 않았을 때 호출되는 콜백입니다. 발생한 `error`와 `componentStack`을 포함하는 `errorInfo` 객체와 함께 호출됩니다.
-  * `onRecoverableError`**(선택사항)**: React가 오류로부터 자동으로 복구될 때 호출되는 콜백입니. React가 던지는 `error`와 `componentStack`을 포함하는 `errorInfo` 객체와 함께 호출됩니다. 복구 가능한 오류는 원본 오류 원인을 `error.cause`로 포함할 수 있습니다.
+  * `onRecoverableError`**(선택사항)**: React가 오류로부터 자동으로 복구될 때 호출되는 콜백입니다. React가 던지는 `error`와 `componentStack`을 포함하는 `errorInfo` 객체와 함께 호출됩니다. 복구 가능한 오류는 원본 오류 원인을 `error.cause`로 포함할 수 있습니다.
   * `identifierPrefix`**(선택사항)**: React가 [`useId`](/reference/react/useId)에 의해 생성된 ID에 사용하는 문자열 접두사. 같은 페이지에서 여러개의 루트를 사용할 때 충돌을 피하는 데 유용합니다. 서버에서 사용한 값과 반드시 동일한 값이어야 합니다.
 
 #### 반환값 {/*returns*/}
