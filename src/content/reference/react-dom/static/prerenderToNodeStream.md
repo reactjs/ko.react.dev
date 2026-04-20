@@ -62,11 +62,11 @@ app.use('/', async (request, response) => {
 
 #### 반환값 {/*returns*/}
 
-`prerenderToNodeStream` returns a Promise:
-- If rendering the is successful, the Promise will resolve to an object containing:
-  - `prelude`: a [Node.js Stream.](https://nodejs.org/api/stream.html) of HTML. You can use this stream to send a response in chunks, or you can read the entire stream into a string.
-  - `postponed`: a JSON-serializeable, opaque object that can be passed to [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream) if `prerenderToNodeStream` did not finish. Otherwise `null` indicating that the `prelude` contains all the content and no resume is necessary.
-- If rendering fails, the Promise will be rejected. [Use this to output a fallback shell.](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)
+`prerenderToNodeStream`은 Promise를 반환합니다.
+- 렌더링에 성공하면 Promise는 다음을 포함한 객체로 resolve됩니다.
+  - `prelude`: HTML을 담은 [Node.js Stream](https://nodejs.org/api/stream.html)입니다. 이 스트림을 사용해 응답을 청크 단위로 전송하거나, 전체 스트림을 문자열로 읽을 수 있습니다.
+  - `postponed`: JSON으로 직렬화 가능한 불투명 객체입니다. `prerenderToNodeStream`이 완료되지 않은 경우 [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream)에 전달할 수 있습니다. 완료된 경우에는 `null`이며, 이는 `prelude`에 모든 콘텐츠가 포함되어 재개가 필요 없음을 의미합니다.
+- 렌더링에 실패하면 Promise는 reject됩니다. [이 값을 사용해 fallback 셸을 출력하세요.](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)
 
 #### 주의 사항 {/*caveats*/}
 
@@ -78,7 +78,7 @@ app.use('/', async (request, response) => {
 
 정적 `prerenderToNodeStream` API는 정적 서버 사이드 생성(SSG)에 사용합니다. `renderToString`과 달리, `prerenderToNodeStream`은 모든 데이터가 로드될 때까지 기다린 후에 성공합니다. 이는 Suspense를 사용해 가져와야 하는 데이터를 포함해, 전체 페이지의 정적 HTML을 생성하는 데 적합합니다. 콘텐츠가 로드되는 동안 스트리밍하려면, [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)과 같은 스트리밍 서버 사이드 렌더링(SSR) API를 사용하세요.
 
-`prerenderToNodeStream` can be aborted and resumed later with `resumeToPipeableStream` to support partial pre-rendering.
+부분 사전 렌더링을 지원하기 위해 `prerenderToNodeStream`은 중단할 수 있으며, 이후 `resumeToPipeableStream`으로 재개할 수 있습니다.
 
 </Note>
 
@@ -106,7 +106,7 @@ app.use('/', async (request, response) => {
 
 <CodeStep step={1}>루트 컴포넌트</CodeStep>와 함께, <CodeStep step={2}>부트스트랩 `<script>` 경로</CodeStep> 목록을 제공해야 합니다. 루트 컴포넌트는 **루트 `<html>` 태그를 포함한 전체 문서를 반환해야 합니다.**
 
-예를 들어, 다음과 같을 수 있습니다. 
+예를 들어, 다음과 같을 수 있습니다.
 
 ```js [[1, 1, "App"]]
 export default function App() {
@@ -282,9 +282,9 @@ function ProfilePage() {
 - [`lazy`](/reference/react/lazy)를 사용한 컴포넌트 코드의 지연로딩.
 - [`use`](/reference/react/use)를 사용해 Promise의 값을 읽기.
 
-Suspense는 Effect나 이벤트 핸들러 내부에서 데이터가 패칭될 때 이를 **감지하지 않습니다.** 
+Suspense는 Effect나 이벤트 핸들러 내부에서 데이터가 패칭될 때 이를 **감지하지 않습니다.**
 
-위 예시의 `Posts` 컴포넌트에서 데이터를 로드하는 구체적인 방법은 사용하는 프레임워크에 따라 다릅니다. Suspense를 지원하는 프레임워크를 사용한다면, 해당 프레임워크의 데이터 패칭 문서에서 자세한 내용을 확인할 수 있습니다. 
+위 예시의 `Posts` 컴포넌트에서 데이터를 로드하는 구체적인 방법은 사용하는 프레임워크에 따라 다릅니다. Suspense를 지원하는 프레임워크를 사용한다면, 해당 프레임워크의 데이터 패칭 문서에서 자세한 내용을 확인할 수 있습니다.
 
 특정 프레임워크를 사용하지 않는 Suspense 지원 데이터 패칭은 아직 지원되지 않습니다. Suspense를 지원하는 데이터 소스를 구현하기 위한 요구 사항은 현재 불안정하고 문서화되어 있지 않습니다. 데이터 소스를 Suspense와 통합하기 위한 공식 API는 React의 향후 버전에서 제공될 예정입니다.
 
@@ -314,7 +314,7 @@ async function renderToString() {
 
 불완전한 자식을 가진 모든 Suspense 경계는 풀백 상태로 Prelude에 포함됩니다.
 
-This can be used for partial prerendering together with [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream) or [`resumeAndPrerenderToNodeStream`](/reference/react-dom/static/resumeAndPrerenderToNodeStream).
+이 방식은 [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream) 또는 [`resumeAndPrerenderToNodeStream`](/reference/react-dom/static/resumeAndPrerenderToNodeStream)과 함께 부분 사전 렌더링에 사용할 수 있습니다.
 
 ## 문제 해결 {/*troubleshooting*/}
 
