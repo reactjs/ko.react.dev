@@ -51,7 +51,7 @@ console.log(clonedElement); // <Row title="Cabbage" isHighlighted={true}>Goodbye
 
 * `props`: `props` 인자는 객체 또는 `null`이어야 합니다. `null`을 전달하면 복제된 엘리먼트는 원본 `element.props`를 모두 유지합니다. 그렇지 않으면 `props` 객체의 각 prop에 대해 반환된 엘리먼트는 `element.props`의 값보다 `props`의 값을 "우선"합니다. 나머지 `props`는 원본 `element.props`에서 채워집니다. `props.key` 또는 `props.ref`를 전달하면 원본의 것을 대체합니다.
 
-* **(선택사항)** `...children`: 0개 이상의 자식 노드가 필요합니다. React 엘리먼트, 문자열, 숫자, [portals](/reference/react-dom/createPortal), 빈 노드 (`null`, `undefined`, `true`, `false`) 및 React 노드 배열을 포함한 모든 React 노드가 해당할 수 있습니다. `...children` 인자를 전달하지 않으면 원본 `element.props.children`이 유지됩니다.
+* `...children`**(선택사항)**: 0개 이상의 자식 노드가 필요합니다. React 엘리먼트, 문자열, 숫자, [portals](/reference/react-dom/createPortal), 빈 노드 (`null`, `undefined`, `true`, `false`) 및 React 노드 배열을 포함한 모든 React 노드가 해당할 수 있습니다. `...children` 인자를 전달하지 않으면 원본 `element.props.children`이 유지됩니다.
 
 #### 반환값 {/*returns*/}
 

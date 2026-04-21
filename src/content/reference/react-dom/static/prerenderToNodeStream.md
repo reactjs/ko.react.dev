@@ -50,15 +50,15 @@ app.use('/', async (request, response) => {
 
 * `reactNode`: HTML로 렌더링할 React 노드입니다. 예를 들어 `<App />`과 같은 JSX 노드가 해당됩니다. 전체 문서를 나타내야 하므로, App 컴포넌트는 `<html>` 태그를 렌더링해야 합니다.
 
-* **optional** `options`: 정적 생성 옵션을 가진 객체입니다.
-  * **optional** `bootstrapScriptContent`: 지정될 경우, 이 문자열이 인라인 `<script>` 태그에 삽입됩니다.
-  * **optional** `bootstrapScripts`: 페이지에 출력할 `<script>` 태그의 문자열 URL 배열입니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 호출하는 `<script>`를 포함하려면 이 옵션을 사용하세요. 클라이언트에서 React를 전혀 실행하지 않으려면 생략하세요.
-  * **optional** `bootstrapModules`: `bootstrapScripts`와 같지만, [`<script type="module">`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)을 출력합니다.
-  * **optional** `identifierPrefix`: [`useId`](/reference/react/useId)로 생성된 ID에 React가 사용하는 문자열 접두사입니다. 한 페이지에서 여러 개의 루트를 사용할 때 충돌을 피하는 데 유용합니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters)에 전달한 접두사와 동일해야 합니다.
-  * **optional** `namespaceURI`: 스트림의 루트 [namespace URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris)를 담은 문자열입니다. 기본값은 일반 HTML입니다. SVG의 경우 `'http://www.w3.org/2000/svg'`, MathML의 경우 `'http://www.w3.org/1998/Math/MathML'`을 전달하세요.
-  * **optional** `onError`: 서버 오류가 발생할 때마다, [복구 가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-outside-the-shell)  [불가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell) 여부와 관계없이 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. [충돌 보고를 기록](/reference/react-dom/server/renderToPipeableStream#logging-crashes-on-the-server)하도록 재정의하는 경우에도 반드시 `console.error`를 호출해야 합니다. 셸이 출력되기 전에 [상태 코드를 설정](/reference/react-dom/server/renderToPipeableStream#setting-the-status-code)하는 데에도 사용할 수 있습니다.
-  * **optional** `progressiveChunkSize`: 청크의 바이트 수입니다. [기본 휴리스틱에 대해 더 읽어보세요.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
-  * **optional** `signal`: [프리렌더링을 중단하고](#aborting-prerendering) 나머지를 클라이언트에서 렌더링할 수 있게 하는 [중단 신호](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)입니다.
+* `options`**(선택사항)**: 정적 생성 옵션을 가진 객체입니다.
+  * `bootstrapScriptContent`**(선택사항)**: 지정될 경우, 이 문자열이 인라인 `<script>` 태그에 삽입됩니다.
+  * `bootstrapScripts`**(선택사항)**: 페이지에 출력할 `<script>` 태그의 문자열 URL 배열입니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 호출하는 `<script>`를 포함하려면 이 옵션을 사용하세요. 클라이언트에서 React를 전혀 실행하지 않으려면 생략하세요.
+  * `bootstrapModules`**(선택사항)**: `bootstrapScripts`와 같지만, [`<script type="module">`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)을 출력합니다.
+  * `identifierPrefix`**(선택사항)**: [`useId`](/reference/react/useId)로 생성된 ID에 React가 사용하는 문자열 접두사입니다. 한 페이지에서 여러 개의 루트를 사용할 때 충돌을 피하는 데 유용합니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters)에 전달한 접두사와 동일해야 합니다.
+  * `namespaceURI`**(선택사항)**: 스트림의 루트 [namespace URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris)를 담은 문자열입니다. 기본값은 일반 HTML입니다. SVG의 경우 `'http://www.w3.org/2000/svg'`, MathML의 경우 `'http://www.w3.org/1998/Math/MathML'`을 전달하세요.
+  * `onError`**(선택사항)**: 서버 오류가 발생할 때마다, [복구 가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-outside-the-shell)  [불가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell) 여부와 관계없이 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. [충돌 보고를 기록](/reference/react-dom/server/renderToPipeableStream#logging-crashes-on-the-server)하도록 재정의하는 경우에도 반드시 `console.error`를 호출해야 합니다. 셸이 출력되기 전에 [상태 코드를 설정](/reference/react-dom/server/renderToPipeableStream#setting-the-status-code)하는 데에도 사용할 수 있습니다.
+  * `progressiveChunkSize`**(선택사항)**: 청크의 바이트 수입니다. [기본 휴리스틱에 대해 더 읽어보세요.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
+  * `signal`**(선택사항)**: [프리렌더링을 중단하고](#aborting-prerendering) 나머지를 클라이언트에서 렌더링할 수 있게 하는 [중단 신호](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)입니다.
 
 #### 반환값 {/*returns*/}
 
