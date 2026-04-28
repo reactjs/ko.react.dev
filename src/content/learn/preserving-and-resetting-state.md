@@ -4,23 +4,23 @@ title: State를 보존하고 초기화하기
 
 <Intro>
 
-각 컴포넌트는 독립된 state를 가집니다. React는 UI 트리에서의 위치를 통해 각 state가 어떤 컴포넌트에 속하는지 추적합니다. 리렌더링마다 언제 state를 보존하고 또 state를 초기화할지 컨트롤할 수 있습니다.
+각 컴포넌트는 독립된 State를 가집니다. React는 UI 트리에서의 위치를 통해 각 State가 어떤 컴포넌트에 속하는지 추적합니다. 리렌더링마다 언제 State를 보존하고 또 State를 초기화할지 컨트롤할 수 있습니다.
 
 </Intro>
 
 <YouWillLearn>
 
-* React가 언제 state를 보존하고 언제 초기화하는지
-* 어떻게 React가 컴포넌트의 state를 초기화하도록 강제할 수 있는지
-* key와 타입이 state 보존에 어떻게 영향을 주는지
+* React가 언제 State를 보존하고 언제 초기화하는지
+* 어떻게 React가 컴포넌트의 State를 초기화하도록 강제할 수 있는지
+* key와 타입이 State 보존에 어떻게 영향을 주는지
 
 </YouWillLearn>
 
-## State 는 렌더트리의 위치에 연결 됩니다. {/*state-is-tied-to-a-position-in-the-tree*/}
+## State는 렌더트리의 위치에 연결 됩니다. {/*state-is-tied-to-a-position-in-the-tree*/}
 
-React 는 UI 안에 있는 컴포넌트 구조로 [렌더 트리](learn/understanding-your-ui-as-a-tree#the-render-tree)를 만듭니다.
+React는 UI 안에 있는 컴포넌트 구조로 [렌더 트리](learn/understanding-your-ui-as-a-tree#the-render-tree)를 만듭니다.
 
-컴포넌트에 state를 줄 때 state가 컴포넌트 안에 "살고" 있다고 생각할 수도 있습니다. 하지만 사실 state는 React 안에 있습니다. React는 컴포넌트가 UI 트리에 있는 위치를 이용해 React가 가지고 있는 각 state를 알맞은 컴포넌트와 연결합니다.
+컴포넌트에 State를 줄 때 State가 컴포넌트 안에 "살고" 있다고 생각할 수도 있습니다. 하지만 사실 State는 React 안에 있습니다. React는 컴포넌트가 UI 트리에 있는 위치를 이용해 React가 가지고 있는 각 State를 알맞은 컴포넌트와 연결합니다.
 
 여기 동일한 `<Counter />` JSX 태그가 다른 두 군데에서 렌더링되고 있습니다.
 
@@ -100,7 +100,7 @@ React tree
 
 **이 둘은 각각 트리에서 자기 고유의 위치에 렌더링되어 있으므로 분리되어있는 카운터입니다.** 일반적으로 React를 사용할 때 위치에 대해 생각할 필요는 없지만 React가 어떻게 작동하는지 이해할 때 유용합니다.
 
-React에서 화면의 각 컴포넌트는 완전히 분리된 state를 가집니다. 예를 들어, 두 `Counter` 컴포넌트를 나란히 렌더링하면 그들은 각각 자신만의 독립된 `score`과 `hover` state를 가지게 됩니다.
+React에서 화면의 각 컴포넌트는 완전히 분리된 State를 가집니다. 예를 들어, 두 `Counter` 컴포넌트를 나란히 렌더링하면 그들은 각각 자신만의 독립된 `score`과 `hover` State를 가지게 됩니다.
 
 두 카운터를 클릭해보고 서로 영향을 끼치지 않는 것을 확인해보세요.
 
@@ -247,7 +247,7 @@ label {
 
 </Sandpack>
 
-두 번째 카운터를 렌더링하지 않을 때 그 state가 완전히 사라지는 것을 확인해보세요. 이는 React가 컴포넌트를 제거할 때 그 state도 같이 제거하기 때문입니다.
+두 번째 카운터를 렌더링하지 않을 때 그 State가 완전히 사라지는 것을 확인해보세요. 이는 React가 컴포넌트를 제거할 때 그 State도 같이 제거하기 때문입니다.
 
 <DiagramGroup>
 
@@ -259,7 +259,7 @@ Deleting a component
 
 </DiagramGroup>
 
-"Render the second counter"를 누를 때 두 번째 `Counter`와 그 state는 처음부터 초기화되고(`score = 0`) DOM에 추가됩니다.
+"Render the second counter"를 누를 때 두 번째 `Counter`와 그 State는 처음부터 초기화되고(`score = 0`) DOM에 추가됩니다.
 
 <DiagramGroup>
 
@@ -271,9 +271,9 @@ Adding a component
 
 </DiagramGroup>
 
-**React는 컴포넌트가 UI 트리에서 그 자리에 렌더링되는 한 state를 유지합니다.** 만약 그것을 제거하거나 같은 자리에 다른 컴포넌트가 렌더링되면 React는 그 state를 버립니다.
+**React는 컴포넌트가 UI 트리에서 그 자리에 렌더링되는 한 State를 유지합니다.** 만약 그것을 제거하거나 같은 자리에 다른 컴포넌트가 렌더링되면 React는 그 State를 버립니다.
 
-## 같은 자리의 같은 컴포넌트는 state를 보존합니다 {/*same-component-at-the-same-position-preserves-state*/}
+## 같은 자리의 같은 컴포넌트는 State를 보존합니다 {/*same-component-at-the-same-position-preserves-state*/}
 
 다음 예시에는 서로 다른 두 `<Counter />` 태그가 있습니다.
 
@@ -360,7 +360,7 @@ label {
 
 </Sandpack>
 
-체크 박스를 선택하거나 선택 해제할 때 카운터 state는 초기화되지 않습니다. `isFancy`가 `true`이든 `false`이든 `<Counter />`는 같은 자리에 있습니다. root `App` 컴포넌트가 반환한 `div`의 첫 번째 자식으로 있죠.
+체크 박스를 선택하거나 선택 해제할 때 카운터 State는 초기화되지 않습니다. `isFancy`가 `true`이든 `false`이든 `<Counter />`는 같은 자리에 있습니다. root `App` 컴포넌트가 반환한 `div`의 첫 번째 자식으로 있죠.
 
 <DiagramGroup>
 
@@ -377,7 +377,7 @@ label {
 
 <Pitfall>
 
-**React는 JSX 마크업에서가 아닌 UI 트리에서의 위치에 관심이 있다는 것을** 기억하세요! 이 컴포넌트는 `if` 안과 밖에 다른 `<Counter />`를 가진 `return` 문을 두 개 가지고 있습니다.
+**React에서 중요한 것은 JSX 마크업에서가 아닌 UI 트리에서의 위치라는 점을** 기억하세요! 이 컴포넌트는 `if` 안과 밖에 다른 `<Counter />`를 가진 `return` 문을 두 개 가지고 있습니다.
 
 <Sandpack>
 
@@ -475,13 +475,13 @@ label {
 
 </Sandpack>
 
-체크 박스를 선택할 때 state가 초기화될 거라고 생각했을 수도 있지만 그렇지 않습니다! **두 `<Counter />` 태그가 같은 위치에 렌더링되기** 때문이죠. React는 함수 안 어디에 조건문이 있는지 모릅니다. React는 당신이 반환하는 트리만 "봅니다". 두 상황에서 `App` 컴포넌트는 `<Counter />`를 첫 번째 자식으로 가진 `<div>`를 반환합니다. 이것이 React가 두 `<Counter />`를 _같은_ 것으로 보는 이유입니다.
+체크 박스를 선택할 때 State가 초기화될 거라고 생각했을 수도 있지만 그렇지 않습니다! **두 `<Counter />` 태그가 같은 위치에 렌더링되기** 때문이죠. React는 함수 안 어디에 조건문이 있는지 모릅니다. React는 당신이 반환하는 트리만 "봅니다".
 
-그들이 같은 "주소"를 갖는다고 생각할 수도 있습니다. root의 첫 번째 자식의 첫 번째 자식으로요. 이것이 당신이 어떻게 로직을 만들었는지와 상관없이 React가 이전과 다음 렌더링 사이에 컴포넌트를 맞추는 방법입니다.
+두 상황에서 `App` 컴포넌트는 `<Counter />`를 첫 번째 자식으로 가진 `<div>`를 반환합니다. React에서는 이 두 카운터가 root의 첫 번째 자식의 첫 번째 자식이라는 동일한 "주소"를 가집니다. 이것이 당신이 어떻게 로직을 만들었는지와 상관없이 React가 이전과 다음 렌더링 사이에 컴포넌트를 맞추는 방법입니다.
 
 </Pitfall>
 
-## 같은 위치의 다른 컴포넌트는 state를 초기화합니다 {/*different-components-at-the-same-position-reset-state*/}
+## 같은 위치의 다른 컴포넌트는 State를 초기화합니다 {/*different-components-at-the-same-position-reset-state*/}
 
 다음 예시에서 체크 박스를 선택하면 `<Counter>`가 `<p>`로 교체됩니다.
 
@@ -560,7 +560,7 @@ label {
 
 </Sandpack>
 
-여기서 당신은 같은 자리의 _다른_ 컴포넌트 타입으로 바꿉니다. 처음에는 `<div>`가 `Counter`를 갖고 있습니다. 하지만 `p`로 바꾸면 React는 UI 트리에서 `Counter`와 그 state를 제거합니다.
+여기서 같은 자리의 _다른_ 컴포넌트 타입으로 바꿉니다. 처음에는 `<div>`가 `Counter`를 갖고 있습니다. 하지만 `p`로 바꾸면 React는 UI 트리에서 `Counter`와 그 State를 제거합니다.
 
 <DiagramGroup>
 
@@ -582,7 +582,7 @@ label {
 
 </DiagramGroup>
 
-또한 **같은 위치에 다른 컴포넌트를 렌더링할 때 컴포넌트는 그의 전체 서브 트리의 state를 초기화합니다.** 이것이 어떻게 작동하는지 보기 위해 카운터를 증가시키고 체크 박스를 체크해보세요.
+또한 **같은 위치에 다른 컴포넌트를 렌더링할 때 컴포넌트는 그의 전체 서브 트리의 State를 초기화합니다.** 이것이 어떻게 작동하는지 보기 위해 카운터를 증가시키고 체크 박스를 체크해보세요.
 
 <Sandpack>
 
@@ -693,7 +693,7 @@ label {
 
 </DiagramGroup>
 
-경험상<sup>Rule of Thumb</sup> **리렌더링할 때 State를 유지하고 싶다면, 트리 구조가 "같아야" 합니다.** 만약 구조가 다르다면 React가 트리에서 컴포넌트를 지울 때 State로 지우기 때문에 State가 유지되지 않습니다.
+경험상<sup>Rule of Thumb</sup> **리렌더링할 때 State를 유지하고 싶다면, 트리 구조가 "같아야" 합니다.** 만약 구조가 다르다면 React가 트리에서 컴포넌트를 지울 때 State를 지우기 때문에 State가 유지되지 않습니다.
 
 <Pitfall>
 
@@ -734,13 +734,13 @@ export default function MyComponent() {
 </Sandpack>
 
 
-버튼을 누를 때마다 입력 State가 사라집니다! 이것은 `MyComponent`를 렌더링할 때마다 *다른* `MyTextField` 함수가 만들어지기 때문입니다. 따라서 같은 함수에서 *다른* 컴포넌트를 렌더링할 때마다 React는 그 아래의 모든 state를 초기화합니다. 이런 문제를 피하려면 **항상 컴포넌트를 중첩해서 정의하지 않고 최상위 범위에서 정의해야 합니다.**
+버튼을 누를 때마다 입력 State가 사라집니다! 이것은 `MyComponent`를 렌더링할 때마다 *다른* `MyTextField` 함수가 만들어지기 때문입니다. 같은 위치에서 *다른* 컴포넌트를 렌더링하기 때문에 React는 그 아래의 모든 State를 초기화합니다. 이로 인해 버그와 성능 문제가 발생합니다. 이런 문제를 피하려면 **항상 컴포넌트 함수를 중첩해서 정의하지 않고 최상위 범위에서 정의해야 합니다.**
 
 </Pitfall>
 
-## 같은 위치에서 state를 초기화하기 {/*resetting-state-at-the-same-position*/}
+## 같은 위치에서 State를 초기화하기 {/*resetting-state-at-the-same-position*/}
 
-기본적으로 React는 컴포넌트가 같은 위치를 유지하면 state를 유지합니다. 보통 이것이 당신이 원하는 행동이기 때문에 기본 동작으로서 타당합니다. 그러나 가끔 컴포넌트 State를 초기화하고 싶을 때가 있습니다. 두 선수가 턴마다 자신의 점수를 추적하는 앱을 한번 봅시다.
+기본적으로 React는 컴포넌트가 같은 위치를 유지하면 State를 유지합니다. 보통 이것이 당신이 원하는 행동이기 때문에 기본 동작으로서 타당합니다. 그러나 가끔 컴포넌트 State를 초기화하고 싶을 때가 있습니다. 두 선수가 턴마다 자신의 점수를 추적하는 앱을 한번 봅시다.
 
 <Sandpack>
 
@@ -812,9 +812,9 @@ h1 {
 
 지금은 선수를 바꿀 때 점수가 유지됩니다. 두 `Counter`가 같은 위치에 나타나기 때문에 React는 그들을 `person` props가 변경된 *같은* `Counter`로 봅니다.
 
-하지만, 개념적으로 `app` 에는 두 개의 분리된 카운터가 있어야 합니다. 그들은 UI에 같은 위치에 나타나지만, 하나는 Taylor의 카운터이고, 다른 하나는 Sarah의 카운터입니다.
+하지만, 개념적으로 app에는 두 개의 분리된 카운터가 있어야 합니다. 그들은 UI에 같은 위치에 나타나지만, 하나는 Taylor의 카운터이고, 다른 하나는 Sarah의 카운터입니다.
 
-이 둘을 바꿀 때 state를 초기화하기 위한 두 가지 방법이 있습니다.
+이 둘을 바꿀 때 State를 초기화하기 위한 두 가지 방법이 있습니다.
 
 1. 다른 위치에 컴포넌트를 렌더링하기
 2. 각 컴포넌트에 `key`로 명시적인 식별자를 제공하기
@@ -918,17 +918,17 @@ Clicking "next" again
 
 </DiagramGroup>
 
-> 각 `Counter`의 state는 DOM에서 지워질 때마다 제거됩니다. 이것이 버튼을 누를 때마다 초기화되는 이유입니다.
+> 각 `Counter`의 State는 DOM에서 지워질 때마다 제거됩니다. 이것이 버튼을 누를 때마다 초기화되는 이유입니다.
 
 이 방법은 같은 자리에 적은 수의 독립된 컴포넌트만을 가지고 있을 때 편리합니다. 이 예시에서는 두 개밖에 없기 때문에 JSX에서 각각 렌더링하기 번거롭지 않습니다.
 
-### 선택지 2: key를 이용해 state를 초기화하기 {/*option-2-resetting-state-with-a-key*/}
+### 선택지 2: key를 이용해 State를 초기화하기 {/*option-2-resetting-state-with-a-key*/}
 
 State를 초기화하는 좀 더 일반적인 방법이 또 있습니다.
 
 [배열을 렌더링할 때](/learn/rendering-lists#keeping-list-items-in-order-with-key) `key`를 봤을 것입니다. key는 배열을 위한 것만은 아닙니다! React가 컴포넌트를 구별할 수 있도록 key를 사용할 수도 있습니다. 기본적으로 React는 컴포넌트를 구별하기 위해 부모 안에서의 순서("첫 번째 카운터", "두 번째 카운터")를 이용합니다. 그러나 key를 이용하면 React에게 단지 *첫 번째* 카운터나 *두 번째* 카운터가 아니라 특정한 카운터라고 말해줄 수 있습니다. 예를 들면 *Taylor의* 카운터처럼요. 이렇게 트리 어디에서 나타나든 React는 *Taylor의* 카운터라는 것을 알 수 있습니다.
 
-다음 예시에서 두 `<Counter />`는 JSX에서 같은 위치에 나타나지만, state를 공유하지는 않습니다.
+다음 예시에서 두 `<Counter />`는 JSX에서 같은 위치에 나타나지만, State를 공유하지는 않습니다.
 
 <Sandpack>
 
@@ -998,7 +998,7 @@ h1 {
 
 </Sandpack>
 
-Taylor와 Sarah를 바꾸지만, state를 유지하지는 않습니다. **당신이 다른 `key`를 주었기** 때문이죠.
+Taylor와 Sarah를 바꾸지만, State를 유지하지는 않습니다. **당신이 다른 `key`를 주었기** 때문이죠.
 
 ```js
 {isPlayerA ? (
@@ -1008,15 +1008,15 @@ Taylor와 Sarah를 바꾸지만, state를 유지하지는 않습니다. **당신
 )}
 ```
 
-`key`를 명시하면 React는 부모 내에서의 순서 대신에 `key` 자체를 위치의 일부로 사용합니다. 이것이 컴포넌트를 JSX에서 같은 자리에 렌더링하지만 React 관점에서는 다른 카운터인 이유입니다. 결과적으로 그들은 절대 state를 공유하지 않습니다. 카운터가 화면에 나타날 때마다 state가 새로 만들어집니다. 그리고 카운터가 제거될 때 마다 state도 제거됩니다. 그들을 토글할 때마다 state가 계속 초기화됩니다.
+`key`를 명시하면 React는 부모 내에서의 순서 대신에 `key` 자체를 위치의 일부로 사용합니다. 이것이 컴포넌트를 JSX에서 같은 자리에 렌더링하지만 React 관점에서는 다른 카운터인 이유입니다. 결과적으로 그들은 절대 State를 공유하지 않습니다. 카운터가 화면에 나타날 때마다 State가 새로 만들어집니다. 그리고 카운터가 제거될 때 마다 State도 제거됩니다. 그들을 토글할 때마다 State가 계속 초기화됩니다.
 
 > key가 전역적으로 유일하지 않다는 것을 기억해야 합니다. key는 오직 부모 안에서만 자리를 명시합니다.
 
 ### key를 이용해 폼을 초기화하기 {/*resetting-a-form-with-a-key*/}
 
-key로 state를 초기화하는 것은 특히 폼을 다룰 때 유용합니다.
+key로 State를 초기화하는 것은 특히 폼을 다룰 때 유용합니다.
 
-다음 채팅 앱에서 `<Chat>` 컴포넌트는 문자열 입력 state를 가지고 있습니다.
+다음 채팅 앱에서 `<Chat>` 컴포넌트는 문자열 입력 State를 가지고 있습니다.
 
 <Sandpack>
 
@@ -1119,7 +1119,7 @@ textarea {
 <Chat key={to.id} contact={to} />
 ```
 
-이것은 다른 수신자를 선택할 때 `Chat` 컴포넌트가 그 트리에 있는 모든 state를 포함해서 처음부터 다시 생성되는 것을 보장해줍니다. React는 DOM 엘리먼트도 다시 사용하는 대신 새로 만들 것입니다.
+이는 다른 수신자를 선택할 때 `Chat` 컴포넌트가 그 하위 트리에 있는 모든 State를 포함해서 처음부터 다시 생성되는 것을 보장해줍니다. React는 DOM 엘리먼트도 재사용하는 대신 다시 만들 것입니다.
 
 이제 수신자를 바꿀 때마다 입력란이 비워지게 됩니다.
 
@@ -1220,11 +1220,11 @@ textarea {
 
 #### 제거된 컴포넌트의 state를 보존하기 {/*preserving-state-for-removed-components*/}
 
-실제 채팅 앱에서는 이전의 수신자를 선택했을 때 입력값이 복구되는 것을 원할 것입니다. 보이지 않는 컴포넌트의 state를 "살아 있게"하는 몇 가지 방법이 있습니다.
+실제 채팅 앱에서는 이전의 수신자를 선택했을 때 입력값이 복구되는 것을 원할 것입니다. 보이지 않는 컴포넌트의 State를 "살아 있게"하는 몇 가지 방법이 있습니다.
 
-- 현재 채팅만 렌더링하는 대신 _모든_ 채팅을 렌더링하고 CSS로 안 보이게 할 수 있습니다. 채팅은 트리에서 사라지지 않을 것이고 따라서 그들의 state는 유지됩니다. 이 방법은 간단한 UI에서 잘 작동합니다. 하지만 숨겨진 트리가 크고 많은 DOM 노드를 가지고 있다면 매우 느려질 것입니다.
-- [state를 상위로 올리고](/learn/sharing-state-between-components) 각 수신자의 임시 메시지를 부모 컴포넌트에 가지고 있을 수 있습니다. 이 방법에서 부모가 중요한 정보를 가지고 있기 때문에 자식 컴포넌트가 제거되어도 상관이 없습니다. 이것이 가장 일반적인 해법입니다.
-- React state 이외의 다른 저장소를 이용할 수도 있습니다. 예를 들어 사용자가 페이지를 실수로 닫아도 메시지를 유지하고 싶을 수도 있습니다. 이때 [`localStorage`](https://developer.mozilla.org/ko/docs/Web/API/Window/localStorage)에 메시지를 저장하고 이를 이용해 `Chat` 컴포넌트를 초기화할 수 있습니다.
+- 현재 채팅만 렌더링하는 대신 _모든_ 채팅을 렌더링하고 CSS로 안 보이게 할 수 있습니다. 채팅은 트리에서 사라지지 않을 것이고 따라서 그들의 State는 유지됩니다. 이 방법은 간단한 UI에서 잘 작동합니다. 하지만 숨겨진 트리가 크고 많은 DOM 노드를 가지고 있다면 매우 느려질 것입니다.
+- [State를 상위로 올리고](/learn/sharing-state-between-components) 각 수신자의 임시 메시지를 부모 컴포넌트에 가지고 있을 수 있습니다. 이 방법에서 부모가 중요한 정보를 가지고 있기 때문에 자식 컴포넌트가 제거되어도 상관이 없습니다. 이것이 가장 일반적인 해법입니다.
+- React State 이외의 다른 저장소를 이용할 수도 있습니다. 예를 들어 사용자가 페이지를 실수로 닫아도 메시지를 유지하고 싶을 수도 있습니다. 이때 [`localStorage`](https://developer.mozilla.org/ko/docs/Web/API/Window/localStorage)에 메시지를 저장하고 이를 이용해 `Chat` 컴포넌트를 초기화할 수 있습니다.
 
 어떤 방법을 선택하더라도 _Alice와의_ 채팅은 _Bob과의_ 채팅과 개념상 구별되기 때문에 현재 수신자를 기반으로 `<Chat>` 트리에 `key`를 주는 것이 타당합니다.
 
@@ -1232,10 +1232,10 @@ textarea {
 
 <Recap>
 
-- React는 같은 컴포넌트가 같은 자리에 렌더링되는 한 state를 유지합니다.
-- state는 JSX 태그에 저장되지 않습니다. state는 JSX으로 만든 트리 위치와 연관됩니다.
+- React는 같은 컴포넌트가 같은 자리에 렌더링되는 한 State를 유지합니다.
+- State는 JSX 태그에 저장되지 않습니다. State는 JSX으로 만든 트리 위치와 연관됩니다.
 - 컴포넌트에 다른 key를 주어서 그 하위 트리를 초기화하도록 강제할 수 있습니다.
-- 중첩해서 컴포넌트를 정의하면 원치 않게 state가 초기화될 수 있기 때문에 그렇게 하지 마세요.
+- 중첩해서 컴포넌트를 정의하면 원치 않게 State가 초기화될 수 있기 때문에 그렇게 하지 마세요.
 
 </Recap>
 
@@ -1245,7 +1245,7 @@ textarea {
 
 #### 입력 문자열이 사라지는 것 고치기 {/*fix-disappearing-input-text*/}
 
-이 예시에서 버튼을 누르면 메시지를 보여줍니다. 하지만 버튼을 누르는 것은 또한 원치 않게 state를 초기화합니다. 왜 이런 현상이 일어날까요? 버튼을 눌러도 입력 문자열이 초기화되지 않도록 고쳐보세요.
+이 예시에서 버튼을 누르면 메시지를 보여줍니다. 하지만 버튼을 누르는 것은 또한 원치 않게 State를 초기화합니다. 왜 이런 현상이 일어날까요? 버튼을 눌러도 입력 문자열이 초기화되지 않도록 고쳐보세요.
 
 <Sandpack>
 
@@ -1294,7 +1294,7 @@ textarea { display: block; margin: 10px 0; }
 
 <Solution>
 
-`Form`이 다른 위치에 렌더링되기 때문에 문제가 생깁니다. `if` 문에서는 `<div>`의 두 번째 자식이지만 `else` 문에서는 첫 번째 자식입니다. 따라서 각 위치에서 컴포넌트 타입이 바뀌게 됩니다. 첫 번째 위치는 `p`와 `Form` 사이를 바뀌고 두 번째 위치에서는 `Form`과 `button` 사이에서 바뀝니다. React는 컴포넌트 타입이 변할 때마다 state를 초기화합니다.
+`Form`이 다른 위치에 렌더링되기 때문에 문제가 생깁니다. `if` 문에서는 `<div>`의 두 번째 자식이지만 `else` 문에서는 첫 번째 자식입니다. 따라서 각 위치에서 컴포넌트 타입이 바뀌게 됩니다. 첫 번째 위치는 `p`와 `Form` 사이를 바뀌고 두 번째 위치에서는 `Form`과 `button` 사이에서 바뀝니다. React는 컴포넌트 타입이 변할 때마다 State를 초기화합니다.
 
 분기를 합쳐서 `Form`를 항상 같은 자리에서 렌더링하는 것이 가장 쉬운 해결 방법입니다.
 
@@ -1390,7 +1390,7 @@ textarea { display: block; margin: 10px 0; }
 
 </Sandpack>
 
-이 방법에서 `Form`은 항상 두 번째 자식이기 때문에 같은 위치를 유지하고 state를 유지합니다. 하지만 이 접근 방식은 훨씬 애매하고 다른 사람이 `null`을 지워버릴 리스크를 남깁니다.
+이 방법에서 `Form`은 항상 두 번째 자식이기 때문에 같은 위치를 유지하고 State를 유지합니다. 하지만 이 접근 방식은 훨씬 애매하고 다른 사람이 `null`을 지워버릴 리스크를 남깁니다.
 
 </Solution>
 
@@ -1402,7 +1402,7 @@ textarea { display: block; margin: 10px 0; }
 
 <Hint>
 
-이 필드들에게 부모 내에서의 위치는 충분하지 않은 것 같습니다. 리렌더링될 때 React에게 state를 연결하는 방법을 알려줄 수 있을까요?
+이 필드들에게 부모 내에서의 위치는 충분하지 않은 것 같습니다. 리렌더링될 때 React에게 State를 연결하는 방법을 알려줄 수 있을까요?
 
 </Hint>
 
@@ -1466,7 +1466,7 @@ label { display: block; margin: 10px 0; }
 
 <Solution>
 
-`if`와 `else`문 안의 두 `<Field>` 컴포넌트에게 `key`를 주십시오. 이로써 부모 안에서의 순서가 바뀌더라도 React에게 각 `<Field>`의 올바른 state를 어떻게 "맞출지" 알려줄 수 있습니다.
+`if`와 `else`문 안의 두 `<Field>` 컴포넌트에게 `key`를 주십시오. 이로써 부모 안에서의 순서가 바뀌더라도 React에게 각 `<Field>`의 올바른 State를 어떻게 "맞출지" 알려줄 수 있습니다.
 
 <Sandpack>
 
@@ -1532,7 +1532,7 @@ label { display: block; margin: 10px 0; }
 
 여기 수정 가능한 연락처 목록이 있습니다. 연락처 상세 정보를 수정하고 "Save"를 눌러 갱신하거나 "Reset"을 눌러 수정한 것을 되돌릴 수 있습니다.
 
-Alice와 같이 다른 연락처를 선택했을 때 state는 갱신되지만, 폼은 여전히 이전 내용을 보여줍니다. 다른 연락처를 선택했을 때 폼이 초기화되도록 수정해보세요.
+Alice와 같이 다른 연락처를 선택했을 때 State는 갱신되지만, 폼은 여전히 이전 내용을 보여줍니다. 다른 연락처를 선택했을 때 폼이 초기화되도록 수정해보세요.
 
 <Sandpack>
 
@@ -1983,9 +1983,9 @@ img { width: 150px; height: 150px; }
 
 #### 배열에서 잘못 지정된 state 고치기 {/*fix-misplaced-state-in-the-list*/}
 
-다음 예시에서 배열의 각 `Contact`는 "Show email"이 눌렸는지에 대한 state를 갖고 있습니다. Alice의 "Show email"을 누르고 "Show in reverse order" 체크 박스를 선택해보세요. 아래쪽으로 내려간 Alice의 이메일은 닫혀있고 대신 _Taylor_의 이메일이 열려있는 것을 볼 수 있습니다.
+다음 예시에서 배열의 각 `Contact`는 "Show email"이 눌렸는지에 대한 State를 갖고 있습니다. Alice의 "Show email"을 누르고 "Show in reverse order" 체크 박스를 선택해보세요. 아래쪽으로 내려간 Alice의 이메일은 닫혀있고 대신 *Taylor*의 이메일이 열려있는 것을 볼 수 있습니다.
 
-순서와 관계없이 확장 state가 각 연락처와 연관되도록 고쳐보세요.
+순서와 관계없이 확장 State가 각 연락처와 연관되도록 고쳐보세요.
 
 <Sandpack>
 
@@ -2082,7 +2082,7 @@ button {
   <li key={i}>
 ```
 
-하지만 우리는 state가 _각 특정 연락처_와 연관되기를 바랍니다.
+하지만 확장 State는 *각 특정 연락처*와 연관되어야 합니다.
 
 대신 연락처 ID를 `key`로 사용해서 문제를 해결할 수 있습니다.
 
