@@ -10,7 +10,7 @@ title: React 블로그
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<BlogCard title="The React Foundation: A New Home for React Hosted by the Linux Foundation" date="February 24, 2026" url="/blog/2026/02/24/the-react-foundation">
+<BlogCard title="React 재단: Linux 재단이 후원하는 React의 새로운 보금자리" date="2026년 2월 24일" url="/blog/2026/02/24/the-react-foundation">
 
 The React Foundation has officially launched under the Linux Foundation.
 
