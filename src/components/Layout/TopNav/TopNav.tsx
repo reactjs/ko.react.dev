@@ -29,7 +29,6 @@ import {IconHamburger} from 'components/Icon/IconHamburger';
 import {IconSearch} from 'components/Icon/IconSearch';
 import {Search} from 'components/Search';
 import {Logo} from '../../Logo';
-import {Feedback} from '../Feedback';
 import {SidebarRouteTree} from '../Sidebar';
 import type {RouteItem} from '../getRouteMeta';
 import {siteConfig} from 'siteConfig';
@@ -41,22 +40,6 @@ declare global {
     __setPreferredTheme: (theme: string) => void;
   }
 }
-
-const react18Icon = (
-  <svg
-    stroke="currentColor"
-    fill="none"
-    strokeWidth="2"
-    viewBox="0 0 24 24"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    height="200px"
-    width="200px"
-    xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 8h1v8"></path>
-    <path d="M15 12h-1a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1zh-1a1 1 0 0 0 -1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1 -1v-2a1 1 0 0 0 -1 -1"></path>
-  </svg>
-);
 
 const darkIcon = (
   <svg
@@ -371,14 +354,6 @@ export default function TopNav({
                     <IconSearch className="w-5 h-5 align-middle" />
                   </button>
                 </div>
-                <div className="flex">
-                  <Link
-                    href="https://ko-react-exy5xcwjj-fbopensource.vercel.app/"
-                    aria-label="React version 18 Korean translation"
-                    className="active:scale-95 transition-transform flex w-12 h-12 rounded-full items-center justify-center overflow-hidden hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
-                    {react18Icon}
-                  </Link>
-                </div>
                 <div className="flex dark:hidden">
                   <button
                     type="button"
@@ -472,9 +447,6 @@ export default function TopNav({
                 </Suspense>
                 <div className="h-16" />
               </nav>
-              <div className="fixed bottom-0 hidden lg:block">
-                <Feedback />
-              </div>
             </aside>
           </div>
         )}

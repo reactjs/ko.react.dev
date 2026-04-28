@@ -48,18 +48,18 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 * `reactNode`: HTML로 렌더링하려는 React 노드. 예를 들어, `<App />`과 같은 JSX 엘리먼트입니다. 전체 문서를 나타낼 것으로 예상되므로 `App` 컴포넌트는 `<html>` 태그를 렌더링해야 합니다.
 
-* **선택 사항** `options`: 스트리밍 옵션이 있는 객체입니다.
-  * **선택 사항** `bootstrapScriptContent`: 지정하면 이 문자열이 인라인 `<script>` 태그에 배치됩니다.
-  * **선택 사항** `bootstrapScripts`: 페이지에 표시할 `<script>` 태그에 대한 문자열 URL 배열입니다. 이를 사용하여 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 호출하는 `<script>`를 포함하세요. 클라이언트에서 React를 전혀 실행하지 않으려면 생략하세요.
-  * **선택 사항** `bootstrapModules`: `bootstrapScripts`와 같지만 대신 [`<script type="module">`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Modules)를 출력합니다.
-  * **선택 사항** `identifierPrefix`: React가 [`useId`](/reference/react/useId)에 의해 생성된 ID에 사용하는 문자열 접두사입니다. 같은 페이지에서 여러 루트를 사용할 때 충돌을 피하는 데 유용합니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters)에 전달된 것과 동일한 접두사여야 합니다.
-  * **선택 사항** `namespaceURI`: 스트림의 루트 [네임스페이스 URI](https://developer.mozilla.org/ko/docs/Web/API/Document/createElementNS#important_namespace_uris)가 포함된 문자열입니다. 기본값은 일반 HTML입니다. SVG의 경우 `'http://www.w3.org/2000/svg'`를, MathML의 경우 `'http://www.w3.org/1998/Math/MathML'`를 전달합니다.
-  * **선택 사항** `nonce`: [`script-src` Content-Security-Policy](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)에 대한 스크립트를 허용하는 [`nonce`](http://developer.mozilla.org/ko/docs/Web/HTML/Element/script#nonce) 문자열입니다.
-  * **선택 사항** `onAllReady`: [셸](#specifying-what-goes-into-the-shell)과 모든 추가 [콘텐츠](#streaming-more-content-as-it-loads)를 포함하여 모든 렌더링이 완료되면 호출되는 콜백입니다. [크롤러 및 정적 생성에](#waiting-for-all-content-to-load-for-crawlers-and-static-generation) `onShellReady` 대신 이 함수를 사용할 수 있습니다. 여기서 스트리밍을 시작하면 프로그레시브 로딩이 발생하지 않습니다. 스트림에는 최종 HTML이 포함됩니다.
-  * **선택 사항** `onError`: [복구 가능](#recovering-from-errors-outside-the-shell) 또는 [불가능](#recovering-from-errors-inside-the-shell)에 관계없이 서버 오류가 발생할 때마다 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. 이 함수를 재정의하여 [크래시 리포트를 기록](#logging-crashes-on-the-server)하는 경우 `console.error`를 계속 호출해야 합니다. 셸이 출력되기 전에 [상태 코드를 조정](#setting-the-status-code)하는 데 사용할 수도 있습니다.
-  * **선택 사항** `onShellReady`: [초기 셸](#specifying-what-goes-into-the-shell)이 렌더링된 직후에 실행되는 콜백입니다. 여기서 [상태 코드를 설정](#setting-the-status-code)하고 `pipe`를 호출하여 스트리밍을 시작할 수 있습니다. React는 HTML 로딩 폴백을 콘텐츠로 대체하는 인라인 `<script>` 태그와 함께 셸 뒤에 [추가 콘텐츠를 스트리밍](#streaming-more-content-as-it-loads)합니다.
-  * **선택 사항** `onShellError`: 초기 셸을 렌더링하는 데 오류가 발생하면 호출되는 콜백입니다. 오류를 인자로 받습니다. 스트림에서 아직 바이트가 전송되지 않았고, `onShellReady`나 `onAllReady`도 호출되지 않으므로 [폴백 HTML 셸을 출력](#recovering-from-errors-inside-the-shell) 할 수 있습니다.
-  * **선택 사항** `progressiveChunkSize`: 청크의 바이트 수입니다. [기본 휴리스틱에 대해 자세히 알아보세요.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
+* `options`**(선택사항)**: 스트리밍 옵션이 있는 객체입니다.
+  * `bootstrapScriptContent`**(선택사항)**: 지정하면 이 문자열이 인라인 `<script>` 태그에 배치됩니다.
+  * `bootstrapScripts`**(선택사항)**: 페이지에 표시할 `<script>` 태그에 대한 문자열 URL 배열입니다. 이를 사용하여 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 호출하는 `<script>`를 포함하세요. 클라이언트에서 React를 전혀 실행하지 않으려면 생략하세요.
+  * `bootstrapModules`**(선택사항)**: `bootstrapScripts`와 같지만 대신 [`<script type="module">`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Modules)를 출력합니다.
+  * `identifierPrefix`**(선택사항)**: React가 [`useId`](/reference/react/useId)에 의해 생성된 ID에 사용하는 문자열 접두사입니다. 같은 페이지에서 여러 루트를 사용할 때 충돌을 피하는 데 유용합니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters)에 전달된 것과 동일한 접두사여야 합니다.
+  * `namespaceURI`**(선택사항)**: 스트림의 루트 [네임스페이스 URI](https://developer.mozilla.org/ko/docs/Web/API/Document/createElementNS#important_namespace_uris)가 포함된 문자열입니다. 기본값은 일반 HTML입니다. SVG의 경우 `'http://www.w3.org/2000/svg'`를, MathML의 경우 `'http://www.w3.org/1998/Math/MathML'`를 전달합니다.
+  * `nonce`**(선택사항)**: [`script-src` Content-Security-Policy](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)에 대한 스크립트를 허용하는 [`nonce`](http://developer.mozilla.org/ko/docs/Web/HTML/Element/script#nonce) 문자열입니다.
+  * `onAllReady`**(선택사항)**: [셸](#specifying-what-goes-into-the-shell)과 모든 추가 [콘텐츠](#streaming-more-content-as-it-loads)를 포함하여 모든 렌더링이 완료되면 호출되는 콜백입니다. [크롤러 및 정적 생성에](#waiting-for-all-content-to-load-for-crawlers-and-static-generation) `onShellReady` 대신 이 함수를 사용할 수 있습니다. 여기서 스트리밍을 시작하면 프로그레시브 로딩이 발생하지 않습니다. 스트림에는 최종 HTML이 포함됩니다.
+  * `onError`**(선택사항)**: [복구 가능](#recovering-from-errors-outside-the-shell) 또는 [불가능](#recovering-from-errors-inside-the-shell)에 관계없이 서버 오류가 발생할 때마다 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. 이 함수를 재정의하여 [크래시 리포트를 기록](#logging-crashes-on-the-server)하는 경우 `console.error`를 계속 호출해야 합니다. 셸이 출력되기 전에 [상태 코드를 조정](#setting-the-status-code)하는 데 사용할 수도 있습니다.
+  * `onShellReady`**(선택사항)**: [초기 셸](#specifying-what-goes-into-the-shell)이 렌더링된 직후에 실행되는 콜백입니다. 여기서 [상태 코드를 설정](#setting-the-status-code)하고 `pipe`를 호출하여 스트리밍을 시작할 수 있습니다. React는 HTML 로딩 폴백을 콘텐츠로 대체하는 인라인 `<script>` 태그와 함께 셸 뒤에 [추가 콘텐츠를 스트리밍](#streaming-more-content-as-it-loads)합니다.
+  * `onShellError`**(선택사항)**: 초기 셸을 렌더링하는 데 오류가 발생하면 호출되는 콜백입니다. 오류를 인자로 받습니다. 스트림에서 아직 바이트가 전송되지 않았고, `onShellReady`나 `onAllReady`도 호출되지 않으므로 [폴백 HTML 셸을 출력](#recovering-from-errors-inside-the-shell) 할 수 있습니다.
+  * `progressiveChunkSize`**(선택사항)**: 청크의 바이트 수입니다. [기본 휴리스틱에 대해 자세히 알아보세요.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
 
 
 #### 반환값 {/*returns*/}

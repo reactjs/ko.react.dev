@@ -379,7 +379,7 @@
       ]
     },
     {
-      "title": "Directives",
+      "title": "지시어",
       "path": "/reference/react-compiler/directives",
       "routes": [
         {
@@ -393,7 +393,7 @@
       ]
     },
     {
-      "title": "Compiling Libraries",
+      "title": "라이브러리 컴파일",
       "path": "/reference/react-compiler/compiling-libraries"
     },
     {
@@ -409,7 +409,7 @@
       "sectionHeader": "eslint-plugin-react-hooks"
     },
     {
-      "title": "Lints",
+      "title": "린트",
       "path": "/reference/eslint-plugin-react-hooks",
       "routes": [
         {

@@ -4,7 +4,7 @@ title: resume
 
 <Intro>
 
-`resume` streams a pre-rendered React tree to a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
+`resume`은 [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)을 이용해 사전 렌더링된 React 트리를 스트리밍합니다.
 
 ```js
 const stream = await resume(reactNode, postponedState, options?)
@@ -16,17 +16,18 @@ const stream = await resume(reactNode, postponedState, options?)
 
 <Note>
 
-This API depends on [Web Streams.](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) For Node.js, use [`resumeToNodeStream`](/reference/react-dom/server/renderToPipeableStream) instead.
+이 API는 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)에 의존합니다. Node.js에서는 [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream)을 대신 사용하세요.
 
 </Note>
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `resume(node, postponedState, options?)` {/*resume*/}
 
-Call `resume` to resume rendering a pre-rendered React tree as HTML into a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
+`resume`을 호출해 사전 렌더링된 React 트리의 렌더링을 재개하고, 이를 HTML로 [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)에 렌더링합니다.
+
 
 ```js
 import { resume } from 'react-dom/server';
@@ -39,43 +40,44 @@ async function handler(request, writable) {
 }
 ```
 
-[See more examples below.](#usage)
+[아래에서 더 많은 예시를 확인하세요.](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `reactNode`: The React node you called `prerender` with. For example, a JSX element like `<App />`. It is expected to represent the entire document, so the `App` component should render the `<html>` tag.
-* `postponedState`: The opaque `postpone` object returned from a [prerender API](/reference/react-dom/static/index), loaded from wherever you stored it (e.g. redis, a file, or S3).
-* **optional** `options`: An object with streaming options.
-  * **optional** `nonce`: A [`nonce`](http://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) string to allow scripts for [`script-src` Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src).
-  * **optional** `signal`: An [abort signal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) that lets you [abort server rendering](#aborting-server-rendering) and render the rest on the client.
-  * **optional** `onError`: A callback that fires whenever there is a server error, whether [recoverable](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) or [not.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell) By default, this only calls `console.error`. If you override it to [log crash reports,](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server) make sure that you still call `console.error`.
+* `reactNode`: `prerender`를 호출할 때 전달한 React 노드입니다. 예를 들어, `<App />`과 같은 JSX 엘리먼트입니다. 전체 문서를 나타낼 것으로 예상되므로 `App` 컴포넌트는 `<html>` 태그를 렌더링해야 합니다.
+* `postponedState`: [prerender API](/reference/react-dom/static/prerender)에서 반환된 불분명한 `postpone` 객체로, 저장해 둔 위치(예: Redis, 파일, S3)에서 불러옵니다.
+* `options`**(선택사항)**: 스트리밍 옵션을 지정할 수 있는 객체입니다.
+  * `nonce`**(선택사항)**: [`script-src` Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)에서 스크립트를 허용하기 위한 [`nonce`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) 문자열입니다.
+  * `signal`**(선택사항)**: [서버 렌더링을 중단](/reference/react-dom/server/renderToReadableStream#aborting-server-rendering)하고 나머지를 클라이언트에서 렌더링할 수 있게 하는 [중단 신호](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)입니다.
+  * `onError`**(선택사항)**: 서버 오류가 발생할 때마다, [복구 가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) 또는 [불가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)에 관계없이 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. [충돌 보고를 기록](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server)하도록 재정의하는 경우에도 반드시 `console.error`를 호출해야 합니다.
 
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-`resume` returns a Promise:
+`resume`은 Promise를 반환합니다.
 
-- If `resume` successfully produced a [shell](/reference/react-dom/server/renderToReadableStream#specifying-what-goes-into-the-shell), that Promise will resolve to a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) that can be piped to a [Writable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream).
-- If an error happens in the shell, the Promise will reject with that error.
+- `resume`이 [shell](/reference/react-dom/server/renderToReadableStream#specifying-what-goes-into-the-shell)을 성공적으로 생성하면, 해당 Promise는 [Writable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream)으로 파이프할 수 있는 [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)으로 이행됩니다.
+- shell에서 오류가 발생하면, 해당 Promise는 그 오류와 함께 거부됩니다.
 
-The returned stream has an additional property:
+반환된 스트림은 다음과 같은 추가적인 프로퍼티를 가지고 있습니다.
 
-* `allReady`: A Promise that resolves when all rendering is complete. You can `await stream.allReady` before returning a response [for crawlers and static generation.](/reference/react-dom/server/renderToReadableStream#waiting-for-all-content-to-load-for-crawlers-and-static-generation) If you do that, you won't get any progressive loading. The stream will contain the final HTML.
+* `allReady`: 모든 렌더링이 완료되면 이행되는 Promise입니다. [크롤러와 정적 생성을 위해](/reference/react-dom/server/renderToReadableStream#waiting-for-all-content-to-load-for-crawlers-and-static-generation) 응답을 반환하기 전에 `await stream.allReady`를 사용할 수 있습니다. 이렇게 하면 점진적 로딩은 사용할 수 없습니다. 스트림에는 최종 HTML이 포함됩니다.
 
-#### Caveats {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
-- `resume` does not accept options for `bootstrapScripts`, `bootstrapScriptContent`, or `bootstrapModules`. Instead, you need to pass these options to the `prerender` call that generates the `postponedState`. You can also inject bootstrap content into the writable stream manually.
-- `resume` does not accept `identifierPrefix` since the prefix needs to be the same in both `prerender` and `resume`.
-- Since `nonce` cannot be provided to prerender, you should only provide `nonce` to `resume` if you're not providing scripts to prerender.
-- `resume` re-renders from the root until it finds a component that was not fully pre-rendered. Only fully prerendered Components (the Component and its children finished prerendering) are skipped entirely.
+- `resume`은 `bootstrapScripts`, `bootstrapScriptContent`, `bootstrapModules` 옵션을 받지 않습니다. 대신 `postponedState`를 생성하는 `prerender` 호출에 이 옵션들을 전달해야 합니다. 또한 쓰기 가능한 스트림에 부트스트랩 콘텐츠를 수동으로 주입할 수도 있습니다.
+- `prerender`와 `resume`에서 접두사가 동일해야 하므로, `resume`은 `identifierPrefix`를 받지 않습니다.
+- `nonce`는 prerender에 전달할 수 없으므로, prerender에 스크립트를 제공하지 않는 경우에만 `resume`에 `nonce`를 전달해야 합니다.
+- `resume`은 사전 렌더링이 완전히 완료되지 않은 컴포넌트를 찾을 때까지 루트부터 다시 렌더링합니다. 사전 렌더링이 완전히 완료된 컴포넌트(해당 컴포넌트와 자식들의 사전 렌더링이 모두 완료된 경우)만 완전히 건너뜁니다.
 
-## Usage {/*usage*/}
 
-### Resuming a prerender {/*resuming-a-prerender*/}
+## 사용법 {/*usage*/}
+
+### 사전 렌더링 재개하기 {/*resuming-a-prerender*/}
 
 <Sandpack>
 
-```js src/App.js hidden 
+```js src/App.js hidden
 ```
 
 ```html public/index.html
@@ -230,7 +232,7 @@ export function sleep(timeoutMS) {
 
 </Sandpack>
 
-### Further reading {/*further-reading*/}
+### 추가로 읽어보기 {/*further-reading*/}
 
-Resuming behaves like `renderToReadableStream`. For more examples, check out the [usage section of `renderToReadableStream`](/reference/react-dom/server/renderToReadableStream#usage).
-The [usage section of `prerender`](/reference/react-dom/static/prerender#usage) includes examples of how to use `prerender` specifically.
+재개 동작은 `renderToReadableStream`과 유사합니다. 더 많은 예시는 [`renderToReadableStream`의 사용법 섹션](/reference/react-dom/server/renderToReadableStream#usage)을 확인하세요.
+[`prerender`의 사용법 섹션](/reference/react-dom/static/prerender#usage)에는 `prerender` 사용 방법에 대한 예시가 포함되어 있습니다.

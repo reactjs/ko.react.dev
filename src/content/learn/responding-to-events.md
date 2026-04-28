@@ -427,7 +427,7 @@ button { margin: 5px; }
 드물게 *전파가 중단된 상황일지라도* 자식 컴포넌트의 모든 이벤트를 캡처해 확인해야 할 수 있습니다. 일례로, 분석을 위해 전파 로직에 상관 없이 모든 클릭 이벤트를 기록하고 싶을 수 있습니다. 이를 위해서는 이벤트명 마지막에 `Capture`를 추가하면 됩니다.
 
 ```js
-<div onClickCapture={() => { /* this runs first */ }}>
+<div onClickCapture={() => { /* 가장 먼저 실행됩니다 */ }}>
   <button onClick={e => e.stopPropagation()} />
   <button onClick={e => e.stopPropagation()} />
 </div>

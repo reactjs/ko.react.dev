@@ -457,6 +457,15 @@ module.exports = {
           note: '',
         },
       },
+      {
+        sources: [/\bCompiler\b/],
+        target: '컴파일러',
+        meta: {
+          term: 'Compiler',
+          discussions: [1400],
+          note: '',
+        },
+      },
     ],
     others: [
       {
@@ -591,6 +600,24 @@ module.exports = {
         meta: {
           term: 'Directive',
           discussions: [819],
+          note: '',
+        },
+      },
+      {
+        sources: [/\bUsage\b/],
+        target: '사용법',
+        meta: {
+          term: 'Usage',
+          discussions: [1425],
+          note: '',
+        },
+      },
+      {
+        sources: [/\bImperative\b/],
+        target: '명령형',
+        meta: {
+          term: 'Imperative',
+          discussions: [1425],
           note: '',
         },
       },

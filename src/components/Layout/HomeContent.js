@@ -171,14 +171,6 @@ export function HomeContent() {
               label="API Reference">
               API 참고서
             </ButtonLink>
-            <ButtonLink
-              href={'https://ko-react-exy5xcwjj-fbopensource.vercel.app/'}
-              type="secondary"
-              size="lg"
-              className="w-full sm:w-auto justify-center"
-              label="API Reference">
-              React v18 한글
-            </ButtonLink>
           </div>
         </div>
 
@@ -297,7 +289,7 @@ export function HomeContent() {
               <CTA
                 color="gray"
                 icon="framework"
-                href="/learn/start-a-new-react-project">
+                href="/learn/creating-a-react-app">
                 프레임워크로 시작하기
               </CTA>
             </div>
@@ -453,7 +445,7 @@ export function HomeContent() {
         <Section background="right-card">
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row px-5">
             <div className="max-w-3xl lg:max-w-7xl gap-5 flex flex-col lg:flex-row lg:px-5">
-              <div className="w-full max-w-3xl flex flex-col items-start justify-start lg:ps-5 lg:pe-10">
+              <div className="w-full lg:w-6/12 max-w-3xl flex flex-col items-start justify-start lg:ps-5 lg:pe-10">
                 <Header>
                   새로운 기능에 맞춰
                   <Br breakPointPrefix="xl" /> 업그레이드 하기

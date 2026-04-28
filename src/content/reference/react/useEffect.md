@@ -46,7 +46,7 @@ function ChatRoom({ roomId }) {
 
 + `setup(설정)`: Effect의 로직이 포함된 함수입니다. 설정 함수는 선택적으로 *clean up(정리)* 함수를 반환할 수 있습니다. React는 컴포넌트가 DOM에 추가된 이후에 설정 함수를 실행합니다. 의존성의 변화에 따라 컴포넌트가 리렌더링이 되었을 경우, (설정 함수에 정리 함수를 추가했었다면) React는 이전 렌더링에 사용된 값으로 정리 함수를 실행한 후 새로운 값으로 설정 함수를 실행합니다. 컴포넌트가 DOM에서 제거된 경우에도 정리 함수를 실행합니다.
 
-+ `dependencies` **선택사항** : `설정` 함수의 코드 내부에서 참조되는 모든 반응형 값들이 포함된 배열로 구성됩니다. 반응형 값에는 props와 state, 모든 변수 및 컴포넌트 body에 직접적으로 선언된 함수들이 포함됩니다. 린터가 [React 환경에 맞게 설정되어 있을 경우](/learn/editor-setup#linting), 린터는 모든 반응형 값들이 의존성에 제대로 명시되어 있는지 검증할 것입니다. 의존성 배열은 항상 일정한 수의 항목을 가지고 있어야 하며 `[dep1, dep2, dep3]`과 같이 작성되어야 합니다. React는 각각의 의존성들을 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교법을 통해 이전 값과 비교합니다. 의존성을 생략할 경우, Effect는 컴포넌트가 리렌더링될 때마다 실행됩니다. [인수에 의존성 배열을 추가했을 때, 빈 배열을 추가했을 때, 의존성을 추가하지 않았을 때의 차이를 확인해 보세요.](#examples-dependencies)
++ `dependencies`**(선택사항)**: `설정` 함수의 코드 내부에서 참조되는 모든 반응형 값들이 포함된 배열로 구성됩니다. 반응형 값에는 props와 state, 모든 변수 및 컴포넌트 body에 직접적으로 선언된 함수들이 포함됩니다. 린터가 [React 환경에 맞게 설정되어 있을 경우](/learn/editor-setup#linting), 린터는 모든 반응형 값들이 의존성에 제대로 명시되어 있는지 검증할 것입니다. 의존성 배열은 항상 일정한 수의 항목을 가지고 있어야 하며 `[dep1, dep2, dep3]`과 같이 작성되어야 합니다. React는 각각의 의존성들을 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 비교법을 통해 이전 값과 비교합니다. 의존성을 생략할 경우, Effect는 컴포넌트가 리렌더링될 때마다 실행됩니다. [인수에 의존성 배열을 추가했을 때, 빈 배열을 추가했을 때, 의존성을 추가하지 않았을 때의 차이를 확인해 보세요.](#examples-dependencies)
 
 #### 반환값 {/*returns*/}
 
@@ -897,7 +897,7 @@ button { margin: 5px; }
 
 ### Effect를 이용한 데이터 페칭 {/*fetching-data-with-effects*/}
 
-Effect를 사용하여 컴포넌트의 데이터를 페칭할 수 있습니다. [프레임워크를 사용한다면](/learn/start-a-new-react-project#full-stack-frameworks) Effect를 직접 작성하는 것보다 프레임워크의 데이터 페칭 메커니즘을 사용하는 것이 훨씬 더 효율적이라는 점에 유의하세요.
+Effect를 사용하여 컴포넌트의 데이터를 페칭할 수 있습니다. [프레임워크를 사용한다면](/learn/creating-a-react-app#full-stack-frameworks) Effect를 직접 작성하는 것보다 프레임워크의 데이터 페칭 메커니즘을 사용하는 것이 훨씬 더 효율적이라는 점에 유의하세요.
 
 만약 직접 Effect를 작성하여 데이터를 페칭하고 싶다면, 코드는 다음과 같을 수 있습니다.
 
@@ -1050,8 +1050,8 @@ Effect 내부에서 `fetch` 호출을 작성하는 것은 클라이언트 사이
 
 이러한 단점은 React만 해당되는 것이 아닙니다. 다른 라이브러리를 사용하여 데이터를 페칭할 때도 해당됩니다. 라우팅과 마찬가지로 데이터 페칭은 세부적인 사항이 많으므로 다음과 같은 접근 방식을 권장합니다.
 
-- **[프레임워크](/learn/start-a-new-react-project#full-stack-frameworks)를 사용한다면, 내장된 데이터 페칭 메커니즘을 사용하세요.** 최신 React 프레임워크는 효율적이며 위와 같은 단점에서 자유로운 통합 데이터 페칭 메커니즘을 갖추고 있습니다.
-- **그렇지 않다면, 클라이언트 사이드 캐시를 사용하거나 직접 만드는 것을 고려해 보세요.** 인기 있는 오픈 소스 솔루션으로는 [React Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), [React Router 6.4+](https://beta.reactrouter.com/en/main/start/overview) 등이 있습니다. 직접 솔루션을 구축할 수도 있는데, 이 경우 내부적으로는 Effect를 사용하면서도 요청 중복 제거, 응답 캐싱, 네트워크 폭포 방지(데이터를 미리 로드하거나 데이터 요구 사항을 라우트로 끌어올리는 방식)를 위한 로직을 추가하게 됩니다.
+- **[프레임워크](/learn/creating-a-react-app#full-stack-frameworks)를 사용한다면, 내장된 데이터 페칭 메커니즘을 사용하세요.** 최신 React 프레임워크는 효율적이며 위와 같은 단점에서 자유로운 통합 데이터 페칭 메커니즘을 갖추고 있습니다.
+- **그렇지 않다면, 클라이언트 사이드 캐시를 사용하거나 직접 만드는 것을 고려해 보세요.** 인기 있는 오픈 소스 솔루션으로는 [TanStack Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), [React Router 6.4+](https://beta.reactrouter.com/en/main/start/overview) 등이 있습니다. 직접 솔루션을 구축할 수도 있는데, 이 경우 내부적으로는 Effect를 사용하면서도 요청 중복 제거, 응답 캐싱, 네트워크 폭포 방지(데이터를 미리 로드하거나 데이터 요구 사항을 라우트로 끌어올리는 방식)를 위한 로직을 추가하게 됩니다.
 
 만약 이러한 접근 방식이 적합하지 않다면 Effect 내부에서 데이터를 페칭하는 것을 계속 진행할 수 있습니다.
 
@@ -1728,7 +1728,7 @@ function Page({ url, shoppingCart }) {
 
 ### 서버와 클라이언트에서 다른 컨텐츠를 표시하기 {/*displaying-different-content-on-the-server-and-the-client*/}
 
-앱이 ([직접](/reference/react-dom/server) 혹은 [프레임워크](/learn/start-a-new-react-project#full-stack-frameworks)를 통해) 서버 렌더링을 사용하는 경우, 컴포넌트는 두 가지 서로 다른 환경에서 렌더링됩니다. 서버에서는 초기 HTML을 생성하기 위해 렌더링됩니다. 클라이언트에서는 React가 렌더링 코드를 다시 실행하여 해당 HTML에 이벤트 핸들러를 연결할 수 있도록 합니다. 이러한 이유로 [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html)이 동작하려면 초기 렌더링 결과물이 클라이언트와 서버에서 동일해야 합니다.
+앱이 ([직접](/reference/react-dom/server) 혹은 [프레임워크](/learn/creating-a-react-app#full-stack-frameworks)를 통해) 서버 렌더링을 사용하는 경우, 컴포넌트는 두 가지 서로 다른 환경에서 렌더링됩니다. 서버에서는 초기 HTML을 생성하기 위해 렌더링됩니다. 클라이언트에서는 React가 렌더링 코드를 다시 실행하여 해당 HTML에 이벤트 핸들러를 연결할 수 있도록 합니다. 이러한 이유로 [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html)이 동작하려면 초기 렌더링 결과물이 클라이언트와 서버에서 동일해야 합니다.
 
 드물게 클라이언트에서 다른 내용을 표시해야 할 수 있습니다. 예를 들어 앱이 [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)에서 일부 데이터를 읽는 경우, 이를 서버에서 구현할 수 없습니다. 다음은 이것을 구현하는 방법입니다.
 

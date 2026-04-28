@@ -49,23 +49,23 @@ async function handler(request, response) {
 
 * `reactNode`: HTML로 렌더링하려는 React 노드. 예를 들어 `<App />`과 같은 JSX 엘리먼트입니다. 전체 문서를 나타낼 것으로 예상되므로 `App` 컴포넌트는 `<html>` 태그를 렌더링해야 합니다.
 
-* **optional** `options`: 정적 생성 옵션을 가진 객체입니다.
-  * **optional** `bootstrapScriptContent`: 지정될 경우, 해당 문자열은 `<script>` 태그에 인라인 형식으로 추가됩니다.
-  * **optional** `bootstrapScripts`: 페이지에 표시할 `<script>` 태그에 대한 문자열 URL 배열입니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 호출하는 `<script>`를 포함하려면 이것을 사용하세요. 클라이언트에서 React를 전혀 실행하지 않으려면 생략하세요.
-  * **optional** `bootstrapModules`: `bootstrapScripts`와 유사하지만 대신 [`<script type="module">`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)을 추가합니다.
-  * **optional** `identifierPrefix`: React가 [`useId`](/reference/react/useId)에 의해 생성된 ID를 사용하는 문자열 접두사입니다. 같은 페이지에서 여러 루트를 사용할 때 충돌을 피하는 데 유용합니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters)에 전달된 것과 동일한 접두사여야 합니다.
-  * **optional** `namespaceURI`: 스트림의 루트 [namespace URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris)를 가진 문자열입니다. 기본값은 일반 HTML입니다. SVG의 경우 `'http://www.w3.org/2000/svg'`를, MathML의 경우 `'http://www.w3.org/1998/Math/MathML'`을 전달합니다.
-  * **optional** `onError`: [복구 가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) 또는 [불가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)에 관계없이 서버 오류가 발생할 때마다 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. 이 함수를 재정의하여 [크래시 리포트를 로깅](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server)하는 경우 `console.error`를 계속 호출해야 합니다. 또한 셸이 출력되기 전에 [상태 코드를 설정](/reference/react-dom/server/renderToReadableStream#setting-the-status-code)하는 데 사용할 수도 있습니다.
-  * **optional** `progressiveChunkSize`: 청크의 바이트 수입니다. [기본 휴리스틱에 대해 더 읽어보기.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
-  * **optional** `signal`: [사전 렌더링을 중단](#aborting-prerendering)하고 나머지를 클라이언트에서 렌더링하기 위한 [중단 신호<sup>Abort Signal</sup>](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)를 설정합니다.
+* `options`**(선택사항)**: 정적 생성 옵션을 가진 객체입니다.
+  * `bootstrapScriptContent`**(선택사항)**: 지정될 경우, 해당 문자열은 `<script>` 태그에 인라인 형식으로 추가됩니다.
+  * `bootstrapScripts`**(선택사항)**: 페이지에 표시할 `<script>` 태그에 대한 문자열 URL 배열입니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)를 호출하는 `<script>`를 포함하려면 이것을 사용하세요. 클라이언트에서 React를 전혀 실행하지 않으려면 생략하세요.
+  * `bootstrapModules`**(선택사항)**: `bootstrapScripts`와 유사하지만 대신 [`<script type="module">`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)을 추가합니다.
+  * `identifierPrefix`**(선택사항)**: React가 [`useId`](/reference/react/useId)에 의해 생성된 ID를 사용하는 문자열 접두사입니다. 같은 페이지에서 여러 루트를 사용할 때 충돌을 피하는 데 유용합니다. [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters)에 전달된 것과 동일한 접두사여야 합니다.
+  * `namespaceURI`**(선택사항)**: 스트림의 루트 [namespace URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris)를 가진 문자열입니다. 기본값은 일반 HTML입니다. SVG의 경우 `'http://www.w3.org/2000/svg'`를, MathML의 경우 `'http://www.w3.org/1998/Math/MathML'`을 전달합니다.
+  * `onError`**(선택사항)**: [복구 가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) 또는 [불가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)에 관계없이 서버 오류가 발생할 때마다 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. 이 함수를 재정의하여 [크래시 리포트를 로깅](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server)하는 경우 `console.error`를 계속 호출해야 합니다. 또한 셸이 출력되기 전에 [상태 코드를 설정](/reference/react-dom/server/renderToReadableStream#setting-the-status-code)하는 데 사용할 수도 있습니다.
+  * `progressiveChunkSize`**(선택사항)**: 청크의 바이트 수입니다. [기본 휴리스틱에 대해 더 읽어보기.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
+  * `signal`**(선택사항)**: [사전 렌더링을 중단](#aborting-prerendering)하고 나머지를 클라이언트에서 렌더링하기 위한 [중단 신호<sup>Abort Signal</sup>](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)를 설정합니다.
 
 #### 반환값 {/*returns*/}
 
-`prerender` returns a Promise:
-- If rendering the is successful, the Promise will resolve to an object containing:
-  - `prelude`: a [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) of HTML. You can use this stream to send a response in chunks, or you can read the entire stream into a string.
-  - `postponed`: a JSON-serializeable, opaque object that can be passed to [`resume`](/reference/react-dom/server/resume) if `prerender` did not finish. Otherwise `null` indicating that the `prelude` contains all the content and no resume is necessary.
-- If rendering fails, the Promise will be rejected. [Use this to output a fallback shell.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
+`prerender`는 Promise를 반환합니다.
+- 렌더링에 성공하면 Promise는 다음을 포함한 객체로 resolve됩니다.
+  - `prelude`: HTML을 담은 [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)입니다. 이 스트림을 사용해 응답을 청크 단위로 전송하거나, 전체 스트림을 문자열로 읽을 수 있습니다.
+  - `postponed`: JSON으로 직렬화 가능한 불투명 객체입니다. `prerender`가 완료되지 않은 경우 [`resume`](/reference/react-dom/server/resume)에 전달할 수 있습니다. 완료된 경우에는 `null`이며, 이는 `prelude`에 모든 콘텐츠가 포함되어 재개가 필요 없음을 의미합니다.
+- 렌더링에 실패하면 Promise는 reject됩니다. [이 값을 사용해 fallback 셸을 출력하세요.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
 
 #### 주의 사항 {/*caveats*/}
 
@@ -75,9 +75,9 @@ async function handler(request, response) {
 
 ### `prerender`를 언제 사용해야 하나요? {/*when-to-use-prerender*/}
 
-정적 `prerender` API는 정적 서버 사이드 생성(SSG)에 사용됩니다. `renderToString`과 달리 `prerender`는 해결되기 전에 모든 데이터가 로드될 때까지 대기합니다. 이는 Suspense를 사용하여 가져와야 하는 데이터를 포함하여 전체 페이지에 대한 정적 HTML을 생성하는 데 적합합니다. 콘텐츠가 로드되면서 스트리밍하려면 [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)과 같은 스트리밍 서버 사이드 렌더링(SSR) API를 사용하세요.
+정적 `prerender` API는 정적 사이트 생성<sup>SSG, Static Site Generation</sup>에 사용됩니다. `renderToString`과 달리 `prerender`는 해결되기 전에 모든 데이터가 로드될 때까지 대기합니다. 이는 Suspense를 사용하여 가져와야 하는 데이터를 포함하여 전체 페이지에 대한 정적 HTML을 생성하는 데 적합합니다. 콘텐츠가 로드되면서 스트리밍하려면 [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)과 같은 스트리밍 서버 사이드 렌더링(SSR) API를 사용하세요.
 
-`prerender` can be aborted and later either continued with `resumeAndPrerender` or resumed with `resume` to support partial pre-rendering.
+부분 사전 렌더링을 지원하기 위해 `prerender`는 중단할 수 있으며, 이후 `resumeAndPrerender`로 이어서 진행하거나 `resume`으로 재개할 수 있습니다.
 
 </Note>
 
@@ -313,7 +313,7 @@ async function renderToString() {
 
 불완전한 자식을 가진 모든 Suspense 경계는 폴백 상태로 prelude에 포함됩니다.
 
-This can be used for partial prerendering together with [`resume`](/reference/react-dom/server/resume) or [`resumeAndPrerender`](/reference/react-dom/static/resumeAndPrerender).
+이 방식은 [`resume`](/reference/react-dom/server/resume) 또는 [`resumeAndPrerender`](/reference/react-dom/static/resumeAndPrerender)와 함께 부분 사전 렌더링에 사용할 수 있습니다.
 
 ## 문제 해결 {/*troubleshooting*/}
 

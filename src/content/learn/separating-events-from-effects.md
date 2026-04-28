@@ -400,7 +400,7 @@ label { display: block; margin-top: 10px; }
 
 ### Effect 이벤트 선언하기 {/*declaring-an-effect-event*/}
 
-Use a special Hook called [`useEffectEvent`](/reference/react/useEffectEvent) to extract this non-reactive logic out of your Effect:
+[`useEffectEvent`](/reference/react/useEffectEvent)라는 특별한 Hook을 사용하여 Effect에서 비반응형 로직을 추출하세요.
 
 ```js {1,4-6}
 import { useEffect, useEffectEvent } from 'react';
@@ -572,7 +572,7 @@ Effect 이벤트가 이벤트 핸들러와 아주 비슷하다고 생각할 수 
 
 ### Effect 이벤트로 최근 props와 state 읽기 {/*reading-latest-props-and-state-with-effect-events*/}
 
-Effect Events let you fix many patterns where you might be tempted to suppress the dependency linter.
+Effect 이벤트는 의존성 린터를 억제하고 싶은 충동이 드는 많은 패턴을 해결할 수 있게 해줍니다.
 
 예를 들어 페이지 방문을 기록하기 위한 Effect가 있다고 해보겠습니다.
 
@@ -591,7 +591,7 @@ function Page() {
 function Page({ url }) {
   useEffect(() => {
     logVisit(url);
-  }, []); // 🔴 React Hook useEffect has a missing dependency: 'url'
+  }, []); // 🔴 React Hook useEffect의 의존성 'url'이 누락되었습니다.
   // ...
 }
 ```
@@ -616,7 +616,7 @@ function Page({ url }) {
 
   useEffect(() => {
     logVisit(url, numberOfItems);
-  }, [url]); // 🔴 React Hook useEffect has a missing dependency: 'numberOfItems'
+  }, [url]); // 🔴 React Hook useEffect의 의존성 'numberOfItems'가 누락되었습니다.
   // ...
 }
 ```
@@ -713,7 +713,7 @@ function Page({ url }) {
 }
 ```
 
-We recommend **never suppressing the linter**.
+린터를 **절대로 억제하지 않는 것**을 권장합니다.
 
 규칙을 억제하는 것의 첫 번째 단점은 코드에 추가한 새로운 반응형 의존성에 Effect가 "반응"해야 할 때 React가 더 이상 경고하지 않는다는 것입니다. 이전 예시에서는 React가 의존성에 `url`을 추가하라고 상기시켜 주었기 *때문에* 그렇게 했습니다. 린터를 억제하면 해당 Effect에 대한 향후 편집에 대해 이러한 알림을 더 이상 받지 않게 됩니다. 이는 버그로 이어집니다.
 
@@ -850,7 +850,7 @@ body {
 
 ### Effect 이벤트의 한계 {/*limitations-of-effect-events*/}
 
-Effect Events are very limited in how you can use them:
+Effect 이벤트는 사용 방법에 매우 제한적입니다.
 
 * **Effect 내부에서만 호출하세요.**
 * **절대로 다른 컴포넌트나 Hook에 전달하지 마세요.**

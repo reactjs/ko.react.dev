@@ -107,7 +107,7 @@ ${css}
     <button
       className="text-sm text-primary dark:text-primary-dark inline-flex items-center hover:text-link duration-100 ease-in transition mx-1"
       onClick={downloadHTML}
-      title="Download Sandbox"
+      title="샌드박스를 다운로드합니다."
       type="button">
       <IconDownload className="inline me-1" /> 다운로드
     </button>

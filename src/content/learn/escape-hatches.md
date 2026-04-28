@@ -312,7 +312,7 @@ Effect의 생명주기가 컴포넌트와 어떻게 다른지를 배우려면 <s
 
 ## Effect에서 이벤트 분리하기 {/*separating-events-from-effects*/}
 
-Event handlers only re-run when you perform the same interaction again. Unlike event handlers, Effects re-synchronize if any of the values they read, like props or state, are different than during last render. Sometimes, you want a mix of both behaviors: an Effect that re-runs in response to some values but not others.
+이벤트 핸들러는 같은 상호작용을 다시 수행할 때만 다시 실행됩니다. 이벤트 핸들러와 달리, Effect는 props나 state와 같이 읽은 값이 마지막 렌더링 때와 다르면 다시 동기화됩니다. 때로는 두 가지 동작을 혼합하여, 일부 값에만 반응하고 다른 값에는 반응하지 않는 Effect를 원할 수도 있습니다.
 
 Effect 내의 모든 코드는 <em>반응형</em>이며, 읽은 반응형 값이 다시 렌더링되는 것으로 인해 변경되면 다시 실행됩니다. 예를 들어 다음의 Effect는 `roomId` 또는 `theme`이 변경되면 채팅에 다시 연결됩니다.
 

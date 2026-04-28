@@ -14,7 +14,7 @@ const cachedValue = useMemo(calculateValue, dependencies)
 
 <Note>
 
-[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useMemo` calls. You can use the compiler to handle memoization automatically.
+[React 컴파일러](/learn/react-compiler)는 값과 함수를 자동으로 메모이제이션하므로 `useMemo`를 수동으로 사용할 일이 줄어듭니다. 컴파일러를 사용해 메모이제이션을 자동으로 처리할 수 있습니다.
 
 </Note>
 
@@ -62,7 +62,7 @@ function TodoList({ todos, tab }) {
 
 <Note>
 
-이와 같이 반환값을 캐싱하는 것을 [*memoization*](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98)라고 하며, 이 훅을 `useMemo`라고 부르는 이유압니다.
+이와 같이 반환값을 캐싱하는 것을 [*memoization*](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98)라고 하며, 이 훅을 `useMemo`라고 부르는 이유입니다.
 
 </Note>
 
@@ -105,7 +105,7 @@ function TodoList({ todos, tab, theme }) {
 }
 ```
 
-일반적으로 대부분의 계산을 매우 빠르기 때문에 문제가 되지 않습니다. 그러나 큰 배열을 필터링 혹은 변환하거나 비용이 많이 드는 계산을 수행하는 경우, 데이터가 변경되지 않았다면 계산을 생략하는 것이 좋습니다. 만약 `todos`과 `tab`이 마지막 렌더링 때와 동일한 경우, 앞서 언급한 것처럼 `useMemo`로 계산을 감싸면 이전에 계산된 `visibleTodos`를 재사용할 수 있습니다.
+일반적으로 대부분의 계산은 매우 빠르기 때문에 문제가 되지 않습니다. 그러나 큰 배열을 필터링 혹은 변환하거나 비용이 많이 드는 계산을 수행하는 경우, 데이터가 변경되지 않았다면 계산을 생략하는 것이 좋습니다. 만약 `todos`과 `tab`이 마지막 렌더링 때와 동일한 경우, 앞서 언급한 것처럼 `useMemo`로 계산을 감싸면 이전에 계산된 `visibleTodos`를 재사용할 수 있습니다.
 
 이러한 유형의 캐싱을 *[메모이제이션](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98)* 라고 합니다.
 

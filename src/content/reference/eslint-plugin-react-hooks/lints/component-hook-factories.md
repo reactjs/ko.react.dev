@@ -4,27 +4,27 @@ title: component-hook-factories
 
 <Intro>
 
-Validates against higher order functions defining nested components or hooks. Components and hooks should be defined at the module level.
+중첩된 컴포넌트나 Hook을 정의하는 고차 함수를 검증합니다. 컴포넌트와 Hook은 모듈 레벨에서 정의해야 합니다.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## 규칙 세부 사항 {/*rule-details*/}
 
-Defining components or hooks inside other functions creates new instances on every call. React treats each as a completely different component, destroying and recreating the entire component tree, losing all state, and causing performance problems.
+다른 함수 내부에서 컴포넌트나 Hook을 정의하면 호출할 때마다 새로운 인스턴스가 생성됩니다. React는 각각을 완전히 다른 컴포넌트로 취급하여 전체 컴포넌트 트리를 파괴하고 다시 생성하며, 모든 state를 잃고 성능 문제를 일으킵니다.
 
-### Invalid {/*invalid*/}
+### 잘못된 예시 {/*invalid*/}
 
-Examples of incorrect code for this rule:
+이 규칙에 대한 잘못된 코드 예시입니다.
 
 ```js
-// ❌ Factory function creating components
+// ❌ 컴포넌트를 생성하는 팩토리 함수
 function createComponent(defaultValue) {
   return function Component() {
     // ...
   };
 }
 
-// ❌ Component defined inside component
+// ❌ 컴포넌트 내부에서 정의된 컴포넌트
 function Parent() {
   function Child() {
     // ...
@@ -33,7 +33,7 @@ function Parent() {
   return <Child />;
 }
 
-// ❌ Hook factory function
+// ❌ Hook 팩토리 함수
 function createCustomHook(endpoint) {
   return function useData() {
     // ...
@@ -41,30 +41,30 @@ function createCustomHook(endpoint) {
 }
 ```
 
-### Valid {/*valid*/}
+### 올바른 예시 {/*valid*/}
 
-Examples of correct code for this rule:
+이 규칙에 대한 올바른 코드 예시입니다.
 
 ```js
-// ✅ Component defined at module level
+// ✅ 모듈 레벨에서 정의된 컴포넌트
 function Component({ defaultValue }) {
   // ...
 }
 
-// ✅ Custom hook at module level
+// ✅ 모듈 레벨에서 정의된 커스텀 Hook
 function useData(endpoint) {
   // ...
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
-### I need dynamic component behavior {/*dynamic-behavior*/}
+### 동적 컴포넌트 동작이 필요한 경우 {/*dynamic-behavior*/}
 
-You might think you need a factory to create customized components:
+커스터마이즈된 컴포넌트를 만들기 위해 팩토리가 필요하다고 생각할 수 있습니다.
 
 ```js
-// ❌ Wrong: Factory pattern
+// ❌ 잘못된 예: 팩토리 패턴
 function makeButton(color) {
   return function Button({children}) {
     return (
@@ -79,10 +79,10 @@ const RedButton = makeButton('red');
 const BlueButton = makeButton('blue');
 ```
 
-Pass [JSX as children](/learn/passing-props-to-a-component#passing-jsx-as-children) instead:
+대신 [자식을 JSX로 전달](/learn/passing-props-to-a-component#passing-jsx-as-children)하세요.
 
 ```js
-// ✅ Better: Pass JSX as children
+// ✅ 더 나은 방법: JSX를 자식으로 전달
 function Button({color, children}) {
   return (
     <button style={{backgroundColor: color}}>

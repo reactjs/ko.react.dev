@@ -71,7 +71,7 @@ JSX와 React는 서로 다른 별개의 개념입니다. 종종 함께 사용되
 ```html
 <h1>Hedy Lamarr's Todos</h1>
 <img
-  src="https://i.imgur.com/yXOvdOSs.jpg"
+  src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
   alt="Hedy Lamarr"
   class="photo"
 >
@@ -103,7 +103,7 @@ export default function TodoList() {
     // 이것은 동작하지 않습니다!
     <h1>Hedy Lamarr's Todos</h1>
     <img
-      src="https://i.imgur.com/yXOvdOSs.jpg"
+      src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
       alt="Hedy Lamarr"
       class="photo"
     >
@@ -142,7 +142,7 @@ img { height: 90px }
 <div>
   <h1>Hedy Lamarr's Todos</h1>
   <img
-    src="https://i.imgur.com/yXOvdOSs.jpg"
+    src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
     alt="Hedy Lamarr"
     class="photo"
   >
@@ -159,7 +159,7 @@ img { height: 90px }
 <>
   <h1>Hedy Lamarr's Todos</h1>
   <img
-    src="https://i.imgur.com/yXOvdOSs.jpg"
+    src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
     alt="Hedy Lamarr"
     class="photo"
   >
@@ -188,7 +188,7 @@ JSX에서는 태그를 명시적으로 닫아야 합니다. `<img>`처럼 자체
 ```js {2-6,8-10}
 <>
   <img
-    src="https://i.imgur.com/yXOvdOSs.jpg"
+    src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
     alt="Hedy Lamarr"
     class="photo"
    />
@@ -208,7 +208,7 @@ JSX는 JavaScript로 바뀌고 JSX에서 작성된 어트리뷰트는 JavaScript
 
 ```js {4}
 <img
-  src="https://i.imgur.com/yXOvdOSs.jpg"
+  src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
   alt="Hedy Lamarr"
   className="photo"
 />
@@ -236,7 +236,7 @@ export default function TodoList() {
     <>
       <h1>Hedy Lamarr's Todos</h1>
       <img
-        src="https://i.imgur.com/yXOvdOSs.jpg"
+        src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
         alt="Hedy Lamarr"
         className="photo"
       />

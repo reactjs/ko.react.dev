@@ -35,13 +35,13 @@ The React Compiler is a build-time optimization tool that automatically memoizes
 
 * [Configuration](/reference/react-compiler/configuration) - Configuration options for React Compiler.
 * [Directives](/reference/react-compiler/directives) - Function-level directives to control compilation.
-* [Compiling Libraries](/reference/react-compiler/compiling-libraries) - Guide for shipping pre-compiled library code.
+* [라이브러리 컴파일](/reference/react-compiler/compiling-libraries) - Guide for shipping pre-compiled library code.
 
 ## ESLint Plugin React Hooks {/*eslint-plugin-react-hooks*/}
 
 The [ESLint plugin for React Hooks](/reference/eslint-plugin-react-hooks) helps enforce the Rules of React:
 
-* [Lints](/reference/eslint-plugin-react-hooks) - Detailed documentation for each lint with examples.
+* [린트](/reference/eslint-plugin-react-hooks) - Detailed documentation for each lint with examples.
 
 ## Rules of React {/*rules-of-react*/}
 

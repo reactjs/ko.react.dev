@@ -464,7 +464,7 @@ class ChatRoom extends Component {
 
 #### 매개변수 {/*forceupdate-parameters*/}
 
-* **optional** `callback`: 지정한 경우 React는 업데이트가 커밋된 후 사용자가 제공한 `callback`을 호출합니다.
+* `callback`**(선택사항)**: 지정한 경우 React는 업데이트가 커밋된 후 사용자가 제공한 `callback`을 호출합니다.
 
 #### 반환값 {/*forceupdate-returns*/}
 
@@ -655,7 +655,7 @@ function handleClick() {
   * 객체를 `nextState`로 전달하면 `this.state`에 얕게(shallowly) 병합됩니다.
   * 함수를 `nextState`로 전달하면 _업데이터 함수_ 로 취급됩니다. 이 함수는 순수해야 하고, pending state와 props를 인자로 받아야 하며, `this.state`에 얕게(shallowly) 병합할 객체를 반환해야 합니다. React는 업데이터 함수를 큐에 넣고 컴포넌트를 다시 렌더링합니다. 다음 렌더링 중에 React는 큐에 있는 모든 업데이터를 이전 state에 적용하여 다음 state를 계산합니다.
 
-* **optional** `callback`: 지정한 경우 React는 업데이트가 커밋된 후 사용자가 제공한 `callback`을 호출합니다.
+* `callback`**(선택사항)**: 지정한 경우 React는 업데이트가 커밋된 후 사용자가 제공한 `callback`을 호출합니다.
 
 #### 반환값 {/*setstate-returns*/}
 
@@ -1275,7 +1275,7 @@ button { margin-left: 10px; }
 Error boundaries do not catch errors for:
 
 - Event handlers [(learn more)](/learn/responding-to-events)
-- [Server side rendering](/reference/react-dom/server) 
+- [Server side rendering](/reference/react-dom/server)
 - Errors thrown in the error boundary itself (rather than its children)
 - Asynchronous code (e.g. `setTimeout` or `requestAnimationFrame` callbacks); an exception is the usage of the [`startTransition`](/reference/react/useTransition#starttransition) function returned by the [`useTransition`](/reference/react/useTransition) Hook. Errors thrown inside the transition function are caught by error boundaries [(learn more)](/reference/react/useTransition#displaying-an-error-to-users-with-error-boundary)
 

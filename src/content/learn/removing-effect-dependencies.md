@@ -49,7 +49,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // <-- Fix the mistake here!
+  }, []); // <-- 여기서 실수를 수정하세요!
   return <h1>Welcome to the {roomId} room!</h1>;
 }
 
@@ -77,7 +77,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 실제 구현에서는 서버에 연결됩니다
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -104,7 +104,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 모든 의존성 선언됨
   // ...
 }
 ```
@@ -152,7 +152,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 실제 구현에서는 서버에 연결됩니다
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -178,12 +178,12 @@ Effect의 의존성을 "선택"할 수 없다는 점에 유의하세요. Effect�
 ```js [[2, 3, "roomId"], [2, 5, "roomId"], [2, 8, "roomId"]]
 const serverUrl = 'https://localhost:1234';
 
-function ChatRoom({ roomId }) { // This is a reactive value
+function ChatRoom({ roomId }) { // 이것은 반응형 값입니다
   useEffect(() => {
-    const connection = createConnection(serverUrl, roomId); // This Effect reads that reactive value
+    const connection = createConnection(serverUrl, roomId); // 이 Effect는 해당 반응형 값을 읽습니다
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ So you must specify that reactive value as a dependency of your Effect
+  }, [roomId]); // ✅ 따라서 해당 반응형 값을 Effect의 의존성으로 지정해야 합니다
   // ...
 }
 ```
@@ -198,7 +198,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // 🔴 React Hook useEffect has a missing dependency: 'roomId'
+  }, []); // 🔴 React Hook useEffect의 의존성 'roomId'가 누락되었습니다.
   // ...
 }
 ```
@@ -209,14 +209,14 @@ function ChatRoom({ roomId }) {
 
 ```js {2,9}
 const serverUrl = 'https://localhost:1234';
-const roomId = 'music'; // Not a reactive value anymore
+const roomId = 'music'; // 더 이상 반응형 값이 아닙니다
 
 function ChatRoom() {
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ All dependencies declared
+  }, []); // ✅ 모든 의존성 선언됨
   // ...
 }
 ```
@@ -244,7 +244,7 @@ export default function ChatRoom() {
 
 ```js src/chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 실제 구현에서는 서버에 연결됩니다
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -284,7 +284,7 @@ button { margin-left: 10px; }
 ```js {3-4}
 useEffect(() => {
   // ...
-  // 🔴 Avoid suppressing the linter like this:
+  // 🔴 이렇게 린터를 억제하지 마세요:
   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 ```
@@ -380,7 +380,7 @@ function Form() {
 
   useEffect(() => {
     if (submitted) {
-      // 🔴 Avoid: Event-specific logic inside an Effect
+      // 🔴 피하세요: Effect 내부에 이벤트별 로직
       post('/api/register');
       showNotification('Successfully registered!');
     }
@@ -403,11 +403,11 @@ function Form() {
 
   useEffect(() => {
     if (submitted) {
-      // 🔴 Avoid: Event-specific logic inside an Effect
+      // 🔴 피하세요: Effect 내부에 이벤트별 로직
       post('/api/register');
       showNotification('Successfully registered!', theme);
     }
-  }, [submitted, theme]); // ✅ All dependencies declared
+  }, [submitted, theme]); // ✅ 모든 의존성 선언됨
 
   function handleSubmit() {
     setSubmitted(true);
@@ -426,7 +426,7 @@ function Form() {
   const theme = useContext(ThemeContext);
 
   function handleSubmit() {
-    // ✅ Good: Event-specific logic is called from event handlers
+    // ✅ 좋습니다: 이벤트별 로직은 이벤트 핸들러에서 호출됩니다
     post('/api/register');
     showNotification('Successfully registered!', theme);
   }
@@ -460,7 +460,7 @@ function ShippingForm({ country }) {
     return () => {
       ignore = true;
     };
-  }, [country]); // ✅ All dependencies declared
+  }, [country]); // ✅ 모든 의존성 선언됨
 
   // ...
 ```
@@ -484,7 +484,7 @@ function ShippingForm({ country }) {
           setCities(json);
         }
       });
-    // 🔴 Avoid: A single Effect synchronizes two independent processes
+    // 🔴 피하세요: 단일 Effect가 두 개의 독립적인 프로세스를 동기화함
     if (city) {
       fetch(`/api/areas?city=${city}`)
         .then(response => response.json())
@@ -497,7 +497,7 @@ function ShippingForm({ country }) {
     return () => {
       ignore = true;
     };
-  }, [country, city]); // ✅ All dependencies declared
+  }, [country, city]); // ✅ 모든 의존성 선언됨
 
   // ...
 ```
@@ -527,7 +527,7 @@ function ShippingForm({ country }) {
     return () => {
       ignore = true;
     };
-  }, [country]); // ✅ All dependencies declared
+  }, [country]); // ✅ 모든 의존성 선언됨
 
   const [city, setCity] = useState(null);
   const [areas, setAreas] = useState(null);
@@ -545,7 +545,7 @@ function ShippingForm({ country }) {
         ignore = true;
       };
     }
-  }, [city]); // ✅ All dependencies declared
+  }, [city]); // ✅ 모든 의존성 선언됨
 
   // ...
 ```
@@ -582,7 +582,7 @@ function ChatRoom({ roomId }) {
       setMessages([...messages, receivedMessage]);
     });
     return () => connection.disconnect();
-  }, [roomId, messages]); // ✅ All dependencies declared
+  }, [roomId, messages]); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
@@ -602,7 +602,7 @@ function ChatRoom({ roomId }) {
       setMessages(msgs => [...msgs, receivedMessage]);
     });
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
@@ -610,7 +610,7 @@ function ChatRoom({ roomId }) {
 
 ### 값의 변경에 '반응'하지 않고 값을 읽고 싶으신가요? {/*do-you-want-to-read-a-value-without-reacting-to-its-changes*/}
 
-Suppose that you want to play a sound when the user receives a new message unless `isMuted` is `true`:
+사용자가 새 메시지를 받을 때 `isMuted`가 `true`가 아니면 소리를 재생하고 싶다고 가정해 보세요.
 
 ```js {3,10-12}
 function ChatRoom({ roomId }) {
@@ -646,7 +646,7 @@ function ChatRoom({ roomId }) {
       }
     });
     return () => connection.disconnect();
-  }, [roomId, isMuted]); // ✅ All dependencies declared
+  }, [roomId, isMuted]); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
@@ -675,7 +675,7 @@ function ChatRoom({ roomId }) {
       onMessage(receivedMessage);
     });
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
@@ -696,7 +696,7 @@ function ChatRoom({ roomId, onReceiveMessage }) {
       onReceiveMessage(receivedMessage);
     });
     return () => connection.disconnect();
-  }, [roomId, onReceiveMessage]); // ✅ All dependencies declared
+  }, [roomId, onReceiveMessage]); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
@@ -728,7 +728,7 @@ function ChatRoom({ roomId, onReceiveMessage }) {
       onMessage(receivedMessage);
     });
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
@@ -748,7 +748,7 @@ function Chat({ roomId, notificationCount }) {
 
   useEffect(() => {
     onVisit(roomId);
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 모든 의존성 선언됨
   // ...
 }
 ```
@@ -781,7 +781,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // ✅ All dependencies declared
+  }, [options]); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
@@ -798,7 +798,7 @@ const serverUrl = 'https://localhost:1234';
 function ChatRoom({ roomId }) {
   const [message, setMessage] = useState('');
 
-  // Temporarily disable the linter to demonstrate the problem
+  // 문제를 보여주기 위해 린터를 일시적으로 비활성화합니다.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const options = {
     serverUrl: serverUrl,
@@ -843,7 +843,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 실제 구현에서는 서버에 연결됩니다
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -869,13 +869,13 @@ button { margin-left: 10px; }
 **이 문제는 객체와 함수에만 영향을 줍니다. 자바스크립트에서는 새로 생성된 객체와 함수가 다른 모든 객체와 구별되는 것으로 간주됩니다. 그 안의 내용이 동일할 수 있다는 것은 중요하지 않습니다!**
 
 ```js {7-8}
-// During the first render
+// 첫 번째 렌더링 중
 const options1 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 
-// During the next render
+// 다음 렌더링 중
 const options2 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 
-// These are two different objects!
+// 이 두 객체는 서로 다릅니다!
 console.log(Object.is(options1, options2)); // false
 ```
 
@@ -900,7 +900,7 @@ function ChatRoom() {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ All dependencies declared
+  }, []); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
@@ -924,7 +924,7 @@ function ChatRoom() {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ All dependencies declared
+  }, []); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
@@ -948,20 +948,20 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
 이제 `options`이 Effect 내부에서 선언되었으므로 더 이상 Effect의 의존성이 아닙니다. 대신 Effect에서 사용하는 유일한 반응형 값은 `roomId`입니다. `roomId`는 객체나 함수가 아니기 때문에 의도치 않게 달라지지 않을 것이라고 확신할 수 있습니다. 자바스크립트에서 숫자와 문자열은 그 내용에 따라 비교됩니다.
 
 ```js {7-8}
-// During the first render
+// 첫 번째 렌더링 중
 const roomId1 = 'music';
 
-// During the next render
+// 다음 렌더링 중
 const roomId2 = 'music';
 
-// These two strings are the same!
+// 이 두 문자열은 동일합니다!
 console.log(Object.is(roomId1, roomId2)); // true
 ```
 
@@ -1020,7 +1020,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 실제 구현에서는 서버에 연결됩니다
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -1061,7 +1061,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
@@ -1079,7 +1079,7 @@ function ChatRoom({ options }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // ✅ All dependencies declared
+  }, [options]); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
@@ -1109,7 +1109,7 @@ function ChatRoom({ options }) {
     });
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, serverUrl]); // ✅ All dependencies declared
+  }, [roomId, serverUrl]); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
@@ -1145,7 +1145,7 @@ function ChatRoom({ getOptions }) {
     });
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, serverUrl]); // ✅ All dependencies declared
+  }, [roomId, serverUrl]); // ✅ 모든 의존성 선언됨
   // ...
 ```
 
@@ -1322,11 +1322,11 @@ export class FadeInAnimation {
   start(duration) {
     this.duration = duration;
     if (this.duration === 0) {
-      // Jump to end immediately
+      // 즉시 끝으로 이동
       this.onProgress(1);
     } else {
       this.onProgress(0);
-      // Start animating
+      // 애니메이션 시작
       this.startTime = performance.now();
       this.frameId = requestAnimationFrame(() => this.onFrame());
     }
@@ -1336,7 +1336,7 @@ export class FadeInAnimation {
     const progress = Math.min(timePassed / this.duration, 1);
     this.onProgress(progress);
     if (progress < 1) {
-      // We still have more frames to paint
+      // 아직 더 그릴 프레임이 있습니다
       this.frameId = requestAnimationFrame(() => this.onFrame());
     }
   }
@@ -1445,7 +1445,7 @@ export class FadeInAnimation {
     const progress = Math.min(timePassed / this.duration, 1);
     this.onProgress(progress);
     if (progress < 1) {
-      // We still have more frames to paint
+      // 아직 더 그릴 프레임이 있습니다
       this.frameId = requestAnimationFrame(() => this.onFrame());
     }
   }
@@ -1547,7 +1547,7 @@ export default function ChatRoom({ options }) {
 
 ```js src/chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 실제 구현에서는 서버에 연결됩니다
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }
@@ -1645,7 +1645,7 @@ export default function ChatRoom({ options }) {
 
 ```js src/chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 실제 구현에서는 서버에 연결됩니다
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }
@@ -1736,7 +1736,7 @@ export default function ChatRoom({ roomId, serverUrl }) {
 
 ```js src/chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 실제 구현에서는 서버에 연결됩니다
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }
@@ -1886,7 +1886,7 @@ export default function ChatRoom({ roomId, createConnection, onMessage }) {
 
 ```js src/chat.js
 export function createEncryptedConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 실제 구현에서는 서버에 연결됩니다
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }
@@ -1927,7 +1927,7 @@ export function createEncryptedConnection({ serverUrl, roomId }) {
 }
 
 export function createUnencryptedConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 실제 구현에서는 서버에 연결됩니다
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }
@@ -2053,16 +2053,16 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) {
 이 두 가지 변경 사항 이후에는 Effect가 더 이상 함수 값에 의존하지 않습니다.
 
 ```js {1,8,10,21}
-export default function ChatRoom({ roomId, isEncrypted, onMessage }) { // Reactive values
-  const onReceiveMessage = useEffectEvent(onMessage); // Not reactive
+export default function ChatRoom({ roomId, isEncrypted, onMessage }) { // 반응형 값
+  const onReceiveMessage = useEffectEvent(onMessage); // 비반응형
 
   useEffect(() => {
     function createConnection() {
       const options = {
         serverUrl: 'https://localhost:1234',
-        roomId: roomId // Reading a reactive value
+        roomId: roomId // 반응형 값 읽기
       };
-      if (isEncrypted) { // Reading a reactive value
+      if (isEncrypted) { // 반응형 값 읽기
         return createEncryptedConnection(options);
       } else {
         return createUnencryptedConnection(options);
@@ -2073,7 +2073,7 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) { // Reacti
     connection.on('message', (msg) => onReceiveMessage(msg));
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, isEncrypted]); // ✅ All dependencies declared
+  }, [roomId, isEncrypted]); // ✅ 모든 의존성 선언됨
 ```
 
 그 결과, 의미 있는 정보(`roomId` 또는 `isEncrypted`)가 변경될 때만 채팅이 다시 연결됩니다.
@@ -2186,7 +2186,7 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) {
 
 ```js src/chat.js
 export function createEncryptedConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 실제 구현에서는 서버에 연결됩니다
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }
@@ -2227,7 +2227,7 @@ export function createEncryptedConnection({ serverUrl, roomId }) {
 }
 
 export function createUnencryptedConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 실제 구현에서는 서버에 연결됩니다
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }

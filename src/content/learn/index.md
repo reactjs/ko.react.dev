@@ -143,7 +143,7 @@ JSX 중괄호 안에 [문자열 연결](https://ko.javascript.info/operators#str
 ```js
 const user = {
   name: 'Hedy Lamarr',
-  imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
+  imageUrl: 'https://react.dev/images/docs/scientists/yXOvdOSs.jpg',
   imageSize: 90,
 };
 

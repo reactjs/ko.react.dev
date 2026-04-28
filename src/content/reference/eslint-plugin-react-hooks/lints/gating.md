@@ -4,53 +4,53 @@ title: gating
 
 <Intro>
 
-Validates configuration of [gating mode](/reference/react-compiler/gating).
+[게이팅 모드](/reference/react-compiler/gating)의 설정을 검증합니다.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## 규칙 세부 사항 {/*rule-details*/}
 
-Gating mode lets you gradually adopt React Compiler by marking specific components for optimization. This rule ensures your gating configuration is valid so the compiler knows which components to process.
+게이팅 모드는 특정 컴포넌트를 최적화 대상으로 표시하여 React 컴파일러를 점진적으로 도입할 수 있게 해줍니다. 이 규칙은 컴파일러가 어떤 컴포넌트를 처리할지 알 수 있도록 게이팅 설정이 유효한지 확인합니다.
 
-### Invalid {/*invalid*/}
+### 잘못된 예시 {/*invalid*/}
 
-Examples of incorrect code for this rule:
+이 규칙에 대한 잘못된 코드 예시입니다.
 
 ```js
-// ❌ Missing required fields
+// ❌ 필수 필드 누락
 module.exports = {
   plugins: [
     ['babel-plugin-react-compiler', {
       gating: {
         importSpecifierName: '__experimental_useCompiler'
-        // Missing 'source' field
+        // 'source' 필드 누락
       }
     }]
   ]
 };
 
-// ❌ Invalid gating type
+// ❌ 유효하지 않은 게이팅 타입
 module.exports = {
   plugins: [
     ['babel-plugin-react-compiler', {
-      gating: '__experimental_useCompiler' // Should be object
+      gating: '__experimental_useCompiler' // 객체여야 함
     }]
   ]
 };
 ```
 
-### Valid {/*valid*/}
+### 올바른 예시 {/*valid*/}
 
-Examples of correct code for this rule:
+이 규칙에 대한 올바른 코드 예시입니다.
 
 ```js
-// ✅ Complete gating configuration
+// ✅ 완전한 게이팅 설정
 module.exports = {
   plugins: [
     ['babel-plugin-react-compiler', {
       gating: {
-        importSpecifierName: 'isCompilerEnabled', // exported function name
-        source: 'featureFlags' // module name
+        importSpecifierName: 'isCompilerEnabled', // 내보낸 함수 이름
+        source: 'featureFlags' // 모듈 이름
       }
     }]
   ]
@@ -61,11 +61,11 @@ export function isCompilerEnabled() {
   // ...
 }
 
-// ✅ No gating (compile everything)
+// ✅ 게이팅 없음 (모든 것을 컴파일)
 module.exports = {
   plugins: [
     ['babel-plugin-react-compiler', {
-      // No gating field - compiles all components
+      // gating 필드 없음 - 모든 컴포넌트를 컴파일
     }]
   ]
 };

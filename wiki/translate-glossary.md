@@ -58,6 +58,7 @@ Escape Hatches|`/\bEscape[-\s]?Hatches\b/`|탈출구|[#738](https://github.com/r
 Bundle|`/\bBundles?\b/`|번들|[#829](https://github.com/reactjs/ko.react.dev/issues/829)||
 Bundler|`/\bBundlers?\b/`|번들러|[#829](https://github.com/reactjs/ko.react.dev/issues/829)||
 Bundling|`/\bBundling\b/`|번들링|[#829](https://github.com/reactjs/ko.react.dev/issues/829)||
+Compiler|`/\bCompiler\b/`|컴파일러|[#1400](https://github.com/reactjs/ko.react.dev/issues/1400)||
 
 ### Others
 
@@ -78,4 +79,6 @@ Caveats|`/\bCaveats?\b/`, `/주의사항/`|주의 사항|[#1095](https://github.
 Logic|`/\bLogic\b/`|로직|[#695](https://github.com/reactjs/ko.react.dev/issues/695)||
 Dependency|`/\bDependenc(?:y\|ies)\b/`|의존성|[#841](https://github.com/reactjs/ko.react.dev/issues/841)||
 Directive|`/\bDirectives?\b/`|지시어|[#819](https://github.com/reactjs/ko.react.dev/issues/819)||
+Usage|`/\bUsage\b/`|사용법|[#1425](https://github.com/reactjs/ko.react.dev/issues/1425)||
+Imperative|`/\bImperative\b/`|명령형|[#1425](https://github.com/reactjs/ko.react.dev/issues/1425)||
 

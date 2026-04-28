@@ -43,7 +43,7 @@ Activity 경계가 <CodeStep step={1}>숨겨지면</CodeStep>, React는 `display
 #### Props {/*props*/}
 
 * `children`: 표시하거나 숨길 UI입니다.
-* `mode`: `'visible'` 또는 `'hidden'` 중 하나의 문자열 값입니다. 생략하면 기본값은 `'visible'`입니다. 
+* `mode`: `'visible'` 또는 `'hidden'` 중 하나의 문자열 값입니다. 생략하면 기본값은 `'visible'`입니다.
 
 #### 주의 사항 {/*caveats*/}
 
@@ -111,7 +111,7 @@ import { useState } from 'react';
 
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false)
-  
+
   return (
     <nav>
       <button onClick={() => setIsExpanded(!isExpanded)}>
@@ -219,7 +219,7 @@ import { useState } from 'react';
 
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false)
-  
+
   return (
     <nav>
       <button onClick={() => setIsExpanded(!isExpanded)}>
@@ -287,7 +287,7 @@ Activity 경계는 `display: none`을 사용해 자식 컴포넌트를 숨기기
 
 <Sandpack>
 
-```js src/App.js 
+```js src/App.js
 import { useState } from 'react';
 import TabButton from './TabButton.js';
 import Home from './Home.js';
@@ -434,7 +434,7 @@ export default function Home() {
 }
 ```
 
-```js src/Contact.js 
+```js src/Contact.js
 export default function Contact() {
   return (
     <div>
@@ -903,7 +903,7 @@ function Page() {
       </Activity>
     </>
   );
-} 
+}
 ```
 
 ---
@@ -975,7 +975,7 @@ export default function Home() {
 }
 ```
 
-```js src/Video.js 
+```js src/Video.js
 export default function Video() {
   return (
     <video
@@ -1068,7 +1068,7 @@ export default function Home() {
 }
 ```
 
-```js src/Video.js 
+```js src/Video.js
 export default function Video() {
   return (
     <video
@@ -1185,7 +1185,7 @@ export default function Home() {
 }
 ```
 
-```js src/Video.js 
+```js src/Video.js
 import { useRef, useLayoutEffect } from 'react';
 
 export default function Video() {

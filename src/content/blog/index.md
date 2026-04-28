@@ -10,6 +10,24 @@ title: React 블로그
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<BlogCard title="React 재단: Linux 재단이 후원하는 React의 새로운 보금자리" date="2026년 2월 24일" url="/blog/2026/02/24/the-react-foundation">
+
+The React Foundation has officially launched under the Linux Foundation.
+
+</BlogCard>
+
+<BlogCard title="Denial of Service and Source Code Exposure in React Server Components" date="December 11, 2025" url="/blog/2025/12/11/denial-of-service-and-source-code-exposure-in-react-server-components">
+
+Security researchers have found and disclosed two additional vulnerabilities in React Server Components while attempting to exploit the patches in last week’s critical vulnerability...
+
+</BlogCard>
+
+<BlogCard title="Critical Security Vulnerability in React Server Components" date="December 3, 2025" url="/blog/2025/12/03/critical-security-vulnerability-in-react-server-components">
+
+There is an unauthenticated remote code execution vulnerability in React Server Components. A fix has been published in versions 19.0.1, 19.1.2, and 19.2.1. We recommend upgrading immediately.
+
+</BlogCard>
+
 <BlogCard title="React Conf 2025 요약" date="2025년 10월 16일" url="/blog/2025/10/16/react-conf-2025-recap">
 
 지난주에 React Conf 2025를 개최했습니다. 이 글에서는 행사에서 있었던 강연과 발표 내용을 정리합니다...
@@ -72,7 +90,7 @@ React 19에 추가된 개선 사항들로 인해 일부 주요한 변경 사항<
 
 <BlogCard title="React Labs: 그동안의 작업 - 2024년 2월" date="2024년 2월 15일" url="/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024">
 
-React Labs 게시글에서는 현재 연구 개발 중인 프로젝트에 대한 글을 작성합니다. 지난 업데이트 이후 React Compiler, 새로운 기능 및 React 19에서 상당한 진전이 있었으며, 그 내용을 공유하고자 합니다.
+React Labs 게시글에서는 현재 연구 개발 중인 프로젝트에 대한 글을 작성합니다. 지난 업데이트 이후 React 컴파일러, 새로운 기능 및 React 19에서 상당한 진전이 있었으며, 그 내용을 공유하고자 합니다.
 
 </BlogCard>
 

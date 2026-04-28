@@ -71,7 +71,7 @@ export default function Search() {
 
 </Sandpack>
 
-### 서버 함수에서 폼 제출 처리하기 {/*handle-form-submission-with-a-server-action*/}
+### 서버 함수에서 폼 제출 처리하기 {/*handle-form-submission-with-a-server-function*/}
 
 입력 및 제출 버튼과 함께 `<form>`을 렌더링하세요. 폼을 제출할 때 해당 함수를 실행하기 위해 서버 함수([`'use server'`](/reference/rsc/use-server)가 표시된 함수)를 폼의 `action` 프로퍼티로 전달하세요.
 

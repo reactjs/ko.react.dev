@@ -1,6 +1,6 @@
 # ko.react.dev
 
-[![React Korea 디스코드 채널](https://dcbadge.vercel.app/api/server/YXdTyCh5KF)](https://discord.gg/YXdTyCh5KF)
+[![React Korea 디스코드 채널](https://img.shields.io/badge/discord-channel?style=for-the-badge&logo=discord&logoSize=100&label=React%20Korea&labelColor=%2323272F&color=%23149ECA)](https://discord.gg/YXdTyCh5KF)
 
 ## 한국어 번역 정보
 

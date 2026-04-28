@@ -5,15 +5,15 @@ version: canary
 
 <Canary>
 
-**The `addTransitionType` API is currently only available in React’s Canary and Experimental channels.** 
+**`addTransitionType` API는 현재 React의 카나리 및 실험적 채널에서만 사용할 수 있습니다.**
 
-[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
+[React의 배포 채널에 대해 더 알아보세요.](/community/versioning-policy#all-release-channels)
 
 </Canary>
 
 <Intro>
 
-`addTransitionType` lets you specify the cause of a transition.
+`addTransitionType`은 트랜지션의 원인을 명시할 수 있습니다.
 
 
 ```js
@@ -76,7 +76,7 @@ function Submit({action) {
 
 - [브라우저 View Transition 타입으로 애니메이션 커스텀하기](#customize-animations-using-browser-view-transition-types)
 - [`View Transition` 클래스로 애니메이션 커스텀하기](#customize-animations-using-view-transition-class)
-- [`ViewTransition`이벤트로 애니메이션 커스텀하기](#customize-animations-using-viewtransition-events) 
+- [`ViewTransition`이벤트로 애니메이션 커스텀하기](#customize-animations-using-viewtransition-events)
 
 향후에는 트랜지션의 원인을 활용할 수 있는 다양한 용례를 지원할 예정입니다.
 
@@ -167,4 +167,4 @@ View Transition 이벤트를 활용하여 타입에 따라 활성화된 `ViewTra
 }}>
 ```
 
-This allows you to pick different imperative Animations based on the cause.
+이를 통해 원인에 따라 다른 명령형 애니메이션을 선택할 수 있습니다.
