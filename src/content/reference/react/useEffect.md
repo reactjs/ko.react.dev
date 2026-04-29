@@ -1693,7 +1693,7 @@ button { margin-left: 10px; }
 
 기본적으로 Effect에서 반응형 값을 읽을 때는 해당 값을 의존성으로 추가해야 합니다. 이를 통해 Effect가 그 값의 모든 변경에 "반응"하도록 보장합니다. 대부분의 의존성에서는 이것이 원하는 동작입니다.
 
-**그러나 때로는 Effect에서 최신 props와 state를 '반응'하지 않고 읽고 싶을 수 있습니다.** 예를 들어 페이지 방문마다 쇼핑 카트에 담긴 항목 수를 기록하고 싶다고 가정해 보겠습니다.
+**그러나 때로는 Effect에서 최신 props와 state를 "반응"하지 않고 읽고 싶을 수 있습니다.** 예를 들어 페이지 방문마다 쇼핑 카트에 담긴 항목 수를 기록하고 싶다고 가정해 보겠습니다.
 
 ```js {3}
 function Page({ url, shoppingCart }) {
@@ -1704,7 +1704,7 @@ function Page({ url, shoppingCart }) {
 }
 ```
 
-**`url`이 변경될 때마다 새로운 페이지 방문을 기록하고 싶지만, `shoppingCart`만 변경되었을 때는 기록하고 싶지 *않다면* 어떻게 해야 할까요?** [반응형 규칙](#specifying-reactive-dependencies)을 위반하지 않고는 `shoppingCart`를 의존성에서 제외할 수 없습니다. 하지만 어떤 코드가 Effect 내부에서 호출되더라도 그 코드가 변경에 '반응'하기를 *원하지 않는다고* 표현할 수 있습니다. [`useEffectEvent`](/reference/react/useEffectEvent) Hook으로 [*Effect 이벤트*를 선언](/learn/separating-events-from-effects#declaring-an-effect-event)하고, `shoppingCart`를 읽는 코드를 그 안으로 옮기세요.
+**`url`이 변경될 때마다 새로운 페이지 방문을 기록하고 싶지만, `shoppingCart`만 변경되었을 때는 기록하고 싶지 *않다면* 어떻게 해야 할까요?** [반응형 규칙](#specifying-reactive-dependencies)을 위반하지 않고는 `shoppingCart`를 의존성에서 제외할 수 없습니다. 하지만 어떤 코드가 Effect 내부에서 호출되더라도 그 코드가 변경에 "반응"하기를 *원하지 않는다고* 표현할 수 있습니다. [`useEffectEvent`](/reference/react/useEffectEvent) Hook으로 [*Effect 이벤트*를 선언](/learn/separating-events-from-effects#declaring-an-effect-event)하고, `shoppingCart`를 읽는 코드를 그 안으로 옮기세요.
 
 ```js {2-4,7,8}
 function Page({ url, shoppingCart }) {
