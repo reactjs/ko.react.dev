@@ -177,7 +177,7 @@ function Button({ children }) {
 
 ### Context를 통해 전달된 데이터 업데이트하기 {/*updating-data-passed-via-context*/}
 
-때떄로 Context가 시간이 지남에 따라 변경되기를 원할 것입니다. Context를 업데이트 하려면 [State](/reference/react/useState)와 결합하세요. 부모 컴포넌트에서 State변수를 선언하고 현재 State를 <CodeStep step={2}>Context Value</CodeStep>로 Provider에 전달합니다.
+때때로 Context가 시간이 지남에 따라 변경되기를 원할 것입니다. Context를 업데이트 하려면 [State](/reference/react/useState)와 결합하세요. 부모 컴포넌트에서 State변수를 선언하고 현재 State를 <CodeStep step={2}>Context Value</CodeStep>로 Provider에 전달합니다.
 
 ```js {2} [[1, 4, "ThemeContext"], [2, 4, "theme"], [1, 11, "ThemeContext"]]
 function MyPage() {
