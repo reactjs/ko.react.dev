@@ -1112,7 +1112,7 @@ export default function Form() {
   const [upper, setUpper] = useState(false);
   return (
     <>
-      <button onClick={() => setShow(s => !s)}>form {show ? '숨기기' : '보기'} form</button>
+      <button onClick={() => setShow(s => !s)}>form {show ? '숨기기' : '보기'}</button>
       <br />
       <hr />
       {show && (
