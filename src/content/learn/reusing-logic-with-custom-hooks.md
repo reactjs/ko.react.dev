@@ -58,7 +58,7 @@ export default function StatusBar() {
 
 이제 다른 컴포넌트에서 같은 로직을 *또* 사용한다고 상상해 보세요. 네트워크가 꺼졌을 때, "저장" 대신 "재연결 중..."을 보여주는 비활성화된 저장 버튼을 구현하고 싶다고 가정해 봅시다.
 
-구현하기 위해, 앞서 사용한 `isOnline` state과 Effect를 `SaveButton` 안에 복사 붙여넣기 할 수 있습니다.
+구현하기 위해, 앞서 사용한 `isOnline` state와 Effect를 `SaveButton` 안에 복사 붙여넣기 할 수 있습니다.
 
 <Sandpack>
 
@@ -1218,7 +1218,7 @@ function useMount(fn) {
 }
 ```
 
-**`useMount`과 같은 커스텀 "생명 주기" Hook은 전형적인 React와 맞지 않습니다.** 예를 들어 이 코드 예시는 문제가 있지만(`roomId`나 `serverUrl`의 변화에 반응하지 않음.), 린터는 오직 직접적인 `useEffect` 호출만 체크하기 때문에 경고하지 않습니다. 린터는 Hook에 대해 모르고 있습니다.
+**`useMount`와 같은 커스텀 "생명 주기" Hook은 전형적인 React와 맞지 않습니다.** 예를 들어 이 코드 예시는 문제가 있지만(`roomId`나 `serverUrl`의 변화에 반응하지 않음.), 린터는 오직 직접적인 `useEffect` 호출만 체크하기 때문에 경고하지 않습니다. 린터는 Hook에 대해 모르고 있습니다.
 
 Effect를 작성할 때, React API를 직접적으로 사용하세요.
 
@@ -1406,7 +1406,7 @@ function SaveButton() {
 2. 컴포넌트가 Effect의 정확한 실행보다 목적에 집중하도록 할 때
 3. React가 새 기능을 추가할 때, 다른 컴포넌트의 변경 없이 이 Effect를 삭제할 수 있을 때
 
-[디자인 시스템](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969)과 과 마찬가지로, 앱의 컴포넌트에서 일반적인 관용구를 추출하여 커스텀 Hook으로 만드는 것이 도움이 될 수 있습니다. 이렇게 하면 컴포넌트의 코드가 의도에 집중할 수 있고, Effect를 자주 작성하지 않아도 됩니다. React 커뮤니티에서 많은 훌륭한 커스텀 Hook을 관리하고 있습니다.
+[디자인 시스템](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969)과 마찬가지로, 앱의 컴포넌트에서 일반적인 관용구를 추출하여 커스텀 Hook으로 만드는 것이 도움이 될 수 있습니다. 이렇게 하면 컴포넌트의 코드가 의도에 집중할 수 있고, Effect를 자주 작성하지 않아도 됩니다. React 커뮤니티에서 많은 훌륭한 커스텀 Hook을 관리하고 있습니다.
 
 <DeepDive>
 
@@ -1443,7 +1443,7 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-앱에 `useData`과 같은 커스텀 Hook을 사용한다면, 모든 컴포넌트에 수동으로 Effect를 작성하는 것보다 최종적으로 권장되는 접근 방식으로 변경하는 것이 더 적은 변경이 요구됩니다. 그러나 이전의 접근 방식도 충분히 잘 동작하기 때문에 Effect 사용을 즐긴다면 그렇게 사용해도 됩니다.
+앱에 `useData`와 같은 커스텀 Hook을 사용한다면, 모든 컴포넌트에 수동으로 Effect를 작성하는 것보다 최종적으로 권장되는 접근 방식으로 변경하는 것이 더 적은 변경이 요구됩니다. 그러나 이전의 접근 방식도 충분히 잘 동작하기 때문에 Effect 사용을 즐긴다면 그렇게 사용해도 됩니다.
 
 </DeepDive>
 
