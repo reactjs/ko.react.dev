@@ -160,7 +160,7 @@ function sendMessage(text) {
 
 이 코드는 작동하긴 하지만, "불가능한" state를 허용합니다. 예를 들어 `setIsSent`와 `setIsSending`을 함께 호출하는 것을 잊어버린 경우, `isSending`과 `isSent`가 동시에 `true`인 상황에 처할 수 있습니다. 컴포넌트가 복잡할수록 무슨 일이 일어났는지 이해하기가 어렵습니다.
 
-**`isSending`과 `isSent`는 동시에 `true`가 되어서는 안되기 때문에, 이 두 변수를** `'typing'`(초깃값), `'sending'`, `'sent'` **세 가지 유효한 상태 중 하나를 가질 수 있는 `status` state 변수로 대체하는 것이 좋습니다.**
+**`isSending`과 `isSent`는 동시에 `true`가 되어서는 안 되기 때문에, 이 두 변수를** `'typing'`(초깃값), `'sending'`, `'sent'` **세 가지 유효한 상태 중 하나를 가질 수 있는 `status` state 변수로 대체하는 것이 좋습니다.**
 
 <Sandpack>
 

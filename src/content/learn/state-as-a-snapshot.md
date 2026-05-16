@@ -88,7 +88,7 @@ React가 컴포넌트를 다시 렌더링할 때.
     <Illustration caption="DOM tree를 업데이트 합니다" src="/images/docs/illustrations/i_render3.png" />
 </IllustrationBlock>
 
-컴포넌트의 메모리로써 state는 함수가 반환된 후 사라지는 일반 변수와 다릅니다. state는 실제로 함수 외부에 마치 선반에 있는 것처럼 React 자체에 "존재"합니다. React가 컴포넌트를 호출하면 특정 렌더링에 대한 state의 스냅샷을 제공합니다. 컴포넌트는 **해당 렌더링의 state 값을 사용해** 계산된 새로운 props 세트와 이벤트 핸들러가 포함된 UI의 스냅샷을 JSX에 반환합니다!
+컴포넌트의 메모리로서 state는 함수가 반환된 후 사라지는 일반 변수와 다릅니다. state는 실제로 함수 외부에 마치 선반에 있는 것처럼 React 자체에 "존재"합니다. React가 컴포넌트를 호출하면 특정 렌더링에 대한 state의 스냅샷을 제공합니다. 컴포넌트는 **해당 렌더링의 state 값을 사용해** 계산된 새로운 props 세트와 이벤트 핸들러가 포함된 UI의 스냅샷을 JSX에 반환합니다!
 
 <IllustrationBlock sequential>
   <Illustration caption="React에 state를 업데이트하라고 명령합니다" src="/images/docs/illustrations/i_state-snapshot1.png" />

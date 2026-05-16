@@ -457,7 +457,7 @@ function SearchBar({ filterText, inStockOnly }) {
 
 ## Step 5: 역 데이터 흐름 추가하기 {/*step-5-add-inverse-data-flow*/}
 
-지금까지 우리는 계층 구조 아래로 흐르는 Props와 State의 함수로써 앱을 만들었습니다. 이제 사용자 입력에 따라 State를 변경하려면 반대 방향의 데이터 흐름을 만들어야 합니다. 이를 위해서는 계층 구조의 하단에 있는 컴포넌트에서 `FilterableProductTable`의 State를 업데이트할 수 있어야 합니다.
+지금까지 우리는 계층 구조 아래로 흐르는 Props와 State의 함수로서 앱을 만들었습니다. 이제 사용자 입력에 따라 State를 변경하려면 반대 방향의 데이터 흐름을 만들어야 합니다. 이를 위해서는 계층 구조의 하단에 있는 컴포넌트에서 `FilterableProductTable`의 State를 업데이트할 수 있어야 합니다.
 
 React는 데이터 흐름을 명시적으로 보이게 만들어 줍니다. 그러나 이는 전통적인 양방향 데이터 바인딩보다 조금 더 많은 타이핑이 필요합니다.
 

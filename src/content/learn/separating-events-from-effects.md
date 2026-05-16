@@ -1157,7 +1157,7 @@ button { margin: 10px; }
 
 </Sandpack>
 
-`onTick`은 Effect 이벤트이므로 내부의 코드는 반응형이 아닙니다. `increment`가 변해도 Effect를 트리거 하지 않습니다.
+`onTick`은 Effect 이벤트이므로 내부의 코드는 반응형이 아닙니다. `increment`가 변해도 Effect를 트리거하지 않습니다.
 
 </Solution>
 

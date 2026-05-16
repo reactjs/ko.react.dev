@@ -65,11 +65,11 @@ function CopyAsMarkdownButton() {
     <Button onClick={handleCopy} className="text-sm py-1 px-3">
       <IconCopy className="w-3.5 h-3.5 me-1.5" />
       {copied ? (
-        'Copied!'
+        '복사 완료!'
       ) : (
         <>
-          <span className="hidden sm:inline">Copy page</span>
-          <span className="sm:hidden">Copy</span>
+          <span className="hidden sm:inline">페이지 복사</span>
+          <span className="sm:hidden">복사</span>
         </>
       )}
     </Button>

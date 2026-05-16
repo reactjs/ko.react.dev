@@ -391,7 +391,7 @@ export default function Square() {
 
 ![한 줄에 X가 채워진 9개의 사각형](../images/tutorial/nine-x-filled-squares.png)
 
-이런! 사각형이 보드에 필요한 격자 모양이 아니라 한 줄로 되어있습니다. 이 문제를 해결하려면 `div`를 사용하여 사각형을 행으로 그룹화하고 몇 가지 CSS 클래스를 추가해야 합니다. 이 과정에서 각 사각형에 번호를 부여하여 표시되는 위치를 알 수 있게 하겠습니다.
+이런! 사각형이 보드에 필요한 격자 모양이 아니라 한 줄로 되어 있습니다. 이 문제를 해결하려면 `div`를 사용하여 사각형을 행으로 그룹화하고 몇 가지 CSS 클래스를 추가해야 합니다. 이 과정에서 각 사각형에 번호를 부여하여 표시되는 위치를 알 수 있게 하겠습니다.
 
 `App.js` 파일에서 `Square` 컴포넌트를 다음과 같이 업데이트하세요.
 
@@ -801,7 +801,7 @@ function Square() {
 }
 ```
 
-`onClick` 핸들러에서 `set` 함수를 호출함으로써 React에 `<button>`을 클릭 할 때마다 `Square`를 다시 렌더링하도록 했습니다. 업데이트 후 `Square`의 `value`는 `'X'`가 되므로, 앞으로 보드에서 "X"를 볼 수 있습니다. 사각형을 클릭하면 "X"가 표시됩니다.
+`onClick` 핸들러에서 `set` 함수를 호출함으로써 React에 `<button>`을 클릭할 때마다 `Square`를 다시 렌더링하도록 했습니다. 업데이트 후 `Square`의 `value`는 `'X'`가 되므로, 앞으로 보드에서 "X"를 볼 수 있습니다. 사각형을 클릭하면 "X"가 표시됩니다.
 
 ![보드에 x를 추가하기](../images/tutorial/tictac-adding-x-s.gif)
 
@@ -1175,7 +1175,7 @@ Too many re-renders. React limits the number of renders to prevent an infinite l
 
 왜 이러한 문제가 더 일찍 발생하지 않았을까요?
 
-이전에 `onSquareClick={handleClick}`을 전달할 땐 함수를 *호출*한 것이 아니라 `handleClick` 함수를 Prop로 전달했기 때문입니다. 하지만 지금은 `handleClick(0)`의 괄호를 보면 알 수 있듯이 해당 함수를 호출하고 있으므로 해당 함수가 너무 일찍 실행됩니다. 사용자가 클릭하기 전까지 `handleClick` 함수를 호출하면 *안 됩*니다!
+이전에 `onSquareClick={handleClick}`을 전달할 땐 함수를 *호출*한 것이 아니라 `handleClick` 함수를 Prop로 전달했기 때문입니다. 하지만 지금은 `handleClick(0)`의 괄호를 보면 알 수 있듯이 해당 함수를 호출하고 있으므로 해당 함수가 너무 일찍 실행됩니다. 사용자가 클릭하기 전까지 `handleClick` 함수를 호출하면 *안 됩니다*!
 
 이 문제를 해결하려면 `handleClick(0)`을 호출하는 `handleFirstSquareClick` 함수를 만들고, `handleClick(1)`을 호출하는 `handleSecondSquareClick`을 만들고… 계속해서 만들면 됩니다. 그리고 아까와 같이 호출하는 대신 `onSquareClick={handleFirstSquareClick}`와 같은 함수를 Prop로 전달 해 주면 됩니다. 이렇게 하면 무한 루프를 해결할 수 있습니다.
 
@@ -1333,7 +1333,7 @@ body {
 
 <Note>
 
-DOM `<button>` 엘리먼트의 `onClick` 어트리뷰트는 빌트인 컴포넌트이기 때문에 React에서 특별한 의미를 갖습니다. 사용자 정의 컴포넌트, 예를 들어 사각형의 경우 이름은 사용자가 원하는 대로 지을 수 있습니다. `Square`의 `onSquareClick` Prop나 `Board`의 `handleClick` 함수에 어떠한 이름을 붙여도 코드는 동일하게 작동합니다. React에서는 주로 이벤트를 나타내는 Prop에는 `onSomething`과 같은 이름을 사용하고, 이벤트를 처리하는 함수를 정의 할 때는 `handleSomething`과 같은 이름을 사용합니다.
+DOM `<button>` 엘리먼트의 `onClick` 어트리뷰트는 빌트인 컴포넌트이기 때문에 React에서 특별한 의미를 갖습니다. 사용자 정의 컴포넌트, 예를 들어 사각형의 경우 이름은 사용자가 원하는 대로 지을 수 있습니다. `Square`의 `onSquareClick` Prop나 `Board`의 `handleClick` 함수에 어떠한 이름을 붙여도 코드는 동일하게 작동합니다. React에서는 주로 이벤트를 나타내는 Prop에는 `onSomething`과 같은 이름을 사용하고, 이벤트를 처리하는 함수를 정의할 때는 `handleSomething`과 같은 이름을 사용합니다.
 
 </Note>
 

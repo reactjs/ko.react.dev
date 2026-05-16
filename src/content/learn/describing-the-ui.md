@@ -538,7 +538,7 @@ React 렌더 트리 예시
 
 트리의 상단에 위치한 컴포넌트와 루트 컴포넌트 근처의 컴포넌트를 최상위 컴포넌트라고 합니다. 자식 컴포넌트가 없는 컴포넌트를 리프 컴포넌트라고 합니다. 이 컴포넌트 분류는 앱의 데이터 흐름과 성능을 이해하는 데 유용합니다.
 
-자바스크립트 모듈 간의 관계를 모델링하는 것은 앱을 이해하는데 유용한 또 다른 방법입니다. 이를 모듈 의존성 트리라고 정의합니다.
+자바스크립트 모듈 간의 관계를 모델링하는 것은 앱을 이해하는 데 유용한 또 다른 방법입니다. 이를 모듈 의존성 트리라고 정의합니다.
 
 <Diagram name="generic_dependency_tree" height={250} width={500} alt="A tree graph with five nodes. Each node represents a JavaScript module. The top-most node is labelled 'RootModule.js'. It has three arrows extending to the nodes: 'ModuleA.js', 'ModuleB.js', and 'ModuleC.js'. Each arrow is labelled as 'imports'. 'ModuleC.js' node has a single 'imports' arrow that points to a node labelled 'ModuleD.js'.">
 
