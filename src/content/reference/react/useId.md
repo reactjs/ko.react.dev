@@ -175,7 +175,7 @@ input { margin: 5px; }
 
 <DeepDive>
 
-#### useId를 사용하는 것이 카운터를 증가하는 것보다 나은 이유는 무엇일까요? {/*why-is-useid-better-than-an-incrementing-counter*/}
+#### `useId`를 사용하는 것이 카운터를 증가하는 것보다 나은 이유는 무엇일까요? {/*why-is-useid-better-than-an-incrementing-counter*/}
 
 `useId`를 사용하는 것이 `nextId++`처럼 전역 변수를 증가하는 것보다 나은 이유에 대해 궁금할 수 있습니다.
 
@@ -309,7 +309,7 @@ input { margin: 5px; }
 
 ### 클라이언트와 서버에서 동일한 ID 접두사 사용하기 {/*using-the-same-id-prefix-on-the-client-and-the-server*/}
 
-[동일한 페이지에서 여러 독립적인 React 앱을 렌더링하는 경우](#specifying-a-shared-prefix-for-all-generated-ids), 이러한 앱 중 일부가 서버에서 렌더링되는 경우, 클라이언트 측에서 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 호출에 전달하는 `identifierPrefix가` [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream)와 같은 [서버 API](/reference/react-dom/server)에 전달하는 `identifierPrefix`와 동일한지 확인해야 합니다.
+[동일한 페이지에서 여러 독립적인 React 앱을 렌더링하는 경우](#specifying-a-shared-prefix-for-all-generated-ids), 이러한 앱 중 일부가 서버에서 렌더링되는 경우, 클라이언트 측에서 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 호출에 전달하는 `identifierPrefix`가 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream)와 같은 [서버 API](/reference/react-dom/server)에 전달하는 `identifierPrefix`와 동일한지 확인해야 합니다.
 
 ```js
 // Server

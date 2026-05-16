@@ -4,7 +4,7 @@ title: useOptimistic
 
 <Intro>
 
-`useOptimistic` 는 UI를 낙관적으로 업데이트할 수 있게 해주는 React Hook입니다.
+`useOptimistic`은 UI를 낙관적으로 업데이트할 수 있게 해주는 React Hook입니다.
 
 ```js
 const [optimisticState, setOptimistic] = useOptimistic(value, reducer?);
@@ -40,7 +40,7 @@ function MyComponent({name, todos}) {
 #### 매개변수 {/*parameters*/}
 
 * `state`: 작업이 대기 중이지 않을 때 초기에 반환될 값입니다.
-* `updateFn(currentState, optimisticValue)`: 현재 상태와 addOptimistic에 전달된 낙관적인 값을 취하는 함수로, 결과적인 낙관적인 상태를 반환합니다. 순수 함수여야 합니다. `updateFn`은 두 개의 매개변수를 취합니다. `currentState`와 `optimisticValue`. 반환 값은 `currentState`와 `optimisticValue`의 병합된 값입니다.
+* `updateFn(currentState, optimisticValue)`: 현재 State와 `addOptimistic`에 전달된 낙관적인 값을 취하는 함수로, 결과적인 낙관적인 State를 반환합니다. 순수 함수여야 합니다. `updateFn`은 두 개의 매개변수를 취합니다. `currentState`와 `optimisticValue`. 반환 값은 `currentState`와 `optimisticValue`의 병합된 값입니다.
 
 #### 반환값 {/*returns*/}
 
@@ -110,21 +110,21 @@ export async function submitForm() {
 
 </Sandpack>
 
-When the button is clicked, `setIsPending(true)` uses optimistic state to immediately show "Submitting..." and disable the button. When the Action is done, `isPending` is rendered as `false` automatically.
+버튼을 클릭하면 `setIsPending(true)`가 낙관적 state를 사용하여 즉시 "Submitting..."을 표시하고 버튼을 비활성화합니다. Action이 완료되면 `isPending`은 자동으로 `false`로 렌더링됩니다.
 
-This pattern automatically shows a pending state however `action` prop is used with `Button`:
+이 패턴은 `Button`에서 `action` prop을 어떤 방식으로 사용하든 보류 상태를 자동으로 표시합니다.
 
 ```js
-// Show pending state for a state update
+// state 업데이트에 대한 보류 상태 표시
 <Button action={() => { setState(c => c + 1) }} />
 
-// Show pending state for a navigation
+// 네비게이션에 대한 보류 상태 표시
 <Button action={() => { navigate('/done') }} />
 
-// Show pending state for a POST
+// POST에 대한 보류 상태 표시
 <Button action={async () => { await fetch(/* ... */) }} />
 
-// Show pending state for any combination
+// 모든 조합에 대한 보류 상태 표시
 <Button action={async () => {
   setState(c => c + 1);
   await fetch(/* ... */);
@@ -132,23 +132,23 @@ This pattern automatically shows a pending state however `action` prop is used w
 }} />
 ```
 
-The pending state will be shown until everything in the `action` prop is finished.
+`action` prop 안의 모든 작업이 끝날 때까지 보류 상태가 표시됩니다.
 
 <Note>
 
-You can also use [`useTransition`](/reference/react/useTransition) to get pending state via `isPending`.
+[`useTransition`](/reference/react/useTransition)을 사용하여 `isPending`으로 보류 상태를 가져올 수도 있습니다.
 
-The difference is that `useTransition` gives you the `startTransition` function, while `useOptimistic` works with any Transition. Use whichever fits your component's needs.
+차이점은 `useTransition`은 `startTransition` 함수를 제공하는 반면, `useOptimistic`은 모든 Transition과 함께 동작한다는 것입니다. 컴포넌트의 필요에 맞는 것을 사용하세요.
 
 </Note>
 
 ---
 
-### Updating props or state optimistically {/*updating-props-or-state-optimistically*/}
+### props나 state를 낙관적으로 업데이트하기 {/*updating-props-or-state-optimistically*/}
 
-You can wrap props or state in `useOptimistic` to update it immediately while an Action is in progress.
+props나 state를 `useOptimistic`으로 감싸 Action이 진행 중일 때 즉시 업데이트할 수 있습니다.
 
-In this example, `LikeButton` receives `isLiked` as a prop and immediately toggles it when clicked:
+이 예시에서 `LikeButton`은 `isLiked`를 prop으로 받고, 클릭하면 즉시 토글합니다.
 
 <Sandpack>
 
@@ -193,7 +193,7 @@ export default function App() {
 ```js src/actions.js hidden
 export async function toggleLike(value) {
   return await new Promise((res) => setTimeout(() => res(value), 1000));
-  // In a real app, this would update the server
+  // 실제 앱에서는 서버를 업데이트합니다.
 }
 ```
 
@@ -205,29 +205,29 @@ import './styles.css';
 import App from './App';
 
 const root = createRoot(document.getElementById('root'));
-// Not using StrictMode so double render logs are not shown.
+// 중복 렌더링 로그가 표시되지 않도록 StrictMode를 사용하지 않습니다.
 root.render(<App />);
 ```
 
 </Sandpack>
 
-When the button is clicked, `setOptimisticIsLiked` immediately updates the displayed state to show the heart as liked. Meanwhile, `await toggleLike` runs in the background. When the `await` completes, `setIsLiked` parent updates the "real" `isLiked` state, and the optimistic state is rendered to match this new value.
+버튼을 클릭하면 `setOptimisticIsLiked`가 표시되는 state를 즉시 업데이트하여 하트가 좋아요 상태로 보이게 합니다. 그동안 `await toggleLike`는 백그라운드에서 실행됩니다. `await`가 완료되면 상위의 `setIsLiked`가 "실제" `isLiked` state를 업데이트하고, 낙관적 state는 이 새로운 값과 일치하도록 렌더링됩니다.
 
 <Note>
 
-This example reads from `optimisticIsLiked` to calculate the next value. This works when the base state won't change, but if the base state might change while your Action is pending, you may want to use a state updater or the reducer.
+이 예시는 다음 값을 계산하기 위해 `optimisticIsLiked`를 읽습니다. 기준 state가 변경되지 않는 경우에는 잘 동작하지만, Action이 대기 중인 동안 기준 state가 변경될 수 있다면 state 업데이터나 리듀서를 사용하는 것이 좋습니다.
 
-See [Updating state based on the current state](#updating-state-based-on-current-state) for an example.
+예시는 [현재 state를 기반으로 state 업데이트하기](#updating-state-based-on-current-state)를 참고하세요.
 
 </Note>
 
 ---
 
-### Updating multiple values together {/*updating-multiple-values-together*/}
+### 여러 값을 함께 업데이트하기 {/*updating-multiple-values-together*/}
 
-When an optimistic update affects multiple related values, use a reducer to update them together. This ensures the UI stays consistent.
+낙관적 업데이트가 여러 관련 값에 영향을 준다면, 리듀서를 사용해 함께 업데이트하세요. 이렇게 하면 UI의 일관성을 유지할 수 있습니다.
 
-Here's a follow button that updates both the follow state and follower count:
+다음은 팔로우 상태와 팔로워 수를 모두 업데이트하는 팔로우 버튼입니다.
 
 <Sandpack>
 
@@ -306,48 +306,48 @@ export async function unfollowUser(name) {
 
 </Sandpack>
 
-The reducer receives the new `isFollowing` value and calculates both the new follow state and the updated follower count in a single update. This ensures the button text and count always stay in sync.
+리듀서는 새로운 `isFollowing` 값을 받아 새 팔로우 상태와 업데이트된 팔로워 수를 한 번의 업데이트로 계산합니다. 이렇게 하면 버튼 텍스트와 수가 항상 동기화됩니다.
 
 
 <DeepDive>
 
-#### Choosing between updaters and reducers {/*choosing-between-updaters-and-reducers*/}
+#### 업데이터와 리듀서 중 선택하기 {/*choosing-between-updaters-and-reducers*/}
 
-`useOptimistic` supports two patterns for calculating state based on current state:
+`useOptimistic`은 현재 state를 기반으로 state를 계산하는 두 가지 패턴을 지원합니다.
 
-**Updater functions** work like [useState updaters](/reference/react/useState#updating-state-based-on-the-previous-state). Pass a function to the setter:
+**업데이터 함수**는 [`useState` 업데이터](/reference/react/useState#updating-state-based-on-the-previous-state)처럼 동작합니다. setter에 함수를 전달하세요.
 
 ```js
 const [optimistic, setOptimistic] = useOptimistic(value);
 setOptimistic(current => !current);
 ```
 
-**Reducers** separate the update logic from the setter call:
+**리듀서**는 업데이트 로직을 setter 호출과 분리합니다.
 
 ```js
 const [optimistic, dispatch] = useOptimistic(value, (current, action) => {
-  // Calculate next state based on current and action
+  // current와 action을 기반으로 다음 state를 계산합니다.
 });
 dispatch(action);
 ```
 
-**Use updaters** for calculations where the setter call naturally describes the update. This is similar to using `setState(prev => ...)` with `useState`.
+setter 호출이 업데이트 내용을 자연스럽게 설명하는 계산에는 **업데이터를 사용하세요**. 이는 `useState`에서 `setState(prev => ...)`를 사용하는 것과 비슷합니다.
 
-**Use reducers** when you need to pass data to the update (like which item to add) or when handling multiple types of updates with a single hook.
+업데이트에 데이터(예: 추가할 항목)를 전달해야 하거나 하나의 Hook으로 여러 유형의 업데이트를 처리해야 할 때는 **리듀서를 사용하세요**.
 
-**Why use a reducer?**
+**왜 리듀서를 사용하나요?**
 
-Reducers are essential when the base state might change while your Transition is pending. If `todos` changes while your add is pending (for example, another user added a todo), React will re-run your reducer with the new `todos` to recalculate what to show. This ensures your new todo is added to the latest list, not an outdated copy.
+Transition이 대기 중인 동안 기준 state가 변경될 수 있다면 리듀서가 필수적입니다. 추가 작업이 대기 중인 동안 `todos`가 변경되면(예: 다른 사용자가 todo를 추가한 경우), React는 새 `todos`로 리듀서를 다시 실행하여 무엇을 보여줄지 다시 계산합니다. 이렇게 하면 새 todo가 오래된 복사본이 아니라 최신 목록에 추가됩니다.
 
-An updater function like `setOptimistic(prev => [...prev, newItem])` would only see the state from when the Transition started, missing any updates that happened during the async work.
+`setOptimistic(prev => [...prev, newItem])` 같은 업데이터 함수는 Transition이 시작된 시점의 state만 보게 되므로, 비동기 작업 중에 발생한 업데이트를 놓치게 됩니다.
 
 </DeepDive>
 
 ---
 
-### Optimistically adding to a list {/*optimistically-adding-to-a-list*/}
+### 목록에 낙관적으로 추가하기 {/*optimistically-adding-to-a-list*/}
 
-When you need to optimistically add items to a list, use a `reducer`:
+목록에 항목을 낙관적으로 추가해야 할 때는 `reducer`를 사용하세요.
 
 <Sandpack>
 
@@ -410,28 +410,28 @@ export default function TodoList({ todos, addTodoAction }) {
 ```js src/actions.js hidden
 export async function addTodo(todo) {
   await new Promise((res) => setTimeout(res, 1000));
-  // In a real app, this would save to the server
+  // 실제 앱에서는 서버에 저장합니다.
   return { ...todo, pending: false };
 }
 ```
 
 </Sandpack>
 
-The `reducer` receives the current list of todos and the new todo to add. This is important because if the `todos` prop changes while your add is pending (for example, another user added a todo), React will update your optimistic state by re-running the reducer with the updated list. This ensures your new todo is added to the latest list, not an outdated copy.
+`reducer`는 현재 todo 목록과 추가할 새 todo를 받습니다. 추가 작업이 대기 중인 동안 `todos` prop이 변경되면(예: 다른 사용자가 todo를 추가한 경우), React는 업데이트된 목록으로 리듀서를 다시 실행하여 낙관적 state를 업데이트하기 때문에 이것이 중요합니다. 이렇게 하면 새 todo가 오래된 복사본이 아니라 최신 목록에 추가됩니다.
 
 <Note>
 
-Each optimistic item includes a `pending: true` flag so you can show loading state for individual items. When the server responds and the parent updates the canonical `todos` list with the saved item, the optimistic state updates to the confirmed item without the pending flag.
+각 낙관적 항목은 `pending: true` 플래그를 포함하므로 개별 항목에 로딩 상태를 표시할 수 있습니다. 서버가 응답하고 부모가 저장된 항목으로 기준 `todos` 목록을 업데이트하면, 낙관적 state는 pending 플래그가 없는 확정된 항목으로 업데이트됩니다.
 
 </Note>
 
 ---
 
-### Handling multiple `action` types {/*handling-multiple-action-types*/}
+### 여러 `action` 유형 처리하기 {/*handling-multiple-action-types*/}
 
-When you need to handle multiple types of optimistic updates (like adding and removing items), use a reducer pattern with `action` objects.
+여러 유형의 낙관적 업데이트(예: 항목 추가 및 제거)를 처리해야 할 때는 `action` 객체를 사용하는 리듀서 패턴을 사용하세요.
 
-This shopping cart example shows how to handle add and remove with a single reducer:
+이 쇼핑 카트 예시는 하나의 리듀서로 추가와 제거를 처리하는 방법을 보여줍니다.
 
 <Sandpack>
 
@@ -595,15 +595,15 @@ export async function updateQuantity(id, quantity) {
 
 </Sandpack>
 
-The reducer handles three `action` types (`add`, `remove`, `update_quantity`) and returns the new optimistic state for each. Each `action` sets a `pending: true` flag so you can show visual feedback while the [Server Function](/reference/rsc/server-functions) runs.
+리듀서는 세 가지 `action` 유형(`add`, `remove`, `update_quantity`)을 처리하고 각각에 대한 새로운 낙관적 state를 반환합니다. 각 `action`은 `pending: true` 플래그를 설정하므로 [서버 함수](/reference/rsc/server-functions)가 실행되는 동안 시각적 피드백을 표시할 수 있습니다.
 
 ---
 
-### Optimistic delete with error recovery {/*optimistic-delete-with-error-recovery*/}
+### 에러 복구를 포함한 낙관적 삭제 {/*optimistic-delete-with-error-recovery*/}
 
-When deleting items optimistically, you should handle the case where the Action fails.
+항목을 낙관적으로 삭제할 때는 Action이 실패하는 경우를 처리해야 합니다.
 
-This example shows how to display an error message when a delete fails, and the UI automatically rolls back to show the item again.
+이 예시는 삭제가 실패했을 때 에러 메시지를 표시하고, UI가 자동으로 롤백되어 항목을 다시 보여주는 방법을 보여줍니다.
 
 <Sandpack>
 
@@ -694,7 +694,7 @@ export default function ItemList({ items, deleteAction }) {
 ```js src/actions.js hidden
 export async function deleteItem(id) {
   await new Promise((res) => setTimeout(res, 1000));
-  // Item 3 always fails to demonstrate error recovery
+  // 에러 복구를 보여주기 위해 항목 3은 항상 실패합니다.
   if (id === 3) {
     throw new Error('Cannot delete. Permission denied.');
   }
@@ -703,15 +703,15 @@ export async function deleteItem(id) {
 
 </Sandpack>
 
-Try deleting 'Deploy to production'. When the delete fails, the item automatically reappears in the list.
+'Deploy to production'을 삭제해 보세요. 삭제가 실패하면 해당 항목이 목록에 자동으로 다시 나타납니다.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
-### I'm getting an error: "An optimistic state update occurred outside a Transition or Action" {/*an-optimistic-state-update-occurred-outside-a-transition-or-action*/}
+### "An optimistic state update occurred outside a Transition or Action" 에러가 발생합니다 {/*an-optimistic-state-update-occurred-outside-a-transition-or-action*/}
 
-You may see this error:
+다음 에러가 표시될 수 있습니다.
 
 <ConsoleBlockMulti>
 
@@ -723,16 +723,16 @@ An optimistic state update occurred outside a Transition or Action. To fix, move
 
 </ConsoleBlockMulti>
 
-The optimistic setter function must be called inside `startTransition`:
+낙관적 setter 함수는 `startTransition` 안에서 호출해야 합니다.
 
 ```js
-// 🚩 Incorrect: outside a Transition
+// 🚩 잘못된 방식: Transition 밖에서 호출
 function handleClick() {
-  setOptimistic(newValue);  // Warning!
+  setOptimistic(newValue);  // 경고!
   // ...
 }
 
-// ✅ Correct: inside a Transition
+// ✅ 올바른 방식: Transition 안에서 호출
 function handleClick() {
   startTransition(async () => {
     setOptimistic(newValue);
@@ -740,18 +740,18 @@ function handleClick() {
   });
 }
 
-// ✅ Also correct: inside an Action prop
+// ✅ 이 방식도 올바릅니다: Action prop 안에서 호출
 function submitAction(formData) {
   setOptimistic(newValue);
   // ...
 }
 ```
 
-When you call the setter outside an Action, the optimistic state will briefly appear and then immediately revert back to the original value. This happens because there's no Transition to "hold" the optimistic state while your Action runs.
+Action 밖에서 setter를 호출하면 낙관적 state가 잠깐 나타났다가 즉시 원래 값으로 되돌아갑니다. Action이 실행되는 동안 낙관적 state를 "유지"할 Transition이 없기 때문에 이런 일이 발생합니다.
 
-### I'm getting an error: "Cannot update optimistic state while rendering" {/*cannot-update-optimistic-state-while-rendering*/}
+### "Cannot update optimistic state while rendering" 에러가 발생합니다 {/*cannot-update-optimistic-state-while-rendering*/}
 
-You may see this error:
+다음 에러가 표시될 수 있습니다.
 
 <ConsoleBlockMulti>
 
@@ -763,20 +763,20 @@ Cannot update optimistic state while rendering.
 
 </ConsoleBlockMulti>
 
-This error occurs when you call the optimistic setter during the render phase of a component. You can only call it from event handlers, effects, or other callbacks:
+이 에러는 컴포넌트의 렌더링 단계에서 낙관적 setter를 호출할 때 발생합니다. 이벤트 핸들러, Effect 또는 다른 콜백에서만 호출할 수 있습니다.
 
 ```js
-// 🚩 Incorrect: calling during render
+// 🚩 잘못된 방식: 렌더링 중 호출
 function MyComponent({ items }) {
   const [isPending, setPending] = useOptimistic(false);
 
-  // This runs during render - not allowed!
+  // 렌더링 중 실행됩니다. 허용되지 않습니다!
   setPending(true);
 
   // ...
 }
 
-// ✅ Correct: calling inside startTransition
+// ✅ 올바른 방식: startTransition 안에서 호출
 function MyComponent({ items }) {
   const [isPending, setPending] = useOptimistic(false);
 
@@ -790,7 +790,7 @@ function MyComponent({ items }) {
   // ...
 }
 
-// ✅ Also correct: calling from an Action
+// ✅ 이 방식도 올바릅니다: Action에서 호출
 function MyComponent({ items }) {
   const [isPending, setPending] = useOptimistic(false);
 
@@ -803,36 +803,36 @@ function MyComponent({ items }) {
 }
 ```
 
-### My optimistic updates show stale values {/*my-optimistic-updates-show-stale-values*/}
+### 낙관적 업데이트에 오래된 값이 표시됩니다 {/*my-optimistic-updates-show-stale-values*/}
 
-If your optimistic state seems to be based on old data, consider using an updater function or reducer to calculate the optimistic state relative to the current state.
+낙관적 state가 오래된 데이터를 기반으로 하는 것처럼 보인다면, 현재 state를 기준으로 낙관적 state를 계산하도록 업데이터 함수나 리듀서 사용을 고려하세요.
 
 ```js
-// May show stale data if state changes during Action
+// Action 중 state가 변경되면 오래된 데이터를 표시할 수 있습니다.
 const [optimistic, setOptimistic] = useOptimistic(count);
-setOptimistic(5);  // Always sets to 5, even if count changed
+setOptimistic(5);  // count가 변경되어도 항상 5로 설정합니다.
 
-// Better: relative updates handle state changes correctly
+// 더 나은 방식: 상대적 업데이트는 state 변경을 올바르게 처리합니다.
 const [optimistic, adjust] = useOptimistic(count, (current, delta) => current + delta);
-adjust(1);  // Always adds 1 to whatever the current count is
+adjust(1);  // 현재 count 값이 무엇이든 항상 1을 더합니다.
 ```
 
-See [Updating state based on the current state](#updating-state-based-on-current-state) for details.
+자세한 내용은 [현재 state를 기반으로 state 업데이트하기](#updating-state-based-on-current-state)를 참고하세요.
 
-### I don't know if my optimistic update is pending {/*i-dont-know-if-my-optimistic-update-is-pending*/}
+### 낙관적 업데이트가 대기 중인지 알 수 없습니다 {/*i-dont-know-if-my-optimistic-update-is-pending*/}
 
-To know when `useOptimistic` is pending, you have three options:
+`useOptimistic`이 대기 중인지 확인하려면 세 가지 옵션이 있습니다.
 
-1. **Check if `optimisticValue === value`**
+1. **`optimisticValue === value`인지 확인하기**
 
 ```js
 const [optimistic, setOptimistic] = useOptimistic(value);
 const isPending = optimistic !== value;
 ```
 
-If the values are not equal, there's a Transition in progress.
+값이 같지 않다면 Transition이 진행 중인 것입니다.
 
-2. **Add a `useTransition`**
+2. **`useTransition` 추가하기**
 
 ```js
 const [isPending, startTransition] = useTransition();
@@ -844,9 +844,9 @@ startTransition(() => {
 })
 ```
 
-Since `useTransition` uses `useOptimistic` for `isPending` under the hood, this is equivalent to option 1.
+`useTransition`은 내부적으로 `isPending`에 `useOptimistic`을 사용하므로, 이는 옵션 1과 동일합니다.
 
-3. **Add a `pending` flag in your reducer**
+3. **리듀서에 `pending` 플래그 추가하기**
 
 ```js
 const [optimistic, addOptimistic] = useOptimistic(
@@ -855,4 +855,4 @@ const [optimistic, addOptimistic] = useOptimistic(
 );
 ```
 
-Since each optimistic item has its own flag, you can show loading state for individual items.
+각 낙관적 항목이 자체 플래그를 가지므로, 개별 항목에 로딩 상태를 표시할 수 있습니다.
