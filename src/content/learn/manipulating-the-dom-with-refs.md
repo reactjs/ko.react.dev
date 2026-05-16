@@ -346,7 +346,7 @@ li {
 
 Strict Mode가 활성화되어 있다면 개발 모드에서 ref 콜백이 두 번 실행됩니다.
 
-ref 콜백에서 [이 방식이 버그를 찾는데 어떻게 도움이 되는지](/reference/react/StrictMode#fixing-bugs-found-by-re-running-ref-callbacks-in-development) 자세히 알아보세요.
+ref 콜백에서 [이 방식이 버그를 찾는 데 어떻게 도움이 되는지](/reference/react/StrictMode#fixing-bugs-found-by-re-running-ref-callbacks-in-development) 자세히 알아보세요.
 
 </Note>
 
@@ -460,7 +460,7 @@ export default function Form() {
 React의 모든 갱신은 [두 단계](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom)로 나눌 수 있습니다.
 
 * **렌더링** 단계에서 React는 화면에 무엇을 그려야 하는지 알아내도록 컴포넌트를 호출합니다.
-* **커밋** 단계에서 React는 변경사항을 DOM에 적용합니다.
+* **커밋** 단계에서 React는 변경 사항을 DOM에 적용합니다.
 
 일반적으로 렌더링하는 중 ref에 접근하는 것을 [원하지 않습니다](/learn/referencing-values-with-refs#best-practices-for-refs). DOM 노드를 보유하는 ref도 마찬가지입니다. 첫 렌더링에서 DOM 노드는 아직 생성되지 않아서 `ref.current`는 `null`인 상태입니다. 그리고 갱신에 의한 렌더링에서 DOM 노드는 아직 업데이트되지 않은 상태입니다. 두 상황 모두 ref를 읽기에 너무 이른 상황입니다.
 
