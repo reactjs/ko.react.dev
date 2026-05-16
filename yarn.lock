@@ -3623,6 +3623,11 @@ entities@^6.0.0:
   resolved "https://registry.yarnpkg.com/entities/-/entities-6.0.1.tgz#c28c34a43379ca7f61d074130b2f5f7020a30694"
   integrity sha512-aN97NXWF6AWBTahfVOIrB/NShkzi5H7F9r1s9mD3cDj4Ko5f2qhhVoYMibXF7GlLveb/D2ioWay8lxI97Ven3g==
 
+entities@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/entities/-/entities-8.0.0.tgz#c1df5fe3602429747fa233d0dd26f142f0ce4743"
+  integrity sha512-zwfzJecQ/Uej6tusMqwAqU/6KL2XaB2VZ2Jg54Je6ahNBGNH6Ek6g3jjNCF0fG9EWQKGZNddNjU5F1ZQn/sBnA==
+
 environment@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/environment/-/environment-1.1.0.tgz#8e86c66b180f363c7ab311787e0259665f45a9f1"
@@ -3934,14 +3939,14 @@ eslint-import-resolver-typescript@^2.4.0:
     resolve "^1.22.0"
     tsconfig-paths "^3.14.1"
 
-eslint-markdown@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/eslint-markdown/-/eslint-markdown-0.5.0.tgz#09f142af02801c87431bc491c093c9d34e6e24ea"
-  integrity sha512-EVY0viuqqPLNxo+/hcSuSsG2OhKlAi+NOzSICLZk1WqgI5OzAwGBELXnN6KoZWNp/ISzzeRtvUayavv9tlSpvg==
+eslint-markdown@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/eslint-markdown/-/eslint-markdown-0.9.0.tgz#d15d622a3312ba3e2d41ae3368a2b99ba60ad84f"
+  integrity sha512-prjW5TYlxljeQEZn4MHjxiQq5VRigKOd1D8XuKQob5oQYZJYrIvrYQUiS5au9Zb+HKeeDzSPDSM19zID3GwGzA==
   dependencies:
     "@eslint/markdown" "^7.5.1"
     micromark-util-normalize-identifier "^2.0.1"
-    parse5 "^8.0.0"
+    parse5 "^8.0.1"
 
 eslint-module-utils@^2.7.2:
   version "2.7.2"
@@ -4049,6 +4054,7 @@ eslint-plugin-jsx-a11y@^6.4.1:
 
 "eslint-plugin-local-rules@link:eslint-local-rules":
   version "0.0.0"
+  uid ""
 
 eslint-plugin-react-compiler@^19.0.0-beta-e552027-20250112:
   version "19.0.0-beta-e552027-20250112"
@@ -7718,12 +7724,12 @@ parse5@^7.3.0:
   dependencies:
     entities "^6.0.0"
 
-parse5@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/parse5/-/parse5-8.0.0.tgz#aceb267f6b15f9b6e6ba9e35bfdd481fc2167b12"
-  integrity sha512-9m4m5GSgXjL4AjumKzq1Fgfp3Z8rsvjRNbnkVwfu2ImRqE5D0LnY2QfDen18FSY9C573YU5XxSapdHZTZ2WolA==
+parse5@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-8.0.1.tgz#f43bcd2cd683efe084075333e9ce0da7d06da31e"
+  integrity sha512-z1e/HMG90obSGeidlli3hj7cbocou0/wa5HacvI3ASx34PecNjNQeaHNo5WIZpWofN9kgkqV1q5YvXe3F0FoPw==
   dependencies:
-    entities "^6.0.0"
+    entities "^8.0.0"
 
 parseurl@~1.3.3:
   version "1.3.3"
