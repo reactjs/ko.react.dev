@@ -24,7 +24,7 @@
     "lint-editorconfig": "yarn editorconfig-checker",
     "textlint-test": "yarn mocha ./textlint/tests/utils && yarn mocha ./textlint/tests/rules",
     "textlint-docs": "node ./textlint/generators/genTranslateGlossaryDocs.js && git add wiki/translate-glossary.md",
-    "textlint-lint": "yarn textlint ./src/content --rulesdir ./textlint/rules -f pretty-error && npx --yes eslint@9 -c eslint.config.mjs",
+    "textlint-lint": "yarn textlint ./src/content --rulesdir ./textlint/rules -f pretty-error && npx --yes eslint@10 -c eslint.config.mjs",
     "deadlinks": "node scripts/deadLinkChecker.js",
     "copyright": "node scripts/copyright.js",
     "test:eslint-local-rules": "yarn --cwd eslint-local-rules test"
@@ -79,7 +79,7 @@
     "eslint-plugin-import": "2.x",
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-local-rules": "link:eslint-local-rules",
-    "eslint-markdown": "^0.5.0",
+    "eslint-markdown": "^0.9.0",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-compiler": "^19.0.0-beta-e552027-20250112",
     "eslint-plugin-react-hooks": "^0.0.0-experimental-fabef7a6b-20221215",
