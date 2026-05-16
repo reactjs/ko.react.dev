@@ -40,7 +40,7 @@ function MyComponent({name, todos}) {
 #### 매개변수 {/*parameters*/}
 
 * `state`: 작업이 대기 중이지 않을 때 초기에 반환될 값입니다.
-* `updateFn(currentState, optimisticValue)`: 현재 State와 `addOptimistic`에 전달된 낙관적인 값을 취하는 함수로, 결과적인 낙관적인 State를 반환합니다. 순수 함수여야 합니다. `updateFn`은 두 개의 매개변수를 취합니다. `currentState`와 `optimisticValue`. 반환 값은 `currentState`와 `optimisticValue`의 병합된 값입니다.
+* `updateFn(currentState, optimisticValue)`: 현재 state와 `addOptimistic`에 전달된 낙관적인 값을 취하는 함수로, 결과적인 낙관적인 state를 반환합니다. 순수 함수여야 합니다. `updateFn`은 두 개의 매개변수를 취합니다. `currentState`와 `optimisticValue`. 반환 값은 `currentState`와 `optimisticValue`의 병합된 값입니다.
 
 #### 반환값 {/*returns*/}
 
