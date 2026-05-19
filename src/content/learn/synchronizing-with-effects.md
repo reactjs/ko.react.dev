@@ -1172,7 +1172,7 @@ import { useEffect, useRef } from 'react';
 export default function MyInput({ shouldFocus, value, onChange }) {
   const ref = useRef(null);
 
-  // TODO: shouldFocus가 true일때만 호출되도록
+  // TODO: shouldFocus가 true일 때만 호출되도록
   useEffect(() => {
     ref.current.focus();
   }, []);

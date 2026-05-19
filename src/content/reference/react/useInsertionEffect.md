@@ -57,7 +57,7 @@ function useCSS(rule) {
 * 이펙트는 클라이언트에서만 실행됩니다. 서버 렌더링 중에는 실행되지 않습니다.
 * `useInsertionEffect` 내부에서는 상태를 업데이트할 수 없습니다.
 * `useInsertionEffect`가 실행되는 시점에 ref는 아직 연결되지 않습니다.
-* `useInsertionEffect` 는 DOM 의 업데이트 전 또는 후에 실행됩니다. DOM 이 업데이트 되는 특정시점에 의존해서는 안됩니다.
+* `useInsertionEffect` 는 DOM 의 업데이트 전 또는 후에 실행됩니다. DOM 이 업데이트 되는 특정시점에 의존해서는 안 됩니다.
 * 매번 모든 cleanup 을 실행하고 setup 하는 다른 Effects 와 달리, `useInsertionEffect` 는 하나의 컴포넌트에 대해 cleanup 과 setup 을 모두 실행합니다. 그 결과 cleanup 과 setup 이 'interleaving' 됩니다.
 
 ---

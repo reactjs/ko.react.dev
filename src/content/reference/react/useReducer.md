@@ -849,7 +849,7 @@ export default function TodoList({ username }) {
 
 #### 초기 state 직접 전달 {/*passing-the-initial-state-directly*/}
 
-이 예시에서는 초기화 함수를 **전달하지 않으므로**, `createInitialState` 함수는 인풋에 입력을 할때 발생하는 리렌더링에서도 매번 호출됩니다. 이 코드는 동작에는 큰 차이가 없을 수 있지만, 효율성이 떨어집니다.
+이 예시에서는 초기화 함수를 **전달하지 않으므로**, `createInitialState` 함수는 인풋에 입력을 할 때 발생하는 리렌더링에서도 매번 호출됩니다. 이 코드는 동작에는 큰 차이가 없을 수 있지만, 효율성이 떨어집니다.
 
 <Sandpack>
 

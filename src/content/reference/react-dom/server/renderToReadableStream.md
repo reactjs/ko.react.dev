@@ -92,7 +92,7 @@ async function handler(request) {
 }
 ```
 
-<CodeStep step={1}>root 컴포넌트</CodeStep>와 함께, <CodeStep step={2}>bootstrap `<script>` 경로</CodeStep> 리스트를 제공해야합니다. 제공된 root 컴포넌트는 **최상위 `<html>` 태그를 포함한 모든 문서를 포함해서** 반환되어야 합니다.
+<CodeStep step={1}>root 컴포넌트</CodeStep>와 함께, <CodeStep step={2}>bootstrap `<script>` 경로</CodeStep> 리스트를 제공해야 합니다. 제공된 root 컴포넌트는 **최상위 `<html>` 태그를 포함한 모든 문서를 포함해서** 반환되어야 합니다.
 
 예를 들어, 다음과 같은 형태가 되어야 합니다.
 
@@ -124,7 +124,7 @@ React는 [doctype](https://developer.mozilla.org/en-US/docs/Glossary/Doctype)과
 <script src="/main.js" async=""></script>
 ```
 
-클라이언트에선, 추가된 bootstrap 스크립트는 [`hydrateRoot`를 호출해 `document` 전체를 hydrate 해야합니다](/reference/react-dom/client/hydrateRoot#hydrating-an-entire-document).
+클라이언트에선, 추가된 bootstrap 스크립트는 [`hydrateRoot`를 호출해 `document` 전체를 hydrate 해야 합니다](/reference/react-dom/client/hydrateRoot#hydrating-an-entire-document).
 
 ```js [[1, 4, "<App />"]]
 import { hydrateRoot } from 'react-dom/client';
@@ -141,7 +141,7 @@ hydrateRoot(document, <App />);
 
 JS와 CSS같은 최종 에셋들에 대한 URL들은 종종 빌드 후에 해시됩니다. 예를 들어, `styles.css` 대신 `styles.123456.css`와 같은 형태로 끝날 수 있습니다. 에셋들의 파일명을 해시하는 것은 모든 빌드의 결과물이 각각 다른 파일명을 가지도록 보장합니다. 이는 정적 에셋들에 대한 장기 캐싱을 안전하게 활성화할 수 있도록 해줍니다. 즉, 특정 이름의 파일 내용은 절대 바뀌지 않는 다는 것을 보장합니다.
 
-하지만, 빌드 후에 에셋들의 URL을 알 수 없다면, 소스 코드에 URL을 넣을 수 없습니다. 예를 들어, JSX에 `"/styles.css"`를 하드코딩하는 것은 작동하지 않습니다. 소스 코드에 URL을 넣지 않으려면, 루트 컴포넌트는 props로 전달된 맵에서 실제 파일명을 읽어야합니다.
+하지만, 빌드 후에 에셋들의 URL을 알 수 없다면, 소스 코드에 URL을 넣을 수 없습니다. 예를 들어, JSX에 `"/styles.css"`를 하드코딩하는 것은 작동하지 않습니다. 소스 코드에 URL을 넣지 않으려면, 루트 컴포넌트는 props로 전달된 맵에서 실제 파일명을 읽어야 합니다.
 
 ```js {1,6}
 export default function App({ assetMap }) {
@@ -160,7 +160,7 @@ export default function App({ assetMap }) {
 서버에선 `<App assetMap={assetMap} />`을 렌더링하고, 에셋 URL들과 함께 `assetMap`을 전달합니다.
 
 ```js {1-5,8,9}
-// 빌드 도구로부터 이 JSON을 얻어야합니다. 예를 들어, 빌드 결과물에서 읽어올 수 있습니다.
+// 빌드 도구로부터 이 JSON을 얻어야 합니다. 예를 들어, 빌드 결과물에서 읽어올 수 있습니다.
 const assetMap = {
   'styles.css': '/styles.123456.css',
   'main.js': '/main.123456.js'
@@ -176,10 +176,10 @@ async function handler(request) {
 }
 ```
 
-서버가 `<App assetMap={assetMap} />`를 렌더링한 이후엔, 클라이언트에서도 hydration 오류를 피하기 위해 `assetMap`과 함께 렌더링해야합니다. `assetMap`을 직렬화하고 클라이언트에 전달하기 위해 다음과 같이 할 수 있습니다.
+서버가 `<App assetMap={assetMap} />`를 렌더링한 이후엔, 클라이언트에서도 hydration 오류를 피하기 위해 `assetMap`과 함께 렌더링해야 합니다. `assetMap`을 직렬화하고 클라이언트에 전달하기 위해 다음과 같이 할 수 있습니다.
 
 ```js {9-10}
-// 빌드 도구로부터 이 JSON을 얻어야합니다.
+// 빌드 도구로부터 이 JSON을 얻어야 합니다.
 const assetMap = {
   'styles.css': '/styles.123456.css',
   'main.js': '/main.123456.js'

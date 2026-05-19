@@ -158,7 +158,7 @@ at Component
 
 `Navigation`과 `legend`는 `<SubComponent />`를 포함하는 노드의 형제 요소이기 때문에 스택에 전혀 포함되지 않습니다.
 
-`SubComponent`는 이미 호출 스택에 포함되어 있기 떄문에 Owner Stack에 나타나지 않습니다.
+`SubComponent`는 이미 호출 스택에 포함되어 있기 때문에 Owner Stack에 나타나지 않습니다.
 
 </DeepDive>
 
