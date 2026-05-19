@@ -49,7 +49,7 @@ Hook은 컴포넌트에 React 기능을 추가할 수 있게 합니다. Hook은 
 
 ### Hook을 동적으로 변경하지 마세요 {/*dont-dynamically-mutate-a-hook*/}
 
-Hook은 가능한 한 "정적"으로 유지되어야 합니다. 이는 Hook을 동적으로 변경해서는 안 된다는 의미입니다. 예를 들어 고차 Hook을 작성하면 안됩니다.
+Hook은 가능한 한 "정적"으로 유지되어야 합니다. 이는 Hook을 동적으로 변경해서는 안 된다는 의미입니다. 예를 들어 고차 Hook을 작성하면 안 됩니다.
 
 ```js {2}
 function ChatInput() {

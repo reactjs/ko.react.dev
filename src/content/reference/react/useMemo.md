@@ -1103,13 +1103,13 @@ function ChatRoom({ roomId }) {
       serverUrl: 'https://localhost:1234',
       roomId: roomId
     };
-  }, [roomId]); // ✅ roomId가 변경될때만 실행됩니다.
+  }, [roomId]); // ✅ roomId가 변경될 때만 실행됩니다.
 
   useEffect(() => {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // ✅ options가 변경될때만 실행됩니다.
+  }, [options]); // ✅ options가 변경될 때만 실행됩니다.
   // ...
 ```
 
@@ -1131,7 +1131,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ roomId가 변경될때에만 실행됩니다.
+  }, [roomId]); // ✅ roomId가 변경될 때에만 실행됩니다.
   // ...
 ```
 

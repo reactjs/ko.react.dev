@@ -212,4 +212,4 @@ export default async function incrementLike() {
 }
 ```
 
-서버 함수의 반환 값을 읽으려면 반환된 Promise를 `await` 해야합니다.
+서버 함수의 반환 값을 읽으려면 반환된 Promise를 `await` 해야 합니다.

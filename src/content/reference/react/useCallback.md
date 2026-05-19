@@ -122,7 +122,7 @@ const ShippingForm = memo(function ShippingForm({ onSubmit }) {
 
 ```js {2,3,8,12-13}
 function ProductPage({ productId, referrer, theme }) {
-  // theme이 바뀔때마다 다른 함수가 될 것입니다...
+  // theme이 바뀔 때마다 다른 함수가 될 것입니다...
   function handleSubmit(orderDetails) {
     post('/product/' + productId + '/buy', {
       referrer,
