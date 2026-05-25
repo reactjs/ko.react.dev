@@ -88,7 +88,7 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-대신 기존에 존재하던 항목들 뒤에 새 항목을 포함하는 *새로운* 배열을 만드세요. 이를 위한 방법은 여러 가지가 있지만 가장 쉬운 방법은 `...` [배열 전개 구문](a-javascript-refresher#array-spread)을 사용하는 것입니다.
+대신 기존에 존재하던 항목들 뒤에 새 항목을 포함하는 *새로운* 배열을 만드세요. 이를 위한 방법은 여러 가지가 있지만 가장 쉬운 방법은 `...` [배열 전개 구문](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Spread_syntax)을 사용하는 것입니다.
 
 ```js
 setArtists( // 아래의 새로운 배열로 state를 변경합니다.
