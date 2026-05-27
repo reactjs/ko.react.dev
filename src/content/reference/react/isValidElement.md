@@ -102,7 +102,7 @@ console.log(isValidElement(MyComponent)); // false
 
 ```js
 function MyComponent() {
-  // ... React 노드를 반환할수 있습니다. ...
+  // ... React 노드를 반환할 수 있습니다. ...
 }
 ```
 

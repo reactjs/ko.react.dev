@@ -117,7 +117,7 @@ function UpdateName({}) {
 
 액션은 데이터 제출을 자동으로 관리합니다.
 
-- **대기 상태**: 액션은 요청 시작 시 대기 상태를 활성화하고 최종 상태가 커밋되었을때 자동으로 초기화합니다.
+- **대기 상태**: 액션은 요청 시작 시 대기 상태를 활성화하고 최종 상태가 커밋되었을 때 자동으로 초기화합니다.
 - **낙관적 업데이트**: 액션은 새로운 [`useOptimistic`](#new-hook-optimistic-updates)훅을 통해 사용자가 요청을 제출하는 동안 즉각적인 피드백을 표시할 수 있습니다.
 - **에러 처리**: 액션은 요청 실패 시 Error Boundary를 보여주고 낙관적 업데이트를 원래 값으로, 자동으로 돌려놓습니다.
 - **폼**: `<form>` 엘리먼트는 `action` 및 `formAction` props에 함수를 전달하는 것을 지원합니다. `action` props에 함수가 전달되면 기본적으로 액션을 사용하며 제출 후 폼을 자동으로 초기화합니다.
@@ -320,7 +320,7 @@ function Heading({children}) {
 }
 ```
 
-`use` API는 Hook과 유사하게 오직 렌더링 중일때만 호출됩니다. 훅과 달리 `use`는 조건적으로 호출됩니다. 앞으로 `use`를 사용하여 렌더링 중일 때 리소스들을 소비하도록 더 많은 방법을 지원할 계획입니다.
+`use` API는 Hook과 유사하게 오직 렌더링 중일 때만 호출됩니다. 훅과 달리 `use`는 조건적으로 호출됩니다. 앞으로 `use`를 사용하여 렌더링 중일 때 리소스들을 소비하도록 더 많은 방법을 지원할 계획입니다.
 
 더 많은 정보는 [`use`](/reference/react/use)문서를 참고하세요.
 
@@ -691,7 +691,7 @@ function MyComponent() {
   preinit('https://.../path/to/some/script.js', {as: 'script' }) // 스크립트 즉시 로드 실행
   preload('https://.../path/to/font.woff', { as: 'font' }) // 폰트 사전로드
   preload('https://.../path/to/stylesheet.css', { as: 'style' }) // 스타일시트 사전로드
-  prefetchDNS('https://...') // 실제로 이 호스트에서 아무것도 요청하지 않을때
+  prefetchDNS('https://...') // 실제로 이 호스트에서 아무것도 요청하지 않을 때
   preconnect('https://...') // 어떤 것을 요청할지 확신하지 못할 때
 }
 ```

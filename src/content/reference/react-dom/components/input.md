@@ -359,7 +359,7 @@ function Form() {
         </button>
 ```
 
-제어되는 컴포넌트에 전달되는 `value`는 `undefined`나 `null`이 되어서는 안됩니다. 아래의 `firstName` 필드처럼 초기값을 비워두어야 하는 경우 State 변수를 빈 문자열(`''`)로 초기화 하세요.
+제어되는 컴포넌트에 전달되는 `value`는 `undefined`나 `null`이 되어서는 안 됩니다. 아래의 `firstName` 필드처럼 초기값을 비워두어야 하는 경우 State 변수를 빈 문자열(`''`)로 초기화 하세요.
 
 <Sandpack>
 

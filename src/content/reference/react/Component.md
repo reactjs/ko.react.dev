@@ -107,7 +107,7 @@ class Greeting extends Component {
 
 ### `state` {/*state*/}
 
-클래스 컴포넌트의 state는 `this.state`로 사용할 수 있습니다. `state` 필드는 반드시 객체여야합니다. state를 직접 변경하지 마세요. state를 변경하려면 새 state로 `setState`를 호출하세요.
+클래스 컴포넌트의 state는 `this.state`로 사용할 수 있습니다. `state` 필드는 반드시 객체여야 합니다. state를 직접 변경하지 마세요. state를 변경하려면 새 state로 `setState`를 호출하세요.
 
 ```js {2-4,7-9,18}
 class Counter extends Component {
@@ -172,7 +172,7 @@ class Counter extends Component {
   }
 ```
 
-constructor는 부수 효과 또는 구독을 포함하면 안됩니다.
+constructor는 부수 효과 또는 구독을 포함하면 안 됩니다.
 
 #### 매개변수 {/*constructor-parameters*/}
 
