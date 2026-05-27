@@ -328,7 +328,7 @@ export default function Timer() {
       </h1>
       <hr />
       <p>
-        Every second, increment by.
+        Every second, increment by:
         <button disabled={increment === 0} onClick={() => {
           setIncrement(i => i - 1);
         }}>–</button>
