@@ -1134,7 +1134,7 @@ function ChatRoom() {
 useEffect(() => {
   // ...
   // 🔴 Avoid suppressing the linter like this:
-  // eslint-ignore-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 ```
 

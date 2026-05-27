@@ -753,7 +753,7 @@ function ChatRoom() {
 useEffect(() => {
   // ...
   // 🔴 이런 식으로 린트를 억누르지 마세요.
-  // eslint-ignore-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 ```
 
