@@ -553,7 +553,7 @@ button { margin-left: 10px; }
 
 ### 컴포넌트 본문에서 선언된 모든 변수는 반응형입니다. {/*all-variables-declared-in-the-component-body-are-reactive*/}
 
-props와 state만 반응형 값인 것은 아닙니다. 이들로부터 계산하는 값도 반응형입니다. props나 state가 변경되면 컴포넌트가 다시 렌더링되고 그로부터 계산된 값도 변경됩니다. 이 때문에 effect에서 사용하는 컴포넌트 본문의 모든 변수는 effect 의존성 목록에 있어야 합니다.
+props와 state만 반응형 값인 것은 아닙니다. 이들로부터 계산하는 값도 반응형입니다. props나 state가 변경되면 컴포넌트가 다시 렌더링되고 그로부터 계산된 값도 변경됩니다. 이 때문에 effect에서 사용하는 컴포넌트 본문의 모든 변수는 effect의 의존성 목록에 있어야 합니다.
 
 사용자가 드롭다운에서 채팅 서버를 선택할 수 있지만 설정에서 기본 서버를 구성할 수도 있다고 가정해 봅시다. 이미 settings state를 [context](/learn/scaling-up-with-reducer-and-context)에 넣어서 해당 context에서 `settings`를 읽었다고 가정해 보겠습니다. 이제 props에서 선택한 서버와 기본 서버를 기준으로 `serverUrl`을 계산합니다.
 
