@@ -1114,7 +1114,7 @@ body {
 
 </Sandpack>
 
-이 두 경우 모두 `canMove`는 effect 내부에서 읽는 반응형 변수입니다. 그렇기 때문에 effect 의존성 목록에 지정해야 합니다. 이렇게 하면 값이 변경될 때마다 effect가 다시 동기화됩니다.
+이 두 경우 모두 `canMove`는 effect 내부에서 읽는 반응형 변수입니다. 그렇기 때문에 effect의 의존성 목록에 지정해야 합니다. 이렇게 하면 값이 변경될 때마다 effect가 다시 동기화됩니다.
 
 </Solution>
 
