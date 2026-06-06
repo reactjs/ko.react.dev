@@ -222,7 +222,7 @@ constructor는 부수 효과 또는 구독을 포함하면 안 됩니다.
 
 #### 주의 사항 {/*componentdidcatch-caveats*/}
 
-* 과거에는 UI를 업데이트하고 대체 에러 메세지를 표시하기 위해 `setState`를 `componentDidCatch` 안에서 호출하는 것이 일반적이었습니다. 이는 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)를 정의하기 위해 더 이상 사용되지 않습니다.
+* 과거에는 UI를 업데이트하고 대체 에러 메시지를 표시하기 위해 `setState`를 `componentDidCatch` 안에서 호출하는 것이 일반적이었습니다. 이는 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)를 정의하기 위해 더 이상 사용되지 않습니다.
 
 * React의 프로덕션과 개발 빌드는 `componentDidCatch`가 에러를 처리하는 방식이 약간 다릅니다. 개발에서는, 에러는 `window`까지 버블링될 것이며, 이는 `window.onerror` 또는 `window.addEventListener('error', callback)`가 `componentDidCatch`에 의해 탐지된 에러를 가로챈다는 것을 의미합니다. 대신 프로덕션에서, 에러는 버블링되지 않을 것이며, 이는 어떤 상위의 에러 핸들러가 `componentDidCatch`에 의해 명시적으로 탐지되지 않은 에러만을 수신하는 것을 의미합니다.
 

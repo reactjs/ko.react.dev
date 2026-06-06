@@ -1154,7 +1154,7 @@ useEffect(() => {
 }, [a, b]); // a나 b가 다르면 다시 실행됨
 ```
 
-아래 예시에서는 `serverUrl`와 `roomId`은 [반응형 값](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)이므로 둘 다 의존성으로 지정해야 합니다. 결과적으로 드롭다운에서 다른 방을 선택하거나 서버 URL 입력을 편집하면 채팅이 다시 연결됩니다. 그러나 `message`는 Effect에서 사용되지 않으므로(의존성이 아니므로), 메세지를 편집해도 대화가 다시 연결되지 않습니다.
+아래 예시에서는 `serverUrl`와 `roomId`은 [반응형 값](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)이므로 둘 다 의존성으로 지정해야 합니다. 결과적으로 드롭다운에서 다른 방을 선택하거나 서버 URL 입력을 편집하면 채팅이 다시 연결됩니다. 그러나 `message`는 Effect에서 사용되지 않으므로(의존성이 아니므로), 메시지를 편집해도 대화가 다시 연결되지 않습니다.
 
 <Sandpack>
 
