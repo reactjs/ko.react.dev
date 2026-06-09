@@ -512,9 +512,9 @@ function Video() {
 
 <DeepDive>
 
-#### `useRef`를 초기화할 때 null 검사를 피하는 방법 {/*how-to-avoid-null-checks-when-initializing-use-ref-later*/}
+#### `useRef`를 초기화할 때 `null` 검사를 피하는 방법 {/*how-to-avoid-null-checks-when-initializing-use-ref-later*/}
 
-타입 검사기를 사용하면서 항상 `null`을 검사하고 싶지 않다면 다음과 같은 패턴을 대신 사용해 볼 수 있습니다:
+타입 검사기를 사용하면서 항상 `null`을 검사하고 싶지 않다면 다음과 같은 패턴을 대신 사용해 볼 수 있습니다.
 
 ```js
 function Video() {
@@ -542,7 +542,7 @@ function Video() {
 
 ### 커스텀 컴포넌트에 대한 ref를 얻을 수 없습니다 {/*i-cant-get-a-ref-to-a-custom-component*/}
 
-컴포넌트에 `ref`를 전달하고자 다음과 같이 하면:
+컴포넌트에 `ref`를 전달하고자 다음과 같이 하면
 
 ```js
 const inputRef = useRef(null);
@@ -550,7 +550,7 @@ const inputRef = useRef(null);
 return <MyInput ref={inputRef} />;
 ```
 
-다음과 같은 오류가 발생할 것입니다:
+다음과 같은 오류가 발생할 것입니다.
 
 <ConsoleBlock level="error">
 
@@ -560,7 +560,7 @@ TypeError: Cannot read properties of null
 
 기본적으로 컴포넌트는 내부의 DOM 노드에 대한 ref를 외부로 노출하지 않습니다.
 
-이 문제를 해결하려면 ref를 가져오고자 하는 컴포넌트를 찾으세요:
+이 문제를 해결하려면 ref를 가져오고자 하는 컴포넌트를 찾으세요.
 
 ```js
 export default function MyInput({ value, onChange }) {

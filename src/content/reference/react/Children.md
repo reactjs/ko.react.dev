@@ -847,7 +847,7 @@ export default function TabSwitcher({ tabIds, getHeader, renderContent }) {
 
 `renderContent`와 같이 사용자 인터페이스의 일부를 어떻게 렌더링할지 정의하는 Prop를 *렌더링 Prop*라고 합니다. 하지만 특별한 것은 아닙니다. 단지 일반적인 함수의 Prop일 뿐입니다.
 
-렌더링 Prop은은 함수이므로 정보를 전달할 수 있습니다.
+렌더링 Prop은 함수이므로 정보를 전달할 수 있습니다.
 아래 예시에서 `RowList` 컴포넌트는 각 row의 `id`와 `index`를 `renderRow`에 렌더링 Prop로 전달하고, `index`가 짝수인 row를 강조합니다.
 
 <Sandpack>

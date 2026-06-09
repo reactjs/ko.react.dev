@@ -156,7 +156,7 @@ root.render(<App />);
 <html>
   <head><title>My app</title></head>
   <body>
-    <!-- 이것은은 DOM 노드입니다. -->
+    <!-- 이것은 DOM 노드입니다. -->
     <div id="root"></div>
   </body>
 </html>
