@@ -1064,7 +1064,7 @@ function reducer(state, action) {
 
 ### "Too many re-renders" 오류가 발생합니다. {/*im-getting-an-error-too-many-re-renders*/}
 
-`Too many re-renders. React limits the number of renders to prevent an infinite loop.`라는 에러 메세지를 받을 수 있습니다. 일반적으로는 렌더링 과정에서 dispatch가 실행될 때 이러한 일이 일어납니다. 렌더링은 dispatch를 야기하고, dispatch는 렌더링을 야기하므로 렌더링 무한 루프가 일어납니다. 이러한 상황은 이벤트 핸들러를 잘못 호출할 때 종종 발생합니다.
+`Too many re-renders. React limits the number of renders to prevent an infinite loop.`라는 에러 메시지를 받을 수 있습니다. 일반적으로는 렌더링 과정에서 dispatch가 실행될 때 이러한 일이 일어납니다. 렌더링은 dispatch를 야기하고, dispatch는 렌더링을 야기하므로 렌더링 무한 루프가 일어납니다. 이러한 상황은 이벤트 핸들러를 잘못 호출할 때 종종 발생합니다.
 
 ```js {1-2}
 // 🚩 Wrong: calls the handler during render

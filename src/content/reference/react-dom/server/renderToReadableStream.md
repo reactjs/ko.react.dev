@@ -47,7 +47,7 @@ async function handler(request) {
 
 #### 매개변수 {/*parameters*/}
 
-* `reactNode`: 사용자가 HTML로 렌더링하고 하고자하는 React node입니다. `<App />`같은 JSX 요소가 그 예시입니다. reactNode 인자는 문서 전체를 표현할 수 있는 것이어야하며, 따라서 `App` 컴포넌트는 `<html>`에 렌더링됩니다.
+* `reactNode`: 사용자가 HTML로 렌더링하고자 하는 React node입니다. `<App />`같은 JSX 요소가 그 예시입니다. reactNode 인자는 문서 전체를 표현할 수 있는 것이어야하며, 따라서 `App` 컴포넌트는 `<html>`에 렌더링됩니다.
 
 * `options`**(선택사항)**: 스트리밍 옵션을 지정할 수 있는 객체입니다.
   * `bootstrapScriptContent`**(선택사항)**: 지정될 경우, 해당 문자열은 `<script>` 태그에 인라인 형식으로 추가됩니다.
