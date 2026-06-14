@@ -229,7 +229,7 @@ import { startTransition } from "react";
 
 export default function Item({action}) {
   function handleChange(event) {
-    // To expose an action prop, await the callback in startTransition.
+    // action prop을 노출하려면 startTransition 내부 콜백에서 await 하세요.
     startTransition(async () => {
       await action(event.target.value);
     })
@@ -598,8 +598,8 @@ export default function TabButton({ action, children, isActive }) {
   return (
     <button onClick={() => {
       startTransition(async () => {
-        // await the action that's passed in.
-        // This allows it to be either sync or async.
+        // 전달받은 action을 await 합니다.
+        // 이렇게 하면 동기든 비동기든 모두 처리할 수 있습니다.
         await action();
       });
     }}>
@@ -665,8 +665,8 @@ export default function TabButton({ action, children, isActive }) {
   return (
     <button onClick={async () => {
       startTransition(async () => {
-        // await the action that's passed in.
-        // This allows it to be either sync or async.
+        // 전달받은 action을 await 합니다.
+        // 이렇게 하면 동기든 비동기든 모두 처리할 수 있습니다.
         await action();
       });
     }}>
@@ -1578,7 +1578,7 @@ export function AddCommentContainer() {
 }
 
 function addComment(comment) {
-  // For demonstration purposes to show Error Boundary
+  // Error Boundary를 보여주기 위한 예시입니다.
   if (comment == null) {
     throw new Error("Example Error: An error thrown to trigger error boundary");
   }
@@ -1592,8 +1592,8 @@ function AddCommentButton() {
       disabled={pending}
       onClick={() => {
         startTransition(() => {
-          // Intentionally not passing a comment
-          // so error gets thrown
+          // 의도적으로 comment를 전달하지 않아
+          // 에러가 발생하도록 합니다.
           addComment();
         });
       }}
@@ -1973,15 +1973,15 @@ import Item from "./Item";
 import Total from "./Total";
 
 export default function App({}) {
-  // Store the actual quantity in separate state to show the mismatch.
+  // 불일치를 보여주기 위해 실제 수량을 별도의 state에 저장합니다.
   const [clientQuantity, setClientQuantity] = useState(1);
   const [quantity, updateQuantityAction, isPending] = useActionState(
     async (prevState, payload) => {
       setClientQuantity(payload);
       const savedQuantity = await updateQuantity(payload);
-      return savedQuantity; // Return the new quantity to update the state
+      return savedQuantity; // state를 업데이트하기 위해 새로운 수량을 반환합니다.
     },
-    1 // Initial quantity
+    1 // 초기 수량
   );
 
   return (
@@ -2001,7 +2001,7 @@ import {startTransition} from 'react';
 
 export default function Item({action}) {
   function handleChange(e) {
-    // Update the quantity in an Action.
+    // 수량을 업데이트하는 Action입니다.
     startTransition(() => {
       action(e.target.value);
     });
@@ -2057,7 +2057,7 @@ export async function updateQuantity(newName) {
       setTimeout(() => {
         firstRequest = true;
         resolve(newName);
-        // Simulate every other request being slower
+        // 매번 다른 요청이 더 느리게 반환되도록 시뮬레이션합니다.
       }, 1000);
     } else {
       setTimeout(() => {
