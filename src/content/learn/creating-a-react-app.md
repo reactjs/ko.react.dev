@@ -80,7 +80,7 @@ async function Talks({ confId }) {
   // 1. 서버에서라면 데이터 레이어와 대화할 수 있습니다. API 엔드포인트는 필요하지 않습니다.
   const talks = await db.Talks.findAll({ confId });
 
-  // 2. 렌더링 로직이 추가되더라고도 자바스크립트 번들 크기를 크게 만들지 않습니다.
+  // 2. 렌더링 로직이 추가되더라도 자바스크립트 번들 크기를 크게 만들지 않습니다.
   const videos = talks.map(talk => talk.video);
 
   // 3. 브라우저에서 실행될 컴포넌트에 데이터를 전달합니다.
@@ -88,7 +88,7 @@ async function Talks({ confId }) {
 }
 ```
 
-Next.js의 App Router는 [Suspense와 데이터 조회](/blog/2022/03/29/react-v18#suspense-in-data-frameworks)를 통합합니다. React tree에서 서로다른 사용자 인터페이스를 직접적으로 로딩 상태(예: 스켈레톤 플레이스홀더)로 지정할 수 있게 해줍니다.
+Next.js의 App Router는 [Suspense와 데이터 조회](/blog/2022/03/29/react-v18#suspense-in-data-frameworks)를 통합합니다. React tree에서 서로 다른 사용자 인터페이스를 직접적으로 로딩 상태(예: 스켈레톤 플레이스홀더)로 지정할 수 있게 해줍니다.
 
 ```js
 <Suspense fallback={<TalksLoading />}>
