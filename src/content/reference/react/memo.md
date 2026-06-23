@@ -361,16 +361,16 @@ function arePropsEqual(oldProps, newProps) {
 
 ---
 
-### Do I still need React.memo if I use React Compiler? {/*react-compiler-memo*/}
+### React 컴파일러를 사용한다면 React.memo가 여전히 필요한가요? {/*react-compiler-memo*/}
 
-When you enable [React Compiler](/learn/react-compiler), you typically don't need `React.memo` anymore. The compiler automatically optimizes component re-rendering for you.
+[React 컴파일러](/learn/react-compiler)를 활성화하면 일반적으로 `React.memo`가 더 이상 필요하지 않습니다. 컴파일러가 컴포넌트 리렌더링을 자동으로 최적화해 주기 때문입니다.
 
-Here's how it works:
+작동 방식은 다음과 같습니다.
 
-**Without React Compiler**, you need `React.memo` to prevent unnecessary re-renders:
+**React 컴파일러를 활성화하지 않으면** 불필요한 리렌더링을 막기 위해 `React.memo`가 필요합니다.
 
 ```js
-// Parent re-renders every second
+// 부모가 매초 리렌더링됩니다
 function Parent() {
   const [seconds, setSeconds] = useState(0);
 
@@ -389,30 +389,30 @@ function Parent() {
   );
 }
 
-// Without memo, this re-renders every second even though props don't change
+// memo가 없으면 Props가 변경되지 않아도 매초 리렌더링됩니다
 const ExpensiveChild = memo(function ExpensiveChild({ name }) {
   console.log('ExpensiveChild rendered');
   return <div>Hello, {name}!</div>;
 });
 ```
 
-**With React Compiler enabled**, the same optimization happens automatically:
+**React 컴파일러를 활성화하면** 동일한 최적화가 자동으로 이루어집니다.
 
 ```js
-// No memo needed - compiler prevents re-renders automatically
+// memo가 필요 없습니다. 컴파일러가 리렌더링을 자동으로 막아 줍니다
 function ExpensiveChild({ name }) {
   console.log('ExpensiveChild rendered');
   return <div>Hello, {name}!</div>;
 }
 ```
 
-Here's the key part of what the React Compiler generates:
+React 컴파일러가 생성하는 코드의 핵심 부분은 다음과 같습니다.
 
 ```js {6-12}
 function Parent() {
   const $ = _c(7);
   const [seconds, setSeconds] = useState(0);
-  // ... other code ...
+  // ... 그 외 코드 ...
 
   let t3;
   if ($[4] === Symbol.for("react.memo_cache_sentinel")) {
@@ -421,22 +421,22 @@ function Parent() {
   } else {
     t3 = $[4];
   }
-  // ... return statement ...
+  // ... return 문 ...
 }
 ```
 
-Notice the highlighted lines: The compiler wraps `<ExpensiveChild name="John" />` in a cache check. Since the `name` prop is always `"John"`, this JSX is created once and reused on every parent re-render. This is exactly what `React.memo` does - it prevents the child from re-rendering when its props haven't changed.
+강조된 줄을 살펴보세요. 컴파일러는 `<ExpensiveChild name="John" />`를 캐시 검사로 감쌉니다. `name` Prop이 항상 `"John"`이므로, 이 JSX는 한 번만 생성되고 부모가 리렌더링될 때마다 재사용됩니다. 이는 정확히 `React.memo`가 하는 일과 같습니다. 즉, 자식의 Props가 변경되지 않았을 때 자식이 리렌더링되지 않도록 막아 줍니다.
 
-The React Compiler automatically:
-1. Tracks that the `name` prop passed to `ExpensiveChild` hasn't changed
-2. Reuses the previously created JSX for `<ExpensiveChild name="John" />`
-3. Skips re-rendering `ExpensiveChild` entirely
+React 컴파일러는 자동으로 다음을 수행합니다.
+1. `ExpensiveChild`에 전달된 `name` Prop이 변경되지 않았음을 추적합니다.
+2. 이전에 생성한 `<ExpensiveChild name="John" />` JSX를 재사용합니다.
+3. `ExpensiveChild`의 리렌더링을 완전히 건너뜁니다.
 
-This means **you can safely remove `React.memo` from your components when using React Compiler**. The compiler provides the same optimization automatically, making your code cleaner and easier to maintain.
+즉, **React 컴파일러를 사용할 때는 컴포넌트에서 `React.memo`를 안전하게 제거할 수 있습니다.** 컴파일러가 동일한 최적화를 자동으로 제공하므로 코드가 더 깔끔해지고 유지보수하기 쉬워집니다.
 
 <Note>
 
-The compiler's optimization is actually more comprehensive than `React.memo`. It also memoizes intermediate values and expensive computations within your components, similar to combining `React.memo` with `useMemo` throughout your component tree.
+컴파일러의 최적화는 사실 `React.memo`보다 더 포괄적입니다. 컴포넌트 내부의 중간값과 비용이 많이 드는 계산까지 메모이제이션하는데, 이는 컴포넌트 트리 전반에 걸쳐 `React.memo`와 `useMemo`를 함께 사용하는 것과 비슷합니다.
 
 </Note>
 
