@@ -64,9 +64,32 @@ module.exports = {
 
 ### Vite {/*vite*/}
 
-Vite를 사용하는 경우 `vite-plugin-react`에 플러그인을 추가할 수 있습니다.
+버전 6.0.0 이상의 `@vitejs/plugin-react`와 함께 Vite를 사용하는 경우 `reactCompilerPreset`을 사용할 수 있습니다.
 
-```js {3,9}
+<TerminalBlock>
+npm install -D @rolldown/plugin-babel
+</TerminalBlock>
+
+```js {3-4,9-11}
+// vite.config.js
+import { defineConfig } from 'vite';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
+
+export default defineConfig({
+  plugins: [
+    react(),
+    babel({
+      presets: [reactCompilerPreset()]
+    }),
+  ],
+});
+```
+
+<Note>
+`@vitejs/plugin-react@6.0.0`에서 인라인 Babel 옵션이 제거되었습니다. 이전 버전을 사용하는 경우 다음과 같이 사용할 수 있습니다.
+
+```js
 // vite.config.js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -81,26 +104,21 @@ export default defineConfig({
   ],
 });
 ```
+</Note>
 
-또는 Vite용 별도의 Babel 플러그인을 선호하는 경우
+또는 `@rolldown/plugin-babel`을 사용하여 Babel 플러그인을 직접 사용할 수도 있습니다.
 
-<TerminalBlock>
-npm install -D vite-plugin-babel
-</TerminalBlock>
-
-```js {2,11}
+```js {3,9}
 // vite.config.js
-import babel from 'vite-plugin-babel';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
 
 export default defineConfig({
   plugins: [
     react(),
     babel({
-      babelConfig: {
-        plugins: ['babel-plugin-react-compiler'],
-      },
+      plugins: ['babel-plugin-react-compiler'],
     }),
   ],
 });
