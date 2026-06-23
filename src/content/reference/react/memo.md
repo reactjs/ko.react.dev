@@ -442,7 +442,7 @@ React 컴파일러는 자동으로 다음을 수행합니다.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
-### My component re-renders when a prop is an object, array, or function {/*my-component-rerenders-when-a-prop-is-an-object-or-array*/}
+## 문제 해결 {/*troubleshooting*/}
+### Prop이 객체, 배열 또는 함수일 때 컴포넌트가 리렌더링됩니다 {/*my-component-rerenders-when-a-prop-is-an-object-or-array*/}
 
 React는 얕은 비교를 기준으로 이전 Props와 새로운 Props를 비교합니다. 즉, 각각의 새로운 Prop가 이전 Prop와 참조가 동일한지 여부를 고려합니다. 부모가 리렌더링 될 때마다 새로운 객체나 배열을 생성하면, 개별 요소들이 모두 동일하더라도 React는 여전히 변경된 것으로 간주합니다. 마찬가지로 부모 컴포넌트를 렌더링할 때 새로운 함수를 만들면 React는 함수의 정의가 동일하더라도 변경된 것으로 간주합니다. 이를 방지하려면 [부모 컴포넌트에서 Props를 단순화하거나 메모화 하세요.](#minimizing-props-changes)
