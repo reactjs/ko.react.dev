@@ -49,15 +49,14 @@ function MyComponent({name, todos}) {
 
 ---
 
-## 사용법 {/*usage*/}
+### `set` functions, like `setOptimistic(optimisticState)` {/*setoptimistic*/}
 
-### 폼을 낙관적으로 업데이트하기 {/*optimistically-updating-with-forms*/}
+The `set` function returned by `useOptimistic` lets you update the state for the duration of an [Action](reference/react/useTransition#functions-called-in-starttransition-are-called-actions). You can pass the next state directly, or a function that calculates it from the previous state:
 
-`useOptimistic` Hook은 네트워크 요청과 같은 백그라운드 작업이 완료되기 전에 사용자 인터페이스를 낙관적으로 업데이트하는 방법을 제공합니다. 폼의 맥락에서, 이 기술은 앱이 더 반응적으로 느껴지도록 도와줍니다. 사용자가 폼을 제출할 때, 서버의 응답을 기다리는 대신 인터페이스는 기대하는 결과로 즉시 업데이트됩니다.
+```js
+const [optimisticLike, setOptimisticLike] = useOptimistic(false);
+const [optimisticSubs, setOptimisticSubs] = useOptimistic(subs);
 
-<<<<<<< HEAD
-예를 들어, 사용자가 폼에 메시지를 입력하고 "전송" 버튼을 누르면, `useOptimistic` Hook은 메시지가 실제로 서버로 전송되기 전에 "전송 중..." 라벨이 있는 목록에 메시지가 즉시 나타나도록 합니다. 이 "낙관적" 접근법은 속도와 반응성의 느낌을 줍니다. 그런 다음 폼은 백그라운드에서 메시지를 실제로 전송하려고 시도합니다. 서버가 메시지를 받았음을 확인하면, "전송 중..." 라벨이 제거됩니다.
-=======
 function handleClick() {
   startTransition(async () => {
     setOptimisticLike(true);
@@ -143,7 +142,7 @@ If the Action throws an error, the Transition still ends, and React renders with
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
 ### Adding optimistic state to a component {/*adding-optimistic-state-to-a-component*/}
 
@@ -284,7 +283,6 @@ See [Exposing `action` prop from components](/reference/react/useTransition#expo
 When creating an [Action prop](/reference/react/useTransition#exposing-action-props-from-components), you can add `useOptimistic` to show immediate feedback.
 
 Here's a button that shows "Submitting..." while the `action` is pending:
->>>>>>> 8bb31acb86bf68fa33d97dd0f1b834dfa71e2b1a
 
 <Sandpack>
 
