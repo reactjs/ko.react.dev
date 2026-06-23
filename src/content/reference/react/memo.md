@@ -117,7 +117,7 @@ label {
 
 #### 모든 곳에 `memo`를 추가해야할까요? {/*should-you-add-memo-everywhere*/}
 
-If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful.
+이 사이트처럼 앱에서 대부분의 상호작용이 (페이지나 섹션 전체를 교체하는 것처럼) 큰 단위로 이루어진다면, 메모이제이션은 대개 필요하지 않습니다. 반면에 그림 편집기처럼 대부분의 상호작용이 (도형을 움직이는 것처럼) 세밀한 단위로 이루어진다면, 메모이제이션이 매우 유용할 수 있습니다.
 
 `memo`로 최적화하는 것은 컴포넌트가 정확히 동일한 Props로 자주 리렌더링 되고, 리렌더링 로직이 비용이 많이 드는 경우에만 유용합니다. 컴포넌트가 리렌더링 될 때 인지할 수 있을 만큼의 지연이 없다면 `memo`가 필요하지 않습니다. `memo`는 객체 또는 렌더링 중에 정의된 일반 함수처럼 *항상 다른* Props가 컴포넌트에 전달되는 경우에 완전히 무용지물입니다. 따라서 `memo`와 함께 [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components)와 [`useCallback`](/reference/react/useCallback#skipping-re-rendering-of-components)이 종종 필요합니다.
 
