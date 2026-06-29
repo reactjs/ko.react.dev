@@ -1009,7 +1009,11 @@ state를 파생하면 코드가 장황해지고 컴포넌트에 대해 생각하
 
 #### 주의 사항 {/*static-getderivedstatefromprops-caveats*/}
 
+<<<<<<< HEAD
 - 이 메서드는 원인에 관계없이 *모든* 렌더링에서 호출됩니다. 이는 부모가 다시 렌더링을 일으킬 때만 발동하고 로컬 `setState`의 결과가 아닐 때만 발동하는 [`UNSAFE_componentWillReceiveProps`](#unsafe_cmoponentwillreceiveprops)와는 다릅니다.
+=======
+- This method is fired on *every* render, regardless of the cause. This is different from [`UNSAFE_componentWillReceiveProps`](#unsafe_componentwillreceiveprops), which only fires when the parent causes a re-render and not as a result of a local `setState`.
+>>>>>>> 152a471aa9ac2f6f0f3e64c04f39da790d40cf61
 
 - 이 메서드에는 컴포넌트 인스턴스에 대한 액세스 권한이 없습니다. 원하는 경우 클래스 정의 외부 컴포넌트 props 및 state의 순수 함수를 추출하여 `static getDerivedStateFromProps`와 다른 클래스 메서드 사이에 일부 코드를 재사용할 수 있습니다.
 
