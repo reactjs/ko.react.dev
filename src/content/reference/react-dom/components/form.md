@@ -48,9 +48,53 @@ title: "<form>"
 
 ## 사용법 {/*usage*/}
 
+<<<<<<< HEAD
 ### 클라이언트에서 폼 제출 처리하기 {/*handle-form-submission-on-the-client*/}
 
 폼이 제출될 때 함수를 실행하기 위해, 폼의 `action` 프로퍼티에 함수를 전달하세요. [`formData`](https://developer.mozilla.org/ko/docs/Web/API/FormData)가 함수에 인수로 전달되어, 폼에서 전달된 데이터에 접근할 수 있습니다. 이 점이 URL만 받던 기존 [HTML action](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form)과의 차이점입니다. After the `action` function succeeds, all uncontrolled field elements in the form are reset.
+=======
+### Handle form submission with an event handler {/*handle-form-submission-with-an-event-handler*/}
+
+Pass a function to the `onSubmit` event handler to run code when the form is submitted. By default, the browser sends the form data to the current URL and refreshes the page, so call [`e.preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) to override that behavior.
+
+This example reads the submitted values with [`new FormData(e.target)`](https://developer.mozilla.org/en-US/docs/Web/API/FormData), which collects every field by its `name`. This keeps the inputs [uncontrolled](/reference/react-dom/components/input#reading-the-input-values-when-submitting-a-form). If you instead [control an input with state](/reference/react-dom/components/input#controlling-an-input-with-a-state-variable), read from that state on submit rather than from `FormData`.
+
+<Sandpack>
+
+```js src/App.js
+export default function Search() {
+  function handleSubmit(e) {
+    // Prevent the browser from reloading the page
+    e.preventDefault();
+
+    // Read the form data
+    const form = e.target;
+    const formData = new FormData(form);
+    const query = formData.get("query");
+    alert(`You searched for '${query}'`);
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input name="query" />
+      <button type="submit">Search</button>
+    </form>
+  );
+}
+```
+
+</Sandpack>
+
+<Note>
+
+Reading form data with `onSubmit` works in every version of React and gives you direct access to the [submit event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event), so you can call `e.preventDefault()` and read the data yourself. Passing the function to the `action` prop instead runs the submission in a [Transition](/reference/react/useTransition). React then tracks the pending state, sends thrown errors to the nearest error boundary, and lets the form work with [`useActionState`](/reference/react/useActionState) and [`useOptimistic`](/reference/react/useOptimistic). An `action` can also be a [Server Function](/reference/rsc/server-functions), which `onSubmit` does not support.
+
+</Note>
+
+### Handle form submission with an action prop {/*handle-form-submission-with-an-action-prop*/}
+
+Pass a function to the `action` prop of form to run the function when the form is submitted. [`formData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) will be passed to the function as an argument so you can access the data submitted by the form. This differs from the conventional [HTML action](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action), which only accepts URLs. Unlike `onSubmit`, an `action` runs in a [Transition](/reference/react/useTransition) and calling `e.preventDefault()` isn't needed. After the `action` function succeeds, all uncontrolled field elements in the form are reset.
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
 
 <Sandpack>
 
