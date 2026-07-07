@@ -7,7 +7,7 @@ title: resumeAndPrerender
 `resumeAndPrerender`는 사전 렌더링된 React 트리를 [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)을 사용해 정적 HTML 문자열로 이어서 렌더링합니다.
 
 ```js
-const {prelude, postponed} = await resumeAndPrerender(reactNode, postponedState, options?)
+const { prelude, postpone } = await resumeAndPrerender(reactNode, postponedState, options?)
 ```
 
 </Intro>
