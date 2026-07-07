@@ -7,7 +7,7 @@ title: resumeAndPrerender
 `resumeAndPrerender`는 사전 렌더링된 React 트리를 [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)을 사용해 정적 HTML 문자열로 이어서 렌더링합니다.
 
 ```js
-const { prelude, postpone } = await resumeAndPrerender(reactNode, postponedState, options?)
+const { prelude,postpone } = await resumeAndPrerender(reactNode, postponedState, options?)
 ```
 
 </Intro>
@@ -57,10 +57,10 @@ async function handler(request, response) {
 
 #### 반환값 {/*returns*/}
 
-`resumeAndPrerender`는 Promise를 반환합니다.
+`prerender`는 Promise를 반환합니다.
 - 렌더링에 성공하면 Promise는 다음을 포함한 객체로 resolve됩니다.
   - `prelude`: HTML을 담은 [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)입니다. 이 스트림을 사용해 응답을 청크 단위로 전송하거나, 전체 스트림을 문자열로 읽을 수 있습니다.
-  - `postponed`: JSON으로 직렬화 가능한 불투명 객체입니다. `resumeAndPrerender`가 중단된 경우 [`resume`](/reference/react-dom/server/resume) 또는 [`resumeAndPrerender`](/reference/react-dom/static/resumeAndPrerender)에 전달할 수 있습니다.
+  - `postponed`: JSON으로 직렬화 가능한 불투명 객체입니다. `prerender`가 중단된 경우 [`resume`](/reference/react-dom/server/resume) 또는 [`resumeAndPrerender`](/reference/react-dom/static/resumeAndPrerender)에 전달할 수 있습니다.
 - 렌더링에 실패하면 Promise는 reject됩니다. [이 값을 사용해 fallback 셸을 출력하세요.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
 
 #### 주의 사항 {/*caveats*/}
