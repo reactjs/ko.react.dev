@@ -8,4 +8,8 @@ title: 유효하지 않은 ARIA Prop 경고
 
 2. `aria-role`을 작성한 경우 `role`을 사용하려고 한 것일 수 있습니다.
 
+<<<<<<< HEAD
 3. 그렇지 않은 경우, 최신 버전의 React DOM을 사용하고 ARIA 명세에 나열된 유효한 프로퍼티 이름을 사용하고 있는지 확인한 경우 [버그를 보고해 주세요](https://github.com/facebook/react/issues/new/choose).
+=======
+3. Otherwise, if you're on the latest version of React DOM and verified that you're using a valid property name listed in the ARIA specification, please [report a bug](https://github.com/react/react/issues/new/choose).
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca

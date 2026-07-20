@@ -144,7 +144,11 @@ React 팀은 몇 가지 업데이트를 공유하게 되어 기쁩니다.
 
 ### 모든 릴리스 노트 {/*all-release-notes*/}
 
+<<<<<<< HEAD
 React의 모든 릴리스 내용이 별도의 블로그 게시글로 작성되지는 않지만, 모든 릴리스에 대한 세부 변경 내역은 React 저장소의 [`CHANGELOG.md`](https://github.com/facebook/react/blob/main/CHANGELOG.md) 파일 또는 [Releases](https://github.com/facebook/react/releases) 페이지에서 확인할 수 있습니다.
+=======
+Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md`](https://github.com/react/react/blob/main/CHANGELOG.md) file in the React repository, as well as on the [Releases](https://github.com/react/react/releases) page.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 ---
 

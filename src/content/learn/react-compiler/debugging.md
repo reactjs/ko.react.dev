@@ -43,10 +43,17 @@ React 컴파일러가 앱을 망가뜨릴 수 있는 주요 원인 중 하나는
 
 ### 컴파일러 빌드 오류 {/*compiler-build-errors*/}
 
+<<<<<<< HEAD
 빌드를 예상치 않게 중단시키는 컴파일러 오류가 발생하면 컴파일러의 버그일 가능성이 높습니다. 다음 정보와 함께 [facebook/react](https://github.com/facebook/react/issues) 저장소에 보고해 주세요.
 - 오류 메시지
 - 오류를 발생시킨 코드
 - React 및 컴파일러 버전
+=======
+If you encounter a compiler error that unexpectedly breaks your build, this is likely a bug in the compiler. Report it to the [react/react](https://github.com/react/react/issues) repository with:
+- The error message
+- The code that caused the error
+- Your React and compiler versions
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 ### 런타임 문제 {/*runtime-issues*/}
 
@@ -78,6 +85,7 @@ function ProblematicComponent() {
 
 컴파일러 버그를 발견했다고 생각되면 다음을 확인하세요.
 
+<<<<<<< HEAD
 1. **React 규칙 위반이 아닌지 확인** - ESLint로 검사
 2. **최소 재현 사례 생성** - 작은 예시로 문제 격리
 3. **컴파일러 없이 테스트** - 컴파일 시에만 문제가 발생하는지 확인
@@ -86,6 +94,16 @@ function ProblematicComponent() {
    - 최소 재현 코드
    - 예상 동작 vs 실제 동작
    - 오류 메시지
+=======
+1. **Verify it's not a Rules of React violation** - Check with ESLint
+2. **Create a minimal reproduction** - Isolate the issue in a small example
+3. **Test without the compiler** - Confirm the issue only occurs with compilation
+4. **File an [issue](https://github.com/react/react/issues/new?template=compiler_bug_report.yml)**:
+   - React and compiler versions
+   - Minimal reproduction code
+   - Expected vs actual behavior
+   - Any error messages
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 ## 다음 단계 {/*next-steps*/}
 

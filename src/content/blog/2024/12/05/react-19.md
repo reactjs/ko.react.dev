@@ -182,7 +182,11 @@ const [error, submitAction, isPending] = useActionState(
 
 `React.useActionState` 는 Canary 릴리즈에서 `ReactDOM.useFormState`라 불렸지만 이름이 변경되었고 `useFormState`는 더 이상 사용되지 않습니다.
 
+<<<<<<< HEAD
 더 많은 정보는 [#28491](https://github.com/facebook/react/pull/28491)을 참고하세요.
+=======
+See [#28491](https://github.com/react/react/pull/28491) for more info.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 </Note>
 

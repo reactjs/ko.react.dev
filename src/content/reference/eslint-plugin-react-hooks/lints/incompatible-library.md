@@ -16,7 +16,11 @@ title: incompatible-library
 
 ## 규칙 세부 사항 {/*rule-details*/}
 
+<<<<<<< HEAD
 일부 라이브러리는 React에서 지원하지 않는 패턴을 사용합니다. 린터가 [알려진 목록](https://github.com/facebook/react/blob/main/compiler/packages/babel-plugin-react-compiler/src/HIR/DefaultModuleTypeProvider.ts)에서 이러한 API의 사용을 감지하면 이 규칙에 따라 플래그를 지정합니다. 이는 React 컴파일러가 앱을 손상시키지 않기 위해 이러한 호환되지 않는 API를 사용하는 컴포넌트를 자동으로 건너뛸 수 있음을 의미합니다.
+=======
+Some libraries use patterns that aren't supported by React. When the linter detects usages of these APIs from a [known list](https://github.com/react/react/blob/main/compiler/packages/babel-plugin-react-compiler/src/HIR/DefaultModuleTypeProvider.ts), it flags them under this rule. This means that React Compiler can automatically skip over components that use these incompatible APIs, in order to avoid breaking your app.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 ```js
 // 이러한 라이브러리로 메모이제이션이 깨지는 예시
@@ -135,4 +139,8 @@ function Component() {
 }
 ```
 
+<<<<<<< HEAD
 일부 다른 라이브러리는 아직 React의 메모이제이션 모델과 호환되는 대체 API가 없습니다. 린터가 이러한 API를 호출하는 컴포넌트나 Hook을 자동으로 건너뛰지 않는다면 [이슈를 제출](https://github.com/facebook/react/issues)하여 린터에 추가할 수 있도록 해주세요.
+=======
+Some other libraries do not yet have alternative APIs that are compatible with React's memoization model. If the linter doesn't automatically skip over your components or hooks that call these APIs, please [file an issue](https://github.com/react/react/issues) so we can add it to the linter.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca

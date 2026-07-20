@@ -177,7 +177,7 @@ function UsernameForm() {
 
 [폼<sup>Form</sup>](/reference/react-dom/components/form) 외부에서 서버 함수를 사용할 때, [Transition](/reference/react/useTransition)에서 서버 함수를 호출하면 로딩 인디케이터<sup>Loading Indicator</sup>를 표시하고, [낙관적 상태 업데이트](/reference/react/useOptimistic)를 표시하며 예기치 않은 오류를 처리할 수 있습니다. 폼은 Transition의 서버 함수를 자동으로 래핑합니다.
 
-```js {9-12}
+```js {9-14}
 import incrementLike from './actions';
 import { useState, useTransition } from 'react';
 
@@ -188,7 +188,9 @@ function LikeButton() {
   const onClick = () => {
     startTransition(async () => {
       const currentCount = await incrementLike();
-      setLikeCount(currentCount);
+      startTransition(() => {
+        setLikeCount(currentCount);
+      });
     });
   };
 

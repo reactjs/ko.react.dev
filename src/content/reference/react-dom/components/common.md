@@ -36,7 +36,11 @@ title: "공통 컴포넌트 (예: <div>)"
 
 * `suppressHydrationWarning`: 불리언 타입입니다. [서버 렌더링](/reference/react-dom/server)을 사용할 때, 일반적으로 서버와 클라이언트가 서로 다른 콘텐츠를 렌더링하면 경고가 표시됩니다. 일부 드문 사례(예: 타임스탬프)에서는 정확한 일치를 보장하기가 매우 어렵거나 불가능합니다. `suppressHydrationWarning`를 `true`로 설정하면, React는 해당 요소의 어트리뷰트와 콘텐츠가 일치하지 않아도 경고를 표시하지 않습니다. 이는 한 단계의 깊이에서만 작동하며, 탈출구로 사용하기 위한 것입니다. 과도하게 사용하지 마세요. [Suppressing Hydration 오류에 대해서 읽어보세요.](/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors)
 
+<<<<<<< HEAD
 * `style`: `{ fontWeight: 'bold', margin: 20 }`와 같이 CSS 스타일이 있는 객체입니다. DOM의 [`style`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) 프로퍼티에서 `fontWeight` 대신 `font-weight`로 작성하는 것과 마찬가지로 CSS 프로퍼티의 이름도 `camelCase`로 작성해야 합니다. 또한 문자열이나 숫자를 값으로 전달할 수 있습니다. `width: 100`와 같은 숫자를 전달한다면 React는 [단위가 없는 프로퍼티](https://github.com/facebook/react/blob/81d4ee9ca5c405dce62f64e61506b8e155f38d8d/packages/react-dom-bindings/src/shared/CSSProperty.js#L8-L57)가 아니라면 자동으로 `px` ("픽셀")로 값을 추가합니다. `style`은 스타일 값을 미리 알 수 없는 동적 스타일에만 사용하는 것을 권장합니다. 그 외의 경우에는 `className`을 사용하여 일반 CSS 클래스를 사용하는 것이 더 효율적입니다. [`className`과 `style`에 대해서 더 자세히 알아보세요.](#applying-css-styles)
+=======
+* `style`: An object with CSS styles, for example `{ fontWeight: 'bold', margin: 20 }`. Similarly to the DOM [`style`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) property, the CSS property names need to be written as `camelCase`, for example `fontWeight` instead of `font-weight`. You can pass strings or numbers as values. If you pass a number, like `width: 100`, React will automatically append `px` ("pixels") to the value unless it's a [unitless property.](https://github.com/react/react/blob/81d4ee9ca5c405dce62f64e61506b8e155f38d8d/packages/react-dom-bindings/src/shared/CSSProperty.js#L8-L57) We recommend using `style` only for dynamic styles where you don't know the style values ahead of time. In other cases, applying plain CSS classes with `className` is more efficient. [Read more about `className` and `style`.](#applying-css-styles)
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 아래의 표준 DOM Props는 내장된 모든 컴포넌트에서 지원합니다.
 

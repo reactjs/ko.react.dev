@@ -51,7 +51,11 @@ React 18로 업그레이드하는 방법이나, 릴리즈에 대한 추가적인
 
 워킹 그룹에 대한 초기 관심이 급증할 것으로 예상되므로, 초대받은 회원만 스레드를 만들거나 댓글을 달 수 있습니다. 그러나, 토론글은 모든 사람에게 완전히 공개되므로 모든 사람이 동일한 정보에 접근할 수 있습니다. 이는 워킹 그룹 구성원을 위한 생산적인 환경을 조성하는 동시에 더 많은 커뮤니티와의 투명성을 유지하는 좋은 절충안이라 생각합니다.
 
+<<<<<<< HEAD
 언제나 그렇듯이 [이슈 트래커](https://github.com/facebook/react/issues)에 버그 보고서, 질문 및 일반적인 피드백을 제출할 수 있습니다.
+=======
+As always, you can submit bug reports, questions, and general feedback to our [issue tracker](https://github.com/react/react/issues).
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 ## 지금 React 18 Alpha를 사용하는 방법 {/*how-to-try-react-18-alpha-today*/}
 

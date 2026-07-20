@@ -10,7 +10,11 @@ React는 수백만의 개발자로 구성된 커뮤니티를 가지고 있습니
 
 ## 행동 강령 {/*code-of-conduct*/}
 
+<<<<<<< HEAD
 React 커뮤니티에 참여하기 전에 [반드시 행동 강령을 읽어주세요](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md). 우리는 [기여자 서약](https://www.contributor-covenant.org/)을 채택했고, 모든 커뮤니티 구성원들이 지침을 준수할 것을 기대합니다.
+=======
+Before participating in React's communities, [please read our Code of Conduct.](https://github.com/react/react/blob/main/CODE_OF_CONDUCT.md) We have adopted the [Contributor Covenant](https://www.contributor-covenant.org/) and we expect that all community members adhere to the guidelines within.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 ## Stack Overflow {/*stack-overflow*/}
 
