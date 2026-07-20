@@ -45,7 +45,11 @@ _[1일 차 전체 스트리밍 시청하기.](https://www.youtube.com/watch?v=T8
 - [Dan Abramov](https://bsky.app/profile/danabra.mov): [두 대의 컴퓨터용 React](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=18825s)
 - [Kent C. Dodds](https://twitter.com/kentcdodds): [이제 React 서버 컴포넌트를 이해합니다](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=11256s)
 
+<<<<<<< HEAD
 마지막으로 [Joe Savona](https://twitter.com/en_JS), [Sathya Gunasekaran](https://twitter.com/_gsathya), [Mofei Zhang](https://twitter.com/zmofei)은 React 컴파일러가 [오픈소스](https://github.com/facebook/react/pull/29061)로 공개되었음을 알리고, 실험 버전을 공유했습니다.
+=======
+Finally, we ended the keynote with [Joe Savona](https://twitter.com/en_JS), [Sathya Gunasekaran](https://twitter.com/_gsathya), and [Mofei Zhang](https://twitter.com/zmofei) announcing that the React Compiler is now [Open Source](https://github.com/react/react/pull/29061), and sharing an experimental version of the React Compiler to try out.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 컴파일러 사용법과 동작 방식은 [관련 문서](/learn/react-compiler) 및 관련 강연을 확인하세요.
 

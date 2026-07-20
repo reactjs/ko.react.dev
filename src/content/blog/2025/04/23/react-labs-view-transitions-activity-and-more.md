@@ -11458,7 +11458,11 @@ root.render(
 
 작동 방식에 대해 자세히 알고 싶다면 문서에서 [`<ViewTransition>`의 작동 방식](/reference/react/ViewTransition#how-does-viewtransition-work)을 확인하세요.
 
+<<<<<<< HEAD
 _View Transition을 구축한 배경에 대한 자세한 내용은 다음을 참조하세요. [#31975](https://github.com/facebook/react/pull/31975), [#32105](https://github.com/facebook/react/pull/32105), [#32041](https://github.com/facebook/react/pull/32041), [#32734](https://github.com/facebook/react/pull/32734), [#32797](https://github.com/facebook/react/pull/32797) [#31999](https://github.com/facebook/react/pull/31999), [#32031](https://github.com/facebook/react/pull/32031), [#32050](https://github.com/facebook/react/pull/32050), [#32820](https://github.com/facebook/react/pull/32820), [#32029](https://github.com/facebook/react/pull/32029), [#32028](https://github.com/facebook/react/pull/32028), and [#32038](https://github.com/facebook/react/pull/32038) by [@sebmarkbage](https://twitter.com/sebmarkbage) (Seb에게 감사합니다!)_
+=======
+_For more background on how we built View Transitions, see: [#31975](https://github.com/react/react/pull/31975), [#32105](https://github.com/react/react/pull/32105), [#32041](https://github.com/react/react/pull/32041), [#32734](https://github.com/react/react/pull/32734), [#32797](https://github.com/react/react/pull/32797) [#31999](https://github.com/react/react/pull/31999), [#32031](https://github.com/react/react/pull/32031), [#32050](https://github.com/react/react/pull/32050), [#32820](https://github.com/react/react/pull/32820), [#32029](https://github.com/react/react/pull/32029), [#32028](https://github.com/react/react/pull/32028), and [#32038](https://github.com/react/react/pull/32038) by [@sebmarkbage](https://twitter.com/sebmarkbage) (thanks Seb!)._
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 ---
 

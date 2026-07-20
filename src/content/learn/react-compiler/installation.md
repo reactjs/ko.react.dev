@@ -190,7 +190,11 @@ ESLint 플러그인을 설치합니다.
 npm install -D eslint-plugin-react-hooks@latest
 </TerminalBlock>
 
+<<<<<<< HEAD
 `eslint-plugin-react-hooks`를 아직 설정하지 않았다면 [readme의 설치 지침](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation)을 따르세요. 컴파일러 규칙은 `recommended-latest` 프리셋에서 사용할 수 있습니다.
+=======
+If you haven't already configured eslint-plugin-react-hooks, follow the [installation instructions in the readme](https://github.com/react/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation). The compiler rules are available in the `recommended-latest` preset.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 ESLint 규칙은 다음과 같은 역할을 합니다.
 - [React 규칙](/reference/rules) 위반 식별

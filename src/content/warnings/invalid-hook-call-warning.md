@@ -143,7 +143,11 @@ window.React2 = require('react');
 console.log(window.React1 === window.React2);
 ```
 
+<<<<<<< HEAD
 만약 `false`가 출력된다면 두 개의 React가 있을 수 있으며, 이러한 상황이 발생한 이유를 찾아야 합니다. [이 이슈](https://github.com/facebook/react/issues/13991)는 커뮤니티에서 발견한 일반적인 원인에 대해 설명하고 있습니다.
+=======
+If it prints `false` then you might have two Reacts and need to figure out why that happened. [This issue](https://github.com/react/react/issues/13991) includes some common reasons encountered by the community.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 이 문제는 `npm link` 또는 유사한 기능을 사용할 때에도 발생할 수 있습니다. 이 경우 번들러는 2개의 React - 애플리케이션 폴더와 라이브러리 폴더에서 각각 하나씩을 "보게" 될 수 있습니다. `myapp`과 `mylib`이 형제 폴더라고 가정하면, `mylib`에서 `npm link ../myapp/node_modules/react`를 실행하여 라이브러리가 애플리케이션의 React 복사본을 사용하도록 할 수 있습니다.
 
@@ -155,4 +159,8 @@ console.log(window.React1 === window.React2);
 
 ## 기타 원인 {/*other-causes*/}
 
+<<<<<<< HEAD
 만약 이 모든 방법이 도움이 되지 않는다면, [이 이슈](https://github.com/facebook/react/issues/13991)에 의견을 남기고 도움을 요청하세요. 작은 재현 가능한 예시를 만들어보면 문제를 발견할 수도 있습니다.
+=======
+If none of this worked, please comment in [this issue](https://github.com/react/react/issues/13991) and we'll try to help. Try to create a small reproducing example — you might discover the problem as you're doing it.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca

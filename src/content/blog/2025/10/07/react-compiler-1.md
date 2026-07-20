@@ -132,7 +132,11 @@ export default defineConfig([
 }
 ```
 
+<<<<<<< HEAD
 React 컴파일러 규칙을 활성화하려면 `recommended` 프리셋을 사용하는 것을 권장합니다. 더 많은 지침은 [README](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md)를 참조할 수 있습니다. 다음은 React Conf에서 소개된 몇 가지 예시입니다.
+=======
+To enable React Compiler rules, we recommend using the `recommended` preset. You can also check out the [README](https://github.com/react/react/blob/main/packages/eslint-plugin-react-hooks/README.md) for more instructions. Here are a few examples we featured at React Conf:
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 - [`set-state-in-render`](/reference/eslint-plugin-react-hooks/lints/set-state-in-render)로 렌더링 루프를 유발하는 `setState` 패턴 포착.
 - [`set-state-in-effect`](/reference/eslint-plugin-react-hooks/lints/set-state-in-effect)를 통해 이펙트 내의 비용이 많이 드는 작업 플래그 지정.

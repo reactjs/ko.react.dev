@@ -1029,7 +1029,11 @@ items.map(item => <div><Component key={item.id} item={item} /></div>)
 
 ### Suspense 콘텐츠에서 애니메이션 적용하기 {/*animating-from-suspense-content*/}
 
+<<<<<<< HEAD
 다른 Transition과 마찬가지로 React는 애니메이션을 실행하기 전에 데이터와 새로운 CSS(`<link rel="stylesheet" precedence="...">`)를 기다립니다. 이에 더해 ViewTransition은 새로운 폰트가 나중에 깜빡이는 것을 방지하기 위해 애니메이션을 시작하기 전에 새로운 폰트가 로드될 때까지 최대 500ms까지 기다립니다. 같은 이유로 ViewTransition으로 래핑된 이미지는 이미지가 로드될 때까지 기다립니다.
+=======
+Like any Transition, React waits for data and new CSS (`<link rel="stylesheet" precedence="...">`) before running the animation. In addition to this, ViewTransitions also wait up to 500ms for new fonts to load before starting the animation to avoid them flickering in later. For the same reason, an image wrapped in ViewTransition will wait for the image to load. See examples of [waiting for a font](/reference/react/Suspense#waiting-for-a-font-to-load) and [waiting for an image](/reference/react/Suspense#waiting-for-an-image-to-load) on the Suspense page.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 새로운 Suspense 경계 인스턴스 내부에 있으면 폴백이 먼저 표시됩니다. Suspense 경계가 완전히 로드된 후 `<ViewTransition>`이 콘텐츠로 전환되는 애니메이션을 실행합니다.
 
