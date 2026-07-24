@@ -3,7 +3,7 @@ title: 버전 관리 정책
 ---
 
 <Intro>
-React의 모든 안정적인 빌드는 높은 수준의 테스트를 거치고 유의적 버전<sup>Sementic Versioning, semver</sup>을 따릅니다. React는 또한 실험적인 기능에 대한 초기 피드백을 장려하기 위해 불안정한 릴리스 채널을 제공합니다. 이 페이지에서는 React 릴리스에서 기대할 수 있는 것에 대해 설명합니다.
+React의 모든 안정적인 빌드는 높은 수준의 테스트를 거치고 유의적 버전<sup>Semantic Versioning, semver</sup>을 따릅니다. React는 또한 실험적인 기능에 대한 초기 피드백을 장려하기 위해 불안정한 릴리스 채널을 제공합니다. 이 페이지에서는 React 릴리스에서 기대할 수 있는 것에 대해 설명합니다.
 
 </Intro>
 
