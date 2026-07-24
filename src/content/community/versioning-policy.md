@@ -3,15 +3,15 @@ title: 버전 관리 정책
 ---
 
 <Intro>
-React의 모든 안정적인 빌드는 높은 수준의 테스트를 거치고 유의적 버전<sup>Sementic Versioning, semver</sup>을 따릅니다. React는 또한 실험적인 기능에 대한 초기 피드백을 장려하기 위해 불안정한 릴리스 채널을 제공합니다. 이 페이지에서는 React 릴리스에서 기대할 수 있는 것에 대해 설명합니다.
+React의 모든 안정적인 빌드는 높은 수준의 테스트를 거치고 유의적 버전<sup>Semantic Versioning, semver</sup>을 따릅니다. React는 또한 실험적인 기능에 대한 초기 피드백을 장려하기 위해 불안정한 릴리스 채널을 제공합니다. 이 페이지에서는 React 릴리스에서 기대할 수 있는 것에 대해 설명합니다.
 
 </Intro>
 
-This versioning policy describes our approach to version numbers for packages such as `react` and `react-dom`. 지난 버전을 확인하려면, [React 버전](/versions) 페이지를 참고해주세요.
+이 버전 관리 정책에서는 `react`와 `react-dom` 같은 패키지의 버전을 정하는 방식을 설명합니다. 지난 버전을 확인하려면, [React 버전](/versions) 페이지를 참고해주세요.
 
 ## Stable releases {/*stable-releases*/}
 
-Stable React releases (also known as "Latest" release channel) follow [semantic versioning (semver)](https://semver.org/lang/ko/) principles.
+안정적인 React 릴리즈(최신 릴리즈 채널이라고도 합니다)는 [유의적 버전(SemVer)](https://semver.org/lang/ko/) 원칙을 따릅니다.
 
 버전 번호 **x.y.z**를 사용할 때 다음과 같습니다.
 
@@ -23,7 +23,7 @@ Stable React releases (also known as "Latest" release channel) follow [semantic 
 
 마이너 릴리즈는 릴리즈의 가장 흔한 유형입니다.
 
-We know our users continue to use old versions of React in production. If we learn of a security vulnerability in React, we release a backported fix for all major versions that are affected by the vulnerability.
+사용자들이 프로덕션 환경에서 이전 버전의 React를 계속 사용한다는 점을 알고 있습니다. React에서 보안 취약점이 발견되면, 해당 취약점의 영향을 받는 모든 메이저 버전에 수정 사항을 백포트해 릴리즈합니다.
 
 ### Breaking changes {/*breaking-changes*/}
 
