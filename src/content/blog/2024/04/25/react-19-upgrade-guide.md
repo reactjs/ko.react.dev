@@ -24,7 +24,11 @@ React 19으로의 업그레이드를 더 쉽게 돕기 위해 `react@18.3`을 �
 
 React 19로 업그레이드하기 전에 먼저 React 18.3으로 업데이트하여 잠재적인 문제를 미리 파악하는 것을 권장합니다.
 
+<<<<<<< HEAD
 18.3 버전의 변경 사항들은 [릴리스 노트](https://github.com/facebook/react/blob/main/CHANGELOG.md#1830-april-25-2024)에서 확인할 수 있습니다.
+=======
+For a list of changes in 18.3 see the [Release Notes](https://github.com/react/react/blob/main/CHANGELOG.md#1830-april-25-2024).
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 </Note>
 
@@ -38,7 +42,11 @@ React 19로 업그레이드하기 전에 먼저 React 18.3으로 업데이트하
 - [TypeScript 변경 사항](#typescript-changes)
 - [변경 로그](#changelog)
 
+<<<<<<< HEAD
 React 19를 테스트해 보고 싶다면 해당 가이드에 나와 있는 단계를 따라주시고, 문제가 발생하면 [이슈를 제보해 주세요](https://github.com/facebook/react/issues/new?assignees=&labels=React+19&projects=&template=19.md&title=%5BReact+19%5D). React 19에 새롭게 추가된 기능 목록은 [React 19 릴리스 게시글](/blog/2024/12/05/react-19)에서 확인할 수 있습니다.
+=======
+If you'd like to help us test React 19, follow the steps in this upgrade guide and [report any issues](https://github.com/react/react/issues/new?assignees=&labels=React+19&projects=&template=19.md&title=%5BReact+19%5D) you encounter. For a list of new features added to React 19, see the [React 19 release post](/blog/2024/12/05/react-19).
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 ---
 ## 설치 {/*installing*/}
@@ -256,7 +264,11 @@ class Child extends React.Component {
 #### 제거됨: 문자열 Refs {/*removed-string-refs*/}
 문자열 Refs는 [2018년 3월 (v16.3.0)](https://legacy.reactjs.org/blog/2018/03/27/update-on-async-rendering.html)부터 더 이상 권장되지 않습니다.
 
+<<<<<<< HEAD
 클래스형 컴포넌트에서는 문자열 Refs를 사용할 수 있었지만, [여러 단점](https://github.com/facebook/react/issues/1373)으로 인해 Ref 콜백 방식으로 대체되었습니다. React 19에서는 React를 더 간단하고 이해하기 쉽게 만들기 위해 문자열 Refs가 제거됩니다.
+=======
+Class components supported string refs before being replaced by ref callbacks due to [multiple downsides](https://github.com/react/react/issues/1373). In React 19, we're removing string refs to make React simpler and easier to understand.
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 클래스형 컴포넌트에서 아직 문자열 Refs를 사용하고 있다면, Ref 콜백으로 마이그레이션해야 합니다.
 
@@ -730,6 +742,7 @@ const reducer = (state: State, action: Action) => state;
 
 ### 기타 주요한 변경 사항 {/*other-breaking-changes*/}
 
+<<<<<<< HEAD
 - **react-dom**: `src` 및 `href` 속성에 JavaScript URL 사용 시 발생하던 오류 [#26507](https://github.com/facebook/react/pull/26507)
 - **react-dom**: `onRecoverableError`에서 `errorInfo.digest` 제거 [#28222](https://github.com/facebook/react/pull/28222)
 - **react-dom**: `unstable_flushControlled` 제거 [#26397](https://github.com/facebook/react/pull/26397)
@@ -737,9 +750,19 @@ const reducer = (state: State, action: Action) => state;
 - **react-dom**: `unstable_renderSubtreeIntoContainer` 제거 [#28271](https://github.com/facebook/react/pull/28271)
 - **react-dom**: `unstable_runWithPriority` 제거 [#28271](https://github.com/facebook/react/pull/28271)
 - **react-is**: `react-is`에서 사용 중단된 메서드 제거 [28224](https://github.com/facebook/react/pull/28224)
+=======
+- **react-dom**: Error for javascript URLs in `src` and `href` [#26507](https://github.com/react/react/pull/26507)
+- **react-dom**: Remove `errorInfo.digest` from `onRecoverableError` [#28222](https://github.com/react/react/pull/28222)
+- **react-dom**: Remove `unstable_flushControlled` [#26397](https://github.com/react/react/pull/26397)
+- **react-dom**: Remove `unstable_createEventHandle` [#28271](https://github.com/react/react/pull/28271)
+- **react-dom**: Remove `unstable_renderSubtreeIntoContainer` [#28271](https://github.com/react/react/pull/28271)
+- **react-dom**: Remove `unstable_runWithPriority` [#28271](https://github.com/react/react/pull/28271)
+- **react-is**: Remove deprecated methods from `react-is` [28224](https://github.com/react/react/pull/28224)
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 ### 기타 주목할 만한 변경 사항 {/*other-notable-changes*/}
 
+<<<<<<< HEAD
 - **react**: 동기, 기본, 지속적 lane 처리 배치 적용 [#25700](https://github.com/facebook/react/pull/25700)
 - **react**: 중단된 컴포넌트의 형제 요소 선렌더링 방지 [#26380](https://github.com/facebook/react/pull/26380)
 - **react**: 렌더 단계에서의 업데이트로 인해 발생하는 무한 루프 감지 [#26625](https://github.com/facebook/react/pull/26625)
@@ -748,6 +771,16 @@ const reducer = (state: State, action: Action) => state;
 - **react-dom**: src나 href에 빈 문자열 설정 시 경고 및 무시 (단, a 태그 제외) [#28124](https://github.com/facebook/react/pull/28124)
 
 전체 변경 사항은 [변경 로그 전체 보기](https://github.com/facebook/react/blob/main/CHANGELOG.md#1900-december-5-2024)를 참고하세요.
+=======
+- **react**: Batch sync, default and continuous lanes [#25700](https://github.com/react/react/pull/25700)
+- **react**: Don't prerender siblings of suspended component [#26380](https://github.com/react/react/pull/26380)
+- **react**: Detect infinite update loops caused by render phase updates [#26625](https://github.com/react/react/pull/26625)
+- **react-dom**: Transitions in popstate are now synchronous [#26025](https://github.com/react/react/pull/26025)
+- **react-dom**: Remove layout effect warning during SSR [#26395](https://github.com/react/react/pull/26395)
+- **react-dom**: Warn and don’t set empty string for src/href (except anchor tags) [#28124](https://github.com/react/react/pull/28124)
+
+For a full list of changes, please see the [Changelog](https://github.com/react/react/blob/main/CHANGELOG.md#1900-december-5-2024).
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 ---
 
