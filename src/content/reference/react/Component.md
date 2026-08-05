@@ -1272,18 +1272,18 @@ button { margin-left: 10px; }
 기본적으로 애플리케이션이 렌더링 도중 에러를 발생시키면 React는 화면에서 해당 UI를 제거합니다. 이를 방지하기 위해 UI의 일부를 *Error Boundary*로 감싸면 됩니다. Error Boundary는 에러가 발생한 부분 대신 오류 메시지와 같은 Fallback UI를 표시할 수 있는 특수 컴포넌트입니다.
 
 <Note>
-Error boundaries do not catch errors for:
+Error Boundary는 다음과 같은 경우 오류를 포착하지 못합니다.
 
-- Event handlers [(learn more)](/learn/responding-to-events)
-- [Server side rendering](/reference/react-dom/server)
-- Errors thrown in the error boundary itself (rather than its children)
-- Asynchronous code (e.g. `setTimeout` or `requestAnimationFrame` callbacks); an exception is the usage of the [`startTransition`](/reference/react/useTransition#starttransition) function returned by the [`useTransition`](/reference/react/useTransition) Hook. Errors thrown inside the transition function are caught by error boundaries [(learn more)](/reference/react/useTransition#displaying-an-error-to-users-with-error-boundary)
+- 이벤트 핸들러 [(자세히 알아보기)](/learn/responding-to-events)
+- [서버 사이드 렌더링](/reference/react-dom/server)
+- (자식이 아닌) Error Boundary 자체에서 발생한 오류
+- 비동기 코드(예: `setTimeout`이나 `requestAnimationFrame` 콜백). 단, [`useTransition`](/reference/react/useTransition) Hook이 반환하는 [`startTransition`](/reference/react/useTransition#starttransition) 함수를 사용하는 경우는 예외입니다. Transition 함수 내부에서 발생한 오류는 Error Boundary가 포착합니다. [(자세히 알아보기)](/reference/react/useTransition#displaying-an-error-to-users-with-error-boundary)
 
 </Note>
 
 Error Boundary 컴포넌트를 구현하려면 오류에 대한 응답으로 State를 업데이트하고 사용자에게 오류 메시지를 표시할 수 있는 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)를 제공해야 합니다. 또한 선택적으로 [`componentDidCatch`](#componentdidcatch)를 구현하여 분석 서비스에 오류를 기록하는 등의 추가 로직을 추가할 수도 있습니다.
 
-With [`captureOwnerStack`](/reference/react/captureOwnerStack) you can include the Owner Stack during development.
+[`captureOwnerStack`](/reference/react/captureOwnerStack)을 사용하면 개발 환경에서 Owner Stack을 포함할 수 있습니다.
 
 ```js {9-12,14-27}
 import * as React from 'react';
