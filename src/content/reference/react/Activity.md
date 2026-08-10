@@ -755,6 +755,7 @@ video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
 
 <Note>
 
+<<<<<<< HEAD
 **사전 렌더링 중에는 Suspense가 가능한 데이터만 가져옵니다.** 여기에는 다음이 포함됩니다.
 
 - [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense) 같이 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기.
@@ -766,6 +767,9 @@ Activity는 Effect 내부에서 가져온 데이터를 감지하지 **않습니�
 위의 `Posts` 컴포넌트에서 데이터를 로드하는 정확한 방법은 프레임워크에 따라 다릅니다. Suspense가 가능한 프레임워크를 사용하는 경우, 프레임워크의 데이터 불러오기 관련 문서에서 자세한 내용을 확인할 수 있습니다.
 
 독자적인 프레임워크를 사용하지 않는 Suspense가 가능한 데이터 가져오기 기능은 아직 지원되지 않습니다. Suspense 지원 데이터 소스를 구현하기 위한 요구 사항은 불안정하고 문서화되지 않았습니다. 데이터 소스를 Suspense와 통합하기 위한 공식 API는 향후 React 버전에서 출시될 예정입니다.
+=======
+Only data read from a source that [activates a Suspense boundary](/reference/react/Suspense#what-activates-a-suspense-boundary), such as a Promise read with [`use`](/reference/react/use), is fetched during pre-rendering. Activity does not detect data fetched inside an Effect.
+>>>>>>> c7d6b700038c63d1aaf2c649af1aefe01ebbacac
 
 </Note>
 

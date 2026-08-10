@@ -903,6 +903,7 @@ body {
 
 ### React 개발자 도구 {/*react-developer-tools*/}
 
+<<<<<<< HEAD
 React 개발자 도구를 사용하면 React 컴포넌트의 Props와 State를 확인할 수 있습니다. CodeSandBox의 _브라우저_ 구역 하단에서 React 개발자 도구 탭을 찾을 수 있습니다.
 
 ![CodeSandbox의 React 개발자 도구](../images/tutorial/codesandbox-devtools.png)
@@ -910,12 +911,26 @@ React 개발자 도구를 사용하면 React 컴포넌트의 Props와 State를 �
 화면에서 특정 컴포넌트를 검사하려면 React 개발자 도구의 왼쪽 위 모서리에 있는 버튼을 사용하세요.
 
 ![React 개발자 도구로 페이지의 컴포넌트 선택하기](../images/tutorial/devtools-select.gif)
+=======
+React Developer Tools let you check the props and the state of your React components. It is available as a [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/), and [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil) browser extension.
 
-<Note>
+After you install it, a new *Components* tab will appear in your browser Developer Tools for sites using React. If you're following along in CodeSandbox, you'd need to first open your sandbox preview in a new tab:
 
+![opening in new tab](../images/tutorial/sandbox-new-tab.png)
+
+Then, on the preview page, open your browser's DevTools and find the *Components* tab:
+>>>>>>> c7d6b700038c63d1aaf2c649af1aefe01ebbacac
+
+![components tab](../images/tutorial/components-tab.png)
+
+<<<<<<< HEAD
 로컬 환경에서 개발하는 경우, React 개발자 도구는 [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/), 그리고 [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil) 브라우저의 확장 프로그램으로 사용할 수 있습니다. 설치 후 브라우저 개발자 도구에 React를 사용하는 사이트를 위한 *Components* 탭이 나타납니다.
+=======
+To inspect a particular component on the screen, use the button in the top left corner of the Components tab:
 
-</Note>
+![inspecting with devtools](../images/tutorial/devtools-inspect.gif)
+>>>>>>> c7d6b700038c63d1aaf2c649af1aefe01ebbacac
+
 
 ## 게임 완료하기 {/*completing-the-game*/}
 
