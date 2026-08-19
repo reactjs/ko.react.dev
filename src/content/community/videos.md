@@ -10,72 +10,74 @@ React와 React 생태계<sup>Ecosystem</sup>에 대한 토론 영상들입니다
 
 ## React Conf 2024 {/*react-conf-2024*/}
 
-At React Conf 2024, Meta CTO [Andrew "Boz" Bosworth](https://www.threads.net/@boztank) shared a welcome message to kick off the conference:
+React Conf 2024에서 Meta의 CTO [Andrew "Boz" Bosworth](https://www.threads.net/@boztank)가 환영 메시지로 컨퍼런스의 시작을 알렸습니다.
 
 <YouTubeIframe src="https://www.youtube.com/embed/T8TZQ6k4SLE?t=975s" title="Boz and Seth Intro" />
 
-### React 19 Keynote {/*react-19-keynote*/}
+### React 19 기조연설 {/*react-19-keynote*/}
 
-In the Day 1 keynote, we shared vision for React starting with React 19 and the React Compiler. Watch the full keynote from [Joe Savona](https://twitter.com/en_JS), [Lauren Tan](https://twitter.com/potetotes), [Andrew Clark](https://twitter.com/acdlite), [Josh Story](https://twitter.com/joshcstory), [Sathya Gunasekaran](https://twitter.com/_gsathya), and [Mofei Zhang](https://twitter.com/zmofei):
+1일 차 기조연설에서는 React 19와 React 컴파일러를 시작으로 React의 미래에 대한 비전을 공유했습니다. [Joe Savona](https://twitter.com/en_JS), [Lauren Tan](https://twitter.com/potetotes), [Andrew Clark](https://twitter.com/acdlite), [Josh Story](https://twitter.com/joshcstory), [Sathya Gunasekaran](https://twitter.com/_gsathya), [Mofei Zhang](https://twitter.com/zmofei)이 진행한 전체 기조연설을 시청하세요.
 
 
 <YouTubeIframe src="https://www.youtube.com/embed/lyEKhv8-3n0" title="YouTube video player" />
 
-### React Unpacked: A Roadmap to React 19 {/*react-unpacked-a-roadmap-to-react-19*/}
+### React 파헤치기: React 19 로드맵 {/*react-unpacked-a-roadmap-to-react-19*/}
 
-React 19 introduced new features including Actions, `use()`, `useOptimistic` and more. For a deep dive on using new features in React 19, see [Sam Selikoff's](https://twitter.com/samselikoff) talk:
+React 19에는 Action, `use()`, `useOptimistic`을 비롯한 새로운 기능이 도입되었습니다. React 19의 새로운 기능을 사용하는 방법을 자세히 알아보려면 [Sam Selikoff](https://twitter.com/samselikoff)의 강연을 시청하세요.
 
 <YouTubeIframe src="https://www.youtube.com/embed/R0B2HsSM78s" title="React Unpacked: A Roadmap to React 19" />
 
-### What's New in React 19 {/*whats-new-in-react-19*/}
+### React 19의 새로운 기능 {/*whats-new-in-react-19*/}
 
-[Lydia Hallie](https://twitter.com/lydiahallie) gave a visual deep dive of React 19's new features:
+[Lydia Hallie](https://twitter.com/lydiahallie)가 React 19의 새로운 기능을 시각적으로 자세히 설명했습니다.
 
 <YouTubeIframe src="https://www.youtube.com/embed/AJOGzVygGcY" title="What's New in React 19" />
 
-### React 19 Deep Dive: Coordinating HTML {/*react-19-deep-dive-coordinating-html*/}
+### React 19 심층 탐구: HTML 조정 {/*react-19-deep-dive-coordinating-html*/}
 
-[Josh Story](https://twitter.com/joshcstory) provided a deep dive on the document and resource streaming APIs in React 19:
+[Josh Story](https://twitter.com/joshcstory)가 React 19의 문서 및 리소스 스트리밍 API를 자세히 설명했습니다.
 
 <YouTubeIframe src="https://www.youtube.com/embed/IBBN-s77YSI" title="React 19 Deep Dive: Coordinating HTML" />
 
-### React for Two Computers {/*react-for-two-computers*/}
+### 두 대의 컴퓨터용 React {/*react-for-two-computers*/}
 
-[Dan Abramov](https://bsky.app/profile/danabra.mov) imagined an alternate history where React started server-first:
+[Dan Abramov](https://bsky.app/profile/danabra.mov)가 React가 서버 우선 방식으로 시작되었다면 어땠을지 상상했습니다.
 
 <YouTubeIframe src="https://www.youtube.com/embed/ozI4V_29fj4" title="React for Two Computers" />
 
-### Forget About Memo {/*forget-about-memo*/}
+### Memo를 신경 쓰지 마세요 {/*forget-about-memo*/}
 
-[Lauren Tan](https://twitter.com/potetotes) gave a talk on using the React Compiler in practice:
+[Lauren Tan](https://twitter.com/potetotes)이 React 컴파일러를 실제로 활용하는 방법을 소개했습니다.
 
 <YouTubeIframe src="https://www.youtube.com/embed/lvhPq5chokM" title="Forget About Memo" />
 
-### React Compiler Deep Dive {/*react-compiler-deep-dive*/}
+### React 컴파일러 심층 탐구 {/*react-compiler-deep-dive*/}
 
-[Sathya Gunasekaran](https://twitter.com/_gsathya) and [Mofei Zhang](https://twitter.com/zmofei) provided a deep dive on how the React Compiler works:
+[Sathya Gunasekaran](https://twitter.com/_gsathya)과 [Mofei Zhang](https://twitter.com/zmofei)이 React 컴파일러의 작동 방식을 자세히 설명했습니다.
 
 <YouTubeIframe src="https://www.youtube.com/embed/uA_PVyZP7AI" title="React Compiler Deep Dive" />
 
-### And more... {/*and-more-2024*/}
+### 그리고… {/*and-more-2024*/}
 
-**We also heard talks from the community on Server Components:**
-* [Enhancing Forms with React Server Components](https://www.youtube.com/embed/0ckOUBiuxVY&t=25280s) by [Aurora Walberg Scharff](https://twitter.com/aurorascharff)
-* [And Now You Understand React Server Components](https://www.youtube.com/embed/pOo7x8OiAec) by [Kent C. Dodds](https://twitter.com/kentcdodds)
-* [Real-time Server Components](https://www.youtube.com/embed/6sMANTHWtLM) by [Sunil Pai](https://twitter.com/threepointone)
+**서버 컴포넌트에 관한 커뮤니티 강연도 있었습니다.**
 
-**Talks from React frameworks using new features:**
+- [React 서버 컴포넌트로 폼 향상](https://www.youtube.com/embed/0ckOUBiuxVY&t=25280s) — [Aurora Walberg Scharff](https://twitter.com/aurorascharff)
+- [이제 React 서버 컴포넌트를 이해합니다](https://www.youtube.com/embed/pOo7x8OiAec) — [Kent C. Dodds](https://twitter.com/kentcdodds)
+- [실시간 React 서버 컴포넌트](https://www.youtube.com/embed/6sMANTHWtLM) — [Sunil Pai](https://twitter.com/threepointone)
 
-* [Vanilla React](https://www.youtube.com/embed/ZcwA0xt8FlQ) by [Ryan Florence](https://twitter.com/ryanflorence)
-* [React Rhythm & Blues](https://www.youtube.com/embed/rs9X5MjvC4s) by [Lee Robinson](https://twitter.com/leeerob)
-* [RedwoodJS, now with React Server Components](https://www.youtube.com/embed/sjyY4MTECUU) by [Amy Dutton](https://twitter.com/selfteachme)
-* [Introducing Universal React Server Components in Expo Router](https://www.youtube.com/embed/djhEgxQf3Kw) by [Evan Bacon](https://twitter.com/Baconbrix)
+**새로운 기능을 활용한 React 프레임워크 관련 강연도 있었습니다.**
 
-**And Q&As with the React and React Native teams:**
-- [React Q&A](https://www.youtube.com/embed/T8TZQ6k4SLE&t=27518s) hosted by [Michael Chan](https://twitter.com/chantastic)
-- [React Native Q&A](https://www.youtube.com/embed/0ckOUBiuxVY&t=27935s) hosted by [Jamon Holmgren](https://twitter.com/jamonholmgren)
+- [바닐라 React](https://www.youtube.com/embed/ZcwA0xt8FlQ) — [Ryan Florence](https://twitter.com/ryanflorence)
+- [React 리듬 & 블루스](https://www.youtube.com/embed/rs9X5MjvC4s) — [Lee Robinson](https://twitter.com/leeerob)
+- [React 서버 컴포넌트를 포함한 RedwoodJS](https://www.youtube.com/embed/sjyY4MTECUU) — [Amy Dutton](https://twitter.com/selfteachme)
+- [Expo Router의 Universal React 서버 컴포넌트 소개](https://www.youtube.com/embed/djhEgxQf3Kw) — [Evan Bacon](https://twitter.com/Baconbrix)
 
-You can watch all of the talks at React Conf 2024 at [conf2024.react.dev](https://conf2024.react.dev/talks).
+**React 및 React Native 팀과의 Q&A도 진행되었습니다.**
+
+- [Michael Chan](https://twitter.com/chantastic)이 진행한 [React Q&A](https://www.youtube.com/embed/T8TZQ6k4SLE&t=27518s)
+- [Jamon Holmgren](https://twitter.com/jamonholmgren)이 진행한 [React Native Q&A](https://www.youtube.com/embed/0ckOUBiuxVY&t=27935s)
+
+[conf2024.react.dev](https://conf2024.react.dev/talks)에서 React Conf 2024의 모든 강연을 시청할 수 있습니다.
 
 ## React Conf 2021 {/*react-conf-2021*/}
 
