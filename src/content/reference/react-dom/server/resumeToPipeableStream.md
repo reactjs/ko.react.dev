@@ -47,6 +47,7 @@ async function handler(request, response) {
 
 #### 매개변수 {/*parameters*/}
 
+<<<<<<< HEAD
 * `reactNode`: `prerender`를 호출할 때 전달한 React 노드입니다. 예를 들어, `<App />`과 같은 JSX 엘리먼트입니다. 전체 문서를 나타낼 것으로 예상되므로 `App` 컴포넌트는 `<html>` 태그를 렌더링해야 합니다.
 * `postponedState`: [prerender API](/reference/react-dom/static/prerender)에서 반환된 불분명한 `postpone` 객체로, 저장해 둔 위치(예: Redis, 파일, S3)에서 불러옵니다.
 * `options`**(선택사항)**: 스트리밍 옵션을 지정할 수 있는 객체입니다.
@@ -55,6 +56,17 @@ async function handler(request, response) {
   * `onError`**(선택사항)**: 서버 오류가 발생할 때마다, [복구 가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-outside-the-shell) 또는 [불가능](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)에 관계없이 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. [충돌 보고를 기록](/reference/react-dom/server/renderToPipeableStream#logging-crashes-on-the-server)하도록 재정의하는 경우에도 반드시 `console.error`를 호출해야 합니다.
   * `onShellReady`**(선택사항)**: [셸](/reference/react-dom/server/renderToPipeableStream#specifying-what-goes-into-the-shell)이 렌더링된 직후에 실행되는 콜백입니다. 여기서 `pipe`를 호출해 스트리밍을 시작할 수 있습니다. React는 HTML 로딩 폴백을 콘텐츠로 대체하는 인라인 `<script>` 태그와 함께 셸 뒤에 [추가 콘텐츠를 스트리밍](/reference/react-dom/server/renderToPipeableStream#streaming-more-content-as-it-loads)합니다.
   * `onShellError`**(선택사항)**: 초기 셸을 렌더링하는 데 오류가 발생하면 호출되는 콜백입니다. 오류를 인자로 받습니다. 스트림에서 아직 바이트가 전송되지 않았고, `onShellReady`나 `onAllReady`도 호출되지 않으므로 [폴백 HTML 셸을 출력](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)하거나 prelude를 사용할 수 있습니다.
+=======
+* `reactNode`: The React node you called `prerender` with. For example, a JSX element like `<App />`. It is expected to represent the entire document, so the `App` component should render the `<html>` tag.
+* `postponedState`: The opaque `postpone` object returned from a [prerender API](/reference/react-dom/static/index), loaded from wherever you stored it (e.g. redis, a file, or S3).
+* **optional** `options`: An object with streaming options.
+  * **optional** `nonce`: A [`nonce`](http://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) string to allow scripts for [`script-src` Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src).
+  * **optional** `signal`: An [abort signal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) that lets you [abort server rendering](#aborting-server-rendering) and render the rest on the client.
+  * <CanaryBadge /> **optional** `onBrowserBailout`: A callback React calls when it recovers from [`browser()`](/reference/react-dom/browser) by leaving a Suspense fallback for the browser to replace. It receives an `Error` describing the browser-only render and an `errorInfo` object containing the `componentStack`. If a reason was passed to `browser`, it is available as `error.cause`. By default, React does nothing. [See how to report browser-only rendering.](/reference/react-dom/browser#reporting-browser-only-rendering-on-the-server)
+  * **optional** `onError`: A callback that fires whenever there is a server error, whether [recoverable](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) or [not.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell) By default, this only calls `console.error`. If you override it to [log crash reports,](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server) make sure that you still call `console.error`.
+  * **optional** `onShellReady`: A callback that fires right after the [shell](#specifying-what-goes-into-the-shell) has finished. You can call `pipe` here to start streaming. React will [stream the additional content](#streaming-more-content-as-it-loads) after the shell along with the inline `<script>` tags that replace the HTML loading fallbacks with the content.
+  * **optional** `onShellError`: A callback that fires if there was an error rendering the shell. It receives the error as an argument. No bytes were emitted from the stream yet, and neither `onShellReady` nor `onAllReady` will get called, so you can [output a fallback HTML shell](#recovering-from-errors-inside-the-shell) or use the prelude.
+>>>>>>> 12d692da47e77cdc558b928fcfbaf4e71c6d0cec
 
 
 #### 반환값 {/*returns*/}
