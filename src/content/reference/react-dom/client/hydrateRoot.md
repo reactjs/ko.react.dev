@@ -271,7 +271,13 @@ export default function App() {
 
 ---
 
+<<<<<<< HEAD
 ### 서로 다른 클라이언트와 서버 컨텐츠 다루기 {/*handling-different-client-and-server-content*/}
+=======
+{/* TODO: Remove this subsection when browser is available in Stable. */}
+
+### Handling different client and server content {/*handling-different-client-and-server-content*/}
+>>>>>>> 7c36f7ac329fe3cf2e11222edce9a535158c2cab
 
 의도적으로 서버와 클라이언트에서 서로 다른 내용을 렌더링하길 원한다면, 서버와 클라이언트에서 서로 다른 방법으로 렌더링하면 됩니다. 클라이언트에서 서버와는 다른 것을 렌더링할 때 클라이언트에선 [Effect](/reference/react/useEffect)에서 `true`로 할당되는 `isClient`같은 [State 변수](/reference/react/useState)를 읽을 수 있습니다.
 
@@ -315,6 +321,10 @@ export default function App() {
 </Sandpack>
 
 이 방법은 처음엔 서버와 동일한 결과물을 렌더링하여 불일치 문제를 피하고, Hydration 후에 새로운 결과물이 동기적으로 렌더링됩니다.
+
+Use this approach when you want the client-rendered content to be different from the initial server-rendered HTML.
+
+<Canary>If a component should render only in the browser, call [`use(browser())`](/reference/react/use#use-browser) instead of waiting for an Effect.</Canary>
 
 <Pitfall>
 
