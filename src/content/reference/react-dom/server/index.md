@@ -14,8 +14,13 @@ title: Server React DOM APIs
 
 다음 메서드들은 브라우저, Deno 및 일부 최신 엣지 런타임을 포함하는 [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)이 있는 환경에서만 사용할 수 있습니다.
 
+<<<<<<< HEAD
 * [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)은 React 트리를 [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)으로 렌더링합니다.
 * [`resume`](/reference/react-dom/server/resume)은 [`prerender`](/reference/react-dom/static/prerender) 결과를 [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)으로 재개합니다.
+=======
+* [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) renders a React tree to a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
+* [`resume`](/reference/react-dom/server/resume) resumes [`prerender`](/reference/react-dom/static/prerender) to a [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
+>>>>>>> f3d9794fc31f4a3faf7e863984d37f4ae86b3290
 
 
 <Note>
@@ -29,8 +34,13 @@ Node.js에도 호환성을 위해 이 메서드들이 포함되어 있지만, �
 
 이 메서드들은 [Node.js 스트림](https://nodejs.org/api/stream.html)을 지원하는 환경에서만 사용할 수 있습니다.
 
+<<<<<<< HEAD
 * [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream)은 React 트리를 파이프 가능한 [Node.js 스트림](https://nodejs.org/api/stream.html)으로 렌더링합니다.
 * [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream)은 [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream) 결과를 파이프 가능한 [Node.js 스트림](https://nodejs.org/api/stream.html)으로 재개합니다.
+=======
+* [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) renders a React tree to a pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
+* [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream) resumes [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream) to a pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
+>>>>>>> f3d9794fc31f4a3faf7e863984d37f4ae86b3290
 
 ---
 
