@@ -179,7 +179,44 @@ async function Author({id}) {
 
 서버 컴포넌트는 서버에서 다시 페칭함으로써 데이터에 액세스하고 다시 렌더링하여 동적으로 만들 수 있습니다. 이 새로운 애플리케이션 아키텍처는 서버 중심의 다중 페이지 앱(Server-Centric Multi-Page Apps)의 간단한 "request/response" 모델과 클라이언트 중심의 단일 페이지 앱(Client-Centric Single-Page Apps)의 원활한 상호작용을 결합하여 두 가지 장점을 모두 제공합니다.
 
+<<<<<<< HEAD
 ### 서버 컴포넌트에 상호작용 추가하기 {/*adding-interactivity-to-server-components*/}
+=======
+### Rendering a context provider in a Server Component {/*rendering-a-context-provider-in-a-server-component*/}
+
+Server Components cannot create context, but they can render a context provider imported from a Client Component module.
+
+Create and export the context from a file with the [`'use client'`](/reference/rsc/use-client) directive:
+
+```js
+// user-context.js
+'use client';
+import { createContext } from 'react';
+
+export const UserContext = createContext(null);
+```
+
+Then import and render the context directly from a Server Component:
+
+```js
+// server-component.js
+import { UserContext } from './user-context';
+
+export async function Layout({ children }) {
+  const currentUser = await getCurrentUser();
+
+  return (
+    <UserContext value={currentUser}>
+      {children}
+    </UserContext>
+  );
+}
+```
+
+Client Components rendered inside this provider can read its value with [`use`](/reference/react/use) or [`useContext`](/reference/react/useContext).
+
+### Adding interactivity to Server Components {/*adding-interactivity-to-server-components*/}
+>>>>>>> 8efce7853d0fc59e615ed1c253799cf1798b8428
 
 서버 컴포넌트는 브라우저로 전송되지 않으므로 `useState`와 같은 상호작용 API를 사용할 수 없습니다. 서버 컴포넌트에 상호작용을 추가하려면 `"use client"` 지시어를 사용하여 클라이언트 컴포넌트와 함께 구성할 수 있습니다.
 

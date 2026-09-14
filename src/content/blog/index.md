@@ -10,7 +10,17 @@ title: React 블로그
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<<<<<<< HEAD
 <BlogCard title="React 재단: Linux 재단이 후원하는 React의 새로운 보금자리" date="2026년 2월 24일" url="/blog/2026/02/24/the-react-foundation">
+=======
+<BlogCard title="React 19.3" date="September 9, 2026" url="/blog/2026/09/09/react-19-3">
+
+React 19.3 adds new features like View Transitions, Fragment Refs, browser(), Trusted Types, and more. In this post ...
+
+</BlogCard>
+
+<BlogCard title="The React Foundation: A New Home for React Hosted by the Linux Foundation" date="February 24, 2026" url="/blog/2026/02/24/the-react-foundation">
+>>>>>>> 8efce7853d0fc59e615ed1c253799cf1798b8428
 
 The React Foundation has officially launched under the Linux Foundation.
 
@@ -144,7 +154,11 @@ React 팀은 몇 가지 업데이트를 공유하게 되어 기쁩니다.
 
 ### 모든 릴리스 노트 {/*all-release-notes*/}
 
+<<<<<<< HEAD
 React의 모든 릴리스 내용이 별도의 블로그 게시글로 작성되지는 않지만, 모든 릴리스에 대한 세부 변경 내역은 React 저장소의 [`CHANGELOG.md`](https://github.com/facebook/react/blob/main/CHANGELOG.md) 파일 또는 [Releases](https://github.com/facebook/react/releases) 페이지에서 확인할 수 있습니다.
+=======
+Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md`](https://github.com/react/react/blob/main/CHANGELOG.md) file in the React repository, as well as on the [Releases](https://github.com/react/react/releases) page.
+>>>>>>> 8efce7853d0fc59e615ed1c253799cf1798b8428
 
 ---
 

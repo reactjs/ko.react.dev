@@ -92,9 +92,13 @@ Transition을 사용하면 UI가 리렌더링 도중에도 반응성을 유지�
 
 <Note>
 
+<<<<<<< HEAD
 `startTransition`은 [`useTransition`](/reference/react/useTransition)과 매우 유사하지만, Transition이 대기 중인지 추적하는 `isPending` 플래그를 제공하지 않습니다. `useTransition`을 사용할 수 없을 때 `startTransition`을 호출할 수 있습니다. 예를 들어, `startTransition`은 데이터 라이브러리에서와 같이 컴포넌트 외부에서 작동합니다.
 
 [Transition에 대한 학습 및 예시는 `useTransition` 페이지에서 확인하세요.](/reference/react/useTransition)
+=======
+`startTransition` is very similar to [`useTransition`](/reference/react/useTransition), except that it does not provide the `isPending` flag to track whether a Transition is ongoing. The standalone function is also not associated with a component, so if the function passed to it throws an error or returns a rejected Promise, React reports the error with [`reportError`](https://developer.mozilla.org/en-US/docs/Web/API/Window/reportError). You can call `startTransition` when `useTransition` is not available. For example, `startTransition` works outside components, such as from a data library.
+>>>>>>> 8efce7853d0fc59e615ed1c253799cf1798b8428
 
 
 </Note>

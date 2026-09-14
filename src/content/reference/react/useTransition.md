@@ -738,6 +738,10 @@ export default function ContactTab() {
 button { margin-right: 10px }
 b { display: inline-block; margin-right: 10px; }
 .pending { color: #777; }
+.items {
+  max-height: 300px;
+  overflow: auto;
+}
 ```
 
 </Sandpack>
@@ -893,6 +897,10 @@ export default function ContactTab() {
 button { margin-right: 10px }
 b { display: inline-block; margin-right: 10px; }
 .pending { color: #777; }
+.items {
+  max-height: 300px;
+  overflow: auto;
+}
 ```
 
 </Sandpack>
@@ -1561,7 +1569,11 @@ main {
 
 ### Error boundary로 사용자에게 오류 표시하기 {/*displaying-an-error-to-users-with-error-boundary*/}
 
+<<<<<<< HEAD
 `startTransition`에 전달된 함수에서 오류가 발생하면 [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용하여 사용자에게 오류를 표시할 수 있습니다. error boundary를 사용하려면 `useTransition`을 호출하는 컴포넌트를 error boundary로 감싸면 됩니다. `startTransition`에 전달된 함수에서 오류가 발생하면 error boundary의 Fallback이 표시됩니다.
+=======
+If a function passed to `startTransition` throws an error or returns a rejected Promise, you can display an error to your user with an [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). To use an error boundary, wrap the component where you are calling the `useTransition` in an error boundary. Once the function passed to `startTransition` errors, the fallback for the error boundary will be displayed.
+>>>>>>> 8efce7853d0fc59e615ed1c253799cf1798b8428
 
 <Sandpack>
 
@@ -1732,7 +1744,15 @@ startTransition(async () => {
 
 ### 컴포넌트 외부에서 `useTransition`을 호출하고 싶습니다 {/*i-want-to-call-usetransition-from-outside-a-component*/}
 
+<<<<<<< HEAD
 Hook이기 때문에 컴포넌트 외부에서 `useTransition`을 호출할 수 없습니다. 이 경우 대신 독립형 [`startTransition`](/reference/react/startTransition) 메서드를 사용하세요. 동일한 방식으로 작동하지만 `isPending` 표시기를 제공하지 않습니다.
+=======
+You can't call `useTransition` outside a component because it's a Hook. In this
+case, the standalone [`startTransition`](/reference/react/startTransition)
+function can mark state updates as Transitions. It does not provide the
+`isPending` flag. Because the standalone function is not associated with a
+component, an Error Boundary cannot handle errors from its Transition.
+>>>>>>> 8efce7853d0fc59e615ed1c253799cf1798b8428
 
 ---
 
