@@ -300,7 +300,11 @@ Node.js 환경에서는 여전히 Node 스트림 API 사용을 강력히 권장�
 
 컴파일러 활성화 규칙의 전체 목록은 [린터 문서](/reference/eslint-plugin-react-hooks#recommended)를 참조하세요.
 
+<<<<<<< HEAD
 전체 변경 사항 목록은 [`eslint-plugin-react-hooks` 변경 로그](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/CHANGELOG.md#610)를 참조하세요.
+=======
+Check out the `eslint-plugin-react-hooks` [changelog for a full list of changes](https://github.com/react/react/blob/main/packages/eslint-plugin-react-hooks/CHANGELOG.md#610).
+>>>>>>> b011783fcc7a39da9eefd4274147a1444860a12b
 
 ---
 
@@ -314,6 +318,7 @@ CSS 선택자에 유효하지 않은 특수 문자를 사용하는 원래 의도
 
 ## 변경 로그 {/*changelog*/}
 
+<<<<<<< HEAD
 기타 주목할 만한 변경 사항
 - `react-dom`: 호이스팅 가능한 스타일에서 nonce 사용 허용 [#32461](https://github.com/facebook/react/pull/32461)
 - `react-dom`: React 소유 노드가 텍스트 콘텐츠도 포함하는 경우 컨테이너로 사용하는 것에 대한 경고 [#32774](https://github.com/facebook/react/pull/32774)
@@ -332,6 +337,26 @@ CSS 선택자에 유효하지 않은 특수 문자를 사용하는 원래 의도
 - `react-dom`: 렌더링 중 중단 후 중단 시 행잉(hanging) 방지 [#34192](https://github.com/facebook/react/pull/34192)
 
 전체 변경 사항 목록은 [변경 로그](https://github.com/facebook/react/blob/main/CHANGELOG.md)를 참조하세요.
+=======
+Other notable changes
+- `react-dom`: Allow nonce to be used on hoistable styles [#32461](https://github.com/react/react/pull/32461)
+- `react-dom`: Warn for using a React owned node as a Container if it also has text content [#32774](https://github.com/react/react/pull/32774)
+
+Notable bug fixes
+- `react`: Stringify context as "SomeContext" instead of "SomeContext.Provider" [#33507](https://github.com/react/react/pull/33507)
+- `react`: Fix infinite useDeferredValue loop in popstate event [#32821](https://github.com/react/react/pull/32821)
+- `react`: Fix a bug when an initial value was passed to useDeferredValue [#34376](https://github.com/react/react/pull/34376)
+- `react`: Fix a crash when submitting forms with Client Actions [#33055](https://github.com/react/react/pull/33055)
+- `react`: Hide/unhide the content of dehydrated suspense boundaries if they resuspend [#32900](https://github.com/react/react/pull/32900)
+- `react`: Avoid stack overflow on wide trees during Hot Reload [#34145](https://github.com/react/react/pull/34145)
+- `react`: Improve component stacks in various places [#33629](https://github.com/react/react/pull/33629), [#33724](https://github.com/react/react/pull/33724), [#32735](https://github.com/react/react/pull/32735), [#33723](https://github.com/react/react/pull/33723)
+- `react`: Fix a bug with React.use inside React.lazy-ed Component [#33941](https://github.com/react/react/pull/33941)
+- `react-dom`: Stop warning when ARIA 1.3 attributes are used [#34264](https://github.com/react/react/pull/34264)
+- `react-dom`: Fix a bug with deeply nested Suspense inside Suspense fallbacks [#33467](https://github.com/react/react/pull/33467)
+- `react-dom`: Avoid hanging when suspending after aborting while rendering [#34192](https://github.com/react/react/pull/34192)
+
+For a full list of changes, please see the [Changelog](https://github.com/react/react/blob/main/CHANGELOG.md).
+>>>>>>> b011783fcc7a39da9eefd4274147a1444860a12b
 
 
 ---

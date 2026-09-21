@@ -1,8 +1,8 @@
 ---
 title: addTransitionType
-version: canary
 ---
 
+<<<<<<< HEAD
 <Canary>
 
 **`addTransitionType` API는 현재 React의 카나리 및 실험적 채널에서만 사용할 수 있습니다.**
@@ -11,6 +11,8 @@ version: canary
 
 </Canary>
 
+=======
+>>>>>>> b011783fcc7a39da9eefd4274147a1444860a12b
 <Intro>
 
 `addTransitionType`은 트랜지션의 원인을 명시할 수 있습니다.

@@ -44,12 +44,22 @@ async function handler(request, writable) {
 
 #### 매개변수 {/*parameters*/}
 
+<<<<<<< HEAD
 * `reactNode`: `prerender`를 호출할 때 전달한 React 노드입니다. 예를 들어, `<App />`과 같은 JSX 엘리먼트입니다. 전체 문서를 나타낼 것으로 예상되므로 `App` 컴포넌트는 `<html>` 태그를 렌더링해야 합니다.
 * `postponedState`: [prerender API](/reference/react-dom/static/prerender)에서 반환된 불분명한 `postpone` 객체로, 저장해 둔 위치(예: Redis, 파일, S3)에서 불러옵니다.
 * `options`**(선택사항)**: 스트리밍 옵션을 지정할 수 있는 객체입니다.
   * `nonce`**(선택사항)**: [`script-src` Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)에서 스크립트를 허용하기 위한 [`nonce`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) 문자열입니다.
   * `signal`**(선택사항)**: [서버 렌더링을 중단](/reference/react-dom/server/renderToReadableStream#aborting-server-rendering)하고 나머지를 클라이언트에서 렌더링할 수 있게 하는 [중단 신호](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)입니다.
   * `onError`**(선택사항)**: 서버 오류가 발생할 때마다, [복구 가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) 또는 [불가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)에 관계없이 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. [충돌 보고를 기록](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server)하도록 재정의하는 경우에도 반드시 `console.error`를 호출해야 합니다.
+=======
+* `reactNode`: The React node you called `prerender` with. For example, a JSX element like `<App />`. It is expected to represent the entire document, so the `App` component should render the `<html>` tag.
+* `postponedState`: The opaque `postpone` object returned from a [prerender API](/reference/react-dom/static/index), loaded from wherever you stored it (e.g. redis, a file, or S3).
+* **optional** `options`: An object with streaming options.
+  * **optional** `nonce`: A [`nonce`](http://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) string to allow scripts for [`script-src` Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src).
+  * **optional** `signal`: An [abort signal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) that lets you [abort server rendering](#aborting-server-rendering) and render the rest on the client.
+  * **optional** `onBrowserBailout`: A callback React calls when it recovers from [`browser()`](/reference/react-dom/browser) by leaving a Suspense fallback for the browser to replace. It receives an `Error` describing the browser-only render and an `errorInfo` object containing the `componentStack`. If a reason was passed to `browser`, it is available as `error.cause`. By default, React does nothing. [See how to report browser-only rendering.](/reference/react-dom/browser#reporting-browser-only-rendering-on-the-server)
+  * **optional** `onError`: A callback that fires whenever there is a server error, whether [recoverable](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) or [not.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell) By default, this only calls `console.error`. If you override it to [log crash reports,](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server) make sure that you still call `console.error`.
+>>>>>>> b011783fcc7a39da9eefd4274147a1444860a12b
 
 
 #### 반환값 {/*returns*/}
@@ -203,10 +213,18 @@ main(document.getElementById("container"));
 export async function flushReadableStreamToFrame(readable, frame) {
   const document = frame.contentWindow.document;
   const decoder = new TextDecoder();
-  for await (const chunk of readable) {
-    const partialHTML = decoder.decode(chunk);
+  const reader = readable.getReader();
+
+  while (true) {
+    const {done, value} = await reader.read();
+    if (done) {
+      break;
+    }
+    const partialHTML = decoder.decode(value, {stream: true});
     document.write(partialHTML);
   }
+
+  document.write(decoder.decode());
 }
 
 // This doesn't need to be an error.
@@ -234,5 +252,10 @@ export function sleep(timeoutMS) {
 
 ### 추가로 읽어보기 {/*further-reading*/}
 
+<<<<<<< HEAD
 재개 동작은 `renderToReadableStream`과 유사합니다. 더 많은 예시는 [`renderToReadableStream`의 사용법 섹션](/reference/react-dom/server/renderToReadableStream#usage)을 확인하세요.
 [`prerender`의 사용법 섹션](/reference/react-dom/static/prerender#usage)에는 `prerender` 사용 방법에 대한 예시가 포함되어 있습니다.
+=======
+Resuming behaves like `renderToReadableStream`. For more examples, check out the [usage section of `renderToReadableStream`](/reference/react-dom/server/renderToReadableStream#usage).
+The [usage section of `prerender`](/reference/react-dom/static/prerender#usage) includes examples of how to use `prerender` specifically.
+>>>>>>> b011783fcc7a39da9eefd4274147a1444860a12b

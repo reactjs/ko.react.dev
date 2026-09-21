@@ -28,7 +28,11 @@ title: "공통 컴포넌트 (예: <div>)"
 
 * `children`: React 노드(요소, 문자열, 숫자, [Portal](/reference/react-dom/createPortal), `null`, `undefined`, 불리언 타입과 같은 빈 노드, 또는 다른 React 노드의 배열) 입니다. 컴포넌트 내부의 콘텐츠를 지정합니다. JSX를 사용하면 일반적으로 `<div><span /></div>`처럼 태그를 중첩하여 `children` Prop을 암묵적으로 지정합니다.
 
+<<<<<<< HEAD
 * `dangerouslySetInnerHTML`: 원시 HTML 문자열이 포함된`{ __html: '<p>some html</p>' }` 형식의 객체입니다. DOM 노드의 [`innerHTML`](https://developer.mozilla.org/ko/docs/Web/API/Element/innerHTML) 프로퍼티를 덮어쓰고 전달된 HTML을 내부에 표시합니다. 이것은 매우 주의해서 사용해야 합니다. 내부 HTML을 신뢰할 수 없는 경우 (예: 사용자 데이터를 기반으로 하는 경우) [XSS](https://ko.wikipedia.org/wiki/%EC%82%AC%EC%9D%B4%ED%8A%B8_%EA%B0%84_%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8C%85) 취약점이 발생할 수 있습니다. [`dangerouslySetInnerHTML`에 대해 더 알아보려면 읽어보세요.](#dangerously-setting-the-inner-html)
+=======
+* `dangerouslySetInnerHTML`: An object of the form `{ __html: '<p>some html</p>' }` with a raw HTML string or [`TrustedHTML`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedHTML) value inside. Overrides the [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of the DOM node and displays the passed HTML inside. This should be used with extreme caution! If the HTML inside isn't trusted (for example, if it's based on user data), you risk introducing an [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) vulnerability. [Read more about using `dangerouslySetInnerHTML`.](#dangerously-setting-the-inner-html)
+>>>>>>> b011783fcc7a39da9eefd4274147a1444860a12b
 
 * `ref`: [`useRef`](/reference/react/useRef)나 [`createRef`](/reference/react/createRef)의 `ref` 객체, 또는 [`ref` 콜백 함수](#ref-callback)거나 [legacy refs](https://ko.legacy.reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs)의 문자열입니다. 해당 `ref`는 해당 노드의 DOM 요소로 채워집니다. [`ref`를 사용하여 DOM을 조작하는 방법에 대해 더 자세히 알아보세요.](#manipulating-a-dom-node-with-a-ref)
 
@@ -36,7 +40,11 @@ title: "공통 컴포넌트 (예: <div>)"
 
 * `suppressHydrationWarning`: 불리언 타입입니다. [서버 렌더링](/reference/react-dom/server)을 사용할 때, 일반적으로 서버와 클라이언트가 서로 다른 콘텐츠를 렌더링하면 경고가 표시됩니다. 일부 드문 사례(예: 타임스탬프)에서는 정확한 일치를 보장하기가 매우 어렵거나 불가능합니다. `suppressHydrationWarning`를 `true`로 설정하면, React는 해당 요소의 어트리뷰트와 콘텐츠가 일치하지 않아도 경고를 표시하지 않습니다. 이는 한 단계의 깊이에서만 작동하며, 탈출구로 사용하기 위한 것입니다. 과도하게 사용하지 마세요. [Suppressing Hydration 오류에 대해서 읽어보세요.](/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors)
 
+<<<<<<< HEAD
 * `style`: `{ fontWeight: 'bold', margin: 20 }`와 같이 CSS 스타일이 있는 객체입니다. DOM의 [`style`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) 프로퍼티에서 `fontWeight` 대신 `font-weight`로 작성하는 것과 마찬가지로 CSS 프로퍼티의 이름도 `camelCase`로 작성해야 합니다. 또한 문자열이나 숫자를 값으로 전달할 수 있습니다. `width: 100`와 같은 숫자를 전달한다면 React는 [단위가 없는 프로퍼티](https://github.com/facebook/react/blob/81d4ee9ca5c405dce62f64e61506b8e155f38d8d/packages/react-dom-bindings/src/shared/CSSProperty.js#L8-L57)가 아니라면 자동으로 `px` ("픽셀")로 값을 추가합니다. `style`은 스타일 값을 미리 알 수 없는 동적 스타일에만 사용하는 것을 권장합니다. 그 외의 경우에는 `className`을 사용하여 일반 CSS 클래스를 사용하는 것이 더 효율적입니다. [`className`과 `style`에 대해서 더 자세히 알아보세요.](#applying-css-styles)
+=======
+* `style`: An object with CSS styles, for example `{ fontWeight: 'bold', margin: 20 }`. Similarly to the DOM [`style`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) property, the CSS property names need to be written as `camelCase`, for example `fontWeight` instead of `font-weight`. You can pass strings or numbers as values. If you pass a number, like `width: 100`, React will automatically append `px` ("pixels") to the value unless it's a [unitless property.](https://github.com/react/react/blob/81d4ee9ca5c405dce62f64e61506b8e155f38d8d/packages/react-dom-bindings/src/shared/CSSProperty.js#L8-L57) We recommend using `style` only for dynamic styles where you don't know the style values ahead of time. In other cases, applying plain CSS classes with `className` is more efficient. [Read more about `className` and `style`.](#applying-css-styles)
+>>>>>>> b011783fcc7a39da9eefd4274147a1444860a12b
 
 아래의 표준 DOM Props는 내장된 모든 컴포넌트에서 지원합니다.
 
@@ -925,7 +933,11 @@ export default function Form() {
 
 ### 내부 HTML을 위험하게 설정하는 경우 {/*dangerously-setting-the-inner-html*/}
 
+<<<<<<< HEAD
 다음과 같이 원시 HTML 문자열을 요소에 전달할 수 있습니다.
+=======
+You can pass a raw HTML string or a [`TrustedHTML`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedHTML) value to an element like so:
+>>>>>>> b011783fcc7a39da9eefd4274147a1444860a12b
 
 ```js
 const markup = { __html: '<p>some raw html</p>' };
@@ -934,7 +946,13 @@ return <div dangerouslySetInnerHTML={markup} />;
 
 **이것은 위험합니다. 기본 DOM의 [`innerHTML`](https://developer.mozilla.org/ko/docs/Web/API/Element/innerHTML) 프로퍼티와 마찬가지로 각별히 주의해야 합니다. 마크업이 완전히 신뢰할 수 있는 출처에서 제공되는 것이 아니라면,  [XSS](https://ko.wikipedia.org/wiki/%EC%82%AC%EC%9D%B4%ED%8A%B8_%EA%B0%84_%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8C%85) 취약점이 쉽게 나타날 수 있습니다.**
 
+<<<<<<< HEAD
 예를 들어, 마크다운을 HTML로 변환하는 라이브러리를 사용할 때, 해당 파서에 버그가 없고 사용자가 자신의 입력만 볼 수 있다고 믿는다면 다음과 같이 결과 HTML을 표시할 수 있습니다.
+=======
+If your site enforces [Trusted Types](https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API), pass a `TrustedHTML` value created by your security policy as `__html`. React passes the value to the browser without converting it to a string, allowing the browser to validate it. Your policy must still ensure that any input used to create the value is trusted and sanitized.
+
+For example, if you use a Markdown library that converts Markdown to HTML, you trust that its parser doesn't contain bugs, and the user only sees their own input, you can display the resulting HTML like this:
+>>>>>>> b011783fcc7a39da9eefd4274147a1444860a12b
 
 <Sandpack>
 

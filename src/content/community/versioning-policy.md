@@ -131,9 +131,15 @@ React의 모든 변경 사항은 대중에게 공개되기 전에 광범위한 �
   ```console
   yarn upgrade react@canary react-dom@canary
   ```
+<<<<<<< HEAD
 - 업데이트된 패키지에 대해 테스트 스위트를 실행하세요.
 - 테스트가 모두 통과하면, 당신의 프로젝트는 다음 마이너 React 릴리즈와 함께 정상 작동할 것입니다.
 - 예상치 못한 문제가 발생하면, [이슈를 제출](https://github.com/facebook/react/issues)해 주세요.
+=======
+- Run your test suite against the updated packages.
+- If everything passes, great! You can expect that your project will work with the next minor React release.
+- If something breaks unexpectedly, please let us know by [filing an issue](https://github.com/react/react/issues).
+>>>>>>> b011783fcc7a39da9eefd4274147a1444860a12b
 
 Next.js는 이 워크플로우를 사용하는 프로젝트입니다. 예시로 Next.js의 [CircleCI 설정](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml)을 참조할 수 있습니다.
 
@@ -163,4 +169,8 @@ Next.js는 이 워크플로우를 사용하는 프로젝트입니다. 예시로 
 
 새로운 실험적 기능들이 준비되면 [React 블로그](/blog)에 게시될 것입니다. 그러나, 모든 실험적 기능들을 공개한다는 의미는 아닙니다.
 
+<<<<<<< HEAD
 변경 사항에 대한 보다 자세한 내용은 깃허브 저장소의 [커밋 로그](https://github.com/facebook/react/commits/main)에서 확인할 수 있습니다.
+=======
+You can always refer to our public GitHub repository's [history](https://github.com/react/react/commits/main) for a comprehensive list of changes.
+>>>>>>> b011783fcc7a39da9eefd4274147a1444860a12b
