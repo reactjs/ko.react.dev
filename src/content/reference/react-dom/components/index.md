@@ -36,6 +36,7 @@ React는 브라우저에 내장된 모든 [HTML](https://developer.mozilla.org/e
 
 다음 브라우저 컴포넌트들을 사용하면 외부 리소스를 로드하거나 메타데이터로 문서에 주석을 달 수 있습니다.
 
+* [`<img>`](/reference/react-dom/components/img)
 * [`<link>`](/reference/react-dom/components/link)
 * [`<meta>`](/reference/react-dom/components/meta)
 * [`<script>`](/reference/react-dom/components/script)
@@ -91,7 +92,7 @@ React는 브라우저에 내장된 모든 HTML 컴포넌트를 지원합니다. 
 * [`<html>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html)
 * [`<i>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i)
 * [`<iframe>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)
-* [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)
+* [`<img>`](/reference/react-dom/components/img)
 * [`<input>`](/reference/react-dom/components/input)
 * [`<ins>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins)
 * [`<kbd>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd)
