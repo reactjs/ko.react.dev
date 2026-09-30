@@ -12,11 +12,7 @@ title: React 버전
 
 이전의 주<sup>Major, 主</sup> 버전에 대한 기록은 아래에서 찾을 수 있습니다.
 
-<<<<<<< HEAD
 ## 최신 버전: 19.2 {/*latest-version*/}
-=======
-## Latest version: 19.3 {/*latest-version*/}
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 
 - [react.dev](https://react.dev) {/*docs-19*/}
 
@@ -325,11 +321,7 @@ React 15 이전 버전의 경우, [15.react.dev](https://15.react.dev)를 참고
 
 ### 최초의 커밋 {/*initial-commit*/}
 
-<<<<<<< HEAD
 React는 2013년 5월 29일에 오픈소스로 공개되었습니다. 최초의 커밋은 [`75897c`: 최초 공개 릴리즈](https://github.com/facebook/react/commit/75897c2dcd1dd3a6ca46284dd37e13d22b4b16b4)입니다.
-=======
-React was open-sourced on May 29, 2013. The initial commit is: [`75897c`: Initial public release](https://github.com/react/react/commit/75897c2dcd1dd3a6ca46284dd37e13d22b4b16b4)
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 
 첫 블로그 게시글을 참고하세요. [왜 우리는 React를 만들었는가?](https://legacy.reactjs.org/blog/2013/06/05/why-react.html)
 

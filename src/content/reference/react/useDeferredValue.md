@@ -87,7 +87,6 @@ function SearchPage() {
 
 <Note>
 
-<<<<<<< HEAD
 이 예시에서는 Suspense 지원 데이터 소스 중 하나를 사용한다고 가정합니다.
 
 - [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/app/getting-started/fetching-data#with-suspense) 같이 Suspense를 지원하는 프레임워크로 데이터 가져오기.
@@ -95,11 +94,6 @@ function SearchPage() {
 - [`use`](/reference/react/use)를 사용해서 Promise 값 읽기.
 
 [Suspense와 그 한계에 대해 자세히 알아보기](/reference/react/Suspense).
-=======
-This example assumes you use a data source that [activates a Suspense boundary](/reference/react/Suspense#what-activates-a-suspense-boundary), such as a Promise you read with [`use`](/reference/react/use).
-
-[Learn more about Suspense.](/reference/react/Suspense)
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 
 </Note>
 

@@ -4,11 +4,7 @@ title: use
 
 <Intro>
 
-<<<<<<< HEAD
 `use`는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [Context](/learn/passing-data-deeply-with-context)와 같은 데이터를 참조하는 React API입니다.
-=======
-`use` is a React API that lets you read a resource during rendering, such as a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 
 ```js
 const value = use(resource);
@@ -24,11 +20,7 @@ const value = use(resource);
 
 ### `use(context)` {/*use-context*/}
 
-<<<<<<< HEAD
 컴포넌트에서 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)나 [Context](/learn/passing-data-deeply-with-context)와 같은 데이터를 참조하려면 `use`를 사용하세요.
-=======
-Call `use` with a [context](/learn/passing-data-deeply-with-context) to read its value. Unlike [`useContext`](/reference/react/useContext), `use` can be called within loops and conditional statements like `if`.
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 
 ```js
 import { use } from 'react';
@@ -38,7 +30,6 @@ function Button() {
   // ...
 ```
 
-<<<<<<< HEAD
 다른 React Hook과 달리 `use`는 `if`와 같은 조건문과 반복문 내부에서 호출할 수 있습니다. 다만, 다른 React Hook과 같이 `use`는 컴포넌트 또는 Hook에서만 호출해야 합니다.
 
 Promise와 함께 호출될 때 `use` API는 [`Suspense`](/reference/react/Suspense) 및 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)와 통합됩니다. `use`에 전달된 Promise가 대기<sup>Pending</sup>하는 동안 `use`를 호출하는 컴포넌트는 *Suspend*됩니다. `use`를 호출하는 컴포넌트가 Suspense 경계로 둘러싸여 있으면 Fallback이 표시됩니다. Promise가 리졸브되면 Suspense Fallback은 `use` API가 반환한 컴포넌트로 대체됩니다. `use`에 전달된 Promise가 Reject되면 가장 가까운 Error Boundary의 Fallback이 표시됩니다.
@@ -62,100 +53,10 @@ Promise와 함께 호출될 때 `use` API는 [`Suspense`](/reference/react/Suspe
 ---
 
 ## 사용법 {/*usage*/}
-=======
-[See more examples below.](#usage-context)
-
-#### Parameters {/*context-parameters*/}
-
-* `context`: A [context](/learn/passing-data-deeply-with-context) created with [`createContext`](/reference/react/createContext).
-
-#### Returns {/*context-returns*/}
-
-The context value for the passed context, determined by the closest context provider above the calling component. If there is no provider, the returned value is the `defaultValue` passed to [`createContext`](/reference/react/createContext).
-
-#### Caveats {/*context-caveats*/}
-
-* `use` must be called inside a Component or a Hook.
-* Reading context with `use` is not supported in [Server Components](/reference/rsc/server-components).
-
----
-
-### `use(promise)` {/*use-promise*/}
-
-Call `use` with a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to read its resolved value. The component calling `use` *suspends* while the Promise is pending. Despite its name, `use` is not a Hook. Unlike Hooks, it can be called inside loops and conditional statements like `if`.
-
-```js
-import { use } from 'react';
-
-function MessageComponent({ messagePromise }) {
-  const message = use(messagePromise);
-  // ...
-```
-
-If the component that calls `use` is wrapped in a [Suspense](/reference/react/Suspense) boundary, the fallback will be displayed while the Promise is pending. Once the Promise is resolved, the Suspense fallback is replaced by the rendered components using the data returned by `use`. If the Promise is rejected, the fallback of the nearest [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) will be displayed.
-
-[See more examples below.](#usage-promises)
-
-#### Parameters {/*promise-parameters*/}
-
-* `promise`: A [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) whose resolved value you want to read. The Promise must be [cached](#caching-promises-for-client-components) so that the same instance is reused across re-renders.
-
-#### Returns {/*promise-returns*/}
-
-The resolved value of the Promise.
-
-#### Caveats {/*promise-caveats*/}
-
-* `use` must be called inside a Component or a Hook.
-* `use` cannot be called inside a try-catch block. Instead, wrap your component in an [Error Boundary](#displaying-an-error-with-an-error-boundary) to catch the error and display a fallback.
-* Promises passed to `use` must be cached so the same Promise instance is reused across re-renders. [See caching Promises below.](#caching-promises-for-client-components)
-* When passing a Promise from a Server Component to a Client Component, its resolved value must be [serializable](/reference/rsc/use-client#serializable-types).
-
----
-
-### `use(browser())` {/*use-browser*/}
-
-Call `use` with the value returned by [`browser`](/reference/react-dom/browser) in a component that should only render in the browser:
-
-```js
-import { use } from 'react';
-import { browser } from 'react-dom';
-
-function BrowserOnly() {
-  use(browser('This component requires browser APIs.'));
-  return <BrowserContent />;
-}
-```
-
-During server rendering, the component calling `use(browser())` suspends and React includes the closest [`<Suspense>`](/reference/react/Suspense) boundary's fallback in the HTML. In the browser, `use(browser())` returns `undefined`, so the component renders normally.
-
-[See an example below.](#rendering-a-component-only-in-the-browser)
-
-#### Parameters {/*browser-parameters*/}
-
-* `browserValue`: The value returned by [`browser`](/reference/react-dom/browser).
-
-#### Returns {/*browser-returns*/}
-
-`use(browser())` returns `undefined` in the browser.
-
-#### Caveats {/*browser-caveats*/}
-
-* The component calling `use(browser())` must be inside a `<Suspense>` boundary during server rendering. Without one, server rendering fails.
-* In a React Server Components app, `use(browser())` must be called from a [Client Component](/reference/rsc/use-client), not a [Server Component](/reference/rsc/server-components).
-
----
-
-## Usage (Context) {/*usage-context*/}
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 
 ### `use`를 사용하여 Context 참조하기 {/*reading-context-with-use*/}
 
-<<<<<<< HEAD
 [Context](/learn/passing-data-deeply-with-context)가 `use`에 전달되면 [`useContext`](/reference/react/useContext)와 유사하게 작동합니다. `useContext`는 컴포넌트의 최상위 수준에서 호출해야 하지만, `use`는 `if`와 같은 조건문이나 `for`와 같은 반복문 내부에서 호출할 수 있습니다. `use`는 유연하므로 `useContext`보다 선호됩니다.
-=======
-When a [context](/learn/passing-data-deeply-with-context) is passed to `use`, it works similarly to [`useContext`](/reference/react/useContext). While `useContext` must be called at the top level of your component, `use` can be called inside conditionals like `if` and loops like `for`.
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 
 ```js [[2, 4, "theme"], [1, 4, "ThemeContext"]]
 import { use } from 'react';
@@ -292,15 +193,9 @@ function Button({ show, children }) {
 
 </Sandpack>
 
-<<<<<<< HEAD
 ### 서버에서 클라이언트로 데이터 스트리밍하기 {/*streaming-data-from-server-to-client*/}
 
 <CodeStep step={1}>서버 컴포넌트</CodeStep>에서 <CodeStep step={2}>클라이언트 컴포넌트</CodeStep>로 Promise Prop을 전달하여 서버에서 클라이언트로 데이터를 스트리밍할 수 있습니다.
-=======
-### Reading a Promise from context {/*reading-a-promise-from-context*/}
-
-To share asynchronous data without prop drilling, set a Promise as a context value, then read it with `use(context)` and resolve it with `use(promise)`:
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 
 ```js
 import { use } from 'react';
@@ -1106,11 +1001,7 @@ export default function App() {
 }
 ```
 
-<<<<<<< HEAD
 <CodeStep step={2}>클라이언트 컴포넌트</CodeStep>는 <CodeStep step={4}> Prop으로 받은 Promise</CodeStep>를 <CodeStep step={5}>`use`</CodeStep> API에 전달합니다. <CodeStep step={2}>클라이언트 컴포넌트</CodeStep>는 서버 컴포넌트가 처음에 생성한 <CodeStep step={4}>Promise</CodeStep>에서 값을 읽을 수 있습니다.
-=======
-The Client Component then takes the Promise it received as a prop and passes it to the `use` API. This allows the Client Component to read the value from the Promise that was initially created by the Server Component.
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 
 ```js
 // message.js
@@ -1123,11 +1014,7 @@ export function Message({ messagePromise }) {
   return <p>Here is the message: {messageContent}</p>;
 }
 ```
-<<<<<<< HEAD
 <CodeStep step={2}>`Message`</CodeStep>는 <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep>로 래핑되어 있으므로 Promise가 리졸브될 때까지 Fallback이 표시됩니다. Promise가 리졸브되면 <CodeStep step={5}>`use`</CodeStep> Hook이 값을 참조하고 <CodeStep step={2}>`Message`</CodeStep> 컴포넌트가 Suspense Fallback을 대체합니다.
-=======
-Because `Message` is wrapped in a [Suspense](/reference/react/Suspense) boundary, the fallback will be displayed until the Promise is resolved. When the Promise is resolved, the value will be read by the `use` API and the `Message` component will replace the Suspense fallback.
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 
 <Sandpack>
 
@@ -1192,7 +1079,6 @@ root.render(
 
 </Sandpack>
 
-<<<<<<< HEAD
 <Note>
 
 서버 컴포넌트에서 클라이언트 컴포넌트로 Promise를 전달할 때 리졸브된 값이 직렬화 가능해야 합니다. 함수는 직렬화할 수 없으므로 Promise의 리졸브 값이 될 수 없습니다.
@@ -1200,19 +1086,11 @@ root.render(
 </Note>
 
 
-=======
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 <DeepDive>
 
 #### Promise를 서버 컴포넌트에서 처리해야 하나요, 아니면 클라이언트 컴포넌트에서 처리해야 하나요? {/*resolve-promise-in-server-or-client-component*/}
 
-<<<<<<< HEAD
 Promise는 서버 컴포넌트에서 클라이언트 컴포넌트로 전달할 수 있으며 `use` API를 통해 클라이언트 컴포넌트에서 리졸브됩니다. 또한 서버 컴포넌트에서 `await`을 사용하여 Promise를 리졸브하고 데이터를 클라이언트 컴포넌트에 Prop으로 전달하는 방법도 존재합니다.
-=======
-If you have a Promise, at some point you need to unwrap it to read its value. You unwrap it with `await` in a Server Component, and with `use` in a Client Component.
-
-Usually, the simplest option is to `await` the Promise where you create it. The Server Component suspends until the data is ready, and everything below it waits too:
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 
 ```js
 // Server Component
@@ -1222,7 +1100,6 @@ export default async function App() {
 }
 ```
 
-<<<<<<< HEAD
 하지만 [서버 컴포넌트](/reference/rsc/server-components)에서 `await`을 사용하면 `await` 문이 완료될 때까지 렌더링이 차단됩니다. 서버 컴포넌트에서 클라이언트 컴포넌트로 Promise를 Prop으로 전달하면 Promise가 서버 컴포넌트의 렌더링을 차단하는 것을 방지할 수 있습니다.
 
 </DeepDive>
@@ -1242,59 +1119,6 @@ export default async function App() {
 #### Error Boundary를 사용하여 오류 표시하기 {/*displaying-an-error-to-users-with-error-boundary*/}
 
 Promise가 거부될 때 오류를 표시하고 싶다면 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 사용합니다. Error Boundary를 사용하려면 `use` API 를 호출하는 컴포넌트를 Error Boundary로 래핑합니다. `use`에 전달된 Promise가 거부되면 Error Boundary에 대한 Fallback이 표시됩니다.
-=======
-However, you don't have to unwrap it right away. You can pass the Promise down as a prop, and unwrap it deeper in the tree. The component that reads the Promise still suspends, but only that part of the tree waits for the data. Wrap that component in a [`<Suspense>`](/reference/react/Suspense) boundary to show a fallback while the rest of the page renders immediately.
-
-For example, a deeper Server Component can `await` the Promise it receives:
-
-```js
-import { Suspense } from 'react';
-
-// Server Component
-export default function App() {
-  const messagePromise = fetchMessage();
-  return (
-    <Suspense fallback={<p>⌛Downloading message...</p>}>
-      <Message messagePromise={messagePromise} />
-    </Suspense>
-  );
-}
-
-// Server Component
-async function Message({ messagePromise }) {
-  const messageContent = await messagePromise;
-  return <p>{messageContent}</p>;
-}
-```
-
-Or, in a separate file, a Client Component can unwrap the same Promise with `use`:
-
-```js
-// Client Component
-'use client';
-
-import { use } from 'react';
-
-export function Message({ messagePromise }) {
-  const messageContent = use(messagePromise);
-  return <p>{messageContent}</p>;
-}
-```
-
-Passing the Promise down works the same way in both cases. Both suspend where the Promise is read, and both unblock the UI above. The only difference is that Client Components can't `await` during render, so they unwrap the Promise with `use` instead. A common case is interactive content like popovers and tooltips, where the data is only needed after a hover or click.
-
-See [Revealing content together at once](/reference/react/Suspense#revealing-content-together-at-once) for guidance on where to place Suspense boundaries.
-
-</DeepDive>
-
----
-
-### Displaying an error with an Error Boundary {/*displaying-an-error-with-an-error-boundary*/}
-
-If the Promise passed to `use` is rejected, the error propagates to the nearest [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). Wrap the component that calls `use` in an Error Boundary to display a fallback when the Promise is rejected.
-
-In the example below, `fetchData` rejects on the first attempt and succeeds on retry. The Error Boundary catches the rejection and shows a fallback with a "Try again" button.
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 
 <Sandpack>
 
@@ -1366,7 +1190,6 @@ export function refetchData(url) {
   return fetchData(url);
 }
 
-<<<<<<< HEAD
 ```js src/index.js hidden
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -1381,37 +1204,6 @@ root.render(
     <App />
   </StrictMode>
 );
-=======
-async function getData(url) {
-  // Add a fake delay to make the loading state visible.
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  if (url === '/the-beatles/albums') {
-    // Fail the first attempt to demonstrate the Error Boundary,
-    // then succeed on retry.
-    if (!retried) {
-      throw new Error('Example Error: Failed to fetch albums');
-    }
-    return [{
-      id: 13,
-      title: 'Let It Be',
-      year: 1970
-    }, {
-      id: 12,
-      title: 'Abbey Road',
-      year: 1969
-    }, {
-      id: 11,
-      title: 'Yellow Submarine',
-      year: 1969
-    }, {
-      id: 10,
-      title: 'The Beatles',
-      year: 1968
-    }];
-  }
-  throw new Error('Not implemented');
-}
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 ```
 
 ```json package.json hidden
@@ -1427,15 +1219,9 @@ async function getData(url) {
 ```
 </Sandpack>
 
-<<<<<<< HEAD
 #### `Promise.catch`로 대체 값 제공하기 {/*providing-an-alternative-value-with-promise-catch*/}
 
 `use`에 전달된 Promise가 거부될 때 대체 값을 제공하려면 Promise의 <CodeStep step={1}>[`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)</CodeStep> 메서드를 사용합니다.
-=======
----
-
-## Usage (Browser) {/*usage-browser*/}
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 
 ### Rendering a component only in the browser {/*rendering-a-component-only-in-the-browser*/}
 
@@ -1486,110 +1272,7 @@ export default function App() {
 }
 ```
 
-<<<<<<< HEAD
 Promise의 <CodeStep step={1}>`catch`</CodeStep> 메서드를 사용하려면 Promise 객체에서 <CodeStep step={1}>`catch`</CodeStep>를 호출합니다. <CodeStep step={1}>`catch`</CodeStep>는 오류 메시지를 인수로 받는 함수를 인수로 받습니다. <CodeStep step={1}>`catch`</CodeStep>에 전달된 함수가 <CodeStep step={2}>반환</CodeStep>하는 값은 모두 Promise의 리졸브 값으로 사용됩니다.
-=======
-```js src/Document.js hidden
-import App from './App.js';
-
-export default function Document() {
-  return (
-    <html lang="en">
-      <head>
-        <title>Saved draft</title>
-        <style>{`
-          h1 { font-size: 24px; margin-top: 0; }
-          label, textarea { display: block; }
-          textarea { margin-top: 5px; }
-        `}</style>
-      </head>
-      <body>
-        <App />
-      </body>
-    </html>
-  );
-}
-```
-
-```js src/index.js hidden
-import { hydrateRoot } from 'react-dom/client';
-import { renderToReadableStream } from 'react-dom/server';
-import Document from './Document.js';
-import { flushReadableStreamToFrame } from './demo-helpers.js';
-import './styles.css';
-
-async function main(frame) {
-  const stream = await renderToReadableStream(<Document />);
-  await flushReadableStreamToFrame(stream, frame);
-
-  // Wait so both the fallback and hydrated content are visible.
-  await new Promise(resolve => setTimeout(resolve, 1200));
-  hydrateRoot(frame.contentDocument, <Document />);
-}
-
-main(document.getElementById('preview'));
-```
-
-```js src/demo-helpers.js hidden
-export async function flushReadableStreamToFrame(readable, frame) {
-  const doc = frame.contentWindow.document;
-  const decoder = new TextDecoder();
-  const reader = readable.getReader();
-
-  while (true) {
-    const {done, value} = await reader.read();
-    if (done) {
-      break;
-    }
-    doc.write(decoder.decode(value, {stream: true}));
-  }
-
-  doc.write(decoder.decode());
-  doc.close();
-}
-```
-
-```html public/index.html hidden
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Browser-only rendering</title>
-</head>
-<body>
-  <iframe id="preview" title="Rendered page"></iframe>
-</body>
-</html>
-```
-
-```css src/styles.css hidden
-iframe {
-  width: 100%;
-  height: 160px;
-  border: 0;
-}
-```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "19.3.0-canary-f1f7ed2a-20260904",
-    "react-dom": "19.3.0-canary-f1f7ed2a-20260904",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
-</Sandpack>
-
-During server rendering, `use(browser())` suspends the component and React includes the closest Suspense boundary's fallback in the HTML. In the browser, `use(browser())` returns `undefined` and the saved draft renders normally.
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 
 ---
 
@@ -1598,7 +1281,6 @@ During server rendering, `use(browser())` suspends the component and React inclu
 
 ### I'm getting an error: "Suspense Exception: This is not a real error!" {/*suspense-exception-error*/}
 
-<<<<<<< HEAD
 React 컴포넌트 또는 Hook 함수 외부에서, 혹은 `try`-`catch` 블록에서 `use`를 호출하고 있는 경우입니다. `try`-`catch` 블록 내에서 `use`를 호출하는 경우 컴포넌트를 Error Boundary로 래핑하거나 Promise의 `catch`를 호출하여 오류를 발견하고 Promise를 다른 값으로 리졸브합니다. [이러한 예시들을 확인하세요](#dealing-with-rejected-promises).
 
 
@@ -1616,18 +1298,6 @@ function MessageComponent({messagePromise}) {
 function MessageComponent({messagePromise}) {
   // ✅ `use`를 컴포넌트에서 호출하고 있습니다.
   const message = use(messagePromise);
-=======
-You are calling `use` inside a try-catch block. `use` throws internally to integrate with Suspense, so it cannot be wrapped in try-catch. Instead, wrap the component that calls `use` in an [Error Boundary](#displaying-an-error-with-an-error-boundary) to handle errors.
-
-```jsx
-function Albums({ albumsPromise }) {
-  try {
-    // ❌ Don't wrap `use` in try-catch
-    const albums = use(albumsPromise);
-  } catch (e) {
-    return <p>Error</p>;
-  }
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
   // ...
 ```
 

@@ -9,7 +9,6 @@ React.js 관련 컨퍼런스를 알고 계신가요? 이곳에 추가해주세�
 
 ## 예정 컨퍼런스 {/*upcoming-conferences*/}
 
-<<<<<<< HEAD
 ### React Paris 2026 {/*react-paris-2026*/}
 March 26 - 27, 2026. In-person in Paris, France (hybrid event)
 
@@ -20,8 +19,6 @@ April 14-17, 2026. In-person in London
 
 [Website](https://india.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) - [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)
 
-=======
->>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 ### ZurichJS Conf 2026 {/*zurichjs-conf-2026*/}
 September 10-11, 2026. In-person in Zurich, Switzerland
 
