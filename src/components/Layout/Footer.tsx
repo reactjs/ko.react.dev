@@ -382,7 +382,7 @@ export function Footer() {
             </ExternalLink>
             <ExternalLink
               aria-label="React on Github"
-              href="https://github.com/facebook/react"
+              href="https://github.com/react/react"
               className={socialLinkClasses}>
               <IconGitHub />
             </ExternalLink>

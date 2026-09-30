@@ -1,6 +1,5 @@
 ---
 title: addTransitionType
-version: canary
 ---
 
 <Canary>

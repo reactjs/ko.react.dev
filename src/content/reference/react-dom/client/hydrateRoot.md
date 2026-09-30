@@ -316,6 +316,10 @@ export default function App() {
 
 이 방법은 처음엔 서버와 동일한 결과물을 렌더링하여 불일치 문제를 피하고, Hydration 후에 새로운 결과물이 동기적으로 렌더링됩니다.
 
+Use this approach when you want the client-rendered content to be different from the initial server-rendered HTML.
+
+If a component should render only in the browser, call [`use(browser())`](/reference/react/use#use-browser) instead of waiting for an Effect.
+
 <Pitfall>
 
 이 방법은 두 번 렌더링해야 하기 때문에 Hydration을 느리게 합니다. 느린 통신 상태일 경우에 사용자 경험을 염두하세요. 초기 HTML이 렌더링된 한참 후에야 자바스크립트 코드를 불러옵니다. 따라서 Hydration 이후에 바로 다른 UI를 렌더링하는 것은 사용자에게 UI가 삐걱거리는 것처럼 보일 수 있습니다.

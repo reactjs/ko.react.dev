@@ -311,31 +311,31 @@ React 18의 Strict 모드에서는 개발 모드에서 컴포넌트를 마운트
 
 ### React DOM Server {/*react-dom-server-1*/}
 
-* Add the new streaming renderer. ([#14144](https://github.com/facebook/react/pull/14144), [#20970](https://github.com/facebook/react/pull/20970), [#21056](https://github.com/facebook/react/pull/21056), [#21255](https://github.com/facebook/react/pull/21255), [#21200](https://github.com/facebook/react/pull/21200), [#21257](https://github.com/facebook/react/pull/21257), [#21276](https://github.com/facebook/react/pull/21276), [#22443](https://github.com/facebook/react/pull/22443), [#22450](https://github.com/facebook/react/pull/22450), [#23247](https://github.com/facebook/react/pull/23247), [#24025](https://github.com/facebook/react/pull/24025), [#24030](https://github.com/facebook/react/pull/24030) by [@sebmarkbage](https://github.com/sebmarkbage))
-* Fix context providers in SSR when handling multiple requests. ([#23171](https://github.com/facebook/react/pull/23171)  by [@frandiox](https://github.com/frandiox))
-* Revert to client render on text mismatch. ([#23354](https://github.com/facebook/react/pull/23354)  by [@acdlite](https://github.com/acdlite))
-* Deprecate `renderToNodeStream`. ([#23359](https://github.com/facebook/react/pull/23359)  by [@sebmarkbage](https://github.com/sebmarkbage))
-* Fix a spurious error log in the new server renderer. ([#24043](https://github.com/facebook/react/pull/24043)  by [@eps1lon](https://github.com/eps1lon))
-* Fix a bug in the new server renderer. ([#22617](https://github.com/facebook/react/pull/22617)  by [@shuding](https://github.com/shuding))
-* Ignore function and symbol values inside custom elements on the server. ([#21157](https://github.com/facebook/react/pull/21157)  by [@sebmarkbage](https://github.com/sebmarkbage))
+* Add the new streaming renderer. ([#14144](https://github.com/react/react/pull/14144), [#20970](https://github.com/react/react/pull/20970), [#21056](https://github.com/react/react/pull/21056), [#21255](https://github.com/react/react/pull/21255), [#21200](https://github.com/react/react/pull/21200), [#21257](https://github.com/react/react/pull/21257), [#21276](https://github.com/react/react/pull/21276), [#22443](https://github.com/react/react/pull/22443), [#22450](https://github.com/react/react/pull/22450), [#23247](https://github.com/react/react/pull/23247), [#24025](https://github.com/react/react/pull/24025), [#24030](https://github.com/react/react/pull/24030) by [@sebmarkbage](https://github.com/sebmarkbage))
+* Fix context providers in SSR when handling multiple requests. ([#23171](https://github.com/react/react/pull/23171)  by [@frandiox](https://github.com/frandiox))
+* Revert to client render on text mismatch. ([#23354](https://github.com/react/react/pull/23354)  by [@acdlite](https://github.com/acdlite))
+* Deprecate `renderToNodeStream`. ([#23359](https://github.com/react/react/pull/23359)  by [@sebmarkbage](https://github.com/sebmarkbage))
+* Fix a spurious error log in the new server renderer. ([#24043](https://github.com/react/react/pull/24043)  by [@eps1lon](https://github.com/eps1lon))
+* Fix a bug in the new server renderer. ([#22617](https://github.com/react/react/pull/22617)  by [@shuding](https://github.com/shuding))
+* Ignore function and symbol values inside custom elements on the server. ([#21157](https://github.com/react/react/pull/21157)  by [@sebmarkbage](https://github.com/sebmarkbage))
 
 ### React DOM Test Utils {/*react-dom-test-utils*/}
 
-* Throw when `act` is used in production. ([#21686](https://github.com/facebook/react/pull/21686)  by [@acdlite](https://github.com/acdlite))
-* Support disabling spurious act warnings with `global.IS_REACT_ACT_ENVIRONMENT`. ([#22561](https://github.com/facebook/react/pull/22561)  by [@acdlite](https://github.com/acdlite))
-* Expand act warning to cover all APIs that might schedule React work. ([#22607](https://github.com/facebook/react/pull/22607)  by [@acdlite](https://github.com/acdlite))
-* Make `act` batch updates. ([#21797](https://github.com/facebook/react/pull/21797)  by [@acdlite](https://github.com/acdlite))
-* Remove warning for dangling passive effects. ([#22609](https://github.com/facebook/react/pull/22609)  by [@acdlite](https://github.com/acdlite))
+* Throw when `act` is used in production. ([#21686](https://github.com/react/react/pull/21686)  by [@acdlite](https://github.com/acdlite))
+* Support disabling spurious act warnings with `global.IS_REACT_ACT_ENVIRONMENT`. ([#22561](https://github.com/react/react/pull/22561)  by [@acdlite](https://github.com/acdlite))
+* Expand act warning to cover all APIs that might schedule React work. ([#22607](https://github.com/react/react/pull/22607)  by [@acdlite](https://github.com/acdlite))
+* Make `act` batch updates. ([#21797](https://github.com/react/react/pull/21797)  by [@acdlite](https://github.com/acdlite))
+* Remove warning for dangling passive effects. ([#22609](https://github.com/react/react/pull/22609)  by [@acdlite](https://github.com/acdlite))
 
 ### React Refresh {/*react-refresh*/}
 
-* Track late-mounted roots in Fast Refresh. ([#22740](https://github.com/facebook/react/pull/22740)  by [@anc95](https://github.com/anc95))
-* Add `exports` field to `package.json`. ([#23087](https://github.com/facebook/react/pull/23087)  by [@otakustay](https://github.com/otakustay))
+* Track late-mounted roots in Fast Refresh. ([#22740](https://github.com/react/react/pull/22740)  by [@anc95](https://github.com/anc95))
+* Add `exports` field to `package.json`. ([#23087](https://github.com/react/react/pull/23087)  by [@otakustay](https://github.com/otakustay))
 
 ### Server Components (Experimental) {/*server-components-experimental*/}
 
-* Add Server Context support. ([#23244](https://github.com/facebook/react/pull/23244)  by [@salazarm](https://github.com/salazarm))
-* Add `lazy` support. ([#24068](https://github.com/facebook/react/pull/24068)  by [@gnoff](https://github.com/gnoff))
-* Update webpack plugin for webpack 5 ([#22739](https://github.com/facebook/react/pull/22739)  by [@michenly](https://github.com/michenly))
-* Fix a mistake in the Node loader. ([#22537](https://github.com/facebook/react/pull/22537)  by [@btea](https://github.com/btea))
-* Use `globalThis` instead of `window` for edge environments. ([#22777](https://github.com/facebook/react/pull/22777)  by [@huozhi](https://github.com/huozhi))
+* Add Server Context support. ([#23244](https://github.com/react/react/pull/23244)  by [@salazarm](https://github.com/salazarm))
+* Add `lazy` support. ([#24068](https://github.com/react/react/pull/24068)  by [@gnoff](https://github.com/gnoff))
+* Update webpack plugin for webpack 5 ([#22739](https://github.com/react/react/pull/22739)  by [@michenly](https://github.com/michenly))
+* Fix a mistake in the Node loader. ([#22537](https://github.com/react/react/pull/22537)  by [@btea](https://github.com/btea))
+* Use `globalThis` instead of `window` for edge environments. ([#22777](https://github.com/react/react/pull/22777)  by [@huozhi](https://github.com/huozhi))

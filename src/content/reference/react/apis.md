@@ -33,6 +33,7 @@ Resource에서 값을 읽으려면 다음 API를 사용하세요.
 function MessageComponent({ messagePromise }) {
   const message = use(messagePromise);
   const theme = use(ThemeContext);
+  use(browser());
   // ...
 }
 ```

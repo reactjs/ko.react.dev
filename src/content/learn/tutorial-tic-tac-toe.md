@@ -911,11 +911,10 @@ React 개발자 도구를 사용하면 React 컴포넌트의 Props와 State를 �
 
 ![React 개발자 도구로 페이지의 컴포넌트 선택하기](../images/tutorial/devtools-select.gif)
 
-<Note>
+![components tab](../images/tutorial/components-tab.png)
 
 로컬 환경에서 개발하는 경우, React 개발자 도구는 [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/), 그리고 [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil) 브라우저의 확장 프로그램으로 사용할 수 있습니다. 설치 후 브라우저 개발자 도구에 React를 사용하는 사이트를 위한 *Components* 탭이 나타납니다.
 
-</Note>
 
 ## 게임 완료하기 {/*completing-the-game*/}
 
