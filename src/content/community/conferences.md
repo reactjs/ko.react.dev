@@ -25,12 +25,12 @@ September 10-11, 2026. In-person in Zurich, Switzerland
 [Website](https://conf.zurichjs.com?utm_campaign=ZurichJS_Conf&utm_source=referral&utm_content=reactjs_community_conferences) - [Twitter](https://x.com/zurichjs) - [LinkedIn](https://www.linkedin.com/company/zurichjs/)
 
 ### React Alicante 2026 {/*react-alicante-2026*/}
-Sep 24 - 26,  2026. In-person in Alicante
+Sep 24 - 26, 2026. In-person in Alicante
 
 [Website](https://reactalicante.es//) - [Twitter](https://x.com/ReactAlicante)
 
 ### CityJS Athens 2026 {/*cityjs-athens-2026*/}
-October 21-23,  2026. In-person in Athens
+October 21-23, 2026. In-person in Athens
 
 [Website](https://athens.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) - [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)
 
@@ -68,13 +68,13 @@ April 24, 2027. In-person in Tokyo, Japan
 
 [Website](https://reactconf.jp/) - [Twitter](https://x.com/reactconfjp)
 
-### CityJS London 2026 {/*cityjs-london-2026*/}
-April 14-17,  2026. In-person in London
+### CityJS London 2026 {/*cityjs-london-2026-past*/}
+April 14-17, 2026. In-person in London
 
 [Website](https://india.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) - [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)
 
 
-### React Paris 2026 {/*react-paris-2026*/}
+### React Paris 2026 {/*react-paris-2026-past*/}
 March 26 - 27, 2026. In-person in Paris, France (hybrid event)
 
 [Website](https://react.paris/) - [Twitter](https://x.com/BeJS_)
@@ -153,7 +153,7 @@ May 28 - 30, 2025. In-person in Kraków, Poland + remote
 ### CityJS London 2025 {/*cityjs-london*/}
 April 23 - 25, 2025. In-person in London, UK
 
-[Website](https://london.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) -  [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)
+[Website](https://london.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) - [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)
 
 ### React Paris 2025 {/*react-paris-2025*/}
 March 20 - 21, 2025. In-person in Paris, France (hybrid event)

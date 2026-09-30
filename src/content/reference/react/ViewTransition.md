@@ -81,18 +81,56 @@ React는 내부적으로 `startViewTransition`을 자체적으로 호출하므�
 * `default`**(선택사항)**: 문자열 또는 객체. 다른 일치하는 활성화 프로퍼티가 없을 때 사용되는 [View Transition 클래스](#view-transition-class)입니다.
 * `name`**(선택사항)**: 문자열 또는 객체. 공유 엘리먼트 transition에 사용되는 View Transition의 이름입니다. 제공되지 않으면 React는 예상치 못한 애니메이션을 방지하기 위해 각 View Transition에 대해 고유한 이름을 사용합니다.
 
-#### 콜백 {/*events*/}
+### View Transition Event {/*view-transition-event*/}
 
-이 콜백을 사용하면 [animate](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate) API를 사용하여 애니메이션을 명령적으로 조정할 수 있습니다.
+View Transition Events allow you to control the animation with JavaScript using the [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API):
 
-* `onEnter`**(선택사항)**: 함수. React는 "enter" 애니메이션 후에 `onEnter`를 호출합니다.
-* `onExit`**(선택사항)**: 함수. React는 "exit" 애니메이션 후에 `onExit`를 호출합니다.
-* `onShare`**(선택사항)**: 함수. React는 "share" 애니메이션 후에 `onShare`를 호출합니다.
-* `onUpdate`**(선택사항)**: 함수. React는 "update" 애니메이션 후에 `onUpdate`를 호출합니다.
+```js
+<ViewTransition
+  onEnter={instance => {/* ... */}}
+  onExit={instance => {/* ... */}}
+/>
+```
 
-각 콜백은 다음을 인수로 받습니다.
-- `element`: 애니메이션된 DOM 엘리먼트입니다.
-- `types`: 애니메이션에 포함된 [Transition 타입](/reference/react/addTransitionType)입니다.
+#### Props {/*view-transition-event-props*/}
+
+- **optional** `onEnter`: Called when an "enter" animation is triggered.
+- **optional** `onExit`: Called when an "exit" animation is triggered.
+- **optional** `onShare`: Called when a "share" animation is triggered.
+- **optional** `onUpdate`: Called when an "update" animation is triggered.
+
+
+#### Caveats {/*view-transition-event-caveats*/}
+- Only one event fires per `<ViewTransition>` per Transition. `onShare` takes precedence over `onEnter` and `onExit`.
+- Each event should return a **cleanup function**. The cleanup function is called when the View Transition finishes, allowing you to cancel or cleanup any animations.
+
+#### Arguments {/*view-transition-event-arguments*/}
+
+Each event receives two arguments:
+
+- `instance`: A View Transition instance that provides access to the view transition [pseudo-elements](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#the_view_transition_process)
+  - `old`: The `::view-transition-old` pseudo-element.
+  - `new`: The `::view-transition-new` pseudo-element.
+  - `name`: The `view-transition-name` string for this boundary.
+  - `group`: The `::view-transition-group` pseudo-element.
+  - `imagePair`: The `::view-transition-image-pair` pseudo-element.
+- `types`: An `Array<string>` of [Transition Types](/reference/react/addTransitionType) included in the animation. Empty array if no types were specified.
+
+For example, you can define a `onEnter` event that drives the animation using JavaScript:
+
+```js
+<ViewTransition
+  onEnter={(instance, types) => {
+    const anim = instance.new.animate([{opacity: 0}, {opacity: 1}], {
+      duration: 500,
+    });
+    return () => anim.cancel();
+  }}>
+  <div>...</div>
+</ViewTransition>
+```
+
+See [Animating with JavaScript](#animating-with-javascript) for more examples.
 
 ### View Transition 클래스 {/*view-transition-class*/}
 

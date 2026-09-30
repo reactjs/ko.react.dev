@@ -52,6 +52,39 @@ Promise와 함께 호출될 때 `use` API는 [`Suspense`](/reference/react/Suspe
 
 ---
 
+### `use(browser())` {/*use-browser*/}
+
+Call `use` with the value returned by [`browser`](/reference/react-dom/browser) in a component that should only render in the browser:
+
+```js
+import { use } from 'react';
+import { browser } from 'react-dom';
+
+function BrowserOnly() {
+  use(browser('This component requires browser APIs.'));
+  return <BrowserContent />;
+}
+```
+
+During server rendering, the component calling `use(browser())` suspends and React includes the closest [`<Suspense>`](/reference/react/Suspense) boundary's fallback in the HTML. In the browser, `use(browser())` returns `undefined`, so the component renders normally.
+
+[See an example below.](#rendering-a-component-only-in-the-browser)
+
+#### Parameters {/*browser-parameters*/}
+
+* `browserValue`: The value returned by [`browser`](/reference/react-dom/browser).
+
+#### Returns {/*browser-returns*/}
+
+`use(browser())` returns `undefined` in the browser.
+
+#### Caveats {/*browser-caveats*/}
+
+* The component calling `use(browser())` must be inside a `<Suspense>` boundary during server rendering. Without one, server rendering fails.
+* In a React Server Components app, `use(browser())` must be called from a [Client Component](/reference/rsc/use-client), not a [Server Component](/reference/rsc/server-components).
+
+---
+
 ## 사용법 {/*usage*/}
 
 ### `use`를 사용하여 Context 참조하기 {/*reading-context-with-use*/}
@@ -193,9 +226,9 @@ function Button({ show, children }) {
 
 </Sandpack>
 
-### 서버에서 클라이언트로 데이터 스트리밍하기 {/*streaming-data-from-server-to-client*/}
+### Context에서 Promise 읽기 {/*reading-a-promise-from-context*/}
 
-<CodeStep step={1}>서버 컴포넌트</CodeStep>에서 <CodeStep step={2}>클라이언트 컴포넌트</CodeStep>로 Promise Prop을 전달하여 서버에서 클라이언트로 데이터를 스트리밍할 수 있습니다.
+Prop drilling 없이 비동기 데이터를 공유하려면 Promise를 Context 값으로 설정한 다음 `use(context)`로 읽고 `use(promise)`로 리졸브합니다.
 
 ```js
 import { use } from 'react';
@@ -1223,6 +1256,30 @@ root.render(
 
 `use`에 전달된 Promise가 거부될 때 대체 값을 제공하려면 Promise의 <CodeStep step={1}>[`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)</CodeStep> 메서드를 사용합니다.
 
+```js [[1, 6, "catch"],[2, 7, "return"]]
+import { Message } from './message.js';
+
+export default function App() {
+  const messagePromise = new Promise((resolve, reject) => {
+    reject();
+  }).catch(() => {
+    return "no new message found.";
+  });
+
+  return (
+    <Suspense fallback={<p>waiting for message...</p>}>
+      <Message messagePromise={messagePromise} />
+    </Suspense>
+  );
+}
+```
+
+Promise의 <CodeStep step={1}>`catch`</CodeStep> 메서드를 사용하려면 Promise 객체에서 <CodeStep step={1}>`catch`</CodeStep>를 호출합니다. <CodeStep step={1}>`catch`</CodeStep>는 오류 메시지를 인수로 받는 함수를 인수로 받습니다. <CodeStep step={1}>`catch`</CodeStep>에 전달된 함수가 <CodeStep step={2}>반환</CodeStep>하는 값은 모두 Promise의 리졸브 값으로 사용됩니다.
+
+---
+
+## 브라우저 사용법 {/*usage-browser*/}
+
 ### Rendering a component only in the browser {/*rendering-a-component-only-in-the-browser*/}
 
 Pass the value returned by [`browser`](/reference/react-dom/browser) to `use` inside a component that should only render in the browser.
@@ -1272,7 +1329,106 @@ export default function App() {
 }
 ```
 
-Promise의 <CodeStep step={1}>`catch`</CodeStep> 메서드를 사용하려면 Promise 객체에서 <CodeStep step={1}>`catch`</CodeStep>를 호출합니다. <CodeStep step={1}>`catch`</CodeStep>는 오류 메시지를 인수로 받는 함수를 인수로 받습니다. <CodeStep step={1}>`catch`</CodeStep>에 전달된 함수가 <CodeStep step={2}>반환</CodeStep>하는 값은 모두 Promise의 리졸브 값으로 사용됩니다.
+```js src/Document.js hidden
+import App from './App.js';
+
+export default function Document() {
+  return (
+    <html lang="en">
+      <head>
+        <title>Saved draft</title>
+        <style>{`
+          h1 { font-size: 24px; margin-top: 0; }
+          label, textarea { display: block; }
+          textarea { margin-top: 5px; }
+        `}</style>
+      </head>
+      <body>
+        <App />
+      </body>
+    </html>
+  );
+}
+```
+
+```js src/index.js hidden
+import { hydrateRoot } from 'react-dom/client';
+import { renderToReadableStream } from 'react-dom/server';
+import Document from './Document.js';
+import { flushReadableStreamToFrame } from './demo-helpers.js';
+import './styles.css';
+
+async function main(frame) {
+  const stream = await renderToReadableStream(<Document />);
+  await flushReadableStreamToFrame(stream, frame);
+
+  // Wait so both the fallback and hydrated content are visible.
+  await new Promise(resolve => setTimeout(resolve, 1200));
+  hydrateRoot(frame.contentDocument, <Document />);
+}
+
+main(document.getElementById('preview'));
+```
+
+```js src/demo-helpers.js hidden
+export async function flushReadableStreamToFrame(readable, frame) {
+  const doc = frame.contentWindow.document;
+  const decoder = new TextDecoder();
+  const reader = readable.getReader();
+
+  while (true) {
+    const {done, value} = await reader.read();
+    if (done) {
+      break;
+    }
+    doc.write(decoder.decode(value, {stream: true}));
+  }
+
+  doc.write(decoder.decode());
+  doc.close();
+}
+```
+
+```html public/index.html hidden
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Browser-only rendering</title>
+</head>
+<body>
+  <iframe id="preview" title="Rendered page"></iframe>
+</body>
+</html>
+```
+
+```css src/styles.css hidden
+iframe {
+  width: 100%;
+  height: 160px;
+  border: 0;
+}
+```
+
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "19.3.0-canary-f1f7ed2a-20260904",
+    "react-dom": "19.3.0-canary-f1f7ed2a-20260904",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
+</Sandpack>
+
+During server rendering, `use(browser())` suspends the component and React includes the closest Suspense boundary's fallback in the HTML. In the browser, `use(browser())` returns `undefined` and the saved draft renders normally.
 
 ---
 
