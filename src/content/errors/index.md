@@ -1,10 +1,10 @@
 <Intro>
 
-In the minified production build of React, we avoid sending down full error messages in order to reduce the number of bytes sent over the wire.
+React의 경량화된 프로덕션 빌드에서는 네트워크를 통해 전송되는 데이터의 크기를 줄이기 위해 전체 오류 메시지를 포함하지 않습니다.
 
 </Intro>
 
 
-We highly recommend using the development build locally when debugging your app since it tracks additional debug info and provides helpful warnings about potential problems in your apps, but if you encounter an exception while using the production build, the error message will include just a link to the docs for the error.
+앱을 디버깅할 때는 추가 디버그 정보를 추적하고 잠재적인 문제에 관해 유용한 경고를 제공하는 개발 빌드를 로컬 환경에서 사용하기를 강력히 권장합니다. 하지만 프로덕션 빌드를 사용하는 중에 예외가 발생했다면 오류 메시지에는 해당 오류를 설명하는 문서 링크만 포함됩니다.
 
-For an example, see: [https://react.dev/errors/149](/errors/149).
+예시는 [https://react.dev/errors/149](/errors/149)를 참고하세요.
