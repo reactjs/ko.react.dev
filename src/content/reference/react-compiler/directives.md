@@ -193,6 +193,12 @@ function ProblematicComponent() {
 
 ## 참고 {/*see-also*/}
 
+<<<<<<< HEAD
 * [`compilationMode`](/reference/react-compiler/compilationMode) - 컴파일러가 최적화 대상을 선택하는 방식을 설정합니다.
 * [`Configuration`](/reference/react-compiler/configuration) - 전체 컴파일러 설정 옵션.
 * [React Compiler documentation](/learn/react-compiler) - 시작 가이드.
+=======
+* [`compilationMode`](/reference/react-compiler/compilationMode) - Configure how the compiler chooses what to optimize
+* [`Configuration`](/reference/react-compiler/configuration) - Full compiler configuration options
+* [React Compiler documentation](/learn/react-compiler) - Getting started guide
+>>>>>>> 8c68ae8d2410abe59f351195780c6f8ea9f50904
