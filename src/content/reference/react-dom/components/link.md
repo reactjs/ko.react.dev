@@ -36,7 +36,7 @@ link: "<link>"
 
 다음 속성들은 `rel="stylesheet"`인 경우에 적용됩니다.
 
-* `precedence`: 문자열 타입. `<link>` DOM 노드를 문서의 `<head>` 내 다른 요소와 비교하여 순위를 지정해야 합니다. 이를 통해 어떤 스타일시트가 다른 스타일시트를 덮어쓸 수 있는지 결정합니다. 값은 우선순위에 따라 `"reset"`, `"low"`, `"medium"`, `"high"`가 될 수 있습니다. 동일한 우선순위를 가진 스타일시트는 `<link>` 또는 인라인 `<style>` 태그 또는 [`preload`](/reference/react-dom/preload)나 [`preinit`](/reference/react-dom/preinit) 함수로 로드되었는지에 관계없이 함께 적용됩니다.
+* `precedence`: 문자열 타입. `<link>` DOM 노드를 문서의 `<head>` 내 다른 요소와 비교하여 순위를 지정해야 합니다. 이를 통해 어떤 스타일시트가 다른 스타일시트를 덮어쓸 수 있는지 결정합니다. React는 먼저 발견한 `precedence` 값을 "낮은" 우선순위로, 나중에 발견한 값을 "높은" 우선순위로 추론합니다. 많은 스타일 시스템은 스타일 규칙이 원자적이기 때문에 단일 우선순위 값을 사용해도 잘 작동할 수 있습니다. 동일한 우선순위를 가진 스타일시트는 `<link>` 또는 인라인 `<style>` 태그 또는 [`preinit`](/reference/react-dom/preinit) 함수로 로드되었는지에 관계없이 함께 적용됩니다.
 * `media`: 문자열 타입. 스타일시트를 특정 [미디어 쿼리](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries)에 제한합니다.
 * `title`: 문자열 타입. [대체 스타일시트](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets)의 이름을 지정합니다.
 
