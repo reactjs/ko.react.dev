@@ -44,244 +44,244 @@ title: <Fragment> (<>...</>)
 
 ### `FragmentInstance` {/*fragmentinstance*/}
 
-When you pass a `ref` to a Fragment, React provides a `FragmentInstance` object. It implements methods for interacting with the first-level DOM children wrapped by the Fragment.
+Fragment에 `ref`를 전달하면 React는 `FragmentInstance` 객체를 제공합니다. 이 객체는 Fragment로 감싼 최상위 DOM 자식과 상호작용하기 위한 메서드를 구현합니다.
 
-* [`addEventListener`](#addeventlistener) and [`removeEventListener`](#removeeventlistener) manage event listeners across all first-level DOM children.
-* [`dispatchEvent`](#dispatchevent) dispatches an event on the Fragment, which can bubble to the DOM parent.
-* [`focus`](#focus), [`focusLast`](#focuslast), and [`blur`](#blur) manage focus across all nested children depth-first.
-* [`observeUsing`](#observeusing) and [`unobserveUsing`](#unobserveusing) attach and detach `IntersectionObserver` or `ResizeObserver` instances.
-* [`getClientRects`](#getclientrects) returns bounding rectangles of all first-level DOM children.
-* [`getRootNode`](#getrootnode) returns the root node of the Fragment's parent.
-* [`compareDocumentPosition`](#comparedocumentposition) compares the Fragment's position with another node.
-* [`scrollIntoView`](#scrollintoview) scrolls the Fragment's children into view.
+* [`addEventListener`](#addeventlistener)와 [`removeEventListener`](#removeeventlistener)는 모든 최상위 DOM 자식의 이벤트 리스너를 관리합니다.
+* [`dispatchEvent`](#dispatchevent)는 Fragment에서 이벤트를 발생시키며, 이 이벤트는 DOM 부모로 버블링될 수 있습니다.
+* [`focus`](#focus), [`focusLast`](#focuslast), [`blur`](#blur)는 중첩된 모든 자식을 깊이 우선으로 탐색하며 포커스를 관리합니다.
+* [`observeUsing`](#observeusing)과 [`unobserveUsing`](#unobserveusing)은 `IntersectionObserver` 또는 `ResizeObserver` 인스턴스를 연결하고 해제합니다.
+* [`getClientRects`](#getclientrects)는 모든 최상위 DOM 자식의 경계 사각형을 반환합니다.
+* [`getRootNode`](#getrootnode)는 Fragment 부모의 루트 노드를 반환합니다.
+* [`compareDocumentPosition`](#comparedocumentposition)은 Fragment의 위치를 다른 노드와 비교합니다.
+* [`scrollIntoView`](#scrollintoview)는 Fragment의 자식이 화면에 보이도록 스크롤합니다.
 
 ---
 
 #### `addEventListener(type, listener, options?)` {/*addeventlistener*/}
 
-Adds an event listener to all first-level DOM children of the Fragment.
+Fragment의 모든 최상위 DOM 자식에 이벤트 리스너를 추가합니다.
 
 ```js
 fragmentRef.current.addEventListener('click', handleClick);
 ```
 
-##### Parameters {/*addeventlistener-parameters*/}
+##### 매개변수 {/*addeventlistener-parameters*/}
 
-* `type`: A string representing the event type to listen for (e.g. `'click'`, `'focus'`).
-* `listener`: The event handler function.
-* **optional** `options`: An options object or boolean for capture, matching the [DOM `addEventListener` API.](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+* `type`: 수신할 이벤트 타입을 나타내는 문자열입니다(예: `'click'`, `'focus'`).
+* `listener`: 이벤트 핸들러 함수입니다.
+* **선택 사항** `options`: 캡처 여부를 지정하는 옵션 객체 또는 불리언 값으로, [DOM `addEventListener` API](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)와 동일합니다.
 
-##### Returns {/*addeventlistener-returns*/}
+##### 반환값 {/*addeventlistener-returns*/}
 
-`addEventListener` does not return anything (`undefined`).
+`addEventListener`는 아무것도 반환하지 않습니다(`undefined`).
 
 ---
 
 #### `removeEventListener(type, listener, options?)` {/*removeeventlistener*/}
 
-Removes an event listener from all first-level DOM children of the Fragment.
+Fragment의 모든 최상위 DOM 자식에서 이벤트 리스너를 제거합니다.
 
 ```js
 fragmentRef.current.removeEventListener('click', handleClick);
 ```
 
-##### Parameters {/*removeeventlistener-parameters*/}
+##### 매개변수 {/*removeeventlistener-parameters*/}
 
-* `type`: The event type string.
-* `listener`: The event handler function to remove.
-* **optional** `options`: An options object or boolean, matching the [DOM `removeEventListener` API.](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
+* `type`: 이벤트 타입 문자열입니다.
+* `listener`: 제거할 이벤트 핸들러 함수입니다.
+* **선택 사항** `options`: 옵션 객체 또는 불리언 값으로, [DOM `removeEventListener` API](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)와 동일합니다.
 
-##### Returns {/*removeeventlistener-returns*/}
+##### 반환값 {/*removeeventlistener-returns*/}
 
-`removeEventListener` does not return anything (`undefined`).
+`removeEventListener`는 아무것도 반환하지 않습니다(`undefined`).
 
 ---
 
 #### `dispatchEvent(event)` {/*dispatchevent*/}
 
-Dispatches an event on the Fragment. Added event listeners are called, and the event can bubble to the Fragment's DOM parent.
+Fragment에서 이벤트를 발생시킵니다. 추가된 이벤트 리스너가 호출되며, 이벤트는 Fragment의 DOM 부모로 버블링될 수 있습니다.
 
 ```js
 fragmentRef.current.dispatchEvent(new Event('custom', { bubbles: true }));
 ```
 
-##### Parameters {/*dispatchevent-parameters*/}
+##### 매개변수 {/*dispatchevent-parameters*/}
 
-* `event`: An [`Event`](https://developer.mozilla.org/en-US/docs/Web/API/Event) object to dispatch. If `bubbles` is `true`, the event bubbles to the Fragment's parent DOM node.
+* `event`: 발생시킬 [`Event`](https://developer.mozilla.org/en-US/docs/Web/API/Event) 객체입니다. `bubbles`가 `true`이면 이벤트가 Fragment의 부모 DOM 노드로 버블링됩니다.
 
-##### Returns {/*dispatchevent-returns*/}
+##### 반환값 {/*dispatchevent-returns*/}
 
-`true` if the event was not cancelled, `false` if `preventDefault()` was called.
+이벤트가 취소되지 않았다면 `true`를, `preventDefault()`가 호출되었다면 `false`를 반환합니다.
 
 ---
 
 #### `focus(options?)` {/*focus*/}
 
-Focuses the first focusable DOM node in the Fragment. Unlike calling `element.focus()` on a DOM element, this method searches *all* nested children depth-first until it finds a focusable element—not just the element itself or its direct children.
+Fragment 안에서 포커스할 수 있는 첫 번째 DOM 노드에 포커스를 줍니다. DOM 엘리먼트에서 `element.focus()`를 호출하는 것과 달리, 이 메서드는 엘리먼트 자신이나 직접적인 자식만 확인하지 않고 포커스할 수 있는 엘리먼트를 찾을 때까지 중첩된 *모든* 자식을 깊이 우선으로 탐색합니다.
 
 ```js
 fragmentRef.current.focus();
 ```
 
-##### Parameters {/*focus-parameters*/}
+##### 매개변수 {/*focus-parameters*/}
 
-* **optional** `options`: A [`FocusOptions`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#options) object (e.g. `{ preventScroll: true }`).
+* **선택 사항** `options`: [`FocusOptions`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#options) 객체입니다(예: `{ preventScroll: true }`).
 
-##### Returns {/*focus-returns*/}
+##### 반환값 {/*focus-returns*/}
 
-`focus` does not return anything (`undefined`).
+`focus`는 아무것도 반환하지 않습니다(`undefined`).
 
 ---
 
 #### `focusLast(options?)` {/*focuslast*/}
 
-Focuses the last focusable DOM node in the Fragment. Searches nested children depth-first, then iterates in reverse.
+Fragment 안에서 포커스할 수 있는 마지막 DOM 노드에 포커스를 줍니다. 중첩된 자식을 깊이 우선으로 탐색한 뒤 역순으로 순회합니다.
 
 ```js
 fragmentRef.current.focusLast();
 ```
 
-##### Parameters {/*focuslast-parameters*/}
+##### 매개변수 {/*focuslast-parameters*/}
 
-* **optional** `options`: A [`FocusOptions`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#options) object.
+* **선택 사항** `options`: [`FocusOptions`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#options) 객체입니다.
 
-##### Returns {/*focuslast-returns*/}
+##### 반환값 {/*focuslast-returns*/}
 
-`focusLast` does not return anything (`undefined`).
+`focusLast`는 아무것도 반환하지 않습니다(`undefined`).
 
 ---
 
 #### `blur()` {/*blur*/}
 
-Removes focus from the active element if it is within the Fragment. If `document.activeElement` is not within the Fragment, `blur` does nothing.
+활성 엘리먼트가 Fragment 안에 있다면 포커스를 해제합니다. `document.activeElement`가 Fragment 안에 없다면 `blur`는 아무 동작도 하지 않습니다.
 
 ```js
 fragmentRef.current.blur();
 ```
 
-##### Returns {/*blur-returns*/}
+##### 반환값 {/*blur-returns*/}
 
-`blur` does not return anything (`undefined`).
+`blur`는 아무것도 반환하지 않습니다(`undefined`).
 
 ---
 
 #### `observeUsing(observer)` {/*observeusing*/}
 
-Starts observing all first-level DOM children of the Fragment with the provided observer.
+전달한 옵저버로 Fragment의 모든 최상위 DOM 자식을 관찰하기 시작합니다.
 
 ```js
 const observer = new IntersectionObserver(callback, options);
 fragmentRef.current.observeUsing(observer);
 ```
 
-##### Parameters {/*observeusing-parameters*/}
+##### 매개변수 {/*observeusing-parameters*/}
 
-* `observer`: An [`IntersectionObserver`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver) or [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) instance.
+* `observer`: [`IntersectionObserver`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver) 또는 [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) 인스턴스입니다.
 
-##### Returns {/*observeusing-returns*/}
+##### 반환값 {/*observeusing-returns*/}
 
-`observeUsing` does not return anything (`undefined`).
+`observeUsing`은 아무것도 반환하지 않습니다(`undefined`).
 
 ---
 
 #### `unobserveUsing(observer)` {/*unobserveusing*/}
 
-Stops observing the Fragment's DOM children with the specified observer.
+지정한 옵저버로 Fragment의 DOM 자식을 관찰하는 것을 중지합니다.
 
 ```js
 fragmentRef.current.unobserveUsing(observer);
 ```
 
-##### Parameters {/*unobserveusing-parameters*/}
+##### 매개변수 {/*unobserveusing-parameters*/}
 
-* `observer`: The same `IntersectionObserver` or `ResizeObserver` instance previously passed to [`observeUsing`](#observeusing).
+* `observer`: 앞서 [`observeUsing`](#observeusing)에 전달했던 것과 같은 `IntersectionObserver` 또는 `ResizeObserver` 인스턴스입니다.
 
-##### Returns {/*unobserveusing-returns*/}
+##### 반환값 {/*unobserveusing-returns*/}
 
-`unobserveUsing` does not return anything (`undefined`).
+`unobserveUsing`은 아무것도 반환하지 않습니다(`undefined`).
 
 ---
 
 #### `getClientRects()` {/*getclientrects*/}
 
-Returns a flat array of [`DOMRect`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect) objects representing the bounding rectangles of all first-level DOM children.
+모든 최상위 DOM 자식의 경계 사각형을 나타내는 [`DOMRect`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect) 객체를 하나의 평탄한 배열로 반환합니다.
 
 ```js
 const rects = fragmentRef.current.getClientRects();
 ```
 
-##### Returns {/*getclientrects-returns*/}
+##### 반환값 {/*getclientrects-returns*/}
 
-An `Array<DOMRect>` containing the bounding rectangles of all children.
+모든 자식의 경계 사각형을 담은 `Array<DOMRect>`입니다.
 
 ---
 
 #### `getRootNode(options?)` {/*getrootnode*/}
 
-Returns the root node containing the Fragment's parent DOM node, matching the behavior of [`Node.getRootNode()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode).
+Fragment의 부모 DOM 노드를 포함하는 루트 노드를 반환하며, [`Node.getRootNode()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode)와 동일하게 동작합니다.
 
 ```js
 const root = fragmentRef.current.getRootNode();
 ```
 
-##### Parameters {/*getrootnode-parameters*/}
+##### 매개변수 {/*getrootnode-parameters*/}
 
-* **optional** `options`: An object with a `composed` boolean property, matching the [DOM `getRootNode` API.](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode#options)
+* **선택 사항** `options`: 불리언 값인 `composed` 프로퍼티를 가진 객체로, [DOM `getRootNode` API](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode#options)와 동일합니다.
 
-##### Returns {/*getrootnode-returns*/}
+##### 반환값 {/*getrootnode-returns*/}
 
-A `Document`, `ShadowRoot`, or the `FragmentInstance` itself if there is no parent DOM node.
+`Document` 또는 `ShadowRoot`를 반환하며, 부모 DOM 노드가 없다면 `FragmentInstance` 자신을 반환합니다.
 
 ---
 
 #### `compareDocumentPosition(otherNode)` {/*comparedocumentposition*/}
 
-Compares the document position of the Fragment with another node, returning a bitmask matching the behavior of [`Node.compareDocumentPosition()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/compareDocumentPosition).
+Fragment와 다른 노드의 문서 내 위치를 비교하고, [`Node.compareDocumentPosition()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/compareDocumentPosition)과 동일하게 비트마스크를 반환합니다.
 
 ```js
 const position = fragmentRef.current.compareDocumentPosition(otherElement);
 ```
 
-##### Parameters {/*comparedocumentposition-parameters*/}
+##### 매개변수 {/*comparedocumentposition-parameters*/}
 
-* `otherNode`: The DOM node to compare against.
+* `otherNode`: 비교할 DOM 노드입니다.
 
-##### Returns {/*comparedocumentposition-returns*/}
+##### 반환값 {/*comparedocumentposition-returns*/}
 
-A bitmask of [position flags](https://developer.mozilla.org/en-US/docs/Web/API/Node/compareDocumentPosition#return_value). Empty Fragments and Fragments with children rendered through a [portal](/reference/react-dom/createPortal) include `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC` in the result.
+[위치 플래그](https://developer.mozilla.org/en-US/docs/Web/API/Node/compareDocumentPosition#return_value)로 이루어진 비트마스크입니다. 빈 Fragment와 [포털](/reference/react-dom/createPortal)을 통해 렌더링된 자식을 가진 Fragment는 결과에 `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`을 포함합니다.
 
 ---
 
 #### `scrollIntoView(alignToTop?)` {/*scrollintoview*/}
 
-Scrolls the Fragment's children into view. When `alignToTop` is `true` or omitted, scrolls to align the first child with the top of the scrollable ancestor. When `alignToTop` is `false`, scrolls to align the last child with the bottom.
+Fragment의 자식이 화면에 보이도록 스크롤합니다. `alignToTop`이 `true`이거나 생략되면 첫 번째 자식이 스크롤 가능한 조상 엘리먼트의 위쪽에 맞춰지도록 스크롤합니다. `alignToTop`이 `false`이면 마지막 자식이 아래쪽에 맞춰지도록 스크롤합니다.
 
 ```js
 fragmentRef.current.scrollIntoView();
 ```
 
-##### Parameters {/*scrollintoview-parameters*/}
+##### 매개변수 {/*scrollintoview-parameters*/}
 
-* **optional** `alignToTop`: A boolean. If `true` (the default), scrolls the first child to the top of the scrollable area. If `false`, scrolls the last child to the bottom. Unlike [`Element.scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView), this method does not accept a `ScrollIntoViewOptions` object.
+* **선택 사항** `alignToTop`: 불리언 값입니다. `true`(기본값)이면 첫 번째 자식을 스크롤 영역의 위쪽으로 스크롤합니다. `false`이면 마지막 자식을 아래쪽으로 스크롤합니다. [`Element.scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView)와 달리 이 메서드는 `ScrollIntoViewOptions` 객체를 받지 않습니다.
 
-##### Returns {/*scrollintoview-returns*/}
+##### 반환값 {/*scrollintoview-returns*/}
 
-`scrollIntoView` does not return anything (`undefined`).
+`scrollIntoView`는 아무것도 반환하지 않습니다(`undefined`).
 
-##### Caveats {/*scrollintoview-caveats*/}
+##### 주의 사항 {/*scrollintoview-caveats*/}
 
-* `scrollIntoView` does not accept an options object. Passing one throws an error. Use the `alignToTop` boolean instead.
-* When the Fragment has no children, `scrollIntoView` scrolls the nearest sibling or parent into view as a fallback.
+* `scrollIntoView`는 옵션 객체를 받지 않습니다. 옵션 객체를 전달하면 오류가 발생하므로 대신 불리언 값인 `alignToTop`을 사용하세요.
+* Fragment에 자식이 없으면 `scrollIntoView`는 대신 가장 가까운 형제나 부모가 화면에 보이도록 스크롤합니다.
 
 ---
 
-#### `FragmentInstance` Caveats {/*fragmentinstance-caveats*/}
+#### `FragmentInstance` 주의 사항 {/*fragmentinstance-caveats*/}
 
-* Methods that target children (such as `addEventListener`, `observeUsing`, and `getClientRects`) operate on *first-level host (DOM) children* of the Fragment. They do not directly target children nested inside another DOM element.
-* `focus` and `focusLast` search nested children depth-first for focusable elements, unlike event and observer methods which only target first-level host children.
-* `observeUsing` does not work on text nodes. React logs a warning in development if the Fragment contains only text children.
-* React does not apply event listeners added via `addEventListener` to hidden [`<Activity>`](/reference/react/Activity) trees. When an `Activity` boundary switches from hidden to visible, listeners are applied automatically.
-* Each first-level DOM child of a Fragment with a `ref` gets a `reactFragments` property—a `Set<FragmentInstance>` containing all Fragment instances that own the element. This enables [caching a shared observer](#caching-global-intersection-observer) across multiple Fragments.
+* 자식을 대상으로 하는 메서드(`addEventListener`, `observeUsing`, `getClientRects` 등)는 Fragment의 *최상위 호스트(DOM) 자식*에서 동작합니다. 다른 DOM 엘리먼트 안에 중첩된 자식은 직접 대상으로 삼지 않습니다.
+* 최상위 호스트 자식만 대상으로 하는 이벤트 및 옵저버 메서드와 달리, `focus`와 `focusLast`는 중첩된 자식을 깊이 우선으로 탐색해 포커스할 수 있는 엘리먼트를 찾습니다.
+* `observeUsing`은 텍스트 노드에서는 동작하지 않습니다. Fragment에 텍스트 자식만 있으면 React는 개발 환경에서 경고를 출력합니다.
+* React는 `addEventListener`로 추가한 이벤트 리스너를 숨겨진 [`<Activity>`](/reference/react/Activity) 트리에는 적용하지 않습니다. `Activity` 경계가 숨김 상태에서 표시 상태로 바뀌면 리스너가 자동으로 적용됩니다.
+* `ref`를 가진 Fragment의 각 최상위 DOM 자식에는 `reactFragments` 프로퍼티가 생깁니다. 이 프로퍼티는 해당 엘리먼트를 소유한 모든 Fragment 인스턴스를 담은 `Set<FragmentInstance>`입니다. 이를 통해 여러 Fragment에서 [공유 옵저버를 캐싱](#caching-global-intersection-observer)할 수 있습니다.
 
 ---
 
@@ -459,9 +459,9 @@ function PostBody({ body }) {
 
 ---
 
-### Adding event listeners without a wrapper element {/*adding-event-listeners-without-wrapper*/}
+### 래퍼 엘리먼트 없이 이벤트 리스너 추가하기 {/*adding-event-listeners-without-wrapper*/}
 
-Fragment `ref`s let you add event listeners to a group of elements without adding a wrapper DOM node. Use a [ref callback](/reference/react-dom/components/common#ref-callback) to attach and clean up listeners:
+Fragment `ref`를 사용하면 래퍼 DOM 노드를 추가하지 않고도 여러 엘리먼트에 이벤트 리스너를 추가할 수 있습니다. [`ref` 콜백](/reference/react-dom/components/common#ref-callback)을 사용해 리스너를 연결하고 정리하세요.
 
 <Sandpack>
 
@@ -520,13 +520,13 @@ export default function App() {
 
 </Sandpack>
 
-The `addEventListener` call applies the listener to every first-level DOM child of the Fragment. When children are dynamically added or removed, the `FragmentInstance` automatically adds or removes the listener.
+`addEventListener`를 호출하면 Fragment의 모든 최상위 DOM 자식에 리스너가 적용됩니다. 자식이 동적으로 추가되거나 제거되면 `FragmentInstance`가 자동으로 리스너를 추가하거나 제거합니다.
 
 <DeepDive>
 
-#### Which children does a Fragment ref target? {/*which-children-does-a-fragment-ref-target*/}
+#### Fragment ref는 어떤 자식을 대상으로 하나요? {/*which-children-does-a-fragment-ref-target*/}
 
-A `FragmentInstance` targets the **first-level host (DOM) children** of the Fragment. Consider this tree:
+`FragmentInstance`는 Fragment의 **최상위 호스트(DOM) 자식**을 대상으로 합니다. 다음 트리를 살펴봅시다.
 
 ```js
 <Fragment ref={ref}>
@@ -540,17 +540,17 @@ A `FragmentInstance` targets the **first-level host (DOM) children** of the Frag
 </Fragment>
 ```
 
-`Wrapper` is a React component, so the `FragmentInstance` looks through it to find DOM nodes. The targeted children are `A`, `B`, and `D`. `C` is not targeted because it is nested inside the DOM element `B`.
+`Wrapper`는 React 컴포넌트이므로 `FragmentInstance`는 그 안을 들여다보며 DOM 노드를 찾습니다. 대상이 되는 자식은 `A`, `B`, `D`입니다. `C`는 DOM 엘리먼트 `B` 안에 중첩되어 있으므로 대상이 아닙니다.
 
-Methods like `addEventListener`, `observeUsing`, and `getClientRects` operate on these first-level DOM children. `focus` and `focusLast` are different—they search *all* nested children depth-first to find focusable elements.
+`addEventListener`, `observeUsing`, `getClientRects` 같은 메서드는 이러한 최상위 DOM 자식에서 동작합니다. `focus`와 `focusLast`는 다릅니다. 이 두 메서드는 포커스할 수 있는 엘리먼트를 찾기 위해 중첩된 *모든* 자식을 깊이 우선으로 탐색합니다.
 
 </DeepDive>
 
 ---
 
-### Managing focus across a group of elements {/*managing-focus-across-elements*/}
+### 여러 엘리먼트에 걸쳐 포커스 관리하기 {/*managing-focus-across-elements*/}
 
-Fragment `ref`s provide `focus`, `focusLast`, and `blur` methods that operate across all DOM nodes within the Fragment:
+Fragment `ref`는 Fragment 안의 모든 DOM 노드를 대상으로 동작하는 `focus`, `focusLast`, `blur` 메서드를 제공합니다.
 
 <Sandpack>
 
@@ -586,8 +586,8 @@ function FormFields({ children }) {
   );
 }
 
-// Even though the inputs are deeply nested,
-// focus() searches depth-first to find them.
+// input이 깊이 중첩되어 있더라도
+// focus()는 깊이 우선으로 탐색해 찾아냅니다.
 export default function App() {
   return (
     <FormFields>
@@ -629,13 +629,13 @@ label {
 
 </Sandpack>
 
-Calling `focus()` focuses the `street` input—even though it is nested inside a `<fieldset>` and `<label>`. `focus()` searches depth-first through all nested children, not just direct children of the Fragment. `focusLast()` does the same in reverse, and `blur()` removes focus if the currently focused element is within the Fragment.
+`focus()`를 호출하면 `street` 입력 필드가 `<fieldset>`과 `<label>` 안에 중첩되어 있더라도 포커스를 받습니다. `focus()`는 Fragment의 직접적인 자식뿐 아니라 중첩된 모든 자식을 깊이 우선으로 탐색합니다. `focusLast()`는 같은 작업을 역순으로 수행하며, `blur()`는 현재 포커스된 엘리먼트가 Fragment 안에 있으면 포커스를 해제합니다.
 
 ---
 
-### Scrolling a group of elements into view {/*scrolling-group-into-view*/}
+### 여러 엘리먼트가 화면에 보이도록 스크롤하기 {/*scrolling-group-into-view*/}
 
-Use `scrollIntoView` to scroll a Fragment's children into view without a wrapper element. Pass `true` (or omit the argument) to scroll the first child to the top. Pass `false` to scroll the last child to the bottom:
+`scrollIntoView`를 사용하면 래퍼 엘리먼트 없이 Fragment의 자식이 화면에 보이도록 스크롤할 수 있습니다. `true`를 전달하거나 인수를 생략하면 첫 번째 자식을 위쪽으로 스크롤합니다. `false`를 전달하면 마지막 자식을 아래쪽으로 스크롤합니다.
 
 <Sandpack>
 
@@ -703,7 +703,7 @@ export default function App() {
 
 h3 {
   margin: 4px 0;
-  /* Padding to handle offset of global sticky nav when scrolling for example */
+  /* 스크롤할 때 전역 고정 내비게이션 바에 가려지지 않도록 위쪽 여백을 줍니다 */
   padding-top: 4em;
   color: #1a73e8;
 }
@@ -727,9 +727,9 @@ p {
 
 ---
 
-### Observing visibility without a wrapper element {/*observing-visibility-without-wrapper*/}
+### 래퍼 엘리먼트 없이 가시성 관찰하기 {/*observing-visibility-without-wrapper*/}
 
-Use `observeUsing` to attach an `IntersectionObserver` to all first-level DOM children of a Fragment. This lets you track visibility without requiring child components to expose `ref`s or adding a wrapper element:
+`observeUsing`을 사용해 Fragment의 모든 최상위 DOM 자식에 `IntersectionObserver`를 연결하세요. 이렇게 하면 자식 컴포넌트가 `ref`를 노출하거나 래퍼 엘리먼트를 추가하지 않아도 가시성을 추적할 수 있습니다.
 
 <Sandpack>
 
@@ -839,11 +839,11 @@ export default function Card({ title }) {
 
 ---
 
-### Caching a global IntersectionObserver {/*caching-global-intersection-observer*/}
+### 전역 IntersectionObserver 캐싱하기 {/*caching-global-intersection-observer*/}
 
-A common performance optimization for sites with many observers is to share a single IntersectionObserver per config and route its entries to the correct callbacks based on which element intersected. Fragment `ref`s support this same pattern through the `reactFragments` property.
+옵저버가 많은 사이트에서 흔히 쓰는 성능 최적화 기법은 설정마다 IntersectionObserver를 하나만 두고 공유하면서, 어떤 엘리먼트가 교차했는지에 따라 각 항목<sup>Entry</sup>을 알맞은 콜백으로 전달하는 것입니다. Fragment `ref`는 `reactFragments` 프로퍼티를 통해 같은 패턴을 지원합니다.
 
-Each first-level DOM child of a Fragment with a `ref` has a `reactFragments` property: a `Set` of `FragmentInstance` objects that contain that element. When the shared observer fires, you can use this property to look up which `FragmentInstance` owns the intersecting element and run the right callbacks.
+`ref`를 가진 Fragment의 각 최상위 DOM 자식에는 `reactFragments` 프로퍼티가 있으며, 이는 해당 엘리먼트를 포함하는 `FragmentInstance` 객체의 `Set`입니다. 공유 옵저버가 실행되면 이 프로퍼티로 교차한 엘리먼트를 소유한 `FragmentInstance`를 찾아 알맞은 콜백을 실행할 수 있습니다.
 
 <Sandpack>
 
@@ -907,8 +907,8 @@ function getSharedObserver(
   onIntersection,
   options,
 ) {
-  // Register this callback for the
-  // fragment instance.
+  // 이 Fragment 인스턴스에 대한
+  // 콜백을 등록합니다.
   const existing =
     callbackMap.get(fragmentInstance);
   callbackMap.set(
@@ -926,8 +926,8 @@ function getSharedObserver(
   const observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
-        // Look up which FragmentInstances own
-        // this element.
+        // 이 엘리먼트를 소유한
+        // FragmentInstance를 찾습니다.
         const fragmentInstances =
           entry.target.reactFragments;
         if (fragmentInstances) {
@@ -1027,4 +1027,4 @@ export default function Card({ title, className }) {
 
 </Sandpack>
 
-Multiple `ObservedGroup` components with the same options reuse a single `IntersectionObserver`. When either section scrolls into view, the shared observer fires and uses `reactFragments` to route the entry to the correct callback.
+옵션이 같은 여러 `ObservedGroup` 컴포넌트는 하나의 `IntersectionObserver`를 재사용합니다. 두 섹션 중 하나가 스크롤되어 화면에 들어오면 공유 옵저버가 실행되고, `reactFragments`를 사용해 항목을 알맞은 콜백으로 전달합니다.
