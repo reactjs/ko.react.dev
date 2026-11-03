@@ -110,7 +110,7 @@
     "retext": "^7.0.1",
     "retext-smartypants": "^4.0.0",
     "rss": "^1.2.2",
-    "satori": "^0.26.0",
+    "satori": "^0.33.5",
     "tailwindcss": "^3.4.1",
     "textlint": "^14.0.4",
     "textlint-filter-rule-comments": "^1.2.2",
