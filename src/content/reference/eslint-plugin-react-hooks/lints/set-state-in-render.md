@@ -107,4 +107,8 @@ function Counter({max}) {
 
 이제 setter는 클릭에 대한 응답으로만 실행되고, React는 정상적으로 렌더링을 완료하며, `count`는 절대 `max`를 넘지 않습니다.
 
+<<<<<<< HEAD
 드문 경우지만 이전 렌더링의 정보를 기반으로 state를 조정해야 할 수 있습니다. 그런 경우 조건부로 state를 설정하는 [이 패턴](/reference/react/useState#storing-information-from-previous-renders)을 따르세요.
+=======
+In rare cases, you may need to adjust state based on information from previous renders. For those, follow [this pattern](/reference/react/useState#storing-information-from-previous-renders) of setting state conditionally.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3

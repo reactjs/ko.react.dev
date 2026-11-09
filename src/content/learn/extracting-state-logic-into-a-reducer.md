@@ -870,7 +870,11 @@ Reducer가 좋은 점만 있는 것은 아닙니다! 아래에서 `useState`와 
 
 - **코드 크기:** 일반적으로 `useState`를 사용하면, 미리 작성해야 하는 코드가 줄어듭니다. `useReducer`를 사용하면 Reducer 함수 *그리고* Action을 전달하는 부분 둘 다 작성해야 합니다. 하지만 여러 이벤트 핸들러에서 비슷한 방식으로 State를 업데이트하는 경우, `useReducer`를 사용하면 코드의 양을 줄이는 데 도움이 될 수 있습니다.
 
+<<<<<<< HEAD
 - **가독성:** `useState`로 간단한 State를 업데이트하는 경우 가독성이 좋은 편입니다. 그렇지만 더 복잡한 구조의 State를 다루게 되면 컴포넌트의 코드 양이 더 많아져 한눈에 읽기 어려워질 수 있습니다. 이 경우 `useReducer`를 사용하면 업데이트 로직이 *어떻게 동작하는지*와 이벤트 핸들러를 통해서 *무엇이 발생했는지* 구현한 부분을 명확하게 구분할 수 있습니다.
+=======
+We recommend using a reducer if you often encounter bugs due to incorrect state updates in some component, and want to introduce more structure to its code. You don't have to use reducers for everything: feel free to mix and match! You can even use `useState` and `useReducer` in the same component.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 - **디버깅:** `useState`를 사용하며 버그를 발견했을 때, *왜*, *어디서* State가 잘못 설정됐는지 찾기 어려울 수 있습니다. `useReducer`를 사용하면, 콘솔 로그를 Reducer에 추가하여 State가 업데이트되는 모든 부분과 *왜* 해당 버그가 발생했는지(어떤 `Action`으로 인한 것인지)를 확인할 수 있습니다. 각 `Action`이 올바르게 작성되어 있다면, 버그를 발생시킨 부분이 Reducer 로직 자체에 있다는 것을 알 수 있을 것입니다. 그렇지만 `useState`를 사용하는 경우보다 더 많은 코드를 단계별로 실행해서 디버깅 해야 하는 점이 있기도 합니다.
 

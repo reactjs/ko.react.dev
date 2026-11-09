@@ -257,9 +257,15 @@ title: "공통 컴포넌트 (예: <div>)"
 
 [`ref` 콜백을 사용하는 예시를 확인해 보세요.](/learn/manipulating-the-dom-with-refs#how-to-manage-a-list-of-refs-using-a-ref-callback)
 
+<<<<<<< HEAD
 화면에 `<div>` DOM 노드가 추가되면, React는 `ref` 콜백을 호출하고 그 인자로 DOM `node`를 전달합니다. 해당 `<div>` DOM 노드가 제거되면, React는 콜백에서 반환한 Cleanup 함수를 호출합니다.
 
 React는 *다른* `ref` 콜백을 전달할 때마다 `ref` 콜백도 호출합니다. 위 예시에서 `(node) => { ... }`는 렌더링마다 서로 다른 함수입니다. 컴포넌트가 다시 렌더링 될 때, *이전* 함수는 인자로 `null`을 받아 호출되고, *다음* 함수는 DOM 노드를 인자로 받아 호출됩니다.
+=======
+When the `<div>` DOM node is added to the screen, React will call your `ref` callback with the DOM `node` as the argument. When that `<div>` DOM node is removed, React will call the cleanup function returned from the callback.
+
+React will also call your `ref` callback whenever you pass a *different* `ref` callback. In the above example, `(node) => { ... }` is a different function on every render. When your component re-renders, the cleanup function returned by the *previous* function will be called, and the *next* function will be called with the DOM node. If no cleanup function is returned, the *previous* function will be called with `null` as the argument instead.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 #### 매개변수 {/*ref-callback-parameters*/}
 

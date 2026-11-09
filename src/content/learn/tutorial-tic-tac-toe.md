@@ -1140,7 +1140,11 @@ export default function Board() {
 
 </Note>
 
+<<<<<<< HEAD
 이제 보드에 X를 추가할 수 있게 되었지만 가능한 건 오직 왼쪽 위 사각형뿐입니다. `handleClick` 함수는 왼쪽 위 사각형(인덱스 `0`)만 업데이트하도록 하드 코딩되어 있습니다. 모든 사각형을 업데이트할 수 있도록 `handleClick` 함수를 수정하겠습니다. `handleClick` 함수에 업데이트할 사각형의 인덱스를 나타내는 인수 `i`를 추가하세요.
+=======
+Now you can add X's to the board...  but only to the upper left square. Your `handleClick` function is hardcoded to update the index for the upper left square (`0`). Let's update `handleClick` to be able to update any square. Add a parameter `i` to the `handleClick` function that takes the index of the square to update:
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ```js {4,6}
 export default function Board() {

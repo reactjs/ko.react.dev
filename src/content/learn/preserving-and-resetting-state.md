@@ -18,7 +18,11 @@ title: State를 보존하고 초기화하기
 
 ## State는 렌더트리의 위치에 연결 됩니다. {/*state-is-tied-to-a-position-in-the-tree*/}
 
+<<<<<<< HEAD
 React는 UI 안에 있는 컴포넌트 구조로 [렌더 트리](learn/understanding-your-ui-as-a-tree#the-render-tree)를 만듭니다.
+=======
+React builds [render trees](/learn/understanding-your-ui-as-a-tree#the-render-tree) for the component structure in your UI.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 컴포넌트에 State를 줄 때 State가 컴포넌트 안에 "살고" 있다고 생각할 수도 있습니다. 하지만 사실 State는 React 안에 있습니다. React는 컴포넌트가 UI 트리에 있는 위치를 이용해 React가 가지고 있는 각 State를 알맞은 컴포넌트와 연결합니다.
 

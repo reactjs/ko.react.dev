@@ -140,8 +140,13 @@ Scheduler는 우선순위가 다른 작업을 관리하는 데 사용되는 Reac
 
 서버 요청 트랙은 최종적으로 React 서버 컴포넌트로 귀결되는 모든 Promise를 시각화합니다. 여기에는 `fetch` 호출이나 비동기 Node.js 파일 작업과 같은 모든 비동기(async) 작업이 포함됩니다.
 
+<<<<<<< HEAD
 React는 서드 파티 코드 내부에서 시작된 Promise를 **퍼스트 파티(1st party) 코드**를 차단하는 전체 작업의 지속 시간을 나타내는 단일 스팬으로 결합하려고 시도합니다.
 예를 들어, 내부적으로 `fetch`를 여러 번 호출하는 서드 파티 라이브러리 메서드 `getUser`는 여러 `fetch` 스팬을 표시하는 대신 `getUser`라는 단일 스팬으로 표현됩니다.
+=======
+React will try to combine Promises that are started from inside third-party code into a single span representing the duration of the entire operation blocking 1st party code.
+For example, a third party library method called `getUser` that calls `fetch` internally multiple times will be represented as a single span called `getUser`, instead of showing multiple `fetch` spans.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 스팬을 클릭하면 Promise가 생성된 위치의 스택 트레이스와 함께, 가능한 경우 **Promise가 해결(resolve)된 값**의 뷰가 표시됩니다.
 
@@ -155,5 +160,10 @@ Promise를 await하면 React가 해당 Promise의 지속 시간을 **확인할 �
 
 렌더링 지속 시간에 따라 다른 색상으로 표시됩니다. 색이 어두울수록 지속 시간이 더 길다는 것을 의미합니다.
 
+<<<<<<< HEAD
 서버 컴포넌트 트랙 그룹에는 항상 "Primary" 트랙이 포함됩니다. React가 서버 컴포넌트를 **동시(concurrently)에** 렌더링할 수 있는 경우 추가적인 "Parallel" 트랙이 표시됩니다.
 8개 이상의 서버 컴포넌트가 동시에 렌더링되면 React는 트랙을 계속 추가하는 대신 마지막 "Parallel" 트랙에 연결하여 표시합니다.
+=======
+The Server Components track group will always contain a "Primary" track. If React is able to render Server Components concurrently, it will display additional "Parallel" tracks.
+If more than 8 Server Components are rendered concurrently, React will associate them with the last "Parallel" track instead of adding more tracks.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3

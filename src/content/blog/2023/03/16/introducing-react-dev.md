@@ -42,8 +42,13 @@ description: 오늘 React와 React 문서의 새로운 보금자리인 react.dev
 
 **새로운 문서는 Hook을 사용한 React를 처음부터 가르칩니다.** 문서는 두 가지 주요 섹션으로 나뉘어져 있습니다.
 
+<<<<<<< HEAD
 * **[React 학습하기](/learn)** 는 React를 기초부터 스스로 학습할 수 있는 과정입니다.
 * **[API 참고서](/reference)** 는 모든 React API에 대한 세부 내용과 사용 예시를 제공합니다.
+=======
+* **[Learn React](/learn)** is a self-paced course that teaches React from scratch.
+* **[API Reference](/reference/react)** provides the details and usage examples for every React API.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 각 섹션에서 무슨 내용을 알 수 있는지 자세히 살펴보겠습니다.
 
@@ -460,6 +465,7 @@ export default function PackingList() {
 
 [API 참고서](/reference/react)에서, 이제 모든 React API는 전용 페이지를 가집니다. 모든 종류의 API들이 포함됩니다.
 
+<<<<<<< HEAD
 - [`useState`](/reference/react/useState) 같은 내장 Hook
 - [`<Suspense>`](/reference/react/Suspense) 같은 내장 컴포넌트
 - [`<input>`](/reference/react-dom/components/input) 같은 브라우저 내장 컴포넌트
@@ -467,6 +473,13 @@ export default function PackingList() {
 - [`memo`](/reference/react/memo) 같은 그 밖의 React API
 r
 모든 API 페이지가 *레퍼런스* 와 *사용법*을 포함하는 최소 두 개의 세그먼트로 나뉘어 있다는 것을 알 수 있습니다.
+=======
+- Built-in Hooks like [`useState`](/reference/react/useState).
+- Built-in components like [`<Suspense>`](/reference/react/Suspense).
+- Built-in browser components like [`<input>`](/reference/react-dom/components/input).
+- Framework-oriented APIs like [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream).
+- Other React APIs like [`memo`](/reference/react/memo).
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 [레퍼런스](/reference/react/useState#reference)는 인자와 반환 값을 나열하여 형식적인 API 서명을 설명합니다. 이는 간결하지만, 해당 API에 익숙하지 않다면 약간 추상적으로 느껴질 수 있습니다. 이것은 API를 어떻게 사용하는지가 아닌, API가 무엇을 하는지를 설명합니다.
 
@@ -608,7 +621,11 @@ button { display: block; margin-top: 10px; }
 
 </Recipes>
 
+<<<<<<< HEAD
 또한 몇몇 API 페이지는 (일반적인 문제에 대한) [트러블슈팅](/reference/react/useEffect#troubleshooting)과 (더 이상 사용하지 않는 API와 관련된) [대안](/reference/react-dom/findDOMNode#alternatives)을 포함하고 있습니다.
+=======
+Some API pages also include [Troubleshooting](/reference/react/useEffect#troubleshooting) (for common problems) and [Alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives) (for deprecated APIs).
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 이러한 접근 방식이 API 참고서를 단순히 인자를 찾는 용도뿐만 아니라, 각 API가 어떤 다양한 작업을 수행할 수 있는지, 어떻게 다른 API와 연결되어 있는지를 확인하는 데 유용하게 될 것을 기대합니다.
 

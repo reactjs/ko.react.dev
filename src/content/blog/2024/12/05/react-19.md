@@ -389,7 +389,11 @@ React 서버 컴포넌트를 지원하기 위해, 특정 React 버전에 고정�
 
 서버 액션은 서버 컴포넌트에서 생성되며 클라이언트 컴포넌트에 props를 전달되거나 클라이언트 컴포넌트에서 가져와 사용할 수 있습니다.
 
+<<<<<<< HEAD
 더 많은 정보는 [React 서버 액션](/reference/rsc/server-actions)을 참고하세요.
+=======
+For more, see the docs for [React Server Actions](/reference/rsc/server-functions).
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ## React 19에서 개선 사항 {/*improvements-in-react-19*/}
 

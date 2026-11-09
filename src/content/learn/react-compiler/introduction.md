@@ -144,7 +144,11 @@ function TableContainer({ items }) {
 - React 컴파일러는 모든 함수가 아닌 React 컴포넌트와 Hook만 메모이제이션합니다.
 - React 컴파일러의 메모이제이션은 여러 컴포넌트나 Hook 간에 공유되지 않습니다.
 
+<<<<<<< HEAD
 따라서 `expensivelyProcessAReallyLargeArrayOfObjects`가 여러 다른 컴포넌트에서 사용되는 경우, 정확히 동일한 `items`가 전달되더라도 비용이 많이 드는 계산이 반복적으로 실행됩니다. 코드를 더 복잡하게 만들기 전에 먼저 [프로파일링](reference/react/useMemo#how-to-tell-if-a-calculation-is-expensive)하여 정말로 비용이 많이 드는지 확인하는 것을 권장합니다.
+=======
+So if `expensivelyProcessAReallyLargeArrayOfObjects` was used in many different components, even if the same exact items were passed down, that expensive calculation would be run repeatedly. We recommend [profiling](/reference/react/useMemo#how-to-tell-if-a-calculation-is-expensive) first to see if it really is that expensive before making code more complicated.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 </DeepDive>
 
 ## 컴파일러를 사용해 봐야 하나요? {/*should-i-try-out-the-compiler*/}

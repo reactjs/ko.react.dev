@@ -335,7 +335,11 @@ function MyButton() {
 }
 ```
 
+<<<<<<< HEAD
 React가 컴포넌트 함수를 다시 호출합니다. 이번에는 `count`가 `1`이 되고, 그 다음에는 `2`가 될 것입니다. 이런 방식입니다.
+=======
+Calling `setCount` tells React to call your component function again. This is called a *re-render*. This time, `count` will be `1`. Then it will be `2`. And so on.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 같은 컴포넌트를 여러 번 렌더링하면 각각의 컴포넌트는 고유한 State를 얻게 됩니다. 각 버튼을 개별적으로 클릭해 보세요.
 

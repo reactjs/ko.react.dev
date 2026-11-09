@@ -91,7 +91,11 @@ experimental_taintUniqueValue(
 );
 ```
 
+<<<<<<< HEAD
 만약 오염된 값의 수명이 객체에 묶여 있다면, `lifetime`은 그 값을 캡슐화하는 객체이어야 합니다. 이렇게 하면 오염된 값이 캡슐화 객체의 수명 동안 보호될 수 있습니다.
+=======
+If the tainted value's lifespan is tied to an object, the `lifetime` should be the object that encapsulates the value. This ensures the tainted value remains protected for the lifetime of the encapsulating object.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ```js
 import {experimental_taintUniqueValue} from 'react';
@@ -130,7 +134,11 @@ const uppercasePassword = password.toUpperCase() // `uppercasePassword`는 오�
 
 이 예시에서는 상수 `password`가 오염되어 있습니다. 이러한 `password`에 `toUpperCase`메서드를 사용하여 `uppercasePassword`라는 새로운 값을 만들었습니다. 이렇게 새로 생성된 `uppercasePassword`는 오염되지 않았습니다.
 
+<<<<<<< HEAD
 오염되지 않은 새로운 값이 만들어지는 다른 유사한 방법에는 오염된 값을 다른 문자열과 연결하거나, Base64로 변환하거나, 잘라내는 것이 있습니다.
+=======
+Other similar ways of deriving new values from tainted values like concatenating it into a larger string, converting it to base64, or returning a substring create untainted values.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 오염은 비밀 값을 클라이언트에 전달하는 것과 같이 단순한 실수만 방지합니다. `lifetime` 객체 없이 React 외부의 전역 스토어를 사용하는 것과 같이 `taintUniqueValue`를 호출하는 실수는 오염된 값을 오염되지 않은 값으로 만들 수 있습니다. 오염은 보호 레이어이며 안전한 앱에는 여러 개의 보호 레이어와 잘 설계된 API, 격리 패턴이 있습니다.
 
