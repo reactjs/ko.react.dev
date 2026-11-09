@@ -88,7 +88,11 @@ React는 `root`에 `<App />`을 표시하고 그 안에 있는 DOM을 관리합�
 
 * 동일한 루트에서 `render`를 두 번 이상 호출하면, React는 필요에 따라 DOM을 업데이트하여 사용자가 전달한 최신 JSX를 반영합니다. React는 이전에 렌더링 된 트리와 ["비교"](/learn/preserving-and-resetting-state)해서 재사용할 수 있는 부분과 다시 만들어야 하는 부분을 결정합니다. 동일한 루트에서 `render`를 다시 호출하는 것은 루트 컴포넌트에서 [`set` 함수](/reference/react/useState#setstate)를 호출하는 것과 비슷합니다. React는 불필요한 DOM 업데이트를 피합니다.
 
+<<<<<<< HEAD
 * 렌더링이 시작된 이후에는 동기적으로 실행되지만, `root.render(...)` 자체는 비동기적입니다. 즉, `root.render()` 이후에 작성된 코드가 해당 렌더링의 `useLayoutEffect`나 `useEffect`보다 먼저 실행될 수 있습니다. 일반적인 상황에서는 이러한 동작도 문제 없이 잘 작동하며, 대부분 수정이 필요하지 않습니다. 다만, Effect의 실행 순서가 중요한 경우에는 [`flushSync`](/reference/react-dom/flushSync)로 `root.render(...)` 호출을 감싸면 초기 렌더링이 완전히 동기적으로 실행되도록 보장할 수 있습니다.
+=======
+* Although rendering is synchronous once it starts, `root.render(...)` is not. This means code after `root.render()` may run before any effects (`useLayoutEffect`, `useEffect`) of that specific render are fired. This is usually fine and rarely needs adjustment. In rare cases where effect timing matters, you can wrap `root.render(...)` in [`flushSync`](/reference/react-dom/flushSync) to ensure the initial render runs fully synchronously.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
   ```js
   const root = createRoot(document.getElementById('root'));
@@ -376,7 +380,11 @@ const root = createRoot(container, {
 1. 발생한 <CodeStep step={2}>error</CodeStep> 객체.
 2. 오류의 <CodeStep step={4}>componentStack</CodeStep> 정보를 포함한 <CodeStep step={3}>errorInfo</CodeStep> 객체.
 
+<<<<<<< HEAD
 `onUncaughtError`와 `onRecoverableError`를 함께 사용하면, 사용자 정의 오류 보고 시스템을 구현할 수 있습니다.
+=======
+Together with `onUncaughtError` and `onRecoverableError`, you can implement your own error reporting system:
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 <Sandpack>
 
@@ -414,9 +422,15 @@ import {
 
 const container = document.getElementById("root");
 const root = createRoot(container, {
+<<<<<<< HEAD
   // 개발 환경에서는 이 옵션들을 제거하고
   // React의 기본 핸들러를 사용하거나 직접 오버레이를 구현하는 것을 권장합니다.
   // 여기서는 편의를 위해 조건 없이 핸들러를 지정했습니다.
+=======
+  // Keep in mind to remove these options in development to leverage
+  // React's default handlers or implement your own overlay for development.
+  // The handlers are only specified unconditionally here for demonstration purposes.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
   onCaughtError: onCaughtErrorProd,
   onRecoverableError: onRecoverableErrorProd,
   onUncaughtError: onUncaughtErrorProd,

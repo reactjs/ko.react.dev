@@ -17,7 +17,11 @@ React는 에디터, 타입스크립트, 브라우저 확장 프로그램, 컴파
 
 ## React 개발자 도구 {/*react-developer-tools*/}
 
+<<<<<<< HEAD
 React 개발자 도구는 React 컴포넌트를 검사하고, Props와 State를 편집하고, 성능 문제를 식별할 수 있는 브라우저 확장 프로그램입니다. [여기](learn/react-developer-tools)에서 설치하는 방법을 확인해보세요.
+=======
+React Developer Tools is a browser extension that can inspect React components, edit props and state, and identify performance problems. Learn how to install it [here](/learn/react-developer-tools).
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ## React 컴파일러 {/*react-compiler*/}
 

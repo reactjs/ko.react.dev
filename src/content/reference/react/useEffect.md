@@ -1050,8 +1050,13 @@ Effect 내부에서 `fetch` 호출을 작성하는 것은 클라이언트 사이
 
 이러한 단점은 React만 해당되는 것이 아닙니다. 다른 라이브러리를 사용하여 데이터를 페칭할 때도 해당됩니다. 라우팅과 마찬가지로 데이터 페칭은 세부적인 사항이 많으므로 다음과 같은 접근 방식을 권장합니다.
 
+<<<<<<< HEAD
 - **[프레임워크](/learn/creating-a-react-app#full-stack-frameworks)를 사용한다면, 내장된 데이터 페칭 메커니즘을 사용하세요.** 최신 React 프레임워크는 효율적이며 위와 같은 단점에서 자유로운 통합 데이터 페칭 메커니즘을 갖추고 있습니다.
 - **그렇지 않다면, 클라이언트 사이드 캐시를 사용하거나 직접 만드는 것을 고려해 보세요.** 인기 있는 오픈 소스 솔루션으로는 [TanStack Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), [React Router 6.4+](https://beta.reactrouter.com/en/main/start/overview) 등이 있습니다. 직접 솔루션을 구축할 수도 있는데, 이 경우 내부적으로는 Effect를 사용하면서도 요청 중복 제거, 응답 캐싱, 네트워크 폭포 방지(데이터를 미리 로드하거나 데이터 요구 사항을 라우트로 끌어올리는 방식)를 위한 로직을 추가하게 됩니다.
+=======
+- **If you use a [framework](/learn/creating-a-react-app#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
+- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [TanStack Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), and [React Router](https://reactrouter.com/). You can build your own solution too, in which case you would use Effects under the hood but also add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 만약 이러한 접근 방식이 적합하지 않다면 Effect 내부에서 데이터를 페칭하는 것을 계속 진행할 수 있습니다.
 
@@ -1597,8 +1602,13 @@ function ChatRoom({ roomId }) {
   }
 
   useEffect(() => {
+<<<<<<< HEAD
     const options = createOptions(); // 함수가 Effect 안에서 사용됩니다
     const connection = createConnection();
+=======
+    const options = createOptions(); // It's used inside the Effect
+    const connection = createConnection(options);
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
     connection.connect();
     return () => connection.disconnect();
   }, [createOptions]); // 🚩 결과적으로, 의존성이 재 렌더링 때마다 다릅니다

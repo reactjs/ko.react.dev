@@ -16,8 +16,14 @@ title: "내장 React Hook"
 
 컴포넌트에 State를 추가하려면, 다음 Hook 중 하나를 사용하세요.
 
+<<<<<<< HEAD
 * [`useState`](/reference/react/useState)는 직접 업데이트할 수 있는 State 변수를 선언합니다.
 * [`useReducer`](/reference/react/useReducer)는 [Reducer 함수](/learn/extracting-state-logic-into-a-reducer) 내부의 업데이트 로직을 사용하여 State 변수를 선언합니다.
+=======
+* [`useState`](/reference/react/useState) declares a state variable that you can update directly.
+* [`useReducer`](/reference/react/useReducer) declares a state variable with the update logic inside a [reducer function.](/learn/extracting-state-logic-into-a-reducer)
+* [`useOptimistic`](/reference/react/useOptimistic) lets you show a different state while an async action is pending.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ```js
 function ImageGallery() {

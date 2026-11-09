@@ -663,7 +663,7 @@ export default function TabButton({ action, children, isActive }) {
     return <b className="pending">{children}</b>;
   }
   return (
-    <button onClick={async () => {
+    <button onClick={() => {
       startTransition(async () => {
         // 전달받은 action을 await 합니다.
         // 이렇게 하면 동기든 비동기든 모두 처리할 수 있습니다.
@@ -1686,7 +1686,11 @@ startTransition(() => {
 });
 ```
 
+<<<<<<< HEAD
 `startTransition`에 전달하는 함수는 동기식이어야 합니다. You can't mark an update as a Transition like this:
+=======
+The function you pass to `startTransition` can be synchronous or asynchronous. However, updates scheduled in a `setTimeout` callback aren't marked as Transitions:
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ```js
 startTransition(() => {

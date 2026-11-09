@@ -14266,7 +14266,11 @@ hooks를 출시했을 때, 저희는 세 가지 동기가 있었습니다:
 
 종종 혼란은 필요하지 않을 때 Effect를 사용하는 데서 온다는 것을 발견했습니다. [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) 가이드는 Effects가 올바른 솔루션이 아닌 경우들을 많이 다루고 있습니다. 하지만 Effect가 문제에 적합한 해결책일 때조차도, Effects는 클래스 컴포넌트 생명주기보다 여전히 이해하기 어려울 수 있습니다.
 
+<<<<<<< HEAD
 혼란의 이유 중 하나는 개발자들이 _Effects_ 관점(Effect가 무엇을 하는지)이 아니라 _컴포넌트의_ 관점(생명주기 같은)에서 Effects를 생각하기 때문이라고 생각합니다.
+=======
+We believe one of the reasons for confusion is that developers tend to think of Effects from the _component's_ perspective (like a lifecycle), instead of the _Effects_ point of view (what the Effect does).
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 [문서의 예시](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective)를 살펴보겠습니다:
 

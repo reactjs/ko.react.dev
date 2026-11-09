@@ -16,7 +16,11 @@ const stream = await resume(reactNode, postponedState, options?)
 
 <Note>
 
+<<<<<<< HEAD
 이 API는 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)에 의존합니다. Node.js에서는 [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream)을 대신 사용하세요.
+=======
+This API depends on [Web Streams.](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) For Node.js, use [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream) instead.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 </Note>
 
@@ -44,12 +48,22 @@ async function handler(request, writable) {
 
 #### 매개변수 {/*parameters*/}
 
+<<<<<<< HEAD
 * `reactNode`: `prerender`를 호출할 때 전달한 React 노드입니다. 예를 들어, `<App />`과 같은 JSX 엘리먼트입니다. 전체 문서를 나타낼 것으로 예상되므로 `App` 컴포넌트는 `<html>` 태그를 렌더링해야 합니다.
 * `postponedState`: [prerender API](/reference/react-dom/static/prerender)에서 반환된 불분명한 `postpone` 객체로, 저장해 둔 위치(예: Redis, 파일, S3)에서 불러옵니다.
 * `options`**(선택사항)**: 스트리밍 옵션을 지정할 수 있는 객체입니다.
   * `nonce`**(선택사항)**: [`script-src` Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)에서 스크립트를 허용하기 위한 [`nonce`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) 문자열입니다.
   * `signal`**(선택사항)**: [서버 렌더링을 중단](/reference/react-dom/server/renderToReadableStream#aborting-server-rendering)하고 나머지를 클라이언트에서 렌더링할 수 있게 하는 [중단 신호](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)입니다.
   * `onError`**(선택사항)**: 서버 오류가 발생할 때마다, [복구 가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) 또는 [불가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)에 관계없이 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. [충돌 보고를 기록](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server)하도록 재정의하는 경우에도 반드시 `console.error`를 호출해야 합니다.
+=======
+* `reactNode`: The React node you called `prerender` with. For example, a JSX element like `<App />`. It is expected to represent the entire document, so the `App` component should render the `<html>` tag.
+* `postponedState`: The opaque `postpone` object returned from a [prerender API](/reference/react-dom/static), loaded from wherever you stored it (e.g. redis, a file, or S3).
+* **optional** `options`: An object with streaming options.
+  * **optional** `nonce`: A [`nonce`](http://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) string to allow scripts for [`script-src` Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src).
+  * **optional** `signal`: An [abort signal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) that lets you [abort server rendering](#aborting-server-rendering) and render the rest on the client.
+  * **optional** `onBrowserBailout`: A callback React calls when it recovers from [`browser()`](/reference/react-dom/browser) by leaving a Suspense fallback for the browser to replace. It receives an `Error` describing the browser-only render and an `errorInfo` object containing the `componentStack`. If a reason was passed to `browser`, it is available as `error.cause`. By default, React does nothing. [See how to report browser-only rendering.](/reference/react-dom/browser#reporting-browser-only-rendering-on-the-server)
+  * **optional** `onError`: A callback that fires whenever there is a server error, whether [recoverable](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) or [not.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell) By default, this only calls `console.error`. If you override it to [log crash reports,](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server) make sure that you still call `console.error`.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 
 #### 반환값 {/*returns*/}
@@ -177,7 +191,7 @@ async function main(frame) {
   // Layer 2
   // Just waiting here for demonstration purposes.
   // In a real app, the prelude and postponed state would've been serialized in Layer 1 and Layer would deserialize them.
-  // The prelude content could be flushed immediated as plain HTML while
+  // The prelude content could be flushed immediately as plain HTML while
   // React is continuing to render from where the prerender left off.
   await sleep(2000);
 

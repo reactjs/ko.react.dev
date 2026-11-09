@@ -5,7 +5,11 @@ titleForTitleTag: "'use server' 지시어"
 
 <RSC>
 
+<<<<<<< HEAD
 `'use server'`는 [React 서버 컴포넌트](/reference/rsc/server-components)와 함께 사용합니다.
+=======
+`'use server'` is for use with [React Server Components](/reference/rsc/server-components).
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 </RSC>
 
@@ -137,7 +141,7 @@ In the username request form, there might be the chance that a username is not a
 // requestUsername.js
 'use server';
 
-export default async function requestUsername(formData) {
+export default async function requestUsername(prevState, formData) {
   const username = formData.get('username');
   if (canRequest(username)) {
     // ...
@@ -197,7 +201,7 @@ function LikeButton() {
   return (
     <>
       <p>Total Likes: {likeCount}</p>
-      <button onClick={onClick} disabled={isPending}>Like</button>;
+      <button onClick={onClick} disabled={isPending}>Like</button>
     </>
   );
 }

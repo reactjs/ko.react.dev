@@ -134,7 +134,11 @@ React 렌더 트리에서 루트 노드는 앱의 [Root 컴포넌트](/learn/imp
 
 #### 렌더 트리에 HTML 태그는 어디에 있나요? {/*where-are-the-html-elements-in-the-render-tree*/}
 
+<<<<<<< HEAD
 위의 렌더 트리에서 각 컴포넌트가 렌더링하는 HTML 태그에 대한 언급이 없음을 알 수 있습니다. 이는 렌더 트리가 React [컴포넌트](learn/your-first-component#components-ui-building-blocks)로만 구성되어 있기 때문입니다.
+=======
+You'll notice in the above render tree, there is no mention of the HTML tags that each component renders. This is because the render tree is only composed of React [components](/learn/your-first-component#components-ui-building-blocks).
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 UI 프레임워크로서 React는 플랫폼에 독립적입니다. react.dev에서는 HTML 마크업을 UI 기본 요소로 사용하는 웹을 렌더링하는 예시를 보여줍니다. 하지만 React 앱은 모바일이나 데스크톱 플랫폼에 렌더링 될 수 있으며, 이러한 플랫폼은 [UIView](https://developer.apple.com/documentation/uikit/uiview)나 [FrameworkElement](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement?view=windowsdesktop-7.0)와 같은 다른 UI 기본 요소를 사용할 수 있습니다.
 

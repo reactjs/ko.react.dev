@@ -334,7 +334,11 @@ function MyComponent() {
 
 </Note>
 
+<<<<<<< HEAD
 [`useMemo`](/reference/react/useMemo) Hook은 함수 호출로부터 Memorized 된 값을 생성/재접근하여, 두 번째 매개변수로 전달된 종속성이 변경될 때만 함수를 다시 실행합니다. Hook을 호출한 결과는 첫 번째 매개변수에 있는 함수의 반환 값에서 추론됩니다. Hook에 타입 인수를 제공하여 더욱더 명확하게 할 수 있습니다.
+=======
+The [`useMemo`](/reference/react/useMemo) Hooks will create/re-access a memoized value from a function call, re-running the function only when dependencies passed as the 2nd parameter are changed. The result of calling the Hook is inferred from the return value from the function in the first parameter. You can be more explicit by providing a type argument to the Hook.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ```ts
 // visibleTodos의 타입은 filterTodos의 반환 값에서 추론됩니다.
