@@ -22,15 +22,28 @@
 ### 사전 준비
 
 1. Git
+<<<<<<< HEAD
 1. Node: v16.8.0 이상의 모든 버전
 1. Yarn v1(`yarn@1.22.22`): [Yarn 설치 안내](https://yarnpkg.com/lang/en/docs/install/) 참고
 1. 포크<sup>Fork</sup>한 개인 저장소
 1. 로컬에 클론<sup>Clone</sup>한 [ko.react.dev 저장소](https://github.com/reactjs/ko.react.dev)
+=======
+1. Node: v24 or greater
+1. Yarn Classic: See [Yarn website for installation instructions](https://classic.yarnpkg.com/en/docs/install/)
+1. A fork of the repo (for any contributions)
+1. A clone of the [react.dev repo](https://github.com/reactjs/react.dev) on your local machine
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 ### 설치
 
+<<<<<<< HEAD
 1. `cd ko.react.dev`를 실행하여 프로젝트 경로로 이동합니다.
 1. `yarn` 명령어를 실행하여 npm 의존성 모듈들을 설치합니다.
+=======
+1. `cd react.dev` to go into the project root
+2. `git remote add my-fork-name https://github.com/YOUR_USERNAME/react.dev.git` to add your fork as a remote. Replace `YOUR_USERNAME` with your GitHub username. You only need to do this once.
+3. `yarn` to install the website's npm dependencies
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 ### 개발 서버 실행하기
 
@@ -51,11 +64,19 @@
 
 ### 수정하기
 
+<<<<<<< HEAD
 1. ["개발 서버 실행하기"](#개발-서버-실행하기) 부분을 따릅니다.
 1. 파일을 저장하고 브라우저에서 확인합니다.
 1. `src` 안에 있는 React 컴포넌트가 수정될 경우 hot-reload가 적용됩니다.
 1. `content` 안에 있는 마크다운 파일이 수정될 경우 hot-reload가 적용됩니다.
 1. 플러그인을 사용하는 경우, `.cache` 디렉토리를 제거한 후 서버를 재시작해야 합니다.
+=======
+1. Follow the ["Running locally"](#running-locally) instructions
+1. Save the files and check in the browser
+  1. Changes to React components in `src` will hot-reload
+  1. Changes to markdown files in `src/content` will hot-reload
+  1. If working with plugins, you may need to remove the `node_modules/.cache/react-docs-mdx` directory and restart the server
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 ### 수정사항 검사하기
 
@@ -72,7 +93,11 @@
 
 ## 문제 해결하기
 
+<<<<<<< HEAD
 `yarn cache-reset` 명령어를 사용하여 로컬 캐시를 초기화합니다.
+=======
+If you are interested in translating `react.dev`, please see the current translation efforts [here](https://react.dev/community/translations).
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 ## 번역
 

@@ -14,8 +14,14 @@ title: React DOM APIs
 
 아래 API는 컴포넌트에서 불러올 수 있습니다. 사용할 일은 거의 없습니다.
 
+<<<<<<< HEAD
 * [`createPortal`](/reference/react-dom/createPortal)을 사용하면 자식 컴포넌트를 DOM 트리의 다른 부분에 렌더링 할 수 있습니다.
 * [`flushSync`](/reference/react-dom/flushSync)를 사용하면 React가 State 업데이트를 수행하고 동기적으로 DOM을 업데이트하도록 강제할 수 있습니다.
+=======
+* [`createPortal`](/reference/react-dom/createPortal) lets you render child components in a different part of the DOM tree.
+* [`flushSync`](/reference/react-dom/flushSync) lets you force React to flush a state update and update the DOM synchronously.
+* [`requestFormReset`](/reference/react-dom/requestFormReset) lets you request a form reset when handling submissions with custom Actions or Transitions.
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 ## Resource Preloading APIs {/*resource-preloading-apis*/}
 
@@ -54,6 +60,6 @@ This API controls how components render on the server:
 * [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode): see [alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives).
 * [`hydrate`](https://18.react.dev/reference/react-dom/hydrate): use [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) instead.
 * [`render`](https://18.react.dev/reference/react-dom/render): use [`createRoot`](/reference/react-dom/client/createRoot) instead.
-* [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode): use [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) instead.
+* [`unmountComponentAtNode`](https://18.react.dev/reference/react-dom/unmountComponentAtNode): use [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) instead.
 * [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
 * [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.

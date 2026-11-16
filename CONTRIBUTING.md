@@ -36,6 +36,7 @@ React 문서 기여에 관심을 가져주셔서 감사합니다!
 
 ES5만 다루는 경우라면 이 규칙은 무시하세요.
 
+<<<<<<< HEAD
 #### ES5의 기능만으로 간단하게 작성할 수 있는 경우, ES6의 기능을 무조건적으로 사용하지 마세요
 
 ES6가 아직 낯선 사람도 많습니다. 이미 여러 곳에서 `const` / `let`, 클래스, 화살표 함수 등을 사용하고 있지만, 그에 상응하는 ES5 코드가 간단하고 가독성이 좋다면 ES5를 사용하는 것도 고려하세요.
@@ -71,6 +72,11 @@ class MyComponent extends React.Component {
 ```
 
 실험적인 제안<sup>Experimental Proposal</sup>에 대해 설명하는 경우라면 예외로 하되, 코드와 주변 글에서 실험적임<sup>Experimental</sup>을 명시하세요.
+=======
+#### Prefer readable syntax.
+
+Choose syntax that makes each example easier to follow. Prefer named `function` declarations over `const myFunction = () => ...` arrows for top-level functions. Use arrow functions when they make callbacks easier to read. In class components, arrow functions can also preserve the component's `this` value.
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 ### 스타일
 

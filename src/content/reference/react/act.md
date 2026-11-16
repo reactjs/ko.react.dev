@@ -117,26 +117,31 @@ it('can render and update a counter', async () => {
 
 이벤트를 테스트하려면 이벤트를 `act()`로 감싸세요.
 
-```js {14,16}
+```js {17-19}
 import {act} from 'react';
 import ReactDOMClient from 'react-dom/client';
 import Counter from './Counter';
 
-it.only('can render and update a counter', async () => {
+it('can render and update a counter', async () => {
   const container = document.createElement('div');
   document.body.appendChild(container);
 
-  await act( async () => {
+  await act(async () => {
     ReactDOMClient.createRoot(container).render(<Counter />);
   });
 
+<<<<<<< HEAD
   // ✅ 이벤트 디스패치를 act() 안에서 실행합니다.
+=======
+  const button = container.querySelector('button');
+  const label = container.querySelector('p');
+
+  // ✅ Dispatch the event inside act().
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
   await act(async () => {
     button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
   });
 
-  const button = container.querySelector('button');
-  const label = container.querySelector('p');
   expect(label.textContent).toBe('You clicked 1 times');
   expect(document.title).toBe('You clicked 1 times');
 });

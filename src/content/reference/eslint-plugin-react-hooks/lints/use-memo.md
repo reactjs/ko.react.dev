@@ -79,7 +79,11 @@ function Component({user}) {
 }
 ```
 
+<<<<<<< HEAD
 부수 효과가 React state를 외부 state와 동기화하는 경우(또는 그 반대) `useEffect`를 사용하세요.
+=======
+If the side effect synchronizes React state with some external state (or vice versa), use `useEffect`:
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 ```js
 // ✅ 좋은 예시: useEffect에서 동기화
