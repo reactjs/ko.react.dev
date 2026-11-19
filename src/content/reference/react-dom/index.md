@@ -30,11 +30,11 @@ title: React DOM APIs
 * [`preload`](/reference/react-dom/preload)를 사용하면 스타일시트, 글꼴, 이미지 또는 외부 스크립트 같은 리소스를 미리 가져올 수 있습니다.
 * [`preloadModule`](/reference/react-dom/preloadModule)을 사용하면 사용할 ESM 모듈을 미리 가져올 수 있습니다.
 
-## Server Rendering APIs {/*server-rendering-apis*/}
+## 서버 렌더링 API {/*server-rendering-apis*/}
 
-This API controls how components render on the server:
+다음 API는 서버에서 컴포넌트가 렌더링되는 방식을 제어합니다.
 
-* [`browser`](/reference/react-dom/browser) lets you mark a component as browser-only during server rendering.
+* [`browser`](/reference/react-dom/browser)를 사용하면 서버 렌더링 중에 컴포넌트를 브라우저 전용으로 표시할 수 있습니다.
 
 ---
 
