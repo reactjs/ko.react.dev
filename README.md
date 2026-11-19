@@ -22,14 +22,15 @@
 ### 사전 준비
 
 1. Git
-1. Node: v16.8.0 이상의 모든 버전
-1. Yarn v1(`yarn@1.22.22`): [Yarn 설치 안내](https://yarnpkg.com/lang/en/docs/install/) 참고
+1. Node: v24 이상의 모든 버전
+1. Yarn v1(`yarn@1.22.22`): [Yarn 설치 안내](https://classic.yarnpkg.com/en/docs/install/) 참고
 1. 포크<sup>Fork</sup>한 개인 저장소
 1. 로컬에 클론<sup>Clone</sup>한 [ko.react.dev 저장소](https://github.com/reactjs/ko.react.dev)
 
 ### 설치
 
 1. `cd ko.react.dev`를 실행하여 프로젝트 경로로 이동합니다.
+1. `git remote add my-fork-name https://github.com/YOUR_USERNAME/ko.react.dev.git`을 실행하여 포크한 저장소를 원격 저장소로 추가합니다. `YOUR_USERNAME`을 본인의 GitHub 사용자 이름으로 변경하세요. 이 작업은 한 번만 수행하면 됩니다.
 1. `yarn` 명령어를 실행하여 npm 의존성 모듈들을 설치합니다.
 
 ### 개발 서버 실행하기
@@ -54,8 +55,8 @@
 1. ["개발 서버 실행하기"](#개발-서버-실행하기) 부분을 따릅니다.
 1. 파일을 저장하고 브라우저에서 확인합니다.
 1. `src` 안에 있는 React 컴포넌트가 수정될 경우 hot-reload가 적용됩니다.
-1. `content` 안에 있는 마크다운 파일이 수정될 경우 hot-reload가 적용됩니다.
-1. 플러그인을 사용하는 경우, `.cache` 디렉토리를 제거한 후 서버를 재시작해야 합니다.
+1. `src/content` 안에 있는 마크다운 파일이 수정될 경우 hot-reload가 적용됩니다.
+1. 플러그인을 사용하는 경우, `node_modules/.cache/react-docs-mdx` 디렉토리를 제거한 후 서버를 재시작해야 할 수 있습니다.
 
 ### 수정사항 검사하기
 

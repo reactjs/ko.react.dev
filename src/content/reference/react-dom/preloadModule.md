@@ -51,6 +51,7 @@ function AppRoot() {
   *  `integrity`: 문자열입니다. 모듈의 [신뢰성 확인](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)을 위한
   모듈의 암호화 해시입니다.
   *  `nonce`: 문자열입니다. 엄격한 컨텐츠 보안 정책을 사용할 때 [모듈을 허용하기 위한 암호화 논스(Nonce)](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
+  *  `fetchPriority`: 문자열입니다. 리소스를 가져올 때의 [상대적 우선순위](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/fetchpriority)를 제안합니다. 가능한 값은 `auto`(기본값), `high`, `low`입니다.
 
 
 #### 반환값 {/*returns*/}

@@ -46,9 +46,10 @@ async function handler(request, writable) {
 #### 매개변수 {/*parameters*/}
 
 * `reactNode`: `prerender`(또는 이전의 `resumeAndPrerenderToNodeStream`)를 호출할 때 사용했던 React 노드입니다. 예를 들어 `<App />`과 같은 JSX 노드가 해당됩니다. 전체 문서를 나타내야 하므로, `App` 컴포넌트는 `<html>` 태그를 렌더링해야 합니다.
-* `postponedState`: [prerender API](/reference/react-dom/static/index)에서 반환되어 저장소(예: Redis, 파일 또는 S3)에 저장해 둔 불투명(opaque) `postpone` 객체입니다.
+* `postponedState`: [prerender API](/reference/react-dom/static)에서 반환되어 저장소(예: Redis, 파일 또는 S3)에 저장해 둔 불투명(opaque) `postpone` 객체입니다.
 * `options`**(선택사항)**: 스트리밍 옵션을 가진 객체입니다.
   * `signal`**(선택사항)**: [서버 렌더링을 중단하고](#aborting-server-rendering) 나머지를 클라이언트에서 렌더링할 수 있게 하는 [중단 신호(abort signal)](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)입니다.
+  * `onBrowserBailout`**(선택사항)**: 브라우저가 교체할 Suspense 폴백을 남겨두어 [`browser()`](/reference/react-dom/browser)로부터 복구할 때 React가 호출하는 콜백입니다. 브라우저 전용 렌더링을 설명하는 `Error`와 `componentStack`을 포함하는 `errorInfo` 객체를 인수로 받습니다. `browser`에 이유(reason)를 전달한 경우 `error.cause`로 확인할 수 있습니다. 기본적으로 React는 아무 작업도 하지 않습니다. [브라우저 전용 렌더링을 보고하는 방법을 확인하세요.](/reference/react-dom/browser#reporting-browser-only-rendering-on-the-server)
   * `onError`**(선택사항)**: [복구 가능한 오류](#recovering-from-errors-outside-the-shell)이든 [복구 불가능한 오류](#recovering-from-errors-inside-the-shell)이든 서버 오류가 발생할 때마다 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. [충돌 보고서를 기록](#logging-crashes-on-the-server)하도록 재정의하는 경우에도 반드시 `console.error`를 호출해야 합니다.
 
 #### 반환값 {/*returns*/}
@@ -56,7 +57,7 @@ async function handler(request, writable) {
 `resumeAndPrerenderToNodeStream`은 Promise를 반환합니다.
 - 렌더링에 성공하면 Promise는 다음을 포함한 객체로 resolve됩니다.
   - `prelude`: HTML을 담은 [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)입니다. 이 스트림을 사용해 응답을 청크 단위로 전송하거나, 전체 스트림을 문자열로 읽을 수 있습니다.
-  - `postponed`: `resumeAndPrerenderToNodeStream`이 중단된 경우 [`resumeToNodeStream`](/reference/react-dom/server/resume) 또는 [`resumeAndPrerenderToNodeStream`](/reference/react-dom/static/resumeAndPrerenderToNodeStream)에 전달할 수 있는 JSON으로 직렬화 가능한 불투명 객체입니다.
+  - `postponed`: `resumeAndPrerenderToNodeStream`이 중단된 경우 [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream) 또는 [`resumeAndPrerenderToNodeStream`](/reference/react-dom/static/resumeAndPrerenderToNodeStream)에 전달할 수 있는 JSON으로 직렬화 가능한 불투명 객체입니다.
 - 렌더링에 실패하면 Promise는 reject됩니다. [이 값을 사용해 fallback 셸을 출력하세요.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
 
 #### 주의 사항 {/*caveats*/}

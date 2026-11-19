@@ -263,6 +263,10 @@
           "path": "/reference/react-dom/flushSync"
         },
         {
+          "title": "requestFormReset",
+          "path": "/reference/react-dom/requestFormReset"
+        },
+        {
           "title": "preconnect",
           "path": "/reference/react-dom/preconnect"
         },
@@ -409,6 +413,11 @@
     {
       "title": "React Performance 트랙",
       "path": "/reference/dev-tools/react-performance-tracks"
+    },
+    {
+      "title": "React DevTools for agents",
+      "path": "/reference/dev-tools/react-devtools-cdt-mcp",
+      "version": "experimental"
     },
     {
       "hasSectionHeader": true,

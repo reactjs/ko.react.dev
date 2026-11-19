@@ -137,7 +137,7 @@ In the username request form, there might be the chance that a username is not a
 // requestUsername.js
 'use server';
 
-export default async function requestUsername(formData) {
+export default async function requestUsername(prevState, formData) {
   const username = formData.get('username');
   if (canRequest(username)) {
     // ...
@@ -197,7 +197,7 @@ function LikeButton() {
   return (
     <>
       <p>Total Likes: {likeCount}</p>
-      <button onClick={onClick} disabled={isPending}>Like</button>;
+      <button onClick={onClick} disabled={isPending}>Like</button>
     </>
   );
 }

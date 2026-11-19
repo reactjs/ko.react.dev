@@ -811,20 +811,20 @@ export default function Checkout() {
   const abortRef = useRef(null);
   const [count, dispatchAction, isPending] = useActionState(updateCartAction, 0);
 
-  async function addAction() {
+  function addAction() {
     if (abortRef.current) {
       abortRef.current.abort();
     }
     abortRef.current = new AbortController();
-    await dispatchAction({ type: 'ADD', signal: abortRef.current.signal });
+    dispatchAction({ type: 'ADD', signal: abortRef.current.signal });
   }
 
-  async function removeAction() {
+  function removeAction() {
     if (abortRef.current) {
       abortRef.current.abort();
     }
     abortRef.current = new AbortController();
-    await dispatchAction({ type: 'REMOVE', signal: abortRef.current.signal });
+    dispatchAction({ type: 'REMOVE', signal: abortRef.current.signal });
   }
 
   return (
@@ -1184,13 +1184,70 @@ hr {
 
 이 예시에서는 사용자가 스테퍼 화살표를 클릭하면 버튼이 폼을 제출하고 `useActionState`는 폼 데이터와 함께 `updateCartAction`을 호출합니다. 또한 `useOptimistic`을 활용하여 서버가 업데이트를 확인하는 동안 새로운 수량을 즉시 표시합니다.
 
+#### 유효성 검사 오류 표시 및 폼 값 유지하기 {/*displaying-validation-errors-and-preserving-form-values*/}
+
+Action에서 유효성 검사 오류와 제출된 값을 반환하면 해당 필드를 지우지 않고 오류를 표시할 수 있습니다. 세 글자 미만의 이름을 제출해 보세요.
+
+<Sandpack>
+
+```js src/App.js active
+import { useActionState } from 'react';
+import { updateName } from './api.js';
+
+const initialState = {
+  error: null,
+  submitted: null,
+};
+
+export default function UpdateName() {
+  const [state, submitAction, isPending] = useActionState(
+    updateName,
+    initialState
+  );
+
+  return (
+    <form action={submitAction}>
+      <label>
+        Name:{' '}
+        <input
+          name="name"
+          defaultValue={state.submitted?.get('name') ?? ''}
+          disabled={isPending}
+        />
+      </label>
+      <button type="submit" disabled={isPending}>Save</button>
+      {state.error && <p>{state.error}</p>}
+    </form>
+  );
+}
+```
+
+```js src/api.js
+export async function updateName(previousState, formData) {
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  const name = formData.get('name');
+  if (typeof name !== 'string' || name.trim().length < 3) {
+    return {
+      error: 'Name must be at least three characters long',
+      submitted: formData,
+    };
+  }
+  return {
+    error: null,
+    submitted: null,
+  };
+}
+```
+
+</Sandpack>
+
+유효성 검사에 실패하면 `updateName`은 오류와 제출된 `FormData`를 반환합니다. 컴포넌트는 제출된 이름을 input의 새로운 `defaultValue`로 사용하므로, React의 자동 폼 초기화가 일어나도 해당 값이 유지됩니다. 유효성 검사에 성공하면 `submitted`가 `null`이 되므로 자동 초기화 시 필드가 비워집니다.
+
 <RSC>
 
-[Server Function](/reference/rsc/server-functions)과 함께 사용할 때, `useActionState`는 하이드레이션(React가 서버 렌더링 HTML에 부착되는 과정)이 완료되기 전에 서버의 응답을 표시할 수 있게 해줍니다. 동적 콘텐츠가 있는 페이지의 경우 점진적 향상(JavaScript가 로드되기 전에 폼이 작동하도록 허용)을 위해 선택적인 `permalink` 매개변수를 사용할 수도 있습니다. 이는 일반적으로 프레임워크가 대신 처리해 줍니다.
+위 예시는 브라우저에서 `updateName`을 실행합니다. JavaScript가 로드되기 전에 오류를 표시하고 제출된 이름을 유지하려면 `updateName`을 [서버 함수](/reference/rsc/server-functions)로 만드세요. 폼의 `action` Prop에는 계속 `submitAction`을 전달합니다. 그러면 React는 하이드레이션이 완료되기 전에 서버 함수의 반환값을 표시할 수 있습니다. 설정 방법은 [JavaScript가 로드되기 전에 폼 값 유지하기](/reference/react-dom/components/form#preserving-form-values-before-javascript-loads)를 참조하세요. 동적 콘텐츠가 있는 페이지의 경우 점진적 향상을 위해 선택적인 [`permalink`](#parameters) 매개변수를 사용할 수도 있습니다.
 
 </RSC>
-
-폼과 함께 Action을 사용하는 방법에 대한 자세한 내용은 [`<form>`](/reference/react-dom/components/form#handle-form-submission-with-a-server-function) 문서를 참조하세요.
 
 ---
 
@@ -1216,7 +1273,7 @@ function Checkout() {
       const result = await addToCart(prevState.count, quantity);
       if (result.error) {
         // API의 오류를 상태로 반환합니다
-        return {...prevState, error: `Could not add quanitiy ${quantity}: ${result.error}`};
+        return {...prevState, error: `Could not add quantity ${quantity}: ${result.error}`};
       }
 
       if (!isPending) {

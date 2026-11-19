@@ -11,6 +11,7 @@ title: "내장 React API"
 ---
 * [`act`](/reference/react/act)를 통해 테스트에서 렌더링이나 상호작용을 감싸서 관련된 업데이트가 모두 처리된 뒤에 검증합니다.
 * [`cache`](/reference/react/cache)를 통해 가져온 데이터나 연산의 결과를 캐싱합니다.
+* [`cacheSignal`](/reference/react/cacheSignal)을 통해 `cache()` 수명이 끝났는지 확인할 수 있습니다.
 * [`captureOwnerStack`](/reference/react/captureOwnerStack)을 통해 개발 환경에서 현재 Owner Stack을 읽고, 사용가능한 문자열을 반환합니다.
 * [`createContext`](/reference/react/createContext)를 통해 자식 컴포넌트들에게 전달할 수 있는 컨텍스트를 정의하고 제공합니다. 보통 [`useContext`](/reference/react/useContext)와 함께 사용합니다.
 * [`lazy`](/reference/react/lazy)를 통해 컴포넌트가 처음 렌더링될 때까지 해당 컴포넌트의 코드를 로딩하는 것을 지연합니다.
@@ -19,7 +20,7 @@ title: "내장 React API"
 * [`use`](/reference/react/use)는 Promise나 Context와 같은 데이터를 참조하는 React Hook입니다.
 * [`taintObjectReference`](/reference/react/experimental_taintObjectReference)를 통해 `user` 객체와 같은 특정한 객체 인스턴스를 클라이언트 컴포넌트로 전송하는 것을 방지합니다.
 * [`taintUniqueValue`](/reference/react/experimental_taintUniqueValue)를 통해 패스워드, 키 또는 토큰과 같은 고유 값을 클라이언트 컴포넌트로 전송하는 것을 방지합니다.
-* [`addTransitionType`](/reference/react/addTransitionType)를 통해, 트랜지션이 발생한 원인을 상세히 나타냅니다.
+* [`addTransitionType`](/reference/react/addTransitionType)을 통해 트랜지션이 발생한 원인을 상세히 나타냅니다. [`startTransition`](/reference/react/startTransition) 및 [`<ViewTransition>`](/reference/react/ViewTransition)과 함께 사용합니다.
 ---
 
 ## Resource APIs {/*resource-apis*/}

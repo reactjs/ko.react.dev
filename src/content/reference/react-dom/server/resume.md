@@ -45,10 +45,11 @@ async function handler(request, writable) {
 #### 매개변수 {/*parameters*/}
 
 * `reactNode`: `prerender`를 호출할 때 전달한 React 노드입니다. 예를 들어, `<App />`과 같은 JSX 엘리먼트입니다. 전체 문서를 나타낼 것으로 예상되므로 `App` 컴포넌트는 `<html>` 태그를 렌더링해야 합니다.
-* `postponedState`: [prerender API](/reference/react-dom/static/prerender)에서 반환된 불분명한 `postpone` 객체로, 저장해 둔 위치(예: Redis, 파일, S3)에서 불러옵니다.
+* `postponedState`: [prerender API](/reference/react-dom/static)에서 반환된 불분명한 `postpone` 객체로, 저장해 둔 위치(예: Redis, 파일, S3)에서 불러옵니다.
 * `options`**(선택사항)**: 스트리밍 옵션을 지정할 수 있는 객체입니다.
   * `nonce`**(선택사항)**: [`script-src` Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)에서 스크립트를 허용하기 위한 [`nonce`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) 문자열입니다.
   * `signal`**(선택사항)**: [서버 렌더링을 중단](/reference/react-dom/server/renderToReadableStream#aborting-server-rendering)하고 나머지를 클라이언트에서 렌더링할 수 있게 하는 [중단 신호](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)입니다.
+  * `onBrowserBailout`**(선택사항)**: 브라우저가 교체할 Suspense 폴백을 남겨두어 [`browser()`](/reference/react-dom/browser)로부터 복구할 때 React가 호출하는 콜백입니다. 브라우저 전용 렌더링을 설명하는 `Error`와 `componentStack`을 포함하는 `errorInfo` 객체를 인수로 받습니다. `browser`에 이유(reason)를 전달한 경우 `error.cause`로 확인할 수 있습니다. 기본적으로 React는 아무 작업도 하지 않습니다. [브라우저 전용 렌더링을 보고하는 방법을 확인하세요.](/reference/react-dom/browser#reporting-browser-only-rendering-on-the-server)
   * `onError`**(선택사항)**: 서버 오류가 발생할 때마다, [복구 가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) 또는 [불가능](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)에 관계없이 호출되는 콜백입니다. 기본적으로 `console.error`만 호출합니다. [충돌 보고를 기록](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server)하도록 재정의하는 경우에도 반드시 `console.error`를 호출해야 합니다.
 
 
@@ -177,7 +178,7 @@ async function main(frame) {
   // Layer 2
   // Just waiting here for demonstration purposes.
   // In a real app, the prelude and postponed state would've been serialized in Layer 1 and Layer would deserialize them.
-  // The prelude content could be flushed immediated as plain HTML while
+  // The prelude content could be flushed immediately as plain HTML while
   // React is continuing to render from where the prerender left off.
   await sleep(2000);
 

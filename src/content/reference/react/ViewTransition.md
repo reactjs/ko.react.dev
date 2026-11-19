@@ -1066,9 +1066,9 @@ items.map(item => <div><Component key={item.id} item={item} /></div>)
 
 ### Suspense 콘텐츠에서 애니메이션 적용하기 {/*animating-from-suspense-content*/}
 
-다른 Transition과 마찬가지로 React는 애니메이션을 실행하기 전에 데이터와 새로운 CSS(`<link rel="stylesheet" precedence="...">`)를 기다립니다. 이에 더해 ViewTransition은 새로운 폰트가 나중에 깜빡이는 것을 방지하기 위해 애니메이션을 시작하기 전에 새로운 폰트가 로드될 때까지 최대 500ms까지 기다립니다. 같은 이유로 ViewTransition으로 래핑된 이미지는 이미지가 로드될 때까지 기다립니다.
+다른 Transition과 마찬가지로 React는 애니메이션을 실행하기 전에 데이터와 새로운 CSS(`<link rel="stylesheet" precedence="...">`)를 기다립니다. `<ViewTransition>`은 또한 애니메이션이 시작된 후 나중에 깜빡이며 나타나는 것을 방지하기 위해 새로운 폰트와 보이는 이미지가 로드될 때까지 최대 500ms까지 기다립니다. Suspense 페이지에서 [폰트 기다리기](/reference/react/Suspense#waiting-for-a-font-to-load)와 [이미지 기다리기](/reference/react/Suspense#waiting-for-an-image-to-load) 예시를 확인해 보세요.
 
-새로운 Suspense 경계 인스턴스 내부에 있으면 폴백이 먼저 표시됩니다. Suspense 경계가 완전히 로드된 후 `<ViewTransition>`이 콘텐츠로 전환되는 애니메이션을 실행합니다.
+콘텐츠가 새로운 Suspense 경계 내부에 있으면 React는 먼저 폴백을 표시합니다. Suspense 경계가 로드를 완료한 후 `<ViewTransition>`이 콘텐츠가 나타나는 애니메이션을 실행합니다.
 
 현재 이 동작은 클라이언트 측 Transition에서만 발생합니다. 향후에는 초기 로드 중에 서버의 콘텐츠가 일시 중단될 때 스트리밍 SSR에 대한 Suspense 경계도 애니메이션할 예정입니다.
 
@@ -1129,7 +1129,7 @@ export function VideoPlaceholder() {
 ```
 
 ```js
-import {ViewTransition, useState, startTransition, Suspense} from 'react';
+import { ViewTransition, Suspense, useState } from 'react';
 import {Video, VideoPlaceholder} from './Video';
 import {useLazyVideoData} from './data';
 
@@ -1142,12 +1142,7 @@ export default function Component() {
   const [showItem, setShowItem] = useState(false);
   return (
     <>
-      <button
-        onClick={() => {
-          startTransition(() => {
-            setShowItem((prev) => !prev);
-          });
-        }}>
+      <button onClick={() => setShowItem((prev) => !prev)}>
         {showItem ? '➖' : '➕'}
       </button>
       {showItem ? (
@@ -1300,8 +1295,8 @@ button:hover {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "19.3.0-canary-f1f7ed2a-20260904",
-    "react-dom": "19.3.0-canary-f1f7ed2a-20260904",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
     "react-scripts": "latest"
   }
 }

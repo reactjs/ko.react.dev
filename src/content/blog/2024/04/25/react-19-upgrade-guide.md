@@ -639,7 +639,7 @@ const ref = useRef<number>(null);
 ref.current = 1;
 ```
 
-`MutableRef`는 이제 사용 중단되었으며 `useRef`는 항상 단일 `RefObject` 타입을 반환합니다.
+`MutableRefObject`는 이제 사용 중단되었으며 `useRef`는 항상 단일 `RefObject` 타입을 반환합니다.
 
 ```ts
 interface RefObject<T> {

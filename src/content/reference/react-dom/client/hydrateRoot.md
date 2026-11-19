@@ -120,7 +120,7 @@ Calling `root.unmount` will unmount all the components in the root and "detach" 
 
 ### 서버에서 렌더링된 HTML을 Hydrate하기 {/*hydrating-server-rendered-html*/}
 
-[`react-dom/server`](/reference/react-dom/client/createRoot)로 앱의 HTML을 생성했다면, 클라이언트에서 *Hydrate* 해주어야 합니다.
+[`react-dom/server`](/reference/react-dom/server)로 앱의 HTML을 생성했다면, 클라이언트에서 *Hydrate* 해주어야 합니다.
 
 ```js [[1, 3, "document.getElementById('root')"], [2, 3, "<App />"]]
 import { hydrateRoot } from 'react-dom/client';

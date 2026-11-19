@@ -18,6 +18,7 @@ title: "내장 React Hook"
 
 * [`useState`](/reference/react/useState)는 직접 업데이트할 수 있는 State 변수를 선언합니다.
 * [`useReducer`](/reference/react/useReducer)는 [Reducer 함수](/learn/extracting-state-logic-into-a-reducer) 내부의 업데이트 로직을 사용하여 State 변수를 선언합니다.
+* [`useOptimistic`](/reference/react/useOptimistic)을 사용하면 비동기 작업이 진행 중일 때 다른 State를 표시할 수 있습니다.
 
 ```js
 function ImageGallery() {

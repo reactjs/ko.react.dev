@@ -38,19 +38,19 @@ React 19의 서버 함수는 안정적이며 마이너<sup>Minor</sup> 버전 �
 
 서버 컴포넌트는 `"use server"` 지시어로 서버 함수를 정의할 수 있습니다.
 
-```js [[2, 7, "'use server'"], [1, 5, "createNote"], [1, 12, "createNote"]]
+```js [[2, 7, "'use server'"], [1, 5, "createNoteAction"], [1, 12, "createNoteAction"]]
 // 서버 컴포넌트
 import Button from './Button';
 
-function EmptyNote () {
-  async function createNote() {
+function EmptyNote() {
+  async function createNoteAction() {
     // 서버 함수
     'use server';
 
     await db.notes.create();
   }
 
-  return <Button onClick={createNote}/>;
+  return <Button onClick={createNoteAction} />;
 }
 ```
 
@@ -62,29 +62,29 @@ React가 `EmptyNote` 서버 컴포넌트를 렌더링할 때, `createNoteAction`
 export default function Button({onClick}) {
   console.log(onClick);
   // {$$typeof: Symbol.for("react.server.reference"), $$id: 'createNoteAction'}
-  return <button onClick={() => onClick()}>Create Empty Note</button>
+  return <button onClick={() => onClick()}>Create Empty Note</button>;
 }
 ```
 
 자세한 내용은 [`"use server"`](/reference/rsc/use-server) 문서를 참조하세요.
 
-
 ### 클라이언트 컴포넌트에서 서버 함수 가져오기 {/*importing-server-functions-from-client-components*/}
 
 클라이언트 컴포넌트는 `"use server"` 지시어를 사용하는 파일에서 서버 함수를 가져올 수 있습니다.
 
-```js [[1, 3, "createNote"]]
+```js [[1, 4, "createNote"]]
+// actions.js
 "use server";
 
 export async function createNote() {
   await db.notes.create();
 }
-
 ```
 
 번들러가 `EmptyNote` 클라이언트 컴포넌트를 빌드할 때, 번들에서 `createNote` 함수에 대한 참조를 생성합니다. 버튼을 클릭하면, React는 제공된 참조를 통해 `createNote` 함수를 실행하도록 서버에 요청<sup>Request</sup>을 보냅니다.
 
-```js [[1, 3, "createNote"], [1, 6, "createNote"], [1, 8, "createNote"]]
+```js [[1, 4, "createNote"], [1, 7, "createNote"], [1, 9, "createNote"]]
+// EmptyNote.js
 "use client";
 
 import {createNote} from './actions';
@@ -92,17 +92,18 @@ import {createNote} from './actions';
 function EmptyNote() {
   console.log(createNote);
   // {$$typeof: Symbol.for("react.server.reference"), $$id: 'createNote'}
-  <button onClick={() => createNote()} />
+  return <button onClick={() => createNote()}>Create Empty Note</button>;
 }
 ```
 
 자세한 내용은 [`"use server"`](/reference/rsc/use-server) 문서를 참조하세요.
 
-### 액션으로 서버 함수 구성하기 {/*server-functions-with-actions*/}
+### 액션에서 서버 함수 호출하기 {/*server-functions-with-actions*/}
 
-서버 함수는 클라이언트의 액션<sup>Action</sup>과 함께 구성할 수 있습니다.
+서버 함수는 클라이언트의 액션<sup>Action</sup>에서 호출할 수 있습니다.
 
-```js [[1, 3, "updateName"]]
+```js [[1, 4, "updateName"]]
+// actions.js
 "use server";
 
 export async function updateName(name) {
@@ -110,12 +111,15 @@ export async function updateName(name) {
     return {error: 'Name is required'};
   }
   await db.users.updateName(name);
+  return {error: null};
 }
 ```
 
-```js [[1, 3, "updateName"], [1, 13, "updateName"], [2, 11, "submitAction"], [2, 25, "submitAction"]]
+```js [[1, 5, "updateName"], [1, 15, "updateName"], [2, 13, "submitAction"], [2, 28, "submitAction"]]
+// UpdateName.js
 "use client";
 
+import {useState, useTransition} from 'react';
 import {updateName} from './actions';
 
 function UpdateName() {
@@ -124,25 +128,32 @@ function UpdateName() {
 
   const [isPending, startTransition] = useTransition();
 
-  const submitAction = async () => {
+  function submitAction() {
     startTransition(async () => {
       const {error} = await updateName(name);
+      // await 이후의 State 업데이트는 자동으로 Transition으로 표시되지 않으므로,
+      // 또 다른 startTransition으로 감싸줍니다.
       startTransition(() => {
-        if (error) {
-          setError(error);
-        } else {
+        setError(error);
+        if (!error) {
           setName('');
         }
       });
-    })
+    });
   }
 
   return (
     <form action={submitAction}>
-      <input type="text" name="name" disabled={isPending}/>
+      <input
+        type="text"
+        name="name"
+        value={name}
+        onChange={event => setName(event.target.value)}
+        disabled={isPending}
+      />
       {error && <span>Failed: {error}</span>}
     </form>
-  )
+  );
 }
 ```
 
@@ -150,14 +161,27 @@ function UpdateName() {
 
 자세한 내용은 [`<form>` 외부에서 서버 함수 호출하기](/reference/rsc/use-server#calling-a-server-function-outside-of-form) 문서를 참조하세요.
 
-### 서버 함수를 사용한 폼 액션 {/*using-server-functions-with-form-actions*/}
+### `<form>` `action` Prop에 서버 함수 전달하기 {/*using-server-functions-with-form-actions*/}
 
 서버 함수는 React 19의 새로운 폼<sup>Form</sup> 기능과 함께 동작합니다.
 
-서버 함수를 폼에 전달하여 폼을 서버에 자동으로 제출할 수 있습니다.
+서버 함수를 `<form>` `action` Prop에 전달하여 폼을 서버에 제출할 수 있습니다. React는 제출된 [`FormData`](https://developer.mozilla.org/ko/docs/Web/API/FormData)를 첫 번째 인수로 서버 함수에 전달합니다.
 
+```js [[1, 4, "updateName"]]
+// actions.js
+"use server";
 
-```js [[1, 3, "updateName"], [1, 7, "updateName"]]
+export async function updateName(formData) {
+  const name = formData.get('name');
+  if (typeof name !== 'string' || !name) {
+    throw new Error('Name is required');
+  }
+  await db.users.updateName(name);
+}
+```
+
+```js [[1, 4, "updateName"], [1, 8, "updateName"]]
+// UpdateName.js
 "use client";
 
 import {updateName} from './actions';
@@ -167,21 +191,37 @@ function UpdateName() {
     <form action={updateName}>
       <input type="text" name="name" />
     </form>
-  )
+  );
 }
 ```
 
-폼 제출이 성공하면, React는 자동으로 폼을 재설정합니다. `useActionState`를 추가하여 대기<sup>Pending</sup> 상태 혹은 마지막 응답<sup>Response</sup>에 접근하거나, 점진적 향상을 지원할 수 있습니다.
+`<form>` `action` Prop에 전달된 서버 함수가 성공하면, React는 폼의 비제어 필드를 자동으로 초기화합니다. 사용자는 JavaScript 번들이 로드되기 전에 폼을 제출할 수 있습니다. 액션의 대기<sup>Pending</sup> 상태와 가장 최근의 반환값에 접근하려면 `useActionState`를 사용하세요.
 
 자세한 내용은 [폼<sup>Form</sup>에서의 서버 함수](/reference/rsc/use-server#server-functions-in-forms) 문서를 참조하세요.
 
-### `useActionState`를 사용한 서버 함수 {/*server-functions-with-use-action-state*/}
+### `useActionState`와 함께 서버 함수 호출하기 {/*server-functions-with-use-action-state*/}
 
-액션 대기<sup>Pending</sup> 상태와 마지막으로 반환된 응답<sup>Response</sup>에 접근하는 일반적인 경우에는 `useActionState`를 사용하여 서버 함수를 호출할 수 있습니다.
+액션의 대기<sup>Pending</sup> 상태와 가장 최근의 반환값에 접근하려면 `useActionState`와 함께 서버 함수를 호출하세요. 서버 함수는 첫 번째 인수로 이전 State를 받고, 두 번째 인수로 제출된 [`FormData`](https://developer.mozilla.org/ko/docs/Web/API/FormData)를 받습니다. 반환값은 다음 State가 됩니다.
 
-```js [[1, 3, "updateName"], [1, 6, "updateName"], [2, 6, "submitAction"], [2, 9, "submitAction"]]
+```js [[1, 4, "updateName"]]
+// actions.js
+"use server";
+
+export async function updateName(previousState, formData) {
+  const name = formData.get('name');
+  if (typeof name !== 'string' || !name) {
+    return {error: 'Name is required'};
+  }
+  await db.users.updateName(name);
+  return {error: null};
+}
+```
+
+```js [[1, 5, "updateName"], [1, 8, "updateName"], [2, 8, "submitAction"], [2, 11, "submitAction"]]
+// UpdateName.js
 "use client";
 
+import {useActionState} from 'react';
 import {updateName} from './actions';
 
 function UpdateName() {
@@ -189,28 +229,32 @@ function UpdateName() {
 
   return (
     <form action={submitAction}>
-      <input type="text" name="name" disabled={isPending}/>
+      <input type="text" name="name" disabled={isPending} />
       {state.error && <span>Failed: {state.error}</span>}
     </form>
   );
 }
 ```
 
-서버 함수 함께 `useActionState`를 사용하는 경우, React는 Hydration이 완료되기 전에 입력된 폼 제출을 자동으로 다시 실행합니다. 즉, 사용자는 앱이 Hydration 되기 전에도 앱과 상호작용을 할 수 있습니다.
+`useActionState`에 전달된 함수가 서버 함수인 경우, 사용자는 Hydration이 완료되기 전에 폼을 제출할 수 있습니다. React는 JavaScript가 로드되기 전에 서버 함수의 반환값을 표시할 수 있습니다.
 
 자세한 내용은 [`useActionState`](/reference/react/useActionState) 문서를 참조하세요.
 
-### `useActionState`를 통한 점진적 향상 {/*progressive-enhancement-with-useactionstate*/}
+제출된 값을 유지하거나 폼이 초기화되는 시점을 제어하려면 [액션 이후 폼 값 유지하기](/reference/react-dom/components/form#preserve-form-values-after-an-action)를 참조하세요.
+
+### `useActionState`로 점진적 향상 지원하기 {/*progressive-enhancement-with-useactionstate*/}
 
 서버 함수는 `useActionState`의 세 번째 인수를 통한 점진적 향상도 지원합니다.
 
-```js [[1, 3, "updateName"], [1, 6, "updateName"], [2, 6, "/name/update"], [3, 6, "submitAction"], [3, 9, "submitAction"]]
+```js [[1, 5, "updateName"], [1, 8, "updateName"], [2, 8, "/name/update"], [3, 8, "submitAction"], [3, 11, "submitAction"]]
+// UpdateName.js
 "use client";
 
+import {useActionState} from 'react';
 import {updateName} from './actions';
 
 function UpdateName() {
-  const [, submitAction] = useActionState(updateName, null, `/name/update`);
+  const [, submitAction] = useActionState(updateName, {error: null}, `/name/update`);
 
   return (
     <form action={submitAction}>
@@ -220,6 +264,6 @@ function UpdateName() {
 }
 ```
 
-<CodeStep step={2}>permalink</CodeStep>가 `useActionState`에 제공될 때, 자바스크립트 번들이 로드되기 전에 폼이 제출되면 React는 제공된 URL로 리디렉션합니다.
+`useActionState`에 <CodeStep step={2}>`permalink`</CodeStep>를 전달하면, 자바스크립트 번들이 로드되기 전에 폼이 제출될 때 브라우저가 해당 URL로 이동합니다. 이동한 대상 페이지에서 동일한 서버 함수와 `permalink`로 동일한 폼 컴포넌트를 렌더링하면 React가 반환된 State를 해당 컴포넌트에 전달할 수 있습니다.
 
 자세한 내용은 [`useActionState`](/reference/react/useActionState) 문서를 참조하세요.

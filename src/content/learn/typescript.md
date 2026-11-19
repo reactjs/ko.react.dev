@@ -334,7 +334,7 @@ function MyComponent() {
 
 </Note>
 
-[`useMemo`](/reference/react/useMemo) Hook은 함수 호출로부터 Memorized 된 값을 생성/재접근하여, 두 번째 매개변수로 전달된 종속성이 변경될 때만 함수를 다시 실행합니다. Hook을 호출한 결과는 첫 번째 매개변수에 있는 함수의 반환 값에서 추론됩니다. Hook에 타입 인수를 제공하여 더욱더 명확하게 할 수 있습니다.
+[`useMemo`](/reference/react/useMemo) Hook은 함수 호출로부터 Memoized 된 값을 생성/재접근하여, 두 번째 매개변수로 전달된 종속성이 변경될 때만 함수를 다시 실행합니다. Hook을 호출한 결과는 첫 번째 매개변수에 있는 함수의 반환 값에서 추론됩니다. Hook에 타입 인수를 제공하여 더욱더 명확하게 할 수 있습니다.
 
 ```ts
 // visibleTodos의 타입은 filterTodos의 반환 값에서 추론됩니다.

@@ -16,6 +16,7 @@ title: React DOM APIs
 
 * [`createPortal`](/reference/react-dom/createPortal)을 사용하면 자식 컴포넌트를 DOM 트리의 다른 부분에 렌더링 할 수 있습니다.
 * [`flushSync`](/reference/react-dom/flushSync)를 사용하면 React가 State 업데이트를 수행하고 동기적으로 DOM을 업데이트하도록 강제할 수 있습니다.
+* [`requestFormReset`](/reference/react-dom/requestFormReset)을 사용하면 사용자 정의 Action이나 Transition으로 제출을 처리할 때 폼 초기화를 요청할 수 있습니다.
 
 ## Resource Preloading APIs {/*resource-preloading-apis*/}
 
@@ -54,6 +55,6 @@ title: React DOM APIs
 * [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode): see [alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives).
 * [`hydrate`](https://18.react.dev/reference/react-dom/hydrate): use [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) instead.
 * [`render`](https://18.react.dev/reference/react-dom/render): use [`createRoot`](/reference/react-dom/client/createRoot) instead.
-* [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode): use [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) instead.
+* [`unmountComponentAtNode`](https://18.react.dev/reference/react-dom/unmountComponentAtNode): use [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) instead.
 * [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
 * [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.

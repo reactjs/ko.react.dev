@@ -50,6 +50,7 @@ function AppRoot() {
   *  `crossOrigin`: 문자열입니다. 사용할 [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)을 지정합니다. 가능한 값은 `anonymous` 또는 `use-credentials`입니다.
   *  `integrity`: 문자열입니다. 모듈의 암호학적 해시로, [무결성을 검증](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)하는 데 사용됩니다.
   *  `nonce`: 문자열입니다. 엄격한 Content Security Policy를 사용할 때 모듈을 허용하기 위한 암호학적 [nonce](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)입니다.
+  *  `fetchPriority`: 문자열입니다. 리소스를 가져올 때의 [상대적 우선순위](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/fetchpriority)를 제안합니다. 가능한 값은 `auto`(기본값), `high`, `low`입니다.
 
 #### 반환값 {/*returns*/}
 
