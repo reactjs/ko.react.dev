@@ -12,19 +12,19 @@ title: React 블로그
 
 <BlogCard title="React 재단: Linux 재단이 후원하는 React의 새로운 보금자리" date="2026년 2월 24일" url="/blog/2026/02/24/the-react-foundation">
 
-The React Foundation has officially launched under the Linux Foundation.
+React 재단이 Linux 재단 산하에서 공식 출범했습니다.
 
 </BlogCard>
 
-<BlogCard title="Denial of Service and Source Code Exposure in React Server Components" date="December 11, 2025" url="/blog/2025/12/11/denial-of-service-and-source-code-exposure-in-react-server-components">
+<BlogCard title="React Server Components의 서비스 거부(DoS) 및 소스 코드 노출 취약점" date="2025년 12월 11일" url="/blog/2025/12/11/denial-of-service-and-source-code-exposure-in-react-server-components">
 
-Security researchers have found and disclosed two additional vulnerabilities in React Server Components while attempting to exploit the patches in last week’s critical vulnerability...
+보안 연구원들이 지난주의 심각한 취약점 패치를 분석하던 중 React Server Components에서 두 가지 추가 취약점을 발견하여 공개했습니다...
 
 </BlogCard>
 
-<BlogCard title="Critical Security Vulnerability in React Server Components" date="December 3, 2025" url="/blog/2025/12/03/critical-security-vulnerability-in-react-server-components">
+<BlogCard title="React Server Components의 심각한 보안 취약점" date="2025년 12월 3일" url="/blog/2025/12/03/critical-security-vulnerability-in-react-server-components">
 
-There is an unauthenticated remote code execution vulnerability in React Server Components. A fix has been published in versions 19.0.1, 19.1.2, and 19.2.1. We recommend upgrading immediately.
+React Server Components에서 인증되지 않은 원격 코드 실행 취약점이 발견되었습니다. 버전 19.0.1, 19.1.2, 19.2.1에 수정 사항이 배포되었습니다. 즉시 업그레이드하는 것을 권장합니다.
 
 </BlogCard>
 
@@ -52,9 +52,9 @@ React 19.2에는 Activity, React 성능 트랙, useEffectEvent 등의 새로운 
 
 </BlogCard>
 
-<BlogCard title="React Labs: View Transitions, Activity, and more" date="April 23, 2025" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
+<BlogCard title="React Labs: 뷰 트랜지션, Activity 및 기타 업데이트" date="2025년 4월 23일" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
 
-In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and sharing other areas we're working on now ...
+React Labs 게시글에서는 활발히 연구 개발 중인 프로젝트에 대해 다룹니다. 이 글에서는 지금 바로 사용해 볼 수 있는 두 가지 새로운 실험적 기능을 소개하고, 현재 작업 중인 다른 영역들을 공유합니다...
 
 </BlogCard>
 
@@ -70,9 +70,9 @@ React 19 업그레이드 가이드에서 React 19로 앱을 업그레이드하�
 
 </BlogCard>
 
-<BlogCard title="React Compiler Beta Release" date="October 21, 2024" url="/blog/2024/10/21/react-compiler-beta-release">
+<BlogCard title="React 컴파일러 베타 릴리즈" date="2024년 10월 21일" url="/blog/2024/10/21/react-compiler-beta-release">
 
-We announced an experimental release of React Compiler at React Conf 2024. We've made a lot of progress since then, and in this post we want to share what's next for React Compiler ...
+React Conf 2024에서 React 컴파일러의 실험적 릴리즈를 발표했습니다. 그 이후로 많은 진전이 있었으며, 이 글에서는 React 컴파일러의 향후 계획을 공유하고자 합니다...
 
 </BlogCard>
 
