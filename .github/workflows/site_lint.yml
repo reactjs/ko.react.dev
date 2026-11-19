@@ -13,7 +13,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
 
-    name: Lint on node 24.x and ubuntu-latest
+    name: Lint on node 20.x and ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
