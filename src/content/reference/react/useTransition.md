@@ -1686,11 +1686,7 @@ startTransition(() => {
 });
 ```
 
-<<<<<<< HEAD
-`startTransition`에 전달하는 함수는 동기식이어야 합니다. You can't mark an update as a Transition like this:
-=======
-The function you pass to `startTransition` can be synchronous or asynchronous. However, updates scheduled in a `setTimeout` callback aren't marked as Transitions:
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
+`startTransition`에 전달하는 함수는 동기식 또는 비동기식일 수 있습니다. 하지만 `setTimeout` 콜백에서 예약된 업데이트는 Transition으로 표시되지 않습니다.
 
 ```js
 startTransition(() => {

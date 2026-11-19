@@ -5,11 +5,7 @@ titleForTitleTag: "'use server' 지시어"
 
 <RSC>
 
-<<<<<<< HEAD
 `'use server'`는 [React 서버 컴포넌트](/reference/rsc/server-components)와 함께 사용합니다.
-=======
-`'use server'` is for use with [React Server Components](/reference/rsc/server-components).
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 </RSC>
 

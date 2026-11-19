@@ -54,11 +54,7 @@ export default function App() {
 
 다음의 프로퍼티를 가지는 `status` 객체를 반환합니다.
 
-<<<<<<< HEAD
-* `pending`: 불리언 값입니다. `true`라면 상위 `<form>`이 아직 제출 중이라는 것을 의미합니다. 그렇지 않으면 `false`입니다.
-=======
-* `pending`: A boolean. `true` while the parent `<form>` is submitting an Action or [running a Transition from `onSubmit`](#display-a-pending-state-with-an-onsubmit-handler). Otherwise, `false`.
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
+* `pending`: 불리언 값입니다. 상위 `<form>`이 Action을 제출 중이거나 [`onSubmit`에서 Transition을 실행 중](#display-a-pending-state-with-an-onsubmit-handler)일 때 `true`입니다. 그렇지 않으면 `false`입니다.
 
 * `data`: [`FormData` 인터페이스](https://developer.mozilla.org/ko/docs/Web/API/FormData)를 구현한 객체로, 상위 `<form>`이 제출하는 데이터를 포함합니다. 활성화된 제출이 없거나 상위에 `<form>`이 없는 경우에는 `null`입니다.
 
@@ -76,13 +72,8 @@ export default function App() {
 
 ## 사용법 {/*usage*/}
 
-<<<<<<< HEAD
-### 폼을 제출하는 동안 대기 중인 상태로 표시하기 {/*display-a-pending-state-during-form-submission*/}
+### `action` Prop으로 대기 상태 표시하기 {/*display-a-pending-state-during-form-submission*/}
 폼을 제출하는 동안 대기<sup>Pending</sup> 상태를 표시하려면 `<form>` 내에서 렌더링한 컴포넌트에서 `useFormStatus` Hook을 호출하고 반환된 `pending` 프로퍼티를 확인하세요.
-=======
-### Display a pending state with an `action` prop {/*display-a-pending-state-during-form-submission*/}
-To display a pending state while a form is submitting, you can call the `useFormStatus` Hook in a component rendered in a `<form>` and read the `pending` property returned.
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 여기서는 `pending` 프로퍼티를 사용하여 폼이 제출 중인지를 나타냅니다.
 
@@ -123,9 +114,9 @@ export async function submitForm(query) {
 
 ---
 
-### Display a pending state with an `onSubmit` handler {/*display-a-pending-state-with-an-onsubmit-handler*/}
+### `onSubmit` 핸들러로 대기 상태 표시하기 {/*display-a-pending-state-with-an-onsubmit-handler*/}
 
-If you need to handle form submission in an `onSubmit` event handler instead of passing a function to the [`<form action>` prop](/reference/react-dom/components/form#handle-form-submission-with-an-action-prop), call [`event.preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) and [start a Transition](/reference/react/startTransition) in the same event handler. A component inside the form can then use `useFormStatus` to read the pending state while the Action is running.
+[`<form action>` Prop](/reference/react-dom/components/form#handle-form-submission-with-an-action-prop)에 함수를 전달하는 대신 `onSubmit` 이벤트 핸들러에서 폼 제출을 처리해야 하는 경우, 동일한 이벤트 핸들러 내에서 [`event.preventDefault()`](https://developer.mozilla.org/ko/docs/Web/API/Event/preventDefault)를 호출하고 [Transition을 시작](/reference/react/startTransition)하세요. 그러면 폼 내부의 컴포넌트에서 `useFormStatus`를 사용하여 Action이 실행되는 동안 대기 상태를 읽을 수 있습니다.
 
 <Sandpack>
 
@@ -177,7 +168,7 @@ export async function submitForm(formData) {
 
 </Sandpack>
 
-Unlike a function passed to the `<form action>` prop, handling submission this way [does not automatically reset the form](/reference/react-dom/components/form#other-ways-to-control-form-resets).
+`<form action>` Prop에 전달된 함수와 달리, 이러한 방식으로 제출을 처리하면 [폼이 자동으로 초기화되지 않습니다](/reference/react-dom/components/form#other-ways-to-control-form-resets).
 
 
 <Pitfall>

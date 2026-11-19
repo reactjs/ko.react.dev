@@ -1228,11 +1228,7 @@ li {
 
 </Sandpack>
 
-<<<<<<< HEAD
 이제 StrictMode에서 초기 마운트 시, ref 콜백이 모두 셋업되고, 클린업 후, 다시 셋업 됩니다.
-=======
-Now on initial mount in StrictMode, the ref callbacks are all setup, cleaned up, and setup again:
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 ```
 ...

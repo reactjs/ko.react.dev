@@ -130,14 +130,10 @@ it('can render and update a counter', async () => {
     ReactDOMClient.createRoot(container).render(<Counter />);
   });
 
-<<<<<<< HEAD
-  // ✅ 이벤트 디스패치를 act() 안에서 실행합니다.
-=======
   const button = container.querySelector('button');
   const label = container.querySelector('p');
 
-  // ✅ Dispatch the event inside act().
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
+  // ✅ 이벤트 디스패치를 act() 안에서 실행합니다.
   await act(async () => {
     button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
   });

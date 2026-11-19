@@ -16,8 +16,8 @@ React는 JSX에서 사용할 수 있는 몇 가지 내장 컴포넌트를 제공
 * [`<Profiler>`](/reference/react/Profiler)를 통해 React 트리의 렌더링 성능을 프로그래밍 방식으로 측정할 수 있습니다.
 * [`<StrictMode>`](/reference/react/StrictMode)를 통해 초기에 버그를 찾는 데 도움이 되는 추가 개발 전용 검사를 사용할 수 있습니다.
 * [`<Suspense>`](/reference/react/Suspense)를 통해 자식 컴포넌트를 로딩하는 동안 Fallback을 표시할 수 있습니다.
-* [`<Activity>`](/reference/react/Activity) lets you hide and restore the UI and internal state of its children.
-* [`<ViewTransition>`](/reference/react/ViewTransition) lets you animate a component tree with Transitions and Suspense.
+* [`<Activity>`](/reference/react/Activity)를 사용하면 자식 컴포넌트의 UI와 내부 상태를 숨기고 복원할 수 있습니다.
+* [`<ViewTransition>`](/reference/react/ViewTransition)을 사용하면 Transition 및 Suspense와 함께 컴포넌트 트리에 애니메이션을 적용할 수 있습니다.
 
 ---
 

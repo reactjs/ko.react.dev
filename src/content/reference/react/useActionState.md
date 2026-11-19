@@ -257,11 +257,7 @@ button {
 
 </Sandpack>
 
-<<<<<<< HEAD
 "Add Ticket"을 클릭할 때마다 React는 `addToCartAction` 호출을 대기열에 넣습니다. React는 모든 티켓이 추가될 때까지 보류 상태를 표시하고, 최종 상태로 리렌더링을 진행합니다.
-=======
-Every time you click "Add Ticket", React queues a call to `addToCartAction`. React shows the pending state until all the tickets are added, and then re-renders with the final state.
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 <DeepDive>
 
@@ -1188,9 +1184,9 @@ hr {
 
 이 예시에서는 사용자가 스테퍼 화살표를 클릭하면 버튼이 폼을 제출하고 `useActionState`는 폼 데이터와 함께 `updateCartAction`을 호출합니다. 또한 `useOptimistic`을 활용하여 서버가 업데이트를 확인하는 동안 새로운 수량을 즉시 표시합니다.
 
-#### Displaying validation errors and preserving form values {/*displaying-validation-errors-and-preserving-form-values*/}
+#### 유효성 검사 오류 표시 및 폼 값 유지하기 {/*displaying-validation-errors-and-preserving-form-values*/}
 
-Return validation errors and submitted values from the Action to display an error without clearing the affected fields. Try submitting a name with fewer than three characters:
+Action에서 유효성 검사 오류와 제출된 값을 반환하면 해당 필드를 지우지 않고 오류를 표시할 수 있습니다. 세 글자 미만의 이름을 제출해 보세요.
 
 <Sandpack>
 
@@ -1245,23 +1241,14 @@ export async function updateName(previousState, formData) {
 
 </Sandpack>
 
-When validation fails, `updateName` returns an error and the submitted `FormData`. The component uses the submitted name as the input's new `defaultValue`, so React's automatic form reset preserves it. When validation succeeds, `submitted` is `null`, so the automatic reset clears the field.
+유효성 검사에 실패하면 `updateName`은 오류와 제출된 `FormData`를 반환합니다. 컴포넌트는 제출된 이름을 input의 새로운 `defaultValue`로 사용하므로, React의 자동 폼 초기화가 일어나도 해당 값이 유지됩니다. 유효성 검사에 성공하면 `submitted`가 `null`이 되므로 자동 초기화 시 필드가 비워집니다.
 
 <RSC>
 
-<<<<<<< HEAD
-[Server Function](/reference/rsc/server-functions)과 함께 사용할 때, `useActionState`는 하이드레이션(React가 서버 렌더링 HTML에 부착되는 과정)이 완료되기 전에 서버의 응답을 표시할 수 있게 해줍니다. 동적 콘텐츠가 있는 페이지의 경우 점진적 향상(JavaScript가 로드되기 전에 폼이 작동하도록 허용)을 위해 선택적인 `permalink` 매개변수를 사용할 수도 있습니다. 이는 일반적으로 프레임워크가 대신 처리해 줍니다.
+위 예시는 브라우저에서 `updateName`을 실행합니다. JavaScript가 로드되기 전에 오류를 표시하고 제출된 이름을 유지하려면 `updateName`을 [서버 함수](/reference/rsc/server-functions)로 만드세요. 폼의 `action` Prop에는 계속 `submitAction`을 전달합니다. 그러면 React는 하이드레이션이 완료되기 전에 서버 함수의 반환값을 표시할 수 있습니다. 설정 방법은 [JavaScript가 로드되기 전에 폼 값 유지하기](/reference/react-dom/components/form#preserving-form-values-before-javascript-loads)를 참조하세요. 동적 콘텐츠가 있는 페이지의 경우 점진적 향상을 위해 선택적인 [`permalink`](#parameters) 매개변수를 사용할 수도 있습니다.
 
 </RSC>
 
-폼과 함께 Action을 사용하는 방법에 대한 자세한 내용은 [`<form>`](/reference/react-dom/components/form#handle-form-submission-with-a-server-function) 문서를 참조하세요.
-
-=======
-The example above runs `updateName` in the browser. To display the error and preserve the submitted name before JavaScript loads, make `updateName` a [Server Function](/reference/rsc/server-functions). Keep passing `submitAction` to the form's `action` prop. React can then display the Server Function's returned value before hydration completes. See [preserving form values before JavaScript loads](/reference/react-dom/components/form#preserving-form-values-before-javascript-loads) for the setup. On pages with dynamic content, you can also use the optional [`permalink`](#parameters) parameter for progressive enhancement.
-
-</RSC>
-
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 ---
 
 ### 오류 처리하기 {/*handling-errors*/}
@@ -1270,11 +1257,7 @@ The example above runs `updateName` in the browser. To display the error and pre
 
 백엔드에서 오는 "수량 부족" 같은 알려진 유효성 검사 오류의 경우, 이를 `reducerAction` 상태의 일부로 반환하여 UI에 표시할 수 있습니다.
 
-<<<<<<< HEAD
 `undefined is not a function` 같은 알 수 없는 오류의 경우에는 에러를 직접 던질(throw) 수 있습니다. React는 큐에 대기 중인 모든 Action을 취소하고 `useActionState` 훅에서 오류를 다시 발생시켜 가장 가까운 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)를 표시하게 됩니다.
-=======
-For unknown errors, such as `undefined is not a function`, you can throw an error. React will cancel all queued Actions and show the nearest [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) by rethrowing the error from the `useActionState` hook.
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 <Sandpack>
 
@@ -1289,13 +1272,8 @@ function Checkout() {
     async (prevState, quantity) => {
       const result = await addToCart(prevState.count, quantity);
       if (result.error) {
-<<<<<<< HEAD
         // API의 오류를 상태로 반환합니다
-        return {...prevState, error: `Could not add quanitiy ${quantity}: ${result.error}`};
-=======
-        // Return the error from the API as state
         return {...prevState, error: `Could not add quantity ${quantity}: ${result.error}`};
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
       }
 
       if (!isPending) {

@@ -36,47 +36,9 @@ React 문서 기여에 관심을 가져주셔서 감사합니다!
 
 ES5만 다루는 경우라면 이 규칙은 무시하세요.
 
-<<<<<<< HEAD
-#### ES5의 기능만으로 간단하게 작성할 수 있는 경우, ES6의 기능을 무조건적으로 사용하지 마세요
+#### 읽기 쉬운 구문을 선호합니다
 
-ES6가 아직 낯선 사람도 많습니다. 이미 여러 곳에서 `const` / `let`, 클래스, 화살표 함수 등을 사용하고 있지만, 그에 상응하는 ES5 코드가 간단하고 가독성이 좋다면 ES5를 사용하는 것도 고려하세요.
-
-특히 최상위 함수에서는 `const myFunction = () => ...`과 같은 화살표 함수 대신에 이름 있는 `function` 선언을 선호합니다. 하지만 컴포넌트 내 `this` 컨텍스트를 유지해야 하는 경우에는 화살표 함수를 사용하세요. 새로운 문법을 사용할 때는 장단점을 모두 따져보고 결정하세요.
-
-#### 아직 표준화되지 않은 기능은 사용하지 마세요
-
-예를 들어, 다음 코드처럼 작성하지 마세요.
-
-```js
-class MyComponent extends React.Component {
-  state = {value: ''};
-  handleChange = (e) => {
-    this.setState({value: e.target.value});
-  };
-}
-```
-
-대신, 다음처럼 작성하세요.
-
-```js
-class MyComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.state = {value: ''};
-  }
-  handleChange(e) {
-    this.setState({value: e.target.value});
-  }
-}
-```
-
-실험적인 제안<sup>Experimental Proposal</sup>에 대해 설명하는 경우라면 예외로 하되, 코드와 주변 글에서 실험적임<sup>Experimental</sup>을 명시하세요.
-=======
-#### Prefer readable syntax.
-
-Choose syntax that makes each example easier to follow. Prefer named `function` declarations over `const myFunction = () => ...` arrows for top-level functions. Use arrow functions when they make callbacks easier to read. In class components, arrow functions can also preserve the component's `this` value.
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
+각 예시를 쉽게 따라갈 수 있는 구문을 선택하세요. 최상위 함수에서는 `const myFunction = () => ...`과 같은 화살표 함수 대신에 이름 있는 `function` 선언을 선호합니다. 콜백을 더 읽기 쉽게 만들어 주는 경우에는 화살표 함수를 사용하세요. 클래스 컴포넌트에서 화살표 함수는 컴포넌트의 `this` 값을 유지할 수도 있습니다.
 
 ### 스타일
 

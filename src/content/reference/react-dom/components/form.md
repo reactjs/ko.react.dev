@@ -38,54 +38,45 @@ title: "<form>"
 
 `<form>`은 모든 [공통 엘리먼트 Props](/reference/react-dom/components/common#common-props)를 지원합니다.
 
-* [`action`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action): A string containing a URL, or a function. If you pass a URL, the form behaves like a standard HTML form. If you pass a function, it handles the submission. See [Handling form submission with an action prop](#handle-form-submission-with-an-action-prop).
-  * If you pass a function to `action`, React runs it in a [Transition](/reference/react/useTransition) following [the Action prop pattern](/reference/react/useTransition#exposing-action-props-from-components).
-  * The function may be async. React calls it with a single argument containing the [form data](https://developer.mozilla.org/en-US/docs/Web/API/FormData) of the submitted form.
-  * A `formAction` prop on a `<button>`, `<input type="submit">`, or `<input type="image">` overrides this `action`.
-* [`method`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#method): A string that specifies the HTTP method to use when `action` is a URL. Defaults to `get`.
-* `onSubmit`: An [`Event` handler](/reference/react-dom/components/common#react-event-object) function. Fires when the form is submitted. See [Handling form submission with an event handler](#handle-form-submission-with-an-event-handler).
+* [`action`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form#action): URL을 담은 문자열 또는 함수입니다. URL을 전달하면 폼은 표준 HTML 폼처럼 동작합니다. 함수를 전달하면 해당 함수가 폼 제출을 처리합니다. [`action` Prop으로 폼 제출 처리하기](#handle-form-submission-with-an-action-prop)를 참고하세요.
+  * `action`에 함수를 전달하면 React는 [Action Prop 패턴](/reference/react/useTransition#exposing-action-props-from-components)에 따라 [Transition](/reference/react/useTransition) 내에서 함수를 실행합니다.
+  * 함수는 비동기(async)일 수 있습니다. React는 제출된 폼의 [폼 데이터](https://developer.mozilla.org/ko/docs/Web/API/FormData)를 담은 단일 인수로 함수를 호출합니다.
+  * `<button>`, `<input type="submit">`, 또는 `<input type="image">`의 `formAction` Prop으로 `action`을 재정의할 수 있습니다.
+* [`method`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form#method): `action`이 URL일 때 사용할 HTTP 메서드를 지정하는 문자열입니다. 기본값은 `get`입니다.
+* `onSubmit`: [`Event` 핸들러](/reference/react-dom/components/common#react-event-object) 함수입니다. 폼이 제출될 때 호출됩니다. [이벤트 핸들러로 폼 제출 처리하기](#handle-form-submission-with-an-event-handler)를 참고하세요.
 
 #### 주의 사항 {/*caveats*/}
 
-<<<<<<< HEAD
-* 함수를 `action`이나 `formAction`에 전달하면, HTTP 메서드는 `method` 프로퍼티의 값과 관계없이 POST로 처리합니다.
-=======
-* If you pass a function to `action` or `formAction`, the HTTP method will be `POST` regardless of the value of the `method` prop.
-* If you pass a function to `action` or `formAction`, React resets all [uncontrolled](/reference/react-dom/components/input#reading-the-input-values-when-submitting-a-form) field elements after the Action succeeds. See [Preserving form values after an Action](#preserve-form-values-after-an-action).
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
+* 함수를 `action`이나 `formAction`에 전달하면, HTTP 메서드는 `method` 프로퍼티의 값과 관계없이 `POST`로 처리합니다.
+* 함수를 `action`이나 `formAction`에 전달하면, React는 Action이 성공한 후 모든 [비제어](/reference/react-dom/components/input#reading-the-input-values-when-submitting-a-form) 필드 엘리먼트를 초기화합니다. [Action 이후 폼 값 유지하기](#preserve-form-values-after-an-action)를 참고하세요.
 
 ---
 
 ## 사용법 {/*usage*/}
 
-<<<<<<< HEAD
-### 클라이언트에서 폼 제출 처리하기 {/*handle-form-submission-on-the-client*/}
+### 이벤트 핸들러로 폼 제출 처리하기 {/*handle-form-submission-with-an-event-handler*/}
 
-폼이 제출될 때 함수를 실행하기 위해, 폼의 `action` 프로퍼티에 함수를 전달하세요. [`formData`](https://developer.mozilla.org/ko/docs/Web/API/FormData)가 함수에 인수로 전달되어, 폼에서 전달된 데이터에 접근할 수 있습니다. 이 점이 URL만 받던 기존 [HTML action](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form)과의 차이점입니다. After the `action` function succeeds, all uncontrolled field elements in the form are reset.
-=======
-### Handling form submission with an event handler {/*handle-form-submission-with-an-event-handler*/}
+폼이 제출될 때 코드를 실행하려면 `onSubmit` 이벤트 핸들러에 함수를 전달하세요. 기본적으로 브라우저는 폼 데이터를 현재 URL로 전송하고 페이지를 새로고침합니다. 이벤트 핸들러에서 [`e.preventDefault()`](https://developer.mozilla.org/ko/docs/Web/API/Event/preventDefault)를 호출하면 이러한 기본 동작을 방지할 수 있습니다.
 
-Pass a function to the `onSubmit` event handler to run code when the form is submitted. By default, the browser sends the form data to the current URL and refreshes the page. Calling [`e.preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) in the event handler overrides this behavior.
-
-If you also pass a function to `action`, React runs it after `onSubmit` unless `onSubmit` calls `e.preventDefault()`.
+`action`에도 함수를 전달한 경우, `onSubmit`에서 `e.preventDefault()`를 호출하지 않는 한 React는 `onSubmit` 이후에 `action` 함수를 실행합니다.
 
 <Sandpack>
 
 ```js src/App.js
 export default function Search() {
   function handleSubmit(e) {
-    // Prevent the browser from reloading the page
+    // 브라우저가 페이지를 다시 로드하지 않도록 방지합니다.
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const query = formData.get('query');
-    alert(`You searched for '${query}'`);
+    alert(`'${query}'을(를) 검색했습니다.`);
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <input name="query" />
-      <button type="submit">Search</button>
+      <button type="submit">검색</button>
     </form>
   );
 }
@@ -95,40 +86,34 @@ export default function Search() {
 
 <Note>
 
-`onSubmit` works in every version of React and gives you direct access to the [submit event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event). Starting in React 19, the [`action` prop](#handle-form-submission-with-an-action-prop) is the preferred API for form submissions. With `action`, React runs the submission in a [Transition](/reference/react/useTransition) and manages pending state and concurrency across multiple submissions. You can also use optimistic updates, Error Boundaries, and [Server Functions](/reference/rsc/server-functions).
+`onSubmit`은 모든 버전의 React에서 작동하며 [제출 이벤트](https://developer.mozilla.org/ko/docs/Web/API/HTMLFormElement/submit_event)에 직접 접근할 수 있게 해줍니다. React 19부터는 폼 제출에 [`action` Prop](#handle-form-submission-with-an-action-prop)을 사용하는 것이 권장됩니다. `action`을 사용하면 React가 [Transition](/reference/react/useTransition) 내에서 제출을 실행하고 여러 제출에 걸쳐 대기 상태와 동시성을 관리합니다. 또한 낙관적 업데이트, Error Boundary, [서버 함수](/reference/rsc/server-functions)도 사용할 수 있습니다.
 
 </Note>
 
 ---
 
-### Handling form submission with an action prop {/*handle-form-submission-with-an-action-prop*/}
+### `action` Prop으로 폼 제출 처리하기 {/*handle-form-submission-with-an-action-prop*/}
 
-Pass a function to the `action` prop to run it when the form is submitted. React calls the function with a [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) object containing the values of every input with a `name` attribute. Your inputs can be [uncontrolled](/reference/react-dom/components/input#reading-the-input-values-when-submitting-a-form). You don't need `value`/`onChange` pairs, an `onSubmit` handler, or `e.preventDefault()`.
+폼이 제출될 때 실행할 함수를 `action` Prop에 전달하세요. React는 `name` 어트리뷰트가 있는 모든 입력 필드의 값을 담은 [`FormData`](https://developer.mozilla.org/ko/docs/Web/API/FormData) 객체와 함께 함수를 호출합니다. 입력 필드는 [비제어](/reference/react-dom/components/input#reading-the-input-values-when-submitting-a-form) 컴포넌트일 수 있으므로, `value`/`onChange` 쌍이나 `onSubmit` 핸들러, `e.preventDefault()`가 필요하지 않습니다.
 
-When you pass a function to `action`, React:
+`action`에 함수를 전달하면 React는 다음과 같이 동작합니다.
 
-* Runs the function in a [Transition](/reference/react/useTransition).
-* Makes the pending state available to child components via [`useFormStatus`](/reference/react-dom/hooks/useFormStatus).
-* Propagates any errors to the nearest Error Boundary.
-* Resets the form's uncontrolled fields when the function succeeds. To keep their values, see [Preserving form values after an Action](#preserve-form-values-after-an-action).
+* [Transition](/reference/react/useTransition) 내에서 함수를 실행합니다.
+* [`useFormStatus`](/reference/react-dom/hooks/useFormStatus)를 통해 자식 컴포넌트에서 대기 상태를 사용할 수 있게 합니다.
+* 발생한 모든 오류를 가장 가까운 Error Boundary로 전파합니다.
+* 함수가 성공하면 폼의 비제어 필드를 초기화합니다. 값을 유지하려면 [Action 이후 폼 값 유지하기](#preserve-form-values-after-an-action)를 참고하세요.
 
-If you handle submission manually, you can [request the same reset behavior with `requestFormReset`](/reference/react-dom/requestFormReset#requesting-a-reset-in-a-custom-form-action).
+제출을 수동으로 처리하는 경우 [`requestFormReset`으로 동일한 초기화 동작을 요청](/reference/react-dom/requestFormReset#requesting-a-reset-in-a-custom-form-action)할 수 있습니다.
 
-Because the Action runs in a Transition, you can also use [`useActionState`](/reference/react/useActionState) to manage form state and [`useOptimistic`](/reference/react/useOptimistic) for optimistic UI. For [Server Functions](/reference/rsc/server-functions) and progressive enhancement, see [Handling form submission with a Server Function](#handle-form-submission-with-a-server-function).
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
+Action은 Transition 내에서 실행되므로 [`useActionState`](/reference/react/useActionState)를 사용하여 폼 상태를 관리하고 [`useOptimistic`](/reference/react/useOptimistic)을 사용하여 낙관적 UI를 구현할 수도 있습니다. [서버 함수](/reference/rsc/server-functions)와 점진적 향상에 대해서는 [서버 함수로 폼 제출 처리하기](#handle-form-submission-with-a-server-function)를 참고하세요.
 
 <Sandpack>
 
 ```js src/App.js
 export default function Search() {
   function search(formData) {
-<<<<<<< HEAD
-    const query = formData.get("query");
-    alert(`'${query}'을(를) 검색했습니다.`);
-=======
     const query = formData.get('query');
-    alert(`You searched for '${query}'`);
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
+    alert(`'${query}'을(를) 검색했습니다.`);
   }
   return (
     <form action={search}>
@@ -141,51 +126,30 @@ export default function Search() {
 
 </Sandpack>
 
-<<<<<<< HEAD
-### 서버 함수에서 폼 제출 처리하기 {/*handle-form-submission-with-a-server-function*/}
-
-입력 및 제출 버튼과 함께 `<form>`을 렌더링하세요. 폼을 제출할 때 해당 함수를 실행하기 위해 서버 함수([`'use server'`](/reference/rsc/use-server)가 표시된 함수)를 폼의 `action` 프로퍼티로 전달하세요.
-
-`<form action>`에 서버 함수를 전달하면 자바스크립트가 활성화되기 전이나 코드가 로드되기 전에 사용자가 폼을 제출할 수 있습니다. 이는 연결 상태나 기계가 느리거나 자바스크립트가 비활성화된 사용자에게 유용하고, `action` 프로퍼티에 URL이 전달될 때와 폼이 동작하는 방식은 비슷합니다.
-
-`<form>`의 액션에 데이터를 제공하기 위해 폼 필드의 `hidden`을 사용할 수 있습니다. 서버 함수는 [`formData`](https://developer.mozilla.org/ko/docs/Web/API/FormData) 대신 `hidden`이 적용된 폼 필드 데이터를 불러올 수 있습니다.
-
-=======
 ---
 
-### Handling form submission with a Server Function {/*handle-form-submission-with-a-server-function*/}
+### 서버 함수로 폼 제출 처리하기 {/*handle-form-submission-with-a-server-function*/}
 
-A `<form>`'s `action` prop can run a Server Function (a function marked with [`'use server'`](/reference/rsc/use-server)) when the user submits the form. Users can submit that form before JavaScript loads or when JavaScript is disabled. This matches how forms behave when you pass a URL to `action`.
+`<form>`의 `action` Prop은 사용자가 폼을 제출할 때 서버 함수([`'use server'`](/reference/rsc/use-server)가 표시된 함수)를 실행할 수 있습니다. 사용자는 자바스크립트가 로드되기 전이나 자바스크립트가 비활성화된 경우에도 폼을 제출할 수 있습니다. 이는 `action`에 URL을 전달했을 때 폼이 동작하는 방식과 일치합니다.
 
-React calls the Server Function with the form's [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) and includes every input with a `name` attribute. To pass additional data, such as an ID from props, see [Passing extra data to an Action](#passing-extra-data-to-an-action).
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
+React는 폼의 [`FormData`](https://developer.mozilla.org/ko/docs/Web/API/FormData)와 함께 서버 함수를 호출하며, `name` 어트리뷰트가 있는 모든 입력 필드를 포함합니다. Props에서 전달받은 ID와 같은 추가 데이터를 전달하려면 [Action에 추가 데이터 전달하기](#passing-extra-data-to-an-action)를 참고하세요.
 
 ```jsx
 import { addComment } from './actions.js';
 
 function CommentForm() {
   return (
-<<<<<<< HEAD
-    <form action={addToCart}>
-        <input type="hidden" name="productId" value={productId} />
-        <button type="submit">장바구니에 추가</button>
-=======
     <form action={addComment}>
       <textarea name="comment" />
       <button type="submit">Comment</button>
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
     </form>
   );
 }
 ```
 
-<<<<<<< HEAD
-폼 액션에 따른 데이터를 제공하기 위해 `hidden` 폼 필드를 사용하는 대신에 <CodeStep step={1}>`bind`</CodeStep>를 호출해 추가 인수를 제공할 수 있습니다. 이렇게 하면 함수에 인수로 전달되는 <CodeStep step={3}>`formData`</CodeStep> 외에 새 인수(<CodeStep step={2}>`productId`</CodeStep>)가 함수에 바인딩됩니다.
-=======
 ```js
 // actions.js
 'use server';
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 export async function addComment(formData) {
   const comment = formData.get('comment');
@@ -195,19 +159,19 @@ export async function addComment(formData) {
 
 <DeepDive>
 
-#### Passing extra data to an Action {/*passing-extra-data-to-an-action*/}
+#### Action에 추가 데이터 전달하기 {/*passing-extra-data-to-an-action*/}
 
-An Action receives the submitted [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData). To include data the user did not enter, such as an ID from props, use one of these approaches:
+Action은 제출된 [`FormData`](https://developer.mozilla.org/ko/docs/Web/API/FormData)를 받습니다. Props로 전달받은 ID처럼 사용자가 직접 입력하지 않은 데이터를 포함하려면 다음 방법 중 하나를 사용하세요.
 
-* **Hidden fields** add the value to `FormData`. The value appears in the HTML, and `formData.get` returns a string. Users can submit the form before JavaScript loads.
-* **Binding with `bind`** passes the value as an argument to a Server Function, before `formData`. The argument keeps its type, so a number stays a number. It must be [serializable](/reference/rsc/use-server#serializable-parameters-and-return-values). Users can submit the form before JavaScript loads.
-* **A function in the component** reads props and state directly. It runs after JavaScript loads, then calls a Server Function with those values.
+* **숨겨진 필드(`hidden`)** 는 `FormData`에 값을 추가합니다. 값은 HTML에 나타나며 `formData.get`은 문자열을 반환합니다. 사용자는 자바스크립트가 로드되기 전에 폼을 제출할 수 있습니다.
+* **`bind`로 바인딩하기** 는 `formData` 앞에 서버 함수의 인수로 값을 전달합니다. 인수는 원래 타입을 유지하므로 숫자는 숫자로 유지됩니다. 값은 반드시 [직렬화 가능](/reference/rsc/use-server#serializable-parameters-and-return-values)해야 합니다. 사용자는 자바스크립트가 로드되기 전에 폼을 제출할 수 있습니다.
+* **컴포넌트 내부 함수** 는 Props와 State를 직접 읽습니다. 자바스크립트가 로드된 후에 실행되며 해당 값들로 서버 함수를 호출합니다.
 
-The client sends hidden field values and bound arguments. Check on the server that the logged-in user is allowed to perform the Action. See [Security considerations](/reference/rsc/use-server#security).
+클라이언트는 숨겨진 필드 값과 바인딩된 인수를 전송합니다. 로그인한 사용자가 해당 Action을 수행할 권한이 있는지 서버에서 반드시 확인하세요. [보안 고려 사항](/reference/rsc/use-server#security)을 참고하세요.
 
-#### Hidden fields {/*passing-extra-data-hidden-fields*/}
+#### 숨겨진 필드 {/*passing-extra-data-hidden-fields*/}
 
-In a Server Component, render an `<input type="hidden">` with a `name` and `value`. React includes that value in the `FormData` passed to the Action.
+서버 컴포넌트에서 `name`과 `value`를 가진 `<input type="hidden">`을 렌더링하세요. React는 Action에 전달되는 `FormData`에 해당 값을 포함합니다.
 
 ```jsx
 // Server Component
@@ -227,11 +191,11 @@ function AddToCart({ productId }) {
 }
 ```
 
-React includes a submit button's `name` and `value` in `FormData` when that button submits the form.
+제출 버튼으로 폼을 제출할 때 React는 해당 제출 버튼의 `name`과 `value`도 `FormData`에 포함합니다.
 
-#### Binding with `bind` {/*passing-extra-data-bind*/}
+#### `bind`로 바인딩하기 {/*passing-extra-data-bind*/}
 
-In a Server Component, call [`bind`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) on the Server Function and pass the bound function to `action`. Pass `null` as the first argument to `bind`. Each argument after `null` comes before the `formData` argument React passes when the form is submitted.
+서버 컴포넌트에서 서버 함수에 [`bind`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)를 호출하고 바인딩된 함수를 `action`에 전달하세요. `bind`의 첫 번째 인수로는 `null`을 전달합니다. `null` 뒤의 각 인수는 폼이 제출될 때 React가 전달하는 `formData` 인수보다 앞에 위치합니다.
 
 ```jsx
 // Server Component
@@ -251,18 +215,13 @@ function AddToCart({ productId }) {
 }
 ```
 
-<<<<<<< HEAD
-`<form>`이 [서버 컴포넌트](/reference/rsc/use-client)에 의해 렌더링되고 [서버 함수](/reference/rsc/server-functions)가 `<form>`의 `action` 프로퍼티에 전달되면, 폼은 [점진적으로 향상](https://developer.mozilla.org/ko/docs/Glossary/Progressive_Enhancement)됩니다.
+폼이 제출되면 React는 `addProductToCart(formData)`를 호출하고, 이는 `addToCart(productId, formData)`를 호출합니다.
 
-### 폼이 제출되는 동안 대기 상태 보여주기 {/*display-a-pending-state-during-form-submission*/}
-=======
-When the form is submitted, React calls `addProductToCart(formData)`, which calls `addToCart(productId, formData)`.
+[`useActionState`](/reference/react/useActionState)도 함께 사용하는 경우, 서버 함수는 `productId`, `previousState`, `formData` 순서로 인수를 받습니다. 해당 함수를 별도의 파일에 정의하고 클라이언트 컴포넌트에서 바인딩하세요.
 
-If you also use [`useActionState`](/reference/react/useActionState), the Server Function receives `productId`, `previousState`, and `formData`, in that order. Define that function in a separate file and bind it from the Client Component.
+#### 컴포넌트 내부 함수 {/*passing-extra-data-function*/}
 
-#### A function in the component {/*passing-extra-data-function*/}
-
-Define the function passed to `action` in the Client Component so it can read the component's props or state. That function passes those values to a Server Function.
+컴포넌트의 Props나 State를 읽을 수 있도록 클라이언트 컴포넌트 내부에서 `action`에 전달할 함수를 정의하세요. 해당 함수는 그 값들을 서버 함수에 전달합니다.
 
 ```jsx
 // AddToCart.js
@@ -291,18 +250,15 @@ export async function updateCart(productId, formData) {
 }
 ```
 
-Because `addToCart` runs in the browser, the component's JavaScript must load before the form can submit.
+`addToCart`는 브라우저에서 실행되므로 폼을 제출하려면 먼저 컴포넌트의 자바스크립트가 로드되어야 합니다.
 
 </DeepDive>
 
 ---
 
-### Displaying a pending state during form submission {/*display-a-pending-state-during-form-submission*/}
+### 폼이 제출되는 동안 대기 상태 보여주기 {/*display-a-pending-state-during-form-submission*/}
 
-To display a pending state when a form is being submitted, you can call the [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) Hook in a component rendered in a `<form>` and read the `pending` property returned.
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
-
-폼이 제출되는 동안 대기<sup>Pending</sup> 상태를 보여주기 위해, `<form>`이 렌더링되는 컴포넌트 안에서 `useFormStatus` Hook을 호출해 반환된 `pending` 프로퍼티를 읽을 수 있습니다.
+폼이 제출되는 동안 대기<sup>Pending</sup> 상태를 보여주기 위해, `<form>` 내부에 렌더링되는 컴포넌트 안에서 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) Hook을 호출해 반환된 `pending` 프로퍼티를 읽을 수 있습니다.
 
 여기 폼이 제출되고 있음을 나타내기 위해 `pending` 프로퍼티를 사용하였습니다.
 
@@ -316,11 +272,7 @@ function Submit() {
   const { pending } = useFormStatus();
   return (
     <button type="submit" disabled={pending}>
-<<<<<<< HEAD
       {pending ? "제출중..." : "제출"}
-=======
-      {pending ? 'Submitting...' : 'Submit'}
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
     </button>
   );
 }
@@ -346,24 +298,15 @@ export async function submitForm(formData) {
 
 </Sandpack>
 
-<<<<<<< HEAD
 `useFormStatus` Hook에 대해 더 알고 싶다면, [참고 문서](/reference/react-dom/hooks/useFormStatus)를 확인하세요.
-
-### 낙관적으로 폼 데이터 업데이트하기 {/*optimistically-updating-form-data*/}
-
-`useOptimistic` Hook은 네트워크 요청과 같은 백그라운드의 작업이 끝나기 전에 사용자 인터페이스에 낙관적으로 업데이트하는 방법을 제공합니다. 폼의 맥락에서 이 기술은 앱을 더욱 반응형으로 느끼게 해줍니다. 사용자가 폼을 제출하면 인터페이스는 사용자가 기대하는 결과물로 즉시 업데이트됩니다.
-
-예를 들어, 사용자가 폼에 메시지를 입력하고 "전송" 버튼을 클릭하면 `useOptimistic` Hook은 "전송중..." 라벨과 함께 메시지가 서버에 보내지기 전에 리스트에 즉시 보입니다. 이러한 '낙관적인' 접근 방식은 속도와 반응성이 뛰어나다는 인상을 줍니다. 그다음 폼은 실제로 백그라운드에 메시지 보내기를 시도합니다. 서버에 메시지가 잘 도착하면, "전송중..." 라벨은 사라집니다.
-=======
-To learn more about the `useFormStatus` Hook, see the [reference documentation](/reference/react-dom/hooks/useFormStatus).
 
 ---
 
-### Optimistically updating form data {/*optimistically-updating-form-data*/}
+### 낙관적으로 폼 데이터 업데이트하기 {/*optimistically-updating-form-data*/}
 
-The [`useOptimistic`](/reference/react/useOptimistic) Hook provides a way to optimistically update the user interface before a background operation, like a network request, completes. In the context of forms, this technique helps to make apps feel more responsive. When a user submits a form, instead of waiting for the server's response to reflect the changes, the interface is immediately updated with the expected outcome.
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
+[`useOptimistic`](/reference/react/useOptimistic) Hook은 네트워크 요청과 같은 백그라운드의 작업이 끝나기 전에 사용자 인터페이스에 낙관적으로 업데이트하는 방법을 제공합니다. 폼의 맥락에서 이 기술은 앱을 더욱 반응형으로 느끼게 해줍니다. 사용자가 폼을 제출하면 서버의 응답을 기다려 변경 사항을 반영하는 대신, 인터페이스는 사용자가 기대하는 결과물로 즉시 업데이트됩니다.
 
+예를 들어, 사용자가 폼에 메시지를 입력하고 "전송" 버튼을 클릭하면 `useOptimistic` Hook은 "전송중..." 라벨과 함께 메시지가 서버에 보내지기 전에 리스트에 즉시 보입니다. 이러한 '낙관적인' 접근 방식은 속도와 반응성이 뛰어나다는 인상을 줍니다. 그다음 폼은 실제로 백그라운드에 메시지 보내기를 시도합니다. 서버에 메시지가 잘 도착하면, "전송중..." 라벨은 사라집니다.
 
 <Sandpack>
 
@@ -421,7 +364,7 @@ export default function App() {
 
 ```js src/actions.js
 export async function deliverMessage(message) {
-  // Simulate a message delivery delay
+  // 메시지 전송 지연을 시뮬레이션합니다.
   await new Promise((res) => setTimeout(res, 1000));
   return message;
 }
@@ -429,17 +372,13 @@ export async function deliverMessage(message) {
 
 </Sandpack>
 
-To learn more about the `useOptimistic` Hook, see the [reference documentation](/reference/react/useOptimistic).
+`useOptimistic` Hook에 대해 더 알고 싶다면, [참고 문서](/reference/react/useOptimistic)를 확인하세요.
 
 ---
 
 ### 폼 제출 오류 처리하기 {/*handling-form-submission-errors*/}
 
-<<<<<<< HEAD
-`<form>`의 `action` 프로퍼티로 전달된 어떤 함수는 오류를 던지기도 합니다. 이런 오류를 `<form>`에 에러 바운더리를 감싸 해결할 수 있습니다. 만약 `<form>`의 `action` 프로퍼티에서 호출된 함수가 오류를 던진다면 에러 바운더리의 Fallback이 보이게 됩니다.
-=======
-To handle errors thrown by a function passed to a `<form>`'s `action` prop, wrap the form in an [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). React displays the boundary's fallback when the function throws.
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
+`<form>`의 `action` 프로퍼티로 전달된 함수에서 발생하는 오류를 처리하려면 `<form>`을 [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)로 감싸세요. 함수에서 오류를 던지면 React는 Error Boundary의 Fallback을 표시합니다.
 
 <Sandpack>
 
@@ -477,23 +416,15 @@ export default function Search() {
 
 </Sandpack>
 
-<<<<<<< HEAD
-### 자바스크립트 없이 폼 제출 오류 보여주기 {/*display-a-form-submission-error-without-javascript*/}
-=======
-#### Handling form submission errors before JavaScript loads {/*display-a-form-submission-error-without-javascript*/}
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
+#### 자바스크립트가 로드되기 전에 폼 제출 오류 처리하기 {/*display-a-form-submission-error-without-javascript*/}
 
-점진적 향상을 위해 자바스크립트 번들이 로드되기 전 오류 메시지를 보여주기 위해 다음 요소들이 지켜져야 합니다.
+점진적 향상을 위해 자바스크립트 번들이 로드되기 전 오류 메시지를 보여주려면 다음 요소들이 지켜져야 합니다.
 
-1. `<form>` be rendered by a [Client Component](/reference/rsc/use-client)
-1. the function passed to the `<form>`'s `action` prop be a [Server Function](/reference/rsc/server-functions)
-1. the [`useActionState`](/reference/react/useActionState) Hook be used to display the error message
+1. `<form>`이 [클라이언트 컴포넌트](/reference/rsc/use-client)에 의해 렌더링되어야 합니다.
+1. `<form>`의 `action` 프로퍼티에 전달된 함수가 [서버 함수](/reference/rsc/server-functions)여야 합니다.
+1. 오류 메시지를 표시하기 위해 [`useActionState`](/reference/react/useActionState) Hook을 사용해야 합니다.
 
-<<<<<<< HEAD
-`useActionState`는 [서버 함수](/reference/rsc/use-server)와 초기 State라는 두 개의 매개변수를 가집니다. `useActionState`는 State 변수와 액션이라는 두 개의 값을 반환합니다. `useActionState`를 통해 반환된 액션은 폼의 `action` 프로퍼티에 전달될 수 있습니다. `useActionState`를 통해 반환된 상태 변수는 오류 메시지를 보여주는 데 사용됩니다. `useActionState`에 전달된 [서버 함수](/reference/rsc/server-functions)에서 반환된 값은 State 변수를 업데이트하는 데 사용됩니다.
-=======
-Define the Server Function in a separate file with the [`'use server'`](/reference/rsc/use-server) directive. It receives the previous state followed by the submitted `FormData`:
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
+[`'use server'`](/reference/rsc/use-server) 지시어를 사용하여 별도의 파일에 서버 함수를 정의하세요. 이 함수는 이전 State와 제출된 `FormData`를 차례로 받습니다.
 
 ```js
 // actions.js
@@ -501,18 +432,6 @@ Define the Server Function in a separate file with the [`'use server'`](/referen
 
 import { signUpNewUser } from './api.js';
 
-<<<<<<< HEAD
-export default function Page() {
-  async function signup(prevState, formData) {
-    "use server";
-    const email = formData.get("email");
-    try {
-      await signUpNewUser(email);
-      alert(`"${email}"을 등록했어요`);
-    } catch (err) {
-      return err.toString();
-    }
-=======
 export async function signup(previousState, formData) {
   const email = formData.get('email');
   try {
@@ -520,12 +439,11 @@ export async function signup(previousState, formData) {
     return null;
   } catch (error) {
     return error.message;
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
   }
 }
 ```
 
-In a Client Component, pass the Server Function to `useActionState`. Pass the returned Action to the form's `action` prop and render the returned state:
+클라이언트 컴포넌트에서 서버 함수를 `useActionState`에 전달하세요. 반환된 Action을 폼의 `action` 프로퍼티에 전달하고 반환된 State를 렌더링합니다.
 
 ```js
 // Signup.js
@@ -537,45 +455,27 @@ import { signup } from './actions.js';
 export default function Signup() {
   const [message, signupAction] = useActionState(signup, null);
   return (
-<<<<<<< HEAD
-    <>
-      <h1>뉴스레터에 가입하세요</h1>
-      <p>같은 이메일로 두 번 가입하여 오류를 확인하세요.</p>
-      <form action={signupAction} id="signup-form">
-        <label htmlFor="email">이메일: </label>
-        <input name="email" id="email" placeholder="react@example.com" />
-        <button>가입하기</button>
-        {!!message && <p>{message}</p>}
-      </form>
-    </>
-=======
     <form action={signupAction}>
-      <label htmlFor="email">Email: </label>
+      <label htmlFor="email">이메일: </label>
       <input name="email" id="email" placeholder="react@example.com" />
-      <button>Sign up</button>
+      <button>가입하기</button>
       {message && <p>{message}</p>}
     </form>
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
   );
 }
 ```
 
-If the form is submitted before JavaScript loads, React includes the Server Function's returned error message in the server-rendered response.
+자바스크립트가 로드되기 전에 폼이 제출되면 React는 서버에서 렌더링된 응답에 서버 함수가 반환한 오류 메시지를 포함합니다.
 
-<<<<<<< HEAD
-export async function signUpNewUser(newEmail) {
-  if (emails.includes(newEmail)) {
-    throw new Error("이 이메일 주소는 이미 등록되었습니다.");
-=======
 ---
 
-### Preserving form values after an Action {/*preserve-form-values-after-an-action*/}
+### Action 이후 폼 값 유지하기 {/*preserve-form-values-after-an-action*/}
 
-When a function passed to `action` or `formAction` completes without throwing, React resets the form's [uncontrolled fields](/reference/react-dom/components/input#reading-the-input-values-when-submitting-a-form). You may want to keep the submitted values after saving edits, or when the Action returns a [validation error](/reference/react/useActionState#displaying-validation-errors-and-preserving-form-values).
+`action` 또는 `formAction`에 전달된 함수가 오류를 던지지 않고 완료되면 React는 폼의 [비제어 필드](/reference/react-dom/components/input#reading-the-input-values-when-submitting-a-form)를 초기화합니다. 수정 사항을 저장한 후나 Action이 [유효성 검사 오류](/reference/react/useActionState#displaying-validation-errors-and-preserving-form-values)를 반환할 때 제출된 값을 그대로 유지하고 싶을 수 있습니다.
 
-To preserve those values, you can store them with [`useState`](/reference/react/useState) and pass them to each field's [`defaultValue`](/reference/react-dom/components/input#providing-an-initial-value-for-an-input). Update the state when the Action finishes. React applies the updated defaults before resetting the form, so the fields keep those values.
+이러한 값을 유지하려면 [`useState`](/reference/react/useState)로 값을 저장하고 각 필드의 [`defaultValue`](/reference/react-dom/components/input#providing-an-initial-value-for-an-input)에 전달하세요. Action이 완료될 때 State를 업데이트합니다. React는 폼을 초기화하기 전에 업데이트된 기본값을 적용하므로 필드는 해당 값을 유지합니다.
 
-Try changing the title and clicking **Save**. In this example, [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) shows "Saving..." during a simulated one-second request. Then `setTitle` updates the saved title and preserves it in the input.
+제목을 변경하고 **Save**를 클릭해 보세요. 이 예시에서 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus)는 1초간의 시뮬레이션된 요청 동안 "Saving..."을 표시합니다. 그 후 `setTitle`이 저장된 제목을 업데이트하고 입력 필드에 그 값을 유지합니다.
 
 <Sandpack>
 
@@ -591,7 +491,6 @@ export default function EditForm() {
     startTransition(() => {
       setTitle(formData.get('title'));
     });
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
   }
 
   return (
@@ -619,12 +518,9 @@ export default function SaveButton() {
 
 </Sandpack>
 
-<<<<<<< HEAD
-[`useActionState`](/reference/react/useActionState) 문서를 통해 폼 작업에서 상태를 업데이트하는 방법에 대해 자세히 알아보세요.
-=======
-The call to `setTitle` [after `await`](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition) needs another [`startTransition`](/reference/react/startTransition) to mark it as a Transition update.
+[`await` 이후](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition)의 `setTitle` 호출을 Transition 업데이트로 표시하려면 또 다른 [`startTransition`](/reference/react/startTransition)이 필요합니다.
 
-`saveAction` can also call a [Server Function](/reference/rsc/server-functions) and store its return value:
+`saveAction`은 또한 [서버 함수](/reference/rsc/server-functions)를 호출하고 그 반환값을 저장할 수도 있습니다.
 
 ```js
 // actions.js
@@ -639,7 +535,7 @@ export async function submitTitle(formData) {
 }
 ```
 
-Add [`'use client'`](/reference/rsc/use-client) at the top of the component's file, import `submitTitle`, and replace `saveAction`. The rest of the form stays the same:
+컴포넌트 파일 상단에 [`'use client'`](/reference/rsc/use-client)를 추가하고, `submitTitle`을 가져온 뒤 `saveAction`을 교체하세요. 폼의 나머지 부분은 동일하게 유지됩니다.
 
 ```js
 import { submitTitle } from './actions.js';
@@ -652,13 +548,13 @@ async function saveAction(formData) {
 }
 ```
 
-#### Preserving form values before JavaScript loads {/*preserving-form-values-before-javascript-loads*/}
+#### 자바스크립트가 로드되기 전에 폼 값 유지하기 {/*preserving-form-values-before-javascript-loads*/}
 
-With [`useActionState`](/reference/react/useActionState), React can display a [Server Function](/reference/rsc/server-functions)'s returned value before hydration completes. The form can use those values as its new defaults. In a [Client Component](/reference/rsc/use-client), `useActionState` receives the Server Function and returns an Action for the form's `action` prop.
+[`useActionState`](/reference/react/useActionState)를 사용하면 React는 Hydration이 완료되기 전에 [서버 함수](/reference/rsc/server-functions)의 반환값을 표시할 수 있습니다. 폼은 해당 값을 새로운 기본값으로 사용할 수 있습니다. [클라이언트 컴포넌트](/reference/rsc/use-client)에서 `useActionState`는 서버 함수를 받아 폼의 `action` 프로퍼티에 전달할 Action을 반환합니다.
 
-See [Handling form submission errors before JavaScript loads](#display-a-form-submission-error-without-javascript) for the same behavior with errors.
+오류에 대한 동일한 동작은 [자바스크립트가 로드되기 전에 폼 제출 오류 처리하기](#display-a-form-submission-error-without-javascript)를 참고하세요.
 
-The Server Function receives the previous state followed by the submitted `FormData`. In this example, `updateTitle` saves the title and returns `{ title }`, which becomes the new state. Passing `state.title` to `defaultValue` preserves the saved title after the reset:
+서버 함수는 이전 State와 제출된 `FormData`를 차례로 받습니다. 이 예시에서 `updateTitle`은 제목을 저장하고 새로운 State가 될 `{ title }`을 반환합니다. `state.title`을 `defaultValue`에 전달하면 초기화 후에도 저장된 제목이 유지됩니다.
 
 ```js
 // actions.js
@@ -698,32 +594,25 @@ export default function EditForm() {
 
 <DeepDive>
 
-#### Other ways to control form resets {/*other-ways-to-control-form-resets*/}
+#### 폼 초기화를 제어하는 다른 방법 {/*other-ways-to-control-form-resets*/}
 
-The examples above keep every submitted value by storing it before the reset. You can also choose which values survive, or when the reset runs:
+위의 예시들은 초기화 전에 제출된 모든 값을 저장하여 유지합니다. 어떤 값을 유지할지, 또는 언제 초기화를 실행할지 선택할 수도 있습니다.
 
-* **Keep values only when validation fails.** Return the same state shape from every submission. When validation fails, include the submitted `FormData` and read each field with `state.submitted?.get('title') ?? ''`. When validation succeeds, set that `FormData` to `null` so the reset clears those fields. [`useActionState`](/reference/react/useActionState#displaying-validation-errors-and-preserving-form-values) shows this pattern.
+* **유효성 검사에 실패했을 때만 값 유지하기.** 모든 제출에서 동일한 형태의 State를 반환하세요. 유효성 검사에 실패하면 제출된 `FormData`를 포함하고 `state.submitted?.get('title') ?? ''`로 각 필드를 읽습니다. 유효성 검사에 성공하면 해당 `FormData`를 `null`로 설정하여 초기화 시 필드가 비워지도록 합니다. [`useActionState`](/reference/react/useActionState#displaying-validation-errors-and-preserving-form-values)에서 이 패턴을 확인할 수 있습니다.
 
-* **Skip the reset with `onSubmit`.** Handle the submission in `onSubmit`, call `e.preventDefault()`, and run the Action inside [`startTransition`](/reference/react/useTransition). Because the form's `action` does not run, React does not reset the form.
+* **`onSubmit`으로 초기화 건너뛰기.** `onSubmit`에서 제출을 처리하고, `e.preventDefault()`를 호출한 뒤 [`startTransition`](/reference/react/useTransition) 내부에서 Action을 실행하세요. 폼의 `action`이 실행되지 않으므로 React는 폼을 초기화하지 않습니다.
 
-* **Reset at a specific moment.** Call the form element's [`reset()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/reset) method to immediately reset uncontrolled fields to their default values. To schedule a reset as part of an Action or Transition, call [`requestFormReset`](/reference/react-dom/requestFormReset) from `react-dom` instead.
+* **특정 시점에 초기화하기.** 폼 엘리먼트의 [`reset()`](https://developer.mozilla.org/ko/docs/Web/API/HTMLFormElement/reset) 메서드를 호출하여 비제어 필드를 기본값으로 즉시 초기화합니다. Action이나 Transition의 일부로 초기화를 예약하려면 대신 `react-dom`의 [`requestFormReset`](/reference/react-dom/requestFormReset)을 호출하세요.
 
-* **Reset the form and the component state together.** Change the [`key`](/learn/preserving-and-resetting-state#resetting-a-form-with-a-key) of the component that renders the form. React recreates the component and its DOM, which resets the fields and any local state.
+* **폼과 컴포넌트 State 함께 초기화하기.** 폼을 렌더링하는 컴포넌트의 [`key`](/learn/preserving-and-resetting-state#resetting-a-form-with-a-key)를 변경하세요. React가 컴포넌트와 해당 DOM을 다시 생성하므로 모든 필드와 로컬 State가 초기화됩니다.
 
 </DeepDive>
 
 ---
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 ### 다양한 제출 타입 처리하기 {/*handling-multiple-submission-types*/}
 
-<<<<<<< HEAD
-사용자가 누른 버튼에 따라 여러 제출 작업을 처리하도록 폼을 설계할 수 있습니다. 폼 내부의 각 버튼은 `formAction` 프로퍼티를 설정하여 고유한 동작 또는 동작과 연결할 수 있습니다.
-
-사용자가 특정 버튼을 클릭하면 폼이 제출되고 해당 버튼의 속성 및 동작으로 정의된 해당 동작이 실행됩니다. 예를 들어, 폼은 기본적으로 검토를 위해 문서를 제출하지만 `formAction`이 설정된 별도의 버튼이 있어 문서를 초안으로 저장할 수 있습니다.
-=======
-A form can have more than one submit button, each running a different Action. A button without `formAction` runs the form's `action`; a button with `formAction` runs its own Action instead. For example, the form below publishes an article by default, but its **Save draft** button stores the current content without publishing it. It uses [`useActionState`](/reference/react/useActionState) to preserve the saved draft:
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
+폼에는 각각 다른 Action을 실행하는 여러 개의 제출 버튼이 있을 수 있습니다. `formAction`이 없는 버튼은 폼의 `action`을 실행하고, `formAction`이 있는 버튼은 대신 자체 Action을 실행합니다. 예를 들어, 아래 폼은 기본적으로 글을 발행하지만 **초안 저장** 버튼은 글을 발행하지 않고 현재 내용을 저장합니다. 여기서는 [`useActionState`](/reference/react/useActionState)를 사용하여 저장된 초안을 유지합니다.
 
 <Sandpack>
 
@@ -731,15 +620,15 @@ A form can have more than one submit button, each running a different Action. A 
 import { useActionState } from 'react';
 
 export default function ArticleForm() {
-  // Preserve the saved draft after submission
+  // 제출 후 저장된 초안을 유지합니다.
   const [formState, dispatchFormState] = useActionState((state, payload) => {
     const content = payload.data.get('content');
     switch (payload.type) {
       case 'save':
-        alert(`Your draft of '${content}' was saved!`);
+        alert(`'${content}' 초안이 저장되었습니다!`);
         return payload.data;
       case 'publish':
-        alert(`'${content}' was published!`);
+        alert(`'${content}'가 발행되었습니다!`);
         return new FormData();
       default:
         return state;
@@ -747,16 +636,6 @@ export default function ArticleForm() {
   }, new FormData());
 
   function publish(formData) {
-<<<<<<< HEAD
-    const content = formData.get("content");
-    const button = formData.get("button");
-    alert(`'${button}' 버튼으로 '${content}'가 발행되었습니다.`);
-  }
-
-  function save(formData) {
-    const content = formData.get("content");
-    alert(`'${content}' 초안이 저장되었습니다!`);
-=======
     dispatchFormState({
       type: 'publish',
       data: formData,
@@ -768,7 +647,6 @@ export default function ArticleForm() {
       type: 'save',
       data: formData,
     });
->>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
   }
 
   return (
@@ -791,10 +669,10 @@ export default function ArticleForm() {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 문제 해결 {/*troubleshooting*/}
 
-### My form fields are cleared after submission {/*my-form-fields-are-cleared-after-submission*/}
+### 제출 후 폼 필드가 비워집니다 {/*my-form-fields-are-cleared-after-submission*/}
 
-When a function passed to `action` or `formAction` succeeds, React resets the form's uncontrolled fields to their default values. Text fields without a `defaultValue` become empty. Returning a validation error instead of throwing also triggers this reset.
+`action`이나 `formAction`에 전달된 함수가 성공하면 React는 폼의 비제어 필드를 기본값으로 초기화합니다. `defaultValue`가 없는 텍스트 필드는 비워집니다. 오류를 던지는 대신 유효성 검사 오류를 반환하는 경우에도 이러한 초기화가 실행됩니다.
 
-To keep a submitted value, store it in state and pass it to the field's `defaultValue`. See [Preserving form values after an Action](#preserve-form-values-after-an-action) for examples, or [preserving values when validation fails](/reference/react/useActionState#displaying-validation-errors-and-preserving-form-values).
+제출된 값을 유지하려면 값을 State에 저장하고 필드의 `defaultValue`에 전달하세요. 예시는 [Action 이후 폼 값 유지하기](#preserve-form-values-after-an-action) 또는 [유효성 검사 실패 시 값 유지하기](/reference/react/useActionState#displaying-validation-errors-and-preserving-form-values)를 참고하세요.
