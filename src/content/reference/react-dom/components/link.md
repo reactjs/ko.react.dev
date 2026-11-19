@@ -185,7 +185,7 @@ function ThirdComponent() {
 
 </SandpackWithHTMLOutput>
 
-Note the `precedence` values themselves are arbitrary and their naming is up to you. React will infer that precedence values it discovers first are "lower" and precedence values it discovers later are "higher".
+`precedence` 값 자체는 임의로 정할 수 있으며, 이름도 자유롭게 지을 수 있습니다. React는 먼저 발견한 `precedence` 값을 "낮은" 우선순위로, 나중에 발견한 값을 "높은" 우선순위로 추론합니다.
 
 ### 중복이 제거된 스타일시트 렌더링 {/*deduplicated-stylesheet-rendering*/}
 
