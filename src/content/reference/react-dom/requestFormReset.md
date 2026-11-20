@@ -4,7 +4,7 @@ title: requestFormReset
 
 <Intro>
 
-`requestFormReset` lets you reset a React-managed form after an Action or Transition finishes.
+`requestFormReset`을 사용하면 Action이나 Transition이 끝난 후 React가 관리하는 폼을 초기화할 수 있습니다.
 
 ```js
 requestFormReset(form)
@@ -16,11 +16,11 @@ requestFormReset(form)
 
 ---
 
-## Reference {/*reference*/}
+## 레퍼런스 {/*reference*/}
 
 ### `requestFormReset(form)` {/*requestformreset*/}
 
-Call `requestFormReset` to request that a form resets after the current Action or Transition completes.
+현재 Action이나 Transition이 완료된 후 폼이 초기화되도록 요청하려면 `requestFormReset`을 호출하세요.
 
 ```js
 import { startTransition } from 'react';
@@ -35,30 +35,30 @@ function handleSubmit(form) {
 }
 ```
 
-[See more examples below.](#usage)
+[아래 예시를 참고하세요.](#usage)
 
-#### Parameters {/*parameters*/}
+#### 매개변수 {/*parameters*/}
 
-* `form`: an [HTML form element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement) rendered by React.
+* `form`: React가 렌더링한 [HTML 폼 엘리먼트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement)입니다.
 
-#### Returns {/*returns*/}
+#### 반환값 {/*returns*/}
 
-`requestFormReset` returns nothing.
+`requestFormReset`은 아무것도 반환하지 않습니다.
 
-#### Caveats {/*caveats*/}
+#### 주의 사항 {/*caveats*/}
 
-* Pass a form element that is rendered by React. Passing a non-form element, or a form not managed by React, throws an error.
-* `requestFormReset` is intended for Actions and Transitions. If called outside an Action or Transition, React warns in development and performs a synchronous reset.
-* `requestFormReset` is useful when you implement form submission logic yourself (for example with `onSubmit` + `startTransition`) and still want React's form reset behavior.
-* This API requests a reset for uncontrolled form fields. For controlled fields, handle resets by updating state, such as in `onReset`.
+* React가 렌더링한 폼 엘리먼트를 전달하세요. 폼이 아닌 엘리먼트나 React가 관리하지 않는 폼을 전달하면 오류가 발생합니다.
+* `requestFormReset`은 Action과 Transition에서 사용하기 위한 것입니다. Action이나 Transition 밖에서 호출하면 React는 폼을 동기적으로 초기화하고 개발 환경에서는 경고를 표시합니다.
+* `requestFormReset`은 폼 제출 로직을 직접 구현하면서도(예: `onSubmit` + `startTransition`) React의 폼 초기화 동작을 사용하고 싶을 때 유용합니다.
+* 이 API는 비제어 폼 필드의 초기화를 요청합니다. 제어 필드는 `onReset` 등에서 State를 업데이트하여 초기화하세요.
 
 ---
 
-## Usage {/*usage*/}
+## 사용법 {/*usage*/}
 
-### Requesting a reset in a custom form Action {/*requesting-a-reset-in-a-custom-form-action*/}
+### 사용자 정의 폼 Action에서 초기화 요청하기 {/*requesting-a-reset-in-a-custom-form-action*/}
 
-React [automatically resets uncontrolled fields after a successful `<form action={...}>` submission](/reference/react-dom/components/form#handle-form-submission-with-an-action-prop). When you implement submission manually, you can opt into the same behavior by calling `requestFormReset`.
+React는 [`<form action={...}>` 제출이 성공하면 비제어 필드를 자동으로 초기화합니다](/reference/react-dom/components/form#handle-form-submission-with-an-action-prop). 제출을 직접 구현할 때는 `requestFormReset`을 호출하여 같은 동작을 적용할 수 있습니다.
 
 ```js
 import { startTransition } from 'react';
@@ -80,10 +80,10 @@ function SearchForm() {
   return (
     <form onSubmit={onSubmit}>
       <input name="query" defaultValue="react" />
-      <button type="submit">Search</button>
+      <button type="submit">검색</button>
     </form>
   );
 }
 ```
 
-If your submission uses the built-in `<form action={...}>` behavior, you don't need to call `requestFormReset` manually.
+`<form action={...}>`의 내장 제출 동작을 사용한다면 `requestFormReset`을 따로 호출할 필요가 없습니다.
