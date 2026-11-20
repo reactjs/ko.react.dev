@@ -26,35 +26,38 @@ title: <Suspense>
 #### Props {/*props*/}
 * `children`: 궁극적으로 렌더링하려는 실제 UI입니다. `children`의 렌더링이 지연되면, Suspense는 `fallback`을 대신 렌더링합니다.
 * `fallback`: 실제 UI가 로딩되기 전까지 대신 렌더링되는 대체 UI입니다. 올바른 React 노드 형식은 무엇이든 대체 UI로 활용할 수 있지만, 실제로는 보통 로딩 스피너나 스켈레톤처럼 간단한 Placeholder를 활용합니다. Suspense는 `children`의 렌더링이 지연되면 자동으로 `fallback`으로 전환하고, 데이터가 준비되면 `children`으로 다시 전환합니다. 만약 `fallback`의 렌더링이 지연되면, 가장 가까운 부모 Suspense가 활성화됩니다.
+* <ExperimentalBadge /> **선택 사항** `defer`: 불리언 값입니다. `true`이면 `children` 안에서 아무것도 지연되지 않더라도 React가 `fallback`을 먼저 보여주고 `children`을 나중에 렌더링하거나 스트리밍할 수 있습니다. 렌더링 비용이 큰 콘텐츠에 사용하세요. 기본값은 `false`입니다.
 
 #### 주의 사항 {/*caveats*/}
 
-- React는 컴포넌트가 처음으로 마운트 되기 전에 지연된 렌더링을 하는 동안의 어떤 State도 유지하지 않습니다. 컴포넌트가 로딩되면 React는 일시 중지된 트리를 처음부터 다시 렌더링합니다.
-- Suspense가 트리의 콘텐츠를 보여주고 있을 때 또 다시 지연되면 [`startTransition`](/reference/react/startTransition)나 [`useDeferredValue`](/reference/react/useDeferredValue)로 인한 업데이트가 아닌 한, `fallback`이 다시 보입니다.
+- Suspense는 Effect 또는 이벤트 핸들러 내부에서 가져오는 데이터를 감지하지 않습니다. [아래에 나열된 경우](#what-activates-a-suspense-boundary)에만 활성화됩니다.
+- React는 컴포넌트가 처음으로 마운트되기 전에 지연된 렌더링을 하는 동안의 어떤 State도 유지하지 않습니다. 컴포넌트가 로딩되면 React는 일시 중지된 트리를 처음부터 다시 렌더링합니다.
+- Suspense가 트리의 콘텐츠를 보여주고 있을 때 또다시 지연되면 [`startTransition`](/reference/react/startTransition)이나 [`useDeferredValue`](/reference/react/useDeferredValue)로 인한 업데이트가 아닌 한, `fallback`이 다시 보입니다.
+- React는 지연된 콘텐츠를 보여준 뒤 300ms가 지나야 다음 콘텐츠를 보여줍니다. 그 사이에 준비된 경계는 하나씩 나타나지 않고 [함께 나타납니다](/blog/2025/10/01/react-19-2#batching-suspense-boundaries-for-ssr).
 - React가 다시 일시 중지되어 보이는 콘텐츠를 숨겨야 하는 경우, 콘텐츠 트리에서 [Layout Effect](/reference/react/useLayoutEffect)들을 정리합니다. 콘텐츠가 다시 보일 준비가 되면 React는 Layout Effect들을 다시 실행합니다. 이로써 DOM 레이아웃을 측정하는 Effect가 콘텐츠가 숨겨져 있는 동안 동작하지 않도록 보장합니다.
 - React는 Suspense와 통합된 *스트리밍 서버 렌더링*과 *선택적 Hydration* 같은 내부 최적화를 포함하고 있습니다. [아키텍처 개요](https://github.com/reactwg/react-18/discussions/37)를 읽고 [기술 강연](https://www.youtube.com/watch?v=pj5N-Khihgc)을 시청하여 더 자세히 알아보세요.
 
 ---
 
-### What activates a Suspense boundary {/*what-activates-a-suspense-boundary*/}
+### Suspense 경계가 활성화되는 경우 {/*what-activates-a-suspense-boundary*/}
 
-A Suspense boundary waits for its content to be ready before revealing it. Any of the following keeps a boundary from revealing its content:
+Suspense 경계는 콘텐츠가 준비될 때까지 기다렸다가 보여줍니다. 다음 중 하나라도 해당하면 경계는 콘텐츠를 보여주지 않습니다.
 
-- Lazy-loading component code with [`lazy`](/reference/react/lazy).
-- Reading a Promise with [`use`](/reference/react/use), including data streamed from [Server Components](/reference/rsc/server-components) or loaded through a [Suspense-enabled framework](#suspense-enabled-frameworks).
-- Loading a stylesheet rendered with [`<link rel="stylesheet">` and a `precedence` prop.](/reference/react-dom/components/link#special-rendering-behavior) React blocks the boundary until the stylesheet loads, up to a timeout. [See an example below.](#waiting-for-a-stylesheet-to-load)
-- Waiting for a large boundary's HTML to arrive during streaming server rendering. Sending HTML takes time, so a boundary with enough content activates even when nothing in it suspends. React reveals the content as the HTML arrives.
-- Loading fonts. Suspense doesn't wait for fonts by default, but when a [`<ViewTransition>`](/reference/react/ViewTransition) animates a boundary's reveal, React waits up to 500 ms for new fonts to load so text doesn't flash with a fallback font. [See an example below.](#waiting-for-a-font-to-load)
-- Loading images. Suspense doesn't wait for images by default, but when a [`<ViewTransition>`](/reference/react/ViewTransition) animates a boundary's reveal, React waits up to 500 ms for visible images to load before starting the animation. Setting `loading="lazy"` or adding an `onLoad` handler opts a specific image out. [See an example below.](#waiting-for-an-image-to-load)
-- <ExperimentalBadge /> Performing CPU-bound render work inside a [`<Suspense defer>`](#props) boundary.
+- [`lazy`](/reference/react/lazy)로 컴포넌트 코드를 지연 로딩하는 경우.
+- [`use`](/reference/react/use)로 Promise를 읽는 경우. [서버 컴포넌트](/reference/rsc/server-components)에서 스트리밍된 데이터나 [Suspense를 지원하는 프레임워크](#suspense-enabled-frameworks)로 불러온 데이터를 읽는 경우도 포함됩니다.
+- [`<link rel="stylesheet">`와 `precedence` prop으로 렌더링한 스타일시트](/reference/react-dom/components/link#special-rendering-behavior)를 로딩하는 경우. React는 스타일시트가 로딩되거나 타임아웃에 도달할 때까지 경계를 차단합니다. [아래 예시를 참고하세요.](#waiting-for-a-stylesheet-to-load)
+- 스트리밍 서버 렌더링 중에 큰 경계의 HTML이 도착하기를 기다리는 경우. HTML을 전송하는 데는 시간이 걸리므로 콘텐츠가 충분히 많은 경계는 내부에서 아무것도 지연되지 않더라도 활성화됩니다. React는 HTML이 도착하는 대로 콘텐츠를 보여줍니다.
+- 폰트를 로딩하는 경우. Suspense는 기본적으로 폰트를 기다리지 않습니다. 하지만 [`<ViewTransition>`](/reference/react/ViewTransition)이 경계의 콘텐츠가 나타나는 과정에 애니메이션을 적용할 때는 텍스트가 대체 폰트로 깜빡이지 않도록 React가 새 폰트의 로딩을 최대 500ms 동안 기다립니다. [아래 예시를 참고하세요.](#waiting-for-a-font-to-load)
+- 이미지를 로딩하는 경우. Suspense는 기본적으로 이미지를 기다리지 않습니다. 하지만 [`<ViewTransition>`](/reference/react/ViewTransition)이 경계의 콘텐츠가 나타나는 과정에 애니메이션을 적용할 때는 화면에 보이는 이미지가 로딩될 때까지 React가 최대 500ms 동안 기다렸다가 애니메이션을 시작합니다. `loading="lazy"`를 설정하거나 `onLoad` 핸들러를 추가하면 특정 이미지를 이 동작에서 제외할 수 있습니다. [아래 예시를 참고하세요.](#waiting-for-an-image-to-load)
+- <ExperimentalBadge /> [`<Suspense defer>`](#props) 경계 안에서 CPU를 많이 사용하는 렌더링 작업을 수행하는 경우.
 
 <Note>
 
-#### Suspense-enabled frameworks {/*suspense-enabled-frameworks*/}
+#### Suspense를 지원하는 프레임워크 {/*suspense-enabled-frameworks*/}
 
-A *Suspense-enabled framework* gives you a way to read data in your component in a way that activates the closest Suspense boundary. The exact way you load your data depends on your framework, and you'll find the details in its documentation. Under the hood, a Suspense-enabled framework maintains a cache of Promises and calls [`use`](/reference/react/use) to suspend on a Promise.
+*Suspense를 지원하는 프레임워크*를 사용하면 가장 가까운 Suspense 경계를 활성화하는 방식으로 컴포넌트에서 데이터를 읽을 수 있습니다. 데이터를 로딩하는 정확한 방법은 프레임워크마다 다르며 자세한 내용은 해당 프레임워크의 문서에서 확인할 수 있습니다. 내부적으로 이러한 프레임워크는 Promise 캐시를 유지하고 [`use`](/reference/react/use)를 호출해 Promise가 완료될 때까지 컴포넌트를 지연시킵니다.
 
-Without a framework, you can read a Promise with `use` directly, as long as the Promise is [cached so the same instance is reused across renders.](/reference/react/use#caching-promises-for-client-components)
+프레임워크 없이도 `use`로 Promise를 직접 읽을 수 있습니다. 단, Promise를 [캐시해서 렌더링 간에 같은 인스턴스를 재사용해야 합니다.](/reference/react/use#caching-promises-for-client-components)
 
 </Note>
 
@@ -142,9 +145,9 @@ export default function Albums({ artistId }) {
 ```
 
 ```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// Note: 데이터 페칭 방법은
+// Suspense와 함께 사용하는 프레임워크에 따라 달라집니다.
+// 일반적으로 캐싱 로직은 프레임워크 내부에 있습니다.
 
 let cache = new Map();
 
@@ -164,7 +167,7 @@ async function getData(url) {
 }
 
 async function getAlbums() {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise(resolve => {
     setTimeout(resolve, 3000);
   });
@@ -227,19 +230,7 @@ async function getAlbums() {
 
 </Sandpack>
 
-By contrast, code that fetches data outside of `use`, such as inside an Effect, does not activate the boundary:
-
-**Suspense가 가능한 데이터만이 Suspense 컴포넌트를 활성화합니다.** 아래와 같은 것들이 해당합니다.
-
-- [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/)와 [Next.js](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense) 같이 Suspense가 가능한 프레임워크를 사용한 데이터 가져오기.
-- [`lazy`](/reference/react/lazy)를 활용한 지연 로딩 컴포넌트.
-- [`use`](/reference/react/use)를 사용해서 캐시된 Promise 값 읽기.
-
-Suspense는 Effect 또는 이벤트 핸들러 내부에서 가져오는 데이터를 감지하지 **않습니다**.
-
-위의 `Albums` 컴포넌트에서 데이터를 로딩하는 정확한 방법은 프레임워크마다 다릅니다. Suspense가 가능한 프레임워크를 사용하는 경우, 프레임워크의 데이터 불러오기 관련 문서에서 자세한 내용을 확인할 수 있습니다.
-
-독단적인 프레임워크를 사용하지 않는 Suspense가 가능한 데이터 가져오기 기능은 아직 지원되지 않습니다. Suspense 지원 데이터 소스를 구현하기 위한 요구 사항은 불안정하고 문서화되지 않았습니다. 데이터 소스를 Suspense와 통합하기 위한 공식 API는 향후 React 버전에서 출시될 예정입니다.
+반면 Effect 내부처럼 `use` 바깥에서 데이터를 가져오는 코드는 경계를 활성화하지 않습니다.
 
 <Sandpack>
 
@@ -281,6 +272,8 @@ export default function ArtistPage({ artist }) {
       </Suspense>
     </>
   );
+}
+
 function Loading() {
   return <h2>🌀 Loading...</h2>;
 }
@@ -305,8 +298,8 @@ export default function EffectAlbums({ artistId }) {
     };
   }, [artistId]);
 
-  // Suspense can't see this fetch, so its fallback never
-  // shows. The list stays empty until the data arrives.
+  // Suspense는 이 데이터 요청을 감지할 수 없으므로 Fallback이
+  // 전혀 표시되지 않습니다. 데이터가 도착할 때까지 목록은 비어 있습니다.
   return (
     <ul>
       {albums.map(album => (
@@ -320,9 +313,9 @@ export default function EffectAlbums({ artistId }) {
 ```
 
 ```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// Note: 데이터 페칭 방법은
+// Suspense와 함께 사용하는 프레임워크에 따라 달라집니다.
+// 일반적으로 캐싱 로직은 프레임워크 내부에 있습니다.
 
 let cache = new Map();
 
@@ -342,7 +335,7 @@ async function getData(url) {
 }
 
 async function getAlbums() {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise(resolve => {
     setTimeout(resolve, 3000);
   });
@@ -405,7 +398,7 @@ async function getAlbums() {
 
 </Sandpack>
 
-During streaming server rendering, a boundary also activates while its HTML is still streaming in. With any streaming server rendering API, React sends [the shell](/reference/react-dom/server/renderToPipeableStream#specifying-what-goes-into-the-shell) with the `fallback` first, then streams in each boundary's HTML and swaps out its `fallback` as that content arrives. Press "Render the page" to watch the page stream in:
+스트리밍 서버 렌더링 중에는 HTML이 아직 스트리밍되고 있는 경계도 활성화됩니다. 어떤 스트리밍 서버 렌더링 API를 사용하든 React는 먼저 `fallback`을 포함한 [셸](/reference/react-dom/server/renderToPipeableStream#specifying-what-goes-into-the-shell)을 보낸 다음 각 경계의 HTML을 스트리밍하면서 콘텐츠가 도착하는 대로 해당 경계의 `fallback`을 교체합니다. "Render the page"를 눌러 페이지가 스트리밍되는 모습을 확인해 보세요.
 
 <Sandpack>
 
@@ -457,8 +450,8 @@ async function main(frame) {
   posts = Promise.withResolvers();
   const stream = await renderToReadableStream(<ProfilePage />);
 
-  // The posts resolve after the shell has streamed, so React
-  // streams their HTML in and swaps out the fallback.
+  // 게시물 Promise는 셸이 스트리밍된 후에 해결되므로 React는
+  // 게시물의 HTML을 스트리밍하고 Fallback을 교체합니다.
   setTimeout(() => {
     posts.resolve(
       'Just got back from two weeks along the coast. The drive ' +
@@ -500,7 +493,7 @@ export async function flushReadableStreamToFrame(readable, frame) {
 
 ### 콘텐츠를 한꺼번에 함께 보여주기 {/*revealing-content-together-at-once*/}
 
-기본적으로 Suspense 내부의 전체 트리는 하나의 단위로 취급됩니다. 예를 들어, 이러한 구성 요소 중 *하나라도* 어떤 데이터에 의해 지연되더라도 *모든* 구성 요소가 함께 로딩 표시로 대체됩니다.
+기본적으로 Suspense 내부의 전체 트리는 하나의 단위로 취급됩니다. 예를 들어, 이러한 구성 요소 중 *하나라도* 어떤 데이터를 기다리며 지연되더라도 *모든* 구성 요소가 함께 로딩 표시로 대체됩니다.
 
 ```js {2-5}
 <Suspense fallback={<Loading />}>
@@ -610,9 +603,9 @@ export default function Albums({ artistId }) {
 ```
 
 ```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// Note: 데이터 페칭 방법은
+// Suspense와 함께 사용하는 프레임워크에 따라 달라집니다.
+// 일반적으로 캐싱 로직은 프레임워크 내부에 있습니다.
 
 let cache = new Map();
 
@@ -634,7 +627,7 @@ async function getData(url) {
 }
 
 async function getBio() {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise(resolve => {
     setTimeout(resolve, 1500);
   });
@@ -646,7 +639,7 @@ async function getBio() {
 }
 
 async function getAlbums() {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise(resolve => {
     setTimeout(resolve, 3000);
   });
@@ -761,9 +754,9 @@ function Details({ artistId }) {
 순서는 다음과 같습니다.
 
 1. `Biography`가 아직 로딩되지 않은 경우, 전체 콘텐츠 영역 대신 `BigSpinner`가 표시됩니다.
-1. `Biography`의 로딩이 완료되면 `BigSpinner`가 콘텐츠로 대체됩니다.
-1. `Albums`가 아직 로딩되지 않은 경우, `Albums`와 그 상위 `Panel` 대신 `AlbumsGlimmer`가 표시됩니다.
-1. 마지막으로 `Albums`가 로딩을 완료하면 `AlbumsGlimmer`를 대체합니다.
+2. `Biography`의 로딩이 완료되면 `BigSpinner`가 콘텐츠로 대체됩니다.
+3. `Albums`가 아직 로딩되지 않은 경우, `Albums`와 그 상위 `Panel` 대신 `AlbumsGlimmer`가 표시됩니다.
+4. 마지막으로 `Albums`가 로딩을 완료하면 `AlbumsGlimmer`를 대체합니다.
 
 <Sandpack>
 
@@ -872,9 +865,9 @@ export default function Albums({ artistId }) {
 ```
 
 ```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// Note: 데이터 페칭 방법은
+// Suspense와 함께 사용하는 프레임워크에 따라 달라집니다.
+// 일반적으로 캐싱 로직은 프레임워크 내부에 있습니다.
 
 let cache = new Map();
 
@@ -896,7 +889,7 @@ async function getData(url) {
 }
 
 async function getBio() {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -908,7 +901,7 @@ async function getBio() {
 }
 
 async function getAlbums() {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise(resolve => {
     setTimeout(resolve, 3000);
   });
@@ -1056,9 +1049,9 @@ export default function SearchResults({ query }) {
 ```
 
 ```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// Note: 데이터 페칭 방법은
+// Suspense와 함께 사용하는 프레임워크에 따라 달라집니다.
+// 일반적으로 캐싱 로직은 프레임워크 내부에 있습니다.
 
 let cache = new Map();
 
@@ -1078,7 +1071,7 @@ async function getData(url) {
 }
 
 async function getSearchResults(query) {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -1154,7 +1147,7 @@ input { margin: 10px; }
 
 </Sandpack>
 
-일반적인 대체 UI 패턴은 목록들에 대한 업데이트를 <em>지연<sup>Defer</sup></em>하고 새 결과가 준비될 때까지 이전 결과를 계속 보여주는 것입니다. [`useDeferredValue`](/reference/react/useDeferredValue) Hook을 사용하면 쿼리의 지연된 버전을 아래로 전달할 수 있습니다.
+흔히 쓰는 또 다른 UI 패턴은 목록 업데이트를 <em>지연<sup>Defer</sup></em>하고 새 결과가 준비될 때까지 이전 결과를 계속 보여주는 것입니다. [`useDeferredValue`](/reference/react/useDeferredValue) Hook을 사용하면 쿼리의 지연된 버전을 아래로 전달할 수 있습니다.
 
 ```js {3,11}
 export default function App() {
@@ -1187,6 +1180,7 @@ export default function App() {
 ```
 
 아래 예시에서 `"a"`를 입력하고 결과가 로딩될 때까지 기다린 다음 입력을 `"ab"`로 편집해보세요. 이제 새 결과가 로드될 때까지 Suspense Fallback 대신 희미한 이전 결과 목록이 표시되는 것을 확인할 수 있습니다.
+
 
 <Sandpack>
 
@@ -1239,9 +1233,9 @@ export default function SearchResults({ query }) {
 ```
 
 ```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// Note: 데이터 페칭 방법은
+// Suspense와 함께 사용하는 프레임워크에 따라 달라집니다.
+// 일반적으로 캐싱 로직은 프레임워크 내부에 있습니다.
 
 let cache = new Map();
 
@@ -1261,7 +1255,7 @@ async function getData(url) {
 }
 
 async function getSearchResults(query) {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -1339,7 +1333,7 @@ input { margin: 10px; }
 
 <Note>
 
-지연된 값<sup>Deferred Value</sup>과 [Transition](#preventing-already-revealed-content-from-hiding)을 사용하면 Suspense Fallback을 표시하지 않을 수 있습니다. Transition은 전체 업데이트를 긴급하지 않은 것으로 처리하므로 일반적으로 프레임워크와 Router 라이브러리에서 Navigation을 위해 사용합니다. 반면에 지연된 값<sup>Deferred Value</sup>은 UI의 일부를 긴급하지 않은 것으로 처리하고 나머지 UI보다 "지연"시키려는 목적의 애플리케이션 코드에서 유용합니다.
+지연된 값<sup>Deferred Value</sup>과 [Transition](#preventing-already-revealed-content-from-hiding)을 사용하면 Suspense Fallback 대신 인라인 표시기를 보여줄 수 있습니다. Transition은 전체 업데이트를 긴급하지 않은 것으로 처리하므로 일반적으로 프레임워크와 Router 라이브러리에서 Navigation을 위해 사용합니다. 반면에 지연된 값<sup>Deferred Value</sup>은 UI의 일부를 긴급하지 않은 것으로 처리하고 나머지 UI보다 "지연"시키려는 목적의 애플리케이션 코드에서 주로 유용합니다.
 
 </Note>
 
@@ -1498,9 +1492,9 @@ export default function Panel({ children }) {
 ```
 
 ```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// Note: 데이터 페칭 방법은
+// Suspense와 함께 사용하는 프레임워크에 따라 달라집니다.
+// 일반적으로 캐싱 로직은 프레임워크 내부에 있습니다.
 
 let cache = new Map();
 
@@ -1522,7 +1516,7 @@ async function getData(url) {
 }
 
 async function getBio() {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -1534,7 +1528,7 @@ async function getBio() {
 }
 
 async function getAlbums() {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise(resolve => {
     setTimeout(resolve, 3000);
   });
@@ -1810,9 +1804,9 @@ export default function Panel({ children }) {
 ```
 
 ```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// Note: 데이터 페칭 방법은
+// Suspense와 함께 사용하는 프레임워크에 따라 달라집니다.
+// 일반적으로 캐싱 로직은 프레임워크 내부에 있습니다.
 
 let cache = new Map();
 
@@ -1834,7 +1828,7 @@ async function getData(url) {
 }
 
 async function getBio() {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -1846,7 +1840,7 @@ async function getBio() {
 }
 
 async function getAlbums() {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise(resolve => {
     setTimeout(resolve, 3000);
   });
@@ -1953,7 +1947,7 @@ main {
 
 </Sandpack>
 
-Transition은 *모든* 콘텐츠가 로딩될 때까지 기다리지 않습니다. 이미 보여진 콘텐츠가 숨겨지지 않도록 충분히 오래 기다립니다. 예를 들어 웹사이트 `Layout`은 이미 보이므로 로딩 스피너 뒤에 숨기는 것은 좋지 않을 것입니다. 그러나 `Albums` 주위에 중첩된 `Suspense`는 새로운 것이므로 Transition이 기다리지 않습니다.
+Transition은 *모든* 콘텐츠가 로딩될 때까지 기다리지 않습니다. 이미 보인 콘텐츠가 숨겨지지 않을 만큼만 기다립니다. 예를 들어 웹사이트 `Layout`은 이미 보이므로 로딩 스피너 뒤에 숨기는 것은 좋지 않을 것입니다. 그러나 `Albums` 주위에 중첩된 `Suspense`는 새로운 것이므로 Transition이 기다리지 않습니다.
 
 <Note>
 
@@ -2121,9 +2115,9 @@ export default function Panel({ children }) {
 ```
 
 ```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// Note: 데이터 페칭 방법은
+// Suspense와 함께 사용하는 프레임워크에 따라 달라집니다.
+// 일반적으로 캐싱 로직은 프레임워크 내부에 있습니다.
 
 let cache = new Map();
 
@@ -2145,7 +2139,7 @@ async function getData(url) {
 }
 
 async function getBio() {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -2157,7 +2151,7 @@ async function getBio() {
 }
 
 async function getAlbums() {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise(resolve => {
     setTimeout(resolve, 3000);
   });
@@ -2268,15 +2262,98 @@ main {
 
 ### Navigation에서 Suspense 재설정하기 {/*resetting-suspense-boundaries-on-navigation*/}
 
-Transition이 진행되는 동안 React는 이미 보인 콘텐츠를 숨기지 않습니다. 하지만 다른 매개변수가 있는 경로로 이동하는 경우 React에 *다른* 콘텐츠라고 알려주고 싶을 수 있습니다. 이를 `key`로 표현할 수 있습니다.
+Transition이 진행되는 동안 React는 이미 보인 콘텐츠를 숨기지 않습니다. 하지만 다른 사용자의 프로필처럼 *다른* 콘텐츠로 이동할 때는 경계가 이전 콘텐츠 대신 Fallback을 보여주는 것이 좋습니다. 이를 `key`로 표현할 수 있습니다.
 
 ```js
 <ProfilePage key={queryParams.id} />
 ```
 
-사용자의 프로필 페이지 내에서 이동 중인데 무언가가 지연되었다고 가정해 보세요. 해당 업데이트가 Transition으로 감싸져 있으면 이미 표시된 콘텐츠에 대한 Fallback이 트리거되지 않습니다. 이것이 예상되는 동작입니다.
+`key`가 다르면 React는 각 프로필을 서로 다른 콘텐츠로 취급하고 Navigation 중에 Suspense 경계를 재설정합니다. `key`는 경계 자체에 지정할 수도 있고 그 위에 있는 컴포넌트에 지정할 수도 있습니다. Suspense와 통합된 Router는 이 동작을 자동으로 수행해야 합니다.
 
-하지만 이제 두 개의 서로 다른 사용자 프로필 사이를 이동한다고 가정해 보겠습니다. 이 경우 Fallback을 표시하는 것이 좋습니다. 예를 들어 한 사용자의 타임라인이 다른 사용자의 타임라인과 *다른 콘텐츠*라고, 가정해 보겠습니다. `key`를 지정하면 React가 서로 다른 사용자의 프로필을 서로 다른 컴포넌트로 취급하고 탐색하는 동안 Suspense를 재설정하도록 할 수 있습니다. Suspense 통합 라우터는 이 동작을 자동으로 수행해야 합니다.
+아래 예시에서 프로필 페이지를 열면 첫 번째 프로필이 로딩됩니다. "Bob"을 누르면 다른 프로필로 이동하고 `key`가 경계를 재설정하므로 이전 사용자의 소개 대신 Fallback이 표시됩니다. `key`를 제거해 보세요. 다음 소개가 로딩되는 동안 이전 소개가 계속 보입니다.
+
+<Sandpack>
+
+```js src/App.js hidden
+import { useState } from 'react';
+import ProfilePage from './ProfilePage.js';
+
+export default function App() {
+  const [show, setShow] = useState(false);
+  if (show) {
+    return <ProfilePage />;
+  }
+  return (
+    <button onClick={() => setShow(true)}>
+      Open profile page
+    </button>
+  );
+}
+```
+
+```js src/ProfilePage.js active
+import { Suspense, useState, startTransition } from 'react';
+import Bio from './Bio.js';
+import { fetchBio } from './data.js';
+
+export default function ProfilePage() {
+  const [user, setUser] = useState(() => ({
+    id: 'alice',
+    bioPromise: fetchBio('alice'),
+  }));
+  function navigate(id) {
+    startTransition(() => {
+      setUser({ id, bioPromise: fetchBio(id) });
+    });
+  }
+  return (
+    <>
+      <button onClick={() => navigate('alice')}>
+        Alice
+      </button>
+      <button onClick={() => navigate('bob')}>
+        Bob
+      </button>
+      <Suspense key={user.id} fallback={<p>⌛ Loading profile...</p>}>
+        <Bio bioPromise={user.bioPromise} />
+      </Suspense>
+    </>
+  );
+}
+```
+
+```js src/Bio.js
+import { use } from 'react';
+
+export default function Bio({ bioPromise }) {
+  const bio = use(bioPromise);
+  return <p>{bio}</p>;
+}
+```
+
+```js src/data.js hidden
+// Note: 데이터 페칭 방법은
+// Suspense와 함께 사용하는 프레임워크에 따라 달라집니다.
+
+export async function fetchBio(userId) {
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
+  await new Promise(resolve => {
+    setTimeout(resolve, 1500);
+  });
+
+  return userId === 'alice'
+    ? 'Alice is a photographer and traveler.'
+    : 'Bob collects vintage synthesizers.';
+}
+```
+
+```css
+button {
+  margin-right: 8px;
+}
+```
+
+</Sandpack>
 
 ---
 
@@ -2305,11 +2382,11 @@ function Chat() {
 
 ---
 
-### Providing a fallback for browser-only content {/*providing-a-fallback-for-browser-only-content*/}
+### 브라우저 전용 콘텐츠에 대한 Fallback 제공 {/*providing-a-fallback-for-browser-only-content*/}
 
-A Suspense boundary can provide a fallback for a browser-only component. Wrap the component in `<Suspense>` and call [`use(browser())`](/reference/react/use#use-browser) inside it.
+Suspense 경계는 브라우저 전용 컴포넌트에 Fallback을 제공할 수 있습니다. 컴포넌트를 `<Suspense>`로 감싸고 해당 컴포넌트 안에서 [`use(browser())`](/reference/react/use#use-browser)를 호출하세요.
 
-Click **Reload** to see the loading fallback in the initial HTML. After hydration, React displays the draft loaded from `localStorage`.
+초기 HTML에서 로딩 Fallback을 보려면 **새로고침**을 클릭하세요. Hydration 이후 React는 `localStorage`에서 불러온 초안을 표시합니다.
 
 <Sandpack>
 
@@ -2387,7 +2464,7 @@ async function main(frame) {
   const stream = await renderToReadableStream(<Document />);
   await flushReadableStreamToFrame(stream, frame);
 
-  // Wait so both the fallback and hydrated content are visible.
+  // Fallback과 Hydration 이후의 콘텐츠가 모두 보이도록 기다립니다.
   await new Promise(resolve => setTimeout(resolve, 1200));
   hydrateRoot(frame.contentDocument, <Document />);
 }
@@ -2453,17 +2530,17 @@ iframe {
 
 </Sandpack>
 
-During server rendering, React includes the Suspense boundary's fallback in the HTML. In the browser, React replaces the fallback with the saved draft.
+서버 렌더링 중에 React는 Suspense 경계의 Fallback을 HTML에 포함합니다. 브라우저에서는 React가 Fallback을 저장된 초안으로 교체합니다.
 
 ---
 
-### Waiting for a stylesheet to load {/*waiting-for-a-stylesheet-to-load*/}
+### 스타일시트가 로딩될 때까지 기다리기 {/*waiting-for-a-stylesheet-to-load*/}
 
-A stylesheet rendered with [`<link rel="stylesheet">` and a `precedence` prop](/reference/react-dom/components/link#special-rendering-behavior) blocks the Suspense boundary until the stylesheet loads, up to a timeout, so the content doesn't appear unstyled.
+[`<link rel="stylesheet">`와 `precedence` prop으로 렌더링한 스타일시트](/reference/react-dom/components/link#special-rendering-behavior)는 콘텐츠가 스타일 없이 나타나지 않도록 로딩이 끝나거나 타임아웃에 도달할 때까지 Suspense 경계를 차단합니다.
 
-In the example below, the `Card` component renders a stylesheet with `precedence`. Press "Show card": React shows the fallback until the stylesheet has loaded, and then reveals the card with its styles applied.
+아래 예시에서 `Card` 컴포넌트는 `precedence`를 지정한 스타일시트를 렌더링합니다. "Show card"를 누르면 React는 스타일시트가 로딩될 때까지 Fallback을 표시한 다음 스타일이 적용된 카드를 보여줍니다.
 
-For comparison, the second button performs the same update without React, in a separate document. Nothing waits for the stylesheet, so the card's text appears in a fallback font first and then switches:
+비교를 위해 두 번째 버튼은 React 없이 별도의 문서에서 같은 업데이트를 수행합니다. 이때는 스타일시트를 기다리지 않으므로 카드의 텍스트가 먼저 대체 폰트로 나타났다가 나중에 바뀝니다.
 
 <Sandpack>
 
@@ -2541,8 +2618,8 @@ export default function VanillaCard() {
 ```
 
 ```js src/styles.js hidden
-// Add a unique parameter so the stylesheet isn't cached,
-// and every run shows the loading state.
+// 스타일시트가 캐시되지 않고 실행할 때마다 로딩 상태가
+// 보이도록 고유한 매개변수를 추가합니다.
 export function freshStylesheetUrl() {
   return (
     'https://fonts.googleapis.com/css2?family=Caveat&display=swap' +
@@ -2584,9 +2661,9 @@ hr {
 
 ---
 
-### Animating from Suspense content {/*animating-from-suspense-content*/}
+### Suspense 콘텐츠에서 애니메이션 적용하기 {/*animating-from-suspense-content*/}
 
-Suspense composes with [`<ViewTransition>`](/reference/react/ViewTransition) to animate the swap from the fallback to the content. Wrap the boundary in a `<ViewTransition>`, and React treats the swap as an update, cross-fading between the fallback and the content by default:
+Suspense를 [`<ViewTransition>`](/reference/react/ViewTransition)과 함께 사용하면 Fallback이 콘텐츠로 교체되는 과정에 애니메이션을 적용할 수 있습니다. 경계를 `<ViewTransition>`으로 감싸면 React는 이 교체를 업데이트로 처리하며 기본적으로 Fallback과 콘텐츠 사이를 크로스 페이드합니다.
 
 <Sandpack>
 
@@ -2814,21 +2891,21 @@ button:hover {
 
 <Note>
 
-Where you place the `<ViewTransition>` relative to the boundary determines whether the fallback and content cross-fade as one update or animate as separate exit and enter animations. You can also [customize the animation](/reference/react/ViewTransition#customizing-animations) with View Transition classes.
+경계를 기준으로 `<ViewTransition>`을 어디에 배치하느냐에 따라 Fallback과 콘텐츠가 하나의 업데이트로 크로스 페이드될지 아니면 별도의 exit 및 enter 애니메이션으로 실행될지가 결정됩니다. View Transition 클래스로 [애니메이션을 커스터마이징](/reference/react/ViewTransition#customizing-animations)할 수도 있습니다.
 
-[Learn more about animating from Suspense content.](/reference/react/ViewTransition#animating-from-suspense-content)
+[Suspense 콘텐츠에서 애니메이션을 적용하는 방법을 자세히 알아보세요.](/reference/react/ViewTransition#animating-from-suspense-content)
 
 </Note>
 
 ---
 
-### Waiting for a font to load {/*waiting-for-a-font-to-load*/}
+### 폰트가 로딩될 때까지 기다리기 {/*waiting-for-a-font-to-load*/}
 
-When a [`<ViewTransition>`](/reference/react/ViewTransition) animates a Suspense boundary's reveal, React waits up to 500 ms for new fonts the content introduces so the text doesn't flash with a fallback font. This only happens during a `<ViewTransition>` update.
+[`<ViewTransition>`](/reference/react/ViewTransition)이 Suspense 경계의 콘텐츠가 나타나는 과정에 애니메이션을 적용할 때 React는 텍스트가 대체 폰트로 깜빡이지 않도록 콘텐츠가 새로 사용하는 폰트를 최대 500ms 동안 기다립니다. 이 동작은 `<ViewTransition>` 업데이트 중에만 발생합니다.
 
-In the example below, the Suspense boundary is wrapped in a `<ViewTransition>`, and the `Quote` component suspends while its data loads. Rendering the quote loads a stylesheet that introduces the font. React keeps the fallback visible while the stylesheet and font load. If the font loads within the 500 ms limit, the quote appears already in its font.
+아래 예시에서 Suspense 경계는 `<ViewTransition>` 안에 있고 `Quote` 컴포넌트는 데이터를 로딩하는 동안 지연됩니다. 인용문을 렌더링하면 폰트를 추가하는 스타일시트가 로딩됩니다. React는 스타일시트와 폰트가 로딩되는 동안 Fallback을 계속 표시합니다. 폰트가 500ms 제한 안에 로딩되면 인용문은 이미 해당 폰트가 적용된 상태로 나타납니다.
 
-For comparison, the second button performs the same update without React. Nothing waits for the font, so the text appears in a fallback font first and then switches:
+비교를 위해 두 번째 버튼은 React 없이 같은 업데이트를 수행합니다. 이때는 폰트를 기다리지 않으므로 텍스트가 먼저 대체 폰트로 나타났다가 나중에 바뀝니다.
 
 <Sandpack>
 
@@ -2914,7 +2991,7 @@ export default function VanillaQuote() {
 
 ```js src/font.js hidden
 export function freshStylesheetUrl() {
-  // Add a unique parameter so the stylesheet isn't cached.
+  // 스타일시트가 캐시되지 않도록 고유한 매개변수를 추가합니다.
   return (
     'https://fonts.googleapis.com/css2?family=Caveat&display=swap' +
     '&t=' +
@@ -2923,7 +3000,7 @@ export function freshStylesheetUrl() {
 }
 
 export function freshFontUrl() {
-  // Add a unique parameter so the font isn't cached.
+  // 폰트가 캐시되지 않도록 고유한 매개변수를 추가합니다.
   return (
     'https://fonts.gstatic.com/s/caveat/v23/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9eIWpYT5Kmgq3sw.woff2' +
     '?t=' +
@@ -2933,16 +3010,16 @@ export function freshFontUrl() {
 ```
 
 ```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// Note: 데이터 페칭 방법은
+// Suspense와 함께 사용하는 프레임워크에 따라 달라집니다.
+// 일반적으로 캐싱 로직은 프레임워크 내부에 있습니다.
 
 let cache = null;
 
 export function fetchQuote() {
   if (!cache) {
     cache = new Promise((resolve) => {
-      // Add a fake delay to make waiting noticeable.
+      // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
       setTimeout(() => {
         resolve(
           'The best way to predict the future is to invent it.'
@@ -2987,11 +3064,11 @@ hr {
 
 ---
 
-### Waiting for an image to load {/*waiting-for-an-image-to-load*/}
+### 이미지가 로딩될 때까지 기다리기 {/*waiting-for-an-image-to-load*/}
 
-When a Suspense boundary reveals content inside a [`<ViewTransition>`](/reference/react/ViewTransition), React waits up to 500 ms for visible images to load before starting the animation. Setting `loading="lazy"` or adding an `onLoad` handler opts an image out.
+Suspense 경계가 [`<ViewTransition>`](/reference/react/ViewTransition) 안에서 콘텐츠를 보여줄 때 React는 화면에 보이는 이미지가 로딩될 때까지 최대 500ms 동안 기다렸다가 애니메이션을 시작합니다. `loading="lazy"`를 설정하거나 `onLoad` 핸들러를 추가하면 해당 이미지는 이 동작에서 제외됩니다.
 
-Compare the same boundary inside and outside a `<ViewTransition>`. Inside, React keeps the profile skeleton visible for up to 500 ms while the image loads, so the card can be revealed with its image already in place. Outside, Suspense stops showing the skeleton as soon as the Promise resolves. If the image is still loading, the card appears first and the image pops in afterward:
+`<ViewTransition>` 안과 밖에 있는 같은 경계를 비교해 보세요. 안에서는 이미지가 로딩되는 동안 React가 최대 500ms까지 프로필 스켈레톤을 계속 보여주므로 이미지가 이미 준비된 상태로 카드가 나타날 수 있습니다. 밖에서는 Promise가 해결되는 즉시 Suspense가 스켈레톤 표시를 멈춥니다. 이미지가 아직 로딩 중이라면 카드가 먼저 나타나고 이미지는 뒤늦게 나타납니다.
 
 <Sandpack>
 
@@ -3055,7 +3132,7 @@ export default function App() {
 ```
 
 ```js src/image.js hidden
-// Normally, the caching logic would be inside a framework.
+// 일반적으로 캐싱 로직은 프레임워크 내부에 있습니다.
 const cache = new Map();
 
 export function fetchImageSrc(cacheKey) {
@@ -3066,9 +3143,9 @@ export function fetchImageSrc(cacheKey) {
 }
 
 async function loadImageSrc() {
-  // Delay the response so the Suspense fallback is visible.
+  // Suspense Fallback이 보이도록 응답을 지연시킵니다.
   await new Promise(resolve => setTimeout(resolve, 1000));
-  // Add a unique parameter so the image isn't cached.
+  // 이미지가 캐시되지 않도록 고유한 매개변수를 추가합니다.
   return 'https://react.dev/images/team/jack-pope.jpg?t=' + Date.now();
 }
 ```
@@ -3118,11 +3195,11 @@ hr {
 
 ---
 
-### Coordinating fonts, images, and stylesheets {/*coordinating-fonts-images-and-stylesheets*/}
+### 폰트, 이미지, 스타일시트 조율하기 {/*coordinating-fonts-images-and-stylesheets*/}
 
-A Suspense boundary can wait for data, stylesheets, fonts, and images at once. Waiting for fonts and images only happens during a [`<ViewTransition>`](/reference/react/ViewTransition) update. In the example below, the `ProfileCard` component suspends while its data loads, and renders a stylesheet with `precedence`, text in a new font, and a portrait. React keeps the skeleton visible while the data and the stylesheet load. The `<ViewTransition>` reveal then waits for the font and the image, so the card appears complete.
+Suspense 경계는 데이터, 스타일시트, 폰트, 이미지를 한 번에 기다릴 수 있습니다. 폰트와 이미지를 기다리는 동작은 [`<ViewTransition>`](/reference/react/ViewTransition) 업데이트 중에만 발생합니다. 아래 예시에서 `ProfileCard` 컴포넌트는 데이터를 로딩하는 동안 지연됩니다. 이 컴포넌트는 `precedence`를 지정한 스타일시트, 새 폰트를 사용하는 텍스트, 인물 사진을 렌더링합니다. React는 데이터와 스타일시트가 로딩되는 동안 스켈레톤을 계속 보여줍니다. 그런 다음 `<ViewTransition>`이 콘텐츠를 보여주기 전에 폰트와 이미지를 기다리므로 카드가 완성된 상태로 나타납니다.
 
-For comparison, the version without React loads the same data and shows every resource arriving on its own schedule:
+비교를 위해 React를 사용하지 않는 버전은 같은 데이터를 로딩하고 모든 리소스를 각자 도착하는 대로 표시합니다.
 
 <Sandpack>
 
@@ -3246,8 +3323,8 @@ export default function VanillaProfileCard() {
 ```
 
 ```js src/resources.js hidden
-// Add a unique parameter so the resources aren't cached,
-// and every run shows the loading state.
+// 리소스가 캐시되지 않고 실행할 때마다 로딩 상태가
+// 보이도록 고유한 매개변수를 추가합니다.
 export function freshStylesheetUrl() {
   return (
     'https://fonts.googleapis.com/css2?family=Caveat&display=swap' +
@@ -3262,11 +3339,11 @@ export function freshImageUrl() {
 ```
 
 ```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
+// Note: 데이터 페칭 방법은
+// Suspense와 함께 사용하는 프레임워크에 따라 달라집니다.
 
 export async function fetchQuote() {
-  // Add a fake delay to make waiting noticeable.
+  // 대기 시간을 눈에 띄게 만들기 위해 가짜 지연을 추가합니다.
   await new Promise((resolve) => {
     setTimeout(resolve, 1000);
   });
@@ -3351,6 +3428,7 @@ hr {
 </Sandpack>
 
 ---
+
 ## 문제 해결 {/*troubleshooting*/}
 
 ### 업데이트 중에 UI가 Fallback으로 대체되는 것을 방지하려면 어떻게 해야 하나요? {/*preventing-unwanted-fallbacks*/}
@@ -3361,14 +3439,14 @@ hr {
 
 ```js {2-3,5}
 function handleNextPageClick() {
-  // If this update suspends, don't hide the already displayed content
+  // 이 업데이트가 지연되더라도 이미 표시된 콘텐츠를 숨기지 않습니다
   startTransition(() => {
     setCurrentPage(currentPage + 1);
   });
 }
 ```
 
-이렇게 하면 기존 콘텐츠가 숨겨지지 않습니다. 그러나 새로 렌더링된 `Suspense`는 여전히 즉시 Fallback을 보여줘서 UI를 차단하지 않고 사용자가 콘텐츠를 이용할 수 있게 합니다.
+이렇게 하면 기존 콘텐츠가 숨겨지지 않습니다. 그러나 새로 렌더링된 `Suspense`는 여전히 즉시 Fallback을 보여줘서 UI를 차단하지 않고 콘텐츠가 준비되는 대로 사용자가 볼 수 있게 합니다.
 
 **React는 긴급하지 않은 업데이트 중에만 원치 않는 Fallback을 방지합니다**. 긴급한 업데이트의 결과인 경우 렌더링을 지연시키지 않습니다. [`startTransition`](/reference/react/startTransition) 또는 [`useDeferredValue`](/reference/react/useDeferredValue)와 같은 API를 사용해야 합니다.
 
